@@ -2839,7 +2839,12 @@ export const lessons: GermanLesson[] = [
           "Damen und Herren → ĐA-mần und HE-rần",
           "Visumsbeantragung → VÍ-zums-bê-an-tra-gung",
           "wende → VEN-đê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Damen und Herren → DAH-men oont HAIR-en",
+          "Visumsbeantragung → VEE-zoom-s-buh-ahn-trah-goong (compound noun)",
+          "wende → VEN-duh — 'w' said as English 'v'"
+        ],
       },
       {
         "en": "Für die Beantragung des Studentenvisums benötige ich dringend die Zulassungsbestätigung.",
@@ -2848,7 +2853,12 @@ export const lessons: GermanLesson[] = [
           "Studentenvisum → shtu-ĐEN-tản-vi-zum",
           "benötige → bê-NƠ-ti-gờ",
           "Zulassungsbestätigung → TSU-la-sungs-bê-shtê-ti-gung"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Studentenvisum → shtoo-DEN-ten-vee-zoom — 'st' at start of syllable = 'sht'",
+          "benötige → buh-NUR-ti-guh — 'ö' = round lips like 'oo', say 'eh'",
+          "Zulassungsbestätigung → TSOO-lah-soongs-buh-shteh-ti-goong — 'z' = 'ts' as in 'cats'"
+        ],
       },
       {
         "en": "Mein Visumstermin bei der Deutschen Botschaft in Hanoi ist am 15. März.",
@@ -2857,7 +2867,12 @@ export const lessons: GermanLesson[] = [
           "Visumstermin → VÍ-zums-te-min",
           "Botschaft → BÔT-shaft",
           "Hanoi → ha-NÔI"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Visumstermin → VEE-zoom-s-tair-meen",
+          "Botschaft → BOHT-shahft — 'sch' = 'sh' as in 'ship'",
+          "Hanoi → hah-NOY"
+        ],
       },
       {
         "en": "Wäre es möglich, die Bestätigung bis spätestens 1. März zu versenden?",
@@ -2866,7 +2881,12 @@ export const lessons: GermanLesson[] = [
           "Wäre → VÊ-rê — Konjunktiv II",
           "Bestätigung → bê-shtê-TI-gung",
           "spätestens → SHPÊ-tệs-tận"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Wäre → VAY-ruh — Konjunktiv II of 'sein'; 'ä' = 'ay' as in 'air'",
+          "Bestätigung → buh-SHTEH-ti-goong",
+          "spätestens → SHPEH-tes-tens — 'sp' at start = 'shp'"
+        ],
       },
       {
         "en": "Ich verbleibe mit freundlichen Grüßen und stehe für Rückfragen jederzeit zur Verfügung.",
@@ -2875,81 +2895,98 @@ export const lessons: GermanLesson[] = [
           "verbleibe → fe-BLAI-bê",
           "freundlichen → FROIND-lích-ần",
           "Verfügung → fe-FUY-gung"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "verbleibe → fair-BLY-buh — 'v' = 'f', 'ei' = 'eye'",
+          "freundlichen → FROYND-likh-en — 'eu' = 'oy'",
+          "Verfügung → fair-FUE-goong — 'ü' = lips for 'oo', tongue for 'ee'"
+        ],
       }
     ],
     "cultural_notes_vi": "Liên lạc với cơ quan hành chính Đức (Studienkolleg, Hochschule, Auslandsamt, Botschaft) khác Việt Nam ở năm điểm. (1) FORMAL TUYỆT ĐỐI: email phải có cấu trúc đầy đủ — không có 'Hi anh', không có emoji, không có ngôn ngữ thân mật. Sai cấu trúc = bị coi là không nghiêm túc, hồi âm chậm hơn. (2) CHẬM VÀ BUREAUCRATIC: phản hồi 5-10 ngày làm việc là chuẩn; có thể đến 3-4 tuần cho việc phức tạp. KHÔNG follow-up trong 7 ngày đầu. (3) CHUỖI XỬ LÝ DÀI: email đầu tiên thường vào 'Sekretariat' chung, sau đó được forward đến 'Sachbearbeiter:in'. (4) VĂN BẢN PAPER vẫn quan trọng: nhiều giấy tờ chính thức Đức yêu cầu BẢN GỐC qua bưu điện. Tính trước thời gian giao nhận DHL/Express (5-7 ngày VN-DE qua express). (5) CHÍNH XÁC HƠN TỐC ĐỘ: nhân viên Đức thà chậm và đúng hơn nhanh và sai. Thay vào đó đưa ra DEADLINE rõ ràng + LÝ DO cụ thể (lịch hẹn visa, kỳ học bắt đầu).\n\nKhác Việt Nam: ở VN, có thể nhắn Zalo hoặc gọi điện trực tiếp cho cán bộ; ở Đức, KHÔNG được làm vậy với cơ quan — phải qua email/thư chính thức.\n\nVới các giấy tờ visa cụ thể: APS-Bescheinigung, Sperrkonto, Krankenversicherung, Wohnnachweis — chuẩn bị TRƯỚC khi đặt lịch visa, không trong khi chờ.",
+    "cultural_notes_en": "Dealing with German administrative bodies (Studienkolleg, Hochschule, Auslandsamt, Botschaft) differs from US, UK, or VN expectations on five fronts. (1) FORMALITY IS NON-NEGOTIABLE. The email must follow the full structure — no 'Hi there', no emoji, no first-name casualness, even with a recruiter who has written to you twice. Breaking the form is read as unserious and gets a slower response. (2) SLOW BY DESIGN. A 5–10 working-day reply is normal; 3–4 weeks for anything complex. Do NOT follow up inside the first 7 days. (3) LONG PROCESSING CHAIN. Your first email usually lands at a general Sekretariat and is forwarded to a specific Sachbearbeiter:in (case officer). Treat that handoff as part of the process, not a failure. (4) PAPER STILL MATTERS. Many official documents must arrive as the physical original by post. Plan around DHL/Express timing (5–7 days VN-DE via express). (5) ACCURACY BEFORE SPEED. German staff would rather be slow and correct than fast and wrong. Instead of pushing for speed, give a CLEAR DEADLINE and a CONCRETE REASON (visa appointment date, semester start).\n\nWhere this diverges from English-speaking norms: in the US/UK you might escalate by calling a hotline or messaging on LinkedIn after 48 hours. With a German Behörde you do NOT — you wait, then follow up by email, never by phone for routine matters.\n\nFor specific visa documents (APS-Bescheinigung, Sperrkonto, Krankenversicherung, Wohnnachweis), prepare them BEFORE booking the visa appointment, not in parallel.",
     "tip_advice_vi": "Cấu trúc email formal: (1) Subject rõ ràng + chứa từ khoá: 'Anfrage Zulassungsbestätigung für Visumstermin am 15.03.2025 — Matrikelnr. 2024-VN-1037'. (2) Mở 'Sehr geehrte Frau Weber' (biết tên) hoặc 'Sehr geehrte Damen und Herren' (không biết). (3) Đoạn 1 (mở): 'ich wende mich an Sie bezüglich [chủ đề]'. (4) Đoạn 2 (vấn đề): mô tả vấn đề + ngày + số liệu cụ thể. (5) Đoạn 3 (yêu cầu): 'Wäre es möglich, [yêu cầu cụ thể] bis [deadline] zu [động từ]?'. (6) Đoạn 4 (lý do): 'Eine Verschiebung würde [hậu quả cụ thể] gefährden'. (7) Kết: 'Für Rückfragen stehe ich jederzeit zur Verfügung. Mit freundlichen Grüßen, [Tên + Mã SV]'.\n\nFile attachments: PDF only. Đặt tên file rõ ràng: 'Linh_Nguyen_2024-VN-1037_Sperrkonto.pdf'. Mention attachment trong email: 'Anbei finden Sie...'.\n\nFollow-up: nếu không phản hồi trong 7 ngày, đợi đến 10-14 ngày rồi follow-up MỘT LẦN. Email follow-up: ngắn (3 dòng), tham chiếu email gốc bằng ngày, hỏi status. Sau 21 ngày không phản hồi, follow-up lần 2 cộng với CC sếp (Studiengangskoordinator).\n\nĐiện thoại: chỉ gọi khi khẩn cấp (deadline trong 48h). Mở đầu: 'Guten Tag, mein Name ist Linh Nguyễn, Matrikelnr. 2024-VN-1037'.",
+    "tip_advice_en": "Formal email structure: (1) Specific subject line with keywords: 'Anfrage Zulassungsbestätigung für Visumstermin am 15.03.2025 — Matrikelnr. 2024-VN-1037'. (2) Open with 'Sehr geehrte Frau Weber' (name known) or 'Sehr geehrte Damen und Herren' (name unknown). (3) Paragraph 1 (opening): 'ich wende mich an Sie bezüglich [topic]'. (4) Paragraph 2 (problem): describe with dates and specific data. (5) Paragraph 3 (request): 'Wäre es möglich, [specific request] bis [deadline] zu [verb]?'. (6) Paragraph 4 (reason): 'Eine Verschiebung würde [concrete consequence] gefährden'. (7) Close: 'Für Rückfragen stehe ich jederzeit zur Verfügung. Mit freundlichen Grüßen, [Name + student ID]'.\n\nAttachments: PDF only. Use clear filenames: 'Linh_Nguyen_2024-VN-1037_Sperrkonto.pdf'. Mention attachments in the body: 'Anbei finden Sie…'.\n\nFollow-up: if no response in 7 days, wait until day 10–14, then send ONE polite follow-up. Keep it three lines, reference the original email by date, ask for status. After 21 days of silence, send a second follow-up — this time CC the programme coordinator (Studiengangskoordinator).\n\nPhone calls: reserve for genuine emergencies (deadline within 48 hours). Open with 'Guten Tag, mein Name ist Linh Nguyễn, Matrikelnr. 2024-VN-1037'.",
     "vocabulary": [
       {
         "word": "die Visumsbeantragung",
         "en": "visa application",
         "vi": "việc nộp đơn xin visa",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi VÍ-zums-bê-an-tra-gung"
+        "pronunciation_vi": "đi VÍ-zums-bê-an-tra-gung",
+        "pronunciation_en": "dee VEE-zoom-s-buh-ahn-trah-goong — visa application; long compound noun, stress on 'AHN'",
       },
       {
         "word": "die Zulassungsbestätigung",
         "en": "letter of admission",
         "vi": "giấy xác nhận tiếp nhận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TSU-la-sungs-bê-shtê-ti-gung"
+        "pronunciation_vi": "đi TSU-la-sungs-bê-shtê-ti-gung",
+        "pronunciation_en": "dee TSOO-lah-soongs-buh-shteh-ti-goong — letter of admission; another long compound",
       },
       {
         "word": "das Studentenvisum",
         "en": "student visa",
         "vi": "visa du học sinh",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát shtu-ĐEN-tản-vi-zum"
+        "pronunciation_vi": "đát shtu-ĐEN-tản-vi-zum",
+        "pronunciation_en": "dahs shtoo-DEN-ten-vee-zoom — student visa",
       },
       {
         "word": "der Visumstermin",
         "en": "visa appointment",
         "vi": "lịch hẹn visa",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe VÍ-zums-te-min"
+        "pronunciation_vi": "đe VÍ-zums-te-min",
+        "pronunciation_en": "dair VEE-zoom-s-tair-meen — visa appointment",
       },
       {
         "word": "die Deutsche Botschaft",
         "en": "German Embassy",
         "vi": "Đại sứ quán Đức",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ĐOI-chê BÔT-shaft"
+        "pronunciation_vi": "đi ĐOI-chê BÔT-shaft",
+        "pronunciation_en": "dee DOY-chuh BOHT-shahft — German Embassy",
       },
       {
         "word": "die Sperrkonto-Bestätigung",
         "en": "blocked account confirmation",
         "vi": "xác nhận tài khoản phong toả",
         "pos": "noun (f)",
-        "pronunciation_vi": "SHPE-kôn-tô-bê-shtê-ti-gung"
+        "pronunciation_vi": "SHPE-kôn-tô-bê-shtê-ti-gung",
+        "pronunciation_en": "SHPAIR-kohn-toh-buh-shteh-ti-goong — blocked-account confirmation; 'Sperr' = 'shpair'",
       },
       {
         "word": "das Studienkolleg",
         "en": "preparatory college (foundation year)",
         "vi": "khoá dự bị đại học",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát SHTÚ-đi-ần-kô-lếch"
+        "pronunciation_vi": "đát SHTÚ-đi-ần-kô-lếch",
+        "pronunciation_en": "dahs SHTOO-dee-en-kol-leg — preparatory college (foundation year before uni)",
       },
       {
         "word": "die Aufenthaltserlaubnis",
         "en": "residence permit",
         "vi": "giấy phép cư trú",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AOF-ent-halts-e-laob-nis"
+        "pronunciation_vi": "đi AOF-ent-halts-e-laob-nis",
+        "pronunciation_en": "dee OWF-ent-hahlts-air-lowp-nis — residence permit; 'au' = 'ow' as in 'cow'",
       },
       {
         "word": "das Anschreiben",
         "en": "cover letter, formal letter",
         "vi": "thư trình bày",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát AN-shrai-bần"
+        "pronunciation_vi": "đát AN-shrai-bần",
+        "pronunciation_en": "dahs AHN-shrye-ben — cover letter; 'sch' = 'sh', 'ei' = 'eye'",
       },
       {
         "word": "auf der lange Bank schieben",
         "en": "to put off, procrastinate (idiom)",
         "vi": "trì hoãn, kéo dài",
         "pos": "verb phrase",
-        "pronunciation_vi": "AOF đe LANG-ê BANK SHÍ-bần"
+        "pronunciation_vi": "AOF đe LANG-ê BANK SHÍ-bần",
+        "pronunciation_en": "owf dair LAHNG-en BAHNK SHEE-ben — idiom: to put off, to procrastinate (literally 'push onto the long bench')",
       }
     ],
     "dialogue": [
@@ -3072,36 +3109,46 @@ export const lessons: GermanLesson[] = [
       "Email từ Studienkolleg yêu cầu thêm tài liệu (APS-Bescheinigung) mà bạn KHÔNG có. Hãy phản hồi giải thích bạn đã nộp đơn xin APS từ 2 tháng trước, hiện chưa nhận được, và xin gia hạn deadline submission."
     ],
     "register_notes": "Email chính thức tiếng Đức tuân thủ cấu trúc cứng nhắc — sai cấu trúc = thiếu chuyên nghiệp ngay lập tức. (1) MỞ ĐẦU: 'Sehr geehrte Damen und Herren' (không biết tên), 'Sehr geehrte Frau Weber' / 'Sehr geehrter Herr Müller' (biết tên). KHÔNG dùng 'Hallo' hoặc 'Hi' với cơ quan công, đại học, công ty truyền thống. Sau dấu phẩy XUỐNG DÒNG và viết thường chữ đầu của câu tiếp ('ich' không 'Ich'). (2) THÂN BÀI: chia thành các đoạn ngắn (3-4 câu mỗi đoạn). (3) KẾT: 'Mit freundlichen Grüßen' (hoặc viết tắt 'MfG' chỉ với người đã quen).\n\nNgôn ngữ: dùng kính ngữ tuyệt đối — Konjunktiv II cho mọi yêu cầu ('Wäre es möglich', 'Könnten Sie', 'Ich würde mich freuen, wenn'); động từ formal ('benötigen' thay vì 'brauchen', 'erbitten' thay vì 'wollen', 'mitteilen' thay vì 'sagen', 'übermitteln' thay vì 'schicken').\n\nĐộng từ tách formal-only: 'Anbei sende ich Ihnen...' (Đính kèm em gửi anh chị), 'Ich verbleibe mit freundlichen Grüßen' (formal extreme).\n\nNgười Việt thường mắc lỗi: (1) email dùng 'kindly' kiểu Anh — không có equivalent trong Đức formal; (2) thêm nhiều exclamation mark/emoji — bị coi là không nghiêm túc; (3) xin lỗi quá mức.",
+    "register_notes_en": "Formal German email follows a rigid frame — break the frame and you instantly read as unprofessional. (1) OPENING: 'Sehr geehrte Damen und Herren' (name unknown), 'Sehr geehrte Frau Weber' / 'Sehr geehrter Herr Müller' (name known). Do NOT use 'Hallo' or 'Hi' with public offices, universities, or traditional companies. After the comma there is a LINE BREAK and the next sentence starts in lowercase ('ich' not 'Ich'). (2) BODY: short paragraphs, three to four sentences each. (3) CLOSING: 'Mit freundlichen Grüßen' (or the abbreviation 'MfG' only with people you already know).\n\nLanguage: stay in absolute polite register — Konjunktiv II for every request ('Wäre es möglich', 'Könnten Sie', 'Ich würde mich freuen, wenn'); use the formal verbs ('benötigen' rather than 'brauchen', 'erbitten' rather than 'wollen', 'mitteilen' rather than 'sagen', 'übermitteln' rather than 'schicken').\n\nFormal-only separable verbs: 'Anbei sende ich Ihnen…' (I am attaching…), 'Ich verbleibe mit freundlichen Grüßen' (extreme formal close, common from older Beamte).\n\nFrequent learner mistakes: (1) Anglicism 'kindly do X' — German has no neat equivalent; use Konjunktiv II instead. (2) Stacked exclamation marks or emojis — read as juvenile. (3) Over-apologising ('Es tut mir wirklich, wirklich leid…') — flatten to one polite acknowledgement.",
     "idiom_glosses": [
       {
         "idiom": "Geduld ist eine Tugend",
         "literal": "Kiên nhẫn là đức tính",
         "meaning": "Phải kiên nhẫn — câu thành ngữ phổ biến để nhắc nhở bản thân hoặc người khác đừng vội vàng. Khi xử lý giấy tờ Đức, câu này áp dụng thường xuyên — bộ máy hành chính chậm.",
-        "example": "Bei der Visumsbeantragung gilt: Geduld ist eine Tugend."
+        "meaning_en": "Patience is a virtue — the standard German line for reminding yourself or others not to rush. When you are dealing with German paperwork this proverb earns its keep daily, since the bureaucracy is genuinely slow.",
+        "example": "Bei der Visumsbeantragung gilt: Geduld ist eine Tugend.",
+        "example_en": "When you are applying for a visa, patience really is a virtue.",
       },
       {
         "idiom": "Etwas auf die lange Bank schieben",
         "literal": "Đẩy việc gì lên ghế dài",
         "meaning": "Trì hoãn, để lại làm sau. Phù hợp khi nói về việc cơ quan trì hoãn xử lý giấy tờ.",
-        "example": "Bitte schieben Sie meinen Antrag nicht auf die lange Bank — der Termin ist dringend."
+        "meaning_en": "To put something off, to procrastinate. Useful when the office itself is the one delaying — 'please don't push my application onto the long bench, the deadline is tight.'",
+        "example": "Bitte schieben Sie meinen Antrag nicht auf die lange Bank — der Termin ist dringend.",
+        "example_en": "Please don't keep putting my application off — the deadline is tight.",
       },
       {
         "idiom": "Das letzte Wort haben",
         "literal": "Có lời cuối cùng",
         "meaning": "Có quyền quyết định cuối — không thể thay đổi sau quyết định của họ. Trong context Đại sứ quán/Visa: 'Die Botschaft hat das letzte Wort'.",
-        "example": "Bei der Visumsentscheidung hat die Botschaft das letzte Wort."
+        "meaning_en": "To have the final say — the decision cannot be appealed. In the embassy/visa context: 'Die Botschaft hat das letzte Wort' is the standard line.",
+        "example": "Bei der Visumsentscheidung hat die Botschaft das letzte Wort.",
+        "example_en": "On the visa decision the embassy has the final say.",
       },
       {
         "idiom": "Steine in den Weg legen",
         "literal": "Đặt đá lên đường",
         "meaning": "Cản trở, gây khó khăn — cố ý hoặc do bureaucracy. Dùng để phàn nàn về cơ quan tạo trở ngại không cần thiết.",
-        "example": "Die Verzögerung der Bestätigung legt mir Steine in den Weg."
+        "meaning_en": "To put obstacles in someone's way — intentionally or as a side-effect of bureaucracy. Useful to describe an office creating unnecessary friction.",
+        "example": "Die Verzögerung der Bestätigung legt mir Steine in den Weg.",
+        "example_en": "The delay on the confirmation letter is putting real obstacles in my way.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm formal phù hợp cho email visa:",
+        "instruction_en": "Fill in the appropriate formal phrase for a visa email:",
         "pronunciation_focus": [
           "formal email register"
         ],
@@ -3127,6 +3174,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng email formal:",
+        "instruction_en": "Match each German sentence to its function in a formal email:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3150,6 +3198,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal cho email cơ quan:",
+        "instruction_en": "Translate into formal German for an official email:",
         "pronunciation_focus": [
           "formal email"
         ],
@@ -3188,7 +3237,12 @@ export const lessons: GermanLesson[] = [
           "Verbindung → fe-BÍN-đung",
           "leider → LAI-đờ",
           "optimal → ô-pti-MAL"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Verbindung → fair-BIN-doong — 'V' = 'f', double 'n' kept short",
+          "leider → LY-der — 'ei' = 'eye'",
+          "optimal → op-tee-MAHL — stress on final syllable"
+        ],
       },
       {
         "en": "Entschuldigung, könnten Sie die Frage bitte wiederholen?",
@@ -3197,7 +3251,12 @@ export const lessons: GermanLesson[] = [
           "Entschuldigung → ent-SHUL-đi-gung",
           "wiederholen → vi-đờ-HÔ-lần",
           "Frage → FRA-gờ"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Entschuldigung → ent-SHOOL-di-goong — 'sch' = 'sh'",
+          "wiederholen → vee-der-HOH-len — 'w' = 'v', 'ie' = long 'ee'",
+          "Frage → FRAH-guh"
+        ],
       },
       {
         "en": "Ich rufe aus Hồ-Chí-Minh-Stadt an — die Zeitverschiebung beträgt fünf Stunden.",
@@ -3206,7 +3265,12 @@ export const lessons: GermanLesson[] = [
           "rufe an → RU-fê AN — verb tách",
           "Zeitverschiebung → TSAIT-fe-shi-bung",
           "beträgt → bê-TRẾ-gt"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "rufe an → ROO-fuh AHN — separable verb, 'an' moves to end",
+          "Zeitverschiebung → TSYT-fair-shee-boong — 'z' = 'ts', 'ei' = 'eye'",
+          "beträgt → buh-TRAYKT — 'ä' = 'ay' as in 'air'"
+        ],
       },
       {
         "en": "Lassen Sie mich kurz nachdenken, bevor ich antworte.",
@@ -3215,7 +3279,12 @@ export const lessons: GermanLesson[] = [
           "nachdenken → NÁCH-đen-kần",
           "bevor → bê-FOA",
           "antworte → ANT-vot-tê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "nachdenken → NAHKH-den-ken — 'ch' after 'a' = guttural like Scottish 'loch'",
+          "bevor → buh-FOR",
+          "antworte → AHNT-vor-tuh"
+        ],
       },
       {
         "en": "Ich möchte das auf den Punkt bringen: Mein Mehrwert für Ihr Team ist meine Brückenkompetenz.",
@@ -3224,81 +3293,98 @@ export const lessons: GermanLesson[] = [
           "auf den Punkt bringen → AOF đần PUNKT BRÍNG-ần (idiom)",
           "Mehrwert → MÊ-vet",
           "Brückenkompetenz → BRUY-kần-kôm-pê-tens"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "auf den Punkt bringen → owf den POONKT BRING-en — idiom: 'to bring to the point'",
+          "Mehrwert → MAIR-vairt — 'w' = 'v'",
+          "Brückenkompetenz → BREW-ken-kom-puh-tents — 'ü' = round lips 'oo' + tongue 'ee'"
+        ],
       }
     ],
     "cultural_notes_vi": "Phỏng vấn điện thoại với công ty Đức từ Việt Nam có 5 thách thức đặc thù khác in-person. (1) TIMEZONE: Đức 5h sau VN (mùa đông) hoặc 4h (mùa hè). Đa số phỏng vấn tổ chức 14-17h Đức = 19-22h VN. Bạn phải sẵn sàng phỏng vấn lúc tối khuya — kèm năng lượng cao. (2) ĐƯỜNG TRUYỀN: WiFi VN không phải lúc nào cũng ổn, đặc biệt mùa mưa. CHUẨN BỊ: backup 4G/5G, gọi từ phòng yên tĩnh, đóng các app khác trên máy tính. (3) NGÔN NGỮ: không có visual cues làm dễ misunderstand. Nói chậm hơn 20%, phát âm rõ, dùng câu ngắn. Nếu accent VN dày, có thể đề xuất video call từ đầu. (4) THIẾU BODY LANGUAGE: bạn không biết người phỏng vấn đang gật đầu hay frown. Bù bằng cách hỏi xác nhận. (5) CULTURAL ASSUMPTIONS: nhà tuyển dụng có thể có định kiến về 'người làm việc từ xa Á châu'. Bạn cần chủ động giải quyết các định kiến này.\n\nKhác Việt Nam: ở VN, phỏng vấn điện thoại thường là sàng lọc nhanh, ít câu hỏi sâu; ở Đức, phỏng vấn điện thoại có thể là VÒNG ĐẦU TIÊN với trọng số cao, kéo dài 45-60 phút.\n\nMột chi tiết quan trọng: KHI KẾT THÚC, hỏi rõ NEXT STEP và TIMELINE. 'Wann darf ich mit einer Rückmeldung rechnen?'. Sau cuộc gọi 24h, gửi email cảm ơn ngắn (3-4 dòng) tham chiếu đến điểm cụ thể trong cuộc nói chuyện.\n\nVisa context: nếu công ty hỏi 'Wann können Sie anfangen?', đừng nói 'sofort' nếu chưa có Arbeitsvisum. Nói thực tế: 'Nach erfolgreicher Visumsbeantragung — voraussichtlich 6-8 Wochen'.",
+    "cultural_notes_en": "A phone interview with a German company from overseas has five challenges that an in-person interview does not. (1) TIME ZONES. Germany is 5 hours behind Vietnam in winter / 4 hours behind in summer. Most interview slots fall between 14:00 and 17:00 German time, which lands at 19:00–22:00 in Vietnam. You will be interviewing late at night, when your energy is naturally lower — train for that. (2) CONNECTION QUALITY. Residential WiFi in Vietnam (and in many other countries) is not always rock-solid, especially in monsoon season. Prepare a 4G/5G backup, take the call from a quiet room, and close other apps on the laptop. (3) LANGUAGE WITHOUT VISUAL CUES. Without facial expressions or gestures, misunderstandings are easier. Speak 20% slower than your normal pace, articulate clearly, use shorter sentences. If your accent is heavy in German, propose a video call up front. (4) NO BODY LANGUAGE. You can't see whether the interviewer is nodding along or frowning. Compensate by occasionally asking for confirmation. (5) CULTURAL ASSUMPTIONS. Some recruiters carry unconscious assumptions about 'Asian remote workers'. Address those head-on rather than dancing around them.\n\nWhere this differs from anglophone hiring: in the US or UK a phone interview is usually a quick screening, often 20–30 minutes; in Germany a phone interview can be a substantive FIRST ROUND with serious weight, running 45–60 minutes.\n\nOne crucial detail: AT THE END, ask explicitly for the NEXT STEP and TIMELINE. 'Wann darf ich mit einer Rückmeldung rechnen?'. Within 24 hours after the call, send a short thank-you email (three or four lines) that references a specific point from the conversation.\n\nVisa context: if the company asks 'Wann können Sie anfangen?', do NOT say 'sofort' unless you already have an Arbeitsvisum. Be realistic: 'Nach erfolgreicher Visumsbeantragung — voraussichtlich 6–8 Wochen'.",
     "tip_advice_vi": "Trước cuộc gọi (1 ngày trước): (1) Test thiết bị: tai nghe + mic + WiFi backup. (2) Chuẩn bị không gian yên tĩnh, ánh sáng tốt nếu video. (3) In CV + JD công ty, đặt trên bàn. (4) Chuẩn bị 5 câu hỏi cho người phỏng vấn. (5) Có chai nước trên bàn. (6) Mặc smart casual.\n\nMở đầu cuộc gọi: (1) Bắt máy đúng tên: 'Linh Nguyễn am Apparat'. (2) Chào formal: 'Guten Tag/Abend, Frau Becker'. (3) Cảm ơn cơ hội: 'Vielen Dank, dass Sie sich Zeit nehmen'. (4) Báo time zone nếu phù hợp: 'Bei mir ist es 19 Uhr'. (5) Confirm âm thanh: 'Hören Sie mich gut?'.\n\nTrong cuộc gọi: (1) Nói chậm hơn 20% so với bình thường. (2) Phát âm rõ âm cuối — đặc biệt 'r', 'ch', 'sch'. (3) Khi cần suy nghĩ, BÁO HIỆU: 'Lassen Sie mich kurz nachdenken'. (4) Khi không nghe rõ, ADMIT NGAY: 'Entschuldigung, könnten Sie wiederholen?'. (5) Khi đường truyền tệ, đề xuất alternative. (6) Trả lời câu hỏi theo cấu trúc STAR.\n\nKết cuộc gọi: (1) Tóm tắt 1 câu về điểm phù hợp. (2) Hỏi NEXT STEP: 'Wie geht es jetzt weiter?'. (3) Hỏi TIMELINE. (4) Cảm ơn formal.\n\nSau cuộc gọi: (1) Trong 24h, gửi email cảm ơn ngắn (3-4 dòng), tham chiếu điểm cụ thể.",
+    "tip_advice_en": "Day before the call: (1) Test the kit — headset, mic, WiFi backup. (2) Quiet space, good lighting if it's video. (3) Print the CV and the JD; lay them on the desk. (4) Prepare five questions for the interviewer. (5) Glass of water within reach. (6) Dress smart-casual.\n\nOpening the call: (1) Pick up with your full name: 'Linh Nguyễn am Apparat'. (2) Greet formally: 'Guten Tag/Abend, Frau Becker'. (3) Thank them for the slot: 'Vielen Dank, dass Sie sich Zeit nehmen'. (4) Flag the time zone if relevant: 'Bei mir ist es 19 Uhr'. (5) Audio check: 'Hören Sie mich gut?'.\n\nDuring the call: (1) Speak 20% slower than usual. (2) Crisp final consonants — especially 'r', 'ch', 'sch'. (3) When you need to think, SIGNAL it: 'Lassen Sie mich kurz nachdenken'. (4) When you don't hear something, ADMIT IT IMMEDIATELY: 'Entschuldigung, könnten Sie wiederholen?'. (5) When the line is bad, suggest a fix yourself. (6) Answer competency questions with the STAR structure.\n\nClosing the call: (1) Summarise your fit in one sentence. (2) Ask for the NEXT STEP: 'Wie geht es jetzt weiter?'. (3) Ask for the TIMELINE. (4) Thank them formally.\n\nAfter the call: (1) Within 24 hours, a short thank-you email (three or four lines) that references a specific moment in the conversation.",
     "vocabulary": [
       {
         "word": "die Verbindung",
         "en": "connection (phone/internet)",
         "vi": "đường truyền/kết nối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-BÍN-đung"
+        "pronunciation_vi": "đi fe-BÍN-đung",
+        "pronunciation_en": "dee fair-BIN-doong — connection (phone or internet)",
       },
       {
         "word": "die Zeitverschiebung",
         "en": "time difference",
         "vi": "chênh lệch giờ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TSAIT-fe-shi-bung"
+        "pronunciation_vi": "đi TSAIT-fe-shi-bung",
+        "pronunciation_en": "dee TSYT-fair-shee-boong — time difference; 'z' = 'ts'",
       },
       {
         "word": "das Telefoninterview",
         "en": "phone interview",
         "vi": "phỏng vấn điện thoại",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát tê-lê-FÔN-ин-tờ-vyu"
+        "pronunciation_vi": "đát tê-lê-FÔN-ин-tờ-vyu",
+        "pronunciation_en": "dahs tay-luh-FOHN-in-ter-vyoo — phone interview",
       },
       {
         "word": "wiederholen",
         "en": "to repeat",
         "vi": "nhắc lại",
         "pos": "verb",
-        "pronunciation_vi": "vi-đờ-HÔ-lần"
+        "pronunciation_vi": "vi-đờ-HÔ-lần",
+        "pronunciation_en": "vee-der-HOH-len — to repeat; long 'ee' in 'ie'",
       },
       {
         "word": "der Mehrwert",
         "en": "added value",
         "vi": "giá trị gia tăng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe MÊ-vet"
+        "pronunciation_vi": "đe MÊ-vet",
+        "pronunciation_en": "dair MAIR-vairt — added value; 'w' = 'v'",
       },
       {
         "word": "die Brückenkompetenz",
         "en": "bridging competence",
         "vi": "năng lực cầu nối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi BRUY-kần-kôm-pê-tens"
+        "pronunciation_vi": "đi BRUY-kần-kôm-pê-tens",
+        "pronunciation_en": "dee BREW-ken-kom-puh-tents — bridging competence; the ü is the toughest German vowel for English speakers (purse lips for 'oo', say 'ee')",
       },
       {
         "word": "die Stille",
         "en": "silence",
         "vi": "khoảng im lặng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHTÍ-lê"
+        "pronunciation_vi": "đi SHTÍ-lê",
+        "pronunciation_en": "dee SHTIL-uh — silence; 'st' at start = 'sht'",
       },
       {
         "word": "umziehen nach",
         "en": "to relocate to",
         "vi": "chuyển đến (ở)",
         "pos": "verb (sep)",
-        "pronunciation_vi": "UM-tsi-ần nách"
+        "pronunciation_vi": "UM-tsi-ần nách",
+        "pronunciation_en": "OOM-tsee-en nahkh — to relocate to; separable verb (um + ziehen)",
       },
       {
         "word": "die Bereitschaft",
         "en": "willingness, readiness",
         "vi": "sự sẵn sàng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi BÊ-rait-shaft"
+        "pronunciation_vi": "đi BÊ-rait-shaft",
+        "pronunciation_en": "dee buh-RYTE-shahft — readiness, willingness",
       },
       {
         "word": "das Gespräch wieder aufnehmen",
         "en": "to resume the conversation",
         "vi": "tiếp tục cuộc trò chuyện",
         "pos": "verb phrase",
-        "pronunciation_vi": "AOF-nê-mần"
+        "pronunciation_vi": "AOF-nê-mần",
+        "pronunciation_en": "dahs guh-SHPRAYKH VEE-der OWF-nay-men — to resume the conversation",
       }
     ],
     "dialogue": [
@@ -3421,36 +3507,46 @@ export const lessons: GermanLesson[] = [
       "Người phỏng vấn nói 'Wir hatten gehofft, jemanden aus dem deutschsprachigen Raum zu finden — Ihr Akzent macht es manchmal etwas schwierig'. Hãy phản hồi tự tin và không tự ái — nêu giải pháp (luyện thêm, dùng video để có lip-reading), nhấn mạnh khả năng cải thiện."
     ],
     "register_notes": "Phỏng vấn qua điện thoại có quy tắc riêng khác phỏng vấn trực tiếp. (1) MỞ ĐẦU CỨNG: 'Guten Tag/Abend, hier spricht [Tên] von [Công ty]. Spreche ich mit [Tên ứng viên]?'. Trả lời: 'Ja, am Apparat' (vâng, đây ạ) — formal hơn 'Ja, das bin ich'. (2) FORMAL TUYỆT ĐỐI: 'Sie' ngay từ đầu, không ngoại lệ. Khác phỏng vấn trực tiếp ở Berlin/Hamburg startup, qua điện thoại CHƯA bao giờ chuyển 'du'. (3) IM LẶNG là RỦI RO: trên điện thoại, im lặng > 3 giây bị hiểu là kết nối hỏng. Khi cần suy nghĩ, BÁO HIỆU: 'Lassen Sie mich kurz nachdenken' hoặc 'Einen Moment, bitte'. (4) KHI KHÔNG NGHE RÕ, NÓI NGAY: 'Entschuldigung, könnten Sie das wiederholen?' — không đoán mò. (5) TỐC ĐỘ NÓI CHẬM HƠN: do không có visual feedback, nói chậm hơn 20% so với in-person.\n\nVấn đề kết nối: nếu mạng kém kéo dài, đề xuất chủ động 'Wäre es möglich, in 5 Minuten erneut zu telefonieren?'. Đừng kéo dài cuộc gọi tệ — chuyển sang Plan B sớm.\n\nVăn hoá Đức ưa accent rõ và phát âm đúng hơn fluency với accent dày. Nếu accent của bạn dày, NÓI CHẬM HƠN. Tránh đặt câu phức tạp khi qua điện thoại.\n\nKhác Việt Nam: ở VN, phỏng vấn điện thoại thường ít formal; ở Đức, phỏng vấn điện thoại NGHIÊM TÚC như in-person — bạn nên ngồi thẳng, mặc smart casual (kể cả không thấy hình), và có CV trên bàn.",
+    "register_notes_en": "Phone interviews carry their own rules, distinct from in-person. (1) RIGID OPENING: 'Guten Tag/Abend, hier spricht [Name] von [Company]. Spreche ich mit [Candidate]?'. The candidate replies 'Ja, am Apparat' (lit. 'at the receiver') — more formal than 'Ja, das bin ich'. (2) FULLY FORMAL: 'Sie' from the first second, no exceptions. Unlike a startup in Berlin or Hamburg where the in-person interview might slip into 'du', a phone interview NEVER does. (3) SILENCE IS RISKY: on a phone line, three seconds of silence reads as a dropped connection. When you need to think, SIGNAL it: 'Lassen Sie mich kurz nachdenken' or 'Einen Moment, bitte'. (4) WHEN YOU CAN'T HEAR, SAY SO IMMEDIATELY: 'Entschuldigung, könnten Sie das wiederholen?' — never guess. (5) SLOWER PACE: with no visual feedback to lean on, talk 20% slower than you would in person.\n\nConnection issues: if the line stays bad, take the initiative: 'Wäre es möglich, in 5 Minuten erneut zu telefonieren?'. Don't soldier through a dying call — switch to plan B early.\n\nGerman corporate culture prefers a clear accent with correct phonemes over fluent speech with heavy distortion. If your accent is thick, slow down further and avoid long subordinate-clause stacks on the phone.\n\nHow this differs from US/UK practice: an Anglophone phone screen is often informal and brief; the German equivalent is taken as seriously as an in-person interview — sit up straight, wear something tidy (even though they can't see), have the CV in front of you.",
     "idiom_glosses": [
       {
         "idiom": "Über den Berg sein",
         "literal": "Đã qua khỏi ngọn núi",
         "meaning": "Đã vượt qua phần khó nhất — vẫn còn việc nhưng đã qua đoạn nguy hiểm. Trong context phỏng vấn: 'Nach dem ersten Gespräch sind wir über den Berg' = sau vòng 1 đã vượt được giai đoạn khó nhất.",
-        "example": "Mit dem Sprachzeugnis sind wir über den Berg."
+        "meaning_en": "To be 'over the mountain' — to have the worst part behind you. There's still work to do, but you've cleared the dangerous stretch. In an interview context: 'Nach dem ersten Gespräch sind wir über den Berg' = after round 1 the hardest part is past.",
+        "example": "Mit dem Sprachzeugnis sind wir über den Berg.",
+        "example_en": "With the language certificate in hand, the worst is behind us.",
       },
       {
         "idiom": "Sich bemerkbar machen",
         "literal": "Tự làm cho mình được chú ý",
         "meaning": "Tạo ấn tượng, để người khác nhận ra bạn. Trong context phỏng vấn từ xa: cần chủ động hơn, nói nhiều hơn để 'sich bemerkbar machen' qua điện thoại — không có body language hỗ trợ.",
-        "example": "Bei einem Telefoninterview muss man sich aktiv bemerkbar machen."
+        "meaning_en": "To make oneself noticed. In a phone-interview context, you have to do more of this actively — talk a bit more, fill pauses with summary — because the interviewer has no body language to read.",
+        "example": "Bei einem Telefoninterview muss man sich aktiv bemerkbar machen.",
+        "example_en": "On a phone interview you have to make yourself noticed actively.",
       },
       {
         "idiom": "Den Faden verlieren",
         "literal": "Mất sợi chỉ",
         "meaning": "Quên mất mình đang nói gì, mất mạch suy nghĩ. Phổ biến khi căng thẳng phỏng vấn. Có thể admit lịch sự: 'Entschuldigung, ich habe den Faden verloren'.",
-        "example": "Vor Aufregung habe ich kurz den Faden verloren."
+        "meaning_en": "To lose the thread — to forget what you were saying mid-sentence. Common under interview pressure. You can admit it politely: 'Entschuldigung, ich habe den Faden verloren'.",
+        "example": "Vor Aufregung habe ich kurz den Faden verloren.",
+        "example_en": "Out of nerves I lost the thread for a second.",
       },
       {
         "idiom": "Etwas auf den Punkt bringen",
         "literal": "Đưa cái gì đến điểm",
         "meaning": "Nói thẳng vào trọng tâm, không vòng vo. Báo hiệu bạn sắp tóm tắt. Rất hữu ích khi cuộc gọi kéo dài và bạn cần kết.",
-        "example": "Lassen Sie mich das auf den Punkt bringen: ich bin sehr interessiert."
+        "meaning_en": "To bring something to the point — to cut to the chase. Useful to signal that you are about to summarise. Helpful when a call has run long and you need to close strongly.",
+        "example": "Lassen Sie mich das auf den Punkt bringen: ich bin sehr interessiert.",
+        "example_en": "Let me cut to the chase: I am very interested.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp cho phỏng vấn điện thoại:",
+        "instruction_en": "Fill in the appropriate phrase for a phone interview:",
         "pronunciation_focus": [
           "phone register"
         ],
@@ -3476,6 +3572,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp điện thoại:",
+        "instruction_en": "Match each German sentence to its function on the phone:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3499,6 +3596,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở qua điện thoại:",
+        "instruction_en": "Translate into formal German for a phone call:",
         "pronunciation_focus": [
           "phone formal"
         ],
@@ -3537,7 +3635,12 @@ export const lessons: GermanLesson[] = [
           "Darf → ĐAF",
           "vorstellen → FOA-shtê-lần",
           "Electronics → ê-lệc-TRÔ-nícs"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Darf → DAHRF",
+          "vorstellen → FOR-shtel-en — separable verb",
+          "Electronics → ay-lek-TROH-niks (English loan, German stress)"
+        ],
       },
       {
         "en": "Ich bin auf der Suche nach Kooperationspartnern im Bereich Sensorik.",
@@ -3546,7 +3649,12 @@ export const lessons: GermanLesson[] = [
           "Suche → ZÚ-khê",
           "Kooperationspartner → kô-ô-pê-ra-tsi-ônss-pat-nờ",
           "Sensorik → zen-ZÔ-ric"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Suche → ZOO-khuh — 'ch' after 'u' = guttural (Scottish 'loch')",
+          "Kooperationspartner → koh-oh-puh-rah-tsee-ohns-PART-ner",
+          "Sensorik → zen-ZOH-rik"
+        ],
       },
       {
         "en": "Ihr Stand auf der Hannover Messe ist beeindruckend — könnten Sie mir kurz zeigen, was es Neues gibt?",
@@ -3555,7 +3663,12 @@ export const lessons: GermanLesson[] = [
           "Hannover Messe → ha-NÔ-vờ MESS-ê",
           "beeindruckend → bê-AIN-đruc-ent",
           "Neues → NOI-ès"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Hannover Messe → hah-NOH-fer MESS-uh",
+          "beeindruckend → buh-EYN-droo-kent",
+          "Neues → NOY-es — 'eu' = 'oy'"
+        ],
       },
       {
         "en": "Hätten Sie Interesse an einem ausführlicheren Gespräch — vielleicht bei einem Kaffee?",
@@ -3564,7 +3677,12 @@ export const lessons: GermanLesson[] = [
           "Hätten → HÉ-tần — Konjunktiv II",
           "ausführlicheren → AOS-fuy-lích-ê-rần",
           "Kaffee → KA-phê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Hätten → HET-ten — Konjunktiv II",
+          "ausführlicheren → OWS-fuer-likh-er-en — 'ü' = pursed lips 'oo' + tongue 'ee'",
+          "Kaffee → KAH-fay — stress on first syllable in German"
+        ],
       },
       {
         "en": "Hier ist meine Visitenkarte — ich melde mich nächste Woche per E-Mail.",
@@ -3573,81 +3691,98 @@ export const lessons: GermanLesson[] = [
           "Visitenkarte → vi-zi-TÊN-kat-tê",
           "melde → MEN-đê",
           "E-Mail → Ê-MEN"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Visitenkarte → vee-zee-TEN-kar-tuh — 'V' = 'v' (loanword exception)",
+          "melde → MEL-duh",
+          "E-Mail → ay-MAYL"
+        ],
       }
     ],
     "cultural_notes_vi": "Hội chợ thương mại Đức (Hannover Messe, CeBIT, drupa, IFA Berlin) là 'mecca' của doanh nghiệp Đức — không chỉ là sự kiện sales mà là HỆ SINH THÁI nơi quyết định lớn được đưa ra. Sáu điểm khác Việt Nam. (1) QUY MÔ: Hannover Messe có 6.000+ exhibitors, 200.000+ visitors, kéo dài 5 ngày. Bạn KHÔNG thể đi hết — phải lập kế hoạch trước. (2) ĐĂNG KÝ TRƯỚC: hầu hết cuộc gặp quan trọng được book trước qua hệ thống của Messe. Đến không hẹn = chỉ được tiếp 5-10 phút; có hẹn = 30-60 phút. (3) GIAN HÀNG = TỔ CHỨC: mỗi gian hàng có nhân viên cho mỗi cấp (sales rep, technical, manager). Bạn nên xác định gặp ai trước. (4) DRESS CODE FORMAL: business attire (suit cho nam, blazer cho nữ). Casual = signal bạn không nghiêm túc. Giày thoải mái — bạn sẽ đi 8-10km/ngày. (5) NHỊP ĐỘ NHANH: cuộc gặp 15-20 phút là chuẩn cho first contact. Vào thẳng vấn đề. Brochures phải có sẵn (in cả Đức + Anh). (6) AFTER-WORK NETWORKING: After-Party tối là 'second meeting'. Nhiều deal lớn được khởi xướng ở quầy bar, không phải gian hàng.\n\nKhác Việt Nam: ở VN, hội chợ thường có không khí 'gặp gỡ vui vẻ', nhiều hoạt động giao lưu giải trí; ở Đức, hội chợ là CÔNG VIỆC.\n\nVisa context: nếu bạn là doanh nghiệp VN sang Đức tham dự Messe, dùng visa Schengen với invitation từ Messe organizer hoặc từ đối tác Đức.\n\nFollow-up sau Messe: 7-10 ngày sau là thời điểm vàng. Email follow-up phải tham chiếu cuộc nói chuyện cụ thể ('Bezugnehmend auf unser Gespräch am Stand 14.B.42 am Donnerstag').",
+    "cultural_notes_en": "German trade fairs (Hannover Messe, CeBIT, drupa, IFA Berlin) are the 'Mecca' of German industry — not just sales events but ecosystems where big decisions get made. Six points that diverge from US/UK trade-show culture. (1) SCALE. Hannover Messe has 6,000+ exhibitors and 200,000+ visitors over five days. You CAN'T walk it all — plan ahead. (2) PRE-BOOKED MEETINGS. Most serious meetings are booked in advance through the fair's matchmaking system. Walk-ins get 5–10 minutes; appointments get 30–60. (3) STAND = ORGANISATION. Each stand has staff at every layer (sales rep, technical, manager). Decide whom you need to speak to BEFORE you walk over. (4) FORMAL DRESS CODE. Business attire (suit for men, blazer for women). Casual reads as 'not serious'. Wear comfortable shoes — you will cover 8–10 km a day. (5) FAST PACE. A 15–20-minute first-contact slot is the norm. Get to the point. Brochures must be on hand (in German AND English). (6) AFTER-WORK NETWORKING. The evening After-Party functions as a 'second meeting'. Many big deals start at the bar, not the booth.\n\nWhere this differs from US trade-show culture: US shows often have a casual 'come back tomorrow' rhythm and giveaways/swag carry weight; in Germany substance, data, and a tight pitch carry weight. Brand giveaways are nice but unmemorable; a precise 30-second pitch is what gets you a follow-up.\n\nVisa note: a Vietnamese company travelling to a German Messe usually enters on a Schengen visa with an invitation from either the Messe organiser or a German partner.\n\nFollow-up after the fair: 7–10 days afterwards is the golden window. The follow-up email must reference a specific exchange — 'Bezugnehmend auf unser Gespräch am Stand 14.B.42 am Donnerstag'.",
     "tip_advice_vi": "Trước Messe (4 tuần): (1) Đăng ký Match-Making system của Messe nếu có. (2) Liệt kê 20-30 booths target dựa trên catalog online. (3) Gửi email trước cho 5-10 ưu tiên cao xin lịch hẹn. (4) In 200+ Visitenkarten chất lượng tốt (cả Đức + Anh). (5) Chuẩn bị 1-page brochure + USB drive với company profile. (6) Lập 30-second elevator pitch luyện thuộc.\n\nTại Messe (mỗi ngày): (1) Đến SỚM (8h, trước khi đông). (2) Mặc business formal + giày thoải mái. (3) Mang theo: Visitenkarten, brochures, notebook + bút, chai nước. (4) Note ngắn sau MỖI cuộc gặp: tên + công ty + chủ đề + next step. (5) Đừng cố đi hết — chất lượng > số lượng. (6) Tham dự After-Party.\n\nVăn hoá Visitenkarte: nhận bằng hai tay, đọc rồi mới cất. Khi cho ai danh thiếp, đưa mặt chữ hướng về họ. KHÔNG ghi chú lên danh thiếp người khác trước mặt họ. Sau Messe, cất riêng các danh thiếp gọi sẽ follow-up trong tuần.\n\nFollow-up sau Messe (7-10 ngày): (1) Email cá nhân hoá — tham chiếu cuộc nói chuyện cụ thể. (2) Đính kèm tài liệu liên quan. (3) Đề xuất next step cụ thể. (4) Subject line rõ. (5) Nếu không phản hồi sau 10 ngày, follow-up MỘT LẦN nữa.",
+    "tip_advice_en": "Four weeks before: (1) Register in the fair's matchmaking system if there is one. (2) List 20–30 target booths from the online catalogue. (3) Email the top 5–10 to book meeting slots in advance. (4) Print 200+ high-quality Visitenkarten (German + English). (5) Prepare a one-page brochure plus a USB with the company profile. (6) Drill a 30-second elevator pitch until it's reflex.\n\nDuring the fair: (1) Arrive EARLY (8:00, before the crowd). (2) Business formal + comfortable shoes. (3) Bring: cards, brochures, a notebook + pen, a water bottle. (4) Short note after EACH conversation: name + company + topic + next step. (5) Don't try to cover everything — quality beats volume. (6) Attend the After-Party.\n\nCard etiquette (Visitenkarten): receive with both hands, read it BEFORE pocketing. When you hand one over, present it with the text facing the recipient. NEVER write notes on someone's card in front of them. After the fair, separate cards into 'follow up this week' and 'archive'.\n\nFollow-up (day 7–10): (1) Personalised email — reference a specific moment. (2) Attach a relevant document. (3) Propose a concrete next step. (4) Clear subject line. (5) If silence after 10 days, ONE more follow-up — that's it.",
     "vocabulary": [
       {
         "word": "die Messe",
         "en": "trade fair",
         "vi": "hội chợ thương mại",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi MESS-ê"
+        "pronunciation_vi": "đi MESS-ê",
+        "pronunciation_en": "dee MESS-uh — trade fair; short 'e'",
       },
       {
         "word": "der Stand",
         "en": "exhibition booth",
         "vi": "gian hàng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe SHTÁNT"
+        "pronunciation_vi": "đe SHTÁNT",
+        "pronunciation_en": "dair SHTAHNT — exhibition booth; 'st' at start = 'sht'",
       },
       {
         "word": "die Visitenkarte",
         "en": "business card",
         "vi": "danh thiếp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi vi-zi-TÊN-kat-tê"
+        "pronunciation_vi": "đi vi-zi-TÊN-kat-tê",
+        "pronunciation_en": "dee vee-zee-TEN-kar-tuh — business card",
       },
       {
         "word": "der/die Kooperationspartner:in",
         "en": "cooperation partner",
         "vi": "đối tác hợp tác",
         "pos": "noun",
-        "pronunciation_vi": "đe kô-ô-pê-ra-tsi-ônss-pat-nờ"
+        "pronunciation_vi": "đe kô-ô-pê-ra-tsi-ônss-pat-nờ",
+        "pronunciation_en": "dair koh-oh-puh-rah-tsee-ohns-PART-ner — cooperation partner; six-syllable compound",
       },
       {
         "word": "der/die Aussteller:in",
         "en": "exhibitor",
         "vi": "đơn vị triển lãm",
         "pos": "noun",
-        "pronunciation_vi": "đe AOS-shtê-lờ"
+        "pronunciation_vi": "đe AOS-shtê-lờ",
+        "pronunciation_en": "dair OWS-shtel-er — exhibitor; 'au' = 'ow'",
       },
       {
         "word": "der/die Besucher:in",
         "en": "visitor",
         "vi": "khách thăm",
         "pos": "noun",
-        "pronunciation_vi": "đe bê-ZÚ-khờ"
+        "pronunciation_vi": "đe bê-ZÚ-khờ",
+        "pronunciation_en": "dair buh-ZOO-kher — visitor",
       },
       {
         "word": "den ersten Eindruck machen",
         "en": "to make the first impression",
         "vi": "tạo ấn tượng đầu tiên",
         "pos": "verb phrase",
-        "pronunciation_vi": "AIN-đruc MA-khần"
+        "pronunciation_vi": "AIN-đruc MA-khần",
+        "pronunciation_en": "den AIR-sten EYN-drook MAH-khen — to make the first impression",
       },
       {
         "word": "Kontakte knüpfen",
         "en": "to make contacts",
         "vi": "thiết lập liên hệ",
         "pos": "verb phrase",
-        "pronunciation_vi": "KÔN-tac-tê KNUY-pfần"
+        "pronunciation_vi": "KÔN-tac-tê KNUY-pfần",
+        "pronunciation_en": "KON-tahk-tuh KNUEP-fen — to make contacts; note initial 'kn' is pronounced (kuh-NUEP)",
       },
       {
         "word": "die Nachfassmail",
         "en": "follow-up email",
         "vi": "email tiếp nối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi NÁCH-fass-mail"
+        "pronunciation_vi": "đi NÁCH-fass-mail",
+        "pronunciation_en": "dee NAHKH-fahs-mayl — follow-up email; 'fass' = grab/follow",
       },
       {
         "word": "der Smalltalk",
         "en": "small talk",
         "vi": "trò chuyện xã giao",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe SMOL-tok"
+        "pronunciation_vi": "đe SMOL-tok",
+        "pronunciation_en": "dair SMAWL-tawk — small talk (English loan)",
       }
     ],
     "dialogue": [
@@ -3770,36 +3905,46 @@ export const lessons: GermanLesson[] = [
       "Sau Messe 1 tuần, bạn gửi follow-up email cho Herr Bauer nhưng không nhận được phản hồi sau 10 ngày. Hãy viết email follow-up lần 2 — lịch sự, không trách móc, đính kèm thêm tài liệu (case study) làm 'reason to reply'. CC trợ lý của Bauer nếu biết."
     ],
     "register_notes": "Tại Messe (hội chợ thương mại như Hannover Messe, CeBIT, drupa), văn hoá giao tiếp khác phỏng vấn formal. (1) MỞ ĐẦU NHANH: 'Darf ich Sie kurz ansprechen?' — câu mở chuẩn. Sau đó tự giới thiệu trong < 30 giây: tên + công ty + ngành + mục đích. Lan man = mất khách. (2) 'SIE' VẪN LÀ CHUẨN: tại Messe vẫn 'Sie' từ đầu, kể cả không khí năng động. Chuyển 'du' chỉ khi đối tác chủ động đề nghị HOẶC tại After-Party. (3) NGÔN NGỮ HỖN HỢP: Anh + Đức là chuẩn. Nếu đối tác bắt đầu Đức → tiếp Đức; bắt đầu Anh → tiếp Anh. (4) DANH THIẾP (VISITENKARTE) là NGHI LỄ: nhận bằng hai tay, đọc trước khi cất. KHÔNG bỏ vào túi quần (thiếu tôn trọng); cất vào ví danh thiếp riêng. (5) AFTER-PARTY là EXTENSION: networking thật sự xảy ra ở After-Party tối hôm đó. Đây là nơi 'das Eis brechen' (phá băng), chuyển từ formal sang relationship.\n\nKhác Việt Nam: ở VN Vietfair/VIMEXPO, có thể chào hỏi rất xã giao; ở Đức Messe, time = money — vào thẳng vấn đề trong 30 giây. Nhưng đồng thời, không quá pushy.\n\nVăn hoá Smalltalk Đức ở Messe: an toàn = thời tiết, chuyến bay/đi lại, gian hàng. KHÔNG nói chính trị, gia đình, lương. Câu mở chuẩn: 'Wie war Ihre Anreise?', 'Sind Sie zum ersten Mal auf der Hannover Messe?'.",
+    "register_notes_en": "Trade-fair register is not the same as formal-interview register. (1) FAST OPENERS: 'Darf ich Sie kurz ansprechen?' is the canonical opener. Self-introduce in under 30 seconds: name + company + sector + reason for approaching. Long-winded = lost prospect. (2) 'SIE' IS STILL DEFAULT: even with the more dynamic vibe of a trade fair, 'Sie' from the start. Switch to 'du' only if your counterpart offers it OR at the After-Party. (3) MIXED-LANGUAGE NORM: English/German blend is standard. If they open in German, stay in German; if they open in English, stay in English. (4) CARDS ARE RITUAL: take with both hands, read before stowing. NEVER stuff into a back pocket (read as disrespect); use a dedicated card case. (5) THE AFTER-PARTY EXTENDS THE DAY: the real networking shifts to the After-Party. That's where 'das Eis brechen' (breaking the ice) happens and tones move from formal to relational.\n\nHow this differs from US/UK fairs: at a US convention you can chat openly across roles and personal topics; at a German Messe time IS money — get to the point in 30 seconds. That said, do not be pushy.\n\nSafe German small-talk topics at a Messe: weather, flight/travel, the stand itself. AVOID politics, family, salary. Standard openers: 'Wie war Ihre Anreise?', 'Sind Sie zum ersten Mal auf der Hannover Messe?'.",
     "idiom_glosses": [
       {
         "idiom": "Die Werbetrommel rühren",
         "literal": "Đánh trống quảng cáo",
         "meaning": "Quảng bá mạnh, marketing tích cực. Phù hợp khi nói về hoạt động marketing của công ty: 'Wir rühren die Werbetrommel für unser neues Produkt'.",
-        "example": "Auf der Messe muss man kräftig die Werbetrommel rühren."
+        "meaning_en": "To beat the advertising drum — to market aggressively, push promotion. Fits when describing strong marketing campaigns: 'Wir rühren die Werbetrommel für unser neues Produkt'.",
+        "example": "Auf der Messe muss man kräftig die Werbetrommel rühren.",
+        "example_en": "At a trade fair you have to beat the drum hard.",
       },
       {
         "idiom": "Das Eis brechen",
         "literal": "Phá băng",
         "meaning": "Khởi đầu cuộc trò chuyện, vượt qua ngại ngùng ban đầu. Tại Messe và networking, đây là kỹ năng then chốt — câu chuyện vui, câu hỏi nhẹ về thời tiết hay chuyến đi.",
-        "example": "Eine gute Frage zu seinem Stand bricht das Eis sofort."
+        "meaning_en": "To break the ice — start a conversation, get past the initial awkwardness. At a Messe and at networking events this is the foundational skill — a light joke or a question about the booth.",
+        "example": "Eine gute Frage zu seinem Stand bricht das Eis sofort.",
+        "example_en": "A good question about their booth breaks the ice instantly.",
       },
       {
         "idiom": "Schmieden, solange das Eisen heiß ist",
         "literal": "Rèn khi sắt còn nóng",
         "meaning": "Hành động ngay khi cơ hội còn — đừng đợi. Phù hợp khi nói về việc gặp khách hàng tại Messe phải follow-up nhanh sau đó.",
-        "example": "Nach dem Messekontakt schmiede ich das Eisen, solange es heiß ist."
+        "meaning_en": "To strike while the iron is hot — act while the chance is still there. Fits the post-Messe situation: contacts made on the floor must be followed up fast, before they cool off.",
+        "example": "Nach dem Messekontakt schmiede ich das Eisen, solange es heiß ist.",
+        "example_en": "After meeting the contact at the fair, I strike while the iron is hot.",
       },
       {
         "idiom": "Eine Hand wäscht die andere",
         "literal": "Một tay rửa cho tay kia",
         "meaning": "Có đi có lại — nguyên tắc tương trợ trong kinh doanh. Đức không có ý xấu (như VN có thể có ý 'lobby'); chỉ là biểu hiện của reciprocity bình thường.",
-        "example": "Im Geschäftsleben gilt: eine Hand wäscht die andere."
+        "meaning_en": "One hand washes the other — the German equivalent of 'you scratch my back, I'll scratch yours'. No negative implication in German (unlike a possible 'corruption' read in some other cultures); just ordinary business reciprocity.",
+        "example": "Im Geschäftsleben gilt: eine Hand wäscht die andere.",
+        "example_en": "In business, one hand washes the other.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi networking tại Messe:",
+        "instruction_en": "Fill in the appropriate phrase for networking at a Messe:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "messe register"
@@ -3826,6 +3971,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp tại Messe:",
+        "instruction_en": "Match each German sentence to its function at a trade fair:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3849,6 +3995,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở Messe:",
+        "instruction_en": "Translate into business German for a Messe:",
         "pronunciation_focus": [
           "Sie + Konjunktiv II"
         ],
@@ -3887,7 +4034,12 @@ export const lessons: GermanLesson[] = [
           "Absage → ÁP-za-gờ",
           "Rückmeldung → RÚCK-men-dung",
           "offene → ÔF-ê-nê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Absage → AHP-zah-guh — 'b' at end of syllable devoices to 'p'",
+          "Rückmeldung → RUEK-mel-doong — 'ü' = pursed 'oo' + tongue 'ee'",
+          "offene → OF-en-uh"
+        ],
       },
       {
         "en": "Auch wenn ich enttäuscht bin, möchte ich Ihre Entscheidung respektieren.",
@@ -3896,7 +4048,12 @@ export const lessons: GermanLesson[] = [
           "enttäuscht → ent-TOI-sht",
           "respektieren → res-pếch-TÍA-ần",
           "Entscheidung → ent-SHAI-đung"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "enttäuscht → ent-TOYSHT — 'eu/äu' both = 'oy'",
+          "respektieren → res-pek-TEE-ren",
+          "Entscheidung → ent-SHY-doong — 'ei' = 'eye'"
+        ],
       },
       {
         "en": "Würden Sie mir bitte konkretes Feedback geben, woran ich noch arbeiten kann?",
@@ -3905,7 +4062,12 @@ export const lessons: GermanLesson[] = [
           "Würden → VUY-đần — Konjunktiv II",
           "konkretes → kôn-KRÊ-tès",
           "arbeiten → AR-bai-tần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Würden → VUER-den — Konjunktiv II of 'werden'; 'ü' = pursed lips",
+          "konkretes → kon-KRAY-tes",
+          "arbeiten → AR-by-ten — 'ei' = 'eye'"
+        ],
       },
       {
         "en": "Sollte sich künftig eine passende Stelle ergeben, würde ich mich erneut bewerben.",
@@ -3914,7 +4076,12 @@ export const lessons: GermanLesson[] = [
           "künftig → KUYN-ftích",
           "ergeben → e-GÊ-bần",
           "erneut → e-NOI-t"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "künftig → KUENF-tikh — 'ü' = pursed lips, '-ig' = soft 'ikh'",
+          "ergeben → air-GAY-ben",
+          "erneut → air-NOYT — 'eu' = 'oy'"
+        ],
       },
       {
         "en": "Aus Schaden wird man klug — ich nehme die Erfahrung als Lernchance mit.",
@@ -3923,81 +4090,98 @@ export const lessons: GermanLesson[] = [
           "Schaden → SHA-đần",
           "klug → KLÚK",
           "Erfahrung → e-FA-rung"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Schaden → SHAH-den",
+          "klug → KLOOK — final 'g' devoices to 'k'",
+          "Erfahrung → air-FAH-roong"
+        ],
       }
     ],
     "cultural_notes_vi": "Văn hoá thư từ chối ở Đức khác Việt Nam ở năm điểm. (1) ABSAGE LÀ CHUẨN: công ty Đức gửi thư từ chối CHÍNH THỨC cho hầu hết ứng viên (kể cả vòng 1) — không 'silent rejection' như nhiều công ty Mỹ. Đây là dấu hiệu chuyên nghiệp; bạn nên cảm ơn vì điều này. (2) FEEDBACK CÓ THỂ XIN: ngược với Mỹ (sợ kiện) hoặc Anh (formal phong cách), recruiter Đức THƯỜNG cho feedback nếu được hỏi lịch sự. Đây là cơ hội học hỏi quý giá — đừng bỏ qua. (3) TALENT-POOL THỰC: nhiều công ty Đức (đặc biệt Bosch, Siemens, BMW) có Talent-Pool thực sự — họ liên hệ lại candidate cũ khi vị trí mới mở. (4) ÁCQUYỀN VỚI BƯỚC TRƯỚC: Đức coi cuộc tuyển dụng là CHUỖI dài. Bị từ chối không phải kết thúc; có thể là vòng đầu của mối quan hệ 5-10 năm với công ty. (5) KHÔNG QUÁ NHIỀU FOLLOW-UP: 1-2 emails sau rejection là OK; 5+ = quấy rối.\n\nKhác Việt Nam: ở VN, từ chối thường im lặng hoặc verbal qua điện thoại; ở Đức, formal qua email. Bạn có 'paper trail' để follow-up — tận dụng nó.\n\nỞ công ty Đức tại VN (Bosch HCMC, Siemens Hanoi), văn hoá Đức được áp dụng — họ gửi Absage email và sẵn sàng feedback. Nếu bạn bị từ chối ở Bosch HCMC, follow-up chuyên nghiệp có thể dẫn đến Bosch Munich hoặc Bosch Stuttgart sau này — họ cùng hệ thống Talent-Pool.\n\nMẹo cuối: trong email follow-up, KHÔNG nói chuyện cá nhân ('Tôi đang khó khăn tài chính', 'Gia đình đặt nhiều kỳ vọng') — recruiter không quan tâm và bị coi là không chuyên nghiệp.",
+    "cultural_notes_en": "German rejection-letter culture differs from US/UK norms on five fronts. (1) ABSAGE IS STANDARD. German companies send a FORMAL rejection letter to most applicants (often even those rejected in round 1) — no 'silent rejection' as is common in the US tech sector. Treat the rejection as a sign of professionalism and thank them for it. (2) FEEDBACK CAN BE REQUESTED. Unlike the US (where companies fear lawsuits) or stiffly formal UK practice, German recruiters will OFTEN give specific feedback if asked politely. It is a rare and valuable learning opportunity — take it. (3) TALENT POOLS ARE REAL. Many German firms (Bosch, Siemens, BMW especially) maintain genuine Talent-Pools and DO reach back out to former candidates when a new role opens. (4) HIRING IS A LONG CHAIN. Germans treat a recruitment process as a multi-year relationship. Rejection now is not the end; it can be round one of a five- to ten-year arc with the company. (5) DON'T OVER-FOLLOW-UP. One or two emails after a rejection are fine; five or more is harassment.\n\nWhere this differs from US/UK norms: in the US a rejection email is often a closed door; in Germany the same letter is the start of a 'Talent-Pool' relationship if you behave well now.\n\nAt German subsidiaries in Vietnam (Bosch HCMC, Siemens Hanoi), the same culture applies — they send Absage emails and are open to giving feedback. A clean follow-up after rejection at Bosch HCMC can quite literally land you a callback from Bosch Munich or Bosch Stuttgart later — they share the same Talent-Pool system.\n\nOne crucial detail: in the follow-up email, do NOT bring up personal matters ('I'm in financial trouble', 'My family had high expectations'). The recruiter does not care and you will read as unprofessional.",
     "tip_advice_vi": "Cấu trúc email follow-up sau rejection (5-7 dòng tổng): (1) Subject: 'Ihre Absage vom [ngày] — Bewerbung [Tên vị trí]'. (2) Mở: 'Sehr geehrte Frau X'. (3) Đoạn 1 (1 câu): cảm ơn về thư từ chối + phản hồi cởi mở. (4) Đoạn 2 (1 câu): tôn trọng quyết định, không tranh luận. (5) Đoạn 3 (2 câu): xin feedback cụ thể về điểm cần cải thiện. (6) Đoạn 4 (1 câu): mở cửa cho tương lai. (7) Kết: 'Mit freundlichen Grüßen, [Tên]'.\n\nNội dung email cần TRÁNH: (1) Xin lỗi vì đã làm phiền. (2) Tranh luận về quyết định. (3) Yêu cầu cuộc gặp explain. (4) Câu chuyện cá nhân/cảm xúc. (5) Multiple emails dồn dập.\n\nThời điểm: gửi 24-48h sau khi nhận Absage. Nếu không có phản hồi sau 7-10 ngày, KHÔNG follow-up tiếp; recruiter có thể đang bận hoặc không có policy cho feedback.\n\nNếu có phản hồi feedback: (1) Cảm ơn ngắn (3 dòng). (2) Hỏi 1 câu chiến lược: có Talent-Pool không, có vị trí khác phù hợp hơn không, khi nào có thể ứng tuyển lại. (3) Đề xuất kết nối LinkedIn.\n\n6 tháng sau: nếu thấy công ty mở vị trí mới phù hợp, viết email TÁI KÊT NỐI — tham chiếu cuộc trao đổi cũ, update progress, xin ứng tuyển.",
+    "tip_advice_en": "Structure of the follow-up email (5–7 lines total): (1) Subject: 'Ihre Absage vom [date] — Bewerbung [position title]'. (2) Open: 'Sehr geehrte Frau X'. (3) Para 1 (one sentence): thank them for the rejection and the openness of their feedback. (4) Para 2 (one sentence): respect the decision, no arguing. (5) Para 3 (two sentences): ask for specific feedback on what to work on. (6) Para 4 (one sentence): open the door to the future. (7) Close: 'Mit freundlichen Grüßen, [Name]'.\n\nThings to AVOID in the email: (1) Apologising for taking up their time. (2) Arguing with the decision. (3) Asking for a meeting to 'explain yourself'. (4) Personal/emotional content. (5) A rapid-fire string of follow-ups.\n\nTiming: send 24–48 hours after you receive the Absage. If there is no answer after 7–10 days, do NOT keep following up; the recruiter may simply not have a feedback policy.\n\nIf they DO respond with feedback: (1) Short thank-you (three lines). (2) Ask one strategic question: do they have a Talent-Pool, is there a more fitting role open, when could you reapply. (3) Offer to connect on LinkedIn.\n\nSix months later: if you see a new role at that company that suits you, write a RE-CONNECTION email — reference the earlier exchange, update them on what you have improved, and ask to apply.",
     "vocabulary": [
       {
         "word": "die Absage",
         "en": "rejection (letter/decision)",
         "vi": "thư từ chối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ÁP-za-gờ"
+        "pronunciation_vi": "đi ÁP-za-gờ",
+        "pronunciation_en": "dee AHP-zah-guh — rejection (letter or decision)",
       },
       {
         "word": "die Rückmeldung",
         "en": "feedback, response",
         "vi": "phản hồi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi RÚCK-men-dung"
+        "pronunciation_vi": "đi RÚCK-men-dung",
+        "pronunciation_en": "dee RUEK-mel-doong — feedback, response",
       },
       {
         "word": "enttäuscht sein",
         "en": "to be disappointed",
         "vi": "thất vọng",
         "pos": "verb phrase",
-        "pronunciation_vi": "ent-TOI-sht zain"
+        "pronunciation_vi": "ent-TOI-sht zain",
+        "pronunciation_en": "ent-TOYSHT zyne — to be disappointed; final '-t' clipped",
       },
       {
         "word": "respektieren",
         "en": "to respect",
         "vi": "tôn trọng",
         "pos": "verb",
-        "pronunciation_vi": "res-pếch-TÍA-ần"
+        "pronunciation_vi": "res-pếch-TÍA-ần",
+        "pronunciation_en": "res-pek-TEE-ren — to respect",
       },
       {
         "word": "konkretes Feedback",
         "en": "concrete feedback",
         "vi": "phản hồi cụ thể",
         "pos": "noun phrase",
-        "pronunciation_vi": "kôn-KRÊ-tès FÍT-bếc"
+        "pronunciation_vi": "kôn-KRÊ-tès FÍT-bếc",
+        "pronunciation_en": "kon-KRAY-tes FEED-bek — concrete feedback ('Feedback' is an English loan, German pronunciation)",
       },
       {
         "word": "an etwas arbeiten",
         "en": "to work on something",
         "vi": "cải thiện điều gì",
         "pos": "verb phrase",
-        "pronunciation_vi": "AR-bai-tần"
+        "pronunciation_vi": "AR-bai-tần",
+        "pronunciation_en": "AR-by-ten — to work on; with 'an + dative' = work on something",
       },
       {
         "word": "sich erneut bewerben",
         "en": "to apply again",
         "vi": "ứng tuyển lại",
         "pos": "verb (refl)",
-        "pronunciation_vi": "zịch e-NOI-t bê-VEA-bần"
+        "pronunciation_vi": "zịch e-NOI-t bê-VEA-bần",
+        "pronunciation_en": "zikh air-NOYT buh-VAIR-ben — to apply again (reflexive)",
       },
       {
         "word": "die Lernchance",
         "en": "learning opportunity",
         "vi": "cơ hội học hỏi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi LE-shăn-sê"
+        "pronunciation_vi": "đi LE-shăn-sê",
+        "pronunciation_en": "dee LAIRN-shahn-suh — learning opportunity",
       },
       {
         "word": "der Eindruck nachhaltig sein",
         "en": "to leave a lasting impression",
         "vi": "tạo ấn tượng bền lâu",
         "pos": "verb phrase",
-        "pronunciation_vi": "AIN-đruc NÁCH-hal-tích"
+        "pronunciation_vi": "AIN-đruc NÁCH-hal-tích",
+        "pronunciation_en": "dair EYN-drook NAHKH-hahl-tikh zyne — to leave a lasting impression",
       },
       {
         "word": "den Kopf hängen lassen",
         "en": "to lose heart, hang one's head",
         "vi": "nản chí (idiom)",
         "pos": "verb phrase",
-        "pronunciation_vi": "đần KÔP HENG-ần LA-sần"
+        "pronunciation_vi": "đần KÔP HENG-ần LA-sần",
+        "pronunciation_en": "den KOPF HENG-en LAH-sen — idiom: to hang one's head, to lose heart",
       }
     ],
     "dialogue": [
@@ -4120,36 +4304,46 @@ export const lessons: GermanLesson[] = [
       "6 tháng sau bị từ chối, bạn thấy công ty đó mở vị trí mới phù hợp hơn. Hãy viết email tới recruiter cũ — tham chiếu cuộc trao đổi trước, cập nhật những gì bạn đã cải thiện trong 6 tháng, và xin ứng tuyển lại. Tone: quan hệ đã có, không phải cold outreach."
     ],
     "register_notes": "Email follow-up sau rejection có quy tắc tế nhị riêng — sai tone = không bao giờ được call back. (1) FORMAL TUYỆT ĐỐI: 'Sehr geehrte Frau Bauer' luôn, kể cả khi đã có cuộc nói chuyện thân thiện trong phỏng vấn. Sau rejection, formality LẠI tăng — không phải giảm. (2) KHÔNG XIN LỖI VÌ HỎI: 'Es tut mir leid, dass ich Sie störe' bị coi là yếu thế. Tone đúng: câu hỏi thẳng thắn, lịch sự, không van xin. (3) KHÔNG TRÁCH MÓC: 'Ich verstehe nicht, warum...' bị coi là attack. Thay bằng 'Würden Sie mir konkretes Feedback geben?'. (4) KONJUNKTIV II 100%: 'Würden Sie...?', 'Sollte sich ergeben...', 'Es wäre mir wichtig...'. (5) KẾT BẰNG MỞ CỬA: 'Ich würde mich freuen, in Zukunft erneut von Ihnen zu hören' — báo hiệu bạn xem rejection này là tạm thời.\n\nKhác Việt Nam: ở VN, sau khi bị từ chối, ít người follow-up; ở Đức, follow-up CHUYÊN NGHIỆP là expected — recruiter Đức sẽ note ai làm điều này và prioritize cho lần sau.\n\nNgười Việt thường mắc lỗi: (1) SILENT — không phản hồi gì sau rejection; (2) email quá dài — recruiter chỉ skim; (3) yêu cầu 'cuộc gặp giải thích' — recruiter không có thời gian.",
+    "register_notes_en": "Post-rejection follow-up has its own delicate rules — get the tone wrong and you never get called back. (1) FORMALITY GOES UP, NOT DOWN: 'Sehr geehrte Frau Bauer' always, even if the interview was friendly. After the rejection, formality TIGHTENS, not loosens. (2) DO NOT APOLOGISE FOR ASKING: 'Es tut mir leid, dass ich Sie störe' reads as weakness. The right tone is direct, polite, no begging. (3) DO NOT ATTACK: 'Ich verstehe nicht, warum…' reads as confrontation. Use 'Würden Sie mir konkretes Feedback geben?' instead. (4) KONJUNKTIV II THROUGHOUT: 'Würden Sie…?', 'Sollte sich ergeben…', 'Es wäre mir wichtig…'. (5) CLOSE BY OPENING A DOOR: 'Ich würde mich freuen, in Zukunft erneut von Ihnen zu hören' — signals that you treat this rejection as temporary.\n\nHow this differs from US/UK practice: in the US many candidates simply ghost a rejection; in Germany a professional follow-up is EXPECTED, and recruiters note who does it well and prioritise them next time.\n\nFrequent learner mistakes: (1) Going silent and missing the relationship opportunity; (2) Writing essays — recruiters skim, keep it tight; (3) Requesting an 'explanatory meeting' — they don't have the time.",
     "idiom_glosses": [
       {
         "idiom": "Aus Schaden wird man klug",
         "literal": "Từ tổn thất ta trở nên khôn",
         "meaning": "Trong cái rủi có cái khôn — học từ thất bại. Câu thành ngữ phổ biến để biểu hiện thái độ tích cực sau rejection.",
-        "example": "Aus Schaden wird man klug — ich nehme diese Absage als Lernchance."
+        "meaning_en": "Out of damage one becomes wise — the German cousin of 'every cloud has a silver lining' or 'learn from your mistakes'. Standard line for expressing a constructive attitude after a rejection.",
+        "example": "Aus Schaden wird man klug — ich nehme diese Absage als Lernchance.",
+        "example_en": "Out of every setback one learns something — I take this rejection as a learning opportunity.",
       },
       {
         "idiom": "Den Kopf hängen lassen",
         "literal": "Để đầu rủ xuống",
         "meaning": "Nản chí, mất tinh thần. Phù hợp cho recruiter để khích lệ. Bạn KHÔNG nên dùng câu này về bản thân — bị coi là yếu thế.",
-        "example": "Lassen Sie nicht den Kopf hängen — bei Ihrem Profil kommt die nächste Chance schnell."
+        "meaning_en": "To let one's head hang — to lose heart. A line a recruiter may use to encourage you ('don't lose heart'). DON'T use it about yourself — it reads as self-defeating.",
+        "example": "Lassen Sie nicht den Kopf hängen — bei Ihrem Profil kommt die nächste Chance schnell.",
+        "example_en": "Don't lose heart — with your profile, the next chance comes quickly.",
       },
       {
         "idiom": "Tür und Tor öffnen",
         "literal": "Mở cửa và cổng",
         "meaning": "Mở rộng cơ hội — tạo điều kiện thuận lợi cho điều gì xảy ra. Phù hợp khi muốn mô tả việc rejection chuyên nghiệp 'mở cửa' cho cơ hội tương lai.",
-        "example": "Eine konstruktive Antwort auf eine Absage öffnet Tür und Tor für künftige Chancen."
+        "meaning_en": "To open doors and gates — to widen opportunities. Fits when describing how a professional response to a rejection opens future doors.",
+        "example": "Eine konstruktive Antwort auf eine Absage öffnet Tür und Tor für künftige Chancen.",
+        "example_en": "A constructive reply to a rejection opens doors for future opportunities.",
       },
       {
         "idiom": "Es nochmal versuchen",
         "literal": "Thử lại lần nữa",
         "meaning": "Quay lại thử thêm — không bỏ cuộc. Sử dụng khi xin được ứng tuyển lại sau improvement.",
-        "example": "Nach sechs Monaten Verbesserung möchte ich es nochmal bei Ihnen versuchen."
+        "meaning_en": "To try one more time — to come back for another go after improvement. Useful when proposing to reapply after you have closed a specific gap.",
+        "example": "Nach sechs Monaten Verbesserung möchte ich es nochmal bei Ihnen versuchen.",
+        "example_en": "After six months of improvement, I would like to try again with you.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp cho email follow-up rejection:",
+        "instruction_en": "Fill in the appropriate phrase for a post-rejection follow-up email:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "formal email"
@@ -4176,6 +4370,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng email follow-up:",
+        "instruction_en": "Match each German sentence to its function in the follow-up:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4199,6 +4394,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal:",
+        "instruction_en": "Translate into formal German:",
         "pronunciation_focus": [
           "Konjunktiv II"
         ],
@@ -4237,7 +4433,12 @@ export const lessons: GermanLesson[] = [
           "wende mich → VEN-đê mích",
           "persönlichen → pe-ZƠN-lích-ần",
           "Bitte → BÍT-tê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "wende mich → VEN-duh mikh — reflexive separable verb",
+          "persönlichen → pair-ZUR-likh-en — 'ö' = round lips, say 'eh'",
+          "Bitte → BIT-tuh"
+        ],
       },
       {
         "en": "Ich bewerbe mich um ein Master-Stipendium an der ETH Zürich.",
@@ -4246,7 +4447,12 @@ export const lessons: GermanLesson[] = [
           "bewerbe → bê-VEA-bê",
           "Stipendium → shti-PEN-đi-um",
           "Zürich → TSUY-rích"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "bewerbe → buh-VAIR-buh — 'w' = 'v'",
+          "Stipendium → shtee-PEN-dee-oom",
+          "Zürich → TSUE-rikh — 'Z' = 'ts', 'ü' = pursed lips"
+        ],
       },
       {
         "en": "Würden Sie mir freundlicherweise ein Empfehlungsschreiben ausstellen?",
@@ -4255,7 +4461,12 @@ export const lessons: GermanLesson[] = [
           "freundlicherweise → FROIND-lích-ờ-vai-zê",
           "Empfehlungsschreiben → ent-FÊ-lungs-shrai-bần",
           "ausstellen → AOS-shtê-lần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "freundlicherweise → FROYND-likh-er-vy-zuh — adverb-builder ending",
+          "Empfehlungsschreiben → emp-FAY-loongs-shry-ben",
+          "ausstellen → OWS-shtel-en — separable verb"
+        ],
       },
       {
         "en": "Ich stelle Ihnen gerne meinen Lebenslauf, das Motivationsschreiben und die Bewerbungsfristen zur Verfügung.",
@@ -4264,7 +4475,12 @@ export const lessons: GermanLesson[] = [
           "Lebenslauf → LÊ-bệns-laof",
           "Motivationsschreiben → mô-ti-va-tsi-ônss-shrai-bần",
           "Bewerbungsfristen → bê-VEA-bungs-frís-tần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Lebenslauf → LAY-bens-lowf — 'au' = 'ow'",
+          "Motivationsschreiben → moh-tee-vah-tsee-OHNS-shry-ben",
+          "Bewerbungsfristen → buh-VAIR-boongs-fris-ten"
+        ],
       },
       {
         "en": "Ein gutes Wort von Ihnen würde meine Chancen erheblich verbessern.",
@@ -4273,81 +4489,98 @@ export const lessons: GermanLesson[] = [
           "gutes Wort → GÚ-tès VOT",
           "Chancen → SHĂN-sần",
           "erheblich → e-HÊP-lích"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "gutes Wort → GOO-tes VORT",
+          "Chancen → SHAHNS-en (French loanword)",
+          "erheblich → air-HAYP-likh"
+        ],
       }
     ],
     "cultural_notes_vi": "Empfehlungsschreiben (thư giới thiệu) ở Đức KHÁC HẲN ở Mỹ và VN ở năm điểm cốt lõi. (1) GS LÀ AUTHOR, KHÔNG PHẢI SIGNER: ở Mỹ, học sinh thường draft thư rồi xin GS sửa và ký; ở Đức TUYỆT ĐỐI KHÔNG — GS tự viết toàn bộ. Đề xuất 'em viết draft thầy chỉnh' = sai phạm học thuật, GS có thể từ chối. (2) MỐI QUAN HỆ THỰC: GS chỉ viết thư cho sinh viên họ ĐÃ LÀM VIỆC trực tiếp (Seminar, Hausarbeit, Praktikum, Abschlussarbeit). Xin từ GS chỉ giảng course đại trà = thư rất generic, có thể hại hơn lợi. (3) HỆ THỐNG ĐÁNH GIÁ MẬT: GS Đức có 'mật mã' trong thư recommendation — 'sehr gut' = trung bình, 'außergewöhnlich' = thực sự xuất sắc, 'überdurchschnittlich' = trên TB. Bạn không bao giờ thấy thư (academic confidentiality), nên phụ thuộc hoàn toàn vào quan hệ. (4) LEAD TIME 4-6 TUẦN: GS Đức expect 4-6 tuần lead time. Xin trong 1-2 tuần = bị coi là không tôn trọng thời gian. (5) CONFIDENTIAL: Empfehlungsschreiben gửi TRỰC TIẾP từ GS đến đại học/học bổng (qua email hoặc post). Bạn KHÔNG đọc thư.\n\nKhác VN: ở VN, có thể xin thư trong vài ngày, GS có thể nhờ assistant viết hộ, sinh viên đôi khi tự draft; ở Đức, mỗi yếu tố này là sai phạm. Plan-ahead culture là then chốt.\n\nỞ công ty Đức tại VN, Empfehlungsschreiben (Arbeitszeugnis từ Praktikum/Werkstudent) cũng theo chuẩn Đức — formal, có 'mật mã' đánh giá, không thể negotiate nội dung.\n\nMột chi tiết quan trọng: nếu GS từ chối với lý do 'Ich kenne Sie nicht gut genug', đó là DẤU HIỆU TÔN TRỌNG — họ thà từ chối hơn viết thư yếu. CHẤP NHẬN, cảm ơn, và xin GS khác — đừng tranh luận.",
+    "cultural_notes_en": "Empfehlungsschreiben (letters of recommendation) in Germany differ from US and UK practice on five core points. (1) THE PROFESSOR IS THE AUTHOR, NOT JUST THE SIGNER. In the US a student often drafts the letter and the prof edits and signs; in Germany this is ABSOLUTELY not done — the professor writes the entire letter. Suggesting 'I'll draft it and you edit' is treated as academic misconduct and the prof may refuse. (2) REAL WORKING RELATIONSHIP REQUIRED. A German professor only writes letters for students they have actually worked with directly (a Seminar paper, a Hausarbeit, a Praktikum, an Abschlussarbeit). Asking a professor who only lectured a large course produces a very generic letter that may hurt more than help. (3) HIDDEN GRADING CODE. German professors use a coded register inside reference letters — 'sehr gut' (very good) is actually average; 'außergewöhnlich' (exceptional) means truly outstanding; 'überdurchschnittlich' (above average) means above average. You never see the letter (academic confidentiality), so you rely entirely on the relationship. (4) LEAD TIME 4–6 WEEKS. German profs expect 4–6 weeks of notice. Asking inside 1–2 weeks reads as disrespectful. (5) CONFIDENTIAL DELIVERY. The Empfehlungsschreiben goes DIRECTLY from the professor to the receiving university or scholarship (by email or post). You do NOT read it.\n\nWhere this differs from US/UK norms: in the US you can usually ask in a couple of weeks, profs may delegate drafting, and students sometimes write the draft themselves. Each of those is a faux pas in Germany. Plan-ahead culture is the key.\n\nAt German employers' Vietnam subsidiaries, the Empfehlungsschreiben (or Arbeitszeugnis from a Praktikum/Werkstudent role) follows the same German rules — formal, coded grading, not negotiable in content.\n\nOne crucial detail: if a professor declines with 'Ich kenne Sie nicht gut genug', that is a SIGN OF RESPECT — they would rather decline than write a weak letter. ACCEPT it, thank them, ask another professor — do not push back.",
     "tip_advice_vi": "Trước khi xin (3-6 tháng): (1) Build mối quan hệ với 2-3 GS — qua Sprechstunde regular, Seminararbeit chất lượng cao, Hilfskraft (trợ lý), đề tài Bachelor/Masterarbeit. (2) Lập danh sách 5-7 GS có thể xin (rank theo độ thân thiện). (3) Update CV + Motivationsschreiben luôn sẵn sàng để gửi.\n\nKhi xin (4-6 tuần trước deadline): (1) Email chính thức HOẶC Sprechstunde — ưu tiên Sprechstunde nếu GS dễ tiếp cận. (2) Mở 'Sehr geehrter Herr Professor Müller, ich wende mich mit einer persönlichen Bitte'. (3) Giải thích context: chương trình gì, vì sao phù hợp với bạn, vì sao chọn GS này. (4) Yêu cầu cụ thể: loại thư (academic vs professional), deadline, ngôn ngữ (Đức vs Anh), submission method. (5) Đề xuất giúp GS: 'Ich stelle Ihnen Lebenslauf, Motivationsschreiben, Notenübersicht und ein kurzes Memo zur Verfügung'.\n\nMemo cho GS (3-5 gạch đầu dòng, 1 trang max): (1) Project/seminar bạn đã làm với GS. (2) 2-3 thành tích cụ thể. (3) Soft skills GS có thể xác nhận. (4) Vì sao chương trình mới này phù hợp. (5) Deadline + submission method.\n\nFollow-up: (1) Nếu GS đồng ý, gửi tài liệu trong 3-5 ngày. (2) 1 tuần trước deadline GS hứa, polite reminder qua email. (3) Sau khi GS gửi thư, gửi email cảm ơn ngắn (3-4 dòng).\n\nNếu GS từ chối: (1) CHẤP NHẬN không tranh luận. (2) Cảm ơn về sự thẳng thắn. (3) Xin gợi ý GS khác hoặc cách build relationship lần sau. (4) GIỮ KÊT NỐI cho future opportunities.",
+    "tip_advice_en": "Long before you ask (3–6 months): (1) Build relationships with two or three professors — via regular Sprechstunde, high-quality Seminar papers, work as a Hilfskraft (research assistant), or a Bachelor's/Master's thesis. (2) Make a ranked list of five to seven possible referees. (3) Keep your CV and Motivationsschreiben up to date so they're ready to send.\n\nWhen you ask (4–6 weeks before deadline): (1) Either email or Sprechstunde — prefer Sprechstunde if the prof is approachable. (2) Open with 'Sehr geehrter Herr Professor Müller, ich wende mich mit einer persönlichen Bitte'. (3) Explain context: the programme, why it fits you, why this professor specifically. (4) Concrete asks: type of letter (academic vs. professional), deadline, language (German vs. English), submission method. (5) Offer to make it easy: 'Ich stelle Ihnen Lebenslauf, Motivationsschreiben, Notenübersicht und ein kurzes Memo zur Verfügung'.\n\nMemo for the professor (3–5 bullet points, one page max): (1) The project/seminar you did with them. (2) Two or three concrete achievements. (3) Soft skills they can vouch for. (4) Why the new programme fits. (5) Deadline + submission method.\n\nFollow-up: (1) If they agree, send the package within 3–5 days. (2) One week before the deadline they promised, send a gentle reminder by email. (3) After the letter goes out, send a short three- or four-line thank-you email.\n\nIf they decline: (1) ACCEPT, no arguing. (2) Thank them for the honesty. (3) Ask for suggestions of other referees or advice on how to build the relationship next time. (4) KEEP THE CONNECTION for future opportunities.",
     "vocabulary": [
       {
         "word": "das Empfehlungsschreiben",
         "en": "letter of recommendation",
         "vi": "thư giới thiệu",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát ent-FÊ-lungs-shrai-bần"
+        "pronunciation_vi": "đát ent-FÊ-lungs-shrai-bần",
+        "pronunciation_en": "dahs emp-FAY-loongs-shry-ben — letter of recommendation; 'pf' is a single sound",
       },
       {
         "word": "der/die Gutachter:in",
         "en": "evaluator, referee",
         "vi": "người đánh giá/giới thiệu",
         "pos": "noun",
-        "pronunciation_vi": "đe GÚT-ách-tờ"
+        "pronunciation_vi": "đe GÚT-ách-tờ",
+        "pronunciation_en": "dair GOOT-akh-ter — evaluator, referee",
       },
       {
         "word": "das Motivationsschreiben",
         "en": "letter of motivation",
         "vi": "thư động lực",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát mô-ti-va-tsi-ônss-shrai-bần"
+        "pronunciation_vi": "đát mô-ti-va-tsi-ônss-shrai-bần",
+        "pronunciation_en": "dahs moh-tee-vah-tsee-OHNS-shry-ben — letter of motivation",
       },
       {
         "word": "der Lebenslauf",
         "en": "CV, résumé",
         "vi": "sơ yếu lý lịch",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe LÊ-bệns-laof"
+        "pronunciation_vi": "đe LÊ-bệns-laof",
+        "pronunciation_en": "dair LAY-bens-lowf — CV; literally 'course of life'",
       },
       {
         "word": "die Bewerbungsfrist",
         "en": "application deadline",
         "vi": "hạn nộp đơn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-VEA-bungs-frís-t"
+        "pronunciation_vi": "đi bê-VEA-bungs-frís-t",
+        "pronunciation_en": "dee buh-VAIR-boongs-frist — application deadline",
       },
       {
         "word": "ausstellen (ein Schreiben)",
         "en": "to issue (a letter)",
         "vi": "viết/cấp (thư)",
         "pos": "verb (sep)",
-        "pronunciation_vi": "AOS-shtê-lần"
+        "pronunciation_vi": "AOS-shtê-lần",
+        "pronunciation_en": "OWS-shtel-en — to issue (a letter); separable verb",
       },
       {
         "word": "die Frist einhalten",
         "en": "to meet a deadline",
         "vi": "giữ đúng hạn",
         "pos": "verb phrase",
-        "pronunciation_vi": "FRÍS-t AIN-hal-tần"
+        "pronunciation_vi": "FRÍS-t AIN-hal-tần",
+        "pronunciation_en": "dee frist EYN-hahl-ten — to meet a deadline; separable verb",
       },
       {
         "word": "freundlicherweise",
         "en": "kindly, please (formal)",
         "vi": "vui lòng (formal)",
         "pos": "adverb",
-        "pronunciation_vi": "FROIND-lích-ờ-vai-zê"
+        "pronunciation_vi": "FROIND-lích-ờ-vai-zê",
+        "pronunciation_en": "FROYND-likh-er-vy-zuh — kindly (very formal adverb)",
       },
       {
         "word": "die Chancen erheblich verbessern",
         "en": "to significantly improve chances",
         "vi": "cải thiện đáng kể cơ hội",
         "pos": "verb phrase",
-        "pronunciation_vi": "SHĂN-sần fe-BÉ-sần"
+        "pronunciation_vi": "SHĂN-sần fe-BÉ-sần",
+        "pronunciation_en": "dee SHAHNS-en air-HAYP-likh fair-BES-ern — to significantly improve chances",
       },
       {
         "word": "die Vorlaufzeit",
         "en": "lead time, advance notice",
         "vi": "thời gian báo trước",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FOA-laof-tsait"
+        "pronunciation_vi": "đi FOA-laof-tsait",
+        "pronunciation_en": "dee FOR-lowf-tsyt — lead time, advance notice",
       }
     ],
     "dialogue": [
@@ -4470,36 +4703,46 @@ export const lessons: GermanLesson[] = [
       "GS từ chối: 'Ich kenne Sie nicht gut genug, um ein gutes Schreiben zu verfassen'. Hãy phản hồi tế nhị — không tranh luận, đề xuất alternative (gặp 30 phút để thầy hiểu thêm về dự án của em, gửi memo chi tiết), hoặc cảm ơn và chuyển sang xin GS khác."
     ],
     "register_notes": "Xin Empfehlungsschreiben có quy tắc cứng nhắc — vi phạm = GS từ chối hoặc viết thư yếu. (1) FORMAL TUYỆT ĐỐI: 'Sehr geehrter Herr Professor' luôn, kể cả khi GS đã 'du' với bạn. Việc xin thư là FORMAL act, không casual. (2) KONJUNKTIV II BẮT BUỘC: 'Würden Sie freundlicherweise...?', 'Wäre es möglich, dass Sie...?', 'Ich würde mich freuen, wenn...'. (3) TIMING LÀ NGHI LỄ: phải xin 4 TUẦN trước deadline tối thiểu, lý tưởng là 6 tuần. (4) CUNG CẤP TÀI LIỆU ĐẦY ĐỦ: GS Đức expect bạn cung cấp 'Bewerberpaket' — CV, Motivationsschreiben, Notenübersicht, danh sách deadlines, MEMO 3-5 gạch đầu dòng. (5) CHỈ XIN GS BIẾT BẠN TỐT: Empfehlungsschreiben từ GS chỉ dạy 1 môn = thư yếu. Phải là GS đã làm việc với bạn (Seminararbeit, Praktikum, Forschungsprojekt, Bachelorarbeit, Masterarbeit).\n\nKhi nói chuyện trực tiếp (Sprechstunde): mở đầu lịch sự ('Es geht um eine persönliche Bitte'), giải thích context, nêu yêu cầu cụ thể, đề xuất giúp GS dễ nhất. KẾT bằng cảm ơn và CONFIRM next steps.\n\nKhác Việt Nam: ở VN, có thể xin thư trong vài ngày, đôi khi nhờ assistant viết hộ; ở Đức, GS TỰ viết toàn bộ, thường mất 2-4 giờ làm việc — đó là lý do cần lead time. KHÔNG bao giờ submit Empfehlungsschreiben do bạn tự draft và xin GS ký — coi là 'akademisches Fehlverhalten'.\n\nNgười Việt thường mắc lỗi: (1) xin GS không quen biết — thư yếu; (2) xin quá gần deadline — bị từ chối; (3) không cung cấp memo — GS không nhớ chi tiết về bạn, viết generic; (4) follow-up quá nhiều — quấy rối GS; (5) không cảm ơn sau khi nhận thư — phá quan hệ cho lần sau.",
+    "register_notes_en": "Requesting an Empfehlungsschreiben follows rigid conventions — break them and the professor declines or writes weakly. (1) ABSOLUTE FORMALITY: 'Sehr geehrter Herr Professor' always, even if they say 'du' to you in class. Asking for a letter is a FORMAL act, not casual. (2) KONJUNKTIV II IS MANDATORY: 'Würden Sie freundlicherweise…?', 'Wäre es möglich, dass Sie…?', 'Ich würde mich freuen, wenn…'. (3) TIMING IS RITUAL: ask 4 WEEKS before the deadline at minimum, 6 weeks ideal. (4) PROVIDE A COMPLETE PACKAGE: German professors expect a 'Bewerberpaket' — CV, Motivationsschreiben, Notenübersicht, list of deadlines, MEMO of 3–5 bullet points. (5) ONLY ASK PROFESSORS WHO KNOW YOU: a letter from a prof who only taught you one course is a weak letter. Ask someone who has worked with you on a Seminararbeit, Praktikum, Forschungsprojekt, Bachelorarbeit, or Masterarbeit.\n\nIn an in-person Sprechstunde: open politely ('Es geht um eine persönliche Bitte'), explain context, state the concrete ask, offer to make it easy. CLOSE by thanking and CONFIRMING next steps.\n\nHow this differs from US/UK norms: in the US you can sometimes get a letter on a few days' notice, sometimes drafted in part by the student. In Germany the prof writes the whole letter, often spending 2–4 working hours on it — hence the lead time. NEVER submit a letter you have drafted and asked the prof to sign — this is treated as 'akademisches Fehlverhalten' (academic misconduct).\n\nFrequent learner mistakes: (1) Asking a professor who doesn't really know you — weak letter; (2) Asking too close to the deadline — declined; (3) Not providing a memo — generic letter; (4) Following up too aggressively — harassment; (5) Failing to thank afterwards — kills the relationship for next time.",
     "idiom_glosses": [
       {
         "idiom": "Ein gutes Wort einlegen",
         "literal": "Đặt một lời tốt vào",
         "meaning": "Nói lời tốt cho ai — vouch for someone. Đây là cụm CHÍNH XÁC để mô tả việc xin recommendation: 'Würden Sie ein gutes Wort für mich einlegen?'.",
-        "example": "Würden Sie freundlicherweise ein gutes Wort für mich einlegen?"
+        "meaning_en": "To put in a good word — to vouch for someone. This is the EXACT phrase for asking for a recommendation: 'Würden Sie ein gutes Wort für mich einlegen?'.",
+        "example": "Würden Sie freundlicherweise ein gutes Wort für mich einlegen?",
+        "example_en": "Would you kindly put in a good word for me?",
       },
       {
         "idiom": "Auf Augenhöhe",
         "literal": "Ở tầm mắt (cùng độ cao)",
         "meaning": "Ngang hàng — đối xử như equals. Mô tả mối quan hệ tôn trọng giữa GS và sinh viên giỏi.",
-        "example": "Professor Müller behandelt seine Doktoranden immer auf Augenhöhe."
+        "meaning_en": "On eye level — as equals. Describes a respectful relationship between a professor and a strong student.",
+        "example": "Professor Müller behandelt seine Doktoranden immer auf Augenhöhe.",
+        "example_en": "Professor Müller always treats his doctoral candidates as equals.",
       },
       {
         "idiom": "In den höchsten Tönen loben",
         "literal": "Khen với những âm cao nhất",
         "meaning": "Khen ngợi cực kỳ — đây là cụm CHÍNH XÁC mô tả thư giới thiệu mạnh nhất. Khi GS nói 'Ich werde Sie in den höchsten Tönen loben', họ cam kết viết thư xuất sắc.",
-        "example": "Ich werde Sie in den höchsten Tönen loben — Sie haben es verdient."
+        "meaning_en": "To praise in the highest tones — to praise to the skies. The EXACT phrase describing the strongest possible letter. When a professor says 'Ich werde Sie in den höchsten Tönen loben', they are committing to write you an excellent letter.",
+        "example": "Ich werde Sie in den höchsten Tönen loben — Sie haben es verdient.",
+        "example_en": "I will praise you to the skies — you have earned it.",
       },
       {
         "idiom": "Sich auf jemanden verlassen können",
         "literal": "Có thể dựa vào ai",
         "meaning": "Có thể tin tưởng — biết ai sẽ làm điều đã hứa. Cả hai chiều trong context recommendation.",
-        "example": "Sie können sich auf mich verlassen — das Schreiben ist in 4 Wochen fertig."
+        "meaning_en": "To be able to rely on someone — to know they will do what they promised. Used in both directions in a recommendation context.",
+        "example": "Sie können sich auf mich verlassen — das Schreiben ist in 4 Wochen fertig.",
+        "example_en": "You can rely on me — the letter will be ready in four weeks.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm formal khi xin thư giới thiệu:",
+        "instruction_en": "Fill in the appropriate formal phrase for requesting a recommendation:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "academic formal"
@@ -4526,6 +4769,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp:",
+        "instruction_en": "Match each German sentence to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4549,6 +4793,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật formal:",
+        "instruction_en": "Translate into formal academic German:",
         "pronunciation_focus": [
           "academic Sie + Konjunktiv II"
         ],
@@ -4587,7 +4832,12 @@ export const lessons: GermanLesson[] = [
           "Schnittstelle → SHNÍT-shtê-lê",
           "Maschinellem → ma-SHÍ-nê-lêm",
           "Klimamodellierung → KLÍ-ma-mô-đê-li-rung"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Schnittstelle → SHNIT-shtel-uh — 'sch' = 'sh'",
+          "Maschinellem → mah-SHEE-nel-em",
+          "Klimamodellierung → KLEE-mah-moh-del-ee-roong"
+        ],
       },
       {
         "en": "Ich brenne für interdisziplinäre Fragestellungen, die echten gesellschaftlichen Mehrwert schaffen.",
@@ -4596,7 +4846,12 @@ export const lessons: GermanLesson[] = [
           "brenne → BRÊ-nê",
           "interdisziplinäre → in-tờ-điss-tsi-pli-NÊ-rê",
           "Mehrwert → MÊ-vet"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "brenne → BREN-uh",
+          "interdisziplinäre → in-ter-dis-tsi-plee-NAY-ruh",
+          "Mehrwert → MAIR-vairt"
+        ],
       },
       {
         "en": "Ihre Veröffentlichung von 2024 hat einen entscheidenden Einfluss auf mein Forschungsdesign gehabt.",
@@ -4605,7 +4860,12 @@ export const lessons: GermanLesson[] = [
           "Veröffentlichung → fe-ƠF-ent-lích-ung",
           "entscheidenden → ent-SHAI-đần-đần",
           "Forschungsdesign → FOR-shungs-đi-zain"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Veröffentlichung → fair-URF-ent-likh-oong — 'ö' = round lips, say 'eh'",
+          "entscheidenden → ent-SHY-den-den",
+          "Forschungsdesign → FOR-shoongs-dee-zyne"
+        ],
       },
       {
         "en": "Ich würde gerne den Horizont über die reine Theorie hinaus erweitern und auch empirisch arbeiten.",
@@ -4614,7 +4874,12 @@ export const lessons: GermanLesson[] = [
           "Horizont → ho-ri-TSÔNT",
           "erweitern → e-VAI-tờn",
           "empirisch → em-PÍA-rish"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Horizont → hoh-ree-TSONT",
+          "erweitern → air-VY-tern",
+          "empirisch → em-PEE-rish"
+        ],
       },
       {
         "en": "Welche methodischen Ansätze würden Sie für ein solches Projekt empfehlen?",
@@ -4623,81 +4888,98 @@ export const lessons: GermanLesson[] = [
           "methodischen → mê-TÔ-đi-shần",
           "Ansätze → AN-zé-tsê",
           "empfehlen → em-FÊ-lần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "methodischen → meh-TOH-dish-en",
+          "Ansätze → AHN-zet-suh",
+          "empfehlen → emp-FAY-len — 'pf' is a single sound"
+        ],
       }
     ],
     "cultural_notes_vi": "Cuộc gặp với potential supervisor (Doktorvater/-mutter) ở Đức KHÁC HẲN ở Mỹ và VN ở năm điểm cốt lõi. (1) GS LÀ ĐỒNG NGHIỆP, KHÔNG PHẢI THẦY: ngay từ cuộc gặp đầu, bạn được EXPECTED hành xử như 'Nachwuchskolleg:in' (đồng nghiệp sơ khởi) — có chính kiến, defend ý tưởng, đặt câu hỏi sâu. Khúm núm = bị coi là không sẵn sàng cho PhD. (2) FORSCHUNGSDESIGN PHẢI CỤ THỂ: GS expect bạn đã nghĩ qua câu hỏi nghiên cứu, hypothesis, methodology, dataset TRƯỚC khi đến gặp. 'Em chưa biết, mong thầy gợi ý' = trượt ngay. Có nháp ý tưởng 5-10 trang trước khi xin Sprechstunde. (3) CRITIQUE LÀ TÔN TRỌNG: nếu GS chỉ ra điểm yếu trong đề tài, đó là DẤU HIỆU TÔN TRỌNG — họ engage với bạn như equal. Nếu GS chỉ politely listen mà không critique, có thể họ không serious về bạn. (4) FIT QUAN TRỌNG HƠN PRESTIGE: hơn là đến với GS nổi tiếng nhất, hãy đến với GS có overlap thực sự với chủ đề bạn. (5) FUNDING-FIRST: GS Đức thường KHÔNG có tự fund cho PhD students — bạn phải tự lo (DAAD, VEF, công ty, etc.). Trong cuộc gặp đầu, GS sẽ hỏi 'Wie finanzieren Sie sich?'.\n\nKhác Mỹ: ở Mỹ, PhD student thường có RA-ship/TA-ship từ professor; ở Đức, hệ thống Stipendium độc lập với GS — bạn apply scholarship riêng, GS chỉ approve bạn vào nhóm.\n\nKhác VN: ở VN, GS là 'thầy' với mối quan hệ hierarchical; ở Đức, mối quan hệ là 'partnership' — GS đầu tư thời gian vào bạn, expect bạn tự drive project. Plus, ở Đức bạn được phép DISAGREE với GS trong meetings — đó không phải 'cãi thầy' mà là 'wissenschaftliche Auseinandersetzung'.\n\nMột chi tiết quan trọng: GS Đức thường không phản hồi email nhanh (1-2 tuần là chuẩn). Nếu cuộc gặp đầu tốt, follow-up trong 24h với 'Vielen Dank-email' + 1-pager đề cương sửa theo feedback.",
+    "cultural_notes_en": "A meeting with a potential supervisor (Doktorvater / Doktormutter) in Germany differs sharply from US and UK norms on five core points. (1) THE PROF IS A COLLEAGUE, NOT A TEACHER. From the very first meeting you are EXPECTED to behave as 'Nachwuchskolleg:in' (junior colleague) — to have opinions, to defend ideas, to ask sharp questions. Excessive deference reads as 'not ready for a PhD'. (2) THE RESEARCH DESIGN MUST BE CONCRETE. The professor expects you to have thought through the research question, hypothesis, methodology, and dataset BEFORE the meeting. 'I don't know yet, I'm hoping you can suggest' = instant rejection. Show up with a 5–10 page sketch. (3) CRITIQUE IS RESPECT. If the prof picks apart weaknesses in your proposal, that is a SIGN OF RESPECT — they are engaging with you as an equal. If they just listen politely without critiquing, they are probably not serious about taking you on. (4) FIT MATTERS MORE THAN PRESTIGE. Rather than going to the most famous prof, go to the one whose research actually overlaps with yours. (5) FUNDING-FIRST. German profs usually do NOT have funding to give you for a PhD — you bring your own (DAAD, VEF, company, etc.). In the first meeting they will ask 'Wie finanzieren Sie sich?'.\n\nWhere this differs from the US: in the US a PhD student typically gets an RA-ship or TA-ship from a professor. In Germany the Stipendium system is independent of the prof — you apply for a scholarship separately, and the prof just admits you to their group.\n\nWhere this differs from US/UK student–supervisor culture more broadly: the relationship is 'partnership', not hierarchy. The prof invests time in you and expects you to drive the project. You ARE permitted to disagree with the supervisor in meetings — that is not 'arguing with the teacher', it is 'wissenschaftliche Auseinandersetzung' (academic argument).\n\nOne crucial detail: German profs often do not reply to email quickly (1–2 weeks is normal). If the first meeting goes well, follow up within 24 hours with a thank-you email plus a 1-page outline that incorporates their feedback.",
     "tip_advice_vi": "Trước cuộc gặp (4-6 tuần): (1) Đọc 5-10 bài báo gần nhất của GS — không skim, đọc methodology section kỹ. (2) Lập danh sách 3 questions sâu về methodology của họ. (3) Viết Forschungsskizze 3-5 trang: question, hypothesis, methodology, expected contribution. (4) Email xin Sprechstunde, đính kèm Skizze + CV. (5) Chuẩn bị phương án funding (DAAD, VEF, company sponsorship).\n\nTrong cuộc gặp (60-90 phút): (1) Mở đầu cảm ơn + giới thiệu 30 giây. (2) Trình bày Forschungsinteresse 5 phút (max), sau đó mở cho discussion. (3) Khi GS ask câu hỏi, ANSWER trực tiếp — không lan man. (4) Khi GS critique, ADMIT điểm họ đúng + counter với evidence: 'Sie haben recht... Allerdings...'. (5) Khi GS đề xuất hướng khác, CONSIDER seriously trước khi nói no. (6) Hỏi 3 câu cụ thể về Lehrstuhl: cluster access, conference budget, frequency của Doktorandenkolloquium.\n\nNgôn ngữ học thuật: (1) Dùng Nominal-style: 'die Anwendung dieser Methode' chứ không 'wenn ich diese Methode anwende'. (2) Konjunktiv II cho yêu cầu. (3) Konjunktiv I cho gián tiếp. (4) Tránh từ Anh-styled: 'Insights' → 'Erkenntnisse'; 'Approach' → 'Ansatz'; 'Framework' → 'Rahmen'.\n\nKết cuộc gặp: (1) Tóm tắt 1 câu về điều bạn học được. (2) Hỏi NEXT STEP cụ thể: 'Soll ich ein detailliertes Exposé von 10 Seiten ausarbeiten?'. (3) Confirm timeline. (4) Cảm ơn formal.\n\nSau cuộc gặp (24h): (1) Email cảm ơn ngắn (4-5 dòng) tham chiếu 1-2 điểm cụ thể. (2) Trong 2 tuần, gửi đề cương đã sửa theo feedback. (3) Sau 4-6 tuần, follow-up status.",
+    "tip_advice_en": "Four to six weeks before the meeting: (1) Read 5–10 recent papers by the professor — don't skim, study the methodology section. (2) Prepare three deep questions about their methods. (3) Write a 3–5 page Forschungsskizze: question, hypothesis, methodology, expected contribution. (4) Email to request a Sprechstunde, attaching the Skizze and your CV. (5) Have a funding plan ready (DAAD, VEF, company sponsorship).\n\nDuring the meeting (60–90 minutes): (1) Open with thanks plus a 30-second intro. (2) Present your Forschungsinteresse in 5 minutes max, then open the floor for discussion. (3) When the prof asks a question, answer DIRECTLY — no meandering. (4) When the prof critiques, ACKNOWLEDGE where they're right and counter with evidence: 'Sie haben recht… Allerdings…'. (5) When the prof proposes a different direction, CONSIDER it seriously before saying no. (6) Ask three specific questions about the Lehrstuhl: cluster access, conference budget, Doktorandenkolloquium frequency.\n\nAcademic language: (1) Use nominal style: 'die Anwendung dieser Methode' rather than 'wenn ich diese Methode anwende'. (2) Konjunktiv II for requests. (3) Konjunktiv I for reported speech. (4) Avoid English-derived terms: 'Insights' → 'Erkenntnisse'; 'Approach' → 'Ansatz'; 'Framework' → 'Rahmen'.\n\nClose of meeting: (1) One-sentence summary of what you learned. (2) Concrete NEXT STEP: 'Soll ich ein detailliertes Exposé von 10 Seiten ausarbeiten?'. (3) Confirm timeline. (4) Formal thanks.\n\nAfter the meeting (within 24 hours): (1) Short thank-you email (4–5 lines) referencing 1–2 specific points. (2) Within two weeks, send a revised outline that incorporates the feedback. (3) After 4–6 weeks, follow up on status.",
     "vocabulary": [
       {
         "word": "das Forschungsinteresse",
         "en": "research interest",
         "vi": "định hướng nghiên cứu",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FOR-shungs-in-tờ-rê-sê"
+        "pronunciation_vi": "đát FOR-shungs-in-tờ-rê-sê",
+        "pronunciation_en": "dahs FOR-shoongs-in-ter-es-uh — research interest",
       },
       {
         "word": "die Schnittstelle",
         "en": "interface, intersection",
         "vi": "giao điểm, giao thoa",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHNÍT-shtê-lê"
+        "pronunciation_vi": "đi SHNÍT-shtê-lê",
+        "pronunciation_en": "dee SHNIT-shtel-uh — interface, intersection ('cut + place')",
       },
       {
         "word": "interdisziplinär",
         "en": "interdisciplinary",
         "vi": "liên ngành",
         "pos": "adjective",
-        "pronunciation_vi": "in-tờ-điss-tsi-pli-NÊR"
+        "pronunciation_vi": "in-tờ-điss-tsi-pli-NÊR",
+        "pronunciation_en": "in-ter-dis-tsi-plee-NAYR — interdisciplinary",
       },
       {
         "word": "die Fragestellung",
         "en": "research question",
         "vi": "câu hỏi nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FRA-gê-shtê-lung"
+        "pronunciation_vi": "đi FRA-gê-shtê-lung",
+        "pronunciation_en": "dee FRAH-guh-shtel-oong — research question",
       },
       {
         "word": "der methodische Ansatz",
         "en": "methodological approach",
         "vi": "phương pháp tiếp cận",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe mê-TÔ-đi-shê AN-zats"
+        "pronunciation_vi": "đe mê-TÔ-đi-shê AN-zats",
+        "pronunciation_en": "dair meh-TOH-dish-uh AHN-zahts — methodological approach",
       },
       {
         "word": "die Hypothese",
         "en": "hypothesis",
         "vi": "giả thuyết",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi huy-pô-TÊ-zê"
+        "pronunciation_vi": "đi huy-pô-TÊ-zê",
+        "pronunciation_en": "dee hue-poh-TAY-zuh — hypothesis ('y' said like German 'ü')",
       },
       {
         "word": "empirisch arbeiten",
         "en": "to work empirically",
         "vi": "làm việc thực nghiệm",
         "pos": "verb phrase",
-        "pronunciation_vi": "em-PÍA-rish AR-bai-tần"
+        "pronunciation_vi": "em-PÍA-rish AR-bai-tần",
+        "pronunciation_en": "em-PEE-rish AR-by-ten — to work empirically",
       },
       {
         "word": "der Forschungsstand",
         "en": "state of the art (research)",
         "vi": "tình trạng nghiên cứu hiện tại",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe FOR-shungs-shtánt"
+        "pronunciation_vi": "đe FOR-shungs-shtánt",
+        "pronunciation_en": "dair FOR-shoongs-shtahnt — state of the art",
       },
       {
         "word": "die Veröffentlichung",
         "en": "publication, paper",
         "vi": "bài công bố",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-ƠF-ent-lích-ung"
+        "pronunciation_vi": "đi fe-ƠF-ent-lích-ung",
+        "pronunciation_en": "dee fair-URF-ent-likh-oong — publication, paper",
       },
       {
         "word": "den Horizont erweitern",
         "en": "to broaden one's horizons (idiom)",
         "vi": "mở rộng tầm nhìn",
         "pos": "verb phrase",
-        "pronunciation_vi": "đần ho-ri-TSÔNT e-VAI-tờn"
+        "pronunciation_vi": "đần ho-ri-TSÔNT e-VAI-tờn",
+        "pronunciation_en": "den hoh-ree-TSONT air-VY-tern — to broaden one's horizons (idiom)",
       }
     ],
     "dialogue": [
@@ -4820,36 +5102,46 @@ export const lessons: GermanLesson[] = [
       "Sau cuộc gặp tốt, GS đề xuất bạn TỪ BỎ đề tài Mekong và làm về dữ liệu Đức để 'dễ publish hơn'. Hãy đàm phán: cảm ơn lời khuyên, giải thích vì sao Mekong quan trọng cho cá nhân/quê hương, đề xuất compromise (phương pháp dùng cho cả 2 vùng, comparative study Đức-VN)."
     ],
     "register_notes": "Trao đổi nghiên cứu với GS Đức tuyệt đối formal — 'Sie' luôn, kể cả với GS trẻ hoặc trong môi trường postdoc thân mật. Tone là 'akademisch und respektvoll' nhưng KHÔNG khúm núm. Sự khác biệt tế nhị: bạn là 'Nachwuchsforscher:in' (nhà nghiên cứu trẻ), không phải 'Schüler:in' (học sinh) — bạn đến trao đổi như nhà nghiên cứu sơ khởi với chuyên gia.\n\nNgôn ngữ học thuật: dùng nominalization (danh từ hoá) — 'Mein Forschungsinteresse liegt...' chứ không 'Ich interessiere mich für...'; 'die Anwendung der Methode' chứ không 'wenn man die Methode anwendet'. Đây là Wissenschaftssprache (ngôn ngữ khoa học) Đức — sinh viên VN học từ tiếng Anh thường viết Verbal-style; phải chuyển sang Nominal-style.\n\nKonjunktiv I cho gián tiếp: 'Frau Wagner schrieb in ihrer Veröffentlichung, ML könne eine Revolution darstellen' — dùng để trích dẫn lý thuyết của người khác mà không cam kết bạn đồng ý. Konjunktiv II cho yêu cầu/giả định.\n\nKHI PUSHBACK TỪ GS: KHÔNG nhượng bộ ngay nếu bạn có lý lẽ vững. Người Đức đánh giá cao 'wissenschaftliche Auseinandersetzung' (tranh luận học thuật) — admit điểm GS đúng, sau đó counter với evidence: 'Sie haben recht, dass... Allerdings zeigt die Studie von X aus 2023, dass...'. Đồng ý mọi điều = bị coi là không có chính kiến.\n\nKHÁC VN: ở VN, sinh viên thường nhận lời GS không tranh luận; ở Đức, GS EXPECT bạn defend ý kiến — đó là dấu hiệu intellectual maturity.",
+    "register_notes_en": "Research conversations with a German prof are absolutely formal — 'Sie' throughout, even with younger profs or in friendlier postdoc settings. The tone is 'akademisch und respektvoll' but NOT subservient. The subtle distinction: you are a 'Nachwuchsforscher:in' (junior researcher), not a 'Schüler:in' (pupil) — you come to exchange as a junior researcher with an expert.\n\nAcademic language: use nominalization — 'Mein Forschungsinteresse liegt…' rather than 'Ich interessiere mich für…'; 'die Anwendung der Methode' rather than 'wenn man die Methode anwendet'. This is Wissenschaftssprache (academic German). Anglophone students often write in the verbal style they're used to in English; you need to shift into the nominal style.\n\nKonjunktiv I for reported speech: 'Frau Wagner schrieb in ihrer Veröffentlichung, ML könne eine Revolution darstellen' — used to cite another scholar's claim without committing to agreeing. Konjunktiv II for requests/hypotheticals.\n\nWHEN THE PROF PUSHES BACK: do NOT cave instantly if you have a solid argument. Germans value 'wissenschaftliche Auseinandersetzung' (academic disputation) — acknowledge where the prof is right, then counter with evidence: 'Sie haben recht, dass… Allerdings zeigt die Studie von X aus 2023, dass…'. Agreeing with everything reads as having no academic personality.\n\nHow this differs from many anglophone contexts: in some teaching cultures students rarely push back; in Germany the prof EXPECTS you to defend your view — it is a sign of intellectual maturity.",
     "idiom_glosses": [
       {
         "idiom": "Den Horizont erweitern",
         "literal": "Mở rộng đường chân trời",
         "meaning": "Mở rộng tầm nhìn, tiếp cận perspectives mới — qua đọc, nghiên cứu, đối thoại với chuyên gia. Trong context academic: cảm ơn GS đã giúp bạn nhìn xa hơn — không phải xã giao mà thực sự công nhận growth.",
-        "example": "Sie haben meinen Horizont in dieser Stunde erheblich erweitert."
+        "meaning_en": "To broaden the horizon — to widen one's view, take in new perspectives through reading, research, conversation with experts. In an academic setting, thanking a prof for having helped you see further is not small-talk; it genuinely registers growth.",
+        "example": "Sie haben meinen Horizont in dieser Stunde erheblich erweitert.",
+        "example_en": "You have broadened my horizon considerably in this one hour.",
       },
       {
         "idiom": "Brennen für etwas",
         "literal": "Cháy vì cái gì",
         "meaning": "Say mê, đam mê thực sự — không chỉ 'thích' mà là động lực đẩy bạn forward. Trong academic context, đây là cách thể hiện passion mà không melodramatic — chuẩn formal nhưng emotional.",
-        "example": "Ich brenne für interdisziplinäre Forschung."
+        "meaning_en": "To burn for something — to be deeply passionate about it, not merely 'like' it. In academic register this is how you signal passion without going melodramatic — formal but emotional.",
+        "example": "Ich brenne für interdisziplinäre Forschung.",
+        "example_en": "I burn for interdisciplinary research.",
       },
       {
         "idiom": "Auf den Zahn fühlen",
         "literal": "Sờ vào răng (kiểm tra răng ngựa khi mua)",
         "meaning": "Kiểm tra, test ai một cách kỹ lưỡng — bằng câu hỏi khó để xem họ thực sự biết gì. GS Đức thường 'auf den Zahn fühlen' candidate trong cuộc gặp đầu — không phải để tra tấn mà để đánh giá depth.",
-        "example": "Lassen Sie mich Ihnen kurz auf den Zahn fühlen — was ist Ihre Hypothese?"
+        "meaning_en": "To feel for someone's tooth — literally to check a horse's teeth before buying, figuratively to test someone thoroughly with hard questions. German profs will 'auf den Zahn fühlen' a candidate in the first meeting — not to torture, but to gauge depth.",
+        "example": "Lassen Sie mich Ihnen kurz auf den Zahn fühlen — was ist Ihre Hypothese?",
+        "example_en": "Let me test you briefly — what is your hypothesis?",
       },
       {
         "idiom": "Eine Lanze brechen für",
         "literal": "Bẻ một cây thương cho",
         "meaning": "Bảo vệ, đứng ra ủng hộ điều gì — đặc biệt khi không phải mainstream. Phù hợp khi GS bảo vệ một hướng nghiên cứu interdisciplinary hoặc chủ đề ít được công nhận.",
-        "example": "Eine Lanze für interdisziplinäre Forschung möchte ich immer brechen."
+        "meaning_en": "To break a lance for — to stand up for, defend (especially something not mainstream). Useful when a prof defends interdisciplinary research or an unfashionable topic.",
+        "example": "Eine Lanze für interdisziplinäre Forschung möchte ich immer brechen.",
+        "example_en": "I will always stand up for interdisciplinary research.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi trao đổi nghiên cứu với GS:",
+        "instruction_en": "Fill in the appropriate phrase for a research-interest conversation:",
         "pronunciation_focus": [
           "academic Sie + Konjunktiv II"
         ],
@@ -4875,6 +5167,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp học thuật:",
+        "instruction_en": "Match each German sentence to its academic-communication function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4898,6 +5191,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật formal:",
+        "instruction_en": "Translate into formal academic German:",
         "pronunciation_focus": [
           "academic Wissenschaftssprache"
         ],
@@ -4936,7 +5230,12 @@ export const lessons: GermanLesson[] = [
           "Herzlich → HE-tslích",
           "willkommen → vil-KÔ-mần",
           "Direktor → đi-RẾC-toa"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Herzlich → HAIRTS-likh",
+          "willkommen → vil-KOM-en",
+          "Direktor → dee-REK-tor"
+        ],
       },
       {
         "en": "Wie war Ihr Flug von Frankfurt? Konnten Sie etwas schlafen?",
@@ -4945,7 +5244,12 @@ export const lessons: GermanLesson[] = [
           "Flug → FLÚK",
           "Frankfurt → FRANK-phưt",
           "schlafen → SHLA-phần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Flug → FLOOK — final 'g' devoices to 'k'",
+          "Frankfurt → FRAHNK-foort — 'u' is short",
+          "schlafen → SHLAH-fen"
+        ],
       },
       {
         "en": "Ich habe für Sie eine Übergangswohnung im Stadtzentrum vorbereitet.",
@@ -4954,7 +5258,12 @@ export const lessons: GermanLesson[] = [
           "Übergangswohnung → UY-bờ-gangs-vô-nung",
           "Stadtzentrum → SHTÁT-tsen-trum",
           "vorbereitet → FOA-bê-rai-tệt"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Übergangswohnung → UE-ber-gahngs-voh-noong — 'ü' = pursed lips",
+          "Stadtzentrum → SHTAHT-tsen-troom",
+          "vorbereitet → FOR-buh-ry-tet"
+        ],
       },
       {
         "en": "Falls Sie Hilfe brauchen — sei es Stadtführung, Restaurantempfehlungen oder Kontakt mit dem Werk in Đồng Nai — bin ich jederzeit erreichbar.",
@@ -4963,7 +5272,12 @@ export const lessons: GermanLesson[] = [
           "Stadtführung → SHTÁT-fuy-rung",
           "Restaurantempfehlungen → res-tô-RANG-em-fê-lung-ần",
           "erreichbar → e-RAI-khba"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Stadtführung → SHTAHT-fue-roong",
+          "Restaurantempfehlungen → res-toh-RAHNG-emp-fay-loong-en",
+          "erreichbar → air-RYKH-bar"
+        ],
       },
       {
         "en": "Heute Abend würde ich Ihnen gerne ein authentisches vietnamesisches Restaurant vorstellen — falls das in Ihren Zeitplan passt.",
@@ -4972,81 +5286,98 @@ export const lessons: GermanLesson[] = [
           "authentisches → ao-TEN-ti-shès",
           "vietnamesisches → vi-ết-na-MÊ-zi-shès",
           "Zeitplan → TSAIT-plan"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "authentisches → ow-TEN-tish-es",
+          "vietnamesisches → vee-et-nah-MAY-zish-es",
+          "Zeitplan → TSYT-plahn"
+        ],
       }
     ],
     "cultural_notes_vi": "Đón sếp Đức sang VN khác văn hoá đón khách VN truyền thống ở năm điểm. (1) ÍT NGHI LỄ: người Đức đánh giá cao tính HIỆU QUẢ hơn nghi thức tiếp đón long trọng. KHÔNG cần đoàn nhân viên ra sân bay với hoa, biểu ngữ — chỉ cần 1-2 người, đúng giờ, với phương tiện thoải mái. (2) TIME ZONE QUAN TRỌNG: chuyến bay Frankfurt-HCM mất 11 giờ + 5h chênh giờ. Sếp Đức có thể KIỆT SỨC. Đừng book họp ngay; cho 1 ngày nghỉ jet lag. (3) TỰ DO LỊCH CÁ NHÂN: người Đức không expect bạn ở cùng cả ngày. Họ thích có TỰ DO buổi tối, cuối tuần. Đề xuất KHÔNG ÁP ĐẶT: 'Falls Sie Lust haben...'. (4) THỰC ĐƠN CẨN THẬN: nhiều người Đức KHÔNG ăn được đồ cay/đồ tươi sống VN. Hỏi trước về preferences và allergies. (5) THANH TOÁN: ở các bữa ăn business, sếp Đức có thể tự trả phần mình. KHÔNG ép họ để bạn trả; có thể bị coi là khó chịu.\n\nKhác Việt Nam: ở VN, đón khách trang trọng = tôn trọng; ở Đức, đón khách HIỆU QUẢ + tôn trọng tự do cá nhân = tôn trọng.\n\nTại công ty Đức ở VN (Bosch, Siemens, BASF), nhân viên VN thường xuyên đón đoàn từ HQ — đây là kỹ năng then chốt. Sếp Đức chú ý các chi tiết: bạn có ON TIME đón sân bay không, bạn có cung cấp WiFi password ngay không, bạn có hỏi về preferences trước hay không.",
+    "cultural_notes_en": "Hosting a German boss in Vietnam differs from traditional Vietnamese (or US Southern) host culture on five fronts. (1) FEWER CEREMONIES. Germans value EFFICIENCY over ceremonial reception. You do NOT need a delegation at the airport with flowers and banners — one or two people, on time, with comfortable transport is enough. (2) TIME ZONES BITE. Frankfurt → Ho Chi Minh City is 11 hours flying plus a 5-hour shift. Your boss may be exhausted. Don't book meetings on arrival day; let them recover from jet lag for at least 24 hours. (3) PERSONAL FREEDOM. Germans don't expect you to be glued to them all day. They want FREE EVENINGS and weekends. Frame everything as 'Falls Sie Lust haben…' rather than as a fixed schedule. (4) MENU CARE. Many German visitors can't easily handle spicy or raw Vietnamese food. Ask about dietary restrictions and allergies in advance. (5) BILL PAYING. At business meals German colleagues may try to pay their own share. Don't insist they let you cover it; that can feel uncomfortable to them.\n\nWhere this differs from VN host norms: in Vietnam ceremonious reception = respect; in Germany efficient hosting + respecting the guest's free time = respect.\n\nAt German subsidiaries in Vietnam (Bosch, Siemens, BASF), local employees routinely host HQ delegations — this is a key skill. German visitors notice the small things: were you ON TIME at the airport, did you offer the WiFi password proactively, did you ask about preferences before they had to.",
     "tip_advice_vi": "1 tuần trước khi sếp đến: (1) Gửi email itinerary chi tiết bằng tiếng Đức — flight số, time pickup, khách sạn, agenda từng ngày, dress code mỗi sự kiện. (2) Hỏi 4 câu: dietary restrictions, jet lag preference, interest in cultural activities, giờ giấc preferred. (3) Có Plan B cho mỗi hoạt động.\n\nKhi sếp đến (sân bay): (1) Đến SỚM 30 phút. (2) Cầm bảng tên ở Arrival gate — không cần hoa. (3) Có WiFi password sẵn để chia, có chai nước trong xe. (4) Câu mở đầu chuẩn: 'Herzlich willkommen, Herr/Frau X. Wie war Ihr Flug?'.\n\nTrong tuần (mỗi ngày): (1) Daily check-in 5 phút buổi sáng. (2) Để sếp 1-2 giờ tự do mỗi ngày. (3) Tối, hỏi 'Möchten Sie heute Abend mit dem Team essen oder lieber alleine?'. (4) Hỗ trợ chủ động về thủ tục.\n\nTránh: (1) Đón quá đông người; (2) Lịch họp/ăn liên tục từ 8h-22h; (3) Order toàn đồ exotic; (4) Ép sếp uống bia VN style; (5) Giả định sếp muốn shopping, massage, spa — hỏi trước.\n\nKhi sếp về: (1) Đưa ra sân bay đúng giờ. (2) Gửi email follow-up trong 24h: cảm ơn về chuyến đi, summary action items. (3) Sau 1 tuần, hỏi 'Sind Sie gut in Deutschland angekommen?'.",
+    "tip_advice_en": "One week before the boss arrives: (1) Email a detailed itinerary in German — flight number, pickup time, hotel, agenda for each day, dress code for each event. (2) Ask four questions: dietary restrictions, jet-lag preference, interest in cultural activities, preferred working hours. (3) Have a plan B for every activity.\n\nAt the airport: (1) Arrive 30 minutes EARLY. (2) Hold a name sign at Arrivals — no flowers needed. (3) Have the WiFi password ready and a water bottle in the car. (4) Standard opener: 'Herzlich willkommen, Herr/Frau X. Wie war Ihr Flug?'.\n\nDuring the week: (1) Five-minute morning check-in. (2) Leave the boss one or two free hours each day. (3) In the evening ask: 'Möchten Sie heute Abend mit dem Team essen oder lieber alleine?'. (4) Help proactively with paperwork.\n\nAvoid: (1) An over-sized welcome party; (2) Meetings/meals back-to-back 8 am–10 pm; (3) Ordering only exotic food; (4) Pushing Vietnamese-style beer drinking; (5) Assuming they want shopping/massage/spa — ask first.\n\nDeparture: (1) Drive to the airport on time. (2) Within 24 hours send a follow-up email: thank them, summarise action items. (3) After one week, check: 'Sind Sie gut in Deutschland angekommen?'.",
     "vocabulary": [
       {
         "word": "der/die Direktor:in",
         "en": "director",
         "vi": "giám đốc",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe đi-RẾC-toa"
+        "pronunciation_vi": "đe đi-RẾC-toa",
+        "pronunciation_en": "dair dee-REK-tor — director (masc.) / dee dee-REK-toh-rin (fem.)",
       },
       {
         "word": "die Übergangswohnung",
         "en": "interim accommodation",
         "vi": "nhà ở tạm trú",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UY-bờ-gangs-vô-nung"
+        "pronunciation_vi": "đi UY-bờ-gangs-vô-nung",
+        "pronunciation_en": "dee UE-ber-gahngs-voh-noong — interim accommodation",
       },
       {
         "word": "die Stadtführung",
         "en": "city tour",
         "vi": "tour tham quan thành phố",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHTÁT-fuy-rung"
+        "pronunciation_vi": "đi SHTÁT-fuy-rung",
+        "pronunciation_en": "dee SHTAHT-fue-roong — city tour",
       },
       {
         "word": "der Zeitplan",
         "en": "schedule, itinerary",
         "vi": "lịch trình",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe TSAIT-plan"
+        "pronunciation_vi": "đe TSAIT-plan",
+        "pronunciation_en": "dair TSYT-plahn — schedule, itinerary",
       },
       {
         "word": "der Jetlag",
         "en": "jet lag",
         "vi": "lệch múi giờ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe DJÉT-lếc"
+        "pronunciation_vi": "đe DJÉT-lếc",
+        "pronunciation_en": "dair JET-lek — jet lag (English loan)",
       },
       {
         "word": "die Gastfreundschaft",
         "en": "hospitality",
         "vi": "sự hiếu khách",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi GÁST-froind-shaft"
+        "pronunciation_vi": "đi GÁST-froind-shaft",
+        "pronunciation_en": "dee GAHST-froynd-shahft — hospitality",
       },
       {
         "word": "die Empfehlung aussprechen",
         "en": "to make a recommendation",
         "vi": "đưa ra gợi ý",
         "pos": "verb phrase",
-        "pronunciation_vi": "ent-FÊ-lung AOS-shprê-khần"
+        "pronunciation_vi": "ent-FÊ-lung AOS-shprê-khần",
+        "pronunciation_en": "dee emp-FAY-loong OWS-shprekh-en — to make a recommendation",
       },
       {
         "word": "sich akklimatisieren",
         "en": "to acclimatize",
         "vi": "thích nghi (khí hậu)",
         "pos": "verb (refl)",
-        "pronunciation_vi": "zịch a-kli-ma-ti-ZÍA-ần"
+        "pronunciation_vi": "zịch a-kli-ma-ti-ZÍA-ần",
+        "pronunciation_en": "zikh ah-klee-mah-tee-ZEE-ren — to acclimatize (reflexive)",
       },
       {
         "word": "etw. arrangieren",
         "en": "to arrange something",
         "vi": "sắp xếp việc gì",
         "pos": "verb",
-        "pronunciation_vi": "a-rang-ZÍA-ần"
+        "pronunciation_vi": "a-rang-ZÍA-ần",
+        "pronunciation_en": "ah-rahn-ZHEE-ren — to arrange (French loan, kept the soft 'g')",
       },
       {
         "word": "der erste Eindruck",
         "en": "first impression",
         "vi": "ấn tượng đầu tiên",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe ÉS-tê AIN-đruc"
+        "pronunciation_vi": "đe ÉS-tê AIN-đruc",
+        "pronunciation_en": "dair AIR-stuh EYN-drook — first impression",
       }
     ],
     "dialogue": [
@@ -5164,36 +5495,46 @@ export const lessons: GermanLesson[] = [
       "Sau 3 ngày, sếp Đức nói 'Frau Linh, ich finde, das vietnamesische Essen ist auf Dauer zu schwer für mich — gibt es etwas Leichteres?'. Hãy xử lý không tự ái — đề xuất các lựa chọn (salad, fish, soup, vegetarian options), gợi ý nhà hàng phương Tây tốt ở quận 1 (Pizza 4P's, L'Usine), và đảm bảo các bữa còn lại đa dạng hơn."
     ],
     "register_notes": "Đón sếp Đức ở VN có quy tắc tế nhị riêng. (1) FORMAL TUYỆT ĐỐI khi gặp lần đầu: 'Herr Direktor Schmidt' — full title + name. KHÔNG bao giờ chỉ 'Herr Schmidt' khi sếp có chức danh, KHÔNG nói tên riêng (Klaus) trừ khi sếp explicitly đề nghị. (2) KONJUNKTIV II là chuẩn cho mọi đề xuất: 'Möchten Sie...?' (anh có muốn...?), 'Wäre es Ihnen recht, wenn...?' (anh thấy ổn nếu...?), 'Würden Sie lieber...?' (anh thích hơn...?). KHÔNG dùng plain form ('Wir essen jetzt') — quá thẳng, không cho lựa chọn. (3) NGÔN NGỮ TÔN TRỌNG TỰ DO: 'Falls Sie Lust haben' (nếu anh có hứng), 'Sollten Sie Zeit haben' (nếu anh có thời gian), 'Es liegt ganz bei Ihnen' (hoàn toàn tuỳ anh) — báo hiệu bạn KHÔNG ép buộc. Người Đức ghét cảm giác bị 'controlled' bởi host. (4) ENGLISH FALLBACK: nếu sếp đang khó nghe Đức (vì Jetlag hoặc accent), CHUYỂN sang Anh tự nhiên — không có ego về language proficiency.\n\nNgoại lệ ở môi trường startup, IT trẻ Đức tại VN: nếu sếp cùng tuổi/trẻ hơn, sau buổi gặp đầu có thể chuyển sang du. Quy tắc: chờ sếp đề nghị TRƯỚC, không tự chuyển.\n\nKhác Việt Nam: ở VN, đón khách = bạn lo MỌI thứ, khách không phải nghĩ; ở Đức, đón khách = bạn cung cấp options, khách CHỌN.",
+    "register_notes_en": "Hosting a German boss in Vietnam has its own delicate rules. (1) FULL FORMAL on first meeting: 'Herr Direktor Schmidt' — full title + name. NEVER just 'Herr Schmidt' when the boss has a title; NEVER use the first name (Klaus) unless explicitly invited. (2) KONJUNKTIV II IS DEFAULT for every suggestion: 'Möchten Sie…?', 'Wäre es Ihnen recht, wenn…?', 'Würden Sie lieber…?'. Do NOT use the plain form ('Wir essen jetzt') — it's too direct, offers no choice. (3) RESPECT-FOR-AUTONOMY LANGUAGE: 'Falls Sie Lust haben', 'Sollten Sie Zeit haben', 'Es liegt ganz bei Ihnen' — signals you are NOT pushing. Germans dislike feeling 'controlled' by a host. (4) ENGLISH FALLBACK: if the boss is struggling with German (jetlag, your accent), switch to English naturally — no ego about language proficiency.\n\nException in young/IT/startup environments: if the boss is your age or younger, after the first meeting they may switch to 'du'. Rule: wait for THEM to propose it, never switch on your own.\n\nHow this differs from VN host norms: in Vietnam, hosting = you take care of EVERYTHING, the guest doesn't have to think; in Germany, hosting = you provide OPTIONS, the guest CHOOSES.",
     "idiom_glosses": [
       {
         "idiom": "Höflichkeit ist eine Tugend",
         "literal": "Lịch sự là đức tính",
         "meaning": "Lịch sự là phẩm chất quan trọng. Câu thành ngữ thường được dùng để khen thái độ chuẩn mực.",
-        "example": "Ihre Aufmerksamkeit zeigt: Höflichkeit ist eine Tugend."
+        "meaning_en": "Politeness is a virtue — a standard line, often used to compliment proper conduct.",
+        "example": "Ihre Aufmerksamkeit zeigt: Höflichkeit ist eine Tugend.",
+        "example_en": "Your attention to detail shows: politeness really is a virtue.",
       },
       {
         "idiom": "Pünktlichkeit ist die Höflichkeit der Könige",
         "literal": "Đúng giờ là phép lịch sự của vua",
         "meaning": "Đúng giờ là phẩm chất cao quý — câu thành ngữ Đức nổi tiếng. Người Đức coi đúng giờ là biểu hiện tôn trọng nghiêm túc; trễ 5 phút có thể bị coi là thiếu chuyên nghiệp.",
-        "example": "Wir holen Sie 30 Minuten vor Ankunft ab — Pünktlichkeit ist die Höflichkeit der Könige."
+        "meaning_en": "Punctuality is the politeness of kings — a well-known German proverb. Germans treat punctuality as a serious sign of respect; being 5 minutes late can already read as unprofessional.",
+        "example": "Wir holen Sie 30 Minuten vor Ankunft ab — Pünktlichkeit ist die Höflichkeit der Könige.",
+        "example_en": "We will pick you up 30 minutes before arrival — punctuality is the politeness of kings.",
       },
       {
         "idiom": "Direktheit schätzen",
         "literal": "Đánh giá cao sự trực tiếp",
         "meaning": "Coi trọng sự thẳng thắn. Văn hoá Đức đặt trực tiếp lên cao — host VN nên báo hiệu hiểu điều này.",
-        "example": "Im Geschäftsleben muss man Direktheit schätzen."
+        "meaning_en": "To appreciate directness — to value plain speaking. German culture puts directness high; a Vietnamese host should signal awareness of this.",
+        "example": "Im Geschäftsleben muss man Direktheit schätzen.",
+        "example_en": "In business one must appreciate directness.",
       },
       {
         "idiom": "Einen guten ersten Eindruck hinterlassen",
         "literal": "Để lại ấn tượng đầu tốt",
         "meaning": "Tạo ấn tượng đầu tốt — câu cửa miệng cho mọi cuộc gặp đầu tiên. Trong context đón sếp: cố gắng để 'erste Eindruck' tích cực vì khó sửa sau.",
-        "example": "Der erste Eindruck zählt — wir wollen einen guten ersten Eindruck hinterlassen."
+        "meaning_en": "To leave a good first impression — the catchphrase for any first encounter. When hosting a boss, you want 'erste Eindruck' to land positively because it's hard to correct later.",
+        "example": "Der erste Eindruck zählt — wir wollen einen guten ersten Eindruck hinterlassen.",
+        "example_en": "First impressions count — we want to leave a good first impression.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi đón sếp Đức:",
+        "instruction_en": "Fill in the appropriate phrase for hosting a German boss:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "host register"
@@ -5220,6 +5561,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng đón khách:",
+        "instruction_en": "Match each German sentence to its host function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5243,6 +5585,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở khi đón khách:",
+        "instruction_en": "Translate into formal German for hosting a guest:",
         "pronunciation_focus": [
           "Sie + Konjunktiv II"
         ],
@@ -5281,7 +5624,12 @@ export const lessons: GermanLesson[] = [
           "weiten Weg → VAI-tần VÊK",
           "Hamburg → HAM-bưrk",
           "auf sich genommen → AOF zịch gờ-NÔ-mần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "weiten Weg → VY-ten VAYK",
+          "Hamburg → HAHM-boorg",
+          "auf sich genommen → owf zikh guh-NOM-en"
+        ],
       },
       {
         "en": "Unser Werksrundgang dauert etwa zwei Stunden — wir besuchen drei Produktionslinien.",
@@ -5290,7 +5638,12 @@ export const lessons: GermanLesson[] = [
           "Werksrundgang → VEKS-runt-gang",
           "Produktionslinien → prô-đúc-tsi-ônss-li-ni-ần",
           "etwa → ÉT-va"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Werksrundgang → VAIRKS-roont-gahng",
+          "Produktionslinien → proh-dook-tsee-OHNS-lee-nee-en",
+          "etwa → ET-vah"
+        ],
       },
       {
         "en": "Bevor wir mit den Verhandlungen beginnen, möchte ich unser Qualitätsversprechen mit Hand und Fuß belegen.",
@@ -5299,7 +5652,12 @@ export const lessons: GermanLesson[] = [
           "Verhandlungen → fe-HAN-đlung-ần",
           "Qualitätsversprechen → KVA-li-té-ts-fe-shprê-khần",
           "Hand und Fuß → HANT und FUS"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Verhandlungen → fair-HAHND-loong-en",
+          "Qualitätsversprechen → kvah-lee-TAYTS-fair-shprekh-en",
+          "Hand und Fuß → HAHNT oont FOOS"
+        ],
       },
       {
         "en": "Lassen Sie uns offen sprechen — wo sehen Sie noch Verbesserungspotenzial?",
@@ -5308,7 +5666,12 @@ export const lessons: GermanLesson[] = [
           "offen → ÔF-fần",
           "Verbesserungspotenzial → fe-BÉ-sê-rungs-pô-ten-tsi-al",
           "sprechen → SHPRÊ-khần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "offen → OF-en",
+          "Verbesserungspotenzial → fair-BES-er-oongs-poh-ten-tsee-ahl",
+          "sprechen → SHPREKH-en"
+        ],
       },
       {
         "en": "Wir spielen mit offenen Karten: hier sind unsere Margen, unsere Lieferzeiten und unsere Engpässe.",
@@ -5317,81 +5680,98 @@ export const lessons: GermanLesson[] = [
           "offenen Karten → ÔF-ê-nần KAT-tần",
           "Margen → MAR-gần",
           "Engpässe → ENG-pê-sê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "offenen Karten → OF-en-en KAR-ten",
+          "Margen → MAR-gen (French loan, soft 'g')",
+          "Engpässe → ENG-pes-uh"
+        ],
       }
     ],
     "cultural_notes_vi": "Tiếp đón khách hàng Đức ở VN khác client VN ở năm điểm cốt lõi. (1) BUSINESS-FIRST, NOT RELATIONSHIP-FIRST: ở VN, mối quan hệ được build TRƯỚC business — đi ăn nhậu, karaoke, gift exchange. Ở Đức, business được làm TRƯỚC, mối quan hệ build SAU qua việc làm việc cùng. KHÔNG ép sếp Đức đi karaoke vào ngày đầu. (2) FACTS OVER FEELINGS: trong sales pitch, Đức đánh giá cao DỮ LIỆU CỤ THỂ (ROI, lead time, defect rate %, certifications) hơn câu chuyện cảm xúc. (3) PUSHBACK = INTEREST: nếu khách Đức challenge mạnh, đặt câu hỏi khó về giá cả/quality, đó là DẤU HIỆU TÍCH CỰC — họ đang serious. (4) GIFTS NHỎ + Ý NGHĨA: tránh quà đắt tiền (có thể bị coi là bribery — đặc biệt với công ty Đức tuân thủ German Anti-Corruption Act). Quà có ý nghĩa văn hoá nhỏ (sách về VN, cà phê G7 đặc sản, lụa nhẹ) — < 50 EUR là an toàn. (5) HỢP ĐỒNG VIẾT TAY ĐẦY ĐỦ: thoả thuận miệng KHÔNG có giá trị với khách Đức. Mọi cam kết phải đi vào MOU/contract.\n\nKhác VN: ở VN, host phải show hospitality bằng việc chi tiền (bữa ăn đắt, quà to, karaoke); ở Đức, hospitality = professionalism + clarity + respecting client's time/preferences.\n\nỞ công ty Đức tại VN, nhân viên VN thường xuyên host clients từ Đức/Áo/Thuỵ Sĩ. Pattern thường gặp: client đến 3-5 ngày, kết hợp factory tour + meeting + 1 social dinner + 1 cultural activity.\n\nMột chi tiết quan trọng: nếu khách Đức nói 'Wir spielen mit offenen Karten' (chúng tôi chơi bài ngửa), đó là invitation cho bạn cũng radical-honest. Đáp lại bằng cùng style, không vòng vo.",
+    "cultural_notes_en": "Hosting a German business client in Vietnam differs from hosting a Vietnamese (or East Asian) client on five core points. (1) BUSINESS-FIRST, NOT RELATIONSHIP-FIRST. In Vietnam relationships are built BEFORE business — dinners, karaoke, gifts. With German clients business is done first, the relationship grows out of working together. Do NOT push your German visitor into karaoke on day one. (2) FACTS OVER FEELINGS. In a sales pitch Germans rate hard data (ROI, lead time, defect rate %, certifications) over emotional storytelling. (3) PUSHBACK = INTEREST. If the German client pushes hard, asks tough questions about price or quality — that is a POSITIVE sign, they are seriously evaluating. (4) SMALL, MEANINGFUL GIFTS. Avoid expensive gifts (can read as bribery — especially with companies under the German Anti-Corruption Act). Culturally meaningful small gifts (a book about Vietnam, premium G7 coffee, a light silk item) under €50 are safe. (5) WRITTEN CONTRACTS. Verbal agreements have NO weight for German clients. Every commitment goes into an MOU or contract.\n\nWhere this differs from VN norms: in Vietnam, hospitality is shown by spending (expensive meals, big gifts, karaoke); for Germans, hospitality = professionalism + clarity + respecting the client's time and preferences.\n\nAt German subsidiaries in Vietnam, local staff host clients from Germany/Austria/Switzerland routinely. A common pattern: a 3–5 day visit covering factory tour + meetings + one social dinner + one cultural activity.\n\nOne crucial detail: if a German client says 'Wir spielen mit offenen Karten' ('we play with open cards'), that is an INVITATION for you to be radically honest too. Reply in the same register — no euphemism.",
     "tip_advice_vi": "1 tuần trước (preparation): (1) Gửi agenda chi tiết bằng Đức — flight pickup, hotel, factory tour timing, meeting topics, social dinner. (2) Chuẩn bị deck pitch bằng Đức (tránh lỗi grammar — nhờ native review). (3) Có sẵn bằng chứng quality (certifications, defect data, customer references). (4) Brief team (factory tour guides, technicians) về client's interests và sensitivities.\n\nDuring visit: (1) Đón sân bay đúng giờ. (2) Ngày 1: light schedule + welcome dinner. (3) Ngày 2-3: factory tour + meetings (deep work). (4) Ngày 4: cultural activity nếu khách muốn. (5) Ngày cuối: wrap-up meeting + đưa sân bay.\n\nDuring meetings: (1) Mở đầu bằng business cards + smalltalk ngắn. (2) Vào pitch trong 5 phút sau smalltalk. (3) Trình bày data first, story second. (4) Khi khách hỏi khó, đừng defensive — answer thẳng, admit limitations nếu có. (5) Để khách dẫn dắt pace của negotiations.\n\nTránh: (1) Karaoke vào dinner đầu; (2) Tour quận du lịch quá nhiều; (3) Quá nhiều quà; (4) Ép uống bia kiểu VN; (5) Sales pitch trong dinner — keep dinner relationship-building.\n\nFollow-up: (1) Trong 24h sau khi khách về: email cảm ơn + meeting summary + next steps. (2) Trong 1 tuần: gửi MOU draft hoặc revised contract. (3) Sau 1 tháng: check-in proactively về implementation.",
+    "tip_advice_en": "One week before (preparation): (1) Send a detailed agenda in German — flight pickup, hotel, factory-tour timing, meeting topics, social dinner. (2) Prepare the pitch deck in German (avoid grammar errors — get a native to review). (3) Have evidence of quality ready (certifications, defect data, customer references). (4) Brief the team (tour guides, technicians) on the client's interests and sensitivities.\n\nDuring the visit: (1) On-time pickup at the airport. (2) Day 1: light schedule + welcome dinner. (3) Days 2–3: factory tour + meetings (deep work). (4) Day 4: cultural activity if they want one. (5) Last day: wrap-up meeting + airport drop-off.\n\nDuring meetings: (1) Open with business cards and short small talk. (2) Get into the pitch within 5 minutes. (3) Data first, story second. (4) When the client asks something hard, don't get defensive — answer straight, admit limitations if there are any. (5) Let the client set the pace of the negotiation.\n\nAvoid: (1) Karaoke at the first dinner; (2) Excessive tourist sightseeing; (3) Too many gifts; (4) Vietnamese-style forced toasting; (5) Sales pitch over dinner — keep dinner for relationship-building.\n\nFollow-up: (1) Within 24 hours after they leave: a thank-you email + meeting summary + next steps. (2) Within one week: send the MOU draft or revised contract. (3) After one month: proactive check-in on implementation.",
     "vocabulary": [
       {
         "word": "der/die Geschäftspartner:in",
         "en": "business partner",
         "vi": "đối tác kinh doanh",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe gờ-SHEFTS-pat-nờ"
+        "pronunciation_vi": "đe gờ-SHEFTS-pat-nờ",
+        "pronunciation_en": "dair guh-SHEFTS-part-ner — business partner",
       },
       {
         "word": "der Werksrundgang",
         "en": "factory tour",
         "vi": "tour nhà máy",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe VEKS-runt-gang"
+        "pronunciation_vi": "đe VEKS-runt-gang",
+        "pronunciation_en": "dair VAIRKS-roont-gahng — factory tour ('Werks' = factory + 'Rundgang' = walk-around)",
       },
       {
         "word": "die Verhandlung",
         "en": "negotiation",
         "vi": "đàm phán",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-HAN-đlung"
+        "pronunciation_vi": "đi fe-HAN-đlung",
+        "pronunciation_en": "dee fair-HAHND-loong — negotiation",
       },
       {
         "word": "das Qualitätsversprechen",
         "en": "quality commitment",
         "vi": "cam kết chất lượng",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát KVA-li-té-ts-fe-shprê-khần"
+        "pronunciation_vi": "đát KVA-li-té-ts-fe-shprê-khần",
+        "pronunciation_en": "dahs kvah-lee-TAYTS-fair-shprekh-en — quality commitment; 'Qu' = 'kv'",
       },
       {
         "word": "die Lieferzeit",
         "en": "delivery time",
         "vi": "thời gian giao hàng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi LÍ-fê-tsait"
+        "pronunciation_vi": "đi LÍ-fê-tsait",
+        "pronunciation_en": "dee LEE-fer-tsyt — delivery time",
       },
       {
         "word": "die Marge",
         "en": "margin",
         "vi": "biên lợi nhuận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi MAR-gờ"
+        "pronunciation_vi": "đi MAR-gờ",
+        "pronunciation_en": "dee MAR-zhuh — margin (French loan, soft 'g' said like 'zh')",
       },
       {
         "word": "der Engpass",
         "en": "bottleneck",
         "vi": "điểm thắt cổ chai",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe ENG-pas"
+        "pronunciation_vi": "đe ENG-pas",
+        "pronunciation_en": "dair ENG-pahs — bottleneck (literally 'narrow pass')",
       },
       {
         "word": "das Verbesserungspotenzial",
         "en": "improvement potential",
         "vi": "tiềm năng cải thiện",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát fe-BÉ-sê-rungs-pô-ten-tsi-al"
+        "pronunciation_vi": "đát fe-BÉ-sê-rungs-pô-ten-tsi-al",
+        "pronunciation_en": "dahs fair-BES-er-oongs-poh-ten-tsee-ahl — improvement potential",
       },
       {
         "word": "der/die Lieferant:in",
         "en": "supplier",
         "vi": "nhà cung cấp",
         "pos": "noun",
-        "pronunciation_vi": "đe li-fê-RANT"
+        "pronunciation_vi": "đe li-fê-RANT",
+        "pronunciation_en": "dair lee-fer-AHNT — supplier",
       },
       {
         "word": "das Memorandum of Understanding (MoU)",
         "en": "memorandum of understanding",
         "vi": "biên bản ghi nhớ",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát mê-mô-RAN-đum"
+        "pronunciation_vi": "đát mê-mô-RAN-đum",
+        "pronunciation_en": "dahs meh-moh-RAHN-doom of un-der-stahn-ding — memorandum of understanding",
       }
     ],
     "dialogue": [
@@ -5509,36 +5889,46 @@ export const lessons: GermanLesson[] = [
       "Khách Đức tỏ ra concerned về 'Compliance' (chống tham nhũng): 'Wir bei Bosch dürfen keine Geschenke über 30€ annehmen'. Bạn đã chuẩn bị quà silk scarf trị giá 80€. Hãy giải thích lịch sự, đề xuất alternative (gửi đến HR/CSR thay vì cá nhân, hoặc giảm xuống 30€ symbol)."
     ],
     "register_notes": "Tiếp đón business client Đức tại VN — formal nhưng KHÁC formal đón sếp. Client có quyền lực hơn vì họ có thể chọn supplier khác — bạn cần balance giữa CONFIDENT (chứng minh năng lực) và HUMBLE (tôn trọng decision của họ). (1) 'SIE' luôn, kể cả khi khách trẻ. Chỉ chuyển 'du' nếu KHÁCH explicitly đề nghị (rất hiếm trong B2B). (2) BUSINESS LANGUAGE: dùng từ technical Đức chính xác — 'Defect Rate', 'Lieferzeit', 'Marge', 'Engpass', 'Compliance'. Trộn lẫn Anh-Đức là bình thường. (3) DATA-DRIVEN: mọi claim phải có DATA backup. 'Wir sind führend in Qualität' = vague, weak. 'Defect Rate von 0,3% gegenüber Branchenschnitt 0,9%' = strong. (4) ADMIT WEAKNESSES: 'Wir spielen mit offenen Karten — unsere Schwachstelle ist...'. Đây là COUNTER-INTUITIVE cho VN nhưng cực kỳ effective ở Đức.\n\nKhi khách pushback: KHÔNG defensive. Patterns đúng: 'Sie haben einen wichtigen Punkt angesprochen — lassen Sie mich das wie folgt einordnen...'. Pattern sai: 'Aber wir sind besser als...' (defensive comparison).\n\nNgoại lệ ở dinner: tone vẫn formal nhưng softer. Có thể nói chuyện cá nhân (gia đình, hobbies) — short, polite. Tránh sales pitch trong dinner; save cho meetings.\n\nKhác Việt Nam: ở VN, business meeting có thể chuyển thành nhậu nhẹt thân mật; ở Đức, business meeting + business dinner = TWO different modes. Dinner là relationship-building, không phải đàm phán nối tiếp.",
+    "register_notes_en": "Hosting a German business client in Vietnam is formal — but a different formal than hosting your boss. The CLIENT has more leverage because they can choose another supplier — so you have to balance CONFIDENT (proof of capability) with HUMBLE (respect their decision authority). (1) 'SIE' THROUGHOUT, even with a younger client. Switch to 'du' ONLY if the client explicitly proposes it (rare in B2B). (2) BUSINESS LANGUAGE: use the correct German technical terms — 'Defect Rate', 'Lieferzeit', 'Marge', 'Engpass', 'Compliance'. English/German mixing is normal. (3) DATA-DRIVEN CLAIMS: every claim needs data behind it. 'Wir sind führend in Qualität' = vague, weak. 'Defect Rate von 0,3 % gegenüber Branchenschnitt 0,9 %' = strong. (4) ADMIT WEAKNESSES: 'Wir spielen mit offenen Karten — unsere Schwachstelle ist…'. This is counter-intuitive in many Asian B2B cultures but extremely effective in Germany.\n\nWhen the client pushes back: do NOT get defensive. Right pattern: 'Sie haben einen wichtigen Punkt angesprochen — lassen Sie mich das wie folgt einordnen…'. Wrong pattern: 'Aber wir sind besser als…' (defensive comparison).\n\nException at dinner: tone stays formal but softens. Personal topics (family, hobbies) are fine — short and polite. Don't pitch over dinner; save sales talk for meetings.\n\nHow this differs from VN B2B norms: in Vietnam a business meeting can blur into an evening of drinking and become an implicit negotiation; for Germans, business meeting + business dinner = TWO different modes. Dinner is relationship, not extended negotiation.",
     "idiom_glosses": [
       {
         "idiom": "Hand und Fuß haben",
         "literal": "Có tay và chân",
         "meaning": "Có cơ sở vững chắc, có logic và data backup. Trong context business: 'Mein Vorschlag hat Hand und Fuß' = đề xuất của tôi có cơ sở.",
-        "example": "Unser Qualitätsverbesserungs-Programm hat Hand und Fuß — die Daten beweisen es."
+        "meaning_en": "To have hand and foot — to have solid grounding, to be backed by logic and data. In business: 'Mein Vorschlag hat Hand und Fuß' = my proposal is well-founded.",
+        "example": "Unser Qualitätsverbesserungs-Programm hat Hand und Fuß — die Daten beweisen es.",
+        "example_en": "Our quality-improvement programme is well-founded — the data prove it.",
       },
       {
         "idiom": "Nicht um den heißen Brei herumreden",
         "literal": "Không quanh quẩn cháo nóng",
         "meaning": "Vào thẳng vấn đề, không vòng vo. Khi khách Đức nói 'Reden wir nicht um den heißen Brei herum' = mình nói thẳng đi.",
-        "example": "Reden wir nicht um den heißen Brei herum — wo liegt Ihr Engpass?"
+        "meaning_en": "Not to talk around the hot porridge — to get to the point without circling. When a German client says 'Reden wir nicht um den heißen Brei herum', that is a direct request to drop the euphemisms.",
+        "example": "Reden wir nicht um den heißen Brei herum — wo liegt Ihr Engpass?",
+        "example_en": "Let's not beat around the bush — where is your bottleneck?",
       },
       {
         "idiom": "Auf Herz und Nieren prüfen",
         "literal": "Kiểm tra tim và thận",
         "meaning": "Test cực kỳ kỹ lưỡng — không chỉ surface mà sâu. Trong context audit/quality: là dấu hiệu khách serious về relationship dài hạn.",
-        "example": "Vor dem Vertragsabschluss prüfen wir den Lieferanten auf Herz und Nieren."
+        "meaning_en": "To test on heart and kidneys — to scrutinise extremely thoroughly, not just the surface. In audit/quality context, a sign the client is serious about a long-term relationship.",
+        "example": "Vor dem Vertragsabschluss prüfen wir den Lieferanten auf Herz und Nieren.",
+        "example_en": "Before signing the contract we scrutinise the supplier on every detail.",
       },
       {
         "idiom": "Mit offenen Karten spielen",
         "literal": "Chơi với bài ngửa",
         "meaning": "Hoàn toàn minh bạch — show toàn bộ thông tin (margins, costs, weaknesses). Cụm này CỰC KỲ value trong B2B Đức.",
-        "example": "Wir spielen mit offenen Karten: hier sind unsere Margen, unsere Lieferzeiten und unsere Engpässe."
+        "meaning_en": "To play with open cards — full transparency, showing all the information (margins, costs, weaknesses). This phrase is GOLD in German B2B.",
+        "example": "Wir spielen mit offenen Karten: hier sind unsere Margen, unsere Lieferzeiten und unsere Engpässe.",
+        "example_en": "We play with open cards: here are our margins, our delivery times, and our bottlenecks.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi tiếp khách hàng Đức:",
+        "instruction_en": "Fill in the appropriate phrase for hosting a German business client:",
         "pronunciation_focus": [
           "B2B German"
         ],
@@ -5564,6 +5954,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng B2B:",
+        "instruction_en": "Match each German sentence to its B2B function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5587,6 +5978,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức B2B công sở:",
+        "instruction_en": "Translate into B2B German:",
         "pronunciation_focus": [
           "business German"
         ],
@@ -5625,7 +6017,12 @@ export const lessons: GermanLesson[] = [
           "Mittelpunkt → MÍT-tệl-punkt",
           "traditionell → tra-đi-tsi-ô-NEL",
           "westlichen → VES-lích-ần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Mittelpunkt → MIT-tel-poonkt",
+          "traditionell → trah-dee-tsee-oh-NEL",
+          "westlichen → VEST-likh-en"
+        ],
       },
       {
         "en": "Wir sprechen oft nicht direkt 'nein', sondern verwenden indirekte Formulierungen, um das Gesicht des Gegenübers zu wahren.",
@@ -5634,7 +6031,12 @@ export const lessons: GermanLesson[] = [
           "indirekte → in-đi-RẾC-tê",
           "Formulierungen → for-mu-li-RUNG-ần",
           "Gegenübers → gê-gần-UY-bờs"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "indirekte → in-dee-REK-tuh",
+          "Formulierungen → for-moo-lee-ROONG-en",
+          "Gegenübers → gay-gen-UE-bers"
+        ],
       },
       {
         "en": "Hierarchie wird durch die Anrede sichtbar — wir haben unterschiedliche Pronomen je nach Alter und Status.",
@@ -5643,7 +6045,12 @@ export const lessons: GermanLesson[] = [
           "Hierarchie → hi-ê-RAR-ki",
           "Anrede → ÁN-rê-đê",
           "Pronomen → prô-NÔ-mần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Hierarchie → hee-ay-RAR-khee — 'ch' here = 'kh'",
+          "Anrede → AHN-ray-duh",
+          "Pronomen → proh-NOH-men"
+        ],
       },
       {
         "en": "Bei Tisch teilen wir alle Gerichte — jeder nimmt mit Stäbchen aus den gemeinsamen Schüsseln.",
@@ -5652,7 +6059,12 @@ export const lessons: GermanLesson[] = [
           "Tisch → TÍSH",
           "Stäbchen → SHTẾP-khần",
           "Schüsseln → SHUYS-sệln"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Tisch → TISH",
+          "Stäbchen → SHTEP-khen",
+          "Schüsseln → SHUE-seln — 'ü' = pursed lips"
+        ],
       },
       {
         "en": "Beide Kulturen haben ihre Stärken — Direktheit und Höflichkeit müssen sich nicht ausschließen.",
@@ -5661,81 +6073,98 @@ export const lessons: GermanLesson[] = [
           "Stärken → SHTE-kần",
           "Höflichkeit → HƠF-lích-kait",
           "ausschließen → AOS-shli-sần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Stärken → SHTAIR-ken",
+          "Höflichkeit → HURF-likh-kyt — 'ö' = round lips, say 'eh'",
+          "ausschließen → OWS-shlee-sen"
+        ],
       }
     ],
     "cultural_notes_vi": "Giải thích văn hoá VN cho đồng nghiệp Đức là kỹ năng quan trọng — bạn KHÔNG là tour guide, bạn là CULTURAL BRIDGE. Năm điểm cần lưu ý. (1) AVOID STEREOTYPES (cả 2 chiều): KHÔNG nói 'Người Việt luôn...' hoặc 'Người Đức luôn...'. Mỗi cá nhân khác nhau. Pattern đúng: 'In vielen Familien in Vietnam...' thay vì 'Vietnamesen tun immer...'. (2) VALIDATE BOTH PERSPECTIVES: KHÔNG frame văn hoá Đức là 'lạnh lùng' hay văn hoá VN là 'lạc hậu'. Cả hai cách đều có lý do lịch sử + đều legitimate. Tone đúng: 'Beide Kulturen haben ihre Stärken'. (3) USE CONCRETE EXAMPLES: thay vì abstract 'face culture', cho ví dụ cụ thể — 'Khi sếp đề xuất sai, nhân viên không nói thẳng 'Sai' mà nói 'Vâng, em sẽ kiểm tra lại''. (4) EXPLAIN WHY, NOT JUST WHAT: 'Người Việt cởi giày trước khi vào nhà' = bề mặt. 'Vì nhà VN có không gian thờ cúng, đi giày = thiếu tôn trọng tổ tiên + giữ nhà sạch trong khí hậu nhiệt đới' = depth. (5) ACKNOWLEDGE COMPLEXITY: VN không monolithic — Bắc khác Nam, thành thị khác nông thôn, Gen Z khác bố mẹ.\n\nKhác Việt Nam: ở VN, người Việt giải thích văn hoá VN cho người Việt = không cần. Ở Đức/môi trường công sở quốc tế, bạn liên tục là cultural translator — đây là VALUE CỐT LÕI.\n\nMột chi tiết quan trọng: nếu đồng nghiệp Đức hỏi 'Warum sagt mein vietnamesischer Mitarbeiter immer Ja, aber macht es dann nicht?' — không phải insulting question. Đó là họ thành thật cố hiểu. Hãy giải thích face culture, đề xuất cách họ ask better questions ('Bitte erklären Sie mir, wie Sie das umsetzen werden' thay vì 'Verstanden?').",
+    "cultural_notes_en": "Explaining Vietnamese culture to a German colleague is a skill — you are NOT a tour guide, you are a CULTURAL BRIDGE. Five things to keep in mind. (1) AVOID STEREOTYPES (both directions). DON'T say 'Vietnamese people always…' or 'Germans always…'. Every individual is different. Right pattern: 'In many families in Vietnam…' instead of 'Vietnamese always do…'. (2) VALIDATE BOTH PERSPECTIVES. DON'T frame German culture as 'cold' or Vietnamese culture as 'backwards'. Both have historical reasons; both are legitimate. The right tone is 'Beide Kulturen haben ihre Stärken'. (3) USE CONCRETE EXAMPLES. Instead of an abstract concept like 'face culture', give a specific example — 'When the boss proposes something incorrect, the employee doesn't say flatly 'wrong' but says 'I'll check that again''. (4) EXPLAIN WHY, NOT JUST WHAT. 'Vietnamese people take their shoes off before entering a home' = surface. 'Because the home contains an ancestor altar, shoes signal disrespect; also tropical climate + cleanliness' = depth. (5) ACKNOWLEDGE COMPLEXITY. Vietnam is not monolithic — North differs from South, urban from rural, Gen Z from their parents.\n\nWhere this differs from your daily life in Vietnam: Vietnamese explaining Vietnamese culture to Vietnamese is not a skill you need. In Germany or any international office, you are constantly a cultural translator — this IS the core value you bring.\n\nOne crucial detail: if a German colleague asks 'Warum sagt mein vietnamesischer Mitarbeiter immer Ja, aber macht es dann nicht?' — that is NOT an insulting question. They are genuinely trying to understand. Explain face culture, and offer them better question forms ('Bitte erklären Sie mir, wie Sie das umsetzen werden' instead of 'Verstanden?').",
     "tip_advice_vi": "Khi đồng nghiệp Đức hỏi về văn hoá VN: (1) NGHE TRƯỚC. Họ hỏi gì cụ thể? Nhiều khi câu hỏi là về một incident cụ thể, không phải request academic lecture. (2) CHO 1-2 KEY POINTS, không 10. Người Đức thích structured + concise. (3) DÙNG ANALOGIES familiar với người Đức. 'Tết wie Weihnachten — aber 7 Tage statt 1'.\n\nFraming: (1) Bắt đầu bằng 'In Vietnam ist es so, dass...' — neutral framing. (2) Tránh 'Bei uns ist...' — implies Đức không phải 'của chúng ta'. (3) Tránh 'Im Westen...' — generalises.\n\nKhi gặp khoảnh khắc khó (đồng nghiệp Đức say something potentially insensitive về VN): (1) ASSUME GOOD INTENT trước. (2) GENTLE CORRECTION: 'Das ist ein häufiges Missverständnis — die Realität ist nuancierter'. (3) Cung cấp accurate framing. (4) KHÔNG defensive.\n\nMẹo đặc biệt: dùng câu chuyện CÁ NHÂN ('Meine Großmutter macht Tết so...') — emotional + specific + memorable hơn abstract explanation.\n\nTránh: (1) Show off kiến thức học thuật về văn hoá VN. (2) Hạ thấp văn hoá Đức để nâng VN. (3) Apologize cho điểm 'kém' của VN. (4) Khẳng định 'Sie verstehen das nicht' — patronizing.",
+    "tip_advice_en": "When a German colleague asks about Vietnamese culture: (1) LISTEN FIRST. What are they actually asking about? Often the question is about a specific incident, not a request for an academic lecture. (2) Give ONE OR TWO KEY POINTS, not ten. Germans like structured + concise. (3) USE ANALOGIES that are familiar in Germany. 'Tết is like Christmas — but seven days instead of one'.\n\nFraming: (1) Start with 'In Vietnam ist es so, dass…' — neutral framing. (2) Avoid 'Bei uns ist…' — implies Germany isn't 'ours'. (3) Avoid 'Im Westen…' — generalises.\n\nWhen something awkward comes up (a German colleague says something potentially insensitive about Vietnam): (1) ASSUME GOOD INTENT first. (2) GENTLE CORRECTION: 'Das ist ein häufiges Missverständnis — die Realität ist nuancierter'. (3) Provide accurate framing. (4) Don't get defensive.\n\nSpecial tip: use PERSONAL STORIES ('Meine Großmutter macht Tết so…') — emotional + specific + memorable, better than abstract explanation.\n\nAvoid: (1) Showing off academic knowledge of Vietnamese culture. (2) Putting German culture down to elevate Vietnamese. (3) Apologising for 'weak points' of Vietnam. (4) Telling them 'Sie verstehen das nicht' — patronising.",
     "vocabulary": [
       {
         "word": "der Mittelpunkt",
         "en": "centre, focus",
         "vi": "trung tâm",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe MÍT-tệl-punkt"
+        "pronunciation_vi": "đe MÍT-tệl-punkt",
+        "pronunciation_en": "dair MIT-tel-poonkt — centre, focus",
       },
       {
         "word": "die Hierarchie",
         "en": "hierarchy",
         "vi": "cấp bậc, thứ bậc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi hi-ê-RAR-ki"
+        "pronunciation_vi": "đi hi-ê-RAR-ki",
+        "pronunciation_en": "dee hee-ay-RAR-khee — hierarchy; 'ch' here is hard 'kh'",
       },
       {
         "word": "die Anrede",
         "en": "form of address",
         "vi": "cách xưng hô",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ÁN-rê-đê"
+        "pronunciation_vi": "đi ÁN-rê-đê",
+        "pronunciation_en": "dee AHN-ray-duh — form of address (Sie/du/title)",
       },
       {
         "word": "indirekt formulieren",
         "en": "to formulate indirectly",
         "vi": "diễn đạt gián tiếp",
         "pos": "verb phrase",
-        "pronunciation_vi": "in-đi-RẾC-t for-mu-LÍA-ần"
+        "pronunciation_vi": "in-đi-RẾC-t for-mu-LÍA-ần",
+        "pronunciation_en": "in-dee-REKT for-moo-LEE-ren — to phrase indirectly",
       },
       {
         "word": "das Gesicht wahren",
         "en": "to save face",
         "vi": "giữ thể diện",
         "pos": "verb phrase",
-        "pronunciation_vi": "đát gờ-ZÍCH-t VA-rần"
+        "pronunciation_vi": "đát gờ-ZÍCH-t VA-rần",
+        "pronunciation_en": "dahs guh-ZIKHT VAH-ren — to save face; 'wahren' = preserve",
       },
       {
         "word": "die Stäbchen",
         "en": "chopsticks",
         "vi": "đôi đũa",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi SHTẾP-khần"
+        "pronunciation_vi": "đi SHTẾP-khần",
+        "pronunciation_en": "dee SHTEP-khen — chopsticks (the diminutive of 'Stab' = stick)",
       },
       {
         "word": "die Tradition pflegen",
         "en": "to maintain a tradition",
         "vi": "duy trì truyền thống",
         "pos": "verb phrase",
-        "pronunciation_vi": "tra-đi-TSI-ôn FLÊ-gần"
+        "pronunciation_vi": "tra-đi-TSI-ôn FLÊ-gần",
+        "pronunciation_en": "dee trah-dee-TSEE-ohn FLAY-gen — to maintain a tradition",
       },
       {
         "word": "kollektiv vs. individuell",
         "en": "collective vs individual",
         "vi": "tập thể vs cá nhân",
         "pos": "adj phrase",
-        "pronunciation_vi": "kô-lệc-TÍF / in-đi-vi-đu-EL"
+        "pronunciation_vi": "kô-lệc-TÍF / in-đi-vi-đu-EL",
+        "pronunciation_en": "kol-lek-TEEF / in-dee-vee-doo-EL — collective vs. individual",
       },
       {
         "word": "die Ahnenverehrung",
         "en": "ancestor veneration",
         "vi": "thờ cúng tổ tiên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi A-nần-fê-ê-rung"
+        "pronunciation_vi": "đi A-nần-fê-ê-rung",
+        "pronunciation_en": "dee AH-nen-fair-ay-roong — ancestor veneration",
       },
       {
         "word": "den Kontext erklären",
         "en": "to explain context",
         "vi": "giải thích bối cảnh",
         "pos": "verb phrase",
-        "pronunciation_vi": "đần KÔN-tếc-st e-KLÊ-rần"
+        "pronunciation_vi": "đần KÔN-tếc-st e-KLÊ-rần",
+        "pronunciation_en": "den KON-text air-KLAY-ren — to explain context",
       }
     ],
     "dialogue": [
@@ -5853,36 +6282,46 @@ export const lessons: GermanLesson[] = [
       "Đồng nghiệp Đức tham dự đám cưới của bạn ở VN. Anh ấy bối rối với phong tục (lì xì, hỏi 'Khi nào sinh con?', ăn 7 món). Hãy giải thích nhanh các phong tục anh ấy sẽ gặp + cung cấp 'cheat sheet' câu Đức để anh ấy interact lịch sự."
     ],
     "register_notes": "Giải thích văn hoá VN cho đồng nghiệp Đức có register độc đáo — không phải full formal, không phải casual. Đây là EDUCATIONAL TONE giữa equals. (1) DEPENDS ON RELATIONSHIP: nếu đồng nghiệp đã 'du', dùng 'du'. Nếu mới gặp, 'Sie'. (2) NEUTRAL FRAMING: dùng 'In Vietnam ist es so, dass...' — không 'Bei uns ist...' (implies Đức không phải 'của chúng ta'). Bạn giờ là CULTURAL BRIDGE, có cả hai văn hoá. (3) AVOID SUPERLATIVES: KHÔNG nói 'Vietnamesen sind die höflichsten der Welt' hoặc 'Deutsche sind direkter als jeder andere'. Pattern đúng: 'In meiner Erfahrung...'. (4) WELCOME PUSHBACK: nếu đồng nghiệp Đức challenge — không defensive. (5) USE BOTH LANGUAGES: dạy đồng nghiệp Đức một vài cụm VN — 'Cảm ơn' = Vielen Dank, 'Xin chào' = Hallo.\n\nKhác Việt Nam: ở VN, người Việt giải thích văn hoá VN không phải skill cần luyện. Ở môi trường công sở Đức/quốc tế, đây là COMPETITIVE ADVANTAGE.\n\nNgười Việt thường mắc lỗi: (1) APOLOGIZE cho văn hoá VN — không cần apologize, đó là di sản; (2) IDEALIZE văn hoá Đức — patronizes both sides; (3) ASSUME đồng nghiệp Đức là expert về VN sau khi sống 1 năm — phải tiếp tục educate gentle.",
+    "register_notes_en": "Explaining Vietnamese culture to a German colleague has a unique register — neither fully formal nor casual. It's EDUCATIONAL TONE between equals. (1) DEPENDS ON RELATIONSHIP: if the colleague already uses 'du', use 'du'. If just met, 'Sie'. (2) NEUTRAL FRAMING: use 'In Vietnam ist es so, dass…' — not 'Bei uns ist…' (implies Germany isn't 'ours'). You are now a CULTURAL BRIDGE, you have both cultures. (3) AVOID SUPERLATIVES: DON'T say 'Vietnamesen sind die höflichsten der Welt' or 'Deutsche sind direkter als jeder andere'. Right pattern: 'In meiner Erfahrung…'. (4) WELCOME PUSHBACK: if the colleague challenges you — don't get defensive. (5) USE BOTH LANGUAGES: teach the colleague a few Vietnamese phrases — 'Cảm ơn' = Vielen Dank, 'Xin chào' = Hallo.\n\nHow this differs from life in Vietnam: in Vietnam, explaining Vietnamese culture is not a skill you practise. In a German/international workplace it is a COMPETITIVE ADVANTAGE.\n\nFrequent learner mistakes: (1) APOLOGISING for Vietnamese culture — don't, it's your heritage; (2) IDEALISING German culture — patronises both sides; (3) ASSUMING the German colleague is an expert on Vietnam after living there one year — keep gently educating.",
     "idiom_glosses": [
       {
         "idiom": "Aus dem Bauch heraus",
         "literal": "Từ trong bụng ra",
         "meaning": "Theo trực giác — quyết định không phải data-driven mà gut feel. Khi giải thích sao người VN ra quyết định: đôi khi 'aus dem Bauch heraus' về relationships hơn là logic.",
-        "example": "Vietnamesische Geschäftsleute treffen Entscheidungen oft aus dem Bauch heraus — basierend auf Beziehungen."
+        "meaning_en": "Out of the gut — by intuition. A decision made not from data but from gut feel. Useful when explaining how Vietnamese business people often decide based on relationships rather than pure logic.",
+        "example": "Vietnamesische Geschäftsleute treffen Entscheidungen oft aus dem Bauch heraus — basierend auf Beziehungen.",
+        "example_en": "Vietnamese business people often decide from the gut — based on relationships.",
       },
       {
         "idiom": "Den Nagel auf den Kopf treffen",
         "literal": "Đóng đinh trúng đầu",
         "meaning": "Nói chính xác, hit the nail on the head. Khi đồng nghiệp Đức observe đúng về văn hoá VN.",
-        "example": "Mit deiner Beobachtung über die indirekte Kommunikation hast du den Nagel auf den Kopf getroffen."
+        "meaning_en": "To hit the nail on the head — to say exactly the right thing. Used when a German colleague's observation about Vietnamese culture is spot-on.",
+        "example": "Mit deiner Beobachtung über die indirekte Kommunikation hast du den Nagel auf den Kopf getroffen.",
+        "example_en": "With your observation about indirect communication you have hit the nail on the head.",
       },
       {
         "idiom": "Wie aus dem Ei gepellt",
         "literal": "Như từ trứng bóc ra",
         "meaning": "Ăn mặc gọn gàng, perfect — như mới bóc khỏi vỏ trứng. Mô tả người VN tham dự sự kiện trang trọng.",
-        "example": "Beim Tết-Fest erscheinen alle wie aus dem Ei gepellt."
+        "meaning_en": "As though peeled out of an egg — impeccably groomed, perfect-looking. Describes how Vietnamese people dress for formal events.",
+        "example": "Beim Tết-Fest erscheinen alle wie aus dem Ei gepellt.",
+        "example_en": "At the Tết festival everyone shows up impeccably dressed.",
       },
       {
         "idiom": "Über seinen Schatten springen",
         "literal": "Nhảy qua bóng của chính mình",
         "meaning": "Vượt qua chính mình, làm điều ngược lại bản tính. Khi giải thích cho đồng nghiệp Đức rằng người VN trẻ đang adapt với international workplace.",
-        "example": "Junge Vietnamesen müssen oft über ihren Schatten springen, um direkter zu kommunizieren."
+        "meaning_en": "To jump over one's own shadow — to overcome one's own nature, do the opposite of what comes naturally. Useful when describing how young Vietnamese adapt to international workplaces.",
+        "example": "Junge Vietnamesen müssen oft über ihren Schatten springen, um direkter zu kommunizieren.",
+        "example_en": "Young Vietnamese often have to jump over their own shadow to communicate more directly.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi giải thích văn hoá VN:",
+        "instruction_en": "Fill in the appropriate phrase when explaining Vietnamese culture:",
         "pronunciation_focus": [
           "cultural explanation"
         ],
@@ -5908,6 +6347,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng cultural bridge:",
+        "instruction_en": "Match each German sentence to its cultural-bridge function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5931,6 +6371,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức khi explain VN culture:",
+        "instruction_en": "Translate into German when explaining VN culture:",
         "pronunciation_focus": [
           "cultural register"
         ],
@@ -5969,7 +6410,12 @@ export const lessons: GermanLesson[] = [
           "direktes → đi-RẾC-tès",
           "Wertschätzung → VET-shê-tsung",
           "missverstanden → MÍS-fe-shtan-đần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "direktes → dee-REK-tes",
+          "Wertschätzung → VAIRT-shet-tsoong",
+          "missverstanden → MIS-fair-shtahn-den"
+        ],
       },
       {
         "en": "Wenn du in einem vietnamesischen Meeting kritisierst, lies bitte zwischen den Zeilen — die echte Antwort kommt oft später unter vier Augen.",
@@ -5978,7 +6424,12 @@ export const lessons: GermanLesson[] = [
           "zwischen den Zeilen → TSVI-shần đần TSAI-lần",
           "Antwort → ANT-vot",
           "unter vier Augen → UN-tờ FÍA AO-gần"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "zwischen den Zeilen → TSVISH-en den TSY-len",
+          "Antwort → AHNT-vort",
+          "unter vier Augen → OON-ter FEER OW-gen"
+        ],
       },
       {
         "en": "Pünktlichkeit ist in beiden Kulturen Höflichkeit — aber 'fünf Minuten zu früh' bedeutet etwas Anderes in Hanoi als in Hamburg.",
@@ -5987,7 +6438,12 @@ export const lessons: GermanLesson[] = [
           "Pünktlichkeit → PUYNK-lích-kait",
           "fünf Minuten → FUYNF mi-NÚ-tần",
           "Hamburg → HAM-bưrk"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Pünktlichkeit → PUENKT-likh-kyt — 'ü' = pursed lips",
+          "fünf Minuten → FUENF mee-NOO-ten",
+          "Hamburg → HAHM-boorg"
+        ],
       },
       {
         "en": "Lass uns einen Spiegel vorhalten: was empfinden Deutsche als unhöflich, das Vietnamesen normal finden?",
@@ -5996,7 +6452,12 @@ export const lessons: GermanLesson[] = [
           "Spiegel vorhalten → SHPÍ-gần FOA-hal-tần",
           "empfinden → em-FÍN-đần",
           "unhöflich → UN-hơf-lích"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "Spiegel vorhalten → SHPEE-gel FOR-hahl-ten",
+          "empfinden → emp-FIN-den",
+          "unhöflich → OON-hurf-likh"
+        ],
       },
       {
         "en": "Ich versuche, mit gleicher Münze zurückzuzahlen — wenn du direkt bist, antworte ich direkt.",
@@ -6005,81 +6466,98 @@ export const lessons: GermanLesson[] = [
           "gleicher Münze → GLAI-khờ MUYN-tsê",
           "zurückzuzahlen → tsu-RUC-tsu-tsa-lần",
           "antworte → ANT-vot-tê"
-        ]
+        ],
+        "pronunciation_focus_en": [
+          "gleicher Münze → GLY-kher MUEN-tsuh",
+          "zurückzuzahlen → tsoo-RUEK-tsoo-tsah-len",
+          "antworte → AHNT-vor-tuh"
+        ],
       }
     ],
     "cultural_notes_vi": "German directness vs Vietnamese contextuality KHÔNG phải dichotomy đơn giản — cả hai có nuances. Năm điểm cốt lõi để bridge. (1) DIRECTNESS Ở ĐỨC ≠ RUDENESS: khi sếp Đức nói 'Das ist falsch' trong meeting, đó KHÔNG phải attack cá nhân — chỉ là factual statement. Người Việt mới ở Đức có thể cảm thấy bị humiliate; thực tế người Đức đang RESPECT bạn đủ để nói thẳng. (2) INDIRECTNESS Ở VN ≠ DISHONESTY: khi nhân viên Việt nói 'Em sẽ xem xét' thay vì 'Không khả thi' — đó KHÔNG phải lừa dối, mà là cách giữ thể diện cho cả hai bên. (3) CONTEXT MATTERS: ngay cả ở Đức, có situations indirectness là chuẩn (chia buồn, từ chối lời mời cá nhân). Cả hai văn hoá có CONTEXT-DEPENDENT communication. (4) MEETING vs ONE-ON-ONE: ở VN, public criticism = mất mặt nghiêm trọng. Cùng feedback có thể nói thẳng trong cuộc gặp riêng. Người Đức nên save critical feedback cho 1-on-1 với team VN. (5) WRITTEN vs SPOKEN: người VN có thể CỞI MỞ HƠN qua text/email so với face-to-face.\n\nKhác Việt Nam: ở VN, directness = hierarchy chỉ flow downward (sếp với nhân viên). Ở Đức, directness flow ALL DIRECTIONS — nhân viên có thể (và should) push back với sếp. Người Việt làm việc ở Đức/công ty Đức cần học push back lịch sự, không silence.\n\nỞ công ty Đức tại VN, manager Đức và nhân viên VN cần CONSCIOUSLY adapt. Manager Đức học soften tone trong public, save critique cho 1-on-1. Nhân viên VN học push back hơn, nói 'Ich sehe das anders'. Cả hai meet in middle.",
+    "cultural_notes_en": "German directness vs. Vietnamese contextuality is NOT a clean dichotomy — both have nuance. Five core points for bridging the gap. (1) DIRECTNESS IN GERMANY ≠ RUDENESS. When a German boss says 'Das ist falsch' in a meeting, that is NOT a personal attack — it's a factual statement. A Vietnamese newcomer to Germany may feel humiliated; in reality the German is RESPECTING you enough to be straight. (2) INDIRECTNESS IN VIETNAM ≠ DISHONESTY. When a Vietnamese employee says 'Em sẽ xem xét' instead of 'Không khả thi' — that is NOT deception, it's a way of preserving face for both sides. (3) CONTEXT MATTERS. Even in Germany there are situations where indirectness is the norm (condolences, declining a personal invitation). Both cultures have CONTEXT-DEPENDENT communication. (4) MEETING vs. ONE-ON-ONE. In Vietnam public criticism = serious loss of face. The SAME feedback can be delivered directly in a private one-on-one. German managers should save critical feedback for 1-on-1 with their Vietnamese team. (5) WRITTEN vs. SPOKEN. Vietnamese people can be MORE OPEN in writing (email, chat) than in face-to-face conversation.\n\nWhere this differs from a one-way picture: in Vietnam, directness usually flows only downward (boss to employee). In Germany directness flows IN ALL DIRECTIONS — an employee can (and should) push back on the boss. Vietnamese people working at German companies need to learn polite pushback, not silence.\n\nAt German subsidiaries in Vietnam, German managers and Vietnamese employees need to CONSCIOUSLY adapt. The German manager learns to soften tone in public and save critique for 1-on-1. The Vietnamese employee learns to push back more — to say 'Ich sehe das anders'. Both meet in the middle.",
     "tip_advice_vi": "Khi nói chuyện etiquette với đồng nghiệp Đức: (1) FRAME LÀ COMPLEMENT, KHÔNG CONFLICT. 'Direktheit und Höflichkeit müssen sich nicht ausschließen'. (2) GIVE CONCRETE EXAMPLES từ kinh nghiệm cá nhân. 'Letzte Woche im Meeting habe ich beobachtet, dass...'. (3) PRACTICAL SUGGESTIONS, không lecture.\n\nKhi học DIRECTNESS từ người Đức: (1) START SMALL — practice với đồng nghiệp gần (du-relationship), không phải sếp lớn. (2) DÙNG 'I-statements': 'Ich sehe das anders' thay vì 'Das ist falsch'. (3) HỎI thay vì TUYÊN BỐ: 'Hast du daran gedacht, dass...?' hơn là 'Du hast vergessen, dass...'. (4) SEPARATE issue from person: 'Der Vorschlag hat ein Problem' thay vì 'Du machst einen Fehler'.\n\nKhi dạy người Đức về INDIRECTNESS VN: (1) REFRAME như SKILL, không như WEAKNESS. 'Indirekte Kommunikation ist eine Form von emotionaler Intelligenz — sie schützt Beziehungen'. (2) DECODE TÍN HIỆU: dạy người Đức nhận biết 'Em sẽ xem xét' = 'Khó'; 'Hơi khó' = 'Không thể'; 'Em chưa chắc' = 'Em không đồng ý'. (3) CHỌN CHANNEL phù hợp: feedback critical → 1-on-1 hoặc text, không public meeting.\n\nMẹo cho Vietnamese learners ở Đức: (1) Nếu sếp Đức critical về performance, KHÔNG defensive. Nói 'Vielen Dank für das Feedback. Ich gehe darauf ein und melde mich nächste Woche'. (2) Nếu cảm thấy bị attack, hỏi riêng sau. (3) Push back khi cần: 'Ich sehe das anders, weil...' — đây là EXPECTED, không phải rude.\n\nTránh: (1) Self-deprecate ('Sorry, ich bin nur Vietnamesin') — yếu thế. (2) Stereotype Đức là 'lạnh lùng' — defensive. (3) Stereotype VN là 'vòng vo' — patronizing.",
+    "tip_advice_en": "When discussing etiquette with a German colleague: (1) FRAME IT AS COMPLEMENT, NOT CONFLICT. 'Direktheit und Höflichkeit müssen sich nicht ausschließen'. (2) GIVE CONCRETE EXAMPLES from personal experience. 'Letzte Woche im Meeting habe ich beobachtet, dass…'. (3) PRACTICAL SUGGESTIONS, not lectures.\n\nLearning directness from Germans: (1) START SMALL — practise with close colleagues (du-relationship), not the senior boss. (2) Use 'I-statements': 'Ich sehe das anders' instead of 'Das ist falsch'. (3) ASK rather than DECLARE: 'Hast du daran gedacht, dass…?' is better than 'Du hast vergessen, dass…'. (4) SEPARATE issue from person: 'Der Vorschlag hat ein Problem' rather than 'Du machst einen Fehler'.\n\nTeaching Germans about Vietnamese indirectness: (1) REFRAME as a SKILL, not a WEAKNESS. 'Indirekte Kommunikation ist eine Form von emotionaler Intelligenz — sie schützt Beziehungen'. (2) DECODE THE SIGNALS: teach Germans to recognise 'Em sẽ xem xét' = 'difficult'; 'Hơi khó' = 'impossible'; 'Em chưa chắc' = 'I disagree'. (3) PICK THE RIGHT CHANNEL: critical feedback → 1-on-1 or text, not a public meeting.\n\nTip for Vietnamese learners in Germany: (1) If your German boss is critical of your performance, don't get defensive. Say 'Vielen Dank für das Feedback. Ich gehe darauf ein und melde mich nächste Woche'. (2) If you feel attacked, follow up privately afterwards. (3) Push back when needed: 'Ich sehe das anders, weil…' — this is EXPECTED, not rude.\n\nAvoid: (1) Self-deprecation ('Sorry, ich bin nur Vietnamesin') — reads as weak. (2) Stereotyping Germans as 'cold' — defensive. (3) Stereotyping Vietnamese as 'indirect' — patronising.",
     "vocabulary": [
       {
         "word": "die Direktheit",
         "en": "directness",
         "vi": "tính trực tiếp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi đi-RẾC-tê-hait"
+        "pronunciation_vi": "đi đi-RẾC-tê-hait",
+        "pronunciation_en": "dee dee-REK-thyte — directness; abstract noun from 'direkt'",
       },
       {
         "word": "die Wertschätzung",
         "en": "appreciation, esteem",
         "vi": "sự coi trọng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi VET-shê-tsung"
+        "pronunciation_vi": "đi VET-shê-tsung",
+        "pronunciation_en": "dee VAIRT-shet-tsoong — appreciation, esteem",
       },
       {
         "word": "zwischen den Zeilen lesen",
         "en": "to read between the lines (idiom)",
         "vi": "đọc giữa các dòng",
         "pos": "verb phrase",
-        "pronunciation_vi": "TSVI-shần đần TSAI-lần LÊ-zần"
+        "pronunciation_vi": "TSVI-shần đần TSAI-lần LÊ-zần",
+        "pronunciation_en": "TSVISH-en den TSY-len LAY-zen — to read between the lines (idiom)",
       },
       {
         "word": "missverstehen",
         "en": "to misunderstand",
         "vi": "hiểu lầm",
         "pos": "verb",
-        "pronunciation_vi": "MÍS-fe-shtê-ần"
+        "pronunciation_vi": "MÍS-fe-shtê-ần",
+        "pronunciation_en": "MIS-fair-shtay-en — to misunderstand",
       },
       {
         "word": "die Pünktlichkeit",
         "en": "punctuality",
         "vi": "đúng giờ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PUYNK-lích-kait"
+        "pronunciation_vi": "đi PUYNK-lích-kait",
+        "pronunciation_en": "dee PUENKT-likh-kyt — punctuality",
       },
       {
         "word": "etw. empfinden als",
         "en": "to perceive sth. as",
         "vi": "cảm nhận điều gì là",
         "pos": "verb phrase",
-        "pronunciation_vi": "em-FÍN-đần"
+        "pronunciation_vi": "em-FÍN-đần",
+        "pronunciation_en": "et-vahs emp-FIN-den ahls — to perceive something as",
       },
       {
         "word": "der Konfrontationsstil",
         "en": "confrontational style",
         "vi": "phong cách đối đầu",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe kôn-frôn-ta-tsi-ÔNS-stil"
+        "pronunciation_vi": "đe kôn-frôn-ta-tsi-ÔNS-stil",
+        "pronunciation_en": "dair kon-fron-tah-tsee-OHNS-shteel — confrontational style",
       },
       {
         "word": "kontextabhängig",
         "en": "context-dependent",
         "vi": "tuỳ bối cảnh",
         "pos": "adjective",
-        "pronunciation_vi": "kôn-TẾC-st-ap-heng-ích"
+        "pronunciation_vi": "kôn-TẾC-st-ap-heng-ích",
+        "pronunciation_en": "kon-TEKST-ahp-heng-ikh — context-dependent",
       },
       {
         "word": "auf Augenhöhe kommunizieren",
         "en": "to communicate as equals",
         "vi": "giao tiếp ngang hàng",
         "pos": "verb phrase",
-        "pronunciation_vi": "AO-gần-hơ-ê kô-mu-ni-TSÍA-ần"
+        "pronunciation_vi": "AO-gần-hơ-ê kô-mu-ni-TSÍA-ần",
+        "pronunciation_en": "owf OW-gen-hur-uh ko-moo-nee-TSEE-ren — to communicate as equals",
       },
       {
         "word": "ein Missverständnis aus dem Weg räumen",
         "en": "to clear up a misunderstanding",
         "vi": "giải quyết hiểu lầm",
         "pos": "verb phrase",
-        "pronunciation_vi": "MÍS-fe-shten-nis aos đem VÊK ROI-mần"
+        "pronunciation_vi": "MÍS-fe-shten-nis aos đem VÊK ROI-mần",
+        "pronunciation_en": "yne MIS-fair-shtend-nis ows dem VAYK ROY-men — to clear up a misunderstanding",
       }
     ],
     "dialogue": [
@@ -6207,36 +6685,46 @@ export const lessons: GermanLesson[] = [
       "Bạn cần đưa critical feedback cho team Đức về deadline missed (3 lần liên tiếp). Bản năng VN bảo bạn vòng vo. Đồng nghiệp Đức expect directness. Hãy draft cách bạn sẽ open conversation: balance giữa direct (vì văn hoá Đức) và respectful (vì bản chất bạn)."
     ],
     "register_notes": "Etiquette differences là chủ đề tế nhị — bạn cần tone NEUTRAL và TWO-WAY, không 'người Việt phải học người Đức' hay ngược lại. (1) AVOID JUDGMENT WORDS: tránh 'besser/schlechter', 'richtig/falsch' khi compare cultures. Dùng 'unterschiedlich', 'kontextabhängig', 'beide haben ihre Funktion'. (2) ACKNOWLEDGE LIMITATIONS OF YOUR OWN CULTURE: nếu chỉ nói về điểm yếu của Đức, người Đức defensive. Nếu chỉ nói về điểm yếu của VN, bạn self-deprecate. Balance: 'Indirektheit kann zu Missverständnissen führen, aber sie schützt Beziehungen'. (3) SỬ DỤNG 'WIR' framing: 'Wir können beide voneinander lernen'. (4) WHEN GIVING DIRECTNESS COACHING: tone phải warm, không cynical. (5) WHEN RECEIVING DIRECTNESS as VN learner: KHÔNG defensive, KHÔNG over-apologize. Pattern: 'Vielen Dank für das ehrliche Feedback. Ich denke darüber nach.'\n\nKhác Việt Nam: ở VN, etiquette discussions thường happen 1-on-1 với người thân quen, không trong workplace context. Ở môi trường Đức/quốc tế, etiquette discussions là PROFESSIONAL TOPIC.\n\nNgười Việt thường mắc lỗi: (1) idolize directness Đức ('Em ước em direct hơn') — bị coi là self-deprecating; (2) defend indirectness VN aggressively ('Direkt là rude') — alienate German colleagues; (3) avoid topic entirely — miss opportunity to be cultural bridge.",
+    "register_notes_en": "Etiquette differences is a delicate topic — your tone needs to be NEUTRAL and TWO-WAY, not 'Vietnamese must learn from Germans' or vice versa. (1) AVOID JUDGEMENT WORDS: don't use 'besser/schlechter', 'richtig/falsch' when comparing cultures. Use 'unterschiedlich', 'kontextabhängig', 'beide haben ihre Funktion'. (2) ACKNOWLEDGE LIMITATIONS OF YOUR OWN CULTURE: if you only talk about weaknesses of German culture, Germans get defensive. If you only talk about weaknesses of Vietnamese culture, you self-deprecate. Balance: 'Indirektheit kann zu Missverständnissen führen, aber sie schützt Beziehungen'. (3) USE 'WIR' FRAMING: 'Wir können beide voneinander lernen'. (4) WHEN GIVING DIRECTNESS COACHING: tone must be warm, not cynical. (5) WHEN RECEIVING DIRECTNESS AS A VN LEARNER: don't get defensive, don't over-apologise. Pattern: 'Vielen Dank für das ehrliche Feedback. Ich denke darüber nach.'\n\nHow this differs from life in Vietnam: in Vietnam etiquette discussions usually happen 1-on-1 with people you know, not in a workplace context. In a German/international environment, etiquette discussion is a PROFESSIONAL TOPIC.\n\nFrequent learner mistakes: (1) Idolising German directness ('I wish I were more direct') — reads as self-deprecating; (2) Defending Vietnamese indirectness aggressively ('Direkt is rude') — alienates German colleagues; (3) Avoiding the topic entirely — misses the chance to be a cultural bridge.",
     "idiom_glosses": [
       {
         "idiom": "Zwischen den Zeilen lesen",
         "literal": "Đọc giữa các dòng",
         "meaning": "Hiểu ý ngầm — không chỉ đọc bề mặt mà còn understand subtext. Chính xác là kỹ năng mà người Đức cần học khi work với người VN.",
-        "example": "Wenn du mit vietnamesischen Kollegen arbeitest, musst du oft zwischen den Zeilen lesen."
+        "meaning_en": "To read between the lines — to understand the implicit meaning beyond the literal text. The exact skill Germans need to learn when working with Vietnamese colleagues.",
+        "example": "Wenn du mit vietnamesischen Kollegen arbeitest, musst du oft zwischen den Zeilen lesen.",
+        "example_en": "When you work with Vietnamese colleagues, you often have to read between the lines.",
       },
       {
         "idiom": "Jemandem den Spiegel vorhalten",
         "literal": "Đưa gương trước mặt ai",
         "meaning": "Giúp ai nhìn thấy chính mình — phản chiếu hành vi của họ một cách thẳng thắn nhưng không hostile.",
-        "example": "Lass uns einen Spiegel vorhalten: was wirkt in Deutschland normal, in Vietnam aber abrupt?"
+        "meaning_en": "To hold a mirror up to someone — to help them see themselves, to reflect their own behaviour back directly but not hostilely.",
+        "example": "Lass uns einen Spiegel vorhalten: was wirkt in Deutschland normal, in Vietnam aber abrupt?",
+        "example_en": "Let me hold up a mirror: what looks normal in Germany, but abrupt in Vietnam?",
       },
       {
         "idiom": "Mit gleicher Münze zurückzahlen",
         "literal": "Trả lại bằng cùng đồng tiền",
         "meaning": "Đáp lại bằng cùng phong cách. Trong cross-cultural communication: nếu German colleague direct, bạn cũng direct (adapt up).",
-        "example": "Wenn du direkt bist, antworte ich direkt — mit gleicher Münze zurückgezahlt."
+        "meaning_en": "To pay back in the same coin — to respond in the same style. In cross-cultural communication: if a German colleague is direct, you also be direct (adapt up).",
+        "example": "Wenn du direkt bist, antworte ich direkt — mit gleicher Münze zurückgezahlt.",
+        "example_en": "If you're direct, I'll answer directly — paid back in the same coin.",
       },
       {
         "idiom": "Über die Stränge schlagen",
         "literal": "Đập qua dây cương",
         "meaning": "Đi quá xa, vượt giới hạn — đặc biệt về behavior/words. Khi German colleague directness 'über die Stränge schlägt' trong VN context.",
-        "example": "Mit deinem direkten Feedback im Meeting bist du etwas über die Stränge geschlagen."
+        "meaning_en": "To strike beyond the reins — to go too far, cross a line, especially in behaviour or speech. Used when a German colleague's directness 'crosses the line' in a Vietnamese context.",
+        "example": "Mit deinem direkten Feedback im Meeting bist du etwas über die Stränge geschlagen.",
+        "example_en": "With your direct feedback in the meeting you went a bit over the line.",
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp về etiquette differences:",
+        "instruction_en": "Fill in the appropriate phrase about etiquette differences:",
         "pronunciation_focus": [
           "intercultural register"
         ],
@@ -6262,6 +6750,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng intercultural:",
+        "instruction_en": "Match each German sentence to its intercultural function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6285,6 +6774,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức về cross-cultural communication:",
+        "instruction_en": "Translate into German for cross-cultural communication:",
         "pronunciation_focus": [
           "intercultural"
         ],
