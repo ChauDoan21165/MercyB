@@ -665,6 +665,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "protéger→prô-tê-giê",
           "planète→pla-nét"
+        ],
+        "pronunciation_focus_en": [
+          "protéger 'pro-tay-ZHAY' — 'g' before 'e' = 'zh'; '-er' = 'ay'",
+          "planète 'plah-NET' — accent grave on 'è' opens the vowel (rhymes with 'pet'); final '-e' silent"
         ]
       },
       {
@@ -673,6 +677,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "recyclage→rơ-xi-cla-giơ",
           "important→anh-po-tăng"
+        ],
+        "pronunciation_focus_en": [
+          "recyclage 'ruh-see-KLAHZH' — 'cy' = 'see'; final '-age' = 'AHZH'",
+          "important 'an-por-TAHN' — nasal 'im' start, nasal 'an' end; final 't' silent"
         ]
       },
       {
@@ -681,6 +689,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "trie→tri",
           "déchets→đê-chê"
+        ],
+        "pronunciation_focus_en": [
+          "trie 'TREE' — 1st-person of trier; final 'e' silent",
+          "déchets 'day-SHAY' — 'ch' = 'sh' (as in English); final 's' silent"
         ]
       },
       {
@@ -689,6 +701,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "réduire→rê-đuiya",
           "consommation→côn-xô-ma-xi-on"
+        ],
+        "pronunciation_focus_en": [
+          "réduire 'ray-DWEER' — 'ui' = 'wee'; final 'r' is the soft French uvular",
+          "consommation 'kon-soh-mah-SYON' — '-tion' = 'syon'; nasal 'on' both at start and end"
         ]
       },
       {
@@ -697,132 +713,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "changement→săng-giơ-măng",
           "climatique→cli-ma-tíc"
+        ],
+        "pronunciation_focus_en": [
+          "changement 'shahn-zh-MAHN' — 'ch' = 'sh'; 'g' before 'e' = 'zh'; nasal 'en' at end",
+          "climatique 'klee-mah-TEEK' — '-ique' suffix = 'eek' (like English '-ic' but stressed)"
         ]
       }
     ],
     "cultural_notes_vi": "Pháp đi đầu bảo vệ môi trường. Phân loại rác: vàng (bao bì), xanh (thủy tinh), trắng (giấy), nâu (hữu cơ). Cấm túi nhựa một lần.",
+    "cultural_notes_en": "France is genuinely ambitious on environmental policy compared to most English-speaking countries — bans on single-use plastic, mandatory food-waste sorting in apartment buildings, a high-speed train network that makes short-haul flights uncompetitive. Household waste sorting uses color-coded bins: yellow for packaging, green for glass, white for paper, brown for organics. Don't be the foreigner who throws the wine bottle in the yellow bin — neighbors will notice. The conversational topic 'écologie' carries roughly the same weight as politics; people have positions and expect you to have one.",
     "tip_advice_vi": "Dùng 'Il faut' + động từ: Il faut recycler, Il faut économiser l'eau. Đây là chủ đề yêu thích của người Pháp.",
+    "tip_advice_en": "'Il faut' + verb is the workhorse construction for 'one must / we should': Il faut recycler, il faut économiser l'eau, il faut changer nos habitudes. It feels stronger than English 'should' but lighter than 'must' — somewhere in between, and the French use it for general moral oughts. For something narrower to yourself, use 'je dois'. Avoid 'on doit' for personal commitments; it makes you sound like you're lecturing the room.",
     "vocabulary": [
       {
         "word": "l'environnement",
         "en": "environment",
         "vi": "môi trường",
         "pos": "n.m.",
-        "pronunciation_vi": "lăng-vi-rôn-măng"
+        "pronunciation_vi": "lăng-vi-rôn-măng",
+        "pronunciation_en": "lahn-vee-rohn-MAHN — nasal 'en' at the start AND the end; the 'l'' contracts"
       },
       {
         "word": "recycler",
         "en": "to recycle",
         "vi": "tái chế",
         "pos": "v.",
-        "pronunciation_vi": "rơ-xi-clê"
+        "pronunciation_vi": "rơ-xi-clê",
+        "pronunciation_en": "ruh-see-KLAY — 'cy' is just 'see'; '-er' = 'ay'"
       },
       {
         "word": "le déchet",
         "en": "waste",
         "vi": "rác",
         "pos": "n.m.",
-        "pronunciation_vi": "đê-chê"
+        "pronunciation_vi": "đê-chê",
+        "pronunciation_en": "day-SHAY — 'ch' = 'sh' (as in English 'shoe')"
       },
       {
         "word": "le réchauffement",
         "en": "global warming",
         "vi": "nóng lên toàn cầu",
         "pos": "n.m.",
-        "pronunciation_vi": "rê-chô-phơ-măng"
+        "pronunciation_vi": "rê-chô-phơ-măng",
+        "pronunciation_en": "ray-shoh-fuh-MAHN — 'ch' = 'sh'; final 'em' = nasal 'ahn'"
       },
       {
         "word": "la pollution",
         "en": "pollution",
         "vi": "ô nhiễm",
         "pos": "n.f.",
-        "pronunciation_vi": "pô-lu-xi-on"
+        "pronunciation_vi": "pô-lu-xi-on",
+        "pronunciation_en": "poh-loo-SYON — French 'u' (rounded 'ee') in 'lu'; '-tion' = 'syon'"
       },
       {
         "word": "protéger",
         "en": "to protect",
         "vi": "bảo vệ",
         "pos": "v.",
-        "pronunciation_vi": "prô-tê-giê"
+        "pronunciation_vi": "prô-tê-giê",
+        "pronunciation_en": "pro-tay-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
       },
       {
         "word": "l'énergie",
         "en": "energy",
         "vi": "năng lượng",
         "pos": "n.f.",
-        "pronunciation_vi": "lê-ne-gi"
+        "pronunciation_vi": "lê-ne-gi",
+        "pronunciation_en": "lay-nair-ZHEE — 'g' before 'i' = 'zh'; stress on the last syllable"
       },
       {
         "word": "renouvelable",
         "en": "renewable",
         "vi": "tái tạo",
         "pos": "adj.",
-        "pronunciation_vi": "rơ-nu-vơ-la-blơ"
+        "pronunciation_vi": "rơ-nu-vơ-la-blơ",
+        "pronunciation_en": "ruh-noo-vuh-LAH-bluh — final '-able' barely voiced; lots of soft 'uh' vowels"
       },
       {
         "word": "économiser",
         "en": "to save",
         "vi": "tiết kiệm",
         "pos": "v.",
-        "pronunciation_vi": "ê-cô-nô-mi-dê"
+        "pronunciation_vi": "ê-cô-nô-mi-dê",
+        "pronunciation_en": "ay-koh-noh-mee-ZAY — single 's' between vowels = 'z'; '-er' = 'ay'"
       },
       {
         "word": "le climat",
         "en": "climate",
         "vi": "khí hậu",
         "pos": "n.m.",
-        "pronunciation_vi": "cli-ma"
+        "pronunciation_vi": "cli-ma",
+        "pronunciation_en": "klee-MAH — final 't' silent; stress on the last syllable"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Est-ce que tu tries tes déchets chez toi ?",
-        "en": "Do you sort your waste at home?"
+        "en": "Do you sort your waste at home?",
+        "vi": "Bạn có phân loại rác ở nhà không?"
       },
       {
         "speaker": "B",
         "text": "Oui, bien sûr. J'ai trois poubelles différentes.",
-        "en": "Yes, of course. I have three different bins."
+        "en": "Yes, of course. I have three different bins.",
+        "vi": "Có chứ. Mình có ba thùng rác khác nhau."
       },
       {
         "speaker": "A",
         "text": "C'est bien. Moi aussi, j'essaie de réduire le plastique.",
-        "en": "Good. I try to reduce plastic too."
+        "en": "Good. I try to reduce plastic too.",
+        "vi": "Tốt đó. Mình cũng đang cố giảm đồ nhựa."
       },
       {
         "speaker": "B",
         "text": "Chaque petit geste compte pour la planète !",
-        "en": "Every small gesture counts for the planet!"
+        "en": "Every small gesture counts for the planet!",
+        "vi": "Mỗi hành động nhỏ đều ý nghĩa với Trái Đất!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Il faut ___ la planète.",
-        "answer": "protéger"
+        "answer": "protéger",
+        "hint_vi": "động từ nguyên thể — bảo vệ",
+        "hint_en": "infinitive verb — to protect"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "recycler",
-            "tái chế"
+            "tái chế (to recycle)"
           ],
           [
             "économiser",
-            "tiết kiệm"
+            "tiết kiệm (to save)"
           ],
           [
             "la pollution",
-            "ô nhiễm"
+            "ô nhiễm (pollution)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Biến đổi khí hậu là vấn đề nghiêm trọng nhất.",
+        "english": "Climate change is the most serious problem.",
         "french": "Le changement climatique est le problème le plus grave."
       }
     ]
@@ -840,6 +880,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "présenter→prê-dăng-tê",
           "brièvement→bri-è-vơ-măng"
+        ],
+        "pronunciation_focus_en": [
+          "présenter 'pray-zahn-TAY' — single 's' between vowels = 'z'; '-er' = 'ay'",
+          "brièvement 'bree-yev-MAHN' — adverb suffix '-ment' = nasal 'MAHN'"
         ]
       },
       {
@@ -848,6 +892,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "motivations→mô-ti-va-xi-on",
           "nasal on"
+        ],
+        "pronunciation_focus_en": [
+          "motivations 'moh-tee-vah-SYON' — '-tion' = 'syon' (not 'shun')",
+          "nasal 'on' — no English equivalent; vowel held through the nose, the 'n' isn't a consonant"
         ]
       },
       {
@@ -856,6 +904,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "expérience→éc-xpê-ri-ăng",
           "domaine→đô-men"
+        ],
+        "pronunciation_focus_en": [
+          "expérience 'eks-pay-RYAHNSS' — 'x' before 'p' = 'ks'; final 'ence' nasal",
+          "domaine 'doh-MEN' — 'ai' = 'eh' (like 'pet'); final '-e' silent"
         ]
       },
       {
@@ -864,6 +916,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "niveau→ni-vô",
           "français→frăng-xe"
+        ],
+        "pronunciation_focus_en": [
+          "niveau 'nee-VOH' — '-eau' = 'oh' (one syllable)",
+          "français 'frahn-SAY' — nasal 'an'; final 's' silent; the 'ç' is just 's'"
         ]
       },
       {
@@ -872,132 +928,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "pourquoi→pua-qua",
           "travailler→tra-va-iê"
+        ],
+        "pronunciation_focus_en": [
+          "pourquoi 'poor-KWAH' — 'oi' = 'wah'; stress on the last syllable",
+          "travailler 'trah-vah-YAY' — 'ill' between vowels = 'y'; '-er' = 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "CV Pháp có ảnh. Thư xin việc viết tay được đánh giá cao. Hỏi lương bình thường ở vòng 2. Nhà tuyển dụng chú trọng bằng cấp và trường học.",
+    "cultural_notes_en": "French CVs traditionally include a photo (this would be unusual or even illegal-feeling in the US/UK, but it's standard in France), date of birth, and marital status. The lettre de motivation matters; some recruiters still appreciate a handwritten one for certain industries. Salary expectations come up in the second interview, not the first — leading with it reads as crass. French recruiters care intensely about which 'grande école' you attended; this 'school stamp' carries weight throughout your career in a way that fades faster in Anglo cultures.",
     "tip_advice_vi": "Chuẩn bị 3 câu: 'Parlez-moi de vous', 'Vos qualités et défauts', 'Où vous voyez-vous dans 5 ans ?'. Kết thúc 'Je vous remercie pour cet entretien'.",
+    "tip_advice_en": "Prepare polished answers to three questions you'll definitely hear: 'Parlez-moi de vous' (tell me about yourself), 'Vos qualités et vos défauts' (your strengths and weaknesses — yes, weaknesses, plural), 'Où vous voyez-vous dans cinq ans ?' (where do you see yourself in 5 years). Close with 'Je vous remercie pour cet entretien' — formally polite and expected. Address the recruiter as 'vous' unless explicitly invited to switch.",
     "vocabulary": [
       {
         "word": "l'entretien",
         "en": "interview",
         "vi": "phỏng vấn",
         "pos": "n.m.",
-        "pronunciation_vi": "lăng-trơ-tianh"
+        "pronunciation_vi": "lăng-trơ-tianh",
+        "pronunciation_en": "lahn-truh-TYAN — nasal 'en' start; nasal 'ien' = 'yan' at end"
       },
       {
         "word": "le CV",
         "en": "resume",
         "vi": "sơ yếu lý lịch",
         "pos": "n.m.",
-        "pronunciation_vi": "xê-vê"
+        "pronunciation_vi": "xê-vê",
+        "pronunciation_en": "say-VAY — spelled out as letters; in French each letter has a name"
       },
       {
         "word": "la candidature",
         "en": "application",
         "vi": "hồ sơ ứng tuyển",
         "pos": "n.f.",
-        "pronunciation_vi": "căng-đi-đa-tuya"
+        "pronunciation_vi": "căng-đi-đa-tuya",
+        "pronunciation_en": "kahn-dee-dah-TOOR — nasal 'an' at the start; '-ure' = 'oor' with rounded French 'u'"
       },
       {
         "word": "l'expérience",
         "en": "experience",
         "vi": "kinh nghiệm",
         "pos": "n.f.",
-        "pronunciation_vi": "léc-xpê-ri-ăng"
+        "pronunciation_vi": "léc-xpê-ri-ăng",
+        "pronunciation_en": "leks-pay-RYAHNSS — 'x' = 'ks'; nasal 'ence' = 'ahnss'"
       },
       {
         "word": "la compétence",
         "en": "skill",
         "vi": "kỹ năng",
         "pos": "n.f.",
-        "pronunciation_vi": "côm-pê-tăng"
+        "pronunciation_vi": "côm-pê-tăng",
+        "pronunciation_en": "kohn-pay-TAHNSS — nasal 'on' start; nasal 'ence' end"
       },
       {
         "word": "postuler",
         "en": "to apply",
         "vi": "ứng tuyển",
         "pos": "v.",
-        "pronunciation_vi": "pô-xtu-lê"
+        "pronunciation_vi": "pô-xtu-lê",
+        "pronunciation_en": "pos-too-LAY — French 'u' rounded; '-er' = 'ay'"
       },
       {
         "word": "le recruteur",
         "en": "recruiter",
         "vi": "nhà tuyển dụng",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-cru-tơ"
+        "pronunciation_vi": "rơ-cru-tơ",
+        "pronunciation_en": "ruh-kroo-TUHR — '-eur' = 'uhr' with the soft French 'r'"
       },
       {
         "word": "la formation",
         "en": "training",
         "vi": "đào tạo",
         "pos": "n.f.",
-        "pronunciation_vi": "fo-ma-xi-on"
+        "pronunciation_vi": "fo-ma-xi-on",
+        "pronunciation_en": "for-mah-SYON — '-tion' = 'syon'; nasal 'on' at end"
       },
       {
         "word": "le salaire",
         "en": "salary",
         "vi": "lương",
         "pos": "n.m.",
-        "pronunciation_vi": "xa-le"
+        "pronunciation_vi": "xa-le",
+        "pronunciation_en": "sah-LAIR — '-aire' = 'air' (like English 'air')"
       },
       {
         "word": "le stage",
         "en": "internship",
         "vi": "thực tập",
         "pos": "n.m.",
-        "pronunciation_vi": "xta-giơ"
+        "pronunciation_vi": "xta-giơ",
+        "pronunciation_en": "STAHZH — 'g' before silent 'e' = 'zh' as in 'pleasure'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour, merci de me recevoir.",
-        "en": "Hello, thank you for receiving me."
+        "en": "Hello, thank you for receiving me.",
+        "vi": "Xin chào, cảm ơn anh/chị đã tiếp đón."
       },
       {
         "speaker": "B",
         "text": "Parlez-moi de votre parcours.",
-        "en": "Tell me about your background."
+        "en": "Tell me about your background.",
+        "vi": "Hãy kể cho tôi về quá trình của bạn."
       },
       {
         "speaker": "A",
         "text": "J'ai travaillé cinq ans en marketing digital.",
-        "en": "I worked five years in digital marketing."
+        "en": "I worked five years in digital marketing.",
+        "vi": "Tôi đã làm 5 năm trong lĩnh vực marketing số."
       },
       {
         "speaker": "B",
         "text": "Pourquoi notre entreprise vous intéresse ?",
-        "en": "Why are you interested in our company?"
+        "en": "Why are you interested in our company?",
+        "vi": "Vì sao bạn quan tâm đến công ty chúng tôi?"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "J'ai trois ans d'___ dans ce domaine.",
-        "answer": "expérience"
+        "answer": "expérience",
+        "hint_vi": "danh từ giống cái — kinh nghiệm làm việc",
+        "hint_en": "feminine noun — work experience"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "l'entretien",
-            "phỏng vấn"
+            "phỏng vấn (interview)"
           ],
           [
             "postuler",
-            "ứng tuyển"
+            "ứng tuyển (to apply)"
           ],
           [
             "le recruteur",
-            "nhà tuyển dụng"
+            "nhà tuyển dụng (recruiter)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi muốn làm ở công ty này vì tôi ngưỡng mộ giá trị của nó.",
+        "english": "I want to work here because I admire the company's values.",
         "french": "Je veux travailler ici parce que j'admire ses valeurs."
       }
     ]
@@ -1016,6 +1096,11 @@ export const lessons: FrenchLesson[] = [
           "avis→a-vi",
           "projet→prô-giê",
           "potentiel→pô-tăng-xi-en"
+        ],
+        "pronunciation_focus_en": [
+          "avis 'ah-VEE' — final 's' silent",
+          "projet 'pro-ZHAY' — 'j' = 'zh'; final 't' silent",
+          "potentiel 'po-tahn-SYEL' — '-tiel' = 'syel'; nasal 'en' in the middle"
         ]
       },
       {
@@ -1024,6 +1109,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "pense→păng",
           "excellente→éc-xe-lăng"
+        ],
+        "pronunciation_focus_en": [
+          "pense 'PAHNSS' — nasal 'en'; final '-e' silent",
+          "excellente 'ek-say-LAHNT' — feminine form has the 't' sounded"
         ]
       },
       {
@@ -1032,6 +1121,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "personnellement→pe-xô-nen-măng",
           "convaincu→côn-vanh-cu"
+        ],
+        "pronunciation_focus_en": [
+          "personnellement 'pair-soh-nel-MAHN' — adverb suffix '-ment' = nasal 'MAHN'",
+          "convaincu 'kohn-van-KOO' — nasal 'on' + nasal 'in'; French 'u' rounded at the end"
         ]
       },
       {
@@ -1040,6 +1133,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "semble→xăm",
           "devrions→đơ-vri-on"
+        ],
+        "pronunciation_focus_en": [
+          "semble 'SAHN-bluh' — nasal 'em'; final '-le' barely voiced",
+          "devrions 'duh-VREE-ohn' — conditional ending '-ions' = 'yohn' (nasal)"
         ]
       },
       {
@@ -1048,132 +1145,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "côté→cô-tê",
           "comprends→côm-prăng"
+        ],
+        "pronunciation_focus_en": [
+          "côté 'koh-TAY' — accent circumflex on 'ô' just lengthens the vowel slightly",
+          "comprends 'kohn-PRAHN' — nasal 'on' + nasal 'en'; final 'ds' silent"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thích tranh luận. Cách lịch sự: 'À mon avis', 'Je pense que', 'Il me semble que'. Phản biện: 'Je ne suis pas d'accord'. Tránh 'Tu as tort'.",
+    "cultural_notes_en": "Debate culture in France is robust — disagreeing is not rude, it's engagement. Polite openers: 'À mon avis…' (in my view), 'Je pense que…' (I think), 'Il me semble que…' (it seems to me). Pushback uses 'Je ne suis pas d'accord' — firmer than its English equivalent. Avoid 'Tu as tort' (you're wrong) — too blunt; the French disagree about ideas, not about whether someone is right or wrong. Hedging with 'Cela dépend' is also very French.",
     "tip_advice_vi": "Khi ngắt lời lịch sự: 'Excusez-moi de vous interrompre'. Quay lại chủ đề: 'Pour en revenir à notre sujet…'",
+    "tip_advice_en": "Polite interruption: 'Excusez-moi de vous interrompre' (excuse my interrupting). To return to a topic after a tangent: 'Pour en revenir à notre sujet…' (to come back to our subject). The French don't queue conversational turns the way British speakers do — overlapping speech is normal, but a soft verbal flag still lands as polite when you're cutting in.",
     "vocabulary": [
       {
         "word": "l'avis",
         "en": "opinion",
         "vi": "ý kiến",
         "pos": "n.m.",
-        "pronunciation_vi": "la-vi"
+        "pronunciation_vi": "la-vi",
+        "pronunciation_en": "lah-VEE — 'l'' contracts; final 's' silent"
       },
       {
         "word": "selon",
         "en": "according to",
         "vi": "theo",
         "pos": "prép.",
-        "pronunciation_vi": "xơ-lon"
+        "pronunciation_vi": "xơ-lon",
+        "pronunciation_en": "suh-LOHN — nasal 'on' at the end"
       },
       {
         "word": "convaincre",
         "en": "to convince",
         "vi": "thuyết phục",
         "pos": "v.",
-        "pronunciation_vi": "côn-vanh-crơ"
+        "pronunciation_vi": "côn-vanh-crơ",
+        "pronunciation_en": "kohn-VAN-kruh — nasal 'on' + nasal 'in'; final '-re' barely voiced"
       },
       {
         "word": "douter",
         "en": "to doubt",
         "vi": "nghi ngờ",
         "pos": "v.",
-        "pronunciation_vi": "đu-tê"
+        "pronunciation_vi": "đu-tê",
+        "pronunciation_en": "doo-TAY — 'ou' = 'oo' in 'boot'; '-er' = 'ay'"
       },
       {
         "word": "approuver",
         "en": "to approve",
         "vi": "tán thành",
         "pos": "v.",
-        "pronunciation_vi": "a-pru-vê"
+        "pronunciation_vi": "a-pru-vê",
+        "pronunciation_en": "ah-proo-VAY — 'ou' = 'oo'; '-er' = 'ay'"
       },
       {
         "word": "contester",
         "en": "to contest",
         "vi": "phản đối",
         "pos": "v.",
-        "pronunciation_vi": "côn-tét-tê"
+        "pronunciation_vi": "côn-tét-tê",
+        "pronunciation_en": "kohn-tes-TAY — nasal 'on' start; final '-er' = 'ay'"
       },
       {
         "word": "l'argument",
         "en": "argument",
         "vi": "lập luận",
         "pos": "n.m.",
-        "pronunciation_vi": "la-ghu-măng"
+        "pronunciation_vi": "la-ghu-măng",
+        "pronunciation_en": "lar-goo-MAHN — French 'u' rounded; final 'ent' = nasal 'MAHN'"
       },
       {
         "word": "nuancer",
         "en": "to qualify",
         "vi": "nói giảm nhẹ",
         "pos": "v.",
-        "pronunciation_vi": "nu-ăng-xê"
+        "pronunciation_vi": "nu-ăng-xê",
+        "pronunciation_en": "nyoo-ahn-SAY — French 'u' rounded; nasal 'an' in the middle"
       },
       {
         "word": "franchement",
         "en": "frankly",
         "vi": "thẳng thắn",
         "pos": "adv.",
-        "pronunciation_vi": "frăng-sơ-măng"
+        "pronunciation_vi": "frăng-sơ-măng",
+        "pronunciation_en": "frahnsh-MAHN — 'ch' = 'sh'; adverb ending '-ment' = nasal 'MAHN'"
       },
       {
         "word": "partager",
         "en": "to share",
         "vi": "chia sẻ",
         "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
+        "pronunciation_vi": "pa-ta-giê",
+        "pronunciation_en": "par-tah-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Que penses-tu du nouveau logo ?",
-        "en": "What do you think of the new logo?"
+        "en": "What do you think of the new logo?",
+        "vi": "Bạn nghĩ sao về logo mới?"
       },
       {
         "speaker": "B",
         "text": "Franchement, je ne suis pas convaincu.",
-        "en": "Frankly, I'm not convinced."
+        "en": "Frankly, I'm not convinced.",
+        "vi": "Thật lòng mà nói, mình không thấy thuyết phục."
       },
       {
         "speaker": "A",
         "text": "Je comprends, mais je le trouve plus moderne.",
-        "en": "I understand, but I find it more modern."
+        "en": "I understand, but I find it more modern.",
+        "vi": "Mình hiểu, nhưng mình thấy nó hiện đại hơn."
       },
       {
         "speaker": "B",
         "text": "C'est vrai, mais il manque d'identité.",
-        "en": "True, but it lacks identity."
+        "en": "True, but it lacks identity.",
+        "vi": "Đúng, nhưng nó thiếu bản sắc."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "___ mon avis, c'est une bonne idée.",
-        "answer": "À"
+        "answer": "À",
+        "hint_vi": "giới từ — 'Theo' khi diễn đạt quan điểm",
+        "hint_en": "preposition — 'in' (as in 'in my opinion')"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "l'avis",
-            "ý kiến"
+            "ý kiến (opinion)"
           ],
           [
             "approuver",
-            "tán thành"
+            "tán thành (to approve)"
           ],
           [
             "franchement",
-            "thẳng thắn"
+            "thẳng thắn (frankly)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Theo tôi, nên chờ thêm thông tin.",
+        "english": "In my opinion, we should wait for more information.",
         "french": "À mon avis, nous devrions attendre plus d'informations."
       }
     ]
