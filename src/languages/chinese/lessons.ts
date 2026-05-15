@@ -14,6 +14,7 @@ export type ChineseSentence = {
   english: string;
   vi?: string;
   pronunciation_focus?: string[];
+  pronunciation_focus_en?: string[];
 };
 
 export type ChineseDialogueLine = {
@@ -118,7 +119,9 @@ export type ChineseLesson = {
   // B2-specific optional fields (Phase 2 conversation-focused lessons).
   // All optional — existing A1/A2/B1 lessons typecheck unchanged.
   cultural_notes_vi?: string;
+  cultural_notes_en?: string;
   tip_advice_vi?: string;
+  tip_advice_en?: string;
   dialogue_long?: ChineseB2DialogueLine[];
   roleplay_prompts?: string[];
   register_notes?: string;

@@ -27,6 +27,10 @@ import {
   cefrPillLabels,
 } from "@/components/languages/lessonThemes";
 import type { LessonTheme } from "@/components/languages/LessonRenderer.types";
+import LessonUiLangToggle, {
+  useLessonUiLang,
+} from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+import type { LessonUiLang } from "@/components/mercy-guide/tabs/LanguageLessonsView";
 
 const HERO_VI =
   "Tiếng Pháp cho người Việt — từ chào hỏi đến gọi món ăn.";
@@ -46,6 +50,7 @@ export default function FrenchLessonsPage() {
   const theme = lessonThemes.french;
   const [level, setLevel] = useState<FrenchCefrLevel>("A1");
   const [lessons, setLessons] = useState<FrenchLesson[] | null>(null);
+  const [uiLang, setUiLang] = useLessonUiLang();
 
   useEffect(() => {
     let cancelled = false;
@@ -103,6 +108,10 @@ export default function FrenchLessonsPage() {
         </p>
       </header>
 
+      <div className="mb-3 flex justify-end">
+        <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
+      </div>
+
       <nav
         aria-label="Chọn cấp độ"
         className="mb-4 flex flex-wrap gap-2"
@@ -146,6 +155,7 @@ export default function FrenchLessonsPage() {
                 category={cat}
                 lessons={catLessons}
                 theme={theme}
+                uiLanguage={uiLang}
               />
             );
           })}
@@ -159,10 +169,12 @@ function CategorySection({
   category,
   lessons,
   theme,
+  uiLanguage,
 }: {
   category: FrenchCategoryMeta;
   lessons: FrenchLesson[];
   theme: LessonTheme;
+  uiLanguage: LessonUiLang;
 }) {
   return (
     <section>
@@ -190,7 +202,11 @@ function CategorySection({
           }
           return [
             <li key={lesson.id}>
-              <LessonRenderer lesson={normalized} theme={theme} />
+              <LessonRenderer
+                lesson={normalized}
+                theme={theme}
+                uiLanguage={uiLanguage}
+              />
             </li>,
           ];
         })}

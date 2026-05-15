@@ -32,12 +32,14 @@ export function normalizeGermanLesson(
       native: s.en,
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
+      pronunciationFocusEn: s.pronunciation_focus_en,
     })),
     vocabulary: lesson.vocabulary?.map((v) => ({
       native: v.word,
       en: v.en,
       vi: v.vi,
       phonetic: v.pronunciation_vi,
+      phoneticEn: v.pronunciation_en,
     })),
     dialogue: lesson.dialogue?.map((d) => ({
       speaker: d.speaker,
@@ -46,7 +48,9 @@ export function normalizeGermanLesson(
     })),
     exercises: normalizeGermanExercises(lesson.exercises),
     culturalNotesVi: lesson.cultural_notes_vi,
+    culturalNotesEn: lesson.cultural_notes_en,
     tipAdviceVi: lesson.tip_advice_vi,
+    tipAdviceEn: lesson.tip_advice_en,
     audioBase: lessonAudioBase("de", lesson.id, lesson.level),
   };
 }
@@ -63,6 +67,7 @@ function normalizeGermanExercises(
       out.push({
         kind: "matching",
         instruction: ex.instruction_vi,
+        instructionEn: ex.instruction_en,
         pairs: ex.items.map((it) => ({
           a: it.prompt,
           b: it.answer,

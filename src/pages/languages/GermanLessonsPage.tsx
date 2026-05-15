@@ -30,6 +30,10 @@ import {
   lessonThemes,
   cefrPillLabels,
 } from "@/components/languages/lessonThemes";
+import LessonUiLangToggle, {
+  useLessonUiLang,
+} from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+import type { LessonUiLang } from "@/components/mercy-guide/tabs/LanguageLessonsView";
 
 const HERO_VI =
   "Tiếng Đức cho người Việt — từ guten Tag đến cách (cases).";
@@ -49,6 +53,7 @@ export default function GermanLessonsPage() {
   const theme = lessonThemes.german;
   const [level, setLevel] = useState<GermanCefrLevel>("A1");
   const [lessons, setLessons] = useState<GermanLesson[] | null>(null);
+  const [uiLang, setUiLang] = useLessonUiLang();
 
   useEffect(() => {
     let cancelled = false;
@@ -88,7 +93,7 @@ export default function GermanLessonsPage() {
           <p className="text-xs font-semibold text-red-700 mb-2">
             Phase 2 pilot · Supabase per-lesson fetch (index 0)
           </p>
-          <FeaturedB2Lesson />
+          <FeaturedB2Lesson uiLanguage={uiLang} />
         </div>
       )}
 
@@ -115,6 +120,10 @@ export default function GermanLessonsPage() {
           </Link>
         </p>
       </header>
+
+      <div className="mb-3 flex justify-end">
+        <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
+      </div>
 
       <nav
         aria-label="Chọn cấp độ"
@@ -158,6 +167,7 @@ export default function GermanLessonsPage() {
                 key={cat.id}
                 category={cat}
                 lessons={catLessons}
+                uiLanguage={uiLang}
               />
             );
           })}
@@ -170,9 +180,11 @@ export default function GermanLessonsPage() {
 function CategorySection({
   category,
   lessons,
+  uiLanguage,
 }: {
   category: GermanCategoryMeta;
   lessons: GermanLesson[];
+  uiLanguage: LessonUiLang;
 }) {
   const theme = lessonThemes.german;
   return (
@@ -201,7 +213,11 @@ function CategorySection({
           }
           return [
             <li key={lesson.id}>
-              <LessonRenderer lesson={normalized} theme={theme} />
+              <LessonRenderer
+                lesson={normalized}
+                theme={theme}
+                uiLanguage={uiLanguage}
+              />
             </li>,
           ];
         })}
@@ -212,7 +228,7 @@ function CategorySection({
 
 // ── Phase 2 pilot: per-lesson Supabase fetch ────────────────────────
 
-function FeaturedB2Lesson() {
+function FeaturedB2Lesson({ uiLanguage }: { uiLanguage: LessonUiLang }) {
   // 1-based lesson_index — matches DB storage. See useLessonData top comment.
   const { lesson, loading, error } = useLessonData("german", "b2", 1);
   const theme = lessonThemes.german;
@@ -257,7 +273,11 @@ function FeaturedB2Lesson() {
 
   return (
     <div>
-      <LessonRenderer lesson={normalized} theme={theme} />
+      <LessonRenderer
+        lesson={normalized}
+        theme={theme}
+        uiLanguage={uiLanguage}
+      />
     </div>
   );
 }

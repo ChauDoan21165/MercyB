@@ -31,6 +31,7 @@ export function normalizeKoreanLesson(
       en: s.en,
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
+      pronunciationFocusEn: s.pronunciation_focus_en,
     })),
     vocabulary: (lesson.vocabulary ?? []).map((v) => ({
       native: v.hangul,
@@ -43,8 +44,10 @@ export function normalizeKoreanLesson(
       vi: d.text_vi ?? d.meaning,
     })),
     exercises: (lesson.exercises ?? []).map(normalizeKoreanExercise),
-    culturalNotesVi: (lesson as any).cultural_notes_vi,
-    tipAdviceVi: (lesson as any).tip_advice_vi,
+    culturalNotesVi: lesson.cultural_notes_vi,
+    culturalNotesEn: lesson.cultural_notes_en,
+    tipAdviceVi: lesson.tip_advice_vi,
+    tipAdviceEn: lesson.tip_advice_en,
     audioBase: lessonAudioBase("ko", lesson.id, lesson.level),
   };
 }
