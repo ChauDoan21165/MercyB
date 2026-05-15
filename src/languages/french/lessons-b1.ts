@@ -18,6 +18,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "article→a-tíc",
           "nasal in"
+        ],
+        "pronunciation_focus_en": [
+          "article 'ar-TEEKL' — final '-e' silent; stress lands on the last syllable, unlike English 'AR-ti-kul'",
+          "nasal 'in' (politique has none, but the technique applies elsewhere) — no English equivalent; practice with the French word itself"
         ]
       },
       {
@@ -26,6 +30,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "penses→păng",
           "nouvelle→nu-ven"
+        ],
+        "pronunciation_focus_en": [
+          "penses 'pahnss' — nasal 'en' held through the nose; 's' kept for liaison into 'tu'",
+          "nouvelle 'noo-VEL' — silent final '-e'; double 'll' is one 'l' sound (like English 'l')"
         ]
       },
       {
@@ -34,6 +42,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "vérifier→vê-ri-fi-ê",
           "sources→xua"
+        ],
+        "pronunciation_focus_en": [
+          "vérifier 'vay-ree-fee-AY' — '-er' verb ending sounds like English 'ay' in 'day'",
+          "sources 'SOORSS' — final 's' pronounced here because of the consonant cluster; 'ou' = English 'oo' in 'boot'"
         ]
       },
       {
@@ -42,6 +54,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "lis→li",
           "matins→ma-tanh"
+        ],
+        "pronunciation_focus_en": [
+          "lis 'lee' — 1st-person form of lire; final 's' is silent",
+          "matins 'mah-TAN' — nasal 'in' at the end (held through the nose, no consonant); final 's' silent"
         ]
       },
       {
@@ -50,132 +66,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "informations→anh-fo-ma-xi-on",
           "s'améliore→xa-mê-li-o"
+        ],
+        "pronunciation_focus_en": [
+          "informations — French '-tion' = 'syon' (NOT 'shun' as in English 'information'); also a nasal 'in' at the start",
+          "s'améliore 'sah-may-lee-OR' — reflexive 's'' contracts onto the verb; final 'e' silent"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp đọc báo nhiều. Le Monde (trung lập), Le Figaro (hữu), Libération (tả). Tranh luận chính trị là môn thể thao quốc dân.",
+    "cultural_notes_en": "France's print press is still strong and politically labeled. Le Monde sits center-left and is the closest French equivalent to a paper of record like the NYT or The Guardian; Le Figaro leans right; Libération leans left; Le Canard Enchaîné is the satirical investigative weekly. Discussing politics over coffee or dinner is normal and not considered impolite the way it can be in the US — having a position and defending it is socially expected, even with people you've just met. Hedge with phrases, not with silence.",
     "tip_advice_vi": "Dùng 'À mon avis…', 'Je pense que…', 'Il me semble que…'. Tránh nói 'c'est nul'.",
+    "tip_advice_en": "Open opinions with 'À mon avis…' (in my view), 'Je pense que…' (I think that), or 'Il me semble que…' (it seems to me). The subjunctive after 'Il me semble que' is optional and slightly softens the claim. Skip 'c'est nul' — too schoolyard for adult conversation. For disagreement, 'Je ne suis pas vraiment d'accord' is firmer than English speakers expect; the French don't soften disagreement the way British or American English does.",
     "vocabulary": [
       {
         "word": "l'actualité",
         "en": "current events",
         "vi": "thời sự",
         "pos": "n.f.",
-        "pronunciation_vi": "lắc-tu-a-li-tê"
+        "pronunciation_vi": "lắc-tu-a-li-tê",
+        "pronunciation_en": "lak-twa-lee-TAY — stress on the last syllable; 'l'a' runs together as one sound"
       },
       {
         "word": "le journal",
         "en": "newspaper",
         "vi": "báo",
         "pos": "n.m.",
-        "pronunciation_vi": "giua-nan"
+        "pronunciation_vi": "giua-nan",
+        "pronunciation_en": "zhoor-NAHL — 'zh' as in 'pleasure'; the final 'l' is a clean light 'l'"
       },
       {
         "word": "l'article",
         "en": "article",
         "vi": "bài báo",
         "pos": "n.m.",
-        "pronunciation_vi": "la-tíc"
+        "pronunciation_vi": "la-tíc",
+        "pronunciation_en": "lar-TEEKL — final '-e' silent; 'l'a' contracts; stress on the last syllable, unlike English"
       },
       {
         "word": "partager",
         "en": "to share",
         "vi": "chia sẻ",
         "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
+        "pronunciation_vi": "pa-ta-giê",
+        "pronunciation_en": "par-tah-ZHAY — 'zh' as in 'pleasure'; '-er' verb ending = 'ay' as in 'day'"
       },
       {
         "word": "débattre",
         "en": "to debate",
         "vi": "tranh luận",
         "pos": "v.",
-        "pronunciation_vi": "đê-bát"
+        "pronunciation_vi": "đê-bát",
+        "pronunciation_en": "day-BATR — silent final '-e'; soft 'r' at the end (uvular, NOT the rolled Spanish r)"
       },
       {
         "word": "la source",
         "en": "source",
         "vi": "nguồn",
         "pos": "n.f.",
-        "pronunciation_vi": "xua-xơ"
+        "pronunciation_vi": "xua-xơ",
+        "pronunciation_en": "SOORSS — like English 'force' but with rounded 'oo' (as in 'boot') and a softer French 'r'"
       },
       {
         "word": "vérifier",
         "en": "to verify",
         "vi": "kiểm tra",
         "pos": "v.",
-        "pronunciation_vi": "vê-ri-fi-ê"
+        "pronunciation_vi": "vê-ri-fi-ê",
+        "pronunciation_en": "vay-ree-fee-AY — each syllable lightly stressed; '-er' = 'ay'"
       },
       {
         "word": "l'opinion",
         "en": "opinion",
         "vi": "ý kiến",
         "pos": "n.f.",
-        "pronunciation_vi": "lô-pi-ni-on"
+        "pronunciation_vi": "lô-pi-ni-on",
+        "pronunciation_en": "low-pee-NYON — final 'on' is nasal (no real English equivalent; practice with the French word)"
       },
       {
         "word": "la Une",
         "en": "front page",
         "vi": "trang nhất",
         "pos": "n.f.",
-        "pronunciation_vi": "la Un"
+        "pronunciation_vi": "la Un",
+        "pronunciation_en": "lah OON — the French 'u' is a rounded 'ee' (lips forward); not English 'oo' in 'boot'"
       },
       {
         "word": "fiable",
         "en": "reliable",
         "vi": "đáng tin",
         "pos": "adj.",
-        "pronunciation_vi": "fi-a-blơ"
+        "pronunciation_vi": "fi-a-blơ",
+        "pronunciation_en": "fee-AH-bluh — final '-le' barely voiced; 'a' is like 'ah' in 'father'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Tu as vu les infos ce matin ?",
-        "en": "Did you see the news this morning?"
+        "en": "Did you see the news this morning?",
+        "vi": "Sáng nay bạn có xem tin tức không?"
       },
       {
         "speaker": "B",
         "text": "Oui, il y a une manifestation à Paris.",
-        "en": "Yes, there's a protest in Paris."
+        "en": "Yes, there's a protest in Paris.",
+        "vi": "Có, ở Paris đang có biểu tình."
       },
       {
         "speaker": "A",
         "text": "C'est à propos de la réforme des retraites ?",
-        "en": "Is it about the pension reform?"
+        "en": "Is it about the pension reform?",
+        "vi": "Về cải cách hưu trí phải không?"
       },
       {
         "speaker": "B",
         "text": "Exactement. Qu'est-ce que tu en penses ?",
-        "en": "Exactly. What do you think?"
+        "en": "Exactly. What do you think?",
+        "vi": "Chính xác. Bạn nghĩ sao về việc này?"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "As-tu lu l'___ sur les élections ?",
-        "answer": "article"
+        "answer": "article",
+        "hint_vi": "danh từ giống đực — bài báo",
+        "hint_en": "masculine noun — newspaper article"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "l'actualité",
-            "thời sự"
+            "thời sự (current events)"
           ],
           [
             "partager",
-            "chia sẻ"
+            "chia sẻ (to share)"
           ],
           [
             "fiable",
-            "đáng tin"
+            "đáng tin (reliable)"
           ]
         ],
-        "instruction": "Nối từ Pháp với nghĩa Việt"
+        "instruction": "Nối từ Pháp với nghĩa Việt",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Theo tôi, tình hình sẽ cải thiện năm tới.",
+        "english": "In my view, the situation will improve next year.",
         "french": "À mon avis, la situation s'améliorera l'année prochaine."
       }
     ]
@@ -193,6 +233,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "bise→bi-dơ",
           "saluer→xa-lu-ê"
+        ],
+        "pronunciation_focus_en": [
+          "bise 'BEEZ' — final 's' is pronounced 'z'; final '-e' silent",
+          "saluer 'sah-loo-AY' — '-er' verb ending = 'ay'; the 'u' is the French rounded 'u' (lips forward like 'ee')"
         ]
       },
       {
@@ -201,6 +245,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "Français→frăng-xe",
           "directs→đi-réc"
+        ],
+        "pronunciation_focus_en": [
+          "Français 'frahn-SAY' — nasal 'an' (held through the nose); final 's' silent",
+          "directs 'dee-REKT' — adjective form; final 's' silent in spelling but the 't' is sounded"
         ]
       },
       {
@@ -209,6 +257,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "Vietnam→Vi-ét-nam",
           "conflit→côn-fli"
+        ],
+        "pronunciation_focus_en": [
+          "Vietnam 'vyet-NAHM' — French pronunciation keeps the 'i' and 'e' as distinct vowels",
+          "conflit 'kohn-FLEE' — nasal 'on'; final 't' silent"
         ]
       },
       {
@@ -217,6 +269,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "comprendre→côm-prăng",
           "différences→đi-fê-răng"
+        ],
+        "pronunciation_focus_en": [
+          "comprendre 'kohn-PRAHN-druh' — nasal 'on' then nasal 'en'; final '-re' barely voiced",
+          "différences 'dee-fay-RAHNSS' — nasal 'en'; final 's' silent"
         ]
       },
       {
@@ -225,132 +281,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "s'adapter→xa-đáp-tê",
           "coutumes→cu-tuym"
+        ],
+        "pronunciation_focus_en": [
+          "s'adapter 'sah-dahp-TAY' — reflexive 's'' contracts; '-er' = 'ay'",
+          "coutumes 'koo-TOOM' — 'ou' = English 'oo' in 'boot'; final '-es' silent"
         ]
       }
     ],
     "cultural_notes_vi": "Bise thay đổi theo vùng: Paris 2, miền Nam 3, có nơi 4 lần. Bắt tay công việc mỗi sáng. Người Pháp nói 'non' trực tiếp — đừng hiểu là bất lịch sự. Giờ ăn trưa thiêng liêng.",
+    "cultural_notes_en": "The cheek-kiss greeting (la bise) varies by region: 2 in Paris, 3 in much of the south, 4 in some northern areas — ask before kissing if you're not sure. At work, expect a daily handshake or 'bise' with every colleague each morning; skipping it reads as standoffish. The French 'non' is direct and not rude — coming from American or British politeness culture, you'll experience it as blunter than intended. Lunch (déjeuner) is non-negotiable: 12:00–14:00 is when shops and offices genuinely close, not a suggestion.",
     "tip_advice_vi": "Khi được mời ăn tối, mang rượu hoặc hoa (tránh cúc). Đến đúng giờ hoặc trễ 15 phút. Khen món ăn là bắt buộc.",
+    "tip_advice_en": "Invited to dinner? Bring wine, flowers, or good chocolate. Avoid chrysanthemums (they're for cemeteries) and red roses (too romantic for a host gift). Arriving 10–15 minutes after the stated time is the polite norm; on the dot can feel pushy. Compliment the food explicitly — 'c'est délicieux' — at least once during the meal. Eating quietly without comment reads as cold.",
     "vocabulary": [
       {
         "word": "la bise",
         "en": "cheek kiss",
         "vi": "hôn má",
         "pos": "n.f.",
-        "pronunciation_vi": "bi-dơ"
+        "pronunciation_vi": "bi-dơ",
+        "pronunciation_en": "BEEZ — final 's' sounds like 'z'; final '-e' silent"
       },
       {
         "word": "serrer la main",
         "en": "to shake hands",
         "vi": "bắt tay",
         "pos": "v.",
-        "pronunciation_vi": "xe-rê la manh"
+        "pronunciation_vi": "xe-rê la manh",
+        "pronunciation_en": "say-RAY lah MAN — '-er' verb ending = 'ay'; 'main' is nasal 'in' (held through nose)"
       },
       {
         "word": "le tutoiement",
         "en": "using tu",
         "vi": "xưng hô thân mật",
         "pos": "n.m.",
-        "pronunciation_vi": "tu-toa-măng"
+        "pronunciation_vi": "tu-toa-măng",
+        "pronunciation_en": "too-twah-MAHN — French 'u' (rounded 'ee'); final 'en' is nasal"
       },
       {
         "word": "le vouvoiement",
         "en": "using vous",
         "vi": "xưng hô lịch sự",
         "pos": "n.m.",
-        "pronunciation_vi": "vu-voa-măng"
+        "pronunciation_vi": "vu-voa-măng",
+        "pronunciation_en": "voo-vwah-MAHN — 'ou' = 'oo' in 'boot'; final 'en' nasal"
       },
       {
         "word": "direct",
         "en": "direct",
         "vi": "trực tiếp",
         "pos": "adj.",
-        "pronunciation_vi": "đi-réc"
+        "pronunciation_vi": "đi-réc",
+        "pronunciation_en": "dee-REKT — the final 'ct' is sounded; stress on the last syllable"
       },
       {
         "word": "le compromis",
         "en": "compromise",
         "vi": "thỏa hiệp",
         "pos": "n.m.",
-        "pronunciation_vi": "côm-prô-mi"
+        "pronunciation_vi": "côm-prô-mi",
+        "pronunciation_en": "kohn-proh-MEE — nasal 'on' at the start; final 's' silent"
       },
       {
         "word": "l'étiquette",
         "en": "etiquette",
         "vi": "phép tắc",
         "pos": "n.f.",
-        "pronunciation_vi": "lê-ti-két"
+        "pronunciation_vi": "lê-ti-két",
+        "pronunciation_en": "lay-tee-KET — final '-e' silent; the 'qu' is just 'k'"
       },
       {
         "word": "s'adapter",
         "en": "to adapt",
         "vi": "thích nghi",
         "pos": "v.",
-        "pronunciation_vi": "xa-đáp-tê"
+        "pronunciation_vi": "xa-đáp-tê",
+        "pronunciation_en": "sah-dahp-TAY — reflexive 's'' attaches to the verb; '-er' = 'ay'"
       },
       {
         "word": "le décalage",
         "en": "gap",
         "vi": "khác biệt",
         "pos": "n.m.",
-        "pronunciation_vi": "đê-ca-la-giơ"
+        "pronunciation_vi": "đê-ca-la-giơ",
+        "pronunciation_en": "day-kah-LAHZH — 'zh' as in 'pleasure'; final '-e' silent"
       },
       {
         "word": "la coutume",
         "en": "custom",
         "vi": "phong tục",
         "pos": "n.f.",
-        "pronunciation_vi": "cu-tuym"
+        "pronunciation_vi": "cu-tuym",
+        "pronunciation_en": "koo-TOOM — 'ou' = 'oo' in 'boot'; the 'u' here keeps a regular 'oo' sound, not the rounded French 'u'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Pourquoi mon collègue dit toujours non directement ?",
-        "en": "Why does my colleague always say no directly?"
+        "en": "Why does my colleague always say no directly?",
+        "vi": "Sao đồng nghiệp của tôi lúc nào cũng nói 'không' thẳng thừng vậy?"
       },
       {
         "speaker": "B",
         "text": "Ce n'est pas impoli, c'est leur façon de communiquer.",
-        "en": "It's not rude, it's their way of communicating."
+        "en": "It's not rude, it's their way of communicating.",
+        "vi": "Không phải bất lịch sự đâu, đó là cách họ giao tiếp."
       },
       {
         "speaker": "A",
         "text": "Au Vietnam, on dirait 'peut-être' pour être poli.",
-        "en": "In Vietnam, we'd say 'maybe' to be polite."
+        "en": "In Vietnam, we'd say 'maybe' to be polite.",
+        "vi": "Ở Việt Nam, mình hay nói 'có thể' cho lịch sự."
       },
       {
         "speaker": "B",
         "text": "Oui, c'est une grande différence culturelle !",
-        "en": "Yes, that's a big cultural difference!"
+        "en": "Yes, that's a big cultural difference!",
+        "vi": "Đúng vậy, đó là một khác biệt văn hóa lớn!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "En France, on fait la ___ pour se saluer.",
-        "answer": "bise"
+        "answer": "bise",
+        "hint_vi": "danh từ giống cái — hôn má chào nhau",
+        "hint_en": "feminine noun — the French cheek-kiss greeting"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le tutoiement",
-            "xưng hô thân mật"
+            "xưng hô thân mật (using tu)"
           ],
           [
             "s'adapter",
-            "thích nghi"
+            "thích nghi (to adapt)"
           ],
           [
             "la coutume",
-            "phong tục"
+            "phong tục (custom)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Cần hiểu khác biệt văn hóa để giao tiếp tốt hơn.",
+        "english": "You need to understand cultural differences to communicate better.",
         "french": "Il faut comprendre les différences culturelles pour mieux communiquer."
       }
     ]
@@ -369,6 +449,11 @@ export const lessons: FrenchLesson[] = [
           "passe→pát",
           "réseaux→rê-dô",
           "sociaux→xô-xi-ô"
+        ],
+        "pronunciation_focus_en": [
+          "passe 'PAHSS' — final '-e' silent; 'ss' makes the 's' clean (not 'z')",
+          "réseaux 'ray-ZOH' — final '-eaux' = 'oh'; single 's' between vowels = 'z'",
+          "sociaux 'soh-SYOH' — '-iaux' = 'yoh'; the 'c' here softens to 's'"
         ]
       },
       {
@@ -377,6 +462,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "publication→pu-bli-ca-xi-on",
           "dernière→đe-ni-e"
+        ],
+        "pronunciation_focus_en": [
+          "publication 'poo-blee-kah-SYON' — French '-tion' = 'syon' (NOT 'shun')",
+          "dernière 'dair-NYAIR' — '-ière' = 'yair'; the 'r' is the soft French uvular sound"
         ]
       },
       {
@@ -385,6 +474,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "partage→pa-ta-giơ",
           "voyages→voa-ia-giơ"
+        ],
+        "pronunciation_focus_en": [
+          "partage 'par-TAHZH' — 'g' before 'e' = 'zh' as in 'pleasure'; final '-e' silent",
+          "voyages 'vwah-YAHZH' — 'oy' = 'wah-yah'; final '-s' silent"
         ]
       },
       {
@@ -393,6 +486,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "attention→a-tăng-xi-on",
           "fausses→phô"
+        ],
+        "pronunciation_focus_en": [
+          "attention 'ah-tahn-SYON' — nasal 'an' then '-tion' = 'syon'",
+          "fausses 'FOHSS' — 'au' = 'oh'; double 'ss' keeps the 's' clean"
         ]
       },
       {
@@ -401,132 +498,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "influenceurs→anh-flu-ăng-xơ",
           "abonnés→a-bô-nê"
+        ],
+        "pronunciation_focus_en": [
+          "influenceurs 'an-floo-AHN-suhr' — nasal 'in' start, nasal 'en' middle; '-eur' = 'uhr'",
+          "abonnés 'ah-boh-NAY' — past participle '-és' = 'ay'; final 's' silent"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp dùng Facebook, Instagram, LinkedIn, Twitter/X. WhatsApp phổ biến hơn Messenger. GDPR bảo vệ dữ liệu nghiêm ngặt.",
+    "cultural_notes_en": "French users skew toward Instagram and LinkedIn more than Twitter/X compared to the US/UK; Facebook is still mainstream but feels older. WhatsApp is the default messaging app — Messenger is for people you only know through Facebook. The GDPR (RGPD in French) gives users genuine data rights: any French site has to ask permission before tracking, and the consent banners are not the empty ritual they often are in the US. You'll also notice French influencer culture leans more 'lifestyle aesthetic' than the louder American style.",
     "tip_advice_vi": "Học động từ: publier (đăng), partager (chia sẻ), commenter (bình luận), aimer (thích), s'abonner (theo dõi).",
+    "tip_advice_en": "The verbs you'll actually use: publier (to post), partager (to share), commenter (to comment), aimer (to like — yes, the same verb as 'to love'), s'abonner à (to subscribe to / follow). 'Aimer' as a like is just a calque from English and feels slightly bland in French; in spoken language people say 'j'ai liké' borrowing the English verb. For 'unfollow' the verb is 'se désabonner de'.",
     "vocabulary": [
       {
         "word": "les réseaux sociaux",
         "en": "social media",
         "vi": "mạng xã hội",
         "pos": "n.m.pl.",
-        "pronunciation_vi": "rê-dô xô-xi-ô"
+        "pronunciation_vi": "rê-dô xô-xi-ô",
+        "pronunciation_en": "ray-ZOH soh-SYOH — single 's' between vowels = 'z'; '-eaux' / '-iaux' = 'oh' / 'yoh'"
       },
       {
         "word": "publier",
         "en": "to post",
         "vi": "đăng",
         "pos": "v.",
-        "pronunciation_vi": "pu-bli-ê"
+        "pronunciation_vi": "pu-bli-ê",
+        "pronunciation_en": "poo-blee-AY — French 'u' (rounded 'ee') in 'pu'; '-er' = 'ay'"
       },
       {
         "word": "partager",
         "en": "to share",
         "vi": "chia sẻ",
         "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
+        "pronunciation_vi": "pa-ta-giê",
+        "pronunciation_en": "par-tah-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
       },
       {
         "word": "le commentaire",
         "en": "comment",
         "vi": "bình luận",
         "pos": "n.m.",
-        "pronunciation_vi": "cô-măng-te"
+        "pronunciation_vi": "cô-măng-te",
+        "pronunciation_en": "koh-mahn-TAIR — nasal 'en' in the middle; '-aire' = 'air'"
       },
       {
         "word": "s'abonner",
         "en": "to subscribe",
         "vi": "theo dõi",
         "pos": "v.",
-        "pronunciation_vi": "xa-bô-nê"
+        "pronunciation_vi": "xa-bô-nê",
+        "pronunciation_en": "sah-boh-NAY — reflexive 's''; '-er' = 'ay'"
       },
       {
         "word": "l'abonné",
         "en": "follower",
         "vi": "người theo dõi",
         "pos": "n.m.",
-        "pronunciation_vi": "la-bô-nê"
+        "pronunciation_vi": "la-bô-nê",
+        "pronunciation_en": "lah-boh-NAY — past participle used as a noun"
       },
       {
         "word": "le like",
         "en": "like",
         "vi": "lượt thích",
         "pos": "n.m.",
-        "pronunciation_vi": "la-íc"
+        "pronunciation_vi": "la-íc",
+        "pronunciation_en": "LIKE — pronounced just as in English; an anglicism that's become standard"
       },
       {
         "word": "le mot-clé",
         "en": "hashtag",
         "vi": "thẻ",
         "pos": "n.m.",
-        "pronunciation_vi": "mô-clê"
+        "pronunciation_vi": "mô-clê",
+        "pronunciation_en": "moh-KLAY — literally 'key word'; written 'hashtag' is also common in spoken French"
       },
       {
         "word": "la story",
         "en": "story",
         "vi": "tin",
         "pos": "n.f.",
-        "pronunciation_vi": "xtô-ri"
+        "pronunciation_vi": "xtô-ri",
+        "pronunciation_en": "STOH-ree — borrowed from English; pronounced with a French 'r' and Italian-style open 'o'"
       },
       {
         "word": "l'influenceur",
         "en": "influencer",
         "vi": "người ảnh hưởng",
         "pos": "n.m.",
-        "pronunciation_vi": "lanh-flu-ăng-xơ"
+        "pronunciation_vi": "lanh-flu-ăng-xơ",
+        "pronunciation_en": "lan-floo-AHN-suhr — nasal 'in' start, nasal 'en' middle; '-eur' = 'uhr'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Tu as combien d'abonnés sur Instagram ?",
-        "en": "How many followers on Instagram?"
+        "en": "How many followers on Instagram?",
+        "vi": "Bạn có bao nhiêu người theo dõi trên Instagram?"
       },
       {
         "speaker": "B",
         "text": "Environ 2000. Et toi ?",
-        "en": "About 2000. You?"
+        "en": "About 2000. You?",
+        "vi": "Khoảng 2000. Còn bạn?"
       },
       {
         "speaker": "A",
         "text": "Seulement 500, mais je préfère la qualité !",
-        "en": "Only 500, but I prefer quality!"
+        "en": "Only 500, but I prefer quality!",
+        "vi": "Chỉ 500 thôi, nhưng mình chuộng chất lượng hơn!"
       },
       {
         "speaker": "B",
         "text": "Bien dit ! As-tu vu ma nouvelle publication ?",
-        "en": "Well said! Did you see my new post?"
+        "en": "Well said! Did you see my new post?",
+        "vi": "Nói hay đấy! Bạn xem bài đăng mới của mình chưa?"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je passe trop de temps sur les ___ sociaux.",
-        "answer": "réseaux"
+        "answer": "réseaux",
+        "hint_vi": "danh từ số nhiều — mạng (chỉ phương tiện)",
+        "hint_en": "masculine plural noun — 'networks' (the platforms themselves)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "publier",
-            "đăng"
+            "đăng (to post)"
           ],
           [
             "s'abonner",
-            "theo dõi"
+            "theo dõi (to subscribe / follow)"
           ],
           [
             "le commentaire",
-            "bình luận"
+            "bình luận (comment)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Đừng chia sẻ thông tin cá nhân trên mạng xã hội.",
+        "english": "Don't share personal information on social media.",
         "french": "Ne partagez pas d'informations personnelles sur les réseaux sociaux."
       }
     ]
