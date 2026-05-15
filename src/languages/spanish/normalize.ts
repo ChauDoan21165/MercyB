@@ -21,56 +21,11 @@
 //     persists in Supabase for a future contract extension.
 
 import type { SpanishGender, SpanishLesson } from "./lessons";
+import type {
+  NormalizedExercise,
+  NormalizedLesson,
+} from "@/components/languages/LessonRenderer.types";
 import { lessonAudioBase } from "@/lib/lessonAudio";
-
-// ────────────────────────────────────────────────────────────────────────
-// Inline contract — mirrors french/normalize.ts. Replace with import from
-// '@/components/languages/LessonRenderer.types' when the canonical types
-// file lands. Keeping it inline for now matches existing convention.
-// ────────────────────────────────────────────────────────────────────────
-
-type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
-
-type NormalizedExercise =
-  | { kind: "fill-blank"; question: string; answer: string }
-  | { kind: "matching"; instruction?: string; pairs: Array<{ a: string; b: string }> }
-  | { kind: "translation"; vi: string; native: string; romanization?: string };
-
-type NormalizedLesson = {
-  id: number;
-  level: CefrLevel;
-  title: { vi: string; en: string; native?: string; romanization?: string };
-  intro?: string;
-  sentences: Array<{
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-    pronunciationFocus?: string[];
-    note?: string;
-  }>;
-  vocabulary?: Array<{
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-    phonetic?: string;
-  }>;
-  dialogue?: Array<{
-    speaker: string;
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-  }>;
-  exercises?: NormalizedExercise[];
-  culturalNotesVi?: string;
-  tipAdviceVi?: string;
-  grammar?: Array<{ point: string; explanation: string }>;
-  audioBase?: string;
-};
-
-// ────────────────────────────────────────────────────────────────────────
 
 // Stable hash for SpanishLesson string ids — deterministic React keys
 // without callers passing an explicit numeric id.
