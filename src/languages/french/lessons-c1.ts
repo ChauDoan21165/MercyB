@@ -5826,6 +5826,12 @@ export const lessons: FrenchLesson[] = [
           "médiation → mé-dia-sion",
           "tente → tãnt",
           "concernées → kõn-sèr-né"
+        ],
+        "pronunciation_focus_en": [
+          "envisager → 'ahn-vee-zah-ZHAY' — nasal -en; 's' between vowels sounds like 'z'; -ger is 'zhay'",
+          "médiation → 'may-dyah-SYOHN' — -dia glides to 'dyah'; -tion is 'syohn'",
+          "tente → 'TAHNT' — nasal -en; final -e silent",
+          "concernées → 'kohn-sair-NAY' — nasal 'on'; past participle plural feminine -ées is 'ay'"
         ]
       },
       {
@@ -5836,6 +5842,12 @@ export const lessons: FrenchLesson[] = [
           "intérieur → an-té-riơr",
           "procédure → pro-sé-dur",
           "préserver → pré-zer-vé"
+        ],
+        "pronunciation_focus_en": [
+          "règlement → 'reh-gluh-MAHN' — nasal -ment; final -t silent; the formal internal regulations document",
+          "intérieur → 'an-tay-RYUR' — nasal -in; -ieur is 'yur' with rounded lips",
+          "procédure → 'proh-say-DEWR' — final -ure is 'ewr' rounded; final -e silent",
+          "préserver → 'pray-zair-VAY' — 's' between vowels sounds like 'z'; final -er is 'ay'"
         ]
       },
       {
@@ -5846,6 +5858,12 @@ export const lessons: FrenchLesson[] = [
           "cautionner → kô-sio-né",
           "propos → pro-po",
           "excuses → èk-skuz"
+        ],
+        "pronunciation_focus_en": [
+          "fond → 'FOHN' — nasal -on; final -d silent; means 'substance / fundamentals'",
+          "cautionner → 'koh-syoh-NAY' — 'au' is 'oh'; -tion is 'syoh' before -ner; means 'to endorse' (NOT English 'caution')",
+          "propos → 'proh-POH' — final -s silent; means 'remarks / statements'",
+          "excuses → 'eks-KEWZ' — 'u' rounded 'ew'; final -s silent on plural"
         ]
       },
       {
@@ -5856,6 +5874,12 @@ export const lessons: FrenchLesson[] = [
           "sanction → sãnk-sion",
           "clarification → kla-ri-fi-ka-sion",
           "fonctionnement → fõnk-sion-mã"
+        ],
+        "pronunciation_focus_en": [
+          "objectif → 'ob-zhek-TEEF' — 'j' is soft 'zh'; final -f sounded",
+          "sanction → 'sahnk-SYOHN' — nasal -an; -tion is 'syohn'",
+          "clarification → 'klah-ree-fee-kah-SYOHN' — five syllables; -tion is 'syohn'",
+          "fonctionnement → 'fohnk-syohn-MAHN' — nasal 'on' + nasal -ion + nasal -ent; -ment final t silent"
         ]
       },
       {
@@ -5866,170 +5890,205 @@ export const lessons: FrenchLesson[] = [
           "écrit → é-kri",
           "conformément → kõn-for-mé-mã",
           "transmise → trãns-miz"
+        ],
+        "pronunciation_focus_en": [
+          "consigne → 'kohn-SEE-nyuh' — nasal 'on'; -gn- is 'ny'; the formal verb for putting something on the record",
+          "écrit → 'ay-KREE' — final -t silent; means 'in writing'",
+          "conformément → 'kohn-for-may-MAHN' — nasal 'on' + nasal -ment; means 'in accordance with'",
+          "transmise → 'trahn-SMEEZ' — nasal -an; 's' between vowels sounds like 'z'; final -e silent"
         ]
       }
     ],
     "cultural_notes_vi": "La gestion des conflits en milieu professionnel français suit une CHAÎNE FORMALISÉE — ignorer les étapes peut compromettre vos droits, qu'on soit plaignant ou mis en cause. La culture française du droit du travail est plus protectrice que celle du Vietnam, mais aussi plus procédurale.\n\n(1) ÉCHELLE DES INSTANCES selon la gravité:\n\n- ÉCHANGE DIRECT entre les parties (à privilégier toujours en premier)\n- MÉDIATION INFORMELLE par le N+1 commun ou un manager neutre\n- MÉDIATION FORMELLE par un médiateur interne ou externe (ressources humaines, médiateur d'entreprise)\n- INSTANCES REPRÉSENTATIVES — CSE (Comité Social et Économique), délégués syndicaux, représentants du personnel\n- PROCÉDURE DISCIPLINAIRE engagée par l'employeur (entretien préalable, sanction)\n- INSPECTION DU TRAVAIL pour atteintes graves (harcèlement, discrimination)\n- CONSEIL DE PRUD'HOMMES pour litiges contractuels\n- TRIBUNAL CORRECTIONNEL pour faits pénaux (violences, harcèlement caractérisé)\n\nRÈGLE GÉNÉRALE: monter dans l'échelle ne sert que si l'étape précédente a échoué. Sauter directement aux prud'hommes sans tentative de médiation préalable affaiblit le dossier.\n\n(2) LE RÈGLEMENT INTÉRIEUR — DOCUMENT À LIRE. Toute entreprise française de plus de 50 salariés doit avoir un règlement intérieur détaillant les procédures de gestion des conflits. Ce document est public, accessible aux salariés. Le lire AVANT un conflit permet de connaître les recours disponibles.\n\n(3) PROTECTIONS LÉGALES SPÉCIFIQUES en France:\n\n- Le harcèlement moral est défini par le Code du travail (L1152-1) — actes répétés ayant pour effet de dégrader les conditions de travail\n- Le harcèlement sexuel est interdit (L1153-1) — pas besoin de répétition pour qualification\n- La discrimination est interdite sur 25 critères (origine, sexe, orientation, handicap, religion, etc.)\n- Le droit d'alerte permet de signaler sans représailles\n- Les lanceurs d'alerte sont protégés par la loi Sapin 2 (2016)\n\n(4) CONSTRUCTION D'UN DOSSIER. Pour tout conflit potentiellement sérieux:\n\n- TENIR UN JOURNAL daté des faits (mots exacts, contexte, témoins)\n- CONSERVER tous les écrits (mails, SMS, comptes-rendus)\n- DEMANDER UN COMPTE-RENDU ÉCRIT après chaque réunion sensible\n- IDENTIFIER LES TÉMOINS et conserver leurs coordonnées\n- ENVOYER UN MAIL DE SYNTHÈSE après tout échange oral important (« Pour mémoire de notre entretien du [date]… »)\n\nSans dossier, les prud'hommes ne tranchent pas. Avec dossier, les chances de succès montent à 60-70% selon les statistiques.\n\n(5) GESTION DES PROPOS DÉPLACÉS / OFFENSANTS — registre de réponse:\n\n- IMMÉDIAT à chaud: « Ce propos est inacceptable. Je vous demande de le retirer ou de le reformuler. » Phrase courte, ferme, publique si l'offense était publique.\n- À FROID, BILATÉRAL, sous 24-48h: rendez-vous demandé par mail, échange en bilatéral, ré-explication des limites, demande d'excuses.\n- ÉCRIT FORMEL en cas de récidive: mail au manager + RH décrivant les faits, demande de mesure formelle.\n- ESCALADE vers RH ou CSE si la médiation informelle échoue.\n\n(6) LE RÔLE DU CSE (Comité Social et Économique). Depuis 2017, le CSE remplace le CE, le CHSCT et les DP. Toute entreprise de plus de 11 salariés doit en avoir un. Le CSE peut être saisi pour droit d'alerte en cas de risque grave et imminent (harcèlement, sécurité). C'est un canal sous-utilisé par les salariés vietnamiens — par méconnaissance.\n\n(7) BẪY ĐẶC THÙ NGƯỜI VIỆT:\n\n- (a) ATTENDRE TROP LONGTEMPS avant d'agir (« ça va passer », « je ne veux pas faire de vagues »). Plus le délai est long, moins le dossier tient en justice. Règle: agir dans les 30 jours maximum après les faits.\n- (b) NE PAS TENIR DE TRACES écrites — tout sur l'oral. Sans trace, vous n'existez pas juridiquement.\n- (c) DÉMISSIONNER plutôt que se défendre. La démission perd tous les droits (chômage, indemnités). Préférer la rupture conventionnelle ou se faire licencier proprement avec accompagnement avocat.\n- (d) NÉGLIGER L'AVOCAT spécialisé en droit du travail. Frais initial 200-500 EUR pour une consultation, mais peut sauver des dizaines de milliers d'euros.\n\n(8) STYLE DE LANGAGE en conflit professionnel — REGISTRE FORMEL OBLIGATOIRE. Pas de tutoiement, pas de prénom, pas d'humour. La formalité protège — l'informalité pendant un conflit peut être retournée comme preuve de votre supposée acceptation.",
+    "cultural_notes_en": "Workplace conflict management in France follows a FORMALIZED CHAIN — skipping steps can compromise your rights, whether you're the complainant or the accused. French labor law culture is more protective than the US/Vietnamese equivalent, but also more procedural.\n\n(1) ESCALATION LADDER by severity:\n\n- DIRECT EXCHANGE between the parties (always try first)\n- INFORMAL MEDIATION by the common manager or a neutral colleague\n- FORMAL MEDIATION by an internal or external mediator (HR, company ombudsman)\n- REPRESENTATIVE BODIES — CSE (Social and Economic Committee), union delegates, employee representatives\n- DISCIPLINARY PROCEDURE initiated by the employer (pre-hearing, sanction)\n- LABOR INSPECTION for serious breaches (harassment, discrimination)\n- LABOR TRIBUNAL (prud'hommes) for contractual disputes\n- CRIMINAL COURT for criminal facts (violence, qualified harassment)\n\nGENERAL RULE: moving up the ladder only serves if the previous step failed. Jumping straight to the tribunal without prior mediation attempts weakens the case.\n\n(2) INTERNAL REGULATIONS — A DOCUMENT TO READ. Any French firm with more than 50 employees must have an internal regulation detailing conflict-management procedures. This document is public, accessible to employees. Reading it BEFORE a conflict lets you know what remedies are available.\n\n(3) SPECIFIC LEGAL PROTECTIONS in France:\n\n- Moral harassment is defined in the Labor Code (L1152-1) — repeated acts degrading working conditions\n- Sexual harassment is prohibited (L1153-1) — no repetition needed for qualification\n- Discrimination is prohibited on 25 criteria (origin, sex, orientation, disability, religion, etc.)\n- The right to alert allows whistleblowing without reprisal\n- Whistleblowers are protected by Sapin 2 law (2016)\n\n(4) BUILDING A CASE. For any potentially serious conflict:\n\n- KEEP A DATED JOURNAL of facts (exact words, context, witnesses)\n- PRESERVE all writings (emails, SMS, meeting minutes)\n- REQUEST WRITTEN RECORDS after every sensitive meeting\n- IDENTIFY WITNESSES and keep their contacts\n- SEND A SUMMARY EMAIL after any important oral exchange ('For the record of our meeting on [date]…')\n\nWithout a case file, the labor tribunal doesn't rule. With one, success rates rise to 60-70% per statistics.\n\n(5) HANDLING INAPPROPRIATE / OFFENSIVE REMARKS — response register:\n\n- IMMEDIATE in the heat: 'That remark is unacceptable. I ask you to withdraw or rephrase.' Short, firm sentence, public if the offense was public.\n- COLD-FOLLOWUP, BILATERAL, within 24-48h: meeting requested by email, bilateral exchange, re-explanation of limits, request for apology.\n- FORMAL WRITTEN in case of repetition: email to manager + HR describing the facts, request for formal measure.\n- ESCALATION to HR or CSE if informal mediation fails.\n\n(6) THE ROLE OF THE CSE (Social and Economic Committee). Since 2017, the CSE replaces the CE, CHSCT, and DP. Any firm of 11+ employees must have one. The CSE can be referred for an alert right in case of serious imminent risk (harassment, safety). This is an under-used channel by employees — through lack of awareness.\n\n(7) ANGLOPHONE/VIETNAMESE TRAPS:\n\n- (a) WAITING TOO LONG before acting ('it'll pass', 'I don't want to make waves'). The longer the delay, the weaker the case in court. Rule: act within 30 days max after the facts.\n- (b) NOT KEEPING WRITTEN TRACES — everything oral. Without traces, you don't legally exist.\n- (c) RESIGNING rather than defending. Resignation forfeits all rights (unemployment, severance). Prefer mutual termination (rupture conventionnelle) or being properly dismissed with legal counsel.\n- (d) NEGLECTING the specialized labor lawyer. Initial fee 200-500 EUR for a consultation, but can save tens of thousands of euros.\n\n(8) LANGUAGE STYLE in professional conflict — MANDATORY FORMAL REGISTER. No tutoiement, no first names, no humor. Formality protects — informality during a conflict can be turned against you as evidence of supposed acceptance.",
     "tip_advice_vi": "PROCESSUS EN 6 ÉTAPES pour gérer un conflit professionnel formel:\n\n(1) DOCUMENTER les faits dès leur survenance — journal daté, écrits conservés, témoins identifiés.\n\n(2) TENTER L'ÉCHANGE DIRECT en bilatéral, à froid, dans un cadre formel. Demander rendez-vous par mail, donner l'objet précis, prévoir 30 minutes.\n\n(3) ESCALADER VERS LE N+1 si l'échange direct échoue ou si la situation se reproduit. Mail formel décrivant les faits, ce qui a été tenté, ce qui est demandé.\n\n(4) SAISIR LES RH OU LE CSE si l'échelon hiérarchique ne résout pas, ou si le conflit implique le N+1 lui-même. Le CSE peut être saisi en confidentialité; les RH doivent agir formellement.\n\n(5) CONSULTER UN AVOCAT spécialisé en droit du travail dès qu'une procédure formelle est envisagée. Vérifier les délais de prescription, les chances de succès, les options.\n\n(6) PRÉSERVER LE LIEN PROFESSIONNEL pendant la procédure — exécuter ses missions normalement, éviter les comportements provocateurs, ne pas commenter publiquement.\n\nCỤM HỮU ÍCH:\n\nPOUR DEMANDER UN ENTRETIEN BILATÉRAL:\n- « Pourriez-vous me consacrer trente minutes pour qu'on revienne sur l'échange de mardi ? »\n- « Je voudrais qu'on aborde, à froid, ce qui s'est passé en réunion. »\n- « Je souhaite qu'on clarifie le périmètre de chacun. »\n\nPOUR FORMULER UNE PLAINTE INFORMELLE:\n- « Sur le fond, je ne saurais cautionner les propos tenus. »\n- « Sur la forme, j'attendais davantage de retenue. »\n- « Je vous demande de retirer ou reformuler ce qui a été dit. »\n\nPOUR ESCALADER:\n- « Je porte cette situation à votre connaissance, conformément au règlement intérieur. »\n- « Je sollicite votre intervention en tant que médiateur. »\n- « Je saisis le CSE pour droit d'alerte. »\n\nPOUR FORMALISER PAR ÉCRIT:\n- « Pour mémoire de notre entretien du [date]… »\n- « Je consigne par écrit l'échange de ce jour, conformément aux usages. »\n- « Copie de ce mail sera transmise aux ressources humaines. »\n\nPOUR DEMANDER UNE MESURE:\n- « Je demande qu'une médiation formelle soit organisée. »\n- « Je sollicite la mise en place d'une procédure d'enquête interne. »\n- « Je requiers un entretien avec la DRH dans les huit jours. »\n\nPOUR PRÉSERVER LE LIEN:\n- « Mon objectif n'est pas la sanction, mais la clarification. »\n- « Je reste disponible pour tout échange constructif. »\n- « Je continuerai à exécuter mes missions normalement pendant la procédure. »\n\nTRÁNH:\n- Réagir à chaud — toujours laisser passer 24-48h\n- Échanger sur WhatsApp ou en messagerie privée — privilégier le mail professionnel (trace)\n- Insulter, menacer, élever la voix — se retourne contre vous\n- Démissionner sous le coup de l'émotion — perte de droits\n- Ignorer une convocation à entretien préalable — risque maximal",
+    "tip_advice_en": "6-STEP PROCESS for managing a formal workplace conflict:\n\n(1) DOCUMENT the facts from the moment they occur — dated journal, writings preserved, witnesses identified.\n\n(2) ATTEMPT DIRECT EXCHANGE in bilateral, calmly, in a formal frame. Request a meeting by email, give the precise topic, plan 30 minutes.\n\n(3) ESCALATE TO N+1 if direct exchange fails or the situation recurs. Formal email describing facts, what was tried, what's requested.\n\n(4) REFER TO HR OR CSE if the hierarchy doesn't resolve, or if the conflict involves the N+1 themselves. The CSE can be referred confidentially; HR must act formally.\n\n(5) CONSULT A LABOR LAWYER as soon as a formal procedure is considered. Check statute of limitations, success odds, options.\n\n(6) PRESERVE THE PROFESSIONAL LINK during the procedure — perform your duties normally, avoid provocative behavior, don't comment publicly.\n\nUSEFUL PHRASES:\n\nTO REQUEST A BILATERAL MEETING:\n- 'Pourriez-vous me consacrer trente minutes pour qu'on revienne sur l'échange de mardi ?'\n- 'Je voudrais qu'on aborde, à froid, ce qui s'est passé en réunion.'\n- 'Je souhaite qu'on clarifie le périmètre de chacun.'\n\nTO STATE AN INFORMAL COMPLAINT:\n- 'Sur le fond, je ne saurais cautionner les propos tenus.'\n- 'Sur la forme, j'attendais davantage de retenue.'\n- 'Je vous demande de retirer ou reformuler ce qui a été dit.'\n\nTO ESCALATE:\n- 'Je porte cette situation à votre connaissance, conformément au règlement intérieur.'\n- 'Je sollicite votre intervention en tant que médiateur.'\n- 'Je saisis le CSE pour droit d'alerte.'\n\nTO FORMALIZE IN WRITING:\n- 'Pour mémoire de notre entretien du [date]…'\n- 'Je consigne par écrit l'échange de ce jour, conformément aux usages.'\n- 'Copie de ce mail sera transmise aux ressources humaines.'\n\nTO REQUEST A MEASURE:\n- 'Je demande qu'une médiation formelle soit organisée.'\n- 'Je sollicite la mise en place d'une procédure d'enquête interne.'\n- 'Je requiers un entretien avec la DRH dans les huit jours.'\n\nTO PRESERVE THE LINK:\n- 'Mon objectif n'est pas la sanction, mais la clarification.'\n- 'Je reste disponible pour tout échange constructif.'\n- 'Je continuerai à exécuter mes missions normalement pendant la procédure.'\n\nAVOID:\n- Reacting in the heat — always let 24-48h pass\n- Exchanging on WhatsApp or private messaging — prefer professional email (trace)\n- Insulting, threatening, raising your voice — backfires\n- Resigning under emotion — loss of rights\n- Ignoring a pre-disciplinary hearing summons — maximum risk",
     "vocabulary": [
       {
         "word": "le règlement intérieur",
         "en": "the internal regulations",
         "vi": "nội quy",
         "pos": "n.m.",
-        "pronunciation_vi": "rè-glơ-mã an-té-riơr"
+        "pronunciation_vi": "rè-glơ-mã an-té-riơr",
+        "pronunciation_en": "luh reh-gluh-MAHN an-tay-RYUR — the internal company document; mandatory for firms >50 employees and legally binding"
       },
       {
         "word": "une médiation formelle",
         "en": "a formal mediation",
         "vi": "hòa giải chính thức",
         "pos": "n.f.",
-        "pronunciation_vi": "mé-dia-sion for-mèl"
+        "pronunciation_vi": "mé-dia-sion for-mèl",
+        "pronunciation_en": "ewn may-dyah-SYOHN for-MEL — distinct from English 'mediation' in being formally documented and procedurally bounded"
       },
       {
         "word": "consigner par écrit",
         "en": "to record in writing",
         "vi": "ghi lại bằng văn bản",
         "pos": "v.",
-        "pronunciation_vi": "kõn-si-nyé par é-kri"
+        "pronunciation_vi": "kõn-si-nyé par é-kri",
+        "pronunciation_en": "kohn-see-NYAY par ay-KREE — -gn- is 'ny'; the formal verb for putting facts on the legally-protected record"
       },
       {
         "word": "le CSE (Comité Social et Économique)",
         "en": "Social and Economic Committee",
         "vi": "ủy ban xã hội và kinh tế",
         "pos": "n.m.",
-        "pronunciation_vi": "sé-ès-ơ"
+        "pronunciation_vi": "sé-ès-ơ",
+        "pronunciation_en": "luh say-ess-UH — letters pronounced separately in French; the mandatory employee-representation body in firms 11+"
       },
       {
         "word": "le harcèlement moral",
         "en": "moral harassment",
         "vi": "quấy rối tinh thần",
         "pos": "n.m.",
-        "pronunciation_vi": "ar-sèl-mã mo-ral"
+        "pronunciation_vi": "ar-sèl-mã mo-ral",
+        "pronunciation_en": "luh ar-sel-MAHN moh-RAHL — silent h; defined in L1152-1 of the Labor Code; not the same as English 'mobbing' or 'bullying'"
       },
       {
         "word": "saisir une instance",
         "en": "to refer to a body",
         "vi": "đệ trình cơ quan",
         "pos": "v.",
-        "pronunciation_vi": "sé-zir un an-stãns"
+        "pronunciation_vi": "sé-zir un an-stãns",
+        "pronunciation_en": "say-ZEER ewn an-STAHNS — 's' between vowels = 'z'; the formal verb for filing with an institutional body"
       },
       {
         "word": "un entretien préalable",
         "en": "a pre-disciplinary hearing",
         "vi": "buổi nghe trước kỷ luật",
         "pos": "n.m.",
-        "pronunciation_vi": "ãn-trơ-tian pré-a-la-blơ"
+        "pronunciation_vi": "ãn-trơ-tian pré-a-la-blơ",
+        "pronunciation_en": "ehn ahn-truh-TYAN pray-ah-LAH-bluh — mandatory step before any disciplinary sanction; the employee may be accompanied"
       },
       {
         "word": "une procédure disciplinaire",
         "en": "a disciplinary procedure",
         "vi": "quy trình kỷ luật",
         "pos": "n.f.",
-        "pronunciation_vi": "pro-sé-dur di-si-pli-nèr"
+        "pronunciation_vi": "pro-sé-dur di-si-pli-nèr",
+        "pronunciation_en": "ewn proh-say-DEWR dee-see-plee-NAIR — the formal sequence: written notice, pre-hearing, sanction notification"
       },
       {
         "word": "un mail de synthèse",
         "en": "a summary email",
         "vi": "email tóm tắt",
         "pos": "n.m.",
-        "pronunciation_vi": "mèl dơ san-tèz"
+        "pronunciation_vi": "mèl dơ san-tèz",
+        "pronunciation_en": "ehn MEL duh san-TEZ — the protective writing-trace habit after every oral exchange in a sensitive context"
       },
       {
         "word": "préserver ses droits",
         "en": "to preserve one's rights",
         "vi": "bảo vệ quyền của mình",
         "pos": "v.",
-        "pronunciation_vi": "pré-zer-vé sé droa"
+        "pronunciation_vi": "pré-zer-vé sé droa",
+        "pronunciation_en": "pray-zair-VAY say DRWAH — 'oi' is 'wah'; final -ts silent on 'droits'"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh",
         "text": "Madame Lefèvre, je porte à votre connaissance l'incident de mardi entre monsieur Bernard et moi.",
-        "vi": "Bà Lefèvre, tôi báo bà về sự cố thứ ba giữa ông Bernard và tôi."
+        "vi": "Bà Lefèvre, tôi báo bà về sự cố thứ ba giữa ông Bernard và tôi.",
+        "en": "Mrs. Lefèvre, I'm formally notifying you of Tuesday's incident between Mr. Bernard and me."
       },
       {
         "speaker": "DRH",
         "text": "Je vous écoute. Avez-vous des éléments écrits ?",
-        "vi": "Tôi nghe bà. Bà có yếu tố văn bản không?"
+        "vi": "Tôi nghe bà. Bà có yếu tố văn bản không?",
+        "en": "I'm listening. Do you have written evidence?"
       },
       {
         "speaker": "Linh",
         "text": "Oui — un compte-rendu de réunion validé, plus deux mails échangés depuis. Je vous transmets le tout.",
-        "vi": "Có — biên bản cuộc họp đã duyệt, cộng hai email trao đổi từ đó. Tôi gửi tất cả."
+        "vi": "Có — biên bản cuộc họp đã duyệt, cộng hai email trao đổi từ đó. Tôi gửi tất cả.",
+        "en": "Yes — a validated meeting record, plus two emails exchanged since. I'll forward everything to you."
       },
       {
         "speaker": "DRH",
         "text": "Je convoque les deux parties dans les huit jours pour une médiation formelle.",
-        "vi": "Tôi triệu tập hai bên trong 8 ngày cho hòa giải chính thức."
+        "vi": "Tôi triệu tập hai bên trong 8 ngày cho hòa giải chính thức.",
+        "en": "I'll summon both parties within eight days for a formal mediation."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (rendez-vous bilatéral demandé à la DRH après un incident en réunion la semaine précédente)",
         "text": "Madame Lefèvre, merci de me recevoir. Je voudrais aujourd'hui porter à votre connaissance une situation qui s'est produite mardi dernier en réunion stratégique, et qui appelle à mon sens une intervention formelle.",
-        "vi": "Bà Lefèvre, cảm ơn bà tiếp tôi. Hôm nay tôi muốn báo bà về một tình huống xảy ra thứ ba tuần trước trong cuộc họp chiến lược, và theo tôi cần can thiệp chính thức."
+        "vi": "Bà Lefèvre, cảm ơn bà tiếp tôi. Hôm nay tôi muốn báo bà về một tình huống xảy ra thứ ba tuần trước trong cuộc họp chiến lược, và theo tôi cần can thiệp chính thức.",
+        "en": "Mrs. Lefèvre, thank you for receiving me. Today I'd like to formally notify you of a situation that occurred last Tuesday in the strategic meeting, and which in my view calls for formal intervention."
       },
       {
         "speaker": "DRH",
         "text": "Je vous écoute. Posez-moi les faits dans l'ordre.",
-        "vi": "Tôi nghe bà. Đặt sự việc theo thứ tự."
+        "vi": "Tôi nghe bà. Đặt sự việc theo thứ tự.",
+        "en": "I'm listening. Lay out the facts in order."
       },
       {
         "speaker": "Linh",
         "text": "Lors de la réunion stratégique de mardi quatorze heures, en présence de douze personnes, monsieur Bernard a publiquement remis en cause mes compétences techniques en utilisant les termes — je cite mot pour mot, j'ai vérifié auprès de deux témoins — « il faudrait peut-être qu'on revoie le niveau d'exigence à l'embauche, parce que là, on est servis ». L'allusion à mon recrutement, à ma personne, devant l'ensemble du comité, dépasse à mon sens le cadre du désaccord professionnel.",
-        "vi": "Trong cuộc họp chiến lược thứ ba 14h, trước mặt 12 người, ông Bernard đã công khai đặt vấn đề về năng lực kỹ thuật của tôi bằng các từ — tôi trích nguyên văn, tôi đã xác nhận với hai nhân chứng — « có lẽ phải xem lại mức yêu cầu khi tuyển, vì hiện tại, mình được phục vụ ». Ngụ ý về việc tuyển tôi, về cá nhân tôi, trước toàn bộ ban, theo tôi vượt khung bất đồng chuyên môn."
+        "vi": "Trong cuộc họp chiến lược thứ ba 14h, trước mặt 12 người, ông Bernard đã công khai đặt vấn đề về năng lực kỹ thuật của tôi bằng các từ — tôi trích nguyên văn, tôi đã xác nhận với hai nhân chứng — « có lẽ phải xem lại mức yêu cầu khi tuyển, vì hiện tại, mình được phục vụ ». Ngụ ý về việc tuyển tôi, về cá nhân tôi, trước toàn bộ ban, theo tôi vượt khung bất đồng chuyên môn.",
+        "en": "At Tuesday's two o'clock strategic meeting, with twelve people present, Mr. Bernard publicly called my technical competencies into question using the words — I quote verbatim, having checked with two witnesses — 'perhaps we should review the hiring bar, because look at what we've got'. The allusion to my recruitment, to me personally, in front of the entire committee, goes beyond, in my view, the bounds of professional disagreement."
       },
       {
         "speaker": "DRH",
         "text": "Effectivement, c'est grave. Quel a été le contexte ? Le désaccord portait sur quoi exactement ?",
-        "vi": "Thực vậy, nghiêm trọng. Bối cảnh là gì? Bất đồng về điều gì cụ thể?"
+        "vi": "Thực vậy, nghiêm trọng. Bối cảnh là gì? Bất đồng về điều gì cụ thể?",
+        "en": "Indeed, that's serious. What was the context? What was the disagreement about exactly?"
       },
       {
         "speaker": "Linh",
         "text": "Le désaccord portait sur l'arbitrage technique entre deux options pour le projet client X. Monsieur Bernard préférait l'option A, je défendais l'option B avec des arguments chiffrés. Le débat était légitime; les propos qu'il a tenus à mon encontre n'étaient PAS un argument technique — c'était une mise en cause personnelle.",
-        "vi": "Bất đồng về phán quyết kỹ thuật giữa hai lựa chọn cho dự án khách X. Ông Bernard thích lựa chọn A, tôi bảo vệ lựa chọn B với lập luận có số liệu. Tranh luận hợp pháp; các phát ngôn ông nói về tôi KHÔNG phải lập luận kỹ thuật — là sự đặt vấn đề cá nhân."
+        "vi": "Bất đồng về phán quyết kỹ thuật giữa hai lựa chọn cho dự án khách X. Ông Bernard thích lựa chọn A, tôi bảo vệ lựa chọn B với lập luận có số liệu. Tranh luận hợp pháp; các phát ngôn ông nói về tôi KHÔNG phải lập luận kỹ thuật — là sự đặt vấn đề cá nhân.",
+        "en": "The disagreement concerned a technical arbitration between two options for the client X project. Mr. Bernard preferred Option A, I defended Option B with quantified arguments. The debate was legitimate; what he said against me was NOT a technical argument — it was a personal attack."
       },
       {
         "speaker": "DRH",
         "text": "Avez-vous des éléments écrits qui corroborent les faits ?",
-        "vi": "Bà có yếu tố văn bản chứng minh sự việc không?"
+        "vi": "Bà có yếu tố văn bản chứng minh sự việc không?",
+        "en": "Do you have written evidence corroborating the facts?"
       },
       {
         "speaker": "Linh",
         "text": "Trois éléments. Premièrement, le compte-rendu de la réunion, rédigé par l'assistante et validé par tous, mentionne la phrase de monsieur Bernard. Deuxièmement, j'ai envoyé le lendemain un mail formel à monsieur Bernard, en copie à mon N+1, où je qualifiais ses propos d'inacceptables et demandais une explication. Il n'a pas répondu. Troisièmement, deux collègues présents en réunion sont prêts à témoigner si nécessaire — je vous transmettrai leurs noms en confidentiel.",
-        "vi": "Ba yếu tố. Thứ nhất, biên bản cuộc họp, do trợ lý soạn và mọi người duyệt, nhắc câu của ông Bernard. Thứ hai, tôi đã gửi ngày hôm sau một email chính thức cho ông Bernard, có cc N+1, nơi tôi gọi các phát ngôn không chấp nhận được và yêu cầu giải thích. Ông không trả lời. Thứ ba, hai đồng nghiệp có mặt sẵn sàng làm chứng nếu cần — tôi sẽ gửi tên bà confidential."
+        "vi": "Ba yếu tố. Thứ nhất, biên bản cuộc họp, do trợ lý soạn và mọi người duyệt, nhắc câu của ông Bernard. Thứ hai, tôi đã gửi ngày hôm sau một email chính thức cho ông Bernard, có cc N+1, nơi tôi gọi các phát ngôn không chấp nhận được và yêu cầu giải thích. Ông không trả lời. Thứ ba, hai đồng nghiệp có mặt sẵn sàng làm chứng nếu cần — tôi sẽ gửi tên bà confidential.",
+        "en": "Three elements. First, the meeting record, drafted by the assistant and validated by all, mentions Mr. Bernard's remark. Second, I sent the next day a formal email to Mr. Bernard, copying my N+1, where I qualified his remarks as unacceptable and requested an explanation. He didn't reply. Third, two colleagues present at the meeting are ready to testify if necessary — I'll share their names with you in confidence."
       },
       {
         "speaker": "DRH",
         "text": "Dossier solide. Quelle est votre demande ?",
-        "vi": "Hồ sơ vững. Yêu cầu của bà là gì?"
+        "vi": "Hồ sơ vững. Yêu cầu của bà là gì?",
+        "en": "Solid case. What's your request?"
       },
       {
         "speaker": "Linh",
         "text": "Trois demandes graduées. Premièrement, à minima: un échange formel à trois — monsieur Bernard, vous, moi — où il revient sur les propos tenus et présente des excuses. Deuxièmement, en parallèle: une note de service rappelant à l'ensemble des managers les règles de respect dans les réunions stratégiques — sans nommer personne, mais avec un signal clair. Troisièmement, à conserver en réserve si la situation se reproduit: l'ouverture d'une procédure disciplinaire selon le règlement intérieur.",
-        "vi": "Ba yêu cầu phân cấp. Thứ nhất, tối thiểu: trao đổi chính thức ba bên — ông Bernard, bà, tôi — nơi ông quay lại các phát ngôn và xin lỗi. Thứ hai, song song: thông cáo nhắc toàn bộ các manager các quy tắc tôn trọng trong cuộc họp chiến lược — không gọi tên ai, nhưng với tín hiệu rõ. Thứ ba, dự phòng nếu tình huống tái diễn: mở thủ tục kỷ luật theo nội quy."
+        "vi": "Ba yêu cầu phân cấp. Thứ nhất, tối thiểu: trao đổi chính thức ba bên — ông Bernard, bà, tôi — nơi ông quay lại các phát ngôn và xin lỗi. Thứ hai, song song: thông cáo nhắc toàn bộ các manager các quy tắc tôn trọng trong cuộc họp chiến lược — không gọi tên ai, nhưng với tín hiệu rõ. Thứ ba, dự phòng nếu tình huống tái diễn: mở thủ tục kỷ luật theo nội quy.",
+        "en": "Three graduated requests. First, at minimum: a formal three-way exchange — Mr. Bernard, you, me — where he revisits his remarks and presents apologies. Second, in parallel: a service note reminding all managers of respect rules in strategic meetings — without naming anyone, but with a clear signal. Third, held in reserve if the situation recurs: opening a disciplinary procedure per the internal regulations."
       },
       {
         "speaker": "DRH",
         "text": "Demandes proportionnées et bien structurées. Je convoque monsieur Bernard cet après-midi en bilatéral. Je l'informe des faits, je lui montre le compte-rendu, je lui demande sa version. Si sa version coïncide ou s'il reconnaît les faits, j'organise l'entretien à trois dans la semaine. Si sa version diverge significativement, je devrai pousser l'enquête plus loin avant médiation.",
-        "vi": "Yêu cầu cân đối và cấu trúc tốt. Tôi triệu ông Bernard chiều nay bilatéral. Tôi thông báo sự việc, cho xem biên bản, hỏi version của ông. Nếu version trùng hoặc ông thừa nhận, tôi tổ chức buổi trao đổi ba bên trong tuần. Nếu version khác biệt đáng kể, tôi phải đẩy điều tra xa hơn trước hòa giải."
+        "vi": "Yêu cầu cân đối và cấu trúc tốt. Tôi triệu ông Bernard chiều nay bilatéral. Tôi thông báo sự việc, cho xem biên bản, hỏi version của ông. Nếu version trùng hoặc ông thừa nhận, tôi tổ chức buổi trao đổi ba bên trong tuần. Nếu version khác biệt đáng kể, tôi phải đẩy điều tra xa hơn trước hòa giải.",
+        "en": "Proportionate and well-structured requests. I'll summon Mr. Bernard this afternoon in bilateral. I'll inform him of the facts, show him the meeting record, ask for his version. If his version aligns or he acknowledges the facts, I'll organize the three-way meeting within the week. If his version diverges significantly, I'll have to push the investigation further before mediation."
       },
       {
         "speaker": "Linh",
         "text": "Cela me convient. Une dernière chose: je préfère que cet échange reste confidentiel jusqu'à la médiation. Je continue à exécuter mes missions normalement, sans changement visible vis-à-vis du reste de l'équipe. Mon objectif n'est pas la sanction; c'est que les règles soient claires et que ce comportement ne se reproduise pas.",
-        "vi": "Tôi đồng ý. Một điều cuối: tôi thích trao đổi này giữ confidential đến hòa giải. Tôi tiếp tục thực hiện nhiệm vụ bình thường, không thay đổi rõ với phần còn lại của đội. Mục tiêu của tôi không phải chế tài; là các quy tắc rõ và hành vi này không tái diễn."
+        "vi": "Tôi đồng ý. Một điều cuối: tôi thích trao đổi này giữ confidential đến hòa giải. Tôi tiếp tục thực hiện nhiệm vụ bình thường, không thay đổi rõ với phần còn lại của đội. Mục tiêu của tôi không phải chế tài; là các quy tắc rõ và hành vi này không tái diễn.",
+        "en": "That works for me. One last thing: I'd prefer this exchange remain confidential until the mediation. I'll continue performing my duties normally, with no visible change to the rest of the team. My objective isn't sanction; it's for the rules to be clear and this behavior not to recur."
       },
       {
         "speaker": "DRH",
         "text": "Confidentialité respectée des deux côtés. Je vous envoie un mail de synthèse de notre échange dans la journée pour que vous validiez le récapitulatif des faits et de vos demandes. Cela protège la procédure si elle devait s'étendre.",
-        "vi": "Tôn trọng confidentialité hai bên. Tôi gửi bà email tóm tắt trao đổi trong ngày để bà duyệt récapitulatif sự việc và yêu cầu. Điều này bảo vệ quy trình nếu phải mở rộng."
+        "vi": "Tôn trọng confidentialité hai bên. Tôi gửi bà email tóm tắt trao đổi trong ngày để bà duyệt récapitulatif sự việc và yêu cầu. Điều này bảo vệ quy trình nếu phải mở rộng.",
+        "en": "Confidentiality respected on both sides. I'll send you a summary email of our exchange today so you can validate the recap of facts and your requests. That protects the procedure if it had to be extended."
       },
       {
         "speaker": "Linh",
         "text": "Parfait. Je relis et je valide ce soir.",
-        "vi": "Hoàn hảo. Tôi đọc lại và duyệt tối nay."
+        "vi": "Hoàn hảo. Tôi đọc lại và duyệt tối nay.",
+        "en": "Perfect. I'll read it over and validate this evening."
       }
     ],
     "roleplay_prompts": [
@@ -6037,30 +6096,44 @@ export const lessons: FrenchLesson[] = [
       "Vous recevez une convocation à un entretien préalable à licenciement. Soạn email courtois demandant la communication des griefs précis avant l'entretien — droit fondamental que beaucoup ignorent.",
       "Soạn 5 phrases pour expliquer à un collègue vietnamien pourquoi démissionner après un conflit non résolu fait perdre des droits — alternatives: rupture conventionnelle, prud'hommes, accompagnement avocat."
     ],
+    "roleplay_prompts_en": [
+      "A colleague makes a sexist remark in a public meeting. Draft 3 graduated responses: immediate in-the-moment reaction, cold-followup email within 48h, HR escalation if it recurs. Resist the anglophone instinct to laugh it off; in French context, immediate-but-measured response is required.",
+      "You receive a summons to a pre-disciplinary hearing. Draft a courteous email requesting communication of the precise grievances before the hearing — a fundamental right many ignore. Frame it as procedural cooperation, not pushback.",
+      "Draft 5 sentences explaining to an anglophone colleague why resigning after an unresolved conflict forfeits rights — alternatives: mutual termination (rupture conventionnelle), labor tribunal, lawyer support. The reflex to 'just quit and move on' costs serious money in the French system."
+    ],
     "register_notes": "Le LEXIQUE DU CONFLIT PROFESSIONNEL en français exige une précision technique:\n\nVOCABULAIRE LÉGAL À MAÎTRISER:\n- « le règlement intérieur » (document interne fixant les règles)\n- « la convention collective » (accord de branche)\n- « le Code du travail » (loi nationale)\n- « le contrat de travail » (engagement individuel)\n- « la procédure disciplinaire » (avertissement, blâme, mise à pied, licenciement)\n- « l'entretien préalable » (étape obligatoire avant sanction)\n- « le préavis » (durée entre annonce et effet)\n- « la rupture conventionnelle » (départ à l'amiable, droits chômage maintenus)\n- « les prud'hommes » (juridiction du travail)\n- « le harcèlement moral » (L1152-1 du Code du travail)\n\nVERBES POUR ACTES PROCÉDURAUX:\n- « porter à la connaissance » (informer formellement)\n- « consigner par écrit » (mettre par écrit pour traçabilité)\n- « saisir » (porter devant une instance)\n- « solliciter » (demander formellement)\n- « requérir » (formel, demande légale)\n- « notifier » (transmettre officiellement)\n- « contester » (s'opposer à un acte ou décision)\n\nFORMULES POUR ÉCRITS FORMELS:\n- « Pour faire suite à notre entretien du [date]… »\n- « Conformément au règlement intérieur, je vous notifie… »\n- « Je porte à votre connaissance que… »\n- « Je sollicite votre intervention en qualité de… »\n- « Cette demande est faite en mon nom propre / au nom du collectif. »\n\nDISTINCTIONS LEXICALES CRITIQUES:\n- « différend » (désaccord civil) vs « conflit » (opposition active) vs « litige » (juridiquement constitué)\n- « excuses » (formel, peuvent être exigées) vs « regrets » (informel, sans engagement)\n- « médiation » (négociation facilitée) vs « arbitrage » (décision contraignante)\n- « entretien » (échange) vs « audition » (formel, sous procédure)\n- « avertissement » (sanction légère) vs « blâme » (sanction documentée) vs « mise à pied » (suspension temporaire)\n\nUSAGE DU PASSIF pour dépersonnaliser:\n- « Une réunion sera organisée » (au lieu de « j'organise une réunion »)\n- « Les faits sont consignés » (au lieu de « je consigne les faits »)\n- « Une médiation est demandée » (au lieu de « je demande une médiation »)\n\nLe passif protège la procédure et neutralise l'émotion.\n\nUNE TINH TẾ ABSOLUE: en conflit professionnel formel, JAMAIS de tutoiement, JAMAIS de prénom seul, JAMAIS d'humour. Le formalisme protège — il signale que la procédure est respectée. L'informalité peut être retournée comme preuve de banalisation des faits.",
+    "register_notes_en": "WORKPLACE-CONFLICT VOCABULARY in French demands technical precision:\n\nLEGAL VOCABULARY TO MASTER:\n- 'le règlement intérieur' (internal regulations document)\n- 'la convention collective' (branch collective agreement)\n- 'le Code du travail' (national Labor Code)\n- 'le contrat de travail' (individual employment contract)\n- 'la procédure disciplinaire' (warning, blame, suspension, dismissal)\n- 'l'entretien préalable' (mandatory step before sanction)\n- 'le préavis' (notice period between announcement and effect)\n- 'la rupture conventionnelle' (mutual termination, unemployment rights preserved)\n- 'les prud'hommes' (labor tribunal)\n- 'le harcèlement moral' (L1152-1 of the Labor Code)\n\nVERBS FOR PROCEDURAL ACTS:\n- 'porter à la connaissance' (to formally inform)\n- 'consigner par écrit' (to record in writing for traceability)\n- 'saisir' (to refer to an institutional body)\n- 'solliciter' (to formally request)\n- 'requérir' (formal legal demand)\n- 'notifier' (to officially transmit)\n- 'contester' (to oppose an act or decision)\n\nFORMULAS FOR FORMAL WRITINGS:\n- 'Pour faire suite à notre entretien du [date]…'\n- 'Conformément au règlement intérieur, je vous notifie…'\n- 'Je porte à votre connaissance que…'\n- 'Je sollicite votre intervention en qualité de…'\n- 'Cette demande est faite en mon nom propre / au nom du collectif.'\n\nCRITICAL LEXICAL DISTINCTIONS:\n- 'différend' (civil disagreement) vs 'conflit' (active opposition) vs 'litige' (legally constituted)\n- 'excuses' (formal, may be required) vs 'regrets' (informal, no commitment)\n- 'médiation' (facilitated negotiation) vs 'arbitrage' (binding decision)\n- 'entretien' (exchange) vs 'audition' (formal, under procedure)\n- 'avertissement' (light sanction) vs 'blâme' (documented sanction) vs 'mise à pied' (temporary suspension)\n\nPASSIVE USAGE to depersonalize:\n- 'Une réunion sera organisée' (instead of 'I'll organize a meeting')\n- 'Les faits sont consignés' (instead of 'I'm recording the facts')\n- 'Une médiation est demandée' (instead of 'I'm requesting a mediation')\n\nThe passive protects the procedure and neutralizes emotion.\n\nAN ABSOLUTE REFINEMENT: in formal professional conflict, NEVER tutoiement, NEVER first names alone, NEVER humor. Formalism protects — it signals that the procedure is respected. Informality can be turned back as evidence that you didn't take the facts seriously.",
     "idiom_glosses": [
       {
         "idiom": "Saisir une instance (formel juridique)",
         "literal": "Nắm bắt một cơ quan",
+        "literal_en": "To seize an instance",
         "meaning": "Đệ trình một cơ quan có thẩm quyền — terme procédural précis.",
+        "meaning_en": "To formally refer to an institutional body — a precise procedural term. English equivalent: 'to bring before' or 'to file with'. Used when escalating from informal to formal channels.",
         "example": "Si la médiation échoue, je saisirai le CSE pour droit d'alerte."
       },
       {
         "idiom": "Crever l'abcès (courant)",
         "literal": "Châm vỡ ổ áp xe",
+        "literal_en": "To burst the abscess",
         "meaning": "Giải quyết một vấn đề bị nén lâu — utile en début d'échange formel.",
+        "meaning_en": "To address a long-suppressed problem — useful at the opening of a formal exchange. English equivalent: 'to clear the air' or 'to lance the boil'. The medical metaphor signals that the catharsis is necessary, not gratuitous.",
         "example": "Cet entretien doit servir à crever l'abcès — la situation ne peut plus rester en suspens."
       },
       {
         "idiom": "Mettre à plat (courant)",
         "literal": "Đặt phẳng",
+        "literal_en": "To lay flat",
         "meaning": "Trình bày minh bạch tất cả — phương pháp médiation.",
+        "meaning_en": "To lay everything out transparently — a mediation methodology. English equivalent: 'to put everything on the table'. Used to invite each side to surface facts, feelings, and expectations openly.",
         "example": "Je propose qu'on mette tout à plat dans cet entretien: les faits, les ressentis, les attentes."
       },
       {
         "idiom": "Préserver ses arrières (courant)",
         "literal": "Bảo vệ phía sau",
+        "literal_en": "To protect one's rear",
         "meaning": "Giữ chứng cứ và quyền trong dự phòng — discipline du dossier.",
+        "meaning_en": "To cover one's back — keep evidence and rights in reserve. Military metaphor. English equivalent: 'to cover one's back / six' or 'to have one's affairs in order'. Not paranoia, but standard professional discipline.",
         "example": "Tenir un journal des faits, ce n'est pas être paranoïaque — c'est préserver ses arrières."
       }
     ],
@@ -6068,20 +6141,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Je ___ par écrit l'échange de ce jour, conformément aux usages — copie sera transmise aux ressources humaines.",
-        "answer": "consigne"
+        "answer": "consigne",
+        "hint_vi": "động từ 'consigner' (ghi lại) ở présent ngôi 1 số ít",
+        "hint_en": "verb 'consigner' (to record formally) in 1st person singular present — the canonical verb for putting facts on the record"
       },
       {
         "type": "matching",
         "pairs": [
-          ["le règlement intérieur", "nội quy"],
-          ["saisir une instance", "đệ trình cơ quan"],
-          ["consigner par écrit", "ghi lại bằng văn bản"]
+          ["le règlement intérieur", "nội quy (the internal regulations — mandatory in firms >50 employees)"],
+          ["saisir une instance", "đệ trình cơ quan (to formally refer to an institutional body)"],
+          ["consigner par écrit", "ghi lại bằng văn bản (to record in writing for legal traceability)"]
         ],
-        "instruction": "Nối thuật ngữ giải quyết tranh chấp với nghĩa Việt"
+        "instruction": "Nối thuật ngữ giải quyết tranh chấp với nghĩa Việt",
+        "instruction_en": "Match the workplace-dispute term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Mục tiêu của tôi không phải là chế tài, mà là làm rõ quy tắc hoạt động giữa hai bộ phận.",
+        "english": "My objective is not sanction, but the clarification of the operating rules between our two services.",
         "french": "Mon objectif n'est pas la sanction, mais la clarification des règles de fonctionnement entre nos deux services."
       }
     ]
@@ -6101,6 +6178,12 @@ export const lessons: FrenchLesson[] = [
           "conditionne → kõn-di-sion",
           "équilibre → é-ki-li-brơ",
           "cède → sèd"
+        ],
+        "pronunciation_focus_en": [
+          "MESORE → 'meh-ZOR' — acronym for MEilleure SOlution de REpli; the French equivalent of BATNA",
+          "conditionne → 'kohn-dee-SYOHN' — nasal 'on'; double-n one clean 'n'; means 'determines'",
+          "équilibre → 'ay-kee-LEE-bruh' — final -bre is a quick 'bruh'",
+          "cède → 'SED' — è with grave opens to 'eh'; final -e silent; verb 'céder' = to yield"
         ]
       },
       {
@@ -6111,6 +6194,12 @@ export const lessons: FrenchLesson[] = [
           "seuil → sơy",
           "rupture → rup-tur",
           "intenable → an-tơ-na-blơ"
+        ],
+        "pronunciation_focus_en": [
+          "deçà → 'duh-SAH' — ç forces 's' before 'a'; 'en deçà de' = 'below / short of'",
+          "seuil → 'SUH-y' — -euil ending is 'uh-y' with rounded lips; one syllable",
+          "rupture → 'rewp-TEWR' — 'u' rounded throughout; final -e silent",
+          "intenable → 'an-tuh-NAH-bluh' — nasal -in; final -ble is a quick 'bluh'; means 'unsustainable'"
         ]
       },
       {
@@ -6121,6 +6210,12 @@ export const lessons: FrenchLesson[] = [
           "sereinement → sơ-rèn-mã",
           "bluff → bluf",
           "négociateur → né-go-sia-tơr"
+        ],
+        "pronunciation_focus_en": [
+          "alternative → 'al-tair-nah-TEEV' — final -ive is 'eev'; stress on last syllable",
+          "sereinement → 'suh-ren-MAHN' — nasal -ment; means 'calmly / serenely'",
+          "bluff → 'BLUF' — English loanword kept; final -ff one clean 'f'",
+          "négociateur → 'nay-goh-syah-TUR' — final -eur rounded 'ur'"
         ]
       },
       {
@@ -6131,6 +6226,12 @@ export const lessons: FrenchLesson[] = [
           "tiens → tian",
           "ouverte → u-vèrt",
           "contraintes → kõn-trant"
+        ],
+        "pronunciation_focus_en": [
+          "quitter → 'kee-TAY' — double-t one clean 't'; final -er is 'ay'",
+          "tiens → 'TYAN' — nasal -en; -iens is 'yan'; from 'tenir'",
+          "ouverte → 'oo-VAIRT' — 'ou' is 'oo'; feminine -e makes the -t sounded",
+          "contraintes → 'kohn-TRANT' — nasal 'on' + nasal -ainte; final -e silent; plural -s silent"
         ]
       },
       {
@@ -6141,175 +6242,211 @@ export const lessons: FrenchLesson[] = [
           "fermer → fèr-mé",
           "précisément → pré-si-zé-mã",
           "prêt → prè"
+        ],
+        "pronunciation_focus_en": [
+          "moment → 'moh-MAHN' — nasal -ent; final -t silent",
+          "fermer → 'fair-MAY' — final -er is 'ay'; 'fermer un accord' = to close a deal",
+          "précisément → 'pray-see-zay-MAHN' — nasal -ment; means 'precisely'",
+          "prêt → 'PREH' — circumflex ê opens to 'eh'; final -t silent; means 'ready'"
         ]
       }
     ],
     "cultural_notes_vi": "Le concept de BATNA (Best Alternative To a Negotiated Agreement) — en français MESORE (MEilleure SOlution de REpli) — est l'outil le plus puissant et le moins maîtrisé en négociation. Pour les négociateurs vietnamiens souvent formés à privilégier la conclusion d'accord, comprendre la valeur stratégique du « walk away » est une révolution culturelle.\n\n(1) DÉFINITION OPÉRATIONNELLE de la MESORE: c'est ce que vous ferez SI la négociation actuelle n'aboutit pas. Pas ce que vous AIMERIEZ faire — ce que vous FEREZ effectivement, avec le délai, le coût, la qualité que cela implique.\n\nExemple pour un candidat:\n- Mauvaise MESORE: « si je ne signe pas avec X, je trouverai bien autre chose » (vague, non engageante)\n- Bonne MESORE: « si je ne signe pas avec X, j'ai une offre ferme de Y à 70K, à signer dans les 10 jours; ou je reste 6 mois chez Z avec une revalorisation de 5% » (chiffré, daté, comparable)\n\n(2) LA MESORE DÉFINIT LE SEUIL DE RUPTURE. Toute proposition INFÉRIEURE à votre MESORE = vous rejetez (autrement vous perdez par rapport à ne pas signer). Toute proposition SUPÉRIEURE à votre MESORE = vous signez (autrement vous perdez par rapport à votre alternative). La MESORE est l'arbitre objectif de toute négociation.\n\n(3) AMÉLIORER SA MESORE EST PLUS PUISSANT QUE NÉGOCIER. Si vous voulez un meilleur prix, ne pushez PAS sur le prix — TRAVAILLEZ votre MESORE. Plus votre alternative est solide, plus vous pouvez résister sans bluff. Le négociateur expérimenté passe 60% de son temps à construire des MESORE crédibles, 40% à négocier l'accord en cours.\n\n(4) DÉCOUVRIR LA MESORE DE L'AUTRE est l'autre pilier. Sans connaître l'alternative de votre interlocuteur, vous négociez à l'aveugle. Questions utiles:\n- « Quelles sont les autres options que vous explorez en parallèle ? »\n- « Quel serait votre coût d'opportunité si nous n'aboutissions pas ? »\n- « Avez-vous un calendrier pressant ? »\n\nL'autre partie évitera de répondre directement; mais ses non-réponses, ses hésitations, ses changements de sujet sont eux-mêmes des informations.\n\n(5) WALK AWAY — TECHNIQUE ET ÉTHIQUE\n\nLe walk away est l'acte de quitter la table sans accord. Trois types:\n\n- WALK AWAY DÉFINITIF: vous partez et vous ne reviendrez pas. Votre MESORE est meilleure que toute proposition réaliste de l'autre partie. Acte rare, à utiliser quand l'écart est structurel.\n\n- WALK AWAY TACTIQUE: vous partez en laissant la porte ouverte. « Si vos contraintes évoluent, nous restons disponibles. » L'autre partie va peser sa MESORE; si son alternative est faible, elle reviendra avec une meilleure offre.\n\n- WALK AWAY DE BLUFF: vous menacez de partir sans réelle MESORE alternative. DANGEREUX — si l'autre vous rappelle votre bluff, vous perdez tout: la négociation et la crédibilité. À éviter absolument sans MESORE solide.\n\n(6) ART DU WALK AWAY EN FRANCE — CODES SPÉCIFIQUES.\n\nLa culture française business respecte le walk away SI il est:\n- (a) ARGUMENTÉ — pas un coup de tête, mais une décision posée\n- (b) COURTOIS — sans rancœur, sans accusation\n- (c) AVEC PORTE OUVERTE — sauf cas de rupture définitive\n- (d) FORMALISÉ par écrit — mail de remerciement et de clôture, pas silence post-rendez-vous\n\nUn walk away dans ces conditions n'endommage pas la réputation; au contraire, il signale un négociateur sérieux qui sait dire non. La prochaine fois, votre interlocuteur saura que votre OUI vaut quelque chose.\n\n(7) LES SIGNAUX DE FERMETURE D'ACCORD — quand est-il temps de signer ?\n\n- Tous vos points critiques sont couverts (pas seulement les NICE TO HAVE)\n- L'écart résiduel est INFÉRIEUR au coût de continuer à négocier (temps, énergie, risque de relation)\n- L'autre partie envoie des signaux de clôture (formulation finale, demande de validation, projet de contrat)\n- Vous êtes prêt à VIVRE avec l'accord pendant sa durée\n\nSI ces 4 conditions sont remplies, signez. Continuer à pusher au-delà = grattage de derniers pourcents qui peut casser la dynamique relationnelle.\n\n(8) BẪY ĐẶC THÙ NGƯỜI VIỆT:\n\n- (a) HORREUR DU WALK AWAY — culture asiatique de l'évitement de la rupture. Mais sans walk away crédible, vous négociez sans arme.\n- (b) ACCEPTATION D'ACCORDS INTENABLES par peur de rupture. Vous signez aujourd'hui, vous regrettez demain. Mieux vaut walk away que mauvais accord.\n- (c) BLUFF SANS MESORE RÉELLE — annoncer qu'on a une offre concurrente alors qu'on ne l'a pas. Si appelé au bluff, perte totale.\n- (d) FOCUS UNIQUEMENT SUR L'ACCORD EN COURS — sans investir parallèlement sur les MESORE. Résultat: chaque négociation est une faiblesse structurelle.",
+    "cultural_notes_en": "The concept of BATNA (Best Alternative To a Negotiated Agreement) — in French MESORE (MEilleure SOlution de REpli) — is the most powerful and least-mastered tool in negotiation. For anglophone negotiators often trained to focus on closing the deal, understanding the strategic value of 'walk away' is a cultural shift.\n\n(1) OPERATIONAL DEFINITION of MESORE: it's what you WILL do IF the current negotiation fails. Not what you'd LIKE to do — what you WILL ACTUALLY do, with the timeline, cost, and quality that implies.\n\nExample for a candidate:\n- Bad MESORE: 'if I don't sign with X, I'll find something else' (vague, non-committal)\n- Good MESORE: 'if I don't sign with X, I have a firm offer from Y at 70K to sign within 10 days; or I stay 6 months at Z with a 5% raise' (quantified, dated, comparable)\n\n(2) MESORE DEFINES THE WALK-AWAY THRESHOLD. Any proposal BELOW your MESORE = you reject it (otherwise you lose vs. not signing). Any proposal ABOVE your MESORE = you sign (otherwise you lose vs. your alternative). MESORE is the objective arbiter of every negotiation.\n\n(3) IMPROVING YOUR MESORE IS MORE POWERFUL THAN NEGOTIATING. If you want a better price, don't push on price — WORK ON YOUR MESORE. The stronger your alternative, the more you can resist without bluffing. The experienced negotiator spends 60% of their time building credible MESORE and 40% negotiating the deal at hand.\n\n(4) DISCOVERING THE OTHER SIDE'S MESORE is the other pillar. Without knowing your counterpart's alternative, you negotiate blind. Useful questions:\n- 'What other options are you exploring in parallel?'\n- 'What would your opportunity cost be if we didn't reach an agreement?'\n- 'Do you have a pressing timeline?'\n\nThe other party will avoid answering directly; but their non-answers, hesitations, and topic shifts are themselves information.\n\n(5) WALK AWAY — TECHNIQUE AND ETHICS\n\nWalk away is leaving the table without an agreement. Three types:\n\n- DEFINITIVE WALK AWAY: you leave and won't return. Your MESORE is better than any realistic proposal from the other side. Rare; for structural gaps.\n\n- TACTICAL WALK AWAY: you leave but keep the door open. 'If your constraints evolve, we remain available.' The other side will weigh their MESORE; if their alternative is weak, they'll come back with a better offer.\n\n- BLUFF WALK AWAY: you threaten to leave without real MESORE alternative. DANGEROUS — if the other calls your bluff, you lose everything: the negotiation and your credibility. Avoid absolutely without solid MESORE.\n\n(6) THE ART OF WALK AWAY IN FRANCE — SPECIFIC CODES.\n\nFrench business culture respects walk away IF it is:\n- (a) ARGUED — not impulsive, but a measured decision\n- (b) COURTEOUS — without resentment or accusation\n- (c) WITH AN OPEN DOOR — except in cases of definitive rupture\n- (d) FORMALIZED in writing — thank-you and closure email, not post-meeting silence\n\nA walk away under these conditions doesn't damage reputation; on the contrary, it signals a serious negotiator who knows how to say no. Next time, your counterpart will know your YES is worth something.\n\n(7) DEAL-CLOSING SIGNALS — when to sign?\n\n- All your critical points are covered (not just the NICE-TO-HAVES)\n- The residual gap is LESS than the cost of continuing to negotiate (time, energy, relationship risk)\n- The other side sends closure signals (final framing, validation request, draft contract)\n- You're prepared to LIVE WITH the agreement over its duration\n\nIF these 4 conditions are met, sign. Pushing further = scraping last percentage points that can break the relational dynamic.\n\n(8) ANGLOPHONE/VIETNAMESE TRAPS:\n\n- (a) HORROR OF WALK AWAY — Asian aversion to rupture / anglophone reluctance to leave money on the table. But without credible walk away, you negotiate unarmed.\n- (b) ACCEPTING UNSUSTAINABLE AGREEMENTS for fear of rupture. You sign today, regret tomorrow. Better walk away than bad deal.\n- (c) BLUFFING WITHOUT REAL MESORE — claiming a competing offer that doesn't exist. If called out, total loss.\n- (d) FOCUSING ONLY ON THE CURRENT DEAL — without investing in parallel MESORE. Result: every negotiation is a structural weakness.",
     "tip_advice_vi": "PROCESSUS EN 5 ÉTAPES pour utiliser la MESORE et le walk away efficacement:\n\n(1) DÉFINIR LA MESORE AVANT le début de la négociation. Écrire noir sur blanc: si je ne signe pas avec X, voici ce que je ferai concrètement, dans tels délais, à tel coût, avec telle qualité.\n\n(2) AMÉLIORER LA MESORE en parallèle de la négociation principale. Si vous négociez avec un employeur, postulez ailleurs en parallèle. Si vous négociez avec un fournisseur, gardez 2 finalistes.\n\n(3) IDENTIFIER LE SEUIL DE RUPTURE — la valeur en dessous de laquelle vous walk away. Le partager avec votre équipe interne; ne JAMAIS le révéler à l'autre partie pendant la négociation.\n\n(4) DÉCODER LA MESORE DE L'AUTRE — questions ouvertes, observation des hésitations, recherche d'information indirecte (concurrents, marché, calendrier).\n\n(5) WALK AWAY AVEC ART quand l'accord proposé reste en deçà du seuil — formellement, courtoisement, avec porte ouverte.\n\nCỤM HỮU ÍCH:\n\nPOUR CONSTRUIRE SA MESORE en interne:\n- « Si nous n'aboutissons pas avec X, voici notre option B: [scénario chiffré]. »\n- « Notre seuil de rupture est de [valeur]; en dessous, on sort. »\n- « Avant le rendez-vous, sécurisons une alternative crédible. »\n\nPOUR DÉCODER LA MESORE DE L'AUTRE:\n- « Quelles sont les autres pistes que vous explorez en parallèle ? »\n- « Quel calendrier vous contraint, de votre côté ? »\n- « Que ferez-vous si nous n'aboutissons pas ? »\n\nPOUR SIGNALER QU'UN SEUIL EST APPROCHÉ:\n- « Cette proposition se rapproche de la limite de ce que nous pouvons accepter. »\n- « Au-delà de ce seuil, l'équation économique ne tient plus pour nous. »\n- « Je serai contraint de revoir mon arbitrage si nous n'avançons pas sur ce point. »\n\nPOUR WALK AWAY TACTIQUE (porte ouverte):\n- « Je crains que nous ne puissions aboutir aux conditions actuellement proposées. »\n- « En l'état, je ne pourrai pas engager ma signature. »\n- « Je préfère sortir de table plutôt que signer un accord intenable. »\n- « Si vos contraintes évoluent, nous restons disponibles. »\n\nPOUR WALK AWAY DÉFINITIF:\n- « Nous avons étudié votre dernière proposition; elle ne correspond pas à nos besoins stratégiques. »\n- « Je vous remercie pour la qualité des échanges, mais nous renonçons à cette opportunité. »\n- « Nous ne donnerons pas suite. Bonne continuation. »\n\nPOUR FORMALISER UNE FERMETURE:\n- « Si je résume, nous sommes d'accord sur [points]. Je vous propose de formaliser par écrit dans les 48h. »\n- « L'accord me convient; pourriez-vous me transmettre le projet de contrat révisé ? »\n- « C'est acté de mon côté. Je vous laisse rédiger; je signe la semaine prochaine. »\n\nTRÁNH:\n- Walk away sans MESORE — bluff dangereux\n- Continuer à négocier au-delà du point de fermeture — peut casser la dynamique\n- Walk away brutal sans formalisation écrite — abîme la réputation\n- Annoncer son seuil de rupture à l'autre partie — perte de levier\n- Confondre walk away et rupture relationnelle — la porte reste ouverte sauf cas extrême",
+    "tip_advice_en": "5-STEP PROCESS for using MESORE and walk away effectively:\n\n(1) DEFINE THE MESORE BEFORE the negotiation begins. Write it in black and white: if I don't sign with X, here's what I'll concretely do, on what timeline, at what cost, with what quality.\n\n(2) IMPROVE THE MESORE in parallel with the main negotiation. If you're negotiating with an employer, apply elsewhere in parallel. If with a vendor, keep 2 finalists.\n\n(3) IDENTIFY THE WALK-AWAY THRESHOLD — the value below which you leave. Share it internally with your team; NEVER reveal it to the other side during negotiation.\n\n(4) DECODE THE OTHER'S MESORE — open questions, observation of hesitations, indirect information gathering (competitors, market, timeline).\n\n(5) WALK AWAY WITH ART when the proposed deal stays below threshold — formally, courteously, door open.\n\nUSEFUL PHRASES:\n\nTO BUILD YOUR MESORE internally:\n- 'Si nous n'aboutissons pas avec X, voici notre option B: [quantified scenario].'\n- 'Notre seuil de rupture est de [value]; en dessous, on sort.'\n- 'Avant le rendez-vous, sécurisons une alternative crédible.'\n\nTO DECODE THE OTHER'S MESORE:\n- 'Quelles sont les autres pistes que vous explorez en parallèle ?'\n- 'Quel calendrier vous contraint, de votre côté ?'\n- 'Que ferez-vous si nous n'aboutissons pas ?'\n\nTO SIGNAL A THRESHOLD IS NEAR:\n- 'Cette proposition se rapproche de la limite de ce que nous pouvons accepter.'\n- 'Au-delà de ce seuil, l'équation économique ne tient plus pour nous.'\n- 'Je serai contraint de revoir mon arbitrage si nous n'avançons pas sur ce point.'\n\nTO TACTICAL WALK AWAY (door open):\n- 'Je crains que nous ne puissions aboutir aux conditions actuellement proposées.'\n- 'En l'état, je ne pourrai pas engager ma signature.'\n- 'Je préfère sortir de table plutôt que signer un accord intenable.'\n- 'Si vos contraintes évoluent, nous restons disponibles.'\n\nTO DEFINITIVE WALK AWAY:\n- 'Nous avons étudié votre dernière proposition; elle ne correspond pas à nos besoins stratégiques.'\n- 'Je vous remercie pour la qualité des échanges, mais nous renonçons à cette opportunité.'\n- 'Nous ne donnerons pas suite. Bonne continuation.'\n\nTO FORMALIZE A CLOSURE:\n- 'Si je résume, nous sommes d'accord sur [points]. Je vous propose de formaliser par écrit dans les 48h.'\n- 'L'accord me convient; pourriez-vous me transmettre le projet de contrat révisé ?'\n- 'C'est acté de mon côté. Je vous laisse rédiger; je signe la semaine prochaine.'\n\nAVOID:\n- Walk away without MESORE — dangerous bluff\n- Continuing to negotiate past the closure point — can break the dynamic\n- Brutal walk away without written formalization — damages reputation\n- Announcing your walk-away threshold to the other side — loss of leverage\n- Confusing walk away with relationship rupture — the door stays open except in extreme cases",
     "vocabulary": [
       {
         "word": "la MESORE",
         "en": "Best Alternative (BATNA)",
         "vi": "giải pháp dự phòng tốt nhất",
         "pos": "n.f.",
-        "pronunciation_vi": "mé-zor"
+        "pronunciation_vi": "mé-zor",
+        "pronunciation_en": "lah meh-ZOR — French acronym for MEilleure SOlution de REpli; equivalent to English BATNA; the strategic foundation of any serious negotiation"
       },
       {
         "word": "le seuil de rupture",
         "en": "the walk-away threshold",
         "vi": "ngưỡng đoạn tuyệt",
         "pos": "n.m.",
-        "pronunciation_vi": "sơy dơ rup-tur"
+        "pronunciation_vi": "sơy dơ rup-tur",
+        "pronunciation_en": "luh SUH-y duh rewp-TEWR — the value below which you must walk; share internally, never with the other side"
       },
       {
         "word": "sortir de table",
         "en": "to walk away from the table",
         "vi": "rời bàn",
         "pos": "v.",
-        "pronunciation_vi": "sor-tir dơ ta-blơ"
+        "pronunciation_vi": "sor-tir dơ ta-blơ",
+        "pronunciation_en": "sor-TEER duh TAH-bluh — colloquial but business-acceptable French for the walk-away act"
       },
       {
         "word": "un accord intenable",
         "en": "an unsustainable agreement",
         "vi": "thỏa thuận không thể giữ",
         "pos": "n.m.",
-        "pronunciation_vi": "a-kor an-tơ-na-blơ"
+        "pronunciation_vi": "a-kor an-tơ-na-blơ",
+        "pronunciation_en": "ehn ah-KOR an-tuh-NAH-bluh — one you cannot honor over its duration; better not to sign"
       },
       {
         "word": "laisser la porte ouverte",
         "en": "to leave the door open",
         "vi": "để cánh cửa mở",
         "pos": "v.",
-        "pronunciation_vi": "lè-sé la port u-vèrt"
+        "pronunciation_vi": "lè-sé la port u-vèrt",
+        "pronunciation_en": "leh-SAY lah PORT oo-VAIRT — direct English equivalent; the courteous-but-firm walk-away formula"
       },
       {
         "word": "le coût d'opportunité",
         "en": "opportunity cost",
         "vi": "chi phí cơ hội",
         "pos": "n.m.",
-        "pronunciation_vi": "ku do-por-tu-ni-té"
+        "pronunciation_vi": "ku do-por-tu-ni-té",
+        "pronunciation_en": "luh KOO doh-por-tew-nee-TAY — what you lose by not pursuing the alternative; central to MESORE evaluation"
       },
       {
         "word": "fermer un accord",
         "en": "to close a deal",
         "vi": "chốt thỏa thuận",
         "pos": "v.",
-        "pronunciation_vi": "fèr-mé an a-kor"
+        "pronunciation_vi": "fèr-mé an a-kor",
+        "pronunciation_en": "fair-MAY ehn ah-KOR — the canonical verb for completing a negotiation; literally 'to close'"
       },
       {
         "word": "un walk away tactique",
         "en": "a tactical walk-away",
         "vi": "rời bàn chiến thuật",
         "pos": "n.m.",
-        "pronunciation_vi": "wok a-wè tak-tik"
+        "pronunciation_vi": "wok a-wè tak-tik",
+        "pronunciation_en": "ehn WOK ah-WAY tak-TEEK — anglicism kept in French; the move that leaves the door open"
       },
       {
         "word": "un point de non-retour",
         "en": "a point of no return",
         "vi": "điểm không quay lại",
         "pos": "n.m.",
-        "pronunciation_vi": "poan dơ nõn rơ-tur"
+        "pronunciation_vi": "poan dơ nõn rơ-tur",
+        "pronunciation_en": "ehn PWAN duh nohn ruh-TOOR — direct English equivalent; rarely reached if you signal threshold approach"
       },
       {
         "word": "céder sous la pression",
         "en": "to yield under pressure",
         "vi": "nhân nhượng dưới áp lực",
         "pos": "v.",
-        "pronunciation_vi": "sé-dé su la prè-sion"
+        "pronunciation_vi": "sé-dé su la prè-sion",
+        "pronunciation_en": "say-DAY soo lah preh-SYOHN — what happens when you don't have a credible MESORE; the failure mode to avoid"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh",
         "text": "Monsieur Roussel, votre dernière proposition reste à dix pour cent en dessous de notre seuil. Je crains que nous ne puissions aboutir.",
-        "vi": "Ông Roussel, đề xuất cuối của ông vẫn dưới ngưỡng của chúng tôi 10%. Tôi e mình không thể đến được."
+        "vi": "Ông Roussel, đề xuất cuối của ông vẫn dưới ngưỡng của chúng tôi 10%. Tôi e mình không thể đến được.",
+        "en": "Mr. Roussel, your latest proposal stays ten percent below our threshold. I fear we can't reach an agreement."
       },
       {
         "speaker": "Roussel",
         "text": "C'est vraiment notre dernier mot — au-delà, le projet n'est plus rentable pour nous.",
-        "vi": "Thật sự là lời cuối của chúng tôi — vượt qua, dự án không còn sinh lời cho chúng tôi."
+        "vi": "Thật sự là lời cuối của chúng tôi — vượt qua, dự án không còn sinh lời cho chúng tôi.",
+        "en": "It's truly our final word — beyond that, the project is no longer profitable for us."
       },
       {
         "speaker": "Linh",
         "text": "Je comprends. Dans ce cas, je préfère sortir de table proprement plutôt que signer un accord intenable des deux côtés.",
-        "vi": "Tôi hiểu. Trong trường hợp này, tôi thích rời bàn gọn gàng hơn là ký thỏa thuận không giữ được cả hai bên."
+        "vi": "Tôi hiểu. Trong trường hợp này, tôi thích rời bàn gọn gàng hơn là ký thỏa thuận không giữ được cả hai bên.",
+        "en": "I understand. In that case, I prefer to walk away cleanly rather than sign an unsustainable agreement for both sides."
       },
       {
         "speaker": "Roussel",
         "text": "Je respecte votre position. Si nos contraintes évoluent dans les six mois, je peux vous recontacter ?",
-        "vi": "Tôi tôn trọng lập trường của bà. Nếu các ràng buộc thay đổi trong 6 tháng, tôi có thể liên lạc lại bà chứ?"
+        "vi": "Tôi tôn trọng lập trường của bà. Nếu các ràng buộc thay đổi trong 6 tháng, tôi có thể liên lạc lại bà chứ?",
+        "en": "I respect your position. If our constraints evolve within six months, may I contact you again?"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (responsable achats, dernière session de négociation avec un fournisseur stratégique)",
         "text": "Monsieur Roussel, merci de vous être déplacé pour cette dernière session. Nous avons fait beaucoup de chemin ensemble depuis trois mois. Sur les éléments structurels — périmètre, calendrier, SAV — nous sommes alignés. Reste un seul point: le tarif global, où l'écart résiduel demeure de douze pour cent.",
-        "vi": "Ông Roussel, cảm ơn ông đã đến cho phiên cuối này. Chúng ta đã đi nhiều cùng nhau trong 3 tháng. Về các yếu tố cấu trúc — phạm vi, lịch, SAV — mình đã alignés. Còn một điểm: giá tổng, nơi khoảng cách dư là 12%."
+        "vi": "Ông Roussel, cảm ơn ông đã đến cho phiên cuối này. Chúng ta đã đi nhiều cùng nhau trong 3 tháng. Về các yếu tố cấu trúc — phạm vi, lịch, SAV — mình đã alignés. Còn một điểm: giá tổng, nơi khoảng cách dư là 12%.",
+        "en": "Mr. Roussel, thank you for coming for this final session. We've come a long way together over three months. On the structural elements — scope, timeline, SAV — we're aligned. One point remains: overall price, where the residual gap stands at twelve percent."
       },
       {
         "speaker": "Roussel",
         "text": "Je vous écoute. Avez-vous un mouvement à proposer ?",
-        "vi": "Tôi nghe. Bà có chuyển động nào để đề xuất không?"
+        "vi": "Tôi nghe. Bà có chuyển động nào để đề xuất không?",
+        "en": "I'm listening. Do you have a movement to propose?"
       },
       {
         "speaker": "Linh",
         "text": "Avant de vous répondre, je voudrais qu'on partage transparence sur deux points. Premier: nous avons en parallèle une proposition d'un autre fournisseur — votre principal concurrent — qui se situe à six pour cent en dessous de votre dernière offre. Je ne dis pas cela pour vous mettre la pression; je dis cela parce que je crois à la transparence dans une relation de long terme. Deuxième: notre seuil interne est à un certain niveau que je ne vous donnerai pas, mais qui est inférieur à votre dernière offre.",
-        "vi": "Trước khi đáp ông, tôi muốn mình chia sẻ minh bạch hai điểm. Thứ nhất: chúng tôi có song song đề xuất từ một fournisseur khác — đối thủ chính của ông — ở mức thấp hơn đề xuất cuối của ông 6%. Tôi không nói để gây áp lực; tôi nói vì tôi tin vào minh bạch trong quan hệ dài hạn. Thứ hai: ngưỡng nội bộ của chúng tôi ở mức tôi sẽ không nói với ông, nhưng thấp hơn đề xuất cuối của ông."
+        "vi": "Trước khi đáp ông, tôi muốn mình chia sẻ minh bạch hai điểm. Thứ nhất: chúng tôi có song song đề xuất từ một fournisseur khác — đối thủ chính của ông — ở mức thấp hơn đề xuất cuối của ông 6%. Tôi không nói để gây áp lực; tôi nói vì tôi tin vào minh bạch trong quan hệ dài hạn. Thứ hai: ngưỡng nội bộ của chúng tôi ở mức tôi sẽ không nói với ông, nhưng thấp hơn đề xuất cuối của ông.",
+        "en": "Before responding, I'd like us to share transparency on two points. First: we have in parallel a proposal from another supplier — your main competitor — which sits six percent below your latest offer. I'm not saying this to pressure you; I say it because I believe in transparency in a long-term relationship. Second: our internal threshold is at a level I won't give you, but which is below your latest offer."
       },
       {
         "speaker": "Roussel",
         "text": "Vous me prenez par surprise avec cette franchise. Je l'apprécie. Que proposez-vous ?",
-        "vi": "Bà làm tôi bất ngờ với sự thẳng thắn này. Tôi đánh giá cao. Bà đề xuất gì?"
+        "vi": "Bà làm tôi bất ngờ với sự thẳng thắn này. Tôi đánh giá cao. Bà đề xuất gì?",
+        "en": "You take me by surprise with this frankness. I appreciate it. What do you propose?"
       },
       {
         "speaker": "Linh",
         "text": "Trois scénarios possibles. Scénario A: vous descendez de huit pour cent — alignement quasi total avec votre concurrent. Nous signons cette semaine; nous partons sur cinq ans avec exclusivité sur le périmètre. Scénario B: vous descendez de quatre pour cent — alignement partiel. Nous signons sur trois ans, sans exclusivité. Scénario C: vous restez sur votre dernière offre — nous sortons de table. Je tiens à être claire: le scénario C n'est pas une menace, c'est une éventualité réelle. Notre alternative existe, elle est crédible, elle est chiffrée.",
-        "vi": "Ba kịch bản có thể. Kịch bản A: ông giảm 8% — alignement gần đầy đủ với đối thủ. Mình ký tuần này; mình đi 5 năm với exclusivité trên phạm vi. Kịch bản B: ông giảm 4% — alignement một phần. Mình ký 3 năm, không exclusivité. Kịch bản C: ông giữ đề xuất cuối — mình rời bàn. Tôi muốn rõ: kịch bản C không phải đe dọa, là khả năng thực. Phương án của chúng tôi tồn tại, có thể tin, có số liệu."
+        "vi": "Ba kịch bản có thể. Kịch bản A: ông giảm 8% — alignement gần đầy đủ với đối thủ. Mình ký tuần này; mình đi 5 năm với exclusivité trên phạm vi. Kịch bản B: ông giảm 4% — alignement một phần. Mình ký 3 năm, không exclusivité. Kịch bản C: ông giữ đề xuất cuối — mình rời bàn. Tôi muốn rõ: kịch bản C không phải đe dọa, là khả năng thực. Phương án của chúng tôi tồn tại, có thể tin, có số liệu.",
+        "en": "Three possible scenarios. Scenario A: you come down eight percent — near-total alignment with your competitor. We sign this week; we go on five years with scope exclusivity. Scenario B: you come down four percent — partial alignment. We sign on three years, without exclusivity. Scenario C: you hold on your latest offer — we walk away. I want to be clear: Scenario C is not a threat, it's a real possibility. Our alternative exists, it's credible, it's quantified."
       },
       {
         "speaker": "Roussel",
         "text": "Je vois. Et entre vous et nous, il y a une histoire de trois mois de discussions, une compréhension mutuelle de nos contraintes — votre concurrent partira de zéro avec vous. Cela ne pèse pas dans la balance ?",
-        "vi": "Tôi thấy. Và giữa bà và chúng tôi, có lịch sử 3 tháng thảo luận, một sự hiểu nhau về các ràng buộc — đối thủ của tôi sẽ bắt đầu từ con số không với bà. Điều đó không cân không?"
+        "vi": "Tôi thấy. Và giữa bà và chúng tôi, có lịch sử 3 tháng thảo luận, một sự hiểu nhau về các ràng buộc — đối thủ của tôi sẽ bắt đầu từ con số không với bà. Điều đó không cân không?",
+        "en": "I see. And between you and us, there's a history of three months of discussions, a mutual understanding of our constraints — your competitor will start from zero with you. Doesn't that weigh in the balance?"
       },
       {
         "speaker": "Linh",
         "text": "Cela pèse, et je le reconnais ouvertement. C'est précisément pourquoi je vous donne la préférence à offre équivalente — voire à offre légèrement supérieure. Je suis prête à signer chez vous à seulement deux pour cent au-dessus de votre concurrent, en échange de l'exclusivité cinq ans. C'est une concession significative de notre part qui valorise notre relation.",
-        "vi": "Có cân, và tôi công nhận công khai. Chính vì thế tôi cho ông ưu tiên ở giá tương đương — thậm chí ở giá hơi cao hơn. Tôi sẵn sàng ký với ông chỉ ở mức 2% trên đối thủ, đổi exclusivité 5 năm. Đó là nhân nhượng đáng kể từ phía chúng tôi định giá quan hệ."
+        "vi": "Có cân, và tôi công nhận công khai. Chính vì thế tôi cho ông ưu tiên ở giá tương đương — thậm chí ở giá hơi cao hơn. Tôi sẵn sàng ký với ông chỉ ở mức 2% trên đối thủ, đổi exclusivité 5 năm. Đó là nhân nhượng đáng kể từ phía chúng tôi định giá quan hệ.",
+        "en": "It weighs, and I acknowledge it openly. That's precisely why I give you preference at equivalent offer — even at a slightly higher offer. I'm ready to sign with you at just two percent above your competitor, in exchange for the five-year exclusivity. That's a significant concession on our part that values our relationship."
       },
       {
         "speaker": "Roussel",
         "text": "Donnez-moi quinze minutes pour appeler mon directeur commercial — je dois valider en interne avant de m'engager sur six pour cent de remise supplémentaire.",
-        "vi": "Cho tôi 15 phút gọi giám đốc thương mại — tôi phải duyệt nội bộ trước khi cam kết giảm 6% thêm."
+        "vi": "Cho tôi 15 phút gọi giám đốc thương mại — tôi phải duyệt nội bộ trước khi cam kết giảm 6% thêm.",
+        "en": "Give me fifteen minutes to call my sales director — I have to validate internally before committing to a six-percent additional discount."
       },
       {
         "speaker": "Linh",
         "text": "Bien sûr. Je sors prendre un café; revenez me chercher en salle d'attente quand vous êtes prêt.",
-        "vi": "Tất nhiên. Tôi ra uống cà phê; ông quay lại tìm tôi ở phòng chờ khi sẵn sàng."
+        "vi": "Tất nhiên. Tôi ra uống cà phê; ông quay lại tìm tôi ở phòng chờ khi sẵn sàng.",
+        "en": "Of course. I'll step out for a coffee; come get me in the waiting room when you're ready."
       },
       {
         "speaker": "Roussel (vingt minutes plus tard)",
         "text": "Madame Tran, j'ai parlé à mon directeur. Nous pouvons descendre de sept pour cent — pas huit. C'est notre dernier mouvement réel. Et l'exclusivité cinq ans en contrepartie.",
-        "vi": "Bà Trần, tôi đã nói với giám đốc. Chúng tôi có thể giảm 7% — không phải 8. Là chuyển động cuối thực sự. Và exclusivité 5 năm đối ứng."
+        "vi": "Bà Trần, tôi đã nói với giám đốc. Chúng tôi có thể giảm 7% — không phải 8. Là chuyển động cuối thực sự. Và exclusivité 5 năm đối ứng.",
+        "en": "Ms. Tran, I spoke with my director. We can come down seven percent — not eight. That's our truly final movement. And the five-year exclusivity in exchange."
       },
       {
         "speaker": "Linh",
         "text": "Sept pour cent place votre offre à un pour cent au-dessus de votre concurrent. Combiné avec notre préférence pour la continuité de relation, l'exclusivité cinq ans, et la valeur de la compréhension mutuelle accumulée — cela me convient. Je signe.",
-        "vi": "7% đặt đề xuất của ông ở 1% trên đối thủ. Kết hợp với sở thích của chúng tôi cho liên tục quan hệ, exclusivité 5 năm, và giá trị hiểu nhau tích lũy — phù hợp tôi. Tôi ký."
+        "vi": "7% đặt đề xuất của ông ở 1% trên đối thủ. Kết hợp với sở thích của chúng tôi cho liên tục quan hệ, exclusivité 5 năm, và giá trị hiểu nhau tích lũy — phù hợp tôi. Tôi ký.",
+        "en": "Seven percent puts your offer at one percent above your competitor. Combined with our preference for relational continuity, the five-year exclusivity, and the value of accumulated mutual understanding — that works for me. I sign."
       },
       {
         "speaker": "Roussel",
         "text": "Marché conclu. Je vous adresse le contrat révisé d'ici vendredi.",
-        "vi": "Thỏa thuận ký. Tôi gửi bà hợp đồng sửa trước thứ sáu."
+        "vi": "Thỏa thuận ký. Tôi gửi bà hợp đồng sửa trước thứ sáu.",
+        "en": "Deal done. I'll send you the revised contract by Friday."
       },
       {
         "speaker": "Linh",
         "text": "Une dernière chose. Tout au long de cette négociation, j'ai été prête à walk away — c'est ce qui nous a permis d'aboutir à un accord équilibré. Si je ne l'avais pas été, vous auriez gardé vos douze pour cent d'écart, et nous aurions signé en serrant les dents. Maintenant, nous signons avec satisfaction des deux côtés. C'est ce qu'une bonne MESORE permet.",
-        "vi": "Một điều cuối. Suốt đàm phán này, tôi đã sẵn sàng walk away — chính điều đó cho phép mình đạt thỏa thuận cân bằng. Nếu tôi không sẵn sàng, ông sẽ giữ 12% khoảng cách, và mình sẽ ký nghiến răng. Bây giờ, mình ký với sự hài lòng cả hai bên. Đó là điều một MESORE tốt cho phép."
+        "vi": "Một điều cuối. Suốt đàm phán này, tôi đã sẵn sàng walk away — chính điều đó cho phép mình đạt thỏa thuận cân bằng. Nếu tôi không sẵn sàng, ông sẽ giữ 12% khoảng cách, và mình sẽ ký nghiến răng. Bây giờ, mình ký với sự hài lòng cả hai bên. Đó là điều một MESORE tốt cho phép.",
+        "en": "One last thing. Throughout this negotiation, I was ready to walk away — that's what let us arrive at a balanced agreement. If I hadn't been, you'd have kept your twelve-percent gap and we'd have signed with gritted teeth. Now we sign with satisfaction on both sides. That's what a good MESORE makes possible."
       },
       {
         "speaker": "Roussel",
         "text": "Vous êtes une négociatrice redoutable, mais propre. C'est une qualité rare. À très bientôt pour la signature.",
-        "vi": "Bà là người đàm phán đáng nể, nhưng sạch sẽ. Là phẩm chất hiếm. Hẹn rất sớm cho ký."
+        "vi": "Bà là người đàm phán đáng nể, nhưng sạch sẽ. Là phẩm chất hiếm. Hẹn rất sớm cho ký.",
+        "en": "You're a formidable negotiator, but clean. That's a rare quality. See you very soon for the signing."
       }
     ],
     "roleplay_prompts": [
@@ -6317,30 +6454,44 @@ export const lessons: FrenchLesson[] = [
       "Trong négociation finale, le fournisseur dit « c'est notre dernier mot, à prendre ou à laisser ». Phản hồi: ne PAS céder sous la pression artificielle, demander 24h de réflexion, walk away si inadéquat.",
       "Soạn email de walk away tactique pour une négociation B2B qui n'aboutit pas — courtois, ferme, porte ouverte pour reprise dans 6 mois si conditions évoluent."
     ],
+    "roleplay_prompts_en": [
+      "You're negotiating your current salary for a raise. Draft 3 MESORE scenarios: (a) apply elsewhere with a firm offer, (b) stay with an evolution agreement in 6 months, (c) accept the status quo. Which one to use, and how? The strength of your raise ask is directly proportional to the credibility of (a) and (b).",
+      "In a final negotiation, the supplier says 'c'est notre dernier mot, à prendre ou à laisser'. Respond: do NOT yield to artificial pressure, request 24 hours to reflect, walk away if inadequate. Pressure-tactics 'take it or leave it' usually mean the other side has more room than they admit.",
+      "Draft a tactical walk-away email for a B2B negotiation that doesn't reach agreement — courteous, firm, door open for resumption in 6 months if conditions evolve. The form of the walk away protects future deals."
+    ],
     "register_notes": "Le LEXIQUE DE LA FERMETURE D'ACCORD ET DU WALK AWAY est très technique en négociation française:\n\nVOCABULAIRE STRATÉGIQUE:\n- « la MESORE » (Meilleure Solution de Repli, BATNA français)\n- « le seuil de rupture » (walk-away point)\n- « le point de non-retour » (no-return point)\n- « la zone d'accord possible » (ZOPA)\n- « le coût d'opportunité » (opportunity cost)\n\nVERBES POUR LA FERMETURE:\n- « fermer un accord » (close a deal)\n- « clôturer la négociation » (clore formellement)\n- « formaliser » (mettre par écrit)\n- « entériner » (valider définitivement)\n- « acter » (faire acte officiel)\n- « parapher » (signer chaque page)\n\nVERBES POUR LE WALK AWAY:\n- « sortir de table » (familier mais courant en business)\n- « quitter la table » (synonyme plus formel)\n- « rompre les négociations » (rupture annoncée)\n- « renoncer à l'opportunité » (très formel, walk away définitif)\n- « ne pas donner suite » (formule officielle de clôture)\n- « se retirer » (partir sans rancune)\n\nFORMULES POUR ANNONCER UN SEUIL:\n- « Cette proposition se rapproche de notre limite. »\n- « Au-delà de ce seuil, l'équation économique ne tient plus. »\n- « Je serai contraint de revoir mon arbitrage. »\n- « Nous approchons du point de non-retour. »\n\nFORMULES POUR LE WALK AWAY TACTIQUE:\n- « En l'état, je ne pourrai pas engager ma signature. »\n- « Je préfère sortir de table plutôt que signer un accord intenable. »\n- « Si vos contraintes évoluent, nous restons disponibles. »\n- « La porte reste ouverte; le moment ne nous convient pas. »\n\nFORMULES POUR LE WALK AWAY DÉFINITIF:\n- « Nous renonçons à cette opportunité. »\n- « Nous ne donnerons pas suite. »\n- « Ce dossier est clos de notre côté. »\n- « Bonne continuation à votre projet sans nous. »\n\nFORMULES POUR LA FERMETURE:\n- « Je signe. »\n- « C'est acté de mon côté. »\n- « L'accord me convient. »\n- « Marché conclu. »\n\nDISTINCTIONS CRUCIALES:\n- « bluff » (intention non réelle de partir) vs « MESORE crédible » (alternative réelle)\n- « rupture définitive » (jamais réversible) vs « walk away tactique » (porte ouverte)\n- « accord intenable » (qu'on ne pourra exécuter) vs « accord déséquilibré » (qui crée problème mais reste possible)\n\nUNE TINH TẾ ABSOLUE: en français business, JAMAIS bluffer sur la MESORE si vous n'avez pas l'alternative. Si l'autre vous appelle au bluff, perte totale: la négociation ET la réputation. Le marché B2B français est petit; les négociateurs se croisent à plusieurs occasions. Une réputation de bluffeur est mortelle.",
+    "register_notes_en": "The DEAL-CLOSING AND WALK-AWAY LEXICON is highly technical in French negotiation:\n\nSTRATEGIC VOCABULARY:\n- 'la MESORE' (MEilleure Solution de Repli, French BATNA)\n- 'le seuil de rupture' (walk-away point)\n- 'le point de non-retour' (no-return point)\n- 'la zone d'accord possible' (ZOPA)\n- 'le coût d'opportunité' (opportunity cost)\n\nVERBS FOR CLOSING:\n- 'fermer un accord' (close a deal)\n- 'clôturer la négociation' (formally close)\n- 'formaliser' (put in writing)\n- 'entériner' (definitively validate)\n- 'acter' (make official)\n- 'parapher' (initial each page)\n\nVERBS FOR WALK AWAY:\n- 'sortir de table' (colloquial but business-current)\n- 'quitter la table' (more formal synonym)\n- 'rompre les négociations' (announced rupture)\n- 'renoncer à l'opportunité' (very formal, definitive walk away)\n- 'ne pas donner suite' (official closure formula)\n- 'se retirer' (to leave without resentment)\n\nFORMULAS TO ANNOUNCE A THRESHOLD:\n- 'Cette proposition se rapproche de notre limite.'\n- 'Au-delà de ce seuil, l'équation économique ne tient plus.'\n- 'Je serai contraint de revoir mon arbitrage.'\n- 'Nous approchons du point de non-retour.'\n\nFORMULAS FOR TACTICAL WALK AWAY:\n- 'En l'état, je ne pourrai pas engager ma signature.'\n- 'Je préfère sortir de table plutôt que signer un accord intenable.'\n- 'Si vos contraintes évoluent, nous restons disponibles.'\n- 'La porte reste ouverte; le moment ne nous convient pas.'\n\nFORMULAS FOR DEFINITIVE WALK AWAY:\n- 'Nous renonçons à cette opportunité.'\n- 'Nous ne donnerons pas suite.'\n- 'Ce dossier est clos de notre côté.'\n- 'Bonne continuation à votre projet sans nous.'\n\nFORMULAS FOR CLOSURE:\n- 'Je signe.'\n- 'C'est acté de mon côté.'\n- 'L'accord me convient.'\n- 'Marché conclu.'\n\nCRUCIAL DISTINCTIONS:\n- 'bluff' (no real intent to leave) vs 'credible MESORE' (real alternative)\n- 'definitive rupture' (never reversible) vs 'tactical walk away' (door open)\n- 'unsustainable agreement' (cannot be executed) vs 'unbalanced agreement' (creates problems but still possible)\n\nAN ABSOLUTE REFINEMENT: in French business, NEVER bluff on MESORE if you don't have the alternative. If the other side calls your bluff, total loss: the negotiation AND the reputation. The French B2B market is small; negotiators cross paths multiple times. A bluffer's reputation is fatal.",
     "idiom_glosses": [
       {
         "idiom": "Sortir de table (courant)",
         "literal": "Rời khỏi bàn",
+        "literal_en": "To leave the table",
         "meaning": "Bỏ đàm phán không có thỏa thuận — terme business courant pour walk away.",
+        "meaning_en": "To walk away from negotiations without a deal — colloquial-but-business-acceptable French. English equivalent: 'to walk away from the table'. The standard professional term for the walk-away act.",
         "example": "Plutôt que de signer un mauvais contrat, mieux vaut sortir de table dignement."
       },
       {
         "idiom": "Avoir un atout dans sa manche (courant)",
         "literal": "Có lá bài tẩy trong tay áo",
+        "literal_en": "To have an ace up one's sleeve",
         "meaning": "Có quân bài dự phòng — exactement la MESORE.",
+        "meaning_en": "To have an ace up one's sleeve — direct English equivalent. The card-game metaphor captures the MESORE exactly: a hidden reserve that gives you leverage.",
         "example": "Le bon négociateur a toujours un atout dans sa manche — sans cela, il subit."
       },
       {
         "idiom": "Tirer son épingle du jeu (courant)",
         "literal": "Rút chiếc kim ra khỏi trò chơi",
+        "literal_en": "To pull one's pin out of the game",
         "meaning": "Rút lui có lợi — walk away réussi.",
+        "meaning_en": "To come out of a tricky situation favorably — a successful walk away. English equivalent: 'to come out ahead' or 'to extricate oneself well'. Used to describe someone who navigated a tough negotiation with skill.",
         "example": "Avec sa MESORE solide, elle a su tirer son épingle du jeu sans casser la relation."
       },
       {
         "idiom": "Vendre la peau de l'ours avant de l'avoir tué (courant)",
         "literal": "Bán da gấu trước khi giết được",
+        "literal_en": "To sell the bear's skin before having killed it",
         "meaning": "Tự tin quá sớm — éviter de fermer l'accord trop tôt.",
+        "meaning_en": "To count one's chickens before they hatch — direct English-French parallel idiom with different animals. Warns against premature closure: don't celebrate the deal until it's signed.",
         "example": "Ne signons pas avant la validation finale du DAF — ne vendons pas la peau de l'ours avant de l'avoir tué."
       }
     ],
@@ -6348,20 +6499,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Si la proposition finale demeure en deçà de notre seuil de rupture, je préfère ___ de table plutôt que signer un accord intenable.",
-        "answer": "sortir"
+        "answer": "sortir",
+        "hint_vi": "động từ nguyên mẫu nghĩa 'rời / đi ra' (cụm 'sortir de table' = walk away)",
+        "hint_en": "infinitive verb meaning 'to leave / exit' — part of the fixed phrase 'sortir de table' = walk away from the negotiation"
       },
       {
         "type": "matching",
         "pairs": [
-          ["la MESORE", "giải pháp dự phòng tốt nhất"],
-          ["le seuil de rupture", "ngưỡng đoạn tuyệt"],
-          ["le coût d'opportunité", "chi phí cơ hội"]
+          ["la MESORE", "giải pháp dự phòng tốt nhất (BATNA — Best Alternative To a Negotiated Agreement)"],
+          ["le seuil de rupture", "ngưỡng đoạn tuyệt (walk-away threshold — internal-only)"],
+          ["le coût d'opportunité", "chi phí cơ hội (opportunity cost — what you lose by not pursuing the alternative)"]
         ],
-        "instruction": "Nối thuật ngữ stratégie négociation với nghĩa Việt"
+        "instruction": "Nối thuật ngữ stratégie négociation với nghĩa Việt",
+        "instruction_en": "Match the negotiation-strategy term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Thời điểm tốt nhất để chốt thỏa thuận chính là lúc mình vẫn sẵn sàng không chốt.",
+        "english": "The best moment to close a deal is precisely when one is still ready not to close it.",
         "french": "Le bon moment pour fermer un accord est précisément celui où l'on est encore prêt à ne pas le fermer."
       }
     ]
