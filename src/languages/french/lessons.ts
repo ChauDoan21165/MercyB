@@ -82,6 +82,7 @@ export type LessonSentence = {
   en: string;
   vi: string;
   pronunciation_focus: string[];
+  // English-speaker companion to pronunciation_focus — same length + order.
   pronunciation_focus_en?: string[];
 };
 
@@ -91,6 +92,8 @@ export type VocabEntry = {
   vi: string;
   pos: string;
   pronunciation_vi: string;
+  // English-speaker pronunciation hint with stressed syllable in CAPS.
+  pronunciation_en?: string;
 };
 
 export type DialogueLine = {
@@ -100,6 +103,11 @@ export type DialogueLine = {
   en?: string;
 };
 
+// Loosely typed so per-type fields (fill-blank, matching, translation) can vary.
+// Known optional fields documented here for next-agent legibility:
+//   fill-blank:  question, answer, hint_vi?, hint_en?
+//   matching:    pairs, instruction, instruction_en?
+//   translation: vietnamese, french, english?
 export type Exercise = Record<string, any>;
 
 export type FrenchCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
