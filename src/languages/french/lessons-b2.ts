@@ -15526,6 +15526,11 @@ export const lessons: FrenchLesson[] =           [
             "prêtés → prè-té",
             "pression → pré-sion",
             "règle → rè-glơ"
+          ],
+          "pronunciation_focus_en": [
+            "prêtés → preh-TAY (past participle of 'prêter'/to lend; 'que je t'ai prêtés' = that I lent you — note: 'prêter' = lend, 'emprunter' = borrow; English speakers mix these up)",
+            "pression → preh-SYO(n) ('-ion' nasal; 'mettre la pression' = to put pressure on — the thing you explicitly say you're NOT doing)",
+            "règle → REH-gluh (from 'régler' = to settle; 'qu'on règle ça' = that we settle this — neutral, not accusatory)"
           ]
         },
         {
@@ -15535,6 +15540,11 @@ export const lessons: FrenchLesson[] =           [
             "oublié → u-bli-é",
             "non-dit → nõ-di",
             "entre nous → ãn-trơ nu"
+          ],
+          "pronunciation_focus_en": [
+            "oublié → oo-blee-AY (final '-ié' = 'YAY'; 'tu n'as pas oublié' = you haven't forgotten — assumes good faith, doesn't accuse them of dodging)",
+            "non-dit → NO(n)-DEE (final 't' silent; 'un non-dit' = an unspoken thing — the French believe an unaddressed debt poisons a friendship)",
+            "entre nous → ah(n)-truh NOO ('between us'; 'un non-dit entre nous' = an unspoken thing between us)"
           ]
         },
         {
@@ -15544,6 +15554,11 @@ export const lessons: FrenchLesson[] =           [
             "rendre → rãn-drơ",
             "calendrier → ka-lãn-dri-é",
             "réaliste → ré-a-list"
+          ],
+          "pronunciation_focus_en": [
+            "rendre → RAH(n)-druh ('me les rendre' = give them back to me; 'rendre' is the everyday verb for returning money/things)",
+            "calendrier → kah-lah(n)-dree-AY (here = a repayment schedule, not a wall calendar; 'un calendrier réaliste' = a realistic timeline)",
+            "réaliste → ray-ah-LEEST (final 'te' = soft 'st'; the keyword — you ask for a REALISTIC plan, putting control on their side)"
           ]
         },
         {
@@ -15553,6 +15568,11 @@ export const lessons: FrenchLesson[] =           [
             "amitié → a-mi-tié",
             "vaut → vô",
             "somme → som"
+          ],
+          "pronunciation_focus_en": [
+            "amitié → ah-mee-TYAY ('notre amitié' = our friendship — names the proportion: the friendship outweighs the sum)",
+            "vaut → VOH (from 'valoir'/to be worth; final 't' silent; 'vaut plus que' = is worth more than)",
+            "somme → SUM (rhymes with English 'some'; 'cette somme' = this sum/amount — keeps it small relative to the friendship)"
           ]
         },
         {
@@ -15562,102 +15582,123 @@ export const lessons: FrenchLesson[] =           [
             "inverse → an-vèrs",
             "dois → dwa",
             "souviens → su-viain"
+          ],
+          "pronunciation_focus_en": [
+            "inverse → a(n)-VEHRSS (nasal first vowel; 'à l'inverse' = conversely/the other way round — opens the door both ways, the fair move)",
+            "dois → DWAH (from 'devoir'/to owe; 'je te dois' = I owe you — final 's' silent)",
+            "souviens → soo-VYA(n) (from 'se souvenir'/to remember; 'je ne m'en souviens pas' = I don't remember it — invites correction without defensiveness)"
           ]
         }
       ],
       "cultural_notes_vi": "Tiền bạn bè ở Pháp là chủ đề tế nhị nhưng KHÔNG phải tabou. Người Pháp đối xử với tiền cá nhân khá thẳng thắn — split bill ở nhà hàng (« on fait moitié-moitié? »), gửi link Lydia/PayPal cho phần ăn của bạn. Cho mượn tiền bạn (« prêter ») là chuyện thường xảy ra — và đòi lại cũng là chuyện thường nếu được làm đúng cách.\n\nKhác Việt Nam, nơi đòi nợ có thể bị xem là « ki-bo » và phá hỏng quan hệ, Pháp xem việc KHÔNG đòi lại là phá hỏng nhiều hơn — nó tạo « non-dit » (điều không nói) đè lên tình bạn. Nguyên tắc Pháp: nếu món tiền có ý nghĩa đủ để bạn cho mượn, nó có ý nghĩa đủ để bạn đòi lại; nếu không đáng đòi, đừng cho mượn từ đầu (hoặc cho như quà từ đầu).\n\nQUY MÔ quan trọng. Phân loại:\n- < 30 EUR: thường được « offert » (tặng) — không đòi lại, kể cả khi cho mượn ban đầu. Đòi lại 20 EUR sau 6 tháng nghe ki-bo.\n- 30-200 EUR: vùng đòi lại được, qua tin nhắn hoặc nhắc nhẹ trong cuộc trò chuyện.\n- > 200 EUR: cuộc trò chuyện riêng, có cấu trúc — như được nêu trong lesson này.\n\nĐỐI VỚI MƯỢN TIỀN GIA ĐÌNH (parents, frères/sœurs): khác — gia đình Pháp thường không đặt timeline trả, nhưng cũng không cho mượn lớn nếu không có ý đòi lại.\n\nKhi BẠN BỊ ĐÒI: KHÔNG né tránh — đó là sai lầm phá hỏng tình bạn. Tốt hơn: trả lời ngay, đề xuất kế hoạch trả thực tế (« je peux te rendre 100 maintenant, et 200 dans un mois »). Người Pháp đánh giá cao sự minh bạch hơn việc bạn « có tiền sẵn sàng ngay ».",
+      "cultural_notes_en": "Money between friends in France is delicate but NOT taboo — and this surprises both Vietnamese and many anglophones. The French handle personal money quite directly: splitting the bill at a restaurant ('on fait moitié-moitié ?'), sending a Lydia/PayPal link for your share, and lending ('prêter') to a friend is common — and so is asking for it back, when done correctly. The cross-cultural reframe is the key point: where Vietnamese culture can read chasing a debt as stingy and relationship-damaging, the French see NOT asking as the bigger damage — it creates a 'non-dit' (an unspoken thing) that sits on the friendship and quietly rots it. The French principle: if the amount mattered enough to lend, it matters enough to ask back; if it's not worth asking back, don't lend it (or give it as a gift from the start). Scale matters: under ~30 EUR is usually treated as 'offert' (let it go — asking for 20 EUR back after six months reads as petty); 30–200 EUR is fair to recover by text or a light verbal reminder; over ~200 EUR warrants a private, structured conversation. (Family loans differ — French families often set no timeline but also don't lend large sums casually.) For anglophones specifically: the American instinct to drop hints, joke about it, or wait indefinitely to avoid 'making it weird' is exactly what the French consider the weird, friendship-eroding choice — naming it plainly and early is the respectful one. And when YOU are the one asked: do NOT go silent — that's the friendship-killer. Reply within a day, propose a realistic repayment plan ('je peux te rendre 100 maintenant, et 200 dans un mois'); the French value that transparency far more than your having the cash instantly available.",
       "tip_advice_vi": "Khung 4 phần khi đòi lại tiền bạn:\n(1) MỞ ĐẦU không buộc tội: « Je voulais te parler de X — pas pour mettre la pression ». Câu này tháo trước phòng thủ.\n(2) THỪA NHẬN họ chưa quên: « Je sais que tu n'as pas oublié » → tránh giả định họ trốn.\n(3) ĐỀ XUẤT linh hoạt: « Si tu peux maintenant — parfait. Sinon, calendrier réaliste qui marche pour toi » → cho lựa chọn, không yêu cầu.\n(4) TÔN TRỌNG TÌNH BẠN: « Notre amitié vaut plus que cette somme » → đặt số tiền trong tỉ lệ.\n\nFORMAT: trực diện > điện thoại > tin nhắn dài. Cho lần đầu nhắc, tin nhắn ngắn OK (« Camille, petit rappel — les 300 EUR de mars, on règle ça? »). Nếu sau 2 tin không phản hồi, chuyển trực diện.\n\nKHI BẠN BỊ ĐÒI:\n(1) Trả lời trong 24h, kể cả nếu chưa có giải pháp\n(2) Đề xuất kế hoạch cụ thể, không « je vais essayer »\n(3) Nếu bạn KHÔNG nhớ rõ, hỏi để confirm (« j'ai un doute — c'était les 300 quand on est allées à Lyon? ») — hỏi trước khi tự suy diễn\n(4) Nếu bạn không thể trả: nói thẳng (« je ne peux pas te rembourser dans les 3 prochains mois — préfères-tu attendre, ou veux-tu que je te rende un service à la place? »)\n\nTRÁNH:\n- Im lặng / ghosting → phá hỏng tình bạn vĩnh viễn\n- Tặng quà thay tiền (« je t'ai apporté du vin pour me racheter ») → coi là cố trốn\n- Đòi lại trong public (group chat WhatsApp với bạn chung) → nhục\n- Đem tiền vào tranh cãi không liên quan (« et en plus tu me dois 300 euros! ») → lẫn lộn vấn đề",
+      "tip_advice_en": "Four-part frame for asking a friend to pay you back:\n(1) OPEN WITHOUT ACCUSING: 'Je voulais te parler de X — pas pour mettre la pression' (I wanted to talk to you about X — not to put pressure on you). This pre-empts their defensiveness.\n(2) ASSUME GOOD FAITH: 'Je sais que tu n'as pas oublié' (I know you haven't forgotten) → don't imply they're dodging.\n(3) OFFER FLEXIBILITY: 'Si tu peux maintenant — parfait. Sinon, un calendrier réaliste qui marche pour toi' → give options, put control on their side, don't demand.\n(4) RESPECT THE FRIENDSHIP: 'Notre amitié vaut plus que cette somme' → puts the money in proportion.\n\nFORMAT: in person > phone > long text. For a first reminder, a short text is fine ('Camille, petit rappel — les 300 EUR de mars, on règle ça ?'). If two texts go unanswered, move to in person.\n\nWHEN YOU'RE THE ONE ASKED:\n(1) Reply within 24h, even with no solution yet.\n(2) Propose a concrete plan, not 'je vais essayer' (I'll try).\n(3) If you genuinely don't remember, ask to confirm ('j'ai un doute — c'était les 300 quand on est allées à Lyon ?') — ask before assuming the worst.\n(4) If you can't repay: say so plainly ('je ne peux pas te rembourser dans les 3 prochains mois — préfères-tu attendre, ou veux-tu que je te rende un service à la place ?').\n\nAVOID:\n- Silence / ghosting → permanently damages the friendship (the single worst move; the American 'I'll just avoid it until it blows over' does NOT blow over here).\n- A gift instead of money ('je t'ai apporté du vin pour me racheter') → read as trying to dodge.\n- Asking in public (a WhatsApp group with mutual friends) → humiliating.\n- Dragging the money into an unrelated argument ('et en plus tu me dois 300 euros !') → muddies both issues.",
       "vocabulary": [
         {
           "word": "prêter de l'argent",
           "en": "to lend money",
           "vi": "cho mượn tiền",
           "pos": "v.",
-          "pronunciation_vi": "prè-té dơ lar-jã"
+          "pronunciation_vi": "prè-té dơ lar-jã",
+          "pronunciation_en": "preh-TAY duh lar-ZHAH(n) ('prêter' = to LEND — the lender's verb; don't confuse with 'emprunter' = to borrow)"
         },
         {
           "word": "emprunter de l'argent",
           "en": "to borrow money",
           "vi": "mượn tiền",
           "pos": "v.",
-          "pronunciation_vi": "ãn-prãn-té dơ lar-jã"
+          "pronunciation_vi": "ãn-prãn-té dơ lar-jã",
+          "pronunciation_en": "ah(n)-pruh(n)-TAY duh lar-ZHAH(n) ('emprunter' = to BORROW — the borrower's verb; the prêter/emprunter pair is the classic English-speaker mix-up)"
         },
         {
           "word": "rembourser",
           "en": "to pay back",
           "vi": "trả lại",
           "pos": "v.",
-          "pronunciation_vi": "rãm-bur-sé"
+          "pronunciation_vi": "rãm-bur-sé",
+          "pronunciation_en": "rah(n)-boor-SAY (final '-er' = 'SAY'; 'te rembourser' = to pay you back — the verb to use, plainly, not euphemized)"
         },
         {
           "word": "une dette",
           "en": "a debt",
           "vi": "khoản nợ",
           "pos": "n.f.",
-          "pronunciation_vi": "dèt"
+          "pronunciation_vi": "dèt",
+          "pronunciation_en": "DET (the 'b' is silent, unlike English 'debt' where it's also silent — same; rhymes with English 'debt')"
         },
         {
           "word": "un échéancier",
           "en": "a payment schedule",
           "vi": "lịch trả",
           "pos": "n.m.",
-          "pronunciation_vi": "é-shé-ãn-sié"
+          "pronunciation_vi": "é-shé-ãn-sié",
+          "pronunciation_en": "ay-shay-ah(n)-SYAY (a formal repayment schedule; for friends 'un calendrier' is warmer — keep 'échéancier' for the structured/written version)"
         },
         {
           "word": "régler",
           "en": "to settle",
           "vi": "giải quyết / thanh toán",
           "pos": "v.",
-          "pronunciation_vi": "ré-glé"
+          "pronunciation_vi": "ré-glé",
+          "pronunciation_en": "ray-GLAY ('régler ça' = to settle this — neutral and constructive, not 'collect a debt')"
         },
         {
           "word": "un non-dit",
           "en": "the unspoken",
           "vi": "điều không nói ra",
           "pos": "n.m.",
-          "pronunciation_vi": "nõ di"
+          "pronunciation_vi": "nõ di",
+          "pronunciation_en": "NO(n)-DEE (an unspoken thing left to fester; the cultural keyword — the French believe a 'non-dit' damages a friendship more than the awkward conversation would)"
         },
         {
           "word": "mettre la pression",
           "en": "to put pressure",
           "vi": "gây áp lực",
           "pos": "v.",
-          "pronunciation_vi": "mè-trơ la pré-sion"
+          "pronunciation_vi": "mè-trơ la pré-sion",
+          "pronunciation_en": "MEH-truh lah preh-SYO(n) ('pas pour mettre la pression' = not to put pressure on you — the disclaimer that unlocks a non-defensive talk)"
         },
         {
           "word": "un calendrier réaliste",
           "en": "a realistic timeline",
           "vi": "lịch thực tế",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-lãn-dri-é ré-a-list"
+          "pronunciation_vi": "ka-lãn-dri-é ré-a-list",
+          "pronunciation_en": "kah-lah(n)-dree-AY ray-ah-LEEST (a realistic repayment timeline; asking for one hands control to the other person — the respectful move)"
         },
         {
           "word": "être au point sur ses comptes",
           "en": "to be clear on accounts",
           "vi": "sòng phẳng",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ o pwã sur sé kõnt"
+          "pronunciation_vi": "é-trơ o pwã sur sé kõnt",
+          "pronunciation_en": "EH-truh oh PWA(n) soor say KO(n)T ('au point sur ses comptes' = square on one's accounts; English equivalent: 'all square' / 'settled up')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Camille, petit rappel — les 300 euros de mars. On règle ça quand?",
+          "en": "Camille, a quick reminder — the 300 euros from March. When do we settle that? [a short, light text reminder — the acceptable first step for this amount]",
           "vi": "Camille, nhắc nhẹ — 300 euro tháng 3. Mình giải quyết khi nào?"
         },
         {
           "speaker": "Camille",
           "text": "Tu as raison, j'avais en tête mais j'avais pas relancé. Je peux te rendre 200 ce week-end et 100 dans un mois.",
+          "en": "You're right, I had it in mind but I hadn't followed up. I can give you back 200 this weekend and 100 in a month. [the correct response when asked: reply fast, propose a concrete plan]",
           "vi": "Bạn đúng, em có nghĩ đến mà chưa nhắc lại. Em có thể trả bạn 200 cuối tuần và 100 trong tháng."
         },
         {
           "speaker": "Linh",
           "text": "Ça me convient parfaitement. Tu m'envoies via Lydia ?",
+          "en": "That works perfectly for me. Will you send it via Lydia? [naming a concrete payment method makes it real — Lydia is a common friend-to-friend app in France]",
           "vi": "Phù hợp với em. Bạn gửi qua Lydia?"
         },
         {
           "speaker": "Camille",
           "text": "Oui, samedi matin.",
+          "en": "Yes, Saturday morning.",
           "vi": "Vâng, sáng thứ bảy."
         }
       ],
@@ -15665,81 +15706,97 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au café, après les nouvelles habituelles)",
           "text": "Camille, je voulais te parler de quelque chose — c'est pas grave mais je préfère qu'on l'aborde plutôt que ça reste en suspens.",
+          "en": "Camille, I wanted to talk to you about something — it's not serious but I'd rather we address it than leave it hanging. [opens AFTER the normal catch-up, frames it as low-stakes, names the goal as 'not leaving it unspoken']",
           "vi": "Camille, em muốn nói với bạn điều — không nghiêm trọng nhưng em thích mình nói ra hơn là để treo."
         },
         {
           "speaker": "Camille",
           "text": "Vas-y, je t'écoute.",
+          "en": "Go ahead, I'm listening.",
           "vi": "Em nói đi."
         },
         {
           "speaker": "Linh",
           "text": "Les 300 euros que je t'ai prêtés en mars — quand tu avais le retard de loyer. On en a pas reparlé depuis, et ça commence à me faire bizarre de pas en parler.",
+          "en": "The 300 euros I lent you in March — when you were behind on rent. We haven't spoken about it since, and it's starting to feel strange to NOT mention it. [names the fact + names her own discomfort, not an accusation]",
           "vi": "300 euro em cho bạn mượn tháng 3 — khi bạn trễ tiền nhà. Mình chưa nhắc lại, và bắt đầu làm em cảm thấy lạ khi không nói."
         },
         {
           "speaker": "Camille",
           "text": "Tu as raison. Et tu as bien fait d'en parler. Je l'ai pas oublié — j'avais juste pas trouvé le bon moment pour t'en reparler. C'est moi qui aurais dû.",
+          "en": "You're right. And you did well to bring it up. I hadn't forgotten — I just hadn't found the right moment to raise it. It's me who should have. [the model 'being asked' response: no defensiveness, owns it]",
           "vi": "Bạn đúng. Và bạn đã đúng khi nói ra. Em chưa quên — em chỉ chưa tìm đúng thời điểm để nhắc lại. Là em đáng lẽ phải nói trước."
         },
         {
           "speaker": "Linh",
           "text": "Pas de procès — tu vis aussi des trucs. Je voulais juste qu'on règle ça avec un calendrier qui te va, pas une pression.",
+          "en": "No trial here — you've got things going on too. I just wanted us to settle it with a timeline that works for you, not pressure.",
           "vi": "Không phải xét xử — bạn cũng có chuyện. Em chỉ muốn mình giải quyết với lịch phù hợp với bạn, không phải áp lực."
         },
         {
           "speaker": "Camille",
           "text": "Concrètement, je peux faire deux versements. 200 euros samedi prochain via Lydia, et 100 euros le 15 du mois prochain quand je touche mon salaire.",
+          "en": "Concretely, I can do two payments. 200 euros next Saturday via Lydia, and 100 euros on the 15th of next month when I get my salary. [a concrete, dated plan with a method — exactly what the French want, not 'I'll try']",
           "vi": "Cụ thể, em có thể chia hai lần. 200 euro thứ bảy tới qua Lydia, và 100 euro ngày 15 tháng sau khi em nhận lương."
         },
         {
           "speaker": "Linh",
           "text": "Parfait — c'est exactement le genre de calendrier réaliste que je préférais entendre. Et de mon côté, je note pour ne pas te relancer entre-temps.",
+          "en": "Perfect — that's exactly the kind of realistic timeline I was hoping to hear. And on my side, I'll note it so I don't chase you in the meantime.",
           "vi": "Hoàn hảo — đúng loại lịch thực tế em thích nghe. Và phía em, em note để không nhắc lại giữa chừng."
         },
         {
           "speaker": "Camille",
           "text": "Linh, je veux te dire quelque chose. Le fait que tu m'aies prêté ces 300 euros en mars sans poser de questions — ça m'a vraiment sauvée à un moment où j'étais à découvert. Si je l'ai mis sous le tapis dans ma tête, c'est pas par mauvaise foi — c'est parce que ça me rappelle un moment de ma vie où j'avais honte.",
+          "en": "Linh, I want to tell you something. The fact that you lent me those 300 euros in March without asking questions — it really saved me at a point when I was overdrawn. If I swept it under the rug in my head, it's not in bad faith — it's because it reminds me of a moment in my life when I felt ashamed.",
           "vi": "Linh, em muốn nói với bạn điều. Việc bạn cho em mượn 300 euro tháng 3 mà không hỏi câu nào — thực sự cứu em vào lúc em bị thấu chi. Nếu em che giấu trong đầu, không phải vì không tốt — mà vì nó nhắc em một khoảnh khắc em xấu hổ."
         },
         {
           "speaker": "Linh",
           "text": "Je l'avais senti, en fait. C'est pour ça que je t'avais pas relancée plus tôt. Mais à un moment, le silence devient lui-même un problème — il devient un truc qui se met entre nous.",
+          "en": "I'd sensed that, actually. That's why I hadn't chased you earlier. But at a point, the silence itself becomes the problem — it becomes a thing that gets between us. [states the cultural core: the 'non-dit' is what damages the friendship]",
           "vi": "Em đã cảm nhận được, thật ra. Đó là lý do em chưa nhắc lại sớm hơn. Nhưng đến lúc, sự im lặng trở thành vấn đề — nó trở thành một điều xen vào giữa mình."
         },
         {
           "speaker": "Camille",
           "text": "Exactement. Je te remercie d'avoir choisi d'en parler avant que ça pourrisse.",
+          "en": "Exactly. Thank you for choosing to talk about it before it rotted.",
           "vi": "Chính xác. Em cảm ơn bạn đã chọn nói ra trước khi nó hỏng."
         },
         {
           "speaker": "Linh",
           "text": "Et — pour la suite, si tu te retrouves dans une situation similaire, ne te bloque pas pour me demander à nouveau. C'est mieux qu'on en parle direct que tu galères en silence pour pas me déranger.",
+          "en": "And — going forward, if you find yourself in a similar situation, don't block yourself from asking me again. It's better that we talk directly than that you struggle in silence so as not to bother me.",
           "vi": "Và — cho tương lai, nếu bạn lại rơi vào tình huống tương tự, đừng tự chặn không hỏi em lại. Tốt hơn mình nói thẳng hơn là bạn vật lộn im lặng để không làm phiền em."
         },
         {
           "speaker": "Camille",
           "text": "Je note. Et à l'inverse — si tu te retrouves coincée toi, dis-le moi. Tu m'as aidée, ça vaut dans les deux sens.",
+          "en": "Noted. And conversely — if you end up stuck yourself, tell me. You helped me, it works both ways. [reciprocity opened explicitly — the fair, French move]",
           "vi": "Em note. Ngược lại — nếu bạn bị kẹt, bạn nói em nghe. Bạn giúp em, có giá trị cả hai chiều."
         },
         {
           "speaker": "Linh",
           "text": "Compris. Bon — autre sujet. Tu veux qu'on commande un dessert ?",
+          "en": "Got it. Right — different subject. Do you want to order a dessert? [closes the money topic and pivots immediately — don't drag the emotion out]",
           "vi": "Hiểu. Vậy — chuyện khác. Bạn muốn gọi tráng miệng không?"
         },
         {
           "speaker": "Camille",
           "text": "Oui, et celui-ci je le paye. Je te dois ça, en plus des 300.",
+          "en": "Yes, and this one I'm paying for. I owe you that, on top of the 300.",
           "vi": "Có, và cái này em trả. Em nợ bạn cái đó, ngoài 300."
         },
         {
           "speaker": "Linh",
           "text": "Refusé. On split comme d'habitude. Le débat sur les 300 est clos — pas de réparation symbolique.",
+          "en": "Declined. We split as usual. The debate over the 300 is closed — no symbolic make-up gesture. [refusing the 'I'll pay to make up for it' move keeps the issues from blurring — see the cultural note on gifts-instead-of-money]",
           "vi": "Từ chối. Mình chia như thường. Vụ 300 đã đóng — không sửa lỗi tượng trưng."
         },
         {
           "speaker": "Camille",
           "text": "OK, OK. Lydia samedi, dessert split, conversation oubliée.",
+          "en": "OK, OK. Lydia Saturday, dessert split, conversation forgotten.",
           "vi": "OK, OK. Lydia thứ bảy, tráng miệng chia, cuộc trò chuyện quên."
         }
       ],
@@ -15748,30 +15805,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp đòi bạn 100 EUR mà bạn không nhớ. Phản hồi đúng: hỏi để confirm context (« c'était quand exactement? »), không bùng nổ phòng thủ; nếu sau confirm thấy đúng, đề xuất trả ngay.",
         "Bạn cho bạn Pháp mượn 500 EUR đã 1 năm; bạn ấy không nhắc và bạn cũng không hỏi. Mối quan hệ bắt đầu lạnh dần. Nhận ra đây là « non-dit » phá hỏng tình bạn — đặt cuộc trò chuyện sửa."
       ],
+      "roleplay_prompts_en": [
+        "You lent a French friend 50 EUR eight months ago. Small amount, and you feel awkward bringing it up. Decide: remind them, or treat it as a gift? Explain your choice — there's no single 'right' answer, but it must respect the French norm of money transparency. Reasoning to model: under ~30 EUR is usually 'offert' and chasing it reads as petty; at 50 EUR you're on the line — if it genuinely doesn't bother you, decide internally to gift it and let it go (don't keep silently resenting it); if it does bother you, a one-line light text is fine. Anglophone calibration: the US habit of indefinite hinting/avoidance is the option the French would consider the actually awkward one.",
+        "A French friend asks you for 100 EUR back that you don't remember. Respond correctly: ask to confirm the context ('c'était quand exactement ? je veux juste resituer'), do NOT explode defensively; if after confirming it checks out, propose paying it back immediately. Avoid the anglophone reflex of 'are you sure? I really don't think I owe you anything' as the first move — lead with a genuine clarifying question, not a denial.",
+        "You lent a French friend 500 EUR a year ago; they haven't mentioned it and neither have you. The relationship is starting to cool. Recognize this as a 'non-dit' eroding the friendship — set up the repair conversation. Open in person, not by text given the amount and the time elapsed: 'Camille, il y a un truc que j'aurais dû aborder il y a longtemps, et le fait de ne pas l'avoir fait nous a un peu refroidies, je crois.' Anglophone calibration: the instinct to keep waiting 'so it doesn't get weird' is precisely what made it weird — naming it, even late, is the only repair."
+      ],
       "register_notes": "Tiền bạn bè dùng tutoiement, giọng điềm. Tránh:\n- « Tu m'as toujours pas remboursé, hein? » → giọng kết tội\n- « Je sais que tu vas pas me rembourser » → giả định xấu\n- « C'est rien du tout » khi đối phương đang đòi → coi nhẹ vấn đề của họ\n- Nói trong public: nhắc tiền trong group chat hoặc bữa tối nhiều người → nhục\n\nCụm hữu ích:\n- « Petit rappel » → mở câu nhẹ qua tin nhắn\n- « Pas pour mettre la pression » → câu mở khóa cho cuộc trò chuyện không phòng thủ\n- « Un calendrier réaliste qui marche pour toi » → đặt control về phía họ\n- « Notre amitié vaut plus que cette somme » → đặt tỉ lệ\n- « C'est pour ça que je préfère qu'on en parle » → giải thích vì sao đây là tử tế\n\nLưu ý kỹ thuật: Lydia, Paylib, PayPal là phương thức trả phổ biến giữa bạn bè ở Pháp. Bạn KHÔNG cần phải nhận tiền mặt. Đề xuất phương thức cụ thể (« via Lydia ») làm cuộc trò chuyện thực tế hơn. Khi nhận tiền: tin nhắn xác nhận ngắn (« reçu, merci »), không cảm ơn nhiều lần.\nKhi cuộc trò chuyện kết thúc: chuyển chủ đề ngay (« autre sujet — tu veux un dessert? »), không kéo dài cảm xúc.",
+      "register_notes_en": "Money between friends uses tutoiement, with a calm, even tone. Avoid:\n- 'Tu m'as toujours pas remboursé, hein ?' (you STILL haven't paid me back, huh?) → accusatory tone.\n- 'Je sais que tu vas pas me rembourser' (I know you're not going to pay me back) → assumes bad faith.\n- 'C'est rien du tout' (it's nothing at all) said while they're trying to repay you → dismisses their issue and reads as passive.\n- Raising it in public: bringing up money in a group chat or at a dinner with several people → humiliating.\n\nUseful phrases: 'Petit rappel' (a light text opener); 'Pas pour mettre la pression' (the unlock phrase for a non-defensive talk); 'Un calendrier réaliste qui marche pour toi' (puts control on their side); 'Notre amitié vaut plus que cette somme' (sets the proportion); 'C'est pour ça que je préfère qu'on en parle' (explains WHY raising it is the kind thing to do).\n\nTechnical note: Lydia, Paylib and PayPal are the normal friend-to-friend transfer methods in France — you do NOT need cash. Naming a concrete method ('via Lydia') makes the conversation practical rather than abstract. When you receive the money: a short confirmation ('reçu, merci'), not repeated thanks. When the conversation ends: pivot the topic immediately ('autre sujet — tu veux un dessert ?'), don't prolong the emotion. Anglophone calibration: the US habit of jokey, indirect money talk ('haha no rush, whenever, totally fine!') is heard here as not actually closing it — be plainly clear and then move on.",
       "idiom_glosses": [
         {
           "idiom": "Être à découvert",
           "literal": "Đang bị lộ",
+          "literal_en": "To be uncovered / exposed",
           "meaning": "Tài khoản ngân hàng âm.",
+          "meaning_en": "To be overdrawn — your bank balance is negative. English equivalent: 'to be in the red' / 'to be overdrawn'. Not a moral failing in French — a common, nameable situation.",
           "example": "En mars, j'étais à découvert — c'est pour ça que j'ai eu besoin des 300."
         },
         {
           "idiom": "Mettre quelque chose sous le tapis",
           "literal": "Đặt gì đó dưới thảm",
+          "literal_en": "To put something under the rug",
           "meaning": "Giấu vấn đề thay vì giải quyết.",
+          "meaning_en": "To avoid an issue instead of dealing with it. Identical image to English 'to sweep something under the rug / carpet'.",
           "example": "J'ai mis cette dette sous le tapis pendant six mois — c'était une erreur."
         },
         {
           "idiom": "Régler ses comptes",
           "literal": "Giải quyết các tài khoản của mình",
+          "literal_en": "To settle one's accounts",
           "meaning": "Thanh toán nợ — hoặc nghĩa bóng: giải quyết bất đồng.",
+          "meaning_en": "Literally: to settle up money owed. Figuratively (and ominously): to settle a score / get even — so context decides the tone. English equivalent of the literal sense: 'to square up' / 'to settle accounts'.",
           "example": "On a réglé nos comptes — au sens littéral et amical."
         },
         {
           "idiom": "Faire moitié-moitié",
           "literal": "Làm nửa-nửa",
+          "literal_en": "To do half-half",
           "meaning": "Chia đôi (hóa đơn).",
+          "meaning_en": "To split it 50/50 (a bill). English equivalent: 'to go halves' / 'to split it down the middle' / 'go Dutch'.",
           "example": "Le dessert, on fait moitié-moitié comme d'habitude."
         }
       ],
@@ -15779,7 +15850,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Notre amitié ___ plus que cette somme.",
-          "answer": "vaut"
+          "question_en": "Our friendship ___ more than this sum.",
+          "answer": "vaut",
+          "hint_vi": "động từ « valoir » (« notre amitié ___ », ngôi thứ 3 số ít) = đáng giá",
+          "hint_en": "the verb 'valoir' (to be worth), 3rd-person singular — the line that puts the money in proportion to the friendship"
         },
         {
           "type": "matching",
@@ -15797,12 +15871,30 @@ export const lessons: FrenchLesson[] =           [
               "điều không nói ra"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "prêter de l'argent",
+              "to lend money — the LENDER's verb (not 'emprunter', which is to borrow)"
+            ],
+            [
+              "rembourser",
+              "to pay back — the plain verb to use, not euphemized"
+            ],
+            [
+              "un non-dit",
+              "an unspoken thing left to fester — what the French believe damages a friendship more than the awkward talk"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French money term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Nếu bạn có thể trả em bây giờ, hoàn hảo. Nếu không, cho em biết một lịch trả thực tế.",
-          "french": "Si tu peux me les rendre maintenant, parfait. Sinon, dis-moi un calendrier réaliste."
+          "french": "Si tu peux me les rendre maintenant, parfait. Sinon, dis-moi un calendrier réaliste.",
+          "english": "If you can give them back to me now, perfect. If not, tell me a realistic timeline.",
+          "hint_vi": "« me les rendre » = trả lại (chúng) cho em; « un calendrier réaliste » đặt quyền chủ động về phía họ",
+          "hint_en": "'me les rendre' = give them back to me; offering 'si tu peux… sinon…' (if you can… if not…) gives options and hands control to the other person"
         }
       ]
     },
@@ -15821,6 +15913,12 @@ export const lessons: FrenchLesson[] =           [
             "aborde → a-bord",
             "sujet → su-jè",
             "entre → ãn-trơ"
+          ],
+          "pronunciation_focus_en": [
+            "intéressant → a(n)-tay-reh-SAH(n) (first and last syllables nasal; 'je trouve intéressant que' + subjunctive)",
+            "aborde → ah-BORD ('aborder un sujet' = to broach a topic; final 'e' silent — note in France religion is a private topic, so 'broaching' it is itself notable)",
+            "sujet → soo-ZHEH ('zh' = 's' in 'measure', final 't' silent; 'ce sujet' = this topic)",
+            "entre → AH(n)-truh ('entre amis' = among friends; the nasal 'en' has no hard 'n')"
           ]
         },
         {
@@ -15831,6 +15929,12 @@ export const lessons: FrenchLesson[] =           [
             "bouddhiste → bu-dist",
             "pratiquante → pra-ti-kãt",
             "culturellement → kul-tu-rèl-mã"
+          ],
+          "pronunciation_focus_en": [
+            "côté → koh-TAY ('de mon côté' = on my side / for my part — the neutral opener: state where you come from, don't ask them to react)",
+            "bouddhiste → boo-DEEST (the 'dh' is just 'd'; 'une famille bouddhiste' = a Buddhist family)",
+            "pratiquante → prah-tee-KAH(n)T (feminine; 'pas pratiquante' = not practicing — the key French distinction between cultural background and active practice)",
+            "culturellement → kul-tew-rel-MAH(n) ('-ment' nasal; 'culturellement présente' = culturally present — the phrase that resolves the 'I light incense but I'm not religious' paradox for the French)"
           ]
         },
         {
@@ -15840,6 +15944,11 @@ export const lessons: FrenchLesson[] =           [
             "essaie → è-sè",
             "convaincre → kõn-van-krơ",
             "comparer → kõm-pa-ré"
+          ],
+          "pronunciation_focus_en": [
+            "essaie → eh-SEH ('je n'essaie pas' = I'm not trying to; the 'ni… ni…' = neither… nor…)",
+            "convaincre → ko(n)-VA(n)-kruh (two nasals; 'te convaincre' = to convince you — explicitly what you say you're NOT doing)",
+            "comparer → ko(n)-pah-RAY ('comparer' = to compare; the second thing you renounce — no 'mine is better / yours is backward')"
           ]
         },
         {
@@ -15849,6 +15958,11 @@ export const lessons: FrenchLesson[] =           [
             "foi → fwa",
             "catholique → ka-to-lik",
             "jugement → jüj-mã"
+          ],
+          "pronunciation_focus_en": [
+            "foi → FWAH (one syllable, like English 'fwa'; 'la foi' = faith — don't confuse with 'fois'/time, said the same way)",
+            "catholique → kah-toh-LEEK (stress the last syllable; 'ta foi catholique' = your Catholic faith)",
+            "jugement → zhoozh-MAH(n) ('zh' twice, '-ment' nasal; 'sans jugement' = without judgment — the safety guarantee that makes them able to share)"
           ]
         },
         {
@@ -15858,102 +15972,123 @@ export const lessons: FrenchLesson[] =           [
             "désaccord → dé-za-kor",
             "métaphysique → mé-ta-fi-zik",
             "profondément → pro-fõn-dé-mã"
+          ],
+          "pronunciation_focus_en": [
+            "désaccord → day-zah-KOR (liaison 's' = 'z', final 'd' silent; 'en désaccord' = in disagreement)",
+            "métaphysique → may-tah-fee-ZEEK ('the metaphysical' / big questions of existence; near-cognate with English 'metaphysics')",
+            "profondément → proh-fo(n)-day-MAH(n) (four beats, '-ment' nasal; 'profondément amis' = deeply friends — the lesson's conclusion: disagree on the metaphysical, stay close)"
           ]
         }
       ],
       "cultural_notes_vi": "Pháp là nước « laïque » (thế tục) — sự tách giáo hội khỏi nhà nước (1905) là giá trị nền tảng. Nhiều người Pháp xác định « athée » (vô thần) hoặc « agnostique » (bất khả tri) hơn « catholique pratiquant ». Tỉ lệ người Pháp đi lễ chủ nhật thấp (< 5%). Tôn giáo nói chung được xem là « chuyện riêng » (« privé ») — không hỏi đồng nghiệp về đức tin trong văn phòng, không nhắc trong tiệc tối với bạn mới quen.\n\nĐiều này KHÁC Việt Nam ở một điểm tinh tế. Ở Việt Nam, tâm linh (thắp hương, đi chùa, cúng tổ tiên) được tích hợp vào đời sống hàng ngày mà không nhất thiết được xem là « tôn giáo » — nó là văn hóa. Người Pháp không có khung này; với họ, thắp hương = tôn giáo. Vì vậy người Việt nói « tôi không theo đạo nào » lúc thấy ngạc nhiên khi người Pháp hỏi « pourquoi tu vas à la pagode alors? ». Câu trả lời chuẩn: « C'est culturel chez nous — pas exactement religieux au sens où tu l'entends. »\n\nKhi cuộc trò chuyện về tôn giáo bắt đầu (thường trong bữa tối với bạn thân, sau ly rượu thứ hai), nguyên tắc Pháp:\n(1) Mỗi người nói « d'où ils parlent » — gốc gác đức tin/không-đức tin\n(2) Không cố thuyết phục\n(3) Không so sánh « tôi tốt hơn / bạn lạc hậu »\n(4) Tôn trọng « zone privée » — không hỏi câu xâm phạm về thực hành cá nhân\n\nĐức tin cụ thể trong xã hội Pháp:\n- Catholique: tôn giáo lịch sử Pháp; người trẻ thường « catholique culturel » (Giáng sinh, Lễ Phục sinh) hơn pratiquant\n- Musulman: cộng đồng lớn (~5-10% dân số); chủ đề chính trị nhạy cảm\n- Juif: cộng đồng nhỏ, lịch sử đau thương (Shoah)\n- Bouddhiste: ~1% Pháp, thường là người gốc châu Á hoặc convert\n- Athée/agnostique: ~40% Pháp\n\nTránh: nhận xét generalize về một tôn giáo (« les musulmans sont… », « les catholiques pensent… »); câu đùa về Chúa/Giáo hoàng/Đức Phật trừ khi đã rất thân; gọi đức tin của bạn là « la vraie religion » (giả định họ sai).",
+      "cultural_notes_en": "France is a 'laïque' (secular) country — the 1905 separation of church and state is a foundational value, and stronger than the American 'separation of church and state', which still coexists with very public religiosity. Many French people identify as 'athée' (atheist) or 'agnostique' rather than 'catholique pratiquant'; weekly mass attendance is under 5%; and religion is broadly treated as a private matter ('le privé') — you don't ask a colleague about their faith at the office, and you don't raise it at a dinner with new acquaintances. This cuts against both American and Vietnamese instincts. For Americans, casual 'so what church do you go to?' / 'I'll pray for you' small talk is normal; in France it's intrusive. For Vietnamese speakers there's a subtler trap: in Vietnam, spirituality (incense, the ancestor altar, pagoda visits, Tết observance) is woven into everyday life and not necessarily filed under 'religion' — it's culture. The French don't have that category; to them, lighting incense = religion. So a Vietnamese person who says 'I don't follow any religion' then mentions going to the pagoda will get a puzzled 'then why do you go?'. The clean answer: 'C'est culturel chez nous — pas exactement religieux au sens où tu l'entends' (it's cultural for us — not exactly religious in the sense you mean). When the topic does come up (usually at dinner with close friends, after the second glass of wine), the French ground rules are: each person says 'd'où ils parlent' (where they speak from — their background, believing or not); nobody tries to convert; nobody compares ('I'm more enlightened / you're behind the times'); and the private zone is respected — no intrusive questions about personal practice. Avoid sweeping generalizations about a religion ('les musulmans sont…', 'les catholiques pensent…'); jokes about God / the Pope / the Buddha unless you're very close; and calling your own faith 'la vraie religion' (the true religion — it presumes they're wrong). Specific landscape worth knowing: Catholic is the historical French religion, but younger people are often 'culturally Catholic' (Christmas, Easter) rather than practicing; there's a large Muslim community (~5–10%) and it is a politically sensitive subject; a small Jewish community with a traumatic history (the Shoah); Buddhists ~1%; and roughly 40% atheist/agnostic.",
       "tip_advice_vi": "Bốn nguyên tắc cho cuộc trò chuyện về tôn giáo với bạn Pháp khác đức tin:\n(1) MỞ ĐẦU bằng « gốc gác », không « niềm tin hiện tại ». « Je viens d'une famille X — » → cho thông tin neutral, không yêu cầu họ phản ứng. Sau đó họ có thể chia sẻ gốc của mình.\n(2) DÙNG « JE » CÁ NHÂN. « Pour moi, le bouddhisme c'est… » thay vì « Le bouddhisme dit que… ». Câu thứ hai biến bạn thành đại diện một tôn giáo; câu đầu giữ bạn là cá nhân.\n(3) HỎI VỚI TÒ MÒ THẬT. « Comment tu vis ta foi au quotidien? », « Qu'est-ce qui t'a amenée vers ça? » → câu hỏi mở, mời chia sẻ. Tránh câu test: « Tu crois vraiment que…? ».\n(4) CHẤP NHẬN BẤT ĐỒNG MÀ KHÔNG GIẢI QUYẾT. Cuộc trò chuyện về siêu hình KHÔNG kết thúc với « ai đúng ». Kết thúc với « j'ai mieux compris d'où tu parles » — đó là thành công.\n\nBẪY ĐẶC BIỆT cho người Việt:\n- « Tôi tin tổ tiên có linh hồn » dịch literal sang Pháp nghe như spiritualisme primitif. Cách đúng: « Pour moi, c'est moins une croyance qu'une façon de garder un lien avec ma famille étendue, vivants et morts. »\n- « Tôi không theo đạo » mà sau đó « tôi thắp hương »: paradox cho người Pháp. Giải thích: « C'est culturel, pas religieux au sens occidental. »\n- Bạn Pháp catholique mời đến nhà thờ Giáng sinh: chấp nhận với respect không phải convert; không cần « giải thích » bạn không tin để khỏi cảm thấy hypocrite — sự tham dự là gesture amitié, không tuyên xưng đức tin.",
+      "tip_advice_en": "Four principles for a religion conversation with a French friend of a different faith:\n(1) OPEN WITH 'BACKGROUND', NOT 'CURRENT BELIEF'. 'Je viens d'une famille X —' gives neutral information without demanding they react. They can then share their own background in turn.\n(2) USE THE PERSONAL 'JE'. 'Pour moi, le bouddhisme c'est…' (for me, Buddhism is…) instead of 'Le bouddhisme dit que…' (Buddhism says that…). The second turns you into a spokesperson for a religion; the first keeps you an individual.\n(3) ASK WITH REAL CURIOSITY. 'Comment tu vis ta foi au quotidien ?' (how do you live your faith day to day?), 'Qu'est-ce qui t'a amenée vers ça ?' (what led you to it?) → open questions that invite sharing. Avoid test questions: 'Tu crois VRAIMENT que… ?' (do you REALLY believe that…?).\n(4) ACCEPT DISAGREEMENT WITHOUT RESOLVING IT. A conversation about the metaphysical does NOT end with 'who's right'. It ends with 'j'ai mieux compris d'où tu parles' (I understand better where you're coming from) — that is the success condition. This is the hardest one for anglophones from debate-friendly or evangelizing cultures, where a discussion is supposed to reach a conclusion.\n\nSPECIFIC TRAPS for Vietnamese speakers:\n- 'I believe ancestors have souls' translated literally into French can sound like primitive spiritualism. Better: 'Pour moi, c'est moins une croyance qu'une façon de garder un lien avec ma famille étendue, vivants et morts' (for me it's less a belief than a way of keeping a link with my extended family, living and dead).\n- 'I don't follow a religion' followed by 'I light incense' is a paradox for the French. Resolve it: 'C'est culturel, pas religieux au sens occidental' (it's cultural, not religious in the Western sense).\n- A practicing Catholic French friend invites you to Christmas mass: accept with respect, NOT as a conversion; you don't need to 'explain' that you don't believe so as not to feel like a hypocrite — attending is a gesture of friendship, not a profession of faith. (Same the other way: they'd be welcome at your family's Tết.)",
       "vocabulary": [
         {
           "word": "la foi",
           "en": "faith",
           "vi": "đức tin",
           "pos": "n.f.",
-          "pronunciation_vi": "fwa"
+          "pronunciation_vi": "fwa",
+          "pronunciation_en": "FWAH (one syllable; 'la foi' = faith — a near-homophone of 'la fois'/the time/occasion; context disambiguates)"
         },
         {
           "word": "croyant(e)",
           "en": "believer",
           "vi": "người có đức tin",
           "pos": "adj./n.",
-          "pronunciation_vi": "krwa-yã / krwa-yãt"
+          "pronunciation_vi": "krwa-yã / krwa-yãt",
+          "pronunciation_en": "krwah-YAH(n) / krwah-YAH(n)T (masc. ends nasal, fem. adds a sounded 't'; 'tu es croyante ?' = are you a believer? — a common but personal question)"
         },
         {
           "word": "pratiquant(e)",
           "en": "practicing (a religion)",
           "vi": "hành lễ thường xuyên",
           "pos": "adj.",
-          "pronunciation_vi": "pra-ti-kã / pra-ti-kãt"
+          "pronunciation_vi": "pra-ti-kã / pra-ti-kãt",
+          "pronunciation_en": "prah-tee-KAH(n) / prah-tee-KAH(n)T (the key distinction: a 'catholique non pratiquant' believes-by-culture but doesn't attend — there's no neat one-word English equivalent)"
         },
         {
           "word": "athée",
           "en": "atheist",
           "vi": "vô thần",
           "pos": "adj./n.",
-          "pronunciation_vi": "a-té"
+          "pronunciation_vi": "a-té",
+          "pronunciation_en": "ah-TAY (two clean syllables, NOT English 'AY-thee-ist'; in France a common, unremarkable self-description)"
         },
         {
           "word": "agnostique",
           "en": "agnostic",
           "vi": "bất khả tri",
           "pos": "adj./n.",
-          "pronunciation_vi": "a-gnos-tik"
+          "pronunciation_vi": "a-gnos-tik",
+          "pronunciation_en": "ah-gnoss-TEEK (the 'gn' = a hard 'g' + 'n', not the 'ny' of 'agneau'; stress the last syllable)"
         },
         {
           "word": "laïque",
           "en": "secular",
           "vi": "thế tục",
           "pos": "adj.",
-          "pronunciation_vi": "la-ik"
+          "pronunciation_vi": "la-ik",
+          "pronunciation_en": "lah-EEK (two syllables; the loaded French civic value of secularism — stronger and more state-level than US 'secular')"
         },
         {
           "word": "la spiritualité",
           "en": "spirituality",
           "vi": "tâm linh",
           "pos": "n.f.",
-          "pronunciation_vi": "spi-ri-tu-a-li-té"
+          "pronunciation_vi": "spi-ri-tu-a-li-té",
+          "pronunciation_en": "spee-ree-tew-ah-lee-TAY (five beats, final stress; near-cognate of English 'spirituality' — useful for describing practice without claiming 'religion')"
         },
         {
           "word": "un rituel",
           "en": "a ritual",
           "vi": "nghi thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ri-tu-èl"
+          "pronunciation_vi": "ri-tu-èl",
+          "pronunciation_en": "ree-tew-EL (three syllables; 'un rituel' = a ritual/observance — the neutral word for incense, the altar, Tết, etc.)"
         },
         {
           "word": "un parcours spirituel",
           "en": "a spiritual journey",
           "vi": "hành trình tâm linh",
           "pos": "n.m.",
-          "pronunciation_vi": "par-kur spi-ri-tu-èl"
+          "pronunciation_vi": "par-kur spi-ri-tu-èl",
+          "pronunciation_en": "par-KOOR spee-ree-tew-EL ('parcours' = path/journey; English equivalent: 'a spiritual path' — frames belief as personal and evolving, not fixed)"
         },
         {
           "word": "respecter sa pratique",
           "en": "to respect one's practice",
           "vi": "tôn trọng cách thực hành",
           "pos": "v.",
-          "pronunciation_vi": "rès-pèk-té sa pra-tik"
+          "pronunciation_vi": "rès-pèk-té sa pra-tik",
+          "pronunciation_en": "res-pek-TAY sah prah-TEEK ('respecter sa pratique' = to respect their practice — the non-judgment baseline of an interfaith friendship)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Camille",
           "text": "Tu m'as dit que tu allais à la pagode dimanche — tu es bouddhiste, alors ?",
+          "en": "You told me you were going to the pagoda Sunday — so you're Buddhist? [the classic French puzzlement: to them, the practice = religion]",
           "vi": "Bạn nói chủ nhật bạn đến chùa — bạn theo đạo Phật à?"
         },
         {
           "speaker": "Linh",
           "text": "Pas vraiment au sens occidental. C'est plus culturel — un lien avec ma famille.",
+          "en": "Not really in the Western sense. It's more cultural — a link with my family. [the clean answer to the paradox: cultural, not religious in the sense they mean]",
           "vi": "Không hẳn theo nghĩa phương Tây. Là văn hóa nhiều hơn — liên kết với gia đình."
         },
         {
           "speaker": "Camille",
           "text": "Intéressant. Tu peux m'expliquer la nuance ?",
+          "en": "Interesting. Can you explain the nuance to me? [genuine curiosity, an open question — not a test]",
           "vi": "Thú vị. Bạn giải thích sắc thái cho em được không?"
         },
         {
           "speaker": "Linh",
           "text": "Volontiers. Et toi, tu viens d'où côté foi ?",
+          "en": "Gladly. And you, where do you come from on the faith side? [returns the 'd'où tu parles' question — keeps it mutual, not one-sided]",
           "vi": "Sẵn lòng. Còn bạn, bạn đứng từ đâu phía đức tin?"
         }
       ],
@@ -15961,86 +16096,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Camille (autour d'un dîner)",
           "text": "Linh, je voulais te demander quelque chose qui me trotte dans la tête depuis qu'on se connaît, mais je n'ai jamais osé. Tu es croyante ?",
+          "en": "Linh, I wanted to ask you something that's been running through my head since we met, but I never dared. Are you a believer? [note the setting: at a dinner, between close friends — the only appropriate place for this topic in France]",
           "vi": "Linh, em muốn hỏi điều cứ lảng vảng trong đầu từ khi mình quen nhau, nhưng em chưa dám. Bạn có đức tin không?"
         },
         {
           "speaker": "Linh",
           "text": "Bonne question. La réponse simple : pas au sens où ce mot fonctionne en France. La réponse plus juste : ma famille est de tradition bouddhiste, et je participe à des rituels — mais je ne dirais pas que je « crois » au sens propre.",
+          "en": "Good question. The simple answer: not in the sense that word works in France. The truer answer: my family is of Buddhist tradition, and I take part in rituals — but I wouldn't say I 'believe' in the literal sense. [models the 'd'où je parle' opener — background first, not a yes/no creed]",
           "vi": "Câu hỏi hay. Trả lời đơn giản: không theo nghĩa từ này hoạt động ở Pháp. Trả lời chính xác hơn: gia đình em theo truyền thống Phật giáo, và em tham gia nghi thức — nhưng em không nói em « tin » theo nghĩa đen."
         },
         {
           "speaker": "Camille",
           "text": "Quels rituels ?",
+          "en": "Which rituals?",
           "vi": "Nghi thức gì?"
         },
         {
           "speaker": "Linh",
           "text": "À la maison de mes parents, il y a un autel des ancêtres. On y allume de l'encens, on y dépose des fruits, on parle aux ancêtres comme on parlerait à des grands-parents disparus. Et je vais à la pagode quelques fois par an, surtout pour le Têt et l'anniversaire du décès de ma grand-mère.",
+          "en": "At my parents' house there's an ancestor altar. We light incense there, we place fruit, we talk to the ancestors the way you'd talk to grandparents who've passed. And I go to the pagoda a few times a year, mainly for Tết and the anniversary of my grandmother's death.",
           "vi": "Ở nhà bố mẹ em có bàn thờ tổ tiên. Mình thắp hương, đặt trái cây, nói chuyện với tổ tiên như nói với ông bà đã mất. Và em đi chùa vài lần một năm, đặc biệt dịp Tết và giỗ bà nội."
         },
         {
           "speaker": "Camille",
           "text": "Mais tu crois que tes ancêtres entendent ce que tu leur dis ?",
+          "en": "But do you believe your ancestors hear what you say to them?",
           "vi": "Nhưng bạn tin tổ tiên nghe được điều bạn nói không?"
         },
         {
           "speaker": "Linh",
           "text": "Honnêtement ? Je ne sais pas. Et je suis OK avec ne pas savoir. Pour moi, l'acte de leur parler est ce qui compte — il maintient un lien, il honore une mémoire, il me rappelle que je viens d'une lignée. Que ce soit « entendu » dans un sens cosmique, c'est secondaire.",
+          "en": "Honestly? I don't know. And I'm OK with not knowing. For me, the act of speaking to them is what matters — it keeps a link, it honours a memory, it reminds me I come from a lineage. Whether it's 'heard' in a cosmic sense is secondary. [reframes 'I light incense for ancestors' away from primitive spiritualism, into a lineage/memory frame the French can meet]",
           "vi": "Thật lòng? Em không biết. Và em ok với không biết. Với em, hành động nói với họ là điều quan trọng — giữ liên kết, vinh danh ký ức, nhắc em từ một dòng dõi. Có được « nghe » theo nghĩa vũ trụ, là thứ yếu."
         },
         {
           "speaker": "Camille",
           "text": "C'est très différent de ce que ma grand-mère me disait sur la prière catholique — pour elle, prier sans croire n'avait aucun sens.",
+          "en": "That's very different from what my grandmother told me about Catholic prayer — for her, praying without believing made no sense.",
           "vi": "Rất khác điều bà em nói về cầu nguyện Công giáo — với bà, cầu nguyện mà không tin không có nghĩa."
         },
         {
           "speaker": "Linh",
           "text": "Et je comprends sa logique. Le christianisme — corrige-moi si je me trompe — fait reposer la foi sur la croyance en un Dieu personnel et en la résurrection. C'est binaire : tu y crois ou tu n'y crois pas. Le bouddhisme vietnamien, surtout dans la version culturelle qu'on vit, est moins binaire — c'est plus un cadre de gestes et de relations qui peut accommoder différents niveaux de croyance.",
+          "en": "And I understand her logic. Christianity — correct me if I'm wrong — rests faith on belief in a personal God and in the resurrection. It's binary: you believe it or you don't. Vietnamese Buddhism, especially in the cultural version we live, is less binary — it's more a framework of gestures and relationships that can accommodate different levels of belief. ['corrige-moi si je me trompe' = the model move: speak about THEIR faith only with an invitation to be corrected]",
           "vi": "Và em hiểu logic của bà. Đạo Cơ đốc — bạn sửa em nếu em nhầm — đặt đức tin trên việc tin Đức Chúa cá nhân và sự phục sinh. Là nhị nguyên: bạn tin hoặc không. Phật giáo Việt Nam, đặc biệt phiên bản văn hóa mình sống, ít nhị nguyên hơn — là một khung cử chỉ và quan hệ có thể đón nhiều cấp độ tin."
         },
         {
           "speaker": "Camille",
           "text": "Tu m'apprends quelque chose. Et toi — comment ça se passe quand tu rencontres des Français pratiquants qui te demandent « tu es croyante? » ?",
+          "en": "You're teaching me something. And you — how does it go when you meet practicing French people who ask you 'are you a believer?'",
           "vi": "Bạn dạy em điều. Còn bạn — chuyện gì xảy ra khi bạn gặp người Pháp hành lễ hỏi « bạn có đức tin không? »?"
         },
         {
           "speaker": "Linh",
           "text": "Je dis honnêtement « pas au sens chrétien ». Et la plupart respectent. Quelques-uns essaient de m'évangéliser doucement — ce n'est pas méchant, mais je décline poliment.",
+          "en": "I honestly say 'not in the Christian sense.' And most respect that. A few try to gently evangelize me — it's not malicious, but I decline politely.",
           "vi": "Em nói thẳng « không theo nghĩa Cơ đốc ». Và đa số tôn trọng. Một vài người cố giảng đạo nhẹ — không xấu, nhưng em từ chối lịch sự."
         },
         {
           "speaker": "Camille",
           "text": "Et l'inverse — qu'est-ce qui te dérange si quelqu'un comme moi, qui suis catholique pratiquante, t'invite à la messe de Noël ?",
+          "en": "And the reverse — what bothers you if someone like me, a practicing Catholic, invites you to Christmas mass?",
           "vi": "Ngược lại — điều gì làm bạn không thoải mái nếu ai đó như em, hành lễ Công giáo, mời bạn đến lễ Giáng sinh?"
         },
         {
           "speaker": "Linh",
           "text": "Rien du tout. Je viens avec joie. Pour moi, accepter une invitation à la messe de Noël ne signifie pas que je convertis — ça signifie que je participe à un moment important pour mon amie. C'est une marque de respect et d'affection. Tu serais bienvenue à un Têt chez ma famille de la même manière.",
+          "en": "Nothing at all. I'd come with joy. For me, accepting a Christmas mass invitation doesn't mean I'm converting — it means I'm taking part in an important moment for my friend. It's a mark of respect and affection. You'd be welcome at a Tết with my family the same way. [the lesson's core: attending is friendship, not a profession of faith — and it's reciprocal]",
           "vi": "Không gì. Em đến với niềm vui. Với em, nhận lời mời lễ Giáng sinh không có nghĩa em chuyển đạo — có nghĩa em tham gia khoảnh khắc quan trọng với bạn em. Là dấu tôn trọng và tình cảm. Bạn được chào đón ăn Tết với gia đình em theo cách đó."
         },
         {
           "speaker": "Camille",
           "text": "J'aimerais vraiment. C'est un truc magnifique de pouvoir partager ça sans avoir à se convaincre l'une l'autre.",
+          "en": "I'd really love that. It's a beautiful thing to be able to share that without having to convince each other.",
           "vi": "Em rất muốn. Là điều đẹp khi mình có thể chia sẻ mà không phải thuyết phục nhau."
         },
         {
           "speaker": "Linh",
           "text": "C'est exactement ça. Les vraies amitiés interreligieuses fonctionnent comme ça — pas malgré la différence, à cause d'elle. Chacune apporte son cadre, et les deux cadres se respectent.",
+          "en": "That's exactly it. Real interfaith friendships work like that — not despite the difference, because of it. Each brings her framework, and the two frameworks respect each other.",
           "vi": "Chính xác. Tình bạn liên tôn giáo thật hoạt động vậy — không phải dù khác biệt, mà nhờ khác biệt. Mỗi người mang khung của mình, và hai khung tôn trọng nhau."
         },
         {
           "speaker": "Camille",
           "text": "Une dernière question, et après on parle d'autre chose, promis. Quand tu es triste, ou que tu as peur, à qui tu parles ? Si pas à un Dieu — à qui ?",
+          "en": "One last question, and then we'll talk about something else, I promise. When you're sad, or scared, who do you talk to? If not a God — then who? [note 'promis, on parle d'autre chose après' — explicitly bounding a heavy topic, which the French respect]",
           "vi": "Câu cuối, sau đó mình nói chuyện khác, hứa. Khi bạn buồn, hoặc sợ, bạn nói chuyện với ai? Nếu không phải Đức Chúa — với ai?"
         },
         {
           "speaker": "Linh",
           "text": "À ma grand-mère décédée. Je sais qu'elle ne « répond » pas dans un sens vérifiable. Mais l'acte de lui parler me ramène à un endroit calme. Et c'est tout ce que je demande de la spiritualité — pas une vérité cosmique, juste un endroit calme à l'intérieur.",
+          "en": "To my late grandmother. I know she doesn't 'answer' in any verifiable sense. But the act of talking to her brings me back to a calm place. And that's all I ask of spirituality — not a cosmic truth, just a calm place inside.",
           "vi": "Với bà nội đã mất của em. Em biết bà không « trả lời » theo cách kiểm chứng được. Nhưng hành động nói với bà đưa em về một nơi yên. Và đó là tất cả em xin từ tâm linh — không phải sự thật vũ trụ, chỉ là một nơi yên bên trong."
         },
         {
           "speaker": "Camille",
           "text": "Tu sais quoi — c'est très proche de ce que je ressens quand je prie, en fait. Le mot « Dieu » fait peut-être plus de séparation entre nous que la pratique elle-même.",
+          "en": "You know what — that's very close to what I feel when I pray, actually. Maybe the word 'God' creates more separation between us than the practice itself does. [the success condition: not agreement, but 'I understand better where you speak from']",
           "vi": "Bạn biết không — gần lắm với điều em cảm khi em cầu nguyện, thật ra. Từ « Chúa » có thể tạo nhiều khoảng cách giữa mình hơn thực hành."
         }
       ],
@@ -16049,30 +16201,44 @@ export const lessons: FrenchLesson[] =           [
         "Đồng nghiệp Pháp athée nói nhẹ « la religion c'est dépassé, c'est pour les anciens ». Phản hồi vừa thừa nhận điểm hợp lý của họ về institution Church, vừa nuance về spiritualité cá nhân của bạn — không lecture, không phòng thủ.",
         "Mẹ chồng Pháp catholique đề nghị làm lễ rửa tội cho con bạn. Bạn và chồng đã quyết định không. Trả lời lịch sự nhưng vững — không ép mẹ chồng theo, không nhân nhượng quyết định gia đình bạn."
       ],
+      "roleplay_prompts_en": [
+        "A practicing Catholic French friend invites you to Christmas mass at her church. You don't believe in God but you value her. Answer the invitation — accept with a short framing of your role (a respectful guest, not a convert): 'Avec plaisir. Je viens en amie, pas en croyante, et c'est exactement pour ça que ça compte pour moi de partager ce moment avec toi.' — or decline kindly if it would feel forced. Anglophone calibration: don't over-explain your unbelief to avoid feeling hypocritical; attendance is friendship, not a creed.",
+        "A French atheist colleague says lightly 'la religion c'est dépassé, c'est pour les anciens' (religion is outdated, it's for old people). Respond by both granting their valid point about the institutional Church AND nuancing about your own personal spirituality — no lecture, no defensiveness. Model: 'Sur l'Église comme institution, je te suis en partie. Mais pour moi, il y a une différence entre l'institution et un rapport personnel à la mémoire et au calme intérieur — c'est ça que je garde.' Anglophone calibration: resist the debate-club reflex to win the point; the French success condition is mutual understanding, not a conclusion.",
+        "Your Catholic French mother-in-law proposes baptizing your child. You and your spouse have decided against it. Reply politely but firmly — don't pressure her to agree, and don't concede your family's decision. Model: 'On comprend que ça compte beaucoup pour vous, et on respecte votre foi sincèrement. Pour notre part, on a choisi de ne pas baptiser [enfant] et de le/la laisser décider plus tard. Ce n'est pas contre votre croyance — c'est notre cadre à nous.' Anglophone calibration: hold the boundary without an argument; in France a calmly stated, non-negotiable 'c'est notre choix' is more respected than a long justification."
+      ],
       "register_notes": "Cuộc trò chuyện về tôn giáo dùng tutoiement nếu đã thân, vouvoiement nếu chưa. Nói về đức tin của BẠN dùng « je » cá nhân; nói về đức tin của HỌ dùng câu hỏi mở (« comment tu vis ta foi? ») thay vì khẳng định (« le catholicisme dit que… »). Tránh:\n- « Tu crois vraiment que…? » → giọng test\n- « C'est de la superstition » / « les religions sont obsolètes » → đặt mình cao hơn\n- « Au Vietnam on est plus tolérants que les Européens » → so sánh\n- Đùa về tôn giáo của họ (« le pape, lui, il a déconné » với bạn catholique mới quen) → mất tin cậy\n\nCụm hữu ích:\n- « Je viens d'une famille X » → mở câu neutral\n- « Pour moi, c'est plus une façon de… » → giảm khẳng định\n- « Corrige-moi si je me trompe — » → mời họ sửa nếu bạn nói sai về đức tin của họ\n- « D'accord avec ne pas savoir » → câu chốt cho zone không-tin\n- « Pas malgré la différence, à cause d'elle » → công thức cho tình bạn liên tôn\n\nKhi cuộc trò chuyện đi quá sâu hoặc tới điểm khó: « C'est dense — on en garde pour une autre fois? ». Pháp tôn trọng đặt biên giới mệt mỏi. KHÔNG ép giải quyết hết trong một tối.\nKhi nhận được lời mời đến nghi thức của họ: chấp nhận hoặc từ chối nhanh, không « peut-être » mơ hồ. Nếu chấp nhận: hỏi dress code, tham dự với respect (im lặng khi cần, không cười không chỗ), không chụp ảnh trừ khi được phép.",
+      "register_notes_en": "A conversation about religion uses tutoiement if you're already close, vouvoiement if not. Speak about YOUR faith with the personal 'je'; speak about THEIRS with open questions ('comment tu vis ta foi ?') rather than assertions ('le catholicisme dit que…'). Avoid:\n- 'Tu crois vraiment que… ?' → a test tone.\n- 'C'est de la superstition' / 'les religions sont obsolètes' / 'religion is for the uneducated' → puts you above them.\n- 'Au Vietnam on est plus tolérants que les Européens' → a comparison/ranking.\n- Jokes about their religion ('le pape, lui, il a déconné' with a recently-met Catholic) → loss of trust.\n\nUseful phrases: 'Je viens d'une famille X' (the neutral opener); 'Pour moi, c'est plus une façon de…' (lowers the assertion); 'Corrige-moi si je me trompe —' (invites them to correct you if you mis-state their faith); 'D'accord avec ne pas savoir' (the calm close for the not-knowing zone); 'Pas malgré la différence, à cause d'elle' (the formula for an interfaith friendship).\n\nWhen the conversation goes too deep or hits a hard point: 'C'est dense — on en garde pour une autre fois ?' The French respect a fatigue boundary; do NOT push to resolve everything in one evening (this is the key correction for debate-driven anglophone instincts). When you receive an invitation to their observance: accept or decline quickly, no vague 'peut-être'. If you accept: ask the dress code, attend respectfully (silence when needed, no laughing in the wrong place), and don't photograph unless permitted.",
       "idiom_glosses": [
         {
           "idiom": "D'où on parle",
           "literal": "Mình nói từ đâu",
+          "literal_en": "Where one speaks from",
           "meaning": "Vị trí cá nhân/văn hóa từ đó mình phát biểu.",
+          "meaning_en": "The personal/cultural position you're speaking from — your background and lens. English equivalent: 'where you're coming from' / 'one's standpoint'. The opening move of a respectful French faith conversation.",
           "example": "Avant de débattre, expliquons d'où on parle — ça aide."
         },
         {
           "idiom": "Faire son chemin spirituel",
           "literal": "Đi đường tâm linh của mình",
+          "literal_en": "To make one's spiritual path",
           "meaning": "Hành trình tâm linh cá nhân.",
+          "meaning_en": "To follow one's own evolving spiritual journey at one's own pace. English equivalent: 'to walk your own spiritual path' / 'to be on your own journey'.",
           "example": "Chacune fait son chemin spirituel à son rythme — pas de course."
         },
         {
           "idiom": "Respecter le for intérieur",
           "literal": "Tôn trọng nội tâm",
+          "literal_en": "To respect the inner forum",
           "meaning": "Tôn trọng vùng tâm linh riêng tư.",
+          "meaning_en": "To respect someone's private inner conscience / the part of belief that's nobody else's business. 'For intérieur' is a set legal-philosophical phrase (from Latin 'forum'); English equivalent: 'to respect someone's inner life / private conscience'.",
           "example": "On peut être en désaccord et respecter le for intérieur de l'autre."
         },
         {
           "idiom": "Ne pas se convertir mutuellement",
           "literal": "Không cải đạo lẫn nhau",
+          "literal_en": "Not to convert each other mutually",
           "meaning": "Tránh cố thuyết phục đối phương đổi đức tin.",
+          "meaning_en": "An agreed mutual non-aggression pact: neither tries to win the other over to their belief. English paraphrase: 'we don't try to convert each other' — the unspoken rule that lets an interfaith friendship hold.",
           "example": "On a accepté de ne pas se convertir mutuellement — c'est ce qui fait que l'amitié tient."
         }
       ],
@@ -16080,7 +16246,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "On peut être en ___ sur le métaphysique et rester profondément amis.",
-          "answer": "désaccord"
+          "question_en": "We can be in ___ about the metaphysical and stay deeply friends.",
+          "answer": "désaccord",
+          "hint_vi": "danh từ « sự bất đồng » (« en ___ » = đang bất đồng)",
+          "hint_en": "the noun 'disagreement' ('en ___' = in disagreement) — the lesson's conclusion: disagree on belief, stay close"
         },
         {
           "type": "matching",
@@ -16098,12 +16267,30 @@ export const lessons: FrenchLesson[] =           [
               "tâm linh"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "la foi",
+              "faith — a near-homophone of 'la fois' (the time); context disambiguates"
+            ],
+            [
+              "athée",
+              "atheist — in France a common, unremarkable self-description, not a confrontational label"
+            ],
+            [
+              "la spiritualité",
+              "spirituality — useful for describing practice without claiming the word 'religion'"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French faith term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Nếu bạn muốn nói em nghe đức tin Công giáo của bạn, em nghe sẵn lòng — không phán xét.",
-          "french": "Si tu veux me parler de ta foi catholique, je t'écoute volontiers — sans jugement."
+          "french": "Si tu veux me parler de ta foi catholique, je t'écoute volontiers — sans jugement.",
+          "english": "If you want to tell me about your Catholic faith, I'll gladly listen — without judgment.",
+          "hint_vi": "« je t'écoute volontiers » = em sẵn lòng nghe; « sans jugement » là lời cam kết an toàn để họ chia sẻ",
+          "hint_en": "'je t'écoute volontiers' = I'll gladly listen; 'sans jugement' (without judgment) is the safety guarantee that makes them able to open up"
         }
       ]
     },
