@@ -13146,6 +13146,11 @@ export const lessons: FrenchLesson[] =           [
             "aimerais → èm-rè",
             "calmement → kal-mơ-mã",
             "dimanche → di-mãnsh"
+          ],
+          "pronunciation_focus_en": [
+            "aimerais → em-REH (conditional 'I would like'; softer than 'je veux' — note the polite conditional opener)",
+            "calmement → kal-muh-MAH(n) (the '-ment' adverb ending is nasal; signals the de-escalated tone deliberately)",
+            "dimanche → dee-MAH(n)SH (nasal middle; final 'che' = 'SH'; means 'Sunday')"
           ]
         },
         {
@@ -13156,6 +13161,12 @@ export const lessons: FrenchLesson[] =           [
             "vietnamiennes → vi-èt-na-mièn",
             "surprendre → sur-prãn-drơ",
             "équilibre → é-ki-li-brơ"
+          ],
+          "pronunciation_focus_en": [
+            "habitudes → ah-bee-TOOD (silent 'h'; the 'u' is rounded; means 'habits/customs')",
+            "vietnamiennes → vyet-nah-MYEN (final '-iennes' = 'MYEN'; feminine plural agreeing with 'habitudes')",
+            "surprendre → soor-PRAH(n)-druh (the 'sur' has rounded 'u'; nasal middle; final 'dre' soft)",
+            "équilibre → ay-kee-LEE-bruh (final 'bre' = soft 'bruh'; 'trouver un équilibre' = find a balance)"
           ]
         },
         {
@@ -13166,6 +13177,12 @@ export const lessons: FrenchLesson[] =           [
             "façon → fa-sõ",
             "touchée → tu-shé",
             "explique → èk-splik"
+          ],
+          "pronunciation_focus_en": [
+            "remarque → ruh-MARK (rolled 'r'; 'faire une remarque' = to make a (critical) comment)",
+            "façon → fah-SO(n) (the 'ç' = 's'; nasal final; 'la façon dont' = the way in which)",
+            "touchée → too-SHAY (the extra 'e' marks a female speaker; 'ça m'a touchée' = that affected/hurt me — fact, not accusation)",
+            "explique → ek-SPLEEK (final 'que' = 'K'; 'je vous explique' = let me explain to you)"
           ]
         },
         {
@@ -13176,6 +13193,12 @@ export const lessons: FrenchLesson[] =           [
             "paru → pa-rü",
             "déplacé → dé-pla-sé",
             "comportement → kõm-por-tơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "côté → koh-TAY ('de votre côté' = on your side / from your perspective — the invitation to two-way honesty)",
+            "paru → pah-ROO (the 'u' is rounded; past participle of 'paraître' = to seem/appear)",
+            "déplacé → day-plah-SAY (literally 'displaced'; means 'inappropriate / out of place')",
+            "comportement → ko(n)-por-tuh-MAH(n) (nasal first + '-ment' nasal; means 'behavior')"
           ]
         },
         {
@@ -13186,102 +13209,124 @@ export const lessons: FrenchLesson[] =           [
             "changiez → shãn-jié",
             "comprenne → kõm-prèn",
             "repas → rơ-pa"
+          ],
+          "pronunciation_focus_en": [
+            "objectif → ob-zhek-TEEF ('j' = 'zh'; 'mon objectif n'est pas que…' = the key reframing sentence — my goal is NOT for you to change)",
+            "changiez → shah(n)-ZHYAY (subjunctive of 'changer'; nasal first; triggered by 'n'est pas que')",
+            "comprenne → ko(n)-PREN (subjunctive of 'comprendre'; 'qu'on se comprenne' = that we understand each other)",
+            "repas → ruh-PAH (final 's' silent; 'repas de famille' = family meal — the recurring future occasion)"
           ]
         }
       ],
       "cultural_notes_vi": "Mối quan hệ với gia đình bên (« beaux-parents ») Pháp khác Việt Nam ở vài điểm cốt lõi. Người Pháp đề cao sự tự lập của các con đã trưởng thành — bố mẹ chồng/vợ thường KHÔNG can thiệp vào quyết định gia đình con (chọn trường cho cháu, mua nhà, lịch nghỉ lễ). Ngược lại, ở Việt Nam, sự can thiệp được xem là biểu hiện của quan tâm. Người Việt mới về làm dâu/rể Pháp dễ rơi vào hai cực: (1) cảm thấy bị bỏ rơi, không được hỏi thăm — vì không biết rằng đó là cách Pháp thể hiện tôn trọng; (2) ngược lại, kỳ vọng được đối xử như con đẻ — và thất vọng khi mẹ chồng không đến thăm trong tháng đầu sau sinh.\n\nMột điểm khác biệt rất tinh tế: cách chào hỏi. Người Việt thường cúi nhẹ đầu khi chào người lớn tuổi; người Pháp expect « la bise » (hôn má) hoặc bắt tay — và việc cúi đầu có thể bị đọc nhầm là « subordination » (phục tùng) khiến mẹ chồng cảm thấy gượng. Khi giải thích, dùng giọng người lớn ngang hàng (« je voudrais qu'on se comprenne ») thay vì kiểu cấp dưới (« j'espère que vous pourrez me pardonner »). Người Pháp đánh giá cao sự thẳng thắn lịch sự hơn sự khúm núm.\n\nKhi bất đồng nghiêm trọng: KHÔNG kéo chồng/vợ vào giữa làm trung gian — sẽ tạo « triangulation » và làm hỏng cả hai mối quan hệ. Tốt hơn: 1-on-1 với mẹ chồng/bố chồng tại không gian trung tính (quán cà phê, không phải nhà của họ), nói thẳng, mở cửa cho phản hồi. Đó là protocol Pháp cho « conversation difficile » trong gia đình.",
+      "cultural_notes_en": "The relationship with French in-laws ('beaux-parents') differs from both Vietnamese and US norms in ways that quietly cause friction. The French strongly value the autonomy of adult children — in-laws typically do NOT intervene in their adult child's household decisions (which school for the grandkids, buying a home, holiday scheduling). In Vietnam, that same non-intervention can feel like cold neglect, because Vietnamese culture reads involvement AS care. So a Vietnamese person newly married into a French family tends to swing between two errors: (1) feeling abandoned and uncared-for because no one checks in constantly — not realizing that French restraint IS the expression of respect; (2) the opposite — expecting to be treated exactly like a biological child and being hurt when the mother-in-law doesn't visit in the first month after a birth. For US readers the calibration is different again: American in-laws often fall between the two, so the French distance can read as 'they don't like me' when it actually means 'we respect your independent household.' Read the restraint correctly before you read it as rejection.\n\nA very subtle flashpoint: greeting. Vietnamese people often dip the head slightly when greeting elders; the French expect 'la bise' (cheek kiss) or a handshake — and the head-dip can be misread as 'subordination', which makes a French mother-in-law uncomfortable because it implies a servant/employer gap inside a family. When you explain this, use the register of an equal adult ('je voudrais qu'on se comprenne' — I'd like us to understand each other), NOT the register of a subordinate seeking forgiveness ('j'espère que vous pourrez me pardonner' — I hope you can forgive me). The French respect polite directness far more than deference; deference between adult family members reads as a problem to be fixed, not as good manners.\n\nWhen the disagreement is serious: do NOT route it through your spouse as a go-between. This 'triangulation' damages both relationships and is read as conflict-avoidance. The French protocol for a family 'conversation difficile' is the same as the workplace one: 1-on-1 with the in-law, on neutral ground (a café, not their home — their home gives them the host's power position), spoken directly, with the door explicitly opened for their side of it. This is the inverse of the conflict-avoidant move many Vietnamese (and conflict-avoidant Americans) default to, and doing it the French way is what earns lasting respect.",
       "tip_advice_vi": "Khung 4 bước cho cuộc trò chuyện khó với gia đình bên: (1) Đặt buổi gặp cụ thể, không « pop in » — gửi tin « Maman, j'aimerais qu'on prenne un café cette semaine, juste vous et moi » để bà chuẩn bị tâm lý. (2) Mở đầu bằng intent (« je veux qu'on se comprenne mieux pour les prochains repas »), không lý lẽ. (3) Mô tả fact + impact thay vì kết tội: « Quand vous avez dit X, j'ai ressenti Y » — không « vous m'avez blessée ». (4) Mời phản hồi: « De votre côté, qu'est-ce qui vous a paru déplacé ? » — câu hỏi mở mời bà cũng nói thật. Tránh: kéo dài lời xin lỗi (« je suis vraiment désolée pour tout »); generalize văn hóa (« vous les Français… »); khóc (làm phía Pháp lúng túng và mất khả năng giải quyết). Sau cuộc trò chuyện: gửi tin nhắn ngắn cảm ơn (« Merci d'avoir pris ce temps, ça compte pour moi »), không nhắc lại trong các tương tác bình thường — giải quyết là giải quyết. Nếu chồng/vợ hỏi: chia sẻ kết quả ngắn (« on s'est expliquées »), không kể chi tiết — giữ riêng tư.",
+      "tip_advice_en": "The four-step frame for a difficult conversation with French in-laws (it mirrors the workplace 'conversation difficile' frame — same skill, family context): (1) Schedule a specific meeting, don't 'pop in' — text 'Maman, j'aimerais qu'on prenne un café cette semaine, juste vous et moi' so she has psychological prep time. An ambushed in-law gets defensive in any culture; the French specifically expect the scheduled, deliberate version. (2) Open with intent, not the grievance: 'je veux qu'on se comprenne mieux pour les prochains repas' (I want us to understand each other better for the future meals). (3) State fact + impact, not accusation: 'Quand vous avez dit X, j'ai ressenti Y' (when you said X, I felt Y) — never 'vous m'avez blessée' (you hurt me), which assigns blame and triggers defense. This is exactly the US 'I-statement' technique, just in French — lead with the effect on you, not the indictment of them. (4) Invite their side: 'De votre côté, qu'est-ce qui vous a paru déplacé?' (From your side, what struck you as inappropriate?) — an open question that lets the in-law be honest too, which is what actually resolves cultural friction (it's mutual, not one-sided).\n\nAvoid: spiraling apologies ('je suis vraiment désolée pour tout' — the Vietnamese over-apology reflex; the French read it as immature, not humble); cultural generalizations ('vous les Français…' — 'you French people…', the mirror of 'you Vietnamese always…'); and tears (they fluster a French interlocutor and stall the resolution rather than evoking sympathy). After the conversation: send a short thank-you message ('Merci d'avoir pris ce temps, ça compte pour moi'), then drop it in everyday interactions — resolved is resolved; relitigating it forces the in-law to keep reassuring you, which erodes the goodwill the conversation built. If your spouse asks, share the outcome briefly ('on s'est expliquées' — we talked it through) without the detail; keeping the spouse out of the content is precisely what prevents the triangulation that damages both relationships.",
       "vocabulary": [
         {
           "word": "les beaux-parents",
           "en": "in-laws",
           "vi": "bố mẹ chồng/vợ",
           "pos": "n.m. pl.",
-          "pronunciation_vi": "bo pa-rã"
+          "pronunciation_vi": "bo pa-rã",
+          "pronunciation_en": "boh-pah-RA(n) (the 'x' of 'beaux' is silent; final '-ents' nasal; covers both parents-in-law)"
         },
         {
           "word": "la belle-mère",
           "en": "mother-in-law",
           "vi": "mẹ chồng/vợ",
           "pos": "n.f.",
-          "pronunciation_vi": "bèl mèr"
+          "pronunciation_vi": "bèl mèr",
+          "pronunciation_en": "bel-MAIR (note: 'belle-mère' also means 'stepmother' — context disambiguates; here = mother-in-law)"
         },
         {
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
           "pos": "n.m.",
-          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl"
+          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl",
+          "pronunciation_en": "ma-lah(n)-tah(n)-DOO kuhl-too-REL (two nasals in 'malentendu'; the 'u's are rounded)"
         },
         {
           "word": "se sentir touché(e)",
           "en": "to feel hurt",
           "vi": "cảm thấy tổn thương",
           "pos": "v.",
-          "pronunciation_vi": "sơ sãn-tir tu-shé"
+          "pronunciation_vi": "sơ sãn-tir tu-shé",
+          "pronunciation_en": "suh sah(n)-TEER too-SHAY ('ça m'a touchée' = that affected/hurt me — softer and less accusatory than 'blessée')"
         },
         {
           "word": "trouver un équilibre",
           "en": "to find a balance",
           "vi": "tìm sự cân bằng",
           "pos": "expr.",
-          "pronunciation_vi": "tru-vé an é-ki-li-brơ"
+          "pronunciation_vi": "tru-vé an é-ki-li-brơ",
+          "pronunciation_en": "troo-VAY uh(n) ay-kee-LEE-bruh (the collaborative-framing phrase — a balance found together, not imposed)"
         },
         {
           "word": "poser un cadre",
           "en": "to set boundaries",
           "vi": "đặt khung / ranh giới",
           "pos": "v.",
-          "pronunciation_vi": "po-zé an ka-drơ"
+          "pronunciation_vi": "po-zé an ka-drơ",
+          "pronunciation_en": "poh-ZAY uh(n) KAH-druh (literally 'to lay a frame'; the French equivalent of US 'to set boundaries')"
         },
         {
           "word": "un repas de famille",
           "en": "a family meal",
           "vi": "bữa cơm gia đình",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pa dơ fa-miy"
+          "pronunciation_vi": "rơ-pa dơ fa-miy",
+          "pronunciation_en": "ruh-PAH duh fah-MEE-yuh ('famille' = 'fah-mee-yuh', the tricky '-mille' ending; the recurring Sunday-lunch institution in France)"
         },
         {
           "word": "se comprendre mieux",
           "en": "to understand each other better",
           "vi": "hiểu nhau hơn",
           "pos": "v.",
-          "pronunciation_vi": "sơ kõm-prãn-drơ miơ"
+          "pronunciation_vi": "sơ kõm-prãn-drơ miơ",
+          "pronunciation_en": "suh ko(n)-PRAH(n)-druh MYUH (reflexive 'se comprendre' = understand EACH OTHER — mutual, the key reframing)"
         },
         {
           "word": "un comportement déplacé",
           "en": "inappropriate behavior",
           "vi": "cách cư xử không phù hợp",
           "pos": "n.m.",
-          "pronunciation_vi": "kõm-por-tơ-mã dé-pla-sé"
+          "pronunciation_vi": "kõm-por-tơ-mã dé-pla-sé",
+          "pronunciation_en": "ko(n)-por-tuh-MAH(n) day-plah-SAY ('déplacé' = out of place/inappropriate — neutral, not as harsh as 'offensant')"
         },
         {
           "word": "crever l'abcès",
           "en": "to clear the air",
           "vi": "giải quyết bằng nói thẳng",
           "pos": "v.",
-          "pronunciation_vi": "krơ-vé lab-sè"
+          "pronunciation_vi": "krơ-vé lab-sè",
+          "pronunciation_en": "kruh-VAY lab-SEH (literally 'to lance the abscess' — address a festering problem directly; vivid French medical image)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Maman, j'aimerais qu'on prenne un café — juste vous et moi.",
+          "en": "Maman, I'd like us to get a coffee — just you and me. [note: still vouvoiement ('vous'), even with 'Maman']",
           "vi": "Mẹ ơi, em muốn mình uống cà phê — chỉ mẹ và em."
         },
         {
           "speaker": "Belle-mère",
           "text": "Bien sûr. Quelque chose te préoccupe ?",
+          "en": "Of course. Is something on your mind? [the mother-in-law uses 'tu' downward; the daughter-in-law still uses 'vous' upward — asymmetric is normal early on]",
           "vi": "Tất nhiên. Có điều gì làm em băn khoăn không?"
         },
         {
           "speaker": "Linh",
           "text": "Oui — je voudrais qu'on parle de dimanche, calmement.",
+          "en": "Yes — I'd like us to talk about Sunday, calmly.",
           "vi": "Vâng — em muốn mình nói về chủ nhật, bình tĩnh."
         },
         {
           "speaker": "Belle-mère",
           "text": "D'accord, je t'écoute. C'est mieux qu'on en parle.",
+          "en": "All right, I'm listening. It's better that we talk about it.",
           "vi": "Vâng, em nói đi. Tốt hơn mình nói ra."
         }
       ],
@@ -13289,81 +13334,97 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au café neutre)",
           "text": "Maman, merci d'être venue. Je voulais qu'on parle de dimanche dernier — pas pour me plaindre, juste pour qu'on se comprenne mieux.",
+          "en": "Maman, thank you for coming. I wanted us to talk about last Sunday — not to complain, just so we understand each other better. [opens with intent, not grievance — and on neutral ground]",
           "vi": "Mẹ ơi, cảm ơn mẹ đã đến. Em muốn mình nói về chủ nhật vừa rồi — không phải để than phiền, chỉ để mình hiểu nhau hơn."
         },
         {
           "speaker": "Belle-mère",
           "text": "Je m'en doutais un peu. Vas-y, je t'écoute.",
+          "en": "I rather suspected as much. Go ahead, I'm listening.",
           "vi": "Mẹ cũng đoán. Em nói đi, mẹ nghe."
         },
         {
           "speaker": "Linh",
           "text": "Quand vous avez fait une remarque sur ma façon de saluer — en disant que je « me courbais comme une employée » — j'ai été très touchée.",
+          "en": "When you made a comment about the way I greet people — saying I 'bowed like an employee' — it affected me a lot. [fact + impact, not 'you hurt me']",
           "vi": "Khi mẹ nhận xét về cách em chào — nói rằng em « cúi như nhân viên » — em rất tổn thương."
         },
         {
           "speaker": "Belle-mère",
           "text": "Ah. Je n'avais pas pensé que ça te toucherait à ce point.",
+          "en": "Ah. I hadn't thought it would affect you that much.",
           "vi": "À. Mẹ không nghĩ điều đó làm em tổn thương đến vậy."
         },
         {
           "speaker": "Linh",
           "text": "Au Vietnam, incliner légèrement la tête en saluant ses aînés est un geste de respect, pas de soumission. C'est ce qu'on m'a appris depuis l'enfance pour exprimer l'affection à un beau-parent.",
+          "en": "In Vietnam, slightly inclining the head when greeting elders is a gesture of respect, not submission. It's what I was taught from childhood to show affection to a parent-in-law. [explains the code, as an equal — not apologizing for it]",
           "vi": "Ở Việt Nam, cúi nhẹ đầu khi chào người lớn là cử chỉ tôn trọng, không phải phục tùng. Đó là điều em được dạy từ nhỏ để bày tỏ tình cảm với bố mẹ chồng."
         },
         {
           "speaker": "Belle-mère",
           "text": "Je ne savais pas. Pour moi, c'était presque gênant — comme si tu te plaçais en-dessous, alors que tu fais partie de la famille.",
+          "en": "I didn't know that. To me it was almost uncomfortable — as if you were putting yourself below us, when you're part of the family.",
           "vi": "Mẹ không biết. Với mẹ, gần như gượng — như em đặt mình thấp hơn, dù em là một phần gia đình."
         },
         {
           "speaker": "Linh",
           "text": "Maintenant je comprends pourquoi ça vous mettait mal à l'aise. Je peux apprendre la bise — je l'ai pas faite jusqu'ici parce que j'avais peur de mal la faire.",
+          "en": "Now I understand why it made you uncomfortable. I can learn la bise — I haven't done it so far because I was afraid of doing it wrong.",
           "vi": "Giờ em hiểu vì sao mẹ thấy không thoải mái. Em có thể học hôn má — em chưa làm vì sợ làm sai."
         },
         {
           "speaker": "Belle-mère",
           "text": "La bise n'est pas obligatoire. Une poignée de main chaleureuse + un sourire suffit largement. C'est plus la posture qui me touchait, pas le geste précis.",
+          "en": "La bise isn't mandatory. A warm handshake + a smile is plenty. It was more the posture that struck me, not the specific gesture.",
           "vi": "Hôn má không bắt buộc. Bắt tay ấm áp + nụ cười là đủ. Là dáng người nhiều hơn cử chỉ cụ thể."
         },
         {
           "speaker": "Linh",
           "text": "Compris. De votre côté, est-ce qu'il y a d'autres choses dans mon comportement qui vous ont paru déplacées et dont vous ne m'avez pas parlé ?",
+          "en": "Understood. From your side, are there other things in my behavior that struck you as inappropriate that you haven't mentioned to me? [invites her honesty in return — makes it mutual]",
           "vi": "Hiểu rồi. Về phía mẹ, có điều gì khác trong cách em cư xử mẹ thấy không phù hợp mà mẹ chưa nói với em không?"
         },
         {
           "speaker": "Belle-mère",
           "text": "Une chose, oui — mais petite. Quand tu apportes des plats à chaque repas, je sais que c'est généreux, mais ça empêche aussi que je cuisine pour toi. Et moi, ça me ferait plaisir de te recevoir comme ma fille, pas comme une invitée qui doit toujours apporter quelque chose.",
+          "en": "One thing, yes — but a small one. When you bring dishes to every meal, I know it's generous, but it also stops me from cooking for you. And it would make me happy to host you as my daughter, not as a guest who always has to bring something.",
           "vi": "Một điều, có — nhưng nhỏ. Khi em mang món đến mỗi bữa, mẹ biết em hào phóng, nhưng cũng làm mẹ không nấu cho em được. Mẹ sẽ vui hơn nếu được tiếp em như con gái, không phải khách phải mang gì đó."
         },
         {
           "speaker": "Linh",
           "text": "Oh — je ne savais pas. Au Vietnam, arriver les mains vides chez quelqu'un est très impoli. C'est aussi un automatisme.",
+          "en": "Oh — I didn't realize. In Vietnam, arriving empty-handed at someone's home is very impolite. It's an automatic reflex too.",
           "vi": "Ồ — em không biết. Ở Việt Nam, đến tay không là rất bất lịch sự. Cũng là thói quen."
         },
         {
           "speaker": "Belle-mère",
           "text": "Voilà — exactement le genre de différence qu'on n'aurait jamais résolu sans en parler. On peut convenir : tu apportes une bouteille de vin pour les grandes occasions — Noël, anniversaires — et le reste du temps, tu viens les mains libres et je cuisine pour toi.",
+          "en": "Exactly — precisely the kind of difference we'd never have resolved without talking about it. We can agree: you bring a bottle of wine for big occasions — Christmas, birthdays — and the rest of the time, you come empty-handed and I cook for you. [the negotiated middle ground]",
           "vi": "Đó — đúng loại khác biệt mà mình sẽ không bao giờ giải quyết nếu không nói. Mình có thể thỏa thuận: em mang chai vang cho dịp lớn — Giáng sinh, sinh nhật — còn lại em đến tay không và mẹ nấu cho em."
         },
         {
           "speaker": "Linh",
           "text": "Ça me convient parfaitement. Et la prochaine fois que quelque chose vous gêne — même petit — vous pouvez me le dire. Je préfère savoir que deviner.",
+          "en": "That suits me perfectly. And next time something bothers you — even something small — you can tell me. I'd rather know than guess.",
           "vi": "Em hoàn toàn đồng ý. Và lần sau có điều gì làm mẹ không thoải mái — kể cả nhỏ — mẹ cứ nói với em. Em thích biết hơn đoán."
         },
         {
           "speaker": "Belle-mère",
           "text": "Pareil pour toi. On apprend toutes les deux. Tu es jeune dans la famille — il y a forcément des choses qu'on doit caler ensemble.",
+          "en": "Same for you. We're both learning. You're young in the family — there are bound to be things we have to sort out together.",
           "vi": "Mẹ cũng vậy. Mình cùng học. Em mới trong gia đình — chắc chắn có những điều mình phải sắp xếp cùng nhau."
         },
         {
           "speaker": "Linh",
           "text": "Merci d'avoir pris ce moment, Maman. Ça compte beaucoup pour moi.",
+          "en": "Thank you for taking this time, Maman. It means a lot to me. [short, sincere close — not over-thanked]",
           "vi": "Cảm ơn mẹ đã dành thời gian này. Điều đó rất ý nghĩa với em."
         },
         {
           "speaker": "Belle-mère",
           "text": "Merci à toi d'être venue m'en parler. Beaucoup de jeunes filles auraient gardé ça pour elles. À dimanche prochain — chez nous, sans plat à apporter.",
+          "en": "Thank you for coming to talk to me about it. A lot of young women would have kept it to themselves. See you next Sunday — at ours, no dish to bring.",
           "vi": "Cảm ơn em đã đến nói với mẹ. Nhiều cô gái trẻ sẽ giữ trong lòng. Hẹn chủ nhật tới — ở nhà mẹ, không phải mang món."
         }
       ],
@@ -13372,30 +13433,44 @@ export const lessons: FrenchLesson[] =           [
         "Bố chồng Pháp đưa ra ý kiến trực tiếp về cách bạn nuôi cháu (« tu devrais le laisser pleurer la nuit, ça lui apprend »). Phản hồi vừa giữ tự lập của vợ chồng bạn, vừa không đẩy bố chồng ra khỏi vai trò ông bà.",
         "Sau hai năm cưới, bạn vẫn dùng « vous » với bố mẹ chồng. Một bữa tối, mẹ chồng đề nghị chuyển sang « tu ». Đáp lại — chấp nhận với câu chuyển có chuẩn bị, hoặc xin thêm thời gian nếu chưa sẵn sàng."
       ],
+      "roleplay_prompts_en": [
+        "Your French mother-in-law signals she's unhappy that you don't phone her regularly the way another (French) daughter-in-law does. Explain the Vietnamese norm (a parent doesn't expect a call unless there's a reason — frequent calling can even read as 'something's wrong') AND propose a concrete arrangement (a 15-minute call every Sunday afternoon). The fix is a specific agreed cadence, not an apology. Anglophone calibration: this maps onto the US 'why don't you ever call your mother' tension — same resolution: name the cultural default, then negotiate a concrete rhythm.",
+        "Your French father-in-law gives a direct opinion on how you raise your child ('tu devrais le laisser pleurer la nuit, ça lui apprend' — you should let him cry at night, it teaches him). Respond in a way that protects you and your spouse's autonomy as parents WITHOUT pushing the grandfather out of the grandparent role. Useful frame: 'Je comprends votre point de vue, et sur ce choix précis, on a décidé autrement — mais votre présence compte beaucoup pour lui.' (Acknowledge, hold the boundary, keep him close.)",
+        "After two years of marriage you still use 'vous' with your in-laws. At a dinner, your mother-in-law proposes switching to 'tu'. Respond — either accept with a prepared transition phrase ('Avec plaisir, ça me touche que vous me le proposiez'), or ask for a little more time if you're not ready ('Ça me touche — laissez-moi m'y habituer, j'y arriverai vite'). Note: she proposes, you follow — the senior person initiates the tu switch, never the junior."
+      ],
       "register_notes": "Trò chuyện khó với in-laws Pháp dùng vouvoiement bắt buộc trong giai đoạn đầu (1-2 năm), chuyển sang tutoiement chỉ khi họ chủ động đề nghị (« On peut se tutoyer maintenant ? »). Tránh: gọi mẹ chồng « Maman » nếu chưa được mời (Pháp coi gượng — đợi đề xuất); over-apologize kiểu Việt (« je suis vraiment désolée pour tout, c'est ma faute ») — Pháp đọc là không trưởng thành; kéo chồng/vợ vào làm trung gian (« mon mari pourrait peut-être vous expliquer ») — phá vỡ relationship trực tiếp. Cụm hữu ích: « j'aimerais qu'on se comprenne mieux » (mở cuộc), « ça m'a touchée » (nêu cảm xúc fact, không kết tội), « de votre côté, qu'est-ce qui… » (mời phản hồi). Tránh từ tăng nhiệt: « inacceptable », « blessée profondément », « toujours/jamais » — escalate. Khi nhận phản hồi từ in-law: nghe trọn vẹn, không cắt lời; sau khi họ nói xong, hỏi câu thấu hiểu trước khi đáp (« Si je comprends bien, ce qui vous a touchée, c'est… ? »).",
+      "register_notes_en": "Difficult conversations with French in-laws use mandatory vouvoiement in the early phase (1–2 years), switching to tutoiement ONLY when they propose it ('On peut se tutoyer maintenant?'). The asymmetry is normal and not rude: the in-law may 'tu' you downward while you still 'vous' them upward — don't try to level it yourself; wait for the explicit invitation. Note also that 'Maman' + 'vous' coexist (you can call her 'Maman' affectionately while still grammatically using vous) — that combination is normal, not contradictory. Avoid: calling the mother-in-law 'Maman' before you've been invited to (it reads as presumptuous — wait for the cue); the Vietnamese-style over-apology ('je suis vraiment désolée pour tout, c'est ma faute' — I'm so sorry for everything, it's all my fault), which the French read as immature rather than humble and which actually weakens your standing as an adult family member; and pulling your spouse in as a go-between ('mon mari pourrait peut-être vous expliquer' — maybe my husband could explain to you), which breaks the direct relationship and is read as conflict-avoidance.\n\nUseful phrases: 'j'aimerais qu'on se comprenne mieux' (opens the conversation collaboratively), 'ça m'a touchée' (states the emotional fact without accusing — the French equivalent of an I-statement), 'de votre côté, qu'est-ce qui…' (invites their side). Avoid escalator words: 'inacceptable' (unacceptable), 'blessée profondément' (deeply wounded — too intense for a family negotiation), 'toujours/jamais' (always/never — the universal generalization trap, same as in English). When receiving feedback from the in-law: listen fully, do not interrupt; after they finish, ask a comprehension-check question BEFORE responding ('Si je comprends bien, ce qui vous a touchée, c'est…?' — If I understand correctly, what affected you is…?). This active-listening loop is the same skill as US 'reflective listening', and in a French family context it's what converts a tense exchange into a lasting reconciliation.",
       "idiom_glosses": [
         {
           "idiom": "Crever l'abcès",
           "literal": "Châm vỡ ổ áp xe",
+          "literal_en": "To lance the abscess",
           "meaning": "Giải quyết vấn đề khó bằng cuộc nói chuyện thẳng.",
+          "meaning_en": "To address a festering problem head-on with a frank conversation, before it gets worse. Vivid French medical image; anglophone equivalent: 'to clear the air' or 'to get it out in the open'.",
           "example": "Il fallait crever l'abcès avant le mariage — pas après."
         },
         {
           "idiom": "Mettre les choses au clair",
           "literal": "Đặt mọi việc cho rõ",
+          "literal_en": "To put things in the clear",
           "meaning": "Làm rõ ranh giới và kỳ vọng.",
+          "meaning_en": "To clarify expectations and boundaries between people in one direct conversation. Anglophone equivalent: 'to set the record straight' / 'to get on the same page'.",
           "example": "Cette conversation a mis les choses au clair entre ma belle-mère et moi."
         },
         {
           "idiom": "Faire partie de la famille",
           "literal": "Là một phần của gia đình",
+          "literal_en": "To be part of the family",
           "meaning": "Được chấp nhận như người thân thuộc.",
+          "meaning_en": "To be accepted as genuine family, not a guest. Identical image to English 'to be part of the family' — here it's the warm signal that the daughter-in-law need not act like a visitor.",
           "example": "Tu fais partie de la famille — pas besoin d'apporter quelque chose chaque fois."
         },
         {
           "idiom": "Tisser des liens",
           "literal": "Dệt các liên kết",
+          "literal_en": "To weave bonds / ties",
           "meaning": "Xây dựng quan hệ chậm rãi và sâu.",
+          "meaning_en": "To build deep bonds slowly and deliberately — the weaving image evokes patience over years, exactly how French in-law relationships are expected to form.",
           "example": "Avec mes beaux-parents, on a tissé des liens lentement, sur plusieurs années."
         }
       ],
@@ -13403,7 +13478,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Mon objectif n'est pas que vous ___, c'est qu'on se comprenne mieux.",
-          "answer": "changiez"
+          "question_en": "My goal is not for you to ___, it's for us to understand each other better.",
+          "answer": "changiez",
+          "hint_vi": "subjunctive của « changer » (vous-form) — sau « n'est pas que »",
+          "hint_en": "subjunctive of 'changer' in vous-form — triggered by 'n'est pas que'; the key de-escalating reframe"
         },
         {
           "type": "matching",
@@ -13421,12 +13499,30 @@ export const lessons: FrenchLesson[] =           [
               "giải quyết bằng nói thẳng"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "la belle-mère",
+              "mother-in-law (also means 'stepmother' — context decides)"
+            ],
+            [
+              "se sentir touché",
+              "to feel affected/hurt — softer and less accusatory than 'blessé' (wounded)"
+            ],
+            [
+              "crever l'abcès",
+              "to lance the abscess — address a festering issue with a frank talk before it worsens"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French in-law-conversation term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em hiểu thói quen Việt Nam của em có thể bất ngờ, và em muốn mình tìm sự cân bằng.",
-          "french": "Je comprends que mes habitudes vietnamiennes peuvent surprendre, et je veux qu'on trouve un équilibre."
+          "french": "Je comprends que mes habitudes vietnamiennes peuvent surprendre, et je veux qu'on trouve un équilibre.",
+          "english": "I understand that my Vietnamese habits can be surprising, and I want us to find a balance.",
+          "hint_vi": "« mes habitudes peuvent surprendre » + « qu'on trouve un équilibre »",
+          "hint_en": "'mes habitudes peuvent surprendre' = my habits can be surprising (owning the difference without apologizing); 'qu'on trouve un équilibre' = for us to find a balance (collaborative subjunctive)"
         }
       ]
     },
@@ -13444,6 +13540,11 @@ export const lessons: FrenchLesson[] =           [
             "d'accord → da-kor",
             "sujet → su-jè",
             "ok → o-kè"
+          ],
+          "pronunciation_focus_en": [
+            "d'accord → dah-KOR (final 'd' silent; 'on n'est pas d'accord' = we don't agree — the calm framing)",
+            "sujet → soo-ZHEH ('j' = 'zh'; final 't' silent; means 'topic/subject')",
+            "ok → oh-KAY (the English borrowing, used freely in casual French; 'c'est ok' = it's fine)"
           ]
         },
         {
@@ -13453,6 +13554,11 @@ export const lessons: FrenchLesson[] =           [
             "voudrais → vu-drè",
             "autrement → ô-trơ-mã",
             "convaincre → kõn-van-krơ"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → voo-DREH (conditional 'I would like'; 'te dire' = tell you — note tutoiement, this is a friend)",
+            "autrement → oh-truh-MAH(n) ('-ment' nasal; 'voir les choses autrement' = to see things differently)",
+            "convaincre → ko(n)-VA(n)-kruh (two nasals; final 'cre' soft; 'sans essayer de te convaincre' = the key disarming move — without trying to convince you)"
           ]
         },
         {
@@ -13463,6 +13569,12 @@ export const lessons: FrenchLesson[] =           [
             "angle → ãgl",
             "vécu → vé-ku",
             "lecture → lèk-tur"
+          ],
+          "pronunciation_focus_en": [
+            "expérience → ek-spay-RYAH(n)SS (nasal near the end + hissed 's'; lived experience as evidence)",
+            "angle → AH(n)-gluh (nasal first; final 'gle' soft; here 'a perspective/angle', not a math angle)",
+            "vécu → vay-KOO (the 'u' is rounded; past participle of 'vivre' — 'que tu n'as pas vécu' = that you haven't lived)",
+            "lecture → lek-TOOR (false friend! here means 'reading/interpretation (of events)', NOT a lecture/talk)"
           ]
         },
         {
@@ -13472,6 +13584,11 @@ export const lessons: FrenchLesson[] =           [
             "entendre → ãn-tãn-drơ",
             "position → po-zi-sion",
             "inversement → an-ver-sơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "entendre → ah(n)-TAH(n)-druh (two nasals; here 'entendre' = to hear/take in — accepting, not necessarily agreeing)",
+            "position → poh-zee-SYO(n) (nasal final; 'ta position' = your stance/position)",
+            "inversement → a(n)-vair-suh-MAH(n) ('-ment' nasal; means 'and vice versa' — the reciprocity that keeps it fair)"
           ]
         },
         {
@@ -13482,102 +13599,124 @@ export const lessons: FrenchLesson[] =           [
             "vaut → vô",
             "accord → a-kor",
             "parfait → par-fè"
+          ],
+          "pronunciation_focus_en": [
+            "amitié → ah-mee-TYAY (final 'tié' = 'TYAY'; means 'friendship')",
+            "vaut → VOH (one syllable; from 'valoir' = to be worth; 'vaut plus que' = is worth more than)",
+            "accord → ah-KOR (final 'd' silent; 'un accord parfait' = perfect agreement)",
+            "parfait → par-FEH (final 't' silent; means 'perfect' — the point: friendship outweighs perfect agreement)"
           ]
         }
       ],
       "cultural_notes_vi": "Tranh luận chính trị ở Pháp là « môn thể thao quốc dân » — người Pháp thoải mái với bất đồng và xem việc « débattre » là dấu hiệu của tôn trọng trí tuệ. Khác Việt Nam, nơi tranh luận chính trị thường được né tránh để giữ « hoà khí », Pháp đặt giá trị vào việc nói thẳng. Tuy nhiên, có hai cấp độ:\n\n(1) « Discussion » — trao đổi giữa người trưởng thành, mỗi bên trình bày luận điểm, có thể bất đồng cuối cùng nhưng vẫn quý nhau. (2) « Engueulade » — cãi vã, đẩy lên cảm xúc, làm hỏng quan hệ. Quy tắc cốt lõi để ở mức (1) chứ không trượt sang (2): tách « ý kiến » khỏi « con người ». Bạn không đồng ý với QUAN ĐIỂM, không phải tấn công NGƯỜI.\n\nVới chủ đề nóng cụ thể: chiến tranh Việt Nam, di cư, Trung Quốc, chế độ chính trị Việt Nam — người Pháp có thể có quan điểm dựa trên truyền thông Pháp mà không thực tế ở Việt Nam. Sai lầm phổ biến của người Việt: (1) im lặng để giữ hoà khí — bạn Pháp đọc là « bạn đồng ý nhưng giấu » và mất tin cậy; (2) ngược lại, bùng nổ defensive (« vous ne comprenez rien à mon pays! ») — đẩy lên cấp độ (2). Cách hiệu quả: nói thẳng quan điểm khác, dùng « expérience vécue » làm cơ sở (« moi qui ai vécu là-bas… »), và chấp nhận bất đồng cuối cùng. Người Pháp tôn trọng người « tient sa position » — giữ vững quan điểm — hơn người gật đầu rồi sau ngấm ngầm bực.",
+      "cultural_notes_en": "Political debate in France is close to a national sport — the French are comfortable with disagreement and treat 'débattre' as a sign of intellectual respect, even between friends at dinner. This is a sharp contrast to Vietnam, where political debate is usually avoided to preserve harmony ('hoà khí'), and also a notable contrast to the US/UK, where political disagreement among friends is increasingly treated as relationship-ending. The French model assumes the opposite: that two adults can disagree hard and still respect each other MORE for it. But there are two distinct levels: (1) 'discussion' — an exchange between adults, each laying out their reasoning, possibly disagreeing at the end but still warm; (2) 'engueulade' — a shouting match, emotion-driven, relationship-damaging. The cardinal rule for staying at level (1) and not sliding to (2): separate the OPINION from the PERSON. You disagree with the POSITION; you do not attack the PERSON. (This is also the antidote to the US 'you can't be my friend if you believe X' dynamic — the French frame deliberately keeps the person intact.)\n\nOn specific hot topics — the Vietnam War, immigration, China, Vietnam's political system — a French friend may hold a view shaped by French media without having lived in Vietnam. Two opposite errors are common for Vietnamese speakers: (1) staying silent to keep the peace — the French friend reads this as 'you secretly disagree but won't say it', which erodes trust and is the opposite of what silence achieves in Vietnamese culture; (2) defensive explosion ('vous ne comprenez rien à mon pays!' — you understand nothing about my country!), which escalates to level (2). The effective move is to state the differing view plainly, ground it in 'expérience vécue' ('moi qui ai vécu là-bas…' — speaking as someone who lived there…), and accept lasting disagreement. The French genuinely respect someone who 'tient sa position' (holds their ground) far more than someone who nods along and quietly resents it later. For anglophones: this means the polite-deflection instinct ('let's not talk politics') reads in France as either evasive or as conceding the point — engaging respectfully is the higher-status, more-trusted move.",
       "tip_advice_vi": "Năm nguyên tắc cho bất đồng chính trị giữ tình bạn: (1) Nghe trước, không cắt — kể cả khi không đồng ý sâu sắc. Để bạn Pháp nói hết câu của họ. (2) Phản hồi bằng nội dung không bằng cảm xúc: « Je vois ta logique, mais voici ce qu'elle ne prend pas en compte… » thay vì « Tu ne comprends rien! ». (3) Dùng « je » không « tu »: « je vois autrement » thay vì « tu te trompes ». (4) Dùng « expérience vécue » làm chứng cứ — chuyện cụ thể của gia đình bạn ở Việt Nam mạnh hơn dẫn nguồn báo. (5) Biết khi nào dừng: « On va pas se mettre d'accord ce soir, et c'est ok » — câu này close cuộc tranh luận với danh dự cả hai bên. Tránh: theo sự mệt mỏi mà nhân nhượng cuối cuộc (« en fait, tu as peut-être raison ») — bạn Pháp nhớ và coi bạn ngược nhược; tham gia tranh luận khi đã có rượu (làm leo thang); đem chuyện politique vào group chat WhatsApp gia đình.",
+      "tip_advice_en": "Five principles for political disagreement that preserves the friendship: (1) Listen first, don't interrupt — even when you deeply disagree. Let the French friend finish their sentence; cutting in is read as 'I'm not actually listening, I'm waiting to attack'. (2) Respond with substance, not emotion: 'Je vois ta logique, mais voici ce qu'elle ne prend pas en compte…' (I see your logic, but here's what it doesn't account for…) rather than 'Tu ne comprends rien!' (You understand nothing!). (3) Use 'je', not 'tu': 'je vois autrement' (I see it differently) rather than 'tu te trompes' (you're wrong) — the same I-statement discipline as in English, and just as load-bearing here. (4) Use 'expérience vécue' as evidence — a concrete story about your own family in Vietnam outweighs citing a news source, because it's the one thing your French friend cannot counter with their own reading. (5) Know when to stop: 'On va pas se mettre d'accord ce soir, et c'est ok' (We're not going to agree tonight, and that's fine) — this closes the debate with both sides' dignity intact, and is itself a respected move, not a retreat.\n\nAvoid: caving at the end out of fatigue ('en fait, tu as peut-être raison' — actually, maybe you're right) — the French friend remembers it and reads you as someone who doesn't really hold positions, which lowers their respect for you (this is the single most common Vietnamese error here, driven by the harmony instinct, and it backfires in France); debating once alcohol is involved (it escalates level-1 to level-2 fast); and bringing politics into a family WhatsApp group chat (text strips tone, so a level-1 discussion reads as a level-2 attack — keep political disagreement face-to-face). Anglophone calibration: if you're American and used to either avoiding politics entirely or going scorched-earth, the French middle path — engage hard, stay warm, hold your ground, close cleanly — is the skill to build here.",
       "vocabulary": [
         {
           "word": "un débat",
           "en": "a debate",
           "vi": "cuộc tranh luận",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-ba"
+          "pronunciation_vi": "dé-ba",
+          "pronunciation_en": "day-BAH (final 't' silent; in France a positive word — debate is respected, not avoided)"
         },
         {
           "word": "un désaccord",
           "en": "a disagreement",
           "vi": "sự bất đồng",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-za-kor"
+          "pronunciation_vi": "dé-za-kor",
+          "pronunciation_en": "day-zah-KOR (final 'd' silent; a disagreement — in French, not inherently relationship-threatening)"
         },
         {
           "word": "tenir sa position",
           "en": "to hold one's ground",
           "vi": "giữ vững quan điểm",
           "pos": "v.",
-          "pronunciation_vi": "tơ-nir sa po-zi-sion"
+          "pronunciation_vi": "tơ-nir sa po-zi-sion",
+          "pronunciation_en": "tuh-NEER sah poh-zee-SYO(n) (to hold your stance under pressure — the French RESPECT this, unlike caving)"
         },
         {
           "word": "l'expérience vécue",
           "en": "lived experience",
           "vi": "trải nghiệm thực",
           "pos": "n.f.",
-          "pronunciation_vi": "èk-spé-riãns vé-ku"
+          "pronunciation_vi": "èk-spé-riãns vé-ku",
+          "pronunciation_en": "leks-pay-RYAH(n)SS vay-KOO (your strongest evidence — a personal account the other side cannot counter with theirs)"
         },
         {
           "word": "un point de vue",
           "en": "a point of view",
           "vi": "góc nhìn",
           "pos": "n.m.",
-          "pronunciation_vi": "pwã dơ vu"
+          "pronunciation_vi": "pwã dơ vu",
+          "pronunciation_en": "PWA(n) duh VOO (nasal first; 'point' = nasal 'pwa(n)'; same concept as English 'point of view')"
         },
         {
           "word": "nuancer",
           "en": "to qualify / add nuance",
           "vi": "thêm sắc thái / không đen-trắng",
           "pos": "v.",
-          "pronunciation_vi": "nu-ãn-sé"
+          "pronunciation_vi": "nu-ãn-sé",
+          "pronunciation_en": "noo-ah(n)-SAY (the 'u' rounded; nasal middle; a prized French intellectual move — to complicate a black-and-white claim)"
         },
         {
           "word": "un parti pris",
           "en": "a prejudgment / bias",
           "vi": "thiên kiến",
           "pos": "n.m.",
-          "pronunciation_vi": "par-ti pri"
+          "pronunciation_vi": "par-ti pri",
+          "pronunciation_en": "par-TEE PREE (a preconceived bias; 'sans parti pris' = without bias — a useful claim to make about your own view)"
         },
         {
           "word": "prendre du recul",
           "en": "to step back",
           "vi": "lùi lại nhìn",
           "pos": "v.",
-          "pronunciation_vi": "prãn-drơ du rơ-kül"
+          "pronunciation_vi": "prãn-drơ du rơ-kül",
+          "pronunciation_en": "PRAH(n)-druh doo ruh-KOOL (the 'u' rounded; to gain perspective / take a step back from the heat of it)"
         },
         {
           "word": "convaincre",
           "en": "to convince",
           "vi": "thuyết phục",
           "pos": "v.",
-          "pronunciation_vi": "kõn-van-krơ"
+          "pronunciation_vi": "kõn-van-krơ",
+          "pronunciation_en": "ko(n)-VA(n)-kruh (two nasals; 'sans chercher à te convaincre' = without trying to convince you — the disarming opener)"
         },
         {
           "word": "agree to disagree (« être en désaccord et l'accepter »)",
           "en": "agree to disagree",
           "vi": "chấp nhận khác biệt",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ ãn dé-za-kor é lak-sèp-té"
+          "pronunciation_vi": "é-trơ ãn dé-za-kor é lak-sèp-té",
+          "pronunciation_en": "ETR ah(n) day-zah-KOR ay lak-sep-TAY (the English phrase 'agree to disagree' is sometimes used as-is in French too; the French gloss = 'to be in disagreement and accept it')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pierre",
           "text": "Franchement, le régime au Vietnam — c'est un problème.",
+          "en": "Honestly, the regime in Vietnam — it's a problem.",
           "vi": "Thật lòng, chế độ ở Việt Nam — là vấn đề."
         },
         {
           "speaker": "Linh",
           "text": "Je vois ce que tu lis dans la presse française. Ma vie là-bas est plus nuancée.",
+          "en": "I see what you read in the French press. My life there is more nuanced. [acknowledges his source before differing — doesn't dismiss it]",
           "vi": "Em thấy điều bạn đọc trong báo Pháp. Cuộc sống của em ở đó có nhiều sắc thái hơn."
         },
         {
           "speaker": "Pierre",
           "text": "Tu peux m'expliquer ?",
+          "en": "Can you explain?",
           "vi": "Bạn giải thích được không?"
         },
         {
           "speaker": "Linh",
           "text": "Volontiers — mais juste mon angle, sans essayer de te convaincre.",
+          "en": "Gladly — but just my angle, without trying to convince you. [the disarming frame: I'm sharing, not winning]",
           "vi": "Sẵn lòng — nhưng chỉ là góc của em, không cố thuyết phục bạn."
         }
       ],
@@ -13585,86 +13724,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Pierre (chez lui, après dîner)",
           "text": "Franchement, je trouve que le régime au Vietnam est un vrai problème — manque de liberté de la presse, parti unique, tout ça.",
+          "en": "Honestly, I think the regime in Vietnam is a real problem — lack of press freedom, single party, all that.",
           "vi": "Thật lòng, anh thấy chế độ ở Việt Nam là vấn đề thật — thiếu tự do báo chí, một đảng, cả gói."
         },
         {
           "speaker": "Linh",
           "text": "Je t'entends. Et je vois exactement les sources sur lesquelles tu te bases — Reporters Sans Frontières, Le Monde, etc. C'est une grille d'analyse française qui a sa cohérence.",
+          "en": "I hear you. And I see exactly the sources you're basing this on — Reporters Without Borders, Le Monde, etc. It's a French analytical framework, and it's internally coherent. [validates before differing — no dismissal]",
           "vi": "Em nghe. Và em thấy chính xác các nguồn anh dựa vào — Reporters Sans Frontières, Le Monde, v.v. Là khung phân tích Pháp có logic riêng."
         },
         {
           "speaker": "Pierre",
           "text": "Tu vas me dire que ces sources se trompent ?",
+          "en": "Are you going to tell me those sources are wrong?",
           "vi": "Em định nói các nguồn đó sai à?"
         },
         {
           "speaker": "Linh",
           "text": "Non — je dis qu'elles donnent une partie de l'image. Moi qui ai vécu là-bas trente ans, ma lecture est plus complexe. Pas plus juste — différente.",
+          "en": "No — I'm saying they give part of the picture. Speaking as someone who lived there thirty years, my reading is more complex. Not more correct — different. ['expérience vécue' as evidence; 'pas plus juste, différente' avoids a hierarchy of truth]",
           "vi": "Không — em nói chúng cho một phần bức tranh. Em sống ở đó 30 năm, cách em đọc phức tạp hơn. Không phải đúng hơn — khác."
         },
         {
           "speaker": "Pierre",
           "text": "Vas-y, j'écoute.",
+          "en": "Go on, I'm listening.",
           "vi": "Em nói đi, anh nghe."
         },
         {
           "speaker": "Linh",
           "text": "Premier point : la liberté de la presse au sens où tu l'entends en France n'existe pas — c'est vrai. Mais ce que tu peux dire dans la rue, à un café, sur les réseaux à condition de ne pas viser un membre du parti — c'est plus libre que ne le suggère l'image extérieure.",
+          "en": "First point: press freedom in the sense you mean it in France doesn't exist — that's true. But what you can say in the street, at a café, on social media as long as you don't target a party member — it's freer than the outside image suggests. [concedes the true part first, then complicates]",
           "vi": "Điểm một: tự do báo chí theo nghĩa anh hiểu ở Pháp không tồn tại — đúng. Nhưng điều có thể nói ngoài đường, ở quán cà phê, trên mạng xã hội nếu không nhắm thẳng một quan chức đảng — tự do hơn hình ảnh bên ngoài gợi ý."
         },
         {
           "speaker": "Pierre",
           "text": "Ça me surprend. La presse française dit l'inverse.",
+          "en": "That surprises me. The French press says the opposite.",
           "vi": "Anh ngạc nhiên. Báo Pháp nói ngược lại."
         },
         {
           "speaker": "Linh",
           "text": "Et la presse française n'a pas tort — elle mesure la liberté formelle. Moi je te parle de la liberté du quotidien. Les deux sont vraies en même temps. C'est ce que la presse simplifie.",
+          "en": "And the French press isn't wrong — it measures formal freedom. I'm talking about everyday freedom. Both are true at the same time. That's what the press simplifies. ['both can be true at once' — the nuance move that defuses the win/lose frame]",
           "vi": "Và báo Pháp không sai — họ đo tự do hình thức. Em nói tự do hàng ngày. Cả hai đúng cùng lúc. Là điều báo chí đơn giản hóa."
         },
         {
           "speaker": "Pierre",
           "text": "Et le parti unique, alors ? Ça, c'est objectif.",
+          "en": "And the single party, then? That's objective.",
           "vi": "Còn một đảng? Cái đó khách quan."
         },
         {
           "speaker": "Linh",
           "text": "Le parti unique, oui — c'est un fait. Et je n'aime pas certaines de ses décisions, je suis claire là-dessus. Mais le passer comme « le seul critère » d'une société, c'est aussi une simplification française qui ignore qu'au quotidien, ce qui structure la vie d'un Vietnamien c'est sa famille, son village, ses voisins — beaucoup plus que le parti.",
+          "en": "The single party, yes — that's a fact. And I don't like some of its decisions, I'm clear on that. But treating it as 'the only criterion' for a society is also a French oversimplification that ignores that, day to day, what structures a Vietnamese person's life is their family, their village, their neighbors — far more than the party. [holds ground AND concedes — not defensive, but not yielding the substance]",
           "vi": "Một đảng, vâng — là sự thật. Và em không thích một số quyết định của nó, em rõ ràng. Nhưng coi đó là « tiêu chí duy nhất » của một xã hội, cũng là sự đơn giản hóa Pháp mà bỏ qua rằng hàng ngày, điều cấu trúc cuộc sống một người Việt là gia đình, làng, hàng xóm — nhiều hơn đảng."
         },
         {
           "speaker": "Pierre",
           "text": "Tu m'expliques quelque chose que je n'avais pas vu sous cet angle. Je ne suis pas convaincu sur tout — mais je vois la complexité que je ratais.",
+          "en": "You're explaining something I hadn't seen from this angle. I'm not convinced on everything — but I see the complexity I was missing.",
           "vi": "Em giải thích anh điều anh chưa thấy ở góc này. Anh không tin hết — nhưng anh thấy sự phức tạp anh bỏ lỡ."
         },
         {
           "speaker": "Linh",
           "text": "Et c'est exactement ce que je voulais. Pas que tu changes d'avis, juste que tu voies qu'il y a une lecture interne différente. Ce que la France fait sur l'Algérie ou les colonies, par exemple, beaucoup d'Algériens y ont aussi une lecture interne très différente de la version officielle française.",
+          "en": "And that's exactly what I wanted. Not for you to change your mind, just to see there's a different internal reading. What France did in Algeria or the colonies, for example — many Algerians also have an internal reading very different from the official French version. [mirrors the argument back via a parallel he can't dismiss]",
           "vi": "Và đó chính là điều em muốn. Không phải anh đổi ý, chỉ là anh thấy có cách đọc nội bộ khác. Như những gì Pháp làm ở Algeria hay các thuộc địa, nhiều người Algeria cũng có cách đọc nội bộ rất khác bản chính thức Pháp."
         },
         {
           "speaker": "Pierre",
           "text": "Touché. Là, tu m'amènes à un parallèle que je ne peux pas écarter.",
+          "en": "Touché. There, you've brought me to a parallel I can't dismiss.",
           "vi": "Touché. Em đưa anh đến một sự song song mà anh không thể bác bỏ."
         },
         {
           "speaker": "Linh",
           "text": "Je ne fais pas ça pour gagner — je le fais parce qu'on est amis et que je préfère qu'on se comprenne, même partiellement.",
+          "en": "I'm not doing this to win — I'm doing it because we're friends and I'd rather we understand each other, even partly. [explicitly removes the competitive frame]",
           "vi": "Em không làm vậy để thắng — em làm vì mình là bạn và em thích mình hiểu nhau, dù chỉ một phần."
         },
         {
           "speaker": "Pierre",
           "text": "Pareil. On va pas se mettre d'accord sur tout ce soir, et c'est ok. On reprend une bière ?",
+          "en": "Same here. We're not going to agree on everything tonight, and that's fine. Another beer? [the dignified close — disagreement intact, friendship intact]",
           "vi": "Anh cũng vậy. Mình sẽ không đồng ý mọi thứ tối nay, và ok. Mình uống thêm bia chứ?"
         },
         {
           "speaker": "Linh",
           "text": "Volontiers. Et merci de m'avoir écoutée vraiment, pas juste poliment.",
+          "en": "Gladly. And thank you for really listening, not just politely.",
           "vi": "Sẵn lòng. Và cảm ơn anh đã thực sự nghe, không phải chỉ lịch sự."
         },
         {
           "speaker": "Pierre",
           "text": "Merci à toi. C'est rare des conversations comme ça.",
+          "en": "Thank you. Conversations like this are rare.",
           "vi": "Cảm ơn em. Hiếm có cuộc trò chuyện như vậy."
         }
       ],
@@ -13673,30 +13829,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong tiệc tối với 6 bạn Pháp, một người nói gay gắt về di cư. Chọn: tham gia tranh luận, im lặng, hay chuyển chủ đề? Giải thích lựa chọn — không có « đáp đúng », nhưng phải biết hậu quả.",
         "Bạn lớn tuổi trong gia đình Pháp đưa ra ý kiến cũ về Việt Nam (« le Vietnam à mon époque c'était mieux »). Phản hồi tôn trọng tuổi nhưng không nhân nhượng nội dung sai."
       ],
+      "roleplay_prompts_en": [
+        "A French friend declares 'Tous les Asiatiques sont en faveur de la Chine — c'est culturel' (All Asians are pro-China — it's cultural). Respond without deflecting — correct the generalization, point to the internal diversity of Southeast Asia (Vietnam and China have a long history of tension) — without lecturing, without getting defensive. Useful frame: 'Ce raccourci-là me fait sourire — moi, vietnamienne, je peux te dire que…' (That shortcut makes me smile — speaking as a Vietnamese person, I can tell you that…). Anglophone calibration: same as correcting a US 'all Asians are good at math' line — light, factual, from lived experience, not outraged.",
+        "At a dinner with 6 French friends, one speaks harshly about immigration. Choose: join the debate, stay silent, or change the subject? Explain your choice — there's no single 'right answer', but you must understand the consequences of each (silence in a French group reads as tacit agreement; joining can be respected if you keep it level-1; changing the subject is a legitimate option you can name openly: 'On peut parler d'autre chose? Ce sujet-là, je préfère en tête-à-tête, pas en groupe.').",
+        "An older relative in your French family voices a dated view about Vietnam ('le Vietnam à mon époque c'était mieux' — Vietnam was better in my day). Respond with respect for their age but without conceding the inaccurate content. Frame: acknowledge the era they knew ('Vous avez connu un Vietnam que je n'ai pas connu'), then add the present-day reality as your lived experience — respect the person, correct the claim."
+      ],
       "register_notes": "Tranh luận chính trị với bạn Pháp dùng tutoiement nếu đã thân, nhưng giọng phải remain professional. Tránh: leo thang « tu ne comprends rien! » (cá nhân hóa); generalize văn hóa (« vous les Français êtes tous… »); im lặng phòng thủ (Pháp đọc là gật đầu giả vờ). Cụm hữu ích để giữ register: « Je vois ta logique » (công nhận trước phản biện), « Moi qui ai vécu là-bas » (làm chứng cứ cá nhân không thể bác), « Je ne fais pas ça pour gagner » (giải tỏa không khí cạnh tranh), « On va pas se mettre d'accord ce soir, et c'est ok » (close lịch sự). Khi cuộc trò chuyện trượt sang cảm xúc: ngừng ngay. « Je sens qu'on monte en pression — on reprend ça plus tard ? ». Sau cuộc tranh luận: gửi tin nhắn ngắn nếu cần (« Merci pour la discussion ce soir, j'y ai repensé »); KHÔNG kéo dài đề tài qua text. Tránh các « shaming » phổ biến: « tu es naïf », « c'est colonial ce que tu dis », « tu manques d'empathie » — tất cả đẩy bạn Pháp vào defensive và phá hỏng tình bạn.",
+      "register_notes_en": "Political debate with a French friend uses tutoiement if you're already close, but the tone must stay measured — tu does not license heat. Avoid: escalating to 'tu ne comprends rien!' (you understand nothing! — personalizes it, slides to level-2); cultural generalizations ('vous les Français êtes tous…' — you French are all…, the mirror of the line you're objecting to); and defensive silence (the French read silence as fake agreement, the opposite of its intended Vietnamese harmony function — this is the single most important register inversion in this lesson). Useful register-holding phrases: 'Je vois ta logique' (I see your logic — validate before you counter), 'Moi qui ai vécu là-bas' (speaking as someone who lived there — the irrefutable personal-evidence card), 'Je ne fais pas ça pour gagner' (I'm not doing this to win — explicitly removes the competitive charge), 'On va pas se mettre d'accord ce soir, et c'est ok' (the dignified close).\n\nWhen the conversation slides toward emotion: stop immediately. 'Je sens qu'on monte en pression — on reprend ça plus tard?' (I feel we're escalating — shall we pick this up later?). After the debate: send a short message if useful ('Merci pour la discussion ce soir, j'y ai repensé' — thanks for the discussion, I've been thinking about it), but do NOT continue the topic over text, where stripped tone turns a level-1 exchange into a level-2 fight. Avoid the common 'shaming' moves that feel righteous but destroy the friendship: 'tu es naïf' (you're naive), 'c'est colonial ce que tu dis' (what you're saying is colonial), 'tu manques d'empathie' (you lack empathy) — all three push a French friend into defensiveness and end the conversation as a relationship, not just a debate. For US readers: this is the explicit antidote to the 'call it out, name the harm' debate style — in the French frame, that style reads as an attack on the person and forfeits the respect that holding your ground calmly would have earned.",
       "idiom_glosses": [
         {
           "idiom": "Tenir sa position",
           "literal": "Giữ vị trí của mình",
+          "literal_en": "To hold one's position",
           "meaning": "Giữ vững quan điểm dù có áp lực thay đổi.",
+          "meaning_en": "To hold your ground / stand firm on your view despite pressure to cave. In French debate culture this is RESPECTED, not seen as stubbornness — caving to keep the peace lowers their respect for you.",
           "example": "Sur ce sujet, j'ai tenu ma position sans devenir agressive."
         },
         {
           "idiom": "Agree to disagree (calque)",
           "literal": "Đồng ý không đồng ý",
+          "literal_en": "To agree to disagree",
           "meaning": "Chấp nhận bất đồng cuối cùng.",
+          "meaning_en": "To accept that you'll keep disagreeing and stop there, with the relationship intact. The English phrase is borrowed directly into French; the native equivalent is 'on n'est pas obligés d'être d'accord'.",
           "example": "On a fini par agree to disagree — ça vaut mieux qu'une rupture."
         },
         {
           "idiom": "Mettre les pieds dans le plat",
           "literal": "Đặt chân vào đĩa",
+          "literal_en": "To put one's feet in the dish",
           "meaning": "Nói thẳng vào chủ đề tế nhị.",
+          "meaning_en": "To bluntly broach a sensitive topic / put your foot in it. Anglophone equivalent: 'to put your foot in your mouth' OR (more neutrally) 'to dive straight into the touchy subject' — context decides which.",
           "example": "Pierre a mis les pieds dans le plat sur la politique vietnamienne, mais sans agressivité."
         },
         {
           "idiom": "Ne pas tomber dans le piège",
           "literal": "Không rơi vào bẫy",
+          "literal_en": "To not fall into the trap",
           "meaning": "Không để bị kéo vào tranh luận cảm xúc.",
+          "meaning_en": "To not take the bait / not get drawn into an emotional argument. Anglophone equivalent: 'don't take the bait' — the discipline of refusing the escalation invitation.",
           "example": "J'ai failli tomber dans le piège quand il a dit « tous les Asiatiques » — j'ai respiré et reformulé."
         }
       ],
@@ -13704,7 +13874,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Notre amitié ___ plus qu'un accord parfait sur tous les sujets.",
-          "answer": "vaut"
+          "question_en": "Our friendship ___ more than perfect agreement on every topic.",
+          "answer": "vaut",
+          "hint_vi": "động từ « valoir » (đáng giá), ngôi 3 số ít",
+          "hint_en": "3rd-person singular of 'valoir' (to be worth) — 'vaut plus que' = is worth more than"
         },
         {
           "type": "matching",
@@ -13722,12 +13895,30 @@ export const lessons: FrenchLesson[] =           [
               "thêm sắc thái"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "tenir sa position",
+              "to hold one's ground — respected in French debate, not seen as stubbornness"
+            ],
+            [
+              "l'expérience vécue",
+              "lived experience — your strongest evidence; the other side can't counter it with theirs"
+            ],
+            [
+              "nuancer",
+              "to add nuance / complicate a black-and-white claim — a prized French intellectual move"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French debate term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em có thể lắng nghe quan điểm bạn mà không chia sẻ, và ngược lại.",
-          "french": "Je peux entendre ta position sans la partager, et inversement."
+          "french": "Je peux entendre ta position sans la partager, et inversement.",
+          "english": "I can take in your position without sharing it, and vice versa.",
+          "hint_vi": "« entendre » (lắng nghe/tiếp nhận) ≠ « être d'accord »; « et inversement » = và ngược lại",
+          "hint_en": "'entendre' here = to hear/take in (NOT to obey); 'sans la partager' = without sharing it; 'et inversement' = and vice versa (the reciprocity that keeps it fair)"
         }
       ]
     },
