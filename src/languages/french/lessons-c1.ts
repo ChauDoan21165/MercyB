@@ -2547,6 +2547,12 @@ export const lessons: FrenchLesson[] = [
           "oratrice → o-ra-tris",
           "exposé → èk-spo-zé",
           "stimulant → sti-mu-lã"
+        ],
+        "pronunciation_focus_en": [
+          "permettez → 'per-meh-TAY' — double-t one clean 't'; final -ez is 'ay'; the canonical Q&A opener verb",
+          "oratrice → 'oh-rah-TREES' — feminine form of 'orateur'; final -ice is 'eece'",
+          "exposé → 'eks-poh-ZAY' — 's' between vowels sounds like 'z'; past participle -é is 'ay'",
+          "stimulant → 'stee-mew-LAHN' — 'u' rounded 'ew'; nasal -ant; final -t silent; the high-academic compliment for a presentation"
         ]
       },
       {
@@ -2557,6 +2563,12 @@ export const lessons: FrenchLesson[] = [
           "revenir → rơ-vơ-nir",
           "évoqué → é-vo-ké",
           "présentation → pré-zãn-ta-sion"
+        ],
+        "pronunciation_focus_en": [
+          "aimerais → 'em-uh-RAY' — conditional ending '-rais' is 'ray'; opening 'ai' is 'em'",
+          "revenir → 'ruh-vuh-NEER' — both 're' and 've' are schwa 'uh'; final -ir is 'eer'",
+          "évoqué → 'ay-voh-KAY' — past participle; means 'mentioned' or 'evoked' in academic register",
+          "présentation → 'pray-zahn-tah-SYOHN' — 's' between vowels sounds like 'z'; nasal -en; -tion is 'syohn'"
         ]
       },
       {
@@ -2567,6 +2579,12 @@ export const lessons: FrenchLesson[] = [
           "porte → port",
           "méthodologie → mé-to-do-lo-ji",
           "interprétation → an-tèr-pré-ta-sion"
+        ],
+        "pronunciation_focus_en": [
+          "double → 'DOO-bluh' — 'ou' is 'oo'; final -ble is a quick 'bluh', not English 'bull'",
+          "porte → 'PORT' — one syllable; final -e silent; verb 'to bear on / concern'",
+          "méthodologie → 'may-toh-doh-loh-ZHEE' — five syllables; final -gie is 'zhee' (soft 'zh' + 'ee')",
+          "interprétation → 'an-tair-pray-tah-SYOHN' — nasal -in; -tion is 'syohn'"
         ]
       },
       {
@@ -2577,6 +2595,12 @@ export const lessons: FrenchLesson[] = [
           "éclairante → é-klè-rãnt",
           "impasse → an-pas",
           "diachronique → dia-kro-nik"
+        ],
+        "pronunciation_focus_en": [
+          "grille → 'GREE-yuh' — the -ill- is 'y' glide; final -e silent",
+          "éclairante → 'ay-klay-RAHNT' — feminine adjective; final -t sounded; nasal -an before t",
+          "impasse → 'an-PAHS' — nasal -im; final -e silent; literally 'dead end', here 'overlook'",
+          "diachronique → 'dyah-kroh-NEEK' — 'ia' glides to 'yah'; final -ique is 'eek'"
         ]
       },
       {
@@ -2587,165 +2611,199 @@ export const lessons: FrenchLesson[] = [
           "éclaircissements → é-klèr-si-smã",
           "voudrez → vu-dré",
           "apporter → a-por-té"
+        ],
+        "pronunciation_focus_en": [
+          "remercie → 'ruh-mair-SEE' — opening 're' is schwa 'ruh'; final -e silent",
+          "éclaircissements → 'ay-klair-sees-MAHN' — long word; final -ment nasal 'mahn'; plural -s silent",
+          "voudrez → 'voo-DRAY' — future tense; final -ez is 'ay', z silent",
+          "apporter → 'ah-por-TAY' — double-p one clean 'p'; final -er is 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "REGISTER QUESTIONS-RÉPONSES TRONG HỘI THẢO PHÁP có một mã không viết ra mà sinh viên Việt phải học qua quan sát. Bỏ qua mã này = bị xem là « grossier » (thô) hoặc « junior » (chưa trưởng thành), kể cả nội dung câu hỏi tốt.\n\nMÃ CỬA HÀNG (ouverture):\n\nCÂU HỎI HỘI THẢO BẮT ĐẦU 90% THỜI GIAN BẰNG CẢM ƠN. KHÔNG đi thẳng vào câu hỏi:\n- « Permettez-moi tout d'abord de remercier l'oratrice pour cet exposé particulièrement stimulant. » (tiêu chuẩn)\n- « Merci pour cette présentation très riche. » (rút gọn nếu thời gian eo hẹp)\n- « Je vous remercie pour cette communication. » (formal, conférence lớn)\n\nCẢM ƠN KHÔNG PHẢI nịnh nọt — là quy ước. Bỏ qua = bị đọc là không tôn trọng người trình bày.\n\nTUYÊN BỐ MÌNH (identification):\n\nNẾU bạn được tổ chức xếp ngồi trong hội đồng / được giới thiệu trước, KHÔNG cần. NẾU không, ngắn gọn:\n- « Linh Tran, doctorante à Paris-VIII, en sociolinguistique. » (5 giây tối đa)\n\nTRÁNH:\n- Tự giới thiệu dài (« je travaille sur X depuis 3 ans, et j'ai publié… ») — không liên quan đến câu hỏi\n- Bỏ qua identification ở hội thảo lớn nơi không ai biết bạn — bị đọc là arrogant\n\nHÌNH THỨC CÂU HỎI (formulation):\n\nCÂU HỎI HỘI THẢO LÀ MỘT MICRO-LẬP-LUẬN. Cấu trúc 4 phần:\n\n(1) THỪA NHẬN ĐIỂM TÍCH CỰC trong bài trình bày: « Votre analyse de X m'a particulièrement convaincue. »\n\n(2) NÊU ĐIỂM bạn muốn thảo luận: « J'aimerais cependant revenir sur un point. »\n\n(3) PHÁT BIỂU CÂU HỎI: « Ne pensez-vous pas que… ? » / « Comment articulez-vous X et Y ? » / « Quel statut épistémologique attribuez-vous à… ? »\n\n(4) ĐÓNG: « Je vous remercie par avance. »\n\nTHỜI GIAN câu hỏi tiêu chuẩn: 60-90 giây. Quá 2 phút = chủ tọa cắt — bị đọc là không respecter le temps. DƯỚI 30 giây cho câu hỏi cụ thể OK; dưới 30 giây cho câu hỏi quan trọng = thiếu chuẩn bị.\n\nBẪY ĐẶC TRƯNG NGƯỜI VIỆT:\n\n(1) HỎI QUÁ DÀI để « tỏ ra chuyên môn » — đẩy hội đồng và người trình bày khó chịu. Người Pháp tôn trọng câu hỏi NGẮN VÀ SẮC hơn dài và lan man.\n\n(2) HỎI VỚI GIỌNG QUÁ KHIÊM TỐN: « excusez mon ignorance, mais… » — hội thảo Pháp đọc đây là chưa trưởng thành. Bạn được mời, bạn có quyền hỏi như peer.\n\n(3) NGƯỢC LẠI: HỎI VỚI GIỌNG TẤN CÔNG — « comment pouvez-vous prétendre… » — đọc là agressif. Câu hỏi mạnh phải có cú pháp tế nhị: « ne pensez-vous pas que… ? » thay « pourquoi avez-vous oublié… ? ».\n\n(4) KHÔNG NGHE TRẢ LỜI: nhiều người Việt sau khi hỏi xong, lo nghĩ về phản ứng của hội đồng và không nghe được câu trả lời. Hậu quả: nếu được mời phản hồi, vỡ trận. NGHE TRỌN VẸN trước khi nghĩ về phản hồi.",
+    "cultural_notes_en": "THE Q&A REGISTER at French conferences operates by an unwritten code that anglophones must learn through observation. Violating it = read as 'grossier' (boorish) or 'junior' (immature), regardless of the substantive quality of the question.\n\nOPENING CODE:\n\nA CONFERENCE QUESTION OPENS 90% OF THE TIME WITH THANKS. Do NOT cut straight to the question:\n- 'Permettez-moi tout d'abord de remercier l'oratrice pour cet exposé particulièrement stimulant.' (standard, formal)\n- 'Merci pour cette présentation très riche.' (compressed if time is tight)\n- 'Je vous remercie pour cette communication.' (formal, large conference)\n\nThe thanks is NOT flattery — it's protocol. Skipping it reads as disrespectful to the speaker.\n\nIDENTIFICATION:\n\nIF you've been seated on the panel or were introduced beforehand, NO need. Otherwise, briefly:\n- 'Linh Tran, doctorante à Paris-VIII, en sociolinguistique.' (5 seconds max)\n\nAVOID:\n- Long self-introduction ('I've worked on X for 3 years, I've published…') — irrelevant to the question\n- Skipping identification at a large conference where you're unknown — reads as arrogant\n\nQUESTION FORMAT:\n\nA CONFERENCE QUESTION IS A MICRO-ARGUMENT. Four-part structure:\n\n(1) ACKNOWLEDGE A POSITIVE POINT in the presentation: 'Votre analyse de X m'a particulièrement convaincue.'\n\n(2) STATE the point you want to discuss: 'J'aimerais cependant revenir sur un point.'\n\n(3) ASK THE QUESTION: 'Ne pensez-vous pas que… ?' / 'Comment articulez-vous X et Y ?' / 'Quel statut épistémologique attribuez-vous à… ?'\n\n(4) CLOSE: 'Je vous remercie par avance.'\n\nSTANDARD QUESTION LENGTH: 60-90 seconds. Past 2 minutes = the moderator cuts you off, and you're read as not respecting the time. UNDER 30 seconds for a specific question is fine; under 30 seconds for a substantive question signals you haven't prepared.\n\nANGLOPHONE-SPECIFIC TRAPS:\n\n(1) OVER-LONG QUESTIONS to display expertise — irritates the panel and the speaker. The French respect SHORT AND SHARP over long and rambling.\n\n(2) OVER-MODEST OPENING: 'excuse my ignorance, but…' — French conferences read this as immature. You were invited; you have the right to ask as a peer.\n\n(3) THE REVERSE: AGGRESSIVE OPENING — 'how can you claim…' — read as 'agressif'. A firm question must use polite syntax: 'ne pensez-vous pas que…?' instead of 'pourquoi avez-vous oublié…?'\n\n(4) NOT LISTENING TO THE ANSWER: many speakers, after asking, fret about how the room reacted and miss the actual reply. Consequence: if invited to follow up, they collapse. LISTEN COMPLETELY before thinking about your follow-up.",
     "tip_advice_vi": "BỐN LOẠI CÂU HỎI HỘI THẢO chuẩn — học để dùng đúng tình huống:\n\nLOẠI 1: CÂU HỎI LÀM RÕ (clarification)\n- « Pourriez-vous préciser ce que vous entendez par X ? »\n- « Si je vous comprends bien, vous soutenez que… ? »\n- « Sur quel corpus exactement repose votre analyse ? »\n\nDÙNG khi: bạn đã chú ý nghe nhưng một điểm chưa rõ. KHÔNG phải câu hỏi yếu — câu hỏi clarification tốt CHỈ RA chỗ ngôn ngữ trình bày chưa đủ chính xác.\n\nLOẠI 2: CÂU HỎI GỢI MỞ (élargissement)\n- « Avez-vous envisagé de transposer votre analyse au contexte X ? »\n- « Comment votre approche dialoguerait-elle avec les travaux de Y ? »\n- « Cette analyse trouverait-elle un écho dans le champ Z ? »\n\nDÙNG khi: bạn thấy bài tốt và muốn mở thêm. Người trình bày sẽ cảm ơn — câu hỏi gợi mở giúp họ định vị công trình rộng hơn.\n\nLOẠI 3: CÂU HỎI THÁCH THỨC NHẸ (interpellation amicale)\n- « Ne pensez-vous pas que cette grille fait l'impasse sur X ? »\n- « Comment articulez-vous votre conclusion avec le constat de Y, qui semble la contredire ? »\n- « Le présupposé sous-jacent — à savoir que X — peut-il vraiment être tenu ? »\n\nDÙNG khi: bạn thấy điểm yếu cụ thể. Cú pháp questions « ne pensez-vous pas… ? » rất tế nhị — bạn KHÔNG khẳng định họ sai; bạn mời họ tự đánh giá lại.\n\nLOẠI 4: CÂU HỎI THÁCH THỨC MẠNH (objection frontale)\n- « Je suis frappée par ce qui me paraît une contradiction entre X et Y. Comment la traitez-vous ? »\n- « Votre interprétation me semble forcer le sens des données. Sur quoi vous appuyez-vous précisément ? »\n- « Ce point me paraît difficilement défendable en l'état — pourriez-vous le justifier ? »\n\nDÙNG khi: bạn có chứng cứ chắc và đã chuẩn bị. KHÔNG dùng impulsivement — câu hỏi mạnh đòi hỏi vous defendiez votre objection si l'orateur retorque.\n\nCỤM HỮU ÍCH ĐẶC BIỆT C1:\n- « Permettez-moi un commentaire avant ma question proprement dite. » (báo trước câu hỏi sẽ có hai phần — phổ biến)\n- « Ma question rejoint celle de [Mme/M.] précédent — mais sous un angle différent. » (kết nối với câu hỏi trước)\n- « Sans vouloir tomber dans la spéculation, … » (mở câu hỏi giả thuyết)\n- « Je formule cela à titre purement heuristique. » (cho phép câu hỏi không cần được trả lời chắc nịch)\n\nKHI BẠN BỊ HỎI MỘT CÂU KHÓ — bạn là orateur, không phải người hỏi:\n- « Question importante. Je serai prudente dans ma réponse. »\n- « Je ne dispose pas, à cette étape, d'éléments suffisants pour trancher. »\n- « C'est exactement la limite que je signalais en conclusion. »\n- « Vous mettez le doigt sur une zone que je travaille encore. »\n\nKHÔNG được nói: « Je ne sais pas. » Thay bằng: « Je n'ai pas de réponse satisfaisante à ce stade — c'est précisément un des chantiers que j'ouvre. »",
+    "tip_advice_en": "FOUR TYPES OF CONFERENCE QUESTIONS — learn to use the right one for the situation:\n\nTYPE 1: CLARIFICATION QUESTIONS\n- 'Pourriez-vous préciser ce que vous entendez par X ?'\n- 'Si je vous comprends bien, vous soutenez que… ?'\n- 'Sur quel corpus exactement repose votre analyse ?'\n\nUSE when: you've listened carefully but one point remained unclear. NOT weak — a good clarification question often reveals an imprecision in the speaker's framing.\n\nTYPE 2: OPENING-OUT QUESTIONS\n- 'Avez-vous envisagé de transposer votre analyse au contexte X ?'\n- 'Comment votre approche dialoguerait-elle avec les travaux de Y ?'\n- 'Cette analyse trouverait-elle un écho dans le champ Z ?'\n\nUSE when: you find the talk strong and want to extend it. The speaker will thank you — opening-out questions help them position the work in a wider field.\n\nTYPE 3: FRIENDLY CHALLENGE QUESTIONS (interpellation amicale)\n- 'Ne pensez-vous pas que cette grille fait l'impasse sur X ?'\n- 'Comment articulez-vous votre conclusion avec le constat de Y, qui semble la contredire ?'\n- 'Le présupposé sous-jacent — à savoir que X — peut-il vraiment être tenu ?'\n\nUSE when: you've spotted a concrete weakness. The 'ne pensez-vous pas…?' syntax is delicate — you do NOT assert they're wrong; you invite them to reassess.\n\nTYPE 4: FRONTAL OBJECTION QUESTIONS (firm challenge)\n- 'Je suis frappée par ce qui me paraît une contradiction entre X et Y. Comment la traitez-vous ?'\n- 'Votre interprétation me semble forcer le sens des données. Sur quoi vous appuyez-vous précisément ?'\n- 'Ce point me paraît difficilement défendable en l'état — pourriez-vous le justifier ?'\n\nUSE when: you have solid evidence and have prepared. Do NOT use impulsively — a firm question requires you to defend your objection if the speaker pushes back.\n\nSPECIALLY POLISHED C1 PHRASES:\n- 'Permettez-moi un commentaire avant ma question proprement dite.' (announces a two-part contribution — common)\n- 'Ma question rejoint celle de [Mme/M.] précédent — mais sous un angle différent.' (connects to a previous question)\n- 'Sans vouloir tomber dans la spéculation, …' (opens a hypothetical question)\n- 'Je formule cela à titre purement heuristique.' (permits a question that doesn't need a firm answer)\n\nWHEN YOU'RE BEING ASKED A HARD QUESTION — you're the speaker, not the questioner:\n- 'Question importante. Je serai prudente dans ma réponse.'\n- 'Je ne dispose pas, à cette étape, d'éléments suffisants pour trancher.'\n- 'C'est exactement la limite que je signalais en conclusion.'\n- 'Vous mettez le doigt sur une zone que je travaille encore.'\n\nDO NOT say: 'Je ne sais pas.' Replace with: 'Je n'ai pas de réponse satisfaisante à ce stade — c'est précisément un des chantiers que j'ouvre.' (I don't have a satisfactory answer at this stage — it's precisely one of the fronts I'm opening.)",
     "vocabulary": [
       {
         "word": "un exposé stimulant",
         "en": "a thought-provoking presentation",
         "vi": "một bài trình bày kích thích",
         "pos": "n.m.",
-        "pronunciation_vi": "èk-spo-zé sti-mu-lã"
+        "pronunciation_vi": "èk-spo-zé sti-mu-lã",
+        "pronunciation_en": "ehn eks-poh-ZAY stee-mew-LAHN — the gold-standard compliment to open a question; using anything weaker reads as faint praise"
       },
       {
         "word": "l'oratrice / l'orateur",
         "en": "the speaker (f./m.)",
         "vi": "người phát biểu",
         "pos": "n.f./m.",
-        "pronunciation_vi": "o-ra-tris / o-ra-tơr"
+        "pronunciation_vi": "o-ra-tris / o-ra-tơr",
+        "pronunciation_en": "loh-rah-TREES / loh-rah-TUR — formal terms; 'speaker' in casual register is 'le/la conférencier(ère)' or just first name+last name"
       },
       {
         "word": "évoqué en passant",
         "en": "mentioned in passing",
         "vi": "đề cập thoáng qua",
         "pos": "loc.",
-        "pronunciation_vi": "é-vo-ké ã pa-sã"
+        "pronunciation_vi": "é-vo-ké ã pa-sã",
+        "pronunciation_en": "ay-voh-KAY ahn pah-SAHN — nasal -an in 'passant'; signals you want to return to a point the speaker didn't develop"
       },
       {
         "word": "une grille de lecture",
         "en": "an interpretive framework",
         "vi": "một lưới đọc",
         "pos": "n.f.",
-        "pronunciation_vi": "griy dơ lèk-tur"
+        "pronunciation_vi": "griy dơ lèk-tur",
+        "pronunciation_en": "ewn GREE-yuh duh lek-TEWR — the -ille is 'y' glide; preferred academic term for an analytical framework, more neutral than 'théorie'"
       },
       {
         "word": "faire l'impasse sur",
         "en": "to skip over / overlook",
         "vi": "bỏ qua",
         "pos": "v.",
-        "pronunciation_vi": "fèr lan-pas sur"
+        "pronunciation_vi": "fèr lan-pas sur",
+        "pronunciation_en": "fair lan-PAHS sewr — nasal -im; 'sur' rounded 'u'; firmer than 'oublier' (which would sound rude); means a wilful or systematic omission"
       },
       {
         "word": "la dimension diachronique",
         "en": "the diachronic dimension",
         "vi": "chiều kích lịch đại",
         "pos": "n.f.",
-        "pronunciation_vi": "di-mãn-sion dia-kro-nik"
+        "pronunciation_vi": "di-mãn-sion dia-kro-nik",
+        "pronunciation_en": "lah dee-mahn-SYOHN dyah-kroh-NEEK — Greek borrowing kept in French as is; refers to change over time"
       },
       {
         "word": "un éclaircissement",
         "en": "a clarification",
         "vi": "một sự làm rõ",
         "pos": "n.m.",
-        "pronunciation_vi": "é-klèr-si-smã"
+        "pronunciation_vi": "é-klèr-si-smã",
+        "pronunciation_en": "ehn ay-klair-sees-MAHN — long noun; final -ment nasal 'mahn'; politely asks the speaker to expand"
       },
       {
         "word": "interpeller un orateur",
         "en": "to question a speaker",
         "vi": "chất vấn người phát biểu",
         "pos": "v.",
-        "pronunciation_vi": "an-tèr-pè-lé an o-ra-tơr"
+        "pronunciation_vi": "an-tèr-pè-lé an o-ra-tơr",
+        "pronunciation_en": "an-tair-peh-LAY ehn oh-rah-TUR — formal verb; stronger than 'questionner' — implies challenging engagement"
       },
       {
         "word": "un échange fécond",
         "en": "a fruitful exchange",
         "vi": "một trao đổi phong phú",
         "pos": "n.m.",
-        "pronunciation_vi": "é-shãnj fé-kõn"
+        "pronunciation_vi": "é-shãnj fé-kõn",
+        "pronunciation_en": "ehn ay-SHAHNZH fay-KOHN — final -ange is 'ahnzh'; the diplomatic close to a Q&A that genuinely advanced the discussion"
       },
       {
         "word": "prendre la parole",
         "en": "to take the floor",
         "vi": "phát biểu",
         "pos": "v.",
-        "pronunciation_vi": "prãn-drơ la pa-rol"
+        "pronunciation_vi": "prãn-drơ la pa-rol",
+        "pronunciation_en": "PRAHN-druh lah pah-ROHL — nasal -en; literally 'to take the word'; the formal phrase for being recognized to speak"
       }
     ],
     "dialogue": [
       {
         "speaker": "Modérateur",
         "text": "Nous prenons les questions. Madame, vous avez la parole.",
-        "vi": "Chúng tôi nhận câu hỏi. Cô, mời phát biểu."
+        "vi": "Chúng tôi nhận câu hỏi. Cô, mời phát biểu.",
+        "en": "We're taking questions. Madam, you have the floor."
       },
       {
         "speaker": "Linh",
         "text": "Merci. Linh Tran, doctorante à Paris-VIII. Permettez-moi tout d'abord de remercier l'oratrice pour cet exposé particulièrement stimulant.",
-        "vi": "Cảm ơn. Linh Trần, nghiên cứu sinh tại Paris-VIII. Cho phép tôi trước hết cảm ơn người phát biểu vì bài trình bày đặc biệt kích thích này."
+        "vi": "Cảm ơn. Linh Trần, nghiên cứu sinh tại Paris-VIII. Cho phép tôi trước hết cảm ơn người phát biểu vì bài trình bày đặc biệt kích thích này.",
+        "en": "Thank you. Linh Tran, doctoral candidate at Paris-VIII. Allow me first of all to thank the speaker for this particularly stimulating presentation."
       },
       {
         "speaker": "Linh",
         "text": "Ma question porte sur la dimension diachronique. Ne pensez-vous pas que votre grille de lecture fait l'impasse sur l'évolution du phénomène depuis 2018 ?",
-        "vi": "Câu hỏi của tôi về chiều kích lịch đại. Bạn không nghĩ lưới đọc của bạn bỏ qua tiến hóa của hiện tượng từ 2018 sao?"
+        "vi": "Câu hỏi của tôi về chiều kích lịch đại. Bạn không nghĩ lưới đọc của bạn bỏ qua tiến hóa của hiện tượng từ 2018 sao?",
+        "en": "My question concerns the diachronic dimension. Don't you think your interpretive framework overlooks the evolution of the phenomenon since 2018?"
       },
       {
         "speaker": "Oratrice",
         "text": "Question juste. C'est précisément une limite que je signalais en conclusion — j'y reviens.",
-        "vi": "Câu hỏi đúng. Đó chính là một giới hạn tôi đã nêu ở kết luận — tôi trở lại."
+        "vi": "Câu hỏi đúng. Đó chính là một giới hạn tôi đã nêu ở kết luận — tôi trở lại.",
+        "en": "Fair question. That's precisely a limit I flagged in the conclusion — I'll come back to it."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Modérateur (conférence internationale)",
         "text": "Nous ouvrons les questions. Trois mains levées. Madame Tran, vous d'abord.",
-        "vi": "Chúng tôi mở phần câu hỏi. Ba tay giơ. Cô Trần, cô trước."
+        "vi": "Chúng tôi mở phần câu hỏi. Ba tay giơ. Cô Trần, cô trước.",
+        "en": "We're opening the questions. Three hands raised. Ms. Tran, you first."
       },
       {
         "speaker": "Linh",
         "text": "Merci. Linh Tran, doctorante à Paris-VIII. Permettez-moi tout d'abord de remercier la professeure Dupont pour cet exposé particulièrement stimulant. Ma question est double, je serai brève.",
-        "vi": "Cảm ơn. Linh Trần, nghiên cứu sinh tại Paris-VIII. Cho phép tôi trước hết cảm ơn giáo sư Dupont vì bài trình bày đặc biệt kích thích này. Câu hỏi của tôi gồm hai phần, tôi sẽ ngắn gọn."
+        "vi": "Cảm ơn. Linh Trần, nghiên cứu sinh tại Paris-VIII. Cho phép tôi trước hết cảm ơn giáo sư Dupont vì bài trình bày đặc biệt kích thích này. Câu hỏi của tôi gồm hai phần, tôi sẽ ngắn gọn.",
+        "en": "Thank you. Linh Tran, doctoral candidate at Paris-VIII. Allow me first of all to thank Professor Dupont for this particularly stimulating presentation. My question is two-part, I'll be brief."
       },
       {
         "speaker": "Linh",
         "text": "Premier point — sur le plan méthodologique. Vous présentez vos résultats comme issus d'une enquête longitudinale sur dix ans. Mais vos figures suggèrent que les vagues d'enquête sont en réalité au nombre de trois, espacées de trois ans. Pouvez-vous préciser le rythme exact, et la manière dont vous traitez l'attrition entre les vagues ?",
-        "vi": "Điểm thứ nhất — về phương pháp luận. Bà trình bày kết quả như đến từ điều tra lịch đại 10 năm. Nhưng các figure của bà gợi ý số đợt điều tra thực ra là ba, cách nhau ba năm. Bà có thể nêu rõ nhịp chính xác, và cách bà xử lý sự rớt khỏi mẫu giữa các đợt?"
+        "vi": "Điểm thứ nhất — về phương pháp luận. Bà trình bày kết quả như đến từ điều tra lịch đại 10 năm. Nhưng các figure của bà gợi ý số đợt điều tra thực ra là ba, cách nhau ba năm. Bà có thể nêu rõ nhịp chính xác, và cách bà xử lý sự rớt khỏi mẫu giữa các đợt?",
+        "en": "First point — methodologically. You present your results as coming from a ten-year longitudinal study. But your figures suggest the survey waves are actually three, spaced three years apart. Could you specify the exact rhythm, and how you handle attrition between waves?"
       },
       {
         "speaker": "Pr. Dupont",
         "text": "Question très juste. Trois vagues effectivement: 2014, 2017, 2020. L'attrition entre la première et la troisième vague est de 23 % — chiffre que je n'ai pas eu le temps de mentionner. Je traite l'attrition par pondération inverse de probabilité, méthode classique mais qui, je le concède, ne corrige qu'imparfaitement les biais de sélection.",
-        "vi": "Câu hỏi rất đúng. Ba đợt thực sự: 2014, 2017, 2020. Tỷ lệ rớt khỏi mẫu giữa đợt một và đợt ba là 23 % — con số tôi không có thời gian đề cập. Tôi xử lý attrition bằng trọng số đảo xác suất, phương pháp cổ điển nhưng tôi thừa nhận chỉ điều chỉnh không hoàn hảo các thiên lệch lựa chọn."
+        "vi": "Câu hỏi rất đúng. Ba đợt thực sự: 2014, 2017, 2020. Tỷ lệ rớt khỏi mẫu giữa đợt một và đợt ba là 23 % — con số tôi không có thời gian đề cập. Tôi xử lý attrition bằng trọng số đảo xác suất, phương pháp cổ điển nhưng tôi thừa nhận chỉ điều chỉnh không hoàn hảo các thiên lệch lựa chọn.",
+        "en": "Very fair question. Three waves indeed: 2014, 2017, 2020. Attrition between the first and third wave is 23% — a figure I didn't have time to mention. I handle attrition via inverse probability weighting, a classical method that, I concede, only imperfectly corrects for selection bias."
       },
       {
         "speaker": "Linh",
         "text": "Merci pour cette précision. Deuxième point, plus interprétatif. Vous concluez sur une « érosion généralisée » de la mobilité ascendante. Or, en regardant vos figures par classe d'âge, on observe que cette érosion est très différenciée — quasi nulle pour les cohortes nées avant 1985, marquée pour les cohortes 1990-1995. Ne pensez-vous pas que parler d'érosion « généralisée » fait l'impasse sur cette dimension diachronique cruciale ?",
-        "vi": "Cảm ơn về sự chính xác này. Điểm thứ hai, nghiêng về diễn giải. Bà kết luận về một « xói mòn lan rộng » của di chuyển thăng tiến. Tuy nhiên, nhìn các figure của bà theo nhóm tuổi, người ta quan sát rằng sự xói mòn này rất khác biệt — gần như bằng không cho các cohort sinh trước 1985, rõ rệt cho các cohort 1990-1995. Bà không nghĩ rằng nói về xói mòn « lan rộng » bỏ qua chiều kích lịch đại quan trọng này sao?"
+        "vi": "Cảm ơn về sự chính xác này. Điểm thứ hai, nghiêng về diễn giải. Bà kết luận về một « xói mòn lan rộng » của di chuyển thăng tiến. Tuy nhiên, nhìn các figure của bà theo nhóm tuổi, người ta quan sát rằng sự xói mòn này rất khác biệt — gần như bằng không cho các cohort sinh trước 1985, rõ rệt cho các cohort 1990-1995. Bà không nghĩ rằng nói về xói mòn « lan rộng » bỏ qua chiều kích lịch đại quan trọng này sao?",
+        "en": "Thank you for that precision. Second point, more interpretive. You conclude on a 'generalized erosion' of upward mobility. But looking at your figures by age cohort, we observe this erosion is highly differentiated — near-zero for cohorts born before 1985, marked for the 1990-1995 cohorts. Don't you think calling the erosion 'generalized' overlooks this crucial diachronic dimension?"
       },
       {
         "speaker": "Pr. Dupont",
         "text": "Vous mettez le doigt sur la difficulté centrale de l'article. Vous avez raison: l'érosion est en effet différenciée selon les cohortes. Le terme « généralisée » est, dans la version finale, trop fort. Je nuancerai en « érosion croissante selon les cohortes récentes ». C'est un retour précieux — c'est ce genre de question qui justifie ces journées.",
-        "vi": "Cô đặt ngón tay đúng vào khó khăn trung tâm của bài. Cô đúng: xói mòn thật sự khác biệt theo cohort. Từ « lan rộng », trong bản chính thức, quá mạnh. Tôi sẽ làm rõ thành « xói mòn tăng dần theo cohort gần đây ». Đó là phản hồi quý — chính loại câu hỏi này biện minh cho các ngày này."
+        "vi": "Cô đặt ngón tay đúng vào khó khăn trung tâm của bài. Cô đúng: xói mòn thật sự khác biệt theo cohort. Từ « lan rộng », trong bản chính thức, quá mạnh. Tôi sẽ làm rõ thành « xói mòn tăng dần theo cohort gần đây ». Đó là phản hồi quý — chính loại câu hỏi này biện minh cho các ngày này.",
+        "en": "You put your finger on the central difficulty of the article. You're right: the erosion is differentiated by cohort. The term 'generalized', in the final version, is too strong. I'll soften it to 'erosion increasing with recent cohorts'. This is precious feedback — this is the kind of question that justifies these conferences."
       },
       {
         "speaker": "Linh",
         "text": "Je vous remercie. Une dernière question si le temps le permet, sinon je passe.",
-        "vi": "Tôi cảm ơn bà. Một câu hỏi cuối nếu thời gian cho phép, không thì tôi nhường."
+        "vi": "Tôi cảm ơn bà. Một câu hỏi cuối nếu thời gian cho phép, không thì tôi nhường.",
+        "en": "Thank you. One last question if time permits, otherwise I'll yield."
       },
       {
         "speaker": "Modérateur",
         "text": "On a deux minutes. Allez-y.",
-        "vi": "Còn 2 phút. Cô hỏi đi."
+        "vi": "Còn 2 phút. Cô hỏi đi.",
+        "en": "We have two minutes. Go ahead."
       },
       {
         "speaker": "Linh",
         "text": "Brièvement: votre dispositif articule des données INSEE et une enquête de terrain. Comment articulez-vous les deux registres lorsqu'ils donnent des signaux contradictoires ? J'ai cru repérer un cas, page 24 du document distribué, où l'INSEE indique une stabilité que vos entretiens contredisent.",
-        "vi": "Ngắn: thiết kế của bà khớp nối dữ liệu INSEE và điều tra thực địa. Bà khớp nối hai cấp độ thế nào khi chúng cho tín hiệu mâu thuẫn? Tôi nghĩ nhận ra một trường hợp, trang 24 tài liệu phát, nơi INSEE chỉ một sự ổn định mà phỏng vấn của bà phản bác."
+        "vi": "Ngắn: thiết kế của bà khớp nối dữ liệu INSEE và điều tra thực địa. Bà khớp nối hai cấp độ thế nào khi chúng cho tín hiệu mâu thuẫn? Tôi nghĩ nhận ra một trường hợp, trang 24 tài liệu phát, nơi INSEE chỉ một sự ổn định mà phỏng vấn của bà phản bác.",
+        "en": "Briefly: your design articulates INSEE data with fieldwork. How do you articulate the two registers when they give contradictory signals? I think I spotted a case, page 24 of the handout, where INSEE indicates stability that your interviews contradict."
       },
       {
         "speaker": "Pr. Dupont",
         "text": "Excellente observation. Page 24, c'est le cas Marseille. Les données INSEE indiquent en effet stabilité — mes entretiens montrent un sentiment de déclassement subjectif fort. Je traite ce décalage comme productif: l'INSEE mesure les positions objectives, les entretiens, le vécu. Le décalage lui-même devient un objet d'analyse, pas un problème à résoudre.",
-        "vi": "Quan sát xuất sắc. Trang 24, đó là trường hợp Marseille. Dữ liệu INSEE thật sự chỉ sự ổn định — phỏng vấn của tôi cho thấy cảm giác mất vị thế chủ quan mạnh. Tôi xử lý sự khác biệt này như sinh sản: INSEE đo các vị trí khách quan, phỏng vấn đo trải nghiệm. Sự khác biệt bản thân trở thành đối tượng phân tích, không phải vấn đề cần giải quyết."
+        "vi": "Quan sát xuất sắc. Trang 24, đó là trường hợp Marseille. Dữ liệu INSEE thật sự chỉ sự ổn định — phỏng vấn của tôi cho thấy cảm giác mất vị thế chủ quan mạnh. Tôi xử lý sự khác biệt này như sinh sản: INSEE đo các vị trí khách quan, phỏng vấn đo trải nghiệm. Sự khác biệt bản thân trở thành đối tượng phân tích, không phải vấn đề cần giải quyết.",
+        "en": "Excellent observation. Page 24 is the Marseille case. The INSEE data indeed indicate stability — my interviews show a strong sense of subjective downward mobility. I treat that gap as productive: INSEE measures objective positions, the interviews measure lived experience. The gap itself becomes an object of analysis, not a problem to resolve."
       },
       {
         "speaker": "Linh",
         "text": "Réponse très éclairante — je vous remercie pour ces éclaircissements.",
-        "vi": "Câu trả lời rất sáng — tôi cảm ơn bà về các giải thích này."
+        "vi": "Câu trả lời rất sáng — tôi cảm ơn bà về các giải thích này.",
+        "en": "A very illuminating answer — thank you for these clarifications."
       },
       {
         "speaker": "Modérateur",
         "text": "Merci, Madame Tran. Question suivante.",
-        "vi": "Cảm ơn cô Trần. Câu hỏi tiếp theo."
+        "vi": "Cảm ơn cô Trần. Câu hỏi tiếp theo.",
+        "en": "Thank you, Ms. Tran. Next question."
       }
     ],
     "roleplay_prompts": [
@@ -2753,30 +2811,44 @@ export const lessons: FrenchLesson[] = [
       "Bạn là người được hỏi (orateur) trong séminaire. Một membre du public hỏi một câu bạn không có câu trả lời chắc. Soạn 3 phương án trả lời — không nói « je ne sais pas » mà thay bằng cú pháp tế nhị.",
       "Bạn dự một thèse soutenance và được mời « réagir librement » sau khi 3 rapporteurs đã phát biểu. Soạn intervention 90 giây — kết nối với câu hỏi trước, mở góc nhìn mới, không lặp lại."
     ],
+    "roleplay_prompts_en": [
+      "You're attending an international conference in Paris and want to ask a question of a well-known keynote speaker. Compose a 60-second question — 4-part structure (thanks / positive point / question / close). Refuse the anglophone instinct to dive straight into the substance; the opening thanks is protocol, not flattery.",
+      "You're the speaker in a seminar. An audience member asks a question you don't have a firm answer to. Compose 3 response options — never 'je ne sais pas'. Substitute precise C1 hedges that preserve your credibility while honestly admitting limits.",
+      "You're attending a thesis defense and have been invited to 'réagir librement' after three rapporteurs have spoken. Compose a 90-second intervention — connect to a previous question, open a new angle, don't repeat. This is harder than a fresh question because you must position yourself relative to what came before."
+    ],
     "register_notes": "BA NHÓM CỤM CÂU HỎI theo cấp formal:\n\nFORMEL (conférence, soutenance, séminaire international):\n- « Permettez-moi tout d'abord de remercier l'oratrice… » (cho phép tôi trước hết cảm ơn người phát biểu)\n- « J'aimerais, si vous me le permettez, revenir sur… » (tôi muốn, nếu bà cho phép, trở lại về)\n- « Ne pensez-vous pas que… ? » (bà không nghĩ rằng…?)\n- « Je vous remercie par avance pour vos éclaircissements. » (tôi cảm ơn trước về giải thích)\n\nSEMI-FORMEL (séminaire de laboratoire, colloque doctoral):\n- « Merci pour cette présentation. » (cảm ơn bài trình bày)\n- « Une question si je peux. » (một câu hỏi nếu được)\n- « Comment faites-vous quand… ? » (bà làm sao khi…?)\n- « Vous parlez de X — qu'en est-il de Y ? » (bà nói X — còn Y thì sao?)\n\nINFORMEL (réunion d'équipe, déjeuner de travail):\n- « Tu as parlé de X — c'est intéressant. Mais… » (mày nói X — thú vị. Nhưng…)\n- « Question bête peut-être: … » (câu hỏi ngu có thể: …)\n\nKHÔNG TRỘN cấp độ. Hỏi « tu as parlé… » trong colloque international = thô. Hỏi « permettez-moi tout d'abord… » giữa colleagues thân = lạnh và xa cách.\n\nCỤM ĐÓNG CÂU HỎI:\nFORMEL: « Je vous remercie par avance. » / « Je vous remercie pour les éclaircissements que vous voudrez bien apporter. »\nNEUTRE: « Merci. » / « Merci d'avance. »\n\nKHI CHỦ TỌA CẮT (« nous n'avons plus le temps »):\n- KHÔNG cố nói thêm — đứng dậy lịch sự\n- « Je vous remercie. » + ngồi xuống\n- Có thể nói chuyện trực tiếp với orateur sau session — không qua chủ tọa\n\nMỘT QUY ƯỚC TINH TẾ: nếu bạn ĐỒNG TÌNH với orateur, hãy nói rõ — câu hỏi soutien công khai có giá trị. « Je voudrais simplement souligner combien votre analyse de X me paraît juste — et demander si vous envisagez de la prolonger sur Y. » Cú pháp này = soutien + question. Có giá trị cao hơn câu hỏi phản biện trong nhiều ngữ cảnh.",
+    "register_notes_en": "THREE REGISTERS OF QUESTION PHRASES:\n\nFORMAL (conference, defense, international seminar):\n- 'Permettez-moi tout d'abord de remercier l'oratrice…' (Allow me first of all to thank the speaker…)\n- 'J'aimerais, si vous me le permettez, revenir sur…' (I'd like, if you'll allow me, to come back to…)\n- 'Ne pensez-vous pas que… ?' (Don't you think that…?)\n- 'Je vous remercie par avance pour vos éclaircissements.' (I thank you in advance for your clarifications.)\n\nSEMI-FORMAL (lab seminar, doctoral colloquium):\n- 'Merci pour cette présentation.' (Thanks for this presentation.)\n- 'Une question si je peux.' (A question if I may.)\n- 'Comment faites-vous quand… ?' (How do you handle it when…?)\n- 'Vous parlez de X — qu'en est-il de Y ?' (You speak of X — what about Y?)\n\nINFORMAL (team meeting, working lunch):\n- 'Tu as parlé de X — c'est intéressant. Mais…' (You mentioned X — interesting. But…)\n- 'Question bête peut-être: …' (Maybe a silly question: …)\n\nDO NOT mix registers. Saying 'tu as parlé…' at an international colloquium = boorish. Saying 'permettez-moi tout d'abord…' among close colleagues = cold and distant.\n\nQUESTION-CLOSING PHRASES:\nFORMAL: 'Je vous remercie par avance.' / 'Je vous remercie pour les éclaircissements que vous voudrez bien apporter.'\nNEUTRAL: 'Merci.' / 'Merci d'avance.'\n\nWHEN THE MODERATOR CUTS YOU OFF ('nous n'avons plus le temps'):\n- DO NOT try to add more — stand down politely\n- 'Je vous remercie.' + sit\n- You can speak directly with the speaker after the session — not through the moderator\n\nA REFINED CONVENTION: if you AGREE with the speaker, say so openly — public support has academic value. 'Je voudrais simplement souligner combien votre analyse de X me paraît juste — et demander si vous envisagez de la prolonger sur Y.' (I would simply like to underscore how accurate your analysis of X seems to me — and ask whether you envisage extending it to Y.) This syntax = support + question. Often more valuable in academic context than a critical question — anglophones often default to critique mode and miss this register.",
     "idiom_glosses": [
       {
         "idiom": "Prendre la parole (formel)",
         "literal": "Lấy lời",
+        "literal_en": "To take the word",
         "meaning": "Phát biểu trong một bối cảnh chính thức.",
+        "meaning_en": "To speak in a formal context — literally 'to take the word'. English equivalent: 'to take the floor'. Used both for being recognized to speak and for the act of speaking up.",
         "example": "Avant de prendre la parole, attendez que le modérateur vous donne le micro."
       },
       {
         "idiom": "Mettre les pieds dans le plat (courant)",
         "literal": "Đặt chân vào đĩa",
+        "literal_en": "To put one's feet in the dish",
         "meaning": "Đặt câu hỏi thẳng thắn về điểm nhạy cảm — đôi khi gây khó chịu.",
+        "meaning_en": "To bring up something awkward directly — sometimes deliberately, sometimes by accident. English equivalent: 'to put one's foot in it' (if accidental) or 'to bring up the elephant in the room' (if deliberate). At a conference, asking the question everyone is thinking but no one will voice.",
         "example": "Sa question a mis les pieds dans le plat — toute la salle a retenu son souffle."
       },
       {
         "idiom": "Botter en touche (courant)",
         "literal": "Đá ra ngoài biên",
+        "literal_en": "To kick into touch",
         "meaning": "Né tránh câu hỏi — thoát bằng câu trả lời lệch.",
+        "meaning_en": "To dodge a question — kick the ball out of play (rugby metaphor). English equivalent: 'to punt on' or 'to sidestep'. A speaker who 'bote en touche' on a hard question signals they don't have a strong answer.",
         "example": "L'orateur a botté en touche sur la question méthodologique la plus difficile."
       },
       {
         "idiom": "Renvoyer la balle dans le camp adverse (courant)",
         "literal": "Đá quả bóng về sân đối phương",
+        "literal_en": "To send the ball back into the opposing camp",
         "meaning": "Trả lại trách nhiệm cho người hỏi — đôi khi né tránh, đôi khi hợp lý.",
+        "meaning_en": "To return the question to the asker — turn the rhetorical tables. English equivalent: 'to turn the question back' or 'to put the ball back in someone's court'. Sometimes evasion, sometimes a legitimate move when the question is itself contested.",
         "example": "Plutôt que répondre, l'oratrice a renvoyé la balle: « Et vous, comment articuleriez-vous cela ? »"
       }
     ],
@@ -2784,29 +2856,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Ne pensez-vous pas que cette grille de lecture fait l'___ sur la dimension diachronique du phénomène ?",
-        "answer": "impasse"
+        "answer": "impasse",
+        "hint_vi": "danh từ giống cái nghĩa 'ngõ cụt / bỏ qua' — cụm cố định 'faire l'___ sur'",
+        "hint_en": "feminine noun for 'dead end / oversight' — part of the fixed expression 'faire l'___ sur' (to overlook / skip over)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "faire l'impasse sur",
-            "bỏ qua"
+            "bỏ qua (to overlook — implies systematic omission)"
           ],
           [
             "évoqué en passant",
-            "đề cập thoáng qua"
+            "đề cập thoáng qua (mentioned in passing)"
           ],
           [
             "un éclaircissement",
-            "một sự làm rõ"
+            "một sự làm rõ (a clarification — polite request for expansion)"
           ]
         ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
+        "instruction": "Nối thuật ngữ với nghĩa Việt",
+        "instruction_en": "Match the term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Cho phép tôi trước hết cảm ơn người phát biểu vì bài trình bày đặc biệt kích thích này.",
+        "english": "Allow me first of all to thank the speaker for this particularly stimulating presentation.",
         "french": "Permettez-moi tout d'abord de remercier l'oratrice pour cet exposé particulièrement stimulant."
       }
     ]
@@ -2826,6 +2902,12 @@ export const lessons: FrenchLesson[] = [
           "exposition → èk-spo-zi-sion",
           "reconfigure → rơ-kõn-fi-gur",
           "métalinguistique → mé-ta-lan-gwis-tik"
+        ],
+        "pronunciation_focus_en": [
+          "s'attache → 'sah-TASH' — double-t one clean 't'; final -che is 'sh'; final -e silent",
+          "exposition → 'eks-poh-zee-SYOHN' — 's' between vowels sounds like 'z'; -tion is 'syohn'",
+          "reconfigure → 'ruh-kohn-fee-GEWR' — schwa 're'; nasal 'on'; final -ure rounded 'ewr'",
+          "métalinguistique → 'may-tah-lan-gwees-TEEK' — five syllables; nasal -in; -ique is 'eek'"
         ]
       },
       {
@@ -2836,6 +2918,12 @@ export const lessons: FrenchLesson[] = [
           "semi-directifs → sơ-mi di-rèk-tif",
           "univoque → u-ni-vok",
           "contexte → kõn-tèkst"
+        ],
+        "pronunciation_focus_en": [
+          "entretiens → 'ahn-truh-TYAN' — nasal -en + nasal -ien; plural -s silent",
+          "semi-directifs → 'suh-mee dee-rek-TEEF' — 'semi' is 'suh-mee', not English 'SEM-eye'; final -ifs is 'eef', s silent",
+          "univoque → 'ew-nee-VOHK' — 'u' rounded 'ew'; final -e silent",
+          "contexte → 'kohn-TEKST' — nasal 'on'; final -e silent but the -kst cluster sounded"
         ]
       },
       {
@@ -2846,6 +2934,12 @@ export const lessons: FrenchLesson[] = [
           "dominante → do-mi-nãnt",
           "universel → u-ni-vèr-sèl",
           "précoces → pré-kos"
+        ],
+        "pronunciation_focus_en": [
+          "résultats → 'ray-zewl-TAH' — 's' between vowels sounds like 'z'; 'u' rounded; final -ts silent",
+          "dominante → 'doh-mee-NAHNT' — nasal -an; feminine -e makes the -t sounded",
+          "universel → 'ew-nee-vair-SEL' — 'u' rounded; final -el is short 'el'",
+          "précoces → 'pray-KOHS' — adjective feminine plural; final -s silent, but the -ce is sounded"
         ]
       },
       {
@@ -2856,6 +2950,12 @@ export const lessons: FrenchLesson[] = [
           "perspective → pèrs-pèk-tiv",
           "empirique → ãn-pi-rik",
           "implications → an-pli-ka-sion"
+        ],
+        "pronunciation_focus_en": [
+          "organise → 'or-gah-NEEZ' — final -se sounds like 'z'; reflexive: the article 'organizes itself'",
+          "perspective → 'pers-pek-TEEV' — final -ive is 'eev'; cluster -rsp- sounded but quick",
+          "empirique → 'ahn-pee-REEK' — nasal 'em' opening; final -ique is 'eek'",
+          "implications → 'an-plee-kah-SYOHN' — nasal -im; -tion is 'syohn'; plural -s silent"
         ]
       },
       {
@@ -2866,190 +2966,229 @@ export const lessons: FrenchLesson[] = [
           "suggérons → sug-jé-rõn",
           "resituée → rơ-si-tu-é",
           "contextuelle → kõn-tèks-tu-èl"
+        ],
+        "pronunciation_focus_en": [
+          "conclusion → 'kohn-klew-ZYOHN' — 's' between vowels sounds like 'z'; nasal -on",
+          "suggérons → 'sewg-zhay-ROHN' — 'u' rounded; -gé- is 'zhay'; nasal -on at the end",
+          "resituée → 'ruh-see-tew-AY' — schwa 're'; 'u' rounded; past participle feminine -ée is 'ay'",
+          "contextuelle → 'kohn-teks-TWEL' — nasal 'on'; 'tu' glides into 'tw'; feminine -e doubles the 'l' sound"
         ]
       }
     ],
     "cultural_notes_vi": "VIẾT ABSTRACT (résumé) là một KỸ NĂNG PHÂN BIỆT C1 với B2. Một abstract tốt = bạn được đọc; một abstract tệ = bài bị bỏ qua, kể cả khi nội dung xuất sắc.\n\nQUY TẮC TỐI THƯỢNG: ABSTRACT là MỘT TỆ-XÚC LẬP-LUẬN TỰ CHẾ, không phải tóm tắt nội dung. Khác Việt Nam — nơi tóm tắt thường mô tả bài (« bài này gồm 5 phần ») — abstract Pháp nêu LUẬN ĐIỂM, CHỨNG CỨ, ĐÓNG GÓP, trong cấu trúc cô đọng.\n\nCẤU TRÚC CHUẨN abstract bài báo Pháp (200-300 từ):\n\n(1) PROBLÉMATIQUE (1-2 câu): vấn đề khoa học cụ thể bài giải quyết. KHÔNG « ce sujet est important parce que… » — đi thẳng.\n\n(2) DONNÉES / MÉTHODE (1-2 câu): điều bạn dùng để trả lời. « À partir de [corpus], nous… »\n\n(3) RÉSULTAT PRINCIPAL (2-3 câu): điều bạn tìm ra. ĐÂY là phần dài nhất; abstract Pháp đặt giá trị vào kết quả, không vào mô tả thiết kế.\n\n(4) CONTRIBUTION (1-2 câu): điều bài đóng góp vào tranh luận. « Nos résultats nuancent / contestent / prolongent la thèse de X. »\n\n(5) MOTS-CLÉS (5-7 từ): các thuật ngữ chính, theo thứ tự từ rộng đến hẹp.\n\nKHÁC BIỆT VỚI ABSTRACT ANGLAIS: anglais thường yêu cầu PROBLÈME / MÉTHODE / RÉSULTATS / CONCLUSION rõ ràng theo từng đoạn. Pháp linh hoạt hơn, ưu tiên dòng văn liền mạch — nhưng các phần trên VẪN cần xuất hiện. NGƯỜI VIỆT mới dùng phong cách Anh: gắn « Background: », « Methods: », « Results: » trong abstract Pháp — bị từ chối ngay; phong cách này KHÔNG phù hợp với revues Pháp.\n\nVỀ VOIX (giọng): Pháp đại học truyền thống ưu tiên « nous » (« nous montrons ») trong khoa học xã hội + nhân văn; « on » (« on observe ») trong khoa học cứng + nhân văn cổ điển; « je » (« je propose ») trong sách / chương sách / essai. Một sai lầm phổ biến: dùng « je » trong abstract bài báo khoa học xã hội — bị đọc là cá nhân hoá quá mức. Trừ khi tác giả nổi tiếng và viết essai.\n\nVỀ THÌ (temps): abstract Pháp dùng PRÉSENT INTEMPOREL chiếm 80%. « Le présent article examine… »; « Nos résultats montrent… ». Passé composé chỉ cho hành động phương pháp luận đã hoàn thành: « Nous avons constitué un corpus de… ». Future ít dùng — bạn đang trình bày bài đã viết, không bài sắp viết.\n\nVỀ ĐỘ DÀI: Pháp expect abstract NGẮN, dày đặc. Một câu trống trải = một câu mất cơ hội. KHÔNG « cette étude se propose d'examiner… » (lặp). KHÔNG « il est important de noter que… » (trống rỗng). KHÔNG « comme on le sait… » (giả định, không khoa học).",
+    "cultural_notes_en": "WRITING THE ABSTRACT (résumé) is a SKILL THAT DISTINGUISHES C1 from B2. A good abstract = your work gets read; a bad abstract = your paper gets skipped, even if the content is excellent.\n\nPRIME RULE: AN ABSTRACT IS A SELF-CONTAINED MICRO-ARGUMENT, not a content summary. Anglophone abstracts often default to chunked 'Background / Methods / Results / Conclusion' formatting; French abstracts demand a flowing prose argument that states the THESIS, EVIDENCE, and CONTRIBUTION in a tightly compressed structure.\n\nSTANDARD STRUCTURE for a French journal-article abstract (200-300 words):\n\n(1) PROBLÉMATIQUE (1-2 sentences): the specific scientific problem the paper addresses. NO 'this topic is important because…' — go directly.\n\n(2) DATA / METHOD (1-2 sentences): what you use to answer it. 'À partir de [corpus], nous…'\n\n(3) MAIN RESULT (2-3 sentences): what you found. THIS is the longest part; French abstracts value the result, not the design description.\n\n(4) CONTRIBUTION (1-2 sentences): what the paper contributes to the debate. 'Nos résultats nuancent / contestent / prolongent la thèse de X.'\n\n(5) KEYWORDS (5-7 terms): the main terminology, ordered from broad to narrow.\n\nDIFFERENCE FROM ANGLOPHONE ABSTRACTS: English-language journals often require labeled sections (Background:, Methods:, Results:, Conclusion:). French journals favor flowing prose — but the same components MUST appear. ANGLOPHONES often default to inserting English-style section labels ('Background:', 'Methods:') in a French abstract — French reviewers will reject this immediately; the style is incompatible with francophone journals.\n\nON VOICE: traditional French academia favors 'nous' ('nous montrons') in social sciences and humanities; 'on' ('on observe') in hard sciences and classical humanities; 'je' ('je propose') in books, book chapters, essais. A common mistake: using 'je' in a journal-article abstract in social sciences — reads as overly personal. Reserve 'je' for established authors writing essais.\n\nON TENSE: French abstracts use the PRÉSENT INTEMPOREL (timeless present) 80% of the time. 'Le présent article examine…'; 'Nos résultats montrent…'. Passé composé only for completed methodological actions: 'Nous avons constitué un corpus de…'. Future is rarely used — you're presenting a written paper, not a forthcoming one.\n\nON LENGTH: French expects the abstract to be SHORT and dense. An empty sentence is a wasted sentence. NEVER 'cette étude se propose d'examiner…' (redundant). NEVER 'il est important de noter que…' (empty). NEVER 'comme on le sait…' (assumes, not scientific).",
     "tip_advice_vi": "QUY TRÌNH 4 BƯỚC để viết một abstract tốt:\n\nBƯỚC 1 — VIẾT BÀI TRƯỚC, ABSTRACT SAU. KHÔNG bao giờ viết abstract trước bài, dù bạn nghĩ bạn biết kết luận. Một bài luôn dịch chuyển trong quá trình viết — abstract viết đầu sẽ không khớp.\n\nBƯỚC 2 — VIẾT BẢN NHÁP DÀI (500 từ), sau đó CẮT TỚI 250 từ. Nén là bước quan trọng — buộc bạn ưu tiên cái cốt yếu.\n\nBƯỚC 3 — KIỂM TRA 5 CÂU HỎI:\n(a) Một độc giả không quen lĩnh vực có hiểu được vấn đề chỉ bằng abstract không?\n(b) Có nêu CỤ THỂ điều bạn đã làm (corpus, méthode) không?\n(c) Có nêu RÕ điều bạn tìm ra (kết quả chính cụ thể) không?\n(d) Có định vị contribution của bạn so với tranh luận hiện tại không?\n(e) Mots-clés có phủ trường rộng đến mức tìm được, hẹp đến mức chính xác không?\n\nBƯỚC 4 — ĐỌC RA TIẾNG. Nếu bạn vấp đọc, độc giả cũng vấp. Câu nào không tự nhiên = câu nào sửa.\n\nMODÈLE 3 LOẠI ABSTRACT theo thể loại:\n\nABSTRACT BÀI BÁO (200-300 từ): cấu trúc trên — dày đặc, dòng văn liền.\n\nABSTRACT THÈSE / MÉMOIRE (500-1000 từ): cấu trúc tương tự nhưng có thêm 1-2 câu về plan và 1 câu về terrain. Có chỗ cho dimension méthodologique chi tiết hơn.\n\nABSTRACT COMMUNICATION (150-200 từ): rất ngắn — chỉ problématique + 1 résultat clé + invitation. Mục tiêu: làm comité chấp nhận, không phải truyền tải toàn bộ nội dung.\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐẦU:\n- « Le présent article s'attache à… » (bài hiện tại tập trung)\n- « Cette étude se propose d'examiner… » (nghiên cứu này đề xuất xem xét)\n- « Le présent travail interroge la manière dont… » (công trình này tra hỏi cách thức)\n- « Nous nous proposons, dans cet article, de… » (chúng tôi đề xuất trong bài này)\n\nĐỂ NÊU MÉTHODE:\n- « À partir de [corpus / données], nous… » (từ ngữ liệu / dữ liệu, chúng tôi)\n- « Nous nous appuyons sur [N] entretiens / observations / cas… » (dựa vào N phỏng vấn / quan sát / trường hợp)\n- « Notre analyse s'appuie sur la grille proposée par X… » (phân tích dựa lưới X đề xuất)\n\nĐỂ NÊU RÉSULTAT:\n- « Nous montrons que… » (chúng tôi cho thấy)\n- « Nos résultats font apparaître que… » (kết quả làm rõ ra)\n- « L'analyse met au jour… » (phân tích phơi bày)\n- « Trois résultats principaux ressortent: … » (ba kết quả chính nổi lên)\n\nĐỂ NÊU CONTRIBUTION:\n- « Nous nuançons / contestons / prolongeons la thèse selon laquelle… » (làm rõ sắc thái / tranh luận / kéo dài luận điểm rằng)\n- « Cette analyse contribue au débat sur X en proposant… » (phân tích đóng góp vào tranh luận về X bằng cách đề xuất)\n- « L'article ouvre des perspectives pour la suite des travaux sur… » (mở viễn cảnh cho công trình tiếp về)\n\nTRÁNH:\n- « Cet article est très important. » (đánh giá tự khen — sai)\n- « Comme tout le monde le sait… » (giả định, không khoa học)\n- « Nous avons travaillé pendant trois ans sur… » (cố gắng — không liên quan)\n- « Bien que de nombreuses études aient été menées… » (mở đầu trống rỗng)",
+    "tip_advice_en": "4-STEP PROCESS for a strong abstract:\n\nSTEP 1 — WRITE THE PAPER FIRST, ABSTRACT LAST. Never write the abstract before the paper, even if you think you know the conclusion. A paper always shifts during writing — an abstract drafted first won't match.\n\nSTEP 2 — DRAFT LONG (500 words), THEN COMPRESS TO 250. Compression is the critical step — it forces you to prioritize the essential.\n\nSTEP 3 — RUN 5 CHECK QUESTIONS:\n(a) Can a reader unfamiliar with the field understand the problem from the abstract alone?\n(b) Do you state CONCRETELY what you did (corpus, method)?\n(c) Do you state CLEARLY what you found (main results, specific)?\n(d) Do you position your contribution relative to the current debate?\n(e) Do your keywords cover the field broadly enough to be findable, narrowly enough to be precise?\n\nSTEP 4 — READ ALOUD. If you stumble, readers will too. Any sentence that doesn't flow naturally = a sentence to rewrite.\n\n3 ABSTRACT TYPES by genre:\n\nJOURNAL-ARTICLE ABSTRACT (200-300 words): structure above — dense, flowing prose.\n\nTHESIS / DISSERTATION ABSTRACT (500-1000 words): similar structure but with 1-2 extra sentences on the plan and 1 on the field site. Room for more methodological detail.\n\nCONFERENCE ABSTRACT (150-200 words): very short — just problématique + 1 key result + invitation. Goal: get accepted by the committee, not convey the entire content.\n\nUSEFUL PHRASES:\n\nTO OPEN:\n- 'Le présent article s'attache à…' (The present article sets out to…)\n- 'Cette étude se propose d'examiner…' (This study proposes to examine…)\n- 'Le présent travail interroge la manière dont…' (The present work interrogates the way in which…)\n- 'Nous nous proposons, dans cet article, de…' (We propose, in this article, to…)\n\nTO STATE METHOD:\n- 'À partir de [corpus / données], nous…' (Based on [corpus / data], we…)\n- 'Nous nous appuyons sur [N] entretiens / observations / cas…' (We draw on [N] interviews / observations / cases…)\n- 'Notre analyse s'appuie sur la grille proposée par X…' (Our analysis draws on the framework proposed by X…)\n\nTO STATE RESULTS:\n- 'Nous montrons que…' (We show that…)\n- 'Nos résultats font apparaître que…' (Our results bring to light that…)\n- 'L'analyse met au jour…' (The analysis reveals…)\n- 'Trois résultats principaux ressortent: …' (Three main results emerge: …)\n\nTO STATE CONTRIBUTION:\n- 'Nous nuançons / contestons / prolongeons la thèse selon laquelle…' (We qualify / contest / extend the thesis that…)\n- 'Cette analyse contribue au débat sur X en proposant…' (This analysis contributes to the debate on X by proposing…)\n- 'L'article ouvre des perspectives pour la suite des travaux sur…' (The article opens perspectives for future work on…)\n\nAVOID:\n- 'Cet article est très important.' (self-praise — wrong)\n- 'Comme tout le monde le sait…' (assumes, unscientific)\n- 'Nous avons travaillé pendant trois ans sur…' (effort — irrelevant)\n- 'Bien que de nombreuses études aient été menées…' (empty opening)",
     "vocabulary": [
       {
         "word": "un résumé / un abstract",
         "en": "a summary / an abstract",
         "vi": "một tóm tắt",
         "pos": "n.m.",
-        "pronunciation_vi": "ré-zu-mé / ab-strakt"
+        "pronunciation_vi": "ré-zu-mé / ab-strakt",
+        "pronunciation_en": "ehn ray-zew-MAY / ab-STRAKT — 'résumé' takes the rounded 'u'; 'abstract' is an anglicism kept as-is in French academia"
       },
       {
         "word": "s'attacher à examiner",
         "en": "to set out to examine",
         "vi": "tập trung xem xét",
         "pos": "v.",
-        "pronunciation_vi": "sa-ta-shé a èk-za-mi-né"
+        "pronunciation_vi": "sa-ta-shé a èk-za-mi-né",
+        "pronunciation_en": "sah-tah-SHAY ah eg-zah-mee-NAY — the standard formal opener for an abstract or introduction"
       },
       {
         "word": "à partir d'un corpus de",
         "en": "based on a corpus of",
         "vi": "từ một ngữ liệu",
         "pos": "loc.",
-        "pronunciation_vi": "a par-tir dan kor-pus dơ"
+        "pronunciation_vi": "a par-tir dan kor-pus dơ",
+        "pronunciation_en": "ah par-TEER dan kor-PEWS duh — 'u' rounded in 'corpus'; the canonical phrase for opening the methodology"
       },
       {
         "word": "mettre au jour",
         "en": "to bring to light",
         "vi": "phơi bày",
         "pos": "v.",
-        "pronunciation_vi": "mè-trơ ô jur"
+        "pronunciation_vi": "mè-trơ ô jur",
+        "pronunciation_en": "MEH-truh oh ZHOOR — 'au' is 'oh'; 'j' is soft 'zh'; literally 'to put to day'; a strong verb for what an analysis reveals"
       },
       {
         "word": "nuancer une thèse",
         "en": "to qualify a thesis",
         "vi": "làm rõ sắc thái cho một luận điểm",
         "pos": "v.",
-        "pronunciation_vi": "nu-ãn-sé un tèz"
+        "pronunciation_vi": "nu-ãn-sé un tèz",
+        "pronunciation_en": "new-ahn-SAY ewn TEZ — 'u' rounded; nasal -an; standard contribution verb — softer than 'contester' (refute)"
       },
       {
         "word": "prolonger les travaux de",
         "en": "to extend the work of",
         "vi": "kéo dài công trình của",
         "pos": "v.",
-        "pronunciation_vi": "pro-lõn-jé lé tra-vô dơ"
+        "pronunciation_vi": "pro-lõn-jé lé tra-vô dơ",
+        "pronunciation_en": "proh-lohn-ZHAY lay trah-VOH duh — 'j' is soft 'zh'; the most respectful contribution verb (you're continuing rather than overturning)"
       },
       {
         "word": "des mots-clés",
         "en": "keywords",
         "vi": "từ khóa",
         "pos": "n.m. pl.",
-        "pronunciation_vi": "mô-klé"
+        "pronunciation_vi": "mô-klé",
+        "pronunciation_en": "day moh-KLAY — two short syllables; literally 'word-keys'; the journal-required terms for indexing"
       },
       {
         "word": "l'enjeu théorique",
         "en": "the theoretical stake",
         "vi": "vấn đề lý thuyết",
         "pos": "n.m.",
-        "pronunciation_vi": "lãn-jơ té-o-rik"
+        "pronunciation_vi": "lãn-jơ té-o-rik",
+        "pronunciation_en": "lahn-ZHUH tay-oh-REEK — nasal -en; -jeu is 'zhuh' with rounded lips; what's at stake intellectually in the analysis"
       },
       {
         "word": "resituer dans",
         "en": "to relocate within",
         "vi": "đặt lại trong",
         "pos": "v.",
-        "pronunciation_vi": "rơ-si-tu-é dã"
+        "pronunciation_vi": "rơ-si-tu-é dã",
+        "pronunciation_en": "ruh-see-tew-AY dahn — schwa 're'; 'u' rounded; means 'to place back into / contextualize within'"
       },
       {
         "word": "l'apport central",
         "en": "the core contribution",
         "vi": "đóng góp trung tâm",
         "pos": "n.m.",
-        "pronunciation_vi": "a-por sãn-tral"
+        "pronunciation_vi": "a-por sãn-tral",
+        "pronunciation_en": "lah-POR sahn-TRAHL — 'apport' has silent final -t; nasal -en; the heart of what the paper offers"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Lefèvre",
         "text": "Madame Tran, votre abstract fait 380 mots — la revue en demande 250. Coupez.",
-        "vi": "Cô Trần, abstract của cô 380 từ — tạp chí yêu cầu 250. Cô cắt."
+        "vi": "Cô Trần, abstract của cô 380 từ — tạp chí yêu cầu 250. Cô cắt.",
+        "en": "Ms. Tran, your abstract is 380 words — the journal asks for 250. Cut."
       },
       {
         "speaker": "Linh",
         "text": "Je peux couper la phrase de contextualisation et fusionner deux phrases méthodologiques.",
-        "vi": "Tôi có thể cắt câu đặt ngữ cảnh và gộp hai câu phương pháp luận."
+        "vi": "Tôi có thể cắt câu đặt ngữ cảnh và gộp hai câu phương pháp luận.",
+        "en": "I can cut the contextualization sentence and merge two methodological sentences."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Coupez aussi « comme l'a montré Bialystok » — ce nom est dans les mots-clés, pas dans l'abstract.",
-        "vi": "Cô cắt cả « như Bialystok đã chứng minh » — tên này ở mots-clés, không phải abstract."
+        "vi": "Cô cắt cả « như Bialystok đã chứng minh » — tên này ở mots-clés, không phải abstract.",
+        "en": "Also cut 'as Bialystok has shown' — that name belongs in the keywords, not the abstract."
       },
       {
         "speaker": "Linh",
         "text": "Bien vu. L'abstract n'est pas le lieu de l'historiographie. J'enlève.",
-        "vi": "Thầy đúng. Abstract không phải chỗ cho lịch sử nghiên cứu. Tôi bỏ."
+        "vi": "Thầy đúng. Abstract không phải chỗ cho lịch sử nghiên cứu. Tôi bỏ.",
+        "en": "Good catch. The abstract isn't the place for historiography. I'll remove it."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Lefèvre (relecture finale, soumission revue)",
         "text": "Madame Tran, votre article est solide. Reste l'abstract. Vous avez écrit trois versions — laquelle proposez-vous ?",
-        "vi": "Cô Trần, bài của cô vững. Còn abstract. Cô đã viết 3 phiên bản — cô đề xuất cái nào?"
+        "vi": "Cô Trần, bài của cô vững. Còn abstract. Cô đã viết 3 phiên bản — cô đề xuất cái nào?",
+        "en": "Ms. Tran, your article is solid. The abstract remains. You've written three versions — which do you propose?"
       },
       {
         "speaker": "Linh",
         "text": "Je penche pour la deuxième. Mais elle fait 320 mots, et la revue en demande 250.",
-        "vi": "Tôi nghiêng về cái thứ hai. Nhưng nó 320 từ, và tạp chí yêu cầu 250."
+        "vi": "Tôi nghiêng về cái thứ hai. Nhưng nó 320 từ, và tạp chí yêu cầu 250.",
+        "en": "I lean toward the second. But it's 320 words, and the journal asks for 250."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Lisez-la à voix haute, on va la couper ensemble.",
-        "vi": "Cô đọc to lên, mình cùng cắt."
+        "vi": "Cô đọc to lên, mình cùng cắt.",
+        "en": "Read it aloud, we'll cut it together."
       },
       {
         "speaker": "Linh",
         "text": "« Le présent article s'attache à examiner la manière dont l'exposition précoce à une langue seconde reconfigure la conscience métalinguistique adulte. La littérature dominante, depuis les travaux fondateurs de Bialystok (2001), postule un avantage cognitif universel des bilingues précoces. Cette thèse, largement acceptée, a néanmoins été récemment contestée par plusieurs équipes nord-américaines. Le présent travail s'inscrit dans cette inflexion critique. À partir d'un corpus de quatre-vingts entretiens semi-directifs menés auprès de Vietnamiens ayant migré en France entre cinq et douze ans, complété par une batterie de tests cognitifs standardisés, nous montrons que… »",
-        "vi": "« Bài báo hiện tại tập trung xem xét cách thức tiếp xúc sớm với ngôn ngữ thứ hai tái cấu hình ý thức siêu ngôn ngữ ở tuổi trưởng thành. Tài liệu chủ đạo, từ các công trình nền tảng của Bialystok (2001), đặt giả định một lợi thế nhận thức phổ quát của người song ngữ sớm. Luận điểm này, được chấp nhận rộng rãi, gần đây bị nhiều đội Bắc Mỹ phản biện. Công trình hiện tại nằm trong dòng phê phán này. Từ một ngữ liệu 80 phỏng vấn bán cấu trúc với người Việt sang Pháp từ 5 đến 12 tuổi, bổ sung bằng loạt bài kiểm tra nhận thức chuẩn hóa, chúng tôi cho thấy rằng… »"
+        "vi": "« Bài báo hiện tại tập trung xem xét cách thức tiếp xúc sớm với ngôn ngữ thứ hai tái cấu hình ý thức siêu ngôn ngữ ở tuổi trưởng thành. Tài liệu chủ đạo, từ các công trình nền tảng của Bialystok (2001), đặt giả định một lợi thế nhận thức phổ quát của người song ngữ sớm. Luận điểm này, được chấp nhận rộng rãi, gần đây bị nhiều đội Bắc Mỹ phản biện. Công trình hiện tại nằm trong dòng phê phán này. Từ một ngữ liệu 80 phỏng vấn bán cấu trúc với người Việt sang Pháp từ 5 đến 12 tuổi, bổ sung bằng loạt bài kiểm tra nhận thức chuẩn hóa, chúng tôi cho thấy rằng… »",
+        "en": "'The present article sets out to examine how early exposure to a second language reconfigures adult metalinguistic awareness. The dominant literature, since Bialystok's foundational work (2001), posits a universal cognitive advantage for early bilinguals. This thesis, widely accepted, has nonetheless recently been contested by several North American teams. The present work joins this critical inflection. Based on a corpus of eighty semi-structured interviews with Vietnamese who migrated to France between ages five and twelve, supplemented by a battery of standardized cognitive tests, we show that…'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Stop. La phrase 2 et la phrase 3 — vous résumez l'historiographie. C'est utile en introduction; ça n'a pas sa place dans l'abstract. Vous gagnez 50 mots en les fusionnant en une seule.",
-        "vi": "Dừng. Câu 2 và câu 3 — cô tóm tắt lịch sử. Hữu ích ở dẫn nhập; không có chỗ ở abstract. Cô gọn 50 từ khi gộp thành một."
+        "vi": "Dừng. Câu 2 và câu 3 — cô tóm tắt lịch sử. Hữu ích ở dẫn nhập; không có chỗ ở abstract. Cô gọn 50 từ khi gộp thành một.",
+        "en": "Stop. Sentences 2 and 3 — you're summarizing the historiography. That's useful in the introduction; it has no place in the abstract. You'll save 50 words by merging them into one."
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison. Une seule phrase: « En interrogeant la thèse — dominante depuis Bialystok (2001) — d'un avantage cognitif universel des bilingues précoces, le présent article propose une lecture contextuelle. »",
-        "vi": "Thầy đúng. Một câu duy nhất: « Đặt vấn đề về luận điểm — chủ đạo từ Bialystok (2001) — về một lợi thế nhận thức phổ quát của người song ngữ sớm, bài báo hiện tại đề xuất một cách đọc bối cảnh. »"
+        "vi": "Thầy đúng. Một câu duy nhất: « Đặt vấn đề về luận điểm — chủ đạo từ Bialystok (2001) — về một lợi thế nhận thức phổ quát của người song ngữ sớm, bài báo hiện tại đề xuất một cách đọc bối cảnh. »",
+        "en": "You're right. A single sentence: 'By interrogating the thesis — dominant since Bialystok (2001) — of a universal cognitive advantage for early bilinguals, the present article offers a contextual reading.'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Bien. Continuez.",
-        "vi": "Tốt. Cô tiếp tục."
+        "vi": "Tốt. Cô tiếp tục.",
+        "en": "Good. Continue."
       },
       {
         "speaker": "Linh",
         "text": "« À partir d'un corpus de quatre-vingts entretiens semi-directifs menés auprès de Vietnamiens ayant migré en France entre cinq et douze ans, complété par une batterie de tests cognitifs standardisés, nous montrons que l'avantage métalinguistique précédemment décrit varie de manière significative selon le contexte d'acquisition de la L2. »",
-        "vi": "« Từ một ngữ liệu 80 phỏng vấn bán cấu trúc với người Việt sang Pháp từ 5 đến 12 tuổi, bổ sung bằng loạt bài kiểm tra nhận thức chuẩn hóa, chúng tôi cho thấy lợi thế siêu ngôn ngữ đã được mô tả trước đó biến đổi đáng kể tùy bối cảnh tiếp thu ngôn ngữ thứ hai. »"
+        "vi": "« Từ một ngữ liệu 80 phỏng vấn bán cấu trúc với người Việt sang Pháp từ 5 đến 12 tuổi, bổ sung bằng loạt bài kiểm tra nhận thức chuẩn hóa, chúng tôi cho thấy lợi thế siêu ngôn ngữ đã được mô tả trước đó biến đổi đáng kể tùy bối cảnh tiếp thu ngôn ngữ thứ hai. »",
+        "en": "'Based on a corpus of eighty semi-structured interviews with Vietnamese who migrated to France between ages five and twelve, supplemented by a battery of standardized cognitive tests, we show that the previously described metalinguistic advantage varies significantly according to the context of L2 acquisition.'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Cette phrase est trop longue — elle fait perdre le lecteur. Coupez en deux: méthode, puis résultat.",
-        "vi": "Câu này quá dài — làm mất độc giả. Cắt làm hai: phương pháp, rồi kết quả."
+        "vi": "Câu này quá dài — làm mất độc giả. Cắt làm hai: phương pháp, rồi kết quả.",
+        "en": "That sentence is too long — it loses the reader. Cut in two: method, then result."
       },
       {
         "speaker": "Linh",
         "text": "« À partir d'un corpus de quatre-vingts entretiens semi-directifs auprès de Vietnamiens migrants, complétés par des tests cognitifs standardisés, nous montrons que le lien entre âge d'acquisition et compétence métalinguistique adulte n'est pas univoque. Il varie significativement selon le contexte d'acquisition — formel ou informel, immersif ou non. »",
-        "vi": "« Từ một ngữ liệu 80 phỏng vấn bán cấu trúc với người Việt di cư, bổ sung bằng các bài kiểm tra nhận thức chuẩn hóa, chúng tôi cho thấy mối liên hệ giữa tuổi tiếp thu và năng lực siêu ngôn ngữ ở tuổi trưởng thành không phải đơn nghĩa. Nó biến đổi đáng kể tùy bối cảnh tiếp thu — chính quy hay không chính quy, đắm chìm hay không. »"
+        "vi": "« Từ một ngữ liệu 80 phỏng vấn bán cấu trúc với người Việt di cư, bổ sung bằng các bài kiểm tra nhận thức chuẩn hóa, chúng tôi cho thấy mối liên hệ giữa tuổi tiếp thu và năng lực siêu ngôn ngữ ở tuổi trưởng thành không phải đơn nghĩa. Nó biến đổi đáng kể tùy bối cảnh tiếp thu — chính quy hay không chính quy, đắm chìm hay không. »",
+        "en": "'Based on a corpus of eighty semi-structured interviews with Vietnamese migrants, supplemented by standardized cognitive tests, we show that the link between age of acquisition and adult metalinguistic competence is not univocal. It varies significantly with the context of acquisition — formal or informal, immersive or not.'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Excellent — concret, défendable. Trois résultats secondaires en une phrase, puis la conclusion ?",
-        "vi": "Xuất sắc — cụ thể, bảo vệ được. Ba kết quả phụ trong một câu, rồi kết luận?"
+        "vi": "Xuất sắc — cụ thể, bảo vệ được. Ba kết quả phụ trong một câu, rồi kết luận?",
+        "en": "Excellent — concrete, defensible. Three secondary results in one sentence, then the conclusion?"
       },
       {
         "speaker": "Linh",
         "text": "« Trois résultats secondaires ressortent: l'effet du contexte familial bilingue, l'absence de seuil critique strict avant douze ans, et le rôle modérateur du capital culturel parental. En conclusion, nous suggérons que la notion d'avantage bilingue, telle qu'elle est aujourd'hui formulée, demande à être resituée dans une analyse contextuelle plus fine. »",
-        "vi": "« Ba kết quả phụ nổi lên: hiệu ứng bối cảnh gia đình song ngữ, sự vắng ngưỡng tới hạn nghiêm ngặt trước 12 tuổi, và vai trò điều tiết của vốn văn hóa cha mẹ. Kết luận, chúng tôi gợi ý rằng khái niệm lợi thế song ngữ, như được phát biểu hiện nay, cần được đặt lại trong một phân tích bối cảnh tinh tế hơn. »"
+        "vi": "« Ba kết quả phụ nổi lên: hiệu ứng bối cảnh gia đình song ngữ, sự vắng ngưỡng tới hạn nghiêm ngặt trước 12 tuổi, và vai trò điều tiết của vốn văn hóa cha mẹ. Kết luận, chúng tôi gợi ý rằng khái niệm lợi thế song ngữ, như được phát biểu hiện nay, cần được đặt lại trong một phân tích bối cảnh tinh tế hơn. »",
+        "en": "'Three secondary results emerge: the effect of the bilingual family context, the absence of a strict critical threshold before age twelve, and the moderating role of parental cultural capital. In conclusion, we suggest that the notion of bilingual advantage, as currently formulated, requires repositioning within a finer-grained contextual analysis.'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Comptez les mots.",
-        "vi": "Cô đếm chữ."
+        "vi": "Cô đếm chữ.",
+        "en": "Count the words."
       },
       {
         "speaker": "Linh",
         "text": "248 mots. Sous le seuil.",
-        "vi": "248 từ. Dưới ngưỡng."
+        "vi": "248 từ. Dưới ngưỡng.",
+        "en": "248 words. Under the limit."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Parfait. Mots-clés ?",
-        "vi": "Hoàn hảo. Mots-clés?"
+        "vi": "Hoàn hảo. Mots-clés?",
+        "en": "Perfect. Keywords?"
       },
       {
         "speaker": "Linh",
         "text": "« Bilinguisme; acquisition d'une L2; conscience métalinguistique; sociolinguistique; migration vietnamienne en France. » Cinq termes — du plus large au plus spécifique.",
-        "vi": "« Song ngữ; tiếp thu ngôn ngữ thứ hai; ý thức siêu ngôn ngữ; ngôn ngữ học xã hội; di cư Việt Nam tại Pháp. » Năm thuật ngữ — từ rộng nhất đến cụ thể nhất."
+        "vi": "« Song ngữ; tiếp thu ngôn ngữ thứ hai; ý thức siêu ngôn ngữ; ngôn ngữ học xã hội; di cư Việt Nam tại Pháp. » Năm thuật ngữ — từ rộng nhất đến cụ thể nhất.",
+        "en": "'Bilingualism; L2 acquisition; metalinguistic awareness; sociolinguistics; Vietnamese migration to France.' Five terms — from broadest to most specific."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Excellent. Soumettez.",
-        "vi": "Xuất sắc. Cô nộp."
+        "vi": "Xuất sắc. Cô nộp.",
+        "en": "Excellent. Submit."
       }
     ],
     "roleplay_prompts": [
@@ -3057,30 +3196,44 @@ export const lessons: FrenchLesson[] = [
       "Bạn đang viết résumé 800 từ cho thèse. Soạn 1 đoạn problématique, 1 đoạn méthode, 1 đoạn résultats principaux, 1 đoạn discussion. Tránh « comme on le sait », « il est important de noter ».",
       "Bạn nộp một communication cho colloque. Abstract chỉ 200 từ. Soạn — chỉ problématique + 1 résultat clé + invitation au débat. KHÔNG mô tả méthode chi tiết (sẽ trong bài)."
     ],
+    "roleplay_prompts_en": [
+      "Draft a 250-word abstract for a paper you're writing. Follow the 5-part structure (problématique / method / result / contribution / keywords). Read aloud and run the 5 STEP-3 check questions. Resist the anglophone instinct to use English-style 'Background:' / 'Methods:' / 'Results:' labels — French journals expect flowing prose.",
+      "You're writing an 800-word thesis résumé. Draft 1 paragraph on problématique, 1 on method, 1 on main results, 1 on discussion. Avoid 'comme on le sait' (assumes), 'il est important de noter' (empty). Make every sentence carry weight.",
+      "You're submitting a paper proposal to a conference. The abstract is only 200 words. Draft — just problématique + 1 key result + invitation to debate. DO NOT describe method in detail (it'll be in the paper itself). The goal of a conference abstract is acceptance, not full content delivery."
+    ],
     "register_notes": "PHÂN BIỆT 3 LOẠI VOIX trong résumé:\n\n« NOUS » (chuẩn nhất cho article scientifique, sciences sociales et humaines):\n- « Nous montrons que… »\n- « Nous nous appuyons sur… »\n- « Nous nuançons la thèse de… »\n\n« ON » (chuẩn cho sciences dures, certains essais):\n- « On observe que… »\n- « On constate un effet… »\n- « On peut interroger… »\n\n« JE » (réservé aux essais, chapitres signés, ouvrages):\n- « Je propose dans cet article de… »\n- « Je soutiens que… »\n- « Je m'attache ici à… »\n\nKHÔNG TRỘN trong cùng abstract. Bắt đầu « nous » thì giữ « nous » đến cuối.\n\nVỀ THÌ:\n- Présent intemporel pour les actions du texte: « le présent article examine », « nous montrons », « nos résultats font apparaître »\n- Passé composé pour les actions de méthode achevée: « nous avons constitué un corpus », « nous avons mené des entretiens »\n- Imparfait jamais\n- Future occasionnel: « le présent travail invitera à… » — risqué; préférer présent\n\nVỀ HEDGE TRONG ABSTRACT: hedge nhẹ, KHÔNG nặng. Một abstract toàn « il semblerait que », « il est possible que » = đọc là sản phẩm chưa chín. Một abstract không hedge nào = đọc quá tự tin. Cân bằng: 1-2 hedges trong câu kết luận, présent affirmatif partout ailleurs.\n\nVỀ CHIỀU DÀI CÂU: tối ưu 15-25 từ/câu. Câu 40+ từ = tệ. Câu 5-10 từ = tốt cho transition; tệ cho contenu.\n\nMOT-CLÉS — TUYỆT ĐỐI:\n- 5-7 thuật ngữ\n- Từ rộng đến hẹp\n- KHÔNG lặp lại từ trong tiêu đề (lãng phí — index search engine sẽ trùng)\n- BAO GỒM 1-2 thuật ngữ giúp đọc giả tìm thấy bạn (ngay cả nếu chúng không phải trung tâm bài)\n- KHÔNG dùng từ ngữ chung (« société », « histoire ») — không định vị\n\nMỘT QUY ƯỚC ĐẶC BIỆT REVUES PHÁP: nhiều revues yêu cầu abstract bilingue (français + anglais). Người Việt thường viết bản tiếng Anh trước rồi dịch — sai. Viết bản tiếng Pháp trước (chuẩn cho revue Pháp), sau đó dịch sang tiếng Anh — không phải ngược. Bản tiếng Anh là thứ phẩm; bản tiếng Pháp là chính.",
+    "register_notes_en": "THREE VOICES IN THE ABSTRACT:\n\n'NOUS' (the standard for scientific articles in social sciences and humanities):\n- 'Nous montrons que…' (We show that…)\n- 'Nous nous appuyons sur…' (We draw on…)\n- 'Nous nuançons la thèse de…' (We qualify X's thesis…)\n\n'ON' (standard for hard sciences, some essays):\n- 'On observe que…' (One observes that…)\n- 'On constate un effet…' (One notes an effect…)\n- 'On peut interroger…' (One can interrogate…)\n\n'JE' (reserved for essays, signed chapters, books):\n- 'Je propose dans cet article de…' (I propose in this article to…)\n- 'Je soutiens que…' (I argue that…)\n- 'Je m'attache ici à…' (I focus here on…)\n\nDO NOT MIX within the same abstract. Start with 'nous', stay with 'nous' to the end.\n\nON TENSE:\n- Présent intemporel (timeless present) for actions in the text: 'le présent article examine', 'nous montrons', 'nos résultats font apparaître'\n- Passé composé for completed methodological actions: 'nous avons constitué un corpus', 'nous avons mené des entretiens'\n- Imparfait never\n- Future occasionally: 'le présent travail invitera à…' — risky; prefer present\n\nON HEDGING IN ABSTRACTS: light hedging, NOT heavy. An abstract full of 'il semblerait que', 'il est possible que' reads as unfinished. An abstract with no hedging at all reads as overclaiming. Balance: 1-2 hedges in the conclusion sentence, présent affirmatif everywhere else.\n\nON SENTENCE LENGTH: optimal 15-25 words per sentence. 40+ word sentences = bad. 5-10 word sentences = good for transitions; bad for content.\n\nKEYWORDS — ABSOLUTE RULES:\n- 5-7 terms\n- Broad to narrow\n- DO NOT repeat words from the title (wasted slot — the search engine already indexes the title)\n- INCLUDE 1-2 terms that help readers find you (even if they aren't central to the paper)\n- DO NOT use generic words ('société', 'histoire') — they don't position\n\nA SPECIFIC FRENCH-JOURNAL CONVENTION: many French journals require a bilingual abstract (French + English). Anglophones often write the English version first and translate — this is wrong. Write the French version first (the standard for the French journal), then translate to English — not the reverse. The English version is secondary; the French is primary. Submitting a French version that reads as a translation of an English original is a common rejection signal.",
     "idiom_glosses": [
       {
         "idiom": "Mettre au jour (formel)",
         "literal": "Đặt ra ngày",
+        "literal_en": "To put to day",
         "meaning": "Phơi bày — làm xuất hiện điều ẩn giấu.",
+        "meaning_en": "To bring to light — make visible what was hidden. English equivalent: 'to bring to light' or 'to uncover'. Stronger than 'révéler'; used for analytical work that surfaces previously unseen patterns.",
         "example": "L'analyse met au jour des dynamiques que les acteurs eux-mêmes ne percevaient pas."
       },
       {
         "idiom": "Faire saillir (soutenu)",
         "literal": "Làm nhô ra",
+        "literal_en": "To make protrude",
         "meaning": "Làm nổi bật một điểm đặc biệt — utile en abstract.",
+        "meaning_en": "To highlight a specific point — useful in an abstract. English equivalent: 'to bring into relief' or 'to foreground'. A precise verb for what good analysis does: makes salient features stand out from the background.",
         "example": "L'enquête fait saillir un paradoxe central que la littérature avait jusqu'ici négligé."
       },
       {
         "idiom": "Aller à l'essentiel (courant)",
         "literal": "Đi đến cốt yếu",
+        "literal_en": "To go to the essential",
         "meaning": "Vào thẳng vấn đề chính — chuẩn cho abstract.",
+        "meaning_en": "To get to the point — the gold standard for abstract writing. English equivalent: 'to get to the essence' or 'to cut to the chase'. The opposite of academic verbosity.",
         "example": "Un bon abstract va à l'essentiel — pas de circonvolutions, pas de phrases vides."
       },
       {
         "idiom": "Ouvrir des perspectives (formel)",
         "literal": "Mở các viễn cảnh",
+        "literal_en": "To open perspectives",
         "meaning": "Đề xuất hướng nghiên cứu mới — câu kết luận chuẩn.",
+        "meaning_en": "To open up new research directions — a standard closing move in an abstract. English equivalent: 'to open avenues for' or 'to suggest directions for future work'. Signals that the work, while complete in itself, generates new questions.",
         "example": "Cette analyse ouvre des perspectives pour les travaux futurs sur le bilinguisme tardif."
       }
     ],
@@ -3088,29 +3241,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Le présent article s'___ à examiner la manière dont l'exposition précoce à une langue seconde reconfigure la conscience métalinguistique adulte.",
-        "answer": "attache"
+        "answer": "attache",
+        "hint_vi": "động từ 's'attacher' (gắn vào / tập trung) ở présent ngôi 3 số ít — cụm cố định mở đầu abstract 's'attacher à'",
+        "hint_en": "verb 's'attacher' (to set out to / focus on) in 3rd person singular present — fixed abstract-opener 's'attacher à + infinitive'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "nuancer une thèse",
-            "làm rõ sắc thái cho một luận điểm"
+            "làm rõ sắc thái cho một luận điểm (to qualify a thesis — moderate contribution verb)"
           ],
           [
             "mettre au jour",
-            "phơi bày"
+            "phơi bày (to bring to light — strong analytical verb)"
           ],
           [
             "mots-clés",
-            "từ khóa"
+            "từ khóa (keywords — required for journal indexing)"
           ]
         ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
+        "instruction": "Nối thuật ngữ với nghĩa Việt",
+        "instruction_en": "Match the abstract-writing term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Kết luận, chúng tôi gợi ý rằng khái niệm « lợi thế song ngữ » cần được đặt lại trong một phân tích bối cảnh tinh tế hơn.",
+        "english": "In conclusion, we suggest that the notion of 'bilingual advantage' requires being repositioned within a finer-grained contextual analysis.",
         "french": "En conclusion, nous suggérons que la notion d'« avantage bilingue » demande à être resituée dans une analyse contextuelle plus fine."
       }
     ]
