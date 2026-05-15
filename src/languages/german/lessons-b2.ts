@@ -6813,6 +6813,11 @@ export const lessons: GermanLesson[] = [
           "Missverständnis → MÍS-fe-shten-nis",
           "unterlaufen → UN-tờ-lao-phần",
           "kulturelles → kul-tu-RE-lès"
+        ],
+        "pronunciation_focus_en": [
+          "Missverständnis → MISS-fair-shten(d)-niss",
+          "unterlaufen → OON-ter-low-fen ('au' = 'ow' in 'how')",
+          "kulturelles → kool-too-RELL-es"
         ]
       },
       {
@@ -6822,6 +6827,11 @@ export const lessons: GermanLesson[] = [
           "Absicht → ÁP-zicht",
           "versammelter Mannschaft → fe-ZÁM-mêl-tờ MAN-shaft",
           "kritisieren → kri-ti-ZÍA-ần"
+        ],
+        "pronunciation_focus_en": [
+          "Absicht → AHP-zikht (final -cht as soft 'ich-Laut', like 'huge')",
+          "versammelter Mannschaft → fair-ZAH-mel-ter MAHN-shahft",
+          "kritisieren → kree-tee-ZEER-en"
         ]
       },
       {
@@ -6831,6 +6841,11 @@ export const lessons: GermanLesson[] = [
           "gewusst → gờ-VÚST",
           "Konjunktiv II",
           "formuliert → for-mu-LÍA-t"
+        ],
+        "pronunciation_focus_en": [
+          "gewusst → guh-VOOST",
+          "Konjunktiv II — 'hätte ich…' = past-conditional (counterfactual)",
+          "formuliert → for-moo-LEERT"
         ]
       },
       {
@@ -6840,6 +6855,11 @@ export const lessons: GermanLesson[] = [
           "reinen Wein → RAI-nần VAIN",
           "einschenken → AIN-shen-kần",
           "unangemessen → UN-an-gê-mê-sần"
+        ],
+        "pronunciation_focus_en": [
+          "reinen Wein → RYE-nen VINE ('ei' always = 'eye/I')",
+          "einschenken → EYE-n-shen-ken",
+          "unangemessen → OON-ahn-guh-MESS-en"
         ]
       },
       {
@@ -6849,81 +6869,98 @@ export const lessons: GermanLesson[] = [
           "Asche → A-shê",
           "Haupt → HAOPT",
           "wiedergutmachen → VI-đờ-gut-ma-khần"
+        ],
+        "pronunciation_focus_en": [
+          "Asche → AH-shuh",
+          "Haupt → HOWPT ('au' = 'ow' in 'how')",
+          "wiedergutmachen → VEE-der-goot-mahkh-en"
         ]
       }
     ],
     "cultural_notes_vi": "Xin lỗi cross-cultural có quy tắc tế nhị riêng. (1) ĐỊNH NGHĨA 'XIN LỖI' KHÁC NHAU: ở VN, 'xin lỗi' thường nhẹ — có thể dùng cho việc nhỏ ('Xin lỗi cho hỏi'), không phải admission of fault. Ở Đức, 'Entschuldigung' nhẹ ngang VN, nhưng 'Es tut mir leid' = thực sự admit lỗi. KHÔNG over-use 'Es tut mir leid' khi không phải lỗi của bạn — bị coi là yếu thế. (2) APOLOGY = ACCOUNTABILITY: ở Đức, xin lỗi được expect đi kèm với (a) thừa nhận lỗi cụ thể, (b) giải thích root cause, (c) plan để không tái diễn. KHÔNG vague apology. (3) NO LOSS OF FACE: người Đức KHÔNG coi xin lỗi là yếu thế — actually opposite, người trưởng thành mới apologize. Khác hoàn toàn với 'mất mặt' VN. Xin lỗi đúng cách ở Đức = strength. (4) TIMING: xin lỗi CÀNG SỚM CÀNG TỐT sau khi nhận ra lỗi. Trong vòng 24-48h là chuẩn. Để 1 tuần = lỗi ngày càng đắt giá. (5) IN PERSON > EMAIL: với lỗi nghiêm trọng (offend cá nhân), xin lỗi face-to-face. Email chỉ phù hợp cho lỗi nhẹ.\n\nKhác Việt Nam: ở VN, xin lỗi thường softer, vague hơn ('Em sơ ý quá'); ở Đức, structured và specific. Người Việt mới làm việc Đức có thể bị coi là 'không thành thật' khi xin lỗi VN-style.\n\nỞ công ty Đức tại VN, conflict resolution thường có 2 stage: (1) immediate de-escalation (ngày xảy ra), (2) structured apology + follow-up plan (1-2 ngày sau). Đừng skip stage 2.\n\nMột chi tiết quan trọng: nếu lỗi là CULTURAL, apology framing nên là 'kulturelles Missverständnis' — không phải personal attack. Frame này protects cả 2 bên.",
+    "cultural_notes_en": "Cross-cultural apologies follow subtle rules of their own. (1) THE WORD 'SORRY' MEANS DIFFERENT THINGS: in English, 'sorry' can be very light — an attention-getter ('Sorry, can I ask…') with no real admission of fault. In German, 'Entschuldigung' is just as light, but 'Es tut mir leid' is a genuine admission of fault. DO NOT over-use 'Es tut mir leid' when it isn't really your mistake — it reads as weak rather than gracious. (2) APOLOGY = ACCOUNTABILITY: in Germany an apology is expected to carry (a) a concrete acknowledgement of the specific fault, (b) an explanation of the root cause and (c) a plan so it doesn't happen again. NO vague apology. (3) NO LOSS OF FACE: Germans do NOT read an apology as weakness — quite the opposite, an adult is the kind of person who apologises. The British 'stiff upper lip' instinct to brush past mistakes doesn't apply here. A well-formed apology in Germany reads as strength. (4) TIMING: apologise AS SOON AS POSSIBLE after you realise the mistake. Within 24–48 hours is standard. Letting it sit for a week makes the mistake more expensive, not less. (5) IN PERSON > EMAIL: for a serious offence (something personal), apologise face-to-face. Email is only appropriate for minor matters.\n\nWhere this diverges from common practice elsewhere: apologies in Vietnam (and often in Anglo-American small-talk) tend to be softer and vaguer ('My bad', 'I wasn't thinking'). German apologies are structured and specific. People who default to the softer style can come across as 'not really sorry'.\n\nIn German subsidiaries in Vietnam, workplace conflict resolution usually runs in two stages: (1) immediate de-escalation on the day it happens, then (2) a structured apology + follow-up plan a day or two later. Don't skip stage 2.\n\nOne crucial detail: when the mistake is CULTURAL, the framing should be 'kulturelles Missverständnis' — not a personal attack. That frame protects both sides.",
     "tip_advice_vi": "Cấu trúc apology Đức (5-step): (1) ACKNOWLEDGE specifically: 'Ich habe X gesagt/getan'. KHÔNG vague. (2) RECOGNIZE IMPACT: 'Das hat dich Y empfinden lassen'. Show empathy. (3) EXPLAIN context (không excuse): 'Aus meiner kulturellen Perspektive war es Z gemeint'. (4) APOLOGIZE: 'Es tut mir aufrichtig leid'. Một lần đủ. (5) FORWARD-LOOKING: 'Wie kann ich es wiedergutmachen?'.\n\nNgôn ngữ chuẩn:\n- 'Es tut mir aufrichtig leid' — sincere\n- 'Das war nicht meine Absicht' — clarify intent\n- 'Hätte ich gewusst, hätte ich anders gehandelt' — accountability\n- 'Asche auf mein Haupt' (idiom) — formal admission\n- 'Reinen Wein einschenken' (idiom) — báo hiệu transparency\n\nTránh:\n- 'Sorry, ich bin nur Vietnamesin' — yếu thế\n- 'Aber bei uns ist das normal' — defensive\n- 'Es war doch nicht so schlimm' — minimize\n- 'Du hast es auch missverstanden' — counter-attack\n- 5 lần apology liên tiếp — Đức coi là insincere\n\nWhen the other side apologizes to YOU: (1) Accept gracefully: 'Vielen Dank, dass du es ansprichst'. (2) Don't minimize. (3) Move forward: 'Lass uns nach vorne schauen'.",
+    "tip_advice_en": "The German 5-step apology structure: (1) ACKNOWLEDGE specifically: 'Ich habe X gesagt/getan'. NO vague. (2) RECOGNISE IMPACT: 'Das hat dich Y empfinden lassen'. Show empathy. (3) EXPLAIN context (don't excuse): 'Aus meiner kulturellen Perspektive war es Z gemeint'. (4) APOLOGISE: 'Es tut mir aufrichtig leid'. Once is enough. (5) FORWARD-LOOKING: 'Wie kann ich es wiedergutmachen?'.\n\nStandard phrasing:\n- 'Es tut mir aufrichtig leid' — sincere\n- 'Das war nicht meine Absicht' — clarify intent\n- 'Hätte ich gewusst, hätte ich anders gehandelt' — accountability\n- 'Asche auf mein Haupt' (idiom) — formal admission\n- 'Reinen Wein einschenken' (idiom) — signalling transparency\n\nAvoid:\n- 'Sorry, ich bin nur Vietnamesin' — reads as weak\n- 'Aber bei uns ist das normal' — defensive\n- 'Es war doch nicht so schlimm' — minimising\n- 'Du hast es auch missverstanden' — counter-attack\n- Five 'sorrys' in a row — Germans read this as insincere\n\nWhen the other side apologises to YOU: (1) Accept gracefully: 'Vielen Dank, dass du es ansprichst'. (2) Don't minimise. (3) Move forward: 'Lass uns nach vorne schauen'.",
     "vocabulary": [
       {
         "word": "die Absicht",
         "en": "intention",
         "vi": "ý định, mục đích",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ÁP-zicht"
+        "pronunciation_vi": "đi ÁP-zicht",
+        "pronunciation_en": "dee AHP-zikht — final 'cht' soft, like English 'huge'"
       },
       {
         "word": "das Missverständnis",
         "en": "misunderstanding",
         "vi": "hiểu lầm",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát MÍS-fe-shten-nis"
+        "pronunciation_vi": "đát MÍS-fe-shten-nis",
+        "pronunciation_en": "dahs MISS-fair-shten(d)-niss"
       },
       {
         "word": "es tut mir aufrichtig leid",
         "en": "I am sincerely sorry",
         "vi": "em thực sự xin lỗi",
         "pos": "phrase",
-        "pronunciation_vi": "ES TUT MIA AOF-rích-tích LAIT"
+        "pronunciation_vi": "ES TUT MIA AOF-rích-tích LAIT",
+        "pronunciation_en": "ess TOOT meer OWF-rikh-tikh LITE — 'aufrichtig' = sincerely; final -ig as soft ich-Laut"
       },
       {
         "word": "etw. wiedergutmachen",
         "en": "to make amends",
         "vi": "bù đắp",
         "pos": "verb (sep)",
-        "pronunciation_vi": "VI-đờ-gut-ma-khần"
+        "pronunciation_vi": "VI-đờ-gut-ma-khần",
+        "pronunciation_en": "VEE-der-goot-mahkh-en — separable verb, 'to put right again'"
       },
       {
         "word": "unangemessen",
         "en": "inappropriate",
         "vi": "không phù hợp",
         "pos": "adjective",
-        "pronunciation_vi": "UN-an-gê-mê-sần"
+        "pronunciation_vi": "UN-an-gê-mê-sần",
+        "pronunciation_en": "OON-ahn-guh-MESS-en — inappropriate; 'un-' = English 'un-'"
       },
       {
         "word": "der Gesichtsverlust",
         "en": "loss of face",
         "vi": "mất thể diện",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe gờ-ZÍCH-ts-fe-lust"
+        "pronunciation_vi": "đe gờ-ZÍCH-ts-fe-lust",
+        "pronunciation_en": "dair guh-ZIKH-ts-fair-loost — loss of face"
       },
       {
         "word": "die Wiedergutmachung",
         "en": "restitution, amends",
         "vi": "sự bù đắp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi VI-đờ-gut-ma-khung"
+        "pronunciation_vi": "đi VI-đờ-gut-ma-khung",
+        "pronunciation_en": "dee VEE-der-goot-mahkh-oong — making good, restitution"
       },
       {
         "word": "etw. eingestehen",
         "en": "to admit something",
         "vi": "thú nhận",
         "pos": "verb (sep)",
-        "pronunciation_vi": "AIN-gê-shtê-ần"
+        "pronunciation_vi": "AIN-gê-shtê-ần",
+        "pronunciation_en": "EYE-n-guh-shtay-en — separable verb, to admit"
       },
       {
         "word": "die Verantwortung übernehmen",
         "en": "to take responsibility",
         "vi": "chịu trách nhiệm",
         "pos": "verb phrase",
-        "pronunciation_vi": "fe-ÁNT-vot-tung uy-bờ-NÊ-mần"
+        "pronunciation_vi": "fe-ÁNT-vot-tung uy-bờ-NÊ-mần",
+        "pronunciation_en": "fair-AHNT-vor-toong ue-ber-NAY-men — to take responsibility ('ü' = round lips for 'oo', say 'ee')"
       },
       {
         "word": "die Eskalation vermeiden",
         "en": "to avoid escalation",
         "vi": "tránh leo thang",
         "pos": "verb phrase",
-        "pronunciation_vi": "es-ka-la-TSI-ôn fe-MAI-đần"
+        "pronunciation_vi": "es-ka-la-TSI-ôn fe-MAI-đần",
+        "pronunciation_en": "es-kah-lah-TSEE-ohn fair-MY-den — to avoid escalation; 'ei' = 'eye'"
       }
     ],
     "dialogue": [
@@ -7046,29 +7083,34 @@ export const lessons: GermanLesson[] = [
       "Bạn vô tình hỏi German colleague 'Wann heiratest du?' — câu hỏi bình thường ở VN nhưng PERSONAL ở Đức. Anh ấy phản ứng cool và đổi chủ đề. Hãy gặp riêng vài giờ sau, xin lỗi cho cultural blunder, giải thích vì sao câu này bình thường ở VN, hứa sẽ aware hơn về privacy norms Đức."
     ],
     "register_notes": "Apology cross-cultural có register tế nhị riêng. (1) FORMAL hoặc INFORMAL? Phụ thuộc vào relationship. Với sếp/khách → 'Sie' + formal phrasing. Với đồng nghiệp 'du' → vẫn formal vocabulary cho apology act, nhưng 'du'. (2) AVOID 'sorry, sorry, sorry': người Đức coi over-apology là dramatic + insincere. MỘT lần đủ. (3) AVOID self-erasing phrases: 'Sorry, ich bin nur...' yếu thế, không sincere. CONFIDENT apology: 'Ich habe X getan, das war Y, hätte ich anders gemacht' — full sentences, full accountability. (4) DIRECT EYE CONTACT khi xin lỗi face-to-face. Nhìn xuống = bị coi là không sincere ở Đức. (5) DON'T REPEAT THE OFFENSE: nếu đã xin lỗi 1 lần, không bring up lại 5 lần sau đó.\n\nNgôn ngữ formal cho apology Đức:\n- 'Es tut mir aufrichtig leid' — strong sincere\n- 'Ich entschuldige mich für...' — formal admission\n- 'Bitte verzeihen Sie mir...' — old-fashioned, dùng cho chính thức nhất\n- 'Asche auf mein Haupt' (idiom) — playful + formal admission\n- 'Reinen Wein einschenken' (idiom) — báo hiệu sắp nói thật\n\nKhi RECEIVING apology: KHÔNG dismiss với 'Kein Problem' — invalidates apology. Pattern đúng: 'Vielen Dank, dass du es ansprichst' + 'Lass uns nach vorne schauen'.\n\nKhác Việt Nam: ở VN, apology có thể vague và short. Ở Đức, apology phải structured và specific. Người Việt mới làm việc Đức cần PRACTICE structured apology.",
+    "register_notes_en": "Cross-cultural apologies carry their own delicate register. (1) FORMAL OR INFORMAL? Depends on the relationship. With a boss or client → 'Sie' + formal phrasing. With a 'du' colleague → still formal apology vocabulary, but 'du'. (2) AVOID 'sorry, sorry, sorry': Germans hear over-apologising as theatrical and insincere. ONE is enough. (3) AVOID self-erasing phrases: 'Sorry, ich bin nur…' reads as weak, not sincere. A CONFIDENT apology: 'Ich habe X getan, das war Y, hätte ich anders gemacht' — full sentences, full accountability. (4) MAKE EYE CONTACT for a face-to-face apology. Looking down reads as insincere in Germany. (5) DON'T REPEAT THE OFFENCE: once you've apologised, don't bring it up five more times.\n\nFormal German apology phrasing:\n- 'Es tut mir aufrichtig leid' — strong, sincere\n- 'Ich entschuldige mich für…' — formal admission\n- 'Bitte verzeihen Sie mir…' — old-fashioned, used for the most formal contexts\n- 'Asche auf mein Haupt' (idiom) — playful + formal admission\n- 'Reinen Wein einschenken' (idiom) — signals the speaker is about to be honest\n\nWhen RECEIVING an apology: DO NOT dismiss it with 'Kein Problem' — that invalidates the apology. The right pattern is: 'Vielen Dank, dass du es ansprichst' + 'Lass uns nach vorne schauen'.\n\nDifferent from many Anglo-American workplaces: a vague, short apology often passes there. In Germany the apology must be structured and specific. Speakers used to the lighter style need to PRACTICE the structured form deliberately.",
     "idiom_glosses": [
       {
         "idiom": "Auf dem falschen Fuß erwischt werden",
         "literal": "Bị bắt trên chân sai",
         "meaning": "Bị bắt gặp ở thời điểm không sẵn sàng — caught off guard. Khi explain tại sao bạn đã react incorrectly.",
+        "meaning_en": "To be caught off guard — caught at a moment you're not ready. Useful when you need to explain why you reacted badly.",
         "example": "Tut mir leid, ich war von deiner direkten Frage auf dem falschen Fuß erwischt."
       },
       {
         "idiom": "Reinen Wein einschenken",
         "literal": "Rót rượu trong vắt",
         "meaning": "Nói thật hoàn toàn — không vòng vo. Báo hiệu sắp nói điều khó nói nhưng quan trọng.",
+        "meaning_en": "To speak completely frankly — no detours. Signals that you're about to say something difficult but important.",
         "example": "Ich möchte reinen Wein einschenken: in unserer Kultur ist das normal, aber ich verstehe jetzt, dass es bei euch unangemessen wirkt."
       },
       {
         "idiom": "Auf den Sack schlagen wollen, aber den Esel meinen",
         "literal": "Muốn đánh bao nhưng nhắm con lừa",
         "meaning": "Phê bình ai gián tiếp — đả kích A nhưng thực ra nhắm B. Người Việt có thể vô tình làm điều này.",
+        "meaning_en": "To criticise someone indirectly — hitting A while really aiming at B. Newcomers to German offices sometimes do this without meaning to.",
         "example": "Stefan dachte, ich kritisierte ihn, aber eigentlich schlug ich auf den Sack und meinte den Esel — den Prozess, nicht ihn persönlich."
       },
       {
         "idiom": "Asche auf mein Haupt",
         "literal": "Tro trên đầu em",
         "meaning": "Lỗi hoàn toàn tại em — admission formal. Gốc tôn giáo (sám hối thời cổ). Trong context modern: dùng playfully nhưng sincere.",
+        "meaning_en": "It's entirely my fault — a formal admission. Religious origin (ash on the head as a sign of penance). Used today playfully but sincerely.",
         "example": "Asche auf mein Haupt — ich hätte das nicht im Plenum sagen sollen."
       }
     ],
@@ -7076,7 +7118,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi xin lỗi cross-cultural:",
+        "instruction_en": "Fill in the right phrase for a cross-cultural apology:",
         "pronunciation_focus": [
+          "apology register"
+        ],
+        "pronunciation_focus_en": [
           "apology register"
         ],
         "items": [
@@ -7101,7 +7147,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng apology:",
+        "instruction_en": "Match each German line to its apology function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Es war nicht meine Absicht.",
@@ -7124,7 +7172,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal apology:",
+        "instruction_en": "Translate into German formal apology phrasing:",
         "pronunciation_focus": [
+          "formal apology"
+        ],
+        "pronunciation_focus_en": [
           "formal apology"
         ],
         "items": [
@@ -7162,6 +7214,11 @@ export const lessons: GermanLesson[] = [
           "Vortrag → FOA-trak",
           "behandelt → bê-HAN-đệlt",
           "Schwellenländern → SHVE-lần-len-đần"
+        ],
+        "pronunciation_focus_en": [
+          "Vortrag → FOR-trahg",
+          "behandelt → buh-HAHN-delt",
+          "Schwellenländern → SHVEL-en-len-dern"
         ]
       },
       {
@@ -7171,6 +7228,11 @@ export const lessons: GermanLesson[] = [
           "Frankfurt → FRANK-phưrt",
           "Publikum → PÚ-bli-kum",
           "internationalen → in-tờ-na-tsi-ô-NA-lần"
+        ],
+        "pronunciation_focus_en": [
+          "Frankfurt → FRAHNK-foort",
+          "Publikum → POO-blee-koom",
+          "internationalen → in-ter-naht-see-oh-NAH-len"
         ]
       },
       {
@@ -7180,6 +7242,11 @@ export const lessons: GermanLesson[] = [
           "Stein → SHTAIN",
           "Rollen → RÔ-lần",
           "Provokation → prô-vô-ka-TSI-ôn"
+        ],
+        "pronunciation_focus_en": [
+          "Stein → SHTYNE ('ei' = 'eye')",
+          "Rollen → ROL-en",
+          "Provokation → pro-vo-kah-TSEE-ohn"
         ]
       },
       {
@@ -7189,6 +7256,11 @@ export const lessons: GermanLesson[] = [
           "Vortrag → FOA-trak",
           "persönliche → pe-ZƠN-lích-ê",
           "Verfügung → fe-FUY-gung"
+        ],
+        "pronunciation_focus_en": [
+          "Vortrag → FOR-trahg",
+          "persönliche → pair-ZUHRN-lee-khuh ('ö' = round lips for 'oh', say 'eh')",
+          "Verfügung → fair-FUE-goong ('ü' = round lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -7198,81 +7270,98 @@ export const lessons: GermanLesson[] = [
           "Klimaziele → KLÍ-ma-tsí-lê",
           "Schwellenländer → SHVE-lần-len-đờ",
           "investieren → in-vês-TÍA-ần"
+        ],
+        "pronunciation_focus_en": [
+          "Klimaziele → KLEE-mah-tsee-luh",
+          "Schwellenländer → SHVEL-en-len-der",
+          "investieren → in-ves-TEER-en"
         ]
       }
     ],
     "cultural_notes_vi": "Hội nghị quốc tế ở Đức (Frankfurt Buchmesse, IAA Mobility, drupa, Cebit) khác conference ở VN ở năm điểm. (1) FORMAL DRESS CODE: business attire bắt buộc cho speakers + senior delegates. Casual = bị coi là không tôn trọng audience. (2) PRESENTATION STYLE: Đức ưu tiên DATA + STRUCTURE > storytelling. Slides có nhiều text, charts, references. Pattern đúng: thesis → 3-5 supporting points với data → conclusion + Q&A. (3) Q&A LÀ THỬ THÁCH: audience Đức Q&A khắc nghiệt — họ challenge methodology, sample size, conclusions. KHÔNG defensive. Pattern đúng: 'Eine sehr gute Frage. Lassen Sie mich das wie folgt einordnen...'. (4) NETWORKING CỐT LÕI: 60% giá trị conference là coffee breaks + dinners. Plan trước: identify 5-10 people bạn muốn meet. KHÔNG ăn lunch một mình; sit at strangers' table. (5) BUSINESS CARDS = SACRED: trao đổi business cards với 2 hands, đọc trước khi cất, KHÔNG ghi chú lên card trước mặt người tặng.\n\nKhác Việt Nam: ở VN conference thường nhiều câu chuyện cá nhân, ít structured Q&A; ở Đức conference theo academic/business format strict, Q&A là chính.\n\nỞ Vietnam, người Việt tham dự conference Đức thường là: doanh nghiệp xuất khẩu, researchers (DAAD-funded), government delegates. Mỗi nhóm có expectations khác nhau từ cultural perspective.\n\nMột chi tiết quan trọng: nếu được mời SPEAKER, conference thường cover travel + hotel. Nếu chỉ là attendee, bạn phải tự lo. Visa: hầu hết conferences ở Đức có 'invitation letter' chính thức cho visa application.",
+    "cultural_notes_en": "International conferences in Germany (Frankfurt Buchmesse, IAA Mobility, drupa, CeBIT-style trade fairs) differ from many Asian and Anglo-American conferences in five ways. (1) FORMAL DRESS CODE: business attire is mandatory for speakers and senior delegates. Casual = read as disrespect for the audience. (2) PRESENTATION STYLE: Germans favour DATA + STRUCTURE over storytelling. Slides carry more text, charts and references than a typical Silicon-Valley deck. Standard pattern: thesis → 3–5 supporting points with data → conclusion + Q&A. (3) Q&A IS THE REAL TEST: German audiences run a tough Q&A — they challenge methodology, sample size, conclusions. DO NOT get defensive. The standard opener is 'Eine sehr gute Frage. Lassen Sie mich das wie folgt einordnen…'. (4) NETWORKING IS THE POINT: 60% of a conference's value lives in the coffee breaks and dinners. Plan ahead: identify 5–10 people you want to meet. DO NOT eat lunch alone; sit at a strangers' table. (5) BUSINESS CARDS ARE SACRED: exchange cards with both hands, read the card before putting it away, and DO NOT scribble notes on it in front of the person who gave it to you.\n\nDifferent from many Anglo-American or Vietnamese conferences: those tend to have more personal stories and less structured Q&A; German conferences follow a strict academic/business format and the Q&A is central.\n\nMost Vietnamese delegates at German conferences fall into one of three groups: export-focused companies, DAAD-funded researchers, and government delegations. Each group brings different expectations into the cultural setting.\n\nOne crucial detail: if you're invited as a SPEAKER, the conference usually covers travel + hotel. If you're an attendee, you pay yourself. Visa: most German conferences will issue an official 'invitation letter' for your visa application.",
     "tip_advice_vi": "Trước conference (4-6 tuần): (1) Đăng ký sớm — early bird discount + có time prepare. (2) Research speakers + delegates qua LinkedIn. (3) Print 50-100 business cards (cả Đức + Anh). (4) Nếu speaker: rehearse presentation 5+ lần.\n\nNgày 1: (1) Đến SỚM 30-45 phút trước session đầu. (2) Mặc business attire. (3) Mang notebook + pen + business cards. (4) Coffee break: introduce yourself proactively. (5) Lunch: sit at table với strangers. (6) Evening: tham dự welcome reception nếu có.\n\nKhi presenting: (1) Đến 15 phút trước session — test mic, projector. (2) Mở đầu bằng acknowledgment. (3) Nói chậm hơn 20% so với normal pace. (4) Tương tác: 1-2 câu hỏi rhetorical cho audience. (5) Q&A: lắng nghe FULL question trước khi answer. (6) Nếu không biết answer: 'Eine sehr berechtigte Frage — die Daten dazu habe ich nicht parat, aber ich folge per E-Mail nach'.\n\nNetworking: (1) Elevator pitch 30 giây sẵn sàng. (2) Listen 70%, talk 30%. (3) Hỏi câu hỏi mở: 'Was war für Sie das Highlight bisher?'. (4) Trao card: nhận bằng 2 tay, đọc, comment ngắn, cất ví riêng. (5) Note ngắn sau mỗi cuộc gặp.\n\nFollow-up (1-7 ngày sau): (1) Gửi LinkedIn requests tới mọi người gặp. (2) Email follow-up tới 5-10 priority contacts. (3) Nếu gặp speaker, đăng review về talk của họ trên LinkedIn — tag họ.",
+    "tip_advice_en": "Before the conference (4–6 weeks): (1) Register early — early-bird discount + time to prepare. (2) Research speakers and delegates on LinkedIn. (3) Print 50–100 business cards (German + English). (4) If you're a speaker: rehearse 5+ times.\n\nDay 1: (1) Arrive 30–45 minutes EARLY for the first session. (2) Wear business attire. (3) Bring notebook + pen + business cards. (4) Coffee break: introduce yourself proactively. (5) Lunch: sit at a table with strangers. (6) Evening: go to the welcome reception if there is one.\n\nWhen presenting: (1) Arrive 15 minutes before your session — test mic, projector. (2) Open with an acknowledgement. (3) Speak 20% slower than your normal pace. (4) Interact: 1–2 rhetorical questions to the audience. (5) Q&A: listen to the FULL question before answering. (6) If you don't know the answer: 'Eine sehr berechtigte Frage — die Daten dazu habe ich nicht parat, aber ich folge per E-Mail nach'.\n\nNetworking: (1) Have a 30-second elevator pitch ready. (2) Listen 70%, talk 30%. (3) Open questions: 'Was war für Sie das Highlight bisher?'. (4) Card exchange: receive with both hands, read it, brief comment, put it away separately from your wallet. (5) Short note after each meeting.\n\nFollow-up (1–7 days later): (1) Send LinkedIn requests to everyone you met. (2) Follow-up email to your 5–10 priority contacts. (3) If you met a speaker, post a review of their talk on LinkedIn — tag them.",
     "vocabulary": [
       {
         "word": "der Vortrag",
         "en": "presentation, talk",
         "vi": "bài thuyết trình",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe FOA-trak"
+        "pronunciation_vi": "đe FOA-trak",
+        "pronunciation_en": "dair FOR-trahg — talk, presentation; stress on first syllable"
       },
       {
         "word": "die Konferenz",
         "en": "conference",
         "vi": "hội nghị",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi kôn-fê-RENS"
+        "pronunciation_vi": "đi kôn-fê-RENS",
+        "pronunciation_en": "dee kon-fer-RENTS — conference; stress on final syllable"
       },
       {
         "word": "der/die Referent:in",
         "en": "speaker, presenter",
         "vi": "diễn giả",
         "pos": "noun",
-        "pronunciation_vi": "đe rê-fê-RẾNT"
+        "pronunciation_vi": "đe rê-fê-RẾNT",
+        "pronunciation_en": "dair ref-er-RENT — speaker; 'ent' final"
       },
       {
         "word": "das Publikum",
         "en": "audience",
         "vi": "khán giả",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát PÚ-bli-kum"
+        "pronunciation_vi": "đát PÚ-bli-kum",
+        "pronunciation_en": "dahs POO-blee-koom — audience"
       },
       {
         "word": "die Diskussionsrunde",
         "en": "panel discussion",
         "vi": "thảo luận panel",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi điss-ku-SI-ônss-run-đê"
+        "pronunciation_vi": "đi điss-ku-SI-ônss-run-đê",
+        "pronunciation_en": "dee dis-koos-see-OHNS-roon-duh — panel discussion"
       },
       {
         "word": "der Elevator-Pitch",
         "en": "elevator pitch",
         "vi": "elevator pitch",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe E-lê-vê-tờ-pich"
+        "pronunciation_vi": "đe E-lê-vê-tờ-pich",
+        "pronunciation_en": "dair EH-luh-vay-tor-pitch — elevator pitch (English loanword, Germanised stress)"
       },
       {
         "word": "die Networking-Möglichkeit",
         "en": "networking opportunity",
         "vi": "cơ hội networking",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi NÉT-vơ-king-mơ-glích-kait"
+        "pronunciation_vi": "đi NÉT-vơ-king-mơ-glích-kait",
+        "pronunciation_en": "dee NET-vor-king-mug-likh-kite — networking opportunity; final '-keit' rhymes with 'kite'"
       },
       {
         "word": "die Visitenkarte austauschen",
         "en": "to exchange business cards",
         "vi": "trao danh thiếp",
         "pos": "verb phrase",
-        "pronunciation_vi": "vi-zi-TÊN-kat-tê AOS-tao-shần"
+        "pronunciation_vi": "vi-zi-TÊN-kat-tê AOS-tao-shần",
+        "pronunciation_en": "vee-zee-TEN-kar-tuh OWS-tow-shen — exchange business cards"
       },
       {
         "word": "die Schwellenländer",
         "en": "emerging economies",
         "vi": "các nước mới nổi",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi SHVE-lần-len-đờ"
+        "pronunciation_vi": "đi SHVE-lần-len-đờ",
+        "pronunciation_en": "dee SHVEL-en-len-der — emerging economies"
       },
       {
         "word": "den Stein ins Rollen bringen",
         "en": "to get the ball rolling (idiom)",
         "vi": "khởi xướng, mở đầu",
         "pos": "verb phrase",
-        "pronunciation_vi": "đần SHTAIN ins RÔ-lần BRÍNG-ần"
+        "pronunciation_vi": "đần SHTAIN ins RÔ-lần BRÍNG-ần",
+        "pronunciation_en": "den SHTYNE ins ROL-en BRING-en — get the ball rolling"
       }
     ],
     "dialogue": [
@@ -7395,29 +7484,34 @@ export const lessons: GermanLesson[] = [
       "Conference cuối ngày, bạn được mời đến VIP dinner với 8 senior delegates. Tất cả đều là người Đức trừ bạn. Hãy chuẩn bị 3 conversation starters phù hợp với business dinner Đức (avoid politics, religion, salary): industry trends, conference highlights, German cities you're visiting."
     ],
     "register_notes": "Conference Đức formal nhưng KHÔNG stuffy. (1) ADDRESS: 'Sehr geehrte Damen und Herren' chỉ cho large audiences/openings. Trong Q&A: 'Frau Schulz' / 'Herr Wagner' với last name. Trong networking 1-on-1: business cards exchange first, then first names if they offer. (2) PRESENTATION VOCABULARY: dùng từ academic Đức — 'These', 'Methodik', 'Ergebnisse', 'Schlussfolgerungen', 'Limitationen'. KHÔNG slang or casual fillers. (3) Q&A DEFENSE: pattern chuẩn cho mọi câu hỏi: 'Eine sehr berechtigte/gute/spannende Frage. Lassen Sie mich das wie folgt einordnen...'. Cho bạn 3 giây thinking time. (4) ADMIT LIMITATIONS GRACEFULLY: nếu data không có, 'Diese spezifischen Daten habe ich nicht parat — ich folge per E-Mail nach'. (5) ENGLISH VS GERMAN: nếu conference international, English thường default. Nhưng nếu audience >50% German, switch to German để show effort.\n\nNetworking register: smalltalk safe topics — chuyến đi, conference highlights, city. AVOID: politics, religion, personal life (gia đình, lương).\n\nKhác Việt Nam: ở VN conference, có thể có nhiều slang, jokes, personal stories trong presentation. Ở Đức, presentation = data + structure.\n\nNgười Việt thường mắc lỗi: (1) over-thank — Đức coi là too much. 1 acknowledgment đủ. (2) under-prepare cho Q&A — focus 100% vào presentation, quên Q&A là 50% of impression. (3) shy networking — đứng góc với đồng nghiệp VN.",
+    "register_notes_en": "German conferences are formal but not stuffy. (1) ADDRESS: 'Sehr geehrte Damen und Herren' only for large audiences / opening sessions. In Q&A: 'Frau Schulz' / 'Herr Wagner' with last name. In 1-on-1 networking: business cards exchange first, then first names if they offer. (2) PRESENTATION VOCABULARY: use German academic vocabulary — 'These', 'Methodik', 'Ergebnisse', 'Schlussfolgerungen', 'Limitationen'. NO slang or casual fillers. (3) Q&A DEFENCE: the standard opener for every question is 'Eine sehr berechtigte/gute/spannende Frage. Lassen Sie mich das wie folgt einordnen…' — it buys you three seconds of thinking time. (4) ADMIT LIMITATIONS GRACEFULLY: if the data isn't there, 'Diese spezifischen Daten habe ich nicht parat — ich folge per E-Mail nach'. (5) ENGLISH VS GERMAN: at an international conference English is usually the default. But if >50% of the audience is German, switch to German to show effort.\n\nNetworking register: small-talk safe topics — your trip, conference highlights, the city. AVOID: politics, religion, personal life (family, salary).\n\nDifferent from many Anglo-American conferences: those often include personal stories and jokes inside a presentation. In Germany, the presentation is data + structure.\n\nCommon mistakes from less experienced delegates: (1) over-thanking — Germans read this as too much; one acknowledgement is enough; (2) under-preparing for Q&A — putting 100% into the talk and forgetting the Q&A is 50% of the impression; (3) shy networking — clustering in the corner with colleagues from home.",
     "idiom_glosses": [
       {
         "idiom": "Eindruck machen",
         "literal": "Tạo ấn tượng",
         "meaning": "Tạo impression. Trong context conference: 'einen guten Eindruck machen' = tạo ấn tượng tốt — quan trọng cho speaker và networking.",
+        "meaning_en": "To make an impression. In conference context: 'einen guten Eindruck machen' = make a good impression — central for speakers and networking.",
         "example": "Mit Ihrer fundierten Antwort haben Sie einen sehr guten Eindruck gemacht."
       },
       {
         "idiom": "Den Stein ins Rollen bringen",
         "literal": "Đẩy đá lăn",
         "meaning": "Khởi xướng, mở đầu cho điều gì lớn hơn. Trong opening của presentation hoặc panel: 'Lassen Sie mich den Stein ins Rollen bringen' = Cho phép em khởi xướng.",
+        "meaning_en": "To get the ball rolling. Used at the opening of a presentation or panel: 'Lassen Sie mich den Stein ins Rollen bringen' = let me kick things off.",
         "example": "Lassen Sie mich den Stein ins Rollen bringen mit einer Provokation."
       },
       {
         "idiom": "Sich aus dem Staub machen",
         "literal": "Tự mình từ bụi đi ra",
         "meaning": "Lẻn đi, biến mất nhanh. Mô tả networking failure: nếu cuộc trò chuyện không đi đến đâu, có thể politely 'sich aus dem Staub machen' với 'Es war ein nettes Gespräch — ich gehe noch zum Stand X'.",
+        "meaning_en": "To slip away — quietly disappear. Useful for networking failure: if a conversation isn't going anywhere, you can politely 'sich aus dem Staub machen' with 'Es war ein nettes Gespräch — ich gehe noch zum Stand X'.",
         "example": "Nach 10 Minuten Smalltalk habe ich mich elegant aus dem Staub gemacht."
       },
       {
         "idiom": "Wer A sagt, muss auch B sagen",
         "literal": "Đã nói A phải nói B",
         "meaning": "Một khi đã commit, phải đi tiếp đến cuối. Logic chain: nếu nhận premise A, phải accept consequence B. Trong Q&A.",
+        "meaning_en": "Once committed, follow through to the end. A logic chain: if you accept premise A, you have to accept consequence B. Useful in Q&A.",
         "example": "Wer A sagt, muss auch B sagen — wenn wir Nachhaltigkeit fordern, müssen wir die Mehrkosten akzeptieren."
       }
     ],
@@ -7425,7 +7519,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi tham dự conference:",
+        "instruction_en": "Fill in the right phrase for a conference setting:",
         "pronunciation_focus": [
+          "conference register"
+        ],
+        "pronunciation_focus_en": [
           "conference register"
         ],
         "items": [
@@ -7450,7 +7548,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng conference:",
+        "instruction_en": "Match each German line to its conference function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Eine sehr berechtigte Frage.",
@@ -7473,7 +7573,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức conference register:",
+        "instruction_en": "Translate into German conference register:",
         "pronunciation_focus": [
+          "formal academic"
+        ],
+        "pronunciation_focus_en": [
           "formal academic"
         ],
         "items": [
@@ -7511,6 +7615,11 @@ export const lessons: GermanLesson[] = [
           "Gerichte → gờ-RÍCH-tê",
           "vietnamesischen → vi-ết-na-MÊ-zi-shần",
           "Küche → KUY-khê"
+        ],
+        "pronunciation_focus_en": [
+          "Gerichte → guh-RIKH-tuh",
+          "vietnamesischen → vee-et-nah-MAY-zee-shen",
+          "Küche → KUE-khuh ('ü' = round lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -7520,6 +7629,11 @@ export const lessons: GermanLesson[] = [
           "scharf → SHARF",
           "exotisch → ec-ZÔ-tish",
           "Alternative → al-tê-na-TI-vê"
+        ],
+        "pronunciation_focus_en": [
+          "scharf → SHARF",
+          "exotisch → ek-SOH-tish",
+          "Alternative → ahl-ter-nah-TEE-vuh"
         ]
       },
       {
@@ -7529,6 +7643,11 @@ export const lessons: GermanLesson[] = [
           "gemeinsamen → gờ-MAIN-zam-mần",
           "Schüsseln → SHUYS-sệln",
           "Stäbchen → SHTẾP-khần"
+        ],
+        "pronunciation_focus_en": [
+          "gemeinsamen → guh-MINE-zah-men",
+          "Schüsseln → SHUE-seln ('ü' rounded)",
+          "Stäbchen → SHTAYP-khen"
         ]
       },
       {
@@ -7538,6 +7657,11 @@ export const lessons: GermanLesson[] = [
           "probieren → prô-BÍA-ần",
           "Druck → ĐRÚC",
           "Geschmack → gờ-SHMÁC"
+        ],
+        "pronunciation_focus_en": [
+          "probieren → pro-BEER-en",
+          "Druck → DROOK",
+          "Geschmack → guh-SHMAHK"
         ]
       },
       {
@@ -7547,81 +7671,98 @@ export const lessons: GermanLesson[] = [
           "Hunger → HUNG-ờ",
           "Koch → KÔCH",
           "schmeckt → SHMÉCK-t"
+        ],
+        "pronunciation_focus_en": [
+          "Hunger → HOONG-er",
+          "Koch → KOKH (final 'ch' = Scottish 'loch')",
+          "schmeckt → SHMEKT"
         ]
       }
     ],
     "cultural_notes_vi": "Dinner với khách Đức ở VN có nuances cần biết. (1) RESTAURANT CHOICE: tránh quá touristy, tránh quá fine dining. Sweet spot: mid-range authentic Vietnamese (Quán Bụi, Cuc Gach Quan, Hum Vegetarian) — local nhưng comfortable. (2) MENU NEGOTIATION: KHÔNG order cho cả bàn kiểu host VN. Ở Đức, mỗi người chọn món riêng. Đề xuất 'Wir teilen alle Gerichte' trước khi order — nếu khách thấy ok, ok. (3) SHARING DISHES: nếu agree share, đừng load plate khách full lên. Pattern đúng: order 4-5 dishes for table, mỗi người tự lấy. (4) DRINKING: bia VN yếu hơn German bia. KHÔNG ép uống. KHÔNG clinking liên tục. Toast 1 lần đầu bữa, sau đó pace tự do. (5) PAYING: với business dinner, công ty pay. Nhưng nếu khách insist 'getrennt zahlen', accept gracefully — không argue.\n\nKhác Việt Nam: ở VN, host load plate khách (showing care); ở Đức, để khách tự load (showing respect for autonomy).\n\nFOOD PREFERENCES Đức cần biết: Đa số người Đức không thích nội tạng — tránh phá lấu, lòng heo. Cay — many Đức không quen; ask preference. Vegetarian: rất phổ biến ở Đức — luôn có vegetarian option. Allergies: gluten, lactose phổ biến — ask trước.\n\nPHỞ là safe choice cho first dinner — universally beloved, mild, satisfying.\n\nMột chi tiết quan trọng: nếu khách Đức ăn không hết, KHÔNG khuyến khích 'ăn nữa đi' (push). Họ đã đủ. Pressure khiến uncomfortable.",
+    "cultural_notes_en": "Hosting a German guest for dinner in Vietnam has nuances you need to know. (1) RESTAURANT CHOICE: avoid too touristy, avoid too fine-dining. The sweet spot is mid-range authentic Vietnamese (Quán Bụi, Cục Gạch Quán, Hum Vegetarian) — local but comfortable. (2) MENU NEGOTIATION: DO NOT order for the whole table the way a Vietnamese host normally would. In Germany each person picks their own dish. Suggest 'Wir teilen alle Gerichte' before you order — if the guest is happy with that, fine. (3) SHARING DISHES: if you do share, don't load the guest's plate full for them. Right pattern: order 4–5 dishes for the table, each person serves themselves. (4) DRINKING: Vietnamese beer is weaker than German beer. DO NOT push drinking. DO NOT clink glasses constantly. Toast once at the start, then let the pace go free. (5) PAYING: for a business dinner the company pays. But if the guest insists on 'getrennt zahlen', accept gracefully — don't argue.\n\nDifferent from Vietnamese norms: in Vietnam the host loads the guest's plate (showing care); in Germany you let the guest load their own (showing respect for their autonomy).\n\nFOOD PREFERENCES Germans tend to have: most Germans aren't keen on offal — skip phá lấu and pork intestine dishes. Spice — many Germans aren't used to it; ask first. Vegetarianism: very common in Germany — always offer a vegetarian option. Allergies: gluten and lactose are common — ask in advance.\n\nPHỞ is a safe choice for a first dinner — universally loved, mild, satisfying.\n\nOne crucial detail: if the German guest doesn't finish their food, DO NOT push 'ăn nữa đi' (have more). They've had enough. Pressure makes them uncomfortable.",
     "tip_advice_vi": "1 tuần trước (planning): (1) Hỏi khách dietary preferences/allergies. (2) Nếu khách lần đầu đến VN, chọn restaurant comfortable (English menu, AC). (3) Make reservation — Friday/Saturday cần book trước 3-5 ngày.\n\nĐêm dinner: (1) Đến SỚM 10-15 phút. (2) Brief waiter: 'Wir haben einen Gast aus Deutschland — bitte mild würzen, English menu, Empfehlungen für Anfänger'. (3) Khi khách arrive, intro waiter, sit khách ở vị trí nice view nếu có. (4) Hỏi preference: 'Möchten Sie ein Bier oder lieber Tee/Wasser?'.\n\nDuring dinner: (1) Order 4-5 dishes mix: 1 noodle (phở), 1 spring roll (gỏi cuốn), 1 grilled, 1 vegetable, 1 rice. (2) Khi món arrive, BRIEFLY explain mỗi món. (3) Show how dùng đũa nếu khách chưa quen. (4) Toast một lần đầu. KHÔNG clinking liên tục. (5) Smalltalk topics: chuyến đi, conference, sightseeing plans — KHÔNG politics, religion, lương, gia đình.\n\nIf khách struggling với food: (1) KHÔNG insist. (2) Order alternative quietly. (3) Offer fallback: 'Falls heute nicht der richtige Tag ist — morgen können wir auch europäisch essen'.\n\nPaying: (1) Với business dinner: signal waiter discreetly, sign credit card without showing total. (2) Với personal: 'Soll ich heute zahlen oder teilen wir?'.\n\nSau dinner: (1) Walk khách ra grab/taxi nếu họ đi alone. (2) Sáng mai, brief check-in: 'Wie war das Essen gestern? Hat Ihnen alles geschmeckt?'.",
+    "tip_advice_en": "One week ahead (planning): (1) Ask the guest about dietary preferences/allergies. (2) If it's their first time in Vietnam, pick a comfortable restaurant (English menu, A/C). (3) Make a reservation — Friday/Saturday need 3–5 days' notice.\n\nDinner night: (1) Arrive 10–15 minutes EARLY. (2) Brief the waiter: 'Wir haben einen Gast aus Deutschland — bitte mild würzen, English menu, Empfehlungen für Anfänger'. (3) When the guest arrives, introduce them to the waiter, seat them where the view is nice if possible. (4) Ask preference: 'Möchten Sie ein Bier oder lieber Tee/Wasser?'.\n\nDuring dinner: (1) Order 4–5 dishes mixed: 1 noodle (phở), 1 spring roll (gỏi cuốn), 1 grilled, 1 vegetable, 1 rice. (2) When a dish arrives, BRIEFLY explain it. (3) Show how to use chopsticks if the guest is new to them. (4) Toast once at the start. DO NOT clink constantly. (5) Small-talk topics: trip, conference, sightseeing plans — NOT politics, religion, salary, family.\n\nIf the guest is struggling with a dish: (1) DO NOT insist. (2) Quietly order an alternative. (3) Offer a fallback: 'Falls heute nicht der richtige Tag ist — morgen können wir auch europäisch essen'.\n\nPaying: (1) Business dinner: signal the waiter discreetly, sign the credit card slip without showing the total. (2) Personal: 'Soll ich heute zahlen oder teilen wir?'.\n\nAfter dinner: (1) Walk the guest to a Grab/taxi if they're going on alone. (2) The next morning, brief check-in: 'Wie war das Essen gestern? Hat Ihnen alles geschmeckt?'.",
     "vocabulary": [
       {
         "word": "die Küche",
         "en": "cuisine, kitchen",
         "vi": "ẩm thực, nhà bếp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KUY-khê"
+        "pronunciation_vi": "đi KUY-khê",
+        "pronunciation_en": "dee KUE-khuh — cuisine, kitchen; 'ü' rounded"
       },
       {
         "word": "das Gericht",
         "en": "dish",
         "vi": "món ăn",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát gờ-RÍCH-t"
+        "pronunciation_vi": "đát gờ-RÍCH-t",
+        "pronunciation_en": "dahs guh-RIKHT — dish; final -cht as soft ich-Laut"
       },
       {
         "word": "scharf",
         "en": "spicy, sharp",
         "vi": "cay",
         "pos": "adjective",
-        "pronunciation_vi": "SHARF"
+        "pronunciation_vi": "SHARF",
+        "pronunciation_en": "SHARF — spicy, sharp"
       },
       {
         "word": "die Stäbchen",
         "en": "chopsticks",
         "vi": "đôi đũa",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi SHTẾP-khần"
+        "pronunciation_vi": "đi SHTẾP-khần",
+        "pronunciation_en": "dee SHTAYP-khen — chopsticks (plural)"
       },
       {
         "word": "die Empfehlung aussprechen",
         "en": "to make a recommendation",
         "vi": "đưa ra gợi ý",
         "pos": "verb phrase",
-        "pronunciation_vi": "ent-FÊ-lung AOS-shprê-khần"
+        "pronunciation_vi": "ent-FÊ-lung AOS-shprê-khần",
+        "pronunciation_en": "ent-FAY-loong OWS-shpre-khen — to make a recommendation"
       },
       {
         "word": "die Vorspeise",
         "en": "appetiser",
         "vi": "khai vị",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FOA-shpai-zê"
+        "pronunciation_vi": "đi FOA-shpai-zê",
+        "pronunciation_en": "dee FOR-shpy-zuh — appetiser"
       },
       {
         "word": "das Hauptgericht",
         "en": "main course",
         "vi": "món chính",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát HAOPT-gê-rích-t"
+        "pronunciation_vi": "đát HAOPT-gê-rích-t",
+        "pronunciation_en": "dahs HOWPT-guh-rikht — main course; 'au' = 'ow'"
       },
       {
         "word": "der Nachtisch / das Dessert",
         "en": "dessert",
         "vi": "tráng miệng",
         "pos": "noun (m/n)",
-        "pronunciation_vi": "đe NÁCH-tish / đát đê-ZE"
+        "pronunciation_vi": "đe NÁCH-tish / đát đê-ZE",
+        "pronunciation_en": "dair NAHKH-tish / dahs dess-AIR — dessert"
       },
       {
         "word": "die Rechnung übernehmen",
         "en": "to pay the bill",
         "vi": "thanh toán bill",
         "pos": "verb phrase",
-        "pronunciation_vi": "đi RÉCH-nung uy-bờ-NÊ-mần"
+        "pronunciation_vi": "đi RÉCH-nung uy-bờ-NÊ-mần",
+        "pronunciation_en": "dee REKH-noong ue-ber-NAY-men — to pay the bill"
       },
       {
         "word": "Hunger ist der beste Koch",
         "en": "hunger is the best cook (idiom)",
         "vi": "đói là đầu bếp tuyệt nhất",
         "pos": "phrase",
-        "pronunciation_vi": "HUNG-ờ ist đe BES-tê KÔCH"
+        "pronunciation_vi": "HUNG-ờ ist đe BES-tê KÔCH",
+        "pronunciation_en": "HOONG-er ist dair BES-tuh KOKH — hunger is the best cook"
       }
     ],
     "dialogue": [
@@ -7744,29 +7885,34 @@ export const lessons: GermanLesson[] = [
       "Khách Đức say bia hơn dự kiến (3 chai Saigon thay vì 1). Anh ấy bắt đầu ask personal questions ('Wann heiratest du?', 'Wie viel verdient man hier?'). Hãy gracefully redirect, không embarrass anh ấy, và đảm bảo anh ấy về hotel an toàn (book Grab, đưa địa chỉ)."
     ],
     "register_notes": "Dinner với khách Đức = balance giữa formal (vẫn 'Sie') và relaxed (smalltalk casual hơn meeting). (1) GIỮ 'SIE' xuyên suốt nếu là business dinner. Chỉ chuyển 'du' nếu khách EXPLICITLY đề nghị. (2) FOOD VOCABULARY: học vocabulary cho VN dishes bằng Đức — 'Sommerrollen' (gỏi cuốn), 'Rindfleisch-Nudelsuppe' (phở bò). KHÔNG để khách phải đoán. (3) RECOMMENDATIONS, KHÔNG ORDERS: 'Ich empfehle Ihnen...', 'Sehr beliebt ist...', 'Würden Sie probieren...?'. KHÔNG 'Sie müssen das essen'. (4) SMALLTALK TOPICS: SAFE = chuyến đi, conference, sightseeing, food preferences. RISKY = politics, religion, lương cá nhân. AVOID = personal life questions. (5) SILENCES OK: ở Đức dinner, có khoảng silence là natural. KHÔNG fill mọi second với chatter.\n\nKhi khách order: KHÔNG override choice. Có thể gentle suggest: 'Eine Alternative wäre...' — sau đó để họ decide.\n\nBill: signal waiter discreetly. Sign credit card không show total. Nếu khách insist split, accept gracefully.\n\nKhác Việt Nam: ở VN, host thường order cho cả bàn; ở Đức, mỗi người chọn. Trong dinner cross-cultural, ASK first: 'Möchten Sie selbst aussuchen oder soll ich Empfehlungen aussprechen?'.\n\nNgười Việt thường mắc lỗi: (1) load plate khách full — controlling; (2) ép uống bia; (3) order quá nhiều dishes; (4) không brief waiter về language preferences.",
+    "register_notes_en": "A dinner with a German guest sits between formal (still 'Sie') and relaxed (small-talk is more casual than a meeting). (1) STICK WITH 'SIE' throughout a business dinner. Only switch to 'du' if the guest EXPLICITLY offers. (2) FOOD VOCABULARY: learn the German names for Vietnamese dishes — 'Sommerrollen' (gỏi cuốn), 'Rindfleisch-Nudelsuppe' (phở bò). DO NOT make the guest guess. (3) RECOMMENDATIONS, NOT ORDERS: 'Ich empfehle Ihnen…', 'Sehr beliebt ist…', 'Würden Sie probieren…?'. NOT 'Sie müssen das essen'. (4) SMALL-TALK TOPICS: SAFE = trip, conference, sightseeing, food preferences. RISKY = politics, religion, personal salary. AVOID = personal life questions. (5) SILENCES ARE OK: in a German dinner some silence is natural. DO NOT fill every second with chatter.\n\nWhen the guest orders: DO NOT override their choice. You can gently suggest: 'Eine Alternative wäre…' — then let them decide.\n\nThe bill: signal the waiter discreetly. Sign the credit card slip without showing the total. If the guest insists on splitting, accept gracefully.\n\nDifferent from Vietnamese norms: in Vietnam the host usually orders for the whole table; in Germany each person picks their own. In a cross-cultural dinner, ASK first: 'Möchten Sie selbst aussuchen oder soll ich Empfehlungen aussprechen?'.\n\nCommon mistakes from less experienced hosts: (1) loading the guest's plate full — reads as controlling; (2) pushing more beer; (3) over-ordering; (4) not briefing the waiter on language preferences.",
     "idiom_glosses": [
       {
         "idiom": "Hunger ist der beste Koch",
         "literal": "Đói là đầu bếp tuyệt nhất",
         "meaning": "Khi đói, mọi thứ đều ngon. Câu thành ngữ phổ biến để break ice trước bữa ăn — báo hiệu thái độ relaxed về food expectations.",
+        "meaning_en": "When you're hungry, everything tastes good. Common phrase to break the ice before a meal — it signals a relaxed attitude about food expectations.",
         "example": "Nach dem langen Flug ist Hunger der beste Koch — heute schmeckt sicher alles."
       },
       {
         "idiom": "Auf den Geschmack kommen",
         "literal": "Đến với vị giác",
         "meaning": "Bắt đầu thích, develop a taste for. Trong context food: 'Sie kommen langsam auf den Geschmack' = anh đang dần thích. Phù hợp khi khách lần đầu thử món lạ.",
+        "meaning_en": "To start liking, develop a taste for. In food context: 'Sie kommen langsam auf den Geschmack' = you're starting to enjoy it. Useful when the guest is trying an unfamiliar dish for the first time.",
         "example": "Probieren Sie ruhig — Sie kommen sicher auf den Geschmack."
       },
       {
         "idiom": "Die Gastfreundschaft genießen",
         "literal": "Hưởng sự hiếu khách",
         "meaning": "Tận hưởng sự đón tiếp nồng hậu. Đây là cụm formal khách dùng để compliment host.",
+        "meaning_en": "To enjoy the hospitality. A formal phrase guests use to compliment a host.",
         "example": "Vielen Dank — wir genießen Ihre Gastfreundschaft sehr."
       },
       {
         "idiom": "Mit Messer und Gabel essen",
         "literal": "Ăn bằng dao và nĩa",
         "meaning": "Ăn theo cách phương Tây (table manners). Trong context VN-Đức: cần explain cho khách rằng VN ăn với chopsticks và spoon.",
+        "meaning_en": "To eat the Western way (with knife and fork). In a Vietnam–Germany context: you may need to explain that Vietnamese cuisine is eaten with chopsticks and a spoon.",
         "example": "Bei uns benutzen wir Stäbchen, nicht Messer und Gabel — aber wenn Sie lieber das hätten, fragen wir den Kellner."
       }
     ],
@@ -7774,7 +7920,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi đãi khách Đức:",
+        "instruction_en": "Fill in the right phrase for hosting a German guest:",
         "pronunciation_focus": [
+          "dinner host register"
+        ],
+        "pronunciation_focus_en": [
           "dinner host register"
         ],
         "items": [
@@ -7799,7 +7949,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng host:",
+        "instruction_en": "Match each German line to its host function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Möchten Sie selbst aussuchen?",
@@ -7822,7 +7974,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức khi đãi khách:",
+        "instruction_en": "Translate into German for hosting a guest:",
         "pronunciation_focus": [
+          "host German"
+        ],
+        "pronunciation_focus_en": [
           "host German"
         ],
         "items": [
@@ -7860,6 +8016,11 @@ export const lessons: GermanLesson[] = [
           "Fest aller Feste → FÉST A-lờ FÉS-tê",
           "wichtiger → VÍCH-ti-gờ",
           "Weihnachten → VAI-nách-tần"
+        ],
+        "pronunciation_focus_en": [
+          "Fest aller Feste → FEST AHL-er FES-tuh",
+          "wichtiger → VIKH-tee-ger (-ig as soft ich-Laut)",
+          "Weihnachten → VINE-nahkh-ten"
         ]
       },
       {
@@ -7869,6 +8030,11 @@ export const lessons: GermanLesson[] = [
           "ruht → RÚT",
           "Geschäfte → gờ-SHEF-tê",
           "Familie → fa-MI-li-ê"
+        ],
+        "pronunciation_focus_en": [
+          "ruht → ROOT",
+          "Geschäfte → guh-SHEF-tuh",
+          "Familie → fah-MEE-lee-uh"
         ]
       },
       {
@@ -7878,6 +8044,11 @@ export const lessons: GermanLesson[] = [
           "putzen → PÚ-tsần",
           "Pflaumenblüten → FLAO-mần-bluy-tần",
           "Glücksgeld → GLUYCK-s-gelt"
+        ],
+        "pronunciation_focus_en": [
+          "putzen → POOT-sen",
+          "Pflaumenblüten → FLOW-men-blue-ten ('ü' rounded; 'au' = 'ow')",
+          "Glücksgeld → GLUEKS-gelt ('ü' rounded)"
         ]
       },
       {
@@ -7887,6 +8058,11 @@ export const lessons: GermanLesson[] = [
           "Tradition wahren → tra-đi-TSI-ôn VA-rần",
           "quadratische → kva-ĐRÁ-ti-shê",
           "Reiskuchen → RAIS-ku-khần"
+        ],
+        "pronunciation_focus_en": [
+          "Tradition wahren → trah-dee-TSEE-ohn VAH-ren",
+          "quadratische → kvah-DRAH-tee-shuh",
+          "Reiskuchen → RICE-kookh-en"
         ]
       },
       {
@@ -7896,81 +8072,98 @@ export const lessons: GermanLesson[] = [
           "nächstes → NẾC-tès",
           "vom Hocker hauen → fôm HÔ-kờ HAO-ần",
           "verspreche → fe-SHPRÊ-khê"
+        ],
+        "pronunciation_focus_en": [
+          "nächstes → NEKHS-tes",
+          "vom Hocker hauen → fom HOK-er HOW-en",
+          "verspreche → fair-SHPRE-khuh"
         ]
       }
     ],
     "cultural_notes_vi": "Giải thích Tết cho người Đức cần care bridging cultural distance. (1) ANALOGY VỚI WEIHNACHTEN: bắt đầu từ điểm familiar — Christmas. 'Tết ist wie Weihnachten, aber 7 Tage lang und mit der ganzen Großfamilie'. Sau đó add unique elements (lì xì, bánh chưng, lì xì cho ancestors). (2) KEY CONCEPTS cần explain: âm lịch, gia đình lớn, thờ cúng tổ tiên, lì xì, bánh chưng. (3) AVOID OVER-ROMANTICIZE: Tết không phải fairy tale. Có pressure (catching đúng giờ về quê, expensive lì xì, cooking marathon). Honest framing: 'Tết ist wunderschön, aber auch anstrengend — wie Weihnachten in Deutschland mit Verwandten'. (4) DATE CONFUSION: Tết theo âm lịch nên dates change. 'Tết fällt zwischen Ende Januar und Mitte Februar'. (5) WORKPLACE IMPACT: với colleague Đức, explain Tết = 7-day shutdown ở VN business.\n\nKhác Việt Nam: ở VN, Tết là baseline knowledge ai cũng biết. Ở Đức/quốc tế, bạn là cultural translator — explain theo cách họ HIỂU emotional weight của Tết với người VN.\n\nMột chi tiết quan trọng: nếu colleague Đức quan tâm thực sự, đề xuất họ visit VN trong Tết. Đó là experience không thể replicate.",
+    "cultural_notes_en": "Explaining Tết to a German requires care in bridging cultural distance. (1) ANCHOR TO WEIHNACHTEN: start from the familiar — Christmas. 'Tết ist wie Weihnachten, aber 7 Tage lang und mit der ganzen Großfamilie'. Then add the unique elements (lì xì, bánh chưng, ancestor offerings). (2) KEY CONCEPTS to explain: the lunar calendar, the extended family, ancestor veneration, lì xì, bánh chưng. (3) AVOID OVER-ROMANTICISING: Tết isn't a fairy tale. There's pressure (catching the train home in time, expensive lì xì, the cooking marathon). Honest framing: 'Tết ist wunderschön, aber auch anstrengend — wie Weihnachten in Deutschland mit Verwandten'. (4) DATE CONFUSION: Tết follows the lunar calendar, so dates change. 'Tết fällt zwischen Ende Januar und Mitte Februar'. (5) WORKPLACE IMPACT: with a German colleague, explain that Tết = a 7-day shutdown in Vietnamese business.\n\nDifferent from a domestic Vietnamese setting: at home Tết is baseline knowledge everyone shares. Abroad you become the cultural translator — you have to explain it in a way that conveys the emotional weight Tết carries for Vietnamese people.\n\nOne crucial detail: if a German colleague is genuinely interested, suggest they visit Vietnam during Tết. It's an experience you can't replicate.",
     "tip_advice_vi": "Khi explain Tết: (1) STORYTELLING > academic. Cá nhân story 2-3 phút beats Wikipedia summary. (2) VISUALS HELP: cho xem ảnh trên phone — bàn thờ Tết, hoa đào/mai, lì xì red envelopes. (3) FOOD ANGLE: Đức appreciate food. Mention bánh chưng, bánh tét, mứt, nem chua. Nếu có thể, mời họ thử. (4) GIFTS NẾU PHÙ HỢP: nếu colleague có connection mạnh với Tết culture, có thể tặng small box mứt. (5) WORKPLACE PREP: 1 tháng trước Tết, send email tới German colleagues về office closure.\n\nCommon questions Germans ask:\n- 'Warum so wichtig?' → Family + ancestors + new year + spring + community in one\n- 'Wann genau?' → Lunar calendar, Late Jan to Mid Feb\n- 'Was esst ihr?' → Bánh Chưng, mứt, gà luộc, xôi, dưa hành\n- 'Was schenkt man?' → Lì xì for kids/elderly, fruit baskets for hosts\n- 'Was ist tabu?' → Sweep house ngày 1, break things, cry\n\nIf colleague invited to VN family Tết: brief them on:\n- Bring small gift (fruit basket, sweets)\n- Greet elderly first ('Chúc mừng năm mới ạ')\n- Don't refuse food (rude); take small portion if don't like\n- Lì xì cho trẻ con (small amount)\n- Dress nice (red good luck, white avoid)",
+    "tip_advice_en": "When you explain Tết: (1) STORYTELLING > academic. A 2–3 minute personal story beats a Wikipedia summary. (2) VISUALS HELP: show photos on your phone — Tết altar, hoa đào/mai blossoms, red envelopes. (3) FOOD ANGLE: Germans appreciate food. Mention bánh chưng, bánh tét, mứt, nem chua. If possible, let them try some. (4) GIFTS IF APPROPRIATE: if a colleague has a strong connection to Tết culture, a small box of mứt is a nice touch. (5) WORKPLACE PREP: a month before Tết, send an email to German colleagues about the office closure.\n\nCommon questions Germans ask:\n- 'Warum so wichtig?' → Family + ancestors + new year + spring + community in one\n- 'Wann genau?' → Lunar calendar, late January to mid-February\n- 'Was esst ihr?' → Bánh Chưng, mứt, gà luộc, xôi, dưa hành\n- 'Was schenkt man?' → Lì xì for kids/elders, fruit baskets for hosts\n- 'Was ist tabu?' → Sweeping the house on day 1, breaking things, crying\n\nIf the colleague is invited to a family Tết in Vietnam, brief them on:\n- Bring a small gift (fruit basket, sweets)\n- Greet the elders first ('Chúc mừng năm mới ạ')\n- Don't refuse food (rude); take a small portion if you don't like it\n- Lì xì for the kids (small amount)\n- Dress nicely (red is auspicious, white is to be avoided)",
     "vocabulary": [
       {
         "word": "das Fest aller Feste",
         "en": "the festival of festivals",
         "vi": "lễ của mọi lễ",
         "pos": "noun phrase",
-        "pronunciation_vi": "đát FÉST A-lờ FÉS-tê"
+        "pronunciation_vi": "đát FÉST A-lờ FÉS-tê",
+        "pronunciation_en": "dahs FEST AHL-er FES-tuh — the festival of festivals"
       },
       {
         "word": "der Mondkalender",
         "en": "lunar calendar",
         "vi": "âm lịch",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe MÔNT-ka-len-đờ"
+        "pronunciation_vi": "đe MÔNT-ka-len-đờ",
+        "pronunciation_en": "dair MOHND-kah-len-der — lunar calendar"
       },
       {
         "word": "die Großfamilie",
         "en": "extended family",
         "vi": "đại gia đình",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi GRÔS-fa-mi-li-ê"
+        "pronunciation_vi": "đi GRÔS-fa-mi-li-ê",
+        "pronunciation_en": "dee GROHS-fah-mee-lee-uh — extended family"
       },
       {
         "word": "die Ahnenverehrung",
         "en": "ancestor veneration",
         "vi": "thờ cúng tổ tiên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi A-nần-fê-ê-rung"
+        "pronunciation_vi": "đi A-nần-fê-ê-rung",
+        "pronunciation_en": "dee AH-nen-fair-air-roong — ancestor veneration"
       },
       {
         "word": "das Glücksgeld",
         "en": "lucky money (lì xì)",
         "vi": "lì xì",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát GLUYCK-s-gelt"
+        "pronunciation_vi": "đát GLUYCK-s-gelt",
+        "pronunciation_en": "dahs GLUEKS-gelt — lucky money ('ü' rounded)"
       },
       {
         "word": "der rote Umschlag",
         "en": "red envelope",
         "vi": "phong bì đỏ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe RÔ-tê UM-shlak"
+        "pronunciation_vi": "đe RÔ-tê UM-shlak",
+        "pronunciation_en": "dair ROH-tuh OOM-shlahg — red envelope"
       },
       {
         "word": "die Pflaumenblüte / Aprikosenblüte",
         "en": "plum / apricot blossom (Tết flowers)",
         "vi": "hoa đào / hoa mai",
         "pos": "noun (f)",
-        "pronunciation_vi": "FLAO-mần-bluy-tê / a-pri-KÔ-zần-bluy-tê"
+        "pronunciation_vi": "FLAO-mần-bluy-tê / a-pri-KÔ-zần-bluy-tê",
+        "pronunciation_en": "FLOW-men-blue-tuh / ah-pree-KOH-zen-blue-tuh — plum / apricot blossom"
       },
       {
         "word": "der Bánh Chưng / Reiskuchen",
         "en": "square sticky rice cake",
         "vi": "bánh chưng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe BÁN CHƯNG / RAIS-ku-khần"
+        "pronunciation_vi": "đe BÁN CHƯNG / RAIS-ku-khần",
+        "pronunciation_en": "dair BAHN CHUNG / RICE-kookh-en — square sticky rice cake"
       },
       {
         "word": "die Tradition wahren",
         "en": "to maintain tradition",
         "vi": "giữ truyền thống",
         "pos": "verb phrase",
-        "pronunciation_vi": "tra-đi-TSI-ôn VA-rần"
+        "pronunciation_vi": "tra-đi-TSI-ôn VA-rần",
+        "pronunciation_en": "trah-dee-TSEE-ohn VAH-ren — to maintain tradition"
       },
       {
         "word": "das Frühlingsfest",
         "en": "spring festival",
         "vi": "lễ mùa xuân",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FRUY-lings-fest"
+        "pronunciation_vi": "đát FRUY-lings-fest",
+        "pronunciation_en": "dahs FRUE-lings-fest — spring festival ('ü' rounded)"
       }
     ],
     "dialogue": [
@@ -8103,29 +8296,34 @@ export const lessons: GermanLesson[] = [
       "Sếp Đức lên kế hoạch product launch ngay vào tuần Tết — không biết về Tết. Hãy explain tại sao timing này thảm hoạ (factories đóng, supply chain dừng, no media coverage), đề xuất alternatives (1 tuần trước hoặc 2 tuần sau), và educate cho future planning."
     ],
     "register_notes": "Explain Tết = personal storytelling + cultural context. (1) USE 'WIR' framing: 'Wir Vietnamesen feiern Tết so...'. Báo hiệu insider perspective. (2) ANALOGIES với Weihnachten OK nhưng KHÔNG over-equate. 'Tết ist wie Weihnachten, aber...' — cho difference rõ. (3) PROPER NOUNS: keep VN tên gốc trong tiếng Đức ('Bánh Chưng' không 'Reiskuchen' duy nhất; 'Tết' không 'vietnamesisches Neujahr' duy nhất). (4) AVOID OVER-DRAMATIZE: Tết là wonderful nhưng cũng có downsides. Honest framing > fairy tale. (5) ENGAGE WITH QUESTIONS: nếu Đức ask question 'naive', KHÔNG defensive.\n\nKhi mời German guest tham gia Tết: register hơi formal hơn nếu sếp ('Es wäre mir eine Ehre, wenn Sie unser Tết-Fest miterleben würden'). Casual hơn với colleague gần ('Komm doch zu uns Tết feiern!').\n\nKhác Việt Nam: ở VN, Tết là common knowledge — bạn không phải explain. Ở Đức/quốc tế, bạn là cultural educator — practice cách explain succinctly + emotionally engaging.\n\nNgười Việt thường mắc lỗi: (1) over-explain (5-minute lecture về 4000 năm history) — Đức bored quickly; (2) under-explain (dismiss với 'It's like Christmas') — miss richness; (3) apologize cho 'lạc hậu' aspects — nothing to apologize for.",
+    "register_notes_en": "Explaining Tết = personal storytelling + cultural context. (1) USE 'WIR' framing: 'Wir Vietnamesen feiern Tết so…'. It signals an insider perspective. (2) ANALOGIES with Weihnachten are OK but DO NOT over-equate. 'Tết ist wie Weihnachten, aber…' — make the difference explicit. (3) PROPER NOUNS: keep the original Vietnamese names in German ('Bánh Chưng' rather than only 'Reiskuchen'; 'Tết' rather than only 'vietnamesisches Neujahr'). (4) AVOID OVER-DRAMATISING: Tết is wonderful but it has its downsides. Honest framing > fairy tale. (5) ENGAGE WITH QUESTIONS: if a German asks a 'naive' question, DO NOT get defensive.\n\nWhen inviting a German guest to join Tết: register is slightly more formal if it's your boss ('Es wäre mir eine Ehre, wenn Sie unser Tết-Fest miterleben würden'). More casual with a close colleague ('Komm doch zu uns Tết feiern!').\n\nDifferent from a Vietnamese setting: at home Tết is common knowledge — you don't have to explain. Abroad you're a cultural educator — practise explaining it succinctly and engagingly.\n\nCommon mistakes from less experienced explainers: (1) over-explain (a 5-minute lecture on 4,000 years of history) — Germans bore quickly; (2) under-explain (dismiss with 'It's like Christmas') — miss the richness; (3) apologise for 'old-fashioned' aspects — nothing to apologise for.",
     "idiom_glosses": [
       {
         "idiom": "Das Fest aller Feste",
         "literal": "Lễ của mọi lễ",
         "meaning": "Lễ quan trọng nhất, ưu việt nhất. Câu thành ngữ siêu quy mô — phù hợp khi explain Tết với người Đức để convey emotional weight.",
+        "meaning_en": "The most important festival, the pre-eminent one. A grand, sweeping phrase — useful when you want to convey to a German listener how much emotional weight Tết carries.",
         "example": "Tết ist für uns Vietnamesen das Fest aller Feste — wichtiger als Weihnachten."
       },
       {
         "idiom": "Tradition wahren",
         "literal": "Giữ truyền thống",
         "meaning": "Duy trì truyền thống thay vì để mai một. Phù hợp khi explain ancient practices (bàn thờ, lì xì) — báo hiệu intentional preservation.",
+        "meaning_en": "To preserve tradition rather than let it fade. Useful when explaining ancient practices (the altar, lì xì) — it signals intentional preservation.",
         "example": "Wer Tradition wahren will, isst Bánh Chưng zu Tết."
       },
       {
         "idiom": "Glück bringen",
         "literal": "Mang lại may mắn",
         "meaning": "Mang điều may mắn. Cụm chuyên dùng cho Tết practices: rote Umschläge bringen Glück, Pflaumenblüten bringen Glück.",
+        "meaning_en": "To bring luck. A stock phrase for Tết practices: red envelopes bring luck, plum blossoms bring luck.",
         "example": "Der rote Umschlag bringt Glück fürs neue Jahr."
       },
       {
         "idiom": "Vom Hocker hauen",
         "literal": "Đập từ ghế đẩu xuống",
         "meaning": "Làm choáng váng (positive sense) — impress mạnh đến mức gần như đổ ghế. Câu thành ngữ casual để hứa experience powerful.",
+        "meaning_en": "To knock you off your stool (positive) — to impress someone so much they almost fall over. A casual phrase used to promise a powerful experience.",
         "example": "Wenn du Tết wirklich erlebst, wird es dich vom Hocker hauen."
       }
     ],
@@ -8133,7 +8331,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi explain Tết:",
+        "instruction_en": "Fill in the right phrase for explaining Tết:",
         "pronunciation_focus": [
+          "Tết explanation"
+        ],
+        "pronunciation_focus_en": [
           "Tết explanation"
         ],
         "items": [
@@ -8158,7 +8360,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng explain Tết:",
+        "instruction_en": "Match each German line to its function when explaining Tết:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Tết ist wie Weihnachten, aber 7 Tage.",
@@ -8181,8 +8385,12 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức khi explain Tết:",
+        "instruction_en": "Translate into German for explaining Tết:",
         "pronunciation_focus": [
           "cultural Đức"
+        ],
+        "pronunciation_focus_en": [
+          "cultural German"
         ],
         "items": [
           {
@@ -8219,6 +8427,11 @@ export const lessons: GermanLesson[] = [
           "aneinander vorbei → an-AI-nan-đờ FOA-bai",
           "ehrlich → ÊR-lích",
           "besprechen → bê-SHPRÊ-khần"
+        ],
+        "pronunciation_focus_en": [
+          "aneinander vorbei → ahn-EYE-nahn-der for-BYE",
+          "ehrlich → AIR-likh (final -ich soft)",
+          "besprechen → buh-SHPRE-khen"
         ]
       },
       {
@@ -8228,6 +8441,11 @@ export const lessons: GermanLesson[] = [
           "Schlips → SHLÍPS",
           "treten → TRÊ-tần",
           "getroffen → gê-TRÔ-fần"
+        ],
+        "pronunciation_focus_en": [
+          "Schlips → SHLIPS",
+          "treten → TRAY-ten",
+          "getroffen → guh-TROF-en"
         ]
       },
       {
@@ -8237,6 +8455,11 @@ export const lessons: GermanLesson[] = [
           "Tabula rasa → TÁ-bu-la RA-za",
           "Missverständnisse → MÍS-fe-shten-ni-sê",
           "Anfang → ÁN-fang"
+        ],
+        "pronunciation_focus_en": [
+          "Tabula rasa → TAH-boo-lah RAH-zah",
+          "Missverständnisse → MISS-fair-shten(d)-nis-suh",
+          "Anfang → AHN-fahng"
         ]
       },
       {
@@ -8246,6 +8469,11 @@ export const lessons: GermanLesson[] = [
           "Länder → LEN-đờ",
           "Sitten → ZÍT-tần",
           "anpassen → ÁN-pa-sần"
+        ],
+        "pronunciation_focus_en": [
+          "Länder → LEN-der",
+          "Sitten → ZIT-en",
+          "anpassen → AHN-pah-sen"
         ]
       },
       {
@@ -8255,81 +8483,98 @@ export const lessons: GermanLesson[] = [
           "respektiere → res-pếch-TÍA-ê",
           "Direktheit → đi-RẾC-tê-hait",
           "Tempo → TEM-pô"
+        ],
+        "pronunciation_focus_en": [
+          "respektiere → res-pek-TEER-uh",
+          "Direktheit → dee-REKT-hite",
+          "Tempo → TEM-poh"
         ]
       }
     ],
     "cultural_notes_vi": "Cuộc trò chuyện khó cross-cultural cần chuẩn bị careful. (1) TIMING + LOCATION: KHÔNG trong workplace open space. KHÔNG sau giờ làm việc khi mệt. Best: cafe gần văn phòng giữa giờ trưa, hoặc phòng họp nhỏ với door closed. (2) AGENDA-DRIVEN nhưng EMPATHETIC: bắt đầu bằng frame mục đích — KHÔNG attack. 'Stefan, ich möchte gerne über unsere Zusammenarbeit der letzten Wochen sprechen — was gut läuft und wo wir besser werden können'. (3) USE 'I-STATEMENTS': 'Ich habe mich gefühlt...' thay vì 'Du hast mich verletzt'. I-statements harder to argue against. (4) SEPARATE BEHAVIOR FROM PERSON: 'Dein Verhalten in dem Meeting hat mich getroffen' — không 'Du bist unsensibel'. Khác biệt cốt lõi. (5) END WITH FORWARD-LOOKING: KHÔNG kết bằng dwelling on past. Kết bằng 'Wie können wir besser zusammenarbeiten?'.\n\nKhác Việt Nam: ở VN, conflict thường avoided hoặc handled qua intermediary. Ở Đức, direct face-to-face với person involved là expected. Người Việt phải tập confront — uncomfortable nhưng necessary.\n\nỞ công ty Đức tại VN, HR có policy về workplace conflict resolution — thường recommend 1-on-1 first, escalate to manager if needed, then HR.\n\nMột chi tiết quan trọng: nếu conversation đi sai (escalates, emotional), OK to pause. 'Stefan, ich merke, dass dieses Gespräch gerade emotional wird — lass uns morgen weitermachen'. Pause = strength, không weakness.",
+    "cultural_notes_en": "A difficult cross-cultural conversation needs careful preparation. (1) TIMING + LOCATION: NOT in the open-plan workplace. NOT after hours when both of you are tired. Best: a café near the office at lunchtime, or a small meeting room with the door closed. (2) AGENDA-DRIVEN but EMPATHETIC: open by framing the purpose — DO NOT attack. 'Stefan, ich möchte gerne über unsere Zusammenarbeit der letzten Wochen sprechen — was gut läuft und wo wir besser werden können'. (3) USE 'I-STATEMENTS': 'Ich habe mich gefühlt…' rather than 'Du hast mich verletzt'. I-statements are harder to argue with. (4) SEPARATE BEHAVIOUR FROM PERSON: 'Dein Verhalten in dem Meeting hat mich getroffen' — not 'Du bist unsensibel'. That distinction is the core skill. (5) END FORWARD-LOOKING: DO NOT close by dwelling on the past. Close with 'Wie können wir besser zusammenarbeiten?'.\n\nDifferent from many Vietnamese (and some East Asian) settings: there conflict is often avoided or handled through an intermediary. In Germany, a direct face-to-face conversation with the person involved is what's expected. People used to the indirect style need to practise confronting directly — uncomfortable but necessary.\n\nIn German subsidiaries in Vietnam, HR usually has a written policy for workplace conflict resolution — typically 1-on-1 first, escalate to the manager if needed, then HR.\n\nOne crucial detail: if the conversation goes off the rails (escalates, gets emotional), it's OK to pause. 'Stefan, ich merke, dass dieses Gespräch gerade emotional wird — lass uns morgen weitermachen'. A pause is strength, not weakness.",
     "tip_advice_vi": "Trước cuộc gặp: (1) WRITE DOWN issues bạn muốn discuss. Specific, not vague. (2) RECOGNIZE YOUR OWN ROLE. Ít khi 100% lỗi của 1 bên. Pattern đúng: 'Vielleicht habe auch ich nicht klar genug kommuniziert'. (3) RESEARCH CULTURAL CONTEXT.\n\nTrong cuộc gặp: (1) MỞ ĐẦU: 'Hast du fünf Minuten? Ich möchte etwas Wichtiges besprechen'. (2) NÊU PURPOSE. (3) GIVE SPECIFIC EXAMPLE: 1-2 incidents cụ thể, không 5+. (4) DESCRIBE IMPACT: 'Das hat mich Y empfinden lassen'. KHÔNG 'You should...'. (5) LISTEN to response. (6) ACKNOWLEDGE their perspective: 'Ich verstehe deine Sicht'. (7) PROPOSE forward.\n\nNgôn ngữ chuẩn:\n- 'Wir reden aneinander vorbei' (idiom)\n- 'Es war nicht meine Absicht' — clarify intent\n- 'Lass uns Tabula rasa machen' (idiom)\n- 'Andere Länder, andere Sitten' (idiom)\n- 'Wie können wir besser zusammenarbeiten?'\n\nTránh:\n- Bring up 5 grievances at once\n- Use 'always/never'\n- Compare to other colleagues\n- Threaten escalation\n- Cry or raise voice\n\nSau cuộc gặp: (1) CONFIRM in writing key takeaways. (2) FOLLOW THROUGH. (3) CHECK IN sau 2 tuần.",
+    "tip_advice_en": "Before the meeting: (1) WRITE DOWN the issues you want to discuss. Specific, not vague. (2) RECOGNISE YOUR OWN ROLE. It's rarely 100% one side's fault. The right move: 'Vielleicht habe auch ich nicht klar genug kommuniziert'. (3) RESEARCH the cultural context.\n\nDuring the meeting: (1) OPEN: 'Hast du fünf Minuten? Ich möchte etwas Wichtiges besprechen'. (2) STATE PURPOSE. (3) GIVE A SPECIFIC EXAMPLE: 1–2 concrete incidents, not 5+. (4) DESCRIBE IMPACT: 'Das hat mich Y empfinden lassen'. NOT 'You should…'. (5) LISTEN to the response. (6) ACKNOWLEDGE their perspective: 'Ich verstehe deine Sicht'. (7) PROPOSE a way forward.\n\nStandard phrasing:\n- 'Wir reden aneinander vorbei' (idiom)\n- 'Es war nicht meine Absicht' — clarify intent\n- 'Lass uns Tabula rasa machen' (idiom)\n- 'Andere Länder, andere Sitten' (idiom)\n- 'Wie können wir besser zusammenarbeiten?'\n\nAvoid:\n- Bringing up 5 grievances at once\n- 'Always' / 'never'\n- Comparing to other colleagues\n- Threatening escalation\n- Crying or raising your voice\n\nAfter the meeting: (1) CONFIRM key takeaways in writing. (2) FOLLOW THROUGH. (3) CHECK IN after two weeks.",
     "vocabulary": [
       {
         "word": "der Konflikt",
         "en": "conflict",
         "vi": "xung đột",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe kôn-FLÍCT"
+        "pronunciation_vi": "đe kôn-FLÍCT",
+        "pronunciation_en": "dair kon-FLIKT — conflict"
       },
       {
         "word": "der Konfliktlöser",
         "en": "conflict resolver",
         "vi": "người giải quyết xung đột",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe kôn-FLÍCT-lơ-zờ"
+        "pronunciation_vi": "đe kôn-FLÍCT-lơ-zờ",
+        "pronunciation_en": "dair kon-FLIKT-luh-zer — conflict resolver"
       },
       {
         "word": "das Verhalten",
         "en": "behavior",
         "vi": "hành vi",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát fe-HAL-tần"
+        "pronunciation_vi": "đát fe-HAL-tần",
+        "pronunciation_en": "dahs fair-HAHL-ten — behaviour"
       },
       {
         "word": "die Eskalation",
         "en": "escalation",
         "vi": "leo thang",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi es-ka-la-TSI-ôn"
+        "pronunciation_vi": "đi es-ka-la-TSI-ôn",
+        "pronunciation_en": "dee es-kah-lah-TSEE-ohn — escalation"
       },
       {
         "word": "die Deeskalation",
         "en": "de-escalation",
         "vi": "hạ nhiệt",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi đê-es-ka-la-TSI-ôn"
+        "pronunciation_vi": "đi đê-es-ka-la-TSI-ôn",
+        "pronunciation_en": "dee day-es-kah-lah-TSEE-ohn — de-escalation"
       },
       {
         "word": "das Vermittlungsgespräch",
         "en": "mediation conversation",
         "vi": "cuộc trò chuyện hoà giải",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát fe-MÍT-lungs-gờ-shprếch"
+        "pronunciation_vi": "đát fe-MÍT-lungs-gờ-shprếch",
+        "pronunciation_en": "dahs fair-MIT-loongs-guh-shprekh — mediation conversation"
       },
       {
         "word": "etw. ansprechen",
         "en": "to address something",
         "vi": "nêu vấn đề",
         "pos": "verb (sep)",
-        "pronunciation_vi": "ÁN-shprê-khần"
+        "pronunciation_vi": "ÁN-shprê-khần",
+        "pronunciation_en": "AHN-shpre-khen — to address (a topic); separable verb"
       },
       {
         "word": "die Sichtweise",
         "en": "perspective, viewpoint",
         "vi": "góc nhìn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZÍCH-vai-zê"
+        "pronunciation_vi": "đi ZÍCH-vai-zê",
+        "pronunciation_en": "dee ZIKHT-vy-zuh — perspective, viewpoint"
       },
       {
         "word": "sich kompromissbereit zeigen",
         "en": "to show willingness to compromise",
         "vi": "thể hiện sẵn sàng thoả hiệp",
         "pos": "verb phrase",
-        "pronunciation_vi": "kôm-prô-MÍS-bê-rait"
+        "pronunciation_vi": "kôm-prô-MÍS-bê-rait",
+        "pronunciation_en": "kom-pro-MISS-buh-rite ZYE-gen — show willingness to compromise"
       },
       {
         "word": "den ersten Schritt machen",
         "en": "to take the first step",
         "vi": "đi bước đầu tiên",
         "pos": "verb phrase",
-        "pronunciation_vi": "đần ÉS-tần SHRÍ-t MA-khần"
+        "pronunciation_vi": "đần ÉS-tần SHRÍ-t MA-khần",
+        "pronunciation_en": "den AIR-sten SHRIT MAH-khen — take the first step"
       }
     ],
     "dialogue": [
@@ -8452,29 +8697,34 @@ export const lessons: GermanLesson[] = [
       "Trong project meeting, một German colleague mới (chưa hiểu VN context) nói 'Eure Produktion in Vietnam ist unzuverlässig' trước khách hàng VN. Khách hàng visibly hurt. Bạn cần handle ngay tại meeting (de-escalate) AND sau (private conversation với colleague Đức về cultural impact)."
     ],
     "register_notes": "Cuộc trò chuyện khó cross-cultural đòi hỏi REGISTER ĐẶC BIỆT. (1) FORMAL HƠN bình thường: kể cả với 'du' colleague, language structure formal hơn — full sentences, careful word choice. (2) NEUTRAL VOCABULARY: tránh emotionally charged words. 'Ich habe mich gemaßregelt gefühlt' > 'Du hast mich gedemütigt'. (3) HEDGING phrases: 'Vielleicht...', 'Mein Eindruck war...', 'Ich kann mich auch täuschen, aber...' — báo hiệu open to other interpretation. (4) PAUSES OK: difficult conversations naturally have silences. KHÔNG fill mọi gap với chatter. (5) AVOID HUMOR: jokes có thể được hiểu là minimizing.\n\nChuẩn mở/kết:\n- Opening: 'Hast du Zeit für ein offenes Gespräch?'\n- Framing: 'Ich möchte etwas ansprechen, das mich beschäftigt'\n- Acknowledge: 'Ich verstehe deine Sicht'\n- Forward: 'Wie können wir besser zusammenarbeiten?'\n- Closing: 'Vielen Dank für das offene Gespräch'\n\nKhi RECEIVING criticism từ colleague Đức: pattern: (1) thank for raising it, (2) listen fully, (3) acknowledge their perspective, (4) ask clarifying questions, (5) take time to respond if needed, (6) propose action.\n\nKhác Việt Nam: ở VN, conflicts thường avoided face-to-face. Ở Đức, expected face-to-face.\n\nNgười Việt thường mắc lỗi: (1) avoid conversation entirely; (2) bring up via email; (3) escalate to HR/manager too quickly; (4) over-apologize; (5) cry/get emotional.",
+    "register_notes_en": "A difficult cross-cultural conversation calls for a SPECIAL REGISTER. (1) MORE FORMAL than usual: even with a 'du' colleague, the sentence structure is more formal — full sentences, careful word choice. (2) NEUTRAL VOCABULARY: avoid emotionally charged words. 'Ich habe mich gemaßregelt gefühlt' > 'Du hast mich gedemütigt'. (3) HEDGING phrases: 'Vielleicht…', 'Mein Eindruck war…', 'Ich kann mich auch täuschen, aber…' — they signal you're open to another interpretation. (4) PAUSES ARE OK: difficult conversations naturally have silences. DO NOT fill every gap with chatter. (5) AVOID HUMOUR: jokes can read as minimising.\n\nStandard opening/closing:\n- Opening: 'Hast du Zeit für ein offenes Gespräch?'\n- Framing: 'Ich möchte etwas ansprechen, das mich beschäftigt'\n- Acknowledge: 'Ich verstehe deine Sicht'\n- Forward: 'Wie können wir besser zusammenarbeiten?'\n- Closing: 'Vielen Dank für das offene Gespräch'\n\nWhen RECEIVING criticism from a German colleague, the pattern is: (1) thank them for raising it, (2) listen fully, (3) acknowledge their perspective, (4) ask clarifying questions, (5) take time to respond if needed, (6) propose action.\n\nDifferent from many indirect-communication cultures: there, face-to-face conflicts are usually avoided. In Germany, face-to-face is expected.\n\nCommon mistakes: (1) avoiding the conversation entirely; (2) raising it by email; (3) escalating to HR / manager too quickly; (4) over-apologising; (5) crying / getting emotional.",
     "idiom_glosses": [
       {
         "idiom": "Aneinander vorbeireden",
         "literal": "Nói qua nhau",
         "meaning": "Communicating without truly understanding each other — talking past each other. Cụm CHÍNH XÁC để mô tả cross-cultural miscommunication.",
+        "meaning_en": "Talking past each other — communicating without actually understanding the other side. The precise phrase to describe cross-cultural miscommunication.",
         "example": "Ich glaube, wir reden seit Wochen aneinander vorbei."
       },
       {
         "idiom": "Jemandem auf den Schlips treten",
         "literal": "Đạp lên cravat ai",
         "meaning": "Vô tình xúc phạm ai. Phù hợp khi reference past offense without dramatizing.",
+        "meaning_en": "To accidentally offend someone (literally: 'to step on someone's tie'). Useful when you want to reference a past offence without dramatising it.",
         "example": "Es war nicht meine Absicht, dir auf den Schlips zu treten — entschuldige bitte."
       },
       {
         "idiom": "Tabula rasa machen",
         "literal": "Làm bảng trắng",
         "meaning": "Xoá sạch và bắt đầu mới — wipe slate clean. Phù hợp khi cuộc trò chuyện khó kết thúc tích cực.",
+        "meaning_en": "To wipe the slate clean and start fresh. Useful when a difficult conversation ends on a positive note.",
         "example": "Lass uns Tabula rasa machen — alte Missverständnisse beiseite."
       },
       {
         "idiom": "Andere Länder, andere Sitten",
         "literal": "Đất khác, phong tục khác",
         "meaning": "Mỗi nơi có cultural norms riêng — frame để invoke cultural difference without judgment.",
+        "meaning_en": "Different countries, different customs. A frame for invoking cultural difference without passing judgement.",
         "example": "Andere Länder, andere Sitten — wir müssen beide etwas anpassen."
       }
     ],
@@ -8482,7 +8732,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp cho cuộc trò chuyện khó:",
+        "instruction_en": "Fill in the right phrase for a difficult conversation:",
         "pronunciation_focus": [
+          "conflict register"
+        ],
+        "pronunciation_focus_en": [
           "conflict register"
         ],
         "items": [
@@ -8507,7 +8761,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng cuộc trò chuyện khó:",
+        "instruction_en": "Match each German line to its function in a difficult conversation:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Hast du Zeit für ein offenes Gespräch?",
@@ -8530,7 +8786,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức cho conflict resolution:",
+        "instruction_en": "Translate into German for conflict resolution:",
         "pronunciation_focus": [
+          "conflict German"
+        ],
+        "pronunciation_focus_en": [
           "conflict German"
         ],
         "items": [
@@ -8568,6 +8828,11 @@ export const lessons: GermanLesson[] = [
           "magst → MÁGST",
           "Wochenende → VÔ-khần-en-đê",
           "Streetfood → STRÍT-fút"
+        ],
+        "pronunciation_focus_en": [
+          "magst → MAHKST",
+          "Wochenende → VOKH-en-en-duh",
+          "Streetfood → STREET-food (English loanword)"
         ]
       },
       {
@@ -8577,6 +8842,11 @@ export const lessons: GermanLesson[] = [
           "korrigieren → ko-ri-GÍA-ần",
           "übe → UY-bê",
           "Sprechen → SHPRÊ-khần"
+        ],
+        "pronunciation_focus_en": [
+          "korrigieren → kor-ee-GEER-en",
+          "übe → UE-buh ('ü' rounded)",
+          "Sprechen → SHPRE-khen"
         ]
       },
       {
@@ -8586,6 +8856,11 @@ export const lessons: GermanLesson[] = [
           "Nachbarschaft → NÁCH-ba-shaft",
           "wöchentlichen → VƠCH-ent-lích-ần",
           "Lauf → LAOF"
+        ],
+        "pronunciation_focus_en": [
+          "Nachbarschaft → NAHKH-bar-shahft",
+          "wöchentlichen → VUH-khent-lee-khen ('ö' rounded)",
+          "Lauf → LOWF"
         ]
       },
       {
@@ -8595,6 +8870,11 @@ export const lessons: GermanLesson[] = [
           "jederzeit → JE-đờ-tsait",
           "anrufen → ÁN-ru-phần",
           "hinaus → hi-NAOS"
+        ],
+        "pronunciation_focus_en": [
+          "jederzeit → YAY-der-tsite",
+          "anrufen → AHN-roo-fen",
+          "hinaus → hin-OWS"
         ]
       },
       {
@@ -8604,81 +8884,98 @@ export const lessons: GermanLesson[] = [
           "Freundschaft → FROIND-shaft",
           "gleicher Wellenlänge → GLAI-khê VEL-lần-leng-ê",
           "wünschen → VUYN-shần"
+        ],
+        "pronunciation_focus_en": [
+          "Freundschaft → FROYND-shahft ('eu' = 'oy')",
+          "gleicher Wellenlänge → GLY-kher VEL-en-leng-uh",
+          "wünschen → VUEN-shen ('ü' rounded)"
         ]
       }
     ],
     "cultural_notes_vi": "Kết bạn với người Đức ở VN có rules tế nhị khác kết bạn người Việt. (1) FRIENDSHIP TAKES TIME ở Đức: Đức differentiate strict 'Bekanntschaft' (acquaintance) vs 'Freundschaft' (friendship). 'Freundschaft' phải build qua tháng, năm. KHÔNG expect Đức gọi bạn 'Freund' sau bia một lần. (2) PRIVACY = SACRED: Đức rất riêng tư. KHÔNG hỏi salary, family plans, religion, politics ngay. Topics safe: hobbies, travel, food, sports, work projects. (3) CONSISTENCY > INTENSITY: weekly coffee 30 phút trong 6 tháng > 1 dinner đắt tiền lần. Đức trust people show up regularly. (4) RECIPROCITY: nếu họ invite bạn, return invite in similar scale. KHÔNG over-give. (5) PERSONAL SPACE: kể cả close friends, hugging less common ở Đức than VN.\n\nKhác Việt Nam: ở VN, friendship can form quickly through shared meal + drinks. Ở Đức, slower but deeper once established. Patience required.\n\nỞ VN expat scene, German expats often clustered. Đôi khi feel khó break in. Tip: don't approach as 'tourist' — approach as fellow professional/local with shared interests.\n\nMột chi tiết quan trọng: nếu friendship develop deep, Đức có thể chuyển 'du' với bạn — đây là MEANINGFUL transition, not casual.",
+    "cultural_notes_en": "Building a friendship with a German in Vietnam follows different rules than friendship with Vietnamese people. (1) FRIENDSHIP TAKES TIME in Germany: Germans strictly distinguish 'Bekanntschaft' (acquaintance) from 'Freundschaft' (friendship). 'Freundschaft' is built over months and years. DO NOT expect a German to call you 'Freund' after one round of beers. (2) PRIVACY IS SACRED: Germans are very private. DO NOT ask about salary, family plans, religion, politics early on. Safe topics: hobbies, travel, food, sports, work projects. (3) CONSISTENCY > INTENSITY: a weekly 30-minute coffee for 6 months > one expensive dinner. Germans trust people who show up regularly. (4) RECIPROCITY: if they invite you, return an invite at a similar scale. DO NOT over-give. (5) PERSONAL SPACE: even with close friends, hugging is less common in Germany than in Vietnam.\n\nDifferent from Vietnamese norms: in Vietnam friendship can form quickly through shared food + drinks. In Germany it's slower but deeper once it's established. Patience is required.\n\nIn the expat scene in Vietnam, German expats often cluster together. Sometimes it feels hard to break in. Tip: don't approach them as a 'tourist' — approach them as a fellow professional / local with shared interests.\n\nOne crucial detail: if a friendship goes deep, a German may switch to 'du' with you — that's a MEANINGFUL transition, not a casual one.",
     "tip_advice_vi": "Initiating friendship: (1) START LOW-PRESSURE: coffee, lunch, walk — short commitment. (2) SHARED INTEREST: identify 1 common ground. (3) BE PATIENT: nếu họ decline lần 1, đừng take personally. (4) RECIPROCITY: balance giving + receiving.\n\nDeepening friendship: (1) CONSISTENCY: weekly run, monthly dinner. (2) HELP IN SMALL WAYS: nếu họ struggle với VN bureaucracy, offer practical help. (3) REMEMBER DETAILS: birthday, important dates. (4) BE HONEST: Đức value trực tiếp.\n\nWhen they reciprocate: (1) ACCEPT invitations. (2) ASK QUESTIONS về Đức culture. (3) LEARN basic Đức phrases for casual settings.\n\nMaintaining long-distance friendship: (1) WhatsApp regular but not daily. (2) Send VN updates. (3) Visit when in Đức. (4) Welcome them back to VN.\n\nNgôn ngữ chuẩn:\n- 'Lust auf...?' — casual invitation\n- 'Magst du mit?' — group invitation\n- 'Wir könnten mal...' — soft suggestion\n- 'Bei mir kannst du jederzeit...' — open availability\n\nTránh:\n- Over-share early\n- Expect họ adapt 100% to VN style\n- Take silence/decline personally\n- Pressure for label",
+    "tip_advice_en": "Initiating friendship: (1) START LOW-PRESSURE: coffee, lunch, walk — short commitment. (2) SHARED INTEREST: identify 1 common piece of ground. (3) BE PATIENT: if they decline the first time, don't take it personally. (4) RECIPROCITY: balance giving and receiving.\n\nDeepening friendship: (1) CONSISTENCY: weekly run, monthly dinner. (2) HELP IN SMALL WAYS: if they're struggling with Vietnamese bureaucracy, offer practical help. (3) REMEMBER DETAILS: birthday, important dates. (4) BE HONEST: Germans value directness.\n\nWhen they reciprocate: (1) ACCEPT invitations. (2) ASK QUESTIONS about German culture. (3) LEARN basic German phrases for casual settings.\n\nMaintaining a long-distance friendship: (1) WhatsApp regularly but not daily. (2) Send Vietnam updates. (3) Visit when you're in Germany. (4) Welcome them back to Vietnam.\n\nStandard phrasing:\n- 'Lust auf…?' — casual invitation\n- 'Magst du mit?' — group invitation\n- 'Wir könnten mal…' — soft suggestion\n- 'Bei mir kannst du jederzeit…' — open availability\n\nAvoid:\n- Over-sharing early\n- Expecting them to adapt 100% to Vietnamese style\n- Taking silence/decline personally\n- Pressing for a label",
     "vocabulary": [
       {
         "word": "die Freundschaft",
         "en": "friendship",
         "vi": "tình bạn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FROIND-shaft"
+        "pronunciation_vi": "đi FROIND-shaft",
+        "pronunciation_en": "dee FROYND-shahft — friendship; 'eu' = 'oy'"
       },
       {
         "word": "der/die Bekannte",
         "en": "acquaintance",
         "vi": "người quen",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe bê-KAN-tê"
+        "pronunciation_vi": "đe bê-KAN-tê",
+        "pronunciation_en": "dair / dee buh-KAHN-tuh — acquaintance"
       },
       {
         "word": "die Nachbarschaft",
         "en": "neighborhood",
         "vi": "khu xóm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi NÁCH-ba-shaft"
+        "pronunciation_vi": "đi NÁCH-ba-shaft",
+        "pronunciation_en": "dee NAHKH-bar-shahft — neighbourhood"
       },
       {
         "word": "etw. unternehmen",
         "en": "to undertake, do something",
         "vi": "làm gì cùng nhau",
         "pos": "verb (sep)",
-        "pronunciation_vi": "un-tờ-NÊ-mần"
+        "pronunciation_vi": "un-tờ-NÊ-mần",
+        "pronunciation_en": "oon-ter-NAY-men — to undertake (something together); separable"
       },
       {
         "word": "Lust auf etw. haben",
         "en": "to feel like sth.",
         "vi": "muốn làm gì",
         "pos": "verb phrase",
-        "pronunciation_vi": "LÚST AOF"
+        "pronunciation_vi": "LÚST AOF",
+        "pronunciation_en": "LOOST owf — to feel like (doing) something"
       },
       {
         "word": "auf einer Wellenlänge sein",
         "en": "to be on the same wavelength",
         "vi": "cùng bước sóng",
         "pos": "phrase",
-        "pronunciation_vi": "VEL-lần-leng-ê zain"
+        "pronunciation_vi": "VEL-lần-leng-ê zain",
+        "pronunciation_en": "owf EYE-ner VEL-en-leng-uh ZINE — to be on the same wavelength"
       },
       {
         "word": "die Vertrauensbasis",
         "en": "trust foundation",
         "vi": "nền tảng tin cậy",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-TRAO-ens-ba-zis"
+        "pronunciation_vi": "đi fe-TRAO-ens-ba-zis",
+        "pronunciation_en": "dee fair-TROW-ens-bah-zis — trust foundation"
       },
       {
         "word": "die Privatsphäre respektieren",
         "en": "to respect privacy",
         "vi": "tôn trọng riêng tư",
         "pos": "verb phrase",
-        "pronunciation_vi": "pri-VÁT-sphê-rê"
+        "pronunciation_vi": "pri-VÁT-sphê-rê",
+        "pronunciation_en": "dee pree-VAHT-sfair-uh res-pek-TEER-en — to respect privacy"
       },
       {
         "word": "die Wahlverwandtschaft",
         "en": "elective affinity",
         "vi": "duyên kết bạn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi VAL-fe-vant-shaft"
+        "pronunciation_vi": "đi VAL-fe-vant-shaft",
+        "pronunciation_en": "dee VAHL-fair-vahnt-shahft — elective affinity (Goethe term)"
       },
       {
         "word": "in Kontakt bleiben",
         "en": "to stay in touch",
         "vi": "giữ liên lạc",
         "pos": "verb phrase",
-        "pronunciation_vi": "in KÔN-tac-t BLAI-bần"
+        "pronunciation_vi": "in KÔN-tac-t BLAI-bần",
+        "pronunciation_en": "in KON-takt BLY-ben — to stay in touch"
       }
     ],
     "dialogue": [
@@ -8801,29 +9098,34 @@ export const lessons: GermanLesson[] = [
       "German friend chuẩn bị về Đức sau 2 năm ở VN. Bạn muốn maintain long-distance friendship. Hãy script farewell conversation: thank for friendship, propose specific plan to stay in touch (monthly call, meet when both in same city), give meaningful small gift."
     ],
     "register_notes": "Kết bạn với German register chuyển đổi tinh tế. (1) START 'SIE': trong workplace context, ngay cả đồng nghiệp gần, 'Sie' là default. Chuyển 'du' khi: (a) họ propose, (b) social context bên ngoài work, (c) startup/agency culture. (2) 'DU' = MEANINGFUL: nếu họ propose 'du', đây là intimacy upgrade. Accept gracefully. (3) DEPTH STAGES: Stage 1 Smalltalk (weather, sport, food); Stage 2 Personal interests (hobbies, travel); Stage 3 Vulnerable topics (work struggles, family). Đừng skip stages. (4) HUMOR EVOLVES: early friendship — safe humor (observational, self-deprecating). Established friendship — sarcasm, German dry wit. (5) PRIVACY tôn trọng.\n\nNgôn ngữ chuẩn cho từng stage:\n- Stage 1 (early): 'Lust auf einen Kaffee?'\n- Stage 2 (developing): 'Hast du am Wochenende was vor?'\n- Stage 3 (close): 'Bei mir kannst du jederzeit vorbeikommen'\n\nKhi German friend share emotional content (rare): LISTEN, don't fix.\n\nKhác Việt Nam: ở VN, friendship can be high-touch. Ở Đức, healthy friendship có space — weekly contact, monthly meetings = normal close.\n\nNgười Việt thường mắc lỗi: (1) over-communicate early; (2) expect họ available 24/7; (3) take silence as rejection; (4) push for label; (5) under-communicate after they leave VN.",
+    "register_notes_en": "Becoming friends with a German involves subtle register shifts. (1) START WITH 'SIE': in a workplace context, even with a close colleague, 'Sie' is the default. Switch to 'du' when: (a) they propose it, (b) the social context is outside work, (c) startup/agency culture. (2) 'DU' = MEANINGFUL: if they offer 'du', that's an intimacy upgrade. Accept gracefully. (3) DEPTH STAGES: Stage 1 small-talk (weather, sport, food); Stage 2 personal interests (hobbies, travel); Stage 3 vulnerable topics (work struggles, family). Don't skip stages. (4) HUMOUR EVOLVES: early friendship — safe humour (observational, self-deprecating). Established friendship — sarcasm, German dry wit. (5) PRIVACY is respected.\n\nStandard phrasing by stage:\n- Stage 1 (early): 'Lust auf einen Kaffee?'\n- Stage 2 (developing): 'Hast du am Wochenende was vor?'\n- Stage 3 (close): 'Bei mir kannst du jederzeit vorbeikommen'\n\nWhen a German friend shares emotional content (rare): LISTEN, don't try to fix it.\n\nDifferent from Vietnamese norms: in Vietnam friendship can be high-touch. In Germany a healthy friendship has space — weekly contact, monthly meetings = a normal close friendship.\n\nCommon mistakes: (1) over-communicating early; (2) expecting them available 24/7; (3) reading silence as rejection; (4) pushing for a label; (5) under-communicating after they leave Vietnam.",
     "idiom_glosses": [
       {
         "idiom": "Über den eigenen Schatten springen",
         "literal": "Nhảy qua bóng của chính mình",
         "meaning": "Vượt qua chính mình — làm điều ngược lại bản tính. Trong context kết bạn cross-cultural: cả hai bên có lúc 'über den eigenen Schatten springen'.",
+        "meaning_en": "To jump over your own shadow — to overcome yourself, to do something against your own nature. In cross-cultural friendship: both sides sometimes have to 'über den eigenen Schatten springen'.",
         "example": "Beide Seiten müssen über ihren eigenen Schatten springen, damit eine Freundschaft funktioniert."
       },
       {
         "idiom": "Sich anfreunden",
         "literal": "Tự kết bạn với",
         "meaning": "Become friends with someone — gradual process word, không event. Đức use to describe friendship development.",
+        "meaning_en": "To become friends with someone — describes the gradual process, not an event. Germans use this verb to describe how a friendship develops.",
         "example": "Wir haben uns über die letzten sechs Monate angefreundet."
       },
       {
         "idiom": "Auf gleicher Wellenlänge sein",
         "literal": "Trên cùng bước sóng",
         "meaning": "Cùng wavelength — communicate easily, share humor, similar values. Khi friendship really click.",
+        "meaning_en": "To be on the same wavelength — to communicate easily, share humour, share values. The phrase for the moment a friendship really clicks.",
         "example": "Wenn man auf gleicher Wellenlänge ist, spielen Kultur und Sprache eine kleinere Rolle."
       },
       {
         "idiom": "Eine Schulter zum Anlehnen",
         "literal": "Một bờ vai để dựa",
         "meaning": "Người ai có thể tựa vào trong khó khăn. Cụm warm cho true friendship.",
+        "meaning_en": "A shoulder to lean on — someone you can rely on through difficult times. A warm phrase for genuine friendship.",
         "example": "In schweren Zeiten brauche ich eine Schulter zum Anlehnen — und du bist diese Schulter."
       }
     ],
@@ -8831,7 +9133,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi build friendship:",
+        "instruction_en": "Fill in the right phrase for building a friendship:",
         "pronunciation_focus": [
+          "friendship register"
+        ],
+        "pronunciation_focus_en": [
           "friendship register"
         ],
         "items": [
@@ -8856,7 +9162,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng friendship:",
+        "instruction_en": "Match each German line to its friendship function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Lust auf einen Lauf zusammen?",
@@ -8879,7 +9187,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức casual friendship:",
+        "instruction_en": "Translate into German for casual friendship:",
         "pronunciation_focus": [
+          "casual du-form"
+        ],
+        "pronunciation_focus_en": [
           "casual du-form"
         ],
         "items": [
@@ -8917,6 +9229,11 @@ export const lessons: GermanLesson[] = [
           "Reisepass → RAI-zê-pass",
           "Arbeitsvisum → AR-baits-vi-zum",
           "Guten Tag → GU-tần TÁK"
+        ],
+        "pronunciation_focus_en": [
+          "Reisepass → RICE-eh-pahss",
+          "Arbeitsvisum → AR-bites-vee-zoom",
+          "Guten Tag → GOO-ten TAHG"
         ]
       },
       {
@@ -8926,6 +9243,11 @@ export const lessons: GermanLesson[] = [
           "zum ersten Mal → tsum ÉS-tần MAL",
           "beginne → bê-GÍN-nê",
           "Stelle → SHTÊ-lê"
+        ],
+        "pronunciation_focus_en": [
+          "zum ersten Mal → tsoom AIR-sten MAHL",
+          "beginne → buh-GIN-uh",
+          "Stelle → SHTEL-uh"
         ]
       },
       {
@@ -8935,6 +9257,11 @@ export const lessons: GermanLesson[] = [
           "Aufenthalt → AOF-ent-halt",
           "Genehmigung → gê-NÊ-mi-gung",
           "geplant → gê-PLANT"
+        ],
+        "pronunciation_focus_en": [
+          "Aufenthalt → OWF-ent-hahlt",
+          "Genehmigung → guh-NAY-mee-goong",
+          "geplant → guh-PLAHNT"
         ]
       },
       {
@@ -8944,6 +9271,11 @@ export const lessons: GermanLesson[] = [
           "logiere → lô-DJÍA-rê",
           "Übergangswohnung → UY-bờ-gangs-vô-nung",
           "Karlstraße → KARL-shtra-sê"
+        ],
+        "pronunciation_focus_en": [
+          "logiere → loh-ZHEE-ruh",
+          "Übergangswohnung → UE-ber-gahngs-voh-noong ('ü' rounded)",
+          "Karlstraße → KARL-shtrah-suh"
         ]
       },
       {
@@ -8953,81 +9285,98 @@ export const lessons: GermanLesson[] = [
           "Anmeldeformular → ÁN-men-đê-for-mu-la",
           "ausfüllen → AOS-fuy-lần",
           "Einreise → AIN-rai-zê"
+        ],
+        "pronunciation_focus_en": [
+          "Anmeldeformular → AHN-mel-duh-for-moo-lar",
+          "ausfüllen → OWS-fue-len ('ü' rounded)",
+          "Einreise → EYE-n-rye-zuh"
         ]
       }
     ],
     "cultural_notes_vi": "Qua cửa hải quan Đức (Bundespolizei) lần đầu là khoảnh khắc nhạy cảm — sai một chi tiết có thể bị giữ thêm 2-3 giờ. Năm điểm cốt lõi. (1) GIẤY TỜ SẴN TAY: hộ chiếu + visa + thư mời làm việc (Arbeitsvertrag) + xác nhận nơi ở (Anmeldebestätigung hoặc booking khách sạn) + vé khứ hồi (nếu có). Có sẵn TRƯỚC khi đến counter — không lục túi tại bàn. (2) NGÔN NGỮ: ưu tiên ĐỨC. Cố gắng nói 'Guten Tag' và câu mở đầu bằng Đức — sĩ quan biên phòng tích cực hơn nhiều. Nếu không hiểu, có thể chuyển Anh: 'Entschuldigung, könnten wir auf Englisch sprechen?'. (3) CÂU TRẢ LỜI NGẮN GỌN, TRỰC TIẾP: 'Wie lange bleiben Sie?' → 'Zwei Jahre, mit gültigem Arbeitsvisum'. KHÔNG kể chuyện cá nhân, KHÔNG joke về 'Drogen', 'Waffen', 'illegal'. (4) ĐỪNG CHỦ ĐỘNG MỞ HÀNH LÝ: chỉ mở khi sĩ quan yêu cầu. Mở trước = bị nghi. (5) TIỀN MẶT > 10.000 EUR: phải DECLARE. Không declare = phạt nặng + có thể bị tịch thu.\n\nKhác Việt Nam: ở VN, hải quan thường friendly, đôi khi nói chuyện tự nhiên. Ở Đức/Schengen: factual, succinct, professional. Không expect smalltalk.\n\nMột chi tiết quan trọng: nếu visa lao động lần đầu (D-Visum 90 ngày), bạn sẽ cần làm Anmeldung trong 14 ngày sau khi đến và xin Aufenthaltstitel tại Ausländerbehörde trong 90 ngày. Sĩ quan biên phòng KHÔNG cấp giấy này — họ chỉ stamp ngày nhập cảnh.\n\nỞ Frankfurt và Munich, có làn riêng cho EU citizens — bạn xếp 'All Passports / Non-EU'. Thời gian chờ giờ cao điểm 30-90 phút. Plan trước.",
+    "cultural_notes_en": "Going through German border control (Bundespolizei) for the first time is a sensitive moment — one wrong detail can get you held for an extra 2–3 hours. Five core points for Vietnamese travellers. (1) DOCUMENTS READY IN HAND: passport + visa + employment letter (Arbeitsvertrag) + proof of address (Anmeldebestätigung or hotel booking) + return ticket (if any). Have them ready BEFORE you reach the counter — don't dig through your bag at the booth. (2) LANGUAGE: prefer GERMAN. Try to say 'Guten Tag' and open in German — border officers respond noticeably better. If you don't understand, switch to English: 'Entschuldigung, könnten wir auf Englisch sprechen?'. (3) ANSWERS SHORT AND DIRECT: 'Wie lange bleiben Sie?' → 'Zwei Jahre, mit gültigem Arbeitsvisum'. NO personal stories, NO jokes about 'Drogen', 'Waffen', 'illegal'. (4) DON'T OPEN YOUR LUGGAGE PROACTIVELY: only open it when the officer asks. Opening it first looks suspicious. (5) CASH > EUR 10,000: must be DECLARED. Failing to declare = heavy fine + possible confiscation.\n\nDifferent from Vietnamese norms: at Vietnamese border control officers are often friendly and chatty. At German/Schengen control it's factual, short, professional. Don't expect small-talk.\n\nOne crucial detail: if it's your first work visa (D-Visum, 90 days), you'll need to register your address (Anmeldung) within 14 days of arrival and apply for the Aufenthaltstitel at the Ausländerbehörde within 90 days. The border officer does NOT issue this — they only stamp your entry date.\n\nAt Frankfurt and Munich there are separate lanes for EU citizens — you queue at 'All Passports / Non-EU'. Wait times at peak hours: 30–90 minutes. Plan accordingly.",
     "tip_advice_vi": "Trước chuyến bay (1 tuần): (1) In MỌI giấy tờ ra giấy: visa, Arbeitsvertrag, Anmeldebestätigung/booking, vé khứ hồi, bằng chứng tài chính (Sperrkonto, bank statement). PDF trên phone không đủ — Đức yêu cầu giấy. (2) Ghi địa chỉ tạm trú vào tờ rời (street, Hausnummer, PLZ) — sĩ quan có thể hỏi. (3) Tải app Bundespolizei (optional) để biết quy trình.\n\nTại counter: (1) Đứng nghiêm, một mình (không nhóm). (2) Đặt hộ chiếu + visa MỞ TRƯỚC TRANG visa lên counter. (3) Nói 'Guten Tag' khi sĩ quan ngẩng lên. (4) Trả lời câu hỏi NGẮN GỌN, không elaborate. (5) Nếu không hiểu, hỏi lại lịch sự: 'Könnten Sie das wiederholen?'.\n\nCâu trả lời chuẩn cho 5 câu phổ biến:\n- 'Was ist der Zweck Ihres Aufenthalts?' → 'Arbeit / Studium / Tourismus'\n- 'Wie lange bleiben Sie?' → 'Zwei Jahre, mit gültigem Arbeitsvisum'\n- 'Wo werden Sie wohnen?' → '[địa chỉ cụ thể]'\n- 'Wer ist Ihr Arbeitgeber?' → 'Bosch GmbH in Stuttgart'\n- 'Haben Sie etwas zu verzollen?' → 'Nein, nichts zu verzollen' (nếu thực sự không)\n\nKHÔNG NÊN: (1) Nói 'I don't know' về địa chỉ/tên công ty — phải biết; (2) Mở phone show photos cá nhân; (3) Cãi lại nếu sĩ quan giữ thêm — tuân thủ, gọi hỗ trợ qua VN consulate nếu cần; (4) Đút lót — tội nghiêm trọng ở Đức.\n\nNếu bị giữ secondary inspection: (1) Bình tĩnh, hợp tác. (2) Yêu cầu phiên dịch nếu không hiểu: 'Ich brauche einen Dolmetscher, bitte'. (3) KHÔNG ký bất cứ giấy gì không hiểu. (4) Liên hệ Đại sứ quán VN ở Berlin: +49 30 53630108 (24/7 emergency line).",
+    "tip_advice_en": "Before the flight (1 week ahead): (1) Print EVERY document on paper: visa, Arbeitsvertrag, Anmeldebestätigung/booking, return ticket, proof of finances (Sperrkonto, bank statement). PDF on your phone is not enough — Germany expects paper. (2) Write your temporary address on a separate slip (street, Hausnummer, PLZ) — the officer may ask for it. (3) Optionally download the Bundespolizei app to know the procedure.\n\nAt the counter: (1) Stand upright, alone (not in a group). (2) Put passport + visa OPEN ON THE VISA PAGE on the counter. (3) Say 'Guten Tag' when the officer looks up. (4) Answer questions SHORTLY, don't elaborate. (5) If you don't understand, politely ask again: 'Könnten Sie das wiederholen?'.\n\nStandard answers to the 5 common questions:\n- 'Was ist der Zweck Ihres Aufenthalts?' → 'Arbeit / Studium / Tourismus'\n- 'Wie lange bleiben Sie?' → 'Zwei Jahre, mit gültigem Arbeitsvisum'\n- 'Wo werden Sie wohnen?' → '[specific address]'\n- 'Wer ist Ihr Arbeitgeber?' → 'Bosch GmbH in Stuttgart'\n- 'Haben Sie etwas zu verzollen?' → 'Nein, nichts zu verzollen' (if true)\n\nDO NOT: (1) Say 'I don't know' about your address / employer — you have to know; (2) Open your phone to show personal photos; (3) Argue if held for further inspection — comply, and call your consulate if needed; (4) Try to bribe — a serious crime in Germany.\n\nIf held for secondary inspection: (1) Stay calm, cooperate. (2) Request an interpreter if you don't understand: 'Ich brauche einen Dolmetscher, bitte'. (3) DO NOT sign anything you don't understand. (4) Contact the Vietnamese Embassy in Berlin: +49 30 53630108 (24/7 emergency line).",
     "vocabulary": [
       {
         "word": "der Reisepass",
         "en": "passport",
         "vi": "hộ chiếu",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe RAI-zê-pass"
+        "pronunciation_vi": "đe RAI-zê-pass",
+        "pronunciation_en": "dair RICE-eh-pahss — passport"
       },
       {
         "word": "das Arbeitsvisum",
         "en": "work visa",
         "vi": "visa lao động",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát AR-baits-vi-zum"
+        "pronunciation_vi": "đát AR-baits-vi-zum",
+        "pronunciation_en": "dahs AR-bites-vee-zoom — work visa"
       },
       {
         "word": "die Einreise",
         "en": "entry (into a country)",
         "vi": "việc nhập cảnh",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AIN-rai-zê"
+        "pronunciation_vi": "đi AIN-rai-zê",
+        "pronunciation_en": "dee EYE-n-rye-zuh — entry into a country"
       },
       {
         "word": "der Aufenthalt",
         "en": "stay, residence",
         "vi": "việc lưu trú",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AOF-ent-halt"
+        "pronunciation_vi": "đe AOF-ent-halt",
+        "pronunciation_en": "dair OWF-ent-hahlt — stay, residence"
       },
       {
         "word": "die Genehmigung",
         "en": "permit, authorization",
         "vi": "sự cấp phép",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi gê-NÊ-mi-gung"
+        "pronunciation_vi": "đi gê-NÊ-mi-gung",
+        "pronunciation_en": "dee guh-NAY-mee-goong — permit, authorisation"
       },
       {
         "word": "der/die Zollbeamter/-in",
         "en": "customs officer",
         "vi": "sĩ quan hải quan",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe TSOL-bê-am-tờ"
+        "pronunciation_vi": "đe TSOL-bê-am-tờ",
+        "pronunciation_en": "dair / dee TSOL-buh-ahm-ter — customs officer"
       },
       {
         "word": "etw. zu verzollen haben",
         "en": "to have something to declare",
         "vi": "có gì khai báo",
         "pos": "verb phrase",
-        "pronunciation_vi": "tsu fe-TSO-lần HA-bần"
+        "pronunciation_vi": "tsu fe-TSO-lần HA-bần",
+        "pronunciation_en": "tsoo fair-TSOL-en HAH-ben — to have something to declare"
       },
       {
         "word": "der Zweck des Aufenthalts",
         "en": "purpose of stay",
         "vi": "mục đích lưu trú",
         "pos": "noun phrase",
-        "pronunciation_vi": "đe TSVẾC đès AOF-ent-halts"
+        "pronunciation_vi": "đe TSVẾC đès AOF-ent-halts",
+        "pronunciation_en": "dair TSVEK des OWF-ent-hahlts — purpose of stay"
       },
       {
         "word": "das Anmeldeformular",
         "en": "registration form",
         "vi": "đơn đăng ký",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát ÁN-men-đê-for-mu-la"
+        "pronunciation_vi": "đát ÁN-men-đê-for-mu-la",
+        "pronunciation_en": "dahs AHN-mel-duh-for-moo-lar — registration form"
       },
       {
         "word": "der/die Arbeitgeber:in",
         "en": "employer",
         "vi": "người sử dụng lao động",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe AR-bait-gê-bờ"
+        "pronunciation_vi": "đe AR-bait-gê-bờ",
+        "pronunciation_en": "dair / dee AR-bite-gay-ber — employer"
       }
     ],
     "dialogue": [
@@ -9150,29 +9499,34 @@ export const lessons: GermanLesson[] = [
       "Sĩ quan hỏi 'Sprechen Sie nur Englisch oder auch Deutsch?'. Bạn ở mức B2. Hãy trả lời tự tin — confirm B2 (không nói 'fluent' nếu không thật, không nói 'kein Deutsch' nếu B2), và proceed bằng Đức trong khả năng. Pattern: 'Ich spreche Deutsch auf B2-Niveau, aber bei komplizierten Fragen wäre Englisch sicherer'."
     ],
     "register_notes": "Hải quan Đức formal tuyệt đối. (1) 'SIE' luôn — sĩ quan không bao giờ 'du'. Trả lời cũng 'Sie': 'Ja, hier ist mein Pass' (KHÔNG 'Hier hast du'). (2) GIỌNG NGẮN, FACTUAL: câu trả lời 5-10 từ tốt hơn câu 30 từ. 'Arbeit. Zwei Jahre' đủ; 'Tôi sang Đức làm việc lâu dài để phát triển sự nghiệp...' = quá dài. (3) ĐỪNG ĐÙA: jokes về drugs, weapons, illegal status có thể dẫn đến secondary inspection 2-3 giờ. Sĩ quan có training để spot evasion, không có training để appreciate humor. (4) NGÔN NGỮ Y TẾ/PHÁP LÝ: dùng từ formal — 'Reisepass' (không 'Pass'), 'Aufenthalt' (không 'Bleibe'), 'Arbeitgeber' (không 'Chef'). (5) HỎI LẠI LỊCH SỰ: nếu không hiểu, 'Könnten Sie das wiederholen?' hoặc 'Entschuldigung, ich habe nicht verstanden'. KHÔNG nod im lặng nếu không hiểu — bị coi là evasion.\n\nNgôn ngữ chuẩn cho mỗi loại câu hỏi:\n- Mục đích: 'Arbeit / Tourismus / Studium / Familie'\n- Thời gian: 'Zwei Jahre' / 'Drei Wochen' / 'Sechs Monate'\n- Địa chỉ: full address với PLZ\n- Tiền: con số chính xác trong euro\n- Khai báo: 'Nein, nichts zu verzollen' hoặc 'Ja, ich möchte X verzollen'\n\nKhác Việt Nam: ở VN có thể chat thân thiện với hải quan, đôi khi cười đùa. Ở Đức: zero smalltalk. Đợi sĩ quan greet, trả lời, đợi câu hỏi tiếp.\n\nNgười Việt thường mắc lỗi: (1) over-explain — đưa thông tin sĩ quan không hỏi; (2) Mỹ-English style 'Hi, how are you?' — sĩ quan Đức expect 'Guten Tag' formal; (3) cãi lại nếu bị nghi ngờ — tuân thủ, không argue.",
+    "register_notes_en": "German border control is absolutely formal. (1) ALWAYS 'SIE' — the officer never uses 'du'. Your answer is also 'Sie': 'Ja, hier ist mein Pass' (NOT 'Hier hast du'). (2) SHORT, FACTUAL TONE: a 5–10-word answer beats a 30-word one. 'Arbeit. Zwei Jahre' is enough; 'I am coming to Germany long-term to develop my career…' = too long. (3) DON'T JOKE: jokes about drugs, weapons, illegal status can trigger a 2–3-hour secondary inspection. Officers are trained to spot evasion, not appreciate humour. (4) MEDICAL/LEGAL VOCABULARY: use formal terms — 'Reisepass' (not 'Pass'), 'Aufenthalt' (not 'Bleibe'), 'Arbeitgeber' (not 'Chef'). (5) POLITELY ASK AGAIN: if you didn't understand, 'Könnten Sie das wiederholen?' or 'Entschuldigung, ich habe nicht verstanden'. DO NOT nod silently if you don't understand — that reads as evasion.\n\nStandard phrasing for each question type:\n- Purpose: 'Arbeit / Tourismus / Studium / Familie'\n- Duration: 'Zwei Jahre' / 'Drei Wochen' / 'Sechs Monate'\n- Address: full address with PLZ (postcode)\n- Money: exact figure in euros\n- Declaration: 'Nein, nichts zu verzollen' or 'Ja, ich möchte X verzollen'\n\nDifferent from many Anglo-American settings: there you can chat lightly with the officer ('How's your day?'). At German control: zero small-talk. Wait for the officer to greet you, answer, wait for the next question.\n\nCommon mistakes from less experienced travellers: (1) over-explain — giving information the officer didn't ask for; (2) American-style 'Hi, how are you?' — the German officer expects formal 'Guten Tag'; (3) arguing if questioned — comply, don't argue.",
     "idiom_glosses": [
       {
         "idiom": "Auf Nummer sicher gehen",
         "literal": "Đi theo số an toàn",
         "meaning": "Cẩn thận, làm theo cách an toàn nhất — không liều. Trong context biên giới: 'Ich gehe auf Nummer sicher und nehme alle Dokumente in Papierform mit' = Em cẩn thận, mang tất cả giấy tờ bản giấy.",
+        "meaning_en": "To play it safe — go with the safest option, don't take risks. In a border context: 'Ich gehe auf Nummer sicher und nehme alle Dokumente in Papierform mit' = I'm playing it safe and bringing all documents on paper.",
         "example": "Beim Grenzübertritt gehe ich immer auf Nummer sicher — alle Dokumente in Papierform."
       },
       {
         "idiom": "Reinen Tisch machen",
         "literal": "Làm sạch bàn",
         "meaning": "Khai báo trung thực, không giấu — đặt mọi thứ lên bàn rõ ràng. Trong context customs declaration: nếu có gì cần khai, khai ngay đầu, không đợi sĩ quan tìm.",
+        "meaning_en": "To make a clean slate — declare everything honestly, put it all on the table. In a customs context: if you have something to declare, declare it up front; don't wait for the officer to find it.",
         "example": "Bei der Zollkontrolle empfiehlt es sich, gleich reinen Tisch zu machen — alle deklarierungspflichtigen Gegenstände vorab nennen."
       },
       {
         "idiom": "Mit der Tür ins Haus fallen",
         "literal": "Đập cửa ngã vào nhà",
         "meaning": "Vào thẳng vấn đề thiếu lịch sự — quá đột ngột. Trong context biên giới: tránh 'Mit der Tür ins Haus fallen' bằng câu mở đầu lễ phép trước khi đưa giấy tờ.",
+        "meaning_en": "To barge straight in (literally: 'to fall into the house with the door'). In a border context: avoid 'Mit der Tür ins Haus fallen' by opening with a polite phrase before handing over your documents.",
         "example": "Mit einem höflichen 'Guten Tag' anfangen, nicht gleich mit der Tür ins Haus fallen."
       },
       {
         "idiom": "Glück im Unglück haben",
         "literal": "Có may trong rủi",
         "meaning": "Trong cái rủi có cái may. Phù hợp cho situations bất tiện ở biên giới (chờ lâu, secondary check) nhưng kết thúc êm.",
+        "meaning_en": "To have luck within bad luck — a silver lining in an awkward situation. Fits border scenarios where things are inconvenient (long wait, secondary check) but end smoothly.",
         "example": "Trotz der zweistündigen Wartezeit hatte ich Glück im Unglück — der Beamte war sehr verständnisvoll."
       }
     ],
@@ -9180,7 +9534,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi qua hải quan:",
+        "instruction_en": "Fill in the right phrase for border control:",
         "pronunciation_focus": [
+          "formal customs register"
+        ],
+        "pronunciation_focus_en": [
           "formal customs register"
         ],
         "items": [
@@ -9205,7 +9563,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu sĩ quan biên phòng với chức năng:",
+        "instruction_en": "Match each border officer line to its function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Was ist der Zweck Ihres Aufenthalts?",
@@ -9228,7 +9588,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal cho hải quan:",
+        "instruction_en": "Translate into formal German for border control:",
         "pronunciation_focus": [
+          "formal Sie"
+        ],
+        "pronunciation_focus_en": [
           "formal Sie"
         ],
         "items": [
@@ -9266,6 +9630,11 @@ export const lessons: GermanLesson[] = [
           "verlorenen → fe-LÔ-rê-nần",
           "Notpass → NÔT-pass",
           "beantragen → bê-AN-tra-gần"
+        ],
+        "pronunciation_focus_en": [
+          "verlorenen → fair-LOH-reh-nen",
+          "Notpass → NOHT-pahss",
+          "beantragen → buh-AHN-trah-gen"
         ]
       },
       {
@@ -9275,6 +9644,11 @@ export const lessons: GermanLesson[] = [
           "Anzeige erstattet → ÁN-tsai-gê e-SHTA-tệt",
           "Bescheinigung → bê-SHAI-ni-gung",
           "gestern Abend → GES-tần A-bệnt"
+        ],
+        "pronunciation_focus_en": [
+          "Anzeige erstattet → AHN-tsy-guh air-SHTAH-tet",
+          "Bescheinigung → buh-SHY-nee-goong",
+          "gestern Abend → GES-tern AH-bent"
         ]
       },
       {
@@ -9284,6 +9658,11 @@ export const lessons: GermanLesson[] = [
           "Rückflug → RÚC-flúk",
           "Express-Bearbeitung → ec-SPRES bê-AR-bai-tung",
           "möglich → MƠ-glích"
+        ],
+        "pronunciation_focus_en": [
+          "Rückflug → RUEK-floog ('ü' rounded)",
+          "Express-Bearbeitung → ex-PRESS buh-AR-bite-oong",
+          "möglich → MUH-glikh ('ö' rounded)"
         ]
       },
       {
@@ -9293,6 +9672,11 @@ export const lessons: GermanLesson[] = [
           "Kopie → kô-PI",
           "Aufenthaltstitel → AOF-ent-halts-ti-tệl",
           "alten Passes → AL-tần PA-sès"
+        ],
+        "pronunciation_focus_en": [
+          "Kopie → koh-PEE",
+          "Aufenthaltstitel → OWF-ent-hahlts-tee-tel",
+          "alten Passes → AHL-ten PAHS-es"
         ]
       },
       {
@@ -9302,81 +9686,98 @@ export const lessons: GermanLesson[] = [
           "zusätzlichen → tsu-ZẾT-slích-ần",
           "Unterlagen → UN-tờ-la-gần",
           "erforderlich → e-FOR-đờ-lích"
+        ],
+        "pronunciation_focus_en": [
+          "zusätzlichen → tsoo-ZET-slee-khen",
+          "Unterlagen → OON-ter-lah-gen",
+          "erforderlich → air-FOR-der-likh"
         ]
       }
     ],
     "cultural_notes_vi": "Mất hộ chiếu ở Đức là khẩn cấp lớn — Đại sứ quán VN tại Berlin (Elsenstraße 3, 12435 Berlin) là trạm cứu hộ. Năm điểm cốt lõi. (1) BÁO CẢNH SÁT TRƯỚC: ngay khi phát hiện mất, đến Polizeiwache gần nhất làm Anzeige. Đại sứ quán SẼ HỎI giấy này — không có = phải quay lại sau. (2) GIỜ MỞ CỬA HẠN CHẾ: Đại sứ quán mở Mon-Fri 9-12h chỉ. Đến 8:30 để xếp hàng. Cuối tuần hoặc lễ Đức/VN = đóng cửa. (3) NOTPASS vs HỘ CHIẾU CHÍNH: Notpass (hộ chiếu khẩn) cấp 1-3 ngày làm việc, có hạn 1 năm, chỉ dùng để về VN. Hộ chiếu chính thức cần 4-6 tuần. Trong emergency, xin Notpass. (4) PHÍ: ~50-100 EUR cho Notpass + ~25 EUR cho ảnh + lệ phí khẩn (tuỳ trường hợp). Trả tiền mặt, không thẻ. (5) NGÔN NGỮ: cán bộ Đại sứ quán nói tiếng Việt — bạn không cần dùng tiếng Đức ở đây. Nhưng giấy Anzeige từ cảnh sát Đức bằng tiếng Đức.\n\nKhác Việt Nam: ở VN có thể call người thân nhờ làm thủ tục từ xa. Ở Đức, Đại sứ quán yêu cầu CÁ NHÂN có mặt — không có ai làm thay được.\n\nHotline khẩn cấp Đại sứ quán VN Berlin: +49 30 53630108. Có thể gọi 24/7 cho emergency thực sự (mất giấy tờ + bị kẹt ở sân bay, etc.).\n\nNếu visa Đức mất theo hộ chiếu: phải apply lại Aufenthaltstitel tại Ausländerbehörde Đức ở thành phố bạn cư trú — riêng biệt với Notpass VN. Không một giấy giải quyết cả hai.\n\nMột chi tiết quan trọng: photocopy hộ chiếu + visa luôn trong cloud (Google Drive/iCloud) — không phải trên phone (phone cũng có thể mất). Trước chuyến đi, scan + upload.",
+    "cultural_notes_en": "Losing your passport in Germany is a serious emergency — the Vietnamese Embassy in Berlin (Elsenstraße 3, 12435 Berlin) is the rescue station. Five core points. (1) FILE THE POLICE REPORT FIRST: as soon as you discover it's lost, go to the nearest Polizeiwache and file an Anzeige. The embassy WILL ask for this paper — without it you'll be sent back. (2) LIMITED OPENING HOURS: the embassy is open Mon–Fri, 9–12 only. Get there by 8:30 to queue. Weekends or German/Vietnamese holidays = closed. (3) NOTPASS vs. FULL PASSPORT: a Notpass (emergency passport) is issued in 1–3 working days, valid for one year, and only usable to fly back to Vietnam. A regular passport takes 4–6 weeks. In an emergency, apply for the Notpass. (4) FEES: about EUR 50–100 for the Notpass + ~EUR 25 for photos + a rush surcharge in some cases. Pay in cash, no card. (5) LANGUAGE: embassy staff speak Vietnamese — you don't need German there. But the Anzeige from the German police is in German.\n\nDifferent from many Vietnamese settings: at home you can sometimes have relatives handle paperwork remotely for you. In Germany the embassy requires YOUR personal presence — nobody can do it on your behalf.\n\nVietnamese Embassy Berlin emergency hotline: +49 30 53630108. Reachable 24/7 for genuine emergencies (lost documents + stranded at the airport, etc.).\n\nIf your German visa was lost together with the passport: you have to re-apply for the Aufenthaltstitel at the Ausländerbehörde in your German city of residence — a separate process from the Vietnamese Notpass. One document does not cover both.\n\nOne crucial detail: keep photocopies of your passport + visa in the cloud (Google Drive / iCloud) — not just on your phone (your phone can be lost too). Before your trip, scan + upload.",
     "tip_advice_vi": "Trước chuyến đi (preparation): (1) Photocopy 3 bản hộ chiếu + visa: 1 mang theo riêng (không trong cùng túi với hộ chiếu gốc), 1 gửi gia đình ở VN, 1 upload cloud. (2) Ghi vào phone: số điện thoại Đại sứ quán Berlin (+49 30 53630108), địa chỉ Đại sứ quán (Elsenstraße 3, 12435 Berlin), số bảo hiểm hộ chiếu nếu có. (3) Mua bảo hiểm du lịch có cover lost documents.\n\nKhi phát hiện mất (timeline khẩn): (1) Ngay lập tức tìm lại — kiểm tra túi, hành lý, ghế xe taxi, khách sạn. Nhiều case 'mất' thực ra là đặt nhầm chỗ. (2) Trong 2 giờ: đến Polizeiwache gần nhất (Polizeirevier hoặc Bundespolizei nếu ở sân bay). Mang ID phụ (driver license, copy hộ chiếu). Yêu cầu Anzeige — biên bản chính thức. (3) Trong 24 giờ: gọi Đại sứ quán VN Berlin để biết giờ tiếp. (4) Ngày làm việc tiếp theo: đến Đại sứ quán với: copy hộ chiếu cũ, Anzeige, 4 ảnh 4×6 (nền trắng, chụp gần đây), Aufenthaltstitel (visa Đức), tiền mặt 100 EUR.\n\nTại Đại sứ quán: (1) Lấy số thứ tự máy. (2) Điền mẫu đăng ký Notpass. (3) Submit hồ sơ tại counter. (4) Cán bộ phỏng vấn nhanh: tên, ngày sinh, lý do mất, thời gian dự định về. (5) Lấy biên nhận có ngày trả Notpass.\n\nTrong khi chờ Notpass: (1) Đừng đi xa khỏi thành phố — có thể bị yêu cầu đến lại nhanh. (2) Nếu có vé bay sắp tới mà visa cũ mất, ĐỔI vé sang ngày sau khi nhận Notpass. (3) Liên hệ HR công ty (nếu đang work) — họ có thể support.\n\nCâu hỏi nên hỏi cán bộ Đại sứ quán: 'Khi nào em có thể nhận Notpass?', 'Em có cần đến lại để ký không?', 'Có cách nào express thêm không?', 'Notpass có phải xin visa lại để về VN không?', 'Khi về VN làm hộ chiếu mới ở đâu?'.\n\nMẹo cuối: nếu mất hộ chiếu trong dịp lễ Đức (Karneval, Weihnachten), Đại sứ quán có thể đóng. Plan: chờ ngày làm việc tiếp theo + có thể cần ở Đức thêm 1-2 ngày so với kế hoạch. Báo công ty/airline.",
+    "tip_advice_en": "Before the trip (preparation): (1) Photocopy your passport + visa 3 times: 1 carry separately (not in the same bag as the original), 1 with family in Vietnam, 1 uploaded to the cloud. (2) Save in your phone: the Berlin embassy hotline (+49 30 53630108), the embassy address (Elsenstraße 3, 12435 Berlin), and the passport-insurance number if you have one. (3) Buy travel insurance that covers lost documents.\n\nWhen you discover it's lost (emergency timeline): (1) First, search again — bag, luggage, taxi seat, hotel. Many 'lost' passports are actually misplaced. (2) Within 2 hours: get to the nearest Polizeiwache (or Bundespolizei if you're at an airport). Bring a backup ID (driver's licence, passport copy). Request the Anzeige — the official report. (3) Within 24 hours: call the Vietnamese Embassy in Berlin to confirm opening hours. (4) Next working day: go to the embassy with: copy of the old passport, the Anzeige, 4 4×6 photos (white background, recent), your Aufenthaltstitel (German visa), EUR 100 in cash.\n\nAt the embassy: (1) Take a number ticket. (2) Fill in the Notpass application form. (3) Submit your documents at the counter. (4) Staff conducts a quick interview: name, date of birth, reason for loss, intended departure date. (5) Get a receipt with the pickup date for the Notpass.\n\nWhile waiting for the Notpass: (1) Don't travel far from the city — you may be asked to come back quickly. (2) If you have a flight booked while your old visa is gone, RESCHEDULE to a day after you receive the Notpass. (3) Contact your company's HR (if you're working) — they can help.\n\nQuestions to ask the embassy officer: 'When can I pick up the Notpass?', 'Do I need to come back to sign?', 'Is there any way to expedite further?', 'Do I need a new visa for the Notpass to fly back to Vietnam?', 'Where do I get a new full passport once I'm back in Vietnam?'.\n\nFinal tip: if you lose your passport during a German holiday period (Karneval, Weihnachten), the embassy may be closed. Plan: wait for the next working day + you may need to stay in Germany 1–2 days beyond your plan. Inform your company / airline.",
     "vocabulary": [
       {
         "word": "der verlorene Reisepass",
         "en": "lost passport",
         "vi": "hộ chiếu bị mất",
         "pos": "noun phrase",
-        "pronunciation_vi": "đe fe-LÔ-rê-nê RAI-zê-pass"
+        "pronunciation_vi": "đe fe-LÔ-rê-nê RAI-zê-pass",
+        "pronunciation_en": "dair fair-LOH-reh-nuh RICE-eh-pahss — lost passport"
       },
       {
         "word": "der Notpass",
         "en": "emergency passport",
         "vi": "hộ chiếu khẩn",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe NÔT-pass"
+        "pronunciation_vi": "đe NÔT-pass",
+        "pronunciation_en": "dair NOHT-pahss — emergency passport"
       },
       {
         "word": "Anzeige erstatten",
         "en": "to file a police report",
         "vi": "trình báo cảnh sát",
         "pos": "verb phrase",
-        "pronunciation_vi": "ÁN-tsai-gê e-SHTA-tần"
+        "pronunciation_vi": "ÁN-tsai-gê e-SHTA-tần",
+        "pronunciation_en": "AHN-tsy-guh air-SHTAH-ten — to file a police report"
       },
       {
         "word": "die Bescheinigung",
         "en": "certificate, confirmation",
         "vi": "biên bản, xác nhận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-SHAI-ni-gung"
+        "pronunciation_vi": "đi bê-SHAI-ni-gung",
+        "pronunciation_en": "dee buh-SHY-nee-goong — certificate, confirmation"
       },
       {
         "word": "der Aufenthaltstitel",
         "en": "residence permit",
         "vi": "giấy phép cư trú",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AOF-ent-halts-ti-tệl"
+        "pronunciation_vi": "đe AOF-ent-halts-ti-tệl",
+        "pronunciation_en": "dair OWF-ent-hahlts-tee-tel — residence permit"
       },
       {
         "word": "die Express-Bearbeitung",
         "en": "express processing",
         "vi": "xử lý nhanh",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ec-SPRES bê-AR-bai-tung"
+        "pronunciation_vi": "đi ec-SPRES bê-AR-bai-tung",
+        "pronunciation_en": "dee ex-PRESS buh-AR-bite-oong — express processing"
       },
       {
         "word": "die Botschaft",
         "en": "embassy",
         "vi": "đại sứ quán",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi BÔT-shaft"
+        "pronunciation_vi": "đi BÔT-shaft",
+        "pronunciation_en": "dee BOHT-shahft — embassy"
       },
       {
         "word": "das Konsulat",
         "en": "consulate",
         "vi": "lãnh sự quán",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát kôn-zu-LÁT"
+        "pronunciation_vi": "đát kôn-zu-LÁT",
+        "pronunciation_en": "dahs kon-zoo-LAHT — consulate"
       },
       {
         "word": "die Gebühr",
         "en": "fee",
         "vi": "lệ phí",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi gê-BUYR"
+        "pronunciation_vi": "đi gê-BUYR",
+        "pronunciation_en": "dee guh-BUER ('ü' rounded) — fee"
       },
       {
         "word": "die Unterlagen einreichen",
         "en": "to submit documents",
         "vi": "nộp hồ sơ",
         "pos": "verb phrase",
-        "pronunciation_vi": "UN-tờ-la-gần AIN-rai-khần"
+        "pronunciation_vi": "UN-tờ-la-gần AIN-rai-khần",
+        "pronunciation_en": "dee OON-ter-lah-gen EYE-n-ry-khen — to submit documents"
       }
     ],
     "dialogue": [
@@ -9499,29 +9900,34 @@ export const lessons: GermanLesson[] = [
       "Sau khi nhận Notpass, hãng bay (Lufthansa) yêu cầu thêm 'Confirmation letter from embassy stating Notpass is valid for travel to Vietnam'. Đại sứ quán không quen với yêu cầu này. Hãy đàm phán — xin cán bộ viết letter ngắn (3-4 dòng) hoặc cung cấp số liên hệ Đại sứ quán cho Lufthansa gọi xác minh."
     ],
     "register_notes": "Tại Đại sứ quán VN ở Berlin, register là TIẾNG VIỆT — formal/lễ phép vì đây là cơ quan nhà nước. Xưng 'em/cô/anh' theo tuổi tác cán bộ; 'cháu/cô/chú' với cán bộ lớn tuổi. Tránh 'bạn/tôi' (quá casual). KHÔNG nói tiếng Đức ngay cả khi cán bộ biết — họ ở đó phục vụ công dân VN bằng tiếng mẹ đẻ.\n\nTrường hợp PHẢI dùng tiếng Đức:\n- Tại Polizeiwache (làm Anzeige) — toàn bộ tiếng Đức formal\n- Khi gọi airline xác nhận Notpass — tiếng Đức hoặc Anh\n- Khi đến Ausländerbehörde xin lại Aufenthaltstitel — tiếng Đức formal\n\nNgôn ngữ Đức formal cho biên giới/cảnh sát:\n- 'Ich möchte einen verlorenen Reisepass melden' (em muốn báo mất hộ chiếu)\n- 'Ich möchte Anzeige erstatten' (em muốn trình báo)\n- 'Bitte stellen Sie eine Bescheinigung aus' (xin cấp biên bản)\n- 'Wann kann ich die Bescheinigung abholen?' (khi nào em lấy được biên bản)\n\nMột chi tiết quan trọng: tại Polizeiwache, sĩ quan ĐỨC — không nói VN. Bạn cần Đức B2 hoặc bring phiên dịch. Nếu không tự tin, request 'Ich brauche einen Dolmetscher' (em cần phiên dịch) — họ sẽ schedule (có thể đợi 1-2 giờ).\n\nNgười Việt thường mắc lỗi: (1) panic + nói nhanh — sĩ quan Đức không hiểu; (2) bring quá ít giấy tờ — yêu cầu quay lại; (3) không tự tin về timeline — Notpass thật sự express trong 24-48h, không cần lo.",
+    "register_notes_en": "At the Vietnamese Embassy in Berlin, the register is in VIETNAMESE — formal and polite because this is a state agency. Use age-appropriate Vietnamese honorifics. DO NOT speak German even if the officer knows it — they're there to serve Vietnamese citizens in their mother tongue.\n\nWhen you MUST use German:\n- At the Polizeiwache (filing the Anzeige) — all in formal German\n- When calling the airline to confirm the Notpass — German or English\n- At the Ausländerbehörde for a new Aufenthaltstitel — formal German\n\nFormal German for border/police:\n- 'Ich möchte einen verlorenen Reisepass melden' (I'd like to report a lost passport)\n- 'Ich möchte Anzeige erstatten' (I'd like to file a police report)\n- 'Bitte stellen Sie eine Bescheinigung aus' (Please issue me a certificate)\n- 'Wann kann ich die Bescheinigung abholen?' (When can I collect the certificate?)\n\nOne crucial detail: at the Polizeiwache the officers are GERMAN — they don't speak Vietnamese. You need German at B2 or you need to bring a translator. If you're not confident, request 'Ich brauche einen Dolmetscher' (I need an interpreter) — they'll schedule one (possibly a 1–2 hour wait).\n\nCommon mistakes from less experienced travellers: (1) panicking and speaking too fast — German officers can't follow; (2) bringing too few documents — sent back; (3) being uncertain about the timeline — Notpass really is express in 24–48h, no need to worry.",
     "idiom_glosses": [
       {
         "idiom": "Aus der Patsche helfen",
         "literal": "Giúp ra khỏi vũng lầy",
         "meaning": "Cứu ai khỏi tình huống khó khăn — Đại sứ quán literally 'aus der Patsche helfen' khi du khách mất giấy tờ. Cụm warm, dùng để cảm ơn cứu trợ thực sự.",
+        "meaning_en": "To help someone out of a tight spot. The embassy literally 'hilft aus der Patsche' when a traveller has lost their documents. A warm phrase, used to thank someone for a real rescue.",
         "example": "Die Botschaft hat mir wirklich aus der Patsche geholfen."
       },
       {
         "idiom": "Mit dem Schrecken davonkommen",
         "literal": "Thoát đi với sự kinh hoàng",
         "meaning": "Thoát một việc tệ với hậu quả tối thiểu — chỉ là sợ, không bị thiệt hại lớn. Phù hợp khi mất hộ chiếu nhưng được Notpass kịp thời, không lỡ chuyến bay.",
+        "meaning_en": "To get away with just a fright — to escape a bad situation with minimal damage. Fits cases where you lose your passport but get a Notpass in time and don't miss your flight.",
         "example": "Mit dem Schrecken bin ich davongekommen — der Notpass kam pünktlich."
       },
       {
         "idiom": "Auf den letzten Drücker",
         "literal": "Vào cái nhấn cuối cùng",
         "meaning": "Vào phút chót — last minute. Mô tả tình huống mất hộ chiếu sát ngày bay: 'Auf den letzten Drücker den Notpass bekommen' = lấy được Notpass vào phút chót.",
+        "meaning_en": "At the very last minute. Describes losing your passport close to the departure date: 'Auf den letzten Drücker den Notpass bekommen' = picked up the Notpass at the last minute.",
         "example": "Auf den letzten Drücker habe ich den Notpass bekommen."
       },
       {
         "idiom": "Bei Verstand bleiben",
         "literal": "Giữ trí tỉnh",
         "meaning": "Giữ bình tĩnh, không hoảng — keep your head. Lời khuyên cho situations khẩn (mất hộ chiếu, bị mất cắp): panic = quyết định sai. 'Bei Verstand bleiben und systematisch vorgehen'.",
+        "meaning_en": "To keep your head — stay calm, don't panic. The standard advice for emergencies (lost passport, theft): panic = bad decisions. 'Bei Verstand bleiben und systematisch vorgehen' = stay calm and proceed systematically.",
         "example": "Bei einem verlorenen Pass: bei Verstand bleiben und systematisch vorgehen."
       }
     ],
@@ -9529,7 +9935,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi báo mất hộ chiếu:",
+        "instruction_en": "Fill in the right phrase for reporting a lost passport:",
         "pronunciation_focus": [
+          "embassy/police register"
+        ],
+        "pronunciation_focus_en": [
           "embassy/police register"
         ],
         "items": [
@@ -9554,7 +9964,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng:",
+        "instruction_en": "Match each German line to its function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Ich möchte Anzeige erstatten.",
@@ -9577,7 +9989,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal:",
+        "instruction_en": "Translate into formal German:",
         "pronunciation_focus": [
+          "police/embassy formal"
+        ],
+        "pronunciation_focus_en": [
           "police/embassy formal"
         ],
         "items": [
@@ -9615,6 +10031,11 @@ export const lessons: GermanLesson[] = [
           "umbuchen → UM-bu-khần",
           "späteren Zug → SHPÊ-tê-rần TSÚK",
           "Ticket → TI-két"
+        ],
+        "pronunciation_focus_en": [
+          "umbuchen → OOM-boo-khen",
+          "späteren Zug → SHPAY-ter-en TSOOG",
+          "Ticket → TI-ket (English loanword)"
         ]
       },
       {
@@ -9624,6 +10045,11 @@ export const lessons: GermanLesson[] = [
           "ursprünglicher → UA-shpruyng-lích-ờ",
           "fällt aus → FELT AOS",
           "informiert → in-for-MÍA-t"
+        ],
+        "pronunciation_focus_en": [
+          "ursprünglicher → OOR-shpruung-lee-kher ('ü' rounded)",
+          "fällt aus → FELT OWS",
+          "informiert → in-for-MEERT"
         ]
       },
       {
@@ -9633,6 +10059,11 @@ export const lessons: GermanLesson[] = [
           "Umbuchungsgebühr → UM-bu-khungs-gê-buyr",
           "gerechtfertigt → gê-RÉCHT-fe-tích-t",
           "Verspätung → fe-SHPÊ-tung"
+        ],
+        "pronunciation_focus_en": [
+          "Umbuchungsgebühr → OOM-boo-khoongs-guh-buer ('ü' rounded)",
+          "gerechtfertigt → guh-REKHT-fer-tikht",
+          "Verspätung → fair-SHPAY-toong"
         ]
       },
       {
@@ -9642,6 +10073,11 @@ export const lessons: GermanLesson[] = [
           "Beförderungsbedingungen → bê-FƠ-đê-rungs-bê-đing-ung-ần",
           "Anspruch → ÁN-shpruch",
           "kostenlose → KÔS-tần-lô-zê"
+        ],
+        "pronunciation_focus_en": [
+          "Beförderungsbedingungen → buh-FUR-der-roongs-buh-ding-oong-en ('ö' rounded)",
+          "Anspruch → AHN-shprookh",
+          "kostenlose → KOS-ten-loh-zuh"
         ]
       },
       {
@@ -9651,81 +10087,98 @@ export const lessons: GermanLesson[] = [
           "Vorgesetzten → FOA-gê-zét-tần",
           "Anschlusstermin → ÁN-shluss-te-min",
           "klären → KLÊ-rần"
+        ],
+        "pronunciation_focus_en": [
+          "Vorgesetzten → FOR-guh-zets-ten",
+          "Anschlusstermin → AHN-shlooss-ter-meen",
+          "klären → KLAIR-en"
         ]
       }
     ],
     "cultural_notes_vi": "Deutsche Bahn (DB) vận hành rộng + thường xuyên trễ — Đức không nổi tiếng đúng giờ về tàu (khác với stereotype). 30% tàu trễ > 6 phút. Năm điểm cốt lõi cho hành khách Việt. (1) PASSENGER RIGHTS: theo Fahrgastrechte EU, nếu tàu trễ > 60 phút, bạn được hoàn 25% giá vé; trễ > 120 phút = 50%. Tàu HUỶ = đổi vé miễn phí HOẶC hoàn tiền 100%. Phải claim qua DB Navigator app hoặc form online. (2) AUTOMATIC vs MANUAL: vài compensation tự động (đặc biệt với BahnCard registered), nhưng đa số phải tự claim. Đừng đợi DB chủ động. (3) PHÍ ĐỔI VÉ: Sparpreis ticket có phí đổi 19 EUR; Flexpreis ticket đổi miễn phí. Nếu lỗi DB (tàu huỷ/trễ lớn), cả hai loại đều free đổi. (4) ENGLISH SUPPORT: nhân viên counter ở các ga lớn (Hauptbahnhof) nói tiếng Anh; ở ga nhỏ chỉ Đức. Nếu Đức yếu, đi ga lớn. (5) DOCUMENTATION: chụp screenshot delay info từ DB Navigator app — bằng chứng cho dispute. Lưu boarding pass + email confirmation.\n\nKhác Việt Nam: ở VN, tàu/xe trễ thường không có compensation system. Ở Đức, hệ thống pháp lý rõ ràng — nhân viên KHÔNG được phép từ chối nếu bạn có quyền pháp lý. Nhưng họ có thể không proactively offer; bạn phải biết quyền và assert.\n\nỞ DB counter, nhân viên đôi khi PUSHBACK trên claims hợp lệ — không phải vì xấu, mà vì policies phức tạp + họ tránh exception. Pattern: counter rep từ chối → bạn yêu cầu Vorgesetzte (cấp trên) → 70% được approve. Đừng give up.\n\nMột chi tiết quan trọng: nếu bạn miss Anschluss (chuyến nối) vì tàu đầu trễ, DB phải provide alternative miễn phí — kể cả khi alternative là chuyến tốc hành đắt hơn. Quyền 'Mobilitätsgarantie'.",
+    "cultural_notes_en": "Deutsche Bahn (DB) runs a huge network and is regularly late — Germany is not as famously punctual on rail as the stereotype suggests. About 30% of trains run >6 minutes late. Five core points for Vietnamese travellers. (1) PASSENGER RIGHTS: under EU Fahrgastrechte, if your train is >60 minutes late you're entitled to 25% of the fare back; >120 minutes = 50%. CANCELLED train = free rebooking OR full refund. You have to claim via the DB Navigator app or an online form. (2) AUTOMATIC vs. MANUAL: some compensation is automatic (especially for registered BahnCard holders), but most you have to claim. Don't wait for DB to act on its own. (3) REBOOKING FEES: a Sparpreis ticket has a EUR 19 change fee; a Flexpreis ticket changes for free. If the fault is DB's (cancellation / major delay), BOTH types can be changed free. (4) ENGLISH SUPPORT: counter staff at major stations (Hauptbahnhof) speak English; at small stations only German. If your German is weak, go to a large station. (5) DOCUMENTATION: screenshot the delay info from the DB Navigator app — that's evidence for any dispute. Keep your boarding pass + email confirmation.\n\nDifferent from Vietnamese norms: in Vietnam, when buses or trains run late, there's usually no compensation system. In Germany the legal system is explicit — staff are NOT allowed to refuse if you have a legal entitlement. But they may not proactively offer; you have to know your rights and assert them.\n\nAt DB counters staff occasionally PUSH BACK on legitimate claims — not out of bad faith, but because the policies are complex and they avoid exceptions. Pattern: counter rep refuses → you request a Vorgesetzte (supervisor) → 70% get approved. Don't give up.\n\nOne crucial detail: if you miss an Anschluss (connection) because of an upstream delay, DB has to provide an alternative free — even when the alternative is a pricier express. That's the 'Mobilitätsgarantie'.",
     "tip_advice_vi": "Trước khi đến counter (preparation): (1) Mở DB Navigator app — screenshot trang hiển thị delay/cancellation. Đây là evidence chính. (2) Lấy ticket + email confirmation ra sẵn. (3) Nếu missed Anschluss, ghi giờ đáng lẽ đến + giờ thực tế đến — tính delay chính xác.\n\nTại counter (script chuẩn): (1) 'Guten Tag, ich möchte mein Ticket umbuchen wegen Zugausfall'. (2) Đưa ticket + screenshot. (3) Đợi nhân viên check system. (4) Nếu họ nói 'Es kostet 19 Euro' → phản hồi: 'Laut Beförderungsbedingungen habe ich bei Zugausfall Anspruch auf kostenlose Umbuchung'. (5) Nếu họ vẫn từ chối → 'Könnten Sie das mit Ihrer Vorgesetzten klären?' — KHÔNG argue, chỉ escalate. (6) Nếu Vorgesetzte cũng từ chối → asking for written reason: 'Bitte begründen Sie das schriftlich' — 80% sẽ approve khi nghe yêu cầu này (ai cũng không muốn paper trail).\n\nNgôn ngữ assertive nhưng polite:\n- 'Ich verstehe — aber laut Fahrgastrechten...' (Em hiểu — nhưng theo quyền hành khách)\n- 'Könnten Sie mir die rechtliche Grundlage zeigen?' (Anh/chị cho em xem cơ sở pháp lý không?)\n- 'Ich möchte das schriftlich' (Em muốn bằng văn bản)\n- 'Wer ist für Beschwerden zuständig?' (Ai phụ trách khiếu nại?)\n\nTránh:\n- Yelling — Đức coi voice raise = harassment, có thể bị mời ra\n- 'In Vietnam würden wir...' — irrelevant, weakens position\n- Cry — không help, embarrass cả 2 bên\n- Threat 'I'll sue' — empty threat, undermine credibility\n\nNếu thật sự bị từ chối tại counter: (1) Lấy ticket + screenshot. (2) Đi đến chuyến thay thế — có thể bạn buy ticket mới (tốn tiền tạm). (3) Sau hành trình, claim refund qua DB online form: bahn.de/fahrgastrechte. (4) Có thể gửi qua post hoặc submit online. Process: 4-8 tuần.\n\nMột chi tiết quan trọng: nếu bạn có BahnCard 25/50/100, claims process tự động hơn — DB có data đăng ký. Nếu không, cần đính kèm photocopy ID khi claim.\n\nMẹo cho người Việt mới ở Đức: cài app 'DB Navigator' + 'Trainline' (alternative). Cả hai show real-time delay info, có notification khi tàu của bạn delay/cancel.",
+    "tip_advice_en": "Before you go to the counter (preparation): (1) Open the DB Navigator app — screenshot the page showing the delay/cancellation. That's your main evidence. (2) Have your ticket + email confirmation ready. (3) If you missed an Anschluss, note the scheduled arrival time + actual arrival time — calculate the delay precisely.\n\nAt the counter (standard script): (1) 'Guten Tag, ich möchte mein Ticket umbuchen wegen Zugausfall'. (2) Hand over ticket + screenshot. (3) Wait while the agent checks the system. (4) If they say 'Es kostet 19 Euro' → reply: 'Laut Beförderungsbedingungen habe ich bei Zugausfall Anspruch auf kostenlose Umbuchung'. (5) If they still refuse → 'Könnten Sie das mit Ihrer Vorgesetzten klären?' — DO NOT argue, just escalate. (6) If the supervisor also refuses → ask for a written reason: 'Bitte begründen Sie das schriftlich' — 80% will approve when they hear this (nobody wants a paper trail).\n\nAssertive but polite phrasing:\n- 'Ich verstehe — aber laut Fahrgastrechten…' (I understand — but under passenger rights…)\n- 'Könnten Sie mir die rechtliche Grundlage zeigen?' (Could you show me the legal basis?)\n- 'Ich möchte das schriftlich' (I'd like that in writing)\n- 'Wer ist für Beschwerden zuständig?' (Who's responsible for complaints?)\n\nAvoid:\n- Yelling — Germans treat raised voices as harassment; you can be asked to leave\n- 'In Vietnam würden wir…' — irrelevant, weakens your position\n- Crying — doesn't help, embarrasses both sides\n- 'I'll sue' — empty threat, undermines credibility\n\nIf you really are refused at the counter: (1) Keep your ticket + screenshot. (2) Take the alternative train — you may need to buy a new ticket (out of pocket for now). (3) After the trip, claim a refund via the DB online form: bahn.de/fahrgastrechte. (4) Either post or online submission. Processing time: 4–8 weeks.\n\nOne crucial detail: if you hold a BahnCard 25/50/100, the claim process is more automatic — DB has your registration data. Without one, attach a copy of your ID when you claim.\n\nTip for newcomers in Germany: install the apps 'DB Navigator' + 'Trainline' (alternative). Both show real-time delay info and push notifications when your train is delayed or cancelled.",
     "vocabulary": [
       {
         "word": "umbuchen",
         "en": "to rebook, change booking",
         "vi": "đổi vé/booking",
         "pos": "verb (sep)",
-        "pronunciation_vi": "UM-bu-khần"
+        "pronunciation_vi": "UM-bu-khần",
+        "pronunciation_en": "OOM-boo-khen — to rebook; separable verb"
       },
       {
         "word": "die Umbuchungsgebühr",
         "en": "rebooking fee",
         "vi": "phí đổi vé",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UM-bu-khungs-gê-buyr"
+        "pronunciation_vi": "đi UM-bu-khungs-gê-buyr",
+        "pronunciation_en": "dee OOM-boo-khoongs-guh-buer ('ü' rounded) — rebooking fee"
       },
       {
         "word": "der Zugausfall",
         "en": "train cancellation",
         "vi": "tàu huỷ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe TSÚK-aos-fal"
+        "pronunciation_vi": "đe TSÚK-aos-fal",
+        "pronunciation_en": "dair TSOOG-ows-fahl — train cancellation"
       },
       {
         "word": "die Verspätung",
         "en": "delay",
         "vi": "sự trễ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-SHPÊ-tung"
+        "pronunciation_vi": "đi fe-SHPÊ-tung",
+        "pronunciation_en": "dee fair-SHPAY-toong — delay"
       },
       {
         "word": "die Beförderungsbedingungen",
         "en": "transport terms & conditions",
         "vi": "điều kiện vận chuyển",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi bê-FƠ-đê-rungs-bê-đing-ung-ần"
+        "pronunciation_vi": "đi bê-FƠ-đê-rungs-bê-đing-ung-ần",
+        "pronunciation_en": "dee buh-FUR-der-roongs-buh-ding-oong-en — transport terms & conditions ('ö' rounded)"
       },
       {
         "word": "der Anspruch auf etw.",
         "en": "right/claim to something",
         "vi": "quyền hưởng",
         "pos": "noun phrase",
-        "pronunciation_vi": "đe ÁN-shpruch AOF"
+        "pronunciation_vi": "đe ÁN-shpruch AOF",
+        "pronunciation_en": "dair AHN-shprookh owf — right/claim to something"
       },
       {
         "word": "die Erstattung",
         "en": "refund, reimbursement",
         "vi": "sự hoàn tiền",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi e-SHTÁ-tung"
+        "pronunciation_vi": "đi e-SHTÁ-tung",
+        "pronunciation_en": "dee air-SHTAH-toong — refund, reimbursement"
       },
       {
         "word": "die Mobilitätsgarantie",
         "en": "mobility guarantee (DB)",
         "vi": "bảo đảm di chuyển",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi mô-bi-li-TÊTS-ga-ran-ti"
+        "pronunciation_vi": "đi mô-bi-li-TÊTS-ga-ran-ti",
+        "pronunciation_en": "dee moh-bee-lee-TAYTS-gah-rahn-tee — DB mobility guarantee"
       },
       {
         "word": "der Anschlusstermin",
         "en": "connecting appointment",
         "vi": "lịch hẹn nối tiếp",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe ÁN-shluss-te-min"
+        "pronunciation_vi": "đe ÁN-shluss-te-min",
+        "pronunciation_en": "dair AHN-shlooss-ter-meen — connecting appointment"
       },
       {
         "word": "der/die Vorgesetzte",
         "en": "supervisor",
         "vi": "cấp trên",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe FOA-gê-zét-tê"
+        "pronunciation_vi": "đe FOA-gê-zét-tê",
+        "pronunciation_en": "dair / dee FOR-guh-zets-tuh — supervisor"
       }
     ],
     "dialogue": [
@@ -9843,29 +10296,34 @@ export const lessons: GermanLesson[] = [
       "Trên tàu, conductor (Zugbegleiter:in) phát hiện ticket của bạn không hợp lệ cho chuyến này (đã đổi nhưng app chưa update). Hãy explain situation calmly, show original ticket + change confirmation email, request grace period để contact DB hotline. Tránh tranh cãi với conductor — họ chỉ enforce, không decide."
     ],
     "register_notes": "Tại DB counter / với conductor / qua DB hotline, register ASSERTIVE FORMAL — bạn assert rights nhưng không hostile. (1) 'SIE' luôn — nhân viên DB không 'du'. (2) RIGHTS LANGUAGE: 'Anspruch auf', 'laut Beförderungsbedingungen', 'gemäß Fahrgastrechten' — báo hiệu bạn biết luật. Nhân viên ít pushback khi nghe legal terminology. (3) ESCALATION POLITE: 'Könnten Sie das bitte mit Ihrer Vorgesetzten klären?' = formal escalation. KHÔNG 'Lass mich mit dem Manager sprechen' (Anh/chị, cho tôi gặp manager) — quá Mỹ-style, alienates. (4) DOCUMENT REQUEST: 'Ich möchte das schriftlich' (em muốn bằng văn bản) — formal request for written reason. Powerful tool — nhân viên không thích paper trail cho refusal, often approve immediately. (5) BLAME LANGUAGE: tránh 'Ihre Schuld' (lỗi của anh/chị) — accusatory, làm nhân viên defensive. Dùng impersonal: 'Die Verspätung liegt nicht bei mir' (sự trễ không nằm ở phía em). Frame issue, không person.\n\nNgôn ngữ chuẩn cho dispute:\n- 'Ich verstehe — aber laut Beförderungsbedingungen...' (Em hiểu — nhưng theo điều kiện vận chuyển)\n- 'Welche rechtliche Grundlage haben Sie dafür?' (Anh/chị có cơ sở pháp lý gì cho điều đó?)\n- 'Bitte begründen Sie die Ablehnung schriftlich' (Xin giải thích sự từ chối bằng văn bản)\n- 'Wer ist für Beschwerden zuständig?' (Ai phụ trách khiếu nại?)\n\nKhi PHẢI accept loss: 'Ich akzeptiere das jetzt — werde aber online über bahn.de/fahrgastrechte claimen' (Em chấp nhận bây giờ — nhưng sẽ claim online).\n\nKhác Việt Nam: ở VN, dispute với staff thường resolve qua relationship/personal connection. Ở Đức, dispute resolve qua RIGHTS + DOCUMENTATION. Personal appeal ('I'm a foreigner, please help') rarely works; legal appeal ('I have right X') often works.\n\nNgười Việt thường mắc lỗi: (1) accept first refusal — bỏ tiền oan; (2) yell — counterproductive in Đức; (3) miss claim deadline (60 ngày từ ngày tàu) — lost forever; (4) không screenshot evidence — không có document = không có claim.",
+    "register_notes_en": "At a DB counter / with a conductor / on the DB hotline, the register is ASSERTIVE FORMAL — you're asserting rights but not hostile. (1) 'SIE' always — DB staff never 'du'. (2) RIGHTS LANGUAGE: 'Anspruch auf', 'laut Beförderungsbedingungen', 'gemäß Fahrgastrechten' — these signal you know the law. Staff push back less when they hear legal terminology. (3) POLITE ESCALATION: 'Könnten Sie das bitte mit Ihrer Vorgesetzten klären?' = formal escalation. NOT 'Lass mich mit dem Manager sprechen' (let me talk to the manager) — too American-style, alienates. (4) DOCUMENT REQUEST: 'Ich möchte das schriftlich' (I want that in writing) — a formal request for written reasoning. Powerful tool — staff don't want a paper trail behind a refusal and will often approve immediately. (5) BLAME LANGUAGE: avoid 'Ihre Schuld' (your fault) — accusatory, puts staff on the defensive. Use impersonal language: 'Die Verspätung liegt nicht bei mir' (the delay isn't on my side). Frame the issue, not the person.\n\nStandard phrasing for a dispute:\n- 'Ich verstehe — aber laut Beförderungsbedingungen…' (I understand — but under the transport conditions…)\n- 'Welche rechtliche Grundlage haben Sie dafür?' (What legal basis do you have for that?)\n- 'Bitte begründen Sie die Ablehnung schriftlich' (Please justify the refusal in writing)\n- 'Wer ist für Beschwerden zuständig?' (Who handles complaints?)\n\nWhen you have to ACCEPT a loss: 'Ich akzeptiere das jetzt — werde aber online über bahn.de/fahrgastrechte claimen' (I'll accept it for now — but I'll claim online).\n\nDifferent from Vietnamese norms: in Vietnam staff disputes are usually resolved via relationship / personal connection. In Germany they're resolved via RIGHTS + DOCUMENTATION. A personal appeal ('I'm a foreigner, please help') rarely works; a legal appeal ('I have a right to X') often does.\n\nCommon mistakes from less experienced travellers: (1) accepting the first refusal — losing money for nothing; (2) yelling — counterproductive in Germany; (3) missing the claim deadline (60 days from the date of travel) — lost forever; (4) not screenshotting evidence — no document = no claim.",
     "idiom_glosses": [
       {
         "idiom": "Recht haben und Recht bekommen",
         "literal": "Có lý và được lý",
         "meaning": "Có đúng nhưng phải fight để được công nhận. Câu Đức cảnh báo: pháp lý đúng không tự động thắng — phải assert + escalate. Phù hợp khi DB từ chối claim hợp lệ; mô tả tình huống.",
+        "meaning_en": "To be right and to be granted you're right — being legally correct doesn't automatically win the argument; you have to assert and escalate. Useful when DB refuses a legitimate claim.",
         "example": "Bei DB-Beschwerden gilt: Recht haben und Recht bekommen sind zwei verschiedene Dinge."
       },
       {
         "idiom": "Auf stur schalten",
         "literal": "Chuyển sang cứng đầu",
         "meaning": "Trở nên không nhân nhượng — cố thủ position. Dùng để mô tả khi nhân viên DB từ chối mọi argument. Có thể nói: 'Wenn der Schalter auf stur schaltet, eskalieren Sie zur Vorgesetzten' (Khi nhân viên cứng đầu, escalate lên cấp trên).",
+        "meaning_en": "To dig in and refuse to budge. Used to describe a DB agent who refuses every argument. You can then say: 'Wenn der Schalter auf stur schaltet, eskalieren Sie zur Vorgesetzten' (when the agent digs in, escalate to the supervisor).",
         "example": "Wenn ein DB-Schalter auf stur schaltet, hilft nur die Vorgesetzte."
       },
       {
         "idiom": "Den Kürzeren ziehen",
         "literal": "Kéo cái ngắn hơn",
         "meaning": "Bị thiệt — nhận phần thiệt trong dispute. Khi bạn không assert rights, bạn 'ziehen den Kürzeren'. Phù hợp để cảnh báo bản thân: phải fight để không 'ziehen den Kürzeren'.",
+        "meaning_en": "To draw the short straw — to come out the loser in a dispute. If you don't assert your rights, you 'ziehen den Kürzeren'. A useful warning to yourself: you have to push, or you end up out of pocket.",
         "example": "Ohne Belege ziehen Sie bei DB-Streitigkeiten immer den Kürzeren."
       },
       {
         "idiom": "In den sauren Apfel beißen",
         "literal": "Cắn vào quả táo chua",
         "meaning": "Chấp nhận điều khó chịu — bite the bullet. Mô tả accepting unfavorable outcome khi alternative tệ hơn. Trong DB context: chấp nhận trả 19 EUR umbuchungsgebühr nếu không có time fight, claim sau qua online form.",
+        "meaning_en": "To bite into the sour apple — bite the bullet, accept the unfavourable outcome when the alternative is worse. In a DB context: accept the EUR 19 rebooking fee if you don't have time to fight, then claim it back online.",
         "example": "Manchmal muss man in den sauren Apfel beißen und vor Ort zahlen — Erstattung kommt später online."
       }
     ],
@@ -9873,7 +10331,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi đổi vé DB:",
+        "instruction_en": "Fill in the right phrase for changing a DB ticket:",
         "pronunciation_focus": [
+          "DB customer service register"
+        ],
+        "pronunciation_focus_en": [
           "DB customer service register"
         ],
         "items": [
@@ -9898,7 +10360,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng dispute:",
+        "instruction_en": "Match each German line to its dispute function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Laut Beförderungsbedingungen...",
@@ -9921,7 +10385,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở khi tranh chấp DB:",
+        "instruction_en": "Translate into formal German for a DB dispute:",
         "pronunciation_focus": [
+          "assertive customer service"
+        ],
+        "pronunciation_focus_en": [
           "assertive customer service"
         ],
         "items": [
@@ -9959,6 +10427,11 @@ export const lessons: GermanLesson[] = [
           "Bauchschmerzen → BAOCH-shmê-tsần",
           "rechts unten → REKTS UN-tần",
           "seit gestern → ZAIT GES-tần"
+        ],
+        "pronunciation_focus_en": [
+          "Bauchschmerzen → BOWKH-shmair-tsen ('au' = 'ow'; 'ch' as Scottish 'loch')",
+          "rechts unten → REKHTS OON-ten",
+          "seit gestern → ZITE GES-tern"
         ]
       },
       {
@@ -9968,6 +10441,11 @@ export const lessons: GermanLesson[] = [
           "Versicherungskarte → fe-ZÍ-khê-rungs-kat-tê",
           "gesetzlich → gê-ZÉT-slích",
           "TK → TÊ-KA"
+        ],
+        "pronunciation_focus_en": [
+          "Versicherungskarte → fair-ZIKH-er-roongs-kar-tuh",
+          "gesetzlich → guh-ZETS-likh",
+          "TK → TAY-KAH (letter names)"
         ]
       },
       {
@@ -9977,6 +10455,11 @@ export const lessons: GermanLesson[] = [
           "Fieber → FÍ-bờ",
           "Übelkeit → UY-bệl-kait",
           "Frühstück → FRUY-shtuyc"
+        ],
+        "pronunciation_focus_en": [
+          "Fieber → FEE-ber",
+          "Übelkeit → UE-bel-kite ('ü' rounded)",
+          "Frühstück → FRUE-shtuek ('ü' rounded)"
         ]
       },
       {
@@ -9986,6 +10469,11 @@ export const lessons: GermanLesson[] = [
           "Allergien → a-LE-gi-ần",
           "Penicillin → pê-ni-tsi-LIN",
           "vermerken → fe-MEK-kần"
+        ],
+        "pronunciation_focus_en": [
+          "Allergien → ah-lair-GEE-en",
+          "Penicillin → pay-nee-tsee-LEEN",
+          "vermerken → fair-MAIR-ken"
         ]
       },
       {
@@ -9995,81 +10483,98 @@ export const lessons: GermanLesson[] = [
           "Krankschreibung → KRANK-shrai-bung",
           "möglich → MƠ-glích",
           "drei Tage → ĐRAI TA-gê"
+        ],
+        "pronunciation_focus_en": [
+          "Krankschreibung → KRAHNK-shry-boong",
+          "möglich → MUH-glikh ('ö' rounded)",
+          "drei Tage → DRY TAH-guh"
         ]
       }
     ],
     "cultural_notes_vi": "Hệ thống y tế Đức khác Việt Nam ở năm điểm. (1) NOTAUFNAHME = ER, KHÔNG WALK-IN: chỉ vào Notaufnahme nếu THỰC SỰ KHẨN (đau dữ dội, tai nạn, khó thở). Không khẩn → đi Hausarzt (bác sĩ gia đình) hoặc Bereitschaftspraxis (phòng khám trực ngoài giờ). Vào Notaufnahme cho cảm cúm = đợi 4-6 giờ + bị nhân viên không hài lòng. (2) VERSICHERUNGSKARTE BẮT BUỘC: phải có thẻ bảo hiểm Đức (TK, AOK, Barmer, hoặc private). Bảo hiểm du lịch quốc tế — Reise-Krankenversicherung — chỉ cover urgent care, không thường xuyên. (3) KHÔNG TRẢ TIỀN TẠI CHỖ: với gesetzliche Versicherung (bảo hiểm nhà nước), bạn KHÔNG trả gì tại Notaufnahme — tất cả qua thẻ. Có thể có Praxisgebühr 10 EUR (bị bãi bỏ 2013, nhưng vài Bundesland tái kích hoạt 2026 — verify). Private Versicherung: trả trước, claim sau. (4) THỜI GIAN CHỜ: Notaufnahme có Triage system — case nặng được ưu tiên. Đau bụng nhẹ có thể đợi 3-5 giờ. Đau ngực + khó thở = vào ngay. (5) NGÔN NGỮ: bác sĩ ER thường nói English ở các thành phố lớn (Berlin, München, Hamburg). Nếu sợ communication, mang theo người dịch hoặc dùng Google Translate cho symptoms.\n\nKhác Việt Nam: ở VN có thể vào ER bất cứ khi nào, trả tiền tại counter. Ở Đức process structured + có 'system'. Walk-in mà không cần ER = bị reject hoặc đợi rất lâu.\n\nMột chi tiết quan trọng: nếu bạn bị bệnh nhưng không khẩn, gọi 116 117 (Bereitschaftsdienst — backup doctor service) — họ sẽ hướng dẫn nơi gần nhất phù hợp. Lưu number này.\n\nHausarzt là bác sĩ chính của bạn ở Đức. Đăng ký 1 Hausarzt khi đến Đức + đi định kỳ. Hausarzt cho referrals cho specialists, kê đơn thuốc, viết Krankschreibung (giấy nghỉ ốm cho công ty).",
+    "cultural_notes_en": "The German healthcare system differs from many others in five ways. (1) NOTAUFNAHME = ER, NOT WALK-IN: only go to a Notaufnahme if it's TRULY URGENT (severe pain, accident, difficulty breathing). Not urgent → go to your Hausarzt (family doctor) or a Bereitschaftspraxis (out-of-hours practice). Going to the Notaufnahme for a cold = a 4–6 hour wait + an unhappy staff. (2) INSURANCE CARD MANDATORY: you need a German insurance card (TK, AOK, Barmer, or private). International travel insurance — Reise-Krankenversicherung — only covers urgent care, not routine. (3) NO PAYMENT ON THE SPOT: with statutory insurance (gesetzliche Versicherung) you DO NOT pay anything at the Notaufnahme — it all goes through the card. There may be a Praxisgebühr of EUR 10 (abolished in 2013 but reactivated in some Bundesländer in 2026 — verify). Private insurance: you pay up front, claim back. (4) WAIT TIMES: the Notaufnahme runs Triage — serious cases get priority. Mild abdominal pain can wait 3–5 hours. Chest pain + shortness of breath = seen immediately. (5) LANGUAGE: ER doctors usually speak English in big cities (Berlin, Munich, Hamburg). If you're worried about communication, bring a translator or use Google Translate for symptoms.\n\nDifferent from many other systems: in Vietnam you can walk into an ER any time and pay at the counter. In Germany the process is structured and there's a 'system'. Walk-ins for non-emergencies = sent away or kept waiting for a very long time.\n\nOne crucial detail: if you're ill but not urgent, call 116 117 (Bereitschaftsdienst — backup doctor service) — they'll direct you to the nearest suitable place. Save this number.\n\nThe Hausarzt is your primary doctor in Germany. Register with a Hausarzt when you arrive + go regularly. The Hausarzt provides referrals to specialists, prescribes medication, and writes the Krankschreibung (sick note for your employer).",
     "tip_advice_vi": "Trước khi đến Notaufnahme: (1) Tự đánh giá khẩn cấp. Nếu chỉ đau bụng nhẹ — KHÔNG vào Notaufnahme. Gọi 116 117. Nếu nguy hiểm tính mạng — gọi 112 (cứu thương). (2) Mang theo: Versicherungskarte (thẻ vàng/xanh), passport/Aufenthaltstitel, list thuốc đang dùng, list dị ứng (nếu có). (3) Charge phone — bạn có thể chờ vài giờ.\n\nTại reception (Anmeldung): (1) 'Guten Tag, ich brauche eine Notaufnahme'. (2) Đưa Versicherungskarte. (3) Mô tả symptoms ngắn gọn — staff không phải bác sĩ, họ chỉ register. (4) Lấy số đợi.\n\nKhi bác sĩ gọi tên: (1) 'Guten Tag, Frau/Herr Doktor'. (2) Mô tả symptoms theo trình tự: KHI BẮT ĐẦU + ĐAU Ở ĐÂU + ĐAU NHƯ THẾ NÀO + KÈM SYMPTOMS GÌ KHÁC. (3) Trả lời câu hỏi y tế — bác sĩ sẽ hỏi: dị ứng, thuốc đang dùng, bệnh sử, gia đình có bệnh tương tự. (4) Nếu không hiểu term y tế Đức, ASK: 'Was bedeutet [từ] genau?'.\n\nNgôn ngữ y tế Đức cơ bản:\n- 'Ich habe Schmerzen' (em đau)\n- 'Es tut weh, wenn ich [động từ]' (đau khi em [động từ])\n- 'Skala 1-10' (thang 1-10): bác sĩ hỏi mức độ đau\n- 'Allergisch gegen X' (dị ứng X)\n- 'Ich nehme regelmäßig X ein' (em uống X thường xuyên)\n- 'Mein Hausarzt ist Dr. Y' (bác sĩ gia đình em là)\n\nKhi nhận đơn thuốc (Rezept): (1) Đọc kỹ — verify tên thuốc, liều, instructions. (2) Hỏi nếu có dùng với thuốc khác bạn đang uống. (3) Đến Apotheke (hiệu thuốc) gần nhất với Rezept. (4) Pharmacist sẽ kê thuốc + giải thích usage. (5) Bảo hiểm gesetzlich cover phần lớn — bạn trả Zuzahlung 5-10 EUR.\n\nKrankschreibung (giấy nghỉ ốm): (1) Bác sĩ ER có thể viết tối đa 1-3 ngày. (2) Cần dài hơn → đi Hausarzt. (3) Submit cho công ty trong 3 ngày. (4) Đức: bạn KHÔNG cần báo trước cho công ty về diagnosis — chỉ gửi giấy AU (Arbeitsunfähigkeitsbescheinigung). Privacy strict.\n\nMẹo cuối: nếu bạn không có German B2 và bệnh nặng, đến Notaufnahme tại bệnh viện đại học (Charité Berlin, Klinikum München) — staff trẻ + nói English tốt.",
+    "tip_advice_en": "Before you go to the Notaufnahme: (1) Self-assess the urgency. Mild abdominal pain only — DO NOT use the Notaufnahme. Call 116 117. If life-threatening — call 112 (ambulance). (2) Bring: Versicherungskarte (yellow/green card), passport/Aufenthaltstitel, list of current medications, list of allergies (if any). (3) Charge your phone — you may wait several hours.\n\nAt reception (Anmeldung): (1) 'Guten Tag, ich brauche eine Notaufnahme'. (2) Hand over your Versicherungskarte. (3) Describe your symptoms briefly — the staff aren't doctors, they just register you. (4) Take a wait number.\n\nWhen the doctor calls your name: (1) 'Guten Tag, Frau/Herr Doktor'. (2) Describe symptoms in order: WHEN IT STARTED + WHERE IT HURTS + HOW IT HURTS + WHAT OTHER SYMPTOMS. (3) Answer medical questions — the doctor will ask: allergies, current medications, medical history, family history. (4) If you don't understand a German medical term, ASK: 'Was bedeutet [word] genau?'.\n\nBasic German medical phrasing:\n- 'Ich habe Schmerzen' (I'm in pain)\n- 'Es tut weh, wenn ich [verb]' (it hurts when I [verb])\n- 'Skala 1–10' (1–10 scale): the doctor will ask the pain level\n- 'Allergisch gegen X' (allergic to X)\n- 'Ich nehme regelmäßig X ein' (I take X regularly)\n- 'Mein Hausarzt ist Dr. Y' (my family doctor is)\n\nWhen you get a prescription (Rezept): (1) Read it carefully — verify the drug name, dose, instructions. (2) Ask if it interacts with anything else you take. (3) Take the Rezept to the nearest Apotheke (pharmacy). (4) The pharmacist will hand over the medication + explain usage. (5) Statutory insurance covers most of it — you pay a Zuzahlung of EUR 5–10.\n\nKrankschreibung (sick note): (1) An ER doctor can write 1–3 days max. (2) For longer, see your Hausarzt. (3) Submit to your employer within 3 days. (4) In Germany you DO NOT have to disclose the diagnosis to your employer — only the AU (Arbeitsunfähigkeitsbescheinigung) certificate. Privacy is strict.\n\nFinal tip: if your German is not yet B2 and you're seriously ill, go to a university-hospital Notaufnahme (Charité Berlin, Klinikum München) — younger staff + better English.",
     "vocabulary": [
       {
         "word": "die Notaufnahme",
         "en": "emergency room",
         "vi": "phòng cấp cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi NÔT-aof-na-mê"
+        "pronunciation_vi": "đi NÔT-aof-na-mê",
+        "pronunciation_en": "dee NOHT-owf-nah-muh — emergency room"
       },
       {
         "word": "die Versicherungskarte",
         "en": "insurance card",
         "vi": "thẻ bảo hiểm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-ZÍ-khê-rungs-kat-tê"
+        "pronunciation_vi": "đi fe-ZÍ-khê-rungs-kat-tê",
+        "pronunciation_en": "dee fair-ZIKH-er-roongs-kar-tuh — insurance card"
       },
       {
         "word": "die Krankenkasse",
         "en": "health insurance fund",
         "vi": "quỹ bảo hiểm y tế",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KRAN-kần-ka-sê"
+        "pronunciation_vi": "đi KRAN-kần-ka-sê",
+        "pronunciation_en": "dee KRAHN-ken-kah-suh — health insurance fund"
       },
       {
         "word": "die Bauchschmerzen",
         "en": "abdominal pain",
         "vi": "đau bụng",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi BAOCH-shmê-tsần"
+        "pronunciation_vi": "đi BAOCH-shmê-tsần",
+        "pronunciation_en": "dee BOWKH-shmair-tsen — abdominal pain (plural noun)"
       },
       {
         "word": "die Übelkeit",
         "en": "nausea",
         "vi": "buồn nôn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UY-bệl-kait"
+        "pronunciation_vi": "đi UY-bệl-kait",
+        "pronunciation_en": "dee UE-bel-kite ('ü' rounded) — nausea"
       },
       {
         "word": "das Fieber",
         "en": "fever",
         "vi": "sốt",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FÍ-bờ"
+        "pronunciation_vi": "đát FÍ-bờ",
+        "pronunciation_en": "dahs FEE-ber — fever"
       },
       {
         "word": "die Allergie gegen",
         "en": "allergy to",
         "vi": "dị ứng với",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi a-LE-gi GÊ-gần"
+        "pronunciation_vi": "đi a-LE-gi GÊ-gần",
+        "pronunciation_en": "dee ah-lair-GEE GAY-gen — allergy to"
       },
       {
         "word": "das Rezept",
         "en": "prescription",
         "vi": "toa thuốc",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát rê-TSẾP-t"
+        "pronunciation_vi": "đát rê-TSẾP-t",
+        "pronunciation_en": "dahs ray-TSEPT — prescription"
       },
       {
         "word": "die Krankschreibung",
         "en": "sick note",
         "vi": "giấy nghỉ ốm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KRANK-shrai-bung"
+        "pronunciation_vi": "đi KRANK-shrai-bung",
+        "pronunciation_en": "dee KRAHNK-shry-boong — sick note"
       },
       {
         "word": "der/die Hausarzt/-ärztin",
         "en": "general practitioner",
         "vi": "bác sĩ gia đình",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe HAOS-atst"
+        "pronunciation_vi": "đe HAOS-atst",
+        "pronunciation_en": "dair / dee HOWS-artst — family doctor (GP)"
       }
     ],
     "dialogue": [
@@ -10192,29 +10697,34 @@ export const lessons: GermanLesson[] = [
       "Apotheke từ chối kê thuốc vì Rezept thiếu Stempel của bác sĩ. Bạn cần thuốc gấp. Hãy gọi lại bệnh viện hỏi xem có thể fax/email Rezept đầy đủ không, hoặc xin Rezept mới qua Hausarzt."
     ],
     "register_notes": "Tại Notaufnahme/Hausarzt, register FORMAL nhưng RÕ RÀNG. Bác sĩ Đức ghét vague symptoms. (1) 'SIE' với bác sĩ + nhân viên — luôn formal. (2) MEDICAL VOCABULARY: dùng từ chuyên môn nếu biết, không 'Bauchweh' (informal) mà 'Bauchschmerzen' (formal). 'Übelkeit' không 'mir ist schlecht'. (3) MÔ TẢ SYMPTOMS theo cấu trúc: KHI BẮT ĐẦU + Ở ĐÂU + MỨC ĐỘ + KÈM GÌ. Pattern: 'Seit [thời gian] habe ich [triệu chứng] in [vị trí], Skala [1-10], außerdem [triệu chứng phụ]'. (4) HỎI CONFIRMATION: 'Verstehe ich richtig — Sie verschreiben mir [tên thuốc]?' (Em hiểu đúng — bác sĩ kê thuốc [tên]?). Tránh assume. (5) CULTURAL NOTE: bác sĩ Đức ÍT bedside manner so với US — short, factual, không 'How are you feeling?' empathy. Đừng coi đó là rude. Họ focus vào diagnosis.\n\nCâu hỏi bác sĩ thường hỏi (chuẩn bị trả lời sẵn):\n- 'Wann haben die Beschwerden begonnen?' (triệu chứng bắt đầu khi nào)\n- 'Wo genau tut es weh?' (đau chính xác ở đâu)\n- 'Wie stark sind die Schmerzen, Skala 1-10?' (mức độ đau)\n- 'Haben Sie Fieber gemessen?' (đã đo nhiệt độ chưa)\n- 'Allergien?' (dị ứng?)\n- 'Welche Medikamente nehmen Sie?' (uống thuốc gì?)\n- 'Vorerkrankungen?' (bệnh sử trước đây?)\n- 'Sind Sie krankenversichert?' (có bảo hiểm y tế?)\n\nNgôn ngữ assertive khi cần:\n- 'Bitte bestätigen Sie schriftlich, dass...' (Xin xác nhận bằng văn bản rằng...)\n- 'Ich brauche eine zweite Meinung' (Em cần ý kiến thứ hai)\n- 'Welche Alternativen gibt es?' (Có lựa chọn nào khác?)\n\nKhác Việt Nam: ở VN có thể nói chuyện thân mật với bác sĩ, expect họ chăm sóc tinh thần. Ở Đức, bác sĩ chuyên về diagnosis/treatment, tinh thần là việc của bạn/gia đình. Không expect emotional support từ bác sĩ.\n\nNgười Việt thường mắc lỗi: (1) underestimate severity — 'không sao đâu' rồi worse hơn; (2) embarrass nói symptoms (đặc biệt phụ khoa, đường ruột) — bác sĩ Đức coi đây là medical info bình thường; (3) accept thuốc không hỏi side effects.",
+    "register_notes_en": "At a Notaufnahme/Hausarzt, the register is FORMAL but CLEAR. German doctors dislike vague symptoms. (1) 'SIE' with the doctor + staff — always formal. (2) MEDICAL VOCABULARY: use the technical term if you know it, not 'Bauchweh' (informal) but 'Bauchschmerzen' (formal). 'Übelkeit' rather than 'mir ist schlecht'. (3) DESCRIBE SYMPTOMS in structure: WHEN STARTED + WHERE + INTENSITY + ACCOMPANYING. Pattern: 'Seit [time] habe ich [symptom] in [location], Skala [1–10], außerdem [secondary symptom]'. (4) ASK FOR CONFIRMATION: 'Verstehe ich richtig — Sie verschreiben mir [drug]?' (Do I understand correctly — you're prescribing me [drug]?). Don't assume. (5) CULTURAL NOTE: German doctors have LESS bedside manner than US doctors — short, factual, no 'How are you feeling?' empathy. Don't read that as rudeness. They focus on diagnosis.\n\nQuestions doctors typically ask (prepare answers in advance):\n- 'Wann haben die Beschwerden begonnen?' (when did the symptoms start)\n- 'Wo genau tut es weh?' (exactly where does it hurt)\n- 'Wie stark sind die Schmerzen, Skala 1–10?' (pain level)\n- 'Haben Sie Fieber gemessen?' (have you measured the fever)\n- 'Allergien?' (allergies?)\n- 'Welche Medikamente nehmen Sie?' (what medications are you taking?)\n- 'Vorerkrankungen?' (pre-existing conditions?)\n- 'Sind Sie krankenversichert?' (do you have health insurance?)\n\nAssertive phrasing when needed:\n- 'Bitte bestätigen Sie schriftlich, dass…' (please confirm in writing that…)\n- 'Ich brauche eine zweite Meinung' (I need a second opinion)\n- 'Welche Alternativen gibt es?' (what alternatives are there?)\n\nDifferent from many other systems: in Vietnam you may chat informally with the doctor and expect emotional support. In Germany the doctor focuses on diagnosis/treatment; emotional support is up to you and your family. Don't expect emotional comfort from the doctor.\n\nCommon mistakes from less experienced patients: (1) underestimating severity — 'it's nothing' until it's worse; (2) embarrassment about symptoms (especially gynaecological, intestinal) — German doctors treat these as normal medical info; (3) accepting a prescription without asking about side effects.",
     "idiom_glosses": [
       {
         "idiom": "Sich auf die Zähne beißen",
         "literal": "Cắn răng",
         "meaning": "Chịu đau, không complain — bite the bullet. Trong context y tế: KHÔNG nên 'auf die Zähne beißen' khi đau thật — đến bác sĩ. Idiom thường dùng ngược lại: 'Beißen Sie nicht auf die Zähne, kommen Sie zum Arzt'.",
+        "meaning_en": "To grit your teeth and bear it — bite the bullet. In medical context: you should NOT 'auf die Zähne beißen' when you're genuinely in pain — go to the doctor. The idiom is often used in reverse: 'don't grit your teeth, come to the doctor'.",
         "example": "Bei starken Schmerzen sollte man nicht auf die Zähne beißen, sondern zum Arzt gehen."
       },
       {
         "idiom": "Auf der Hut sein",
         "literal": "Trong nón cảnh giác",
         "meaning": "Cảnh giác, đề phòng. Bác sĩ có thể nói 'Sein Sie auf der Hut bei [triệu chứng]' = cảnh giác nếu thấy triệu chứng. Cụm dùng cho symptom monitoring.",
+        "meaning_en": "To be on your guard — to watch out for something. A doctor may say 'Seien Sie auf der Hut bei [symptom]' = watch out if you notice [symptom]. Used for symptom monitoring.",
         "example": "Seien Sie auf der Hut: bei zunehmenden Schmerzen oder Fieber sofort wiederkommen."
       },
       {
         "idiom": "Auf Nummer sicher gehen",
         "literal": "Đi theo số an toàn",
         "meaning": "Cẩn thận, không liều — better safe than sorry. Bác sĩ thường recommend 'auf Nummer sicher gehen' = làm thêm xét nghiệm dù có thể không cần. Hành khách Việt nên take this approach với bệnh.",
+        "meaning_en": "To play it safe — better safe than sorry. A doctor often recommends 'auf Nummer sicher gehen' = run an extra test even if it's likely unnecessary. Worth following for visitors.",
         "example": "Bei Verdacht auf Blinddarmentzündung gehen wir auf Nummer sicher und machen Ultraschall."
       },
       {
         "idiom": "Mit einem blauen Auge davonkommen",
         "literal": "Thoát đi với mắt thâm",
         "meaning": "Thoát một việc tệ với hậu quả nhẹ. Phù hợp khi medical scare nhưng kết thúc OK — 'Glück gehabt: mit einem blauen Auge davongekommen'.",
+        "meaning_en": "To get away with a black eye — to escape a bad situation with minor consequences. Fits a medical scare that ends OK — 'Glück gehabt: mit einem blauen Auge davongekommen'.",
         "example": "Es war kein Blinddarm — ich bin mit einem blauen Auge davongekommen."
       }
     ],
@@ -10222,7 +10732,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi đến bệnh viện:",
+        "instruction_en": "Fill in the right phrase for a hospital visit:",
         "pronunciation_focus": [
+          "medical formal"
+        ],
+        "pronunciation_focus_en": [
           "medical formal"
         ],
         "items": [
@@ -10247,7 +10761,9 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng y tế:",
+        "instruction_en": "Match each German line to its medical function:",
         "pronunciation_focus": [],
+        "pronunciation_focus_en": [],
         "items": [
           {
             "prompt": "Wann haben die Beschwerden begonnen?",
@@ -10270,7 +10786,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal y tế:",
+        "instruction_en": "Translate into formal German for a medical setting:",
         "pronunciation_focus": [
+          "medical formal"
+        ],
+        "pronunciation_focus_en": [
           "medical formal"
         ],
         "items": [
