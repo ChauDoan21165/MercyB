@@ -31,6 +31,20 @@ export default [
       "public/**",
       ".husky/**",
 
+      // Agent worktrees. Sub-agents check out the whole repo under
+      // .claude/worktrees/agent-*/ and run their own builds there, so
+      // the entire `.claude/` tree carries other agents' dist bundles
+      // and source copies. Linting them produced ~5,900 unrelated
+      // errors and blocked every commit until this file ignored them.
+      ".claude/**",
+
+      // Supabase Edge Functions are Deno-runtime code, not the React
+      // app. They have their own deploy lifecycle. The permissive rule
+      // block lower in this file is kept for scoped runs, but they're
+      // excluded from the default `eslint .` so a Deno-side issue
+      // can't block the React side from committing.
+      "supabase/functions/**",
+
       // Capacitor-generated native bundles. These are minified copies
       // of the vite build, dropped into ios/ and android/ by
       // `npx cap sync`. They're committed to the repo so the iOS
