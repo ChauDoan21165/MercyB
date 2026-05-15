@@ -796,6 +796,11 @@ export const lessons: GermanLesson[] = [
           "Lesart → LÊS-at",
           "gewichtiger → gê-VIKH-ti-gờ",
           "gewürdigt → gê-VUY-đikht"
+        ],
+        "pronunciation_focus_en": [
+          "Lesart → LAYS-art — long 'ay' as in 'they'; means 'reading/interpretation'",
+          "gewichtiger → ge-VIKH-tee-ger — soft 'ch' as in German 'ich'",
+          "gewürdigt → ge-VUER-dikht — rounded 'ü' (lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -805,6 +810,11 @@ export const lessons: GermanLesson[] = [
           "Voraussetzung → FÔ-rao-sê-tsung",
           "repräsentativ → rê-prê-zên-ta-TIF",
           "Schlussfolgerung → SHLUS-fôl-gê-rung"
+        ],
+        "pronunciation_focus_en": [
+          "Voraussetzung → FOR-ows-zets-oong — 'au' = 'ow' as in 'how'; 'z' = 'ts'",
+          "repräsentativ → reh-preh-zen-tah-TEEF — final stress; 'ä' = 'eh' as in 'fed'",
+          "Schlussfolgerung → SHLOOS-fol-gay-roong — 'sch' = 'sh'; 'ß' = 'ss'"
         ]
       },
       {
@@ -814,6 +824,11 @@ export const lessons: GermanLesson[] = [
           "Grundannahme → GRUNT-an-na-mê",
           "indes → in-ĐÊS",
           "Reichweite → RAIKH-vai-tê"
+        ],
+        "pronunciation_focus_en": [
+          "Grundannahme → GROONT-ahn-nah-meh — final 'd' devoices to 't'",
+          "indes → in-DES — formal connective meaning 'however/yet'",
+          "Reichweite → RIKH-vy-teh — 'ei' = 'eye'; 'w' = 'v'"
         ]
       },
       {
@@ -823,6 +838,11 @@ export const lessons: GermanLesson[] = [
           "demgegenüber → đêm-gê-gần-UY-bờ",
           "einzuwenden → AIN-tsu-ven-đần",
           "relativieren → rê-la-ti-VI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "demgegenüber → dem-gay-gen-UE-ber — rounded 'ü'; key C1 connective ('against this')",
+          "einzuwenden → INE-tsoo-ven-den — separable verb ('to object')",
+          "relativieren → reh-lah-tee-VEE-ren — 'v' here keeps its English-like sound in this loan"
         ]
       },
       {
@@ -832,81 +852,98 @@ export const lessons: GermanLesson[] = [
           "insofern als → in-zô-FE-n als",
           "Datenlage → ĐA-tần-la-gê",
           "zielführend → TSIL-fuy-rần"
+        ],
+        "pronunciation_focus_en": [
+          "insofern als → in-zo-FERN ahls — C1 academic connective: 'inasmuch as'",
+          "Datenlage → DAH-ten-lah-geh — 'state of the data', a C1 staple",
+          "zielführend → TSEEL-fue-rent — rounded 'ü'; literally 'goal-leading' = purposive"
         ]
       }
     ],
     "cultural_notes_vi": "Lập luận và phản biện trong môi trường học thuật Đức tuân theo Streitkultur (văn hóa tranh luận) khắc nghiệt hơn nhiều văn hóa Việt Nam và cả Anh-Mỹ. (1) WIDERSPRUCH ALS RESPEKT: phản biện thẳng thắn = TÔN TRỌNG đối phương, im lặng/né tránh = thiếu tôn trọng tri thức. Câu mở chuẩn: 'Gegen diese Lesart spricht ein gewichtiger Einwand...' (một phản biện có trọng lượng phản đối cách đọc này). KHÔNG cần soften với 'I'm sorry but', 'with all due respect' kiểu Anh-Mỹ — câu phản biện trực tiếp formal đã đủ tôn trọng. (2) PERSON vs SACHE: tách 'người' khỏi 'lập luận'. 'Ihr Argument greift zu kurz' (lập luận của bạn không đi đủ xa) hoàn toàn OK; 'Sie haben das nicht verstanden' (bạn không hiểu) KHÔNG OK — tấn công cá nhân. Nguyên tắc: argumentum ad rem, không argumentum ad hominem. (3) ZUGEBEN, WENN MAN UNRECHT HAT: nếu phản biện của đối phương đúng, người Đức academic chấp nhận thay đổi quan điểm — không bị xem là 'mất mặt'. Câu chuẩn: 'In diesem Punkt müssen Sie mir Recht geben — meine Argumentation ist hier in der Tat anfechtbar' (ở điểm này tôi phải thừa nhận bạn đúng — lập luận của tôi quả thực có thể tấn công được).\n\nKhác Việt Nam: ở VN, tranh luận học thuật thường có yếu tố 'giữ thể diện cho thầy', 'nhường nhịn người lớn'. Ở Đức, đặc biệt sau khi đã làm Promotion, bạn được expect TRANH LUẬN ngang hàng với giáo sư. Nếu bạn im lặng đồng ý mọi điều giáo sư nói, họ sẽ nghi ngờ năng lực phản biện của bạn — và đó là tiêu chí evaluation chính của Wissenschaftlichkeit.\n\nMột chi tiết quan trọng: Funktionsverbgefüge cho phản biện C1 chuẩn:\n- 'in Frage stellen' (đặt vấn đề về) — formal nhất\n- 'in Zweifel ziehen' (đưa vào nghi ngờ)\n- 'einer Kritik unterziehen' (tiến hành phê phán)\n- 'einen Einwand erheben' (đưa ra phản đối)\n- 'eine Schwäche aufweisen' (cho thấy điểm yếu)\n\nVề Diskussionskultur: tại Tagung (hội thảo), Q&A sau Vortrag (báo cáo) thường 30-45 phút. Người đặt câu hỏi đầu tiên thường là 'discussant' chính thức được mời trước. Sau đó open floor. Hỏi formal: 'Ich hätte eine Frage zur methodischen Anlage Ihrer Studie...'.\n\nKhi bạn không đồng ý với chair của Tagung: vẫn formal, tránh emotional. Câu chuẩn: 'Mit Verlaub, Herr Professor — ich sehe das anders' (xin phép, thưa Giáo sư — tôi thấy khác). 'Mit Verlaub' là cụm gehoben rất formal cho việc bất đồng với người có cấp cao hơn.\n\nPersönliche Note: Habermas's idea of 'herrschaftsfreier Diskurs' (diễn ngôn không thống trị) là khung lý tưởng — argument hay ai count, không phải status academic. Trong thực tế, hierarchy vẫn có mặt — nhưng formal politeness + Sachargument cho phép junior scholar tranh luận với senior.",
+    "cultural_notes_en": "Arguing and counter-arguing in German academic spaces follows a Streitkultur (culture of dispute) that is noticeably sharper than what English-speaking academics — especially US/UK-trained ones — are used to. (1) WIDERSPRUCH ALS RESPEKT (objection as respect): direct counter-argument signals RESPECT for the speaker; silence or vague hedging signals intellectual disrespect. The canonical opener is 'Gegen diese Lesart spricht ein gewichtiger Einwand...' (against this reading there speaks a substantial objection). Do NOT soften with 'I'm sorry but…' or 'with all due respect…' the way one might in an Oxford or Harvard seminar — a direct, formally phrased counter-argument is already maximally respectful in German. (2) PERSON vs SACHE: separate the person from the argument. 'Ihr Argument greift zu kurz' (your argument falls short) is entirely acceptable; 'Sie haben das nicht verstanden' (you haven't understood) is NOT — that's a personal attack. The rule is argumentum ad rem, never argumentum ad hominem. (3) ZUGEBEN, WENN MAN UNRECHT HAT (concede when wrong): if the other side's objection lands, a German academic accepts the correction and shifts position — this is NOT loss of face, it's expected. The canonical phrase: 'In diesem Punkt müssen Sie mir Recht geben — meine Argumentation ist hier in der Tat anfechtbar' (on this point you're right — my argument is genuinely contestable here).\n\nContrast with US/UK norms: many English-speaking traditions soften disagreement to preserve relational warmth ('I love what you said, but…', 'I just want to push back gently…'). German academic culture treats those moves as performatively insincere, even passive-aggressive. Be direct, be formal, be specific — that combination IS the politeness. Also unlike the UK tutorial tradition, Germans don't expect students or junior scholars to defer to seniors. After your Promotion (PhD), you're expected to debate with full professors as an intellectual peer. Silently agreeing with everything your supervisor says raises doubts about your Wissenschaftlichkeit (scholarly capacity) — that's a central evaluative criterion, not a side note.\n\nOne crucial detail: the canonical Funktionsverbgefüge (function-verb constructions) for C1 objections are:\n- 'in Frage stellen' (to call into question) — the most formal\n- 'in Zweifel ziehen' (to draw into doubt)\n- 'einer Kritik unterziehen' (to subject to a critique)\n- 'einen Einwand erheben' (to raise an objection)\n- 'eine Schwäche aufweisen' (to exhibit a weakness)\n\nOn Diskussionskultur: at a Tagung (conference), the Q&A after a Vortrag (talk) runs 30–45 minutes. The first question is typically posed by a formally pre-invited 'discussant'; the floor opens after that. Formal opening phrase: 'Ich hätte eine Frage zur methodischen Anlage Ihrer Studie...' (I'd have a question about the methodological setup of your study).\n\nWhen you disagree with the chair of a Tagung: stay formal, never emotional. The canonical phrase: 'Mit Verlaub, Herr Professor — ich sehe das anders' (with respect, Professor — I see it differently). 'Mit Verlaub' is a gehoben (elevated) phrase reserved for formally disagreeing with someone of higher rank — its English nearest is 'if I may' or 'with respect' but the register is more formal.\n\nA philosophical anchor: Habermas's idea of 'herrschaftsfreier Diskurs' (discourse free of domination) sits behind the whole convention — the best argument is supposed to win, not the highest-ranked speaker. In practice hierarchy still exists, but formal politeness plus Sachargument (substantive argument) is exactly what licenses a junior scholar to argue with a senior one.",
     "tip_advice_vi": "Trước khi phản biện:\n1. ĐỌC lại argument đối phương — chắc chắn đã hiểu đúng.\n2. PHÂN BIỆT các loại phản biện:\n   - Empirisch (dữ liệu sai/thiếu)\n   - Methodisch (phương pháp không phù hợp)\n   - Theoretisch (khung lý thuyết không vững)\n   - Logisch (mạch lập luận có lỗi)\n3. CHỌN một loại — KHÔNG mix nhiều loại trong một câu.\n\nCấu trúc phản biện formal (5 bước):\n1. ANERKENNEN: 'Ich teile Ihre Grundannahme, dass...' / 'Ihr Ansatz ist in vielerlei Hinsicht überzeugend.'\n2. EINSCHRÄNKEN: 'Gleichwohl möchte ich einen Aspekt zur Diskussion stellen.'\n3. EINWAND: 'Gegen Ihre Lesart spricht jedoch...'\n4. BEGRÜNDEN: 'Konkret zeigt sich dies darin, dass...'\n5. ANGEBOT: 'Eine alternative Lesart wäre...' / 'In Anlehnung an X ließe sich auch...'\n\nNgôn ngữ phản biện C1:\n- 'Gegen diese Lesart spricht jedoch...' (tuy nhiên phản đối cách đọc này là...)\n- 'Demgegenüber wäre einzuwenden, dass...' (đối lại điều đó, cần phản đối rằng...)\n- 'Diese Argumentation greift meines Erachtens zu kurz' (lập luận này theo tôi không đi đủ xa)\n- 'Insofern als ... ist, wäre die Schlussfolgerung problematisch' (xét rằng..., kết luận sẽ có vấn đề)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (ở mức độ khái quát này không thể đồng tình)\n- 'Ihre These ist mit der Datenlage nicht vollständig in Einklang zu bringen' (luận điểm của bạn không hoàn toàn nhất quán với tình trạng dữ liệu)\n\nKhi đối phương đúng:\n- 'In diesem Punkt müssen Sie mir Recht geben' (ở điểm này tôi phải thừa nhận bạn đúng)\n- 'Ihre Beobachtung trifft zu — ich werde das überdenken' (quan sát của bạn đúng — tôi sẽ suy nghĩ lại)\n- 'Das ist ein berechtigter Hinweis, der mich zum Umdenken bewegt' (đó là chỉ dẫn có cơ sở khiến tôi suy nghĩ lại)\n\nKhi cần thêm thời gian:\n- 'Diese Frage berührt einen komplexen Punkt — gestatten Sie, dass ich darauf schriftlich zurückkomme' (câu hỏi này chạm vấn đề phức tạp — cho phép tôi trả lời bằng văn bản sau)\n\nTránh tuyệt đối:\n- 'Sie haben das nicht verstanden' (cá nhân hóa)\n- 'Das ist falsch' (cứng nhắc, không hedge)\n- 'Wie ich bereits sagte...' (passive-aggressive)\n- 'Mit Respekt, aber...' (Anglo-style, awkward in formal German)\n- Personliche Angriff bất kỳ kiểu nào\n\nMẹo cuối: nếu bạn cảm thấy emotional trong khi phản biện, dừng 1 nhịp. Câu chuẩn: 'Gestatten Sie, dass ich kurz nachdenke' (cho phép tôi suy nghĩ chút). 5 giây im lặng formal hơn nhiều một câu phản biện vội. Người Đức academic respect Bedacht (sự cân nhắc).",
+    "tip_advice_en": "Before you counter:\n1. RE-READ the opponent's argument — make sure you've understood it correctly.\n2. CLASSIFY the kind of objection you're making:\n   - Empirisch (the data are wrong or insufficient)\n   - Methodisch (the method doesn't fit)\n   - Theoretisch (the theoretical frame is shaky)\n   - Logisch (the chain of reasoning has a flaw)\n3. PICK ONE — do NOT mix several types of objection in a single move.\n\nFormal 5-step counter-argument structure:\n1. ANERKENNEN (acknowledge): 'Ich teile Ihre Grundannahme, dass...' / 'Ihr Ansatz ist in vielerlei Hinsicht überzeugend.'\n2. EINSCHRÄNKEN (qualify): 'Gleichwohl möchte ich einen Aspekt zur Diskussion stellen.'\n3. EINWAND (the objection itself): 'Gegen Ihre Lesart spricht jedoch...'\n4. BEGRÜNDEN (ground it): 'Konkret zeigt sich dies darin, dass...'\n5. ANGEBOT (offer an alternative): 'Eine alternative Lesart wäre...' / 'In Anlehnung an X ließe sich auch...'\n\nC1 counter-argument language:\n- 'Gegen diese Lesart spricht jedoch...' (against this reading, however, speaks…)\n- 'Demgegenüber wäre einzuwenden, dass...' (against that one would have to object that…)\n- 'Diese Argumentation greift meines Erachtens zu kurz' (this argumentation, in my view, falls short)\n- 'Insofern als ... ist, wäre die Schlussfolgerung problematisch' (inasmuch as…, the conclusion would be problematic)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (at this level of generality the claim cannot be endorsed)\n- 'Ihre These ist mit der Datenlage nicht vollständig in Einklang zu bringen' (your thesis is not fully reconcilable with the state of the data)\n\nWhen the other side is right:\n- 'In diesem Punkt müssen Sie mir Recht geben' (on this point I must concede)\n- 'Ihre Beobachtung trifft zu — ich werde das überdenken' (your observation holds — I'll rethink that)\n- 'Das ist ein berechtigter Hinweis, der mich zum Umdenken bewegt' (that's a legitimate pointer that moves me to rethink)\n\nWhen you need more time:\n- 'Diese Frage berührt einen komplexen Punkt — gestatten Sie, dass ich darauf schriftlich zurückkomme' (this question touches on a complex point — allow me to come back to it in writing)\n\nAvoid at all costs:\n- 'Sie haben das nicht verstanden' (personalises)\n- 'Das ist falsch' (too rigid, no hedge)\n- 'Wie ich bereits sagte...' (passive-aggressive)\n- 'Mit Respekt, aber...' (Anglo-style; sounds awkward and faintly sarcastic in formal German)\n- Persönliche Angriffe (personal attacks) of any kind\n\nFinal tip: if you feel yourself getting emotional during a counter-argument, pause for one beat. The canonical phrase: 'Gestatten Sie, dass ich kurz nachdenke' (allow me a moment to think). Five seconds of formal silence reads more competently than a rushed counter. German academics respect Bedacht (deliberation) — restraint reads as strength, not weakness.",
     "vocabulary": [
       {
         "word": "der Einwand",
         "en": "objection (in argument)",
         "vi": "phản biện, phản đối",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AIN-vant"
+        "pronunciation_vi": "đe AIN-vant",
+        "pronunciation_en": "dayr INE-vahnt — 'ei' = 'eye'; final 'd' devoices to 't'"
       },
       {
         "word": "die Lesart",
         "en": "reading, interpretation",
         "vi": "cách đọc, cách hiểu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi LÊS-at"
+        "pronunciation_vi": "đi LÊS-at",
+        "pronunciation_en": "dee LAYS-art — long 'ay'; key C1 term for textual interpretation"
       },
       {
         "word": "die Schlussfolgerung",
         "en": "conclusion (logical)",
         "vi": "kết luận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHLUS-fôl-gê-rung"
+        "pronunciation_vi": "đi SHLUS-fôl-gê-rung",
+        "pronunciation_en": "dee SHLOOS-fol-gay-roong — 'sch' = 'sh'; 'ß' = 'ss'"
       },
       {
         "word": "die Voraussetzung",
         "en": "premise, prerequisite",
         "vi": "tiền đề",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FÔ-rao-sê-tsung"
+        "pronunciation_vi": "đi FÔ-rao-sê-tsung",
+        "pronunciation_en": "dee FOR-ows-zets-oong — 'au' = 'ow'; 'z' = 'ts'"
       },
       {
         "word": "die Reichweite",
         "en": "scope, range",
         "vi": "phạm vi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi RAIKH-vai-tê"
+        "pronunciation_vi": "đi RAIKH-vai-tê",
+        "pronunciation_en": "dee RIKH-vy-teh — 'ei' = 'eye'; literally 'reach-width'"
       },
       {
         "word": "in Frage stellen",
         "en": "to call into question",
         "vi": "đặt vấn đề về",
         "pos": "verb phrase",
-        "pronunciation_vi": "in FRA-gê SHTÊ-lần"
+        "pronunciation_vi": "in FRA-gê SHTÊ-lần",
+        "pronunciation_en": "in FRAH-geh SHTEL-len — Funktionsverbgefüge, the most formal C1 form for 'question'"
       },
       {
         "word": "in Zweifel ziehen",
         "en": "to draw into doubt",
         "vi": "đưa vào nghi ngờ",
         "pos": "verb phrase",
-        "pronunciation_vi": "in TSVAI-fệl TSI-ần"
+        "pronunciation_vi": "in TSVAI-fệl TSI-ần",
+        "pronunciation_en": "in TSVY-fel TSEE-en — 'z' = 'ts'; 'ei' = 'eye'"
       },
       {
         "word": "einen Einwand erheben",
         "en": "to raise an objection",
         "vi": "đưa ra phản đối",
         "pos": "verb phrase",
-        "pronunciation_vi": "AI-nần AIN-vant e-HÊ-bần"
+        "pronunciation_vi": "AI-nần AIN-vant e-HÊ-bần",
+        "pronunciation_en": "EYE-nen INE-vahnt er-HAY-ben — 'h' between vowels is fully pronounced"
       },
       {
         "word": "die Verzerrung",
         "en": "bias, distortion",
         "vi": "thiên lệch, méo mó",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-TSER-rung"
+        "pronunciation_vi": "đi fe-TSER-rung",
+        "pronunciation_en": "dee fer-TSER-roong — 'z' = 'ts'; standard methodology term"
       },
       {
         "word": "zielführend",
         "en": "purposive, conducive to the goal",
         "vi": "có tính dẫn dắt đến mục đích",
         "pos": "adjective",
-        "pronunciation_vi": "TSIL-fuy-rần"
+        "pronunciation_vi": "TSIL-fuy-rần",
+        "pronunciation_en": "TSEEL-fue-rent — rounded 'ü'; literally 'goal-leading'"
       }
     ],
     "dialogue": [
@@ -1019,29 +1056,34 @@ export const lessons: GermanLesson[] = [
       "Postdoc khẳng định bạn diễn giải sai một tác giả (Auer). Phản biện lại bằng 'Gegen Ihre Auffassung spricht jedoch...' + cấu trúc 'Insofern als ... scheint mir die Inkompatibilität zwingend' — và khi postdoc cung cấp evidence cập nhật, chấp nhận xem xét lại."
     ],
     "register_notes": "Phản biện C1 academic: 'Sie' tuyệt đối. Konjunktiv II cho hedging: 'wäre einzuwenden', 'ließe sich tragen', 'erschiene mir'. Connectors C1: 'demgegenüber' (đối lại), 'gleichwohl' (tuy nhiên formal), 'insofern als' (xét rằng), 'mithin' (do đó), 'andernfalls' (nếu không). Funktionsverbgefüge: 'in Frage stellen' (đặt vấn đề), 'in Zweifel ziehen' (nghi ngờ), 'einen Einwand erheben' (đưa phản đối), 'einer Kritik unterziehen' (tiến hành phê phán). Cấu trúc 5 bước: ANERKENNEN → EINSCHRÄNKEN → EINWAND → BEGRÜNDEN → ANGEBOT. Khi sai: 'In diesem Punkt müssen Sie mir Recht geben' — không apologetic, factual. Khi không biết: 'Gestatten Sie, dass ich darauf schriftlich zurückkomme' — không bịa. Tránh argumentum ad hominem ('Sie haben nicht verstanden'). Phân biệt 'Person vs Sache' bắt buộc. 'Mit Verlaub' — formal nhất khi bất đồng với Höhergestellten.",
+    "register_notes_en": "C1 academic counter-argument: 'Sie' is absolute throughout. Use Konjunktiv II for hedging: 'wäre einzuwenden' (would have to be objected), 'ließe sich tragen' (could be sustained), 'erschiene mir' (would appear to me). C1 connectives: 'demgegenüber' (against this), 'gleichwohl' (nevertheless — formal), 'insofern als' (inasmuch as), 'mithin' (therefore — formal), 'andernfalls' (otherwise). Funktionsverbgefüge to internalise: 'in Frage stellen' (call into question), 'in Zweifel ziehen' (cast into doubt), 'einen Einwand erheben' (raise an objection), 'einer Kritik unterziehen' (subject to critique). The 5-step structure: ANERKENNEN → EINSCHRÄNKEN → EINWAND → BEGRÜNDEN → ANGEBOT. When wrong: 'In diesem Punkt müssen Sie mir Recht geben' — neither apologetic nor defensive, simply factual. When unsure: 'Gestatten Sie, dass ich darauf schriftlich zurückkomme' — never fabricate. Avoid argumentum ad hominem ('Sie haben nicht verstanden'). The 'Person vs Sache' (person vs matter) distinction is non-negotiable. 'Mit Verlaub' is the most formal hedge when disagreeing with someone of higher rank (Höhergestellten).",
     "idiom_glosses": [
       {
         "idiom": "den Finger in die Wunde legen",
         "literal": "đặt ngón tay vào vết thương",
         "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
+        "meaning_en": "to lay one's finger in the wound — to point precisely to a weakness (gehoben/standardsprachlich)",
         "example": "Mit diesem Einwand legen Sie den Finger in die Wunde — meine Stichprobenkonstruktion ist tatsächlich angreifbar."
       },
       {
         "idiom": "auf wackligen Beinen stehen",
         "literal": "đứng trên những chân run rẩy",
         "meaning": "lập luận yếu, không vững (standardsprachlich)",
+        "meaning_en": "to stand on shaky legs — to rest on weak, unstable argumentation (standardsprachlich)",
         "example": "Ohne ein größeres Korpus steht die Generalisierung auf wackligen Beinen."
       },
       {
         "idiom": "Wasser predigen und Wein trinken",
         "literal": "rao giảng nước nhưng uống rượu",
         "meaning": "không nhất quán giữa lời và việc, đạo đức giả (gehoben)",
+        "meaning_en": "to preach water and drink wine — to fail to practice what one preaches; hypocritical (gehoben)",
         "example": "Wer methodische Strenge fordert, aber selbst keine Triangulation anbietet, predigt Wasser und trinkt Wein."
       },
       {
         "idiom": "ein Pferd vom anderen Ende aufzäumen",
         "literal": "thắng yên ngựa từ đầu kia",
         "meaning": "tiếp cận vấn đề sai chiều (standardsprachlich)",
+        "meaning_en": "to bridle a horse from the other end — to approach a problem from the wrong direction (standardsprachlich)",
         "example": "Methodologisch zäumen Sie das Pferd vom anderen Ende auf — zuerst die Theorie, dann die Daten, nicht umgekehrt."
       }
     ],
@@ -1049,6 +1091,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc phản biện C1:",
+        "instruction_en": "Fill in the C1 counter-argument structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1072,6 +1115,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối Funktionsverbgefüge phản biện với động từ đơn:",
+        "instruction_en": "Match each counter-argument Funktionsverbgefüge with its simple verb:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1095,6 +1139,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1:",
+        "instruction_en": "Translate into C1 academic German:",
         "pronunciation_focus": [
           "argumentation"
         ],
@@ -1133,6 +1178,11 @@ export const lessons: GermanLesson[] = [
           "dürfte → ĐUYF-tê",
           "Artefakt → at-tê-FAKT",
           "Tragweite → TRAK-vai-tê"
+        ],
+        "pronunciation_focus_en": [
+          "dürfte → DUERF-teh — rounded 'ü'; the canonical C1 hedging modal (Konjunktiv II of 'dürfen')",
+          "Artefakt → ar-teh-FAHKT — final stress; ~70% certainty marker in context",
+          "Tragweite → TRAHK-vy-teh — 'final 'g' devoices to 'k'; means 'scope/ramification'"
         ]
       },
       {
@@ -1142,6 +1192,11 @@ export const lessons: GermanLesson[] = [
           "vermutlich → fe-MUT-likh",
           "Stichprobenkonstruktion → SHTIKH-prô-bần-kôn-struk-tsi-ôn",
           "abschließend → AB-shli-sần"
+        ],
+        "pronunciation_focus_en": [
+          "vermutlich → fer-MOOT-likh — final soft 'ch'; ~60% confidence hedge",
+          "Stichprobenkonstruktion → SHTIKH-pro-ben-kon-strook-tsee-ohn — methodology term",
+          "abschließend → AHP-shlee-sent — separable verb root; 'conclusively'"
         ]
       },
       {
@@ -1151,6 +1206,11 @@ export const lessons: GermanLesson[] = [
           "unter Umständen → UN-tờ UM-shten-đần",
           "denkbar → ĐENK-ba",
           "Zusammenhang → tsu-ZA-mần-hang"
+        ],
+        "pronunciation_focus_en": [
+          "unter Umständen → OON-ter OOM-shten-den — fixed phrase, ~30% confidence",
+          "denkbar → DENK-bar — 'thinkable/conceivable'",
+          "Zusammenhang → tsoo-ZAH-men-hang — 'z' = 'ts'; means 'connection'"
         ]
       },
       {
@@ -1160,6 +1220,11 @@ export const lessons: GermanLesson[] = [
           "tendenziell → tên-đên-tsi-ÊL",
           "indes → in-ĐÊS",
           "zwingend → TSVI-ngần"
+        ],
+        "pronunciation_focus_en": [
+          "tendenziell → ten-den-tsee-EL — final stress; means 'by tendency'",
+          "indes → in-DES — gehoben register; means 'however/yet' (more formal than 'jedoch')",
+          "zwingend → TSVIN-gent — 'z' = 'ts'; means 'compellingly/necessarily'"
         ]
       },
       {
@@ -1169,81 +1234,98 @@ export const lessons: GermanLesson[] = [
           "endgültige → ENT-guyl-ti-gê",
           "Grundlage → GRUNT-la-gê",
           "repliktativ → rê-pli-ka-TIF"
+        ],
+        "pronunciation_focus_en": [
+          "endgültige → ENT-guel-tee-geh — rounded 'ü'; means 'final/conclusive'",
+          "Grundlage → GROONT-lah-geh — final 'd' devoices to 't'",
+          "repliktativ → reh-plik-tah-TEEF — final stress; replicative"
         ]
       }
     ],
     "cultural_notes_vi": "Hedging (giảm cường độ khẳng định) trong văn hóa học thuật Đức là dấu hiệu của Wissenschaftlichkeit (tính khoa học), không phải của lưỡng lự. (1) HEDGING NHƯ ĐẠO ĐỨC TRI THỨC: phát biểu không hedge ('das ist eindeutig...', 'es steht außer Frage...') ở C1 academic được xem là Anmaßung (kiêu căng tri thức). Câu chuẩn dùng modal verbs: 'dürfte', 'könnte', 'mag' + adverbs: 'vermutlich', 'wahrscheinlich', 'tendenziell'. Tỷ lệ hedging trong scholarly Đức cao hơn Anh-Mỹ ~30%. (2) KONJUNKTIV II BẮT BUỘC cho hypotheticals: 'es ließe sich argumentieren', 'wäre denkbar', 'wäre zu erwägen'. Indikativ ở vị trí này = thiếu chuyên nghiệp. (3) ABSTUFUNG (phân tầng cường độ): hedging Đức có nhiều cấp độ tinh tế:\n- WEAK CLAIM: 'es ist denkbar, dass...' / 'unter Umständen' (~10% confidence)\n- MODERATE: 'vermutlich' / 'wahrscheinlich' / 'es liegt nahe, dass...' (~50-70%)\n- STRONG-HEDGED: 'höchstwahrscheinlich' / 'mit großer Wahrscheinlichkeit' (~80-90%)\n- ASSERTIVE-HEDGED: 'es ist davon auszugehen, dass...' (~85-95%)\n- BARE ASSERTION: chỉ dùng cho dữ kiện logic/toán học không thể tranh cãi\n\nKhác Việt Nam: ở VN, hedging thường được dùng để bày tỏ khiêm tốn cá nhân ('em thiển nghĩ', 'em không dám chắc'). Ở Đức, hedging KHÔNG về cá nhân — về EPISTEMIC STATUS của claim. 'Vermutlich' không có nghĩa 'I'm not confident' mà có nghĩa 'evidence supports this with ~70% certainty given current data'. Học transfer từ personal humility sang epistemic precision.\n\nMột chi tiết quan trọng: hedging ngược (anti-hedging) bị coi là epistemisch unredlich (thiếu trung thực tri thức). Nếu evidence cho thấy 70% confidence và bạn viết 'eindeutig zeigt sich, dass...' (rõ ràng cho thấy), reviewer sẽ flag. Trong Promotionsverteidigung, anti-hedging có thể là điểm trừ lớn.\n\nVề kiêng kỵ: KHÔNG dùng 'I think', 'in my opinion' (= 'ich denke', 'meiner Meinung nach') trong văn bản viết — colloquial. Thay bằng:\n- 'Es lässt sich annehmen, dass...' (có thể giả định rằng)\n- 'Vor diesem Hintergrund liegt die Annahme nahe, dass...' (trước bối cảnh này, giả định rằng... là gần)\n- 'Die Datenlage legt den Schluss nahe, dass...' (tình trạng dữ liệu gợi ý kết luận rằng)\n\nTrong oral presentation, 'meines Erachtens' (theo nhận thức của tôi) — formal hơn 'ich denke' — được chấp nhận.\n\nVề Replikationskrise: science Đức gần đây nhấn mạnh nhiều hơn về tính lặp lại. Câu chuẩn ở Limitations section: 'Eine endgültige Bewertung ließe sich erst auf der Grundlage repliktativer Studien vornehmen' — không phải defensive, là epistemisch ehrlich.",
+    "cultural_notes_en": "Hedging (toning down the strength of a claim) in German academic culture is a marker of Wissenschaftlichkeit (scholarly rigor), not hesitation. (1) HEDGING AS EPISTEMIC ETHICS: an unhedged claim ('das ist eindeutig...', 'es steht außer Frage...' — 'this clearly shows', 'it is beyond question') reads at C1 academic level as Anmaßung (intellectual overreach). The canonical form uses modal verbs ('dürfte', 'könnte', 'mag') plus adverbs ('vermutlich', 'wahrscheinlich', 'tendenziell'). German scholarly writing hedges roughly 30% more densely than its English-language counterpart. (2) KONJUNKTIV II IS OBLIGATORY for hypotheticals: 'es ließe sich argumentieren' (one could argue), 'wäre denkbar' (would be conceivable), 'wäre zu erwägen' (would be worth considering). Indicative in these positions reads as unprofessional. (3) ABSTUFUNG (calibration of strength): German hedging operates on a fine-grained scale:\n- WEAK CLAIM: 'es ist denkbar, dass...' / 'unter Umständen' (~10% confidence)\n- MODERATE: 'vermutlich' / 'wahrscheinlich' / 'es liegt nahe, dass...' (~50–70%)\n- STRONG-HEDGED: 'höchstwahrscheinlich' / 'mit großer Wahrscheinlichkeit' (~80–90%)\n- ASSERTIVE-HEDGED: 'es ist davon auszugehen, dass...' (~85–95%)\n- BARE ASSERTION: reserved for incontestable logic/mathematics only.\n\nContrast with English-speaking norms: US/UK academic culture also hedges, but tends to use hedges of personal modesty ('I'd argue', 'in my view', 'I'd suggest'). German hedging is NOT about the speaker — it's about the EPISTEMIC STATUS of the claim. 'Vermutlich' does not mean 'I'm not confident'; it means 'the evidence supports this with about 70% certainty given current data'. The transfer to learn: from personal humility ('I think') to epistemic precision ('the data warrant').\n\nOne crucial point: anti-hedging is treated as epistemisch unredlich (epistemically dishonest). If your evidence supports 70% confidence and you write 'eindeutig zeigt sich, dass...' (it clearly shows that...), a reviewer will flag it. In a Promotionsverteidigung (PhD defence), anti-hedging can be a serious mark against you.\n\nForbidden register: do NOT use 'ich denke' or 'meiner Meinung nach' (the equivalents of 'I think' / 'in my opinion') in written academic text — they're colloquial. Use instead:\n- 'Es lässt sich annehmen, dass...' (it can be assumed that...)\n- 'Vor diesem Hintergrund liegt die Annahme nahe, dass...' (against this background it is plausible to assume that...)\n- 'Die Datenlage legt den Schluss nahe, dass...' (the state of the data suggests the conclusion that...)\n\nIn oral presentation, 'meines Erachtens' (in my judgement — more formal than 'ich denke') is acceptable.\n\nOn the Replikationskrise (replication crisis): German science has lately put more emphasis on replicability. The canonical Limitations-section phrasing is 'Eine endgültige Bewertung ließe sich erst auf der Grundlage repliktativer Studien vornehmen' (a final assessment could only be made on the basis of replicative studies) — not defensive, just epistemisch ehrlich (epistemically honest).",
     "tip_advice_vi": "Trước khi đưa ra claim:\n1. ĐÁNH GIÁ evidence strength (1-10).\n2. CHỌN hedge level tương ứng:\n   - 1-3: 'es ist nicht auszuschließen, dass...' / 'eine Möglichkeit wäre, dass...'\n   - 4-6: 'unter Umständen' / 'es ist denkbar, dass...'\n   - 7-8: 'vermutlich' / 'wahrscheinlich' / 'es spricht einiges dafür, dass...'\n   - 9: 'es ist davon auszugehen, dass...' / 'mit hoher Wahrscheinlichkeit'\n   - 10: 'es steht außer Frage, dass...' (CỰC HIẾM — chỉ logic/math)\n3. AVOID overshooting (claim quá mạnh) AND undershooting (hedge quá nhiều — wishy-washy).\n\nNgôn ngữ hedging C1:\n- Modal verbs: 'dürfte', 'könnte', 'mag', 'mögen' (Konjunktiv I cho indirekt)\n- Adverbs: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'\n- Verbs of caution: 'es lässt sich annehmen', 'es spricht dafür', 'es liegt nahe'\n- Konjunktiv II: 'wäre denkbar', 'ließe sich vermuten', 'könnte erklärt werden'\n- Limiters: 'in der Tendenz', 'tendenziell', 'mit Einschränkung', 'vorbehaltlich'\n\nTrong paragraph kết luận:\n- 'Die Befunde sprechen tendenziell für die Hypothese, ohne sie indes zwingend zu belegen' (kết quả có xu hướng ủng hộ giả thuyết, song không chứng minh nó bắt buộc)\n- 'Eine endgültige Bewertung ließe sich erst auf der Grundlage repliktativer Studien vornehmen' (đánh giá chung cuộc chỉ có thể trên cơ sở các nghiên cứu lặp lại)\n- 'Inwieweit sich diese Schlussfolgerung verallgemeinern lässt, bleibt einer Anschlussstudie vorbehalten' (mức độ khái quát hóa của kết luận này, dành cho nghiên cứu tiếp nối)\n\nKhi báo cáo limitations chính:\n- 'Im Rahmen dieser Untersuchung lässt sich nicht klären, ob...' (trong khuôn khổ nghiên cứu này không thể làm rõ liệu)\n- 'Die vorliegende Studie weist Einschränkungen auf, die in zukünftigen Arbeiten zu berücksichtigen wären...' (nghiên cứu hiện tại có những hạn chế cần được tính đến trong các công trình tương lai)\n\nKhi không chắc về nhân quả:\n- 'Es zeigt sich ein Zusammenhang, ohne dass sich die Kausalität daraus zwingend ableiten ließe' (mối quan hệ thể hiện ra, song không thể suy ra tính nhân quả từ đó một cách bắt buộc)\n\nKhi không đủ data:\n- 'Die Datenlage gestattet keine abschließende Bewertung' (tình trạng dữ liệu không cho phép đánh giá chung cuộc)\n- 'Auf Grundlage des vorhandenen Korpus lässt sich diese Frage nur tentativ beantworten' (trên cơ sở ngữ liệu hiện có, câu hỏi này chỉ có thể trả lời tạm thời)\n\nMẹo cuối: đếm số lần dùng 'eindeutig', 'klar', 'offensichtlich' trong draft — nếu > 2 lần per chương, có khả năng anti-hedging. Replace bằng các formulation hedge phù hợp evidence strength.",
+    "tip_advice_en": "Before stating a claim:\n1. ASSESS your evidence strength (1–10).\n2. PICK the matching hedge level:\n   - 1–3: 'es ist nicht auszuschließen, dass...' / 'eine Möglichkeit wäre, dass...'\n   - 4–6: 'unter Umständen' / 'es ist denkbar, dass...'\n   - 7–8: 'vermutlich' / 'wahrscheinlich' / 'es spricht einiges dafür, dass...'\n   - 9: 'es ist davon auszugehen, dass...' / 'mit hoher Wahrscheinlichkeit'\n   - 10: 'es steht außer Frage, dass...' (EXTREMELY RARE — logic/math only)\n3. AVOID overshooting (claim too strong) AND undershooting (so many hedges the claim disappears — wishy-washy).\n\nC1 hedging vocabulary:\n- Modal verbs: 'dürfte', 'könnte', 'mag', 'mögen' (Konjunktiv I for indirect speech)\n- Adverbs: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'\n- Verbs of caution: 'es lässt sich annehmen', 'es spricht dafür', 'es liegt nahe'\n- Konjunktiv II constructions: 'wäre denkbar', 'ließe sich vermuten', 'könnte erklärt werden'\n- Limiters: 'in der Tendenz', 'tendenziell', 'mit Einschränkung', 'vorbehaltlich'\n\nIn the concluding paragraph:\n- 'Die Befunde sprechen tendenziell für die Hypothese, ohne sie indes zwingend zu belegen' (the findings tend to support the hypothesis, without however compellingly proving it)\n- 'Eine endgültige Bewertung ließe sich erst auf der Grundlage repliktativer Studien vornehmen' (a final evaluation could only be made on the basis of replicative studies)\n- 'Inwieweit sich diese Schlussfolgerung verallgemeinern lässt, bleibt einer Anschlussstudie vorbehalten' (the extent to which this conclusion generalises is left for a follow-up study)\n\nWhen reporting key limitations:\n- 'Im Rahmen dieser Untersuchung lässt sich nicht klären, ob...' (within the scope of this investigation it cannot be resolved whether...)\n- 'Die vorliegende Studie weist Einschränkungen auf, die in zukünftigen Arbeiten zu berücksichtigen wären...' (the present study has limitations to be addressed in future work)\n\nWhen causality is uncertain:\n- 'Es zeigt sich ein Zusammenhang, ohne dass sich die Kausalität daraus zwingend ableiten ließe' (a connection emerges, but causality cannot be compellingly derived from it)\n\nWhen the data are insufficient:\n- 'Die Datenlage gestattet keine abschließende Bewertung' (the state of the data does not permit a final evaluation)\n- 'Auf Grundlage des vorhandenen Korpus lässt sich diese Frage nur tentativ beantworten' (on the basis of the available corpus this question can only be tentatively answered)\n\nFinal tip: count how often you use 'eindeutig' (clearly), 'klar' (clear), 'offensichtlich' (obviously) in your draft — more than two per chapter is a red flag for anti-hedging. Replace with formulations whose strength matches the evidence.",
     "vocabulary": [
       {
         "word": "vermutlich",
         "en": "presumably, probably",
         "vi": "có lẽ, có khả năng",
         "pos": "adverb",
-        "pronunciation_vi": "fe-MUT-likh"
+        "pronunciation_vi": "fe-MUT-likh",
+        "pronunciation_en": "fer-MOOT-likh — final soft 'ch'; ~60% confidence hedge"
       },
       {
         "word": "tendenziell",
         "en": "tendentially, by tendency",
         "vi": "có xu hướng",
         "pos": "adverb",
-        "pronunciation_vi": "tên-đên-tsi-ÊL"
+        "pronunciation_vi": "tên-đên-tsi-ÊL",
+        "pronunciation_en": "ten-den-tsee-EL — final stress; literally 'by tendency'"
       },
       {
         "word": "unter Umständen",
         "en": "under (some) circumstances, possibly",
         "vi": "trong một số trường hợp",
         "pos": "phrase",
-        "pronunciation_vi": "UN-tờ UM-shten-đần"
+        "pronunciation_vi": "UN-tờ UM-shten-đần",
+        "pronunciation_en": "OON-ter OOM-shten-den — ~30% confidence hedge"
       },
       {
         "word": "gegebenenfalls",
         "en": "if applicable, where appropriate",
         "vi": "nếu áp dụng được",
         "pos": "adverb",
-        "pronunciation_vi": "gê-GÊ-bê-nần-fals"
+        "pronunciation_vi": "gê-GÊ-bê-nần-fals",
+        "pronunciation_en": "ge-GAY-be-nen-fals — often abbreviated 'ggf.' in writing"
       },
       {
         "word": "vorbehaltlich (+ Gen)",
         "en": "subject to, conditional upon",
         "vi": "với điều kiện, dành cho",
         "pos": "preposition (Gen)",
-        "pronunciation_vi": "FÔ-bê-halt-likh"
+        "pronunciation_vi": "FÔ-bê-halt-likh",
+        "pronunciation_en": "FOR-be-hahlt-likh — takes the genitive; legal-academic register"
       },
       {
         "word": "indes",
         "en": "however, yet (formal)",
         "vi": "song, tuy nhiên (formal)",
         "pos": "adverb",
-        "pronunciation_vi": "in-ĐÊS"
+        "pronunciation_vi": "in-ĐÊS",
+        "pronunciation_en": "in-DES — gehoben; more formal than 'jedoch' or 'aber'"
       },
       {
         "word": "die Tragweite",
         "en": "scope, ramification",
         "vi": "tầm vóc, hệ quả",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TRAK-vai-tê"
+        "pronunciation_vi": "đi TRAK-vai-tê",
+        "pronunciation_en": "dee TRAHK-vy-teh — final 'g' devoices to 'k'"
       },
       {
         "word": "abschließend",
         "en": "conclusive(ly), final(ly)",
         "vi": "chung cuộc, cuối cùng",
         "pos": "adjective/adverb",
-        "pronunciation_vi": "AB-shli-sần"
+        "pronunciation_vi": "AB-shli-sần",
+        "pronunciation_en": "AHP-shlee-sent — 'sch' = 'sh'; from 'abschließen' (to conclude)"
       },
       {
         "word": "die Einschränkung",
         "en": "limitation, qualification",
         "vi": "hạn chế, giới hạn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AIN-shren-kung"
+        "pronunciation_vi": "đi AIN-shren-kung",
+        "pronunciation_en": "dee INE-shren-koong — Limitations-section staple"
       },
       {
         "word": "es lässt sich annehmen",
         "en": "it can be assumed",
         "vi": "có thể giả định",
         "pos": "phrase",
-        "pronunciation_vi": "ês LE-st zikh AN-nê-mần"
+        "pronunciation_vi": "ês LE-st zikh AN-nê-mần",
+        "pronunciation_en": "es LEST zikh AHN-nay-men — passive 'sich lassen' construction"
       }
     ],
     "dialogue": [
@@ -1356,29 +1438,34 @@ export const lessons: GermanLesson[] = [
       "Reviewer khuyên dùng Konjunktiv II ở hypotheticals và tránh 'meiner Meinung nach' ở văn viết. Diễn đạt lại một câu cụ thể của bạn theo cả hai gợi ý cùng lúc."
     ],
     "register_notes": "Hedging C1: Konjunktiv II BẮT BUỘC cho hypotheticals — 'wäre denkbar' / 'ließe sich vermuten' / 'könnte erklärt werden'. Modal hedges: 'dürfte', 'könnte', 'mag'. Adverb hedges: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'. KHÔNG 'ich denke' / 'meiner Meinung nach' trong văn viết — colloquial. Thay bằng 'es lässt sich annehmen' / 'die Datenlage legt den Schluss nahe'. Anti-hedging ('eindeutig', 'offensichtlich', 'es steht außer Frage') CẤM trừ logic/toán. Cấu trúc Limitations bắt buộc: 'Eine endgültige Bewertung ließe sich erst auf der Grundlage X vornehmen'. Phân tầng cường độ 5 cấp: 'nicht auszuschließen' (10%), 'unter Umständen' (30%), 'vermutlich' (60%), 'wahrscheinlich' (75%), 'davon auszugehen' (90%). 'Indes' = formal hơn 'jedoch' / 'aber'.",
+    "register_notes_en": "C1 hedging: Konjunktiv II is REQUIRED for hypotheticals — 'wäre denkbar' / 'ließe sich vermuten' / 'könnte erklärt werden'. Modal hedges: 'dürfte', 'könnte', 'mag'. Adverbial hedges: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'. Do NOT use 'ich denke' / 'meiner Meinung nach' ('I think' / 'in my opinion') in written academic German — they read colloquially. Replace with 'es lässt sich annehmen' (it can be assumed) or 'die Datenlage legt den Schluss nahe' (the state of the data suggests the conclusion). Anti-hedging ('eindeutig', 'offensichtlich', 'es steht außer Frage' — 'clearly', 'obviously', 'beyond question') is BANNED except for logic/maths. The mandatory Limitations structure: 'Eine endgültige Bewertung ließe sich erst auf der Grundlage X vornehmen' (a final assessment could only be made on the basis of X). The five-step confidence scale: 'nicht auszuschließen' (~10%), 'unter Umständen' (~30%), 'vermutlich' (~60%), 'wahrscheinlich' (~75%), 'davon auszugehen' (~90%). 'Indes' is more formal than 'jedoch' or 'aber' for 'however'.",
     "idiom_glosses": [
       {
         "idiom": "mit Vorsicht zu genießen sein",
         "literal": "phải được hưởng dụng cẩn thận",
         "meaning": "phải được tiếp nhận với sự dè dặt (standardsprachlich)",
+        "meaning_en": "to be enjoyed with caution — to be received with reservation (standardsprachlich)",
         "example": "Diese vorläufigen Befunde sind mit Vorsicht zu genießen — die Stichprobengröße ist begrenzt."
       },
       {
         "idiom": "mit allen Wassern gewaschen sein",
         "literal": "đã được tắm với mọi loại nước",
         "meaning": "tinh thông, không dễ bị lừa (gehoben/standardsprachlich)",
+        "meaning_en": "to have been washed in all the waters — to be experienced and street-smart, not easily fooled (gehoben/standardsprachlich)",
         "example": "Ein erfahrener Methodologe ist mit allen Wassern gewaschen — er erkennt anti-hedging sofort."
       },
       {
         "idiom": "auf dünnem Eis stehen",
         "literal": "đứng trên băng mỏng",
         "meaning": "ở vị trí bấp bênh, dễ sụp (standardsprachlich)",
+        "meaning_en": "to stand on thin ice — to occupy a precarious position, easily collapsed (standardsprachlich)",
         "example": "Ohne Replikation steht jede Generalisierung auf dünnem Eis."
       },
       {
         "idiom": "ein Schuss ins Blaue sein",
         "literal": "một phát súng vào màu xanh",
         "meaning": "phỏng đoán không có cơ sở (standardsprachlich)",
+        "meaning_en": "a shot into the blue — a wild guess with no foundation (standardsprachlich)",
         "example": "Ohne Datenbasis wäre eine solche Behauptung ein Schuss ins Blaue."
       }
     ],
@@ -1386,6 +1473,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc hedging C1:",
+        "instruction_en": "Fill in the C1 hedging construction:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1409,6 +1497,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối adverb hedge Đức với mức độ confidence tương ứng:",
+        "instruction_en": "Match each German hedge adverb with its corresponding confidence level:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1432,6 +1521,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1 (Konjunktiv II hedging):",
+        "instruction_en": "Translate into C1 academic German (Konjunktiv II hedging):",
         "pronunciation_focus": [
           "hedging"
         ],
@@ -1470,6 +1560,11 @@ export const lessons: GermanLesson[] = [
           "Begriff → bê-GRIF",
           "Translanguaging → trans-LANG-gua-ging",
           "Repertoire → rê-pe-tô-A"
+        ],
+        "pronunciation_focus_en": [
+          "Begriff → be-GRIF — final stress; the central C1 academic word for 'concept'",
+          "Translanguaging → English loan, pronounced as in English",
+          "Repertoire → reh-per-too-AHR — French loan, final stress"
         ]
       },
       {
@@ -1479,6 +1574,11 @@ export const lessons: GermanLesson[] = [
           "Terminus → TÊ-mi-nus",
           "einschlägig → AIN-shle-gikh",
           "unerlässlich → UN-e-le-slikh"
+        ],
+        "pronunciation_focus_en": [
+          "Terminus → TAYR-mee-noos — Latin loan; means 'technical term'",
+          "einschlägig → INE-shleh-gikh — academic adjective: 'relevant/pertinent'",
+          "unerlässlich → OON-er-les-likh — means 'indispensable'"
         ]
       },
       {
@@ -1488,6 +1588,11 @@ export const lessons: GermanLesson[] = [
           "Abgrenzung → AB-gren-tsung",
           "enggefasst → ENG-gê-fast",
           "Konzeption → kôn-tsê-pti-ÔN"
+        ],
+        "pronunciation_focus_en": [
+          "Abgrenzung → AHP-gren-tsoong — 'z' = 'ts'; 'delimitation'",
+          "enggefasst → ENG-ge-fahst — 'narrowly conceived'",
+          "Konzeption → kon-tsep-tsee-OHN — final stress"
         ]
       },
       {
@@ -1497,6 +1602,11 @@ export const lessons: GermanLesson[] = [
           "operationalisiert → ô-pê-ra-tsi-ô-na-li-ZIT",
           "Konstrukt → kôn-STRUKT",
           "Indikatoren → in-đi-ka-TÔ-rần"
+        ],
+        "pronunciation_focus_en": [
+          "operationalisiert → o-per-ah-tsee-o-nah-lee-ZEERT — final stress",
+          "Konstrukt → kon-STROOKT — final stress",
+          "Indikatoren → in-dee-kah-TOH-ren — plural of 'Indikator'"
         ]
       },
       {
@@ -1506,81 +1616,98 @@ export const lessons: GermanLesson[] = [
           "heuristisch → hôi-RIS-tish",
           "substantialistisch → zub-stan-tsi-a-LIS-tish",
           "intendieren → in-tên-ĐI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "heuristisch → hoy-RIS-tish — 'eu' = 'oy'",
+          "substantialistisch → soob-stan-tsee-ah-LIS-tish — protective against reification",
+          "intendieren → in-ten-DEE-ren — 'to intend/mean'"
         ]
       }
     ],
     "cultural_notes_vi": "Định nghĩa thuật ngữ trong khoa học Đức có ba quy ước nghiêm ngặt khác Anh-Mỹ và Việt Nam. (1) NOMINALDEFINITION vs REALDEFINITION: phân biệt rõ giữa định nghĩa danh nghĩa (đây là cách tôi sẽ dùng từ này trong bài) và định nghĩa thực tại (đây là bản chất khái niệm). Câu chuẩn cho Nominaldefinition: 'Unter dem Begriff X verstehe ich im Folgenden Y'. Cho Realdefinition: 'X ist definiert als...' / 'Der Terminus X bezeichnet...'. (2) BEGRIFFSGESCHICHTE: định nghĩa C1 academic không bắt đầu từ zero — phải situate trong lịch sử khái niệm. Câu mở chuẩn: 'Der Begriff X geht auf Y zurück, wurde von Z weiterentwickelt und liegt heute in mehreren konkurrierenden Lesarten vor'. KHÔNG 'X means Y' đơn giản — đó là Begriffsarmut (sự nghèo nàn khái niệm). (3) ABGRENZUNG: định nghĩa Đức bắt buộc phân biệt với khái niệm gần (NACHBARBEGRIFFE). 'Translanguaging' phải được phân biệt với 'Code-Switching', 'Code-Mixing', 'Polylanguaging' — không phải synonymous. Khi không phân biệt = thiếu Wissenschaftlichkeit.\n\nKhác Việt Nam: ở VN, định nghĩa thường tuân theo 'X là Y' (đẳng thức danh từ). Ở Đức, định nghĩa C1 thường là một processus argumentativ kéo dài 1-2 trang — gồm: lịch sử khái niệm (1) → review các định nghĩa hiện hành (2) → phê phán (3) → định nghĩa working được chọn (4) → operationalization (5).\n\nMột chi tiết quan trọng: KHÔNG dùng từ điển (Duden, Oxford, Merriam-Webster) làm nguồn cho định nghĩa thuật ngữ chuyên ngành. Định nghĩa từ điển là common-sense, không có tính khoa học. Phải dùng:\n- Standard textbook trong field (Lehrbuch)\n- Original paper/Habilitationsschrift của người tạo khái niệm\n- Sekundärliteratur quan trọng\n\nVề Operationalisierung: trong empirical research, định nghĩa khái niệm phải được làm rõ thành các Indikatoren đo được. Câu chuẩn: 'Operationalisiert wird das Konstrukt durch drei Indikatoren: A, B, C'. KHÔNG đầy đủ nếu chỉ định nghĩa lý thuyết mà không operationalize.\n\nVề Substanzialismus vs Konstruktivismus: nhiều khái niệm trong sociolinguistics có hai cách đọc — substantialistisch (khái niệm phản ánh thực tại có sẵn) hoặc konstruktivistisch (khái niệm là công cụ phân tích). Khi định nghĩa, phải làm rõ stance của bạn. Câu chuẩn: 'Ich intendiere keine substantialistische Lesart, sondern verwende den Begriff als heuristisches Konstrukt'.\n\nVề Eindeutschung: nhiều thuật ngữ Anglo-American có Eindeutschung (chuyển sang Đức). 'Code-Switching' = 'Sprachwechsel' / 'Kode-Wechsel'. Quyết định dùng Anglizismus hay Eindeutschung — argumentation explizit.",
+    "cultural_notes_en": "Defining technical terms in German scholarship follows three strict conventions that differ from English-speaking academic norms. (1) NOMINALDEFINITION vs REALDEFINITION: a sharp distinction between the nominal definition ('this is how I will use this word in this work') and the real definition ('this is the essential nature of the concept'). Canonical Nominaldefinition phrasing: 'Unter dem Begriff X verstehe ich im Folgenden Y' (by the term X I understand in what follows Y). Canonical Realdefinition phrasing: 'X ist definiert als...' / 'Der Terminus X bezeichnet...'. English-language writing often blurs these two; German C1 keeps them apart. (2) BEGRIFFSGESCHICHTE (conceptual history): a C1 academic definition never starts from zero — it must situate the term in its history. Canonical opener: 'Der Begriff X geht auf Y zurück, wurde von Z weiterentwickelt und liegt heute in mehreren konkurrierenden Lesarten vor' (the term X traces back to Y, was developed further by Z, and exists today in several competing readings). A plain 'X means Y' reads as Begriffsarmut (conceptual poverty). (3) ABGRENZUNG (delimitation): a German definition obligatorily contrasts the term with NACHBARBEGRIFFE (neighbouring concepts). 'Translanguaging' must be set apart from 'Code-Switching', 'Code-Mixing', 'Polylanguaging' — these are not synonyms. Failing to do so signals a lack of Wissenschaftlichkeit (scholarly rigor).\n\nContrast with US/UK norms: English-language writing often handles a term in a one-paragraph operational definition. A German C1 definition is typically a 1–2 page argumentative process: conceptual history (1) → review of current definitions (2) → critique (3) → chosen working definition (4) → operationalization (5).\n\nA crucial point: do NOT use general dictionaries (Duden, Oxford, Merriam-Webster) as the source for a technical term. Dictionary definitions are common-sense, not scholarly. Use instead:\n- A standard textbook in the field (Lehrbuch)\n- The original paper or Habilitationsschrift of the concept's coiner\n- Important Sekundärliteratur (secondary literature)\n\nOn Operationalisierung: in empirical research, a concept's definition must be unpacked into measurable Indikatoren (indicators). The canonical phrase: 'Operationalisiert wird das Konstrukt durch drei Indikatoren: A, B, C'. A theoretical definition without operationalization is incomplete.\n\nOn Substantialismus vs Konstruktivismus: many concepts in the social sciences admit two readings — substantialistisch (the concept reflects a pre-given reality) or konstruktivistisch (the concept is an analytic tool). When you define a term, make your stance explicit. Canonical phrase: 'Ich intendiere keine substantialistische Lesart, sondern verwende den Begriff als heuristisches Konstrukt' (I do not intend a substantialist reading; I use the term as a heuristic construct).\n\nOn Eindeutschung (Germanisation): many Anglo-American terms have a German rendering — 'Code-Switching' = 'Sprachwechsel' / 'Kode-Wechsel'. Your choice between Anglizismus and Eindeutschung needs explicit argumentation.",
     "tip_advice_vi": "Cấu trúc định nghĩa C1 (5 bước):\n1. BEGRIFFSGESCHICHTE: 'Der Begriff geht auf X zurück, wurde von Y weiterentwickelt...'\n2. REVIEW konkurrierender Definitionen: 'In der Forschungsliteratur lassen sich grob drei Lesarten unterscheiden: erstens..., zweitens..., drittens...'\n3. KRITISCHE WÜRDIGUNG: 'Während die erste Lesart den Vorteil X hat, übergeht sie Y. Die zweite hingegen...'\n4. ARBEITSDEFINITION: 'Vor diesem Hintergrund verwende ich den Begriff im folgenden Sinne: ...'\n5. OPERATIONALISIERUNG (nếu empirical): 'Operationalisiert wird das Konstrukt durch drei Indikatoren: A, B, C'\n\nNgôn ngữ định nghĩa formal:\n- 'Unter dem Begriff X verstehe ich im Folgenden Y' (Nominaldefinition)\n- 'Der Terminus X bezeichnet Y' (Realdefinition)\n- 'Der Begriff geht auf X (Jahr) zurück' (Begriffsgeschichte)\n- 'In der einschlägigen Literatur lassen sich drei Lesarten unterscheiden' (Review)\n- 'In Abgrenzung zu X' (phân biệt khái niệm)\n- 'Im Anschluss an X' (kế thừa khái niệm)\n- 'Operationalisiert wird das Konstrukt durch...' (operationalization)\n- 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne' (Working term)\n\nKhi nhiều khái niệm cạnh nhau:\n- 'Translanguaging ist nicht zu verwechseln mit Code-Switching, da X den Schwerpunkt auf Y legt' (không nhầm với, vì X nhấn mạnh Y)\n- 'Während X eine strukturelle Perspektive einnimmt, ist Y diskursanalytisch ausgerichtet' (trong khi X có góc nhìn cấu trúc, Y định hướng phân tích diễn ngôn)\n\nKhi định nghĩa của bạn modify khái niệm có sẵn:\n- 'Ich modifiziere Bourdieus Habitus-Begriff dergestalt, dass migrationsspezifische Konfigurationen berücksichtigt werden' (tôi sửa đổi khái niệm habitus của Bourdieu theo cách rằng các cấu hình đặc thù di cư được tính đến)\n\nKhi quyết định dùng Anglizismus vs Eindeutschung:\n- 'Im deutschsprachigen Raum existiert die Übersetzung X (Y, Z), die jedoch in der Fachdiskussion uneinheitlich verwendet wird. Aus Gründen der Anschlussfähigkeit an die internationale Literatur verwende ich den englischen Originalterminus.' (trong vùng tiếng Đức tồn tại dịch X, song được dùng không thống nhất. Vì lý do kết nối với tài liệu quốc tế, tôi dùng nguyên ngữ Anh.)\n\nKiểm tra cuối: nếu định nghĩa của bạn dài < 1 trang trong PhD, có khả năng không đủ. Nếu dài > 5 trang, có khả năng quá nặng. Sweet spot: 1.5-3 trang per Schlüsselbegriff (khái niệm then chốt).",
+    "tip_advice_en": "C1 5-step definition structure:\n1. BEGRIFFSGESCHICHTE: 'Der Begriff geht auf X zurück, wurde von Y weiterentwickelt...'\n2. REVIEW competing definitions: 'In der Forschungsliteratur lassen sich grob drei Lesarten unterscheiden: erstens..., zweitens..., drittens...'\n3. KRITISCHE WÜRDIGUNG (critical appraisal): 'Während die erste Lesart den Vorteil X hat, übergeht sie Y. Die zweite hingegen...'\n4. ARBEITSDEFINITION: 'Vor diesem Hintergrund verwende ich den Begriff im folgenden Sinne: ...'\n5. OPERATIONALISIERUNG (if empirical): 'Operationalisiert wird das Konstrukt durch drei Indikatoren: A, B, C'\n\nFormal definition language:\n- 'Unter dem Begriff X verstehe ich im Folgenden Y' (Nominaldefinition — how I will use X here)\n- 'Der Terminus X bezeichnet Y' (Realdefinition — X designates Y)\n- 'Der Begriff geht auf X (Jahr) zurück' (the term traces back to X)\n- 'In der einschlägigen Literatur lassen sich drei Lesarten unterscheiden' (Review: three readings can be distinguished)\n- 'In Abgrenzung zu X' (in delimitation from X)\n- 'Im Anschluss an X' (following on from X)\n- 'Operationalisiert wird das Konstrukt durch...' (operationalization)\n- 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne' (Working term in the broad sense)\n\nWhen several concepts sit next to each other:\n- 'Translanguaging ist nicht zu verwechseln mit Code-Switching, da X den Schwerpunkt auf Y legt' (X is not to be confused with Y, since X places the emphasis on Z)\n- 'Während X eine strukturelle Perspektive einnimmt, ist Y diskursanalytisch ausgerichtet' (while X takes a structural perspective, Y is discourse-analytically oriented)\n\nWhen your definition modifies an existing concept:\n- 'Ich modifiziere Bourdieus Habitus-Begriff dergestalt, dass migrationsspezifische Konfigurationen berücksichtigt werden' (I modify Bourdieu's habitus concept in such a way that migration-specific configurations are taken into account)\n\nWhen deciding between Anglizismus vs Eindeutschung:\n- 'Im deutschsprachigen Raum existiert die Übersetzung X (Y, Z), die jedoch in der Fachdiskussion uneinheitlich verwendet wird. Aus Gründen der Anschlussfähigkeit an die internationale Literatur verwende ich den englischen Originalterminus.' (In the German-speaking area the translation X exists, but is used inconsistently in the specialist discussion. For reasons of connectability to the international literature I use the English original term.)\n\nFinal check: if your definition runs under 1 page in a PhD, it's likely insufficient. Over 5 pages is likely too heavy. The sweet spot: 1.5–3 pages per Schlüsselbegriff (key concept).",
     "vocabulary": [
       {
         "word": "der Begriff",
         "en": "concept, term",
         "vi": "khái niệm, thuật ngữ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe bê-GRIF"
+        "pronunciation_vi": "đe bê-GRIF",
+        "pronunciation_en": "dayr be-GRIF — final stress; central C1 academic term"
       },
       {
         "word": "der Terminus (pl. Termini)",
         "en": "technical term",
         "vi": "thuật ngữ chuyên ngành",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe TÊ-mi-nus"
+        "pronunciation_vi": "đe TÊ-mi-nus",
+        "pronunciation_en": "dayr TAYR-mee-noos — Latin loan; plural 'Termini'"
       },
       {
         "word": "die Begriffsklärung",
         "en": "conceptual clarification",
         "vi": "việc làm rõ khái niệm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-GRIFS-kle-rung"
+        "pronunciation_vi": "đi bê-GRIFS-kle-rung",
+        "pronunciation_en": "dee be-GRIFS-klay-roong — Begriff + Klärung"
       },
       {
         "word": "die Abgrenzung (zu/von)",
         "en": "delimitation, distinction (from)",
         "vi": "sự phân biệt (với)",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AB-gren-tsung"
+        "pronunciation_vi": "đi AB-gren-tsung",
+        "pronunciation_en": "dee AHP-gren-tsoong — 'z' = 'ts'"
       },
       {
         "word": "die Konzeption",
         "en": "conception, framework",
         "vi": "quan niệm, khung khái niệm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi kôn-tsê-pti-ÔN"
+        "pronunciation_vi": "đi kôn-tsê-pti-ÔN",
+        "pronunciation_en": "dee kon-tsep-tsee-OHN — final stress"
       },
       {
         "word": "operationalisieren",
         "en": "to operationalize",
         "vi": "vận hành hóa (làm khái niệm thành chỉ báo đo được)",
         "pos": "verb",
-        "pronunciation_vi": "ô-pê-ra-tsi-ô-na-li-ZI-rần"
+        "pronunciation_vi": "ô-pê-ra-tsi-ô-na-li-ZI-rần",
+        "pronunciation_en": "o-per-ah-tsee-o-nah-lee-ZEE-ren — six syllables, final stress"
       },
       {
         "word": "der Indikator (pl. Indikatoren)",
         "en": "indicator",
         "vi": "chỉ báo",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe in-đi-KA-tô"
+        "pronunciation_vi": "đe in-đi-KA-tô",
+        "pronunciation_en": "dayr in-dee-KAH-tor — Latin loan"
       },
       {
         "word": "einschlägig",
         "en": "relevant, pertinent (literature)",
         "vi": "liên quan, chuyên ngành",
         "pos": "adjective",
-        "pronunciation_vi": "AIN-shle-gikh"
+        "pronunciation_vi": "AIN-shle-gikh",
+        "pronunciation_en": "INE-shleh-gikh — used almost exclusively in academic prose"
       },
       {
         "word": "uneinheitlich",
         "en": "non-uniform, inconsistent",
         "vi": "không thống nhất",
         "pos": "adjective",
-        "pronunciation_vi": "UN-ain-hait-likh"
+        "pronunciation_vi": "UN-ain-hait-likh",
+        "pronunciation_en": "OON-ine-hite-likh — 'ei' = 'eye'; final soft 'ch'"
       },
       {
         "word": "heuristisch",
         "en": "heuristic",
         "vi": "có tính heuristic, công cụ phân tích",
         "pos": "adjective",
-        "pronunciation_vi": "hôi-RIS-tish"
+        "pronunciation_vi": "hôi-RIS-tish",
+        "pronunciation_en": "hoy-RIS-tish — 'eu' = 'oy'; key C1 protection word against reification"
       }
     ],
     "dialogue": [
@@ -1693,29 +1820,34 @@ export const lessons: GermanLesson[] = [
       "Doktormutter cảnh báo về Reifizierung (substantialistische Lesart). Diễn đạt câu protective formal: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'."
     ],
     "register_notes": "Định nghĩa C1: phân biệt Nominaldefinition ('Unter dem Begriff X verstehe ich Y') vs Realdefinition ('Der Terminus X bezeichnet Y'). Cấu trúc 5 bước bắt buộc cho Schlüsselbegriff: Begriffsgeschichte → Review → Kritik → Arbeitsdefinition → Operationalisierung. Funktionsverbgefüge: 'in Abgrenzung zu' / 'im Anschluss an' / 'in Anlehnung an'. Operationalization formula: 'Operationalisiert wird das Konstrukt durch X Indikatoren: A, B, C'. Heuristic protection: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'. Eindeutschung vs Anglizismus formal: 'Im deutschsprachigen Raum existiert die Übersetzung X, jedoch verwende ich aus Gründen der Anschlussfähigkeit den englischen Originalterminus'. Konjunktiv I khi citing definitions: 'García (2009) zufolge sei Translanguaging zu verstehen als...'. KHÔNG dùng Duden / dictionary làm Begriffsquelle ở C1.",
+    "register_notes_en": "C1 definition: distinguish Nominaldefinition ('Unter dem Begriff X verstehe ich Y') from Realdefinition ('Der Terminus X bezeichnet Y'). For any Schlüsselbegriff (key concept), the 5-step structure is obligatory: Begriffsgeschichte → Review → Kritik → Arbeitsdefinition → Operationalisierung. Use the Funktionsverbgefüge: 'in Abgrenzung zu' (in delimitation from), 'im Anschluss an' (following on from), 'in Anlehnung an' (drawing on). Operationalization formula: 'Operationalisiert wird das Konstrukt durch X Indikatoren: A, B, C'. Protective heuristic phrase: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'. Eindeutschung vs Anglizismus, explicitly: 'Im deutschsprachigen Raum existiert die Übersetzung X, jedoch verwende ich aus Gründen der Anschlussfähigkeit den englischen Originalterminus'. Use Konjunktiv I when citing definitions: 'García (2009) zufolge sei Translanguaging zu verstehen als...'. Do NOT use Duden or a dictionary as a Begriffsquelle (source for a concept) at C1.",
     "idiom_glosses": [
       {
         "idiom": "den Begriff schärfen",
         "literal": "làm sắc khái niệm",
         "meaning": "làm rõ và chính xác hóa khái niệm (gehoben)",
+        "meaning_en": "to sharpen the concept — to make a concept more precise and discriminating (gehoben)",
         "example": "In Abgrenzung zu Bourdieu schärfe ich den Habitus-Begriff durch Hinzunahme migrationsspezifischer Dimensionen."
       },
       {
         "idiom": "auf den Begriff bringen",
         "literal": "đưa vào khái niệm",
         "meaning": "tìm được khái niệm chính xác cho hiện tượng (gehoben)",
+        "meaning_en": "to put it into a concept — to find the exact term that captures a phenomenon (gehoben)",
         "example": "Was lange unbenannt blieb, hat García mit ‚Translanguaging' auf den Begriff gebracht."
       },
       {
         "idiom": "Wein in alten Schläuchen",
         "literal": "rượu trong da rượu cũ",
         "meaning": "khái niệm mới trong vỏ bọc cũ, sự lừa dối khái niệm (gehoben)",
+        "meaning_en": "wine in old wineskins — repackaging an old idea under a new label, conceptual sleight of hand (gehoben)",
         "example": "Manche Forscher servieren Code-Mixing als Translanguaging — das ist Wein in alten Schläuchen."
       },
       {
         "idiom": "ein zweischneidiges Schwert",
         "literal": "thanh kiếm hai lưỡi",
         "meaning": "khái niệm có cả mặt lợi và bất lợi (standardsprachlich)",
+        "meaning_en": "a double-edged sword — a concept that brings both an advantage and a risk (standardsprachlich)",
         "example": "Die heuristische Verwendung eines Begriffs ist ein zweischneidiges Schwert: Sie schützt vor Reifizierung, riskiert aber Konturlosigkeit."
       }
     ],
@@ -1723,6 +1855,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc định nghĩa formal Đức:",
+        "instruction_en": "Fill in the formal German definition structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1746,6 +1879,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối phần định nghĩa C1 với chức năng:",
+        "instruction_en": "Match each part of a C1 definition with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1769,6 +1903,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1:",
+        "instruction_en": "Translate into C1 academic German:",
         "pronunciation_focus": [
           "term definition"
         ],
@@ -1807,6 +1942,11 @@ export const lessons: GermanLesson[] = [
           "qualitative → kva-li-ta-TI-vê",
           "Tiefenschärfe → TI-fần-she-fê",
           "Generalisierbarkeit → gê-nê-ra-li-ZI-ba-kait"
+        ],
+        "pronunciation_focus_en": [
+          "qualitative → kvah-lee-tah-TEE-veh — 'qu' = 'kv'",
+          "Tiefenschärfe → TEE-fen-shayr-feh — 'sch' = 'sh'",
+          "Generalisierbarkeit → gay-neh-rah-lee-ZEER-bar-kite — long compound"
         ]
       },
       {
@@ -1816,6 +1956,11 @@ export const lessons: GermanLesson[] = [
           "Zugänge → TSU-gê-ngê",
           "spezifisch → shpê-TSI-fish",
           "komplementär → kôm-plê-mên-TÊ"
+        ],
+        "pronunciation_focus_en": [
+          "Zugänge → TSOO-geng-eh — 'z' = 'ts'; rounded 'ä'",
+          "spezifisch → shpeh-TSEE-fish — 'sp' at start = 'shp'",
+          "komplementär → kom-pleh-men-TAYR — final stress"
         ]
       },
       {
@@ -1825,6 +1970,11 @@ export const lessons: GermanLesson[] = [
           "Triangulation → tri-ang-gu-la-tsi-ÔN",
           "Verfahrensweise → fe-FA-rần-vai-zê",
           "abfedern → AB-fê-đần"
+        ],
+        "pronunciation_focus_en": [
+          "Triangulation → tree-ang-goo-lah-tsee-OHN",
+          "Verfahrensweise → fer-FAH-rens-vy-zeh",
+          "abfedern → AHP-fay-dern — separable verb; 'to cushion'"
         ]
       },
       {
@@ -1834,6 +1984,11 @@ export const lessons: GermanLesson[] = [
           "diskursanalytisch → đis-kus-a-na-LUY-tish",
           "Mikromuster → MI-krô-mus-tờ",
           "vermag → fe-MAK"
+        ],
+        "pronunciation_focus_en": [
+          "diskursanalytisch → dis-koors-ah-nah-LUE-tish — rounded 'ü'",
+          "Mikromuster → MEE-kro-moos-ter",
+          "vermag → fer-MAHK — 'can/is able to', from 'vermögen'"
         ]
       },
       {
@@ -1843,81 +1998,98 @@ export const lessons: GermanLesson[] = [
           "korpuslinguistisch → KÔ-pus-lin-gu-is-tish",
           "Herangehensweise → HÊ-ran-gê-ầns-vai-zê",
           "Kontextsensitivität → KÔN-tệkst-zên-zi-ti-vi-tê"
+        ],
+        "pronunciation_focus_en": [
+          "korpuslinguistisch → KOR-poos-lin-gwis-tish",
+          "Herangehensweise → HAYR-ahn-gay-ens-vy-zeh — literally 'approaching-manner'",
+          "Kontextsensitivität → KON-text-zen-zee-tee-vee-TAYT — final stress"
         ]
       }
     ],
     "cultural_notes_vi": "So sánh phương pháp luận trong khoa học Đức tuân theo Methodenkritik chặt chẽ. (1) PRO/CONTRA-AUFLISTUNG: bắt buộc liệt kê có hệ thống điểm mạnh + điểm yếu của mỗi phương pháp được xét. KHÔNG chỉ defend phương pháp đã chọn — phải acknowledge fairly các phương pháp khác. Câu chuẩn: 'Beide Zugänge weisen je spezifische Stärken und Limitationen auf'. (2) BEGRÜNDUNG bắt buộc: chọn phương pháp X phải có lý do explicit. KHÔNG 'ich verwende qualitative Methode' — phải 'ich verwende qualitative Methode, da meine Fragestellung X erfordert, was Y nicht leisten kann'. Doktorvater sẽ hỏi chính xác câu này. (3) TRIANGULATION: nếu khả thi, kết hợp nhiều phương pháp. Mixed-methods designs được ưa chuộng hơn pure-qualitative hoặc pure-quantitative ở nghiên cứu sau 2010.\n\nKhác Việt Nam: ở VN, methodology section thường ngắn gọn — vài trang mô tả phương pháp đã dùng. Ở Đức C1 academic, methodology là một chương riêng (15-30 trang trong PhD), gồm:\n1. Forschungsdesign (thiết kế nghiên cứu)\n2. Methodenwahl + Begründung (chọn phương pháp + biện minh)\n3. Vergleich mit alternativen Methoden (so sánh với các phương pháp khác)\n4. Datenerhebung (thu thập dữ liệu)\n5. Datenauswertung (phân tích dữ liệu)\n6. Gütekriterien (tiêu chí chất lượng — Validität, Reliabilität, Reflexivität)\n7. Ethische Überlegungen (đạo đức nghiên cứu)\n\nMột chi tiết quan trọng: Gütekriterien khác giữa quantitative (Validität, Reliabilität, Objektivität) và qualitative (Glaubwürdigkeit, Übertragbarkeit, Zuverlässigkeit, Bestätigbarkeit — Lincoln & Guba 1985). Dùng tiêu chí sai phương pháp = lỗi serious.\n\nVề Methodenstreit: trong Geisteswissenschaften và Sozialwissenschaften Đức có truyền thống lâu dài tranh luận giữa hermeneutische vs empirische Methoden — từ thời Dilthey-Windelband cuối thế kỷ 19. Nếu PhD thiên hẳn về một bên, expect câu hỏi tại Verteidigung: 'Wie positionieren Sie sich im Methodenstreit?' Có sẵn câu trả lời formal.\n\nVề mixed-methods: triangulation có thể là (1) Datentriangulation (nhiều dataset), (2) Methodentriangulation (nhiều phương pháp), (3) Theorientriangulation (nhiều khung lý thuyết), (4) Investigatortriangulation (nhiều nghiên cứu viên). Câu chuẩn: 'Ich verwende eine Methodentriangulation aus diskursanalytischer Mikrobetrachtung und korpuslinguistischer Makrobetrachtung'.",
+    "cultural_notes_en": "Comparing methodologies in German scholarship follows strict Methodenkritik. (1) PRO/CONTRA-AUFLISTUNG: a systematic enumeration of strengths and weaknesses for each method under consideration is obligatory. Do NOT only defend the method you chose — fairly acknowledge the alternatives. Canonical phrase: 'Beide Zugänge weisen je spezifische Stärken und Limitationen auf'. (2) BEGRÜNDUNG is mandatory: your choice of method X needs an explicit reason. Do NOT write 'ich verwende qualitative Methode' alone — write 'ich verwende qualitative Methode, da meine Fragestellung X erfordert, was Y nicht leisten kann'. Your Doktorvater will ask you exactly this question. (3) TRIANGULATION: where feasible, combine methods. Mixed-methods designs have been preferred over pure-qualitative or pure-quantitative in post-2010 German research.\n\nContrast with US/UK norms: in many English-speaking dissertations, the methodology section runs a few pages of description. In German C1 academic writing, the methodology is its own chapter (15–30 pages in a PhD), with the standard sub-sections:\n1. Forschungsdesign (research design)\n2. Methodenwahl + Begründung (method choice + justification)\n3. Vergleich mit alternativen Methoden (comparison with alternative methods)\n4. Datenerhebung (data collection)\n5. Datenauswertung (data analysis)\n6. Gütekriterien (quality criteria — validity, reliability, reflexivity)\n7. Ethische Überlegungen (research ethics)\n\nCrucial detail: Gütekriterien (quality criteria) differ between paradigms — quantitative (Validität, Reliabilität, Objektivität) vs qualitative (Glaubwürdigkeit, Übertragbarkeit, Zuverlässigkeit, Bestätigbarkeit — Lincoln & Guba 1985). Applying the wrong criteria to a method is a serious error.\n\nOn the Methodenstreit: German Geisteswissenschaften and Sozialwissenschaften have a long tradition of debate between hermeneutische and empirische methods — going back to Dilthey and Windelband at the end of the 19th century. If your PhD leans hard one way, expect this question at the defence: 'Wie positionieren Sie sich im Methodenstreit?' Have a formal answer ready.\n\nOn mixed-methods: triangulation comes in four shapes — (1) Datentriangulation (multiple datasets), (2) Methodentriangulation (multiple methods), (3) Theorientriangulation (multiple theoretical frameworks), (4) Investigatortriangulation (multiple researchers). Canonical phrase: 'Ich verwende eine Methodentriangulation aus diskursanalytischer Mikrobetrachtung und korpuslinguistischer Makrobetrachtung'.",
     "tip_advice_vi": "Cấu trúc so sánh phương pháp formal (4 bước):\n1. KRITERIENRASTER: định nghĩa các tiêu chí so sánh — Tiefenschärfe, Generalisierbarkeit, Aufwand, Kontextsensitivität, etc.\n2. PRO/CONTRA per Methode: liệt kê có hệ thống.\n3. BEZUG ZUR FRAGESTELLUNG: phương pháp nào phù hợp nhất với câu hỏi nghiên cứu cụ thể của bạn?\n4. ENTSCHEIDUNG + BEGRÜNDUNG: chọn + biện minh + acknowledge limitations.\n\nNgôn ngữ so sánh phương pháp formal:\n- 'Während X auf A abzielt, ist Y auf B ausgerichtet' (trong khi X hướng đến A, Y định hướng đến B)\n- 'Beide Verfahren weisen je spezifische Stärken auf' (cả hai đều có điểm mạnh riêng)\n- 'Im direkten Vergleich erweist sich X als geeigneter, da Y' (trong so sánh trực tiếp X tỏ ra phù hợp hơn, vì Y)\n- 'Demgegenüber bietet Z den Vorzug von W' (đối lại, Z mang đến ưu thế của W)\n- 'Allerdings auf Kosten von V' (song trên cái giá của V)\n- 'Eine Triangulation erlaubt es, die Schwächen des einen durch die Stärken des anderen abzufedern' (tam giác hóa cho phép giảm nhẹ điểm yếu bên này bằng điểm mạnh bên kia)\n- 'Vor diesem Hintergrund entscheide ich mich für X, ergänzt durch Y' (trước bối cảnh này tôi chọn X, bổ sung bởi Y)\n\nGütekriterien per Methode:\n- Quantitative: 'Validität' (tính hiệu lực), 'Reliabilität' (độ tin cậy), 'Objektivität' (tính khách quan)\n- Qualitative (Lincoln & Guba): 'Glaubwürdigkeit' (credibility), 'Übertragbarkeit' (transferability), 'Zuverlässigkeit' (dependability), 'Bestätigbarkeit' (confirmability)\n- Mixed-methods: 'Triangulationsqualität' (chất lượng tam giác hóa) + cả hai bộ tiêu chí trên\n\nKhi defend phương pháp được chọn:\n- 'Die Methodenwahl ist durch die Fragestellung determiniert: da meine Untersuchung sequenzielle Mikromuster identifizieren soll, kommt nur die Konversationsanalyse in Frage' (lựa chọn phương pháp được xác định bởi câu hỏi nghiên cứu: vì nghiên cứu của tôi phải nhận diện các vi-mẫu trình tự, chỉ phân tích hội thoại có thể được tính đến)\n\nKhi acknowledge limitations:\n- 'Diese Methodenwahl bringt die Einschränkung mit sich, dass...' (lựa chọn phương pháp này mang theo hạn chế rằng...)\n- 'Eine breitere Generalisierbarkeit wäre durch eine ergänzende quantitative Erhebung zu erzielen, die im Rahmen der vorliegenden Arbeit nicht zu leisten war' (tính khái quát hóa rộng hơn có thể đạt được qua một khảo sát định lượng bổ sung, mà trong khuôn khổ công trình hiện tại không thể thực hiện)\n\nMẹo cuối: chuẩn bị 1 trang Tabelle so sánh Methode A vs B vs C — cột: tiêu chí, hàng: phương pháp. Có sẵn = Verteidigung dễ. Bổ sung column cuối: 'Eignung für meine Fragestellung'.",
+    "tip_advice_en": "Formal 4-step structure for comparing methods:\n1. KRITERIENRASTER: define the criteria — Tiefenschärfe, Generalisierbarkeit, Aufwand (effort), Kontextsensitivität, etc.\n2. PRO/CONTRA per method: enumerate systematically.\n3. BEZUG ZUR FRAGESTELLUNG: which method fits your specific research question best?\n4. ENTSCHEIDUNG + BEGRÜNDUNG: choose + justify + acknowledge limitations.\n\nFormal comparison language:\n- 'Während X auf A abzielt, ist Y auf B ausgerichtet' (while X aims at A, Y is oriented toward B)\n- 'Beide Verfahren weisen je spezifische Stärken auf' (both procedures show their own specific strengths)\n- 'Im direkten Vergleich erweist sich X als geeigneter, da Y' (in direct comparison X turns out more suitable, because Y)\n- 'Demgegenüber bietet Z den Vorzug von W' (against this, Z offers the advantage of W)\n- 'Allerdings auf Kosten von V' (however at the cost of V)\n- 'Eine Triangulation erlaubt es, die Schwächen des einen durch die Stärken des anderen abzufedern' (a triangulation lets the weaknesses of one be cushioned by the strengths of the other)\n- 'Vor diesem Hintergrund entscheide ich mich für X, ergänzt durch Y' (against this background I opt for X, complemented by Y)\n\nGütekriterien per method:\n- Quantitative: 'Validität' (validity), 'Reliabilität' (reliability), 'Objektivität' (objectivity)\n- Qualitative (Lincoln & Guba): 'Glaubwürdigkeit' (credibility), 'Übertragbarkeit' (transferability), 'Zuverlässigkeit' (dependability), 'Bestätigbarkeit' (confirmability)\n- Mixed-methods: 'Triangulationsqualität' (quality of triangulation) + both sets above\n\nWhen defending the chosen method:\n- 'Die Methodenwahl ist durch die Fragestellung determiniert: da meine Untersuchung sequenzielle Mikromuster identifizieren soll, kommt nur die Konversationsanalyse in Frage' (the choice of method is determined by the research question: because my study must identify sequential micro-patterns, only conversation analysis is admissible)\n\nWhen acknowledging limitations:\n- 'Diese Methodenwahl bringt die Einschränkung mit sich, dass...' (this method choice brings with it the limitation that...)\n- 'Eine breitere Generalisierbarkeit wäre durch eine ergänzende quantitative Erhebung zu erzielen, die im Rahmen der vorliegenden Arbeit nicht zu leisten war' (broader generalisability would be achievable through a supplementary quantitative survey, which was not feasible within the present work)\n\nFinal tip: prepare a one-page Tabelle comparing Method A vs B vs C — columns: criteria, rows: methods. Having it ready makes the Verteidigung (defence) much easier. Add a final column: 'Eignung für meine Fragestellung' (suitability for my research question).",
     "vocabulary": [
       {
         "word": "die Methode (pl. Methoden)",
         "en": "method",
         "vi": "phương pháp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi mê-TÔ-đê"
+        "pronunciation_vi": "đi mê-TÔ-đê",
+        "pronunciation_en": "dee meh-TOH-deh — Greek loan, stress on second syllable"
       },
       {
         "word": "die Methodenwahl",
         "en": "choice of method",
         "vi": "việc chọn phương pháp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi mê-TÔ-đần-val"
+        "pronunciation_vi": "đi mê-TÔ-đần-val",
+        "pronunciation_en": "dee meh-TOH-den-vahl — central methodology-chapter term"
       },
       {
         "word": "der Zugang (pl. Zugänge)",
         "en": "approach",
         "vi": "cách tiếp cận",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe TSU-gang"
+        "pronunciation_vi": "đe TSU-gang",
+        "pronunciation_en": "dayr TSOO-gang — 'z' = 'ts'; the plural takes umlaut"
       },
       {
         "word": "die Verfahrensweise",
         "en": "procedure, way of proceeding",
         "vi": "cách tiến hành",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-FA-rần-vai-zê"
+        "pronunciation_vi": "đi fe-FA-rần-vai-zê",
+        "pronunciation_en": "dee fer-FAH-rens-vy-zeh"
       },
       {
         "word": "die Triangulation",
         "en": "triangulation",
         "vi": "tam giác hóa",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi tri-ang-gu-la-tsi-ÔN"
+        "pronunciation_vi": "đi tri-ang-gu-la-tsi-ÔN",
+        "pronunciation_en": "dee tree-ang-goo-lah-tsee-OHN — final stress"
       },
       {
         "word": "die Tiefenschärfe",
         "en": "depth of focus, granularity",
         "vi": "độ sắc nét chiều sâu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TI-fần-she-fê"
+        "pronunciation_vi": "đi TI-fần-she-fê",
+        "pronunciation_en": "dee TEE-fen-shayr-feh — literally 'depth of sharpness'"
       },
       {
         "word": "die Generalisierbarkeit",
         "en": "generalizability",
         "vi": "tính khái quát hóa",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi gê-nê-ra-li-ZI-ba-kait"
+        "pronunciation_vi": "đi gê-nê-ra-li-ZI-ba-kait",
+        "pronunciation_en": "dee gay-neh-rah-lee-ZEER-bar-kite"
       },
       {
         "word": "abfedern",
         "en": "to cushion, mitigate",
         "vi": "giảm nhẹ",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "AB-fê-đần"
+        "pronunciation_vi": "AB-fê-đần",
+        "pronunciation_en": "AHP-fay-dern — separable verb"
       },
       {
         "word": "die Gütekriterien (pl.)",
         "en": "quality criteria",
         "vi": "các tiêu chí chất lượng",
         "pos": "noun (pl.)",
-        "pronunciation_vi": "đi GUY-tê-kri-tê-ri-ần"
+        "pronunciation_vi": "đi GUY-tê-kri-tê-ri-ần",
+        "pronunciation_en": "dee GUE-teh-kree-tay-ree-en — rounded 'ü'"
       },
       {
         "word": "auf Kosten (+ Gen)",
         "en": "at the expense of",
         "vi": "trên cái giá của (+ sở hữu cách)",
         "pos": "phrase (Gen)",
-        "pronunciation_vi": "aof KÔS-tần"
+        "pronunciation_vi": "aof KÔS-tần",
+        "pronunciation_en": "owf KOS-ten — takes the genitive"
       }
     ],
     "dialogue": [
@@ -2040,29 +2212,34 @@ export const lessons: GermanLesson[] = [
       "Doktormutter hỏi 'Wie positionieren Sie sich im Methodenstreit?' Đáp formal: pragmatistische Position theo Tashakkori & Teddlie — Methodenwahl von Fragestellung determiniert, không paradigmatisch."
     ],
     "register_notes": "So sánh phương pháp C1: cấu trúc 4-bước Kriterienraster → Pro/Contra → Bezug zur Fragestellung → Entscheidung + Begründung. Connectors: 'während' (đối với so sánh đối lập), 'demgegenüber' (đối lại formal), 'allerdings auf Kosten von' (song trên giá của). Funktionsverbgefüge: 'in den Vordergrund rücken' (đặt ở vị trí trung tâm), 'auf X abzielen' (hướng đến X), 'X als geeigneter erweisen' (X tỏ ra phù hợp hơn). Gütekriterien phân biệt rõ: quantitative (Validität, Reliabilität, Objektivität) vs qualitative (Glaubwürdigkeit, Übertragbarkeit, Zuverlässigkeit, Bestätigbarkeit theo Lincoln & Guba 1985). Methodenstreit positioning: 'pragmatistische Position' (Tashakkori & Teddlie 2003) — Methodenwahl von Fragestellung determiniert. Triangulation: phân loại 4 (Daten-, Methoden-, Theorien-, Investigatortriangulation). Sequenziell vs parallel — bắt buộc làm rõ.",
+    "register_notes_en": "C1 method comparison: the 4-step Kriterienraster → Pro/Contra → Bezug zur Fragestellung → Entscheidung + Begründung structure. Connectives: 'während' (while — for contrastive comparison), 'demgegenüber' (against this — formal), 'allerdings auf Kosten von' (however at the cost of). Funktionsverbgefüge to use: 'in den Vordergrund rücken' (to put at the centre), 'auf X abzielen' (to aim at X), 'X als geeigneter erweisen' (X proves more suitable). Keep Gütekriterien properly separated: quantitative (Validität, Reliabilität, Objektivität) vs qualitative (Glaubwürdigkeit, Übertragbarkeit, Zuverlässigkeit, Bestätigbarkeit per Lincoln & Guba 1985). Methodenstreit positioning: take a 'pragmatistische Position' (Tashakkori & Teddlie 2003) — Methodenwahl determined by Fragestellung. Triangulation has four kinds: Daten-, Methoden-, Theorien-, Investigatortriangulation. Always clarify whether your triangulation is sequenziell (sequential) or parallel.",
     "idiom_glosses": [
       {
         "idiom": "zwei Fliegen mit einer Klappe schlagen",
         "literal": "đánh hai con ruồi với một cái vợt",
         "meaning": "đạt hai mục tiêu cùng lúc (standardsprachlich)",
+        "meaning_en": "to kill two flies with one swatter — to achieve two goals at once (the German cousin of 'kill two birds with one stone') (standardsprachlich)",
         "example": "Mit der Methodentriangulation schlage ich zwei Fliegen mit einer Klappe — Tiefenschärfe und Breite."
       },
       {
         "idiom": "den Königsweg beschreiten",
         "literal": "đi con đường vua",
         "meaning": "đi con đường tối ưu, lý tưởng (gehoben)",
+        "meaning_en": "to walk the royal road — to take the optimal, ideal path (gehoben)",
         "example": "Eine vollständige Methodentriangulation wäre der Königsweg — im Rahmen einer Promotion jedoch zeitlich nicht zu leisten."
       },
       {
         "idiom": "Äpfel mit Birnen vergleichen",
         "literal": "so sánh táo với lê",
         "meaning": "so sánh hai thứ không thể so sánh (standardsprachlich)",
+        "meaning_en": "to compare apples with pears — German equivalent of 'apples to oranges'; comparing incommensurable things (standardsprachlich)",
         "example": "Korpuslinguistik und Konversationsanalyse direkt zu vergleichen heißt teilweise, Äpfel mit Birnen zu vergleichen — sie operieren auf verschiedenen Ebenen."
       },
       {
         "idiom": "das Pferd vom Schwanz aufzäumen",
         "literal": "thắng yên ngựa từ đuôi",
         "meaning": "tiếp cận sai chiều, ngược thứ tự (standardsprachlich)",
+        "meaning_en": "to bridle the horse from the tail — to do something in the wrong order, back to front (standardsprachlich)",
         "example": "Erst die Korpusanalyse, dann die theoriegeleitete Hypothesenbildung — das hieße, das Pferd vom Schwanz aufzuzäumen."
       }
     ],
@@ -2070,6 +2247,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc so sánh phương pháp C1:",
+        "instruction_en": "Fill in the C1 method-comparison structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2093,6 +2271,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối Gütekriterien với loại phương pháp:",
+        "instruction_en": "Match each set of Gütekriterien with its method type:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2116,6 +2295,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1:",
+        "instruction_en": "Translate into C1 academic German:",
         "pronunciation_focus": [
           "methodology"
         ],
@@ -2154,6 +2334,11 @@ export const lessons: GermanLesson[] = [
           "weist auf → vaist aof",
           "Mängel → MEN-gệl",
           "relativieren → rê-la-ti-VI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "weist auf → VICE owf — separable verb 'aufweisen' (to exhibit/show)",
+          "Mängel → MENG-el — plural of 'Mangel' (shortcoming); 'ä' takes umlaut",
+          "relativieren → reh-lah-tee-VEE-ren — to qualify/temper"
         ]
       },
       {
@@ -2163,6 +2348,11 @@ export const lessons: GermanLesson[] = [
           "Operationalisierung → ô-pê-ra-tsi-ô-na-li-ZI-rung",
           "unscharf → UN-sha",
           "beeinträchtigt → bê-AIN-trech-tikht"
+        ],
+        "pronunciation_focus_en": [
+          "Operationalisierung → o-per-ah-tsee-o-nah-lee-ZEE-roong",
+          "unscharf → OON-sharf — literally 'not-sharp', i.e. fuzzy",
+          "beeinträchtigt → be-INE-trekh-tikht — 'ä' = 'eh'"
         ]
       },
       {
@@ -2172,6 +2362,11 @@ export const lessons: GermanLesson[] = [
           "Stichprobenkonstruktion → SHTIKH-prô-bần-kôn-struk-tsi-ôn",
           "systematisch → zys-tê-MA-tish",
           "hinreichend → HIN-rai-khần"
+        ],
+        "pronunciation_focus_en": [
+          "Stichprobenkonstruktion → SHTIKH-pro-ben-kon-strook-tsee-ohn",
+          "systematisch → zoos-teh-MAH-tish — 's' before vowel = 'z'",
+          "hinreichend → HIN-rye-khend — 'sufficiently'"
         ]
       },
       {
@@ -2181,6 +2376,11 @@ export const lessons: GermanLesson[] = [
           "trotz → TRÔTS",
           "unterrepräsentiert → UN-tờ-rê-prê-zên-tit",
           "in den Blick nehmen → in đêm BLIK NÊ-mần"
+        ],
+        "pronunciation_focus_en": [
+          "trotz → TROTS — 'z' = 'ts'; takes genitive in formal register",
+          "unterrepräsentiert → OON-ter-reh-preh-zen-teert — 'under-represented'",
+          "in den Blick nehmen → in dayn BLIK NAY-men — Funktionsverbgefüge for 'to focus on'"
         ]
       },
       {
@@ -2190,81 +2390,98 @@ export const lessons: GermanLesson[] = [
           "Replikation → rê-pli-ka-tsi-ÔN",
           "Operationalisierungsschema → ô-pê-ra-tsi-ô-na-li-ZI-rungs-shê-ma",
           "wünschenswert → VUYN-shần-svêt"
+        ],
+        "pronunciation_focus_en": [
+          "Replikation → reh-plee-kah-tsee-OHN — final stress",
+          "Operationalisierungsschema → o-per-ah-tsee-o-nah-lee-ZEE-roongs-shay-mah — long compound",
+          "wünschenswert → VUEN-shens-vayrt — rounded 'ü'; 'desirable'"
         ]
       }
     ],
     "cultural_notes_vi": "Phê phán một nghiên cứu (Studienkritik) trong khoa học Đức tuân theo Wissenschaftsethos của Robert Merton: Skeptizismus + Universalismus + Kommunismus + Uneigennützigkeit. Skeptizismus = phê phán có hệ thống, không personal. (1) BALANCE: phê phán formal Đức KHÔNG chỉ liệt kê điểm yếu — phải có Würdigung (đánh giá tích cực) trước hoặc song song. Câu chuẩn cuối cùng: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie X'. KHÔNG phê phán nguyên 5 trang điểm yếu — đó là vetteranschlag (nỗ lực hủy diệt), không phải Wissenschaftskritik. (2) STRUKTURIERTE KRITIK: phê phán Đức có 4 cấp độ chuẩn:\n- THEORETISCH (khung lý thuyết)\n- METHODISCH (phương pháp)\n- EMPIRISCH (dữ liệu)\n- INTERPRETATIV (cách diễn giải)\n\nNgười Đức expect bạn phê phán có hệ thống ở cả 4 cấp, không lẫn lộn. (3) KONSTRUKTIVE WENDUNG: mỗi điểm phê phán phải đi kèm Verbesserungsvorschlag (đề xuất cải tiến). 'Die Operationalisierung ist unscharf' chưa đủ — phải kèm 'Eine Präzisierung wäre durch X erreichbar'.\n\nKhác Việt Nam: ở VN, phê phán nghiên cứu của senior scholar có thể bị xem là 'không tôn trọng'. Ở Đức, không phê phán = không Wissenschaftler. Senior welcome substantielle Kritik — đó là cách họ refine ideas. Junior scholar nào im lặng đồng ý mọi điều = không Promotionsfähig.\n\nMột chi tiết quan trọng: phê phán một Klassiker (Bourdieu, Habermas) khác với phê phán contemporary scholar. Klassiker đã được phê phán nhiều — bạn phải đọc Sekundärliteratur trước. Câu chuẩn: 'In Anlehnung an Wacquants (2014) Kritik des Bourdieuschen Habitus-Begriffs lässt sich festhalten...' (dựa theo phê phán của Wacquant về khái niệm habitus của Bourdieu, có thể giữ lại...). KHÔNG phê phán original mà không acknowledge previous critics.\n\nVề Rezension (book review): trong Geisteswissenschaften, viết Rezension là một dạng Studienkritik chuẩn. Cấu trúc:\n1. Knapper Inhaltsbericht (báo cáo nội dung ngắn) — 30%\n2. Würdigung (đánh giá tích cực) — 20%\n3. Kritische Diskussion (thảo luận phê phán) — 40%\n4. Gesamteinschätzung (đánh giá tổng thể) — 10%\n\nVề Wissenschaftsverlage: H-Soz-Kult, sehepunkte, IASLonline là các venues lớn cho Rezension. Nếu Doktormutter mời bạn viết Rezension cho một venue như vậy = vinh dự professional.",
+    "cultural_notes_en": "Critiquing a study (Studienkritik) in German scholarship follows Robert Merton's Wissenschaftsethos: Skeptizismus + Universalismus + Kommunismus + Uneigennützigkeit. Skeptizismus here = systematic critique, never personal. (1) BALANCE: a formal German critique does NOT just enumerate weaknesses — it must include Würdigung (positive appreciation) either before or in parallel. The canonical closer: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie X'. Five pages of pure negatives is a Vernichtungsanschlag (a destruction attempt), not Wissenschaftskritik. (2) STRUKTURIERTE KRITIK: a German critique has four standard levels:\n- THEORETISCH (theoretical framework)\n- METHODISCH (method)\n- EMPIRISCH (data)\n- INTERPRETATIV (interpretation)\n\nGermans expect you to critique systematically across all four, without conflating them. (3) KONSTRUKTIVE WENDUNG: every critical point should come paired with a Verbesserungsvorschlag (suggestion for improvement). 'Die Operationalisierung ist unscharf' is incomplete on its own — pair it with 'Eine Präzisierung wäre durch X erreichbar'.\n\nContrast with cultures where critiquing a senior scholar is read as 'disrespect': in Germany, NOT critiquing means NOT being a Wissenschaftler. Senior scholars welcome substantial critique — that's how they refine ideas. A junior scholar who silently agrees with everything is read as not Promotionsfähig (not capable of completing a PhD).\n\nA crucial point: critiquing a Klassiker (Bourdieu, Habermas) is different from critiquing a contemporary scholar. Classics have been critiqued many times — you must read the Sekundärliteratur first. Canonical phrase: 'In Anlehnung an Wacquants (2014) Kritik des Bourdieuschen Habitus-Begriffs lässt sich festhalten...' (drawing on Wacquant's 2014 critique of Bourdieu's habitus concept, one can note that...). Do NOT critique an original without acknowledging previous critics.\n\nOn Rezension (book review): in the Geisteswissenschaften, writing a Rezension is a standard form of Studienkritik. Structure:\n1. Knapper Inhaltsbericht (brief content summary) — 30%\n2. Würdigung (appreciation) — 20%\n3. Kritische Diskussion (critical discussion) — 40%\n4. Gesamteinschätzung (overall assessment) — 10%\n\nOn Wissenschaftsverlage (academic venues): H-Soz-Kult, sehepunkte, IASLonline are major Rezension venues. Being invited by your Doktormutter to write a Rezension for one of these is a professional honour.",
     "tip_advice_vi": "Cấu trúc Studienkritik formal (4 cấp + Würdigung):\n1. ANERKENNUNG (10-15%): 'Die vorliegende Arbeit verdient Anerkennung für X'\n2. THEORETISCHE KRITIK: 'Theoretisch ist anzumerken, dass...'\n3. METHODISCHE KRITIK: 'Methodisch problematisch erscheint...'\n4. EMPIRISCHE KRITIK: 'Auf empirischer Ebene wäre einzuwenden...'\n5. INTERPRETATIVE KRITIK: 'Die Interpretation der Befunde übergeht...'\n6. KONSTRUKTIVE WENDUNG: 'Eine Verbesserung ließe sich durch X erzielen'\n7. GESAMTBEWERTUNG: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem...'\n\nNgôn ngữ phê phán formal:\n- 'Die vorliegende Studie weist methodische Mängel auf' (nghiên cứu có thiếu sót về phương pháp)\n- 'Insbesondere bleibt X unscharf' (đặc biệt X vẫn không sắc nét)\n- 'Hinzu kommt, dass Y' (thêm vào đó là Y)\n- 'Es wäre zu fragen, ob...' (cần đặt câu hỏi liệu...)\n- 'Die Argumentation greift meines Erachtens zu kurz' (lập luận theo tôi không đi đủ xa)\n- 'Die Schlussfolgerung übergeht den Aspekt X' (kết luận bỏ qua khía cạnh X)\n- 'Was die Stichprobenkonstruktion betrifft, ist anzumerken...' (về cấu trúc mẫu, cần lưu ý)\n\nKhi phê phán thiếu sót empirisch:\n- 'Die Datenlage gestattet die gezogene Schlussfolgerung nicht in dieser Allgemeinheit' (tình trạng dữ liệu không cho phép kết luận ở mức khái quát này)\n- 'Eine Triangulation der Methoden wäre hier wünschenswert gewesen' (tam giác hóa phương pháp ở đây sẽ mong muốn)\n- 'Der vorgelegte Befund wäre durch eine Replikation zu erhärten' (kết quả được trình bày sẽ được củng cố qua nghiên cứu lặp lại)\n\nKhi phê phán theoretisch:\n- 'Die theoretische Verortung erscheint mir nicht hinreichend reflektiert' (định vị lý thuyết với tôi không được phản ánh đầy đủ)\n- 'In Anlehnung an Wacquants (2014) Kritik lässt sich anmerken, dass...' (dựa theo phê phán của Wacquant, có thể lưu ý rằng)\n\nVerbesserungsvorschläge formal:\n- 'Eine Präzisierung wäre durch X erreichbar' (sự làm chính xác có thể đạt qua X)\n- 'Eine Erweiterung der Stichprobe um Y würde Z ermöglichen' (mở rộng mẫu thêm Y sẽ cho phép Z)\n- 'In einer Anschlussstudie wäre zu prüfen, ob...' (trong nghiên cứu tiếp theo cần kiểm tra liệu)\n\nGesamteinschätzung formula:\n- 'Trotz der genannten Einschränkungen leistet die Arbeit einen wichtigen Beitrag zur Forschungsdiskussion, indem sie...' — bắt buộc kết bằng đánh giá tích cực\n- 'Insgesamt handelt es sich um eine sorgfältig durchgeführte Untersuchung, deren Befunde in folgender Hinsicht zu differenzieren wären:...' (tổng thể là nghiên cứu được tiến hành cẩn thận, kết quả cần được phân biệt ở các khía cạnh sau)\n\nTránh tuyệt đối:\n- 'Die Studie ist schlecht / wertlos' (cá nhân hóa, polemic)\n- 'Der Autor versteht X nicht' (ad hominem)\n- 'Diese Forschung ist überholt' (không argumentation)\n- 'Mit Verlaub, das ist Unsinn' (rất unprofessional)\n\nMẹo cuối: trước khi submit Rezension, đọc lại 1 lần và đếm tỷ lệ Negativ vs Positiv. Nếu < 1:1 (nhiều phê phán hơn praise), reconsider — có thể bạn quá hard. Sweet spot Đức: 60% phê phán có cấu trúc + 40% Würdigung. Lower < 30% Würdigung = quá negatif và publishing venue có thể từ chối.",
+    "tip_advice_en": "Formal Studienkritik structure (4 levels + Würdigung):\n1. ANERKENNUNG (10–15%): 'Die vorliegende Arbeit verdient Anerkennung für X'\n2. THEORETISCHE KRITIK: 'Theoretisch ist anzumerken, dass...'\n3. METHODISCHE KRITIK: 'Methodisch problematisch erscheint...'\n4. EMPIRISCHE KRITIK: 'Auf empirischer Ebene wäre einzuwenden...'\n5. INTERPRETATIVE KRITIK: 'Die Interpretation der Befunde übergeht...'\n6. KONSTRUKTIVE WENDUNG: 'Eine Verbesserung ließe sich durch X erzielen'\n7. GESAMTBEWERTUNG: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem...'\n\nFormal critique language:\n- 'Die vorliegende Studie weist methodische Mängel auf' (the present study exhibits methodological shortcomings)\n- 'Insbesondere bleibt X unscharf' (in particular X remains fuzzy)\n- 'Hinzu kommt, dass Y' (added to this is the fact that Y)\n- 'Es wäre zu fragen, ob...' (it would have to be asked whether...)\n- 'Die Argumentation greift meines Erachtens zu kurz' (the argumentation, in my judgement, falls short)\n- 'Die Schlussfolgerung übergeht den Aspekt X' (the conclusion glosses over aspect X)\n- 'Was die Stichprobenkonstruktion betrifft, ist anzumerken...' (as for the sample construction, it should be noted...)\n\nWhen critiquing an empirical shortcoming:\n- 'Die Datenlage gestattet die gezogene Schlussfolgerung nicht in dieser Allgemeinheit' (the state of the data does not permit the drawn conclusion at this level of generality)\n- 'Eine Triangulation der Methoden wäre hier wünschenswert gewesen' (a methodological triangulation would have been desirable here)\n- 'Der vorgelegte Befund wäre durch eine Replikation zu erhärten' (the presented finding would need to be corroborated by replication)\n\nWhen critiquing theoretically:\n- 'Die theoretische Verortung erscheint mir nicht hinreichend reflektiert' (the theoretical positioning seems to me insufficiently reflected)\n- 'In Anlehnung an Wacquants (2014) Kritik lässt sich anmerken, dass...' (drawing on Wacquant's 2014 critique, one can note that)\n\nFormal Verbesserungsvorschläge:\n- 'Eine Präzisierung wäre durch X erreichbar' (a clarification would be achievable through X)\n- 'Eine Erweiterung der Stichprobe um Y würde Z ermöglichen' (an extension of the sample by Y would enable Z)\n- 'In einer Anschlussstudie wäre zu prüfen, ob...' (in a follow-up study it should be tested whether...)\n\nGesamteinschätzung formula:\n- 'Trotz der genannten Einschränkungen leistet die Arbeit einen wichtigen Beitrag zur Forschungsdiskussion, indem sie...' — mandatory positive closer.\n- 'Insgesamt handelt es sich um eine sorgfältig durchgeführte Untersuchung, deren Befunde in folgender Hinsicht zu differenzieren wären:...' (overall, this is a carefully executed study whose findings need to be qualified in the following respects:...)\n\nAvoid at all costs:\n- 'Die Studie ist schlecht / wertlos' (personalising, polemical)\n- 'Der Autor versteht X nicht' (ad hominem)\n- 'Diese Forschung ist überholt' (no argumentation)\n- 'Mit Verlaub, das ist Unsinn' (highly unprofessional)\n\nFinal tip: before submitting a Rezension, do one read-through and count the ratio of negative to positive. If it's worse than 1:1 (more critique than praise), reconsider — you may be too hard. German sweet spot: 60% structured critique + 40% Würdigung. Below 30% Würdigung is too negative and publishing venues may reject.",
     "vocabulary": [
       {
         "word": "die Studienkritik",
         "en": "study critique",
         "vi": "phê phán nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHTU-đi-ần-kri-tik"
+        "pronunciation_vi": "đi SHTU-đi-ần-kri-tik",
+        "pronunciation_en": "dee SHTOO-dee-en-kree-teek"
       },
       {
         "word": "der Mangel (pl. Mängel)",
         "en": "shortcoming, deficiency",
         "vi": "thiếu sót",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe MAN-gệl"
+        "pronunciation_vi": "đe MAN-gệl",
+        "pronunciation_en": "dayr MAHN-gel — plural takes umlaut 'Mängel' (MENG-el)"
       },
       {
         "word": "die Tragweite",
         "en": "scope, ramification",
         "vi": "tầm vóc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TRAK-vai-tê"
+        "pronunciation_vi": "đi TRAK-vai-tê",
+        "pronunciation_en": "dee TRAHK-vy-teh"
       },
       {
         "word": "relativieren",
         "en": "to relativize, qualify",
         "vi": "tương đối hóa",
         "pos": "verb",
-        "pronunciation_vi": "rê-la-ti-VI-rần"
+        "pronunciation_vi": "rê-la-ti-VI-rần",
+        "pronunciation_en": "reh-lah-tee-VEE-ren"
       },
       {
         "word": "der Bias / die Verzerrung",
         "en": "bias",
         "vi": "thiên lệch",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe BAI-as / đi fe-TSER-rung"
+        "pronunciation_vi": "đe BAI-as / đi fe-TSER-rung",
+        "pronunciation_en": "dayr BYE-ahs (English loan) / dee fer-TSER-roong"
       },
       {
         "word": "übergehen (etw.)",
         "en": "to overlook, skip over",
         "vi": "bỏ qua, không tính đến",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "UY-bờ-gê-ần"
+        "pronunciation_vi": "UY-bờ-gê-ần",
+        "pronunciation_en": "UE-ber-gay-en — rounded 'ü'; key critique verb"
       },
       {
         "word": "die Würdigung",
         "en": "appreciation, recognition",
         "vi": "sự đánh giá tích cực",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi VUY-đi-gung"
+        "pronunciation_vi": "đi VUY-đi-gung",
+        "pronunciation_en": "dee VUER-dee-goong — rounded 'ü'; mandatory in any German Rezension"
       },
       {
         "word": "die Replikation",
         "en": "replication",
         "vi": "nghiên cứu lặp lại",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi rê-pli-ka-tsi-ÔN"
+        "pronunciation_vi": "đi rê-pli-ka-tsi-ÔN",
+        "pronunciation_en": "dee reh-plee-kah-tsee-OHN — final stress"
       },
       {
         "word": "wünschenswert",
         "en": "desirable",
         "vi": "đáng mong muốn",
         "pos": "adjective",
-        "pronunciation_vi": "VUYN-shần-svêt"
+        "pronunciation_vi": "VUYN-shần-svêt",
+        "pronunciation_en": "VUEN-shens-vayrt — rounded 'ü'"
       },
       {
         "word": "in den Blick nehmen",
         "en": "to take into view, focus on",
         "vi": "đưa vào tầm nhìn",
         "pos": "verb phrase",
-        "pronunciation_vi": "in đêm BLIK NÊ-mần"
+        "pronunciation_vi": "in đêm BLIK NÊ-mần",
+        "pronunciation_en": "in dayn BLIK NAY-men — Funktionsverbgefüge"
       }
     ],
     "dialogue": [
@@ -2387,29 +2604,34 @@ export const lessons: GermanLesson[] = [
       "Đề xuất Verbesserungsvorschläge cụ thể: erweiterte Stichprobe + Methodentriangulation. Diễn đạt formal 'Eine Replikation mit X wäre wünschenswert. Zudem Y'."
     ],
     "register_notes": "Studienkritik C1: cấu trúc 4-cấp Kritik (theoretisch / methodisch / empirisch / interpretativ) + Würdigung + Verbesserungsvorschläge + Gesamteinschätzung. Tỷ lệ chuẩn: 60-65% Kritik / 35-40% Würdigung. Funktionsverbgefüge: 'in den Blick nehmen' (đưa vào tầm nhìn), 'Mängel aufweisen' (cho thấy thiếu sót), 'in Frage stellen' (đặt vấn đề), 'einer Kritik unterziehen' (tiến hành phê phán). Kritisches Vokabular formal: 'unterbestimmt' (under-determined), 'unterrepräsentiert' (under-represented), 'fragwürdig' (questionable), 'übergehen' (skip over), 'relativieren' (relativize), 'beeinträchtigen' (impair). Würdigungsformel bắt buộc cuối: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie X'. KHÔNG 'die Studie ist schlecht' / 'der Autor versteht X nicht' (ad hominem). Kritik personnel hierarchy: kommissarisch (junior) reviewer dùng nhiều hedging hơn senior reviewer trong same Rezension.",
+    "register_notes_en": "C1 Studienkritik: the 4-level Kritik structure (theoretisch / methodisch / empirisch / interpretativ) + Würdigung + Verbesserungsvorschläge + Gesamteinschätzung. Target ratio: 60–65% Kritik / 35–40% Würdigung. Funktionsverbgefüge: 'in den Blick nehmen' (to focus on), 'Mängel aufweisen' (to exhibit shortcomings), 'in Frage stellen' (to call into question), 'einer Kritik unterziehen' (to subject to critique). Formal critical vocabulary: 'unterbestimmt' (under-determined), 'unterrepräsentiert' (under-represented), 'fragwürdig' (questionable), 'übergehen' (to skip over), 'relativieren' (to relativise), 'beeinträchtigen' (to impair). The Würdigungsformel is mandatory at the end: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie X'. Do NOT write 'die Studie ist schlecht' or 'der Autor versteht X nicht' (ad hominem). Reviewer hierarchy matters: a kommissarisch (junior) reviewer uses more hedging than a senior reviewer in the same Rezension.",
     "idiom_glosses": [
       {
         "idiom": "den Finger in die Wunde legen",
         "literal": "đặt ngón tay vào vết thương",
         "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
+        "meaning_en": "to lay one's finger in the wound — to point precisely at a weakness (gehoben/standardsprachlich)",
         "example": "Mit der Kritik an der Stichprobengröße legen Sie den Finger in die Wunde."
       },
       {
         "idiom": "das Kind mit dem Bade ausschütten",
         "literal": "đổ đứa bé cùng nước tắm",
         "meaning": "phê phán quá đà, phủ nhận điều tốt cùng điều xấu (gehoben)",
+        "meaning_en": "to throw out the baby with the bathwater — to overshoot in critique, rejecting the good along with the bad (gehoben)",
         "example": "Bei aller berechtigten Kritik sollten wir das Kind nicht mit dem Bade ausschütten — die Datenerhebung selbst ist solide."
       },
       {
         "idiom": "Wasser in den Wein gießen",
         "literal": "đổ nước vào rượu",
         "meaning": "làm dịu, hạn chế sự phấn khởi (standardsprachlich)",
+        "meaning_en": "to pour water into the wine — to dampen enthusiasm, to introduce a sobering qualifier (standardsprachlich)",
         "example": "Lassen Sie mich Wasser in den Wein gießen: die Generalisierbarkeit ist deutlich enger, als die Schlussfolgerung suggeriert."
       },
       {
         "idiom": "auf tönernen Füßen stehen",
         "literal": "đứng trên chân đất sét (gốc Kinh Thánh, Daniel 2)",
         "meaning": "đứng trên cơ sở yếu, dễ sụp (gehoben)",
+        "meaning_en": "to stand on feet of clay (biblical: Daniel 2) — to rest on a fragile foundation that may collapse (gehoben)",
         "example": "Die Kausalbehauptung der Studie steht auf tönernen Füßen — ohne Replikation lässt sie sich nicht halten."
       }
     ],
@@ -2417,6 +2639,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc phê phán C1:",
+        "instruction_en": "Fill in the C1 critique structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2440,6 +2663,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối 4 cấp Kritikstruktur với phạm vi:",
+        "instruction_en": "Match each of the 4 Kritikstruktur levels with its scope:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2463,6 +2687,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1:",
+        "instruction_en": "Translate into C1 academic German:",
         "pronunciation_focus": [
           "study critique"
         ],
@@ -2501,6 +2726,11 @@ export const lessons: GermanLesson[] = [
           "anregend → AN-rê-gần",
           "Vortrag → FÔ-trak",
           "Anlage → AN-la-gê"
+        ],
+        "pronunciation_focus_en": [
+          "anregend → AHN-ray-gent — present participle of 'anregen' (to stimulate)",
+          "Vortrag → FOR-trahk — 'lecture/talk'",
+          "Anlage → AHN-lah-geh — here 'setup/design'"
         ]
       },
       {
@@ -2510,6 +2740,11 @@ export const lessons: GermanLesson[] = [
           "inwiefern → in-vi-FE-n",
           "Befundlage → bê-FUNT-la-gê",
           "Selbstselektion → ZELP-st-zê-lêk-tsi-ôn"
+        ],
+        "pronunciation_focus_en": [
+          "inwiefern → in-vee-FERN — formal 'to what extent'",
+          "Befundlage → be-FOONT-lah-geh — 'state of findings'",
+          "Selbstselektion → ZELPST-zeh-lek-tsee-ohn"
         ]
       },
       {
@@ -2519,6 +2754,11 @@ export const lessons: GermanLesson[] = [
           "berührt → bê-RUYT",
           "wesentlich → VÊ-zần-likh",
           "differenziert → đi-fê-rên-TSIT"
+        ],
+        "pronunciation_focus_en": [
+          "berührt → be-RUERT — rounded 'ü'; 'touches'",
+          "wesentlich → VAY-zent-likh — 'essential'",
+          "differenziert → dif-eh-ren-TSEERT — 'in a nuanced way'"
         ]
       },
       {
@@ -2528,6 +2768,11 @@ export const lessons: GermanLesson[] = [
           "betrifft → bê-TRIF-t",
           "folgendermaßen → FÔL-gần-đờ-ma-sần",
           "Geduld → gê-ĐUL-t"
+        ],
+        "pronunciation_focus_en": [
+          "betrifft → be-TRIFFT — 'concerns/regards'",
+          "folgendermaßen → FOL-gen-der-mah-sen — 'as follows'",
+          "Geduld → ge-DOOLT — 'patience'; final 'd' devoices to 't'"
         ]
       },
       {
@@ -2537,81 +2782,98 @@ export const lessons: GermanLesson[] = [
           "übersteigt → uy-bờ-SHTAI-kt",
           "Rahmen → RA-mần",
           "Anregung → AN-rê-gung"
+        ],
+        "pronunciation_focus_en": [
+          "übersteigt → ue-ber-SHTYKT — rounded 'ü'; 'exceeds'",
+          "Rahmen → RAH-men — 'frame/scope'",
+          "Anregung → AHN-ray-goong — 'stimulus/suggestion'"
         ]
       }
     ],
     "cultural_notes_vi": "Q&A tại Tagung (hội nghị) Đức tuân theo quy ước rất khác Anh-Mỹ. (1) FRAGE-RANKING: tại hội nghị Đức điển hình, người đặt câu hỏi đầu tiên là 'discussant' chính thức được mời trước (Diskutant:in / Kommentator:in). Họ có 5-10 phút commentary + câu hỏi. Sau đó open floor — các câu hỏi từ audience. Trong hierarchy: Senior professors > Habilitierte > Postdocs > Promovierende. Junior thường để Senior hỏi trước. (2) FRAGEFORMAT: câu hỏi formal Đức luôn bắt đầu với (a) Acknowledgment ngắn ('Vielen Dank für den anregenden Vortrag'), (b) Lokalisierung des Punktes ('zu Ihrem Punkt X'), (c) Konkrete Frage ('inwiefern...'). KHÔNG đặt câu hỏi multiple stacked như Anh-Mỹ — có thể bị chair cắt. Một câu hỏi rõ ràng. (3) ANTWORT-FORMAT: trả lời formal phải (a) acknowledge câu hỏi ('Diese Frage berührt einen wesentlichen Punkt'), (b) signalize ý định ('gestatten Sie, dass ich...'), (c) trả lời rõ ràng, (d) acknowledge limitation nếu có ('das übersteigt den Rahmen').\n\nKhác Việt Nam: ở hội thảo VN, Q&A thường có yếu tố 'thầy dạy thêm cho học trò' — speaker thường rất polite, nhận hết feedback. Ở Đức, speaker được expect DEFEND quan điểm — không từ chối acknowledge limitation, nhưng cũng không over-apologize. 'Diese Kritik teile ich nicht — ich begründe wie folgt' (tôi không chia sẻ phê phán này — tôi biện minh như sau) hoàn toàn OK.\n\nMột chi tiết quan trọng: chair của session có quyền (a) cắt câu hỏi quá dài ('Bitte fassen Sie sich kurz'), (b) cắt câu trả lời nếu cần ('Aufgrund der Zeit müssen wir die Diskussion abbrechen'), (c) chỉ định người đặt câu hỏi tiếp theo. Chair commands có authority — KHÔNG ignore.\n\nVề handzeichen: tại Đức Tagung, người muốn đặt câu hỏi giơ tay (Hand heben). Chair sẽ point + giới thiệu: 'Bitte, Frau Müller'. Junior wartet trên patience. Chỉ khi đã được called, mới nói. KHÔNG interrupt.\n\nVề Self-introduction: khi đặt câu hỏi formal, nên giới thiệu ngắn: 'Kurz zur Vorstellung: ich bin Linh Nguyễn, Doktorandin an der Universität Bielefeld' — 5 giây tối đa. Sau đó câu hỏi.\n\nVề post-Q&A: người đặt câu hỏi quan trọng nên approach speaker tại Coffee Break — đó là Vernetzung (networking). Câu chuẩn: 'Frau Nguyễn, ich bin Dr. Schmidt — meine Frage hat sich nicht erschöpft, könnten wir das in Ruhe weiterdiskutieren?' (câu hỏi của tôi chưa hết, chúng ta có thể thảo luận tiếp trong yên tĩnh không?). Đó là cách sciencer Đức xây dựng quan hệ.",
+    "cultural_notes_en": "Q&A at a German Tagung (conference) follows conventions that differ noticeably from US/UK practice. (1) FRAGE-RANKING: at a typical German conference, the first question is asked by a formally pre-invited 'discussant' (Diskutant:in / Kommentator:in). They get 5–10 minutes of commentary plus a question. Only then does the floor open. In the implicit hierarchy: Senior professors > Habilitierte > Postdocs > Promovierende. Junior scholars typically wait for seniors to ask first. (2) FRAGEFORMAT: a formal German question always opens with (a) a brief acknowledgment ('Vielen Dank für den anregenden Vortrag'), (b) Lokalisierung of the point ('zu Ihrem Punkt X'), (c) the konkrete Frage itself ('inwiefern...'). Do NOT stack multiple questions in one turn the way US conferences sometimes tolerate — the chair will cut you off. One clear question. (3) ANTWORT-FORMAT: a formal answer must (a) acknowledge the question ('Diese Frage berührt einen wesentlichen Punkt'), (b) signal the intent ('gestatten Sie, dass ich...'), (c) deliver a clear answer, (d) acknowledge limitations if needed ('das übersteigt den Rahmen').\n\nContrast with US/UK norms: in some Anglo conferences, Q&A trends toward consensus-building — speakers nod, accept everything, and thank everyone. In Germany the speaker is expected to DEFEND their position — not refuse to acknowledge a limitation, but also not over-apologise. 'Diese Kritik teile ich nicht — ich begründe wie folgt' (I don't share this critique — I argue as follows) is perfectly acceptable.\n\nOne crucial detail: the chair has authority to (a) cut an over-long question ('Bitte fassen Sie sich kurz'), (b) cut an over-long answer if necessary ('Aufgrund der Zeit müssen wir die Diskussion abbrechen'), (c) call the next questioner. The chair's commands carry authority — do NOT ignore them.\n\nOn Handzeichen (hand-raising): at a German Tagung, anyone wishing to ask raises their hand. The chair will point and announce: 'Bitte, Frau Müller'. Juniors wait patiently. Speak only after being called — do NOT interrupt.\n\nOn self-introduction: when you ask a formal question, give a brief introduction: 'Kurz zur Vorstellung: ich bin Linh Nguyễn, Doktorandin an der Universität Bielefeld' — five seconds maximum. Then the question.\n\nOn post-Q&A: if you've asked a question that mattered to you, approach the speaker during the Coffee Break — that's Vernetzung (networking). The canonical opener: 'Frau Nguyễn, ich bin Dr. Schmidt — meine Frage hat sich nicht erschöpft, könnten wir das in Ruhe weiterdiskutieren?' (my question wasn't exhausted; could we continue more calmly?). That is how German academics build relationships.",
     "tip_advice_vi": "Khi đặt câu hỏi tại Tagung (cấu trúc 3 bước):\n1. ACKNOWLEDGMENT (5-10 giây): 'Vielen Dank für den anregenden Vortrag, Frau Nguyễn'\n2. LOKALISIERUNG (5-10 giây): 'Ich hätte eine Frage zu Ihrem Punkt zur Stichprobenkonstruktion'\n3. KONKRETE FRAGE (10-20 giây): 'Inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?'\n\nNgôn ngữ đặt câu hỏi formal:\n- 'Vielen Dank für den anregenden Vortrag' (cảm ơn vì bài kích thích tư duy)\n- 'Ich hätte eine Frage zu...' (tôi có một câu hỏi về...)\n- 'Mich würde interessieren...' (tôi muốn quan tâm...)\n- 'Inwiefern...' (ở mức độ nào)\n- 'Wie verhält es sich mit...?' (sự việc với... thế nào?)\n- 'Könnten Sie präzisieren, ob...?' (bạn có thể làm chính xác liệu...?)\n- 'Wie würden Sie auf den Einwand reagieren, dass...?' (bạn sẽ phản ứng thế nào với phản đối rằng...?)\n\nKhi trả lời câu hỏi (cấu trúc 4 bước):\n1. ACKNOWLEDGMENT: 'Diese Frage berührt einen wesentlichen Punkt' / 'Eine sehr berechtigte Frage'\n2. SIGNALISIERUNG: 'gestatten Sie, dass ich differenziert darauf eingehe'\n3. ANTWORT: rõ ràng, cấu trúc\n4. SCHLUSSWENDUNG: signal kết thúc — 'Das wäre meine erste Antwort dazu' / 'Ich danke für den Hinweis'\n\nKhi không biết câu trả lời:\n- 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (câu này vượt khuôn khổ nghiên cứu hiện tại)\n- 'Ich nehme die Anregung sehr gern auf' (tôi rất sẵn lòng tiếp thu gợi ý)\n- 'Auf diesen Punkt müsste ich Sie um Geduld bitten — ich werde ihn schriftlich nachreichen' (cho điểm này tôi phải xin bạn kiên nhẫn — tôi sẽ trả lời bằng văn bản sau)\n- KHÔNG: 'Ich weiß es nicht' đơn lẻ. KHÔNG: 'Das ist eine gute Frage' (clichéd in formal German).\n\nKhi câu hỏi có nhiều phần:\n- 'Was Ihren ersten Aspekt betrifft, würde ich folgendermaßen argumentieren — was den zweiten betrifft, müsste ich Sie um Geduld bitten' (về khía cạnh thứ nhất tôi sẽ lập luận như sau — về khía cạnh thứ hai phải xin kiên nhẫn)\n- Nếu chair cắt: 'Aufgrund der Zeit muss ich auf den dritten Aspekt verzichten — ich biete Ihnen gern an, das im Anschluss zu vertiefen' (vì thời gian tôi phải bỏ qua khía cạnh thứ ba — tôi sẵn lòng đào sâu sau buổi)\n\nKhi không đồng ý với câu hỏi:\n- 'Diese Lesart Ihrer Frage teile ich nicht ganz' (tôi không hoàn toàn chia sẻ cách đọc câu hỏi của bạn)\n- 'Wenn ich Sie richtig verstanden habe, fragen Sie X — meine Antwort wäre Y' (nếu tôi hiểu bạn đúng, bạn hỏi X — câu trả lời của tôi là Y)\n\nKhi chair cắt câu hỏi của bạn:\n- 'Verstanden — ich fasse zusammen: ...' (hiểu rồi — tôi tóm gọn: ...)\n- KHÔNG protest, KHÔNG continue ignoring chair.\n\nMẹo cuối: ghi tên + Affiliation của những người đặt câu hỏi quan trọng cho bạn — sau Q&A approach họ tại Coffee Break để follow up. Tagung chính = Vernetzungsereignis. Một câu hỏi tốt + một follow-up conversation = potential collaboration partner.",
+    "tip_advice_en": "Asking a question at a Tagung (3-step structure):\n1. ACKNOWLEDGMENT (5–10 seconds): 'Vielen Dank für den anregenden Vortrag, Frau Nguyễn'\n2. LOKALISIERUNG (5–10 seconds): 'Ich hätte eine Frage zu Ihrem Punkt zur Stichprobenkonstruktion'\n3. KONKRETE FRAGE (10–20 seconds): 'Inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?'\n\nFormal question language:\n- 'Vielen Dank für den anregenden Vortrag' (many thanks for the stimulating talk)\n- 'Ich hätte eine Frage zu...' (I'd have a question about...)\n- 'Mich würde interessieren...' (I'd be interested to know...)\n- 'Inwiefern...' (to what extent)\n- 'Wie verhält es sich mit...?' (how does it stand with...?)\n- 'Könnten Sie präzisieren, ob...?' (could you clarify whether...?)\n- 'Wie würden Sie auf den Einwand reagieren, dass...?' (how would you respond to the objection that...?)\n\nAnswering a question (4-step structure):\n1. ACKNOWLEDGMENT: 'Diese Frage berührt einen wesentlichen Punkt' / 'Eine sehr berechtigte Frage'\n2. SIGNALISIERUNG: 'gestatten Sie, dass ich differenziert darauf eingehe'\n3. ANTWORT: clear, structured\n4. SCHLUSSWENDUNG: signal the close — 'Das wäre meine erste Antwort dazu' / 'Ich danke für den Hinweis'\n\nWhen you don't know the answer:\n- 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (this question exceeds the scope of my current investigation)\n- 'Ich nehme die Anregung sehr gern auf' (I'm very glad to take the suggestion on board)\n- 'Auf diesen Punkt müsste ich Sie um Geduld bitten — ich werde ihn schriftlich nachreichen' (on this point I'd have to ask for your patience — I'll respond in writing)\n- AVOID: a bare 'Ich weiß es nicht'. AVOID: 'Das ist eine gute Frage' (clichéd in formal German).\n\nFor multi-part questions:\n- 'Was Ihren ersten Aspekt betrifft, würde ich folgendermaßen argumentieren — was den zweiten betrifft, müsste ich Sie um Geduld bitten' (regarding your first aspect, I'd argue as follows — regarding the second, I must ask for patience)\n- If the chair cuts you off: 'Aufgrund der Zeit muss ich auf den dritten Aspekt verzichten — ich biete Ihnen gern an, das im Anschluss zu vertiefen' (due to time I must skip the third aspect — I'd be glad to dig into it afterwards)\n\nWhen you disagree with the question itself:\n- 'Diese Lesart Ihrer Frage teile ich nicht ganz' (I don't fully share that reading of your question)\n- 'Wenn ich Sie richtig verstanden habe, fragen Sie X — meine Antwort wäre Y' (if I've understood you correctly, you're asking X — my answer would be Y)\n\nWhen the chair cuts your question short:\n- 'Verstanden — ich fasse zusammen: ...' (understood — I'll summarise: ...)\n- Do NOT protest, do NOT continue ignoring the chair.\n\nFinal tip: write down the names and affiliations of people whose questions matter to you — approach them at the Coffee Break to follow up. A Tagung is fundamentally a Vernetzungsereignis (networking event). One good question plus one follow-up conversation = a potential collaboration partner.",
     "vocabulary": [
       {
         "word": "der Vortrag (pl. Vorträge)",
         "en": "lecture, presentation",
         "vi": "bài thuyết trình",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe FÔ-trak"
+        "pronunciation_vi": "đe FÔ-trak",
+        "pronunciation_en": "dayr FOR-trahk — plural takes umlaut: 'Vorträge'"
       },
       {
         "word": "die Tagung",
         "en": "academic conference",
         "vi": "hội nghị học thuật",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TA-gung"
+        "pronunciation_vi": "đi TA-gung",
+        "pronunciation_en": "dee TAH-goong — formal academic conference"
       },
       {
         "word": "der/die Diskutant/-in",
         "en": "discussant (formal)",
         "vi": "người thảo luận chính thức",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe đis-ku-TANT"
+        "pronunciation_vi": "đe đis-ku-TANT",
+        "pronunciation_en": "dayr dis-koo-TAHNT — final stress; pre-invited responder role"
       },
       {
         "word": "anregend",
         "en": "stimulating, thought-provoking",
         "vi": "kích thích tư duy",
         "pos": "adjective",
-        "pronunciation_vi": "AN-rê-gần"
+        "pronunciation_vi": "AN-rê-gần",
+        "pronunciation_en": "AHN-ray-gent — standard Q&A opener compliment"
       },
       {
         "word": "die Befundlage",
         "en": "state of findings, evidential basis",
         "vi": "tình trạng kết quả nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-FUNT-la-gê"
+        "pronunciation_vi": "đi bê-FUNT-la-gê",
+        "pronunciation_en": "dee be-FOONT-lah-geh"
       },
       {
         "word": "inwiefern",
         "en": "to what extent",
         "vi": "ở mức độ nào",
         "pos": "adverb",
-        "pronunciation_vi": "in-vi-FE-n"
+        "pronunciation_vi": "in-vi-FE-n",
+        "pronunciation_en": "in-vee-FERN — formal Q&A question opener"
       },
       {
         "word": "präzisieren",
         "en": "to specify, refine",
         "vi": "làm chính xác",
         "pos": "verb",
-        "pronunciation_vi": "prê-tsi-ZI-rần"
+        "pronunciation_vi": "prê-tsi-ZI-rần",
+        "pronunciation_en": "preh-tsee-ZEE-ren — final-syllable stress before infinitive ending"
       },
       {
         "word": "die Anregung",
         "en": "stimulus, suggestion",
         "vi": "gợi ý",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-rê-gung"
+        "pronunciation_vi": "đi AN-rê-gung",
+        "pronunciation_en": "dee AHN-ray-goong"
       },
       {
         "word": "den Rahmen übersteigen",
         "en": "to exceed the scope",
         "vi": "vượt khỏi khuôn khổ",
         "pos": "verb phrase",
-        "pronunciation_vi": "đên RA-mần uy-bờ-SHTAI-gần"
+        "pronunciation_vi": "đên RA-mần uy-bờ-SHTAI-gần",
+        "pronunciation_en": "dayn RAH-men ue-ber-SHTY-gen — the canonical 'I don't know' Funktionsverbgefüge"
       },
       {
         "word": "die Anschlussstudie",
         "en": "follow-up study",
         "vi": "nghiên cứu tiếp nối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-shlus-shtu-đi-ê"
+        "pronunciation_vi": "đi AN-shlus-shtu-đi-ê",
+        "pronunciation_en": "dee AHN-shloos-shtoo-dee-eh"
       }
     ],
     "dialogue": [
@@ -2734,29 +2996,34 @@ export const lessons: GermanLesson[] = [
       "Junior Professor đặt câu hỏi về Doppelmandat ethics. Trả lời formal: clarify situation, mention Ethikvotum + drei konkrete Auflagen (pseudonymisierte Transkription, separate Speicherung, Löschung nach fünf Jahren)."
     ],
     "register_notes": "Q&A tại Tagung C1: 'Sie' tuyệt đối kể cả với người cùng tuổi/cấp. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Đặt câu hỏi 3 bước: Acknowledgment → Lokalisierung → Konkrete Frage. Trả lời 4 bước: Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (chạm điểm), 'den Rahmen übersteigen' (vượt khuôn khổ), 'eine Anregung aufnehmen' (tiếp thu gợi ý), 'eine Frage präzisieren' (làm chính xác). Khi không biết: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. KHÔNG 'Ich weiß es nicht' đơn. KHÔNG 'Das ist eine gute Frage' (clichéd). Multi-part question: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands có authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction tại Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 giây tối đa.",
+    "register_notes_en": "C1 Tagung Q&A: 'Sie' is absolute, even with peers of equal age or rank. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Question structure (3 steps): Acknowledgment → Lokalisierung → Konkrete Frage. Answer structure (4 steps): Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (to touch on a point), 'den Rahmen übersteigen' (to exceed the scope), 'eine Anregung aufnehmen' (to take up a suggestion), 'eine Frage präzisieren' (to clarify). When you don't know: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. Do NOT say a bare 'Ich weiß es nicht'. Do NOT say 'Das ist eine gute Frage' (clichéd). For multi-part questions: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands carry authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction at Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 seconds maximum.",
     "idiom_glosses": [
       {
         "idiom": "den Ball zurückspielen",
         "literal": "đá quả bóng trở lại",
         "meaning": "phản hồi lại câu hỏi (gehoben/standardsprachlich)",
+        "meaning_en": "to play the ball back — to throw a question back to the asker (gehoben/standardsprachlich)",
         "example": "Den Ball spiele ich kurz zurück: Bevor ich antworte, bitte ich um Klärung Ihrer Begrifflichkeit."
       },
       {
         "idiom": "ins Schwarze treffen",
         "literal": "đánh trúng tâm đen (mục tiêu)",
         "meaning": "trúng đích, đặt câu hỏi hay (gehoben/standardsprachlich)",
+        "meaning_en": "to hit the bullseye (the 'black' on a German target) — to ask a question right on point (gehoben/standardsprachlich)",
         "example": "Mit dieser Frage haben Sie ins Schwarze getroffen — genau diesen Punkt diskutiere ich gerade in der Druckfassung."
       },
       {
         "idiom": "den Punkt erschöpfen",
         "literal": "khai thác cạn điểm",
         "meaning": "thảo luận đầy đủ một chủ đề (gehoben)",
+        "meaning_en": "to exhaust the point — to discuss a topic in full (gehoben)",
         "example": "Diesen Punkt können wir nicht in fünf Minuten erschöpfen — gestatten Sie, dass ich Sie in der Pause anspreche."
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
         "literal": "là nước cho cối xay của ai đó",
         "meaning": "ủng hộ luận điểm của ai (gehoben)",
+        "meaning_en": "to be water on someone's mill — to support someone's argument (the English equivalent is 'grist to one's mill') (gehoben)",
         "example": "Ihr Einwand ist Wasser auf meine Mühle — er bestätigt meine Skepsis gegenüber pauschalen Generalisierungen."
       }
     ],
@@ -2764,6 +3031,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Q&A formal Đức:",
+        "instruction_en": "Fill in the formal German Q&A structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2787,6 +3055,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối cụm Q&A với chức năng:",
+        "instruction_en": "Match each Q&A phrase with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2810,6 +3079,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1:",
+        "instruction_en": "Translate into C1 academic German:",
         "pronunciation_focus": [
           "conference Q&A"
         ],
@@ -2848,6 +3118,11 @@ export const lessons: GermanLesson[] = [
           "vorliegend → FÔ-li-gần",
           "fungieren → fun-GI-rần",
           "kommunikativ → kô-mu-ni-ka-TIF"
+        ],
+        "pronunciation_focus_en": [
+          "vorliegend → FOR-lee-gent — 'at hand/present', the canonical Abstract opener",
+          "fungieren → foon-GEE-ren — 'to function as'",
+          "kommunikativ → ko-moo-nee-kah-TEEF — final stress"
         ]
       },
       {
@@ -2857,6 +3132,11 @@ export const lessons: GermanLesson[] = [
           "mittels → MI-tệls",
           "konversationsanalytisch → kôn-fe-za-tsi-ÔNS-a-na-luy-tish",
           "rekonstruieren → rê-kôn-stru-I-rần"
+        ],
+        "pronunciation_focus_en": [
+          "mittels → MIT-tels — formal 'by means of'; takes genitive",
+          "konversationsanalytisch → kon-fer-zah-tsee-OHNS-ah-nah-lue-tish — rounded 'ü'",
+          "rekonstruieren → reh-kon-stroo-EE-ren"
         ]
       },
       {
@@ -2866,6 +3146,11 @@ export const lessons: GermanLesson[] = [
           "nahelegen → NA-ê-lê-gần",
           "Kontextualisierungshinweis → kôn-tệkst-tu-a-li-ZI-rungs-hin-vais",
           "identitätsbezogen → i-đên-ti-tê-ts-bê-tsô-gần"
+        ],
+        "pronunciation_focus_en": [
+          "nahelegen → NAH-ay-lay-gen — separable verb; 'to suggest'",
+          "Kontextualisierungshinweis → kon-text-too-ah-lee-ZEE-roongs-hin-vise",
+          "identitätsbezogen → ee-den-tee-tayts-be-TSOH-gen — 'identity-related'"
         ]
       },
       {
@@ -2875,6 +3160,11 @@ export const lessons: GermanLesson[] = [
           "ressourcenorientiert → rê-zu-sần-ô-ri-ên-TIT",
           "Mehrsprachigkeit → MÊ-shpra-khikh-kait",
           "hinsichtlich → HIN-zikh-likh"
+        ],
+        "pronunciation_focus_en": [
+          "ressourcenorientiert → reh-zoor-sen-or-ee-en-TEERT",
+          "Mehrsprachigkeit → MAYR-shprah-khikh-kite — 'multilingualism'",
+          "hinsichtlich → HIN-zikht-likh — takes genitive; 'with respect to'"
         ]
       },
       {
@@ -2884,81 +3174,98 @@ export const lessons: GermanLesson[] = [
           "Schlüsselwörter → SHLUY-sệl-vơ-tờ",
           "Identitätskonstruktion → i-đên-ti-tê-ts-kôn-struk-tsi-ôn",
           "vietnamesisch → vi-êt-na-MÊ-zish"
+        ],
+        "pronunciation_focus_en": [
+          "Schlüsselwörter → SHLUE-sel-vuer-ter — rounded 'ü' and 'ö'",
+          "Identitätskonstruktion → ee-den-tee-tayts-kon-strook-tsee-ohn",
+          "vietnamesisch → vee-et-nah-MAY-zish"
         ]
       }
     ],
     "cultural_notes_vi": "Abstract khoa học Đức tuân theo cấu trúc IMRAD chặt chẽ với nominalstil cao. (1) IMRAD-STRUCTURE: Introduction (Hintergrund + Forschungsfrage) → Methods (Datengrundlage + Verfahren) → Results (Befunde) → Discussion (Beitrag). Mỗi phần ~1-2 câu. Tổng: 150-250 từ (chuẩn Đức) — ngắn hơn Anh-Mỹ thường. (2) NOMINALSTIL HEAVY: 'Es wird untersucht' / 'Untersucht wird' (passive) > 'Wir untersuchen'. 'Auf der Grundlage' > 'Wir basieren auf'. 'Mittels X-Verfahren' > 'Mit X'. Verwissenschaftlichung qua Nominalisierung là dấu hiệu C1 chuẩn. (3) SCHLÜSSELWÖRTER bắt buộc: 4-6 keywords ở cuối, semicolon-separated. KHÔNG dùng phrasal nouns dài — single nouns hoặc 2-word compounds.\n\nKhác Việt Nam: ở VN, abstract thường có nhiều câu mở đầu giới thiệu chung ('Trong bối cảnh toàn cầu hóa...'). Ở Đức, KHÔNG có câu warm-up — câu đầu là Forschungsfrage trực tiếp. 'Der vorliegende Beitrag untersucht die Frage, inwiefern...' = câu mở chuẩn.\n\nMột chi tiết quan trọng: phân biệt Abstract (≤250 từ) ≠ Zusammenfassung (Summary, có thể dài hơn) ≠ Kurzfassung (very short, ~100 từ) ≠ Exposé (research proposal, 5-10 trang). Submitting Abstract khi yêu cầu Exposé = vi phạm format nghiêm trọng.\n\nVề Anglo-Deutsch: nhiều Tagung yêu cầu Abstract bằng cả tiếng Đức và tiếng Anh. Đức: ~250 từ. Anh: thường dài hơn (~300). Format chuẩn Đức tiếng Anh: 'Anglo-Saxon abstract' với chủ từ rõ ('This paper investigates...') — KHÔNG transfer Nominalstil Đức sang Anh.\n\nVề Tense: Đức Abstract thường dùng:\n- Präsens cho purpose: 'Der Beitrag untersucht...'\n- Passive Präsens cho method: 'Werden mittels X-Verfahren rekonstruiert'\n- Präsens cho results: 'Die Befunde legen nahe, dass...'\n- Konjunktiv II cho hedged claims: 'wäre denkbar', 'ließe sich vermuten'\n\nVề Selbstreferenz: 'die vorliegende Arbeit / der vorliegende Beitrag' (the present work) > 'in dieser Arbeit / diesem Beitrag' (in this work). Cả hai OK; 'die vorliegende' formal hơn.\n\nVề Ich vs Wir vs Passive: trong Geisteswissenschaften Đức, 'ich' (1st singular) ngày càng accepted ở junior scholar — vẫn thường được hedged với passive. 'Untersucht wird' / 'Es wird gezeigt' = passive. 'Ich untersuche' = direct. 'Wir untersuchen' = nếu có co-author. Naturwissenschaften thường ưu tiên passive.",
+    "cultural_notes_en": "A German scholarly Abstract follows a strict IMRAD structure with heavy nominal style. (1) IMRAD STRUCTURE: Introduction (Hintergrund + Forschungsfrage) → Methods (Datengrundlage + Verfahren) → Results (Befunde) → Discussion (Beitrag). Each section ~1–2 sentences. Total: 150–250 words (German standard) — typically tighter than US/UK abstracts. (2) HEAVY NOMINALSTIL: 'Es wird untersucht' / 'Untersucht wird' (passive) is preferred over 'Wir untersuchen'. 'Auf der Grundlage' over 'Wir basieren auf'. 'Mittels X-Verfahren' over 'Mit X'. This Verwissenschaftlichung through nominalisation is a canonical C1 marker. (3) SCHLÜSSELWÖRTER are obligatory: 4–6 keywords at the end, semicolon-separated. Avoid long phrasal nouns — single nouns or 2-word compounds.\n\nContrast with US/UK norms: English-language abstracts often open with one or two warm-up sentences ('In an increasingly globalised world...'). German abstracts have NO warm-up — sentence one is the Forschungsfrage. 'Der vorliegende Beitrag untersucht die Frage, inwiefern...' is the canonical opener.\n\nA crucial detail: distinguish Abstract (≤250 words) ≠ Zusammenfassung (Summary, longer) ≠ Kurzfassung (very short, ~100 words) ≠ Exposé (research proposal, 5–10 pages). Submitting an Abstract when an Exposé was requested is a serious format violation.\n\nOn Anglo-Deutsch: many Tagungen require both a German and an English abstract. German: ~250 words. English: typically longer (~300). The standard Anglo-Saxon abstract uses a clear subject ('This paper investigates...') — do NOT carry German Nominalstil into the English version.\n\nOn tense: a German Abstract typically uses:\n- Präsens for purpose: 'Der Beitrag untersucht...'\n- Passive Präsens for method: 'Werden mittels X-Verfahren rekonstruiert'\n- Präsens for results: 'Die Befunde legen nahe, dass...'\n- Konjunktiv II for hedged claims: 'wäre denkbar', 'ließe sich vermuten'\n\nOn Selbstreferenz: 'die vorliegende Arbeit / der vorliegende Beitrag' (the present work) is preferred over 'in dieser Arbeit / diesem Beitrag' (in this work). Both are acceptable; 'die vorliegende' is the more formal.\n\nOn Ich vs Wir vs Passive: in the Geisteswissenschaften, 'ich' (1st singular) is increasingly accepted for junior scholars — usually still hedged with the passive. 'Untersucht wird' / 'Es wird gezeigt' = passive. 'Ich untersuche' = direct. 'Wir untersuchen' = only with a co-author. The Naturwissenschaften still mostly prefer the passive.",
     "tip_advice_vi": "Cấu trúc Abstract chuẩn Đức (5 câu / 5 phần):\n1. CONTEXT + FRAGESTELLUNG (1 câu): 'Der vorliegende Beitrag untersucht die Frage, inwiefern X als Y fungiert'\n2. THEORETISCHE VERORTUNG (optional, 1 câu): 'Theoretisch im Anschluss an Z verortet, ...'\n3. METHODE + DATEN (1 câu): 'Auf der Grundlage eines Korpus von X werden mittels Y-Verfahren systematische Muster rekonstruiert'\n4. BEFUNDE (1 câu): 'Die Befunde legen nahe, dass X primär als Y fungiert und Z erfüllt'\n5. BEITRAG (1 câu): 'Die Studie leistet einen Beitrag zu W und schließt eine empirische Lücke hinsichtlich V'\n+ SCHLÜSSELWÖRTER: 4-6 từ keyword\n\nNgôn ngữ Abstract formal:\n- 'Der vorliegende Beitrag untersucht...' (bài viết hiện tại nghiên cứu)\n- 'Auf der Grundlage von X' (dựa trên X)\n- 'Mittels Y-Verfahren' (thông qua phương pháp Y)\n- 'werden ... rekonstruiert / herausgearbeitet' (được tái dựng / làm rõ — passive)\n- 'Die Befunde legen nahe, dass...' (các kết quả gợi ý rằng)\n- 'Die Studie leistet einen Beitrag zu...' (nghiên cứu đóng góp cho)\n- 'schließt eine Lücke hinsichtlich (+ Gen)' (khép khoảng trống về)\n\nKhi viết Zusammenfassung (Summary, dài hơn Abstract — 500-1000 từ ở Tagungsband):\n- Cấu trúc IMRAD đầy đủ với mỗi phần 1 paragraph\n- Có thể có Subheadings\n- Citations OK ở Zusammenfassung, KHÔNG ở Abstract\n\nKhi viết Kurzfassung (very short, ~100 từ ở Newsletter):\n- 1 câu Forschungsfrage + 1 câu Methode + 1 câu Befund chính + 1 câu Beitrag\n- KHÔNG Schlüsselwörter\n- Đối tượng: non-specialists\n\nKhi viết Exposé (research proposal):\n- Hoàn toàn khác — không phải Summary của work hoàn thành, mà là KẾ HOẠCH cho work tương lai\n- 5-10 trang: Forschungsstand → Forschungslücke → Forschungsfrage → Theorie → Methode → Zeitplan → Literatur\n- Tense: Konjunktiv II cho future actions ('Es soll untersucht werden, ob...')\n\nSchlüsselwörter Auswahl:\n- 4-6 từ\n- Single nouns hoặc 2-word compounds\n- Semikolon-separated\n- Reihenfolge: từ chung > cụ thể\n- Vietnamese-deutsch hyphenated nếu cần\n\nMẹo cuối: viết Abstract LAST — sau khi luận án/bài hoàn thành. Drafting Abstract đầu tiên rồi viết tiếp = thường có drift giữa Abstract và content thực. Abstract = mirror của work, không phải plan.\n\nKiểm tra cuối Abstract:\n- 150-250 từ?\n- 5 câu, mỗi câu một function?\n- Không có 'in this paper' (= 'in diesem Beitrag') — dùng 'der vorliegende Beitrag'?\n- Có Konjunktiv II ở claims không có complete evidence?\n- Schlüsselwörter có giúp Suche / Indexierung?",
+    "tip_advice_en": "Standard German Abstract structure (5 sentences / 5 functions):\n1. CONTEXT + FRAGESTELLUNG (1 sentence): 'Der vorliegende Beitrag untersucht die Frage, inwiefern X als Y fungiert'\n2. THEORETISCHE VERORTUNG (optional, 1 sentence): 'Theoretisch im Anschluss an Z verortet, ...'\n3. METHODE + DATEN (1 sentence): 'Auf der Grundlage eines Korpus von X werden mittels Y-Verfahren systematische Muster rekonstruiert'\n4. BEFUNDE (1 sentence): 'Die Befunde legen nahe, dass X primär als Y fungiert und Z erfüllt'\n5. BEITRAG (1 sentence): 'Die Studie leistet einen Beitrag zu W und schließt eine empirische Lücke hinsichtlich V'\n+ SCHLÜSSELWÖRTER: 4–6 keywords\n\nFormal Abstract language:\n- 'Der vorliegende Beitrag untersucht...' (the present contribution investigates)\n- 'Auf der Grundlage von X' (on the basis of X)\n- 'Mittels Y-Verfahren' (by means of Y procedures)\n- 'werden ... rekonstruiert / herausgearbeitet' (are reconstructed / worked out — passive)\n- 'Die Befunde legen nahe, dass...' (the findings suggest that)\n- 'Die Studie leistet einen Beitrag zu...' (the study contributes to)\n- 'schließt eine Lücke hinsichtlich (+ Gen)' (closes a gap with respect to)\n\nWhen writing a Zusammenfassung (Summary, longer than an Abstract — 500–1000 words for a Tagungsband):\n- Full IMRAD with one paragraph per section\n- Subheadings allowed\n- Citations OK in Zusammenfassung, NOT in Abstract\n\nWhen writing a Kurzfassung (very short, ~100 words for a Newsletter):\n- 1 sentence Forschungsfrage + 1 Methode + 1 main Befund + 1 Beitrag\n- NO Schlüsselwörter\n- Audience: non-specialists\n\nWhen writing an Exposé (research proposal):\n- Completely different — not a summary of completed work, but a PLAN for future work\n- 5–10 pages: Forschungsstand → Forschungslücke → Forschungsfrage → Theorie → Methode → Zeitplan → Literatur\n- Tense: Konjunktiv II for future actions ('Es soll untersucht werden, ob...')\n\nSchlüsselwörter selection:\n- 4–6 words\n- Single nouns or 2-word compounds\n- Semicolon-separated\n- Order: general > specific\n- Hyphenated Vietnamese-Deutsch where needed\n\nFinal tip: write the Abstract LAST — after the thesis/paper is complete. Drafting an Abstract first and then writing toward it usually produces drift between Abstract and actual content. The Abstract is a mirror of the work, not a plan.\n\nFinal Abstract checklist:\n- 150–250 words?\n- 5 sentences, each with its own function?\n- No 'in this paper' (= 'in diesem Beitrag') — use 'der vorliegende Beitrag'?\n- Konjunktiv II where evidence is incomplete?\n- Do the Schlüsselwörter help search / indexing?",
     "vocabulary": [
       {
         "word": "der Beitrag",
         "en": "contribution, article",
         "vi": "bài viết, đóng góp",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe BAI-trak"
+        "pronunciation_vi": "đe BAI-trak",
+        "pronunciation_en": "dayr BYE-trahk — 'ei' = 'eye'; final 'g' devoices to 'k'"
       },
       {
         "word": "die Zusammenfassung",
         "en": "summary",
         "vi": "tóm tắt",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi tsu-ZA-mần-fa-sung"
+        "pronunciation_vi": "đi tsu-ZA-mần-fa-sung",
+        "pronunciation_en": "dee tsoo-ZAH-men-fah-soong"
       },
       {
         "word": "die Kurzfassung",
         "en": "brief version, short summary",
         "vi": "phiên bản ngắn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KUTS-fa-sung"
+        "pronunciation_vi": "đi KUTS-fa-sung",
+        "pronunciation_en": "dee KOORTS-fah-soong — 'z' = 'ts'"
       },
       {
         "word": "das Abstract",
         "en": "abstract (academic)",
         "vi": "tóm tắt khoa học",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát ÁP-strakt"
+        "pronunciation_vi": "đát ÁP-strakt",
+        "pronunciation_en": "dahs AHP-strakt — English loan, German prosody"
       },
       {
         "word": "die Schlüsselwörter (pl.)",
         "en": "keywords",
         "vi": "từ khóa",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi SHLUY-sệl-vơ-tờ"
+        "pronunciation_vi": "đi SHLUY-sệl-vơ-tờ",
+        "pronunciation_en": "dee SHLUE-sel-vuer-ter — rounded 'ü' and 'ö'"
       },
       {
         "word": "vorliegend",
         "en": "present, at hand",
         "vi": "hiện tại, đang xét",
         "pos": "adjective",
-        "pronunciation_vi": "FÔ-li-gần"
+        "pronunciation_vi": "FÔ-li-gần",
+        "pronunciation_en": "FOR-lee-gent — present participle of 'vorliegen'"
       },
       {
         "word": "fungieren als",
         "en": "to function as",
         "vi": "vận hành như",
         "pos": "verb",
-        "pronunciation_vi": "fun-GI-rần als"
+        "pronunciation_vi": "fun-GI-rần als",
+        "pronunciation_en": "foon-GEE-ren ahls"
       },
       {
         "word": "auf der Grundlage von",
         "en": "on the basis of",
         "vi": "dựa trên cơ sở",
         "pos": "phrase",
-        "pronunciation_vi": "aof đe GRUNT-la-gê fôn"
+        "pronunciation_vi": "aof đe GRUNT-la-gê fôn",
+        "pronunciation_en": "owf dayr GROONT-lah-geh fon"
       },
       {
         "word": "mittels (+ Gen)",
         "en": "by means of",
         "vi": "thông qua, bằng phương tiện",
         "pos": "preposition (Gen)",
-        "pronunciation_vi": "MI-tệls"
+        "pronunciation_vi": "MI-tệls",
+        "pronunciation_en": "MIT-tels — takes genitive; formal alternative to 'mit'"
       },
       {
         "word": "nahelegen",
         "en": "to suggest, indicate",
         "vi": "gợi ý",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "NA-ê-lê-gần"
+        "pronunciation_vi": "NA-ê-lê-gần",
+        "pronunciation_en": "NAH-ay-lay-gen — separable verb"
       }
     ],
     "dialogue": [
@@ -3086,29 +3393,34 @@ export const lessons: GermanLesson[] = [
       "Doktormutter chỉ ra anti-hedging trong câu kết quả. Hedge xuống bằng 'Die Befunde legen nahe, dass...'. Hoàn thành Abstract 5-câu chuẩn (Frage / Methode / Befund / Beitrag) + 5 Schlüsselwörter."
     ],
     "register_notes": "Abstract C1: cấu trúc 5-câu IMRAD (Frage / Methode / Befund / Beitrag) + 4-6 Schlüsselwörter. 150-250 từ. Bắt đầu DIRECT với Forschungsfrage — KHÔNG Hintergrund-Warmup. Nominalstil heavy: 'auf der Grundlage von X' / 'mittels Y-Verfahren' / 'werden ... rekonstruiert' (Passiv). KHÔNG 'wir' / 'ich' nếu có thể tránh — Passiv ưa chuộng. Konjunktiv II hedge cho Befunde: 'Die Befunde legen nahe, dass...' / 'Es lässt sich annehmen, dass...'. Phân biệt: Abstract (≤250) ≠ Zusammenfassung (500-1000) ≠ Kurzfassung (~100) ≠ Exposé (5-10 trang plan). Schlüsselwörter: single nouns hoặc 2-word compounds, semicolon-separated. Tense: Präsens cho purpose / methods / results, Konjunktiv II cho hedged claims. Selbstreferenz: 'der vorliegende Beitrag' (formal nhất) > 'in diesem Beitrag'. Funktionsverbgefüge: 'einen Beitrag leisten zu' (đóng góp cho), 'eine Lücke schließen hinsichtlich' (khép khoảng trống về).",
+    "register_notes_en": "C1 Abstract: 5-sentence IMRAD structure (Frage / Methode / Befund / Beitrag) + 4–6 Schlüsselwörter. 150–250 words. Start DIRECTLY with the Forschungsfrage — NO Hintergrund-Warmup. Heavy Nominalstil: 'auf der Grundlage von X' / 'mittels Y-Verfahren' / 'werden ... rekonstruiert' (Passiv). Avoid 'wir' / 'ich' where possible — Passiv is preferred. Konjunktiv II hedging for findings: 'Die Befunde legen nahe, dass...' / 'Es lässt sich annehmen, dass...'. Distinguish: Abstract (≤250) ≠ Zusammenfassung (500–1000) ≠ Kurzfassung (~100) ≠ Exposé (5–10 page plan). Schlüsselwörter: single nouns or 2-word compounds, semicolon-separated. Tense: Präsens for purpose / methods / results, Konjunktiv II for hedged claims. Selbstreferenz: 'der vorliegende Beitrag' (most formal) > 'in diesem Beitrag'. Funktionsverbgefüge: 'einen Beitrag leisten zu' (to make a contribution to), 'eine Lücke schließen hinsichtlich' (to close a gap with respect to).",
     "idiom_glosses": [
       {
         "idiom": "auf den Punkt bringen",
         "literal": "đưa vào đúng điểm",
         "meaning": "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)",
+        "meaning_en": "to bring to the point — to distil down to the essential core (standardsprachlich)",
         "example": "Ein gelungenes Abstract bringt die Argumentation auf zwei Sätze auf den Punkt."
       },
       {
         "idiom": "in aller Kürze",
         "literal": "trong tất cả ngắn gọn",
         "meaning": "rất ngắn gọn (gehoben/standardsprachlich)",
+        "meaning_en": "in all brevity — very briefly (gehoben/standardsprachlich)",
         "example": "Das Abstract muss in aller Kürze die zentrale These und die methodische Anlage vermitteln."
       },
       {
         "idiom": "ein Schaufenster sein",
         "literal": "là một cửa sổ trưng bày",
         "meaning": "là showcase đại diện cho work (standardsprachlich)",
+        "meaning_en": "to be a shop window — to be the public-facing showcase of the work (standardsprachlich)",
         "example": "Das Abstract ist das Schaufenster Ihrer Arbeit — Tagungs-Komitees entscheiden auf seiner Grundlage."
       },
       {
         "idiom": "die Spreu vom Weizen trennen",
         "literal": "tách trấu khỏi lúa mì (gốc Kinh Thánh)",
         "meaning": "phân biệt cốt lõi khỏi không cần thiết (gehoben)",
+        "meaning_en": "to separate the chaff from the wheat (biblical) — to distinguish the essential from the inessential (gehoben)",
         "example": "Bei der Abstract-Kürzung müssen Sie die Spreu vom Weizen trennen — Hintergrundsätze sind Spreu."
       }
     ],
@@ -3116,6 +3428,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Abstract C1:",
+        "instruction_en": "Fill in the C1 Abstract structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3139,6 +3452,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối loại văn bản tóm tắt với độ dài / chức năng:",
+        "instruction_en": "Match each summary type with its length / function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3162,6 +3476,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1 (Nominalstil + Passiv):",
+        "instruction_en": "Translate into C1 academic German (Nominalstil + passive):",
         "pronunciation_focus": [
           "abstract"
         ],
@@ -3200,6 +3515,11 @@ export const lessons: GermanLesson[] = [
           "eingereicht → AIN-gê-raikht",
           "adressiert → a-đre-SI-tê",
           "sorgfältig → ZÔK-fel-tikh"
+        ],
+        "pronunciation_focus_en": [
+          "eingereicht → INE-ge-rye-kht — past participle of 'einreichen' (to submit)",
+          "adressiert → ah-dre-SEERT",
+          "sorgfältig → ZORG-fel-tikh — 'meticulously/carefully'"
         ]
       },
       {
@@ -3209,6 +3529,11 @@ export const lessons: GermanLesson[] = [
           "gleichwohl → glaikh-VÔL",
           "Überarbeitungsbedarf → uy-bờ-A-bai-tungs-bê-đaf",
           "im Einzelnen → im AIN-tsên-nần"
+        ],
+        "pronunciation_focus_en": [
+          "gleichwohl → glykh-VOHL — formal 'nevertheless'",
+          "Überarbeitungsbedarf → ue-ber-AR-by-toongs-be-darf — 'revision need'",
+          "im Einzelnen → im INE-tsel-nen — 'in detail/in particular'"
         ]
       },
       {
@@ -3218,6 +3543,11 @@ export const lessons: GermanLesson[] = [
           "betrifft → bê-TRIF-t",
           "ausführlich → AOS-fuy-likh",
           "Selektionseffekte → zê-lêk-tsi-ÔNS-êf-êk-tê"
+        ],
+        "pronunciation_focus_en": [
+          "betrifft → be-TRIFFT — 'concerns/regards'",
+          "ausführlich → OWS-fuer-likh — rounded 'ü'; 'in detail'",
+          "Selektionseffekte → ze-lek-tsee-OHNS-ef-fek-teh"
         ]
       },
       {
@@ -3227,6 +3557,11 @@ export const lessons: GermanLesson[] = [
           "konstruktiv → kôn-struk-TIF",
           "überarbeitet → uy-bờ-A-bai-tệt",
           "weitgehend → VAIT-gê-ầnt"
+        ],
+        "pronunciation_focus_en": [
+          "konstruktiv → kon-strook-TEEF",
+          "überarbeitet → ue-ber-AR-by-tet — 'revised/reworked'",
+          "weitgehend → VITE-gay-ent — 'largely/extensively'"
         ]
       },
       {
@@ -3236,81 +3571,98 @@ export const lessons: GermanLesson[] = [
           "Erweiterung → e-VAI-tê-rung",
           "in der Lage → in đe LA-gê",
           "Vorschlag → FÔ-shlak"
+        ],
+        "pronunciation_focus_en": [
+          "Erweiterung → er-VY-te-roong — 'expansion'",
+          "in der Lage → in dayr LAH-geh — 'in a position to'",
+          "Vorschlag → FOR-shlahk — 'proposal/suggestion'"
         ]
       }
     ],
     "cultural_notes_vi": "Peer review trong khoa học Đức tuân theo quy ước formal khắt khe khác Anh-Mỹ. (1) DOPPELTBLINDE BEGUTACHTUNG (double-blind review): chuẩn cho hầu hết Geisteswissenschaften / Sozialwissenschaften journals Đức. Reviewer KHÔNG biết tên tác giả; tác giả KHÔNG biết tên reviewer. Quan trọng: KHÔNG tự reveal identity qua self-citation pattern hoặc institutional clues. (2) GUTACHTERVOTUM 4 KATEGORIEN: chuẩn Đức:\n- Annahme ohne Änderungen (chấp nhận không sửa) — RẤT HIẾM\n- Annahme mit kleinen Änderungen (chấp nhận với sửa nhỏ) — common\n- Überarbeitung erforderlich (cần chỉnh sửa) — major revisions\n- Ablehnung (từ chối) — KHÔNG resubmit\n\nNguyên tắc: nếu không phải chuyên gia trong field, từ chối review. Nếu đồng ý, deliver Gutachten đúng thời hạn (4-6 tuần).\n(3) ZWEI-TEILIGES GUTACHTEN: phần A (cho editor, có thể frank) + phần B (cho author, formal + constructive). KHÔNG mix hai phần.\n\nKhác Việt Nam: ở VN, peer review chính thức ít phổ biến hơn — review thường là thảo luận miệng giữa các đồng nghiệp. Ở Đức, peer review viết là CƠ CHẾ TRUNG TÂM của khoa học. Quality của Gutachten phản ánh năng lực professional của reviewer — Junior scholar cẩn thận đầu tư thời gian.\n\nMột chi tiết quan trọng: khi nhận peer review feedback, reply formal là Erwiderung (response). Cấu trúc:\n1. DANKSAGUNG (cảm ơn) — 1 đoạn\n2. ÜBERSICHT (tổng quan changes) — list bullet point\n3. PUNKT-FÜR-PUNKT-ANTWORT (point-by-point response): mỗi reviewer comment + cách bạn xử lý\n4. ABSCHLUSS (kết) — formal\n\nPunkt-für-Punkt cấu trúc: quote comment of reviewer (có thể italic / quote block) → Antwort + line số trong bản đã chỉnh sửa nơi change được thực hiện. Editor expects mọi comment được addressed — kể cả từ chối phải explicit và biện minh.\n\nVề từ chối comment: KHÔNG silent ignore. Câu chuẩn: 'An diesem Punkt sehe ich mich aus X-Gründen nicht in der Lage, dem Vorschlag zu folgen' (ở điểm này tôi không thấy mình có thể theo đề xuất vì lý do X). Sau đó biện minh.\n\nVề Tone: peer review formal Đức tránh enthusiasm nhiều ('this is a great paper!') và harsh dismissal ('this is unacceptable'). Sweet spot: substantive, balanced, constructive. Câu chuẩn formal: 'Der Beitrag adressiert eine relevante Forschungslücke und ist insgesamt sorgfältig gearbeitet. Gleichwohl sehe ich an drei Stellen substanziellen Überarbeitungsbedarf'.\n\nVề Reviewer 2 / Reviewer 3 phenomenon: trong scientific community, 'Reviewer 2' = harsh, nitpicky reviewer. Tránh becoming Reviewer 2 — focus on substantielle issues, không micro typos.",
+    "cultural_notes_en": "Peer review in German scholarship follows strict formal conventions that differ noticeably from US/UK practice. (1) DOPPELTBLINDE BEGUTACHTUNG (double-blind review) is standard for most German Geisteswissenschaften / Sozialwissenschaften journals. The reviewer does NOT know the author; the author does NOT know the reviewer. Crucial: do not inadvertently reveal your identity through self-citation patterns or institutional clues. (2) GUTACHTERVOTUM has 4 standard categories:\n- Annahme ohne Änderungen (acceptance without changes) — VERY RARE\n- Annahme mit kleinen Änderungen (acceptance with minor changes) — common\n- Überarbeitung erforderlich (revision required) — major revisions\n- Ablehnung (rejection) — no resubmit\n\nPrinciple: if you're not an expert in the field, decline to review. If you agree, deliver the Gutachten on time (4–6 weeks).\n(3) TWO-PART GUTACHTEN: part A (for the editor, can be frank) + part B (for the author, formal + constructive). Do NOT mix the two.\n\nContrast with US/UK norms: while peer review exists globally, the German Erwiderung (response) convention is more codified. When you receive review feedback, the formal reply is structured as:\n1. DANKSAGUNG (acknowledgement) — 1 paragraph\n2. ÜBERSICHT (overview of changes) — bullet list\n3. PUNKT-FÜR-PUNKT-ANTWORT (point-by-point response): each reviewer comment + how you handled it\n4. ABSCHLUSS (closing) — formal\n\nPunkt-für-Punkt structure: quote the reviewer's comment (italic or block quote) → your Antwort + the page/line number in the revised version where the change was made. The editor expects every comment to be addressed — even a rejection must be explicit and justified.\n\nOn declining a comment: do NOT silently ignore. Canonical phrase: 'An diesem Punkt sehe ich mich aus X-Gründen nicht in der Lage, dem Vorschlag zu folgen' (on this point I do not see myself able to follow the suggestion, for X reasons). Then justify.\n\nOn tone: formal German peer review avoids excessive enthusiasm ('this is a great paper!') AND harsh dismissal ('this is unacceptable'). The sweet spot: substantive, balanced, constructive. Canonical formal opener: 'Der Beitrag adressiert eine relevante Forschungslücke und ist insgesamt sorgfältig gearbeitet. Gleichwohl sehe ich an drei Stellen substanziellen Überarbeitungsbedarf'.\n\nOn the 'Reviewer 2' phenomenon: in the international scientific community, 'Reviewer 2' is shorthand for a harsh, nitpicky reviewer. Avoid becoming Reviewer 2 — focus on substantial issues, not micro-typos.",
     "tip_advice_vi": "Khi viết Gutachten (peer review):\n\nCẤU TRÚC formal Đức (4-5 phần):\n1. ZUSAMMENFASSUNG (1 đoạn): summarize Beitrag's argument — chứng minh bạn đã đọc hiểu\n2. ALLGEMEINE BEWERTUNG (1-2 đoạn): tổng đánh giá — Stärken + Limitationen\n3. SUBSTANZIELLE ANMERKUNGEN (2-4 đoạn): điểm phê phán có chất, có cấu trúc\n4. STILISTISCHE / FORMALE ANMERKUNGEN (1 đoạn): typos, formatting — ngắn\n5. EMPFEHLUNG (1 câu): Annahme / Annahme mit Änderungen / Überarbeitung erforderlich / Ablehnung\n\nNgôn ngữ Gutachten formal:\n- 'Der eingereichte Beitrag adressiert X' (bài nộp đề cập X)\n- 'Insgesamt ist die Arbeit sorgfältig gearbeitet' (tổng thể công trình được làm cẩn thận)\n- 'Gleichwohl sehe ich an X Stellen Überarbeitungsbedarf' (tuy nhiên tôi thấy nhu cầu chỉnh sửa)\n- 'Was Punkt X betrifft, würde ich um Y bitten' (về điểm X, tôi xin Y)\n- 'Diese Argumentation greift meines Erachtens zu kurz, weil...' (lập luận theo tôi không đi đủ xa, bởi)\n- 'Eine Präzisierung in folgender Hinsicht wäre wünschenswert' (sự chính xác hóa ở khía cạnh sau sẽ mong muốn)\n\nKhuyến nghị Empfehlung formula:\n- 'Ich empfehle die Annahme mit kleinen Änderungen' (chấp nhận với sửa nhỏ)\n- 'Ich empfehle eine Überarbeitung mit anschließender Begutachtung' (chỉnh sửa với thẩm định lại)\n- 'Ich empfehle die Ablehnung in der vorliegenden Form, regelmäßig sind die Defizite jedoch behebbar' (từ chối ở dạng hiện tại, nhưng các thiếu sót có thể khắc phục)\n\nKhi viết Erwiderung (response to reviewer):\n\nCẤU TRÚC formal:\n1. ANSCHREIBEN AN HERAUSGEBER (1 đoạn): cảm ơn editor, summary của changes\n2. PUNKT-FÜR-PUNKT-ANTWORT: mỗi reviewer comment + response + line reference\n\nNgôn ngữ Erwiderung formal:\n- 'Vielen Dank für Ihre kritische und konstruktive Lektüre' (cảm ơn về sự đọc phê phán và xây dựng)\n- 'Ich habe die Anregungen weitgehend berücksichtigt' (tôi đã tính phần lớn gợi ý)\n- 'In Anlehnung an Ihren Hinweis habe ich Abschnitt X grundlegend überarbeitet' (dựa theo chỉ dẫn, tôi đã chỉnh sửa căn bản đoạn X)\n- 'Diesen Punkt habe ich auf S. Y wie folgt präzisiert: ...' (điểm này tôi đã làm chính xác trên trang Y như sau)\n- 'An diesem Punkt sehe ich mich aus methodischen Gründen nicht in der Lage, dem Vorschlag zu folgen, weil...' (ở điểm này tôi không thấy mình có thể theo đề xuất vì lý do phương pháp luận, bởi)\n\nKhi từ chối comment (RECHTFERTIGUNG bắt buộc):\n- Thừa nhận có cân nhắc: 'Ihre Anregung habe ich sorgfältig erwogen'\n- Lý do từ chối cụ thể: 'Aus folgenden Gründen sehe ich von einer Umsetzung ab: erstens..., zweitens...'\n- Acknowledge differentiate value: 'Ich teile Ihre Sorge in der Sache, halte aber die vorgeschlagene Lösung für nicht zielführend'\n\nTránh tuyệt đối in Erwiderung:\n- 'Reviewer hat das nicht verstanden' (defensive, ad hominem)\n- 'Diese Kritik ist unberechtigt' (ohne Begründung — too curt)\n- Silent ignore: KHÔNG bỏ qua bất kỳ comment nào — kể cả từ chối phải explicit\n\nVề Reviewer 2 phenomenon (avoidance):\n- KHÔNG nitpick typos at length — list at end, brief\n- KHÔNG demand stylistic changes that are matter of taste\n- KHÔNG ask to cite your own (revealing) work — double-blind violation\n- KHÔNG over-extend review timeline (30+ days unprofessional)\n\nMẹo cuối: trước khi submit Gutachten, đọc lại 1 lần với câu hỏi 'would I want to receive this review?' Nếu câu trả lời 'no' = re-tone. Substantielle phê phán có thể constructive — Tone-Polizei.",
+    "tip_advice_en": "When writing a Gutachten (peer review):\n\nFormal German structure (4–5 parts):\n1. ZUSAMMENFASSUNG (1 paragraph): summarise the Beitrag's argument — show you've read it carefully\n2. ALLGEMEINE BEWERTUNG (1–2 paragraphs): overall assessment — Stärken + Limitationen\n3. SUBSTANZIELLE ANMERKUNGEN (2–4 paragraphs): substantive critique, structured\n4. STILISTISCHE / FORMALE ANMERKUNGEN (1 paragraph): typos, formatting — short\n5. EMPFEHLUNG (1 sentence): Annahme / Annahme mit Änderungen / Überarbeitung erforderlich / Ablehnung\n\nFormal Gutachten language:\n- 'Der eingereichte Beitrag adressiert X' (the submitted contribution addresses X)\n- 'Insgesamt ist die Arbeit sorgfältig gearbeitet' (overall, the work is carefully done)\n- 'Gleichwohl sehe ich an X Stellen Überarbeitungsbedarf' (nevertheless I see revision need in X places)\n- 'Was Punkt X betrifft, würde ich um Y bitten' (regarding point X, I'd ask for Y)\n- 'Diese Argumentation greift meines Erachtens zu kurz, weil...' (this argumentation, in my view, falls short, because)\n- 'Eine Präzisierung in folgender Hinsicht wäre wünschenswert' (a clarification in the following respect would be desirable)\n\nEmpfehlung formulae:\n- 'Ich empfehle die Annahme mit kleinen Änderungen' (acceptance with minor changes)\n- 'Ich empfehle eine Überarbeitung mit anschließender Begutachtung' (revision with subsequent re-review)\n- 'Ich empfehle die Ablehnung in der vorliegenden Form, regelmäßig sind die Defizite jedoch behebbar' (rejection in the present form, though the deficits are generally fixable)\n\nWhen writing the Erwiderung (response to reviewer):\n\nFormal structure:\n1. ANSCHREIBEN AN HERAUSGEBER (1 paragraph): thank the editor, summarise changes\n2. PUNKT-FÜR-PUNKT-ANTWORT: each reviewer comment + response + line reference\n\nFormal Erwiderung language:\n- 'Vielen Dank für Ihre kritische und konstruktive Lektüre' (thank you for your critical and constructive reading)\n- 'Ich habe die Anregungen weitgehend berücksichtigt' (I have largely taken the suggestions on board)\n- 'In Anlehnung an Ihren Hinweis habe ich Abschnitt X grundlegend überarbeitet' (following your pointer, I have fundamentally reworked section X)\n- 'Diesen Punkt habe ich auf S. Y wie folgt präzisiert: ...' (I have clarified this point on p. Y as follows)\n- 'An diesem Punkt sehe ich mich aus methodischen Gründen nicht in der Lage, dem Vorschlag zu folgen, weil...' (at this point I cannot follow the suggestion for methodological reasons, because)\n\nWhen declining a comment (RECHTFERTIGUNG mandatory):\n- Acknowledge you considered it: 'Ihre Anregung habe ich sorgfältig erwogen'\n- Give a specific reason for declining: 'Aus folgenden Gründen sehe ich von einer Umsetzung ab: erstens..., zweitens...'\n- Acknowledge partial value: 'Ich teile Ihre Sorge in der Sache, halte aber die vorgeschlagene Lösung für nicht zielführend'\n\nAvoid at all costs in the Erwiderung:\n- 'Reviewer hat das nicht verstanden' (defensive, ad hominem)\n- 'Diese Kritik ist unberechtigt' (without Begründung — too curt)\n- Silent ignore: do NOT skip any comment — even rejection must be explicit\n\nReviewer-2 avoidance:\n- Do not nitpick typos at length — list them briefly at the end\n- Do not demand stylistic changes that are matters of taste\n- Do not ask the author to cite your own (revealing) work — double-blind violation\n- Do not over-extend the review timeline (30+ days is unprofessional)\n\nFinal tip: before submitting a Gutachten, read it once asking yourself 'would I want to receive this review?' If the answer is 'no' — re-tone. Substantive critique can be delivered constructively.",
     "vocabulary": [
       {
         "word": "die Begutachtung",
         "en": "peer review (process)",
         "vi": "thẩm định đồng nghiệp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-GU-takh-tung"
+        "pronunciation_vi": "đi bê-GU-takh-tung",
+        "pronunciation_en": "dee be-GOO-tahkh-toong — hard 'ch' in '-tach-'"
       },
       {
         "word": "das Gutachten",
         "en": "review report",
         "vi": "báo cáo thẩm định",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát GU-takh-tần"
+        "pronunciation_vi": "đát GU-takh-tần",
+        "pronunciation_en": "dahs GOO-tahkh-ten"
       },
       {
         "word": "der/die Gutachter/-in",
         "en": "reviewer",
         "vi": "người thẩm định",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe GU-takh-tờ"
+        "pronunciation_vi": "đe GU-takh-tờ",
+        "pronunciation_en": "dayr GOO-tahkh-ter — feminine 'Gutachterin'"
       },
       {
         "word": "die Erwiderung",
         "en": "response to review",
         "vi": "phản hồi thẩm định",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi e-VI-đê-rung"
+        "pronunciation_vi": "đi e-VI-đê-rung",
+        "pronunciation_en": "dee er-VEE-de-roong"
       },
       {
         "word": "der Überarbeitungsbedarf",
         "en": "revision need",
         "vi": "nhu cầu chỉnh sửa",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe uy-bờ-A-bai-tungs-bê-đaf"
+        "pronunciation_vi": "đe uy-bờ-A-bai-tungs-bê-đaf",
+        "pronunciation_en": "dayr ue-ber-AR-by-toongs-be-darf — rounded 'ü'"
       },
       {
         "word": "einreichen",
         "en": "to submit",
         "vi": "nộp (bài)",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "AIN-rai-khần"
+        "pronunciation_vi": "AIN-rai-khần",
+        "pronunciation_en": "INE-rye-khen — separable verb"
       },
       {
         "word": "berücksichtigen",
         "en": "to take into account",
         "vi": "tính đến, xem xét",
         "pos": "verb",
-        "pronunciation_vi": "bê-RUYK-zikh-ti-gần"
+        "pronunciation_vi": "bê-RUYK-zikh-ti-gần",
+        "pronunciation_en": "be-RUEK-zikh-tee-gen — rounded 'ü'"
       },
       {
         "word": "die Annahme / Ablehnung",
         "en": "acceptance / rejection",
         "vi": "chấp nhận / từ chối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-na-mê / AB-lê-nung"
+        "pronunciation_vi": "đi AN-na-mê / AB-lê-nung",
+        "pronunciation_en": "dee AHN-nah-meh / AHP-lay-noong"
       },
       {
         "word": "die Anregung (pl. Anregungen)",
         "en": "suggestion, stimulus",
         "vi": "gợi ý",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-rê-gung"
+        "pronunciation_vi": "đi AN-rê-gung",
+        "pronunciation_en": "dee AHN-ray-goong"
       },
       {
         "word": "in der Lage sein",
         "en": "to be in a position to",
         "vi": "có thể, có khả năng",
         "pos": "phrase",
-        "pronunciation_vi": "in đe LA-gê zain"
+        "pronunciation_vi": "in đe LA-gê zain",
+        "pronunciation_en": "in dayr LAH-geh zine — the canonical decline-with-grace construction"
       }
     ],
     "dialogue": [
@@ -3418,29 +3770,34 @@ export const lessons: GermanLesson[] = [
       "Editor (Herausgeberin) hỏi tại sao bạn accept Reviewer 1 + 3 nhưng reject 2 đề xuất của Reviewer 2. Trình bày rõ ràng cấu trúc Begründung formal — không defensive, không apologetic."
     ],
     "register_notes": "Peer review C1 Đức: cấu trúc Gutachten 5-phần (Zusammenfassung / allgemeine Bewertung / substanzielle Anmerkungen / formale Anmerkungen / Empfehlung). 4 Empfehlungskategorien: Annahme / Annahme mit kleinen Änderungen / Überarbeitung erforderlich / Ablehnung. Erwiderung cấu trúc: Anschreiben + Punkt-für-Punkt-Antwort. Khi từ chối reviewer comment: 'An diesem Punkt sehe ich mich aus X-Gründen nicht in der Lage, dem Vorschlag zu folgen' + Begründung explizit. KHÔNG silent ignore. KHÔNG 'Reviewer hat das nicht verstanden' (defensive). Funktionsverbgefüge: 'einen Vorschlag erwägen' (cân nhắc đề xuất), 'von einer Umsetzung absehen' (từ chối thực hiện), 'einer Anregung gerecht werden' (làm công bằng gợi ý). Tone formal: substantive + balanced + constructive. Tránh Reviewer-2-pattern (nitpick / harsh / over-extending). Konjunktiv II cho hypothetische changes: 'Eine Erweiterung würde X gefährden'. Acknowledge partial uptake khi từ chối main proposal: 'eine Diskussion habe ich auf S. X ergänzt'.",
+    "register_notes_en": "German C1 peer review: 5-part Gutachten structure (Zusammenfassung / allgemeine Bewertung / substanzielle Anmerkungen / formale Anmerkungen / Empfehlung). Four Empfehlung categories: Annahme / Annahme mit kleinen Änderungen / Überarbeitung erforderlich / Ablehnung. Erwiderung structure: Anschreiben + Punkt-für-Punkt-Antwort. When declining a reviewer comment: 'An diesem Punkt sehe ich mich aus X-Gründen nicht in der Lage, dem Vorschlag zu folgen' + explicit Begründung. Do NOT silently ignore. Do NOT 'Reviewer hat das nicht verstanden' (defensive). Funktionsverbgefüge: 'einen Vorschlag erwägen' (to weigh a proposal), 'von einer Umsetzung absehen' (to refrain from implementation), 'einer Anregung gerecht werden' (to do justice to a suggestion). Tone: substantive + balanced + constructive. Avoid the Reviewer-2 pattern (nitpicking / harsh / over-extending). Use Konjunktiv II for hypothetical changes: 'Eine Erweiterung würde X gefährden'. Acknowledge partial uptake when declining the main proposal: 'eine Diskussion habe ich auf S. X ergänzt'.",
     "idiom_glosses": [
       {
         "idiom": "das Salz in der Suppe sein",
         "literal": "là muối trong canh",
         "meaning": "yếu tố then chốt làm cái gì có giá trị (gehoben/standardsprachlich)",
+        "meaning_en": "to be the salt in the soup — the key element that gives something its value (gehoben/standardsprachlich)",
         "example": "Substantielle Begutachtungen sind das Salz des wissenschaftlichen Diskurses."
       },
       {
         "idiom": "Reviewer 2",
         "literal": "(người đánh giá thứ 2 — tiếng lóng quốc tế)",
         "meaning": "reviewer khắt khe / nitpicky (umgangssprachlich, science Twitter)",
+        "meaning_en": "international science-Twitter shorthand for a harsh / nitpicky reviewer (umgangssprachlich)",
         "example": "Achten Sie darauf, in Ihrem Gutachten nicht zu Reviewer 2 zu werden — bleiben Sie konstruktiv."
       },
       {
         "idiom": "den Spagat machen",
         "literal": "tách chân (kiểu thể dục)",
         "meaning": "balance giữa hai yêu cầu mâu thuẫn (gehoben/standardsprachlich)",
+        "meaning_en": "to do the splits — to balance between two conflicting demands (gehoben/standardsprachlich)",
         "example": "Bei der Erwiderung machen Sie den Spagat zwischen Konsistenz Ihrer Position und Anerkennung der Reviewer-Kritik."
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
         "literal": "là nước cho cối xay của ai",
         "meaning": "ủng hộ luận điểm của ai (gehoben)",
+        "meaning_en": "to be water on someone's mill — to support someone's argument ('grist to one's mill') (gehoben)",
         "example": "Gutachter 1's Anregung war Wasser auf meine Mühle — sie bestätigte einen Punkt, den ich bereits ausführlich behandelt hatte."
       }
     ],
@@ -3448,6 +3805,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc peer review formal:",
+        "instruction_en": "Fill in the formal peer-review structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3471,6 +3829,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối kategorie Empfehlung với mức độ:",
+        "instruction_en": "Match each Empfehlung category with its level:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3494,6 +3853,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1:",
+        "instruction_en": "Translate into C1 academic German:",
         "pronunciation_focus": [
           "peer review"
         ],
@@ -3532,6 +3892,11 @@ export const lessons: GermanLesson[] = [
           "Hintergrund → HIN-tê-grunt",
           "Geschäftsjahr → gê-SHEFTS-ja",
           "angemessen → AN-gê-mê-sần"
+        ],
+        "pronunciation_focus_en": [
+          "Hintergrund → HIN-ter-groont — final 'd' devoices to 't'",
+          "Geschäftsjahr → ge-SHEFTS-yahr — 'sch' = 'sh'; 'ä' = 'eh'",
+          "angemessen → AHN-ge-mes-sen — 'appropriate'"
         ]
       },
       {
@@ -3541,6 +3906,11 @@ export const lessons: GermanLesson[] = [
           "Erhöhung → e-HƠ-ung",
           "Prozent → prô-TSENT",
           "vergleichbar → fe-GLAIKH-ba"
+        ],
+        "pronunciation_focus_en": [
+          "Erhöhung → er-HUE-oong — rounded 'ö'; 'increase'",
+          "Prozent → pro-TSENT — 'z' = 'ts'; final stress",
+          "vergleichbar → fer-GLYKH-bar"
         ]
       },
       {
@@ -3550,6 +3920,11 @@ export const lessons: GermanLesson[] = [
           "hinsichtlich → HIN-zikh-likh",
           "Zielvereinbarung → TSIL-fe-ain-ba-rung",
           "messbar → MÊS-ba"
+        ],
+        "pronunciation_focus_en": [
+          "hinsichtlich → HIN-zikht-likh — takes genitive",
+          "Zielvereinbarung → TSEEL-fer-ine-bah-roong — 'goal agreement'",
+          "messbar → MES-bar — 'measurable'"
         ]
       },
       {
@@ -3559,6 +3934,11 @@ export const lessons: GermanLesson[] = [
           "Sollten → ZÔL-tần",
           "vorliegend → FÔ-li-gần",
           "Zwischenüberprüfung → TSVI-shần-uy-bờ-pruy-fung"
+        ],
+        "pronunciation_focus_en": [
+          "Sollten → ZOL-ten — Konjunktiv II 'should'",
+          "vorliegend → FOR-lee-gent — 'present/at hand'",
+          "Zwischenüberprüfung → TSVISH-en-ue-ber-prue-foong"
         ]
       },
       {
@@ -3568,81 +3948,98 @@ export const lessons: GermanLesson[] = [
           "ausschließlich → AOS-shli-slikh",
           "Anerkennung → AN-e-kên-nung",
           "Verhältnis → fe-HEL-tnis"
+        ],
+        "pronunciation_focus_en": [
+          "ausschließlich → OWS-shlees-likh — 'exclusively'",
+          "Anerkennung → AHN-er-ken-noong — 'recognition'",
+          "Verhältnis → fer-HELT-nis — 'relationship/ratio'"
         ]
       }
     ],
     "cultural_notes_vi": "Đàm phán lương trong môi trường công ty Đức tuân theo quy ước rất khác Việt Nam. (1) ZAHLEN-EINSTIEG: người Đức expect bạn đưa ra một con số cụ thể (Wunsch-Gehalt) trong vòng 5-10 phút đầu, kèm Begründung. KHÔNG vòng vo, KHÔNG đợi sếp đưa ra số trước. Câu chuẩn: 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' — Konjunktiv II mềm hóa nhưng vẫn rõ con số. (2) MARKTREFERENZ: Begründung mạnh nhất là so với 'vergleichbare Positionen im Markt' — chuẩn bị Gehaltsspiegel của Stepstone, Kununu, Glassdoor, hoặc Tarifvertrag (nếu có) trước khi vào phòng. Người Đức đánh giá cao argument basiert auf data, không persönliche Bedürfnisse ('Ich brauche das, weil meine Miete steigt' = unprofessional). (3) FIX vs VARIABEL: lương Đức thường gồm Grundgehalt + variabler Anteil (5-30%). Đàm phán cả hai, không chỉ Grundgehalt. Variabel được gắn với Zielvereinbarung — yêu cầu Ziele 'konkret, messbar, erreichbar'.\n\nKhác Việt Nam: ở VN, nhiều khi sếp 'ban' tăng lương theo cảm tính thâm niên / quan hệ. Ở Đức, đàm phán là RIGHT của Mitarbeiter, được expect, không bị xem là 'không biết điều'. Im lặng = không đòi = không được tăng.\n\nMột chi tiết quan trọng: KHÔNG nói 'ich brauche mehr Geld' (tôi cần thêm tiền) — đó là persönliches Bedürfnis. Nói 'ich halte X für angemessen, gemessen an Y' (tôi cho X là phù hợp, so với Y) — đó là argument professional.\n\nTarifverträge: nếu công ty có Tarifvertrag (IG Metall, ver.di, etc.), Grundgehalt thường nằm trong Entgeltgruppe cố định — đàm phán xảy ra ở variabler Anteil + Eingruppierung. Nếu công ty AT (außertariflich), Grundgehalt frei verhandelbar.\n\nVề Bonus-Verhandlung: variabler Anteil Đức thường có công thức: Erreichungsgrad × Zielprämie. Đòi hỏi clarity:\n- Welche Ziele? (qualitativ vs quantitativ)\n- Wie wird gemessen? (KPI cụ thể)\n- Wann ausgezahlt? (Q1 nach Geschäftsjahr-Ende thường)\n- Was bei Teil-Erreichung? (linear, gestuft, oder all-or-nothing)\n\nVề thời điểm: Gehaltsverhandlung Đức thường vào Mitarbeitergespräch (annual review) — Q4 oder Q1. Mid-year requests cần lý do mạnh (promotion, neue Verantwortung). Đàm phán beim Berufseinstieg là moment quan trọng nhất — sau đó tăng theo % anchored to Anfangsgehalt.\n\nVề Aufschub: nếu sếp nói 'aktuell nicht möglich' — không từ bỏ. Đề xuất Zwischenüberprüfung trong 6 Monate, hoặc alternative Komponenten (Weiterbildungsbudget, Home-Office-Tage, Dienstwagen-Upgrade).",
+    "cultural_notes_en": "Salary negotiation in a German workplace follows conventions that differ noticeably from many other cultures. (1) ZAHLEN-EINSTIEG: Germans expect you to put a specific number (Wunsch-Gehalt) on the table within the first 5–10 minutes, with a Begründung. Don't beat around the bush, don't wait for the boss to name a number first. Canonical phrase: 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' — Konjunktiv II softens the form but the number is still explicit. (2) MARKTREFERENZ: the strongest Begründung is comparison to 'vergleichbare Positionen im Markt' — prepare salary data from Stepstone, Kununu, Glassdoor, or Tarifvertrag (if applicable) before walking in. Germans value data-anchored argument, not persönliche Bedürfnisse ('I need this because my rent went up' is unprofessional). (3) FIX vs VARIABEL: German salary is typically Grundgehalt + variabler Anteil (5–30%). Negotiate both, not only Grundgehalt. Variabel is tied to a Zielvereinbarung — demand goals that are 'konkret, messbar, erreichbar'.\n\nContrast with US/UK norms: many Anglo workplaces treat salary as competitive private business; in Germany, negotiation is a RIGHT of every Mitarbeiter, is expected, and is not read as ungrateful. Silence = no request = no raise.\n\nA crucial point: do NOT say 'ich brauche mehr Geld' (I need more money) — that's a persönliches Bedürfnis. Say 'ich halte X für angemessen, gemessen an Y' (I consider X appropriate, measured against Y) — that's the professional argument.\n\nTarifverträge: if the company has a Tarifvertrag (IG Metall, ver.di, etc.), Grundgehalt is usually fixed within an Entgeltgruppe — negotiation happens on variabler Anteil + Eingruppierung. If the company is AT (außertariflich / outside the agreement), Grundgehalt is freely negotiable.\n\nOn Bonus negotiation: the variabler Anteil in Germany typically follows: Erreichungsgrad × Zielprämie. Demand clarity on:\n- Welche Ziele? (qualitative vs quantitative)\n- Wie wird gemessen? (specific KPIs)\n- Wann ausgezahlt? (typically Q1 after end of Geschäftsjahr)\n- Was bei Teil-Erreichung? (linear, stepped, or all-or-nothing)\n\nOn timing: a German Gehaltsverhandlung typically happens at the Mitarbeitergespräch (annual review) — Q4 or Q1. Mid-year requests need a strong reason (promotion, new responsibility). The most important negotiation is at job entry — every later increase is a % anchored to the Anfangsgehalt.\n\nOn Aufschub (deferral): if the boss says 'aktuell nicht möglich' — don't give up. Propose a Zwischenüberprüfung in 6 months, or alternative components (Weiterbildungsbudget, Home-Office days, Dienstwagen upgrade).",
     "tip_advice_vi": "Trước Gehaltsgespräch (4 tuần trước):\n1. SAMMELN: Erfolge documentation — Projekte abgeschlossen, Umsatz beigetragen, Verantwortung erweitert. Konkrete Zahlen, nicht Gefühle.\n2. RECHERCHIEREN: Stepstone Gehaltsreport für Ihre Position + Region + Branche. Note 25th-Percentile, Median, 75th-Percentile.\n3. ZIEL DEFINIEREN: Wunsch-Zahl (75th percentile), Walk-away-Zahl (median), Mid-point cho Verhandlung.\n4. ALTERNATIVES: nếu Geld nicht möglich — Weiterbildung budget? Home-Office? Sabbatical? Dienstwagen?\n\nIm Gespräch (Struktur 4 Schritte):\n1. ANERKENNUNG: 'Vielen Dank, dass Sie sich heute Zeit nehmen' (1 Satz, không hơn)\n2. LEISTUNGSBILANZ: 3-4 cụ thể Erfolge (90 Sekunden tổng cộng)\n3. ZAHL: 'Vor dem Hintergrund der erweiterten Verantwortung halte ich eine Anpassung um X Prozent für angemessen, gemessen an Y'\n4. RAUM für Antwort: schweigen Sie sau khi đặt câu, KHÔNG nervous talk\n\nNgôn ngữ Gehaltsverhandlung formal:\n- 'Vor dem Hintergrund von X halte ich Y für angemessen' (trên nền X tôi cho Y phù hợp)\n- 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' (Konjunktiv II soft request)\n- 'Gemessen an vergleichbaren Positionen im Markt' (so với positions tương đương trên thị trường)\n- 'Hinsichtlich des variablen Anteils schlage ich vor...' (về variabler Anteil tôi đề xuất)\n- 'Sollten X für Y nicht ausreichen, wäre Z denkbar' (nếu X không đủ cho Y, Z có thể tính đến)\n- 'Mir geht es nicht ausschließlich um die Zahl, sondern um...' (với tôi không chỉ con số, mà...)\n\nKhi sếp nói 'Budget ist eng':\n- 'Ich verstehe die Budget-Lage. Wäre alternativ ein Weiterbildungsbudget oder zusätzliche Home-Office-Tage denkbar?' (tôi hiểu tình hình. Có thể thay bằng Weiterbildung hoặc Home-Office không?)\n- 'Könnten wir eine Zwischenüberprüfung in sechs Monaten vereinbaren?' (mình thỏa thuận rà soát giữa kỳ sau 6 tháng được không?)\n\nKhi sếp đưa low offer:\n- 'Das liegt unter meiner Vorstellung. Ich hatte X im Kopf — ist hier noch Bewegung?' (thấp hơn kỳ vọng. Tôi nghĩ đến X — còn dư địa không?)\n- KHÔNG: 'Das ist zu wenig' (zu konfrontativ). KHÔNG: 'Das geht klar' khi nó không klar.\n\nKhi cần Bedenkzeit:\n- 'Ich möchte das Angebot in Ruhe prüfen — könnten wir uns Anfang nächster Woche zurückmelden?' (tôi muốn xem xét kỹ — đầu tuần sau gặp lại được không?)\n\nKhi rejected complete:\n- 'Ich nehme das zur Kenntnis. Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' (tôi ghi nhận. Mình ghi lại tiêu chí cần đạt cho năm sau được không?)\n\nMẹo cuối: nói NGHIÊN CỨU — không Schauspielerei. Người Đức nhận ra sofort khi bạn đang ‚acting confident'. Authentische Vorbereitung > falsche Selbstsicherheit. Wenn Sie nervous sind, sagen Sie es einmal: 'Ich gestehe, das Gespräch fällt mir schwer — gleichwohl ist es mir wichtig.' Diese Geste oft de-eskaliert.",
+    "tip_advice_en": "Before the Gehaltsgespräch (4 weeks ahead):\n1. SAMMELN: document your achievements — projects delivered, revenue contributed, responsibility expanded. Concrete numbers, not feelings.\n2. RECHERCHIEREN: pull the Stepstone Gehaltsreport for your position + region + sector. Note 25th percentile, median, 75th percentile.\n3. ZIEL DEFINIEREN: your dream number (75th percentile), walk-away number (median), midpoint for negotiation.\n4. ALTERNATIVES: if cash isn't possible — Weiterbildung budget? Home-Office? Sabbatical? Dienstwagen?\n\nIn the meeting (4-step structure):\n1. ANERKENNUNG: 'Vielen Dank, dass Sie sich heute Zeit nehmen' (one sentence, no more)\n2. LEISTUNGSBILANZ: 3–4 concrete Erfolge (90 seconds total)\n3. ZAHL: 'Vor dem Hintergrund der erweiterten Verantwortung halte ich eine Anpassung um X Prozent für angemessen, gemessen an Y'\n4. RAUM for response: stay silent after putting the number on the table — DON'T nervous-talk\n\nFormal Gehaltsverhandlung language:\n- 'Vor dem Hintergrund von X halte ich Y für angemessen' (against the background of X, I consider Y appropriate)\n- 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' (Konjunktiv II soft request)\n- 'Gemessen an vergleichbaren Positionen im Markt' (measured against comparable positions in the market)\n- 'Hinsichtlich des variablen Anteils schlage ich vor...' (regarding the variable component, I propose...)\n- 'Sollten X für Y nicht ausreichen, wäre Z denkbar' (should X be insufficient for Y, Z would be conceivable)\n- 'Mir geht es nicht ausschließlich um die Zahl, sondern um...' (for me it's not solely about the number, but about...)\n\nWhen the boss says 'Budget ist eng':\n- 'Ich verstehe die Budget-Lage. Wäre alternativ ein Weiterbildungsbudget oder zusätzliche Home-Office-Tage denkbar?' (I understand. Could a training budget or extra Home-Office days be an alternative?)\n- 'Könnten wir eine Zwischenüberprüfung in sechs Monaten vereinbaren?' (could we agree on an interim review in six months?)\n\nWhen the boss makes a low offer:\n- 'Das liegt unter meiner Vorstellung. Ich hatte X im Kopf — ist hier noch Bewegung?' (that's below what I had in mind. I was thinking X — is there still room here?)\n- DON'T: 'Das ist zu wenig' (too confrontational). DON'T: 'Das geht klar' if it doesn't.\n\nWhen you need time to think:\n- 'Ich möchte das Angebot in Ruhe prüfen — könnten wir uns Anfang nächster Woche zurückmelden?' (I'd like to consider this carefully — could we touch base early next week?)\n\nWhen rejected outright:\n- 'Ich nehme das zur Kenntnis. Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' (I note that. Can we record the criteria that would need to be met for an adjustment next year?)\n\nFinal tip: prepare authentically — don't act. Germans spot acting immediately. Authentic preparation beats false confidence. If you're nervous, say so once: 'Ich gestehe, das Gespräch fällt mir schwer — gleichwohl ist es mir wichtig.' That admission often de-escalates.",
     "vocabulary": [
       {
         "word": "die Gehaltsverhandlung",
         "en": "salary negotiation",
         "vi": "đàm phán lương",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi gê-HALTS-fe-han-đlung"
+        "pronunciation_vi": "đi gê-HALTS-fe-han-đlung",
+        "pronunciation_en": "dee ge-HAHLTS-fer-hand-loong"
       },
       {
         "word": "die Anpassung (des Gehalts)",
         "en": "adjustment (of salary)",
         "vi": "việc điều chỉnh (lương)",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-pa-sung"
+        "pronunciation_vi": "đi AN-pa-sung",
+        "pronunciation_en": "dee AHN-pas-soong"
       },
       {
         "word": "das Grundgehalt / der variable Anteil",
         "en": "base salary / variable component",
         "vi": "lương cơ bản / phần biến thiên",
         "pos": "noun (n) / noun (m)",
-        "pronunciation_vi": "đát GRUNT-gê-halt / đe va-RI-a-blê AN-tail"
+        "pronunciation_vi": "đát GRUNT-gê-halt / đe va-RI-a-blê AN-tail",
+        "pronunciation_en": "dahs GROONT-ge-hahlt / dayr vah-REE-ah-bleh AHN-tile"
       },
       {
         "word": "die Zielvereinbarung",
         "en": "performance agreement",
         "vi": "thỏa thuận mục tiêu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TSIL-fe-ain-ba-rung"
+        "pronunciation_vi": "đi TSIL-fe-ain-ba-rung",
+        "pronunciation_en": "dee TSEEL-fer-ine-bah-roong"
       },
       {
         "word": "der Erreichungsgrad",
         "en": "level of target achievement",
         "vi": "mức độ đạt mục tiêu",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe e-RAI-khungs-grat"
+        "pronunciation_vi": "đe e-RAI-khungs-grat",
+        "pronunciation_en": "dayr er-RYE-khoongs-graht"
       },
       {
         "word": "vergleichbar (mit)",
         "en": "comparable (with)",
         "vi": "tương đương (với)",
         "pos": "adjective",
-        "pronunciation_vi": "fe-GLAIKH-ba"
+        "pronunciation_vi": "fe-GLAIKH-ba",
+        "pronunciation_en": "fer-GLYKH-bar"
       },
       {
         "word": "der Tarifvertrag",
         "en": "collective bargaining agreement",
         "vi": "thỏa ước tập thể",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe ta-RIF-fe-trak"
+        "pronunciation_vi": "đe ta-RIF-fe-trak",
+        "pronunciation_en": "dayr tah-REEF-fer-trahk"
       },
       {
         "word": "außertariflich (AT)",
         "en": "outside collective agreement (AT)",
         "vi": "ngoài thỏa ước tập thể",
         "pos": "adjective",
-        "pronunciation_vi": "AOS-sờ-ta-rif-likh"
+        "pronunciation_vi": "AOS-sờ-ta-rif-likh",
+        "pronunciation_en": "OW-ser-tah-reef-likh — 'au' = 'ow'"
       },
       {
         "word": "die Zwischenüberprüfung",
         "en": "interim review",
         "vi": "rà soát giữa kỳ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TSVI-shần-uy-bờ-pruy-fung"
+        "pronunciation_vi": "đi TSVI-shần-uy-bờ-pruy-fung",
+        "pronunciation_en": "dee TSVISH-en-ue-ber-prue-foong — rounded 'ü'"
       },
       {
         "word": "angemessen",
         "en": "appropriate, reasonable",
         "vi": "phù hợp, hợp lý",
         "pos": "adjective",
-        "pronunciation_vi": "AN-gê-mê-sần"
+        "pronunciation_vi": "AN-gê-mê-sần",
+        "pronunciation_en": "AHN-ge-mes-sen"
       }
     ],
     "dialogue": [
@@ -3755,29 +4152,34 @@ export const lessons: GermanLesson[] = [
       "Khi rejected complete (‚Budget zu eng'): đề nghị alternative Komponenten (Weiterbildungsbudget, Home-Office, Dienstwagen) — diễn đạt ‚Wäre alternativ X denkbar?' formal."
     ],
     "register_notes": "Gehaltsverhandlung C1: ‚Sie' tuyệt đối với HR-Leiter / Vorgesetzte. Konjunktiv II cho soft request: ‚Ich hätte gerne über X gesprochen' / ‚wäre Y denkbar'. Funktionsverbgefüge: ‚in ein klares Verhältnis setzen' (đặt vào quan hệ rõ), ‚zur Kenntnis nehmen' (ghi nhận), ‚an X koppeln' (gắn với X). Argument-Struktur: ‚Vor dem Hintergrund von X halte ich Y für angemessen' — Kausale Begründung formal. Marktreferenz bắt buộc: ‚gemessen an vergleichbaren Positionen im Markt'. KHÔNG ‚ich brauche mehr' (persönliches Bedürfnis), KHÔNG ‚alle anderen verdienen mehr' (peer-Vergleich, schwach). Khi sếp gegenangebot: KHÔNG sofort accept; nói ‚Ich möchte das in Ruhe prüfen — Anfang nächster Woche melde ich mich zurück' để có Bedenkzeit. Khi rejected: ‚Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' — wandelt Niederlage in roadmap.",
+    "register_notes_en": "C1 Gehaltsverhandlung: 'Sie' is absolute with HR-Leiter / Vorgesetzte. Konjunktiv II for soft requests: 'Ich hätte gerne über X gesprochen' / 'wäre Y denkbar'. Funktionsverbgefüge: 'in ein klares Verhältnis setzen' (to put into a clear ratio), 'zur Kenntnis nehmen' (to take note), 'an X koppeln' (to tie to X). Argument structure: 'Vor dem Hintergrund von X halte ich Y für angemessen' — formal causal Begründung. Marktreferenz is mandatory: 'gemessen an vergleichbaren Positionen im Markt'. Do NOT 'ich brauche mehr' (persönliches Bedürfnis); do NOT 'alle anderen verdienen mehr' (peer comparison, weak). When the boss counter-offers: do NOT immediately accept; say 'Ich möchte das in Ruhe prüfen — Anfang nächster Woche melde ich mich zurück' to gain Bedenkzeit. When rejected: 'Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' — turns the defeat into a roadmap.",
     "idiom_glosses": [
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
         "meaning": "minh bạch hóa, công khai dữ liệu (standardsprachlich)",
+        "meaning_en": "to lay one's cards on the table — to be transparent, put the data in plain view (standardsprachlich)",
         "example": "Lassen Sie uns die Karten auf den Tisch legen — hier ist mein Stepstone-Vergleich, und hier ist meine Leistungsbilanz."
       },
       {
         "idiom": "in trockenen Tüchern sein",
         "literal": "ở trong khăn khô",
         "meaning": "đã được giải quyết chắc chắn, ‚in the bag' (standardsprachlich)",
+        "meaning_en": "to be 'in dry towels' — to be settled, signed, sealed (English: 'in the bag') (standardsprachlich)",
         "example": "Sobald die Freigabe vom Bereichsleiter da ist, ist die Anpassung in trockenen Tüchern."
       },
       {
         "idiom": "Spielraum haben",
         "literal": "có không gian chơi",
         "meaning": "có dư địa thương lượng (standardsprachlich)",
+        "meaning_en": "to have play-room — to have negotiating room or wiggle room (standardsprachlich)",
         "example": "Ich gehe davon aus, dass beim variablen Anteil noch Spielraum besteht."
       },
       {
         "idiom": "den Ball flach halten",
         "literal": "giữ quả bóng thấp (gốc bóng đá)",
         "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
+        "meaning_en": "to keep the ball low (football idiom) — to keep tone calm, don't escalate (standardsprachlich)",
         "example": "Auch wenn ich enttäuscht bin, halte ich den Ball flach — das nächste Gespräch ist wichtiger als heute."
       }
     ],
@@ -3785,6 +4187,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Gehaltsverhandlung C1:",
+        "instruction_en": "Fill in the C1 salary-negotiation structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3808,6 +4211,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ Gehaltsverhandlung với chức năng:",
+        "instruction_en": "Match each Gehaltsverhandlung term with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -3831,6 +4235,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1 (Konjunktiv II khi cần):",
+        "instruction_en": "Translate into formal C1 German (Konjunktiv II where needed):",
         "pronunciation_focus": ["salary negotiation"],
         "items": [
           {
@@ -3867,6 +4272,11 @@ export const lessons: GermanLesson[] = [
           "unterzeichnen → UN-tê-tsai-khê-nần",
           "Klauseln → KLAO-zệ-l-n",
           "tragfähig → TRAK-fê-ikh"
+        ],
+        "pronunciation_focus_en": [
+          "unterzeichnen → OON-ter-tsy-khen — 'to sign (a contract)'",
+          "Klauseln → KLOW-zeln — 'au' = 'ow'",
+          "tragfähig → TRAHK-feh-ikh — 'tenable/sustainable'"
         ]
       },
       {
@@ -3876,6 +4286,11 @@ export const lessons: GermanLesson[] = [
           "Wettbewerbsverbot → VÊT-bê-vêps-fe-bôt",
           "Reichweite → RAIKH-vai-tê",
           "unverhältnismäßig → un-fe-HEL-tnis-mê-sikh"
+        ],
+        "pronunciation_focus_en": [
+          "Wettbewerbsverbot → VET-be-verps-fer-boht — 'non-compete clause'",
+          "Reichweite → RYKH-vy-teh — 'reach/scope'",
+          "unverhältnismäßig → oon-fer-HELT-nis-meh-sikh — 'disproportionate'"
         ]
       },
       {
@@ -3885,6 +4300,11 @@ export const lessons: GermanLesson[] = [
           "Bezüglich → bê-TSUYK-likh",
           "Vertraulichkeitsklausel → fe-TRAU-likh-kaits-klao-zệl",
           "Anwendungsbereich → AN-ven-đungs-bê-raikh"
+        ],
+        "pronunciation_focus_en": [
+          "Bezüglich → be-TSUEG-likh — rounded 'ü'; takes genitive",
+          "Vertraulichkeitsklausel → fer-TROW-likh-kites-klow-zel",
+          "Anwendungsbereich → AHN-ven-doongs-be-rykh"
         ]
       },
       {
@@ -3894,6 +4314,11 @@ export const lessons: GermanLesson[] = [
           "Überstundenregelung → uy-bờ-SHTUN-đần-rê-gê-lung",
           "pauschal → pao-SHAL",
           "vergütet → fe-GUY-tệt"
+        ],
+        "pronunciation_focus_en": [
+          "Überstundenregelung → UE-ber-shtoon-den-ray-gay-loong — 'overtime arrangement'",
+          "pauschal → pow-SHAHL — 'flat-rate'",
+          "vergütet → fer-GUE-tet — rounded 'ü'; 'compensated'"
         ]
       },
       {
@@ -3903,81 +4328,98 @@ export const lessons: GermanLesson[] = [
           "Anpassungen → AN-pa-sung-gần",
           "Symmetrie → zuy-mê-TRI",
           "Arbeitsverhältnis → AR-baits-fe-hel-tnis"
+        ],
+        "pronunciation_focus_en": [
+          "Anpassungen → AHN-pas-soong-en — 'adjustments'",
+          "Symmetrie → zue-meh-TREE — rounded 'y' sound",
+          "Arbeitsverhältnis → AR-byts-fer-helt-nis"
         ]
       }
     ],
     "cultural_notes_vi": "Đàm phán Arbeitsvertrag (hợp đồng lao động) ở Đức trước khi ký là CHUẨN, không phải ngoại lệ. Người Đức expect Bewerber đọc kỹ + đặt câu hỏi. Im lặng ký = bị xem là entweder thiếu chuyên nghiệp hoặc không hiểu hợp đồng. (1) WETTBEWERBSVERBOT (nachvertragliches): điều khoản cấm cạnh tranh sau khi rời công ty. Luật Đức: chỉ có hiệu lực nếu (a) viết rõ, (b) tối đa 24 tháng, (c) công ty trả Karenzentschädigung tối thiểu 50% Vergütung. Wettbewerbsverbot ohne Karenzentschädigung = nichtig. Nhiều Vorlage có Wettbewerbsverbot 24 tháng EU-weit là quá rộng cho hầu hết Stellen — đề nghị giới hạn về (a) Branche + (b) Region + (c) Zeit. (2) VERTRAULICHKEITSKLAUSEL: thường rất rộng — bao gồm 'alle Informationen aus dem Arbeitsverhältnis'. Đề nghị giới hạn: 'geschäftskritische Informationen' với Definition + Ausnahmen (öffentlich bekannte Information, eigene Erfindungen pre-employment). (3) ÜBERSTUNDENABGELTUNG: Vorlage thường nói 'Überstunden sind mit dem Gehalt abgegolten' — ohne Limit. Diese Klausel ist arbeitsrechtlich problematisch wenn unbegrenzt. Đề nghị Klarstellung: pauschale Abgeltung bis X Stunden/Monat, darüber gesondert vergütet.\n\nKhác Việt Nam: ở VN, hợp đồng lao động thường được xem là Standardformular, ít đàm phán. Ở Đức, đàm phán hợp đồng pre-signing là QUYỀN của Arbeitnehmer. Sau khi ký, ändern hợp đồng cần Einverständnis của cả hai bên — schwerer.\n\nMột chi tiết quan trọng: KHÔNG verhandlen alles auf einmal. Wählen 2-3 wichtigste Klauseln. Wer fünf bis sechs Klauseln in Frage stellt, signalisiert ‚schwierig' — Arbeitgeber kann zurückziehen. Top 3 typische Anpassungen:\n1. Wettbewerbsverbot (Reichweite begrenzen)\n2. Überstundenregelung (Klarstellung mit Limit)\n3. Vertraulichkeitsklausel (Anwendungsbereich präzisieren)\n\nKündigungsfrist: thường gesetzlich (§ 622 BGB) — bốn tuần zum 15. oder Monatsende. Nếu Vertrag nói 'sechs Monate' für Mitarbeiter — đó là đối xứng với Arbeitgeber-Kündigungsfrist? Nếu chỉ Mitarbeiter có sechs Monate aber Arbeitgeber gesetzlich, das ist unverhältnismäßig. Phải đối xứng theo § 622 Abs. 6 BGB.\n\nProbezeit: tối đa sechs Monate ở Đức. Innerhalb der Probezeit: Kündigungsfrist hai tuần (§ 622 Abs. 3 BGB). Kürzere Probezeit (drei Monate) kann ausgehandelt werden.\n\nUrlaub: gesetzlich Mindestens 20 Werktage / 24 Werktage 6-Tage-Woche / 5-Tage-Woche. Marktüblich: 28-30 Werktage. Verhandeln wenn Vorlage chỉ gesetzliches Minimum.\n\nGehaltszusage Mündlich vs Schriftlich: alle Vereinbarungen ZWINGEND schriftlich im Vertrag. Mündliche Zusage des HR-Leiters ist juristisch schwer durchsetzbar.",
+    "cultural_notes_en": "Negotiating an Arbeitsvertrag (employment contract) before signing it in Germany is the STANDARD, not the exception. Germans expect a Bewerber (candidate) to read carefully and ask questions. Signing in silence reads as either unprofessional or as not understanding the contract. (1) WETTBEWERBSVERBOT (post-contractual non-compete): clause forbidding competition after leaving the company. German law: only enforceable if (a) clearly written, (b) at most 24 months, (c) the company pays a Karenzentschädigung of at least 50% of total compensation. Wettbewerbsverbot without Karenzentschädigung is nichtig (void). Many template contracts contain a 24-month EU-wide Wettbewerbsverbot that is too broad for most positions — propose narrowing on (a) Branche + (b) Region + (c) Zeit. (2) VERTRAULICHKEITSKLAUSEL (confidentiality): often very broad — covering 'all information from the employment relationship'. Propose narrowing to: 'business-critical information' with a definition + exceptions (publicly known information, own inventions pre-employment). (3) ÜBERSTUNDENABGELTUNG (overtime compensation): templates often say 'Überstunden sind mit dem Gehalt abgegolten' — without limit. Such a clause is legally problematic when unbounded. Propose a clarification: flat compensation up to X hours/month, anything beyond paid separately.\n\nContrast with cultures where employment contracts are treated as boilerplate: in Germany, pre-signing negotiation is a RIGHT of the Arbeitnehmer. After signing, changing the contract requires mutual consent — much harder.\n\nOne crucial point: do NOT negotiate everything at once. Pick the 2–3 most important clauses. Someone who questions five or six clauses signals 'difficult' — the employer may withdraw. Top 3 typical adjustments:\n1. Wettbewerbsverbot (narrow the scope)\n2. Überstundenregelung (clarify with a limit)\n3. Vertraulichkeitsklausel (narrow the scope)\n\nKündigungsfrist (notice period): the statutory default is § 622 BGB — four weeks to the 15th or end of month. If the contract says 'sechs Monate' for the employee — is that symmetric with the employer's Kündigungsfrist? If only the employee has six months but the employer the statutory minimum, that is disproportionate. Symmetry per § 622 Abs. 6 BGB.\n\nProbezeit (probation): up to six months. During probation, the Kündigungsfrist is two weeks (§ 622 Abs. 3 BGB). A shorter Probezeit (three months) can be negotiated.\n\nUrlaub (holiday): the legal minimum is 20 working days (5-day week) or 24 (6-day week). The market norm is 28–30 working days. Negotiate if the template only offers the legal minimum.\n\nGehaltszusage mündlich vs schriftlich: ALL agreements MUST be written into the contract. A verbal promise from the HR-Leiter is legally hard to enforce.",
     "tip_advice_vi": "Vor Vertragsverhandlung (1 Woche):\n1. JURIST review (optional, recommended): Anwalt für Arbeitsrecht prüft 1-2 Stunden, kostet 200-400 EUR — billigste Versicherung.\n2. KLAUSELN MARKIEREN: print Vertrag, 3 Farben — grün (OK), gelb (Klärung), rot (ändern erforderlich).\n3. PRIORISIEREN: Top 3 wichtigste Punkte. Andere mündlich erwähnen ohne fordernd.\n4. ALTERNATIVTEXT vorbereiten: nicht nur ‚X muss weg', sondern ‚X könnte ersetzt werden durch Y' — konstruktiv.\n\nIm Verhandlungsgespräch (Struktur):\n1. RAHMEN setzen: ‚Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen.'\n2. KLAUSELN benennen: konkret § + Klauseltext, nicht vage.\n3. BEGRÜNDUNG: warum problematic? — juristisch, marktüblich, persönliches Risiko.\n4. ALTERNATIV-VORSCHLAG: konkreter Text.\n5. SCHLIESSEN: ‚Diese Anpassungen sind aus meiner Sicht nicht verhandlungsschwer.'\n\nNgôn ngữ Vertragsverhandlung formal:\n- ‚Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen' (trước khi ký, tôi muốn quay lại ba điều khoản)\n- ‚In der vorliegenden Form erscheint mir X nicht tragfähig' (ở dạng hiện tại X không vững)\n- ‚X ist meines Erachtens unverhältnismäßig' (theo tôi X không tương xứng)\n- ‚Bezüglich X würde ich anregen, Y' (về X tôi xin đề nghị Y)\n- ‚Hinsichtlich X schlage ich eine Klarstellung vor' (về X tôi đề xuất làm rõ)\n- ‚Diese Anpassungen sind nicht verhandlungsschwer' (những điều chỉnh này không nặng về thương lượng)\n- ‚Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' (biểu hiện đối xứng quan hệ lao động dài hạn đòi hỏi)\n\nKhi HR sagt ‚Standardvertrag, nicht änderbar':\n- ‚Ich verstehe — gleichwohl bitte ich um Prüfung. Die genannten Klauseln betreffen meine berufliche Bewegungsfreiheit nach der Kündigung; in der jetzigen Form könnte ich nicht unterzeichnen.' (tôi hiểu — song xin được kiểm tra. Các điều khoản nêu liên quan tự do nghề nghiệp sau Kündigung; ở dạng hiện tại tôi không thể ký.)\n\nKhi HR offers Kompromiss:\n- ‚Das ist ein konstruktiver Vorschlag. Lassen Sie mich das mit meinem Anwalt durchgehen — ich melde mich Ende der Woche zurück.' (gợi ý có tính xây dựng. Cho tôi đi qua với luật sư — cuối tuần tôi báo lại.)\n\nKhi Verhandlung scheitert:\n- ‚Ich nehme zur Kenntnis, dass die Klausel nicht änderbar ist. In der vorliegenden Form sehe ich mich gezwungen, vom Vertrag Abstand zu nehmen — bedauerlich, da die Position fachlich attraktiv ist.' (tôi ghi nhận điều khoản không thể đổi. Ở dạng hiện tại tôi buộc phải rút khỏi hợp đồng — đáng tiếc vì vị trí hấp dẫn về chuyên môn.)\n\nMẹo cuối: KHÔNG ‚threats' (‚wenn nicht, gehe ich'). KHÔNG emotional. Sachlich, konkret, alternativ-orientiert. Wenn Sie wirklich gehen müssen — sagen Sie es einmal, ruhig, am Ende. Drohung wiederholen schwächt Position.",
+    "tip_advice_en": "Before contract negotiation (one week ahead):\n1. JURIST review (optional, recommended): an Anwalt für Arbeitsrecht spends 1–2 hours reviewing, charges €200–400 — the cheapest insurance you can buy.\n2. KLAUSELN MARKIEREN: print the contract, three colours — green (OK), yellow (clarify), red (must change).\n3. PRIORISIEREN: top 3 most important points. Mention others verbally without demanding.\n4. ALTERNATIVTEXT prepared: not only 'X must go', but 'X could be replaced by Y' — constructive.\n\nIn the negotiation meeting (structure):\n1. SET THE RAHMEN: 'Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen.'\n2. NAME the clauses: specific § + clause text, not vague.\n3. BEGRÜNDUNG: why is it problematic? — legally, market-typically, personal risk.\n4. ALTERNATIV-VORSCHLAG: concrete replacement text.\n5. CLOSE: 'Diese Anpassungen sind aus meiner Sicht nicht verhandlungsschwer.'\n\nFormal Vertragsverhandlung language:\n- 'Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen' (before I sign, I'd like to come back to three clauses)\n- 'In der vorliegenden Form erscheint mir X nicht tragfähig' (in the present form X does not appear tenable to me)\n- 'X ist meines Erachtens unverhältnismäßig' (X is in my judgement disproportionate)\n- 'Bezüglich X würde ich anregen, Y' (regarding X I would suggest Y)\n- 'Hinsichtlich X schlage ich eine Klarstellung vor' (regarding X I propose a clarification)\n- 'Diese Anpassungen sind nicht verhandlungsschwer' (these adjustments are not heavy negotiation-wise)\n- 'Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' (an expression of the symmetry a long-term employment relationship demands)\n\nWhen HR says 'Standardvertrag, nicht änderbar':\n- 'Ich verstehe — gleichwohl bitte ich um Prüfung. Die genannten Klauseln betreffen meine berufliche Bewegungsfreiheit nach der Kündigung; in der jetzigen Form könnte ich nicht unterzeichnen.'\n\nWhen HR offers a Kompromiss:\n- 'Das ist ein konstruktiver Vorschlag. Lassen Sie mich das mit meinem Anwalt durchgehen — ich melde mich Ende der Woche zurück.'\n\nWhen the Verhandlung fails:\n- 'Ich nehme zur Kenntnis, dass die Klausel nicht änderbar ist. In der vorliegenden Form sehe ich mich gezwungen, vom Vertrag Abstand zu nehmen — bedauerlich, da die Position fachlich attraktiv ist.'\n\nFinal tip: do NOT issue threats ('wenn nicht, gehe ich'). Do NOT be emotional. Be sachlich, konkret, alternativ-orientiert. If you really have to walk away — say so once, calmly, at the end. Repeating a threat weakens your position.",
     "vocabulary": [
       {
         "word": "der Arbeitsvertrag",
         "en": "employment contract",
         "vi": "hợp đồng lao động",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AR-baits-fe-trak"
+        "pronunciation_vi": "đe AR-baits-fe-trak",
+        "pronunciation_en": "dayr AR-byts-fer-trahk"
       },
       {
         "word": "die Vertragsklausel",
         "en": "contract clause",
         "vi": "điều khoản hợp đồng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-TRAKS-klao-zệl"
+        "pronunciation_vi": "đi fe-TRAKS-klao-zệl",
+        "pronunciation_en": "dee fer-TRAHKS-klow-zel"
       },
       {
         "word": "das Wettbewerbsverbot (nachvertraglich)",
         "en": "non-compete clause (post-contractual)",
         "vi": "điều khoản cấm cạnh tranh (sau hợp đồng)",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát VÊT-bê-vêps-fe-bôt"
+        "pronunciation_vi": "đát VÊT-bê-vêps-fe-bôt",
+        "pronunciation_en": "dahs VET-be-verps-fer-boht — German non-compete; max 24 months by law"
       },
       {
         "word": "die Karenzentschädigung",
         "en": "compensation during non-compete period",
         "vi": "bồi thường thời gian cấm cạnh tranh",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ka-RENZ-ent-shê-đi-gung"
+        "pronunciation_vi": "đi ka-RENZ-ent-shê-đi-gung",
+        "pronunciation_en": "dee kah-RENTS-ent-sheh-dee-goong — required 50%+ for Wettbewerbsverbot to be valid"
       },
       {
         "word": "die Vertraulichkeitsklausel",
         "en": "confidentiality clause",
         "vi": "điều khoản bảo mật",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-TRAU-likh-kaits-klao-zệl"
+        "pronunciation_vi": "đi fe-TRAU-likh-kaits-klao-zệl",
+        "pronunciation_en": "dee fer-TROW-likh-kites-klow-zel"
       },
       {
         "word": "die Überstundenabgeltung",
         "en": "overtime compensation arrangement",
         "vi": "bù khoán giờ làm thêm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi uy-bờ-SHTUN-đần-ap-gel-tung"
+        "pronunciation_vi": "đi uy-bờ-SHTUN-đần-ap-gel-tung",
+        "pronunciation_en": "dee ue-ber-SHTOON-den-ahp-gel-toong — rounded 'ü'"
       },
       {
         "word": "die Kündigungsfrist",
         "en": "notice period",
         "vi": "thời hạn báo trước nghỉ việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KUYN-đi-gungs-frist"
+        "pronunciation_vi": "đi KUYN-đi-gungs-frist",
+        "pronunciation_en": "dee KUEN-dee-goongs-frist — governed by § 622 BGB"
       },
       {
         "word": "die Probezeit",
         "en": "probation period",
         "vi": "thời gian thử việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PRÔ-bê-tsait"
+        "pronunciation_vi": "đi PRÔ-bê-tsait",
+        "pronunciation_en": "dee PRO-be-tsite — max 6 months in Germany"
       },
       {
         "word": "tragfähig",
         "en": "tenable, sustainable (of a clause)",
         "vi": "vững (về điều khoản)",
         "pos": "adjective",
-        "pronunciation_vi": "TRAK-fê-ikh"
+        "pronunciation_vi": "TRAK-fê-ikh",
+        "pronunciation_en": "TRAHK-feh-ikh — used of contracts/arguments that can be sustained"
       },
       {
         "word": "unverhältnismäßig",
         "en": "disproportionate",
         "vi": "không tương xứng",
         "pos": "adjective",
-        "pronunciation_vi": "un-fe-HEL-tnis-mê-sikh"
+        "pronunciation_vi": "un-fe-HEL-tnis-mê-sikh",
+        "pronunciation_en": "oon-fer-HELT-nis-meh-sikh — central legal pushback term"
       }
     ],
     "dialogue": [
@@ -4090,29 +4532,34 @@ export const lessons: GermanLesson[] = [
       "HR sagt Standardvertrag nicht änderbar. Đáp formal: ‚Ich verstehe — gleichwohl bitte ich um Prüfung. In der jetzigen Form könnte ich nicht unterzeichnen' — KHÔNG drohung, KHÔNG emotional, sachlich + alternativ-orientiert."
     ],
     "register_notes": "Vertragsverhandlung C1: ‚Sie' tuyệt đối với HR. Konjunktiv II cho Vorschläge: ‚würde ich anregen', ‚wäre denkbar', ‚schlage ich vor'. Funktionsverbgefüge: ‚in Frage stellen' (đặt vấn đề), ‚zur Kenntnis nehmen' (ghi nhận), ‚Abstand nehmen von' (rút khỏi). Khi pushback: ‚in der vorliegenden Form nicht tragfähig' / ‚unverhältnismäßig' (formal kritik). Konstruktiv: ‚würde ich anregen, X' / ‚schlage ich Y vor' — alternativ statt nur Ablehnung. Top 3 typische Klauseln: Wettbewerbsverbot, Vertraulichkeit, Überstunden. KHÔNG verhandeln 5+ Klauseln (signalisiert ‚schwierig'). KHÔNG drohung (‚sonst gehe ich'). Khi Standard-Klausel argumentiert: ‚Ich verstehe — gleichwohl bitte ich um Prüfung' (formal Pushback ohne Konfrontation). Schlüsselformel: ‚Diese Anpassungen sind nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' — kết hợp Konstruktivität + Prinzip.",
+    "register_notes_en": "C1 Vertragsverhandlung: 'Sie' is absolute with HR. Konjunktiv II for proposals: 'würde ich anregen', 'wäre denkbar', 'schlage ich vor'. Funktionsverbgefüge: 'in Frage stellen' (call into question), 'zur Kenntnis nehmen' (note), 'Abstand nehmen von' (withdraw from). When pushing back: 'in der vorliegenden Form nicht tragfähig' / 'unverhältnismäßig' (formal critique). Stay constructive: 'würde ich anregen, X' / 'schlage ich Y vor' — propose an alternative rather than only refusing. Top 3 typical clauses: Wettbewerbsverbot, Vertraulichkeit, Überstunden. Do NOT negotiate 5+ clauses (signals 'difficult'). Do NOT threaten ('sonst gehe ich'). When HR argues a standard clause: 'Ich verstehe — gleichwohl bitte ich um Prüfung' (formal pushback without confrontation). Key closing formula: 'Diese Anpassungen sind nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' — combines constructiveness with principle.",
     "idiom_glosses": [
       {
         "idiom": "die Symmetrie wahren",
         "literal": "giữ tính đối xứng",
         "meaning": "duy trì cân bằng hai bên trong hợp đồng (gehoben/standardsprachlich)",
+        "meaning_en": "to preserve the symmetry — to maintain balance between the two sides of a contract (gehoben/standardsprachlich)",
         "example": "Eine symmetrische Kündigungsfrist wahrt die Symmetrie zwischen Arbeitgeber und Arbeitnehmer."
       },
       {
         "idiom": "in trockenen Tüchern",
         "literal": "trong khăn khô",
         "meaning": "đã được giải quyết chắc chắn (standardsprachlich)",
+        "meaning_en": "in dry towels — done and dusted, 'in the bag' (standardsprachlich)",
         "example": "Sobald die drei Klauseln angepasst sind, ist der Vertrag in trockenen Tüchern."
       },
       {
         "idiom": "Hand und Fuß haben",
         "literal": "có tay và chân",
         "meaning": "có cơ sở vững chắc (standardsprachlich)",
+        "meaning_en": "to have hand and foot — to have a solid, well-grounded basis (standardsprachlich)",
         "example": "Mein Einwand zum Wettbewerbsverbot hat Hand und Fuß — ohne Karenzentschädigung ist die Klausel ohnehin nichtig."
       },
       {
         "idiom": "die Pferde scheu machen",
         "literal": "làm ngựa hoảng (gốc cưỡi ngựa)",
         "meaning": "gây hoang mang, đẩy đối phương vào defensive (gehoben/standardsprachlich)",
+        "meaning_en": "to spook the horses (equestrian origin) — to alarm the other side, push them into defensive mode (gehoben/standardsprachlich)",
         "example": "Ich verhandle gleichzeitig nur drei Klauseln — fünf wären zu viel, das macht die HR-Pferde scheu."
       }
     ],
@@ -4120,6 +4567,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Vertragsverhandlung C1:",
+        "instruction_en": "Fill in the C1 contract-negotiation structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4143,6 +4591,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ Vertragsklauseln với chức năng:",
+        "instruction_en": "Match each Vertragsklauseln term with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4166,6 +4615,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["contract negotiation"],
         "items": [
           {
@@ -4202,6 +4652,11 @@ export const lessons: GermanLesson[] = [
           "abstecken → AB-shtê-kên",
           "Bereiche → bê-RAI-khê",
           "konkurrierend → kôn-ku-RI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "abstecken → AHP-shtek-en — separable; 'to mark out (a frame)'",
+          "Bereiche → be-RY-kheh — 'areas/domains'",
+          "konkurrierend → kon-koor-EE-rent — present participle of 'konkurrieren'"
         ]
       },
       {
@@ -4211,6 +4666,11 @@ export const lessons: GermanLesson[] = [
           "Kernanforderungen → KÊN-an-fô-đê-rung-ần",
           "höchstens → HƠKH-stần",
           "einsteigen → AIN-shtai-gân"
+        ],
+        "pronunciation_focus_en": [
+          "Kernanforderungen → KAYRN-ahn-for-de-roong-en — 'core requirements'",
+          "höchstens → HUEKH-stens — rounded 'ö'; 'at most'",
+          "einsteigen → INE-shty-gen — separable verb"
         ]
       },
       {
@@ -4220,6 +4680,11 @@ export const lessons: GermanLesson[] = [
           "Klarheit → KLA-hait",
           "Übereinstimmung → UY-bê-ain-shtim-mung",
           "tatsächlich → TAT-zêkh-likh"
+        ],
+        "pronunciation_focus_en": [
+          "Klarheit → KLAHR-hite",
+          "Übereinstimmung → UE-ber-ine-shtim-moong — rounded 'ü'; 'agreement'",
+          "tatsächlich → TAHT-zekh-likh — 'actually'"
         ]
       },
       {
@@ -4229,6 +4694,11 @@ export const lessons: GermanLesson[] = [
           "vorausschicken → fô-RAOS-shi-kên",
           "moderierend → mô-đê-RI-rần",
           "gewährleisten → gê-VÊ-lai-stần"
+        ],
+        "pronunciation_focus_en": [
+          "vorausschicken → for-OWS-shik-en — 'to say in advance'",
+          "moderierend → mo-de-REE-rent — 'in a moderating capacity'",
+          "gewährleisten → ge-VAYR-lice-ten — 'to guarantee/ensure'"
         ]
       },
       {
@@ -4238,81 +4708,98 @@ export const lessons: GermanLesson[] = [
           "Sackgasse → ZAK-ga-sê",
           "zurückstellen → tsu-RUYK-shtê-lần",
           "Aggregationsebene → a-grê-ga-tsi-ÔNS-ê-bê-nê"
+        ],
+        "pronunciation_focus_en": [
+          "Sackgasse → ZAHK-gah-seh — 'dead end / cul-de-sac'",
+          "zurückstellen → tsoo-RUEK-shtel-len — separable; 'to set aside'",
+          "Aggregationsebene → ah-greh-gah-tsee-OHNS-eh-bay-neh"
         ]
       }
     ],
     "cultural_notes_vi": "Mehrparteien-Verhandlung (đàm phán nhiều bên) trong môi trường công ty Đức tuân theo quy ước rất cấu trúc. (1) ROLLENKLARHEIT: ngay từ đầu phải làm rõ ai làm Moderator, ai vertritt fachliche Position, ai entscheidet. Người Đức cực kỳ allergisch với role confusion. Câu mở chuẩn của Moderator: ‚Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. Nếu Moderator có Stake, phải nói trước: ‚Aus Engineering-Sicht würde ich später X argumentieren — heute moderiere ich neutral'. (2) STRUKTURIERTE EINSTIEG: 3-Punkte-Regel của Đức — jede Partei nennt 3 Kernanforderungen vor offener Diskussion. Tránh ‚Diskussion ohne Anker' wo people talk past each other. (3) AGGREGATIONSEBENE: nếu Sackgasse auf Detail-Ebene, escape route chuẩn = ‚auf höhere Aggregationsebene heben' — von ‚welche Klausel' về ‚welches Prinzip'. Khi tìm Prinzip-Konsens, Detail-Lösungen folgen.\n\nKhác Việt Nam: ở VN, Mehrparteien-Meeting thường có Hierarchie-strikten Ablauf — sếp cao nhất nói trước, junior cuối. Ở Đức Mehrparteien-Verhandlung, jede Partei có Stimme bất kể Hierarchie — Moderator gewährleistet Sprechzeit symmetrisch.\n\nMột chi tiết quan trọng: deutsche Mehrparteien-Verhandlung schätzt PROTOKOLL extrem. Wer das Protokoll führt, hat Macht — die Formulierung der Vereinbarung shape die Umsetzung. Khi bạn moderate, frage am Anfang: ‚Wer übernimmt das Protokoll?' — wenn niemand sich meldet, übernehmen Sie selbst (mehr Kontrolle). Schlüsselsätze müssen am Ende verifiziert werden: ‚Habe ich das richtig zusammengefasst?'.\n\nVề Konsens vs Mehrheitsentscheidung: deutsche Geschäftskultur prefer Konsens (alle stimmen zu, even reluctantly), aber wenn Konsens không khả thi, Mehrheitsentscheidung ist akzeptabel. Vermeiden ‚Tyrannei der Mehrheit' — Minderheit muss Position protokolliert kriegen.\n\nVề Verhandlungstaktik in Mehrparteien: \n- BATNA (Best Alternative to Negotiated Agreement) jeder Partei explicit machen — was passiert, wenn keine Einigung?\n- ZOPA (Zone of Possible Agreement) identifizieren — wo überlappen die Akzeptanzbereiche?\n- ANCHORING vermeiden für Moderator — wer zuerst Zahl nennt, ankert; Moderator soll nicht ankern\n\nVề Eskalation: nếu zwei Bereiche tiefer Konflikt, Moderator kann ‚Bilateral-Pause' anbieten — die zwei Bereiche reden 15 Minuten alleine, kommen mit Vorschlag zurück. Diese Technik (called ‚caucusing' in Mediation) ist akzeptiert.\n\nLanguage register: ‚Sie' tuyệt đối, kể cả wenn Teilnehmer sich kennen. Kein ‚Du' im Mehrparteien-Format — signalisiert in-group / out-group.",
+    "cultural_notes_en": "Mehrparteien-Verhandlung (multi-party negotiation) in a German corporate setting is highly structured. (1) ROLLENKLARHEIT: from the start, clarify who moderates, who represents a fachliche Position, who decides. Germans are allergic to role confusion. The canonical opener for a Moderator: 'Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. If the Moderator does have a stake, announce it up front: 'Aus Engineering-Sicht würde ich später X argumentieren — heute moderiere ich neutral'. (2) STRUCTURED OPENING: the German 3-Punkte-Regel — each party names three Kernanforderungen before open discussion. This avoids 'Diskussion ohne Anker' where people talk past each other. (3) AGGREGATIONSEBENE: if you hit a Sackgasse at the detail level, the canonical escape is 'auf höhere Aggregationsebene heben' — move from 'which clause' to 'which principle'. Once you find Prinzip-Konsens, detail solutions usually follow.\n\nContrast with cultures where the senior speaks first: in a German Mehrparteien-Verhandlung, every party has a voice regardless of hierarchy — the Moderator guarantees symmetric Sprechzeit.\n\nA crucial detail: German multi-party negotiations place enormous value on the PROTOKOLL (minutes). Whoever writes the minutes holds power — their formulation shapes the implementation. When you moderate, ask up front: 'Wer übernimmt das Protokoll?' If nobody volunteers, take it yourself (more control). Verify key sentences at the end: 'Habe ich das richtig zusammengefasst?'.\n\nOn consensus vs majority decision: German business culture prefers consensus (everyone agrees, even reluctantly), but where consensus isn't achievable, majority decision is acceptable. Avoid the 'tyranny of the majority' — the minority must have their position recorded in the Protokoll.\n\nNegotiation tactics in a multi-party setting:\n- Make each party's BATNA (Best Alternative to Negotiated Agreement) explicit — what happens if there's no deal?\n- Identify the ZOPA (Zone of Possible Agreement) — where do the acceptance ranges overlap?\n- Avoid ANCHORING as moderator — the first to name a number anchors the conversation; moderators should not anchor.\n\nOn escalation: if two areas are in deep conflict, the moderator can offer a 'Bilateral-Pause' — the two areas talk alone for 15 minutes and return with a proposal. This technique (called 'caucusing' in mediation) is well accepted.\n\nLanguage register: 'Sie' is absolute, even if the participants know each other. No 'Du' in a multi-party format — it would signal in-group / out-group.",
     "tip_advice_vi": "Vor Mehrparteien-Verhandlung (1 Tag):\n1. AGENDA strukturieren: 5 Punkte, max. 90 Minuten total. Mehr als 5 = Überforderung. Mehr als 90 = Konzentrationsverlust.\n2. PROTOKOLL-FÜHRUNG klären: wer? Manuell oder mit Tool (z.B. Confluence)?\n3. EIGENE NEUTRALITÄT prüfen: hast du Stakes in einem der Punkte? Falls ja — sage es VOR der Sitzung, nicht während.\n4. POTENZIELLE SACKGASSEN antizipieren: welche Punkte werden hart? Wie bringst du sie auf höhere Aggregationsebene?\n\nIm Verhandlungsraum (4 Phasen):\n1. RAHMEN setzen (5 Min): Ziel, Teilnehmer, Rollen, Agenda, Zeit\n2. EINSTIEG (15 Min): jede Partei 3 Kernanforderungen ohne Diskussion\n3. DISKUSSION (50 Min): Punkt-für-Punkt, Moderator gewährleistet Sprechzeit\n4. ABSCHLUSS (20 Min): Zusammenfassung der Einigungen + offene Punkte + nächste Schritte\n\nNgôn ngữ Moderator C1:\n- ‚Lassen Sie mich zunächst den Rahmen abstecken' (cho phép tôi xác định khung trước)\n- ‚Ich schlage vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert' (đề xuất mỗi bên nêu yêu cầu cốt lõi tối đa ba điểm)\n- ‚Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht' (như vậy có sự rõ ràng về nơi đã đồng thuận)\n- ‚Meine Rolle ist heute moderierend' (vai trò tôi hôm nay là điều phối)\n- ‚Sollten wir in eine Sackgasse geraten, schlage ich vor, den Punkt auf eine höhere Aggregationsebene zu heben' (nếu rơi vào ngõ cụt, đề xuất nâng lên cấp tổng hợp cao hơn)\n- ‚Habe ich das richtig zusammengefasst?' (tôi đã tóm gọn đúng chưa?)\n\nKhi Partei dominiert / monologisiert:\n- ‚Herr Müller, lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch Frau Bauer dazu die Gelegenheit hat' (anh Müller, cho tôi cắt ngang ngắn — tôi muốn đảm bảo cô Bauer cũng có cơ hội)\n- ‚Sehr produktiver Beitrag — bevor wir vertiefen, würde ich gerne die Vertriebs-Sicht hören' (đóng góp năng suất — trước khi đào sâu, xin nghe góc nhìn Bán hàng)\n\nKhi Sackgasse:\n- ‚Wir scheinen hier in eine Sackgasse zu geraten — ich schlage vor, den Punkt zurückzustellen und am Ende auf einer höheren Aggregationsebene zu lösen' (chúng ta có vẻ rơi ngõ cụt — đề xuất gác lại và giải ở cấp cao hơn cuối)\n- ‚Lassen Sie uns für fünfzehn Minuten Bilateral-Pause machen — Engineering und Vertrieb klären den Detailpunkt, wir kommen mit Vorschlag zurück' (hãy 15 phút Bilateral-Pause — Engineering và Vertrieb làm rõ chi tiết, quay lại với đề xuất)\n\nKhi Eskalation:\n- ‚Lassen Sie uns kurz innehalten — ich glaube, hier ist die Sache wichtiger als die Person. Können wir zur Sachebene zurückkehren?' (hãy dừng — vấn đề quan trọng hơn con người. Mình quay về Sachebene được không?)\n\nAbschluss-Formel:\n- ‚Lassen Sie mich zusammenfassen, was wir heute vereinbart haben: erstens X, zweitens Y, drittens Z. Offen bleiben A und B — wir treffen uns nächste Woche zu diesen Punkten. Habe ich das richtig erfasst?' (cho phép tôi tóm: thứ nhất X, thứ hai Y, thứ ba Z. Còn mở A và B — tuần sau gặp lại. Tôi nắm đúng chứ?)\n\nMẹo cuối: Moderator zu sein heißt nicht, ‚der Schiedsrichter zu spielen'. Moderator ist DIENER der Diskussion — gewährleistet Sprechzeit, fasst zusammen, hält Struktur. Wer Moderator als Macht-Position betreibt, verliert Vertrauen aller Parteien.",
+    "tip_advice_en": "Before the multi-party negotiation (1 day ahead):\n1. STRUCTURE the AGENDA: 5 points, max 90 minutes total. More than 5 = overload. More than 90 = concentration loss.\n2. CLARIFY who keeps the PROTOKOLL: manually or with a tool (e.g. Confluence)?\n3. CHECK YOUR OWN NEUTRALITY: do you have a stake in any point? If yes — say so BEFORE the meeting, not during.\n4. ANTICIPATE potential SACKGASSEN: which points will be hard? How will you lift them to a higher Aggregationsebene?\n\nIn the room (4 phases):\n1. SET THE RAHMEN (5 min): goal, participants, roles, agenda, time\n2. OPENING (15 min): each party gives 3 Kernanforderungen without discussion\n3. DISCUSSION (50 min): point-by-point, moderator ensures balanced Sprechzeit\n4. CLOSING (20 min): summary of agreements + open points + next steps\n\nC1 Moderator language:\n- 'Lassen Sie mich zunächst den Rahmen abstecken' (let me first mark out the frame)\n- 'Ich schlage vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert' (I propose each side states its core requirements in no more than three points)\n- 'Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht' (that gives us clarity on where agreement exists)\n- 'Meine Rolle ist heute moderierend' (my role today is to moderate)\n- 'Sollten wir in eine Sackgasse geraten, schlage ich vor, den Punkt auf eine höhere Aggregationsebene zu heben' (if we end up in a dead end, I propose lifting the point to a higher level of aggregation)\n- 'Habe ich das richtig zusammengefasst?' (have I summarised that correctly?)\n\nWhen a party dominates / monologues:\n- 'Herr Müller, lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch Frau Bauer dazu die Gelegenheit hat' (Mr Müller, let me briefly interrupt — I want to make sure Ms Bauer has the chance too)\n- 'Sehr produktiver Beitrag — bevor wir vertiefen, würde ich gerne die Vertriebs-Sicht hören' (very productive contribution — before we dig deeper, I'd like to hear the Sales perspective)\n\nWhen you hit a Sackgasse:\n- 'Wir scheinen hier in eine Sackgasse zu geraten — ich schlage vor, den Punkt zurückzustellen und am Ende auf einer höheren Aggregationsebene zu lösen'\n- 'Lassen Sie uns für fünfzehn Minuten Bilateral-Pause machen — Engineering und Vertrieb klären den Detailpunkt, wir kommen mit Vorschlag zurück'\n\nWhen things escalate:\n- 'Lassen Sie uns kurz innehalten — ich glaube, hier ist die Sache wichtiger als die Person. Können wir zur Sachebene zurückkehren?'\n\nClosing formula:\n- 'Lassen Sie mich zusammenfassen, was wir heute vereinbart haben: erstens X, zweitens Y, drittens Z. Offen bleiben A und B — wir treffen uns nächste Woche zu diesen Punkten. Habe ich das richtig erfasst?'\n\nFinal tip: being a moderator does NOT mean 'playing referee'. The moderator is a SERVANT of the discussion — guarantees Sprechzeit, summarises, keeps structure. Anyone who treats the moderator role as a power position loses the trust of all parties.",
     "vocabulary": [
       {
         "word": "die Mehrparteien-Verhandlung",
         "en": "multi-party negotiation",
         "vi": "đàm phán nhiều bên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi MÊ-pa-tai-ần-fe-han-đlung"
+        "pronunciation_vi": "đi MÊ-pa-tai-ần-fe-han-đlung",
+        "pronunciation_en": "dee MAYR-par-ty-en-fer-hand-loong"
       },
       {
         "word": "moderieren",
         "en": "to moderate, facilitate",
         "vi": "điều phối",
         "pos": "verb",
-        "pronunciation_vi": "mô-đê-RI-rần"
+        "pronunciation_vi": "mô-đê-RI-rần",
+        "pronunciation_en": "mo-de-REE-ren — to facilitate, not the English 'to moderate (a forum)'"
       },
       {
         "word": "die Kernanforderung",
         "en": "core requirement",
         "vi": "yêu cầu cốt lõi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KÊN-an-fô-đê-rung"
+        "pronunciation_vi": "đi KÊN-an-fô-đê-rung",
+        "pronunciation_en": "dee KAYRN-ahn-for-de-roong"
       },
       {
         "word": "die Übereinstimmung",
         "en": "agreement, alignment",
         "vi": "sự đồng thuận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UY-bê-ain-shtim-mung"
+        "pronunciation_vi": "đi UY-bê-ain-shtim-mung",
+        "pronunciation_en": "dee UE-ber-ine-shtim-moong — rounded 'ü'"
       },
       {
         "word": "die Sackgasse",
         "en": "dead end, deadlock",
         "vi": "ngõ cụt, bế tắc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZAK-ga-sê"
+        "pronunciation_vi": "đi ZAK-ga-sê",
+        "pronunciation_en": "dee ZAHK-gah-seh"
       },
       {
         "word": "die Aggregationsebene",
         "en": "level of aggregation",
         "vi": "cấp tổng hợp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi a-grê-ga-tsi-ÔNS-ê-bê-nê"
+        "pronunciation_vi": "đi a-grê-ga-tsi-ÔNS-ê-bê-nê",
+        "pronunciation_en": "dee ah-greh-gah-tsee-OHNS-eh-bay-neh"
       },
       {
         "word": "die Bilateral-Pause / das Caucusing",
         "en": "bilateral pause, caucusing",
         "vi": "tạm dừng song phương",
         "pos": "noun (f/n)",
-        "pronunciation_vi": "đi bi-la-tê-RAL-pao-zê"
+        "pronunciation_vi": "đi bi-la-tê-RAL-pao-zê",
+        "pronunciation_en": "dee bee-lah-te-RAHL-pow-zeh — borrowed mediation technique"
       },
       {
         "word": "das BATNA / die beste Alternative",
         "en": "BATNA — best alternative to negotiated agreement",
         "vi": "BATNA — phương án thay thế tốt nhất",
         "pos": "noun (n/f)",
-        "pronunciation_vi": "đát BAT-na"
+        "pronunciation_vi": "đát BAT-na",
+        "pronunciation_en": "dahs BAHT-nah — international negotiation-theory loanword (Fisher & Ury)"
       },
       {
         "word": "gewährleisten",
         "en": "to ensure, guarantee",
         "vi": "đảm bảo",
         "pos": "verb",
-        "pronunciation_vi": "gê-VÊ-lai-stần"
+        "pronunciation_vi": "gê-VÊ-lai-stần",
+        "pronunciation_en": "ge-VAYR-lice-ten — more formal than 'sicherstellen'"
       },
       {
         "word": "das Protokoll führen",
         "en": "to take minutes",
         "vi": "ghi biên bản",
         "pos": "verb phrase",
-        "pronunciation_vi": "đát prô-tô-KÔL FUY-rần"
+        "pronunciation_vi": "đát prô-tô-KÔL FUY-rần",
+        "pronunciation_en": "dahs pro-to-KOL FUE-ren — rounded 'ü'"
       }
     ],
     "dialogue": [
@@ -4425,29 +4912,34 @@ export const lessons: GermanLesson[] = [
       "Sackgasse zwischen Engineering Ressourcen-Schutz và Vertrieb Customizing-Zusage. Diễn đạt formal: ‚auf höhere Aggregationsebene heben' + đề xuất Bilateral-Pause 15 phút + Schlüsselformel Abschluss-Zusammenfassung."
     ],
     "register_notes": "Mehrparteien-Verhandlung-Moderation C1: ‚Sie' tuyệt đối với mọi Teilnehmer. Konjunktiv II cho Vorschläge: ‚Ich schlage vor, dass...', ‚Wäre denkbar...'. Funktionsverbgefüge: ‚den Rahmen abstecken' (xác định khung), ‚Klarheit verschaffen' (làm rõ), ‚in Sackgasse geraten' (rơi vào ngõ cụt), ‚auf höhere Aggregationsebene heben' (nâng cấp tổng hợp). Rollenklarheit bắt buộc: ‚Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. 3-Punkte-Regel: ‚jede Seite formuliert ihre Kernanforderungen in höchstens drei Punkten'. Khi dominiert: ‚Lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch X dazu die Gelegenheit hat'. Bilateral-Pause Tool: ‚fünfzehn Minuten Bilateral-Pause — kommen mit Vorschlag zurück'. Abschluss-Verifikation: ‚Habe ich das richtig zusammengefasst?'. KHÔNG ankert (zuerst Zahl nennen) als Moderator. KHÔNG eigene fachliche Position vertreten ohne explicite Rollen-Wechsel-Ankündigung.",
+    "register_notes_en": "C1 Mehrparteien-Verhandlung moderation: 'Sie' is absolute with every participant. Konjunktiv II for proposals: 'Ich schlage vor, dass…', 'Wäre denkbar…'. Funktionsverbgefüge: 'den Rahmen abstecken' (mark out the frame), 'Klarheit verschaffen' (provide clarity), 'in Sackgasse geraten' (end up in a dead end), 'auf höhere Aggregationsebene heben' (lift to a higher level of aggregation). Rollenklarheit is mandatory: 'Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. The 3-Punkte-Regel: 'jede Seite formuliert ihre Kernanforderungen in höchstens drei Punkten'. When dominated: 'Lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch X dazu die Gelegenheit hat'. Bilateral-Pause tool: 'fünfzehn Minuten Bilateral-Pause — kommen mit Vorschlag zurück'. Closing verification: 'Habe ich das richtig zusammengefasst?'. Do NOT anchor (name a number first) as moderator. Do NOT represent your own fachliche Position without an explicit role-switch announcement.",
     "idiom_glosses": [
       {
         "idiom": "die Fäden in der Hand halten",
         "literal": "giữ các sợi chỉ trong tay",
         "meaning": "kiểm soát quá trình (gehoben/standardsprachlich)",
+        "meaning_en": "to hold the threads in one's hand — to control the process (gehoben/standardsprachlich)",
         "example": "Als Moderator halte ich die Fäden in der Hand, ohne selbst Position zu beziehen."
       },
       {
         "idiom": "alle ins Boot holen",
         "literal": "đưa tất cả lên thuyền",
         "meaning": "đảm bảo mọi bên tham gia / đồng thuận (standardsprachlich)",
+        "meaning_en": "to get everyone into the boat — to ensure every party is on board / aligned (standardsprachlich)",
         "example": "Bevor wir entscheiden, müssen wir alle drei Bereiche ins Boot holen — sonst trägt die Vereinbarung nicht."
       },
       {
         "idiom": "auf den Tisch bringen",
         "literal": "đưa lên bàn",
         "meaning": "đặt lên bàn thảo luận, công khai (standardsprachlich)",
+        "meaning_en": "to put on the table — to make explicit, open it up for discussion (standardsprachlich)",
         "example": "Bringen wir die Konflikte auf den Tisch, statt sie in Kaffee-Pausen auszutragen."
       },
       {
         "idiom": "ein gemeinsamer Nenner",
         "literal": "một mẫu số chung",
         "meaning": "điểm đồng thuận tối thiểu (standardsprachlich)",
+        "meaning_en": "a common denominator — the minimum point of agreement (standardsprachlich)",
         "example": "Auf höherer Aggregationsebene finden wir den gemeinsamen Nenner — beide Seiten wollen Vertragsabschluss noch dieses Quartal."
       }
     ],
@@ -4455,6 +4947,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Mehrparteien-Verhandlung-Moderation C1:",
+        "instruction_en": "Fill in the C1 multi-party negotiation moderator structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4478,6 +4971,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ Mehrparteien-Verhandlung với chức năng:",
+        "instruction_en": "Match each multi-party negotiation term with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4501,6 +4995,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1 (Moderator-Rolle):",
+        "instruction_en": "Translate into formal C1 German (moderator role):",
         "pronunciation_focus": ["multi-party negotiation"],
         "items": [
           {
@@ -4537,6 +5032,11 @@ export const lessons: GermanLesson[] = [
           "Volumen-Steigerung → vô-LU-mân-shtai-gê-rung",
           "Konditionen → kôn-đi-tsi-Ô-nần",
           "angezeigt → AN-gê-tsai-kt"
+        ],
+        "pronunciation_focus_en": [
+          "Volumen-Steigerung → vo-LOO-men-shty-ge-roong",
+          "Konditionen → kon-dee-tsee-OH-nen",
+          "angezeigt → AHN-ge-tsykt — 'indicated/warranted'"
         ]
       },
       {
@@ -4546,6 +5046,11 @@ export const lessons: GermanLesson[] = [
           "Mengenrabatt → MÊN-gân-ra-bat",
           "Bestellzyklus → bê-SHTÊL-tsuy-klus",
           "verbindlich → fe-BIN-đlikh"
+        ],
+        "pronunciation_focus_en": [
+          "Mengenrabatt → MENG-en-rah-baht — 'volume discount'",
+          "Bestellzyklus → be-SHTEL-tsue-kloos — rounded 'ü'",
+          "verbindlich → fer-BIND-likh — 'binding/committed'"
         ]
       },
       {
@@ -4555,6 +5060,11 @@ export const lessons: GermanLesson[] = [
           "Lieferzeiten → LI-fê-tsai-tần",
           "Produktionsplanung → prô-đuk-tsi-ÔNS-pla-nung",
           "Tragbaren → TRAK-ba-rần"
+        ],
+        "pronunciation_focus_en": [
+          "Lieferzeiten → LEE-fer-tsy-ten — 'delivery times'",
+          "Produktionsplanung → pro-dook-tsee-OHNS-plah-noong",
+          "Tragbaren → TRAHK-bar-en — '(that which is) bearable'"
         ]
       },
       {
@@ -4564,6 +5074,11 @@ export const lessons: GermanLesson[] = [
           "Qualitätssicherung → kva-li-TÊTS-zi-khê-rung",
           "gemeinsames Audit → gê-MAIN-za-mês AO-đit",
           "durchführen → ĐUKH-fuy-rần"
+        ],
+        "pronunciation_focus_en": [
+          "Qualitätssicherung → kvah-lee-TAYTS-zee-kher-oong",
+          "gemeinsames Audit → ge-MINE-zah-mes OW-deet — English loan 'audit'",
+          "durchführen → DOORKH-fue-ren — separable; 'to conduct/carry out'"
         ]
       },
       {
@@ -4573,81 +5088,98 @@ export const lessons: GermanLesson[] = [
           "langfristig → LANG-fris-tikh",
           "Lieferzuverlässigkeit → LI-fê-tsu-fe-le-sikh-kait",
           "optimieren → ôp-ti-MI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "langfristig → LANG-fris-tikh — 'long-term'",
+          "Lieferzuverlässigkeit → LEE-fer-tsoo-fer-leh-sikh-kite — 'delivery reliability'",
+          "optimieren → op-tee-MEE-ren — 'optimise'"
         ]
       }
     ],
     "cultural_notes_vi": "Đàm phán với deutsche Lieferanten (nhà cung cấp Đức) trong B2B-Procurement có quy ước rất khác Việt Nam. (1) FACHLICHE TIEFE: deutsche Vertrieb-Repräsentant erwartet Käufer fachlich kompetent — kennt Spezifikationen, Materialeigenschaften, Toleranzen, Zertifizierungen. Wer ‚nur Preisverhandlung' macht und Spezifikationen nicht versteht, wird als ‚nicht ernsthaft' wahrgenommen. (2) PARTNERSCHAFT vs TRANSAKTION: deutsche Mittelstand-Lieferanten denken in 5-10-Jahre-Partnerschaften, nicht Single-Transaction. Wer aggressiv Preise drückt, gefährdet Lieferzuverlässigkeit für die nächsten Jahre. Konstruktiv: ‚Win-Win durch Volumen + Lieferzeiten + Qualität', nicht ‚Win-Lose durch Preisdruck'. (3) AUDIT-KULTUR: gemeinsame Audits beim Werk sind Standard für strategische Lieferanten. Annual Audit + Quartals-Performance-Reviews + Eskalationsmechanismen. Wer das ablehnt, signalisiert Misstrauen.\n\nKhác Việt Nam: Procurement Việt Nam thường aggressiv-transaktional — drücken Preise auf RFQ-Basis, wechseln Lieferanten häufig. Deutsche Lieferanten erwarten Stabilität — wenn Sie zwei Jahre nicht bestellen, sind Sie ‚außen' und kommen schwer wieder rein.\n\nMột chi tiết quan trọng: KHÔNG ‚der Wettbewerb gibt mir das billiger' (impliziter Threat-to-Switch). Diese Taktik wird in Deutschland als ‚unprofessionell' wahrgenommen — funktioniert in China-Procurement, nicht in DACH. Stattdessen: ‚Wir haben das Marktbild geprüft — Ihr Angebot liegt im oberen Drittel. Können wir gemeinsam an einer Annäherung arbeiten?'.\n\nVề Mengenrabatt-Verhandlung: deutsche Lieferanten bieten oft Staffel-Modell (5% bei +10% Volumen, 8% bei +20%, 12% bei +30%). Verhandeln das Schwellenwert nicht aggressive das Maximum.\n\nVề Lieferzeiten: deutsche Maschinenbau-Lieferanten haben oft 12-16 Wochen Standard-Lieferzeit für Sonderanfertigungen. Verkürzen kostet Aufpreis (Express-Linien). Verhandeln statt: ‚Können wir einen Forecast-Mechanismus etablieren, der Ihre Planung verbessert und unsere Lieferzeiten verkürzt?'.\n\nVề Qualitätssicherung: deutsche QS-Standards (ISO 9001, IATF 16949 für Automotive, MDR für Medizin) sind streng. Eine Klausel ‚Reklamationsrecht 30 Tage nach Wareneingang' ist Standard — verhandeln nicht weg, sondern erweitern (60 Tage für komplexe Komponenten).\n\nVề Zahlungsbedingungen: deutsche Standard ist ‚30 Tage netto' oder ‚2% Skonto bei 14 Tagen'. Skonto-Optimierung is interessant. Verhandeln Sie dafür längere Lieferantenkredit (45-60 Tage) — das hilft Cash-Flow ohne Preisanpassung beim Lieferanten zu erfordern.\n\nVề Eskalation: deutsche Mittelstand-CEO ist oft direkt erreichbar — wenn Verhandlung mit Vertrieb stuck, höfliche Anfrage an CEO ist akzeptabel. Aber: nur einmal, nicht regelmäßig. CEO-Eskalation ist ‚letzte Karte'.",
+    "cultural_notes_en": "Negotiating with deutsche Lieferanten (German suppliers) in B2B procurement has conventions that differ noticeably from Anglo norms. (1) FACHLICHE TIEFE: the German sales rep expects the buyer to be technically competent — knows specs, material properties, tolerances, certifications. Anyone doing 'just price negotiation' without understanding specs is read as 'not serious'. (2) PARTNERSCHAFT vs TRANSAKTION: German Mittelstand suppliers think in 5–10 year partnerships, not single transactions. Aggressive price pressure jeopardises delivery reliability for years to come. The constructive frame: 'Win-Win through volume + delivery times + quality', not 'Win-Lose through price pressure'. (3) AUDIT-KULTUR: joint audits at the supplier's plant are standard for strategic suppliers. Annual Audit + quarterly performance reviews + escalation mechanisms. Refusing it signals mistrust.\n\nContrast with aggressive-transactional procurement cultures (e.g. parts of US/UK or East Asian sourcing): German suppliers expect stability — if you don't order for two years you're 'out' and hard to get back in.\n\nA crucial detail: do NOT say 'der Wettbewerb gibt mir das billiger' (implicit threat to switch). In Germany this tactic reads as unprofessional — it works in China-procurement, not in DACH. Use instead: 'Wir haben das Marktbild geprüft — Ihr Angebot liegt im oberen Drittel. Können wir gemeinsam an einer Annäherung arbeiten?'.\n\nOn Mengenrabatt: German suppliers often offer a Staffel model (5% at +10% volume, 8% at +20%, 12% at +30%). Negotiate the threshold rather than aggressively pushing for the maximum.\n\nOn Lieferzeiten: German Maschinenbau suppliers typically have 12–16 week standard lead times for custom builds. Shortening costs a premium (Express lines). Negotiate by saying: 'Can we set up a forecast mechanism that improves your planning and shortens our delivery times?'.\n\nOn Qualitätssicherung: German QS standards (ISO 9001, IATF 16949 for Automotive, MDR for medical) are strict. A clause 'Reklamationsrecht 30 days after goods receipt' is standard — don't negotiate it away, extend it (60 days for complex components).\n\nOn payment terms: German standard is '30 days net' or '2% Skonto at 14 days'. Skonto optimisation is interesting. Alternatively negotiate longer supplier credit (45–60 days) — that helps cash flow without forcing a price change.\n\nOn escalation: a German Mittelstand CEO is often directly reachable — if the negotiation with sales is stuck, a polite request to the CEO is acceptable. But only once, not routinely. CEO escalation is your 'last card'.",
     "tip_advice_vi": "Vor Lieferanten-Verhandlung (1 Woche):\n1. RFQ-DATEN: aktuelle Spec, Mengen, Lieferzeiten dokumentiert.\n2. MARKTPREIS-VERGLEICH: 3 alternative Lieferanten benchmarked (auch wenn Sie nicht wechseln wollen).\n3. WIN-WIN-PUNKTE identifizieren: Volumen-Zusage, Forecast-Sharing, gemeinsames Audit, Long-Term-Vereinbarung.\n4. WALK-AWAY-Punkt definieren: bei welchem Preis / Lieferzeit gehen Sie wirklich?\n\nIm Verhandlungsgespräch (Struktur):\n1. RAHMEN: Volumen-Steigerung vorstellen (Zahlen + Zeitraum)\n2. BEGRÜNDUNG: ‚Vor diesem Hintergrund halten wir eine Anpassung für angezeigt'\n3. KONKRETER VORSCHLAG: Mengenrabatt + Bedingung (Abnahmezusage)\n4. PARTNERSCHAFT framing: ‚gemeinsame Optimierung'\n5. AUDIT / FORECAST anbieten: Win-Win-Komponente\n\nNgôn ngữ Lieferanten-Verhandlung formal:\n- ‚Vor dem Hintergrund unserer Volumen-Steigerung halten wir eine Anpassung für angezeigt' (trên cơ sở tăng volume, điều chỉnh là cần thiết)\n- ‚Konkret schlagen wir einen Mengenrabatt von X Prozent vor' (cụ thể đề xuất chiết khấu X%)\n- ‚Gekoppelt an eine verbindliche Abnahmezusage' (gắn với cam kết tiếp nhận)\n- ‚Die aktuellen Lieferzeiten sind an der Grenze des Tragbaren' (thời gian giao hiện tại ở giới hạn chịu đựng)\n- ‚Hinsichtlich der Qualitätssicherung schlagen wir vor...' (về QS đề xuất)\n- ‚Eine langfristige Partnerschaft setzt voraus, dass beide Seiten X' (đối tác dài hạn đòi hỏi cả hai bên X)\n\nKhi Lieferant resistant:\n- ‚Ich verstehe Ihre Position. Lassen Sie uns die Zahlen gemeinsam durchgehen — vielleicht finden wir auf der Volumen-Seite oder bei den Lieferzeiten Spielraum, der für beide trägt.' (tôi hiểu. Hãy cùng đi qua số liệu — có thể tìm dư địa volume hoặc lieferzeit tốt cho cả hai)\n- KHÔNG: ‚Wettbewerber gibt mir billiger' (unprofessional in DACH)\n- KHÔNG: ‚Sie müssen' (Konfrontativ)\n\nKhi Compromise möglich:\n- ‚Drei Prozent Mengenrabatt plus Forecast-Sharing klingt wie ein guter erster Schritt. Lassen Sie uns das in einem Probezeitraum von sechs Monaten testen.' (3% chiết khấu + chia sẻ forecast nghe như bước đầu tốt. Mình thử trong 6 tháng)\n\nKhi Lieferant aggressiv:\n- ‚Lassen Sie uns kurz innehalten. Beide Seiten haben Interesse an einer langfristigen Partnerschaft. Wo sehen Sie Konzessionsspielraum auf Ihrer Seite?' (mình dừng. Cả hai có lợi ích quan hệ dài hạn. Anh thấy dư địa nhượng bộ ở đâu?)\n\nMẹo cuối: deutsche Lieferanten-Verhandlung ist Marathon, nicht Sprint. Aufbauen Vertrauen über mehrere Bestellzyklen, dann größere Konzessionen. Wer auf erstem Meeting Maximum verlangt, bekommt Minimum. Geduld wird belohnt mit besseren Konditionen über Zeit + Lieferzuverlässigkeit, wenn der Markt knapp wird.",
+    "tip_advice_en": "Before the supplier negotiation (one week ahead):\n1. RFQ DATA: current spec, volumes, lead times documented.\n2. MARKET-PRICE COMPARISON: 3 alternative suppliers benchmarked (even if you don't intend to switch).\n3. IDENTIFY WIN-WIN POINTS: volume commitment, forecast sharing, joint audit, long-term agreement.\n4. DEFINE the WALK-AWAY POINT: at what price / lead time would you actually leave?\n\nIn the meeting (structure):\n1. RAHMEN: present the volume increase (numbers + timeframe)\n2. BEGRÜNDUNG: 'Vor diesem Hintergrund halten wir eine Anpassung für angezeigt'\n3. CONCRETE PROPOSAL: Mengenrabatt + condition (Abnahmezusage)\n4. PARTNERSCHAFT framing: 'gemeinsame Optimierung'\n5. OFFER AUDIT / FORECAST: a Win-Win component\n\nFormal supplier-negotiation language:\n- 'Vor dem Hintergrund unserer Volumen-Steigerung halten wir eine Anpassung für angezeigt' (given our volume increase we consider an adjustment warranted)\n- 'Konkret schlagen wir einen Mengenrabatt von X Prozent vor' (specifically we propose a volume discount of X%)\n- 'Gekoppelt an eine verbindliche Abnahmezusage' (tied to a binding purchase commitment)\n- 'Die aktuellen Lieferzeiten sind an der Grenze des Tragbaren' (current lead times are at the limit of what's bearable)\n- 'Hinsichtlich der Qualitätssicherung schlagen wir vor...' (on QS we propose…)\n- 'Eine langfristige Partnerschaft setzt voraus, dass beide Seiten X' (a long-term partnership requires both sides to X)\n\nWhen the supplier resists:\n- 'Ich verstehe Ihre Position. Lassen Sie uns die Zahlen gemeinsam durchgehen — vielleicht finden wir auf der Volumen-Seite oder bei den Lieferzeiten Spielraum, der für beide trägt.'\n- AVOID: 'Wettbewerber gibt mir billiger' (unprofessional in DACH)\n- AVOID: 'Sie müssen' (confrontational)\n\nWhen a compromise is possible:\n- 'Drei Prozent Mengenrabatt plus Forecast-Sharing klingt wie ein guter erster Schritt. Lassen Sie uns das in einem Probezeitraum von sechs Monaten testen.'\n\nWhen the supplier turns aggressive:\n- 'Lassen Sie uns kurz innehalten. Beide Seiten haben Interesse an einer langfristigen Partnerschaft. Wo sehen Sie Konzessionsspielraum auf Ihrer Seite?'\n\nFinal tip: German supplier negotiation is a marathon, not a sprint. Build trust over several order cycles, then negotiate larger concessions. Whoever demands maximum at the first meeting gets minimum. Patience is rewarded with better terms over time + delivery reliability when the market goes tight.",
     "vocabulary": [
       {
         "word": "der/die Lieferant/-in",
         "en": "supplier",
         "vi": "nhà cung cấp",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe LI-fê-rant"
+        "pronunciation_vi": "đe LI-fê-rant",
+        "pronunciation_en": "dayr LEE-fe-rahnt"
       },
       {
         "word": "die Konditionen (pl.)",
         "en": "terms, conditions (commercial)",
         "vi": "điều kiện (thương mại)",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi kôn-đi-tsi-Ô-nần"
+        "pronunciation_vi": "đi kôn-đi-tsi-Ô-nần",
+        "pronunciation_en": "dee kon-dee-tsee-OH-nen"
       },
       {
         "word": "der Mengenrabatt",
         "en": "volume discount",
         "vi": "chiết khấu khối lượng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe MÊN-gân-ra-bat"
+        "pronunciation_vi": "đe MÊN-gân-ra-bat",
+        "pronunciation_en": "dayr MENG-en-rah-baht"
       },
       {
         "word": "die Abnahmezusage",
         "en": "purchase commitment",
         "vi": "cam kết tiếp nhận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AB-na-mê-tsu-za-gê"
+        "pronunciation_vi": "đi AB-na-mê-tsu-za-gê",
+        "pronunciation_en": "dee AHP-nah-meh-tsoo-zah-geh"
       },
       {
         "word": "die Lieferzeit / Lieferzuverlässigkeit",
         "en": "delivery time / reliability",
         "vi": "thời gian giao / độ tin cậy giao",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi LI-fê-tsait"
+        "pronunciation_vi": "đi LI-fê-tsait",
+        "pronunciation_en": "dee LEE-fer-tsite / LEE-fer-tsoo-fer-leh-sikh-kite"
       },
       {
         "word": "die Qualitätssicherung",
         "en": "quality assurance",
         "vi": "đảm bảo chất lượng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi kva-li-TÊTS-zi-khê-rung"
+        "pronunciation_vi": "đi kva-li-TÊTS-zi-khê-rung",
+        "pronunciation_en": "dee kvah-lee-TAYTS-zee-kher-oong"
       },
       {
         "word": "das gemeinsame Audit",
         "en": "joint audit",
         "vi": "audit chung",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát gê-MAIN-za-mê AO-đit"
+        "pronunciation_vi": "đát gê-MAIN-za-mê AO-đit",
+        "pronunciation_en": "dahs ge-MINE-zah-meh OW-deet"
       },
       {
         "word": "der Forecast / die Bedarfsprognose",
         "en": "forecast / demand forecast",
         "vi": "dự báo nhu cầu",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe FÔ-kast"
+        "pronunciation_vi": "đe FÔ-kast",
+        "pronunciation_en": "dayr FOR-kahst — English loan"
       },
       {
         "word": "das Skonto",
         "en": "early-payment discount",
         "vi": "chiết khấu thanh toán sớm",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát SKÔN-tô"
+        "pronunciation_vi": "đát SKÔN-tô",
+        "pronunciation_en": "dahs SKON-to — Italian loan; '2% Skonto at 14 days' is standard"
       },
       {
         "word": "an der Grenze des Tragbaren",
         "en": "at the limit of what is bearable",
         "vi": "ở giới hạn chịu đựng",
         "pos": "phrase",
-        "pronunciation_vi": "an đe GREN-tsê đệs TRAK-ba-rần"
+        "pronunciation_vi": "an đe GREN-tsê đệs TRAK-ba-rần",
+        "pronunciation_en": "ahn dayr GREN-tseh des TRAHK-bar-en — formal pushback phrase"
       }
     ],
     "dialogue": [
@@ -4765,29 +5297,34 @@ export const lessons: GermanLesson[] = [
       "Đề xuất Lieferzeit-Reduktion von 12 auf 10 Wochen über Forecast-getriebene Vorfertigung mit 80% Commit-Rate. Diễn đạt Schlussformel partnership-orientiert: ‚gemeinsame Optimierung von Preis, Qualität, Lieferzuverlässigkeit'."
     ],
     "register_notes": "Lieferanten-Verhandlung C1: ‚Sie' tuyệt đối với Vertrieb. Konjunktiv II không obligatory — Indikativ direct + sachlich OK. Funktionsverbgefüge: ‚an der Grenze des Tragbaren liegen' (ở giới hạn chịu đựng), ‚in Anpassung treten' (đi vào điều chỉnh), ‚zur Geltung bringen' (làm có hiệu lực). Argument-Struktur: ‚Vor dem Hintergrund von X halten wir Y für angezeigt' (trên cơ sở X, Y là cần thiết). Konkret-Vorschlag formula: ‚Konkret schlagen wir A vor, gekoppelt an B' (cụ thể đề xuất A, gắn với B). Win-Win framing: ‚Im Gegenzug bieten wir X' (đổi lại chúng tôi đề xuất X). Partnership formula bắt buộc: ‚langfristige Partnerschaft setzt voraus, dass beide Seiten X gemeinsam optimieren'. KHÔNG ‚Wettbewerb gibt billiger' (unprofessional in DACH). KHÔNG aggressive Threats. Bewährungs-Mechanismus oft hữu ích — Probezeit + KPIs + Eskalation zu besseren Konditionen.",
+    "register_notes_en": "C1 Lieferanten-Verhandlung: 'Sie' is absolute with sales. Konjunktiv II is NOT obligatory here — direct, sachlich indicative is fine. Funktionsverbgefüge: 'an der Grenze des Tragbaren liegen' (to be at the limit of what's bearable), 'in Anpassung treten' (to enter into an adjustment), 'zur Geltung bringen' (to bring into effect). Argument structure: 'Vor dem Hintergrund von X halten wir Y für angezeigt' (against the background of X, we consider Y warranted). Concrete-proposal formula: 'Konkret schlagen wir A vor, gekoppelt an B'. Win-Win framing: 'Im Gegenzug bieten wir X'. Mandatory partnership formula: 'langfristige Partnerschaft setzt voraus, dass beide Seiten X gemeinsam optimieren'. Do NOT 'Wettbewerb gibt billiger' (reads as unprofessional in DACH). Do NOT use aggressive threats. A Bewährungs-Mechanismus is often useful — a trial period + KPIs + escalation to better terms.",
     "idiom_glosses": [
       {
         "idiom": "Hand in Hand arbeiten",
         "literal": "làm việc tay trong tay",
         "meaning": "hợp tác chặt chẽ (standardsprachlich)",
+        "meaning_en": "to work hand in hand — to cooperate closely (standardsprachlich)",
         "example": "Eine langfristige Partnerschaft funktioniert nur, wenn Procurement und Lieferant Hand in Hand arbeiten."
       },
       {
         "idiom": "den Markt sondieren",
         "literal": "thăm dò thị trường",
         "meaning": "khảo sát giá / điều kiện thị trường (gehoben/standardsprachlich)",
+        "meaning_en": "to sound out the market — to survey prices/conditions on the market (gehoben/standardsprachlich)",
         "example": "Bevor wir verhandeln, sondieren wir den Markt — drei alternative Lieferanten benchmarked."
       },
       {
         "idiom": "ein Ass im Ärmel haben",
         "literal": "có quân Át trong tay áo",
         "meaning": "có lợi thế bí mật trong đàm phán (standardsprachlich)",
+        "meaning_en": "to have an ace up one's sleeve — to hold a hidden advantage in a negotiation (standardsprachlich)",
         "example": "Mit Forecast-Sharing haben wir ein Ass im Ärmel — der Lieferant gewinnt Planungssicherheit, wir gewinnen Preisspielraum."
       },
       {
         "idiom": "die Spreu vom Weizen trennen",
         "literal": "tách trấu khỏi lúa",
         "meaning": "phân biệt cốt lõi khỏi không cần (gehoben)",
+        "meaning_en": "to separate the chaff from the wheat — to distinguish the essential from the inessential (gehoben)",
         "example": "Im Mengenrabatt-Verhandlung trennt sich die Spreu vom Weizen — strategische Lieferanten geben mehr nach als reine Transaktionsanbieter."
       }
     ],
@@ -4795,6 +5332,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Lieferanten-Verhandlung C1:",
+        "instruction_en": "Fill in the C1 supplier-negotiation structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4818,6 +5356,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ Lieferanten-Verhandlung với chức năng:",
+        "instruction_en": "Match each supplier-negotiation term with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -4841,6 +5380,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["supplier negotiation"],
         "items": [
           {
@@ -4877,6 +5417,11 @@ export const lessons: GermanLesson[] = [
           "Stoßrichtung → SHTÔS-rikh-tung",
           "Grundsatz → GRUNT-zats",
           "operativ → ô-pê-ra-TIF"
+        ],
+        "pronunciation_focus_en": [
+          "Stoßrichtung → SHTOHS-rikh-toong — 'strategic thrust'",
+          "Grundsatz → GROONT-zahts — 'principle'",
+          "operativ → o-pe-rah-TEEF — 'operational'"
         ]
       },
       {
@@ -4886,6 +5431,11 @@ export const lessons: GermanLesson[] = [
           "ambitioniert → am-bi-tsi-ô-NIT",
           "abzufedern → AB-tsu-fê-đần",
           "Migrations-Risiken → mi-gra-tsi-ÔNS-ri-zi-kân"
+        ],
+        "pronunciation_focus_en": [
+          "ambitioniert → am-bee-tsee-o-NEERT",
+          "abzufedern → AHP-tsoo-fay-dern — separable",
+          "Migrations-Risiken → mee-grah-tsee-OHNS-ree-zee-ken"
         ]
       },
       {
@@ -4895,6 +5445,11 @@ export const lessons: GermanLesson[] = [
           "anregen → AN-rê-gần",
           "frühzeitig → FRUY-tsai-tikh",
           "Anforderungsanalyse → AN-fô-đê-rungs-a-na-luy-zê"
+        ],
+        "pronunciation_focus_en": [
+          "anregen → AHN-ray-gen — 'to suggest, prompt'",
+          "frühzeitig → FRUE-tsy-tikh — rounded 'ü'; 'early on'",
+          "Anforderungsanalyse → AHN-for-de-roongs-ah-nah-lue-zeh — rounded 'ü'"
         ]
       },
       {
@@ -4904,6 +5459,11 @@ export const lessons: GermanLesson[] = [
           "Anliegen → AN-li-gân",
           "Wahrscheinlichkeit → VA-shain-likh-kait",
           "Umsetzung → UM-zê-tsung"
+        ],
+        "pronunciation_focus_en": [
+          "Anliegen → AHN-lee-gen — 'concern' (softer than 'demand')",
+          "Wahrscheinlichkeit → VAHR-shine-likh-kite — 'probability'",
+          "Umsetzung → OOM-zet-soong — 'implementation'"
         ]
       },
       {
@@ -4913,81 +5473,98 @@ export const lessons: GermanLesson[] = [
           "selbstverständlich → ZELP-st-fe-shten-likh",
           "transparent → trans-pa-RENT",
           "starten → SHTA-tần"
+        ],
+        "pronunciation_focus_en": [
+          "selbstverständlich → ZELPST-fer-shtend-likh — 'of course/naturally'",
+          "transparent → trans-pa-RENT",
+          "starten → SHTAR-ten — English loan-rooted verb"
         ]
       }
     ],
     "cultural_notes_vi": "Konstruktiver Widerspruch gegenüber Führung trong văn hóa công ty Đức tuân theo Streitkultur principle — pushback ist Teil der professionellen Pflicht, nicht Verstoß gegen Hierarchie. (1) WIDERSPRUCH ALS LOYALITÄT: deutsche Führung erwartet, dass kompetente Mitarbeiter Risiken aufzeigen, BEVOR die Entscheidung umgesetzt wird. ‚Ja-Sager' wird als ‚nicht denkend' wahrgenommen. Câu chuẩn của Direktorin nach gutem Pushback: ‚Vielen Dank, dass Sie das angesprochen haben — das hatten wir nicht ausreichend bedacht'. (2) SACHE vs PERSON: pushback bắt buộc auf Sachebene — ‚der Zeitplan ist ambitioniert', không ‚Sie haben das schlecht durchdacht'. Persönliche Kritik = Karriereschaden. Kritik an der Sache = Karriereförderung. (3) LOYALITÄT NACH ENTSCHEIDUNG: nach pushback, wenn Direktorin trotzdem an Entscheidung festhält, MUSS Mitarbeiter loyal umsetzen. Câu chuẩn: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'. ‚Disagree and commit' (Bezos-formel) ist auch deutsche Norm — wer nach Entscheidung weiter widerspricht, untergräbt Vertrauen.\n\nKhác Việt Nam: trong văn hóa Việt, junior widersprechen senior leader öffentlich là rất nhạy cảm — thường ‚behind closed doors' oder gar nicht. Ở Đức, öffentlicher Widerspruch in Meetings ist normal, solange sachlich. Nhiều VN-trained scholars haben Schwierigkeit mit dieser kulturelle Norm.\n\nMột chi tiết quan trọng: TIMING ist entscheidend. Pushback BEVOR Entscheidung getroffen ist = produktiv. Pushback NACH öffentlicher Verkündung der Entscheidung = Loyalitätsproblem. Wenn die CEO eine Strategie auf Hauptversammlung verkündet hat, ist es zu spät für ‚das halte ich für falsch' — auch wenn Sie das tatsächlich für falsch halten.\n\nVề ‚Anliegen' vs ‚Forderung': formal Pushback formuliert sich als ‚Anliegen' (concern, not demand). ‚Mein Anliegen ist...' weicher als ‚Ich fordere...'. Anliegen impliziert: ich bringe es ein, Sie entscheiden.\n\nVề Schriftlichkeit: nach kritischem Mündlich-Pushback empfiehlt sich Memo per E-Mail — ‚zur Dokumentation der besprochenen Risiken'. Diese Memo schützt Sie, wenn die Entscheidung schiefgeht (‚ich hatte ja gewarnt'). Memo nicht aggressive — sachlich Risikodokumentation.\n\nVề Eskalation: wenn direkter Vorgesetzter pushback ablehnt und Sie weiterhin schwere Bedenken haben, Eskalation zum Vorgesetzten des Vorgesetzten möglich, aber NUR mit Ankündigung an direkten Vorgesetzten zuerst (‚Ich werde mit Frau Direktorin direkt reden — ich informiere Sie'). Eskalation hinter dem Rücken = professionelles Selbstmord.\n\nVề Compliance-Risiken: wenn Pushback Compliance / Recht / Sicherheit betrifft (z.B. Datenschutz-Verletzung, illegale Praxis), ist Eskalation an Compliance-Officer / Betriebsrat nicht nur erlaubt, sondern Pflicht (‚Whistleblower-Schutz' nach HinSchG seit 2023).",
+    "cultural_notes_en": "Constructive pushback toward leadership in a German company follows Streitkultur principle — pushback is part of your professional duty, not a violation of hierarchy. (1) WIDERSPRUCH ALS LOYALITÄT: German leadership expects competent employees to surface risks BEFORE the decision is implemented. A 'Ja-Sager' (yes-man) reads as 'not thinking'. The canonical response from a Direktorin after good pushback: 'Vielen Dank, dass Sie das angesprochen haben — das hatten wir nicht ausreichend bedacht'. (2) SACHE vs PERSON: pushback must stay on the Sachebene — 'the timeline is ambitious', not 'you haven't thought this through'. Personal criticism damages your career. Criticism of the matter advances it. (3) LOYALTY AFTER THE DECISION: if the Direktorin sticks with the decision after your pushback, you MUST loyally implement it. Canonical phrase: 'Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'. 'Disagree and commit' (the Bezos formula) is also the German norm — continuing to push back after the decision undermines trust.\n\nContrast with cultures where junior staff don't publicly disagree with senior leaders: in many Asian or hierarchical workplaces, public pushback is risky — it usually happens behind closed doors or not at all. In Germany, public disagreement in meetings is normal, as long as it stays sachlich. Many leaders from those cultures struggle with this norm.\n\nA crucial detail: TIMING is decisive. Pushback BEFORE the decision is made = productive. Pushback AFTER the public announcement of the decision = a loyalty problem. If the CEO has announced a strategy at the Hauptversammlung (annual general meeting), it's too late for 'I think that's wrong' — even if you genuinely think it is.\n\nOn 'Anliegen' vs 'Forderung': formal pushback is framed as an 'Anliegen' (a concern, not a demand). 'Mein Anliegen ist…' is softer than 'Ich fordere…'. 'Anliegen' implies: I'm raising it, you decide.\n\nOn writing it down: after a critical oral pushback, send a memo by email — 'zur Dokumentation der besprochenen Risiken'. The memo protects you if the decision goes wrong ('I did warn'). Keep the memo non-aggressive — sachliche Risikodokumentation.\n\nOn escalation: if your direct supervisor rejects your pushback and you still have serious concerns, escalating to their supervisor is possible — but ONLY after announcing it to your direct supervisor first ('Ich werde mit Frau Direktorin direkt reden — ich informiere Sie'). Escalation behind their back is professional suicide.\n\nOn compliance risks: if your pushback concerns compliance / law / safety (e.g. data-protection violation, illegal practice), escalation to the Compliance-Officer / Betriebsrat is not only allowed but mandatory ('Whistleblower-Schutz' per HinSchG since 2023).",
     "tip_advice_vi": "Vor Pushback-Gespräch (Vorbereitung):\n1. ZIEL klären: Risiken aufzeigen ODER Entscheidung kippen? Letzteres ist viel schwerer und braucht stärkere Argumente.\n2. SACHEBENE: 2-3 konkrete operative Risiken, mit Wahrscheinlichkeit und Impact.\n3. ALTERNATIV-VORSCHLAG: was würden Sie stattdessen tun? — Pushback ohne Alternativ ist Lamento, nicht Beratung.\n4. LOYALITÄTS-ZUSICHERUNG: vorbereiten — ‚Sollten Sie das anders sehen, übernehme ich die Linie' am Ende.\n\nIm Gespräch (5-Schritte-Struktur):\n1. ZUSTIMMUNG zur strategischen Stoßrichtung (1 Satz): ‚Ich teile die strategische Stoßrichtung im Grundsatz'\n2. ANKÜNDIGUNG: ‚möchte jedoch zwei Punkte zur Diskussion stellen'\n3. RISIKEN nennen: konkret, mit Begründung\n4. ALTERNATIVE / MITIGATION: was würden Sie tun?\n5. LOYALITÄTS-ZUSICHERUNG: ‚Sollten Sie das anders sehen, übernehme ich die Linie'\n\nNgôn ngữ Konstruktiver Widerspruch C1:\n- ‚Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen' (chia sẻ định hướng chiến lược căn bản, song muốn đưa hai điểm ra thảo luận)\n- ‚Aus operativer Sicht erscheinen mir folgende Punkte problematisch' (từ góc vận hành các điểm sau có vẻ có vấn đề)\n- ‚Ich halte X für ambitioniert / problematisch / unzureichend' (tôi cho X là đầy tham vọng / có vấn đề / không đủ)\n- ‚Meines Erachtens reicht Y nicht aus, um Z abzufedern' (theo tôi Y không đủ để giảm thiểu Z)\n- ‚Ich würde anregen, dass...' (tôi xin đề nghị)\n- ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern' (mối quan tâm của tôi không phải đặt vấn đề về quyết định, mà giúp triển khai)\n- ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie' (nếu chị nhìn khác, tôi tất nhiên theo chỉ đạo)\n\nKhi Direktorin annahmiert (‚Sie verstehen die Strategie nicht'):\n- ‚Ich verstehe die strategische Logik — meine Bedenken betreffen die operative Umsetzung. Können wir das auseinanderhalten?' (tôi hiểu logic chiến lược — quan ngại của tôi về triển khai vận hành. Mình tách ra được không?)\n\nKhi Direktorin akzeptiert pushback teilweise:\n- ‚Vielen Dank, dass Sie den Punkt aufnehmen. Lassen Sie uns konkret werden — was wäre ein realistischer Zeitplan?' (cám ơn chị đã tiếp nhận. Cụ thể — kế hoạch thời gian thực tế là gì?)\n\nKhi Direktorin festhält an Entscheidung:\n- ‚Ich nehme das zur Kenntnis. Selbstverständlich übernehme ich die Linie — ich wollte die Risiken transparent gemacht haben, bevor wir starten. Können wir die Mitigation-Maßnahmen kurz besprechen?' (tôi ghi nhận. Tất nhiên tôi theo chỉ đạo — tôi muốn làm minh bạch rủi ro trước khi bắt đầu. Mình bàn ngắn các biện pháp giảm thiểu được không?)\n\nNach Gespräch — Memo (1 Tag):\n- ‚Liebe Frau Direktorin, vielen Dank für das offene Gespräch heute. Zur Dokumentation halte ich die diskutierten Risiken kurz fest: 1. Zeitplan-Risiko (geschätzt mittelhoch); 2. Engineering-Einbindung (geschätzt hoch). Mitigation-Maßnahmen wie besprochen: A, B, C. Ich starte wie vereinbart Montag mit der Umsetzung. Mit besten Grüßen, Linh.'\n\nMẹo cuối: Pushback ist Karriere-Stärkung wenn richtig gemacht — Loyalitäts-Beweis durch Mut + Sachlichkeit. Wer NIE pushback macht, wird als ‚nicht selbst denkend' wahrgenommen. Wer ZU OFT pushback macht, als ‚schwierig'. Sweet spot: 2-3 substantielle Pushbacks pro Jahr auf strategische Entscheidungen.",
+    "tip_advice_en": "Before the pushback conversation:\n1. CLARIFY your goal: surface risks OR overturn the decision? The latter is much harder and needs stronger arguments.\n2. SACHEBENE: 2–3 concrete operational risks, with probability and impact.\n3. PROPOSE AN ALTERNATIVE: what would you do instead? Pushback without an alternative is lament, not advice.\n4. PREPARE THE LOYALTY ASSURANCE: 'Sollten Sie das anders sehen, übernehme ich die Linie' at the end.\n\nIn the meeting (5-step structure):\n1. AGREEMENT with the strategic Stoßrichtung (1 sentence): 'Ich teile die strategische Stoßrichtung im Grundsatz'\n2. ANNOUNCE the pushback: 'möchte jedoch zwei Punkte zur Diskussion stellen'\n3. NAME the risks: concrete, with reasoning\n4. ALTERNATIVE / MITIGATION: what would you do?\n5. LOYALTY ASSURANCE: 'Sollten Sie das anders sehen, übernehme ich die Linie'\n\nC1 Konstruktiver Widerspruch language:\n- 'Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen'\n- 'Aus operativer Sicht erscheinen mir folgende Punkte problematisch'\n- 'Ich halte X für ambitioniert / problematisch / unzureichend'\n- 'Meines Erachtens reicht Y nicht aus, um Z abzufedern'\n- 'Ich würde anregen, dass...'\n- 'Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- 'Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\n\nWhen the Direktorin assumes ('Sie verstehen die Strategie nicht'):\n- 'Ich verstehe die strategische Logik — meine Bedenken betreffen die operative Umsetzung. Können wir das auseinanderhalten?'\n\nWhen the Direktorin partially accepts the pushback:\n- 'Vielen Dank, dass Sie den Punkt aufnehmen. Lassen Sie uns konkret werden — was wäre ein realistischer Zeitplan?'\n\nWhen the Direktorin sticks with the decision:\n- 'Ich nehme das zur Kenntnis. Selbstverständlich übernehme ich die Linie — ich wollte die Risiken transparent gemacht haben, bevor wir starten. Können wir die Mitigation-Maßnahmen kurz besprechen?'\n\nAfter the meeting — memo (within 1 day):\n- 'Liebe Frau Direktorin, vielen Dank für das offene Gespräch heute. Zur Dokumentation halte ich die diskutierten Risiken kurz fest: 1. Zeitplan-Risiko (geschätzt mittelhoch); 2. Engineering-Einbindung (geschätzt hoch). Mitigation-Maßnahmen wie besprochen: A, B, C. Ich starte wie vereinbart Montag mit der Umsetzung. Mit besten Grüßen, Linh.'\n\nFinal tip: pushback is a CAREER strengthener when done well — proof of loyalty through courage + factuality. Anyone who NEVER pushes back is read as 'not thinking independently'. Anyone who pushes back TOO OFTEN is read as 'difficult'. Sweet spot: 2–3 substantive Pushbacks per year on strategic decisions.",
     "vocabulary": [
       {
         "word": "der konstruktive Widerspruch",
         "en": "constructive pushback",
         "vi": "phản đối có tính xây dựng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe kôn-struk-TI-vê VI-đê-shpruk"
+        "pronunciation_vi": "đe kôn-struk-TI-vê VI-đê-shpruk",
+        "pronunciation_en": "dayr kon-strook-TEE-veh VEE-der-shprookh"
       },
       {
         "word": "die Stoßrichtung",
         "en": "strategic direction, thrust",
         "vi": "định hướng chiến lược",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHTÔS-rikh-tung"
+        "pronunciation_vi": "đi SHTÔS-rikh-tung",
+        "pronunciation_en": "dee SHTOHS-rikh-toong"
       },
       {
         "word": "im Grundsatz",
         "en": "in principle",
         "vi": "về căn bản",
         "pos": "phrase",
-        "pronunciation_vi": "im GRUNT-zats"
+        "pronunciation_vi": "im GRUNT-zats",
+        "pronunciation_en": "im GROONT-zahts — formal hedge for partial agreement"
       },
       {
         "word": "operativ",
         "en": "operational",
         "vi": "vận hành",
         "pos": "adjective",
-        "pronunciation_vi": "ô-pê-ra-TIF"
+        "pronunciation_vi": "ô-pê-ra-TIF",
+        "pronunciation_en": "o-pe-rah-TEEF — distinct from 'strategisch'"
       },
       {
         "word": "ambitioniert",
         "en": "ambitious",
         "vi": "đầy tham vọng",
         "pos": "adjective",
-        "pronunciation_vi": "am-bi-tsi-ô-NIT"
+        "pronunciation_vi": "am-bi-tsi-ô-NIT",
+        "pronunciation_en": "am-bee-tsee-o-NEERT — diplomatic substitute for 'too optimistic'"
       },
       {
         "word": "abfedern",
         "en": "to cushion, mitigate",
         "vi": "giảm thiểu",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "AB-fê-đần"
+        "pronunciation_vi": "AB-fê-đần",
+        "pronunciation_en": "AHP-fay-dern"
       },
       {
         "word": "die Migrations-Risiken (pl.)",
         "en": "migration risks",
         "vi": "rủi ro migration",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi mi-gra-tsi-ÔNS-ri-zi-kân"
+        "pronunciation_vi": "đi mi-gra-tsi-ÔNS-ri-zi-kân",
+        "pronunciation_en": "dee mee-grah-tsee-OHNS-ree-zee-ken"
       },
       {
         "word": "das Anliegen",
         "en": "concern, request (formal)",
         "vi": "mối quan tâm (formal)",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát AN-li-gân"
+        "pronunciation_vi": "đát AN-li-gân",
+        "pronunciation_en": "dahs AHN-lee-gen — softer than 'Forderung'"
       },
       {
         "word": "die Linie übernehmen",
         "en": "to follow the official line",
         "vi": "theo chỉ đạo chính thức",
         "pos": "verb phrase",
-        "pronunciation_vi": "đi LI-ni-ê uy-bờ-NÊ-mần"
+        "pronunciation_vi": "đi LI-ni-ê uy-bờ-NÊ-mần",
+        "pronunciation_en": "dee LEE-nee-eh ue-ber-NAY-men — rounded 'ü'"
       },
       {
         "word": "das Mitigation-Maßnahmen",
         "en": "mitigation measures",
         "vi": "biện pháp giảm thiểu",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đát mi-ti-GA-tsi-ôn-mas-na-mần"
+        "pronunciation_vi": "đát mi-ti-GA-tsi-ôn-mas-na-mần",
+        "pronunciation_en": "die mee-tee-GAH-tsee-ohn-mahs-nah-men — Latinate hybrid"
       }
     ],
     "dialogue": [
@@ -5110,29 +5687,34 @@ export const lessons: GermanLesson[] = [
       "CEO setzt rote Linie bei 15 Wochen vs 17 Wochen vorgeschlagen. Diễn đạt Kompromiss + Loyalitäts-Zusicherung: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Risiken transparent gemacht haben'."
     ],
     "register_notes": "Konstruktiver Widerspruch C1: ‚Sie' tuyệt đối với Direktorin/Geschäftsführung. Konjunktiv II cho Vorschläge: ‚würde ich anregen', ‚wäre denkbar', ‚halte X für ambitioniert'. Funktionsverbgefüge: ‚zur Diskussion stellen' (đưa ra thảo luận), ‚in Frage stellen' (đặt vấn đề), ‚Risiken abfedern' (giảm thiểu rủi ro), ‚die Linie übernehmen' (theo chỉ đạo). 5-Schritte-Struktur bắt buộc: Zustimmung → Ankündigung → Risiken → Alternative → Loyalitäts-Zusicherung. Schlüsselformeln:\n- Mở đầu: ‚Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch...'\n- Reframing: ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- Kết: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\nKHÔNG ‚Sie haben das nicht durchdacht' (Personalisierung). KHÔNG persönliche Kritik. KHÔNG Pushback nach öffentlicher Verkündung. ‚Anliegen' weicher als ‚Forderung'. Memo nach Pushback empfehlenswert für Dokumentation.",
+    "register_notes_en": "C1 Konstruktiver Widerspruch: 'Sie' is absolute with the Direktorin/Geschäftsführung. Konjunktiv II for proposals: 'würde ich anregen', 'wäre denkbar', 'halte X für ambitioniert'. Funktionsverbgefüge: 'zur Diskussion stellen' (put up for discussion), 'in Frage stellen' (call into question), 'Risiken abfedern' (mitigate risks), 'die Linie übernehmen' (follow the official line). The 5-step structure is mandatory: Zustimmung → Ankündigung → Risiken → Alternative → Loyalitäts-Zusicherung. Key formulas:\n- Opener: 'Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch...'\n- Reframing: 'Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- Close: 'Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\nDo NOT 'Sie haben das nicht durchdacht' (personalises). Avoid personal criticism. Avoid pushback after public announcement of the decision. 'Anliegen' is softer than 'Forderung'. A memo after the pushback is recommended for documentation.",
     "idiom_glosses": [
       {
         "idiom": "den Finger in die Wunde legen",
         "literal": "đặt ngón tay vào vết thương",
         "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
+        "meaning_en": "to lay one's finger in the wound — to point precisely to a weakness (gehoben/standardsprachlich)",
         "example": "Mit dem Hinweis auf das Bauer-Beispiel haben Sie den Finger in die Wunde gelegt — das war damals tatsächlich vermeidbar."
       },
       {
         "idiom": "Klartext reden",
         "literal": "nói chữ rõ",
         "meaning": "nói thẳng không vòng vo (standardsprachlich)",
+        "meaning_en": "to talk plainly — speak directly, no beating around the bush (standardsprachlich)",
         "example": "Lassen Sie mich Klartext reden: der Zeitplan ist mit den vorhandenen Ressourcen nicht haltbar."
       },
       {
         "idiom": "die rote Linie",
         "literal": "đường đỏ",
         "meaning": "giới hạn cuối không thể vượt (standardsprachlich)",
+        "meaning_en": "the red line — the final non-negotiable limit (standardsprachlich)",
         "example": "Fünfzehn Wochen wären meine rote Linie — alles darüber kann ich der Geschäftsführung nicht vermitteln."
       },
       {
         "idiom": "auf einen gemeinsamen Nenner kommen",
         "literal": "đến mẫu số chung",
         "meaning": "đạt đồng thuận (standardsprachlich)",
+        "meaning_en": "to arrive at a common denominator — to reach agreement (standardsprachlich)",
         "example": "Wir kommen auf einen gemeinsamen Nenner — sechzehn Wochen mit integrierter Stabilisierung."
       }
     ],
@@ -5140,6 +5722,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Konstruktiver Widerspruch C1:",
+        "instruction_en": "Fill in the C1 constructive-pushback structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5163,6 +5746,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối khái niệm Konstruktiver Widerspruch với chức năng:",
+        "instruction_en": "Match each constructive-pushback concept with its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5186,6 +5770,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["constructive pushback"],
         "items": [
           {
@@ -5222,6 +5807,11 @@ export const lessons: GermanLesson[] = [
           "interkulturell → in-tê-kul-tu-RÊL",
           "stillschweigend → SHTIL-shvai-gân",
           "vorauszusetzen → fô-RAOS-tsu-zê-tsên"
+        ],
+        "pronunciation_focus_en": [
+          "interkulturell → in-ter-kool-too-REL",
+          "stillschweigend → SHTIL-shvy-gent — 'silently / tacitly'",
+          "vorauszusetzen → for-OWS-tsoo-zet-tsen"
         ]
       },
       {
@@ -5231,6 +5821,11 @@ export const lessons: GermanLesson[] = [
           "Direktheit → đi-RÊK-t-hait",
           "Mangel → MAN-gệl",
           "Höflichkeit → HƠF-likh-kait"
+        ],
+        "pronunciation_focus_en": [
+          "Direktheit → dee-REKT-hite",
+          "Mangel → MAHN-gel — 'shortage/lack'",
+          "Höflichkeit → HUEF-likh-kite — rounded 'ö'"
         ]
       },
       {
@@ -5240,6 +5835,11 @@ export const lessons: GermanLesson[] = [
           "Verhandlungsrunde → fe-HAN-đlungs-run-đê",
           "Erwartungsabgleich → e-VA-tungs-ap-glaikh",
           "prozedural → prô-tsê-đu-RAL"
+        ],
+        "pronunciation_focus_en": [
+          "Verhandlungsrunde → fer-HAND-loongs-roon-deh",
+          "Erwartungsabgleich → er-VAR-toongs-ahp-glykh — 'expectation alignment'",
+          "prozedural → pro-tse-doo-RAHL"
         ]
       },
       {
@@ -5249,6 +5849,11 @@ export const lessons: GermanLesson[] = [
           "Konfrontation → kôn-frôn-ta-tsi-ÔN",
           "Beziehungsverletzung → bê-TSI-ungs-fe-let-tsung",
           "registriert → rê-gis-TRIT"
+        ],
+        "pronunciation_focus_en": [
+          "Konfrontation → kon-fron-tah-tsee-OHN",
+          "Beziehungsverletzung → be-TSEE-oongs-fer-let-tsoong",
+          "registriert → reh-gis-TREERT"
         ]
       },
       {
@@ -5258,81 +5863,98 @@ export const lessons: GermanLesson[] = [
           "Bindeglied → BIN-đê-glit",
           "agieren → a-GI-rần",
           "produktiv → prô-đuk-TIF"
+        ],
+        "pronunciation_focus_en": [
+          "Bindeglied → BIN-de-gleet — 'link/bridge'",
+          "agieren → ah-GEE-ren — 'to act/operate'",
+          "produktiv → pro-dook-TEEF"
         ]
       }
     ],
     "cultural_notes_vi": "Đàm phán liên văn hóa Đức/Việt có ba điểm xung đột phổ biến mà C1-Profis phải biết. (1) DIREKTHEIT vs HÖFLICHKEIT: deutsche Norm = direct = respect (saying what you think shows you take other side seriously). vietnamese Norm = indirect = respect (preserving harmony, not putting other in awkward position). Khi deutsche Verhandlungspartnerin sagt ‚das ist nicht akzeptabel' — vietnamesische counterpart hört ‚Beziehungsabbruch'. Khi vietnamesische counterpart sagt ‚vielleicht überlegen wir das nochmal' — deutsche Verhandlungspartnerin hört ‚alles offen'. Beide haben Recht in ihrer Kultur — Übersetzungsleistung ist nötig. (2) ZEIT-HORIZONT: deutsche Geschäftskultur = explicit deadlines, klare Meilensteine. vietnamesische Geschäftskultur = relationship first, deadlines fluid. Khi deutsche Seite sagt ‚wir brauchen das bis Freitag' — das ist hard deadline. Khi vietnamesische Seite sagt ‚wir machen das so schnell wie möglich' — das ist ehrliche Absicht ohne hard commitment. Misunderstanding produziert Frustration auf beiden Seiten. (3) ENTSCHEIDUNGSFINDUNG: deutsche Norm = decision in meeting, dann delegated. vietnamesische Norm = consensus internally first, decision presented. Khi deutsche Seite drängt auf decision in meeting — vietnamesische Seite ist überrumpelt, weil sie noch nicht intern abgestimmt hat.\n\nKhác Việt Nam: in Vietnam, ein vietnamesisch-vietnamesischer Verhandler nutzt indirekte Sprache + relationship-building selbstverständlich. Wenn beide Seiten interkulturell sind (deutsche Firma + vietnamesischer Verhandler), die rolle des Vietnamesen pivot — er muss BEIDE Modi beherrschen.\n\nMột chi tiết quan trọng: ‚face' (Gesicht) ist concept im vietnamesischen Kontext aber không direkt in deutscher Geschäftskultur. Wenn deutsche Verhandlungspartnerin öffentlich vietnamesische Counterpart kritisiert ‚das war ein Fehler' — das ist Gesichtsverlust. Übersetzung in deutsche Norm: kritik privat, sachlich, ohne demütigendes Vokabular.\n\nVề Erwartungsabgleich (expectation alignment): Pre-Negotiation Phase 5-10 Minuten, beide Seiten benennen prozedurale Erwartungen — wie wird entschieden, in welcher Sprache, mit welchen Zwischenphasen. Diese Phase oft entscheidet über Erfolg.\n\nVề ‚Bindeglied'-Rolle: bilingual / bicultural Verhandler hat Brückenfunktion. Câu chuẩn: ‚Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann — nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen'. Wichtig: ‚productive Konflikt-Machung' nicht ‚Konflikt-Vermeidung'. Vermeidung produziert nur verzögerte Eskalation.\n\nVề Sprachwahl: wenn beide Seiten English sprechen, often besser als Deutsch oder Vietnamesisch — neutralizes power asymmetry. Aber: technical concepts oft besser in deutscher Originalsprache (Vorvertrag, Geheimhaltungsvereinbarung — präziser im Original). Code-Switching ist akzeptiert wenn alle Teilnehmer mitkommen.",
+    "cultural_notes_en": "Intercultural German/Vietnamese negotiation has three recurring flashpoints that any C1 professional must know. (1) DIREKTHEIT vs HÖFLICHKEIT: the German norm = direct = respect (saying what you think shows you take the other side seriously). The Vietnamese norm = indirect = respect (preserving harmony, not putting the other person in an awkward spot). When the German negotiator says 'das ist nicht akzeptabel', the Vietnamese counterpart hears 'relationship rupture'. When the Vietnamese counterpart says 'vielleicht überlegen wir das nochmal', the German negotiator hears 'everything still open'. Both are right within their culture — a translation effort is required. (2) TIME HORIZON: German business culture = explicit deadlines, clear milestones. Vietnamese business culture = relationship first, deadlines fluid. When the German side says 'wir brauchen das bis Freitag' — that's a hard deadline. When the Vietnamese side says 'wir machen das so schnell wie möglich' — that's an honest intent without hard commitment. The misunderstanding generates frustration on both sides. (3) DECISION-MAKING: the German norm = decide in the meeting, then delegate. The Vietnamese norm = build internal consensus first, then present the decision. When the German side pushes for a decision in the meeting, the Vietnamese side feels ambushed because they haven't aligned internally yet.\n\nNuance: in Vietnam, a Vietnamese-Vietnamese negotiator uses indirect language + relationship-building by default. Once it's intercultural (German firm + Vietnamese negotiator), the Vietnamese counterpart's role pivots — they have to operate in BOTH modes.\n\nOne crucial detail: 'face' (Gesicht) is a Vietnamese-context concept that doesn't map directly to German business culture. If a German negotiator publicly criticises a Vietnamese counterpart with 'das war ein Fehler' — that's loss of face. The translation into German norms: criticism in private, sachlich, no humiliating vocabulary.\n\nOn Erwartungsabgleich (expectation alignment): a 5–10 minute pre-negotiation phase in which both sides name their procedural expectations — how decisions get made, in which language, with which intermediate phases. This phase often determines success.\n\nOn the 'Bindeglied' role: a bilingual / bicultural negotiator serves a bridge function. Canonical phrase: 'Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann — nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen'. Crucially: 'making conflict productive', not 'avoiding conflict'. Avoidance just delays escalation.\n\nOn language choice: if both sides speak English, it's often better than German or Vietnamese — it neutralises a power asymmetry. But technical concepts are often more precise in the German original (Vorvertrag, Geheimhaltungsvereinbarung). Code-switching is fine as long as everyone in the room can follow.",
     "tip_advice_vi": "Vor Interkultureller Verhandlung (Vorbereitung 1 Woche):\n1. KULTURELLE ERWARTUNGEN auflisten — beide Seiten. Direktheit-Skala? Zeit-Horizont? Entscheidungsfindung?\n2. SPRACHWAHL klären — Englisch (neutral), Deutsch (Heimvorteil DE), Vietnamesisch (Heimvorteil VN), oder Code-Switching mit Übersetzer-Backup?\n3. ZEITPLAN großzügig — interkulturelle Verhandlung dauert 30-50% länger als monokulturelle. Plan accordingly.\n4. BINDEGLIED-ROLLE klären: spielen Sie diese Rolle? Wenn ja, transparent kommunizieren.\n\nIm Verhandlungsraum (4-Phasen-Struktur):\n1. ERWARTUNGSABGLEICH (10 Min): beide Seiten benennen prozedurale Erwartungen\n2. RELATIONSHIP-PHASE (15 Min): Smalltalk, gemeinsame Bezugspunkte, persönliche Themen — wichtig für VN-Norm\n3. SACH-DISKUSSION (60-90 Min): Inhalte, Abwechseln direkter und indirekter Modi je nach Sprecher\n4. ZUSAMMENFASSUNG (15 Min): explicit, schriftlich verifiziert — Standard-deutsch, aber gegen-prüft mit VN-Seite ‚habe ich das richtig erfasst?'\n\nNgôn ngữ Interkulturelle Verhandlung C1:\n- ‚Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen' (đàm phán liên văn hóa thành công đòi hỏi cả hai bên làm rõ kỳ vọng định hình bởi văn hóa)\n- ‚Was im einen System als X gilt, kann im anderen als Y registriert werden' (cái trong hệ thống này là X có thể trong hệ thống khác là Y)\n- ‚Beides ist legitim, aber muss übersetzt werden' (cả hai hợp pháp, nhưng phải được dịch)\n- ‚Ich schlage einen kurzen Erwartungsabgleich vor' (đề xuất hiệu chỉnh kỳ vọng ngắn)\n- ‚Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann' (đề xuất tôi vận hành như cầu nối)\n- ‚Nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen' (không phải tránh xung đột, mà làm cho chúng năng suất)\n\nKhi deutsche Seite frustriert über VN-Indirektheit:\n- ‚Ich verstehe, dass die indirekte Formulierung deutsche Erwartungen unterläuft. Lassen Sie mich übersetzen: was Frau Tran sagte, bedeutet auf der Sachebene Y' (tôi hiểu cách diễn đạt gián tiếp đi ngược kỳ vọng Đức. Cho tôi dịch: cô Tran ở mặt nội dung có nghĩa Y)\n\nKhi VN-Seite verletzt über deutsche Direktheit:\n- ‚Anh/chị Tran, ‚das ist nicht akzeptabel' từ phía Đức không phải attack — đó là ‚wir haben hier substanzielle Differenz und respektieren Sie genug, das zu sagen'. Quan hệ vẫn nguyên.' (Frau/Herr Tran, ‚das ist nicht akzeptabel' from German side is not attack — it's ‚we have substantial difference and respect you enough to say so'. Relationship intact.)\n\nKhi Zeitplan-Konflikt:\n- ‚Beide Seiten haben unterschiedliche Zeit-Horizonte. Lassen Sie uns ein Hybrid-Modell festlegen: hard deadlines für externe Liefertermine, fluid für interne Abstimmungen.' (cả hai bên có time-horizon khác nhau. Mình thiết lập hybrid: hard deadlines cho external delivery, fluid cho internal alignment.)\n\nKhi Entscheidung in Meeting:\n- ‚Ich würde anregen, dass wir die Entscheidung nicht heute treffen — die VN-Seite braucht interne Konsultation, das ist Standard. Wir können in einer Woche zurückkommen mit beidseitig commit-fähigem Vorschlag.' (đề nghị không quyết định hôm nay — VN-Seite cần tham vấn nội bộ, là chuẩn. Mình quay lại sau 1 tuần với đề xuất commit được cả hai bên.)\n\nMẹo cuối: interkulturelle Verhandlung ist wie Übersetzen in Echtzeit. Kein ‚richtig' oder ‚falsch' — beide Modi sind in ihren Kontexten optimal. Bindeglied-Rolle ist most challenging und most valuable role im Raum. Nicht ‚culturally neutral' agieren — explicitly bicultural, beide Modi sichtbar machen.",
+    "tip_advice_en": "Before the intercultural negotiation (1 week of prep):\n1. LIST cultural expectations — both sides. Directness scale? Time horizon? Decision-making mode?\n2. CLARIFY language choice — English (neutral), German (DE home advantage), Vietnamese (VN home advantage), or code-switching with a translator backup?\n3. GENEROUS TIMELINE — intercultural negotiations take 30–50% longer than monocultural. Plan accordingly.\n4. BINDEGLIED ROLE clarified: are you playing that role? If yes, communicate it transparently.\n\nIn the room (4-phase structure):\n1. ERWARTUNGSABGLEICH (10 min): both sides name procedural expectations\n2. RELATIONSHIP PHASE (15 min): small talk, common reference points, personal topics — important for the VN norm\n3. SACH-DISKUSSION (60–90 min): content, alternating direct and indirect modes depending on speaker\n4. ZUSAMMENFASSUNG (15 min): explicit, verified in writing — German-style, but cross-checked with the VN side: 'habe ich das richtig erfasst?'\n\nC1 intercultural-negotiation language:\n- 'Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen'\n- 'Was im einen System als X gilt, kann im anderen als Y registriert werden'\n- 'Beides ist legitim, aber muss übersetzt werden'\n- 'Ich schlage einen kurzen Erwartungsabgleich vor'\n- 'Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann'\n- 'Nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen'\n\nWhen the German side is frustrated by Vietnamese indirectness:\n- 'Ich verstehe, dass die indirekte Formulierung deutsche Erwartungen unterläuft. Lassen Sie mich übersetzen: was Frau Tran sagte, bedeutet auf der Sachebene Y.'\n\nWhen the Vietnamese side is hurt by German directness:\n- 'Anh/chị Tran, the German 'das ist nicht akzeptabel' is not an attack — it's 'we have a substantial difference and we respect you enough to say so'. The relationship is intact.'\n\nWhen there is a timeline conflict:\n- 'Beide Seiten haben unterschiedliche Zeit-Horizonte. Lassen Sie uns ein Hybrid-Modell festlegen: hard deadlines für externe Liefertermine, fluid für interne Abstimmungen.'\n\nWhen a decision is pushed in the meeting:\n- 'Ich würde anregen, dass wir die Entscheidung nicht heute treffen — die VN-Seite braucht interne Konsultation, das ist Standard. Wir können in einer Woche zurückkommen mit beidseitig commit-fähigem Vorschlag.'\n\nFinal tip: intercultural negotiation is real-time translation. There is no 'right' or 'wrong' — both modes are optimal in their own contexts. The Bindeglied role is the most challenging and most valuable role in the room. Don't act 'culturally neutral' — be explicitly bicultural and make both modes visible.",
     "vocabulary": [
       {
         "word": "die interkulturelle Verhandlung",
         "en": "intercultural negotiation",
         "vi": "đàm phán liên văn hóa",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi in-tê-kul-tu-RÊ-lê fe-han-đlung"
+        "pronunciation_vi": "đi in-tê-kul-tu-RÊ-lê fe-han-đlung",
+        "pronunciation_en": "dee in-ter-kool-too-REL-leh fer-HAND-loong"
       },
       {
         "word": "der Erwartungsabgleich",
         "en": "expectation alignment",
         "vi": "hiệu chỉnh kỳ vọng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe e-VA-tungs-ap-glaikh"
+        "pronunciation_vi": "đe e-VA-tungs-ap-glaikh",
+        "pronunciation_en": "dayr er-VAR-toongs-ahp-glykh"
       },
       {
         "word": "kulturell geprägt",
         "en": "culturally shaped",
         "vi": "được định hình bởi văn hóa",
         "pos": "phrase",
-        "pronunciation_vi": "kul-tu-RÊL gê-PRÊK-t"
+        "pronunciation_vi": "kul-tu-RÊL gê-PRÊK-t",
+        "pronunciation_en": "kool-too-REL ge-PRAYKT"
       },
       {
         "word": "die Direktheit",
         "en": "directness",
         "vi": "sự thẳng thắn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi đi-RÊK-t-hait"
+        "pronunciation_vi": "đi đi-RÊK-t-hait",
+        "pronunciation_en": "dee dee-REKT-hite"
       },
       {
         "word": "die Höflichkeit",
         "en": "politeness, courtesy",
         "vi": "sự lễ phép",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi HƠF-likh-kait"
+        "pronunciation_vi": "đi HƠF-likh-kait",
+        "pronunciation_en": "dee HUEF-likh-kite — rounded 'ö'"
       },
       {
         "word": "die Beziehungsverletzung",
         "en": "relationship violation",
         "vi": "vi phạm quan hệ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-TSI-ungs-fe-let-tsung"
+        "pronunciation_vi": "đi bê-TSI-ungs-fe-let-tsung",
+        "pronunciation_en": "dee be-TSEE-oongs-fer-let-tsoong"
       },
       {
         "word": "das Bindeglied",
         "en": "link, bridge (between groups)",
         "vi": "cầu nối",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát BIN-đê-glit"
+        "pronunciation_vi": "đát BIN-đê-glit",
+        "pronunciation_en": "dahs BIN-de-gleet — literally 'binding-member'"
       },
       {
         "word": "der Zeit-Horizont",
         "en": "time horizon",
         "vi": "tầm thời gian",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe TSAIT-hô-ri-tsônt"
+        "pronunciation_vi": "đe TSAIT-hô-ri-tsônt",
+        "pronunciation_en": "dayr TSITE-ho-ree-tsont"
       },
       {
         "word": "die Entscheidungsfindung",
         "en": "decision-making",
         "vi": "quá trình ra quyết định",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ent-SHAI-đungs-fin-đung"
+        "pronunciation_vi": "đi ent-SHAI-đungs-fin-đung",
+        "pronunciation_en": "dee ent-SHY-doongs-fin-doong"
       },
       {
         "word": "stillschweigend voraussetzen",
         "en": "to tacitly assume",
         "vi": "giả định ngầm",
         "pos": "verb phrase",
-        "pronunciation_vi": "SHTIL-shvai-gần fô-RAOS-tsê-tsần"
+        "pronunciation_vi": "SHTIL-shvai-gần fô-RAOS-tsê-tsần",
+        "pronunciation_en": "SHTIL-shvy-gent for-OWS-tset-tsen"
       }
     ],
     "dialogue": [
@@ -5445,29 +6067,34 @@ export const lessons: GermanLesson[] = [
       "Konflikt zwischen DE Entscheidung-heute Erwartung und VN Konsens-erst Erwartung. Đề xuất Hybrid-Modus formal: position-statements heute, internal consultation 1 Woche, decision in 10 Tagen mit hard external deadlines + fluid internal alignment."
     ],
     "register_notes": "Interkulturelle Verhandlung-Moderation C1: ‚Sie' tuyệt đối với Teilnehmer. Konjunktiv II cho Brücken-Vorschläge: ‚Eine Brücken-Formulierung wäre...'. Funktionsverbgefüge: ‚explizit machen' (làm rõ), ‚stillschweigend voraussetzen' (giả định ngầm), ‚produktiv machen' (làm năng suất), ‚als Bindeglied agieren' (vận hành như cầu nối). Schlüsselformel cho cultural translation: ‚Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim, aber muss übersetzt werden'. Bindeglied-Rolle bắt buộc transparent gemacht werden — không pretend culturally neutral. KHÔNG ‚VN-Seite versteht nicht' / ‚DE-Seite ist hart' (Personalisierung der Kultur). Stattdessen: ‚VN-Norm ist X, DE-Norm ist Y' (Sachebene). Hybrid-Modus oft Lösung für direkte Konflikte zwischen Normen — hard deadlines for external, fluid for internal alignment.",
+    "register_notes_en": "C1 intercultural-negotiation moderation: 'Sie' is absolute with participants. Konjunktiv II for bridge proposals: 'Eine Brücken-Formulierung wäre…'. Funktionsverbgefüge: 'explizit machen' (make explicit), 'stillschweigend voraussetzen' (tacitly assume), 'produktiv machen' (make productive), 'als Bindeglied agieren' (act as a bridge). Key formula for cultural translation: 'Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim, aber muss übersetzt werden'. The Bindeglied role MUST be made transparent — don't pretend to be culturally neutral. Do NOT 'VN-Seite versteht nicht' or 'DE-Seite ist hart' (personalises the culture). Instead: 'the VN norm is X, the DE norm is Y' (Sachebene). A Hybrid-Modus is often the solution for direct norm clashes — hard deadlines for external, fluid for internal alignment.",
     "idiom_glosses": [
       {
         "idiom": "die Brücke schlagen",
         "literal": "đập cầu (build a bridge)",
         "meaning": "tạo kết nối giữa các bên (gehoben/standardsprachlich)",
+        "meaning_en": "to build a bridge — to create a connection between sides (gehoben/standardsprachlich)",
         "example": "Als Bindeglied schlage ich die Brücke zwischen deutscher Direktheit und vietnamesischer Höflichkeit."
       },
       {
         "idiom": "etwas in andere Worte fassen",
         "literal": "đặt cái gì vào từ khác",
         "meaning": "diễn đạt lại cho phù hợp ngữ cảnh khác (standardsprachlich)",
+        "meaning_en": "to put something into other words — to rephrase to fit a different context (standardsprachlich)",
         "example": "Wenn die deutsche Direktheit die VN-Seite verletzt, fasse ich es in andere Worte — Inhalt bleibt, Form passt."
       },
       {
         "idiom": "auf Augenhöhe verhandeln",
         "literal": "đàm phán ở mức mắt",
         "meaning": "đàm phán trên cơ sở bình đẳng (gehoben/standardsprachlich)",
+        "meaning_en": "to negotiate at eye level — to negotiate as equals (gehoben/standardsprachlich)",
         "example": "Auf Augenhöhe verhandeln heißt: weder die deutsche noch die vietnamesische Norm wird privilegiert — beide werden übersetzt."
       },
       {
         "idiom": "den Boden bereiten",
         "literal": "chuẩn bị đất",
         "meaning": "tạo điều kiện cho điều gì đó (standardsprachlich)",
+        "meaning_en": "to prepare the ground — to set the conditions for something (standardsprachlich)",
         "example": "Der Erwartungsabgleich bereitet den Boden für eine produktive Sach-Diskussion."
       }
     ],
@@ -5475,6 +6102,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Interkulturelle Verhandlung C1:",
+        "instruction_en": "Fill in the C1 intercultural-negotiation structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5498,6 +6126,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối điểm xung đột văn hóa với chiến lược cầu nối:",
+        "instruction_en": "Match each cultural friction point with its bridging strategy:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5521,6 +6150,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["intercultural negotiation"],
         "items": [
           {
