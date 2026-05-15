@@ -2176,6 +2176,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "plus→plu",
           "grand→grăng"
+        ],
+        "pronunciation_focus_en": [
+          "plus → 'PLEW' (with rounded 'u') when meaning 'more' before a vowel-starting adjective; 'PLEW' without final -s pronounced",
+          "grand → 'GRAHN' — nasal -an; final -d silent (a French trap — never finish the d)"
         ]
       },
       {
@@ -2184,6 +2188,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "moins→moanh",
           "cher→se"
+        ],
+        "pronunciation_focus_en": [
+          "moins → 'MWAHN' — opening 'mo' is 'mwa'; nasal -in; final -s silent",
+          "cher → 'SHAIR' — opening 'ch' is 'sh'; final -er is 'air', no English r-color"
         ]
       },
       {
@@ -2192,6 +2200,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "aussi→ô-xi",
           "intelligente→anh-te-li-giăng"
+        ],
+        "pronunciation_focus_en": [
+          "aussi → 'oh-SEE' — 'au' is 'oh'; double-s gives a clean 's' (not 'z')",
+          "intelligente → 'an-tay-lee-ZHAHNT' — nasal -in; -gen- is 'zhahn'; feminine -e makes the -t sounded"
         ]
       },
       {
@@ -2200,6 +2212,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "meilleur→mê-iơ",
           "film→fìlm"
+        ],
+        "pronunciation_focus_en": [
+          "meilleur → 'may-YUR' — the -ill- glides into 'y'; -eur is 'ur' with rounded lips",
+          "film → 'FEELM' — sounds like English 'feelm', not 'film'; the 'i' is a long 'ee'"
         ]
       },
       {
@@ -2208,132 +2224,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "pire→pia",
           "solution→xô-lu-xi-on"
+        ],
+        "pronunciation_focus_en": [
+          "pire → 'PEER' — one syllable; final -e silent",
+          "solution → 'soh-lew-SYOHN' — 'u' is rounded 'ew'; -tion is 'syohn'"
         ]
       }
     ],
     "cultural_notes_vi": "So sánh: plus... que (hơn), moins... que (kém), aussi... que (bằng). Bất quy tắc: bon→meilleur, bien→mieux, mauvais→pire.",
+    "cultural_notes_en": "Three patterns cover almost every French comparison: 'plus … que' (more … than), 'moins … que' (less … than), 'aussi … que' (as … as). Three adjectives are irregular and worth memorizing: 'bon' (good) → 'meilleur' (better) [never 'plus bon']; 'bien' (well) → 'mieux' (better); 'mauvais' (bad) → 'pire' (worse). Using 'plus bon' instead of 'meilleur' is the #1 tell that someone is still early in their French.",
     "tip_advice_vi": "'Meilleur' là tính từ, 'mieux' là trạng từ. Lỗi phổ biến nhất: 'Ce gâteau est meilleur' vs 'Elle chante mieux'.",
+    "tip_advice_en": "Two false twins to keep straight: 'meilleur' is an adjective (describes a noun); 'mieux' is an adverb (describes a verb). 'Ce gâteau est meilleur' (This cake is better — adjective + noun). 'Elle chante mieux' (She sings better — adverb + verb). Mixing them up is the most common B1 mistake.",
     "vocabulary": [
       {
         "word": "plus...que",
         "en": "more...than",
         "vi": "hơn",
         "pos": "expr.",
-        "pronunciation_vi": "plu…cơ"
+        "pronunciation_vi": "plu…cơ",
+        "pronunciation_en": "PLEW … kuh — 'plus' is rounded 'plew'; 'que' is schwa 'kuh'"
       },
       {
         "word": "moins...que",
         "en": "less...than",
         "vi": "kém hơn",
         "pos": "expr.",
-        "pronunciation_vi": "moanh…cơ"
+        "pronunciation_vi": "moanh…cơ",
+        "pronunciation_en": "MWAHN … kuh — opening 'mo' is 'mwa'; nasal -in; 'que' is 'kuh'"
       },
       {
         "word": "aussi...que",
         "en": "as...as",
         "vi": "bằng",
         "pos": "expr.",
-        "pronunciation_vi": "ô-xi…cơ"
+        "pronunciation_vi": "ô-xi…cơ",
+        "pronunciation_en": "oh-SEE … kuh — 'au' is 'oh'; 'que' is 'kuh'"
       },
       {
         "word": "meilleur",
         "en": "better",
         "vi": "tốt hơn",
         "pos": "adj.",
-        "pronunciation_vi": "mê-iơ"
+        "pronunciation_vi": "mê-iơ",
+        "pronunciation_en": "may-YUR — -ill- glides to 'y'; -eur is 'ur' rounded; never 'plus bon'"
       },
       {
         "word": "pire",
         "en": "worse",
         "vi": "tệ hơn",
         "pos": "adj.",
-        "pronunciation_vi": "pia"
+        "pronunciation_vi": "pia",
+        "pronunciation_en": "PEER — one syllable; the irregular comparative of 'mauvais' (bad)"
       },
       {
         "word": "mieux",
         "en": "better (adv)",
         "vi": "tốt hơn",
         "pos": "adv.",
-        "pronunciation_vi": "mi-ơ"
+        "pronunciation_vi": "mi-ơ",
+        "pronunciation_en": "MYUH — one syllable; -ieux is 'yuh' with rounded lips; modifies verbs, not nouns"
       },
       {
         "word": "le meilleur",
         "en": "the best",
         "vi": "tốt nhất",
         "pos": "adj.",
-        "pronunciation_vi": "mê-iơ"
+        "pronunciation_vi": "mê-iơ",
+        "pronunciation_en": "luh may-YUR — same word as 'meilleur' with definite article; agrees in gender/number"
       },
       {
         "word": "le pire",
         "en": "the worst",
         "vi": "tệ nhất",
         "pos": "adj.",
-        "pronunciation_vi": "pia"
+        "pronunciation_vi": "pia",
+        "pronunciation_en": "luh PEER — same word as 'pire' with definite article"
       },
       {
         "word": "comparer",
         "en": "to compare",
         "vi": "so sánh",
         "pos": "v.",
-        "pronunciation_vi": "côn-pa-rê"
+        "pronunciation_vi": "côn-pa-rê",
+        "pronunciation_en": "kohn-pah-RAY — nasal 'on'; final -er is 'ay'"
       },
       {
         "word": "égal",
         "en": "equal",
         "vi": "bằng nhau",
         "pos": "adj.",
-        "pronunciation_vi": "ê-gan"
+        "pronunciation_vi": "ê-gan",
+        "pronunciation_en": "ay-GAL — final -al is short 'al'; expression 'ça m'est égal' = 'I don't mind'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Lyon ou Marseille, tu préfères ?",
-        "en": "Lyon or Marseille, which do you prefer?"
+        "en": "Lyon or Marseille, which do you prefer?",
+        "vi": "Lyon hay Marseille, cậu thích cái nào hơn?"
       },
       {
         "speaker": "B",
         "text": "Lyon est plus élégante, Marseille plus vivante.",
-        "en": "Lyon is more elegant, Marseille livelier."
+        "en": "Lyon is more elegant, Marseille livelier.",
+        "vi": "Lyon thanh lịch hơn, Marseille sôi động hơn."
       },
       {
         "speaker": "A",
         "text": "Et pour la nourriture ?",
-        "en": "And for food?"
+        "en": "And for food?",
+        "vi": "Còn về đồ ăn thì sao?"
       },
       {
         "speaker": "B",
         "text": "Lyon est la meilleure pour la gastronomie !",
-        "en": "Lyon is best for gastronomy!"
+        "en": "Lyon is best for gastronomy!",
+        "vi": "Lyon là nhất về ẩm thực!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Paris est ___ grand que Marseille.",
-        "answer": "plus"
+        "answer": "plus",
+        "hint_vi": "trạng từ so sánh hơn, đi cùng 'que'",
+        "hint_en": "comparative adverb meaning 'more', paired with 'que' for 'than'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "plus...que",
-            "hơn"
+            "hơn (more...than)"
           ],
           [
             "meilleur",
-            "tốt hơn"
+            "tốt hơn (better — adjective)"
           ],
           [
             "le pire",
-            "tệ nhất"
+            "tệ nhất (the worst)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Phim này hay hơn phim tuần trước.",
+        "english": "This film is better than last week's.",
         "french": "Ce film est meilleur que celui de la semaine dernière."
       }
     ]
@@ -2351,6 +2391,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "avais→a-ve",
           "voyagerais→voa-ia-giơ-re"
+        ],
+        "pronunciation_focus_en": [
+          "avais → 'ah-VAY' — imperfect '-ais' is 'ay', s silent",
+          "voyagerais → 'vwah-yah-zhuh-RAY' — conditional '-ais' is 'ay'; -ger- is 'zhuh' (soft 'zh')"
         ]
       },
       {
@@ -2359,6 +2403,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "étudiais→ê-tu-đi-e",
           "réussirais→rê-u-xi-re"
+        ],
+        "pronunciation_focus_en": [
+          "étudiais → 'ay-tew-DYAY' — 'u' is rounded 'ew'; -iais is 'yay'",
+          "réussirais → 'ray-ew-see-RAY' — 'u' is rounded 'ew'; the 's' between vowels stays 's' here (double-s)"
         ]
       },
       {
@@ -2367,6 +2415,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "aimerais→ê-mơ-re",
           "montagne→môn-ta-nhơ"
+        ],
+        "pronunciation_focus_en": [
+          "aimerais → 'em-uh-RAY' — opening 'ai' is short 'em'; conditional '-rais' is 'ray'",
+          "montagne → 'mohn-TAHN-yuh' — nasal 'on'; -gn- is 'ny' as in 'canyon'"
         ]
       },
       {
@@ -2375,6 +2427,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "faudrait→phô-đre",
           "souvent→xu-văng"
+        ],
+        "pronunciation_focus_en": [
+          "faudrait → 'foh-DRAY' — 'au' is 'oh'; conditional '-rait' is 'ray', t silent",
+          "souvent → 'soo-VAHN' — 'ou' is 'oo'; nasal -en; final -t silent"
         ]
       },
       {
@@ -2382,132 +2438,155 @@ export const lessons: FrenchLesson[] = [
         "vi": "Ở vị trí bạn, tôi không nhận.",
         "pronunciation_focus": [
           "accepterais→ác-xép-tơ-re"
+        ],
+        "pronunciation_focus_en": [
+          "accepterais → 'ak-sep-tuh-RAY' — double-c is 'ks'; conditional '-rais' is 'ray', s silent"
         ]
       }
     ],
     "cultural_notes_vi": "Si + imparfait → conditionnel présent (giả định). Conditionnel dùng: đề nghị lịch sự (Je voudrais), ước muốn (J'aimerais), lời khuyên (Tu devrais).",
+    "cultural_notes_en": "The hypothetical pattern: 'si' + imperfect tense → conditional present. 'Si j'avais le temps, je le ferais' ('If I had time, I would do it'). The conditional has three core social uses: polite requests ('Je voudrais…' = I would like), wishes ('J'aimerais…' = I would love to), and advice ('Tu devrais…' = You should). Skipping the conditional makes your French sound demanding instead of polite.",
     "tip_advice_vi": "Phân biệt: 'Si j'avais' (giả định) vs 'Quand j'avais' (thực tế). Conditionnel đuôi -ais, -ais, -ait, -ions, -iez, -aient.",
+    "tip_advice_en": "Don't confuse 'Si j'avais' (hypothetical — 'If I had…') with 'Quand j'avais' (factual past — 'When I had…'). Same word, different worlds. Memorize the conditional endings: '-ais, -ais, -ait, -ions, -iez, -aient' — they're the same as the imperfect endings but attach to the future stem.",
     "vocabulary": [
       {
         "word": "si",
         "en": "if",
         "vi": "nếu",
         "pos": "conj.",
-        "pronunciation_vi": "xi"
+        "pronunciation_vi": "xi",
+        "pronunciation_en": "SEE — rhymes with English 'see'; one syllable"
       },
       {
         "word": "le conditionnel",
         "en": "conditional",
         "vi": "thể điều kiện",
         "pos": "n.m.",
-        "pronunciation_vi": "côn-đi-xi-ô-nen"
+        "pronunciation_vi": "côn-đi-xi-ô-nen",
+        "pronunciation_en": "kohn-dee-syoh-NEL — nasal 'on'; the -tionnel ending is 'syoh-NEL'"
       },
       {
         "word": "j'aimerais",
         "en": "I would like",
         "vi": "tôi muốn",
         "pos": "expr.",
-        "pronunciation_vi": "giê-mơ-re"
+        "pronunciation_vi": "giê-mơ-re",
+        "pronunciation_en": "zhem-uh-RAY — opening 'j' is soft 'zh'; conditional '-rais' is 'ray'"
       },
       {
         "word": "je voudrais",
         "en": "I would like",
         "vi": "tôi muốn",
         "pos": "expr.",
-        "pronunciation_vi": "giơ vu-đre"
+        "pronunciation_vi": "giơ vu-đre",
+        "pronunciation_en": "zhuh voo-DRAY — 'ou' is 'oo'; 'je' is schwa 'zhuh'; the polite default for ordering anything in a shop"
       },
       {
         "word": "je devrais",
         "en": "I should",
         "vi": "tôi nên",
         "pos": "expr.",
-        "pronunciation_vi": "giơ đơ-vre"
+        "pronunciation_vi": "giơ đơ-vre",
+        "pronunciation_en": "zhuh duh-VRAY — opening 'je' and 'de' are both schwa 'uh'; conditional '-rais' is 'ray'"
       },
       {
         "word": "imaginer",
         "en": "to imagine",
         "vi": "tưởng tượng",
         "pos": "v.",
-        "pronunciation_vi": "i-ma-gi-nê"
+        "pronunciation_vi": "i-ma-gi-nê",
+        "pronunciation_en": "ee-mah-zhee-NAY — -gi- is 'zhee' (soft 'zh'); final -er is 'ay'"
       },
       {
         "word": "l'hypothèse",
         "en": "hypothesis",
         "vi": "giả thuyết",
         "pos": "n.f.",
-        "pronunciation_vi": "li-pô-te-dơ"
+        "pronunciation_vi": "li-pô-te-dơ",
+        "pronunciation_en": "lee-poh-TEZ — silent h; -se sounds like 'z' between vowels; final -e silent"
       },
       {
         "word": "irréel",
         "en": "unreal",
         "vi": "không thật",
         "pos": "adj.",
-        "pronunciation_vi": "i-rê-en"
+        "pronunciation_vi": "i-rê-en",
+        "pronunciation_en": "ee-ray-EL — three syllables; double-r is one clean 'r'; final -el is short 'el'"
       },
       {
         "word": "le rêve",
         "en": "dream",
         "vi": "giấc mơ",
         "pos": "n.m.",
-        "pronunciation_vi": "rê-vơ"
+        "pronunciation_vi": "rê-vơ",
+        "pronunciation_en": "REV — one syllable; circumflex ê opens to 'eh', not 'ay'; final -e silent"
       },
       {
         "word": "supposer",
         "en": "to suppose",
         "vi": "giả sử",
         "pos": "v.",
-        "pronunciation_vi": "xu-pô-dê"
+        "pronunciation_vi": "xu-pô-dê",
+        "pronunciation_en": "sew-poh-ZAY — 'u' is rounded 'ew'; -ser is 'zay' (s between vowels sounds like 'z')"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Si tu gagnais au loto, tu ferais quoi ?",
-        "en": "If you won the lotto, what would you do?"
+        "en": "If you won the lotto, what would you do?",
+        "vi": "Nếu cậu trúng xổ số, cậu sẽ làm gì?"
       },
       {
         "speaker": "B",
         "text": "Je voyagerais partout, j'achèterais une maison.",
-        "en": "I'd travel everywhere, buy a house."
+        "en": "I'd travel everywhere, buy a house.",
+        "vi": "Mình sẽ đi du lịch khắp nơi, mua một căn nhà."
       },
       {
         "speaker": "A",
         "text": "Tu ne travaillerais plus ?",
-        "en": "You wouldn't work anymore?"
+        "en": "You wouldn't work anymore?",
+        "vi": "Cậu sẽ không đi làm nữa à?"
       },
       {
         "speaker": "B",
         "text": "Je travaillerais moins, j'ouvrirais un café.",
-        "en": "I'd work less, open a café."
+        "en": "I'd work less, open a café.",
+        "vi": "Mình sẽ làm ít lại, mở một quán cà phê."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Si j'___ riche, j'achèterais une maison.",
-        "answer": "étais"
+        "answer": "étais",
+        "hint_vi": "động từ 'être' ở imparfait, ngôi thứ nhất số ít",
+        "hint_en": "imperfect tense of 'être' in 1st person singular — required after 'si' for hypotheticals"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "j'aimerais",
-            "tôi muốn"
+            "tôi muốn (I would like)"
           ],
           [
             "le conditionnel",
-            "thể điều kiện"
+            "thể điều kiện (the conditional)"
           ],
           [
             "le rêve",
-            "giấc mơ"
+            "giấc mơ (dream)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Nếu có thời gian, tôi học thêm ngôn ngữ.",
+        "english": "If I had time, I would learn another language.",
         "french": "Si j'avais le temps, j'apprendrais une autre langue."
       }
     ]
@@ -2525,6 +2604,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "dit→đi",
           "viendrait→vi-anh-đre"
+        ],
+        "pronunciation_focus_en": [
+          "dit → 'DEE' — final -t silent; the past-participle form of 'dire'",
+          "viendrait → 'vyan-DRAY' — opening 'vien' is one syllable 'vyan' (nasal -ien); conditional '-ait' is 'ay'"
         ]
       },
       {
@@ -2533,6 +2616,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "demandé→đơ-măng-đê",
           "parlais→pa-lê"
+        ],
+        "pronunciation_focus_en": [
+          "demandé → 'duh-mahn-DAY' — opening 'de' is schwa 'duh'; nasal -an; final -é is 'ay'",
+          "parlais → 'par-LAY' — imperfect '-ais' is 'ay', s silent"
         ]
       },
       {
@@ -2541,6 +2628,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "expliqué→éc-xpli-kê",
           "Terre→te"
+        ],
+        "pronunciation_focus_en": [
+          "expliqué → 'eks-plee-KAY' — final -qué is 'kay'; stress on the last syllable",
+          "Terre → 'TAIR' — one syllable; double-r is one clean 'r'; final -e silent"
         ]
       },
       {
@@ -2549,6 +2640,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "voulait→vu-le",
           "j'habitais→gia-bi-te"
+        ],
+        "pronunciation_focus_en": [
+          "voulait → 'voo-LAY' — 'ou' is 'oo'; imperfect '-ait' is 'ay'",
+          "j'habitais → 'zhah-bee-TAY' — silent h; imperfect '-ais' is 'ay', s silent"
         ]
       },
       {
@@ -2557,132 +2652,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "dit→đi",
           "m'inquiéter→manh-ki-ê-tê"
+        ],
+        "pronunciation_focus_en": [
+          "dit → 'DEE' — final -t silent",
+          "m'inquiéter → 'man-kyay-TAY' — nasal -in; the -uié glides to 'kyay'; final -er is 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "Lùi thì: Présent→Imparfait, Futur→Conditionnel. Câu hỏi Yes/No dùng 'si'. Mệnh lệnh→de+infinitif. Sự thật hiển nhiên không lùi thì.",
+    "cultural_notes_en": "Reported speech in French uses the same 'sequence of tenses' you know from English. When the reporting verb is in the past, shift the embedded tense back one step: Présent → Imparfait, Futur → Conditionnel. Yes/no questions become 'si' clauses ('Il a demandé si je voulais…'). Commands become 'de + infinitive' ('Elle m'a dit de partir' = 'She told me to leave'). One exception: universal truths and present habits don't shift ('Il a dit que la Terre est ronde' — the Earth is still round).",
     "tip_advice_vi": "3 động từ chính: dire que, demander si, vouloir savoir. 'Il m'a dit que', 'Il lui a dit que', 'Il a dit à Marie que'.",
+    "tip_advice_en": "Master three reporting verbs and you can paraphrase anything: 'dire que' (to say that), 'demander si' (to ask whether), 'vouloir savoir' (to want to know). Watch the indirect object pronoun: 'Il m'a dit que' (he told me), 'Il lui a dit que' (he told him/her), 'Il a dit à Marie que' (he told Marie). The pronoun goes before the verb, the named person goes after with 'à'.",
     "vocabulary": [
       {
         "word": "dire",
         "en": "to say",
         "vi": "nói",
         "pos": "v.",
-        "pronunciation_vi": "đia"
+        "pronunciation_vi": "đia",
+        "pronunciation_en": "DEER — one syllable; final -e silent; highly irregular conjugation"
       },
       {
         "word": "demander",
         "en": "to ask",
         "vi": "hỏi",
         "pos": "v.",
-        "pronunciation_vi": "đơ-măng-đê"
+        "pronunciation_vi": "đơ-măng-đê",
+        "pronunciation_en": "duh-mahn-DAY — opening 'de' is schwa 'duh'; nasal -an; final -er is 'ay'"
       },
       {
         "word": "répondre",
         "en": "to answer",
         "vi": "trả lời",
         "pos": "v.",
-        "pronunciation_vi": "rê-pôn-đrơ"
+        "pronunciation_vi": "rê-pôn-đrơ",
+        "pronunciation_en": "ray-POHN-druh — nasal 'on'; final -dre is a quick 'druh'"
       },
       {
         "word": "expliquer",
         "en": "to explain",
         "vi": "giải thích",
         "pos": "v.",
-        "pronunciation_vi": "éc-xpli-kê"
+        "pronunciation_vi": "éc-xpli-kê",
+        "pronunciation_en": "eks-plee-KAY — final -quer is 'kay' (qu is just 'k')"
       },
       {
         "word": "raconter",
         "en": "to tell",
         "vi": "kể",
         "pos": "v.",
-        "pronunciation_vi": "ra-côn-tê"
+        "pronunciation_vi": "ra-côn-tê",
+        "pronunciation_en": "rah-kohn-TAY — nasal 'on'; final -er is 'ay'; used for stories, not facts"
       },
       {
         "word": "affirmer",
         "en": "to state",
         "vi": "khẳng định",
         "pos": "v.",
-        "pronunciation_vi": "a-fia-mê"
+        "pronunciation_vi": "a-fia-mê",
+        "pronunciation_en": "ah-feer-MAY — double-f is one clean 'f'; final -er is 'ay'"
       },
       {
         "word": "le discours",
         "en": "speech",
         "vi": "lời nói",
         "pos": "n.m.",
-        "pronunciation_vi": "đi-xcua"
+        "pronunciation_vi": "đi-xcua",
+        "pronunciation_en": "dee-SKOOR — 'ou' is 'oo'; final -s silent. False friend: not 'discourse' as in argument!"
       },
       {
         "word": "rapporter",
         "en": "to report",
         "vi": "thuật lại",
         "pos": "v.",
-        "pronunciation_vi": "ra-po-tê"
+        "pronunciation_vi": "ra-po-tê",
+        "pronunciation_en": "rah-por-TAY — double-p is one clean 'p'; final -er is 'ay'"
       },
       {
         "word": "prétendre",
         "en": "to claim",
         "vi": "cho rằng",
         "pos": "v.",
-        "pronunciation_vi": "prê-tăng-đrơ"
+        "pronunciation_vi": "prê-tăng-đrơ",
+        "pronunciation_en": "pray-TAHN-druh — nasal -en; final -dre is a quick 'druh'. False friend: not 'to pretend'!"
       },
       {
         "word": "la concordance",
         "en": "agreement",
         "vi": "phù hợp thì",
         "pos": "n.f.",
-        "pronunciation_vi": "côn-co-đăng-xơ"
+        "pronunciation_vi": "côn-co-đăng-xơ",
+        "pronunciation_en": "kohn-kor-DAHNS — two nasals (on + an); refers specifically to tense agreement"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Qu'a dit le directeur ?",
-        "en": "What did the director say?"
+        "en": "What did the director say?",
+        "vi": "Giám đốc nói gì?"
       },
       {
         "speaker": "B",
         "text": "Il a annoncé qu'on ouvrirait un bureau à Lyon.",
-        "en": "He announced we'd open an office in Lyon."
+        "en": "He announced we'd open an office in Lyon.",
+        "vi": "Anh ấy thông báo sẽ mở văn phòng ở Lyon."
       },
       {
         "speaker": "A",
         "text": "Il a dit quand ?",
-        "en": "Did he say when?"
+        "en": "Did he say when?",
+        "vi": "Anh ấy có nói khi nào không?"
       },
       {
         "speaker": "B",
         "text": "Il a expliqué que ce serait en septembre.",
-        "en": "He explained it would be in September."
+        "en": "He explained it would be in September.",
+        "vi": "Anh ấy giải thích là vào tháng 9."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Il a dit qu'il ___ demain.",
-        "answer": "viendrait"
+        "answer": "viendrait",
+        "hint_vi": "động từ 'venir' ở conditionnel (lùi thì từ futur)",
+        "hint_en": "'venir' in the conditional — required to backshift from future after a past reporting verb"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "dire",
-            "nói"
+            "nói (to say)"
           ],
           [
             "rapporter",
-            "thuật lại"
+            "thuật lại (to report)"
           ],
           [
             "affirmer",
-            "khẳng định"
+            "khẳng định (to state)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Cô ấy nói sẽ gọi lại mai.",
+        "english": "She said she would call back tomorrow.",
         "french": "Elle a dit qu'elle rappellerait demain."
       }
     ]
@@ -2700,6 +2819,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "bâtiment→ba-ti-măng",
           "construit→côn-xtruy"
+        ],
+        "pronunciation_focus_en": [
+          "bâtiment → 'bah-tee-MAHN' — circumflex â just lengthens 'a'; final -ment is nasal 'mahn', t silent",
+          "construit → 'kohn-STRWEE' — nasal 'on'; 'ui' glides into 'wee'; final -t silent"
         ]
       },
       {
@@ -2708,6 +2831,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "parlé→pa-lê",
           "pays→pê-i"
+        ],
+        "pronunciation_focus_en": [
+          "parlé → 'par-LAY' — past participle -é is 'ay'; stress on the last syllable",
+          "pays → 'pay-EE' — two syllables; final -s silent"
         ]
       },
       {
@@ -2716,6 +2843,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "décision→đê-xi-zi-on",
           "annoncée→a-non-xê"
+        ],
+        "pronunciation_focus_en": [
+          "décision → 'day-see-ZYOHN' — 's' between vowels sounds like 'z'; nasal -on",
+          "annoncée → 'ah-nohn-SAY' — nasal 'on'; past participle -ée is 'ay' (feminine extra -e adds nothing audible)"
         ]
       },
       {
@@ -2724,6 +2855,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "distribuées→đi-xtri-bu-ê",
           "matin→ma-tanh"
+        ],
+        "pronunciation_focus_en": [
+          "distribuées → 'dees-tree-bew-AY' — 'u' is rounded 'ew'; final -ées is 'ay'",
+          "matin → 'mah-TAN' — nasal -in; final -n is NOT pronounced; just close toward 'an'"
         ]
       },
       {
@@ -2732,132 +2867,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "produit→prô-đuy",
           "Bordeaux→Bo-đô"
+        ],
+        "pronunciation_focus_en": [
+          "produit → 'proh-DWEE' — 'ui' glides into 'wee'; final -t silent",
+          "Bordeaux → 'bor-DOH' — -eaux is the iconic French 'oh' ending (same as bateaux, journaux); x silent"
         ]
       }
     ],
     "cultural_notes_vi": "Bị động: être + participe passé. Participle hợp giống số. Người Pháp tránh bị động bằng 'on': 'On parle français'.",
+    "cultural_notes_en": "French passive voice is built like English: 'être' (to be) + past participle. Unlike English, the past participle agrees with the subject — 'La lettre est écrite' (feminine adds -e), 'Les lettres sont écrites' (plural adds -s). But in practice, the French often dodge the passive entirely using 'on' (one/we): 'On parle français ici' ('French is spoken here') sounds more natural than the textbook 'Le français est parlé ici'.",
     "tip_advice_vi": "Dùng bị động khi chủ thể không rõ/quan trọng. 'Par' cho tác nhân cụ thể, 'de' cho trạng thái.",
+    "tip_advice_en": "Use the passive when the doer is unknown or unimportant. Two prepositions introduce the agent: 'par' for a specific actor ('Le livre a été écrit par Hugo'), 'de' for descriptive states ('Il est aimé de tous' = he's loved by all). When in doubt, default to 'par'.",
     "vocabulary": [
       {
         "word": "être + participe",
         "en": "to be + pp",
         "vi": "được/bị",
         "pos": "expr.",
-        "pronunciation_vi": "ê-trơ"
+        "pronunciation_vi": "ê-trơ",
+        "pronunciation_en": "ET-ruh — circumflex ê opens to 'eh'; final -tre is a quick 'truh'"
       },
       {
         "word": "construit",
         "en": "built",
         "vi": "được xây",
         "pos": "adj.",
-        "pronunciation_vi": "côn-xtruy"
+        "pronunciation_vi": "côn-xtruy",
+        "pronunciation_en": "kohn-STRWEE — nasal 'on'; 'ui' glides into 'wee'; final -t silent in masculine"
       },
       {
         "word": "écrit",
         "en": "written",
         "vi": "được viết",
         "pos": "adj.",
-        "pronunciation_vi": "ê-cri"
+        "pronunciation_vi": "ê-cri",
+        "pronunciation_en": "ay-KREE — final -t silent in masculine; add -e for feminine ('écrite' = 'ay-KREET' with -t sounded)"
       },
       {
         "word": "par",
         "en": "by (agent)",
         "vi": "bởi",
         "pos": "prép.",
-        "pronunciation_vi": "pa"
+        "pronunciation_vi": "pa",
+        "pronunciation_en": "PAHR — short and quick; introduces the actor of a passive sentence"
       },
       {
         "word": "la voix passive",
         "en": "passive voice",
         "vi": "thể bị động",
         "pos": "n.f.",
-        "pronunciation_vi": "voa pa-xiv"
+        "pronunciation_vi": "voa pa-xiv",
+        "pronunciation_en": "vwah pah-SEEV — 'oi' is 'wah'; final -ive is 'eev'"
       },
       {
         "word": "actif",
         "en": "active",
         "vi": "chủ động",
         "pos": "adj.",
-        "pronunciation_vi": "ắc-tif"
+        "pronunciation_vi": "ắc-tif",
+        "pronunciation_en": "ak-TEEF — short 'a'; final -f is sounded (one of the rare cases)"
       },
       {
         "word": "subir",
         "en": "to undergo",
         "vi": "chịu đựng",
         "pos": "v.",
-        "pronunciation_vi": "xu-bia"
+        "pronunciation_vi": "xu-bia",
+        "pronunciation_en": "sew-BEER — 'u' is rounded 'ew'; final -ir is 'eer'"
       },
       {
         "word": "provoquer",
         "en": "to cause",
         "vi": "gây ra",
         "pos": "v.",
-        "pronunciation_vi": "prô-vô-kê"
+        "pronunciation_vi": "prô-vô-kê",
+        "pronunciation_en": "proh-voh-KAY — final -quer is 'kay'; stress on the last syllable"
       },
       {
         "word": "transformer",
         "en": "to transform",
         "vi": "biến đổi",
         "pos": "v.",
-        "pronunciation_vi": "trăng-xfo-mê"
+        "pronunciation_vi": "trăng-xfo-mê",
+        "pronunciation_en": "trahns-for-MAY — nasal -an; final -er is 'ay'"
       },
       {
         "word": "le résultat",
         "en": "result",
         "vi": "kết quả",
         "pos": "n.m.",
-        "pronunciation_vi": "rê-dun-ta"
+        "pronunciation_vi": "rê-dun-ta",
+        "pronunciation_en": "ray-zewl-TAH — 's' between vowels sounds like 'z'; 'u' is rounded 'ew'; final -t silent"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Quand la Tour Eiffel a été construite ?",
-        "en": "When was the Eiffel Tower built?"
+        "en": "When was the Eiffel Tower built?",
+        "vi": "Tháp Eiffel được xây khi nào?"
       },
       {
         "speaker": "B",
         "text": "Elle a été construite en 1889.",
-        "en": "It was built in 1889."
+        "en": "It was built in 1889.",
+        "vi": "Nó được xây vào năm 1889."
       },
       {
         "speaker": "A",
         "text": "Combien de visiteurs par an ?",
-        "en": "How many visitors per year?"
+        "en": "How many visitors per year?",
+        "vi": "Mỗi năm bao nhiêu khách tham quan?"
       },
       {
         "speaker": "B",
         "text": "Environ 7 millions. C'est le plus visité au monde !",
-        "en": "About 7 million. Most visited in the world!"
+        "en": "About 7 million. Most visited in the world!",
+        "vi": "Khoảng 7 triệu. Là nơi được tham quan nhiều nhất thế giới!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "La Tour Eiffel a ___ construite en 1889.",
-        "answer": "été"
+        "answer": "été",
+        "hint_vi": "phân từ quá khứ của 'être' (động từ trợ giúp cho bị động)",
+        "hint_en": "past participle of 'être' — the auxiliary that builds passive voice in past tenses"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "construit",
-            "được xây"
+            "được xây (built)"
           ],
           [
             "subir",
-            "chịu đựng"
+            "chịu đựng (to undergo)"
           ],
           [
             "la voix passive",
-            "thể bị động"
+            "thể bị động (passive voice)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Quyết định được ban giám đốc đưa ra.",
+        "english": "The decision was made by management.",
         "french": "La décision a été prise par la direction."
       }
     ]
@@ -2875,6 +3034,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "personne→pe-xôn",
           "parle→pa-lơ"
+        ],
+        "pronunciation_focus_en": [
+          "personne → 'per-SOHN' — double-n is one clean 'n'; final -e silent",
+          "parle → 'PARL' — one syllable; final -e silent"
         ]
       },
       {
@@ -2883,6 +3046,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "livre→li-vrơ",
           "lis→li"
+        ],
+        "pronunciation_focus_en": [
+          "livre → 'LEEV-ruh' — the final -re is a quick 'ruh', not English 'ver'",
+          "lis → 'LEE' — final -s silent (the verb 'lire' present-tense form)"
         ]
       },
       {
@@ -2891,6 +3058,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "ville→vil",
           "né→nê"
+        ],
+        "pronunciation_focus_en": [
+          "ville → 'VEEL' — one syllable; in 'ville' the -ll- is 'l' (NOT 'y' as in 'famille')",
+          "né → 'NAY' — final -é is 'ay'; past participle of 'naître'"
         ]
       },
       {
@@ -2899,6 +3070,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "raison→re-don",
           "laquelle→la-kén"
+        ],
+        "pronunciation_focus_en": [
+          "raison → 'ray-ZOHN' — 's' between vowels sounds like 'z'; nasal -on",
+          "laquelle → 'lah-KEL' — double-l is one clean 'l'; the qu- is just 'k'"
         ]
       },
       {
@@ -2907,132 +3082,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "dont→đon",
           "sort→xo"
+        ],
+        "pronunciation_focus_en": [
+          "dont → 'DOHN' — nasal -on; final -t silent",
+          "sort → 'SOR' — one syllable; final -t silent (verb 'sortir' present-tense form)"
         ]
       }
     ],
     "cultural_notes_vi": "QUI (chủ ngữ), QUE (tân ngữ), OÙ (nơi/thời gian), DONT (bổ ngữ 'de'). Lequel/laquelle sau giới từ.",
+    "cultural_notes_en": "Four relative pronouns cover most French sentences. QUI = subject of the relative clause ('La personne qui parle' — the person who speaks). QUE = object ('Le livre que je lis' — the book that I read). OÙ = place or time ('La ville où je suis né' — the city where I was born). DONT = replaces a 'de + something' construction ('le livre dont j'ai besoin' — the book of which I have need = the book I need). After most prepositions other than 'de', use 'lequel/laquelle/lesquels/lesquelles', matched in gender and number.",
     "tip_advice_vi": "QUI+động từ, QUE+chủ ngữ+động từ. DONT thay cho 'de+qqch': 'le livre dont j'ai besoin'.",
+    "tip_advice_en": "Decision shortcut: if a verb comes right after, use QUI ('la femme qui parle'); if a new subject + verb come next, use QUE ('la femme que je vois'). For DONT, look at the underlying verb — if it takes 'de' (avoir besoin de, parler de, rêver de…), then DONT replaces the whole 'de + thing': 'le livre dont j'ai besoin' literally 'the book of which I have need'.",
     "vocabulary": [
       {
         "word": "qui",
         "en": "who (subject)",
         "vi": "mà-chủ ngữ",
         "pos": "pron.",
-        "pronunciation_vi": "ki"
+        "pronunciation_vi": "ki",
+        "pronunciation_en": "KEE — one syllable; used when the relative clause needs a subject"
       },
       {
         "word": "que",
         "en": "whom (object)",
         "vi": "mà-tân ngữ",
         "pos": "pron.",
-        "pronunciation_vi": "cơ"
+        "pronunciation_vi": "cơ",
+        "pronunciation_en": "KUH — schwa 'uh'; used when the relative clause already has a subject"
       },
       {
         "word": "où",
         "en": "where/when",
         "vi": "nơi/khi",
         "pos": "pron.",
-        "pronunciation_vi": "u"
+        "pronunciation_vi": "u",
+        "pronunciation_en": "OO — same vowel as 'ou' (= or); grave accent here just disambiguates from 'ou'"
       },
       {
         "word": "dont",
         "en": "of which",
         "vi": "mà-của",
         "pos": "pron.",
-        "pronunciation_vi": "đon"
+        "pronunciation_vi": "đon",
+        "pronunciation_en": "DOHN — nasal -on; final -t silent; replaces 'de + something'"
       },
       {
         "word": "lequel",
         "en": "which (prep)",
         "vi": "cái mà",
         "pos": "pron.",
-        "pronunciation_vi": "lơ-kén"
+        "pronunciation_vi": "lơ-kén",
+        "pronunciation_en": "luh-KEL — used after most prepositions other than 'de'; agrees with the noun"
       },
       {
         "word": "la proposition",
         "en": "clause",
         "vi": "mệnh đề",
         "pos": "n.f.",
-        "pronunciation_vi": "prô-pô-zi-xi-on"
+        "pronunciation_vi": "prô-pô-zi-xi-on",
+        "pronunciation_en": "proh-poh-zee-SYOHN — grammatical 'clause'; same word also means 'proposal' in everyday speech"
       },
       {
         "word": "relative",
         "en": "relative",
         "vi": "quan hệ",
         "pos": "adj.",
-        "pronunciation_vi": "rơ-la-tiv"
+        "pronunciation_vi": "rơ-la-tiv",
+        "pronunciation_en": "ruh-lah-TEEV — opening 're' is schwa 'ruh'; final -ive is 'eev'"
       },
       {
         "word": "l'antécédent",
         "en": "antecedent",
         "vi": "tiền tố",
         "pos": "n.m.",
-        "pronunciation_vi": "lăng-tê-xê-đăng"
+        "pronunciation_vi": "lăng-tê-xê-đăng",
+        "pronunciation_en": "lahn-tay-say-DAHN — two nasals (en + en); the noun that the relative pronoun refers back to"
       },
       {
         "word": "remplacer",
         "en": "to replace",
         "vi": "thay thế",
         "pos": "v.",
-        "pronunciation_vi": "răm-pla-xê"
+        "pronunciation_vi": "răm-pla-xê",
+        "pronunciation_en": "rahn-plah-SAY — nasal -em; final -er is 'ay'"
       },
       {
         "word": "préciser",
         "en": "to specify",
         "vi": "làm rõ",
         "pos": "v.",
-        "pronunciation_vi": "prê-xi-dê"
+        "pronunciation_vi": "prê-xi-dê",
+        "pronunciation_en": "pray-see-ZAY — 's' between vowels sounds like 'z'; final -er is 'ay'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Tu te souviens du resto dont j'ai parlé ?",
-        "en": "Remember the restaurant I mentioned?"
+        "en": "Remember the restaurant I mentioned?",
+        "vi": "Cậu nhớ cái nhà hàng mình nhắc đến không?"
       },
       {
         "speaker": "B",
         "text": "Celui qui fait les meilleures crêpes ?",
-        "en": "The one that makes the best crêpes?"
+        "en": "The one that makes the best crêpes?",
+        "vi": "Cái chỗ làm bánh crêpe ngon nhất ấy hả?"
       },
       {
         "speaker": "A",
         "text": "Oui ! J'y vais ce soir.",
-        "en": "Yes! I'm going tonight."
+        "en": "Yes! I'm going tonight.",
+        "vi": "Đúng rồi! Mình đi tối nay đây."
       },
       {
         "speaker": "B",
         "text": "Super ! Dis-moi ce que tu en penses.",
-        "en": "Great! Tell me what you think."
+        "en": "Great! Tell me what you think.",
+        "vi": "Tuyệt! Cho mình biết cậu thấy thế nào nhé."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Le film ___ je t'ai parlé sort demain.",
-        "answer": "dont"
+        "answer": "dont",
+        "hint_vi": "đại từ quan hệ thay cho 'de + cái gì' (parler DE)",
+        "hint_en": "relative pronoun that replaces 'de + something' — needed because 'parler' takes 'de'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "qui",
-            "mà-chủ ngữ"
+            "mà-chủ ngữ (who/which — subject)"
           ],
           [
             "dont",
-            "mà-của"
+            "mà-của (of/about which — replaces 'de')"
           ],
           [
             "où",
-            "nơi/khi"
+            "nơi/khi (where/when)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Người phụ nữ bạn gặp hôm qua là sếp tôi.",
+        "english": "The woman you met yesterday is my boss.",
         "french": "La femme que tu as rencontrée hier est ma patronne."
       }
     ]
