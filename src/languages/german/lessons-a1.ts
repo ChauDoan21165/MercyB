@@ -665,15 +665,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Ehemann",
-            "answer": "chồng"
+            "answer": "chồng (husband)"
           },
           {
             "prompt": "die Ehefrau",
-            "answer": "vợ"
+            "answer": "vợ (wife)"
           },
           {
             "prompt": "das Kind",
-            "answer": "đứa trẻ"
+            "answer": "đứa trẻ (child)"
           },
           {
             "prompt": "die Großeltern",
@@ -1446,19 +1446,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Montag",
-            "answer": "thứ Hai"
+            "answer": "thứ Hai (Monday)"
           },
           {
             "prompt": "Freitag",
-            "answer": "thứ Sáu"
+            "answer": "thứ Sáu (Friday)"
           },
           {
             "prompt": "Sonntag",
-            "answer": "Chủ Nhật"
+            "answer": "Chủ Nhật (Sunday)"
           },
           {
             "prompt": "Samstag",
-            "answer": "thứ Bảy"
+            "answer": "thứ Bảy (Saturday)"
           }
         ]
       },
@@ -1707,11 +1707,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "schwarz",
-            "answer": "đen"
+            "answer": "đen (black)"
           },
           {
             "prompt": "rosa",
-            "answer": "hồng"
+            "answer": "hồng (pink)"
           },
           {
             "prompt": "grau",

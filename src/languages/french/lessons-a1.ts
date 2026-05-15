@@ -707,15 +707,15 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "le mari",
-            "answer": "chồng"
+            "answer": "chồng (husband)"
           },
           {
             "prompt": "la femme",
-            "answer": "vợ"
+            "answer": "vợ (wife)"
           },
           {
             "prompt": "l'enfant",
-            "answer": "đứa trẻ"
+            "answer": "đứa trẻ (child)"
           },
           {
             "prompt": "les grands-parents",
@@ -1501,19 +1501,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "lundi",
-            "answer": "thứ Hai"
+            "answer": "thứ Hai (Monday)"
           },
           {
             "prompt": "vendredi",
-            "answer": "thứ Sáu"
+            "answer": "thứ Sáu (Friday)"
           },
           {
             "prompt": "dimanche",
-            "answer": "Chủ Nhật"
+            "answer": "Chủ Nhật (Sunday)"
           },
           {
             "prompt": "samedi",
-            "answer": "thứ Bảy"
+            "answer": "thứ Bảy (Saturday)"
           }
         ]
       },
@@ -1763,11 +1763,11 @@ export const lessons: FrenchLesson[] = [
           },
           {
             "prompt": "noir",
-            "answer": "đen"
+            "answer": "đen (black)"
           },
           {
             "prompt": "rose",
-            "answer": "hồng"
+            "answer": "hồng (pink)"
           },
           {
             "prompt": "gris",
@@ -2017,11 +2017,11 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "le chapeau",
-            "answer": "đầu"
+            "answer": "đầu (head)"
           },
           {
             "prompt": "l'écharpe",
-            "answer": "cổ"
+            "answer": "cổ (neck)"
           },
           {
             "prompt": "les chaussures",

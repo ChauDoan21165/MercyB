@@ -1182,19 +1182,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Mettre cartes sur table",
-            "answer": "Nói thẳng, minh bạch các con số"
+            "answer": "Nói thẳng, minh bạch các con số (speak frankly, lay the numbers on the table)"
           },
           {
             "prompt": "Avoir le bras long",
-            "answer": "Có quan hệ, có ảnh hưởng nội bộ"
+            "answer": "Có quan hệ, có ảnh hưởng nội bộ (have connections, internal influence)"
           },
           {
             "prompt": "Battre le fer pendant qu'il est chaud",
-            "answer": "Chớp thời cơ — đàm phán ngay sau thành tích"
+            "answer": "Chớp thời cơ — đàm phán ngay sau thành tích (seize the moment — negotiate right after a win)"
           },
           {
             "prompt": "Mettre les pieds dans le plat",
-            "answer": "Nói thẳng vào chủ đề tế nhị"
+            "answer": "Nói thẳng vào chủ đề tế nhị (address a sensitive topic head-on)"
           }
         ]
       },
@@ -1491,15 +1491,15 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Faire ses preuves",
-            "answer": "Chứng minh năng lực qua kết quả"
+            "answer": "Chứng minh năng lực qua kết quả (prove competence through results)"
           },
           {
             "prompt": "Avoir le pied à l'étrier",
-            "answer": "Bước đầu vào nghề"
+            "answer": "Bước đầu vào nghề (get a foot in the door of the field)"
           },
           {
             "prompt": "Mettre toutes les chances de son côté",
-            "answer": "Chuẩn bị kỹ lưỡng tối đa"
+            "answer": "Chuẩn bị kỹ lưỡng tối đa (do the maximum preparation)"
           },
           {
             "prompt": "Tirer son épingle du jeu",
@@ -1806,19 +1806,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Mettre toutes les chances de son côté",
-            "answer": "Chuẩn bị kỹ tối đa"
+            "answer": "Chuẩn bị kỹ tối đa (do the maximum preparation)"
           },
           {
             "prompt": "Faire ses gammes",
-            "answer": "Học bài bản từ cơ bản"
+            "answer": "Học bài bản từ cơ bản (learn the basics methodically)"
           },
           {
             "prompt": "Avoir le vent en poupe",
-            "answer": "Đang ở đà thuận lợi"
+            "answer": "Đang ở đà thuận lợi (have momentum, ride a favourable wave)"
           },
           {
             "prompt": "Jeter des ponts",
-            "answer": "Tạo cầu nối giữa hai bên"
+            "answer": "Tạo cầu nối giữa hai bên (build bridges between two parties)"
           }
         ]
       },
@@ -2132,19 +2132,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "une problématique",
-            "answer": "câu hỏi trung tâm của luận văn"
+            "answer": "câu hỏi trung tâm của luận văn (central research question of the thesis)"
           },
           {
             "prompt": "un entretien semi-directif",
-            "answer": "phỏng vấn có khung nhưng linh hoạt"
+            "answer": "phỏng vấn có khung nhưng linh hoạt (semi-structured interview, framework with flexibility)"
           },
           {
             "prompt": "un cadre théorique",
-            "answer": "khung lý thuyết của nghiên cứu"
+            "answer": "khung lý thuyết của nghiên cứu (theoretical framework of the research)"
           },
           {
             "prompt": "un livrable intermédiaire",
-            "answer": "sản phẩm trung gian giữa kỳ"
+            "answer": "sản phẩm trung gian giữa kỳ (mid-term deliverable)"
           }
         ]
       },
@@ -2446,19 +2446,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "un avenant",
-            "answer": "phụ lục sửa đổi convention"
+            "answer": "phụ lục sửa đổi convention (amendment / addendum to the convention)"
           },
           {
             "prompt": "un tuteur",
-            "answer": "người hướng dẫn tại công ty"
+            "answer": "người hướng dẫn tại công ty (workplace mentor at the company)"
           },
           {
             "prompt": "un référent pédagogique",
-            "answer": "người phụ trách phía trường"
+            "answer": "người phụ trách phía trường (academic supervisor on the school side)"
           },
           {
             "prompt": "la gratification",
-            "answer": "trợ cấp tối thiểu theo luật"
+            "answer": "trợ cấp tối thiểu theo luật (minimum legally mandated stipend)"
           }
         ]
       },
@@ -3079,15 +3079,15 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Tenir le coup",
-            "answer": "chịu được áp lực dài"
+            "answer": "chịu được áp lực dài (hold up under sustained pressure)"
           },
           {
             "prompt": "Garder son sang-froid",
-            "answer": "giữ bình tĩnh trong tình huống khó"
+            "answer": "giữ bình tĩnh trong tình huống khó (keep one’s cool in difficult situations)"
           },
           {
             "prompt": "Couper la poire en deux",
-            "answer": "thỏa hiệp mỗi bên nhường nửa"
+            "answer": "thỏa hiệp mỗi bên nhường nửa (split the difference, each side concedes half)"
           },
           {
             "prompt": "Tirer son épingle du jeu",
@@ -3403,19 +3403,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Briser la glace",
-            "answer": "phá vỡ ngại ngùng đầu cuộc gặp"
+            "answer": "phá vỡ ngại ngùng đầu cuộc gặp (break the ice at the start of a meeting)"
           },
           {
             "prompt": "Avoir l'oreille de quelqu'un",
-            "answer": "được lắng nghe / có ảnh hưởng"
+            "answer": "được lắng nghe / có ảnh hưởng (have someone’s ear / influence)"
           },
           {
             "prompt": "Faire jouer son réseau",
-            "answer": "tận dụng quan hệ giúp người khác"
+            "answer": "tận dụng quan hệ giúp người khác (leverage your network to help others)"
           },
           {
             "prompt": "Tisser des liens",
-            "answer": "xây quan hệ chiều sâu lâu dài"
+            "answer": "xây quan hệ chiều sâu lâu dài (build deep, long-term relationships)"
           }
         ]
       },
@@ -3712,19 +3712,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Garder la porte ouverte",
-            "answer": "giữ khả năng quay lại tương lai"
+            "answer": "giữ khả năng quay lại tương lai (keep the door open for the future)"
           },
           {
             "prompt": "Tirer les leçons",
-            "answer": "học từ thất bại"
+            "answer": "học từ thất bại (draw lessons from failure)"
           },
           {
             "prompt": "Sans rancune",
-            "answer": "không giữ ác cảm"
+            "answer": "không giữ ác cảm (no hard feelings, no resentment)"
           },
           {
             "prompt": "Rebondir",
-            "answer": "vực dậy sau thất bại"
+            "answer": "vực dậy sau thất bại (bounce back after failure)"
           }
         ]
       },
@@ -4035,19 +4035,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "un référent",
-            "answer": "người viết thư giới thiệu"
+            "answer": "người viết thư giới thiệu (recommendation-letter writer)"
           },
           {
             "prompt": "un relevé de notes",
-            "answer": "bảng điểm chính thức"
+            "answer": "bảng điểm chính thức (official transcript of grades)"
           },
           {
             "prompt": "un délai serré",
-            "answer": "hạn rất gấp"
+            "answer": "hạn rất gấp (very tight deadline)"
           },
           {
             "prompt": "un jury de sélection",
-            "answer": "hội đồng xét tuyển"
+            "answer": "hội đồng xét tuyển (selection committee)"
           }
         ]
       },
@@ -4349,19 +4349,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "une cotutelle",
-            "answer": "đồng hướng dẫn tiến sĩ giữa hai nước"
+            "answer": "đồng hướng dẫn tiến sĩ giữa hai nước (joint doctoral supervision between two countries)"
           },
           {
             "prompt": "une problématique",
-            "answer": "câu hỏi nghiên cứu trung tâm"
+            "answer": "câu hỏi nghiên cứu trung tâm (central research question)"
           },
           {
             "prompt": "un appel à candidatures",
-            "answer": "thông báo tuyển ứng viên mở"
+            "answer": "thông báo tuyển ứng viên mở (open call for applicants)"
           },
           {
             "prompt": "un financement doctoral",
-            "answer": "gói tài chính hỗ trợ tiến sĩ"
+            "answer": "gói tài chính hỗ trợ tiến sĩ (doctoral funding package)"
           }
         ]
       },
@@ -4676,19 +4676,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Mettre les petits plats dans les grands",
-            "answer": "chuẩn bị tiếp đón long trọng"
+            "answer": "chuẩn bị tiếp đón long trọng (pull out all the stops in welcoming someone)"
           },
           {
             "prompt": "Avoir le sens de l'accueil",
-            "answer": "biết đón tiếp khéo léo"
+            "answer": "biết đón tiếp khéo léo (know how to host gracefully)"
           },
           {
             "prompt": "Faire les honneurs",
-            "answer": "đích thân dẫn khách thăm"
+            "answer": "đích thân dẫn khách thăm (personally show guests around)"
           },
           {
             "prompt": "Recevoir à bras ouverts",
-            "answer": "đón tiếp nồng nhiệt cởi mở"
+            "answer": "đón tiếp nồng nhiệt cởi mở (welcome with open arms)"
           }
         ]
       },
@@ -5002,19 +5002,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "un cahier des charges",
-            "answer": "bản đặc tả yêu cầu kỹ thuật"
+            "answer": "bản đặc tả yêu cầu kỹ thuật (technical specification document)"
           },
           {
             "prompt": "la traçabilité",
-            "answer": "khả năng truy xuất nguồn gốc"
+            "answer": "khả năng truy xuất nguồn gốc (traceability of origin)"
           },
           {
             "prompt": "un audit qualité",
-            "answer": "đợt kiểm tra chất lượng"
+            "answer": "đợt kiểm tra chất lượng (quality audit)"
           },
           {
             "prompt": "un compte rendu",
-            "answer": "biên bản tổng kết cuộc họp"
+            "answer": "biên bản tổng kết cuộc họp (meeting minutes / written summary)"
           }
         ]
       },
@@ -5331,19 +5331,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Mettre les choses en perspective",
-            "answer": "đặt vào bối cảnh để dễ hiểu"
+            "answer": "đặt vào bối cảnh để dễ hiểu (put things in perspective for the listener)"
           },
           {
             "prompt": "Sortir de son cadre",
-            "answer": "tạm bỏ góc nhìn quen để hiểu góc khác"
+            "answer": "tạm bỏ góc nhìn quen để hiểu góc khác (step outside your usual frame to see another)"
           },
           {
             "prompt": "Lá lành đùm lá rách",
-            "answer": "đoàn kết với người yếu hơn"
+            "answer": "đoàn kết với người yếu hơn (the strong help the weak (Vietnamese proverb))"
           },
           {
             "prompt": "Ăn quả nhớ kẻ trồng cây",
-            "answer": "biết ơn người làm nên những gì mình có"
+            "answer": "biết ơn người làm nên những gì mình có (gratitude to those who built what you have (Vietnamese proverb))"
           }
         ]
       },
@@ -5654,19 +5654,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Sauver la face",
-            "answer": "giữ thể diện ai đó công khai"
+            "answer": "giữ thể diện ai đó công khai (save someone's face publicly)"
           },
           {
             "prompt": "Mettre les pieds dans le plat",
-            "answer": "nói thẳng vào chủ đề tế nhị"
+            "answer": "nói thẳng vào chủ đề tế nhị (speak bluntly into a sensitive topic)"
           },
           {
             "prompt": "Ne pas mâcher ses mots",
-            "answer": "nói thẳng, không vòng vo"
+            "answer": "nói thẳng, không vòng vo (not mince one’s words)"
           },
           {
             "prompt": "Lire entre les lignes",
-            "answer": "hiểu ý ngầm"
+            "answer": "hiểu ý ngầm (read between the lines)"
           }
         ]
       },
@@ -5981,19 +5981,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Faire amende honorable",
-            "answer": "công khai thừa nhận và sửa"
+            "answer": "công khai thừa nhận và sửa (publicly acknowledge and make amends)"
           },
           {
             "prompt": "Tourner la page",
-            "answer": "không quay lại chủ đề nữa"
+            "answer": "không quay lại chủ đề nữa (turn the page, move on)"
           },
           {
             "prompt": "Mettre les choses au clair",
-            "answer": "giải thích để xóa hiểu lầm"
+            "answer": "giải thích để xóa hiểu lầm (clear things up to dispel a misunderstanding)"
           },
           {
             "prompt": "Un de ces quatre",
-            "answer": "câu xã giao mơ hồ Pháp"
+            "answer": "câu xã giao mơ hồ Pháp (a vague French social formula (\"one of these days\"))"
           }
         ]
       },
@@ -6299,19 +6299,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Faire bonne figure",
-            "answer": "giữ phong độ trong công khai"
+            "answer": "giữ phong độ trong công khai (put on a good front in public)"
           },
           {
             "prompt": "Mettre en relation",
-            "answer": "giới thiệu hai bên với nhau"
+            "answer": "giới thiệu hai bên với nhau (introduce two parties to each other)"
           },
           {
             "prompt": "Ouvrir des portes",
-            "answer": "tạo cơ hội mới"
+            "answer": "tạo cơ hội mới (open new doors / opportunities)"
           },
           {
             "prompt": "Prendre langue avec",
-            "answer": "liên hệ chính thức bắt đầu thảo luận"
+            "answer": "liên hệ chính thức bắt đầu thảo luận (formally make contact to start discussions)"
           }
         ]
       },
@@ -6642,19 +6642,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Mettre les petits plats dans les grands",
-            "answer": "chuẩn bị tiếp đón long trọng"
+            "answer": "chuẩn bị tiếp đón long trọng (pull out all the stops in welcoming someone)"
           },
           {
             "prompt": "À la fortune du pot",
-            "answer": "ăn gì có nấy, không cầu kỳ"
+            "answer": "ăn gì có nấy, không cầu kỳ (whatever the pot offers, no fuss)"
           },
           {
             "prompt": "Avoir l'eau à la bouche",
-            "answer": "thèm chảy nước miếng"
+            "answer": "thèm chảy nước miếng (make one's mouth water)"
           },
           {
             "prompt": "Manger à sa faim",
-            "answer": "ăn đến no thoải mái"
+            "answer": "ăn đến no thoải mái (eat one’s fill comfortably)"
           }
         ]
       },
@@ -6985,19 +6985,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "le xông đất",
-            "answer": "người đầu tiên đến nhà sáng mùng một"
+            "answer": "người đầu tiên đến nhà sáng mùng một (first-foot visitor on Lunar New Year morning)"
           },
           {
             "prompt": "lì xì",
-            "answer": "phong bì đỏ chúc Tết có tiền"
+            "answer": "phong bì đỏ chúc Tết có tiền (red envelope with money for Lunar New Year)"
           },
           {
             "prompt": "le bánh chưng",
-            "answer": "bánh gạo vuông biểu tượng đất"
+            "answer": "bánh gạo vuông biểu tượng đất (square sticky-rice cake symbolising the earth)"
           },
           {
             "prompt": "l'autel des ancêtres",
-            "answer": "bàn thờ tổ tiên"
+            "answer": "bàn thờ tổ tiên (ancestor altar)"
           }
         ]
       },
@@ -7324,19 +7324,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Crever l'abcès",
-            "answer": "giải quyết bằng nói thẳng"
+            "answer": "giải quyết bằng nói thẳng (lance the boil, address it directly)"
           },
           {
             "prompt": "Mettre les choses au clair",
-            "answer": "làm rõ ranh giới"
+            "answer": "làm rõ ranh giới (set boundaries clearly)"
           },
           {
             "prompt": "Désamorcer une situation",
-            "answer": "hạ nhiệt trước khi nổ"
+            "answer": "hạ nhiệt trước khi nổ (defuse a situation before it explodes)"
           },
           {
             "prompt": "Trouver un terrain d'entente",
-            "answer": "đạt thỏa thuận khả thi"
+            "answer": "đạt thỏa thuận khả thi (find common ground / a workable agreement)"
           }
         ]
       },
@@ -7657,19 +7657,19 @@ export const lessons: FrenchLesson[] = [
         "items": [
           {
             "prompt": "Avoir un atome crochu",
-            "answer": "có cảm tình tự phát"
+            "answer": "có cảm tình tự phát (have an instinctive rapport)"
           },
           {
             "prompt": "Faire le premier pas",
-            "answer": "chủ động khởi đầu"
+            "answer": "chủ động khởi đầu (take the first step)"
           },
           {
             "prompt": "Tisser des liens",
-            "answer": "xây quan hệ sâu rãi"
+            "answer": "xây quan hệ sâu rãi (build deep, lasting relationships)"
           },
           {
             "prompt": "Garder le contact",
-            "answer": "giữ liên lạc qua thời gian"
+            "answer": "giữ liên lạc qua thời gian (stay in touch over time)"
           }
         ]
       },
