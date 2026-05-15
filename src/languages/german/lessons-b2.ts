@@ -19,6 +19,11 @@ export const lessons: GermanLesson[] = [
           "doch → đốc — particle nhấn mạnh",
           "mal → man — particle nhẹ",
           "mit → mít"
+        ],
+        "pronunciation_focus_en": [
+          "doch → 'dokh' — insistence particle (hard ch as in Scottish 'loch')",
+          "mal → 'mahl' — softening particle, short",
+          "mit → 'mit' — short 'i' as in 'bit'"
         ]
       },
       {
@@ -28,6 +33,11 @@ export const lessons: GermanLesson[] = [
           "ja → IÁ — particle thể hiện ngạc nhiên",
           "interessant → in-tê-rê-SANT",
           "trọng âm trên 'ja'"
+        ],
+        "pronunciation_focus_en": [
+          "ja → 'yah' — surprise/emphasis particle",
+          "interessant → in-teh-reh-SAHNT",
+          "stress lands on 'ja'"
         ]
       },
       {
@@ -37,6 +47,11 @@ export const lessons: GermanLesson[] = [
           "denn → đEN — particle thể hiện tò mò",
           "machst → MÁCST",
           "denn không phải 'thì'"
+        ],
+        "pronunciation_focus_en": [
+          "denn → 'den' — curiosity particle",
+          "machst → MAHKHST — hard 'ch' as in 'loch'",
+          "'denn' here is the particle, not the conjunction 'because'"
         ]
       },
       {
@@ -46,6 +61,11 @@ export const lessons: GermanLesson[] = [
           "eben → Ê-bần — particle resignation",
           "so → zô",
           "trọng âm trên 'eben'"
+        ],
+        "pronunciation_focus_en": [
+          "eben → AY-ben — resignation particle ('that's just how it is')",
+          "so → 'zoh' — long 'o' as in 'go'; 's' before vowel becomes 'z'",
+          "stress on 'eben'"
         ]
       },
       {
@@ -55,81 +75,98 @@ export const lessons: GermanLesson[] = [
           "denn → đEN — particle ngạc nhiên/tò mò",
           "Schlüssel → SHLUYS-sần — 'ü' tròn",
           "câu hỏi"
+        ],
+        "pronunciation_focus_en": [
+          "denn → 'den' — surprise/curiosity particle",
+          "Schlüssel → SHLUE-sel — rounded 'ü' (lips for 'oo', say 'ee')",
+          "rising question intonation"
         ]
       }
     ],
     "cultural_notes_vi": "Particles (Modalpartikeln) là yếu tố làm tiếng Đức nói nghe tự nhiên hay máy móc. Sách giáo khoa hiếm khi dạy chúng vì khó định nghĩa. Một câu không có particle nghe đúng nhưng cứng. Người Đức dùng particles như gia vị: 'doch', 'mal', 'ja', 'denn' xuất hiện liên tục trong giao tiếp hàng ngày. Học chúng = nâng từ A2 cứng lên B1 tự nhiên.",
+    "cultural_notes_en": "Modal particles (Modalpartikeln) are what separates textbook German from how Germans actually talk. Most courses skip them because they're hard to define — a sentence without particles can be perfectly grammatical and still sound stiff. Germans sprinkle them in like seasoning: 'doch', 'mal', 'ja', 'denn' show up constantly in everyday conversation. English has no clean equivalent — we lean on tone of voice and tag questions ('right?', 'you know?') to do similar work. Mastering a handful of particles is the fastest way to lift rigid A2 German into natural-sounding B1.",
     "tip_advice_vi": "Cách học: lắng nghe người Đức nói (podcast, phim) và để ý particles. Bắt đầu bắt chước với 3 cái dễ nhất: 'mal' (làm nhẹ), 'denn' (tò mò trong câu hỏi), 'doch' (khẩn thiết). Đừng ép dùng tất cả cùng lúc — sai chỗ sẽ nghe lạ. Một particle đúng chỗ tốt hơn ba particles sai.",
+    "tip_advice_en": "How to learn them: listen to Germans speaking (podcasts, films) and pay attention to particles. Start by imitating the three easiest: 'mal' (softens a request), 'denn' (adds curiosity to a question), 'doch' (urgency or insistence). Don't try to use them all at once — wrong placement sounds odd. One particle in the right spot beats three in the wrong ones.",
     "vocabulary": [
       {
         "word": "doch",
         "en": "but/yet/do (modal particle)",
         "vi": "mà/đi (particle)",
         "pos": "modal particle",
-        "pronunciation_vi": "đốc"
+        "pronunciation_vi": "đốc",
+        "pronunciation_en": "dokh — hard final 'ch' as in Scottish 'loch'"
       },
       {
         "word": "mal",
         "en": "just (softener)",
         "vi": "thử/đi (particle nhẹ)",
         "pos": "modal particle",
-        "pronunciation_vi": "man"
+        "pronunciation_vi": "man",
+        "pronunciation_en": "mahl — short 'a' as in 'father', clipped"
       },
       {
         "word": "ja",
         "en": "yes/of course (emphasis)",
         "vi": "thật/nhỉ (nhấn mạnh)",
         "pos": "modal particle",
-        "pronunciation_vi": "IÁ"
+        "pronunciation_vi": "IÁ",
+        "pronunciation_en": "yah — 'j' = 'y' sound, snappy"
       },
       {
         "word": "denn",
         "en": "then/so (curiosity)",
         "vi": "vậy/nhỉ (tò mò)",
         "pos": "modal particle",
-        "pronunciation_vi": "đEN"
+        "pronunciation_vi": "đEN",
+        "pronunciation_en": "den — short 'e' as in 'pen'"
       },
       {
         "word": "eben",
         "en": "just/exactly (resignation)",
         "vi": "chỉ/thôi (chấp nhận)",
         "pos": "modal particle",
-        "pronunciation_vi": "Ê-bần"
+        "pronunciation_vi": "Ê-bần",
+        "pronunciation_en": "AY-ben — long 'ay' as in 'they'"
       },
       {
         "word": "halt",
         "en": "just (resignation, casual)",
         "vi": "thì cứ (chấp nhận, casual)",
         "pos": "modal particle",
-        "pronunciation_vi": "HALT"
+        "pronunciation_vi": "HALT",
+        "pronunciation_en": "hahlt — short 'a', like English 'halt'"
       },
       {
         "word": "wohl",
         "en": "probably/well (uncertainty)",
         "vi": "có lẽ (không chắc)",
         "pos": "modal particle",
-        "pronunciation_vi": "VÔN"
+        "pronunciation_vi": "VÔN",
+        "pronunciation_en": "vohl — 'w' = 'v' sound; long 'o' as in 'go'"
       },
       {
         "word": "schon",
         "en": "already (emphasis)",
         "vi": "rồi/cũng (nhấn)",
         "pos": "modal particle",
-        "pronunciation_vi": "SHÔN"
+        "pronunciation_vi": "SHÔN",
+        "pronunciation_en": "shohn — 'sch' = 'sh'; long 'o' as in 'go'"
       },
       {
         "word": "etwa",
         "en": "perhaps/about",
         "vi": "khoảng/có lẽ",
         "pos": "modal particle",
-        "pronunciation_vi": "ET-va"
+        "pronunciation_vi": "ET-va",
+        "pronunciation_en": "ET-vah — 'w' = 'v' sound"
       },
       {
         "word": "ruhig",
         "en": "calmly/feel free to",
         "vi": "cứ yên tâm",
         "pos": "adverb",
-        "pronunciation_vi": "RU-ị"
+        "pronunciation_vi": "RU-ị",
+        "pronunciation_en": "ROO-ikh — final soft 'ch', like a whispered 'h' in 'huge'"
       }
     ],
     "dialogue": [
@@ -158,8 +195,12 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền particle phù hợp (doch/mal/ja/denn/eben):",
+        "instruction_en": "Fill in the right particle (doch/mal/ja/denn/eben):",
         "pronunciation_focus": [
           "particles không có nghĩa từ điển - thêm sắc thái cảm xúc"
+        ],
+        "pronunciation_focus_en": [
+          "particles don't have a dictionary meaning — they add emotional shading"
         ],
         "items": [
           {
@@ -179,6 +220,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối particle với chức năng:",
+        "instruction_en": "Match each particle to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -202,6 +244,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (dùng particle phù hợp):",
+        "instruction_en": "Translate into German (using the right particle):",
         "pronunciation_focus": [],
         "items": [
           {
@@ -234,6 +277,11 @@ export const lessons: GermanLesson[] = [
           "Erstens → ÊA-stần",
           "Zweitens → TSVAI-tần",
           "müde → MUY-đờ — 'ü' tròn"
+        ],
+        "pronunciation_focus_en": [
+          "Erstens → AYR-stens",
+          "Zweitens → TSVY-tens — 'z' = 'ts'",
+          "müde → MUE-deh — rounded 'ü' (lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -243,6 +291,11 @@ export const lessons: GermanLesson[] = [
           "Trotzdem → TRÔTS-đêm",
           "komme → CÔM-mờ",
           "mit → mít — động từ tách"
+        ],
+        "pronunciation_focus_en": [
+          "Trotzdem → TROTS-dem",
+          "komme → KOM-meh",
+          "mit — separable prefix of 'mitkommen'"
         ]
       },
       {
@@ -252,6 +305,11 @@ export const lessons: GermanLesson[] = [
           "Außerdem → AO-sờ-đêm — 'ß' = ss",
           "teuer → TÔI-ợ",
           "ist → ÍST"
+        ],
+        "pronunciation_focus_en": [
+          "Außerdem → OW-ser-dem — 'ß' = 'ss', 'au' = 'ow' as in 'how'",
+          "teuer → TOY-er — 'eu' = 'oy' as in 'boy'",
+          "ist → 'ist'"
         ]
       },
       {
@@ -261,6 +319,11 @@ export const lessons: GermanLesson[] = [
           "Einerseits → AI-nợ-zait-s",
           "andererseits → AN-đe-rợ-zait-s",
           "ja/nein → IÁ/NAIN"
+        ],
+        "pronunciation_focus_en": [
+          "Einerseits → EYE-ner-zaits",
+          "andererseits → AN-de-rer-zaits",
+          "ja/nein → 'yah' / 'nine'"
         ]
       },
       {
@@ -270,81 +333,98 @@ export const lessons: GermanLesson[] = [
           "Schließlich → SHLÍS-lị-khờ",
           "geeinigt → gờ-AI-nịt",
           "uns → uns"
+        ],
+        "pronunciation_focus_en": [
+          "Schließlich → SHLEES-likh — final soft 'ch'",
+          "geeinigt → ge-EYE-nikht",
+          "uns → 'oons'"
         ]
       }
     ],
     "cultural_notes_vi": "Từ nối (Konnektoren) là dấu hiệu rõ nhất của tiếng Đức trôi chảy. Người mới học nói rời rạc: 'Ich gehe. Ich bin müde.' (Tôi đi. Tôi mệt.). Người trôi chảy nói: 'Ich gehe, obwohl ich müde bin' (Tôi đi mặc dù mệt). Trong văn viết và bài thuyết trình, dùng erstens/zweitens/schließlich để cấu trúc rõ — người Đức rất quý sự logic này.",
+    "cultural_notes_en": "Connectors (Konnektoren) are the clearest marker of fluent German. Beginners speak in choppy fragments: 'Ich gehe. Ich bin müde' (I'm going. I'm tired). A fluent speaker says: 'Ich gehe, obwohl ich müde bin' (I'm going, even though I'm tired). In writing and presentations, scaffolding your argument with erstens/zweitens/schließlich (firstly/secondly/finally) shows clear structure — Germans place a high value on explicit logical scaffolding. (Anglo-academic style does the same with 'first… second… finally', but Germans expect it even in shorter spoken contributions.)",
     "tip_advice_vi": "Sau từ nối như 'trotzdem', 'außerdem', 'deshalb' (đứng đầu câu chính, KHÔNG phải Nebensätze), động từ ở vị trí 2: 'Trotzdem [KOMME] ich mit'. Khác với 'obwohl' (Nebensatz, động từ cuối): 'Obwohl ich müde [BIN], komme ich'. Phân biệt 2 loại này quan trọng cho B1.",
+    "tip_advice_en": "After connectors like 'trotzdem', 'außerdem', 'deshalb' at the start of a main clause (NOT a subordinate clause), the verb stays in position 2: 'Trotzdem [KOMME] ich mit'. Compare with 'obwohl' (subordinate clause — verb goes to the end): 'Obwohl ich müde [BIN], komme ich'. Telling these two patterns apart is a key B1 milestone.",
     "vocabulary": [
       {
         "word": "erstens",
         "en": "firstly",
         "vi": "thứ nhất",
         "pos": "adverb",
-        "pronunciation_vi": "ÊA-stần"
+        "pronunciation_vi": "ÊA-stần",
+        "pronunciation_en": "AYR-stens — long 'ay' as in 'they'"
       },
       {
         "word": "zweitens",
         "en": "secondly",
         "vi": "thứ hai",
         "pos": "adverb",
-        "pronunciation_vi": "TSVAI-tần"
+        "pronunciation_vi": "TSVAI-tần",
+        "pronunciation_en": "TSVY-tens — 'z' = 'ts'; 'ei' = 'eye'"
       },
       {
         "word": "außerdem",
         "en": "moreover",
         "vi": "ngoài ra",
         "pos": "adverb",
-        "pronunciation_vi": "AO-sờ-đêm"
+        "pronunciation_vi": "AO-sờ-đêm",
+        "pronunciation_en": "OW-ser-dem — 'au' = 'ow'; 'ß' = 'ss'"
       },
       {
         "word": "trotzdem",
         "en": "nevertheless",
         "vi": "tuy vậy",
         "pos": "adverb",
-        "pronunciation_vi": "TRÔTS-đêm"
+        "pronunciation_vi": "TRÔTS-đêm",
+        "pronunciation_en": "TROTS-dem — short 'o' as in 'lot'"
       },
       {
         "word": "deshalb",
         "en": "therefore",
         "vi": "do đó",
         "pos": "adverb",
-        "pronunciation_vi": "ĐES-hanp"
+        "pronunciation_vi": "ĐES-hanp",
+        "pronunciation_en": "DES-halp — final 'b' devoices to 'p'"
       },
       {
         "word": "einerseits",
         "en": "on one hand",
         "vi": "một mặt",
         "pos": "adverb",
-        "pronunciation_vi": "AI-nợ-zait-s"
+        "pronunciation_vi": "AI-nợ-zait-s",
+        "pronunciation_en": "EYE-ner-zaits — 'ei' = 'eye'; 'z' = 'ts'"
       },
       {
         "word": "andererseits",
         "en": "on the other hand",
         "vi": "mặt khác",
         "pos": "adverb",
-        "pronunciation_vi": "AN-đe-rợ-zait-s"
+        "pronunciation_vi": "AN-đe-rợ-zait-s",
+        "pronunciation_en": "AN-de-rer-zaits"
       },
       {
         "word": "schließlich",
         "en": "finally",
         "vi": "cuối cùng",
         "pos": "adverb",
-        "pronunciation_vi": "SHLÍS-lị"
+        "pronunciation_vi": "SHLÍS-lị",
+        "pronunciation_en": "SHLEES-likh — final soft 'ch' (like a whispered 'h' in 'huge')"
       },
       {
         "word": "zum Beispiel",
         "en": "for example",
         "vi": "ví dụ",
         "pos": "phrase",
-        "pronunciation_vi": "tsum BAI-shpi-án"
+        "pronunciation_vi": "tsum BAI-shpi-án",
+        "pronunciation_en": "tsoom BY-shpeel — 'z' = 'ts'; 'sp' at start = 'shp'"
       },
       {
         "word": "nämlich",
         "en": "namely",
         "vi": "tức là/vì",
         "pos": "adverb",
-        "pronunciation_vi": "NEỊM-lị — 'ä' = e"
+        "pronunciation_vi": "NEỊM-lị — 'ä' = e",
+        "pronunciation_en": "NEHM-likh — 'ä' sounds like 'e' in 'bed'; soft final 'ch'"
       }
     ],
     "dialogue": [
@@ -373,6 +453,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ nối phù hợp:",
+        "instruction_en": "Fill in the right connector:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -392,6 +473,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ nối với nghĩa:",
+        "instruction_en": "Match each connector to its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -415,6 +497,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -447,6 +530,11 @@ export const lessons: GermanLesson[] = [
           "Sehr geehrter → ZÊA gờ-Ê-tờ",
           "vielen → PHÍ-lần",
           "Email → Ê-mây"
+        ],
+        "pronunciation_focus_en": [
+          "Sehr geehrter → ZAYR ge-AYR-ter",
+          "vielen → FEE-len — 'v' = 'f' sound",
+          "Email → AY-mail (German pronunciation)"
         ]
       },
       {
@@ -456,6 +544,11 @@ export const lessons: GermanLesson[] = [
           "Hallo → HA-lô — informal",
           "danke → ĐANG-kờ",
           "Mail → mêu"
+        ],
+        "pronunciation_focus_en": [
+          "Hallo → HAH-loh — casual register",
+          "danke → DAHNG-keh",
+          "Mail → 'mail' (English loan)"
         ]
       },
       {
@@ -465,6 +558,11 @@ export const lessons: GermanLesson[] = [
           "freundlichen → PHROIN-lị-khần",
           "Grüßen → GRUY-sần",
           "ß → ss"
+        ],
+        "pronunciation_focus_en": [
+          "freundlichen → FROYNT-likh-en — 'eu' = 'oy'",
+          "Grüßen → GRUE-sen — rounded 'ü'",
+          "ß = 'ss' as in 'pass'"
         ]
       },
       {
@@ -474,6 +572,11 @@ export const lessons: GermanLesson[] = [
           "Liebe → LI-bờ",
           "Grüße → GRUY-sờ — 'ü' tròn",
           "informal"
+        ],
+        "pronunciation_focus_en": [
+          "Liebe → LEE-beh — long 'ee' as in 'see'",
+          "Grüße → GRUE-seh — rounded 'ü' (lips for 'oo', say 'ee')",
+          "informal sign-off"
         ]
       },
       {
@@ -483,81 +586,98 @@ export const lessons: GermanLesson[] = [
           "würde → VUYR-đờ — Konjunktiv II lịch sự",
           "freuen → PHROI-ần",
           "Ihnen → I-nần"
+        ],
+        "pronunciation_focus_en": [
+          "würde → VUER-deh — Konjunktiv II for politeness ('would')",
+          "freuen → FROY-en — 'eu' = 'oy'",
+          "Ihnen → EE-nen — capitalised, formal 'you' (dative)"
         ]
       }
     ],
     "cultural_notes_vi": "Tiếng Đức có hai mức xưng hô: 'Sie' (lịch sự, không quen) và 'du' (thân, gia đình/bạn bè). Người mới quen luôn dùng 'Sie' cho đến khi được mời 'duzen' (chuyển sang du). Đề nghị duzen thường đến từ người lớn tuổi, cấp trên, phụ nữ trong tình huống xã hội. Ở công sở Đức truyền thống dùng 'Sie' lâu, nhưng startup/công nghệ duzen ngay từ đầu. Trong nhà thờ, phòng tập, một số sport club: tự động duzen.",
+    "cultural_notes_en": "German has two pronouns where English just has 'you': 'Sie' (formal, strangers) and 'du' (intimate, family/friends). It's the same distinction French keeps with vous/tu, but Germans hold the line more strictly than the French do. With anyone new, default to 'Sie' until you're invited to 'duzen' (switch to du). The invitation typically comes from the older person, the senior at work, or — in social settings — the woman. Traditional German workplaces stay on 'Sie' for a long time; startups and tech firms duzen from day one. In churches, gyms, and some sports clubs, du is automatic regardless.",
     "tip_advice_vi": "Email công việc bắt đầu 'Sehr geehrter Herr/Sehr geehrte Frau' và kết 'Mit freundlichen Grüßen' — gần như bất di bất dịch. Email thân: 'Hallo' / 'Hi' đầu, 'Liebe Grüße' / 'Viele Grüße' / 'LG' kết. Khi không chắc, dùng formal — không bao giờ phản tác dụng.",
+    "tip_advice_en": "Business email opens with 'Sehr geehrter Herr/Sehr geehrte Frau' and closes with 'Mit freundlichen Grüßen' — that pairing is near-immutable. Casual email: 'Hallo' or 'Hi' to open, 'Liebe Grüße' / 'Viele Grüße' / 'LG' to close. When in doubt, go formal — it never backfires.",
     "vocabulary": [
       {
         "word": "Sehr geehrter Herr",
         "en": "Dear Mr (formal)",
         "vi": "Kính gửi ông",
         "pos": "phrase (formal)",
-        "pronunciation_vi": "ZÊA gờ-Ê-tờ HE"
+        "pronunciation_vi": "ZÊA gờ-Ê-tờ HE",
+        "pronunciation_en": "ZAYR ge-AYR-ter HERR — long 'ay' as in 'they'"
       },
       {
         "word": "Sehr geehrte Frau",
         "en": "Dear Ms (formal)",
         "vi": "Kính gửi bà",
         "pos": "phrase (formal)",
-        "pronunciation_vi": "ZÊA gờ-Ê-tờ PHRAO"
+        "pronunciation_vi": "ZÊA gờ-Ê-tờ PHRAO",
+        "pronunciation_en": "ZAYR ge-AYR-teh FROW — 'au' = 'ow' as in 'how'"
       },
       {
         "word": "Liebe/Lieber",
         "en": "Dear (warm)",
         "vi": "Thân mến",
         "pos": "phrase (warm)",
-        "pronunciation_vi": "LI-bờ"
+        "pronunciation_vi": "LI-bờ",
+        "pronunciation_en": "LEE-beh / LEE-ber — long 'ee'"
       },
       {
         "word": "Mit freundlichen Grüßen",
         "en": "Best regards (formal)",
         "vi": "Trân trọng",
         "pos": "phrase (formal)",
-        "pronunciation_vi": "MÍT PHROIN-lị-khần GRUY-sần"
+        "pronunciation_vi": "MÍT PHROIN-lị-khần GRUY-sần",
+        "pronunciation_en": "mit FROYNT-likh-en GRUE-sen — 'eu' = 'oy'; rounded 'ü'"
       },
       {
         "word": "Liebe Grüße",
         "en": "Warm regards (informal)",
         "vi": "Thân mến",
         "pos": "phrase (informal)",
-        "pronunciation_vi": "LI-bờ GRUY-sờ"
+        "pronunciation_vi": "LI-bờ GRUY-sờ",
+        "pronunciation_en": "LEE-beh GRUE-seh"
       },
       {
         "word": "Sie",
         "en": "you (formal)",
         "vi": "ngài/bà (lịch sự)",
         "pos": "pronoun (formal)",
-        "pronunciation_vi": "ZI"
+        "pronunciation_vi": "ZI",
+        "pronunciation_en": "zee — capitalised in writing; comparable to French 'vous'"
       },
       {
         "word": "du",
         "en": "you (informal)",
         "vi": "bạn (thân)",
         "pos": "pronoun (informal)",
-        "pronunciation_vi": "đu"
+        "pronunciation_vi": "đu",
+        "pronunciation_en": "doo — comparable to French 'tu'"
       },
       {
         "word": "ihr",
         "en": "you (plural informal)",
         "vi": "các bạn",
         "pos": "pronoun",
-        "pronunciation_vi": "ÍA"
+        "pronunciation_vi": "ÍA",
+        "pronunciation_en": "eer — like 'ear' without the final 'r' rolled"
       },
       {
         "word": "duzen",
         "en": "to address as 'du'",
         "vi": "xưng 'du'",
         "pos": "verb",
-        "pronunciation_vi": "ĐÚ-tsần"
+        "pronunciation_vi": "ĐÚ-tsần",
+        "pronunciation_en": "DOO-tsen — 'z' = 'ts'"
       },
       {
         "word": "siezen",
         "en": "to address as 'Sie'",
         "vi": "xưng 'Sie'",
         "pos": "verb",
-        "pronunciation_vi": "ZI-tsần"
+        "pronunciation_vi": "ZI-tsần",
+        "pronunciation_en": "ZEE-tsen"
       }
     ],
     "dialogue": [
@@ -586,6 +706,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Chọn từ formal hay informal:",
+        "instruction_en": "Pick the formal or informal word:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -605,6 +726,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối cách xưng hô với mức độ:",
+        "instruction_en": "Match each form of address to its register:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -628,6 +750,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -660,6 +783,11 @@ export const lessons: GermanLesson[] = [
           "Daumen → ĐAO-mần",
           "drücken → ĐRUYC-kần — 'ü' tròn",
           "thành ngữ"
+        ],
+        "pronunciation_focus_en": [
+          "Daumen → DOW-men — 'au' = 'ow' as in 'how'",
+          "drücken → DRUE-ken — rounded 'ü' (lips for 'oo', say 'ee')",
+          "set idiom — Germans 'press thumbs' instead of crossing fingers"
         ]
       },
       {
@@ -669,6 +797,11 @@ export const lessons: GermanLesson[] = [
           "nicht → NỊT",
           "Bier → BÍA",
           "thành ngữ"
+        ],
+        "pronunciation_focus_en": [
+          "nicht → 'nikht' — soft final 'ch'",
+          "Bier → 'beer' — long 'ee'",
+          "idiom — literally 'that's not my beer' = 'not my problem'"
         ]
       },
       {
@@ -678,6 +811,11 @@ export const lessons: GermanLesson[] = [
           "Tomaten → tô-MA-tần",
           "Augen → AO-gần",
           "trên mắt → mù tịt"
+        ],
+        "pronunciation_focus_en": [
+          "Tomaten → to-MAH-ten",
+          "Augen → OW-gen — 'au' = 'ow'",
+          "'tomatoes on the eyes' = blind to the obvious"
         ]
       },
       {
@@ -687,6 +825,11 @@ export const lessons: GermanLesson[] = [
           "liegt → LIK-t",
           "Hund → HUNT",
           "begraben → bờ-GRA-bần"
+        ],
+        "pronunciation_focus_en": [
+          "liegt → 'leekt' — final 'g' devoices to 'k'",
+          "Hund → 'hoont' — final 'd' devoices to 't'",
+          "begraben → be-GRAH-ben"
         ]
       },
       {
@@ -696,81 +839,98 @@ export const lessons: GermanLesson[] = [
           "verstehe → phờ-SHTÊ-ờ",
           "nur → NÚA",
           "Bahnhof → BA-nờ-hôph"
+        ],
+        "pronunciation_focus_en": [
+          "verstehe → fer-SHTAY-eh — 'v' = 'f'; 'st' = 'sht'",
+          "nur → 'noor' — long 'oo'",
+          "Bahnhof → BAHN-hohf — long 'ah'; final 'f' for 'hof'"
         ]
       }
     ],
     "cultural_notes_vi": "Thành ngữ Đức (Redewendungen) có lịch sử dài, nhiều cái rất hình ảnh. 'Schwein haben' (có heo - may mắn) đến từ thời trung cổ khi tặng heo là tặng may mắn. 'Tomaten auf den Augen' (cà chua trên mắt) là cách hài hước nói ai đó không thấy điều rõ ràng. Học thành ngữ là chìa khóa hòa nhập văn hóa — nhưng dùng ít, đúng chỗ. Dùng quá nhiều nghe lố.",
+    "cultural_notes_en": "German idioms (Redewendungen) have long histories and many of them are very vivid. 'Schwein haben' (literally 'to have pig' = to be lucky) goes back to the Middle Ages, when gifting a pig was a literal gift of fortune. 'Tomaten auf den Augen' (tomatoes on the eyes) is a humorous way to say someone can't see what's obvious. Idioms are a key marker of cultural fluency — but use them sparingly and only when they fit. Sprinkling in too many sounds like you're showing off.",
     "tip_advice_vi": "Bắt đầu với 5-10 thành ngữ phổ biến nhất: 'Daumen drücken', 'Schwein haben', 'auf der Nase liegen' (nằm dài/bệnh), 'die Nase voll haben' (chán ngấy). Đừng dịch literal sang tiếng Việt khi nói tiếng Đức — sẽ rất buồn cười. Học cụm cố định, dùng nguyên cụm.",
+    "tip_advice_en": "Start with the 5–10 most common ones: 'Daumen drücken', 'Schwein haben', 'auf der Nase liegen' (laid out / sick), 'die Nase voll haben' (fed up). Don't translate English idioms literally into German — the result is usually funny rather than meaningful. Learn idioms as fixed chunks and use them whole.",
     "vocabulary": [
       {
         "word": "der Daumen",
         "en": "thumb",
         "vi": "ngón cái",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a ĐAO-mần"
+        "pronunciation_vi": "đe-a ĐAO-mần",
+        "pronunciation_en": "dayr DOW-men — 'au' = 'ow' as in 'how'"
       },
       {
         "word": "drücken",
         "en": "to press",
         "vi": "ấn/nắm",
         "pos": "verb",
-        "pronunciation_vi": "ĐRUYC-kần"
+        "pronunciation_vi": "ĐRUYC-kần",
+        "pronunciation_en": "DRUE-ken — rounded 'ü'"
       },
       {
         "word": "das Glück",
         "en": "luck",
         "vi": "may mắn",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát GLUYC — 'ü' tròn"
+        "pronunciation_vi": "đát GLUYC — 'ü' tròn",
+        "pronunciation_en": "dahs GLUEK — rounded 'ü'; final 'ck' is a sharp 'k'"
       },
       {
         "word": "der Hund",
         "en": "dog",
         "vi": "con chó",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a HUNT"
+        "pronunciation_vi": "đe-a HUNT",
+        "pronunciation_en": "dayr HOONT — short 'oo' as in 'put'; 'd' devoices to 't'"
       },
       {
         "word": "begraben",
         "en": "buried",
         "vi": "chôn",
         "pos": "verb (P2)",
-        "pronunciation_vi": "bờ-GRA-bần"
+        "pronunciation_vi": "bờ-GRA-bần",
+        "pronunciation_en": "be-GRAH-ben — long 'ah'"
       },
       {
         "word": "Bahnhof verstehen",
         "en": "to not understand",
         "vi": "không hiểu gì",
         "pos": "idiom",
-        "pronunciation_vi": "BA-nờ-hôph phờ-SHTÊ-ần"
+        "pronunciation_vi": "BA-nờ-hôph phờ-SHTÊ-ần",
+        "pronunciation_en": "BAHN-hohf fer-SHTAY-en — idiom literally 'to understand only train station'"
       },
       {
         "word": "Schwein haben",
         "en": "to be lucky",
         "vi": "may mắn",
         "pos": "idiom",
-        "pronunciation_vi": "SHvain HA-bần"
+        "pronunciation_vi": "SHvain HA-bần",
+        "pronunciation_en": "SHVINE HAH-ben — 'sch' = 'sh'; 'w' = 'v'; 'ei' = 'eye'"
       },
       {
         "word": "der Knoten",
         "en": "knot",
         "vi": "nút thắt",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a KNÔ-tần"
+        "pronunciation_vi": "đe-a KNÔ-tần",
+        "pronunciation_en": "dayr KNOH-ten — both 'k' and 'n' pronounced (unlike English 'knot')"
       },
       {
         "word": "platzen",
         "en": "to burst",
         "vi": "vỡ ra",
         "pos": "verb",
-        "pronunciation_vi": "PLA-tsần"
+        "pronunciation_vi": "PLA-tsần",
+        "pronunciation_en": "PLAHT-tsen — 'z' = 'ts'"
       },
       {
         "word": "die Nase",
         "en": "nose",
         "vi": "mũi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi NA-zờ"
+        "pronunciation_vi": "đi NA-zờ",
+        "pronunciation_en": "dee NAH-zeh — 's' between vowels = 'z' sound"
       }
     ],
     "dialogue": [
@@ -799,6 +959,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền thành ngữ:",
+        "instruction_en": "Fill in the idiom:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -818,6 +979,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thành ngữ với nghĩa:",
+        "instruction_en": "Match each idiom to its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -841,6 +1003,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (dùng thành ngữ):",
+        "instruction_en": "Translate into German (using the idiom):",
         "pronunciation_focus": [],
         "items": [
           {
@@ -873,6 +1036,11 @@ export const lessons: GermanLesson[] = [
           "Ach so → ÁC zô — phản ứng hiểu ra",
           "jetzt → IẾT-st",
           "verstehe → phờ-SHTÊ-ờ"
+        ],
+        "pronunciation_focus_en": [
+          "Ach so → 'akh zoh' — the 'I get it now' reaction",
+          "jetzt → 'yetst' — 'j' = 'y'; 'z' = 'ts'",
+          "verstehe → fer-SHTAY-eh"
         ]
       },
       {
@@ -882,6 +1050,11 @@ export const lessons: GermanLesson[] = [
           "Naja → NA-ia — chần chừ",
           "halt → HALT — particle resignation",
           "so → zô"
+        ],
+        "pronunciation_focus_en": [
+          "Naja → NAH-yah — hesitation filler",
+          "halt → 'hahlt' — resignation particle",
+          "so → 'zoh'"
         ]
       },
       {
@@ -891,6 +1064,11 @@ export const lessons: GermanLesson[] = [
           "Mensch → MENSH — exclamation",
           "wirklich → VIA-lị",
           "super → ZÚ-pờ"
+        ],
+        "pronunciation_focus_en": [
+          "Mensch → 'mensh' — neutral exclamation, literally 'human/person'",
+          "wirklich → VEER-likh — soft final 'ch'",
+          "super → ZOO-per — 's' before vowel = 'z'"
         ]
       },
       {
@@ -900,6 +1078,11 @@ export const lessons: GermanLesson[] = [
           "Echt → ẾT — informal cho 'wirklich'",
           "wusste → VÚS-tờ",
           "nicht → NỊT"
+        ],
+        "pronunciation_focus_en": [
+          "Echt → 'ekht' — casual replacement for 'wirklich' (really)",
+          "wusste → VOOS-teh — past tense of 'wissen'",
+          "nicht → 'nikht'"
         ]
       },
       {
@@ -909,81 +1092,98 @@ export const lessons: GermanLesson[] = [
           "Egal → ê-GAN",
           "machen wir's → MA-khần vias — viết tắt 'wir es'",
           "einfach → AIN-pháct"
+        ],
+        "pronunciation_focus_en": [
+          "Egal → ay-GAHL — long 'ay' as in 'they'",
+          "machen wir's → MAH-khen veers — contraction of 'wir es'",
+          "einfach → INE-fakh"
         ]
       }
     ],
     "cultural_notes_vi": "Sự khác biệt giữa người học tiếng Đức và người Đức bản xứ thường nằm ở những từ nhỏ này: 'Ach so', 'Naja', 'Mensch', 'Echt', 'Genau'. Người Đức dùng 'Genau' (chính xác) liên tục để xác nhận đối phương — một cuộc đối thoại Đức 5 phút có thể có 10 'Genau'. 'Mensch' (literally 'người') là exclamation trung tính, không tục. 'Ach so!' là phản ứng khi vừa hiểu ra điều gì đó — dùng đúng chỗ rất tự nhiên.",
+    "cultural_notes_en": "The gap between learner and native often lies in these tiny words: 'Ach so', 'Naja', 'Mensch', 'Echt', 'Genau'. Germans use 'Genau' ('exactly') constantly to acknowledge the other speaker — a five-minute German conversation can easily contain ten of them, similar to how English speakers sprinkle in 'right', 'totally', 'yeah'. 'Mensch' (literally 'human') is a neutral exclamation, nothing rude about it — closer to English 'man!' or 'gosh!'. 'Ach so!' is the reaction when you've just understood something — used in the right spot, it sounds completely native.",
     "tip_advice_vi": "Cách luyện: xem phim Đức (Tatort, Dark trên Netflix), podcast (Slow German cho người mới), YouTube (Easy German). Để ý từ nhỏ và bắt chước. Đừng dịch tiếng Việt sang tiếng Đức — học cụm 'Ach so', 'Mensch', 'Genau' như đơn vị, dùng đúng tình huống. Dần dần, tiếng Đức sẽ nghe tự nhiên hơn rất nhiều.",
+    "tip_advice_en": "How to train it: watch German shows (Tatort, Dark on Netflix), listen to podcasts (Slow German for beginners), watch YouTube (Easy German). Notice the small words and mimic them. Don't translate from your native language — learn 'Ach so', 'Mensch', 'Genau' as whole units and use them in matching situations. Bit by bit, your German will sound much more natural.",
     "vocabulary": [
       {
         "word": "Ach so!",
         "en": "Oh I see!",
         "vi": "À ra vậy!",
         "pos": "exclamation",
-        "pronunciation_vi": "ÁC zô"
+        "pronunciation_vi": "ÁC zô",
+        "pronunciation_en": "AHKH zoh — hard 'ch' as in 'loch'"
       },
       {
         "word": "Naja",
         "en": "well...",
         "vi": "thì...",
         "pos": "filler",
-        "pronunciation_vi": "NA-ia"
+        "pronunciation_vi": "NA-ia",
+        "pronunciation_en": "NAH-yah — 'j' = 'y'"
       },
       {
         "word": "Mensch!",
         "en": "Man! / Wow!",
         "vi": "Trời!",
         "pos": "exclamation",
-        "pronunciation_vi": "MENSH"
+        "pronunciation_vi": "MENSH",
+        "pronunciation_en": "mensh — like English 'mensch'"
       },
       {
         "word": "Echt?",
         "en": "Really?",
         "vi": "Thật à?",
         "pos": "exclamation (informal)",
-        "pronunciation_vi": "ẾT"
+        "pronunciation_vi": "ẾT",
+        "pronunciation_en": "ekht — hard 'ch'; rising question intonation"
       },
       {
         "word": "Egal",
         "en": "doesn't matter",
         "vi": "kệ/không sao",
         "pos": "adjective/adverb",
-        "pronunciation_vi": "ê-GAN"
+        "pronunciation_vi": "ê-GAN",
+        "pronunciation_en": "ay-GAHL — stress on second syllable"
       },
       {
         "word": "klar",
         "en": "clear/of course",
         "vi": "rõ rồi/tất nhiên",
         "pos": "adjective",
-        "pronunciation_vi": "KLA"
+        "pronunciation_vi": "KLA",
+        "pronunciation_en": "klahr — long 'ah'; soft trailing 'r'"
       },
       {
         "word": "okay",
         "en": "okay",
         "vi": "được/ok",
         "pos": "adverb",
-        "pronunciation_vi": "ô-KÊ"
+        "pronunciation_vi": "ô-KÊ",
+        "pronunciation_en": "oh-KAY — English loan; same pronunciation"
       },
       {
         "word": "genau",
         "en": "exactly",
         "vi": "chính xác",
         "pos": "adverb",
-        "pronunciation_vi": "gờ-NAO"
+        "pronunciation_vi": "gờ-NAO",
+        "pronunciation_en": "ge-NOW — 'au' = 'ow' as in 'how'"
       },
       {
         "word": "stimmt",
         "en": "right/true",
         "vi": "đúng vậy",
         "pos": "verb form",
-        "pronunciation_vi": "SHTÍMT"
+        "pronunciation_vi": "SHTÍMT",
+        "pronunciation_en": "shtimmt — 'st' at start = 'sht'"
       },
       {
         "word": "wirklich",
         "en": "really",
         "vi": "thật sự",
         "pos": "adverb",
-        "pronunciation_vi": "VIA-lị"
+        "pronunciation_vi": "VIA-lị",
+        "pronunciation_en": "VEER-likh — 'w' = 'v'; soft final 'ch'"
       }
     ],
     "dialogue": [
@@ -1012,6 +1212,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ tự nhiên:",
+        "instruction_en": "Fill in the natural-sounding word:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1031,6 +1232,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match each word to its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1054,6 +1256,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (giọng tự nhiên):",
+        "instruction_en": "Translate into German (natural voice):",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1086,6 +1289,11 @@ export const lessons: GermanLesson[] = [
           "hätte → HÉT-tờ — Konjunktiv II lịch sự",
           "Termin → TE-MIN",
           "Ihnen → I-nần — viết hoa = formal"
+        ],
+        "pronunciation_focus_en": [
+          "hätte → HET-teh — Konjunktiv II for polite request ('would like')",
+          "Termin → ter-MEEN — stress on second syllable",
+          "Ihnen → EE-nen — capitalised, formal 'you' (dative)"
         ]
       },
       {
@@ -1095,6 +1303,11 @@ export const lessons: GermanLesson[] = [
           "Überstunden → UY-bờ-shtun-đần",
           "ü → uy tròn môi",
           "gemacht → gờ-MÁCH-t"
+        ],
+        "pronunciation_focus_en": [
+          "Überstunden → UE-ber-shtoon-den — rounded 'ü'",
+          "ü → rounded vowel (lips for 'oo', say 'ee')",
+          "gemacht → ge-MAHKT — hard 'ch'"
         ]
       },
       {
@@ -1104,6 +1317,11 @@ export const lessons: GermanLesson[] = [
           "Arbeitsbelastung → A-baits-bờ-LAS-tung",
           "Dauer → ĐAO-ờ",
           "tragbar → TRÁK-ba"
+        ],
+        "pronunciation_focus_en": [
+          "Arbeitsbelastung → AR-byts-be-LAS-toong",
+          "Dauer → DOW-er — 'au' = 'ow' as in 'how'",
+          "tragbar → TRAHK-bar — final 'g' devoices to 'k'"
         ]
       },
       {
@@ -1113,6 +1331,11 @@ export const lessons: GermanLesson[] = [
           "möchte → MƠCH-tờ — 'ö' tròn môi",
           "Klartext → KLA-tếc-t",
           "eskaliert → es-ka-LÍA-t"
+        ],
+        "pronunciation_focus_en": [
+          "möchte → MUERKH-teh — rounded 'ö' (lips for 'oh', say 'eh')",
+          "Klartext → KLAHR-tekst — literally 'plain text', i.e. blunt talk",
+          "eskaliert → es-kah-LEERT"
         ]
       },
       {
@@ -1122,81 +1345,98 @@ export const lessons: GermanLesson[] = [
           "Prioritäten → pri-o-ri-TÊ-tần",
           "gemeinsam → gờ-MAIN-zam",
           "festlegen → PHEST-lê-gần"
+        ],
+        "pronunciation_focus_en": [
+          "Prioritäten → pree-o-ree-TAY-ten",
+          "gemeinsam → ge-MINE-zahm",
+          "festlegen → FEST-lay-gen — separable verb"
         ]
       }
     ],
     "cultural_notes_vi": "Văn hóa công sở Đức cực kỳ trực tiếp — 'Klartext' (nói thẳng) là giá trị, không phải thiếu lịch sự. Khác hẳn Việt Nam: người Đức kỳ vọng nhân viên tự nói ra vấn đề CHỦ ĐỘNG, không 'đợi sếp tự nhận thấy'. Im lặng = đồng ý. Nếu bạn quá tải mà không nói, sếp Đức sẽ cho rằng bạn đang ổn. Khi xin gặp sếp về vấn đề khó: (1) đặt lịch trước qua email/Outlook — không đột nhập phòng; (2) chuẩn bị số liệu cụ thể (giờ overtime, deadline); (3) đề xuất giải pháp, không chỉ phàn nàn; (4) giữ giọng bình tĩnh, factual, không cảm xúc.",
+    "cultural_notes_en": "German workplace culture is unusually direct — 'Klartext' (literally 'plain text', i.e. blunt talk) is a value, not bad manners. The difference from softer-context cultures: Germans expect employees to surface problems PROACTIVELY, not to wait for the boss to notice. Silence = agreement. If you're overloaded and don't say so, a German boss will assume you're fine. When you ask for a meeting about something difficult: (1) book the slot in advance by email/Outlook — don't drop into the office unannounced; (2) prepare concrete numbers (overtime hours, deadlines); (3) come in with a proposed solution, not just a complaint; (4) keep your voice calm, factual, unemotional.",
     "tip_advice_vi": "Cấu trúc cuộc nói chuyện: (1) Vào đề lịch sự với Konjunktiv II: 'Ich hätte gern einen kurzen Termin'. (2) Nêu sự kiện trước, cảm xúc sau: '60 Überstunden in 3 Monaten' chứ không 'Tôi mệt quá'. (3) Dùng 'Ich-Botschaften': 'Ich brauche...', 'Mir ist wichtig...' — không trách 'Sie geben zu viel'. (4) Đề xuất giải pháp cụ thể: pausieren, delegieren, neu priorisieren. (5) Câu chốt: 'Ich möchte Klartext reden' — báo hiệu sắp nói thật, người Đức tôn trọng. Tránh 'Es tut mir leid, aber...' — yếu thế quá. Người Đức không cần xin lỗi vì nói sự thật.",
+    "tip_advice_en": "Structure of the conversation: (1) Open politely with Konjunktiv II: 'Ich hätte gern einen kurzen Termin'. (2) Lead with facts, feelings second: '60 Überstunden in 3 Monaten' beats 'I'm exhausted'. (3) Use 'Ich-Botschaften' (I-statements): 'Ich brauche…', 'Mir ist wichtig…' — never accuse with 'Sie geben zu viel'. (4) Propose concrete fixes: pausieren, delegieren, neu priorisieren (pause, delegate, re-prioritise). (5) The signal phrase: 'Ich möchte Klartext reden' — it tells the boss the truth is coming, and Germans respect that opening. Avoid 'Es tut mir leid, aber…' — it sounds weak. Germans don't apologise for telling the truth.",
     "vocabulary": [
       {
         "word": "die Arbeitsbelastung",
         "en": "workload",
         "vi": "khối lượng công việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi A-baits-bờ-LAS-tung"
+        "pronunciation_vi": "đi A-baits-bờ-LAS-tung",
+        "pronunciation_en": "dee AR-byts-be-LAS-toong — compound: Arbeit + Belastung"
       },
       {
         "word": "die Überstunde",
         "en": "overtime hour",
         "vi": "giờ làm thêm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UY-bờ-shtun-đờ — 'ü' tròn"
+        "pronunciation_vi": "đi UY-bờ-shtun-đờ — 'ü' tròn",
+        "pronunciation_en": "dee UE-ber-shtoon-deh — rounded 'ü'"
       },
       {
         "word": "tragbar",
         "en": "bearable",
         "vi": "chịu được, bền vững",
         "pos": "adjective",
-        "pronunciation_vi": "TRÁK-ba"
+        "pronunciation_vi": "TRÁK-ba",
+        "pronunciation_en": "TRAHK-bar — final 'g' devoices to 'k'"
       },
       {
         "word": "ansprechen",
         "en": "to bring up",
         "vi": "nói ra, đề cập",
         "pos": "verb (sep)",
-        "pronunciation_vi": "AN-shprê-khần"
+        "pronunciation_vi": "AN-shprê-khần",
+        "pronunciation_en": "AHN-shprekh-en — separable; 'sp' = 'shp'"
       },
       {
         "word": "die Priorität",
         "en": "priority",
         "vi": "ưu tiên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi pri-o-ri-TÊT"
+        "pronunciation_vi": "đi pri-o-ri-TÊT",
+        "pronunciation_en": "dee pree-o-ree-TAYT — stress on final syllable"
       },
       {
         "word": "pausieren",
         "en": "to pause",
         "vi": "tạm dừng",
         "pos": "verb",
-        "pronunciation_vi": "pao-ZÍA-ần"
+        "pronunciation_vi": "pao-ZÍA-ần",
+        "pronunciation_en": "pow-ZEE-ren — 'au' = 'ow'; 's' between vowels = 'z'"
       },
       {
         "word": "delegieren",
         "en": "to delegate",
         "vi": "ủy quyền, giao phó",
         "pos": "verb",
-        "pronunciation_vi": "đê-lê-GÍA-ần"
+        "pronunciation_vi": "đê-lê-GÍA-ần",
+        "pronunciation_en": "de-le-GEE-ren — stress on third syllable"
       },
       {
         "word": "der Termin",
         "en": "appointment",
         "vi": "cuộc hẹn",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a TE-MIN"
+        "pronunciation_vi": "đe-a TE-MIN",
+        "pronunciation_en": "dayr ter-MEEN — stress on second syllable"
       },
       {
         "word": "die Erschöpfung",
         "en": "exhaustion",
         "vi": "kiệt sức",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi e-SHƠP-phung — 'ö' tròn"
+        "pronunciation_vi": "đi e-SHƠP-phung — 'ö' tròn",
+        "pronunciation_en": "dee er-SHUEP-foong — rounded 'ö'"
       },
       {
         "word": "sich abgrenzen",
         "en": "to set boundaries",
         "vi": "đặt ranh giới",
         "pos": "verb (refl)",
-        "pronunciation_vi": "zịch ÁP-grên-tsần"
+        "pronunciation_vi": "zịch ÁP-grên-tsần",
+        "pronunciation_en": "zikh AHP-gren-tsen — reflexive; separable; 'z' = 'ts'"
       }
     ],
     "dialogue": [
@@ -1319,29 +1559,34 @@ export const lessons: GermanLesson[] = [
       "Đồng nghiệp Đức (đã 'du') hỏi sao bạn trông kiệt sức. Hãy dùng thành ngữ 'die Nase voll haben' để than vãn ngắn — sau đó hỏi ý kiến: nên nói chuyện với sếp như thế nào."
     ],
     "register_notes": "Toàn bộ cuộc nói chuyện này dùng 'Sie' (lịch sự), không 'du'. Lý do: (1) đây là buổi nói chuyện chính thức về xung đột — không phải lúc duzen; (2) công ty truyền thống Đức (luật, ngân hàng, bảo hiểm, công ty gia đình) mặc định 'Sie' với cấp trên kể cả khi đã làm chung nhiều năm; (3) trong tình huống căng thẳng, 'Sie' giúp giữ khoảng cách lý trí, tránh cảm xúc lan vào.\n\nKhác Pháp: 'vous' Pháp có thể lỏng — đồng nghiệp Pháp nhanh chóng 'tu' sau vài tháng. Đức nghiêm hơn nhiều. Startup, agency, IT trẻ thường 'du' từ ngày đầu, nhưng phần lớn ngành khác giữ 'Sie' lâu. Quy tắc vàng cho người Việt: theo dõi sếp dùng gì với bạn — nếu sếp 'Sie', bạn 'Sie'. Đề nghị chuyển 'du' luôn đến từ người cao hơn (cấp trên, lớn tuổi) — bạn KHÔNG được đề nghị trước với cấp trên.\n\nTín hiệu cần chú ý: nếu bạn và sếp đã 'du' từ lâu, nhưng trong cuộc họp về vấn đề nghiêm trọng sếp đột ngột chuyển lại 'Sie' — đây là báo hiệu 'đây là chuyện công việc, không phải bạn bè'. Hiểu được tín hiệu này tránh hiểu lầm. Ngược lại, nếu cuộc họp căng thẳng và sếp vẫn 'du', tức là sếp coi bạn như đồng minh, không phải đối thủ.",
+    "register_notes_en": "The entire conversation uses 'Sie' (formal), never 'du'. Why: (1) this is a formal conflict conversation — not the moment to duzen; (2) traditional German companies (law, banking, insurance, family-owned firms) default to 'Sie' with supervisors even after many years working together; (3) under stress, 'Sie' keeps a rational distance and stops emotion from spilling in.\n\nCompared to French: French 'vous' can be loose — French colleagues often switch to 'tu' after a few months. Germans hold the line much more strictly. Startups, agencies, and young IT firms typically duzen from day one, but most other sectors stay on 'Sie' for a long time. Golden rule for non-Germans: watch what your boss uses with YOU — if they're on 'Sie', you stay on 'Sie'. The invitation to switch to 'du' always comes from the senior party (boss, older person) — you do NOT propose it first to a superior.\n\nSignals to watch: if you and your boss have been on 'du' for a long time, and suddenly in a meeting about a serious issue they switch back to 'Sie' — that is a flag: 'this is business, not friendship'. Reading that signal avoids misunderstanding. Conversely, if the meeting is tense and your boss stays on 'du', they're treating you as an ally, not an adversary.",
     "idiom_glosses": [
       {
         "idiom": "die Nase voll haben",
         "literal": "có cái mũi đầy",
         "meaning": "chán ngấy, hết chịu nổi",
+        "meaning_en": "to be fed up, to have had enough",
         "example": "Ich habe die Nase voll von diesen ständigen Überstunden."
       },
       {
         "idiom": "Klartext reden",
         "literal": "nói chữ rõ ràng",
         "meaning": "nói thẳng, không vòng vo",
+        "meaning_en": "to speak plainly, no beating around the bush",
         "example": "Ich möchte Klartext reden: das geht so nicht weiter."
       },
       {
         "idiom": "kein Blatt vor den Mund nehmen",
         "literal": "không cầm chiếc lá trước miệng",
         "meaning": "nói thẳng, không che giấu",
+        "meaning_en": "to speak frankly, to not mince words",
         "example": "Frau Becker nimmt kein Blatt vor den Mund — das schätze ich."
       },
       {
         "idiom": "das Maß ist voll",
         "literal": "cái đong đã đầy",
         "meaning": "đã đến giới hạn, giọt nước tràn ly",
+        "meaning_en": "the limit has been reached, the last straw",
         "example": "Nach diesem Vorfall ist das Maß voll. Es muss sich etwas ändern."
       }
     ],
@@ -1349,6 +1594,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ phù hợp cho cuộc nói chuyện công sở:",
+        "instruction_en": "Fill in the right word for a workplace conversation:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "Sie-Form"
@@ -1375,6 +1621,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp:",
+        "instruction_en": "Match each German sentence to its communicative function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1398,6 +1645,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở (giữ formal Sie-Form):",
+        "instruction_en": "Translate into workplace German (keep formal Sie-form):",
         "pronunciation_focus": [
           "Sie-Form",
           "Konjunktiv II"
@@ -1437,6 +1685,11 @@ export const lessons: GermanLesson[] = [
           "Vorstellungsgespräch → FOA-shtê-lung-s-gờ-shprếch",
           "ä → e mở",
           "Einladung → AIN-la-đung"
+        ],
+        "pronunciation_focus_en": [
+          "Vorstellungsgespräch → FOR-shtel-loongs-ge-shprekh",
+          "ä → open 'e' as in 'bed'",
+          "Einladung → INE-la-doong"
         ]
       },
       {
@@ -1446,6 +1699,11 @@ export const lessons: GermanLesson[] = [
           "Qualitätssicherung → KVA-li-té-ts-zi-khê-rung",
           "gesammelt → gờ-ZAM-mêlt",
           "Erfahrung → e-FA-rung"
+        ],
+        "pronunciation_focus_en": [
+          "Qualitätssicherung → KVAH-lee-tayts-zee-kher-oong",
+          "gesammelt → ge-ZAHM-melt",
+          "Erfahrung → er-FAH-roong"
         ]
       },
       {
@@ -1455,6 +1713,11 @@ export const lessons: GermanLesson[] = [
           "reizt → RAITS-t",
           "Ausrichtung → AOS-ri-khtung",
           "Unternehmen → un-tờ-NÊ-mần"
+        ],
+        "pronunciation_focus_en": [
+          "reizt → 'rytst' — 'ei' = 'eye'; 'z' = 'ts'",
+          "Ausrichtung → OWS-rikh-toong — 'au' = 'ow'",
+          "Unternehmen → oon-ter-NAY-men"
         ]
       },
       {
@@ -1464,6 +1727,11 @@ export const lessons: GermanLesson[] = [
           "Könnten → KƠN-tần — Konjunktiv II",
           "Entwicklungsmöglichkeiten → ent-VÍ-klung-s-mơ-glích-kai-tần",
           "ö → ơ tròn môi"
+        ],
+        "pronunciation_focus_en": [
+          "Könnten → KUEN-ten — Konjunktiv II ('could you')",
+          "Entwicklungsmöglichkeiten → ent-VIK-loongs-muerg-likh-kite-en",
+          "ö → rounded vowel (lips for 'oh', say 'eh')"
         ]
       },
       {
@@ -1473,81 +1741,98 @@ export const lessons: GermanLesson[] = [
           "Bezüglich → bê-TSUY-glích",
           "Bruttojahresgehalt → BRU-tô-IA-rès-gờ-halt",
           "ü → uy tròn môi"
+        ],
+        "pronunciation_focus_en": [
+          "Bezüglich → be-TSUEG-likh — rounded 'ü'",
+          "Bruttojahresgehalt → BROO-toh-YAH-res-ge-halt",
+          "ü → rounded vowel (lips for 'oo', say 'ee')"
         ]
       }
     ],
     "cultural_notes_vi": "Phỏng vấn ở công ty Đức khác Việt Nam ở năm điểm. (1) Đúng giờ: đến SỚM 5-10 phút, không sớm hơn (đến 30 phút trước = bị coi là gây áp lực). Trễ 5 phút trở lên thường = mất cơ hội. (2) Bắt tay chắc, nhìn thẳng mắt — yếu là dấu hiệu thiếu tự tin. (3) Trả lời câu hỏi 'điểm yếu' KHÔNG được đùa hay chuyển hướng. Phải nêu điểm yếu THẬT + cách bạn đang cải thiện. (4) Đàm phán lương trong vòng cuối là CHUẨN — không phải vô lễ; nhưng phải có dữ liệu thị trường (Glassdoor, Stepstone) làm cơ sở. (5) Sau phỏng vấn, gửi email cảm ơn ngắn gọn TRONG 24 GIỜ — không quá dài (3-4 dòng), không xin xỏ.\n\nCông ty Đức ở Việt Nam (Bosch, Siemens, BASF, Continental) tìm người Việt có thể giao tiếp tự tin với cả hai phía. Đặc biệt giá trị: ai có thể giải thích quy trình Đức cho team Việt và ngược lại — đó là 'Brückenfunktion' (chức năng cầu nối) mà không người Đức thuần nào hay người Việt thuần nào làm được.\n\nKhác biệt cơ bản nhất với phỏng vấn ở công ty Việt Nam: ở VN, mối quan hệ và chemistry quan trọng bằng năng lực; ở công ty Đức, năng lực được đo bằng dữ liệu cụ thể, mối quan hệ phát triển SAU khi vào việc.",
+    "cultural_notes_en": "A German job interview differs from one at home in five key ways. (1) Punctuality: arrive 5–10 minutes EARLY — no earlier (showing up 30 minutes ahead reads as pressuring). Five minutes late or more usually means losing the offer. (2) Firm handshake, direct eye contact — a weak handshake reads as lack of confidence. (3) The 'biggest weakness' question can NOT be answered with a joke or a dodge. You have to name a REAL weakness plus what you're doing to improve it. (4) Salary negotiation in the final round is STANDARD — it is not rude; but you need market data (Glassdoor, Stepstone) to anchor your number. (5) After the interview, send a short thank-you email WITHIN 24 HOURS — not too long (3–4 lines), no begging tone.\n\nGerman companies hiring in Vietnam (Bosch, Siemens, BASF, Continental) look for Vietnamese candidates who can communicate confidently with both sides. The especially prized profile: someone who can explain a German process to a Vietnamese team and vice versa — the 'Brückenfunktion' (bridge function) that a German-only or Vietnamese-only colleague can't perform.\n\nThe most fundamental contrast with hiring at home: in Vietnam, relationship and chemistry weigh as much as competence; at a German company, competence is measured by concrete data, and the relationship develops AFTER you start the job.",
     "tip_advice_vi": "Chuẩn bị: (1) Nghiên cứu kỹ công ty 4-6 giờ trước phỏng vấn — đọc Geschäftsbericht, tin tức gần nhất, đối thủ cạnh tranh. (2) Chuẩn bị 3 dự án cụ thể có số liệu (ví dụ: 'giảm chi phí 15%') để kể chi tiết. (3) In 2 bản CV mang theo. (4) Chuẩn bị 5 câu hỏi cho người phỏng vấn.\n\nTrong phỏng vấn: (1) Mở đầu bằng cái bắt tay chắc + mắt nhìn thẳng + 'Guten Tag, Frau/Herr X'. (2) Khi không hiểu câu hỏi, hỏi lại lịch sự: 'Könnten Sie die Frage anders formulieren?'. (3) Câu trả lời theo cấu trúc STAR (Situation-Task-Action-Result). (4) Khi hỏi về điểm yếu, dùng cấu trúc: thừa nhận → cách khắc phục → kết quả. (5) Khi đàm phán lương, đưa range (50-60K) chứ không số đơn lẻ.\n\nSau phỏng vấn: gửi email cảm ơn trong 24h, ngắn gọn 3-4 dòng. Sau 14 ngày không có phản hồi, có thể follow-up 1 lần lịch sự.",
+    "tip_advice_en": "Prep: (1) Research the company hard 4–6 hours before — read the annual report (Geschäftsbericht), most recent news, key competitors. (2) Prepare three concrete projects backed by numbers ('cut costs by 15%') and rehearse them in detail. (3) Print two copies of your CV to bring along. (4) Prepare five questions for the interviewer.\n\nIn the room: (1) Open with a firm handshake + direct eye contact + 'Guten Tag, Frau/Herr X'. (2) If you don't catch a question, ask politely: 'Könnten Sie die Frage anders formulieren?' (could you phrase the question differently?). (3) Use the STAR structure (Situation-Task-Action-Result). (4) For the weakness question, use the structure: acknowledge → how you're fixing it → result. (5) When you negotiate salary, give a range (50–60K), not a single number.\n\nAfter: send the thank-you email within 24 hours, 3–4 lines, tight. If you haven't heard back in 14 days, one polite follow-up is fine.",
     "vocabulary": [
       {
         "word": "das Vorstellungsgespräch",
         "en": "job interview",
         "vi": "buổi phỏng vấn xin việc",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FOA-shtê-lung-s-gờ-shprếch"
+        "pronunciation_vi": "đát FOA-shtê-lung-s-gờ-shprếch",
+        "pronunciation_en": "dahs FOR-shtel-loongs-ge-shprekh"
       },
       {
         "word": "die Qualitätssicherung",
         "en": "quality assurance",
         "vi": "đảm bảo chất lượng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KVA-li-té-ts-zi-khê-rung"
+        "pronunciation_vi": "đi KVA-li-té-ts-zi-khê-rung",
+        "pronunciation_en": "dee KVAH-lee-tayts-zee-kher-oong"
       },
       {
         "word": "die Erfahrung sammeln",
         "en": "to gain experience",
         "vi": "tích luỹ kinh nghiệm",
         "pos": "verb phrase",
-        "pronunciation_vi": "ZAM-mêln"
+        "pronunciation_vi": "ZAM-mêln",
+        "pronunciation_en": "er-FAH-roong ZAHM-meln"
       },
       {
         "word": "die Ausrichtung",
         "en": "orientation, direction",
         "vi": "định hướng",
         "pos": "noun (f)",
-        "pronunciation_vi": "AOS-ri-khtung"
+        "pronunciation_vi": "AOS-ri-khtung",
+        "pronunciation_en": "OWS-rikh-toong — 'au' = 'ow'"
       },
       {
         "word": "die Entwicklungsmöglichkeit",
         "en": "development opportunity",
         "vi": "cơ hội phát triển",
         "pos": "noun (f)",
-        "pronunciation_vi": "ent-VÍ-klung-s-mơ-glích-kai"
+        "pronunciation_vi": "ent-VÍ-klung-s-mơ-glích-kai",
+        "pronunciation_en": "ent-VIK-loongs-muerg-likh-kite — rounded 'ö'"
       },
       {
         "word": "die Stärken und Schwächen",
         "en": "strengths and weaknesses",
         "vi": "điểm mạnh và điểm yếu",
         "pos": "noun phrase",
-        "pronunciation_vi": "SHTE-kần und SHVÉ-khần"
+        "pronunciation_vi": "SHTE-kần und SHVÉ-khần",
+        "pronunciation_en": "SHTAYR-ken oont SHVEH-khen"
       },
       {
         "word": "das Bruttojahresgehalt",
         "en": "gross annual salary",
         "vi": "lương tổng cả năm",
         "pos": "noun (n)",
-        "pronunciation_vi": "BRU-tô-IA-rès-gờ-halt"
+        "pronunciation_vi": "BRU-tô-IA-rès-gờ-halt",
+        "pronunciation_en": "dahs BROO-toh-YAH-res-ge-halt"
       },
       {
         "word": "die Probezeit",
         "en": "probation period",
         "vi": "thời gian thử việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "PRÔ-bê-tsait"
+        "pronunciation_vi": "PRÔ-bê-tsait",
+        "pronunciation_en": "dee PROH-be-tsite — 'z' = 'ts'; 'ei' = 'eye'"
       },
       {
         "word": "der/die Vorgesetzte",
         "en": "superior, manager",
         "vi": "cấp trên",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "FOA-gờ-zét-tê"
+        "pronunciation_vi": "FOA-gờ-zét-tê",
+        "pronunciation_en": "FOR-ge-zets-teh"
       },
       {
         "word": "in einem Unternehmen tätig sein",
         "en": "to work at a company",
         "vi": "làm việc tại công ty",
         "pos": "verb phrase",
-        "pronunciation_vi": "TÊ-tích zain"
+        "pronunciation_vi": "TÊ-tích zain",
+        "pronunciation_en": "TAY-tikh zine"
       }
     ],
     "dialogue": [
@@ -1670,29 +1955,34 @@ export const lessons: GermanLesson[] = [
       "Cuối phỏng vấn, người phỏng vấn hỏi 'Haben Sie noch Fragen?'. Hãy hỏi 3 câu thông minh thể hiện anh đã nghiên cứu công ty — không hỏi về lương/nghỉ phép ở giai đoạn này."
     ],
     "register_notes": "Trong môi trường phỏng vấn truyền thống Đức (công ty kỹ thuật, ngân hàng, công ty gia đình lớn), 'Sie' là chuẩn từ đầu đến cuối — kể cả khi không khí thân thiện. KHÔNG bao giờ chuyển sang 'du' trừ khi người phỏng vấn chủ động đề nghị (rất hiếm trong vòng đầu). Kết câu bằng 'Konjunktiv II' để biểu hiện lịch sự: 'Ich würde sagen...', 'Es wäre mir wichtig...', 'Könnten Sie...?' — tránh 'ich will', 'ich brauche'.\n\nNgoại lệ: startup ở Berlin/Hamburg, công ty IT hiện đại, agency sáng tạo thường 'du' từ ngày đầu — kể cả với CEO. Dấu hiệu: nếu trang web công ty xưng 'du' với khách thăm trang, nếu bài đăng tuyển dụng có 'duzen' trong văn hoá công ty, hoặc nếu người phỏng vấn mở đầu bằng tên (không Frau/Herr) — bạn được phép 'du'. Nhưng quy tắc vàng: chờ người phỏng vấn dùng 'du' với bạn TRƯỚC; đừng tự ý chuyển.\n\nNgười Việt hay mắc lỗi tự khiêm thái quá ('Em chưa có nhiều kinh nghiệm') — bị đọc là thiếu tự tin, không bán được giá trị bản thân. Văn hoá Đức expect bạn nói thẳng đóng góp được gì, kèm bằng chứng cụ thể.",
+    "register_notes_en": "In a traditional German interview setting (engineering firms, banks, large family-owned companies), 'Sie' is standard from start to finish — even when the atmosphere is friendly. NEVER switch to 'du' unless the interviewer proactively invites it (which is very rare in a first round). Wrap requests in Konjunktiv II to signal politeness: 'Ich würde sagen…', 'Es wäre mir wichtig…', 'Könnten Sie…?' — avoid 'ich will' (I want) or 'ich brauche' (I need) which both sound blunt.\n\nException: Berlin/Hamburg startups, modern IT firms, and creative agencies routinely 'du' from day one — even with the CEO. Tells: if the company website addresses visitors with 'du', if the job posting mentions 'duzen' as part of the culture, or if the interviewer opens by first name (no Frau/Herr) — you're cleared to 'du'. But the golden rule: wait for the interviewer to use 'du' with you FIRST; never switch on your own.\n\nA common trap for non-Western candidates is over-self-deprecation ('I don't have much experience yet') — that reads as a lack of confidence and fails to sell your value. German culture expects you to state plainly what you contribute, backed by concrete evidence.",
     "idiom_glosses": [
       {
         "idiom": "Tacheles reden",
         "literal": "Nói thẳng (Tacheles từ tiếng Yiddish)",
         "meaning": "Nói thẳng vào vấn đề, không vòng vo. Trong phỏng vấn, dùng để báo hiệu bạn sẵn sàng cho phản hồi trực tiếp về điểm yếu hoặc lương.",
+        "meaning_en": "to talk straight, get to the point (Tacheles is from Yiddish). In an interview, signals that you're ready for blunt feedback on weaknesses or salary.",
         "example": "Ich kann auf Deutsch Tacheles reden — auch in schwierigen Verhandlungen."
       },
       {
         "idiom": "Nägel mit Köpfen machen",
         "literal": "Đóng đinh có đầu",
         "meaning": "Làm việc gì đến nơi đến chốn, dứt khoát — thay vì để dở dang. Dùng khi muốn báo hiệu bạn không phải kiểu nửa vời.",
+        "meaning_en": "to do something properly and decisively, see it through to the end — not leave it half-finished. Signals you're not the kind to do things by halves.",
         "example": "Bei jedem Projekt mache ich Nägel mit Köpfen — angefangenes wird beendet."
       },
       {
         "idiom": "Über den Tellerrand schauen",
         "literal": "Nhìn qua mép đĩa",
         "meaning": "Nhìn xa hơn phạm vi nhỏ hẹp của mình, có cái nhìn tổng thể. Dùng để mô tả tầm nhìn liên ngành, bilingual, cross-cultural.",
+        "meaning_en": "to look beyond the narrow scope of your own field, to have the big-picture view. Useful for describing cross-disciplinary, bilingual, or cross-cultural perspective.",
         "example": "Mit meiner internationalen Erfahrung kann ich gut über den Tellerrand schauen."
       },
       {
         "idiom": "Ein Eisen im Feuer haben",
         "literal": "Có một thanh sắt trong lửa",
         "meaning": "Có một phương án/cơ hội đang chờ. Số nhiều ('mehrere Eisen im Feuer') = có nhiều phương án dự phòng.",
+        "meaning_en": "to have an option / opportunity in play (think 'an iron in the fire'). Plural form ('mehrere Eisen im Feuer') = multiple fallback options.",
         "example": "Ich habe noch ein anderes Eisen im Feuer, aber Ihre Stelle ist meine Priorität."
       }
     ],
@@ -1700,6 +1990,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp cho buổi phỏng vấn:",
+        "instruction_en": "Fill in the right phrase for the interview:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "Sie-Form"
@@ -1726,6 +2017,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp trong phỏng vấn:",
+        "instruction_en": "Match each German sentence to its interview function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1749,6 +2041,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở (giữ formal Sie-Form, dùng Konjunktiv II khi yêu cầu):",
+        "instruction_en": "Translate into workplace German (keep formal Sie-form; use Konjunktiv II for requests):",
         "pronunciation_focus": [
           "Sie-Form",
           "Konjunktiv II"
@@ -1788,6 +2081,11 @@ export const lessons: GermanLesson[] = [
           "Forschungsvorhaben → FOR-shungs-foa-ha-bần",
           "nachhaltiger → NÁCH-hal-ti-gờ",
           "Wasserwirtschaft → VÁ-sờ-vít-shaft"
+        ],
+        "pronunciation_focus_en": [
+          "Forschungsvorhaben → FOR-shoongs-for-hah-ben",
+          "nachhaltiger → NAHKH-hal-tee-ger",
+          "Wasserwirtschaft → VAH-ser-veert-shaft"
         ]
       },
       {
@@ -1797,6 +2095,11 @@ export const lessons: GermanLesson[] = [
           "Promotionsthema → prô-MÔ-tsi-ônss-tê-ma",
           "Forschungsumgebung → FOR-shungs-um-gê-bung",
           "ideale → i-đê-A-lê"
+        ],
+        "pronunciation_focus_en": [
+          "Promotionsthema → pro-MOH-tsee-ohns-tay-mah",
+          "Forschungsumgebung → FOR-shoongs-oom-gay-boong",
+          "ideale → ee-day-AH-le"
         ]
       },
       {
@@ -1806,6 +2109,11 @@ export const lessons: GermanLesson[] = [
           "Abschluss → ÁB-shlus",
           "Promotion → prô-MÔ-tsi-ôn",
           "lehren → LÊ-rần"
+        ],
+        "pronunciation_focus_en": [
+          "Abschluss → AHP-shloos",
+          "Promotion → pro-MOH-tsee-ohn — German pronunciation, NOT English 'promotion'",
+          "lehren → LAY-ren"
         ]
       },
       {
@@ -1815,6 +2123,11 @@ export const lessons: GermanLesson[] = [
           "zutiefst → TSU-tíf-st",
           "dankbar → ĐANK-ba",
           "vorzustellen → FOA-tsu-shtê-lần — verb tách"
+        ],
+        "pronunciation_focus_en": [
+          "zutiefst → TSOO-teefst — 'z' = 'ts'",
+          "dankbar → DAHNK-bar",
+          "vorzustellen → FOR-tsoo-shtel-len — separable verb (sich vorstellen)"
         ]
       },
       {
@@ -1824,81 +2137,98 @@ export const lessons: GermanLesson[] = [
           "Wille → VÍ-lê",
           "Weg → VÊK",
           "Leitmotiv → LAIT-mô-típ"
+        ],
+        "pronunciation_focus_en": [
+          "Wille → VIL-leh — 'w' = 'v'",
+          "Weg → 'vayk' — final 'g' devoices to 'k'",
+          "Leitmotiv → LITE-moh-teef — 'ei' = 'eye'"
         ]
       }
     ],
     "cultural_notes_vi": "Phỏng vấn DAAD khác phỏng vấn học bổng Mỹ/Anh ở ba điểm cốt lõi. (1) Trọng tâm vào RÜCKKEHR (về nước): Mỹ/Anh không quan tâm bạn ở lại hay về; DAAD đặt mục tiêu phát triển nước bạn lên đầu — và sẽ test bạn có thật sự định về hay không. Kế hoạch về nước phải cụ thể: cơ quan nào, vai trò gì, đóng góp ra sao. Mơ hồ = trượt. (2) Trọng tâm vào ĐỀ CƯƠNG NGHIÊN CỨU (Forschungsvorhaben): không phải personal essay kiểu Mỹ; phải là bản đề cương khoa học có câu hỏi nghiên cứu rõ, phương pháp, lý do chọn Đức. (3) Trọng tâm vào LIÊN KẾT VỚI GIÁO SƯ ĐỨC: bạn phải đã liên hệ và có thư xác nhận từ giáo sư Đức trước khi phỏng vấn — DAAD không tài trợ ai chưa có người hướng dẫn.\n\nNhiều cựu DAAD ở Việt Nam giờ đang làm leader trong Bosch, Siemens — networking sau khi tốt nghiệp rất giá trị.\n\nKhác biệt văn hoá lớn nhất với VN: ở Việt Nam, học bổng được coi là phần thưởng cho học sinh giỏi; ở Đức, học bổng là KHOẢN ĐẦU TƯ vào dự án nghiên cứu cụ thể.",
+    "cultural_notes_en": "DAAD interviews differ from US/UK scholarship interviews in three core ways. (1) Focus on RÜCKKEHR (return home): US/UK programs are indifferent to whether you stay or return; DAAD places development of your home country at the centre — and will test whether you actually intend to return. The return plan has to be concrete: which institution, which role, what contribution. Vague = rejected. (2) Focus on the RESEARCH PROPOSAL (Forschungsvorhaben): this is not a US-style personal essay; it must be a scientific proposal with clear research question, methodology, and justification for choosing Germany. (3) Focus on the LINK TO A GERMAN PROFESSOR: you must have contacted and obtained a letter of confirmation from a German professor BEFORE the interview — DAAD does not fund applicants without a supervisor in place.\n\nMany DAAD alumni in Vietnam now hold leadership roles at Bosch, Siemens — post-graduation networking carries real value.\n\nThe biggest cultural contrast with home: in Vietnam, scholarships are seen as rewards for high-performing students; in Germany, the scholarship is an INVESTMENT in a specific research project.",
     "tip_advice_vi": "Trước phỏng vấn (3 tháng trước): (1) Liên hệ giáo sư Đức tiềm năng qua email — kèm CV và đề cương 1 trang. Chờ phản hồi 4-6 tuần. (2) Có thư cam kết hướng dẫn từ giáo sư trước khi nộp đơn DAAD. (3) Viết đề cương 5-10 trang theo format DAAD — câu hỏi nghiên cứu, phương pháp, kế hoạch thời gian, đóng góp. (4) Có C1 hoặc lộ trình rõ ràng đến C1 trước khi nhập học.\n\nTrong phỏng vấn: (1) Bắt đầu bằng chào tên + chức danh đầy đủ ('Herr Dr. Wagner', 'Frau Professor Schmidt'). (2) Khi nói về đề tài, dùng cấu trúc: bối cảnh → câu hỏi → phương pháp → đóng góp. (3) Khi được hỏi về kế hoạch về nước, có 3 yếu tố cụ thể: cơ quan tiếp nhận, vai trò, thời gian biểu. (4) Nếu không biết câu trả lời, nói thẳng 'Diese Frage muss ich mir überlegen' — không bịa.\n\nSau phỏng vấn: gửi email cảm ơn ngắn (3-4 dòng) trong 24h. Sau 2-3 tháng nhận quyết định.",
+    "tip_advice_en": "Before the interview (3 months out): (1) Email potential German supervisors — attach CV and a one-page proposal. Expect 4–6 weeks for a reply. (2) Secure a written commitment from a supervisor BEFORE submitting your DAAD application. (3) Write a 5–10 page proposal in DAAD format — research question, methodology, timeline, contribution. (4) Have C1 in hand or a clear path to C1 before the program starts.\n\nIn the interview: (1) Open by greeting by name + full title ('Herr Dr. Wagner', 'Frau Professor Schmidt'). (2) When presenting your topic, use the structure: context → question → method → contribution. (3) When asked about return plans, give three concrete elements: receiving institution, role, timeline. (4) If you don't know an answer, say so plainly: 'Diese Frage muss ich mir überlegen' — never make it up.\n\nAfter: send a short thank-you email (3–4 lines) within 24 hours. Decision typically arrives in 2–3 months.",
     "vocabulary": [
       {
         "word": "das Forschungsvorhaben",
         "en": "research project/proposal",
         "vi": "đề tài nghiên cứu",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FOR-shungs-foa-ha-bần"
+        "pronunciation_vi": "đát FOR-shungs-foa-ha-bần",
+        "pronunciation_en": "dahs FOR-shoongs-for-hah-ben"
       },
       {
         "word": "die Promotion",
         "en": "doctoral studies / PhD",
         "vi": "tiến sĩ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi prô-MÔ-tsi-ôn"
+        "pronunciation_vi": "đi prô-MÔ-tsi-ôn",
+        "pronunciation_en": "dee pro-MOH-tsee-ohn — NOT the English meaning 'promotion at work'"
       },
       {
         "word": "die Forschungsumgebung",
         "en": "research environment",
         "vi": "môi trường nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FOR-shungs-um-gê-bung"
+        "pronunciation_vi": "đi FOR-shungs-um-gê-bung",
+        "pronunciation_en": "dee FOR-shoongs-oom-gay-boong"
       },
       {
         "word": "der/die Stipendiat:in",
         "en": "scholarship holder",
         "vi": "người được học bổng",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "shti-pen-đi-ÁT"
+        "pronunciation_vi": "shti-pen-đi-ÁT",
+        "pronunciation_en": "shtee-pen-dee-AHT — gender-inclusive form with colon"
       },
       {
         "word": "die Rückkehrverpflichtung",
         "en": "obligation to return home",
         "vi": "cam kết về nước",
         "pos": "noun (f)",
-        "pronunciation_vi": "RÚCK-ke-fê-flích-tung"
+        "pronunciation_vi": "RÚCK-ke-fê-flích-tung",
+        "pronunciation_en": "RUEK-kayr-fer-flikh-toong — rounded 'ü'"
       },
       {
         "word": "sich befassen mit",
         "en": "to deal with, focus on",
         "vi": "tập trung vào, nghiên cứu về",
         "pos": "verb (refl)",
-        "pronunciation_vi": "zịch bê-FA-sần mít"
+        "pronunciation_vi": "zịch bê-FA-sần mít",
+        "pronunciation_en": "zikh be-FAH-sen mit — academic register, beats plain 'arbeiten an'"
       },
       {
         "word": "der akademische Werdegang",
         "en": "academic background",
         "vi": "quá trình học thuật",
         "pos": "noun (m)",
-        "pronunciation_vi": "a-ka-ĐÊ-mi-shê VE-đê-gang"
+        "pronunciation_vi": "a-ka-ĐÊ-mi-shê VE-đê-gang",
+        "pronunciation_en": "ah-kah-DAY-mish-eh VAYR-de-gahng"
       },
       {
         "word": "nachhaltig",
         "en": "sustainable",
         "vi": "bền vững",
         "pos": "adjective",
-        "pronunciation_vi": "NÁCH-hal-tích"
+        "pronunciation_vi": "NÁCH-hal-tích",
+        "pronunciation_en": "NAHKH-hal-tikh — hard 'ch' in 'nach'; soft 'ch' at end"
       },
       {
         "word": "die Wirkung erzielen",
         "en": "to achieve impact",
         "vi": "tạo ra tác động",
         "pos": "verb phrase",
-        "pronunciation_vi": "VÍA-kung e-TSÍ-lần"
+        "pronunciation_vi": "VÍA-kung e-TSÍ-lần",
+        "pronunciation_en": "VEER-koong er-TSEE-len — 'z' = 'ts'"
       },
       {
         "word": "der Beitrag leisten",
         "en": "to make a contribution",
         "vi": "đóng góp",
         "pos": "verb phrase",
-        "pronunciation_vi": "BAI-trag LAI-stần"
+        "pronunciation_vi": "BAI-trag LAI-stần",
+        "pronunciation_en": "BYE-trahk LICE-ten — 'ei' = 'eye'"
       }
     ],
     "dialogue": [
@@ -2021,29 +2351,34 @@ export const lessons: GermanLesson[] = [
       "Người phỏng vấn nghi ngờ kế hoạch về nước của bạn: 'Viele DAAD-Stipendiaten bleiben am Ende doch in Deutschland.'. Hãy thuyết phục bằng cách nêu liên kết cụ thể với cơ quan/đại học VN đã ký cam kết (MOU, lời mời làm việc), và chỉ rõ vì sao về nước có lợi cho cá nhân bạn."
     ],
     "register_notes": "Phỏng vấn DAAD dùng 'Sie' tuyệt đối — không có ngoại lệ, kể cả khi không khí thân thiện. Người phỏng vấn thường là giáo sư hoặc cán bộ DAAD cao cấp; tone là 'akademisch und respektvoll'. Cấu trúc kính ngữ học thuật quan trọng: 'Mein Forschungsvorhaben befasst sich mit...' chứ không 'Ich erforsche...' (quá thẳng thừng); 'Ich bin überzeugt, dass...' chứ không 'Ich glaube...' (quá yếu).\n\nKonjunktiv II là chuẩn cho mọi yêu cầu/giả định: 'Es wäre mir eine Ehre...', 'Ich würde gerne...', 'Könnten Sie...?'. Sử dụng Konjunktiv I cho gián tiếp khi trích dẫn người khác: 'Professor Müller schrieb, er sei interessiert...'. Đừng dùng plain form cho academic content.\n\nChú ý titles: gọi 'Herr Dr. Wagner' chứ không 'Herr Wagner' (giáo sư có học hàm phải gọi đầy đủ); 'Frau Professor Schmidt' không 'Frau Schmidt'. Bỏ qua title = thiếu tôn trọng học thuật.\n\nNgười Việt thường mắc hai lỗi: (1) khiêm tốn Á Đông quá mức ('Em chỉ là sinh viên thường') — bị đọc là không tự tin; (2) đề cao đất nước/gia đình hơn cá nhân — DAAD chọn CÁ NHÂN, không chọn gia đình.",
+    "register_notes_en": "A DAAD interview uses 'Sie' absolutely — no exceptions, even when the atmosphere turns warm. Interviewers are typically professors or senior DAAD officers; the tone is 'akademisch und respektvoll'. Academic phrasing matters: 'Mein Forschungsvorhaben befasst sich mit…' beats 'Ich erforsche…' (too blunt); 'Ich bin überzeugt, dass…' beats 'Ich glaube…' (too weak).\n\nKonjunktiv II is standard for any request or hypothetical: 'Es wäre mir eine Ehre…', 'Ich würde gerne…', 'Könnten Sie…?'. Use Konjunktiv I for reported speech when quoting someone else: 'Professor Müller schrieb, er sei interessiert…'. Don't use plain indicative for academic content.\n\nTitles matter: say 'Herr Dr. Wagner' not 'Herr Wagner' (a professor with a doctorate must be addressed with the full title); 'Frau Professor Schmidt' not 'Frau Schmidt'. Dropping the title reads as a failure of academic respect.\n\nTwo common traps for non-Western candidates: (1) over-self-deprecation ('I'm only an ordinary student') — reads as a lack of confidence; (2) elevating country or family over individual — DAAD selects the INDIVIDUAL, not the family.",
     "idiom_glosses": [
       {
         "idiom": "Wo ein Wille ist, ist auch ein Weg",
         "literal": "Nơi có ý chí, ở đó cũng có đường",
         "meaning": "Có chí thì nên — ý chí mạnh sẽ tìm ra cách. Câu thành ngữ phổ biến để biểu hiện quyết tâm vượt khó.",
+        "meaning_en": "'Where there's a will, there's a way' — strong will finds a way. A familiar saying to express determination through hardship.",
         "example": "Wo ein Wille ist, ist auch ein Weg — deshalb habe ich neben dem Studium vier Jahre lang Deutsch gelernt."
       },
       {
         "idiom": "Aller Anfang ist schwer",
         "literal": "Mọi khởi đầu đều khó",
         "meaning": "Vạn sự khởi đầu nan. Dùng để biểu hiện sự kiên trì khi bắt đầu — học tiếng, hội nhập, làm quen môi trường mới.",
+        "meaning_en": "Every beginning is hard. Used to acknowledge the persistence required at the start — language learning, integration, adjusting to a new environment.",
         "example": "Aller Anfang ist schwer, aber ich habe mich schnell in die deutsche Hochschulkultur eingefunden."
       },
       {
         "idiom": "Sich ins Zeug legen",
         "literal": "Đặt mình vào xe ngựa kéo",
         "meaning": "Nỗ lực hết mình, dồn sức. Dùng để mô tả quá trình chuẩn bị khắt khe (luyện tiếng, viết đề cương).",
+        "meaning_en": "to put all one's effort into something, to throw yourself into the work. Used to describe an intense preparation phase (language drilling, writing a proposal).",
         "example": "Für die DAAD-Bewerbung habe ich mich enorm ins Zeug gelegt — sechs Monate intensive Vorbereitung."
       },
       {
         "idiom": "Glück im Unglück haben",
         "literal": "Có may mắn trong bất hạnh",
         "meaning": "Trong cái rủi có cái may. Phù hợp khi kể về một bước ngoặt: Covid khiến phải hoãn đi học một năm → có thêm thời gian học tiếng và nâng cao đề tài.",
+        "meaning_en": "to find luck within bad luck — a silver lining. Useful for narrating a turning point: Covid forced a year's delay → which gave more time for language and improving the proposal.",
         "example": "Durch Covid musste ich ein Jahr warten — Glück im Unglück, denn so konnte ich mein Forschungsdesign verbessern."
       }
     ],
@@ -2051,6 +2386,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp cho phỏng vấn học bổng:",
+        "instruction_en": "Fill in the right phrase for the scholarship interview:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "academic register"
@@ -2077,6 +2413,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng phỏng vấn học bổng:",
+        "instruction_en": "Match each German sentence to its scholarship-interview function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2100,6 +2437,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật (giữ formal Sie + Konjunktiv II):",
+        "instruction_en": "Translate into academic German (keep formal Sie + Konjunktiv II):",
         "pronunciation_focus": [
           "academic German"
         ],
@@ -2138,6 +2476,11 @@ export const lessons: GermanLesson[] = [
           "Sehr geehrter → ZÊR gờ-Ê-tê",
           "Professor → prô-FE-zoa",
           "vorstellen → FOA-shtê-lần"
+        ],
+        "pronunciation_focus_en": [
+          "Sehr geehrter → ZAYR ge-AYR-ter",
+          "Professor → pro-FES-sor — stress on second syllable",
+          "vorstellen → FOR-shtel-len — separable verb"
         ]
       },
       {
@@ -2147,6 +2490,11 @@ export const lessons: GermanLesson[] = [
           "sechsten → DZÉC-stân",
           "Maschinenbau → ma-SHÍ-nần-bao",
           "RWTH → ER-VÊ-TÊ-HA"
+        ],
+        "pronunciation_focus_en": [
+          "sechsten → ZEKS-ten — 'chs' = 'ks'",
+          "Maschinenbau → mah-SHEEN-en-bow — 'au' = 'ow'",
+          "RWTH → ER-VAY-TAY-HAH — letters spelled out individually"
         ]
       },
       {
@@ -2156,6 +2504,11 @@ export const lessons: GermanLesson[] = [
           "Veröffentlichung → fe-ƠF-ent-lích-ung",
           "additive → A-đi-ti-ve",
           "beeindruckt → bê-AIN-đruckt"
+        ],
+        "pronunciation_focus_en": [
+          "Veröffentlichung → fer-UEF-fent-likh-oong — rounded 'ö'",
+          "additive → AH-dee-tee-veh — German pronunciation",
+          "beeindruckt → be-INE-drookt"
         ]
       },
       {
@@ -2165,6 +2518,11 @@ export const lessons: GermanLesson[] = [
           "würde → VUY-đê — Konjunktiv II",
           "Betreuung → bê-TROI-ung",
           "Masterarbeit → MAS-tờ-ar-bait"
+        ],
+        "pronunciation_focus_en": [
+          "würde → VUER-deh — Konjunktiv II",
+          "Betreuung → be-TROY-oong — 'eu' = 'oy'",
+          "Masterarbeit → MAS-ter-ar-bite"
         ]
       },
       {
@@ -2174,81 +2532,98 @@ export const lessons: GermanLesson[] = [
           "Hätten → HÉ-tần — Konjunktiv II",
           "Vorlesungen → FOA-lê-zung-ần",
           "Gespräch → gờ-SHPRẾCH"
+        ],
+        "pronunciation_focus_en": [
+          "Hätten → HET-ten — Konjunktiv II ('would you have')",
+          "Vorlesungen → FOR-lay-zoong-en",
+          "Gespräch → ge-SHPRAYKH"
         ]
       }
     ],
     "cultural_notes_vi": "Quan hệ sinh viên - giáo sư ở Đức có tính HIERARCHICAL hơn ở Mỹ/Canada nhưng VẪN TÔN TRỌNG SINH VIÊN HƠN ở Việt Nam. Năm điểm khác biệt với VN: (1) Sprechstunde (giờ tiếp sinh viên) là quyền của bạn — đăng ký qua email, đến đúng giờ. KHÔNG đột nhập phòng giáo sư hoặc tìm họ ngoài giờ. (2) Giáo sư Đức expect bạn ĐÃ ĐỌC bài báo của họ trước khi xin gặp — không đọc = thiếu tôn trọng. (3) Giáo sư KHÔNG quyết định đề tài cho bạn — họ chỉ approve đề tài bạn ĐỀ XUẤT. Đến gặp với 'em không biết đề tài gì, thầy gợi ý ạ' = bị từ chối ngay. (4) Co-Betreuer (đồng hướng dẫn) thường là Doktorand hoặc Postdoc của giáo sư — họ là người thực sự work với bạn hàng tuần. (5) Trong luận văn, bạn được EXPECT là independent — giáo sư không sửa từng câu, chỉ feedback methodology và logic.\n\nKhác Việt Nam: VN giáo sư thường giúp đỡ rất nhiều, được coi là sự quan tâm; Đức không như vậy — giáo sư mong đợi bạn drives the project.\n\nVăn hoá email với giáo sư Đức: phản hồi trong 1-2 tuần là chuẩn (không phải 1-2 ngày như business). Đừng follow-up quá sớm. Sau 3 tuần không phản hồi, có thể gửi nhắc lại lịch sự một lần.",
+    "cultural_notes_en": "The German student–professor relationship is MORE HIERARCHICAL than in the US/Canada but STILL gives the student more standing than in many other educational cultures. Five key differences. (1) Sprechstunde (office hours) is your right — book by email, show up on time. Do NOT walk into the professor's office or chase them outside the slot. (2) German professors EXPECT you to have READ their papers before requesting a meeting — not reading them reads as disrespect. (3) The professor does NOT pick a topic for you — they only approve a topic you PROPOSE. Walking in with 'I don't have a topic yet, could you suggest one?' is an instant rejection. (4) The Co-Betreuer (co-supervisor) is typically the professor's Doktorand or Postdoc — that's the person who actually works with you week to week. (5) In the thesis itself, you are EXPECTED to be independent — the professor does not edit your sentences; they comment on methodology and logic.\n\nContrast with cultures where professors hold the student's hand: in Germany, the professor expects YOU to drive the project.\n\nEmail culture with German professors: a 1–2 week response time is standard (not the 1–2 days you'd see in business). Don't follow up too early. After three weeks of silence, one polite reminder is acceptable.",
     "tip_advice_vi": "Trước khi liên hệ GS: (1) Đọc 2-3 bài báo gần nhất của họ. (2) Đọc trang web Lehrstuhl (bộ môn) để hiểu hướng nghiên cứu hiện tại. (3) Chuẩn bị đề cương 1 trang ngắn gọn: câu hỏi nghiên cứu + phương pháp + tại sao GS này phù hợp.\n\nEmail đầu tiên: (1) Subject: 'Anfrage Masterarbeit-Betreuung — [tên đề tài ngắn]'. (2) Mở 'Sehr geehrter Herr Professor Müller'. (3) Đoạn 1: giới thiệu (2 câu — bạn là ai, học gì, ở đâu). (4) Đoạn 2: lý do gặp (3-4 câu — tại sao GS này, tại sao đề tài này, đã đọc bài nào). (5) Đoạn 3: yêu cầu cụ thể (xin Sprechstunde 30 phút, đính kèm CV + đề cương). (6) Kết 'Mit freundlichen Grüßen, Linh'. Đính kèm: CV (1 trang), đề cương (1 trang), bảng điểm.\n\nTrong Sprechstunde: (1) Đến SỚM 5 phút. (2) Mang bản in của đề cương + CV + transcript. (3) Mở đầu cảm ơn + giới thiệu 30 giây. (4) Trình bày đề tài 5 phút (max). (5) Lắng nghe pushback NGHIÊM TÚC. (6) Kết bằng next step rõ ràng (viết đề cương 5 trang, gửi trong 2 tuần).\n\nSau Sprechstunde: gửi email cảm ơn ngắn (3 dòng) trong 24h.",
+    "tip_advice_en": "Before contacting the professor: (1) Read 2–3 of their most recent papers. (2) Read the Lehrstuhl (chair / department group) website to understand their current research direction. (3) Prepare a one-page proposal: research question + methodology + why this professor specifically.\n\nFirst email: (1) Subject: 'Anfrage Masterarbeit-Betreuung — [short topic name]'. (2) Open 'Sehr geehrter Herr Professor Müller'. (3) Paragraph 1: introduction (two sentences — who you are, what you study, where). (4) Paragraph 2: reason for the meeting (3–4 sentences — why this professor, why this topic, which paper you've read). (5) Paragraph 3: concrete request (30-minute Sprechstunde, CV + proposal attached). (6) Close with 'Mit freundlichen Grüßen, Linh'. Attachments: CV (1 page), proposal (1 page), transcript.\n\nIn the Sprechstunde: (1) Arrive 5 minutes EARLY. (2) Bring printed copies of the proposal + CV + transcript. (3) Open with thanks + a 30-second self-introduction. (4) Present the topic in 5 minutes (max). (5) Listen to pushback SERIOUSLY. (6) Close with a clear next step (write a 5-page proposal, send in 2 weeks).\n\nAfter the Sprechstunde: send a short thank-you email (3 lines) within 24 hours.",
     "vocabulary": [
       {
         "word": "die Masterarbeit",
         "en": "master's thesis",
         "vi": "luận văn Thạc sĩ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi MAS-tờ-ar-bait"
+        "pronunciation_vi": "đi MAS-tờ-ar-bait",
+        "pronunciation_en": "dee MAS-ter-ar-bite — 'ei' = 'eye'"
       },
       {
         "word": "die Betreuung",
         "en": "supervision",
         "vi": "sự hướng dẫn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-TROI-ung"
+        "pronunciation_vi": "đi bê-TROI-ung",
+        "pronunciation_en": "dee be-TROY-oong — 'eu' = 'oy'"
       },
       {
         "word": "der/die Doktorvater/-mutter",
         "en": "doctoral supervisor (informal)",
         "vi": "thầy/cô hướng dẫn tiến sĩ",
         "pos": "noun",
-        "pronunciation_vi": "đe DỐC-tô-fa-tờ"
+        "pronunciation_vi": "đe DỐC-tô-fa-tờ",
+        "pronunciation_en": "dayr DOK-tor-fah-ter — literally 'doctor-father/mother'"
       },
       {
         "word": "die Veröffentlichung",
         "en": "publication",
         "vi": "bài công bố/bài báo",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-ƠF-ent-lích-ung"
+        "pronunciation_vi": "đi fe-ƠF-ent-lích-ung",
+        "pronunciation_en": "dee fer-UEF-fent-likh-oong — rounded 'ö'"
       },
       {
         "word": "das Forschungsfeld",
         "en": "research field",
         "vi": "lĩnh vực nghiên cứu",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FOR-shungs-felt"
+        "pronunciation_vi": "đát FOR-shungs-felt",
+        "pronunciation_en": "dahs FOR-shoongs-felt"
       },
       {
         "word": "die Sprechstunde",
         "en": "office hours",
         "vi": "giờ tiếp sinh viên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHPRẾCH-shtun-đê"
+        "pronunciation_vi": "đi SHPRẾCH-shtun-đê",
+        "pronunciation_en": "dee SHPREKH-shtoon-deh — 'sp' at start = 'shp'"
       },
       {
         "word": "das Exposé",
         "en": "thesis proposal/abstract",
         "vi": "đề cương luận văn",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát ec-spô-ZÊ"
+        "pronunciation_vi": "đát ec-spô-ZÊ",
+        "pronunciation_en": "dahs ex-po-ZAY — French loan, stress on final syllable"
       },
       {
         "word": "die Fragestellung",
         "en": "research question",
         "vi": "câu hỏi nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FRA-gê-shtê-lung"
+        "pronunciation_vi": "đi FRA-gê-shtê-lung",
+        "pronunciation_en": "dee FRAH-ge-shtel-loong"
       },
       {
         "word": "anknüpfen an",
         "en": "to build on, connect to",
         "vi": "kết nối/dựa trên",
         "pos": "verb (sep)",
-        "pronunciation_vi": "AN-knuy-pfần an"
+        "pronunciation_vi": "AN-knuy-pfần an",
+        "pronunciation_en": "AHN-knuep-fen ahn — separable; rounded 'ü'"
       },
       {
         "word": "der/die Lehrstuhlinhaber:in",
         "en": "chair holder, full professor",
         "vi": "chủ nhiệm bộ môn",
         "pos": "noun",
-        "pronunciation_vi": "LÊ-shtul-in-ha-bờ"
+        "pronunciation_vi": "LÊ-shtul-in-ha-bờ",
+        "pronunciation_en": "LAYR-shtool-in-hah-ber — compound: Lehrstuhl + Inhaber"
       }
     ],
     "dialogue": [
@@ -2371,29 +2746,34 @@ export const lessons: GermanLesson[] = [
       "GS đồng ý hướng dẫn nhưng đề xuất đề tài khác với cái bạn muốn — gắn với dự án industrial của bộ môn, không phải về cấy ghép y tế cho VN. Hãy đàm phán: cảm ơn lời đề nghị, giải thích vì sao đề tài cũ của bạn quan trọng, và đề xuất compromise."
     ],
     "register_notes": "Liên lạc với giáo sư Đức tuyệt đối formal — luôn 'Sie', luôn dùng đầy đủ chức danh ('Herr Professor Müller', không 'Herr Müller'; 'Frau Professor Doktor Schmidt' với giáo sư có hai học hàm). Email mở đầu bằng 'Sehr geehrter Herr Professor Müller', kết bằng 'Mit freundlichen Grüßen'. KHÔNG dùng 'Hallo' hay 'Liebe Grüße' với giáo sư trừ khi đã trao đổi nhiều lần.\n\nKonjunktiv II là chuẩn cho mọi yêu cầu: 'Ich würde mich freuen, wenn...', 'Hätten Sie Zeit...?', 'Wäre es möglich...?'. Plain form ('Können Sie?') nghe quá thẳng. Trong email/cuộc gặp đầu tiên, đặc biệt phải dùng Konjunktiv II — biểu hiện bạn hiểu cấp bậc học thuật.\n\nNgoại lệ: một số giáo sư trẻ ở các bộ môn IT, Computer Science, hoặc các trường tư mới thường ít formal hơn. Quy tắc: theo dõi giáo sư mở đầu email với bạn thế nào — nếu họ dùng 'Lieber Herr Linh', bạn có thể đáp 'Lieber Herr Professor Müller' nhưng vẫn giữ Sie. KHÔNG bao giờ chuyển sang 'du' với giáo sư trừ khi họ EXPLICITLY đề nghị.\n\nNgười Việt hay mắc lỗi: (1) email quá ngắn — bị coi là không nghiêm túc; (2) email quá dài (3 trang giới thiệu cuộc đời) — không có ai đọc; (3) gọi sai chức danh — bị coi là thiếu tôn trọng học hàm.",
+    "register_notes_en": "Contact with a German professor is absolutely formal — always 'Sie', always with the full title ('Herr Professor Müller', not 'Herr Müller'; 'Frau Professor Doktor Schmidt' if the professor holds two doctorates). Email opens with 'Sehr geehrter Herr Professor Müller', closes with 'Mit freundlichen Grüßen'. Do NOT use 'Hallo' or 'Liebe Grüße' with a professor unless you've exchanged many messages already.\n\nKonjunktiv II is standard for every request: 'Ich würde mich freuen, wenn…', 'Hätten Sie Zeit…?', 'Wäre es möglich…?'. The plain indicative ('Können Sie?') sounds too blunt. In your first email or meeting, Konjunktiv II is especially important — it signals that you understand the academic hierarchy.\n\nException: some younger professors in IT, Computer Science, or newer private universities are less formal. Rule: watch how the professor addresses you — if they open with 'Lieber Herr Linh', you can reply with 'Lieber Herr Professor Müller' but still keep 'Sie'. NEVER switch to 'du' with a professor unless they EXPLICITLY invite it.\n\nCommon traps for non-Western students: (1) email too short — read as not serious; (2) email too long (a 3-page life story) — nobody reads it; (3) wrong title — read as a failure of academic respect.",
     "idiom_glosses": [
       {
         "idiom": "Den Stier bei den Hörnern packen",
         "literal": "Túm sừng con bò mộng",
         "meaning": "Bắt tay vào làm ngay, không trì hoãn — đặc biệt với việc khó. Dùng để báo hiệu bạn không phải kiểu sinh viên lề mề, sẵn sàng nhảy vào đề tài khó.",
+        "meaning_en": "to take the bull by the horns — to dive in immediately, no delay, especially on hard work. Signals you're not the slow-starting kind of student and you're ready to tackle a difficult topic.",
         "example": "Wenn Sie zustimmen, würde ich gerne den Stier bei den Hörnern packen und im April beginnen."
       },
       {
         "idiom": "Auf eigenen Beinen stehen",
         "literal": "Đứng trên chính đôi chân mình",
         "meaning": "Tự lập, độc lập. Trong context luận văn, biểu hiện bạn làm việc tự chủ, không cần hand-holding — điều giáo sư Đức đánh giá rất cao.",
+        "meaning_en": "to stand on your own feet — to be independent. In a thesis context, it signals you can drive your own work without hand-holding — something German professors value highly.",
         "example": "Bei der Masterarbeit kann ich auf eigenen Beinen stehen — ich brauche nur methodische Korrekturen."
       },
       {
         "idiom": "Nicht auf den Mund gefallen sein",
         "literal": "Không bị ngã trên miệng",
         "meaning": "Có khả năng diễn đạt, không thiếu ngôn từ. Dùng để nói về khả năng thuyết trình, bảo vệ luận văn, đặt câu hỏi trong seminar.",
+        "meaning_en": "to be articulate, never short of words. Used about presentation skill, thesis defence, asking questions in a seminar.",
         "example": "Ich bin nicht auf den Mund gefallen — ich kann mein Forschungsthema klar präsentieren."
       },
       {
         "idiom": "Daumen drücken",
         "literal": "Bấm ngón cái xuống",
         "meaning": "Chúc may mắn (tương đương cross fingers). Giáo sư có thể nói câu này khi tiễn bạn ra khỏi giờ Sprechstunde — đây là dấu hiệu thân thiện, ủng hộ.",
+        "meaning_en": "to wish good luck (the German equivalent of crossing fingers — Germans 'press thumbs'). A professor may say this as you leave the Sprechstunde — a friendly, supportive signal.",
         "example": "Ich drücke Ihnen die Daumen für Ihr Exposé."
       }
     ],
@@ -2401,6 +2781,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi xin GS hướng dẫn:",
+        "instruction_en": "Fill in the right phrase for requesting thesis supervision:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "academic email"
@@ -2427,6 +2808,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng giao tiếp học thuật:",
+        "instruction_en": "Match each German sentence to its academic-communication function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2450,6 +2832,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật formal:",
+        "instruction_en": "Translate into formal academic German:",
         "pronunciation_focus": [
           "Sie + Konjunktiv II"
         ],
@@ -2488,6 +2871,11 @@ export const lessons: GermanLesson[] = [
           "Pflichtpraktikum → FLÍCHT-prak-ti-kum",
           "Entwicklungsabteilung → ent-VÍ-klung-s-áp-tai-lung",
           "sechsmonatig → DZÉC-s-mô-na-tích"
+        ],
+        "pronunciation_focus_en": [
+          "Pflichtpraktikum → FLIKHT-prak-tee-koom",
+          "Entwicklungsabteilung → ent-VIK-loongs-ahp-tile-oong",
+          "sechsmonatig → ZEKS-mo-nah-tikh — 'chs' = 'ks'"
         ]
       },
       {
@@ -2497,6 +2885,11 @@ export const lessons: GermanLesson[] = [
           "Studienplan → SHTÚ-đi-ần-plan",
           "Vollzeit → FOL-tsait",
           "vorsehen → FOA-zê-ần"
+        ],
+        "pronunciation_focus_en": [
+          "Studienplan → SHTOO-dee-en-plahn — 'st' at start = 'sht'",
+          "Vollzeit → FOL-tsite — 'z' = 'ts'; 'ei' = 'eye'",
+          "vorsehen → FOR-zay-en — separable verb"
         ]
       },
       {
@@ -2506,6 +2899,11 @@ export const lessons: GermanLesson[] = [
           "Vergütung → fe-GUY-tung",
           "Tarif → ta-RÍF",
           "öffentlichen → ƠF-ent-lích-ần"
+        ],
+        "pronunciation_focus_en": [
+          "Vergütung → fer-GUE-toong — rounded 'ü'",
+          "Tarif → tah-REEF — stress on second syllable",
+          "öffentlichen → UEF-fent-likh-en — rounded 'ö'"
         ]
       },
       {
@@ -2515,6 +2913,11 @@ export const lessons: GermanLesson[] = [
           "Übernahme → UY-bờ-na-mê",
           "erfolgreich → e-FOLK-rai-ích",
           "grundsätzlich → GRUNT-zét-slích"
+        ],
+        "pronunciation_focus_en": [
+          "Übernahme → UE-ber-nah-meh — rounded 'ü'",
+          "erfolgreich → er-FOLK-rye-ikh",
+          "grundsätzlich → GROONT-zets-likh"
         ]
       },
       {
@@ -2524,81 +2927,98 @@ export const lessons: GermanLesson[] = [
           "kalte Wasser → KÁL-tê VÁ-sờ",
           "Verantwortung → fe-ÁNT-vơt-ung",
           "übernehmen → uy-bờ-NÊ-mần"
+        ],
+        "pronunciation_focus_en": [
+          "kalte Wasser → KAHL-teh VAH-ser — idiom: 'into cold water' = dive in",
+          "Verantwortung → fer-AHNT-vor-toong",
+          "übernehmen → ue-ber-NAY-men — rounded 'ü'"
         ]
       }
     ],
     "cultural_notes_vi": "Praktikum (thực tập) ở Đức KHÁC HẲN ở Mỹ và Việt Nam ở năm điểm cốt lõi. (1) PHÂN LOẠI BẮT BUỘC: Đức phân biệt rõ Pflichtpraktikum (bắt buộc bởi chương trình học, < 3 tháng có thể không lương; > 3 tháng phải Mindestlohn ~12.41€/giờ) và freiwilliges Praktikum (tự nguyện, luôn phải Mindestlohn). (2) BẢO VỆ PHÁP LÝ: Praktikant Đức có quyền giống nhân viên (giờ làm, nghỉ phép tỉ lệ). KHÔNG phải 'cà phê & photocopy' như VN. (3) TÍNH ACADEMIC: trường ĐH có Praktikumsbeauftragte (cố vấn thực tập) — họ kiểm tra nội dung công việc có phù hợp chương trình học không. (4) ÜBERNAHME (nhận chính thức): nhiều công ty xem Praktikum như 'thử việc dài' — nếu bạn làm tốt, cơ hội cao được offer. Hỏi sớm 'Wäre eine Übernahme möglich?' để biết hướng. (5) ZEUGNIS: cuối Praktikum bạn nhận thư đánh giá (Arbeitszeugnis) — phải tự đảm bảo có và đọc cẩn thận. Tiếng Đức trong Zeugnis có 'mật mã' (ví dụ 'zur vollen Zufriedenheit' = chỉ ổn, 'zur vollsten Zufriedenheit' = xuất sắc).\n\nKhác Việt Nam: ở VN, Praktikum thường không lương hoặc lương rất thấp; ở Đức, có khung pháp lý rõ và bạn được expect đàm phán. KHÔNG đàm phán = bị coi là chưa hiểu hệ thống.\n\nỞ công ty Đức tại Việt Nam (Bosch, Siemens, BASF), Praktikum thường theo chuẩn Đức nhưng adapted cho mức lương VN.",
+    "cultural_notes_en": "A Praktikum (internship) in Germany is FUNDAMENTALLY different from the US or Vietnam version in five core ways. (1) MANDATORY CATEGORISATION: Germany draws a sharp line between Pflichtpraktikum (required by your degree program; < 3 months can be unpaid; > 3 months must pay the Mindestlohn ~€12.41/hour) and freiwilliges Praktikum (voluntary, always paid Mindestlohn). (2) LEGAL PROTECTION: a Praktikant has the same rights as an employee (working hours, proportional holiday). It is NOT 'fetch coffee and photocopy'. (3) ACADEMIC ANCHORING: your university has a Praktikumsbeauftragte (internship advisor) who checks whether the role's actual content matches your degree. (4) ÜBERNAHME (permanent offer): many companies treat the Praktikum as a long try-out — perform well and your odds of a full offer are high. Ask early ('Wäre eine Übernahme möglich?') to set expectations. (5) ZEUGNIS: at the end you get a written reference (Arbeitszeugnis) — make sure you receive one and read it carefully. German Zeugnis language is coded (e.g. 'zur vollen Zufriedenheit' = only okay, while 'zur vollsten Zufriedenheit' = excellent).\n\nContrast with home: in Vietnam, internships are usually unpaid or near-unpaid; in Germany, the legal framework is clear and you are EXPECTED to negotiate. Not negotiating reads as not understanding the system.\n\nAt German companies operating in Vietnam (Bosch, Siemens, BASF), the Praktikum usually follows German standards but adapted to Vietnamese pay levels.",
     "tip_advice_vi": "Trước cuộc đàm phán: (1) Tra cứu TVöD-Tarif cho khu vực + cấp bậc tương ứng. (2) Tham khảo Stepstone, Glassdoor, Praktikum.info để biết mức thị trường thực tế. (3) Tính chi phí sinh hoạt thành phố (Munich ~1.200€ chỉ riêng nhà + ăn). (4) Chuẩn bị 3 con số: mức bạn muốn, mức tối thiểu chấp nhận, mức cực kỳ tốt.\n\nTrong cuộc đàm phán: (1) Đưa con số cụ thể, không 'cao hơn' hay 'tốt hơn'. (2) Gắn số với DỮ LIỆU: 'Ich orientiere mich am TVöD-Tarif von 1.500€'. (3) Khi bị pushback, im lặng 3-5 giây trước khi phản hồi. (4) Đưa ra alternative ngoài lương: Wohnungszuschuss, Bahncard 100, Sprachkurs-Budget. (5) Nếu công ty không thể tăng lương, hỏi về Übernahme với mức rõ ràng sau Praktikum.\n\nSau cuộc đàm phán: (1) Yêu cầu hợp đồng bằng văn bản trong 48-72h. (2) ĐỌC KỸ trước khi ký — đặc biệt: số giờ/tuần, ngày bắt đầu/kết thúc, Vergütung (gross vs net), nghỉ phép, học phí (nếu có), điều khoản Übernahme. (3) Không hiểu chỗ nào, hỏi rõ TRƯỚC khi ký. (4) Tham vấn Praktikumsbeauftragte ở trường nếu cần.",
+    "tip_advice_en": "Before the negotiation: (1) Look up the TVöD-Tarif for your region + corresponding pay band. (2) Cross-check on Stepstone, Glassdoor, Praktikum.info for actual market levels. (3) Compute the city's cost of living (Munich is ~€1,200 for rent + food alone). (4) Prepare three numbers: your target, your minimum acceptable, your dream offer.\n\nIn the negotiation: (1) Use specific numbers — never 'higher' or 'better'. (2) Anchor the number to DATA: 'Ich orientiere mich am TVöD-Tarif von 1.500€'. (3) When pushback comes, stay silent 3–5 seconds before responding. (4) Bring non-salary alternatives: Wohnungszuschuss (housing subsidy), Bahncard 100, Sprachkurs-Budget. (5) If they can't raise the pay, ask about Übernahme with a clear post-Praktikum salary.\n\nAfter the negotiation: (1) Ask for the contract in writing within 48–72 hours. (2) READ CAREFULLY before signing — especially: hours/week, start/end dates, Vergütung (gross vs net), holiday, tuition reimbursement (if any), Übernahme clause. (3) If anything is unclear, ASK before signing. (4) Consult your university's Praktikumsbeauftragte if needed.",
     "vocabulary": [
       {
         "word": "das Pflichtpraktikum",
         "en": "mandatory internship",
         "vi": "thực tập bắt buộc",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát FLÍCHT-prak-ti-kum"
+        "pronunciation_vi": "đát FLÍCHT-prak-ti-kum",
+        "pronunciation_en": "dahs FLIKHT-prak-tee-koom — 'Pf' is a tight 'pf' blend"
       },
       {
         "word": "die Vergütung",
         "en": "compensation, stipend",
         "vi": "trợ cấp, lương thực tập",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-GUY-tung"
+        "pronunciation_vi": "đi fe-GUY-tung",
+        "pronunciation_en": "dee fer-GUE-toong — rounded 'ü'"
       },
       {
         "word": "die Übernahme",
         "en": "permanent hire after internship",
         "vi": "việc nhận chính thức sau thực tập",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UY-bờ-na-mê"
+        "pronunciation_vi": "đi UY-bờ-na-mê",
+        "pronunciation_en": "dee UE-ber-nah-meh — rounded 'ü'"
       },
       {
         "word": "der Tarif des öffentlichen Dienstes (TVöD)",
         "en": "public sector pay scale",
         "vi": "thang lương công chức",
         "pos": "noun phrase",
-        "pronunciation_vi": "ta-RÍF"
+        "pronunciation_vi": "ta-RÍF",
+        "pronunciation_en": "tah-REEF des UEF-fent-likh-en DEEN-stes — the benchmark pay scale used as a negotiation anchor"
       },
       {
         "word": "die Lernziele",
         "en": "learning objectives",
         "vi": "mục tiêu học tập",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi LE-tsí-lê"
+        "pronunciation_vi": "đi LE-tsí-lê",
+        "pronunciation_en": "dee LERN-tsee-leh — 'z' = 'ts'"
       },
       {
         "word": "die Werkstudententätigkeit",
         "en": "working student position",
         "vi": "vị trí sinh viên làm thêm",
         "pos": "noun (f)",
-        "pronunciation_vi": "VEK-shtu-ден-tản-tê-tích-kait"
+        "pronunciation_vi": "VEK-shtu-ден-tản-tê-tích-kait",
+        "pronunciation_en": "VAYRK-shtoo-den-ten-tay-tikh-kite — long compound: Werk + Studenten + Tätigkeit"
       },
       {
         "word": "in Vollzeit/Teilzeit",
         "en": "full-time/part-time",
         "vi": "toàn thời gian/bán thời gian",
         "pos": "adverb phrase",
-        "pronunciation_vi": "fol-tsait / tail-tsait"
+        "pronunciation_vi": "fol-tsait / tail-tsait",
+        "pronunciation_en": "FOL-tsite / TILE-tsite — 'ei' = 'eye'; 'z' = 'ts'"
       },
       {
         "word": "der Tätigkeitsnachweis",
         "en": "proof of activity, internship report",
         "vi": "xác nhận hoạt động",
         "pos": "noun (m)",
-        "pronunciation_vi": "TÊ-tích-kaits-nach-vais"
+        "pronunciation_vi": "TÊ-tích-kaits-nach-vais",
+        "pronunciation_en": "TAY-tikh-kites-nahkh-vise — hard 'ch' in '-nach-'"
       },
       {
         "word": "die Probearbeit",
         "en": "trial work",
         "vi": "thử việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PRÔ-bê-ar-bait"
+        "pronunciation_vi": "đi PRÔ-bê-ar-bait",
+        "pronunciation_en": "dee PRO-be-ar-bite"
       },
       {
         "word": "das Lehrgeld zahlen",
         "en": "to learn the hard way (idiom)",
         "vi": "trả học phí kinh nghiệm",
         "pos": "verb phrase",
-        "pronunciation_vi": "đát LÊ-gelt TSÁ-lần"
+        "pronunciation_vi": "đát LÊ-gelt TSÁ-lần",
+        "pronunciation_en": "dahs LAYR-gelt TSAH-len — 'z' = 'ts'"
       }
     ],
     "dialogue": [
@@ -2721,29 +3141,34 @@ export const lessons: GermanLesson[] = [
       "Sau 3 tháng thực tập tốt, bạn được offer ở lại làm Werkstudent (sinh viên làm thêm) song song học. Hãy thương lượng số giờ/tuần (max 20h trong kỳ học), lương theo giờ, và thoả thuận rằng kỳ thi sẽ ưu tiên hơn công việc."
     ],
     "register_notes": "Cuộc đàm phán Praktikum dùng 'Sie' formal — kể cả khi HR Manager còn trẻ và không khí thân thiện. Đặc biệt với cuộc gặp đầu tiên hoặc qua điện thoại. Sau khi ký hợp đồng và bắt đầu làm, đa số công ty Đức (đặc biệt startup, IT, agency) sẽ chuyển sang 'du' với đồng nghiệp; với sếp trực tiếp có thể tuỳ. Trong các bộ phận truyền thống (R&D, Engineering, Finanzen, Recht ở các công ty lớn như Bosch, Siemens, BMW, BASF), 'Sie' giữ lâu hơn — kể cả nội bộ.\n\nCấu trúc đàm phán: dùng Konjunktiv II liên tục — 'Ich hatte mir vorgestellt', 'Wäre es möglich', 'Könnten wir'. Plain form ('Ich will 1.500') cực kỳ thẳng và bất lịch sự. 'Ich brauche' (em cần) cũng yếu thế. Tone đúng: 'Bezüglich der Vergütung würde ich gerne den TVöD-Tarif als Orientierung nehmen' — formal, có dữ liệu, để cánh cửa mở.\n\nKhi đối tác pushback, KHÔNG cãi lý — dùng 'Das verstehe ich' (em hiểu) trước, sau đó đề xuất alternative.\n\nKhác Việt Nam: ở VN, đàm phán lương thực tập gần như không có; ở Đức, có khung pháp lý (Mindestlohn cho Pflichtpraktikum > 3 tháng) và TVöD-Tarif như benchmark — bạn HOÀN TOÀN có quyền đàm phán.",
+    "register_notes_en": "A Praktikum negotiation uses formal 'Sie' — even when the HR Manager is young and the atmosphere is friendly. Especially so in the first meeting or on the phone. After you sign the contract and start the role, most German companies (especially startups, IT firms, agencies) will switch to 'du' with colleagues; with the direct boss it can vary. In traditional departments (R&D, Engineering, Finanzen, Recht at large firms like Bosch, Siemens, BMW, BASF), 'Sie' holds longer — even internally.\n\nNegotiation structure: lean on Konjunktiv II throughout — 'Ich hatte mir vorgestellt' (I had pictured), 'Wäre es möglich' (would it be possible), 'Könnten wir' (could we). The plain indicative ('Ich will 1.500') sounds extremely blunt and rude. 'Ich brauche' (I need) also sounds weak. The right tone: 'Bezüglich der Vergütung würde ich gerne den TVöD-Tarif als Orientierung nehmen' — formal, data-anchored, leaves the door open.\n\nWhen the other side pushes back, do NOT argue back — say 'Das verstehe ich' (I understand) first, then propose an alternative.\n\nContrast with home: in Vietnam, salary negotiation for an internship barely exists; in Germany, the legal framework (Mindestlohn for Pflichtpraktikum over 3 months) and the TVöD-Tarif as a benchmark mean you absolutely have the right to negotiate.",
     "idiom_glosses": [
       {
         "idiom": "Die Hand reichen",
         "literal": "Đưa tay (cho người khác)",
         "meaning": "Đề nghị hợp tác, hoà giải, hoặc giúp đỡ. Trong context đàm phán, dùng để báo hiệu đôi bên đã đến thoả thuận.",
+        "meaning_en": "to offer your hand — to propose cooperation, reconciliation, or help. In a negotiation, signals that both sides have reached agreement.",
         "example": "Wenn Sie mir entgegenkommen, reiche ich Ihnen gerne die Hand."
       },
       {
         "idiom": "Lehrgeld zahlen",
         "literal": "Trả học phí",
         "meaning": "Học từ sai lầm — trả giá để có kinh nghiệm. Praktikum chính là quá trình 'Lehrgeld zahlen'. Cụm tích cực, không tiêu cực.",
+        "meaning_en": "literally 'to pay tuition' — to learn through mistakes, to pay for experience. A Praktikum is essentially that process of 'Lehrgeld zahlen'. The phrase is positive, not negative.",
         "example": "Im ersten Praktikum musste ich viel Lehrgeld zahlen — aber dadurch habe ich enorm gelernt."
       },
       {
         "idiom": "Ein offenes Ohr haben",
         "literal": "Có một tai mở",
         "meaning": "Sẵn sàng lắng nghe — về vấn đề cá nhân hoặc nghề nghiệp. Khi sếp/HR Đức nói 'Bei Fragen habe ich immer ein offenes Ohr', đó là invitation thật.",
+        "meaning_en": "to have an open ear — to be ready to listen on personal or professional issues. When a German boss/HR says 'Bei Fragen habe ich immer ein offenes Ohr', that's a genuine invitation.",
         "example": "Bei Problemen habe ich für Sie immer ein offenes Ohr."
       },
       {
         "idiom": "Unter vier Augen reden",
         "literal": "Nói dưới bốn con mắt",
         "meaning": "Nói chuyện riêng tư, chỉ giữa hai người — không có ai khác. Phù hợp khi cần đàm phán nhạy cảm (lương, conflict).",
+        "meaning_en": "to speak privately, just between two people ('under four eyes', i.e. yours and mine, no one else's) — appropriate for sensitive negotiation (salary, conflict).",
         "example": "Diese Frage zur Vergütung sollten wir unter vier Augen besprechen."
       }
     ],
@@ -2751,6 +3176,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp khi đàm phán Praktikum:",
+        "instruction_en": "Fill in the right phrase for an internship negotiation:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "negotiation"
@@ -2777,6 +3203,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng đàm phán:",
+        "instruction_en": "Match each German sentence to its negotiation function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2800,6 +3227,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức công sở:",
+        "instruction_en": "Translate into workplace German:",
         "pronunciation_focus": [
           "Konjunktiv II",
           "Sie-Form"
