@@ -5110,6 +5110,12 @@ export const lessons: FrenchLesson[] = [
           "orientation → o-riãn-ta-sion",
           "réserve → ré-zerv",
           "terrain → tè-ran"
+        ],
+        "pronunciation_focus_en": [
+          "souscrire → 'soo-SKREER' — 'ou' is 'oo'; final -e silent; means 'to endorse / subscribe to'",
+          "orientation → 'oh-ryahn-tah-SYOHN' — 'ie' glides to 'yah'; -tion is 'syohn'",
+          "réserve → 'ray-ZAIRV' — 's' between vowels sounds like 'z'; final -e silent",
+          "terrain → 'teh-RAN' — nasal -ain; final -n never pronounced; means 'field / ground'"
         ]
       },
       {
@@ -5120,6 +5126,12 @@ export const lessons: FrenchLesson[] = [
           "chemin → shơ-man",
           "soulève → su-lèv",
           "soumettre → su-mè-trơ"
+        ],
+        "pronunciation_focus_en": [
+          "objectif → 'ob-zhek-TEEF' — 'j' is soft 'zh'; final -f sounded",
+          "chemin → 'shuh-MAN' — 'ch' is 'sh'; nasal -in; final -n never pronounced",
+          "soulève → 'soo-LEV' — 'ou' is 'oo'; è with grave opens to 'eh'; final -e silent; means 'raises'",
+          "soumettre → 'soo-MEH-truh' — 'ou' is 'oo'; final -tre is a quick 'truh'; means 'to submit'"
         ]
       },
       {
@@ -5130,6 +5142,12 @@ export const lessons: FrenchLesson[] = [
           "désaccord → dé-za-kor",
           "précisément → pré-si-zé-mã",
           "débat → dé-ba"
+        ],
+        "pronunciation_focus_en": [
+          "permets → 'pair-MEH' — final -ts silent; from 'permettre'",
+          "désaccord → 'day-zah-KOR' — 's' between vowels sounds like 'z'; final -d silent",
+          "précisément → 'pray-see-zay-MAHN' — nasal -ment; means 'precisely'",
+          "débat → 'day-BAH' — final -t silent (classic French trap)"
         ]
       },
       {
@@ -5140,6 +5158,12 @@ export const lessons: FrenchLesson[] = [
           "préférerais → pré-fé-rơ-rè",
           "alternative → al-tèr-na-tiv",
           "objecter → ob-jèk-té"
+        ],
+        "pronunciation_focus_en": [
+          "stade → 'STAHD' — one syllable; final -e silent; means 'stage / phase'",
+          "préférerais → 'pray-fay-ruh-RAY' — conditional '-rais' is 'ray'; four syllables",
+          "alternative → 'al-tair-nah-TEEV' — final -ive is 'eev'; stress on last syllable",
+          "objecter → 'ob-zhek-TAY' — 'j' is soft 'zh'; final -er is 'ay'"
         ]
       },
       {
@@ -5150,170 +5174,205 @@ export const lessons: FrenchLesson[] = [
           "entière → ãn-tièr",
           "éthique → é-tik",
           "signaler → si-nya-lé"
+        ],
+        "pronunciation_focus_en": [
+          "loyauté → 'lwah-yoh-TAY' — 'oy' is 'wah-y'; final -té is 'tay'",
+          "entière → 'ahn-TYAIR' — nasal -en; -ière glides to 'yair'; final -e silent",
+          "éthique → 'ay-TEEK' — silent h; final -ique is 'eek'",
+          "signaler → 'see-nyah-LAY' — -gn- is 'ny' as in 'canyon'; final -er is 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "Bất đồng với cấp trên trong văn hóa doanh nghiệp Pháp est un art subtil — ni soumission asiatique, ni confrontation américaine. Le bon registre est exigé pour ne pas être perçu comme insolent (perte de crédibilité immédiate) ni comme servile (perte de respect long terme).\n\n(1) LA HIÉRARCHIE FRANÇAISE EST FORTE MAIS DISCUTABLE. Contrairement à une idée reçue, l'entreprise française classique a une hiérarchie verticale marquée — plus que les pays scandinaves ou anglo-saxons. Mais le DÉBAT EST ATTENDU avant la décision; c'est seulement APRÈS la décision que la loyauté est exigée. La phrase clé: « avant la décision, débat franc; après la décision, application loyale ».\n\n(2) LE BON CADRE POUR EXPRIMER UN DÉSACCORD: en bilatéral, à froid, avant que la décision soit officialisée. Désaccord exprimé en réunion publique = humiliation pour le supérieur, retournement contre vous. Désaccord exprimé après l'annonce officielle = insubordination, sanction. Le timing est critique.\n\n(3) FORMULATION CONSTRUCTIVE OBLIGATOIRE. Une objection seule (« je ne suis pas d'accord ») est inutile et coûteuse en relation. Une objection accompagnée d'une PROPOSITION ALTERNATIVE est constructive. La règle de fer: ne JAMAIS objecter sans proposer une voie de remplacement chiffrée et argumentée.\n\n(4) STRUCTURE EN 4 PARTIES POUR UN DÉSACCORD CONSTRUCTIF:\n\n- (a) RECONNAISSANCE de l'objectif partagé: « Je partage votre objectif final de [X]. »\n- (b) IDENTIFICATION DU PROBLÈME précis: « Le chemin proposé soulève à mon sens [N] difficultés. »\n- (c) PROPOSITION ALTERNATIVE chiffrée: « Une voie alternative serait de [Y], qui permet d'atteindre le même objectif tout en évitant [risques]. »\n- (d) RÉAFFIRMATION DE LA LOYAUTÉ: « Cela dit, ma loyauté à la décision finale est entière. Je voulais simplement m'assurer que vous ayez l'analyse complète avant d'arbitrer. »\n\n(5) DEUX REGISTRES DE DÉSACCORD selon le contexte:\n\n- DÉSACCORD MINEUR (sur tactique, méthode): exprimer une fois, en bilatéral, sans insister. Si la décision tient, l'appliquer.\n- DÉSACCORD MAJEUR (sur stratégie, éthique, légalité): exiger un échange formel, formaliser par écrit (mail), demander que la décision soit prise en connaissance de cause. Le « disagree and commit » américain est applicable, mais avec trace écrite si l'enjeu est sérieux.\n\n(6) DÉSACCORD ÉTHIQUE — CADRE SPÉCIFIQUE. Si le désaccord porte sur une décision ÉTHIQUEMENT problématique (manquement à la loi, fraude, mise en danger), la procédure change: alerte interne formalisée par écrit, copie aux instances appropriées (compliance, audit interne), conservation de preuves. La loi Sapin 2 (2016) protège les lanceurs d'alerte en France.\n\n(7) CULTURE FRANÇAISE DU « ROND DE SERVIETTE ». Un désaccord exprimé en sortie de réunion (« Au fait, sur ce point… ») est mieux reçu qu'un désaccord en réunion. Cela permet au supérieur de réfléchir sans perdre la face en public. Cette pratique informelle est valorisée par les managers expérimentés.\n\n(8) BẪY ĐẶC THÙ NGƯỜI VIỆT: tendance à éviter le désaccord pour préserver l'harmonie (héritage culturel asiatique). En France, ce silence peut être interprété comme:\n- (a) approbation tacite (et donc co-responsabilité quand ça rate)\n- (b) manque de compétence (« elle n'a rien à dire, donc rien à apporter »)\n- (c) manque de loyauté envers la mission (« si elle voit le risque et ne dit rien, elle nous laisse aller dans le mur »)\n\nLe silence n'est PAS une vertu en France professionnelle — l'argumentation construite est attendue.\n\n(9) BẪY INVERSE: tendance à exprimer le désaccord avec une politesse asiatique excessive (« je ne voudrais surtout pas vous contredire, mais peut-être, si vous le permettez… »). Cette politesse, en français, signale la faiblesse — le supérieur balaye l'objection. Préférer la formule courtoise mais ferme: « Je voudrais partager une réserve sérieuse. »",
+    "cultural_notes_en": "Disagreeing with senior leadership in French corporate culture is a subtle art — neither Asian deference nor American confrontation. The right register is required not to be perceived as insolent (immediate credibility loss) nor servile (long-term loss of respect).\n\n(1) FRENCH HIERARCHY IS STRONG BUT DEBATABLE. Contrary to a common assumption, the classic French firm has a marked vertical hierarchy — more than Scandinavian or anglophone countries. But DEBATE IS EXPECTED before the decision; it's only AFTER the decision that loyalty is required. Key phrase: 'before the decision, frank debate; after the decision, loyal execution'.\n\n(2) THE RIGHT FRAME FOR EXPRESSING DISAGREEMENT: in bilateral meeting, calmly, before the decision is officialized. Disagreement expressed in a public meeting = humiliation for the senior, will boomerang against you. Disagreement expressed after the official announcement = insubordination, sanction. Timing is critical.\n\n(3) CONSTRUCTIVE FORMULATION REQUIRED. A bare objection ('I disagree') is useless and costly to the relationship. An objection accompanied by an ALTERNATIVE PROPOSAL is constructive. The iron rule: NEVER object without proposing a quantified and argued alternative path.\n\n(4) 4-PART STRUCTURE FOR CONSTRUCTIVE DISAGREEMENT:\n\n- (a) RECOGNITION of the shared objective: 'I share your final objective of [X].'\n- (b) PRECISE IDENTIFICATION OF THE PROBLEM: 'The path proposed raises, in my view, [N] difficulties.'\n- (c) QUANTIFIED ALTERNATIVE: 'An alternative path would be [Y], which reaches the same objective while avoiding [risks].'\n- (d) REAFFIRMATION OF LOYALTY: 'That said, my loyalty to the final decision is entire. I just wanted to ensure you have the complete analysis before deciding.'\n\n(5) TWO REGISTERS OF DISAGREEMENT depending on context:\n\n- MINOR DISAGREEMENT (on tactics, method): express once, in bilateral, without insisting. If the decision holds, apply it.\n- MAJOR DISAGREEMENT (on strategy, ethics, legality): demand a formal exchange, formalize by email, request that the decision be made with full information. The American 'disagree and commit' applies, but with a written trace if the stake is serious.\n\n(6) ETHICAL DISAGREEMENT — SPECIFIC FRAME. If disagreement concerns an ETHICALLY problematic decision (law breach, fraud, endangerment), the procedure changes: formalized internal alert, copies to appropriate bodies (compliance, internal audit), evidence preservation. The 2016 Sapin 2 law protects whistleblowers in France.\n\n(7) FRENCH 'NAPKIN-EDGE' CULTURE. A disagreement expressed at the end of a meeting ('By the way, on that point…') is better received than disagreement during the meeting. This lets the senior reflect without losing face in public. This informal practice is valued by experienced managers.\n\n(8) ANGLOPHONE/VIETNAMESE TRAP — SILENCE: tendency to avoid disagreement to preserve harmony (Asian cultural heritage) or politeness (anglophone instinct). In France, this silence can be read as:\n- (a) tacit approval (and therefore co-responsibility when it fails)\n- (b) lack of competence ('she has nothing to say, so nothing to contribute')\n- (c) lack of loyalty to the mission ('if she sees the risk and doesn't speak up, she lets us run into the wall')\n\nSilence is NOT a virtue in French professional culture — constructed argumentation is expected.\n\n(9) INVERSE TRAP: expressing disagreement with excessive Asian/anglophone politeness ('I really wouldn't want to contradict you, but perhaps, if you'll permit…'). This politeness, in French, signals weakness — the senior dismisses the objection. Prefer the courteous-but-firm formula: 'Je voudrais partager une réserve sérieuse.'",
     "tip_advice_vi": "PROCESSUS EN 5 ÉTAPES pour exprimer un désaccord constructif:\n\n(1) DIAGNOSTIQUER L'ENJEU: désaccord mineur (méthode, tactique) vs majeur (stratégie, éthique). Le format change selon l'enjeu.\n\n(2) PRÉPARER L'ARGUMENTAIRE: 3 points maximum. Chaque point soutenu par une donnée, un exemple, ou une conséquence chiffrée. Pas de jugement subjectif (« je trouve que »).\n\n(3) PRÉPARER UNE ALTERNATIVE: ne jamais s'opposer sans proposer. Une alternative crédible, chiffrée, avec ses propres limites assumées.\n\n(4) CHOISIR LE BON CADRE: bilatéral, à froid, avant officialisation. Demander un rendez-vous court (« Pourriez-vous me consacrer vingt minutes avant que la décision soit annoncée ? »).\n\n(5) ENGAGER LA CONVERSATION: structure 4 parties (reconnaissance / problème / alternative / loyauté). Conclure par engagement à appliquer la décision quelle qu'elle soit.\n\nCỤM HỮU ÍCH:\n\nPOUR OBTENIR LE RENDEZ-VOUS:\n- « Pourriez-vous me consacrer vingt minutes en bilatéral avant la réunion de jeudi ? »\n- « Avant que la décision soit officialisée, j'aimerais partager un point d'analyse. »\n- « Sur le projet X, j'ai un retour de terrain qui pourrait être utile à votre arbitrage. »\n\nPOUR OUVRIR L'ÉCHANGE:\n- « Avant de souscrire à cette orientation, je voudrais partager une réserve sérieuse. »\n- « Je partage l'objectif; le chemin proposé soulève à mon sens des questions. »\n- « Si je me permets ce désaccord, c'est précisément parce que je vous sais ouverte à un débat franc. »\n\nPOUR EXPOSER LE PROBLÈME:\n- « Trois difficultés me préoccupent: [point 1], [point 2], [point 3]. »\n- « Le retour terrain converge vers [observation]. »\n- « Le calendrier proposé ne tient pas compte de [contrainte opérationnelle]. »\n\nPOUR PROPOSER L'ALTERNATIVE:\n- « Une voie alternative serait de [option], qui permet d'atteindre le même objectif tout en [bénéfice]. »\n- « Plutôt que [option proposée], je suggérerais [autre option], pour les raisons suivantes: [arguments]. »\n- « Si je devais arbitrer à votre place, je porterais [option] — mais c'est votre arbitrage. »\n\nPOUR CONCLURE EN LOYAUTÉ:\n- « Ma loyauté à la décision finale est entière. Je voulais simplement m'assurer que vous ayez l'analyse complète. »\n- « Quelle que soit votre décision, je l'appliquerai pleinement. »\n- « Je me suis exprimée; je m'aligne désormais sur ce que vous trancherez. »\n\nPOUR CHIFFRER UN ENJEU MAJEUR (par mail, trace):\n- « Pour mémoire de notre échange du [date]: voici les trois points que j'ai signalés et la décision que vous avez retenue. »\n- « Conformément à votre arbitrage, je mettrai en œuvre [option] dès lundi. »\n\nTRÁNH:\n- « Je ne suis pas d'accord » sec, sans alternative\n- « Tout le monde dit que… » → arguments d'autorité collective fragiles\n- « Vous vous trompez » → tu personnel, attaque, perte immédiate\n- Désaccord en réunion publique → humiliation, retournement\n- Désaccord après décision officielle → insubordination, sanction",
+    "tip_advice_en": "5-STEP PROCESS for expressing constructive disagreement:\n\n(1) DIAGNOSE THE STAKE: minor (method, tactics) vs major (strategy, ethics). The format changes with the stake.\n\n(2) PREPARE THE ARGUMENTAIRE: 3 points max. Each backed by data, an example, or a quantified consequence. No subjective judgments ('I find that').\n\n(3) PREPARE AN ALTERNATIVE: never oppose without proposing. A credible, quantified alternative, with its own limits acknowledged.\n\n(4) CHOOSE THE RIGHT FRAME: bilateral, calm, before officialization. Request a short meeting ('Could you give me twenty minutes before the decision is announced?').\n\n(5) ENGAGE THE CONVERSATION: 4-part structure (recognition / problem / alternative / loyalty). Close with a commitment to apply the decision whatever it is.\n\nUSEFUL PHRASES:\n\nTO REQUEST THE MEETING:\n- 'Pourriez-vous me consacrer vingt minutes en bilatéral avant la réunion de jeudi ?'\n- 'Avant que la décision soit officialisée, j'aimerais partager un point d'analyse.'\n- 'Sur le projet X, j'ai un retour de terrain qui pourrait être utile à votre arbitrage.'\n\nTO OPEN THE EXCHANGE:\n- 'Avant de souscrire à cette orientation, je voudrais partager une réserve sérieuse.'\n- 'Je partage l'objectif; le chemin proposé soulève à mon sens des questions.'\n- 'Si je me permets ce désaccord, c'est précisément parce que je vous sais ouverte à un débat franc.'\n\nTO STATE THE PROBLEM:\n- 'Trois difficultés me préoccupent: [point 1], [point 2], [point 3].'\n- 'Le retour terrain converge vers [observation].'\n- 'Le calendrier proposé ne tient pas compte de [operational constraint].'\n\nTO PROPOSE THE ALTERNATIVE:\n- 'Une voie alternative serait de [option], qui permet d'atteindre le même objectif tout en [benefit].'\n- 'Plutôt que [proposed option], je suggérerais [other option], pour les raisons suivantes: [arguments].'\n- 'Si je devais arbitrer à votre place, je porterais [option] — mais c'est votre arbitrage.'\n\nTO CLOSE IN LOYALTY:\n- 'Ma loyauté à la décision finale est entière. Je voulais simplement m'assurer que vous ayez l'analyse complète.'\n- 'Quelle que soit votre décision, je l'appliquerai pleinement.'\n- 'Je me suis exprimée; je m'aligne désormais sur ce que vous trancherez.'\n\nTO RECORD A MAJOR STAKE (by email, for trace):\n- 'Pour mémoire de notre échange du [date]: voici les trois points que j'ai signalés et la décision que vous avez retenue.'\n- 'Conformément à votre arbitrage, je mettrai en œuvre [option] dès lundi.'\n\nAVOID:\n- 'Je ne suis pas d'accord' bare, with no alternative\n- 'Everyone says that…' → fragile collective-authority arguments\n- 'You're wrong' → personal attack, immediate loss\n- Disagreement in a public meeting → humiliation, backfire\n- Disagreement after official decision → insubordination, sanction",
     "vocabulary": [
       {
         "word": "souscrire à une orientation",
         "en": "to endorse a direction",
         "vi": "tán thành một định hướng",
         "pos": "v.",
-        "pronunciation_vi": "su-skri-rơ a un o-riãn-ta-sion"
+        "pronunciation_vi": "su-skri-rơ a un o-riãn-ta-sion",
+        "pronunciation_en": "soo-SKREER ah ewn oh-ryahn-tah-SYOHN — 'ou' is 'oo'; the formal verb for endorsing a strategic direction"
       },
       {
         "word": "exprimer une réserve",
         "en": "to express a reservation",
         "vi": "bày tỏ dè dặt",
         "pos": "v.",
-        "pronunciation_vi": "èk-spri-mé un ré-zerv"
+        "pronunciation_vi": "èk-spri-mé un ré-zerv",
+        "pronunciation_en": "eks-pree-MAY ewn ray-ZAIRV — 's' between vowels sounds like 'z'; softer than 's'opposer'"
       },
       {
         "word": "le retour terrain",
         "en": "field feedback",
         "vi": "phản hồi từ thực địa",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-tur tè-ran"
+        "pronunciation_vi": "rơ-tur tè-ran",
+        "pronunciation_en": "luh ruh-TOOR teh-RAN — nasal -ain; the most credible evidence base in a French disagreement"
       },
       {
         "word": "soumettre une analyse",
         "en": "to submit an analysis",
         "vi": "trình bày một phân tích",
         "pos": "v.",
-        "pronunciation_vi": "su-mè-trơ un a-na-liz"
+        "pronunciation_vi": "su-mè-trơ un a-na-liz",
+        "pronunciation_en": "soo-MEH-truh ewn ah-nah-LEEZ — 'ou' is 'oo'; signals deference while presenting a counter-argument"
       },
       {
         "word": "une option alternative chiffrée",
         "en": "a quantified alternative",
         "vi": "phương án thay thế có số liệu",
         "pos": "n.f.",
-        "pronunciation_vi": "op-sion al-tèr-na-tiv shi-fré"
+        "pronunciation_vi": "op-sion al-tèr-na-tiv shi-fré",
+        "pronunciation_en": "ewn op-SYOHN al-tair-nah-TEEV shee-FRAY — required to make disagreement constructive rather than obstructive"
       },
       {
         "word": "un arbitrage",
         "en": "an arbitration / decision",
         "vi": "sự phân xử / quyết định",
         "pos": "n.m.",
-        "pronunciation_vi": "ar-bi-traj"
+        "pronunciation_vi": "ar-bi-traj",
+        "pronunciation_en": "ehn ar-bee-TRAHZH — final -age is 'ahzh'; the C1 word for an executive ruling between options"
       },
       {
         "word": "la loyauté envers une décision",
         "en": "loyalty to a decision",
         "vi": "lòng trung thành với quyết định",
         "pos": "n.f.",
-        "pronunciation_vi": "loa-yô-té ãn-vèr un dé-si-zion"
+        "pronunciation_vi": "loa-yô-té ãn-vèr un dé-si-zion",
+        "pronunciation_en": "lah lwah-yoh-TAY ahn-VAIR ewn day-see-ZYOHN — the closing register-move after expressing disagreement"
       },
       {
         "word": "signaler un risque",
         "en": "to flag a risk",
         "vi": "báo hiệu một rủi ro",
         "pos": "v.",
-        "pronunciation_vi": "si-nya-lé an risk"
+        "pronunciation_vi": "si-nya-lé an risk",
+        "pronunciation_en": "see-nyah-LAY ehn REESK — -gn- is 'ny'; less dramatic than 'alerter', appropriate for managerial dialogue"
       },
       {
         "word": "une voie de remplacement",
         "en": "an alternative path",
         "vi": "một con đường thay thế",
         "pos": "n.f.",
-        "pronunciation_vi": "voa dơ rãn-plas-mã"
+        "pronunciation_vi": "voa dơ rãn-plas-mã",
+        "pronunciation_en": "ewn VWAH duh rahn-plahs-MAHN — 'oi' is 'wah'; nasal -ment"
       },
       {
         "word": "marquer son désaccord",
         "en": "to register one's disagreement",
         "vi": "đánh dấu sự bất đồng của mình",
         "pos": "v.",
-        "pronunciation_vi": "mar-ké sõn dé-za-kor"
+        "pronunciation_vi": "mar-ké sõn dé-za-kor",
+        "pronunciation_en": "mar-KAY sohn day-zah-KOR — final -d silent; the formal verb for putting disagreement on record"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh",
         "text": "Madame Lefèvre, pourriez-vous me consacrer vingt minutes avant la réunion de jeudi ?",
-        "vi": "Bà Lefèvre, bà có thể dành tôi 20 phút trước cuộc họp thứ năm không?"
+        "vi": "Bà Lefèvre, bà có thể dành tôi 20 phút trước cuộc họp thứ năm không?",
+        "en": "Mrs. Lefèvre, could you spare me twenty minutes before Thursday's meeting?"
       },
       {
         "speaker": "Directrice",
         "text": "Bien sûr. Quel est le sujet ?",
-        "vi": "Tất nhiên. Chủ đề gì?"
+        "vi": "Tất nhiên. Chủ đề gì?",
+        "en": "Of course. What's the topic?"
       },
       {
         "speaker": "Linh",
         "text": "Je voudrais partager une réserve sérieuse sur le projet de réorganisation, fondée sur trois retours de terrain.",
-        "vi": "Tôi muốn chia sẻ một dè dặt nghiêm túc về dự án tái cấu trúc, dựa trên ba phản hồi thực địa."
+        "vi": "Tôi muốn chia sẻ một dè dặt nghiêm túc về dự án tái cấu trúc, dựa trên ba phản hồi thực địa.",
+        "en": "I'd like to share a serious reservation on the reorganization project, grounded in three pieces of field feedback."
       },
       {
         "speaker": "Directrice",
         "text": "Très bien. Demain matin, neuf heures, mon bureau.",
-        "vi": "Rất tốt. Mai sáng, 9 giờ, phòng tôi."
+        "vi": "Rất tốt. Mai sáng, 9 giờ, phòng tôi.",
+        "en": "Very well. Tomorrow morning, nine o'clock, my office."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (rendez-vous bilatéral avec sa N+2, à froid, avant décision finale)",
         "text": "Madame Lefèvre, merci de me recevoir. Je voudrais d'emblée vous dire que mon objectif n'est pas de remettre en cause votre orientation stratégique — je la partage. C'est précisément parce que je veux qu'elle réussisse que je viens partager une analyse de risque.",
-        "vi": "Bà Lefèvre, cảm ơn bà tiếp tôi. Tôi muốn nói trước rằng mục tiêu của tôi không phải là đặt vấn đề về định hướng chiến lược của bà — tôi chia sẻ nó. Chính vì tôi muốn nó thành công nên tôi đến chia sẻ phân tích rủi ro."
+        "vi": "Bà Lefèvre, cảm ơn bà tiếp tôi. Tôi muốn nói trước rằng mục tiêu của tôi không phải là đặt vấn đề về định hướng chiến lược của bà — tôi chia sẻ nó. Chính vì tôi muốn nó thành công nên tôi đến chia sẻ phân tích rủi ro.",
+        "en": "Mrs. Lefèvre, thank you for receiving me. I'd like to say up front that my objective is not to question your strategic direction — I share it. It's precisely because I want it to succeed that I'm coming to share a risk analysis."
       },
       {
         "speaker": "Directrice",
         "text": "Je vous écoute. Quel est le point précis ?",
-        "vi": "Tôi nghe bà. Điểm cụ thể nào?"
+        "vi": "Tôi nghe bà. Điểm cụ thể nào?",
+        "en": "I'm listening. What's the precise point?"
       },
       {
         "speaker": "Linh",
         "text": "Le calendrier de fusion des deux équipes — Paris et Lyon — est annoncé pour le premier janvier. Sur le principe, je suis d'accord: la fusion est nécessaire et la cible est claire. Sur le calendrier, j'ai trois retours de terrain qui me préoccupent.",
-        "vi": "Lịch trình hợp nhất hai đội — Paris và Lyon — được công bố vào 1 tháng giêng. Về nguyên tắc, tôi đồng ý: hợp nhất là cần thiết và mục tiêu rõ. Về lịch trình, tôi có ba phản hồi thực địa làm tôi lo."
+        "vi": "Lịch trình hợp nhất hai đội — Paris và Lyon — được công bố vào 1 tháng giêng. Về nguyên tắc, tôi đồng ý: hợp nhất là cần thiết và mục tiêu rõ. Về lịch trình, tôi có ba phản hồi thực địa làm tôi lo.",
+        "en": "The timeline for merging the two teams — Paris and Lyon — is announced for January first. On principle, I agree: the merger is necessary and the target is clear. On the timeline, I have three pieces of field feedback that concern me."
       },
       {
         "speaker": "Linh",
         "text": "Premier point: l'équipe Lyon traverse une période d'intense charge avec le client X — trois livrables critiques d'ici le quinze janvier. Lancer la fusion le premier janvier les force à gérer en parallèle l'opérationnel critique ET la réorganisation interne. Le risque est qu'on rate les livrables, ce qui coûterait la relation client X — environ huit cent mille d'euros annuels.",
-        "vi": "Điểm thứ nhất: đội Lyon đang trải qua giai đoạn quá tải với khách X — ba deliverables critique trước 15 tháng giêng. Khởi động hợp nhất 1 tháng giêng buộc họ quản lý song song operational critique VÀ tái tổ chức nội bộ. Rủi ro là mình lỡ deliverables, sẽ mất quan hệ khách X — khoảng 800 nghìn euro hàng năm."
+        "vi": "Điểm thứ nhất: đội Lyon đang trải qua giai đoạn quá tải với khách X — ba deliverables critique trước 15 tháng giêng. Khởi động hợp nhất 1 tháng giêng buộc họ quản lý song song operational critique VÀ tái tổ chức nội bộ. Rủi ro là mình lỡ deliverables, sẽ mất quan hệ khách X — khoảng 800 nghìn euro hàng năm.",
+        "en": "First point: the Lyon team is going through an intense workload with client X — three critical deliverables by January fifteenth. Launching the merger on January first forces them to manage in parallel the critical operational work AND the internal reorganization. The risk is we miss the deliverables, which would cost the client X relationship — roughly eight hundred thousand euros annually."
       },
       {
         "speaker": "Linh",
         "text": "Deuxième point: trois personnes-clés de l'équipe Lyon ont signalé en entretien individuel qu'elles envisagent de partir si la fusion les contraint à déménager à Paris. Sur les trois, deux ont des compétences rares qui mettraient un an à remplacer. Le coût caché de leur départ serait significatif.",
-        "vi": "Điểm thứ hai: ba người chủ chốt của đội Lyon đã báo trong entretien cá nhân rằng họ cân nhắc rời nếu hợp nhất buộc họ chuyển đến Paris. Trong ba, hai có kỹ năng hiếm sẽ mất một năm để thay. Chi phí ẩn của sự ra đi sẽ đáng kể."
+        "vi": "Điểm thứ hai: ba người chủ chốt của đội Lyon đã báo trong entretien cá nhân rằng họ cân nhắc rời nếu hợp nhất buộc họ chuyển đến Paris. Trong ba, hai có kỹ năng hiếm sẽ mất một năm để thay. Chi phí ẩn của sự ra đi sẽ đáng kể.",
+        "en": "Second point: three key Lyon team members have signaled in one-on-ones that they're considering leaving if the merger forces them to relocate to Paris. Of the three, two have rare skills that would take a year to replace. The hidden cost of their departure would be significant."
       },
       {
         "speaker": "Linh",
         "text": "Troisième point: le système informatique commun entre Paris et Lyon — qui doit être en place pour fusionner — n'est pas encore livré par le DSI. La dernière fois que j'ai eu le point avec lui, il visait avril, pas janvier. Sans système commun, la fusion organisationnelle se fait à blanc; les deux équipes continueront à travailler en silos pendant trois mois.",
-        "vi": "Điểm thứ ba: hệ thống tin học chung giữa Paris và Lyon — phải có để hợp nhất — chưa được DSI giao. Lần cuối tôi nói với ông, ông nhắm tháng tư, không phải tháng giêng. Không có hệ thống chung, hợp nhất tổ chức làm trống; hai đội tiếp tục làm việc trong silo trong 3 tháng."
+        "vi": "Điểm thứ ba: hệ thống tin học chung giữa Paris và Lyon — phải có để hợp nhất — chưa được DSI giao. Lần cuối tôi nói với ông, ông nhắm tháng tư, không phải tháng giêng. Không có hệ thống chung, hợp nhất tổ chức làm trống; hai đội tiếp tục làm việc trong silo trong 3 tháng.",
+        "en": "Third point: the shared IT system between Paris and Lyon — which must be in place to merge — hasn't yet been delivered by the CIO. The last time I checked with him, he was targeting April, not January. Without the shared system, the organizational merger happens on paper only; the two teams will continue working in silos for three months."
       },
       {
         "speaker": "Directrice",
         "text": "Trois points sérieux. Quelle alternative proposez-vous ?",
-        "vi": "Ba điểm nghiêm túc. Bà đề xuất phương án nào?"
+        "vi": "Ba điểm nghiêm túc. Bà đề xuất phương án nào?",
+        "en": "Three serious points. What alternative do you propose?"
       },
       {
         "speaker": "Linh",
         "text": "Trois options à votre arbitrage. Option A: maintenir le calendrier mais reporter la fusion organisationnelle effective au quinze février — laissant le temps de finir les livrables Lyon, de stabiliser les départs envisagés, et d'attendre une partie du système commun. Option B: décaler le démarrage à avril — alignement complet sur la livraison du système, plus serein, mais perte de visibilité auprès du marché. Option C: maintenir janvier mais limiter à la fusion juridique sans fusion opérationnelle — geste symbolique externe, fonctionnement interne en deux équipes pendant six mois. Ma préférence personnelle va à l'option A; mais c'est votre arbitrage.",
-        "vi": "Ba lựa chọn để bà phân xử. Lựa chọn A: giữ lịch nhưng dời hợp nhất tổ chức hiệu quả sang 15 tháng hai — cho thời gian hoàn thành deliverables Lyon, ổn định các departures, và chờ một phần hệ thống chung. Lựa chọn B: dời khởi động sang tháng tư — alignement đầy đủ với việc giao hệ thống, bình tĩnh hơn, nhưng mất tầm nhìn với thị trường. Lựa chọn C: giữ tháng giêng nhưng giới hạn ở hợp nhất pháp lý không hợp nhất operational — cử chỉ tượng trưng bên ngoài, hoạt động nội bộ trong hai đội trong 6 tháng. Sở thích cá nhân của tôi nghiêng về lựa chọn A; nhưng đó là phán quyết của bà."
+        "vi": "Ba lựa chọn để bà phân xử. Lựa chọn A: giữ lịch nhưng dời hợp nhất tổ chức hiệu quả sang 15 tháng hai — cho thời gian hoàn thành deliverables Lyon, ổn định các departures, và chờ một phần hệ thống chung. Lựa chọn B: dời khởi động sang tháng tư — alignement đầy đủ với việc giao hệ thống, bình tĩnh hơn, nhưng mất tầm nhìn với thị trường. Lựa chọn C: giữ tháng giêng nhưng giới hạn ở hợp nhất pháp lý không hợp nhất operational — cử chỉ tượng trưng bên ngoài, hoạt động nội bộ trong hai đội trong 6 tháng. Sở thích cá nhân của tôi nghiêng về lựa chọn A; nhưng đó là phán quyết của bà.",
+        "en": "Three options for your arbitration. Option A: keep the timeline but defer the effective organizational merger to February fifteenth — leaving time to finish the Lyon deliverables, stabilize the projected departures, and wait for part of the shared system. Option B: push the start to April — full alignment with the system delivery, calmer, but loss of market visibility. Option C: keep January but limit it to the legal merger without operational merger — external symbolic gesture, internal operation as two teams for six months. My personal preference is Option A; but it's your arbitration."
       },
       {
         "speaker": "Directrice",
         "text": "Vous avez fait votre travail. Je n'avais pas eu l'analyse aussi structurée. Donnez-moi vingt-quatre heures, je consulte le DSI sur la livraison du système, et je vous reviens avec ma décision avant la réunion de jeudi.",
-        "vi": "Bà đã làm công việc của mình. Tôi chưa có phân tích cấu trúc như vậy. Cho tôi 24 giờ, tôi tham khảo DSI về việc giao hệ thống, và tôi quay lại với quyết định trước cuộc họp thứ năm."
+        "vi": "Bà đã làm công việc của mình. Tôi chưa có phân tích cấu trúc như vậy. Cho tôi 24 giờ, tôi tham khảo DSI về việc giao hệ thống, và tôi quay lại với quyết định trước cuộc họp thứ năm.",
+        "en": "You've done your work. I hadn't had the analysis this structured. Give me twenty-four hours, I'll consult the CIO on the system delivery, and I'll come back to you with my decision before Thursday's meeting."
       },
       {
         "speaker": "Linh",
         "text": "Très bien. Quelle que soit votre décision, je l'appliquerai pleinement. Je voulais simplement m'assurer que vous ayez l'analyse de risque complète avant l'arbitrage.",
-        "vi": "Rất tốt. Bất kể quyết định của bà, tôi sẽ áp dụng đầy đủ. Tôi chỉ muốn đảm bảo bà có phân tích rủi ro đầy đủ trước phán quyết."
+        "vi": "Rất tốt. Bất kể quyết định của bà, tôi sẽ áp dụng đầy đủ. Tôi chỉ muốn đảm bảo bà có phân tích rủi ro đầy đủ trước phán quyết.",
+        "en": "Very well. Whatever your decision, I'll apply it fully. I just wanted to make sure you have the complete risk analysis before the arbitration."
       },
       {
         "speaker": "Directrice",
         "text": "C'est exactement ce que j'attends d'un manager senior — une analyse exigeante en bilatéral, une loyauté entière en exécution. Continuez ainsi.",
-        "vi": "Chính là điều tôi mong đợi từ một manager senior — một phân tích đòi hỏi trong bilatéral, một lòng trung thành đầy đủ trong thực thi. Cô tiếp tục như vậy."
+        "vi": "Chính là điều tôi mong đợi từ một manager senior — một phân tích đòi hỏi trong bilatéral, một lòng trung thành đầy đủ trong thực thi. Cô tiếp tục như vậy.",
+        "en": "That's exactly what I expect from a senior manager — demanding analysis in bilateral, full loyalty in execution. Keep going like this."
       },
       {
         "speaker": "Linh",
         "text": "Une dernière chose, par éthique professionnelle: pourrais-je vous envoyer un mail de synthèse de notre échange, pour mémoire ? Pas pour me protéger formellement, mais pour qu'on ait une trace claire des éléments d'analyse au moment de la décision.",
-        "vi": "Một điều cuối, vì đạo đức nghề nghiệp: tôi có thể gửi bà email tóm tắt trao đổi, để ghi nhớ không? Không phải để tự bảo vệ chính thức, mà để mình có dấu vết rõ ràng các yếu tố phân tích ở thời điểm quyết định."
+        "vi": "Một điều cuối, vì đạo đức nghề nghiệp: tôi có thể gửi bà email tóm tắt trao đổi, để ghi nhớ không? Không phải để tự bảo vệ chính thức, mà để mình có dấu vết rõ ràng các yếu tố phân tích ở thời điểm quyết định.",
+        "en": "One last thing, by professional ethics: could I send you a summary email of our exchange, for the record? Not to formally protect myself, but so that we have a clear trace of the analytical elements at the time of decision."
       },
       {
         "speaker": "Directrice",
         "text": "Envoyez-le. C'est sain. Cela protège les deux parties — et la qualité de la décision elle-même.",
-        "vi": "Bà gửi đi. Lành mạnh. Điều đó bảo vệ cả hai bên — và chất lượng của quyết định bản thân."
+        "vi": "Bà gửi đi. Lành mạnh. Điều đó bảo vệ cả hai bên — và chất lượng của quyết định bản thân.",
+        "en": "Send it. That's healthy. It protects both parties — and the quality of the decision itself."
       }
     ],
     "roleplay_prompts": [
@@ -5321,30 +5380,44 @@ export const lessons: FrenchLesson[] = [
       "Trong réunion publique, votre N+1 vient d'annoncer une décision avec laquelle vous êtes en profond désaccord. Phản hồi correcte: NE RIEN dire en réunion + demander un rendez-vous bilatéral le lendemain. Soạn la demande de rendez-vous.",
       "Votre N+2 vous demande de mettre en œuvre une instruction qui vous semble contraire à la loi RGPD. Soạn 5 câu pour soulever le sujet sans accuser, demander une validation juridique formelle avant exécution."
     ],
+    "roleplay_prompts_en": [
+      "Your director wants to launch a project on a market you judge non-viable. Draft 5 sentences to open the bilateral exchange — recognition + 3 risks + proposal for a prior market study. The anglophone instinct is to lead with the risks; the French frame leads with shared objective first.",
+      "In a public meeting, your N+1 has just announced a decision you deeply disagree with. The correct response: SAY NOTHING in the meeting + request a bilateral meeting the next day. Draft the meeting request. Public disagreement humiliates the senior and ricochets against you.",
+      "Your N+2 asks you to implement an instruction that seems to you contrary to GDPR law. Draft 5 sentences to raise the issue without accusing, request formal legal validation before execution. Frame it as protecting the senior, not as challenging them."
+    ],
     "register_notes": "Le DÉSACCORD HIÉRARCHIQUE en français professionnel obéit à des codes lexicaux précis:\n\nPHRASES FORMELLES POUR OUVRIR:\n- « Je voudrais partager une réserve. »\n- « Avant de souscrire à cette orientation… »\n- « Sur ce point précis, ma lecture diverge. »\n- « Je me permets de signaler un risque. »\n\nPHRASES POUR EXPOSER:\n- « Trois difficultés me préoccupent. »\n- « Le retour terrain converge vers… »\n- « Les chiffres font apparaître… »\n- « Le calendrier ne tient pas compte de… »\n\nPHRASES POUR PROPOSER:\n- « Une voie alternative serait… »\n- « Plutôt que X, je suggérerais Y. »\n- « Trois options à votre arbitrage: … »\n- « Si je devais arbitrer à votre place, je porterais X. »\n\nPHRASES POUR RÉAFFIRMER LA LOYAUTÉ:\n- « Quelle que soit votre décision, je l'appliquerai pleinement. »\n- « Ma loyauté à votre arbitrage est entière. »\n- « Je m'aligne désormais sur ce que vous trancherez. »\n\nPHRASES POUR FORMALISER (cas d'enjeu majeur):\n- « Pour mémoire de notre échange du [date]… »\n- « Conformément à votre arbitrage, je mettrai en œuvre… »\n- « Je vous envoie un mail de synthèse pour traçabilité. »\n\nDISTINCTIONS LEXICALES À MAÎTRISER:\n\n- « réserve » (objection nuancée, ouverte au dialogue)\n- « désaccord » (opposition franche, mais civile)\n- « opposition » (refus formel)\n- « contestation » (contestation publique, plus dur)\n- « rébellion » (jamais à utiliser au bureau)\n\n- « arbitrer » (décider entre options)\n- « trancher » (décider avec autorité, fermer le débat)\n- « décider » (terme générique)\n- « statuer » (formel, plutôt juridique)\n\n- « signaler » (alerter, sans dramatiser)\n- « alerter » (urgence implicite)\n- « lancer une alerte » (procédure formelle, lanceur d'alerte)\n\nUSAGE DU CONDITIONNEL pour atténuer:\n- « Je préférerais vous présenter… » (au lieu de « je veux vous présenter »)\n- « Si je devais arbitrer à votre place, je porterais… » (test d'option, n'engage pas)\n- « Cela me semblerait plus prudent. » (au lieu de « c'est plus prudent »)\n- « Pourriez-vous reconsidérer ? » (au lieu de « reconsidérez »)\n\nUNE TINH TẾ ABSOLUE: en français professionnel, JAMAIS « vous » dans une formulation accusatoire (« vous vous trompez », « vous n'avez pas vu que »). Préférer la voie impersonnelle:\n- « Cette option soulève… » (et non « votre option soulève »)\n- « Le calendrier proposé… » (et non « votre calendrier »)\n- « L'analyse fait apparaître… » (et non « vous n'avez pas analysé »)\n\nLa dépersonnalisation protège la face du supérieur — condition pour qu'il accepte l'objection.",
+    "register_notes_en": "HIERARCHICAL DISAGREEMENT in French professional life obeys precise lexical codes:\n\nFORMAL PHRASES TO OPEN:\n- 'Je voudrais partager une réserve.' (I'd like to share a reservation.)\n- 'Avant de souscrire à cette orientation…' (Before endorsing this direction…)\n- 'Sur ce point précis, ma lecture diverge.' (On this specific point, my reading diverges.)\n- 'Je me permets de signaler un risque.' (I take the liberty of flagging a risk.)\n\nPHRASES TO STATE THE ISSUE:\n- 'Trois difficultés me préoccupent.' (Three difficulties concern me.)\n- 'Le retour terrain converge vers…' (Field feedback converges on…)\n- 'Les chiffres font apparaître…' (The figures reveal…)\n- 'Le calendrier ne tient pas compte de…' (The timeline doesn't account for…)\n\nPHRASES TO PROPOSE:\n- 'Une voie alternative serait…' (An alternative path would be…)\n- 'Plutôt que X, je suggérerais Y.' (Rather than X, I'd suggest Y.)\n- 'Trois options à votre arbitrage: …' (Three options for your arbitration:…)\n- 'Si je devais arbitrer à votre place, je porterais X.' (If I were arbitrating in your place, I'd go with X.)\n\nPHRASES TO REAFFIRM LOYALTY:\n- 'Quelle que soit votre décision, je l'appliquerai pleinement.'\n- 'Ma loyauté à votre arbitrage est entière.'\n- 'Je m'aligne désormais sur ce que vous trancherez.'\n\nPHRASES TO RECORD (major-stake cases):\n- 'Pour mémoire de notre échange du [date]…' (For the record of our exchange of [date]…)\n- 'Conformément à votre arbitrage, je mettrai en œuvre…' (In accordance with your decision, I'll implement…)\n- 'Je vous envoie un mail de synthèse pour traçabilité.' (I'll send you a summary email for traceability.)\n\nLEXICAL DISTINCTIONS TO MASTER:\n\n- 'réserve' (nuanced objection, open to dialogue)\n- 'désaccord' (frank but civil opposition)\n- 'opposition' (formal refusal)\n- 'contestation' (public contestation, harder)\n- 'rébellion' (never use at the office)\n\n- 'arbitrer' (to decide between options)\n- 'trancher' (to decide with authority, close the debate)\n- 'décider' (generic term)\n- 'statuer' (formal, more legal)\n\n- 'signaler' (to flag, without dramatizing)\n- 'alerter' (implies urgency)\n- 'lancer une alerte' (formal procedure, whistleblowing)\n\nCONDITIONAL USAGE to soften:\n- 'Je préférerais vous présenter…' (instead of 'I want to present')\n- 'Si je devais arbitrer à votre place, je porterais…' (option-testing, doesn't commit)\n- 'Cela me semblerait plus prudent.' (instead of 'it's more prudent')\n- 'Pourriez-vous reconsidérer ?' (instead of 'reconsider')\n\nAN ABSOLUTE REFINEMENT: in French professional language, NEVER use 'vous' in an accusatory framing ('you're wrong', 'you didn't see that'). Prefer the impersonal voice:\n- 'Cette option soulève…' (not 'your option raises')\n- 'Le calendrier proposé…' (not 'your calendar')\n- 'L'analyse fait apparaître…' (not 'you didn't analyze')\n\nDepersonalization protects the senior's face — a precondition for them to accept the objection.",
     "idiom_glosses": [
       {
         "idiom": "Mettre les pieds dans le plat (courant)",
         "literal": "Đặt chân vào đĩa",
+        "literal_en": "To put one's feet in the dish",
         "meaning": "Dấn vào chủ đề tế nhị mà không vòng vo — utile en bilatéral, dangereux en réunion publique.",
+        "meaning_en": "To address a sensitive topic head-on — useful in bilateral meetings, dangerous in public ones. English equivalent: 'to call out the elephant in the room'. Timing-sensitive.",
         "example": "En bilatéral, j'ai mis les pieds dans le plat: « Madame, le calendrier ne tient pas. »"
       },
       {
         "idiom": "Faire valoir son point de vue (soutenu)",
         "literal": "Làm cho quan điểm của mình có giá trị",
+        "literal_en": "To make one's point of view count",
         "meaning": "Bảo vệ quan điểm — formule de désaccord constructif.",
+        "meaning_en": "To make one's case — defend a viewpoint. English equivalent: 'to state one's case' or 'to make oneself heard'. The polite verb for constructive pushback before a decision is sealed.",
         "example": "Je voudrais faire valoir mon point de vue avant que la décision soit officialisée."
       },
       {
         "idiom": "Marquer son désaccord (soutenu)",
         "literal": "Đánh dấu sự bất đồng",
+        "literal_en": "To mark one's disagreement",
         "meaning": "Bày tỏ phản đối có chính thức — sans rupture.",
+        "meaning_en": "To officially register disagreement — without breaking the relationship. English equivalent: 'to go on record as opposed' or 'to register one's dissent'. A formal procedural move that preserves loyalty.",
         "example": "Je tiens à marquer mon désaccord, tout en m'engageant à appliquer la décision."
       },
       {
         "idiom": "Botter en touche (courant)",
         "literal": "Đá ra ngoài biên",
+        "literal_en": "To kick into touch",
         "meaning": "Né tránh trả lời — défense maladroite face à un désaccord.",
+        "meaning_en": "To dodge the question — a clumsy defense in the face of disagreement. Rugby metaphor (kicking the ball out of play). English equivalent: 'to punt on' or 'to dodge the question'. When a senior 'bote en touche', they're tacitly acknowledging the objection is well-founded.",
         "example": "Quand le DG botte en touche au lieu de répondre, c'est qu'il sait que le désaccord est fondé."
       }
     ],
@@ -5352,20 +5425,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Avant de ___ à cette orientation, je voudrais partager une réserve sérieuse fondée sur les retours du terrain.",
-        "answer": "souscrire"
+        "answer": "souscrire",
+        "hint_vi": "động từ nguyên mẫu nghĩa 'tán thành / theo' (cụm 'souscrire à')",
+        "hint_en": "infinitive verb meaning 'to endorse / subscribe to' — the formal verb for endorsing a strategic orientation"
       },
       {
         "type": "matching",
         "pairs": [
-          ["exprimer une réserve", "bày tỏ dè dặt"],
-          ["un arbitrage", "sự phân xử"],
-          ["marquer son désaccord", "đánh dấu sự bất đồng"]
+          ["exprimer une réserve", "bày tỏ dè dặt (to express a reservation)"],
+          ["un arbitrage", "sự phân xử (an arbitration / executive decision)"],
+          ["marquer son désaccord", "đánh dấu sự bất đồng (to register one's disagreement on the record)"]
         ],
-        "instruction": "Nối thuật ngữ desacord hierarchique với nghĩa Việt"
+        "instruction": "Nối thuật ngữ desacord hierarchique với nghĩa Việt",
+        "instruction_en": "Match the hierarchical-disagreement term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Lòng trung thành với quyết định cuối của tôi là trọn vẹn; nhưng tôi nợ bà, vì đạo đức nghề nghiệp, việc báo hiệu rủi ro tôi nhận thấy.",
+        "english": "My loyalty to the final decision is entire; but I owe you, by professional ethics, the obligation to flag the risk I perceive.",
         "french": "Ma loyauté envers la décision finale est entière; mais je vous dois, par éthique professionnelle, de signaler le risque que je perçois."
       }
     ]
@@ -5385,6 +5462,12 @@ export const lessons: FrenchLesson[] = [
           "saillant → sa-yã",
           "rapport → ra-por",
           "désaccord → dé-za-kor"
+        ],
+        "pronunciation_focus_en": [
+          "écart → 'ay-KAR' — final -t silent; means 'gap / divergence'",
+          "saillant → 'sah-YAHN' — -ill- is 'y' glide; nasal -ant; final -t silent; means 'salient'",
+          "rapport → 'rah-POR' — final -t silent; means 'relationship / report'",
+          "désaccord → 'day-zah-KOR' — 's' between vowels sounds like 'z'; final -d silent"
         ]
       },
       {
@@ -5395,6 +5478,12 @@ export const lessons: FrenchLesson[] = [
           "privilégient → pri-vi-lé-jiơn",
           "homologues → o-mo-log",
           "consensus → kõn-sãn-sus"
+        ],
+        "pronunciation_focus_en": [
+          "négociateurs → 'nay-goh-syah-TUR' — -tia glides to 'syah'; -eurs final 'ur' with rounded lips; plural -s silent",
+          "privilégient → 'pree-vee-lay-ZHYAHN' — 3rd-person plural -ent silent except as 'yahn'; 'g' is soft 'zh'",
+          "homologues → 'oh-moh-LOHG' — silent h; final -gues sounds 'g'; plural -s silent",
+          "consensus → 'kohn-sahn-SEWS' — three nasals or near-nasals; 'u' rounded 'ew'"
         ]
       },
       {
@@ -5405,6 +5494,12 @@ export const lessons: FrenchLesson[] = [
           "rupture → rup-tur",
           "perçu → pèr-su",
           "confusion → kõn-fu-zion"
+        ],
+        "pronunciation_focus_en": [
+          "partenaire → 'par-tuh-NAIR' — schwa 'te'; final -aire is 'air'",
+          "rupture → 'rewp-TEWR' — 'u' rounded throughout; final -e silent",
+          "perçu → 'pair-SEW' — ç forces 's' sound before 'u'; 'u' rounded 'ew'",
+          "confusion → 'kohn-few-ZYOHN' — nasal 'on' + nasal -on; 'u' rounded; 's' between vowels = 'z'"
         ]
       },
       {
@@ -5415,6 +5510,12 @@ export const lessons: FrenchLesson[] = [
           "pratique → pra-tik",
           "interpersonnelle → an-tèr-pèr-so-nèl",
           "rencontres → rãn-kõn-trơ"
+        ],
+        "pronunciation_focus_en": [
+          "consigne → 'kohn-SEE-nyuh' — nasal 'on'; -gn- is 'ny' as in 'canyon'; final -e silent",
+          "pratique → 'prah-TEEK' — final -ique is 'eek'; final -e silent",
+          "interpersonnelle → 'an-tair-pair-soh-NEL' — five syllables; nasal -in opening; double-l + -e silent",
+          "rencontres → 'rahn-KOHN-truh' — two nasals; final -tres quick 'truh'; plural -s silent"
         ]
       },
       {
@@ -5425,180 +5526,217 @@ export const lessons: FrenchLesson[] = [
           "alterner → al-tèr-né",
           "registres → rơ-jis-trơ",
           "moment → mo-mã"
+        ],
+        "pronunciation_focus_en": [
+          "efficace → 'eh-fee-KAHS' — double-f one clean 'f'; final -e silent",
+          "alterner → 'al-tair-NAY' — final -er is 'ay'",
+          "registres → 'ruh-ZHEE-struh' — 'g' is soft 'zh'; final -stres quick 'struh'; plural -s silent",
+          "moment → 'moh-MAHN' — nasal -ent; final -t silent"
         ]
       }
     ],
     "cultural_notes_vi": "La négociation France-Vietnam est l'un des terrains où les malentendus interculturels ont le plus d'impact économique. Comprendre les écarts de style permet d'anticiper et de neutraliser les frictions.\n\n(1) RAPPORT AU TEMPS\n\n- FRANCE: temps linéaire, planifié, séquentiel. Une réunion est annoncée avec ordre du jour, durée, conclusions attendues. Le « il faut décider aujourd'hui » est légitime; ne pas décider = échec.\n- VIETNAM: temps plus cyclique, cumulatif. Une décision majeure suppose plusieurs cycles de discussion, parfois plusieurs mois. Vouloir « décider aujourd'hui » sur un sujet complexe = précipitation suspecte.\n\nIMPACT NÉGOCIATION: le Français impatient pousse à la signature; le Vietnamien réfléchit. Si le Français pousse trop, le Vietnamien signe sans s'engager intérieurement — l'exécution ultérieure sera médiocre. Le Français doit ralentir; le Vietnamien doit accepter quelques deadlines explicites.\n\n(2) EXPRESSION DU DÉSACCORD\n\n- FRANCE: désaccord direct, argumenté, valorisé. Dire « non » est respecté si justifié.\n- VIETNAM: désaccord indirect, formulé par les détours (« c'est intéressant, nous allons étudier », « il y a des contraintes »). Dire « non » direct = perte de face pour les deux parties.\n\nIMPACT NÉGOCIATION: le Français interprète « nous allons étudier » comme un OUI conditionnel; le Vietnamien le formule comme un NON poli. Catastrophe annoncée: le Français part avec l'impression d'un accord; le Vietnamien pensait l'avoir refusé. Le Français doit apprendre à LIRE LE NON IMPLICITE; le Vietnamien doit apprendre à FORMULER LE NON EXPLICITE quand l'enjeu est sérieux.\n\nFORMULES VIETNAMIENNES À DÉCODER pour un Français:\n- « C'est intéressant » = peut être sincère, peut être un refus poli\n- « Nous allons étudier » = souvent refus indirect\n- « C'est un peu difficile » = c'est non\n- « Il y a des contraintes » = c'est non, sans s'engager sur lesquelles\n- « Nous allons en discuter en interne » = peut être véritable consultation, peut être enterrement\n\nRÈGLE DE LECTURE: si la formule est répétée plusieurs fois sans engagement chiffré, c'est un NON. Le Français doit alors RÉORIENTER, pas pousser plus fort.\n\n(3) HIÉRARCHIE ET RAPPORT À L'AUTORITÉ\n\n- FRANCE: hiérarchie respectée mais discutable avant décision. Le subordonné peut contredire le supérieur en réunion (avec tact).\n- VIETNAM: hiérarchie fortement respectée, contradiction publique du supérieur = inacceptable. La discussion se fait en bilatéral hors-réunion.\n\nIMPACT: en réunion mixte, attendre une contradiction de l'équipe vietnamienne face à son chef est illusoire. Le Français doit organiser des bilatéraux pour entendre les voix dissidentes; sinon il prend les positions affichées pour des positions vraies.\n\n(4) CONTRAT VS RELATION\n\n- FRANCE: le contrat formalise tout. Sans contrat précis, pas de business sérieux. La relation interpersonnelle aide mais ne remplace pas l'écrit.\n- VIETNAM: le contrat est un cadre, mais la relation interpersonnelle est le ciment réel. Un contrat parfait avec un partenaire de confiance fragile = échec; un contrat moyen avec un partenaire de longue confiance = succès.\n\nIMPACT: le négociateur français qui investit uniquement dans la rédaction contractuelle, négligeant les repas, les rencontres informelles, les visites de famille — n'aura pas accès à la « vraie » information; les exécutions seront décevantes. Le négociateur vietnamien qui méprise le contrat formalisé en pensant que « la confiance suffit » sera vulnérable face aux changements de direction côté français.\n\n(5) PRIX ET MARCHANDAGE\n\n- FRANCE B2B: marchandage discret, encadré (5-15% de marge habituelle). Au-delà = manque de sérieux du fournisseur ou pression abusive de l'acheteur.\n- VIETNAM: marchandage culturel ancien, marges initiales plus larges, jeu de proposition-contre-proposition plus long. 30-50% d'écart entre prix initial et prix final est habituel.\n\nIMPACT: le Français qui fait une offre « finale » dès le premier tour passe pour rigide; le Vietnamien qui marchande à la française paraît intransigeant.\n\n(6) FORMULATION DES PROBLÈMES\n\n- FRANCE: les problèmes sont nommés directement, on en discute, on les résout.\n- VIETNAM: les problèmes sont contournés en public; les solutions émergent par des canaux indirects (collègue tiers, repas privé, conversation au téléphone).\n\nIMPACT: le Français qui aborde un problème en réunion mixte met le Vietnamien dans l'embarras. Préférer aborder le problème en bilatéral préalable, puis FORMALISER l'accord en réunion publique.\n\n(7) RÔLE DU REPAS\n\n- FRANCE: le repas d'affaires est une suite professionnelle de la réunion (continue à parler business, parfois conclut le contrat).\n- VIETNAM: le repas est un MOMENT DE CONSTRUCTION DE RELATION, pas un moment de négociation. On y parle famille, voyages, projets — on y NE PARLE PAS business critique.\n\nIMPACT: le Français qui insiste sur le contrat au repas froisse l'hôte vietnamien; le Vietnamien qui ne « débrieffe » pas le repas en réunion suivante laisse le Français perplexe.\n\nUNE PRATIQUE GAGNANTE: le négociateur expérimenté en franco-vietnamien apprend à ALTERNER entre les deux styles selon le moment — direct quand utile, indirect quand nécessaire, formel quand l'enjeu est juridique, informel quand l'enjeu est relationnel.",
+    "cultural_notes_en": "France-Vietnam negotiation is one of the contexts where intercultural misunderstandings have the most economic impact. Understanding the style gaps lets you anticipate and neutralize friction.\n\n(1) RELATIONSHIP TO TIME\n\n- FRANCE: linear, planned, sequential time. A meeting comes with an agenda, duration, expected conclusions. 'We must decide today' is legitimate; not deciding = failure.\n- VIETNAM: more cyclical, cumulative time. A major decision requires several cycles of discussion, sometimes several months. Pushing 'decide today' on a complex topic = suspicious haste.\n\nNEGOTIATION IMPACT: the impatient French pushes for signature; the Vietnamese reflects. If the French pushes too hard, the Vietnamese signs without internal commitment — subsequent execution will be poor. The French must slow down; the Vietnamese must accept some explicit deadlines.\n\n(2) EXPRESSION OF DISAGREEMENT\n\n- FRANCE: direct, argued, valued disagreement. Saying 'no' is respected if justified.\n- VIETNAM: indirect disagreement, formulated through circumlocutions ('that's interesting, we'll study it', 'there are constraints'). Direct 'no' = loss of face for both parties.\n\nNEGOTIATION IMPACT: the French interprets 'we'll study it' as a conditional YES; the Vietnamese formulated it as a polite NO. Disaster ensues: the French leaves with the impression of a deal; the Vietnamese thought they'd refused it. The French must learn to READ THE IMPLICIT NO; the Vietnamese must learn to FORMULATE THE EXPLICIT NO when the stake is serious.\n\nVIETNAMESE FORMULAS TO DECODE for a French interlocutor:\n- 'C'est intéressant' = may be sincere, may be polite refusal\n- 'Nous allons étudier' = often indirect refusal\n- 'C'est un peu difficile' = it's a no\n- 'Il y a des contraintes' = it's a no, without committing to which ones\n- 'Nous allons en discuter en interne' = may be real consultation, may be burial\n\nREADING RULE: if the formula is repeated several times without a quantified commitment, it's a NO. The French should then REORIENT, not push harder.\n\n(3) HIERARCHY AND AUTHORITY\n\n- FRANCE: hierarchy respected but discussable before decision. A subordinate may contradict a senior in a meeting (with tact).\n- VIETNAM: hierarchy strongly respected; public contradiction of a senior = unacceptable. Discussion happens in bilateral, outside meetings.\n\nIMPACT: in a mixed meeting, expecting contradiction from the Vietnamese team toward their boss is illusory. The French must organize bilaterals to hear dissenting voices; otherwise they take displayed positions for actual positions.\n\n(4) CONTRACT VS RELATIONSHIP\n\n- FRANCE: the contract formalizes everything. Without a precise contract, no serious business. Interpersonal relationship helps but doesn't replace writing.\n- VIETNAM: the contract is a frame, but interpersonal relationship is the real glue. A perfect contract with a partner whose relationship-trust is fragile = failure; an average contract with a long-trust partner = success.\n\nIMPACT: the French negotiator who invests only in contractual drafting, neglecting meals, informal meetings, family visits — won't get access to the 'real' information; execution will disappoint. The Vietnamese negotiator who scorns the formalized contract thinking 'trust is enough' will be vulnerable to leadership changes on the French side.\n\n(5) PRICE AND BARGAINING\n\n- FRANCE B2B: discreet bargaining, bounded (5-15% usual margin). Beyond = supplier unseriousness or buyer abuse.\n- VIETNAM: ancient bargaining culture, wider initial margins, longer proposal-counterproposal game. 30-50% gap between initial and final price is normal.\n\nIMPACT: the French making a 'final' offer in round one looks rigid; the Vietnamese who bargains French-style appears intransigent.\n\n(6) FORMULATION OF PROBLEMS\n\n- FRANCE: problems are named directly, discussed, resolved.\n- VIETNAM: problems are circumvented publicly; solutions emerge through indirect channels (third-party colleague, private meal, phone conversation).\n\nIMPACT: the French who raises a problem in a mixed meeting embarrasses the Vietnamese. Prefer to address the problem in prior bilateral, then FORMALIZE the agreement in public meeting.\n\n(7) ROLE OF MEALS\n\n- FRANCE: a business meal is a professional continuation of the meeting (continues to talk business, sometimes concludes the contract).\n- VIETNAM: the meal is a MOMENT OF RELATIONSHIP-BUILDING, not a moment of negotiation. People talk family, travel, projects — they DO NOT discuss critical business.\n\nIMPACT: the French who insists on the contract at the meal offends the Vietnamese host; the Vietnamese who doesn't 'debrief' the meal in the next meeting leaves the French puzzled.\n\nA WINNING PRACTICE: the experienced Franco-Vietnamese negotiator learns to ALTERNATE between the two styles depending on the moment — direct when useful, indirect when necessary, formal when the stake is legal, informal when the stake is relational.",
     "tip_advice_vi": "PROCESSUS EN 5 ÉTAPES pour préparer une négociation franco-vietnamienne:\n\n(1) IDENTIFIER LE STYLE DOMINANT du partenaire — large groupe français traditionnel (style direct), startup française (plus flexible), grand groupe vietnamien (hiérarchique), PME familiale vietnamienne (relationnel pur).\n\n(2) ADAPTER LE RYTHME — prévoir 2-3x plus de cycles qu'avec un partenaire mono-culturel. Construire en plusieurs réunions avec pauses pour décantation.\n\n(3) ORGANISER DES BILATÉRAUX préalables avec chaque côté — pour entendre les positions vraies, pas les positions affichées en réunion plénière.\n\n(4) FORMALISER ÉCRIT + CONSTRUIRE RELATIONNEL en parallèle — investir sur les deux registres, pas l'un au détriment de l'autre.\n\n(5) DÉSIGNER UN INTERFACE BICULTUREL — quelqu'un qui comprend les deux codes, peut décoder les ambiguïtés en temps réel.\n\nCỤM HỮU ÍCH POUR FRANÇAIS NÉGOCIANT AVEC VIETNAMIENS:\n\nPOUR DÉCODER UN NON IMPLICITE:\n- « Quand vous dites que c'est difficile, voulez-vous dire que c'est non, ou qu'on peut chercher comment le rendre possible ? »\n- « Pour bien comprendre votre position: où placez-vous le seuil de l'acceptable ? »\n- « Sans pression, juste pour ma compréhension: que faudrait-il pour qu'on aboutisse à un accord ? »\n\nPOUR ÉVITER DE BRUSQUER:\n- « Prenons le temps de cette réflexion; il n'y a pas d'urgence. »\n- « Je propose qu'on se donne deux semaines avant le prochain échange. »\n- « C'est un sujet important; il mérite plusieurs cycles de discussion. »\n\nCỤM HỮU ÍCH POUR VIETNAMIENS NÉGOCIANT AVEC FRANÇAIS:\n\nPOUR FORMULER UN NON EXPLICITE QUAND NÉCESSAIRE:\n- « Sur ce point précis, je vais devoir vous dire non, et voici pourquoi. »\n- « Cette proposition n'est pas tenable pour nous; en revanche, nous pourrions envisager X. »\n- « Je préfère être direct: nous ne pourrons pas avancer sur cette base. »\n\nPOUR DEMANDER DU TEMPS sans bloquer:\n- « Pourriez-vous nous accorder huit jours pour consulter notre direction ? Je vous reviens avec une réponse ferme jeudi prochain. »\n- « Je m'engage à vous donner une réponse claire d'ici le quinze. »\n\nPOUR FORMALISER UN ACCORD ORAL en écrit:\n- « Je vous propose qu'on synthétise notre discussion par mail; cela évitera tout malentendu sur les engagements pris. »\n- « Pourriez-vous m'envoyer un récapitulatif des points actés ? »\n\nTRÁNH (PHÍA PHÁP):\n- Pousser à la signature au premier rendez-vous\n- Aborder un problème délicat en réunion publique\n- Confondre « nous allons étudier » avec un oui\n- Sous-estimer le rôle du repas dans la construction de confiance\n\nTRÁNH (PHÍA VIỆT):\n- Multiplier les formules d'évitement quand l'enjeu est sérieux\n- Mépriser la rédaction contractuelle (« la confiance suffit »)\n- Refuser les bilatéraux explicatifs (perte de l'information vraie)\n- Prendre la directness française pour de l'agressivité",
+    "tip_advice_en": "5-STEP PROCESS for preparing a Franco-Vietnamese negotiation:\n\n(1) IDENTIFY THE DOMINANT STYLE of the partner — large traditional French firm (direct style), French startup (more flexible), large Vietnamese group (hierarchical), Vietnamese family SME (pure relational).\n\n(2) ADAPT THE TEMPO — plan 2-3x more cycles than with a mono-cultural partner. Build over several meetings with decantation pauses.\n\n(3) ORGANIZE BILATERALS in advance with each side — to hear actual positions, not displayed ones in plenary meeting.\n\n(4) FORMALIZE IN WRITING + BUILD RELATIONALLY in parallel — invest in both registers, not one at the expense of the other.\n\n(5) DESIGNATE A BICULTURAL INTERFACE — someone who understands both codes and can decode ambiguities in real time.\n\nUSEFUL PHRASES FOR FRENCH NEGOTIATING WITH VIETNAMESE:\n\nTO DECODE AN IMPLICIT NO:\n- 'Quand vous dites que c'est difficile, voulez-vous dire que c'est non, ou qu'on peut chercher comment le rendre possible ?'\n- 'Pour bien comprendre votre position: où placez-vous le seuil de l'acceptable ?'\n- 'Sans pression, juste pour ma compréhension: que faudrait-il pour qu'on aboutisse à un accord ?'\n\nTO AVOID RUSHING:\n- 'Prenons le temps de cette réflexion; il n'y a pas d'urgence.'\n- 'Je propose qu'on se donne deux semaines avant le prochain échange.'\n- 'C'est un sujet important; il mérite plusieurs cycles de discussion.'\n\nUSEFUL PHRASES FOR VIETNAMESE NEGOTIATING WITH FRENCH:\n\nTO STATE AN EXPLICIT NO WHEN NEEDED:\n- 'Sur ce point précis, je vais devoir vous dire non, et voici pourquoi.'\n- 'Cette proposition n'est pas tenable pour nous; en revanche, nous pourrions envisager X.'\n- 'Je préfère être direct: nous ne pourrons pas avancer sur cette base.'\n\nTO REQUEST TIME without blocking:\n- 'Pourriez-vous nous accorder huit jours pour consulter notre direction ? Je vous reviens avec une réponse ferme jeudi prochain.'\n- 'Je m'engage à vous donner une réponse claire d'ici le quinze.'\n\nTO FORMALIZE AN ORAL AGREEMENT in writing:\n- 'Je vous propose qu'on synthétise notre discussion par mail; cela évitera tout malentendu sur les engagements pris.'\n- 'Pourriez-vous m'envoyer un récapitulatif des points actés ?'\n\nAVOID (FRENCH SIDE):\n- Pushing for signature at the first meeting\n- Raising a delicate issue in a public meeting\n- Confusing 'we'll study it' with a yes\n- Underestimating the meal's role in trust-building\n\nAVOID (VIETNAMESE / ANGLOPHONE SIDE):\n- Multiplying avoidance formulas when the stake is serious\n- Scorning the contractual drafting ('trust is enough')\n- Refusing explanatory bilaterals (loss of real information)\n- Taking French directness for aggression",
     "vocabulary": [
       {
         "word": "un écart culturel",
         "en": "a cultural gap",
         "vi": "khoảng cách văn hóa",
         "pos": "n.m.",
-        "pronunciation_vi": "é-kar kul-tu-rèl"
+        "pronunciation_vi": "é-kar kul-tu-rèl",
+        "pronunciation_en": "ehn ay-KAR kewl-tew-REL — 'u' rounded in 'cul' and 'tu'; the polite term for what divides two negotiation styles"
       },
       {
         "word": "la confrontation argumentée",
         "en": "argued confrontation",
         "vi": "đối đầu có lập luận",
         "pos": "n.f.",
-        "pronunciation_vi": "kõn-frõn-ta-sion ar-gu-mãn-té"
+        "pronunciation_vi": "kõn-frõn-ta-sion ar-gu-mãn-té",
+        "pronunciation_en": "lah kohn-frohn-tah-SYOHN ar-gew-mahn-TAY — the French negotiation default; substance + structure"
       },
       {
         "word": "un consensus implicite",
         "en": "an implicit consensus",
         "vi": "đồng thuận ngầm",
         "pos": "n.m.",
-        "pronunciation_vi": "kõn-sãn-sus an-pli-sit"
+        "pronunciation_vi": "kõn-sãn-sus an-pli-sit",
+        "pronunciation_en": "ehn kohn-sahn-SEWS an-plee-SEET — the Vietnamese / Asian negotiation default; harmony before verbalization"
       },
       {
         "word": "la perte de face",
         "en": "loss of face",
         "vi": "mất mặt",
         "pos": "n.f.",
-        "pronunciation_vi": "pèrt dơ fas"
+        "pronunciation_vi": "pèrt dơ fas",
+        "pronunciation_en": "lah PAIRT duh FAHS — direct calque from East Asian concept; underused in pure French culture but recognized in intercultural settings"
       },
       {
         "word": "un non implicite",
         "en": "an implicit no",
         "vi": "lời từ chối ngầm",
         "pos": "n.m.",
-        "pronunciation_vi": "an nõn an-pli-sit"
+        "pronunciation_vi": "an nõn an-pli-sit",
+        "pronunciation_en": "ehn NOHN an-plee-SEET — the most dangerous misread for the French negotiator in Asian contexts"
       },
       {
         "word": "la confiance interpersonnelle",
         "en": "interpersonal trust",
         "vi": "lòng tin liên cá nhân",
         "pos": "n.f.",
-        "pronunciation_vi": "kõn-fiãns an-tèr-pèr-so-nèl"
+        "pronunciation_vi": "kõn-fiãns an-tèr-pèr-so-nèl",
+        "pronunciation_en": "lah kohn-FYAHNS an-tair-pair-soh-NEL — the load-bearing element in Vietnamese B2B; built over meals and time, not just signatures"
       },
       {
         "word": "alterner les registres",
         "en": "to alternate registers",
         "vi": "xen kẽ các cấp độ",
         "pos": "v.",
-        "pronunciation_vi": "al-tèr-né lé rơ-jis-trơ"
+        "pronunciation_vi": "al-tèr-né lé rơ-jis-trơ",
+        "pronunciation_en": "al-tair-NAY lay ruh-ZHEES-truh — the key competence of an effective intercultural negotiator"
       },
       {
         "word": "un bilatéral préalable",
         "en": "a preliminary bilateral",
         "vi": "buổi bilatéral chuẩn bị",
         "pos": "n.m.",
-        "pronunciation_vi": "bi-la-té-ral pré-a-la-blơ"
+        "pronunciation_vi": "bi-la-té-ral pré-a-la-blơ",
+        "pronunciation_en": "ehn bee-lah-tay-RAHL pray-ah-LAH-bluh — the discreet pre-meeting where actual positions emerge"
       },
       {
         "word": "un interface biculturel",
         "en": "a bicultural interface",
         "vi": "người trung gian song văn hóa",
         "pos": "n.m.",
-        "pronunciation_vi": "an-tèr-fas bi-kul-tu-rèl"
+        "pronunciation_vi": "an-tèr-fas bi-kul-tu-rèl",
+        "pronunciation_en": "ehn an-tair-FAHS bee-kewl-tew-REL — a person who reads both codes; worth their weight in gold in Franco-Vietnamese deals"
       },
       {
         "word": "décoder une ambiguïté",
         "en": "to decode an ambiguity",
         "vi": "giải mã một mơ hồ",
         "pos": "v.",
-        "pronunciation_vi": "dé-ko-dé un ãn-bi-gu-i-té"
+        "pronunciation_vi": "dé-ko-dé un ãn-bi-gu-i-té",
+        "pronunciation_en": "day-koh-DAY ewn ahn-bee-gew-ee-TAY — the diaeresis on 'ï' separates 'gu' from 'i' so it's 'gew-ee', not 'gwee'"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh (interface biculturel)",
         "text": "Monsieur Roussel, vous avez interprété le « nous allons étudier » de monsieur Nguyen comme un accord. Ce n'en était pas un.",
-        "vi": "Ông Roussel, ông đã hiểu « chúng tôi sẽ nghiên cứu » của ông Nguyễn như một sự đồng ý. Không phải vậy."
+        "vi": "Ông Roussel, ông đã hiểu « chúng tôi sẽ nghiên cứu » của ông Nguyễn như một sự đồng ý. Không phải vậy.",
+        "en": "Mr. Roussel, you interpreted Mr. Nguyen's 'we'll study it' as agreement. It wasn't."
       },
       {
         "speaker": "Roussel",
         "text": "Comment ça ? Il m'a dit qu'il étudiait sérieusement.",
-        "vi": "Sao vậy? Ông ấy nói ông sẽ nghiên cứu nghiêm túc."
+        "vi": "Sao vậy? Ông ấy nói ông sẽ nghiên cứu nghiêm túc.",
+        "en": "How so? He told me he was seriously studying it."
       },
       {
         "speaker": "Linh",
         "text": "En contexte vietnamien, « étudier » sans engagement chiffré ni date veut souvent dire « refus poli ». Il a déjà décidé non.",
-        "vi": "Trong bối cảnh Việt, « nghiên cứu » không có cam kết chiffré và ngày thường có nghĩa « từ chối lịch sự ». Ông ấy đã quyết định không."
+        "vi": "Trong bối cảnh Việt, « nghiên cứu » không có cam kết chiffré và ngày thường có nghĩa « từ chối lịch sự ». Ông ấy đã quyết định không.",
+        "en": "In Vietnamese context, 'studying' with no quantified commitment and no date often means 'polite refusal'. He's already decided no."
       },
       {
         "speaker": "Roussel",
         "text": "D'accord. Comment je rouvre la discussion sans le braquer ?",
-        "vi": "Được rồi. Tôi mở lại thảo luận thế nào mà không làm ông ấy phản ứng?"
+        "vi": "Được rồi. Tôi mở lại thảo luận thế nào mà không làm ông ấy phản ứng?",
+        "en": "Got it. How do I reopen the discussion without making him bristle?"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (interface biculturel, débrief avec un dirigeant français après une réunion à Hô Chi Minh-Ville)",
         "text": "Monsieur Roussel, merci de m'avoir gardée pour ce débrief. Avant qu'on parle des prochaines étapes, je voudrais qu'on revienne sur l'échange de cet après-midi — il y a plusieurs points où nous avons probablement compris des choses différentes de ce que monsieur Nguyen voulait dire.",
-        "vi": "Ông Roussel, cảm ơn ông đã giữ tôi cho debrief này. Trước khi mình nói các bước tiếp theo, tôi muốn quay lại trao đổi chiều nay — có nhiều điểm chúng ta có lẽ đã hiểu khác với điều ông Nguyễn muốn nói."
+        "vi": "Ông Roussel, cảm ơn ông đã giữ tôi cho debrief này. Trước khi mình nói các bước tiếp theo, tôi muốn quay lại trao đổi chiều nay — có nhiều điểm chúng ta có lẽ đã hiểu khác với điều ông Nguyễn muốn nói.",
+        "en": "Mr. Roussel, thank you for keeping me for this debrief. Before we talk about next steps, I'd like us to revisit this afternoon's exchange — there are several points where we likely understood things differently than what Mr. Nguyen meant."
       },
       {
         "speaker": "Roussel",
         "text": "Allez-y. J'ai senti quelques moments où je ne savais pas exactement où on en était.",
-        "vi": "Cô nói. Tôi cảm nhận vài lúc tôi không biết chính xác mình ở đâu."
+        "vi": "Cô nói. Tôi cảm nhận vài lúc tôi không biết chính xác mình ở đâu.",
+        "en": "Go ahead. I sensed a few moments when I didn't know exactly where we stood."
       },
       {
         "speaker": "Linh",
         "text": "Premier point. Quand monsieur Nguyen a dit « nous allons étudier votre proposition de marge à dix-huit pour cent », vous avez interprété ça comme un signe qu'il y réfléchissait sérieusement. Dans le contexte vietnamien, surtout dit avec ce ton et SANS aucune date d'engagement, c'était un refus poli. Il vous a déjà signalé que dix-huit ne passerait pas.",
-        "vi": "Điểm thứ nhất. Khi ông Nguyễn nói « chúng tôi sẽ nghiên cứu đề xuất margin 18% của bạn », ông đã hiểu là dấu hiệu rằng ông ấy đang suy nghĩ nghiêm túc. Trong bối cảnh Việt, nhất là nói với giọng đó và KHÔNG có ngày cam kết, đó là từ chối lịch sự. Ông ấy đã báo hiệu rằng 18 sẽ không qua."
+        "vi": "Điểm thứ nhất. Khi ông Nguyễn nói « chúng tôi sẽ nghiên cứu đề xuất margin 18% của bạn », ông đã hiểu là dấu hiệu rằng ông ấy đang suy nghĩ nghiêm túc. Trong bối cảnh Việt, nhất là nói với giọng đó và KHÔNG có ngày cam kết, đó là từ chối lịch sự. Ông ấy đã báo hiệu rằng 18 sẽ không qua.",
+        "en": "First point. When Mr. Nguyen said 'we'll study your eighteen-percent margin proposal,' you interpreted that as a sign he was seriously considering it. In the Vietnamese context, especially said with that tone and WITHOUT any commitment date, that was a polite refusal. He'd already signaled to you that eighteen wouldn't pass."
       },
       {
         "speaker": "Roussel",
         "text": "Mais alors pourquoi pas dire « non » directement ? Ça m'aurait évité de partir avec une fausse impression.",
-        "vi": "Nhưng vậy tại sao không nói « không » trực tiếp? Sẽ tránh tôi đi với cảm giác sai."
+        "vi": "Nhưng vậy tại sao không nói « không » trực tiếp? Sẽ tránh tôi đi với cảm giác sai.",
+        "en": "But then why not say 'no' directly? It would've spared me leaving with a false impression."
       },
       {
         "speaker": "Linh",
         "text": "Pour deux raisons. Première: dire « non » directement à un partenaire d'affaires en présence de son équipe, c'est une rupture de relation potentielle dans le code vietnamien — pas seulement un refus de cette proposition, mais un signal négatif sur la suite. Monsieur Nguyen, lui, ne voulait pas casser; il voulait juste que vous compreniez que dix-huit ne passe pas. Deuxième raison: il vous laisse l'opportunité de revenir avec une nouvelle proposition sans qu'aucun de vous deux ait perdu la face. Si vous arriviez à seize, il pourrait dire « ah, voilà qui change tout », sans avoir explicitement refusé dix-huit.",
-        "vi": "Vì hai lý do. Thứ nhất: nói « không » trực tiếp với đối tác trước mặt đội của ông, là sự phá vỡ quan hệ tiềm năng trong code Việt — không chỉ từ chối đề xuất này, mà tín hiệu tiêu cực cho phần tiếp theo. Ông Nguyễn không muốn phá; chỉ muốn ông hiểu rằng 18 không qua. Lý do thứ hai: ông ấy để cho ông cơ hội quay lại với đề xuất mới mà không ai trong hai bên mất mặt. Nếu ông đến 16, ông ấy có thể nói « à, đó là điều thay đổi tất cả », mà không phải đã từ chối rõ 18."
+        "vi": "Vì hai lý do. Thứ nhất: nói « không » trực tiếp với đối tác trước mặt đội của ông, là sự phá vỡ quan hệ tiềm năng trong code Việt — không chỉ từ chối đề xuất này, mà tín hiệu tiêu cực cho phần tiếp theo. Ông Nguyễn không muốn phá; chỉ muốn ông hiểu rằng 18 không qua. Lý do thứ hai: ông ấy để cho ông cơ hội quay lại với đề xuất mới mà không ai trong hai bên mất mặt. Nếu ông đến 16, ông ấy có thể nói « à, đó là điều thay đổi tất cả », mà không phải đã từ chối rõ 18.",
+        "en": "For two reasons. First: saying 'no' directly to a business partner in the presence of his team is a potential relationship break in the Vietnamese code — not just a refusal of this proposal, but a negative signal about what follows. Mr. Nguyen didn't want to break; he just wanted you to understand that eighteen doesn't pass. Second: he leaves you the opportunity to come back with a new proposal without either of you losing face. If you came in at sixteen, he could say 'ah, that changes everything', without having explicitly refused eighteen."
       },
       {
         "speaker": "Roussel",
         "text": "Je vois. Donc je devrais revenir à seize, c'est ça ?",
-        "vi": "Tôi hiểu. Vậy tôi nên quay lại 16, phải không?"
+        "vi": "Tôi hiểu. Vậy tôi nên quay lại 16, phải không?",
+        "en": "I see. So I should come back at sixteen, is that it?"
       },
       {
         "speaker": "Linh",
         "text": "Pas tout à fait — c'est trop binaire. Je vous suggère plutôt cette approche: lui envoyer demain matin un mail courtois où vous remerciez pour l'échange, vous reformulez votre compréhension de leurs contraintes, vous proposez une nouvelle structure — par exemple seize pour cent fixe + un complément variable lié à un volume garanti. Cela lui donne deux choses: une amélioration immédiate du chiffre, et une porte ouverte pour qu'il négocie le complément variable. Beaucoup plus digeste qu'une simple bascule de dix-huit à seize.",
-        "vi": "Không hẳn — quá binaire. Tôi gợi ý cách tiếp cận: gửi ông ấy mai sáng email lịch sự cảm ơn trao đổi, diễn đạt lại sự hiểu biết của ông về các ràng buộc, đề xuất cấu trúc mới — ví dụ 16% cố định + bổ sung biến đổi gắn với volume đảm bảo. Điều đó cho ông hai thứ: cải thiện ngay con số, và cánh cửa mở để ông đàm phán phần biến đổi. Dễ tiêu hóa hơn nhiều so với chỉ chuyển từ 18 xuống 16."
+        "vi": "Không hẳn — quá binaire. Tôi gợi ý cách tiếp cận: gửi ông ấy mai sáng email lịch sự cảm ơn trao đổi, diễn đạt lại sự hiểu biết của ông về các ràng buộc, đề xuất cấu trúc mới — ví dụ 16% cố định + bổ sung biến đổi gắn với volume đảm bảo. Điều đó cho ông hai thứ: cải thiện ngay con số, và cánh cửa mở để ông đàm phán phần biến đổi. Dễ tiêu hóa hơn nhiều so với chỉ chuyển từ 18 xuống 16.",
+        "en": "Not quite — that's too binary. Let me suggest this approach: send him tomorrow morning a courteous email thanking him for the exchange, reformulating your understanding of their constraints, proposing a new structure — for example sixteen percent fixed + a variable supplement tied to a guaranteed volume. That gives him two things: an immediate improvement on the figure, and an open door for him to negotiate the variable supplement. Much more digestible than a simple swap from eighteen to sixteen."
       },
       {
         "speaker": "Roussel",
         "text": "Compris. Deuxième point que vous vouliez aborder ?",
-        "vi": "Hiểu. Điểm thứ hai cô muốn nêu?"
+        "vi": "Hiểu. Điểm thứ hai cô muốn nêu?",
+        "en": "Understood. The second point you wanted to raise?"
       },
       {
         "speaker": "Linh",
         "text": "À un moment, vous avez dit « nous devons décider aujourd'hui pour respecter notre planning ». Je l'ai vu froncer les sourcils. Pour un dirigeant vietnamien de son rang, mettre une pression de timing sur un partenaire avec qui on construit une relation de cinq ans, c'est mal venu. Il a senti que vous traitiez ce contrat comme une transaction one-shot, pas comme le début d'un partenariat.",
-        "vi": "Một lúc, ông đã nói « chúng ta phải quyết định hôm nay để tôn trọng kế hoạch của chúng tôi ». Tôi thấy ông ấy nhíu mày. Cho một dirigeant Việt cấp ông ấy, đặt áp lực thời gian lên đối tác mà mình đang xây dựng quan hệ 5 năm, là không phù hợp. Ông ấy cảm thấy ông coi hợp đồng này như giao dịch one-shot, không phải khởi đầu hợp tác."
+        "vi": "Một lúc, ông đã nói « chúng ta phải quyết định hôm nay để tôn trọng kế hoạch của chúng tôi ». Tôi thấy ông ấy nhíu mày. Cho một dirigeant Việt cấp ông ấy, đặt áp lực thời gian lên đối tác mà mình đang xây dựng quan hệ 5 năm, là không phù hợp. Ông ấy cảm thấy ông coi hợp đồng này như giao dịch one-shot, không phải khởi đầu hợp tác.",
+        "en": "At one point you said 'we must decide today to respect our schedule'. I saw him frown. For a Vietnamese executive of his rank, putting timing pressure on a partner with whom you're building a five-year relationship is poorly received. He felt you were treating this contract as a one-shot transaction, not the beginning of a partnership."
       },
       {
         "speaker": "Roussel",
         "text": "Je n'avais pas réalisé. C'est une formule qu'on utilise tout le temps en France pour pousser à la décision.",
-        "vi": "Tôi không nhận ra. Là cụm chúng tôi dùng thường xuyên ở Pháp để đẩy quyết định."
+        "vi": "Tôi không nhận ra. Là cụm chúng tôi dùng thường xuyên ở Pháp để đẩy quyết định.",
+        "en": "I hadn't realized. It's a phrase we use all the time in France to push for decision."
       },
       {
         "speaker": "Linh",
         "text": "C'est exactement le genre de formule à éviter avec des partenaires asiatiques sur des relations stratégiques. Si vous avez réellement une contrainte de calendrier, mieux vaut la formuler comme un partage transparent: « Voici notre situation côté planning interne; comment pouvons-nous travailler ensemble pour aligner nos rythmes ? » Ça transforme la pression en collaboration.",
-        "vi": "Chính loại cụm phải tránh với đối tác châu Á trên các quan hệ chiến lược. Nếu ông thật có ràng buộc về lịch, tốt hơn nói như chia sẻ minh bạch: « Đây là tình hình của chúng tôi về kế hoạch nội bộ; làm sao mình làm việc cùng nhau để khớp nhịp? » Biến áp lực thành hợp tác."
+        "vi": "Chính loại cụm phải tránh với đối tác châu Á trên các quan hệ chiến lược. Nếu ông thật có ràng buộc về lịch, tốt hơn nói như chia sẻ minh bạch: « Đây là tình hình của chúng tôi về kế hoạch nội bộ; làm sao mình làm việc cùng nhau để khớp nhịp? » Biến áp lực thành hợp tác.",
+        "en": "That's exactly the kind of phrase to avoid with Asian partners on strategic relationships. If you genuinely have a calendar constraint, better to formulate it as transparent sharing: 'Here's our internal planning situation; how can we work together to align our rhythms?' That turns pressure into collaboration."
       },
       {
         "speaker": "Roussel",
         "text": "C'est une nuance utile. Et le repas de ce soir — comment je dois jouer cela ?",
-        "vi": "Là sắc thái hữu ích. Và bữa tối tối nay — tôi nên chơi thế nào?"
+        "vi": "Là sắc thái hữu ích. Và bữa tối tối nay — tôi nên chơi thế nào?",
+        "en": "That's a useful nuance. And tonight's dinner — how should I play that?"
       },
       {
         "speaker": "Linh",
         "text": "Le repas est un moment de construction de relation, pas de négociation. Vous parlerez famille, voyages, votre première impression du Vietnam, son entreprise — son histoire, ses fiertés. NE PAS aborder le contrat, NE PAS revenir sur les chiffres, NE PAS demander d'engagement. Le repas crée le terrain humain qui permettra demain de signer ce qu'aujourd'hui vous n'avez pas pu obtenir.",
-        "vi": "Bữa tối là khoảnh khắc xây dựng quan hệ, không phải đàm phán. Ông sẽ nói gia đình, du lịch, ấn tượng đầu tiên về Việt Nam, công ty ông ấy — lịch sử, niềm tự hào. KHÔNG nêu hợp đồng, KHÔNG quay lại con số, KHÔNG yêu cầu cam kết. Bữa tối tạo nền nhân văn cho phép ngày mai ký điều hôm nay ông không thể đạt."
+        "vi": "Bữa tối là khoảnh khắc xây dựng quan hệ, không phải đàm phán. Ông sẽ nói gia đình, du lịch, ấn tượng đầu tiên về Việt Nam, công ty ông ấy — lịch sử, niềm tự hào. KHÔNG nêu hợp đồng, KHÔNG quay lại con số, KHÔNG yêu cầu cam kết. Bữa tối tạo nền nhân văn cho phép ngày mai ký điều hôm nay ông không thể đạt.",
+        "en": "The meal is a relationship-building moment, not a negotiation. You'll talk family, travel, your first impression of Vietnam, his firm — its history, its sources of pride. DO NOT raise the contract, DO NOT return to the figures, DO NOT request commitment. The meal creates the human ground that will allow tomorrow's signing of what today you couldn't obtain."
       },
       {
         "speaker": "Roussel",
         "text": "Et si lui aborde le contrat pendant le repas ?",
-        "vi": "Và nếu ông ấy nêu hợp đồng trong bữa tối?"
+        "vi": "Và nếu ông ấy nêu hợp đồng trong bữa tối?",
+        "en": "And if he raises the contract during the meal?"
       },
       {
         "speaker": "Linh",
         "text": "Cela peut arriver — il peut tester si vous savez tenir le bon registre. Réponse type: « Je vous propose qu'on garde ce sujet pour notre échange demain matin; ce soir, je voudrais profiter de votre accueil. » Cela montre que vous savez la distinction. Il appréciera.",
-        "vi": "Có thể xảy ra — ông ấy có thể test xem ông có biết giữ đúng cấp độ không. Câu đáp mẫu: « Tôi đề nghị mình giữ chủ đề này cho trao đổi sáng mai; tối nay, tôi muốn tận hưởng sự đón tiếp của ông. » Cho thấy ông biết phân biệt. Ông ấy sẽ đánh giá cao."
+        "vi": "Có thể xảy ra — ông ấy có thể test xem ông có biết giữ đúng cấp độ không. Câu đáp mẫu: « Tôi đề nghị mình giữ chủ đề này cho trao đổi sáng mai; tối nay, tôi muốn tận hưởng sự đón tiếp của ông. » Cho thấy ông biết phân biệt. Ông ấy sẽ đánh giá cao.",
+        "en": "It can happen — he may test whether you know how to hold the right register. Standard response: 'I suggest we keep this topic for tomorrow morning's exchange; tonight, I'd like to enjoy your hospitality.' That shows you know the distinction. He'll appreciate it."
       }
     ],
     "roleplay_prompts": [
@@ -5606,30 +5744,44 @@ export const lessons: FrenchLesson[] = [
       "Vous êtes l'interface biculturel dans une JV Pháp-Việt. Le côté français pousse pour clore la négo en deux semaines; le côté vietnamien sent la pression. Soạn email aux deux parties pour réaligner les attentes — proposer 6 semaines avec milestones intermédiaires.",
       "Soạn 5 câu pour expliquer à un manager français récemment arrivé au Vietnam pourquoi le repas d'affaires NE doit PAS contenir de discussion contractuelle critique."
     ],
+    "roleplay_prompts_en": [
+      "You're a French executive negotiating a partnership with a Vietnamese firm. The Vietnamese partner says 'c'est intéressant, nous allons en discuter en interne'. Draft 3 sentences to decode whether it's a conditional yes or a polite refusal, without making them bristle. Anglophone instinct is to ask directly; the better move is the indirect probe.",
+      "You're the bicultural interface in a Franco-Vietnamese JV. The French side pushes to close the negotiation in two weeks; the Vietnamese side feels pressured. Draft an email to both parties to re-align expectations — propose 6 weeks with intermediate milestones. Translate the rhythm clash into a project-management problem.",
+      "Draft 5 sentences explaining to a French manager newly arrived in Vietnam why the business meal MUST NOT contain critical contractual discussion. Don't lecture on culture; frame it pragmatically — the meal is where trust is built that lets you sign tomorrow."
+    ],
     "register_notes": "VOCABULAIRE INTERCULTUREL spécifique au franco-vietnamien:\n\nNOTIONS CLÉS À MAÎTRISER:\n- « directness » / « directivité » (style direct, valorisé en France, perçu comme brutal au Vietnam)\n- « face » / « perte de face » (concept central en Asie, sous-estimé en France)\n- « consensus implicite » vs « consensus négocié »\n- « high-context » (Vietnam, Asie) vs « low-context » (France, Europe du Nord) — typologie Hall\n- « relationship-building » / « construction de relation » (préalable au business en Asie)\n\nFORMULES POUR RÉORIENTER UNE NÉGOCIATION QUI BLOQUE:\n- « Je propose qu'on prenne deux semaines pour décanter. »\n- « Cela mérite plusieurs cycles de discussion. »\n- « Pourrions-nous nous voir en bilatéral pour explorer l'option X ? »\n\nFORMULES POUR DÉCODER UN NON IMPLICITE:\n- « Pour bien comprendre votre position: où placez-vous le seuil de l'acceptable ? »\n- « Sans pression, juste pour ma compréhension: que faudrait-il pour qu'on aboutisse ? »\n- « Si je résume votre signal: ce n'est pas tenable en l'état; est-ce bien cela ? »\n\nFORMULES POUR EXPRIMER UN NON EXPLICITE QUAND NÉCESSAIRE (côté vietnamien parlant français):\n- « Sur ce point précis, je vais devoir vous dire non. »\n- « Cette proposition n'est pas tenable pour nous. »\n- « Je préfère être direct: nous ne pourrons pas avancer sur cette base. »\n\nDISTINCTIONS CULTURELLES À INTÉGRER:\n- En France, le silence en réunion = malaise ou absence de position\n- Au Vietnam, le silence = réflexion légitime, à respecter\n- En France, l'interruption d'un orateur = participation engagée\n- Au Vietnam, l'interruption d'un supérieur = manque de respect\n- En France, le marchandage 5-15% est normal\n- Au Vietnam, le marchandage 30-50% est culturellement attendu en B2C, atténué en B2B mais présent\n\nTINH TẾ ABSOLUE: ne JAMAIS interpréter le style vietnamien comme « pas sérieux » ou « manque de transparence »; ne JAMAIS interpréter le style français comme « agressif » ou « impoli ». Les deux styles sont des SYSTÈMES INTERNES COHÉRENTS optimisés pour des contextes différents. Le négociateur efficace adapte son registre, ne juge pas l'autre.",
+    "register_notes_en": "INTERCULTURAL VOCABULARY specific to Franco-Vietnamese contexts:\n\nKEY NOTIONS TO MASTER:\n- 'directness' / 'directivité' (direct style, valued in France, perceived as brutal in Vietnam)\n- 'face' / 'perte de face' (central concept in Asia, underestimated in France)\n- 'consensus implicite' vs 'consensus négocié'\n- 'high-context' (Vietnam, Asia) vs 'low-context' (France, Northern Europe) — Hall's typology\n- 'relationship-building' / 'construction de relation' (prerequisite to business in Asia)\n\nPHRASES TO REORIENT A STALLED NEGOTIATION:\n- 'Je propose qu'on prenne deux semaines pour décanter.' (I suggest we take two weeks to let it settle.)\n- 'Cela mérite plusieurs cycles de discussion.' (This warrants several discussion cycles.)\n- 'Pourrions-nous nous voir en bilatéral pour explorer l'option X ?' (Could we meet bilaterally to explore option X?)\n\nPHRASES TO DECODE AN IMPLICIT NO:\n- 'Pour bien comprendre votre position: où placez-vous le seuil de l'acceptable ?'\n- 'Sans pression, juste pour ma compréhension: que faudrait-il pour qu'on aboutisse ?'\n- 'Si je résume votre signal: ce n'est pas tenable en l'état; est-ce bien cela ?'\n\nPHRASES FOR AN EXPLICIT NO WHEN NEEDED (Vietnamese side speaking French):\n- 'Sur ce point précis, je vais devoir vous dire non.'\n- 'Cette proposition n'est pas tenable pour nous.'\n- 'Je préfère être direct: nous ne pourrons pas avancer sur cette base.'\n\nCULTURAL DISTINCTIONS TO INTERNALIZE:\n- In France, silence in a meeting = discomfort or lack of position\n- In Vietnam, silence = legitimate reflection, to be respected\n- In France, interrupting a speaker = engaged participation\n- In Vietnam, interrupting a senior = lack of respect\n- In France, 5-15% bargaining is normal\n- In Vietnam, 30-50% bargaining is culturally expected in B2C, softer in B2B but present\n\nABSOLUTE REFINEMENT: NEVER interpret the Vietnamese style as 'unserious' or 'lack of transparency'; NEVER interpret the French style as 'aggressive' or 'rude'. Both styles are INTERNALLY COHERENT SYSTEMS optimized for different contexts. The effective negotiator adapts their register; they don't judge the other.",
     "idiom_glosses": [
       {
         "idiom": "Sauver la face (courant)",
         "literal": "Cứu mặt",
+        "literal_en": "To save the face",
         "meaning": "Tránh sự xấu hổ công khai — concept central en négo asiatique.",
+        "meaning_en": "To save face — direct English calque from the East Asian concept. A good negotiator in Vietnamese context always leaves the other side an exit door. Anglophones recognize the phrase; many underuse it in practice.",
         "example": "Le bon négociateur en contexte vietnamien sait toujours laisser à l'autre une porte pour sauver la face."
       },
       {
         "idiom": "Lire entre les lignes (courant)",
         "literal": "Đọc giữa các dòng",
+        "literal_en": "To read between the lines",
         "meaning": "Hiểu điều ngầm — compétence indispensable face aux non implicites.",
+        "meaning_en": "To read between the lines — direct English equivalent. An indispensable skill in high-context cultures where the literal words may understate or invert the actual position.",
         "example": "Avec un partenaire vietnamien, il faut savoir lire entre les lignes — le « oui » poli n'est pas toujours un oui."
       },
       {
         "idiom": "Tisser des liens (soutenu)",
         "literal": "Dệt các liên kết",
+        "literal_en": "To weave links",
         "meaning": "Xây dựng quan hệ — démarche longue, indispensable en Asie.",
+        "meaning_en": "To weave relationships — a long process, indispensable in Asia. Closest English: 'to forge connections' or 'to build ties'. The metaphor of weaving captures the patience and texture required.",
         "example": "Avant de signer, il faut tisser des liens — c'est ce que les Français pressés négligent souvent."
       },
       {
         "idiom": "Marcher sur des œufs (courant)",
         "literal": "Đi trên trứng",
+        "literal_en": "To walk on eggs",
         "meaning": "Tiến rất thận trọng — utile dans les négos sensibles interculturelles.",
+        "meaning_en": "To walk on eggshells — direct English equivalent ('eggshells' in English; 'eggs' in French). Means proceeding very cautiously where any wrong word could break trust.",
         "example": "Sur le sujet du prix, on marchait sur des œufs; chaque mot pouvait casser la confiance."
       }
     ],
@@ -5637,20 +5789,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Le négociateur efficace en contexte franco-vietnamien sait ___ entre les deux registres selon le moment de la discussion.",
-        "answer": "alterner"
+        "answer": "alterner",
+        "hint_vi": "động từ nguyên mẫu nghĩa 'xen kẽ / luân phiên'",
+        "hint_en": "infinitive verb meaning 'to alternate / switch back and forth' — the key competence of a bicultural negotiator"
       },
       {
         "type": "matching",
         "pairs": [
-          ["la perte de face", "mất mặt"],
-          ["un non implicite", "lời từ chối ngầm"],
-          ["la confiance interpersonnelle", "lòng tin liên cá nhân"]
+          ["la perte de face", "mất mặt (loss of face — central concept in East Asian negotiation)"],
+          ["un non implicite", "lời từ chối ngầm (an implicit no — the danger zone for anglophone negotiators)"],
+          ["la confiance interpersonnelle", "lòng tin liên cá nhân (interpersonal trust — the binding agent in Vietnamese B2B)"]
         ],
-        "instruction": "Nối thuật ngữ liên văn hóa với nghĩa Việt"
+        "instruction": "Nối thuật ngữ liên văn hóa với nghĩa Việt",
+        "instruction_en": "Match the intercultural term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Với đối tác Việt, nói « không » trực tiếp có thể bị nhìn như một sự phá vỡ quan hệ; với người Pháp, không nói « không » là một sự nhầm lẫn.",
+        "english": "For the Vietnamese partner, saying 'no' directly can be perceived as a relationship break; for the French, not saying 'no' is a confusion.",
         "french": "Pour le partenaire vietnamien, dire « non » directement peut être perçu comme une rupture de relation; pour le Français, ne pas dire « non » est une confusion."
       }
     ]
