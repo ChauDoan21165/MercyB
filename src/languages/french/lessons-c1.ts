@@ -375,6 +375,12 @@ export const lessons: FrenchLesson[] = [
           "capital → ka-pi-tal",
           "culturel → kul-tu-rèl",
           "inconsciente → an-kõn-siãnt"
+        ],
+        "pronunciation_focus_en": [
+          "établi → 'ay-tah-BLEE' — past participle of 'établir'; final -i is fully voiced, no vowel reduction",
+          "capital → 'kah-pee-TAHL' — three syllables, stress on the last, opposite of English 'CAP-i-tal'",
+          "culturel → 'kewl-tew-REL' — both 'u's are the rounded French 'ew' (German ü); final -el is short 'el', not 'ull'",
+          "inconsciente → 'an-kohn-SYAHNT' — feminine -e makes the final -t sounded; two nasal vowels back-to-back"
         ]
       },
       {
@@ -385,6 +391,12 @@ export const lessons: FrenchLesson[] = [
           "défendue → dé-fãn-du",
           "dispositifs → dis-po-zi-tif",
           "intériorisation → an-té-rio-ri-za-sion"
+        ],
+        "pronunciation_focus_en": [
+          "selon → 'suh-LOHN' — opening 'se' is schwa 'suh'; nasal -on; final -n never pronounced, just close toward it",
+          "défendue → 'day-fahn-DEW' — nasal -en; final -ue is rounded 'ew' (German ü), past participle feminine form",
+          "dispositifs → 'dees-poh-zee-TEEF' — final -tifs is 'teef' (the s is silent in plural)",
+          "intériorisation → 'an-tay-ryoh-ree-zah-SYOHN' — opening -in is nasal; the -tion ending is 'syohn', not English 'shun'"
         ]
       },
       {
@@ -395,6 +407,12 @@ export const lessons: FrenchLesson[] = [
           "formule → for-mul",
           "acteurs → ak-tơr",
           "imputer → an-pu-té"
+        ],
+        "pronunciation_focus_en": [
+          "reprendre → 'ruh-PRAHN-druh' — opening 're' is schwa 'ruh'; nasal -en; final -dre is a quick 'druh', not English 'der'",
+          "formule → 'for-MEWL' — final -ule is the rounded French 'ew' + l; same 'u' as in 'tu'",
+          "acteurs → 'ak-TUR' — final -eurs is 'ur' with rounded lips; plural -s silent",
+          "imputer → 'an-pew-TAY' — nasal -im; 'u' is rounded 'ew'; final -er is 'ay'"
         ]
       },
       {
@@ -405,6 +423,12 @@ export const lessons: FrenchLesson[] = [
           "principalement → pran-si-pal-mã",
           "rendues → rãn-du",
           "publiques → pu-blik"
+        ],
+        "pronunciation_focus_en": [
+          "s'appuie → 'sah-PWEE' — the 'uie' glides into one syllable 'wee'; double-p is one clean 'p'",
+          "principalement → 'pran-see-pal-MAHN' — nasal -in opening; final -ment is nasal 'mahn', t silent",
+          "rendues → 'rahn-DEW' — nasal -en; final 'u' is rounded 'ew'; plural -s silent",
+          "publiques → 'pew-BLEEK' — 'u' is rounded 'ew'; final -ique is 'eek'; plural -s silent"
         ]
       },
       {
@@ -415,175 +439,211 @@ export const lessons: FrenchLesson[] = [
           "occurrence → o-ku-rãns",
           "remonte → rơ-mõnt",
           "paru → pa-ru"
+        ],
+        "pronunciation_focus_en": [
+          "connaissance → 'koh-neh-SAHNS' — double-n is one clean 'n'; nasal -an before final s",
+          "occurrence → 'oh-kew-RAHNS' — double-r is one French throat 'r' (not rolled); 'u' is rounded 'ew'; nasal -en",
+          "remonte → 'ruh-MOHNT' — opening 're' is schwa; nasal -on; the final -te is fully sounded (no silent -e because of the -te)",
+          "paru → 'pah-REW' — final 'u' is the rounded French vowel; one of the most common past participles you'll cite"
         ]
       }
     ],
     "cultural_notes_vi": "Quy ước trích dẫn ở Pháp khắc nghiệt hơn nhiều so với Việt Nam, và LỖI TRÍCH DẪN bị xem là LỖI ĐẠO ĐỨC, không phải lỗi kỹ thuật. Thiếu một tham chiếu = nghi ngờ « plagiat ». Một « jury de soutenance » có thể từ chối luận án vì lý do duy nhất là quy chiếu lỏng lẻo.\n\nBA HÌNH THỨC TRÍCH DẪN cần phân biệt rõ:\n\n(1) CITATION DIRECTE — trích nguyên văn, đặt trong dấu « guillemets français » (« … »), kèm tham chiếu đầy đủ (tác giả, năm, số trang). Quy tắc: nếu trích quá ba dòng, tách thành đoạn riêng, lùi đầu dòng, không cần guillemets. SAI thường gặp của người Việt: dùng guillemets \" \" kiểu Anh — đọc là không quen quy ước Pháp.\n\n(2) PARAPHRASE — diễn đạt lại ý của tác giả bằng lời mình, vẫn KÈM tham chiếu. Cú pháp Pháp: « Selon X (année), … », « X (année) montre que … », « Pour reprendre la thèse de X (année), … ». Người Việt mới học hay quên: paraphrase mà KHÔNG có tham chiếu = vẫn là plagiat ở Pháp, dù ý tưởng đã được diễn đạt lại.\n\n(3) ALLUSION — gọi tên tác giả mà không trích cụ thể, ví dụ « dans la lignée de Foucault ». Cho phép trong phần état de l'art, KHÔNG cho phép khi đưa ra một luận điểm cụ thể có thể quy về một văn bản chính xác.\n\nQUY CHIẾU NHIỀU TÁC GIẢ:\n- Hai tác giả: « Bourdieu et Passeron (1970) »\n- Ba tác giả trở lên: « Bourdieu et al. (1968) »\n- Cùng tác giả, nhiều công trình cùng năm: « Foucault (1975a) », « Foucault (1975b) »\n\nMỘT QUY ƯỚC ĐẶC BIỆT PHÁP — KHÁC ANGLO-SAXON: ở Pháp, « cf. » (confer) được dùng để gợi mở chứ không bắt buộc đọc; « voir » (xem) thì BẮT BUỘC đọc để hiểu lập luận. Sinh viên Anh-Mỹ thường dùng « cf. » loạn xạ — ở Pháp đọc là cẩu thả.\n\nVIỆC ĐỌC CÔNG TRÌNH GỐC: nếu bạn trích Foucault (1975), hội đồng giả định bạn đã ĐỌC quyển sách đó — không chỉ tóm tắt từ nguồn thứ cấp. Trích « Foucault dans Surveiller et punir » mà chưa từng mở quyển sách = nguy hiểm; bị một câu hỏi cụ thể về trang, bạn vỡ trận. Quy tắc Pháp: chỉ trích những gì bạn đã đọc.",
+    "cultural_notes_en": "Citation conventions in France are far stricter than what anglophone academics typically encounter, and a CITATION ERROR is treated as an ETHICAL failure, not a technical one. A missing reference invites suspicion of 'plagiat'. A 'jury de soutenance' (defense committee) can reject a doctoral thesis on the sole grounds of loose attribution. Take that warning seriously — it's not theoretical.\n\nTHREE FORMS OF CITATION must be distinguished:\n\n(1) DIRECT QUOTATION — verbatim, placed inside French guillemets (« … »), with full reference (author, year, page number). Rule: if the quotation exceeds three lines, set it as a separate indented block, no guillemets needed. Common anglophone mistake: using English \"double quotes\" — this reads as someone who hasn't learned French conventions. Use « ... » with non-breaking spaces inside.\n\n(2) PARAPHRASE — restating an author's idea in your own words, STILL with a reference. French syntax: 'Selon X (année), …', 'X (année) montre que …', 'Pour reprendre la thèse de X (année), …'. A trap for anglophones who think paraphrasing absolves them of citation: in France, paraphrasing without attribution is still 'plagiat', even if the idea is rephrased.\n\n(3) ALLUSION — naming an author without a specific citation, e.g. 'dans la lignée de Foucault'. Permitted in the literature-review section, NOT permitted when you advance a specific claim that can be traced to a precise text.\n\nMULTI-AUTHOR CITATION:\n- Two authors: 'Bourdieu et Passeron (1970)'\n- Three or more: 'Bourdieu et al. (1968)'\n- Same author, multiple works in same year: 'Foucault (1975a)', 'Foucault (1975b)'\n\nONE FRENCH-SPECIFIC CONVENTION — DIVERGENT FROM ANGLO-SAXON USAGE: in France, 'cf.' (confer) is used to suggest further reading, NOT as a binding citation; 'voir' (see) is treated as MANDATORY reading to understand the argument. Anglo-American students often sprinkle 'cf.' everywhere — French readers see this as sloppy.\n\nREADING THE ORIGINAL: if you cite Foucault (1975), the committee will assume you have READ that book — not just summarized from a secondary source. Citing 'Foucault dans Surveiller et punir' without ever opening the book is dangerous; a specific page-level question and you collapse. The French rule: cite only what you have actually read.",
     "tip_advice_vi": "Quy trình thực hành để tránh « accident de citation »:\n\n(1) DỰNG NGAY DANH MỤC THƯ MỤC ngay khi đọc bài đầu tiên. Phần mềm: Zotero (miễn phí, chuẩn Pháp), hoặc BibTeX nếu dùng LaTeX. KHÔNG để cuối mới làm — sẽ thiếu, sai, hoặc không tìm lại được công trình.\n\n(2) GHI CHÚ KÈM SỐ TRANG. Mỗi lần ghi ý từ một quyển sách, ghi luôn số trang. Sau ba tháng, bạn KHÔNG nhớ ý ấy ở trang nào — và đi tìm lại trong quyển 400 trang là tự sát thời gian.\n\n(3) PHÂN BIỆT GHI CHÚ ý của tác giả với ý của BẠN. Dùng hai màu, hai font, hai ký hiệu — bất cứ gì rõ ràng. Người Việt mới làm thèse hay rơi vào tình trạng 6 tháng sau không nhớ một câu là của Bourdieu hay của mình — và viết vào luận án không kèm tham chiếu = plagiat không cố ý.\n\n(4) SỬ DỤNG CỤM CHUẨN cho từng kiểu trích:\n- Trích nguyên văn: « Comme l'écrit X (année, p. N), \"…\" »\n- Đồng tình với tác giả: « Dans le sillage de X (année), nous soutenons que… »\n- Phản biện một tác giả: « Contrairement à ce qu'avance X (année), … »\n- Sửa nhẹ một tác giả: « Nous nuançons ici la thèse de X (année) en montrant que… »\n- Dẫn chiếu nguồn thứ cấp: « X (année), cité par Y (année, p. N), affirme que… » — và minh bạch rằng bạn đọc Y, không đọc X.\n\n(5) KHI BẠN KHÔNG CHẮC AI ĐÃ NÓI: KHÔNG VIẾT « certains chercheurs ont montré que… » — câu này ở thèse Pháp = chết. Tìm cho ra nguồn, hoặc bỏ luận điểm đó.\n\nTRÁNH:\n- Trích từ Wikipedia ở thèse — bị đọc là không nghiêm túc; được ở M1 phần định nghĩa, KHÔNG được ở état de l'art.\n- Trích nhiều câu liền nhau từ một tác giả mà không « entre les guillemets » — patchwriting = plagiat.\n- Sao chép từ phiên bản dịch tiếng Pháp một quyển tiếng Anh mà không nói rõ ai dịch — hội đồng dịch học gay gắt với điểm này.",
+    "tip_advice_en": "Practical workflow to prevent a 'citation accident':\n\n(1) BUILD THE BIBLIOGRAPHY IMMEDIATELY from your first reading. Software: Zotero (free, the French academic standard), or BibTeX if you use LaTeX. DO NOT leave this for the end — entries will be missing, wrong, or impossible to retrace.\n\n(2) NOTE PAGE NUMBERS ALONGSIDE EVERY IDEA. Each time you record an idea from a book, log the page. Three months later you will NOT remember which page that line came from — and hunting through a 400-page book is a time-sink.\n\n(3) DISTINGUISH AUTHOR'S IDEAS FROM YOUR OWN in your notes. Use two colors, two fonts, two symbols — anything unambiguous. Anglophone doctoral students often fall into the trap of, six months later, not remembering whether a sentence came from Bourdieu or themselves — and writing it into their thesis without attribution = unintentional plagiat.\n\n(4) USE STANDARD FORMULAS for each citation type:\n- Verbatim quote: 'Comme l'écrit X (année, p. N), \"…\"'\n- Agreement with the author: 'Dans le sillage de X (année), nous soutenons que…'\n- Critiquing an author: 'Contrairement à ce qu'avance X (année), …'\n- Nuancing an author: 'Nous nuançons ici la thèse de X (année) en montrant que…'\n- Secondary source citation: 'X (année), cité par Y (année, p. N), affirme que…' — and be transparent that you read Y, not X.\n\n(5) WHEN YOU DON'T KNOW WHO SAID IT: DO NOT WRITE 'certains chercheurs ont montré que…' — that phrase is fatal in a French thesis. Either find the source or drop the claim.\n\nAVOID:\n- Citing Wikipedia in a thesis — reads as unserious; tolerated in M1 for definitions, NOT in the literature review.\n- Quoting several consecutive sentences from one author without guillemets — patchwriting = plagiat, even with a citation at the end of the block.\n- Copying from the French translation of an English original without specifying the translator — translation-studies committees are sharp on this point.",
     "vocabulary": [
       {
         "word": "comme l'a établi",
         "en": "as has established",
         "vi": "như đã xác lập",
         "pos": "loc.",
-        "pronunciation_vi": "kom la é-ta-bli"
+        "pronunciation_vi": "kom la é-ta-bli",
+        "pronunciation_en": "kom lah ay-tah-BLEE — the 'l'a' contraction flows in one beat; opener formula for direct attribution"
       },
       {
         "word": "selon une thèse défendue par",
         "en": "according to a thesis defended by",
         "vi": "theo một luận điểm được bảo vệ bởi",
         "pos": "loc.",
-        "pronunciation_vi": "sơ-lõn un tèz dé-fãn-du par"
+        "pronunciation_vi": "sơ-lõn un tèz dé-fãn-du par",
+        "pronunciation_en": "suh-LOHN ewn TEZ day-fahn-DEW par — nasal 'on' at the start; 'thèse' ends on sharp 'z' sound, never 's'"
       },
       {
         "word": "pour reprendre la formule de",
         "en": "to borrow the phrasing of",
         "vi": "mượn cách diễn đạt của",
         "pos": "loc.",
-        "pronunciation_vi": "pur rơ-prãn-drơ la for-mul dơ"
+        "pronunciation_vi": "pur rơ-prãn-drơ la for-mul dơ",
+        "pronunciation_en": "poor ruh-PRAHN-druh lah for-MEWL duh — opening 're' is schwa; the 'u' in 'mule' is rounded 'ew' (German ü)"
       },
       {
         "word": "s'appuyer sur",
         "en": "to rely on",
         "vi": "dựa vào",
         "pos": "v.",
-        "pronunciation_vi": "sa-pwi-é sur"
+        "pronunciation_vi": "sa-pwi-é sur",
+        "pronunciation_en": "sah-pwee-YAY sewr — the 'uy' glides into 'wee-y'; 'sur' has the rounded French 'u'"
       },
       {
         "word": "à ma connaissance",
         "en": "to my knowledge",
         "vi": "theo hiểu biết của tôi",
         "pos": "loc.",
-        "pronunciation_vi": "a ma ko-nè-sãns"
+        "pronunciation_vi": "a ma ko-nè-sãns",
+        "pronunciation_en": "ah mah koh-neh-SAHNS — a key hedge in academic French; signals you're claiming limited overview, not omniscience"
       },
       {
         "word": "dans le sillage de",
         "en": "in the wake of",
         "vi": "trong mạch nối tiếp của",
         "pos": "loc.",
-        "pronunciation_vi": "dã lơ si-yaj dơ"
+        "pronunciation_vi": "dã lơ si-yaj dơ",
+        "pronunciation_en": "dahn luh see-YAHZH duh — 'ill' is 'ee-y'; final -age is 'ahzh'; metaphor from naval wake, used for intellectual lineage"
       },
       {
         "word": "contrairement à ce qu'avance X",
         "en": "contrary to what X argues",
         "vi": "trái với điều X đưa ra",
         "pos": "loc.",
-        "pronunciation_vi": "kõn-trè-rơ-mã a sơ ka-vãns"
+        "pronunciation_vi": "kõn-trè-rơ-mã a sơ ka-vãns",
+        "pronunciation_en": "kohn-trair-uh-MAHN ah suh kah-VAHNS — opens a polite disagreement; far less aggressive than English 'unlike X'"
       },
       {
         "word": "un ouvrage de référence",
         "en": "a reference work",
         "vi": "một công trình quy chiếu",
         "pos": "n.m.",
-        "pronunciation_vi": "un u-vraj dơ ré-fé-rãns"
+        "pronunciation_vi": "un u-vraj dơ ré-fé-rãns",
+        "pronunciation_en": "ehn oo-VRAHZH duh ray-fay-RAHNS — 'ouvrage' is the formal C1 word for a published work; 'livre' is too colloquial here"
       },
       {
         "word": "une note de bas de page",
         "en": "a footnote",
         "vi": "một ghi chú chân trang",
         "pos": "n.f.",
-        "pronunciation_vi": "un not dơ ba dơ paj"
+        "pronunciation_vi": "un not dơ ba dơ paj",
+        "pronunciation_en": "ewn NOT duh BAH duh PAHZH — literally 'note at the bottom of the page'; final -age is 'ahzh'"
       },
       {
         "word": "plagier",
         "en": "to plagiarize",
         "vi": "đạo văn",
         "pos": "v.",
-        "pronunciation_vi": "pla-jié"
+        "pronunciation_vi": "pla-jié",
+        "pronunciation_en": "plah-ZHYAY — soft 'zh' as in 'measure' + 'yay'; the noun is 'le plagiat' (plah-ZHYAH)"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Mercier",
         "text": "Madame Tran, vous citez Goffman page douze, mais sans donner d'édition ni de page. Pourriez-vous préciser ?",
-        "vi": "Cô Trần, cô trích Goffman ở trang 12, nhưng không nêu ấn bản và số trang. Cô có thể nói rõ hơn không?"
+        "vi": "Cô Trần, cô trích Goffman ở trang 12, nhưng không nêu ấn bản và số trang. Cô có thể nói rõ hơn không?",
+        "en": "Ms. Tran, you cite Goffman on page twelve, but give no edition or page reference. Could you clarify?"
       },
       {
         "speaker": "Linh",
         "text": "Bien sûr — il s'agit de Stigma, édition Penguin de 1990, page 47.",
-        "vi": "Vâng — đó là Stigma, ấn bản Penguin năm 1990, trang 47."
+        "vi": "Vâng — đó là Stigma, ấn bản Penguin năm 1990, trang 47.",
+        "en": "Of course — it's Stigma, the 1990 Penguin edition, page 47."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Et vous l'avez consulté en anglais ou via la traduction française ?",
-        "vi": "Cô đã đọc bản tiếng Anh hay qua bản dịch tiếng Pháp?"
+        "vi": "Cô đã đọc bản tiếng Anh hay qua bản dịch tiếng Pháp?",
+        "en": "And did you read it in English or via the French translation?"
       },
       {
         "speaker": "Linh",
         "text": "En anglais — la traduction Kihm de 1975 sera mentionnée en note pour les lecteurs qui préféreraient s'y référer.",
-        "vi": "Bản tiếng Anh — bản dịch của Kihm năm 1975 sẽ được nhắc trong ghi chú cho độc giả muốn tham khảo."
+        "vi": "Bản tiếng Anh — bản dịch của Kihm năm 1975 sẽ được nhắc trong ghi chú cho độc giả muốn tham khảo.",
+        "en": "In English — the 1975 Kihm translation will be mentioned in a footnote for readers who prefer to consult it."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Mercier (rendez-vous de relecture, bureau)",
         "text": "Madame Tran, j'ai lu votre chapitre 2. Très solide sur l'argumentation, mais il y a quatre points de citation à reprendre avant que je ne valide.",
-        "vi": "Cô Trần, tôi đã đọc chương 2 của cô. Rất chắc về lập luận, nhưng có 4 điểm trích dẫn cần sửa lại trước khi tôi duyệt."
+        "vi": "Cô Trần, tôi đã đọc chương 2 của cô. Rất chắc về lập luận, nhưng có 4 điểm trích dẫn cần sửa lại trước khi tôi duyệt.",
+        "en": "Ms. Tran, I've read your chapter 2. Very solid on the argument, but there are four citation points to redo before I sign off."
       },
       {
         "speaker": "Linh",
         "text": "Bien sûr, je vous écoute.",
-        "vi": "Vâng, tôi nghe thầy."
+        "vi": "Vâng, tôi nghe thầy.",
+        "en": "Of course, I'm listening."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Premier point — page 23, vous attribuez à Foucault l'expression « biopouvoir » sans préciser l'ouvrage. Cette notion apparaît dans La Volonté de savoir (1976), mais aussi dans le cours au Collège de France de la même année. Lequel citez-vous ?",
-        "vi": "Điểm thứ nhất — trang 23, cô gán cụm « biopouvoir » cho Foucault mà không nêu công trình. Khái niệm này xuất hiện trong La Volonté de savoir (1976), nhưng cũng trong giáo trình Collège de France cùng năm. Cô trích cái nào?"
+        "vi": "Điểm thứ nhất — trang 23, cô gán cụm « biopouvoir » cho Foucault mà không nêu công trình. Khái niệm này xuất hiện trong La Volonté de savoir (1976), nhưng cũng trong giáo trình Collège de France cùng năm. Cô trích cái nào?",
+        "en": "First point — page 23, you attribute the term 'biopouvoir' to Foucault without specifying the work. The concept appears in La Volonté de savoir (1976) but also in the Collège de France lectures of the same year. Which are you citing?"
       },
       {
         "speaker": "Linh",
         "text": "La Volonté de savoir, page 183 de l'édition Gallimard. Je vais corriger.",
-        "vi": "La Volonté de savoir, trang 183 ấn bản Gallimard. Tôi sẽ sửa."
+        "vi": "La Volonté de savoir, trang 183 ấn bản Gallimard. Tôi sẽ sửa.",
+        "en": "La Volonté de savoir, page 183 of the Gallimard edition. I'll fix it."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Bien. Deuxième point — page 41, vous écrivez « comme l'a montré Bourdieu » sans tournure plus précise. Quel texte de Bourdieu ? Il a écrit pendant cinquante ans, et ses positions ont évolué. Une telle imprécision invite l'objection.",
-        "vi": "Tốt. Điểm thứ hai — trang 41, cô viết « như Bourdieu đã chứng minh » không có cú pháp cụ thể hơn. Văn bản nào của Bourdieu? Ông viết trong 50 năm, và quan điểm tiến triển. Sự thiếu chính xác như vậy mở đường cho phản biện."
+        "vi": "Tốt. Điểm thứ hai — trang 41, cô viết « như Bourdieu đã chứng minh » không có cú pháp cụ thể hơn. Văn bản nào của Bourdieu? Ông viết trong 50 năm, và quan điểm tiến triển. Sự thiếu chính xác như vậy mở đường cho phản biện.",
+        "en": "Good. Second point — page 41, you write 'as Bourdieu has shown' without a more precise formulation. Which text of Bourdieu? He wrote for fifty years, and his positions evolved. That kind of imprecision invites objection."
       },
       {
         "speaker": "Linh",
         "text": "C'est juste. Je pensais à La Reproduction (1970), mais l'idée précise vient plutôt de Esquisse d'une théorie de la pratique (1972). Je dois trancher.",
-        "vi": "Đúng. Tôi nghĩ đến La Reproduction (1970), nhưng ý tưởng cụ thể đến từ Esquisse d'une théorie de la pratique (1972). Tôi phải chọn rõ."
+        "vi": "Đúng. Tôi nghĩ đến La Reproduction (1970), nhưng ý tưởng cụ thể đến từ Esquisse d'une théorie de la pratique (1972). Tôi phải chọn rõ.",
+        "en": "Fair. I was thinking of La Reproduction (1970), but the specific idea comes more from Esquisse d'une théorie de la pratique (1972). I have to decide."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Tranchez en relisant les deux passages. La règle, à votre niveau: une citation = un texte précis = une page. Pas de Bourdieu « en général ». Troisième point — page 56, vous citez Latour via un article de Lemieux. C'est pertinent, mais vous présentez la thèse comme si vous aviez lu Latour directement. Précisez « cité par Lemieux » ou allez lire Latour.",
-        "vi": "Cô chọn bằng cách đọc lại cả hai đoạn. Quy tắc, ở cấp độ của cô: một trích dẫn = một văn bản cụ thể = một trang. Không có Bourdieu « chung chung ». Điểm thứ ba — trang 56, cô trích Latour qua một bài của Lemieux. Hợp lý, nhưng cô trình bày luận điểm như đã đọc Latour trực tiếp. Nêu rõ « trích bởi Lemieux » hoặc đi đọc Latour."
+        "vi": "Cô chọn bằng cách đọc lại cả hai đoạn. Quy tắc, ở cấp độ của cô: một trích dẫn = một văn bản cụ thể = một trang. Không có Bourdieu « chung chung ». Điểm thứ ba — trang 56, cô trích Latour qua một bài của Lemieux. Hợp lý, nhưng cô trình bày luận điểm như đã đọc Latour trực tiếp. Nêu rõ « trích bởi Lemieux » hoặc đi đọc Latour.",
+        "en": "Decide by re-reading both passages. The rule, at your level: one citation = one precise text = one page. No 'Bourdieu in general'. Third point — page 56, you cite Latour via a Lemieux article. That's legitimate, but you present the thesis as if you'd read Latour directly. Either specify 'cited by Lemieux' or go read Latour."
       },
       {
         "speaker": "Linh",
         "text": "J'ai effectivement lu Lemieux mais pas Latour sur ce point. Je précise « cité par Lemieux (2018, p. 87) ». C'est plus honnête.",
-        "vi": "Tôi thực sự đã đọc Lemieux nhưng chưa đọc Latour ở điểm này. Tôi sẽ nêu rõ « cited by Lemieux (2018, tr. 87) ». Đó là cách trung thực hơn."
+        "vi": "Tôi thực sự đã đọc Lemieux nhưng chưa đọc Latour ở điểm này. Tôi sẽ nêu rõ « cited by Lemieux (2018, tr. 87) ». Đó là cách trung thực hơn.",
+        "en": "I did read Lemieux but not Latour on this point. I'll specify 'cited by Lemieux (2018, p. 87)'. That's more honest."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Excellent réflexe. Le jury sanctionne les citations fausses, jamais l'honnêteté épistémologique. Quatrième point, le plus délicat: pages 78 à 82, je reconnais des tournures qui ressemblent fortement à un article de Bessy paru en 2019. Vous l'avez lu ?",
-        "vi": "Phản xạ tuyệt vời. Hội đồng phạt trích sai, không bao giờ phạt sự trung thực nhận thức luận. Điểm thứ tư, tế nhị nhất: trang 78 đến 82, tôi nhận ra các cú pháp gần giống một bài của Bessy năm 2019. Cô đã đọc chưa?"
+        "vi": "Phản xạ tuyệt vời. Hội đồng phạt trích sai, không bao giờ phạt sự trung thực nhận thức luận. Điểm thứ tư, tế nhị nhất: trang 78 đến 82, tôi nhận ra các cú pháp gần giống một bài của Bessy năm 2019. Cô đã đọc chưa?",
+        "en": "Excellent reflex. The committee penalizes false citations, never epistemological honesty. Fourth point, the most delicate one: pages 78–82, I recognize phrasings that strongly resemble a Bessy article from 2019. Have you read it?"
       },
       {
         "speaker": "Linh",
         "text": "Oui — je l'ai lu en début de master. J'ai pris des notes très denses, et j'ai pu, sans m'en rendre compte, intégrer ses formulations sans les marquer. Je vais relire l'article avec mes pages en parallèle.",
-        "vi": "Vâng — tôi đã đọc đầu thạc sĩ. Tôi đã ghi chú rất dày, và có thể, không nhận ra, đã đưa cách diễn đạt của ông vào mà không đánh dấu. Tôi sẽ đọc lại bài với các trang của tôi đặt cạnh."
+        "vi": "Vâng — tôi đã đọc đầu thạc sĩ. Tôi đã ghi chú rất dày, và có thể, không nhận ra, đã đưa cách diễn đạt của ông vào mà không đánh dấu. Tôi sẽ đọc lại bài với các trang của tôi đặt cạnh.",
+        "en": "Yes — I read it at the start of the master's. I took very dense notes and may have, without realizing, absorbed his phrasings without marking them. I'll re-read the article with my pages alongside."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Faites-le sérieusement. Le « patchwriting involontaire » reste du plagiat aux yeux du jury, même sans intention. Si vous trouvez des passages trop proches, soit vous les guillemetez et les attribuez, soit vous les reformulez profondément. Pas de demi-mesure.",
-        "vi": "Cô làm nghiêm túc. « Patchwriting không cố ý » vẫn là đạo văn dưới mắt hội đồng, kể cả không có ý đồ. Nếu cô thấy đoạn nào quá gần, hoặc đặt trong guillemets và quy chiếu, hoặc viết lại sâu sắc. Không có nửa vời."
+        "vi": "Cô làm nghiêm túc. « Patchwriting không cố ý » vẫn là đạo văn dưới mắt hội đồng, kể cả không có ý đồ. Nếu cô thấy đoạn nào quá gần, hoặc đặt trong guillemets và quy chiếu, hoặc viết lại sâu sắc. Không có nửa vời.",
+        "en": "Do it seriously. 'Unintentional patchwriting' is still plagiat in the committee's eyes, even without intent. If you find passages that are too close, either you guillemet and attribute them, or you reformulate deeply. No half-measures."
       },
       {
         "speaker": "Linh",
         "text": "Compris. Je reprends ces quatre points cette semaine et je vous renvoie une version corrigée vendredi.",
-        "vi": "Hiểu rồi. Tôi sẽ làm 4 điểm này trong tuần và gửi lại thầy bản sửa thứ Sáu."
+        "vi": "Hiểu rồi. Tôi sẽ làm 4 điểm này trong tuần và gửi lại thầy bản sửa thứ Sáu.",
+        "en": "Understood. I'll redo these four points this week and send you a corrected version Friday."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Très bien. Et — un mot encadrant: la rigueur de citation, à votre niveau, n'est plus une question de forme. C'est ce qui, in fine, distingue un travail doctoral d'un travail brillant mais amateur. Le jury ne pardonne pas sur ce point.",
-        "vi": "Rất tốt. Và — một câu khung: sự nghiêm cẩn về trích dẫn, ở cấp độ của cô, không còn là vấn đề hình thức. Đó là điều, xét đến cùng, phân biệt một công trình tiến sĩ với một công trình xuất sắc nhưng nghiệp dư. Hội đồng không tha thứ ở điểm này."
+        "vi": "Rất tốt. Và — một câu khung: sự nghiêm cẩn về trích dẫn, ở cấp độ của cô, không còn là vấn đề hình thức. Đó là điều, xét đến cùng, phân biệt một công trình tiến sĩ với một công trình xuất sắc nhưng nghiệp dư. Hội đồng không tha thứ ở điểm này.",
+        "en": "Very good. And — one framing word: at your level, citation rigor is no longer a question of form. It is what, in the final analysis, distinguishes doctoral work from brilliant-but-amateur work. The committee does not forgive this point."
       },
       {
         "speaker": "Linh",
         "text": "Je l'intègre. Merci pour la relecture serrée — c'est précieux.",
-        "vi": "Tôi tiếp thu. Cảm ơn thầy đã đọc kỹ — quý giá."
+        "vi": "Tôi tiếp thu. Cảm ơn thầy đã đọc kỹ — quý giá.",
+        "en": "I'll take that on board. Thank you for the close reading — it's invaluable."
       }
     ],
     "roleplay_prompts": [
@@ -591,30 +651,44 @@ export const lessons: FrenchLesson[] = [
       "Bạn đang đồng tác giả một bài báo với một colleague Pháp. Cô ấy đề nghị trích một tác giả mà bạn biết cô ấy chưa đọc. Phản hồi: nêu vấn đề lịch sự, đề xuất hoặc cô ấy đọc, hoặc dùng cú pháp « cité par ».",
       "Trong séminaire M2, bạn được giao bình luận một chương sách. Bạn không đồng ý với một luận điểm nhưng không tìm được phản biện trong tài liệu. Trình bày lập trường mà KHÔNG ngụy tạo trích dẫn — dùng cú pháp « il me semble que », « on pourrait avancer que »."
     ],
+    "roleplay_prompts_en": [
+      "During a defense, a committee member says: 'Vous attribuez à Habermas une thèse qu'il n'a, à ma connaissance, jamais formulée ainsi. Pouvez-vous indiquer la source précise ?' Respond: acknowledge if you're wrong, re-specify the actual origin of the idea, or hold your ground if confident (with a specific page reference).",
+      "You're co-authoring a paper with a French colleague. She suggests citing an author you know she hasn't read. Respond: raise the issue politely, propose that either she reads the source or that you use the 'cité par' formula instead.",
+      "In an M2 seminar, you've been assigned to discuss a book chapter. You disagree with one of its claims but can find no published counter-argument in the literature. Present your position WITHOUT inventing a citation — use 'il me semble que', 'on pourrait avancer que' to claim epistemic territory without false attribution."
+    ],
     "register_notes": "Các động từ trích dẫn của discours académique Pháp được phân loại theo SẮC THÁI hỗ trợ hay phản biện:\n\nMẠNH (đồng ý):\n- « X démontre que… » (X chứng minh)\n- « X établit que… » (X xác lập)\n- « X met en évidence que… » (X làm rõ)\n\nTRUNG TÍNH:\n- « X soutient que… » (X bảo vệ)\n- « X avance que… » (X đưa ra)\n- « X affirme que… » (X khẳng định)\n- « Selon X, … » (Theo X)\n\nDÈ DẶT:\n- « X prétend que… » (X cho rằng — hơi nghi ngờ)\n- « X laisse entendre que… » (X ngụ ý)\n- « X suggère que… » (X gợi ý)\n\nPHẢN BIỆN NGẦM:\n- « X persiste à soutenir que… » (X cứ khăng khăng — phản biện ngầm)\n- « X va jusqu'à affirmer que… » (X thậm chí khẳng định — đặt vấn đề về tính thái quá)\n\nLưu ý: « X dit que » KHÔNG được dùng trong discours académique formel — quá thân mật. Thay bằng « X écrit », « X soutient », « X affirme ».\n\nCú pháp KHI VIẾT TRÍCH DẪN GIÁN TIẾP — chú ý concordance des temps:\n- Hiện tại trích dẫn (étanh): « Bourdieu montre que le capital culturel se transmet… » (présent intemporel — quy ước)\n- Quá khứ lịch sử: « Durkheim écrivait, en 1895, que… » (imparfait nếu ngữ cảnh lịch sử)\n\nVỚI TÁC GIẢ ĐÃ MẤT: dùng présent intemporel — Bourdieu chết 2002 nhưng « Bourdieu montre que… » vẫn présent. Truyền thống học thuật Pháp xem ý tưởng được trích là « hiện hành » trong cuộc tranh luận đương đại.",
+    "register_notes_en": "French academic citation verbs are ranked by their NUANCE — how supportive or critical they signal you to be:\n\nSTRONG (agreement):\n- 'X démontre que…' (X demonstrates — strongest)\n- 'X établit que…' (X establishes)\n- 'X met en évidence que…' (X brings to light)\n\nNEUTRAL:\n- 'X soutient que…' (X holds that)\n- 'X avance que…' (X advances)\n- 'X affirme que…' (X states)\n- 'Selon X, …' (According to X)\n\nGUARDED:\n- 'X prétend que…' (X claims — with subtle doubt; note false friend, this is NOT English 'pretend')\n- 'X laisse entendre que…' (X implies)\n- 'X suggère que…' (X suggests)\n\nIMPLICIT CRITIQUE:\n- 'X persiste à soutenir que…' (X stubbornly insists — flags disagreement)\n- 'X va jusqu'à affirmer que…' (X goes so far as to assert — signals excess)\n\nNote: 'X dit que' is NOT used in formal academic discourse — too colloquial. Replace with 'X écrit', 'X soutient', 'X affirme'.\n\nINDIRECT-CITATION SYNTAX — mind the concordance des temps:\n- Present-tense citation (timeless): 'Bourdieu montre que le capital culturel se transmet…' (présent intemporel — the convention)\n- Historical past: 'Durkheim écrivait, en 1895, que…' (imparfait when emphasizing historical context)\n\nFOR DECEASED AUTHORS: use the timeless present. Bourdieu died in 2002 but 'Bourdieu montre que…' remains in the present tense. French academic tradition treats cited ideas as 'in force' in the contemporary debate — anglophones often default to past tense ('Bourdieu argued') which sounds historicizing and slightly dismissive in French.",
     "idiom_glosses": [
       {
         "idiom": "Dans la lignée de (formel)",
         "literal": "Trong dòng dõi của",
+        "literal_en": "In the lineage of",
         "meaning": "Tiếp nối truyền thống tư tưởng của — không cần trích cụ thể.",
+        "meaning_en": "Following the intellectual tradition of — no specific citation required. Closer to English 'in the tradition of' than 'in the wake of'. Permitted in literature reviews; never permitted when advancing a specific claim attributable to a single text.",
         "example": "Cette analyse s'inscrit dans la lignée de l'école durkheimienne."
       },
       {
         "idiom": "Faire date (soutenu)",
         "literal": "Tạo ra ngày tháng",
+        "literal_en": "To make a date",
         "meaning": "Trở thành mốc tham chiếu trong lĩnh vực.",
+        "meaning_en": "To become a landmark reference in the field. Roughly equivalent to English 'to mark a turning point' or 'to be a watershed' — but the French construction is more compact and frequent in scholarly writing.",
         "example": "Surveiller et punir a fait date dans la pensée critique des années 1970."
       },
       {
         "idiom": "Citer en référence (formel)",
         "literal": "Trích như một quy chiếu",
+        "literal_en": "To cite as reference",
         "meaning": "Đưa làm điểm tựa lý thuyết, không phải đối tượng phê phán.",
+        "meaning_en": "To use an author as theoretical scaffolding, not as the object of critique. Equivalent to English 'to invoke X' — signals supportive use rather than analysis.",
         "example": "Je cite Mauss en référence sur le don, sans m'attarder sur ses limites."
       },
       {
         "idiom": "À ma connaissance (soutenu)",
         "literal": "Theo hiểu biết của tôi",
+        "literal_en": "To my knowledge",
         "meaning": "Mệnh đề dè dặt — thừa nhận giới hạn của tổng quan.",
+        "meaning_en": "A formal hedge — explicitly acknowledging the limits of your literature review. Identical in function to English 'to my knowledge' but more frequent in French scholarly prose; omitting it before a 'first occurrence' claim invites immediate refutation by anyone who knows an earlier source.",
         "example": "À ma connaissance, ce point n'a jamais été traité de façon systématique."
       }
     ],
@@ -622,29 +696,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Pour ___ la formule de Latour, il s'agit de « suivre les acteurs eux-mêmes ».",
-        "answer": "reprendre"
+        "answer": "reprendre",
+        "hint_vi": "động từ nguyên mẫu nghĩa 'mượn lại / dùng lại' (cụm « pour ___ la formule de X »)",
+        "hint_en": "infinitive verb meaning 'to take up again / borrow' — opens the academic formula 'to borrow the phrasing of X'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "dans le sillage de",
-            "trong mạch nối tiếp của"
+            "trong mạch nối tiếp của (in the wake of / following on from)"
           ],
           [
             "à ma connaissance",
-            "theo hiểu biết của tôi"
+            "theo hiểu biết của tôi (to my knowledge)"
           ],
           [
             "s'appuyer sur",
-            "dựa vào"
+            "dựa vào (to rely on / draw on)"
           ]
         ],
-        "instruction": "Nối cụm trích dẫn với nghĩa Việt"
+        "instruction": "Nối cụm trích dẫn với nghĩa Việt",
+        "instruction_en": "Match the citation expression with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Như Bourdieu đã xác lập trong La Distinction (1979), vốn văn hóa được truyền lại phần lớn một cách vô thức.",
+        "english": "As Bourdieu established in La Distinction (1979), cultural capital is transmitted largely unconsciously.",
         "french": "Comme l'a établi Bourdieu dans La Distinction (1979), le capital culturel se transmet de manière largement inconsciente."
       }
     ]
@@ -664,6 +742,12 @@ export const lessons: FrenchLesson[] = [
           "généralisation → jé-né-ra-li-za-sion",
           "insuffisamment → an-su-fi-za-mã",
           "diversifié → di-ver-si-fié"
+        ],
+        "pronunciation_focus_en": [
+          "objecter → 'ob-zhek-TAY' — the 'j' is a soft 'zh' (as in 'measure'), not English 'j'; final -er is 'ay'",
+          "généralisation → 'zhay-nay-rah-lee-zah-SYOHN' — every 'é' is 'ay'; -tion is 'syohn'",
+          "insuffisamment → 'an-sew-fee-zah-MAHN' — nasal -in; 'u' is rounded 'ew'; final -ment is nasal 'mahn'",
+          "diversifié → 'dee-vair-see-FYAY' — past participle of -ier verbs ends in 'yay'; throat r in 'vair'"
         ]
       },
       {
@@ -674,6 +758,12 @@ export const lessons: FrenchLesson[] = [
           "qualitative → ka-li-ta-tiv",
           "compense → kõm-pãns",
           "quantitative → kãn-ti-ta-tiv"
+        ],
+        "pronunciation_focus_en": [
+          "répondrais → 'ray-pohn-DRAY' — conditional ending '-rais' is 'ray', s silent; nasal -on",
+          "qualitative → 'kah-lee-tah-TEEV' — final -ive is 'eev'; stress on last syllable, opposite of English 'QUAL-i-ta-tive'",
+          "compense → 'kohn-PAHNS' — two nasals (om + en); final -e silent",
+          "quantitative → 'kahn-tee-tah-TEEV' — nasal 'an'; same -ive ending as 'qualitative'"
         ]
       },
       {
@@ -684,6 +774,12 @@ export const lessons: FrenchLesson[] = [
           "soulever → su-lơ-vé",
           "difficultés → di-fi-kul-té",
           "conceptuelles → kõn-sèp-tu-èl"
+        ],
+        "pronunciation_focus_en": [
+          "raisonnement → 'reh-zohn-MAHN' — 's' between vowels sounds like 'z'; final -ment is nasal 'mahn'",
+          "soulever → 'soo-luh-VAY' — 'ou' is 'oo'; middle 'le' is schwa 'luh'; final -er is 'ay'",
+          "difficultés → 'dee-fee-kewl-TAY' — 'u' is rounded 'ew'; final -tés is 'tay', s silent in plural",
+          "conceptuelles → 'kohn-sep-TWEL' — nasal 'on'; 'tu' glides into 'tw'; feminine -e doubles the 'l' sound, plural -s silent"
         ]
       },
       {
@@ -694,6 +790,12 @@ export const lessons: FrenchLesson[] = [
           "réfuter → ré-fu-té",
           "reformuler → rơ-for-mu-lé",
           "paramètre → pa-ra-mè-trơ"
+        ],
+        "pronunciation_focus_en": [
+          "loin → 'LWAN' — opening 'lo' is 'lw'; nasal -in; final -n never pronounced",
+          "réfuter → 'ray-few-TAY' — 'u' is rounded 'ew'; final -er is 'ay'; key academic disagreement verb",
+          "reformuler → 'ruh-for-mew-LAY' — opening 're' is schwa 'ruh'; 'u' is rounded 'ew'; final -er is 'ay'",
+          "paramètre → 'pah-rah-MEH-truh' — è with grave is 'eh' (not 'ay'); final -tre is a quick 'truh'"
         ]
       },
       {
@@ -704,175 +806,211 @@ export const lessons: FrenchLesson[] = [
           "principale → pran-si-pal",
           "grandes → grãnd",
           "robuste → ro-bust"
+        ],
+        "pronunciation_focus_en": [
+          "demeure → 'duh-MUR' — opening 'de' is schwa 'duh'; final -eure is 'ur' with rounded lips, no English r-color",
+          "principale → 'pran-see-PAHL' — nasal 'in'; feminine -e fully pronounces the 'l'",
+          "grandes → 'GRAHND' — nasal 'an'; feminine plural makes the -d sounded; final -s silent",
+          "robuste → 'roh-BEWST' — 'u' is rounded 'ew'; final -e silent; pronounce the -st cluster clearly"
         ]
       }
     ],
     "cultural_notes_vi": "Văn hóa tranh luận học thuật Pháp khác biệt sâu sắc với Việt Nam ở MỤC ĐÍCH của tranh luận. Ở Pháp, phản biện một đồng nghiệp = TÔN TRỌNG họ (« tu mérites mes objections »); ở Việt Nam, phản biện công khai có thể bị đọc là làm mất mặt. Sinh viên Việt mới đến Pháp dễ rơi vào hai cực:\n\n(1) IM LẶNG để giữ « hòa khí » — bị giáo sư đánh giá là chưa nắm bài, hoặc tệ hơn, là không có lập trường. Một « doctorant qui ne dit rien » trong séminaire là một « doctorant qui n'avance pas ».\n\n(2) BÙNG NỔ defensive khi bị phản biện — « vous ne comprenez pas mon sujet ». Phản ứng này được đọc là chưa trưởng thành về học thuật; ở Pháp, KHÔNG đồng nhất bản thân với luận điểm.\n\nKHUNG TRANH LUẬN CHUẨN ở Pháp tuân theo mô hình « thèse / antithèse / synthèse » (tam đoạn luận biện chứng) đã thấm vào não người Pháp từ lycée:\n\n(a) THÈSE: Trình bày luận điểm chính.\n(b) ANTITHÈSE: Tự phát biểu phản biện mạnh nhất chống lại luận điểm của mình. Đây là điểm KHÁC BIỆT — bạn KHÔNG đợi người khác phản biện; bạn TỰ phản biện trước.\n(c) SYNTHÈSE: Vượt qua mâu thuẫn bằng cách đưa ra một góc nhìn mới tích hợp được phần đúng của cả hai.\n\nTẠI SAO QUAN TRỌNG: trong soutenance, hội đồng KỲ VỌNG bạn đã tự chỉ ra điểm yếu của mình. Nếu họ tìm thấy một điểm yếu mà bạn KHÔNG nêu — bạn bị xem là chưa làm bài kỹ. Nếu bạn nêu trước, hội đồng tôn trọng — và thường giúp bạn tìm câu trả lời.\n\nVỀ TƯ THẾ KHI BỊ PHẢN BIỆN: Pháp expect bạn (1) NGHE TRỌN VẸN, không cắt; (2) TÓM TẮT lời phản biện trước khi đáp (« si je vous comprends bien, votre objection porte sur… ») — chứng minh bạn đã nghe; (3) ĐÁP bằng nội dung không bằng cảm xúc; (4) CHẤP NHẬN nếu lập luận đối phương đúng — « vous avez raison, cette objection tient » thắng điểm hơn là cố cãi.\n\nMỘT CÔNG THỨC NGUY HIỂM cần tránh: « Je suis désolée mais… » trước phản biện. Người Pháp đọc câu này là sinh viên A2 đang sợ. Thay bằng: « Permettez-moi de nuancer », « Je me permets toutefois de penser que », « Sur ce point précis, je serais plus prudente ».",
+    "cultural_notes_en": "Anglophone academics moving into French scholarly debate often misread the PURPOSE of argument. In France, critiquing a colleague's work = HONORING them ('tu mérites mes objections' — 'you deserve my objections'). The Anglo-American instinct to soften disagreement with 'with all due respect' or to volunteer 'I might be wrong, but…' reads as evasive in French. Two opposite traps to avoid:\n\n(1) SILENCE to keep things 'nice' — the French read this as either underprepared or lacking a position. A 'doctorant qui ne dit rien' (doctoral student who says nothing) is, in the seminar's collective judgment, a 'doctorant qui n'avance pas' (one who isn't progressing).\n\n(2) DEFENSIVE EXPLOSION when critiqued — 'you don't understand my topic'. This is read as academic immaturity; in France you do NOT identify personally with your claims.\n\nTHE STANDARD ARGUMENTATIVE FRAME in France follows the 'thèse / antithèse / synthèse' (dialectical) model, drilled into every French student from the lycée onwards:\n\n(a) THÈSE: state your main claim.\n(b) ANTITHÈSE: state the strongest possible objection AGAINST your own claim, yourself. This is the key cultural inversion — you do NOT wait for someone else to critique you; you critique yourself first.\n(c) SYNTHÈSE: transcend the contradiction by offering a new perspective that integrates the legitimate parts of both.\n\nWHY THIS MATTERS: at a defense, the committee EXPECTS you to have already named your own weaknesses. If they find a weakness you haven't acknowledged, you're read as careless. If you've named it first, they respect you — and often help you find the answer.\n\nWHEN YOU'RE BEING CRITIQUED, French expectations: (1) LISTEN COMPLETELY, do not interrupt; (2) SUMMARIZE the objection before responding ('si je vous comprends bien, votre objection porte sur…') — proves you heard it; (3) RESPOND with content, not emotion; (4) ACCEPT if the opponent is right — 'vous avez raison, cette objection tient' wins you more points than fighting on.\n\nONE DANGEROUS FORMULA to avoid: 'Je suis désolée mais…' before counter-arguing. The French hear this as an A2 student in fear. Replace with: 'Permettez-moi de nuancer', 'Je me permets toutefois de penser que', 'Sur ce point précis, je serais plus prudente'. The French academic register softens through formality and conditional mood, NOT through apologetic prefacing.",
     "tip_advice_vi": "Cấu trúc 4 phần để phản biện một luận điểm trong séminaire / soutenance:\n\n(1) RECONNAISSANCE — công nhận điều đúng trong lập luận đối phương. « Je vous accorde volontiers que… », « Il est exact que… », « Vous avez raison de souligner que… ». Người Pháp tôn trọng người concède trước khi phản biện. Đi thẳng vào phản biện = bị đọc là cứng đầu.\n\n(2) NUANCE — nêu giới hạn của lập luận đối phương. « Cela étant, ce raisonnement présuppose que… », « Une telle conclusion néglige toutefois que… », « Cette analyse demeure valide tant qu'on accepte que… »\n\n(3) ARGUMENT NỘI DUNG — đưa lập luận của bạn. « De mon côté, je soutiendrais plutôt que… », « Une autre lecture, qui me paraît plus féconde, consisterait à… »\n\n(4) OUVERTURE — mở cho đồng nghiệp phản hồi. « Cela étant, je suis preneuse de vos objections sur ce point précis. », « Comment vous-même articulez-vous ce paradoxe ? »\n\nCỤM HỮU ÍCH PHÂN THEO MỤC ĐÍCH:\n\nĐỂ CHẤP NHẬN MỘT PHẦN:\n- « Je vous accorde ce point. » (= tôi nhường điểm này)\n- « C'est juste, sur ce point. » (= đúng, ở điểm này)\n- « Votre remarque est tout à fait fondée. » (= nhận xét hoàn toàn có cơ sở)\n\nĐỂ PHẢN BIỆN NHẸ:\n- « Permettez-moi de nuancer. » (= cho phép tôi làm rõ sắc thái)\n- « Je serais plus prudente sur ce point. » (= tôi sẽ thận trọng hơn)\n- « Il me semble qu'il faudrait distinguer… » (= có vẻ cần phân biệt)\n\nĐỂ PHẢN BIỆN MẠNH:\n- « Je ne vous suis pas sur ce point. » (= tôi không theo bạn)\n- « Cela me paraît contestable. » (= điều đó có vẻ tranh luận được)\n- « L'argument ne me convainc pas. » (= lập luận không thuyết phục tôi)\n- « Je me permets de réfuter cette thèse. » (= cho phép tôi bác bỏ)\n\nTRÁNH:\n- « C'est faux. » (= sai) — quá thẳng, không có sắc thái\n- « Vous vous trompez. » (= bạn nhầm) — tấn công cá nhân\n- « N'importe quoi. » (= vô lý) — hoàn toàn không phù hợp\n- « Avec tout le respect… » (kiểu Anh-Mỹ) — calque, đọc là không tự nhiên\n\nKHI BẠN SAI: « Vous avez raison, je révise ma position. » — câu này thắng điểm CAO hơn cố cãi. Hội đồng đánh giá khả năng học hỏi cao hơn lập trường cứng nhắc.",
+    "tip_advice_en": "Four-part structure for counter-arguing in a seminar or defense:\n\n(1) RECOGNITION — acknowledge what's right in the opponent's argument. 'Je vous accorde volontiers que…', 'Il est exact que…', 'Vous avez raison de souligner que…'. The French respect interlocutors who concede before pushing back. Jumping straight to disagreement reads as stubborn.\n\n(2) NUANCE — name the limits of the opponent's reasoning. 'Cela étant, ce raisonnement présuppose que…', 'Une telle conclusion néglige toutefois que…', 'Cette analyse demeure valide tant qu'on accepte que…'\n\n(3) SUBSTANTIVE ARGUMENT — present your own position. 'De mon côté, je soutiendrais plutôt que…', 'Une autre lecture, qui me paraît plus féconde, consisterait à…'\n\n(4) OPENING — leave space for the colleague to respond. 'Cela étant, je suis preneuse de vos objections sur ce point précis.', 'Comment vous-même articulez-vous ce paradoxe ?'\n\nUSEFUL PHRASES BY INTENT:\n\nTO PARTIALLY ACCEPT:\n- 'Je vous accorde ce point.' (I'll concede that point)\n- 'C'est juste, sur ce point.' (Fair, on this point)\n- 'Votre remarque est tout à fait fondée.' (Your remark is entirely well-founded)\n\nTO PUSH BACK SOFTLY:\n- 'Permettez-moi de nuancer.' (Allow me to add nuance)\n- 'Je serais plus prudente sur ce point.' (I'd be more cautious here)\n- 'Il me semble qu'il faudrait distinguer…' (It seems to me we'd need to distinguish…)\n\nTO PUSH BACK FIRMLY:\n- 'Je ne vous suis pas sur ce point.' (I don't follow you here)\n- 'Cela me paraît contestable.' (That seems open to challenge)\n- 'L'argument ne me convainc pas.' (The argument doesn't convince me)\n- 'Je me permets de réfuter cette thèse.' (Allow me to refute this thesis)\n\nAVOID:\n- 'C'est faux.' (That's wrong) — too blunt, no nuance\n- 'Vous vous trompez.' (You're mistaken) — personal attack\n- 'N'importe quoi.' (Nonsense) — completely inappropriate\n- 'Avec tout le respect…' (anglophone calque) — sounds unnatural, the French don't use this construction\n\nWHEN YOU'RE WRONG: 'Vous avez raison, je révise ma position.' This sentence wins you MORE points than digging in. French committees value the capacity to update over rigid posture-holding.",
     "vocabulary": [
       {
         "word": "objecter à juste titre",
         "en": "to object rightly",
         "vi": "phản biện một cách chính đáng",
         "pos": "v.",
-        "pronunciation_vi": "ob-jèk-té a just ti-trơ"
+        "pronunciation_vi": "ob-jèk-té a just ti-trơ",
+        "pronunciation_en": "ob-zhek-TAY ah zhewst TEE-truh — 'j' is soft 'zh'; 'juste' has rounded 'u'; the formula signals fair, legitimate critique"
       },
       {
         "word": "un raisonnement",
         "en": "a line of reasoning",
         "vi": "một lập luận",
         "pos": "n.m.",
-        "pronunciation_vi": "rè-zon-mã"
+        "pronunciation_vi": "rè-zon-mã",
+        "pronunciation_en": "reh-zohn-MAHN — 's' between vowels sounds like 'z'; final -ment is nasal 'mahn', t silent"
       },
       {
         "word": "soulever une difficulté",
         "en": "to raise a difficulty",
         "vi": "đặt ra một khó khăn",
         "pos": "v.",
-        "pronunciation_vi": "su-lơ-vé un di-fi-kul-té"
+        "pronunciation_vi": "su-lơ-vé un di-fi-kul-té",
+        "pronunciation_en": "soo-luh-VAY ewn dee-fee-kewl-TAY — 'ou' is 'oo'; double 'u' rounded; final -té is 'tay'"
       },
       {
         "word": "réfuter une thèse",
         "en": "to refute a thesis",
         "vi": "bác bỏ một luận điểm",
         "pos": "v.",
-        "pronunciation_vi": "ré-fu-té un tèz"
+        "pronunciation_vi": "ré-fu-té un tèz",
+        "pronunciation_en": "ray-few-TAY ewn TEZ — 'u' rounded in both 'fu' and 'une'; 'thèse' ends on sharp 'z'"
       },
       {
         "word": "reformuler",
         "en": "to reformulate",
         "vi": "diễn đạt lại",
         "pos": "v.",
-        "pronunciation_vi": "rơ-for-mu-lé"
+        "pronunciation_vi": "rơ-for-mu-lé",
+        "pronunciation_en": "ruh-for-mew-LAY — opening 're' is schwa 'ruh'; 'u' is rounded 'ew'; final -er is 'ay'"
       },
       {
         "word": "un paramètre négligé",
         "en": "an overlooked parameter",
         "vi": "biến số bị bỏ qua",
         "pos": "n.m.",
-        "pronunciation_vi": "pa-ra-mè-trơ né-gli-jé"
+        "pronunciation_vi": "pa-ra-mè-trơ né-gli-jé",
+        "pronunciation_en": "ehn pah-rah-MEH-truh nay-glee-ZHAY — è with grave is 'eh'; -gé is 'zhay' (soft 'zh')"
       },
       {
         "word": "il n'en demeure pas moins que",
         "en": "it nonetheless remains that",
         "vi": "dù sao thì",
         "pos": "loc.",
-        "pronunciation_vi": "il nã dơ-mơr pa moan kơ"
+        "pronunciation_vi": "il nã dơ-mơr pa moan kơ",
+        "pronunciation_en": "eel nahn duh-MUR pah MWAN kuh — long C1 connector; nasal -en; 'moins' is 'mwan'; signals contrast preserving previous point"
       },
       {
         "word": "je vous accorde que",
         "en": "I grant you that",
         "vi": "tôi nhường bạn rằng",
         "pos": "loc.",
-        "pronunciation_vi": "jơ vu-za-kord kơ"
+        "pronunciation_vi": "jơ vu-za-kord kơ",
+        "pronunciation_en": "zhuh voo-zah-KOR kuh — liaison vous→accorde makes 'voo-zah'; opener for concession before counter-argument"
       },
       {
         "word": "contestable",
         "en": "open to challenge",
         "vi": "có thể tranh luận",
         "pos": "adj.",
-        "pronunciation_vi": "kõn-tès-ta-blơ"
+        "pronunciation_vi": "kõn-tès-ta-blơ",
+        "pronunciation_en": "kohn-tes-TAH-bluh — nasal 'on'; final -ble is a quick 'bluh'; polite way to say 'doubtful' in academic register"
       },
       {
         "word": "prendre acte de",
         "en": "to take note of",
         "vi": "ghi nhận",
         "pos": "v.",
-        "pronunciation_vi": "prãn-drơ akt dơ"
+        "pronunciation_vi": "prãn-drơ akt dơ",
+        "pronunciation_en": "PRAHN-druh AKT duh — nasal 'en'; the -ct cluster is sounded but quick; formal acknowledgment of a point made"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Roussel",
         "text": "Madame Tran, votre conclusion me semble aller bien au-delà de ce que vos données autorisent.",
-        "vi": "Cô Trần, kết luận của cô có vẻ đi xa hơn nhiều so với điều dữ liệu của cô cho phép."
+        "vi": "Cô Trần, kết luận của cô có vẻ đi xa hơn nhiều so với điều dữ liệu của cô cho phép.",
+        "en": "Ms. Tran, your conclusion seems to me to go well beyond what your data permit."
       },
       {
         "speaker": "Linh",
         "text": "Je vous accorde volontiers que la formulation actuelle prête le flanc à cette critique.",
-        "vi": "Tôi sẵn sàng nhường rằng cách phát biểu hiện tại tạo cơ hội cho lời phê bình đó."
+        "vi": "Tôi sẵn sàng nhường rằng cách phát biểu hiện tại tạo cơ hội cho lời phê bình đó.",
+        "en": "I'll readily grant you that the current formulation invites that critique."
       },
       {
         "speaker": "Linh",
         "text": "Cela étant, il me semble que la conclusion, une fois reformulée en termes plus prudents, demeure défendable.",
-        "vi": "Dù vậy, theo tôi khi diễn đạt lại bằng những thuật ngữ thận trọng hơn, kết luận vẫn có thể bảo vệ."
+        "vi": "Dù vậy, theo tôi khi diễn đạt lại bằng những thuật ngữ thận trọng hơn, kết luận vẫn có thể bảo vệ.",
+        "en": "That said, it seems to me that the conclusion, once reformulated in more cautious terms, remains defensible."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Sur ce point précis, je vous suis. Mais reformulez-la dans la version définitive.",
-        "vi": "Ở điểm cụ thể này, tôi theo cô. Nhưng cô diễn đạt lại trong bản chính thức."
+        "vi": "Ở điểm cụ thể này, tôi theo cô. Nhưng cô diễn đạt lại trong bản chính thức.",
+        "en": "On this specific point, I'm with you. But reformulate it in the final version."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Roussel (séminaire doctoral)",
         "text": "Merci, Madame Tran, pour cet exposé. J'ouvre la discussion. Mon premier point porte sur votre conclusion finale, à la page trente-deux.",
-        "vi": "Cảm ơn cô Trần về phần trình bày. Tôi mở thảo luận. Điểm đầu tiên là về kết luận cuối cùng, trang 32."
+        "vi": "Cảm ơn cô Trần về phần trình bày. Tôi mở thảo luận. Điểm đầu tiên là về kết luận cuối cùng, trang 32.",
+        "en": "Thank you, Ms. Tran, for the presentation. I'll open the discussion. My first point concerns your final conclusion, page thirty-two."
       },
       {
         "speaker": "Linh",
         "text": "Je vous écoute.",
-        "vi": "Tôi nghe thầy."
+        "vi": "Tôi nghe thầy.",
+        "en": "I'm listening."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Vous écrivez que « l'exposition précoce à une L2 produit un avantage métalinguistique durable ». Le verbe « produit » me gêne — il pose une causalité forte que vos données, à mon sens, ne suffisent pas à établir.",
-        "vi": "Cô viết rằng « tiếp xúc sớm với ngôn ngữ thứ hai tạo ra một lợi thế siêu ngôn ngữ bền lâu ». Động từ « tạo ra » làm tôi băn khoăn — nó đặt một nhân quả mạnh mà theo tôi, dữ liệu của cô không đủ để xác lập."
+        "vi": "Cô viết rằng « tiếp xúc sớm với ngôn ngữ thứ hai tạo ra một lợi thế siêu ngôn ngữ bền lâu ». Động từ « tạo ra » làm tôi băn khoăn — nó đặt một nhân quả mạnh mà theo tôi, dữ liệu của cô không đủ để xác lập.",
+        "en": "You write that 'early exposure to an L2 produces a lasting metalinguistic advantage'. The verb 'produces' bothers me — it posits a strong causality that your data, in my view, are not sufficient to establish."
       },
       {
         "speaker": "Linh",
         "text": "Je vous accorde volontiers ce point — la formulation est, sur ce mot précis, plus forte que ne le permettent mes données.",
-        "vi": "Tôi sẵn sàng nhường điểm này — cách phát biểu, ở chính từ này, mạnh hơn điều dữ liệu cho phép."
+        "vi": "Tôi sẵn sàng nhường điểm này — cách phát biểu, ở chính từ này, mạnh hơn điều dữ liệu cho phép.",
+        "en": "I'll readily concede that point — the formulation, on this specific word, is stronger than my data permit."
       },
       {
         "speaker": "Linh",
         "text": "Cela étant, permettez-moi de défendre l'esprit de la conclusion, à défaut du verbe choisi. Mes données établissent une corrélation forte et stable entre l'exposition précoce et la performance métalinguistique adulte. La causalité reste, en effet, à démontrer — mais la corrélation, elle, est solide.",
-        "vi": "Dù vậy, cho phép tôi bảo vệ tinh thần của kết luận, ngoại trừ động từ đã chọn. Dữ liệu xác lập một tương quan mạnh và ổn định giữa tiếp xúc sớm và năng lực siêu ngôn ngữ ở tuổi trưởng thành. Quan hệ nhân quả còn cần chứng minh — nhưng tương quan thì vững chắc."
+        "vi": "Dù vậy, cho phép tôi bảo vệ tinh thần của kết luận, ngoại trừ động từ đã chọn. Dữ liệu xác lập một tương quan mạnh và ổn định giữa tiếp xúc sớm và năng lực siêu ngôn ngữ ở tuổi trưởng thành. Quan hệ nhân quả còn cần chứng minh — nhưng tương quan thì vững chắc.",
+        "en": "That said, allow me to defend the spirit of the conclusion, even if the verb choice was wrong. My data establish a strong and stable correlation between early exposure and adult metalinguistic performance. Causality does indeed remain to be demonstrated — but the correlation itself is solid."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Bien — mais alors, reformulez. « Produit » n'est pas le bon verbe; « est associée à » serait plus juste. Vous voyez la différence ?",
-        "vi": "Tốt — nhưng thì cô diễn đạt lại. « Tạo ra » không phải động từ đúng; « gắn liền với » sẽ chính xác hơn. Cô thấy khác biệt chứ?"
+        "vi": "Tốt — nhưng thì cô diễn đạt lại. « Tạo ra » không phải động từ đúng; « gắn liền với » sẽ chính xác hơn. Cô thấy khác biệt chứ?",
+        "en": "Good — but then reformulate. 'Produces' isn't the right verb; 'is associated with' would be more accurate. You see the difference?"
       },
       {
         "speaker": "Linh",
         "text": "Tout à fait. Je remplace par « est associée à », et je rajoute une phrase suivante qui précise: « la nature causale de cette association demeure à investiguer ». Cela me permet de tenir la conclusion sans la sur-vendre.",
-        "vi": "Hoàn toàn. Tôi thay bằng « gắn liền với », và thêm câu sau làm rõ: « bản chất nhân quả của liên hệ này vẫn cần được khảo sát ». Điều đó giúp tôi giữ kết luận mà không bán quá."
+        "vi": "Hoàn toàn. Tôi thay bằng « gắn liền với », và thêm câu sau làm rõ: « bản chất nhân quả của liên hệ này vẫn cần được khảo sát ». Điều đó giúp tôi giữ kết luận mà không bán quá.",
+        "en": "Absolutely. I'll replace with 'is associated with', and add a following sentence that specifies: 'the causal nature of this association remains to be investigated'. That lets me hold the conclusion without over-selling it."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Excellent. Deuxième point — plus fondamental. À la page vingt, vous écrivez que vos résultats « invalident » le modèle de Cummins. C'est un mot fort.",
-        "vi": "Xuất sắc. Điểm thứ hai — căn bản hơn. Ở trang 20, cô viết rằng kết quả của cô « bác bỏ » mô hình của Cummins. Đó là từ mạnh."
+        "vi": "Xuất sắc. Điểm thứ hai — căn bản hơn. Ở trang 20, cô viết rằng kết quả của cô « bác bỏ » mô hình của Cummins. Đó là từ mạnh.",
+        "en": "Excellent. Second point — more fundamental. On page twenty, you write that your results 'invalidate' Cummins's model. That's a strong word."
       },
       {
         "speaker": "Linh",
         "text": "Sur ce point, je me permets de tenir ma position. Cummins postule une dépendance stricte entre âge d'acquisition et compétence métalinguistique adulte. Mes données montrent qu'au-delà de douze ans, la corrélation s'inverse partiellement — ce qui est, à proprement parler, une réfutation du modèle dans sa version forte.",
-        "vi": "Ở điểm này, cho phép tôi giữ lập trường. Cummins đặt giả định một sự phụ thuộc nghiêm ngặt giữa tuổi tiếp thu và năng lực siêu ngôn ngữ ở tuổi trưởng thành. Dữ liệu của tôi cho thấy sau 12 tuổi, tương quan đảo một phần — điều, nói chính xác, là một bác bỏ mô hình ở phiên bản mạnh."
+        "vi": "Ở điểm này, cho phép tôi giữ lập trường. Cummins đặt giả định một sự phụ thuộc nghiêm ngặt giữa tuổi tiếp thu và năng lực siêu ngôn ngữ ở tuổi trưởng thành. Dữ liệu của tôi cho thấy sau 12 tuổi, tương quan đảo một phần — điều, nói chính xác, là một bác bỏ mô hình ở phiên bản mạnh.",
+        "en": "On this point, I'll allow myself to hold my position. Cummins posits a strict dependence between age of acquisition and adult metalinguistic competence. My data show that beyond twelve years, the correlation partially inverts — which is, strictly speaking, a refutation of the model in its strong version."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Vous tenez bien votre position — c'est rare et c'est bien. Mais alors, soyez précise: vous invalidez « la version forte » du modèle, pas le modèle lui-même. Cummins lui-même a publié une version atténuée en 1991. Citez-la, et précisez que c'est la version forte que vous réfutez.",
-        "vi": "Cô giữ vững lập trường — hiếm và tốt. Nhưng thì cô chính xác: cô bác bỏ « phiên bản mạnh » của mô hình, không phải mô hình bản thân. Cummins cũng đã công bố một phiên bản nhẹ năm 1991. Cô trích nó, và làm rõ chính phiên bản mạnh là cái cô bác bỏ."
+        "vi": "Cô giữ vững lập trường — hiếm và tốt. Nhưng thì cô chính xác: cô bác bỏ « phiên bản mạnh » của mô hình, không phải mô hình bản thân. Cummins cũng đã công bố một phiên bản nhẹ năm 1991. Cô trích nó, và làm rõ chính phiên bản mạnh là cái cô bác bỏ.",
+        "en": "You hold your ground well — that's rare and that's good. But then be precise: you invalidate 'the strong version' of the model, not the model itself. Cummins himself published a softer version in 1991. Cite it, and specify that the strong version is what you're refuting."
       },
       {
         "speaker": "Linh",
         "text": "Je prends acte. Cette précision rend la critique à la fois plus juste et plus défendable. Je l'intègre.",
-        "vi": "Tôi ghi nhận. Sự chính xác này khiến phê bình vừa đúng đắn hơn vừa dễ bảo vệ hơn. Tôi đưa vào."
+        "vi": "Tôi ghi nhận. Sự chính xác này khiến phê bình vừa đúng đắn hơn vừa dễ bảo vệ hơn. Tôi đưa vào.",
+        "en": "I take note. That precision makes the critique both more accurate and more defensible. I'll incorporate it."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Très bien. Dernier point, plus léger. Vous remerciez Bourdieu en introduction d'un emprunt méthodologique. Or, ce que vous décrivez relève davantage de l'héritage durkheimien classique que d'une singularité bourdieusienne.",
-        "vi": "Rất tốt. Điểm cuối cùng, nhẹ hơn. Cô cảm ơn Bourdieu ở phần dẫn nhập về một mượn phương pháp. Tuy nhiên, điều cô mô tả thuộc về di sản Durkheim cổ điển nhiều hơn là độc đáo của Bourdieu."
+        "vi": "Rất tốt. Điểm cuối cùng, nhẹ hơn. Cô cảm ơn Bourdieu ở phần dẫn nhập về một mượn phương pháp. Tuy nhiên, điều cô mô tả thuộc về di sản Durkheim cổ điển nhiều hơn là độc đáo của Bourdieu.",
+        "en": "Very good. Last point, lighter. You thank Bourdieu in the introduction for a methodological borrowing. However, what you describe belongs more to the classical Durkheimian legacy than to anything specifically Bourdieusian."
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison — je révise. C'est un attribut erroné de ma part, lié à une lecture trop rapide. Je remercie Durkheim ou je précise quelle inflexion exactement je dois à Bourdieu.",
-        "vi": "Thầy đúng — tôi sửa. Đó là quy gán sai từ phía tôi, do đọc quá nhanh. Tôi cảm ơn Durkheim hoặc làm rõ chính xác thay đổi nào tôi nợ Bourdieu."
+        "vi": "Thầy đúng — tôi sửa. Đó là quy gán sai từ phía tôi, do đọc quá nhanh. Tôi cảm ơn Durkheim hoặc làm rõ chính xác thay đổi nào tôi nợ Bourdieu.",
+        "en": "You're right — I'll revise. It's a misattribution on my part, tied to too-quick a reading. Either I thank Durkheim, or I specify exactly which inflection I owe to Bourdieu."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "C'est cela. Trois points retravaillés et le chapitre tient. Vous défendez bien — vous savez quand céder, quand tenir. C'est précisément ce qu'on attend à votre niveau.",
-        "vi": "Chính vậy. Ba điểm sửa lại và chương đứng vững. Cô bảo vệ tốt — cô biết khi nào nhường, khi nào giữ. Đó chính là điều mong đợi ở cấp độ của cô."
+        "vi": "Chính vậy. Ba điểm sửa lại và chương đứng vững. Cô bảo vệ tốt — cô biết khi nào nhường, khi nào giữ. Đó chính là điều mong đợi ở cấp độ của cô.",
+        "en": "Exactly. Three points reworked and the chapter holds. You defend well — you know when to yield, when to hold. That's precisely what's expected at your level."
       }
     ],
     "roleplay_prompts": [
@@ -880,30 +1018,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, một colleague trẻ nói luận điểm của bạn « gần giống » một bài báo của một tác giả khác. Phản hồi: nếu bạn ĐÃ đọc tác giả ấy, làm rõ khác biệt; nếu CHƯA đọc, cảm ơn lời nhắc và cam kết đọc — đừng giả vờ.",
       "Bạn tham dự một buổi bảo vệ luận án của bạn cùng phòng thí nghiệm. Trong vai « rapporteur », bạn phải đặt một câu hỏi phản biện chính đáng nhưng không hằn học. Soạn câu hỏi tuân theo cấu trúc « Je vous accorde X, mais ne pensez-vous pas que Y… »"
     ],
+    "roleplay_prompts_en": [
+      "A committee member says: 'Votre méthodologie qualitative ne permet aucune généralisation.' Respond using the 4-part structure (recognition / nuance / argument / opening) — DO NOT trade blows, DO NOT capitulate unjustifiably. The point is to demonstrate intellectual composure while protecting your work's actual contribution.",
+      "In a seminar, a junior colleague says your thesis 'closely resembles' a paper by another author. Respond: if you HAVE read that author, clarify the differences precisely; if you HAVE NOT read it, thank them for the reference and commit to reading — do not pretend. French academia punishes faked familiarity far more than gaps in reading.",
+      "You're attending the defense of a labmate. Acting as 'rapporteur', you must pose a legitimate critical question without being hostile. Draft the question following the structure 'Je vous accorde X, mais ne pensez-vous pas que Y…' — concede a real strength of the work first, then raise a substantive concern."
+    ],
     "register_notes": "GIỌNG TRANH LUẬN C1 ở Pháp đòi hỏi tách CON NGƯỜI khỏi LUẬN ĐIỂM. KHÔNG « vous vous trompez » mà « votre lecture me paraît contestable »; KHÔNG « je ne suis pas d'accord » (B1) mà « je me permets de nuancer », « je serais plus prudente sur ce point ».\n\nDÙNG CONDITIONNEL ĐỂ HEDGE: « Je dirais plutôt que… », « Il conviendrait de… », « On pourrait avancer que… ». Conditionnel làm dịu khẳng định và mở chỗ cho người khác phản biện. Indicatif présent cho khẳng định cứng = đọc B2 chưa lên C1.\n\nSUBJONCTIF SAU BIỂU THỨC NGHI VẤN: « il n'est pas certain que cela soit le cas », « rien n'indique que la relation soit causale », « je doute que cette généralisation tienne ». Thiếu subjonctif ở những điểm này = đọc B2.\n\nCÁCH MỞ ĐẦU PHẢN BIỆN tế nhị:\n- « Permettez-moi de soulever un point. » (cho phép tôi đặt ra một điểm)\n- « Si vous me permettez de prolonger votre raisonnement… » (nếu bạn cho phép tôi nối tiếp lập luận)\n- « Je me permets une objection. » (cho phép tôi một phản biện)\n\nKHI BUỘC PHẢI MẠNH (đối phương sai rõ rệt và bảo vệ luận điểm chống cải sửa):\n- « Je crains que cette analyse ne tienne pas. » (tôi e phân tích này không đứng vững — chú ý « ne » expletive)\n- « Cette thèse me semble difficilement soutenable. » (luận điểm này có vẻ khó bảo vệ)\n- « L'argument repose sur un présupposé que je conteste. » (lập luận dựa trên tiền đề tôi tranh luận)\n\nKHI ĐỒNG Ý NHƯNG BỔ SUNG:\n- « Tout à fait. J'ajouterais simplement que… » (hoàn toàn. Tôi chỉ thêm rằng)\n- « Je vous suis pleinement, et je préciserais que… » (tôi theo bạn, và tôi sẽ chính xác hóa)\n\nKHI ĐỒNG Ý VỚI ĐIỀU KIỆN:\n- « Je vous suis sur le diagnostic — moins sur la conclusion qu'il faut en tirer. » (tôi theo bạn về chẩn đoán — ít hơn về kết luận cần rút ra)\n\nGIỌNG cần luôn TÔN TRỌNG dù phản biện mạnh đến đâu. « Vouvoiement » bắt buộc trong séminaire, soutenance, conférence — kể cả với người nhỏ tuổi hơn. Tutoiement chỉ trong nhóm phòng thí nghiệm thân thiết, ngoài giờ làm việc.",
+    "register_notes_en": "C1 ARGUMENTATIVE VOICE in French separates THE PERSON from THE CLAIM. NEVER 'vous vous trompez' (you're mistaken — personal); use 'votre lecture me paraît contestable' (your reading seems open to challenge — claim-focused). NEVER 'je ne suis pas d'accord' (B1-level disagreement); use 'je me permets de nuancer', 'je serais plus prudente sur ce point'.\n\nUSE THE CONDITIONAL TO HEDGE: 'Je dirais plutôt que…' (I would rather say that…), 'Il conviendrait de…' (it would be appropriate to…), 'On pourrait avancer que…' (one could advance that…). The conditional softens an assertion and leaves rhetorical space for counter-argument. Indicative present for hard claims reads as B2, not C1.\n\nSUBJUNCTIVE AFTER EXPRESSIONS OF DOUBT: 'il n'est pas certain que cela soit le cas', 'rien n'indique que la relation soit causale', 'je doute que cette généralisation tienne'. Missing the subjunctive at these anchor points reads as B2.\n\nWAYS TO OPEN A CRITIQUE GRACEFULLY:\n- 'Permettez-moi de soulever un point.' (Allow me to raise a point)\n- 'Si vous me permettez de prolonger votre raisonnement…' (If you'll allow me to extend your reasoning…)\n- 'Je me permets une objection.' (I allow myself an objection — French formal self-effacement)\n\nWHEN YOU MUST PUSH HARD (the opponent is plainly wrong and defending the claim against revision):\n- 'Je crains que cette analyse ne tienne pas.' (I fear this analysis does not hold — note the 'ne' expletive after 'craindre que')\n- 'Cette thèse me semble difficilement soutenable.' (This thesis seems difficult to maintain)\n- 'L'argument repose sur un présupposé que je conteste.' (The argument rests on a premise I contest)\n\nWHEN AGREEING BUT ADDING:\n- 'Tout à fait. J'ajouterais simplement que…' (Absolutely. I would simply add that…)\n- 'Je vous suis pleinement, et je préciserais que…' (I'm fully with you, and I would clarify that…)\n\nWHEN PARTIALLY AGREEING:\n- 'Je vous suis sur le diagnostic — moins sur la conclusion qu'il faut en tirer.' (I follow you on the diagnosis — less on the conclusion to be drawn from it)\n\nTONE must remain RESPECTFUL no matter how strong the disagreement. 'Vouvoiement' is mandatory in seminars, defenses, conferences — even with younger interlocutors. Tutoiement only in tight lab groups, outside formal hours. Anglophones often default to first names too quickly; French academics will notice and adjust away.",
     "idiom_glosses": [
       {
         "idiom": "Prêter le flanc à (soutenu)",
         "literal": "Đưa sườn cho",
+        "literal_en": "To offer one's flank to",
         "meaning": "Tự để hở mặt yếu cho lời phản biện.",
+        "meaning_en": "To leave oneself exposed to critique — a military metaphor (the flank is the vulnerable side). Closest English equivalent: 'to leave oneself open to' or 'to invite criticism'. A self-aware academic acknowledges where their argument 'prête le flanc' before the committee finds it.",
         "example": "Cette formulation prête le flanc à une critique méthodologique évidente."
       },
       {
         "idiom": "Tenir la route (courant en académique)",
         "literal": "Giữ con đường",
+        "literal_en": "To hold the road",
         "meaning": "Vẫn vững chắc qua kiểm tra; chịu được phản biện.",
+        "meaning_en": "To remain solid under scrutiny; to withstand critique. Originally an automotive metaphor (a car that 'holds the road' handles well). English equivalent: 'to hold up' or 'to stand up to scrutiny'. Used to commend an argument that survives a tough Q&A.",
         "example": "L'argumentation tient la route, malgré les objections soulevées."
       },
       {
         "idiom": "Battre en brèche (soutenu)",
         "literal": "Đánh vỡ tường",
+        "literal_en": "To beat into the breach",
         "meaning": "Bác bỏ có hệ thống; phá vỡ một luận điểm.",
+        "meaning_en": "To dismantle systematically; to demolish a thesis. A siege-warfare metaphor (a 'brèche' is a wall-breach). English equivalent: 'to demolish' or 'to dismantle the argument'. Used for fundamental, not incidental, refutation.",
         "example": "Bourdieu bat en brèche l'idée d'une école méritocratique neutre."
       },
       {
         "idiom": "Faire mouche (soutenu)",
         "literal": "Trúng ruồi",
+        "literal_en": "To hit the fly",
         "meaning": "Trúng đích — luận điểm đánh chính xác vào điểm yếu.",
+        "meaning_en": "To hit the target — an objection that lands precisely on a weak point. The 'mouche' is the bullseye on an archery target (originally a literal painted fly). English equivalent: 'to hit the mark' or 'to land a blow'. A graceful concession to an opponent: 'Votre objection a fait mouche.'",
         "example": "Votre objection a fait mouche — je dois revoir mon raisonnement."
       }
     ],
@@ -911,29 +1063,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Il n'en ___ pas moins que la conclusion principale paraît robuste.",
-        "answer": "demeure"
+        "answer": "demeure",
+        "hint_vi": "động từ 'demeurer' (vẫn còn) ở ngôi thứ ba số ít — phần của cụm cố định 'il n'en ___ pas moins que'",
+        "hint_en": "verb 'demeurer' (to remain) in 3rd person singular — part of the fixed C1 connector 'il n'en ___ pas moins que' (it nonetheless remains that)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "objecter à juste titre",
-            "phản biện chính đáng"
+            "phản biện chính đáng (to object on legitimate grounds)"
           ],
           [
             "réfuter une thèse",
-            "bác bỏ một luận điểm"
+            "bác bỏ một luận điểm (to refute a thesis)"
           ],
           [
             "prendre acte de",
-            "ghi nhận"
+            "ghi nhận (to take note of / formally acknowledge)"
           ]
         ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
+        "instruction": "Nối thuật ngữ với nghĩa Việt",
+        "instruction_en": "Match the argumentative term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi không có ý bác bỏ luận điểm đối lập, mà đề xuất diễn đạt lại có tính đến một biến số đã bị bỏ qua.",
+        "english": "Far from refuting the opposing thesis, I rather propose to reformulate it while taking into account an overlooked parameter.",
         "french": "Loin de réfuter la thèse adverse, je propose plutôt de la reformuler en tenant compte d'un paramètre négligé."
       }
     ]
