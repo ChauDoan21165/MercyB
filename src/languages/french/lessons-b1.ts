@@ -1312,6 +1312,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "allait→a-le",
           "restaurant→rét-x-tô-răng"
+        ],
+        "pronunciation_focus_en": [
+          "allait 'ah-LAY' — imperfect form of aller; '-ait' = 'eh' (like 'pet')",
+          "restaurant 'res-toh-RAHN' — nasal 'an' at the end; final 't' silent"
         ]
       },
       {
@@ -1320,6 +1324,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "propose→prô-pô-dơ",
           "commencer→cô-măng-xê"
+        ],
+        "pronunciation_focus_en": [
+          "propose 'pro-POHZ' — single 's' between vowels = 'z'; final '-e' silent",
+          "commencer 'koh-mahn-SAY' — nasal 'en'; '-cer' verb ending with soft 'c'"
         ]
       },
       {
@@ -1328,6 +1336,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "pourquoi→pua-qua",
           "essayer→ê-xe-iê"
+        ],
+        "pronunciation_focus_en": [
+          "pourquoi 'poor-KWAH' — 'oi' = 'wah'",
+          "essayer 'eh-say-YAY' — 'ay' in the middle becomes a 'y' glide; '-er' = 'ay'"
         ]
       },
       {
@@ -1336,6 +1348,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "pourrions→pu-ri-on",
           "reporter→rơ-po-tê"
+        ],
+        "pronunciation_focus_en": [
+          "pourrions 'poo-RYOHN' — conditional ending '-ions' = nasal 'yohn'",
+          "reporter 'ruh-por-TAY' — '-er' = 'ay'; the soft French 'r' twice"
         ]
       },
       {
@@ -1344,132 +1360,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "dirait→đi-re",
           "partir→pa-tia"
+        ],
+        "pronunciation_focus_en": [
+          "dirait 'dee-REH' — conditional of dire; '-ait' = 'eh'",
+          "partir 'par-TEER' — soft French 'r' at the end (not English 'r')"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp dùng nhiều cách đề xuất: câu hỏi (Et si on…?), điều kiện (On pourrait…), gợi ý nhẹ (Je te propose…). 'Pourquoi ne pas…' là cách rất Pháp.",
+    "cultural_notes_en": "French speakers love indirect suggestion frames: 'Et si on…?' (what if we…?), the conditional 'On pourrait…' (we could…), and the very French 'Pourquoi ne pas…?' (why not…?). All three soften an idea into a proposal rather than a directive. In English you'd say 'Let's…'; in French, 'Si on…' is the casual everyday equivalent.",
     "tip_advice_vi": "Công việc: 'Je suggère que…'. Đồng ý: 'Bonne idée !'. Từ chối nhẹ: 'C'est une bonne idée, mais…'",
+    "tip_advice_en": "Work register: 'Je suggère que…' + subjunctive is the formal equivalent of 'I suggest that…'. Quick agreement: 'Bonne idée !' (good idea!). Soft refusal: 'C'est une bonne idée, mais…' — open with the praise, the 'mais' carries the no. Skipping the praise lands as cold.",
     "vocabulary": [
       {
         "word": "proposer",
         "en": "to suggest",
         "vi": "đề xuất",
         "pos": "v.",
-        "pronunciation_vi": "prô-pô-dê"
+        "pronunciation_vi": "prô-pô-dê",
+        "pronunciation_en": "pro-poh-ZAY — single 's' between vowels = 'z'; '-er' = 'ay'"
       },
       {
         "word": "suggérer",
         "en": "to suggest",
         "vi": "gợi ý",
         "pos": "v.",
-        "pronunciation_vi": "xu-giê-rê"
+        "pronunciation_vi": "xu-giê-rê",
+        "pronunciation_en": "soog-zhay-RAY — 'gg' before 'é' = 'gzh'; '-er' = 'ay'"
       },
       {
         "word": "si on…",
         "en": "what if we…",
         "vi": "nếu chúng ta…",
         "pos": "expr.",
-        "pronunciation_vi": "xi on"
+        "pronunciation_vi": "xi on",
+        "pronunciation_en": "see OHN — nasal 'on'; the contraction Et si on becomes 'eh-see-ohn'"
       },
       {
         "word": "pourquoi pas",
         "en": "why not",
         "vi": "tại sao không",
         "pos": "expr.",
-        "pronunciation_vi": "pua-qua pa"
+        "pronunciation_vi": "pua-qua pa",
+        "pronunciation_en": "poor-KWAH PAH — 'oi' = 'wah'; idiomatic friendly assent"
       },
       {
         "word": "ça te dit",
         "en": "are you up for",
         "vi": "bạn muốn",
         "pos": "expr.",
-        "pronunciation_vi": "xa tơ đi"
+        "pronunciation_vi": "xa tơ đi",
+        "pronunciation_en": "sah tuh DEE — literally 'does it tell you'; idiomatic 'are you up for it?'"
       },
       {
         "word": "l'alternative",
         "en": "alternative",
         "vi": "lựa chọn khác",
         "pos": "n.f.",
-        "pronunciation_vi": "lan-te-na-tiv"
+        "pronunciation_vi": "lan-te-na-tiv",
+        "pronunciation_en": "lal-tair-nah-TEEV — 'l'' contracts; final 'v' sounded"
       },
       {
         "word": "la solution",
         "en": "solution",
         "vi": "giải pháp",
         "pos": "n.f.",
-        "pronunciation_vi": "xô-lu-xi-on"
+        "pronunciation_vi": "xô-lu-xi-on",
+        "pronunciation_en": "soh-loo-SYON — '-tion' = 'syon'; French 'u' rounded"
       },
       {
         "word": "envisager",
         "en": "to consider",
         "vi": "dự tính",
         "pos": "v.",
-        "pronunciation_vi": "ăng-vi-da-giê"
+        "pronunciation_vi": "ăng-vi-da-giê",
+        "pronunciation_en": "ahn-vee-zah-ZHAY — nasal 'en' start; 'g' before 'e' = 'zh'"
       },
       {
         "word": "tenter",
         "en": "to try",
         "vi": "thử",
         "pos": "v.",
-        "pronunciation_vi": "tăng-tê"
+        "pronunciation_vi": "tăng-tê",
+        "pronunciation_en": "tahn-TAY — nasal 'en'; '-er' = 'ay'"
       },
       {
         "word": "recommander",
         "en": "to recommend",
         "vi": "khuyến nghị",
         "pos": "v.",
-        "pronunciation_vi": "rơ-cô-măng-đê"
+        "pronunciation_vi": "rơ-cô-măng-đê",
+        "pronunciation_en": "ruh-koh-mahn-DAY — nasal 'an' in the middle; '-er' = 'ay'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Je ne sais pas quoi faire ce week-end.",
-        "en": "I don't know what to do this weekend."
+        "en": "I don't know what to do this weekend.",
+        "vi": "Cuối tuần này mình không biết làm gì."
       },
       {
         "speaker": "B",
         "text": "Et si on visitait le Louvre ? C'est gratuit dimanche.",
-        "en": "What if we visited the Louvre? It's free Sunday."
+        "en": "What if we visited the Louvre? It's free Sunday.",
+        "vi": "Hay mình đi Louvre? Chủ nhật miễn phí đó."
       },
       {
         "speaker": "A",
         "text": "Bonne idée ! Ça fait longtemps.",
-        "en": "Good idea! It's been a while."
+        "en": "Good idea! It's been a while.",
+        "vi": "Ý hay đấy! Cũng lâu rồi mình chưa đi."
       },
       {
         "speaker": "B",
         "text": "Super, on se retrouve à 10h ?",
-        "en": "Great, meet at 10am?"
+        "en": "Great, meet at 10am?",
+        "vi": "Tuyệt, 10 giờ gặp nhau nhé?"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Et ___ on allait au cinéma ?",
-        "answer": "si"
+        "answer": "si",
+        "hint_vi": "liên từ — dùng trong cấu trúc đề xuất 'Et si…?'",
+        "hint_en": "conjunction — 'if' in the suggestion frame 'What if…?'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "proposer",
-            "đề xuất"
+            "đề xuất (to suggest)"
           ],
           [
             "envisager",
-            "dự tính"
+            "dự tính (to consider)"
           ],
           [
             "tenter",
-            "thử"
+            "thử (to try)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi đề nghị bắt đầu họp sớm 15 phút.",
+        "english": "I suggest starting the meeting 15 minutes earlier.",
         "french": "Je propose de commencer la réunion 15 minutes plus tôt."
       }
     ]
@@ -1487,6 +1527,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "désolé→đê-dô-lê",
           "retard→rơ-ta"
+        ],
+        "pronunciation_focus_en": [
+          "désolé 'day-zoh-LAY' — single 's' between vowels = 'z'; final 'é' = 'ay'",
+          "retard 'ruh-TAR' — final 'd' silent; soft French 'r'"
         ]
       },
       {
@@ -1495,6 +1539,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "excusez→éc-xcu-dê",
           "exprès→éc-xprê"
+        ],
+        "pronunciation_focus_en": [
+          "excusez 'ek-skoo-ZAY' — 'x' = 'ks'; French 'u' rounded; '-ez' = 'ay'",
+          "exprès 'ek-SPREH' — final 's' silent; 'è' opens the vowel like 'pet'"
         ]
       },
       {
@@ -1503,6 +1551,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "faute→phô-tơ",
           "responsabilité→rét-xpon-xa-bi-li-tê"
+        ],
+        "pronunciation_focus_en": [
+          "faute 'FOHT' — 'au' = 'oh'; final '-e' silent",
+          "responsabilité 'res-pon-sah-bee-lee-TAY' — nasal 'on' in the middle; stress on the last syllable"
         ]
       },
       {
@@ -1511,6 +1563,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "prie→pri",
           "m'excuser→méc-xcu-dê"
+        ],
+        "pronunciation_focus_en": [
+          "prie 'PREE' — 1st-person of prier; final 'e' silent",
+          "m'excuser 'mek-skoo-ZAY' — the 'me' contracts to 'm''; 'x' = 'ks'"
         ]
       },
       {
@@ -1519,132 +1575,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "malheureusement→ma-lơ-rơ-dơ-măng",
           "pourrai→pu-re"
+        ],
+        "pronunciation_focus_en": [
+          "malheureusement 'mal-uh-ruh-zuh-MAHN' — long adverb with the '-ment' suffix nasal at end",
+          "pourrai 'poo-RAY' — future tense of pouvoir; '-ai' = 'ay' (close to 'eh')"
         ]
       }
     ],
     "cultural_notes_vi": "Lời xin lỗi nhiều cấp: Pardon (nhẹ), Désolé (trung bình), Excusez-moi (lịch sự), Je vous prie de m'excuser (trang trọng). Tránh 'C'est pas grave' khi nhận lời xin lỗi.",
+    "cultural_notes_en": "French apologies come in calibrated tiers: 'Pardon' (light — bumping into someone on the métro), 'Désolé' (medium — running late), 'Excusez-moi' (polite — interrupting), 'Je vous prie de m'excuser' (formal — written or to a superior). Using the wrong tier feels off — 'Pardon' for a missed deadline reads dismissive. On the receiving end, 'C'est pas grave' (no big deal) sounds polite to learners but can come across as brushing off the apology; 'Je vous en prie' is the safer formal acknowledgment.",
     "tip_advice_vi": "Đi muộn: gọi điện báo. Không đến được: báo 24h trước. 'Je suis navré' mạnh hơn 'désolé'.",
+    "tip_advice_en": "Running late? Call ahead, don't text. Can't make it at all? Give 24-hour notice — French social calendars are scheduled tighter than in many US cultures, and last-minute cancellation reads as inconsiderate. 'Je suis navré(e)' is a tier heavier than 'désolé' — use it when you genuinely caused harm or major inconvenience.",
     "vocabulary": [
       {
         "word": "désolé",
         "en": "sorry",
         "vi": "xin lỗi",
         "pos": "adj.",
-        "pronunciation_vi": "đê-dô-lê"
+        "pronunciation_vi": "đê-dô-lê",
+        "pronunciation_en": "day-zoh-LAY — single 's' between vowels = 'z'"
       },
       {
         "word": "s'excuser",
         "en": "to apologize",
         "vi": "xin lỗi",
         "pos": "v.",
-        "pronunciation_vi": "xéc-xcu-dê"
+        "pronunciation_vi": "xéc-xcu-dê",
+        "pronunciation_en": "sek-skoo-ZAY — reflexive 's''; 'x' = 'ks'; French 'u' rounded"
       },
       {
         "word": "le regret",
         "en": "regret",
         "vi": "hối tiếc",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-gre"
+        "pronunciation_vi": "rơ-gre",
+        "pronunciation_en": "ruh-GREH — final 't' silent; 'eh' opens like 'pet'"
       },
       {
         "word": "la faute",
         "en": "fault",
         "vi": "lỗi",
         "pos": "n.f.",
-        "pronunciation_vi": "phô-tơ"
+        "pronunciation_vi": "phô-tơ",
+        "pronunciation_en": "FOHT — 'au' = 'oh'; final '-e' silent"
       },
       {
         "word": "pardonner",
         "en": "to forgive",
         "vi": "tha thứ",
         "pos": "v.",
-        "pronunciation_vi": "pa-đô-nê"
+        "pronunciation_vi": "pa-đô-nê",
+        "pronunciation_en": "par-doh-NAY — '-er' = 'ay'; soft French 'r' twice"
       },
       {
         "word": "navré",
         "en": "very sorry",
         "vi": "rất tiếc",
         "pos": "adj.",
-        "pronunciation_vi": "na-vrê"
+        "pronunciation_vi": "na-vrê",
+        "pronunciation_en": "nah-VRAY — stronger than 'désolé'; final 'é' = 'ay'"
       },
       {
         "word": "le malentendu",
         "en": "misunderstanding",
         "vi": "hiểu lầm",
         "pos": "n.m.",
-        "pronunciation_vi": "ma-lăng-tăng-đu"
+        "pronunciation_vi": "ma-lăng-tăng-đu",
+        "pronunciation_en": "mal-ahn-tahn-DOO — two nasal 'en's; final 'u' is the rounded French 'u'"
       },
       {
         "word": "rattraper",
         "en": "to make up for",
         "vi": "bù đắp",
         "pos": "v.",
-        "pronunciation_vi": "ra-tra-pê"
+        "pronunciation_vi": "ra-tra-pê",
+        "pronunciation_en": "rah-trah-PAY — double 't' is one 't' sound; '-er' = 'ay'"
       },
       {
         "word": "involontairement",
         "en": "unintentionally",
         "vi": "vô ý",
         "pos": "adv.",
-        "pronunciation_vi": "anh-vô-lon-te-măng"
+        "pronunciation_vi": "anh-vô-lon-te-măng",
+        "pronunciation_en": "an-voh-lohn-tair-MAHN — nasal 'in' start, nasal 'on' middle, nasal 'ment' end"
       },
       {
         "word": "regrettable",
         "en": "regrettable",
         "vi": "đáng tiếc",
         "pos": "adj.",
-        "pronunciation_vi": "rơ-gre-ta-blơ"
+        "pronunciation_vi": "rơ-gre-ta-blơ",
+        "pronunciation_en": "ruh-greh-TAH-bluh — final '-le' barely voiced"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Désolé d'être en retard, le métro était bloqué.",
-        "en": "Sorry I'm late, metro was blocked."
+        "en": "Sorry I'm late, metro was blocked.",
+        "vi": "Xin lỗi vì đến muộn, tàu điện ngầm bị tắc."
       },
       {
         "speaker": "B",
         "text": "Ce n'est pas grave, ça arrive.",
-        "en": "It's okay, it happens."
+        "en": "It's okay, it happens.",
+        "vi": "Không sao đâu, chuyện thường mà."
       },
       {
         "speaker": "A",
         "text": "Je te dois un café pour me faire pardonner !",
-        "en": "I owe you a coffee to make up!"
+        "en": "I owe you a coffee to make up!",
+        "vi": "Mình nợ bạn một ly cà phê để chuộc tội nha!"
       },
       {
         "speaker": "B",
         "text": "Avec plaisir, mais envoie un message la prochaine fois !",
-        "en": "With pleasure, but send a message next time!"
+        "en": "With pleasure, but send a message next time!",
+        "vi": "Vui lòng nhận, nhưng lần sau nhắn tin báo trước nhé!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je suis ___ pour le retard.",
-        "answer": "désolé"
+        "answer": "désolé",
+        "hint_vi": "tính từ — xin lỗi",
+        "hint_en": "adjective — sorry (medium tier of apology)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "s'excuser",
-            "xin lỗi"
+            "xin lỗi (to apologize)"
           ],
           [
             "la faute",
-            "lỗi"
+            "lỗi (fault)"
           ],
           [
             "pardonner",
-            "tha thứ"
+            "tha thứ (to forgive)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Xin lỗi, tôi không cố ý làm phiền.",
+        "english": "Sorry, I didn't mean to bother you.",
         "french": "Excusez-moi, je n'ai pas fait exprès de vous déranger."
       }
     ]
@@ -1662,6 +1742,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "étais→ê-te",
           "commencerais→cô-măng-xơ-re"
+        ],
+        "pronunciation_focus_en": [
+          "étais 'ay-TEH' — imperfect of être; '-ais' = 'eh'",
+          "commencerais 'koh-mahn-suh-REH' — conditional ending '-erais' = 'uh-REH'"
         ]
       },
       {
@@ -1670,6 +1754,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "place→plát",
           "dirais→đi-re"
+        ],
+        "pronunciation_focus_en": [
+          "place 'PLAHSS' — final '-e' silent; 'a' = 'ah'",
+          "dirais 'dee-REH' — conditional of dire; '-ais' = 'eh'"
         ]
       },
       {
@@ -1678,6 +1766,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "conseil→côn-xây",
           "directement→đi-réc-tơ-măng"
+        ],
+        "pronunciation_focus_en": [
+          "conseil 'kohn-SAY' — nasal 'on'; '-eil' = 'ay' as in 'day'",
+          "directement 'dee-rekt-MAHN' — adverb '-ment' = nasal 'MAHN'"
         ]
       },
       {
@@ -1686,6 +1778,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "devrais→đơ-vre",
           "vacances→va-căng"
+        ],
+        "pronunciation_focus_en": [
+          "devrais 'duh-VREH' — conditional of devoir; '-ais' = 'eh'",
+          "vacances 'vah-KAHNSS' — nasal 'an' in the middle; final 's' silent"
         ]
       },
       {
@@ -1694,132 +1790,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "mieux→mi-ơ",
           "consulter→côn-xun-tê"
+        ],
+        "pronunciation_focus_en": [
+          "mieux 'MYUH' — 'ieu' is one sound, like 'yuh' but rounded",
+          "consulter 'kohn-sool-TAY' — nasal 'on'; '-er' = 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "Khuyên tế nhị: 'Si j'étais toi…' (nhẹ nhất), 'Tu devrais…' (mạnh hơn). Tránh mệnh lệnh. Không khuyên chủ đề nhạy cảm trừ khi được hỏi.",
+    "cultural_notes_en": "Advice in French is graded by directness: 'Si j'étais toi…' (if I were you — softest), 'À ta place…' (in your shoes — neutral), 'Tu devrais…' (you should — firmer). Skip imperatives (Fais ça !) unless you're a parent or boss. On sensitive subjects — money, relationships, parenting — French speakers wait to be asked. Volunteered advice on those topics reads as overstepping in a way it might not in Anglo cultures where 'I just thought I'd mention…' is more accepted.",
     "tip_advice_vi": "Công việc: 'Je vous recommande de…'. Cá nhân: 'À ta place…' thân mật hơn.",
+    "tip_advice_en": "Work register: 'Je vous recommande de…' + infinitive is the safe formal recommendation. Personal register with friends: 'À ta place…' is warmer than 'Tu devrais…'. The conditional in 'serait', 'pourrait', 'devrait' softens the advice — French uses the conditional where English uses 'I'd suggest' / 'you might want to'.",
     "vocabulary": [
       {
         "word": "le conseil",
         "en": "advice",
         "vi": "lời khuyên",
         "pos": "n.m.",
-        "pronunciation_vi": "côn-xây"
+        "pronunciation_vi": "côn-xây",
+        "pronunciation_en": "kohn-SAY — nasal 'on'; '-eil' = 'ay'"
       },
       {
         "word": "conseiller",
         "en": "to advise",
         "vi": "khuyên",
         "pos": "v.",
-        "pronunciation_vi": "côn-xê-iê"
+        "pronunciation_vi": "côn-xê-iê",
+        "pronunciation_en": "kohn-say-YAY — '-eill' = 'ay-y'; '-er' = 'ay'"
       },
       {
         "word": "recommander",
         "en": "to recommend",
         "vi": "khuyến nghị",
         "pos": "v.",
-        "pronunciation_vi": "rơ-cô-măng-đê"
+        "pronunciation_vi": "rơ-cô-măng-đê",
+        "pronunciation_en": "ruh-koh-mahn-DAY — nasal 'an' in the middle"
       },
       {
         "word": "si j'étais toi",
         "en": "if I were you",
         "vi": "nếu là bạn",
         "pos": "expr.",
-        "pronunciation_vi": "xi giê-tê toa"
+        "pronunciation_vi": "xi giê-tê toa",
+        "pronunciation_en": "see zhay-tay TWAH — 'j'' = 'zh'; conditional softener"
       },
       {
         "word": "à ta place",
         "en": "in your shoes",
         "vi": "ở vị trí bạn",
         "pos": "expr.",
-        "pronunciation_vi": "a ta plát"
+        "pronunciation_vi": "a ta plát",
+        "pronunciation_en": "ah tah PLAHSS — literally 'in your place'"
       },
       {
         "word": "tu devrais",
         "en": "you should",
         "vi": "bạn nên",
         "pos": "expr.",
-        "pronunciation_vi": "tu đơ-vre"
+        "pronunciation_vi": "tu đơ-vre",
+        "pronunciation_en": "too duh-VREH — conditional of devoir; '-ais' = 'eh'"
       },
       {
         "word": "la suggestion",
         "en": "suggestion",
         "vi": "gợi ý",
         "pos": "n.f.",
-        "pronunciation_vi": "xu-giét-xi-on"
+        "pronunciation_vi": "xu-giét-xi-on",
+        "pronunciation_en": "soog-zhes-TYON — 'gg' before 'e' = 'gzh'; '-tion' here = 'tyon' (not the usual syon — special case)"
       },
       {
         "word": "prévenir",
         "en": "to warn",
         "vi": "cảnh báo",
         "pos": "v.",
-        "pronunciation_vi": "prê-vơ-nia"
+        "pronunciation_vi": "prê-vơ-nia",
+        "pronunciation_en": "pray-vuh-NEER — soft French 'r' at end"
       },
       {
         "word": "aider",
         "en": "to help",
         "vi": "giúp đỡ",
         "pos": "v.",
-        "pronunciation_vi": "ê-đê"
+        "pronunciation_vi": "ê-đê",
+        "pronunciation_en": "ay-DAY — 'ai' = 'eh'; '-er' = 'ay'"
       },
       {
         "word": "soutenir",
         "en": "to support",
         "vi": "ủng hộ",
         "pos": "v.",
-        "pronunciation_vi": "xu-tơ-nia"
+        "pronunciation_vi": "xu-tơ-nia",
+        "pronunciation_en": "soo-tuh-NEER — 'ou' = 'oo'; soft French 'r' at end"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Je ne sais pas si je dois accepter ce poste.",
-        "en": "I don't know if I should accept this job."
+        "en": "I don't know if I should accept this job.",
+        "vi": "Mình không biết có nên nhận công việc này không."
       },
       {
         "speaker": "B",
         "text": "Si j'étais toi, je prendrais le temps de réfléchir.",
-        "en": "If I were you, I'd take time to think."
+        "en": "If I were you, I'd take time to think.",
+        "vi": "Nếu là bạn, mình sẽ dành thời gian suy nghĩ thêm."
       },
       {
         "speaker": "A",
         "text": "Mais j'ai peur qu'ils choisissent quelqu'un d'autre.",
-        "en": "But I'm afraid they'll pick someone else."
+        "en": "But I'm afraid they'll pick someone else.",
+        "vi": "Nhưng mình sợ họ chọn người khác mất."
       },
       {
         "speaker": "B",
         "text": "Si c'est le bon poste, ils attendront.",
-        "en": "If it's right, they'll wait."
+        "en": "If it's right, they'll wait.",
+        "vi": "Nếu là công việc phù hợp, họ sẽ chờ thôi."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "___ j'étais toi, j'accepterais.",
-        "answer": "Si"
+        "answer": "Si",
+        "hint_vi": "liên từ điều kiện — 'Nếu'",
+        "hint_en": "conditional conjunction — 'if' (softens advice)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le conseil",
-            "lời khuyên"
+            "lời khuyên (advice)"
           ],
           [
             "recommander",
-            "khuyến nghị"
+            "khuyến nghị (to recommend)"
           ],
           [
             "soutenir",
-            "ủng hộ"
+            "ủng hộ (to support)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi khuyên bạn học 30 phút mỗi ngày.",
+        "english": "I'd recommend studying 30 minutes a day.",
         "french": "Je te conseille d'étudier 30 minutes par jour."
       }
     ]
