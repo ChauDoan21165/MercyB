@@ -3414,13 +3414,27 @@ export const lessons: JapaneseLesson[] = [
       "Chủ khảo hỏi 'điểm độc đáo ở đâu'. Trả lời bằng '〜に独自性を求めました' thay vì 自分の研究は新しいです.",
       "Bạn cần nêu limitation ngay từ đầu. Dùng '射程' và '限界' để nghe mature, không defensive."
     ],
+    "roleplay_prompts_en": [
+      "You open a 博士論文審査. Use 'ご審査を賜り' and present the order 研究課題 → 方法 → 知見 → 限界. Do not use a casual 今日は来てくれて.",
+      "The chief examiner asks 'where is the originality?'. Answer with '〜に独自性を求めました' rather than 自分の研究は新しいです.",
+      "You need to state a limitation right from the start. Use '射程' and '限界' so it sounds mature, not defensive."
+    ],
     "register_notes": "博士論文審査 register nằm giữa lecture formal và oral defense humility. (1) OPENING is highly formulaic: ご多用のところ / ご審査を賜り / 誠にありがとうございます. (2) Self-reference should be '本論文' or '本研究', not 私. (3) Originality is framed as '独自性を求める/位置づける' rather than boasting. (4) Scope control is essential: name 限界 early so committee sees maturity. (5) Voice pace: long compounds like 博士論文審査 and 形成過程 need deliberate chunking; rushing sounds nervous.",
+    "register_notes_en": "Register: between a formal lecture and oral-defense humility — open with the formulaic ご多用のところ / ご審査を賜り / 誠にありがとうございます, self-refer as 本論文 / 本研究 not 私, frame originality as 独自性を求める/位置づける not boasting, name 限界 early, and chunk long compounds (博士論文審査, 形成過程) deliberately so you don't sound nervous.",
     "idiom_glosses": [
-      { "idiom": "襟を正す (えりをただす)", "literal": "Chỉnh cổ áo", "meaning": "[硬い] Nghiêm túc bước vào một việc trọng đại.", "example": "審査に臨むにあたり、改めて襟を正す思いでおります。" },
-      { "idiom": "俎上に載せる (そじょうにのせる)", "literal": "Đặt lên thớt", "meaning": "[書き言葉] Đưa một vấn đề ra để phân tích kỹ.", "example": "本論文では、従来当然視されてきた前提を俎上に載せる。" }
+      { "idiom": "襟を正す (えりをただす)", "literal": "Chỉnh cổ áo", "meaning": "[硬い] Nghiêm túc bước vào một việc trọng đại.", "example": "審査に臨むにあたり、改めて襟を正す思いでおります。",
+        "literal_en": "to straighten one's collar (eri o tadasu)",
+        "meaning_en": "To approach a weighty matter with renewed seriousness. (formal)",
+        "example_en": "As I face the examination, I feel anew the need to straighten my collar." },
+      { "idiom": "俎上に載せる (そじょうにのせる)", "literal": "Đặt lên thớt", "meaning": "[書き言葉] Đưa một vấn đề ra để phân tích kỹ.", "example": "本論文では、従来当然視されてきた前提を俎上に載せる。",
+        "literal_en": "to place on the chopping board (sojō ni noseru)",
+        "meaning_en": "To bring an issue out for thorough analysis. (written)",
+        "example_en": "In this dissertation, premises that have been taken for granted are put on the chopping board." }
     ],
     "cultural_notes_vi": "Bảo vệ luận án tiến sĩ ở Nhật thường ít theatrical hơn một số môi trường phương Tây: không 'defend aggressively', mà trình bày chặt, nhận chỉ摘, và chứng minh bạn hiểu giới hạn của mình. Chủ khảo và phó khảo giữ vai trò phân tầng rõ. Ứng viên không nên tranh thắng; nên cho thấy năng lực sửa, giới hạn claim, và định vị đóng góp khiêm tốn nhưng rõ.",
+    "cultural_notes_en": "A doctoral defense in Japan is usually less theatrical than in some Western settings: not 'defend aggressively,' but present tightly, accept criticism, and demonstrate that you understand the limits of your own work. The chief and sub-examiners hold clearly tiered roles. The candidate should not compete to 'win'; they should show the ability to revise, bound their claims, and position their contribution modestly but clearly.",
     "tip_advice_vi": "Template mở đầu: cảm ơn hội đồng → tên luận án → vấn đề nghiên cứu → điểm độc đáo → thứ tự trình bày. Câu an toàn: 本日は、研究課題、方法、主要な知見、限界の順にご説明いたします. Nếu run: đọc chậm ở compounds dài; dừng nhẹ sau 本論文は.",
+    "tip_advice_en": "Opening template: thank the committee → the dissertation title → the research problem → the original point → the order of presentation. A safe sentence: 本日は、研究課題、方法、主要な知見、限界の順にご説明いたします. If nervous: read slowly through long compounds; pause slightly after 本論文は.",
     "exercises": [
       { "type": "fill-blank", "question": "本日はご多用のところ、本博士論文のご審査を___、誠にありがとうございます。", "answer": "賜り" },
       { "type": "translation", "vietnamese": "Luận án này định vị đóng góp ở việc kết nối phân tích tư liệu và phỏng vấn.", "japanese": "本論文は、資料分析と聞き取り調査を接続する点に貢献を位置づけるものである。" }
@@ -3468,13 +3482,27 @@ export const lessons: JapaneseLesson[] = [
       "Bạn không agree hoàn toàn. Dùng ただし after acknowledgement, then evidence-based explanation. Không nói それは違います.",
       "Bạn cần hứa sửa luận án. Dùng 修正いたします / 再構成いたします, không casual 直します."
     ],
+    "roleplay_prompts_en": [
+      "The committee says your sample is biased. Start with ご指摘の通り, then name a 制約, then propose a 修正.",
+      "You do not fully agree. Use ただし after the acknowledgement, then an evidence-based explanation. Do not say それは違います.",
+      "You need to promise to revise the dissertation. Use 修正いたします / 再構成いたします, not the casual 直します."
+    ],
     "register_notes": "Trong defense, phản biện tốt gồm 3 bước: ACCEPT THE ISSUE, LIMIT THE DAMAGE, STATE REVISION. 'ご指摘の通り' không có nghĩa bạn surrender toàn bộ argument; nó là entry ticket để trả lời. 'ただし' dùng được, nhưng phải đứng sau acknowledgement. '制約' tốt hơn '弱点' vì nghe academic hơn. '今後の課題' dùng khi chưa sửa ngay được; đừng lạm dụng để né trách nhiệm.",
+    "register_notes_en": "Register: a good rebuttal is three beats — ACCEPT THE ISSUE (ご指摘の通り, the entry ticket, not surrender), LIMIT THE DAMAGE (ただし after the acknowledgement, never before), STATE THE REVISION (修正いたします / 再構成いたします); prefer 制約 over 弱点 as it sounds more academic, and reserve 今後の課題 for what you genuinely cannot fix yet, not to dodge responsibility.",
     "idiom_glosses": [
-      { "idiom": "真摯に受け止める (しんしにうけとめる)", "literal": "Tiếp nhận một cách chân thành", "meaning": "[formal] Nhận góp ý nghiêm túc, không defensive.", "example": "ご批判は真摯に受け止め、修正に反映いたします。" },
-      { "idiom": "議論の余地がある (ぎろんのよちがある)", "literal": "Có khoảng trống để thảo luận", "meaning": "[academic] Vẫn còn điểm cần bàn, không phủ định thô.", "example": "この解釈にはなお議論の余地がございます。" }
+      { "idiom": "真摯に受け止める (しんしにうけとめる)", "literal": "Tiếp nhận một cách chân thành", "meaning": "[formal] Nhận góp ý nghiêm túc, không defensive.", "example": "ご批判は真摯に受け止め、修正に反映いたします。",
+        "literal_en": "to receive sincerely (shinshi ni uketomeru)",
+        "meaning_en": "To take feedback seriously, without being defensive. (formal)",
+        "example_en": "I will take the criticism sincerely and reflect it in the revision." },
+      { "idiom": "議論の余地がある (ぎろんのよちがある)", "literal": "Có khoảng trống để thảo luận", "meaning": "[academic] Vẫn còn điểm cần bàn, không phủ định thô.", "example": "この解釈にはなお議論の余地がございます。",
+        "literal_en": "there is room for discussion (giron no yochi ga aru)",
+        "meaning_en": "There remains a point worth debating — without crudely negating it. (academic)",
+        "example_en": "There still remains room for discussion regarding this interpretation." }
     ],
     "cultural_notes_vi": "Trong bảo vệ tiến sĩ ở Nhật, ứng viên được đánh giá cả về thái độ nhận góp ý. Nếu phản ứng kiểu 'tôi đã đúng rồi', hội đồng dễ xem là chưa trưởng thành học thuật. Nhưng nhận hết cũng nguy hiểm. Cách hay: nhận constraint, giữ contribution, đề xuất sửa.",
+    "cultural_notes_en": "In a Japanese doctoral defense, the candidate is also assessed on how they receive feedback. If the reaction is the 'I was already right' kind, the committee tends to see it as scholarly immaturity. But accepting everything is also dangerous. The good approach: accept the constraint, keep the contribution, propose a revision.",
     "tip_advice_vi": "Công thức trả lời critique: ご指摘の通り + issue noun + ただし + rationale + 修正方針. Ví dụ: ご指摘の通り、資料の偏在は制約でございます。ただし、当該時期の保存状況を踏まえると、現時点で最も妥当な資料群であると考えております.",
+    "tip_advice_en": "A formula for answering critique: ご指摘の通り + issue noun + ただし + rationale + 修正方針. Example: ご指摘の通り、資料の偏在は制約でございます。ただし、当該時期の保存状況を踏まえると、現時点で最も妥当な資料群であると考えております.",
     "exercises": [
       { "type": "fill-blank", "question": "この点につきましては、結論部分でより明確な___を加える必要があると考えております。", "answer": "留保" },
       { "type": "matching", "instruction": "Match defense phrases to function.", "pairs": [
@@ -3526,13 +3554,27 @@ export const lessons: JapaneseLesson[] = [
       "Chair says time is limited. Deflect politely: '詳細は発表後に'.",
       "Questioner asks beyond scope. Dùng 射程外 nhưng acknowledge as future task."
     ],
+    "roleplay_prompts_en": [
+      "You are the presenter, asked about generalizability. Answer with '一般化よりも〜を主眼'.",
+      "The chair says time is limited. Deflect politely: '詳細は発表後に'.",
+      "A questioner asks beyond scope. Use 射程外 but acknowledge it as a future task."
+    ],
     "register_notes": "学会発表 Q&A có three-way dynamics: presenter, questioner, chair. Presenter must answer questioner while respecting chair's time control. Good answers begin with thanks, identify the point, answer narrowly, then defer details. '射程外' acceptable if paired with '重要な検討課題'. Avoid 'わかりません' naked; use '現時点では十分に検討できておりません'.",
+    "register_notes_en": "Register: three-way dynamics — answer the questioner while respecting the chair's time control; begin with thanks, identify the point, answer narrowly, then defer details; 射程外 is acceptable only when paired with 重要な検討課題, and never a bare わかりません — use 現時点では十分に検討できておりません.",
     "idiom_glosses": [
-      { "idiom": "的を射る (まとをいる)", "literal": "Bắn trúng mục tiêu", "meaning": "[neutral] Câu hỏi/góp ý rất đúng trọng tâm.", "example": "先生のご質問は、まさに本研究の課題の的を射ております。" },
-      { "idiom": "紙幅の都合 (しふくのつごう)", "literal": "Do giới hạn giấy", "meaning": "[academic writing] Do giới hạn dung lượng bài viết.", "example": "紙幅の都合上、詳細な分析は別稿に譲る。" }
+      { "idiom": "的を射る (まとをいる)", "literal": "Bắn trúng mục tiêu", "meaning": "[neutral] Câu hỏi/góp ý rất đúng trọng tâm.", "example": "先生のご質問は、まさに本研究の課題の的を射ております。",
+        "literal_en": "to hit the target (mato o iru)",
+        "meaning_en": "A question or comment that is exactly on point. (neutral)",
+        "example_en": "Your question, Professor, hits exactly the heart of this study's problem." },
+      { "idiom": "紙幅の都合 (しふくのつごう)", "literal": "Do giới hạn giấy", "meaning": "[academic writing] Do giới hạn dung lượng bài viết.", "example": "紙幅の都合上、詳細な分析は別稿に譲る。",
+        "literal_en": "owing to paper-space constraints (shifuku no tsugō)",
+        "meaning_en": "Owing to the length limit of the written work. (academic writing)",
+        "example_en": "Owing to space constraints, the detailed analysis is left to a separate paper." }
     ],
     "cultural_notes_vi": "Q&A học hội Nhật thường rất lịch sự nhưng có thể sắc. '大変興味深い' không bảo đảm khen thật; đôi khi chỉ là opening formula trước critique. Presenter cần nghe phần sau. Chair có quyền cắt; đừng chống chair.",
+    "cultural_notes_en": "Q&A at a Japanese conference is usually very polite but can be sharp. '大変興味深い' does not guarantee genuine praise; sometimes it is merely an opening formula before a critique. The presenter must listen to the part that follows. The chair has the right to cut in; do not resist the chair.",
     "tip_advice_vi": "Câu cứu nguy: '現時点では十分に検討できておりませんが、今後の重要な課題として承ります.' Dùng khi không biết, nhưng nhớ ghi lại câu hỏi sau buổi.",
+    "tip_advice_en": "A rescue sentence: '現時点では十分に検討できておりませんが、今後の重要な課題として承ります.' Use it when you don't know — but remember to write the question down after the session.",
     "exercises": [
       { "type": "fill-blank", "question": "時間の___上、詳細は発表後に改めてご相談させていただければ幸いです。", "answer": "関係" },
       { "type": "translation", "vietnamese": "Điểm đó nằm ngoài phạm vi bài trình bày này, nhưng là vấn đề quan trọng cho nghiên cứu sau.", "japanese": "その点は本発表の射程外ではございますが、今後の重要な検討課題でございます。" }
@@ -3580,13 +3622,27 @@ export const lessons: JapaneseLesson[] = [
       "With a peer, use casual but still academic Japanese: たしかに…たださ. With a professor, switch to ご指摘の通りですが.",
       "Reframe opposition as 別解釈の余地 rather than 'wrong'."
     ],
+    "roleplay_prompts_en": [
+      "Practice disagreeing with a seminar participant using なるほど + ただ. No direct それは違います.",
+      "With a peer, use casual but still academic Japanese: たしかに…たださ. With a professor, switch to ご指摘の通りですが.",
+      "Reframe opposition as 別解釈の余地 rather than 'wrong'."
+    ],
     "register_notes": "なるほど is not agreement by itself; in academic Japanese it often means 'I have received your frame'. ただ introduces careful disagreement. ただし is firmer and more written/formal. With 同期: なるほど、でも/たださ acceptable. With 先生: なるほど、ご指摘の通りです。ただし... or ご趣旨は理解いたしました。ただ.... The convention lets disagreement happen without public face-loss.",
+    "register_notes_en": "Register: なるほど is not agreement by itself — in academic Japanese it often means 'I have received your frame'; ただ introduces careful disagreement and ただし is firmer and more written/formal; with 同期, なるほど、でも/たださ is acceptable, with 先生 use なるほど、ご指摘の通りです。ただし… — the convention lets disagreement happen without public face-loss.",
     "idiom_glosses": [
-      { "idiom": "一理ある (いちりある)", "literal": "Có một lý", "meaning": "Có phần đúng, nhưng chưa chắc đủ.", "example": "その反論には一理あるが、資料全体を説明するには不十分である。" },
-      { "idiom": "水掛け論 (みずかけろん)", "literal": "Tranh cãi tạt nước", "meaning": "Cãi qua cãi lại không có bằng chứng tiến triển.", "example": "水掛け論を避けるため、まず前提を整理する必要がある。" }
+      { "idiom": "一理ある (いちりある)", "literal": "Có một lý", "meaning": "Có phần đúng, nhưng chưa chắc đủ.", "example": "その反論には一理あるが、資料全体を説明するには不十分である。",
+        "literal_en": "there is one reason in it (ichiri aru)",
+        "meaning_en": "There is some validity to it, though perhaps not enough.",
+        "example_en": "There is something to that objection, but it is insufficient to account for the whole body of materials." },
+      { "idiom": "水掛け論 (みずかけろん)", "literal": "Tranh cãi tạt nước", "meaning": "Cãi qua cãi lại không có bằng chứng tiến triển.", "example": "水掛け論を避けるため、まず前提を整理する必要がある。",
+        "literal_en": "a water-throwing argument (mizukake-ron)",
+        "meaning_en": "A back-and-forth quarrel that makes no evidential progress.",
+        "example_en": "To avoid a fruitless back-and-forth, the premises must first be sorted out." }
     ],
     "cultural_notes_vi": "Bất đồng trong học thuật Nhật rất hay đi qua cushion. Người nghe native sẽ hiểu 'なるほど、ただ...' là disagreement nhẹ. Người học Việt dễ nghe nhầm thành đồng ý rồi bất ngờ. Hãy chú ý phần sau ただ.",
+    "cultural_notes_en": "Disagreement in Japanese academia very often passes through a cushion. A native listener understands 'なるほど、ただ...' as mild disagreement. Vietnamese learners easily mishear it as agreement and are then taken by surprise. Pay attention to the part after ただ.",
     "tip_advice_vi": "Công thức: なるほど + partial agreement + ただ + scope/premise/data. Nếu nói với giáo sư, thêm ご指摘の通り / ご趣旨は理解いたしました.",
+    "tip_advice_en": "Formula: なるほど + partial agreement + ただ + scope/premise/data. If speaking to a professor, add ご指摘の通り / ご趣旨は理解いたしました.",
     "exercises": [
       { "type": "fill-blank", "question": "なるほど、その解釈にも一理あります。___、資料の年代差を考慮すると、別解釈の余地もございます。", "answer": "ただ" },
       { "type": "translation", "vietnamese": "Tôi hiểu ý thầy/cô. Tuy nhiên, cần xem cẩn thận liệu tiền đề đó có đúng với trường hợp này không.", "japanese": "ご趣旨は理解いたしました。ただし、その前提が本事例にも成立するかは慎重に見る必要がございます。" }
@@ -3634,13 +3690,27 @@ export const lessons: JapaneseLesson[] = [
       "You partially disagree with professor's suggested conclusion change. Say '結論そのものより...' to redirect.",
       "Ask a clarification question with ご趣旨を誤解しておりましたら恐縮ですが."
     ],
+    "roleplay_prompts_en": [
+      "The professor says your argument jumps. Use ご指摘の通り, then state a 修正案.",
+      "You partially disagree with the professor's suggested conclusion change. Say '結論そのものより...' to redirect.",
+      "Ask a clarification question with ご趣旨を誤解しておりましたら恐縮ですが."
+    ],
     "register_notes": "ご指摘の通り is high-value academic keigo. It acknowledges critique, not defeat. Follow with specific diagnosis: 説明不足, 論点整理不足, 接続が弱い. Then revision proposal. ご教示 is more deferential than ご指摘; use with senior professor, not with peer. With peers, 指摘してくれてありがとう is enough.",
+    "register_notes_en": "Register: ご指摘の通り is high-value academic keigo — it acknowledges critique, not defeat; follow it with a specific diagnosis (説明不足, 論点整理不足, 接続が弱い) then a revision proposal; ご教示 is more deferential than ご指摘 (use with a senior professor), while with peers 指摘してくれてありがとう is enough.",
     "idiom_glosses": [
-      { "idiom": "筋を通す (すじをとおす)", "literal": "Thông đường gân/đường lý", "meaning": "Giữ logic nhất quán.", "example": "論旨の筋を通すため、章構成を見直す必要がある。" },
-      { "idiom": "腑に落ちる (ふにおちる)", "literal": "Rơi xuống phủ tạng", "meaning": "Hiểu ra / thấy thuyết phục.", "example": "この説明を加えれば、読者にも腑に落ちやすくなる。" }
+      { "idiom": "筋を通す (すじをとおす)", "literal": "Thông đường gân/đường lý", "meaning": "Giữ logic nhất quán.", "example": "論旨の筋を通すため、章構成を見直す必要がある。",
+        "literal_en": "to run the sinew through (suji o tōsu)",
+        "meaning_en": "To keep the logic consistent.",
+        "example_en": "To keep the line of argument consistent, the chapter structure needs to be revisited." },
+      { "idiom": "腑に落ちる (ふにおちる)", "literal": "Rơi xuống phủ tạng", "meaning": "Hiểu ra / thấy thuyết phục.", "example": "この説明を加えれば、読者にも腑に落ちやすくなる。",
+        "literal_en": "to fall into the viscera (fu ni ochiru)",
+        "meaning_en": "To grasp / find something convincing.",
+        "example_en": "If this explanation is added, it will be easier for readers to find it convincing too." }
     ],
     "cultural_notes_vi": "Với giáo sư Nhật, disagreement cần đi qua hierarchy. Cụm ご指摘の通りですが nghe vừa respectful vừa giữ quyền lập luận. Nhưng dùng quá nhiều cũng thành máy móc. Hãy thêm diagnosis cụ thể sau đó.",
+    "cultural_notes_en": "With a Japanese professor, disagreement must pass through the hierarchy. The phrase ご指摘の通りですが sounds both respectful and preserves your right to argue. But overusing it also becomes mechanical. Add a concrete diagnosis afterward.",
     "tip_advice_vi": "Template email sau meeting: 本日はご指摘を賜り、誠にありがとうございました。ご指摘の通り、第二章の論点整理が不十分でございました。修正案として、〜を追加いたします.",
+    "tip_advice_en": "Post-meeting email template: 本日はご指摘を賜り、誠にありがとうございました。ご指摘の通り、第二章の論点整理が不十分でございました。修正案として、〜を追加いたします.",
     "exercises": [
       { "type": "fill-blank", "question": "先生の___を踏まえ、第三章に補足説明を加える修正案を考えております。", "answer": "ご教示" },
       { "type": "translation", "vietnamese": "Nếu em hiểu sai ý thầy/cô thì xin thứ lỗi, nhưng có phải điểm chính là tính hợp lý của đối tượng so sánh không ạ?", "japanese": "ご趣旨を誤解しておりましたら恐縮ですが、論点は比較対象の妥当性にあるという理解でよろしいでしょうか。" }
@@ -3688,13 +3758,27 @@ export const lessons: JapaneseLesson[] = [
       "Ask senpai for feedback: use 見ていただけませんか, not ultra-heavy keigo.",
       "Talk to peer about weak chapter: switch to plain style but keep academic vocabulary."
     ],
+    "roleplay_prompts_en": [
+      "Ask a professor to review a draft: use ご確認いただけますでしょうか.",
+      "Ask a senpai for feedback: use 見ていただけませんか, not ultra-heavy keigo.",
+      "Talk to a peer about a weak chapter: switch to plain style but keep academic vocabulary."
+    ],
     "register_notes": "Keigo gradient is relational plus situational. 先生 gets honorific request: ご確認いただけますでしょうか. 先輩 gets polite but lighter: 見ていただけませんか. 同期 can take plain style: どう思う? But public seminar raises formality for everyone. Over-keigo with peers creates distance; under-keigo with professor creates risk.",
+    "register_notes_en": "Register: the keigo gradient is relational plus situational — 先生 gets the honorific request ご確認いただけますでしょうか, 先輩 the politer-but-lighter 見ていただけませんか, 同期 the plain どう思う?, but a public seminar raises formality for everyone; over-keigo with peers creates distance, under-keigo with a professor creates risk.",
     "idiom_glosses": [
-      { "idiom": "距離を測る (きょりをはかる)", "literal": "Đo khoảng cách", "meaning": "Ước lượng mức gần xa xã hội trước khi nói.", "example": "研究室では、相手との距離を測りながら敬語を調整する必要がある。" },
-      { "idiom": "角が立つ (かどがたつ)", "literal": "Góc cạnh dựng lên", "meaning": "Làm lời nói nghe sắc, gây mất lòng.", "example": "普通体のまま依頼すると、相手によっては角が立つ。" }
+      { "idiom": "距離を測る (きょりをはかる)", "literal": "Đo khoảng cách", "meaning": "Ước lượng mức gần xa xã hội trước khi nói.", "example": "研究室では、相手との距離を測りながら敬語を調整する必要がある。",
+        "literal_en": "to measure the distance (kyori o hakaru)",
+        "meaning_en": "To gauge the degree of social closeness before speaking.",
+        "example_en": "In the lab, you have to adjust the keigo while measuring the distance to the other person." },
+      { "idiom": "角が立つ (かどがたつ)", "literal": "Góc cạnh dựng lên", "meaning": "Làm lời nói nghe sắc, gây mất lòng.", "example": "普通体のまま依頼すると、相手によっては角が立つ。",
+        "literal_en": "a corner stands up (kado ga tatsu)",
+        "meaning_en": "To make one's words sound sharp and give offense.",
+        "example_en": "Making a request in plain style can, with some people, rub them the wrong way." }
     ],
     "cultural_notes_vi": "Phòng lab Nhật là nơi hierarchy và thân mật cùng tồn tại. Senpai có thể uống cà phê với bạn nhưng vẫn là người đi trước. Với giáo sư, email thường formal hơn nói chuyện hành lang. Với đồng khóa, casual được nhưng khi đang trong seminar, public face làm register tăng.",
+    "cultural_notes_en": "A Japanese lab is a place where hierarchy and intimacy coexist. A senpai may have coffee with you yet is still the one who came before. With a professor, email is usually more formal than hallway conversation. With same-year peers, casual is fine, but in a seminar the public face raises the register.",
     "tip_advice_vi": "Nếu không chắc, dùng one-step safer keigo. Nhưng đừng dùng ultra-keigo với đồng khóa trong chat riêng; nghe xa cách. Rule: person + place + medium. Email formal hơn chat. Public seminar formal hơn hallway.",
+    "tip_advice_en": "If unsure, use one-step-safer keigo. But do not use ultra-keigo with same-year peers in a private chat; it sounds distant. Rule: person + place + medium. Email is more formal than chat. A public seminar is more formal than the hallway.",
     "exercises": [
       { "type": "matching", "instruction": "Match relationship to request phrase.", "pairs": [
         { "japanese": "先生", "english": "ご確認いただけますでしょうか" },
@@ -3746,13 +3830,27 @@ export const lessons: JapaneseLesson[] = [
       "Explain 波及効果 without over-claiming: use 示唆を与える, 期待される.",
       "Ask senpai to review KAKENHI draft with appropriate semi-formal keigo."
     ],
+    "roleplay_prompts_en": [
+      "Write one sentence for 学術的意義 and one for 社会的意義. Avoid the vague 重要です.",
+      "Explain 波及効果 without over-claiming: use 示唆を与える, 期待される.",
+      "Ask a senpai to review a KAKENHI draft with appropriately semi-formal keigo."
+    ],
     "register_notes": "科研費 narrative is persuasive but not salesy. The core is objective -> gap -> originality -> significance -> feasibility. 学術的意義 must name the scholarly debate; 社会的意義 must name concrete publics or practices. '重要である' alone is weak. Use '〜に示唆を与える', '〜を再検討する契機となる', '〜への波及効果が期待される'.",
+    "register_notes_en": "Register: persuasive but not salesy — objective → gap → originality → significance → feasibility; 学術的意義 must name the scholarly debate and 社会的意義 concrete publics or practices; a bare 重要である is weak — use 〜に示唆を与える / 〜を再検討する契機となる / 〜への波及効果が期待される.",
     "idiom_glosses": [
-      { "idiom": "地に足がつく (ちにあしがつく)", "literal": "Chân chạm đất", "meaning": "Thực tế, không bay bổng.", "example": "科研費では、地に足のついた研究計画が求められる。" },
-      { "idiom": "風呂敷を広げる (ふろしきをひろげる)", "literal": "Trải rộng khăn gói", "meaning": "Nói quá rộng, ôm đồm.", "example": "意義を強調するあまり、風呂敷を広げすぎないよう注意する。" }
+      { "idiom": "地に足がつく (ちにあしがつく)", "literal": "Chân chạm đất", "meaning": "Thực tế, không bay bổng.", "example": "科研費では、地に足のついた研究計画が求められる。",
+        "literal_en": "feet on the ground (chi ni ashi ga tsuku)",
+        "meaning_en": "Realistic, not up in the air.",
+        "example_en": "For KAKENHI, a research plan with its feet on the ground is required." },
+      { "idiom": "風呂敷を広げる (ふろしきをひろげる)", "literal": "Trải rộng khăn gói", "meaning": "Nói quá rộng, ôm đồm.", "example": "意義を強調するあまり、風呂敷を広げすぎないよう注意する。",
+        "literal_en": "to spread out the wrapping cloth (furoshiki o hirogeru)",
+        "meaning_en": "To overstate the scope and take on too much.",
+        "example_en": "In emphasizing significance, take care not to spread the wrapping cloth too wide." }
     ],
     "cultural_notes_vi": "科研費 không chỉ là money; nó là genre học thuật riêng. Văn phong cần thuyết phục hội đồng rằng project mới, cần thiết, làm được, và có ảnh hưởng. Nói quá to thường phản tác dụng. Reviewer thích ambition có kiểm soát.",
+    "cultural_notes_en": "科研費 (KAKENHI) is not just money; it is its own academic genre. The prose must persuade the committee that the project is new, necessary, doable, and impactful. Overstating usually backfires — reviewers like controlled ambition.",
     "tip_advice_vi": "Viết KAKENHI: dùng nouns mạnh: 目的, 独創性, 意義, 波及効果, 実現可能性. Mỗi phần trả lời một câu hỏi. Nếu một câu không nói rõ 'ai benefit' hoặc 'debate nào tiến lên', câu đó còn yếu.",
+    "tip_advice_en": "Writing KAKENHI: use strong nouns — 目的, 独創性, 意義, 波及効果, 実現可能性. Each section answers one question. If a sentence doesn't clearly say 'who benefits' or 'which debate it advances,' that sentence is still weak.",
     "exercises": [
       { "type": "fill-blank", "question": "本研究の___意義は、制度史と生活史の接点から移民言語教育を捉え直す点にある。", "answer": "学術的" },
       { "type": "translation", "vietnamese": "Ý nghĩa xã hội là nghiên cứu này gợi ý cho việc thiết kế lại hỗ trợ học tập trong chính sách đa văn hóa cộng sinh.", "japanese": "社会的意義としては、多文化共生政策における学習支援の再設計に示唆を与えることが挙げられる。" }
@@ -3800,13 +3898,27 @@ export const lessons: JapaneseLesson[] = [
       "Show feasibility with 予備調査 and 協力体制.",
       "Add risk management without sounding pessimistic."
     ],
+    "roleplay_prompts_en": [
+      "Explain novelty as a method combination, not merely a new topic.",
+      "Show feasibility with 予備調査 and a 協力体制.",
+      "Add risk management without sounding pessimistic."
+    ],
     "register_notes": "科研費 feasibility prose should be concrete: who, what data, when, what backup. Novelty prose should avoid '世界初' unless truly defensible. Better: '〜を統合する点に新規性がある'. 年次計画 should sound executable, not wishful. Risk management is a strength in Japanese grant writing.",
+    "register_notes_en": "Register: feasibility prose should be concrete — who, what data, when, what backup; novelty prose should avoid 世界初 unless truly defensible, preferring 〜を統合する点に新規性がある; the 年次計画 should sound executable not wishful, and risk management is a strength in Japanese grant writing.",
     "idiom_glosses": [
-      { "idiom": "絵に描いた餅 (えにかいたもち)", "literal": "Bánh mochi vẽ trên tranh", "meaning": "Kế hoạch đẹp nhưng không ăn được, thiếu khả thi.", "example": "実現可能性を示さなければ、計画は絵に描いた餅と見なされる。" },
-      { "idiom": "布石を打つ (ふせきをうつ)", "literal": "Đặt quân cờ chuẩn bị", "meaning": "Chuẩn bị bước nền cho kết quả sau.", "example": "予備調査は本研究の実施に向けた重要な布石である。" }
+      { "idiom": "絵に描いた餅 (えにかいたもち)", "literal": "Bánh mochi vẽ trên tranh", "meaning": "Kế hoạch đẹp nhưng không ăn được, thiếu khả thi.", "example": "実現可能性を示さなければ、計画は絵に描いた餅と見なされる。",
+        "literal_en": "a rice cake painted in a picture (e ni kaita mochi)",
+        "meaning_en": "A fine plan that you cannot eat — lacking feasibility.",
+        "example_en": "Without showing feasibility, the plan is regarded as a pie in the sky." },
+      { "idiom": "布石を打つ (ふせきをうつ)", "literal": "Đặt quân cờ chuẩn bị", "meaning": "Chuẩn bị bước nền cho kết quả sau.", "example": "予備調査は本研究の実施に向けた重要な布石である。",
+        "literal_en": "to lay a preparatory stone (fuseki o utsu)",
+        "meaning_en": "To lay the groundwork for a later result.",
+        "example_en": "The preliminary survey is an important groundwork step toward carrying out the main study." }
     ],
     "cultural_notes_vi": "Reviewer 科研費 đọc rất nhanh. Câu về feasibility phải cụ thể đến mức họ tin bạn làm được trong timeline. Người học hay viết ý tưởng hay nhưng thiếu plan B. Nhật grant prose đánh giá cao risk awareness.",
+    "cultural_notes_en": "KAKENHI reviewers read very fast. The feasibility sentences must be concrete enough that they believe you can do it within the timeline. Learners often write a nice idea but lack a plan B. Japanese grant prose values risk awareness highly.",
     "tip_advice_vi": "Check mỗi KAKENHI paragraph bằng câu hỏi: reviewer có thấy data ở đâu, ai giúp, năm nào làm, nếu fail thì sao không? Nếu không, thêm cụ thể.",
+    "tip_advice_en": "Check each KAKENHI paragraph with the questions: can the reviewer see where the data is, who helps, what year it is done, and what happens if it fails? If not, add specifics.",
     "exercises": [
       { "type": "fill-blank", "question": "本研究の実現可能性は、___調査で得られた資料群によって担保される。", "answer": "予備" },
       { "type": "translation", "vietnamese": "Tính mới không nằm ở việc chỉ đổi đối tượng, mà ở việc tích hợp hai phương pháp.", "japanese": "新規性は、単に対象を変える点ではなく、二つの方法を統合する点にある。" }
@@ -3854,13 +3966,27 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer asks impossible extra analysis. Decline as scope issue, not refusal.",
       "Turn disagreement into 対応方針の説明."
     ],
+    "roleplay_prompts_en": [
+      "Write a response to the reviewer: thank, state the change, give the page/paragraph location.",
+      "The reviewer asks for an impossible extra analysis. Decline it as a scope issue, not a refusal.",
+      "Turn disagreement into 対応方針の説明 (an explanation of your handling policy)."
+    ],
     "register_notes": "査読回答書 is polite, precise, and inspectable. Each response should include: gratitude, action, location. If not complying, explain scope/space/method reason respectfully. Avoid '対応できません'. Prefer '本稿の射程を超えるため、今後の課題として明記いたしました'. Reviewers appreciate page numbers.",
+    "register_notes_en": "Register: 査読回答書 is polite, precise, and inspectable — each response carries gratitude + action + location (page numbers); when not complying, explain a scope/space/method reason respectfully, avoid 対応できません, prefer 本稿の射程を超えるため、今後の課題として明記いたしました.",
     "idiom_glosses": [
-      { "idiom": "言葉を尽くす (ことばをつくす)", "literal": "Dùng hết lời", "meaning": "Giải thích cẩn thận, đầy đủ.", "example": "査読回答では、誤解を避けるため言葉を尽くす必要がある。" },
-      { "idiom": "角を丸める (かどをまるめる)", "literal": "Làm tròn góc cạnh", "meaning": "Làm lời phản hồi mềm hơn.", "example": "反論の角を丸め、対応方針として提示する。" }
+      { "idiom": "言葉を尽くす (ことばをつくす)", "literal": "Dùng hết lời", "meaning": "Giải thích cẩn thận, đầy đủ.", "example": "査読回答では、誤解を避けるため言葉を尽くす必要がある。",
+        "literal_en": "to exhaust one's words (kotoba o tsukusu)",
+        "meaning_en": "To explain carefully and fully.",
+        "example_en": "In a review response, one must explain fully to avoid misunderstanding." },
+      { "idiom": "角を丸める (かどをまるめる)", "literal": "Làm tròn góc cạnh", "meaning": "Làm lời phản hồi mềm hơn.", "example": "反論の角を丸め、対応方針として提示する。",
+        "literal_en": "to round the corners (kado o marumeru)",
+        "meaning_en": "To make a response softer.",
+        "example_en": "Round off the sharp edges of the rebuttal and present it as a handling policy." }
     ],
     "cultural_notes_vi": "Trả lời phản biện ở Nhật rất chú trọng kính trọng reviewer. Ngay cả khi reviewer hiểu sai, response không được viết như 'reviewer wrong'. Hãy viết: 説明が不十分であったため, revised to clarify. Bạn nhận lỗi về clarity, không tự hủy argument.",
+    "cultural_notes_en": "Responding to peer review in Japan places great weight on respect for the reviewer. Even when the reviewer has misunderstood, the response must not be written as 'the reviewer is wrong.' Write instead: 説明が不十分であったため (because the explanation was insufficient), revised to clarify. You take the blame for clarity, not for destroying your argument.",
     "tip_advice_vi": "Response matrix: Comment / Response / Revision location. Mỗi response có page number. Nếu không sửa, phải có reason học thuật, không phải preference.",
+    "tip_advice_en": "Response matrix: Comment / Response / Revision location. Each response has a page number. If you don't revise, there must be a scholarly reason, not a preference.",
     "exercises": [
       { "type": "fill-blank", "question": "ご指摘を踏まえ、三ページ第二段落に先行研究との関係を___いたしました。", "answer": "補足" },
       { "type": "translation", "vietnamese": "Vì vượt quá phạm vi bài này, chúng tôi đã ghi rõ là vấn đề nghiên cứu sau.", "japanese": "本稿の射程を超えるため、今後の課題として明記いたしました。" }
@@ -3908,13 +4034,27 @@ export const lessons: JapaneseLesson[] = [
       "Bridge another scholar's point to your field: '私の分野でいう〜との接点'.",
       "Warn against easy transfer of concepts using 移植可能性 and 慎重に見極める."
     ],
+    "roleplay_prompts_en": [
+      "Moderate an interdisciplinary roundtable. Start with a shared question, not your own field.",
+      "Bridge another scholar's point to your field: '私の分野でいう〜との接点'.",
+      "Warn against the easy transfer of concepts using 移植可能性 and 慎重に見極める."
+    ],
     "register_notes": "Intellectual roundtable register is less rigid than dissertation defense but more abstract. The key move is bridge-building: 接点, 対話可能性, 領域横断. Avoid making other fields sound naive. Use '私の分野でいう' to translate concepts humbly. Good moderators summarize at the level of questions, not opinions.",
+    "register_notes_en": "Register: less rigid than a dissertation defense but more abstract — the key move is bridge-building (接点, 対話可能性, 領域横断), never make other fields sound naive, use 私の分野でいう to translate concepts humbly, and a good moderator summarizes at the level of questions, not opinions.",
     "idiom_glosses": [
-      { "idiom": "橋を架ける (はしをかける)", "literal": "Bắc cầu", "meaning": "Tạo kết nối giữa lĩnh vực/khái niệm.", "example": "本座談会は、教育学と言語学のあいだに橋を架ける試みである。" },
-      { "idiom": "交通整理 (こうつうせいり)", "literal": "Điều tiết giao thông", "meaning": "Sắp xếp các luận điểm để cuộc thảo luận không rối.", "example": "司会者には、複数の論点を交通整理する役割が求められる。" }
+      { "idiom": "橋を架ける (はしをかける)", "literal": "Bắc cầu", "meaning": "Tạo kết nối giữa lĩnh vực/khái niệm.", "example": "本座談会は、教育学と言語学のあいだに橋を架ける試みである。",
+        "literal_en": "to build a bridge (hashi o kakeru)",
+        "meaning_en": "To create a connection between fields or concepts.",
+        "example_en": "This roundtable is an attempt to build a bridge between education studies and linguistics." },
+      { "idiom": "交通整理 (こうつうせいり)", "literal": "Điều tiết giao thông", "meaning": "Sắp xếp các luận điểm để cuộc thảo luận không rối.", "example": "司会者には、複数の論点を交通整理する役割が求められる。",
+        "literal_en": "traffic control (kōtsū seiri)",
+        "meaning_en": "To arrange the various points so the discussion does not get tangled.",
+        "example_en": "The moderator is expected to direct traffic among multiple points of contention." }
     ],
     "cultural_notes_vi": "Tọa đàm học thuật Nhật thường coi trọng 'dịch' giữa lĩnh vực. Một scholar giỏi không chỉ nói field mình, mà giúp người khác hiểu concept của mình có thể và không thể di chuyển sang field khác. Moderator tốt giúp tạo 接点 chứ không ép consensus.",
+    "cultural_notes_en": "A Japanese academic roundtable usually values 'translation' between fields. A good scholar does not only speak about their own field but helps others understand which of their concepts can and cannot move into another field. A good moderator helps create 接点 (points of contact) rather than forcing consensus.",
     "tip_advice_vi": "Roundtable phrase set: 先生のお話を伺いながら..., 私の分野でいう..., 接点を感じました, 一度論点を整理します. Đây là intellectual humility + active synthesis.",
+    "tip_advice_en": "Roundtable phrase set: 先生のお話を伺いながら..., 私の分野でいう..., 接点を感じました, 一度論点を整理します. This is intellectual humility + active synthesis.",
     "exercises": [
       { "type": "fill-blank", "question": "領域横断的な議論では、用語の___可能性そのものが一つの論点となります。", "answer": "翻訳" },
       { "type": "translation", "vietnamese": "Khi kết nối tri thức từ các lĩnh vực khác nhau, cần xem xét cẩn thận khả năng di chuyển của khái niệm.", "japanese": "異なる領域の知見を接続する際には、概念の移植可能性を慎重に見極める必要があります。" }
