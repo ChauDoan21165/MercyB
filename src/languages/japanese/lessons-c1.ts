@@ -169,6 +169,11 @@ export const lessons: JapaneseLesson[] = [
       "Giáo sư hỏi 'điểm khác biệt với nghiên cứu trước là gì?'. Trả lời bằng 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior, then differentiate). KHÔNG dismiss tiền bối — Nhật academic norm là 敬意 (respect) cho prior work.",
       "Giáo sư cảnh báo về over-generalization. Đáp lại bằng 過度の一般化は慎みたく存じます hoặc 結論を急がず、暫定的な位置づけにとどめます. Đây là academic humility — vẫn nghe confident nhưng có hedge."
     ],
+    "roleplay_prompts_en": [
+      "You present your hypothesis at an interim report. Open with 本研究は…という仮説を提示するものである. Do NOT use 思います or mix です/ます in the thesis section — keep the である register. Close with a sentence positioning the hypothesis as 暫定的 (tentative).",
+      "A professor asks 'what is the difference from prior research?'. Answer with 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior work, then differentiate). Do NOT dismiss your predecessors — the Japanese academic norm is 敬意 (respect) for prior work.",
+      "A professor warns against over-generalization. Respond with 過度の一般化は慎みたく存じます or 結論を急がず、暫定的な位置づけにとどめます. This is academic humility — still sound confident, but hedged."
+    ],
     "register_notes": "C1 academic Japanese yêu cầu shift hoàn toàn sang である-style trong luận văn / phát biểu chính thức; ます-style chỉ giữ trong dialogue Q&A. Năm pattern cốt lõi: (1) 提示動詞 — '〜を提示する/〜を提唱する/〜を主張する' thay cho 'I think'. KHÔNG dùng 思います ở luận điểm chính. (2) NOMINALIZATION — biến động từ thành 〜こと/〜もの: 仮説を提示するものである thay vì 仮説を提示する. Suffix 〜性 (妥当性, 蓋然性) và 〜化 (一般化, 体系化) là dấu hiệu C1 prose. (3) HEDGING TIERS — strong: 〜と考えられる; medium: 〜可能性が示唆される; soft: 〜と言えなくもない. Chọn theo strength of evidence. (4) DISCOURSE MARKERS — しかしながら (however, formal), 換言すれば (in other words), さらに言えば (moreover), とはいえ (that said). Tránh でも, だから ở văn viết. (5) HUMBLE-CLAIM — academic Japanese frame claim qua 〜に他ならない (nothing other than) hoặc 〜と位置づけられる (is positioned as) thay vì assertive 'is X'. Cẩn thận: 牽強付会 — đừng đẩy claim quá xa data. Reviewer Nhật rất nhạy với over-claim; hedging không phải yếu mà là dấu hiệu trưởng thành học thuật.",
     "register_notes_en": "Register: switch fully to plain である-style (keep ます only for spoken Q&A), state the claim with 提示する/提唱する rather than 思います, and hedge with 〜と考えられる — to a Japanese reviewer it is over-claiming, not hedging, that reads as the weakness.",
     "idiom_glosses": [
@@ -176,25 +181,37 @@ export const lessons: JapaneseLesson[] = [
         "idiom": "一石を投じる (いっせきをとうじる)",
         "literal": "Ném một viên đá",
         "meaning": "[書き言葉] Đặt vấn đề mới gây thảo luận trong giới — phù hợp khi giả thuyết của bạn challenge consensus.",
-        "example": "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。"
+        "example": "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。",
+        "literal_en": "to cast a single stone (isseki o tōjiru)",
+        "meaning_en": "To raise a new issue that stirs debate in the field — apt when your hypothesis challenges the consensus. (written)",
+        "example_en": "This study can be positioned as an attempt to cast a stone into the conventional received view."
       },
       {
         "idiom": "牽強付会 (けんきょうふかい)",
         "literal": "Cố ép kéo, gò gắn",
         "meaning": "[硬い・書き言葉] Diễn giải gượng ép, đẩy data quá xa — điều cần TRÁNH khi trình bày giả thuyết.",
-        "example": "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。"
+        "example": "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。",
+        "literal_en": "forced, strained construction (kenkyō fukai)",
+        "meaning_en": "A strained, far-fetched interpretation that pushes the data too far — something to AVOID when presenting a hypothesis. (formal, written)",
+        "example_en": "This hypothesis must be carefully verified, without interpreting the data in a forced, strained manner."
       },
       {
         "idiom": "試金石 (しきんせき)",
         "literal": "Đá thử vàng",
         "meaning": "[書き言葉] Phép thử quyết định — dùng khi nói thí nghiệm/data là bài kiểm tra cho giả thuyết.",
-        "example": "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。"
+        "example": "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。",
+        "literal_en": "touchstone (shikinseki)",
+        "meaning_en": "The decisive test — used when an experiment or data serves as the trial for a hypothesis. (written)",
+        "example_en": "The results of this experiment will be the touchstone for gauging the validity of the hypothesis advocated."
       },
       {
         "idiom": "我田引水 (がでんいんすい)",
         "literal": "Dẫn nước về ruộng nhà mình",
         "meaning": "[硬い・書き言葉] Diễn giải có lợi cho mình một cách thiên vị — phải tránh trong academic writing.",
-        "example": "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。"
+        "example": "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。",
+        "literal_en": "drawing water to one's own field (gaden insui)",
+        "meaning_en": "A self-serving, biased interpretation that bends things in one's own favor — to be avoided in academic writing. (formal, written)",
+        "example_en": "So that the interpretation does not lapse into self-serving bias, competing hypotheses must also be examined."
       }
     ],
     "cultural_notes_vi": "Trình bày giả thuyết trong giới học thuật Nhật khác phương Tây ở 4 điểm. (1) 控えめさ (khiêm tốn) cốt lõi — không claim 'chứng minh', chỉ 'gợi ý / cho thấy khả năng'. Câu kết của paper Nhật thường hedged. (2) 先行研究への敬意 — ngay cả khi bạn challenge tiền bối, phải acknowledge họ trước, không bao giờ dismiss. Cụm 〜の知見を踏まえつつ (kế thừa hiểu biết của...) là lễ. (3) 結論の暫定性 — gọi giả thuyết là 暫定的 (tentative) là dấu hiệu trưởng thành học thuật, KHÔNG yếu kém. Reviewer Nhật bonus điểm cho honest hedging. (4) 私 → 本研究/本稿 — chuyển từ ngôi 1 sang 'bài viết này / nghiên cứu này' làm chủ ngữ. 'I argue' = 本稿は〜を主張するものである. Khác VN: ở VN giả thuyết thường viết với 'tôi cho rằng', ở Nhật học thuật, depersonalize hoàn toàn. Mẹo: nếu bí, cụm 〜と考えられる là an toàn nhất — đủ academic, đủ hedge.",
@@ -400,35 +417,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ ra rằng bạn đã paraphrase mà không attribute. Đáp lại bằng ご指摘ありがとうございます。出典の明示が不十分でございました cộng cách bạn fix. KHÔNG defensive — citation lapse là serious, acknowledge cleanly.",
       "Bạn dẫn Yamada (2019) nhưng diễn giải hơi khác ý gốc. Phrase bằng 山田 (二〇一九) は…と論じているが、本研究はこれを発展させ… (acknowledge phần Yamada nói + chỉ ra phần bạn extend). KHÔNG misrepresent — Nhật reviewer kiểm tra original."
     ],
+    "roleplay_prompts_en": [
+      "You need to cite a source whose original you cannot find. Ask your advisor about the format for 孫引き (secondary citation). Open with 一点ご相談がございます. Do NOT decide the format yourself without asking — Japanese academic formatting is strict, and errors get flagged by reviewers.",
+      "A reviewer points out that you paraphrased without attribution. Respond with ご指摘ありがとうございます。出典の明示が不十分でございました plus how you will fix it. Do NOT be defensive — a citation lapse is serious; acknowledge it cleanly.",
+      "You cite Yamada (2019) but interpret it slightly differently from the original. Phrase it with 山田 (二〇一九) は…と論じているが、本研究はこれを発展させ… (acknowledge what Yamada said + state what you extend). Do NOT misrepresent — a Japanese reviewer checks the original."
+    ],
     "register_notes": "Citation register tiers ở C1 academic Japanese: (1) NEUTRAL — '〜によれば' (according to), '〜は〜と述べている' (X states that). Standard, dùng cho đa số. (2) FORMAL — '〜に依拠しつつ' (drawing upon), '〜の知見を踏まえ' (building on findings of). Dùng khi heavy reliance. (3) DISTANCING — '〜とされる' (it is said), '〜と指摘されている' (it has been pointed out). Đánh dấu thông tin received, không tự bạn vouch. Hữu ích khi report claim nhưng chưa chắc. (4) CRITICAL — '〜は…と論じているが、本稿はこの解釈に異を唱える' (X argues, but this paper takes issue with that interpretation). C1 phải biết phân biệt 4 tiers. Số academic Japanese dùng kanji number: 二〇一九年 (2019) chứ không 2019年 trong 縦書き formal papers; 横書き modern paper thì cả hai chấp nhận. Trong dấu ngoặc citation, format Nhật: 山田 (二〇一九) hoặc (山田 二〇一九) — không có dấu phẩy như APA. Trang số: (山田 二〇一九: 四五). Quote ngắn: 「」 ngoặc. Quote dài: indented block. 改変 (alteration) gồm cả thay từ, đổi trật tự, gộp câu — phải mark. Chỉ acceptable change: 旧字体→新字体, full-width→half-width punctuation, [...] cho omission rõ ràng.",
+    "register_notes_en": "Register: pick the citation tier deliberately — neutral 〜によれば / 〜は〜と述べている, formal 〜に依拠しつつ / 〜の知見を踏まえ, distancing 〜とされる / 〜と指摘されている for received claims you do not vouch for, critical 〜は…と論じているが本稿はこの解釈に異を唱える — and use the Japanese in-text form 山田 (二〇一九: 四五), never APA commas.",
     "idiom_glosses": [
       {
         "idiom": "鵜呑みにする (うのみにする)",
         "literal": "Nuốt chửng như con chim cốc nuốt cá",
         "meaning": "[書き言葉・話し言葉] Tin hoặc trích dẫn mà không kiểm tra critically — điều cần tránh khi dùng prior research.",
-        "example": "先行研究の主張を鵜呑みにせず、原典に当たって検証することが求められる。"
+        "example": "先行研究の主張を鵜呑みにせず、原典に当たって検証することが求められる。",
+        "literal_en": "to swallow whole, as a cormorant gulps a fish (unomi ni suru)",
+        "meaning_en": "To believe or quote something without checking it critically — to be avoided when drawing on prior research. (written/spoken)",
+        "example_en": "Rather than swallowing the claims of prior research whole, one is expected to go back to the primary sources and verify them."
       },
       {
         "idiom": "玉石混淆 (ぎょくせきこんこう)",
         "literal": "Ngọc và đá lẫn lộn",
         "meaning": "[書き言葉] Tài liệu hỗn tạp — nguồn tốt và nguồn kém lẫn lộn; phù hợp khi đánh giá literature.",
-        "example": "近年のオンライン文献は玉石混淆であり、引用に際しては選別が肝要となる。"
+        "example": "近年のオンライン文献は玉石混淆であり、引用に際しては選別が肝要となる。",
+        "literal_en": "jewels and stones mixed together (gyokuseki konkō)",
+        "meaning_en": "A mixed bag of sources, good and poor jumbled together — apt when assessing the literature. (written)",
+        "example_en": "Recent online literature is a mixed bag of the good and the poor, so careful selection is essential when citing it."
       },
       {
         "idiom": "孫引き (まごびき)",
         "literal": "Cháu kéo (dẫn từ dẫn)",
         "meaning": "[学術用語] Trích dẫn từ nguồn thứ cấp thay vì bản gốc — chỉ acceptable khi không thể access nguồn gốc.",
-        "example": "孫引きは原則として避け、やむを得ない場合は出典を二重に明記する。"
+        "example": "孫引きは原則として避け、やむを得ない場合は出典を二重に明記する。",
+        "literal_en": "grandchild-quoting, i.e. citing a citation (magobiki)",
+        "meaning_en": "Citing from a secondary source instead of the original — acceptable only when the original cannot be accessed. (academic term)",
+        "example_en": "Secondary citation should as a rule be avoided; where unavoidable, the source must be indicated twice over."
       },
       {
         "idiom": "出典を明らかにする (しゅってんをあきらかにする)",
         "literal": "Làm rõ nguồn",
         "meaning": "[書き言葉] Set phrase chuẩn cho 'cite the source explicitly' — bắt buộc trong academic prose.",
-        "example": "他者の見解を援用する際は、必ず出典を明らかにしなければならない。"
+        "example": "他者の見解を援用する際は、必ず出典を明らかにしなければならない。",
+        "literal_en": "to make the source clear (shutten o akiraka ni suru)",
+        "meaning_en": "The standard set phrase for citing a source explicitly — mandatory in academic prose. (written)",
+        "example_en": "When drawing on another's views, one must always make the source explicit."
       }
     ],
     "cultural_notes_vi": "Văn hóa trích dẫn Nhật khác VN ở 4 điểm. (1) ATTRIBUTION CHẶT HƠN VN — ngay cả idea chung (general claim) cũng cite. VN academic thường acceptable không cite nếu là 'kiến thức phổ biến'; Nhật C1 academic require cite nhiều hơn. Khi nghi ngờ, cite. (2) ORDER CỦA NAME — Nhật references list dùng họ trước, không initial first name (山田太郎 chứ không 太郎・山田 hoặc T. Yamada trong paper Nhật). Khi cite tác giả nước ngoài: dùng full Romanized name hoặc katakana phiên âm tùy field. (3) 二重投稿 (double submission) là vi phạm nặng — đừng cite paper của chính bạn vào paper khác mà không declare. Self-citation phải mark rõ. (4) PARAPHRASE TIÊU CHUẨN CAO — paraphrase mà giữ structure câu gốc bị coi như 'patchwriting' = gần với 盗用. C1 phải hoàn toàn tái cấu trúc, hoặc quote thẳng. Khác VN: ở VN paraphrase loose hơn được chấp nhận; ở Nhật reviewer kiểm tra strict. Mẹo: nếu bạn không thể paraphrase đủ khác, quote trực tiếp + 「」 + cite trang. An toàn hơn paraphrase nửa vời.",
+    "cultural_notes_en": "Japanese citation culture differs from Vietnamese on four points. (1) STRICTER ATTRIBUTION THAN VIETNAM — even a general claim is cited; Vietnamese academia often finds it acceptable not to cite 'common knowledge,' but Japanese C1 academic writing requires more citation. When in doubt, cite. (2) NAME ORDER — Japanese reference lists put the family name first, not an initialized given name (山田太郎, not 太郎・山田 or 'T. Yamada' in a Japanese paper); for foreign authors use the full Romanized name or a katakana transliteration depending on the field. (3) 二重投稿 (double submission) is a serious violation — do not cite your own paper into another without declaring it; self-citation must be marked clearly. (4) HIGH PARAPHRASE STANDARD — a paraphrase that keeps the original sentence structure is treated as 'patchwriting,' close to 盗用 (plagiarism); at C1 you must restructure completely or quote directly. Unlike Vietnam, where looser paraphrase is accepted, Japanese reviewers check strictly. Tip: if you cannot paraphrase differently enough, quote directly with 「」 and cite the page — safer than a half-hearted paraphrase.",
     "tip_advice_vi": "Workflow trích dẫn an toàn cho luận văn Nhật C1. (a) MỖI lần đọc paper, ghi ngay full citation + page numbers vào notes — đừng để 'sẽ tìm lại sau'. Sau 30 paper bạn không nhớ ai nói gì. (b) PHÂN BIỆT 3 mức ghi chú: 直接引用 (direct quote, nguyên văn) → 「」 + page; 言い換え (paraphrase) → no quote marks nhưng cite; 自分の解釈 (your synthesis) → no cite, mark với memo 'mine'. Trộn lẫn = nguy cơ 盗用. (c) TRƯỚC submit, double-check mỗi cite: tác giả + năm khớp với references list không? Page number chính xác không? Reviewer Nhật kiểm tra random sample — cite sai 1 chỗ làm reviewer mất tin tưởng cả paper. (d) KHI dùng 〜とされる (it is said), reviewer có thể hỏi 'ai nói?' — phải có cite ngay sau, hoặc đổi thành 'tôi giả định' với hedge khác. (e) KHI cite tiếng Việt source trong paper Nhật, theo convention: Romanized author name + year, references list ghi cả tựa gốc tiếng Việt + dịch tiếng Nhật trong [括弧]. Mẹo cuối: nếu phát hiện đã paraphrase thiếu attribution sau khi nộp, báo cáo chủ động cho biên tập viên — tự sửa được dù muộn vẫn nhẹ hơn nhiều so với bị phát hiện.",
+    "tip_advice_en": "A safe citation workflow for a Japanese C1 thesis. (a) Every time you read a paper, immediately record the full citation + page numbers in your notes — don't leave it to 'I'll find it again later'; after 30 papers you won't remember who said what. (b) DISTINGUISH 3 levels of notes: 直接引用 (direct quote, verbatim) → 「」 + page; 言い換え (paraphrase) → no quotation marks but cite; 自分の解釈 (your synthesis) → no citation, marked with a memo 'mine'. Mixing them = risk of 盗用. (c) BEFORE submitting, double-check each citation: do author + year match the reference list? Is the page number accurate? Japanese reviewers check a random sample — one wrong citation makes the reviewer distrust the whole paper. (d) When you use 〜とされる (it is said), a reviewer may ask 'who says?' — there must be a citation right after, or change it to 'I assume' with a different hedge. (e) When citing a Vietnamese source in a Japanese paper, follow the convention: Romanized author name + year, with the reference list giving both the original Vietnamese title and a Japanese translation in [括弧]. Final tip: if you discover after submission that you paraphrased without attribution, report it proactively to the editor — fixing it yourself, even late, is far lighter than being caught.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -628,35 +665,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn raise reverse causality concern cho 1 paper. Phrase bằng 因果の方向性については、別の解釈も成り立つように思われます. KHÔNG accusatory — frame như tentative observation, để presenter giữ face.",
       "Presenter accept partial criticism của bạn. Acknowledge bằng 鋭いご指摘です hoặc 誠にもっともなご指摘でございます. KHÔNG over-bow ('I was completely wrong') — graceful partial acceptance preserves cả hai sides."
     ],
+    "roleplay_prompts_en": [
+      "A reviewer raises a counter-argument about sample bias. Respond with ご指摘の点は、本稿でも限界として明示しております plus your robustness check. Do NOT be defensive ('but my data is good') — the Japanese Q&A norm is acknowledge first, then explain.",
+      "You raise a reverse-causality concern about a paper. Phrase it with 因果の方向性については、別の解釈も成り立つように思われます. Do NOT be accusatory — frame it as a tentative observation so the presenter keeps face.",
+      "The presenter accepts part of your criticism. Acknowledge with 鋭いご指摘です or 誠にもっともなご指摘でございます. Do NOT over-bow ('I was completely wrong') — graceful partial acceptance preserves both sides."
+    ],
     "register_notes": "C1 academic argumentation tuân theo 4 nguyên tắc cốt lõi. (1) ACKNOWLEDGE BEFORE REBUT — luôn mở counter-argument bằng phrase công nhận: 確かに〜が, ご指摘のとおり, ご想定はもっともながら. Tiếng Nhật academic culture coi đi thẳng vào phản đối là thô lỗ và làm yếu argument của bạn. (2) HEDGE THE REBUTTAL — sau acknowledge, dùng とはいえ / しかしながら / そうは言うものの cộng hedged claim: 〜には至らない (does not go so far as to), 〜とは限らない (not necessarily). Strong rebuttal direct hiếm gặp ngoài 反駁論文 chuyên biệt. (3) GROUND-WARRANT-CLAIM STRUCTURE — Toulmin model adapted: 根拠 (data/grounds) → 論拠 (warrant) → 主張 (claim). C1 reviewer kiểm tra cả ba; missing 論拠 là weakness phổ biến nhất. (4) FALLACY VOCABULARY — 論理的飛躍 (logical leap), 循環論法 (circular reasoning), 過度の一般化 (over-generalization), 偽の二分法 (false dichotomy). Biết tên các fallacies bằng tiếng Nhật cho phép bạn phản biện chính xác mà không thô. Discourse markers: 一方 (on the other hand), 他方 (on the other), 反面 (conversely), これに対し (in contrast). Cẩn thận với 絶対に〜ない (absolutely not) trong phản biện — sound đầy aggressive; thay bằng 必ずしも〜とは言えない. Quan trọng: phản biện ở Nhật academic không phải zero-sum win/lose mà là 共同の真理探求 (joint pursuit of truth) — tone hợp tác làm phản biện effective hơn.",
+    "register_notes_en": "Register: always 確かに〜が / ご指摘のとおり before you rebut, then hedge with とはいえ / しかしながら and 〜とは限らない / 〜には至らない rather than a flat 絶対に〜ない; build 根拠→論拠→主張 and name fallacies (論理的飛躍, 循環論法) precisely — rebuttal here is 共同の真理探求, not winning.",
     "idiom_glosses": [
       {
         "idiom": "矛盾 (むじゅん)",
         "literal": "Mâu (giáo) + thuẫn (khiên) — từ điển tích Hàn Phi Tử",
         "meaning": "[書き言葉・話し言葉] Mâu thuẫn nội tại trong lập luận — từ chuẩn cho self-contradiction trong reasoning.",
-        "example": "氏の論には、前提と結論との間に矛盾が認められる。"
+        "example": "氏の論には、前提と結論との間に矛盾が認められる。",
+        "literal_en": "spear and shield — from the Han Feizi parable (mujun)",
+        "meaning_en": "An internal contradiction in an argument — the standard term for self-contradiction in reasoning. (written/spoken)",
+        "example_en": "In his argument, a contradiction is found between the premise and the conclusion."
       },
       {
         "idiom": "詭弁 (きべん)",
         "literal": "Lời ngụy biện",
         "meaning": "[硬い・書き言葉] Sophistry — lập luận có vẻ hợp lý nhưng sai logic; dùng cẩn thận, có nghĩa accusatory.",
-        "example": "氏の主張は、一見もっともらしいが、詭弁の域を出ない。"
+        "example": "氏の主張は、一見もっともらしいが、詭弁の域を出ない。",
+        "literal_en": "specious words (kiben)",
+        "meaning_en": "Sophistry — reasoning that looks plausible but is logically flawed; use carefully, as it is accusatory. (formal, written)",
+        "example_en": "His claim seems plausible at first glance, but it does not rise above sophistry."
       },
       {
         "idiom": "玉に瑕 (たまにきず)",
         "literal": "Vết trên viên ngọc",
         "meaning": "[書き言葉] Khen tổng thể nhưng chỉ ra khuyết điểm nhỏ — diplomatic critique format trong Nhật academic.",
-        "example": "本研究は優れた成果であるが、サンプル規模の小ささが玉に瑕と言えよう。"
+        "example": "本研究は優れた成果であるが、サンプル規模の小ささが玉に瑕と言えよう。",
+        "literal_en": "a flaw in the jewel (tama ni kizu)",
+        "meaning_en": "Praising the whole while noting a small defect — the diplomatic critique format in Japanese academia. (written)",
+        "example_en": "This study is an excellent achievement, though the small sample size may be said to be the one flaw in the jewel."
       },
       {
         "idiom": "百家争鳴 (ひゃっかそうめい)",
         "literal": "Trăm nhà tranh luận sôi nổi",
         "meaning": "[硬い・書き言葉] Diễn đàn học thuật sôi nổi với nhiều quan điểm — dùng khi mô tả debate đa chiều.",
-        "example": "この問題をめぐっては、近年百家争鳴の様相を呈している。"
+        "example": "この問題をめぐっては、近年百家争鳴の様相を呈している。",
+        "literal_en": "a hundred schools contending vociferously (hyakka sōmei)",
+        "meaning_en": "A lively academic forum with many competing viewpoints — used to describe multi-sided debate. (formal, written)",
+        "example_en": "On this question, recent years have taken on the aspect of a hundred schools contending."
       }
     ],
     "cultural_notes_vi": "Phản biện ở học thuật Nhật khác phương Tây và VN ở 4 điểm. (1) WIN-LOSE → JOINT INQUIRY — Western debate culture có khuynh hướng zero-sum: ai 'thắng' argument. Nhật academic frame là 共同の真理探求 — cả presenter và discussant đang join để tìm truth. Tone phản biện hợp tác làm critique effective hơn, không yếu hơn. (2) ATTACK IDEA, NOT PERSON — không bao giờ 'X氏の認識不足' (X's lack of understanding). Thay bằng 'この点については、別解釈の余地がある' (regarding this point, there is room for alternative interpretation). Personal attack ngay lập tức discredit bạn. (3) PUBLIC CRITIQUE LIMITS — ở 学会, harsh critique của junior với senior là vi phạm nghiêm trọng dù argument đúng. Nếu bạn (junior) phải phản biện senior, dùng full hedge: ご教示いただければ幸いでございます (it would be gracious if you could enlighten me) thay vì assertive. (4) SILENCE = DISAGREEMENT — sau phản biện, presenter im lặng vài giây không phải agreeing — họ đang điều chỉnh response. Đừng fill silence bằng cách restate phản biện. Wait. Khác VN: ở VN seminar, debate sôi nổi với raised voice OK; ở Nhật học thuật, raised voice đọc là loss of control = loss of argument. Mẹo: học cụm 興味深いご指摘です (an interesting observation) làm filler khi cần thời gian suy nghĩ — buys 3 giây mà sound polished.",
+    "cultural_notes_en": "Counter-argument in Japanese academia differs from the West and Vietnam on four points. (1) WIN-LOSE → JOINT INQUIRY — Western debate culture tends toward zero-sum: who 'wins' the argument. The Japanese academic frame is 共同の真理探求 — presenter and discussant join to find the truth; a cooperative critical tone makes the critique more effective, not weaker. (2) ATTACK THE IDEA, NOT THE PERSON — never 'X氏の認識不足' (X's lack of understanding); instead 'この点については、別解釈の余地がある' (regarding this point, there is room for an alternative interpretation). A personal attack discredits you instantly. (3) PUBLIC CRITIQUE LIMITS — at a 学会, harsh critique by a junior of a senior is a serious breach even if the argument is right; if you (junior) must rebut a senior, use a full hedge: ご教示いただければ幸いでございます rather than an assertive form. (4) SILENCE = ADJUSTMENT — after a rebuttal, a few seconds of presenter silence is not agreement; they are reformulating. Don't fill the silence by restating. Wait. Unlike Vietnam, where a lively seminar with raised voices is fine, in Japanese academia a raised voice reads as loss of control = loss of argument. Tip: learn 興味深いご指摘です (an interesting observation) as a filler when you need a moment — it buys three seconds yet sounds polished.",
     "tip_advice_vi": "Cấu trúc một phản biện C1 ở 質疑応答. (a) PHRASE BUFFER — mở bằng ご発表ありがとうございました cộng 一点伺ってもよろしいでしょうか. KHÔNG đi thẳng vào 'I disagree'. (b) ACKNOWLEDGE — 1 câu công nhận điểm mạnh: 〜という分析、大変興味深く拝聴いたしました. Genuine, không sycophantic. (c) RAISE — phrase phản biện như observation chứ không attack: 〜については、〜という解釈も成り立つように思われますが、いかがでしょうか. Câu hỏi mở (どうお考えでしょうか) thay vì statement. (d) EXIT — sau presenter trả lời, đáp 明快なご回答、ありがとうございました dù bạn vẫn không thuyết phục. Long-form debate move sang offline tea/email. Mẹo response khi BẠN bị phản biện: 4 phrases an toàn. (1) ご指摘のとおりでございます (as you point out — accept). (2) 鋭いご指摘でございます (incisive observation — flatter while thinking). (3) その点は本稿の射程外でございます (that point falls outside the scope — defer). (4) 今後の課題として承ります (I will receive that as a future task — graceful deferral). Tránh: 'いえ、それは違います' (no, that's wrong) — too direct, gây offense. Mẹo cuối: ghi xuống mọi critique nhận được. Sau seminar, follow-up email với discussant: 本日は貴重なご指摘ありがとうございました cộng 1 paragraph cách bạn sẽ address. Đây builds long-term relationship — Nhật academic depends heavily trên các quan hệ này.",
+    "tip_advice_en": "Structuring a C1 rebuttal in 質疑応答. (a) PHRASE BUFFER — open with ご発表ありがとうございました plus 一点伺ってもよろしいでしょうか. Do NOT go straight to 'I disagree.' (b) ACKNOWLEDGE — one sentence recognizing a strength: 〜という分析、大変興味深く拝聴いたしました. Genuine, not sycophantic. (c) RAISE — phrase the rebuttal as an observation, not an attack: 〜については、〜という解釈も成り立つように思われますが、いかがでしょうか. An open question (どうお考えでしょうか) rather than a statement. (d) EXIT — after the presenter answers, reply 明快なご回答、ありがとうございました even if you remain unconvinced; move long-form debate to offline tea or email. When YOU are rebutted, four safe phrases: (1) ご指摘のとおりでございます (accept), (2) 鋭いご指摘でございます (flatter while thinking), (3) その点は本稿の射程外でございます (defer as out of scope), (4) 今後の課題として承ります (graceful deferral). Avoid 'いえ、それは違います' (no, that's wrong) — too direct, gives offense. Final tip: write down every critique you receive; after the seminar, follow up by email with the discussant: 本日は貴重なご指摘ありがとうございました plus a paragraph on how you will address it. This builds the long-term relationships Japanese academia depends on.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -856,35 +913,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ ra '断定的すぎる'. Đáp lại bằng ご指摘ごもっともです cộng cụ thể cách bạn sẽ soften — 「証明する」→「示唆する」. KHÔNG cãi rằng claim của bạn có evidence — accept formatting feedback gracefully.",
       "Bạn cần state limitation mà không undermine paper. Cụm 本知見は〜に限定されるものである, sau đó pivot 本稿の貢献は〜にある (the contribution lies in〜). Acknowledge limit + reframe contribution."
     ],
+    "roleplay_prompts_en": [
+      "You revise a passage that is too assertive. Replace 'X が Y を引き起こす' with 'X が Y を引き起こす可能性が示唆される'. Do NOT hedge everything — over-hedging also weakens the paper. Hedge the claim, not the data description.",
+      "A reviewer notes it is 断定的すぎる (too categorical). Respond with ご指摘ごもっともです plus exactly how you will soften it — 「証明する」→「示唆する」. Do NOT argue that your claim has evidence — accept the formatting feedback gracefully.",
+      "You need to state a limitation without undermining the paper. Use 本知見は〜に限定されるものである, then pivot to 本稿の貢献は〜にある (the contribution lies in〜). Acknowledge the limit, then reframe the contribution."
+    ],
     "register_notes": "Hedging ở C1 academic Japanese tổ chức theo 5 tiers từ strong đến soft. (1) STRONG (= 'is') — 〜である, 〜となる. Chỉ dùng cho định nghĩa, sự kiện thiết lập, kết quả thống kê chính xác. (2) MEDIUM-STRONG — 〜と考えられる (is considered), 〜と判断される (is judged). Dùng cho diễn giải có support mạnh từ data. (3) MEDIUM — 〜可能性が示唆される (the possibility is suggested), 〜と推察される (is inferred). Default cho hầu hết findings. (4) SOFT — 〜と言えなくもない (it cannot not be said that), 〜の余地がある (there is room for). Dùng khi evidence yếu hoặc preliminary. (5) VERY SOFT — 〜かもしれない (may, only in dialogue, NEVER in formal writing). Discourse marker hedges: 厳密に言えば (strictly), 概ね (broadly), 一般に (generally), 場合によっては (in some cases), 状況次第では (depending on circumstances). Scope hedges (限定詞): 〜に限定される, 〜の範囲内では, 〜という条件下では. Counter-hedges (KHÔNG over-hedge): nếu data thực sự chứng minh, dùng 〜ことが確認された (was confirmed) — over-hedging clear results sound như bạn không tự tin trong work của mình. Quy tắc 90 phần trăm: 90 phần trăm content claim trong C1 academic paper nên là tier 2-4. Tier 1 chỉ cho data/method, tier 5 chỉ cho preliminary discussion. Cẩn thận: 必ずしも〜とは限らない (not necessarily) là hedge yêu thích nhưng overuse làm prose nặng — limit 1-2 lần per section.",
+    "register_notes_en": "Register: keep ~90% of claims in tiers 2–4 — 〜と考えられる / 〜と判断される (well-supported), 〜可能性が示唆される / 〜と推察される (default), 〜と言えなくもない / 〜の余地がある (weak) — reserve 〜である for definitions and data, never 〜かもしれない in formal prose, and do not over-hedge confirmed results (〜ことが確認された).",
     "idiom_glosses": [
       {
         "idiom": "十中八九 (じっちゅうはっく)",
         "literal": "Tám hoặc chín phần trên mười",
         "meaning": "[書き言葉・話し言葉] Hầu như chắc chắn, 80-90 phần trăm — high-probability hedge phù hợp khi evidence rất mạnh nhưng chưa absolute.",
-        "example": "十中八九、観察された相関は偶然ではないと考えられる。"
+        "example": "十中八九、観察された相関は偶然ではないと考えられる。",
+        "literal_en": "eight or nine out of ten (jicchū hakku)",
+        "meaning_en": "Almost certain, 80–90% — a high-probability hedge fitting when the evidence is very strong but not absolute. (written/spoken)",
+        "example_en": "In all likelihood, the observed correlation is considered not to be coincidental."
       },
       {
         "idiom": "断じて〜ない (だんじて〜ない)",
         "literal": "Tuyệt đối không",
         "meaning": "[硬い・書き言葉] Anti-hedge — strong negation; chỉ dùng khi data hoàn toàn rule out something, hiếm trong empirical work.",
-        "example": "本データに基づく限り、両者に因果関係があると断じて言うことはできない。"
+        "example": "本データに基づく限り、両者に因果関係があると断じて言うことはできない。",
+        "literal_en": "absolutely not (danjite … nai)",
+        "meaning_en": "An anti-hedge — strong negation; use only when the data wholly rules something out, rare in empirical work. (formal, written)",
+        "example_en": "As far as the present data allows, one cannot categorically say that a causal relationship exists between the two."
       },
       {
         "idiom": "一概に言えない (いちがいにいえない)",
         "literal": "Không thể nói một cách đơn giản",
         "meaning": "[書き言葉] Hedge cho generalization — phù hợp khi nuance quan trọng và một-size-fits-all không apply.",
-        "example": "教育効果の有無は、文脈に依存するため、一概に論じることはできない。"
+        "example": "教育効果の有無は、文脈に依存するため、一概に論じることはできない。",
+        "literal_en": "cannot be said in a single sweep (ichigai ni ienai)",
+        "meaning_en": "A hedge for generalizations — apt when nuance matters and one-size-fits-all does not apply. (written)",
+        "example_en": "Whether an educational effect exists cannot be discussed in sweeping terms, since it depends on context."
       },
       {
         "idiom": "灰色 (はいいろ)",
         "literal": "Màu xám",
         "meaning": "[書き言葉] Vùng không-đen-không-trắng — dùng để mô tả findings nằm giữa two clear categories.",
-        "example": "本結果は、明確な肯定とも否定ともつかぬ、いわば灰色の領域に属するものと言えよう。"
+        "example": "本結果は、明確な肯定とも否定ともつかぬ、いわば灰色の領域に属するものと言えよう。",
+        "literal_en": "gray (haiiro)",
+        "meaning_en": "A neither-black-nor-white zone — used to describe findings lying between two clear categories. (written)",
+        "example_en": "This result may be said to belong to a so-called gray area, neither a clear affirmation nor a denial."
       }
     ],
     "cultural_notes_vi": "Hedging ở Nhật academic culture có 3 đặc điểm cần hiểu. (1) HEDGE = COMPETENCE — phương Tây có thể hiểu 'Tôi không chắc' là yếu kém; Nhật academic ngược lại — over-confident claim đọc là naïve hoặc thiếu trải nghiệm. Reviewer Nhật chấm điểm cao cho appropriate hedging. Senior researchers thường hedge nhiều HƠN junior, không ít hơn. (2) HEDGE PROTECTS PEER RELATIONSHIPS — strong claim implicitly nói 'những ai bất đồng với tôi đều sai'. Hedge giữ space cho ý kiến khác, bảo vệ collegial relationships. Trong giới học thuật Nhật nhỏ và liên kết chặt, sustained relationships > single paper victory. (3) HEDGE BÁO HIỆU MEMBERSHIP — cách đúng để hedge là cách bạn báo hiệu 'tôi biết các quy ước của giới này'. Học sinh dùng 〜と思います (I think) thay vì 〜と考えられる ngay lập tức bị flag là chưa initiated. Cụm 〜可能性が示唆される là một membership marker. Khác VN: VN academic prose có khuynh hướng more assertive, especially trong soft sciences; Nhật C1 paper hedge dày hơn. Khi dịch paper VN sang Nhật, gần như luôn cần thêm 1-2 hedges per paragraph. Mẹo: nếu draft của bạn có 0 hedges trong 1 đoạn discussion, có thể bạn đang over-claim. Đọc lại với mindset 'reviewer đang tìm chỗ over-claim' và soften ở chỗ data thực sự không support strong version.",
+    "cultural_notes_en": "Hedging in Japanese academic culture has three features to understand. (1) HEDGE = COMPETENCE — the West may read 'I'm not sure' as weakness; Japanese academia is the reverse — an over-confident claim reads as naïve or inexperienced, and Japanese reviewers score appropriate hedging highly. Senior researchers usually hedge MORE than juniors, not less. (2) HEDGE PROTECTS PEER RELATIONSHIPS — a strong claim implicitly says 'anyone who disagrees with me is wrong.' A hedge leaves room for other views and protects collegial relationships; in the small, tightly networked Japanese academic world, sustained relationships outweigh a single paper's victory. (3) HEDGE SIGNALS MEMBERSHIP — how you hedge is how you signal 'I know this community's conventions.' A student who uses 〜と思います (I think) instead of 〜と考えられる is flagged at once as not yet initiated; 〜可能性が示唆される is a membership marker. Unlike Vietnam, where academic prose tends to be more assertive, especially in the soft sciences, a Japanese C1 paper hedges more densely — translating a Vietnamese paper into Japanese almost always needs 1–2 added hedges per paragraph. Tip: if a discussion paragraph of your draft has zero hedges, you may be over-claiming. Reread it as 'the reviewer is hunting for over-claim' and soften where the data does not actually support the strong version.",
     "tip_advice_vi": "Hedging hiệu quả ở C1 cần balance, không spam. Quy tắc thực hành. (a) HEDGE CLAIM, KHÔNG HEDGE DATA — 'X が Y を増加させた' (data) → KHÔNG hedge nếu thực sự increased; 'X が Y の増加を引き起こした' (causal claim) → HEDGE thành 〜の可能性が示唆される. Phân biệt observation vs interpretation. (b) PICK HEDGE STRENGTH MATCHING EVIDENCE STRENGTH — 1 case study → soft hedge (〜の余地がある); meta-analysis với p<0.001 → minimal hedge (〜と考えられる). Mismatch hedge với evidence làm reader skeptical. (c) CLUSTER HEDGES, KHÔNG SPRINKLE — 1 well-placed hedge ở claim chính > 5 small hedges scattered. Reader đếm hedges; quá nhiều = paper sound uncertain about everything. (d) USE SCOPE HEDGES TO BOUND CLAIM — thay vì soften 'X causes Y' thành 'X may cause Y', tốt hơn bound: '本研究の対象群においては、X が Y を引き起こしたことが示唆される' (within the surveyed group, X is suggested to have caused Y). Scope-bound = strong-within-scope, an toàn hơn. (e) IN ABSTRACT — hedge thấp hơn body, vì abstract đọc standalone. Reviewer không đọc body sẽ judge từ abstract; over-hedged abstract đọc như 'we found nothing'. Mẹo cuối: trước khi submit, do hedge audit — đếm số 'は〜である' câu vs số hedged câu trong discussion. Tỷ lệ healthy là 1:3 (1 strong claim per 3 hedged). Nếu 1:1, paper quá bold; nếu 1:10, paper quá timid.",
+    "tip_advice_en": "Effective hedging at C1 needs balance, not spam. Practical rules. (a) HEDGE THE CLAIM, NOT THE DATA — 'X が Y を増加させた' (data) → do NOT hedge if it truly increased; 'X が Y の増加を引き起こした' (causal claim) → HEDGE to 〜の可能性が示唆される. Distinguish observation from interpretation. (b) MATCH HEDGE STRENGTH TO EVIDENCE STRENGTH — one case study → soft hedge (〜の余地がある); a meta-analysis with p<0.001 → minimal hedge (〜と考えられる). A mismatch makes the reader skeptical. (c) CLUSTER HEDGES, DON'T SPRINKLE — one well-placed hedge on the main claim beats five small ones scattered; readers count hedges, and too many makes the paper sound uncertain about everything. (d) USE SCOPE HEDGES TO BOUND THE CLAIM — instead of softening 'X causes Y' to 'X may cause Y', it is better to bound it: '本研究の対象群においては、X が Y を引き起こしたことが示唆される' (within the surveyed group, X is suggested to have caused Y). Scope-bound = strong-within-scope, and safer. (e) IN THE ABSTRACT — hedge less than in the body, because the abstract is read standalone; a reviewer who reads only the abstract judges from it, and an over-hedged abstract reads as 'we found nothing.' Final tip: before submitting, do a hedge audit — count 'は〜である' sentences against hedged sentences in the discussion. A healthy ratio is 1:3 (one strong claim per three hedged). At 1:1 the paper is too bold; at 1:10, too timid.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1094,35 +1171,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn dùng term mà literature có 2 conflicting definitions. Phrase bằng 「X」という用語は、論者によって含意が異なるため、本稿では暫定的に〜と限定する. Acknowledge conflict + state your choice + mark provisional.",
       "Bạn đang convert abstract concept sang operational definition. Cụm 操作的に「〜」と定義される cộng nói indicators bạn sẽ dùng. KHÔNG để abstract — reviewer Nhật C1 expect operationalization."
     ],
+    "roleplay_prompts_en": [
+      "You need to introduce a new term in the paper. Open with 本稿では、「X」を以下のように定義する plus the concrete definition. Do NOT use a term without defining it — a Japanese reviewer flags undefined terms immediately.",
+      "You use a term for which the literature has two conflicting definitions. Phrase it with 「X」という用語は、論者によって含意が異なるため、本稿では暫定的に〜と限定する. Acknowledge the conflict + state your choice + mark it provisional.",
+      "You are converting an abstract concept into an operational definition. Use 操作的に「〜」と定義される plus the indicators you will use. Do NOT leave it abstract — a Japanese C1 reviewer expects operationalization."
+    ],
     "register_notes": "Định nghĩa thuật ngữ ở C1 academic Japanese theo 4 patterns. (1) STIPULATIVE DEFINITION (定義) — '本稿では「X」を〜と定義する'. Bạn declare ý nghĩa cho purposes của paper, không claim universal definition. Pattern an toàn nhất khi field có disagreement. (2) OPERATIONAL DEFINITION (操作的定義) — '操作的に〜と定義される' cộng observable indicators. Required cho empirical work; missing operational def = paper bị desk reject ở quantitative journals. (3) RESTRICTIVE DEFINITION (限定) — '本稿では便宜上〜に限定する'. Acknowledge term broader nhưng bound scope. 便宜上 (for convenience) signal honest scope reduction. (4) NEGATIVE DEFINITION (区別) — 'ここで言う「X」は〜を含まない' (X as referred to here does not include〜). Useful khi concept dễ bị confused với related terms. Definition syntax: subject-marker は, copula である, hoặc とは…のことである / とは…を指す. 「X」とは〜を指す là formal classroom-textbook style; 「X」を〜と定義する là journal style. Avoid 「X」って〜のことだよね (spoken). 外延 (extension — set of things term applies to) vs 内包 (intension — defining attributes) — C1 phải biết cả hai. Definition placement: ngay sau lần đầu term xuất hiện, hoặc trong subsection 「用語の定義」 ở đầu method section. KHÔNG để reader đợi đến results để biết term nghĩa gì.",
+    "register_notes_en": "Register: declare meaning for the paper, not universally — 本稿では「X」を〜と定義する (stipulative), 操作的に〜と定義される (operational, required for empirical work), 本稿では便宜上〜に限定する (restrictive), ここで言う「X」は〜を含まない (negative); use journal-style 〜と定義する over textbook 〜とは…を指す, and distinguish 外延 from 内包.",
     "idiom_glosses": [
       {
         "idiom": "言葉を厳密に用いる (ことばをげんみつにもちいる)",
         "literal": "Sử dụng từ ngữ chặt chẽ",
         "meaning": "[書き言葉] Set phrase cho 'use words strictly/precisely' — academic virtue được expected ở C1.",
-        "example": "学術的議論においては、言葉を厳密に用いることが、論旨の明晰さを支える基盤となる。"
+        "example": "学術的議論においては、言葉を厳密に用いることが、論旨の明晰さを支える基盤となる。",
+        "literal_en": "to use words strictly (kotoba o genmitsu ni mochiiru)",
+        "meaning_en": "The set phrase for using words strictly and precisely — an academic virtue expected at C1. (written)",
+        "example_en": "In scholarly discussion, using words strictly is the foundation that supports clarity of argument."
       },
       {
         "idiom": "玉虫色 (たまむしいろ)",
         "literal": "Màu của bọ ngọc — đổi màu theo góc nhìn",
         "meaning": "[書き言葉] Mơ hồ một cách cố ý — diễn giải khác nhau tùy người đọc; CRITIQUE term, không phải khen.",
-        "example": "玉虫色の定義は、議論を曖昧にし、結論の検証を困難にする。"
+        "example": "玉虫色の定義は、議論を曖昧にし、結論の検証を困難にする。",
+        "literal_en": "jewel-beetle color, shifting with the angle (tamamushiiro)",
+        "meaning_en": "Deliberately ambiguous — read differently by different readers; a critique term, not praise. (written)",
+        "example_en": "An ambiguous, jewel-beetle definition obscures the discussion and makes the conclusion hard to verify."
       },
       {
         "idiom": "百人百様 (ひゃくにんひゃくよう)",
         "literal": "Trăm người trăm vẻ",
         "meaning": "[書き言葉] Mỗi người định nghĩa khác — phù hợp khi mô tả disagreement trong literature về một concept.",
-        "example": "「グローバル化」の定義は百人百様であり、まずは本稿の用法を明示する必要がある。"
+        "example": "「グローバル化」の定義は百人百様であり、まずは本稿の用法を明示する必要がある。",
+        "literal_en": "a hundred people, a hundred styles (hyakunin hyakuyō)",
+        "meaning_en": "Everyone defines it differently — apt when describing disagreement in the literature over a concept. (written)",
+        "example_en": "Definitions of 'globalization' are a hundred people with a hundred views, so the paper's own usage must first be made explicit."
       },
       {
         "idiom": "言は意を尽くさず (げんはいをつくさず)",
         "literal": "Lời không nói hết ý",
         "meaning": "[硬い・書き言葉] Cổ ngữ — ngôn ngữ không bao giờ truyền đạt hết khái niệm; phù hợp khi acknowledge limit của definition.",
-        "example": "言は意を尽くさずと申すように、いかなる定義も対象の全体像を完全に捉え得るものではない。"
+        "example": "言は意を尽くさずと申すように、いかなる定義も対象の全体像を完全に捉え得るものではない。",
+        "literal_en": "words do not exhaust meaning (gen wa i o tsukusazu)",
+        "meaning_en": "A classical maxim — language never fully conveys a concept; apt when acknowledging the limits of a definition. (formal, written)",
+        "example_en": "As the saying goes that words do not exhaust meaning, no definition can capture the full picture of its object."
       }
     ],
     "cultural_notes_vi": "Văn hóa định nghĩa trong giới học thuật Nhật khác phương Tây ở 3 điểm. (1) STIPULATIVE > UNIVERSAL — phương Tây philosophy có khuynh hướng tìm 'true definition'; Nhật academic pragmatic hơn — 'cho paper này, term này nghĩa gì'. Cụm 本稿では là cốt lõi. KHÔNG claim definition của bạn là universally correct. (2) ETYMOLOGY MATTERS — Nhật scholars thường giải thích nguồn gốc kanji của term. 「適応」とは、「適」と「応」から成り、〜 (the term 'tekiou' is composed of 'teki' and 'ou', meaning〜). Mức độ etymology phụ thuộc field — humanities / linguistics nhiều, hard sciences ít. (3) BORROW WORDS REQUIRE EXTRA CARE — terms từ tiếng Anh transliterated katakana (アイデンティティ, グローバル化) đặc biệt cần định nghĩa vì meanings drift trong Japanese context khác source language. Cụm: 「アイデンティティ」という語は、英語の identity と必ずしも一致しないため、本稿では〜と限定する. Khác VN: VN academic accept loanwords thoải mái không cần định nghĩa lại; Nhật C1 expect bạn flag drift. Mẹo: tạo 用語一覧 (glossary) ở appendix nếu paper dùng > 5 specialized terms. Reviewer thanks. Đọc viên ESL student thanks even more. Mẹo cuối: trước submit, list mọi term unusual và check — đã có definition chưa, có consistent với định nghĩa của bạn xuyên suốt paper không? Concept drift mid-paper là weakness phổ biến.",
+    "cultural_notes_en": "Definition culture in Japanese academia differs from the West on three points. (1) STIPULATIVE > UNIVERSAL — Western philosophy tends to seek the 'true definition'; Japanese academia is more pragmatic — 'for this paper, what does this term mean.' The phrase 本稿では is core. Do NOT claim your definition is universally correct. (2) ETYMOLOGY MATTERS — Japanese scholars often explain a term's kanji origin: 「適応」とは、「適」と「応」から成り、〜 (the term 'tekiō' is composed of 'teki' and 'ō', meaning〜). How much etymology depends on the field — much in the humanities and linguistics, little in the hard sciences. (3) BORROWED WORDS NEED EXTRA CARE — terms transliterated from English into katakana (アイデンティティ, グローバル化) especially need defining, because their meanings drift in the Japanese context away from the source language: 「アイデンティティ」という語は、英語の identity と必ずしも一致しないため、本稿では〜と限定する. Unlike Vietnam, which accepts loanwords freely without redefining, Japanese C1 expects you to flag the drift. Tip: build a 用語一覧 (glossary) in an appendix if the paper uses more than five specialized terms — reviewers thank you, and ESL readers thank you even more. Final tip: before submitting, list every unusual term and check — is it defined, and is usage consistent with that definition throughout? Concept drift mid-paper is a common weakness.",
     "tip_advice_vi": "Workflow định nghĩa term ở luận văn C1 Nhật. (a) IDENTIFY TERMS NEEDING DEFINITION — gồm: technical terms (jargon ngành), borrowed terms (từ ngoại), contested terms (literature disagree), neologisms (term mới của bạn). Skip: từ tiếng Nhật hàng ngày, terms định nghĩa rộng rãi và undisputed. (b) FOR EACH, CHỌN STYLE — stipulative (most general), operational (empirical work), restrictive (when field is broad), negative (when confusion likely). Mỗi term có thể cần combination. (c) PLACE STRATEGICALLY — first occurrence: short inline definition trong dấu ngoặc. Method section: full operational definition. Glossary: complete list. (d) CHECK CONSISTENCY — sau drafting, search mỗi term xuyên suốt paper, đảm bảo usage match definition. Drift là common — bạn có thể start với strict definition và slowly broaden khi viết. (e) CITE EXISTING DEFINITIONS RESPECTFULLY — nếu bạn modify Byram (1997)'s definition, frame như: Byram (一九九七) の定義を踏まえつつ、本稿では〜の点で修正を加え、〜とする. KHÔNG present modified version như nguyên bản của bạn — reviewer biết literature. Mẹo về negotiated meanings: nếu term bạn dùng có heavy political/cultural baggage (e.g. 「外国人」, 「日本語学習者」), acknowledge briefly. Cụm: 「X」という語は社会的含意を伴うことを承知しつつ、本稿では分析上の便宜から用いる. Mẹo cuối: nếu peer review push back trên definition, đừng cứng đầu. Nếu reviewer expert hiểu sai term, có nghĩa định nghĩa của bạn không clear enough cho audience rộng hơn. Revise để đỡ ambiguity, không argue rằng reviewer wrong.",
+    "tip_advice_en": "A term-definition workflow for a Japanese C1 thesis. (a) IDENTIFY TERMS NEEDING DEFINITION — technical terms (field jargon), borrowed terms (foreign), contested terms (the literature disagrees), neologisms (your own coinage). Skip everyday Japanese words and broadly defined, undisputed terms. (b) FOR EACH, CHOOSE A STYLE — stipulative (most general), operational (empirical work), restrictive (when the field is broad), negative (when confusion is likely); a term may need a combination. (c) PLACE STRATEGICALLY — first occurrence: a short inline definition in parentheses; method section: the full operational definition; glossary: the complete list. (d) CHECK CONSISTENCY — after drafting, search each term throughout the paper and make usage match the definition; drift is common — you may start strict and slowly broaden as you write. (e) CITE EXISTING DEFINITIONS RESPECTFULLY — if you modify Byram (1997)'s definition, frame it as: Byram (一九九七) の定義を踏まえつつ、本稿では〜の点で修正を加え、〜とする. Do NOT present the modified version as your own original — the reviewer knows the literature. On negotiated meanings: if a term carries heavy political/cultural baggage (e.g. 「外国人」, 「日本語学習者」), acknowledge it briefly: 「X」という語は社会的含意を伴うことを承知しつつ、本稿では分析上の便宜から用いる. Final tip: if peer review pushes back on a definition, don't be stubborn — if an expert reviewer misreads the term, it means the definition is not clear enough for a wider audience. Revise to reduce ambiguity rather than argue the reviewer is wrong.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1327,35 +1424,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ trích bạn 'không generalize'. Đáp lại bằng 本研究の方法論的選択は、文脈の深い理解を優先したものであり、一般化は今後の量的検証に委ねたく存じます. Acknowledge limit + reframe scope.",
       "Bạn proposing mixed methods. Cần justify integration logic. Phrase bằng 質的知見は量的検証の前提を提供し、量的結果は質的解釈の妥当性を支える、相互補完的な関係を想定している. Articulate WHY hai methods together > sum of parts."
     ],
+    "roleplay_prompts_en": [
+      "You justify choosing a qualitative approach. Phrase it with 本研究の問いの性質に鑑みれば、質的手法の採用が最も適合的である plus the trade-offs. Do NOT dismiss quantitative — frame it as 適合性 (fit) for this specific problem.",
+      "A reviewer criticizes you for 'not generalizing.' Respond with 本研究の方法論的選択は、文脈の深い理解を優先したものであり、一般化は今後の量的検証に委ねたく存じます. Acknowledge the limit + reframe the scope.",
+      "You are proposing mixed methods and must justify the integration logic. Phrase it with 質的知見は量的検証の前提を提供し、量的結果は質的解釈の妥当性を支える、相互補完的な関係を想定している. Articulate WHY the two methods together exceed the sum of their parts."
+    ],
     "register_notes": "So sánh phương pháp ở C1 academic Japanese theo 4 nguyên tắc. (1) BALANCE BEFORE PREFERENCE — luôn present strengths của BOTH methods trước khi declare lựa chọn của bạn. Một-sided comparison ngay lập tức flag là biased. Cụm: 一方〜、他方〜 (on one hand, on the other), 〜の長所は〜にあるが、短所として〜が指摘される. (2) FRAME AS FIT, NOT QUALITY — KHÔNG nói method A 'better than' B; nói method A 'more 適合的 (suited)' to your specific question. 適合性 (fit) > 優劣 (superiority) là academic norm. Method A cho question X, method B cho question Y; both legitimate. (3) ACKNOWLEDGE TRADE-OFFS — every choice có cost. Cụm: 〜を採用することに伴い、〜の側面については別途の検討を要する. Show bạn understand trade-off, không pretend chosen method có no weakness. (4) INTEGRATION LOGIC FOR MIXED METHODS — nếu propose mixed methods, MUST articulate how qualitative + quantitative integrate. Sequential? Parallel? Embedded? Reviewer Nhật particularly strict về điểm này. Cụm: 質的知見は〜を提供し、量的結果は〜を裏付ける、相補的関係を想定する. Comparison structure templates: '〜は〜である一方、〜は〜である' (parallel), '〜と異なり、〜は〜' (contrast), '〜と共通する点として〜が挙げられる' (similarity), '〜と〜との相違は、〜という点に求められる' (locating difference). Avoid: 'A は B より良い' (A is better than B) — too absolute, no fit-frame. Use 'A は本研究の目的に照らし、B より適合的である' (A, in light of this study's aim, is more suited than B). Cẩn thận: trong field debates về method (quant vs qual wars), maintain neutral stance. Partisan tone gây alienate reviewers từ phía đối lập.",
+    "register_notes_en": "Register: present both methods' strengths before declaring a choice, frame it as 適合性 (fit) not 優劣 (superiority) — 〜は本研究の目的に照らし〜より適合的である, never A は B より良い — acknowledge trade-offs with 〜を採用することに伴い〜を要する, and for mixed methods state the 相補的 integration logic explicitly.",
     "idiom_glosses": [
       {
         "idiom": "適材適所 (てきざいてきしょ)",
         "literal": "Đúng tài, đúng chỗ",
         "meaning": "[書き言葉] Method phù hợp với problem phù hợp — core principle khi chọn methodology.",
-        "example": "研究方法の選択は、適材適所の原則に基づき、問いの性質に応じて行われるべきである。"
+        "example": "研究方法の選択は、適材適所の原則に基づき、問いの性質に応じて行われるべきである。",
+        "literal_en": "the right talent in the right place (tekizai tekisho)",
+        "meaning_en": "The right method for the right problem — a core principle when choosing a methodology. (written)",
+        "example_en": "The choice of research method should follow the principle of the right tool in the right place, according to the nature of the question."
       },
       {
         "idiom": "二兎を追う者は一兎をも得ず (にとをおうものはいっとをもえず)",
         "literal": "Đuổi hai con thỏ thì không bắt được cả hai",
         "meaning": "[書き言葉] Cẩn báo against poorly-integrated mixed methods — chasing both ends up grasping neither.",
-        "example": "混合研究法は強力であるが、統合の論理を欠けば、二兎を追う者は一兎をも得ずとなりかねない。"
+        "example": "混合研究法は強力であるが、統合の論理を欠けば、二兎を追う者は一兎をも得ずとなりかねない。",
+        "literal_en": "one who chases two hares catches neither (nito o ou mono wa itto o mo ezu)",
+        "meaning_en": "A caution against poorly integrated mixed methods — chasing both ends in grasping neither. (written)",
+        "example_en": "Mixed methods are powerful, but lacking an integration logic, one who chases two hares may catch neither."
       },
       {
         "idiom": "一長一短 (いっちょういったん)",
         "literal": "Một cái dài, một cái ngắn",
         "meaning": "[書き言葉・話し言葉] Mỗi cái có long-and-short — set phrase neutral cho 'each has merits and demerits'.",
-        "example": "両手法は一長一短であり、研究目的に応じた選択が求められる。"
+        "example": "両手法は一長一短であり、研究目的に応じた選択が求められる。",
+        "literal_en": "one long, one short (icchō ittan)",
+        "meaning_en": "Each has its merits and demerits — a neutral set phrase for balanced comparison. (written/spoken)",
+        "example_en": "Both methods have their strengths and weaknesses, so a choice suited to the research aim is required."
       },
       {
         "idiom": "車の両輪 (くるまのりょうりん)",
         "literal": "Hai bánh xe của xe ngựa",
         "meaning": "[書き言葉] Hai elements thiết yếu, không tách rời — phù hợp khi mô tả qual và quant như mutually necessary.",
-        "example": "質的研究と量的研究は、社会科学の車の両輪と言うべき関係にある。"
+        "example": "質的研究と量的研究は、社会科学の車の両輪と言うべき関係にある。",
+        "literal_en": "the two wheels of a cart (kuruma no ryōrin)",
+        "meaning_en": "Two essential, inseparable elements — apt when describing qual and quant as mutually necessary. (written)",
+        "example_en": "Qualitative and quantitative research stand in a relationship that may be called the two wheels of the cart of social science."
       }
     ],
     "cultural_notes_vi": "So sánh methodology ở Nhật academic culture có 3 đặc điểm. (1) METHODOLOGICAL PLURALISM — Nhật academia, đặc biệt trong social sciences và humanities, tolerant với nhiều paradigms. Khác US/UK fields có method wars (quant vs qual conflict), Nhật default là 共存 (coexistence). Bạn có thể đề xuất qualitative trong field thường quant mà không bị dismissed nếu justification mạnh. (2) HIERARCHY OF METHODS BY FIELD — biology/chemistry: quant default; sociology/anthropology: qual respected equally; education: mixed methods phổ biến; psychology: quant dominant nhưng qual subfield tồn tại. Biết hierarchy của field bạn trước khi chọn. (3) METHOD AS APPRENTICESHIP — Nhật academic culture train methods qua 師弟関係 (master-apprentice relationship). Method choice của bạn often phản ánh advisor's tradition. Switching method đột ngột mà không thảo luận với advisor là institutional misstep, không chỉ academic. Cụm: 先生のご指導を仰ぎたく (would like to receive your guidance) khi propose method change. Khác VN: ở VN methodology section thường ngắn gọn formulaic; ở Nhật C1 paper, methodology rationale có thể chiếm 15-20 phần trăm paper, especially trong PhD theses. Đầu tư thời gian. Mẹo: tham khảo 3-5 papers gần đây trong target journal, xem họ structure methodology section như thế nào. Convention dày đặc và journal-specific. Mẹo cuối: nếu reviewer push back trên method choice, KHÔNG đổi method ở revision — defend choice với better articulated rationale. Switching methods mid-revision = signal bạn không thoughtful về choice ban đầu.",
+    "cultural_notes_en": "Comparing methodologies in Japanese academic culture has three features. (1) METHODOLOGICAL PLURALISM — Japanese academia, especially the social sciences and humanities, is tolerant of multiple paradigms. Unlike US/UK fields with method wars (quant vs qual), the Japanese default is 共存 (coexistence); you can propose a qualitative approach in a usually quantitative field without being dismissed, if the justification is strong. (2) HIERARCHY OF METHODS BY FIELD — biology/chemistry: quant default; sociology/anthropology: qual respected equally; education: mixed methods common; psychology: quant dominant but a qual subfield exists. Know your field's hierarchy before choosing. (3) METHOD AS APPRENTICESHIP — Japanese academic culture trains methods through a 師弟関係 (master-apprentice relationship), and your method choice often reflects your advisor's tradition; switching method abruptly without discussing it with your advisor is an institutional misstep, not just an academic one. Use 先生のご指導を仰ぎたく (I would like to seek your guidance) when proposing a method change. Unlike Vietnam, where the methodology section is often short and formulaic, in a Japanese C1 paper the methodology rationale can take 15–20% of the paper, especially in PhD theses — invest the time. Tip: consult 3–5 recent papers in the target journal to see how they structure the methodology section; conventions are dense and journal-specific. Final tip: if a reviewer pushes back on the method choice, do NOT switch methods at revision — defend the choice with a better-articulated rationale; switching mid-revision signals you were not thoughtful about the original choice.",
     "tip_advice_vi": "Cấu trúc method-comparison section ở C1 Nhật. (a) PROBLEM-FRAMED OPENING — mở bằng research question, không bằng method list. Cụm: 本研究の問い、すなわち〜を明らかにするためには、いかなる方法論が適合的であろうか. Đặt vấn đề trước khi present options. (b) PRESENT 2-3 OPTIONS NEUTRALLY — mỗi option 1 paragraph: brief description, primary strength, primary weakness, prior usage trong field. KHÔNG editorialize ở stage này. Reader cần thấy bạn fair-minded. (c) APPLY FIT CRITERIA — explicit list 3-4 criteria từ research question (e.g., causal inference vs descriptive understanding, generalizability priority, sample size feasibility). Score mỗi option chống lại criteria. (d) DECLARE CHOICE WITH EXPLICIT RATIONALE — '以上の比較に基づき、本研究は〜を採用する。その理由は、第一に〜、第二に〜である'. Numbered rationale > vague gesture. (e) ACKNOWLEDGE TRADE-OFFS COMPLETELY — '本選択に伴う制約として、〜が挙げられる。これに対し、〜により補完を試みる'. Show bạn aware of cost + plan compensation. Mẹo về citation choice: cite methodologists (Creswell, Yin, Flick, Glaser & Strauss for qual; Cohen, Tabachnick for quant) là expected ở C1. Methodology paragraph với 0 method citations đọc như amateur. Mẹo về Japanese-specific: nếu method được developed bởi Nhật scholar (e.g., 状況的学習論), cite original Nhật source — reviewer Nhật value local intellectual lineage. Mẹo cuối: đọc lại comparison section asking 'reviewer của paradigm đối lập đọc cái này có cảm thấy fairly represented không?'. Nếu không, revise. Fairness của comparison là test of academic maturity.",
+    "tip_advice_en": "Structuring a method-comparison section in a Japanese C1 paper. (a) PROBLEM-FRAMED OPENING — open with the research question, not a method list: 本研究の問い、すなわち〜を明らかにするためには、いかなる方法論が適合的であろうか. Pose the problem before presenting options. (b) PRESENT 2–3 OPTIONS NEUTRALLY — one paragraph each: brief description, primary strength, primary weakness, prior usage in the field. Do NOT editorialize at this stage; the reader needs to see you are fair-minded. (c) APPLY FIT CRITERIA — an explicit list of 3–4 criteria drawn from the research question (e.g. causal inference vs descriptive understanding, generalizability priority, sample-size feasibility); score each option against the criteria. (d) DECLARE THE CHOICE WITH EXPLICIT RATIONALE — '以上の比較に基づき、本研究は〜を採用する。その理由は、第一に〜、第二に〜である'. A numbered rationale beats a vague gesture. (e) ACKNOWLEDGE TRADE-OFFS COMPLETELY — '本選択に伴う制約として、〜が挙げられる。これに対し、〜により補完を試みる'. Show you are aware of the cost and plan compensation. On citation: citing methodologists (Creswell, Yin, Flick, Glaser & Strauss for qual; Cohen, Tabachnick for quant) is expected at C1 — a methodology paragraph with zero method citations reads as amateur. Japanese-specific: if the method was developed by a Japanese scholar (e.g. 状況的学習論), cite the original Japanese source — Japanese reviewers value local intellectual lineage. Final tip: reread the comparison asking 'would a reviewer of the opposing paradigm feel fairly represented here?' If not, revise. The fairness of the comparison is a test of academic maturity.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1560,35 +1677,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn cần raise serious concern về data sourcing. KHÔNG accuse fabrication. Cụm: 〜の出典追跡が困難であり、再現性の観点から疑問が残る. Frame như reader experience, không như author misconduct.",
       "Closing critique. Cụm: これらの限界は本書の意義を損なうものではなく、むしろ今後の研究の足がかりとなろう. Reframe limitations như opportunities — softens critique, preserves author's standing."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a book review. Open with an evaluation of the contribution: 本書の最大の貢献は〜にある, then 1–2 paragraphs on strengths. ONLY THEN critique. Japanese review norm: praise outweighs critique by at least 1:1.",
+      "You need to raise a serious concern about data sourcing. Do NOT accuse of fabrication. Use 〜の出典追跡が困難であり、再現性の観点から疑問が残る. Frame it as a reader experience, not author misconduct.",
+      "Closing critique. Use これらの限界は本書の意義を損なうものではなく、むしろ今後の研究の足がかりとなろう. Reframe limitations as opportunities — this softens the critique and preserves the author's standing."
+    ],
     "register_notes": "Book/study critique ở C1 academic Japanese theo quy ước 評価-課題-展望 (evaluation-issues-prospects). (1) STRUCTURE — opening: situate book trong field (3-5 câu); contribution: strengths với specifics (2-3 paragraphs); critique: 2-4 issues, mỗi cái 1 paragraph; conclusion: reframe limitations như opportunities cho future work. KHÔNG mở bằng critique — taboo. (2) CRITIQUE LANGUAGE TIERS — gentle: 〜の余地が残されている (room remains for), 〜について再検討が望まれる (re-examination is desired). Medium: 〜には不備が認められる (deficiency is recognized in), 〜の点で課題が指摘されよう (an issue may be pointed out). Strong: 〜は妥当性を欠くと言わざるを得ない (it must be said that〜lacks validity), 〜は誤りであると思われる (appears to be erroneous). Strong tier hiếm khi dùng cho whole book; reserve cho specific factual errors. (3) ATTRIBUTE TO TEXT, NOT AUTHOR — '本書は〜' (this book〜) ✓; '田中氏は〜という誤りを犯している' (Mr. Tanaka commits the error of〜) ✗. Critique work, không person. (4) NUMBERED CONCERNS — '第一に〜、第二に〜、第三に〜' makes critique scannable và signals organized thought, không emotional reaction. (5) BALANCE CLOSE — kết luận book review nên reaffirm overall value. Cụm: これらの限界は本書の意義を損なうものではない / 当該分野への貢献は大きい. Critique without closing balance đọc như hatchet job. Avoid: 'つまらない' (boring), '間違っている' (wrong) — too direct; '駄作' (worthless work) — never. Đặc biệt nguy hiểm: critiquing senior scholar (大家). Extra hedge required, public critique nên ít nhất 70 phần trăm appreciation. Direct critique thường handled qua personal correspondence hoặc 私信, không public review.",
+    "register_notes_en": "Register: follow 評価→課題→展望, open with the contribution never the critique, scale the verb to severity — 〜の余地が残されている (gentle), 〜には不備が認められる (medium), 〜は妥当性を欠くと言わざるを得ない (strong, rare) — attribute to 本書 not the author, number the concerns, and close with これらの限界は本書の意義を損なうものではない.",
     "idiom_glosses": [
       {
         "idiom": "賛否両論 (さんぴりょうろん)",
         "literal": "Cả khen và chê",
         "meaning": "[書き言葉・話し言葉] Vừa có ủng hộ vừa có phản đối — phù hợp khi mô tả mixed reception của work.",
-        "example": "本書の主張は学界において賛否両論を呼んでおり、本書評もその議論への一寄稿となろう。"
+        "example": "本書の主張は学界において賛否両論を呼んでおり、本書評もその議論への一寄稿となろう。",
+        "literal_en": "both pro and con arguments (sanpi ryōron)",
+        "meaning_en": "Both support and opposition exist — apt when describing a work's mixed reception. (written/spoken)",
+        "example_en": "This book's claims have drawn both support and opposition in the field, and this review is one contribution to that debate."
       },
       {
         "idiom": "瑕瑾 (かきん)",
         "literal": "Vết và lỗi nhỏ",
         "meaning": "[硬い・書き言葉] Khuyết điểm nhỏ trong tổng thể tốt — diplomatic critique vocabulary.",
-        "example": "本書は優れた成果であり、指摘した二、三の瑕瑾は、その価値を損なうものではない。"
+        "example": "本書は優れた成果であり、指摘した二、三の瑕瑾は、その価値を損なうものではない。",
+        "literal_en": "minor flaws and blemishes (kakin)",
+        "meaning_en": "Small defects within an otherwise good whole — diplomatic critique vocabulary. (formal, written)",
+        "example_en": "This book is an excellent achievement, and the two or three minor blemishes noted do not diminish its value."
       },
       {
         "idiom": "片手落ち (かたておち)",
         "literal": "Một tay rơi (mất cân bằng)",
         "meaning": "[書き言葉・話し言葉] Bias một chiều, không đầy đủ — cảnh báo critique của bạn không nên trở thành片手落ち.",
-        "example": "長所のみを論じ、課題に触れないのでは、書評として片手落ちと言わざるを得ない。"
+        "example": "長所のみを論じ、課題に触れないのでは、書評として片手落ちと言わざるを得ない。",
+        "literal_en": "one hand fallen, i.e. one-sided (katateochi)",
+        "meaning_en": "A one-sided, incomplete treatment — a caution that your critique should not become one-sided. (written/spoken)",
+        "example_en": "To discuss only the strengths and not touch on the problems would have to be called a one-sided review."
       },
       {
         "idiom": "敬意を払う (けいいをはらう)",
         "literal": "Tỏ kính ý",
         "meaning": "[書き言葉] Tôn trọng — pair với critique để frame như respectful disagreement, không attack.",
-        "example": "著者の長年にわたる研鑽に敬意を払いつつ、以下の三点について再考を提起したい。"
+        "example": "著者の長年にわたる研鑽に敬意を払いつつ、以下の三点について再考を提起したい。",
+        "literal_en": "to pay one's respects (keii o harau)",
+        "meaning_en": "To show respect — paired with a critique to frame it as respectful disagreement, not an attack. (written)",
+        "example_en": "While paying respect to the author's many years of scholarship, I would like to raise the following three points for reconsideration."
       }
     ],
     "cultural_notes_vi": "Văn hóa critique trong academia Nhật khác phương Tây ở 4 điểm. (1) PRAISE-FIRST RULE NGHIÊM NGẶT — phương Tây critique có thể balanced 50/50; Nhật academic critique strongly skews positive (70/30 minimum). Critique heavy without praise foundation đọc như mean-spirited. (2) SENIORITY HIERARCHY MATTERS — critiquing 大家 (eminent senior scholar) requires 99 phần trăm appreciation, 1 phần trăm issue. Critiquing peer cho phép more balance. Critiquing junior shouldn't be done in public — handle privately. Học senior status của author trước khi viết review. (3) FACE-PRESERVING LANGUAGE — direct disagreement gây loss of face cho author và reflects badly trên reviewer. Hedge dày: 〜という解釈もあり得よう (interpretation〜 might also be possible) thay vì 〜は誤っている (〜is wrong). (4) PUBLIC vs PRIVATE CRITIQUE — serious concerns thường handled qua personal correspondence (私信) hoặc closed seminars. Public review reserved cho mild observations. Western 'destruction' reviews (e.g. some major journals) effectively không tồn tại trong Nhật academic culture. Khác VN: VN critique culture variable, hơi giống Nhật nhưng với less rigid hierarchy. Việc transplant Western 'tough love' review style vào Nhật context có thể end careers. Mẹo: nếu bạn có serious concern về paper, FIRST send personal email gợi ý, gauge response, then quyết định public review tone. Mẹo cuối: post-critique relationship matters. Authors remember reviewers cho decades. Critique mà bạn không thể defend mặt-đối-mặt với author tại 学会 next year là critique không nên publish.",
+    "cultural_notes_en": "Critique culture in Japanese academia differs from the West on four points. (1) STRICT PRAISE-FIRST RULE — Western critique may be balanced 50/50; Japanese academic critique skews strongly positive (70/30 minimum). Heavy critique without a foundation of praise reads as mean-spirited. (2) SENIORITY HIERARCHY MATTERS — critiquing a 大家 (eminent senior scholar) requires 99% appreciation, 1% issue; critiquing a peer allows more balance; critiquing a junior should not be done in public — handle it privately. Learn the author's seniority before writing the review. (3) FACE-PRESERVING LANGUAGE — direct disagreement causes loss of face for the author and reflects badly on the reviewer; hedge heavily: 〜という解釈もあり得よう (interpretation〜 might also be possible) rather than 〜は誤っている (〜is wrong). (4) PUBLIC vs PRIVATE CRITIQUE — serious concerns are usually handled through personal correspondence (私信) or closed seminars; the public review is reserved for mild observations. Western 'destruction' reviews effectively do not exist in Japanese academic culture. Unlike Vietnam, whose critique culture is variable and somewhat similar to Japan's but with a less rigid hierarchy, transplanting a Western 'tough love' review style into the Japanese context can end careers. Tip: if you have a serious concern about a paper, FIRST send a personal email suggestion, gauge the response, then decide the public review tone. Final tip: the post-critique relationship matters — authors remember reviewers for decades; a critique you could not defend face-to-face with the author at next year's 学会 is one you should not publish.",
     "tip_advice_vi": "Workflow viết một book review C1 Nhật hiệu quả. (a) READ TWICE — first read cho overall impression, second read cho specific evidence để cite. KHÔNG viết review từ first reading — bias dễ bias cao. (b) NOTE STRENGTHS 그 EQUALLY VỚI ISSUES — habit của critic là note flaws; counterbalance by explicitly noting strengths trong notes. Aim 5 strength notes : 3 issue notes ratio. (c) CHỌN 2-4 ISSUES MAXIMUM — 1 issue review đọc shallow; 6+ đọc petty. 3 well-developed issues là sweet spot. (d) FOR EACH ISSUE, FOLLOW 4-PART STRUCTURE — describe what book does (1-2 sentences) → identify the gap or concern (1-2 sentences) → explain why it matters (1-2 sentences) → suggest direction (1 sentence). Without (d), critique đọc như complaint. (e) DRAFT, COOL, REVISE — sau first draft, chờ 48 hours, đọc lại askind 'does this read like a fair-minded reviewer? Or a frustrated one?'. Revise tone-only ở second pass. (f) HEDGE STRENGTH MATCHING SEVERITY — typo / minor inaccuracy: gentle hedge. Methodological concern: medium. Factual error: strong but specific. Calibrate. Mẹo về citation — review nên cite 5-15 secondary sources tự nó: prior reviews của same book (nếu có), comparable works, frameworks bạn invoke. Review with 0 outside citations đọc như opinion piece, không academic critique. Mẹo về length — Nhật academic book reviews typically 2,000-4,000 字 (Japanese characters). Lá thư ngắn impression piece OK ở popular venues; refereed journals expect substantial review. Mẹo cuối: KHÔNG WRITE REVIEW IF BẠN COULD NOT WRITE A BOOK ON SAME TOPIC — phương châm Nhật academic. Nếu bạn không có competence để critique, decline review request. Reviewer competence phải match author competence cho review để có giá trị.",
+    "tip_advice_en": "An effective workflow for writing a Japanese C1 book review. (a) READ TWICE — first read for overall impression, second read for specific evidence to cite. Do NOT write the review from the first reading; bias runs high. (b) NOTE STRENGTHS EQUALLY WITH ISSUES — a critic's habit is to note flaws; counterbalance by explicitly noting strengths in your notes, aiming for a 5 strength : 3 issue ratio. (c) CHOOSE 2–4 ISSUES MAXIMUM — a one-issue review reads shallow; six or more reads petty; three well-developed issues is the sweet spot. (d) FOR EACH ISSUE, FOLLOW A 4-PART STRUCTURE — describe what the book does (1–2 sentences) → identify the gap or concern (1–2) → explain why it matters (1–2) → suggest a direction (1). Without (d), the critique reads as a complaint. (e) DRAFT, COOL, REVISE — after the first draft, wait 48 hours, reread asking 'does this read like a fair-minded reviewer, or a frustrated one?' Revise tone only on the second pass. (f) MATCH HEDGE STRENGTH TO SEVERITY — typo/minor inaccuracy: gentle; methodological concern: medium; factual error: strong but specific. Calibrate. On citation: a review should itself cite 5–15 secondary sources — prior reviews of the same book, comparable works, frameworks you invoke; a review with zero outside citations reads as an opinion piece, not academic critique. On length: Japanese academic book reviews are typically 2,000–4,000 字; a short impression piece is fine at popular venues, but refereed journals expect a substantial review. Final tip: do NOT write a review if you could not write a book on the same topic — a Japanese academic maxim. If you lack the competence to critique, decline the request; reviewer competence must match author competence for the review to have value.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1793,35 +1930,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn ask question từ floor. Mandatory format: greet (失礼いたします hoặc 貴重なご発表ありがとうございました) cộng identify (所属は〇〇大学の〜と申します) cộng question. KHÔNG bỏ identify — Nhật conference convention.",
       "Bạn không biết câu trả lời. KHÔNG bịa. Cụm: ご質問の点については、現時点で十分に検討できておりません。今後の課題として承ります. Honest deferral được respected hơn pretend-knowledge."
     ],
+    "roleplay_prompts_en": [
+      "You are the presenter opening Q&A. Use ご清聴ありがとうございました。ご質問、ご意見をお願いいたします. After the first question, repeat thanks: ご質問ありがとうございます. Do NOT skip thanks — a bare 'はい' sounds brusque.",
+      "You ask a question from the floor. Mandatory format: greet (失礼いたします or 貴重なご発表ありがとうございました) + identify (所属は〇〇大学の〜と申します) + question. Do NOT omit the self-identification — Japanese conference convention.",
+      "You do not know the answer. Do NOT make one up. Use ご質問の点については、現時点で十分に検討できておりません。今後の課題として承ります. An honest deferral is more respected than pretended knowledge."
+    ],
     "register_notes": "Q&A register ở Nhật conference theo strict choreography. (1) OPENING SEQUENCE — presenter kết bằng ご清聴ありがとうございました. Chair (司会者) opens floor: フロアからご質問を承ります. Questioner waits to be recognized, đứng lên (nếu microphone), đầu tiên identify: 失礼いたします hoặc greet, sau đó 所属は〇〇の〜と申します. Skip identify = breach of etiquette. (2) QUESTION FRAMING — gentle prelude required: 貴重なご発表ありがとうございました cộng 一点ご教示いただきたく hoặc 二点伺ってもよろしいでしょうか. Pure question without prelude đọc aggressive. Number questions nếu multiple. (3) PRESENTER RESPONSE — start với thank: ご質問ありがとうございます. Confirm understanding nếu unclear: ご質問の趣旨を確認させていただいてもよろしいでしょうか. Answer organized: 結論を申し上げますと cho concise; 三点に分けてお答えします cho complex. End với お答えになっておりますでしょうか (does this answer your question?) — invites follow-up. (4) HONORIFIC ASYMMETRY — questioner uses humble forms toward presenter (お聞かせいただけますか, ご教示いただけますか); presenter uses humble toward questioner (お答えさせていただきます, 承知いたしました). Equal-equal humility, neither dominates. (5) HANDLING DIFFICULT QUESTIONS — defer: 今後の課題として承ります (I receive as future task). Scope-out: 本研究の射程外でございます. Acknowledge limit: 現時点で十分に検討できておりません. KHÔNG fake answer — caught easily, reputational damage permanent. (6) CHAIR'S ROLE — manages time (持ち時間が押しております), prevents single questioner monopoly, closes session. Đừng challenge chair's calls. Vocabulary forbidden in Q&A: それは違います (that's wrong), わかりません (don't know — too bare; use 検討不足でございます), 関係ない (irrelevant — never). Time discipline: questions 30-60 sec, answers 60-120 sec. Long monologue questions ('actually what I want to comment is...') breach etiquette — chair will cut.",
+    "register_notes_en": "Register: keep the choreography — questioner 失礼いたします + 所属…と申します + 一点ご教示いただきたく; presenter ご質問ありがとうございます … お答えになっておりますでしょうか; defer with 今後の課題として承ります or 本研究の射程外でございます, never それは違います or a bare わかりません.",
     "idiom_glosses": [
       {
         "idiom": "釈迦に説法 (しゃかにせっぽう)",
         "literal": "Giảng đạo cho Phật Thích Ca",
         "meaning": "[書き言葉・話し言葉] Dạy expert thứ họ đã biết — humble disclaimer khi raise question to senior: 釈迦に説法かもしれませんが.",
-        "example": "釈迦に説法かもしれませんが、〇〇 (二〇二〇) においても同様の論点が指摘されているかと存じます。"
+        "example": "釈迦に説法かもしれませんが、〇〇 (二〇二〇) においても同様の論点が指摘されているかと存じます。",
+        "literal_en": "preaching the dharma to the Buddha (shaka ni seppō)",
+        "meaning_en": "Teaching an expert what they already know — a humble disclaimer when raising a question to a senior: 釈迦に説法かもしれませんが. (written/spoken)",
+        "example_en": "This may be preaching to the Buddha, but I believe a similar point is noted in 〇〇 (二〇二〇) as well."
       },
       {
         "idiom": "蛇足 (だそく)",
         "literal": "Vẽ rắn thêm chân",
         "meaning": "[書き言葉・話し言葉] Thêm thừa, không cần thiết — humble disclaimer ở cuối comment: 蛇足ながら.",
-        "example": "蛇足ながら一言申し添えますと、本論点は次回学会でも継続して議論されるものと伺っております。"
+        "example": "蛇足ながら一言申し添えますと、本論点は次回学会でも継続して議論されるものと伺っております。",
+        "literal_en": "drawing legs on a snake (dasoku)",
+        "meaning_en": "A superfluous, unneeded addition — a humble disclaimer at the end of a comment: 蛇足ながら. (written/spoken)",
+        "example_en": "If I may add one superfluous word, I understand this point will continue to be discussed at the next conference as well."
       },
       {
         "idiom": "問うは一旦の恥、問わぬは末代の恥 (とうはいったんのはじ、とわぬはまつだいのはじ)",
         "literal": "Hỏi là xấu hổ một lúc, không hỏi là xấu hổ cả đời",
         "meaning": "[書き言葉] Better ask now than wonder forever — encouragement để raise basic question without shame.",
-        "example": "問うは一旦の恥と申しますし、初歩的な点ですがお伺いさせてください。"
+        "example": "問うは一旦の恥と申しますし、初歩的な点ですがお伺いさせてください。",
+        "literal_en": "to ask is a moment's shame, not to ask a lifetime's (tou wa ittan no haji, towanu wa matsudai no haji)",
+        "meaning_en": "Better to ask now than wonder forever — encouragement to raise a basic question without shame. (written)",
+        "example_en": "As they say that asking is a moment's shame, let me ask, though it is an elementary point."
       },
       {
         "idiom": "ご教示を賜る (ごきょうじをたまわる)",
         "literal": "Nhận sự chỉ dạy",
         "meaning": "[硬い・書き言葉] Most humble form cho 'receive instruction' — deploy khi questioning a senior.",
-        "example": "本件につきましては、先生のご教示を賜れれば幸甚に存じます。"
+        "example": "本件につきましては、先生のご教示を賜れれば幸甚に存じます。",
+        "literal_en": "to receive instruction (humbly) (go-kyōji o tamawaru)",
+        "meaning_en": "The most humble form for receiving instruction — deploy it when questioning a senior. (formal, written)",
+        "example_en": "On this matter, I would be most honored to receive your instruction, Professor."
       }
     ],
     "cultural_notes_vi": "Q&A culture ở Nhật conference khác phương Tây ở 4 điểm. (1) THANKS RITUAL — Western Q&A có thể skip thanks, đi thẳng vào question. Nhật mandatory mở bằng thanks. Skip = read as rude regardless of question quality. (2) IDENTIFY SELF — Nhật convention: 所属 + last name. Western có thể just ask without identify. Trong Nhật, anonymous question seen as cowardly. Even nếu chair already mới bạn lên, repeat self-identify in your opening. (3) NO 'GOTCHA' QUESTIONS — Western academic culture sometimes celebrates question designed to expose flaw publicly. Nhật strongly disapprove — gây loss of face cho presenter, reflects badly on questioner. Critique style: 'I'd like to learn more about how you addressed〜' rather than 'You didn't address〜'. (4) AUDIENCE-MEMBER COMMENTS THAY VÌ QUESTIONS — Western Q&A allows extended comments masquerading as questions ('I'd like to add to your point...'). Nhật convention: questions only, save extended comments cho networking break. Chair may cut long-comment-question politely. Khác VN: VN seminar Q&A typically informal hơn, less choreographed; chuyển sang Nhật context cần học chính xác sequence. Mẹo: trước first conference Nhật, attend 2-3 sessions chỉ để observe Q&A choreography. Memorize phrases. Practice một identify-question-thank sequence trước khi attempt. Mẹo: nếu bạn presenter và Q&A run dry (silence), KHÔNG awkwardly fill. Chair handles. Nếu muốn solicit specific feedback, prepare 1 question planted với colleague trước. Mẹo cuối: post-Q&A networking quan trọng. Approach questioners afterward: 先ほどはご質問ありがとうございました. Initiates relationship. Many career opportunities trong Nhật academia start với post-Q&A coffee.",
+    "cultural_notes_en": "Q&A culture at Japanese conferences differs from the West on four points. (1) THANKS RITUAL — Western Q&A may skip thanks and go straight to the question; in Japan, opening with thanks is mandatory — skipping it reads as rude regardless of the question's quality. (2) IDENTIFY YOURSELF — Japanese convention: 所属 + family name; the West may ask without identifying, but in Japan an anonymous question is seen as cowardly — even if the chair has already called on you, repeat the self-identification in your opening. (3) NO 'GOTCHA' QUESTIONS — Western academic culture sometimes celebrates a question designed to expose a flaw publicly; Japan strongly disapproves — it causes loss of face for the presenter and reflects badly on the questioner. Critique style: 'I'd like to learn more about how you addressed〜' rather than 'You didn't address〜'. (4) QUESTIONS, NOT AUDIENCE COMMENTS — Western Q&A allows extended comments masquerading as questions ('I'd like to add to your point...'); Japanese convention is questions only, with extended comments saved for the networking break; the chair may politely cut a long comment-question. Unlike Vietnam, where seminar Q&A is typically more informal and less choreographed, the Japanese context requires learning the exact sequence. Tip: before your first Japanese conference, attend 2–3 sessions just to observe the Q&A choreography; memorize the phrases; practice an identify-question-thank sequence. If you present and Q&A runs dry, do NOT awkwardly fill it — the chair handles that; to solicit specific feedback, prepare one question planted with a colleague beforehand. Final tip: post-Q&A networking matters — approach questioners afterward with 先ほどはご質問ありがとうございました; many career opportunities in Japanese academia start with post-Q&A coffee.",
     "tip_advice_vi": "Pre-conference Q&A preparation cho presenter ở C1. (a) PREDICT QUESTIONS — list 5-7 likely questions trước presentation. For each, prepare 60-second answer. Cover: methodology choice, sample limitation, generalization scope, alternative interpretation, future direction. (b) PREPARE 'I DON'T KNOW' VERSIONS — practice 3 graceful deferrals: その点は今後の課題として承ります / 現時点で十分に検討できておりません / 本研究の射程外でございます. Có sẵn lúc panic. (c) BRING HANDOUT (配布資料) — 1-2 page sheet với data details. Refer trong Q&A: 詳細は配布資料の〜ページに記載しております. Saves time, demonstrates preparation. (d) WATER NEARBY — speaking dries throat; pause để uống signals composure, not weakness. Đối với questioner ở C1: (a) LISTEN ENTIRE PRESENTATION — taking notes throughout, không formulate question từ first 5 phút then mentally check out. Best questions reflect comprehensive listening. (b) WAIT YOUR TURN — Nhật convention: chair recognizes hand-raised order. Don't bypass. (c) SHORT QUESTIONS WIN — 30-second focused question > 2-minute meandering preamble. Chair và audience appreciate. (d) ONE QUESTION PER TURN — nếu bạn really need 2-3, ask one, wait response, raise hand again later. Chain-questioning hogs time. (e) FOLLOW UP OFFLINE — extended exchange, technical detail, criticism — handle qua email post-conference. Cụm follow-up: 先日の学会では貴重なご発表をありがとうございました cộng your detailed point. Mẹo về Q&A note-taking: presenter nên ghi xuống mọi câu hỏi nhận được, regardless of answer chất lượng. Sau conference, 24-hour-rule: review notes, identify weakest answers, strengthen cho next conference hoặc paper revision. Conference Q&A là live peer review — value the data. Mẹo cuối: post-presentation, send formal thanks cho chair: 本日は座長の労、誠にありがとうございました. Maintain relationship, opens future invitation.",
+    "tip_advice_en": "Pre-conference Q&A preparation at C1. For the presenter: (a) PREDICT QUESTIONS — list 5–7 likely questions and prepare a 60-second answer for each, covering methodology choice, sample limitation, generalization scope, alternative interpretation, future direction. (b) PREPARE 'I DON'T KNOW' VERSIONS — practice three graceful deferrals: その点は今後の課題として承ります / 現時点で十分に検討できておりません / 本研究の射程外でございます — ready for the moment of panic. (c) BRING A HANDOUT (配布資料) — a 1–2 page sheet with data details; refer to it in Q&A: 詳細は配布資料の〜ページに記載しております. (d) WATER NEARBY — speaking dries the throat; a pause to drink signals composure, not weakness. For the questioner: (a) LISTEN TO THE ENTIRE PRESENTATION, taking notes throughout, rather than forming a question from the first 5 minutes; (b) WAIT YOUR TURN — the chair recognizes hands in order, don't bypass; (c) SHORT QUESTIONS WIN — a 30-second focused question beats a 2-minute preamble; (d) ONE QUESTION PER TURN — if you need 2–3, ask one, wait, raise your hand again later; (e) FOLLOW UP OFFLINE — extended exchange, technical detail, criticism handled by email after: 先日の学会では貴重なご発表をありがとうございました plus your detailed point. On note-taking: the presenter should write down every question received regardless of answer quality; after the conference, a 24-hour rule — review notes, identify the weakest answers, strengthen them for the next conference or revision. Conference Q&A is live peer review — value the data. Final tip: after presenting, send formal thanks to the chair: 本日は座長の労、誠にありがとうございました — it maintains the relationship and opens future invitations.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2031,35 +2188,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ ra abstract của bạn quá vague: '結果の記述が抽象的'. Đáp lại bằng concrete numbers / findings, không general claims. Cụm: 〜の関係に r=〇.六二 の正の相関が確認された thay cho 'significant correlation observed'.",
       "Bạn viết tổng kết kết luận. Cụm 本知見は〜を示唆するものである cho impact, sau đó 本研究の限界として〜が挙げられる. KHÔNG introduce new claims trong summary — chỉ recap + limit + future."
     ],
+    "roleplay_prompts_en": [
+      "You write an abstract within a 400-字 limit. Use the 5-sentence structure: (1) purpose, (2) brief background, (3) method with specifics, (4) result with numbers, (5) conclusion + limitation. Do NOT open with background — a Japanese academic abstract opens with purpose.",
+      "A reviewer notes your abstract is too vague: '結果の記述が抽象的'. Respond with concrete numbers/findings, not general claims. Use 〜の関係に r=〇.六二 の正の相関が確認された rather than 'significant correlation observed'.",
+      "You write the concluding summary. Use 本知見は〜を示唆するものである for impact, then 本研究の限界として〜が挙げられる. Do NOT introduce new claims in the summary — only recap + limit + future."
+    ],
     "register_notes": "Abstract writing ở C1 Japanese tuân theo cấu trúc IMRaC (Introduction-Methods-Results-Conclusion) compressed. (1) WORD-LIMIT TIERS — Nhật academic abstracts: 国際学会 200-300 từ tiếng Anh, 国内学会 300-600 字 tiếng Nhật, journal articles 400-800 字. Strict — over-limit auto-reject. (2) FIVE-SENTENCE TEMPLATE — câu 1: purpose ('本研究は〜を明らかにすることを目的とする'); câu 2: background ('〜については先行研究で〜が指摘されているが、〜については検討されていない'); câu 3-4: method + results với specifics ('〜名を対象とし〜を行い、〜が確認された'); câu 5: implication + limit ('本知見は〜を示唆するが、〜の制約がある'). Strict 5-sentence makes abstract scannable. (3) TENSE — methods và results past tense (〜した、〜が確認された); conclusion present (〜を示唆する); purpose can be either (〜を目的とする / 〜を目的とした). Consistency within each function. (4) AVOID — citations (abstract tự đứng độc lập), undefined acronyms (define hoặc skip), figures/tables (text only), forward references ('see Section 3' cấm). (5) KEYWORDS — 3-5 chuẩn, ordered từ specific (concept của bạn) đến general (field). Keywords là search-engine targeting; chọn carefully. (6) ABSTRACT VS SUMMARY VS OVERVIEW — 抄録 = formal abstract (front of paper). 要旨 = summary (often longer, presentation/proposal context). 概要 = overview (less structured, intro material). C1 phải distinguish. Common mistakes: opening với background (Western style sometimes does this; Nhật convention opens với purpose), vague results ('有意な結果が得られた' không đủ — need numbers), introducing new ideas in conclusion. Avoid: 思う (too soft), 〜と感じる (subjective). Use 〜と考えられる, 〜が示唆される.",
+    "register_notes_en": "Register: compress to the 5-sentence purpose→background→method→result→implication template within the 字 limit, past tense for method/results and present for the conclusion, no citations / acronyms / forward references, keep humility (〜と考えられる, 〜が示唆される) over 思う / 〜と感じる, and order 3–5 keywords specific→general.",
     "idiom_glosses": [
       {
         "idiom": "簡にして要を得る (かんにしてようをえる)",
         "literal": "Đơn giản nhưng nắm được điểm chính",
         "meaning": "[硬い・書き言葉] Concise yet capturing essence — virtue tối cao trong abstract writing.",
-        "example": "優れた抄録とは、簡にして要を得るものであり、読者を本文へと自然に導く。"
+        "example": "優れた抄録とは、簡にして要を得るものであり、読者を本文へと自然に導く。",
+        "literal_en": "simple yet capturing the essential (kan ni shite yō o eru)",
+        "meaning_en": "Concise yet capturing the essence — the highest virtue in abstract writing. (formal, written)",
+        "example_en": "An excellent abstract is simple yet captures the essential, leading the reader naturally into the body."
       },
       {
         "idiom": "言を尽くす (げんをつくす)",
         "literal": "Dùng hết lời",
         "meaning": "[書き言葉] Diễn đạt đầy đủ — anti-ideal cho abstract; warning against verbosity.",
-        "example": "抄録において言を尽くそうとすれば、かえって焦点が定まらない。"
+        "example": "抄録において言を尽くそうとすれば、かえって焦点が定まらない。",
+        "literal_en": "to exhaust one's words (gen o tsukusu)",
+        "meaning_en": "To express something at full length — the anti-ideal for an abstract; a warning against verbosity. (written)",
+        "example_en": "If one tries to say everything in an abstract, the focus is, on the contrary, lost."
       },
       {
         "idiom": "肝心要 (かんじんかなめ)",
         "literal": "Gan + tim + then chốt — phần thiết yếu nhất",
         "meaning": "[書き言葉・話し言葉] Core essential — abstract phải capture 肝心要 của paper.",
-        "example": "抄録には、本研究の肝心要のみを抽出して記すべきである。"
+        "example": "抄録には、本研究の肝心要のみを抽出して記すべきである。",
+        "literal_en": "liver and heart, the vital point (kanjin kaname)",
+        "meaning_en": "The core essential — an abstract must capture the vital heart of the paper. (written/spoken)",
+        "example_en": "An abstract should extract and state only the vital essence of the study."
       },
       {
         "idiom": "読者の地図となる (どくしゃのちずとなる)",
         "literal": "Trở thành bản đồ cho người đọc",
         "meaning": "[書き言葉] Set phrase metaphor — abstract = map của paper, guide reader's navigation.",
-        "example": "良い抄録は、読者の地図となり、本文のいかなる節を読むべきかを示唆する。"
+        "example": "良い抄録は、読者の地図となり、本文のいかなる節を読むべきかを示唆する。",
+        "literal_en": "to become the reader's map (dokusha no chizu to naru)",
+        "meaning_en": "A set-phrase metaphor — the abstract is the map of the paper, guiding the reader's navigation. (written)",
+        "example_en": "A good abstract becomes the reader's map, indicating which sections of the body to read."
       }
     ],
     "cultural_notes_vi": "Abstract conventions ở Nhật academic khác phương Tây ở 4 điểm. (1) PURPOSE FIRST, NOT BACKGROUND — Western abstracts (đặc biệt humanities) often mở bằng broad context; Nhật mở thẳng với research purpose ở câu 1. Trong tiếng Nhật, default reader assumed to know background; trong tiếng Anh international, có thể cần thêm 1 sentence context. Adjust theo target venue. (2) HUMBLE TONE EVEN IN ABSTRACT — Nhật abstract retain academic humility: 〜と考えられる > 〜である for interpretation; 〜の可能性が示唆される > 〜が証明された. Western abstract có thể bolder; Nhật reviewer có thể bị đẩy lùi bởi over-confident abstract. (3) NUMBERS DENSITY — Nhật C1 abstracts (especially STEM) dày đặc với specifics: sample sizes, effect sizes, p-values, percentages. Vague abstracts đọc weak. Humanities có thể less numerical nhưng vẫn cần concrete categories thay vì general claims. (4) BILINGUAL ABSTRACTS — nhiều Nhật journals require 和文抄録 (Japanese abstract) cộng English abstract. KHÔNG dịch direct — adjust mỗi version cho audience. English abstract có thể cần thêm context (international readers don't know Japan-specific terms); Japanese version assume more shared context. Khác VN: VN abstract conventions variable theo journal; nhiều VN journals chấp nhận longer narrative abstracts. Nhật C1 strictly structured. Adjust khi submit qua biên giới. Mẹo: collect 10 abstracts từ target journal, study structure. Mỗi journal có conventions riêng (some allow first-person, some don't; some require explicit headings 'Purpose:', 'Method:'). Match exactly. Mẹo: keywords trong tiếng Nhật KHÔNG được dùng spaces giữa terms — comma-separated với readings (kanji compounds typically). Mẹo cuối: nếu paper bị desk-reject từ abstract, KHÔNG giải thích hay protest — abstract is paper's elevator pitch; nếu fails, paper fails. Rewrite, resubmit elsewhere với better abstract.",
+    "cultural_notes_en": "Abstract conventions in Japanese academia differ from the West on four points. (1) PURPOSE FIRST, NOT BACKGROUND — Western abstracts (especially in the humanities) often open with broad context; Japanese abstracts open directly with the research purpose in sentence 1. In Japanese the default reader is assumed to know the background; in international English you may need one added context sentence — adjust to the target venue. (2) HUMBLE TONE EVEN IN THE ABSTRACT — Japanese abstracts retain academic humility: 〜と考えられる over 〜である for interpretation; 〜の可能性が示唆される over 〜が証明された. A Western abstract may be bolder; a Japanese reviewer can be put off by an over-confident abstract. (3) NUMBERS DENSITY — Japanese C1 abstracts (especially STEM) are dense with specifics: sample sizes, effect sizes, p-values, percentages; vague abstracts read weak. The humanities can be less numerical but still need concrete categories rather than general claims. (4) BILINGUAL ABSTRACTS — many Japanese journals require a 和文抄録 (Japanese abstract) plus an English abstract; do NOT translate directly — adjust each version for its audience (the English may need added context for international readers; the Japanese assumes more shared context). Unlike Vietnam, where abstract conventions vary by journal and many accept longer narrative abstracts, Japanese C1 is strictly structured — adjust when submitting across borders. Tip: collect 10 abstracts from the target journal and study the structure; each journal has its own conventions (first person allowed or not; explicit headings 'Purpose:', 'Method:' required or not) — match exactly. Note: Japanese keywords use no spaces between terms — comma-separated, typically kanji compounds. Final tip: if a paper is desk-rejected from the abstract, do NOT explain or protest — the abstract is the paper's elevator pitch; if it fails, the paper fails. Rewrite, resubmit elsewhere with a better abstract.",
     "tip_advice_vi": "Workflow viết abstract C1 hiệu quả. (a) WRITE LAST — KHÔNG viết abstract trước paper. Write paper completely, sau đó distill. Pre-written abstracts thường drift away from final paper content. (b) REVERSE OUTLINE — sau hoàn thiện paper, viết 1-sentence summary mỗi section. Combine those sentences = first abstract draft. Often coherent enough cần ít revision. (c) MEASURE COMPRESSION RATIO — paper 8000 字 → abstract 400 字 = 5 phần trăm compression. Anything ratio under 3 phần trăm → abstract underwritten; over 8 phần trăm → paper undertight or abstract wordy. Sweet spot 4-6 phần trăm. (d) TRIM IN PASSES — pass 1: cut every 'などの', 'において', 'について' that doesn't change meaning. Pass 2: replace verbose forms với compressed (〜することができる → 〜できる). Pass 3: combine related sentences với 〜し、〜. Each pass typically saves 10-15 phần trăm. (e) TEST SCANNABILITY — show abstract to colleague không trong field. Hỏi: trong 30 giây, bạn nắm được purpose, method, finding chính? Nếu không, abstract still vague. Mẹo về số lượng — nếu paper có nhiều findings, list 2 chính trong abstract, mention 'その他の知見については本文を参照されたい'. Không cần dump tất cả. Mẹo về limitations — 1 limitation câu trong abstract acceptable; 3+ limitations nghe defensive. Hold rest cho discussion. Mẹo về keywords — dùng terms reviewer sẽ search. Nếu field có jargon Anh-Nhật parallel (e.g., プラグマティクス vs 語用論), include both. Maximize discoverability. Mẹo về 和文 vs English abstracts — write Japanese first nếu primary audience là Japanese; English first nếu primary là international. Direct translation often awkward; rewrite với target audience in mind. Mẹo cuối: revise abstract ít nhất 5 lần. Abstract chính là phần được đọc most và judge most. Time investment 5x rate-per-word so với body justified.",
+    "tip_advice_en": "An effective C1 abstract workflow. (a) WRITE LAST — do NOT write the abstract before the paper; write the paper completely, then distill. Pre-written abstracts drift from the final content. (b) REVERSE OUTLINE — after finishing the paper, write a one-sentence summary of each section; combining those sentences gives the first abstract draft, often coherent enough to need little revision. (c) MEASURE COMPRESSION RATIO — an 8,000-字 paper → a 400-字 abstract = 5% compression. Under 3% → the abstract is underwritten; over 8% → the paper is undertight or the abstract is wordy; the sweet spot is 4–6%. (d) TRIM IN PASSES — pass 1: cut every 'などの', 'において', 'について' that doesn't change meaning; pass 2: replace verbose forms with compressed ones (〜することができる → 〜できる); pass 3: combine related sentences with 〜し、〜. Each pass typically saves 10–15%. (e) TEST SCANNABILITY — show the abstract to a colleague outside the field; ask whether, in 30 seconds, they grasp the purpose, method, and main finding. If not, it is still vague. On quantity: if the paper has many findings, list the 2 main ones and add 'その他の知見については本文を参照されたい'. On limitations: one limitation sentence in the abstract is acceptable; 3+ sounds defensive — hold the rest for the discussion. On keywords: use terms a reviewer would search; if the field has parallel English/Japanese jargon (e.g. プラグマティクス vs 語用論), include both to maximize discoverability. On 和文 vs English abstracts: write Japanese first if the primary audience is Japanese, English first if international; direct translation is often awkward — rewrite with the target audience in mind. Final tip: revise the abstract at least 5 times; it is the most-read and most-judged part — a 5x time investment per word over the body is justified.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2264,35 +2441,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn cần decline 1 reviewer suggestion (out of scope). Cụm: ご指摘の通り、〜により知見の射程は広がりますが、本研究では〜を優先いたしました。〜への拡張は、今後の研究課題として承りたく存じます. Acknowledge merit + explain priority + defer.",
       "Reviewer A và B mâu thuẫn nhau. Phrase: 査読者A様のご指摘とB様のご指摘とは部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます. KHÔNG side với một reviewer aggressively — explain choice với balance."
     ],
+    "roleplay_prompts_en": [
+      "You receive a conditional acceptance with 10 reviewer comments. Open the response letter with 査読者各位のご指摘に深く感謝申し上げます. Then list each point: comment summary → response → page number of the revision. Do NOT be defensive — accept or explain gracefully.",
+      "You need to decline one reviewer suggestion (out of scope). Use ご指摘の通り、〜により知見の射程は広がりますが、本研究では〜を優先いたしました。〜への拡張は、今後の研究課題として承りたく存じます. Acknowledge merit + explain priority + defer.",
+      "Reviewer A and Reviewer B contradict each other. Phrase it with 査読者A様のご指摘とB様のご指摘とは部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます. Do NOT side with one reviewer aggressively — explain the choice with balance."
+    ],
     "register_notes": "Peer review response letter ở C1 Japanese tuân theo strict format. (1) STRUCTURE — opening: thank reviewers ('査読者各位のご指摘に深く感謝申し上げます'); body: numbered response cho each comment; closing: 重ねて御礼申し上げます. (2) PER-COMMENT FORMAT — '査読者A様、ご指摘1: [paraphrase comment]. ご対応: [explain change], 修正箇所: 本文〇ページ〇行目'. Numbered, paraphrased (shows you understood), explicit page reference. (3) FOUR RESPONSE CATEGORIES — accept and revise (most common, simplest): 'ご指摘を踏まえ、〜のとおり修正いたしました'. Partial accept: 'ご指摘を踏まえ、〜の点については修正いたしましたが、〜については〜の理由により従来通りといたしました'. Reservation: 'ご指摘の点、誠にもっともながら、〜の制約により本稿では〜にとどめざるを得ませんでした'. Decline: ALWAYS acknowledge merit first, then explain why declined, then offer future-work framing. KHÔNG flat 'no'. (4) HONORIFICS — toward reviewer: 査読者A様 (formal), ご指摘 (honorific), ご教示 (humble request). Toward yourself/paper: 本稿, 当方, いたしました (humble). Maintain throughout — slipping into casual mid-letter signals carelessness. (5) CONFLICT HANDLING — when reviewers disagree, NEVER take sides ('A is right, B is wrong'). Cụm: '査読者A様とB様のご指摘は部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます。これは、〜という理由によるものでございます'. Show bạn weighed both. (6) EDITOR-VS-REVIEWER — response letter addressed to editor, but content responds to reviewers. Editor reads first, decides re-review. Pro tip: short cover note to editor summarizing major changes, separate from detailed point-by-point. Forbidden vocabulary: わかりません, それは違います, 不要です. Required cushioning: 誠にもっともながら, ご指摘を踏まえ, 重ねて御礼申し上げます. Tone calibration: even when reviewer is wrong (rare but happens — factual error), respond gentle: 'ご指摘の点について改めて確認いたしましたところ、〇〇に関する記述は本文〇ページに既に明記しておりました' (rather than 'you missed page X'). Save face for reviewer.",
+    "register_notes_en": "Register: open and close with thanks (査読者各位のご指摘に深く感謝申し上げます … 重ねて御礼申し上げます), paraphrase each comment then give ご対応 + 修正箇所 本文〇ページ, never a flat 'no' — acknowledge merit, explain, defer to future work — and on reviewer conflict take neither side, 〜の立場を取らせていただきたく存じます.",
     "idiom_glosses": [
       {
         "idiom": "鉄は熱いうちに打て (てつはあついうちにうて)",
         "literal": "Đập sắt khi còn nóng",
         "meaning": "[書き言葉・話し言葉] Strike while iron hot — submit response letter trong window editor expects, không delay momentum.",
-        "example": "査読結果を受領した後は、鉄は熱いうちに打てと申しますし、速やかに応答書の作成に取り掛かるべきでございます。"
+        "example": "査読結果を受領した後は、鉄は熱いうちに打てと申しますし、速やかに応答書の作成に取り掛かるべきでございます。",
+        "literal_en": "strike the iron while it is hot (tetsu wa atsui uchi ni ute)",
+        "meaning_en": "Submit the response letter within the window the editor expects — don't lose momentum. (written/spoken)",
+        "example_en": "After receiving the review results, as the saying goes to strike while the iron is hot, one should promptly set about drafting the response."
       },
       {
         "idiom": "謙虚に受け止める (けんきょにうけとめる)",
         "literal": "Tiếp nhận một cách khiêm tốn",
         "meaning": "[書き言葉] Accept feedback humbly — set phrase showing reviewer's comments accepted constructively.",
-        "example": "査読者各位のご指摘を謙虚に受け止め、改稿に反映いたしました。"
+        "example": "査読者各位のご指摘を謙虚に受け止め、改稿に反映いたしました。",
+        "literal_en": "to receive humbly (kenkyo ni uketomeru)",
+        "meaning_en": "To accept feedback humbly — a set phrase showing the reviewer's comments were taken constructively. (written)",
+        "example_en": "I have humbly accepted the comments of the reviewers and reflected them in the revised manuscript."
       },
       {
         "idiom": "慎重を期す (しんちょうをきす)",
         "literal": "Cố gắng cẩn trọng",
         "meaning": "[書き言葉] Take utmost care — phù hợp khi explaining bạn revised carefully theo comment.",
-        "example": "本箇所については、ご指摘を踏まえ、慎重を期して再検討いたしました。"
+        "example": "本箇所については、ご指摘を踏まえ、慎重を期して再検討いたしました。",
+        "literal_en": "to take utmost care (shinchō o kisu)",
+        "meaning_en": "To proceed with great caution — apt when explaining that you revised carefully in line with a comment. (written)",
+        "example_en": "On this passage, in light of the comment, I have reconsidered it with the utmost care."
       },
       {
         "idiom": "再考の上、〜とした (さいこうのうえ、〜とした)",
         "literal": "Sau khi xem xét lại, làm〜",
         "meaning": "[硬い・書き言葉] After reconsideration, did X — formal phrase signaling thoughtful revision, not knee-jerk.",
-        "example": "ご指摘を踏まえ、再考の上、本節の構成を全面的に見直すこととした。"
+        "example": "ご指摘を踏まえ、再考の上、本節の構成を全面的に見直すこととした。",
+        "literal_en": "upon reconsideration, did X (saikō no ue, … to shita)",
+        "meaning_en": "After reconsideration, did X — a formal phrase signaling a thoughtful, not knee-jerk, revision. (formal, written)",
+        "example_en": "In light of the comment, upon reconsideration I decided to revise the structure of this section entirely."
       }
     ],
     "cultural_notes_vi": "Peer review culture ở Nhật academia khác phương Tây ở 4 điểm. (1) GRATITUDE NORM — Nhật response letter không thể skip thanks. Mở thanks, đóng thanks, scattered thanks throughout cho specific suggestions. Western response letters đôi khi terse và transactional; Nhật reads as cold without thanks. Không phải sycophantic — đó là baseline civility. (2) DECLINE-ALWAYS-WITH-CARE — flat decline ('we disagree') hiếm khi acceptable. Even nếu reviewer's suggestion impossible, frame: acknowledge → explain constraint → defer to future work. Reviewer nhớ cách bạn declined; ungraceful decline reflects long-term. (3) REVIEWER ANONYMITY OFTEN BREACHED INFORMALLY — Nhật academic field nhỏ, tight network. Reviewers thường identifiable từ writing style, comment specifics. Treat response giả định reviewer sẽ biết identity của bạn (and you của họ) post-publication. Long-term relationship management. (4) RE-REVIEW EXPECTATIONS — sau revision, same reviewers thường được asked re-review. Nếu response letter aggressive hoặc dismissive, second-round verdict often harsher. Quality của response letter often determines accept/reject as much as quality of revisions. Khác VN: VN academic peer review culture variable; some journals casual. Nhật C1 journals strict format expectations. Khi submit qua biên giới, học specific journal conventions. Mẹo: collect 3-5 published response letters (some journals publish them) trong target journal, study tone. Mẹo về timing — Nhật reviewers thường complete trong 4-8 tuần. Sau bạn nhận feedback, ideal turnaround 2-4 tuần cho revision. Longer = signal not taking seriously. Mẹo: nếu cần thêm time, request extension early với polite email tới editor. Mẹo cuối: appreciation post-acceptance — sau paper accepted, send brief thanks tới editor (reviewers anonymous nhưng thanks reaches them indirectly). Cụm: 採択のご通知、誠にありがとうございました。査読者各位、編集委員会の皆様に重ねて御礼申し上げます. Maintains relationship cho future submissions.",
+    "cultural_notes_en": "Peer review culture in Japanese academia differs from the West on four points. (1) GRATITUDE NORM — a Japanese response letter cannot skip thanks: thanks at the open, thanks at the close, thanks scattered for specific suggestions. Western response letters can be terse and transactional; the Japanese reads as cold without thanks — this is not sycophancy but baseline civility. (2) ALWAYS DECLINE WITH CARE — a flat decline ('we disagree') is rarely acceptable; even if a reviewer's suggestion is impossible, frame it as acknowledge → explain the constraint → defer to future work. The reviewer remembers how you declined. (3) ANONYMITY OFTEN BREACHED INFORMALLY — the Japanese academic field is small and tightly networked; reviewers are often identifiable from writing style and comment specifics. Write the response assuming the reviewer will know your identity (and you theirs) post-publication — long-term relationship management. (4) RE-REVIEW EXPECTATIONS — after revision, the same reviewers are usually asked to re-review; if the response letter is aggressive or dismissive, the second-round verdict is often harsher. The quality of the response letter often determines accept/reject as much as the quality of the revisions. Unlike Vietnam, where peer-review culture varies and some journals are casual, Japanese C1 journals have strict format expectations — learn the specific journal's conventions when submitting across borders. Tip: collect 3–5 published response letters in the target journal and study the tone. On timing: Japanese reviewers usually finish in 4–8 weeks; an ideal turnaround for revision is 2–4 weeks — longer signals you are not taking it seriously; if you need more time, request an extension early with a polite email to the editor. Final tip: appreciation post-acceptance — after acceptance send brief thanks to the editor: 採択のご通知、誠にありがとうございました。査読者各位、編集委員会の皆様に重ねて御礼申し上げます. It maintains the relationship for future submissions.",
     "tip_advice_vi": "Peer review response workflow C1 Japanese. (a) READ ALL COMMENTS THRICE — first read: emotional reaction (let it pass, không respond ngay). Second read 24 hours later: classify mỗi comment (accept/partial/reservation/decline). Third read: identify specific revisions needed. KHÔNG draft response trong 24 hours đầu — emotional residue contaminates tone. (b) CREATE COMMENT TABLE — spreadsheet với columns: reviewer/number, comment paraphrase, your response category, specific revision (page/line), draft response text. Forces systematic handling. (c) REVISE PAPER FIRST, THEN WRITE LETTER — sequence matters. Revise body, sau đó letter references actual page numbers. Revising letter và body simultaneously creates inconsistencies. (d) FORMAT CHO READER — single-spaced response letter với clear hierarchy: Reviewer A heading > comment 1 > response > page reference. Bold reviewer comments, normal text response. Reviewer scans nhanh khi format clean. (e) ACCEPT MORE THAN BẠN INSTINCTIVELY WANT TO — first instinct often defensive: 'I already addressed that'. Second look thường shows reviewer nắm point bạn missed. Accept generously khi defensible — ratio 80 phần trăm accept : 20 phần trăm decline thường wise. (f) FOR DECLINES, OVER-EXPLAIN — accepted points cần ngắn ('修正済み, 本文5ページ参照'); declined points cần long explanation. Show bạn engaged seriously, không dismissed. Mẹo về scope — nếu reviewer asks expansion ('add intermediate learners'): graceful decline + future-work framing OK if scope clearly defined ahead. Nếu reviewer asks deeper analysis on existing scope: usually must accept. Mẹo về emotional management — store harsh comment 24-48 hours trước responding. Initial draft với 'unfortunately the reviewer misunderstands' bắt buộc phải đổi sang 'thank you for the comment, perhaps the original wording was unclear' trong final. Mẹo về co-authors — circulate response letter draft tới mọi co-authors trước submit. One co-author khilling final tone catches misjudged sentences. Mẹo cuối: lưu response letter mỗi paper. Pattern recognition (which comments recur, which language works best) builds skill across submissions. Sau 5-10 papers, response letter quality dramatically improves và becomes career asset.",
+    "tip_advice_en": "A peer-review response workflow at C1 Japanese. (a) READ ALL COMMENTS THRICE — first read: emotional reaction (let it pass, don't respond now); second read 24 hours later: classify each comment (accept/partial/reservation/decline); third read: identify the specific revisions needed. Do NOT draft a response in the first 24 hours — emotional residue contaminates the tone. (b) CREATE A COMMENT TABLE — a spreadsheet with columns: reviewer/number, comment paraphrase, response category, specific revision (page/line), draft response text — it forces systematic handling. (c) REVISE THE PAPER FIRST, THEN WRITE THE LETTER — sequence matters; revise the body, then let the letter reference actual page numbers; doing both simultaneously creates inconsistencies. (d) FORMAT FOR THE READER — a single-spaced letter with clear hierarchy: Reviewer A heading > comment 1 > response > page reference; bold the reviewer comments, normal text for the response — a reviewer scans fast when the format is clean. (e) ACCEPT MORE THAN YOU INSTINCTIVELY WANT TO — the first instinct is defensive ('I already addressed that'); a second look often shows the reviewer caught a point you missed. Accept generously when defensible — an 80% accept : 20% decline ratio is usually wise. (f) FOR DECLINES, OVER-EXPLAIN — accepted points can be short ('修正済み、本文5ページ参照'); declined points need a long explanation showing you engaged seriously. On scope: if a reviewer asks for expansion ('add intermediate learners'), a graceful decline + future-work framing is fine if the scope was clearly defined ahead; if they ask for deeper analysis within the existing scope, you usually must accept. On emotional management: store a harsh comment 24–48 hours before responding; an initial draft of 'unfortunately the reviewer misunderstands' must become 'thank you for the comment; perhaps the original wording was unclear.' On co-authors: circulate the draft to all co-authors before submitting; one co-author reading the final tone catches misjudged sentences. Final tip: keep every response letter; pattern recognition (which comments recur, which language works best) builds skill across submissions — after 5–10 papers, response-letter quality improves dramatically and becomes a career asset.",
     "exercises": [
       {
         "type": "fill-blank",
