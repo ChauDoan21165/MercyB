@@ -33,10 +33,13 @@ import {
 import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 import type { LessonUiLang } from "@/components/mercy-guide/tabs/LanguageLessonsView";
 
+// HERO_VI = Vietnamese-audience line, untouched. HERO_EN = English-
+// facing line, de-narrowed (no "for Vietnamese learners") so English
+// speakers are not excluded. Shown conditionally on the global uiLang.
 const HERO_VI =
   "Tiếng Đức cho người Việt — từ guten Tag đến cách (cases).";
 const HERO_EN =
-  "German for Vietnamese learners — from hallo to der/die/das.";
+  "German — real-life lessons, explained clearly. From hallo to der/die/das.";
 
 const GERMAN_LEVELS: ReadonlyArray<GermanCefrLevel> = [
   "A1",

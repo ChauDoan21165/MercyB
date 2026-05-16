@@ -12,7 +12,10 @@ import {
 } from "lucide-react";
 
 const HERO_VI = "Practical language learning";
-const HERO_EN = "Real-life lessons for Vietnamese speakers and Vietnamese learners";
+// De-narrowed: the hub serves every audience at once and has no single
+// target language, so the audience qualifier is dropped outright
+// (rather than uiLang-conditional, which the per-language pages use).
+const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German & more";
 const SUBTITLE_VI =
   "Learn useful phrases, pronunciation, and context. Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.";
 

@@ -23,11 +23,15 @@ import {
   cefrPillColors,
   cefrPillLabels,
 } from "@/components/languages/lessonThemes";
+import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 
+// HERO_VI = Vietnamese-audience line, untouched. HERO_EN = English-
+// facing line, de-narrowed (no "for Vietnamese learners"). Shown
+// conditionally on the global uiLang.
 const HERO_VI =
   "Tiếng Nhật cho người Việt — từ hiragana đến mẫu câu giao tiếp.";
 const HERO_EN =
-  "Japanese for Vietnamese learners — from hiragana to conversation.";
+  "Japanese — real-life lessons, explained clearly. From hiragana to natural conversation.";
 
 const JAPANESE_LEVELS: ReadonlyArray<JapaneseCefrLevel> = [
   "A1",
@@ -42,6 +46,8 @@ export default function JapaneseLessonsPage() {
   const theme = lessonThemes.japanese;
   const [level, setLevel] = useState<JapaneseCefrLevel>("A1");
   const [lessons, setLessons] = useState<JapaneseLesson[] | null>(null);
+  // Global gloss language (default "vi"); toggle lives in the chrome band.
+  const [uiLang] = useLessonUiLang();
 
   useEffect(() => {
     let cancelled = false;
@@ -81,15 +87,19 @@ export default function JapaneseLessonsPage() {
           🇯🇵 Tiếng Nhật · Japanese
         </p>
         <h1 className="mt-1 text-2xl font-bold text-slate-900 leading-tight">
-          {HERO_VI}
+          {uiLang === "en" ? HERO_EN : HERO_VI}
         </h1>
-        <p className="mt-1 text-sm font-medium text-slate-600">{HERO_EN}</p>
+        <p className="mt-1 text-sm font-medium text-slate-600">
+          {uiLang === "en" ? HERO_VI : HERO_EN}
+        </p>
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-          Từ bảng chữ cái đến ngữ pháp trung cấp — giải thích theo cách người
-          Việt hiểu. Có bài tập, hội thoại thực tế, và mẹo ghi nhớ.
+          {uiLang === "en"
+            ? "From the kana to intermediate grammar — explained clearly, with exercises, real dialogues, and memory tips."
+            : "Từ bảng chữ cái đến ngữ pháp trung cấp — giải thích theo cách người Việt hiểu. Có bài tập, hội thoại thực tế, và mẹo ghi nhớ."}
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          {JAPANESE_TOTAL_LESSONS} bài · A1 → C2 · hội thoại thực tế
+          {JAPANESE_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
+          {uiLang === "en" ? " · real dialogues" : " · hội thoại thực tế"}
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link
@@ -152,6 +162,7 @@ export default function JapaneseLessonsPage() {
                 key={lesson.id}
                 lesson={lesson}
                 theme={theme}
+                uiLanguage={uiLang}
               />
             ))}
           </div>
