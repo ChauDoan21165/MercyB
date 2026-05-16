@@ -35,3 +35,35 @@ export const cefrPillLabels: Record<string, string> = {
   C1: "C1 · Cao cấp",
   C2: "C2 · Thuần thục",
 };
+
+// English CEFR pill labels — shown when the global uiLanguage is "en".
+// Values are byte-identical to the set SpanishLessonsPage already ships
+// in production (its local CEFR_PILL_LABELS_EN), so the whole app speaks
+// one CEFR vocabulary. CEFR letters stay primary (they're international);
+// the descriptive word is the English convention, not a translation of
+// the Vietnamese phrase. The "A1+" rung has no Spanish precedent (Spanish
+// is A1–C2 only) so its label is introduced here.
+export const cefrPillLabelsEn: Record<string, string> = {
+  A1: "A1 · Beginner",
+  "A1+": "A1+ · Upper Beginner",
+  A2: "A2 · Elementary",
+  B1: "B1 · Intermediate",
+  B2: "B2 · Upper-Intermediate",
+  C1: "C1 · Advanced",
+  C2: "C2 · Mastery",
+};
+
+// uiLang-aware accessor for the CEFR pill label. VI is byte-identical to
+// the prior `cefrPillLabels[level] ?? level` call sites (zero change for
+// existing Vietnamese users). EN prefers the English map, then falls back
+// to the Vietnamese label, then the raw level token — so a level missing
+// from the EN map degrades gracefully rather than rendering blank.
+export function cefrPillLabel(
+  level: string,
+  uiLang: "vi" | "en",
+): string {
+  if (uiLang === "en") {
+    return cefrPillLabelsEn[level] ?? cefrPillLabels[level] ?? level;
+  }
+  return cefrPillLabels[level] ?? level;
+}
