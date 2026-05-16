@@ -89,22 +89,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "본 텍스트의 어떤 측면에 주목해야 합니까?",
-          "meaning": "Which aspect of the text should we focus on?"
+          "meaning": "Which aspect of the text should we focus on?",
+          "text_vi": "Chúng ta nên chú ý đến khía cạnh nào của văn bản này?"
         },
         {
           "speaker": "B",
           "hangul": "우선 반복되는 어휘와 그 위치 변화를 살펴야 합니다.",
-          "meaning": "First, recurring vocabulary and shifts in their position."
+          "meaning": "First, recurring vocabulary and shifts in their position.",
+          "text_vi": "Trước hết, cần khảo sát những từ ngữ lặp lại và sự dịch chuyển vị trí của chúng."
         },
         {
           "speaker": "A",
           "hangul": "거시적 구조보다 미시적 분석부터 시작하는 셈이군요.",
-          "meaning": "So we start with micro-analysis before macro-structure."
+          "meaning": "So we start with micro-analysis before macro-structure.",
+          "text_vi": "Vậy là chúng ta khởi đầu từ phân tích vi mô trước khi bàn đến cấu trúc vĩ mô."
         },
         {
           "speaker": "B",
           "hangul": "정독은 항상 단위에서 전체로 향하는 운동입니다.",
-          "meaning": "Close reading is always a movement from unit to whole."
+          "meaning": "Close reading is always a movement from unit to whole.",
+          "text_vi": "Đọc kỹ luôn là một vận động đi từ đơn vị đến chỉnh thể."
         }
       ],
       "dialogue_long": [
@@ -384,22 +388,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "1인칭과 3인칭 중 어느 시점이 본 분석에 더 적절합니까?",
-          "meaning": "Between first and third person, which POV better suits this analysis?"
+          "meaning": "Between first and third person, which POV better suits this analysis?",
+          "text_vi": "Giữa ngôi thứ nhất và ngôi thứ ba, điểm nhìn nào phù hợp hơn với phân tích này?"
         },
         {
           "speaker": "B",
           "hangul": "사건 자체보다 인물의 내면이 중요하다면 1인칭이 유리합니다.",
-          "meaning": "If character interiority matters more than the events themselves, first person is advantageous."
+          "meaning": "If character interiority matters more than the events themselves, first person is advantageous.",
+          "text_vi": "Nếu nội tâm nhân vật quan trọng hơn bản thân các sự kiện thì ngôi thứ nhất sẽ có lợi thế."
         },
         {
           "speaker": "A",
           "hangul": "다만 1인칭은 서술자 신뢰도 문제가 따라옵니다.",
-          "meaning": "However, first person carries the narrator-reliability problem."
+          "meaning": "However, first person carries the narrator-reliability problem.",
+          "text_vi": "Tuy nhiên, ngôi thứ nhất kéo theo vấn đề độ tin cậy của người trần thuật."
         },
         {
           "speaker": "B",
           "hangul": "그것을 한계로 명시하는 것이 비평의 정직성입니다.",
-          "meaning": "Acknowledging that as a limitation is the honesty of criticism."
+          "meaning": "Acknowledging that as a limitation is the honesty of criticism.",
+          "text_vi": "Việc minh định điều đó như một giới hạn chính là sự trung thực của phê bình."
         }
       ],
       "dialogue_long": [
@@ -679,22 +687,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "본 작품의 핵심 상징은 무엇입니까?",
-          "meaning": "What is the central symbol of this work?"
+          "meaning": "What is the central symbol of this work?",
+          "text_vi": "Biểu tượng cốt lõi của tác phẩm này là gì?"
         },
         {
           "speaker": "B",
           "hangul": "'나무'와 '식물 되기'가 핵심 상징체계입니다.",
-          "meaning": "'Tree' and 'becoming-plant' form the core symbolic system."
+          "meaning": "'Tree' and 'becoming-plant' form the core symbolic system.",
+          "text_vi": "'Cây' và 'sự hóa thân thành thực vật' là hệ biểu tượng cốt lõi."
         },
         {
           "speaker": "A",
           "hangul": "단일 상징인지 상징 네트워크인지 구별하셨습니까?",
-          "meaning": "Did you distinguish single symbol vs symbol network?"
+          "meaning": "Did you distinguish single symbol vs symbol network?",
+          "text_vi": "Anh đã phân biệt được đây là một biểu tượng đơn lẻ hay một mạng lưới biểu tượng chưa?"
         },
         {
           "speaker": "B",
           "hangul": "네트워크입니다. 식물 모티프가 세 인물에 걸쳐 변주됩니다.",
-          "meaning": "Network — the plant motif varies across three characters."
+          "meaning": "Network — the plant motif varies across three characters.",
+          "text_vi": "Đó là một mạng lưới. Mô-típ thực vật biến tấu xuyên suốt qua ba nhân vật."
         }
       ],
       "dialogue_long": [
@@ -968,22 +980,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "'장르 전복'이 단순한 장르 위반과 어떻게 다릅니까?",
-          "meaning": "How does 'genre subversion' differ from mere genre violation?"
+          "meaning": "How does 'genre subversion' differ from mere genre violation?",
+          "text_vi": "'Sự lật đổ thể loại' khác với việc đơn thuần vi phạm thể loại ở chỗ nào?"
         },
         {
           "speaker": "B",
           "hangul": "위반이 의식적이고 그 행위 자체가 의미가 있을 때 전복이 됩니다.",
-          "meaning": "When violation is conscious and the act itself bears meaning, it becomes subversion."
+          "meaning": "When violation is conscious and the act itself bears meaning, it becomes subversion.",
+          "text_vi": "Khi sự vi phạm mang tính ý thức và bản thân hành vi ấy hàm chứa ý nghĩa, nó trở thành sự lật đổ."
         },
         {
           "speaker": "A",
           "hangul": "그렇다면 모든 위반이 전복은 아니군요.",
-          "meaning": "So not every violation is subversion."
+          "meaning": "So not every violation is subversion.",
+          "text_vi": "Vậy thì không phải mọi sự vi phạm đều là sự lật đổ."
         },
         {
           "speaker": "B",
           "hangul": "그렇습니다. 무자각적 위반은 그저 실패일 뿐입니다.",
-          "meaning": "Right. Unconscious violation is mere failure."
+          "meaning": "Right. Unconscious violation is mere failure.",
+          "text_vi": "Đúng vậy. Sự vi phạm vô thức chỉ đơn thuần là một thất bại."
         }
       ],
       "dialogue_long": [
@@ -1269,22 +1285,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "두 번역 중 어느 것이 더 좋은 번역입니까?",
-          "meaning": "Which of the two translations is better?"
+          "meaning": "Which of the two translations is better?",
+          "text_vi": "Trong hai bản dịch, bản nào là bản dịch tốt hơn?"
         },
         {
           "speaker": "B",
           "hangul": "'좋다'를 어떤 기준으로 판단할지가 먼저입니다.",
-          "meaning": "First we must define by what criteria 'good' is judged."
+          "meaning": "First we must define by what criteria 'good' is judged.",
+          "text_vi": "Trước hết phải xác định 'tốt' được đánh giá theo tiêu chí nào."
         },
         {
           "speaker": "A",
           "hangul": "충실성과 가독성 사이에서요?",
-          "meaning": "Between fidelity and readability?"
+          "meaning": "Between fidelity and readability?",
+          "text_vi": "Là giữa tính trung thành và tính dễ đọc phải không?"
         },
         {
           "speaker": "B",
           "hangul": "그 둘은 자주 충돌합니다. 비평은 그 충돌을 추적합니다.",
-          "meaning": "Those two often clash. Criticism tracks that clash."
+          "meaning": "Those two often clash. Criticism tracks that clash.",
+          "text_vi": "Hai yếu tố ấy thường xung đột với nhau. Phê bình truy vết chính sự xung đột đó."
         }
       ],
       "dialogue_long": [
@@ -1566,22 +1586,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "작가의 삶을 비평에 끌어들이는 것이 정당합니까?",
-          "meaning": "Is it legitimate to draw the author's life into criticism?"
+          "meaning": "Is it legitimate to draw the author's life into criticism?",
+          "text_vi": "Việc đưa cuộc đời tác giả vào phê bình có chính đáng hay không?"
         },
         {
           "speaker": "B",
           "hangul": "정당한 경우와 부당한 경우가 있습니다.",
-          "meaning": "There are legitimate and illegitimate cases."
+          "meaning": "There are legitimate and illegitimate cases.",
+          "text_vi": "Có những trường hợp chính đáng và những trường hợp không chính đáng."
         },
         {
           "speaker": "A",
           "hangul": "어느 경우가 부당합니까?",
-          "meaning": "Which cases are illegitimate?"
+          "meaning": "Which cases are illegitimate?",
+          "text_vi": "Trường hợp nào là không chính đáng?"
         },
         {
           "speaker": "B",
           "hangul": "텍스트에서 끌어낼 수 있는 의미를 작가 일대기로 환원할 때입니다.",
-          "meaning": "When meaning derivable from the text is reduced to author's biography."
+          "meaning": "When meaning derivable from the text is reduced to author's biography.",
+          "text_vi": "Đó là khi ý nghĩa vốn có thể rút ra từ văn bản lại bị quy giản về tiểu sử của tác giả."
         }
       ],
       "dialogue_long": [
@@ -1851,22 +1875,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "수용사 분석에서 가장 어려운 점은 무엇입니까?",
-          "meaning": "What is the hardest part of reception-history analysis?"
+          "meaning": "What is the hardest part of reception-history analysis?",
+          "text_vi": "Điểm khó khăn nhất trong phân tích lịch sử tiếp nhận là gì?"
         },
         {
           "speaker": "B",
           "hangul": "과거 독자의 반응을 어떻게 복원할 것인가입니다.",
-          "meaning": "How to reconstruct past readers' responses."
+          "meaning": "How to reconstruct past readers' responses.",
+          "text_vi": "Đó là làm thế nào để phục dựng phản ứng của những độc giả trong quá khứ."
         },
         {
           "speaker": "A",
           "hangul": "동시대 서평을 자료로 쓰면 됩니까?",
-          "meaning": "Can contemporary reviews serve as material?"
+          "meaning": "Can contemporary reviews serve as material?",
+          "text_vi": "Có thể dùng các bài điểm sách đương thời làm tư liệu không?"
         },
         {
           "speaker": "B",
           "hangul": "서평은 시작점이지만 그것만으로는 부족합니다.",
-          "meaning": "Reviews are a starting point but insufficient alone."
+          "meaning": "Reviews are a starting point but insufficient alone.",
+          "text_vi": "Bài điểm sách là điểm khởi đầu, nhưng chỉ riêng nó thì chưa đủ."
         }
       ],
       "dialogue_long": [
@@ -2151,22 +2179,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "한 작품에 여러 이론을 적용해도 됩니까?",
-          "meaning": "Is it acceptable to apply multiple theories to one work?"
+          "meaning": "Is it acceptable to apply multiple theories to one work?",
+          "text_vi": "Có được phép áp dụng nhiều lý thuyết khác nhau vào cùng một tác phẩm không?"
         },
         {
           "speaker": "B",
           "hangul": "가능하지만 이론을 쇼핑하듯 골라서는 안 됩니다.",
-          "meaning": "Possible, but you must not theory-shop."
+          "meaning": "Possible, but you must not theory-shop.",
+          "text_vi": "Có thể, nhưng không được chọn lựa lý thuyết như thể đi mua sắm."
         },
         {
           "speaker": "A",
           "hangul": "이론 선택의 기준은 무엇입니까?",
-          "meaning": "What are the criteria for theory selection?"
+          "meaning": "What are the criteria for theory selection?",
+          "text_vi": "Tiêu chí để lựa chọn lý thuyết là gì?"
         },
         {
           "speaker": "B",
           "hangul": "텍스트가 어떤 이론에 응답하는지를 먼저 듣는 것입니다.",
-          "meaning": "First, listen to which theory the text responds to."
+          "meaning": "First, listen to which theory the text responds to.",
+          "text_vi": "Đó là trước tiên phải lắng nghe xem văn bản đáp lại lý thuyết nào."
         }
       ],
       "dialogue_long": [
@@ -2458,22 +2490,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "비평문 첫 문장을 어떻게 잡으면 좋습니까?",
-          "meaning": "How should I shape the opening sentence of a critical essay?"
+          "meaning": "How should I shape the opening sentence of a critical essay?",
+          "text_vi": "Nên định hình câu mở đầu của một bài phê bình như thế nào thì tốt?"
         },
         {
           "speaker": "B",
           "hangul": "결론보다는 화두를 던지는 것이 안전합니다.",
-          "meaning": "Throwing a keynote is safer than disclosing conclusion."
+          "meaning": "Throwing a keynote is safer than disclosing conclusion.",
+          "text_vi": "Nêu lên một luận đề khơi gợi thì an toàn hơn là phơi bày kết luận."
         },
         {
           "speaker": "A",
           "hangul": "인용으로 시작해도 됩니까?",
-          "meaning": "May I start with a quotation?"
+          "meaning": "May I start with a quotation?",
+          "text_vi": "Có thể mở đầu bằng một trích dẫn không?"
         },
         {
           "speaker": "B",
           "hangul": "가능하지만 인용이 비평을 압도하지 않게 조절해야 합니다.",
-          "meaning": "Yes, but ensure the quotation doesn't dominate the criticism."
+          "meaning": "Yes, but ensure the quotation doesn't dominate the criticism.",
+          "text_vi": "Có thể, nhưng phải điều tiết sao cho trích dẫn không lấn át bài phê bình."
         }
       ],
       "dialogue_long": [
@@ -2759,22 +2795,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "통설과 충돌하는 해석을 어떻게 옹호합니까?",
-          "meaning": "How do you defend an interpretation that conflicts with received wisdom?"
+          "meaning": "How do you defend an interpretation that conflicts with received wisdom?",
+          "text_vi": "Làm thế nào để bảo vệ một cách diễn giải xung đột với quan điểm phổ quát đã được thừa nhận?"
         },
         {
           "speaker": "B",
           "hangul": "통설을 부정하지 않고 통설이 보지 못한 것을 드러내는 식으로 접근합니다.",
-          "meaning": "Approach by not refuting received wisdom but revealing what it couldn't see."
+          "meaning": "Approach by not refuting received wisdom but revealing what it couldn't see.",
+          "text_vi": "Tiếp cận theo lối không phủ định quan điểm phổ quát mà phơi bày điều mà quan điểm ấy đã không nhìn thấy."
         },
         {
           "speaker": "A",
           "hangul": "그것이 통설을 약화시키지 않습니까?",
-          "meaning": "Doesn't that weaken received wisdom?"
+          "meaning": "Doesn't that weaken received wisdom?",
+          "text_vi": "Điều đó chẳng phải làm suy yếu quan điểm phổ quát hay sao?"
         },
         {
           "speaker": "B",
           "hangul": "약화가 아닌 보강입니다. 통설은 절반의 진실이라는 입장입니다.",
-          "meaning": "Not weakening but supplementing — the position is that received wisdom is half-truth."
+          "meaning": "Not weakening but supplementing — the position is that received wisdom is half-truth.",
+          "text_vi": "Không phải làm suy yếu mà là củng cố thêm. Lập trường ở đây là quan điểm phổ quát chỉ là một nửa sự thật."
         }
       ],
       "dialogue_long": [
@@ -3072,22 +3112,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "한국 현대미술을 논할 때, 단색화와 민중미술, 어느 쪽을 중심축으로 삼아야 합니까?",
-          "meaning": "When discussing Korean contemporary art, which should be taken as the central axis — Dansaekhwa or Minjung art?"
+          "meaning": "When discussing Korean contemporary art, which should be taken as the central axis — Dansaekhwa or Minjung art?",
+          "text_vi": "Khi bàn về mỹ thuật đương đại Hàn Quốc, nên lấy hội họa đơn sắc hay mỹ thuật dân chúng làm trục trung tâm?"
         },
         {
           "speaker": "B",
           "hangul": "둘 중 하나를 선택할 필요는 없습니다. 두 흐름은 '한국적 현대성이란 무엇인가'라는 동일한 질문에 대한 서로 다른 응답으로 보아야 합니다.",
-          "meaning": "There is no need to choose one. The two currents should be seen as different answers to the same question: 'What is Korean modernity?'"
+          "meaning": "There is no need to choose one. The two currents should be seen as different answers to the same question: 'What is Korean modernity?'",
+          "text_vi": "Không nhất thiết phải chọn một trong hai. Hai dòng chảy này nên được nhìn nhận như những lời đáp khác nhau cho cùng một câu hỏi: 'Tính hiện đại mang bản sắc Hàn Quốc là gì?'"
         },
         {
           "speaker": "A",
           "hangul": "서구 이론으로 한국 미술을 분석하는 것의 한계는 어디에 있다고 보십니까?",
-          "meaning": "Where do you see the limits of analyzing Korean art with Western theory?"
+          "meaning": "Where do you see the limits of analyzing Korean art with Western theory?",
+          "text_vi": "Theo anh, giới hạn của việc phân tích mỹ thuật Hàn Quốc bằng lý thuyết phương Tây nằm ở đâu?"
         },
         {
           "speaker": "B",
           "hangul": "서구 이론은 '분석했다고 착각하게 만드는' 데 한계가 있습니다. 한국 미술의 특수성은 이론의 틀로 포착되지 않는 잉여에 있다고 사료됩니다.",
-          "meaning": "The limit of Western theory is that it 'makes one mistakenly think one has analyzed it.' The specificity of Korean art, I judge, lies in the surplus not captured by the theoretical frame."
+          "meaning": "The limit of Western theory is that it 'makes one mistakenly think one has analyzed it.' The specificity of Korean art, I judge, lies in the surplus not captured by the theoretical frame.",
+          "text_vi": "Giới hạn của lý thuyết phương Tây nằm ở chỗ nó 'khiến người ta ngộ nhận rằng mình đã phân tích xong'. Tôi cho rằng tính đặc thù của mỹ thuật Hàn Quốc nằm ở phần dư mà khung lý thuyết không nắm bắt được."
         }
       ],
       "dialogue_long": [
@@ -3275,22 +3319,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "봉준호의 영화를 계급 비평으로만 읽는 것은 환원주의가 아닐까요?",
-          "meaning": "Isn't reading Bong Joon-ho's films only through class critique a reductionism?"
+          "meaning": "Isn't reading Bong Joon-ho's films only through class critique a reductionism?",
+          "text_vi": "Việc chỉ đọc phim của Bong Joon-ho qua lăng kính phê bình giai cấp chẳng phải là chủ nghĩa quy giản hay sao?"
         },
         {
           "speaker": "B",
           "hangul": "계급 비평을 '환원주의'로 치부하는 것도 하나의 환원입니다. 문제는 계급을 '무엇으로' 읽느냐이지, 계급을 읽느냐 마느냐가 아닙니다.",
-          "meaning": "Dismissing class critique as 'reductionism' is also a reduction. The issue is 'as what' one reads class, not whether one reads class."
+          "meaning": "Dismissing class critique as 'reductionism' is also a reduction. The issue is 'as what' one reads class, not whether one reads class.",
+          "text_vi": "Việc gạt bỏ phê bình giai cấp như một thứ 'chủ nghĩa quy giản' bản thân nó cũng là một sự quy giản. Vấn đề là đọc giai cấp 'như là cái gì', chứ không phải có đọc giai cấp hay không."
         },
         {
           "speaker": "A",
           "hangul": "한국 영화에서 '한국적인 것'이란 무엇이라고 정의할 수 있을까요?",
-          "meaning": "How can one define 'the Korean' in Korean cinema?"
+          "meaning": "How can one define 'the Korean' in Korean cinema?",
+          "text_vi": "Có thể định nghĩa 'cái mang bản sắc Hàn Quốc' trong điện ảnh Hàn Quốc là gì?"
         },
         {
           "speaker": "B",
           "hangul": "그 질문 자체가 함정입니다. '한국적인 것'은 본질이 아니라, 매 작품마다 새롭게 구성되는 무엇입니다.",
-          "meaning": "That very question is a trap. 'The Korean' is not an essence but something newly constituted with each work."
+          "meaning": "That very question is a trap. 'The Korean' is not an essence but something newly constituted with each work.",
+          "text_vi": "Chính câu hỏi ấy đã là một cái bẫy. 'Cái mang bản sắc Hàn Quốc' không phải là một bản chất, mà là một cái gì đó được kiến tạo lại mới mẻ trong mỗi tác phẩm."
         }
       ],
       "dialogue_long": [
@@ -3472,12 +3520,14 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "한국 대통령 연설문의 수사적 특징을 가장 잘 보여주는 예는 무엇일까요?",
-          "meaning": "What example best shows the rhetorical characteristics of Korean presidential speeches?"
+          "meaning": "What example best shows the rhetorical characteristics of Korean presidential speeches?",
+          "text_vi": "Ví dụ nào thể hiện rõ nhất các đặc trưng tu từ của diễn văn tổng thống Hàn Quốc?"
         },
         {
           "speaker": "B",
           "hangul": "김대중 대통령의 2000년 6.15 남북정상회담 기자회견문을 추천합니다. '적'에서 '형제'로의 명명 전환이 단적으로 드러나는 텍스트입니다.",
-          "meaning": "I recommend President Kim Dae-jung's press conference statement at the June 15, 2000 Inter-Korean Summit. It is a text where the shift in naming from 'enemy' to 'brother' appears in concentrated form."
+          "meaning": "I recommend President Kim Dae-jung's press conference statement at the June 15, 2000 Inter-Korean Summit. It is a text where the shift in naming from 'enemy' to 'brother' appears in concentrated form.",
+          "text_vi": "Tôi xin đề xuất bản tuyên bố họp báo của Tổng thống Kim Dae-jung tại Hội nghị Thượng đỉnh Liên Triều ngày 15 tháng 6 năm 2000. Đó là văn bản trong đó sự chuyển đổi cách định danh từ 'kẻ thù' sang 'anh em' bộc lộ một cách điển hình."
         }
       ],
       "dialogue_long": [
@@ -3626,12 +3676,14 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "시민 토론이 실제 정책 결정에 영향을 미친 사례가 있나요?",
-          "meaning": "Are there cases where citizen deliberation actually influenced policy decisions?"
+          "meaning": "Are there cases where citizen deliberation actually influenced policy decisions?",
+          "text_vi": "Có trường hợp nào mà thảo luận của công dân thực sự tác động đến quyết sách hay không?"
         },
         {
           "speaker": "B",
           "hangul": "신고리 공론화가 대표적입니다. 시민참여단의 권고에 따라 정부가 실제로 건설 재개를 결정했습니다. 논란은 여전하지만, 절차의 정당성은 확보된 셈이지요.",
-          "meaning": "The Shin-Kori deliberation is representative. Following the recommendation of the citizen panel, the government actually decided to resume construction. The controversy remains, but the procedural legitimacy was secured."
+          "meaning": "The Shin-Kori deliberation is representative. Following the recommendation of the citizen panel, the government actually decided to resume construction. The controversy remains, but the procedural legitimacy was secured.",
+          "text_vi": "Quá trình tham vấn cộng đồng về nhà máy Shin-Kori là trường hợp tiêu biểu. Theo khuyến nghị của đoàn công dân tham gia, chính phủ đã thực sự quyết định tái khởi động việc xây dựng. Tranh cãi vẫn còn đó, nhưng có thể nói tính chính đáng về mặt thủ tục đã được bảo đảm."
         }
       ],
       "dialogue_long": [
@@ -3923,12 +3975,14 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "철학 논문에서 '제 의견으로는'이라고 써도 됩니까?",
-          "meaning": "In a philosophy paper, is it OK to write 'in my opinion'?"
+          "meaning": "In a philosophy paper, is it OK to write 'in my opinion'?",
+          "text_vi": "Trong một luận văn triết học, có được phép viết 'theo ý kiến của tôi' không?"
         },
         {
           "speaker": "B",
           "hangul": "쓰면 안 됩니다. 철학은 의견의 표명이 아니라 논증의 구축입니다. '나는 ~라고 생각한다'가 아니라 '~라는 이유로 ~라고 결론짓지 않을 수 없다'라고 써야 합니다.",
-          "meaning": "You must not. Philosophy is not the expression of opinion but the construction of argument. Not 'I think that...' but 'For reasons X, Y, Z, one cannot but conclude that...'"
+          "meaning": "You must not. Philosophy is not the expression of opinion but the construction of argument. Not 'I think that...' but 'For reasons X, Y, Z, one cannot but conclude that...'",
+          "text_vi": "Không được phép viết như vậy. Triết học không phải là sự bày tỏ ý kiến mà là sự kiến tạo lập luận. Phải viết 'với những lý do như thế, không thể không kết luận rằng...', chứ không phải 'tôi nghĩ rằng...'."
         }
       ],
       "exercises": [
@@ -4015,12 +4069,14 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "설득과 조작의 경계선은 어디에 있습니까?",
-          "meaning": "Where is the boundary between persuasion and manipulation?"
+          "meaning": "Where is the boundary between persuasion and manipulation?",
+          "text_vi": "Lằn ranh giữa thuyết phục và thao túng nằm ở đâu?"
         },
         {
           "speaker": "B",
           "hangul": "로고스의 유무입니다. 상대의 이성에 호소하지 않고 감정만을 움직이려는 것이 조작입니다. 이성과 감정과 신뢰 모두에 균형 있게 호소하는 것이 설득입니다.",
-          "meaning": "It is the presence or absence of logos. To try to move only emotion without appealing to the other's reason is manipulation. To appeal in a balanced way to reason, emotion, and trust — all three — is persuasion."
+          "meaning": "It is the presence or absence of logos. To try to move only emotion without appealing to the other's reason is manipulation. To appeal in a balanced way to reason, emotion, and trust — all three — is persuasion.",
+          "text_vi": "Đó là sự hiện diện hay vắng mặt của logos. Việc không cầu viện đến lý trí của đối phương mà chỉ tìm cách lay động cảm xúc là thao túng. Việc cầu viện một cách cân bằng đến cả lý trí, cảm xúc lẫn lòng tin mới là thuyết phục."
         }
       ],
       "exercises": [
@@ -4111,12 +4167,14 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "기사가 '보도'인지 '논평'인지 어떻게 구별합니까?",
-          "meaning": "How do you distinguish whether an article is 'reporting' or 'commentary'?"
+          "meaning": "How do you distinguish whether an article is 'reporting' or 'commentary'?",
+          "text_vi": "Làm thế nào để phân biệt một bài báo là 'tin tức' hay 'bình luận'?"
         },
         {
           "speaker": "B",
           "hangul": "동사입니다. '밝혔다', '전했다'는 보도. '주장했다', '불과하다'는 논평입니다. 형용사의 유무도 중요한 지표입니다.",
-          "meaning": "It is the verbs. 'Revealed,' 'conveyed' are reporting. 'Claimed,' 'merely' are commentary. The presence of adjectives is also an important indicator."
+          "meaning": "It is the verbs. 'Revealed,' 'conveyed' are reporting. 'Claimed,' 'merely' are commentary. The presence of adjectives is also an important indicator.",
+          "text_vi": "Đó là ở động từ. 'Đã cho biết', 'đã đưa tin' là tin tức. 'Đã khẳng định', 'chẳng qua chỉ là' là bình luận. Sự hiện diện của tính từ cũng là một chỉ dấu quan trọng."
         }
       ],
       "exercises": [
@@ -4203,12 +4261,14 @@ export const lessons: KoreanLesson[] =     [
         {
           "speaker": "A",
           "hangul": "공동 성명에서 '비난'과 '유감' 중 어느 것을 선택해야 합니까?",
-          "meaning": "In the joint statement, should we choose 'condemn' or 'express regret'?"
+          "meaning": "In the joint statement, should we choose 'condemn' or 'express regret'?",
+          "text_vi": "Trong tuyên bố chung, nên chọn 'lên án' hay 'lấy làm tiếc'?"
         },
         {
           "speaker": "B",
           "hangul": "'유감'입니다. '비난'은 다음 회담의 문을 닫습니다. '유감'은 불일치를 표명하면서도 출구를 남깁니다.",
-          "meaning": "'Express regret.' 'Condemn' closes the door to the next meeting. 'Regret' expresses disagreement while leaving an exit."
+          "meaning": "'Express regret.' 'Condemn' closes the door to the next meeting. 'Regret' expresses disagreement while leaving an exit.",
+          "text_vi": "Là 'lấy làm tiếc'. 'Lên án' đóng lại cánh cửa cho cuộc hội đàm kế tiếp. 'Lấy làm tiếc' vừa bày tỏ sự bất đồng vừa để ngỏ một lối ra."
         }
       ],
       "exercises": [
