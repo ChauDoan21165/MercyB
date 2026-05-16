@@ -1699,6 +1699,12 @@ export const lessons: FrenchLesson[] = [
           "force → fors",
           "durable → du-ra-blơ",
           "illusion → i-lu-zion"
+        ],
+        "pronunciation_focus_en": [
+          "démonté → 'day-mohn-TAY' — é = 'ay', nasal 'on', final -é 'tay'; 'démonter une illusion' = to dismantle/take apart an illusion (mechanical metaphor), not 'demonstrate'",
+          "force → 'FORS' — final -e silent ('FORS', one syllable); 'avec une force durable' = 'with a lasting force', i.e. an argument that still holds",
+          "durable → 'dew-RAH-bluh' — 'u' rounded 'ew'; final -ble a quick 'bluh'; here 'lasting/enduring', the strength of Proust's refutation persists",
+          "illusion → 'ee-lew-ZYOHN' — double-l one 'l'; 'u' rounded 'ew'; -sion 'zyohn'; 'l'illusion qui consiste à…' = 'the illusion that consists in…' (Sainte-Beuve's biographical fallacy)"
         ]
       },
       {
@@ -1709,6 +1715,12 @@ export const lessons: FrenchLesson[] = [
           "ville → vil",
           "distinction → dis-tank-sion",
           "critique → kri-tik"
+        ],
+        "pronunciation_focus_en": [
+          "soutenait → 'soo-tuh-NEH' — imperfect of 'soutenir'; 'soutenait-il' = inverted incise 'he maintained', the -t- a liaison; 'soutenir' = to argue/maintain (a thesis), not 'sustain'",
+          "ville → 'VEEL' — '-ll-' after i is just 'l' (NOT the 'y' of 'fille'); final -e silent; 'dîner en ville' = a fixed expression, 'to dine out (in society)', not literally 'in town'",
+          "distinction → 'dees-tank-SYOHN' — nasal 'in' before 'ct'; -tion 'syohn'; 'distinction qui fonde toute la critique moderne' = the founding cut of modern criticism",
+          "critique → 'kree-TEEK' — final -que 'teek'; here the NOUN 'la critique' = criticism/the critical discipline (fem.); 'le critique' = the critic (person) — gender disambiguates"
         ]
       },
       {
@@ -1719,6 +1731,12 @@ export const lessons: FrenchLesson[] = [
           "donnée → do-né",
           "reviendrait → rơ-vian-drè",
           "surgissement → sur-jis-mã"
+        ],
+        "pronunciation_focus_en": [
+          "pertinence → 'pehr-tee-NAHNS' — final -ence nasal 'NAHNS'; 'la pertinence' = relevance/aptness — FALSE FRIEND: NOT English 'pertinence' in the sense of impudence, and 'pertinent' = relevant, never 'cheeky'",
+          "donnée → 'doh-NAY' — final -ée 'ay'; 'la donnée biographique' = the biographical datum/given (a 'donnée' = a given fact, plural 'données' = data)",
+          "reviendrait → 'ruh-vyan-DREH' — conditional of 'revenir'; 'reviendrait à + inf.' = 'would amount to / would be tantamount to', NOT 'would come back'",
+          "surgissement → 'sewr-zhees-MAHN' — 'u' rounded 'ew'; -ss- = 's'; final -ment nasal 'MAHN'; 'les conditions de son surgissement' = the concrete conditions of its emergence/coming-into-being (literary register)"
         ]
       },
       {
@@ -1729,6 +1747,12 @@ export const lessons: FrenchLesson[] = [
           "Carrère → ka-rèr",
           "brouillé → bru-yé",
           "sciemment → sia-mã"
+        ],
+        "pronunciation_focus_en": [
+          "autofiction → 'oh-toh-feek-SYOHN' — 'auto-' = 'oh-toh'; -tion 'syohn'; Doubrovsky's coinage, kept in French in English criticism",
+          "Carrère → 'kah-REHR' — proper name (Emmanuel Carrère); double-r one throat r; final -ère 'EHR'",
+          "brouillé → 'broo-YAY' — '-ill-' = 'y'; final -é 'ay'; 'a brouillé les frontières' = 'blurred the boundaries' (the autofiction effect)",
+          "sciemment → 'syah-MAHN' — TRAP: 'sci-' = 'sy', the adverb-ending '-emment' is pronounced 'AHN' (like '-amment'), final nasal; 'sciemment' = knowingly/deliberately — the blurring is intentional"
         ]
       },
       {
@@ -1739,120 +1763,145 @@ export const lessons: FrenchLesson[] = [
           "Ernaux → èr-nô",
           "pacte → pakt",
           "fictionnel → fik-sio-nèl"
+        ],
+        "pronunciation_focus_en": [
+          "lorsqu'on → 'lor-SKOHN' — 'lorsque' + 'on' elided; nasal 'on'; 'lorsqu'on lit' = 'when one reads' — 'lorsque' is the soutenu form of 'quand'",
+          "Ernaux → 'ehr-NOH' — proper name (Annie Ernaux, Nobel 2022); final -aux = 'oh' (silent -x); NOT 'ehr-NOKS'",
+          "pacte → 'PAKT' — final -e silent; 'le pacte référentiel / fictionnel' = Lejeune's reading-pact terms (referential vs fictional contract with the reader)",
+          "fictionnel → 'feek-syoh-NEL' — double-n; final -el 'NEL' (l pronounced); 'le pacte fictionnel' = the contract 'this book is invented' — opposed to the referential pact"
         ]
       }
     ],
     "cultural_notes_vi": "TRANH LUẬN SAINTE-BEUVE / PROUST est un débat foundationnel de la critique moderne française. Une compréhension précise est attendue à C2.\n\n(1) CHARLES-AUGUSTIN SAINTE-BEUVE (1804-1869): critique dominant du XIXe siècle, auteur des Causeries du lundi (1851-62). Sa méthode, dite « biographique », consiste à expliquer l'œuvre par la VIE et le CARACTÈRE de l'auteur. Pour Sainte-Beuve, comprendre Racine, c'est connaître les amitiés de Racine, sa formation à Port-Royal, son tempérament. La critique devient une espèce de portrait moral.\n\n(2) MARCEL PROUST (1871-1922): réplique avec Contre Sainte-Beuve, écrit vers 1908-09 mais publié posthumément en 1954. Proust soutient que « un livre est le produit d'un autre moi que celui que nous manifestons dans nos habitudes, dans la société, dans nos vices ». Il sépare radicalement le MOI SOCIAL (qui dîne, qui converse, qui souffre) du MOI CRÉATEUR (qui écrit). La biographie ne donne accès qu'au premier; l'œuvre seule donne accès au second.\n\n(3) HÉRITAGE: la critique du XXe siècle (Russe formaliste, New Criticism, structuralisme) a globalement suivi Proust. Roland Barthes radicalise dans « La Mort de l'auteur » (1968): le texte est un tissu de citations, l'auteur empirique n'a aucune autorité sur son sens. Foucault, dans « Qu'est-ce qu'un auteur ? » (1969), nuance: il faut analyser la « fonction-auteur », c'est-à-dire le rôle institutionnel et discursif du nom d'auteur, sans pour autant restaurer le moi biographique.\n\n(4) RETOUR DE LA BIOGRAPHIE: depuis les années 1990, retour partiel — non au biographisme naïf de Sainte-Beuve, mais à une « histoire littéraire » qui réintègre les conditions de production. Antoine Compagnon (Le Démon de la théorie, 1998) plaide pour un équilibre: ni biographisme exclusif, ni purisme textuel anti-biographique.\n\n(5) AUTOFICTION CONTEMPORAINE: complique la donne. Si Annie Ernaux écrit Les Années (2008) en disant explicitement « ces souvenirs sont les miens », elle propose un PACTE RÉFÉRENTIEL au lecteur. Refuser de lire la biographie d'Ernaux serait absurde — l'auteure elle-même y renvoie. Mais réduire l'œuvre à la biographie serait également naïf — elle est aussi élaboration, sélection, mise en forme. Philippe Lejeune (Le Pacte autobiographique, 1975) avait posé les termes; Doubrovsky (Fils, 1977) a inventé le néologisme « autofiction ».\n\nQUATRE POSITIONS C2 LÉGITIMES sur la question:\n\n(a) PURISME TEXTUEL post-Barthes: l'œuvre se suffit à elle-même; toute biographie est anecdote. Position cohérente mais qui appauvrit la lecture de Proust, Céline, Ernaux, Houellebecq — auteurs dont la biographie est indissociable du texte.\n\n(b) BIOGRAPHISME RAFFINÉ post-Compagnon: la biographie éclaire l'œuvre dans des cas précis (lettres, journaux, contexte historique), sans en dériver le sens.\n\n(c) GÉNÉTIQUE TEXTUELLE (école de l'ITEM, Pierre-Marc de Biasi): étudier les manuscrits et brouillons pour reconstituer le travail de la création. Réhabilite l'auteur comme artisan, non comme source de signification.\n\n(d) SOCIOLOGIE DE LA LITTÉRATURE post-Bourdieu (Les Règles de l'art, 1992): l'œuvre est produite dans un CHAMP LITTÉRAIRE — biographie, capital culturel, position dans le champ. Sans tomber dans le biographisme naïf.\n\nBẪY NGƯỜI VIỆT: souvent confondre « contexte historique » (acceptable) avec « biographie de l'auteur » (problématique post-Proust). « Madame Bovary fut écrit en 1857, sous le Second Empire » est une donnée HISTORIQUE pertinente. « Flaubert a connu une rupture amoureuse en 1842 qui explique son pessimisme » est un BIOGRAPHISME de type Sainte-Beuve, à éviter.",
+    "cultural_notes_en": "THE SAINTE-BEUVE / PROUST DEBATE is a foundational quarrel of modern French criticism. A precise grasp is expected at C2.\n\n(1) CHARLES-AUGUSTIN SAINTE-BEUVE (1804-1869): the dominant 19th-century critic, author of the Causeries du lundi (1851-62). His method, called 'biographical', explains the work through the LIFE and CHARACTER of the author. For Sainte-Beuve, to understand Racine is to know Racine's friendships, his Port-Royal upbringing, his temperament. Criticism becomes a kind of moral portrait.\n\n(2) MARCEL PROUST (1871-1922): replies with Contre Sainte-Beuve, written around 1908-09 but published posthumously in 1954. Proust argues that 'a book is the product of another self than the one we display in our habits, in society, in our vices'. He radically separates the SOCIAL SELF (who dines, converses, suffers) from the CREATING SELF (who writes). Biography gives access only to the first; the work alone gives access to the second.\n\n(3) THE LEGACY: 20th-century criticism (Russian Formalism, New Criticism, structuralism) broadly followed Proust. Roland Barthes radicalizes it in 'La Mort de l'auteur' (1968): the text is a tissue of citations; the empirical author has no authority over its meaning. Foucault, in 'Qu'est-ce qu'un auteur ?' (1969), nuances: one must analyze the 'author-function' — the institutional and discursive role of the author's name — without thereby restoring the biographical self.\n\n(4) THE RETURN OF BIOGRAPHY: since the 1990s, a partial return — not to Sainte-Beuve's naive biographism, but to a 'literary history' that reintegrates the conditions of production. Antoine Compagnon (Le Démon de la théorie, 1998) argues for a balance: neither exclusive biographism nor anti-biographical textual purism.\n\n(5) CONTEMPORARY AUTOFICTION: complicates the picture. If Annie Ernaux writes Les Années (2008) explicitly stating 'these memories are mine', she proposes a REFERENTIAL PACT to the reader. Refusing to read Ernaux's biography would be absurd — the author herself points to it. But reducing the work to the biography would be equally naive — it is also elaboration, selection, shaping. Philippe Lejeune (Le Pacte autobiographique, 1975) set the terms; Doubrovsky (Fils, 1977) coined the neologism 'autofiction'.\n\nFOUR LEGITIMATE C2 POSITIONS on the question:\n\n(a) TEXTUAL PURISM, post-Barthes: the work suffices unto itself; all biography is anecdote. A coherent position but one that impoverishes the reading of Proust, Céline, Ernaux, Houellebecq — authors whose biography is inseparable from the text.\n\n(b) REFINED BIOGRAPHISM, post-Compagnon: biography illuminates the work in specific cases (letters, journals, historical context), without deriving the meaning from it.\n\n(c) TEXTUAL GENETICS (the ITEM school, Pierre-Marc de Biasi): study manuscripts and drafts to reconstruct the work of creation. Rehabilitates the author as craftsman, not as source of meaning.\n\n(d) SOCIOLOGY OF LITERATURE, post-Bourdieu (Les Règles de l'art, 1992): the work is produced within a LITERARY FIELD — biography, cultural capital, position in the field — without lapsing into naive biographism.\n\nTHE ANGLOPHONE TRAP: the same Sainte-Beuvian reflex exists in English (call it the 'biographical fallacy', the cousin of Wimsatt & Beardsley's 'intentional fallacy', 1946). The specific French distinction to internalize: 'contexte historique' (acceptable) is NOT 'biographie de l'auteur' (problematic, post-Proust). 'Madame Bovary was written in 1857, under the Second Empire' is a relevant HISTORICAL datum. 'Flaubert had a love affair break down in 1842, which explains his pessimism' is Sainte-Beuvian BIOGRAPHISM, to be avoided.",
     "tip_advice_vi": "GRILLE D'ANALYSE pour articuler biographie et œuvre sans tomber dans le biographisme:\n\n(1) IDENTIFIER LE PACTE PROPOSÉ:\n- Pacte fictionnel (roman classique): « ce livre est inventé »\n- Pacte autobiographique (Lejeune): « ce livre dit la vérité de ma vie »\n- Pacte autofictionnel (Doubrovsky): « ce livre joue avec les frontières — vérité et invention sont indistinctes »\n\n(2) CHOISIR LES DONNÉES BIOGRAPHIQUES PERTINENTES — celles que le texte SOLLICITE explicitement:\n- Période historique de l'écriture (souvent pertinente)\n- Position de l'auteur dans le champ littéraire (souvent pertinente)\n- Lectures avérées de l'auteur (parfois pertinentes pour intertextualité)\n- Détails intimes de la vie privée (rarement pertinents)\n\n(3) DISTINGUER TROIS NIVEAUX:\n- AUTEUR EMPIRIQUE: la personne historique, qui mange, dort, signe ses contrats\n- AUTEUR IMPLIQUÉ (Booth, Wayne): l'image que le texte construit de son auteur\n- NARRATEUR: la voix du texte, distincte des deux précédents\n\n(4) ANALYSER LES PARATEXTES (Genette, Seuils, 1987):\n- Préface, dédicace, épigraphe, notes\n- Bandeaux éditoriaux, jaquette, prière d'insérer\n- Interviews, articles autour de la sortie\nCes paratextes orientent la lecture, qu'on l'accepte ou la résiste.\n\nCỤM HỮU ÍCH:\n\nPOUR INVOQUER LA BIOGRAPHIE LÉGITIMEMENT:\n- « Le contexte de la rédaction — [période, événement] — éclaire ce passage. »\n- « Sans tomber dans le biographisme, on peut noter que l'auteur a explicitement revendiqué cette filiation avec X. »\n- « Le texte sollicite lui-même la donnée biographique en intégrant des références datables. »\n\nPOUR ÉVITER LE BIOGRAPHISME NAÏF:\n- « Il convient de distinguer ce que le texte donne à lire de ce que la biographie de l'auteur permettrait de supposer. »\n- « Le moi qui écrit, comme le rappelle Proust, n'est pas le moi qui vit. »\n- « L'instance énonciative ne se confond pas avec l'auteur empirique. »\n\nPOUR ANALYSER L'AUTOFICTION:\n- « Annie Ernaux propose un pacte référentiel explicite, qu'on ne peut ignorer sans contresens. »\n- « L'autofiction brouille sciemment la frontière, mais ne l'abolit pas. »\n- « La référentialité du texte est une donnée du texte, non une indiscrétion sur l'auteur. »\n\nTRÁNH:\n- « L'auteur a écrit cela parce qu'il a vécu telle expérience. » → biographisme strict\n- « La biographie n'a aucune importance. » → purisme excessif, naïf\n- Confondre auteur empirique et narrateur (« Marcel Proust dit dans la Recherche que… »)\n- Sourcer un trait de personnage par un trait psychologique de l'auteur",
+    "tip_advice_en": "ANALYSIS GRID for articulating biography and work without lapsing into biographism:\n\n(1) IDENTIFY THE PROPOSED PACT:\n- Fictional pact (classic novel): 'this book is invented'\n- Autobiographical pact (Lejeune): 'this book tells the truth of my life'\n- Autofictional pact (Doubrovsky): 'this book plays with the boundaries — truth and invention are indistinct'\n\n(2) CHOOSE THE RELEVANT BIOGRAPHICAL DATA — those the text itself SOLICITS explicitly:\n- The historical period of the writing (often relevant)\n- The author's position in the literary field (often relevant)\n- The author's documented reading (sometimes relevant, for intertextuality)\n- Intimate details of private life (rarely relevant)\n\n(3) DISTINGUISH THREE LEVELS:\n- EMPIRICAL AUTHOR: the historical person, who eats, sleeps, signs contracts\n- IMPLIED AUTHOR (Wayne Booth): the image the text builds of its author\n- NARRATOR: the voice of the text, distinct from the previous two\n\n(4) ANALYZE THE PARATEXTS (Genette, Seuils, 1987):\n- Preface, dedication, epigraph, notes\n- Editorial banners, jacket, 'prière d'insérer' (publisher's blurb)\n- Interviews, articles around the release\nThese paratexts orient the reading, whether one accepts or resists them.\n\nUSEFUL PHRASES:\n\nTO INVOKE BIOGRAPHY LEGITIMATELY:\n- 'Le contexte de la rédaction — [period, event] — éclaire ce passage.'\n- 'Sans tomber dans le biographisme, on peut noter que l'auteur a explicitement revendiqué cette filiation avec X.'\n- 'Le texte sollicite lui-même la donnée biographique en intégrant des références datables.'\n\nTO AVOID NAIVE BIOGRAPHISM:\n- 'Il convient de distinguer ce que le texte donne à lire de ce que la biographie de l'auteur permettrait de supposer.'\n- 'Le moi qui écrit, comme le rappelle Proust, n'est pas le moi qui vit.'\n- 'L'instance énonciative ne se confond pas avec l'auteur empirique.'\n\nTO ANALYZE AUTOFICTION:\n- 'Annie Ernaux propose un pacte référentiel explicite, qu'on ne peut ignorer sans contresens.' (... which one cannot ignore without a misreading)\n- 'L'autofiction brouille sciemment la frontière, mais ne l'abolit pas.'\n- 'La référentialité du texte est une donnée du texte, non une indiscrétion sur l'auteur.'\n\nAVOID:\n- 'L'auteur a écrit cela parce qu'il a vécu telle expérience.' → strict biographism\n- 'La biographie n'a aucune importance.' → excessive, naive purism\n- Conflating empirical author and narrator ('Marcel Proust says in the Recherche that…')\n- Sourcing a character trait in a psychological trait of the author",
     "vocabulary": [
       {
         "word": "le pacte autobiographique",
         "en": "the autobiographical pact",
         "vi": "hợp đồng tự thuật",
         "pos": "n.m.",
-        "pronunciation_vi": "pakt ô-to-bio-gra-fik"
+        "pronunciation_vi": "pakt ô-to-bio-gra-fik",
+        "pronunciation_en": "luh PAKT oh-toh-byoh-grah-FEEK — 'pacte' final -e silent ('PAKT'); -graphique 'grah-FEEK'; Lejeune's term: the contract 'author = narrator = character, and this is true'"
       },
       {
         "word": "le pacte référentiel",
         "en": "the referential pact",
         "vi": "hợp đồng tham chiếu",
         "pos": "n.m.",
-        "pronunciation_vi": "pakt ré-fé-rãn-siel"
+        "pronunciation_vi": "pakt ré-fé-rãn-siel",
+        "pronunciation_en": "luh PAKT ray-fay-rahn-SYEL — é = 'ay', nasal 'en', final -el 'SYEL' (l pronounced); the contract that the text points to a real referent (Ernaux's stance) — between fictional and autobiographical"
       },
       {
         "word": "le pacte fictionnel",
         "en": "the fictional pact",
         "vi": "hợp đồng hư cấu",
         "pos": "n.m.",
-        "pronunciation_vi": "pakt fik-sio-nèl"
+        "pronunciation_vi": "pakt fik-sio-nèl",
+        "pronunciation_en": "luh PAKT feek-syoh-NEL — double-n; final -el 'NEL' (l pronounced); the contract 'this book is invented' — the default of the classic novel, opposite of the referential pact"
       },
       {
         "word": "l'autofiction",
         "en": "autofiction",
         "vi": "tự hư cấu",
         "pos": "n.f.",
-        "pronunciation_vi": "ô-to-fik-sion"
+        "pronunciation_vi": "ô-to-fik-sion",
+        "pronunciation_en": "loh-toh-feek-SYOHN — 'auto-' = 'oh-toh'; -tion 'syohn'; Doubrovsky's 1977 coinage; the genre that plays on the referential/fictional boundary — kept in French in English criticism"
       },
       {
         "word": "le moi créateur",
         "en": "the creating self",
         "vi": "cái tôi sáng tạo",
         "pos": "n.m.",
-        "pronunciation_vi": "moa kré-a-tơr"
+        "pronunciation_vi": "moa kré-a-tơr",
+        "pronunciation_en": "luh MWAH kray-ah-TUR — 'moi' = 'mwah'; 'créateur' final -eur 'TUR' (rounded); Proust's 'creating self' — the self that writes, NOT the social self that dines out"
       },
       {
         "word": "le moi social",
         "en": "the social self",
         "vi": "cái tôi xã hội",
         "pos": "n.m.",
-        "pronunciation_vi": "moa so-sial"
+        "pronunciation_vi": "moa so-sial",
+        "pronunciation_en": "luh MWAH soh-SYAL — 'moi' = 'mwah'; 'social' final -al 'SYAL'; Proust's 'social self' — the biographical person; biography reaches only this, never the moi créateur"
       },
       {
         "word": "l'auteur empirique",
         "en": "the empirical author",
         "vi": "tác giả thực nghiệm",
         "pos": "n.m.",
-        "pronunciation_vi": "ô-tơr ãn-pi-rik"
+        "pronunciation_vi": "ô-tơr ãn-pi-rik",
+        "pronunciation_en": "loh-TUR ahn-pee-REEK — 'auteur' final -eur 'TUR'; 'empirique' nasal 'em', final -que 'reek'; the flesh-and-blood historical author — distinct from narrator AND implied author"
       },
       {
         "word": "l'auteur impliqué",
         "en": "the implied author",
         "vi": "tác giả ngụ ý",
         "pos": "n.m.",
-        "pronunciation_vi": "ô-tơr an-pli-ké"
+        "pronunciation_vi": "ô-tơr an-pli-ké",
+        "pronunciation_en": "loh-TUR an-plee-KAY — 'impliqué' nasal 'im', final -é 'KAY'; Booth's 'implied author' (l'auteur impliqué) — the authorial image the TEXT constructs, not the real person"
       },
       {
         "word": "le biographisme",
         "en": "biographism",
         "vi": "thuyết tiểu sử",
         "pos": "n.m.",
-        "pronunciation_vi": "bio-gra-fism"
+        "pronunciation_vi": "bio-gra-fism",
+        "pronunciation_en": "luh byoh-grah-FEESM — 'bio-' = 'byoh'; final -isme 'eesm'; the fallacy of explaining a work by the author's life — the Sainte-Beuvian reflex Proust dismantled; English calls it 'biographism' / the 'biographical fallacy'"
       },
       {
         "word": "un paratexte",
         "en": "a paratext",
         "vi": "một văn bản phụ",
         "pos": "n.m.",
-        "pronunciation_vi": "pa-ra-tèkst"
+        "pronunciation_vi": "pa-ra-tèkst",
+        "pronunciation_en": "uhn pah-rah-TEKST — 'para-' = 'pah-rah'; final -te 'TEKST' (the -e barely there); Genette's term (Seuils, 1987): everything around the text (preface, blurb, title) that orients reading"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Compagnon",
         "text": "Madame Tran, vous expliquez Madame Bovary par les déceptions amoureuses de Flaubert. C'est typiquement Sainte-Beuve.",
-        "vi": "Cô Trần, cô giải thích Madame Bovary bằng các thất vọng tình yêu của Flaubert. Đó là Sainte-Beuve điển hình."
+        "vi": "Cô Trần, cô giải thích Madame Bovary bằng các thất vọng tình yêu của Flaubert. Đó là Sainte-Beuve điển hình.",
+        "en": "Madame Tran, you explain Madame Bovary by Flaubert's romantic disappointments. That is typically Sainte-Beuve. ['C'est typiquement Sainte-Beuve' = naming the fallacy by its theorist — a compact reproach; the examiner labels the move rather than just objecting]"
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison — j'ai glissé vers le biographisme. Le texte n'a pas besoin de cette explication.",
-        "vi": "Thầy đúng — tôi đã trượt vào biographisme. Văn bản không cần giải thích đó."
+        "vi": "Thầy đúng — tôi đã trượt vào biographisme. Văn bản không cần giải thích đó.",
+        "en": "You're right — I slipped toward biographism. The text does not need that explanation. ['j'ai glissé vers' = 'I slid/slipped toward' — the standard register of conceding an analytic lapse without over-apologizing]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Et la fameuse formule « Madame Bovary, c'est moi » est probablement apocryphe — Flaubert ne l'a sans doute jamais dite.",
-        "vi": "Và cụm nổi tiếng « Madame Bovary, c'est moi » có lẽ apocryphe — Flaubert có thể chưa bao giờ nói."
+        "vi": "Và cụm nổi tiếng « Madame Bovary, c'est moi » có lẽ apocryphe — Flaubert có thể chưa bao giờ nói.",
+        "en": "And the famous formula 'Madame Bovary, c'est moi' is probably apocryphal — Flaubert most likely never said it. ['apocryphe' = of doubtful attribution (a precise scholarly term, not just 'false'); 'sans doute' here = 'most likely / presumably', NOT English 'without doubt' — a notorious false friend]"
       },
       {
         "speaker": "Linh",
         "text": "Encore une raison de ne pas la mobiliser. Je reformule en restant dans le texte.",
-        "vi": "Thêm một lý do để không huy động. Tôi diễn đạt lại bằng cách ở lại trong văn bản."
+        "vi": "Thêm một lý do để không huy động. Tôi diễn đạt lại bằng cách ở lại trong văn bản.",
+        "en": "One more reason not to mobilize it. I'll reformulate while staying within the text. ['rester dans le texte' = the methodological watchword of post-Proust criticism: keep the analysis text-internal; 'mobiliser' = to bring a quotation/argument into play]"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Compagnon (séminaire de M2 sur l'autofiction)",
         "text": "Madame Tran, votre exposé porte sur Annie Ernaux — autrice désormais Nobel. La question centrale: comment lire l'autofiction sans tomber dans deux écueils symétriques — le biographisme naïf et le purisme textuel anti-biographique ?",
-        "vi": "Cô Trần, bài cô về Annie Ernaux — tác giả giờ Nobel. Câu hỏi trung tâm: đọc autofiction thế nào mà không rơi vào hai bẫy đối xứng — biographisme ngây thơ và purisme văn bản chống tiểu sử?"
+        "vi": "Cô Trần, bài cô về Annie Ernaux — tác giả giờ Nobel. Câu hỏi trung tâm: đọc autofiction thế nào mà không rơi vào hai bẫy đối xứng — biographisme ngây thơ và purisme văn bản chống tiểu sử?",
+        "en": "Madame Tran, your presentation is on Annie Ernaux — now a Nobel laureate. The central question: how to read autofiction without falling into two symmetrical pitfalls — naive biographism and anti-biographical textual purism? ['deux écueils symétriques' = 'two symmetrical reefs/pitfalls' — the framing of a problématique as the avoidance of opposite errors, a classic C2 move]"
       },
       {
         "speaker": "Linh",
         "text": "La position que je défendrai est la suivante: l'autofiction d'Ernaux exige une lecture qui prenne au sérieux le pacte référentiel qu'elle propose, sans pour autant abolir la distinction entre le moi écrivant et le moi vécu. Cette position s'oppose à la fois au biographisme — qui rabattrait l'œuvre sur la vie — et au purisme barthésien — qui nierait la spécificité du pacte autofictionnel.",
-        "vi": "Lập trường tôi sẽ bảo vệ: autofiction Ernaux đòi hỏi cách đọc xem xét nghiêm túc hợp đồng tham chiếu cô đề xuất, mà không xóa bỏ phân biệt giữa cái tôi viết và cái tôi sống. Lập trường này đối lập cùng lúc với biographisme — sẽ đánh đồng tác phẩm với cuộc đời — và purisme barthésien — sẽ phủ nhận tính đặc thù của hợp đồng autofictionnel."
+        "vi": "Lập trường tôi sẽ bảo vệ: autofiction Ernaux đòi hỏi cách đọc xem xét nghiêm túc hợp đồng tham chiếu cô đề xuất, mà không xóa bỏ phân biệt giữa cái tôi viết và cái tôi sống. Lập trường này đối lập cùng lúc với biographisme — sẽ đánh đồng tác phẩm với cuộc đời — và purisme barthésien — sẽ phủ nhận tính đặc thù của hợp đồng autofictionnel.",
+        "en": "The position I shall defend is the following: Ernaux's autofiction demands a reading that takes seriously the referential pact she proposes, without thereby abolishing the distinction between the writing self and the lived self. This position is opposed at once to biographism — which would collapse the work onto the life — and to Barthesian purism — which would deny the specificity of the autofictional pact. ['je défendrai' = future, 'I shall defend' — the assertive thesis-statement opening; 'rabattre X sur Y' = to fold/collapse X onto Y, a precise critical verb for reductive readings]"
       },
       {
         "speaker": "Linh",
         "text": "Le cas des Années (2008) est particulièrement éclairant. Ernaux y écrit l'histoire d'une génération à travers son propre parcours, mais elle adopte un dispositif narratif inattendu: elle parle d'elle-même à la troisième personne — « elle » — et non à la première. Pourquoi ? Précisément, je crois, pour signaler que le moi qui écrit n'est pas exactement le moi qui a vécu. La troisième personne crée la distance qui permet le travail littéraire — sans pour autant abolir le pacte référentiel, puisque le « elle » désigne bien Annie Ernaux historique.",
-        "vi": "Trường hợp Les Années (2008) đặc biệt rõ. Ernaux viết lịch sử một thế hệ qua hành trình của chính mình, nhưng cô dùng một thiết kế trần thuật bất ngờ: cô nói về mình ở ngôi thứ ba — « elle » — không phải ngôi thứ nhất. Tại sao? Chính, tôi nghĩ, để báo hiệu cái tôi viết không hẳn cái tôi đã sống. Ngôi thứ ba tạo khoảng cách cho phép công việc văn học — mà không xóa bỏ hợp đồng tham chiếu, vì « elle » thật sự chỉ Annie Ernaux lịch sử."
+        "vi": "Trường hợp Les Années (2008) đặc biệt rõ. Ernaux viết lịch sử một thế hệ qua hành trình của chính mình, nhưng cô dùng một thiết kế trần thuật bất ngờ: cô nói về mình ở ngôi thứ ba — « elle » — không phải ngôi thứ nhất. Tại sao? Chính, tôi nghĩ, để báo hiệu cái tôi viết không hẳn cái tôi đã sống. Ngôi thứ ba tạo khoảng cách cho phép công việc văn học — mà không xóa bỏ hợp đồng tham chiếu, vì « elle » thật sự chỉ Annie Ernaux lịch sử.",
+        "en": "The case of Les Années (2008) is especially illuminating. Ernaux there writes the history of a generation through her own trajectory, but she adopts an unexpected narrative device: she speaks of herself in the third person — 'elle' — and not the first. Why? Precisely, I believe, to signal that the self who writes is not exactly the self who lived. The third person creates the distance that makes the literary work possible — without thereby abolishing the referential pact, since 'elle' does designate the historical Annie Ernaux. ['un dispositif narratif' = a narrative device/set-up (the technical 'dispositif', not 'disposition'); the 'elle' for self is the formal trace of the Proustian moi-créateur / moi-social split]"
       },
       {
         "speaker": "Linh",
