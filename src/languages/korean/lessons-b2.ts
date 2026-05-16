@@ -9132,7 +9132,7 @@ export const lessons: KoreanLesson[] =       [
         {
           "idiom": "한 발짝 옮기다",
           "literal": "nhấc một bước chân",
-          "literal_en": "move one step (han baljjak olgida)",
+          "literal_en": "move one step (han baljjak omgida)",
           "meaning": "đi/dấn từng bước (slow progress)",
           "meaning_en": "To advance step by step (slow progress).",
           "example": "지도를 보면서 한 발짝씩 옮겼어요.",
