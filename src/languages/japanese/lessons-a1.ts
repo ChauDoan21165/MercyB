@@ -358,13 +358,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "本が一冊あります。",
-        "english": "There is one book."
+        "english": "There is one book.",
+        "pronunciation_focus_en": [
+          "本 (ほん) → 'hon'; the ん is its own beat (moraic n)",
+          "が → subject particle, hard 'g' ('ga')",
+          "一冊 (いっさつ) → 'i(s)-sa-tsu'; small っ = held silent beat, then the book-counter 冊 さつ",
+          "あります → 'a-ri-mas', final す devoiced (used for inanimate things)"
+        ]
       },
       {
         "japanese": "友達が二人います。",
-        "english": "I have two friends."
+        "english": "I have two friends.",
+        "pronunciation_focus_en": [
+          "友達 (ともだち) → 'to-mo-da-chi', four flat even beats",
+          "二人 → read 'fu-ta-ri' (two people) — an IRREGULAR people-counter reading, not に-にん",
+          "います → 'i-mas' (used for people/animate beings, vs あります for things)",
+          "に in にん vs ふたり → note 一人/二人 are ひとり/ふたり, then 三人 onward is regular さん-にん"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Japanese cannot usually count a noun bare: a number takes a counter word matched to the thing's shape or category — つ for general objects, 人 (にん) for people, 冊 (さつ) for bound volumes, 本 (ほん) for long thin things, 枚 (まい) for flat thin things, 匹 (ひき) for small animals, 台 (だい) for machines. English speakers meet a faint version of this in 'two HEAD of cattle' or 'three SHEETS of paper,' but Japanese applies it to nearly everything, and it is more elaborate than Chinese measure words because Japan runs two number systems in parallel: the native ひとつ/ふたつ/みっつ series (general counter, irregular, tops out around とお = 10) and the Sino-Japanese いち/に/さん series that takes specialized counters. Worse for tidy rules, the counter triggers sound changes — 一冊 is いっさつ (not いち-さつ), 一本 is いっぽん — so the 'one' you learned mutates on contact. The everyday upshot: pointing and saying ひとつ ('one, please') with a gesture is a perfectly natural survival strategy in a shop while the full counter system is still settling in.",
+    "tip_advice_en": "Highest-leverage move: at A1, memorize the general ひとつ・ふたつ・みっつ counter and the people counter (ひとり・ふたり・さんにん…) as ready-made sets, and let the rest arrive one counter at a time with the nouns that need them — do NOT try to learn the whole counter chart up front; that is an A2+ project. The two genuine traps: (1) 一人/二人 are irregular — ひとり, ふたり — then it regularizes to さんにん, よにん; and (2) animate vs inanimate verbs — います for people/animals, あります for objects; saying 友達があります treats a friend like furniture. Pronunciation watch-point: the small っ in いっさつ/いっぽん is a full silent beat — hold it. Drill: count 1–3 of three different things (本・人・つ) so the sound shifts and the irregular ひとり/ふたり become reflexes."
   },
   {
     "id": 7,
@@ -409,13 +423,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今日は金曜日です。",
-        "english": "Today is Friday."
+        "english": "Today is Friday.",
+        "pronunciation_focus_en": [
+          "今日 → read 'kyo-o' (today) — an irregular kanji reading, two held beats, not 'kee-yo'",
+          "は → topic particle, 'wa' not 'ha'",
+          "金曜日 (きんようび) → 'kin-yo-o-bi'; ん is its own beat, よう is a long 'oh'",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "日曜日に映画を見ます。",
-        "english": "I will watch a movie on Sunday."
+        "english": "I will watch a movie on Sunday.",
+        "pronunciation_focus_en": [
+          "日曜日 (にちようび) → 'ni-chi-yo-o-bi'; よう held two beats",
+          "に → time particle here ('on Sunday'); short flat 'ni' — a grammatical marker, keep it light",
+          "映画 (えいが) → 'e-e-ga'; えい is a long 'eh', hard g in が",
+          "を → object particle, pronounced 'o' (not 'wo'); 見ます → 'mi-mas', devoiced final"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "The seven weekday names are a small astronomy lesson: each is a celestial body or element + 曜日 ('day of the week') — 月 moon (Monday), 火 fire/Mars (Tuesday), 水 water/Mercury (Wednesday), 木 wood/Jupiter (Thursday), 金 gold/Venus (Friday), 土 earth/Saturn (Saturday), 日 sun (Sunday). This is the same Sun/Moon/Saturn logic buried in English 'Sunday/Monday/Saturday,' just kept fully transparent — so the system is more memorable than it first looks, not less. This lesson is also where the script mix becomes unavoidable: 金曜日 is kanji, the reading きんようび is hiragana, and you will see both, which is exactly why A1 Japanese material prints the hiragana reading in parentheses. The day particle に ('on') appears here too — and a useful asymmetry for English speakers: 今日 (today), 明日 (tomorrow), 毎日 (every day) take NO に, while a named day (日曜日に) does. Culturally, the work-week frame matters: Saturday is widely a half- or full work/school day historically, and seasonal awareness threads through scheduling talk far more than in the US.",
+    "tip_advice_en": "Highest-leverage move: don't memorize seven opaque words — learn the seven one-character elements (月火水木金土日) and tack on 〜ようび; the whole set then comes nearly free, and those same kanji return for planets, elements, money (金), and 'sun/day' (日). The particle rule worth burning in now: な named day + に ('日曜日に', on Sunday), but relative-time words 今日・明日・毎日 take NO particle — over-adding に here is the classic English-speaker error because English uses 'on' for both. Pronunciation watch-points: 今日 is irregular きょう (kyo-o, two beats, NOT 'kon-nichi'); ようび hides a long 'oh' — clip it and 金曜日 sounds wrong. Drill: say each day as 'element + ようび' while writing the single kanji, so sound and script lock together."
   },
   {
     "id": 8,
@@ -480,13 +508,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "誕生日は五月です。",
-        "english": "My birthday is in May."
+        "english": "My birthday is in May.",
+        "pronunciation_focus_en": [
+          "誕生日 (たんじょうび) → 'tan-jo-o-bi'; ん is its own beat, じょう a long 'joh'",
+          "は → topic particle, 'wa'",
+          "五月 (ごがつ) → 'go-ga-tsu'; つ is 'tsu' (tongue behind teeth), not 'too'",
+          "です → 'des', devoiced"
+        ]
       },
       {
         "japanese": "十二月に日本へ行きます。",
-        "english": "I will go to Japan in December."
+        "english": "I will go to Japan in December.",
+        "pronunciation_focus_en": [
+          "十二月 (じゅうにがつ) → 'ju-u-ni-ga-tsu'; じゅう is a long 'joo' (two beats)",
+          "に → time particle ('in December'); 日本 (にほん) → 'ni-hon', ん its own beat",
+          "へ → direction particle: written as the kana 'he' but pronounced 'e'",
+          "行きます → 'i-ki-mas', final す devoiced"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Months are the single most regular thing in A1 Japanese: a number 1–12 plus がつ, full stop — 一月 'month-one' = January through 十二月 = December. There are no month names to memorize; if you can count, you can say every month — the same leverage Chinese gives with 月. But Japanese adds a twist Chinese does not: three months keep an OLD reading. 4 is しがつ (not よん-がつ), 7 is しちがつ (not なな-がつ), 9 is くがつ (not きゅう-がつ) — precisely the readings that the unlucky-number lesson taught you to avoid elsewhere, here mandatory. (Day-of-month numbers are even more irregular, which is why dates are introduced separately.) Two cultural notes worth carrying: dates run largest-to-smallest like Chinese (year → month → day), and Japan's calendar life is intensely seasonal — months are bound up with cherry blossoms (4), rainy season (6), festivals (7–8), and momiji leaves (11), so a Japanese person naming a month is often also naming a season, much as 'December' instantly says 'holidays' to an American.",
+    "tip_advice_en": "Highest-leverage rule: master 'number + がつ' once and all twelve months are free — never drill them as twelve separate words. The one thing to actively memorize is the three irregulars: 4=しがつ, 7=しちがつ, 9=くがつ. Do not 'fix' them to よん/なな/きゅう — that is the predictable English-speaker over-correction, and it is wrong for months even though it is right for bare counting. Particle watch-point introduced here: へ (direction, 'to Japan') is written with the kana for 'he' but pronounced 'e' — the second hiragana-particle-with-a-surprise-reading after は='wa.' Pronunciation: the small つ in がつ is 'tsu' (tongue tip behind upper teeth), a sound English lacks word-initially — practice it. Drill: count 一月→十二月 aloud, pausing hard on し-がつ, しち-がつ, く-がつ."
   },
   {
     "id": 9,
@@ -519,13 +561,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今、三時です。",
-        "english": "It is 3 o'clock now."
+        "english": "It is 3 o'clock now.",
+        "pronunciation_focus_en": [
+          "今 (いま) → 'i-ma', two flat even beats",
+          "三時 (さんじ) → 'san-ji'; ん its own beat; 時 = soft 'j' + short 'i' (the hour counter)",
+          "です → 'des', devoiced final vowel",
+          "no stress accent — keep 'san-ji-des' flat and evenly timed"
+        ]
       },
       {
         "japanese": "七時半に起きます。",
-        "english": "I wake up at half past seven."
+        "english": "I wake up at half past seven.",
+        "pronunciation_focus_en": [
+          "七時 → read 'shi-chi-ji' (7 o'clock) — uses しち, NOT なな, before 時",
+          "半 (はん) → 'han' = 'half past'; ん is a full beat",
+          "に → time-point particle ('at 7:30'); short flat 'ni', keep it light",
+          "起きます → 'o-ki-mas', final す devoiced"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Time uses the counter 時 (じ) for the hour and 分 (ふん/ぷん) for minutes, with 半 (はん, 'half') for the half hour — 七時半 is literally 'seven-hour-half.' The pattern is regular but the readings are not: 4時 is よじ, 7時 is しちじ, 9時 is くじ — a third reshuffle of 4/7/9 that does NOT match either the bare-counting set or the months set, which is the real difficulty here. Minutes add rendaku (sound-voicing): 一分 いっぷん, 三分 さんぷん, 四分 よんぷん, 六分 ろっぷん — the ふ flips to ぷ and small っ appears, so the clean form 'fun' is often not what you hear. Culturally, the headline fact for an American is punctuality: Japanese trains and appointments run to the literal minute, and 'on time' means a few minutes early; the famous train-delay apologies for 90 seconds are real. The particle に marks a clock point ('at 7:30'), and — useful contrast — に attaches to clock times and named days but not to 今 (now), 今日 (today), or other relative-time words.",
+    "tip_advice_en": "Highest-leverage warning: 4/7/9 change reading AGAIN. For the hour it is よじ (4), しちじ (7), くじ (9) — note 7時 is しちじ, the opposite of the よん/なな instinct you may have just built, and 4時 is よじ (not よん-じ). Treat clock-4/7/9 as three vocabulary items, not a rule to derive. Second: minutes voice — いっぷん, さんぷん, ろっぷん — so listen for 'pun' with a held っ, not a tidy 'fun.' Particle rule to lock: clock time + に ('七時半に', at 7:30) but 今 takes no particle. Pronunciation: the small っ in いっぷん/ろっぷん is a silent held beat — skipping it is the commonest A1 timing error. Drill: say every hour 1→12 with 時, stopping hard on よじ・しちじ・くじ until they are reflexes."
   },
   {
     "id": 10,
@@ -566,13 +622,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "駅はどこですか？",
-        "english": "Where is the station?"
+        "english": "Where is the station?",
+        "pronunciation_focus_en": [
+          "駅 (えき) → 'e-ki', two flat even beats",
+          "は → topic particle, 'wa' not 'ha'",
+          "どこ → 'do-ko' ('where'); both vowels short and equal",
+          "ですか → 'des-ka'; pitch rises only on か to mark the question"
+        ]
       },
       {
         "japanese": "まっすぐ行って、右です。",
-        "english": "Go straight, then it's on the right."
+        "english": "Go straight, then it's on the right.",
+        "pronunciation_focus_en": [
+          "まっすぐ → 'ma(s)-su-gu'; the small っ is a held silent beat before すぐ",
+          "行って → 'i(t)-te'; another small っ — a clipped pause, then 'te' (the connecting て-form)",
+          "右 (みぎ) → 'mi-gi', hard g; (contrast 左 ひだり = left)",
+          "です → 'des', devoiced final vowel"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Two things make Japanese directions distinctive for an American. First, the landmark: the 交番 (kōban), a small neighborhood police box, is the normal place to ask the way — officers there expect direction questions and often have local maps; there is no real US equivalent (it is not a 'police station' you would hesitate to bother). Second, the address system itself: Japanese addresses are area-block-building, not street-based, so even locals navigate by landmarks and ask at the kōban — getting lost and asking is ordinary, not a failure. The sentence frame here, 〜はどこですか ('where is ~?'), is one of the highest-value survival templates in the language. Politeness also shapes the answers you'll hear: a helper who is unsure will often soften with 〜と思います ('I think…') rather than guess flatly, and may walk you part-way rather than say 'you can't miss it' — declining that escort with a quick ありがとうございます is fine. The て-form (行って, 'go and then…') appears here as the everyday way to chain instructions: do this, then that.",
+    "tip_advice_en": "Highest-leverage template: lock 〜はどこですか and you can locate anything — 駅は / トイレは / 交番はどこですか. Slot any noun in front of は; that single pattern plus pointing handles most lost-tourist situations. The new grammar to notice, not yet master, is the て-form (行って = 'go and…'): A1 only needs to recognize it as the 'and then' connector; its full conjugation is A2. Pronunciation watch-point dominates this lesson: small っ appears twice — まっすぐ and 行って — and each is a real silent beat. English speakers blur it (\"masugu\", \"ite\"), which makes you hard to understand and means you'll miss it when spoken to you. Drill: clap the beats — ma–(stop)–su–gu, i–(stop)–te — exaggerating the silent hold until the double consonant is automatic. Pair each direction word with its kanji (右/左/駅) so signage becomes readable, since direction signs rarely show furigana."
   },
   {
     "id": 11,
