@@ -4087,7 +4087,9 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese press-conference openings are procedural and restrained. 丁寧語 is the base register; excessive emotion before facts are established can sound performative.",
     "cultural_notes_vi": "Mở họp báo tiếng Nhật cần trật tự: cảm ơn, phạm vi thông tin đã xác nhận, thời điểm Q&A. Không mở bằng khẩu hiệu.",
-    "tip_advice_vi": "Công thức: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答."
+    "cultural_notes_en": "Opening a Japanese press conference needs order: thanks, the scope of already-confirmed information, the timing of Q&A. Do not open with a slogan.",
+    "tip_advice_vi": "Công thức: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答.",
+    "tip_advice_en": "Formula: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答."
   },
   {
     "id": 123,
@@ -4112,7 +4114,9 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese press releases prefer clean fact order over promotional intensity. If using strong claims, attach measurable evidence.",
     "cultural_notes_vi": "Thông cáo báo chí tiếng Nhật không nên giống quảng cáo. Từ mạnh phải có căn cứ.",
-    "tip_advice_vi": "Lead bằng 5W1H, sau đó mới quote của lãnh đạo."
+    "cultural_notes_en": "A Japanese press release should not look like an advertisement. Strong words must have a basis.",
+    "tip_advice_vi": "Lead bằng 5W1H, sau đó mới quote của lãnh đạo.",
+    "tip_advice_en": "Lead with the 5W1H, and only then the executive's quote."
   },
   {
     "id": 124,
@@ -4137,7 +4141,9 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese op-ed style is measured: state a public issue, show awareness of counterarguments, then offer a clear but not theatrical position.",
     "cultural_notes_vi": "Op-ed Nhật hay có giọng cân bằng, tránh tuyên bố quá nhanh. Truyền thống 寄稿 coi trọng trách nhiệm với độc giả.",
-    "tip_advice_vi": "Mở bài bằng vấn đề công: なぜ今この論点なのか."
+    "cultural_notes_en": "A Japanese op-ed tends to take a balanced tone and avoids declaring things too quickly; the 寄稿 (contributed-piece) tradition prizes responsibility toward the reader.",
+    "tip_advice_vi": "Mở bài bằng vấn đề công: なぜ今この論点なのか.",
+    "tip_advice_en": "Open the piece with a public issue: なぜ今この論点なのか (why this point, and why now)."
   },
   {
     "id": 125,
@@ -4162,6 +4168,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Podcast register can be less formal but should remain 丁寧. Use なるほど、ただ... to disagree without sounding combative.",
     "cultural_notes_vi": "Podcast tiếng Nhật không quá cứng, nhưng khách mời đại diện tổ chức vẫn phải giữ 丁寧語 và ranh giới sự thật.",
+    "cultural_notes_en": "A Japanese podcast is not overly stiff, but a guest who represents an organization must still keep 丁寧語 and the boundary of fact.",
     "tip_advice_vi": "Soft correction pattern: なるほど、ただ、その表現だと..."
   },
   {
@@ -4187,6 +4194,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Live TV Japanese needs compact, quotable 丁寧語. Do not fight the anchor; acknowledge, narrow, answer.",
     "cultural_notes_vi": "Trên TV trực tiếp, câu Nhật phải ngắn hơn văn họp báo. Dùng ご指摘の通りですが... để giữ phép lịch sự khi thu hẹp câu hỏi.",
+    "cultural_notes_en": "On live TV, Japanese sentences must be shorter than press-conference prose; use ご指摘の通りですが... to stay polite while narrowing the question.",
     "tip_advice_vi": "Three-beat answer: acknowledge → confirmed fact → next action."
   },
   {
@@ -4216,6 +4224,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese institutional apology press conferences form a distinct genre: deep apology, bowing register in language, then concrete accountability. 謙譲語 is expected, but vague remorse without action sounds hollow.",
     "cultural_notes_vi": "Bài xin lỗi tổ chức kiểu Nhật không chỉ là 'xin lỗi'. Nó phải có cấu trúc: お詫び → 責任 → 補償/対応 → 再発防止策.",
+    "cultural_notes_en": "A Japanese institutional apology is not just 'sorry.' It must have a structure: お詫び → 責任 → 補償/対応 → 再発防止策 (apology → responsibility → compensation/response → recurrence-prevention measures).",
     "tip_advice_vi": "Use お詫び申し上げます for apology, but immediately follow with what will change."
   },
   {
@@ -4241,6 +4250,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese media relations require explicit attribution rules. Say what is on record, background, or off record before the sensitive information.",
     "cultural_notes_vi": "Đừng mặc định mọi người hiểu オフレコ giống nhau. Nói rõ 引用可/引用不可 trước.",
+    "cultural_notes_en": "Don't assume everyone understands オフレコ (off the record) the same way. State 引用可/引用不可 (quotable / not quotable) clearly up front.",
     "tip_advice_vi": "Ground rules first: ここまでは引用可, ここからは背景説明."
   },
   {
@@ -4266,6 +4276,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "For hostile Q&A, Japanese indirect disagreement protects face while correcting the frame. Use ご指摘の通りですが... / ただ... rather than direct confrontation.",
     "cultural_notes_vi": "Khi phóng viên gay gắt, đừng nói thẳng '違います' đầu câu. Acknowledge trước, sau đó chỉnh tiền đề.",
+    "cultural_notes_en": "When a journalist is aggressive, don't lead with a blunt '違います'. Acknowledge first, then correct the premise.",
     "tip_advice_vi": "Pattern: ご指摘の通り...重く受け止めます。ただ、その前提は..."
   },
   {
@@ -4291,6 +4302,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "A Japanese spokesperson must be predictable. Weekly briefings use stable wording: updates, pending confirmations, written follow-up.",
     "cultural_notes_vi": "報道官 không phải trả lời hết mọi thứ. Điều quan trọng là giữ nhịp cập nhật rõ ràng và nhất quán.",
+    "cultural_notes_en": "A 報道官 (spokesperson) does not have to answer everything. What matters is keeping a clear, consistent update rhythm.",
     "tip_advice_vi": "Useful phrase: 確認後に書面でお知らせします."
   },
   {
@@ -4316,6 +4328,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Official Japanese social statements should not sound like customer-service chat. Keep it short, formal enough, and screenshot-safe.",
     "cultural_notes_vi": "SNS tiếng Nhật có thể ngắn, nhưng tuyên bố chính thức vẫn phải giữ phẩm chất tổ chức.",
+    "cultural_notes_en": "Japanese SNS can be short, but an official statement must still keep the organization's dignity.",
     "tip_advice_vi": "Three-line SNS formula: お詫び → 現在の対応 → 続報の場所."
   }
 ];
