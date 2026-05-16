@@ -40,17 +40,34 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "あい",
-        "english": "love"
+        "english": "love",
+        "pronunciation_focus_en": [
+          "あ → 'ah' as in 'father', short and flat — never the English 'ay'",
+          "い → 'ee' as in 'see', but clipped short",
+          "あい → two equal beats 'a-i', NOT the single glide in English 'eye'"
+        ]
       },
       {
         "japanese": "うえ",
-        "english": "above"
+        "english": "above",
+        "pronunciation_focus_en": [
+          "う → 'oo' as in 'food' but lips relaxed and unrounded — lighter than English 'oo'",
+          "え → 'eh' as in 'bed', flat; do not let it drift toward 'ay'",
+          "うえ → two even mora 'u-e', each held the same length"
+        ]
       },
       {
         "japanese": "えいご",
-        "english": "English language"
+        "english": "English language",
+        "pronunciation_focus_en": [
+          "え → 'eh' as in 'bed'",
+          "えい → a long 'eh' held two beats here, not 'ay' as in 'day'",
+          "ご → hard 'g' as in 'go' (g is always hard in Japanese) + short 'oh'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Japanese writes with three scripts at once — hiragana, katakana, and kanji — and one ordinary sentence routinely uses all three. There is no real American parallel; the nearest is mixing print, italics, and numerals, and that still understates it. Hiragana is the phonetic backbone: ~46 basic characters, each a fixed sound, learned first because it spells grammar and any word not written in kanji. Unlike English letters, a hiragana character never changes its sound — あ is always 'a' as in 'father,' anywhere it appears, which makes Japanese reading far more predictable than English spelling (compare English 'a' in 'cat / car / care / about'). The five vowels あいうえお are the foundation of the whole system: every other kana is a consonant fused onto one of these five, so locking them in now pays off for the entire language. Children's books and learner signage are written largely in hiragana, so this one script already unlocks a surprising amount.",
+    "tip_advice_en": "Highest-leverage habit: treat the five vowels as pure and constant — they never glide. Japanese あ/い/う/え/お are 'ah/ee/oo/eh/oh,' and crucially they do NOT diphthongize the way English stressed vowels do (English 'o' drifts to 'ow,' long 'a' to 'ay-ee'). Say え as a flat, short 'eh' and stop — don't let it slide toward 'ay.' う is lighter and less rounded than English 'oo'; relax the lips. When two vowels sit together (あい, うえ, えいご) give each its own equal beat — Japanese is mora-timed, so あい is two even beats 'a-i,' not the single English glide in 'eye.' Drill: clap once per mora — え-い-ご, three claps, three even sounds. Lock the evenness in now; this same mora timing governs long vowels and double consonants for the rest of the language."
   },
   {
     "id": 2,
@@ -87,17 +104,37 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "カメラ",
-        "english": "camera"
+        "english": "camera",
+        "pronunciation_focus_en": [
+          "カ → 'ka' as in 'car', hard k, short 'ah'",
+          "メ → 'meh' as in 'met'",
+          "ラ → a light tapped 'r', between English 'r' and 'd' (like the fast 'tt' in American 'butter')",
+          "カメラ → three even beats, no stressed syllable (not 'CA-me-ra')"
+        ]
       },
       {
         "japanese": "コーヒー",
-        "english": "coffee"
+        "english": "coffee",
+        "pronunciation_focus_en": [
+          "コ → 'ko', short 'oh'",
+          "コー → the ー is a length mark, not a letter: hold the 'oh' two beats",
+          "ヒ → 'hi' as in 'he', breathy",
+          "ヒー → hold 'ee' two beats; コーヒー is four beats ko-o-hi-i, not two-syllable 'CAW-fee'"
+        ]
       },
       {
         "japanese": "アメリカ",
-        "english": "America"
+        "english": "America",
+        "pronunciation_focus_en": [
+          "ア → 'ah' as in 'father'",
+          "メ → 'meh' as in 'met'",
+          "リ → light tapped 'r' + 'ee'",
+          "アメリカ → four flat even beats a-me-ri-ka; no stressed syllable, unlike English 'a-MER-i-ca'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Katakana is the second phonetic script — the same sound inventory as hiragana but a sharper, more angular set of characters. Functionally it works like italics or ALL CAPS in English: it flags a word as foreign, technical, onomatopoeic, or emphasized. The payoff for an English speaker is immediate and motivating: a huge share of katakana words are borrowed from English, so once you can sound out the script you can already read コーヒー (coffee), カメラ (camera), テレビ (TV), コンピューター (computer), and アメリカ (America) with no new vocabulary. The catch is that loanwords are remodeled to Japanese sound rules — every consonant gets a vowel, English v/l/r collapse, and word stress disappears — so マクドナルド ('Makudonarudo') is McDonald's only once you stop expecting English rhythm. Brand names, menus, and tech terms lean heavily on katakana, which makes this script disproportionately useful from day one in a Japanese city. Think of it like reading words you already know in a thick, regular accent: the meaning is there once you drop the English stress pattern.",
+    "tip_advice_en": "Highest-leverage habit: don't read katakana as English — read it as even Japanese mora and the English word surfaces. Each katakana is a consonant+vowel beat, so コーヒー is four beats, ko-o-hi-i, where ー doubles the previous vowel. That long-vowel bar is the single biggest katakana trap for English speakers: ビル (biru, building) vs ビール (bīru, beer) differ ONLY by that held vowel — a genuine ordering mistake waiting to happen. Drill: read アメリカ as four flat even beats 'a-me-ri-ka,' not English 'a-MER-i-ca' — Japanese has no English-style stress accent, so deliberately flatten it. Train your eye to spot ー and physically hold the vowel; mora length carries meaning here, exactly as in Lesson 1."
   },
   {
     "id": 3,
@@ -134,13 +171,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "こんにちは、元気ですか？",
-        "english": "Hello, how are you?"
+        "english": "Hello, how are you?",
+        "pronunciation_focus_en": [
+          "こんにちは → 'kon-ni-chi-wa'; the final は is the topic particle, pronounced 'wa', NEVER 'ha'",
+          "元気 (げんき) → 'gen-ki', hard g, two even beats",
+          "ですか → 'des-ka'; the う in です is devoiced — say 'des', not 'deh-soo'",
+          "let the pitch rise only on the final か to mark the question; keep everything before it flat"
+        ]
       },
       {
         "japanese": "ありがとうございます、お元気で。",
-        "english": "Thank you, take care."
+        "english": "Thank you, take care.",
+        "pronunciation_focus_en": [
+          "ありがとう → 'a-ri-ga-to-o', five even mora; final とう is a long 'oh', not 'tow'",
+          "ございます → 'go-za-i-mas'; final す devoiced to a soft 's', not 'moss'",
+          "お元気で → 'o-gen-ki-de'; the お is a polite prefix, kept light",
+          "で → short flat 'deh', the particle that closes this fixed farewell"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Greetings in Japan ride on a bow, not a handshake and emphatically not a hug — an American-style hug, or even a hand on the shoulder, reads as startling intimacy with someone you have just met. The everyday version is a small head-nod and it is genuinely expected; you do not need a deep formal bow for a casual hello. The greetings are time-boxed more strictly than English: おはようございます until roughly 10–11 a.m., こんにちは midday to dusk, こんばんは after dark. Two things surprise English speakers. First, こんにちは and こんばんは are sentence fragments ('as for today… / this evening…'), so they are greetings only — never a bedtime 'good night' (that is おやすみなさい). Second, the ございます on おはようございます is a politeness layer, so close friends clip it to plain おはよう, much as Americans drop 'good' and just say 'morning.' さようなら is heavier and more final than English 'goodbye' — for everyday partings Japanese speakers say じゃあ ('well then…') or またね ('see you'); さようなら to a coworker you'll see in an hour sounds oddly dramatic. Well-being sign-offs like お元気で ('keep well') are routine, reflecting a culture that builds health and season into ordinary phatic speech.",
+    "tip_advice_en": "Highest-leverage fact: は in こんにちは is pronounced 'wa,' not 'ha.' This is your first meeting with Japanese's single biggest beginner trap — the topic particle は — frozen inside a fixed greeting. こんにちは = 'kon-ni-chi-wa'; こんばんは = 'kon-ban-wa.' Pronounce the 'ha' and you mark yourself instantly as someone who has never heard the word spoken. Second watch-point: long vowels carry meaning — おはよう ends in a held 'oh' (o-ha-yo-o) and さようなら has a long 'oh' (sa-yo-o-na-ra); clipping them sounds abrupt. ございます is 'go-za-i-mas' with a devoiced final す, almost a whispered 's.' Drill the greetings aloud while giving a small head-nod on each; pairing the bow with the sound now builds the motor habit before you need it live."
   },
   {
     "id": 4,
@@ -173,13 +224,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "わたしは田中です。",
-        "english": "I am Tanaka."
+        "english": "I am Tanaka.",
+        "pronunciation_focus_en": [
+          "わたし → 'wa-ta-shi', three flat even beats; the final し is 'shi', not 'see'",
+          "は → here the topic particle: pronounced 'wa', not 'ha' (same rule as こんにちは)",
+          "田中 (たなか) → 'ta-na-ka', evenly weighted; a surname — Japanese gives family name first",
+          "です → 'des', devoiced final vowel; do not say 'deh-soo'"
+        ]
       },
       {
         "japanese": "出身は東京です。",
-        "english": "I am from Tokyo."
+        "english": "I am from Tokyo.",
+        "pronunciation_focus_en": [
+          "出身 (しゅっしん) → 'shu(s)-shin'; the small っ is a held beat of silence — a full mora, not skipped",
+          "は → topic particle 'wa'",
+          "東京 (とうきょう) → 'to-o-kyo-o', four beats — BOTH long vowels held; 'TOH-kee-oh' is wrong",
+          "です → 'des'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "This lesson introduces the structural heart of Japanese, and the gap from English is large. Word order is subject–object–verb, with the verb (or です) last — 'I Tanaka am,' not 'I am Tanaka.' Names run family-name-first (田中 is the surname), the reverse of American order, and in real life a Japanese person introducing themselves usually gives only the surname. Crucially, さん is an honorific you attach to OTHER people's names (田中さん) and never to your own — calling yourself 'Tanaka-san' is like an American saying 'I'm Mr. Smith' to a peer: it lands as either a joke or arrogance. The topic particle は (written with the hiragana for 'ha' but read 'wa') marks what the sentence is about; English has no equivalent, so learners over-translate it as 'is.' です is a polite copula roughly equal to 'am/is/are,' but its real job is signaling politeness, which is why A1 lives almost entirely in the です/ます polite register — the casual plain form exists but is socially risky for a learner and is deferred. American comparison: think of です as closer to the deference baked into 'sir/ma'am' than to a neutral verb 'to be.'",
+    "tip_advice_en": "Highest-leverage point of the whole level: は is the topic marker and it is pronounced 'wa.' Lock in the template 'X は Y です' = 'as for X, it is Y' and you can already self-introduce, state your origin, and describe things. Do not hunt for a word-by-word English match — は has no English word; treat 'X は' as 'speaking of X.' Pronunciation watch-points: the small っ in 出身 (しゅっしん) is a real silent beat — pause on it, because しゅしん and しゅっしん are different words elsewhere; and 東京 is four held beats (to-o-kyo-o), a classic place where English speakers crush a long vowel and say 'Tokyo' in two. Drill aloud: わたしは [your name] です — five-plus even beats, は as 'wa,' です as 'des.'"
   },
   {
     "id": 5,
@@ -236,13 +301,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "りんごが三つあります。",
-        "english": "There are three apples."
+        "english": "There are three apples.",
+        "pronunciation_focus_en": [
+          "りんご → 'rin-go', tapped r; the ん is its own beat (a moraic 'n')",
+          "が → subject particle, hard 'g' as in 'go' — say 'ga', not 'gha'",
+          "三つ (みっつ) → 'mi(t)-tsu'; the small っ doubles the t and is a held beat — みつ ≠ みっつ",
+          "あります → 'a-ri-mas', final す devoiced ('-mas', not '-masu')"
+        ]
       },
       {
-        "japanese": "時は四時です。",
-        "english": "It is 4 o'clock."
+        "japanese": "今、四時です。",
+        "english": "It is 4 o'clock now.",
+        "pronunciation_focus_en": [
+          "今 (いま) → 'i-ma', two flat even beats",
+          "四時 → read 'yo-ji' (4 o'clock); the '4' here is よ, NOT し or よん — an irregular counter reading",
+          "じ → soft 'j' as in 'jeep' + short 'i'",
+          "です → 'des', devoiced final vowel"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Number-sound superstition runs through Japanese life much as it does in China, and the mechanism is the same: homophones. 四 (four) can be read し, which is identical to 死 ('death'), and 九 (nine) can be read く, a homophone of 苦 ('suffering'). The cultural result is concrete: hospital room and floor numbering frequently skips 4 (and sometimes 9), gift sets avoid quantities of four, and speakers actively prefer the alternate readings よん (4) and きゅう (9) to dodge the unlucky sound — exactly why this lesson lists both readings. Compare the American hotel that has no 13th floor; here it is the 4 that vanishes. Counting on the hand also differs from the American style: Japanese typically starts from an open palm and folds fingers IN for 1–5, then unfolds for 6–10. And numbers almost never travel alone — Japanese attaches a counter word to whatever is being counted (covered next lesson), so 'three apples' is not 'three + apple' but a number-plus-counter unit. Dates and prices, like Chinese, run large-to-small.",
+    "tip_advice_en": "Highest-leverage warning: several Japanese numbers have two readings, and which one you use is not free — it is fixed by context, especially by the counter that follows. 4 is し OR よん, 7 is しち OR なな, 9 is きゅう OR く; よん/なな/きゅう dominate modern speech, but 4 o'clock is irregularly よじ (yo-ji), not し-じ or よん-じ. Do not try to systematize this today — just expect that 'four' will not always sound like the 'shi' you first learned. Pronunciation watch-point: いち and ろく end in vowels that devoice or clip before some counters (いっぷん, ろっぷん), so the clean dictionary form is not always what you hear. Drill 1–10 aloud twice, once with し/しち/く and once with よん/なな/きゅう, so both are familiar when a counter forces one."
   },
   {
     "id": 6,
@@ -279,13 +358,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "本が一冊あります。",
-        "english": "There is one book."
+        "english": "There is one book.",
+        "pronunciation_focus_en": [
+          "本 (ほん) → 'hon'; the ん is its own beat (moraic n)",
+          "が → subject particle, hard 'g' ('ga')",
+          "一冊 (いっさつ) → 'i(s)-sa-tsu'; small っ = held silent beat, then the book-counter 冊 さつ",
+          "あります → 'a-ri-mas', final す devoiced (used for inanimate things)"
+        ]
       },
       {
         "japanese": "友達が二人います。",
-        "english": "I have two friends."
+        "english": "I have two friends.",
+        "pronunciation_focus_en": [
+          "友達 (ともだち) → 'to-mo-da-chi', four flat even beats",
+          "二人 → read 'fu-ta-ri' (two people) — an IRREGULAR people-counter reading, not に-にん",
+          "います → 'i-mas' (used for people/animate beings, vs あります for things)",
+          "に in にん vs ふたり → note 一人/二人 are ひとり/ふたり, then 三人 onward is regular さん-にん"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Japanese cannot usually count a noun bare: a number takes a counter word matched to the thing's shape or category — つ for general objects, 人 (にん) for people, 冊 (さつ) for bound volumes, 本 (ほん) for long thin things, 枚 (まい) for flat thin things, 匹 (ひき) for small animals, 台 (だい) for machines. English speakers meet a faint version of this in 'two HEAD of cattle' or 'three SHEETS of paper,' but Japanese applies it to nearly everything, and it is more elaborate than Chinese measure words because Japan runs two number systems in parallel: the native ひとつ/ふたつ/みっつ series (general counter, irregular, tops out around とお = 10) and the Sino-Japanese いち/に/さん series that takes specialized counters. Worse for tidy rules, the counter triggers sound changes — 一冊 is いっさつ (not いち-さつ), 一本 is いっぽん — so the 'one' you learned mutates on contact. The everyday upshot: pointing and saying ひとつ ('one, please') with a gesture is a perfectly natural survival strategy in a shop while the full counter system is still settling in.",
+    "tip_advice_en": "Highest-leverage move: at A1, memorize the general ひとつ・ふたつ・みっつ counter and the people counter (ひとり・ふたり・さんにん…) as ready-made sets, and let the rest arrive one counter at a time with the nouns that need them — do NOT try to learn the whole counter chart up front; that is an A2+ project. The two genuine traps: (1) 一人/二人 are irregular — ひとり, ふたり — then it regularizes to さんにん, よにん; and (2) animate vs inanimate verbs — います for people/animals, あります for objects; saying 友達があります treats a friend like furniture. Pronunciation watch-point: the small っ in いっさつ/いっぽん is a full silent beat — hold it. Drill: count 1–3 of three different things (本・人・つ) so the sound shifts and the irregular ひとり/ふたり become reflexes."
   },
   {
     "id": 7,
@@ -330,13 +423,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今日は金曜日です。",
-        "english": "Today is Friday."
+        "english": "Today is Friday.",
+        "pronunciation_focus_en": [
+          "今日 → read 'kyo-o' (today) — an irregular kanji reading, two held beats, not 'kee-yo'",
+          "は → topic particle, 'wa' not 'ha'",
+          "金曜日 (きんようび) → 'kin-yo-o-bi'; ん is its own beat, よう is a long 'oh'",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "日曜日に映画を見ます。",
-        "english": "I will watch a movie on Sunday."
+        "english": "I will watch a movie on Sunday.",
+        "pronunciation_focus_en": [
+          "日曜日 (にちようび) → 'ni-chi-yo-o-bi'; よう held two beats",
+          "に → time particle here ('on Sunday'); short flat 'ni' — a grammatical marker, keep it light",
+          "映画 (えいが) → 'e-e-ga'; えい is a long 'eh', hard g in が",
+          "を → object particle, pronounced 'o' (not 'wo'); 見ます → 'mi-mas', devoiced final"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "The seven weekday names are a small astronomy lesson: each is a celestial body or element + 曜日 ('day of the week') — 月 moon (Monday), 火 fire/Mars (Tuesday), 水 water/Mercury (Wednesday), 木 wood/Jupiter (Thursday), 金 gold/Venus (Friday), 土 earth/Saturn (Saturday), 日 sun (Sunday). This is the same Sun/Moon/Saturn logic buried in English 'Sunday/Monday/Saturday,' just kept fully transparent — so the system is more memorable than it first looks, not less. This lesson is also where the script mix becomes unavoidable: 金曜日 is kanji, the reading きんようび is hiragana, and you will see both, which is exactly why A1 Japanese material prints the hiragana reading in parentheses. The day particle に ('on') appears here too — and a useful asymmetry for English speakers: 今日 (today), 明日 (tomorrow), 毎日 (every day) take NO に, while a named day (日曜日に) does. Culturally, the work-week frame matters: Saturday is widely a half- or full work/school day historically, and seasonal awareness threads through scheduling talk far more than in the US.",
+    "tip_advice_en": "Highest-leverage move: don't memorize seven opaque words — learn the seven one-character elements (月火水木金土日) and tack on 〜ようび; the whole set then comes nearly free, and those same kanji return for planets, elements, money (金), and 'sun/day' (日). The particle rule worth burning in now: な named day + に ('日曜日に', on Sunday), but relative-time words 今日・明日・毎日 take NO particle — over-adding に here is the classic English-speaker error because English uses 'on' for both. Pronunciation watch-points: 今日 is irregular きょう (kyo-o, two beats, NOT 'kon-nichi'); ようび hides a long 'oh' — clip it and 金曜日 sounds wrong. Drill: say each day as 'element + ようび' while writing the single kanji, so sound and script lock together."
   },
   {
     "id": 8,
@@ -401,13 +508,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "誕生日は五月です。",
-        "english": "My birthday is in May."
+        "english": "My birthday is in May.",
+        "pronunciation_focus_en": [
+          "誕生日 (たんじょうび) → 'tan-jo-o-bi'; ん is its own beat, じょう a long 'joh'",
+          "は → topic particle, 'wa'",
+          "五月 (ごがつ) → 'go-ga-tsu'; つ is 'tsu' (tongue behind teeth), not 'too'",
+          "です → 'des', devoiced"
+        ]
       },
       {
         "japanese": "十二月に日本へ行きます。",
-        "english": "I will go to Japan in December."
+        "english": "I will go to Japan in December.",
+        "pronunciation_focus_en": [
+          "十二月 (じゅうにがつ) → 'ju-u-ni-ga-tsu'; じゅう is a long 'joo' (two beats)",
+          "に → time particle ('in December'); 日本 (にほん) → 'ni-hon', ん its own beat",
+          "へ → direction particle: written as the kana 'he' but pronounced 'e'",
+          "行きます → 'i-ki-mas', final す devoiced"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Months are the single most regular thing in A1 Japanese: a number 1–12 plus がつ, full stop — 一月 'month-one' = January through 十二月 = December. There are no month names to memorize; if you can count, you can say every month — the same leverage Chinese gives with 月. But Japanese adds a twist Chinese does not: three months keep an OLD reading. 4 is しがつ (not よん-がつ), 7 is しちがつ (not なな-がつ), 9 is くがつ (not きゅう-がつ) — precisely the readings that the unlucky-number lesson taught you to avoid elsewhere, here mandatory. (Day-of-month numbers are even more irregular, which is why dates are introduced separately.) Two cultural notes worth carrying: dates run largest-to-smallest like Chinese (year → month → day), and Japan's calendar life is intensely seasonal — months are bound up with cherry blossoms (4), rainy season (6), festivals (7–8), and momiji leaves (11), so a Japanese person naming a month is often also naming a season, much as 'December' instantly says 'holidays' to an American.",
+    "tip_advice_en": "Highest-leverage rule: master 'number + がつ' once and all twelve months are free — never drill them as twelve separate words. The one thing to actively memorize is the three irregulars: 4=しがつ, 7=しちがつ, 9=くがつ. Do not 'fix' them to よん/なな/きゅう — that is the predictable English-speaker over-correction, and it is wrong for months even though it is right for bare counting. Particle watch-point introduced here: へ (direction, 'to Japan') is written with the kana for 'he' but pronounced 'e' — the second hiragana-particle-with-a-surprise-reading after は='wa.' Pronunciation: the small つ in がつ is 'tsu' (tongue tip behind upper teeth), a sound English lacks word-initially — practice it. Drill: count 一月→十二月 aloud, pausing hard on し-がつ, しち-がつ, く-がつ."
   },
   {
     "id": 9,
@@ -440,13 +561,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今、三時です。",
-        "english": "It is 3 o'clock now."
+        "english": "It is 3 o'clock now.",
+        "pronunciation_focus_en": [
+          "今 (いま) → 'i-ma', two flat even beats",
+          "三時 (さんじ) → 'san-ji'; ん its own beat; 時 = soft 'j' + short 'i' (the hour counter)",
+          "です → 'des', devoiced final vowel",
+          "no stress accent — keep 'san-ji-des' flat and evenly timed"
+        ]
       },
       {
         "japanese": "七時半に起きます。",
-        "english": "I wake up at half past seven."
+        "english": "I wake up at half past seven.",
+        "pronunciation_focus_en": [
+          "七時 → read 'shi-chi-ji' (7 o'clock) — uses しち, NOT なな, before 時",
+          "半 (はん) → 'han' = 'half past'; ん is a full beat",
+          "に → time-point particle ('at 7:30'); short flat 'ni', keep it light",
+          "起きます → 'o-ki-mas', final す devoiced"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Time uses the counter 時 (じ) for the hour and 分 (ふん/ぷん) for minutes, with 半 (はん, 'half') for the half hour — 七時半 is literally 'seven-hour-half.' The pattern is regular but the readings are not: 4時 is よじ, 7時 is しちじ, 9時 is くじ — a third reshuffle of 4/7/9 that does NOT match either the bare-counting set or the months set, which is the real difficulty here. Minutes add rendaku (sound-voicing): 一分 いっぷん, 三分 さんぷん, 四分 よんぷん, 六分 ろっぷん — the ふ flips to ぷ and small っ appears, so the clean form 'fun' is often not what you hear. Culturally, the headline fact for an American is punctuality: Japanese trains and appointments run to the literal minute, and 'on time' means a few minutes early; the famous train-delay apologies for 90 seconds are real. The particle に marks a clock point ('at 7:30'), and — useful contrast — に attaches to clock times and named days but not to 今 (now), 今日 (today), or other relative-time words.",
+    "tip_advice_en": "Highest-leverage warning: 4/7/9 change reading AGAIN. For the hour it is よじ (4), しちじ (7), くじ (9) — note 7時 is しちじ, the opposite of the よん/なな instinct you may have just built, and 4時 is よじ (not よん-じ). Treat clock-4/7/9 as three vocabulary items, not a rule to derive. Second: minutes voice — いっぷん, さんぷん, ろっぷん — so listen for 'pun' with a held っ, not a tidy 'fun.' Particle rule to lock: clock time + に ('七時半に', at 7:30) but 今 takes no particle. Pronunciation: the small っ in いっぷん/ろっぷん is a silent held beat — skipping it is the commonest A1 timing error. Drill: say every hour 1→12 with 時, stopping hard on よじ・しちじ・くじ until they are reflexes."
   },
   {
     "id": 10,
@@ -487,13 +622,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "駅はどこですか？",
-        "english": "Where is the station?"
+        "english": "Where is the station?",
+        "pronunciation_focus_en": [
+          "駅 (えき) → 'e-ki', two flat even beats",
+          "は → topic particle, 'wa' not 'ha'",
+          "どこ → 'do-ko' ('where'); both vowels short and equal",
+          "ですか → 'des-ka'; pitch rises only on か to mark the question"
+        ]
       },
       {
         "japanese": "まっすぐ行って、右です。",
-        "english": "Go straight, then it's on the right."
+        "english": "Go straight, then it's on the right.",
+        "pronunciation_focus_en": [
+          "まっすぐ → 'ma(s)-su-gu'; the small っ is a held silent beat before すぐ",
+          "行って → 'i(t)-te'; another small っ — a clipped pause, then 'te' (the connecting て-form)",
+          "右 (みぎ) → 'mi-gi', hard g; (contrast 左 ひだり = left)",
+          "です → 'des', devoiced final vowel"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Two things make Japanese directions distinctive for an American. First, the landmark: the 交番 (kōban), a small neighborhood police box, is the normal place to ask the way — officers there expect direction questions and often have local maps; there is no real US equivalent (it is not a 'police station' you would hesitate to bother). Second, the address system itself: Japanese addresses are area-block-building, not street-based, so even locals navigate by landmarks and ask at the kōban — getting lost and asking is ordinary, not a failure. The sentence frame here, 〜はどこですか ('where is ~?'), is one of the highest-value survival templates in the language. Politeness also shapes the answers you'll hear: a helper who is unsure will often soften with 〜と思います ('I think…') rather than guess flatly, and may walk you part-way rather than say 'you can't miss it' — declining that escort with a quick ありがとうございます is fine. The て-form (行って, 'go and then…') appears here as the everyday way to chain instructions: do this, then that.",
+    "tip_advice_en": "Highest-leverage template: lock 〜はどこですか and you can locate anything — 駅は / トイレは / 交番はどこですか. Slot any noun in front of は; that single pattern plus pointing handles most lost-tourist situations. The new grammar to notice, not yet master, is the て-form (行って = 'go and…'): A1 only needs to recognize it as the 'and then' connector; its full conjugation is A2. Pronunciation watch-point dominates this lesson: small っ appears twice — まっすぐ and 行って — and each is a real silent beat. English speakers blur it (\"masugu\", \"ite\"), which makes you hard to understand and means you'll miss it when spoken to you. Drill: clap the beats — ma–(stop)–su–gu, i–(stop)–te — exaggerating the silent hold until the double consonant is automatic. Pair each direction word with its kanji (右/左/駅) so signage becomes readable, since direction signs rarely show furigana."
   },
   {
     "id": 11,
@@ -530,17 +679,37 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ラーメンをください。",
-        "english": "Ramen, please."
+        "english": "Ramen, please.",
+        "pronunciation_focus_en": [
+          "ラーメン → 'ra-a-men'; ー holds the 'ah' two beats, ん is its own beat (katakana = loanword styling)",
+          "を → object particle, pronounced 'o' (never 'wo'); keep it very light",
+          "ください → 'ku-da-sa-i', four even beats; final い is a clear short 'ee'",
+          "no stress accent — flat, even timing across the whole phrase"
+        ]
       },
       {
         "japanese": "コーヒーをお願いします。",
-        "english": "Coffee, please."
+        "english": "Coffee, please.",
+        "pronunciation_focus_en": [
+          "コーヒー → 'ko-o-hi-i', four beats (both ー held) — same word as Lesson 2",
+          "を → object particle, 'o'",
+          "お願いします → 'o-ne-ga-i-shi-mas'; お is the polite prefix, final す devoiced",
+          "ねがい → 'ne-ga-i', three even mora; do not crush 'ga-i' into one"
+        ]
       },
       {
         "japanese": "お会計お願いします。",
-        "english": "Check, please."
+        "english": "Check, please.",
+        "pronunciation_focus_en": [
+          "お会計 (おかいけい) → 'o-ka-i-ke-e'; the お is a politeness prefix on 会計",
+          "けい → a long 'eh' (ke held two beats), not 'kay'",
+          "お願いします → 'o-ne-ga-i-shi-mas', devoiced final す",
+          "slight natural pause between お会計 and お願いします (a comma is often implied)"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Restaurant Japanese has a politeness ladder English flattens into one word, 'please.' 〜をください is 'give me ~' — direct, fine for ordering a dish; 〜をお願いします is softer and more deferential ('I request ~'), the safer default with staff and the normal way to ask for the check (お会計お願いします). The honorific お on お会計, お願い, お茶, お水 is not optional decoration — dropping it sounds curt. Behaviorally, several things invert American instincts: slurping noodles audibly is correct and signals enjoyment, not rudeness; you do not tip — leaving cash on the table reads as confusing or as if you forgot your change, and staff may chase you to return it; water and tea are free, brought unasked, and refilled; and you typically pay at a register on the way out, not by leaving money at the table. Menus lean heavily on katakana for foreign dishes (ラーメン, カレー, ハンバーガー), so Lesson 2's loanword skill pays off directly here. Calling a server is done with a clear 'すみません' (excuse me) across the room — normal and expected, not impolite.",
+    "tip_advice_en": "Highest-leverage habit: default to 〜をお願いします for almost everything in a shop or restaurant — it is never too polite, while 〜をください can sound brusque to staff if your tone is flat. Reserve plain ください for simple item requests. The grammar to lock is the object particle を: it marks WHAT you want and is pronounced 'o,' a bare vowel — the third hiragana-particle-with-a-surprise after は='wa' and へ='e.' English speakers over-pronounce it as 'wo' or stress it; keep it nearly weightless. Pronunciation watch-point: long vowels decide meaning on menus — ビール (beer) vs ビル (building), コーヒー's doubled vowels — so hold every ー. Drill the three politeness levels on one item: 'コーヒー' / 'コーヒーをください' / 'コーヒーをお願いします,' feeling the deference rise."
   },
   {
     "id": 12,
@@ -577,13 +746,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "これはいくらですか？",
-        "english": "How much is this?"
+        "english": "How much is this?",
+        "pronunciation_focus_en": [
+          "これ → 'ko-re' ('this one, near me'); tapped r, two even beats",
+          "は → topic particle, 'wa'",
+          "いくら → 'i-ku-ra' ('how much'); flat and even, no stressed syllable",
+          "ですか → 'des-ka'; pitch rises only on か"
+        ]
       },
       {
         "japanese": "もう少し安いのはありますか？",
-        "english": "Do you have something a bit cheaper?"
+        "english": "Do you have something a bit cheaper?",
+        "pronunciation_focus_en": [
+          "もう少し → 'mo-o-su-ko-shi'; もう is a long 'oh' (two beats) = 'a bit more'",
+          "安い (やすい) → 'ya-su-i', three mora; an い-adjective ('cheap')",
+          "のは → 'no-wa'; の turns 'cheap' into 'a cheap one', は again 'wa'",
+          "ありますか → 'a-ri-mas-ka', devoiced す; rising pitch on final か"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Prices in Japan are almost always fixed and displayed; haggling is normal only at flea markets and some electronics districts, so the everyday shopping script is 'ask, decide, pay,' not 'negotiate' — closer to an American department store than a bazaar. The deictic これ/それ/あれ ('this near me / that near you / that over there') is doing real work in a shop: which word you choose tells the clerk which item, so pointing plus これ is a complete, polite request. The cultural subtlety to internalize is indirect refusal: a shop that cannot do something will rarely say a flat 'no.' You will hear ちょっと…('that's a little…', trailing off), 難しいですね ('it's difficult, isn't it'), or a sucked-in breath — all of which mean no. Pushing for an explicit 'no' makes everyone uncomfortable; reading the soft signal and backing off gracefully is the competent move, the opposite of the American instinct to get a clear yes/no. Sales tax is usually already shown, and a small tray is used for money rather than hand-to-hand exchange — place cash on the tray, don't press it into the clerk's palm.",
+    "tip_advice_en": "Highest-leverage template: 〜はいくらですか ('how much is ~?') plus これ/それ/あれ and pointing handles essentially all A1 shopping. Memorize これ as 'this (by me)' and you can buy anything by pointing. The cultural skill that matters more than vocabulary: learn to hear soft 'no.' ちょっと… with a trailing pause, an inhaled breath, or 難しいですね is a polite refusal — accept it with わかりました ('understood') and stop; do not press for a yes. Pronunciation watch-points: もう and other long-'oh' words must be held (もう少し) or they change meaning; the の in 安いの is a nominalizer ('a cheap one'), unstressed and light. Drill: point at three things and ask これはいくらですか, then practice receiving a soft 'ちょっと…' without pushing back."
   },
   {
     "id": 13,
@@ -624,13 +807,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "私の父は医者です。",
-        "english": "My father is a doctor."
+        "english": "My father is a doctor.",
+        "pronunciation_focus_en": [
+          "私の → 'wa-ta-shi-no'; の = possessive 'my', light and short",
+          "父 → read 'chi-chi' (my own father) — the humble form, NOT お父さん here",
+          "は → topic particle, 'wa'",
+          "医者 (いしゃ) → 'i-sha', two beats; です → 'des', devoiced"
+        ]
       },
       {
         "japanese": "お母さんは元気ですか？",
-        "english": "How is your mother?"
+        "english": "How is your mother?",
+        "pronunciation_focus_en": [
+          "お母さん → 'o-ka-a-san'; ー-like long 'ah' in かあ (two beats), さん the polite suffix — used for SOMEONE ELSE'S mother",
+          "は → topic particle, 'wa'",
+          "元気 (げんき) → 'gen-ki', hard g, ん its own beat",
+          "ですか → 'des-ka'; pitch rises only on か"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Family words encode the deepest organizing principle in Japanese politeness: uchi (内, in-group/'us') vs soto (外, out-group/'them'). You use HUMBLE plain words for your own family when speaking to outsiders — 父 (chichi) 'my father,' 母 (haha) 'my mother' — but RESPECTFUL お…さん forms for someone else's family — お父さん, お母さん. Saying お父さん about your own dad to a stranger sounds childish or self-elevating; saying 父 about their dad sounds rude. English has no grammatical version of this; the nearest analogy is the American instinct to say 'my dad' casually but 'your father' more carefully — Japanese turns that instinct into a hard lexical rule. (Inside the family, children do call their own parents お母さん/お父さん directly — the humble form is specifically for talking ABOUT them to outsiders.) The same uchi/soto axis later governs honorific and humble verbs, so meeting it here with concrete kin terms builds the intuition early. Note also the possessive の (私の父 = 'my father'), which is the same particle as Lesson 12's nominalizer doing a different job — context decides.",
+    "tip_advice_en": "Highest-leverage rule, and it is cultural before it is grammatical: two words for every relative — humble for mine, honorific for yours. 父/母/兄/姉 when talking about MY family to others; お父さん/お母さん/お兄さん/お姉さん for YOUR family (and when calling my own parents directly at home). Get the direction wrong and the error is social, not just grammatical, so drill them as opposing pairs, never singly. The grammar to lock is possessive の: 'A の B' = 'A's B' (私の父 = my father) — same character as the Lesson 12 の, different job; let context, not a rule, sort them at A1. Pronunciation watch-point: お母さん (o-kaa-san) and お父さん (o-tou-san) hide long vowels (かあ, とう) — clip them and they sound wrong; 父 alone is ちち (chi-chi), two crisp equal beats. Drill: introduce your family with humble forms, then ask about someone's with お…さん."
   },
   {
     "id": 14,
@@ -671,13 +868,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "赤い花が好きです。",
-        "english": "I like red flowers."
+        "english": "I like red flowers.",
+        "pronunciation_focus_en": [
+          "赤い (あかい) → 'a-ka-i', three even mora; the trailing い makes it the ADJECTIVE 'red' (赤 alone = the noun)",
+          "花 (はな) → 'ha-na' (here 花 IS 'ha-na' — flower); が = subject particle, hard 'ga'",
+          "好き (すき) → 'su-ki'; the う is devoiced, so it sounds almost 'ski'",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "青い空がきれいです。",
-        "english": "The blue sky is beautiful."
+        "english": "The blue sky is beautiful.",
+        "pronunciation_focus_en": [
+          "青い (あおい) → 'a-o-i', three separate even mora — do not glide 'a-o' together",
+          "空 (そら) → 'so-ra', tapped r; が subject particle",
+          "きれい → 'ki-re-e'; the final い is a long 'eh', so it sounds 'ki-ray', NOT 'ee'",
+          "です → 'des', devoiced"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Colors hide two traps for English speakers. First, grammatical: some colors are both a noun and an い-adjective (赤 'red [noun]' → 赤い 'red [describing something]'), while others, like 緑 (green), are noun-only and cannot take い — so 赤い花 works but 緑い is wrong; you say 緑の (green + の). Second, cultural-historical: 青 (ao) classically covered both blue AND green, and that older boundary survives in fixed expressions — a green traffic light is 青信号 (literally 'blue signal'), unripe/green apples and fresh greenery are 青…, and a 'greenhorn' is 青二才. 緑 (midori) as a separate everyday 'green' is relatively modern. The American parallel: imagine if 'blue' had once meant blue-or-green and English still said 'the blue light means go' — that is exactly the residue here, so don't 'correct' 青信号 to green. White (白) and red (赤) also carry strong ceremonial weight (the 紅白 red-white pairing is celebratory, on the flag and at weddings), unlike their more neutral US associations.",
+    "tip_advice_en": "Highest-leverage distinction: is the color an い-adjective or a noun? 赤・青・白・黒・黄色 add い to describe something (赤い車); 緑 does not — use 緑の (緑の車). Mislabeling a noun-color as an い-adjective is the predictable A1 error. Don't fight 青信号 ('blue' = green light): memorize it as a fixed phrase and you've absorbed a real piece of the language's history. Pronunciation watch-points: きれい ends in a long 'eh' and sounds 'ki-ray,' a classic mishearing as 'ee'; 好き drops its う and comes out near 'ski'; and 青い is three clean mora a-o-i — English speakers collapse 'a-o' into one. Drill: pair each color with a noun, switching between 赤い〜 (adjective) and 緑の〜 (noun + の) so the two patterns stay separate."
   },
   {
     "id": 15,
@@ -714,13 +925,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "このケーキは美味しいです。",
-        "english": "This cake is delicious."
+        "english": "This cake is delicious.",
+        "pronunciation_focus_en": [
+          "この → 'ko-no' ('this' + noun); ケーキ → 'ke-e-ki' (katakana 'cake', ー holds the 'eh')",
+          "は → topic particle, 'wa'",
+          "美味しい (おいしい) → 'o-i-shi-i', four mora; the final いい is a held long 'ee'",
+          "です → 'des'; here です adds POLITENESS, not 'is' — 美味しい already means 'is delicious'"
+        ]
       },
       {
         "japanese": "そのスマホは高くないです。",
-        "english": "That smartphone is not expensive."
+        "english": "That smartphone is not expensive.",
+        "pronunciation_focus_en": [
+          "その → 'so-no' ('that, near you'); スマホ → 'su-ma-ho' (clipped loanword, 'smartphone')",
+          "は → topic particle, 'wa'",
+          "高くない → 'ta-ka-ku-na-i'; the い of 高い becomes くない for the negative — the い itself conjugates",
+          "です → 'des', devoiced; keeps the negative polite (高くないです)"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "This lesson exposes a deep design difference: in Japanese an い-adjective is itself a predicate — 美味しい already means 'is delicious,' tense and all. There is no separate verb 'to be' propping it up the way English needs 'is' in 'the cake IS good.' The です that follows (美味しいです) is a politeness marker, not the verb — which is why the negative changes the adjective itself (高い → 高くない, 'is not expensive'), not a separate 'be' verb. English speakers consistently misanalyze this because their native grammar forces a 'to be': they produce ×美味しいだ or ×高いじゃないです by analogy with noun sentences (学生だ / 学生じゃない). The cultural-pragmatic layer matters too: 美味しい said aloud during a meal is active, expected appreciation — Japanese dining is verbally responsive (a clear ごちそうさま after, いただきます before), more vocal about food than typical American table habits. この/その/あの mirror the これ/それ/あれ system from Lesson 12, but attach directly to a noun (このケーキ = 'this cake'), so the deixis you already learned transfers with a small shape change.",
+    "tip_advice_en": "Highest-leverage rule that closes A1: an い-adjective is a complete predicate — 高い = 'is expensive' — so do NOT add だ to it (×高いだ is wrong; 学生だ is right because 学生 is a noun). For the polite negative, conjugate the adjective, not a 'be' verb: 高い → 高くないです (or 高くありません), never ×高いじゃないです. This だ/じゃない-with-い-adjectives error is the single most common A1 graduation mistake for English speakers, precisely because English grammar pushes you toward it. Pronunciation watch-points: doubled final vowels — 美味しい ends おいしい (long 'ee'), ケーキ holds the ー — and loanword clipping (スマホ, not 'smart-phone'). Drill the contrast aloud: 高いです / 高くないです / 美味しいです / 美味しくないです, feeling that the い is what carries tense and polarity while です only carries politeness."
   }
 ];
 
