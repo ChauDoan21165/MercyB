@@ -25,7 +25,8 @@ export const lessons: ChineseLesson[] = [
           "探讨 → tàntǎo (khảo sát)",
           "辅助 → fǔzhù (hỗ trợ)",
           "之影响 → zhī yǐngxiǎng (书面 chuộng 之 hơn 的)"
-        ]
+        ],
+        "pronunciation_focus_en": ["旨在 → zhǐ zài ('aims to' — written register, 书面)","探讨 → tàntǎo ('to investigate/examine')","辅助 → fǔzhù ('to assist/aid')","之影响 → zhī yǐngxiǎng (written register prefers 之 over 的 for 'the impact of')"]
       },
       {
         "chinese": "笔者假设, 在持续暴露于AI反馈三个月之后, 受试者所提交的代码缺陷率将显著下降。",
@@ -37,7 +38,8 @@ export const lessons: ChineseLesson[] = [
           "受试者 → shòushì zhě (đối tượng nghiên cứu)",
           "缺陷率 → quēxiànlǜ",
           "显著 → xiǎnzhù (đáng kể)"
-        ]
+        ],
+        "pronunciation_focus_en": ["笔者 → bǐzhě ('the author' — the written-register self-reference, replacing 我)","受试者 → shòushì zhě ('research subject')","缺陷率 → quēxiànlǜ ('defect rate')","显著 → xiǎnzhù ('significant/marked')"]
       },
       {
         "chinese": "该假设之理论基础源自外部反馈循环对技能习得之促进作用, 此现象在教育心理学中已有充分论证。",
@@ -49,7 +51,8 @@ export const lessons: ChineseLesson[] = [
           "源自 → yuán zì (bắt nguồn từ)",
           "习得 → xídé (tiếp thu)",
           "此 → cǐ (này — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["该 → gāi ('the said / aforementioned' — written register, replacing 这)","源自 → yuán zì ('to originate from')","习得 → xídé ('to acquire' [a skill])","此 → cǐ ('this' — written register, replacing 这)"]
       },
       {
         "chinese": "然而, 此研究尚有一定局限性, 例如样本规模相对有限, 且仅限于使用单一编程语言的开发团队。",
@@ -61,7 +64,8 @@ export const lessons: ChineseLesson[] = [
           "尚有 → shàng yǒu (vẫn có — 书面)",
           "局限性 → júxiànxìng",
           "且 → qiě (và — 书面 thay 而且)"
-        ]
+        ],
+        "pronunciation_focus_en": ["然而 → rán'ér ('however' — a formal connector)","尚有 → shàng yǒu ('still has' — written register)","局限性 → júxiànxìng ('limitation(s)')","且 → qiě ('and/moreover' — written register, replacing 而且)"]
       },
       {
         "chinese": "综上所述, 若实验结果支持上述假设, 则本研究将为AI辅助开发工具之教学价值提供实证依据。",
@@ -73,7 +77,8 @@ export const lessons: ChineseLesson[] = [
           "若...则 → ruò...zé (nếu...thì — 书面)",
           "实证依据 → shízhèng yījù (bằng chứng thực nghiệm)",
           "教学价值 → jiàoxué jiàzhí"
-        ]
+        ],
+        "pronunciation_focus_en": ["综上所述 → zōng shàng suǒ shù ('in summary' — a written-register connector)","若…则 → ruò…zé ('if…then' — written register, replacing 如果…就)","实证依据 → shízhèng yījù ('empirical evidence')","教学价值 → jiàoxué jiàzhí ('pedagogical value')"]
       }
     ],
     "vocab": [
@@ -287,7 +292,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa học thuật Trung Quốc đại lục có một vài đặc điểm khác Việt Nam:\n\n(1) HIERARCHY THẦY-TRÒ: quan hệ supervisor-student (导师-学生 / 导生关系) gần như cha-con học thuật. Sinh viên xưng '老师 / 教授' chứ KHÔNG bao giờ gọi tên. Email mở đầu bằng '尊敬的X教授'. Sinh viên không tranh luận trực diện với supervisor — bất đồng được biểu đạt qua câu hỏi ('我能不能问一下...').\n\n(2) HEDGING STRONG: học giả Trung Quốc viết hedge nhiều hơn Mỹ/Anh. Câu English 'X causes Y' viết Trung Quốc thành 'X 可能 与 Y 之间 存在 一定 相关性'. Đây không phải thiếu tự tin — là chuẩn epistemic kế thừa từ tư duy Đạo gia/Khổng giáo: không khẳng định tuyệt đối.\n\n(3) FACE & CRITICISM: phê bình một nghiên cứu trong tiếng Trung dùng eufemism nhiều. Reviewer KHÔNG viết 'this study is flawed' mà viết '该研究有待进一步完善'. 'Sai' = 不当 (không thỏa đáng). 'Yếu' = 略显不足 (hơi thiếu). Sinh viên Việt Nam đến Trung Quốc thường thấy phản hồi quá nhẹ — đó là sự thật, đọc lại trong context cultural sẽ thấy criticism.\n\n(4) THESIS DEFENSE (答辩 — dábiàn): tại đại học Trung Quốc, defense kéo dài 30-90 phút, có 3-5 giáo sư hỏi. Câu hỏi thường mạnh, đôi khi mang tính 'đập' (打). Sinh viên không được defensive — phải LẮNG NGHE, nhận hạn chế, đề xuất cải thiện. Câu mở đầu chuẩn: '感谢评委指出, 您的意见很有道理, 笔者将在修订版中...'.\n\n(5) GIA ĐÌNH HỌC THUẬT (学术家庭): supervisor + sinh viên cùng supervisor (师兄/师姐/师弟/师妹) tạo thành 'gia đình' kết nối suốt đời. Network nghề nghiệp cực kỳ giá trị. Tham gia bữa ăn, tiệc supervisor là bắt buộc văn hóa.",
+    "cultural_notes_en": "Mainland Chinese academic culture has several features that differ from the Anglo-American norm:\n\n(1) SUPERVISOR-STUDENT HIERARCHY: the 导师-学生 (advisor-student) relationship is almost an academic parent-child bond. Students address the advisor as 老师 / 教授, NEVER by name; emails open with 尊敬的X教授. A student does not contradict the supervisor head-on — disagreement is voiced as a question ('我能不能问一下…'), not the flatter US 'I disagree because…'.\n\n(2) STRONG HEDGING: Chinese scholars hedge far more than US/UK writers. The English 'X causes Y' becomes 'X 可能与 Y 之间存在一定相关性'. This is not a lack of confidence — it is an epistemic norm inherited from Daoist/Confucian thought: avoid absolute assertion. (The Anglo academic 'X may be associated with Y' gets partway there, but Chinese layers it more heavily.)\n\n(3) FACE & CRITICISM: critique in Chinese uses heavy euphemism. A reviewer does NOT write 'this study is flawed' but '该研究有待进一步完善' ('the study merits further refinement'). 'Wrong' = 不当 ('not entirely apt'); 'weak' = 略显不足 ('slightly insufficient'). Feedback that reads as too soft to an outsider is, in context, genuine criticism — recalibrate, the way a British 'this is quite interesting' can mean the opposite.\n\n(4) THESIS DEFENSE (答辩 dábiàn): 30-90 minutes, 3-5 professors questioning. Questions are pointed, sometimes hard-hitting (打). The student must NOT be defensive — listen, concede limits, propose improvements. The standard opener: '感谢评委指出，您的意见很有道理，笔者将在修订版中…'.\n\n(5) THE ACADEMIC FAMILY (学术家庭): an advisor plus co-advisees (师兄/师姐/师弟/师妹) form a lifelong networked 'family' — a highly valuable professional network. Attending the advisor's meals and gatherings is a cultural obligation, not optional.",
     "tip_advice_vi": "(1) ĐỌC 5 PAPERS Trung Quốc cùng chuyên ngành TRƯỚC khi viết: bắt được tone, vocabulary, structure. Học giả Trung Quốc viết khác Anh-Mỹ, copy structure mẫu là cách nhanh nhất. (2) DỊCH NGƯỢC SAU KHI VIẾT: viết tiếng Trung → translate sang Anh/Việt → đọc lại. Nếu sentence Anh/Việt mơ hồ, nghĩa là Trung văn cũng mơ hồ. Sửa cho cụ thể. (3) TRÁNH '我觉得 / 我认为': thay bằng '笔者认为' hoặc passive '可以认为'. 100% bài luận C1 phải tránh '我觉得'. (4) DÙNG ÍT NHẤT 1 connector mỗi đoạn: 然而 / 此外 / 综上所述 / 由此可见. Đoạn không có connector nghe đứt mạch. (5) ĐẾM TỪ 显著 trong bài: nếu > 5 lần, quá mạnh. Thay 1-2 chỗ bằng '颇为 / 较为 / 在一定程度上'. (6) MỞ ĐẦU GIẢ THUYẾT theo công thức: '笔者假设, 在 [điều kiện] 之下, [biến X] 将 [tác động] [biến Y]'. (7) KẾT GIẢ THUYẾT bằng falsifiability statement: '若 [kết quả thực nghiệm] [không xảy ra], 则该假设将被证伪'. Showing falsifiability = academic maturity. (8) ĐỪNG dùng cụm '革命性 / 颠覆 / 突破' về kết quả của chính mình. Chỉ reviewer/độc giả mới được phán đó là 革命性.",
+    "tip_advice_en": "(1) READ 5 same-field Chinese papers BEFORE writing — absorb the tone, vocabulary, structure. Chinese scholars write differently from the Anglo style; copying a model structure is the fastest route. (2) BACK-TRANSLATE after writing: Chinese → English → re-read. If the English is vague, the Chinese is too — make it concrete. (3) AVOID 我觉得 / 我认为: use 笔者认为 or the passive 可以认为. A C1 essay must avoid 我觉得 entirely. (4) USE at least one connector per paragraph: 然而 / 此外 / 综上所述 / 由此可见. A paragraph with none reads disjointed. (5) COUNT 显著 ('significantly') in the draft: if >5, too forceful — swap 1-2 for 颇为 / 较为 / 在一定程度上. (6) OPEN a hypothesis with the formula: '笔者假设，在 [condition] 之下，[variable X] 将 [effect] [variable Y]'. (7) CLOSE with a falsifiability statement: '若 [experimental result] [does not occur]，则该假设将被证伪'. Showing falsifiability signals academic maturity. (8) DON'T call your own results 革命性 / 颠覆 / 突破 ('revolutionary / disruptive / breakthrough') — only a reviewer or reader gets to judge that.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -348,7 +355,8 @@ export const lessons: ChineseLesson[] = [
           "梳理 → shūlǐ (hệ thống hoá)",
           "代表性 → dàibiǎoxìng (tiêu biểu)",
           "之 → zhī (书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["文献综述 → wénxiàn zōngshù ('literature review')","梳理 → shūlǐ ('to organize/comb through systematically')","代表性 → dàibiǎoxìng ('representative')","之 → zhī (written register, replacing 的)"]
       },
       {
         "chinese": "如Vaswani等(2017)所指出, Transformer架构通过自注意力机制实现了对长距离依赖的有效建模。",
@@ -360,7 +368,8 @@ export const lessons: ChineseLesson[] = [
           "等 → děng (et al. — viết sau tên tác giả)",
           "自注意力 → zì zhùyìlì (self-attention)",
           "建模 → jiànmó (mô hình hoá)"
-        ]
+        ],
+        "pronunciation_focus_en": ["如…所指出 → rú…suǒ zhǐchū ('as … pointed out')","等 → děng ('et al.' — written after the author's name)","自注意力 → zì zhùyìlì ('self-attention')","建模 → jiànmó ('to model')"]
       },
       {
         "chinese": "此观点亦得到了后续多项研究之佐证, 详见Brown等(2020)及Wei等(2022)的相关论述。",
@@ -372,7 +381,8 @@ export const lessons: ChineseLesson[] = [
           "佐证 → zuǒzhèng (chứng thực)",
           "详见 → xiángjiàn (xem chi tiết)",
           "及 → jí (và — 书面 thay 和)"
-        ]
+        ],
+        "pronunciation_focus_en": ["亦 → yì ('also' — written register, replacing 也)","佐证 → zuǒzhèng ('to corroborate')","详见 → xiángjiàn ('see … for details')","及 → jí ('and' — written register, replacing 和)"]
       },
       {
         "chinese": "值得注意的是, 部分早期文献(如Hochreiter & Schmidhuber, 1997)已对相关问题作出了开创性贡献, 不可忽视。",
@@ -384,7 +394,8 @@ export const lessons: ChineseLesson[] = [
           "开创性 → kāichuàngxìng (khai sáng)",
           "贡献 → gòngxiàn (đóng góp)",
           "不可忽视 → bùkě hūshì (không thể xem nhẹ)"
-        ]
+        ],
+        "pronunciation_focus_en": ["值得注意 → zhídé zhùyì ('worth noting')","开创性 → kāichuàngxìng ('pioneering')","贡献 → gòngxiàn ('contribution')","不可忽视 → bùkě hūshì ('must not be overlooked')"]
       },
       {
         "chinese": "综上所述, 严谨之引用不仅是对原作者的尊重, 更是学术诚信的具体体现, 不容懈怠。",
@@ -396,7 +407,8 @@ export const lessons: ChineseLesson[] = [
           "学术诚信 → xuéshù chéngxìn (liêm chính học thuật)",
           "体现 → tǐxiàn (sự thể hiện)",
           "不容懈怠 → bù róng xièdài (không được lơ là — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["严谨 → yánjǐn ('rigorous')","学术诚信 → xuéshù chéngxìn ('academic integrity')","体现 → tǐxiàn ('embodiment/manifestation')","不容懈怠 → bù róng xièdài ('must not be neglected' — written register)"]
       }
     ],
     "vocab": [
@@ -617,7 +629,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Quy chuẩn trích dẫn trong giới học thuật Trung Quốc đại lục có một số khác biệt với Việt Nam và phương Tây:\n\n(1) PLAGIARISM ENFORCEMENT NGHIÊM khắc hơn so với 10 năm trước: từ 2017, các đại học Trung Quốc đại lục triển khai phần mềm 知网 (CNKI) để check duplicate. Tỷ lệ 'duplicate rate' (重复率) >15% bị từ chối answer luận án thạc sĩ; >20% bị tiến sĩ. Sinh viên Việt Nam KHÔNG nên đánh giá thấp việc này.\n\n(2) 转引自 (zhuǎnyǐn zì — cited from) là KHÁI NIỆM bắt buộc nhưng người Việt thường bỏ qua. Khi bạn đọc Smith (2019) trong đó Smith trích Jones (2010), và bạn không đọc Jones gốc, BẮT BUỘC ghi: '...Jones (2010) (转引自 Smith, 2019, p.X)'. Nếu chỉ ghi 'Jones (2010)' = giả vờ đã đọc bản gốc = đạo văn về mặt kỹ thuật.\n\n(3) DUPLICATE RATE CALCULATION: 知网 không chỉ check copy thuần, mà còn paraphrase ngụy trang. Thuật toán n-gram + semantic — nó phát hiện được khi bạn đổi từng từ một mà giữ structure. Kinh nghiệm thực tế: nếu duplicate rate quá cao, viết lại HOÀN TOÀN, không 'sửa từ' — algorithm bắt được.\n\n(4) GHOST AUTHORSHIP / 代写 (dài xiě — ghostwriting): BẤT HỢP PHÁP ở Trung Quốc, từ 2018 chính thức bị ban hành luật cấm. Sinh viên không được nhờ người khác viết, ngay cả native speaker để 'làm cho đẹp'. Editing được phép — chỉ proofreading + grammar fix. Re-write đoạn = vi phạm.\n\n(5) AI WRITING (AI写作): chính sách năm 2024-2025 đang định hình. Đa số đại học Trung Quốc top yêu cầu khai báo AI usage. ChatGPT để hỗ trợ idea OK, nhưng generate text sẽ bị reject. Thanh toán: an toàn nhất là không dùng AI cho text trong luận án.\n\n(6) FAIR USE (合理使用) trong tiếng Trung CHẶT hơn so với English fair use. Trích dẫn không quá 1/3 paragraph hoặc 1/4 chapter. Nếu cần dài hơn = phải xin permission tác giả.\n\n(7) CO-AUTHORSHIP CULTURE: bài báo Trung Quốc thường có 5-8 co-authors. Author order cực kỳ chính trị — đầu list là contribution lớn nhất, cuối list thường là supervisor. Sinh viên Việt collaborate phải bàn order trước, viết MOU nếu nghiêm túc.\n\n(8) RETRACTION CULTURE (撤稿): Trung Quốc có rate retraction cao nhất thế giới (Springer Nature 2017 — 107 papers Trung Quốc bị retract cùng lúc). Vì vậy citation integrity bây giờ được đặc biệt nhấn mạnh.",
+    "cultural_notes_en": "Citation norms in mainland Chinese academia differ from the Anglo-American conventions in several ways:\n\n(1) PLAGIARISM ENFORCEMENT is far stricter than a decade ago: since 2017, mainland universities run 知网 (CNKI) duplicate-checking. A duplicate rate (重复率) >15% can fail a master's defense, >20% a doctoral one. This is the local Turnitin equivalent — and it bites harder. Do not underestimate it.\n\n(2) 转引自 (zhuǎnyǐn zì, 'cited from') is a MANDATORY concept often skipped by outsiders. If you read Jones (2010) only inside Smith (2019) and never read Jones directly, you MUST write 'Jones (2010) (转引自 Smith, 2019, p.X)' — exactly the Anglo 'as cited in'. Writing bare 'Jones (2010)' = pretending you read the original = technically plagiarism.\n\n(3) DUPLICATE-RATE CALCULATION: 知网 detects not only verbatim copying but disguised paraphrase, via n-gram + semantic matching — it catches word-by-word swaps that keep the structure. Practical lesson: if the rate is too high, rewrite the passage COMPLETELY, don't 'edit words' — the algorithm catches that.\n\n(4) GHOSTWRITING / 代写 (dài xiě): ILLEGAL in China; explicitly banned by statute since 2018. You may not have anyone else write — even a native speaker 'to make it nicer'. Editing is allowed (proofreading + grammar only); rewriting a paragraph = a violation.\n\n(5) AI WRITING (AI写作): 2024-2025 policy is still forming. Most top Chinese universities require declaring AI use. Using ChatGPT for ideas is generally OK, but generated text will be rejected. The safest course in a thesis is no AI-generated text at all.\n\n(6) FAIR USE (合理使用) is STRICTER than Anglo fair use: a quotation should not exceed ~1/3 of a paragraph or ~1/4 of a chapter; longer requires the author's permission.\n\n(7) CO-AUTHORSHIP CULTURE: Chinese papers often carry 5-8 co-authors. Author order is highly political — first = largest contribution, last is typically the supervisor. A cross-border collaborator should negotiate order up front and write an MOU if it is serious.\n\n(8) RETRACTION CULTURE (撤稿): China has had high-profile mass retractions (e.g., Springer Nature 2017 — 107 Chinese papers retracted at once), which is precisely why citation integrity is now so emphatically stressed.",
     "tip_advice_vi": "(1) DÙNG ZOTERO / ENDNOTE / MENDELEY: phần mềm quản lý citation. Insert tự động + format theo style — tránh error tay. Học một lần, dùng cả đời. (2) CHỤP MÀN HÌNH page citation: khi đọc bản PDF, screenshot trang có quote + ghi vào Zotero. Sau này không phải tìm lại. (3) NẾU CHƯA ĐỌC BẢN GỐC, dùng 转引: đừng lười, đừng giả vờ. Một lần bị bắt = vết suốt đời. Thà ghi 'cited from X' hơn là risk. (4) RUN PLAGIARISM CHECK trước khi nộp: 知网 (CNKI), Turnitin, hoặc copyleaks. Mục tiêu duplicate rate <10% an toàn, <15% chấp nhận, >20% rewrite. (5) PARAPHRASE TỐT: đọc đoạn → đóng sách → viết lại từ memory → so sánh với bản gốc → sửa nếu giống quá. Đừng nhìn bản gốc và 'thay từ'. (6) DIRECT QUOTE LÀ AN TOÀN HƠN: nếu lo paraphrase không đạt, dùng dấu ngoặc kép + cite — luôn được chấp nhận. (7) REFERENCE LIST = BODY TEXT: trước khi nộp, scan lại reference list, check từng entry có xuất hiện trong body không. Excel column kiểm tra rất hiệu quả. (8) GIẤU CITATION trong text 5 phổ biến (用法): '据X所述', 'X(年)指出', '正如X所言', '详见X', 'X的研究表明'. Học thuộc 5 cụm này = đủ dùng cả luận án.",
+    "tip_advice_en": "(1) USE ZOTERO / ENDNOTE / MENDELEY — auto-insert + style formatting avoids hand errors. Learn once, use forever. (2) SCREENSHOT the cited page: when reading a PDF, capture the page with the quote and log it in Zotero so you never re-hunt. (3) IF YOU HAVEN'T READ THE ORIGINAL, use 转引 — don't be lazy or pretend. One catch = a lifelong mark. (4) RUN A PLAGIARISM CHECK before submitting (CNKI, Turnitin, Copyleaks): aim <10% safe, <15% acceptable, >20% rewrite. (5) PARAPHRASE PROPERLY: read the passage → close the book → rewrite from memory → compare → adjust if too close. Don't look at the original and 'swap words'. (6) A DIRECT QUOTE IS SAFER: if unsure your paraphrase is far enough, use quotation marks + a citation — always accepted. (7) REFERENCE LIST = BODY TEXT: before submitting, scan the reference list and check every entry actually appears in the body (an Excel column works well). (8) FIVE common in-text citation frames to memorize: 据X所述, X(年)指出, 正如X所言, 详见X, X的研究表明 — these five cover an entire thesis.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -678,7 +692,8 @@ export const lessons: ChineseLesson[] = [
           "具备 → jùbèi (sở hữu — 书面)",
           "众说纷纭 → zhòng shuō fēn yún (nhiều ý kiến trái chiều)",
           "至今 → zhì jīn (cho đến nay)"
-        ]
+        ],
+        "pronunciation_focus_en": ["关于…是否 → guānyú…shìfǒu ('regarding whether …')","具备 → jùbèi ('to possess' — written register)","众说纷纭 → zhòng shuō fēn yún (idiom: 'opinions differ widely')","至今 → zhì jīn ('to this day')"]
       },
       {
         "chinese": "持肯定观点者认为, 大模型在多项标准化测试中已超越人类平均水平, 此事实不容忽视。",
@@ -690,7 +705,8 @@ export const lessons: ChineseLesson[] = [
           "超越 → chāoyuè (vượt qua)",
           "不容忽视 → bù róng hūshì (không được xem nhẹ)",
           "此事实 → cǐ shìshí (sự thật này — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["持…观点者 → chí…guāndiǎn zhě ('those who hold the view that …' — written-register construction)","超越 → chāoyuè ('to surpass')","不容忽视 → bù róng hūshì ('cannot be ignored')","此事实 → cǐ shìshí ('this fact' — written register)"]
       },
       {
         "chinese": "然而, 反对方指出, 测试成绩本身并不等同于真实理解, 二者之间存在概念上的混淆。",
@@ -702,7 +718,8 @@ export const lessons: ChineseLesson[] = [
           "反对方 → fǎnduì fāng (bên phản đối)",
           "等同于 → děngtóng yú (tương đương với)",
           "混淆 → hùnxiáo (sự lẫn lộn / nhập nhằng)"
-        ]
+        ],
+        "pronunciation_focus_en": ["然而 → rán'ér ('however' — formal)","反对方 → fǎnduì fāng ('the opposing side')","等同于 → děngtóng yú ('to be equivalent to')","混淆 → hùnxiáo ('conflation/confusion')"]
       },
       {
         "chinese": "笔者以为, 此争论之症结在于'理解'一词缺乏统一界定, 双方实则是在不同概念框架下进行论辩。",
@@ -714,7 +731,8 @@ export const lessons: ChineseLesson[] = [
           "在于 → zàiyú (nằm ở — 书面)",
           "界定 → jièdìng (định nghĩa)",
           "实则 → shí zé (thực ra — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["症结 → zhèngjié ('the crux / core knot')","在于 → zàiyú ('to lie in' — written register)","界定 → jièdìng ('to define/delimit')","实则 → shí zé ('in fact' — written register)"]
       },
       {
         "chinese": "综上所述, 在概念尚未厘清之前, 仓促得出结论恐不可取, 此问题有待进一步讨论。",
@@ -726,7 +744,8 @@ export const lessons: ChineseLesson[] = [
           "厘清 → líqīng (làm rõ)",
           "仓促 → cāngcù (vội vã)",
           "恐不可取 → kǒng bùkě qǔ (e rằng không nên — 书面 hedge)"
-        ]
+        ],
+        "pronunciation_focus_en": ["尚未 → shàng wèi ('not yet' — written register)","厘清 → líqīng ('to clarify/disentangle')","仓促 → cāngcù ('hasty')","恐不可取 → kǒng bùkě qǔ ('would seem inadvisable' — written-register hedge)"]
       }
     ],
     "vocab": [
@@ -940,7 +959,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa lập luận học thuật ở Trung Quốc đại lục có một số đặc điểm khác Việt Nam và phương Tây:\n\n(1) HARMONY VS CONFRONTATION: Trung Quốc có truyền thống Khổng giáo coi trọng 'hài hòa' (和谐). Phản biện trực diện trong public bị coi là 'không lễ phép' (失礼). Vì vậy phản biện học thuật được wrap nhiều lớp khiêm nhường: '愚以为', '不揣冒昧', '尚祈指正'.\n\n(2) HIERARCHY ẢNH HƯỞNG: phản biện một giáo sư cao tuổi/cao cấp khác phản biện một sinh viên ngang bằng. Với senior, BẮT BUỘC: (a) đặt câu hỏi thay vì khẳng định, (b) dùng cụm 'humble first person' (笔者愚以为, 学生愚见), (c) thừa nhận expertise của họ trước khi disagree.\n\n(3) FACE-SAVING TRONG CRITIQUE: nếu phải critique mạnh, KHÔNG critique trực tiếp tác giả mà critique luận điểm: 'X观点存在问题' (quan điểm X có vấn đề) thay vì '您的观点错了'. Subtle nhưng quan trọng. Subject của critique = ý tưởng, không phải con người.\n\n(4) DEBATE STYLE 答辩 (defending thesis): kéo dài 30-90 phút, có 3-5 giáo sư hỏi. Câu hỏi mạnh, có khi sharp. Sinh viên KHÔNG được defensive. Câu chuẩn để mở đầu trả lời: '感谢老师指出, 这个问题很有意思. 笔者的回答是...' (Cảm ơn thầy đã chỉ ra, câu hỏi này rất thú vị. Câu trả lời của tác giả là...).\n\n(5) TRUYỀN THỐNG 辩 (biàn — debate): Trung Quốc cổ đại có truyền thống 辩 từ thời Mạnh Tử, Trang Tử. Đến thời Tống có 朱熹辩论. Lập luận học thuật là phẩm chất tốt — không phải confrontation nghĩa xấu. Phân biệt: 辩 (debate có nguyên tắc) ≠ 吵 (cãi vã).\n\n(6) PEER REVIEW VĂN HÓA: reviewer Trung Quốc thường viết phản biện ngắn hơn reviewer Anh-Mỹ. Lý do: (a) tránh điểm soft, (b) tránh face issues. Sinh viên Việt khi nộp paper Trung Quốc cần đọc reviews carefully — short comment có thể chứa critique mạnh.\n\n(7) PUBLIC vs PRIVATE CRITIQUE: critique mạnh thường được giới hạn trong tin nhắn riêng / email. Public seminar = soft critique + private follow-up = real critique. Đây là sự khác biệt lớn so với phương Tây nơi public critique được coi là chuẩn mực.\n\n(8) SCHOLAR DUEL HISTORICAL: ở thế kỷ 20, có những 'cuộc đấu' học thuật nổi tiếng giữa các trí thức (như 鲁迅 vs 梁实秋). Nhưng nay những cuộc đấu này thường được coi là không lành mạnh. Phong cách hiện đại: lập luận chắc, register nghiêm túc, không attack cá nhân.",
+    "cultural_notes_en": "Academic argumentation culture on the mainland differs from the Anglo-American norm:\n\n(1) HARMONY VS CONFRONTATION: a Confucian tradition prizes 和谐 (harmony). Head-on public rebuttal reads as impolite (失礼), so academic counter-argument is wrapped in layers of humility: 愚以为, 不揣冒昧, 尚祈指正.\n\n(2) HIERARCHY MATTERS: rebutting a senior professor is different from rebutting a peer. With a senior you MUST (a) ask a question rather than assert, (b) use a humble first person (笔者愚以为, 学生愚见), (c) acknowledge their expertise before disagreeing.\n\n(3) FACE-SAVING IN CRITIQUE: if a strong critique is needed, critique the claim, not the author — 'X观点存在问题' ('view X has problems') rather than '您的观点错了' ('your view is wrong'). The subject of the critique is the idea, never the person.\n\n(4) DEFENSE STYLE (答辩): 30-90 minutes, 3-5 professors, sharp questions. The student must NOT be defensive. Standard opener: '感谢老师指出，这个问题很有意思。笔者的回答是…'.\n\n(5) THE 辩 TRADITION: classical China has a debate tradition from Mengzi and Zhuangzi onward; argued scholarship is a virtue, not 'confrontation' in the bad sense. Distinguish 辩 (principled debate) from 吵 (quarrelling) — much like the Anglo distinction between 'argument' (reasoned) and 'a row'.\n\n(6) PEER REVIEW: Chinese reviewers often write shorter critiques than Anglo reviewers — to avoid soft spots and face issues. Read short comments carefully: a brief remark can carry strong criticism.\n\n(7) PUBLIC vs PRIVATE CRITIQUE: strong critique is often confined to private message/email. The public seminar is soft critique; the private follow-up is the real one — a big difference from the Anglo norm where public critique is standard.\n\n(8) MODERN STYLE: 20th-century intellectual 'duels' (e.g., Lu Xun vs Liang Shiqiu) are now generally seen as unhealthy. The modern style: a solid argument, a serious register, no personal attack.",
     "tip_advice_vi": "(1) ĐỌC ARGUMENT trước khi viết counter: list ra 3 điểm bạn ĐỒNG Ý + 3 điểm bạn KHÔNG đồng ý. Phản biện chỉ những điểm bạn không đồng ý, công nhận những điểm còn lại. Phản biện toàn bộ = không xây dựng. (2) BẮT ĐẦU bằng AGREEMENT: '此观点不无道理' / '您所说的X部分确有其据'. Câu công nhận trước câu phản biện = đối thủ open. Bỏ qua bước này = họ defensive ngay. (3) KHÔNG TẤN CÔNG MOTIVES: tránh '您之所以这样说是因为...'. Quay về argument: 'argument本身有这些问题: A, B, C'. (4) DÙNG CONNECTOR phản biện: 然而 / 然 / 不过 / 但 / 然则. Connector tín hiệu chuyển. Không có connector = đối thủ không bắt được pivot. (5) HEDGE PHẢN BIỆN: '此论恐有不当' tốt hơn '此论是错的'. '恐 / 似乎 / 或许' giảm sharpness 50% mà vẫn truyền được message. (6) KẾT BẰNG ĐỀ XUẤT XÂY DỰNG: 'laughter建议在X方面进一步完善' / '或可考虑Y方法'. Phản biện không có constructive proposal = chỉ là phá. (7) QUAN SÁT HIERARCHY: nếu họ senior bạn, tăng hedging. Nếu họ peer, normal register. Nếu họ junior bạn, vẫn lịch sự — đừng patronize. (8) SAU KHI HỌ ĐÁP, CÔNG NHẬN: nếu họ đưa ra điểm hay, '您这一点说得很在理'. Mục tiêu cuộc tranh luận = cùng tiếp cận sự thật, không phải win.",
+    "tip_advice_en": "(1) READ THE ARGUMENT before countering: list 3 points you AGREE with + 3 you DON'T. Rebut only the disagreements; concede the rest. Rebutting everything = not constructive. (2) OPEN WITH AGREEMENT: '此观点不无道理' / '您所说的X部分确有其据'. The concession before the rebuttal keeps the other side open; skip it and they go defensive immediately. (3) DON'T ATTACK MOTIVES: avoid '您之所以这样说是因为…'. Return to the argument: 'the argument itself has these problems: A, B, C'. (4) USE A REBUTTAL CONNECTOR: 然而 / 然 / 不过 / 但 / 然则 — it signals the pivot; without it the other side misses the turn. (5) HEDGE THE REBUTTAL: '此论恐有不当' beats '此论是错的'; 恐 / 似乎 / 或许 cut the sharpness ~50% while still delivering the message. (6) CLOSE WITH A CONSTRUCTIVE PROPOSAL: '建议在X方面进一步完善' / '或可考虑Y方法'. A rebuttal with no constructive proposal is mere demolition. (7) WATCH HIERARCHY: senior → more hedging; peer → normal register; junior → still polite, don't patronize. (8) AFTER THEY REPLY, CONCEDE good points: '您这一点说得很在理'. The goal of the debate is jointly approaching the truth, not winning.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1001,7 +1022,8 @@ export const lessons: ChineseLesson[] = [
           "似乎 → sìhū (dường như — hedge)",
           "不宜 → bùyí (không nên — 书面)",
           "推广 → tuīguǎng (khái quát hoá / phổ biến)"
-        ]
+        ],
+        "pronunciation_focus_en": ["鉴于 → jiàn yú ('given that / in view of' — formal)","似乎 → sìhū ('seems' — a hedge)","不宜 → bùyí ('should not' — written register)","推广 → tuīguǎng ('to generalize/extrapolate')"]
       },
       {
         "chinese": "在某种程度上, 现有数据支持上述假设之成立, 然其稳健性仍有待进一步验证。",
@@ -1013,7 +1035,8 @@ export const lessons: ChineseLesson[] = [
           "稳健性 → wěnjiànxìng (tính ổn định)",
           "有待进一步 → yǒu dài jìn yī bù (cần thêm)",
           "然 → rán (nhưng — 书面 thay 但)"
-        ]
+        ],
+        "pronunciation_focus_en": ["在某种程度上 → zài mǒu zhǒng chéngdù shàng ('to some extent' — a hedge)","稳健性 → wěnjiànxìng ('robustness')","有待进一步 → yǒu dài jìn yī bù ('requires further …')","然 → rán ('but' — written register, replacing 但)"]
       },
       {
         "chinese": "该现象背后之机制目前尚不明朗, 学界对此存在多种解释, 各有其据。",
@@ -1025,7 +1048,8 @@ export const lessons: ChineseLesson[] = [
           "学界 → xuéjiè (giới học thuật)",
           "存在多种解释 → cúnzài duō zhǒng jiěshì",
           "各有其据 → gè yǒu qí jù (mỗi cái đều có căn cứ — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["尚不明朗 → shàng bù mínglǎng ('remains unclear' — written register)","学界 → xuéjiè ('the academic community')","存在多种解释 → cúnzài duō zhǒng jiěshì ('multiple explanations exist')","各有其据 → gè yǒu qí jù ('each with its own grounds' — written register)"]
       },
       {
         "chinese": "笔者并非否认该方法之潜在价值, 而是认为, 仓促应用恐生不必要之风险。",
@@ -1037,7 +1061,8 @@ export const lessons: ChineseLesson[] = [
           "潜在价值 → qiánzài jiàzhí (giá trị tiềm tàng)",
           "恐生 → kǒng shēng (e rằng sinh ra — 书面 hedge)",
           "不必要 → bù bìyào"
-        ]
+        ],
+        "pronunciation_focus_en": ["并非 → bìngfēi ('is by no means' — written-register emphatic)","潜在价值 → qiánzài jiàzhí ('potential value')","恐生 → kǒng shēng ('may give rise to' — written-register hedge)","不必要 → bù bìyào ('unnecessary')"]
       },
       {
         "chinese": "综上所述, 此研究结果可视为一次有益的探索, 然远未达到可定论之阶段。",
@@ -1049,7 +1074,8 @@ export const lessons: ChineseLesson[] = [
           "有益 → yǒuyì (hữu ích)",
           "远未达到 → yuǎn wèi dádào (còn xa chưa đạt)",
           "定论 → dìnglùn (kết luận xác định)"
-        ]
+        ],
+        "pronunciation_focus_en": ["可视为 → kě shìwéi ('can be regarded as' — written-register passive)","有益 → yǒuyì ('beneficial')","远未达到 → yuǎn wèi dádào ('far from reaching')","定论 → dìnglùn ('a settled conclusion')"]
       }
     ],
     "vocab": [
@@ -1270,7 +1296,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa hedging trong học thuật Trung Quốc đại lục có một số đặc điểm:\n\n(1) TRADITION: hedging trong văn ngôn cổ đại đã có ('恐 / 似 / 庶几'). Tư tưởng Đạo gia coi 'không khẳng định tuyệt đối' là một virtue. Câu mở đầu của Đạo Đức Kinh '道可道, 非常道' chính là một hedge văn hoá: 'cái có thể nói được không phải cái thường tại'. Vì vậy hedging không phải foreign import — là native Chinese intellectual style.\n\n(2) DEFERENCE TO AUTHORITY: học giả Trung Quốc thường ngại challenge quan điểm của 大家 (great masters). Nếu cần phản biện một published authority, hedging cực mạnh: '愚以为...不揣冒昧地提出...或可商榷' (Kẻ ngu này cho rằng... không tự lượng đề xuất... có thể bàn luận).\n\n(3) MODERN OVERSWING: từ 2000-2010, một thế hệ scholars Trung Quốc trẻ chịu ảnh hưởng phương Tây bắt đầu viết 'confident' claims kiểu Mỹ ('我们的研究证明X'). Năm 2015+, swing back: hedging mạnh trở lại sau khi nhiều papers bị retract vì over-claim. Ngày nay viết quá confident = bị reviewer nghi không kinh nghiệm.\n\n(4) FACE & HEDGING: hedge cũng là face-saving cho future-self. Nếu bạn viết 'A 必然 提升 B' và 5 năm sau replication failure, bạn lose face. Nếu viết 'A 似乎 提升 B, 在 X 条件下', failure không hurt face — vì bạn đã hedge.\n\n(5) FOREIGN PAPERS xếp loại: paper Trung Quốc top tiers đọc Anh-Mỹ papers một cách critical. Họ note: paper Mỹ thường over-confident, paper Đức thường over-conservative, paper Nhật thường lỗi grammar nhưng claims chính xác. Học giả Trung Quốc cố gắng balance: structure Anh-Mỹ + hedging European + precision Nhật.\n\n(6) TRANSLATION TRAP: dịch thẳng English 'X causes Y' → tiếng Trung 'X 造成 Y' = quá mạnh. Đúng: 'X 与 Y 之间 存在 关联 / 在 某种 条件 下 影响 Y'. Sinh viên Việt thường mắc lỗi translate 1:1.\n\n(7) AI-ERA HEDGING: từ 2022 (ChatGPT release), giới học thuật Trung Quốc đặc biệt thận trọng với AI claims. 'AI 替代 X' / 'AI 颠覆 Y' bị flag automatically là buzz-word. Sinh viên viết 'AI có thể hỗ trợ X trong điều kiện Y' = tỉnh táo + được respect.\n\n(8) GENDER + AGE: sinh viên nữ trẻ thường được suggest hedge mạnh hơn (cultural pressure đối với 'không tự cao'). Sinh viên nam senior có thể hedge ít hơn mà vẫn được accept. Khi dạy hedging, các giáo sư nữ thường nhấn mạnh balance: enough hedge for safety, không quá nhiều để mất authority.",
+    "cultural_notes_en": "Academic hedging culture on the mainland has its own features:\n\n(1) TRADITION: hedging exists in classical Chinese ('恐 / 似 / 庶几'). Daoist thought treats 'not asserting absolutely' as a virtue — the Dao De Jing opens '道可道，非常道' ('the way that can be spoken is not the constant way'), itself a cultural hedge. Hedging is not a foreign import; it is a native Chinese intellectual style. (The Anglo 'tends to / appears to' is the nearest parallel, but Chinese leans on it more.)\n\n(2) DEFERENCE TO AUTHORITY: scholars are reluctant to challenge a 大家 (great master). To rebut a published authority, hedging is extreme: '愚以为…不揣冒昧地提出…或可商榷' ('this humble one believes… ventures, presumptuously, to propose… perhaps open to discussion').\n\n(3) MODERN OVERSWING: 2000-2010 a Western-influenced generation began writing US-style confident claims ('我们的研究证明X'). Post-2015 the pendulum swung back after over-claim retractions; today writing too confidently marks you as inexperienced to a reviewer.\n\n(4) FACE & HEDGING: a hedge also saves your future face. Write 'A 必然提升 B' and a 5-year replication failure costs you face; write 'A 似乎提升 B，在 X 条件下' and failure does not — you hedged.\n\n(5) GRADING FOREIGN PAPERS: top Chinese journals read Anglo papers critically — noting US papers tend to over-claim, German over-conservative, Japanese grammar-rough but precise. The aspiration: Anglo structure + European hedging + Japanese precision.\n\n(6) TRANSLATION TRAP: rendering English 'X causes Y' directly as 'X 造成 Y' is too strong. Correct: 'X 与 Y 之间存在关联 / 在某种条件下影响 Y'. A 1:1 translation is the classic learner error.\n\n(7) AI-ERA HEDGING: since 2022, academia is especially wary of AI claims. 'AI 替代 X' / 'AI 颠覆 Y' is auto-flagged as buzz; 'AI 可以在 Y 条件下辅助 X' reads as sober and earns respect.\n\n(8) GENDER + AGE: younger women writers are often advised to hedge more strongly (a cultural pressure against seeming self-important); senior men can hedge less and still be accepted. Good teaching stresses balance: enough hedge for safety, not so much you lose authority.",
     "tip_advice_vi": "(1) HEDGE TỪNG CLAIM một, không hedge cả paragraph: '这个 study 显示 X 似乎 在 Y 条件下 提升 Z'. Mỗi claim một hedge. Hedging cả paragraph = noise. (2) ĐỌC PAPER MẪU: chọn 3 papers cùng chuyên ngành published ở top journal Trung Quốc (中文 Sci 一区). Đếm số 似乎 / 在某种程度上 / 有待. Mục tiêu: match density của họ. (3) TRƯỚC KHI NỘP, DO 'CONFIDENCE AUDIT': search file của bạn cho '证明 / 必然 / 肯定 / 完全 / 一定'. Nếu xuất hiện > 5 lần, replace 70% chỗ bằng hedge. (4) LIMITATIONS SECTION = 15-20%: của methodology. Reviewer tin 'transparency' hơn là 'no flaws'. Hide limitations = paper bị reject. (5) TRANSLATE TỪ ENGLISH paper: KHÔNG dịch thẳng 'proves'. 'Proves' → '支持' (supports) / '与...一致' (consistent with). (6) NULL RESULTS handling: dùng 'in this study, no significant effect was observed' thay vì 'no effect exists'. Power analysis cần được mention. (7) DOUBLE NEGATIVE FORMAL '不无...': dùng cho hedge cực nhẹ. '此观点不无道理' = soft acknowledgement that has reservations. (8) MATCH HEDGE TO SCALE: effect size lớn = hedge nhẹ. Effect nhỏ = hedge nặng. Sinh viên thường mismatch.",
+    "tip_advice_en": "(1) HEDGE EACH CLAIM, not the whole paragraph: 'this study shows X 似乎 improves Z under condition Y'. One hedge per claim; hedging a whole paragraph is noise. (2) READ MODEL PAPERS: pick 3 same-field papers in a top Chinese journal; count 似乎 / 在某种程度上 / 有待 and match their density. (3) RUN A 'CONFIDENCE AUDIT' before submitting: search for 证明 / 必然 / 肯定 / 完全 / 一定 — if >5, replace ~70% with hedges. (4) LIMITATIONS = 15-20% of the methodology section. Reviewers trust transparency over 'no flaws'; hiding limitations gets a reject. (5) TRANSLATING from an English paper: don't render 'proves' directly — use 支持 ('supports') / 与…一致 ('consistent with'). (6) NULL RESULTS: 'in this study no significant effect was observed', not 'no effect exists'; mention a power analysis. (7) THE FORMAL DOUBLE NEGATIVE 不无…: a very mild hedge — '此观点不无道理' = soft acknowledgement with reservations. (8) MATCH HEDGE TO SCALE: a large effect size = lighter hedge; a small effect = heavier hedge. Learners often mismatch.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1331,7 +1359,8 @@ export const lessons: ChineseLesson[] = [
           "歧义 → qíyì (đa nghĩa / nhập nhằng)",
           "明确 → míngquè (rõ ràng)",
           "以避免 → yǐ bìmiǎn (nhằm tránh — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["界定 → jièdìng ('to define/delimit')","歧义 → qíyì ('ambiguity')","明确 → míngquè ('clear/explicit')","以避免 → yǐ bìmiǎn ('so as to avoid' — written register)"]
       },
       {
         "chinese": "所谓'Transformer架构', 顾名思义, 即指一种基于自注意力机制实现序列变换的深度学习模型。",
@@ -1343,7 +1372,8 @@ export const lessons: ChineseLesson[] = [
           "顾名思义 → gùmíng sīyì (đúng như tên gọi — idiom)",
           "即指 → jí zhǐ (tức chỉ — 书面)",
           "基于 → jīyú (dựa trên — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["所谓 → suǒwèi ('the so-called' — written register)","顾名思义 → gùmíng sīyì (idiom: 'as the name suggests')","即指 → jí zhǐ ('that is, refers to' — written register)","基于 → jīyú ('based on' — written register)"]
       },
       {
         "chinese": "需要指出的是, 该术语在不同语境中含义并不完全一致, 故有必要先行廓清其使用边界。",
@@ -1355,7 +1385,8 @@ export const lessons: ChineseLesson[] = [
           "并不完全一致 → bìng bù wánquán yīzhì",
           "故 → gù (do đó — 书面)",
           "廓清 → kuòqīng (làm sáng tỏ — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["需要指出的是 → xūyào zhǐchū de shì ('it must be noted that')","并不完全一致 → bìng bù wánquán yīzhì ('not entirely consistent')","故 → gù ('hence' — written register)","廓清 → kuòqīng ('to clarify' — written register)"]
       },
       {
         "chinese": "为了便于读者理解, 笔者拟将'模型可解释性'界定为模型决策过程对人类审视者之可读取程度。",
@@ -1367,7 +1398,8 @@ export const lessons: ChineseLesson[] = [
           "可解释性 → kě jiěshì xìng (khả giải thích)",
           "审视者 → shěnshì zhě (người quan sát)",
           "可读取程度 → kě dúqǔ chéngdù"
-        ]
+        ],
+        "pronunciation_focus_en": ["拟将 → nǐ jiāng ('proposes to' — written register)","可解释性 → kě jiěshì xìng ('interpretability')","审视者 → shěnshì zhě ('an inspector/observer')","可读取程度 → kě dúqǔ chéngdù ('degree of readability')"]
       },
       {
         "chinese": "综上所述, 严谨之术语界定不仅是学术写作之基本要求, 更是论证得以展开之前提条件。",
@@ -1379,7 +1411,8 @@ export const lessons: ChineseLesson[] = [
           "基本要求 → jīběn yāoqiú",
           "得以展开 → déyǐ zhǎnkāi (có thể được triển khai — 书面)",
           "前提条件 → qiántí tiáojiàn (điều kiện tiên quyết)"
-        ]
+        ],
+        "pronunciation_focus_en": ["严谨 → yánjǐn ('rigorous')","基本要求 → jīběn yāoqiú ('basic requirement')","得以展开 → déyǐ zhǎnkāi ('to be able to unfold' — written register)","前提条件 → qiántí tiáojiàn ('prerequisite condition')"]
       }
     ],
     "vocab": [
@@ -1593,7 +1626,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa định nghĩa thuật ngữ ở Trung Quốc đại lục có một số đặc điểm:\n\n(1) TRADITION 名实之辨 (DEBATE OF NAMES AND REALITIES): Trung Quốc cổ đại có truyền thống triết học từ thời Khổng Tử (正名 — chính danh) đến Mặc Tử và Tuân Tử về tầm quan trọng của định nghĩa chính xác. 'Danh không chính thì lời không thuận, lời không thuận thì việc không thành' (名不正则言不顺, 言不顺则事不成 — Khổng Tử). Vì vậy student Trung Quốc tradition coi định nghĩa thuật ngữ là DUTY MORAL của scholar, không chỉ là technical requirement.\n\n(2) TRANSLATION OF FOREIGN TERMS: Trung Quốc đối mặt câu hỏi 'phiên dịch hay sáng tạo từ mới' khi import western technical terms. Có 4 strategies: (a) phonetic transliteration (Transformer → 特兰斯福莫 — gần như không dùng), (b) semantic translation (Transformer → 变换器 — dùng cho hardware), (c) calque (machine learning → 机器学习), (d) keep English. Strategy (c) thắng đa số ở ML — sinh viên thấy '机器学习', '深度学习', '神经网络' thay vì English.\n\n(3) AI-ERA TERMINOLOGY EXPLOSION: từ 2017+, AI/ML literature Trung Quốc bùng nổ. Hiệp hội terminology Trung Quốc (全国科学技术名词审定委员会) chưa kịp standardize. Vì vậy cùng một term có 2-3 cách dịch trong các papers khác nhau. Sinh viên Việt cần nắm: 'attention mechanism' = 注意力机制 (chuẩn) / 关注机制 (rare). 'Transformer' = thường giữ English / 变换器. 'Embedding' = 嵌入 (chuẩn) / 词嵌入 (cho word embedding).\n\n(4) ACADEMIC GENRE OF 概念辨析 (CONCEPTUAL CLARIFICATION): Trung Quốc có sub-genre học thuật riêng để 'làm rõ một concept'. Bài viết kiểu '论X与Y之辨' (about the distinction between X and Y) là staple của journals nhân văn. ML papers gần đây cũng có genre tương tự: 'Reasoning vs Pattern Matching: A Conceptual Clarification'.\n\n(5) AVOIDED OVERLY FOREIGN-LOOKING DEFINITIONS: students Trung Quốc tradition không thích định nghĩa quá phương Tây (ví dụ Wittgenstein style 'meaning is use'). Họ thích định nghĩa kiểu Aristotelian (genus + differentia) — clear, hierarchical, applicable.\n\n(6) DEFINITION DENSITY: papers Trung Quốc tier-1 thường có 2-5 thuật ngữ được định nghĩa rõ trong 'Term Definitions' subsection (chiếm 5-10% paper). Papers Trung Quốc tier thấp hơn ít định nghĩa terms — đó là dấu hiệu của 'không trưởng thành'. Sinh viên Việt: định nghĩa nhiều hơn = signal mature.\n\n(7) BACK-TRANSLATION TEST: cách verify định nghĩa của bạn rõ ràng: dịch ngược định nghĩa Trung Quốc sang English. Nếu English mơ hồ, định nghĩa Trung Quốc cũng mơ hồ. Iterate cho đến khi back-translation clear.\n\n(8) ETHICS OF TERMINOLOGY: dùng term mà không define = một số journals coi là minor academic misconduct (lừa người đọc về việc bạn đã làm rõ). Đặc biệt với terms có nhiều nghĩa.",
+    "cultural_notes_en": "Mainland culture around defining terms has its own features:\n\n(1) THE 名实之辨 TRADITION (the debate of names and realities): a philosophical lineage from Confucius's 正名 ('rectification of names') through Mozi and Xunzi on the importance of precise definition — '名不正则言不顺，言不顺则事不成' (Confucius: 'if names are not correct, language is not in accord; if language is not in accord, affairs cannot succeed'). So a precise definition is treated as a scholar's MORAL duty, not merely a technical requirement.\n\n(2) TRANSLATING FOREIGN TERMS: four strategies — (a) phonetic transliteration (rare for technical terms), (b) semantic translation (Transformer → 变换器, for hardware), (c) calque (machine learning → 机器学习), (d) keep English. Strategy (c) wins in ML — learners see 机器学习, 深度学习, 神经网络 rather than English.\n\n(3) AI-ERA TERMINOLOGY EXPLOSION: since 2017 the standardizing body has not kept up, so one term has 2-3 renderings across papers. Know: 'attention mechanism' = 注意力机制 (standard) / 关注机制 (rare); 'Transformer' usually kept in English / 变换器; 'embedding' = 嵌入 (standard) / 词嵌入 (for word embedding).\n\n(4) THE 概念辨析 GENRE (conceptual clarification): China has a distinct scholarly sub-genre devoted to clarifying a concept — '论X与Y之辨' (on the distinction between X and Y) is a humanities-journal staple, and recent ML papers adopt the same genre.\n\n(5) AVOIDING OVERLY FOREIGN-LOOKING DEFINITIONS: the tradition dislikes very Western definitions (e.g. Wittgenstein's 'meaning is use'); it prefers Aristotelian definitions (genus + differentia) — clear, hierarchical, applicable.\n\n(6) DEFINITION DENSITY: tier-1 Chinese papers define 2-5 terms clearly in a 'Term Definitions' subsection (5-10% of the paper). Fewer definitions signals immaturity — more definitions reads as mature.\n\n(7) BACK-TRANSLATION TEST: to verify your definition is clear, translate the Chinese definition into English; if the English is vague, the Chinese is too. Iterate until the back-translation is clear.\n\n(8) ETHICS OF TERMINOLOGY: using a term without defining it is treated by some journals as minor academic misconduct (misleading the reader about what you clarified), especially for polysemous terms.",
     "tip_advice_vi": "(1) MAKE A LIST: trước khi nộp paper, làm list tất cả thuật ngữ key. Mỗi term: định nghĩa tự bạn (1-2 câu) + nguồn nếu có. Đối chiếu với paper, check nhất quán. (2) ARISTOTELIAN STRUCTURE: 'X là một (genus) (which) đặc trưng bởi (differentia)'. Mỗi định nghĩa của bạn phải fit pattern này. Không fit = re-write. (3) AVOID '顾名思义' BEFORE FORMAL DEFINITION: '顾名思义' chỉ trước short gloss, không trước formal definition. Nếu đã có '所谓 X, 即指...', không cần '顾名思义'. (4) CITE WHEN BORROWING DEFINITION: nếu bạn dùng definition của Russell-Norvig, cite. Tự định nghĩa = '本研究中, 笔者拟将 X 界定为...'. Don't blur. (5) CONSISTENCY CHECK: search paper cho mỗi key term. Đếm số occurrences. Đảm bảo mỗi occurrence dùng cùng meaning đã định nghĩa. (6) FIRST OCCURRENCE RULE: khi term xuất hiện lần đầu, italicize hoặc bold + định nghĩa ngay. Sau đó dùng plain. (7) CROSS-DISCIPLINE TERM TRAP: 'word2vec', 'attention', 'embedding' — common ML terms — có meanings khác trong cognitive science / linguistics. Nếu paper liên ngành, define explicitly. (8) BACK-TRANSLATE TEST: dịch định nghĩa Trung Quốc sang English. Nếu English mơ hồ, Chinese cũng mơ hồ — fix ngay.",
+    "tip_advice_en": "(1) MAKE A LIST: before submitting, list every key term — your own 1-2 sentence definition + a source if any — then check consistency against the paper. (2) ARISTOTELIAN STRUCTURE: 'X is a (genus) characterized by (differentia)'. Every definition must fit this; if it doesn't, rewrite. (3) AVOID 顾名思义 BEFORE A FORMAL DEFINITION: it precedes a short gloss, not a formal definition; if you already have '所谓 X，即指…', don't add 顾名思义. (4) CITE WHEN BORROWING A DEFINITION (e.g. Russell-Norvig); your own = '本研究中，笔者拟将 X 界定为…'. Don't blur the two. (5) CONSISTENCY CHECK: search each key term; count occurrences; ensure each use matches the defined meaning. (6) FIRST-OCCURRENCE RULE: on first appearance, italicize/bold + define immediately; thereafter plain. (7) CROSS-DISCIPLINE TRAP: 'attention', 'embedding' mean different things in cognitive science/linguistics — in an interdisciplinary paper, define explicitly. (8) BACK-TRANSLATE TEST: render the Chinese definition into English; if vague, fix the Chinese.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1654,7 +1689,8 @@ export const lessons: ChineseLesson[] = [
           "定性 → dìngxìng (định tính)",
           "各有千秋 → gè yǒu qiānqiū (mỗi bên có điểm mạnh — idiom)",
           "相辅相成 → xiāngfǔ xiāngchéng (bổ sung nhau — idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["定量 → dìngliàng ('quantitative')","定性 → dìngxìng ('qualitative')","各有千秋 → gè yǒu qiānqiū (idiom: 'each has its own merits')","相辅相成 → xiāngfǔ xiāngchéng (idiom: 'mutually complementary')"]
       },
       {
         "chinese": "前者倾向于通过统计检验回答'有多少'的问题, 而后者则致力于揭示'为什么'与'如何'之深层机制。",
@@ -1666,7 +1702,8 @@ export const lessons: ChineseLesson[] = [
           "倾向于 → qīngxiàng yú (nghiêng về)",
           "致力于 → zhìlì yú (dành cho — 书面)",
           "深层机制 → shēncéng jīzhì (cơ chế sâu)"
-        ]
+        ],
+        "pronunciation_focus_en": ["前者…后者 → qiánzhě…hòuzhě ('the former … the latter' — written-register contrast)","倾向于 → qīngxiàng yú ('tends to')","致力于 → zhìlì yú ('is devoted to' — written register)","深层机制 → shēncéng jīzhì ('deep mechanism')"]
       },
       {
         "chinese": "若研究问题侧重于'广度', 则定量方法更为适宜; 若研究问题侧重于'深度', 则定性方法当可优先考虑。",
@@ -1678,7 +1715,8 @@ export const lessons: ChineseLesson[] = [
           "侧重于 → cèzhòng yú (nghiêng về)",
           "更为适宜 → gèng wéi shìyí (phù hợp hơn — 书面)",
           "当可 → dāng kě (có thể — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["若…则 → ruò…zé ('if…then' — written register)","侧重于 → cèzhòng yú ('to emphasize/focus on')","更为适宜 → gèng wéi shìyí ('more suitable' — written register)","当可 → dāng kě ('may well' — written register)"]
       },
       {
         "chinese": "诚然, 单一方法之研究存在固有局限, 因此混合方法研究近年来颇受学界青睐。",
@@ -1690,7 +1728,8 @@ export const lessons: ChineseLesson[] = [
           "固有局限 → gùyǒu júxiàn (hạn chế cố hữu)",
           "颇受青睐 → pō shòu qīnglài (khá được ưa chuộng — 书面)",
           "学界 → xuéjiè (giới học thuật)"
-        ]
+        ],
+        "pronunciation_focus_en": ["诚然 → chéngrán ('admittedly / it is true that' — written register)","固有局限 → gùyǒu júxiàn ('inherent limitation')","颇受青睐 → pō shòu qīnglài ('quite favored' — written register)","学界 → xuéjiè ('the academic community')"]
       },
       {
         "chinese": "综上所述, 方法之选择不应囿于流派之偏见, 而当依据具体研究问题之性质审慎决定。",
@@ -1702,7 +1741,8 @@ export const lessons: ChineseLesson[] = [
           "流派偏见 → liúpài piānjiàn (định kiến trường phái)",
           "依据 → yījù (dựa trên)",
           "审慎决定 → shěnshèn juédìng (quyết định thận trọng)"
-        ]
+        ],
+        "pronunciation_focus_en": ["不应囿于 → bù yīng yòu yú ('should not be confined to' — written register)","流派偏见 → liúpài piānjiàn ('school-bound prejudice')","依据 → yījù ('based on')","审慎决定 → shěnshèn juédìng ('to decide prudently')"]
       }
     ],
     "vocab": [
@@ -1916,7 +1956,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa method choice trong nghiên cứu Trung Quốc đại lục có một số đặc điểm:\n\n(1) HISTORICAL BIAS TOWARDS QUANTITATIVE: từ 1980s-2000s, đại học Trung Quốc đại lục copy mô hình Mỹ-Anh, ưu tiên quantitative. Sociology, education, psychology đều push quant. Qualitative bị coi 'soft', 'không khoa học'. Từ 2010+, qualitative bắt đầu được công nhận, đặc biệt qua các trường top ở Bắc Kinh, Thượng Hải và Quảng Châu.\n\n(2) STATISTICS WORSHIP: nhiều papers Trung Quốc tier-2 / tier-3 dùng statistics excessive nhưng questionable. Common errors: p-hacking, multiple testing without correction, overfitting, sample size issues. Reviewer top-tier journals bây giờ cảnh giác. Sinh viên Việt: dùng appropriate statistics > impressive looking statistics.\n\n(3) QUALITATIVE METHODOLOGY MATURITY: qualitative methodology infrastructure ở Trung Quốc đại lục vẫn đang xây. Software như NVivo / Atlas.ti / MAXQDA chưa phổ biến — hầu hết qualitative researcher còn coding manual. Sinh viên Việt dùng qualitative tools = competitive advantage.\n\n(4) MIXED METHODS POPULARITY: từ 2015+, mixed methods rất hot trong giáo dục, public health, software engineering ở Trung Quốc. Lý do: cho phép paper bao quát hơn, satisfy reviewer từ multiple traditions, fit complex social phenomena. Đa số grants 国家自然科学基金 (NSFC) khuyến khích mixed methods cho social science topics.\n\n(5) COMPUTATIONAL METHODS RISE: với big data + AI, computational social science đang nổi ở Trung Quốc. 北京大学, 清华, 复旦 đều có computational social science centers. Sinh viên trẻ Trung Quốc nhiều người làm web scraping + NLP analysis của social media data.\n\n(6) METHODOLOGY DEBATES: trong giới triết học khoa học Trung Quốc, có debate giữa positivism và interpretivism (实证主义 vs 解释主义). Câu trả lời mature: depends on research question, not philosophical preference.\n\n(7) INTERNATIONAL JOURNAL REQUIREMENTS: top journals quốc tế (especially in software engineering — TSE, ICSE, FSE) bây giờ require detailed methodology justification. Paper với một sentence như 'we conducted a survey' bị reject ngay. Sinh viên Việt cần biết: methodology section phải DENSE.\n\n(8) ETHICS CONCERN: bất kể method, IRB approval (伦理审查) hiện được đại học Trung Quốc top-tier require. Chỉ vài năm trước còn lax. Sinh viên Việt: budget thời gian cho ethics review (2-4 weeks), đặc biệt nếu interviews, surveys với human subjects.",
+    "cultural_notes_en": "Mainland culture around method choice has its own features:\n\n(1) HISTORICAL QUANTITATIVE BIAS: 1980s-2000s universities copied the Anglo model, prioritizing quantitative work; qualitative was dismissed as 'soft', 'unscientific'. Since ~2010 qualitative has gained recognition, led by top universities.\n\n(2) STATISTICS WORSHIP: many tier-2/3 papers use excessive but questionable statistics — p-hacking, multiple testing without correction, overfitting, sample-size issues. Top-tier reviewers are now wary. Appropriate statistics > impressive-looking statistics.\n\n(3) QUALITATIVE MATURITY: qualitative infrastructure is still being built — NVivo / Atlas.ti / MAXQDA are not yet widespread; most qualitative researchers still code by hand. Using qualitative tools is a competitive advantage.\n\n(4) MIXED METHODS POPULARITY: since ~2015, very hot in education, public health, software engineering — it broadens coverage, satisfies reviewers from multiple traditions, fits complex social phenomena, and the NSFC encourages it for social-science topics.\n\n(5) COMPUTATIONAL METHODS RISE: with big data + AI, computational social science is rising; top universities have dedicated centers, and many young researchers do web scraping + NLP analysis of social-media data.\n\n(6) METHODOLOGY DEBATES: a positivism vs interpretivism debate (实证主义 vs 解释主义) runs in the philosophy of science. The mature answer: it depends on the research question, not a philosophical preference.\n\n(7) INTERNATIONAL JOURNAL REQUIREMENTS: top venues (e.g. TSE, ICSE, FSE in software engineering) now require detailed methodology justification — a one-sentence 'we conducted a survey' is an instant reject. The methodology section must be DENSE.\n\n(8) ETHICS CONCERN: whatever the method, IRB approval (伦理审查) is now required at top universities (it was lax only a few years ago). Budget 2-4 weeks for ethics review, especially with human-subject interviews/surveys.",
     "tip_advice_vi": "(1) START FROM QUESTION, NOT METHOD: viết research question đầu tiên. Method chỉ chọn sau. Sinh viên Việt thường mắc lỗi 'tôi muốn dùng deep learning' rồi mới tìm question — đảo ngược order. (2) MAP QUESTION TYPE TO METHOD: 'how much / what %' → quant. 'why / how / what mechanism' → qual. Mismatch = paper bị reviewer bash. (3) JUSTIFY METHOD CHOICE: dù chọn method nào, dedicate 1-2 paragraphs giải thích why this method fits this question. Không justify = lazy. (4) DON'T DISPARAGE OTHER METHODS: đừng viết 'qualitative is soft' hay 'quantitative is reductionist'. Tôn trọng both → reviewer respect bạn. (5) TRIANGULATION: nếu mixed methods, mention triangulation explicitly. '本研究采用三角验证策略, 通过定量与定性结果的相互印证以增强结论之可信度'. (6) POWER ANALYSIS for quant: justify sample size với power analysis. Reviewer luôn hỏi. Use G*Power software (free). (7) SATURATION for qual: justify number of interviews bằng 'theoretical saturation' hoặc 'data saturation'. Thường 12-25 interviews đủ. (8) READ TWO PAPERS AS MODELS: trước khi viết methodology section, đọc 2 papers cùng topic ở top journal. Một quant + một qual. Steal their structure (NOT content).",
+    "tip_advice_en": "(1) START FROM THE QUESTION, NOT THE METHOD: write the research question first; choose the method only after. 'I want to use deep learning, now find a question' is the reversed (wrong) order. (2) MAP QUESTION TYPE TO METHOD: 'how much / what %' → quantitative; 'why / how / what mechanism' → qualitative. A mismatch gets the paper bashed. (3) JUSTIFY THE CHOICE: whatever the method, dedicate 1-2 paragraphs to why it fits this question. (4) DON'T DISPARAGE OTHER METHODS: don't write 'qualitative is soft' or 'quantitative is reductionist' — respecting both earns reviewer respect. (5) TRIANGULATION: with mixed methods, mention it explicitly — '本研究采用三角验证策略…以增强结论之可信度'. (6) POWER ANALYSIS for quantitative: justify sample size with a power analysis (G*Power, free) — reviewers always ask. (7) SATURATION for qualitative: justify interview count by 'theoretical/data saturation' (often 12-25 interviews). (8) READ TWO MODEL PAPERS first (one quant, one qual) at a top journal; reuse their structure, not their content.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1977,7 +2019,8 @@ export const lessons: ChineseLesson[] = [
           "确有其据 → què yǒu qí jù (quả có căn cứ — 书面)",
           "予以肯定 → yǔyǐ kěndìng (tán đồng — 书面)",
           "亦 → yì (cũng — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["该论文 → gāi lùnwén ('the said paper' — written register)","确有其据 → què yǒu qí jù ('does have its grounds' — written register)","予以肯定 → yǔyǐ kěndìng ('to affirm/concur' — written register)","亦 → yì ('also' — written register)"]
       },
       {
         "chinese": "然而, 在方法论层面, 该研究存在若干值得商榷之处, 兹择要论之。",
@@ -1989,7 +2032,8 @@ export const lessons: ChineseLesson[] = [
           "值得商榷 → zhídé shāngquè (đáng để bàn — 书面)",
           "兹 → zī (nay / ở đây — 书面)",
           "择要论之 → zé yào lùn zhī (chọn điểm chính để luận — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["若干 → ruògān ('several' — written register)","值得商榷 → zhídé shāngquè ('worth deliberating' — written register)","兹 → zī ('herewith / here' — written register)","择要论之 → zé yào lùn zhī ('to discuss the main points selectively' — written register)"]
       },
       {
         "chinese": "其一, 实验所用之基准测试本身可能存在数据污染, 模型在训练阶段或已接触类似样本。",
@@ -2001,7 +2045,8 @@ export const lessons: ChineseLesson[] = [
           "数据污染 → shùjù wūrǎn (nhiễm dữ liệu)",
           "或已 → huò yǐ (có lẽ đã — 书面 hedge)",
           "接触 → jiēchù (tiếp xúc)"
-        ]
+        ],
+        "pronunciation_focus_en": ["其一 → qí yī ('first(ly)' — written register)","数据污染 → shùjù wūrǎn ('data contamination')","或已 → huò yǐ ('may have already' — written-register hedge)","接触 → jiēchù ('to encounter/contact')"]
       },
       {
         "chinese": "其二, 论文之消融实验略显薄弱, 未能充分隔离各组件对最终性能之贡献。",
@@ -2013,7 +2058,8 @@ export const lessons: ChineseLesson[] = [
           "消融实验 → xiāoróng shíyàn (ablation study)",
           "略显薄弱 → lüè xiǎn bóruò (hơi mỏng — 书面 hedge)",
           "隔离 → gélí (tách bạch)"
-        ]
+        ],
+        "pronunciation_focus_en": ["其二 → qí èr ('second(ly)' — written register)","消融实验 → xiāoróng shíyàn ('ablation study')","略显薄弱 → lüè xiǎn bóruò ('appears somewhat weak' — written-register hedge)","隔离 → gélí ('to isolate')"]
       },
       {
         "chinese": "瑕不掩瑜, 该研究于领域内仍具相当贡献, 然其结论之外推性应受适度约束。",
@@ -2025,7 +2071,8 @@ export const lessons: ChineseLesson[] = [
           "仍具 → réng jù (vẫn có — 书面)",
           "外推性 → wàituīxìng (tính khái quát hóa)",
           "适度约束 → shìdù yuēshù (ràng buộc thích hợp)"
-        ]
+        ],
+        "pronunciation_focus_en": ["瑕不掩瑜 → xiá bù yǎn yú (idiom: 'a flaw does not obscure the jade')","仍具 → réng jù ('still possesses' — written register)","外推性 → wàituīxìng ('extrapolability/generalizability')","适度约束 → shìdù yuēshù ('appropriate restraint')"]
       }
     ],
     "vocab": [
@@ -2246,7 +2293,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa peer review trong giới học thuật Trung Quốc đại lục có một số đặc điểm:\n\n(1) HỆ THỐNG REVIEW PHẦN LỚN BLIND nhưng không double-blind: Trung Quốc tier-1 journals đa số dùng single-blind (reviewer biết author, author không biết reviewer). Một số top journals (như 计算机学报) dùng double-blind. Hệ quả: power asymmetry. Senior authors có lợi.\n\n(2) FACE-PRESERVING REVIEW: phản biện Trung Quốc thường gentler bề ngoài so với phương Tây. '此点尚需斟酌' (point needs deliberation) thực ra nghĩa 'wrong'. Sinh viên Việt phải đọc subtle: phrase nhẹ trên giấy có thể nghĩa heavy.\n\n(3) GUANXI INFLUENCE: trong vài lĩnh vực ở Trung Quốc, có hiện tượng 'review network' giữa các labs cùng trường phái. Reviewer thường mềm với papers từ same lab / same supervisor's network. Top journals đang đẩy mạnh blinding để giảm hiện tượng này.\n\n(4) RETRACTION CULTURE: Trung Quốc có rate retraction cao nhất thế giới (so với US, EU). Lý do: pressure publish, P-hacking, ghost authorship. Vì vậy review hiện nay được nhấn mạnh hơn nhiều so với 10 năm trước.\n\n(5) SPECIAL ROLE OF '通讯作者' (corresponding author): trong reviews ở Trung Quốc, corresponding author thường là supervisor (PI). Sinh viên là first author nhưng PI takes responsibility cho review responses. Hệ quả: sinh viên Việt collaborate phải clear với PI trước về division of review labor.\n\n(6) AI-ASSISTED REVIEW: từ 2023+, một số reviewers dùng AI để help draft reviews. Một số journals đã ban (rejecting LLM-drafted reviews); khác lại allow as long as disclosed. Sinh viên Việt review papers should disclose nếu dùng AI.\n\n(7) LANGUAGE OF REVIEW: tier-1 journals Trung Quốc thường receive English reviews; tier-2/3 nhận cả English và Chinese. Sinh viên Việt nên review bằng English trừ khi journal explicitly require Chinese.\n\n(8) RESPONSE-TO-REVIEWER (回复审稿人): rebuttal letter ở Trung Quốc thường rất polite. Format: '感谢审稿人指出, 该意见非常宝贵 / 我们已按建议修改 / 详见正文p.X'. Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(9) REVIEWING GIÚP CAREER: review cho top journals = bonus cho academic CV ở Trung Quốc. Nếu được ACL / NeurIPS / ICML mời review, accept ngay — đây là invitation đáng giá.",
+    "cultural_notes_en": "Peer-review culture on the mainland has its own features:\n\n(1) MOSTLY SINGLE-BLIND, not double-blind: most tier-1 Chinese journals are single-blind (reviewer knows author, not vice versa); a few top venues are double-blind. The consequence is a power asymmetry that favors senior authors.\n\n(2) FACE-PRESERVING REVIEW: critique is gentler on the surface than the Anglo norm. '此点尚需斟酌' ('this point needs deliberation') actually means 'wrong'. Read the subtext: a soft phrase on paper can carry a heavy verdict — like a British 'I have a few minor comments' that isn't minor.\n\n(3) GUANXI INFLUENCE: in some fields a 'review network' exists among same-school labs; reviewers can be soft on papers from the same supervisor's network. Top journals are pushing blinding to reduce this.\n\n(4) RETRACTION CULTURE: China's retraction rate is high (publish pressure, p-hacking, ghost authorship), which is precisely why review is now far more emphasized than a decade ago.\n\n(5) ROLE OF THE 通讯作者 (corresponding author): usually the supervisor/PI, who owns the review responses while the student is first author. A collaborator must clarify the division of review labor with the PI up front.\n\n(6) AI-ASSISTED REVIEW: since 2023 some reviewers use AI to draft reviews; some journals ban LLM-drafted reviews, others allow if disclosed. Disclose if you use AI.\n\n(7) LANGUAGE OF REVIEW: tier-1 journals usually receive English reviews; tier-2/3 accept English or Chinese. Review in English unless the journal explicitly requires Chinese.\n\n(8) RESPONSE-TO-REVIEWER (回复审稿人): the rebuttal letter is very polite — '感谢审稿人指出，该意见非常宝贵 / 我们已按建议修改 / 详见正文p.X'. A defensive 'the reviewer misunderstood' angers the reviewer; even if they truly misread, stay gentle.\n\n(9) REVIEWING HELPS YOUR CAREER: reviewing for top venues is a CV asset; if invited by a top conference, accept — it is a valuable invitation.",
     "tip_advice_vi": "(1) ACKNOWLEDGE TRƯỚC: bắt đầu critique luôn bằng câu công nhận. Không acknowledge = author defensive ngay, sẽ không accept changes. '该研究确有其价值' / '论述基本扎实' — câu mở. (2) NUMBERED ISSUES: dùng 其一 / 其二 / 其三 để liệt kê. Không scattered. Reviewer top tier expect numbered structure. (3) EVIDENCE FOR EACH ISSUE: mỗi issue phải có evidence cụ thể (page #, table #, formula #). Vague critique = author dismiss. (4) SUGGEST SOLUTIONS: critique không có solution = chỉ là phá. Mỗi issue must end với '笔者建议...' hoặc '或可考虑...'. (5) LEAVE 'BIG PICTURE' VERDICT: kết review với '瑕不掩瑜, recommend major revision' hoặc tương tự. Cho author biết overall assessment. (6) HEDGE WHEN APPROPRIATE: '此点 似乎 / 或许 / 在某种程度上' khi không 100% chắc. Reviewer over-confident sẽ bị author rebut. (7) SOFTEN CRITICISM: dùng '不足 / 有待 / 尚需' thay vì '错 / 失败 / 不行'. Same critique, gentler delivery. Author respect more. (8) 'CRITIQUE THE WORK, NOT THE AUTHOR': '论证存在不足' tốt hơn '作者论证不力'. Subject = work, không phải person. (9) AVOID NIT-PICKING: don't critique typos in main text. Critique architecture-level issues. Reviewer chỉ chỉ format = annoyed editor + author.",
+    "tip_advice_en": "(1) ACKNOWLEDGE FIRST: always open the critique with a concession ('该研究确有其价值' / '论述基本扎实'); skipping it makes the author defensive and unable to accept changes. (2) NUMBERED ISSUES: use 其一 / 其二 / 其三 — top reviewers expect numbered structure, not scattered remarks. (3) EVIDENCE FOR EACH ISSUE: cite page #, table #, formula #; vague critique gets dismissed. (4) SUGGEST SOLUTIONS: every issue ends with '笔者建议…' or '或可考虑…' — critique with no solution is mere demolition. (5) GIVE A BIG-PICTURE VERDICT: close with '瑕不掩瑜，recommend major revision' or similar so the author knows the overall assessment. (6) HEDGE WHEN UNSURE: '此点似乎 / 或许 / 在某种程度上' — an over-confident reviewer gets rebutted. (7) SOFTEN: use 不足 / 有待 / 尚需 rather than 错 / 失败 / 不行 — same critique, gentler delivery, more respect. (8) CRITIQUE THE WORK, NOT THE AUTHOR: '论证存在不足' beats '作者论证不力'. (9) AVOID NIT-PICKING: don't critique typos — address architecture-level issues; format-only reviews annoy the editor and author.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2307,7 +2356,8 @@ export const lessons: ChineseLesson[] = [
           "陈述 → chénshù (trình bày)",
           "初衷 → chūzhōng (ý định ban đầu)",
           "抛砖引玉 → pāo zhuān yǐn yù (ném gạch dẫn ngọc — humble idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["请允许 → qǐng yǔnxǔ ('allow me to' — formal)","陈述 → chénshù ('to state/set out')","初衷 → chūzhōng ('original intent')","抛砖引玉 → pāo zhuān yǐn yù (humble idiom: 'cast a brick to attract jade')"]
       },
       {
         "chinese": "感谢这位老师指出, 您所提之问题极具启发性, 触及了本研究尚未充分展开之层面。",
@@ -2319,7 +2369,8 @@ export const lessons: ChineseLesson[] = [
           "极具启发性 → jí jù qǐfāxìng (rất gợi mở)",
           "触及 → chùjí (chạm tới)",
           "尚未 → shàng wèi (chưa — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["感谢…指出 → gǎnxiè…zhǐchū ('thank you for pointing out')","极具启发性 → jí jù qǐfāxìng ('highly illuminating')","触及 → chùjí ('to touch upon')","尚未 → shàng wèi ('not yet' — written register)"]
       },
       {
         "chinese": "诚如您所言, 本研究在样本规模上确有局限, 此点笔者亦深以为憾, 拟在后续工作中加以改进。",
@@ -2331,7 +2382,8 @@ export const lessons: ChineseLesson[] = [
           "深以为憾 → shēn yǐwéi hàn (rất tiếc — 书面)",
           "拟在 → nǐ zài (dự định — 书面)",
           "加以改进 → jiāyǐ gǎijìn (cải thiện — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["诚如您所言 → chéngrú nín suǒ yán ('as you have rightly said' — formal)","深以为憾 → shēn yǐwéi hàn ('deeply regret' — written register)","拟在 → nǐ zài ('proposes to' — written register)","加以改进 → jiāyǐ gǎijìn ('to improve' — written register)"]
       },
       {
         "chinese": "至于您所关切之另一问题, 限于会议时间, 笔者愚以为可在会后另行探讨, 不知您意下如何?",
@@ -2343,7 +2395,8 @@ export const lessons: ChineseLesson[] = [
           "限于 → xiànyú (giới hạn bởi)",
           "愚以为 → yú yǐwéi (kẻ ngu cho rằng — humble)",
           "意下如何 → yìxià rúhé (ý ngài thế nào — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["至于 → zhìyú ('as for' — written register)","限于 → xiànyú ('limited by')","愚以为 → yú yǐwéi ('this humble one believes' — humble first person)","意下如何 → yìxià rúhé ('what is your view' — written register)"]
       },
       {
         "chinese": "再次感谢各位评委及与会同仁之宝贵意见, 笔者将认真整理, 不吝赐教之处望诸位继续关注。",
@@ -2355,7 +2408,8 @@ export const lessons: ChineseLesson[] = [
           "宝贵意见 → bǎoguì yìjiàn (ý kiến quý báu)",
           "不吝赐教 → bùlìn cìjiào (không tiếc dạy bảo — humble)",
           "诸位 → zhūwèi (các vị — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["与会同仁 → yùhuì tóngrén ('colleagues present' — written register)","宝贵意见 → bǎoguì yìjiàn ('valuable comments')","不吝赐教 → bùlìn cìjiào ('unsparing instruction' — humble)","诸位 → zhūwèi ('all of you' — written register)"]
       }
     ],
     "vocab": [
@@ -2569,7 +2623,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa Q&A tại hội nghị/defense Trung Quốc đại lục có nhiều điểm khác Việt Nam và phương Tây:\n\n(1) HUMBLE-FIRST CONVENTION: ngay cả khi bạn là expert, register opening phải humble. Câu '我是这个领域的专家, 让我告诉你...' = career-ending. Phải là '笔者愚以为 / 学生愚见 / 不揣冒昧地说'. Ironically, càng humble = càng được respect.\n\n(2) TIME PRESSURE: defense Trung Quốc thường strict 60-90 phút total. Q&A khoảng 30-45 phút. Mỗi câu hỏi expect 2-4 phút response. Nếu trả lời quá ngắn = không đủ tôn trọng. Nếu quá dài = sai etiquette về time.\n\n(3) HIERARCHY MATTERS: cách trả lời thay đổi based trên rank của người hỏi. Trả lời tenured professor: tăng humble + extended thanks. Trả lời peer: bình thường formal. Trả lời junior: vẫn polite nhưng có thể direct hơn.\n\n(4) FACE-PRESERVING DURING ATTACK: nếu evaluator hostile (đôi khi xảy ra ở Trung Quốc), KHÔNG fight back trực tiếp. Phong cách: redirect to substance, hedge own claim, propose follow-up. Direct combat = lose face cho cả 2.\n\n(5) ENGLISH MIXING ALLOWED: Trung Quốc đại lục Q&A cho phép mix English technical terms (như 'AUC', 'p-value', 'Transformer') vì nhiều terms chưa có established Chinese translation. Sinh viên Việt có lợi: dùng English terms khi cần.\n\n(6) PRESENTATIONS DOUBLE WAY: nhiều conferences Trung Quốc ngày nay có cả English-language sessions và Chinese-language sessions. Tier-1 international conferences (CCL, CSAI) là English. Tier-2 domestic (中文信息学报) là Chinese. Sinh viên Việt cần biết tone của venue.\n\n(7) POST-Q&A NETWORKING: sau Q&A, evaluator/audience có thể đến tiếp tục dialogue 1-on-1. Đây là moment quan trọng — junior nên chủ động tìm senior reviewer, '感谢您今天的指点, 笔者愿继续向您请教'. Networking opportunity.\n\n(8) FAILURE TO ANSWER: nếu bạn really không biết answer, phrase chuẩn: '这是笔者尚未深入考虑的角度, 您的指出令笔者深受启发. 笔者会后定当深入研读, 也愿继续向您请教'. KHÔNG bullshit. KHÔNG fake. Acknowledge + commit to learning.\n\n(9) FOLLOW-UP EMAILS: 24-48 hours sau Q&A, gửi email thank-you cho evaluators chính, attached revised draft notes của câu hỏi của họ. Đây là cultural standard ở Trung Quốc top universities. Skip = no follow-up = cold.\n\n(10) GENDER & AGE: nữ student trẻ trả lời Q&A thường được suggest tăng humble register so với nam senior. Đây là cultural pressure (không công bằng nhưng tồn tại). Cách balance: humble register + substantive content. Senior evaluator respect content over hierarchy form khi content thật sự strong.",
+    "cultural_notes_en": "Conference/defense Q&A culture on the mainland differs from the Anglo norm:\n\n(1) HUMBLE-FIRST CONVENTION: even as an expert, the opening register must be humble — '我是这个领域的专家，让我告诉你…' is career-ending; it must be '笔者愚以为 / 学生愚见 / 不揣冒昧地说'. Ironically, the more humble, the more respected.\n\n(2) TIME PRESSURE: a defense is a strict 60-90 minutes total, Q&A ~30-45; each answer ~2-4 minutes. Too short reads as insufficient respect; too long breaks time etiquette.\n\n(3) HIERARCHY MATTERS: tune the answer to the asker's rank — a tenured professor gets more humility + extended thanks; a peer, normal formal; a junior, polite but can be more direct.\n\n(4) FACE-PRESERVING UNDER ATTACK: if an evaluator is hostile, do NOT fight back directly — redirect to substance, hedge your own claim, propose follow-up. Direct combat loses face for both.\n\n(5) ENGLISH MIXING ALLOWED: technical terms (AUC, p-value, Transformer) may be kept in English since many lack an established Chinese rendering — an advantage for a learner.\n\n(6) VENUE LANGUAGE: many conferences run both English and Chinese sessions; tier-1 international venues are English, tier-2 domestic are Chinese. Know the venue's register.\n\n(7) POST-Q&A NETWORKING: after Q&A, an evaluator may continue 1-on-1 — a key moment; the junior should proactively approach: '感谢您今天的指点，笔者愿继续向您请教'.\n\n(8) FAILURE TO ANSWER: if you genuinely don't know — '这是笔者尚未深入考虑的角度，您的指出令笔者深受启发。笔者会后定当深入研读，也愿继续向您请教'. Do NOT bluff or fake; acknowledge + commit to learning.\n\n(9) FOLLOW-UP EMAILS: 24-48h after, email thanks to the main evaluators with revised notes on their questions — a cultural standard at top universities; skipping it reads as cold.\n\n(10) GENDER & AGE: younger women are often advised to raise the humble register relative to senior men — an unfair but real pressure. Balance: humble register + substantive content; strong content earns respect over hierarchy form.",
     "tip_advice_vi": "(1) PREP STANDARD OPENINGS: học thuộc 5 cụm opening responses trước khi defense. '感谢评委指出 / 这个问题非常重要 / 您所提之角度极具启发性 / 诚如您所言 / 限于时间...'. Tự động dùng — đỡ panic. (2) NUMBER YOUR ANSWERS: nếu câu hỏi multi-part, dùng '其一 / 其二 / 其三'. Reviewer follow easily. (3) ACKNOWLEDGE BEFORE RESPONDING: dù bạn disagree, START với acknowledge. '诚如您所言, X 是个真问题 ... 不过, 笔者拟从另一角度补充: ...' Acknowledge → pivot. (4) DON'T BLUFF: khi không biết, '这是笔者尚未深入考虑的角度' tốt hơn fake answer. Reviewer respect honest 'don't know' hơn confident wrong. (5) HEDGE WHEN APPROPRIATE: nếu data của bạn chỉ partial support claim, acknowledge: '本研究在X方面确有局限'. Don't over-promise. (6) USE TIME-LIMIT WISELY: '限于会议时间, 可否会后另行探讨?' — dùng khi câu hỏi cần extensive answer. Don't dodge — committed to dialogue post-session. (7) RESPOND ON SUBSTANCE EVEN UNDER ATTACK: nếu reviewer harsh, redirect to substance: '关于X点, 笔者持Y立场, 是出于Z之考虑'. Substance over emotion. (8) END WITH GRATITUDE: kết Q&A bằng '再次感谢各位评委之宝贵意见, 不吝赐教之处望诸位继续关注'. Ngắn, formal, gracious. (9) PRACTICE WITH MOCK PANEL: trước defense, mock 3-4 lần với senior students/postdocs. Build muscle memory. (10) DRESS + POSTURE: cultural norm ở Trung Quốc đại lục: business casual cho students defense. Stand straight. Eye contact với evaluator đang hỏi. Câu trả lời directed at chair khi answer applies broadly.",
+    "tip_advice_en": "(1) PREP STANDARD OPENINGS: memorize 5 — '感谢评委指出 / 这个问题非常重要 / 您所提之角度极具启发性 / 诚如您所言 / 限于时间…' — to deploy automatically and avoid panic. (2) NUMBER YOUR ANSWERS for multi-part questions: 其一 / 其二 / 其三. (3) ACKNOWLEDGE BEFORE RESPONDING even when you disagree: '诚如您所言，X 是个真问题… 不过，笔者拟从另一角度补充：…' (acknowledge → pivot). (4) DON'T BLUFF: '这是笔者尚未深入考虑的角度' beats a fake answer; reviewers respect an honest 'don't know' over a confident wrong. (5) HEDGE WHEN DATA IS PARTIAL: '本研究在X方面确有局限' — don't over-promise. (6) USE THE TIME LIMIT WISELY: '限于会议时间，可否会后另行探讨?' for questions needing a long answer — don't dodge; commit to post-session dialogue. (7) STAY ON SUBSTANCE UNDER ATTACK: '关于X点，笔者持Y立场，是出于Z之考虑' — substance over emotion. (8) END WITH GRATITUDE: '再次感谢各位评委之宝贵意见…' — short, formal, gracious. (9) MOCK PANEL 3-4 times with seniors/postdocs to build muscle memory. (10) DRESS + POSTURE: business casual; stand straight; eye contact with the asker; direct broad answers to the chair.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2630,7 +2686,8 @@ export const lessons: ChineseLesson[] = [
           "开宗明义 → kāi zōng míng yì (mở đầu rõ ràng — idiom)",
           "言简意赅 → yán jiǎn yì gāi (lời ngắn ý đủ — idiom)",
           "一目了然 → yī mù liǎo rán (nhìn một cái hiểu — idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["乃 → nǎi ('is precisely' — written register)","开宗明义 → kāi zōng míng yì (idiom: 'state the theme clearly from the outset')","言简意赅 → yán jiǎn yì gāi (idiom: 'concise wording, complete meaning')","一目了然 → yī mù liǎo rán (idiom: 'clear at a glance')"]
       },
       {
         "chinese": "结构上, 一份合格之摘要通常包括四要素: 研究背景、方法、结果及结论, 缺一不可。",
@@ -2642,7 +2699,8 @@ export const lessons: ChineseLesson[] = [
           "四要素 → sì yàosù (bốn yếu tố)",
           "及 → jí (và — 书面)",
           "缺一不可 → quē yī bùkě (thiếu một không được)"
-        ]
+        ],
+        "pronunciation_focus_en": ["合格之 → hégé zhī ('a qualified …' — written register)","四要素 → sì yàosù ('the four elements')","及 → jí ('and' — written register)","缺一不可 → quē yī bùkě ('none can be omitted')"]
       },
       {
         "chinese": "撰写时, 笔者宜删繁就简, 剔除冗余之表述, 保留最具信息密度之内容, 切忌冗长。",
@@ -2654,7 +2712,8 @@ export const lessons: ChineseLesson[] = [
           "剔除 → tīchú (loại bỏ — 书面)",
           "冗余 → rǒngyú (thừa thãi)",
           "切忌 → qièjì (kiêng kỵ — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["删繁就简 → shān fán jiù jiǎn (idiom: 'cut the superfluous, keep it simple')","剔除 → tīchú ('to remove/excise' — written register)","冗余 → rǒngyú ('redundant/redundancy')","切忌 → qièjì ('absolutely avoid' — written register)"]
       },
       {
         "chinese": "文献综述则应提纲挈领, 把握领域之脉络, 而非简单堆砌前人成果。",
@@ -2666,7 +2725,8 @@ export const lessons: ChineseLesson[] = [
           "脉络 → màiluò (mạch lạc)",
           "堆砌 → duīqì (chất đống)",
           "前人 → qiánrén (người đi trước)"
-        ]
+        ],
+        "pronunciation_focus_en": ["提纲挈领 → tígāng qièlǐng (idiom: 'grasp the essentials / the guiding thread')","脉络 → màiluò ('the thread/pulse [of a field]')","堆砌 → duīqì ('to pile up')","前人 → qiánrén ('predecessors')"]
       },
       {
         "chinese": "综上所述, 摘要与综述虽功能各异, 然皆需以读者之视角为本, 务使其'画龙点睛'而非'画蛇添足'。",
@@ -2678,7 +2738,8 @@ export const lessons: ChineseLesson[] = [
           "视角为本 → shìjiǎo wèi běn (lấy góc nhìn làm gốc)",
           "画龙点睛 → huà lóng diǎn jīng (điểm mắt rồng — idiom)",
           "画蛇添足 → huà shé tiān zú (vẽ chân rắn — idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["功能各异 → gōngnéng gè yì ('serve different functions')","视角为本 → shìjiǎo wèi běn ('grounded in the [reader's] perspective')","画龙点睛 → huà lóng diǎn jīng (idiom: 'dot the dragon's eyes' — the finishing touch)","画蛇添足 → huà shé tiān zú (idiom: 'add feet to a snake' — a ruinous excess)"]
       }
     ],
     "vocab": [
@@ -2906,7 +2967,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa abstract / lit review trong giới học thuật Trung Quốc đại lục có một số điểm khác biệt với phương Tây và Việt Nam:\n\n(1) BILINGUAL ABSTRACTS REQUIREMENT: nhiều tạp chí Trung Quốc tier-1 yêu cầu BOTH Chinese abstract VÀ English abstract. Hai abstract phải parallel ý nhưng không phải translation 1:1. Sinh viên Việt cần biết: viết hai bản abstract = hai job, dù share content.\n\n(2) STRUCTURED ABSTRACT (结构化摘要): tạp chí y học và một số tạp chí khoa học xã hội Trung Quốc require structured abstract với explicit headers: 目的 (Objective), 方法 (Methods), 结果 (Results), 结论 (Conclusion). Tạp chí khác cho phép unstructured nhưng vẫn cần 4 elements implicit.\n\n(3) AVERSION TO OPENING CLICHÉS: từ 2018+, top journals Trung Quốc explicitly reject abstracts opening với '近年来, 随着X的迅猛发展'. Editor đếm số lần phrase này xuất hiện trong submitted manuscripts đã > 90% — bị coi là templated, lazy. Sinh viên Việt copy phrase này từ Chinese papers cũ = bị reject.\n\n(4) LITERATURE REVIEW LENGTH: standard Trung Quốc top journals require lit review chiếm 15-25% paper length. Quá ngắn = không đủ acknowledge prior work. Quá dài = không đủ contribution của bạn. Sinh viên Việt thường viết quá ngắn (5-10%) — needs expansion.\n\n(5) FOREIGN vs DOMESTIC CITATIONS BALANCE: top journals Trung Quốc expect lit review balance international (≥60%) + domestic Chinese (≤40%) sources. Quá nhiều domestic = parochial. Quá ít domestic = ignoring local field. Adjust based on subfield maturity.\n\n(6) META-ANALYSIS as alternative: ngày càng nhiều papers Trung Quốc ML/biomedical write systematic meta-analysis thay vì narrative review. Methodology stricter, subjectivity giảm. Sinh viên Việt nên consider meta-analysis cho thesis nếu field allows.\n\n(7) PRE-REGISTRATION CULTURE: từ 2020+, top Chinese journals trong psychology / education khuyến khích pre-registration. Đăng ký research plan trước khi collect data. Lit review section trở thành phần background of pre-registration.\n\n(8) AI-ASSISTED SUMMARIZATION: từ 2023+, học giả Trung Quốc sử dụng GPT/Claude để help draft lit reviews. Một số journals chấp nhận if disclosed; khác lại banned. Sinh viên Việt: disclose if used, even minor edits.\n\n(9) ABSTRACTS GET INDEXED, FULL TEXT KHÔNG: trong Chinese academic search engines (CNKI, WANFANG), abstract is what users see when browsing. Abstract weak = paper invisible regardless of full-text quality. Sinh viên Việt: abstract is FRONTLINE, not afterthought.\n\n(10) GRADUATE DEFENSE ABSTRACT: defense submission ở Trung Quốc đại lục requires Chinese abstract VÀ English abstract trên thesis cover page. Hội đồng thường judge thesis quality SOLELY based on abstract trong 60 seconds đầu tiên of defense. Underestimate abstract = underestimate defense success rate.",
+    "cultural_notes_en": "Abstract / literature-review culture on the mainland differs from the Anglo norm:\n\n(1) BILINGUAL ABSTRACT REQUIREMENT: many tier-1 journals require BOTH a Chinese and an English abstract — parallel in idea but not a 1:1 translation. Two abstracts = two jobs, even if they share content.\n\n(2) STRUCTURED ABSTRACT (结构化摘要): medical and some social-science journals require explicit headers — 目的 (Objective), 方法 (Methods), 结果 (Results), 结论 (Conclusion). Others allow unstructured but still need the four elements implicitly.\n\n(3) AVERSION TO OPENING CLICHÉS: since ~2018, top journals reject abstracts opening with '近年来，随着X的迅猛发展' — it appears in >90% of submissions and reads as templated and lazy. Copying it from old papers earns a reject.\n\n(4) LITERATURE-REVIEW LENGTH: top journals expect 15-25% of paper length. Too short under-acknowledges prior work; too long crowds out your contribution. Learners tend to write too short (5-10%) — expand.\n\n(5) FOREIGN vs DOMESTIC CITATION BALANCE: expect ~≥60% international + ≤40% domestic Chinese sources; too much domestic reads parochial, too little ignores the local field. Adjust by subfield maturity.\n\n(6) META-ANALYSIS as an alternative: increasingly papers write a systematic meta-analysis rather than a narrative review — stricter methodology, less subjectivity. Consider it for a thesis if the field allows.\n\n(7) PRE-REGISTRATION CULTURE: since ~2020, top psychology/education journals encourage pre-registration; the lit review becomes the background of the pre-registration.\n\n(8) AI-ASSISTED SUMMARIZATION: since 2023, some journals accept AI-assisted lit-review drafting if disclosed, others ban it. Disclose if used, even minor edits.\n\n(9) ABSTRACTS GET INDEXED, FULL TEXT DOESN'T: in Chinese search engines (CNKI, WANFANG) the abstract is what browsers see — a weak abstract makes the paper invisible regardless of full-text quality. The abstract is the frontline, not an afterthought.\n\n(10) DEFENSE ABSTRACT: a thesis cover page needs both a Chinese and an English abstract; the committee often judges quality from the abstract in the first 60 seconds — underestimating it underestimates your defense odds.",
     "tip_advice_vi": "(1) WRITE ABSTRACT LAST: viết toàn bộ paper trước, abstract cuối cùng. Bạn không thể tóm tắt cái bạn chưa viết. Nếu phải submit proposal, viết structured abstract trước (working draft), then revise sau khi paper xong. (2) CONTRIBUTION SENTENCE FIRST: câu đầu là CONTRIBUTION, không phải background. Format: '本文提出 [name], 通过 [mechanism] 实现 [capability]'. Practice this pattern. (3) AT LEAST 2 NUMBERS: abstract không có numbers = không convincing. Mục tiêu: improvement % + sample size, hoặc tương tự. (4) WORD COUNT TARGET = LIMIT × 0.85: nếu limit 250 words, target 200-220. Buffer cho revision. (5) DELETE PASS: viết bản 1 → lưu → đêm sau → mở ra → DELETE 30%. Đa số abstract bản 1 quá dài. (6) NO 'IN THIS PAPER, WE': dùng '本文 + 提出/研究/探讨'. Avoid first person plural - awkward in Chinese formal register. (7) SCAN TOP TIER ABSTRACTS: trước khi viết, đọc 5 abstracts published in your target journal. Note their sentence patterns + Chinese word choice. Imitate structure (NOT content). (8) LIT REVIEW: ORGANIZE BY THEMES not papers. Each subsection = 1 theme/issue, citing 5-10 papers in conversation, not 1 paper per paragraph. (9) POSITION YOUR WORK EXPLICITLY: lit review must end với clear statement '本研究填补了 [specific gap]'. Don't make reader infer. (10) META: sinh viên Việt thường viết lit review quá ngắn (under 10% paper). Top journal expect 15-25%. Expand if necessary. (11) CHINESE-ENGLISH DOUBLE PASS: viết Chinese abstract → translate sang English → adjust English to native fluency → translate English back sang Chinese → polish Chinese. Iteration tốt cho cả 2 languages.",
+    "tip_advice_en": "(1) WRITE THE ABSTRACT LAST — you can't summarize what isn't written; for a proposal, draft a structured working abstract, then revise after the paper is done. (2) CONTRIBUTION SENTENCE FIRST, not background: '本文提出 [name]，通过 [mechanism] 实现 [capability]'. (3) AT LEAST 2 NUMBERS — an abstract with none isn't convincing (improvement % + sample size). (4) WORD-COUNT TARGET = LIMIT × 0.85 (buffer for revision). (5) DELETE PASS: draft → sleep → reopen → cut 30% (most first-draft abstracts are too long). (6) NO 'IN THIS PAPER, WE': use '本文 + 提出/研究/探讨'; first-person plural is awkward in formal Chinese register. (7) SCAN 5 TOP-TIER ABSTRACTS in the target journal; imitate their sentence patterns and word choice (structure, not content). (8) ORGANIZE THE REVIEW BY THEMES, not papers: each subsection = one theme citing 5-10 papers in conversation, not one paper per paragraph. (9) POSITION YOUR WORK EXPLICITLY: the review must end with '本研究填补了 [specific gap]' — don't make the reader infer it. (10) EXPAND if your review is under 10% (top journals expect 15-25%). (11) CHINESE-ENGLISH DOUBLE PASS: Chinese → English → polish English → back to Chinese → polish — good for both languages.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2967,7 +3030,8 @@ export const lessons: ChineseLesson[] = [
           "审读 → shěndú (đọc xét — 书面)",
           "评审意见 → píngshěn yìjiàn (ý kiến đánh giá)",
           "如下 → rúxià (như sau — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["手稿 → shǒugǎo ('manuscript')","审读 → shěndú ('to read and review' — written register)","评审意见 → píngshěn yìjiàn ('review comments')","如下 → rúxià ('as follows' — written register)"]
       },
       {
         "chinese": "整体观之, 本稿选题前沿, 实证扎实, 言之有据, 笔者对其学术价值予以肯定。",
@@ -2979,7 +3043,8 @@ export const lessons: ChineseLesson[] = [
           "选题前沿 → xuǎntí qiányán (đề tài tiên phong)",
           "扎实 → zhāshí (vững chắc)",
           "予以肯定 → yǔyǐ kěndìng (tán đồng — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["整体观之 → zhěngtǐ guān zhī ('viewed as a whole' — written register)","选题前沿 → xuǎntí qiányán ('a frontier topic')","扎实 → zhāshí ('solid/sound')","予以肯定 → yǔyǐ kěndìng ('to affirm' — written register)"]
       },
       {
         "chinese": "然而, 在方法层面, 本稿尚有若干值得改进之处, 兹提出三点具体建议, 供作者参考。",
@@ -2991,7 +3056,8 @@ export const lessons: ChineseLesson[] = [
           "若干 → ruògān (một số — 书面)",
           "兹 → zī (nay — 书面)",
           "供 → gōng (cung cấp — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["然而 → rán'ér ('however' — formal)","若干 → ruògān ('several' — written register)","兹 → zī ('herewith' — written register)","供 → gōng ('to provide / for [reference]' — written register)"]
       },
       {
         "chinese": "建议作者针对上述三点逐一回应, 并在修订版中以颜色标注修改之处, 以便复审。",
@@ -3003,7 +3069,8 @@ export const lessons: ChineseLesson[] = [
           "逐一回应 → zhú yī huíyìng (từng điểm trả lời)",
           "标注 → biāozhù (đánh dấu)",
           "以便 → yǐbiàn (để thuận lợi — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["针对 → zhēnduì ('to address / aimed at' — written register)","逐一回应 → zhú yī huíyìng ('respond to each one by one')","标注 → biāozhù ('to mark/annotate')","以便 → yǐbiàn ('so as to facilitate' — written register)"]
       },
       {
         "chinese": "综合评审意见, 本稿宜接受重大修改后再审, 不宜直接接受, 亦无须立即拒稿。",
@@ -3015,7 +3082,8 @@ export const lessons: ChineseLesson[] = [
           "重大修改 → zhòngdà xiūgǎi (major revision)",
           "再审 → zài shěn (re-review)",
           "亦无须 → yì wúxū (cũng không cần — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["综合 → zōnghé ('to synthesize')","重大修改 → zhòngdà xiūgǎi ('major revision')","再审 → zài shěn ('re-review')","亦无须 → yì wúxū ('nor is it necessary to' — written register)"]
       }
     ],
     "vocab": [
@@ -3236,7 +3304,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa peer review trong giới học thuật Trung Quốc đại lục:\n\n(1) ANONYMITY VS DISCLOSED: top journals Trung Quốc dùng single-blind (reviewer anonymous, author known). Một số top venues international (NeurIPS, ICML) dùng double-blind. Sinh viên Việt review cho Trung Quốc venues: bạn biết author, author không biết bạn. Power asymmetry — phải responsibly use.\n\n(2) HIDDEN GUANXI NETWORK: Trung Quốc có 'reviewer network' - các labs cùng trường phái thường review papers cho nhau softly. Top journals đang push double-blind để giảm bias này. Sinh viên Việt review papers from same advisor's network = explicitly declare conflict.\n\n(3) RESPONSE-TO-REVIEWER FORMAT: rebuttal trong giới học thuật Trung Quốc rất polite. Format: '审稿人意见: ...' '作者回复: 感谢审稿人指出, 该意见非常宝贵. 我们已...' Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry và push reject. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(4) DECISION TIME EXPECTATIONS: Trung Quốc top journals expect review trong 21-30 days. Tier 2-3 trong 30-45 days. Review chậm = editor sẽ swap reviewer. Sinh viên Việt review: commit đúng thời hạn hoặc decline upfront.\n\n(5) AI-ASSISTED REVIEW POLICY: từ 2023+, một số journals Trung Quốc allow AI to help draft (must disclose), khác lại fully banned. ACL 2024, NeurIPS 2024 banned LLM-drafted reviews. Sinh viên Việt: check journal policy carefully, disclose dù chỉ minor edit.\n\n(6) REVIEW LANGUAGE: tier-1 Chinese journals nay accept English reviews (preferred). Tier-2/3 nhận cả Chinese và English. Sinh viên Việt: review tiếng Anh trừ khi journal explicitly requires Chinese.\n\n(7) REPUTATION AT STAKE: Trung Quốc có public review reputation system (Publons, ORCID). Reviewer quality tracked. Bad / unprofessional reviews → editors won't invite again. Career đụng độ. Sinh viên trẻ Việt: invest in review quality từ đầu.\n\n(8) ETHICS BOARD INVOLVEMENT: nếu review có serious concerns (ethics violation, data fabrication), report to ethics board (伦理委员会), không chỉ editor. Trung Quốc top journals đều có ethics board.\n\n(9) AUTHOR-REVIEWER RECIPROCITY: 'cycle of review' — reviewers cũng là authors. 'Treat others as you'd be treated'. Harsh review = bạn cũng sẽ nhận harsh review. Sinh viên Việt: maintain karma.\n\n(10) RESPONSE-TO-REVIEWER LETTERS PUBLISHED: một số journals ngày nay (như eLife, F1000Research) public publish review letters + responses. Sinh viên Việt: every word in your review may be public. Write accordingly.",
+    "cultural_notes_en": "Peer-review culture on the mainland:\n\n(1) ANONYMITY: top Chinese journals are single-blind (reviewer anonymous, author known); some top international venues are double-blind. Reviewing for Chinese venues, you know the author and they don't know you — a power asymmetry to use responsibly.\n\n(2) HIDDEN GUANXI NETWORK: same-school labs sometimes review for each other softly; top journals push double-blind to reduce this. If a paper is from your advisor's network, explicitly declare the conflict.\n\n(3) RESPONSE-TO-REVIEWER FORMAT: very polite — '审稿人意见：…' / '作者回复：感谢审稿人指出，该意见非常宝贵。我们已…'. A defensive 'reviewer misunderstood' angers the reviewer and pushes a reject; stay gentle even if they truly misread.\n\n(4) DECISION-TIME EXPECTATIONS: tier-1 expect 21-30 days, tier-2/3 30-45; slow reviews get the reviewer swapped. Commit on time or decline up front.\n\n(5) AI-ASSISTED REVIEW POLICY: some journals allow AI-assisted drafting if disclosed; major venues ban LLM-drafted reviews. Check policy carefully and disclose even minor edits.\n\n(6) REVIEW LANGUAGE: tier-1 accept (and prefer) English reviews; tier-2/3 accept Chinese or English. Review in English unless Chinese is required.\n\n(7) REPUTATION AT STAKE: reviewer quality is tracked (Publons, ORCID); poor/unprofessional reviews mean no future invitations. Invest in review quality from the start.\n\n(8) ETHICS BOARD: for serious concerns (ethics violation, data fabrication), report to the ethics board (伦理委员会), not only the editor.\n\n(9) AUTHOR-REVIEWER RECIPROCITY: reviewers are also authors — a harsh review invites harsh reviews of your own work. Maintain the karma.\n\n(10) REVIEW LETTERS MAY BE PUBLISHED: some journals publish review letters + responses; assume every word may be public and write accordingly.",
     "tip_advice_vi": "(1) READ PAPER TWICE: trước khi viết review, đọc paper full TWICE. Lần 1 cho overall, lần 2 cho details. Một lần đọc = miss issues. (2) WRITE FROM OUTLINE: outline review trước (3-5 critical issues + 5-10 minor). Outline đảm bảo coverage + priority. (3) START WITH ACKNOWLEDGMENT: dù paper hopeless, bắt đầu với positive: '该选题前沿 / 实证扎实'. Set tone collaborative. (4) NUMBER YOUR CRITIQUES: 其一 / 其二 / 其三. Author phải đáp from điểm. Numbered = trackable. (5) CITE LINE/PAGE NUMBERS: vague critique = ignored critique. 'Section 3.2, paragraph 2: argument không clear'. Specific = actionable. (6) HEDGE EVEN WHEN CONFIDENT: '此点似乎' / '可能存在' giảm confrontation 50% mà vẫn truyền message. (7) END WITH CLEAR DECISION: accept / minor / major / reject. Vague = editor angry. Editor expects ONE word recommendation. (8) RESPECT AUTHOR DIGNITY: critique work, không critique person. 'Methodology存在不足' tốt hơn 'authors are unprofessional'. (9) RESPONSE TIMELINE: commit deadline strictly. Late review = editor remember. Decline upfront if can't make. (10) SAVE TEMPLATE: review structure stable across papers. Make a personal template (opening / structure / closing). Saves time. (11) AI USAGE DISCLOSURE: nếu dùng AI to draft, even minor, disclose to editor in submission notes. Failure to disclose = academic misconduct nếu later discovered. (12) AVOID SUBJECT-SPECIFIC JARGON IN REVIEW: review may be read by editors from different sub-areas. Explain key technical terms. Inclusivity = professional.",
+    "tip_advice_en": "(1) READ THE PAPER TWICE: pass 1 for the overall, pass 2 for details — one pass misses issues. (2) WRITE FROM AN OUTLINE: 3-5 critical issues + 5-10 minor, for coverage + priority. (3) START WITH ACKNOWLEDGMENT even if the paper is hopeless ('该选题前沿 / 实证扎实') — set a collaborative tone. (4) NUMBER YOUR CRITIQUES: 其一 / 其二 / 其三 — trackable, point-by-point. (5) CITE LINE/PAGE NUMBERS: vague critique = ignored critique; 'Section 3.2, para 2: the argument is unclear' is actionable. (6) HEDGE EVEN WHEN CONFIDENT: '此点似乎' / '可能存在' cuts confrontation ~50% while keeping the message. (7) END WITH A CLEAR DECISION: accept / minor / major / reject — editors expect a one-word recommendation. (8) RESPECT AUTHOR DIGNITY: 'methodology 存在不足' beats 'the authors are unprofessional'. (9) RESPONSE TIMELINE: commit strictly; decline up front if you can't. (10) SAVE A TEMPLATE: a stable opening/structure/closing saves time. (11) DISCLOSE AI USE to the editor even for minor drafting — non-disclosure is misconduct if later found. (12) AVOID NICHE JARGON: editors from other sub-areas may read the review; explain key terms — inclusivity is professional.",
     "exercises": [
       {
         "type": "fill-blank",
