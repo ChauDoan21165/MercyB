@@ -4,7 +4,7 @@
 
 import type { KoreanLesson } from "./lessons";
 
-export const lessons: KoreanLesson[] =   [
+export const lessons: KoreanLesson[] =     [
     {
       "id": 92,
       "level": "C1",
@@ -2717,6 +2717,11 @@ export const lessons: KoreanLesson[] =   [
             "연봉보다",
             "총보상 패키지",
             "함께 보고 싶습니다"
+          ],
+          "pronunciation_focus_en": [
+            "연봉보다 'yeon-bong-bo-da' — 'salary' as in 'yawn-bong'; ㅕ glide, not 'yeon' like English",
+            "총보상 패키지 'chong-bo-sang pae-keo-ji' — aspirated ㅊ ('ch' with a puff); 'package' loaned",
+            "함께 보고 싶습니다 'ham-kke bo-go ship-seum-ni-da' — tense ㄲ in 함께; final 다 read 'da', soft"
           ]
         },
         {
@@ -2728,6 +2733,11 @@ export const lessons: KoreanLesson[] =   [
             "성과에 따라",
             "보너스",
             "여쭙고 싶습니다"
+          ],
+          "pronunciation_focus_en": [
+            "성과에 따라 'seong-gwa-e tta-ra' — tense ㄸ in 따라; ㅓ ('uh' as in 'sung'), not ㅗ ('oh')",
+            "보너스 'bo-neo-seu' — 'bonus' loaned; final ㅡ is a tight 'eu', not English 'oo'",
+            "여쭙고 싶습니다 'yeo-jjup-go ship-seum-ni-da' — tense ㅉ in 여쭙; humble verb, low pitch"
           ]
         },
         {
@@ -2739,6 +2749,11 @@ export const lessons: KoreanLesson[] =   [
             "책임 범위",
             "상향된 조건",
             "필요합니다"
+          ],
+          "pronunciation_focus_en": [
+            "책임 범위 'chae-gim beom-wi' — aspirated ㅊ; batchim ㄱ in 책 links into 임 → 'chae-gim'",
+            "상향된 조건 'sang-hyang-doen jo-geon' — ㅚ in 된 ≈ 'dwen'; ㅓ in 건 ('uh')",
+            "필요합니다 'pi-ryo-ham-ni-da' — ㅎ before ㄴ assimilates; '-합니다' → 'ham-ni-da'"
           ]
         },
         {
@@ -2750,6 +2765,11 @@ export const lessons: KoreanLesson[] =   [
             "가능하시다면",
             "검토 결과",
             "감사하겠습니다"
+          ],
+          "pronunciation_focus_en": [
+            "가능하시다면 'ga-neung-ha-si-da-myeon' — plain ㄱ (no puff); ㅡ in 능 tight 'eu'",
+            "검토 결과 'geom-to gyeol-gwa' — ㅓ ('uh') in 검; aspirated ㅌ in 토",
+            "감사하겠습니다 'gam-sa-ha-get-seum-ni-da' — batchim ㅅ in 겠 → 't' stop; very common closer"
           ]
         }
       ],
@@ -2804,7 +2824,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Khi đàm phán lương với công ty Hàn, tốt nhất là nói theo khung 'tổng đãi ngộ' thay vì chỉ một con số. Họ sẽ nghe kỹ hơn nếu bạn gắn yêu cầu với kinh nghiệm, trách nhiệm và đóng góp lâu dài.",
+      "cultural_notes_en": "When negotiating salary with a Korean company, it's best to speak in terms of a 'total compensation' frame rather than a single number. They listen more closely if you tie the request to experience, responsibility, and long-term contribution.",
       "tip_advice_vi": "Mẫu nói an toàn: cảm ơn → nêu phạm vi công việc → hỏi về điều chỉnh → xin thời gian xem xét. Đừng mở đầu bằng con số quá gắt; trong môi trường Hàn, nhịp điệu và độ mềm của câu rất quan trọng.",
+      "tip_advice_en": "A safe speech pattern: thank them → state the scope of the role → ask about an adjustment → request time to consider. Don't open with too aggressive a number; in a Korean setting, the rhythm and softness of the sentence matter a lot.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -2856,6 +2878,11 @@ export const lessons: KoreanLesson[] =   [
             "저희 입장에서는",
             "부담이 큽니다",
             "이 조항"
+          ],
+          "pronunciation_focus_en": [
+            "저희 입장에서는 'jeo-hui ip-jang-e-seo-neun' — humble 'we' 저희; ㅢ in 희 often said 'i'",
+            "부담이 큽니다 'bu-dam-i keum-ni-da' — ㅋ aspirated in 큽; batchim ㅂ → 'm' before ㄴ",
+            "이 조항 'i jo-hang' — plain ㅈ; final ㅇ is a nasal 'ng', no hard 'g'"
           ]
         },
         {
@@ -2867,6 +2894,11 @@ export const lessons: KoreanLesson[] =   [
             "면책 범위",
             "너무 넓어서",
             "수정이 필요합니다"
+          ],
+          "pronunciation_focus_en": [
+            "면책 범위 'myeon-chaek beom-wi' — ㅕ glide in 면; aspirated ㅊ in 책",
+            "너무 넓어서 'neo-mu neol-beo-seo' — ㅓ ('uh') twice; 넓 batchim ㄼ links → 'neol-beo'",
+            "수정이 필요합니다 'su-jeong-i pi-ryo-ham-ni-da' — 정이 links 'jeong-i'; '-합니다' → 'ham-ni-da'"
           ]
         },
         {
@@ -2878,6 +2910,11 @@ export const lessons: KoreanLesson[] =   [
             "법무팀",
             "그대로 승인하기",
             "어렵다고 봅니다"
+          ],
+          "pronunciation_focus_en": [
+            "법무팀 'beom-mu-tim' — batchim ㅂ in 법 → 'm' before ㅁ; 'team' loaned, aspirated ㅌ",
+            "그대로 승인하기 'geu-dae-ro seung-in-ha-gi' — 그 is tight 'eu', not 'goo'",
+            "어렵다고 봅니다 'eo-ryeop-da-go bom-ni-da' — ㅓ ('uh'); 봅 batchim ㅂ → 'm' before ㄴ"
           ]
         },
         {
@@ -2889,6 +2926,11 @@ export const lessons: KoreanLesson[] =   [
             "책임 한도",
             "명확히",
             "수정안을 제안드리고 싶습니다"
+          ],
+          "pronunciation_focus_en": [
+            "책임 한도 'chae-gim han-do' — 책 batchim ㄱ links into 임 → 'chae-gim'",
+            "명확히 'myeong-hwa-ki' — ㅎ + ㅎ tighten; reads close to 'myeong-hwa-khi'",
+            "수정안을 제안드리고 싶습니다 'su-jeong-an-eul je-an-deu-ri-go ship-seum-ni-da' — humble offer"
           ]
         }
       ],
@@ -2943,7 +2985,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Khi từ chối điều khoản, không nên nói kiểu 'không được'. Hàn Quốc chuộng câu '그대로 승인하기 어렵습니다' hoặc '수정이 필요합니다' hơn. Giữ nhịp mềm nhưng lập luận rõ, bạn sẽ bảo vệ được cả quan hệ lẫn lập trường.",
+      "cultural_notes_en": "When refusing a clause, don't say it like a flat 'no'. Korea prefers '그대로 승인하기 어렵습니다' (it's hard to approve as is) or '수정이 필요합니다' (a revision is needed). Keep the rhythm soft but the reasoning clear, and you protect both the relationship and your position.",
       "tip_advice_vi": "Công thức tốt nhất: chỉ ra vấn đề, nêu vì sao bất lợi, rồi đưa bản sửa cụ thể. Đừng để câu chuyện biến thành tranh cãi đúng-sai; hãy đưa nó về 'cách sửa để cả hai bên đều chấp nhận'.",
+      "tip_advice_en": "The best formula: point out the problem, say why it's unfavorable, then offer a concrete revised version. Don't let it turn into a right-vs-wrong argument; steer it toward 'how to fix it so both sides accept'.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -2995,6 +3039,11 @@ export const lessons: KoreanLesson[] =   [
             "발언 순서는",
             "그다음",
             "마지막으로"
+          ],
+          "pronunciation_focus_en": [
+            "발언 순서는 'ba-reon sun-seo-neun' — 발 batchim ㄹ links into 언 → 'ba-reon'",
+            "그다음 'geu-da-eum' — 그 tight 'eu' (not 'goo'); 음 final ㅁ nasal",
+            "마지막으로 'ma-ji-ma-geu-ro' — 막 batchim ㄱ links into 으 → 'ma-geu-ro'"
           ]
         },
         {
@@ -3006,6 +3055,11 @@ export const lessons: KoreanLesson[] =   [
             "오늘 안건은",
             "품질 기준",
             "세 가지입니다"
+          ],
+          "pronunciation_focus_en": [
+            "오늘 안건은 'o-neul an-geon-eun' — ㅓ ('uh') in 건; 건은 links 'geon-eun'",
+            "품질 기준 'pum-jil gi-jun' — 품 batchim ㅁ; ㅈ plain in 질/준",
+            "세 가지입니다 'se ga-ji-im-ni-da' — plain ㄱ in 가; '-입니다' → 'im-ni-da'"
           ]
         },
         {
@@ -3017,6 +3071,11 @@ export const lessons: KoreanLesson[] =   [
             "쟁점이 많으니",
             "단계적으로",
             "정리하겠습니다"
+          ],
+          "pronunciation_focus_en": [
+            "쟁점이 많으니 'jaeng-jeo-mi man-eu-ni' — 점이 links 'jeo-mi'; 많 ㅎ silent here",
+            "단계적으로 'dan-gye-jeo-geu-ro' — ㄱ plain; 적 batchim ㄱ links → 'jeo-geu-ro'",
+            "정리하겠습니다 'jeong-ni-ha-get-seum-ni-da' — 정리 → 'jeong-ni' (ㄹ→ㄴ); 겠 → 't' stop"
           ]
         },
         {
@@ -3028,6 +3087,11 @@ export const lessons: KoreanLesson[] =   [
             "합의된 부분",
             "구분해서",
             "회의록에 남기겠습니다"
+          ],
+          "pronunciation_focus_en": [
+            "합의된 부분 'ha-bui-doen bu-bun' — 합 batchim ㅂ links → 'ha-bui'; ㅚ in 된 ≈ 'dwen'",
+            "구분해서 'gu-bun-hae-seo' — plain ㄱ; ㅐ in 해 ≈ 'eh'",
+            "회의록에 남기겠습니다 'hoe-ui-ro-ge nam-gi-get-seum-ni-da' — 록에 links 'ro-ge'"
           ]
         }
       ],
@@ -3082,7 +3146,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Người chủ trì họp ở Hàn phải nói rõ ai phát biểu trước, ai chốt sau, và phần nào sẽ được ghi vào biên bản. Nếu bạn điều phối tốt, cuộc họp sẽ trông rất 'có kiểm soát' và chuyên nghiệp.",
+      "cultural_notes_en": "A meeting chair in Korea must state clearly who speaks first, who closes, and which parts go into the minutes. If you moderate well, the meeting looks very 'in control' and professional.",
       "tip_advice_vi": "Công thức chủ trì họp: nêu thứ tự phát biểu, chia từng 안건, tách phần đồng thuận và phần còn lại, rồi chốt bằng 회의록. Chỉ cần giữ được nhịp họp, bạn đã vượt xa kiểu nói chuyện lỏng lẻo thông thường.",
+      "tip_advice_en": "A chairing formula: state the speaking order, split by each 안건 (agenda item), separate the agreed parts from the rest, then close with the 회의록 (minutes). Just keeping the meeting's rhythm puts you far ahead of the usual loose talk.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3134,6 +3200,11 @@ export const lessons: KoreanLesson[] =   [
             "단가만",
             "납기와 품질",
             "함께 봐야 합니다"
+          ],
+          "pronunciation_focus_en": [
+            "단가만 'dan-ga-man' — plain ㄱ; 가만 — keep ㅏ open ('ah'), not 'an'",
+            "납기와 품질 'nap-gi-wa pum-jil' — 납 batchim ㅂ; 품 batchim ㅁ",
+            "함께 봐야 합니다 'ham-kke bwa-ya ham-ni-da' — tense ㄲ; 봐 is one syllable 'bwa'"
           ]
         },
         {
@@ -3145,6 +3216,11 @@ export const lessons: KoreanLesson[] =   [
             "물량이 늘면",
             "공급가를",
             "조정할 여지"
+          ],
+          "pronunciation_focus_en": [
+            "물량이 늘면 'mul-lyang-i neul-myeon' — 물량 → 'mul-lyang' (ㄹㄹ); 늘 batchim ㄹ",
+            "공급가를 'gong-geup-ga-reul' — 급 batchim ㅂ → tense the following ㄱ ('geup-kka')",
+            "조정할 여지 'jo-jeong-hal yeo-ji' — ㅕ glide in 여; plain ㅈ"
           ]
         },
         {
@@ -3156,6 +3232,11 @@ export const lessons: KoreanLesson[] =   [
             "재견적을",
             "얼마나 빨리",
             "가능하시겠습니까"
+          ],
+          "pronunciation_focus_en": [
+            "재견적을 'jae-gyeon-jeo-geul' — ㅕ in 견; 적을 links 'jeo-geul'",
+            "얼마나 빨리 'eol-ma-na ppal-li' — tense ㅃ in 빨; 빨리 → 'ppal-li' (ㄹㄹ)",
+            "가능하시겠습니까 'ga-neung-ha-si-get-seum-ni-kka' — polite question, rising-soft end"
           ]
         },
         {
@@ -3167,6 +3248,11 @@ export const lessons: KoreanLesson[] =   [
             "장기 계약을",
             "서로 마진",
             "조정할 수 있습니다"
+          ],
+          "pronunciation_focus_en": [
+            "장기 계약을 'jang-gi gye-ya-geul' — ㄱ plain; 약을 links 'ya-geul'",
+            "서로 마진 'seo-ro ma-jin' — ㅓ ('uh') in 서; 'margin' loaned, plain ㅈ",
+            "조정할 수 있습니다 'jo-jeong-hal su it-seum-ni-da' — 있 batchim ㅆ → 't' stop"
           ]
         }
       ],
@@ -3221,7 +3307,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Đàm phán với nhà cung cấp ở Hàn thường đi theo logic: giá không tách rời tiến độ và chất lượng. Nếu bạn chỉ ép giá, họ sẽ giữ thế phòng thủ; nếu bạn đặt giá trong bức tranh dài hạn, họ dễ mở đường hơn.",
+      "cultural_notes_en": "Negotiating with a supplier in Korea usually follows the logic that price is inseparable from schedule and quality. If you only squeeze the price, they stay defensive; if you place price inside a long-term picture, they open up more easily.",
       "tip_advice_vi": "Đừng hỏi ngay 'có giảm không?'. Hãy nói theo chuỗi: khối lượng → thời hạn giao hàng → điều chỉnh đơn giá → hợp đồng dài hạn. Như vậy câu nói của bạn nghe có chiến lược hơn.",
+      "tip_advice_en": "Don't ask 'can you lower it?' right away. Speak in a chain: volume → delivery deadline → unit-price adjustment → long-term contract. That makes your sentence sound more strategic.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3273,6 +3361,11 @@ export const lessons: KoreanLesson[] =   [
             "말씀하신 방향",
             "한 가지 우려",
             "일정 측면"
+          ],
+          "pronunciation_focus_en": [
+            "말씀하신 방향 'mal-sseum-ha-sin bang-hyang' — tense ㅆ in 말씀; honorific 'what you said'",
+            "한 가지 우려 'han ga-ji u-ryeo' — plain ㄱ; ㅕ glide in 려",
+            "일정 측면 'il-jeong cheuk-myeon' — aspirated ㅊ in 측; ㅡ tight 'eu'"
           ]
         },
         {
@@ -3284,6 +3377,11 @@ export const lessons: KoreanLesson[] =   [
             "품질 점검",
             "부족할 수 있습니다",
             "지금 이 속도"
+          ],
+          "pronunciation_focus_en": [
+            "품질 점검 'pum-jil jeom-geom' — ㅓ ('uh') in 점/검; plain ㅈ/ㄱ",
+            "부족할 수 있습니다 'bu-jo-kal su it-seum-ni-da' — 족 batchim ㄱ + ㅎ → aspirated 'k'",
+            "지금 이 속도 'ji-geum i sok-do' — 금 final ㅁ; 속 batchim ㄱ tenses ㄷ → 'sok-tto'"
           ]
         },
         {
@@ -3295,6 +3393,11 @@ export const lessons: KoreanLesson[] =   [
             "대안을",
             "리스크를 줄일",
             "검토해 보면"
+          ],
+          "pronunciation_focus_en": [
+            "대안을 'dae-an-eul' — ㅐ ≈ 'eh'; 안을 links 'a-neul'",
+            "리스크를 줄일 'ri-seu-keu-reul ju-ril' — ㅡ tight 'eu' twice; 줄 batchim ㄹ links",
+            "검토해 보면 'geom-to-hae bo-myeon' — ㅓ ('uh') in 검; aspirated ㅌ in 토"
           ]
         },
         {
@@ -3306,6 +3409,11 @@ export const lessons: KoreanLesson[] =   [
             "우선순위를",
             "조정하면",
             "현실적인 일정"
+          ],
+          "pronunciation_focus_en": [
+            "우선순위를 'u-seon-su-nwi-reul' — ㅓ ('uh') in 선; ㅟ in 위 ≈ 'wi'",
+            "조정하면 'jo-jeong-ha-myeon' — plain ㅈ; ㅕ glide in 면",
+            "현실적인 일정 'hyeon-sil-jeo-gin il-jeong' — 적인 links 'jeo-gin'"
           ]
         }
       ],
@@ -3360,7 +3468,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Khi phản đối cấp trên ở Hàn, mục tiêu không phải 'thắng' mà là giữ được uy tín của cả hai bên. Bạn nên mở đầu bằng sự đồng thuận, sau đó mới nêu rủi ro và đưa một phương án thay thế cụ thể.",
+      "cultural_notes_en": "When pushing back on a superior in Korea, the goal is not to 'win' but to keep both sides' credibility intact. You should open with agreement, then raise the risk, then offer a concrete alternative.",
       "tip_advice_vi": "Công thức tốt nhất: hiểu → lo ngại → phương án thay thế → nhờ chỉnh lại. Nếu bạn làm được vậy, câu phản đối của bạn sẽ nghe xây dựng chứ không chống đối.",
+      "tip_advice_en": "The best formula: understand → concern → alternative → ask for an adjustment. If you can do that, your pushback sounds constructive rather than oppositional.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3412,6 +3522,11 @@ export const lessons: KoreanLesson[] =   [
             "사전 조율",
             "중시하는 편",
             "결론을 빨리"
+          ],
+          "pronunciation_focus_en": [
+            "사전 조율 'sa-jeon jo-ryul' — ㅓ ('uh') in 전; 율 batchim ㄹ",
+            "중시하는 편 'jung-si-ha-neun pyeon' — plain ㅈ; ㅕ glide in 편",
+            "결론을 빨리 'gyeol-lo-neul ppal-li' — 결론 → 'gyeol-lon' (ㄹㄴ→ㄹㄹ); tense ㅃ"
           ]
         },
         {
@@ -3423,6 +3538,11 @@ export const lessons: KoreanLesson[] =   [
             "관계를 먼저",
             "협상을 여는",
             "경우가 많습니다"
+          ],
+          "pronunciation_focus_en": [
+            "관계를 먼저 'gwan-gye-reul meon-jeo' — ㅓ ('uh') in 먼/저",
+            "협상을 여는 'hyeop-sang-eul yeo-neun' — 협 batchim ㅂ; ㅕ glides in 협/여",
+            "경우가 많습니다 'gyeong-u-ga man-seum-ni-da' — 많 ㅎ before ㅅ → tense, 'man-sseum'"
           ]
         },
         {
@@ -3434,6 +3554,11 @@ export const lessons: KoreanLesson[] =   [
             "직접적으로",
             "체면을 해칠 수",
             "완곡한 표현"
+          ],
+          "pronunciation_focus_en": [
+            "직접적으로 'jik-jeop-jeo-geu-ro' — 직 batchim ㄱ tenses ㅈ → 'jik-jjeop'; 적으 links",
+            "체면을 해칠 수 'che-myeo-neul hae-chil su' — aspirated ㅊ in 체/칠",
+            "완곡한 표현 'wan-go-kan pyo-hyeon' — 곡 ㄱ + ㅎ → aspirated 'k'; ㅛ in 표"
           ]
         },
         {
@@ -3445,6 +3570,11 @@ export const lessons: KoreanLesson[] =   [
             "양쪽 문화를",
             "신뢰를 함께",
             "챙길 수 있습니다"
+          ],
+          "pronunciation_focus_en": [
+            "양쪽 문화를 'yang-jjok mun-hwa-reul' — tense ㅉ in 쪽; ㅑ glide in 양",
+            "신뢰를 함께 'sil-loe-reul ham-kke' — 신뢰 → 'sil-loe' (ㄴㄹ→ㄹㄹ); tense ㄲ",
+            "챙길 수 있습니다 'chaeng-gil su it-seum-ni-da' — aspirated ㅊ; 있 → 't' stop"
           ]
         }
       ],
@@ -3499,7 +3629,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Không nên mô tả một bên là 'thẳng' và một bên là 'vòng vo' theo kiểu đánh giá. Hãy nói theo hướng quan sát: Hàn thiên về chuẩn bị và sắp xếp trước, Việt Nam thường đặt nặng quan hệ và nhịp trao đổi mềm hơn.",
+      "cultural_notes_en": "Don't describe one side as 'direct' and the other as 'roundabout' as a judgment. Frame it as an observation: Korea leans toward preparation and pre-arrangement; Vietnam often puts more weight on the relationship and a softer exchange rhythm.",
       "tip_advice_vi": "Khi so sánh văn hóa, hãy dùng 'thường', 'có xu hướng', 'trong một số bối cảnh' để tránh kết luận cứng. Điều này làm câu của bạn trưởng thành hơn rất nhiều.",
+      "tip_advice_en": "When comparing cultures, use 'usually', 'tends to', 'in some contexts' to avoid hard conclusions. This makes your sentence far more mature.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3551,6 +3683,11 @@ export const lessons: KoreanLesson[] =   [
             "사실관계",
             "문서로",
             "정리하는 편"
+          ],
+          "pronunciation_focus_en": [
+            "사실관계 'sa-sil-gwan-gye' — 실 batchim ㄹ; plain ㄱ in 관/계",
+            "문서로 'mun-seo-ro' — ㅓ ('uh') in 서; final ㄴ nasal in 문",
+            "정리하는 편 'jeong-ni-ha-neun pyeon' — 정리 → 'jeong-ni' (ㄹ→ㄴ)"
           ]
         },
         {
@@ -3562,6 +3699,11 @@ export const lessons: KoreanLesson[] =   [
             "증빙 자료",
             "훨씬 명확해집니다",
             "회의에서"
+          ],
+          "pronunciation_focus_en": [
+            "증빙 자료 'jeung-bing ja-ryo' — ㅡ tight 'eu' in 증; ㅛ in 료",
+            "훨씬 명확해집니다 'hwol-ssin myeong-hwa-kae-jim-ni-da' — tense ㅆ; 확+해 aspirated 'k'",
+            "회의에서 'hoe-ui-e-seo' — ㅚ in 회 ≈ 'hwe'; ㅢ in 의 often 'i'"
           ]
         },
         {
@@ -3573,6 +3715,11 @@ export const lessons: KoreanLesson[] =   [
             "인사팀에",
             "공식적으로",
             "절차를 따를 수 있습니다"
+          ],
+          "pronunciation_focus_en": [
+            "인사팀에 'in-sa-ti-me' — 'team' loaned, aspirated ㅌ; 팀에 links 'ti-me'",
+            "공식적으로 'gong-sik-jeo-geu-ro' — 식 batchim ㄱ tenses ㅈ → 'sik-jjeo'",
+            "절차를 따를 수 있습니다 'jeol-cha-reul tta-reul su it-seum-ni-da' — aspirated ㅊ; tense ㄸ"
           ]
         },
         {
@@ -3584,6 +3731,11 @@ export const lessons: KoreanLesson[] =   [
             "재발 방지",
             "책임 소재",
             "후속 조치"
+          ],
+          "pronunciation_focus_en": [
+            "재발 방지 'jae-bal bang-ji' — ㅐ ≈ 'eh'; 발 batchim ㄹ",
+            "책임 소재 'chae-gim so-jae' — 책 batchim ㄱ links → 'chae-gim'",
+            "후속 조치 'hu-sok jo-chi' — 속 batchim ㄱ tenses ㅈ → 'sok-jjo'; aspirated ㅊ in 치"
           ]
         }
       ],
@@ -3638,7 +3790,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Khi có tranh chấp nội bộ ở Hàn, người ta rất coi trọng cách ghi lại bằng chứng và quy trình. Nếu bạn nói theo cảm xúc quá mạnh, bạn sẽ bị xem là làm phức tạp vấn đề; nếu bạn trình bày bằng tài liệu, bạn sẽ được nghe kỹ hơn.",
+      "cultural_notes_en": "When there's an internal dispute in Korea, people put great weight on documenting evidence and following process. Speak too emotionally and you're seen as complicating the matter; present it with documents and you're heard more carefully.",
       "tip_advice_vi": "Hãy luôn tách 'sự việc', 'bằng chứng', 'quy trình' và 'biện pháp tái diễn'. Cách này nghe rất C1 và làm câu chuyện bớt cảm tính.",
+      "tip_advice_en": "Always separate 'the facts', 'the evidence', 'the process', and 'recurrence prevention'. This sounds very C1 and makes the story less emotional.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3690,6 +3844,11 @@ export const lessons: KoreanLesson[] =   [
             "현재 조건으로는",
             "우선순위와",
             "진행이 어렵습니다"
+          ],
+          "pronunciation_focus_en": [
+            "현재 조건으로는 'hyeon-jae jo-geo-neu-ro-neun' — ㅕ in 현; 건으 links 'geo-neu'",
+            "우선순위와 'u-seon-su-nwi-wa' — ㅓ ('uh') in 선; ㅟ in 위",
+            "진행이 어렵습니다 'jin-haeng-i eo-ryeop-seum-ni-da' — 행이 links; ㅓ ('uh') in 렵"
           ]
         },
         {
@@ -3701,6 +3860,11 @@ export const lessons: KoreanLesson[] =   [
             "다른 대안",
             "무리해서",
             "서두르지는 않겠습니다"
+          ],
+          "pronunciation_focus_en": [
+            "다른 대안 'da-reun dae-an' — 다른 → 'da-reun' (ㄹ liaison); ㅐ ≈ 'eh'",
+            "무리해서 'mu-ri-hae-seo' — plain ㅁ; ㅐ in 해 ≈ 'eh'",
+            "서두르지는 않겠습니다 'seo-du-reu-ji-neun an-ket-seum-ni-da' — 않 ㅎ+ㄱ → aspirated 'k'"
           ]
         },
         {
@@ -3712,6 +3876,11 @@ export const lessons: KoreanLesson[] =   [
             "최종안을",
             "바로 수락하지 않고",
             "내부 검토"
+          ],
+          "pronunciation_focus_en": [
+            "최종안을 'choe-jong-a-neul' — aspirated ㅊ; ㅚ in 최 ≈ 'chwe'; 안을 links",
+            "바로 수락하지 않고 'ba-ro su-ra-ka-ji an-ko' — 락 ㄱ+ㅎ → aspirated 'k'; 않고 → 'an-ko'",
+            "내부 검토 'nae-bu geom-to' — ㅐ ≈ 'eh'; ㅓ ('uh') in 검; aspirated ㅌ"
           ]
         },
         {
@@ -3723,6 +3892,11 @@ export const lessons: KoreanLesson[] =   [
             "관계를 생각해서도",
             "보류하는 것이",
             "더 나을 수 있습니다"
+          ],
+          "pronunciation_focus_en": [
+            "관계를 생각해서도 'gwan-gye-reul saeng-ga-kae-seo-do' — 각+해 → aspirated 'k'",
+            "보류하는 것이 'bo-ryu-ha-neun geo-si' — ㅠ in 류; 것이 links 'geo-si'",
+            "더 나을 수 있습니다 'deo na-eul su it-seum-ni-da' — ㅓ ('uh') in 더; 있 → 't' stop"
           ]
         }
       ],
@@ -3777,7 +3951,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Rút khỏi đàm phán ở Hàn không nên nghe như 'cắt đứt'. Bạn cần để lại cửa mở, đặc biệt nếu muốn hợp tác lại sau này. Từ như 보류, 검토, 대안, 우선순위 giúp câu rút lui nghe chuyên nghiệp hơn.",
+      "cultural_notes_en": "Withdrawing from a negotiation in Korea should not sound like 'cutting it off'. You need to leave a door open, especially if you want to cooperate again later. Words like 보류 (hold), 검토 (review), 대안 (alternative), 우선순위 (priority) make the exit sound more professional.",
       "tip_advice_vi": "Khi phải dừng đàm phán, hãy nói: cảm ơn, nêu lý do ưu tiên, nhắc đến phương án khác, và giữ quan hệ mở. Đó là cách rút lui mà không làm sập cầu.",
+      "tip_advice_en": "When you must stop a negotiation, say: thank you, give the priority reason, mention another option, and keep the relationship open. That's how to withdraw without burning the bridge.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3829,6 +4005,11 @@ export const lessons: KoreanLesson[] =   [
             "제안 금액",
             "예산 범위",
             "차이가 있습니다"
+          ],
+          "pronunciation_focus_en": [
+            "제안 금액 'je-an geu-maek' — plain ㅈ; 금 final ㅁ; ㅐ in 액 ≈ 'eh'",
+            "예산 범위 'ye-san beom-wi' — ㅖ in 예 ≈ 'ye'; ㅓ ('uh') in 범",
+            "차이가 있습니다 'cha-i-ga it-seum-ni-da' — aspirated ㅊ; 있 → 't' stop"
           ]
         },
         {
@@ -3840,6 +4021,11 @@ export const lessons: KoreanLesson[] =   [
             "그렇다고 해서",
             "관계를 해치고",
             "싶지는 않습니다"
+          ],
+          "pronunciation_focus_en": [
+            "그렇다고 해서 'geu-reo-ta-go hae-seo' — 렇 ㅎ+ㄷ → aspirated 't'; ㅐ in 해 ≈ 'eh'",
+            "관계를 해치고 'gwan-gye-reul hae-chi-go' — aspirated ㅊ in 치; ㅐ ≈ 'eh'",
+            "싶지는 않습니다 'sip-ji-neun an-seum-ni-da' — 싶 batchim ㅍ; 않 ㅎ+ㅅ → tense"
           ]
         },
         {
@@ -3851,6 +4037,11 @@ export const lessons: KoreanLesson[] =   [
             "현실적인 범위",
             "다시 제안해",
             "주시면 좋겠습니다"
+          ],
+          "pronunciation_focus_en": [
+            "현실적인 범위 'hyeon-sil-jeo-gin beom-wi' — 적인 links 'jeo-gin'; ㅓ ('uh') in 범",
+            "다시 제안해 'da-si je-an-hae' — plain ㅈ; ㅐ in 해 ≈ 'eh'",
+            "주시면 좋겠습니다 'ju-si-myeon jo-ket-seum-ni-da' — 좋 ㅎ+ㄱ → aspirated 'k'"
           ]
         },
         {
@@ -3862,6 +4053,11 @@ export const lessons: KoreanLesson[] =   [
             "장기적으로",
             "서로 부담",
             "없는 수준"
+          ],
+          "pronunciation_focus_en": [
+            "장기적으로 'jang-gi-jeo-geu-ro' — plain ㄱ; 적으 links 'jeo-geu'",
+            "서로 부담 'seo-ro bu-dam' — ㅓ ('uh') in 서; 담 final ㅁ",
+            "없는 수준 'eom-neun su-jun' — 없 batchim ㅄ → 'm' before ㄴ → 'eom-neun'"
           ]
         }
       ],
@@ -3916,7 +4112,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Đề nghị giá quá thấp là tình huống dễ làm mất thể diện nếu bạn trả lời quá cứng. Cách tốt hơn là nói về ngân sách, phạm vi thực tế và quan hệ dài hạn. Như vậy bạn từ chối được mà không làm bên kia bẽ mặt.",
+      "cultural_notes_en": "A lowball offer easily causes loss of face if you answer too harshly. The better move is to talk about budget, the realistic scope, and the long-term relationship. That way you can decline without embarrassing the other side.",
       "tip_advice_vi": "Dùng các cụm như '예산과 차이가 있습니다', '현실적인 범위', '서로 부담이 없는 수준' để giữ giọng trung tính. Những cụm này rất hữu ích khi bạn cần nói 'không' mà vẫn tử tế.",
+      "tip_advice_en": "Use phrases like '예산과 차이가 있습니다' (it differs from our budget), '현실적인 범위' (a realistic range), '서로 부담이 없는 수준' (a level with no burden on either side) to keep a neutral tone. These are very useful when you need to say 'no' while staying kind.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3968,6 +4166,11 @@ export const lessons: KoreanLesson[] =   [
             "상대가 압박하더라도",
             "감정을 따라가면",
             "망가집니다"
+          ],
+          "pronunciation_focus_en": [
+            "상대가 압박하더라도 'sang-dae-ga ap-ba-ka-deo-ra-do' — 압 batchim ㅂ; 박+하 → aspirated 'k'",
+            "감정을 따라가면 'gam-jeong-eul tta-ra-ga-myeon' — tense ㄸ in 따; 정을 links",
+            "망가집니다 'mang-ga-jim-ni-da' — plain ㄱ; 'gets ruined'; '-ㅂ니다' → 'jim-ni-da'"
           ]
         },
         {
@@ -3979,6 +4182,11 @@ export const lessons: KoreanLesson[] =   [
             "사실만 정리해서",
             "정중하게",
             "충돌을 줄일 수 있습니다"
+          ],
+          "pronunciation_focus_en": [
+            "사실만 정리해서 'sa-sil-man jeong-ni-hae-seo' — 사실만 → 'sa-sil-man'; 정리 → 'jeong-ni'",
+            "정중하게 'jeong-jung-ha-ge' — plain ㅈ twice; final ㅇ nasal",
+            "충돌을 줄일 수 있습니다 'chung-do-reul ju-ril su it-seum-ni-da' — aspirated ㅊ; 돌을 links"
           ]
         },
         {
@@ -3990,6 +4198,11 @@ export const lessons: KoreanLesson[] =   [
             "한계를 분명히",
             "예의는 끝까지",
             "지켜야 합니다"
+          ],
+          "pronunciation_focus_en": [
+            "한계를 분명히 'han-gye-reul bun-myeong-hi' — plain ㄱ in 계; 명히 → soft 'myeong-hi'",
+            "예의는 끝까지 'ye-ui-neun kkeut-kka-ji' — tense ㄲ in 끝/까; 끝 batchim ㅌ → 't' stop",
+            "지켜야 합니다 'ji-kyeo-ya ham-ni-da' — aspirated ㅋ in 켜; ㅕ glide"
           ]
         },
         {
@@ -4001,6 +4214,11 @@ export const lessons: KoreanLesson[] =   [
             "계속 공격적으로",
             "잠시 중단하는",
             "하나의 방법"
+          ],
+          "pronunciation_focus_en": [
+            "계속 공격적으로 'gye-sok gong-gyeok-jeo-geu-ro' — 격 batchim ㄱ tenses ㅈ; 적으 links",
+            "잠시 중단하는 'jam-si jung-dan-ha-neun' — 잠 final ㅁ; plain ㅈ",
+            "하나의 방법 'ha-na-ui bang-beop' — ㅢ in 의 often 'e'; 법 batchim ㅂ"
           ]
         }
       ],
@@ -4055,7 +4273,9 @@ export const lessons: KoreanLesson[] =   [
         }
       ],
       "cultural_notes_vi": "Đối thủ quá gay gắt thường muốn kéo cuộc nói chuyện sang cảm xúc. Cách chống đỡ tốt nhất là quay lại dữ kiện, giới hạn, và văn bản. Trong môi trường Hàn, người giữ được bình tĩnh thường có lợi thế hơn người nói to.",
+      "cultural_notes_en": "A hostile counterpart usually wants to drag the conversation into emotion. The best defense is to return to facts, limits, and documents. In a Korean setting, the person who stays calm usually has the advantage over the one who speaks loudly.",
       "tip_advice_vi": "Nếu bị ép mạnh, đừng phản ứng ngay. Hãy nói ngắn, nêu giới hạn, đề nghị quay lại bằng văn bản, và nếu cần thì tạm dừng. Đó là cách giữ ranh giới mà vẫn lịch sự.",
+      "tip_advice_en": "If you're pressed hard, don't react immediately. Speak briefly, state the limit, propose returning to it in writing, and pause if needed. That's how to hold the boundary while staying polite.",
       "exercises": [
         {
           "type": "fill-blank",
