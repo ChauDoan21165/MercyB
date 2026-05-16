@@ -5221,14 +5221,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Gèwèi méitǐ péngyǒu, gǎnxiè dàjiā zài duǎn shíjiān nèi lái dào xiànchǎng; jīntiān wǒmen huì xiān shuōmíng shìshí, zài huíyìng dàjiā guānxīn de wèntí.",
         "english": "Friends from the media, thank you for coming on short notice; today we will first state the facts, then respond to the questions you care about.",
         "vi": "Thưa các bạn truyền thông, cảm ơn mọi người đã đến trong thời gian ngắn; hôm nay chúng tôi sẽ trình bày sự việc trước, rồi trả lời các câu hỏi mọi người quan tâm.",
-        "pronunciation_focus": ["各位媒体朋友 → formal but warm", "先...再... → structured order", "回应 → huíyìng"]
+        "pronunciation_focus": ["各位媒体朋友 → formal but warm", "先...再... → structured order", "回应 → huíyìng"],
+        "pronunciation_focus_en": ["各位媒体朋友 → gèwèi méitǐ péngyǒu ('friends from the media') — a formal-but-warm address","先…再… → xiān…zài… ('first … then …') — sets a structured order","回应 → huíyìng ('to respond to / address')"]
       },
       {
         "chinese": "在调查完成之前, 我们不会作没有根据的推测; 但可以确认的是, 受影响的客户已经获得直接通知。",
         "pinyin": "Zài diàochá wánchéng zhīqián, wǒmen bù huì zuò méiyǒu gēnjù de tuīcè; dàn kěyǐ quèrèn de shì, shòu yǐngxiǎng de kèhù yǐjīng huòdé zhíjiē tōngzhī.",
         "english": "Before the review is completed, we will not make unfounded speculation; what we can confirm is that affected customers have been notified directly.",
         "vi": "Trước khi hoàn tất rà soát, chúng tôi sẽ không suy đoán thiếu căn cứ; điều có thể xác nhận là khách hàng bị ảnh hưởng đã được thông báo trực tiếp.",
-        "pronunciation_focus": ["没有根据的推测", "可以确认的是", "受影响的客户"]
+        "pronunciation_focus": ["没有根据的推测", "可以确认的是", "受影响的客户"],
+        "pronunciation_focus_en": ["没有根据的推测 → méiyǒu gēnjù de tuīcè ('unfounded speculation') — what to refuse to make","可以确认的是 → kěyǐ quèrèn de shì ('what can be confirmed is …') — a controlled-disclosure frame","受影响的客户 → shòu yǐngxiǎng de kèhù ('the affected customers')"]
       }
     ],
     "vocab": [
@@ -5261,14 +5263,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Běn gōngsī jīnrì xuānbù, jiāng yú Xīnjiāpō tuīchū miànxiàng zhōngxiǎo qǐyè de shuāngyǔ kèhù fúwù píngtái.",
         "english": "The company announced today that it will launch a bilingual customer-service platform for SMEs in Singapore.",
         "vi": "Công ty hôm nay công bố sẽ ra mắt tại Singapore một nền tảng chăm sóc khách hàng song ngữ dành cho doanh nghiệp vừa và nhỏ.",
-        "pronunciation_focus": ["本公司今日宣布", "推出", "面向中小企业"]
+        "pronunciation_focus": ["本公司今日宣布", "推出", "面向中小企业"],
+        "pronunciation_focus_en": ["本公司今日宣布 → běn gōngsī jīnrì xuānbù ('the company announced today') — the standard release lead","推出 → tuīchū ('to launch/roll out')","面向中小企业 → miànxiàng zhōngxiǎo qǐyè ('aimed at SMEs')"]
       },
       {
         "chinese": "新闻稿第二段应补充背景、数据与引述, 避免把宣传口号写成新闻事实。",
         "pinyin": "Xīnwéngǎo dì èr duàn yīng bǔchōng bèijǐng, shùjù yǔ yǐnshù, bìmiǎn bǎ xuānchuán kǒuhào xiě chéng xīnwén shìshí.",
         "english": "The second paragraph of a press release should add background, data, and quotes, avoiding turning slogans into news facts.",
         "vi": "Đoạn thứ hai của thông cáo nên bổ sung bối cảnh, dữ liệu và trích dẫn, tránh viết khẩu hiệu quảng bá như thể là sự kiện báo chí.",
-        "pronunciation_focus": ["背景、数据与引述", "宣传口号", "新闻事实"]
+        "pronunciation_focus": ["背景、数据与引述", "宣传口号", "新闻事实"],
+        "pronunciation_focus_en": ["背景、数据与引述 → bèijǐng, shùjù yǔ yǐnshù ('background, data, and quotes') — what paragraph 2 must add","宣传口号 → xuānchuán kǒuhào ('a marketing slogan') — what NOT to pass off as news","新闻事实 → xīnwén shìshí ('news fact')"]
       }
     ],
     "vocab": [
@@ -5301,14 +5305,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Yī piān gěi Liánhé Zǎobào huò Xiānggǎng Míngbào de pínglùn wénzhāng, bìxū xiān tíchū gōnggòng wèntí, zài gěi chū kě zhíxíng de pànduàn.",
         "english": "An op-ed for Lianhe Zaobao or Hong Kong's Ming Pao must first frame a public issue, then offer an actionable judgment.",
         "vi": "Một bài bình luận cho Liên Hợp Tảo Báo hoặc Minh Báo Hong Kong phải nêu vấn đề công trước, rồi đưa ra nhận định có thể hành động.",
-        "pronunciation_focus": ["评论文章", "公共问题", "可执行的判断"]
+        "pronunciation_focus": ["评论文章", "公共问题", "可执行的判断"],
+        "pronunciation_focus_en": ["评论文章 → pínglùn wénzhāng ('op-ed / commentary article')","公共问题 → gōnggòng wèntí ('a public issue') — frame this first","可执行的判断 → kě zhíxíng de pànduàn ('an actionable judgment') — then offer this"]
       },
       {
         "chinese": "评论不是抱怨, 而是把经验、数据和价值判断组织成一个负责任的论点。",
         "pinyin": "Pínglùn bù shì bàoyuàn, ér shì bǎ jīngyàn, shùjù hé jiàzhí pànduàn zǔzhī chéng yī gè fù zérèn de lùndiǎn.",
         "english": "Commentary is not complaint; it organizes experience, data, and value judgment into a responsible argument.",
         "vi": "Bình luận không phải than phiền; nó tổ chức kinh nghiệm, dữ liệu và phán đoán giá trị thành một luận điểm có trách nhiệm.",
-        "pronunciation_focus": ["不是...而是...", "价值判断", "负责任的论点"]
+        "pronunciation_focus": ["不是...而是...", "价值判断", "负责任的论点"],
+        "pronunciation_focus_en": ["不是…而是… → bùshì…érshì… ('not … but rather …') — the corrective frame","价值判断 → jiàzhí pànduàn ('value judgment')","负责任的论点 → fù zérèn de lùndiǎn ('a responsible argument')"]
       }
     ],
     "vocab": [
@@ -5341,14 +5347,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Zài bōkè lǐ, nǐ kěyǐ bǐ jìzhěhuì gèng zìrán, dàn réng yào bìmiǎn bǎ wèi jīng quèrèn de xìnxī shuō chéng shìshí.",
         "english": "On a podcast, you can sound more natural than in a press conference, but you must still avoid presenting unconfirmed information as fact.",
         "vi": "Trên podcast, bạn có thể nói tự nhiên hơn họp báo, nhưng vẫn phải tránh biến thông tin chưa xác nhận thành sự thật.",
-        "pronunciation_focus": ["播客", "更自然", "未经确认的信息"]
+        "pronunciation_focus": ["播客", "更自然", "未经确认的信息"],
+        "pronunciation_focus_en": ["播客 → bòkè ('podcast')","更自然 → gèng zìrán ('more natural') — the register shift vs a presser","未经确认的信息 → wèijīng quèrèn de xìnxī ('unconfirmed information') — don't state as fact"]
       },
       {
         "chinese": "主持人追问时, 可以先承认问题的合理性, 再把回答带回你能负责的范围。",
         "pinyin": "Zhǔchírén zhuīwèn shí, kěyǐ xiān chéngrèn wèntí de hélǐxìng, zài bǎ huídá dài huí nǐ néng fùzé de fànwéi.",
         "english": "When the host follows up, first acknowledge the legitimacy of the question, then bring the answer back to the scope you can own.",
         "vi": "Khi người dẫn hỏi dồn, có thể thừa nhận tính hợp lý của câu hỏi trước, rồi đưa câu trả lời về phạm vi mình chịu trách nhiệm được.",
-        "pronunciation_focus": ["追问", "合理性", "能负责的范围"]
+        "pronunciation_focus": ["追问", "合理性", "能负责的范围"],
+        "pronunciation_focus_en": ["追问 → zhuīwèn ('to press / follow up'); zh is retroflex","合理性 → hélǐxìng ('legitimacy/reasonableness') — acknowledge it first","能负责的范围 → néng fùzé de fànwéi ('the scope you can own')"]
       }
     ],
     "vocab": [
@@ -5381,14 +5389,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Zhíbō fǎngwèn zhōng, huídá bìxū duǎn, wěn, kě yǐnyòng; rúguǒ jùzi tài cháng, zhǔbō huì dǎduàn nǐ.",
         "english": "In a live interview, answers must be short, steady, and quotable; if your sentences are too long, the anchor will interrupt you.",
         "vi": "Trong phỏng vấn trực tiếp, câu trả lời phải ngắn, vững và có thể trích dẫn; nếu câu quá dài, người dẫn sẽ cắt lời.",
-        "pronunciation_focus": ["短、稳、可引用", "打断", "直播访问"]
+        "pronunciation_focus": ["短、稳、可引用", "打断", "直播访问"],
+        "pronunciation_focus_en": ["短、稳、可引用 → duǎn, wěn, kě yǐnyòng ('short, steady, quotable') — the live-answer rule","打断 → dǎduàn ('to interrupt') — what the anchor does to long answers","直播访问 → zhíbō fǎngwèn ('a live interview')"]
       },
       {
         "chinese": "当主播要求你立即表态时, 可以说: 我理解这个问题很急, 但我们需要以核实后的信息为准。",
         "pinyin": "Dāng zhǔbō yāoqiú nǐ lìjí biǎotài shí, kěyǐ shuō: wǒ lǐjiě zhège wèntí hěn jí, dàn wǒmen xūyào yǐ héshí hòu de xìnxī wéi zhǔn.",
         "english": "When the anchor asks you to take a position immediately, say: I understand the urgency, but we need to rely on verified information.",
         "vi": "Khi người dẫn yêu cầu bạn lập tức bày tỏ quan điểm, có thể nói: Tôi hiểu vấn đề này rất gấp, nhưng chúng tôi cần dựa trên thông tin đã xác minh.",
-        "pronunciation_focus": ["立即表态", "以...为准", "核实后的信息"]
+        "pronunciation_focus": ["立即表态", "以...为准", "核实后的信息"],
+        "pronunciation_focus_en": ["立即表态 → lìjí biǎotài ('to state a position immediately') — the pressure move","以…为准 → yǐ…wéi zhǔn ('to go by … as authoritative') — the deflection frame","核实后的信息 → héshí hòu de xìnxī ('verified information')"]
       }
     ],
     "vocab": [
@@ -5421,14 +5431,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Wǒmen xiàng shòu yǐngxiǎng de kèhù hé hézuò huǒbàn zhèngzhòng dàoqiàn; zhè bù shì tāmen yīngdāng chéngshòu de fúwù tǐyàn.",
         "english": "We offer a solemn apology to affected customers and partners; this is not the service experience they should have had to endure.",
         "vi": "Chúng tôi xin lỗi nghiêm túc tới khách hàng và đối tác bị ảnh hưởng; đây không phải trải nghiệm dịch vụ mà họ đáng phải chịu.",
-        "pronunciation_focus": ["郑重道歉", "应当承受", "服务体验"]
+        "pronunciation_focus": ["郑重道歉", "应当承受", "服务体验"],
+        "pronunciation_focus_en": ["郑重道歉 → zhèngzhòng dàoqiàn ('to apologize solemnly'); zh retroflex","应当承受 → yīngdāng chéngshòu ('should have to endure')","服务体验 → fúwù tǐyàn ('service experience')"]
       },
       {
         "chinese": "道歉之后必须说明补救、责任和时间表, 否则听起来只是情绪管理。",
         "pinyin": "Dàoqiàn zhīhòu bìxū shuōmíng bǔjiù, zérèn hé shíjiānbiǎo, fǒuzé tīng qǐlái zhǐ shì qíngxù guǎnlǐ.",
         "english": "After apologizing, you must explain remedy, responsibility, and timeline; otherwise it sounds like emotional management only.",
         "vi": "Sau lời xin lỗi phải nêu biện pháp khắc phục, trách nhiệm và thời hạn; nếu không sẽ nghe như chỉ quản lý cảm xúc.",
-        "pronunciation_focus": ["补救", "责任", "时间表"]
+        "pronunciation_focus": ["补救", "责任", "时间表"],
+        "pronunciation_focus_en": ["补救 → bǔjiù ('remedy / to make amends')","责任 → zérèn ('responsibility')","时间表 → shíjiānbiǎo ('timeline') — without these three it's just 'emotional management'"]
       }
     ],
     "vocab": [
@@ -5461,14 +5473,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Bèijǐng jiǎnbào de mùdì bù shì fàngfēng, ér shì bāngzhù jìzhě lǐjiě shíjiānxiàn, jìshù xiànzhì hé juécè bèijǐng.",
         "english": "The purpose of a background briefing is not to leak hints, but to help reporters understand the timeline, technical limits, and decision context.",
         "vi": "Mục đích của briefing bối cảnh không phải thả tín hiệu, mà là giúp phóng viên hiểu dòng thời gian, giới hạn kỹ thuật và bối cảnh quyết định.",
-        "pronunciation_focus": ["背景简报", "放风", "时间线"]
+        "pronunciation_focus": ["背景简报", "放风", "时间线"],
+        "pronunciation_focus_en": ["背景简报 → bèijǐng jiǎnbào ('background briefing')","放风 → fàngfēng ('to leak/float hints') — what it is NOT for","时间线 → shíjiānxiàn ('timeline')"]
       },
       {
         "chinese": "开场必须先讲清楚规则: 哪些可以引用, 哪些只能作为背景理解。",
         "pinyin": "Kāichǎng bìxū xiān jiǎng qīngchǔ guīzé: nǎxiē kěyǐ yǐnyòng, nǎxiē zhǐ néng zuòwéi bèijǐng lǐjiě.",
         "english": "At the start, you must clarify the rules: what can be quoted and what is only for background understanding.",
         "vi": "Khi mở đầu phải nói rõ quy tắc: phần nào có thể trích dẫn, phần nào chỉ dùng để hiểu bối cảnh.",
-        "pronunciation_focus": ["讲清楚规则", "可以引用", "背景理解"]
+        "pronunciation_focus": ["讲清楚规则", "可以引用", "背景理解"],
+        "pronunciation_focus_en": ["讲清楚规则 → jiǎng qīngchu guīzé ('to spell out the rules') — do this at the start","可以引用 → kěyǐ yǐnyòng ('quotable / on the record')","背景理解 → bèijǐng lǐjiě ('for background understanding only')"]
       }
     ],
     "vocab": [
@@ -5501,14 +5515,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Miànduì jiānruì tíwèn, bùyào xiān píngjià jìzhě de dòngjī; xiān huídá wèntí běnshēn, zài jiūzhèng bù zhǔnquè de qiántí.",
         "english": "When facing a sharp question, do not begin by judging the reporter's motive; answer the question itself, then correct inaccurate premises.",
         "vi": "Khi gặp câu hỏi gay gắt, đừng đánh giá động cơ của phóng viên trước; hãy trả lời bản thân câu hỏi, rồi chỉnh lại tiền đề không chính xác.",
-        "pronunciation_focus": ["尖锐提问", "动机", "不准确的前提"]
+        "pronunciation_focus": ["尖锐提问", "动机", "不准确的前提"],
+        "pronunciation_focus_en": ["尖锐提问 → jiānruì tíwèn ('a sharp question')","动机 → dòngjī ('motive') — do NOT judge the reporter's","不准确的前提 → bù zhǔnquè de qiántí ('an inaccurate premise') — correct it after answering"]
       },
       {
         "chinese": "你可以说: 我不同意问题中的前提, 但我会回应你关心的核心。",
         "pinyin": "Nǐ kěyǐ shuō: wǒ bù tóngyì wèntí zhōng de qiántí, dàn wǒ huì huíyìng nǐ guānxīn de héxīn.",
         "english": "You can say: I do not agree with the premise of the question, but I will respond to the core of your concern.",
         "vi": "Bạn có thể nói: Tôi không đồng ý với tiền đề trong câu hỏi, nhưng tôi sẽ trả lời phần cốt lõi anh/chị quan tâm.",
-        "pronunciation_focus": ["不同意前提", "回应核心", "关心"]
+        "pronunciation_focus": ["不同意前提", "回应核心", "关心"],
+        "pronunciation_focus_en": ["不同意前提 → bù tóngyì qiántí ('to disagree with the premise')","回应核心 → huíyìng héxīn ('to respond to the core [concern]')","关心 → guānxīn ('what one cares about / the concern')"]
       }
     ],
     "vocab": [
@@ -5541,14 +5557,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Měi zhōu jiǎnbào de jiàzhí zàiyú jiànlì wěndìng yùqī: nǎxiē yìtí gēngxīn, nǎxiē réng zài chǔlǐ zhōng, nǎxiē zàn bù pínglùn.",
         "english": "The value of a weekly briefing lies in setting stable expectations: what topics are updated, what remains in process, and what will not be commented on for now.",
         "vi": "Giá trị của briefing hằng tuần nằm ở việc tạo kỳ vọng ổn định: vấn đề nào có cập nhật, vấn đề nào đang xử lý, vấn đề nào tạm thời không bình luận.",
-        "pronunciation_focus": ["建立稳定预期", "议题更新", "暂不评论"]
+        "pronunciation_focus": ["建立稳定预期", "议题更新", "暂不评论"],
+        "pronunciation_focus_en": ["建立稳定预期 → jiànlì wěndìng yùqī ('to set stable expectations')","议题更新 → yìtí gēngxīn ('topic updates')","暂不评论 → zàn bù pínglùn ('no comment for now') — a legitimate, stated category"]
       },
       {
         "chinese": "发言人不是把所有问题都答完的人, 而是把机构立场清楚、稳定、可追踪地表达出来的人。",
         "pinyin": "Fāyánrén bù shì bǎ suǒyǒu wèntí dōu dá wán de rén, ér shì bǎ jīgòu lìchǎng qīngchǔ, wěndìng, kě zhuīzōng de biǎodá chūlái de rén.",
         "english": "A spokesperson is not someone who answers every question completely, but someone who expresses the institution's position clearly, steadily, and traceably.",
         "vi": "Người phát ngôn không phải người trả lời hết mọi câu hỏi, mà là người diễn đạt lập trường của tổ chức rõ ràng, ổn định và có thể truy vết.",
-        "pronunciation_focus": ["发言人", "机构立场", "可追踪"]
+        "pronunciation_focus": ["发言人", "机构立场", "可追踪"],
+        "pronunciation_focus_en": ["发言人 → fāyánrén ('spokesperson')","机构立场 → jīgòu lìchǎng ('the institution's position')","可追踪 → kě zhuīzōng ('traceable') — express the position clearly, steadily, traceably"]
       }
     ],
     "vocab": [
@@ -5581,14 +5599,16 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Shèjiāo méitǐ shēngmíng yào bǐ xīnwéngǎo duǎn, dàn bùnéng bǐ xīnwéngǎo suíbiàn; měi yī jù dōu kěnéng bèi jiétú zhuǎnfā.",
         "english": "A social-media statement should be shorter than a press release, but not more casual; every sentence may be screenshotted and shared.",
         "vi": "Tuyên bố trên mạng xã hội nên ngắn hơn thông cáo báo chí, nhưng không được tùy tiện hơn; câu nào cũng có thể bị chụp màn hình và chia sẻ.",
-        "pronunciation_focus": ["社交媒体声明", "随便", "截图转发"]
+        "pronunciation_focus": ["社交媒体声明", "随便", "截图转发"],
+        "pronunciation_focus_en": ["社交媒体声明 → shèjiāo méitǐ shēngmíng ('a social-media statement')","随便 → suíbiàn ('casual/offhand') — shorter than a release but NOT more casual","截图转发 → jiétú zhuǎnfā ('to screenshot and reshare') — every sentence may be"]
       },
       {
         "chinese": "第一句说明立场, 第二句说明行动, 第三句说明后续更新在哪里发布。",
         "pinyin": "Dì yī jù shuōmíng lìchǎng, dì èr jù shuōmíng xíngdòng, dì sān jù shuōmíng hòuxù gēngxīn zài nǎlǐ fābù.",
         "english": "The first sentence states the position, the second states the action, and the third states where later updates will be posted.",
         "vi": "Câu đầu nêu lập trường, câu hai nêu hành động, câu ba nói cập nhật tiếp theo sẽ đăng ở đâu.",
-        "pronunciation_focus": ["立场", "行动", "后续更新"]
+        "pronunciation_focus": ["立场", "行动", "后续更新"],
+        "pronunciation_focus_en": ["立场 → lìchǎng ('position') — sentence 1","行动 → xíngdòng ('action') — sentence 2","后续更新 → hòuxù gēngxīn ('subsequent updates') — sentence 3 says where they'll be posted"]
       }
     ],
     "vocab": [
