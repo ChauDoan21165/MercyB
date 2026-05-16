@@ -20,6 +20,12 @@ export const lessons: FrenchLesson[] =           [
             "Lanson → lãn-sõn",
             "exige → èg-zij",
             "interroger → an-tè-ro-jé"
+          ],
+          "pronunciation_focus_en": [
+            "explication → 'eks-plee-kah-SYON' — '-tion' = 'syon', not English '-shun'; final-syllable stress",
+            "Lanson → 'lahn-SON' — Gustave Lanson; two nasal vowels; final 'n' not a hard consonant",
+            "exige → 'eg-ZEEZH' — 'x' = 'gz' between vowels; final '-ge' = 'zh'; '-e' silent",
+            "interroger → 'an-teh-roh-ZHAY' — nasal 'in'; uvular 'r'; '-ger' = 'zhay'"
           ]
         },
         {
@@ -30,6 +36,12 @@ export const lessons: FrenchLesson[] =           [
             "commentateur → ko-mãn-ta-tơr",
             "oreille → o-rèy",
             "demi → dơ-mi"
+          ],
+          "pronunciation_focus_en": [
+            "encore → 'ahn-KOR' — nasal 'en'; here 'Encore faut-il que' = 'and yet one still needs'",
+            "commentateur → 'koh-mahn-tah-TUR' — nasal 'en'; final '-eur' rounded, lips forward",
+            "oreille → 'oh-RAY' — '-eille' = 'ay' glide; 'avoir l'oreille fine' = to have a fine ear",
+            "demi → 'duh-MEE' — schwa first syllable; 'à demi' = 'by half / only partly'"
           ]
         },
         {
@@ -40,6 +52,12 @@ export const lessons: FrenchLesson[] =           [
             "anodine → a-no-din",
             "recèle → rơ-sèl",
             "rythmique → rit-mik"
+          ],
+          "pronunciation_focus_en": [
+            "apparence → 'ah-pah-RAHNS' — nasal 'en'; 'd'apparence anodine' = seemingly trivial",
+            "anodine → 'ah-noh-DEEN' — feminine of 'anodin' = innocuous/trivial; FALSE FRIEND, not English 'anodyne' (a painkiller)",
+            "recèle → 'ruh-SEL' — grave 'è' opens the vowel; literary verb 'receler' = to harbor/conceal",
+            "rythmique → 'reet-MEEK' — 'th' = plain 't'; final '-ique' = 'eek'"
           ]
         },
         {
@@ -50,6 +68,12 @@ export const lessons: FrenchLesson[] =           [
             "préférable → pré-fé-ra-blơ",
             "procédât → pro-sé-da",
             "inverse → an-vèrs"
+          ],
+          "pronunciation_focus_en": [
+            "eût → 'U' — rounded French 'u'; imperfect subjunctive of avoir; 'il eût été' = literary 'it would have been'",
+            "préférable → 'pray-fay-RAH-bluh' — final '-ble' barely voiced, not English 'bull'",
+            "procédât → 'pro-say-DAH' — imperfect subjunctive of 'procéder'; final '-t' silent; marks elevated written register",
+            "inverse → 'an-VEHRS' — nasal 'in'; final '-e' silent; 'l'inverse' = the reverse"
           ]
         },
         {
@@ -60,6 +84,12 @@ export const lessons: FrenchLesson[] =           [
             "thèmes → tèm",
             "restituer → rès-ti-tu-é",
             "singularité → san-gu-la-ri-té"
+          ],
+          "pronunciation_focus_en": [
+            "réduire → 'ray-DWEER' — 'ui' glides to 'weer'; 'loin de réduire' = far from reducing",
+            "thèmes → 'TEM' — 'th' = plain 't'; plural '-s' silent",
+            "restituer → 'res-tee-tew-AY' — 'u' rounded 'ew'; '-er' = 'ay'; = to render/give back faithfully",
+            "singularité → 'san-gew-lah-ree-TAY' — nasal 'in'; '-té' = 'tay'; the formal singularity"
           ]
         }
       ],
@@ -71,70 +101,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "close reading (French tradition)",
           "vi": "bình giảng văn bản chi tiết",
           "pos": "n.f.",
-          "pronunciation_vi": "èk-spli-ka-sion dơ tèkst"
+          "pronunciation_vi": "èk-spli-ka-sion dơ tèkst",
+          "pronunciation_en": "lehks-plee-kah-SYON duh TEKST — 'l'explication de texte'; the French close-reading exercise, with no exact English equivalent"
         },
         {
           "word": "un commentaire composé",
           "en": "a structured commentary",
           "vi": "bình luận có cấu trúc",
           "pos": "n.m.",
-          "pronunciation_vi": "ko-mãn-tèr kõm-po-zé"
+          "pronunciation_vi": "ko-mãn-tèr kõm-po-zé",
+          "pronunciation_en": "UN koh-mahn-TEHR kohm-poh-ZAY — 'commentaire composé'; a thematic (non-linear) written commentary"
         },
         {
           "word": "un axe de lecture",
           "en": "a line of interpretation",
           "vi": "một trục đọc",
           "pos": "n.m.",
-          "pronunciation_vi": "aks dơ lèk-tur"
+          "pronunciation_vi": "aks dơ lèk-tur",
+          "pronunciation_en": "UN AKS duh lek-TUR — 'axe de lecture'; an interpretive thread sustained across the whole passage"
         },
         {
           "word": "l'écart stylistique",
           "en": "stylistic divergence",
           "vi": "sự lệch về phong cách",
           "pos": "n.m.",
-          "pronunciation_vi": "é-kar sti-lis-tik"
+          "pronunciation_vi": "é-kar sti-lis-tik",
+          "pronunciation_en": "lay-KAR stee-lees-TEEK — 'écart stylistique'; a deviation from the stylistic norm"
         },
         {
           "word": "un choix énonciatif",
           "en": "an enunciative choice",
           "vi": "một lựa chọn phát ngôn",
           "pos": "n.m.",
-          "pronunciation_vi": "shoa é-nõn-sia-tif"
+          "pronunciation_vi": "shoa é-nõn-sia-tif",
+          "pronunciation_en": "UN SHWAH ay-non-syah-TEEF — 'choix énonciatif'; a choice of utterance/voice — who speaks, and in what mode"
         },
         {
           "word": "recéler un sens",
           "en": "to harbor a meaning",
           "vi": "ẩn chứa một ý nghĩa",
           "pos": "v.",
-          "pronunciation_vi": "rơ-sé-lé an sãns"
+          "pronunciation_vi": "rơ-sé-lé an sãns",
+          "pronunciation_en": "ruh-say-LAY un SAHNS — 'recéler un sens'; literary verb = to harbor / conceal a meaning"
         },
         {
           "word": "en filigrane",
           "en": "as a watermark / implicitly",
           "vi": "ngầm ẩn (littéraire)",
           "pos": "loc.",
-          "pronunciation_vi": "ã fi-li-gran"
+          "pronunciation_vi": "ã fi-li-gran",
+          "pronunciation_en": "ahn fee-lee-GRAHN — 'en filigrane'; like a watermark — i.e. implicitly, beneath the surface"
         },
         {
           "word": "une anaphore",
           "en": "an anaphora",
           "vi": "phép điệp ngữ đầu câu",
           "pos": "n.f.",
-          "pronunciation_vi": "a-na-for"
+          "pronunciation_vi": "a-na-for",
+          "pronunciation_en": "ün ah-nah-FOR — 'anaphore'; rhetorical repetition of a word at the start of successive clauses"
         },
         {
           "word": "une hyperbate",
           "en": "a hyperbaton",
           "vi": "phép đảo ngữ tu từ",
           "pos": "n.f.",
-          "pronunciation_vi": "i-pèr-bat"
+          "pronunciation_vi": "i-pèr-bat",
+          "pronunciation_en": "ün ee-pehr-BAT — 'hyperbate' (hyperbaton); a syntactic dislocation for effect; 'h' silent"
         },
         {
           "word": "un hapax",
           "en": "a hapax (single occurrence)",
           "vi": "hapax — từ xuất hiện duy nhất một lần",
           "pos": "n.m.",
-          "pronunciation_vi": "a-paks"
+          "pronunciation_vi": "a-paks",
+          "pronunciation_en": "UN ah-PAKS — 'hapax'; a word or form occurring only once in a corpus; final 'x' pronounced"
         }
       ],
       "dialogue": [
@@ -226,25 +266,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Lire entre les lignes (courant)",
           "literal": "Đọc giữa các dòng",
+          "literal_en": "to read between the lines",
           "meaning": "Hiểu điều ngầm — không công thức học thuật cao.",
+          "meaning_en": "to grasp the implicit — common register, not an elevated academic formula",
           "example": "Madame Bovary se lit aussi entre les lignes — l'ironie y est rarement explicite."
         },
         {
           "idiom": "En filigrane (littéraire)",
           "literal": "Như hình ngầm trên giấy",
+          "literal_en": "like a watermark in paper",
           "meaning": "Ẩn ngầm dưới bề mặt — formel littéraire.",
+          "meaning_en": "implied beneath the surface — formal/literary register",
           "example": "En filigrane de cette page descriptive, on lit déjà le drame qui s'annonce."
         },
         {
           "idiom": "Faire entendre (littéraire)",
           "literal": "Làm cho nghe",
+          "literal_en": "to make (something) heard",
           "meaning": "Để lộ ngầm — sản sinh ý nghĩa qua hình thức.",
+          "meaning_en": "to let be understood implicitly — meaning produced through form, not stated outright",
           "example": "Le narrateur fait entendre, sans jamais le dire, son désaccord avec son personnage."
         },
         {
           "idiom": "Tirer le texte de son côté (soutenu critique)",
           "literal": "Kéo văn bản về phía mình",
+          "literal_en": "to pull the text to one's own side",
           "meaning": "Áp đặt cách đọc lên văn bản — phê bình một thực hành sai.",
+          "meaning_en": "to force a reading onto the text — naming a flawed practice (the Anglo analogue is the 'intentional fallacy')",
           "example": "Cette lecture sociologique tire le texte de son côté — Flaubert n'est pas un sociologue."
         }
       ],
@@ -270,13 +318,22 @@ export const lessons: FrenchLesson[] =           [
               "ẩn chứa một ý nghĩa"
             ]
           ],
-          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt",
+          "instruction_en": "Match each critical term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Khác hẳn quy giảm văn bản về các chủ đề, sự bình giảng phải khôi phục tính độc đáo của hình thức.",
           "french": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle."
         }
+      ],
+      "cultural_notes_en": "« Explication de texte » is a practice specific to French education — it has no direct equivalent in Vietnam and differs even from Anglo-American 'close reading'. It is the nucleus of French literary study from Lanson (late 19th c.), reinforced by Compagnon (Le Démon de la théorie, 1998) and Riffaterre. (1) BASIC CONVENTION: you are given a 10-30 line passage and must speak for 30 unbroken minutes (oral d'agrégation) or write 3-5 pages (devoir surveillé). The supreme rule: YOU EXPLICATE THE PASSAGE, NOT THE WORK — drifting into plot summary loses points instantly. (2) STANDARD THREE-PART STRUCTURE (never four): INTRODUCTION (10%) — situer (author, work, the passage's place in it), caractériser (sub-genre: narration, memoir, description, interior monologue), announce a problématique (the literary question the passage raises), announce the plan (3 axes de lecture); ANALYSE (80%) — each axe is a reading angle sustained across the whole passage, never a linear 'sentence one…, sentence two…'; evidence is always quoted verbatim inside « guillemets » with rhetorical commentary; CONCLUSION (10%) — bilan (synthesis of the 3 axes), then ouverture (a link to the whole work or another text). (3) EXPLICATION vs COMMENTAIRE COMPOSÉ: explication is linear, oral, agrégation; commentaire composé is non-linear, written, bac and licence. (4) The tradition places supreme value on the LITERAL reading: you may not project theory onto the text — never 'this passage is a critique of capitalism' unless concrete textual elements license it. The standard reproach is « plaquage théorique » (clamping theory on from outside): never start from Bourdieu or Foucault and hunt for confirmation — go the other way, evidence first, theory last. (5) ANGLOPHONE TRAP: where a thematic-essay training separates 'content/meaning' from 'artistic technique', French analysis refuses the split — FORM CONTAINS MEANING. A metaphor is not the 'artistic expression' of a meaning; it PRODUCES meaning through its very form — Cleanth Brooks's 'heresy of paraphrase' pushed to its limit, and the reflex anglophone students must unlearn.",
+      "tip_advice_en": "Six-step preparation for a 30-minute oral (one hour of prep): (1) read silently twice — first for the overall impression, then for anomalies; (2) DENSE ANNOTATION — underline every figure de style (anaphora, metaphor, antithesis, hyperbaton), every 'marked' word (technical lexicon, archaism, neologism), every rupture (tense shift, change of focalisation, a hapax); (3) identify 3 AXES DE LECTURE — literary questions sustainable across the whole passage (e.g. rhythmic structure, play of narrative voices, ironic charge), NOT 'the characters / the setting / the action', which are content categories, not reading axes; (4) distribute the citations across the 3 axes, 3-4 per axe with rhetorical commentary; (5) fully draft the introduction (3-5 sentences) and conclusion (3-5 sentences) — the analysis itself can be delivered freely from notes; (6) reread the text slowly once more — a missed detail often surfaces. Opening formulas: 'Le passage que nous allons commenter est extrait de…', 'Nous nous demanderons en quoi cette page constitue…', 'Notre analyse se déploiera selon trois axes…'. Citing: 'L'auteur écrit, à la ligne X: « … ». Cette formulation appelle plusieurs remarques.', 'On notera le glissement de l'imparfait au passé simple — glissement chargé de sens.' Concluding: 'Cette page, à première vue descriptive, recèle en réalité…', 'Cette analyse pourrait être prolongée par la lecture de…'. Avoid: 'l'auteur veut nous faire comprendre que…' (naive intentionalism), 'c'est très beau / c'est intéressant' (non-analytical), plot summary instead of explication, and plaquage théorique (Bourdieu first, text second).",
+      "register_notes_en": "Explication de texte demands a literary register in every sentence, distinct from general academic prose (C1). C1: 'L'auteur montre que…'; C2: 'L'auteur, par ce détour stylistique, donne à entendre que…'. C1: 'Cette phrase est ironique.'; C2: 'Cette phrase relève de l'ironie indirecte, qui suspend le contrat de véracité du narrateur.' Characteristic verbs: 'donner à entendre', 'se déployer', 'recéler', 'se dérober', 'en filigrane', 'culminer', 'suspendre le sens'. C2 transition phrases: 'Encore faut-il que…', 'Force est de constater que…', 'Il n'en demeure pas moins que…', 'C'est en quoi…', 'Pour ainsi dire'. The imperfect subjunctive is a C2 marker — 'Il eût été préférable que l'analyse procédât du détail vers le système', 'Bien que le texte fût bref, il offrait matière à un long commentaire' — but it is never used in informal contexts (it reads as pedantic): only in a literary seminar, the agrégation, or sustained critical writing. Inversion in dependent clauses: 'Peut-être l'auteur a-t-il voulu…', 'Aussi le narrateur évoque-t-il…', 'Sans doute la phrase finale fait-elle écho à…'. Critical idioms: 'lire entre les lignes' (common), 'la lettre du texte' (elevated), 'le grain du style' (literary), 'tirer le texte de son côté' (critical). Crucially, never write 'l'auteur veut dire que…' — naive intentionalism is forbidden; write 'le texte donne à entendre…', 'la phrase produit l'effet de…'. Since Barthes's 'La Mort de l'auteur' (1968) — the French counterpart of Wimsatt & Beardsley's 'intentional fallacy' (1946) — French criticism distinguishes the empirical author (the living person) from the text's enunciating instance (the voice in the text); the two are not the same.",
+      "roleplay_prompts_en": [
+        "You are assigned a 30-minute oral d'agrégation on the incipit of L'Étranger. Compose the introduction (1 minute) + the annonce de plan (3 axes de lecture) — do not lapse into plot summary.",
+        "In a seminar, the professor reproaches you for « plaquage théorique » (you brought Foucault in before reading the text). Respond: concede the point, then propose to reprendre par la lettre du texte — a concrete step back to the words.",
+        "A licence student asks you how to distinguish explication de texte from commentaire composé. Compose a 4-sentence answer — precise, not 'they are the same thing'."
       ]
     },
     {
@@ -294,6 +351,12 @@ export const lessons: FrenchLesson[] =           [
             "narrative → na-ra-tiv",
             "focalisation → fo-ka-li-za-sion",
             "préalable → pré-a-la-blơ"
+          ],
+          "pronunciation_focus_en": [
+            "voix → 'VWAH' — 'oi' = 'wah'; final 'x' silent; 'la voix narrative' = the narrating voice",
+            "narrative → 'nah-rah-TEEV' — final '-e' silent; here adjectival, 'voix narrative'",
+            "focalisation → 'foh-kah-lee-zah-SYON' — '-tion' = 'syon'; Genette's term for point of view",
+            "préalable → 'pray-ah-LAH-bluh' — 'le préalable de' = the prerequisite for"
           ]
         },
         {
@@ -304,6 +367,12 @@ export const lessons: FrenchLesson[] =           [
             "sans → sã",
             "autant → ô-tã",
             "confondre → kõn-fõn-drơ"
+          ],
+          "pronunciation_focus_en": [
+            "intradiégétique → 'an-trah-dyay-zhay-TEEK' — nasal 'in'; 'g' = 'zh'; inside the diegesis",
+            "sans → 'SAHN' — nasal vowel; final 's' silent",
+            "autant → 'oh-TAHN' — nasal '-ant'; 'pour autant' = 'for all that / nevertheless'",
+            "confondre → 'kohn-FOHN-druh' — two nasals; 'confondre X avec Y' = to conflate X with Y"
           ]
         },
         {
@@ -314,6 +383,12 @@ export const lessons: FrenchLesson[] =           [
             "focalisation → fo-ka-li-za-sion",
             "éthique → é-tik",
             "perception → pèr-sèp-sion"
+          ],
+          "pronunciation_focus_en": [
+            "peut-être → 'puh-TEH-truh' — 'eu' = rounded schwa; 'peut-être' = perhaps",
+            "focalisation → 'foh-kah-lee-zah-SYON' — '-tion' = 'syon'; recurring Genette term",
+            "éthique → 'ay-TEEK' — 'th' = plain 't'; here adjectival, 'jugement éthique'",
+            "perception → 'pehr-sep-SYON' — '-tion' = 'syon'; 'une perception nue' = a bare/raw perception"
           ]
         },
         {
@@ -324,6 +399,12 @@ export const lessons: FrenchLesson[] =           [
             "omniscient → om-ni-siã",
             "borné → bor-né",
             "hasard → a-zar"
+          ],
+          "pronunciation_focus_en": [
+            "fût → 'FU' — rounded French 'u'; imperfect subjunctive of être; literary register",
+            "omniscient → 'om-nee-SYAN' — final nasal '-ent'; 'sc' = 's'; all-knowing",
+            "borné → 'bor-NAY' — '-é' = 'ay'; 'borné à' = restricted/confined to",
+            "hasard → 'ah-ZAR' — 'h' silent; 's' = 'z'; final 'd' silent; 'le fruit du hasard' = the product of chance"
           ]
         },
         {
@@ -334,6 +415,12 @@ export const lessons: FrenchLesson[] =           [
             "Bakhtine → bak-tin",
             "disputent → dis-put",
             "parole → pa-rol"
+          ],
+          "pronunciation_focus_en": [
+            "polyphonie → 'poh-lee-foh-NEE' — 'y' = 'ee'; Bakhtin's polyphony",
+            "Bakhtine → 'bak-TEEN' — Mikhail Bakhtin (French spelling); final '-e' silent",
+            "disputent → 'dees-PUT' — 3rd-pl '-ent' silent; 'se disputer la parole' = to vie for the floor",
+            "parole → 'pah-ROL' — final '-e' silent; 'la parole' = speech / the right to speak"
           ]
         }
       ],
@@ -345,70 +432,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "an autodiegetic narrator",
           "vi": "người trần thuật tự kể đời mình",
           "pos": "n.m.",
-          "pronunciation_vi": "na-ra-tơr ô-to-dié-jé-tik"
+          "pronunciation_vi": "na-ra-tơr ô-to-dié-jé-tik",
+          "pronunciation_en": "UN nah-rah-TUR oh-toh-dyay-zhay-TEEK — a narrator who is the protagonist of his own story (Proust's Marcel)"
         },
         {
           "word": "un narrateur hétérodiégétique",
           "en": "a heterodiegetic narrator",
           "vi": "người trần thuật ngoài câu chuyện",
           "pos": "n.m.",
-          "pronunciation_vi": "é-té-ro-dié-jé-tik"
+          "pronunciation_vi": "é-té-ro-dié-jé-tik",
+          "pronunciation_en": "UN nah-rah-TUR ay-tay-roh-dyay-zhay-TEEK — a narrator outside the story he tells (Balzac, Flaubert)"
         },
         {
           "word": "la focalisation interne",
           "en": "internal focalization",
           "vi": "điểm nhìn nội tại",
           "pos": "n.f.",
-          "pronunciation_vi": "fo-ka-li-za-sion an-tèrn"
+          "pronunciation_vi": "fo-ka-li-za-sion an-tèrn",
+          "pronunciation_en": "lah foh-kah-lee-zah-SYON an-TEHRN — the world filtered through one character's perception"
         },
         {
           "word": "la focalisation zéro",
           "en": "zero focalization (omniscient)",
           "vi": "điểm nhìn zéro / toàn tri",
           "pos": "n.f.",
-          "pronunciation_vi": "fo-ka-li-za-sion zé-ro"
+          "pronunciation_vi": "fo-ka-li-za-sion zé-ro",
+          "pronunciation_en": "lah foh-kah-lee-zah-SYON zay-ROH — classic 'omniscient' narration (Balzac, Tolstoy)"
         },
         {
           "word": "le discours indirect libre",
           "en": "free indirect discourse",
           "vi": "discours indirect libre / lời nửa trực tiếp",
           "pos": "n.m.",
-          "pronunciation_vi": "dis-kur an-di-rèkt li-brơ"
+          "pronunciation_vi": "dis-kur an-di-rèkt li-brơ",
+          "pronunciation_en": "luh dees-KOOR an-dee-REKT LEE-bruh — free indirect discourse; the Flaubertian signature"
         },
         {
           "word": "la diégèse",
           "en": "the diegesis",
           "vi": "thế giới câu chuyện",
           "pos": "n.f.",
-          "pronunciation_vi": "dié-jèz"
+          "pronunciation_vi": "dié-jèz",
+          "pronunciation_en": "lah dyay-ZHEZ — the storyworld; distinct from 'histoire' (the events) and 'récit' (the text)"
         },
         {
           "word": "la polyphonie narrative",
           "en": "narrative polyphony",
           "vi": "sự đa âm trần thuật",
           "pos": "n.f.",
-          "pronunciation_vi": "po-li-fo-ni na-ra-tiv"
+          "pronunciation_vi": "po-li-fo-ni na-ra-tiv",
+          "pronunciation_en": "lah poh-lee-foh-NEE nah-rah-TEEV — Bakhtin's polyphony: many consciousnesses contend for the floor"
         },
         {
           "word": "l'instance énonciative",
           "en": "the enunciating instance",
           "vi": "thực thể phát ngôn",
           "pos": "n.f.",
-          "pronunciation_vi": "an-stãns é-nõn-sia-tiv"
+          "pronunciation_vi": "an-stãns é-nõn-sia-tiv",
+          "pronunciation_en": "lan-STAHNS ay-non-syah-TEEV — the speaking instance of the text, NOT the empirical author"
         },
         {
           "word": "un récit itératif",
           "en": "an iterative narrative",
           "vi": "tự sự lặp lại",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-si i-té-ra-tif"
+          "pronunciation_vi": "ré-si i-té-ra-tif",
+          "pronunciation_en": "UN ray-SEE ee-tay-rah-TEEF — telling once what happened repeatedly (Genette's frequency category)"
         },
         {
           "word": "la vitesse narrative",
           "en": "narrative pace",
           "vi": "vận tốc trần thuật",
           "pos": "n.f.",
-          "pronunciation_vi": "vi-tès na-ra-tiv"
+          "pronunciation_vi": "vi-tès na-ra-tiv",
+          "pronunciation_en": "lah vee-TESS nah-rah-TEEV — narrative pace: the ratio of story-time to text-time (summary vs scene)"
         }
       ],
       "dialogue": [
@@ -490,25 +587,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Tirer les ficelles (courant)",
           "literal": "Kéo các sợi dây",
+          "literal_en": "to pull the strings",
           "meaning": "Điều khiển từ hậu trường — utilisé pour le narrateur omniscient.",
+          "meaning_en": "to control from behind the scenes — used of the omniscient narrator; common register",
           "example": "Le narrateur balzacien tire les ficelles de tous les destins du roman."
         },
         {
           "idiom": "Donner la parole à (soutenu)",
           "literal": "Cho lời",
+          "literal_en": "to give the floor to",
           "meaning": "Cấp giọng nói cho — analyse de la polyphonie.",
+          "meaning_en": "to grant voice to (a character) — used in analysing polyphony; elevated register",
           "example": "Flaubert donne la parole à ses personnages tout en s'en distanciant."
         },
         {
           "idiom": "Effacer les traces de l'énonciation (littéraire)",
           "literal": "Xóa dấu vết của phát ngôn",
+          "literal_en": "to erase the traces of enunciation",
           "meaning": "Làm tan biến sự hiện diện của người trần thuật — idéal réaliste.",
+          "meaning_en": "to make the narrator's presence vanish — the realist ideal; literary register",
           "example": "L'écriture flaubertienne s'efforce d'effacer les traces de l'énonciation."
         },
         {
           "idiom": "Tenir la dragée haute à (soutenu rare)",
           "literal": "Giữ viên kẹo cao",
+          "literal_en": "to hold the sugared almond up high (out of reach)",
           "meaning": "Giữ khoảng cách — narrateur ironique avec ses personnages.",
+          "meaning_en": "to keep at an ironic distance — of a narrator superior to his characters; rare, elevated register",
           "example": "Voltaire tient la dragée haute à Candide, ce qui produit l'ironie philosophique du conte."
         }
       ],
@@ -534,13 +639,22 @@ export const lessons: FrenchLesson[] =           [
               "omission volontaire du narrateur"
             ]
           ],
-          "instruction": "Nối thuật ngữ narratologie với nghĩa Việt"
+          "instruction": "Nối thuật ngữ narratologie với nghĩa Việt",
+          "instruction_en": "Match each narratology term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Phân biệt giọng trần thuật khỏi điểm nhìn cấu thành tiền đề cho mọi phân tích nghiêm cẩn về tự sự.",
           "french": "Distinguer la voix narrative de la focalisation constitue le préalable de toute analyse rigoureuse du récit."
         }
+      ],
+      "cultural_notes_en": "French narratology — essentially Gérard Genette's legacy (Figures III, 1972; Nouveau discours du récit, 1983) — radically distinguished two concepts long conflated. (1) VOIX (voice): WHO speaks? Is the narrator inside the story? Hétérodiégétique — outside it ('il alla, elle dit'); homodiégétique — inside it, as a secondary character; autodiégétique — inside it, as the protagonist telling his own life. (2) FOCALISATION (point of view): through WHOSE EYES does the reader reach the world? Focalisation zéro — through no one in particular, the classic omniscient narrator (Balzac, Tolstoy); focalisation interne — through one character's eyes, limited access (Camus's L'Étranger, Henry James); focalisation externe — behaviourist, no one's eyes, only outward action (Hemingway, Robbe-Grillet). WHY IT MATTERS: before Genette, criticism muddled 'the omniscient narrator' — omniscience belongs to focalisation, not to voix. An autodiegetic narrator ('je') can still be omniscient (Proust, whose retrospective distance lets him know everything); a heterodiegetic narrator ('il/elle') can be confined to internal focalisation (Madame Bovary, told from outside yet seen through Emma's eyes for long stretches). APPLIED TO THREE CANONICAL WORKS: L'Étranger (Camus, 1942) — homodiegetic voice (Meursault tells it), strict internal focalisation; the incipit « Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. » proves the limited perception, since no omniscient narrator could say 'I don't know'. À la recherche du temps perdu (Proust, 1913-1927) — autodiegetic voice ('Marcel'), doubled focalisation: internal at the moment of narration (Marcel-narrator) AND internal at the moment of the diégèse (Marcel-character); this doubling is the core of the Proustian temporal gap. Madame Bovary (Flaubert, 1857) — heterodiegetic voice, VARIABLE focalisation: sometimes externe, sometimes interne (Emma, Charles, Homais), sometimes zéro; combined with discours indirect libre this generates Flaubertian irony. ANGLOPHONE TRAP: the loose Anglo grid 'first-/third-person + omniscient/limited' (the Lubbock-James 'point of view' tradition) blurs precisely the voix/focalisation distinction — which is why English-language narratology imported Genette's terms wholesale. 'Third person' tells you NOTHING about focalisation: a third-person narrator may be omniscient (Balzac) or restricted (Flaubert in the internally-focalised passages on Emma). In C2 French analysis never write « narrateur à la troisième personne » — write « narrateur hétérodiégétique » and then state the focalisation.",
+      "tip_advice_en": "A complete Genettian grid for any text. (1) VOIX: grammatical person (je / il-elle / nous — rare); narratorial position (homo-/hétéro-/auto-diégétique); narrative level (extra-/intra-/méta-diégétique); tense of the récit (passé simple = distance; présent = immediacy; passé composé = familiar/oral). (2) FOCALISATION: type (zéro / interne / externe); constancy or variation; if internal, identify the focaliser (who sees?); coherence with the voice. (3) MODE: reported discourse (direct / indirect / indirect libre); summary vs scene (narrative speed); iterative vs singulative narrative (frequency). Useful phrases — for the voice: 'Le narrateur, ici autodiégétique, raconte une expérience dont il fut le protagoniste.', 'La voix narrative oscille entre l'omniscience apparente et la limitation à la conscience d'Emma.'; for focalisation: 'La focalisation, strictement interne, restreint la perception au point de vue de Meursault.', 'On observe ici un changement de focalisation.'; for free indirect discourse: 'Le passage glisse insensiblement du discours du narrateur au discours du personnage, sans verbe introducteur.', 'L'ironie naît précisément de l'indécision.'; for Bakhtinian polyphony: 'Le roman, comme l'a montré Bakhtine, est un espace polyphonique où plusieurs consciences se font entendre.' Avoid: 'Le narrateur sait tout.' (vague — say focalisation zéro), 'Le personnage pense que…' (check whether this is internal focalisation or reported monologue), 'L'auteur dit que…' (confuses empirical author and narrator), 'Ce texte est subjectif.' (non-technical — say focalisation interne).",
+      "register_notes_en": "Genettian narratology — vocabulary to master to the exact word. DO NOT CONFLATE: voix ≠ focalisation (Genette's own distinction); narrateur ≠ auteur (Barthes, La Mort de l'auteur); discours indirect libre ≠ discours indirect (one quotation mark changes everything); diégèse ≠ histoire (the diégèse is the universe, the histoire the sequence of events); récit ≠ narration (the récit is the text, the narration the act of telling). FOUR GENETTIAN CATEGORIES: (1) ORDRE — diegetic chronology vs narrative order (analepse, prolepse); (2) DURÉE — narrated time vs narration time (sommaire, scène, ellipse, pause); (3) FRÉQUENCE — singulative / iterative / repetitive récit; (4) MODE — distance (sommaire vs scène) and perspective (focalisation); plus VOIX (narrative instance, level, tense). Tenses a C2 analysis must name: passé simple = distance, classical writing; imparfait = background, duration, description; passé composé = the speaker's present, oral, Camus; présent intemporel = general truth, modern narration (Duras, Modiano); conditionnel = future-in-the-past, modalisation. C2 technical lexicon to use without hesitation: une analepse / une prolepse, un sommaire, une scène, une ellipse, une pause descriptive, une paralipse (deliberate omission of a fact the narrator knows), une métalepse (transgression of a narrative level), un récit enchâssé. C2 markers: inversion and the imperfect subjunctive — 'Que le narrateur fût parfois omniscient n'est pas le fruit du hasard.', 'Peut-être l'auteur a-t-il voulu…', 'Encore conviendrait-il que la focalisation reçût une analyse séparée.' One subtlety: write « narrateur » in the masculine by narratological convention even when the author is a woman — this is not implicit sexism but technical usage (the narrateur is a textual function, not the person); an anglophone reader tempted to 'correct' it to match the author's gender should resist. « La narratrice » is used only for a diegetically female narrator (Marguerite Duras in L'Amant).",
+      "roleplay_prompts_en": [
+        "You are assigned an explication of the first page of L'Étranger. Identify voix + focalisation + mode + one major stylistic effect — in 5 minutes.",
+        "In a seminar, a colleague claims « Madame Bovary, c'est un roman écrit du point de vue d'Emma ». Respond with Genettian precision — distinguish the heterodiegetic voix from the intermittent focalisation interne.",
+        "Compose 5 sentences to explain « la paralipse » to an M1 student who has not yet read Genette — cite an example in Proust or another author."
       ]
     },
     {
@@ -558,6 +672,12 @@ export const lessons: FrenchLesson[] =           [
             "allégorie → a-lé-go-ri",
             "renvoie → rãn-voa",
             "épuiser → é-pwi-zé"
+          ],
+          "pronunciation_focus_en": [
+            "symbole → 'san-BOL' — nasal 'sym'; final '-e' silent",
+            "allégorie → 'ah-lay-goh-REE' — double 'l' = single 'l'; final '-rie' = 'ree'",
+            "renvoie → 'rahn-VWAH' — nasal 'en'; 'oi' = 'wah'; 'renvoyer à' = to refer to",
+            "épuiser → 'ay-pwee-ZAY' — 'ui' = 'wee'; 'épuiser un sens' = to exhaust a meaning"
           ]
         },
         {
@@ -568,6 +688,12 @@ export const lessons: FrenchLesson[] =           [
             "filée → fi-lé",
             "déploie → dé-ploa",
             "analogique → a-na-lo-jik"
+          ],
+          "pronunciation_focus_en": [
+            "métaphore → 'may-tah-FOR' — final '-e' silent",
+            "filée → 'fee-LAY' — '-ée' = 'ay'; 'métaphore filée' = an extended/spun-out metaphor",
+            "déploie → 'day-PLWAH' — 'oi' = 'wah'; 'déployer' = to deploy/unfold",
+            "analogique → 'ah-nah-loh-ZHEEK' — 'g' = 'zh'; final '-que' = 'eek'"
           ]
         },
         {
@@ -578,6 +704,12 @@ export const lessons: FrenchLesson[] =           [
             "mallarméen → ma-lar-mé-an",
             "prisonnier → pri-zo-nié",
             "impuissance → an-pwi-sãns"
+          ],
+          "pronunciation_focus_en": [
+            "cygne → 'SEEN-yuh' — 'gn' = 'ny' as in 'canyon'; 'cygne' = swan",
+            "mallarméen → 'mah-lar-may-AN' — adjective from Mallarmé; final nasal '-en'",
+            "prisonnier → 'pree-zoh-NYAY' — 's' = 'z' between vowels; final '-ier' = 'yay'",
+            "impuissance → 'an-pwee-SAHNS' — nasal 'im'; 'ui' = 'wee'; = powerlessness"
           ]
         },
         {
@@ -588,6 +720,12 @@ export const lessons: FrenchLesson[] =           [
             "distinguât → dis-tan-ga",
             "comparaison → kõm-pa-rè-zõn",
             "métaphore → mé-ta-for"
+          ],
+          "pronunciation_focus_en": [
+            "conviendrait → 'kohn-vyan-DREH' — conditional of 'convenir'; 'il conviendrait que' + subjunctive",
+            "distinguât → 'dees-tan-GAH' — imperfect subjunctive of 'distinguer'; final 't' silent; literary",
+            "comparaison → 'kohm-pah-reh-ZON' — nasal 'om' and final '-on'; the figure 'simile'",
+            "métaphore → 'may-tah-FOR' — final '-e' silent; metaphor (no comparison word)"
           ]
         },
         {
@@ -598,6 +736,12 @@ export const lessons: FrenchLesson[] =           [
             "appris → a-pri",
             "ornement → or-nơ-mã",
             "irréductible → i-ré-duk-ti-blơ"
+          ],
+          "pronunciation_focus_en": [
+            "Bachelard → 'bash-LAR' — final 'd' silent; the philosopher of the poetic image",
+            "appris → 'ah-PREE' — double 'p' = single 'p'; final 's' silent; past participle of 'apprendre'",
+            "ornement → 'or-nuh-MAHN' — nasal '-ment'; 'ornement' = (mere) decoration",
+            "irréductible → 'ee-ray-dewk-TEE-bluh' — double 'r'; 'u' rounded; = irreducible"
           ]
         }
       ],
@@ -609,70 +753,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "an extended metaphor",
           "vi": "ẩn dụ kéo dài",
           "pos": "n.f.",
-          "pronunciation_vi": "mé-ta-for fi-lé"
+          "pronunciation_vi": "mé-ta-for fi-lé",
+          "pronunciation_en": "ün may-tah-FOR fee-LAY — a metaphor sustained across several sentences (Baudelaire's Correspondances)"
         },
         {
           "word": "in praesentia / in absentia",
           "en": "in presence / in absence",
           "vi": "có / không cả hai termes",
           "pos": "loc. lat.",
-          "pronunciation_vi": "in pré-zãn-sia / in ab-sãn-sia"
+          "pronunciation_vi": "in pré-zãn-sia / in ab-sãn-sia",
+          "pronunciation_en": "in pray-zahn-SYAH / in ab-sahn-SYAH — Latin: with both terms present vs only the vehicle stated"
         },
         {
           "word": "l'allégorie",
           "en": "allegory",
           "vi": "ngụ ngôn / phúng dụ",
           "pos": "n.f.",
-          "pronunciation_vi": "a-lé-go-ri"
+          "pronunciation_vi": "a-lé-go-ri",
+          "pronunciation_en": "lah-lay-goh-REE — allegory: one fixed point-by-point meaning (the opposite of a polysemous symbole)"
         },
         {
           "word": "le champ sémantique",
           "en": "the semantic field",
           "vi": "trường ngữ nghĩa",
           "pos": "n.m.",
-          "pronunciation_vi": "shã sé-mãn-tik"
+          "pronunciation_vi": "shã sé-mãn-tik",
+          "pronunciation_en": "luh SHAHN say-mahn-TEEK — the semantic field; 'champ' is nasal, final 'p' silent"
         },
         {
           "word": "un réseau métaphorique",
           "en": "a metaphorical network",
           "vi": "một mạng lưới ẩn dụ",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-zô mé-ta-fo-rik"
+          "pronunciation_vi": "ré-zô mé-ta-fo-rik",
+          "pronunciation_en": "UN ray-ZOH may-tah-foh-REEK — a network of linked images running through a work"
         },
         {
           "word": "un leitmotiv",
           "en": "a leitmotiv",
           "vi": "chủ đề lặp lại",
           "pos": "n.m.",
-          "pronunciation_vi": "laït-mo-tiv"
+          "pronunciation_vi": "laït-mo-tiv",
+          "pronunciation_en": "UN layt-moh-TEEF — a recurring motif (German loanword); final 'v' = 'f'"
         },
         {
           "word": "polysémique",
           "en": "polysemous",
           "vi": "đa nghĩa",
           "pos": "adj.",
-          "pronunciation_vi": "po-li-sé-mik"
+          "pronunciation_vi": "po-li-sé-mik",
+          "pronunciation_en": "poh-lee-say-MEEK — polysemous: open to many meanings at once (the mark of a symbole)"
         },
         {
           "word": "l'innovation sémantique",
           "en": "semantic innovation",
           "vi": "sự sáng tạo ngữ nghĩa",
           "pos": "n.f.",
-          "pronunciation_vi": "i-no-va-sion sé-mãn-tik"
+          "pronunciation_vi": "i-no-va-sion sé-mãn-tik",
+          "pronunciation_en": "lee-noh-vah-SYON say-mahn-TEEK — Ricœur's term: metaphor creates new, un-paraphrasable meaning"
         },
         {
           "word": "un transfert métaphorique",
           "en": "a metaphorical transfer",
           "vi": "một sự chuyển ẩn dụ",
           "pos": "n.m.",
-          "pronunciation_vi": "trãns-fèr mé-ta-fo-rik"
+          "pronunciation_vi": "trãns-fèr mé-ta-fo-rik",
+          "pronunciation_en": "UN trahns-FEHR may-tah-foh-REEK — the carrying-over from source field to target field"
         },
         {
           "word": "épuiser un sens",
           "en": "to exhaust a meaning",
           "vi": "vắt kiệt một ý nghĩa",
           "pos": "v.",
-          "pronunciation_vi": "é-pwi-zé an sãns"
+          "pronunciation_vi": "é-pwi-zé an sãns",
+          "pronunciation_en": "ay-pwee-ZAY un SAHNS — to exhaust a meaning; precisely what a true symbole resists"
         }
       ],
       "dialogue": [
@@ -749,25 +903,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Filer la métaphore (courant critique)",
           "literal": "Kéo dài ẩn dụ",
+          "literal_en": "to spin out the metaphor (as one spins thread)",
           "meaning": "Triển khai một ẩn dụ qua nhiều câu liên tiếp.",
+          "meaning_en": "to develop one metaphor across several consecutive sentences; common in criticism",
           "example": "Baudelaire, dans Correspondances, file la métaphore de la forêt de symboles tout au long du sonnet."
         },
         {
           "idiom": "Le grain de l'image (littéraire bachelardien)",
           "literal": "Hạt của hình ảnh",
+          "literal_en": "the grain of the image",
           "meaning": "Tính cụ thể vật chất của một hình ảnh thi ca.",
+          "meaning_en": "the material concreteness of a poetic image; Bachelardian literary register",
           "example": "Bachelard nous invite à ressentir le grain de l'image avant de chercher son sens."
         },
         {
           "idiom": "Tisser un réseau (littéraire)",
           "literal": "Dệt một mạng lưới",
+          "literal_en": "to weave a network",
           "meaning": "Tạo một mạng lưới các hình ảnh liên kết qua tác phẩm.",
+          "meaning_en": "to build a web of linked images across a work; literary register",
           "example": "Le poète tisse un réseau d'images aquatiques qui structure tout le recueil."
         },
         {
           "idiom": "Crever l'écran (familier appliqué littéraire)",
           "literal": "Châm vỡ màn ảnh",
+          "literal_en": "to burst through the screen",
           "meaning": "Một hình ảnh / nhân vật vượt qua khung văn bản — utilisé pour des figures inoubliables.",
+          "meaning_en": "(of an image or character) to be unforgettable, to leap off the page — a colloquial term applied to literature",
           "example": "Le cygne mallarméen, à force de densité symbolique, crève l'écran du sonnet."
         }
       ],
@@ -793,13 +955,22 @@ export const lessons: FrenchLesson[] =           [
               "mạng lưới ẩn dụ"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Biểu tượng, khác với ngụ ngôn, không quy về một nghĩa duy nhất mà mở ra một trường ý nghĩa.",
           "french": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations."
         }
+      ],
+      "cultural_notes_en": "Distinguishing SYMBOL / METAPHOR / ALLEGORY in the French critical tradition demands a precision students often skip. (1) COMPARAISON: A is like B (with a comparison word: comme, tel, semblable à) — « Elle est belle comme le jour. » (2) MÉTAPHORE: A is B (no comparison word; substitution) — « Elle est le jour. » A métaphore in praesentia keeps both terms (« cette femme-soleil »); in absentia keeps only the vehicle (« le soleil entra dans la pièce » for the beloved). (3) MÉTAPHORE FILÉE: a chain of successive metaphors exploiting one semantic field; Baudelaire spins out the « forêt de symboles » in Correspondances. (4) ALLÉGORIE: a narrative whose every element corresponds point-by-point to a meaning fixed in advance (La Fontaine). (5) SYMBOLE: an open, polysemous image, irreducible to a single sense; Mallarmé's swan signifies impotence, the ideal, the artist's exile, sterile whiteness, AND further meanings no reading exhausts. THE DECISIVE SYMBOLE / ALLÉGORIE DISTINCTION: allegory has ONE sense, the symbol a PROFUSION of senses; conflating them loses all interpretive finesse — reducing Mallarmé's swan to 'the poet's difficulty' allegorises and impoverishes it. CRITICAL SCHOOLS: (a) Bachelard (La Poétique de l'espace, 1957; La Poétique de la rêverie, 1960) — the poetic image is a mode of knowledge, not ornament; a phenomenological reading of material reverie (water, earth, air, fire); (b) Barthes (Mythologies, 1957) — myth as second-order speech, a signified becoming signifier; (c) Ricœur (La Métaphore vive, 1975) — metaphor is not substitution but semantic innovation, creating new sense irreducible to paraphrase; (d) Genette (Figures, 1966) — a return to classical rhetorical distinctions with semiological rigour. ANGLOPHONE TRAP: anglophone usage tends to call every meaningful image a 'symbol' (the loose New-Critical 'symbolism') — the C2 discipline demands the sharp distinction. A river in a text is not always 'a symbol of life': it may be a real river, a métaphore filée, or a structural leitmotiv; prove symbolic status from the text before claiming it. SUPREME RULE: demonstrating symbolic status requires (1) recurrence of the image within the work, (2) polysemy across its occurrences, (3) resistance to a simple paraphrase. Without these three signs you have not a symbol but a merely descriptive image.",
+      "tip_advice_en": "A grid for identifying and commenting on a figure. (1) IDENTIFY THE EXACT TYPE: comparaison? métaphore? métonymie? synecdoque? allégorie? symbole? If metaphor — in praesentia / in absentia / filée? source field / target field (the Lakoff-Johnson model, Metaphors We Live By, French trans. 1985). (2) ANALYSE THE WORK OF THE IMAGE: what rapprochement does the figure operate? what effect (cognitive, affective, ironic)? where does it sit in the sentence, the poem, the work? is there systematisation (filage), recurrence (leitmotiv), variation? (3) RELATE IT TO A TRADITION: does the image belong to a repertoire (the Petrarchan rose, the Baudelairean sea)? does the author take it up, subvert it, exhaust it? what is the singularity of his treatment? Useful phrases — to introduce: 'La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à…', 'Cette image, en apparence convenue, prend chez l'auteur une coloration singulière.'; for a metaphor: 'La métaphore opère un transfert du champ X vers le champ Y.', 'L'auteur file ici la métaphore sur l'ensemble du paragraphe.'; for a symbol: 'Le motif récurrent du X acquiert, par sa répétition, un statut symbolique.', 'Ce symbole résiste à toute paraphrase.'; for an allegory: 'Le récit fonctionne comme une allégorie transparente: chaque personnage renvoie à un type.' Avoid: 'C'est un symbole de la liberté' (an allegorising reduction, incompatible with the very definition of symbole), 'L'auteur utilise une métaphore pour décorer son texte' (the ornamental conception, obsolete since Bachelard), confusing 'image' (generic) with 'figure' (a precise rhetorical term), and calling every personification a metaphor (they are distinct figures).",
+      "register_notes_en": "Traditional rhetorical vocabulary, to be known to the exact word. FIGURES OF ANALOGY: comparaison (with a function word), métaphore (without one), métaphore filée (a chain), allégorie (a narrative with a fixed sense), symbole (an open polysemous image), personnification (humanity attributed to the non-human), prosopopée (making a non-human or a dead person speak). FIGURES OF SUBSTITUTION: métonymie (cause for effect, container for content…), synecdoque (part for whole, or the reverse), antonomase (proper noun for common, or the reverse). FIGURES OF OPPOSITION: antithèse, oxymore, chiasme. FIGURES OF REPETITION: anaphore (initial), épiphore (final), épanaphore / épanalepse, polyptote (a word repeated with morphological variation). FIGURES OF CONSTRUCTION: hyperbate (an element thrown out of its expected place), inversion, ellipse, zeugma. C2 USAGE: naming the figure CORRECTLY is non-negotiable — confusing métaphore and métonymie destroys credibility; a C2 reading uses at least 5-6 precise rhetorical terms per page. Schools of reading to know: Bachelard (phenomenological reading of the material image), Barthes (semiotics of myth, Mythologies 1957), Ricœur (metaphor as semantic innovation, La Métaphore vive 1975), Genette (structuralist rhetoric, Figures 1966-72), Lakoff & Johnson (cognitive linguistics, Metaphors We Live By 1980 / French 1985). Literary idioms on the figure: 'filer la métaphore' (common in criticism), 'épuiser un sens' (elevated), 'le grain de l'image' (Bachelardian literary), 'tisser un réseau d'images' (literary). One C2 subtlety: French criticism avoids the word « beau » about a figure — not 'cette métaphore est belle' but 'cette métaphore opère un déplacement signifiant', 'ce symbole est efficace', 'cette image est dense'; the 'beautiful' as a verdict belongs to the amateur's discourse, a useful warning for anglophone writers, for whom 'beautiful imagery' is a common but analytically empty praise.",
+      "roleplay_prompts_en": [
+        "You are assigned an explication of a Baudelaire sonnet (Correspondances). Identify the central métaphore filée, situate it in the tradition (the link to Swedenborg, mysticism), and distinguish it from mere decorative ornament.",
+        "In a seminar, a colleague claims « toutes les images dans la poésie sont des symboles ». Respond with rigour — distinguish image, comparaison, métaphore, allégorie, symbole.",
+        "Compose 5 sentences analysing a recurring motif (the sea in Duras, the café in Houellebecq, the street in Modiano) — check the three criteria for a symbole before calling it one."
       ]
     },
     {
@@ -817,6 +988,12 @@ export const lessons: FrenchLesson[] =           [
             "aboli → a-bo-li",
             "conventions → kõn-vãn-sion",
             "exposées → èk-spo-zé"
+          ],
+          "pronunciation_focus_en": [
+            "Robbe-Grillet → 'rob-gree-YEH' — the novelist's name; '-ill-' = 'y'; final 't' silent",
+            "aboli → 'ah-boh-LEE' — past participle of 'abolir'; final 'i' clear",
+            "conventions → 'kohn-vahn-SYON' — two nasals; '-tion' = 'syon'",
+            "exposées → 'eks-poh-ZAY' — 'x' = 'ks'; '-ées' = 'ay'; here 'exposed AS conventions'"
           ]
         },
         {
@@ -827,6 +1004,12 @@ export const lessons: FrenchLesson[] =           [
             "Godot → go-do",
             "subvertit → sub-vèr-ti",
             "évacuant → é-va-ku-ã"
+          ],
+          "pronunciation_focus_en": [
+            "attendant → 'ah-tahn-DAHN' — two nasals; 'En attendant Godot' = Waiting for Godot",
+            "Godot → 'goh-DOH' — final 't' silent; the never-arriving figure",
+            "subvertit → 'sewb-vehr-TEE' — 'u' rounded; final 't' silent",
+            "évacuant → 'ay-vah-kü-AHN' — 'u' rounded; nasal '-ant'; = evacuating/voiding"
           ]
         },
         {
@@ -837,6 +1020,12 @@ export const lessons: FrenchLesson[] =           [
             "héritier → é-ri-tié",
             "paradoxal → pa-ra-dok-sal",
             "épuisement → é-pwi-zơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "Houellebecq → 'WELL-bek' — 'ou' = 'w'; '-cq' = 'k'; the contemporary novelist",
+            "héritier → 'ay-ree-TYAY' — 'h' silent; final '-ier' = 'yay'; = heir",
+            "paradoxal → 'pah-rah-dok-SAL' — final 'l' pronounced; = paradoxical",
+            "épuisement → 'ay-pwee-zuh-MAHN' — 'ui' = 'wee'; nasal '-ment'; = exhaustion"
           ]
         },
         {
@@ -847,6 +1036,12 @@ export const lessons: FrenchLesson[] =           [
             "subversion → sub-vèr-sion",
             "signifiât → sig-ni-fia",
             "intimité → an-ti-mi-té"
+          ],
+          "pronunciation_focus_en": [
+            "paresseux → 'pah-reh-SUH' — final '-eux' = rounded 'uh'; 'x' silent; = lazy",
+            "subversion → 'sewb-vehr-SYON' — 'u' rounded; '-sion' = 'syon'",
+            "signifiât → 'see-nyee-FYAH' — imperfect subjunctive of 'signifier'; final 't' silent; literary",
+            "intimité → 'an-tee-mee-TAY' — nasal 'in'; final '-té' = 'tay'"
           ]
         },
         {
@@ -857,6 +1052,12 @@ export const lessons: FrenchLesson[] =           [
             "posséderait → po-sé-dơ-rè",
             "grammaire → gra-mèr",
             "secrète → sơ-krèt"
+          ],
+          "pronunciation_focus_en": [
+            "saurait → 'soh-REH' — conditional of 'savoir'; 'on ne saurait' = one could not",
+            "posséderait → 'poh-say-duh-REH' — conditional of 'posséder'; double 's' = 's'",
+            "grammaire → 'grah-MEHR' — double 'm' = single 'm'; final '-aire' = 'ehr'",
+            "secrète → 'suh-KRET' — feminine of 'secret'; final 't' pronounced (feminine)"
           ]
         }
       ],
@@ -868,70 +1069,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "to subvert a genre",
           "vi": "lật đổ một thể loại",
           "pos": "v.",
-          "pronunciation_vi": "sub-vèr-tir an jãn-rơ"
+          "pronunciation_vi": "sub-vèr-tir an jãn-rơ",
+          "pronunciation_en": "sewb-vehr-TEER UN ZHAHN-ruh — to subvert a genre; 'genre' is nasal, 'g' = 'zh'"
         },
         {
           "word": "les conventions narratives",
           "en": "narrative conventions",
           "vi": "các quy ước trần thuật",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "kõn-vãn-sion na-ra-tiv"
+          "pronunciation_vi": "kõn-vãn-sion na-ra-tiv",
+          "pronunciation_en": "lay kohn-vahn-SYON nah-rah-TEEV — the narrative conventions a genre rests on"
         },
         {
           "word": "un héritage paradoxal",
           "en": "a paradoxical heritage",
           "vi": "di sản nghịch lý",
           "pos": "n.m.",
-          "pronunciation_vi": "é-ri-taj pa-ra-dok-sal"
+          "pronunciation_vi": "é-ri-taj pa-ra-dok-sal",
+          "pronunciation_en": "UN ay-ree-TAZH pah-rah-dok-SAL — a paradoxical inheritance; 'h' silent, '-age' = 'ahzh'"
         },
         {
           "word": "l'épuisement d'un modèle",
           "en": "the exhaustion of a model",
           "vi": "sự cạn kiệt của một mô hình",
           "pos": "n.m.",
-          "pronunciation_vi": "é-pwi-zơ-mã dan mo-dèl"
+          "pronunciation_vi": "é-pwi-zơ-mã dan mo-dèl",
+          "pronunciation_en": "lay-pwee-zuh-MAHN dUN moh-DEL — the exhaustion of a model (Houellebecq's diagnosis)"
         },
         {
           "word": "déjouer les attentes",
           "en": "to thwart expectations",
           "vi": "phá các mong đợi",
           "pos": "v.",
-          "pronunciation_vi": "dé-ju-é lé za-tãnt"
+          "pronunciation_vi": "dé-ju-é lé za-tãnt",
+          "pronunciation_en": "day-zhoo-AY lay zah-TAHNT — to thwart expectations; liaison 'les_attentes' = 'lay-zah-TAHNT'"
         },
         {
           "word": "le Nouveau Roman",
           "en": "the Nouveau Roman movement",
           "vi": "phong trào Tiểu thuyết Mới",
           "pos": "n.m.",
-          "pronunciation_vi": "nu-vô ro-mã"
+          "pronunciation_vi": "nu-vô ro-mã",
+          "pronunciation_en": "luh noo-VOH roh-MAHN — the Nouveau Roman movement (1950-70); a proper-noun label"
         },
         {
           "word": "le théâtre de l'absurde",
           "en": "theatre of the absurd",
           "vi": "kịch phi lý",
           "pos": "n.m.",
-          "pronunciation_vi": "té-a-trơ dơ lab-surd"
+          "pronunciation_vi": "té-a-trơ dơ lab-surd",
+          "pronunciation_en": "luh tay-AH-truh duh lab-SURD — the theatre of the absurd (Beckett, Ionesco, Adamov)"
         },
         {
           "word": "l'autofiction",
           "en": "autofiction",
           "vi": "tự hư cấu",
           "pos": "n.f.",
-          "pronunciation_vi": "ô-to-fik-sion"
+          "pronunciation_vi": "ô-to-fik-sion",
+          "pronunciation_en": "loh-toh-feek-SYON — autofiction; Doubrovsky's 1977 coinage, kept in French in English criticism"
         },
         {
           "word": "la mise en crise",
           "en": "the putting-into-crisis",
           "vi": "sự đặt vào khủng hoảng",
           "pos": "n.f.",
-          "pronunciation_vi": "miz ã kriz"
+          "pronunciation_vi": "miz ã kriz",
+          "pronunciation_en": "lah MEEZ ahn KREEZ — the putting-into-crisis (of conventions); 'mise' final 'e' silent"
         },
         {
           "word": "un déplacement formel",
           "en": "a formal displacement",
           "vi": "một sự dịch chuyển hình thức",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-plas-mã for-mèl"
+          "pronunciation_vi": "dé-plas-mã for-mèl",
+          "pronunciation_en": "UN day-plahs-MAHN for-MEL — a formal displacement; nasal '-ment', final 'l' pronounced"
         }
       ],
       "dialogue": [
@@ -1013,25 +1224,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Pousser une logique à son terme (soutenu)",
           "literal": "Đẩy một logic đến cuối",
+          "literal_en": "to push a logic to its end-point",
           "meaning": "Đưa một quy ước đến cực để bộc lộ giới hạn — Houellebecquian.",
+          "meaning_en": "to drive a convention to its extreme so as to expose its limit — the Houellebecquian move; elevated register",
           "example": "Houellebecq pousse la logique du naturalisme zolien à son terme — et révèle son épuisement."
         },
         {
           "idiom": "Miner de l'intérieur (soutenu)",
           "literal": "Đào ngầm từ bên trong",
+          "literal_en": "to undermine from within",
           "meaning": "Phá từ bên trong bằng cách giả vờ tôn trọng — subversion subtile.",
+          "meaning_en": "to subvert from inside while feigning respect — a subtle subversion; elevated register",
           "example": "Beckett mine de l'intérieur les conventions du théâtre classique sans jamais les rejeter ouvertement."
         },
         {
           "idiom": "Faire école (courant littéraire)",
           "literal": "Tạo trường phái",
+          "literal_en": "to found a school",
           "meaning": "Trở thành mô hình cho thế hệ sau.",
+          "meaning_en": "to become a model for the following generation; common literary register",
           "example": "Le Nouveau Roman a fait école auprès des écrivains des années 1960."
         },
         {
           "idiom": "Tirer son épingle du jeu (courant)",
           "literal": "Rút kim ra khỏi trò chơi",
+          "literal_en": "to pull one's pin out of the game",
           "meaning": "Thoát khỏi một tình thế khó — analyse de Modiano qui maintient un classicisme dans une époque expérimentale.",
+          "meaning_en": "to extricate oneself well from a tricky situation — here, Modiano keeping an assumed classicism in an experimental age; common register",
           "example": "Modiano tire son épingle du jeu en maintenant un classicisme assumé là où ses contemporains expérimentent."
         }
       ],
@@ -1057,13 +1276,22 @@ export const lessons: FrenchLesson[] =           [
               "sự đặt vào khủng hoảng"
             ]
           ],
-          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt",
+          "instruction_en": "Match each critical term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Ta không thể lật đổ một thể loại mà ta không nắm được, từ trước, ngữ pháp ẩn kín nhất của nó.",
           "french": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète."
         }
+      ],
+      "cultural_notes_en": "« Genre » in French literary criticism is at once an old and an ever-renewed concept. Aristotle (Poetics) distinguished epic, tragedy, comedy; French classicism observed the « trois unités » of tragedy. Each genre has defining CONVENTIONS. (1) THE 19TH-CENTURY REALIST NOVEL (Balzac, Flaubert, Zola): a discreet omniscient narrator, a precise socio-historical setting, psychologically thick characters, a causal plot, an ending that resolves (marriage, death, success, ruin). (2) CLASSICAL TRAGEDY: the three unities (action, time, place), a noble hero, a fatal dénouement, alexandrines, bienséance. (3) LYRIC POETRY: an expressive « je », subjects of interiority, fixed forms (sonnet, ode), musicality. SUBVERSION = deep knowledge of the conventions + their displacement / inversion / exposure — NOT mere negation. FOUR GREAT 20TH-CENTURY FRENCH SUBVERSIONS: (a) the NOUVEAU ROMAN (1950-70) — Robbe-Grillet (Les Gommes, 1953; La Jalousie, 1957), Sarraute (Tropismes, 1939; L'Ère du soupçon, 1956), Butor (La Modification, 1957), Simon (La Route des Flandres, 1960): the psychological character evacuated, obsessive description, the defeat of causal plot — not nihilist but an attempt to REINVENT the novel after the Balzacian model lost credibility; (b) the THEATRE OF THE ABSURD — Beckett (En attendant Godot, 1952; Fin de partie, 1957), Ionesco (La Cantatrice chauve, 1950; Les Chaises, 1952), Adamov: theatre voided of plot, language running on empty, characters with no psychological thickness, subverting the classical conventions inherited from Racine then the 19th-century drame bourgeois; (c) AUTOFICTION (since 1977) — Doubrovsky (Fils, 1977) coined the term, Ernaux raised it highest (Les Années, 2008): a novel/autobiography hybrid subverting BOTH autobiography's truth-claim AND the novel's fiction-claim; (d) MICHEL HOUELLEBECQ (Les Particules élémentaires, 1998; La Carte et le territoire, Prix Goncourt 2010): a paradoxical subversion of Zola's naturalism — he APPLIES its conventions (strips the narrator of all lyricism, writes society like a sociologist, builds characters as period symptoms) but pushes them to a degree that exposes their insufficiency: subversion by excess, not by negation. A TEMPTATION TO AVOID: schematically opposing 'traditional novel = bad' / 'subversive novel = good'; C2 criticism refuses this Manicheanism — the great 20th-century novel is EITHER a successful subversion (Beckett, Sarraute) OR an assumed classicism (Modiano, whose fidelity to 19th-century narrative conventions is precisely the point); neither is intrinsically superior. ANGLOPHONE TRAP: as with the anglophone reflex of equating 'experimental/avant-garde = serious' and 'conventional = minor', C2 criticism distinguishes severely — a botched subversion (one that has not mastered the conventions it claims to overturn) is weaker than an assumed classicism.",
+      "tip_advice_en": "A grid for identifying a genre subversion. (1) IDENTIFY THE PRESUMED GENRE — what model does the work seem to summon? (2) LIST THAT GENRE'S CONVENTIONS — narrative, formal, thematic. (3) NOTE THE DISPLACEMENTS — convention by convention, what is respected, displaced, inverted, exposed? (4) INTERPRET THE STAKE OF THE DISPLACEMENT — why does the author do this work, and with what effect? (5) SITUATE IT IN A TRADITION OF SUBVERSION — is the work isolated or part of a movement? Useful phrases — to identify the genre: 'L'œuvre se réclame, sur le mode parodique, du roman X.', 'Les conventions du genre Y sont ici à la fois convoquées et déjouées.'; to analyse the subversion: 'Le roman conserve l'apparence de l'intrigue tout en lui retirant son moteur causal.', 'Cette subversion n'est pas négation: elle suppose au contraire une intimité avec les codes qu'elle déplace.'; to interpret the stake: 'En subvertissant le genre romanesque, l'auteur interroge la possibilité même du roman après…', 'Cette mise en crise des conventions répond à une perte de crédibilité du modèle hérité.'; to distinguish subversion from failure: 'Cette tentative de subversion échoue précisément parce qu'elle n'a pas maîtrisé les conventions qu'elle prétend renverser.', 'Pour subvertir, encore faut-il connaître.' Avoid: 'C'est moderne donc c'est bien.' (a non-critical judgment), 'Beckett a inventé un théâtre nouveau.' (too vague — specify IN WHAT WAY he subverts), confusing subversion with absolute novelty (all subversion presupposes something known), and calling every formal innovation a subversion (innovation may be a perfecting, not a rupture).",
+      "register_notes_en": "Nomenclature of the major genres, to be known. NOVEL — sub-genres: realist/naturalist (Balzac, Flaubert, Zola), psychological (La Princesse de Clèves, Constant's Adolphe, Proust), experimental (Nouveau Roman: Robbe-Grillet, Sarraute), detective (Simenon, Vargas), the novel of formation / Bildungsroman (Stendhal's Le Rouge et le Noir, Flaubert's L'Éducation sentimentale), autofiction (Doubrovsky, Ernaux, Carrère). THEATRE — sub-genres: classical tragedy (Corneille, Racine), comedy (Molière, Marivaux), Romantic drama (Hugo's Hernani), the 19th-c. drame bourgeois, theatre of the absurd (Beckett, Ionesco, Adamov), theatre of cruelty (Artaud). POETRY — forms and schools: fixed forms (sonnet, ode, ballade, rondeau), free verse (since Rimbaud), prose poetry (Baudelaire, Le Spleen de Paris), the Parnassians (Leconte de Lisle, Heredia), the Symbolists (Verlaine, Rimbaud, Mallarmé), Surrealism (Breton, Éluard, Aragon), OuLiPo (Queneau, Perec). C2 USAGE: knowing these classifications is not formalism — each genre has CONVENTIONS that must be named to analyse a subversion. 'Beckett subvertit le théâtre' is too vague; 'Beckett subvertit le drame bourgeois post-naturaliste en évacuant l'intrigue causale' is precise. MODES OF SUBVERSION: parodie (mocking imitation, e.g. Don Quixote parodying chivalric romance), pastiche (serious imitation of a style), détournement (re-use with a change of sense), déplacement (modification of a structural element), hyperfidélité (excess respect for the conventions, exposing their exhaustion) — Houellebecq. Literary idioms on subversion: 'jouer avec les codes' (common), 'pousser une logique à son terme' (elevated), 'tordre une convention' (common), 'miner de l'intérieur' (elevated). One C2 subtlety: French criticism avoids martial metaphors (« Beckett attaque le théâtre », « Houellebecq démolit le roman ») as vulgar; prefer « subvertit », « déplace », « interroge », « met à l'épreuve », « pousse à sa limite ». Literary work is dialectical, not warlike — a useful corrective for anglophone writing, where 'X destroys / demolishes the conventions of Y' is a common but coarse formula.",
+      "roleplay_prompts_en": [
+        "You are assigned an analysis of the first page of Beckett's En attendant Godot. Identify what subverts the conventions of classical drama (the unities, plot, psychological characters) — do NOT say 'Beckett broke everything'.",
+        "In a seminar, a colleague claims « le Nouveau Roman a échoué parce qu'il est illisible ». Respond by distinguishing immediate readability from literary richness — defend Sarraute or Robbe-Grillet without lapsing into apologetics.",
+        "Compose 5 sentences analysing how Annie Ernaux, in Les Années (2008), subverts the conventions of classical autobiography by integrating the collective voice of a generation."
       ]
     },
     {
@@ -1081,6 +1309,12 @@ export const lessons: FrenchLesson[] =           [
             "Berman → bèr-man",
             "irrécupérable → i-ré-ku-pé-ra-blơ",
             "déplorer → dé-plo-ré"
+          ],
+          "pronunciation_focus_en": [
+            "traduction → 'trah-dük-SYON' — 'u' rounded; '-tion' = 'syon'",
+            "Berman → 'behr-MAN' — Antoine Berman, translation theorist; final 'n' sounded (proper name)",
+            "irrécupérable → 'ee-ray-kü-pay-RAH-bluh' — double 'r'; 'u' rounded; = irrecoverable",
+            "déplorer → 'day-ploh-RAY' — 'non de déplorer' = not to lament"
           ]
         },
         {
@@ -1091,6 +1325,12 @@ export const lessons: FrenchLesson[] =           [
             "révèle → ré-vèl",
             "infidélité → an-fi-dé-li-té",
             "esthétiques → ès-té-tik"
+          ],
+          "pronunciation_focus_en": [
+            "versions → 'vehr-SYON' — '-sion' = 'syon'",
+            "révèle → 'ray-VEL' — grave 'è' opens; final '-e' silent",
+            "infidélité → 'an-fee-day-lee-TAY' — nasal 'in'; final '-té' = 'tay'; = unfaithfulness",
+            "esthétiques → 'es-tay-TEEK' — 'th' = plain 't'; final '-ques' = 'eek'"
           ]
         },
         {
@@ -1101,6 +1341,12 @@ export const lessons: FrenchLesson[] =           [
             "proustien → prus-tian",
             "entière → ãn-tièr",
             "défi → dé-fi"
+          ],
+          "pronunciation_focus_en": [
+            "rythme → 'REETM' — 'th' = plain 't'; final '-e' silent",
+            "proustien → 'proos-TYAN' — adjective from Proust; final nasal '-ien'",
+            "entière → 'ahn-TYEHR' — nasal 'en'; 'page entière' = a whole page",
+            "défi → 'day-FEE' — 'défi structurel' = a structural challenge"
           ]
         },
         {
@@ -1111,6 +1357,12 @@ export const lessons: FrenchLesson[] =           [
             "mesuré → mơ-zu-ré",
             "écart → é-kar",
             "économies → é-ko-no-mi"
+          ],
+          "pronunciation_focus_en": [
+            "faudrait → 'foh-DREH' — conditional of 'falloir'; 'encore faudrait-il que' + subjunctive",
+            "mesuré → 'muh-zü-RAY' — 's' = 'z'; 'u' rounded; here a pluperfect-subjunctive participle",
+            "écart → 'ay-KAR' — final 't' silent; = the gap/divergence",
+            "économies → 'ay-koh-noh-MEE' — 'économies syntaxiques' = the languages' syntactic resources"
           ]
         },
         {
@@ -1121,6 +1373,12 @@ export const lessons: FrenchLesson[] =           [
             "appris → a-pri",
             "fidélité → fi-dé-li-té",
             "restitution → rès-ti-tu-sion"
+          ],
+          "pronunciation_focus_en": [
+            "Meschonnic → 'meh-shoh-NEEK' — Henri Meschonnic, theorist of rhythm; 'ch' = 'sh'",
+            "appris → 'ah-PREE' — double 'p' = single 'p'; final 's' silent",
+            "fidélité → 'fee-day-lee-TAY' — final '-té' = 'tay'; 'fidélité au sens' = fidelity to meaning",
+            "restitution → 'res-tee-tü-SYON' — 'u' rounded; '-tion' = 'syon'; = restitution"
           ]
         }
       ],
@@ -1132,70 +1390,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "translation studies",
           "vi": "dịch học",
           "pos": "n.f.",
-          "pronunciation_vi": "tra-duk-to-lo-ji"
+          "pronunciation_vi": "tra-duk-to-lo-ji",
+          "pronunciation_en": "lah trah-dük-toh-loh-ZHEE — translation studies; 'g' = 'zh'"
         },
         {
           "word": "un déplacement traductologique",
           "en": "a translative displacement",
           "vi": "một sự dịch chuyển dịch thuật",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-plas-mã tra-duk-to-lo-jik"
+          "pronunciation_vi": "dé-plas-mã tra-duk-to-lo-jik",
+          "pronunciation_en": "UN day-plahs-MAHN trah-dük-toh-loh-ZHEEK — a translative displacement (Berman: every translation operates one)"
         },
         {
           "word": "la naturalisation",
           "en": "domestication",
           "vi": "sự nội địa hóa (dịch)",
           "pos": "n.f.",
-          "pronunciation_vi": "na-tu-ra-li-za-sion"
+          "pronunciation_vi": "na-tu-ra-li-za-sion",
+          "pronunciation_en": "lah nah-tü-rah-lee-zah-SYON — domestication: pulling the text toward the target reader (Venuti)"
         },
         {
           "word": "l'étrangéisation",
           "en": "foreignization",
           "vi": "sự giữ tính lạ",
           "pos": "n.f.",
-          "pronunciation_vi": "é-trãn-jé-i-za-sion"
+          "pronunciation_vi": "é-trãn-jé-i-za-sion",
+          "pronunciation_en": "lay-trahn-zhay-ee-zah-SYON — foreignization: pulling the reader toward the source text (Venuti)"
         },
         {
           "word": "une tendance déformante",
           "en": "a deforming tendency (Berman)",
           "vi": "một khuynh hướng làm méo (Berman)",
           "pos": "n.f.",
-          "pronunciation_vi": "tãn-dãns dé-for-mãnt"
+          "pronunciation_vi": "tãn-dãns dé-for-mãnt",
+          "pronunciation_en": "ün tahn-DAHNS day-for-MAHNT — a deforming tendency (one of Berman's thirteen)"
         },
         {
           "word": "la fidélité au sens",
           "en": "fidelity to meaning",
           "vi": "sự trung thành với nghĩa",
           "pos": "n.f.",
-          "pronunciation_vi": "fi-dé-li-té ô sãns"
+          "pronunciation_vi": "fi-dé-li-té ô sãns",
+          "pronunciation_en": "lah fee-day-lee-TAY oh SAHNS — fidelity to meaning (which Meschonnic subordinates to rhythm)"
         },
         {
           "word": "la restitution du rythme",
           "en": "the restitution of rhythm",
           "vi": "sự khôi phục nhịp điệu",
           "pos": "n.f.",
-          "pronunciation_vi": "rès-ti-tu-sion du ritm"
+          "pronunciation_vi": "rès-ti-tu-sion du ritm",
+          "pronunciation_en": "lah res-tee-tü-SYON dü REETM — the restitution of rhythm (Meschonnic's true criterion)"
         },
         {
           "word": "un intraduisible",
           "en": "an untranslatable",
           "vi": "một khái niệm không dịch được",
           "pos": "n.m.",
-          "pronunciation_vi": "an-tra-du-i-zi-blơ"
+          "pronunciation_vi": "an-tra-du-i-zi-blơ",
+          "pronunciation_en": "UN an-trah-dwee-ZEE-bluh — an untranslatable (Cassin): what one never stops re-translating"
         },
         {
           "word": "une auto-traduction",
           "en": "a self-translation",
           "vi": "sự tự dịch",
           "pos": "n.f.",
-          "pronunciation_vi": "ô-to tra-duk-sion"
+          "pronunciation_vi": "ô-to tra-duk-sion",
+          "pronunciation_en": "ün oh-toh-trah-dük-SYON — a self-translation (Beckett's French↔English re-writing)"
         },
         {
           "word": "un calque",
           "en": "a calque (loan translation)",
           "vi": "sự dịch sao (calque)",
           "pos": "n.m.",
-          "pronunciation_vi": "kalk"
+          "pronunciation_vi": "kalk",
+          "pronunciation_en": "UN KALK — a calque / loan translation ('gratte-ciel' from 'skyscraper')"
         }
       ],
       "dialogue": [
@@ -1267,25 +1535,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Les belles infidèles (courant historique)",
           "literal": "Những cô gái đẹp bất trung",
+          "literal_en": "the beautiful unfaithful ones",
           "meaning": "Truyền thống dịch tự do thế kỷ XVII-XVIII — đẹp văn nhưng không trung thành.",
+          "meaning_en": "the 17th-18th-c. tradition of free, fluent but unfaithful translation; common historical register",
           "example": "Les belles infidèles, comme la traduction de Lucain par Brébeuf, ont été critiquées dès le XIXe siècle."
         },
         {
           "idiom": "Sourcier vs cibliste (jargon traductologique)",
           "literal": "Người tìm nguồn vs người bám đích",
+          "literal_en": "source-seeker vs target-clinger",
           "meaning": "Hai trường phái dịch — gần văn nguồn vs gần văn đích.",
+          "meaning_en": "the two schools of translation — close to the source vs close to the target; field jargon",
           "example": "Berman était ouvertement sourcier — il défendait la priorité du texte source contre les ciblistes."
         },
         {
           "idiom": "Faire passer en français (courant)",
           "literal": "Làm cho qua trong tiếng Pháp",
+          "literal_en": "to make (a text) pass into French",
           "meaning": "Dịch sang tiếng Pháp — dùng cho dịch văn học.",
+          "meaning_en": "to translate into French — used of literary translation; common register",
           "example": "Faire passer Mallarmé en vietnamien sans en perdre la densité tient du défi structurel."
         },
         {
           "idiom": "Rendre la lettre et l'esprit (soutenu)",
           "literal": "Trả văn tự và tinh thần",
+          "literal_en": "to render both the letter and the spirit",
           "meaning": "Khôi phục cả hình thức và ý nghĩa — yêu cầu tối đa.",
+          "meaning_en": "to restore both form and meaning — the maximal demand on a translation; elevated register",
           "example": "Une grande traduction rend la lettre et l'esprit — la plupart se contentent de l'esprit."
         }
       ],
@@ -1311,13 +1587,22 @@ export const lessons: FrenchLesson[] =           [
               "khái niệm không dịch được"
             ]
           ],
-          "instruction": "Nối thuật ngữ traductologique với nghĩa Việt"
+          "instruction": "Nối thuật ngữ traductologique với nghĩa Việt",
+          "instruction_en": "Match each translation-studies term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Mọi bản dịch thực hiện một sự dịch chuyển không thể khôi phục mà phê bình phải phân tích, chứ không than vãn.",
           "french": "Toute traduction opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer."
         }
+      ],
+      "cultural_notes_en": "Translation criticism in the French tradition is a rich field, structured by three major contemporary theorists. (1) ANTOINE BERMAN (1942-1991): L'Épreuve de l'étranger (1984), La Traduction et la lettre (1985), Pour une critique des traductions: John Donne (1995) — defends the « ethical » translation that respects the source text's strangeness instead of naturalising it, and identifies thirteen « tendances déformantes » translators undergo (rationalisation, clarification, expansion, ennoblement, qualitative and quantitative impoverishment, homogenisation, etc.); required reading in a translation master's. (2) HENRI MESCHONNIC (1932-2009): Pour la poétique I-V (1970-78), Critique du rythme (1982), Poétique du traduire (1999) — makes RHYTHM the central category: to translate is to render the source's rhythm, not its sense; his formula, « le rythme est l'organisation du sens dans le discours, donc le sens même »; a severe critic of the classical « belle infidèle ». (3) BARBARA CASSIN (b. 1947): Vocabulaire européen des philosophies. Dictionnaire des intraduisibles (2004) — poses the question of the UNTRANSLATABLES, concepts that resist transfer between languages (English 'mind', German 'Geist', French 'esprit' are not synonyms). FOUR TYPES OF COMPARISON common at M2 / agrégation level: (a) two French translations of one foreign text — e.g. Lydia Davis's Madame Bovary (2010) vs Geoffrey Wall's (1992), or several Vietnamese Madame Bovary (Bùi Hữu Tải, Trần Phong Giao); (b) a translation against the source — e.g. how the French Beloved (Chabrier & Rué, 1989) renders African-American vernacular; (c) two translations of one text by the same translator at different dates — Aline Schulman's two Don Quixote; (d) self-translation and re-writing — Beckett, who self-translated French↔English, never produced two identical versions. SPECIFIC STAKES FOR A VIETNAMESE-FRENCH (and equally an English) READER: (1) PROUSTIAN RHYTHM — Proust's sentence, which can run a whole page, overflows the short-clause syntax favoured by modern Vietnamese; existing Vietnamese versions (notably Dương Tường's, partial) had to INVENT a new Vietnamese syntax for the Proustian breath; an anglophone meets the same wall, since English too disfavours the page-long period. (2) POETIC DENSITY — 19th-20th-c. French poetry (Baudelaire, Mallarmé, Apollinaire, Char) rests on a lexical-rhythmic density a tonal, monosyllabic language like Vietnamese can only partly restitute; the Vietnamese Baudelaires (Vũ Đình Liên, Tế Hanh) have become works in their own right. (3) LEVELS OF LANGUAGE — literary French uses elevated registers (passé simple, imperfect subjunctive) with no grammatical equivalent in Vietnamese OR in English; the translator must COMPENSATE by other markers (elevated lexicon, archaisms, rare structures), and it is precisely this compensation that a translation critique analyses.",
+      "tip_advice_en": "A grid for comparing two translations. (1) CHOOSE A SHORT PASSAGE — 5 to 15 sentences, dense, representative; detailed work on more is impossible. (2) SET THE SOURCE TEXT in a central column with the two translations on either side; number each line for reference. (3) ANALYSE POINT BY POINT: lexicon (how is each source word rendered?), syntax (sentence cut, fused, restructured?), verb tenses (respected or modulated?), rhythm (cadence preserved?), connotations (register maintained?), sound effects (alliteration, assonance, internal rhyme?), levels of language (elevated / standard / familiar?). (4) IDENTIFY A GLOBAL TRANSLATORIAL CHOICE in each translator — a grid often reveals a coherence: one naturalises (target), the other foreignises (source). (5) EVALUATE THE STRATEGY, NOT THE 'ERROR' — every choice has a cost and a benefit; a C2 critique does not say 'this translation is bad' but 'this translation favours X at the expense of Y'. Useful phrases — to introduce: 'La confrontation des deux versions fait apparaître non tant un meilleur et un moins bon que deux stratégies divergentes.'; to describe a divergence: 'Là où l'original use d'un imparfait à valeur durative, la traduction X opte pour un présent qui en accélère le tempo.', 'L'allitération en [s] de la phrase source disparaît purement et simplement dans la traduction Z.'; to evaluate a strategy: 'La stratégie de naturalisation est ici poussée à un point qui efface la singularité de la voix originale.', 'Aucune des deux versions ne saurait prétendre à l'exhaustivité.'; to conclude: 'Cette comparaison illustre le théorème bermanien selon lequel toute traduction est nécessairement déplacement.', 'C'est précisément ce que Meschonnic appelait l'épreuve du rythme.' Avoid: 'Cette traduction est meilleure que celle-là.' (non-analytical), 'Le traducteur a fait une erreur.' (distinguish a lapse from a strategy), 'Le vietnamien ne peut rendre cela.' (always false — say 'le vietnamien rend cela par d'autres moyens'), and comparing without line-by-line citation (vague and unverifiable).",
+      "register_notes_en": "Translation-studies vocabulary to know. DIRECTIONS: texte source / texte cible (TS/TC), langue source / langue cible (LS/LC), public source / public cible. STRATEGIES (Venuti, taken up by Berman): naturalisation/domestication (toward the target reader), étrangéisation/foreignization (toward the source text), dynamic equivalence (Nida) vs formal equivalence. PROCEDURES (Vinay & Darbelnet, Stylistique comparée du français et de l'anglais, 1958 — itself a French-English contrastive study): emprunt (keep the foreign word: « le sushi »), calque (copy the structure: « gratte-ciel » from skyscraper), literal translation, transposition (change of grammatical class), modulation (change of viewpoint), équivalence (idiom for equivalent idiom), adaptation (change of cultural referent). BERMAN'S DEFORMING TENDENCIES (La Traduction et la lettre, 1985): rationalisation, clarification, expansion, ennoblement/vulgarisation, qualitative and quantitative impoverishment, homogenisation, destruction of rhythms, of underlying signifying networks, of textual systematisms, of vernacular networks, of locutions and idioms, the effacement of superposed languages. MAJOR CRITICS: Berman (ethics of translation), Meschonnic (rhythm as the central category), Cassin (untranslatables), Lawrence Venuti (the translator's visibility), George Steiner (After Babel, 1975). Literary idioms on translation: 'les belles infidèles' (common), 'passer la main' (common), 'rendre à César' (elevated, critical), 'sourcier vs cibliste' (jargon). One subtlety: in French translation criticism one avoids « interprétation » as a synonym of « traduction » — interprétation is the oral act (interprétariat), traduction the written; conflating them marks an amateur. Anglophone note: English 'interpretation' carries the same ambiguity — keep the oral/written distinction explicit.",
+      "roleplay_prompts_en": [
+        "You are commissioned to write a translation review (a 1500-word compte rendu) for the journal Translittérature. Subject: two French translations of one Pessoa poem. Compose the introduction (200 words) — situate + problématique + plan.",
+        "In a seminar, a colleague claims « la traduction est toujours une trahison ». Respond with rigour — distinguish betrayal as a cliché from displacement as an object of analysis; mobilise Berman.",
+        "Compose 5 sentences for a commentary published in an afterword — comparing two Vietnamese translations of a Baudelaire poem. Name each translator, date each version, specify a strategy."
       ]
     },
     {
@@ -1335,6 +1620,12 @@ export const lessons: FrenchLesson[] =           [
             "force → fors",
             "durable → du-ra-blơ",
             "illusion → i-lu-zion"
+          ],
+          "pronunciation_focus_en": [
+            "démonté → 'day-mohn-TAY' — nasal '-on'; = dismantled (an illusion)",
+            "force → 'FORS' — final '-e' silent; 'avec une force durable' = with lasting force",
+            "durable → 'dü-RAH-bluh' — 'u' rounded; final '-le' barely voiced",
+            "illusion → 'ee-lü-ZYON' — double 'l' = single 'l'; 'u' rounded; '-sion' = 'zyon'"
           ]
         },
         {
@@ -1345,6 +1636,12 @@ export const lessons: FrenchLesson[] =           [
             "ville → vil",
             "distinction → dis-tank-sion",
             "critique → kri-tik"
+          ],
+          "pronunciation_focus_en": [
+            "soutenait → 'soo-tuh-NEH' — imperfect of 'soutenir'; parenthetical 'soutenait-il' = he maintained",
+            "ville → 'VEEL' — '-ll-' = 'l' (not 'y'); 'dîner en ville' = to dine out",
+            "distinction → 'dees-tank-SYON' — nasal; '-tion' = 'syon'",
+            "critique → 'kree-TEEK' — here the noun 'la critique' = criticism (the discipline)"
           ]
         },
         {
@@ -1355,6 +1652,12 @@ export const lessons: FrenchLesson[] =           [
             "donnée → do-né",
             "reviendrait → rơ-vian-drè",
             "surgissement → sur-jis-mã"
+          ],
+          "pronunciation_focus_en": [
+            "pertinence → 'pehr-tee-NAHNS' — nasal '-ence'; = relevance (NOT English 'impertinence')",
+            "donnée → 'doh-NAY' — final '-ée' = 'ay'; 'la donnée biographique' = the biographical datum",
+            "reviendrait → 'ruh-vyan-DREH' — conditional of 'revenir'; 'reviendrait à' = would amount to",
+            "surgissement → 'sür-zhees-MAHN' — 'u' rounded; nasal '-ment'; = emergence/coming-into-being"
           ]
         },
         {
@@ -1365,6 +1668,12 @@ export const lessons: FrenchLesson[] =           [
             "Carrère → ka-rèr",
             "brouillé → bru-yé",
             "sciemment → sia-mã"
+          ],
+          "pronunciation_focus_en": [
+            "autofiction → 'oh-toh-feek-SYON' — Doubrovsky's term; '-tion' = 'syon'",
+            "Carrère → 'kah-REHR' — Emmanuel Carrère; double 'r'; final '-e' silent",
+            "brouillé → 'broo-YAY' — '-ill-' = 'y'; = blurred",
+            "sciemment → 'syah-MAHN' — 'sci-' = 'sy'; '-emment' = 'ah-MAHN' (irregular adverb); = knowingly"
           ]
         },
         {
@@ -1375,6 +1684,12 @@ export const lessons: FrenchLesson[] =           [
             "Ernaux → èr-nô",
             "pacte → pakt",
             "fictionnel → fik-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "lorsqu'on → 'lor-SKON' — 'lorsque' + 'on' elided; nasal '-on'; = when one",
+            "Ernaux → 'ehr-NOH' — Annie Ernaux; final 'x' silent; '-aux' = 'oh'",
+            "pacte → 'PAKT' — final '-e' silent; = pact/contract (Lejeune's reading-pact)",
+            "fictionnel → 'feek-syoh-NEL' — double 'n'; final 'l' pronounced"
           ]
         }
       ],
@@ -1386,70 +1701,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "the autobiographical pact",
           "vi": "hợp đồng tự thuật",
           "pos": "n.m.",
-          "pronunciation_vi": "pakt ô-to-bio-gra-fik"
+          "pronunciation_vi": "pakt ô-to-bio-gra-fik",
+          "pronunciation_en": "luh PAKT oh-toh-byoh-grah-FEEK — the autobiographical pact (Lejeune): author = narrator = character"
         },
         {
           "word": "le pacte référentiel",
           "en": "the referential pact",
           "vi": "hợp đồng tham chiếu",
           "pos": "n.m.",
-          "pronunciation_vi": "pakt ré-fé-rãn-siel"
+          "pronunciation_vi": "pakt ré-fé-rãn-siel",
+          "pronunciation_en": "luh PAKT ray-fay-rahn-SYEL — the referential pact: the text claims to refer to the author's real life"
         },
         {
           "word": "le pacte fictionnel",
           "en": "the fictional pact",
           "vi": "hợp đồng hư cấu",
           "pos": "n.m.",
-          "pronunciation_vi": "pakt fik-sio-nèl"
+          "pronunciation_vi": "pakt fik-sio-nèl",
+          "pronunciation_en": "luh PAKT feek-syoh-NEL — the fictional pact: 'this book is invention'"
         },
         {
           "word": "l'autofiction",
           "en": "autofiction",
           "vi": "tự hư cấu",
           "pos": "n.f.",
-          "pronunciation_vi": "ô-to-fik-sion"
+          "pronunciation_vi": "ô-to-fik-sion",
+          "pronunciation_en": "loh-toh-feek-SYON — autofiction (Doubrovsky, 1977); kept in French in English criticism"
         },
         {
           "word": "le moi créateur",
           "en": "the creating self",
           "vi": "cái tôi sáng tạo",
           "pos": "n.m.",
-          "pronunciation_vi": "moa kré-a-tơr"
+          "pronunciation_vi": "moa kré-a-tơr",
+          "pronunciation_en": "luh MWAH kray-ah-TUR — the creating self (Proust): the self that writes, not the social self"
         },
         {
           "word": "le moi social",
           "en": "the social self",
           "vi": "cái tôi xã hội",
           "pos": "n.m.",
-          "pronunciation_vi": "moa so-sial"
+          "pronunciation_vi": "moa so-sial",
+          "pronunciation_en": "luh MWAH soh-SYAL — the social self (Proust): the self that dines, converses, suffers"
         },
         {
           "word": "l'auteur empirique",
           "en": "the empirical author",
           "vi": "tác giả thực nghiệm",
           "pos": "n.m.",
-          "pronunciation_vi": "ô-tơr ãn-pi-rik"
+          "pronunciation_vi": "ô-tơr ãn-pi-rik",
+          "pronunciation_en": "loh-TUR ahn-pee-REEK — the empirical author: the historical person, distinct from the narrator"
         },
         {
           "word": "l'auteur impliqué",
           "en": "the implied author",
           "vi": "tác giả ngụ ý",
           "pos": "n.m.",
-          "pronunciation_vi": "ô-tơr an-pli-ké"
+          "pronunciation_vi": "ô-tơr an-pli-ké",
+          "pronunciation_en": "loh-TUR an-plee-KAY — Booth's 'implied author': the authorial image the text constructs"
         },
         {
           "word": "le biographisme",
           "en": "biographism",
           "vi": "thuyết tiểu sử",
           "pos": "n.m.",
-          "pronunciation_vi": "bio-gra-fism"
+          "pronunciation_vi": "bio-gra-fism",
+          "pronunciation_en": "luh byoh-grah-FEEZM — biographism: explaining a work by the author's life (the Sainte-Beuvian fallacy)"
         },
         {
           "word": "un paratexte",
           "en": "a paratext",
           "vi": "một văn bản phụ",
           "pos": "n.m.",
-          "pronunciation_vi": "pa-ra-tèkst"
+          "pronunciation_vi": "pa-ra-tèkst",
+          "pronunciation_en": "UN pah-rah-TEKST — a paratext (Genette, Seuils 1987): preface, blurb, epigraph that frames the text"
         }
       ],
       "dialogue": [
@@ -1526,25 +1851,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Ramener un texte à son auteur (courant critique)",
           "literal": "Quy giảm văn bản về tác giả",
+          "literal_en": "to bring a text back to its author",
           "meaning": "Giải thích văn bản chỉ qua tiểu sử tác giả — biographisme bị phê phán.",
+          "meaning_en": "to explain a text solely through the author's biography — the criticised biographism; common critical register",
           "example": "Sainte-Beuve avait tendance à ramener tout texte à son auteur — Proust a démonté ce réflexe."
         },
         {
           "idiom": "La mort de l'auteur (formule consacrée)",
           "literal": "Cái chết của tác giả",
+          "literal_en": "the death of the author",
           "meaning": "Cụm Barthes 1968 — văn bản tự lập, tách khỏi tác giả empirique.",
+          "meaning_en": "Barthes's 1968 formula — the text stands on its own, severed from the empirical author; a fixed, canonical phrase",
           "example": "Depuis « la mort de l'auteur » de Barthes, la critique a appris à se méfier de l'argument biographique."
         },
         {
           "idiom": "Lire au plus près (soutenu)",
           "literal": "Đọc gần nhất",
+          "literal_en": "to read as closely as possible",
           "meaning": "Đọc bám sát văn bản, tránh phóng chiếu — close reading rigoureux.",
+          "meaning_en": "to read sticking tightly to the text, avoiding projection — rigorous close reading; elevated register",
           "example": "Lire Ernaux au plus près suppose qu'on prenne au sérieux son pacte référentiel."
         },
         {
           "idiom": "Tirer une œuvre vers la confidence (littéraire)",
           "literal": "Kéo tác phẩm về phía tâm sự",
+          "literal_en": "to pull a work toward (personal) confession",
           "meaning": "Đọc văn bản như tâm sự cá nhân — réducteur.",
+          "meaning_en": "to read a text as personal confession — a reductive move; literary register",
           "example": "Tirer La Place d'Ernaux vers la confidence, c'est ignorer son ambition sociologique."
         }
       ],
@@ -1570,13 +1903,22 @@ export const lessons: FrenchLesson[] =           [
               "thuyết tiểu sử"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Vẫn cần, khi đọc Ernaux, phân biệt hợp đồng tham chiếu cô đề xuất với hợp đồng hư cấu chi phối tiểu thuyết cổ điển.",
           "french": "Encore faut-il, lorsqu'on lit Ernaux, distinguer le pacte référentiel qu'elle propose du pacte fictionnel qui régit le roman classique."
         }
+      ],
+      "cultural_notes_en": "THE SAINTE-BEUVE / PROUST DEBATE is a foundational quarrel of modern French criticism; precise command of it is expected at C2. (1) CHARLES-AUGUSTIN SAINTE-BEUVE (1804-1869): the dominant 19th-c. critic, author of the Causeries du lundi (1851-62); his « biographical » method explains the work by the author's LIFE and CHARACTER — to understand Racine is to know his friendships, his Port-Royal formation, his temperament; criticism becomes a kind of moral portrait. (2) MARCEL PROUST (1871-1922): replies in Contre Sainte-Beuve (written c. 1908-09, published posthumously 1954): « a book is the product of another self than the one we display in our habits, in society, in our vices »; he radically separates the SOCIAL SELF (who dines, converses, suffers) from the CREATING SELF (who writes) — biography reaches only the first, the work alone the second. (3) THE LEGACY: 20th-c. criticism (Russian Formalism, New Criticism, structuralism) broadly followed Proust; Barthes radicalises it in « La Mort de l'auteur » (1968) — the text is a tissue of citations, the empirical author has no authority over its meaning; Foucault, in « Qu'est-ce qu'un auteur ? » (1969), nuances: analyse the « author-function », the institutional and discursive role of the author's name, without restoring the biographical self. (4) THE RETURN OF BIOGRAPHY: since the 1990s, a partial return — not to Sainte-Beuve's naive biographism but to a « literary history » that reintegrates the conditions of production; Antoine Compagnon (Le Démon de la théorie, 1998) argues for balance: neither exclusive biographism nor anti-biographical textual purism. (5) CONTEMPORARY AUTOFICTION complicates the matter: when Annie Ernaux writes Les Années (2008) explicitly stating « these memories are mine », she proposes a REFERENTIAL PACT — refusing to read Ernaux's biography would be absurd (she herself points to it), yet reducing the work to the biography would be equally naive (it is also elaboration, selection, shaping); Philippe Lejeune (Le Pacte autobiographique, 1975) set the terms, Doubrovsky (Fils, 1977) coined « autofiction ». FOUR LEGITIMATE C2 POSITIONS: (a) post-Barthesian textual purism — the work suffices, all biography is anecdote (coherent but impoverishing for Proust, Céline, Ernaux, Houellebecq, whose biography is inseparable from the text); (b) post-Compagnon refined biographism — biography illuminates specific cases (letters, journals, historical context) without deriving the meaning from it; (c) genetic criticism (the ITEM school, Pierre-Marc de Biasi) — study manuscripts and drafts to reconstruct the work of creation, rehabilitating the author as craftsman, not source of meaning; (d) post-Bourdieu sociology of literature (Les Règles de l'art, 1992) — the work is produced within a LITERARY FIELD (biography, cultural capital, position in the field) without naive biographism. ANGLOPHONE TRAP: the anglophone analogue of Sainte-Beuvian biographism is precisely the « intentional fallacy » named by Wimsatt & Beardsley (1946) — the same prohibition the French reach via Proust and Barthes; and, as in English usage, do not confuse « historical context » (acceptable) with « the author's biography » (problematic, post-Proust): 'Madame Bovary was written in 1857, under the Second Empire' is a relevant HISTORICAL datum; 'Flaubert had a failed love affair in 1842 that explains his pessimism' is Sainte-Beuvian BIOGRAPHISM, to be avoided.",
+      "tip_advice_en": "A grid for articulating biography and work without lapsing into biographism. (1) IDENTIFY THE PROPOSED PACT: fictional pact (classic novel — 'this book is invented'), autobiographical pact (Lejeune — 'this book tells the truth of my life'), autofictional pact (Doubrovsky — 'this book plays with the borders; truth and invention are indistinct'). (2) CHOOSE THE RELEVANT BIOGRAPHICAL DATA — those the text explicitly SOLICITS: the historical period of the writing (often relevant), the author's position in the literary field (often relevant), the author's documented reading (sometimes relevant, for intertextuality), intimate private-life details (rarely relevant). (3) DISTINGUISH THREE LEVELS: the EMPIRICAL AUTHOR (the historical person who eats, sleeps, signs contracts), the IMPLIED AUTHOR (Wayne Booth — the image the text constructs of its author), the NARRATOR (the voice of the text, distinct from both). (4) ANALYSE THE PARATEXTS (Genette, Seuils, 1987): preface, dedication, epigraph, notes; editorial bands, jacket, prière d'insérer; interviews and articles around publication — these orient the reading whether one accepts or resists them. Useful phrases — to invoke biography legitimately: 'Le contexte de la rédaction — [period, event] — éclaire ce passage.', 'Sans tomber dans le biographisme, on peut noter que l'auteur a explicitement revendiqué cette filiation avec X.'; to avoid naive biographism: 'Il convient de distinguer ce que le texte donne à lire de ce que la biographie de l'auteur permettrait de supposer.', 'Le moi qui écrit, comme le rappelle Proust, n'est pas le moi qui vit.'; to analyse autofiction: 'Annie Ernaux propose un pacte référentiel explicite, qu'on ne peut ignorer sans contresens.', 'L'autofiction brouille sciemment la frontière, mais ne l'abolit pas.' Avoid: 'L'auteur a écrit cela parce qu'il a vécu telle expérience.' (strict biographism), 'La biographie n'a aucune importance.' (excessive, naive purism), confusing the empirical author and the narrator ('Marcel Proust says in the Recherche that…'), and sourcing a character trait in a psychological trait of the author.",
+      "register_notes_en": "Precise vocabulary on the author/text question. INSTANCES TO DISTINGUISH (Wayne Booth, The Rhetoric of Fiction, 1961, French trans. 1977): the empirical author (the historical person), the implied author (the image constructed by the text), the narrator (the voice that says 'je', if any), the character (figures of the diégèse) — NEVER conflate these four; a C2 critique uses the distinctions to the exact word. READING PACTS (Lejeune): fictional ('this book is invention'), autobiographical ('author = narrator = character'), partial referential / autofiction (play on the borders). CRITICAL SCHOOLS: Lansonism (19th-early 20th c.: dominant biographism), psychoanalytic criticism (Mauron, Bachelard, Doubrovsky: the author's psyche in the work), sociological criticism (Bourdieu, Les Règles de l'art, 1992: the author in the field), genetic criticism (de Biasi, ITEM: the author as craftsman), post-Barthesian semiotics (the author as text-effect). FORMULAS TO AVOID (all biographistic): « Madame Bovary, c'est moi » (probably apocryphal, attributed to Flaubert), « L'auteur a écrit cela parce qu'il a vécu… », « On comprend mieux ce passage en sachant que… ». ACCEPTABLE C2 FORMULAS: « Le contexte de production éclaire… » (historical, not biographical), « Le pacte que propose le texte… », « L'auteur impliqué se distingue ici de l'auteur empirique en ce que… », « La donnée biographique éclaire ce passage à condition de ne pas y être réduite. » Literary idioms: 'ramener un texte à son auteur' (common, critical), 'la mort de l'auteur' (the Barthesian formula, now common), 'tirer un texte vers la biographie' (elevated), 'lire avec ou contre l'auteur' (common). One subtlety: « selon Marcel Proust » is used for Proust the empirical author (interviews, letters); for the narrator of the Recherche say « selon le narrateur proustien » or « selon le Marcel narrateur » — conflating them shows a lack of critical finesse (the same care an anglophone must take between 'Proust says' and 'the narrator says').",
+      "roleplay_prompts_en": [
+        "You are assigned an explication of a passage from La Place (Ernaux, 1983). Identify the proposed pact, situate it in the post-Lejeune autobiographical tradition, avoid naive biographism.",
+        "In a seminar, a colleague claims « pour comprendre Céline, il faut connaître ses prises de position antisémites pendant la guerre ». Respond with rigour — distinguish what belongs to historical context, to biographism, and to textual reading.",
+        "Compose 5 sentences analysing the title Contre Sainte-Beuve of Proust — why « contre » and not « après » or « sur »? What polemical stake is inscribed in the title itself?"
       ]
     },
     {
@@ -1594,6 +1936,12 @@ export const lessons: FrenchLesson[] =           [
             "Jauss → jôs",
             "gravité → gra-vi-té",
             "trajectoire → tra-jèk-toar"
+          ],
+          "pronunciation_focus_en": [
+            "réception → 'ray-sep-SYON' — '-tion' = 'syon'; = reception",
+            "Jauss → 'YOHSS' — Hans Robert Jauss (German name): 'J' = 'y'; 'au' = 'oh'",
+            "gravité → 'grah-vee-TAY' — final '-té' = 'tay'; 'centre de gravité' = centre of gravity",
+            "trajectoire → 'trah-zhek-TWAHR' — 'j' = 'zh'; 'oi' = 'wah'"
           ]
         },
         {
@@ -1604,6 +1952,12 @@ export const lessons: FrenchLesson[] =           [
             "stabilisé → sta-bi-li-zé",
             "révision → ré-vi-zion",
             "sous-estimer → su-zès-ti-mé"
+          ],
+          "pronunciation_focus_en": [
+            "canon → 'kah-NON' — nasal '-on'; = the (literary) canon, NOT a cannon",
+            "stabilisé → 'stah-bee-lee-ZAY' — final '-é' = 'ay'",
+            "révision → 'ray-vee-ZYON' — '-sion' = 'zyon'; = revision/re-examination",
+            "sous-estimer → 'soo-zes-tee-MAY' — liaison 's' = 'z'; = to underestimate"
           ]
         },
         {
@@ -1614,6 +1968,12 @@ export const lessons: FrenchLesson[] =           [
             "tardive → tar-div",
             "exemplairement → èg-zãn-plè-rơ-mã",
             "reconnaissances → rơ-ko-nè-sãns"
+          ],
+          "pronunciation_focus_en": [
+            "entrée → 'ahn-TRAY' — nasal 'en'; 'l'entrée tardive' = the late entry",
+            "tardive → 'tar-DEEV' — feminine of 'tardif'; = late/belated",
+            "exemplairement → 'eg-zahn-plehr-MAHN' — 'x' = 'gz'; long adverb; = exemplarily",
+            "reconnaissances → 'ruh-koh-neh-SAHNS' — nasal '-ance'; = (institutional) recognitions"
           ]
         },
         {
@@ -1624,6 +1984,12 @@ export const lessons: FrenchLesson[] =           [
             "gardât → gar-da",
             "valeur → va-lơr",
             "citation → si-ta-sion"
+          ],
+          "pronunciation_focus_en": [
+            "faudrait → 'foh-DREH' — conditional of 'falloir'; 'encore faudrait-il que' + subjunctive",
+            "gardât → 'gar-DAH' — imperfect subjunctive of 'se garder'; final 't' silent; literary; 'se garder de' = to refrain from",
+            "valeur → 'vah-LUR' — final '-eur' rounded; 'la valeur littéraire' = literary value",
+            "citation → 'see-tah-SYON' — '-tion' = 'syon'; 'taux de citation' = citation rate"
           ]
         },
         {
@@ -1634,6 +2000,12 @@ export const lessons: FrenchLesson[] =           [
             "logiques → lo-jik",
             "reconnaissance → rơ-ko-nè-sãns",
             "mérite → mé-rit"
+          ],
+          "pronunciation_focus_en": [
+            "champ → 'SHAHN' — nasal; final 'p' silent; 'le champ littéraire' = the literary field (Bourdieu)",
+            "logiques → 'loh-ZHEEK' — 'g' = 'zh'; here a noun, 'des logiques' = operating principles",
+            "reconnaissance → 'ruh-koh-neh-SAHNS' — nasal '-ance'; = recognition",
+            "mérite → 'may-REET' — final '-e' silent; 'le mérite intrinsèque' = intrinsic merit"
           ]
         }
       ],
@@ -1645,70 +2017,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "reception aesthetics",
           "vi": "thẩm mỹ tiếp nhận",
           "pos": "n.f.",
-          "pronunciation_vi": "ès-té-tik dơ la ré-sèp-sion"
+          "pronunciation_vi": "ès-té-tik dơ la ré-sèp-sion",
+          "pronunciation_en": "les-tay-TEEK duh lah ray-sep-SYON — reception aesthetics (Jauss, the Constance School)"
         },
         {
           "word": "l'horizon d'attente",
           "en": "horizon of expectation (Jauss)",
           "vi": "chân trời mong đợi (Jauss)",
           "pos": "n.m.",
-          "pronunciation_vi": "o-ri-zõn da-tãnt"
+          "pronunciation_vi": "o-ri-zõn da-tãnt",
+          "pronunciation_en": "loh-ree-ZON dah-TAHNT — Jauss's 'horizon of expectation': an era's system of literary expectations"
         },
         {
           "word": "le canon littéraire",
           "en": "the literary canon",
           "vi": "kinh điển văn học",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-nõn li-té-rèr"
+          "pronunciation_vi": "ka-nõn li-té-rèr",
+          "pronunciation_en": "luh kah-NON lee-tay-REHR — the literary canon (a constructed, contested set, not natural)"
         },
         {
           "word": "la canonisation",
           "en": "canonization",
           "vi": "sự kinh điển hóa",
           "pos": "n.f.",
-          "pronunciation_vi": "ka-no-ni-za-sion"
+          "pronunciation_vi": "ka-no-ni-za-sion",
+          "pronunciation_en": "lah kah-noh-nee-zah-SYON — canonization; '-tion' = 'syon'"
         },
         {
           "word": "le champ littéraire",
           "en": "the literary field (Bourdieu)",
           "vi": "trường văn học (Bourdieu)",
           "pos": "n.m.",
-          "pronunciation_vi": "shã li-té-rèr"
+          "pronunciation_vi": "shã li-té-rèr",
+          "pronunciation_en": "luh SHAHN lee-tay-REHR — Bourdieu's literary field: the structured space of literary positions"
         },
         {
           "word": "la reconnaissance institutionnelle",
           "en": "institutional recognition",
           "vi": "sự công nhận thể chế",
           "pos": "n.f.",
-          "pronunciation_vi": "rơ-ko-nè-sãns an-sti-tu-sio-nèl"
+          "pronunciation_vi": "rơ-ko-nè-sãns an-sti-tu-sio-nèl",
+          "pronunciation_en": "lah ruh-koh-neh-SAHNS an-stee-tü-syoh-NEL — institutional recognition"
         },
         {
           "word": "la consécration",
           "en": "consecration / official recognition",
           "vi": "sự thánh hóa / công nhận chính thức",
           "pos": "n.f.",
-          "pronunciation_vi": "kõn-sé-kra-sion"
+          "pronunciation_vi": "kõn-sé-kra-sion",
+          "pronunciation_en": "lah kohn-say-krah-SYON — Bourdieu's 'consecration': official institutional recognition"
         },
         {
           "word": "un auteur marginal",
           "en": "a marginal author",
           "vi": "một tác giả ngoại biên",
           "pos": "n.m.",
-          "pronunciation_vi": "ô-tơr mar-ji-nal"
+          "pronunciation_vi": "ô-tơr mar-ji-nal",
+          "pronunciation_en": "UN oh-TUR mar-zhee-NAL — a marginal author (outside the canon's centre)"
         },
         {
           "word": "l'effacement du canon",
           "en": "the erosion of the canon",
           "vi": "sự xói mòn của kinh điển",
           "pos": "n.m.",
-          "pronunciation_vi": "é-fas-mã du ka-nõn"
+          "pronunciation_vi": "é-fas-mã du ka-nõn",
+          "pronunciation_en": "lay-fahs-MAHN dü kah-NON — the erosion of the canon; nasal '-ment'"
         },
         {
           "word": "la francophonie littéraire",
           "en": "literary francophony",
           "vi": "văn học Pháp ngữ",
           "pos": "n.f.",
-          "pronunciation_vi": "frãn-ko-fo-ni li-té-rèr"
+          "pronunciation_vi": "frãn-ko-fo-ni li-té-rèr",
+          "pronunciation_en": "lah frahn-koh-foh-NEE lee-tay-REHR — literary francophony (French-language writing beyond France)"
         }
       ],
       "dialogue": [
@@ -1790,25 +2172,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Faire l'objet d'une redécouverte (soutenu)",
           "literal": "Là đối tượng của một sự tái khám phá",
+          "literal_en": "to be the object of a rediscovery",
           "meaning": "Được giới critique chú ý lại sau thời gian quên — pattern de réception.",
+          "meaning_en": "to draw critical attention again after a period of neglect — a reception pattern; elevated register",
           "example": "Roussel a fait l'objet d'une redécouverte spectaculaire dans les années 1960, par les surréalistes et l'Oulipo."
         },
         {
           "idiom": "Sortir du purgatoire (littéraire)",
           "literal": "Ra khỏi luyện ngục",
+          "literal_en": "to come out of purgatory",
           "meaning": "Thoát khỏi giai đoạn ít được đọc — réhabilitation critique.",
+          "meaning_en": "to emerge from a period of being little read — critical rehabilitation; literary register",
           "example": "Céline est sorti du purgatoire dans les années 1980, au prix de débats vifs."
         },
         {
           "idiom": "Faire école (courant littéraire)",
           "literal": "Tạo trường phái",
+          "literal_en": "to found a school",
           "meaning": "Trở thành mô hình cho thế hệ sau.",
+          "meaning_en": "to become a model for the following generation; common literary register",
           "example": "Le Nouveau Roman a fait école — mais brièvement; les années 1980 marquent un reflux."
         },
         {
           "idiom": "Être inscrit au panthéon (soutenu)",
           "literal": "Được ghi vào điện thờ",
+          "literal_en": "to be inscribed in the pantheon",
           "meaning": "Vào kinh điển chính thức — métaphore du Panthéon parisien.",
+          "meaning_en": "to enter the official canon — a metaphor from the Paris Panthéon; elevated register",
           "example": "Avec son Nobel, Ernaux est désormais inscrite au panthéon littéraire français contemporain."
         }
       ],
@@ -1834,13 +2224,22 @@ export const lessons: FrenchLesson[] =           [
               "trường văn học"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Trường văn học, như Bourdieu đã chứng minh, hoạt động theo các logic công nhận không lẫn lộn với thị trường cũng không với công trạng nội tại.",
           "french": "Le champ littéraire, comme l'a montré Bourdieu, opère selon des logiques de reconnaissance qui ne se confondent ni avec le marché ni avec le mérite intrinsèque."
         }
+      ],
+      "cultural_notes_en": "RÉCEPTION and CANON are two distinct but interlocking critical concepts a C2 candidate must handle. (1) RÉCEPTION: the history of a work's successive readings — the theory of the Constance School (Hans Robert Jauss, Pour une esthétique de la réception, 1972, French trans. 1978; Wolfgang Iser). Central idea: a work has no fixed sense; it unfolds its sense through the readings made of it, themselves conditioned by each era's « horizon d'attente » (horizon of expectation). (2) CANON: the set of works deemed indispensable — those taught at university, anthologised, given reference editions (Gallimard's Pléiade, Garnier-Flammarion). The canon is not natural: it is constructed, hierarchised, contested. FOUR GREAT TRANSFORMATIONS of the French canon since 1980: (a) THE ENTRY OF WOMEN — long absent (beyond Mme de La Fayette, Mme de Sévigné): Duras (canonical in the 1980s via L'Amant, Goncourt 1984), Beauvoir (philosophical re-evaluation post-2000), Ernaux (later — the 2022 Nobel accelerated a canonisation already begun by the 2010s university syllabi). (b) THE ENTRY OF THE FRANCOPHONIES — the long France-only canon opens to francophone writing: Aimé Césaire (Cahier d'un retour au pays natal, 1939), Édouard Glissant (Le Discours antillais, 1981), Patrick Chamoiseau (Texaco, Goncourt 1992), Maryse Condé (alternative Nobel 2018), Léonora Miano, Alain Mabanckou, Dany Laferrière (Académie française 2013). (c) RECOGNITION OF POPULAR GENRES — crime fiction (Manchette, Vargas), science fiction (Damasio, Bordage), the graphic novel (Maus, Persepolis) enter the critical field; an unfinished battle, as letters departments resist. (d) RE-EVALUATION OF LONG-MARGINAL AUTHORS — Céline, whose antisemitism and collaboration had sidelined the work, is reintegrated (amid sharp debate — the 2017 Pléiade was delayed); Beckett, once filed as marginal-experimental, is now canonical. WHO DECIDES THE CANON? The Académie française (symbolic prestige, weak school influence), the Pléiade (canonisation by reference edition), the baccalauréat and agrégation syllabi (strong generational influence), the universities (Sorbonne, ENS, EHESS — strong on academic criticism), literary prizes (Goncourt, Renaudot, Femina, Médicis — variable), media critics (Le Monde des livres, La Quinzaine littéraire — a filter role), and, since 2020, social media and BookTok (growing, still marginal in the academic canon). CURRENT DEBATES: (1) should the canon be decolonised? — borne by postcolonial studies since Glissant; the moderate position (Mbembe, Bessière) widens without abolishing, the radical position deconstructs the very concept of canon. (2) Should problematic authors (Céline, Houellebecq) still be taught? — the majority academic position: yes, but with critical contextualisation. (3) Is the canon a form of symbolic violence (Bourdieu)? — canonical selection reproduces social hierarchies, since those who decide are themselves an elite; but without a canon, how to transmit? A LEGITIMATE C2 POSITION holds together (a) the sociological critique of the canon as a non-neutral historical construction, (b) the practical necessity of a transmitted canon for teaching, (c) continuous but non-chaotic revision. ANGLOPHONE TRAP: just as a Vietnamese reader may take the French canon for 'French literature' tout court, an anglophone reader may take the Norton-Anthology / 'Great Books' canon as natural — the same battles raged around Harold Bloom's The Western Canon (1994) and its multiculturalist critics; C2 criticism sees the canon as a historical construction that includes, excludes, and changes.",
+      "tip_advice_en": "A grid for studying a work's reception. (1) RECONSTRUCT THE HORIZON OF EXPECTATION at the time of publication: which public? which criticism? which competing works? which dominant aesthetic expectations? (2) IDENTIFY THE FIRST READERS AND THEIR REACTIONS: press reviews on release, letters and correspondence, public reactions (success or scandal). (3) FOLLOW THE EVOLUTION OF THE RECEPTION over time: periods of oblivion or marginalisation, periods of rediscovery, variations by critical school (Sainte-Beuvian, formalist, structuralist, postcolonial). (4) ANALYSE THE CRITERIA OF CANONISATION: critical edition (Pléiade, Garnier), inclusion on the baccalauréat or agrégation syllabus, academic citations, adaptations (stage, screen), posthumous prizes or tributes. (5) INTERROGATE THE WORK'S POSITION IN THE CURRENT CANON: central, peripheral, marginal, excluded? for what reasons (aesthetic, social, political)? is the status stable or contested? Useful phrases — to introduce a reception analysis: 'La réception de l'œuvre, à sa parution, fut [scandalisée / discrète / triomphale].', 'L'horizon d'attente de [année] explique la défaveur initiale dont l'œuvre fit l'objet.'; to analyse a canonisation: 'L'entrée d'Ernaux dans la Pléiade en [année] consacre une reconnaissance institutionnelle préparée par deux décennies de travaux universitaires.', 'La canonisation tardive de Duras s'explique moins par la qualité de l'œuvre, jamais discutée, que par les transformations du champ critique.'; to interrogate the canon: 'Le canon, comme construction historique, ne se confond pas avec la valeur littéraire intrinsèque.', 'Élargir le canon n'est pas le diluer — c'est en restaurer la richesse.' Avoid: 'C'est un classique parce que c'est bon.' (a contentless tautology), 'Le canon est arbitraire.' (too strong — say 'historically constructed'), 'Toutes les œuvres se valent.' (a sterile relativism that makes any hierarchy impossible), and confusing the school canon (syllabi) with the academic canon (research).",
+      "register_notes_en": "Precise vocabulary on canon and reception. INSTANCES OF CANONISATION to know: the Pléiade (Gallimard — the ultimate reference edition), the Pléiade des sciences humaines (since 1984, for criticism), the baccalauréat syllabi (revised every 5-7 years), the agrégation des lettres modernes syllabi (annual), university textbooks (Lagarde et Michard, long dominant; now more diversified), the century anthologies, and the French Nobels: Sully Prudhomme (1901), Mistral (1904), Anatole France (1921), Bergson (1927), Mauriac (1952), Camus (1957), Saint-John Perse (1960), Sartre (1964 — declined), Beckett (1969), Le Clézio (2008), Modiano (2014), Ernaux (2022). SCHOOLS OF READING THE CANON: formalist (Jakobsonian — the canon of formally rich works), sociological (Bourdieusian — the canon as a construction of the field), feminist (critique of the male canon, rediscovery of women writers), postcolonial (opening to the francophonies, deconstruction of Eurocentrism). TECHNICAL TERMS ON RECEPTION: l'horizon d'attente (Jauss — the period public's system of expectations), l'écart esthétique (Jauss — the distance between work and horizon), la rupture de l'horizon (Jauss — a work that transforms the horizon), la consécration (Bourdieu — institutional recognition), le capital symbolique (Bourdieu — accumulated prestige), le champ littéraire (Bourdieu — the structured space of literary positions), la position dominante / dominée (the hierarchy within the field). Literary idioms on reception: 'entrer dans la postérité' (elevated), 'passer à la postérité' (common), 'tomber dans l'oubli' (common), 'refaire surface' (common), 'être consacré' (elevated), 'faire l'objet d'une redécouverte' (elevated). One subtlety: C2 criticism avoids « grand auteur », « chef-d'œuvre », « génie » as unjustified evaluative judgments — prefer « auteur canonique », « œuvre devenue référence », « écrivain dont l'apport est reconnu »; « génie » as a critical category has been suspect since Bourdieu (who showed its social function rather than its analytic relevance). The same caution applies in English: 'masterpiece' and 'genius' are evaluatives a C2 register replaces with descriptive, argued claims.",
+      "roleplay_prompts_en": [
+        "You are commissioned to write a review for Le Monde des livres of a recent essay claiming to « décoloniser le canon littéraire français ». Take a nuanced critical position — accept the widening, refuse the nihilist deconstruction.",
+        "In a seminar, a colleague claims « le canon est une violence symbolique pure ». Respond by mobilising Bourdieu without simplifying him — the canon is also a mode of transmission that makes expert reading possible.",
+        "Compose 5 sentences analysing why Maryse Condé, alternative Nobel 2018, is not yet on the agrégation syllabus — which mechanisms of the field delay canonisation?"
       ]
     },
     {
@@ -1858,6 +2257,12 @@ export const lessons: FrenchLesson[] =           [
             "grilles → griy",
             "théoriques → té-o-rik",
             "richesse → ri-shès"
+          ],
+          "pronunciation_focus_en": [
+            "œuvre → 'UH-vruh' — 'œu' = rounded 'uh'; final '-re' barely voiced; = (literary) work",
+            "grilles → 'GREE' — '-ill-' = 'y'; 'grilles de lecture' = interpretive frameworks",
+            "théoriques → 'tay-oh-REEK' — 'th' = plain 't'; final '-ques' = 'eek'",
+            "richesse → 'ree-SHESS' — 'ch' = 'sh'; final '-e' silent; = richness"
           ]
         },
         {
@@ -1868,6 +2273,12 @@ export const lessons: FrenchLesson[] =           [
             "Jakobson → ya-kob-son",
             "accent → ak-sãn",
             "stylistiques → sti-lis-tik"
+          ],
+          "pronunciation_focus_en": [
+            "formaliste → 'for-mah-LEEST' — final '-e' silent; the formalist school",
+            "Jakobson → 'yah-kob-SON' — Roman Jakobson (Russian Formalism): 'J' = 'y'",
+            "accent → 'ak-SAHN' — nasal '-ent'; 'mettre l'accent sur' = to emphasise",
+            "stylistiques → 'stee-lees-TEEK' — final '-ques' = 'eek'; 'procédés stylistiques' = stylistic devices"
           ]
         },
         {
@@ -1878,6 +2289,12 @@ export const lessons: FrenchLesson[] =           [
             "Beauvoir → bô-voar",
             "Cixous → si-ksu",
             "interroge → an-tè-roj"
+          ],
+          "pronunciation_focus_en": [
+            "féministe → 'fay-mee-NEEST' — final '-e' silent; the feminist reading",
+            "Beauvoir → 'boh-VWAHR' — Simone de Beauvoir; 'eau' = 'oh'; 'oi' = 'wah'",
+            "Cixous → 'seek-SOO' — Hélène Cixous; final 's' pronounced (proper name)",
+            "interroge → 'an-teh-ROZH' — nasal 'in'; 'g' = 'zh'; = questions/interrogates"
           ]
         },
         {
@@ -1888,6 +2305,12 @@ export const lessons: FrenchLesson[] =           [
             "Glissant → gli-sã",
             "Mbembe → ãn-bèm-bé",
             "périphéries → pé-ri-fé-ri"
+          ],
+          "pronunciation_focus_en": [
+            "postcoloniale → 'post-koh-loh-NYAL' — final 'l' pronounced; the postcolonial reading",
+            "Glissant → 'glee-SAHN' — Édouard Glissant; nasal '-ant', final 't' silent",
+            "Mbembe → 'mm-BEM-bay' — Achille Mbembe (Cameroonian theorist): initial 'Mb' a single cluster; final '-e' = 'ay'",
+            "périphéries → 'pay-ree-fay-REE' — all 'é' = 'ay'; = the (long-silent) peripheries"
           ]
         },
         {
@@ -1898,6 +2321,12 @@ export const lessons: FrenchLesson[] =           [
             "discernement → di-sèr-nơ-mã",
             "plaquées → pla-ké",
             "fortuitement → for-tu-it-mã"
+          ],
+          "pronunciation_focus_en": [
+            "mobilisées → 'moh-bee-lee-ZAY' — '-ées' = 'ay'; 'mobiliser une grille' = to bring a grid to bear",
+            "discernement → 'dee-sehr-nuh-MAHN' — nasal '-ment'; = discernment/judgement",
+            "plaquées → 'plah-KAY' — '-ées' = 'ay'; 'plaquer une grille' = to slap a framework on (pejorative)",
+            "fortuitement → 'for-twee-tuh-MAHN' — 'ui' = 'wee'; nasal '-ment'; = fortuitously, by chance"
           ]
         }
       ],
@@ -1909,70 +2338,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "an interpretive grid",
           "vi": "một lưới đọc",
           "pos": "n.f.",
-          "pronunciation_vi": "griy dơ lèk-tur"
+          "pronunciation_vi": "griy dơ lèk-tur",
+          "pronunciation_en": "ün GREE duh lek-TUR — an interpretive grid/framework; '-ill-' = 'y'"
         },
         {
           "word": "la lecture formaliste",
           "en": "formalist reading",
           "vi": "cách đọc hình thức luận",
           "pos": "n.f.",
-          "pronunciation_vi": "lèk-tur for-ma-list"
+          "pronunciation_vi": "lèk-tur for-ma-list",
+          "pronunciation_en": "lah lek-TUR for-mah-LEEST — formalist reading (Jakobson, the Russian School)"
         },
         {
           "word": "la lecture féministe",
           "en": "feminist reading",
           "vi": "cách đọc nữ quyền",
           "pos": "n.f.",
-          "pronunciation_vi": "lèk-tur fé-mi-nist"
+          "pronunciation_vi": "lèk-tur fé-mi-nist",
+          "pronunciation_en": "lah lek-TUR fay-mee-NEEST — feminist reading (Beauvoir, Cixous)"
         },
         {
           "word": "la lecture postcoloniale",
           "en": "postcolonial reading",
           "vi": "cách đọc hậu thuộc địa",
           "pos": "n.f.",
-          "pronunciation_vi": "lèk-tur pos-ko-lo-nial"
+          "pronunciation_vi": "lèk-tur pos-ko-lo-nial",
+          "pronunciation_en": "lah lek-TUR post-koh-loh-NYAL — postcolonial reading (Glissant, Mbembe, Said)"
         },
         {
           "word": "l'écriture féminine",
           "en": "feminine writing (Cixous)",
           "vi": "lối viết nữ tính (Cixous)",
           "pos": "n.f.",
-          "pronunciation_vi": "é-kri-tur fé-mi-nin"
+          "pronunciation_vi": "é-kri-tur fé-mi-nin",
+          "pronunciation_en": "lay-kree-TUR fay-mee-NEEN — Cixous's « écriture féminine »; kept in French in English theory"
         },
         {
           "word": "un rapport de genre",
           "en": "a gender relation",
           "vi": "một quan hệ giới",
           "pos": "n.m.",
-          "pronunciation_vi": "ra-por dơ jãn-rơ"
+          "pronunciation_vi": "ra-por dơ jãn-rơ",
+          "pronunciation_en": "UN rah-POR duh ZHAHN-ruh — a gender relation; 'rapport' final 't' silent"
         },
         {
           "word": "une isotopie",
           "en": "an isotopy (Greimas)",
           "vi": "một đẳng cấu (Greimas)",
           "pos": "n.f.",
-          "pronunciation_vi": "i-zo-to-pi"
+          "pronunciation_vi": "i-zo-to-pi",
+          "pronunciation_en": "ün ee-zoh-toh-PEE — an isotopy (Greimas): a recurring semantic thread structuring a text"
         },
         {
           "word": "un plaquage théorique",
           "en": "theoretical imposition",
           "vi": "sự dán lý thuyết",
           "pos": "n.m.",
-          "pronunciation_vi": "pla-kaj té-o-rik"
+          "pronunciation_vi": "pla-kaj té-o-rik",
+          "pronunciation_en": "UN plah-KAZH tay-oh-REEK — a theoretical imposition: slapping a framework on regardless of the text (pejorative)"
         },
         {
           "word": "l'orientalisme",
           "en": "Orientalism (Said)",
           "vi": "chủ nghĩa Đông phương (Said)",
           "pos": "n.m.",
-          "pronunciation_vi": "o-riãn-ta-lism"
+          "pronunciation_vi": "o-riãn-ta-lism",
+          "pronunciation_en": "loh-ryahn-tah-LEEZM — Said's 'Orientalism': the Western construction projected onto the East"
         },
         {
           "word": "la mise en relation",
           "en": "putting-into-relation (Glissant)",
           "vi": "sự đặt vào quan hệ (Glissant)",
           "pos": "n.f.",
-          "pronunciation_vi": "miz ã rơ-la-sion"
+          "pronunciation_vi": "miz ã rơ-la-sion",
+          "pronunciation_en": "lah MEEZ ahn ruh-lah-SYON — Glissant's 'putting-into-relation': cultures placed in mutual relation"
         }
       ],
       "dialogue": [
@@ -2054,25 +2493,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Plaquer une grille (courant critique)",
           "literal": "Dán một lưới",
+          "literal_en": "to slap a grid on",
           "meaning": "Áp dụng cứng nhắc một lý thuyết bất chấp văn bản — péjoratif.",
+          "meaning_en": "to apply a theory rigidly regardless of the text — pejorative; common critical register",
           "example": "Plaquer la grille bourdieusienne sur Mallarmé manque de pertinence textuelle."
         },
         {
           "idiom": "Croiser les approches (courant)",
           "literal": "Chéo các cách tiếp cận",
+          "literal_en": "to cross/combine the approaches",
           "meaning": "Khớp nhiều lý thuyết để làm phong phú phân tích.",
+          "meaning_en": "to combine several theories to enrich the analysis; common register",
           "example": "Croiser l'approche formaliste et l'approche féministe sur Madame Bovary fait apparaître la critique flaubertienne du formatage."
         },
         {
           "idiom": "Pousser une grille à son terme (soutenu)",
           "literal": "Đẩy lưới đến cuối",
+          "literal_en": "to push a grid to its end-point",
           "meaning": "Khai thác đầy đủ một lý thuyết để xem nó dẫn đến đâu.",
+          "meaning_en": "to exploit a theory fully to see where it leads; elevated register",
           "example": "Pousser la grille postcoloniale à son terme sur Glissant suppose qu'on accepte la créolisation comme catégorie centrale."
         },
         {
           "idiom": "Faire flèche de tout bois (soutenu)",
           "literal": "Làm mũi tên từ mọi cây gỗ",
+          "literal_en": "to make an arrow out of any wood",
           "meaning": "Sử dụng mọi nguồn / lý thuyết — éclectisme assumé.",
+          "meaning_en": "to use every available resource/theory — an assumed eclecticism; elevated register (closest English: 'to use every tool in the box')",
           "example": "En sciences humaines, on fait flèche de tout bois — l'éclectisme est une vertu épistémologique."
         }
       ],
@@ -2098,13 +2545,22 @@ export const lessons: FrenchLesson[] =           [
               "sự dán lý thuyết"
             ]
           ],
-          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt",
+          "instruction_en": "Match each critical term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Một tác phẩm có thể được đọc theo nhiều lưới lý thuyết mà không lưới nào vắt kiệt sự phong phú của nó.",
           "french": "Une même œuvre peut être lue selon plusieurs grilles théoriques sans qu'aucune n'épuise sa richesse."
         }
+      ],
+      "cultural_notes_en": "The « theoretical readings » of contemporary French criticism form a spectrum a C2 candidate must command. Three great traditions need detailed grasp. (1) FORMALIST / STRUCTURALIST READING — origin: Roman Jakobson, Vladimir Propp, the Russian School of the 1920s; French uptake by Tzvetan Todorov (who translated the Russian Formalists in 1965), Roland Barthes, Gérard Genette, A. J. Greimas (narrative semiotics). Central principle: the work is a system of signs; meaning arises from internal organisation, not external reference; the critic studies structures (binary oppositions, narrative functions, isotopies) before any referent. Type cases: Propp's 31 universal narrative functions; the Jakobson-Lévi-Strauss analysis of Baudelaire's Les Chats (1962); Genette's Figures. Limits: tends to neglect historicity, ideology, authorial subjectivity — the 1960s-70s formalist dominance triggered a backlash. (2) FEMINIST READING — French origin: Simone de Beauvoir, Le Deuxième Sexe (1949), founding the critique of 'the feminine' as a cultural construction (« On ne naît pas femme: on le devient »); Hélène Cixous, Le Rire de la Méduse (1975), the concept of « écriture féminine »; Luce Irigaray, Speculum (1974), critique of the masculine logos; Julia Kristeva, La Révolution du langage poétique (1974). Central principles: (a) the canon long marginalised women, to be rediscovered; (b) male works carry constructions of femininity to be analysed; (c) there may (debated) be a distinct « écriture féminine » (Cixous) — or not (Beauvoir, more universalist). Internal debates: universalist feminism (Beauvoir) vs feminism of difference (Cixous, Irigaray); materialist feminism (Delphy, Wittig) vs psychoanalytic feminism. Limits: thematic monomania (reading every work solely through gender); anachronistic imposition on older texts. (3) POSTCOLONIAL READING — origin: Frantz Fanon (Les Damnés de la terre, 1961), Aimé Césaire (Discours sur le colonialisme, 1955), then Édouard Glissant (Le Discours antillais, 1981; Poétique de la Relation, 1990); in English, Edward Said (Orientalism, 1978), Gayatri Spivak, Homi Bhabha. Recent French development: Achille Mbembe (De la postcolonie, 2000; Politiques de l'inimitié, 2016), Léonora Miano, Alain Mabanckou, Patrick Chamoiseau. Central principles: (a) French literature long occluded or caricatured the colonised; (b) francophone writing outside metropolitan France merits specific reading; (c) the very concept of « French literature » should be interrogated (why not « francophone literature »?). Debates: « francophonie » as a useful category vs one that maintains a centre/periphery hierarchy; canon « decolonisation » — widening or deconstruction? Limits: ideological imposition on texts that do not engage the colonial question; reducing a francophone author to a postcolonial condition (Glissant as merely 'a Caribbean writer'). A LEGITIMATE C2 POSITION: the three grids are TOOLS, not DOGMAS. On a given text one grid illuminates better than another — on Madame Bovary the feminist reading is powerful (Emma as victim of the novelistic representations imposed on women), the formalist reading is powerful (free indirect discourse, ironic structure), the postcolonial reading is less pertinent (the novel barely engages colonialism, despite a few Egyptian scenes). Choose the grid for the text, not the reverse. ANGLOPHONE TRAP: picking a grid a priori (because one has just read it) and then hunting for textual elements that validate it — exactly Compagnon's « plaquage théorique », and the very thing anglophone debates target as 'theory-driven reading' (cf. Rita Felski's critique of the 'hermeneutics of suspicion'). The C2 stance: read the text first, identify what it solicits, THEN choose the appropriate grid(s).",
+      "tip_advice_en": "A grid for mobilising a theoretical reading. (1) IDENTIFY WHAT THE TEXT SOLICITS — the themes, structures, enunciative positions that make a given grid pertinent. (2) CHOOSE A GRID — or two, if the text supports it; three grids slapped on the same text = theoretical overload. (3) READ THE GRID AS CLOSELY AS POSSIBLE — cite the theorists precisely, not in bulk: 'Comme l'a montré Bourdieu dans Les Règles de l'art (1992)…', 'En reprenant le concept d'écriture féminine forgé par Cixous dans Le Rire de la Méduse (1975)…', 'Mbembe, dans De la postcolonie (2000), propose une analyse…'. (4) APPLY THE GRID TO THE TEXT — look for the elements that validate the application, citation by citation. (5) EVALUATE THE GRID'S LIMITS for this text — what it illuminates, what it leaves in shadow. Useful phrases — to introduce: 'Cette page peut être lue à la lumière de [théorie].', 'La grille que je mobilise ici n'épuise pas le texte, mais elle en éclaire un aspect particulier.'; to analyse formally: 'L'isotopie dominante — le champ lexical de [X] — structure l'ensemble du paragraphe.', 'La fonction cardinale de cet épisode, au sens proppien, consiste à [fonction].'; to analyse via feminist criticism: 'Le personnage féminin est ici construit selon les codes de la féminité du XIXe siècle — codes que le texte reprend [ou subvertit].'; to analyse via postcolonial criticism: 'Cette représentation de l'autre relève de ce que Said nommait l'« orientalisme ».' Avoid: imposing a grid without textual justification, stacking three grids on one paragraph, citing a theorist without naming the work and year, and reducing a text to a single aspect ('Madame Bovary is just a critique of patriarchy').",
+      "register_notes_en": "Precise vocabulary on critical theory. SCHOOLS TO KNOW (French references): Russian Formalism (Jakobson, Propp, Shklovsky — French mediation via Todorov), Structuralism (Lévi-Strauss, Barthes's Mythologies, Greimas), semiotics (Greimas, Eco), sociocriticism (Goldmann, Lukács, later Pinto, Sapiro), literary psychoanalysis (Mauron, Bellemin-Noël), genetic criticism (de Biasi, ITEM), gender studies (Beauvoir, Cixous, Wittig, Butler in translation), postcolonial studies (Glissant, Mbembe, Said and Spivak in translation), queer studies (Eribon, Bourcier), ecocriticism (recent: Garrard, Schoentjes). INDISPENSABLE CONCEPTS: diégèse, focalisation, voix (Genette); horizon d'attente, écart esthétique (Jauss); intertextualité (Kristeva); pacte autobiographique (Lejeune); champ littéraire, capital symbolique (Bourdieu); écriture féminine (Cixous); the subaltern / subaltern voice (Spivak); mise en relation, créolisation (Glissant); lieu commun, doxa (Barthes); isotopie, fonction narrative (Greimas, Propp); le mythe au second degré (Barthes's Mythologies). THEORETICAL FUNCTION-WORDS to use precisely: a « lecture » (a coherent interpretation under one grid), a « problématique » (the structuring question), a « hypothèse de lecture » (a proposition to verify), a « grille » (a conceptual frame), a « dispositif » (a text's material organisation), a « régime » (a mode of functioning — e.g. the regime of irony), an « inflexion », a « déplacement ». Literary idioms on theory: 'plaquer une grille' (common, critical), 'solliciter une lecture' (elevated), 'croiser les approches' (common), 'faire dialoguer les grilles' (elevated), 'pousser une grille à son terme' (elevated). One C2 subtlety: avoid « lecture marxiste » or « lecture freudienne » without qualification — say « lecture sociologique d'inspiration marxienne » (since 'Marxist' is ambiguous: Goldmann, Althusser, Macherey differ) or « lecture psychanalytique d'inspiration freudienne » (to distinguish from Lacan, Klein, Winnicott). The same precision is expected in English — 'a Marxist reading' tout court reads as imprecise at C2.",
+      "roleplay_prompts_en": [
+        "You are assigned an analysis of Sarraute's Tropismes (1939) mobilising two converging grids — formalist (the work on infra-verbal perception) and feminist (the critique of the ordinary micro-violences of bourgeois sociability).",
+        "In a seminar, a colleague claims « la lecture postcoloniale n'a rien à dire sur Mallarmé ». Respond with nuance — accept that the grid is not central to Mallarmé, without excluding that it may illuminate certain aspects (Mallarmé's position in a global 19th-century economy).",
+        "Compose 5 sentences explaining why the Bourdieusian grid and the formalist grid, theoretically opposed, can complement each other in critical practice."
       ]
     },
     {
@@ -2122,6 +2578,12 @@ export const lessons: FrenchLesson[] =           [
             "dissertation → di-sèr-ta-sion",
             "préambule → pré-ãn-bul",
             "engage → ãn-gaj"
+          ],
+          "pronunciation_focus_en": [
+            "amorce → 'ah-MORS' — final '-e' silent; 'l'amorce' = the opening hook of an essay",
+            "dissertation → 'dee-sehr-tah-SYON' — '-tion' = 'syon'; the canonical French essay form",
+            "préambule → 'pray-ahn-BÜL' — nasal '-am'; 'u' rounded; = preamble",
+            "engage → 'ahn-GAZH' — nasal 'en'; 'g' = 'zh'; 'engager tout le devoir' = to commit the whole essay"
           ]
         },
         {
@@ -2132,6 +2594,12 @@ export const lessons: FrenchLesson[] =           [
             "précis → pré-si",
             "conduire → kõn-dui-rơ",
             "problématique → pro-blé-ma-tik"
+          ],
+          "pronunciation_focus_en": [
+            "réussie → 'ray-ü-SEE' — 'u' rounded; '-ie' = 'ee'; feminine of 'réussi' = successful",
+            "précis → 'pray-SEE' — final 's' silent; 'un fait précis' = a precise fact",
+            "conduire → 'kohn-DWEER' — nasal 'on'; 'ui' = 'weer'; = to lead",
+            "problématique → 'proh-blay-mah-TEEK' — final '-que' = 'eek'; FALSE FRIEND: the noun = the central critical question, not English adj. 'problematic'"
           ]
         },
         {
@@ -2142,6 +2610,12 @@ export const lessons: FrenchLesson[] =           [
             "reformule → rơ-for-mul",
             "enjeu → ãn-jơ",
             "tension → tãn-sion"
+          ],
+          "pronunciation_focus_en": [
+            "proprement → 'proh-pruh-MAHN' — nasal '-ment'; 'à proprement parler' = strictly speaking",
+            "reformule → 'ruh-for-MÜL' — 'u' rounded; final '-e' silent; = reformulates",
+            "enjeu → 'ahn-ZHUH' — nasal 'en'; 'j' = 'zh'; '-eu' rounded; 'l'enjeu' = what is at stake",
+            "tension → 'tahn-SYON' — nasal 'en'; '-sion' = 'syon'; = (dialectical) tension"
           ]
         },
         {
@@ -2152,6 +2626,12 @@ export const lessons: FrenchLesson[] =           [
             "annonçât → a-nõn-sa",
             "intitulés → an-ti-tu-lé",
             "relief → rơ-lièf"
+          ],
+          "pronunciation_focus_en": [
+            "conviendrait → 'kohn-vyan-DREH' — conditional of 'convenir'; 'il conviendrait que' + subjunctive",
+            "annonçât → 'ah-nohn-SAH' — imperfect subjunctive of 'annoncer'; 'ç' = 's'; final 't' silent; literary",
+            "intitulés → 'an-tee-tü-LAY' — nasal 'in'; 'u' rounded; '-és' = 'ay'; = headings",
+            "relief → 'ruh-LYEF' — final 'f' pronounced; 'sans relief' = flat, without contour"
           ]
         },
         {
@@ -2162,6 +2642,12 @@ export const lessons: FrenchLesson[] =           [
             "qualité → ka-li-té",
             "joue → ju",
             "lignes → li-nhơ"
+          ],
+          "pronunciation_focus_en": [
+            "compris → 'kohm-PREE' — nasal 'om'; final 's' silent; 'on l'aura compris' = as will have been understood",
+            "qualité → 'kah-lee-TAY' — final '-té' = 'tay'",
+            "joue → 'ZHOO' — 'j' = 'zh'; 'se jouer dans' = to be decided / at stake in",
+            "lignes → 'LEEN-yuh' — 'gn' = 'ny'; final '-es' silent; = lines"
           ]
         }
       ],
@@ -2173,70 +2659,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "a dissertation (essay)",
           "vi": "một bài dissertation",
           "pos": "n.f.",
-          "pronunciation_vi": "di-sèr-ta-sion"
+          "pronunciation_vi": "di-sèr-ta-sion",
+          "pronunciation_en": "ün dee-sehr-tah-SYON — a dissertation: the canonical French tripartite essay (FALSE FRIEND: not a doctoral 'dissertation')"
         },
         {
           "word": "une amorce",
           "en": "an opening hook",
           "vi": "phần mở đầu / amorce",
           "pos": "n.f.",
-          "pronunciation_vi": "a-mors"
+          "pronunciation_vi": "a-mors",
+          "pronunciation_en": "ün ah-MORS — an opening hook; final '-e' silent"
         },
         {
           "word": "la problématique",
           "en": "the problematic / central question",
           "vi": "vấn đề trung tâm",
           "pos": "n.f.",
-          "pronunciation_vi": "pro-blé-ma-tik"
+          "pronunciation_vi": "pro-blé-ma-tik",
+          "pronunciation_en": "lah proh-blay-mah-TEEK — the central critical question (a NOUN; not the English adjective 'problematic')"
         },
         {
           "word": "l'annonce de plan",
           "en": "the announcement of plan",
           "vi": "sự công bố kế hoạch",
           "pos": "n.f.",
-          "pronunciation_vi": "a-nõns dơ plã"
+          "pronunciation_vi": "a-nõns dơ plã",
+          "pronunciation_en": "lah-NONS duh PLAHN — the announcement of the plan; 'plan' nasal, final 'n' not a hard consonant"
         },
         {
           "word": "un plan dialectique",
           "en": "a dialectical plan",
           "vi": "một kế hoạch biện chứng",
           "pos": "n.m.",
-          "pronunciation_vi": "plã dia-lèk-tik"
+          "pronunciation_vi": "plã dia-lèk-tik",
+          "pronunciation_en": "UN PLAHN dyah-lek-TEEK — a dialectical plan (thesis-antithesis-synthesis)"
         },
         {
           "word": "thèse / antithèse / synthèse",
           "en": "thesis / antithesis / synthesis",
           "vi": "luận điểm / phản đề / tổng hợp",
           "pos": "n.f.",
-          "pronunciation_vi": "tèz / ãn-ti-tèz / san-tèz"
+          "pronunciation_vi": "tèz / ãn-ti-tèz / san-tèz",
+          "pronunciation_en": "TEZ / ahn-tee-TEZ / san-TEZ — thesis / antithesis / synthesis; 'th' = plain 't'"
         },
         {
           "word": "un enjeu critique",
           "en": "a critical stake",
           "vi": "một vấn đề critique",
           "pos": "n.m.",
-          "pronunciation_vi": "ãn-jơ kri-tik"
+          "pronunciation_vi": "ãn-jơ kri-tik",
+          "pronunciation_en": "UN ahn-ZHUH kree-TEEK — a critical stake; 'enjeu' nasal, '-eu' rounded"
         },
         {
           "word": "une tension dialectique",
           "en": "a dialectical tension",
           "vi": "một sự căng thẳng biện chứng",
           "pos": "n.f.",
-          "pronunciation_vi": "tãn-sion dia-lèk-tik"
+          "pronunciation_vi": "tãn-sion dia-lèk-tik",
+          "pronunciation_en": "ün tahn-SYON dyah-lek-TEEK — a dialectical tension"
         },
         {
           "word": "intitulé",
           "en": "a heading / title",
           "vi": "tiêu đề",
           "pos": "n.m.",
-          "pronunciation_vi": "an-ti-tu-lé"
+          "pronunciation_vi": "an-ti-tu-lé",
+          "pronunciation_en": "an-tee-tü-LAY — a heading/title; nasal 'in', 'u' rounded, '-é' = 'ay'"
         },
         {
           "word": "un préambule",
           "en": "a preamble",
           "vi": "phần mở đầu / lời nói đầu",
           "pos": "n.m.",
-          "pronunciation_vi": "pré-ãn-bul"
+          "pronunciation_vi": "pré-ãn-bul",
+          "pronunciation_en": "UN pray-ahn-BÜL — a preamble (a long intro, more for an essay than a dissertation)"
         }
       ],
       "dialogue": [
@@ -2323,25 +2819,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Entrer en matière (courant académique)",
           "literal": "Vào nội dung",
+          "literal_en": "to enter into the matter",
           "meaning": "Bắt đầu nội dung sau phần dẫn nhập — formel.",
+          "meaning_en": "to get into the substance after the opening — formal; common academic register",
           "example": "Une bonne amorce permet d'entrer en matière sans rupture brutale."
         },
         {
           "idiom": "Poser le décor (courant)",
           "literal": "Đặt trang trí",
+          "literal_en": "to set the scenery",
           "meaning": "Thiết lập bối cảnh trước khi đi vào trọng tâm.",
+          "meaning_en": "to establish the context before reaching the core; common register (English: 'to set the stage')",
           "example": "L'amorce historique pose le décor avant que ne soit posée la problématique."
         },
         {
           "idiom": "Creuser la question (soutenu)",
           "literal": "Đào câu hỏi",
+          "literal_en": "to dig into the question",
           "meaning": "Đào sâu vấn đề — analyse en profondeur.",
+          "meaning_en": "to probe the issue in depth — in-depth analysis; elevated register",
           "example": "Une bonne dissertation creuse la question, plutôt que d'en rester à la surface."
         },
         {
           "idiom": "Tirer son fil (littéraire)",
           "literal": "Kéo sợi chỉ của nó",
+          "literal_en": "to draw out its thread",
           "meaning": "Theo dõi một logic — méthode de la dissertation.",
+          "meaning_en": "to follow one logical thread through — a dissertation method; literary register",
           "example": "La problématique tire son fil tout au long du devoir, sans rupture."
         }
       ],
@@ -2367,13 +2871,22 @@ export const lessons: FrenchLesson[] =           [
               "kế hoạch biện chứng"
             ]
           ],
-          "instruction": "Nối thuật ngữ dissertation với nghĩa Việt"
+          "instruction": "Nối thuật ngữ dissertation với nghĩa Việt",
+          "instruction_en": "Match each dissertation term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Một amorce thành công xuất phát từ một sự kiện cụ thể để dẫn tự nhiên đến vấn đề do đề bài đặt ra.",
           "french": "Une amorce réussie part d'un fait précis pour conduire avec naturel à la problématique posée par le sujet."
         }
+      ],
+      "cultural_notes_en": "THE FRENCH DISSERTATION is the canonical written exercise of higher literary education — from the baccalauréat to the agrégation. Its structure, inherited from the 19th century and codified by Lanson, has barely changed: (1) INTRODUCTION (10-15%): amorce → analysis of the subject → problématique → announcement of the plan; (2) DÉVELOPPEMENT (75-80%): three dialectical parts (thesis → antithesis → synthesis) or three thematic axes; (3) CONCLUSION (10%): assessment → ouverture. The dissertation rests on a wager: that thought gains in rigour by submitting to a strict form. There are challenges (the 'plan progressif' sometimes replaces the strict 'plan dialectique'), but the tripartite matrix remains hegemonic and radically differentiates French intellectual culture from the ANGLO-AMERICAN MODEL — the free-structured essay, autonomous argumentative paragraphs, a thesis stated up front and defended linearly. For an anglophone this is the single biggest adjustment: the French dissertation does NOT state its conclusion in the introduction; it stages a tension and resolves it only in part three; the five-paragraph-essay reflex (and the up-front thesis statement) is precisely what an examiner penalises. THE INTRODUCTION — the cornerstone. A. AMORCE (3-5 lines): situates the subject in a wider context that makes it worth pausing on. Types: historical ('In 1857, Madame Bovary is put on trial…'), aesthetic ('The Romantic conception of genius places inspiration at the heart of creation…'), biographical (with post-Sainte-Beuve caution), theoretical ('Roland Barthes, in La Mort de l'auteur (1968), overturned…'). Avoid: an over-broad amorce ('Since Antiquity, mankind has wondered about love…'), one unrelated to the subject, a textbook cliché. B. ANALYSIS OF THE SUBJECT (5-7 lines): reformulate it, making its concepts explicit (e.g. if asked whether fiction can tell the truth, specify which 'truth' — empirical? psychological? philosophical?). C. PROBLÉMATIQUE (1-2 sentences): the heart of the introduction — it turns the subject into a CRITICAL QUESTION, surfacing the tension that justifies the development; formulated 'En quoi…?', 'Comment… peut-il à la fois… et…?'. Avoid: the problématique = the subject repeated; a double or triple problématique; a tensionless one ('We will study Flaubert's writing' — that is an announcement, not a problématique). D. ANNOUNCEMENT OF THE PLAN (3-5 lines): name the three parts so the dialectical dynamic is FELT — a progression, not a list. ANGLOPHONE TRAP: the anglophone reflex is to 'start broad' and to put the thesis statement first; the French reflex is the inverse — start from a PRECISE point, and withhold the resolution. An amorce beginning 'Since always…' or 'Throughout the history of literature…' is suspect; a problématique that is merely a course question raises no real tension; an announcement as a bare list ('First… Second… Third…') reads as a schoolchild's plan. C2 expects an announcement that DEPLOYS a logic, with the transition between parts already suggested.",
+      "tip_advice_en": "A six-step process for writing a dissertation introduction (timings for a 4-hour exam). STEP 1 — ANALYSE THE SUBJECT (15 min): the key words, their possible senses, the secret tension the subject harbours. STEP 2 — GATHER EXAMPLES (30 min): 5-8 usable works, 2-3 theoretical references, 1-2 possible amorces. STEP 3 — FORMULATE THE PROBLÉMATIQUE (15 min): draft 3-4 alternatives, choose the one that opens three clear parts, reformulate rigorously. STEP 4 — BUILD THE PLAN (30 min): the three parts that answer the problématique; check each is necessary AND sufficient; the test — if the parts can be permuted, the plan is bad (no progression). STEP 5 — WRITE THE INTRODUCTION (30 min): amorce, analysis, problématique, announcement, in that order; 25-35 lines; an elevated style without pedantry. STEP 6 — REREAD (10 min): does the amorce lead naturally to the problématique? is the problématique a real question? does the announcement reveal a logic? Adaptable amorce models: historical ('En 1857, deux procès secouent la littérature française: celui de Madame Bovary et celui des Fleurs du mal…'), aesthetic ('Le sonnet, depuis Pétrarque, repose sur une économie strictement codifiée…'), theoretical ('Lorsque Roland Barthes, en 1968, annonçait « la mort de l'auteur », il inaugurait un déplacement…'), by reception ('Les Particules élémentaires, à sa parution en 1998, suscite un débat d'une violence rare…'). Tested problématique formulations: 'En quoi cette tension permet-elle à l'œuvre de [X] tout en [Y, qui semble s'y opposer]?', 'Faut-il dès lors considérer [A] comme la seule légitime, ou plutôt admettre que [B] reste défendable?', 'Si [thèse dominante], comment expliquer que [contre-exemple précis]?'. Plan-announcement models: 'Nous montrerons d'abord que [P1]. Cependant, cette première lecture appelle aussitôt une nuance [P2]. Cette tension ne saurait être résolue qu'en envisageant [P3].'",
+      "register_notes_en": "Precise vocabulary for the dissertation. WORDS THAT FRAME AN OPENING: amorce (entry into the matter), accroche (a slightly less formal synonym), entrée en matière (academic synonym), préambule (a long intro, more for an essay than a dissertation). FOR THE PROBLÉMATIQUE: la problématique (the questioning frame), l'enjeu (what is at stake), la question directrice, la tension critique (elevated). FOR THE PLAN: le plan dialectique (thesis-antithesis-synthesis), le plan progressif (from simple to complex), le plan analytique (cause-aspect-consequence), le plan thématique (rare in letters). ELEVATED INTRODUCTION FORMULAS: 'Nous nous demanderons en quoi…' (problématique), 'Notre analyse se déploiera en trois temps.' (announcement), 'Il conviendra de [vérifier / examiner / interroger]…', 'Cette tension nous conduira à [P3]'. FORMULAS TO AVOID (too school-ish or too oral): 'Nous allons étudier…' (too flat), 'Dans une première partie, je verrai…' (the 'je' is excluded; the future too direct), 'Tout d'abord… ensuite… enfin…' (a Year-10 plan), 'Pour conclure…' in an introduction (an incoherence). C2 inversion & subjunctive in the introduction: 'Encore convient-il de préciser ce qu'on entend par X.', 'Sans doute peut-on lire le sujet de plusieurs façons.', 'Peut-être faut-il considérer que…', 'Que la question fût ainsi posée révèle déjà un parti pris.' (imperfect subjunctive). Literary idioms: 'entrer en matière' (common), 'poser le décor' (common), 'ouvrir le débat' (common), 'creuser la question' (elevated), 'passer en revue' (common). One C2 subtlety: the French introduction massively uses the « nous de modestie » ('nous montrerons', 'nous verrons') — neither a collective plural nor a royal 'we' but a dissertation convention; using it correctly is a level marker (the 'je' has been officially admitted by the agrégation in recent years but remains minority). The anglophone analogue is the academic avoidance of 'I' — but note the French convention is stricter and is specifically the 'nous', not the passive voice.",
+      "roleplay_prompts_en": [
+        "You are assigned to write an introduction (30 lines) for the dissertation subject: « La poésie moderne, de Baudelaire à Char, a-t-elle aboli le sujet lyrique ? ». Follow the schema amorce / analysis / problématique / announcement.",
+        "In a seminar, a colleague presents an introduction where the amorce runs fifteen lines. Respond with tact — diagnose the imbalance, suggest a reformulation.",
+        "Compose 5 alternative amorces — historical, aesthetic, biographical (with caution), theoretical, by reception — for the same hypothetical subject on Mallarmé. Compare their strengths and limits."
       ]
     },
     {
@@ -2391,6 +2904,12 @@ export const lessons: FrenchLesson[] =           [
             "canonique → ka-no-nik",
             "hérétique → é-ré-tik",
             "rançon → rãn-sõn"
+          ],
+          "pronunciation_focus_en": [
+            "lecture → 'lek-TUR' — final '-ure' rounded; 'une lecture' = a reading/interpretation",
+            "canonique → 'kah-noh-NEEK' — final '-que' = 'eek'; 'un texte canonique' = a canonical text",
+            "hérétique → 'ay-ray-TEEK' — 'h' silent; both 'é' = 'ay'; = heretical",
+            "rançon → 'rahn-SON' — nasal '-an' and '-on'; 'la rançon de' = the price/ransom of"
           ]
         },
         {
@@ -2401,6 +2920,12 @@ export const lessons: FrenchLesson[] =           [
             "provocation → pro-vo-ka-sion",
             "exigeante → èg-zi-jãnt",
             "tradition → tra-di-sion"
+          ],
+          "pronunciation_focus_en": [
+            "distinguât → 'dees-tan-GAH' — imperfect subjunctive of 'distinguer'; final 't' silent; literary",
+            "provocation → 'proh-voh-kah-SYON' — '-tion' = 'syon'",
+            "exigeante → 'eg-zee-ZHAHNT' — 'x' = 'gz'; 'ge' = 'zh'; nasal '-ante'; feminine of 'exigeant' = demanding",
+            "tradition → 'trah-dee-SYON' — '-tion' = 'syon'"
           ]
         },
         {
@@ -2411,6 +2936,12 @@ export const lessons: FrenchLesson[] =           [
             "interprétation → an-tèr-pré-ta-sion",
             "conséquences → kõn-sé-kãns",
             "possibilité → po-si-bi-li-té"
+          ],
+          "pronunciation_focus_en": [
+            "défendre → 'day-FAHN-druh' — nasal 'en'; final '-dre' a quick 'druh'; = to defend",
+            "interprétation → 'an-tehr-pray-tah-SYON' — nasal 'in'; '-tion' = 'syon'",
+            "conséquences → 'kohn-say-KAHNS' — nasal 'on' and '-ence'; = consequences",
+            "possibilité → 'poh-see-bee-lee-TAY' — double 's' = 's'; final '-té' = 'tay'"
           ]
         },
         {
@@ -2421,6 +2952,12 @@ export const lessons: FrenchLesson[] =           [
             "déductive → dé-duk-tiv",
             "jugement → ju-jơ-mã",
             "courage → ku-raj"
+          ],
+          "pronunciation_focus_en": [
+            "compris → 'kohm-PREE' — nasal 'om'; final 's' silent; 'on l'aura compris' = it will have been understood",
+            "déductive → 'day-dük-TEEV' — 'u' rounded; 'science déductive' = a deductive science",
+            "jugement → 'zhüzh-MAHN' — 'j'/'g' = 'zh'; 'u' rounded; nasal '-ment'; = judgement",
+            "courage → 'koo-RAZH' — final '-age' = 'azh'; = courage"
           ]
         },
         {
@@ -2431,6 +2968,12 @@ export const lessons: FrenchLesson[] =           [
             "rupture → rup-tur",
             "exégétique → èg-zé-jé-tik",
             "argument → ar-gu-mã"
+          ],
+          "pronunciation_focus_en": [
+            "fût → 'FÜ' — rounded French 'u'; imperfect subjunctive of être; 'Que… fût…' = a literary concessive",
+            "rupture → 'rüp-TUR' — 'u' rounded; 'en rupture avec' = at a break with",
+            "exégétique → 'eg-zay-zhay-TEEK' — 'x' = 'gz'; 'g' = 'zh'; = exegetical",
+            "argument → 'ar-gü-MAHN' — 'u' rounded; nasal '-ment'; FALSE FRIEND: a reasoned argument, not a quarrel"
           ]
         }
       ],
@@ -2442,70 +2985,80 @@ export const lessons: FrenchLesson[] =           [
           "en": "a controversial reading",
           "vi": "một cách đọc gây tranh cãi",
           "pos": "n.f.",
-          "pronunciation_vi": "lèk-tur kõn-tro-vèr-sé"
+          "pronunciation_vi": "lèk-tur kõn-tro-vèr-sé",
+          "pronunciation_en": "ün lek-TUR kohn-troh-vehr-SAY — a controversial reading; '-ée' = 'ay'"
         },
         {
           "word": "une lecture exigeante",
           "en": "a demanding reading",
           "vi": "một cách đọc đòi hỏi",
           "pos": "n.f.",
-          "pronunciation_vi": "lèk-tur èg-zi-jãnt"
+          "pronunciation_vi": "lèk-tur èg-zi-jãnt",
+          "pronunciation_en": "ün lek-TUR eg-zee-ZHAHNT — a demanding reading; 'x' = 'gz', 'ge' = 'zh'"
         },
         {
           "word": "la tradition exégétique",
           "en": "the exegetical tradition",
           "vi": "truyền thống chú giải",
           "pos": "n.f.",
-          "pronunciation_vi": "tra-di-sion èg-zé-jé-tik"
+          "pronunciation_vi": "tra-di-sion èg-zé-jé-tik",
+          "pronunciation_en": "lah trah-dee-SYON eg-zay-zhay-TEEK — the exegetical tradition (the established body of commentary)"
         },
         {
           "word": "un point aveugle",
           "en": "a blind spot",
           "vi": "một điểm mù",
           "pos": "n.m.",
-          "pronunciation_vi": "poan a-vơ-glơ"
+          "pronunciation_vi": "poan a-vơ-glơ",
+          "pronunciation_en": "UN PWAN ah-VUH-gluh — a blind spot; 'point' = 'pwan' (nasal, final 't' silent)"
         },
         {
           "word": "un déplacement d'angle",
           "en": "a shift of angle",
           "vi": "một sự dịch chuyển góc nhìn",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-plas-mã dãn-glơ"
+          "pronunciation_vi": "dé-plas-mã dãn-glơ",
+          "pronunciation_en": "UN day-plahs-MAHN DAHN-gluh — a shift of angle; nasal '-ment' and 'an'"
         },
         {
           "word": "une provocation gratuite",
           "en": "a gratuitous provocation",
           "vi": "một khiêu khích vô cớ",
           "pos": "n.f.",
-          "pronunciation_vi": "pro-vo-ka-sion gra-tu-it"
+          "pronunciation_vi": "pro-vo-ka-sion gra-tu-it",
+          "pronunciation_en": "ün proh-voh-kah-SYON grah-TWEET — a gratuitous provocation; 'gratuite' 'ui' = 'wee'"
         },
         {
           "word": "l'humilité épistémique",
           "en": "epistemic humility",
           "vi": "sự khiêm tốn nhận thức luận",
           "pos": "n.f.",
-          "pronunciation_vi": "u-mi-li-té é-pis-té-mik"
+          "pronunciation_vi": "u-mi-li-té é-pis-té-mik",
+          "pronunciation_en": "lü-mee-lee-TAY ay-pees-tay-MEEK — epistemic humility; 'h' silent, 'u' rounded"
         },
         {
           "word": "contrarianisme",
           "en": "contrarianism",
           "vi": "chủ nghĩa phản đối",
           "pos": "n.m.",
-          "pronunciation_vi": "kõn-tra-ria-nism"
+          "pronunciation_vi": "kõn-tra-ria-nism",
+          "pronunciation_en": "kohn-trah-ryah-NEEZM — contrarianism (opposing for opposition's sake — pejorative in academic criticism)"
         },
         {
           "word": "un éclairage partiel",
           "en": "a partial illumination",
           "vi": "một sự soi sáng cục bộ",
           "pos": "n.m.",
-          "pronunciation_vi": "é-klè-raj par-siel"
+          "pronunciation_vi": "é-klè-raj par-siel",
+          "pronunciation_en": "UN ay-kleh-RAZH par-SYEL — a partial illumination; '-age' = 'azh', final 'l' pronounced"
         },
         {
           "word": "étayer une lecture",
           "en": "to support a reading",
           "vi": "củng cố một cách đọc",
           "pos": "v.",
-          "pronunciation_vi": "é-tè-yé un lèk-tur"
+          "pronunciation_vi": "é-tè-yé un lèk-tur",
+          "pronunciation_en": "ay-teh-YAY ün lek-TUR — to support/underpin a reading (with textual evidence)"
         }
       ],
       "dialogue": [
@@ -2587,25 +3140,33 @@ export const lessons: FrenchLesson[] =           [
         {
           "idiom": "Tenir une position (courant)",
           "literal": "Giữ một lập trường",
+          "literal_en": "to hold a position",
           "meaning": "Bảo vệ quan điểm dưới phản biện — không lùi vì áp lực.",
+          "meaning_en": "to defend a view under objection — not retreating under pressure; common register",
           "example": "Bonnefoy a tenu sa position sur Rimbaud pendant cinquante ans, malgré les contestations."
         },
         {
           "idiom": "Mettre cartes sur table (courant)",
           "literal": "Đặt thẻ lên bàn",
+          "literal_en": "to put one's cards on the table",
           "meaning": "Trình bày minh bạch các giả định và lý lẽ.",
+          "meaning_en": "to lay out one's assumptions and arguments transparently; common register (exact English equivalent)",
           "example": "Mettre cartes sur table dès l'introduction permet au lecteur d'évaluer la position en connaissance de cause."
         },
         {
           "idiom": "Croiser le fer (soutenu littéraire)",
           "literal": "Chéo lưỡi gươm",
+          "literal_en": "to cross swords",
           "meaning": "Tranh luận sâu, không né tránh — débat de haut niveau.",
+          "meaning_en": "to debate deeply, without evasion — high-level debate; elevated literary register (exact English equivalent)",
           "example": "Bourdieu et Compagnon ont croisé le fer sur l'autonomie du champ littéraire pendant deux décennies."
         },
         {
           "idiom": "Rester sur ses positions (courant)",
           "literal": "Ở lại trên các lập trường",
+          "literal_en": "to stay on one's positions",
           "meaning": "Không thay đổi quan điểm — neutre.",
+          "meaning_en": "to keep one's view unchanged — neutral register (English: 'to stand one's ground')",
           "example": "Tadié est resté sur ses positions concernant l'esthétique proustienne, malgré le retour des lectures psychanalytiques."
         }
       ],
@@ -2631,13 +3192,22 @@ export const lessons: FrenchLesson[] =           [
               "truyền thống chú giải"
             ]
           ],
-          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt",
+          "instruction_en": "Match each critical term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Bảo vệ một diễn giải bị tranh cãi đòi hỏi gánh chịu công khai các hệ quả, kể cả khả năng sai.",
           "french": "Défendre une interprétation contestée suppose qu'on en assume publiquement les conséquences, y compris la possibilité d'avoir tort."
         }
+      ],
+      "cultural_notes_en": "DEFENDING A CONTROVERSIAL READING is the trained critic's ultimate test. It presupposes: (1) FULL COMMAND of the dominant readings — one does not defend a new reading without knowing the old ones; (2) SOLID TEXTUAL JUSTIFICATIONS — every support in the text, paginated, cited; (3) ANTICIPATED ARGUMENTATION — knowing the probable objections in advance and preparing replies; (4) EPISTEMIC HUMILITY — accepting one may be wrong, without abandoning the position for that. FOUR GREAT CONTROVERSIAL READINGS that marked French criticism: (a) PROUST BY JEAN-YVES TADIÉ (Marcel Proust. Biographie, 1996) — against a long psychoanalytic tradition (Bardèche, Bersani), a reading of the Recherche centred on aesthetics and involuntary memory rather than repressed homosexuality; now dominant, contested at publication. (b) FLAUBERT BY PIERRE BOURDIEU (Les Règles de l'art, 1992) — Madame Bovary read as a sociological document on the 19th-c. literary field, judged reductive by formalist purists (Genette, Compagnon); a decade-long quarrel between two whole schools. (c) RIMBAUD BY YVES BONNEFOY (Rimbaud par lui-même, 1961; Notre besoin de Rimbaud, 2009) — a mystical-spiritual reading against the surrealist-revolt reading dominant since Breton; contested by Steve Murphy, Jean-Luc Steinmetz, still powerful. (d) HOUELLEBECQ BY DOMINIQUE NOGUEZ (Houellebecq en fait, 2003) — Houellebecq defended as a major writer against a then-hostile majority; now the dominant view, almost solitary at the time. A BERMANIAN MODEL FOR DEFENDING A NEW READING, adapted to literary criticism: (1) acknowledge the interpretive tradition without caricaturing it; (2) identify the tradition's BLIND SPOT — what it does not, or refuses to, see; (3) propose a reading that takes that blind spot into account, textually grounded; (4) anticipate objections and answer them IN ADVANCE; (5) define the limits of one's own reading — do not claim to explain everything. AN ETHICAL QUESTION: should a reading be defended by provocation alone? The majority French position: NO. A new reading must be DEFENSIBLE, not merely spectacular; contrarianism for its own sake belongs to cultural journalism, not academic criticism. A SPECIFIC TENSION FOR FEMINIST / POSTCOLONIAL CRITICISM: in the 1980s-90s these grids produced readings judged 'controversial' by the academic tradition; partly absorbed today, they still produce unsettling readings — on Sartre (a feminist reading of Beauvoir as an invisibilised co-author), on Camus (a postcolonial reading of L'Étranger denouncing the unnamed Arab who is killed). The correct critical stance: take such readings seriously, evaluate them on their textual rigour, neither rejecting them through anti-modernism nor accepting them through ideological conformism. ANGLOPHONE TRAP: two extremes the critic-in-training must avoid — CONFORMISM (repeating the critical tradition without questioning it: scholastic safety, intellectual poverty) and GRATUITOUS HERESY (provoking to be noticed: brief visibility, lasting loss of credibility). This maps directly onto the anglophone opposition between safe consensus criticism and the 'hot take' / contrarian-essay culture; the C2 position is to defend original readings WHEN ONE HAS REASONS, and to abandon them when the counter-argument is stronger — that is the critical ethic.",
+      "tip_advice_en": "A seven-step process for defending a controversial reading. STEP 1 — IDENTIFY THE DOMINANT TRADITION on the text; read at least 3-5 canonical readings before proposing your own (you cannot diverge from what you do not know). STEP 2 — IDENTIFY THE TRADITION'S BLIND SPOT: what in the text is passed over in silence? which textual element is never commented on? which question never asked? STEP 3 — VERIFY THE BLIND SPOT IS REAL — not a fantasy, not an anecdotal detail; cite at least three passages where it manifests. STEP 4 — FORMULATE THE NEW READING taking the blind spot as the entry point; do not demolish the tradition — complexify it. STEP 5 — ANTICIPATE THE THREE MOST PROBABLE OBJECTIONS; prepare a textually grounded answer to each. STEP 6 — WRITE THE ARGUMENT in the structure: tradition → blind spot → new reading → anticipated objections → limits of the position. STEP 7 — TEST THE READING on one or two peers before publication; if it does not hold before a good-faith critic, rework or abandon it. Useful phrases — to introduce a new reading: 'Je voudrais proposer ici une lecture qui s'écarte délibérément de la tradition exégétique dominante.', 'Sans renoncer aux acquis de la critique antérieure, je propose un déplacement d'angle qui fait apparaître [aspect négligé].'; to identify the blind spot: 'Or, un élément demeure curieusement absent des commentaires courants: [élément, paginé].', 'Ce silence n'est pas neutre.'; to defend: 'Trois passages au moins viennent étayer cette interprétation.', 'Cette lecture ne contredit pas la tradition; elle l'enrichit.'; to anticipate objections: 'On objectera, à juste titre, que [objection]. À cela je répondrais que [réponse fondée].'; to delimit: 'Cette lecture ne saurait être généralisée; elle vaut pour [sous-corpus précis].' Avoid: 'Tous les autres critiques se sont trompés.' (arrogance, isolation), 'Cette lecture est évidente.' (if it were, it would not be new), 'Personne n'a vu ce que je vois.' (often false, always ill-judged), and gratuitous provocation ('Madame Bovary is really a feminist novel' with no textual argument).",
+      "register_notes_en": "Precise vocabulary for defending a critical position. PROPOSAL FORMULAS: 'Je propose une lecture qui s'écarte de la tradition.' (neutral), 'Je voudrais avancer une interprétation qui complexifie la lecture canonique.' (moderate), 'Je défends ici une thèse minoritaire qui appelle à la discussion.' (assumed). ANTICIPATING THE OBJECTION: 'On objectera, à juste titre…', 'Reste l'objection la plus sérieuse: …', 'Je ne sous-estime pas l'argument selon lequel…'. ANSWERING IT: 'À cela je répondrais que…', 'Cette objection peut être levée si l'on distingue…', 'Je l'admets en partie, en limitant la portée de ma thèse à…'. DELIMITING: 'Cette lecture ne saurait être généralisée…', 'Je n'avance pas une interprétation totale — je propose un éclairage partiel.', 'Les limites de cette lecture sont aussi son honnêteté.'. REFUTING AN OPPOSING READING: 'Cette lecture présuppose un postulat — celui de [X] — qui mérite d'être interrogé.', 'Sans contester la valeur de cette interprétation, je voudrais en signaler les angles morts.', 'Je me sépare ici, respectueusement, de la position majoritaire.'. C2 inversion & subjunctive in defence: 'Que la lecture proposée fût en rupture avec la tradition ne saurait constituer un argument contre elle.', 'Encore conviendrait-il que le critique distinguât la provocation gratuite de la lecture exigeante.', 'Sans doute peut-on y voir une faiblesse — mais peut-être y faut-il voir aussi une chance.'. Literary idioms on critical debate: 'tenir une position' (common), 'battre en retraite' (common, pejorative if done without reason), 'rester sur ses positions' (neutral), 'se ranger à l'avis de' (elevated), 'mettre cartes sur table' (common, for argumentative transparency), 'croiser le fer' (elevated, for sustained debate). One C2 subtlety: defending a controversial reading is NOT defending it AGGRESSIVELY — the tone must stay COURTEOUS, and it is precisely the courtesy that makes the position defensible; a new reading presented arrogantly discredits the argument independently of its value. Practical rule: if the reading is solid it needs no arrogance to impose itself; if it needs arrogance, it is probably weak. The same holds in English academic debate — courtesy is not weakness but the condition of being heard.",
+      "roleplay_prompts_en": [
+        "You are assigned to compose a seminar intervention (10 minutes) defending a feminist reading of Sartre — not Beauvoir as 'Sartre's wife', but a Sartre whose work would have been unthinkable without the constant intellectual dialogue with Beauvoir. Anticipate the objections.",
+        "In a debate published in Critique, a colleague rejects your controversial reading wholesale. Compose a written reply (1500 words) — courteous, firm, maintaining the position without arrogance.",
+        "Compose 5 sentences explaining the difference between a « lecture controversée » (legitimate) and a « provocation gratuite » (illegitimate) — mobilising the post-Compagnon critical ethic."
       ]
     },
     {
