@@ -67,27 +67,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "会议将在下午两点开始。",
         "pinyin": "huì yì jiāng zài xià wǔ liǎng diǎn kāi shǐ.",
-        "english": "The meeting will start at 2 PM."
+        "english": "The meeting will start at 2 PM.",
+        "pronunciation_focus_en": [
+          "huì yì → 'hway ee', both falling (会议 = meeting)",
+          "jiāng → 'jyang', flat high; 将 here = a formal/written 'will' (more formal than 会)",
+          "liǎng diǎn → 两 (not 二) for 'two o'clock'; 'lyang dyen'"
+        ]
       },
       {
         "chinese": "请大家先看一下今天的议程。",
         "pinyin": "qǐng dà jiā xiān kàn yī xià jīn tiān de yì chéng.",
-        "english": "Please take a look at today's agenda first."
+        "english": "Please take a look at today's agenda first.",
+        "pronunciation_focus_en": [
+          "qǐng → hissy 'ch', tongue low; dà jiā → 'dah jyah' (大家 = everyone)",
+          "xiān → 'shyen', x a light 'sh', flat high (先 = first)",
+          "kàn yī xià → 一下 softens the request ('just take a look'); yì chéng → 'ee chung', chéng retroflex rising"
+        ]
       },
       {
         "chinese": "这个提案还需要进一步讨论。",
         "pinyin": "zhè gè tí àn hái xū yào jìn yī bù tǎo lùn.",
-        "english": "This proposal needs further discussion."
+        "english": "This proposal needs further discussion.",
+        "pronunciation_focus_en": [
+          "tí àn → 'tee ahn', two clean syllables, tí rising + àn falling (提案 = proposal)",
+          "xū yào → ü round-lipped 'ee', 'shü yaow' (需要 = need)",
+          "jìn yī bù → 进一步 = 'a step further'; tǎo lùn → 'taow lwun', lùn falling"
+        ]
       },
       {
         "chinese": "谁来做会议记录？",
         "pinyin": "shuí lái zuò huì yì jì lù?",
-        "english": "Who will take the meeting minutes?"
+        "english": "Who will take the meeting minutes?",
+        "pronunciation_focus_en": [
+          "shuí → 'shway', rising; 谁 = 'who' (also read shéi) — the question word stays in subject position",
+          "lái → 'lye', rising; zuò → 'dzwaw', z is 'ds' with no air",
+          "jì lù → 'jee loo', both falling (记录 = minutes/record)"
+        ]
       },
       {
         "chinese": "我们最后达成了一致。",
         "pinyin": "wǒ men zuì hòu dá chéng le yī zhì.",
-        "english": "We finally reached an agreement."
+        "english": "We finally reached an agreement.",
+        "pronunciation_focus_en": [
+          "zuì hòu → 'dzway ho', both falling (最后 = finally/at last)",
+          "dá chéng le → 'dah chung luh'; 达成了 = verb + 了 ('reached', completed), le toneless",
+          "yī zhì → 一致 'consensus'; zhì retroflex, falling"
+        ]
       }
     ],
     "dialogue": [
@@ -144,7 +169,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我们必须在会议结束时做出决定。",
         "pinyin": "wǒ men bì xū zài huì yì jié shù shí zuò chū jué dìng."
       }
-    ]
+    ],
+    "cultural_notes_en": "Business meetings in China run on hierarchy and face more than the American 'debate it out in the room' default. The most senior person often speaks first and last and may effectively decide; open disagreement with a 领导 (leader) present is risky for everyone's 面子, so dissent is softened ('这个我们再研究研究') or voiced privately. Real decisions are frequently pre-aligned in side conversations (会前沟通) and the meeting ratifies rather than thrashes — closer to Japanese nemawashi than to a US brainstorm. Punctuality is expected of the junior side, while the senior figure arriving last can be normal. Silence is not disagreement, and a polite '我们考虑一下' is often a soft no — and the tea or banquet afterward can matter as much as the agenda.",
+    "tip_advice_en": "Lead structure: 将 (jiāng) is the formal/written 'will' (会议将开始) — same meaning as 会/要 but a register marker, so meeting and document language leans on it while casual speech uses 会. Second, 一下 after a verb (看一下, 研究一下) softens a request or signals brevity ('just take a quick look') — a politeness tool you will reuse constantly at B1. Question words stay in place: 谁来做记录? ('who will do the minutes?') keeps 谁 in subject position with no fronting, like every Chinese question word. The pronunciation crux: 谁 is shuí (also shéi) — both standard — and keep flat-tongue q (请 qǐng) distinct from retroflex ch/sh (成 chéng, 谁 shuí); 两点 takes 两 (liǎng), never 二."
   },
   {
     "id": 32,
@@ -208,27 +235,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "今天我演讲的主题是环保。",
         "pinyin": "jīn tiān wǒ yǎn jiǎng de zhǔ tí shì huán bǎo.",
-        "english": "Today my presentation topic is environmental protection."
+        "english": "Today my presentation topic is environmental protection.",
+        "pronunciation_focus_en": [
+          "yǎn jiǎng → two 3rd tones collide; the first rises ('yán jiǎng'); j is flat-tongue (演讲 = speech)",
+          "zhǔ tí → 'joo tee'; zh curled back, 3rd tone (主题 = topic/theme)",
+          "huán bǎo → 'hwan baow'; huán rising, bǎo a 3rd-tone dip (环保 = environmental protection)"
+        ]
       },
       {
         "chinese": "请大家看幻灯片上的图表。",
         "pinyin": "qǐng dà jiā kàn huàn dēng piàn shàng de tú biǎo.",
-        "english": "Please look at the chart on the slide."
+        "english": "Please look at the chart on the slide.",
+        "pronunciation_focus_en": [
+          "huàn dēng piàn → 'hwan dung pyen'; piàn one glide, falling (幻灯片 = slides)",
+          "shàng → retroflex 'sh', falling; here a localizer ('on the slide'), post-nominal",
+          "tú biǎo → 'too byaow'; biǎo a 3rd-tone dip (图表 = chart)"
+        ]
       },
       {
         "chinese": "最后，我来总结一下今天的内容。",
         "pinyin": "zuì hòu, wǒ lái zǒng jié yī xià jīn tiān de nèi róng.",
-        "english": "Finally, let me summarize today's content."
+        "english": "Finally, let me summarize today's content.",
+        "pronunciation_focus_en": [
+          "zuì hòu → 'dzway ho'; 最后 here = 'finally', framing the close",
+          "wǒ lái + verb → 'let me (do) …'; zǒng jié → 'dzong jyeh', jié rising",
+          "yī xià → 一下 softens 'summarize' to 'just sum up'; nèi róng → 'nay rong', róng retroflex"
+        ]
       },
       {
         "chinese": "演讲过程中要注意与听众的眼神交流。",
         "pinyin": "yǎn jiǎng guò chéng zhōng yào zhù yì yǔ tīng zhòng de yǎn shén jiāo liú.",
-        "english": "During the presentation, maintain eye contact with the audience."
+        "english": "During the presentation, maintain eye contact with the audience.",
+        "pronunciation_focus_en": [
+          "guò chéng zhōng → '…中' = 'during/in the middle of'; chéng and zhōng both retroflex",
+          "yǔ → 'yü', round-lipped 'ee', 3rd tone; 与 = a formal/written 'with' (vs spoken 跟/和)",
+          "tīng zhòng → 'ting jong'; zhòng retroflex, falling (听众 = audience)"
+        ]
       },
       {
         "chinese": "现在进入提问环节，大家有什么问题吗？",
         "pinyin": "xiàn zài jìn rù tí wèn huán jié, dà jiā yǒu shén me wèn tí ma?",
-        "english": "Now let's move to the Q&A session. Any questions?"
+        "english": "Now let's move to the Q&A session. Any questions?",
+        "pronunciation_focus_en": [
+          "xiàn zài → 'shyen dzye'; both falling (现在 = now)",
+          "jìn rù → 'jin roo'; r is retroflex (tongue curled), falling (进入 = enter)",
+          "shén me wèn tí → 'SHÉN-muh wun-tee'; the question phrase stays in place, no fronting"
+        ]
       }
     ],
     "dialogue": [
@@ -285,7 +337,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "你的演讲非常精彩。",
         "pinyin": "nǐ de yǎn jiǎng fēi cháng jīng cǎi."
       }
-    ]
+    ],
+    "cultural_notes_en": "Presentations open more modestly than the American 'grab them with a joke or personal story.' A self-deprecating frame ('讲得不好，请多指教' — 'I won't present this well, please advise') is conventional humility, not low confidence, and over-polished American showmanship can read as 自大 (arrogant). Audiences are quieter: spontaneously interrupting the speaker is less common, and the 提问环节 (Q&A) may open with silence — not disinterest, but reluctance to single oneself out or risk the speaker's face. Slides tend to be denser (more text, fewer single-line photo decks) than the American minimalist style, reading from notes is more accepted, and the US 'never read your slides, be spontaneous' rule is weaker. A warm '很精彩' afterward is social glue.",
+    "tip_advice_en": "Lead structure: B1 leans heavily on softeners — verb reduplication (看看, 试试, 总结总结) and verb + 一下 (总结一下) both downgrade an action to 'just briefly do X,' and the two are near-interchangeable here. Second, 与 (yǔ) is the formal/written 'with/and' ('与听众交流') where speech uses 跟 or 和 — presentation register favors 与. 我来 + verb means 'let me (be the one to) …' (我来总结), volunteering for the action. The pronunciation crux is the ü in 与 (yǔ); the T3+T3 sandhi in 演讲 (yǎn jiǎng → 'yán jiǎng'); the flat-tongue j cluster (讲 jiǎng, 结 jié) set against retroflex zh/ch/sh (主 zhǔ, 成 chéng, 众 zhòng); and the retroflex r in 进入 (rù)."
   },
   {
     "id": 33,
@@ -349,27 +403,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "这个价格我们无法接受。",
         "pinyin": "zhè gè jià gé wǒ men wú fǎ jiē shòu.",
-        "english": "We cannot accept this price."
+        "english": "We cannot accept this price.",
+        "pronunciation_focus_en": [
+          "zhè gè jià gé → topic-fronted: '这个价格' ('as for this price …') leads, then the comment follows",
+          "wú fǎ → 'woo fah'; 无法 = a formal 'cannot / unable to' (more formal than 不能)",
+          "jiē shòu → 'jyeh show'; jiē flat-tongue, shòu retroflex falling (接受 = accept)"
+        ]
       },
       {
         "chinese": "如果你们能给更多折扣，我们可以合作。",
         "pinyin": "rú guǒ nǐ men néng gěi gèng duō zhé kòu, wǒ men kě yǐ hé zuò.",
-        "english": "If you can give a bigger discount, we can cooperate."
+        "english": "If you can give a bigger discount, we can cooperate.",
+        "pronunciation_focus_en": [
+          "rú guǒ → 'roo gwaw'; r retroflex (tongue curled); 如果…(就/可以) frames the conditional",
+          "zhé kòu → 'jeh ko'; zh retroflex rising (折扣 = discount)",
+          "kě yǐ → two 3rd tones, the first rises ('ké yǐ'); hé zuò → 'huh dzwaw'"
+        ]
       },
       {
         "chinese": "我们的底线是百分之十的优惠。",
         "pinyin": "wǒ men de dǐ xiàn shì bǎi fēn zhī shí de yōu huì.",
-        "english": "Our bottom line is a ten percent discount."
+        "english": "Our bottom line is a ten percent discount.",
+        "pronunciation_focus_en": [
+          "dǐ xiàn → 'dee shyen'; x light 'sh', tongue low (底线 = bottom line)",
+          "bǎi fēn zhī shí → 百分之十 = 'ten percent'; the 百分之 + number frame, zhī retroflex",
+          "yōu huì → 'yo hway'; huì falling (优惠 = a discount/concession)"
+        ]
       },
       {
         "chinese": "我们双方都需要做出一些让步。",
         "pinyin": "wǒ men shuāng fāng dōu xū yào zuò chū yī xiē ràng bù.",
-        "english": "Both sides need to make some concessions."
+        "english": "Both sides need to make some concessions.",
+        "pronunciation_focus_en": [
+          "shuāng fāng → 'shwang fahng'; shuāng retroflex (双方 = both parties)",
+          "zuò chū → 做出 = verb + directional 出 ('make/produce'); chū retroflex, flat high",
+          "ràng bù → 'rahng boo'; r retroflex, both falling (让步 = make a concession)"
+        ]
       },
       {
         "chinese": "希望我们能达成双赢的协议。",
         "pinyin": "xī wàng wǒ men néng dá chéng shuāng yíng de xié yì.",
-        "english": "I hope we can reach a win-win agreement."
+        "english": "I hope we can reach a win-win agreement.",
+        "pronunciation_focus_en": [
+          "xī wàng → 'shee wahng'; x light 'sh' (希望 = hope)",
+          "dá chéng → 'dah chung'; 达成 = 'reach (an agreement)', chéng retroflex rising",
+          "shuāng yíng → 'shwang ying' (双赢 = win-win); xié yì → 'shyeh ee', xié rising"
+        ]
       }
     ],
     "dialogue": [
@@ -426,7 +505,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我们需要重新谈判合同条款。",
         "pinyin": "wǒ men xū yào chóng xīn tán pàn hé tong tiáo kuǎn."
       }
-    ]
+    ],
+    "cultural_notes_en": "Negotiation is framed as building a long-term 关系, not closing a discrete transaction, so the American 'get to yes fast, time is money' tempo can read as pushy or untrustworthy. A direct 'no' is rare — refusal arrives as '这个有点难,' '我们再研究研究,' or silence, and reading the soft no is the core skill. 给面子 — letting the other side appear to win something — lubricates the deal, and concessions tend to be reciprocal and quietly tracked. Banquets, tea, and relationship-building outside the room are part of the negotiation, not breaks from it. Discounts are quoted as the fraction paid (八五折 = pay 85% = 15% off), inverted from the American '% off' convention, and patience plus not showing eagerness are themselves leverage.",
+    "tip_advice_en": "Lead structure: the conditional pair 如果 (or 要是 / 假如) … 就 / 可以 … — 'if X, then Y' — where the second clause routinely takes 就 ('then') or a modal, and Chinese has no separate subjunctive even for hypotheticals. Second, topic-comment fronting: '这个价格我们无法接受' = '[as for] this price, we can't accept it' — the topic leads and the comment follows, a B1 staple distinct from English SVO. 无法 is the formal 'unable to' versus spoken 不能. The pronunciation crux is the retroflex r in 如果 (rú) and 让步 (ràng) — tongue curled, never the English 'r' — the discount math 八五折 (pay 85% = 15% off), and flat-tongue x (希 xī, 线 xiàn, 协 xié) set against retroflex zh/sh (折 zhé, 双 shuāng)."
   },
   {
     "id": 34,
@@ -490,27 +571,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我每天都会刷朋友圈。",
         "pinyin": "wǒ měi tiān dōu huì shuā péng yǒu quān.",
-        "english": "I check my WeChat Moments every day."
+        "english": "I check my WeChat Moments every day.",
+        "pronunciation_focus_en": [
+          "měi tiān → 'may tyen'; 都会 here = a habitual 'will' (every day I'll …)",
+          "shuā → 'shwah'; sh retroflex, flat high; 刷 = the all-purpose 'scroll/swipe' verb",
+          "quān → 'chwen'; q is a hissy 'ch', tongue low (朋友圈 = WeChat Moments)"
+        ]
       },
       {
         "chinese": "这条帖子获得了上万个点赞。",
         "pinyin": "zhè tiáo tiě zi huò dé le shàng wàn gè diǎn zàn.",
-        "english": "This post got tens of thousands of likes."
+        "english": "This post got tens of thousands of likes.",
+        "pronunciation_focus_en": [
+          "zhè tiáo → 条 the measure word for posts/messages; tiáo 'tyaow', rising",
+          "tiě zi → 'tyeh dz'; 'zi' goes neutral (帖子 = a post)",
+          "huò dé le → 'hwaw duh luh'; 获得了 = verb + 了 ('got/obtained', completed); diǎn zàn → 'dyen dzan'"
+        ]
       },
       {
         "chinese": "请不要在社交媒体上泄露隐私。",
         "pinyin": "qǐng bù yào zài shè jiāo méi tǐ shàng xiè lù yǐn sī.",
-        "english": "Please don't leak private information on social media."
+        "english": "Please don't leak private information on social media.",
+        "pronunciation_focus_en": [
+          "bù yào → 不 flips to rising 'bú' before the 4th-tone yào: 'bú yào' ('don't')",
+          "shè jiāo méi tǐ → 'shuh jyaow may tee'; shè retroflex; …上 = locative 'on' after the noun",
+          "xiè lù → 'shyeh loo'; x light 'sh', falling; yǐn sī → 'yin sz', sī a buzz vowel (隐私 = privacy)"
+        ]
       },
       {
         "chinese": "你可以关注我的账号获取最新动态。",
         "pinyin": "nǐ kě yǐ guān zhù wǒ de zhàng hào huò qǔ zuì xīn dòng tài.",
-        "english": "You can follow my account for the latest updates."
+        "english": "You can follow my account for the latest updates.",
+        "pronunciation_focus_en": [
+          "kě yǐ → 'ké yǐ' (two 3rd tones, the first rises); guān zhù → 'gwan joo', zhù retroflex (关注 = follow)",
+          "zhàng hào → 'jahng how'; zh curled back, both falling (账号 = account)",
+          "huò qǔ → 'hwaw chü'; q hissy 'ch' + round-lipped ü (获取 = obtain); 动态 = 'feed/updates'"
+        ]
       },
       {
         "chinese": "我私信给你发了一些照片。",
         "pinyin": "wǒ sī xìn gěi nǐ fā le yī xiē zhào piàn.",
-        "english": "I sent you some photos in a private message."
+        "english": "I sent you some photos in a private message.",
+        "pronunciation_focus_en": [
+          "sī xìn → 'sz shin'; sī a buzz vowel, x light 'sh' (私信 = direct message)",
+          "gěi nǐ fā le → 'gei nee fah luh'; 给你 = recipient ('to you'), 发了 = 'sent', le toneless",
+          "zhào piàn → 'jaow pyen'; zhào retroflex falling, piàn one glide (照片 = photos)"
+        ]
       }
     ],
     "dialogue": [
@@ -567,7 +673,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我喜欢在社交媒体上分享照片。",
         "pinyin": "wǒ xǐ huān zài shè jiāo méi tǐ shàng fēn xiǎng zhào piàn."
       }
-    ]
+    ],
+    "cultural_notes_en": "The platforms differ by law, not just preference: Facebook, Instagram, X, and YouTube sit behind the Great Firewall, and the live ecosystem is 微信 (WeChat — 朋友圈, 公众号, 小程序), 抖音 (Douyin, the domestic TikTok), 小红书 (Xiaohongshu / RED), 微博 (Weibo), and 哔哩哔哩 (Bilibili). Naming 'Twitter' or 'Insta' to a mainland user lands flat — name the Chinese equivalents. 朋友圈 is semi-private (mutual contacts only), so the American 'broadcast to strangers' model differs, and not liking a close friend's post can be socially noticed. 网络用语 (net slang) churns fast and is generational — yyds (永远的神, 'GOAT'), 绝绝子, 破防了 — fluent to under-30s and opaque to parents, a real intergenerational gap, and a 点赞 can be a relationship obligation rather than plain approval.",
+    "tip_advice_en": "Lead structure: 刷 (shuā) is the all-purpose modern verb for 'scroll / swipe / refresh a feed' — 刷朋友圈, 刷视频, 刷微博 — with context fixing the meaning (the same 刷 also means 'brush,' as in 刷牙), so learn it as a frame, not a single gloss. Second, the recipient slot: 给 + person + verb (给你发了, 私信给你) marks who receives the action, recurring from A2's 把/给 work. The pronunciation crux: 不要 shows 不 sandhi — 不 flips to rising 'bú' before a 4th tone (bú yào), a recurring B1 must-track — and keep the retroflex sh of 刷/帖 distinct from the flat-tongue x of 信 (xìn), 些 (xiē), 泄 (xiè), with q + ü in 圈 (quān) and 获取 (qǔ)."
   },
   {
     "id": 35,
@@ -631,27 +739,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "空气污染越来越严重了。",
         "pinyin": "kōng qì wū rǎn yuè lái yuè yán zhòng le.",
-        "english": "Air pollution is getting worse."
+        "english": "Air pollution is getting worse.",
+        "pronunciation_focus_en": [
+          "kōng qì → 'kong chee'; q a hissy 'ch', tongue low (空气 = air)",
+          "wū rǎn → 'woo ran'; r retroflex (tongue curled), 3rd tone (污染 = pollution)",
+          "yuè lái yuè → 越来越 = 'more and more'; le marks the change ('has gotten worse')"
+        ]
       },
       {
         "chinese": "我们应该把垃圾分类回收。",
         "pinyin": "wǒ men yīng gāi bǎ lā jī fēn lèi huí shōu.",
-        "english": "We should sort garbage for recycling."
+        "english": "We should sort garbage for recycling.",
+        "pronunciation_focus_en": [
+          "bǎ → 'bah', 3rd tone; the 把 disposal marker: 把 + 垃圾 + verb = 'take the garbage and …'",
+          "lā jī → 'lah jee'; both flat high (垃圾 = garbage)",
+          "fēn lèi huí shōu → 分类回收 = 'sort-and-recycle', the verb complex after 把; shōu retroflex"
+        ]
       },
       {
         "chinese": "减少碳排放是全球共同的责任。",
         "pinyin": "jiǎn shǎo tàn pái fàng shì quán qiú gòng tóng de zé rèn.",
-        "english": "Reducing carbon emissions is a global responsibility."
+        "english": "Reducing carbon emissions is a global responsibility.",
+        "pronunciation_focus_en": [
+          "jiǎn shǎo → two 3rd tones, the first rises ('jián shǎo'); shǎo retroflex (减少 = reduce)",
+          "quán qiú → 'chwen chyo'; both q hissy 'ch', tongue low, rising (全球 = global)",
+          "zé rèn → 'dzuh run'; r retroflex, falling (责任 = responsibility)"
+        ]
       },
       {
         "chinese": "使用节能灯可以节约用电。",
         "pinyin": "shǐ yòng jié néng dēng kě yǐ jié yuē yòng diàn.",
-        "english": "Using energy-saving bulbs can save electricity."
+        "english": "Using energy-saving bulbs can save electricity.",
+        "pronunciation_focus_en": [
+          "shǐ yòng → 'shr yong'; shǐ retroflex 3rd, no 'ee' (使用 = use)",
+          "jié yuē → 'jyeh yweh'; 约 has a ü-glide ('yweh'), flat high (节约 = save/economize)",
+          "yòng diàn → 'yong dyen'; diàn one glide (用电 = use electricity)"
+        ]
       },
       {
         "chinese": "保护森林就是保护我们的未来。",
         "pinyin": "bǎo hù sēn lín jiù shì bǎo hù wǒ men de wèi lái.",
-        "english": "Protecting forests means protecting our future."
+        "english": "Protecting forests means protecting our future.",
+        "pronunciation_focus_en": [
+          "bǎo hù → 'baow hoo'; bǎo a 3rd-tone dip, hù falling (保护 = protect)",
+          "sēn lín → 'sun lin'; sēn flat high, lín rising (森林 = forest)",
+          "jiù shì → 就是 here = 'is exactly / amounts to'; jiù falling, shì a buzz vowel"
+        ]
       }
     ],
     "dialogue": [
@@ -708,7 +841,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "保护环境是每个人的责任。",
         "pinyin": "bǎo hù huán jìng shì měi gè rén de zé rèn."
       }
-    ]
+    ],
+    "cultural_notes_en": "Mandatory household 垃圾分类 (waste sorting) — Shanghai's 2019 rollout, now in many cities — is enforced with fines and fixed disposal windows, far stricter than the largely voluntary American curbside bin; getting the four categories wrong (湿垃圾 / 干垃圾 / 可回收 / 有害) is a genuine daily anxiety, not a virtue signal. Air quality (空气质量 / AQI) is checked like a weather app, a routine 北方 winter concern (Beijing) more than in the 南方. China is simultaneously the largest emitter and the largest builder of solar, wind, and EVs — electric scooters and 新能源车 are everywhere — and the 双碳 goal ('dual carbon': peak by 2030, neutral by 2060) is stated national policy, so environmental talk is framed as collective and state responsibility ('共同的责任') rather than the American individual-virtue framing.",
+    "tip_advice_en": "Lead structure: this lesson carries the canonical B1 grammar mountain — the 把 (bǎ) construction. 我们应该把垃圾分类回收 = 'we should TAKE the garbage and sort-recycle it.' Use 把 when a definite object is acted on and changed or disposed of: the pattern is 把 + (definite) object + verb + result/extra. English keeps SVO; Chinese fronts the object after 把 and the verb must then do something to it — a bare verb alone is ungrammatical after 把. This is the structure to over-drill at B1. Second, 越来越 + adjective = 'more and more X' (越来越严重), with sentence-final 了 marking the change. The pronunciation crux is T3+T3 sandhi in 减少 (jiǎn shǎo → 'jián shǎo'); the retroflex r in 污染 (rǎn) and 责任 (rèn); q + rising in 全球 (quán qiú); and the ü-glide in 节约 (yuē)."
   },
   {
     "id": 36,
@@ -772,27 +907,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "在我看来，这个计划可行。",
         "pinyin": "zài wǒ kàn lái, zhè gè jì huà kě xíng.",
-        "english": "In my opinion, this plan is feasible."
+        "english": "In my opinion, this plan is feasible.",
+        "pronunciation_focus_en": [
+          "zài wǒ kàn lái → 在我看来 = a sentence-initial 'in my view' frame; sets the stance before the claim",
+          "jì huà → 'jee hwah'; both falling (计划 = plan)",
+          "kě xíng → 'kuh shing'; x light 'sh', -ng rings, rising (可行 = feasible)"
+        ]
       },
       {
         "chinese": "我完全同意你的看法。",
         "pinyin": "wǒ wán quán tóng yì nǐ de kàn fǎ.",
-        "english": "I completely agree with your view."
+        "english": "I completely agree with your view.",
+        "pronunciation_focus_en": [
+          "wán quán → 'wahn chwen'; quán q hissy 'ch', tongue low, rising (完全 = completely)",
+          "tóng yì → 'tong ee'; tóng rising, yì falling (同意 = agree)",
+          "kàn fǎ → 'kahn fah'; 看法 = 'view/opinion', fǎ a 3rd-tone dip"
+        ]
       },
       {
         "chinese": "我反对这个提议，因为它不够环保。",
         "pinyin": "wǒ fǎn duì zhè gè tí yì, yīn wèi tā bù gòu huán bǎo.",
-        "english": "I oppose this proposal because it's not environmentally friendly enough."
+        "english": "I oppose this proposal because it's not environmentally friendly enough.",
+        "pronunciation_focus_en": [
+          "fǎn duì → 'fan dway'; fǎn a 3rd-tone dip, duì falling (反对 = oppose)",
+          "yīn wèi → 因为 = 'because', the reason clause follows; yīn flat, wèi falling",
+          "bù gòu → 不 flips to rising 'bú' before the 4th-tone gòu: 'bú gòu' ('not enough')"
+        ]
       },
       {
         "chinese": "事实上，我们还有更好的选择。",
         "pinyin": "shì shí shàng, wǒ men hái yǒu gèng hǎo de xuǎn zé.",
-        "english": "In fact, we have better options."
+        "english": "In fact, we have better options.",
+        "pronunciation_focus_en": [
+          "shì shí shàng → 'shr shr shang'; all retroflex; 事实上 = 'in fact' (a sentence-initial frame)",
+          "hái yǒu → 'hye yo'; hái rising, yǒu a 3rd-tone dip (还有 = still have/also)",
+          "xuǎn zé → 'shwen dzuh'; x light 'sh' + ü-glide, 3rd tone (选择 = choice)"
+        ]
       },
       {
         "chinese": "总的来说，这次活动很成功。",
         "pinyin": "zǒng de lái shuō, zhè cì huó dòng hěn chéng gōng.",
-        "english": "Generally speaking, this event was very successful."
+        "english": "Generally speaking, this event was very successful.",
+        "pronunciation_focus_en": [
+          "zǒng de lái shuō → 总的来说 = 'generally speaking', a set sentence-initial frame; shuō retroflex",
+          "zhè cì → 'juh tsz'; c is a hard 'ts', cì falling (这次 = this time)",
+          "chéng gōng → 'chung gong'; chéng retroflex rising, gōng flat high (成功 = success)"
+        ]
       }
     ],
     "dialogue": [
@@ -849,7 +1009,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "在我看来，这是个好主意。",
         "pinyin": "zài wǒ kàn lái, zhè shì gè hǎo zhǔ yì."
       }
-    ]
+    ],
+    "cultural_notes_en": "Disagreement is softened more than the American 'I disagree, here's why' directness. 你说得也有道理 ('you have a point too') is a face-saving partial concession that often precedes — or substitutes for — actual pushback, so reading it as full agreement misreads it. Strongly contradicting someone senior or older in public costs face for both sides, and opinions get hedged with 我觉得 / 在我看来 / 可能 even when the speaker is certain. Frames like 总的来说, 另一方面, 事实上 organize an argument indirectly, building toward the point rather than the American 'thesis sentence first.' 毫无疑问 and flat assertion are reserved and read as forceful — though among close friends, blunter opinions are fine; register tracks relationship and hierarchy.",
+    "tip_advice_en": "Lead structure: opinion discourse markers — 在我看来, 总的来说, 事实上, 另一方面 — sit sentence-initially as topic frames that set the stance before the comment, the same topic-comment logic running through B1; learn them as fixed openers, not word by word. Second, the reason clause uses 因为 and typically follows the claim ('我反对…，因为它不够环保') where English often leads with 'because' — both orders exist but post-position is common — and 不够 + adjective = 'not X enough.' The pronunciation crux: 不够 shows 不 sandhi (bú gòu, rising before a 4th tone); the all-retroflex run in 事实上 (shì shí shàng); x + ü-glide in 选择 (xuǎn) and q in 完全 (quán); and flat-tongue x in 可行 (xíng) versus retroflex ch in 成功 (chéng)."
   },
   {
     "id": 37,
@@ -913,27 +1075,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我建议你多休息几天。",
         "pinyin": "wǒ jiàn yì nǐ duō xiū xī jǐ tiān.",
-        "english": "I suggest you rest a few more days."
+        "english": "I suggest you rest a few more days.",
+        "pronunciation_focus_en": [
+          "jiàn yì → 'jyen ee'; jiàn falling, j flat-tongue (建议 = suggest)",
+          "xiū xī → 'shyo shee'; both x a light 'sh', tongue low (休息 = rest)",
+          "jǐ tiān → 'jee tyen'; 几 (jǐ) = 'a few' here (a vague small number), flat-tongue j"
+        ]
       },
       {
         "chinese": "不如我们一起去爬山吧。",
         "pinyin": "bù rú wǒ men yī qǐ qù pá shān ba.",
-        "english": "Why don't we go hiking together?"
+        "english": "Why don't we go hiking together?",
+        "pronunciation_focus_en": [
+          "bù rú → 不 stays 4th 'bù' before the rising rú; 不如 here = a soft 'why don't we …'",
+          "yī qǐ → 'ee chee'; q a hissy 'ch', tongue low (一起 = together)",
+          "pá shān → 'pah shan'; shān retroflex; ba → toneless suggestion particle, don't stress it"
+        ]
       },
       {
         "chinese": "这部电影很好看，推荐你看看。",
         "pinyin": "zhè bù diàn yǐng hěn hǎo kàn, tuī jiàn nǐ kàn kàn.",
-        "english": "This movie is great, I recommend you watch it."
+        "english": "This movie is great, I recommend you watch it.",
+        "pronunciation_focus_en": [
+          "zhè bù → 部 the measure word for films; 'juh boo'",
+          "hěn hǎo kàn → hěn before hǎo: two 3rd tones, the first rises ('hén hǎo kàn')",
+          "kàn kàn → verb reduplication softens 'watch' to 'just have a look'; the 2nd 看 lighter"
+        ]
       },
       {
         "chinese": "你最好提前预约，免得排队。",
         "pinyin": "nǐ zuì hǎo tí qián yù yuē, miǎn de pái duì.",
-        "english": "You'd better make a reservation in advance to avoid queuing."
+        "english": "You'd better make a reservation in advance to avoid queuing.",
+        "pronunciation_focus_en": [
+          "zuì hǎo → 最好 here = 'had better' (a strong-ish suggestion); 'dzway haow'",
+          "yù yuē → 'yü yweh'; both have ü, round-lipped 'ee' (预约 = make a reservation)",
+          "miǎn de → 免得 = 'so as to avoid …'; pái duì → 'pye dway' (排队 = queue)"
+        ]
       },
       {
         "chinese": "你可以考虑换个工作环境。",
         "pinyin": "nǐ kě yǐ kǎo lǜ huàn gè gōng zuò huán jìng.",
-        "english": "You could consider changing your work environment."
+        "english": "You could consider changing your work environment.",
+        "pronunciation_focus_en": [
+          "kě yǐ → 'ké yǐ' (two 3rd tones, first rises); 可以 here softens to 'you could'",
+          "kǎo lǜ → 'kow lü'; the ü in lǜ is round-lipped 'ee' + falling, never 'loo' (考虑 = consider)",
+          "huàn gè → 'hwan guh'; 换个 = 'change a …'; gōng zuò → 'gong dzwaw'"
+        ]
       }
     ],
     "dialogue": [
@@ -990,7 +1177,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "你应该每天学中文。",
         "pinyin": "nǐ yīng gāi měi tiān xué zhōng wén."
       }
-    ]
+    ],
+    "cultural_notes_en": "Unsolicited advice to friends and family is more expected and welcomed than in the US — it reads as 关心 (caring), not an overstep, and not offering advice to a close friend in trouble can seem cold. From elders or the more experienced it carries near-directive weight (听人劝，吃饱饭 — 'heed advice and you'll do fine'). The softening ladder is socially real: 你可以… (gentle) → 不如 / 不妨… → 你最好… → 你应该… (strong, near-obligation), and 你应该 to a peer about a personal choice can sound preachy unless the relationship is close. 推荐 for media and products is heavily social — 种草 ('planting the desire' through influencer recs on 小红书) drives a lot of it — and an indirect '要不…?' is common to preserve the other person's autonomy and face.",
+    "tip_advice_en": "Lead structure: B1 suggestions form a politeness ladder by force — 你可以… (you could) < 不如 / 不妨… (how about / might as well) < 你最好… (you'd better) < 你应该… (you should) — and you pick the rung by relationship, not just by meaning. Second, verb reduplication softens an imperative: 看看 ('have a look'), 试试 ('give it a try'), gentler than the bare verb and the spoken counterpart of A2's 一下; 免得 + clause = 'so as to avoid …' (a negative-purpose connector). The pronunciation crux is the ü cluster — 考虑 (lǜ), 预约 (yù yuē) — round-lipped 'ee'; 不如's 不 stays 'bù' before the rising rú; the retroflex r in 如 (rú); and flat-tongue x in 休息 (xiū xī) versus retroflex sh in 爬山 (shān)."
   },
   {
     "id": 38,
@@ -1054,27 +1243,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "对不起，我来晚了。",
         "pinyin": "duì bu qǐ, wǒ lái wǎn le.",
-        "english": "Sorry, I'm late."
+        "english": "Sorry, I'm late.",
+        "pronunciation_focus_en": [
+          "duì bu qǐ → 'dway-bu-CHEE'; 'bu' neutral, qǐ a hissy 'ch' (3rd)",
+          "lái wǎn le → 来晚了 = 'arrived late' (verb + result-adj + 了); le marks the realized situation",
+          "wǎn → 'wahn', a 3rd-tone dip; don't stress the toneless le"
+        ]
       },
       {
         "chinese": "我不是故意弄坏你的东西的。",
         "pinyin": "wǒ bù shì gù yì nòng huài nǐ de dōng xi de.",
-        "english": "I didn't mean to break your things."
+        "english": "I didn't mean to break your things.",
+        "pronunciation_focus_en": [
+          "bù shì → 不 flips to rising 'bú' before the 4th-tone shì: 'bú shì'",
+          "nòng huài → 弄坏 = verb + result 坏 ('do-and-break it'); 'nong hwye', both falling",
+          "不是…的 → the 是…的 frame brackets the denial ('it's not that I did it on purpose')"
+        ]
       },
       {
         "chinese": "请原谅我的迟到，路上堵车了。",
         "pinyin": "qǐng yuán liàng wǒ de chí dào, lù shàng dǔ chē le.",
-        "english": "Please forgive my lateness, there was a traffic jam."
+        "english": "Please forgive my lateness, there was a traffic jam.",
+        "pronunciation_focus_en": [
+          "yuán liàng → 'ywen lyang'; 原谅 = 'forgive'; yuán has a ü-glide, rising",
+          "chí dào → 'chr daow'; chí retroflex rising (迟到 = be late)",
+          "dǔ chē le → 'doo chuh luh'; 堵车了 = 'traffic jammed up' (le = new situation), chē retroflex"
+        ]
       },
       {
         "chinese": "我保证下次不会再发生这样的事情。",
         "pinyin": "wǒ bǎo zhèng xià cì bù huì zài fā shēng zhè yàng de shì qíng.",
-        "english": "I promise it won't happen again."
+        "english": "I promise it won't happen again.",
+        "pronunciation_focus_en": [
+          "bǎo zhèng → 'baow jung'; zhèng retroflex, falling (保证 = guarantee/promise)",
+          "bù huì → 不 flips to rising 'bú' before the 4th-tone huì: 'bú huì'; 再 here = 'again'",
+          "fā shēng → 'fah shung'; shēng retroflex; 不会再发生 = 'won't happen again'"
+        ]
       },
       {
         "chinese": "我想弥补我的过错。",
         "pinyin": "wǒ xiǎng mí bǔ wǒ de guò cuò.",
-        "english": "I want to make up for my mistake."
+        "english": "I want to make up for my mistake.",
+        "pronunciation_focus_en": [
+          "wǒ xiǎng → two 3rd tones, the first rises ('wó xiǎng'); 想 = 'want to'",
+          "mí bǔ → 'mee boo'; mí rising, bǔ a 3rd-tone dip (弥补 = make up for)",
+          "guò cuò → 'gwaw tswaw'; c is a hard 'ts', both falling (过错 = fault/mistake)"
+        ]
       }
     ],
     "dialogue": [
@@ -1131,7 +1345,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "对不起，打扰你了。",
         "pinyin": "duì bu qǐ, dǎ rǎo nǐ le."
       }
-    ]
+    ],
+    "cultural_notes_en": "Apology is calibrated to relationship and face, not a uniform reflex. Among close friends and family, over-apologizing ('对不起对不起对不起') can feel distancing — '别放在心上' / '没关系' is the expected closing ritual, and pressing the apology further can make the other person lose face for having been 'owed' one. To superiors or in formal settings, a fuller apology plus a concrete 弥补 (making-up) is expected; a bare 'sorry' with no remedy reads as hollow. Excuses like 堵车了 or 临时有事 are accepted soft-cover and rarely interrogated — their job is mutual face-preservation, not literal truth-claiming, unlike the American 'don't make excuses, own it' value. Indirect, third-party apology (through a mutual friend) exists where direct confrontation would cost too much face.",
+    "tip_advice_en": "Lead structure: topic-comment fronting matures here — '那本书我早就看完了' (dialogue) = '[that book,] I finished it long ago,' topic leading and the 早就…了 comment following. Pair it with 把 + 弄 + result for accidental harm: '把你的书弄丢了' = 'lost your book,' 弄坏 = 'broke it' (弄 + a result complement = 'do something that causes X'). The 不是…的 frame denies an attribution ('我不是故意…的' = 'it's not that I did it on purpose'). The pronunciation crux: 不 sandhi is dense here — 不是 → 'bú shì,' 不会 → 'bú huì' (rising before a 4th tone) while 不 stays 'bù' elsewhere — plus retroflex ch (迟 chí, 车 chē) versus flat-tongue q (起 qǐ, 情 qíng), the falling nòng in 弄, and c as a hard 'ts' in 过错 (cuò)."
   },
   {
     "id": 39,
@@ -1195,27 +1411,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我给你的忠告是别轻易放弃。",
         "pinyin": "wǒ gěi nǐ de zhōng gào shì bié qīng yì fàng qì.",
-        "english": "My advice to you is don't give up easily."
+        "english": "My advice to you is don't give up easily.",
+        "pronunciation_focus_en": [
+          "wǒ gěi nǐ de → 给你的 = 'the … (I) give you'; 的 turns the clause into a modifier",
+          "bié → 'byeh', rising; 别 + verb = the negative command ('don't …')",
+          "qīng yì → 'ching ee'; q a hissy 'ch', -ng rings; fàng qì → 'fahng chee' (放弃 = give up)"
+        ]
       },
       {
         "chinese": "你应该先学基础再学高级内容。",
         "pinyin": "nǐ yīng gāi xiān xué jī chǔ zài xué gāo jí nèi róng.",
-        "english": "You should learn the basics first before advanced content."
+        "english": "You should learn the basics first before advanced content.",
+        "pronunciation_focus_en": [
+          "xiān … zài … → 先学基础再学… = 'learn the basics first, THEN learn …'; 再 = sequence 'then'",
+          "xué → 'shweh'; x light 'sh' + ü-glide, rising (学 = learn/study)",
+          "jī chǔ → 'jee choo'; chǔ retroflex 3rd (基础 = basics/foundation)"
+        ]
       },
       {
         "chinese": "最好多听听别人的意见。",
         "pinyin": "zuì hǎo duō tīng tīng bié rén de yì jiàn.",
-        "english": "You'd better listen to others' opinions more."
+        "english": "You'd better listen to others' opinions more.",
+        "pronunciation_focus_en": [
+          "zuì hǎo → 最好 = 'had better'; duō → 'dwaw', flat high (more)",
+          "tīng tīng → verb reduplication softens 'listen' to 'listen a bit'; the 2nd 听 lighter",
+          "bié rén → 'byeh run'; r retroflex; yì jiàn → 'ee jyen' (意见 = opinion)"
+        ]
       },
       {
         "chinese": "小心别上当受骗。",
         "pinyin": "xiǎo xīn bié shàng dàng shòu piàn.",
-        "english": "Be careful not to get cheated."
+        "english": "Be careful not to get cheated.",
+        "pronunciation_focus_en": [
+          "xiǎo xīn → 'shyaow shin'; both x light 'sh', tongue low (小心 = be careful)",
+          "bié → 'byeh', rising; 小心别… = 'be careful not to …'",
+          "shàng dàng shòu piàn → 上当受骗 = 'be fooled and cheated'; sh retroflex, piàn one glide"
+        ]
       },
       {
         "chinese": "记住，健康是最重要的。",
         "pinyin": "jì zhù, jiàn kāng shì zuì zhòng yào de.",
-        "english": "Remember, health is the most important."
+        "english": "Remember, health is the most important.",
+        "pronunciation_focus_en": [
+          "jì zhù → 'jee joo'; jì flat-tongue, zhù retroflex, both falling (记住 = remember)",
+          "jiàn kāng → 'jyen kahng'; jiàn falling, kāng flat high (健康 = health)",
+          "zuì zhòng yào de → the 是最…的 frame emphasizes the superlative ('IS the most important')"
+        ]
       }
     ],
     "dialogue": [
@@ -1272,7 +1513,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我的建议是要有耐心。",
         "pinyin": "wǒ de jiàn yì shì yào yǒu nài xīn."
       }
-    ]
+    ],
+    "cultural_notes_en": "Advice flows down an age and experience hierarchy with real authority: 长辈 (elders) and the experienced give 忠告 closer to 'expected guidance' than the American 'just my two cents,' and politely brushing it off can read as 不听话 (not heeding). 创业 (starting a business) is a loaded topic — widely admired, yet family often urges the 稳定 (stable) 体制内 (in-system) path, a real generational fault line between parents pushing 公务员 / 事业单位 and children drawn to startups or freelance. 别盲目… and 控制成本 are stock prudence lines. Unsolicited life advice — marriage, children, salary — from relatives, especially at Spring Festival, is normalized in a way Americans find intrusive (催婚 / 催生, being nagged to marry or have kids), and 听人劝 ('heed advice') is framed as wisdom, not weakness.",
+    "tip_advice_en": "Lead structure: 别 + verb is the core negative command for advice — 别轻易放弃, 别盲目扩张 — softer and more idiomatic than 不要, and 小心(别)… = 'be careful (not to)…' stacks a warning onto it. Second, the sequence frame 先 V1 再 V2 = 'do V1 first, then V2' (先学基础再学高级), where 再 is sequence 'then,' not 'again' — the recurring 再/在 family. Verb reduplication (听听, 想想) keeps the advice gentle. The pronunciation crux: flat-tongue x in 先/学 versus retroflex zh in 忠/住; 别 is 'byeh' (rising), not 'bee-eh'; the retroflex r in 别人 (rén); the ü-glide in 学 (xué); and the 是…的 frame closing 'health IS the most important.'"
   },
   {
     "id": 40,
@@ -1336,27 +1579,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我曾经去过北京，那里很美。",
         "pinyin": "wǒ céng jīng qù guò běi jīng, nà lǐ hěn měi.",
-        "english": "I have been to Beijing, it's beautiful there."
+        "english": "I have been to Beijing, it's beautiful there.",
+        "pronunciation_focus_en": [
+          "céng jīng → 'tsung jing'; c is a hard 'ts'; 曾经 = 'once / have ever' (sets the experiential)",
+          "qù guò → 过 here = the experiential 'have ever done' (去过 = 'have been to'), distinct from completed 了",
+          "běi jīng → 'bay jing'; hěn měi → two 3rd tones, the first rises ('hén měi')"
+        ]
       },
       {
         "chinese": "记得我第一次上台演讲时非常紧张。",
         "pinyin": "jì de wǒ dì yī cì shàng tái yǎn jiǎng shí fēi cháng jǐn zhāng.",
-        "english": "I remember my first time giving a speech on stage, I was very nervous."
+        "english": "I remember my first time giving a speech on stage, I was very nervous.",
+        "pronunciation_focus_en": [
+          "dì yī cì → 'dee ee tsz'; 第一次 = 'the first time'; cì has a hard 'ts' + a buzz vowel",
+          "shàng tái → 'shang tye'; shàng retroflex; …时 (shí) = 'when/at the time of', clause-final",
+          "jǐn zhāng → j flat-tongue (jǐn) vs zh retroflex (zhāng); 'jin jang' (紧张 = nervous)"
+        ]
       },
       {
         "chinese": "当时我完全不知道该怎么办。",
         "pinyin": "dāng shí wǒ wán quán bù zhī dào gāi zěn me bàn.",
-        "english": "At that time I had no idea what to do."
+        "english": "At that time I had no idea what to do.",
+        "pronunciation_focus_en": [
+          "dāng shí → 'dahng shr'; shí retroflex rising (当时 = at that time)",
+          "wán quán → 'wahn chwen'; quán q hissy 'ch', rising (完全 = completely)",
+          "bù zhī dào → 不 stays 4th 'bù' before zhī (1st tone); 'boo jr daow'; 该怎么办 = 'what to do'"
+        ]
       },
       {
         "chinese": "那次旅行让我很难忘。",
         "pinyin": "nà cì lǚ xíng ràng wǒ hěn nán wàng.",
-        "english": "That trip was unforgettable for me."
+        "english": "That trip was unforgettable for me.",
+        "pronunciation_focus_en": [
+          "nà cì → 'nah tsz'; c a hard 'ts' + buzz vowel (那次 = that time)",
+          "lǚ xíng → 'lü shing'; the ü in lǚ is round-lipped 'ee', x light 'sh' (旅行 = trip)",
+          "ràng → 'rahng', retroflex r, falling; 让我… = the causative 'made me …'"
+        ]
       },
       {
         "chinese": "最后我克服了困难，感觉很有成就感。",
         "pinyin": "zuì hòu wǒ kè fú le kùn nán, gǎn jué hěn yǒu chéng jiù gǎn.",
-        "english": "Finally I overcame the difficulty and felt a great sense of achievement."
+        "english": "Finally I overcame the difficulty and felt a great sense of achievement.",
+        "pronunciation_focus_en": [
+          "kè fú le → 'kuh foo luh'; 克服了 = verb + 了 ('overcame', completed)",
+          "gǎn jué → 'gan jweh'; jué has a ü-glide, rising (感觉 = feel/feeling)",
+          "chéng jiù gǎn → 'chung jyo gan'; chéng retroflex rising (成就感 = sense of achievement)"
+        ]
       }
     ],
     "dialogue": [
@@ -1413,7 +1681,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我第一次吃这个菜时，非常喜欢。",
         "pinyin": "wǒ dì yī cì chī zhè gè cài shí, fēi cháng xǐ huān."
       }
-    ]
+    ],
+    "cultural_notes_en": "Recounting a notable experience tends to be modest about the self and vivid about the place or event — '风景太震撼了' (the scenery was stunning) rather than 'I was amazing'; the American 'and then I crushed it' self-spotlight can read as 自夸 (bragging). Domestic travel is a huge cultural arena — 西藏 (Tibet), 新疆, 云南 as transformative trips, with 高反 (altitude sickness, short for 高原反应) a normal shared reference. The 'first time on stage / first big challenge' arc, framed around 成长 (growth) and 成就感 (a sense of achievement), is a culturally resonant narrative tied to the broader 吃苦 value (enduring hardship builds you) — closer to a virtue than the American 'follow your bliss' framing. Sharing hardship overcome earns more social credit than sharing ease.",
+    "tip_advice_en": "Lead structure: the experiential 过 — 去过北京 ('have been to Beijing at some point') — answers 'have you ever…?' and is a different machine from completed 了 (了 = a specific completed/changed event; 过 = 'this is in my life history'), and 曾经 often flags it. Second, 让 (ràng) is the core causative: '那次旅行让我很难忘' = 'that trip MADE me [find it] unforgettable' — 让 + person + state/verb, pervasive for emotional cause (X 让我很感动 / 很开心). Clause-final 时 = 'when / at the time of' (上台演讲时 = 'when going on stage to speak'), post-positioned like other Chinese time markers. The pronunciation crux: c as a hard 'ts' in 曾 (céng) and 次 (cì); retroflex r in 让 (ràng); ü in 旅 (lǚ) and 觉 (jué); and 不 staying 'bù' before the 1st-tone 知 (bù zhī)."
   },
   {
     "id": 41,
@@ -1477,27 +1747,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "这两个手机，你比较一下哪个更好？",
         "pinyin": "zhè liǎng gè shǒu jī, nǐ bǐ jiào yī xià nǎ gè gèng hǎo?",
-        "english": "Compare these two phones, which one is better?"
+        "english": "Compare these two phones, which one is better?",
+        "pronunciation_focus_en": [
+          "zhè liǎng gè → 两 (not 二) for the quantity 'two'; topic-fronted ('these two phones, …')",
+          "bǐ jiào → 'bee jyaow'; bǐ a 3rd-tone dip, jiào falling (比较 = compare)",
+          "nǎ gè gèng hǎo → 'nah guh gung haow'; 哪个更好 = 'which is better' (更 = 'more/-er')"
+        ]
       },
       {
         "chinese": "A款比B款便宜，但功能不如B款多。",
         "pinyin": "A kuǎn bǐ B kuǎn pián yí, dàn gōng néng bù rú B kuǎn duō.",
-        "english": "Model A is cheaper than B, but it doesn't have as many features as B."
+        "english": "Model A is cheaper than B, but it doesn't have as many features as B.",
+        "pronunciation_focus_en": [
+          "A kuǎn bǐ B kuǎn → the 比 structure: A 比 B + adjective ('A is cheaper THAN B'), NOT 'more … than'",
+          "pián yí → 'pyen ee'; both rising (便宜 = cheap)",
+          "bù rú → 不 stays 4th 'bù' before rising rú; 不如 = 'not as good/much as' ('…不如B多' = 'fewer than B')"
+        ]
       },
       {
         "chinese": "这两本书内容差不多一样。",
         "pinyin": "zhè liǎng běn shū nèi róng chà bu duō yī yàng.",
-        "english": "The content of these two books is about the same."
+        "english": "The content of these two books is about the same.",
+        "pronunciation_focus_en": [
+          "zhè liǎng běn → 本 the measure word for books; 'juh lyang bun'",
+          "chà bu duō → 差不多 = 'more or less / about'; 'chah-bu-dwaw', 'bu' neutral",
+          "yī yàng → 'ee yang'; 一样 = 'the same'; yàng falling"
+        ]
       },
       {
         "chinese": "你觉得选哪个方案更合适？",
         "pinyin": "nǐ jué de xuǎn nǎ gè fāng àn gèng hé shì?",
-        "english": "Which plan do you think is more suitable?"
+        "english": "Which plan do you think is more suitable?",
+        "pronunciation_focus_en": [
+          "jué de → 'jweh-duh'; jué has a ü-glide, rising (觉得 = think/feel)",
+          "xuǎn → 'shwen'; x light 'sh' + ü-glide, 3rd tone (选 = choose)",
+          "gèng hé shì → 'gung huh shr'; 更合适 = 'more suitable'; 更 marks the comparative"
+        ]
       },
       {
         "chinese": "从性价比来看，这款产品很划算。",
         "pinyin": "cóng xìng jià bǐ lái kàn, zhè kuǎn chǎn pǐn hěn huá suàn.",
-        "english": "In terms of cost performance, this product is a good deal."
+        "english": "In terms of cost performance, this product is a good deal.",
+        "pronunciation_focus_en": [
+          "cóng … lái kàn → 从性价比来看 = 'looking at it from cost-performance'; cóng 'tsong' (c hard 'ts')",
+          "xìng jià bǐ → 'shing jyah bee'; 性价比 = 'cost-performance', a core consumer value",
+          "huá suàn → 'hwah swan'; huá rising, suàn falling (划算 = a good deal/worth it)"
+        ]
       }
     ],
     "dialogue": [
@@ -1554,7 +1849,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "这个比那个便宜。",
         "pinyin": "zhè gè bǐ nà gè pián yí."
       }
-    ]
+    ],
+    "cultural_notes_en": "性价比 (xìngjiàbǐ — cost-performance ratio) is a central, openly invoked consumer value with no single American word: not 'cheap' and not 'premium' but the optimization of value-for-money. Products are praised as 性价比高 the way Americans say 'great bang for the buck,' but it is a far more dominant default frame. Comparison shopping is exhaustive and social — 测评 (review videos), 货比三家 ('compare three shops'), 小红书 cross-checks before buying — and 纠结 (jiūjié, agonizing indecision over a choice) is a recognized, almost affectionate self-description. Asking a friend '如果你是我，你会选哪个?' genuinely delegates the decision and is common, where Americans might hedge with 'it's your call'; giving a real opinion is the expected, helpful response.",
+    "tip_advice_en": "Lead structure: the 比 comparison — A 比 B + adjective: 'A款比B款便宜' = 'Model A is cheaper than B.' The word order is A 比 B [plain adjective] — no 更 or 很 on the adjective in the basic pattern, and never the English 'more cheap than.' Its negative partner is A 不如 B (+ adj): 'A不如B多' = 'A is not as many as B' / 'fewer than B.' Equality is A 跟 B 一样 or 差不多 ('about the same'), and 从…来看 = 'looking at it from [an angle].' The pronunciation crux: 比 (bǐ) the comparison marker is a clean 3rd tone; c is a hard 'ts' in 从 (cóng); flat-tongue x in 性 (xìng), 选 (xuǎn) versus retroflex ch/sh in 产 (chǎn), 书 (shū); 不如's 不 stays 'bù' before the rising rú; and there is a ü-glide in 觉 (jué)."
   },
   {
     "id": 42,
@@ -1618,27 +1915,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "如果明天不下雨，我们就去公园。",
         "pinyin": "rú guǒ míng tiān bù xià yǔ, wǒ men jiù qù gōng yuán.",
-        "english": "If it doesn't rain tomorrow, we'll go to the park."
+        "english": "If it doesn't rain tomorrow, we'll go to the park.",
+        "pronunciation_focus_en": [
+          "rú guǒ → 'roo gwaw'; r retroflex; 如果…就… is the core 'if … then …' pair",
+          "bù xià yǔ → 不 flips to rising 'bú' before the 4th-tone xià: 'bú shyah yü'",
+          "jiù → 'jyo', falling; 就 = the 'then' that answers 如果 in the second clause"
+        ]
       },
       {
         "chinese": "要是我是你，我就会接受这个offer。",
         "pinyin": "yào shì wǒ shì nǐ, wǒ jiù huì jiē shòu zhè gè offer.",
-        "english": "If I were you, I would accept this offer."
+        "english": "If I were you, I would accept this offer.",
+        "pronunciation_focus_en": [
+          "yào shì → 要是 = colloquial 'if'; 要是…就会… frames the counterfactual ('if I were you, I would …')",
+          "wǒ shì nǐ → '我是你' literally 'I am you' — Chinese has no subjunctive; the hypothetical is read from context",
+          "jiē shòu … offer → 'jyeh show … offer'; 'offer' is said as the English word (a common code-switch)"
+        ]
       },
       {
         "chinese": "假设你有100万，你会怎么花？",
         "pinyin": "jiǎ shè nǐ yǒu yī bǎi wàn, nǐ huì zěn me huā?",
-        "english": "Suppose you had one million, how would you spend it?"
+        "english": "Suppose you had one million, how would you spend it?",
+        "pronunciation_focus_en": [
+          "jiǎ shè → 'jyah shuh'; shè retroflex, falling (假设 = suppose/assume)",
+          "yī bǎi wàn → '100万' = 'one million' (literally 'one hundred ten-thousand'); bǎi 3rd, wàn falling",
+          "zěn me huā → 'dzun-muh hwah'; 怎么花 = 'how (to) spend'; huā flat high"
+        ]
       },
       {
         "chinese": "万一他不同意，我们还有备用方案。",
         "pinyin": "wàn yī tā bù tóng yì, wǒ men hái yǒu bèi yòng fāng àn.",
-        "english": "In case he disagrees, we have a backup plan."
+        "english": "In case he disagrees, we have a backup plan.",
+        "pronunciation_focus_en": [
+          "wàn yī → 万一 = 'just in case' (a precautionary 'if'); wàn falling, yī flat",
+          "bù tóng yì → 不 stays 4th 'bù' before the rising tóng; 'boo tong ee' (不同意 = disagree)",
+          "bèi yòng fāng àn → 备用方案 = 'backup plan'; bèi & yòng both falling, àn clean falling"
+        ]
       },
       {
         "chinese": "想象一下十年后的生活会是什么样子。",
         "pinyin": "xiǎng xiàng yī xià shí nián hòu de shēng huó huì shì shén me yàng zi.",
-        "english": "Imagine what life will be like ten years from now."
+        "english": "Imagine what life will be like ten years from now.",
+        "pronunciation_focus_en": [
+          "xiǎng xiàng → 'shyang shyang'; both x light 'sh'; 想象 = 'imagine' (xiǎng 3rd, xiàng falling)",
+          "shí nián hòu → 'shr nyen ho'; 十年后 = 'ten years later', 后 post-positioned",
+          "shén me yàng zi → 'SHÉN-muh yang dz'; 什么样子 = 'what (it) will look like', question stays in place"
+        ]
       }
     ],
     "dialogue": [
@@ -1695,7 +2017,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "如果我有时间，我会去旅游。",
         "pinyin": "rú guǒ wǒ yǒu shí jiān, wǒ huì qù lǚ yóu."
       }
-    ]
+    ],
+    "cultural_notes_en": "The 'if I won the lottery / if you had a million' thought experiment is as universal here, but the stock answers reveal the cultural defaults: 房地产 (real estate) and 投资 as the reflexive wealth move — property is the canonical store of value, far more dominant than the American 'stock market / index fund' instinct — alongside 环游世界 (travel the world) and a pragmatic '没中就继续努力工作.' The 体制内 stability versus entrepreneurial risk fork recurs as a hypothetical. The number itself differs: Chinese counts in 万 (10,000), so 100万 is 'one hundred 万' = one million, and mapping it through English 'thousands' is a constant friction point. Hypotheticals here skew pragmatic and plan-oriented (备用方案, 万一) more than whimsical.",
+    "tip_advice_en": "Lead structure: the conditional family 如果 / 要是 / 假如 / 假设 (… 就 …) all mean 'if' — 要是 colloquial, 假设 formal/'suppose,' 万一 the precautionary 'just in case' — and the second clause routinely takes 就 ('then'), the workhorse 如果…就… pairing. Crucial point: Chinese has no subjunctive — '要是我是你' is literally 'if I am you,' and the counterfactual 'were' lives in context (要是…就会…), not in a verb form, so don't hunt for a 'would' conjugation. The number system: 万 = 10,000, so 100万 = 'one million' — recompute, don't translate digit by digit. The pronunciation crux: 不 sandhi (不下 → 'bú xià' before a 4th tone; 不同 stays 'bù' before a 2nd); retroflex r in 如 (rú); ü in 雨 (yǔ), 去 (qù); 就 as 'jyo' (falling); and the code-switched 'offer' in sentence 2 is pronounced as the English word — authentic modern register."
   },
   {
     "id": 43,
@@ -1759,27 +2083,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "他说他明天会来。",
         "pinyin": "tā shuō tā míng tiān huì lái.",
-        "english": "He said he would come tomorrow."
+        "english": "He said he would come tomorrow.",
+        "pronunciation_focus_en": [
+          "shuō → 'shwaw'; sh retroflex, flat high (说 = say) — the reporting verb leads the quote",
+          "míng tiān → 'ming tyen'; Chinese keeps 明天 ('tomorrow') — no English-style backshift",
+          "huì lái → 'hway lye'; 会来 stays future ('will come'), not backshifted to 'would'"
+        ]
       },
       {
         "chinese": "她告诉我她已经完成了作业。",
         "pinyin": "tā gào su wǒ tā yǐ jīng wán chéng le zuò yè.",
-        "english": "She told me she had finished her homework."
+        "english": "She told me she had finished her homework.",
+        "pronunciation_focus_en": [
+          "gào su → 'gaow-su'; 'su' goes neutral; 告诉 + me + clause ('told me that …', no 'that' word)",
+          "yǐ jīng → 'ee jing'; wán chéng le → 'wahn chung luh', 完成了 = verb + 了 (completed)",
+          "zuò yè → 'dzwaw yeh'; both falling (作业 = homework); the embedded clause keeps 已经…了"
+        ]
       },
       {
         "chinese": "老师提到下周会有考试。",
         "pinyin": "lǎo shī tí dào xià zhōu huì yǒu kǎo shì.",
-        "english": "The teacher mentioned there will be an exam next week."
+        "english": "The teacher mentioned there will be an exam next week.",
+        "pronunciation_focus_en": [
+          "lǎo shī → 'laow shr'; shī retroflex, no 'ee' (老师 = teacher)",
+          "tí dào → 'tee daow'; 提到 = 'mention'; tí rising, dào falling",
+          "xià zhōu → 'shyah joe'; zhōu retroflex; 会有 = 'there will be', huì falling"
+        ]
       },
       {
         "chinese": "他问我今天几号。",
         "pinyin": "tā wèn wǒ jīn tiān jǐ hào.",
-        "english": "He asked me what the date is today."
+        "english": "He asked me what the date is today.",
+        "pronunciation_focus_en": [
+          "tā wèn wǒ → 'tah wun waw'; 问我 + clause = 'asked me …' (embedded question, no inversion)",
+          "jǐ hào → 'jee how'; 几号 = 'what date' (which-number); jǐ flat-tongue 3rd",
+          "no question particle: an embedded question keeps statement word order (今天几号, not …几号吗)"
+        ]
       },
       {
         "chinese": "据报道，气温将下降。",
         "pinyin": "jù bào dào, qì wēn jiāng xià jiàng.",
-        "english": "According to reports, the temperature will drop."
+        "english": "According to reports, the temperature will drop.",
+        "pronunciation_focus_en": [
+          "jù bào dào → 'jü baow daow'; 据报道 = 'according to reports' (a hearsay/evidential frame); jù has ü",
+          "qì wēn → 'chee wun'; q a hissy 'ch', tongue low (气温 = temperature)",
+          "jiāng xià jiàng → 'jyang shyah jyang'; 将 = formal 'will'; 下降 = 'drop', x light 'sh'"
+        ]
       }
     ],
     "dialogue": [
@@ -1836,7 +2185,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "她说她很累。",
         "pinyin": "tā shuō tā hěn lèi."
       }
-    ]
+    ],
+    "cultural_notes_en": "The headline difference is grammatical-cultural: Chinese reported speech does not backshift tense or shift deixis the way English drills into learners — 'he said he WOULD come TOMORROW' stays 他说他明天会来. Beyond grammar, hearsay is openly flagged and socially hedged: 据说 ('it's said'), 听说 ('I heard'), 小道消息 ('grapevine') explicitly mark unverified information, and repeating something as 据说 distances the speaker from responsibility for its truth — a face-management move. 据报道 / 据官方消息 carries an authoritative-source register used in news and formal contexts. Gossip exists but is cushioned ('听说，不知道真假' — 'I heard, but who knows'), and quoting someone's exact words to a third party can carry social weight, so paraphrase (转述) is the safer default.",
+    "tip_advice_en": "Lead structure: the single biggest English-speaker reflex to unlearn — Chinese reported speech does not backshift. '他说他明天会来' = 'he said he would come tomorrow,' but Chinese keeps 明天 ('tomorrow') and 会 ('will') exactly as originally spoken; time words stay anchored to the original utterance, not re-computed. Second, there is no 'that' complementizer: 说 / 告诉 / 提到 + the clause directly (她告诉我她…, no linking word), 告诉 needs a recipient (告诉我) while 说 does not, and embedded questions keep statement word order and drop 吗 (他问我今天几号, not …几号吗). 据说 / 据报道 are evidential frames ('it is said' / 'according to reports'). The pronunciation crux: ü in 据 (jù); retroflex sh in 说 (shuō), 师 (shī) versus flat-tongue x in 下 (xià); q in 气 (qì); and 将 (jiāng) as the formal 'will.'"
   },
   {
     "id": 44,
@@ -1900,27 +2251,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我的钱包被偷了。",
         "pinyin": "wǒ de qián bāo bèi tōu le.",
-        "english": "My wallet was stolen."
+        "english": "My wallet was stolen.",
+        "pronunciation_focus_en": [
+          "qián bāo → 'chyen baow'; q a hissy 'ch', tongue low (钱包 = wallet)",
+          "bèi → 'bay', falling; 被 = the passive marker; 被偷了 = 'got stolen' (adversative — a bad thing happened)",
+          "tōu le → 'toe luh'; 偷 = steal; le marks the changed state (now it's gone)"
+        ]
       },
       {
         "chinese": "这个蛋糕是妈妈做的。",
         "pinyin": "zhè gè dàn gāo shì mā ma zuò de.",
-        "english": "This cake was made by mom."
+        "english": "This cake was made by mom.",
+        "pronunciation_focus_en": [
+          "zhè gè dàn gāo → 'juh guh dahn gaow'; the topic of a 是…的 sentence",
+          "shì … zuò de → the 是…的 frame: '是妈妈做的' = 'was made by mom' (names the doer, not 被)",
+          "zuò → 'dzwaw'; z is 'ds' with no air; this is NOT a 被 passive — a different machine"
+        ]
       },
       {
         "chinese": "会议室已经打扫干净了。",
         "pinyin": "huì yì shì yǐ jīng dǎ sǎo gān jìng le.",
-        "english": "The meeting room has been cleaned."
+        "english": "The meeting room has been cleaned.",
+        "pronunciation_focus_en": [
+          "huì yì shì → 'hway ee shr'; shì retroflex (会议室 = meeting room)",
+          "dǎ sǎo → two 3rd tones, the first rises ('dá sǎo'); 打扫 = 'sweep/clean'",
+          "gān jìng le → 干净了 = result 'clean' + 了; NO 被 here — a Chinese notional passive ('got cleaned')"
+        ]
       },
       {
         "chinese": "他受到了大家的热烈欢迎。",
         "pinyin": "tā shòu dào le dà jiā de rè liè huān yíng.",
-        "english": "He received a warm welcome from everyone."
+        "english": "He received a warm welcome from everyone.",
+        "pronunciation_focus_en": [
+          "shòu dào le → 'show daow luh'; 受到了 = 受到 ('be subjected to/receive') + 了 — a 受到-passive",
+          "rè liè → 'ruh lyeh'; retroflex r (tongue curled), both falling (热烈 = warm/enthusiastic)",
+          "huān yíng → 'hwan ying'; 欢迎 = welcome; huān flat, yíng rising"
+        ]
       },
       {
         "chinese": "文件已经由秘书发送了。",
         "pinyin": "wén jiàn yǐ jīng yóu mì shū fā sòng le.",
-        "english": "The document has been sent by the secretary."
+        "english": "The document has been sent by the secretary.",
+        "pronunciation_focus_en": [
+          "wén jiàn → 'wun jyen'; jiàn falling (文件 = document)",
+          "yóu → 'yo', rising; 由 = the formal agent marker 'by' (由秘书 = 'by the secretary')",
+          "mì shū fā sòng le → 'mee shoo fah song luh'; shū retroflex; 由…发送了 = 'was sent by …'"
+        ]
       }
     ],
     "dialogue": [
@@ -1977,7 +2353,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "信已经被寄出了。",
         "pinyin": "xìn yǐ jīng bèi jì chū le."
       }
-    ]
+    ],
+    "cultural_notes_en": "The grammar itself is the cultural lesson: 被 is not a neutral one-to-one of English 'be + past participle.' 被 still often carries an adversative, 'suffered' flavor (被偷, 被骗, 被批评 — bad things done to you), and for neutral or positive 'passives' Chinese prefers no marker at all (notional passive: 会议室打扫干净了 = 'the room got cleaned'), or 是…的 (agentive: 是妈妈做的), or 受到 / 由 (formal). A rich twist worth knowing: 网络用语 weaponizes this adversative 被 ironically — 被就业 ('was-employed,' counted as employed without a real job), 被自愿 ('volunteered' under pressure), 被代表 ('was-represented') — a whole sardonic construction where citizens mark things done TO them under a euphemism, instantly recognizable online; English 'they say I volunteered' has no such compact, productive form.",
+    "tip_advice_en": "Lead structure: 被 (bèi) is not English's all-purpose passive. Use it mainly when something is done TO a subject, often unwelcome — 钱包被偷了, 项目被取消了 — in the pattern (subject) 被 (+ agent) + verb + result/了. Crucial: where English forces a passive, Chinese very often uses NO marker — '会议室打扫干净了' = 'the meeting room('s) been cleaned'; an inanimate subject + verb + result reads as passive without 被, and over-using 被 is the classic learner tell. The alternatives: 是…的 names the doer non-adversatively (是妈妈做的), 由 marks a formal agent (由秘书发送), and 受到 / 遭到 take abstract objects (受到欢迎). The pronunciation crux: 被 is 'bay' (falling); retroflex r in 热 (rè), sh in 室/书 (shì/shū); T3+T3 in 打扫 (dǎ sǎo → 'dá sǎo'); q in 钱 (qián); and 由 is 'yo' (rising), distinct from 邮/油."
   },
   {
     "id": 45,
@@ -2041,27 +2419,52 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "那个穿红衣服的女孩是我的妹妹。",
         "pinyin": "nà gè chuān hóng yī fú de nǚ hái shì wǒ de mèi mei.",
-        "english": "The girl who is wearing red clothes is my sister."
+        "english": "The girl who is wearing red clothes is my sister.",
+        "pronunciation_focus_en": [
+          "chuān hóng yī fú de → '[wearing-red] DE': the whole clause precedes the noun, the reverse of English 'who wears red'",
+          "de → the relative-clause marker here (not possessive); it glues the modifying clause to 女孩",
+          "nǚ hái → 'nü-hye'; the ü in 女 is round-lipped 'ee'; mèi mei → 'may-may', 2nd syllable neutral"
+        ]
       },
       {
         "chinese": "我昨天买的那本书很有意思。",
         "pinyin": "wǒ zuó tiān mǎi de nà běn shū hěn yǒu yì si.",
-        "english": "The book that I bought yesterday is very interesting."
+        "english": "The book that I bought yesterday is very interesting.",
+        "pronunciation_focus_en": [
+          "wǒ zuó tiān mǎi de → '[I yesterday bought] DE' = 'that I bought yesterday'; the clause comes BEFORE 那本书",
+          "zuó tiān → 'dzwaw tyen'; zuó rising, z is 'ds' (昨天 = yesterday)",
+          "yǒu yì si → 'yo ee-suh'; 有意思 = 'interesting'; 'si' goes neutral"
+        ]
       },
       {
         "chinese": "他住的地方离公司很远。",
         "pinyin": "tā zhù de dì fāng lí gōng sī hěn yuǎn.",
-        "english": "The place where he lives is far from the company."
+        "english": "The place where he lives is far from the company.",
+        "pronunciation_focus_en": [
+          "tā zhù de → '[he lives] DE 地方' = 'the place where he lives'; the clause precedes 地方",
+          "dì fāng → 'dee fahng'; 地方 = place; lí → 'lee', rising ('distance from')",
+          "hěn yuǎn → 'hun ywen'; 远 = far; yuǎn one glide, 3rd tone"
+        ]
       },
       {
         "chinese": "这就是我们上次见面的地方。",
         "pinyin": "zhè jiù shì wǒ men shàng cì jiàn miàn de dì fāng.",
-        "english": "This is the place where we met last time."
+        "english": "This is the place where we met last time.",
+        "pronunciation_focus_en": [
+          "zhè jiù shì → 'juh jyo shr'; 就是 = 'this is exactly'; jiù falling",
+          "shàng cì jiàn miàn de → '[last-time met] DE 地方' = 'the place where (we) met last time'",
+          "jiàn miàn → 'jyen myen'; both falling (见面 = meet face to face)"
+        ]
       },
       {
         "chinese": "你知道他迟到的原因吗？",
         "pinyin": "nǐ zhī dào tā chí dào de yuán yīn ma?",
-        "english": "Do you know the reason why he was late?"
+        "english": "Do you know the reason why he was late?",
+        "pronunciation_focus_en": [
+          "zhī dào → 'jr daow'; zhī retroflex, a buzz vowel (知道 = know)",
+          "tā chí dào de → '[he was late] DE 原因' = 'the reason (why) he was late'; clause precedes 原因",
+          "yuán yīn → 'ywen yin'; 原因 = reason; ma → toneless question particle, don't stress it"
+        ]
       }
     ],
     "dialogue": [
@@ -2118,7 +2521,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "正在和她说话的那个人是我的老板。",
         "pinyin": "zhèng zài hé tā shuō huà de nà gè rén shì wǒ de lǎo bǎn."
       }
-    ]
+    ],
+    "cultural_notes_en": "This is the single biggest word-order reversal for English speakers, and it pays off across every lesson above: Chinese puts the entire modifying clause BEFORE the noun, with 的 as the universal hinge — '[穿红衣服]的女孩' = 'the [wears-red] DE girl,' the mirror image of English 'the girl [who wears red].' English appends the clause after the noun and varies the connector (who / which / that / where / why); Chinese never does — one 的 covers them all, whether the gap is subject, object, place, time, or reason (他迟到的原因 = 'the [he-was-late] DE reason'). There is no relative pronoun and no number or gender agreement. The lesson is culturally light; the payoff is structural fluency — long pre-nominal modifiers are normal and not felt as 'heavy' the way a long English pre-modifier would be, and 靠谱 (kàopǔ, reliable/dependable) in the dialogue is common informal praise.",
+    "tip_advice_en": "Lead structure: the relative clause comes BEFORE the noun it modifies, joined by 的 — '[我昨天买]的[那本书]' = 'the book that I bought yesterday.' Build the reflex: wherever English says 'who / which / that / where / when / why … [noun],' Chinese says '[clause] 的 [noun],' with the noun landing last. One 的 does all relativizer work — no who/which/that distinction, no marking of subject versus object; the role is inferred from the gap (他住的地方 = 'the place [he lives at]'; 他迟到的原因 = 'the reason [he was late]'), so don't try to insert an English-style 'that.' The pronunciation crux: ü in 女 (nǚ); retroflex zh/ch (住 zhù, 穿 chuān, 知 zhī, 迟 chí) versus flat-tongue x; the glides in 见面 (jiàn miàn → 'jyen myen') and 原 (yuán → 'ywen'); and 的 stays a weightless neutral 'duh' even when it carries this much grammatical load."
   }
 ];
 
