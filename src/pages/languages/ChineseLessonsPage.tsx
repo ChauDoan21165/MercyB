@@ -25,7 +25,7 @@ import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
   cefrPillColors,
-  cefrPillLabels,
+  cefrPillLabel,
 } from "@/components/languages/lessonThemes";
 import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 
@@ -116,7 +116,9 @@ export default function ChineseLessonsPage() {
           className="mt-2 text-sm font-bold"
           style={{ color: theme.accent }}
         >
-          {CHINESE_TOTAL_LESSONS} bài · {CHINESE_TOTAL_LESSONS} lessons
+          {uiLang === "en"
+            ? `${CHINESE_TOTAL_LESSONS} lessons`
+            : `${CHINESE_TOTAL_LESSONS} bài · ${CHINESE_TOTAL_LESSONS} lessons`}
         </p>
         <p className="mt-3 text-xs text-slate-500">
           <Link
@@ -130,7 +132,7 @@ export default function ChineseLessonsPage() {
       </header>
 
       <nav
-        aria-label="Chọn cấp độ"
+        aria-label={uiLang === "en" ? "Choose level" : "Chọn cấp độ"}
         className="mb-4 flex flex-wrap gap-2"
       >
         {CHINESE_LEVELS.map((lv) => {
@@ -152,7 +154,7 @@ export default function ChineseLessonsPage() {
               }
               aria-pressed={active}
             >
-              {cefrPillLabels[lv] ?? lv}
+              {cefrPillLabel(lv, uiLang)}
             </button>
           );
         })}
@@ -161,22 +163,30 @@ export default function ChineseLessonsPage() {
       <section>
         <header className="mb-2 flex items-baseline justify-between">
           <h2 className="text-base font-semibold text-slate-900">
-            {cefrPillLabels[level] ?? level}
+            {cefrPillLabel(level, uiLang)}
           </h2>
           <span
             className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${cefrPillColors[level] ?? ""}`}
           >
-            {lessons === null ? "đang tải…" : `${normalized.length} bài`}
+            {lessons === null
+              ? uiLang === "en"
+                ? "loading…"
+                : "đang tải…"
+              : `${normalized.length} ${uiLang === "en" ? "lessons" : "bài"}`}
           </span>
         </header>
 
         {lessons === null ? (
           <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
-            Đang tải bài học cấp độ {cefrPillLabels[level] ?? level}…
+            {uiLang === "en"
+              ? `Loading ${cefrPillLabel(level, uiLang)} lessons…`
+              : `Đang tải bài học cấp độ ${cefrPillLabel(level, uiLang)}…`}
           </p>
         ) : normalized.length === 0 ? (
           <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
-            Chưa có bài học cho cấp độ này.
+            {uiLang === "en"
+              ? "No lessons available for this level yet."
+              : "Chưa có bài học cho cấp độ này."}
           </p>
         ) : (
           <div className="space-y-2">
