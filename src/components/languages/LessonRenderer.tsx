@@ -9,7 +9,8 @@
 //   header  : number badge, title.vi, title.en, optional native title,
 //             CEFR pill, expand chevron
 //   stats   : counts of vocab/sentences/dialogue/exercises (when collapsed)
-//   intro   : amber card if lesson.intro
+//   intro   : amber card; picks introEn/introVi by uiLanguage with a
+//             fallback badge (legacy single-string `intro` = no badge)
 //   sentences: slate card; native + romanization + en + vi + focus chips + note
 //   vocab   : green 2-col grid if lesson.vocabulary
 //   dialogue: purple card if lesson.dialogue
@@ -247,13 +248,29 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
           className="border-t px-4 py-3 space-y-3"
           style={{ borderColor: `${theme.accent}11`, background: "rgb(248 250 252 / 0.6)" }}
         >
-          {lesson.intro && (
-            <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
-              <p className="text-xs leading-relaxed text-amber-900">
-                {lesson.intro}
-              </p>
-            </div>
-          )}
+          {/* intro — Incidental D fix: pick introEn/introVi by
+              uiLanguage with a fallback badge so an English-UI user
+              seeing Vietnamese intro content is told so. Legacy single-
+              language `intro` (pre-bilingual modules) renders with no
+              badge — it is language-agnostic by contract. */}
+          {(() => {
+            const picked = pick(uiLanguage, lesson.introEn, lesson.introVi);
+            const text = picked ?? lesson.intro;
+            if (!text) return null;
+            const fallback =
+              picked !== undefined &&
+              isFallback(uiLanguage, lesson.introEn, lesson.introVi);
+            return (
+              <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
+                <p className="text-xs leading-relaxed text-amber-900">
+                  {text}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </p>
+              </div>
+            );
+          })()}
 
           {sentCount > 0 && (
             <ol className="space-y-2">

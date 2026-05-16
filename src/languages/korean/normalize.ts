@@ -24,7 +24,10 @@ export function normalizeKoreanLesson(
     id: id ?? lesson.id,
     level: lesson.level,
     title: { vi: lesson.title_vi, en: lesson.title_en },
-    intro: lesson.intro_vi,
+    // intro_vi is Vietnamese; intro_en is absent today, so an
+    // English-UI render falls back to VI + a badge (Incidental D).
+    introVi: lesson.intro_vi,
+    introEn: lesson.intro_en,
     sentences: (lesson.sentences ?? []).map((s) => ({
       native: s.korean,
       romanization: s.romanized,

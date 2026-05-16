@@ -114,7 +114,9 @@ export function normalizeSpanishLesson(
     // title.vi carries the English title for this module — the renderer
     // treats title.vi as primary regardless of uiLanguage.
     title: { vi: lesson.title, en: lesson.subtitle ?? "" },
-    intro: lesson.intro,
+    // Spanish module is English-source (uiLanguage="en"); the intro is
+    // English → introEn slot so pick() returns it with no badge.
+    introEn: lesson.intro,
     sentences: (lesson.sentences ?? []).map((s) => ({
       native: s.spanish,
       romanization: s.pronunciation,
