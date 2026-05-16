@@ -1,51 +1,19 @@
 // src/components/mercy-guide/tabs/LessonUiLangToggle.tsx
 //
-// Shared VI/EN toggle for the per-language lesson tabs. Owns the state
-// and the localStorage persistence so each parent tab can stay a thin
-// wrapper. Default is "vi"; the toggle is local-only for v1 (no Supabase
-// profile sync).
+// Shared VI/EN toggle UI for lesson surfaces. As of the global-toggle
+// work the state + localStorage persistence moved to the app-wide
+// UiLanguageProvider context (src/contexts/UiLanguageContext.tsx) so a
+// single toggle in the global chrome band drives every language page
+// reactively in the same tab. `useLessonUiLang()` is kept as a thin
+// shim over the context with its original [lang, setLang] signature so
+// existing call sites compile unchanged.
 
-import { useEffect, useState } from "react";
-
+import { useUiLanguage } from "@/contexts/UiLanguageContext";
 import type { LessonUiLang } from "./LanguageLessonsView";
 
-const STORAGE_KEY = "mercyblade.lessonUiLang";
-
-function readStoredLang(): LessonUiLang {
-  if (typeof window === "undefined") return "vi";
-  try {
-    const v = window.localStorage.getItem(STORAGE_KEY);
-    return v === "en" ? "en" : "vi";
-  } catch {
-    return "vi";
-  }
-}
-
 export function useLessonUiLang(): [LessonUiLang, (next: LessonUiLang) => void] {
-  // Read synchronously on mount so the first render matches what's stored.
-  const [lang, setLangState] = useState<LessonUiLang>(() => readStoredLang());
-
-  // Sync across tabs/windows in the same browser.
-  useEffect(() => {
-    function onStorage(e: StorageEvent) {
-      if (e.key !== STORAGE_KEY) return;
-      setLangState(e.newValue === "en" ? "en" : "vi");
-    }
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
-
-  const setLang = (next: LessonUiLang) => {
-    setLangState(next);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      // Storage may be disabled (private mode / quota); state still works
-      // for the current session.
-    }
-  };
-
-  return [lang, setLang];
+  const { uiLang, setUiLang } = useUiLanguage();
+  return [uiLang, setUiLang];
 }
 
 type Props = {

@@ -30,15 +30,16 @@ import {
   lessonThemes,
   cefrPillLabels,
 } from "@/components/languages/lessonThemes";
-import LessonUiLangToggle, {
-  useLessonUiLang,
-} from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 import type { LessonUiLang } from "@/components/mercy-guide/tabs/LanguageLessonsView";
 
+// HERO_VI = Vietnamese-audience line, untouched. HERO_EN = English-
+// facing line, de-narrowed (no "for Vietnamese learners") so English
+// speakers are not excluded. Shown conditionally on the global uiLang.
 const HERO_VI =
   "Tiếng Đức cho người Việt — từ guten Tag đến cách (cases).";
 const HERO_EN =
-  "German for Vietnamese learners — from hallo to der/die/das.";
+  "German — real-life lessons, explained clearly. From hallo to der/die/das.";
 
 const GERMAN_LEVELS: ReadonlyArray<GermanCefrLevel> = [
   "A1",
@@ -53,7 +54,9 @@ export default function GermanLessonsPage() {
   const theme = lessonThemes.german;
   const [level, setLevel] = useState<GermanCefrLevel>("A1");
   const [lessons, setLessons] = useState<GermanLesson[] | null>(null);
-  const [uiLang, setUiLang] = useLessonUiLang();
+  // Read-only here — the toggle now lives in the global chrome band
+  // (AppHeroShell); this page just consumes the shared choice.
+  const [uiLang] = useLessonUiLang();
 
   useEffect(() => {
     let cancelled = false;
@@ -124,10 +127,6 @@ export default function GermanLessonsPage() {
           </Link>
         </p>
       </header>
-
-      <div className="mb-3 flex justify-end">
-        <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
-      </div>
 
       <nav
         aria-label={uiLang === "en" ? "Choose level" : "Chọn cấp độ"}

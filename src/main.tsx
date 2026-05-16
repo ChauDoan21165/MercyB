@@ -55,6 +55,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "@/router/AppRouter";
 import { LanguageProgressProvider } from "@/store/languageProgress";
+import { UiLanguageProvider } from "@/contexts/UiLanguageContext";
 import OfflineIndicator from "@/components/offline/OfflineIndicator";
 // Keyboard surfaces are only reached when the user actually presses a key
 // (focus shortcuts, "?" help overlay). Lazy-loading them out of the critical
@@ -537,7 +538,12 @@ w.__MB_REACT_ROOT__.render(
             <AccessibleToaster />
           </Suspense>
           <LanguageProgressProvider>
-            <AppRouter />
+            {/* UiLanguageProvider wraps the router so the global VI/EN
+                toggle in AppHeroShell and every routed language surface
+                share one reactive state (default "vi"). */}
+            <UiLanguageProvider>
+              <AppRouter />
+            </UiLanguageProvider>
           </LanguageProgressProvider>
         </AuthProvider>
       </QueryClientProvider>

@@ -27,11 +27,15 @@ import {
   cefrPillColors,
   cefrPillLabels,
 } from "@/components/languages/lessonThemes";
+import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 
+// HERO_VI = Vietnamese-audience line, untouched. HERO_EN = English-
+// facing line, de-narrowed (no "for Vietnamese learners"). Shown
+// conditionally on the global uiLang.
 const HERO_VI =
   "Tiếng Trung cho người Việt — từ bính âm đến chữ Hán.";
 const HERO_EN =
-  "Chinese for Vietnamese learners — from pinyin to hanzi.";
+  "Chinese — real-life lessons, explained clearly. From pinyin to hanzi.";
 
 const CHINESE_LEVELS: ReadonlyArray<ChineseCefrLevel> = [
   "A1",
@@ -46,6 +50,8 @@ export default function ChineseLessonsPage() {
   const theme = lessonThemes.chinese;
   const [level, setLevel] = useState<ChineseCefrLevel>("A1");
   const [lessons, setLessons] = useState<ChineseLesson[] | null>(null);
+  // Global gloss language (default "vi"); toggle lives in the chrome band.
+  const [uiLang] = useLessonUiLang();
 
   useEffect(() => {
     let cancelled = false;
@@ -94,9 +100,11 @@ export default function ChineseLessonsPage() {
           🇨🇳 Tiếng Trung · Chinese
         </p>
         <h1 className="mt-1 text-2xl font-bold text-slate-900 leading-tight">
-          {HERO_VI}
+          {uiLang === "en" ? HERO_EN : HERO_VI}
         </h1>
-        <p className="mt-1 text-sm font-medium text-slate-600">{HERO_EN}</p>
+        <p className="mt-1 text-sm font-medium text-slate-600">
+          {uiLang === "en" ? HERO_VI : HERO_EN}
+        </p>
         <p
           className="mt-2 text-sm font-bold"
           style={{ color: theme.accent }}
@@ -170,6 +178,7 @@ export default function ChineseLessonsPage() {
                 key={lesson.id}
                 lesson={lesson}
                 theme={theme}
+                uiLanguage={uiLang}
               />
             ))}
           </div>
