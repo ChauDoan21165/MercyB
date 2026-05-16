@@ -64,12 +64,17 @@ export function normalizeKoreanLesson(
       meaningEn: g.meaning_en,
       exampleEn: g.example_en,
     })),
-    // KoreanB2DialogueLine glosses Vietnamese in `meaning` (mirrors the
-    // short-dialogue mapping above); `vi` overrides when present.
+    // KoreanB2DialogueLine carries English in `meaning` and Vietnamese
+    // in `vi` (verified against lessons-b2/c1/c2 — `meaning` holds full
+    // English sentences, UNLIKE short-dialogue/vocab `meaning` which is
+    // VI). Surface `meaning` as `en`; `vi` stays VI-only. The previous
+    // `vi: d.vi ?? d.meaning` leaked English into the VI slot whenever a
+    // line lacked `vi` — removed (the English now lives in `en`).
     dialogueLong: lesson.dialogue_long?.map((d) => ({
       speaker: d.speaker,
       native: d.hangul,
-      vi: d.vi ?? d.meaning,
+      en: d.meaning,
+      vi: d.vi,
     })),
     audioBase: lessonAudioBase("ko", lesson.id, lesson.level),
   };

@@ -62,12 +62,17 @@ export type IdiomGloss = {
   example_en?: string;
 };
 
-// B2-specific dialogue line — adds Vietnamese gloss to the existing
-// {speaker, hangul, meaning} shape used by lessons 1-50.
+// B2+ dialogue line (dialogue_long). Trilingual in source:
+// `hangul` (Korean), `meaning` (English gloss — NOT Vietnamese, unlike
+// short-dialogue `KoreanDialogueLine.meaning`), and `vi` (Vietnamese
+// gloss). The normalizer maps `meaning` → en and `vi` → vi.
 export type KoreanB2DialogueLine = {
   speaker: string;
   hangul: string;
+  /** English gloss of the line. (Distinct from short-dialogue `meaning`,
+   *  which is Vietnamese.) */
   meaning: string;
+  /** Vietnamese gloss of the line. */
   vi?: string;
 };
 
