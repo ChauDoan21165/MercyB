@@ -4,7 +4,7 @@
 
 import type { KoreanLesson } from "./lessons";
 
-export const lessons: KoreanLesson[] =       [
+export const lessons: KoreanLesson[] =         [
     {
       "id": 92,
       "level": "C1",
@@ -7279,6 +7279,11 @@ export const lessons: KoreanLesson[] =       [
             "안녕하십니까 → /안녕하심니까/",
             "대외협력실장 → /대외혐녁실장/",
             "입니다 → /임니다/"
+          ],
+          "pronunciation_focus_en": [
+            "안녕하십니까 'an-nyeong-ha-sim-ni-kka' — gloss /안녕하심니까/: 십 ㅂ→'m' before ㄴ",
+            "대외협력실장 'dae-oe-hyeom-nyeok-sil-jang' — gloss /대외혐녁실장/: 협력→'hyeom-nyeok'",
+            "입니다 'im-ni-da' — gloss /임니다/: 입 ㅂ→'m' before ㄴ"
           ]
         },
         {
@@ -7290,6 +7295,11 @@ export const lessons: KoreanLesson[] =       [
             "오늘 이 자리는 → /오느리자리는/",
             "보도된 → /보도된/",
             "마련되었습니다 → /마련되어씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "오늘 이 자리는 'o-neul i ja-ri-neun' — gloss /오느리.../: 늘+이 → 'neu-ri' liaison",
+            "보도된 'bo-do-doen' — plain ㅂ/ㄷ; ㅚ in 된 ≈ 'dwen'",
+            "마련되었습니다 'ma-ryeon-doe-eot-seum-ni-da' — gloss /...되어씀니다/: 었 → 't' stop"
           ]
         },
         {
@@ -7301,6 +7311,11 @@ export const lessons: KoreanLesson[] =       [
             "진행되며 → /진행되며/",
             "질의응답 → /지리응답/",
             "가지겠습니다 → /가지겐씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "진행되며 'jin-haeng-doe-myeo' — plain ㅈ; ㅚ ≈ 'dwe'; ㅕ glide in 며",
+            "질의응답 'ji-ri-eung-dap' — gloss /지리응답/: 질의 → 'ji-ri' liaison; 답 batchim ㅂ",
+            "가지겠습니다 'ga-ji-get-seum-ni-da' — gloss /가지겐씀니다/: 겠 → 't' stop, tenses ㅅ"
           ]
         },
         {
@@ -7312,6 +7327,11 @@ export const lessons: KoreanLesson[] =       [
             "종료 후 → /종뇨후/",
             "한 분당 → /한분당/",
             "부탁드립니다 → /부탁뜨림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "종료 후 'jong-nyo hu' — gloss /종뇨후/: 료 → 'nyo' (ㄹ→ㄴ after ㅇ)",
+            "한 분당 'han bun-dang' — gloss /한분당/ links; final ㅇ nasal",
+            "부탁드립니다 'bu-tak-deu-rim-ni-da' — gloss /부탁뜨림니다/: 탁 ㄱ tenses ㄷ"
           ]
         },
         {
@@ -7323,6 +7343,11 @@ export const lessons: KoreanLesson[] =       [
             "본격적인 → /본격쩌긴/",
             "앞서 → /압써/",
             "안내해 드리겠습니다 → /안내해드리겐씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "본격적인 'bon-gyeok-jeo-gin' — gloss /본격쩌긴/: 격 ㄱ tenses ㅈ; 적인 links",
+            "앞서 'ap-seo' — gloss /압써/: 앞 batchim ㅍ→ㅂ stop, tenses ㅅ",
+            "안내해 드리겠습니다 'an-nae-hae deu-ri-get-seum-ni-da' — 겠 → 't' stop"
           ]
         }
       ],
@@ -7449,7 +7474,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "기자회견 ở Hàn là một thể loại nghi lễ chặt chẽ — khác xa Việt Nam và cũng khác Mỹ. Hiểu sai vài điểm là tin sốc trong vòng 24 giờ.\n\n(1) THỜI GIAN: 기자회견 cấp Viện (or hơn) thường diễn ra ở 정부세종청사, 한국프레스센터 (서울 광화문), hoặc trụ sở tổ chức. Bắt đầu chính xác đến phút — 14:00 nghĩa là phát biểu mở đầu lúc 14:00:00, không 14:00:30. Trễ 1 phút = tin với headline 'X 분 지각'.\n\n(2) TRANG PHỤC: 정장 (suit) tối, cà-vạt cho nam, áo blazer cho nữ. Một 대변인 đến mặc áo polo = vô lý nghiêm trọng. KBS, MBC, JTBC, YTN sẽ chụp toàn cảnh và toàn diện trang phục — bất kỳ lệch chuẩn đều thành câu chuyện riêng.\n\n(3) CẤU TRÚC HỌP BÁO chuẩn ở Hàn có 4 ô: 사회자 mở phiên → 발표자 phát biểu → 질의응답 → 사회자 đóng phiên. Bỏ một ô = không chuyên nghiệp. Trong họp báo nhỏ, 사회자 và 발표자 có thể là một người, nhưng phải nói rõ chuyển vai.\n\n(4) 눈치 TRAP cho người Việt: trong họp báo Việt thường có khoảnh khắc 'cả buổi cùng cười nhẹ' để giải tỏa căng thẳng. Ở Hàn KHÔNG — họp báo là nghi thức, cười tự nhiên hoặc nói chuyện riêng = bị đọc là không nghiêm trọng. Tỉnh táo, gravitas duy trì cả buổi. Một 발표자 cười nhẹ trên TV trong họp báo về crisis = tựa đề báo 'X 웃으며 답변, 시민들 분노'. Đây là 눈치 đặc biệt cấp Hàn.\n\n(5) PHƯƠNG TIỆN MEDIA: trong họp báo, các tay máy KBS, MBC, SBS, YTN, JTBC, 채널A, MBN ngồi ở hàng đầu; 한겨레, 조선, 중앙, 동아, 경향 ở hàng giữa; báo điện tử (오마이뉴스, 뉴스1, 뉴시스) ở phía sau. Khi 사회자 mời câu hỏi, quy ước là cho các báo đài lớn trước. Đảo thứ tự = vô lý chính trị (tỏ ra ưu ái).\n\n(6) DANH XƯNG: 'OOO 기자님' khi mời lên hỏi; 'OOO 기자' khi nhắc đến trong cuộc nói chuyện sau. Không bao giờ chỉ 'OOO 씨' với phóng viên trong 기자회견 — họ là chuyên môn, dùng 'OOO 기자님' là chuẩn nhất.\n\n(7) Sau buổi: 대변인실 sẽ gửi 보도자료 chính thức (text + media kit) trong 30 phút — đó là hợp đồng ngầm. Không gửi = báo chí tự diễn giải, có thể sai. Lưu ý: tên các nhà báo, đài cụ thể trong bài này (한겨레 박지훈) là illustrative — sự nghiệp của các phóng viên thay đổi nhanh, học viên nên xác nhận hiện tại trước khi trích trong tác phẩm riêng.",
+      "cultural_notes_en": "A 기자회견 (press conference) in Korea is a tightly ritualized genre — far from Vietnam's and also from the US's. Misreading a few points becomes a shock headline within 24 hours. (1) TIMING: an institution-level (or higher) 기자회견 is usually at the 정부세종청사, the 한국프레스센터 (Gwanghwamun, Seoul), or the organization's HQ. It starts precisely to the minute — 14:00 means the opening remarks at 14:00:00, not 14:00:30. One minute late = a headline 'X minutes late'. (2) DRESS: a dark 정장 (suit), a tie for men, a blazer for women. A 대변인 (spokesperson) in a polo = a serious absurdity. KBS, MBC, JTBC, YTN shoot the whole frame and the full outfit — any deviation becomes its own story. (3) STRUCTURE has 4 boxes: 사회자 opens → 발표자 speaks → Q&A → 사회자 closes. Skip one = unprofessional. In a small conference the 사회자 and 발표자 may be one person, but you must state the role switch clearly. (4) 눈치 TRAP for Vietnamese: in a Vietnamese press conference there's often a moment of 'everyone laughs lightly' to release tension. In Korea, NO — a press conference is a rite; a natural laugh or side-chat reads as not taking it seriously. A 발표자 who smiles slightly on TV during a crisis press conference = 'X smiled while answering, citizens furious'. This is a Korea-specific 눈치. (5) MEDIA SEATING: KBS/MBC/SBS/YTN/JTBC camera crews sit front; 한겨레/조선/중앙/동아/경향 middle; online outlets back. When the 사회자 invites questions, the convention is to give the big outlets first. Reversing the order = a political absurdity (showing favoritism). (6) ADDRESS: 'OOO 기자님' when inviting them up; 'OOO 기자' when referring to them later. Never just 'OOO 씨' with a reporter in a 기자회견. (7) After: the 대변인실 sends an official 보도자료 (press kit) within 30 minutes — an implicit contract. (Specific names of outlets/reporters here are illustrative — confirm current ones before using in real work.)",
       "tip_advice_vi": "5 bước chuẩn bị 1 buổi 기자회견 trong 1 tuần: (1) NGÀY 1-2 — soạn 발표문 (script) đầy đủ — KHÔNG ad-lib trong 기자회견 chính thức ở Hàn. Mỗi câu được kiểm tra trước. (2) NGÀY 3 — soạn 예상 질문 (anticipated questions) — 30 câu khả thi, mỗi câu 30s + 90s + 3-phút response (tùy độ nghiêm trọng). (3) NGÀY 4 — luyện trên video; check nhịp 90 글자/phút; check pause; check khuôn mặt (NEUTRALITY là yếu tố rất quan trọng — Hàn TV phóng đại biểu cảm). (4) NGÀY 5 — họp với 대변인실 + 법무팀 + 홍보실 — review 발표문 cuối cùng; mỗi từ phải qua duyệt pháp lý. (5) NGÀY 6 — gửi 보도 안내 (press advisory) đến 출입처 (registered press pool) 24h trước; chuẩn bị media kit. (6) NGÀY 7 — đến 30 phút trước; check micro, ánh sáng, lưng phông; KHÔNG ăn no; uống ấm để giọng tốt. MẸO PHÁT ÂM dưới ánh đèn studio: '안녕하십니까' /안녕하심니까/ — kéo nhẹ 'ㅁ'; '실장' /실짱/ — 받침 ㄹ + 된소리화 ㅈ→ㅉ; '입장' /입짱/ tương tự. ĐỪNG: (a) đến với điện thoại trong tay — bị tay máy chụp; (b) gọi tên phóng viên không đầy đủ chức danh; (c) cười khi nói về vấn đề nghiêm trọng — 24h crisis; (d) trả lời câu hỏi không liên quan agenda — chuyển '그 부분은 본 회견 의제가 아니므로 별도로 답변드리겠습니다'.",
+      "tip_advice_en": "5 steps to prepare a 기자회견 in one week: (1) DAYS 1–2 — write a full 발표문 (script) — do NOT ad-lib in a formal Korean 기자회견. Each sentence is pre-checked. (2) DAY 3 — write 예상 질문 (anticipated questions) — 30 plausible, each with a 30s + 90s + 3-min response (by severity). (3) DAY 4 — practice on video; check the pace at 90 글자/min; check pauses; check the face (NEUTRALITY is critical — Korean TV exaggerates expression). (4) DAY 5 — meet 대변인실 + 법무팀 + 홍보실 — review the final 발표문; every word goes through legal. (5) DAY 6 — send a 보도 안내 (press advisory) to the registered 출입처 24h ahead; prepare the media kit. (6) DAY 7 — arrive 30 min early; check mic, lighting, backdrop; don't eat heavily; warm drink for the voice. PRONUNCIATION TIP under studio lights: '안녕하십니까' /안녕하심니까/ — soften the final ㅁ; '실장' /실짱/ — batchim ㄹ + tensed ㅈ→ㅉ; '입장' /입짱/ similarly. DON'T: (a) arrive with a phone in hand — the cameras catch it; (b) use a reporter's name without the full title; (c) smile while discussing a serious matter — a 24h crisis; (d) answer an off-agenda question — pivot with '그 부분은 본 회견 의제가 아니므로 별도로 답변드리겠습니다'.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -7539,6 +7566,11 @@ export const lessons: KoreanLesson[] =       [
             "보완을 위한 → /보와늘위한/",
             "3개년 → /삼개년/",
             "밝혔다 → /발켣따/"
+          ],
+          "pronunciation_focus_en": [
+            "보완을 위한 'bo-wa-neul wi-han' — gloss /보와늘위한/: 완을 → 'wa-neul' liaison",
+            "3개년 'sam-gae-nyeon' — gloss /삼개년/: 3 read '삼'; ㅐ ≈ 'eh'",
+            "밝혔다 'bal-kyeot-da' — gloss /발켣따/: 밝 ㄺ+ㅎ → aspirated 'k'; 혔 → 't', tenses ㄷ"
           ]
         },
         {
@@ -7550,6 +7582,11 @@ export const lessons: KoreanLesson[] =       [
             "농어촌 → /농어촌/",
             "저소득 → /저소득/",
             "추진된다 → /추진된다/"
+          ],
+          "pronunciation_focus_en": [
+            "농어촌 'nong-eo-chon' — final ㅇ nasal in 농; ㅓ ('uh'); aspirated ㅊ in 촌",
+            "저소득 'jeo-so-deuk' — plain ㅈ; ㅓ ('uh'); ㅡ tight 'eu'; final ㄱ stop",
+            "추진된다 'chu-jin-doen-da' — aspirated ㅊ; ㅚ in 된 ≈ 'dwen'"
           ]
         },
         {
@@ -7561,6 +7598,11 @@ export const lessons: KoreanLesson[] =       [
             "대외협력실장은 → /대외혐녁실장은/",
             "지원이 아닌 → /지워니아닌/",
             "밝혔다 → /발켣따/"
+          ],
+          "pronunciation_focus_en": [
+            "대외협력실장은 'dae-oe-hyeom-nyeok-sil-jang-eun' — gloss /...혐녁.../: 협력→'hyeom-nyeok'",
+            "지원이 아닌 'ji-wo-ni a-nin' — gloss /지워니아닌/: 원이 → 'wo-ni' liaison",
+            "밝혔다 'bal-kyeot-da' — gloss /발켣따/: same ㄺ+ㅎ → 'k'; → 't' stop"
           ]
         },
         {
@@ -7571,6 +7613,10 @@ export const lessons: KoreanLesson[] =       [
           "pronunciation_focus": [
             "공보팀 → /공보팀/",
             "부탁드린다 → /부탁뜨린다/"
+          ],
+          "pronunciation_focus_en": [
+            "공보팀 'gong-bo-tim' — plain ㄱ/ㅂ; 'team' loaned, aspirated ㅌ",
+            "부탁드린다 'bu-tak-deu-rin-da' — gloss /부탁뜨린다/: 탁 ㄱ tenses ㄷ → 'tteu'"
           ]
         },
         {
@@ -7581,6 +7627,10 @@ export const lessons: KoreanLesson[] =       [
           "pronunciation_focus": [
             "보도자료는 → /보도자료는/",
             "엠바고 처리한다 → /엠바고처리한다/"
+          ],
+          "pronunciation_focus_en": [
+            "보도자료는 'bo-do-ja-ryo-neun' — plain ㅂ/ㄷ/ㅈ; ㅛ in 료",
+            "엠바고 처리한다 'em-ba-go cheo-ri-han-da' — 'embargo' loaned; aspirated ㅊ in 처"
           ]
         }
       ],
@@ -7713,7 +7763,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "보도자료 ở Hàn là một thể loại nghi thức nghiêm ngặt và là cầu nối giữa tổ chức và báo chí.\n\n(1) HỆ THỐNG 출입처: ở Hàn, các 청사 (cơ quan chính phủ) và tổ chức lớn có 'press pool' đăng ký — chỉ phóng viên đã đăng ký mới được vào. 보도자료 đầu tiên gửi đến danh sách này, sau đó công khai. Người Việt mới làm PR ở Hàn dễ bỏ qua hệ thống và gửi rộng — bị phóng viên 출입처 phản ứng vì 'mất ưu tiên'.\n\n(2) THỜI ĐIỂM PHÁT: quy ước phát 보도자료 vào buổi chiều (15:00–17:00) một ngày trước ngày bài lên báo — để báo có thời gian biên tập. Phát buổi sáng = báo phải tin ngay, gây áp lực; phát buổi tối = báo bỏ. Crisis communication có thể phát ngay nhưng phải kèm 'EMBARGO: NONE' (KHÔNG embargo).\n\n(3) 눈치 TRAP cho người Việt: khi tổ chức bạn có tin xấu, đừng cố che giấu trong 보도자료 dài — báo Hàn rất giỏi trích lọc. Quy ước: nêu tin xấu trong câu đầu (lead) đầy đủ + ngay sau đó là biện pháp khắc phục. Cố giấu sẽ bị 한겨레, 시사IN khui vào tuần sau với headline 'KEDI 숨겼다'. Quote nổi tiếng từ 김어준 podcast: '나쁜 뉴스는 첫 줄에 박아야 한다.'\n\n(4) DEFINITION CỦA 'INFORMATION CONTROL' KHÁC VIỆT: ở Hàn, kiểm soát thông tin thông qua TIMING + FRAMING (chọn câu trích, chọn người trích, chọn ngày phát), KHÔNG qua dấu cấm thông tin. 엠바고 là công cụ chuẩn — vi phạm = bị 출입처 cấm trong 1-3 tháng.\n\n(5) QUOTES ĐƯỢC THIẾT KẾ: một 보도자료 có 1-2 quote 'designed for headline' — đó là kỹ năng đặc biệt. Quote không quá 30 글자, gây ấn tượng (paradox, contrast, soundbite). Một 보도자료 không có quote đáng trích = báo đặt headline tự, có thể sai. Một quote tốt: '단순 지원이 아닌 학습자 중심 모델.' Một quote tồi: '우리는 학생들의 미래를 위해 최선을 다하겠습니다.' (rỗng).\n\n(6) DANH XƯNG TỔ CHỨC: 'KEDI' (영문) + '한국교육개발원' (한글) — luôn ghi cả hai trong 보도자료, vì báo nước ngoài cũng nhận. Tên tổ chức trong câu đầu phải đầy đủ; sau đó có thể rút gọn. Tên các đài, báo nhắc trong dialogue (한겨레, 조선일보, 한국일보) là illustrative — học viên nên xác nhận tên đầy đủ và 출입처 hiện tại trước khi dùng trong tác phẩm riêng.",
+      "cultural_notes_en": "A 보도자료 (press release) in Korea is a strict ritual genre and the bridge between an organization and the press. (1) THE 출입처 SYSTEM: government buildings and large organizations have a registered press pool — only registered reporters get in. The 보도자료 goes to that list first, then public. New PR people from Vietnam often bypass the system and broadcast wide — drawing 출입처 reporters' backlash over 'lost priority'. (2) RELEASE TIMING: the convention is to send the 보도자료 in the afternoon (15:00–17:00) the day before publication — so the paper has editing time. Morning release = the paper must report immediately, creating pressure; evening = the paper drops it. Crisis comms can release immediately but must mark 'EMBARGO: NONE'. (3) 눈치 TRAP for Vietnamese: when your organization has bad news, don't try to bury it in a long 보도자료 — the Korean press is very good at extracting. The convention: state the bad news fully in the lead + immediately the remedy. Burying it gets 한겨레, 시사IN to dig it up next week with a headline 'KEDI hid it'. As the 김어준 podcast quote goes: 'bad news must be nailed to the first line'. (4) 'INFORMATION CONTROL' DIFFERS FROM VIETNAM: in Korea, control is via TIMING + FRAMING (which quote, which speaker, which release day), NOT via an information ban. The 엠바고 (embargo) is the standard tool — violating it = banned from the 출입처 for 1–3 months. (5) DESIGNED QUOTES: a 보도자료 has 1–2 'designed-for-headline' quotes — a special skill. A quote ≤30 글자, striking (paradox, contrast, soundbite). No quotable quote = the paper writes its own headline, possibly wrong. (6) ORGANIZATION NAME: 'KEDI' (English) + '한국교육개발원' (Korean) — always both. (Outlet names in the dialogue are illustrative — confirm current 출입처 before use.)",
       "tip_advice_vi": "5 bước viết 1 보도자료 trong 1 ngày: (1) GIỜ 1-2 — soạn lead 1 dòng. Test: nếu cắt phần còn lại, lead vẫn đáng đăng. 5W1H đầy đủ. (2) GIỜ 3 — soạn 2 quotes (30자 mỗi cái) — designed for headline; 1 quote chiến lược (\"단순 지원이 아니다\") + 1 quote ấm áp (về people). (3) GIỜ 4-5 — soạn body 3-4 đoạn — mỗi đoạn ~5 dòng, 1 ý chính. Đoạn 2 = quote chính; đoạn 3 = số liệu cụ thể; đoạn 4 = next step / call. (4) GIỜ 6 — header (embargo, ngày phát, tổ chức), footer (liên hệ + 별첨 list). (5) GIỜ 7 — proof + send to 법무팀 + 공보팀장 — không thay đổi sau khi gửi (vi phạm uy tín). MẸO PHÁT ÂM khi đọc to để check: '밝혔다' /발켣따/ — 'ㄱ→ㄴ' không xảy ra ở đây vì 받침 'ㄱㅎ→ㅋ'; '추진한다' /추진한다/ trôi chảy. ĐỪNG: (a) đặt embargo quá dài (>72h) — báo bỏ; (b) không có 별첨 — báo không có hình ảnh, bài kém; (c) gửi 보도자료 sau 18:00 — báo đã đóng đợt; (d) trộn 〜습니다 (oral) trong 〜다 (written) — đọc là không chuyên.",
+      "tip_advice_en": "5 steps to write a 보도자료 in one day: (1) HOURS 1–2 — draft the 1-line lead. Test: if you cut the rest, the lead is still publishable. Full 5W1H. (2) HOUR 3 — draft 2 quotes (30자 each) — headline-designed; 1 strategic ('not mere support') + 1 warm (about people). (3) HOURS 4–5 — draft the body, 3–4 paragraphs — ~5 lines each, one main idea. Para 2 = main quote; para 3 = concrete figures; para 4 = next step / call. (4) HOUR 6 — header (embargo, release date, organization), footer (contact + attachment list). (5) HOUR 7 — proof + send to 법무팀 + 공보팀장 — no changes after sending (a credibility breach). PRONUNCIATION TIP reading aloud to check: '밝혔다' /발켣따/ — ㄱㅎ→ㅋ (no ㄱ→ㄴ here); '추진한다' /추진한다/ flowing. DON'T: (a) set too long an embargo (>72h) — the paper drops it; (b) no attachments — the paper has no images, a weak story; (c) send after 18:00 — the paper has closed the cycle; (d) mix 〜습니다 (oral) into 〜다 (written) — reads as unprofessional.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -7803,6 +7855,11 @@ export const lessons: KoreanLesson[] =       [
             "농어촌 → /농어촌/",
             "학습 시간 → /학씁씨간/",
             "주당 → /주당/"
+          ],
+          "pronunciation_focus_en": [
+            "농어촌 'nong-eo-chon' — final ㅇ nasal; ㅓ ('uh'); aspirated ㅊ",
+            "학습 시간 'hak-sseup si-gan' — gloss /학씁씨간/: 학 ㄱ tenses ㅅ; 습 tenses 시",
+            "주당 'ju-dang' — plain ㅈ; final ㅇ nasal; 'per week'"
           ]
         },
         {
@@ -7814,6 +7871,11 @@ export const lessons: KoreanLesson[] =       [
             "단순한 → /단순한/",
             "자원 배분 → /자원배분/",
             "놓치게 된다 → /노치게된다/"
+          ],
+          "pronunciation_focus_en": [
+            "단순한 'dan-sun-han' — plain ㄷ; final ㄴ in 순; soft ㅎ",
+            "자원 배분 'ja-won bae-bun' — plain ㅈ/ㅂ; ㅝ in 원 ≈ 'wo'; ㅐ ≈ 'eh'",
+            "놓치게 된다 'no-chi-ge doen-da' — gloss /노치게된다/: 놓 ㅎ silent before ㅊ; ㅚ ≈ 'dwen'"
           ]
         },
         {
@@ -7825,6 +7887,11 @@ export const lessons: KoreanLesson[] =       [
             "필요한 것은 → /피료한거슨/",
             "단편적 지원이 아니라 → /단편적지워니아니라/",
             "정책이다 → /정채기다/"
+          ],
+          "pronunciation_focus_en": [
+            "필요한 것은 'pi-ryo-han geo-seun' — gloss /피료한거슨/: 것은 → 'geo-seun' liaison",
+            "단편적 지원이 아니라 'dan-pyeon-jeok ji-wo-ni a-ni-ra' — gloss /...지워니.../: 원이 links",
+            "정책이다 'jeong-chae-gi-da' — gloss /정채기다/: 책이 → 'chae-gi' liaison"
           ]
         },
         {
@@ -7836,6 +7903,11 @@ export const lessons: KoreanLesson[] =       [
             "교육의 → /교유긔/",
             "격차로 → /격차로/",
             "누적된다 → /누적된다/"
+          ],
+          "pronunciation_focus_en": [
+            "교육의 'gyo-yu-gui' — gloss /교유긔/: 육의 → 'yu-gui' liaison",
+            "격차로 'gyeok-cha-ro' — aspirated ㅊ; 격 batchim ㄱ stop",
+            "누적된다 'nu-jeok-doen-da' — plain ㄴ/ㅈ; ㅚ in 된 ≈ 'dwen'"
           ]
         },
         {
@@ -7847,6 +7919,11 @@ export const lessons: KoreanLesson[] =       [
             "지금이야말로 → /지그미야말로/",
             "근본적 처방이 → /근본적처방이/",
             "시점이다 → /시저미다/"
+          ],
+          "pronunciation_focus_en": [
+            "지금이야말로 'ji-geu-mi-ya-mal-lo' — gloss /지그미야말로/: 금이 → 'geu-mi' liaison",
+            "근본적 처방이 'geun-bon-jeok cheo-bang-i' — aspirated ㅊ; 방이 links",
+            "시점이다 'si-jeo-mi-da' — gloss /시저미다/: 점이 → 'jeo-mi' liaison"
           ]
         }
       ],
@@ -7973,7 +8050,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "기고문 / 칼럼 trong báo Hàn là một thể loại có cấu trúc kinh tế-văn hóa riêng.\n\n(1) HỆ THỐNG 면 (trang): các báo lớn có 오피니언 면 chuẩn — 사설 + 칼럼 + 기고. 사설 = ban biên tập viết (anonymous, voice của báo); 칼럼 = chuyên gia thường kỳ ký tên; 기고 = chuyên gia khách mời. Mỗi loại có giá trị uy tín khác — 칼럼 thường kỳ là ổn định nhất.\n\n(2) PHÂN PHE Ý THỨC: báo Hàn phân chia 진보 (한겨레, 경향) vs 보수 (조선, 중앙, 동아) vs 중도 (한국일보) — học giả chọn báo thường theo định hướng. Một học giả viết cho cả 한겨레 lẫn 조선 = bị xem là cơ hội. Quy ước: chọn 1 mạng và viết thường trên đó.\n\n(3) 눈치 TRAP cho người Việt: trong 칼럼 Việt, tác giả thường kết bằng '나' — quan điểm cá nhân. Ở Hàn, '나' / '저' rất hiếm; thay là impersonal hoặc '필자는'. Phong cách 칼럼 Hàn là 'objectivity-flavored opinion' — tác giả có quan điểm rõ nhưng giọng văn không cá nhân hóa.\n\n(4) ĐỘ DÀI VÀ NHỊP: 칼럼 chuẩn 1,500-2,500 글자. Một câu trung bình 50-60 글자. Ngắt câu mạnh — '왜 그런가? 답은 분명하다.' = nhịp đắc địa. Đoạn không quá 5 câu — vì lên báo bị wrap khó đọc.\n\n(5) HEADER LIFTING: desk thường tự đặt header dựa trên câu mạnh nhất trong bài — không phải tiêu đề tác giả nộp. Tác giả khôn lửa designed sentences để dễ trích — đó là kỹ năng đặc biệt. Câu kết của 칼럼 này (지금이야말로 근본적 처방이 필요한 시점이다) chính là một 'header bait'.\n\n(6) THÙ LAO: 칼럼 cho học giả ở báo lớn ở Hàn ~30-50만원/bài — không cao nhưng uy tín. Nguồn uy tín đi kèm cơ hội tham gia 자문 정책 (tư vấn chính sách) sau đó. Lưu ý các báo, biên tập viên cụ thể nhắc trong dialogue (한겨레 데스크) là illustrative — sự tổ chức biên tập thay đổi nhanh ở Hàn, học viên xác nhận hiện tại trước khi nộp bài thực.",
+      "cultural_notes_en": "기고문 / 칼럼 (op-ed / column) in Korean papers is a genre with its own cultural-economic structure. (1) THE 면 (page) SYSTEM: big papers have a standard 오피니언 면 — 사설 + 칼럼 + 기고. 사설 = the editorial board (anonymous, the paper's voice); 칼럼 = a regular signed expert; 기고 = a guest expert. Each has different prestige — a regular 칼럼 is the most stable. (2) IDEOLOGICAL SPLIT: Korean papers divide into 진보 (한겨레, 경향) vs 보수 (조선, 중앙, 동아) vs 중도 (한국일보) — scholars usually pick a paper by orientation. Writing for both 한겨레 and 조선 = read as opportunistic. The convention: pick one outlet and write there regularly. (3) 눈치 TRAP for Vietnamese: in a Vietnamese 칼럼, the author often closes with '나' (I) — a personal view. In Korea, '나' / '저' is very rare; instead it's impersonal or '필자는' (this writer). The Korean column style is 'objectivity-flavored opinion' — the author has a clear stance but the voice isn't personalized. (4) LENGTH AND RHYTHM: a standard 칼럼 is 1,500–2,500 글자. An average sentence 50–60 글자. Strong sentence breaks — '왜 그런가? 답은 분명하다.' (Why? The answer is clear.) = an apt rhythm. No paragraph over 5 sentences. (5) HEADER LIFTING: the desk usually sets the header from the strongest sentence in the piece — not the title the author submitted. A savvy author designs sentences to be quotable — a special skill. This column's closing line is itself 'header bait'. (6) FEE: a 칼럼 for a scholar at a big Korean paper is ~₩300,000–500,000/piece — not high but prestigious, leading to 자문 정책 (policy advisory) opportunities. (Specific outlet/editor names are illustrative — confirm the current editorial setup before submitting real work.)",
       "tip_advice_vi": "Quy trình viết 1 칼럼 trong 3 ngày: (1) NGÀY 1 — chọn hook: 1 thống kê đáng nhớ HOẶC 1 vignette cụ thể HOẶC 1 paradox đáng đọc. KHÔNG general intro. (2) NGÀY 2 — viết bản nháp 1: tự do, vượt ngân sách 글자 OK. Cấu trúc 5 phần (hook / 진단 / 분석 / 제안 / 결언). (3) NGÀY 3 morning — cắt: trim đến chính xác 1,800자 hoặc gần. Cắt câu rườm; KHÔNG cắt câu 'header bait'. (4) NGÀY 3 afternoon — đọc to. Câu nào vướng = thay. Câu nào không sản sinh ý mới = bỏ. (5) NGÀY 3 evening — gửi 데스크 + sub-line chức danh. MẸO PHÁT ÂM khi đọc to: '근본적 처방' /근본적처방/ — 'ㄱ→ㄴ' không xảy ra ở đây vì 받침 'ㄱ' giữ; '시점이다' /시저미다/. ĐỪNG: (a) viết câu hỏi tu từ liên tiếp 3 lần — yếu; (b) trích dẫn quá nhiều học giả nước ngoài — Hàn đọc giả không kết nối; (c) dùng câu cuối '~이라고 생각한다' — cá nhân hóa, yếu nhịp; thay '~이다'; (d) gửi muộn — desk có quyền cắt giảm hoặc loại — thà nộp sớm với bản chưa hoàn hảo còn hơn nộp muộn với bản tinh chỉnh.",
+      "tip_advice_en": "A routine to write a 칼럼 in 3 days: (1) DAY 1 — choose the hook: one memorable statistic OR one concrete vignette OR one readable paradox. NO general intro. (2) DAY 2 — write draft 1: free, exceeding the 글자 budget is OK. A 5-part structure (hook / diagnosis / analysis / proposal / closing). (3) DAY 3 morning — cut: trim to exactly ~1,800자. Cut padded sentences; do NOT cut the 'header bait'. (4) DAY 3 afternoon — read aloud. Any awkward sentence = replace. Any sentence that produces no new idea = drop. (5) DAY 3 evening — send to the desk + a sub-line title. PRONUNCIATION reading aloud: '근본적 처방' /근본적처방/ — ㄱ kept (no ㄱ→ㄴ here); '시점이다' /시저미다/. DON'T: (a) 3 rhetorical questions in a row — weak; (b) too many foreign scholars cited — Korean readers don't connect; (c) close with '~이라고 생각한다' — personalized, weak rhythm; use '~이다'; (d) submit late — the desk may cut it; better to submit early imperfect than late polished.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -8063,6 +8142,11 @@ export const lessons: KoreanLesson[] =       [
             "청취자 → /청취자/",
             "여러분 → /여러분/",
             "박사님이세요 → /박싸니미세요/"
+          ],
+          "pronunciation_focus_en": [
+            "청취자 'cheong-chwi-ja' — aspirated ㅊ twice; ㅟ in 취 ≈ 'chwi'",
+            "여러분 'yeo-reo-bun' — ㅕ glide; ㅓ ('uh') in 러; 'everyone'",
+            "박사님이세요 'bak-ssa-ni-mi-se-yo' — gloss /박싸니미세요/: 박 ㄱ tenses ㅅ; 님이 links"
           ]
         },
         {
@@ -8074,6 +8158,11 @@ export const lessons: KoreanLesson[] =       [
             "박사님 → /박싸님/",
             "한 줄로 → /한주로/",
             "부탁드릴게요 → /부탁뜨릴께요/"
+          ],
+          "pronunciation_focus_en": [
+            "박사님 'bak-ssa-nim' — gloss /박싸님/: 박 ㄱ tenses ㅅ → 'bak-ssa'",
+            "한 줄로 'han ju-ro' — gloss /한주로/: 줄로 → 'ju-ro' liaison",
+            "부탁드릴게요 'bu-tak-deu-ril-kke-yo' — gloss /부탁뜨릴께요/: 탁 tenses ㄷ; 릴 ㄹ tenses ㄱ"
           ]
         },
         {
@@ -8085,6 +8174,11 @@ export const lessons: KoreanLesson[] =       [
             "좋은 질문이세요 → /조은질문이세요/",
             "말씀드리자면 → /말씀드리자면/",
             "다뤄요 → /다뤄요/"
+          ],
+          "pronunciation_focus_en": [
+            "좋은 질문이세요 'jo-eun jil-mu-ni-se-yo' — gloss /조은.../: 좋 ㅎ silent before ㅇ",
+            "말씀드리자면 'mal-sseum-deu-ri-ja-myeon' — tense ㅆ in 말씀; flowing",
+            "다뤄요 'da-rwo-yo' — 뤄 is one syllable 'rwo'; warm 해요체 ending"
           ]
         },
         {
@@ -8096,6 +8190,11 @@ export const lessons: KoreanLesson[] =       [
             "쉽게 풀어 → /쉽께푸러/",
             "채우는지가 → /채우는지가/",
             "중요하다는 거예요 → /중요하다는거에요/"
+          ],
+          "pronunciation_focus_en": [
+            "쉽게 풀어 'swip-ge pu-reo' — gloss /쉽께푸러/: 쉽 ㅂ tenses ㄱ; 풀어 → 'pu-reo' liaison",
+            "채우는지가 'chae-u-neun-ji-ga' — aspirated ㅊ; ㅐ ≈ 'eh'",
+            "중요하다는 거예요 'jung-yo-ha-da-neun geo-e-yo' — gloss /...거에요/: 거예 → 'geo-e'"
           ]
         },
         {
@@ -8107,6 +8206,11 @@ export const lessons: KoreanLesson[] =       [
             "좋은 말씀 → /조은말씀/",
             "감사해요 → /감사해요/",
             "배우셨을 것 같아요 → /배우셔쓸걷가타요/"
+          ],
+          "pronunciation_focus_en": [
+            "좋은 말씀 'jo-eun mal-sseum' — gloss /조은말씀/: 좋 ㅎ silent; tense ㅆ",
+            "감사해요 'gam-sa-hae-yo' — ㅐ in 해 ≈ 'eh'; warm 해요체",
+            "배우셨을 것 같아요 'bae-u-syeo-sseul geot ga-ta-yo' — gloss /...걷가타요/: 것 → 't' stop"
           ]
         }
       ],
@@ -8251,7 +8355,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "팟캐스트 và 시사 토크쇼 ở Hàn là một thể loại sôi động — và chuyển từ thể loại 기자회견 (formal) là một bước đăng ký lớn người Việt dễ nhầm.\n\n(1) PHÂN PHE PODCAST: ở Hàn có dải rộng — '김어준의 뉴스공장 historical' và '김현정의 뉴스쇼' (CBS) — 진보 leaning; '주진우 라이브' — center-left; 정치 podcasts gắn với từng phe. Một học giả xuất hiện trên một chương trình = thường được đọc là chính trị aligned. Quy ước: chọn cẩn thận; nếu là chuyên gia trung lập, có thể xuất hiện trên cả hai phía.\n\n(2) PHÂN TÔNG VỚI TV NEWS: TV news 앵커 dùng 〜습니다 cứng; podcast host dùng 해요체 ấm. Khi guest học thuật chuyển từ TV news sang podcast trong cùng tuần — phải chuyển đăng ký toàn diện. Một câu '오늘 이 자리는 〜을/를 위하여…' (격식) trên podcast = đọc là 'không hiểu media'.\n\n(3) 눈치 TRAP: ở 팟캐스트, host thường dùng cụm 'hint' thông báo time đang hết — '한 마디만 더 하시죠' (một lời nữa thôi nhé), '이제 마무리할 시간이…' (sắp đến giờ kết). Guest người Việt mới làm podcast Hàn dễ bỏ qua hint, nói tiếp đến khi host phải ngắt rõ. Cách đúng: khi nghe hint, kết câu trong 30 giây.\n\n(4) RECORDING vs LIVE: 라이브 방송 (live broadcast) — KHÔNG sửa được; cẩn trọng từng từ. 녹음 후 편집 (record then edit) — có thể yêu cầu cắt một câu sau ('아까 그 부분, 편집 가능할까요?'). Quy ước: hỏi trước recording — 'editing 가능 여부 확인 부탁드려요.'\n\n(5) PODCAST CULTURE: thính giả Hàn rất tích cực — bình luận live trên YouTube cùng lúc, gọi vào, nhắn lên trang. Guest có thể mời thính giả tương tác '댓글로 의견 보내 주시면…' nhưng KHÔNG quá thường (vô tổ chức).\n\n(6) Tên các chương trình radio / podcast nhắc trong dialogue (CBS 김현정의 뉴스쇼) là illustrative — landscape media Hàn thay đổi nhanh, host đến và đi. Học viên xác nhận chương trình hiện hoạt động trước khi nhắc trong tác phẩm riêng.",
+      "cultural_notes_en": "팟캐스트 (podcasts) and 시사 토크쇼 (current-affairs talk shows) in Korea are a lively genre — and shifting from the 기자회견 (formal) genre is a big register move Vietnamese speakers easily get wrong. (1) PODCAST SPLIT: a wide range — '김어준의 뉴스공장' historical and '김현정의 뉴스쇼' (CBS) lean 진보; '주진우 라이브' center-left; political podcasts align with sides. A scholar appearing on a show is usually read as politically aligned. The convention: choose carefully; a neutral expert may appear on both sides. (2) TONE vs TV NEWS: a TV-news 앵커 uses hard 〜습니다; a podcast host uses warm 해요체. A guest moving from TV news to a podcast in the same week must shift register fully. A line '오늘 이 자리는 〜을/를 위하여…' (formal) on a podcast = read as 'doesn't get the medium'. (3) 눈치 TRAP: on a podcast the host uses 'hint' phrases that time is running out — '한 마디만 더 하시죠' (just one more word), '이제 마무리할 시간이…' (almost time to wrap). A Vietnamese guest new to Korean podcasts easily misses the hint and keeps going until the host has to cut in clearly. The right move: hearing the hint, finish within 30 seconds. (4) RECORDING vs LIVE: 라이브 방송 — NOT editable; be careful with every word. 녹음 후 편집 (record then edit) — you can ask to cut a line afterward ('that part — can it be edited?'). Convention: ask before recording. (5) PODCAST CULTURE: Korean listeners are very active — live YouTube comments, call-ins. A guest may invite interaction '댓글로 의견 보내 주시면…' but NOT too often. (Program/host names in the dialogue are illustrative — confirm the program is currently active before referencing in real work.)",
       "tip_advice_vi": "Quy trình chuẩn bị 1 podcast 30 phút trong 1 tuần: (1) NGÀY 1-2 — research host: nghe 3-5 episode trước; ghi pattern câu hỏi, tone, độ formal. (2) NGÀY 3 — soạn 3 thông điệp cốt lõi (KHÔNG quá 3); mỗi thông điệp 1 câu, 해요체. (3) NGÀY 4 — soạn 5-7 'soundbites' đáng nhớ — câu 30자 dễ trích cho clip. (4) NGÀY 5 — chuẩn bị 2-3 phép ẩn dụ cho concept khó (vì podcast không có visual). (5) NGÀY 6 — luyện phỏng vấn với 1 đồng nghiệp — đo nhịp 95-105 글자/phút (chậm hơn TV news). (6) NGÀY 7 — đến 15 phút trước; uống ấm; KHÔNG ăn sữa (phlegm). MẸO PHÁT ÂM: '청취자' /청취자/ rõ; '말씀드리자면' /말씀드리자면/ trôi chảy không vấp. ĐỪNG: (a) đeo trang sức kêu — micro thu được; (b) ngắt lời host — phong cách Hàn coi là vô lễ ngay cả ở podcast; (c) nói '아 그게요' liên tục — host thấy thiếu chuẩn bị; (d) vượt thời gian — host có quyền cắt edit.",
+      "tip_advice_en": "A routine to prepare a 30-min podcast in one week: (1) DAYS 1–2 — research the host: listen to 3–5 prior episodes; note question patterns, tone, formality. (2) DAY 3 — draft 3 core messages (NO more than 3); each one sentence, 해요체. (3) DAY 4 — draft 5–7 memorable 'soundbites' — 30자 lines easy to clip. (4) DAY 5 — prepare 2–3 metaphors for a hard concept (no visuals on a podcast). (5) DAY 6 — practice the interview with a colleague — pace at 95–105 글자/min (slower than TV news). (6) DAY 7 — arrive 15 min early; warm drink; no dairy (phlegm). PRONUNCIATION TIP: '청취자' /청취자/ clearly; '말씀드리자면' /말씀드리자면/ flowing, no stumble. DON'T: (a) wear jangly jewelry — the mic catches it; (b) interrupt the host — even on a podcast Koreans read it as rude; (c) say '아 그게요' constantly — the host reads it as underprepared; (d) overrun the time — the host can cut the edit.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -8340,6 +8446,10 @@ export const lessons: KoreanLesson[] =       [
           "pronunciation_focus": [
             "안녕하십니까 → /안녕하심니까/",
             "입니다 → /임니다/"
+          ],
+          "pronunciation_focus_en": [
+            "안녕하십니까 'an-nyeong-ha-sim-ni-kka' — gloss /안녕하심니까/: 십 ㅂ→'m' before ㄴ",
+            "입니다 'im-ni-da' — gloss /임니다/: 입 ㅂ→'m' before ㄴ"
           ]
         },
         {
@@ -8351,6 +8461,11 @@ export const lessons: KoreanLesson[] =       [
             "결론부터 → /결론부터/",
             "동기 부족 → /동기부족/",
             "비롯됩니다 → /비롣뙴니다/"
+          ],
+          "pronunciation_focus_en": [
+            "결론부터 'gyeol-lon-bu-teo' — gloss /결론부터/: 결론 → 'gyeol-lon' (ㄹㄴ→ㄹㄹ)",
+            "동기 부족 'dong-gi bu-jok' — plain ㄷ/ㄱ; 족 batchim ㄱ stop",
+            "비롯됩니다 'bi-rot-doem-ni-da' — gloss /비롣뙴니다/: 롯 → 't' stop, tenses ㄷ; ㅚ ≈ 'dwem'"
           ]
         },
         {
@@ -8362,6 +8477,11 @@ export const lessons: KoreanLesson[] =       [
             "이는 → /이는/",
             "1,200명을 → /천이백명을/",
             "결과입니다 → /결과임니다/"
+          ],
+          "pronunciation_focus_en": [
+            "이는 'i-neun' — plain; 'this (topic) is'; even stress",
+            "1,200명을 'cheo-ni-baeng-myeong-eul' — gloss /천이백명을/: number read out; 명을 links",
+            "결과입니다 'gyeol-gwa-im-ni-da' — gloss /결과임니다/: 입 ㅂ→'m' before ㄴ"
           ]
         },
         {
@@ -8373,6 +8493,11 @@ export const lessons: KoreanLesson[] =       [
             "정책적으로는 → /정책쩌그로는/",
             "양보다 → /양보다/",
             "판단됩니다 → /판단됨니다/"
+          ],
+          "pronunciation_focus_en": [
+            "정책적으로는 'jeong-chaek-jeo-geu-ro-neun' — gloss /정책쩌그로는/: 책 ㄱ tenses; 적으 links",
+            "양보다 'yang-bo-da' — ㅑ glide; final ㅇ nasal in 양; 'than quantity'",
+            "판단됩니다 'pan-dan-doem-ni-da' — aspirated ㅍ; ㅚ in 됩 ≈ 'dwem'"
           ]
         },
         {
@@ -8384,6 +8509,11 @@ export const lessons: KoreanLesson[] =       [
             "추가 자료는 → /추가자료는/",
             "홈페이지에서 → /홈페이지에서/",
             "있습니다 → /읻씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "추가 자료는 'chu-ga ja-ryo-neun' — aspirated ㅊ; plain ㅈ; ㅛ in 료",
+            "홈페이지에서 'hom-pe-i-ji-e-seo' — 'homepage' loaned; flowing",
+            "있습니다 'it-seum-ni-da' — gloss /읻씀니다/: 있 ㅆ → 't', tenses ㅅ"
           ]
         }
       ],
@@ -8510,7 +8640,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "TV news Hàn là một thể loại nghiêm ngặt với cấu trúc thời lượng cứng và đăng ký formal nhất.\n\n(1) PHÂN PHE TV NEWS: KBS 뉴스9 (공영방송, balance), MBC 뉴스데스크 (truyền thống tả-trung), SBS 8뉴스 (commercial), JTBC 뉴스룸 (손석희 시기 trung-tả, hiện tại biến đổi), YTN/연합뉴스TV (cable). Khi guest học giả xuất hiện, chọn channel phù hợp với chuyên môn và độ chính xác của số liệu — sai số liệu trên KBS 뉴스9 là tin sốc cấp quốc gia.\n\n(2) TIME COMPRESSION CỰC KỲ NGHIÊM: trong 톱뉴스 (top news), guest có 3-5 phút TỐI ĐA cho cả phỏng vấn. Mỗi câu trả lời 60-90 giây. Vượt = 앵커 ngắt; bị ngắt = đọc là không hiểu media. QUY TẮC '결론부터' (kết luận trước) là chuẩn TV — vì viewer có thể chuyển kênh giữa câu.\n\n(3) 눈치 TRAP cho người Việt: 앵커 dùng câu hỏi 'hint' — '간단히' (đơn giản), '한 마디로' (một lời), '30초 안에' — đó là tín hiệu 'TÔI CÒN ÍT THỜI GIAN'. Người Việt mới làm TV Hàn thường ignored hint và trả lời chi tiết → 앵커 ngắt → guest mất uy tín. Cách đúng: ngay khi nghe hint, kết câu trong 30s.\n\n(4) STUDIO ETIQUETTE: arrive 1 tiếng trước; trang điểm bắt buộc nam và nữ; trang phục không họa tiết nhỏ (gây 'moiré' trên TV). Trên ghế studio: ngồi thẳng, chân đặt cố định (chân nhịp = micro thu được); tay đặt trên đùi hoặc bàn; mắt tới 앵커, KHÔNG camera (trừ khi 앵커 mời 'camera 향해 한 말씀').\n\n(5) GỮI BIỂU CẢM: TV Hàn phóng đại biểu cảm. Một nhếch mép = TV reading 'sarcasm'. Một nháy mắt = 'tired/uncomfortable'. Trang phục, biểu cảm, tone — tất cả đều phải 'serious-warm-controlled'.\n\n(6) LỖI THƯỜNG GẶP: (a) Cười khi nói số liệu (TV reading 'không nghiêm túc'); (b) trả lời '잘 모르겠습니다' (KHÔNG được — guest lên TV phải có câu trả lời, dù hedge — '추후 검토하여 답변드리겠습니다'); (c) chỉ vào 앵커 hoặc camera — vô lễ; (d) đùa nhẹ — không phù hợp news context; phù hợp talk show.\n\n(7) Tên các 앵커 cụ thể nhắc trong dialogue (KBS 뉴스9 류) là illustrative — danh sách 앵커 thay đổi theo seasonal renewal; học viên xác nhận 앵커 hiện tại của chương trình trước khi nhắc trong tác phẩm.",
+      "cultural_notes_en": "Korean TV news is a strict genre with hard time structure and the most formal register. (1) TV-NEWS SPLIT: KBS 뉴스9 (public broadcaster, balanced), MBC 뉴스데스크 (traditionally center-left), SBS 8뉴스 (commercial), JTBC 뉴스룸 (center-left in the 손석희 era, now shifting), YTN/연합뉴스TV (cable). When a scholar guest appears, pick the channel that fits your expertise and data accuracy — a wrong figure on KBS 뉴스9 is a national-scale shock. (2) EXTREME TIME COMPRESSION: in 톱뉴스 (top news) the guest has 3–5 minutes MAX for the whole interview. Each answer 60–90 seconds. Over = the 앵커 cuts in; being cut = read as not getting the medium. The '결론부터' (conclusion first) rule is the TV standard — viewers may change channels mid-sentence. (3) 눈치 TRAP for Vietnamese: the 앵커 uses 'hint' phrases — '간단히' (briefly), '한 마디로' (in a word), '30초 안에' — these signal 'I HAVE LITTLE TIME'. Vietnamese new to Korean TV ignore the hint and answer in detail → the 앵커 cuts in → the guest loses credibility. Right move: on hearing the hint, finish within 30s. (4) STUDIO ETIQUETTE: arrive an hour early; makeup mandatory for men and women; no small-pattern clothing (causes 'moiré' on TV). On the studio chair: sit straight, feet fixed (a bouncing leg is picked up by the mic); hands on thighs or the desk; eyes to the 앵커, NOT the camera (unless invited 'a word to the camera'). (5) EXPRESSION: Korean TV exaggerates expression. A lip curl = TV reading 'sarcasm'. A blink = 'tired/uncomfortable'. Dress, expression, tone — all must be 'serious-warm-controlled'. (6) COMMON ERRORS: (a) smiling while stating figures; (b) '잘 모르겠습니다' (not allowed — a TV guest must have an answer, even hedged — '추후 검토하여 답변드리겠습니다'); (c) pointing at the 앵커 or camera — rude; (d) light jokes — fits a talk show, not news. (앵커 names in the dialogue are illustrative — confirm the current anchor.)",
       "tip_advice_vi": "5 bước chuẩn bị 1 phỏng vấn TV news 4 phút trong 24h: (1) NHẬN TIN trưa: list 5 câu hỏi 앵커 sẽ hỏi (dựa trên topic và pattern channel); chuẩn bị 60-90s response cho mỗi câu. (2) TỐI: viết 'cheat card' 5 dòng — 1 hook (số liệu sốc), 1 kết luận, 1 evidence, 1 chính sách, 1 đóng. (3) MORNING: luyện trên video — đo thời gian; check trang phục (KHÔNG sọc, KHÔNG họa tiết); check biểu cảm. (4) ARRIVE 60 phút trước; trang điểm; check micro; gặp 앵커 5 phút trước phỏng vấn — họ sẽ nói pattern câu hỏi. (5) DURING: lắng nghe câu hỏi đầy đủ (KHÔNG ngắt); pause 1 giây; trả lời 결론부터; kết bằng câu mạnh. MẸO PHÁT ÂM: '결론부터' /결론부터/ rõ; '판단됩니다' /판단됨니다/; '비롯됩니다' /비롣뙴니다/ — kết câu chuẩn để viewer cảm 'điểm dừng'. ĐỪNG: (a) đến với điện thoại bật âm — micro studio thu được; (b) uống cà phê đậm trước — gây dry mouth; (c) đeo trang sức kêu — micro thu được; (d) trả lời câu '잘 모르겠습니다' — luôn có '추후 답변드리겠습니다'.",
+      "tip_advice_en": "5 steps to prepare a 4-min TV-news interview in 24h: (1) NOON notice: list 5 questions the 앵커 will ask (by topic + channel pattern); a 60–90s response each. (2) EVENING: write a 5-line 'cheat card' — 1 hook (a shocking figure), 1 conclusion, 1 evidence, 1 policy, 1 close. (3) MORNING: practice on video — time it; check clothing (NO stripes, NO patterns); check expression. (4) ARRIVE 60 min early; makeup; check mic; meet the 앵커 5 min before — they'll tell you the question pattern. (5) DURING: listen to the full question (NO interrupting); pause 1 second; answer 결론부터; close with a strong line. PRONUNCIATION TIP: '결론부터' /결론부터/ clearly; '판단됩니다' /판단됨니다/; '비롯됩니다' /비롣뙴니다/ — a standard closer that gives viewers a 'stop point'. DON'T: (a) arrive with the phone's sound on — the studio mic catches it; (b) drink strong coffee beforehand — dry mouth; (c) wear jangly jewelry; (d) say '잘 모르겠습니다' — always '추후 답변드리겠습니다'.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -8600,6 +8732,11 @@ export const lessons: KoreanLesson[] =       [
             "먼저 → /먼저/",
             "심려를 끼쳐 → /심려를끼처/",
             "머리 숙여 사과드립니다 → /머리수겨사과드림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "먼저 'meon-jeo' — ㅓ ('uh') twice; 'first'; even stress",
+            "심려를 끼쳐 'sim-nyeo-reul kki-cheo' — gloss /심려를끼처/: tense ㄲ in 끼; aspirated ㅊ",
+            "머리 숙여 사과드립니다 'meo-ri su-gyeo sa-gwa-deu-rim-ni-da' — gloss /머리수겨.../: 숙여 → 'su-gyeo'"
           ]
         },
         {
@@ -8611,6 +8748,11 @@ export const lessons: KoreanLesson[] =       [
             "본 사안에 → /본사아네/",
             "어떠한 → /어떠한/",
             "변명의 여지도 → /변명의여지도/"
+          ],
+          "pronunciation_focus_en": [
+            "본 사안에 'bon sa-a-ne' — gloss /본사아네/: 안에 → 'a-ne' liaison",
+            "어떠한 'eo-tteo-han' — tense ㄸ in 떠; ㅓ ('uh'); 'any (whatsoever)'",
+            "변명의 여지도 'byeon-myeong-ui yeo-ji-do' — ㅕ glides; 'no room for any excuse'"
           ]
         },
         {
@@ -8622,6 +8764,11 @@ export const lessons: KoreanLesson[] =       [
             "재발 방지를 → /재발방지를/",
             "세 가지 대책 → /세가지대책/",
             "시행하겠습니다 → /시행하게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "재발 방지를 'jae-bal bang-ji-reul' — ㅐ ≈ 'eh'; 발 batchim ㄹ",
+            "세 가지 대책 'se ga-ji dae-chaek' — plain ㄱ; ㅐ ≈ 'eh'; aspirated ㅊ",
+            "시행하겠습니다 'si-haeng-ha-get-seum-ni-da' — gloss /시행하게씀니다/: 겠 → 't' stop"
           ]
         },
         {
@@ -8633,6 +8780,11 @@ export const lessons: KoreanLesson[] =       [
             "사태와 관련된 → /사태와관련된/",
             "원장이 직접 → /원장이직쩝/",
             "지겠습니다 → /지게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "사태와 관련된 'sa-tae-wa gwal-lyeon-doen' — ㅐ ≈ 'eh'; 관련 → 'gwal-lyeon' (ㄴㄹ→ㄹㄹ)",
+            "원장이 직접 'won-jang-i jik-jjeop' — gloss /원장이직쩝/: 직 ㄱ tenses ㅈ → 'jik-jjeop'",
+            "지겠습니다 'ji-get-seum-ni-da' — gloss /지게씀니다/: 겠 → 't' stop, tenses ㅅ"
           ]
         },
         {
@@ -8644,6 +8796,11 @@ export const lessons: KoreanLesson[] =       [
             "다시 한번 → /다시한번/",
             "진심으로 → /진심으로/",
             "머리 숙여 → /머리수겨/"
+          ],
+          "pronunciation_focus_en": [
+            "다시 한번 'da-si han-beon' — gloss /다시한번/ links; plain ㄷ/ㅂ",
+            "진심으로 'jin-si-meu-ro' — plain ㅈ; 심으 → 'si-meu' liaison",
+            "머리 숙여 'meo-ri su-gyeo' — gloss /머리수겨/: 숙여 → 'su-gyeo' liaison"
           ]
         }
       ],
@@ -8770,7 +8927,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "사과 기자회견 ở Hàn là một thể loại nghi lễ độc đáo và cực kỳ nghiêm — không có tương đương trực tiếp ở Việt Nam, và khác xa cả Mỹ và Nhật.\n\n(1) BOW GRADIENT: ở Hàn, độ sâu cúi đầu mang ý nghĩa định lượng. 15° = chào lịch sự bình thường; 30° = cảm ơn / xin lỗi nhỏ; 45° = lỗi nghiêm trọng cá nhân; 90° = lỗi công khai cấp tổ chức. Một CEO cúi 30° trong họp báo về tử nạn nhân viên = headline 'X 가벼운 사과' = thiệt hại lớn hơn không xin lỗi. Một CEO cúi 90° giữ 7 giây = ổn. Quy ước: chờ phóng viên ngẩng đầu (sau khi chụp ảnh) trước khi bạn ngẩng đầu.\n\n(2) TIMING TUYỆT ĐỐI: 사과 기자회견 phải diễn ra trong 24-48 giờ kể từ khi sự việc bùng nổ. Trễ = 'không thành tâm'; tổ chức bị đọc là 'tính toán PR'. Trong 24h đầu, tổ chức phải: (a) công bố 사과문 viết qua 보도자료, (b) gọi 사과 기자회견 cho 36-48h sau, (c) ngừng mọi hoạt động không cốt yếu (mạng xã hội, marketing).\n\n(3) 눈치 TRAP cho người Việt — RẤT NGHIÊM: trong 사과 기자회견, KHÔNG được biểu cảm gì ngoài serious-grim. Một micro-expression nhếch môi = TV slow-mo, viral 24h. Một câu 'thực sự rất buồn' kèm tiếng cười nhẹ ngại ngùng = headline '울먹이며 웃었다, 시민 분노'. Người Việt có habit cười nhẹ trong tình huống bối rối — Hàn TV reading là 'mocking the public'. Tập kiểm soát mặt 7 phút trước gương trước.\n\n(4) NGÔN NGỮ TUYỆT ĐỐI KHÔNG ĐƯỢC: 'I think', 'maybe', 'I'll try', 'we hope', '~ㄹ까 합니다' (mơ hồ), '아마' (có lẽ). PHẢI: 'I will' / '시행하겠습니다' / '책임지겠습니다' (chắc chắn). Người Việt mới làm crisis comm Hàn dễ rơi vào hedge — bị đọc là 'không cam kết'.\n\n(5) FOLLOW-UP THIẾT YẾU: trong 1 tuần sau 사과 기자회견, tổ chức phải có MIN 3 hành động cụ thể visible — (a) báo cáo 백서 đầu tiên (interim), (b) sa thải / luân chuyển ít nhất 1 nhân sự cao cấp (nếu nghiêm trọng), (c) liên lạc trực tiếp với người bị ảnh hưởng. Thiếu = 'sám hối giả'; báo Hàn (한겨레, 시사IN) sẽ khui trong 1-2 tuần.\n\n(6) NGÔN NGỮ NHẠY CẢM: KHÔNG '실수' (sai sót — quá nhẹ); KHÔNG '오해' (hiểu lầm — đẩy lỗi sang người khác); KHÔNG '유감' (lấy làm tiếc — KHÔNG phải xin lỗi, là expressing regret kiểu chính trị quốc tế). PHẢI: '잘못' (lỗi sai), '책임' (trách nhiệm), '사과드립니다' (xin lỗi). Một quan chức Hàn từng dùng '유감' thay '사과' = bão dư luận trong 72h.\n\n(7) Tên các tổ chức, người cụ thể nhắc trong dialogue (KEDI, 박지훈 원장) là illustrative — học viên KHÔNG được dùng nguyên trong tác phẩm thực, vì 사과 thực sự gắn với một sự kiện cụ thể của tổ chức cụ thể; nhầm = vô tình bôi nhọ.",
+      "cultural_notes_en": "A 사과 기자회견 (public apology press conference) in Korea is a uniquely severe ritual genre — no direct Vietnamese equivalent, and far from the US and Japan. (1) BOW GRADIENT: in Korea, bow depth carries quantitative meaning. 15° = ordinary polite greeting; 30° = thanks / small apology; 45° = a serious personal fault; 90° = an organization-level public fault. A CEO bowing 30° at a press conference about an employee's death = headline 'X's light apology' = worse than not apologizing. A CEO holding a 90° bow for 7 seconds = OK. Convention: wait for reporters to lift their heads (after photographing) before you lift yours. (2) ABSOLUTE TIMING: the 사과 기자회견 must occur within 24–48h of the incident breaking. Late = 'not sincere'; the organization read as 'PR-calculating'. In the first 24h: (a) release the 사과문 via 보도자료, (b) call the press conference for 36–48h later, (c) halt all non-essential activity (social media, marketing). (3) 눈치 TRAP for Vietnamese — VERY SEVERE: in a 사과 기자회견, NO expression except serious-grim. One micro-expression lip curl = TV slow-mo, viral 24h. A line 'truly very sad' with a nervous laugh = headline 'choked up but laughed, citizens furious'. Vietnamese have a habit of a light laugh when flustered — Korean TV reads it as 'mocking the public'. Practice face control 7 minutes in a mirror first. (4) FORBIDDEN LANGUAGE: 'I think', 'maybe', 'I'll try', 'we hope', '~ㄹ까 합니다' (vague), '아마' (perhaps). REQUIRED: 'I will' / '시행하겠습니다' / '책임지겠습니다' (certain). (5) ESSENTIAL FOLLOW-UP: within a week, MIN 3 concrete visible actions — (a) a first interim 백서 (white paper), (b) at least 1 senior personnel dismissal/reassignment (if serious), (c) direct contact with those affected. Missing it = 'fake repentance'. (6) SENSITIVE LANGUAGE: NOT '실수' (mistake — too light); NOT '오해' (misunderstanding — shifts blame); NOT '유감' (regret — not an apology, it's political-international regret). REQUIRED: '잘못' (wrongdoing), '책임' (responsibility), '사과드립니다' (I apologize). (Names of organizations/people in the dialogue are illustrative — do NOT use them as-is in real work; a real apology is tied to a specific event of a specific organization; misuse = inadvertent defamation.)",
       "tip_advice_vi": "Quy trình chuẩn bị 1 사과 기자회견 trong 24-48h: (1) GIỜ 1-3: bộ phận 법무팀 + 홍보실 + 대변인실 ngồi cùng — write 사과문 1 trang. KHÔNG hedge. Mỗi câu được rà 3 lần. (2) GIỜ 4-6: chốt 3 biện pháp 재발 방지 cụ thể — phải actionable trong 30 ngày. Mơ hồ = scandal lần 2. (3) GIỜ 7-12: CEO/원장 luyện đọc 사과문 trước gương 5 lần — không vấp; check biểu cảm; tập bow 90° giữ 7 giây. (4) GIỜ 13-18: book 사과실 (phòng họp báo trang trí formal); chuẩn bị slide '1번 사과문, 2번 재발 방지 대책'. KHÔNG slide trang trí. (5) GIỜ 19-24: gửi 보도자료 trước 24h kèm thông báo họp báo. Note: NO Q&A. Lý do: trong 사과 기자회견 nghiêm, Q&A không phù hợp; nó kéo dài tổn thương. (6) GIỜ 25-36 (ngày thứ 2): họp báo. CEO đến 30 phút trước; check micro; KHÔNG ăn no; uống ấm. (7) GIỜ 37-48 (sau): thực hiện ngay biện pháp đã hứa — nếu hứa 'họp Hội đồng tuần này', họp tuần này. MẸO PHÁT ÂM (đặc thù 사과): '머리 숙여 사과드립니다' /머리수겨사과드림니다/ — kéo nhẹ 'ㅁ' cuối; '심려를 끼쳐 드린' /심려를끼처드린/ — không vấp giữa 끼쳐; '재발 방지 대책' /재발방지대책/ trôi chảy. ĐỪNG: (a) đọc giấy — phải nhìn camera 90% thời gian; (b) cười dù chỉ một micro — viral; (c) 'I'll do my best' (yếu) — phải nói chính xác sẽ làm gì; (d) cãi với phóng viên ngoài hành lang — quy ước im lặng + đi thẳng đến xe.",
+      "tip_advice_en": "Preparing a 사과 기자회견 in 24–48h: (1) HOURS 1–3: 법무팀 + 홍보실 + 대변인실 together — write a 1-page 사과문. NO hedging. Each sentence checked 3 times. (2) HOURS 4–6: settle 3 concrete 재발 방지 measures — actionable within 30 days. Vague = a second scandal. (3) HOURS 7–12: the CEO/원장 practices reading the 사과문 5 times in a mirror — no stumbling; check expression; practice the 90° bow held 7 seconds. (4) HOURS 13–18: book a formal 사과실 (apology room); prepare slides '1번 사과문, 2번 재발 방지 대책'. No decorative slides. (5) HOURS 19–24: send the 보도자료 24h ahead with the conference notice. Note: NO Q&A — in a severe 사과 기자회견 Q&A is inappropriate; it prolongs the harm. (6) HOURS 25–36 (day 2): the conference. The CEO arrives 30 min early; check mic; don't eat heavily; warm drink. (7) HOURS 37–48 (after): implement the promised measures immediately — if you promised 'a board meeting this week', hold it this week. PRONUNCIATION TIP (apology-specific): '머리 숙여 사과드립니다' /머리수겨사과드림니다/ — soften the final ㅁ; '심려를 끼쳐 드린' /심려를끼처드린/ — no stumble between 끼쳐; '재발 방지 대책' /재발방지대책/ flowing. DON'T: (a) read from paper — face the camera 90% of the time; (b) smile even one micro — viral; (c) 'I'll do my best' (weak) — say exactly what you'll do; (d) argue with reporters in the corridor — the convention is silence + walk straight to the car.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -8860,6 +9019,11 @@ export const lessons: KoreanLesson[] =       [
             "오늘 이 자리는 → /오느리자리는/",
             "백브리핑임을 → /백브리핑이믈/",
             "안내드립니다 → /안내드림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "오늘 이 자리는 'o-neul i ja-ri-neun' — gloss /오느리.../: 늘+이 → 'neu-ri' liaison",
+            "백브리핑임을 'baek-beu-ri-ping-im-eul' — gloss /백브리핑이믈/: 핑임 → 'ping-im' liaison",
+            "안내드립니다 'an-nae-deu-rim-ni-da' — gloss /안내드림니다/: 립 ㅂ→'m' before ㄴ"
           ]
         },
         {
@@ -8871,6 +9035,11 @@ export const lessons: KoreanLesson[] =       [
             "본 발언 중 → /본바런중/",
             "인용하지 말아 → /이뇽하지마라/",
             "주시기 바랍니다 → /주시기바람니다/"
+          ],
+          "pronunciation_focus_en": [
+            "본 발언 중 'bon ba-reon jung' — gloss /본바런중/: 발언 → 'ba-reon' liaison",
+            "인용하지 말아 'i-nyong-ha-ji ma-ra' — gloss /이뇽하지마라/: 인용 → 'i-nyong'; 말아 → 'ma-ra'",
+            "주시기 바랍니다 'ju-si-gi ba-ram-ni-da' — gloss /...바람니다/: 랍 ㅂ→'m' before ㄴ"
           ]
         },
         {
@@ -8882,6 +9051,11 @@ export const lessons: KoreanLesson[] =       [
             "맥락을 → /맹나글/",
             "함께 이해해 → /함께이해해/",
             "판단됩니다 → /판단됨니다/"
+          ],
+          "pronunciation_focus_en": [
+            "맥락을 'maeng-na-geul' — gloss /맹나글/: 맥락 → 'maeng-nak' (ㄱ→ㅇ, ㄹ→ㄴ); links",
+            "함께 이해해 'ham-kke i-hae-hae' — tense ㄲ; ㅐ in 해 ≈ 'eh'",
+            "판단됩니다 'pan-dan-doem-ni-da' — aspirated ㅍ; ㅚ in 됩 ≈ 'dwem'"
           ]
         },
         {
@@ -8893,6 +9067,11 @@ export const lessons: KoreanLesson[] =       [
             "이 부분은 → /이부부는/",
             "관계자 익명으로 → /관계자익명으로/",
             "감사하겠습니다 → /감사하게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "이 부분은 'i bu-bu-neun' — gloss /이부부는/: 분은 → 'bu-neun' liaison",
+            "관계자 익명으로 'gwan-gye-ja ing-myeong-eu-ro' — gloss /...익명으로/: 익 ㄱ stays then 명",
+            "감사하겠습니다 'gam-sa-ha-get-seum-ni-da' — gloss /감사하게씀니다/: 겠 → 't' stop"
           ]
         },
         {
@@ -8904,6 +9083,11 @@ export const lessons: KoreanLesson[] =       [
             "공식 발표는 → /공식빨표는/",
             "예정되어 있으니 → /예정되어이쓰니/",
             "엠바고로 처리 → /엠바고로처리/"
+          ],
+          "pronunciation_focus_en": [
+            "공식 발표는 'gong-sik bal-pyo-neun' — gloss /공식빨표는/: 식 ㄱ tenses ㅂ → 'bbal'",
+            "예정되어 있으니 'ye-jeong-doe-eo i-sseu-ni' — gloss /...이쓰니/: 있으 → 'i-sseu' liaison",
+            "엠바고로 처리 'em-ba-go-ro cheo-ri' — 'embargo' loaned; aspirated ㅊ in 처"
           ]
         }
       ],
@@ -9042,7 +9226,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "백브리핑 là một thể loại 'middle-ground' giữa họp báo công khai và đối thoại không chính thức — và là một institution đặc thù của 출입처 Hàn.\n\n(1) HỆ THỐNG 출입처: ở Hàn, 'press pool' đăng ký theo cơ quan — 청와대 출입처, 국회 출입처, 대법원 출입처, 각 부처 출입처, KEDI 출입처 v.v. Mỗi 출입처 có 5-30 phóng viên cố định. 백브리핑 chỉ dành cho 출입처 — KHÔNG mở cho phóng viên ngoài. Người Việt mới làm PR ở Hàn dễ gửi thông báo 백브리핑 rộng — vi phạm nghiêm trọng.\n\n(2) ATTRIBUTION GRADIENT: 4 cấp với consequence khác nhau cho cả nguồn và phóng viên. (a) 'on the record' / 대변인 quote — full name, full quote OK; (b) 'on background' / '본원 관계자 익명' — quote OK, name NOT; (c) 'deep background' / '정부 소식통' — paraphrase OK, direct quote NOT; (d) 'off the record' — KHÔNG được dùng dưới hình thức nào, kể cả paraphrase. Phóng viên Hàn quen các cấp này; 대변인 phải gọi tên cấp trước phát ngôn.\n\n(3) 눈치 TRAP cho người Việt: trong 백브리핑, có thể có lúc phóng viên hỏi 'Tôi có thể nói thêm gì với editor?' — đó KHÔNG phải sự tò mò, mà là yêu cầu chính thức về phạm vi share. Trả lời cụ thể: 'editor 한 분께만 백그라운드로, 데스크 회의 외 공개 금지' — chuẩn. Mơ hồ '편하게요' = bị diễn giải tự, có thể leak.\n\n(4) VI PHẠM EMBARGO: là tội nặng. Một phóng viên vi phạm = 출입처 cấm 1-3 tháng cho cả tờ báo, không chỉ cá nhân; danh tiếng phóng viên hỏng. Tổ chức cũng phải chịu trách nhiệm — nếu lỗi kỹ thuật của 대변인실 (ví dụ gửi sớm) = 대변인 phải xin lỗi 출입처 chính thức. Quy ước nghiêm.\n\n(5) MOTIVATION CHO 백브리핑: tổ chức dùng 백브리핑 để (a) 'trial balloon' (test reaction trước khi công bố); (b) prebuttal (đối phó tin xấu sắp ra); (c) 'context-setting' (làm phóng viên hiểu sâu để không trích sai sau khi công bố). Người Việt thường dùng cho mục đích (c) đầu tiên — đó là cách an toàn nhất.\n\n(6) TIMING TỐI ƯU: 24-48h trước công bố chính thức. Quá sớm = leak risk; quá muộn = phóng viên không có thời gian thu thập context.\n\n(7) Tên các báo cụ thể nhắc trong dialogue (한겨레, 조선일보, 중앙일보) là illustrative — 출입처 composition thay đổi theo organisation; học viên xác nhận 출입처 hiện tại của tổ chức trước khi áp dụng.",
+      "cultural_notes_en": "백브리핑 (a background briefing) is a 'middle-ground' genre between a public press conference and an informal chat — and a distinctive 출입처 institution in Korea. (1) THE 출입처 SYSTEM: in Korea, the press pool registers by agency — 청와대 출입처, 국회 출입처, 대법원 출입처, each ministry's 출입처, the KEDI 출입처, etc. Each has 5–30 fixed reporters. A 백브리핑 is only for the 출입처 — NOT open to outside reporters. New PR people from Vietnam easily broadcast a 백브리핑 notice widely — a serious violation. (2) ATTRIBUTION GRADIENT: 4 levels with different consequences for both source and reporter. (a) 'on the record' / a 대변인 quote — full name, full quote OK; (b) 'on background' / '본원 관계자 익명' — quote OK, name NOT; (c) 'deep background' / '정부 소식통' — paraphrase OK, no direct quote; (d) 'off the record' — NOT usable in any form, not even paraphrase. Korean reporters know these levels; the 대변인 must state the level before speaking. (3) 눈치 TRAP for Vietnamese: in a 백브리핑, a reporter may ask 'what can I tell my editor?' — this is NOT curiosity, but a formal request about the sharing scope. Answer specifically: 'editor 한 분께만 백그라운드로, 데스크 회의 외 공개 금지' (to one editor only, on background, no disclosure beyond the desk meeting). A vague '편하게요' = interpreted freely, can leak. (4) EMBARGO VIOLATION: a grave offense. A reporter who violates = the whole paper banned 1–3 months, not just the individual; the reporter's reputation is destroyed. The organization is also accountable — if a 대변인실 technical error (e.g. sending early) = the 대변인 must formally apologize to the 출입처. (5) MOTIVATION: organizations use a 백브리핑 to (a) 'trial balloon'; (b) prebuttal; (c) 'context-setting'. Vietnamese should use (c) first — the safest. (6) OPTIMAL TIMING: 24–48h before the official announcement. (Outlet names in the dialogue are illustrative — confirm the current 출입처.)",
       "tip_advice_vi": "5 bước chuẩn bị 1 백브리핑 trong 48h: (1) NGÀY 1 morning — quyết định scope: cái gì on-record, cái gì on-background, cái gì off-record (KHÔNG share off-record); viết 'attribution sheet'. (2) NGÀY 1 afternoon — gọi 출입처 회장 (leader) confirm thời gian + phòng + danh sách 5-10 phóng viên. KHÔNG mở rộng. (3) NGÀY 2 morning — gửi calendar invite kèm 1 dòng '본 자리는 백브리핑입니다'; KHÔNG kèm tài liệu chi tiết. (4) NGÀY 2 afternoon — họp 백브리핑 30-45 phút; ngay đầu phiên, READ ATTRIBUTION RULES bằng văn (KHÔNG ad-lib). (5) NGÀY 2 evening — gửi follow-up email tóm tắt: '오늘 들으신 내용 중 X / Y / Z 까지 〜 attribution으로 보도 가능; W 부분은 화요일 공식 발표 후 가능' — văn bản như evidence nếu có vi phạm sau. MẸO PHÁT ÂM: '백브리핑' /백브리핑/ với 'ㅂ→ㅂ' rõ; '익명으로' /익명으로/. ĐỪNG: (a) ad-lib attribution rule giữa phiên — bị diễn giải khác; (b) cho phép 'off-record' rồi share — vô lý; nếu là 'off-record' thì giữ trong đầu mình; (c) gặp riêng 1 phóng viên ngoài 출입처 với cùng nội dung — vi phạm fairness; (d) gửi 보도자료 đầy đủ kèm 백브리핑 — biến nó thành on-record không cần 백브리핑.",
+      "tip_advice_en": "5 steps to prepare a 백브리핑 in 48h: (1) DAY 1 morning — decide scope: what's on-record, on-background, off-record (DON'T share off-record); write an 'attribution sheet'. (2) DAY 1 afternoon — call the 출입처 회장 (leader) to confirm time + room + a 5–10 reporter list. NO expansion. (3) DAY 2 morning — send a calendar invite with one line '본 자리는 백브리핑입니다'; NO detailed materials attached. (4) DAY 2 afternoon — hold the 백브리핑 30–45 min; at the very start, READ THE ATTRIBUTION RULES from text (NO ad-lib). (5) DAY 2 evening — send a follow-up email summarizing: 'of what you heard today, X / Y / Z can be reported under ~ attribution; W only after Tuesday's official announcement' — text as evidence if there's a later violation. PRONUNCIATION TIP: '백브리핑' /백브리핑/ with clear ㅂ–ㅂ; '익명으로' /익명으로/. DON'T: (a) ad-lib the attribution rule mid-session — interpreted differently; (b) grant 'off-record' then share — absurd; if off-record, keep it in your head; (c) meet one outside-출입처 reporter privately with the same content — a fairness violation; (d) send a full 보도자료 with the 백브리핑 — that makes it on-record, defeating the purpose.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -9132,6 +9318,11 @@ export const lessons: KoreanLesson[] =       [
             "기자님께서 → /기자님께서/",
             "지적하신 부분은 → /지저카신부부는/",
             "받아들이고 있습니다 → /바다드리고읻씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "기자님께서 'gi-ja-nim-kke-seo' — plain ㄱ/ㅈ; honorific subject 께서; even stress",
+            "지적하신 부분은 'ji-jeo-ka-sin bu-bu-neun' — gloss /지저카신부부는/: 적+하 → 'k'; 분은 links",
+            "받아들이고 있습니다 'ba-da-deu-ri-go it-seum-ni-da' — gloss /바다드리고읻씀니다/: 받아 → 'ba-da'"
           ]
         },
         {
@@ -9143,6 +9334,11 @@ export const lessons: KoreanLesson[] =       [
             "다만 → /다만/",
             "포함된 → /포함된/",
             "사실관계와 다릅니다 → /사실관계와다름니다/"
+          ],
+          "pronunciation_focus_en": [
+            "다만 'da-man' — plain ㄷ; keep ㅏ open ('ah-n'); 'however'",
+            "포함된 'po-ham-doen' — aspirated ㅍ; 함 final ㅁ; ㅚ in 된 ≈ 'dwen'",
+            "사실관계와 다릅니다 'sa-sil-gwan-gye-wa da-reum-ni-da' — gloss /...다름니다/: 릅 ㅂ→'m'"
           ]
         },
         {
@@ -9154,6 +9350,11 @@ export const lessons: KoreanLesson[] =       [
             "확인한 자료에 → /화긴한자료에/",
             "근거하여 → /근거하여/",
             "답변드리자면 → /답뼌드리자면/"
+          ],
+          "pronunciation_focus_en": [
+            "확인한 자료에 'hwa-gin-han ja-ryo-e' — gloss /화긴한자료에/: 확 ㄱ links into 인",
+            "근거하여 'geun-geo-ha-yeo' — plain ㄱ twice; ㅕ glide; 'grounded on'",
+            "답변드리자면 'dap-byeon-deu-ri-ja-myeon' — gloss /답뼌드리자면/: 답 ㅂ tenses ㅂ"
           ]
         },
         {
@@ -9165,6 +9366,11 @@ export const lessons: KoreanLesson[] =       [
             "의도적 왜곡이 → /의도적왜고기/",
             "측정 시점 → /측정시점/",
             "분명히 말씀드립니다 → /분명히말씀드림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "의도적 왜곡이 'ui-do-jeok wae-go-gi' — gloss /의도적왜고기/: 곡이 → 'go-gi' liaison",
+            "측정 시점 'cheuk-jeong si-jeom' — aspirated ㅊ; ㅡ tight 'eu'; ㅓ ('uh') in 점",
+            "분명히 말씀드립니다 'bun-myeong-hi mal-sseum-deu-rim-ni-da' — soft ㅎ; tense ㅆ"
           ]
         },
         {
@@ -9176,6 +9382,11 @@ export const lessons: KoreanLesson[] =       [
             "추가 자료를 → /추가자료를/",
             "회견 종료 후 → /회견종뇨후/",
             "전달드리겠습니다 → /전달드리게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "추가 자료를 'chu-ga ja-ryo-reul' — aspirated ㅊ; plain ㅈ; ㅛ in 료",
+            "회견 종료 후 'hoe-gyeon jong-nyo hu' — gloss /...종뇨후/: 료 → 'nyo' (ㄹ→ㄴ)",
+            "전달드리겠습니다 'jeon-dal-deu-ri-get-seum-ni-da' — 달 batchim ㄹ; 겠 → 't' stop"
           ]
         }
       ],
@@ -9302,7 +9513,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "송곳 질문 — câu hỏi mũi dùi — là một thể loại đặc trưng của báo chí Hàn, đặc biệt trong các crisis press conference.\n\n(1) BÁO PHE GAY GẮT: ở Hàn, một số tờ báo có 'attack reporter' chuyên — 한겨레, 시사IN cho 진보 attack 보수 organisations; 조선일보, 동아일보 cho 보수 attack 진보. Nếu tổ chức bạn align với một phe, expect đối nghịch từ phóng viên phe ngược. Chuẩn bị câu hỏi từ phóng viên đối nghịch chiếm 70% prep time.\n\n(2) 눈치 TRAP — 가장 위험: trong 송곳 Q&A, phóng viên thường dùng 'compound question' — 1 câu hỏi chứa 2-3 giả định gài bẫy. Ví dụ: 'X 박사님, 자료를 6개월 보유했다는 점에서 자료가 조작되었다는 시민들의 의혹은 정당하지 않습니까?' (chứa 3 yếu tố: 6 tháng giữ + nghi điều giả định + 'citizens believe'). Nếu trả lời 'X 부분은 동의합니다, Y 부분은 동의하지 않습니다' kiểu phân tích — bị quote sai 'X 박사 일부 인정'. Cách đúng: tách câu hỏi thành 3 sub-questions trong câu trả lời ('질문에 세 가지 요소가 있습니다…') rồi đáp từng cái — kéo dài câu trả lời nhưng bảo vệ nội dung.\n\n(3) 1 / 2 / 3 ROUND CONVENTION: ở Hàn, phóng viên có thể truy 1-2 round liên tiếp; round 3 = 사회자 BẮT BUỘC can thiệp. Nếu 사회자 không can thiệp ở round 3 = 사회자 bị xem là không chuyên. Người Việt mới làm 대변인 cần nhận biết tín hiệu sau round 2 (giọng phóng viên cao hơn) và chuẩn bị cụm '추가 질문은 회견 종료 후 별도 부탁드립니다' để kích hoạt 사회자 chuyển.\n\n(4) FAKE-CALM TRAP: phóng viên gay gắt thường dùng tone bình thường, làm guest hạ guard, rồi gài bẫy. Nguyên tắc: tone phóng viên KHÔNG là tín hiệu — content mới là. Nếu câu hỏi chứa 'really', 'truly', 'honestly', 'in fact' — nó gay gắt dù tone calm.\n\n(5) BIỂU CẢM CONTROL: TV phóng đại micro-expressions. Khi bị tấn công gay gắt, mặt phải giữ neutral; có thể nhẹ gật đầu '진지하게 듣고 있습니다' để cho thấy listening. KHÔNG: nhếch môi, nháy mắt, lắc đầu, cau mày — bất kỳ cái nào cũng = headline.\n\n(6) AFTER-EFFECT: sau 송곳 Q&A — KHÔNG cãi tiếp ngoài hành lang; KHÔNG cười với một phóng viên friendlier (làm phóng viên tấn công 'thấy' mất mặt); rời đi nghiêm trang; tweet/social media im lặng 24h. Trong 24h sau, gửi tài liệu bổ sung qua 대변인실 — đó là 'documentary defense' mạnh hơn defense miệng.\n\n(7) Tên các phóng viên cụ thể nhắc trong dialogue (한겨레 기자) là illustrative — phóng viên cụ thể của các đài/báo thay đổi nhanh; học viên xác nhận hiện tại trước khi nhắc trong tác phẩm.",
+      "cultural_notes_en": "송곳 질문 — the 'awl question' — is a distinctive Korean-press genre, especially at crisis press conferences. (1) AGGRESSIVE OUTLETS: some Korean papers have a dedicated 'attack reporter' — 한겨레, 시사IN attack 보수 organizations; 조선일보, 동아일보 attack 진보. If your organization aligns with one side, expect hostility from the opposing side's reporter. Preparing for the opposing reporter's questions takes 70% of prep time. (2) 눈치 TRAP — MOST DANGEROUS: in 송곳 Q&A, the reporter often uses a 'compound question' — one question with 2–3 trap assumptions. E.g.: 'Dr. X, given you held the data for 6 months, isn't the citizens' suspicion that the data was fabricated justified?' (3 elements: held 6 months + a presupposed claim + 'citizens believe'). If you answer 'I agree with X, disagree with Y' analytically — you get misquoted 'Dr. X partially admits'. The right move: split the question into 3 sub-questions in your answer ('there are three elements in this question…') then answer each — it lengthens the answer but protects the content. (3) 1 / 2 / 3 ROUND CONVENTION: a reporter may press 1–2 rounds; round 3 = the 사회자 MUST step in. If the 사회자 doesn't at round 3 = read as unprofessional. New 대변인 from Vietnam must recognize the signal after round 2 (the reporter's pitch rising) and prepare '추가 질문은 회견 종료 후 별도 부탁드립니다' to trigger the 사회자 to move on. (4) FAKE-CALM TRAP: a hostile reporter often uses a normal tone to lower the guest's guard, then sets a trap. Principle: the reporter's tone is NOT the signal — the content is. If the question contains 'really', 'truly', 'honestly', 'in fact' — it's hostile even if the tone is calm. (5) EXPRESSION CONTROL: TV exaggerates micro-expressions. Under sharp attack, the face must stay neutral; a slight nod '진지하게 듣고 있습니다' to show listening. NOT: a lip curl, blink, head shake, frown — any of them = a headline. (6) AFTER-EFFECT: after 송곳 Q&A — do NOT keep arguing in the corridor; do NOT smile at a friendlier reporter (the attacking reporter 'sees' it as losing face); leave with gravitas; silence on social media for 24h. Within 24h, send supplementary material via the 대변인실 — 'documentary defense' stronger than verbal. (Reporter names in the dialogue are illustrative — confirm current ones.)",
       "tip_advice_vi": "5 bước chuẩn bị cho 송곳 Q&A trong 24h: (1) GIỜ 1-3 — list 30 câu hỏi gay gắt nhất có thể; viết 4-bước response cho 10 câu đáng sợ nhất. (2) GIỜ 4-6 — luyện với đồng nghiệp đóng vai phóng viên — họ phải gay gắt; bạn chỉnh sao cho mỗi response mượt trong 60-90 giây. (3) GIỜ 7-9 — quay video — check pause (phải 1 giây), giọng (giảm tốc khi bị tấn công), mặt (neutral). (4) GIỜ 10-12 — chuẩn bị 'cheat card' với 4 cụm vàng: '받아들이고 있습니다' / '전제는 사실관계와 다릅니다' / '근거하여 답변드리자면' / '별도 전달드리겠습니다'. (5) GIỜ 13-24 — ngủ đủ; sáng đến 30 phút trước; KHÔNG cà phê đậm (hand tremor + rapid speech). MẸO PHÁT ÂM dưới áp lực: hạ thấp tone 1 nửa octave + nói chậm 20%. '받아들이고 있습니다' /바다드리고읻씀니다/ — 'ㄷ→ㄴ' không xảy ra ở đây vì 받침 'ㄷ' giữ; '근거하여' /근거하여/. ĐỪNG: (a) tay run — đặt tay trên bàn; (b) chớp mắt nhanh = TV reading 'lying'; (c) trả lời câu hỏi không được hỏi — chỉ trả lời câu được hỏi; (d) cãi với phóng viên — đáp một câu rồi chuyển sang phóng viên khác; (e) hứa cụ thể không thể giữ — 'X 시간 내 자료 공개' nếu không chắc thì '추후 별도 안내드리겠습니다' an toàn hơn.",
+      "tip_advice_en": "5 steps to prepare for 송곳 Q&A in 24h: (1) HOURS 1–3 — list the 30 sharpest possible questions; write a 4-step response for the 10 scariest. (2) HOURS 4–6 — practice with a colleague playing the reporter — they must be harsh; tune each response to be smooth in 60–90 seconds. (3) HOURS 7–9 — record on video — check the pause (must be 1 second), the voice (slow down when attacked), the face (neutral). (4) HOURS 10–12 — prepare a 'cheat card' with 4 golden phrases: '받아들이고 있습니다' / '전제는 사실관계와 다릅니다' / '근거하여 답변드리자면' / '별도 전달드리겠습니다'. (5) HOURS 13–24 — sleep enough; arrive 30 min early; no strong coffee (hand tremor + rapid speech). PRONUNCIATION UNDER PRESSURE: lower the pitch half an octave + slow down 20%. '받아들이고 있습니다' /바다드리고읻씀니다/ — ㄷ kept (no ㄷ→ㄴ here); '근거하여' /근거하여/. DON'T: (a) shaking hands — put them on the desk; (b) rapid blinking = TV reading 'lying'; (c) answer a question not asked — only answer what's asked; (d) argue with the reporter — answer once then move to another reporter; (e) promise something you can't keep — 'release data within X hours' if unsure → '추후 별도 안내드리겠습니다' is safer.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -9391,6 +9604,10 @@ export const lessons: KoreanLesson[] =       [
           "pronunciation_focus": [
             "정례 브리핑 → /정례브리핑/",
             "시작하겠습니다 → /시자카게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "정례 브리핑 'jeong-nye beu-ri-ping' — gloss /정녜브리핑/: 례 → 'nye' (ㄹ→ㄴ after ㅇ)",
+            "시작하겠습니다 'si-ja-ka-get-seum-ni-da' — gloss /시자카게씀니다/: 작+하 → aspirated 'k'"
           ]
         },
         {
@@ -9402,6 +9619,11 @@ export const lessons: KoreanLesson[] =       [
             "본원의 → /보눠늬/",
             "공식 입장은 → /공식입짱은/",
             "다음과 같습니다 → /다음꽈갇씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "본원의 'bo-nwo-nui' — gloss /보눠늬/: 원의 → 'wo-nui' liaison; ㅢ ≈ 'ui'",
+            "공식 입장은 'gong-sik ip-jang-eun' — gloss /공식입짱은/: 식 ㄱ tenses ㅈ → 'jjang'",
+            "다음과 같습니다 'da-eum-gwa gat-seum-ni-da' — gloss /다음꽈갇씀니다/: 음+과 tenses → 'kkwa'"
           ]
         },
         {
@@ -9413,6 +9635,11 @@ export const lessons: KoreanLesson[] =       [
             "결정된 바 → /결정된바/",
             "별도로 → /별도로/",
             "안내드리겠습니다 → /안내드리게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "결정된 바 'gyeol-jeong-doen ba' — gloss /결정된바/: ㅚ in 된 ≈ 'dwen'",
+            "별도로 'byeol-do-ro' — 별 batchim ㄹ; ㅕ glide; 'separately'",
+            "안내드리겠습니다 'an-nae-deu-ri-get-seum-ni-da' — gloss /안내드리게씀니다/: 겠 → 't'"
           ]
         },
         {
@@ -9424,6 +9651,11 @@ export const lessons: KoreanLesson[] =       [
             "정책 영역이 아니므로 → /정책영여기아니므로/",
             "답변드릴 위치에 → /답뼌드릴위치에/",
             "있지 않습니다 → /읻찌안씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "정책 영역이 아니므로 'jeong-chaek yeong-yeo-gi a-ni-meu-ro' — gloss /정책영여기.../: 역이 links",
+            "답변드릴 위치에 'dap-byeon-deu-ril wi-chi-e' — gloss /답뼌.../: 답 ㅂ tenses ㅂ",
+            "있지 않습니다 'it-ji an-seum-ni-da' — gloss /읻찌안씀니다/: 있 ㅆ→'t', tenses ㅈ"
           ]
         },
         {
@@ -9435,6 +9667,11 @@ export const lessons: KoreanLesson[] =       [
             "추가 취재 요청 → /추가취재요청/",
             "대변인실로 → /대변인실로/",
             "부탁드립니다 → /부탁뜨림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "추가 취재 요청 'chu-ga chwi-jae yo-cheong' — aspirated ㅊ; ㅟ in 취 ≈ 'chwi'",
+            "대변인실로 'dae-byeo-nin-sil-lo' — gloss /대변인실로/: 실로 → 'sil-lo' (ㄹㄹ)",
+            "부탁드립니다 'bu-tak-deu-rim-ni-da' — gloss /부탁뜨림니다/: 탁 ㄱ tenses ㄷ"
           ]
         }
       ],
@@ -9573,7 +9810,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "대변인 ở Hàn là một vai có trọng lượng — đặc biệt ở cấp 청와대, 정부 부처, và 대기업 (Samsung, LG, Hyundai). Mỗi 대변인실 có 5-10 nhân sự phối hợp.\n\n(1) HỆ THỐNG 정례 브리핑: trong các tổ chức lớn, weekly briefing với 출입처 là quy ước cố định. 청와대 가능 매일; 부처 thường 1-2 lần/tuần; 기업 1 lần/tuần. Bỏ một buổi không thông báo trước = scandal nhỏ. Thường vào cùng giờ một ngày trong tuần (예: 매주 화요일 오전 10시).\n\n(2) PHÂN BIỆT '대변인' VỚI 'CEO/원장': 대변인 KHÔNG phải decision-maker. Khi phóng viên hỏi câu yêu cầu policy decision, 대변인 phải '확인 후 답변드리겠습니다'. Cố trả lời quyết định thay CEO = bị CEO bác sau, mất uy tín. Người Việt mới làm 대변인 dễ rơi vào 'over-step' — trả lời câu chưa được duyệt.\n\n(3) 눈치 TRAP — RẤT TINH TẾ: phóng viên hay 'gài' bằng câu hỏi 'cá nhân của bạn nghĩ gì?'. 대변인 KHÔNG bao giờ cá nhân hóa. Cụm chuẩn để né: '본 대변인실의 모든 발언은 본원의 공식 입장으로 전달됩니다. 개인 견해는 본 자리에서 발표하지 않겠습니다.' Một slip vào '제 생각엔…' = câu trích đó thành 'X 대변인 개인 견해' và vô hiệu hóa toàn brief tuần đó.\n\n(4) RELATIONSHIP 출입처: 대변인 phải biết tên + tờ báo + style của tất cả phóng viên 출입처 — quy ước. Gọi sai tên = scandal nhỏ. Thường có 사전 만남 (pre-meeting) trước briefing đầu tiên với phóng viên mới — chuẩn etiquette.\n\n(5) WEEKLY RHYTHM: thứ hai sáng, 대변인실 họp với CEO + 법무 + PR — quyết định content briefing tuần. Thứ ba/thứ năm: briefing. Thứ sáu chiều: review tuần — đánh giá quote nào đã ra, có sai lệch nào không. Quy trình tight.\n\n(6) NGÔN NGỮ TUYỆT ĐỐI KHÔNG: 'I think', '제 생각에는', 'maybe', '아마' — 대변인 mất uy tín ngay; '잘 모르겠습니다' — phóng viên kết luận 'incompetent'; '편하게 묻지 마세요' — vô lễ. PHẢI: 'X에 대해서는 확인 후 답변드리겠습니다' / '본원의 공식 입장은 〜입니다'.\n\n(7) Tên các 출입처, briefing room cụ thể nhắc trong dialogue (한국프레스센터 19층) là illustrative — địa điểm cụ thể của các tổ chức thay đổi; học viên xác nhận trước khi viết tác phẩm thực.",
+      "cultural_notes_en": "A 대변인 (spokesperson) in Korea is a weighty role — especially at 청와대, government ministries, and conglomerates (Samsung, LG, Hyundai). Each 대변인실 has 5–10 coordinating staff. (1) THE 정례 브리핑 SYSTEM: in large organizations, a weekly briefing with the 출입처 is a fixed convention. 청와대 possibly daily; ministries usually 1–2x/week; companies 1x/week. Skipping one without prior notice = a small scandal. Usually the same hour on the same weekday (e.g. every Tuesday 10am). (2) DISTINGUISH '대변인' FROM 'CEO/원장': the 대변인 is NOT the decision-maker. When a reporter asks something requiring a policy decision, the 대변인 must '확인 후 답변드리겠습니다' (I'll confirm and respond). Answering a decision on the CEO's behalf = overruled later, lost credibility. New Vietnamese 대변인 easily 'over-step' — answering something not yet approved. (3) 눈치 TRAP — VERY SUBTLE: reporters often 'bait' with 'what do YOU personally think?'. A 대변인 NEVER personalizes. The standard dodge: '본 대변인실의 모든 발언은 본원의 공식 입장으로 전달됩니다. 개인 견해는 본 자리에서 발표하지 않겠습니다.' One slip into '제 생각엔…' = that quote becomes 'X 대변인 개인 견해' and nullifies the whole week's brief. (4) 출입처 RELATIONSHIP: the 대변인 must know every 출입처 reporter's name + outlet + style — convention. Getting a name wrong = a small scandal. There's usually a 사전 만남 (pre-meeting) before the first briefing with a new reporter — standard etiquette. (5) WEEKLY RHYTHM: Monday morning, the 대변인실 meets the CEO + 법무 + PR — decides the week's briefing content. Tue/Thu: briefing. Fri afternoon: weekly review — which quotes ran, any distortions. A tight process. (6) FORBIDDEN LANGUAGE: 'I think', '제 생각에는', 'maybe', '아마' — instant loss of credibility; '잘 모르겠습니다' — the reporter concludes 'incompetent'; '편하게 묻지 마세요' — rude. REQUIRED: 'I'll confirm and respond' / 'the official position is ~'. (Specific 출입처/room names in the dialogue are illustrative — confirm before real work.)",
       "tip_advice_vi": "5 bước weekly briefing routine của 대변인: (1) THỨ HAI MORNING — họp 30 phút với CEO + 법무 + 홍보 — quyết định 3 nội dung sẽ briefing tuần này. (2) THỨ HAI AFTERNOON — chuẩn bị 'cheat sheet' 1 trang: 3 nội dung + 5 câu hỏi anticipated + 3 câu né lịch sự (cho câu vượt thẩm quyền). (3) THỨ BA MORNING (ngày briefing) — đến 30 phút trước; check phòng; chào phóng viên; đọc lại cheat sheet 3 lần. (4) DURING — nói 5-7 phút briefing + 15-20 phút Q&A; viết tay note câu hỏi đã không trả lời được. (5) THỨ BA AFTERNOON — gửi follow-up email cho phóng viên có câu hỏi treo: 'X에 대해 확인하였습니다. 다음과 같습니다 〜'. (6) THỨ NĂM — review báo Hàn xem quote đã ra như thế nào; nếu có sai lệch, gọi phóng viên cá nhân lịch sự. MẸO PHÁT ÂM: '대변인' /대벼닌/; '정례 브리핑' /정녜브리핑/; '결정된 바 없다' /결정된바업따/. ĐỪNG: (a) ngắt phóng viên — 절대 KHÔNG; (b) cười khi nói tin xấu — 24h crisis; (c) 'I personally believe' chen vào — bị quote làm CEO khó xử; (d) hứa cụ thể không xác nhận với CEO — bị bác sau là tổn hại uy tín.",
+      "tip_advice_en": "A 대변인's 5-step weekly briefing routine: (1) MONDAY MORNING — a 30-min meeting with CEO + 법무 + 홍보 — decide the 3 things to brief this week. (2) MONDAY AFTERNOON — prepare a 1-page 'cheat sheet': 3 contents + 5 anticipated questions + 3 polite dodges (for over-authority questions). (3) TUESDAY MORNING (briefing day) — arrive 30 min early; check the room; greet reporters; re-read the cheat sheet 3 times. (4) DURING — 5–7 min briefing + 15–20 min Q&A; handwrite notes on questions you couldn't answer. (5) TUESDAY AFTERNOON — send a follow-up email to reporters with open questions: 'I have confirmed X. It is as follows ~'. (6) THURSDAY — review Korean papers for how the quotes ran; if there's a distortion, call the reporter individually and politely. PRONUNCIATION TIP: '대변인' /대벼닌/; '정례 브리핑' /정녜브리핑/; '결정된 바 없다' /결정된바업따/. DON'T: (a) interrupt a reporter — ABSOLUTELY NOT; (b) smile while stating bad news — a 24h crisis; (c) inject 'I personally believe' — gets quoted, embarrasses the CEO; (d) make a specific promise not confirmed with the CEO — being overruled later damages credibility.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -9663,6 +9902,11 @@ export const lessons: KoreanLesson[] =       [
             "SNS상에서 → /에스엔에스상에서/",
             "유포되고 → /유포되고/",
             "밝힌다 → /발킨다/"
+          ],
+          "pronunciation_focus_en": [
+            "SNS상에서 'e-seu-en-e-seu-sang-e-seo' — gloss /에스엔에스상에서/: 'SNS' letters spelled out",
+            "유포되고 'yu-po-doe-go' — ㅠ in 유; aspirated ㅍ; ㅚ in 되 ≈ 'dwe'",
+            "밝힌다 'bal-kin-da' — gloss /발킨다/: 밝 ㄺ+ㅎ → aspirated 'k'"
           ]
         },
         {
@@ -9674,6 +9918,11 @@ export const lessons: KoreanLesson[] =       [
             "조작하였다는 → /조자카여따는/",
             "주장은 → /주장은/",
             "사실과 다르다 → /사실꽈다르다/"
+          ],
+          "pronunciation_focus_en": [
+            "조작하였다는 'jo-ja-ka-yeot-da-neun' — gloss /조자카여따는/: 작+하 → 'k'; 였 → 't' stop",
+            "주장은 'ju-jang-eun' — plain ㅈ; 장은 → 'jang-eun' liaison",
+            "사실과 다르다 'sa-sil-gwa da-reu-da' — gloss /사실꽈.../: 실 ㄹ tenses ㄱ → 'kkwa'"
           ]
         },
         {
@@ -9685,6 +9934,11 @@ export const lessons: KoreanLesson[] =       [
             "둘째 → /둘째/",
             "외부 통계 전문가 → /외부통계전문가/",
             "거쳤다 → /거첟따/"
+          ],
+          "pronunciation_focus_en": [
+            "둘째 'dul-jjae' — gloss /둘째/: tense ㅉ; 'secondly'; 둘 batchim ㄹ",
+            "외부 통계 전문가 'oe-bu tong-gye jeon-mun-ga' — ㅚ in 외 ≈ 'we'; plain ㄱ in 계",
+            "거쳤다 'geo-cheot-da' — gloss /거첟따/: aspirated ㅊ; 쳤 → 't' stop, tenses ㄷ"
           ]
         },
         {
@@ -9696,6 +9950,11 @@ export const lessons: KoreanLesson[] =       [
             "허위 사실 → /허위사실/",
             "유포에 → /유포에/",
             "법적 대응을 → /법쩍대응을/"
+          ],
+          "pronunciation_focus_en": [
+            "허위 사실 'heo-wi sa-sil' — ㅓ ('uh') in 허; ㅟ in 위 ≈ 'wi'; 실 batchim ㄹ",
+            "유포에 'yu-po-e' — ㅠ in 유; aspirated ㅍ; 'in the spreading of'",
+            "법적 대응을 'beop-jeok dae-eung-eul' — gloss /법쩍대응을/: 법 ㅂ tenses ㅈ → 'jjeok'"
           ]
         },
         {
@@ -9707,6 +9966,11 @@ export const lessons: KoreanLesson[] =       [
             "모든 공식 입장은 → /모든공식입짱은/",
             "본 채널과 → /본채널과/",
             "발표된다 → /발표된다/"
+          ],
+          "pronunciation_focus_en": [
+            "모든 공식 입장은 'mo-deun gong-sik ip-jang-eun' — gloss /...입짱은/: 식 ㄱ tenses ㅈ",
+            "본 채널과 'bon chae-neol-gwa' — 'channel' loaned; aspirated ㅊ; ㅐ ≈ 'eh'",
+            "발표된다 'bal-pyo-doen-da' — 발 batchim ㄹ; ㅛ in 표; ㅚ in 된 ≈ 'dwen'"
           ]
         }
       ],
@@ -9845,7 +10109,9 @@ export const lessons: KoreanLesson[] =       [
         }
       ],
       "cultural_notes_vi": "공식 입장문 trên kênh mạng xã hội ở Hàn là một thể loại mới (5-10 năm gần đây) nhưng đã có quy ước rõ ràng — và đầy bẫy.\n\n(1) ECOSYSTEM CHANNELS: tổ chức Hàn lớn thường có (a) Twitter/X — fast response (5-30 phút sau crisis); (b) Facebook page — medium-form (200-1000 chữ); (c) YouTube — video statement nếu nghiêm trọng; (d) Instagram — hình ảnh-driven, ít official; (e) Naver blog — long-form, SEO; (f) website pressroom — văn bản đầy đủ. Mỗi kênh đăng ký + content khác.\n\n(2) TIMING NGHIÊM: trong crisis, '24h golden rule' — phải có 입장문 đầu tiên trong 24 giờ. '1h golden rule' cho fast-moving tin đồn trên X — chậm hơn = tin đồn nhân lên 10x. Người Việt thường nghĩ 'gather all facts first, then respond'; ở Hàn social, 'respond fast with what you know + commit to update' tốt hơn.\n\n(3) 눈치 TRAP TRÊN SOCIAL: đặc biệt nguy. Bình luận trên post 입장문 thường có 50% là phản ứng emotional. KHÔNG trả lời bình luận — quy ước Hàn nghiêm. Một câu trả lời cho 1 user = câu đó thành 'phát ngôn mới', đôi khi mâu thuẫn với 입장문 chính. Một số org Hàn (특히 chính phủ) tắt comments — làm cho user phẫn nộ ban đầu nhưng tránh được crisis lan thêm.\n\n(4) FONT VÀ TIME: post 입장문 nên dùng default font; KHÔNG bold màu mè; KHÔNG emoji; KHÔNG hashtag marketing-flavored. Time đăng tốt nhất: 10-11 sáng (working hours), TRÁNH 6-9 tối (peak troll time), TRÁNH cuối tuần (low engagement, leak risk).\n\n(5) ATTRIBUTION CỦA POST: post BẮT BUỘC ký bằng tên tổ chức ở cuối ('— 한국교육개발원') hoặc bằng badge verification. KHÔNG ký tên cá nhân — vì kênh là organisation channel, không cá nhân.\n\n(6) CROSS-PLATFORM CONSISTENCY: 280-char Twitter version PHẢI khớp về thông điệp với 1000-char Facebook version với 1500-char website version. User screenshot từng phiên bản — nếu thông điệp lệch, rất nguy hiểm. Quy trình PR Hàn chuyên nghiệp: 1 master statement + 3 versions cùng được duyệt cùng lúc.\n\n(7) Tên các kênh, platform cụ thể (Twitter/X, Facebook, Naver blog) là illustrative — landscape platform thay đổi nhanh; học viên xác nhận platform đang được dùng trong tổ chức cụ thể trước khi áp dụng.",
+      "cultural_notes_en": "An 공식 입장문 (official statement) on social-media channels in Korea is a new genre (the last 5–10 years) but already has clear conventions — and many traps. (1) CHANNEL ECOSYSTEM: large Korean organizations usually have (a) Twitter/X — fast response (5–30 min after a crisis); (b) Facebook page — medium-form (200–1000 chars); (c) YouTube — a video statement if serious; (d) Instagram — image-driven, rarely official; (e) Naver blog — long-form, SEO; (f) the website pressroom — full text. Each channel has different register + content. (2) STRICT TIMING: in a crisis, the '24h golden rule' — a first 입장문 within 24h. The '1h golden rule' for a fast-moving X rumor — slower = the rumor multiplies 10x. Vietnamese often think 'gather all facts first, then respond'; on Korean social, 'respond fast with what you know + commit to update' is better. (3) 눈치 TRAP ON SOCIAL: especially dangerous. Comments on a 입장문 post are ~50% emotional reactions. DO NOT reply to comments — a strict Korean convention. One reply to one user = that becomes a 'new statement', sometimes contradicting the main 입장문. Some Korean orgs (esp. government) disable comments — initially infuriating to users but it prevents the crisis spreading. (4) FONT AND TIME: use the default font; NO colored bold; NO emoji; NO marketing-flavored hashtag. Best post time: 10–11am (working hours), AVOID 6–9pm (peak troll time), AVOID weekends (low engagement, leak risk). (5) POST ATTRIBUTION: the post MUST be signed with the organization name at the end ('— 한국교육개발원') or a verification badge. NO personal name — the channel is an organization channel. (6) CROSS-PLATFORM CONSISTENCY: the 280-char Twitter version MUST match in message the 1000-char Facebook and the 1500-char website versions. Users screenshot each — if the message diverges, very dangerous. The professional Korean PR process: 1 master statement + 3 versions approved together. (Platform names are illustrative — confirm the platforms the specific organization uses.)",
       "tip_advice_vi": "5 bước phát 입장문 social trong 1 giờ (crisis mode): (1) PHÚT 0-10 — nhận tin đồn; gọi 법무 + 홍보 + 대변인 — họp ngắn 5 phút; quyết định (a) deny / (b) partial / (c) pending. (2) PHÚT 11-25 — viết master statement 1500 chữ trên website; có 3 đoạn rõ (사실 확인 / 본원 입장 / 향후 조치); 법무 review 5 phút. (3) PHÚT 26-40 — compress thành 1000 chữ Facebook + 280 chữ Twitter; check master message lệch chưa. (4) PHÚT 41-50 — đăng đồng thời ba kênh + email 출입처 alert. (5) PHÚT 51-60 — tắt comment trên Facebook (hoặc giảm visibility); không trả lời comment trên Twitter; theo dõi sentiment 30 phút sau. MẸO PHÁT ÂM (đọc kiểm tra): '밝힌다' /발킨다/; '검토할 수 있다' /검토할쑤읻따/; '허위 사실 유포에' /허위사시류포에/. ĐỪNG: (a) trả lời comment cá nhân — câu đó trở thành phát ngôn mới; (b) đăng emoji ở 입장문 — bị reading 'không nghiêm trọng'; (c) gửi nhân viên cá nhân (không phải 대변인실) đăng — vi phạm quy trình; (d) update post sau khi đăng — quy ước Hàn xem version đầu là chính thức; muốn sửa = đăng phiên bản mới có note '〜에 대한 정정/추가'. Một typo cũng để nguyên trong post gốc.",
+      "tip_advice_en": "5 steps to issue a social 입장문 in 1 hour (crisis mode): (1) MIN 0–10 — get the rumor; call 법무 + 홍보 + 대변인 — a 5-min huddle; decide (a) deny / (b) partial / (c) pending. (2) MIN 11–25 — write a 1500-char master statement on the website; 3 clear paragraphs (fact-check / our position / next steps); 법무 reviews 5 min. (3) MIN 26–40 — compress to 1000-char Facebook + 280-char Twitter; check the master message hasn't drifted. (4) MIN 41–50 — post simultaneously on three channels + email the 출입처 alert. (5) MIN 51–60 — disable comments on Facebook (or lower visibility); do not reply to comments on Twitter; monitor sentiment for 30 min after. PRONUNCIATION TIP (read to check): '밝힌다' /발킨다/; '검토할 수 있다' /검토할쑤읻따/; '허위 사실 유포에' /허위사시류포에/. DON'T: (a) reply to an individual comment — it becomes a new statement; (b) post an emoji on a 입장문 — read as 'not serious'; (c) have an individual employee (not the 대변인실) post — a process violation; (d) edit the post after posting — the Korean convention treats the first version as official; to fix, post a new version with a note '〜에 대한 정정/추가'. Even a typo stays in the original post.",
       "exercises": [
         {
           "type": "fill-blank",
