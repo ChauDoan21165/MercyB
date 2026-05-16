@@ -169,35 +169,55 @@ export const lessons: JapaneseLesson[] = [
       "Giáo sư hỏi 'điểm khác biệt với nghiên cứu trước là gì?'. Trả lời bằng 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior, then differentiate). KHÔNG dismiss tiền bối — Nhật academic norm là 敬意 (respect) cho prior work.",
       "Giáo sư cảnh báo về over-generalization. Đáp lại bằng 過度の一般化は慎みたく存じます hoặc 結論を急がず、暫定的な位置づけにとどめます. Đây là academic humility — vẫn nghe confident nhưng có hedge."
     ],
+    "roleplay_prompts_en": [
+      "You present your hypothesis at an interim report. Open with 本研究は…という仮説を提示するものである. Do NOT use 思います or mix です/ます in the thesis section — keep the である register. Close with a sentence positioning the hypothesis as 暫定的 (tentative).",
+      "A professor asks 'what is the difference from prior research?'. Answer with 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior work, then differentiate). Do NOT dismiss your predecessors — the Japanese academic norm is 敬意 (respect) for prior work.",
+      "A professor warns against over-generalization. Respond with 過度の一般化は慎みたく存じます or 結論を急がず、暫定的な位置づけにとどめます. This is academic humility — still sound confident, but hedged."
+    ],
     "register_notes": "C1 academic Japanese yêu cầu shift hoàn toàn sang である-style trong luận văn / phát biểu chính thức; ます-style chỉ giữ trong dialogue Q&A. Năm pattern cốt lõi: (1) 提示動詞 — '〜を提示する/〜を提唱する/〜を主張する' thay cho 'I think'. KHÔNG dùng 思います ở luận điểm chính. (2) NOMINALIZATION — biến động từ thành 〜こと/〜もの: 仮説を提示するものである thay vì 仮説を提示する. Suffix 〜性 (妥当性, 蓋然性) và 〜化 (一般化, 体系化) là dấu hiệu C1 prose. (3) HEDGING TIERS — strong: 〜と考えられる; medium: 〜可能性が示唆される; soft: 〜と言えなくもない. Chọn theo strength of evidence. (4) DISCOURSE MARKERS — しかしながら (however, formal), 換言すれば (in other words), さらに言えば (moreover), とはいえ (that said). Tránh でも, だから ở văn viết. (5) HUMBLE-CLAIM — academic Japanese frame claim qua 〜に他ならない (nothing other than) hoặc 〜と位置づけられる (is positioned as) thay vì assertive 'is X'. Cẩn thận: 牽強付会 — đừng đẩy claim quá xa data. Reviewer Nhật rất nhạy với over-claim; hedging không phải yếu mà là dấu hiệu trưởng thành học thuật.",
+    "register_notes_en": "Register: switch fully to plain である-style (keep ます only for spoken Q&A), state the claim with 提示する/提唱する rather than 思います, and hedge with 〜と考えられる — to a Japanese reviewer it is over-claiming, not hedging, that reads as the weakness.",
     "idiom_glosses": [
       {
         "idiom": "一石を投じる (いっせきをとうじる)",
         "literal": "Ném một viên đá",
         "meaning": "[書き言葉] Đặt vấn đề mới gây thảo luận trong giới — phù hợp khi giả thuyết của bạn challenge consensus.",
-        "example": "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。"
+        "example": "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。",
+        "literal_en": "to cast a single stone (isseki o tōjiru)",
+        "meaning_en": "To raise a new issue that stirs debate in the field — apt when your hypothesis challenges the consensus. (written)",
+        "example_en": "This study can be positioned as an attempt to cast a stone into the conventional received view."
       },
       {
         "idiom": "牽強付会 (けんきょうふかい)",
         "literal": "Cố ép kéo, gò gắn",
         "meaning": "[硬い・書き言葉] Diễn giải gượng ép, đẩy data quá xa — điều cần TRÁNH khi trình bày giả thuyết.",
-        "example": "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。"
+        "example": "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。",
+        "literal_en": "forced, strained construction (kenkyō fukai)",
+        "meaning_en": "A strained, far-fetched interpretation that pushes the data too far — something to AVOID when presenting a hypothesis. (formal, written)",
+        "example_en": "This hypothesis must be carefully verified, without interpreting the data in a forced, strained manner."
       },
       {
         "idiom": "試金石 (しきんせき)",
         "literal": "Đá thử vàng",
         "meaning": "[書き言葉] Phép thử quyết định — dùng khi nói thí nghiệm/data là bài kiểm tra cho giả thuyết.",
-        "example": "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。"
+        "example": "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。",
+        "literal_en": "touchstone (shikinseki)",
+        "meaning_en": "The decisive test — used when an experiment or data serves as the trial for a hypothesis. (written)",
+        "example_en": "The results of this experiment will be the touchstone for gauging the validity of the hypothesis advocated."
       },
       {
         "idiom": "我田引水 (がでんいんすい)",
         "literal": "Dẫn nước về ruộng nhà mình",
         "meaning": "[硬い・書き言葉] Diễn giải có lợi cho mình một cách thiên vị — phải tránh trong academic writing.",
-        "example": "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。"
+        "example": "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。",
+        "literal_en": "drawing water to one's own field (gaden insui)",
+        "meaning_en": "A self-serving, biased interpretation that bends things in one's own favor — to be avoided in academic writing. (formal, written)",
+        "example_en": "So that the interpretation does not lapse into self-serving bias, competing hypotheses must also be examined."
       }
     ],
     "cultural_notes_vi": "Trình bày giả thuyết trong giới học thuật Nhật khác phương Tây ở 4 điểm. (1) 控えめさ (khiêm tốn) cốt lõi — không claim 'chứng minh', chỉ 'gợi ý / cho thấy khả năng'. Câu kết của paper Nhật thường hedged. (2) 先行研究への敬意 — ngay cả khi bạn challenge tiền bối, phải acknowledge họ trước, không bao giờ dismiss. Cụm 〜の知見を踏まえつつ (kế thừa hiểu biết của...) là lễ. (3) 結論の暫定性 — gọi giả thuyết là 暫定的 (tentative) là dấu hiệu trưởng thành học thuật, KHÔNG yếu kém. Reviewer Nhật bonus điểm cho honest hedging. (4) 私 → 本研究/本稿 — chuyển từ ngôi 1 sang 'bài viết này / nghiên cứu này' làm chủ ngữ. 'I argue' = 本稿は〜を主張するものである. Khác VN: ở VN giả thuyết thường viết với 'tôi cho rằng', ở Nhật học thuật, depersonalize hoàn toàn. Mẹo: nếu bí, cụm 〜と考えられる là an toàn nhất — đủ academic, đủ hedge.",
+    "cultural_notes_en": "Presenting a hypothesis in Japanese academia differs from the West on four points. (1) 控えめさ (hikaemesa, restraint) is core — don't claim 'proven,' only 'suggests / shows the possibility'; the closing sentence of a Japanese paper is usually hedged. (2) 先行研究への敬意 (respect for prior research) — even when you challenge a senior scholar, acknowledge them first and never dismiss them; the phrase 〜の知見を踏まえつつ ('building on the findings of…') is the courteous form. (3) 結論の暫定性 (the provisionality of conclusions) — calling a hypothesis 暫定的 (tentative) is a mark of scholarly maturity, NOT weakness; Japanese reviewers reward honest hedging. (4) 私 → 本研究/本稿 — shift the subject from the first person to 'this study / this paper': 'I argue' becomes 本稿は〜を主張するものである. Unlike the American norm, where a hypothesis is often stated with a confident 'I argue/contend,' Japanese academic writing depersonalizes completely. Tip: when stuck, 〜と考えられる ('it is considered that…') is the safest — academic enough, hedged enough.",
     "tip_advice_vi": "Khi bạn trình bày giả thuyết ở 学会 hoặc 中間報告, dùng cấu trúc 4 phần. (a) FRAMING — 1 câu nói 'bài này đề xuất giả thuyết X'. KHÔNG kể lể context dài. Nhật academic value đi thẳng. (b) PRIOR ART — 2-3 câu acknowledge tiền bối + chỉ ra gap. Cụm: 先行研究におきましては〜が報告されているが、〜については十分な検討がなされていない. (c) HYPOTHESIS — phát biểu rõ giả thuyết, dùng 〜という仮説を提示する. Avoid 'tôi nghĩ'. (d) HEDGE — kết bằng 1 câu giới hạn phạm vi: 本仮説は暫定的なものであり、検証を要する. Mẹo Q&A: nếu giáo sư hỏi 'có phản chứng không?', KHÔNG defensive. Cụm: ご指摘のとおり、〜という反例の可能性も否定できません. Acknowledge trước, sau đó nói cách bạn xử lý. Mẹo cuối: tránh 絶対 (absolute), 必ず (definitely), 完全に (completely) trong hypothesis statements — ngay lập tức bị reviewer flag là over-claim.",
+    "tip_advice_en": "When you present a hypothesis at a 学会 (conference) or 中間報告 (interim report), use a 4-part structure. (a) FRAMING — one sentence stating 'this paper proposes hypothesis X'; don't recount long context, Japanese academia values getting straight to it. (b) PRIOR ART — 2–3 sentences acknowledging predecessors + naming the gap: '先行研究におきましては〜が報告されているが、〜については十分な検討がなされていない.' (c) HYPOTHESIS — state it clearly with '〜という仮説を提示する'; avoid 'I think.' (d) HEDGE — close with one scope-limiting sentence: '本仮説は暫定的なものであり、検証を要する.' Q&A tip: if a professor asks 'is there a counterexample?', don't get defensive — 'ご指摘のとおり、〜という反例の可能性も否定できません' (acknowledge first, then describe how you handle it). Final tip: avoid 絶対 (absolute), 必ず (definitely), 完全に (completely) in hypothesis statements — a reviewer flags them as over-claim instantly.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -397,35 +417,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ ra rằng bạn đã paraphrase mà không attribute. Đáp lại bằng ご指摘ありがとうございます。出典の明示が不十分でございました cộng cách bạn fix. KHÔNG defensive — citation lapse là serious, acknowledge cleanly.",
       "Bạn dẫn Yamada (2019) nhưng diễn giải hơi khác ý gốc. Phrase bằng 山田 (二〇一九) は…と論じているが、本研究はこれを発展させ… (acknowledge phần Yamada nói + chỉ ra phần bạn extend). KHÔNG misrepresent — Nhật reviewer kiểm tra original."
     ],
+    "roleplay_prompts_en": [
+      "You need to cite a source whose original you cannot find. Ask your advisor about the format for 孫引き (secondary citation). Open with 一点ご相談がございます. Do NOT decide the format yourself without asking — Japanese academic formatting is strict, and errors get flagged by reviewers.",
+      "A reviewer points out that you paraphrased without attribution. Respond with ご指摘ありがとうございます。出典の明示が不十分でございました plus how you will fix it. Do NOT be defensive — a citation lapse is serious; acknowledge it cleanly.",
+      "You cite Yamada (2019) but interpret it slightly differently from the original. Phrase it with 山田 (二〇一九) は…と論じているが、本研究はこれを発展させ… (acknowledge what Yamada said + state what you extend). Do NOT misrepresent — a Japanese reviewer checks the original."
+    ],
     "register_notes": "Citation register tiers ở C1 academic Japanese: (1) NEUTRAL — '〜によれば' (according to), '〜は〜と述べている' (X states that). Standard, dùng cho đa số. (2) FORMAL — '〜に依拠しつつ' (drawing upon), '〜の知見を踏まえ' (building on findings of). Dùng khi heavy reliance. (3) DISTANCING — '〜とされる' (it is said), '〜と指摘されている' (it has been pointed out). Đánh dấu thông tin received, không tự bạn vouch. Hữu ích khi report claim nhưng chưa chắc. (4) CRITICAL — '〜は…と論じているが、本稿はこの解釈に異を唱える' (X argues, but this paper takes issue with that interpretation). C1 phải biết phân biệt 4 tiers. Số academic Japanese dùng kanji number: 二〇一九年 (2019) chứ không 2019年 trong 縦書き formal papers; 横書き modern paper thì cả hai chấp nhận. Trong dấu ngoặc citation, format Nhật: 山田 (二〇一九) hoặc (山田 二〇一九) — không có dấu phẩy như APA. Trang số: (山田 二〇一九: 四五). Quote ngắn: 「」 ngoặc. Quote dài: indented block. 改変 (alteration) gồm cả thay từ, đổi trật tự, gộp câu — phải mark. Chỉ acceptable change: 旧字体→新字体, full-width→half-width punctuation, [...] cho omission rõ ràng.",
+    "register_notes_en": "Register: pick the citation tier deliberately — neutral 〜によれば / 〜は〜と述べている, formal 〜に依拠しつつ / 〜の知見を踏まえ, distancing 〜とされる / 〜と指摘されている for received claims you do not vouch for, critical 〜は…と論じているが本稿はこの解釈に異を唱える — and use the Japanese in-text form 山田 (二〇一九: 四五), never APA commas.",
     "idiom_glosses": [
       {
         "idiom": "鵜呑みにする (うのみにする)",
         "literal": "Nuốt chửng như con chim cốc nuốt cá",
         "meaning": "[書き言葉・話し言葉] Tin hoặc trích dẫn mà không kiểm tra critically — điều cần tránh khi dùng prior research.",
-        "example": "先行研究の主張を鵜呑みにせず、原典に当たって検証することが求められる。"
+        "example": "先行研究の主張を鵜呑みにせず、原典に当たって検証することが求められる。",
+        "literal_en": "to swallow whole, as a cormorant gulps a fish (unomi ni suru)",
+        "meaning_en": "To believe or quote something without checking it critically — to be avoided when drawing on prior research. (written/spoken)",
+        "example_en": "Rather than swallowing the claims of prior research whole, one is expected to go back to the primary sources and verify them."
       },
       {
         "idiom": "玉石混淆 (ぎょくせきこんこう)",
         "literal": "Ngọc và đá lẫn lộn",
         "meaning": "[書き言葉] Tài liệu hỗn tạp — nguồn tốt và nguồn kém lẫn lộn; phù hợp khi đánh giá literature.",
-        "example": "近年のオンライン文献は玉石混淆であり、引用に際しては選別が肝要となる。"
+        "example": "近年のオンライン文献は玉石混淆であり、引用に際しては選別が肝要となる。",
+        "literal_en": "jewels and stones mixed together (gyokuseki konkō)",
+        "meaning_en": "A mixed bag of sources, good and poor jumbled together — apt when assessing the literature. (written)",
+        "example_en": "Recent online literature is a mixed bag of the good and the poor, so careful selection is essential when citing it."
       },
       {
         "idiom": "孫引き (まごびき)",
         "literal": "Cháu kéo (dẫn từ dẫn)",
         "meaning": "[学術用語] Trích dẫn từ nguồn thứ cấp thay vì bản gốc — chỉ acceptable khi không thể access nguồn gốc.",
-        "example": "孫引きは原則として避け、やむを得ない場合は出典を二重に明記する。"
+        "example": "孫引きは原則として避け、やむを得ない場合は出典を二重に明記する。",
+        "literal_en": "grandchild-quoting, i.e. citing a citation (magobiki)",
+        "meaning_en": "Citing from a secondary source instead of the original — acceptable only when the original cannot be accessed. (academic term)",
+        "example_en": "Secondary citation should as a rule be avoided; where unavoidable, the source must be indicated twice over."
       },
       {
         "idiom": "出典を明らかにする (しゅってんをあきらかにする)",
         "literal": "Làm rõ nguồn",
         "meaning": "[書き言葉] Set phrase chuẩn cho 'cite the source explicitly' — bắt buộc trong academic prose.",
-        "example": "他者の見解を援用する際は、必ず出典を明らかにしなければならない。"
+        "example": "他者の見解を援用する際は、必ず出典を明らかにしなければならない。",
+        "literal_en": "to make the source clear (shutten o akiraka ni suru)",
+        "meaning_en": "The standard set phrase for citing a source explicitly — mandatory in academic prose. (written)",
+        "example_en": "When drawing on another's views, one must always make the source explicit."
       }
     ],
     "cultural_notes_vi": "Văn hóa trích dẫn Nhật khác VN ở 4 điểm. (1) ATTRIBUTION CHẶT HƠN VN — ngay cả idea chung (general claim) cũng cite. VN academic thường acceptable không cite nếu là 'kiến thức phổ biến'; Nhật C1 academic require cite nhiều hơn. Khi nghi ngờ, cite. (2) ORDER CỦA NAME — Nhật references list dùng họ trước, không initial first name (山田太郎 chứ không 太郎・山田 hoặc T. Yamada trong paper Nhật). Khi cite tác giả nước ngoài: dùng full Romanized name hoặc katakana phiên âm tùy field. (3) 二重投稿 (double submission) là vi phạm nặng — đừng cite paper của chính bạn vào paper khác mà không declare. Self-citation phải mark rõ. (4) PARAPHRASE TIÊU CHUẨN CAO — paraphrase mà giữ structure câu gốc bị coi như 'patchwriting' = gần với 盗用. C1 phải hoàn toàn tái cấu trúc, hoặc quote thẳng. Khác VN: ở VN paraphrase loose hơn được chấp nhận; ở Nhật reviewer kiểm tra strict. Mẹo: nếu bạn không thể paraphrase đủ khác, quote trực tiếp + 「」 + cite trang. An toàn hơn paraphrase nửa vời.",
+    "cultural_notes_en": "Japanese citation culture differs from Vietnamese on four points. (1) STRICTER ATTRIBUTION THAN VIETNAM — even a general claim is cited; Vietnamese academia often finds it acceptable not to cite 'common knowledge,' but Japanese C1 academic writing requires more citation. When in doubt, cite. (2) NAME ORDER — Japanese reference lists put the family name first, not an initialized given name (山田太郎, not 太郎・山田 or 'T. Yamada' in a Japanese paper); for foreign authors use the full Romanized name or a katakana transliteration depending on the field. (3) 二重投稿 (double submission) is a serious violation — do not cite your own paper into another without declaring it; self-citation must be marked clearly. (4) HIGH PARAPHRASE STANDARD — a paraphrase that keeps the original sentence structure is treated as 'patchwriting,' close to 盗用 (plagiarism); at C1 you must restructure completely or quote directly. Unlike Vietnam, where looser paraphrase is accepted, Japanese reviewers check strictly. Tip: if you cannot paraphrase differently enough, quote directly with 「」 and cite the page — safer than a half-hearted paraphrase.",
     "tip_advice_vi": "Workflow trích dẫn an toàn cho luận văn Nhật C1. (a) MỖI lần đọc paper, ghi ngay full citation + page numbers vào notes — đừng để 'sẽ tìm lại sau'. Sau 30 paper bạn không nhớ ai nói gì. (b) PHÂN BIỆT 3 mức ghi chú: 直接引用 (direct quote, nguyên văn) → 「」 + page; 言い換え (paraphrase) → no quote marks nhưng cite; 自分の解釈 (your synthesis) → no cite, mark với memo 'mine'. Trộn lẫn = nguy cơ 盗用. (c) TRƯỚC submit, double-check mỗi cite: tác giả + năm khớp với references list không? Page number chính xác không? Reviewer Nhật kiểm tra random sample — cite sai 1 chỗ làm reviewer mất tin tưởng cả paper. (d) KHI dùng 〜とされる (it is said), reviewer có thể hỏi 'ai nói?' — phải có cite ngay sau, hoặc đổi thành 'tôi giả định' với hedge khác. (e) KHI cite tiếng Việt source trong paper Nhật, theo convention: Romanized author name + year, references list ghi cả tựa gốc tiếng Việt + dịch tiếng Nhật trong [括弧]. Mẹo cuối: nếu phát hiện đã paraphrase thiếu attribution sau khi nộp, báo cáo chủ động cho biên tập viên — tự sửa được dù muộn vẫn nhẹ hơn nhiều so với bị phát hiện.",
+    "tip_advice_en": "A safe citation workflow for a Japanese C1 thesis. (a) Every time you read a paper, immediately record the full citation + page numbers in your notes — don't leave it to 'I'll find it again later'; after 30 papers you won't remember who said what. (b) DISTINGUISH 3 levels of notes: 直接引用 (direct quote, verbatim) → 「」 + page; 言い換え (paraphrase) → no quotation marks but cite; 自分の解釈 (your synthesis) → no citation, marked with a memo 'mine'. Mixing them = risk of 盗用. (c) BEFORE submitting, double-check each citation: do author + year match the reference list? Is the page number accurate? Japanese reviewers check a random sample — one wrong citation makes the reviewer distrust the whole paper. (d) When you use 〜とされる (it is said), a reviewer may ask 'who says?' — there must be a citation right after, or change it to 'I assume' with a different hedge. (e) When citing a Vietnamese source in a Japanese paper, follow the convention: Romanized author name + year, with the reference list giving both the original Vietnamese title and a Japanese translation in [括弧]. Final tip: if you discover after submission that you paraphrased without attribution, report it proactively to the editor — fixing it yourself, even late, is far lighter than being caught.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -625,35 +665,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn raise reverse causality concern cho 1 paper. Phrase bằng 因果の方向性については、別の解釈も成り立つように思われます. KHÔNG accusatory — frame như tentative observation, để presenter giữ face.",
       "Presenter accept partial criticism của bạn. Acknowledge bằng 鋭いご指摘です hoặc 誠にもっともなご指摘でございます. KHÔNG over-bow ('I was completely wrong') — graceful partial acceptance preserves cả hai sides."
     ],
+    "roleplay_prompts_en": [
+      "A reviewer raises a counter-argument about sample bias. Respond with ご指摘の点は、本稿でも限界として明示しております plus your robustness check. Do NOT be defensive ('but my data is good') — the Japanese Q&A norm is acknowledge first, then explain.",
+      "You raise a reverse-causality concern about a paper. Phrase it with 因果の方向性については、別の解釈も成り立つように思われます. Do NOT be accusatory — frame it as a tentative observation so the presenter keeps face.",
+      "The presenter accepts part of your criticism. Acknowledge with 鋭いご指摘です or 誠にもっともなご指摘でございます. Do NOT over-bow ('I was completely wrong') — graceful partial acceptance preserves both sides."
+    ],
     "register_notes": "C1 academic argumentation tuân theo 4 nguyên tắc cốt lõi. (1) ACKNOWLEDGE BEFORE REBUT — luôn mở counter-argument bằng phrase công nhận: 確かに〜が, ご指摘のとおり, ご想定はもっともながら. Tiếng Nhật academic culture coi đi thẳng vào phản đối là thô lỗ và làm yếu argument của bạn. (2) HEDGE THE REBUTTAL — sau acknowledge, dùng とはいえ / しかしながら / そうは言うものの cộng hedged claim: 〜には至らない (does not go so far as to), 〜とは限らない (not necessarily). Strong rebuttal direct hiếm gặp ngoài 反駁論文 chuyên biệt. (3) GROUND-WARRANT-CLAIM STRUCTURE — Toulmin model adapted: 根拠 (data/grounds) → 論拠 (warrant) → 主張 (claim). C1 reviewer kiểm tra cả ba; missing 論拠 là weakness phổ biến nhất. (4) FALLACY VOCABULARY — 論理的飛躍 (logical leap), 循環論法 (circular reasoning), 過度の一般化 (over-generalization), 偽の二分法 (false dichotomy). Biết tên các fallacies bằng tiếng Nhật cho phép bạn phản biện chính xác mà không thô. Discourse markers: 一方 (on the other hand), 他方 (on the other), 反面 (conversely), これに対し (in contrast). Cẩn thận với 絶対に〜ない (absolutely not) trong phản biện — sound đầy aggressive; thay bằng 必ずしも〜とは言えない. Quan trọng: phản biện ở Nhật academic không phải zero-sum win/lose mà là 共同の真理探求 (joint pursuit of truth) — tone hợp tác làm phản biện effective hơn.",
+    "register_notes_en": "Register: always 確かに〜が / ご指摘のとおり before you rebut, then hedge with とはいえ / しかしながら and 〜とは限らない / 〜には至らない rather than a flat 絶対に〜ない; build 根拠→論拠→主張 and name fallacies (論理的飛躍, 循環論法) precisely — rebuttal here is 共同の真理探求, not winning.",
     "idiom_glosses": [
       {
         "idiom": "矛盾 (むじゅん)",
         "literal": "Mâu (giáo) + thuẫn (khiên) — từ điển tích Hàn Phi Tử",
         "meaning": "[書き言葉・話し言葉] Mâu thuẫn nội tại trong lập luận — từ chuẩn cho self-contradiction trong reasoning.",
-        "example": "氏の論には、前提と結論との間に矛盾が認められる。"
+        "example": "氏の論には、前提と結論との間に矛盾が認められる。",
+        "literal_en": "spear and shield — from the Han Feizi parable (mujun)",
+        "meaning_en": "An internal contradiction in an argument — the standard term for self-contradiction in reasoning. (written/spoken)",
+        "example_en": "In his argument, a contradiction is found between the premise and the conclusion."
       },
       {
         "idiom": "詭弁 (きべん)",
         "literal": "Lời ngụy biện",
         "meaning": "[硬い・書き言葉] Sophistry — lập luận có vẻ hợp lý nhưng sai logic; dùng cẩn thận, có nghĩa accusatory.",
-        "example": "氏の主張は、一見もっともらしいが、詭弁の域を出ない。"
+        "example": "氏の主張は、一見もっともらしいが、詭弁の域を出ない。",
+        "literal_en": "specious words (kiben)",
+        "meaning_en": "Sophistry — reasoning that looks plausible but is logically flawed; use carefully, as it is accusatory. (formal, written)",
+        "example_en": "His claim seems plausible at first glance, but it does not rise above sophistry."
       },
       {
         "idiom": "玉に瑕 (たまにきず)",
         "literal": "Vết trên viên ngọc",
         "meaning": "[書き言葉] Khen tổng thể nhưng chỉ ra khuyết điểm nhỏ — diplomatic critique format trong Nhật academic.",
-        "example": "本研究は優れた成果であるが、サンプル規模の小ささが玉に瑕と言えよう。"
+        "example": "本研究は優れた成果であるが、サンプル規模の小ささが玉に瑕と言えよう。",
+        "literal_en": "a flaw in the jewel (tama ni kizu)",
+        "meaning_en": "Praising the whole while noting a small defect — the diplomatic critique format in Japanese academia. (written)",
+        "example_en": "This study is an excellent achievement, though the small sample size may be said to be the one flaw in the jewel."
       },
       {
         "idiom": "百家争鳴 (ひゃっかそうめい)",
         "literal": "Trăm nhà tranh luận sôi nổi",
         "meaning": "[硬い・書き言葉] Diễn đàn học thuật sôi nổi với nhiều quan điểm — dùng khi mô tả debate đa chiều.",
-        "example": "この問題をめぐっては、近年百家争鳴の様相を呈している。"
+        "example": "この問題をめぐっては、近年百家争鳴の様相を呈している。",
+        "literal_en": "a hundred schools contending vociferously (hyakka sōmei)",
+        "meaning_en": "A lively academic forum with many competing viewpoints — used to describe multi-sided debate. (formal, written)",
+        "example_en": "On this question, recent years have taken on the aspect of a hundred schools contending."
       }
     ],
     "cultural_notes_vi": "Phản biện ở học thuật Nhật khác phương Tây và VN ở 4 điểm. (1) WIN-LOSE → JOINT INQUIRY — Western debate culture có khuynh hướng zero-sum: ai 'thắng' argument. Nhật academic frame là 共同の真理探求 — cả presenter và discussant đang join để tìm truth. Tone phản biện hợp tác làm critique effective hơn, không yếu hơn. (2) ATTACK IDEA, NOT PERSON — không bao giờ 'X氏の認識不足' (X's lack of understanding). Thay bằng 'この点については、別解釈の余地がある' (regarding this point, there is room for alternative interpretation). Personal attack ngay lập tức discredit bạn. (3) PUBLIC CRITIQUE LIMITS — ở 学会, harsh critique của junior với senior là vi phạm nghiêm trọng dù argument đúng. Nếu bạn (junior) phải phản biện senior, dùng full hedge: ご教示いただければ幸いでございます (it would be gracious if you could enlighten me) thay vì assertive. (4) SILENCE = DISAGREEMENT — sau phản biện, presenter im lặng vài giây không phải agreeing — họ đang điều chỉnh response. Đừng fill silence bằng cách restate phản biện. Wait. Khác VN: ở VN seminar, debate sôi nổi với raised voice OK; ở Nhật học thuật, raised voice đọc là loss of control = loss of argument. Mẹo: học cụm 興味深いご指摘です (an interesting observation) làm filler khi cần thời gian suy nghĩ — buys 3 giây mà sound polished.",
+    "cultural_notes_en": "Counter-argument in Japanese academia differs from the West and Vietnam on four points. (1) WIN-LOSE → JOINT INQUIRY — Western debate culture tends toward zero-sum: who 'wins' the argument. The Japanese academic frame is 共同の真理探求 — presenter and discussant join to find the truth; a cooperative critical tone makes the critique more effective, not weaker. (2) ATTACK THE IDEA, NOT THE PERSON — never 'X氏の認識不足' (X's lack of understanding); instead 'この点については、別解釈の余地がある' (regarding this point, there is room for an alternative interpretation). A personal attack discredits you instantly. (3) PUBLIC CRITIQUE LIMITS — at a 学会, harsh critique by a junior of a senior is a serious breach even if the argument is right; if you (junior) must rebut a senior, use a full hedge: ご教示いただければ幸いでございます rather than an assertive form. (4) SILENCE = ADJUSTMENT — after a rebuttal, a few seconds of presenter silence is not agreement; they are reformulating. Don't fill the silence by restating. Wait. Unlike Vietnam, where a lively seminar with raised voices is fine, in Japanese academia a raised voice reads as loss of control = loss of argument. Tip: learn 興味深いご指摘です (an interesting observation) as a filler when you need a moment — it buys three seconds yet sounds polished.",
     "tip_advice_vi": "Cấu trúc một phản biện C1 ở 質疑応答. (a) PHRASE BUFFER — mở bằng ご発表ありがとうございました cộng 一点伺ってもよろしいでしょうか. KHÔNG đi thẳng vào 'I disagree'. (b) ACKNOWLEDGE — 1 câu công nhận điểm mạnh: 〜という分析、大変興味深く拝聴いたしました. Genuine, không sycophantic. (c) RAISE — phrase phản biện như observation chứ không attack: 〜については、〜という解釈も成り立つように思われますが、いかがでしょうか. Câu hỏi mở (どうお考えでしょうか) thay vì statement. (d) EXIT — sau presenter trả lời, đáp 明快なご回答、ありがとうございました dù bạn vẫn không thuyết phục. Long-form debate move sang offline tea/email. Mẹo response khi BẠN bị phản biện: 4 phrases an toàn. (1) ご指摘のとおりでございます (as you point out — accept). (2) 鋭いご指摘でございます (incisive observation — flatter while thinking). (3) その点は本稿の射程外でございます (that point falls outside the scope — defer). (4) 今後の課題として承ります (I will receive that as a future task — graceful deferral). Tránh: 'いえ、それは違います' (no, that's wrong) — too direct, gây offense. Mẹo cuối: ghi xuống mọi critique nhận được. Sau seminar, follow-up email với discussant: 本日は貴重なご指摘ありがとうございました cộng 1 paragraph cách bạn sẽ address. Đây builds long-term relationship — Nhật academic depends heavily trên các quan hệ này.",
+    "tip_advice_en": "Structuring a C1 rebuttal in 質疑応答. (a) PHRASE BUFFER — open with ご発表ありがとうございました plus 一点伺ってもよろしいでしょうか. Do NOT go straight to 'I disagree.' (b) ACKNOWLEDGE — one sentence recognizing a strength: 〜という分析、大変興味深く拝聴いたしました. Genuine, not sycophantic. (c) RAISE — phrase the rebuttal as an observation, not an attack: 〜については、〜という解釈も成り立つように思われますが、いかがでしょうか. An open question (どうお考えでしょうか) rather than a statement. (d) EXIT — after the presenter answers, reply 明快なご回答、ありがとうございました even if you remain unconvinced; move long-form debate to offline tea or email. When YOU are rebutted, four safe phrases: (1) ご指摘のとおりでございます (accept), (2) 鋭いご指摘でございます (flatter while thinking), (3) その点は本稿の射程外でございます (defer as out of scope), (4) 今後の課題として承ります (graceful deferral). Avoid 'いえ、それは違います' (no, that's wrong) — too direct, gives offense. Final tip: write down every critique you receive; after the seminar, follow up by email with the discussant: 本日は貴重なご指摘ありがとうございました plus a paragraph on how you will address it. This builds the long-term relationships Japanese academia depends on.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -853,35 +913,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ ra '断定的すぎる'. Đáp lại bằng ご指摘ごもっともです cộng cụ thể cách bạn sẽ soften — 「証明する」→「示唆する」. KHÔNG cãi rằng claim của bạn có evidence — accept formatting feedback gracefully.",
       "Bạn cần state limitation mà không undermine paper. Cụm 本知見は〜に限定されるものである, sau đó pivot 本稿の貢献は〜にある (the contribution lies in〜). Acknowledge limit + reframe contribution."
     ],
+    "roleplay_prompts_en": [
+      "You revise a passage that is too assertive. Replace 'X が Y を引き起こす' with 'X が Y を引き起こす可能性が示唆される'. Do NOT hedge everything — over-hedging also weakens the paper. Hedge the claim, not the data description.",
+      "A reviewer notes it is 断定的すぎる (too categorical). Respond with ご指摘ごもっともです plus exactly how you will soften it — 「証明する」→「示唆する」. Do NOT argue that your claim has evidence — accept the formatting feedback gracefully.",
+      "You need to state a limitation without undermining the paper. Use 本知見は〜に限定されるものである, then pivot to 本稿の貢献は〜にある (the contribution lies in〜). Acknowledge the limit, then reframe the contribution."
+    ],
     "register_notes": "Hedging ở C1 academic Japanese tổ chức theo 5 tiers từ strong đến soft. (1) STRONG (= 'is') — 〜である, 〜となる. Chỉ dùng cho định nghĩa, sự kiện thiết lập, kết quả thống kê chính xác. (2) MEDIUM-STRONG — 〜と考えられる (is considered), 〜と判断される (is judged). Dùng cho diễn giải có support mạnh từ data. (3) MEDIUM — 〜可能性が示唆される (the possibility is suggested), 〜と推察される (is inferred). Default cho hầu hết findings. (4) SOFT — 〜と言えなくもない (it cannot not be said that), 〜の余地がある (there is room for). Dùng khi evidence yếu hoặc preliminary. (5) VERY SOFT — 〜かもしれない (may, only in dialogue, NEVER in formal writing). Discourse marker hedges: 厳密に言えば (strictly), 概ね (broadly), 一般に (generally), 場合によっては (in some cases), 状況次第では (depending on circumstances). Scope hedges (限定詞): 〜に限定される, 〜の範囲内では, 〜という条件下では. Counter-hedges (KHÔNG over-hedge): nếu data thực sự chứng minh, dùng 〜ことが確認された (was confirmed) — over-hedging clear results sound như bạn không tự tin trong work của mình. Quy tắc 90 phần trăm: 90 phần trăm content claim trong C1 academic paper nên là tier 2-4. Tier 1 chỉ cho data/method, tier 5 chỉ cho preliminary discussion. Cẩn thận: 必ずしも〜とは限らない (not necessarily) là hedge yêu thích nhưng overuse làm prose nặng — limit 1-2 lần per section.",
+    "register_notes_en": "Register: keep ~90% of claims in tiers 2–4 — 〜と考えられる / 〜と判断される (well-supported), 〜可能性が示唆される / 〜と推察される (default), 〜と言えなくもない / 〜の余地がある (weak) — reserve 〜である for definitions and data, never 〜かもしれない in formal prose, and do not over-hedge confirmed results (〜ことが確認された).",
     "idiom_glosses": [
       {
         "idiom": "十中八九 (じっちゅうはっく)",
         "literal": "Tám hoặc chín phần trên mười",
         "meaning": "[書き言葉・話し言葉] Hầu như chắc chắn, 80-90 phần trăm — high-probability hedge phù hợp khi evidence rất mạnh nhưng chưa absolute.",
-        "example": "十中八九、観察された相関は偶然ではないと考えられる。"
+        "example": "十中八九、観察された相関は偶然ではないと考えられる。",
+        "literal_en": "eight or nine out of ten (jicchū hakku)",
+        "meaning_en": "Almost certain, 80–90% — a high-probability hedge fitting when the evidence is very strong but not absolute. (written/spoken)",
+        "example_en": "In all likelihood, the observed correlation is considered not to be coincidental."
       },
       {
         "idiom": "断じて〜ない (だんじて〜ない)",
         "literal": "Tuyệt đối không",
         "meaning": "[硬い・書き言葉] Anti-hedge — strong negation; chỉ dùng khi data hoàn toàn rule out something, hiếm trong empirical work.",
-        "example": "本データに基づく限り、両者に因果関係があると断じて言うことはできない。"
+        "example": "本データに基づく限り、両者に因果関係があると断じて言うことはできない。",
+        "literal_en": "absolutely not (danjite … nai)",
+        "meaning_en": "An anti-hedge — strong negation; use only when the data wholly rules something out, rare in empirical work. (formal, written)",
+        "example_en": "As far as the present data allows, one cannot categorically say that a causal relationship exists between the two."
       },
       {
         "idiom": "一概に言えない (いちがいにいえない)",
         "literal": "Không thể nói một cách đơn giản",
         "meaning": "[書き言葉] Hedge cho generalization — phù hợp khi nuance quan trọng và một-size-fits-all không apply.",
-        "example": "教育効果の有無は、文脈に依存するため、一概に論じることはできない。"
+        "example": "教育効果の有無は、文脈に依存するため、一概に論じることはできない。",
+        "literal_en": "cannot be said in a single sweep (ichigai ni ienai)",
+        "meaning_en": "A hedge for generalizations — apt when nuance matters and one-size-fits-all does not apply. (written)",
+        "example_en": "Whether an educational effect exists cannot be discussed in sweeping terms, since it depends on context."
       },
       {
         "idiom": "灰色 (はいいろ)",
         "literal": "Màu xám",
         "meaning": "[書き言葉] Vùng không-đen-không-trắng — dùng để mô tả findings nằm giữa two clear categories.",
-        "example": "本結果は、明確な肯定とも否定ともつかぬ、いわば灰色の領域に属するものと言えよう。"
+        "example": "本結果は、明確な肯定とも否定ともつかぬ、いわば灰色の領域に属するものと言えよう。",
+        "literal_en": "gray (haiiro)",
+        "meaning_en": "A neither-black-nor-white zone — used to describe findings lying between two clear categories. (written)",
+        "example_en": "This result may be said to belong to a so-called gray area, neither a clear affirmation nor a denial."
       }
     ],
     "cultural_notes_vi": "Hedging ở Nhật academic culture có 3 đặc điểm cần hiểu. (1) HEDGE = COMPETENCE — phương Tây có thể hiểu 'Tôi không chắc' là yếu kém; Nhật academic ngược lại — over-confident claim đọc là naïve hoặc thiếu trải nghiệm. Reviewer Nhật chấm điểm cao cho appropriate hedging. Senior researchers thường hedge nhiều HƠN junior, không ít hơn. (2) HEDGE PROTECTS PEER RELATIONSHIPS — strong claim implicitly nói 'những ai bất đồng với tôi đều sai'. Hedge giữ space cho ý kiến khác, bảo vệ collegial relationships. Trong giới học thuật Nhật nhỏ và liên kết chặt, sustained relationships > single paper victory. (3) HEDGE BÁO HIỆU MEMBERSHIP — cách đúng để hedge là cách bạn báo hiệu 'tôi biết các quy ước của giới này'. Học sinh dùng 〜と思います (I think) thay vì 〜と考えられる ngay lập tức bị flag là chưa initiated. Cụm 〜可能性が示唆される là một membership marker. Khác VN: VN academic prose có khuynh hướng more assertive, especially trong soft sciences; Nhật C1 paper hedge dày hơn. Khi dịch paper VN sang Nhật, gần như luôn cần thêm 1-2 hedges per paragraph. Mẹo: nếu draft của bạn có 0 hedges trong 1 đoạn discussion, có thể bạn đang over-claim. Đọc lại với mindset 'reviewer đang tìm chỗ over-claim' và soften ở chỗ data thực sự không support strong version.",
+    "cultural_notes_en": "Hedging in Japanese academic culture has three features to understand. (1) HEDGE = COMPETENCE — the West may read 'I'm not sure' as weakness; Japanese academia is the reverse — an over-confident claim reads as naïve or inexperienced, and Japanese reviewers score appropriate hedging highly. Senior researchers usually hedge MORE than juniors, not less. (2) HEDGE PROTECTS PEER RELATIONSHIPS — a strong claim implicitly says 'anyone who disagrees with me is wrong.' A hedge leaves room for other views and protects collegial relationships; in the small, tightly networked Japanese academic world, sustained relationships outweigh a single paper's victory. (3) HEDGE SIGNALS MEMBERSHIP — how you hedge is how you signal 'I know this community's conventions.' A student who uses 〜と思います (I think) instead of 〜と考えられる is flagged at once as not yet initiated; 〜可能性が示唆される is a membership marker. Unlike Vietnam, where academic prose tends to be more assertive, especially in the soft sciences, a Japanese C1 paper hedges more densely — translating a Vietnamese paper into Japanese almost always needs 1–2 added hedges per paragraph. Tip: if a discussion paragraph of your draft has zero hedges, you may be over-claiming. Reread it as 'the reviewer is hunting for over-claim' and soften where the data does not actually support the strong version.",
     "tip_advice_vi": "Hedging hiệu quả ở C1 cần balance, không spam. Quy tắc thực hành. (a) HEDGE CLAIM, KHÔNG HEDGE DATA — 'X が Y を増加させた' (data) → KHÔNG hedge nếu thực sự increased; 'X が Y の増加を引き起こした' (causal claim) → HEDGE thành 〜の可能性が示唆される. Phân biệt observation vs interpretation. (b) PICK HEDGE STRENGTH MATCHING EVIDENCE STRENGTH — 1 case study → soft hedge (〜の余地がある); meta-analysis với p<0.001 → minimal hedge (〜と考えられる). Mismatch hedge với evidence làm reader skeptical. (c) CLUSTER HEDGES, KHÔNG SPRINKLE — 1 well-placed hedge ở claim chính > 5 small hedges scattered. Reader đếm hedges; quá nhiều = paper sound uncertain about everything. (d) USE SCOPE HEDGES TO BOUND CLAIM — thay vì soften 'X causes Y' thành 'X may cause Y', tốt hơn bound: '本研究の対象群においては、X が Y を引き起こしたことが示唆される' (within the surveyed group, X is suggested to have caused Y). Scope-bound = strong-within-scope, an toàn hơn. (e) IN ABSTRACT — hedge thấp hơn body, vì abstract đọc standalone. Reviewer không đọc body sẽ judge từ abstract; over-hedged abstract đọc như 'we found nothing'. Mẹo cuối: trước khi submit, do hedge audit — đếm số 'は〜である' câu vs số hedged câu trong discussion. Tỷ lệ healthy là 1:3 (1 strong claim per 3 hedged). Nếu 1:1, paper quá bold; nếu 1:10, paper quá timid.",
+    "tip_advice_en": "Effective hedging at C1 needs balance, not spam. Practical rules. (a) HEDGE THE CLAIM, NOT THE DATA — 'X が Y を増加させた' (data) → do NOT hedge if it truly increased; 'X が Y の増加を引き起こした' (causal claim) → HEDGE to 〜の可能性が示唆される. Distinguish observation from interpretation. (b) MATCH HEDGE STRENGTH TO EVIDENCE STRENGTH — one case study → soft hedge (〜の余地がある); a meta-analysis with p<0.001 → minimal hedge (〜と考えられる). A mismatch makes the reader skeptical. (c) CLUSTER HEDGES, DON'T SPRINKLE — one well-placed hedge on the main claim beats five small ones scattered; readers count hedges, and too many makes the paper sound uncertain about everything. (d) USE SCOPE HEDGES TO BOUND THE CLAIM — instead of softening 'X causes Y' to 'X may cause Y', it is better to bound it: '本研究の対象群においては、X が Y を引き起こしたことが示唆される' (within the surveyed group, X is suggested to have caused Y). Scope-bound = strong-within-scope, and safer. (e) IN THE ABSTRACT — hedge less than in the body, because the abstract is read standalone; a reviewer who reads only the abstract judges from it, and an over-hedged abstract reads as 'we found nothing.' Final tip: before submitting, do a hedge audit — count 'は〜である' sentences against hedged sentences in the discussion. A healthy ratio is 1:3 (one strong claim per three hedged). At 1:1 the paper is too bold; at 1:10, too timid.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1091,35 +1171,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn dùng term mà literature có 2 conflicting definitions. Phrase bằng 「X」という用語は、論者によって含意が異なるため、本稿では暫定的に〜と限定する. Acknowledge conflict + state your choice + mark provisional.",
       "Bạn đang convert abstract concept sang operational definition. Cụm 操作的に「〜」と定義される cộng nói indicators bạn sẽ dùng. KHÔNG để abstract — reviewer Nhật C1 expect operationalization."
     ],
+    "roleplay_prompts_en": [
+      "You need to introduce a new term in the paper. Open with 本稿では、「X」を以下のように定義する plus the concrete definition. Do NOT use a term without defining it — a Japanese reviewer flags undefined terms immediately.",
+      "You use a term for which the literature has two conflicting definitions. Phrase it with 「X」という用語は、論者によって含意が異なるため、本稿では暫定的に〜と限定する. Acknowledge the conflict + state your choice + mark it provisional.",
+      "You are converting an abstract concept into an operational definition. Use 操作的に「〜」と定義される plus the indicators you will use. Do NOT leave it abstract — a Japanese C1 reviewer expects operationalization."
+    ],
     "register_notes": "Định nghĩa thuật ngữ ở C1 academic Japanese theo 4 patterns. (1) STIPULATIVE DEFINITION (定義) — '本稿では「X」を〜と定義する'. Bạn declare ý nghĩa cho purposes của paper, không claim universal definition. Pattern an toàn nhất khi field có disagreement. (2) OPERATIONAL DEFINITION (操作的定義) — '操作的に〜と定義される' cộng observable indicators. Required cho empirical work; missing operational def = paper bị desk reject ở quantitative journals. (3) RESTRICTIVE DEFINITION (限定) — '本稿では便宜上〜に限定する'. Acknowledge term broader nhưng bound scope. 便宜上 (for convenience) signal honest scope reduction. (4) NEGATIVE DEFINITION (区別) — 'ここで言う「X」は〜を含まない' (X as referred to here does not include〜). Useful khi concept dễ bị confused với related terms. Definition syntax: subject-marker は, copula である, hoặc とは…のことである / とは…を指す. 「X」とは〜を指す là formal classroom-textbook style; 「X」を〜と定義する là journal style. Avoid 「X」って〜のことだよね (spoken). 外延 (extension — set of things term applies to) vs 内包 (intension — defining attributes) — C1 phải biết cả hai. Definition placement: ngay sau lần đầu term xuất hiện, hoặc trong subsection 「用語の定義」 ở đầu method section. KHÔNG để reader đợi đến results để biết term nghĩa gì.",
+    "register_notes_en": "Register: declare meaning for the paper, not universally — 本稿では「X」を〜と定義する (stipulative), 操作的に〜と定義される (operational, required for empirical work), 本稿では便宜上〜に限定する (restrictive), ここで言う「X」は〜を含まない (negative); use journal-style 〜と定義する over textbook 〜とは…を指す, and distinguish 外延 from 内包.",
     "idiom_glosses": [
       {
         "idiom": "言葉を厳密に用いる (ことばをげんみつにもちいる)",
         "literal": "Sử dụng từ ngữ chặt chẽ",
         "meaning": "[書き言葉] Set phrase cho 'use words strictly/precisely' — academic virtue được expected ở C1.",
-        "example": "学術的議論においては、言葉を厳密に用いることが、論旨の明晰さを支える基盤となる。"
+        "example": "学術的議論においては、言葉を厳密に用いることが、論旨の明晰さを支える基盤となる。",
+        "literal_en": "to use words strictly (kotoba o genmitsu ni mochiiru)",
+        "meaning_en": "The set phrase for using words strictly and precisely — an academic virtue expected at C1. (written)",
+        "example_en": "In scholarly discussion, using words strictly is the foundation that supports clarity of argument."
       },
       {
         "idiom": "玉虫色 (たまむしいろ)",
         "literal": "Màu của bọ ngọc — đổi màu theo góc nhìn",
         "meaning": "[書き言葉] Mơ hồ một cách cố ý — diễn giải khác nhau tùy người đọc; CRITIQUE term, không phải khen.",
-        "example": "玉虫色の定義は、議論を曖昧にし、結論の検証を困難にする。"
+        "example": "玉虫色の定義は、議論を曖昧にし、結論の検証を困難にする。",
+        "literal_en": "jewel-beetle color, shifting with the angle (tamamushiiro)",
+        "meaning_en": "Deliberately ambiguous — read differently by different readers; a critique term, not praise. (written)",
+        "example_en": "An ambiguous, jewel-beetle definition obscures the discussion and makes the conclusion hard to verify."
       },
       {
         "idiom": "百人百様 (ひゃくにんひゃくよう)",
         "literal": "Trăm người trăm vẻ",
         "meaning": "[書き言葉] Mỗi người định nghĩa khác — phù hợp khi mô tả disagreement trong literature về một concept.",
-        "example": "「グローバル化」の定義は百人百様であり、まずは本稿の用法を明示する必要がある。"
+        "example": "「グローバル化」の定義は百人百様であり、まずは本稿の用法を明示する必要がある。",
+        "literal_en": "a hundred people, a hundred styles (hyakunin hyakuyō)",
+        "meaning_en": "Everyone defines it differently — apt when describing disagreement in the literature over a concept. (written)",
+        "example_en": "Definitions of 'globalization' are a hundred people with a hundred views, so the paper's own usage must first be made explicit."
       },
       {
         "idiom": "言は意を尽くさず (げんはいをつくさず)",
         "literal": "Lời không nói hết ý",
         "meaning": "[硬い・書き言葉] Cổ ngữ — ngôn ngữ không bao giờ truyền đạt hết khái niệm; phù hợp khi acknowledge limit của definition.",
-        "example": "言は意を尽くさずと申すように、いかなる定義も対象の全体像を完全に捉え得るものではない。"
+        "example": "言は意を尽くさずと申すように、いかなる定義も対象の全体像を完全に捉え得るものではない。",
+        "literal_en": "words do not exhaust meaning (gen wa i o tsukusazu)",
+        "meaning_en": "A classical maxim — language never fully conveys a concept; apt when acknowledging the limits of a definition. (formal, written)",
+        "example_en": "As the saying goes that words do not exhaust meaning, no definition can capture the full picture of its object."
       }
     ],
     "cultural_notes_vi": "Văn hóa định nghĩa trong giới học thuật Nhật khác phương Tây ở 3 điểm. (1) STIPULATIVE > UNIVERSAL — phương Tây philosophy có khuynh hướng tìm 'true definition'; Nhật academic pragmatic hơn — 'cho paper này, term này nghĩa gì'. Cụm 本稿では là cốt lõi. KHÔNG claim definition của bạn là universally correct. (2) ETYMOLOGY MATTERS — Nhật scholars thường giải thích nguồn gốc kanji của term. 「適応」とは、「適」と「応」から成り、〜 (the term 'tekiou' is composed of 'teki' and 'ou', meaning〜). Mức độ etymology phụ thuộc field — humanities / linguistics nhiều, hard sciences ít. (3) BORROW WORDS REQUIRE EXTRA CARE — terms từ tiếng Anh transliterated katakana (アイデンティティ, グローバル化) đặc biệt cần định nghĩa vì meanings drift trong Japanese context khác source language. Cụm: 「アイデンティティ」という語は、英語の identity と必ずしも一致しないため、本稿では〜と限定する. Khác VN: VN academic accept loanwords thoải mái không cần định nghĩa lại; Nhật C1 expect bạn flag drift. Mẹo: tạo 用語一覧 (glossary) ở appendix nếu paper dùng > 5 specialized terms. Reviewer thanks. Đọc viên ESL student thanks even more. Mẹo cuối: trước submit, list mọi term unusual và check — đã có definition chưa, có consistent với định nghĩa của bạn xuyên suốt paper không? Concept drift mid-paper là weakness phổ biến.",
+    "cultural_notes_en": "Definition culture in Japanese academia differs from the West on three points. (1) STIPULATIVE > UNIVERSAL — Western philosophy tends to seek the 'true definition'; Japanese academia is more pragmatic — 'for this paper, what does this term mean.' The phrase 本稿では is core. Do NOT claim your definition is universally correct. (2) ETYMOLOGY MATTERS — Japanese scholars often explain a term's kanji origin: 「適応」とは、「適」と「応」から成り、〜 (the term 'tekiō' is composed of 'teki' and 'ō', meaning〜). How much etymology depends on the field — much in the humanities and linguistics, little in the hard sciences. (3) BORROWED WORDS NEED EXTRA CARE — terms transliterated from English into katakana (アイデンティティ, グローバル化) especially need defining, because their meanings drift in the Japanese context away from the source language: 「アイデンティティ」という語は、英語の identity と必ずしも一致しないため、本稿では〜と限定する. Unlike Vietnam, which accepts loanwords freely without redefining, Japanese C1 expects you to flag the drift. Tip: build a 用語一覧 (glossary) in an appendix if the paper uses more than five specialized terms — reviewers thank you, and ESL readers thank you even more. Final tip: before submitting, list every unusual term and check — is it defined, and is usage consistent with that definition throughout? Concept drift mid-paper is a common weakness.",
     "tip_advice_vi": "Workflow định nghĩa term ở luận văn C1 Nhật. (a) IDENTIFY TERMS NEEDING DEFINITION — gồm: technical terms (jargon ngành), borrowed terms (từ ngoại), contested terms (literature disagree), neologisms (term mới của bạn). Skip: từ tiếng Nhật hàng ngày, terms định nghĩa rộng rãi và undisputed. (b) FOR EACH, CHỌN STYLE — stipulative (most general), operational (empirical work), restrictive (when field is broad), negative (when confusion likely). Mỗi term có thể cần combination. (c) PLACE STRATEGICALLY — first occurrence: short inline definition trong dấu ngoặc. Method section: full operational definition. Glossary: complete list. (d) CHECK CONSISTENCY — sau drafting, search mỗi term xuyên suốt paper, đảm bảo usage match definition. Drift là common — bạn có thể start với strict definition và slowly broaden khi viết. (e) CITE EXISTING DEFINITIONS RESPECTFULLY — nếu bạn modify Byram (1997)'s definition, frame như: Byram (一九九七) の定義を踏まえつつ、本稿では〜の点で修正を加え、〜とする. KHÔNG present modified version như nguyên bản của bạn — reviewer biết literature. Mẹo về negotiated meanings: nếu term bạn dùng có heavy political/cultural baggage (e.g. 「外国人」, 「日本語学習者」), acknowledge briefly. Cụm: 「X」という語は社会的含意を伴うことを承知しつつ、本稿では分析上の便宜から用いる. Mẹo cuối: nếu peer review push back trên definition, đừng cứng đầu. Nếu reviewer expert hiểu sai term, có nghĩa định nghĩa của bạn không clear enough cho audience rộng hơn. Revise để đỡ ambiguity, không argue rằng reviewer wrong.",
+    "tip_advice_en": "A term-definition workflow for a Japanese C1 thesis. (a) IDENTIFY TERMS NEEDING DEFINITION — technical terms (field jargon), borrowed terms (foreign), contested terms (the literature disagrees), neologisms (your own coinage). Skip everyday Japanese words and broadly defined, undisputed terms. (b) FOR EACH, CHOOSE A STYLE — stipulative (most general), operational (empirical work), restrictive (when the field is broad), negative (when confusion is likely); a term may need a combination. (c) PLACE STRATEGICALLY — first occurrence: a short inline definition in parentheses; method section: the full operational definition; glossary: the complete list. (d) CHECK CONSISTENCY — after drafting, search each term throughout the paper and make usage match the definition; drift is common — you may start strict and slowly broaden as you write. (e) CITE EXISTING DEFINITIONS RESPECTFULLY — if you modify Byram (1997)'s definition, frame it as: Byram (一九九七) の定義を踏まえつつ、本稿では〜の点で修正を加え、〜とする. Do NOT present the modified version as your own original — the reviewer knows the literature. On negotiated meanings: if a term carries heavy political/cultural baggage (e.g. 「外国人」, 「日本語学習者」), acknowledge it briefly: 「X」という語は社会的含意を伴うことを承知しつつ、本稿では分析上の便宜から用いる. Final tip: if peer review pushes back on a definition, don't be stubborn — if an expert reviewer misreads the term, it means the definition is not clear enough for a wider audience. Revise to reduce ambiguity rather than argue the reviewer is wrong.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1324,35 +1424,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ trích bạn 'không generalize'. Đáp lại bằng 本研究の方法論的選択は、文脈の深い理解を優先したものであり、一般化は今後の量的検証に委ねたく存じます. Acknowledge limit + reframe scope.",
       "Bạn proposing mixed methods. Cần justify integration logic. Phrase bằng 質的知見は量的検証の前提を提供し、量的結果は質的解釈の妥当性を支える、相互補完的な関係を想定している. Articulate WHY hai methods together > sum of parts."
     ],
+    "roleplay_prompts_en": [
+      "You justify choosing a qualitative approach. Phrase it with 本研究の問いの性質に鑑みれば、質的手法の採用が最も適合的である plus the trade-offs. Do NOT dismiss quantitative — frame it as 適合性 (fit) for this specific problem.",
+      "A reviewer criticizes you for 'not generalizing.' Respond with 本研究の方法論的選択は、文脈の深い理解を優先したものであり、一般化は今後の量的検証に委ねたく存じます. Acknowledge the limit + reframe the scope.",
+      "You are proposing mixed methods and must justify the integration logic. Phrase it with 質的知見は量的検証の前提を提供し、量的結果は質的解釈の妥当性を支える、相互補完的な関係を想定している. Articulate WHY the two methods together exceed the sum of their parts."
+    ],
     "register_notes": "So sánh phương pháp ở C1 academic Japanese theo 4 nguyên tắc. (1) BALANCE BEFORE PREFERENCE — luôn present strengths của BOTH methods trước khi declare lựa chọn của bạn. Một-sided comparison ngay lập tức flag là biased. Cụm: 一方〜、他方〜 (on one hand, on the other), 〜の長所は〜にあるが、短所として〜が指摘される. (2) FRAME AS FIT, NOT QUALITY — KHÔNG nói method A 'better than' B; nói method A 'more 適合的 (suited)' to your specific question. 適合性 (fit) > 優劣 (superiority) là academic norm. Method A cho question X, method B cho question Y; both legitimate. (3) ACKNOWLEDGE TRADE-OFFS — every choice có cost. Cụm: 〜を採用することに伴い、〜の側面については別途の検討を要する. Show bạn understand trade-off, không pretend chosen method có no weakness. (4) INTEGRATION LOGIC FOR MIXED METHODS — nếu propose mixed methods, MUST articulate how qualitative + quantitative integrate. Sequential? Parallel? Embedded? Reviewer Nhật particularly strict về điểm này. Cụm: 質的知見は〜を提供し、量的結果は〜を裏付ける、相補的関係を想定する. Comparison structure templates: '〜は〜である一方、〜は〜である' (parallel), '〜と異なり、〜は〜' (contrast), '〜と共通する点として〜が挙げられる' (similarity), '〜と〜との相違は、〜という点に求められる' (locating difference). Avoid: 'A は B より良い' (A is better than B) — too absolute, no fit-frame. Use 'A は本研究の目的に照らし、B より適合的である' (A, in light of this study's aim, is more suited than B). Cẩn thận: trong field debates về method (quant vs qual wars), maintain neutral stance. Partisan tone gây alienate reviewers từ phía đối lập.",
+    "register_notes_en": "Register: present both methods' strengths before declaring a choice, frame it as 適合性 (fit) not 優劣 (superiority) — 〜は本研究の目的に照らし〜より適合的である, never A は B より良い — acknowledge trade-offs with 〜を採用することに伴い〜を要する, and for mixed methods state the 相補的 integration logic explicitly.",
     "idiom_glosses": [
       {
         "idiom": "適材適所 (てきざいてきしょ)",
         "literal": "Đúng tài, đúng chỗ",
         "meaning": "[書き言葉] Method phù hợp với problem phù hợp — core principle khi chọn methodology.",
-        "example": "研究方法の選択は、適材適所の原則に基づき、問いの性質に応じて行われるべきである。"
+        "example": "研究方法の選択は、適材適所の原則に基づき、問いの性質に応じて行われるべきである。",
+        "literal_en": "the right talent in the right place (tekizai tekisho)",
+        "meaning_en": "The right method for the right problem — a core principle when choosing a methodology. (written)",
+        "example_en": "The choice of research method should follow the principle of the right tool in the right place, according to the nature of the question."
       },
       {
         "idiom": "二兎を追う者は一兎をも得ず (にとをおうものはいっとをもえず)",
         "literal": "Đuổi hai con thỏ thì không bắt được cả hai",
         "meaning": "[書き言葉] Cẩn báo against poorly-integrated mixed methods — chasing both ends up grasping neither.",
-        "example": "混合研究法は強力であるが、統合の論理を欠けば、二兎を追う者は一兎をも得ずとなりかねない。"
+        "example": "混合研究法は強力であるが、統合の論理を欠けば、二兎を追う者は一兎をも得ずとなりかねない。",
+        "literal_en": "one who chases two hares catches neither (nito o ou mono wa itto o mo ezu)",
+        "meaning_en": "A caution against poorly integrated mixed methods — chasing both ends in grasping neither. (written)",
+        "example_en": "Mixed methods are powerful, but lacking an integration logic, one who chases two hares may catch neither."
       },
       {
         "idiom": "一長一短 (いっちょういったん)",
         "literal": "Một cái dài, một cái ngắn",
         "meaning": "[書き言葉・話し言葉] Mỗi cái có long-and-short — set phrase neutral cho 'each has merits and demerits'.",
-        "example": "両手法は一長一短であり、研究目的に応じた選択が求められる。"
+        "example": "両手法は一長一短であり、研究目的に応じた選択が求められる。",
+        "literal_en": "one long, one short (icchō ittan)",
+        "meaning_en": "Each has its merits and demerits — a neutral set phrase for balanced comparison. (written/spoken)",
+        "example_en": "Both methods have their strengths and weaknesses, so a choice suited to the research aim is required."
       },
       {
         "idiom": "車の両輪 (くるまのりょうりん)",
         "literal": "Hai bánh xe của xe ngựa",
         "meaning": "[書き言葉] Hai elements thiết yếu, không tách rời — phù hợp khi mô tả qual và quant như mutually necessary.",
-        "example": "質的研究と量的研究は、社会科学の車の両輪と言うべき関係にある。"
+        "example": "質的研究と量的研究は、社会科学の車の両輪と言うべき関係にある。",
+        "literal_en": "the two wheels of a cart (kuruma no ryōrin)",
+        "meaning_en": "Two essential, inseparable elements — apt when describing qual and quant as mutually necessary. (written)",
+        "example_en": "Qualitative and quantitative research stand in a relationship that may be called the two wheels of the cart of social science."
       }
     ],
     "cultural_notes_vi": "So sánh methodology ở Nhật academic culture có 3 đặc điểm. (1) METHODOLOGICAL PLURALISM — Nhật academia, đặc biệt trong social sciences và humanities, tolerant với nhiều paradigms. Khác US/UK fields có method wars (quant vs qual conflict), Nhật default là 共存 (coexistence). Bạn có thể đề xuất qualitative trong field thường quant mà không bị dismissed nếu justification mạnh. (2) HIERARCHY OF METHODS BY FIELD — biology/chemistry: quant default; sociology/anthropology: qual respected equally; education: mixed methods phổ biến; psychology: quant dominant nhưng qual subfield tồn tại. Biết hierarchy của field bạn trước khi chọn. (3) METHOD AS APPRENTICESHIP — Nhật academic culture train methods qua 師弟関係 (master-apprentice relationship). Method choice của bạn often phản ánh advisor's tradition. Switching method đột ngột mà không thảo luận với advisor là institutional misstep, không chỉ academic. Cụm: 先生のご指導を仰ぎたく (would like to receive your guidance) khi propose method change. Khác VN: ở VN methodology section thường ngắn gọn formulaic; ở Nhật C1 paper, methodology rationale có thể chiếm 15-20 phần trăm paper, especially trong PhD theses. Đầu tư thời gian. Mẹo: tham khảo 3-5 papers gần đây trong target journal, xem họ structure methodology section như thế nào. Convention dày đặc và journal-specific. Mẹo cuối: nếu reviewer push back trên method choice, KHÔNG đổi method ở revision — defend choice với better articulated rationale. Switching methods mid-revision = signal bạn không thoughtful về choice ban đầu.",
+    "cultural_notes_en": "Comparing methodologies in Japanese academic culture has three features. (1) METHODOLOGICAL PLURALISM — Japanese academia, especially the social sciences and humanities, is tolerant of multiple paradigms. Unlike US/UK fields with method wars (quant vs qual), the Japanese default is 共存 (coexistence); you can propose a qualitative approach in a usually quantitative field without being dismissed, if the justification is strong. (2) HIERARCHY OF METHODS BY FIELD — biology/chemistry: quant default; sociology/anthropology: qual respected equally; education: mixed methods common; psychology: quant dominant but a qual subfield exists. Know your field's hierarchy before choosing. (3) METHOD AS APPRENTICESHIP — Japanese academic culture trains methods through a 師弟関係 (master-apprentice relationship), and your method choice often reflects your advisor's tradition; switching method abruptly without discussing it with your advisor is an institutional misstep, not just an academic one. Use 先生のご指導を仰ぎたく (I would like to seek your guidance) when proposing a method change. Unlike Vietnam, where the methodology section is often short and formulaic, in a Japanese C1 paper the methodology rationale can take 15–20% of the paper, especially in PhD theses — invest the time. Tip: consult 3–5 recent papers in the target journal to see how they structure the methodology section; conventions are dense and journal-specific. Final tip: if a reviewer pushes back on the method choice, do NOT switch methods at revision — defend the choice with a better-articulated rationale; switching mid-revision signals you were not thoughtful about the original choice.",
     "tip_advice_vi": "Cấu trúc method-comparison section ở C1 Nhật. (a) PROBLEM-FRAMED OPENING — mở bằng research question, không bằng method list. Cụm: 本研究の問い、すなわち〜を明らかにするためには、いかなる方法論が適合的であろうか. Đặt vấn đề trước khi present options. (b) PRESENT 2-3 OPTIONS NEUTRALLY — mỗi option 1 paragraph: brief description, primary strength, primary weakness, prior usage trong field. KHÔNG editorialize ở stage này. Reader cần thấy bạn fair-minded. (c) APPLY FIT CRITERIA — explicit list 3-4 criteria từ research question (e.g., causal inference vs descriptive understanding, generalizability priority, sample size feasibility). Score mỗi option chống lại criteria. (d) DECLARE CHOICE WITH EXPLICIT RATIONALE — '以上の比較に基づき、本研究は〜を採用する。その理由は、第一に〜、第二に〜である'. Numbered rationale > vague gesture. (e) ACKNOWLEDGE TRADE-OFFS COMPLETELY — '本選択に伴う制約として、〜が挙げられる。これに対し、〜により補完を試みる'. Show bạn aware of cost + plan compensation. Mẹo về citation choice: cite methodologists (Creswell, Yin, Flick, Glaser & Strauss for qual; Cohen, Tabachnick for quant) là expected ở C1. Methodology paragraph với 0 method citations đọc như amateur. Mẹo về Japanese-specific: nếu method được developed bởi Nhật scholar (e.g., 状況的学習論), cite original Nhật source — reviewer Nhật value local intellectual lineage. Mẹo cuối: đọc lại comparison section asking 'reviewer của paradigm đối lập đọc cái này có cảm thấy fairly represented không?'. Nếu không, revise. Fairness của comparison là test of academic maturity.",
+    "tip_advice_en": "Structuring a method-comparison section in a Japanese C1 paper. (a) PROBLEM-FRAMED OPENING — open with the research question, not a method list: 本研究の問い、すなわち〜を明らかにするためには、いかなる方法論が適合的であろうか. Pose the problem before presenting options. (b) PRESENT 2–3 OPTIONS NEUTRALLY — one paragraph each: brief description, primary strength, primary weakness, prior usage in the field. Do NOT editorialize at this stage; the reader needs to see you are fair-minded. (c) APPLY FIT CRITERIA — an explicit list of 3–4 criteria drawn from the research question (e.g. causal inference vs descriptive understanding, generalizability priority, sample-size feasibility); score each option against the criteria. (d) DECLARE THE CHOICE WITH EXPLICIT RATIONALE — '以上の比較に基づき、本研究は〜を採用する。その理由は、第一に〜、第二に〜である'. A numbered rationale beats a vague gesture. (e) ACKNOWLEDGE TRADE-OFFS COMPLETELY — '本選択に伴う制約として、〜が挙げられる。これに対し、〜により補完を試みる'. Show you are aware of the cost and plan compensation. On citation: citing methodologists (Creswell, Yin, Flick, Glaser & Strauss for qual; Cohen, Tabachnick for quant) is expected at C1 — a methodology paragraph with zero method citations reads as amateur. Japanese-specific: if the method was developed by a Japanese scholar (e.g. 状況的学習論), cite the original Japanese source — Japanese reviewers value local intellectual lineage. Final tip: reread the comparison asking 'would a reviewer of the opposing paradigm feel fairly represented here?' If not, revise. The fairness of the comparison is a test of academic maturity.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1557,35 +1677,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn cần raise serious concern về data sourcing. KHÔNG accuse fabrication. Cụm: 〜の出典追跡が困難であり、再現性の観点から疑問が残る. Frame như reader experience, không như author misconduct.",
       "Closing critique. Cụm: これらの限界は本書の意義を損なうものではなく、むしろ今後の研究の足がかりとなろう. Reframe limitations như opportunities — softens critique, preserves author's standing."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a book review. Open with an evaluation of the contribution: 本書の最大の貢献は〜にある, then 1–2 paragraphs on strengths. ONLY THEN critique. Japanese review norm: praise outweighs critique by at least 1:1.",
+      "You need to raise a serious concern about data sourcing. Do NOT accuse of fabrication. Use 〜の出典追跡が困難であり、再現性の観点から疑問が残る. Frame it as a reader experience, not author misconduct.",
+      "Closing critique. Use これらの限界は本書の意義を損なうものではなく、むしろ今後の研究の足がかりとなろう. Reframe limitations as opportunities — this softens the critique and preserves the author's standing."
+    ],
     "register_notes": "Book/study critique ở C1 academic Japanese theo quy ước 評価-課題-展望 (evaluation-issues-prospects). (1) STRUCTURE — opening: situate book trong field (3-5 câu); contribution: strengths với specifics (2-3 paragraphs); critique: 2-4 issues, mỗi cái 1 paragraph; conclusion: reframe limitations như opportunities cho future work. KHÔNG mở bằng critique — taboo. (2) CRITIQUE LANGUAGE TIERS — gentle: 〜の余地が残されている (room remains for), 〜について再検討が望まれる (re-examination is desired). Medium: 〜には不備が認められる (deficiency is recognized in), 〜の点で課題が指摘されよう (an issue may be pointed out). Strong: 〜は妥当性を欠くと言わざるを得ない (it must be said that〜lacks validity), 〜は誤りであると思われる (appears to be erroneous). Strong tier hiếm khi dùng cho whole book; reserve cho specific factual errors. (3) ATTRIBUTE TO TEXT, NOT AUTHOR — '本書は〜' (this book〜) ✓; '田中氏は〜という誤りを犯している' (Mr. Tanaka commits the error of〜) ✗. Critique work, không person. (4) NUMBERED CONCERNS — '第一に〜、第二に〜、第三に〜' makes critique scannable và signals organized thought, không emotional reaction. (5) BALANCE CLOSE — kết luận book review nên reaffirm overall value. Cụm: これらの限界は本書の意義を損なうものではない / 当該分野への貢献は大きい. Critique without closing balance đọc như hatchet job. Avoid: 'つまらない' (boring), '間違っている' (wrong) — too direct; '駄作' (worthless work) — never. Đặc biệt nguy hiểm: critiquing senior scholar (大家). Extra hedge required, public critique nên ít nhất 70 phần trăm appreciation. Direct critique thường handled qua personal correspondence hoặc 私信, không public review.",
+    "register_notes_en": "Register: follow 評価→課題→展望, open with the contribution never the critique, scale the verb to severity — 〜の余地が残されている (gentle), 〜には不備が認められる (medium), 〜は妥当性を欠くと言わざるを得ない (strong, rare) — attribute to 本書 not the author, number the concerns, and close with これらの限界は本書の意義を損なうものではない.",
     "idiom_glosses": [
       {
         "idiom": "賛否両論 (さんぴりょうろん)",
         "literal": "Cả khen và chê",
         "meaning": "[書き言葉・話し言葉] Vừa có ủng hộ vừa có phản đối — phù hợp khi mô tả mixed reception của work.",
-        "example": "本書の主張は学界において賛否両論を呼んでおり、本書評もその議論への一寄稿となろう。"
+        "example": "本書の主張は学界において賛否両論を呼んでおり、本書評もその議論への一寄稿となろう。",
+        "literal_en": "both pro and con arguments (sanpi ryōron)",
+        "meaning_en": "Both support and opposition exist — apt when describing a work's mixed reception. (written/spoken)",
+        "example_en": "This book's claims have drawn both support and opposition in the field, and this review is one contribution to that debate."
       },
       {
         "idiom": "瑕瑾 (かきん)",
         "literal": "Vết và lỗi nhỏ",
         "meaning": "[硬い・書き言葉] Khuyết điểm nhỏ trong tổng thể tốt — diplomatic critique vocabulary.",
-        "example": "本書は優れた成果であり、指摘した二、三の瑕瑾は、その価値を損なうものではない。"
+        "example": "本書は優れた成果であり、指摘した二、三の瑕瑾は、その価値を損なうものではない。",
+        "literal_en": "minor flaws and blemishes (kakin)",
+        "meaning_en": "Small defects within an otherwise good whole — diplomatic critique vocabulary. (formal, written)",
+        "example_en": "This book is an excellent achievement, and the two or three minor blemishes noted do not diminish its value."
       },
       {
         "idiom": "片手落ち (かたておち)",
         "literal": "Một tay rơi (mất cân bằng)",
         "meaning": "[書き言葉・話し言葉] Bias một chiều, không đầy đủ — cảnh báo critique của bạn không nên trở thành片手落ち.",
-        "example": "長所のみを論じ、課題に触れないのでは、書評として片手落ちと言わざるを得ない。"
+        "example": "長所のみを論じ、課題に触れないのでは、書評として片手落ちと言わざるを得ない。",
+        "literal_en": "one hand fallen, i.e. one-sided (katateochi)",
+        "meaning_en": "A one-sided, incomplete treatment — a caution that your critique should not become one-sided. (written/spoken)",
+        "example_en": "To discuss only the strengths and not touch on the problems would have to be called a one-sided review."
       },
       {
         "idiom": "敬意を払う (けいいをはらう)",
         "literal": "Tỏ kính ý",
         "meaning": "[書き言葉] Tôn trọng — pair với critique để frame như respectful disagreement, không attack.",
-        "example": "著者の長年にわたる研鑽に敬意を払いつつ、以下の三点について再考を提起したい。"
+        "example": "著者の長年にわたる研鑽に敬意を払いつつ、以下の三点について再考を提起したい。",
+        "literal_en": "to pay one's respects (keii o harau)",
+        "meaning_en": "To show respect — paired with a critique to frame it as respectful disagreement, not an attack. (written)",
+        "example_en": "While paying respect to the author's many years of scholarship, I would like to raise the following three points for reconsideration."
       }
     ],
     "cultural_notes_vi": "Văn hóa critique trong academia Nhật khác phương Tây ở 4 điểm. (1) PRAISE-FIRST RULE NGHIÊM NGẶT — phương Tây critique có thể balanced 50/50; Nhật academic critique strongly skews positive (70/30 minimum). Critique heavy without praise foundation đọc như mean-spirited. (2) SENIORITY HIERARCHY MATTERS — critiquing 大家 (eminent senior scholar) requires 99 phần trăm appreciation, 1 phần trăm issue. Critiquing peer cho phép more balance. Critiquing junior shouldn't be done in public — handle privately. Học senior status của author trước khi viết review. (3) FACE-PRESERVING LANGUAGE — direct disagreement gây loss of face cho author và reflects badly trên reviewer. Hedge dày: 〜という解釈もあり得よう (interpretation〜 might also be possible) thay vì 〜は誤っている (〜is wrong). (4) PUBLIC vs PRIVATE CRITIQUE — serious concerns thường handled qua personal correspondence (私信) hoặc closed seminars. Public review reserved cho mild observations. Western 'destruction' reviews (e.g. some major journals) effectively không tồn tại trong Nhật academic culture. Khác VN: VN critique culture variable, hơi giống Nhật nhưng với less rigid hierarchy. Việc transplant Western 'tough love' review style vào Nhật context có thể end careers. Mẹo: nếu bạn có serious concern về paper, FIRST send personal email gợi ý, gauge response, then quyết định public review tone. Mẹo cuối: post-critique relationship matters. Authors remember reviewers cho decades. Critique mà bạn không thể defend mặt-đối-mặt với author tại 学会 next year là critique không nên publish.",
+    "cultural_notes_en": "Critique culture in Japanese academia differs from the West on four points. (1) STRICT PRAISE-FIRST RULE — Western critique may be balanced 50/50; Japanese academic critique skews strongly positive (70/30 minimum). Heavy critique without a foundation of praise reads as mean-spirited. (2) SENIORITY HIERARCHY MATTERS — critiquing a 大家 (eminent senior scholar) requires 99% appreciation, 1% issue; critiquing a peer allows more balance; critiquing a junior should not be done in public — handle it privately. Learn the author's seniority before writing the review. (3) FACE-PRESERVING LANGUAGE — direct disagreement causes loss of face for the author and reflects badly on the reviewer; hedge heavily: 〜という解釈もあり得よう (interpretation〜 might also be possible) rather than 〜は誤っている (〜is wrong). (4) PUBLIC vs PRIVATE CRITIQUE — serious concerns are usually handled through personal correspondence (私信) or closed seminars; the public review is reserved for mild observations. Western 'destruction' reviews effectively do not exist in Japanese academic culture. Unlike Vietnam, whose critique culture is variable and somewhat similar to Japan's but with a less rigid hierarchy, transplanting a Western 'tough love' review style into the Japanese context can end careers. Tip: if you have a serious concern about a paper, FIRST send a personal email suggestion, gauge the response, then decide the public review tone. Final tip: the post-critique relationship matters — authors remember reviewers for decades; a critique you could not defend face-to-face with the author at next year's 学会 is one you should not publish.",
     "tip_advice_vi": "Workflow viết một book review C1 Nhật hiệu quả. (a) READ TWICE — first read cho overall impression, second read cho specific evidence để cite. KHÔNG viết review từ first reading — bias dễ bias cao. (b) NOTE STRENGTHS 그 EQUALLY VỚI ISSUES — habit của critic là note flaws; counterbalance by explicitly noting strengths trong notes. Aim 5 strength notes : 3 issue notes ratio. (c) CHỌN 2-4 ISSUES MAXIMUM — 1 issue review đọc shallow; 6+ đọc petty. 3 well-developed issues là sweet spot. (d) FOR EACH ISSUE, FOLLOW 4-PART STRUCTURE — describe what book does (1-2 sentences) → identify the gap or concern (1-2 sentences) → explain why it matters (1-2 sentences) → suggest direction (1 sentence). Without (d), critique đọc như complaint. (e) DRAFT, COOL, REVISE — sau first draft, chờ 48 hours, đọc lại askind 'does this read like a fair-minded reviewer? Or a frustrated one?'. Revise tone-only ở second pass. (f) HEDGE STRENGTH MATCHING SEVERITY — typo / minor inaccuracy: gentle hedge. Methodological concern: medium. Factual error: strong but specific. Calibrate. Mẹo về citation — review nên cite 5-15 secondary sources tự nó: prior reviews của same book (nếu có), comparable works, frameworks bạn invoke. Review with 0 outside citations đọc như opinion piece, không academic critique. Mẹo về length — Nhật academic book reviews typically 2,000-4,000 字 (Japanese characters). Lá thư ngắn impression piece OK ở popular venues; refereed journals expect substantial review. Mẹo cuối: KHÔNG WRITE REVIEW IF BẠN COULD NOT WRITE A BOOK ON SAME TOPIC — phương châm Nhật academic. Nếu bạn không có competence để critique, decline review request. Reviewer competence phải match author competence cho review để có giá trị.",
+    "tip_advice_en": "An effective workflow for writing a Japanese C1 book review. (a) READ TWICE — first read for overall impression, second read for specific evidence to cite. Do NOT write the review from the first reading; bias runs high. (b) NOTE STRENGTHS EQUALLY WITH ISSUES — a critic's habit is to note flaws; counterbalance by explicitly noting strengths in your notes, aiming for a 5 strength : 3 issue ratio. (c) CHOOSE 2–4 ISSUES MAXIMUM — a one-issue review reads shallow; six or more reads petty; three well-developed issues is the sweet spot. (d) FOR EACH ISSUE, FOLLOW A 4-PART STRUCTURE — describe what the book does (1–2 sentences) → identify the gap or concern (1–2) → explain why it matters (1–2) → suggest a direction (1). Without (d), the critique reads as a complaint. (e) DRAFT, COOL, REVISE — after the first draft, wait 48 hours, reread asking 'does this read like a fair-minded reviewer, or a frustrated one?' Revise tone only on the second pass. (f) MATCH HEDGE STRENGTH TO SEVERITY — typo/minor inaccuracy: gentle; methodological concern: medium; factual error: strong but specific. Calibrate. On citation: a review should itself cite 5–15 secondary sources — prior reviews of the same book, comparable works, frameworks you invoke; a review with zero outside citations reads as an opinion piece, not academic critique. On length: Japanese academic book reviews are typically 2,000–4,000 字; a short impression piece is fine at popular venues, but refereed journals expect a substantial review. Final tip: do NOT write a review if you could not write a book on the same topic — a Japanese academic maxim. If you lack the competence to critique, decline the request; reviewer competence must match author competence for the review to have value.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1790,35 +1930,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn ask question từ floor. Mandatory format: greet (失礼いたします hoặc 貴重なご発表ありがとうございました) cộng identify (所属は〇〇大学の〜と申します) cộng question. KHÔNG bỏ identify — Nhật conference convention.",
       "Bạn không biết câu trả lời. KHÔNG bịa. Cụm: ご質問の点については、現時点で十分に検討できておりません。今後の課題として承ります. Honest deferral được respected hơn pretend-knowledge."
     ],
+    "roleplay_prompts_en": [
+      "You are the presenter opening Q&A. Use ご清聴ありがとうございました。ご質問、ご意見をお願いいたします. After the first question, repeat thanks: ご質問ありがとうございます. Do NOT skip thanks — a bare 'はい' sounds brusque.",
+      "You ask a question from the floor. Mandatory format: greet (失礼いたします or 貴重なご発表ありがとうございました) + identify (所属は〇〇大学の〜と申します) + question. Do NOT omit the self-identification — Japanese conference convention.",
+      "You do not know the answer. Do NOT make one up. Use ご質問の点については、現時点で十分に検討できておりません。今後の課題として承ります. An honest deferral is more respected than pretended knowledge."
+    ],
     "register_notes": "Q&A register ở Nhật conference theo strict choreography. (1) OPENING SEQUENCE — presenter kết bằng ご清聴ありがとうございました. Chair (司会者) opens floor: フロアからご質問を承ります. Questioner waits to be recognized, đứng lên (nếu microphone), đầu tiên identify: 失礼いたします hoặc greet, sau đó 所属は〇〇の〜と申します. Skip identify = breach of etiquette. (2) QUESTION FRAMING — gentle prelude required: 貴重なご発表ありがとうございました cộng 一点ご教示いただきたく hoặc 二点伺ってもよろしいでしょうか. Pure question without prelude đọc aggressive. Number questions nếu multiple. (3) PRESENTER RESPONSE — start với thank: ご質問ありがとうございます. Confirm understanding nếu unclear: ご質問の趣旨を確認させていただいてもよろしいでしょうか. Answer organized: 結論を申し上げますと cho concise; 三点に分けてお答えします cho complex. End với お答えになっておりますでしょうか (does this answer your question?) — invites follow-up. (4) HONORIFIC ASYMMETRY — questioner uses humble forms toward presenter (お聞かせいただけますか, ご教示いただけますか); presenter uses humble toward questioner (お答えさせていただきます, 承知いたしました). Equal-equal humility, neither dominates. (5) HANDLING DIFFICULT QUESTIONS — defer: 今後の課題として承ります (I receive as future task). Scope-out: 本研究の射程外でございます. Acknowledge limit: 現時点で十分に検討できておりません. KHÔNG fake answer — caught easily, reputational damage permanent. (6) CHAIR'S ROLE — manages time (持ち時間が押しております), prevents single questioner monopoly, closes session. Đừng challenge chair's calls. Vocabulary forbidden in Q&A: それは違います (that's wrong), わかりません (don't know — too bare; use 検討不足でございます), 関係ない (irrelevant — never). Time discipline: questions 30-60 sec, answers 60-120 sec. Long monologue questions ('actually what I want to comment is...') breach etiquette — chair will cut.",
+    "register_notes_en": "Register: keep the choreography — questioner 失礼いたします + 所属…と申します + 一点ご教示いただきたく; presenter ご質問ありがとうございます … お答えになっておりますでしょうか; defer with 今後の課題として承ります or 本研究の射程外でございます, never それは違います or a bare わかりません.",
     "idiom_glosses": [
       {
         "idiom": "釈迦に説法 (しゃかにせっぽう)",
         "literal": "Giảng đạo cho Phật Thích Ca",
         "meaning": "[書き言葉・話し言葉] Dạy expert thứ họ đã biết — humble disclaimer khi raise question to senior: 釈迦に説法かもしれませんが.",
-        "example": "釈迦に説法かもしれませんが、〇〇 (二〇二〇) においても同様の論点が指摘されているかと存じます。"
+        "example": "釈迦に説法かもしれませんが、〇〇 (二〇二〇) においても同様の論点が指摘されているかと存じます。",
+        "literal_en": "preaching the dharma to the Buddha (shaka ni seppō)",
+        "meaning_en": "Teaching an expert what they already know — a humble disclaimer when raising a question to a senior: 釈迦に説法かもしれませんが. (written/spoken)",
+        "example_en": "This may be preaching to the Buddha, but I believe a similar point is noted in 〇〇 (二〇二〇) as well."
       },
       {
         "idiom": "蛇足 (だそく)",
         "literal": "Vẽ rắn thêm chân",
         "meaning": "[書き言葉・話し言葉] Thêm thừa, không cần thiết — humble disclaimer ở cuối comment: 蛇足ながら.",
-        "example": "蛇足ながら一言申し添えますと、本論点は次回学会でも継続して議論されるものと伺っております。"
+        "example": "蛇足ながら一言申し添えますと、本論点は次回学会でも継続して議論されるものと伺っております。",
+        "literal_en": "drawing legs on a snake (dasoku)",
+        "meaning_en": "A superfluous, unneeded addition — a humble disclaimer at the end of a comment: 蛇足ながら. (written/spoken)",
+        "example_en": "If I may add one superfluous word, I understand this point will continue to be discussed at the next conference as well."
       },
       {
         "idiom": "問うは一旦の恥、問わぬは末代の恥 (とうはいったんのはじ、とわぬはまつだいのはじ)",
         "literal": "Hỏi là xấu hổ một lúc, không hỏi là xấu hổ cả đời",
         "meaning": "[書き言葉] Better ask now than wonder forever — encouragement để raise basic question without shame.",
-        "example": "問うは一旦の恥と申しますし、初歩的な点ですがお伺いさせてください。"
+        "example": "問うは一旦の恥と申しますし、初歩的な点ですがお伺いさせてください。",
+        "literal_en": "to ask is a moment's shame, not to ask a lifetime's (tou wa ittan no haji, towanu wa matsudai no haji)",
+        "meaning_en": "Better to ask now than wonder forever — encouragement to raise a basic question without shame. (written)",
+        "example_en": "As they say that asking is a moment's shame, let me ask, though it is an elementary point."
       },
       {
         "idiom": "ご教示を賜る (ごきょうじをたまわる)",
         "literal": "Nhận sự chỉ dạy",
         "meaning": "[硬い・書き言葉] Most humble form cho 'receive instruction' — deploy khi questioning a senior.",
-        "example": "本件につきましては、先生のご教示を賜れれば幸甚に存じます。"
+        "example": "本件につきましては、先生のご教示を賜れれば幸甚に存じます。",
+        "literal_en": "to receive instruction (humbly) (go-kyōji o tamawaru)",
+        "meaning_en": "The most humble form for receiving instruction — deploy it when questioning a senior. (formal, written)",
+        "example_en": "On this matter, I would be most honored to receive your instruction, Professor."
       }
     ],
     "cultural_notes_vi": "Q&A culture ở Nhật conference khác phương Tây ở 4 điểm. (1) THANKS RITUAL — Western Q&A có thể skip thanks, đi thẳng vào question. Nhật mandatory mở bằng thanks. Skip = read as rude regardless of question quality. (2) IDENTIFY SELF — Nhật convention: 所属 + last name. Western có thể just ask without identify. Trong Nhật, anonymous question seen as cowardly. Even nếu chair already mới bạn lên, repeat self-identify in your opening. (3) NO 'GOTCHA' QUESTIONS — Western academic culture sometimes celebrates question designed to expose flaw publicly. Nhật strongly disapprove — gây loss of face cho presenter, reflects badly on questioner. Critique style: 'I'd like to learn more about how you addressed〜' rather than 'You didn't address〜'. (4) AUDIENCE-MEMBER COMMENTS THAY VÌ QUESTIONS — Western Q&A allows extended comments masquerading as questions ('I'd like to add to your point...'). Nhật convention: questions only, save extended comments cho networking break. Chair may cut long-comment-question politely. Khác VN: VN seminar Q&A typically informal hơn, less choreographed; chuyển sang Nhật context cần học chính xác sequence. Mẹo: trước first conference Nhật, attend 2-3 sessions chỉ để observe Q&A choreography. Memorize phrases. Practice một identify-question-thank sequence trước khi attempt. Mẹo: nếu bạn presenter và Q&A run dry (silence), KHÔNG awkwardly fill. Chair handles. Nếu muốn solicit specific feedback, prepare 1 question planted với colleague trước. Mẹo cuối: post-Q&A networking quan trọng. Approach questioners afterward: 先ほどはご質問ありがとうございました. Initiates relationship. Many career opportunities trong Nhật academia start với post-Q&A coffee.",
+    "cultural_notes_en": "Q&A culture at Japanese conferences differs from the West on four points. (1) THANKS RITUAL — Western Q&A may skip thanks and go straight to the question; in Japan, opening with thanks is mandatory — skipping it reads as rude regardless of the question's quality. (2) IDENTIFY YOURSELF — Japanese convention: 所属 + family name; the West may ask without identifying, but in Japan an anonymous question is seen as cowardly — even if the chair has already called on you, repeat the self-identification in your opening. (3) NO 'GOTCHA' QUESTIONS — Western academic culture sometimes celebrates a question designed to expose a flaw publicly; Japan strongly disapproves — it causes loss of face for the presenter and reflects badly on the questioner. Critique style: 'I'd like to learn more about how you addressed〜' rather than 'You didn't address〜'. (4) QUESTIONS, NOT AUDIENCE COMMENTS — Western Q&A allows extended comments masquerading as questions ('I'd like to add to your point...'); Japanese convention is questions only, with extended comments saved for the networking break; the chair may politely cut a long comment-question. Unlike Vietnam, where seminar Q&A is typically more informal and less choreographed, the Japanese context requires learning the exact sequence. Tip: before your first Japanese conference, attend 2–3 sessions just to observe the Q&A choreography; memorize the phrases; practice an identify-question-thank sequence. If you present and Q&A runs dry, do NOT awkwardly fill it — the chair handles that; to solicit specific feedback, prepare one question planted with a colleague beforehand. Final tip: post-Q&A networking matters — approach questioners afterward with 先ほどはご質問ありがとうございました; many career opportunities in Japanese academia start with post-Q&A coffee.",
     "tip_advice_vi": "Pre-conference Q&A preparation cho presenter ở C1. (a) PREDICT QUESTIONS — list 5-7 likely questions trước presentation. For each, prepare 60-second answer. Cover: methodology choice, sample limitation, generalization scope, alternative interpretation, future direction. (b) PREPARE 'I DON'T KNOW' VERSIONS — practice 3 graceful deferrals: その点は今後の課題として承ります / 現時点で十分に検討できておりません / 本研究の射程外でございます. Có sẵn lúc panic. (c) BRING HANDOUT (配布資料) — 1-2 page sheet với data details. Refer trong Q&A: 詳細は配布資料の〜ページに記載しております. Saves time, demonstrates preparation. (d) WATER NEARBY — speaking dries throat; pause để uống signals composure, not weakness. Đối với questioner ở C1: (a) LISTEN ENTIRE PRESENTATION — taking notes throughout, không formulate question từ first 5 phút then mentally check out. Best questions reflect comprehensive listening. (b) WAIT YOUR TURN — Nhật convention: chair recognizes hand-raised order. Don't bypass. (c) SHORT QUESTIONS WIN — 30-second focused question > 2-minute meandering preamble. Chair và audience appreciate. (d) ONE QUESTION PER TURN — nếu bạn really need 2-3, ask one, wait response, raise hand again later. Chain-questioning hogs time. (e) FOLLOW UP OFFLINE — extended exchange, technical detail, criticism — handle qua email post-conference. Cụm follow-up: 先日の学会では貴重なご発表をありがとうございました cộng your detailed point. Mẹo về Q&A note-taking: presenter nên ghi xuống mọi câu hỏi nhận được, regardless of answer chất lượng. Sau conference, 24-hour-rule: review notes, identify weakest answers, strengthen cho next conference hoặc paper revision. Conference Q&A là live peer review — value the data. Mẹo cuối: post-presentation, send formal thanks cho chair: 本日は座長の労、誠にありがとうございました. Maintain relationship, opens future invitation.",
+    "tip_advice_en": "Pre-conference Q&A preparation at C1. For the presenter: (a) PREDICT QUESTIONS — list 5–7 likely questions and prepare a 60-second answer for each, covering methodology choice, sample limitation, generalization scope, alternative interpretation, future direction. (b) PREPARE 'I DON'T KNOW' VERSIONS — practice three graceful deferrals: その点は今後の課題として承ります / 現時点で十分に検討できておりません / 本研究の射程外でございます — ready for the moment of panic. (c) BRING A HANDOUT (配布資料) — a 1–2 page sheet with data details; refer to it in Q&A: 詳細は配布資料の〜ページに記載しております. (d) WATER NEARBY — speaking dries the throat; a pause to drink signals composure, not weakness. For the questioner: (a) LISTEN TO THE ENTIRE PRESENTATION, taking notes throughout, rather than forming a question from the first 5 minutes; (b) WAIT YOUR TURN — the chair recognizes hands in order, don't bypass; (c) SHORT QUESTIONS WIN — a 30-second focused question beats a 2-minute preamble; (d) ONE QUESTION PER TURN — if you need 2–3, ask one, wait, raise your hand again later; (e) FOLLOW UP OFFLINE — extended exchange, technical detail, criticism handled by email after: 先日の学会では貴重なご発表をありがとうございました plus your detailed point. On note-taking: the presenter should write down every question received regardless of answer quality; after the conference, a 24-hour rule — review notes, identify the weakest answers, strengthen them for the next conference or revision. Conference Q&A is live peer review — value the data. Final tip: after presenting, send formal thanks to the chair: 本日は座長の労、誠にありがとうございました — it maintains the relationship and opens future invitations.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2028,35 +2188,55 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer chỉ ra abstract của bạn quá vague: '結果の記述が抽象的'. Đáp lại bằng concrete numbers / findings, không general claims. Cụm: 〜の関係に r=〇.六二 の正の相関が確認された thay cho 'significant correlation observed'.",
       "Bạn viết tổng kết kết luận. Cụm 本知見は〜を示唆するものである cho impact, sau đó 本研究の限界として〜が挙げられる. KHÔNG introduce new claims trong summary — chỉ recap + limit + future."
     ],
+    "roleplay_prompts_en": [
+      "You write an abstract within a 400-字 limit. Use the 5-sentence structure: (1) purpose, (2) brief background, (3) method with specifics, (4) result with numbers, (5) conclusion + limitation. Do NOT open with background — a Japanese academic abstract opens with purpose.",
+      "A reviewer notes your abstract is too vague: '結果の記述が抽象的'. Respond with concrete numbers/findings, not general claims. Use 〜の関係に r=〇.六二 の正の相関が確認された rather than 'significant correlation observed'.",
+      "You write the concluding summary. Use 本知見は〜を示唆するものである for impact, then 本研究の限界として〜が挙げられる. Do NOT introduce new claims in the summary — only recap + limit + future."
+    ],
     "register_notes": "Abstract writing ở C1 Japanese tuân theo cấu trúc IMRaC (Introduction-Methods-Results-Conclusion) compressed. (1) WORD-LIMIT TIERS — Nhật academic abstracts: 国際学会 200-300 từ tiếng Anh, 国内学会 300-600 字 tiếng Nhật, journal articles 400-800 字. Strict — over-limit auto-reject. (2) FIVE-SENTENCE TEMPLATE — câu 1: purpose ('本研究は〜を明らかにすることを目的とする'); câu 2: background ('〜については先行研究で〜が指摘されているが、〜については検討されていない'); câu 3-4: method + results với specifics ('〜名を対象とし〜を行い、〜が確認された'); câu 5: implication + limit ('本知見は〜を示唆するが、〜の制約がある'). Strict 5-sentence makes abstract scannable. (3) TENSE — methods và results past tense (〜した、〜が確認された); conclusion present (〜を示唆する); purpose can be either (〜を目的とする / 〜を目的とした). Consistency within each function. (4) AVOID — citations (abstract tự đứng độc lập), undefined acronyms (define hoặc skip), figures/tables (text only), forward references ('see Section 3' cấm). (5) KEYWORDS — 3-5 chuẩn, ordered từ specific (concept của bạn) đến general (field). Keywords là search-engine targeting; chọn carefully. (6) ABSTRACT VS SUMMARY VS OVERVIEW — 抄録 = formal abstract (front of paper). 要旨 = summary (often longer, presentation/proposal context). 概要 = overview (less structured, intro material). C1 phải distinguish. Common mistakes: opening với background (Western style sometimes does this; Nhật convention opens với purpose), vague results ('有意な結果が得られた' không đủ — need numbers), introducing new ideas in conclusion. Avoid: 思う (too soft), 〜と感じる (subjective). Use 〜と考えられる, 〜が示唆される.",
+    "register_notes_en": "Register: compress to the 5-sentence purpose→background→method→result→implication template within the 字 limit, past tense for method/results and present for the conclusion, no citations / acronyms / forward references, keep humility (〜と考えられる, 〜が示唆される) over 思う / 〜と感じる, and order 3–5 keywords specific→general.",
     "idiom_glosses": [
       {
         "idiom": "簡にして要を得る (かんにしてようをえる)",
         "literal": "Đơn giản nhưng nắm được điểm chính",
         "meaning": "[硬い・書き言葉] Concise yet capturing essence — virtue tối cao trong abstract writing.",
-        "example": "優れた抄録とは、簡にして要を得るものであり、読者を本文へと自然に導く。"
+        "example": "優れた抄録とは、簡にして要を得るものであり、読者を本文へと自然に導く。",
+        "literal_en": "simple yet capturing the essential (kan ni shite yō o eru)",
+        "meaning_en": "Concise yet capturing the essence — the highest virtue in abstract writing. (formal, written)",
+        "example_en": "An excellent abstract is simple yet captures the essential, leading the reader naturally into the body."
       },
       {
         "idiom": "言を尽くす (げんをつくす)",
         "literal": "Dùng hết lời",
         "meaning": "[書き言葉] Diễn đạt đầy đủ — anti-ideal cho abstract; warning against verbosity.",
-        "example": "抄録において言を尽くそうとすれば、かえって焦点が定まらない。"
+        "example": "抄録において言を尽くそうとすれば、かえって焦点が定まらない。",
+        "literal_en": "to exhaust one's words (gen o tsukusu)",
+        "meaning_en": "To express something at full length — the anti-ideal for an abstract; a warning against verbosity. (written)",
+        "example_en": "If one tries to say everything in an abstract, the focus is, on the contrary, lost."
       },
       {
         "idiom": "肝心要 (かんじんかなめ)",
         "literal": "Gan + tim + then chốt — phần thiết yếu nhất",
         "meaning": "[書き言葉・話し言葉] Core essential — abstract phải capture 肝心要 của paper.",
-        "example": "抄録には、本研究の肝心要のみを抽出して記すべきである。"
+        "example": "抄録には、本研究の肝心要のみを抽出して記すべきである。",
+        "literal_en": "liver and heart, the vital point (kanjin kaname)",
+        "meaning_en": "The core essential — an abstract must capture the vital heart of the paper. (written/spoken)",
+        "example_en": "An abstract should extract and state only the vital essence of the study."
       },
       {
         "idiom": "読者の地図となる (どくしゃのちずとなる)",
         "literal": "Trở thành bản đồ cho người đọc",
         "meaning": "[書き言葉] Set phrase metaphor — abstract = map của paper, guide reader's navigation.",
-        "example": "良い抄録は、読者の地図となり、本文のいかなる節を読むべきかを示唆する。"
+        "example": "良い抄録は、読者の地図となり、本文のいかなる節を読むべきかを示唆する。",
+        "literal_en": "to become the reader's map (dokusha no chizu to naru)",
+        "meaning_en": "A set-phrase metaphor — the abstract is the map of the paper, guiding the reader's navigation. (written)",
+        "example_en": "A good abstract becomes the reader's map, indicating which sections of the body to read."
       }
     ],
     "cultural_notes_vi": "Abstract conventions ở Nhật academic khác phương Tây ở 4 điểm. (1) PURPOSE FIRST, NOT BACKGROUND — Western abstracts (đặc biệt humanities) often mở bằng broad context; Nhật mở thẳng với research purpose ở câu 1. Trong tiếng Nhật, default reader assumed to know background; trong tiếng Anh international, có thể cần thêm 1 sentence context. Adjust theo target venue. (2) HUMBLE TONE EVEN IN ABSTRACT — Nhật abstract retain academic humility: 〜と考えられる > 〜である for interpretation; 〜の可能性が示唆される > 〜が証明された. Western abstract có thể bolder; Nhật reviewer có thể bị đẩy lùi bởi over-confident abstract. (3) NUMBERS DENSITY — Nhật C1 abstracts (especially STEM) dày đặc với specifics: sample sizes, effect sizes, p-values, percentages. Vague abstracts đọc weak. Humanities có thể less numerical nhưng vẫn cần concrete categories thay vì general claims. (4) BILINGUAL ABSTRACTS — nhiều Nhật journals require 和文抄録 (Japanese abstract) cộng English abstract. KHÔNG dịch direct — adjust mỗi version cho audience. English abstract có thể cần thêm context (international readers don't know Japan-specific terms); Japanese version assume more shared context. Khác VN: VN abstract conventions variable theo journal; nhiều VN journals chấp nhận longer narrative abstracts. Nhật C1 strictly structured. Adjust khi submit qua biên giới. Mẹo: collect 10 abstracts từ target journal, study structure. Mỗi journal có conventions riêng (some allow first-person, some don't; some require explicit headings 'Purpose:', 'Method:'). Match exactly. Mẹo: keywords trong tiếng Nhật KHÔNG được dùng spaces giữa terms — comma-separated với readings (kanji compounds typically). Mẹo cuối: nếu paper bị desk-reject từ abstract, KHÔNG giải thích hay protest — abstract is paper's elevator pitch; nếu fails, paper fails. Rewrite, resubmit elsewhere với better abstract.",
+    "cultural_notes_en": "Abstract conventions in Japanese academia differ from the West on four points. (1) PURPOSE FIRST, NOT BACKGROUND — Western abstracts (especially in the humanities) often open with broad context; Japanese abstracts open directly with the research purpose in sentence 1. In Japanese the default reader is assumed to know the background; in international English you may need one added context sentence — adjust to the target venue. (2) HUMBLE TONE EVEN IN THE ABSTRACT — Japanese abstracts retain academic humility: 〜と考えられる over 〜である for interpretation; 〜の可能性が示唆される over 〜が証明された. A Western abstract may be bolder; a Japanese reviewer can be put off by an over-confident abstract. (3) NUMBERS DENSITY — Japanese C1 abstracts (especially STEM) are dense with specifics: sample sizes, effect sizes, p-values, percentages; vague abstracts read weak. The humanities can be less numerical but still need concrete categories rather than general claims. (4) BILINGUAL ABSTRACTS — many Japanese journals require a 和文抄録 (Japanese abstract) plus an English abstract; do NOT translate directly — adjust each version for its audience (the English may need added context for international readers; the Japanese assumes more shared context). Unlike Vietnam, where abstract conventions vary by journal and many accept longer narrative abstracts, Japanese C1 is strictly structured — adjust when submitting across borders. Tip: collect 10 abstracts from the target journal and study the structure; each journal has its own conventions (first person allowed or not; explicit headings 'Purpose:', 'Method:' required or not) — match exactly. Note: Japanese keywords use no spaces between terms — comma-separated, typically kanji compounds. Final tip: if a paper is desk-rejected from the abstract, do NOT explain or protest — the abstract is the paper's elevator pitch; if it fails, the paper fails. Rewrite, resubmit elsewhere with a better abstract.",
     "tip_advice_vi": "Workflow viết abstract C1 hiệu quả. (a) WRITE LAST — KHÔNG viết abstract trước paper. Write paper completely, sau đó distill. Pre-written abstracts thường drift away from final paper content. (b) REVERSE OUTLINE — sau hoàn thiện paper, viết 1-sentence summary mỗi section. Combine those sentences = first abstract draft. Often coherent enough cần ít revision. (c) MEASURE COMPRESSION RATIO — paper 8000 字 → abstract 400 字 = 5 phần trăm compression. Anything ratio under 3 phần trăm → abstract underwritten; over 8 phần trăm → paper undertight or abstract wordy. Sweet spot 4-6 phần trăm. (d) TRIM IN PASSES — pass 1: cut every 'などの', 'において', 'について' that doesn't change meaning. Pass 2: replace verbose forms với compressed (〜することができる → 〜できる). Pass 3: combine related sentences với 〜し、〜. Each pass typically saves 10-15 phần trăm. (e) TEST SCANNABILITY — show abstract to colleague không trong field. Hỏi: trong 30 giây, bạn nắm được purpose, method, finding chính? Nếu không, abstract still vague. Mẹo về số lượng — nếu paper có nhiều findings, list 2 chính trong abstract, mention 'その他の知見については本文を参照されたい'. Không cần dump tất cả. Mẹo về limitations — 1 limitation câu trong abstract acceptable; 3+ limitations nghe defensive. Hold rest cho discussion. Mẹo về keywords — dùng terms reviewer sẽ search. Nếu field có jargon Anh-Nhật parallel (e.g., プラグマティクス vs 語用論), include both. Maximize discoverability. Mẹo về 和文 vs English abstracts — write Japanese first nếu primary audience là Japanese; English first nếu primary là international. Direct translation often awkward; rewrite với target audience in mind. Mẹo cuối: revise abstract ít nhất 5 lần. Abstract chính là phần được đọc most và judge most. Time investment 5x rate-per-word so với body justified.",
+    "tip_advice_en": "An effective C1 abstract workflow. (a) WRITE LAST — do NOT write the abstract before the paper; write the paper completely, then distill. Pre-written abstracts drift from the final content. (b) REVERSE OUTLINE — after finishing the paper, write a one-sentence summary of each section; combining those sentences gives the first abstract draft, often coherent enough to need little revision. (c) MEASURE COMPRESSION RATIO — an 8,000-字 paper → a 400-字 abstract = 5% compression. Under 3% → the abstract is underwritten; over 8% → the paper is undertight or the abstract is wordy; the sweet spot is 4–6%. (d) TRIM IN PASSES — pass 1: cut every 'などの', 'において', 'について' that doesn't change meaning; pass 2: replace verbose forms with compressed ones (〜することができる → 〜できる); pass 3: combine related sentences with 〜し、〜. Each pass typically saves 10–15%. (e) TEST SCANNABILITY — show the abstract to a colleague outside the field; ask whether, in 30 seconds, they grasp the purpose, method, and main finding. If not, it is still vague. On quantity: if the paper has many findings, list the 2 main ones and add 'その他の知見については本文を参照されたい'. On limitations: one limitation sentence in the abstract is acceptable; 3+ sounds defensive — hold the rest for the discussion. On keywords: use terms a reviewer would search; if the field has parallel English/Japanese jargon (e.g. プラグマティクス vs 語用論), include both to maximize discoverability. On 和文 vs English abstracts: write Japanese first if the primary audience is Japanese, English first if international; direct translation is often awkward — rewrite with the target audience in mind. Final tip: revise the abstract at least 5 times; it is the most-read and most-judged part — a 5x time investment per word over the body is justified.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2261,35 +2441,55 @@ export const lessons: JapaneseLesson[] = [
       "Bạn cần decline 1 reviewer suggestion (out of scope). Cụm: ご指摘の通り、〜により知見の射程は広がりますが、本研究では〜を優先いたしました。〜への拡張は、今後の研究課題として承りたく存じます. Acknowledge merit + explain priority + defer.",
       "Reviewer A và B mâu thuẫn nhau. Phrase: 査読者A様のご指摘とB様のご指摘とは部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます. KHÔNG side với một reviewer aggressively — explain choice với balance."
     ],
+    "roleplay_prompts_en": [
+      "You receive a conditional acceptance with 10 reviewer comments. Open the response letter with 査読者各位のご指摘に深く感謝申し上げます. Then list each point: comment summary → response → page number of the revision. Do NOT be defensive — accept or explain gracefully.",
+      "You need to decline one reviewer suggestion (out of scope). Use ご指摘の通り、〜により知見の射程は広がりますが、本研究では〜を優先いたしました。〜への拡張は、今後の研究課題として承りたく存じます. Acknowledge merit + explain priority + defer.",
+      "Reviewer A and Reviewer B contradict each other. Phrase it with 査読者A様のご指摘とB様のご指摘とは部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます. Do NOT side with one reviewer aggressively — explain the choice with balance."
+    ],
     "register_notes": "Peer review response letter ở C1 Japanese tuân theo strict format. (1) STRUCTURE — opening: thank reviewers ('査読者各位のご指摘に深く感謝申し上げます'); body: numbered response cho each comment; closing: 重ねて御礼申し上げます. (2) PER-COMMENT FORMAT — '査読者A様、ご指摘1: [paraphrase comment]. ご対応: [explain change], 修正箇所: 本文〇ページ〇行目'. Numbered, paraphrased (shows you understood), explicit page reference. (3) FOUR RESPONSE CATEGORIES — accept and revise (most common, simplest): 'ご指摘を踏まえ、〜のとおり修正いたしました'. Partial accept: 'ご指摘を踏まえ、〜の点については修正いたしましたが、〜については〜の理由により従来通りといたしました'. Reservation: 'ご指摘の点、誠にもっともながら、〜の制約により本稿では〜にとどめざるを得ませんでした'. Decline: ALWAYS acknowledge merit first, then explain why declined, then offer future-work framing. KHÔNG flat 'no'. (4) HONORIFICS — toward reviewer: 査読者A様 (formal), ご指摘 (honorific), ご教示 (humble request). Toward yourself/paper: 本稿, 当方, いたしました (humble). Maintain throughout — slipping into casual mid-letter signals carelessness. (5) CONFLICT HANDLING — when reviewers disagree, NEVER take sides ('A is right, B is wrong'). Cụm: '査読者A様とB様のご指摘は部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます。これは、〜という理由によるものでございます'. Show bạn weighed both. (6) EDITOR-VS-REVIEWER — response letter addressed to editor, but content responds to reviewers. Editor reads first, decides re-review. Pro tip: short cover note to editor summarizing major changes, separate from detailed point-by-point. Forbidden vocabulary: わかりません, それは違います, 不要です. Required cushioning: 誠にもっともながら, ご指摘を踏まえ, 重ねて御礼申し上げます. Tone calibration: even when reviewer is wrong (rare but happens — factual error), respond gentle: 'ご指摘の点について改めて確認いたしましたところ、〇〇に関する記述は本文〇ページに既に明記しておりました' (rather than 'you missed page X'). Save face for reviewer.",
+    "register_notes_en": "Register: open and close with thanks (査読者各位のご指摘に深く感謝申し上げます … 重ねて御礼申し上げます), paraphrase each comment then give ご対応 + 修正箇所 本文〇ページ, never a flat 'no' — acknowledge merit, explain, defer to future work — and on reviewer conflict take neither side, 〜の立場を取らせていただきたく存じます.",
     "idiom_glosses": [
       {
         "idiom": "鉄は熱いうちに打て (てつはあついうちにうて)",
         "literal": "Đập sắt khi còn nóng",
         "meaning": "[書き言葉・話し言葉] Strike while iron hot — submit response letter trong window editor expects, không delay momentum.",
-        "example": "査読結果を受領した後は、鉄は熱いうちに打てと申しますし、速やかに応答書の作成に取り掛かるべきでございます。"
+        "example": "査読結果を受領した後は、鉄は熱いうちに打てと申しますし、速やかに応答書の作成に取り掛かるべきでございます。",
+        "literal_en": "strike the iron while it is hot (tetsu wa atsui uchi ni ute)",
+        "meaning_en": "Submit the response letter within the window the editor expects — don't lose momentum. (written/spoken)",
+        "example_en": "After receiving the review results, as the saying goes to strike while the iron is hot, one should promptly set about drafting the response."
       },
       {
         "idiom": "謙虚に受け止める (けんきょにうけとめる)",
         "literal": "Tiếp nhận một cách khiêm tốn",
         "meaning": "[書き言葉] Accept feedback humbly — set phrase showing reviewer's comments accepted constructively.",
-        "example": "査読者各位のご指摘を謙虚に受け止め、改稿に反映いたしました。"
+        "example": "査読者各位のご指摘を謙虚に受け止め、改稿に反映いたしました。",
+        "literal_en": "to receive humbly (kenkyo ni uketomeru)",
+        "meaning_en": "To accept feedback humbly — a set phrase showing the reviewer's comments were taken constructively. (written)",
+        "example_en": "I have humbly accepted the comments of the reviewers and reflected them in the revised manuscript."
       },
       {
         "idiom": "慎重を期す (しんちょうをきす)",
         "literal": "Cố gắng cẩn trọng",
         "meaning": "[書き言葉] Take utmost care — phù hợp khi explaining bạn revised carefully theo comment.",
-        "example": "本箇所については、ご指摘を踏まえ、慎重を期して再検討いたしました。"
+        "example": "本箇所については、ご指摘を踏まえ、慎重を期して再検討いたしました。",
+        "literal_en": "to take utmost care (shinchō o kisu)",
+        "meaning_en": "To proceed with great caution — apt when explaining that you revised carefully in line with a comment. (written)",
+        "example_en": "On this passage, in light of the comment, I have reconsidered it with the utmost care."
       },
       {
         "idiom": "再考の上、〜とした (さいこうのうえ、〜とした)",
         "literal": "Sau khi xem xét lại, làm〜",
         "meaning": "[硬い・書き言葉] After reconsideration, did X — formal phrase signaling thoughtful revision, not knee-jerk.",
-        "example": "ご指摘を踏まえ、再考の上、本節の構成を全面的に見直すこととした。"
+        "example": "ご指摘を踏まえ、再考の上、本節の構成を全面的に見直すこととした。",
+        "literal_en": "upon reconsideration, did X (saikō no ue, … to shita)",
+        "meaning_en": "After reconsideration, did X — a formal phrase signaling a thoughtful, not knee-jerk, revision. (formal, written)",
+        "example_en": "In light of the comment, upon reconsideration I decided to revise the structure of this section entirely."
       }
     ],
     "cultural_notes_vi": "Peer review culture ở Nhật academia khác phương Tây ở 4 điểm. (1) GRATITUDE NORM — Nhật response letter không thể skip thanks. Mở thanks, đóng thanks, scattered thanks throughout cho specific suggestions. Western response letters đôi khi terse và transactional; Nhật reads as cold without thanks. Không phải sycophantic — đó là baseline civility. (2) DECLINE-ALWAYS-WITH-CARE — flat decline ('we disagree') hiếm khi acceptable. Even nếu reviewer's suggestion impossible, frame: acknowledge → explain constraint → defer to future work. Reviewer nhớ cách bạn declined; ungraceful decline reflects long-term. (3) REVIEWER ANONYMITY OFTEN BREACHED INFORMALLY — Nhật academic field nhỏ, tight network. Reviewers thường identifiable từ writing style, comment specifics. Treat response giả định reviewer sẽ biết identity của bạn (and you của họ) post-publication. Long-term relationship management. (4) RE-REVIEW EXPECTATIONS — sau revision, same reviewers thường được asked re-review. Nếu response letter aggressive hoặc dismissive, second-round verdict often harsher. Quality của response letter often determines accept/reject as much as quality of revisions. Khác VN: VN academic peer review culture variable; some journals casual. Nhật C1 journals strict format expectations. Khi submit qua biên giới, học specific journal conventions. Mẹo: collect 3-5 published response letters (some journals publish them) trong target journal, study tone. Mẹo về timing — Nhật reviewers thường complete trong 4-8 tuần. Sau bạn nhận feedback, ideal turnaround 2-4 tuần cho revision. Longer = signal not taking seriously. Mẹo: nếu cần thêm time, request extension early với polite email tới editor. Mẹo cuối: appreciation post-acceptance — sau paper accepted, send brief thanks tới editor (reviewers anonymous nhưng thanks reaches them indirectly). Cụm: 採択のご通知、誠にありがとうございました。査読者各位、編集委員会の皆様に重ねて御礼申し上げます. Maintains relationship cho future submissions.",
+    "cultural_notes_en": "Peer review culture in Japanese academia differs from the West on four points. (1) GRATITUDE NORM — a Japanese response letter cannot skip thanks: thanks at the open, thanks at the close, thanks scattered for specific suggestions. Western response letters can be terse and transactional; the Japanese reads as cold without thanks — this is not sycophancy but baseline civility. (2) ALWAYS DECLINE WITH CARE — a flat decline ('we disagree') is rarely acceptable; even if a reviewer's suggestion is impossible, frame it as acknowledge → explain the constraint → defer to future work. The reviewer remembers how you declined. (3) ANONYMITY OFTEN BREACHED INFORMALLY — the Japanese academic field is small and tightly networked; reviewers are often identifiable from writing style and comment specifics. Write the response assuming the reviewer will know your identity (and you theirs) post-publication — long-term relationship management. (4) RE-REVIEW EXPECTATIONS — after revision, the same reviewers are usually asked to re-review; if the response letter is aggressive or dismissive, the second-round verdict is often harsher. The quality of the response letter often determines accept/reject as much as the quality of the revisions. Unlike Vietnam, where peer-review culture varies and some journals are casual, Japanese C1 journals have strict format expectations — learn the specific journal's conventions when submitting across borders. Tip: collect 3–5 published response letters in the target journal and study the tone. On timing: Japanese reviewers usually finish in 4–8 weeks; an ideal turnaround for revision is 2–4 weeks — longer signals you are not taking it seriously; if you need more time, request an extension early with a polite email to the editor. Final tip: appreciation post-acceptance — after acceptance send brief thanks to the editor: 採択のご通知、誠にありがとうございました。査読者各位、編集委員会の皆様に重ねて御礼申し上げます. It maintains the relationship for future submissions.",
     "tip_advice_vi": "Peer review response workflow C1 Japanese. (a) READ ALL COMMENTS THRICE — first read: emotional reaction (let it pass, không respond ngay). Second read 24 hours later: classify mỗi comment (accept/partial/reservation/decline). Third read: identify specific revisions needed. KHÔNG draft response trong 24 hours đầu — emotional residue contaminates tone. (b) CREATE COMMENT TABLE — spreadsheet với columns: reviewer/number, comment paraphrase, your response category, specific revision (page/line), draft response text. Forces systematic handling. (c) REVISE PAPER FIRST, THEN WRITE LETTER — sequence matters. Revise body, sau đó letter references actual page numbers. Revising letter và body simultaneously creates inconsistencies. (d) FORMAT CHO READER — single-spaced response letter với clear hierarchy: Reviewer A heading > comment 1 > response > page reference. Bold reviewer comments, normal text response. Reviewer scans nhanh khi format clean. (e) ACCEPT MORE THAN BẠN INSTINCTIVELY WANT TO — first instinct often defensive: 'I already addressed that'. Second look thường shows reviewer nắm point bạn missed. Accept generously khi defensible — ratio 80 phần trăm accept : 20 phần trăm decline thường wise. (f) FOR DECLINES, OVER-EXPLAIN — accepted points cần ngắn ('修正済み, 本文5ページ参照'); declined points cần long explanation. Show bạn engaged seriously, không dismissed. Mẹo về scope — nếu reviewer asks expansion ('add intermediate learners'): graceful decline + future-work framing OK if scope clearly defined ahead. Nếu reviewer asks deeper analysis on existing scope: usually must accept. Mẹo về emotional management — store harsh comment 24-48 hours trước responding. Initial draft với 'unfortunately the reviewer misunderstands' bắt buộc phải đổi sang 'thank you for the comment, perhaps the original wording was unclear' trong final. Mẹo về co-authors — circulate response letter draft tới mọi co-authors trước submit. One co-author khilling final tone catches misjudged sentences. Mẹo cuối: lưu response letter mỗi paper. Pattern recognition (which comments recur, which language works best) builds skill across submissions. Sau 5-10 papers, response letter quality dramatically improves và becomes career asset.",
+    "tip_advice_en": "A peer-review response workflow at C1 Japanese. (a) READ ALL COMMENTS THRICE — first read: emotional reaction (let it pass, don't respond now); second read 24 hours later: classify each comment (accept/partial/reservation/decline); third read: identify the specific revisions needed. Do NOT draft a response in the first 24 hours — emotional residue contaminates the tone. (b) CREATE A COMMENT TABLE — a spreadsheet with columns: reviewer/number, comment paraphrase, response category, specific revision (page/line), draft response text — it forces systematic handling. (c) REVISE THE PAPER FIRST, THEN WRITE THE LETTER — sequence matters; revise the body, then let the letter reference actual page numbers; doing both simultaneously creates inconsistencies. (d) FORMAT FOR THE READER — a single-spaced letter with clear hierarchy: Reviewer A heading > comment 1 > response > page reference; bold the reviewer comments, normal text for the response — a reviewer scans fast when the format is clean. (e) ACCEPT MORE THAN YOU INSTINCTIVELY WANT TO — the first instinct is defensive ('I already addressed that'); a second look often shows the reviewer caught a point you missed. Accept generously when defensible — an 80% accept : 20% decline ratio is usually wise. (f) FOR DECLINES, OVER-EXPLAIN — accepted points can be short ('修正済み、本文5ページ参照'); declined points need a long explanation showing you engaged seriously. On scope: if a reviewer asks for expansion ('add intermediate learners'), a graceful decline + future-work framing is fine if the scope was clearly defined ahead; if they ask for deeper analysis within the existing scope, you usually must accept. On emotional management: store a harsh comment 24–48 hours before responding; an initial draft of 'unfortunately the reviewer misunderstands' must become 'thank you for the comment; perhaps the original wording was unclear.' On co-authors: circulate the draft to all co-authors before submitting; one co-author reading the final tone catches misjudged sentences. Final tip: keep every response letter; pattern recognition (which comments recur, which language works best) builds skill across submissions — after 5–10 papers, response-letter quality improves dramatically and becomes a career asset.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2379,15 +2579,35 @@ export const lessons: JapaneseLesson[] = [
       "Sếp Nhật phản ứng 'うちは年功序列だから' (chế độ thâm niên). Diễn tập câu acknowledge norm + soft pushback: '社の方針は十分理解しておりますが、〜'. Tránh đối đầu — frame as 'individual consideration within the system'.",
       "Sếp đề nghị tăng nhỏ hơn expected. Diễn tập câu accept gracefully + leave door open: 'まずはご配慮に感謝いたします。改めて、〜の機会を頂戴できれば幸いです.' KHÔNG nói '低すぎます'."
     ],
+    "roleplay_prompts_en": [
+      "You have been 入社 (with the company) 5 years and have never had a raise. Rehearse the opening line — it must use 相談 framing, not 要求. Use '〜についてご相談させていただきたく', NOT '〜を要求します'. Mention 業績 before raising 待遇.",
+      "Your Japanese boss reacts with 'うちは年功序列だから' (we go by seniority). Rehearse a line that acknowledges the norm + soft pushback: '社の方針は十分理解しておりますが、〜'. Avoid confrontation — frame it as 'individual consideration within the system.'",
+      "The boss offers a smaller raise than expected. Rehearse a line that accepts gracefully + leaves the door open: 'まずはご配慮に感謝いたします。改めて、〜の機会を頂戴できれば幸いです.' Do NOT say '低すぎます'."
+    ],
     "register_notes": "給与交渉 trong Nhật là moment tinh tế nhất của business Japanese. (1) FRAMING — KHÔNG '要求' (demand) hay '交渉' (negotiate); dùng 'ご相談' (consultation). Đây là euphemism quan trọng — biến confrontational thành consultative. (2) KEIGO LAYERS — phải dùng 4 layers cùng lúc: 謙譲語 cho hành động của mình ('参りました', '頂戴する'), 尊敬語 cho hành động của sếp ('ご検討いただく'), 丁寧語 ます-form throughout, plus 美化語 ('お時間', 'ご相談'). (3) PERFORMANCE FIRST — luôn nêu 業績 (achievements) TRƯỚC khi nêu yêu cầu. Reverse order = bị coi là 'demanding without earning'. (4) MARKET REFERENCE — '市場相場' / '同業他社' justify yêu cầu mà không sound greedy. Frame as 'fairness with peers' chứ không 'I want more'. (5) TIMING — '急ぎません' signal patience; sếp Nhật value patience — pressuring = 失礼. Đừng give ultimatum. (6) SPECIFIC NUMBERS — Nhật business culture lúc đầu vague về số ('妥当な額' = 'reasonable amount'); để sếp đưa ra số. Pushing exact figure = aggressive. KHÔNG: '今すぐ答えてください' (answer now), '他の会社からオファーがあります' (have other offer — coi là threat in Japan).",
+    "register_notes_en": "Register: never 要求 or 交渉 — frame it as ご相談, lead with 業績 before the ask, justify via 市場相場 / 同業他社 as peer-fairness not greed, signal patience (急ぎません), let the boss name a figure, and never 今すぐ答えてください or 他の会社からオファーがあります.",
     "idiom_glosses": [
-      { "idiom": "顔を立てる (かおをたてる)", "literal": "Dựng cái mặt lên", "meaning": "[硬い] Giữ thể diện cho người đối diện — applies khi accept smaller raise gracefully.", "example": "部長の顔を立てつつ、改めて機会を頂戴したい旨をお伝えする。" },
-      { "idiom": "二の足を踏む (にのあしをふむ)", "literal": "Bước thứ hai do dự", "meaning": "[書き言葉] Do dự — applies khi họ delay phản hồi.", "example": "給与改定について二の足を踏まれているご様子でございます。" },
-      { "idiom": "渡りに船 (わたりにふね)", "literal": "Thuyền đến đúng lúc đang qua sông", "meaning": "[書き言葉] Cơ hội đến đúng lúc — khi họ proactively offer raise.", "example": "査定時期と重なり、まさに渡りに船でございました。" },
-      { "idiom": "下手に出る (したてにでる)", "literal": "Đi ra với tư thế thấp", "meaning": "[硬い] Dùng thái độ humble để approach — central technique cho salary negotiation.", "example": "下手に出ることが、結果的に交渉を進める鍵となる。" }
+      { "idiom": "顔を立てる (かおをたてる)", "literal": "Dựng cái mặt lên", "meaning": "[硬い] Giữ thể diện cho người đối diện — applies khi accept smaller raise gracefully.", "example": "部長の顔を立てつつ、改めて機会を頂戴したい旨をお伝えする。",
+        "literal_en": "to set up someone's face (kao o tateru)",
+        "meaning_en": "To preserve the other party's dignity — applies when accepting a smaller raise gracefully. (formal)",
+        "example_en": "While preserving the section chief's face, you convey that you would like to be given the chance again." },
+      { "idiom": "二の足を踏む (にのあしをふむ)", "literal": "Bước thứ hai do dự", "meaning": "[書き言葉] Do dự — applies khi họ delay phản hồi.", "example": "給与改定について二の足を踏まれているご様子でございます。",
+        "literal_en": "to plant the second foot (hesitating) (ni no ashi o fumu)",
+        "meaning_en": "To hesitate — applies when they delay their response. (written)",
+        "example_en": "It appears you are hesitating over the salary revision." },
+      { "idiom": "渡りに船 (わたりにふね)", "literal": "Thuyền đến đúng lúc đang qua sông", "meaning": "[書き言葉] Cơ hội đến đúng lúc — khi họ proactively offer raise.", "example": "査定時期と重なり、まさに渡りに船でございました。",
+        "literal_en": "a boat arriving as you cross (watari ni fune)",
+        "meaning_en": "An opportunity arriving at just the right moment — when they proactively offer a raise. (written)",
+        "example_en": "It coincided with the assessment period and was truly a boat arriving just as I needed it." },
+      { "idiom": "下手に出る (したてにでる)", "literal": "Đi ra với tư thế thấp", "meaning": "[硬い] Dùng thái độ humble để approach — central technique cho salary negotiation.", "example": "下手に出ることが、結果的に交渉を進める鍵となる。",
+        "literal_en": "to come out from a lower stance (shitate ni deru)",
+        "meaning_en": "To approach with a humble attitude — the central technique in salary negotiation. (formal)",
+        "example_en": "Coming from a humble stance is, in the end, the key to moving the negotiation forward." }
     ],
     "cultural_notes_vi": "Văn hóa 給与交渉 ở Nhật khác hẳn phương Tây và cả Việt Nam: (1) HISTORICAL CONTEXT — chế độ 年功序列 (seniority-based pay) truyền thống làm individual negotiation hiếm. Modern startup / 外資系 (foreign companies) cởi mở hơn nhưng truyền thống Nhật firms vẫn raise theo định kỳ 査定 (April assessment). (2) FREQUENCY — average Japanese employee never directly negotiates salary career-long. Khi xảy ra, thường tại promotion, transfer, or returning offer matching. (3) COUNTER-OFFER CULTURE — Nhật firms LITTLE flexibility cho counter-offer khi có offer khác. Threatening to leave often results in 'OK, leave' rather than 'we'll match'. Cảnh báo: bringing competing offer là double-edged. (4) TIMING — đề xuất sau khi đã 'earn' clear value (project completion, year-end review). KHÔNG ngay khi join hay middle of project. (5) WHO INITIATES — manager often expects YOU to bring it up. Silent dissatisfaction = 'they're fine'. But initiation must be với extreme humility framing. (6) GENDER NOTE — historical research suggests Japanese women under-negotiate compared to men by larger gap than Western counterparts; 男女問題 active topic. (7) FOREIGN EMPLOYEE — gaijin trong 日本企業 thường được expected to follow 同じルール; trong 外資系 can use Western style. Confirm với HR culture của company before initiating.",
-    "tip_advice_vi": "Salary negotiation Japanese 7-step framework: (1) RESEARCH market rate trên DODA, リクナビ, パーソルキャリア — cần data trước khi nói; (2) TIMING — sau project win, before year-end review (査定 thường tháng 3-4); (3) REQUEST 1-on-1 → '少々お時間頂戴できますでしょうか'. Never ambush in group meeting; (4) FRAMING — '相談したい' không '要求します'; (5) PERFORMANCE FIRST — kể đóng góp cụ thể có numbers (sales, project completion, certifications acquired); (6) ASK don't DEMAND — 'ご検討いただけませんでしょうか' (could you consider) thay vì 'ください'; (7) GRACEFUL EXIT — accept 'I'll consider' as legitimate response, follow-up trong 2-3 tuần. Common mistakes: (a) Mentioning competing offer without strategy — Nhật firm thường không match; (b) Comparing với same-level colleagues by name — privacy violation; (c) Demanding specific number — let them propose; (d) Going over manager's head — face-loss for direct manager. Phrase to memorize: '貴社の評価基準を尊重したうえで、市場相場を踏まえご検討いただければ幸いです.' Nailing this one sentence shows you understand Japanese business context."
+    "cultural_notes_en": "The culture of 給与交渉 (salary negotiation) in Japan differs sharply from the West and even from Vietnam. (1) HISTORICAL CONTEXT — the traditional 年功序列 (seniority-based pay) system makes individual negotiation rare; modern startups and 外資系 (foreign-affiliated firms) are more open, but traditional Japanese firms still raise pay on a periodic 査定 (April assessment). (2) FREQUENCY — the average Japanese employee never directly negotiates salary in their whole career; when it happens, it is usually at promotion, transfer, or matching a returning offer. (3) COUNTER-OFFER CULTURE — Japanese firms have LITTLE flexibility for a counter-offer when you have another offer; threatening to leave often produces 'OK, leave' rather than 'we'll match.' Bringing a competing offer is double-edged. (4) TIMING — raise it after you have clearly 'earned' value (project completion, year-end review), NOT on joining or mid-project. (5) WHO INITIATES — the manager often expects YOU to bring it up; silent dissatisfaction reads as 'they're fine,' but the initiation must be framed with extreme humility. (6) GENDER NOTE — historical research suggests Japanese women under-negotiate relative to men by a wider gap than Western counterparts; 男女問題 is an active topic. (7) FOREIGN EMPLOYEE — a foreigner in a 日本企業 is usually expected to follow 同じルール (the same rules); in a 外資系 you can use a Western style. Confirm the company's HR culture before initiating.",
+    "tip_advice_vi": "Salary negotiation Japanese 7-step framework: (1) RESEARCH market rate trên DODA, リクナビ, パーソルキャリア — cần data trước khi nói; (2) TIMING — sau project win, before year-end review (査定 thường tháng 3-4); (3) REQUEST 1-on-1 → '少々お時間頂戴できますでしょうか'. Never ambush in group meeting; (4) FRAMING — '相談したい' không '要求します'; (5) PERFORMANCE FIRST — kể đóng góp cụ thể có numbers (sales, project completion, certifications acquired); (6) ASK don't DEMAND — 'ご検討いただけませんでしょうか' (could you consider) thay vì 'ください'; (7) GRACEFUL EXIT — accept 'I'll consider' as legitimate response, follow-up trong 2-3 tuần. Common mistakes: (a) Mentioning competing offer without strategy — Nhật firm thường không match; (b) Comparing với same-level colleagues by name — privacy violation; (c) Demanding specific number — let them propose; (d) Going over manager's head — face-loss for direct manager. Phrase to memorize: '貴社の評価基準を尊重したうえで、市場相場を踏まえご検討いただければ幸いです.' Nailing this one sentence shows you understand Japanese business context.",
+    "tip_advice_en": "A 7-step Japanese salary-negotiation framework: (1) RESEARCH the market rate on DODA, リクナビ, パーソルキャリア — you need data before you speak; (2) TIMING — after a project win, before the year-end review (査定 is usually March–April); (3) REQUEST a 1-on-1 → '少々お時間頂戴できますでしょうか'. Never ambush in a group meeting; (4) FRAMING — '相談したい', not '要求します'; (5) PERFORMANCE FIRST — state concrete contributions with numbers (sales, project completion, certifications acquired); (6) ASK, don't DEMAND — 'ご検討いただけませんでしょうか' (could you consider) rather than 'ください'; (7) GRACEFUL EXIT — accept 'I'll consider' as a legitimate response and follow up in 2–3 weeks. Common mistakes: (a) mentioning a competing offer without strategy — a Japanese firm usually won't match; (b) comparing with same-level colleagues by name — a privacy violation; (c) demanding a specific number — let them propose; (d) going over the manager's head — face-loss for your direct manager. Phrase to memorize: '貴社の評価基準を尊重したうえで、市場相場を踏まえご検討いただければ幸いです.' Nailing this one sentence shows you understand the Japanese business context."
   },
   {
     "id": 103,
@@ -2443,15 +2663,35 @@ export const lessons: JapaneseLesson[] = [
       "Bạn cần shorten contract period từ 5 năm xuống 3 năm vì company strategy change. Diễn tập câu giải thích without losing partner trust: '弊社の中期計画見直しに伴い〜'. Frame as your problem, not theirs.",
       "Long-term partner asks for late payment extension (60 → 90 days). Diễn tập câu balance — accommodate vs protect cash flow: '〜の場合に限り柔軟に対応〜' (in this case only, flexibly accommodate)."
     ],
+    "roleplay_prompts_en": [
+      "Your Vendor B suddenly wants to raise the price 10%. Rehearse a pushback line in the Japanese structure: acknowledge the market pressure + ask for a specific reason + propose a middle ground. Avoid a flat refusal — Japanese business culture reads an immediate rejection as 失礼.",
+      "You need to shorten the contract period from 5 years to 3 because of a company strategy change. Rehearse an explanation that does not lose the partner's trust: '弊社の中期計画見直しに伴い〜'. Frame it as your problem, not theirs.",
+      "A long-term partner asks for a late-payment extension (60 → 90 days). Rehearse a line that balances accommodation vs protecting cash flow: '〜の場合に限り柔軟に対応〜' (in this case only, flexibly accommodate)."
+    ],
     "register_notes": "契約 negotiation phải dùng 商談 register cao nhất. (1) CHỦ NGỮ TRÁNH 私 — dùng '当社', '弊社', '双方', 'お互いさま'. (2) CONDITIONALITY — '〜場合', '〜次第', '〜の限り' để leave room cho flexibility. (3) FACE-SAVING — KHÔNG nói 'cannot' / 'unable'; dùng '困難な見通し' (difficult to maintain), '致しかねます' (cannot do — formal way). (4) SHARED PROBLEM — frame issue như joint problem, không one-sided. 'サプライチェーン全体の問題' tốt hơn '当社の問題'. (5) RECIPROCITY signaling — '双方にとって', '互いに' xuyên suốt. (6) BURIED ASK — yêu cầu chính (extension hay quantity reduction) không phải câu đầu — context first. KHÔNG: 'できません', 'やります' commit prematurely; '〜してほしい' (childish). Khi propose: '〜いただけませんでしょうか' / '〜のお考えはいかがでしょうか'. Phrase vàng: '誠意をもって対応してまいります' (will respond with sincerity) — closing line.",
+    "register_notes_en": "Register: use the highest 商談 register — avoid 私 for 当社 / 弊社 / 双方, soften 'cannot' to 困難な見通し / 致しかねます, frame the issue as a shared problem (サプライチェーン全体の問題) with reciprocity (双方にとって), bury the real ask after context, and ask 〜いただけませんでしょうか, never できません or 〜してほしい.",
     "idiom_glosses": [
-      { "idiom": "持ちつ持たれつ (もちつもたれつ)", "literal": "Người này giữ, người kia được giữ", "meaning": "[書き言葉] Tương trợ qua lại — relationship-based negotiation cornerstone.", "example": "長期的なお取引は、持ちつ持たれつで成り立つものでございます。" },
-      { "idiom": "折り合いをつける (おりあいをつける)", "literal": "Ghép vào với nhau", "meaning": "[書き言葉] Đạt thỏa thuận giữa chừng — tiêu biểu cho compromise.", "example": "双方の事情を踏まえ、折り合いをつけたく存じます。" },
-      { "idiom": "痛み分け (いたみわけ)", "literal": "Chia đau", "meaning": "[硬い] Cùng chia sẻ thiệt hại — both-sides-give-something framing.", "example": "今回の状況は、双方にとって痛み分けの形にせざるを得ません。" },
-      { "idiom": "棚上げ (たなあげ)", "literal": "Đặt lên kệ", "meaning": "[口語混じり] Tạm gác — useful when one issue blocks progress.", "example": "その点は一旦棚上げにし、優先課題から議論しましょう。" }
+      { "idiom": "持ちつ持たれつ (もちつもたれつ)", "literal": "Người này giữ, người kia được giữ", "meaning": "[書き言葉] Tương trợ qua lại — relationship-based negotiation cornerstone.", "example": "長期的なお取引は、持ちつ持たれつで成り立つものでございます。",
+        "literal_en": "one holds, the other is held (mochitsu motaretsu)",
+        "meaning_en": "Mutual support back and forth — the cornerstone of relationship-based negotiation. (written)",
+        "example_en": "Long-term business dealings are sustained by mutual give-and-take." },
+      { "idiom": "折り合いをつける (おりあいをつける)", "literal": "Ghép vào với nhau", "meaning": "[書き言葉] Đạt thỏa thuận giữa chừng — tiêu biểu cho compromise.", "example": "双方の事情を踏まえ、折り合いをつけたく存じます。",
+        "literal_en": "to fit things together (oriai o tsukeru)",
+        "meaning_en": "To reach a middle-ground agreement — the very picture of compromise. (written)",
+        "example_en": "In light of both sides' circumstances, I would like to reach a compromise." },
+      { "idiom": "痛み分け (いたみわけ)", "literal": "Chia đau", "meaning": "[硬い] Cùng chia sẻ thiệt hại — both-sides-give-something framing.", "example": "今回の状況は、双方にとって痛み分けの形にせざるを得ません。",
+        "literal_en": "splitting the pain (itamiwake)",
+        "meaning_en": "Both sides sharing the loss — a both-sides-give-something framing. (formal)",
+        "example_en": "The present situation leaves us no choice but to settle it as a shared sacrifice for both parties." },
+      { "idiom": "棚上げ (たなあげ)", "literal": "Đặt lên kệ", "meaning": "[口語混じり] Tạm gác — useful when one issue blocks progress.", "example": "その点は一旦棚上げにし、優先課題から議論しましょう。",
+        "literal_en": "putting it up on the shelf (tanaage)",
+        "meaning_en": "Setting an issue aside for now — useful when one issue blocks progress. (semi-colloquial)",
+        "example_en": "Let us set that point aside for the moment and discuss the priority issues first." }
     ],
     "cultural_notes_vi": "Renegotiation văn hóa Nhật: (1) CONTRACT VS NEGOTIATION — phương Tây contract = final; Nhật contract = framework with implicit ongoing renegotiation. Long-term partners expected to adjust khi conditions change. (2) PRECONDITION TIMING — most renegotiation initiated when current contract period 80%+ complete. Mid-contract renegotiation requires excellent justification (force majeure, market shift, regulatory change). (3) LANGUAGE OF MUTUAL BENEFIT — successful renegotiation framed as solving shared problem. Solo problem framing = lose trust. (4) DOCUMENT TRAIL — even informal discussions documented in 議事録 (meeting minutes); follow-up email summarizing 'what was discussed' is professional norm. (5) WHO ATTENDS — usually 課長 + 部長 from each side; for major contracts 役員 (executive) attends. (6) FOREIGN-PARTNER GAP — Vietnamese teams often more contract-rigid (treat document as fixed); Japanese partner expects iteration. Bridge: communicate Vietnam team's contract-formality stance to Japan partner so they don't perceive as inflexibility. Mistake: Nhật partner shows polite agreement → Vietnamese team thinks deal closed → Nhật partner expected continued discussion. 'はい' = 'I hear you', không nhất thiết 'tôi đồng ý'.",
-    "tip_advice_vi": "Renegotiation 6-step: (1) PREPARE EVIDENCE — market data, internal reports, supply-chain documents. Nhật business require evidence; emotional appeals ineffective. (2) CHOOSE MOMENT — schedule formal 商談 (commercial meeting), don't ambush. Send agenda 1 tuần trước. (3) START WITH SHARED CONTEXT — 'recent market conditions / supply changes / regulatory updates'. Frame as joint reality, not your demand. (4) PROPOSE OPTIONS — không 1 demand. Tiếng Nhật prefer 2-3 options ('A案 / B案 / C案'). Lets partner choose / counter-propose. (5) BUILD IN RECIPROCITY — 'in exchange for X, we offer Y' even if Y is small (extended payment terms, longer commitment, exclusivity, etc). (6) ACCEPT 'WILL CONSIDER' — Japanese partner saying '検討します' is genuine — they need internal 根回し. Don't pressure for instant answer. Common mistake: Vietnamese team treats '検討します' as 'no'. It's 'pause to consult internally'. Follow up via email in 1 tuần with summary + asking timeline. Phrase to nail: '双方にとって弾力的な条件設定が望ましいかと存じます.' Embeds reciprocity, mutual benefit, hedging."
+    "cultural_notes_en": "Renegotiation culture in Japan: (1) CONTRACT VS NEGOTIATION — in the West a contract is final; in Japan a contract is a framework with implicit ongoing renegotiation, and long-term partners are expected to adjust when conditions change. (2) PRECONDITION TIMING — most renegotiation is initiated when the current contract period is 80%+ complete; mid-contract renegotiation requires excellent justification (force majeure, market shift, regulatory change). (3) LANGUAGE OF MUTUAL BENEFIT — successful renegotiation is framed as solving a shared problem; framing it as your problem alone loses trust. (4) DOCUMENT TRAIL — even informal discussions are documented in 議事録 (meeting minutes); a follow-up email summarizing 'what was discussed' is the professional norm. (5) WHO ATTENDS — usually a 課長 + 部長 from each side; for major contracts a 役員 (executive) attends. (6) FOREIGN-PARTNER GAP — Vietnamese teams are often more contract-rigid (treating the document as fixed), while the Japanese partner expects iteration; bridge this by communicating the Vietnamese team's contract-formality stance to the Japanese partner so it isn't perceived as inflexibility. Mistake: the Japanese partner shows polite agreement → the Vietnamese team thinks the deal is closed → the Japanese partner expected continued discussion. 'はい' = 'I hear you,' not necessarily 'I agree.'",
+    "tip_advice_vi": "Renegotiation 6-step: (1) PREPARE EVIDENCE — market data, internal reports, supply-chain documents. Nhật business require evidence; emotional appeals ineffective. (2) CHOOSE MOMENT — schedule formal 商談 (commercial meeting), don't ambush. Send agenda 1 tuần trước. (3) START WITH SHARED CONTEXT — 'recent market conditions / supply changes / regulatory updates'. Frame as joint reality, not your demand. (4) PROPOSE OPTIONS — không 1 demand. Tiếng Nhật prefer 2-3 options ('A案 / B案 / C案'). Lets partner choose / counter-propose. (5) BUILD IN RECIPROCITY — 'in exchange for X, we offer Y' even if Y is small (extended payment terms, longer commitment, exclusivity, etc). (6) ACCEPT 'WILL CONSIDER' — Japanese partner saying '検討します' is genuine — they need internal 根回し. Don't pressure for instant answer. Common mistake: Vietnamese team treats '検討します' as 'no'. It's 'pause to consult internally'. Follow up via email in 1 tuần with summary + asking timeline. Phrase to nail: '双方にとって弾力的な条件設定が望ましいかと存じます.' Embeds reciprocity, mutual benefit, hedging.",
+    "tip_advice_en": "Renegotiation in 6 steps: (1) PREPARE EVIDENCE — market data, internal reports, supply-chain documents; Japanese business requires evidence, emotional appeals are ineffective. (2) CHOOSE THE MOMENT — schedule a formal 商談 (commercial meeting), don't ambush; send an agenda one week ahead. (3) START WITH SHARED CONTEXT — 'recent market conditions / supply changes / regulatory updates'; frame it as joint reality, not your demand. (4) PROPOSE OPTIONS — not one demand; Japanese prefer 2–3 options ('A案 / B案 / C案'), which lets the partner choose or counter-propose. (5) BUILD IN RECIPROCITY — 'in exchange for X, we offer Y,' even if Y is small (extended payment terms, longer commitment, exclusivity). (6) ACCEPT 'WILL CONSIDER' — a Japanese partner saying '検討します' is genuine; they need internal 根回し, so don't pressure for an instant answer. Common mistake: the Vietnamese team treats '検討します' as 'no' — it is 'pause to consult internally'; follow up by email in a week with a summary and a request for a timeline. Phrase to nail: '双方にとって弾力的な条件設定が望ましいかと存じます.' It embeds reciprocity, mutual benefit, and hedging."
   },
   {
     "id": 104,
@@ -2509,15 +2749,35 @@ export const lessons: JapaneseLesson[] = [
       "Một participant talks too long. Diễn tập câu cut off politely: '貴重なご意見ありがとうございます。時間の関係上、要点のみで恐縮ですが〜'. Frame as time issue, not 'speaking too much'.",
       "Two participants begin arguing aggressively. Diễn tập câu de-escalate: '少々論点を整理させていただいてよろしいでしょうか'. Pull back to procedure."
     ],
+    "roleplay_prompts_en": [
+      "You chair a meeting with 3 departments in conflict over budget. Rehearse a line that acknowledges each side without taking sides: '〜の論点と〜の論点、双方ご指摘のとおりかと存じます'. Avoid '正しい' / '間違い' about the parties.",
+      "One participant talks too long. Rehearse a line that cuts in politely: '貴重なご意見ありがとうございます。時間の関係上、要点のみで恐縮ですが〜'. Frame it as a time issue, not 'speaking too much.'",
+      "Two participants begin arguing aggressively. Rehearse a de-escalation line: '少々論点を整理させていただいてよろしいでしょうか'. Pull back to procedure."
+    ],
     "register_notes": "議長 register Nhật yêu cầu PERFECT NEUTRALITY. (1) NEVER 'I think / 私は' — chair không có opinion in proceedings. Use '〜という整理ができるかと存じます' (it can be organized as ~) thay vì '私は〜と思います'. (2) 〜させていただく overuse OK in chair role — '進めさせていただきます', '整理させていただきます'. Multiple させていただく per minute is normal for facilitator. (3) FACE-PRESERVING attribution — when summarizing conflict, attribute to 'parts of the discussion' not specific individuals: '〜という意見もございますし、〜というご意見もございます'. (4) PROCEDURAL refrains — '異議ございませんでしょうか', '多数決にて確認させていただきます', '次第表に沿って' — these are stock phrases all participants expect. (5) TIME-MANAGEMENT framing — when cutting off, NEVER 'time's up' but '時間の関係上'. KHÔNG: '黙ってください' (be quiet), '違います' (wrong). Khi votes split: '本日中の結論は時期尚早' (premature for today's conclusion) — graceful deferral.",
+    "register_notes_en": "Register: perfect neutrality — never 私は〜と思います but 〜という整理ができるかと存じます, overuse 〜させていただく as facilitator, attribute conflict to '〜というご意見もございます' not individuals, lean on stock procedural refrains (異議ございませんでしょうか), and cut off with 時間の関係上, never 黙ってください or 違います.",
     "idiom_glosses": [
-      { "idiom": "議論を尽くす (ぎろんをつくす)", "literal": "Vắt cạn cuộc thảo luận", "meaning": "[硬い] Thảo luận đến cùng — chair's signal that all opinions heard.", "example": "議論を尽くしたうえで、採決に移らせていただきます。" },
-      { "idiom": "持ち越し (もちこし)", "literal": "Mang qua (sang phiên sau)", "meaning": "[事務的・書き言葉] Gác lại sang phiên sau — chair's tool for deferring.", "example": "結論は時期尚早ですので、次回への持ち越しといたします。" },
-      { "idiom": "鶴の一声 (つるのひとこえ)", "literal": "Một tiếng kêu của hạc", "meaning": "[書き言葉] Phán quyết của người trên — đỉnh cao hierarchy intervention.", "example": "議論が紛糾した後、社長の鶴の一声で方針が定まった。" },
-      { "idiom": "落としどころ (おとしどころ)", "literal": "Chỗ để hạ xuống", "meaning": "[口語/会話] Điểm thỏa hiệp — chair guides toward this.", "example": "双方の主張を踏まえ、適切な落としどころを模索する必要がございます。" }
+      { "idiom": "議論を尽くす (ぎろんをつくす)", "literal": "Vắt cạn cuộc thảo luận", "meaning": "[硬い] Thảo luận đến cùng — chair's signal that all opinions heard.", "example": "議論を尽くしたうえで、採決に移らせていただきます。",
+        "literal_en": "to exhaust the discussion (giron o tsukusu)",
+        "meaning_en": "To discuss something to the end — the chair's signal that all opinions have been heard. (formal)",
+        "example_en": "Having exhausted the discussion, I will move us to the vote." },
+      { "idiom": "持ち越し (もちこし)", "literal": "Mang qua (sang phiên sau)", "meaning": "[事務的・書き言葉] Gác lại sang phiên sau — chair's tool for deferring.", "example": "結論は時期尚早ですので、次回への持ち越しといたします。",
+        "literal_en": "carrying over (to a later session) (mochikoshi)",
+        "meaning_en": "Deferring an item to a later session — the chair's tool for postponing. (clerical, written)",
+        "example_en": "As a conclusion is premature, we will carry this over to the next session." },
+      { "idiom": "鶴の一声 (つるのひとこえ)", "literal": "Một tiếng kêu của hạc", "meaning": "[書き言葉] Phán quyết của người trên — đỉnh cao hierarchy intervention.", "example": "議論が紛糾した後、社長の鶴の一声で方針が定まった。",
+        "literal_en": "a single cry of the crane (tsuru no hitokoe)",
+        "meaning_en": "A superior's decisive pronouncement — the apex of hierarchical intervention. (written)",
+        "example_en": "After the discussion grew tangled, the president's single word settled the policy." },
+      { "idiom": "落としどころ (おとしどころ)", "literal": "Chỗ để hạ xuống", "meaning": "[口語/会話] Điểm thỏa hiệp — chair guides toward this.", "example": "双方の主張を踏まえ、適切な落としどころを模索する必要がございます。",
+        "literal_en": "the place to set it down (otoshidokoro)",
+        "meaning_en": "The point of compromise — the chair guides the room toward this. (colloquial)",
+        "example_en": "In light of both parties' claims, we need to seek an appropriate landing point." }
     ],
     "cultural_notes_vi": "Multi-party meeting văn hóa Nhật: (1) STRUCTURE — formal 会議 luôn có 議事次第 (agenda) sent in advance, 議事録 (minutes) recorded by 書記 (secretary), specific seating order (上座 most senior). (2) ROLE OF CHAIR — chair = facilitator, không decision-maker. Chair role rotates by department or seniority depending on company. (3) NEMAWASHI before meeting — Nhật business culture: real decisions made in pre-meeting 1-on-1s; meeting itself often 'theater' to confirm consensus. Foreign teams often confused why meetings 'just rubber-stamp'. (4) SILENCE = consent in some firms; in others = veto. Read context. (5) CONFLICT in Japanese meeting = quiet disagreement, not loud debate. Detecting it requires 空気を読む (reading air). Indirect signals: prolonged silence, '少しお時間いただいてよろしいでしょうか', no eye contact, change of topic. (6) CONSENSUS-FIRST framework — vote (採決) often only at end after everyone speaks. Voting before all-spoken = procedural violation. (7) BENT — recent generation moving toward Western-style direct meetings, especially in IT/startup; traditional firms still consensus-first.",
-    "tip_advice_vi": "Chair 6-step framework: (1) PRE-MEETING — agenda, materials sent 24h advance min; conduct 根回し với key stakeholders to surface concerns; (2) OPENING — '定刻でございますので' (it's the appointed time) — Nhật business strict on starting on time even if 5-min late entries; (3) FACILITATE NEUTRALLY — chair's voice neutral, attribute opinions to roles ('営業側', '製造側'), never agree/disagree with substance; (4) MANAGE TIME — '時間の関係上' phrasing — gentle interruption; visible clock helps; (5) SUMMARIZE OBJECTIVELY — restate key points before vote: 'A案、B案、C案、それぞれ〜という観点から〜'; (6) CLOSE — even when no decision, 'next steps' clear: who, what, by when. Common Vietnamese mistakes: (a) Chair takes side → loses neutrality respect; (b) Cuts off speaker rudely → face loss for speaker; (c) Pushes for vote when consensus not formed → procedural violation; (d) Forgets nemawashi → meeting collapses despite skilled facilitation. Phrase to memorize: '論点を整理させていただきます' — chair's most important sentence. Embeds neutrality, structure, deference."
+    "cultural_notes_en": "Multi-party meeting culture in Japan: (1) STRUCTURE — a formal 会議 always has a 議事次第 (agenda) sent in advance, 議事録 (minutes) recorded by a 書記 (secretary), and a specific seating order (上座 for the most senior). (2) ROLE OF THE CHAIR — the chair is a facilitator, not the decision-maker; the role rotates by department or seniority depending on the company. (3) NEMAWASHI BEFORE THE MEETING — in Japanese business culture the real decisions are made in pre-meeting 1-on-1s, and the meeting itself is often 'theater' to confirm consensus; foreign teams are often confused why meetings 'just rubber-stamp.' (4) SILENCE = consent in some firms, = veto in others; read the context. (5) CONFLICT in a Japanese meeting is quiet disagreement, not loud debate; detecting it requires 空気を読む (reading the air) — indirect signals: prolonged silence, '少しお時間いただいてよろしいでしょうか', no eye contact, a change of topic. (6) CONSENSUS-FIRST — a vote (採決) often comes only at the end after everyone has spoken; voting before all have spoken is a procedural violation. (7) TREND — the recent generation is moving toward Western-style direct meetings, especially in IT/startups; traditional firms remain consensus-first.",
+    "tip_advice_vi": "Chair 6-step framework: (1) PRE-MEETING — agenda, materials sent 24h advance min; conduct 根回し với key stakeholders to surface concerns; (2) OPENING — '定刻でございますので' (it's the appointed time) — Nhật business strict on starting on time even if 5-min late entries; (3) FACILITATE NEUTRALLY — chair's voice neutral, attribute opinions to roles ('営業側', '製造側'), never agree/disagree with substance; (4) MANAGE TIME — '時間の関係上' phrasing — gentle interruption; visible clock helps; (5) SUMMARIZE OBJECTIVELY — restate key points before vote: 'A案、B案、C案、それぞれ〜という観点から〜'; (6) CLOSE — even when no decision, 'next steps' clear: who, what, by when. Common Vietnamese mistakes: (a) Chair takes side → loses neutrality respect; (b) Cuts off speaker rudely → face loss for speaker; (c) Pushes for vote when consensus not formed → procedural violation; (d) Forgets nemawashi → meeting collapses despite skilled facilitation. Phrase to memorize: '論点を整理させていただきます' — chair's most important sentence. Embeds neutrality, structure, deference.",
+    "tip_advice_en": "A 6-step chair framework: (1) PRE-MEETING — send the agenda and materials at least 24h ahead; conduct 根回し with key stakeholders to surface concerns. (2) OPENING — '定刻でございますので' (it is the appointed time); Japanese business is strict about starting on time even with 5-minute-late entries. (3) FACILITATE NEUTRALLY — keep the chair's voice neutral, attribute opinions to roles ('営業側', '製造側'), never agree or disagree with the substance. (4) MANAGE TIME — the phrase '時間の関係上' is a gentle interruption; a visible clock helps. (5) SUMMARIZE OBJECTIVELY — restate key points before the vote: 'A案、B案、C案、それぞれ〜という観点から〜'. (6) CLOSE — even with no decision, make 'next steps' clear: who, what, by when. Common Vietnamese mistakes: (a) the chair takes a side → loses neutrality respect; (b) cuts off a speaker rudely → face loss for the speaker; (c) pushes for a vote before consensus is formed → procedural violation; (d) forgets nemawashi → the meeting collapses despite skilled facilitation. Phrase to memorize: '論点を整理させていただきます' — the chair's most important sentence. It embeds neutrality, structure, and deference."
   },
   {
     "id": 105,
@@ -2573,15 +2833,35 @@ export const lessons: JapaneseLesson[] = [
       "New vendor underbids your existing supplier 15%. You want to switch but maintain relationships. Diễn tập câu inform existing vendor before switching: 'ご事情をお話ししたく〜'.",
       "Vendor demands minimum 3-year contract for discount. You only want 1 year. Diễn tập câu negotiate flex: '段階的な契約期間延長は可能でしょうか — まずは1年でスタートし、〜'."
     ],
+    "roleplay_prompts_en": [
+      "A long-time vendor offers an 8% price increase. You cannot accept. Rehearse a pushback that doesn't drop the vendor: 'これまでのお取引と御社のご事情を尊重したく存じますが、〜'. Use long-term-partnership framing.",
+      "A new vendor underbids your existing supplier by 15%. You want to switch but maintain the relationship. Rehearse a line that informs the existing vendor before switching: 'ご事情をお話ししたく〜'.",
+      "A vendor demands a minimum 3-year contract for the discount. You only want 1 year. Rehearse a flexible-negotiation line: '段階的な契約期間延長は可能でしょうか — まずは1年でスタートし、〜'."
+    ],
     "register_notes": "Vendor negotiation 商談 register: (1) INFO ASYMMETRY tactics — KHÔNG reveal exact competitor pricing structure ('5%下回ります' OK; '株式会社XXは〜円です' violation of business norm). Same restraint expected từ vendor. (2) RECIPROCAL 仕入れ politeness — buyer holds power but doesn't display it. '買ってあげる' attitude = dead deal. Use '頂戴する', '仕入れさせていただく'. (3) JUSTIFY ASK with internal logic — 'social need to explain pricing' / 'company-wide policy' / 'audit requirement' externalize the demand từ personal preference to corporate process. (4) VOLUME-DISCOUNT framing common — even if total volume same, restructure to look like 'larger order' (multi-year, larger SKU bundle, exclusivity). (5) NO DEADLINE pressure — 'until Friday' demand kills trust; '社内手続きの都合上、来月初旬までに方向性が定まれば幸い' acceptable. KHÔNG: '安くしてください' (make cheaper — childish), '値下げしないなら他社にします' (threat ineffective in Japan).",
+    "register_notes_en": "Register: 商談 with restraint — do not reveal a competitor's exact pricing ('5%下回ります' is fine, naming the firm is not), keep buyer power invisible (頂戴する / 仕入れさせていただく, not 買ってあげる), externalize the ask to corporate process, frame volume-discount, no deadline pressure, never 安くしてください or 値下げしないなら他社にします.",
     "idiom_glosses": [
-      { "idiom": "折衝 (せっしょう)", "literal": "Khắc phục cọ xát", "meaning": "[硬い・書き言葉] Đàm phán mặt-đối-mặt — formal negotiation term.", "example": "来週、納入価格について折衝の場を設ける予定でございます。" },
-      { "idiom": "渋い顔をする (しぶいかおをする)", "literal": "Làm bộ mặt chát", "meaning": "[口語] Tỏ thái độ không vui — read vendor's negative reaction.", "example": "値下げ要請に対し、御社が渋い顔をされたことは承知しております。" },
-      { "idiom": "帳尻を合わせる (ちょうじりをあわせる)", "literal": "Khớp con số sổ sách", "meaning": "[硬い] Cân đối sổ sách / make ends meet — buyer-side framing.", "example": "弊社の予算と帳尻を合わせるため、若干の調整をお願いしている次第でございます。" },
-      { "idiom": "一肌脱ぐ (ひとはだぬぐ)", "literal": "Cởi một lớp da", "meaning": "[口語混じり] Nỗ lực vì người khác — used when asking for favor.", "example": "今回ばかりは一肌脱いでいただけないでしょうか。" }
+      { "idiom": "折衝 (せっしょう)", "literal": "Khắc phục cọ xát", "meaning": "[硬い・書き言葉] Đàm phán mặt-đối-mặt — formal negotiation term.", "example": "来週、納入価格について折衝の場を設ける予定でございます。",
+        "literal_en": "overcoming friction (sesshō)",
+        "meaning_en": "Face-to-face negotiation — a formal negotiation term. (formal, written)",
+        "example_en": "Next week we plan to set up a session to negotiate the delivery price." },
+      { "idiom": "渋い顔をする (しぶいかおをする)", "literal": "Làm bộ mặt chát", "meaning": "[口語] Tỏ thái độ không vui — read vendor's negative reaction.", "example": "値下げ要請に対し、御社が渋い顔をされたことは承知しております。",
+        "literal_en": "to make an astringent face (shibui kao o suru)",
+        "meaning_en": "To show displeasure — reading the vendor's negative reaction. (colloquial)",
+        "example_en": "I am aware that your company made a sour face at our request for a price reduction." },
+      { "idiom": "帳尻を合わせる (ちょうじりをあわせる)", "literal": "Khớp con số sổ sách", "meaning": "[硬い] Cân đối sổ sách / make ends meet — buyer-side framing.", "example": "弊社の予算と帳尻を合わせるため、若干の調整をお願いしている次第でございます。",
+        "literal_en": "to make the ledger balance (chōjiri o awaseru)",
+        "meaning_en": "To balance the books / make ends meet — the buyer-side framing. (formal)",
+        "example_en": "To make our budget balance, we are asking for a slight adjustment." },
+      { "idiom": "一肌脱ぐ (ひとはだぬぐ)", "literal": "Cởi một lớp da", "meaning": "[口語混じり] Nỗ lực vì người khác — used when asking for favor.", "example": "今回ばかりは一肌脱いでいただけないでしょうか。",
+        "literal_en": "to take off one layer of skin (hitohada nugu)",
+        "meaning_en": "To make an effort on someone's behalf — used when asking a favor. (semi-colloquial)",
+        "example_en": "Just this once, could you not lend us a hand?" }
     ],
     "cultural_notes_vi": "Vendor negotiation Nhật: (1) RELATIONSHIP > PRICE — long-term Nhật vendor relationships value continuity over %. Switching vendors for 5% saving = high-cost decision (loses goodwill, supplier-quality trust). (2) 系列 (keiretsu) legacy — historic Nhật business used industrial groupings; pricing within keiretsu not market-driven. Modern Nhật firms more open but vestiges remain. (3) TRANSPARENCY paradox — buyers expect vendor cost-structure transparency ('what's your manufacturing cost?'), but rarely give equivalent transparency about own profit margins. Asymmetric. (4) HONORING PAST PRICES — frequent re-pricing pressure damages relationship; annual review acceptable, quarterly re-negotiation aggressive. (5) DEMAND PATTERNS — Japanese buyers often ask for slow downward price erosion year-on-year ('改善活動' / 'cost-down activity'), preferred over big one-time cuts. (6) GAIATSU avoidance — competitor-pricing as bargaining chip works modestly in Nhật, less than in West. Vendor may prefer to lose deal rather than match aggressively, fearing precedent. (7) FOR VIETNAM-JAPAN supply chain: Vietnamese buyers can over-rely on hard-bargain tactics learned from Western training; Japan-specific approach (relationship + slow erosion) often more sustainable.",
-    "tip_advice_vi": "Vendor negotiation 6-step: (1) PREP — 3 competitor quotes minimum, market price database; show vendor you know market without being aggressive. (2) FRAMING — 'ご相談したい' tone, not '交渉します'. (3) PROVIDE DATA — '5%差' specific number (not 'much cheaper elsewhere'); shows reasoning. (4) PROPOSE WIN-WIN — volume increase, longer commitment, reduced SKU complexity, faster payment terms — these all give vendor something for cutting price. (5) ACCEPT NEGOTIATION ROOM — don't push for max cut; settle around midpoint between your ideal and their initial ask. (6) DOCUMENT — modify quote, sign updated 注文書 (purchase order). Common mistakes: (a) Threatening to switch immediately — Nhật vendor may call your bluff and walk away, especially if smaller buyer; (b) Demanding cuts without offering anything — appears greedy; (c) Public meeting embarrassment — never raise pricing concerns in front of vendor's customer or executive; (d) Ignoring relationship history — long-term vendor should be approached differently than new vendor. Phrase to memorize: '長期的なパートナーシップを念頭に、双方にとって持続可能な価格設定を模索いたしたく存じます.' Embeds long-term thinking, mutual benefit, sustainability — three pillars of Nhật vendor relations."
+    "cultural_notes_en": "Vendor negotiation in Japan: (1) RELATIONSHIP > PRICE — long-term Japanese vendor relationships value continuity over a percentage; switching vendors for a 5% saving is a high-cost decision (loss of goodwill and supplier-quality trust). (2) 系列 (keiretsu) LEGACY — historic Japanese business used industrial groupings; pricing within a keiretsu is not market-driven, and modern firms are more open but vestiges remain. (3) TRANSPARENCY PARADOX — buyers expect cost-structure transparency from the vendor ('what's your manufacturing cost?') but rarely give equivalent transparency about their own margins; it is asymmetric. (4) HONORING PAST PRICES — frequent re-pricing pressure damages the relationship; an annual review is acceptable, quarterly renegotiation is aggressive. (5) DEMAND PATTERNS — Japanese buyers often ask for slow year-on-year price erosion ('改善活動' / cost-down activity), preferred over big one-time cuts. (6) GAIATSU AVOIDANCE — using competitor pricing as a bargaining chip works modestly in Japan, less than in the West; a vendor may prefer to lose the deal rather than match aggressively, fearing the precedent. (7) FOR THE VIETNAM–JAPAN supply chain: Vietnamese buyers can over-rely on hard-bargain tactics learned from Western training; the Japan-specific approach (relationship + slow erosion) is often more sustainable.",
+    "tip_advice_vi": "Vendor negotiation 6-step: (1) PREP — 3 competitor quotes minimum, market price database; show vendor you know market without being aggressive. (2) FRAMING — 'ご相談したい' tone, not '交渉します'. (3) PROVIDE DATA — '5%差' specific number (not 'much cheaper elsewhere'); shows reasoning. (4) PROPOSE WIN-WIN — volume increase, longer commitment, reduced SKU complexity, faster payment terms — these all give vendor something for cutting price. (5) ACCEPT NEGOTIATION ROOM — don't push for max cut; settle around midpoint between your ideal and their initial ask. (6) DOCUMENT — modify quote, sign updated 注文書 (purchase order). Common mistakes: (a) Threatening to switch immediately — Nhật vendor may call your bluff and walk away, especially if smaller buyer; (b) Demanding cuts without offering anything — appears greedy; (c) Public meeting embarrassment — never raise pricing concerns in front of vendor's customer or executive; (d) Ignoring relationship history — long-term vendor should be approached differently than new vendor. Phrase to memorize: '長期的なパートナーシップを念頭に、双方にとって持続可能な価格設定を模索いたしたく存じます.' Embeds long-term thinking, mutual benefit, sustainability — three pillars of Nhật vendor relations.",
+    "tip_advice_en": "Vendor negotiation in 6 steps: (1) PREP — at least 3 competitor quotes and a market-price database; show the vendor you know the market without being aggressive. (2) FRAMING — a 'ご相談したい' tone, not '交渉します'. (3) PROVIDE DATA — a specific number ('5%差'), not 'much cheaper elsewhere'; it shows your reasoning. (4) PROPOSE WIN-WIN — volume increase, longer commitment, reduced SKU complexity, faster payment terms — each gives the vendor something for cutting the price. (5) ACCEPT NEGOTIATION ROOM — don't push for the maximum cut; settle around the midpoint between your ideal and their initial ask. (6) DOCUMENT — modify the quote and sign an updated 注文書 (purchase order). Common mistakes: (a) threatening to switch immediately — a Japanese vendor may call your bluff and walk away, especially if you are a smaller buyer; (b) demanding cuts without offering anything — it looks greedy; (c) public embarrassment — never raise pricing in front of the vendor's customer or executive; (d) ignoring relationship history — a long-term vendor must be approached differently from a new one. Phrase to memorize: '長期的なパートナーシップを念頭に、双方にとって持続可能な価格設定を模索いたしたく存じます.' It embeds long-term thinking, mutual benefit, and sustainability — the three pillars of Japanese vendor relations."
   },
   {
     "id": 106,
@@ -2638,15 +2918,35 @@ export const lessons: JapaneseLesson[] = [
       "Sếp insist 'đúng rồi, làm theo'. Diễn tập câu HEDGE-RETREAT — không cứng đầu nhưng để lại thông tin. 'ご判断にお任せいたしますが、〜の場合は、〜'. Plant doubt without confronting.",
       "Sếp publicly criticize ý kiến của bạn trong meeting. Diễn tập câu RECOVER without losing face: 'ご指摘ありがとうございます。私の説明が不十分でございました。〜'. Take blame for clarity, not for substance."
     ],
+    "roleplay_prompts_en": [
+      "Your boss proposes a plan you see a flaw in. Rehearse an opening that acknowledges + buries the disagreement. Structure: 'お考えに大筋では賛同いたしますが、一点〜'. Do NOT open with '違うと思います'.",
+      "The boss insists 'right, do it this way.' Rehearse a HEDGE-RETREAT line — not stubborn but leaving information behind: 'ご判断にお任せいたしますが、〜の場合は、〜'. Plant doubt without confronting.",
+      "The boss publicly criticizes your opinion in a meeting. Rehearse a RECOVER line that doesn't lose face: 'ご指摘ありがとうございます。私の説明が不十分でございました。〜'. Take the blame for clarity, not for substance."
+    ],
     "register_notes": "上司への異論 register là test ULTIMATE của business Japanese. (1) ENTRY framing — '失礼ながら / 私見を申し上げてもよろしいでしょうか / 補足させていただきたく' — never enter without permission-seeking buffer. (2) AGREE-FIRST — '大筋では賛同いたします' / 'ごもっともでございます' must precede dissent. Skipping = 失礼. (3) HEDGE OWNERSHIP — '私の理解不足かもしれませんが' (perhaps my misunderstanding) shifts ownership of disagreement TỪ sếp's error TO your possible misunderstanding. Saves face. (4) SCENARIO framing — '〜の場合に懸念' — phrase concerns as conditional scenarios, không as absolute objections. (5) DEFER FINAL — '判断はお任せいたします' — explicitly hand decision authority back to sếp even sau khi raising concern. Sếp keeps face of decisive leader. (6) ALTERNATIVE-AS-OPTION — propose alt as '一案として' (as one option), not 'instead'. KHÔNG: '間違っています' (wrong), '反対です' (opposed), 'そうじゃないでしょう' (isn't that not so?). Goal: plant seed of doubt + provide alternative + let sếp 'realize' on own.",
+    "register_notes_en": "Register: the ultimate test — enter only with 失礼ながら / 補足させていただきたく, 大筋では賛同いたします before any dissent, shift ownership with 私の理解不足かもしれませんが, phrase concerns as 〜の場合 scenarios, offer alternatives 一案として, hand the call back 判断はお任せいたします, never 間違っています or 反対です.",
     "idiom_glosses": [
-      { "idiom": "諫言 (かんげん)", "literal": "Lời can ngăn", "meaning": "[硬い・書き言葉] Lời khuyên thẳng đối với cấp trên — historical samurai concept still operative.", "example": "諫言を申し上げるのは、組織のためを思ってこそでございます。" },
-      { "idiom": "否定はしないが (ひていはしないが)", "literal": "Không phủ nhận nhưng", "meaning": "[硬い] Pivot phrase — không phủ nhận sếp nhưng đặt khía cạnh khác.", "example": "部長のお考えを否定はしないが、別の見方も検討に値するかと存じます。" },
-      { "idiom": "角を立てる (かどをたてる)", "literal": "Dựng góc nhọn", "meaning": "[口語混じり] Làm gay gắt / gây va chạm — exact thing to AVOID.", "example": "角を立てずに異論を伝える技術が、上司との関係性の鍵となる。" },
-      { "idiom": "思い直す (おもいなおす)", "literal": "Suy nghĩ lại", "meaning": "[硬い] Suy lại / xem xét lại — hopeful framing of sếp's reaction.", "example": "部長が思い直していただけることを期待いたします。" }
+      { "idiom": "諫言 (かんげん)", "literal": "Lời can ngăn", "meaning": "[硬い・書き言葉] Lời khuyên thẳng đối với cấp trên — historical samurai concept still operative.", "example": "諫言を申し上げるのは、組織のためを思ってこそでございます。",
+        "literal_en": "words of remonstrance (kangen)",
+        "meaning_en": "Frank advice given to a superior — a historical samurai concept still operative. (formal, written)",
+        "example_en": "Offering frank remonstrance is done precisely out of concern for the organization." },
+      { "idiom": "否定はしないが (ひていはしないが)", "literal": "Không phủ nhận nhưng", "meaning": "[硬い] Pivot phrase — không phủ nhận sếp nhưng đặt khía cạnh khác.", "example": "部長のお考えを否定はしないが、別の見方も検討に値するかと存じます。",
+        "literal_en": "I do not deny it, but (hitei wa shinai ga)",
+        "meaning_en": "A pivot phrase — not denying the boss but introducing another angle. (formal)",
+        "example_en": "I do not deny your view, but I believe another perspective is also worth considering." },
+      { "idiom": "角を立てる (かどをたてる)", "literal": "Dựng góc nhọn", "meaning": "[口語混じり] Làm gay gắt / gây va chạm — exact thing to AVOID.", "example": "角を立てずに異論を伝える技術が、上司との関係性の鍵となる。",
+        "literal_en": "to raise a sharp corner (kado o tateru)",
+        "meaning_en": "To make things prickly / cause friction — exactly the thing to AVOID. (semi-colloquial)",
+        "example_en": "The skill of conveying dissent without rubbing people the wrong way is the key to the relationship with one's superior." },
+      { "idiom": "思い直す (おもいなおす)", "literal": "Suy nghĩ lại", "meaning": "[硬い] Suy lại / xem xét lại — hopeful framing of sếp's reaction.", "example": "部長が思い直していただけることを期待いたします。",
+        "literal_en": "to think again (omoinaosu)",
+        "meaning_en": "To reconsider / revisit — a hopeful framing of the boss's reaction. (formal)",
+        "example_en": "I hope the director will reconsider." }
     ],
     "cultural_notes_vi": "Nhật corporate disagreement với 上司: (1) HIERARCHY weight — Nhật firms strong hierarchical chain; junior contradicting senior in public = serious 失礼. Private 1-on-1 = acceptable. (2) GROUP HARMONY (和) prioritized over individual correctness — hierarchy assumes senior has more context, even if wrong technically. (3) TIMING — disagree immediately (in meeting) = aggressive; disagree privately later = wisdom. Best practice: ask for private follow-up time. (4) WRITTEN trumps spoken — controversial points often raised in email/memo where author can be more explicit and senior can read without facing contradiction. (5) THIRD-PARTY ESCALATION RISK — if you go over manager's head, even via HR, 8/10 you lose. Manager keeps relationship; you become 'difficult'. (6) GENERATIONAL SHIFT — Gen Z Nhật employees more direct than parents' generation; tech firms / 外資系 accept Western directness; trad firms (manufacturing, banking) still hierarchical. (7) SAVING SENIOR'S FACE — even when disagreement leads to senior's plan being abandoned, never claim victory; let senior frame it as 'his/her decision' to revise. (8) Vietnamese learner perspective: similar hierarchy in Việt firms; difference is Việt accepts more emotional expression in disagreement, Nhật strict suppression of emotion in pro context.",
-    "tip_advice_vi": "Disagreement with senior 7-step: (1) PRIVATE not PUBLIC — request '少々お時間頂戴できますでしょうか'; (2) BUFFER OPEN — '失礼ながら' or '補足させていただきたく'; (3) AGREE FIRST — explicit acknowledgment of senior's good points; (4) HEDGE OWNERSHIP — 'my possible misunderstanding'; (5) CONDITIONAL CONCERN — 'in case of X scenario'; (6) PROPOSE ALTERNATIVE — '一案として'; (7) DEFER FINAL — 'judgment up to you'. Common Vietnamese mistakes: (a) Public disagreement → manager loses face → relationship damaged; (b) No agreement-first preamble → seems oppositional; (c) Stating it as 'wrong' → triggers defensive response; (d) Repeating after rejection — once or twice OK, third time = insubordination. After disagreement: send follow-up email summarizing your concern + offer to discuss further if helpful. Keeps record without being aggressive. Phrase to memorize: '部長のお考えに大筋では賛同いたしますが、一点だけ補足させていただきたく.' Embeds: agreement-first, buffer, single-point focus, humble framing. The framework that makes disagreement possible without conflict in Japanese business."
+    "cultural_notes_en": "Corporate disagreement with a 上司 (superior) in Japan: (1) HIERARCHY WEIGHT — Japanese firms have a strong hierarchical chain; a junior contradicting a senior in public is a serious 失礼, while a private 1-on-1 is acceptable. (2) GROUP HARMONY (和) is prioritized over individual correctness; the hierarchy assumes the senior has more context, even when technically wrong. (3) TIMING — disagreeing immediately (in the meeting) is aggressive; disagreeing privately later is wisdom; best practice is to ask for private follow-up time. (4) WRITTEN TRUMPS SPOKEN — controversial points are often raised in email/memo, where the author can be more explicit and the senior can read it without facing contradiction. (5) THIRD-PARTY ESCALATION RISK — if you go over the manager's head, even via HR, 8 times out of 10 you lose: the manager keeps the relationship, you become 'difficult.' (6) GENERATIONAL SHIFT — Gen Z Japanese employees are more direct than their parents' generation; tech firms / 外資系 accept Western directness, traditional firms (manufacturing, banking) remain hierarchical. (7) SAVING THE SENIOR'S FACE — even when disagreement leads to the senior's plan being abandoned, never claim victory; let the senior frame it as 'their decision' to revise. (8) Vietnamese-learner perspective: Vietnamese firms have similar hierarchy; the difference is that Vietnam accepts more emotional expression in disagreement, while Japan strictly suppresses emotion in a professional context.",
+    "tip_advice_vi": "Disagreement with senior 7-step: (1) PRIVATE not PUBLIC — request '少々お時間頂戴できますでしょうか'; (2) BUFFER OPEN — '失礼ながら' or '補足させていただきたく'; (3) AGREE FIRST — explicit acknowledgment of senior's good points; (4) HEDGE OWNERSHIP — 'my possible misunderstanding'; (5) CONDITIONAL CONCERN — 'in case of X scenario'; (6) PROPOSE ALTERNATIVE — '一案として'; (7) DEFER FINAL — 'judgment up to you'. Common Vietnamese mistakes: (a) Public disagreement → manager loses face → relationship damaged; (b) No agreement-first preamble → seems oppositional; (c) Stating it as 'wrong' → triggers defensive response; (d) Repeating after rejection — once or twice OK, third time = insubordination. After disagreement: send follow-up email summarizing your concern + offer to discuss further if helpful. Keeps record without being aggressive. Phrase to memorize: '部長のお考えに大筋では賛同いたしますが、一点だけ補足させていただきたく.' Embeds: agreement-first, buffer, single-point focus, humble framing. The framework that makes disagreement possible without conflict in Japanese business.",
+    "tip_advice_en": "Disagreement with a senior in 7 steps: (1) PRIVATE not PUBLIC — request '少々お時間頂戴できますでしょうか'; (2) BUFFER THE OPENING — '失礼ながら' or '補足させていただきたく'; (3) AGREE FIRST — an explicit acknowledgment of the senior's good points; (4) HEDGE OWNERSHIP — 'my possible misunderstanding'; (5) CONDITIONAL CONCERN — 'in case of X scenario'; (6) PROPOSE AN ALTERNATIVE — '一案として'; (7) DEFER THE FINAL CALL — 'the judgment is up to you.' Common Vietnamese mistakes: (a) public disagreement → the manager loses face → the relationship is damaged; (b) no agreement-first preamble → it seems oppositional; (c) stating it as 'wrong' → triggers a defensive response; (d) repeating after rejection — once or twice is OK, a third time is insubordination. After disagreeing, send a follow-up email summarizing your concern + offering to discuss further if helpful; it keeps a record without being aggressive. Phrase to memorize: '部長のお考えに大筋では賛同いたしますが、一点だけ補足させていただきたく.' It embeds agreement-first, a buffer, single-point focus, and humble framing — the framework that makes disagreement possible without conflict in Japanese business."
   },
   {
     "id": 107,
@@ -2703,15 +3003,35 @@ export const lessons: JapaneseLesson[] = [
       "Nhật partner sếp wants 'guarantee' on every commitment. You're used to Việt-style 'we'll figure out as we go'. Diễn tập câu translate Việt practice into Nhật-acceptable form: 'リスク管理の枠組みとして〜' — frame iteration as risk management, not 'as we go'.",
       "Lunar New Year phải tạm dừng project nhưng Nhật team không hiểu Tết importance. Diễn tập câu giải thích 1 phút about Tết tầm quan trọng + propose specific plan to manage handover. Tránh 'đó là văn hóa của chúng tôi' defensive."
     ],
+    "roleplay_prompts_en": [
+      "You (the Vietnamese team) are frustrated with the Japanese partner's 根回し approach. Rehearse a LEARN line — not a complaint — '日本側のプロセスを学ばせていただきたく〜'. Frame it as your learning, not their slowness.",
+      "The Japanese partner's boss wants a 'guarantee' on every commitment; you are used to Vietnamese-style 'we'll figure it out as we go.' Rehearse a line that translates Vietnamese practice into a Japan-acceptable form: 'リスク管理の枠組みとして〜' — frame iteration as risk management, not 'as we go.'",
+      "Lunar New Year forces a project pause but the Japanese team doesn't understand Tết's importance. Rehearse a 1-minute explanation of Tết's significance + propose a specific handover plan. Avoid a defensive 'that's our culture.'"
+    ],
     "register_notes": "Cross-cultural negotiation register: meta-level — bạn ngầm giải thích văn hóa MÌNH trong khi tôn trọng văn hóa CỦA HỌ. (1) ACKNOWLEDGE BOTH — '日本側の〜' và 'ベトナム側の〜' separately, không '我々' để collapse. (2) STRENGTHS framing — không 'we have problems with each other'; nói '双方の強み'. (3) BRIDGE phrases — '補完関係' (complementary relationship), '相互理解' (mutual understanding) — embed văn hóa khác là asset, không deficit. (4) PROCESS LANGUAGE — when explain Việt practice, dùng risk-management framework Nhật understand: 'チェックポイント', 'リスク吸収体制'. (5) HONEST about gaps — không pretend cultures same. '日本のスピード感とは異なるかもしれませんが' (may differ from Japan's pace) acknowledges gap before bridging. (6) LONG-TERM framing — '長期的には' / 'Win-Win' — Nhật value relationship continuity. KHÔNG: '日本人は遅い' (Japanese are slow), 'ベトナム式の方がいい' (Vietnamese way is better). Both = relationship killer.",
+    "register_notes_en": "Register: meta-level — name 日本側 and ベトナム側 separately rather than collapsing into 我々, use strengths framing (双方の強み, 補完関係, 相互理解), translate Vietnamese practice into Japanese risk-management terms (チェックポイント, リスク吸収体制), be honest about gaps (日本のスピード感とは異なるかもしれませんが), and never 日本人は遅い or ベトナム式の方がいい.",
     "idiom_glosses": [
-      { "idiom": "摺り合わせ (すりあわせ)", "literal": "Mài cọ vào nhau", "meaning": "[硬い・書き言葉] Tinh chỉnh khớp với nhau — Japanese practice signature.", "example": "摺り合わせを重ねた結果、双方が納得する形に至りました。" },
-      { "idiom": "ウィン・ウィン", "literal": "Win-Win (loanword)", "meaning": "[カタカナ・口語混じり] Cùng có lợi — globalist business term.", "example": "文化的特性を活かし、ウィン・ウィンの関係を構築してまいります。" },
-      { "idiom": "一長一短 (いっちょういったん)", "literal": "Một dài một ngắn", "meaning": "[硬い] Mỗi bên có điểm mạnh và điểm yếu — used to acknowledge cultural trade-offs.", "example": "日本式とベトナム式は一長一短の関係にあると申せます。" },
-      { "idiom": "落としどころを探る (おとしどころをさぐる)", "literal": "Tìm điểm để hạ xuống", "meaning": "[口語/会話] Tìm điểm thỏa hiệp — central activity.", "example": "双方の文化的特性を踏まえ、最適な落としどころを探ってまいります。" }
+      { "idiom": "摺り合わせ (すりあわせ)", "literal": "Mài cọ vào nhau", "meaning": "[硬い・書き言葉] Tinh chỉnh khớp với nhau — Japanese practice signature.", "example": "摺り合わせを重ねた結果、双方が納得する形に至りました。",
+        "literal_en": "grinding surfaces against each other (suriawase)",
+        "meaning_en": "Fine-tuning until things fit — a signature Japanese practice. (formal, written)",
+        "example_en": "As a result of repeated fine-tuning, we arrived at a form both sides could accept." },
+      { "idiom": "ウィン・ウィン", "literal": "Win-Win (loanword)", "meaning": "[カタカナ・口語混じり] Cùng có lợi — globalist business term.", "example": "文化的特性を活かし、ウィン・ウィンの関係を構築してまいります。",
+        "literal_en": "win-win (loanword) (win-win)",
+        "meaning_en": "Mutually beneficial — a globalist business term. (katakana, semi-colloquial)",
+        "example_en": "Drawing on our cultural characteristics, we will build a win-win relationship." },
+      { "idiom": "一長一短 (いっちょういったん)", "literal": "Một dài một ngắn", "meaning": "[硬い] Mỗi bên có điểm mạnh và điểm yếu — used to acknowledge cultural trade-offs.", "example": "日本式とベトナム式は一長一短の関係にあると申せます。",
+        "literal_en": "one long, one short (icchō ittan)",
+        "meaning_en": "Each side has its strengths and weaknesses — used to acknowledge cultural trade-offs. (formal)",
+        "example_en": "The Japanese way and the Vietnamese way may be said to stand in a relationship of mutual trade-offs." },
+      { "idiom": "落としどころを探る (おとしどころをさぐる)", "literal": "Tìm điểm để hạ xuống", "meaning": "[口語/会話] Tìm điểm thỏa hiệp — central activity.", "example": "双方の文化的特性を踏まえ、最適な落としどころを探ってまいります。",
+        "literal_en": "to probe for the place to set it down (otoshidokoro o saguru)",
+        "meaning_en": "To search for the point of compromise — the central activity. (colloquial)",
+        "example_en": "Bearing in mind both sides' cultural characteristics, we will probe for the optimal landing point." }
     ],
     "cultural_notes_vi": "Vietnam-Japan business interaction: (1) PACE DIFFERENCE — Japanese decision via 根回し takes weeks; Việt decision can happen in single meeting. Mutual frustration: Việt sees Nhật as slow; Nhật sees Việt as reckless. Both views miss the structural reason (consensus-building vs hierarchy + speed). (2) RISK TOLERANCE — Nhật risk-averse, prefer guarantees; Việt risk-adaptive, prefer iteration. When Nhật ask 'guarantee', Việt panic; when Việt say 'we'll figure out', Nhật panic. Bridge: framework risk management. (3) CONFLICT STYLE — Nhật indirect ('検討します' = often 'no'); Việt more direct in negotiations. Việt teams need to learn Nhật indirect signals. (4) FACE-LOSS — Nhật extremely sensitive to public face-loss; Việt more comfortable with public correction. Việt teams in JV với Nhật should mirror Nhật standard for cross-team interactions. (5) HOLIDAY ALIGNMENT — Tết (Việt) and 正月 (Nhật) different periods (lunar vs solar). Project planning across both = need explicit handover protocol. (6) LANGUAGE — even when both sides speak English, important to know that 80% of subtext lost in non-native English. Use English for formal protocol, but Vietnamese counterpart with Japanese skills (or 通訳) for sensitive moments. (7) GENERATIONAL — Younger Japanese generation more direct than parents'; younger Vietnamese more risk-aware. Younger team mix often easier than mixed-generation team mix. (8) SUCCESS PATTERN — Vietnamese teams who succeed in JV with Japan: high English/Japanese fluency, learn Japanese business protocols thoroughly, hire Japanese cultural consultant for first 6 months.",
-    "tip_advice_vi": "Cross-cultural negotiation 8-step: (1) PRE-LEARN — Vietnamese team learn 根回し, 報連相 (hou-ren-sou: report-contact-consult), 名刺 etiquette before any meeting; (2) BRING TRANSLATOR even if both sides speak English — for sensitive negotiation; (3) DOCUMENT IN BOTH languages — Nhật prefer written; (4) ALLOW NEMAWASHI TIME — schedule 2-3x more time than Western negotiation; (5) REFERENCE BOTH cultures' strengths — never imply one is 'better'; (6) USE BRIDGE LANGUAGE — risk management, win-win, complementary; (7) DEBRIEF INTERNALLY — Vietnamese team after Nhật meeting: discuss what 信号 might have been missed; (8) FOLLOW UP IN WRITING — within 24h, summary email of meeting in both English and Japanese. Common Vietnamese team mistakes: (a) Treating Japanese 'はい' as 'yes' (often = 'I hear you'); (b) Pushing for closure when Nhật team wants to consult; (c) Bringing competing offer too early in negotiation; (d) Public correction of Japanese counterpart's mistake — should be done privately. Common Japanese team mistakes (Vietnamese learners can subtly redirect): (a) Treating Vietnamese speed as carelessness; (b) Demanding guarantees Vietnamese partner can't realistically provide; (c) Ignoring Tết/Lunar New Year impact on schedules. Phrase to memorize: '双方の強みを活かす形で、共通項を見出していければと存じます.' Embeds mutual respect, complementarity, joint search."
+    "cultural_notes_en": "Vietnam–Japan business interaction: (1) PACE DIFFERENCE — a Japanese decision via 根回し takes weeks; a Vietnamese decision can happen in a single meeting. Mutual frustration: Vietnam sees Japan as slow, Japan sees Vietnam as reckless — both views miss the structural reason (consensus-building vs hierarchy + speed). (2) RISK TOLERANCE — Japan is risk-averse and prefers guarantees; Vietnam is risk-adaptive and prefers iteration; when Japan asks for a 'guarantee' Vietnam panics, when Vietnam says 'we'll figure it out' Japan panics. Bridge: a risk-management framework. (3) CONFLICT STYLE — Japan is indirect ('検討します' often = 'no'); Vietnam is more direct in negotiation, so Vietnamese teams must learn Japan's indirect signals. (4) FACE-LOSS — Japan is extremely sensitive to public face-loss, Vietnam more comfortable with public correction; Vietnamese teams in a JV with Japan should mirror the Japanese standard for cross-team interaction. (5) HOLIDAY ALIGNMENT — Tết (Vietnam) and 正月 (Japan) fall in different periods (lunar vs solar); project planning across both needs an explicit handover protocol. (6) LANGUAGE — even when both sides speak English, 80% of subtext is lost in non-native English; use English for formal protocol but a Vietnamese counterpart with Japanese skills (or a 通訳) for sensitive moments. (7) GENERATIONAL — younger Japanese are more direct than their parents', younger Vietnamese more risk-aware; a younger-team mix is often easier than a mixed-generation mix. (8) SUCCESS PATTERN — Vietnamese teams who succeed in a JV with Japan have high English/Japanese fluency, learn Japanese business protocols thoroughly, and hire a Japanese cultural consultant for the first 6 months.",
+    "tip_advice_vi": "Cross-cultural negotiation 8-step: (1) PRE-LEARN — Vietnamese team learn 根回し, 報連相 (hou-ren-sou: report-contact-consult), 名刺 etiquette before any meeting; (2) BRING TRANSLATOR even if both sides speak English — for sensitive negotiation; (3) DOCUMENT IN BOTH languages — Nhật prefer written; (4) ALLOW NEMAWASHI TIME — schedule 2-3x more time than Western negotiation; (5) REFERENCE BOTH cultures' strengths — never imply one is 'better'; (6) USE BRIDGE LANGUAGE — risk management, win-win, complementary; (7) DEBRIEF INTERNALLY — Vietnamese team after Nhật meeting: discuss what 信号 might have been missed; (8) FOLLOW UP IN WRITING — within 24h, summary email of meeting in both English and Japanese. Common Vietnamese team mistakes: (a) Treating Japanese 'はい' as 'yes' (often = 'I hear you'); (b) Pushing for closure when Nhật team wants to consult; (c) Bringing competing offer too early in negotiation; (d) Public correction of Japanese counterpart's mistake — should be done privately. Common Japanese team mistakes (Vietnamese learners can subtly redirect): (a) Treating Vietnamese speed as carelessness; (b) Demanding guarantees Vietnamese partner can't realistically provide; (c) Ignoring Tết/Lunar New Year impact on schedules. Phrase to memorize: '双方の強みを活かす形で、共通項を見出していければと存じます.' Embeds mutual respect, complementarity, joint search.",
+    "tip_advice_en": "Cross-cultural negotiation in 8 steps: (1) PRE-LEARN — the Vietnamese team learns 根回し, 報連相 (hou-ren-sou: report–contact–consult), and 名刺 etiquette before any meeting; (2) BRING A TRANSLATOR even if both sides speak English — for sensitive negotiation; (3) DOCUMENT IN BOTH languages — Japan prefers it written; (4) ALLOW NEMAWASHI TIME — schedule 2–3x more time than a Western negotiation; (5) REFERENCE BOTH cultures' strengths — never imply one is 'better'; (6) USE BRIDGE LANGUAGE — risk management, win-win, complementary; (7) DEBRIEF INTERNALLY — after a Japanese meeting the Vietnamese team discusses which 信号 (signals) might have been missed; (8) FOLLOW UP IN WRITING — within 24h, a summary email in both English and Japanese. Common Vietnamese-team mistakes: (a) treating Japanese 'はい' as 'yes' (often = 'I hear you'); (b) pushing for closure when the Japanese team wants to consult; (c) bringing a competing offer too early; (d) publicly correcting a Japanese counterpart's mistake — it should be done privately. Common Japanese-team mistakes (which Vietnamese learners can subtly redirect): (a) treating Vietnamese speed as carelessness; (b) demanding guarantees the Vietnamese partner can't realistically provide; (c) ignoring the Tết/Lunar New Year impact on schedules. Phrase to memorize: '双方の強みを活かす形で、共通項を見出していければと存じます.' It embeds mutual respect, complementarity, and a joint search."
   },
   {
     "id": 108,
@@ -2767,15 +3087,35 @@ export const lessons: JapaneseLesson[] = [
       "One employee accuses another of harassment but no witness. Diễn tập câu collect facts without judging: '具体的な日時、状況、お気持ちの経緯' framework. Sequence: time → situation → emotional progression.",
       "After investigation, you must inform employee complaint not substantiated. Diễn tập câu deliver bad news with dignity: 'ご申し立ての内容について慎重に確認いたしましたが、ハラスメント認定には至らなかったことをご報告いたします. ただし、〜'. Acknowledge their feeling without confirming case."
     ],
+    "roleplay_prompts_en": [
+      "You are HR, mediating between two employees with a personal conflict. Rehearse a NEUTRAL opening: '中立的立場から事実関係の確認をさせていただきます'. Avoid taking a side or showing emotion.",
+      "One employee accuses another of harassment but there is no witness. Rehearse a line that collects facts without judging: a '具体的な日時、状況、お気持ちの経緯' framework. Sequence: time → situation → emotional progression.",
+      "After the investigation you must inform the employee the complaint is not substantiated. Rehearse delivering the bad news with dignity: 'ご申し立ての内容について慎重に確認いたしましたが、ハラスメント認定には至らなかったことをご報告いたします。ただし、〜'. Acknowledge their feeling without confirming the case."
+    ],
     "register_notes": "HR mediation register: ULTRA NEUTRAL. (1) NO PRONOUNS — không '私', '我々', '彼/彼女'; thay bằng '当方', '弊社', '田中さん', '山田部長' specific names. Eliminates implicit alignment. (2) FACT-FOCUSED — '事実関係', '客観的な状況' — không '感情' / 'お気持ち' as primary basis (because 'feelings' không formal grounds for HR action). (3) PROCESS LANGUAGE — '面談', '事実確認', '是正策' — process terminology buffers raw conflict. (4) CONFIDENTIALITY signaling — '内密', '社内規程に基づき適切に取り扱います' — must explicitly state to gain trust. (5) TWO-SIDED — never investigate one side; '両者のお話', '双方の認識' — symmetrical phrasing prevents bias appearance. (6) CLOSING WITHOUT JUDGMENT — '是正案を策定', '歩み寄り' — solution-oriented language. KHÔNG: '正しい / 間違い' (right/wrong), 'あなたの言うとおり' (you're correct — takes side), 'もっと我慢すべき' (should endure more — invalidates).",
+    "register_notes_en": "Register: ultra-neutral — no 私 / 我々 / 彼, use 当方 and specific names, anchor on 事実関係 not お気持ち as grounds, signal 内密 / 社内規程に基づき適切に取り扱います, keep phrasing two-sided (双方の認識), close solution-oriented (是正案を策定 / 歩み寄り), never 正しい/間違い or もっと我慢すべき.",
     "idiom_glosses": [
-      { "idiom": "歩み寄る (あゆみよる)", "literal": "Bước lại gần", "meaning": "[硬い] Tiến lại gần nhau / nhường nhịn — central goal of mediation.", "example": "双方歩み寄りの姿勢があってこそ、解決の糸口が見えてまいります。" },
-      { "idiom": "火種 (ひだね)", "literal": "Mầm lửa", "meaning": "[硬い] Mầm xung đột — early warning.", "example": "小さな誤解が、放置されれば紛争の火種となる場合がございます。" },
-      { "idiom": "遺恨 (いこん)", "literal": "Hận còn lại", "meaning": "[硬い・書き言葉] Thù oán còn lại — what mediation tries to prevent.", "example": "表面的な解決では、遺恨が残る可能性が否定できません。" },
-      { "idiom": "落としどころ (おとしどころ)", "literal": "Chỗ để hạ xuống", "meaning": "[口語/会話] Điểm thỏa hiệp — same as meeting use.", "example": "双方が納得できる落としどころを探る必要がございます。" }
+      { "idiom": "歩み寄る (あゆみよる)", "literal": "Bước lại gần", "meaning": "[硬い] Tiến lại gần nhau / nhường nhịn — central goal of mediation.", "example": "双方歩み寄りの姿勢があってこそ、解決の糸口が見えてまいります。",
+        "literal_en": "to step toward each other (ayumiyoru)",
+        "meaning_en": "To move closer / make concessions to each other — the central goal of mediation. (formal)",
+        "example_en": "Only when both sides are willing to meet each other halfway does a thread toward resolution come into view." },
+      { "idiom": "火種 (ひだね)", "literal": "Mầm lửa", "meaning": "[硬い] Mầm xung đột — early warning.", "example": "小さな誤解が、放置されれば紛争の火種となる場合がございます。",
+        "literal_en": "a fire seed (hidane)",
+        "meaning_en": "The seed of a conflict — an early warning. (formal)",
+        "example_en": "A small misunderstanding, if left unattended, can become the seed of a dispute." },
+      { "idiom": "遺恨 (いこん)", "literal": "Hận còn lại", "meaning": "[硬い・書き言葉] Thù oán còn lại — what mediation tries to prevent.", "example": "表面的な解決では、遺恨が残る可能性が否定できません。",
+        "literal_en": "lingering rancor (ikon)",
+        "meaning_en": "Residual grudge — what mediation tries to prevent. (formal, written)",
+        "example_en": "With only a surface resolution, the possibility of lingering rancor cannot be denied." },
+      { "idiom": "落としどころ (おとしどころ)", "literal": "Chỗ để hạ xuống", "meaning": "[口語/会話] Điểm thỏa hiệp — same as meeting use.", "example": "双方が納得できる落としどころを探る必要がございます。",
+        "literal_en": "the place to set it down (otoshidokoro)",
+        "meaning_en": "The point of compromise — the same as in the meeting use. (colloquial)",
+        "example_en": "We need to probe for a landing point both parties can accept." }
     ],
     "cultural_notes_vi": "Workplace dispute resolution Nhật: (1) HARASSMENT TYPES — Japanese law recognizes パワハラ (power harassment), セクハラ (sexual harassment), マタハラ (maternity harassment), モラハラ (moral harassment). Each has specific legal definition. (2) RELUCTANCE TO COMPLAIN — Japanese employees historically reluctant to file formal complaint due to stigma + fear of retaliation. New harassment laws (2020) strengthening protections; still cultural resistance. (3) HR ROLE — typically HR investigates internally; major cases may go to 労基署 (labor standards office) or 弁護士 (lawyer). HR results ranges from coaching to disciplinary action. (4) MEDIATION CULTURE — Japanese culture preference for indirect resolution; formal mediation often last resort after informal channels (manager, mentor) failed. (5) TIMELINE — Japanese investigation typically 2-4 weeks, longer than Western counterparts; thoroughness valued over speed. (6) DOCUMENTATION CRITICAL — for complaint to succeed, employee should document: dates, times, locations, witnesses, copies of relevant emails. Without documentation, 'he-said/she-said' often results in inconclusive finding. (7) OUTCOMES — frequent outcome: training for involved parties, revised reporting structure, transfer of one party (often the complainant — controversial). Pure 'punishment' rare. (8) Vietnamese learner caution: harassment standards differ between Vietnam and Japan; behavior acceptable in Việt context (loud public correction, casual touch) may register as harassment in Nhật.",
-    "tip_advice_vi": "Workplace dispute 7-step (employee side): (1) DOCUMENT EARLY — keep dated log of incidents, save emails, screenshots; (2) RAISE INFORMALLY FIRST — direct conversation with offender, then with manager; Japanese culture expects this attempt; (3) ESCALATE TO HR with documentation when informal fails; (4) WRITTEN COMPLAINT — formal 申立書 with specific incidents, not generalized grievances; (5) PARTICIPATE IN INVESTIGATION fully — answer questions completely, provide all evidence; (6) MANAGE EXPECTATIONS — outcome may not be 'punishment of offender'; often process improvement, training, transfer; (7) IF UNRESOLVED, external option (labor lawyer, 労基署) — but be aware this damages internal relationships. Vietnamese learner specific: (a) Tone matters — formal 申立 in calm written language stronger than emotional verbal complaints; (b) Witnesses help but not always available — direct evidence (recordings, emails) stronger; (c) Be aware some Japanese firms still discriminate against complainant despite law. HR side perspective: '内密に取り扱います' must be a real promise. Phrase to memorize: '双方歩み寄りのお考えはございますでしょうか.' Reframes dispute from 'win-lose' to 'mutual adjustment'."
+    "cultural_notes_en": "Workplace dispute resolution in Japan: (1) HARASSMENT TYPES — Japanese law recognizes パワハラ (power harassment), セクハラ (sexual harassment), マタハラ (maternity harassment), and モラハラ (moral harassment), each with a specific legal definition. (2) RELUCTANCE TO COMPLAIN — Japanese employees have historically been reluctant to file a formal complaint due to stigma + fear of retaliation; new harassment laws (2020) strengthen protections, but cultural resistance remains. (3) HR ROLE — HR typically investigates internally; major cases may go to a 労基署 (labor standards office) or a 弁護士 (lawyer), and HR outcomes range from coaching to disciplinary action. (4) MEDIATION CULTURE — Japanese culture prefers indirect resolution; formal mediation is often a last resort after informal channels (manager, mentor) have failed. (5) TIMELINE — a Japanese investigation typically takes 2–4 weeks, longer than Western counterparts; thoroughness is valued over speed. (6) DOCUMENTATION IS CRITICAL — for a complaint to succeed the employee should document dates, times, locations, witnesses, and copies of relevant emails; without it, 'he-said/she-said' often produces an inconclusive finding. (7) OUTCOMES — a frequent outcome is training for the parties, a revised reporting structure, or transfer of one party (often the complainant — controversial); pure 'punishment' is rare. (8) Vietnamese-learner caution: harassment standards differ between Vietnam and Japan; behavior acceptable in a Vietnamese context (loud public correction, casual touch) may register as harassment in Japan.",
+    "tip_advice_vi": "Workplace dispute 7-step (employee side): (1) DOCUMENT EARLY — keep dated log of incidents, save emails, screenshots; (2) RAISE INFORMALLY FIRST — direct conversation with offender, then with manager; Japanese culture expects this attempt; (3) ESCALATE TO HR with documentation when informal fails; (4) WRITTEN COMPLAINT — formal 申立書 with specific incidents, not generalized grievances; (5) PARTICIPATE IN INVESTIGATION fully — answer questions completely, provide all evidence; (6) MANAGE EXPECTATIONS — outcome may not be 'punishment of offender'; often process improvement, training, transfer; (7) IF UNRESOLVED, external option (labor lawyer, 労基署) — but be aware this damages internal relationships. Vietnamese learner specific: (a) Tone matters — formal 申立 in calm written language stronger than emotional verbal complaints; (b) Witnesses help but not always available — direct evidence (recordings, emails) stronger; (c) Be aware some Japanese firms still discriminate against complainant despite law. HR side perspective: '内密に取り扱います' must be a real promise. Phrase to memorize: '双方歩み寄りのお考えはございますでしょうか.' Reframes dispute from 'win-lose' to 'mutual adjustment'.",
+    "tip_advice_en": "Workplace dispute in 7 steps (employee side): (1) DOCUMENT EARLY — keep a dated log of incidents, save emails and screenshots; (2) RAISE INFORMALLY FIRST — a direct conversation with the offender, then with the manager; Japanese culture expects this attempt; (3) ESCALATE TO HR with documentation when the informal route fails; (4) WRITTEN COMPLAINT — a formal 申立書 with specific incidents, not generalized grievances; (5) PARTICIPATE IN THE INVESTIGATION fully — answer questions completely, provide all evidence; (6) MANAGE EXPECTATIONS — the outcome may not be 'punishment of the offender'; often process improvement, training, or a transfer; (7) IF UNRESOLVED, an external option (labor lawyer, 労基署) — but be aware it damages internal relationships. Vietnamese-learner specifics: (a) tone matters — a calm written 申立 is stronger than an emotional verbal complaint; (b) witnesses help but aren't always available — direct evidence (recordings, emails) is stronger; (c) be aware some Japanese firms still discriminate against the complainant despite the law. From the HR side: '内密に取り扱います' must be a real promise. Phrase to memorize: '双方歩み寄りのお考えはございますでしょうか.' It reframes the dispute from 'win-lose' to 'mutual adjustment.'"
   },
   {
     "id": 109,
@@ -2832,15 +3172,35 @@ export const lessons: JapaneseLesson[] = [
       "Vendor đã invest đáng kể chuẩn bị offer. Bạn có obligation tinh thần. Diễn tập câu acknowledge investment + decline: '御社のご準備に対する心からの感謝を申し上げる一方で〜'.",
       "Counterpart push back hard on rejection. Diễn tập câu STAY firm without escalating: '社内方針に基づくご判断でございますので、ご理解賜りたく存じます'. Frame as 'company decision' not personal."
     ],
+    "roleplay_prompts_en": [
+      "You must walk away from a deal negotiated over 6 months. Rehearse a line expressing genuine regret without committing: a '苦渋のご判断ではございますが〜' framing. Maintain the relationship for the future.",
+      "The vendor invested heavily in preparing the offer; you have a moral obligation. Rehearse a line that acknowledges the investment + declines: '御社のご準備に対する心からの感謝を申し上げる一方で〜'.",
+      "The counterpart pushes back hard on the rejection. Rehearse a line that STAYS firm without escalating: '社内方針に基づくご判断でございますので、ご理解賜りたく存じます'. Frame it as a 'company decision,' not personal."
+    ],
     "register_notes": "Closing / declining register: ULTRA POLITE because emotional moment. (1) EUPHEMISMS for rejection — '見送り' (passing on), '一旦保留' (on hold), '今回はご縁がない' (no connection this time). KHÔNG '断る' (refuse — too direct). (2) SHARED OWNERSHIP of decision — '社内事情', '諸般の事情' (various circumstances) externalize the rejection. Personal preferences should not appear. (3) GRATITUDE FIRST — never start with 'we decline'; start with thanks for time/effort. (4) FUTURE-FRIENDLY — '別の機会にご縁がありましたら' / '改めてご相談させていただければ' — keep door open for future. Even if you'll never work with them again, language preserves dignity. (5) EXPLAIN WITHOUT BLAMING — '社内事情' is enough; don't list specific 'reasons your offer wasn't good enough'. (6) RECIPROCITY — '今後ともよろしくお願いします' standard close even when ending. KHÔNG: '安すぎ' / '高すぎ' / '質が悪い' (too cheap / too expensive / quality bad), '次は別の会社にします' (next time we'll use another firm).",
+    "register_notes_en": "Register: ultra-polite because it is an emotional moment — euphemize rejection as 見送り / 一旦保留 / 今回はご縁がない not 断る, externalize via 社内事情 / 諸般の事情, thank before declining, keep it future-friendly (別の機会にご縁がありましたら), explain without blaming, never 安すぎ/高すぎ/質が悪い or 次は別の会社にします.",
     "idiom_glosses": [
-      { "idiom": "縁があったら (えんがあったら)", "literal": "Nếu có duyên", "meaning": "[硬い] Nếu có duyên — keep-door-open phrasing.", "example": "ご縁があったら、ぜひ別の機会にご相談させていただきます。" },
-      { "idiom": "苦渋の決断 (くじゅうのけつだん)", "literal": "Quyết định khổ sở", "meaning": "[硬い・書き言葉] Quyết định khổ sở — difficult close.", "example": "撤退は苦渋の決断でございましたが、長期的視点では避けられない選択でした。" },
-      { "idiom": "後ろ髪を引かれる (うしろがみをひかれる)", "literal": "Tóc sau bị kéo lại", "meaning": "[口語混じり] Luyến tiếc — emotional element.", "example": "撤退には後ろ髪を引かれる思いがございますが、決断いたしました。" },
-      { "idiom": "風向きが変わる (かぜむきがかわる)", "literal": "Hướng gió đổi", "meaning": "[口語混じり] Tình thế thay đổi — context for re-engagement later.", "example": "風向きが変われば、改めてご相談させていただければと存じます。" }
+      { "idiom": "縁があったら (えんがあったら)", "literal": "Nếu có duyên", "meaning": "[硬い] Nếu có duyên — keep-door-open phrasing.", "example": "ご縁があったら、ぜひ別の機会にご相談させていただきます。",
+        "literal_en": "if there is a connection of fate (en ga attara)",
+        "meaning_en": "If fate brings us together again — a keep-the-door-open phrasing. (formal)",
+        "example_en": "If fate allows, I would very much like to consult with you again on another occasion." },
+      { "idiom": "苦渋の決断 (くじゅうのけつだん)", "literal": "Quyết định khổ sở", "meaning": "[硬い・書き言葉] Quyết định khổ sở — difficult close.", "example": "撤退は苦渋の決断でございましたが、長期的視点では避けられない選択でした。",
+        "literal_en": "a decision of bitter anguish (kujū no ketsudan)",
+        "meaning_en": "An agonizing decision — a difficult close. (formal, written)",
+        "example_en": "Withdrawal was an agonizing decision, but from a long-term view it was an unavoidable choice." },
+      { "idiom": "後ろ髪を引かれる (うしろがみをひかれる)", "literal": "Tóc sau bị kéo lại", "meaning": "[口語混じり] Luyến tiếc — emotional element.", "example": "撤退には後ろ髪を引かれる思いがございますが、決断いたしました。",
+        "literal_en": "to have one's hair pulled from behind (ushirogami o hikareru)",
+        "meaning_en": "Reluctant lingering attachment — the emotional element. (semi-colloquial)",
+        "example_en": "I feel a pang of reluctance about withdrawing, but I have made the decision." },
+      { "idiom": "風向きが変わる (かぜむきがかわる)", "literal": "Hướng gió đổi", "meaning": "[口語混じり] Tình thế thay đổi — context for re-engagement later.", "example": "風向きが変われば、改めてご相談させていただければと存じます。",
+        "literal_en": "the wind direction changes (kazemuki ga kawaru)",
+        "meaning_en": "The situation shifts — context for re-engaging later. (semi-colloquial)",
+        "example_en": "If the winds change, I hope to consult with you again." }
     ],
     "cultural_notes_vi": "Japanese closing/walking-away: (1) NEVER A CLEAN BREAK — Japanese business prefers 'see you next time' framing even when situation guarantees no next time. Western 'we'll be in touch' often disingenuous; Japanese version genuinely keeps option open. (2) RELATIONSHIP RESIDUE — vendor whose offer was declined will receive courtesy email from buyer in subsequent year ('how have you been?'). This is genuine, not formality. (3) EXPLANATION CULTURE — Japanese business expects 'the why' even on decline. Just '採用しません' (we won't adopt) feels inadequate; explain (vague but explain). (4) FACE-PRESERVING for VENDOR — vendor invested time and resources; declining without acknowledgment damages their internal reputation (their boss thinks they failed). Buyer's polite framing helps vendor save face. (5) WALKING AWAY mid-deal RARE — most Japanese deals proceed to natural conclusion; walking away is unusual and damages buyer's reputation in industry. (6) SUBSEQUENT WARMING — declined vendors who handled rejection well often get business 12-24 months later. The way decline is handled is itself negotiation. (7) FOREIGN COMPANY DECLINING JP VENDOR — particular care needed because foreign company already 'outsider'; over-blunt decline can damage foreign company's reputation in JP market broadly. (8) Vietnamese learner perspective: Việt business culture more transactional sometimes; Japanese expectation of relationship-preservation through closure is unfamiliar at first.",
-    "tip_advice_vi": "Closing/declining 7-step: (1) NEVER decline by email alone for substantial deal — voice or in-person; (2) THANK FIRST — 'お忙しいところお時間頂戴し誠にありがとうございました'; (3) STATE DECLINE clearly but with euphemism — '見送りとさせていただきます'; (4) PROVIDE GENERAL REASON — '社内事情', 'タイミング', '予算配分' — never specific criticisms of vendor's offer; (5) PRESERVE FUTURE — 'ご縁があれば改めて' / 'タイミングが合えば'; (6) INFORMATION SHARING — share what you can about future opportunities (when next budget cycle, when re-evaluating); (7) WARM CLOSE — 'ますます御発展を心よりお祈り申し上げます' (sincerely wish your continued development). Common Vietnamese mistakes: (a) Email-only decline for substantial relationship — feels cold; (b) Listing specific issues with offer — sounds like critique; (c) Vague 'we'll consider' instead of decline — Japanese vendor will follow up indefinitely thinking deal alive; (d) No future-friendly close — vendor feels written off. Phrase to memorize: '誠に申し訳ございませんが、今回はお見送りとさせていただきたく、別の機会にご縁がございましたら、ぜひお声がけいただければ幸いに存じます.' Combines: apology + euphemism for decline + future-open framing — Japanese-business closing template."
+    "cultural_notes_en": "Japanese closing / walking away: (1) NEVER A CLEAN BREAK — Japanese business prefers a 'see you next time' framing even when the situation guarantees no next time; the Western 'we'll be in touch' is often disingenuous, the Japanese version genuinely keeps the option open. (2) RELATIONSHIP RESIDUE — a vendor whose offer was declined will receive a courtesy email from the buyer in a subsequent year ('how have you been?'); this is genuine, not formality. (3) EXPLANATION CULTURE — Japanese business expects 'the why' even on a decline; a bare '採用しません' feels inadequate — explain (vaguely, but explain). (4) FACE-PRESERVING FOR THE VENDOR — the vendor invested time and resources; declining without acknowledgment damages their internal reputation (their boss thinks they failed), and the buyer's polite framing helps the vendor save face. (5) WALKING AWAY MID-DEAL IS RARE — most Japanese deals proceed to a natural conclusion; walking away is unusual and damages the buyer's reputation in the industry. (6) SUBSEQUENT WARMING — declined vendors who handled the rejection well often get business 12–24 months later; how the decline is handled is itself negotiation. (7) A FOREIGN COMPANY DECLINING A JAPANESE VENDOR — needs particular care because the foreign company is already an 'outsider'; an over-blunt decline can damage its reputation in the Japanese market broadly. (8) Vietnamese-learner perspective: Vietnamese business culture is sometimes more transactional; the Japanese expectation of relationship-preservation through closure is unfamiliar at first.",
+    "tip_advice_vi": "Closing/declining 7-step: (1) NEVER decline by email alone for substantial deal — voice or in-person; (2) THANK FIRST — 'お忙しいところお時間頂戴し誠にありがとうございました'; (3) STATE DECLINE clearly but with euphemism — '見送りとさせていただきます'; (4) PROVIDE GENERAL REASON — '社内事情', 'タイミング', '予算配分' — never specific criticisms of vendor's offer; (5) PRESERVE FUTURE — 'ご縁があれば改めて' / 'タイミングが合えば'; (6) INFORMATION SHARING — share what you can about future opportunities (when next budget cycle, when re-evaluating); (7) WARM CLOSE — 'ますます御発展を心よりお祈り申し上げます' (sincerely wish your continued development). Common Vietnamese mistakes: (a) Email-only decline for substantial relationship — feels cold; (b) Listing specific issues with offer — sounds like critique; (c) Vague 'we'll consider' instead of decline — Japanese vendor will follow up indefinitely thinking deal alive; (d) No future-friendly close — vendor feels written off. Phrase to memorize: '誠に申し訳ございませんが、今回はお見送りとさせていただきたく、別の機会にご縁がございましたら、ぜひお声がけいただければ幸いに存じます.' Combines: apology + euphemism for decline + future-open framing — Japanese-business closing template.",
+    "tip_advice_en": "Closing / declining in 7 steps: (1) NEVER decline by email alone for a substantial deal — use voice or in-person; (2) THANK FIRST — 'お忙しいところお時間頂戴し誠にありがとうございました'; (3) STATE THE DECLINE clearly but with a euphemism — '見送りとさせていただきます'; (4) PROVIDE A GENERAL REASON — '社内事情', 'タイミング', '予算配分' — never specific criticisms of the vendor's offer; (5) PRESERVE THE FUTURE — 'ご縁があれば改めて' / 'タイミングが合えば'; (6) SHARE INFORMATION — what you can about future opportunities (next budget cycle, when re-evaluating); (7) WARM CLOSE — 'ますます御発展を心よりお祈り申し上げます'. Common Vietnamese mistakes: (a) email-only decline for a substantial relationship — it feels cold; (b) listing specific issues with the offer — it sounds like a critique; (c) a vague 'we'll consider' instead of a decline — the Japanese vendor will follow up indefinitely thinking the deal is alive; (d) no future-friendly close — the vendor feels written off. Phrase to memorize: '誠に申し訳ございませんが、今回はお見送りとさせていただきたく、別の機会にご縁がございましたら、ぜひお声がけいただければ幸いに存じます.' It combines an apology + a euphemism for the decline + future-open framing — the Japanese-business closing template."
   },
   {
     "id": 110,
@@ -2897,15 +3257,35 @@ export const lessons: JapaneseLesson[] = [
       "Buyer offers 'this is final' price below cost. Diễn tập câu provide alternative paths: scope reduction, payment terms, longer-term commitment. 価格以外の側面 framework — explore non-price levers before treating price as fixed.",
       "After multiple rounds, gap remains. Diễn tập câu walk away gracefully without burning bridge: 'タイミングが合いませんでしたが、ぜひまた別の機会に〜' framing. Preserve future re-engagement window."
     ],
+    "roleplay_prompts_en": [
+      "You receive a lowball 30% below your expectation. Rehearse a pushback that doesn't break the relationship: a '少々隔たりがある' framing + ask for the buyer's 根拠 (reasoning). Avoid '安すぎる' / 'unacceptable.' Maintain a '前向き' tone.",
+      "The buyer offers 'this is final,' a price below cost. Rehearse a line that provides alternative paths: scope reduction, payment terms, longer-term commitment. Use the 価格以外の側面 framework — explore non-price levers before treating price as fixed.",
+      "After multiple rounds, the gap remains. Rehearse a line that walks away gracefully without burning the bridge: a 'タイミングが合いませんでしたが、ぜひまた別の機会に〜' framing. Preserve a future re-engagement window."
+    ],
     "register_notes": "Lowball-handling register: ASSERTIVE BUT POLITE — must signal disagreement without escalating. (1) UNDERSTATEMENT — '少々隔たりがある' (a slight gap), '想定とは異なる' (differs from expectations) — KHÔNG '低すぎる' (too low) / '受け入れられない' (unacceptable). The Japanese 'slight' is understood as 'significant'. (2) ASK FOR 根拠 — '根拠についてお伺いしたく存じます' — request for basis is polite but pushes back. Forces buyer to articulate, often weakening their position. (3) JOINT FRAMING — '双方の隔たりを埋める' — never 'your offer is wrong'; gap belongs to both sides. (4) ALTERNATIVES — present multiple paths (scope/timeline/payment terms); this maintains '前向き' (forward-leaning) tone. (5) NEVER ESCALATE — 'これは社内方針なので変えられません' = absolute escalation; instead '社内でも再検討の余地があるかもしれません'. (6) PRESERVE 関係 — frame as 'finding the right shape' not 'fighting over price'. KHÔNG: '冗談でしょう' (you must be joking), '話にならない' (out of the question), '他社のほうが高く買い取ってくれる' (others would pay more — competition threat is rude in Japanese context).",
+    "register_notes_en": "Register: assertive but polite — understate as 少々隔たりがある / 想定とは異なる not 低すぎる, ask for 根拠 to push back, frame the gap as jointly owned (双方の隔たりを埋める), keep a 前向き tone with alternative paths, never escalate to 変えられません, and never 冗談でしょう / 話にならない / 他社のほうが高く買い取ってくれる.",
     "idiom_glosses": [
-      { "idiom": "折り合いをつける (おりあいをつける)", "literal": "Đặt sự khớp nhau", "meaning": "[硬い] Đạt thỏa hiệp — central to lowball negotiation.", "example": "双方が折り合いをつけられる水準を模索してまいります。" },
-      { "idiom": "痛み分け (いたみわけ)", "literal": "Chia nỗi đau", "meaning": "[硬い] Cùng chịu thiệt — both sides give to bridge gap.", "example": "痛み分けの形でも、関係性を維持できる水準を探りたいと存じます。" },
-      { "idiom": "一度持ち帰り (いちどもちかえり)", "literal": "Mang về một lần", "meaning": "[口語] Mang về xin ý kiến nội bộ — buy thinking time.", "example": "一度持ち帰り、社内で再検討させていただきます。" },
-      { "idiom": "値ごろ感 (ねごろかん)", "literal": "Cảm giác giá hợp lý", "meaning": "[口語] Cảm giác giá hợp lý — market intuition.", "example": "御社のご提示は弊社の値ごろ感と少々隔たりがございます。" }
+      { "idiom": "折り合いをつける (おりあいをつける)", "literal": "Đặt sự khớp nhau", "meaning": "[硬い] Đạt thỏa hiệp — central to lowball negotiation.", "example": "双方が折り合いをつけられる水準を模索してまいります。",
+        "literal_en": "to fit things together (oriai o tsukeru)",
+        "meaning_en": "To reach a compromise — central to lowball negotiation. (formal)",
+        "example_en": "We will seek a level at which both parties can reach a compromise." },
+      { "idiom": "痛み分け (いたみわけ)", "literal": "Chia nỗi đau", "meaning": "[硬い] Cùng chịu thiệt — both sides give to bridge gap.", "example": "痛み分けの形でも、関係性を維持できる水準を探りたいと存じます。",
+        "literal_en": "splitting the pain (itamiwake)",
+        "meaning_en": "Both sides bearing some loss — both give in order to bridge the gap. (formal)",
+        "example_en": "Even in the form of a shared sacrifice, I would like to find a level at which the relationship can be maintained." },
+      { "idiom": "一度持ち帰り (いちどもちかえり)", "literal": "Mang về một lần", "meaning": "[口語] Mang về xin ý kiến nội bộ — buy thinking time.", "example": "一度持ち帰り、社内で再検討させていただきます。",
+        "literal_en": "taking it back once (ichido mochikaeri)",
+        "meaning_en": "Taking it back to consult internally — to buy thinking time. (colloquial)",
+        "example_en": "I will take this back once and reconsider it internally." },
+      { "idiom": "値ごろ感 (ねごろかん)", "literal": "Cảm giác giá hợp lý", "meaning": "[口語] Cảm giác giá hợp lý — market intuition.", "example": "御社のご提示は弊社の値ごろ感と少々隔たりがございます。",
+        "literal_en": "a sense of the right price (negorokan)",
+        "meaning_en": "A market intuition for a reasonable price. (colloquial)",
+        "example_en": "Your proposal is somewhat at odds with our sense of a reasonable price." }
     ],
     "cultural_notes_vi": "Japanese lowball culture: (1) RARE INITIAL LOWBALL — Japanese buyers don't typically open with extreme lowball; that's seen as bad-faith negotiation. If lowball offered, often signals real budget constraint, not tactic. (2) SIGNAL VS PRICE — what looks like lowball may actually be 'budget envelope' — buyer truly cannot pay more. Vendor's job: probe whether constraint is real or negotiating tactic. (3) NO HARD COUNTERS — Japanese rarely respond to lowball with hard counter (40% above lowball). Instead, soft response: '隔たり', request for explanation. (4) CONTEXT MATTERS — same '安い' offer can be insulting (in luxury vendor context) or generous (relative to alternatives in cost-pressured industry). (5) BUYER'S CULTURE — Japanese buyers often face strict procurement rules; 'lowball' may reflect approval requirements, not personal preference. Negotiator should distinguish 'individual offers' from 'institutional offer'. (6) FACE-LOSS RISK — directly calling an offer 'too low' damages buyer's face if they're constrained. Better: 'we have a gap, let's understand each other'. (7) Vietnamese learner pitfall: Việt negotiation more direct ('that's too low' / 'final price 50% more'); in Nhật this signals lack of business sophistication and ends deals before they begin.",
-    "tip_advice_vi": "Lowball handling 7-step: (1) PAUSE — never react in real-time; 'お時間いただいてもよろしいでしょうか' buys time; (2) UNDERSTAND BUDGET — request basis ('根拠'), discover whether constraint is genuine or tactical; (3) FRAME AS GAP — '隔たり', not 'low'; (4) EXPLORE NON-PRICE LEVERS — scope, timeline, payment terms, longer-term commitment, exclusivity; (5) PROPOSE ALTERNATIVES — usually 2-3 paths; (6) BUYER PROCESSES INTERNALLY — '一度持ち帰り'; respect the time; (7) RE-ENGAGE WITH RECONSIDERATION — '改めて' / '再考' framing. Common Vietnamese mistakes: (a) Direct counter (e.g. 'we need ¥X minimum') without exploring why buyer offered low; (b) Showing emotion ('安すぎます'); (c) Threatening competition ('他社では...'); (d) Taking 'final price' at face value (Japanese buyers often have flexibility they don't reveal initially). Phrase to memorize: 'ご提示いただいた金額と弊社の想定との間には、少々隔たりがあるように感じております。お見積りの根拠についてもう少しお教えいただければ、双方で接点を探りやすくなるかと存じます.' Combines: gap acknowledgment + request for basis + joint-search framing — lowball-handling template."
+    "cultural_notes_en": "Japanese lowball culture: (1) RARE INITIAL LOWBALL — Japanese buyers don't typically open with an extreme lowball; that is seen as bad-faith negotiation, so a lowball, if offered, often signals a real budget constraint rather than a tactic. (2) SIGNAL VS PRICE — what looks like a lowball may actually be the 'budget envelope' — the buyer truly cannot pay more; the vendor's job is to probe whether the constraint is real or a negotiating tactic. (3) NO HARD COUNTERS — Japanese rarely respond to a lowball with a hard counter (40% above the lowball); instead a soft response: '隔たり', a request for explanation. (4) CONTEXT MATTERS — the same '安い' offer can be insulting (in a luxury-vendor context) or generous (relative to alternatives in a cost-pressured industry). (5) BUYER'S CULTURE — Japanese buyers often face strict procurement rules; a 'lowball' may reflect approval requirements, not personal preference, so distinguish 'individual offers' from 'institutional offers.' (6) FACE-LOSS RISK — directly calling an offer 'too low' damages the buyer's face if they are constrained; better: 'we have a gap, let's understand each other.' (7) Vietnamese-learner pitfall: Vietnamese negotiation is more direct ('that's too low' / 'final price 50% more'); in Japan this signals a lack of business sophistication and ends deals before they begin.",
+    "tip_advice_vi": "Lowball handling 7-step: (1) PAUSE — never react in real-time; 'お時間いただいてもよろしいでしょうか' buys time; (2) UNDERSTAND BUDGET — request basis ('根拠'), discover whether constraint is genuine or tactical; (3) FRAME AS GAP — '隔たり', not 'low'; (4) EXPLORE NON-PRICE LEVERS — scope, timeline, payment terms, longer-term commitment, exclusivity; (5) PROPOSE ALTERNATIVES — usually 2-3 paths; (6) BUYER PROCESSES INTERNALLY — '一度持ち帰り'; respect the time; (7) RE-ENGAGE WITH RECONSIDERATION — '改めて' / '再考' framing. Common Vietnamese mistakes: (a) Direct counter (e.g. 'we need ¥X minimum') without exploring why buyer offered low; (b) Showing emotion ('安すぎます'); (c) Threatening competition ('他社では...'); (d) Taking 'final price' at face value (Japanese buyers often have flexibility they don't reveal initially). Phrase to memorize: 'ご提示いただいた金額と弊社の想定との間には、少々隔たりがあるように感じております。お見積りの根拠についてもう少しお教えいただければ、双方で接点を探りやすくなるかと存じます.' Combines: gap acknowledgment + request for basis + joint-search framing — lowball-handling template.",
+    "tip_advice_en": "Lowball handling in 7 steps: (1) PAUSE — never react in real time; 'お時間いただいてもよろしいでしょうか' buys time; (2) UNDERSTAND THE BUDGET — request the basis ('根拠'), discover whether the constraint is genuine or tactical; (3) FRAME IT AS A GAP — '隔たり', not 'low'; (4) EXPLORE NON-PRICE LEVERS — scope, timeline, payment terms, longer-term commitment, exclusivity; (5) PROPOSE ALTERNATIVES — usually 2–3 paths; (6) LET THE BUYER PROCESS INTERNALLY — '一度持ち帰り'; respect the time; (7) RE-ENGAGE WITH RECONSIDERATION — a '改めて' / '再考' framing. Common Vietnamese mistakes: (a) a direct counter ('we need ¥X minimum') without exploring why the buyer offered low; (b) showing emotion ('安すぎます'); (c) threatening competition ('他社では...'); (d) taking 'final price' at face value (Japanese buyers often have flexibility they don't reveal initially). Phrase to memorize: 'ご提示いただいた金額と弊社の想定との間には、少々隔たりがあるように感じております。お見積りの根拠についてもう少しお教えいただければ、双方で接点を探りやすくなるかと存じます.' It combines gap acknowledgment + a request for the basis + joint-search framing — the lowball-handling template."
   },
   {
     "id": 111,
@@ -2962,15 +3342,35 @@ export const lessons: JapaneseLesson[] = [
       "Counterpart demands immediate concession exceeding your authority. Diễn tập câu HOLD line without escalating: '即答することは控えさせていただきますが、社内で慎重に検討のうえ後日回答いたします'. Frame as process, not refusal.",
       "Counterpart resorts to personal attacks ('お前の会社は信用できない'). Diễn tập câu acknowledge feeling without conceding: 'ご不快な思いをおかけしたことはお詫びいたしますが、本件は事実に基づいた議論でお進めいただけますと幸いです'. Redirect to evidence."
     ],
+    "roleplay_prompts_en": [
+      "The counterpart is yelling, blaming you personally. Rehearse a line that STAYS calm + redirects to facts: '冷静にご議論を進めさせていただきたく、お願い申し上げます'. Don't mirror the anger. Pause if needed: 'お時間を10分いただけますでしょうか'.",
+      "The counterpart demands an immediate concession exceeding your authority. Rehearse a line that HOLDS the line without escalating: '即答することは控えさせていただきますが、社内で慎重に検討のうえ後日回答いたします'. Frame it as a process, not a refusal.",
+      "The counterpart resorts to personal attacks ('お前の会社は信用できない'). Rehearse a line that acknowledges the feeling without conceding: 'ご不快な思いをおかけしたことはお詫びいたしますが、本件は事実に基づいた議論でお進めいただけますと幸いです'. Redirect to evidence."
+    ],
     "register_notes": "Hostile-counterpart register: CONTROLLED FORMALITY. (1) DOUBLE DOWN ON KEIGO when other side breaks register — '〜でございます', '〜申し上げます', '〜いただけますでしょうか'. Higher formality = social power; signals 'I'm not destabilized'. (2) NEVER MIRROR HOSTILITY — even if counterpart drops to 'お前' / casual aggressive, you stay polite. Mirroring loses moral high ground + escalates. (3) ACKNOWLEDGE FEELING separate from concession — 'ご不快な思いをおかけし' (feeling acknowledged) ≠ '弊社の責任です' (responsibility accepted). (4) FACT REDIRECT — '事実関係を整理する' / 'お話を伺うにあたり' constantly redirects from emotion to verifiable facts. (5) HOLD AUTHORITY LINE — 'これは私の権限を超えますので、社内で〜' is honest + protective; pretending more authority than you have causes catastrophe. (6) WALKING AWAY GRACEFULLY — '本日はここで一旦中断' / 'お時間を頂戴し改めて' provides pressure-release without surrender. (7) EVIDENCE OVER ARGUMENT — '記録によれば〜' / '契約書では〜' — facts and documents are your shield. KHÔNG: 'ふざけるな' (don't joke), '怒らないでください' (don't get angry — patronizing), 'こちらだって' (we also — defensive escalation), Việt-style emotional appeals ('お互い感情的にならず、人間的に') — Japanese hostile context expects formal not personal.",
+    "register_notes_en": "Register: controlled formality — double down on 〜でございます / 〜申し上げます when they break register, never mirror hostility, separate ご不快な思いをおかけし from accepting 弊社の責任, redirect to 事実関係 / 記録によれば, hold the authority line (私の権限を超えますので), never ふざけるな / 怒らないでください or defensive こちらだって.",
     "idiom_glosses": [
-      { "idiom": "火に油を注ぐ (ひにあぶらをそそぐ)", "literal": "Đổ dầu vào lửa", "meaning": "[硬い・書き言葉] Đổ thêm dầu vào lửa — what to avoid.", "example": "性急な反論は、火に油を注ぐ結果となりかねません。" },
-      { "idiom": "一線を画す (いっせんをかくす)", "literal": "Vẽ một đường", "meaning": "[硬い] Vạch ranh giới — non-negotiable line.", "example": "譲歩はいたしますが、一線を画すべき点もございます。" },
-      { "idiom": "風林火山 (ふうりんかざん)", "literal": "Gió rừng lửa núi", "meaning": "[硬い・書き言葉/古典] Sun Tzu / Takeda strategy — nhanh khi cần, vững khi cần.", "example": "本件は、風林火山の精神で臨む必要があるかと存じます。" },
-      { "idiom": "喧嘩両成敗 (けんかりょうせいばい)", "literal": "Trong cãi nhau, cả hai bị phạt", "meaning": "[硬い・書き言葉] Both-sides-blamed — Japanese principle for conflict.", "example": "喧嘩両成敗の原則に立ち、双方の検証を行うべきかと存じます。" }
+      { "idiom": "火に油を注ぐ (ひにあぶらをそそぐ)", "literal": "Đổ dầu vào lửa", "meaning": "[硬い・書き言葉] Đổ thêm dầu vào lửa — what to avoid.", "example": "性急な反論は、火に油を注ぐ結果となりかねません。",
+        "literal_en": "to pour oil on the fire (hi ni abura o sosogu)",
+        "meaning_en": "To add fuel to the fire — what to avoid. (formal, written)",
+        "example_en": "A hasty rebuttal risks ending up pouring oil on the fire." },
+      { "idiom": "一線を画す (いっせんをかくす)", "literal": "Vẽ một đường", "meaning": "[硬い] Vạch ranh giới — non-negotiable line.", "example": "譲歩はいたしますが、一線を画すべき点もございます。",
+        "literal_en": "to draw a line (issen o kakusu)",
+        "meaning_en": "To set a boundary — the non-negotiable line. (formal)",
+        "example_en": "We will make concessions, but there are also points at which a firm line must be drawn." },
+      { "idiom": "風林火山 (ふうりんかざん)", "literal": "Gió rừng lửa núi", "meaning": "[硬い・書き言葉/古典] Sun Tzu / Takeda strategy — nhanh khi cần, vững khi cần.", "example": "本件は、風林火山の精神で臨む必要があるかと存じます。",
+        "literal_en": "wind, forest, fire, mountain (fūrin kazan)",
+        "meaning_en": "The Sun Tzu / Takeda strategy — swift when needed, immovable when needed. (formal, written; classical)",
+        "example_en": "I believe this matter must be approached in the spirit of wind, forest, fire, and mountain." },
+      { "idiom": "喧嘩両成敗 (けんかりょうせいばい)", "literal": "Trong cãi nhau, cả hai bị phạt", "meaning": "[硬い・書き言葉] Both-sides-blamed — Japanese principle for conflict.", "example": "喧嘩両成敗の原則に立ち、双方の検証を行うべきかと存じます。",
+        "literal_en": "in a quarrel, both sides are punished (kenka ryōseibai)",
+        "meaning_en": "Both-sides-blamed — a Japanese principle for conflict. (formal, written)",
+        "example_en": "Standing on the principle that both sides share the blame, we should examine both parties." }
     ],
     "cultural_notes_vi": "Japanese hostile-negotiation: (1) RARITY — open hostility rare in Japanese business; if it occurs, signals serious dysfunction (existential threat to deal, individual under extreme pressure, deliberate intimidation tactic). (2) CULTURAL EXPECTATIONS — Japanese executives expect each other to maintain formality even under pressure; breaking formality signals breakdown of professional relationship. (3) FACE-LOSS DYNAMICS — counterpart who's hostile is often face-losing publicly; calmly maintaining your formality lets them de-escalate without further loss. (4) WITNESSES MATTER — Japanese hostile meetings often have multiple attendees; behavior judged by all present, not just principal. Composure earns long-term respect. (5) ESCALATION PATHS — if executive-level hostile, may escalate to board/CEO level; both sides usually want to avoid this; finding face-saving exit is mutual interest. (6) LEGAL TERRITORY — if hostile turns to threats (lawsuits, regulatory complaints), Japanese culture views these escalations as serious damage to relationship; rarely repaired. (7) REPAIR — even after hostile meeting, formal apology email + 改めてのご面談 (renewed meeting) standard practice; relationship can recover with effort. (8) Vietnamese learner perspective: Việt business culture sometimes more comfortable with public confrontation; in Nhật this rapidly degrades trust irrespective of who is 'right' on facts.",
-    "tip_advice_vi": "Hostile-counterpart 8-step: (1) DON'T REACT IN REAL-TIME — pause, breathe, 'お時間〜分いただけますでしょうか'; (2) MAINTAIN KEIGO above their level — even if they yell, you stay 〜でございます; (3) ACKNOWLEDGE FEELING without conceding facts — 'ご不快な思いをおかけしたこと'; (4) REDIRECT TO FACTS — '記録によれば〜'; (5) DON'T TAKE BAIT for personal attacks — '本件は事実に基づき〜'; (6) PROTECT AUTHORITY LINE — never agree to more than you can deliver; '社内で検討'; (7) PROPOSE PROCESS not concession — 'a follow-up meeting next week with formal response'; (8) DOCUMENT — after hostile meeting, write detailed minutes immediately; share with internal team and (if safe) with counterpart. Common Vietnamese mistakes: (a) Mirroring tone (escalates); (b) Personal apology that sounds like accepting fault you don't have ('申し訳ございません, 弊社の全面的な責任で〜'); (c) Promising things outside your authority to calm down (later disastrous); (d) Walking out without face-saving exit. Phrase to memorize: 'ご不快な思いをおかけし、心よりお詫び申し上げます。一方で、今後の対応については、事実関係を整理したうえで、双方で建設的にご議論を進めさせていただきたく存じます.' Combines: feeling-acknowledgment + redirect-to-facts + joint-process framing — stand-your-ground without escalating."
+    "cultural_notes_en": "Japanese hostile-negotiation: (1) RARITY — open hostility is rare in Japanese business; if it occurs it signals serious dysfunction (an existential threat to the deal, an individual under extreme pressure, or a deliberate intimidation tactic). (2) CULTURAL EXPECTATIONS — Japanese executives expect each other to maintain formality even under pressure; breaking formality signals a breakdown of the professional relationship. (3) FACE-LOSS DYNAMICS — a hostile counterpart is often losing face publicly; calmly maintaining your formality lets them de-escalate without further loss. (4) WITNESSES MATTER — Japanese hostile meetings often have multiple attendees, and behavior is judged by all present, not just the principal; composure earns long-term respect. (5) ESCALATION PATHS — executive-level hostility may escalate to board/CEO level, which both sides usually want to avoid, so finding a face-saving exit is a mutual interest. (6) LEGAL TERRITORY — if hostility turns to threats (lawsuits, regulatory complaints), Japanese culture views these escalations as serious, rarely-repaired damage. (7) REPAIR — even after a hostile meeting, a formal apology email + a 改めてのご面談 (renewed meeting) is standard practice; the relationship can recover with effort. (8) Vietnamese-learner perspective: Vietnamese business culture is sometimes more comfortable with public confrontation; in Japan this rapidly degrades trust regardless of who is 'right' on the facts.",
+    "tip_advice_vi": "Hostile-counterpart 8-step: (1) DON'T REACT IN REAL-TIME — pause, breathe, 'お時間〜分いただけますでしょうか'; (2) MAINTAIN KEIGO above their level — even if they yell, you stay 〜でございます; (3) ACKNOWLEDGE FEELING without conceding facts — 'ご不快な思いをおかけしたこと'; (4) REDIRECT TO FACTS — '記録によれば〜'; (5) DON'T TAKE BAIT for personal attacks — '本件は事実に基づき〜'; (6) PROTECT AUTHORITY LINE — never agree to more than you can deliver; '社内で検討'; (7) PROPOSE PROCESS not concession — 'a follow-up meeting next week with formal response'; (8) DOCUMENT — after hostile meeting, write detailed minutes immediately; share with internal team and (if safe) with counterpart. Common Vietnamese mistakes: (a) Mirroring tone (escalates); (b) Personal apology that sounds like accepting fault you don't have ('申し訳ございません, 弊社の全面的な責任で〜'); (c) Promising things outside your authority to calm down (later disastrous); (d) Walking out without face-saving exit. Phrase to memorize: 'ご不快な思いをおかけし、心よりお詫び申し上げます。一方で、今後の対応については、事実関係を整理したうえで、双方で建設的にご議論を進めさせていただきたく存じます.' Combines: feeling-acknowledgment + redirect-to-facts + joint-process framing — stand-your-ground without escalating.",
+    "tip_advice_en": "Hostile-counterpart handling in 8 steps: (1) DON'T REACT IN REAL TIME — pause, breathe, 'お時間〜分いただけますでしょうか'; (2) MAINTAIN KEIGO above their level — even if they yell, you stay 〜でございます; (3) ACKNOWLEDGE THE FEELING without conceding facts — 'ご不快な思いをおかけしたこと'; (4) REDIRECT TO FACTS — '記録によれば〜'; (5) DON'T TAKE THE BAIT of personal attacks — '本件は事実に基づき〜'; (6) PROTECT THE AUTHORITY LINE — never agree to more than you can deliver; '社内で検討'; (7) PROPOSE A PROCESS, not a concession — 'a follow-up meeting next week with a formal response'; (8) DOCUMENT — after a hostile meeting write detailed minutes immediately, share with the internal team and (if safe) with the counterpart. Common Vietnamese mistakes: (a) mirroring the tone (it escalates); (b) a personal apology that sounds like accepting fault you don't have ('申し訳ございません、弊社の全面的な責任で〜'); (c) promising things outside your authority to calm them down (later disastrous); (d) walking out without a face-saving exit. Phrase to memorize: 'ご不快な思いをおかけし、心よりお詫び申し上げます。一方で、今後の対応については、事実関係を整理したうえで、双方で建設的にご議論を進めさせていただきたく存じます.' It combines feeling-acknowledgment + a redirect-to-facts + joint-process framing — stand your ground without escalating."
   },
   {
     "id": 112,
@@ -3014,13 +3414,27 @@ export const lessons: JapaneseLesson[] = [
       "Chủ khảo hỏi 'điểm độc đáo ở đâu'. Trả lời bằng '〜に独自性を求めました' thay vì 自分の研究は新しいです.",
       "Bạn cần nêu limitation ngay từ đầu. Dùng '射程' và '限界' để nghe mature, không defensive."
     ],
+    "roleplay_prompts_en": [
+      "You open a 博士論文審査. Use 'ご審査を賜り' and present the order 研究課題 → 方法 → 知見 → 限界. Do not use a casual 今日は来てくれて.",
+      "The chief examiner asks 'where is the originality?'. Answer with '〜に独自性を求めました' rather than 自分の研究は新しいです.",
+      "You need to state a limitation right from the start. Use '射程' and '限界' so it sounds mature, not defensive."
+    ],
     "register_notes": "博士論文審査 register nằm giữa lecture formal và oral defense humility. (1) OPENING is highly formulaic: ご多用のところ / ご審査を賜り / 誠にありがとうございます. (2) Self-reference should be '本論文' or '本研究', not 私. (3) Originality is framed as '独自性を求める/位置づける' rather than boasting. (4) Scope control is essential: name 限界 early so committee sees maturity. (5) Voice pace: long compounds like 博士論文審査 and 形成過程 need deliberate chunking; rushing sounds nervous.",
+    "register_notes_en": "Register: between a formal lecture and oral-defense humility — open with the formulaic ご多用のところ / ご審査を賜り / 誠にありがとうございます, self-refer as 本論文 / 本研究 not 私, frame originality as 独自性を求める/位置づける not boasting, name 限界 early, and chunk long compounds (博士論文審査, 形成過程) deliberately so you don't sound nervous.",
     "idiom_glosses": [
-      { "idiom": "襟を正す (えりをただす)", "literal": "Chỉnh cổ áo", "meaning": "[硬い] Nghiêm túc bước vào một việc trọng đại.", "example": "審査に臨むにあたり、改めて襟を正す思いでおります。" },
-      { "idiom": "俎上に載せる (そじょうにのせる)", "literal": "Đặt lên thớt", "meaning": "[書き言葉] Đưa một vấn đề ra để phân tích kỹ.", "example": "本論文では、従来当然視されてきた前提を俎上に載せる。" }
+      { "idiom": "襟を正す (えりをただす)", "literal": "Chỉnh cổ áo", "meaning": "[硬い] Nghiêm túc bước vào một việc trọng đại.", "example": "審査に臨むにあたり、改めて襟を正す思いでおります。",
+        "literal_en": "to straighten one's collar (eri o tadasu)",
+        "meaning_en": "To approach a weighty matter with renewed seriousness. (formal)",
+        "example_en": "As I face the examination, I feel anew the need to straighten my collar." },
+      { "idiom": "俎上に載せる (そじょうにのせる)", "literal": "Đặt lên thớt", "meaning": "[書き言葉] Đưa một vấn đề ra để phân tích kỹ.", "example": "本論文では、従来当然視されてきた前提を俎上に載せる。",
+        "literal_en": "to place on the chopping board (sojō ni noseru)",
+        "meaning_en": "To bring an issue out for thorough analysis. (written)",
+        "example_en": "In this dissertation, premises that have been taken for granted are put on the chopping board." }
     ],
     "cultural_notes_vi": "Bảo vệ luận án tiến sĩ ở Nhật thường ít theatrical hơn một số môi trường phương Tây: không 'defend aggressively', mà trình bày chặt, nhận chỉ摘, và chứng minh bạn hiểu giới hạn của mình. Chủ khảo và phó khảo giữ vai trò phân tầng rõ. Ứng viên không nên tranh thắng; nên cho thấy năng lực sửa, giới hạn claim, và định vị đóng góp khiêm tốn nhưng rõ.",
+    "cultural_notes_en": "A doctoral defense in Japan is usually less theatrical than in some Western settings: not 'defend aggressively,' but present tightly, accept criticism, and demonstrate that you understand the limits of your own work. The chief and sub-examiners hold clearly tiered roles. The candidate should not compete to 'win'; they should show the ability to revise, bound their claims, and position their contribution modestly but clearly.",
     "tip_advice_vi": "Template mở đầu: cảm ơn hội đồng → tên luận án → vấn đề nghiên cứu → điểm độc đáo → thứ tự trình bày. Câu an toàn: 本日は、研究課題、方法、主要な知見、限界の順にご説明いたします. Nếu run: đọc chậm ở compounds dài; dừng nhẹ sau 本論文は.",
+    "tip_advice_en": "Opening template: thank the committee → the dissertation title → the research problem → the original point → the order of presentation. A safe sentence: 本日は、研究課題、方法、主要な知見、限界の順にご説明いたします. If nervous: read slowly through long compounds; pause slightly after 本論文は.",
     "exercises": [
       { "type": "fill-blank", "question": "本日はご多用のところ、本博士論文のご審査を___、誠にありがとうございます。", "answer": "賜り" },
       { "type": "translation", "vietnamese": "Luận án này định vị đóng góp ở việc kết nối phân tích tư liệu và phỏng vấn.", "japanese": "本論文は、資料分析と聞き取り調査を接続する点に貢献を位置づけるものである。" }
@@ -3068,13 +3482,27 @@ export const lessons: JapaneseLesson[] = [
       "Bạn không agree hoàn toàn. Dùng ただし after acknowledgement, then evidence-based explanation. Không nói それは違います.",
       "Bạn cần hứa sửa luận án. Dùng 修正いたします / 再構成いたします, không casual 直します."
     ],
+    "roleplay_prompts_en": [
+      "The committee says your sample is biased. Start with ご指摘の通り, then name a 制約, then propose a 修正.",
+      "You do not fully agree. Use ただし after the acknowledgement, then an evidence-based explanation. Do not say それは違います.",
+      "You need to promise to revise the dissertation. Use 修正いたします / 再構成いたします, not the casual 直します."
+    ],
     "register_notes": "Trong defense, phản biện tốt gồm 3 bước: ACCEPT THE ISSUE, LIMIT THE DAMAGE, STATE REVISION. 'ご指摘の通り' không có nghĩa bạn surrender toàn bộ argument; nó là entry ticket để trả lời. 'ただし' dùng được, nhưng phải đứng sau acknowledgement. '制約' tốt hơn '弱点' vì nghe academic hơn. '今後の課題' dùng khi chưa sửa ngay được; đừng lạm dụng để né trách nhiệm.",
+    "register_notes_en": "Register: a good rebuttal is three beats — ACCEPT THE ISSUE (ご指摘の通り, the entry ticket, not surrender), LIMIT THE DAMAGE (ただし after the acknowledgement, never before), STATE THE REVISION (修正いたします / 再構成いたします); prefer 制約 over 弱点 as it sounds more academic, and reserve 今後の課題 for what you genuinely cannot fix yet, not to dodge responsibility.",
     "idiom_glosses": [
-      { "idiom": "真摯に受け止める (しんしにうけとめる)", "literal": "Tiếp nhận một cách chân thành", "meaning": "[formal] Nhận góp ý nghiêm túc, không defensive.", "example": "ご批判は真摯に受け止め、修正に反映いたします。" },
-      { "idiom": "議論の余地がある (ぎろんのよちがある)", "literal": "Có khoảng trống để thảo luận", "meaning": "[academic] Vẫn còn điểm cần bàn, không phủ định thô.", "example": "この解釈にはなお議論の余地がございます。" }
+      { "idiom": "真摯に受け止める (しんしにうけとめる)", "literal": "Tiếp nhận một cách chân thành", "meaning": "[formal] Nhận góp ý nghiêm túc, không defensive.", "example": "ご批判は真摯に受け止め、修正に反映いたします。",
+        "literal_en": "to receive sincerely (shinshi ni uketomeru)",
+        "meaning_en": "To take feedback seriously, without being defensive. (formal)",
+        "example_en": "I will take the criticism sincerely and reflect it in the revision." },
+      { "idiom": "議論の余地がある (ぎろんのよちがある)", "literal": "Có khoảng trống để thảo luận", "meaning": "[academic] Vẫn còn điểm cần bàn, không phủ định thô.", "example": "この解釈にはなお議論の余地がございます。",
+        "literal_en": "there is room for discussion (giron no yochi ga aru)",
+        "meaning_en": "There remains a point worth debating — without crudely negating it. (academic)",
+        "example_en": "There still remains room for discussion regarding this interpretation." }
     ],
     "cultural_notes_vi": "Trong bảo vệ tiến sĩ ở Nhật, ứng viên được đánh giá cả về thái độ nhận góp ý. Nếu phản ứng kiểu 'tôi đã đúng rồi', hội đồng dễ xem là chưa trưởng thành học thuật. Nhưng nhận hết cũng nguy hiểm. Cách hay: nhận constraint, giữ contribution, đề xuất sửa.",
+    "cultural_notes_en": "In a Japanese doctoral defense, the candidate is also assessed on how they receive feedback. If the reaction is the 'I was already right' kind, the committee tends to see it as scholarly immaturity. But accepting everything is also dangerous. The good approach: accept the constraint, keep the contribution, propose a revision.",
     "tip_advice_vi": "Công thức trả lời critique: ご指摘の通り + issue noun + ただし + rationale + 修正方針. Ví dụ: ご指摘の通り、資料の偏在は制約でございます。ただし、当該時期の保存状況を踏まえると、現時点で最も妥当な資料群であると考えております.",
+    "tip_advice_en": "A formula for answering critique: ご指摘の通り + issue noun + ただし + rationale + 修正方針. Example: ご指摘の通り、資料の偏在は制約でございます。ただし、当該時期の保存状況を踏まえると、現時点で最も妥当な資料群であると考えております.",
     "exercises": [
       { "type": "fill-blank", "question": "この点につきましては、結論部分でより明確な___を加える必要があると考えております。", "answer": "留保" },
       { "type": "matching", "instruction": "Match defense phrases to function.", "pairs": [
@@ -3126,13 +3554,27 @@ export const lessons: JapaneseLesson[] = [
       "Chair says time is limited. Deflect politely: '詳細は発表後に'.",
       "Questioner asks beyond scope. Dùng 射程外 nhưng acknowledge as future task."
     ],
+    "roleplay_prompts_en": [
+      "You are the presenter, asked about generalizability. Answer with '一般化よりも〜を主眼'.",
+      "The chair says time is limited. Deflect politely: '詳細は発表後に'.",
+      "A questioner asks beyond scope. Use 射程外 but acknowledge it as a future task."
+    ],
     "register_notes": "学会発表 Q&A có three-way dynamics: presenter, questioner, chair. Presenter must answer questioner while respecting chair's time control. Good answers begin with thanks, identify the point, answer narrowly, then defer details. '射程外' acceptable if paired with '重要な検討課題'. Avoid 'わかりません' naked; use '現時点では十分に検討できておりません'.",
+    "register_notes_en": "Register: three-way dynamics — answer the questioner while respecting the chair's time control; begin with thanks, identify the point, answer narrowly, then defer details; 射程外 is acceptable only when paired with 重要な検討課題, and never a bare わかりません — use 現時点では十分に検討できておりません.",
     "idiom_glosses": [
-      { "idiom": "的を射る (まとをいる)", "literal": "Bắn trúng mục tiêu", "meaning": "[neutral] Câu hỏi/góp ý rất đúng trọng tâm.", "example": "先生のご質問は、まさに本研究の課題の的を射ております。" },
-      { "idiom": "紙幅の都合 (しふくのつごう)", "literal": "Do giới hạn giấy", "meaning": "[academic writing] Do giới hạn dung lượng bài viết.", "example": "紙幅の都合上、詳細な分析は別稿に譲る。" }
+      { "idiom": "的を射る (まとをいる)", "literal": "Bắn trúng mục tiêu", "meaning": "[neutral] Câu hỏi/góp ý rất đúng trọng tâm.", "example": "先生のご質問は、まさに本研究の課題の的を射ております。",
+        "literal_en": "to hit the target (mato o iru)",
+        "meaning_en": "A question or comment that is exactly on point. (neutral)",
+        "example_en": "Your question, Professor, hits exactly the heart of this study's problem." },
+      { "idiom": "紙幅の都合 (しふくのつごう)", "literal": "Do giới hạn giấy", "meaning": "[academic writing] Do giới hạn dung lượng bài viết.", "example": "紙幅の都合上、詳細な分析は別稿に譲る。",
+        "literal_en": "owing to paper-space constraints (shifuku no tsugō)",
+        "meaning_en": "Owing to the length limit of the written work. (academic writing)",
+        "example_en": "Owing to space constraints, the detailed analysis is left to a separate paper." }
     ],
     "cultural_notes_vi": "Q&A học hội Nhật thường rất lịch sự nhưng có thể sắc. '大変興味深い' không bảo đảm khen thật; đôi khi chỉ là opening formula trước critique. Presenter cần nghe phần sau. Chair có quyền cắt; đừng chống chair.",
+    "cultural_notes_en": "Q&A at a Japanese conference is usually very polite but can be sharp. '大変興味深い' does not guarantee genuine praise; sometimes it is merely an opening formula before a critique. The presenter must listen to the part that follows. The chair has the right to cut in; do not resist the chair.",
     "tip_advice_vi": "Câu cứu nguy: '現時点では十分に検討できておりませんが、今後の重要な課題として承ります.' Dùng khi không biết, nhưng nhớ ghi lại câu hỏi sau buổi.",
+    "tip_advice_en": "A rescue sentence: '現時点では十分に検討できておりませんが、今後の重要な課題として承ります.' Use it when you don't know — but remember to write the question down after the session.",
     "exercises": [
       { "type": "fill-blank", "question": "時間の___上、詳細は発表後に改めてご相談させていただければ幸いです。", "answer": "関係" },
       { "type": "translation", "vietnamese": "Điểm đó nằm ngoài phạm vi bài trình bày này, nhưng là vấn đề quan trọng cho nghiên cứu sau.", "japanese": "その点は本発表の射程外ではございますが、今後の重要な検討課題でございます。" }
@@ -3180,13 +3622,27 @@ export const lessons: JapaneseLesson[] = [
       "With a peer, use casual but still academic Japanese: たしかに…たださ. With a professor, switch to ご指摘の通りですが.",
       "Reframe opposition as 別解釈の余地 rather than 'wrong'."
     ],
+    "roleplay_prompts_en": [
+      "Practice disagreeing with a seminar participant using なるほど + ただ. No direct それは違います.",
+      "With a peer, use casual but still academic Japanese: たしかに…たださ. With a professor, switch to ご指摘の通りですが.",
+      "Reframe opposition as 別解釈の余地 rather than 'wrong'."
+    ],
     "register_notes": "なるほど is not agreement by itself; in academic Japanese it often means 'I have received your frame'. ただ introduces careful disagreement. ただし is firmer and more written/formal. With 同期: なるほど、でも/たださ acceptable. With 先生: なるほど、ご指摘の通りです。ただし... or ご趣旨は理解いたしました。ただ.... The convention lets disagreement happen without public face-loss.",
+    "register_notes_en": "Register: なるほど is not agreement by itself — in academic Japanese it often means 'I have received your frame'; ただ introduces careful disagreement and ただし is firmer and more written/formal; with 同期, なるほど、でも/たださ is acceptable, with 先生 use なるほど、ご指摘の通りです。ただし… — the convention lets disagreement happen without public face-loss.",
     "idiom_glosses": [
-      { "idiom": "一理ある (いちりある)", "literal": "Có một lý", "meaning": "Có phần đúng, nhưng chưa chắc đủ.", "example": "その反論には一理あるが、資料全体を説明するには不十分である。" },
-      { "idiom": "水掛け論 (みずかけろん)", "literal": "Tranh cãi tạt nước", "meaning": "Cãi qua cãi lại không có bằng chứng tiến triển.", "example": "水掛け論を避けるため、まず前提を整理する必要がある。" }
+      { "idiom": "一理ある (いちりある)", "literal": "Có một lý", "meaning": "Có phần đúng, nhưng chưa chắc đủ.", "example": "その反論には一理あるが、資料全体を説明するには不十分である。",
+        "literal_en": "there is one reason in it (ichiri aru)",
+        "meaning_en": "There is some validity to it, though perhaps not enough.",
+        "example_en": "There is something to that objection, but it is insufficient to account for the whole body of materials." },
+      { "idiom": "水掛け論 (みずかけろん)", "literal": "Tranh cãi tạt nước", "meaning": "Cãi qua cãi lại không có bằng chứng tiến triển.", "example": "水掛け論を避けるため、まず前提を整理する必要がある。",
+        "literal_en": "a water-throwing argument (mizukake-ron)",
+        "meaning_en": "A back-and-forth quarrel that makes no evidential progress.",
+        "example_en": "To avoid a fruitless back-and-forth, the premises must first be sorted out." }
     ],
     "cultural_notes_vi": "Bất đồng trong học thuật Nhật rất hay đi qua cushion. Người nghe native sẽ hiểu 'なるほど、ただ...' là disagreement nhẹ. Người học Việt dễ nghe nhầm thành đồng ý rồi bất ngờ. Hãy chú ý phần sau ただ.",
+    "cultural_notes_en": "Disagreement in Japanese academia very often passes through a cushion. A native listener understands 'なるほど、ただ...' as mild disagreement. Vietnamese learners easily mishear it as agreement and are then taken by surprise. Pay attention to the part after ただ.",
     "tip_advice_vi": "Công thức: なるほど + partial agreement + ただ + scope/premise/data. Nếu nói với giáo sư, thêm ご指摘の通り / ご趣旨は理解いたしました.",
+    "tip_advice_en": "Formula: なるほど + partial agreement + ただ + scope/premise/data. If speaking to a professor, add ご指摘の通り / ご趣旨は理解いたしました.",
     "exercises": [
       { "type": "fill-blank", "question": "なるほど、その解釈にも一理あります。___、資料の年代差を考慮すると、別解釈の余地もございます。", "answer": "ただ" },
       { "type": "translation", "vietnamese": "Tôi hiểu ý thầy/cô. Tuy nhiên, cần xem cẩn thận liệu tiền đề đó có đúng với trường hợp này không.", "japanese": "ご趣旨は理解いたしました。ただし、その前提が本事例にも成立するかは慎重に見る必要がございます。" }
@@ -3234,13 +3690,27 @@ export const lessons: JapaneseLesson[] = [
       "You partially disagree with professor's suggested conclusion change. Say '結論そのものより...' to redirect.",
       "Ask a clarification question with ご趣旨を誤解しておりましたら恐縮ですが."
     ],
+    "roleplay_prompts_en": [
+      "The professor says your argument jumps. Use ご指摘の通り, then state a 修正案.",
+      "You partially disagree with the professor's suggested conclusion change. Say '結論そのものより...' to redirect.",
+      "Ask a clarification question with ご趣旨を誤解しておりましたら恐縮ですが."
+    ],
     "register_notes": "ご指摘の通り is high-value academic keigo. It acknowledges critique, not defeat. Follow with specific diagnosis: 説明不足, 論点整理不足, 接続が弱い. Then revision proposal. ご教示 is more deferential than ご指摘; use with senior professor, not with peer. With peers, 指摘してくれてありがとう is enough.",
+    "register_notes_en": "Register: ご指摘の通り is high-value academic keigo — it acknowledges critique, not defeat; follow it with a specific diagnosis (説明不足, 論点整理不足, 接続が弱い) then a revision proposal; ご教示 is more deferential than ご指摘 (use with a senior professor), while with peers 指摘してくれてありがとう is enough.",
     "idiom_glosses": [
-      { "idiom": "筋を通す (すじをとおす)", "literal": "Thông đường gân/đường lý", "meaning": "Giữ logic nhất quán.", "example": "論旨の筋を通すため、章構成を見直す必要がある。" },
-      { "idiom": "腑に落ちる (ふにおちる)", "literal": "Rơi xuống phủ tạng", "meaning": "Hiểu ra / thấy thuyết phục.", "example": "この説明を加えれば、読者にも腑に落ちやすくなる。" }
+      { "idiom": "筋を通す (すじをとおす)", "literal": "Thông đường gân/đường lý", "meaning": "Giữ logic nhất quán.", "example": "論旨の筋を通すため、章構成を見直す必要がある。",
+        "literal_en": "to run the sinew through (suji o tōsu)",
+        "meaning_en": "To keep the logic consistent.",
+        "example_en": "To keep the line of argument consistent, the chapter structure needs to be revisited." },
+      { "idiom": "腑に落ちる (ふにおちる)", "literal": "Rơi xuống phủ tạng", "meaning": "Hiểu ra / thấy thuyết phục.", "example": "この説明を加えれば、読者にも腑に落ちやすくなる。",
+        "literal_en": "to fall into the viscera (fu ni ochiru)",
+        "meaning_en": "To grasp / find something convincing.",
+        "example_en": "If this explanation is added, it will be easier for readers to find it convincing too." }
     ],
     "cultural_notes_vi": "Với giáo sư Nhật, disagreement cần đi qua hierarchy. Cụm ご指摘の通りですが nghe vừa respectful vừa giữ quyền lập luận. Nhưng dùng quá nhiều cũng thành máy móc. Hãy thêm diagnosis cụ thể sau đó.",
+    "cultural_notes_en": "With a Japanese professor, disagreement must pass through the hierarchy. The phrase ご指摘の通りですが sounds both respectful and preserves your right to argue. But overusing it also becomes mechanical. Add a concrete diagnosis afterward.",
     "tip_advice_vi": "Template email sau meeting: 本日はご指摘を賜り、誠にありがとうございました。ご指摘の通り、第二章の論点整理が不十分でございました。修正案として、〜を追加いたします.",
+    "tip_advice_en": "Post-meeting email template: 本日はご指摘を賜り、誠にありがとうございました。ご指摘の通り、第二章の論点整理が不十分でございました。修正案として、〜を追加いたします.",
     "exercises": [
       { "type": "fill-blank", "question": "先生の___を踏まえ、第三章に補足説明を加える修正案を考えております。", "answer": "ご教示" },
       { "type": "translation", "vietnamese": "Nếu em hiểu sai ý thầy/cô thì xin thứ lỗi, nhưng có phải điểm chính là tính hợp lý của đối tượng so sánh không ạ?", "japanese": "ご趣旨を誤解しておりましたら恐縮ですが、論点は比較対象の妥当性にあるという理解でよろしいでしょうか。" }
@@ -3288,13 +3758,27 @@ export const lessons: JapaneseLesson[] = [
       "Ask senpai for feedback: use 見ていただけませんか, not ultra-heavy keigo.",
       "Talk to peer about weak chapter: switch to plain style but keep academic vocabulary."
     ],
+    "roleplay_prompts_en": [
+      "Ask a professor to review a draft: use ご確認いただけますでしょうか.",
+      "Ask a senpai for feedback: use 見ていただけませんか, not ultra-heavy keigo.",
+      "Talk to a peer about a weak chapter: switch to plain style but keep academic vocabulary."
+    ],
     "register_notes": "Keigo gradient is relational plus situational. 先生 gets honorific request: ご確認いただけますでしょうか. 先輩 gets polite but lighter: 見ていただけませんか. 同期 can take plain style: どう思う? But public seminar raises formality for everyone. Over-keigo with peers creates distance; under-keigo with professor creates risk.",
+    "register_notes_en": "Register: the keigo gradient is relational plus situational — 先生 gets the honorific request ご確認いただけますでしょうか, 先輩 the politer-but-lighter 見ていただけませんか, 同期 the plain どう思う?, but a public seminar raises formality for everyone; over-keigo with peers creates distance, under-keigo with a professor creates risk.",
     "idiom_glosses": [
-      { "idiom": "距離を測る (きょりをはかる)", "literal": "Đo khoảng cách", "meaning": "Ước lượng mức gần xa xã hội trước khi nói.", "example": "研究室では、相手との距離を測りながら敬語を調整する必要がある。" },
-      { "idiom": "角が立つ (かどがたつ)", "literal": "Góc cạnh dựng lên", "meaning": "Làm lời nói nghe sắc, gây mất lòng.", "example": "普通体のまま依頼すると、相手によっては角が立つ。" }
+      { "idiom": "距離を測る (きょりをはかる)", "literal": "Đo khoảng cách", "meaning": "Ước lượng mức gần xa xã hội trước khi nói.", "example": "研究室では、相手との距離を測りながら敬語を調整する必要がある。",
+        "literal_en": "to measure the distance (kyori o hakaru)",
+        "meaning_en": "To gauge the degree of social closeness before speaking.",
+        "example_en": "In the lab, you have to adjust the keigo while measuring the distance to the other person." },
+      { "idiom": "角が立つ (かどがたつ)", "literal": "Góc cạnh dựng lên", "meaning": "Làm lời nói nghe sắc, gây mất lòng.", "example": "普通体のまま依頼すると、相手によっては角が立つ。",
+        "literal_en": "a corner stands up (kado ga tatsu)",
+        "meaning_en": "To make one's words sound sharp and give offense.",
+        "example_en": "Making a request in plain style can, with some people, rub them the wrong way." }
     ],
     "cultural_notes_vi": "Phòng lab Nhật là nơi hierarchy và thân mật cùng tồn tại. Senpai có thể uống cà phê với bạn nhưng vẫn là người đi trước. Với giáo sư, email thường formal hơn nói chuyện hành lang. Với đồng khóa, casual được nhưng khi đang trong seminar, public face làm register tăng.",
+    "cultural_notes_en": "A Japanese lab is a place where hierarchy and intimacy coexist. A senpai may have coffee with you yet is still the one who came before. With a professor, email is usually more formal than hallway conversation. With same-year peers, casual is fine, but in a seminar the public face raises the register.",
     "tip_advice_vi": "Nếu không chắc, dùng one-step safer keigo. Nhưng đừng dùng ultra-keigo với đồng khóa trong chat riêng; nghe xa cách. Rule: person + place + medium. Email formal hơn chat. Public seminar formal hơn hallway.",
+    "tip_advice_en": "If unsure, use one-step-safer keigo. But do not use ultra-keigo with same-year peers in a private chat; it sounds distant. Rule: person + place + medium. Email is more formal than chat. A public seminar is more formal than the hallway.",
     "exercises": [
       { "type": "matching", "instruction": "Match relationship to request phrase.", "pairs": [
         { "japanese": "先生", "english": "ご確認いただけますでしょうか" },
@@ -3346,13 +3830,27 @@ export const lessons: JapaneseLesson[] = [
       "Explain 波及効果 without over-claiming: use 示唆を与える, 期待される.",
       "Ask senpai to review KAKENHI draft with appropriate semi-formal keigo."
     ],
+    "roleplay_prompts_en": [
+      "Write one sentence for 学術的意義 and one for 社会的意義. Avoid the vague 重要です.",
+      "Explain 波及効果 without over-claiming: use 示唆を与える, 期待される.",
+      "Ask a senpai to review a KAKENHI draft with appropriately semi-formal keigo."
+    ],
     "register_notes": "科研費 narrative is persuasive but not salesy. The core is objective -> gap -> originality -> significance -> feasibility. 学術的意義 must name the scholarly debate; 社会的意義 must name concrete publics or practices. '重要である' alone is weak. Use '〜に示唆を与える', '〜を再検討する契機となる', '〜への波及効果が期待される'.",
+    "register_notes_en": "Register: persuasive but not salesy — objective → gap → originality → significance → feasibility; 学術的意義 must name the scholarly debate and 社会的意義 concrete publics or practices; a bare 重要である is weak — use 〜に示唆を与える / 〜を再検討する契機となる / 〜への波及効果が期待される.",
     "idiom_glosses": [
-      { "idiom": "地に足がつく (ちにあしがつく)", "literal": "Chân chạm đất", "meaning": "Thực tế, không bay bổng.", "example": "科研費では、地に足のついた研究計画が求められる。" },
-      { "idiom": "風呂敷を広げる (ふろしきをひろげる)", "literal": "Trải rộng khăn gói", "meaning": "Nói quá rộng, ôm đồm.", "example": "意義を強調するあまり、風呂敷を広げすぎないよう注意する。" }
+      { "idiom": "地に足がつく (ちにあしがつく)", "literal": "Chân chạm đất", "meaning": "Thực tế, không bay bổng.", "example": "科研費では、地に足のついた研究計画が求められる。",
+        "literal_en": "feet on the ground (chi ni ashi ga tsuku)",
+        "meaning_en": "Realistic, not up in the air.",
+        "example_en": "For KAKENHI, a research plan with its feet on the ground is required." },
+      { "idiom": "風呂敷を広げる (ふろしきをひろげる)", "literal": "Trải rộng khăn gói", "meaning": "Nói quá rộng, ôm đồm.", "example": "意義を強調するあまり、風呂敷を広げすぎないよう注意する。",
+        "literal_en": "to spread out the wrapping cloth (furoshiki o hirogeru)",
+        "meaning_en": "To overstate the scope and take on too much.",
+        "example_en": "In emphasizing significance, take care not to spread the wrapping cloth too wide." }
     ],
     "cultural_notes_vi": "科研費 không chỉ là money; nó là genre học thuật riêng. Văn phong cần thuyết phục hội đồng rằng project mới, cần thiết, làm được, và có ảnh hưởng. Nói quá to thường phản tác dụng. Reviewer thích ambition có kiểm soát.",
+    "cultural_notes_en": "科研費 (KAKENHI) is not just money; it is its own academic genre. The prose must persuade the committee that the project is new, necessary, doable, and impactful. Overstating usually backfires — reviewers like controlled ambition.",
     "tip_advice_vi": "Viết KAKENHI: dùng nouns mạnh: 目的, 独創性, 意義, 波及効果, 実現可能性. Mỗi phần trả lời một câu hỏi. Nếu một câu không nói rõ 'ai benefit' hoặc 'debate nào tiến lên', câu đó còn yếu.",
+    "tip_advice_en": "Writing KAKENHI: use strong nouns — 目的, 独創性, 意義, 波及効果, 実現可能性. Each section answers one question. If a sentence doesn't clearly say 'who benefits' or 'which debate it advances,' that sentence is still weak.",
     "exercises": [
       { "type": "fill-blank", "question": "本研究の___意義は、制度史と生活史の接点から移民言語教育を捉え直す点にある。", "answer": "学術的" },
       { "type": "translation", "vietnamese": "Ý nghĩa xã hội là nghiên cứu này gợi ý cho việc thiết kế lại hỗ trợ học tập trong chính sách đa văn hóa cộng sinh.", "japanese": "社会的意義としては、多文化共生政策における学習支援の再設計に示唆を与えることが挙げられる。" }
@@ -3400,13 +3898,27 @@ export const lessons: JapaneseLesson[] = [
       "Show feasibility with 予備調査 and 協力体制.",
       "Add risk management without sounding pessimistic."
     ],
+    "roleplay_prompts_en": [
+      "Explain novelty as a method combination, not merely a new topic.",
+      "Show feasibility with 予備調査 and a 協力体制.",
+      "Add risk management without sounding pessimistic."
+    ],
     "register_notes": "科研費 feasibility prose should be concrete: who, what data, when, what backup. Novelty prose should avoid '世界初' unless truly defensible. Better: '〜を統合する点に新規性がある'. 年次計画 should sound executable, not wishful. Risk management is a strength in Japanese grant writing.",
+    "register_notes_en": "Register: feasibility prose should be concrete — who, what data, when, what backup; novelty prose should avoid 世界初 unless truly defensible, preferring 〜を統合する点に新規性がある; the 年次計画 should sound executable not wishful, and risk management is a strength in Japanese grant writing.",
     "idiom_glosses": [
-      { "idiom": "絵に描いた餅 (えにかいたもち)", "literal": "Bánh mochi vẽ trên tranh", "meaning": "Kế hoạch đẹp nhưng không ăn được, thiếu khả thi.", "example": "実現可能性を示さなければ、計画は絵に描いた餅と見なされる。" },
-      { "idiom": "布石を打つ (ふせきをうつ)", "literal": "Đặt quân cờ chuẩn bị", "meaning": "Chuẩn bị bước nền cho kết quả sau.", "example": "予備調査は本研究の実施に向けた重要な布石である。" }
+      { "idiom": "絵に描いた餅 (えにかいたもち)", "literal": "Bánh mochi vẽ trên tranh", "meaning": "Kế hoạch đẹp nhưng không ăn được, thiếu khả thi.", "example": "実現可能性を示さなければ、計画は絵に描いた餅と見なされる。",
+        "literal_en": "a rice cake painted in a picture (e ni kaita mochi)",
+        "meaning_en": "A fine plan that you cannot eat — lacking feasibility.",
+        "example_en": "Without showing feasibility, the plan is regarded as a pie in the sky." },
+      { "idiom": "布石を打つ (ふせきをうつ)", "literal": "Đặt quân cờ chuẩn bị", "meaning": "Chuẩn bị bước nền cho kết quả sau.", "example": "予備調査は本研究の実施に向けた重要な布石である。",
+        "literal_en": "to lay a preparatory stone (fuseki o utsu)",
+        "meaning_en": "To lay the groundwork for a later result.",
+        "example_en": "The preliminary survey is an important groundwork step toward carrying out the main study." }
     ],
     "cultural_notes_vi": "Reviewer 科研費 đọc rất nhanh. Câu về feasibility phải cụ thể đến mức họ tin bạn làm được trong timeline. Người học hay viết ý tưởng hay nhưng thiếu plan B. Nhật grant prose đánh giá cao risk awareness.",
+    "cultural_notes_en": "KAKENHI reviewers read very fast. The feasibility sentences must be concrete enough that they believe you can do it within the timeline. Learners often write a nice idea but lack a plan B. Japanese grant prose values risk awareness highly.",
     "tip_advice_vi": "Check mỗi KAKENHI paragraph bằng câu hỏi: reviewer có thấy data ở đâu, ai giúp, năm nào làm, nếu fail thì sao không? Nếu không, thêm cụ thể.",
+    "tip_advice_en": "Check each KAKENHI paragraph with the questions: can the reviewer see where the data is, who helps, what year it is done, and what happens if it fails? If not, add specifics.",
     "exercises": [
       { "type": "fill-blank", "question": "本研究の実現可能性は、___調査で得られた資料群によって担保される。", "answer": "予備" },
       { "type": "translation", "vietnamese": "Tính mới không nằm ở việc chỉ đổi đối tượng, mà ở việc tích hợp hai phương pháp.", "japanese": "新規性は、単に対象を変える点ではなく、二つの方法を統合する点にある。" }
@@ -3454,13 +3966,27 @@ export const lessons: JapaneseLesson[] = [
       "Reviewer asks impossible extra analysis. Decline as scope issue, not refusal.",
       "Turn disagreement into 対応方針の説明."
     ],
+    "roleplay_prompts_en": [
+      "Write a response to the reviewer: thank, state the change, give the page/paragraph location.",
+      "The reviewer asks for an impossible extra analysis. Decline it as a scope issue, not a refusal.",
+      "Turn disagreement into 対応方針の説明 (an explanation of your handling policy)."
+    ],
     "register_notes": "査読回答書 is polite, precise, and inspectable. Each response should include: gratitude, action, location. If not complying, explain scope/space/method reason respectfully. Avoid '対応できません'. Prefer '本稿の射程を超えるため、今後の課題として明記いたしました'. Reviewers appreciate page numbers.",
+    "register_notes_en": "Register: 査読回答書 is polite, precise, and inspectable — each response carries gratitude + action + location (page numbers); when not complying, explain a scope/space/method reason respectfully, avoid 対応できません, prefer 本稿の射程を超えるため、今後の課題として明記いたしました.",
     "idiom_glosses": [
-      { "idiom": "言葉を尽くす (ことばをつくす)", "literal": "Dùng hết lời", "meaning": "Giải thích cẩn thận, đầy đủ.", "example": "査読回答では、誤解を避けるため言葉を尽くす必要がある。" },
-      { "idiom": "角を丸める (かどをまるめる)", "literal": "Làm tròn góc cạnh", "meaning": "Làm lời phản hồi mềm hơn.", "example": "反論の角を丸め、対応方針として提示する。" }
+      { "idiom": "言葉を尽くす (ことばをつくす)", "literal": "Dùng hết lời", "meaning": "Giải thích cẩn thận, đầy đủ.", "example": "査読回答では、誤解を避けるため言葉を尽くす必要がある。",
+        "literal_en": "to exhaust one's words (kotoba o tsukusu)",
+        "meaning_en": "To explain carefully and fully.",
+        "example_en": "In a review response, one must explain fully to avoid misunderstanding." },
+      { "idiom": "角を丸める (かどをまるめる)", "literal": "Làm tròn góc cạnh", "meaning": "Làm lời phản hồi mềm hơn.", "example": "反論の角を丸め、対応方針として提示する。",
+        "literal_en": "to round the corners (kado o marumeru)",
+        "meaning_en": "To make a response softer.",
+        "example_en": "Round off the sharp edges of the rebuttal and present it as a handling policy." }
     ],
     "cultural_notes_vi": "Trả lời phản biện ở Nhật rất chú trọng kính trọng reviewer. Ngay cả khi reviewer hiểu sai, response không được viết như 'reviewer wrong'. Hãy viết: 説明が不十分であったため, revised to clarify. Bạn nhận lỗi về clarity, không tự hủy argument.",
+    "cultural_notes_en": "Responding to peer review in Japan places great weight on respect for the reviewer. Even when the reviewer has misunderstood, the response must not be written as 'the reviewer is wrong.' Write instead: 説明が不十分であったため (because the explanation was insufficient), revised to clarify. You take the blame for clarity, not for destroying your argument.",
     "tip_advice_vi": "Response matrix: Comment / Response / Revision location. Mỗi response có page number. Nếu không sửa, phải có reason học thuật, không phải preference.",
+    "tip_advice_en": "Response matrix: Comment / Response / Revision location. Each response has a page number. If you don't revise, there must be a scholarly reason, not a preference.",
     "exercises": [
       { "type": "fill-blank", "question": "ご指摘を踏まえ、三ページ第二段落に先行研究との関係を___いたしました。", "answer": "補足" },
       { "type": "translation", "vietnamese": "Vì vượt quá phạm vi bài này, chúng tôi đã ghi rõ là vấn đề nghiên cứu sau.", "japanese": "本稿の射程を超えるため、今後の課題として明記いたしました。" }
@@ -3508,13 +4034,27 @@ export const lessons: JapaneseLesson[] = [
       "Bridge another scholar's point to your field: '私の分野でいう〜との接点'.",
       "Warn against easy transfer of concepts using 移植可能性 and 慎重に見極める."
     ],
+    "roleplay_prompts_en": [
+      "Moderate an interdisciplinary roundtable. Start with a shared question, not your own field.",
+      "Bridge another scholar's point to your field: '私の分野でいう〜との接点'.",
+      "Warn against the easy transfer of concepts using 移植可能性 and 慎重に見極める."
+    ],
     "register_notes": "Intellectual roundtable register is less rigid than dissertation defense but more abstract. The key move is bridge-building: 接点, 対話可能性, 領域横断. Avoid making other fields sound naive. Use '私の分野でいう' to translate concepts humbly. Good moderators summarize at the level of questions, not opinions.",
+    "register_notes_en": "Register: less rigid than a dissertation defense but more abstract — the key move is bridge-building (接点, 対話可能性, 領域横断), never make other fields sound naive, use 私の分野でいう to translate concepts humbly, and a good moderator summarizes at the level of questions, not opinions.",
     "idiom_glosses": [
-      { "idiom": "橋を架ける (はしをかける)", "literal": "Bắc cầu", "meaning": "Tạo kết nối giữa lĩnh vực/khái niệm.", "example": "本座談会は、教育学と言語学のあいだに橋を架ける試みである。" },
-      { "idiom": "交通整理 (こうつうせいり)", "literal": "Điều tiết giao thông", "meaning": "Sắp xếp các luận điểm để cuộc thảo luận không rối.", "example": "司会者には、複数の論点を交通整理する役割が求められる。" }
+      { "idiom": "橋を架ける (はしをかける)", "literal": "Bắc cầu", "meaning": "Tạo kết nối giữa lĩnh vực/khái niệm.", "example": "本座談会は、教育学と言語学のあいだに橋を架ける試みである。",
+        "literal_en": "to build a bridge (hashi o kakeru)",
+        "meaning_en": "To create a connection between fields or concepts.",
+        "example_en": "This roundtable is an attempt to build a bridge between education studies and linguistics." },
+      { "idiom": "交通整理 (こうつうせいり)", "literal": "Điều tiết giao thông", "meaning": "Sắp xếp các luận điểm để cuộc thảo luận không rối.", "example": "司会者には、複数の論点を交通整理する役割が求められる。",
+        "literal_en": "traffic control (kōtsū seiri)",
+        "meaning_en": "To arrange the various points so the discussion does not get tangled.",
+        "example_en": "The moderator is expected to direct traffic among multiple points of contention." }
     ],
     "cultural_notes_vi": "Tọa đàm học thuật Nhật thường coi trọng 'dịch' giữa lĩnh vực. Một scholar giỏi không chỉ nói field mình, mà giúp người khác hiểu concept của mình có thể và không thể di chuyển sang field khác. Moderator tốt giúp tạo 接点 chứ không ép consensus.",
+    "cultural_notes_en": "A Japanese academic roundtable usually values 'translation' between fields. A good scholar does not only speak about their own field but helps others understand which of their concepts can and cannot move into another field. A good moderator helps create 接点 (points of contact) rather than forcing consensus.",
     "tip_advice_vi": "Roundtable phrase set: 先生のお話を伺いながら..., 私の分野でいう..., 接点を感じました, 一度論点を整理します. Đây là intellectual humility + active synthesis.",
+    "tip_advice_en": "Roundtable phrase set: 先生のお話を伺いながら..., 私の分野でいう..., 接点を感じました, 一度論点を整理します. This is intellectual humility + active synthesis.",
     "exercises": [
       { "type": "fill-blank", "question": "領域横断的な議論では、用語の___可能性そのものが一つの論点となります。", "answer": "翻訳" },
       { "type": "translation", "vietnamese": "Khi kết nối tri thức từ các lĩnh vực khác nhau, cần xem xét cẩn thận khả năng di chuyển của khái niệm.", "japanese": "異なる領域の知見を接続する際には、概念の移植可能性を慎重に見極める必要があります。" }
@@ -3547,7 +4087,9 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese press-conference openings are procedural and restrained. 丁寧語 is the base register; excessive emotion before facts are established can sound performative.",
     "cultural_notes_vi": "Mở họp báo tiếng Nhật cần trật tự: cảm ơn, phạm vi thông tin đã xác nhận, thời điểm Q&A. Không mở bằng khẩu hiệu.",
-    "tip_advice_vi": "Công thức: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答."
+    "cultural_notes_en": "Opening a Japanese press conference needs order: thanks, the scope of already-confirmed information, the timing of Q&A. Do not open with a slogan.",
+    "tip_advice_vi": "Công thức: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答.",
+    "tip_advice_en": "Formula: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答."
   },
   {
     "id": 123,
@@ -3572,7 +4114,9 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese press releases prefer clean fact order over promotional intensity. If using strong claims, attach measurable evidence.",
     "cultural_notes_vi": "Thông cáo báo chí tiếng Nhật không nên giống quảng cáo. Từ mạnh phải có căn cứ.",
-    "tip_advice_vi": "Lead bằng 5W1H, sau đó mới quote của lãnh đạo."
+    "cultural_notes_en": "A Japanese press release should not look like an advertisement. Strong words must have a basis.",
+    "tip_advice_vi": "Lead bằng 5W1H, sau đó mới quote của lãnh đạo.",
+    "tip_advice_en": "Lead with the 5W1H, and only then the executive's quote."
   },
   {
     "id": 124,
@@ -3597,7 +4141,9 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese op-ed style is measured: state a public issue, show awareness of counterarguments, then offer a clear but not theatrical position.",
     "cultural_notes_vi": "Op-ed Nhật hay có giọng cân bằng, tránh tuyên bố quá nhanh. Truyền thống 寄稿 coi trọng trách nhiệm với độc giả.",
-    "tip_advice_vi": "Mở bài bằng vấn đề công: なぜ今この論点なのか."
+    "cultural_notes_en": "A Japanese op-ed tends to take a balanced tone and avoids declaring things too quickly; the 寄稿 (contributed-piece) tradition prizes responsibility toward the reader.",
+    "tip_advice_vi": "Mở bài bằng vấn đề công: なぜ今この論点なのか.",
+    "tip_advice_en": "Open the piece with a public issue: なぜ今この論点なのか (why this point, and why now)."
   },
   {
     "id": 125,
@@ -3622,6 +4168,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Podcast register can be less formal but should remain 丁寧. Use なるほど、ただ... to disagree without sounding combative.",
     "cultural_notes_vi": "Podcast tiếng Nhật không quá cứng, nhưng khách mời đại diện tổ chức vẫn phải giữ 丁寧語 và ranh giới sự thật.",
+    "cultural_notes_en": "A Japanese podcast is not overly stiff, but a guest who represents an organization must still keep 丁寧語 and the boundary of fact.",
     "tip_advice_vi": "Soft correction pattern: なるほど、ただ、その表現だと..."
   },
   {
@@ -3647,6 +4194,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Live TV Japanese needs compact, quotable 丁寧語. Do not fight the anchor; acknowledge, narrow, answer.",
     "cultural_notes_vi": "Trên TV trực tiếp, câu Nhật phải ngắn hơn văn họp báo. Dùng ご指摘の通りですが... để giữ phép lịch sự khi thu hẹp câu hỏi.",
+    "cultural_notes_en": "On live TV, Japanese sentences must be shorter than press-conference prose; use ご指摘の通りですが... to stay polite while narrowing the question.",
     "tip_advice_vi": "Three-beat answer: acknowledge → confirmed fact → next action."
   },
   {
@@ -3676,6 +4224,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese institutional apology press conferences form a distinct genre: deep apology, bowing register in language, then concrete accountability. 謙譲語 is expected, but vague remorse without action sounds hollow.",
     "cultural_notes_vi": "Bài xin lỗi tổ chức kiểu Nhật không chỉ là 'xin lỗi'. Nó phải có cấu trúc: お詫び → 責任 → 補償/対応 → 再発防止策.",
+    "cultural_notes_en": "A Japanese institutional apology is not just 'sorry.' It must have a structure: お詫び → 責任 → 補償/対応 → 再発防止策 (apology → responsibility → compensation/response → recurrence-prevention measures).",
     "tip_advice_vi": "Use お詫び申し上げます for apology, but immediately follow with what will change."
   },
   {
@@ -3701,6 +4250,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Japanese media relations require explicit attribution rules. Say what is on record, background, or off record before the sensitive information.",
     "cultural_notes_vi": "Đừng mặc định mọi người hiểu オフレコ giống nhau. Nói rõ 引用可/引用不可 trước.",
+    "cultural_notes_en": "Don't assume everyone understands オフレコ (off the record) the same way. State 引用可/引用不可 (quotable / not quotable) clearly up front.",
     "tip_advice_vi": "Ground rules first: ここまでは引用可, ここからは背景説明."
   },
   {
@@ -3726,6 +4276,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "For hostile Q&A, Japanese indirect disagreement protects face while correcting the frame. Use ご指摘の通りですが... / ただ... rather than direct confrontation.",
     "cultural_notes_vi": "Khi phóng viên gay gắt, đừng nói thẳng '違います' đầu câu. Acknowledge trước, sau đó chỉnh tiền đề.",
+    "cultural_notes_en": "When a journalist is aggressive, don't lead with a blunt '違います'. Acknowledge first, then correct the premise.",
     "tip_advice_vi": "Pattern: ご指摘の通り...重く受け止めます。ただ、その前提は..."
   },
   {
@@ -3751,6 +4302,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "A Japanese spokesperson must be predictable. Weekly briefings use stable wording: updates, pending confirmations, written follow-up.",
     "cultural_notes_vi": "報道官 không phải trả lời hết mọi thứ. Điều quan trọng là giữ nhịp cập nhật rõ ràng và nhất quán.",
+    "cultural_notes_en": "A 報道官 (spokesperson) does not have to answer everything. What matters is keeping a clear, consistent update rhythm.",
     "tip_advice_vi": "Useful phrase: 確認後に書面でお知らせします."
   },
   {
@@ -3776,6 +4328,7 @@ export const lessons: JapaneseLesson[] = [
     ],
     "register_notes": "Official Japanese social statements should not sound like customer-service chat. Keep it short, formal enough, and screenshot-safe.",
     "cultural_notes_vi": "SNS tiếng Nhật có thể ngắn, nhưng tuyên bố chính thức vẫn phải giữ phẩm chất tổ chức.",
+    "cultural_notes_en": "Japanese SNS can be short, but an official statement must still keep the organization's dignity.",
     "tip_advice_vi": "Three-line SNS formula: お詫び → 現在の対応 → 続報の場所."
   }
 ];
