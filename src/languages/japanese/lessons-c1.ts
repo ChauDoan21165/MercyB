@@ -169,35 +169,55 @@ export const lessons: JapaneseLesson[] = [
       "Giáo sư hỏi 'điểm khác biệt với nghiên cứu trước là gì?'. Trả lời bằng 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior, then differentiate). KHÔNG dismiss tiền bối — Nhật academic norm là 敬意 (respect) cho prior work.",
       "Giáo sư cảnh báo về over-generalization. Đáp lại bằng 過度の一般化は慎みたく存じます hoặc 結論を急がず、暫定的な位置づけにとどめます. Đây là academic humility — vẫn nghe confident nhưng có hedge."
     ],
+    "roleplay_prompts_en": [
+      "You present a hypothesis at an interim report. Open with 本研究は…という仮説を提示するものである. Do NOT use 思います or mix です/ます in the argument section — keep the である register. Close with a sentence positioning the hypothesis as 暫定的 (tentative).",
+      "The professor asks 'what is the difference from prior research?'. Answer with 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior work, then differentiate). Do NOT dismiss predecessors — the Japanese academic norm is 敬意 (respect) for prior work.",
+      "The professor warns about over-generalization. Respond with 過度の一般化は慎みたく存じます or 結論を急がず、暫定的な位置づけにとどめます. This is academic humility — still confident-sounding but hedged."
+    ],
     "register_notes": "C1 academic Japanese yêu cầu shift hoàn toàn sang である-style trong luận văn / phát biểu chính thức; ます-style chỉ giữ trong dialogue Q&A. Năm pattern cốt lõi: (1) 提示動詞 — '〜を提示する/〜を提唱する/〜を主張する' thay cho 'I think'. KHÔNG dùng 思います ở luận điểm chính. (2) NOMINALIZATION — biến động từ thành 〜こと/〜もの: 仮説を提示するものである thay vì 仮説を提示する. Suffix 〜性 (妥当性, 蓋然性) và 〜化 (一般化, 体系化) là dấu hiệu C1 prose. (3) HEDGING TIERS — strong: 〜と考えられる; medium: 〜可能性が示唆される; soft: 〜と言えなくもない. Chọn theo strength of evidence. (4) DISCOURSE MARKERS — しかしながら (however, formal), 換言すれば (in other words), さらに言えば (moreover), とはいえ (that said). Tránh でも, だから ở văn viết. (5) HUMBLE-CLAIM — academic Japanese frame claim qua 〜に他ならない (nothing other than) hoặc 〜と位置づけられる (is positioned as) thay vì assertive 'is X'. Cẩn thận: 牽強付会 — đừng đẩy claim quá xa data. Reviewer Nhật rất nhạy với over-claim; hedging không phải yếu mà là dấu hiệu trưởng thành học thuật.",
+    "register_notes_en": "C1 academic Japanese requires a full shift to である-style in theses / formal presentations; ます-style is kept only in Q&A dialogue. Five core patterns: (1) PRESENTATION VERBS — '〜を提示する/〜を提唱する/〜を主張する' instead of 'I think'; do NOT use 思います for the main claim. (2) NOMINALIZATION — turn verbs into 〜こと/〜もの: 仮説を提示するものである rather than 仮説を提示する; the suffixes 〜性 (妥当性, 蓋然性) and 〜化 (一般化, 体系化) are markers of C1 prose. (3) HEDGING TIERS — strong: 〜と考えられる; medium: 〜可能性が示唆される; soft: 〜と言えなくもない; choose by strength of evidence. (4) DISCOURSE MARKERS — しかしながら (however, formal), 換言すれば (in other words), さらに言えば (moreover), とはいえ (that said); avoid でも, だから in writing. (5) HUMBLE-CLAIM — academic Japanese frames a claim via 〜に他ならない (nothing other than) or 〜と位置づけられる (is positioned as) rather than an assertive 'is X.' Caution: 牽強付会 — don't push a claim beyond the data; Japanese reviewers are very sensitive to over-claim, and hedging is not weakness but a sign of scholarly maturity.",
     "idiom_glosses": [
       {
         "idiom": "一石を投じる (いっせきをとうじる)",
         "literal": "Ném một viên đá",
         "meaning": "[書き言葉] Đặt vấn đề mới gây thảo luận trong giới — phù hợp khi giả thuyết của bạn challenge consensus.",
-        "example": "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。"
+        "example": "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。",
+        "literal_en": "To cast a single stone (into water)",
+        "meaning_en": "[written register] To raise a new issue that stirs debate in the field — apt when your hypothesis challenges the consensus.",
+        "example_en": "This study is positioned as an attempt to cast a stone at the conventional received view."
       },
       {
         "idiom": "牽強付会 (けんきょうふかい)",
         "literal": "Cố ép kéo, gò gắn",
         "meaning": "[硬い・書き言葉] Diễn giải gượng ép, đẩy data quá xa — điều cần TRÁNH khi trình bày giả thuyết.",
-        "example": "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。"
+        "example": "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。",
+        "literal_en": "To forcibly drag and stitch together",
+        "meaning_en": "[stiff / written register] A strained interpretation that pushes the data too far — the thing to AVOID when presenting a hypothesis.",
+        "example_en": "This hypothesis requires careful verification, without interpreting the data in a forced, far-fetched way."
       },
       {
         "idiom": "試金石 (しきんせき)",
         "literal": "Đá thử vàng",
         "meaning": "[書き言葉] Phép thử quyết định — dùng khi nói thí nghiệm/data là bài kiểm tra cho giả thuyết.",
-        "example": "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。"
+        "example": "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。",
+        "literal_en": "Touchstone (a stone for testing gold)",
+        "meaning_en": "[written register] A decisive test — used when calling an experiment/data the test of a hypothesis.",
+        "example_en": "The results of this experiment serve as the touchstone for measuring the validity of the proposed hypothesis."
       },
       {
         "idiom": "我田引水 (がでんいんすい)",
         "literal": "Dẫn nước về ruộng nhà mình",
         "meaning": "[硬い・書き言葉] Diễn giải có lợi cho mình một cách thiên vị — phải tránh trong academic writing.",
-        "example": "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。"
+        "example": "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。",
+        "literal_en": "Drawing water into one's own paddy field",
+        "meaning_en": "[stiff / written register] A biased interpretation slanted in one's own favour — to be avoided in academic writing.",
+        "example_en": "So that the interpretation does not fall into self-serving bias, competing hypotheses must also be examined alongside."
       }
     ],
     "cultural_notes_vi": "Trình bày giả thuyết trong giới học thuật Nhật khác phương Tây ở 4 điểm. (1) 控えめさ (khiêm tốn) cốt lõi — không claim 'chứng minh', chỉ 'gợi ý / cho thấy khả năng'. Câu kết của paper Nhật thường hedged. (2) 先行研究への敬意 — ngay cả khi bạn challenge tiền bối, phải acknowledge họ trước, không bao giờ dismiss. Cụm 〜の知見を踏まえつつ (kế thừa hiểu biết của...) là lễ. (3) 結論の暫定性 — gọi giả thuyết là 暫定的 (tentative) là dấu hiệu trưởng thành học thuật, KHÔNG yếu kém. Reviewer Nhật bonus điểm cho honest hedging. (4) 私 → 本研究/本稿 — chuyển từ ngôi 1 sang 'bài viết này / nghiên cứu này' làm chủ ngữ. 'I argue' = 本稿は〜を主張するものである. Khác VN: ở VN giả thuyết thường viết với 'tôi cho rằng', ở Nhật học thuật, depersonalize hoàn toàn. Mẹo: nếu bí, cụm 〜と考えられる là an toàn nhất — đủ academic, đủ hedge.",
+    "cultural_notes_en": "Presenting a hypothesis in Japanese academia differs from the West on four points. (1) 控えめさ (hikaemesa, restraint) is core — don't claim 'proven,' only 'suggests / shows the possibility'; the closing sentence of a Japanese paper is usually hedged. (2) 先行研究への敬意 (respect for prior research) — even when you challenge a senior scholar, acknowledge them first and never dismiss them; the phrase 〜の知見を踏まえつつ ('building on the findings of…') is the courteous form. (3) 結論の暫定性 (the provisionality of conclusions) — calling a hypothesis 暫定的 (tentative) is a mark of scholarly maturity, NOT weakness; Japanese reviewers reward honest hedging. (4) 私 → 本研究/本稿 — shift the subject from the first person to 'this study / this paper': 'I argue' becomes 本稿は〜を主張するものである. Unlike the American norm, where a hypothesis is often stated with a confident 'I argue/contend,' Japanese academic writing depersonalizes completely. Tip: when stuck, 〜と考えられる ('it is considered that…') is the safest — academic enough, hedged enough.",
     "tip_advice_vi": "Khi bạn trình bày giả thuyết ở 学会 hoặc 中間報告, dùng cấu trúc 4 phần. (a) FRAMING — 1 câu nói 'bài này đề xuất giả thuyết X'. KHÔNG kể lể context dài. Nhật academic value đi thẳng. (b) PRIOR ART — 2-3 câu acknowledge tiền bối + chỉ ra gap. Cụm: 先行研究におきましては〜が報告されているが、〜については十分な検討がなされていない. (c) HYPOTHESIS — phát biểu rõ giả thuyết, dùng 〜という仮説を提示する. Avoid 'tôi nghĩ'. (d) HEDGE — kết bằng 1 câu giới hạn phạm vi: 本仮説は暫定的なものであり、検証を要する. Mẹo Q&A: nếu giáo sư hỏi 'có phản chứng không?', KHÔNG defensive. Cụm: ご指摘のとおり、〜という反例の可能性も否定できません. Acknowledge trước, sau đó nói cách bạn xử lý. Mẹo cuối: tránh 絶対 (absolute), 必ず (definitely), 完全に (completely) trong hypothesis statements — ngay lập tức bị reviewer flag là over-claim.",
+    "tip_advice_en": "When you present a hypothesis at a 学会 (conference) or 中間報告 (interim report), use a 4-part structure. (a) FRAMING — one sentence stating 'this paper proposes hypothesis X'; don't recount long context, Japanese academia values getting straight to it. (b) PRIOR ART — 2–3 sentences acknowledging predecessors + naming the gap: '先行研究におきましては〜が報告されているが、〜については十分な検討がなされていない.' (c) HYPOTHESIS — state it clearly with '〜という仮説を提示する'; avoid 'I think.' (d) HEDGE — close with one scope-limiting sentence: '本仮説は暫定的なものであり、検証を要する.' Q&A tip: if a professor asks 'is there a counterexample?', don't get defensive — 'ご指摘のとおり、〜という反例の可能性も否定できません' (acknowledge first, then describe how you handle it). Final tip: avoid 絶対 (absolute), 必ず (definitely), 完全に (completely) in hypothesis statements — a reviewer flags them as over-claim instantly.",
     "exercises": [
       {
         "type": "fill-blank",
