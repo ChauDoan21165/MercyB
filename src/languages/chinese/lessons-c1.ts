@@ -3867,7 +3867,8 @@ export const lessons: ChineseLesson[] = [
           "优配研究金 → yōupèi yánjiū jīn (GRF, viết sau là RGC)",
           "申请 → shēnqǐng (xin / nộp đơn)",
           "为期 → wéiqī (kéo dài / có thời hạn — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["计划书 → jìhuàshū ('proposal' — written register)","优配研究金 → yōupèi yánjiū jīn ('GRF', the General Research Fund)","申请 → shēnqǐng ('to apply for')","为期 → wéiqī ('for a period of' — written register)"]
       },
       {
         "chinese": "笔者所提议之研究, 将填补现有文献在越南语、缅甸语、寮语等东南亚低资源语言上之实证空白。",
@@ -3879,7 +3880,8 @@ export const lessons: ChineseLesson[] = [
           "填补...空白 → tiánbǔ...kòngbái (lấp khoảng trống)",
           "实证 → shízhèng (thực chứng)",
           "等 → děng (vân vân — đặt sau danh sách)"
-        ]
+        ],
+        "pronunciation_focus_en": ["所提议 → suǒ tíyì ('the proposed' — written register)","填补…空白 → tiánbǔ…kòngbái ('to fill the gap')","实证 → shízhèng ('empirical')","等 → děng ('etc.' — placed after a list)"]
       },
       {
         "chinese": "在方法论上, 研究将采用混合方法: 第一阶段为量化基准测试, 第二阶段则进行质性误差分析。",
@@ -3891,7 +3893,8 @@ export const lessons: ChineseLesson[] = [
           "采用 → cǎiyòng (áp dụng — 书面)",
           "量化 / 质性 → liànghuà / zhìxìng (định lượng / định tính)",
           "则 → zé (thì — 书面 connector)"
-        ]
+        ],
+        "pronunciation_focus_en": ["方法论 → fāngfǎlùn ('methodology')","采用 → cǎiyòng ('to adopt' — written register)","量化 / 质性 → liànghuà / zhìxìng ('quantitative / qualitative')","则 → zé ('then' — written-register connector)"]
       },
       {
         "chinese": "经费预算共计港币一百八十万元, 主要用于研究助理薪酬、计算资源采购及国际会议差旅费用。",
@@ -3903,7 +3906,8 @@ export const lessons: ChineseLesson[] = [
           "共计 → gòngjì (tổng cộng — 书面)",
           "薪酬 → xīnchóu (lương — 书面)",
           "差旅费用 → chāilǚ fèiyòng (chi phí công tác)"
-        ]
+        ],
+        "pronunciation_focus_en": ["经费预算 → jīngfèi yùsuàn ('budget')","共计 → gòngjì ('totaling' — written register)","薪酬 → xīnchóu ('salary/remuneration' — written register)","差旅费用 → chāilǚ fèiyòng ('travel expenses')"]
       },
       {
         "chinese": "若本计划获得批准, 笔者承诺在资助期满后六个月内提交最终报告, 并将研究成果以开源形式公开发布。",
@@ -3915,7 +3919,8 @@ export const lessons: ChineseLesson[] = [
           "批准 → pīzhǔn (phê duyệt)",
           "期满 → qī mǎn (hết hạn — 书面)",
           "开源 → kāiyuán (open source)"
-        ]
+        ],
+        "pronunciation_focus_en": ["若…承诺 → ruò…chéngnuò ('if … commit to' — written register)","批准 → pīzhǔn ('to approve')","期满 → qī mǎn ('on expiry' — written register)","开源 → kāiyuán ('open source')"]
       }
     ],
     "vocab": [
@@ -3965,7 +3970,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "言简意赅", "literal": "lời gọn ý đầy đủ (yán jiǎn yì gāi)", "meaning": "Diễn đạt ngắn gọn nhưng đầy đủ ý — tiêu chuẩn proposal-writing. Hàm ý: reviewer chỉ có 30 phút đọc proposal, viết dài lê thê = bị loại. (书面)", "example": "RGC计划书贵在言简意赅, 二十页之内务必涵盖问题、方法、风险三大要素。" }
     ],
     "cultural_notes_vi": "Văn hóa xin tài trợ nghiên cứu (research grant culture) ở các trung tâm học thuật Trung văn ngoài đại lục có khác biệt rõ với Việt Nam:\n\n(1) HK RGC ECS (Early Career Scheme): dành cho assistant professor năm 1-3 ở 8 đại học UGC HK (HKU, CUHK, HKUST, CityU, PolyU, BU, EdUHK, LU). Mức tài trợ HKD 1-1.5 triệu / 3 năm. Tỷ lệ thành công ~30%. Reviewer thường là 3 senior từ HK + 2 international (UK/US/Singapore).\n\n(2) RGC GRF (General Research Fund): mở cho assistant prof trở lên. Mức HKD 0.5-3 triệu / 3 năm. Trọng số: novelty 25%, methodology 25%, PI track record 25%, HK-relevance 25%. 'HK-relevance' không phải checkbox — reviewer thực sự chấm điểm phần này. Nghiên cứu thuần lý thuyết phải biện minh tại sao thực hiện AT HK.\n\n(3) Taiwan NSTC (National Science and Technology Council, đổi tên từ MOST 2022): tài trợ thấp hơn RGC (NTD 1-3 triệu / năm, ~USD 30-100K). Đặc thù: ưu tiên 'industry-academia' (產學合作) — đề xuất có doanh nghiệp Đài Loan đối tác có tỷ lệ thành công gấp đôi. Lĩnh vực ưu tiên: semiconductor, AI, biotech, green energy.\n\n(4) Singapore NRF AcRF (Academic Research Fund): 3 tiers — Tier 1 (small, S$0.1M / 3 năm, dạy do trường tự xét), Tier 2 (medium, S$0.5-1M / 3 năm, cấp quốc gia), Tier 3 (large, S$2-5M / 5 năm, cạnh tranh khốc liệt). NRF ưu tiên 'national strategic priority': AI, sustainability, biomedical, smart nation. Singapore khắt khe nhất về timeline — milestones theo quý.\n\n(5) US tenure-track (NSF/NIH): khác hoàn toàn DACH/UK. PI có thể là junior assistant professor (chưa tenure). NIH R01 = USD 250-500K / năm × 5 năm. NSF CAREER = USD 500-700K / 5 năm cho early-career. Reviewer là 2-3 panel members + ad-hoc reviewers — feedback chi tiết, có thể 5-10 trang. Văn hóa 'review with grace' — cả khi reject vẫn constructive.\n\n(6) Đặc thù nhà nghiên cứu Việt Nam ở các trung tâm trên: thường xuyên là Vietnamese ethnic studies (VNL, lịch sử, ngôn ngữ học) hoặc tech with VN dataset/application. Lợi thế: dataset & access vào VN community. Bất lợi: phải biện minh tại sao nghiên cứu VN đáng được fund tại HK/SG/Taiwan/US — câu trả lời: regional importance, diaspora communities, cross-border applications.\n\n(7) Cộng tác cross-jurisdiction: HK-Singapore co-PIs, Taiwan-Japan co-PIs phổ biến. Mỗi jurisdiction có quy tắc riêng về co-PI eligibility. Đọc kỹ guidelines trước khi viết cho đỡ lãng phí thời gian.\n\n(8) Tone của proposal viết tiếng Trung học thuật: khiêm tốn hơn proposal Anh-Mỹ. Câu 'we will revolutionize' (Anh) → '本研究将在...方面做出实证贡献' (Trung). Reviewer Trung văn (kể cả HK/Đài/SG đào tạo Anh-Mỹ) vẫn quen tone hedged. Quá assertive = bị xem là thiếu chín chắn.",
+    "cultural_notes_en": "Research-grant culture at Chinese-language academic centers outside the mainland differs sharply from a researcher's home-country norm:\n\n(1) HK RGC ECS (Early Career Scheme): for assistant professors in years 1-3 at the 8 UGC universities. ~HKD 1-1.5M / 3 years; success rate ~30%; reviewers are typically 3 senior HK + 2 international (UK/US/Singapore).\n\n(2) RGC GRF (General Research Fund): open from assistant professor up. HKD 0.5-3M / 3 years. Weighting: novelty 25%, methodology 25%, PI track record 25%, HK-relevance 25%. 'HK-relevance' is not a checkbox — it is genuinely scored, so purely theoretical work must justify why it is done AT HK.\n\n(3) Taiwan NSTC (renamed from MOST in 2022): lower funding than RGC (~USD 30-100K/yr). It prioritizes industry-academia collaboration (產學合作) — proposals with a Taiwanese corporate partner roughly double their success rate. Priority fields: semiconductor, AI, biotech, green energy.\n\n(4) Singapore NRF AcRF: three tiers — Tier 1 (small, school-decided), Tier 2 (medium, national), Tier 3 (large, fiercely competitive). NRF prioritizes national strategic priorities (AI, sustainability, biomedical, smart nation) and is the strictest on timeline — quarterly milestones.\n\n(5) US tenure-track (NSF/NIH): wholly different — a PI may be a junior (pre-tenure) assistant professor; NIH R01 ~USD 250-500K/yr × 5; NSF CAREER ~USD 500-700K/5 for early career. Reviews are detailed (5-10 pages) and 'review with grace' — constructive even on reject.\n\n(6) FOR A RESEARCHER FROM A REGIONAL/NON-WESTERN BACKGROUND: typical strengths are dataset and community access; the burden is justifying why region-specific research deserves funding at HK/SG/Taiwan/US — the answer is regional importance, diaspora communities, cross-border applications.\n\n(7) CROSS-JURISDICTION COLLABORATION: HK-Singapore co-PIs, Taiwan-Japan co-PIs are common; each jurisdiction has its own co-PI eligibility rules — read the guidelines before writing.\n\n(8) TONE of an academic-Chinese proposal is more modest than an Anglo one: 'we will revolutionize' → '本研究将在…方面做出实证贡献'. Reviewers trained in the Anglo system but writing in Chinese still expect the hedged tone; over-assertive reads as immature.",
     "tip_advice_vi": "(1) ĐỌC 5 PROPOSALS THẮNG GẦN ĐÂY trước khi viết: hỏi senior collaborator gửi cho. Cấu trúc, tone, mức độ specific — không thể đoán từ guidelines. (2) HK-RELEVANCE NẾU XIN RGC: 3 dòng đầu Section 1 phải nêu lý do nghiên cứu thực hiện AT HK. Không đợi tới Chapter 6. Reviewer đọc 10 phút đầu, nếu HK-relevance không rõ ngay = thấp điểm. (3) PI CV NHẤT QUÁN: nếu bạn list 'low-resource NLP expert', mọi paper-vocab-talk gần đây phải align với đó. Reviewer search Google Scholar ngay trong khi đọc. Inconsistent CV = reject. (4) BUDGET CỤ THỂ TỚI MỨC LINE-ITEM: 'computational resources $40K' không đủ. Phải '$30K AWS GPU spot, $8K cloud storage, $2K API calls'. RGC reviewer sẽ cắt 30% nếu không justify. (5) PLAN B BẮT BUỘC từ 2020 (RGC). Plan B không phải 'we'll write a paper anyway'. Plan B phải maintain scientific contribution — pivot to smaller scope, alternate method (như distillation thay vì full fine-tuning). 1-2 trang. (6) CO-INVESTIGATOR JURISDICTION CHECK: nếu có co-PI từ NTU Singapore, NTU phải sign letter of commitment. RGC checks. Skip này = unsalvageable. (7) AVOID '颠覆 / 革命 / 突破' về kết quả của chính mình. Dùng '系统性 / 实证 / 填补空白'. (8) Mỗi đoạn KẾT bằng 1 câu link tới câu hỏi nghiên cứu — reviewer scan theo paragraph endings. (9) APPENDIX B (cost breakdown), APPENDIX C (CV chi tiết), APPENDIX D (letters of support) bắt buộc cho RGC GRF. Thiếu một = administrative reject trước review thực. (10) NGÀY CUỐI nộp: nộp 48 giờ trước deadline. Hệ thống RGC e-system thường xuyên crash giờ chót.",
+    "tip_advice_en": "(1) READ 5 RECENTLY-WON PROPOSALS before writing — ask a senior collaborator. Structure, tone, specificity can't be inferred from guidelines. (2) HK-RELEVANCE (for RGC): the first 3 lines of Section 1 must state why the work is done AT HK — not in Chapter 6; reviewers decide in the first 10 minutes. (3) PI CV CONSISTENCY: if you list 'low-resource NLP expert', recent papers/talks must align — reviewers Google Scholar you while reading. (4) BUDGET TO THE LINE ITEM: 'computational resources $40K' isn't enough — '$30K AWS GPU spot, $8K cloud storage, $2K API calls'; RGC reviewers cut 30% if unjustified. (5) PLAN B IS MANDATORY (RGC, since 2020): not 'we'll write a paper anyway' — it must preserve scientific contribution (pivot scope, alternate method), 1-2 pages. (6) CO-INVESTIGATOR JURISDICTION CHECK: a co-PI's institution must sign a letter of commitment; RGC checks — skipping it is unsalvageable. (7) AVOID 颠覆 / 革命 / 突破 about your own results; use 系统性 / 实证 / 填补空白. (8) END EACH PARAGRAPH with a sentence linking to the research question — reviewers scan paragraph endings. (9) Appendices B (cost breakdown), C (detailed CV), D (letters of support) are mandatory for GRF; a missing one = administrative reject before real review. (10) SUBMIT 48 HOURS EARLY — the e-system often crashes at the deadline.",
     "exercises": [
       { "type": "fill-blank", "question": "本计划书旨在向香港研究资助局之优配研究金 ___ 为期三年之资助。", "answer": "申请" },
       { "type": "matching", "instruction": "Ghép cơ quan tài trợ với jurisdiction.", "pairs": [
@@ -3997,7 +4004,8 @@ export const lessons: ChineseLesson[] = [
           "拨冗 → bōrǒng (dành thời gian quý báu — 书面)",
           "审阅 → shěnyuè (đọc xét — 书面)",
           "简述 → jiǎnshù (trình bày ngắn — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["答辩委员会 → dábiàn wěiyuánhuì ('defense committee')","拨冗 → bōrǒng ('to spare valuable time' — written register)","审阅 → shěnyuè ('to review/read' — written register)","简述 → jiǎnshù ('to outline briefly' — written register)"]
       },
       {
         "chinese": "委员所提之质询, 在论文第五章已有部分讨论; 然而, 笔者必须坦承, 该章对此问题的处理仍嫌不足。",
@@ -4009,7 +4017,8 @@ export const lessons: ChineseLesson[] = [
           "坦承 → tǎnchéng (thừa nhận thẳng — 书面)",
           "仍嫌不足 → réng xián bùzú (vẫn còn chưa đủ — 书面 hedge)",
           "处理 → chǔlǐ (cách xử lý)"
-        ]
+        ],
+        "pronunciation_focus_en": ["所提之质询 → suǒ tí zhī zhìxún ('the query raised' — written register)","坦承 → tǎnchéng ('to candidly admit' — written register)","仍嫌不足 → réng xián bùzú ('still rather insufficient' — written-register hedge)","处理 → chǔlǐ ('treatment/handling')"]
       },
       {
         "chinese": "针对此一不足, 笔者建议在论文修订版中, 加入跨语言的对照实验, 以增强结论的外部效度。",
@@ -4021,7 +4030,8 @@ export const lessons: ChineseLesson[] = [
           "对照实验 → duìzhào shíyàn (thí nghiệm đối chứng)",
           "外部效度 → wàibù xiàodù (external validity)",
           "以...增强 → yǐ...zēngqiáng (nhằm tăng cường — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["针对 → zhēnduì ('to address' — written register)","对照实验 → duìzhào shíyàn ('control experiment')","外部效度 → wàibù xiàodù ('external validity')","以…增强 → yǐ…zēngqiáng ('so as to strengthen' — written register)"]
       },
       {
         "chinese": "笔者并不否认现有方法存在局限, 但若以此否定整篇论文之贡献, 则似乎稍嫌严苛。",
@@ -4033,7 +4043,8 @@ export const lessons: ChineseLesson[] = [
           "若...则 → ruò...zé (nếu...thì — 书面)",
           "似乎稍嫌 → sìhū shāo xián (có vẻ hơi — double hedge 书面)",
           "严苛 → yánkē (khắt khe)"
-        ]
+        ],
+        "pronunciation_focus_en": ["并不否认 → bìng bù fǒurèn ('does not deny' — written register)","若…则 → ruò…zé ('if…then' — written register)","似乎稍嫌 → sìhū shāo xián ('would seem somewhat' — a double hedge, written register)","严苛 → yánkē ('harsh/severe')"]
       },
       {
         "chinese": "再次感谢评委会的指正, 笔者将认真汲取各位的建议, 并在两周内提交修订版。",
@@ -4045,7 +4056,8 @@ export const lessons: ChineseLesson[] = [
           "指正 → zhǐzhèng (chỉ chỗ sai — 谦词)",
           "汲取 → jíqǔ (tiếp thu — 书面)",
           "修订版 → xiūdìngbǎn (bản sửa)"
-        ]
+        ],
+        "pronunciation_focus_en": ["评委会 → píngwěihuì ('the committee' — written register)","指正 → zhǐzhèng ('your corrections' — a humble/deferential term)","汲取 → jíqǔ ('to absorb/draw on' — written register)","修订版 → xiūdìngbǎn ('revised version')"]
       }
     ],
     "vocab": [
@@ -4095,7 +4107,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "斟酌损益", "literal": "cân nhắc thêm bớt (zhēn zhuó sǔn yì)", "meaning": "Cân nhắc lợi hại — gốc Tam Quốc Diễn Nghĩa, dùng để diễn đạt trade-off khi sửa luận án. (书面/古典)", "example": "针对评委之多重建议, 笔者将斟酌损益, 重点处理影响外部效度的两点。" }
     ],
     "cultural_notes_vi": "Thesis defense (答辩) ở các đại học Hoa ngữ ngoài đại lục có quy ước riêng:\n\n(1) HK đại học UGC (HKU/CUHK/HKUST/CityU/PolyU/BU/EdUHK/LU): defense format Anh-Mỹ. 3-5 thành viên, 1 internal + 1-2 external (thường HKU/CUHK/HKUST cross-examine nhau, plus 1 international). Ngôn ngữ: Anh là default, Trung văn cũng được nếu cả hội đồng đồng ý. Thời gian: 20-25 phút trình bày + 60-90 phút Q&A. Outcome: pass / pass with minor revisions / pass with major revisions / fail (rất hiếm).\n\n(2) Taiwan đại học (NTU/NTHU/NCKU/NCCU/NSYSU): format mixed. 5-7 thành viên (2-3 internal + 2-3 external). Ngôn ngữ: Trung văn (Mandarin Đài Loan, gần với simplified về cấu trúc nhưng tránh các từ mainland-political). Defense thường mở cho công chúng dự (open defense). Sinh viên phải đứng suốt buổi. Hội đồng bỏ phiếu kín.\n\n(3) Singapore đại học (NUS/NTU/SMU/SUTD): defense bắt buộc bằng English (kể cả khi luận án viết bằng tiếng Hoa). Thời gian: 30 phút trình bày + 60 phút Q&A. Hội đồng 4-5 thành viên (1-2 NUS/NTU + 2 international). Outcome thường pass với minor revisions; major revisions ít gặp vì supervisor đã thay mặt screen trước.\n\n(4) Overseas tenure-track viva: US (private oral defense, 2-4 thành viên), UK (closed defense, 2 thành viên 'examiners', viết detailed report), Australia (no oral, examiners gửi reports, sinh viên trả lời bằng văn bản). Mỗi mô hình khác nhau hoàn toàn — học cách phù hợp.\n\n(5) ĐẶC THÙ NGHIÊN CỨU SINH VN ở các môi trường này:\n- Lợi thế: dataset & access vào VN community, biết VN academic context, có thể serve as link giữa VN-HK/SG/Taiwan academia\n- Bất lợi: register tiếng Trung học thuật cần upgrade nhiều khi từ VN sang. Sinh viên VN học tiếng Trung mainland thường có vocabulary OK nhưng 'tone' dễ bị mainland-flavor (cụm như '关于...问题', '加强 / 提升', '深刻'). Ở HK/Taiwan/SG academic context, các cụm này được nhận diện ngay là mainland-influence.\n- Strategy: đọc 5-10 luận án mới gần đây từ HKUST/NTU SG/NTHU cùng chuyên ngành ĐỂ pick up local academic register.\n\n(6) HỘI ĐỒNG INTERNATIONAL: external từ US/UK thường hỏi sharper hơn nội bộ. Họ không quen 'face' culture HK/SG, sẽ nói 'this argument doesn't hold' direct. KHÔNG đáp lại bằng push back gay gắt — đáp '感谢您的指正, 这个问题确实需要进一步讨论'.\n\n(7) AFTER DEFENSE: bữa ăn với hội đồng (尾牙 / celebratory dinner) là chuẩn ở HK/Taiwan/SG. Supervisor mời. Sinh viên không nên từ chối. Đây là chuyển từ 'student' sang 'colleague' — networking essential.\n\n(8) NẾU FAIL hoặc REQUIRE MAJOR REVISIONS: không phải tận thế. HK/SG defense pass rate >95%. Major revisions = 6-12 tháng thêm, common ở HK research-track PhDs. Chỉ ~1% thực sự fail (thường là plagiarism case).",
+    "cultural_notes_en": "Thesis defense (答辩) at Chinese-language universities outside the mainland has its own conventions:\n\n(1) HK UGC universities: Anglo-style format — 3-5 members, 1 internal + 1-2 external (often local cross-examination + 1 international). English is default; Chinese allowed if the whole committee agrees. 20-25 min presentation + 60-90 min Q&A. Outcomes: pass / minor revisions / major revisions / fail (very rare).\n\n(2) Taiwan universities: mixed format, 5-7 members; in Taiwan Mandarin (avoid mainland-political phrasing). Often a public/open defense; the student stands throughout; the committee votes by secret ballot.\n\n(3) Singapore universities: defense in English (even if the thesis is in Chinese). 30 min + 60 min Q&A; 4-5 members (2 local + 2 international); usually pass with minor revisions, since the supervisor pre-screens.\n\n(4) Overseas tenure-track viva: US (private oral, 2-4 members), UK (closed, 2 'examiners' + a detailed report), Australia (no oral; written examiner reports, written responses). Wholly different models — learn the right one.\n\n(5) FOR A RESEARCHER FROM A REGIONAL BACKGROUND: strengths are dataset/community access and serving as a link between academia in different regions. The burden: the academic-Chinese register often needs upgrading; vocabulary may be fine but the 'tone' can carry a mainland flavor (e.g. '关于…问题', '加强 / 提升', '深刻') that is instantly recognized as such in HK/Taiwan/SG contexts. Strategy: read 5-10 recent local theses in your field to pick up the local register.\n\n(6) INTERNATIONAL COMMITTEE MEMBERS from US/UK ask more sharply than locals and may say 'this argument doesn't hold' directly, not in face-culture style. Do NOT push back hard — answer '感谢您的指正，这个问题确实需要进一步讨论'.\n\n(7) AFTER DEFENSE: a celebratory dinner with the committee is standard; the supervisor hosts; don't decline — it marks the shift from 'student' to 'colleague' and is essential networking.\n\n(8) FAIL or MAJOR REVISIONS is not the end: HK/SG pass rate >95%; major revisions = 6-12 extra months, common; only ~1% truly fail (usually plagiarism).",
     "tip_advice_vi": "(1) MOCK DEFENSE 2 TUẦN TRƯỚC: book một phòng, mời 3-5 lab-mate đóng vai hội đồng. Chuẩn bị 30 câu hỏi 'Standard Difficult Questions' (về methodology, sample size, generalizability, ethics, contribution). (2) DỪNG SỬA LUẬN ÁN 1 TUẦN TRƯỚC: thay đổi vào phút cuối tạo inconsistency. Tuần cuối chỉ luyện trình bày + ngủ đủ. (3) CHUẨN BỊ HANDOUT 2 TRANG: timeline, key contributions, limitations. Đưa cho mỗi ủy viên ngay đầu. Người Đức/HK đánh giá cao handout. (4) ĐỌC Q&A NỔI TIẾNG: Google 'famous PhD defense questions' (5) KHI KHÔNG HIỂU CÂU HỎI: '请问您是想问...?' — re-formulate hỏi của họ. KHÔNG đáp câu hỏi bạn nghĩ họ hỏi. (6) KHÔNG NÓI QUÁ: trả lời 2-3 phút mỗi câu. Càng dài càng dễ tạo opening cho followup. (7) BIRTH OF YOUR LIMITATIONS: ủy viên SẼ tìm ra hạn chế. Bạn proactively nêu một hạn chế CHƯA AI THẤY ngay đầu — control narrative. 'Trong limitation thứ ba của Chapter 7, tôi nêu rằng...'. Defensive khen. (8) SAU DEFENSE NHẬN MAJOR REVISIONS: KHÔNG CÃI. Take 3 ngày off. Sau đó chia revisions thành tasks small. Submit cleaner revision than they expect. (9) KÊU TÊN UỶ VIÊN ĐÚNG: Prof. Lim ≠ Prof. Lin. Sai tên = bad sign. Học tên + chức danh trước. (10) BUỔI ĂN SAU DEFENSE: chấp nhận lời mời supervisor. Đây là moment chuyển từ student sang colleague. Network không thể replicate sau này.",
+    "tip_advice_en": "(1) MOCK DEFENSE 2 weeks out: a room, 3-5 lab-mates as the committee, 30 standard difficult questions (methodology, sample size, generalizability, ethics, contribution). (2) STOP EDITING the thesis 1 week before — last-minute changes create inconsistency; the final week is rehearsal + sleep. (3) PREPARE A 2-PAGE HANDOUT (timeline, key contributions, limitations) given to each member at the start. (4) READ FAMOUS Q&A: Google 'famous PhD defense questions'. (5) IF YOU DON'T UNDERSTAND A QUESTION: '请问您是想问…?' — re-formulate it; don't answer the question you imagined. (6) DON'T OVER-TALK: 2-3 minutes per answer; longer creates follow-up openings. (7) OWN YOUR LIMITATIONS: pre-empt one nobody spotted, early — control the narrative. (8) MAJOR REVISIONS: do NOT argue; take 3 days off; split into small tasks; submit cleaner than expected. (9) GET NAMES RIGHT: Prof. Lim ≠ Prof. Lin — learn names + titles beforehand. (10) THE POST-DEFENSE DINNER: accept the supervisor's invitation — the irreplaceable student→colleague moment.",
     "exercises": [
       { "type": "fill-blank", "question": "感谢答辩委员会 ___ 审阅本论文。", "answer": "拨冗" },
       { "type": "matching", "instruction": "Ghép cụm formal defense với chức năng tiếng Việt.", "pairs": [
@@ -4127,7 +4141,8 @@ export const lessons: ChineseLesson[] = [
           "莅临 → lìlín (tới dự — 书面)",
           "主讲人 → zhǔjiǎngrén (diễn giả chính)",
           "研究进展 → yánjiū jìnzhǎn (tiến triển nghiên cứu)"
-        ]
+        ],
+        "pronunciation_focus_en": ["诸位同仁 → zhūwèi tóngrén ('dear colleagues' — written register)","莅临 → lìlín ('to attend/be present' — written register, honorific)","主讲人 → zhǔjiǎngrén ('the keynote/main speaker')","研究进展 → yánjiū jìnzhǎn ('research progress')"]
       },
       {
         "chinese": "在进入正题之前, 笔者首先简要回顾本领域过去十年之三大转折, 以为后续讨论奠定共同基础。",
@@ -4139,7 +4154,8 @@ export const lessons: ChineseLesson[] = [
           "简要回顾 → jiǎnyào huígù (điểm qua ngắn)",
           "转折 → zhuǎnzhé (bước ngoặt)",
           "奠定 → diàndìng (đặt nền — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["正题 → zhèngtí ('the main topic' — written register)","简要回顾 → jiǎnyào huígù ('a brief review')","转折 → zhuǎnzhé ('turning point/shift')","奠定 → diàndìng ('to lay [a foundation]' — written register)"]
       },
       {
         "chinese": "演讲分为三个部分: 第一, 理论框架; 第二, 实证发现; 第三, 对学界与业界之意义。每部分约十五分钟, 末了留出十五分钟问答。",
@@ -4151,7 +4167,8 @@ export const lessons: ChineseLesson[] = [
           "实证发现 → shízhèng fāxiàn (phát hiện thực chứng)",
           "学界与业界 → xuéjiè yǔ yèjiè (giới học thuật và công nghiệp)",
           "末了 → mòle (cuối — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["分为…部分 → fēn wéi…bùfèn ('to be divided into … parts')","实证发现 → shízhèng fāxiàn ('empirical findings')","学界与业界 → xuéjiè yǔ yèjiè ('academia and industry')","末了 → mòle ('at the end' — written register)"]
       },
       {
         "chinese": "请允许笔者借此机会感谢香港研资局以及新加坡国家研究基金会对本项目之资助, 此一资助使我们得以聘用三名博士后及购置专用计算资源。",
@@ -4163,7 +4180,8 @@ export const lessons: ChineseLesson[] = [
           "得以 → déyǐ (được phép / có thể — 书面)",
           "聘用 → pìnyòng (thuê / tuyển — 书面)",
           "购置 → gòuzhì (mua sắm — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["借此机会 → jiè cǐ jīhuì ('take this opportunity to' — written register)","得以 → déyǐ ('to be able to / enabled to' — written register)","聘用 → pìnyòng ('to hire' — written register)","购置 → gòuzhì ('to procure' — written register)"]
       },
       {
         "chinese": "最后, 让我们对陈教授精彩之分享致以热烈掌声; 接下来进入提问环节, 请提问者先简要介绍自己之单位。",
@@ -4175,7 +4193,8 @@ export const lessons: ChineseLesson[] = [
           "提问环节 → tíwèn huánjié (phần Q&A)",
           "单位 → dānwèi (đơn vị / cơ quan)",
           "热烈 → rèliè (nhiệt liệt)"
-        ]
+        ],
+        "pronunciation_focus_en": ["致以…掌声 → zhì yǐ…zhǎngshēng ('to give … applause' — written register)","提问环节 → tíwèn huánjié ('the Q&A session')","单位 → dānwèi ('affiliation/work unit')","热烈 → rèliè ('warm/enthusiastic')"]
       }
     ],
     "vocab": [
@@ -4223,7 +4242,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "高屋建瓴", "literal": "đứng trên nhà cao đổ nước (gāo wū jiàn líng)", "meaning": "Nhìn từ cao xuống, có tầm nhìn lớn. Chair dùng để khen keynote: '陈教授高屋建瓴, 把领域过去十年勾勒得极为清晰'. (书面/古典)", "example": "陈教授对神经形态计算的回顾高屋建瓴, 既见树木, 又见森林。" }
     ],
     "cultural_notes_vi": "Văn hóa colloquium / lecture ở các trung tâm học thuật Hoa ngữ ngoài đại lục:\n\n(1) HK đại học: colloquium thường 4-5 giờ chiều thứ Sáu, kéo dài 60 phút (45 talk + 15 Q&A). Đa phần bằng English, nhưng nếu speaker Hoa ngữ + audience Hoa ngữ, có thể request bilingual hoặc Mandarin. Tea reception trước lecture (15 phút) — opportunity networking.\n\n(2) Taiwan đại học: colloquium thường tiếng Hoa Đài Loan (Mandarin Đài). Format giống HK. Thường có lunch sau với nhóm faculty + speaker (mời chỉ 5-8 người, ai được mời = sign of inclusion).\n\n(3) Singapore đại học: colloquium tiếng Anh là default. Mandarin chỉ ở các Asian Studies / Chinese Studies departments. Tea cookies bridge — không formal lunch như Đài.\n\n(4) Overseas tenure-track giving talks at HK/SG/Taiwan: nên prepare cả Mandarin và English version slide. Q&A có thể bilingual. Don't assume monolingual context.\n\n(5) ROLE OF CHAIR: chair role rất quan trọng cho image của department. Chair tốt = department được nhớ tốt. Chair tệ (over-talking, weak time management, awkward intros) = embarrassment.\n\n(6) FUNDING ACKNOWLEDGMENT: bắt buộc trong public talks ở HK/SG/Taiwan. Đặc biệt RGC, NSTC, NRF muốn thấy public visibility của tài trợ. Skip = bad faith với funder.\n\n(7) GIỚI HẠN THỜI GIAN STRICT: khác với US conferences nơi speakers thường overrun, HK/SG/Taiwan colloquia chair sẽ cut off đúng phút. Chuẩn bị backup plan nếu time-out (skip Section 3, jump to conclusion).\n\n(8) Q&A POLITICS: question đầu tiên thường từ senior faculty cùng department (planted question to break ice). Nếu bạn là chair, phối hợp trước với 1 colleague để có 'first question lined up'.\n\n(9) HÌNH ẢNH CỦA RESEARCHER VN: thường được nhìn nhận như ngôn ngữ học / regional studies expert. Để break stereotype, propose talks về general methodology hoặc cross-regional themes — không chỉ 'Vietnamese X'.\n\n(10) NGÔN NGỮ TRONG SLIDES: HK/SG slides thường tiếng Anh (lingua franca research). Taiwan slides có thể bilingual (tiếng Hoa headers + tiếng Anh quotes). Mainland-style slides (full simplified Chinese, no English) sẽ feel out of place ở HK/SG/Taiwan venue.",
+    "cultural_notes_en": "Colloquium/lecture culture at Chinese-language academic centers outside the mainland:\n\n(1) HK universities: colloquia usually Friday late afternoon, 60 min (45 talk + 15 Q&A), mostly in English (bilingual/Mandarin on request); a 15-min tea reception beforehand is the networking opportunity.\n\n(2) Taiwan universities: usually in Taiwan Mandarin, same format, often followed by a small faculty lunch with the speaker (an invitation = a sign of inclusion).\n\n(3) Singapore universities: English by default (Mandarin only in Chinese/Asian Studies); tea/cookies rather than a formal lunch.\n\n(4) An overseas visitor speaking at HK/SG/Taiwan: prepare both Mandarin and English slides; Q&A may be bilingual — don't assume a monolingual context.\n\n(5) ROLE OF CHAIR: very important for the department's image — a good chair is remembered well; an over-talking, weak-time-management, awkward-intro chair is an embarrassment.\n\n(6) FUNDING ACKNOWLEDGMENT is mandatory in public talks (RGC/NSTC/NRF want public visibility of funding); skipping it is bad faith with the funder.\n\n(7) STRICT TIME LIMITS: unlike US conferences where speakers overrun, here the chair cuts off on the minute — have a backup plan (skip a section, jump to conclusion).\n\n(8) Q&A POLITICS: the first question is often a 'planted' icebreaker from a senior colleague; as chair, line one up with a colleague beforehand.\n\n(9) IMAGE OF A REGIONAL-BACKGROUND RESEARCHER: often pigeonholed as a 'language/regional studies' expert — to break the stereotype, propose talks on general methodology or cross-regional themes, not only 'region-specific X'.\n\n(10) SLIDE LANGUAGE: HK/SG slides are usually English (the research lingua franca); Taiwan slides may be bilingual; mainland-style all-Chinese slides feel out of place at an HK/SG/Taiwan venue.",
     "tip_advice_vi": "(1) ARRIVE 30 PHÚT TRƯỚC TALK: setup AV, water, slide test, microphone test. Speaker arriving last-minute = unprofessional. (2) HANDOUT 1-PAGE: bullet points của 3 main findings + email/Twitter của speaker. Distribute trước khi talk start. (3) NẾU LÀ CHAIR: chuẩn bị 1-câu giới thiệu speaker (NOT đọc full CV). 'X教授曾任A, 现任B, 出版逾80篇' — đủ rồi. (4) MOBILE OFF: chair model behavior — mobile silent suốt talk. Audience watches chair. (5) Q&A LINE-UP: nếu lo audience không có question, ask 1 colleague trước. Chair có quyền 'plant first question' nếu silence. (6) WHEN Q MUDDLED: re-formulate cho speaker: '张教授, 我理解您是问关于X方面的Y, 是吗?' — gives speaker a chance to clarify. (7) CUT-OFF FORMULA: '由于时间关系, 我们今天的提问就到这里' — universal accepted. (8) CLOSING SHARE: nếu speaker có upcoming paper/book/website, chair mention: '陈教授下周发表新书, 大家可在出版社官网订购'. (9) AFTER-TALK: nếu speaker đến từ nơi khác, chair / department member follow up email tuần sau ('感谢您今日精彩之分享 — 期待今后合作机会'). Builds long-term ties. (10) RECORD PERMISSION: ask speaker whether ok to record. Default: HK/SG record + post on departmental YouTube. Taiwan thường không record. SG hỏi khi book speaker.",
+    "tip_advice_en": "(1) ARRIVE 30 MIN EARLY: set up AV, water, slide test, mic test — last-minute arrival is unprofessional. (2) 1-PAGE HANDOUT: 3 main findings + the speaker's contact; distribute before the talk. (3) IF CHAIRING: prepare a ONE-sentence intro (not a full CV) — '[Name] was at A, is now at B, has published 80+ papers'. (4) MOBILE OFF: the chair models behavior — the audience watches the chair. (5) Q&A LINE-UP: pre-arrange a first question with a colleague to cover silence. (6) WHEN A QUESTION IS MUDDLED: re-formulate for the speaker — 'I understand you're asking about X aspect of Y, is that right?'. (7) CUT-OFF FORMULA: '由于时间关系，我们今天的提问就到这里' — universally accepted. (8) CLOSING SHARE: if the speaker has an upcoming paper/book/site, mention it. (9) AFTER-TALK FOLLOW-UP: email the speaker the next week to build long-term ties. (10) RECORD PERMISSION: ask first — HK/SG often record + post; Taiwan often don't.",
     "exercises": [
       { "type": "fill-blank", "question": "诸位同仁, 欢迎 ___ 今日之研讨会。", "answer": "莅临" },
       { "type": "matching", "instruction": "Ghép cụm formal lecture với chức năng tiếng Việt.", "pairs": [
@@ -4255,7 +4276,8 @@ export const lessons: ChineseLesson[] = [
           "达成一致 → dáchéng yīzhì (đạt đồng thuận)",
           "争议 → zhēngyì (tranh chấp)",
           "日后 → rìhòu (sau này — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["CRediT分类法 → CRediT fēnlèifǎ ('the CRediT taxonomy')","达成一致 → dáchéng yīzhì ('to reach consensus')","争议 → zhēngyì ('dispute')","日后 → rìhòu ('later/in future' — written register)"]
       },
       {
         "chinese": "笔者主要承担数据收集、实验设计与方法论开发, 三者皆为本研究之核心贡献; 因此, 笔者建议列为第一作者。",
@@ -4267,7 +4289,8 @@ export const lessons: ChineseLesson[] = [
           "皆为 → jiē wèi (đều là — 书面)",
           "列为 → lièwèi (xếp là — 书面)",
           "第一作者 → dì yī zuòzhě (tác giả thứ nhất)"
-        ]
+        ],
+        "pronunciation_focus_en": ["承担 → chéngdān ('to undertake' — written register)","皆为 → jiē wèi ('all are' — written register)","列为 → lièwèi ('to be listed as' — written register)","第一作者 → dì yī zuòzhě ('first author')"]
       },
       {
         "chinese": "陈教授在概念框架与资金获取方面之贡献尤为关键, 因此宜列为通讯作者; 此一安排亦符合NRF与RGC对资助项目之署名要求。",
@@ -4279,7 +4302,8 @@ export const lessons: ChineseLesson[] = [
           "宜列为 → yí lièwèi (nên ghi là — 书面)",
           "通讯作者 → tōngxùn zuòzhě (corresponding author)",
           "署名要求 → shǔmíng yāoqiú (yêu cầu ghi tên)"
-        ]
+        ],
+        "pronunciation_focus_en": ["尤为关键 → yóuwéi guānjiàn ('especially crucial' — written register)","宜列为 → yí lièwèi ('should be listed as' — written register)","通讯作者 → tōngxùn zuòzhě ('corresponding author')","署名要求 → shǔmíng yāoqiú ('authorship/signing requirement')"]
       },
       {
         "chinese": "若日后产生分歧, 我们建议依照所属机构之学术诚信办公室之仲裁程序处理, 而非诉诸期刊编辑或社交媒体。",
@@ -4291,7 +4315,8 @@ export const lessons: ChineseLesson[] = [
           "依照 → yīzhào (theo — 书面)",
           "仲裁程序 → zhòngcái chéngxù (quy trình trọng tài)",
           "诉诸 → sùzhū (chuyển tới — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["若…产生分歧 → ruò…chǎnshēng fēnqí ('if disagreements arise')","依照 → yīzhào ('in accordance with' — written register)","仲裁程序 → zhòngcái chéngxù ('arbitration procedure')","诉诸 → sùzhū ('to resort to' — written register)"]
       },
       {
         "chinese": "本份合作协议建议双方各保存一份, 并请所在系所主任签字见证, 以确保学术合作之透明与可问责性。",
@@ -4303,7 +4328,8 @@ export const lessons: ChineseLesson[] = [
           "签字见证 → qiānzì jiànzhèng (ký xác nhận)",
           "透明 → tòumíng (minh bạch)",
           "可问责性 → kě wènzéxìng (khả truy trách)"
-        ]
+        ],
+        "pronunciation_focus_en": ["合作协议 → hézuò xiéyì ('collaboration agreement')","签字见证 → qiānzì jiànzhèng ('to sign as witness')","透明 → tòumíng ('transparency')","可问责性 → kě wènzéxìng ('accountability')"]
       }
     ],
     "vocab": [
@@ -4351,7 +4377,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "丑话说在前头", "literal": "lời xấu nói trước (chǒu huà shuō zài qián tou)", "meaning": "Nói khó nghe trước — proactive disclosure of difficult terms. Dùng khi mở đầu CRediT discussion: '丑话说在前头, 我们先谈作者顺序, 免得日后伤和气'. (口语 nhưng acceptable academic informal)", "example": "丑话说在前头: 谁做了什么贡献, 我们现在写清楚, 比paper发表后再吵更好。" }
     ],
     "cultural_notes_vi": "Văn hóa co-authorship & collaboration ở các trung tâm học thuật Hoa ngữ ngoài đại lục:\n\n(1) HK academic culture: tương đối Anglo-saxon — strict ICMJE compliance, CRediT statement bắt buộc ở high-impact journals (Nature, Cell, Science). HK universities (HKUST, HKU, CUHK) có Research Integrity Office xử lý dispute. Văn hóa: khá direct về author order, document everything. Disputes phải resolve through Office, không qua tweet/blog.\n\n(2) Taiwan academic culture: theo truyền thống 'gia đình học thuật' (大師 supervisor + đệ tử) hơi giống mainland trong dynamics, nhưng compliance với international norm cao hơn mainland. NSTC project explicitly require CRediT statement từ 2022. Bất đồng hiếm ra public — usually resolved internally tại department.\n\n(3) Singapore academic culture: hyper-formal ICMJE compliance. NUS & NTU đều có CRediT mandatory templates. Disputes rare vì Singapore academic community nhỏ — ai burn bridge = career-ending. Singapore institutions có Research Integrity Office với mediation procedure được dùng nhiều hơn HK/Taiwan.\n\n(4) Overseas tenure-track (US/UK/Australia): culture 'PI = corresponding + last author' default. Junior researcher first author với hands-on work. Conflicts rare nhưng khi xảy ra thường go to ORI (US Office of Research Integrity) — public investigations. Stakes huge — retracted papers permanent.\n\n(5) CROSS-JURISDICTION COLLABORATION: HK-SG, HK-Taiwan, SG-overseas common. Mỗi jurisdiction có grant rules. RGC says 'one corresponding'; NRF says 'one corresponding'; nếu cả hai funder require corresponding, dual co-corresponding accepted bởi cả hai.\n\n(6) GIFT AUTHORSHIP: thực hành historically common ở mainland (PI's name on paper without contribution). Ở HK/SG/Taiwan ngày càng strict — xem là research misconduct. Junior researcher Vietnam đến HK/SG có thể bị shock khi expected to add advisor as co-author chỉ vì 'gratitude' — phải push back politely.\n\n(7) DOCUMENTATION TREND: từ 2020 các journal top (Nature, Cell, JACS) đòi CRediT statement signed by ALL authors. Failure to provide = desk reject. Documentation moved from 'best practice' to 'mandatory'.\n\n(8) NGÔN NGỮ NEGOTIATION: Mandarin academic conversation hơi indirect hơn English version. Nhưng for CRediT, phải BE EXPLICIT — vague language trong CRediT discussion = future dispute. Cụm như '我做了大部分' (I did most) phải replace bằng cụ thể '我承担了实验设计、数据收集与方法论开发, 这三类贡献' (I undertook experimental design, data collection, methodology development — these three).\n\n(9) AGE & SENIORITY: junior Vietnam researcher feel awkward arguing CRediT với senior. Necessary để do anyway. Senior tốt sẽ respect document-based discussion. Senior xấu sẽ pressure on relational hierarchy ('你是我学生啊') — đây là red flag, consider switching advisor.\n\n(10) SAU CONFLICT: nếu CRediT dispute đã resolved (in your favor or not), đừng hold grudge. HK/SG/Taiwan academic community nhỏ — bạn sẽ gặp người này lại nhiều lần. Move on professionally.",
+    "cultural_notes_en": "Co-authorship and collaboration culture at Chinese-language academic centers outside the mainland:\n\n(1) HK: fairly Anglo-Saxon — strict ICMJE compliance, a CRediT statement mandatory at high-impact journals; universities have a Research Integrity Office for disputes. Direct about author order; document everything; resolve disputes through the Office, never via social media.\n\n(2) Taiwan: an 'academic family' (master + disciples) dynamic somewhat like the mainland, but with higher international-norm compliance; NSTC projects require a CRediT statement since 2022; disputes rarely go public, usually resolved internally.\n\n(3) Singapore: hyper-formal ICMJE compliance; mandatory CRediT templates; disputes rare because the community is small (burning a bridge is career-ending); the Research Integrity Office's mediation is used more than in HK/Taiwan.\n\n(4) Overseas tenure-track (US/UK/Australia): 'PI = corresponding + last author' default; the junior researcher who did the hands-on work is first author; conflicts rare but escalate to a national integrity office — high stakes, retractions permanent.\n\n(5) CROSS-JURISDICTION COLLABORATION: common; each funder says 'one corresponding', and if two funders both require it, dual co-corresponding is accepted by both.\n\n(6) GIFT AUTHORSHIP: historically common on the mainland; increasingly strict at HK/SG/Taiwan — treated as misconduct. A junior researcher new to HK/SG may be shocked to be expected to add an advisor 'out of gratitude' — push back politely.\n\n(7) DOCUMENTATION TREND: since 2020 top journals require a CRediT statement signed by ALL authors; failure = desk reject. It moved from best practice to mandatory.\n\n(8) NEGOTIATION LANGUAGE: academic Mandarin is more indirect than English, but for CRediT you must be EXPLICIT — vague language now = a future dispute. Replace '我做了大部分' with the concrete '我承担了实验设计、数据收集与方法论开发，这三类贡献'.\n\n(9) AGE & SENIORITY: arguing CRediT with a senior feels awkward but is necessary; a good senior respects document-based discussion, while one who pressures via relational hierarchy ('you're my student') is a red flag — consider switching advisor.\n\n(10) AFTER A CONFLICT: whether resolved in your favor or not, don't hold a grudge — the community is small and you will meet this person again; move on professionally.",
     "tip_advice_vi": "(1) CRediT DISCUSSION TRƯỚC EXPERIMENTS: best practice là discuss author order TRƯỚC start data collection, không sau khi paper viết xong. Earlier = lower stakes = easier negotiation. (2) DOCUMENT MỌI CONTRIBUTIONS: keep notebook / Slack archive của ai làm gì. Lúc CRediT meeting, có evidence. (3) ICMJE 3 TIÊU CHÍ NHẨM THUỘC: substantial contribution + drafting/revising + final approval. Bất kỳ co-author không meet cả ba = Acknowledgment only. (4) DUAL CORRESPONDING CHO CROSS-JURISDICTION: nếu HK-SG hoặc HK-Taiwan-SG project, propose dual corresponding sớm. RGC + NRF + NSTC đều support. (5) ARRANGEMENT PHẢI MATCH GRANT REQUIREMENT: nếu PI grant là RGC, RGC PI = corresponding. Không cãi. Skip = NRF/RGC compliance issue. (6) AVOID GIFT AUTHORSHIP: nếu PI suggest 'add Prof. X who didn't contribute', firmly: '依据ICMJE之三个标准, X教授未达substantial intellectual contribution, 列为作者恐有学术诚信顾虑'. Polite but firm. (7) WRITTEN AGREEMENT TRƯỚC SUBMISSION: 1-page CRediT agreement, both sign + dept heads witness. Không scan contracts là red flag. (8) NẾU DISPUTE — INSTITUTIONAL MEDIATION FIRST: HKUST RIO, NTU RIE Office, NSTC ethics committee, NUS RIO. NEVER tweet about author dispute first — career-ending. (9) JOURNAL REQUIREMENT KIỂM TRA: Nature/Science/Cell require explicit CRediT trong cover letter. Top ML conferences (NeurIPS, ICML) require since 2022. Skipping = administrative reject. (10) RECONCILE PAST — KHÔNG GRUDGE: nếu lost a dispute (e.g. lost first authorship), move on. Reputation tốt qua nhiều papers > one specific authorship win.",
+    "tip_advice_en": "(1) DISCUSS CRediT BEFORE EXPERIMENTS, not after the paper is written — earlier = lower stakes = easier. (2) DOCUMENT ALL CONTRIBUTIONS (notebook / Slack archive) so the CRediT meeting has evidence. (3) MEMORIZE the ICMJE 3 criteria: substantial contribution + drafting/revising + final approval; anyone not meeting all three = Acknowledgment only. (4) PROPOSE DUAL CORRESPONDING early for a cross-jurisdiction project — funders support it. (5) ARRANGEMENT MUST MATCH THE GRANT: if the PI's grant is RGC, the RGC PI is corresponding — don't argue. (6) AVOID GIFT AUTHORSHIP: if asked to add a non-contributor, firmly cite '依据ICMJE之三个标准，X教授未达substantial intellectual contribution，列为作者恐有学术诚信顾虑'. (7) WRITTEN AGREEMENT before submission: a 1-page CRediT agreement, both sign + department heads witness — no contract is a red flag. (8) DISPUTE → INSTITUTIONAL MEDIATION FIRST; never tweet about an author dispute first (career-ending). (9) CHECK JOURNAL REQUIREMENTS: top journals/conferences require explicit CRediT — skipping = administrative reject. (10) RECONCILE THE PAST — NO GRUDGE: a good reputation over many papers beats one authorship win.",
     "exercises": [
       { "type": "fill-blank", "question": "在确定共同作者之前, 我们有必要先就CRediT分类法之十四类贡献 ___ 一致, 以避免日后争议。", "answer": "达成" },
       { "type": "matching", "instruction": "Ghép thuật ngữ CRediT/ICMJE với chức năng tiếng Việt.", "pairs": [
@@ -4383,7 +4411,8 @@ export const lessons: ChineseLesson[] = [
           "分层评估 → fēncéng pínggū (đánh giá phân tầng)",
           "兼顾 → jiāngù (cân bằng / đồng thời lo cả — 书面)",
           "能力发展 → nénglì fāzhǎn (phát triển năng lực)"
-        ]
+        ],
+        "pronunciation_focus_en": ["设计理念 → shèjì lǐniàn ('design philosophy')","分层评估 → fēncéng pínggū ('tiered assessment')","兼顾 → jiāngù ('to balance / attend to both' — written register)","能力发展 → nénglì fāzhǎn ('capability development')"]
       },
       {
         "chinese": "学生须于学期初签署诚信声明, 凡涉抄袭、未经允许使用他人代码者, 将依NUS/NTU之学术诚信条例处理, 笔者无任何回旋之余地。",
@@ -4395,7 +4424,8 @@ export const lessons: ChineseLesson[] = [
           "凡...者 → fán...zhě (phàm...thì — 书面)",
           "依...条例处理 → yī...tiáolì chǔlǐ (xử lý theo điều lệ)",
           "回旋之余地 → huíxuán zhī yúdì (chỗ xoay trở — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["诚信声明 → chéngxìn shēngmíng ('integrity declaration')","凡…者 → fán…zhě ('whoever / any … shall' — written register)","依…条例处理 → yī…tiáolì chǔlǐ ('handled per the statute')","回旋之余地 → huíxuán zhī yúdì ('room to maneuver / discretion' — written register)"]
       },
       {
         "chinese": "在教学声明中, 笔者承诺以学生为中心之教学理念, 反对一刀切之教学法, 主张依学生背景之差异调整教学节奏。",
@@ -4407,7 +4437,8 @@ export const lessons: ChineseLesson[] = [
           "一刀切 → yīdāoqiē (một cỡ vừa cho tất cả)",
           "主张 → zhǔzhāng (chủ trương — 书面)",
           "教学节奏 → jiàoxué jiézòu (nhịp dạy)"
-        ]
+        ],
+        "pronunciation_focus_en": ["以学生为中心 → yǐ xuéshēng wéi zhōngxīn ('student-centered')","一刀切 → yīdāoqiē ('one-size-fits-all')","主张 → zhǔzhāng ('to advocate' — written register)","教学节奏 → jiàoxué jiézòu ('teaching pace')"]
       },
       {
         "chinese": "评估方式分为四部分: 平时作业占百分之三十, 期中考核占百分之二十, 课程项目占百分之三十, 期末考试占百分之二十。",
@@ -4419,7 +4450,8 @@ export const lessons: ChineseLesson[] = [
           "占百分之 → zhàn bǎi fēn zhī (chiếm phần trăm)",
           "期中考核 → qīzhōng kǎohé (kiểm tra giữa kỳ)",
           "期末考试 → qīmò kǎoshì (thi cuối kỳ)"
-        ]
+        ],
+        "pronunciation_focus_en": ["评估方式 → pínggū fāngshì ('assessment scheme')","占百分之 → zhàn bǎi fēn zhī ('to account for [n] percent')","期中考核 → qīzhōng kǎohé ('midterm assessment')","期末考试 → qīmò kǎoshì ('final exam')"]
       },
       {
         "chinese": "对于背景较弱之学生, 笔者将于每周二下午开放两小时之答疑时间, 鼓励同学主动求助, 而非默默挣扎。",
@@ -4431,7 +4463,8 @@ export const lessons: ChineseLesson[] = [
           "答疑时间 → dáyí shíjiān (giờ tư vấn / office hours)",
           "主动求助 → zhǔdòng qiúzhù (chủ động xin trợ giúp)",
           "默默挣扎 → mòmò zhēngzhá (âm thầm chật vật)"
-        ]
+        ],
+        "pronunciation_focus_en": ["背景较弱 → bèijǐng jiào ruò ('weaker background')","答疑时间 → dáyí shíjiān ('office/Q&A hours')","主动求助 → zhǔdòng qiúzhù ('to seek help proactively')","默默挣扎 → mòmò zhēngzhá ('to struggle in silence')"]
       }
     ],
     "vocab": [
@@ -4481,7 +4514,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "教学相长", "literal": "dạy và học cùng lớn lên (jiào xué xiāng zhǎng)", "meaning": "Dạy và học cùng tiến bộ — gốc Lễ Ký (Liji). Dùng formal: '通过与学生互动, 笔者亦获益良多, 真所谓教学相长'. (书面/古典)", "example": "教学相长之精神, 让笔者从学生中获得新的研究灵感。" }
     ],
     "cultural_notes_vi": "Văn hóa giảng dạy & syllabus tại các đại học Hoa ngữ ngoài đại lục:\n\n(1) HK đại học UGC (HKU/CUHK/HKUST/CityU/PolyU): syllabus bilingual (English + Chinese — usually traditional cho HK). Yêu cầu rất chi tiết — minimum 8 trang, có rubric explicit. SETL evaluation 5.0 scale, weight 30-40% trong tenure decision.\n\n(2) Taiwan đại học (NTU/NTHU/NCKU/NCCU): syllabus monolingual Chinese (traditional) hoặc bilingual với English nếu international students. Teaching evaluation lấy trung bình của 3 năm. Tenure decision weight: research 60%, teaching 30%, service 10%.\n\n(3) Singapore đại học (NUS/NTU/SMU): syllabus monolingual English. Teaching matters more than HK — NUS/NTU SFS weight ~40% tenure decision. Student diversity huge issue (40-60% international) — diversity-aware syllabi expected.\n\n(4) Overseas tenure-track (US/UK/Australia): teaching philosophy 1-2 pages bắt buộc trong job application. Sample syllabus + sample lecture video usually requested. Diversity & inclusion statement separate document (2024+).\n\n(5) ĐẶC THÙ NGHIÊN CỨU SINH VIETNAM khi job-search ở các trường này:\n - Strength: bilingual (Vietnamese + English), often trilingual (VN + EN + Mandarin), can connect to VN students community\n - Weakness: tone in Mandarin teaching statement có thể 'mainland-flavored' — careful\n - Strategy: get Mandarin syllabus reviewed by HK/SG/Taiwan native speaker before submission\n\n(6) AI POLICY MOMENT (2024+): generative AI tools rewrote pedagogy norms. Most institutions require explicit AI policy in syllabus by 2025. Three approaches:\n - Permissive (AI as tool, with disclosure)\n - Restricted (AI banned for graded work)\n - Hybrid (allowed for understanding, banned for final output)\n Tu thỏa thuận với administration trước khi adopt approach.\n\n(7) STUDENT FEEDBACK CULTURE:\n - HK students: indirect feedback, rarely complain face-to-face, write detailed SETL\n - Taiwan students: somewhere between HK and US, will email if issue\n - Singapore students: direct, will challenge in class, write VERY detailed feedback\n - International students at NUS/NTU: more vocal than locals\n\n(8) OFFICE HOURS NORM: HK/SG students rarely come to office hours unless required. Strategy: make office hours mandatory pulse 5-min check-in mid-semester to break the barrier.\n\n(9) GRADE INFLATION: HK/SG ngày càng nghiêm trọng. Median A trở nên norm at top universities. Tenure committees aware — lower grade distribution sees as 'rigorous teaching'. But student SFS may suffer. Trade-off real.\n\n(10) TEACHING AWARDS: HK/SG có yearly teaching awards (NUS Teaching Excellence Award, HKUST Teaching Innovation Award). Junior faculty win 1-2 = strong tenure case. Compete strategically.",
+    "cultural_notes_en": "Teaching and syllabus culture at Chinese-language universities outside the mainland:\n\n(1) HK UGC universities: bilingual syllabus (English + traditional Chinese); very detailed (min ~8 pages, explicit rubric); student evaluation weighs 30-40% in tenure.\n\n(2) Taiwan universities: monolingual (traditional) Chinese, or bilingual if there are international students; teaching evaluation is a 3-year average; tenure weight research 60% / teaching 30% / service 10%.\n\n(3) Singapore universities: monolingual English; teaching matters more than HK (~40% of tenure); huge student diversity (40-60% international) means diversity-aware syllabi are expected.\n\n(4) Overseas tenure-track (US/UK/Australia): a 1-2 page teaching philosophy is mandatory in job applications; a sample syllabus + lecture video are usually requested; a separate diversity & inclusion statement (2024+).\n\n(5) FOR A REGIONAL-BACKGROUND CANDIDATE job-searching here: strengths are being bilingual/trilingual and connecting to a student community; the weakness is that a Mandarin teaching statement can read 'mainland-flavored' — get it reviewed by an HK/SG/Taiwan native speaker first.\n\n(6) THE AI-POLICY MOMENT (2024+): most institutions require an explicit syllabus AI policy by 2025 — permissive (AI as tool, with disclosure), restricted (AI banned for graded work), or hybrid (allowed for understanding, banned for final output). Agree the approach with administration first.\n\n(7) STUDENT FEEDBACK CULTURE: HK students give indirect feedback (rarely complain face-to-face, write detailed evaluations); Taiwan students will email if there's an issue; Singapore students are direct and challenge in class; international students are more vocal than locals.\n\n(8) OFFICE-HOURS NORM: HK/SG students rarely come unless required — make a 5-minute mid-semester check-in mandatory to break the barrier.\n\n(9) GRADE INFLATION is increasingly serious; a median A is becoming the norm. Tenure committees see a lower distribution as 'rigorous', but student evaluations may suffer — a real trade-off.\n\n(10) TEACHING AWARDS: yearly awards exist; winning 1-2 as junior faculty strengthens a tenure case — compete strategically.",
     "tip_advice_vi": "(1) GET 3 SYLLABI TỪ SENIOR COLLEAGUES trước khi viết: HKUST/NTU/NUS có sample syllabi internal. Senior happy to share. Use as reference structure. (2) AI POLICY EXPLICIT EVERY ASSIGNMENT: 1 dòng đầu mỗi assignment specifying allowed/disallowed AI use. Reduces 90% disputes. (3) RUBRIC TRANSPARENT: students should know exactly how grade calculated. Hide rubric = student SFS comments will mention 'unfair grading'. (4) OFFICE HOURS MIDDLE-OF-DAY: 12-2pm Tuesday > 4-6pm Friday. Compatible with student schedules. (5) PULSE SURVEY EVERY 3 WEEKS: 3 questions max — what's working, what's not, one suggestion. Catch problems early. (6) DON'T OVER-PROMISE: junior faculty often promise 4 office hours/week. Reality 2hr is enough. Over-commit = burn out + worse SFS. (7) DIVERSITY STATEMENT REAL: don't just write 'I value diversity'. Write specific mechanisms: tier assignments, multiple project topics, Mandarin/English bilingual TA. (8) GRADE DISTRIBUTION TRACK: if 30+ students, analyze grade dist mid-semester. If 70% scoring 90+ = problem (too easy or grade inflation). If 30% scoring <60 = also problem (too hard or selection issue). (9) MAKE TEACHING VISIBLE: post lecture videos, share materials open. Helps tenure case + student satisfaction. (10) COURSE CHANGES YEAR-2-Year: improve based on prior SFS. Tenure committee reads multi-year evolution = valued more than single-year high score.",
+    "tip_advice_en": "(1) GET 3 SYLLABI from senior colleagues before writing — use as a reference structure. (2) AI POLICY EXPLICIT ON EVERY ASSIGNMENT: one line stating allowed/disallowed AI use cuts ~90% of disputes. (3) TRANSPARENT RUBRIC: students should know exactly how the grade is computed; a hidden rubric draws 'unfair grading' comments. (4) OFFICE HOURS MID-DAY (e.g. Tue 12-2pm) beat Fri 4-6pm. (5) PULSE SURVEY EVERY 3 WEEKS (3 questions max) to catch problems early. (6) DON'T OVER-PROMISE: 2 office hours/week is enough; over-committing burns you out and worsens evaluations. (7) DIVERSITY STATEMENT REAL: write specific mechanisms (tiered assignments, multiple project topics, bilingual TA), not 'I value diversity'. (8) TRACK GRADE DISTRIBUTION mid-semester: 70% scoring 90+ or 30% scoring <60 are both problems. (9) MAKE TEACHING VISIBLE (post videos, share materials) — helps tenure + satisfaction. (10) EVOLVE THE COURSE YEAR TO YEAR from prior feedback — committees value a multi-year trajectory over one high score.",
     "exercises": [
       { "type": "fill-blank", "question": "本课程之设计理念, 在于以分层评估之方式, ___ 学生于理论深度与工程实践两端之能力发展。", "answer": "兼顾" },
       { "type": "matching", "instruction": "Ghép cụm syllabus formal với chức năng tiếng Việt.", "pairs": [
@@ -4513,7 +4548,8 @@ export const lessons: ChineseLesson[] = [
           "伦理审查 → lúnlǐ shěnchá (thẩm định đạo đức)",
           "方可 → fāng kě (mới có thể — 书面)",
           "启动 → qǐdòng (khởi động — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["受试者 → shòushì zhě ('research subject')","伦理审查 → lúnlǐ shěnchá ('ethics review')","方可 → fāng kě ('only then may' — written register)","启动 → qǐdòng ('to initiate' — written register)"]
       },
       {
         "chinese": "针对此次涉嫌抄袭事件, 笔者将依NUS研究诚信办公室之既定程序处理: 先内部调查, 再决定是否报告大学诚信委员会。",
@@ -4525,7 +4561,8 @@ export const lessons: ChineseLesson[] = [
           "既定程序 → jìdìng chéngxù (quy trình đã định)",
           "内部调查 → nèibù diàochá (điều tra nội bộ)",
           "诚信委员会 → chéngxìn wěiyuánhuì (Ủy ban Liêm chính)"
-        ]
+        ],
+        "pronunciation_focus_en": ["涉嫌 → shèxián ('suspected of' — written register)","既定程序 → jìdìng chéngxù ('established procedure')","内部调查 → nèibù diàochá ('internal investigation')","诚信委员会 → chéngxìn wěiyuánhuì ('integrity committee')"]
       },
       {
         "chinese": "知情同意书须以受试者母语撰写, 并明确说明数据用途、保存期限、以及随时退出之权利。",
@@ -4537,7 +4574,8 @@ export const lessons: ChineseLesson[] = [
           "母语 → mǔyǔ (tiếng mẹ đẻ)",
           "保存期限 → bǎocún qīxiàn (thời hạn lưu trữ)",
           "随时退出 → suíshí tuìchū (rút bất kỳ lúc nào)"
-        ]
+        ],
+        "pronunciation_focus_en": ["知情同意书 → zhīqíng tóngyìshū ('informed consent form')","母语 → mǔyǔ ('native language')","保存期限 → bǎocún qīxiàn ('retention period')","随时退出 → suíshí tuìchū ('to withdraw at any time')"]
       },
       {
         "chinese": "若研究过程中出现利益冲突, 笔者承诺立即向所属系所及资助方披露, 而非事后追溯。",
@@ -4549,7 +4587,8 @@ export const lessons: ChineseLesson[] = [
           "披露 → pīlù (khai báo — 书面)",
           "立即 → lìjí (ngay lập tức — 书面)",
           "事后追溯 → shìhòu zhuīsù (truy ngược sau khi)"
-        ]
+        ],
+        "pronunciation_focus_en": ["利益冲突 → lìyì chōngtū ('conflict of interest')","披露 → pīlù ('to disclose' — written register)","立即 → lìjí ('immediately' — written register)","事后追溯 → shìhòu zhuīsù ('to disclose retroactively')"]
       },
       {
         "chinese": "学术诚信非可商榷之议题, 而是研究者职业生涯之底线; 一旦逾越, 后果严重至不可挽回。",
@@ -4561,7 +4600,8 @@ export const lessons: ChineseLesson[] = [
           "底线 → dǐxiàn (giới hạn / lằn ranh)",
           "逾越 → yúyuè (vượt quá — 书面)",
           "不可挽回 → bùkě wǎnhuí (không thể cứu vãn)"
-        ]
+        ],
+        "pronunciation_focus_en": ["非可商榷 → fēi kě shāngquè ('not negotiable' — written register)","底线 → dǐxiàn ('the baseline / red line')","逾越 → yúyuè ('to cross/transgress' — written register)","不可挽回 → bùkě wǎnhuí ('irreversible')"]
       }
     ],
     "vocab": [
@@ -4611,7 +4651,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "玉不琢不成器", "literal": "ngọc không mài không thành đồ vật (yù bù zhuó bù chéng qì)", "meaning": "Ngọc không mài giũa không thành đồ — junior researcher cần được formative ethics education. Dùng trong educational handling: '此次教育性处理, 正是让学生从无心抄袭中学会规范——玉不琢不成器'. (书面/古典)", "example": "对于无心违规的硕士生, 教育性处理胜过纪律处分——玉不琢不成器。" }
     ],
     "cultural_notes_vi": "Văn hóa research ethics & integrity ở các trung tâm học thuật Hoa ngữ ngoài đại lục:\n\n(1) HK universities: tương đối Anglo-Saxon. RIE Offices well-established (HKUST, HKU since 2010s). Annual mandatory ethics training cho graduate students. Plagiarism cases handled formally — no 'face-saving' bypass. Public retractions when found.\n\n(2) Taiwan: ethics infrastructure trẻ hơn HK, nhưng đang catch up nhanh. NTU/NTHU/NCKU all have RIE offices since 2020. Cultural element: tiếng nói của senior PI vẫn ảnh hưởng — junior researcher có thể experience pressure to handle informally. Push back politely: 'NUS RIE Office requires formal disclosure'.\n\n(3) Singapore: cực kỳ formal. NUS + NTU + NRF có aligned ethics policies. Plagiarism = mandatory referral to RIE. Singapore academic community small — reputation damage from misconduct = career-ending.\n\n(4) Overseas (US/UK/Australia): ORI (US Office of Research Integrity), UK Research Integrity Office, Australian Research Integrity Committee. Public investigations — names of accused researchers published. Stakes very high.\n\n(5) DUAL IRB cho cross-border research: phổ biến ở Vietnam-HK / Vietnam-SG / Vietnam-Taiwan studies. Vietnamese partner institutions (HUST, HCMUT, VNU) đang phase up ethics committees but processes vẫn slower than HK/SG.\n\n(6) GENERATIVE AI 2024+: paradigm shift. Pre-2022, plagiarism was clear concept. Post-ChatGPT, 'using AI to write paragraphs' = grey zone. Current default policy: AI tools must be disclosed in methods section; AI-generated text without disclosure = misconduct (Nature, Cell, Science have stated this since 2023).\n\n(7) ĐẶC THÙ SINH VIÊN/RESEARCHER VIETNAM: \n - Strength: thường có strong work ethic, tôn trọng senior\n - Weakness: tiếng Anh academic limited → temptation to copy/paraphrase awkwardly. Plagiarism rate higher in international students from non-English countries — institutional awareness but stricter enforcement.\n - Strategy: pre-emptive ethics workshop participation, run own writing through Turnitin before submitting, disclose AI usage proactively.\n\n(8) IRB INFORMED CONSENT TIẾNG VIỆT: critical care. Vietnamese-language consent form must be reviewed by VN-IRB; HK/SG IRB cũng cần backtranslation to verify. Mistake here = ethical violation regardless of intent.\n\n(9) WHISTLEBLOWING: HK/SG có whistleblower protections, but social ostracism remains real. Junior researcher reporting misconduct may face career consequences. Strategy: anonymous reporting via RIE Office hotline, document everything, only report when evidence solid.\n\n(10) RETRACTION TRENDS 2020+: massive increase in retractions globally. Common causes: fabricated data, image manipulation, plagiarism, undisclosed COI. Junior researcher career-ending. Defense: pre-publication peer review by trusted senior + integrity check before submission.",
+    "cultural_notes_en": "Research ethics and integrity culture at Chinese-language academic centers outside the mainland:\n\n(1) HK universities: fairly Anglo-Saxon; integrity offices well-established; annual mandatory ethics training for graduate students; plagiarism handled formally with no 'face-saving' bypass; public retractions when found.\n\n(2) Taiwan: a younger ethics infrastructure catching up fast; integrity offices since ~2020; senior-PI influence persists, so a junior may feel pressure to handle things informally — push back politely citing the formal-disclosure requirement.\n\n(3) Singapore: extremely formal; aligned NUS/NTU/NRF policies; plagiarism = mandatory referral; the small community makes reputation damage career-ending.\n\n(4) Overseas (US/UK/Australia): national integrity offices run public investigations with named researchers — very high stakes.\n\n(5) DUAL IRB for cross-border research is common; partner institutions in less-resourced systems are phasing up ethics committees but run slower than HK/SG.\n\n(6) GENERATIVE AI 2024+: a paradigm shift — pre-2022 plagiarism was a clear concept; post-ChatGPT, 'using AI to write paragraphs' is a grey zone. Default policy: AI tools must be disclosed in the methods section; undisclosed AI-generated text = misconduct (top journals have stated this since 2023).\n\n(7) FOR A NON-NATIVE-ENGLISH RESEARCHER: a strong work ethic is common, but limited academic English tempts awkward paraphrase; plagiarism rates are higher among international students from non-English systems, with stricter enforcement. Strategy: attend ethics workshops pre-emptively, run your own writing through Turnitin first, disclose AI use proactively.\n\n(8) NATIVE-LANGUAGE INFORMED CONSENT: critical — a consent form must be reviewed by the local IRB and back-translated by the HK/SG IRB; a mistake here is an ethical violation regardless of intent.\n\n(9) WHISTLEBLOWING: protections exist, but social ostracism is real; report anonymously via the integrity office hotline, document everything, and report only when evidence is solid.\n\n(10) RETRACTION TRENDS 2020+: a massive global increase (fabricated data, image manipulation, plagiarism, undisclosed COI) — career-ending for a junior. Defense: trusted-senior pre-review + an integrity check before submission.",
     "tip_advice_vi": "(1) IRB EARLY: apply IRB 3-6 tháng trước data collection, không 1 tháng. Cross-border 6-12 tháng. (2) INFORMED CONSENT MOTHER-TONGUE: never English-only nếu subjects Vietnamese. Translate, then back-translate, then have native speaker verify. (3) TURNITIN/iTHENTICATE EVERY SUBMISSION: run your own paper through before submission. Catch your own self-plagiarism (citing your prior work without quotation). (4) AI USAGE DECLARATION: even if you only used ChatGPT for grammar check, declare in methods section. Better over-disclose than under. (5) COI DISCLOSURE PROACTIVE: any time you have ANY potential conflict, disclose. Never wait for someone to discover. (6) DOCUMENT ALL: emails, drafts, decisions all archived. If integrity issue arises 5 years later, you need paper trail. (7) SUPERVISOR-AS-JUDGE — NEVER: even if you're 100% sure student plagiarized, don't unilaterally punish. Document, refer to RIE Office. Protects you legally. (8) PLAGIARISM-WORKSHOP YEARLY: most universities offer 2-hour workshop. Attend annually even as faculty — refresh on evolving norms. (9) NHỮNG RED FLAG: data too clean (no outliers), p-values exactly at threshold, methods section vague, sample size impossible-to-verify, unwillingness to share raw data. Trust your gut. (10) NẾU BẠN BỊ ACCUSED: lawyer immediately if formal investigation. Don't 'fight back' on social media. Cooperate with RIE Office. Document your process. Most resolved with educational handling if intent unclear.",
+    "tip_advice_en": "(1) IRB EARLY: apply 3-6 months before data collection (cross-border 6-12), not 1 month. (2) MOTHER-TONGUE CONSENT: never English-only if subjects aren't; translate, back-translate, native-speaker verify. (3) TURNITIN EVERY SUBMISSION: run your own paper first — catch self-plagiarism (citing your prior work without quotation). (4) DECLARE AI USE even for grammar-only; over-disclose rather than under. (5) DISCLOSE COI PROACTIVELY — never wait for discovery. (6) DOCUMENT ALL (emails, drafts, decisions) — you may need the trail 5 years later. (7) SUPERVISOR-AS-JUDGE NEVER: even if certain a student plagiarized, document and refer to the integrity office — it protects you legally. (8) ATTEND THE PLAGIARISM WORKSHOP YEARLY, even as faculty, to refresh on evolving norms. (9) RED FLAGS: data too clean (no outliers), p-values exactly at threshold, vague methods, unverifiable sample size, refusal to share raw data — trust your gut. (10) IF ACCUSED: get a lawyer if it's a formal investigation; don't fight on social media; cooperate with the office; document your process — most resolve educationally if intent is unclear.",
     "exercises": [
       { "type": "fill-blank", "question": "在涉及人类受试者之研究中, 笔者须先取得机构伦理审查委员会之 ___ , 方可启动数据收集。", "answer": "批准" },
       { "type": "matching", "instruction": "Ghép thuật ngữ research ethics với chức năng tiếng Việt.", "pairs": [
@@ -4643,7 +4685,8 @@ export const lessons: ChineseLesson[] = [
           "概念词汇 → gàiniàn cíhuì (vốn từ khái niệm)",
           "方能 → fāng néng (mới có thể — 书面)",
           "展开对话 → zhǎnkāi duìhuà (mở đối thoại)"
-        ]
+        ],
+        "pronunciation_focus_en": ["横跨 → héngkuà ('to span across' — written register)","概念词汇 → gàiniàn cíhuì ('conceptual vocabulary')","方能 → fāng néng ('only then can' — written register)","展开对话 → zhǎnkāi duìhuà ('to open a dialogue')"]
       },
       {
         "chinese": "在跨学科合作中, 每一领域所谓之'证据'有不同标准: 计算机科学重benchmark, 语言学重描述深度, 公卫则要求统计显著性与外部效度。",
@@ -4655,7 +4698,8 @@ export const lessons: ChineseLesson[] = [
           "benchmark → benchmark (giữ thuật ngữ)",
           "描述深度 → miáoshù shēndù (chiều sâu mô tả)",
           "统计显著性 → tǒngjì xiǎnzhùxìng (statistical significance)"
-        ]
+        ],
+        "pronunciation_focus_en": ["所谓之 → suǒwèi zhī ('what is called' — written register)","benchmark → kept as the English term, said as English","描述深度 → miáoshù shēndù ('depth of description')","统计显著性 → tǒngjì xiǎnzhùxìng ('statistical significance')"]
       },
       {
         "chinese": "笔者建议每两周举行一次跨学科研讨会, 由不同领域成员轮流主讲, 以确保各方持续互相学习, 而非各自为政。",
@@ -4667,7 +4711,8 @@ export const lessons: ChineseLesson[] = [
           "轮流 → lúnliú (luân phiên)",
           "持续 → chíxù (liên tục)",
           "各自为政 → gèzì wéi zhèng (mạnh ai nấy làm — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["举行 → jǔxíng ('to hold [a meeting]' — written register)","轮流 → lúnliú ('to take turns')","持续 → chíxù ('continuous/ongoing')","各自为政 → gèzì wéi zhèng (idiom: 'each does their own thing / siloed' — written register)"]
       },
       {
         "chinese": "在论文署名上, 我们决定按贡献顺序而非学科地位: 主要执行者署第一, 跨学科coordinator署最后, 其他人按CRediT分类法之贡献量排序。",
@@ -4679,7 +4724,8 @@ export const lessons: ChineseLesson[] = [
           "学科地位 → xuékē dìwèi (địa vị ngành)",
           "执行者 → zhíxíngzhě (người thực hiện)",
           "coordinator → coordinator (giữ tiếng Anh)"
-        ]
+        ],
+        "pronunciation_focus_en": ["贡献顺序 → gòngxiàn shùnxù ('contribution order')","学科地位 → xuékē dìwèi ('disciplinary status')","执行者 → zhíxíngzhě ('the executor / doer')","coordinator → kept as the English term"]
       },
       {
         "chinese": "投稿期刊之选择须兼顾各方学科的可见度: 顶级CS会议虽影响因子高, 但语言学与公卫领域可能不读; 故拟同步投稿一篇综合性journal。",
@@ -4691,7 +4737,8 @@ export const lessons: ChineseLesson[] = [
           "可见度 → kějiànduì (visibility)",
           "影响因子 → yǐngxiǎng yīnzǐ (impact factor)",
           "故拟 → gù nǐ (do đó dự định — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["投稿期刊 → tóugǎo qīkān ('the journal to submit to')","可见度 → kějiàndù ('visibility')","影响因子 → yǐngxiǎng yīnzǐ ('impact factor')","故拟 → gù nǐ ('hence [we] plan to' — written register)"]
       }
     ],
     "vocab": [
@@ -4740,7 +4787,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "鸡同鸭讲", "literal": "gà với vịt nói chuyện (jī tóng yā jiǎng)", "meaning": "Nói chuyện không hiểu nhau — what happens when interdisciplinary team lacks shared vocabulary. (口语 / informal academic)", "example": "若不先建立共同之概念词汇, 跨学科会议就成了鸡同鸭讲。" }
     ],
     "cultural_notes_vi": "Văn hóa hợp tác liên ngành tại các trung tâm học thuật Hoa ngữ ngoài đại lục:\n\n(1) HK universities: interdisciplinary research increasingly funded by RGC Theme-based Research Scheme (TRS, HKD 80M / 5 năm). HKU + HKUST + CUHK joint TRS common. Cultural challenge: each university có culture mạnh, hợp tác cần explicit governance.\n\n(2) Singapore: NRF Tier 3 Programmatic Grants (S$5-15M / 5 năm) require interdisciplinary by design. NUS-NTU joint initiatives growing. Cultural: very formal, every collaboration has memorandum of understanding, project charter.\n\n(3) Taiwan: NSTC's Forward-looking Research Programs encourage interdisciplinary, but smaller scale than HK/SG. NTU-NTHU-NCKU networks established. Cultural: more PI-driven, less institutional structure than HK/SG.\n\n(4) Overseas: NSF Convergence Accelerator (US), ERC Synergy Grants (EU), ARC Centres of Excellence (Australia) — all interdisciplinary by design. Culture: very explicit governance, regular seminars, joint students.\n\n(5) ĐẶC THÙ NGHIÊN CỨU SINH VIETNAM: thường strong in own field nhưng narrow exposure to others. Suggestion: enroll in 1-2 'methods seminars' của field khác (linguistics seminar nếu CS, public health stats nếu linguistics). Builds bridge vocabulary.\n\n(6) FIELD STEREOTYPES (mostly outdated but sometimes encountered):\n - CS sees linguistics as 'soft, qualitative, no clear answers'\n - Linguistics sees CS as 'reductive, ignores context'\n - Public health sees both as 'too removed from clinical impact'\n - Strategy: confront stereotypes early in seminar 1 — open conversation\n\n(7) PUBLICATION POLITICS:\n - CS papers + Linguistics papers + Public Health papers all 'count' for tenure differently\n - At HK/SG/Taiwan, top CS conference paper > average journal paper\n - At public health departments, journal paper > conference\n - Strategy: each PI publishes flagship in their own field's top venue + co-author in companion venues\n\n(8) DISCIPLINARY CONFLICT RESOLUTION:\n - Common conflict: 'CS person wants speed, linguistics wants depth, public health wants scale'\n - Resolution: explicit project charter listing tradeoffs upfront\n - Re-visit charter every 6 months\n - Don't ignore conflicts — they grow\n\n(9) MENTORSHIP CROSS-FIELD: junior researcher in interdisciplinary project sometimes lost — has multiple co-supervisors, none feel primary responsibility. Solution: designate 'home advisor' (primary) + 'reading committee' (secondary).\n\n(10) MEASURING SUCCESS: interdisciplinary projects often slower than monodisciplinary. Tenure committees sometimes don't credit fairly. Strategy: document 'interdisciplinary contribution' explicitly in personal statement, get external letters from BOTH fields, publish flagship in synthetic journal that signals interdisciplinarity.",
+    "cultural_notes_en": "Interdisciplinary collaboration culture at Chinese-language academic centers outside the mainland:\n\n(1) HK universities: interdisciplinary work increasingly funded by large theme-based schemes; multi-university joint grants are common; each university has a strong culture, so collaboration needs explicit governance.\n\n(2) Singapore: large programmatic grants require interdisciplinarity by design; joint NUS-NTU initiatives are growing; very formal — every collaboration has an MOU and a project charter.\n\n(3) Taiwan: forward-looking programs encourage it but at smaller scale; networks are established; more PI-driven, less institutional structure than HK/SG.\n\n(4) Overseas: large convergence/synergy/centre schemes are interdisciplinary by design — very explicit governance, regular seminars, joint students.\n\n(5) FOR A REGIONAL-BACKGROUND RESEARCHER: often strong in one field but with narrow exposure to others — enroll in 1-2 methods seminars of another field to build bridge vocabulary.\n\n(6) FIELD STEREOTYPES (mostly outdated): CS sees linguistics as 'soft'; linguistics sees CS as 'reductive'; public health sees both as 'far from clinical impact'. Confront these openly in the first seminar.\n\n(7) PUBLICATION POLITICS: a top CS conference paper outranks an average journal paper at HK/SG/Taiwan, while in public health a journal paper outranks a conference; each PI should publish a flagship in their own field's top venue + co-author in companion venues.\n\n(8) DISCIPLINARY CONFLICT: 'CS wants speed, linguistics wants depth, public health wants scale' — resolve with an explicit project charter listing trade-offs up front, revisited every 6 months; don't ignore conflicts, they grow.\n\n(9) CROSS-FIELD MENTORSHIP: a junior with multiple co-supervisors can get lost — designate a primary 'home advisor' + a secondary 'reading committee'.\n\n(10) MEASURING SUCCESS: interdisciplinary projects are slower; tenure committees may not credit fairly — document the interdisciplinary contribution explicitly, get external letters from BOTH fields, and publish a flagship in a synthetic journal that signals interdisciplinarity.",
     "tip_advice_vi": "(1) START WITH CONCEPT GLOSSARY: first 2 weeks of collaboration, build shared spreadsheet — each PI defines 5 key terms from their field. Reference doc throughout. (2) BIWEEKLY SEMINARS NON-NEGOTIABLE: 60-min seminar, rotating presenter. Skip = team drifts. (3) AUTHOR ROLES STATEMENT EXPLICIT: don't rely on first/last convention alone. Write 1-paragraph 'Author Roles' clarifying each person's actual work. Avoids future dispute. (4) CO-CORRESPONDING REASONABLE: in interdisciplinary, dual co-corresponding signals all fields' weights. Most journals accept. (5) PRE-SUBMISSION 3-PI READ: month before submission, ALL co-PIs read full paper and flag confusion. CS person reads linguistics section — flags terms unclear. Vice versa. (6) DON'T SUBMIT SAME PAPER MULTIPLE VENUES: self-plagiarism. Companion papers OK with different emphases + different framing. (7) JOIN ONE FIELD'S SEMINAR: junior researcher should attend at least 5 seminars in non-home field per year. Pick up vocabulary, see how their reviewers think. (8) EXPLICIT METHODOLOGICAL TRADE-OFFS: in methods section, acknowledge each field's standards: 'In line with CS conventions, we report benchmarks; per linguistics tradition, we provide qualitative depth in 5 case studies; per public health, we report 95% CI on primary outcome.' (9) INTERDISCIPLINARY TENURE CASE BUILDING: keep portfolio with both field-specific top papers + cross-cutting flagship. External letter writers from BOTH fields explicit ask. (10) ACKNOWLEDGE CONFLICT EARLY: if CS PI wants to skip 6-week ethics review, raise it explicitly in seminar. Don't let resentment build.",
+    "tip_advice_en": "(1) START WITH A CONCEPT GLOSSARY: in the first 2 weeks, each PI defines 5 key terms from their field in a shared spreadsheet — reference it throughout. (2) BIWEEKLY SEMINARS NON-NEGOTIABLE (60 min, rotating presenter); skipping = the team drifts. (3) EXPLICIT AUTHOR-ROLES STATEMENT: a 1-paragraph clarification of each person's actual work, not just first/last convention. (4) CO-CORRESPONDING IS REASONABLE in interdisciplinary work — it signals all fields' weights; most journals accept it. (5) PRE-SUBMISSION 3-PI READ: a month before, all co-PIs read the full paper and flag confusion across sections. (6) DON'T SUBMIT THE SAME PAPER to multiple venues (self-plagiarism); companion papers with different emphases are OK. (7) JOIN ONE FIELD'S SEMINAR: attend ≥5 non-home-field seminars/year to learn vocabulary and how those reviewers think. (8) STATE METHODOLOGICAL TRADE-OFFS EXPLICITLY in the methods section, acknowledging each field's standards. (9) BUILD AN INTERDISCIPLINARY TENURE CASE: keep both field-specific top papers + a cross-cutting flagship; ask external letter writers from BOTH fields. (10) ACKNOWLEDGE CONFLICT EARLY in seminar — don't let resentment build.",
     "exercises": [
       { "type": "fill-blank", "question": "本项目 ___ 计算机科学、语言学与公共卫生三个领域。", "answer": "横跨" },
       { "type": "matching", "instruction": "Ghép thuật ngữ liên ngành với chức năng tiếng Việt.", "pairs": [
@@ -4772,7 +4821,8 @@ export const lessons: ChineseLesson[] = [
           "晋升 → jìnshēng (thăng chức — 书面)",
           "贡献 → gòngxiàn (đóng góp)",
           "教学与服务 → jiàoxué yǔ fúwù (teaching và service)"
-        ]
+        ],
+        "pronunciation_focus_en": ["今欲 → jīn yù ('now wish to' — written register)","晋升 → jìnshēng ('to be promoted' — written register)","贡献 → gòngxiàn ('contributions')","教学与服务 → jiàoxué yǔ fúwù ('teaching and service')"]
       },
       {
         "chinese": "六年累计发表论文二十二篇, 其中第一作者或通讯作者十五篇, 发表于本领域顶级会议与期刊, 累计引用超过一千二百次。",
@@ -4784,7 +4834,8 @@ export const lessons: ChineseLesson[] = [
           "顶级会议与期刊 → dǐngjí huìyì yǔ qīkān (hội nghị + tạp chí hàng đầu)",
           "通讯作者 → tōngxùn zuòzhě (corresponding author)",
           "引用 → yǐnyòng (trích dẫn)"
-        ]
+        ],
+        "pronunciation_focus_en": ["累计 → lěijì ('cumulative' — written register)","顶级会议与期刊 → dǐngjí huìyì yǔ qīkān ('top conferences and journals')","通讯作者 → tōngxùn zuòzhě ('corresponding author')","引用 → yǐnyòng ('citations')"]
       },
       {
         "chinese": "在外部资助方面, 笔者作为PI共获三项主要资助: NSF CAREER Award (US$650K)、Sloan Foundation Fellowship、以及Microsoft Research合作研究经费, 总额逾一百二十万美元。",
@@ -4796,7 +4847,8 @@ export const lessons: ChineseLesson[] = [
           "作为PI → zuòwéi PI (với tư cách PI)",
           "总额 → zǒng'é (tổng cộng)",
           "逾 → yú (trên / vượt — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["外部资助 → wàibù zīzhù ('external funding')","作为PI → zuòwéi PI ('as PI')","总额 → zǒng'é ('total amount')","逾 → yú ('exceeding/over' — written register)"]
       },
       {
         "chinese": "教学方面, 累计指导博士生五名 (其中三名已毕业进入学术界), 硕士生十二名, 本科研究生三十余名; 课程评分平均4.6/5.0, 高于学院中位数。",
@@ -4808,7 +4860,8 @@ export const lessons: ChineseLesson[] = [
           "毕业进入学术界 → bìyè jìnrù xuéshùjiè (tốt nghiệp vào học giới)",
           "课程评分 → kèchéng píngfēn (điểm đánh giá khóa)",
           "中位数 → zhōngwèishù (trung vị)"
-        ]
+        ],
+        "pronunciation_focus_en": ["指导 → zhǐdǎo ('to supervise' [students])","毕业进入学术界 → bìyè jìnrù xuéshùjiè ('graduated into academia')","课程评分 → kèchéng píngfēn ('course rating')","中位数 → zhōngwèishù ('median')"]
       },
       {
         "chinese": "服务方面, 笔者担任ACL Program Committee成员三届, NSF外审若干次, 并主持系内女性教员发展委员会两年, 反映对学界与机构之承担。",
@@ -4820,7 +4873,8 @@ export const lessons: ChineseLesson[] = [
           "外审 → wàishěn (external reviewer)",
           "主持 → zhǔchí (chủ trì)",
           "承担 → chéngdān (cam kết / đảm nhận)"
-        ]
+        ],
+        "pronunciation_focus_en": ["担任 → dānrèn ('to serve as' — written register)","外审 → wàishěn ('external reviewer')","主持 → zhǔchí ('to chair')","承担 → chéngdān ('commitment / to shoulder')"]
       }
     ],
     "vocab": [
@@ -4868,7 +4922,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "千锤百炼", "literal": "ngàn lần đập trăm lần luyện (qiān chuí bǎi liàn)", "meaning": "Nhiều lần luyện tập, hoàn thiện — describes tenure track as forging process. (书面/古典)", "example": "六年tenure track乃千锤百炼之过程, 将一名assistant professor锻造为成熟的scholar。" }
     ],
     "cultural_notes_vi": "Văn hóa tenure-track promotion ở các trường research-intensive overseas:\n\n(1) US R1 universities (Stanford/MIT/Berkeley/Princeton/Yale/Harvard/Caltech): 6-year tenure clock standard. Submission Sept Y6, review Y6-Y7, decision May Y7. Denial = end of contract Aug Y8 (1-year terminal contract).\n\n(2) UK: no 'tenure' in US sense. 'Permanent contract' equivalent: lecturer (~assistant prof, permanent after probation 3-5 năm), senior lecturer (~associate, with research evaluation), reader, professor. Less formal but equally competitive.\n\n(3) Australia/New Zealand: 'continuing position' = permanent. Performance review every 5 years for grant + publication record. Like UK, less formal clock but real evaluation.\n\n(4) HK/SG/Taiwan: imported US 6-year clock since ~2010. HKUST/NUS/NTU/HKU all follow Stanford-style. Recent trend: tougher than US — 'asia-pacific R1' bar > average US R1.\n\n(5) ĐẶC THÙ NGHIÊN CỨU SINH VIETNAM at US tenure-track:\n   - Strength: bilingual asset (English + Vietnamese), cultural bridge, dataset access\n   - Weakness: visa concerns can affect grant timing (US needs 5-year permanent residency for some grants). Plan early.\n   - Strategy: pursue green card during PhD/postdoc, by AP year-1 should have permanent residency to maximize grant eligibility.\n\n(6) EXTERNAL LETTER POLITICS:\n   - 'Home-team' letter: senior in your subfield, knows your work, will write favorably\n   - 'Arms-length' letter: never co-authored, distant institutionally — committee values their objectivity highly\n   - Mix is critical. All home-team = looks rigged. All arms-length = no one knows your work in detail.\n\n(7) DIVERSITY STATEMENT (2018+):\n   - Mandatory at Stanford/Berkeley/MIT/UC system (state law in CA)\n   - Optional but expected at most R1\n   - Don't fake — committee will catch insincerity\n   - Concrete actions > aspirational language\n\n(8) NUMBERS GAME REALITY:\n   - 22 papers in 6 years = strong but not exceptional\n   - 30+ papers = exceptional CS, normal for some bio fields\n   - $1M+ external funding = solid for CS, lower bar for humanities\n   - Citations vary HUGELY by field — committee uses field-specific norms\n\n(9) WORK-LIFE: tenure-track ở US notoriously brutal. 70-hour weeks for 6 years common. Junior faculty mental health crisis acknowledged. Strategy: choose lab carefully, set boundaries early, don't accept all service requests.\n\n(10) FAILURE RATE: top R1 universities average 60-70% tenure success. 30-40% denied. Denial NOT career-ending — many denied at Stanford get tenure at UC Berkeley year 7-8. Industry transition also viable.",
+    "cultural_notes_en": "Tenure-track promotion culture at research-intensive universities overseas:\n\n(1) US R1 universities: a 6-year tenure clock — submit Sept Y6, review Y6-Y7, decide May Y7; denial = a 1-year terminal contract ending Y8.\n\n(2) UK: no US-style 'tenure'; the permanent-contract equivalent runs lecturer → senior lecturer → reader → professor; less formal but equally competitive.\n\n(3) Australia/NZ: a 'continuing position' = permanent, with a 5-yearly performance review on grants + publications.\n\n(4) HK/SG/Taiwan: imported the US 6-year clock since ~2010; recent trend is tougher than the US — the 'Asia-Pacific R1' bar exceeds the average US R1.\n\n(5) FOR A NON-CITIZEN RESEARCHER on a US tenure track: bilingual/cultural-bridge strengths, but visa status can affect grant timing (some grants need permanent residency) — plan early; aim for permanent residency by AP year 1 to maximize grant eligibility.\n\n(6) EXTERNAL LETTER POLITICS: a 'home-team' letter (a senior in your subfield who knows your work, writes favorably) vs an 'arms-length' letter (never co-authored, institutionally distant — committees prize the objectivity). A mix is critical: all home-team looks rigged; all arms-length means no one knows your work in detail.\n\n(7) DIVERSITY STATEMENT (2018+): mandatory at several systems (state law in California), expected at most R1. Don't fake it — committees catch insincerity; concrete actions beat aspirational language.\n\n(8) NUMBERS REALITY: 22 papers in 6 years is strong but not exceptional; field norms vary hugely (citations especially) and the committee uses field-specific benchmarks.\n\n(9) WORK-LIFE: the US tenure track is notoriously brutal (70-hour weeks for 6 years are common); a junior-faculty mental-health crisis is acknowledged — choose the lab carefully, set boundaries early, decline excess service.\n\n(10) FAILURE RATE: top R1 averages 60-70% tenure success; denial is NOT career-ending — many denied at one elite school get tenure at another, and an industry transition is viable.",
     "tip_advice_vi": "(1) START TENURE CLOCK PREP YEAR 1: don't wait until year 5. Track grants, papers, students, service from day 1. (2) NSF CAREER YEAR 2-4: most prestigious early-career grant. Apply year 2 (often denied), revise + resubmit year 3-4 (better odds). $650K + 5 years funding + recognition. (3) SLOAN FELLOWSHIP: $75K + prestige. Applications open Sept, decisions Feb. Independent of NSF CAREER. (4) EXTERNAL LETTER NETWORK BUILD EARLY: by year 3, have 25 senior contacts in field. Conference panel + invited talks + service. (5) PHD STUDENT PLACEMENT: 3+ PhDs placed at R1/R2 = strong tenure case. Your students' success = your impact metric. (6) SERVICE BALANCE: serve 1-2 committees max year 1-3, expand year 4-5. Don't let service eat research time. (7) DIVERSITY STATEMENT REAL: keep portfolio of D&I actions throughout 6 years. Don't write retroactively year 6 — committee senses it. (8) CHAIR/DEAN AS ALLY: meet quarterly, share research progress, ask for feedback. Chair writes internal letter weight 20% of decision. (9) DRY-RUN INTERVIEW YEAR 5.5: ask 2 senior colleagues at OTHER institutions to mock interview your tenure case. Real feedback. (10) PLAN B: industry option must exist. If Stanford denies, FAANG companies offer $400-700K total comp — often better than associate prof. Don't let denial = identity collapse.",
+    "tip_advice_en": "(1) START CLOCK PREP IN YEAR 1: track grants, papers, students, service from day 1. (2) NSF CAREER YEAR 2-4: the marquee early-career grant — apply year 2 (often denied), revise + resubmit year 3-4. (3) SLOAN FELLOWSHIP: prestige + funding, independent of NSF CAREER. (4) BUILD THE EXTERNAL-LETTER NETWORK EARLY: by year 3 have ~25 senior contacts (panels, invited talks, service). (5) PHD PLACEMENT: 3+ students placed at R1/R2 = a strong case; their success is your impact metric. (6) SERVICE BALANCE: 1-2 committees in years 1-3, expand later — don't let service eat research. (7) DIVERSITY STATEMENT REAL: keep a D&I-actions portfolio across all 6 years, not written retroactively. (8) CHAIR/DEAN AS ALLY: meet quarterly; the chair's internal letter carries ~20% weight. (9) DRY-RUN INTERVIEW at year 5.5: mock your tenure case with 2 senior colleagues at OTHER institutions. (10) HAVE A PLAN B: an industry option must exist — denial must not equal identity collapse.",
     "exercises": [
       { "type": "fill-blank", "question": "笔者今欲就过去六年之研究、教学与服务之贡献, 申请由Assistant Professor ___ Tenured Associate Professor。", "answer": "晋升" },
       { "type": "matching", "instruction": "Ghép thuật ngữ tenure case với chức năng tiếng Việt.", "pairs": [
@@ -4900,7 +4956,8 @@ export const lessons: ChineseLesson[] = [
           "迥异 → jiǒngyì (khác xa — 书面)",
           "混淆 → hùnxiáo (trộn lẫn / nhầm lẫn)",
           "代表机构 → dàibiǎo jīgòu (đại diện cơ sở)"
-        ]
+        ],
+        "pronunciation_focus_en": ["明确区分 → míngquè qūfēn ('to clearly distinguish' — written register)","迥异 → jiǒngyì ('vastly different' — written register)","混淆 → hùnxiáo ('to conflate/confuse')","代表机构 → dàibiǎo jīgòu ('to represent the institution')"]
       },
       {
         "chinese": "研究发现固然有公共意义, 然记者常将复杂结论简化为可读标题, 笔者必须在采访中预先提示其局限性, 以免被误读。",
@@ -4912,7 +4969,8 @@ export const lessons: ChineseLesson[] = [
           "记者 → jìzhě (nhà báo)",
           "可读标题 → kědú biāotí (tiêu đề dễ đọc)",
           "预先提示 → yùxiān tíshì (nhấn mạnh trước)"
-        ]
+        ],
+        "pronunciation_focus_en": ["固然 → gùrán ('it is true that / granted' — written register)","记者 → jìzhě ('reporter/journalist')","可读标题 → kědú biāotí ('a readable headline')","预先提示 → yùxiān tíshì ('to flag in advance')"]
       },
       {
         "chinese": "若有同行学者公开质疑笔者之研究, 应循学术规范以书面形式回应——通过期刊回信、学会平台或同行评议刊物, 而非于社交媒体上对峙。",
@@ -4924,7 +4982,8 @@ export const lessons: ChineseLesson[] = [
           "公开质疑 → gōngkāi zhíyí (chất vấn công khai)",
           "学术规范 → xuéshù guīfàn (chuẩn học thuật)",
           "书面形式 → shūmiàn xíngshì (hình thức văn bản)"
-        ]
+        ],
+        "pronunciation_focus_en": ["同行学者 → tóngháng xuézhě ('peer scholars')","公开质疑 → gōngkāi zhíyí ('to publicly question')","学术规范 → xuéshù guīfàn ('academic norms')","书面形式 → shūmiàn xíngshì ('in written form')"]
       },
       {
         "chinese": "撰写评论文章 (op-ed) 时, 笔者须在标题或开头三段中明确披露身份与利益相关性, 以维护读者对学术发言之信任。",
@@ -4936,7 +4995,8 @@ export const lessons: ChineseLesson[] = [
           "披露身份 → pīlù shēnfèn (khai báo thân phận)",
           "利益相关性 → lìyì xiāngguānxìng (liên quan lợi ích)",
           "维护信任 → wéihù xìnrèn (duy trì niềm tin)"
-        ]
+        ],
+        "pronunciation_focus_en": ["评论文章 → pínglùn wénzhāng ('op-ed / commentary article')","披露身份 → pīlù shēnfèn ('to disclose identity')","利益相关性 → lìyì xiāngguānxìng ('conflict of interest / relevance')","维护信任 → wéihù xìnrèn ('to maintain trust')"]
       },
       {
         "chinese": "公共发言之最高准则不在于追求曝光, 而在于以严谨之研究服务社会; 一切偏离此准则之言行, 终将损害学者之公信力。",
@@ -4948,7 +5008,8 @@ export const lessons: ChineseLesson[] = [
           "曝光 → pùguāng (sự nổi tiếng / phơi bày)",
           "公信力 → gōngxìnlì (uy tín công cộng)",
           "终将损害 → zhōng jiāng sǔnhài (cuối cùng sẽ làm hại)"
-        ]
+        ],
+        "pronunciation_focus_en": ["最高准则 → zuìgāo zhǔnzé ('the highest standard')","曝光 → pùguāng ('exposure/publicity')","公信力 → gōngxìnlì ('public credibility')","终将损害 → zhōng jiāng sǔnhài ('will ultimately damage')"]
       }
     ],
     "vocab": [
@@ -4995,7 +5056,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "言而有信", "literal": "lời nói có niềm tin (yán ér yǒu xìn)", "meaning": "Lời đã nói thì giữ lời — gốc Lunyu. Dùng cho public speech ethics: 'as researchers, 言而有信 — 对说过的研究承诺负责'. (书面/古典)", "example": "学者发言贵在言而有信——对自己研究的局限性诚实交代, 才能赢得长期公信力。" }
     ],
     "cultural_notes_vi": "Văn hóa public scholarship & media engagement tại các trung tâm học thuật Hoa ngữ ngoài đại lục:\n\n(1) HK media landscape: SCMP, RTHK, HKEJ — tiếng Anh và Trung. RTHK có chương trình radio mỗi sáng mời academics phỏng vấn. Cần PR briefing trước. Sound bite quan trọng — 30-60 giây.\n\n(2) Singapore media: Channel News Asia, Straits Times, Today — chuyên nghiệp cao, biết phỏng vấn academics. NUS/NTU PR offices regularly book chỗ trên CNA cho researchers. Cần PR clearance trước khi nhận phỏng vấn lớn.\n\n(3) Taiwan media: TVBS, CTi, Liberty Times — politically polarized. Academic engagement requires extra caution. Avoid politically charged topics unless that's your research domain. Sound bite Mandarin Đài.\n\n(4) Overseas (US/UK/Australia): NYT, The Atlantic, BBC, Guardian, ABC News, Channel 4. Academic engagement strong tradition. Medium articles/Blogs increasingly important. Op-eds in big papers carry weight in tenure case (especially Stanford/Berkeley).\n\n(5) ĐẶC THÙ NGHIÊN CỨU SINH VIETNAM: \n   - Strength: Vietnamese-speaking media (VOV, VTV, Tuoi Tre) wants Vietnamese-American researchers as expert source\n   - Weakness: Vietnamese newspaper/media may have less rigorous academic norms — careful about quote accuracy\n   - Strategy: ask Vietnamese reporter to send draft for accuracy check (a normal request even though not always honored)\n\n(6) PEER PUBLIC DISPUTES: avoid at all costs. Formal channel always. Tweets at peers about academic disagreements = career damage. Even when you're right.\n\n(7) PR OFFICE AS ALLY: junior researcher should befriend PR officer. They can help vet reporter quality, schedule interviews thoughtfully, prepare sound bites. Most R1 universities offer media training annually.\n\n(8) OP-ED ECONOMICS: top-tier op-ed (NYT, Lancet) = $0-500 honorarium but huge career visibility. WhatsApp groups of senior academics share op-ed editor contacts.\n\n(9) RECORD KEEPING: keep transcript of every media interview. Save URL of every op-ed. Save tweets/social media engagement. For tenure case, public scholarship is part of dossier.\n\n(10) CRISIS COMMUNICATION: if your research goes viral wrongly (misinterpreted), Stanford/HKUST/NUS PR offices have crisis comms protocols. Don't try DIY. Coordinate with PR within 6 hours.",
+    "cultural_notes_en": "Public-scholarship and media-engagement culture at Chinese-language academic centers outside the mainland:\n\n(1) HK media: English and Chinese outlets; public radio runs morning academic interviews — a PR briefing first; the 30-60 second sound bite matters.\n\n(2) Singapore media: highly professional, used to interviewing academics; university PR offices regularly book slots and require PR clearance before a major interview.\n\n(3) Taiwan media: politically polarized — extra caution; avoid politically charged topics unless that is your research domain.\n\n(4) Overseas (US/UK/Australia): a strong public-engagement tradition; blog/Medium pieces increasingly matter; op-eds in big papers carry weight in a tenure case.\n\n(5) FOR A REGIONAL-BACKGROUND RESEARCHER: home-language media may want you as an expert source but can have less rigorous norms — ask the reporter to send the relevant quotes for an accuracy check (a normal request, not always honored).\n\n(6) PEER PUBLIC DISPUTES: avoid at all costs — always the formal channel; tweeting at peers about an academic disagreement damages your career even when you're right.\n\n(7) PR OFFICE AS ALLY: befriend the PR officer — they vet reporter quality, schedule thoughtfully, prep sound bites; most R1 universities offer annual media training.\n\n(8) OP-ED ECONOMICS: a top-tier op-ed pays little but carries huge career visibility; senior academics share editor contacts.\n\n(9) RECORD KEEPING: keep a transcript of every interview and the URL of every op-ed — public scholarship is part of the tenure dossier.\n\n(10) CRISIS COMMUNICATION: if your research goes viral misinterpreted, use the PR office's crisis protocol — don't DIY; coordinate within ~6 hours.",
     "tip_advice_vi": "(1) PR OFFICE ALLY: book a 1-hour meet with University communications office EARLY in career — learn their process. (2) PRE-INTERVIEW BRIEFING: 24h before TV/live, request 30-min PR briefing. Free training. (3) THREE SOUND BITES READY: write 3 different 30-sec summaries before any media call. Practice aloud. (4) STATE LIMITATIONS UPFRONT: '我们的发现局限于X' as first sentence — preempt 'AI solves everything' headlines. (5) PEER CHALLENGE — FORMAL CHANNEL ONLY: never engage on Twitter. Always 'we will respond via journal correspondence'. (6) OP-ED DISCLOSURE TITLE/PARAGRAPH 1-3: identity, affiliation, funding, COI. Non-negotiable. (7) ASK FOR DRAFT REVIEW: 'before publishing, please send me the relevant quotes for accuracy check'. Reasonable request. Some reporters say no — that's a flag to be more careful in interview. (8) DON'T RESPOND IN HEAT: if attacked on Twitter, wait 24 hours. Most disputes burn out. If still need response, write formal letter. (9) RECORD EVERY INTERVIEW: ask permission to record. If denied, ask reporter to confirm key quotes via email post-interview. Documentation protects you. (10) PUBLIC SCHOLARSHIP COUNT IN TENURE: Stanford/UC Berkeley count public engagement. Document op-eds, podcast appearances, TED talks in CV. Keep portfolio.",
+    "tip_advice_en": "(1) PR OFFICE ALLY: book a 1-hour meeting with University communications EARLY to learn their process. (2) PRE-INTERVIEW BRIEFING: 24h before live TV, request a 30-min PR briefing (free training). (3) THREE SOUND BITES READY: write 3 different 30-second summaries before any media call; practice aloud. (4) STATE LIMITATIONS UPFRONT: '我们的发现局限于X' as the first sentence — preempt 'AI solves everything' headlines. (5) PEER CHALLENGE — FORMAL CHANNEL ONLY: never engage on Twitter; 'we will respond via journal correspondence'. (6) OP-ED DISCLOSURE in the title / first 3 paragraphs: identity, affiliation, funding, COI — non-negotiable. (7) ASK FOR DRAFT REVIEW of your quotes; a refusal is a flag to be more careful in the interview. (8) DON'T RESPOND IN HEAT: wait 24h; most disputes burn out; if a response is still needed, write a formal letter. (9) RECORD EVERY INTERVIEW (ask permission; if denied, confirm key quotes by email afterward). (10) PUBLIC SCHOLARSHIP COUNTS in some tenure systems — document op-eds, podcasts, talks in the CV.",
     "exercises": [
       { "type": "fill-blank", "question": "在接受媒体采访之前, 笔者须明确区分三类发言: 个人观点、研究发现、以及 ___ 之声明。", "answer": "代表机构" },
       { "type": "matching", "instruction": "Ghép thuật ngữ public scholarship với chức năng tiếng Việt.", "pairs": [
@@ -5027,7 +5090,8 @@ export const lessons: ChineseLesson[] = [
           "导师理念 → dǎoshī lǐniàn (triết lý hướng dẫn)",
           "长期 → chángqī (dài hạn)",
           "唯一指标 → wéiyī zhǐbiāo (chỉ tiêu duy nhất)"
-        ]
+        ],
+        "pronunciation_focus_en": ["秉持 → bǐngchí ('to uphold/hold to' — written register)","导师理念 → dǎoshī lǐniàn ('mentoring philosophy')","长期 → chángqī ('long-term')","唯一指标 → wéiyī zhǐbiāo ('the sole metric')"]
       },
       {
         "chinese": "每周一次之one-on-one会面, 笔者要求学生提交三类内容: 上周完成事项、本周计划、以及一项让自己困惑之问题。",
@@ -5039,7 +5103,8 @@ export const lessons: ChineseLesson[] = [
           "完成事项 → wánchéng shìxiàng (việc đã hoàn thành)",
           "本周计划 → běn zhōu jìhuà (kế hoạch tuần)",
           "困惑 → kùnhuò (bối rối / lúng túng)"
-        ]
+        ],
+        "pronunciation_focus_en": ["one-on-one → kept as the English term","完成事项 → wánchéng shìxiàng ('completed items')","本周计划 → běn zhōu jìhuà ('this week's plan')","困惑 → kùnhuò ('puzzled/confused')"]
       },
       {
         "chinese": "面对学生之研究困境, 笔者倾向先提问而非直接给出答案; 此一做法虽缓慢, 然能逐步培育学生独立思考之能力。",
@@ -5051,7 +5116,8 @@ export const lessons: ChineseLesson[] = [
           "缓慢 → huǎnmàn (chậm)",
           "逐步培育 → zhúbù péiyù (dần dần nuôi dưỡng)",
           "独立思考 → dúlì sīkǎo (tư duy độc lập)"
-        ]
+        ],
+        "pronunciation_focus_en": ["倾向 → qīngxiàng ('to tend toward' — written register)","缓慢 → huǎnmàn ('slow')","逐步培育 → zhúbù péiyù ('to gradually nurture')","独立思考 → dúlì sīkǎo ('independent thinking')"]
       },
       {
         "chinese": "若学生之论文初稿出现严重不足, 笔者建议先指出最关键之三处问题, 而非全面修改; 学生自行重写之过程才是真正之学习。",
@@ -5063,7 +5129,8 @@ export const lessons: ChineseLesson[] = [
           "最关键之三处 → zuì guānjiàn zhī sān chù (3 chỗ then chốt nhất)",
           "全面修改 → quánmiàn xiūgǎi (sửa toàn diện)",
           "重写 → chóngxiě (viết lại)"
-        ]
+        ],
+        "pronunciation_focus_en": ["严重不足 → yánzhòng bùzú ('serious deficiency')","最关键之三处 → zuì guānjiàn zhī sān chù ('the three most critical points' — written register)","全面修改 → quánmiàn xiūgǎi ('comprehensive revision')","重写 → chóngxiě ('to rewrite')"]
       },
       {
         "chinese": "毕业后, 笔者仍视前学生为学术家庭之成员, 持续提供推荐信、学术建议与职业网络支持; 这是一辈子之关系。",
@@ -5075,7 +5142,8 @@ export const lessons: ChineseLesson[] = [
           "推荐信 → tuījiànxìn (thư giới thiệu)",
           "职业网络 → zhíyè wǎngluò (mạng lưới nghề nghiệp)",
           "一辈子 → yībèizi (cả đời)"
-        ]
+        ],
+        "pronunciation_focus_en": ["学术家庭 → xuéshù jiātíng ('academic family')","推荐信 → tuījiànxìn ('letter of recommendation')","职业网络 → zhíyè wǎngluò ('professional network')","一辈子 → yībèizi ('a whole lifetime')"]
       }
     ],
     "vocab": [
@@ -5124,7 +5192,9 @@ export const lessons: ChineseLesson[] = [
       { "idiom": "授人以渔", "literal": "dạy người câu cá (shòu rén yǐ yú)", "meaning": "Cho cá không bằng dạy cách câu — give skill, not just answer. (书面/古典)", "example": "笔者倾向授人以渔——通过提问引导学生自己找答案, 而非直接给出。" }
     ],
     "cultural_notes_vi": "Văn hóa supervision tại các trung tâm học thuật Hoa ngữ ngoài đại lục:\n\n(1) HK universities (HKUST/HKU/CUHK/CityU): Anglo-Saxon model. Weekly 1-on-1 standard. Power distance lower than mainland but still hierarchical. Students still call advisor '老师' or 'Professor'. Western-influenced ethics.\n\n(2) Taiwan: 'gia đình học thuật' (学术家庭) culture strong. PhD advisor + students = lifelong bond. Annual reunion, supervisor often invited to weddings, graduations. Power distance higher than HK/SG. Traditional teacher-student hierarchy.\n\n(3) Singapore: Mixed Anglo + Confucian. Formal weekly meetings. Lower power distance than Taiwan. Students more direct than HK students. NUS/NTU encourage Western-style mentorship.\n\n(4) Overseas (US/UK/Australia): Western model. Power distance lowest. Students may push back directly on advisor. Multiple co-supervisors common. 'Academic family' concept weaker than Taiwan/HK.\n\n(5) ĐẶC THÙ NGHIÊN CỨU SINH VIETNAM:\n   - Coming from Vietnamese hierarchy (similar to Taiwan), HK/Singapore ' lower power distance' may feel uncomfortable initially\n   - Strategy: ask advisor explicitly 'how should I disagree with you?' — sets norm\n   - Don't conflate Vietnamese deference with academic dependence — push back when warranted\n\n(6) MENTORING STYLES:\n   - 'Hands-off' (Anglo-Saxon): advisor sets direction, student drives. Good for self-directed students.\n   - 'Hands-on' (Asian traditional): advisor reviews drafts line-by-line, micro-manages. Good for students needing structure.\n   - 'Coaching' (modern): advisor asks questions, student finds answers. Best for developing independence.\n   - Most modern advisors use mix.\n\n(7) ROMANTIC RELATIONSHIPS WITH STUDENTS:\n   - HK/SG/Taiwan: career-ending. NEVER initiate.\n   - Even after graduation, ethically complex. Prefer to wait until power asymmetry fully gone (1-2 years post-defense).\n   - Universities have explicit rules. Read your institution's policy.\n\n(8) GIFT/HONORARY AUTHORSHIP PRESSURE:\n   - Some senior advisors expect to be added to all student papers regardless of contribution\n   - Junior researcher must navigate carefully\n   - Strategy: explicitly discuss CRediT before each paper. If senior pressures gift authorship, refer to ICMJE three-criteria. Polite firm.\n\n(9) MENTAL HEALTH AWARENESS 2024+:\n   - PhD attrition rate 30-50% globally\n   - Mental health crisis common (depression, anxiety, burnout)\n   - Modern advisors trained to recognize signs and refer to counseling\n   - HK/SG/Taiwan all have university counseling centers — refer don't DIY\n\n(10) ALUMNI NETWORK VALUE:\n    - Lifetime career resource\n    - Job referrals, recommendation letters, collaboration\n    - Maintain via annual coffee, conference reunions, email check-ins\n    - Don't underestimate — your advisor's network = your network",
+    "cultural_notes_en": "Supervision culture at Chinese-language academic centers outside the mainland:\n\n(1) HK universities: Anglo-Saxon model; weekly 1-on-1 standard; lower power distance than the mainland but still hierarchical (students still say '老师' / 'Professor'); Western-influenced ethics.\n\n(2) Taiwan: a strong 'academic family' (学术家庭) culture — the PhD advisor-student bond is lifelong (reunions, weddings, graduations); higher power distance than HK/SG; traditional teacher-student hierarchy.\n\n(3) Singapore: mixed Anglo + Confucian; formal weekly meetings; lower power distance than Taiwan; students more direct than in HK; Western-style mentorship encouraged.\n\n(4) Overseas (US/UK/Australia): Western model, lowest power distance; students may push back directly; multiple co-supervisors common; the 'academic family' concept is weaker than in Taiwan/HK.\n\n(5) FOR A RESEARCHER FROM A HIGH-DEFERENCE BACKGROUND: HK/Singapore's lower power distance can feel uncomfortable initially. Strategy: ask the advisor explicitly 'how should I disagree with you?' to set the norm; don't conflate cultural deference with academic dependence — push back when warranted.\n\n(6) MENTORING STYLES: 'hands-off' (advisor sets direction, student drives — good for self-directed students); 'hands-on' (line-by-line review, micro-managing — good for those needing structure); 'coaching' (advisor asks questions, student finds answers — best for developing independence). Most modern advisors mix.\n\n(7) ROMANTIC RELATIONSHIPS WITH STUDENTS: career-ending — NEVER initiate; ethically complex even post-graduation (wait until the power asymmetry is fully gone); read the institution's explicit policy.\n\n(8) GIFT/HONORARY AUTHORSHIP PRESSURE: some seniors expect to be added to all student papers regardless of contribution — discuss CRediT explicitly before each paper; if pressured, cite the ICMJE three criteria, politely but firmly.\n\n(9) MENTAL-HEALTH AWARENESS 2024+: PhD attrition is 30-50% globally with a real mental-health crisis; modern advisors are trained to recognize signs and refer to counseling — refer, don't DIY.\n\n(10) ALUMNI NETWORK VALUE: a lifetime career resource (referrals, letters, collaboration) maintained via annual coffee, conference reunions, email check-ins — the advisor's network becomes the student's.",
     "tip_advice_vi": "(1) WEEKLY ONE-ON-ONE NON-NEGOTIABLE: 30-60 min per student. Skip = signal lack of priority. (2) ASK FIRST, ANSWER LATER: Socratic method slow but builds independence. Students remember answers they discover. (3) THREE-ISSUE FEEDBACK ON FIRST DRAFT: don't comprehensive review draft 1. Pick 3 critical, let student rewrite. Comprehensive on draft 3. (4) DOCUMENT EVERY MEETING: 5-min note after each 1-on-1. Search later when issues arise. Protects both sides. (5) DON'T DECIDE CAREER FOR STUDENT: industry vs academia is theirs. Share perspective, trade-offs, not verdict. (6) RESPECT FAMILY VOICE: many students from Asian families have parents weighing in on career. Acknowledge, don't dismiss. Help student think clearly given family input. (7) MAINTAIN PROFESSIONAL DISTANCE: NEVER romantic with current student. NEVER pressure gift authorship. NEVER use student's data for non-academic purposes. (8) MENTAL HEALTH ALERTNESS: signs include skipping meetings, dropping productivity, isolation. Refer to counseling immediately, don't DIY. (9) ALUMNI NETWORK INVESTMENT: maintain post-graduation. Coffee meetings, conference reunions. Your students' success = your impact metric. (10) ACADEMIC FAMILY LIFETIME COMMITMENT: recommendation letters for lifetime. Even if student leaves academia. The relationship is one of true mentorship, not transaction.",
+    "tip_advice_en": "(1) WEEKLY ONE-ON-ONE NON-NEGOTIABLE (30-60 min/student); skipping signals a lack of priority. (2) ASK FIRST, ANSWER LATER: the Socratic method is slow but builds independence — students remember answers they discover. (3) THREE-ISSUE FEEDBACK ON DRAFT 1: don't comprehensively review the first draft; pick 3 critical issues, let the student rewrite; comprehensive on draft 3. (4) DOCUMENT EVERY MEETING (a 5-min note) — searchable later, protects both sides. (5) DON'T DECIDE THE CAREER FOR THE STUDENT: industry vs academia is theirs; share perspective and trade-offs, not a verdict. (6) RESPECT THE FAMILY VOICE: many students have parents weighing in on career — acknowledge, don't dismiss; help them think clearly given that input. (7) MAINTAIN PROFESSIONAL DISTANCE: never romantic with a current student, never pressure gift authorship, never use a student's data for non-academic purposes. (8) MENTAL-HEALTH ALERTNESS: skipped meetings, dropping productivity, isolation → refer to counseling immediately, don't DIY. (9) INVEST IN THE ALUMNI NETWORK post-graduation — students' success is your impact metric. (10) ACADEMIC FAMILY = LIFETIME COMMITMENT: recommendation letters for life, even if the student leaves academia — a relationship of mentorship, not transaction.",
     "exercises": [
       { "type": "fill-blank", "question": "笔者所秉持之导师理念, 在于以学生之长期学术发展为重, 而非以快速发表论文为 ___ 指标。", "answer": "唯一" },
       { "type": "matching", "instruction": "Ghép thuật ngữ supervision với chức năng tiếng Việt.", "pairs": [
