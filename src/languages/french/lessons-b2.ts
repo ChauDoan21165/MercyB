@@ -18,6 +18,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "venu→vơ-nu",
             "aurais→ô-re"
+          ],
+          "pronunciation_focus_en": [
+            "venu → 'vuh-NOO' — final 'u' is the rounded French 'u' (lips for 'oo', say 'ee')",
+            "aurais → 'oh-REH' — silent final 's'"
           ]
         },
         {
@@ -26,6 +30,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "avais→a-ve",
             "serais→xơ-re"
+          ],
+          "pronunciation_focus_en": [
+            "avais → 'ah-VEH' — silent final 's'",
+            "serais → 'suh-REH' — final 'ais' = 'eh'"
           ]
         },
         {
@@ -34,6 +42,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "cas→ca",
             "aurais→ô-re"
+          ],
+          "pronunciation_focus_en": [
+            "cas → 'kah' — silent final 's'",
+            "aurais → 'oh-REH' — conditional ending 'ais'"
           ]
         },
         {
@@ -42,6 +54,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "même→mê-mơ",
             "refuserais→rơ-phu-dơ-re"
+          ],
+          "pronunciation_focus_en": [
+            "même → 'mehm' — short flat 'e', not 'may'",
+            "refuserais → 'ruh-fyu-zuh-REH' — multiple weak 'uh' sounds"
           ]
         },
         {
@@ -50,132 +66,156 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "pourvu→pua-vu",
             "fasse→phát"
+          ],
+          "pronunciation_focus_en": [
+            "pourvu → 'poor-VOO' — uvular French 'r'",
+            "fasse → 'fahs' — final 'e' silent; not 'fah-say'"
           ]
         }
       ],
       "cultural_notes_vi": "3 loại: (1) Si+présent→futur (2) Si+imparfait→conditionnel (3) Si+plus-que-parfait→conditionnel passé. 'Au cas où'+conditionnel, 'même si'+indicatif.",
+      "cultural_notes_en": "Three conditional patterns to drill until automatic: (1) Si + present → futur ('if you study, you'll pass'); (2) Si + imparfait → conditionnel ('if you studied, you would pass'); (3) Si + plus-que-parfait → conditionnel passé ('if you had studied, you would have passed'). Two adjacent constructions trip English speakers: 'au cas où' (in case) takes the conditional ('au cas où tu aurais besoin' — in case you needed), while 'même si' (even if) takes the indicative, not the subjunctive English speakers expect.",
       "tip_advice_vi": "Subjonctif: 'pour que', 'avant que', 'bien que', 'à condition que'. 'Pourvu que' = miễn là.",
+      "tip_advice_en": "The French subjunctive after 'pour que', 'avant que', 'bien que', 'à condition que' is unavoidable at B2 — there's no English equivalent, so drill the trigger words rather than translating word by word. 'Pourvu que' means 'provided that' (used to mark a wish — 'pourvu qu'il fasse beau' = 'let's hope the weather holds').",
       "vocabulary": [
         {
           "word": "au cas où",
           "en": "in case",
           "vi": "phòng khi",
           "pos": "expr.",
-          "pronunciation_vi": "ô ca u"
+          "pronunciation_vi": "ô ca u",
+          "pronunciation_en": "oh kah OO — silent 's' on 'cas'; nasal-light"
         },
         {
           "word": "même si",
           "en": "even if",
           "vi": "ngay cả khi",
           "pos": "expr.",
-          "pronunciation_vi": "mê-mơ xi"
+          "pronunciation_vi": "mê-mơ xi",
+          "pronunciation_en": "mehm SEE — flat short 'e'; not 'may'"
         },
         {
           "word": "pourvu que",
           "en": "provided that",
           "vi": "miễn là",
           "pos": "conj.",
-          "pronunciation_vi": "pua-vu cơ"
+          "pronunciation_vi": "pua-vu cơ",
+          "pronunciation_en": "poor-VOO kuh — uvular 'r'; 'que' is just 'kuh'"
         },
         {
           "word": "à condition que",
           "en": "on condition that",
           "vi": "với điều kiện",
           "pos": "conj.",
-          "pronunciation_vi": "a côn-đi-xi-on cơ"
+          "pronunciation_vi": "a côn-đi-xi-on cơ",
+          "pronunciation_en": "ah kon-dee-SYON kuh — nasal 'on' (don't finish the n)"
         },
         {
           "word": "le subjonctif",
           "en": "subjunctive",
           "vi": "thể giả định",
           "pos": "n.m.",
-          "pronunciation_vi": "xup-giônc-tif"
+          "pronunciation_vi": "xup-giônc-tif",
+          "pronunciation_en": "luh sub-zhon-TEEF — 'j' = 'zh' as in 'measure'"
         },
         {
           "word": "l'irréel",
           "en": "unreal",
           "vi": "phi thực",
           "pos": "n.m.",
-          "pronunciation_vi": "li-rê-en"
+          "pronunciation_vi": "li-rê-en",
+          "pronunciation_en": "leer-ay-EL — 'irr' is uvular 'r'; final 'l' clear"
         },
         {
           "word": "la conséquence",
           "en": "consequence",
           "vi": "hậu quả",
           "pos": "n.f.",
-          "pronunciation_vi": "côn-xê-căng"
+          "pronunciation_vi": "côn-xê-căng",
+          "pronunciation_en": "lah kon-say-KAHNS — 'qu' = 'k'"
         },
         {
           "word": "entraîner",
           "en": "to entail",
           "vi": "dẫn đến",
           "pos": "v.",
-          "pronunciation_vi": "ăng-tre-nê"
+          "pronunciation_vi": "ăng-tre-nê",
+          "pronunciation_en": "ahn-treh-NAY — final '-er' = 'ay' as in 'day'"
         },
         {
           "word": "supposer",
           "en": "to suppose",
           "vi": "giả sử",
           "pos": "v.",
-          "pronunciation_vi": "xu-pô-dê"
+          "pronunciation_vi": "xu-pô-dê",
+          "pronunciation_en": "soo-poh-ZAY — 's' between vowels = 'z'"
         },
         {
           "word": "à moins que",
           "en": "unless",
           "vi": "trừ khi",
           "pos": "conj.",
-          "pronunciation_vi": "a moanh cơ"
+          "pronunciation_vi": "a moanh cơ",
+          "pronunciation_en": "ah MWAN kuh — 'oin' is nasal 'wan'"
         }
       ],
       "dialogue": [
         {
           "speaker": "A",
           "text": "Si tu avais su pour la grève, tu aurais fait quoi ?",
-          "en": "If you'd known about the strike, what would you have done?"
+          "en": "If you'd known about the strike, what would you have done?",
+          "vi": "Nếu biết tin có đình công, bạn đã làm gì?"
         },
         {
           "speaker": "B",
           "text": "J'aurais pris la voiture ou reporté le voyage.",
-          "en": "I'd have taken the car or postponed."
+          "en": "I'd have taken the car or postponed.",
+          "vi": "Tôi đã đi xe ô tô hoặc hoãn chuyến đi."
         },
         {
           "speaker": "A",
           "text": "C'est dur de changer ses plans à la dernière minute.",
-          "en": "It's hard to change plans last minute."
+          "en": "It's hard to change plans last minute.",
+          "vi": "Đổi kế hoạch phút chót thật khó."
         },
         {
           "speaker": "B",
           "text": "Oui. Au cas où, préviens-moi et je t'aiderai.",
-          "en": "Yes. In case, let me know and I'll help."
+          "en": "Yes. In case, let me know and I'll help.",
+          "vi": "Ừ. Phòng khi cần, báo tôi và tôi sẽ giúp."
         }
       ],
       "exercises": [
         {
           "type": "fill-blank",
           "question": "Si j'avais su, je ___ venu plus tôt.",
-          "answer": "serais"
+          "answer": "serais",
+          "hint_vi": "Si + plus-que-parfait → conditionnel passé.",
+          "hint_en": "Si + plus-que-parfait → conditionnel passé (would have come)."
         },
         {
           "type": "matching",
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match each connector to its meaning",
           "pairs": [
             [
               "au cas où",
-              "phòng khi"
+              "phòng khi (in case)"
             ],
             [
               "à moins que",
-              "trừ khi"
+              "trừ khi (unless — takes subjunctive)"
             ],
             [
               "pourvu que",
-              "miễn là"
+              "miễn là (provided that — takes subjunctive)"
             ]
-          ],
-          "instruction": "Nối từ với nghĩa"
+          ]
         },
         {
           "type": "translation",
           "vietnamese": "Nếu biết trước, tôi đã chuẩn bị tốt hơn.",
+          "english": "If I'd known in advance, I would have prepared better.",
           "french": "Si j'avais su à l'avance, je me serais mieux préparé."
         }
       ]
@@ -193,6 +233,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "coûte→cút",
             "yeux→di-ơ"
+          ],
+          "pronunciation_focus_en": [
+            "coûte → 'koot' — final 'e' silent; long 'oo'",
+            "yeux → 'yuh' — French 'eu' has no English equivalent"
           ]
         },
         {
@@ -201,6 +245,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "coup→cu",
             "foudre→fu-đrơ"
+          ],
+          "pronunciation_focus_en": [
+            "coup → 'koo' — silent 'p'",
+            "foudre → 'FOO-druh' — final 'e' silent"
           ]
         },
         {
@@ -209,6 +257,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "pleut→plơ",
             "cordes→co-đơ"
+          ],
+          "pronunciation_focus_en": [
+            "pleut → 'pluh' — 'eu' rounded; silent 't'",
+            "cordes → 'kord' — silent final 's' and 'e'"
           ]
         },
         {
@@ -217,6 +269,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "mer→me",
             "boire→boa"
+          ],
+          "pronunciation_focus_en": [
+            "mer → 'mehr' — uvular 'r', no English r-color",
+            "boire → 'bwahr' — uvular 'r'"
           ]
         },
         {
@@ -225,132 +281,156 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "poules→pun",
             "dents→đăng"
+          ],
+          "pronunciation_focus_en": [
+            "poules → 'pool' — silent 's'",
+            "dents → 'dahn' — nasal 'an', silent 'ts'"
           ]
         }
       ],
       "cultural_notes_vi": "Thành ngữ Pháp dùng hàng ngày. 'Poser un lapin' (cho leo cây), 'Avoir le cafard' (buồn), 'Être dans la lune' (mơ màng).",
+      "cultural_notes_en": "Idioms are everywhere in spoken French — far more than in everyday English. 'Poser un lapin' (literally 'to set down a rabbit' = to stand someone up), 'Avoir le cafard' (lit. 'to have the cockroach' = to feel down), 'Être dans la lune' (lit. 'to be in the moon' = to be daydreaming). Translating word-for-word will mislead you every time — learn the meaning as a unit.",
       "tip_advice_vi": "Học 2-3 thành ngữ mỗi tuần. Đừng dịch từng từ. 'Appeler un chat un chat' = nói thẳng.",
+      "tip_advice_en": "Pace yourself: 2-3 idioms a week, used in context, sticks better than 20 memorized from a list. Never translate idiom-for-idiom across languages — 'Appeler un chat un chat' (lit. 'call a cat a cat') = 'call a spade a spade' (speak plainly). The English equivalent matters more than the literal French.",
       "vocabulary": [
         {
           "word": "l'expression",
           "en": "expression",
           "vi": "thành ngữ",
           "pos": "n.f.",
-          "pronunciation_vi": "léc-xpre-xi-on"
+          "pronunciation_vi": "léc-xpre-xi-on",
+          "pronunciation_en": "lex-press-YON — 'x' = 'ks'"
         },
         {
           "word": "le proverbe",
           "en": "proverb",
           "vi": "tục ngữ",
           "pos": "n.m.",
-          "pronunciation_vi": "prô-ve-bơ"
+          "pronunciation_vi": "prô-ve-bơ",
+          "pronunciation_en": "luh pro-VEHRB — uvular 'r'"
         },
         {
           "word": "coûter les yeux de la tête",
           "en": "cost a fortune",
           "vi": "đắt cắt cổ",
           "pos": "expr.",
-          "pronunciation_vi": "cu-tê lê-di-ơ đơ la tét"
+          "pronunciation_vi": "cu-tê lê-di-ơ đơ la tét",
+          "pronunciation_en": "koo-tay lay-yuh duh lah TET — final 'te' clear"
         },
         {
           "word": "avoir le cafard",
           "en": "feel down",
           "vi": "buồn chán",
           "pos": "expr.",
-          "pronunciation_vi": "a-voa lơ ca-pha"
+          "pronunciation_vi": "a-voa lơ ca-pha",
+          "pronunciation_en": "ah-VWAHR luh kah-FAHR — uvular 'r' twice"
         },
         {
           "word": "poser un lapin",
           "en": "stand up",
           "vi": "cho leo cây",
           "pos": "expr.",
-          "pronunciation_vi": "pô-dê ưnh la-panh"
+          "pronunciation_vi": "pô-dê ưnh la-panh",
+          "pronunciation_en": "poh-zay UN lah-PAN — nasal 'in' at the end (don't finish n)"
         },
         {
           "word": "donner sa langue au chat",
           "en": "give up guessing",
           "vi": "chịu thua",
           "pos": "expr.",
-          "pronunciation_vi": "đô-nê xa lăng-gơ ô sa"
+          "pronunciation_vi": "đô-nê xa lăng-gơ ô sa",
+          "pronunciation_en": "doh-nay sah LAHNG oh SHAH — 'la langue' = the tongue"
         },
         {
           "word": "appeler un chat un chat",
           "en": "call a spade a spade",
           "vi": "nói thẳng",
           "pos": "expr.",
-          "pronunciation_vi": "a-pơ-lê ưnh sa"
+          "pronunciation_vi": "a-pơ-lê ưnh sa",
+          "pronunciation_en": "ah-puh-lay UN SHAH UN SHAH — nasal 'un' both times"
         },
         {
           "word": "métaphorique",
           "en": "metaphorical",
           "vi": "nghĩa bóng",
           "pos": "adj.",
-          "pronunciation_vi": "mê-ta-phô-ríc"
+          "pronunciation_vi": "mê-ta-phô-ríc",
+          "pronunciation_en": "may-tah-foh-REEK — uvular 'r'"
         },
         {
           "word": "le sens figuré",
           "en": "figurative meaning",
           "vi": "nghĩa bóng",
           "pos": "n.m.",
-          "pronunciation_vi": "săng fi-gu-rê"
+          "pronunciation_vi": "săng fi-gu-rê",
+          "pronunciation_en": "luh sahn fee-gyu-RAY — 'figure' here = figurative"
         },
         {
           "word": "courant",
           "en": "common",
           "vi": "thông dụng",
           "pos": "adj.",
-          "pronunciation_vi": "cu-răng"
+          "pronunciation_vi": "cu-răng",
+          "pronunciation_en": "koo-RAHN — nasal 'an', silent 't'"
         }
       ],
       "dialogue": [
         {
           "speaker": "A",
           "text": "Alors, ton rendez-vous hier soir ?",
-          "en": "So, your date last night?"
+          "en": "So, your date last night?",
+          "vi": "Vậy buổi hẹn hôm qua thế nào?"
         },
         {
           "speaker": "B",
           "text": "Elle m'a posé un lapin ! J'ai attendu une heure.",
-          "en": "She stood me up! I waited an hour."
+          "en": "She stood me up! I waited an hour.",
+          "vi": "Cô ấy cho leo cây! Tôi đợi một tiếng."
         },
         {
           "speaker": "A",
           "text": "Oh non. Tu as le cafard ?",
-          "en": "Oh no. Are you feeling down?"
+          "en": "Oh no. Are you feeling down?",
+          "vi": "Ôi không. Bạn buồn không?"
         },
         {
           "speaker": "B",
           "text": "Un peu, mais ce n'est pas la mer à boire !",
-          "en": "A bit, but it's not the end of the world!"
+          "en": "A bit, but it's not the end of the world!",
+          "vi": "Hơi hơi, nhưng có sao đâu!"
         }
       ],
       "exercises": [
         {
           "type": "fill-blank",
           "question": "Ce sac coûte les ___ de la tête !",
-          "answer": "yeux"
+          "answer": "yeux",
+          "hint_vi": "Thành ngữ: coûter les ___ de la tête.",
+          "hint_en": "Idiom 'to cost the ___ of the head' = to cost a fortune."
         },
         {
           "type": "matching",
+          "instruction": "Nối thành ngữ với nghĩa",
+          "instruction_en": "Match each idiom to its meaning",
           "pairs": [
             [
               "poser un lapin",
-              "cho leo cây"
+              "cho leo cây (to stand someone up)"
             ],
             [
               "avoir le cafard",
-              "buồn chán"
+              "buồn chán (to feel down)"
             ],
             [
               "appeler un chat un chat",
-              "nói thẳng"
+              "nói thẳng (to call a spade a spade)"
             ]
-          ],
-          "instruction": "Nối thành ngữ với nghĩa"
+          ]
         },
         {
           "type": "translation",
           "vietnamese": "Đừng lo, có khó gì đâu!",
+          "english": "Don't worry, it's not the end of the world!",
           "french": "Ne t'inquiète pas, ce n'est pas la mer à boire !"
         }
       ]
@@ -368,6 +448,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "ouf→úf",
             "dit→đi"
+          ],
+          "pronunciation_focus_en": [
+            "ouf → 'oof' — verlan reversal of 'fou'",
+            "dit → 'dee' — silent 't'"
           ]
         },
         {
@@ -376,6 +460,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "crevé→crơ-vê",
             "journée→giua-nê"
+          ],
+          "pronunciation_focus_en": [
+            "crevé → 'kruh-VAY' — final '-é' = 'ay'",
+            "journée → 'zhoor-NAY' — 'j' = 'zh' as in 'measure'"
           ]
         },
         {
@@ -384,6 +472,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "ciné→xi-nê",
             "soir→xoa"
+          ],
+          "pronunciation_focus_en": [
+            "ciné → 'see-NAY' — short form of 'cinéma'",
+            "soir → 'swahr' — uvular 'r'"
           ]
         },
         {
@@ -392,6 +484,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "relou→rơ-lu",
             "situation→xi-tu-a-xi-on"
+          ],
+          "pronunciation_focus_en": [
+            "relou → 'ruh-LOO' — verlan of 'lourd'",
+            "situation → 'see-tyoo-ah-SYON' — nasal final"
           ]
         },
         {
@@ -400,132 +496,156 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "laisse→lét",
             "tomber→tôn-bê"
+          ],
+          "pronunciation_focus_en": [
+            "laisse → 'less' — final 'e' silent",
+            "tomber → 'tohn-BAY' — nasal 'om'"
           ]
         }
       ],
       "cultural_notes_vi": "Verlan (nói ngược) phổ biến: femme→meuf, fou→ouf, lourd→relou. Từ rút gọn: appart, resto, ordi, sympa.",
+      "cultural_notes_en": "Verlan (slang built by reversing syllables) is everywhere in spoken French under 40: femme → meuf (woman), fou → ouf (crazy), lourd → relou (annoying). You'll also hear truncated forms: appart (apartment), resto (restaurant), ordi (computer), sympa (nice). Recognize these in conversation; using them yourself is a status signal that backfires if you misjudge the room.",
       "tip_advice_vi": "Học để hiểu nhưng cẩn thận khi dùng. Với sếp dùng tiếng chuẩn. 'Mec' vs 'homme', 'bouquin' vs 'livre'.",
+      "tip_advice_en": "Learn slang to understand it, but use it cautiously — keep standard French for bosses, professors, and older speakers. 'Mec' (guy) and 'bouquin' (book) are casual; 'homme' and 'livre' are neutral. Defaulting to slang in the wrong setting reads as immature.",
       "vocabulary": [
         {
           "word": "le verlan",
           "en": "backward slang",
           "vi": "tiếng lóng ngược",
           "pos": "n.m.",
-          "pronunciation_vi": "ve-lăng"
+          "pronunciation_vi": "ve-lăng",
+          "pronunciation_en": "luh vehr-LAHN — final 'n' nasal"
         },
         {
           "word": "ouf",
           "en": "crazy",
           "vi": "điên",
           "pos": "adj.",
-          "pronunciation_vi": "úf"
+          "pronunciation_vi": "úf",
+          "pronunciation_en": "OOF — short syllable"
         },
         {
           "word": "meuf",
           "en": "woman (verlan)",
           "vi": "phụ nữ",
           "pos": "n.f.",
-          "pronunciation_vi": "mơf"
+          "pronunciation_vi": "mơf",
+          "pronunciation_en": "MUHF — French 'eu' rounded; not 'meff'"
         },
         {
           "word": "crevé",
           "en": "exhausted",
           "vi": "kiệt sức",
           "pos": "adj.",
-          "pronunciation_vi": "crơ-vê"
+          "pronunciation_vi": "crơ-vê",
+          "pronunciation_en": "kruh-VAY — final '-é' = 'ay'"
         },
         {
           "word": "le boulot",
           "en": "job",
           "vi": "công việc",
           "pos": "n.m.",
-          "pronunciation_vi": "bu-lô"
+          "pronunciation_vi": "bu-lô",
+          "pronunciation_en": "luh boo-LOH — 'eau' = 'oh'"
         },
         {
           "word": "le fric",
           "en": "cash",
           "vi": "tiền",
           "pos": "n.m.",
-          "pronunciation_vi": "fríc"
+          "pronunciation_vi": "fríc",
+          "pronunciation_en": "luh FREEK — short and sharp"
         },
         {
           "word": "la bouffe",
           "en": "food",
           "vi": "đồ ăn",
           "pos": "n.f.",
-          "pronunciation_vi": "buf"
+          "pronunciation_vi": "buf",
+          "pronunciation_en": "lah BOOF — 'ou' = 'oo' as in 'boot'"
         },
         {
           "word": "sympa",
           "en": "nice",
           "vi": "dễ thương",
           "pos": "adj.",
-          "pronunciation_vi": "xanh-pa"
+          "pronunciation_vi": "xanh-pa",
+          "pronunciation_en": "san-PAH — 'sym' is nasal 'san'"
         },
         {
           "word": "laisse tomber",
           "en": "forget it",
           "vi": "bỏ đi",
           "pos": "expr.",
-          "pronunciation_vi": "lét tôn-bê"
+          "pronunciation_vi": "lét tôn-bê",
+          "pronunciation_en": "less tohn-BAY — 's' before vowel doesn't voice here ('laisse' is 'less')"
         },
         {
           "word": "le truc",
           "en": "thing",
           "vi": "cái/thứ",
           "pos": "n.m.",
-          "pronunciation_vi": "truc"
+          "pronunciation_vi": "truc",
+          "pronunciation_en": "luh TRUK — French 'u' (rounded)"
         }
       ],
       "dialogue": [
         {
           "speaker": "A",
           "text": "T'as vu ce film ? Il est ouf !",
-          "en": "Did you see that movie? It's crazy!"
+          "en": "Did you see that movie? It's crazy!",
+          "vi": "Bạn xem phim đó chưa? Nó hay điên!"
         },
         {
           "speaker": "B",
           "text": "Non, j'ai trop de boulot. Je suis crevé.",
-          "en": "No, too much work. I'm exhausted."
+          "en": "No, too much work. I'm exhausted.",
+          "vi": "Chưa, công việc nhiều quá. Tôi kiệt sức."
         },
         {
           "speaker": "A",
           "text": "Laisse tomber le boulot, on va au ciné !",
-          "en": "Forget work, let's go to the movies!"
+          "en": "Forget work, let's go to the movies!",
+          "vi": "Bỏ việc đi, mình đi xem phim!"
         },
         {
           "speaker": "B",
           "text": "OK, t'as raison. Rendez-vous à 20h.",
-          "en": "OK, you're right. Meet at 8pm."
+          "en": "OK, you're right. Meet at 8pm.",
+          "vi": "OK, bạn đúng. Hẹn 8 giờ tối."
         }
       ],
       "exercises": [
         {
           "type": "fill-blank",
           "question": "Je suis ___ après cette semaine.",
-          "answer": "crevé"
+          "answer": "crevé",
+          "hint_vi": "Tiếng lóng: 'kiệt sức'.",
+          "hint_en": "Slang adjective meaning 'exhausted' (past participle of 'crever' = to burst)."
         },
         {
           "type": "matching",
+          "instruction": "Nối tiếng lóng với nghĩa",
+          "instruction_en": "Match each slang word to its meaning",
           "pairs": [
             [
               "le boulot",
-              "công việc"
+              "công việc (slang for 'work, job')"
             ],
             [
               "la bouffe",
-              "đồ ăn"
+              "đồ ăn (slang for 'food, grub')"
             ],
             [
               "sympa",
-              "dễ thương"
+              "dễ thương (casual for 'nice, friendly' — clipped form of 'sympathique')"
             ]
-          ],
-          "instruction": "Nối tiếng lóng với nghĩa"
+          ]
         },
         {
           "type": "translation",
           "vietnamese": "Bộ phim đó điên rồ, bạn phải xem!",
+          "english": "That movie is crazy, you have to see it!",
           "french": "Ce film est ouf, tu dois le voir !"
         }
       ]
@@ -543,6 +663,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "d'accord→đa-co",
             "point→poanh"
+          ],
+          "pronunciation_focus_en": [
+            "d'accord → 'dah-KOR' — silent final 'd'",
+            "point → 'pwan' — nasal 'oin', silent 't'"
           ]
         },
         {
@@ -551,6 +675,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "partage→pa-ta-giơ",
             "avis→a-vi"
+          ],
+          "pronunciation_focus_en": [
+            "partage → 'par-TAHZH' — final 'ge' = 'zh'",
+            "avis → 'ah-VEE' — silent final 's'"
           ]
         },
         {
@@ -559,6 +687,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "préciser→prê-xi-dê",
             "argument→a-ghu-măng"
+          ],
+          "pronunciation_focus_en": [
+            "préciser → 'pray-see-ZAY' — final '-er' = 'ay'",
+            "argument → 'ar-gyu-MAHN' — nasal 'en', silent 't'"
           ]
         },
         {
@@ -567,6 +699,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "intéressant→anh-tê-rê-xăng",
             "cependant→xơ-păng-đăng"
+          ],
+          "pronunciation_focus_en": [
+            "intéressant → 'an-tay-reh-SAHN' — multiple French 'r's",
+            "cependant → 'suh-pahn-DAHN' — two nasals 'en'+'an'"
           ]
         },
         {
@@ -575,132 +711,156 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "revenons→rơ-vơ-non",
             "cœur→cơ"
+          ],
+          "pronunciation_focus_en": [
+            "revenons → 'ruh-vuh-NON' — nasal 'on'",
+            "cœur → 'kuhr' — 'œu' rounded, uvular 'r'"
           ]
         }
       ],
       "cultural_notes_vi": "Tranh luận Pháp là nghệ thuật: thèse→antithèse→synthèse. 'Certes… mais…' vừa công nhận vừa phản biện. Không công kích cá nhân.",
+      "cultural_notes_en": "French debate culture follows the thèse → antithèse → synthèse pattern drilled into students from lycée onward: present your position, give the strongest counter-position fairly, then synthesize. 'Certes… mais…' ('granted… but…') simultaneously concedes the opponent's point and pivots — it's polite, structured, and signals a fluent speaker. Personal attacks are taboo; attacking ideas is expected.",
       "tip_advice_vi": "Cụm hữu ích: 'Je vois ce que vous voulez dire, mais…', 'Permettez-moi de nuancer', 'Pour résumer', 'En conclusion'.",
+      "tip_advice_en": "Useful debate phrases worth memorizing word-for-word: 'Je vois ce que vous voulez dire, mais…' (I see what you mean, but…), 'Permettez-moi de nuancer' (let me qualify that), 'Pour résumer' (to sum up), 'En conclusion' (in conclusion). Anglophones often hesitate to interrupt or push back; French expects you to engage directly.",
       "vocabulary": [
         {
           "word": "débattre",
           "en": "to debate",
           "vi": "tranh luận",
           "pos": "v.",
-          "pronunciation_vi": "đê-bát-trơ"
+          "pronunciation_vi": "đê-bát-trơ",
+          "pronunciation_en": "day-BAH-truh — silent 'tre' rolls to 'truh'"
         },
         {
           "word": "l'argument",
           "en": "argument",
           "vi": "lập luận",
           "pos": "n.m.",
-          "pronunciation_vi": "la-ghu-măng"
+          "pronunciation_vi": "la-ghu-măng",
+          "pronunciation_en": "lar-gyu-MAHN — nasal 'en'"
         },
         {
           "word": "le contre-argument",
           "en": "counter-argument",
           "vi": "phản luận",
           "pos": "n.m.",
-          "pronunciation_vi": "côn-trơ-a-ghu-măng"
+          "pronunciation_vi": "côn-trơ-a-ghu-măng",
+          "pronunciation_en": "luh kon-truh-ar-gyu-MAHN — five syllables, even stress"
         },
         {
           "word": "cependant",
           "en": "however",
           "vi": "tuy nhiên",
           "pos": "adv.",
-          "pronunciation_vi": "xơ-păng-đăng"
+          "pronunciation_vi": "xơ-păng-đăng",
+          "pronunciation_en": "suh-pahn-DAHN — two nasals; final 't' silent"
         },
         {
           "word": "néanmoins",
           "en": "nevertheless",
           "vi": "dù sao",
           "pos": "adv.",
-          "pronunciation_vi": "nê-anh-moanh"
+          "pronunciation_vi": "nê-anh-moanh",
+          "pronunciation_en": "nay-ahn-MWAN — nasal 'oin'"
         },
         {
           "word": "certes…mais",
           "en": "admittedly…but",
           "vi": "đúng là…nhưng",
           "pos": "expr.",
-          "pronunciation_vi": "xéc-tơ…me"
+          "pronunciation_vi": "xéc-tơ…me",
+          "pronunciation_en": "SEHRT may — 'certes' has clear final 't'"
         },
         {
           "word": "la thèse",
           "en": "thesis",
           "vi": "luận điểm",
           "pos": "n.f.",
-          "pronunciation_vi": "té-dơ"
+          "pronunciation_vi": "té-dơ",
+          "pronunciation_en": "lah TEHZ — silent final 'e'"
         },
         {
           "word": "l'antithèse",
           "en": "counter-thesis",
           "vi": "phản đề",
           "pos": "n.f.",
-          "pronunciation_vi": "lăng-ti-té-dơ"
+          "pronunciation_vi": "lăng-ti-té-dơ",
+          "pronunciation_en": "lahn-tee-TEHZ — final 'tese' = 'tehz'"
         },
         {
           "word": "la synthèse",
           "en": "synthesis",
           "vi": "tổng hợp",
           "pos": "n.f.",
-          "pronunciation_vi": "xanh-té-dơ"
+          "pronunciation_vi": "xanh-té-dơ",
+          "pronunciation_en": "lah san-TEHZ — 'syn' = 'san' nasal"
         },
         {
           "word": "nuancer",
           "en": "to qualify",
           "vi": "nói giảm nhẹ",
           "pos": "v.",
-          "pronunciation_vi": "nu-ăng-xê"
+          "pronunciation_vi": "nu-ăng-xê",
+          "pronunciation_en": "nyuan-SAY — 'nu' = 'nyu'"
         }
       ],
       "dialogue": [
         {
           "speaker": "A",
           "text": "Les réseaux sociaux sont mauvais pour la société.",
-          "en": "Social media is bad for society."
+          "en": "Social media is bad for society.",
+          "vi": "Mạng xã hội có hại cho xã hội."
         },
         {
           "speaker": "B",
           "text": "Certes, mais ils permettent aussi de connecter les gens.",
-          "en": "Admittedly, but they also connect people."
+          "en": "Admittedly, but they also connect people.",
+          "vi": "Đúng là vậy, nhưng nó cũng giúp kết nối mọi người."
         },
         {
           "speaker": "A",
           "text": "Je vois, cependant la désinformation est un problème.",
-          "en": "I see, however misinformation is a problem."
+          "en": "I see, however misinformation is a problem.",
+          "vi": "Tôi hiểu, tuy nhiên tin sai lệch là vấn đề."
         },
         {
           "speaker": "B",
           "text": "La solution serait de mieux éduquer les utilisateurs.",
-          "en": "The solution would be to better educate users."
+          "en": "The solution would be to better educate users.",
+          "vi": "Giải pháp là giáo dục người dùng tốt hơn."
         }
       ],
       "exercises": [
         {
           "type": "fill-blank",
           "question": "Je suis ___ avec vous sur ce point.",
-          "answer": "d'accord"
+          "answer": "d'accord",
+          "hint_vi": "Cụm 'tôi đồng ý' lịch sự.",
+          "hint_en": "Polite agreement phrase: 'Je suis ___'."
         },
         {
           "type": "matching",
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match each word to its meaning",
           "pairs": [
             [
               "cependant",
-              "tuy nhiên"
+              "tuy nhiên (however — a stronger formal counter than 'mais')"
             ],
             [
               "la thèse",
-              "luận điểm"
+              "luận điểm (thesis — the position being defended)"
             ],
             [
               "débattre",
-              "tranh luận"
+              "tranh luận (to debate, argue a case)"
             ]
-          ],
-          "instruction": "Nối từ với nghĩa"
+          ]
         },
         {
           "type": "translation",
           "vietnamese": "Tôi hiểu quan điểm bạn, nhưng có cách nhìn khác.",
+          "english": "I understand your point of view, but there's another perspective.",
           "french": "Je comprends votre point de vue, mais il y a une autre perspective."
         }
       ]
@@ -718,6 +878,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "leçons→lơ-xon",
             "confiance→côn-fi-ăng"
+          ],
+          "pronunciation_focus_en": [
+            "leçons → 'luh-SON' — 'ç' = 's' before 'o'; nasal 'on'",
+            "confiance → 'kon-fee-AHNS' — nasal 'on'+'an'"
           ]
         },
         {
@@ -726,6 +890,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "pratiquer→pra-ti-kê",
             "tous→tu"
+          ],
+          "pronunciation_focus_en": [
+            "pratiquer → 'prah-tee-KAY' — final '-er' = 'ay'",
+            "tous → 'toos' — final 's' pronounced when 'tous' = pronoun (here: 'all of them')"
           ]
         },
         {
@@ -734,6 +902,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "comprends→côm-prăng",
             "nuances→nu-ăng"
+          ],
+          "pronunciation_focus_en": [
+            "comprends → 'kohn-PRAHN' — nasal 'om'+'en'; silent 'ds'",
+            "nuances → 'nyu-AHNS' — nasal 'an'"
           ]
         },
         {
@@ -742,6 +914,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "hésitez→ê-zi-tê",
             "erreurs→ê-rơ"
+          ],
+          "pronunciation_focus_en": [
+            "hésitez → 'ay-zee-TAY' — silent 'h'; '-ez' = 'ay'",
+            "erreurs → 'eh-RUHR' — uvular 'r' twice"
           ]
         },
         {
@@ -750,132 +926,156 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "voyage→voa-ia-giơ",
             "linguistique→lanh-ghuy-xtíc"
+          ],
+          "pronunciation_focus_en": [
+            "voyage → 'vwah-YAHZH' — 'oy' = 'wa-y'; '-ge' = 'zh'",
+            "linguistique → 'lan-gwees-TEEK' — 'gu' = 'gw'; nasal 'in'"
           ]
         }
       ],
       "cultural_notes_vi": "Bạn đã học: chào hỏi, số, ngữ pháp, chủ đề hàng ngày, công sở, văn hóa, ngữ pháp nâng cao, thành ngữ, tiếng lóng, tranh luận. Con đường tiếp: podcast, phim, báo, người bản xứ.",
+      "cultural_notes_en": "You've covered greetings, numbers, grammar, daily life, workplace, culture, advanced grammar, idioms, slang, and debate. Next stops to keep moving from B2 to C1: podcasts, films, news, and conversation with native speakers. The curriculum can't replace immersion — it can only prepare you for it.",
       "tip_advice_vi": "(1) 30 phút mỗi ngày. (2) Đừng sợ sai. (3) Tìm 'correspondant' để thực hành. Bon courage !",
+      "tip_advice_en": "Three habits that compound: (1) 30 minutes a day beats 4 hours once a week. (2) Don't fear mistakes — fluent speakers correct themselves mid-sentence; that's normal. (3) Find a 'correspondant' (language partner) to practice with. Bon courage !",
       "vocabulary": [
         {
           "word": "la confiance",
           "en": "confidence",
           "vi": "tự tin",
           "pos": "n.f.",
-          "pronunciation_vi": "côn-fi-ăng"
+          "pronunciation_vi": "côn-fi-ăng",
+          "pronunciation_en": "lah kon-fee-AHNS — nasal 'an'"
         },
         {
           "word": "progresser",
           "en": "to progress",
           "vi": "tiến bộ",
           "pos": "v.",
-          "pronunciation_vi": "prô-gre-xê"
+          "pronunciation_vi": "prô-gre-xê",
+          "pronunciation_en": "pro-greh-SAY — final '-er' = 'ay'"
         },
         {
           "word": "la nuance",
           "en": "nuance",
           "vi": "sắc thái",
           "pos": "n.f.",
-          "pronunciation_vi": "nu-ăng"
+          "pronunciation_vi": "nu-ăng",
+          "pronunciation_en": "lah nyu-AHNS — final 'ce' = 's'"
         },
         {
           "word": "l'erreur",
           "en": "mistake",
           "vi": "lỗi",
           "pos": "n.f.",
-          "pronunciation_vi": "lê-rơ"
+          "pronunciation_vi": "lê-rơ",
+          "pronunciation_en": "leh-RUHR — uvular 'r'; the 'eu' is rounded"
         },
         {
           "word": "s'améliorer",
           "en": "to improve",
           "vi": "cải thiện",
           "pos": "v.",
-          "pronunciation_vi": "xa-mê-li-ô-rê"
+          "pronunciation_vi": "xa-mê-li-ô-rê",
+          "pronunciation_en": "sah-may-LYOR-ay — reflexive 's''"
         },
         {
           "word": "la pratique",
           "en": "practice",
           "vi": "luyện tập",
           "pos": "n.f.",
-          "pronunciation_vi": "pra-tíc"
+          "pronunciation_vi": "pra-tíc",
+          "pronunciation_en": "lah prah-TEEK — final '-que' = 'k'"
         },
         {
           "word": "le parcours",
           "en": "journey",
           "vi": "hành trình",
           "pos": "n.m.",
-          "pronunciation_vi": "pa-cua"
+          "pronunciation_vi": "pa-cua",
+          "pronunciation_en": "luh par-KOOR — uvular 'r'"
         },
         {
           "word": "l'immersion",
           "en": "immersion",
           "vi": "đắm mình",
           "pos": "n.f.",
-          "pronunciation_vi": "li-me-xi-on"
+          "pronunciation_vi": "li-me-xi-on",
+          "pronunciation_en": "lee-mehr-SYON — nasal 'on'"
         },
         {
           "word": "le correspondant",
           "en": "language partner",
           "vi": "bạn trao đổi",
           "pos": "n.m.",
-          "pronunciation_vi": "cô-rét-pon-đăng"
+          "pronunciation_vi": "cô-rét-pon-đăng",
+          "pronunciation_en": "luh kor-res-pohn-DAHN — three nasals to track"
         },
         {
           "word": "la réussite",
           "en": "success",
           "vi": "thành công",
           "pos": "n.f.",
-          "pronunciation_vi": "rê-u-xít"
+          "pronunciation_vi": "rê-u-xít",
+          "pronunciation_en": "lah ray-uh-SEET — clear final 't'"
         }
       ],
       "dialogue": [
         {
           "speaker": "A",
           "text": "Après toutes ces leçons, comment tu te sens en français ?",
-          "en": "After all these lessons, how do you feel in French?"
+          "en": "After all these lessons, how do you feel in French?",
+          "vi": "Sau ngần ấy bài học, bạn cảm thấy tiếng Pháp thế nào?"
         },
         {
           "speaker": "B",
           "text": "Beaucoup plus à l'aise ! Je peux tenir une conversation.",
-          "en": "Much more comfortable! I can hold a conversation."
+          "en": "Much more comfortable! I can hold a conversation.",
+          "vi": "Thoải mái hơn nhiều! Tôi có thể giữ một cuộc trò chuyện."
         },
         {
           "speaker": "A",
           "text": "Quel conseil aux débutants ?",
-          "en": "What advice for beginners?"
+          "en": "What advice for beginners?",
+          "vi": "Lời khuyên nào cho người mới?"
         },
         {
           "speaker": "B",
           "text": "N'ayez pas peur des erreurs. Pratiquez chaque jour.",
-          "en": "Don't fear mistakes. Practice every day."
+          "en": "Don't fear mistakes. Practice every day.",
+          "vi": "Đừng sợ mắc lỗi. Luyện tập mỗi ngày."
         }
       ],
       "exercises": [
         {
           "type": "fill-blank",
           "question": "Il faut ___ tous les jours.",
-          "answer": "pratiquer"
+          "answer": "pratiquer",
+          "hint_vi": "Động từ 'luyện tập' nguyên thể.",
+          "hint_en": "Infinitive verb 'to practice'."
         },
         {
           "type": "matching",
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match each word to its meaning",
           "pairs": [
             [
               "la confiance",
-              "tự tin"
+              "tự tin (confidence, self-assurance)"
             ],
             [
               "s'améliorer",
-              "cải thiện"
+              "cải thiện (to improve oneself — reflexive)"
             ],
             [
               "la réussite",
-              "thành công"
+              "thành công (success, achievement)"
             ]
-          ],
-          "instruction": "Nối từ với nghĩa"
+          ]
         },
         {
           "type": "translation",
           "vietnamese": "Tôi học 6 tháng và giao tiếp cơ bản được.",
+          "english": "I've been studying for six months and I can communicate at a basic level.",
           "french": "J'étudie depuis six mois et je peux communiquer de façon basique."
         }
       ]
@@ -895,6 +1095,12 @@ export const lessons: FrenchLesson[] =           [
             "liaison vous‿accorder → vu-z-a-kor-dê",
             "silent -t (cet)",
             "r uvulaire (remercie)"
+          ],
+          "pronunciation_focus_en": [
+            "nasal 'en' in 'entretien' — never finish the 'n'",
+            "liaison 'vous accorder' → 'voo-zah-kor-DAY'",
+            "silent 't' in 'cet' before consonant",
+            "uvular 'r' in 'remercie'"
           ]
         },
         {
@@ -905,6 +1111,12 @@ export const lessons: FrenchLesson[] =           [
             "trois → trwa",
             "ai → ê (j'ai)",
             "stratégiques → stra-té-jik"
+          ],
+          "pronunciation_focus_en": [
+            "au → 'oh' — long round vowel",
+            "trois → 'twah' — 'oi' = 'wa'",
+            "ai → 'eh' in 'j'ai' — short open 'e'",
+            "stratégiques → 'strah-tay-ZHEEK'"
           ]
         },
         {
@@ -915,6 +1127,12 @@ export const lessons: FrenchLesson[] =           [
             "souhaiterais → swè-tré",
             "rémunération → ré-mu-né-ra-sion",
             "aborder r uvulaire"
+          ],
+          "pronunciation_focus_en": [
+            "nasal 'om' in 'compte' — close mouth but don't say 'm'",
+            "souhaiterais → 'sweh-tray' — silent 'h'",
+            "rémunération → 'ray-myu-nay-rah-SYON' — six syllables",
+            "uvular 'r' in 'aborder'"
           ]
         },
         {
@@ -925,6 +1143,12 @@ export const lessons: FrenchLesson[] =           [
             "contraintes → kon-trant",
             "envisager → ăn-vi-za-jê",
             "calendrier → ka-lăn-dri-é"
+          ],
+          "pronunciation_focus_en": [
+            "j'entends → 'zhahn-TAHN' — two nasals 'en'+'en'",
+            "contraintes → 'kon-TRANT' — nasal 'on'+'an'",
+            "envisager → 'ahn-vee-zah-ZHAY' — final 'g' = 'zh'",
+            "calendrier → 'kah-lahn-dree-AY'"
           ]
         },
         {
@@ -935,102 +1159,124 @@ export const lessons: FrenchLesson[] =           [
             "formaliser → for-ma-li-zê",
             "engagement → ăn-ga-jơ-măn nasal",
             "liaison par‿écrit → pa-ré-kri"
+          ],
+          "pronunciation_focus_en": [
+            "pourrions → 'poo-RYON' — nasal final",
+            "formaliser → 'for-mah-lee-ZAY' — uvular 'r'",
+            "engagement → 'ahn-gahzh-MAHN' — two nasals",
+            "liaison 'par écrit' → 'pah-ray-KREE'"
           ]
         }
       ],
       "cultural_notes_vi": "Văn hóa đàm phán lương ở Pháp khác Việt Nam ở ba điểm. (1) Trực tiếp nhưng có cấu trúc: người Pháp expect bạn nói thẳng số tiền và lý do bằng dữ liệu — không vòng vo. (2) Sự đối lập là chuyện thường: sếp Pháp gần như chắc chắn sẽ pushback, kể cả khi đồng ý trong đầu — đó là một bước trong quy trình, không phải dấu hiệu từ chối. (3) Khung pháp lý nặng: nhiều quyết định bị ràng buộc bởi « convention collective » (thỏa ước tập thể của ngành), mà sếp không có quyền tự quyết — đừng nhầm hạn chế đó với việc không được coi trọng.\n\nỞ Việt Nam, tăng lương thường được xem như đặc ân do cấp trên ban; ở Pháp, đó là một cuộc thương lượng giữa hai người trưởng thành ngang hàng về mặt nghề nghiệp, dù cấp bậc khác nhau. Hiểu điều này sẽ giúp bạn không cảm thấy bị xúc phạm khi sếp pushback, và không khúm núm khi đưa ra mức lương mong muốn.",
+      "cultural_notes_en": "French salary negotiation differs from Vietnamese and US patterns on three points. (1) Direct but structured: bosses expect you to state the number and the reasons with data — no hedging. (2) Pushback is routine: a French manager almost certainly will pushback, even when they agree internally — it's a step in the process, not a rejection. (3) The legal frame is heavy: many decisions are bound by the 'convention collective' (industry-wide collective agreement) that your manager can't override unilaterally — don't read that constraint as disrespect.\n\nIn Vietnam, a pay raise is often framed as a favor bestowed by a superior; in France, it's a negotiation between two professional adults of unequal rank but equal standing in the conversation. Internalizing this prevents the two failure modes English-speaking outsiders fall into: feeling personally insulted when the boss pushes back, and shrinking when stating the number you actually want.",
       "tip_advice_vi": "Trước buổi họp: viết ra ba con số (mức lương hiện tại, mức bạn muốn, mức tối thiểu bạn chấp nhận) và ba bằng chứng cụ thể (dự án, kết quả đo được, trách nhiệm mới). Trong buổi họp: nói số tiền cụ thể bằng tiếng Pháp, đừng dùng « around » hay « plus or less » — sự mơ hồ bị đọc là thiếu chuẩn bị. Khi gặp pushback, đừng phản pháo ngay; dùng cụm « j'entends cette contrainte, mais… » để công nhận hạn chế của sếp rồi đưa ra hướng đi khác (lộ trình, đào tạo, thưởng). Sau buổi họp: luôn xin xác nhận bằng văn bản — không phải vì không tin sếp, mà vì phòng Nhân sự cần giấy tờ để xử lý.",
+      "tip_advice_en": "Before the meeting, write down three numbers (current salary, target, walk-away minimum) and three concrete pieces of evidence (specific projects, measurable results, expanded scope). In the meeting, state the exact number in French — don't hedge with 'around' or 'roughly'; vagueness reads as unprepared. When you hit pushback, don't counter-attack immediately; use 'j'entends cette contrainte, mais…' (I hear that constraint, but…) to acknowledge the limit before pivoting (timeline, training budget, bonus). After the meeting, always ask for written confirmation — not because you don't trust your manager, but because HR needs the paper trail to process the change.",
       "vocabulary": [
         {
           "word": "une augmentation",
           "en": "a (pay) raise",
           "vi": "sự tăng lương",
           "pos": "n.f.",
-          "pronunciation_vi": "ô-găn-tă-sion (nasal)"
+          "pronunciation_vi": "ô-găn-tă-sion (nasal)",
+          "pronunciation_en": "ün oh-gmen-tah-SYON — nasal 'on' at end"
         },
         {
           "word": "l'entretien annuel",
           "en": "annual review",
           "vi": "buổi đánh giá hàng năm",
           "pos": "n.m.",
-          "pronunciation_vi": "ăn-trơ-tiang a-nu-el"
+          "pronunciation_vi": "ăn-trơ-tiang a-nu-el",
+          "pronunciation_en": "lahn-truh-tyan ah-nyoo-EL — multi-syllable, clean syllable breaks"
         },
         {
           "word": "la rémunération",
           "en": "compensation, pay package",
           "vi": "thu nhập, lương thưởng",
           "pos": "n.f.",
-          "pronunciation_vi": "ré-mu-né-ra-sion"
+          "pronunciation_vi": "ré-mu-né-ra-sion",
+          "pronunciation_en": "lah ray-myu-nay-rah-SYON — six syllables, evenly stressed"
         },
         {
           "word": "les contraintes budgétaires",
           "en": "budget constraints",
           "vi": "hạn chế ngân sách",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "kon-trant bu-jé-ter"
+          "pronunciation_vi": "kon-trant bu-jé-ter",
+          "pronunciation_en": "lay kon-TRANT bü-zhay-TEHR — 'budgétaires' has soft 'g' = 'zh'"
         },
         {
           "word": "une contre-proposition",
           "en": "counter-offer",
           "vi": "đề nghị ngược lại",
           "pos": "n.f.",
-          "pronunciation_vi": "kontr-pro-po-zi-sion"
+          "pronunciation_vi": "kontr-pro-po-zi-sion",
+          "pronunciation_en": "ün kohn-truh-pro-poh-zee-SYON — full nasal 'on' at end"
         },
         {
           "word": "valoriser",
           "en": "to recognize the value of",
           "vi": "ghi nhận, đánh giá cao",
           "pos": "v.",
-          "pronunciation_vi": "va-lo-ri-zê"
+          "pronunciation_vi": "va-lo-ri-zê",
+          "pronunciation_en": "vah-loh-ree-ZAY — final '-er' = 'ay'"
         },
         {
           "word": "envisager",
           "en": "to consider, contemplate",
           "vi": "cân nhắc, tính đến",
           "pos": "v.",
-          "pronunciation_vi": "ăn-vi-za-jê"
+          "pronunciation_vi": "ăn-vi-za-jê",
+          "pronunciation_en": "ahn-vee-zah-ZHAY — same final '-er' pattern"
         },
         {
           "word": "la marge de manœuvre",
           "en": "room to maneuver",
           "vi": "khoảng linh hoạt, dư địa",
           "pos": "n.f.",
-          "pronunciation_vi": "marj-dơ-ma-nơ-vrơ"
+          "pronunciation_vi": "marj-dơ-ma-nơ-vrơ",
+          "pronunciation_en": "lah MARZH duh mah-NUH-vruh — French 'œu' rounded; final 'vre' = 'vruh'"
         },
         {
           "word": "revaloriser",
           "en": "to raise (a salary), revalue",
           "vi": "nâng (lương), điều chỉnh tăng",
           "pos": "v.",
-          "pronunciation_vi": "rơ-va-lo-ri-zê"
+          "pronunciation_vi": "rơ-va-lo-ri-zê",
+          "pronunciation_en": "ruh-vah-loh-ree-ZAY — same pattern as 'valoriser' with 're-'"
         },
         {
           "word": "un engagement (formel)",
           "en": "a (formal) commitment",
           "vi": "cam kết (chính thức)",
           "pos": "n.m.",
-          "pronunciation_vi": "ăn-ga-jơ-măn (nasal)"
+          "pronunciation_vi": "ăn-ga-jơ-măn (nasal)",
+          "pronunciation_en": "UN ahn-gahzh-MAHN for-MEL — nasal 'an'; clear final 'l' on 'formel'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Madame Laurent, pourrions-nous parler de mon évolution salariale ?",
+          "en": "Madame Laurent, could we talk about my salary progression?",
           "vi": "Bà Laurent ơi, mình có thể nói về lộ trình lương của em được không?"
         },
         {
           "speaker": "Mme Laurent",
           "text": "Bien sûr, Linh. Qu'est-ce qui vous amène à le demander maintenant ?",
+          "en": "Of course, Linh. What's prompting you to raise this now?",
           "vi": "Tất nhiên rồi, Linh. Điều gì khiến em đặt vấn đề lúc này?"
         },
         {
           "speaker": "Linh",
           "text": "Mes responsabilités ont sensiblement évolué cette année.",
+          "en": "My responsibilities have meaningfully expanded this year.",
           "vi": "Trách nhiệm của em đã thay đổi đáng kể trong năm nay."
         },
         {
           "speaker": "Mme Laurent",
           "text": "C'est un point juste. Posons les chiffres ensemble.",
+          "en": "That's a fair point. Let's put the numbers on the table together.",
           "vi": "Đó là một điểm hợp lý. Mình cùng đưa ra các con số nhé."
         }
       ],
@@ -1038,86 +1284,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh",
           "text": "Madame Laurent, merci de me recevoir pour cet entretien annuel.",
+          "en": "Madame Laurent, thank you for making time for this annual review.",
           "vi": "Bà Laurent, em cảm ơn bà đã sắp xếp buổi đánh giá hôm nay."
         },
         {
           "speaker": "Mme Laurent",
           "text": "Je vous en prie, Linh. Asseyez-vous. Comment se passe votre année ?",
+          "en": "You're welcome, Linh. Have a seat. How's your year going?",
           "vi": "Không có gì, Linh. Em ngồi đi. Năm nay của em thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "Très bien dans l'ensemble. C'est justement ce dont j'aimerais discuter — mes responsabilités et ma rémunération.",
+          "en": "Very well overall. That's exactly what I'd like to discuss — my responsibilities and my compensation.",
           "vi": "Nhìn chung là rất ổn. Đó cũng chính là điều em muốn trao đổi — trách nhiệm và lương của em."
         },
         {
           "speaker": "Mme Laurent",
           "text": "D'accord, je vous écoute.",
+          "en": "Alright, I'm listening.",
           "vi": "Được, bà nghe đây."
         },
         {
           "speaker": "Linh",
           "text": "Cela fait trois ans que je suis dans l'équipe. Depuis dix-huit mois, j'ai pris la responsabilité du projet Atlas, et je supervise désormais deux développeurs juniors.",
+          "en": "I've been with the team for three years. For the last eighteen months I've owned project Atlas, and I'm now supervising two junior developers.",
           "vi": "Em đã ở trong nhóm được ba năm. Mười tám tháng nay em phụ trách dự án Atlas, và hiện đang giám sát hai bạn dev junior."
         },
         {
           "speaker": "Mme Laurent",
           "text": "C'est exact, et votre travail sur Atlas a été très apprécié par le client.",
+          "en": "That's correct, and your work on Atlas has been very well received by the client.",
           "vi": "Đúng vậy, và công việc của em trên Atlas được khách hàng đánh giá rất cao."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Compte tenu de cette évolution, je souhaiterais aborder une augmentation. Sur la base du marché parisien, je pense qu'une revalorisation de huit pour cent serait justifiée.",
+          "en": "Thank you. Given that change, I'd like to discuss a raise. Based on the Paris market, I think an eight percent increase would be justified.",
           "vi": "Cảm ơn bà. Xét đến sự thay đổi đó, em muốn đề cập tới việc tăng lương. So với thị trường Paris, em nghĩ mức tăng tám phần trăm là hợp lý."
         },
         {
           "speaker": "Mme Laurent",
           "text": "Je comprends votre démarche, et votre contribution est reconnue. Cela dit, l'enveloppe des augmentations a déjà été arbitrée pour cette année — elle est très serrée.",
+          "en": "I understand the approach, and your contribution is recognized. That said, the raise budget has already been settled for this year — and it's very tight.",
           "vi": "Bà hiểu cách em đặt vấn đề, và đóng góp của em được ghi nhận. Tuy vậy, ngân sách tăng lương năm nay đã được duyệt — và rất eo hẹp."
         },
         {
           "speaker": "Linh",
           "text": "J'entends cette contrainte. Pourrions-nous envisager un calendrier — par exemple, une première augmentation maintenant et un point d'étape dans six mois ?",
+          "en": "I hear that constraint. Could we consider a timeline — for instance, a first increase now and a checkpoint in six months?",
           "vi": "Em hiểu hạn chế đó. Mình có thể tính đến một lộ trình không — ví dụ tăng một phần ngay bây giờ và xem lại sau sáu tháng?"
         },
         {
           "speaker": "Mme Laurent",
           "text": "C'est une piste intéressante. Je peux probablement défendre trois pour cent dès ce mois-ci, avec un engagement formel de réexaminer en juillet.",
+          "en": "That's an interesting angle. I can probably defend three percent this month, with a formal commitment to revisit in July.",
           "vi": "Đó là một hướng đáng cân nhắc. Bà có thể đấu tranh để duyệt ba phần trăm ngay tháng này, kèm cam kết xem lại vào tháng Bảy."
         },
         {
           "speaker": "Linh",
           "text": "Si la marge de manœuvre sur le salaire reste limitée, est-ce qu'on pourrait compenser par un budget formation, ou par quelques jours de congés supplémentaires ?",
+          "en": "If the salary room is limited, could we compensate with a training budget, or a few extra days of leave?",
           "vi": "Nếu phần lương tăng còn hạn chế, mình có thể bù bằng ngân sách đào tạo, hoặc thêm vài ngày nghỉ phép được không?"
         },
         {
           "speaker": "Mme Laurent",
           "text": "Pour la formation, oui — j'ai une enveloppe que je peux mobiliser. Pour les congés, c'est plus compliqué, c'est cadré par la convention collective.",
+          "en": "Training, yes — I have a budget I can mobilize. For leave, it's harder; that's bound by the collective agreement.",
           "vi": "Về đào tạo thì được — bà có một khoản có thể huy động. Còn nghỉ phép thì khó hơn, vì bị ràng buộc bởi thỏa ước tập thể."
         },
         {
           "speaker": "Linh",
           "text": "Très bien. Donc si je résume : trois pour cent d'augmentation immédiate, deux mille euros de budget formation, et un nouvel échange en juillet pour évaluer la suite.",
+          "en": "Very good. So to recap: three percent immediate increase, two thousand euros of training budget, and another conversation in July to evaluate next steps.",
           "vi": "Vậy được. Em tóm tắt nhé: tăng ba phần trăm ngay, hai nghìn euro ngân sách đào tạo, và một buổi trao đổi mới vào tháng Bảy để đánh giá tiếp."
         },
         {
           "speaker": "Mme Laurent",
           "text": "C'est exactement ça. Je vais formaliser cela par écrit dans la semaine.",
+          "en": "Exactly. I'll formalize that in writing within the week.",
           "vi": "Đúng như vậy. Bà sẽ chính thức hóa bằng văn bản trong tuần này."
         },
         {
           "speaker": "Linh",
           "text": "Je vous en remercie. Pourrais-je avoir une copie une fois validée par les RH ?",
+          "en": "Thank you. May I have a copy once HR has validated it?",
           "vi": "Em cảm ơn bà. Em có thể nhận một bản sao sau khi phòng Nhân sự duyệt được không?"
         },
         {
           "speaker": "Mme Laurent",
           "text": "Bien entendu. Et merci à vous, Linh — c'est une discussion menée avec beaucoup de professionnalisme.",
+          "en": "Of course. And thank you, Linh — this was a discussion handled with a lot of professionalism.",
           "vi": "Tất nhiên rồi. Và cảm ơn em, Linh — đây là một cuộc trao đổi rất chuyên nghiệp."
         },
         {
           "speaker": "Linh",
           "text": "Merci, Madame Laurent. Bonne fin de journée.",
+          "en": "Thank you, Madame Laurent. Have a good rest of your day.",
           "vi": "Cảm ơn bà Laurent. Chúc bà cuối ngày tốt lành."
         }
       ],
@@ -1126,30 +1389,44 @@ export const lessons: FrenchLesson[] =           [
         "Sếp nói: « Le budget des augmentations est gelé cette année » (ngân sách tăng lương năm nay bị đóng băng). Bạn phản hồi thế nào để vừa giữ thể diện cho sếp, vừa không bỏ cuộc?",
         "Sếp đề nghị tăng số ngày nghỉ phép thay vì tăng lương. Hãy quyết định có nhận hay không, rồi nói lại bằng tiếng Pháp — kèm lý do và một đề xuất ngược lại nếu bạn từ chối."
       ],
+      "roleplay_prompts_en": [
+        "You're an employee who hasn't had a raise in three years. Open the conversation with your French manager politely but clearly — no apology, no hedging.",
+        "Your manager says: « Le budget des augmentations est gelé cette année » (the raise budget is frozen this year). How do you respond in a way that saves the manager's face but doesn't give up the ask?",
+        "Your manager offers extra leave days instead of a pay raise. Decide whether you accept, then say so in French — with a reason and a counter-proposal if you decline."
+      ],
       "register_notes": "Trong môi trường doanh nghiệp Pháp, đàm phán lương luôn dùng « vous » — kể cả khi sếp đã nói « tu » với bạn trong các bối cảnh thân mật khác. « Vouvoiement » trong cuộc nói chuyện về tiền không phải là khoảng cách lạnh lùng, mà là cách cả hai bên ký hiệu rằng « đây là chuyện công việc, không phải chuyện cá nhân ». Sau khi kết thúc đàm phán có thể quay lại « tu » nếu trước đó các bạn dùng « tu ».\n\nNgười Việt hay mắc hai lỗi đối lập: (1) khiêm tốn quá mức kiểu Á Đông — xin lỗi, vòng vo, hạ giá trị bản thân — bị người Pháp đọc là thiếu tự tin và làm sếp khó bênh vực bạn trước Nhân sự; (2) hoặc copy nguyên xi giọng Mỹ « I deserve this raise » — nghe như đòi hỏi, mất điểm. Giọng đúng là trung tính, dựa trên dữ liệu cụ thể (dự án, trách nhiệm mới, mức lương thị trường), và để mở cánh cửa thương lượng bằng cụm như « pourrions-nous envisager… » thay vì « je veux… ».",
+      "register_notes_en": "In a French corporate setting, salary negotiations always stay on 'vous' — even when your manager uses 'tu' with you in other casual contexts. Using 'vouvoiement' in a money conversation isn't cold distance; it's both parties signaling 'this is professional business, not personal'. You can return to 'tu' after the negotiation if that was your earlier baseline.\n\nNon-Western candidates often fall into one of two opposite traps: (1) over-humility ('I'm sorry to ask…') — apologetic, hedging, self-effacing — which French managers read as a lack of confidence and which makes it harder for them to advocate for you with HR; (2) copying a blunt American register ('I deserve this raise') — which reads as demanding and costs you goodwill. The right tone is neutral, grounded in concrete data (projects, expanded scope, market rate), and uses opening formulas like « pourrions-nous envisager… » (could we consider…) instead of « je veux… » (I want…).",
       "idiom_glosses": [
         {
           "idiom": "Mettre les pieds dans le plat",
           "literal": "Đặt chân vào đĩa thức ăn",
+          "literal_en": "to put one's feet in the dish",
           "meaning": "Nói thẳng vào một chủ đề tế nhị, không né tránh.",
+          "meaning_en": "to address a sensitive topic head-on without dancing around it",
           "example": "J'ai mis les pieds dans le plat en demandant directement combien gagnent mes collègues au même poste."
         },
         {
           "idiom": "Avoir le bras long",
           "literal": "Có cánh tay dài",
+          "literal_en": "to have a long arm",
           "meaning": "Có ảnh hưởng, có quan hệ rộng — có thể tác động đến quyết định.",
+          "meaning_en": "to have influence and connections — to be able to pull strings on a decision",
           "example": "Mon directeur a le bras long ; s'il défend mon dossier auprès des RH, ça passera."
         },
         {
           "idiom": "Mettre cartes sur table",
           "literal": "Đặt bài lên bàn",
+          "literal_en": "to put the cards on the table",
           "meaning": "Nói thẳng, minh bạch — không giấu thông tin.",
+          "meaning_en": "to be transparent — speak plainly and don't hide information",
           "example": "Mettons cartes sur table : voici le salaire que je vise et voici pourquoi."
         },
         {
           "idiom": "Battre le fer pendant qu'il est chaud",
           "literal": "Đập sắt khi còn nóng",
+          "literal_en": "to strike while the iron is hot",
           "meaning": "Chớp lấy thời cơ — hành động ngay khi điều kiện thuận lợi.",
+          "meaning_en": "to seize the moment — act now while conditions are favorable",
           "example": "Après la livraison réussie du projet Atlas, il faut battre le fer pendant qu'il est chaud et négocier maintenant."
         }
       ],
@@ -1157,6 +1434,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm còn thiếu vào câu đàm phán.",
+          "instruction_en": "Fill in the missing phrase in the negotiation sentence.",
           "items": [
             {
               "prompt": "Compte ___ de mes responsabilités actuelles, je souhaiterais aborder une augmentation.",
@@ -1179,6 +1457,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ Pháp với nghĩa tiếng Việt phù hợp khi đàm phán.",
+          "instruction_en": "Match each French idiom with the Vietnamese meaning used during a negotiation.",
           "items": [
             {
               "prompt": "Mettre cartes sur table",
@@ -1201,6 +1480,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp lịch sự (B2) — không dùng « je veux ».",
+          "instruction_en": "Translate into polite B2 French — do not use « je veux ».",
           "items": [
             {
               "prompt": "Tôi muốn nói về lương của mình.",
@@ -1232,6 +1512,11 @@ export const lessons: FrenchLesson[] =           [
             "liaison vous‿accorder → vu-z-a-kor-dê",
             "nasal en (entretien)",
             "r uvulaire (remercie)"
+          ],
+          "pronunciation_focus_en": [
+            "liaison 'vous accorder' → 'voo-zah-kor-DAY'",
+            "nasal 'en' in 'entretien' — don't finish the n",
+            "uvular 'r' in 'remercie' — throat-trilled"
           ]
         },
         {
@@ -1242,6 +1527,12 @@ export const lessons: FrenchLesson[] =           [
             "gestion → jes-tion",
             "stage → staj",
             "liaison à‿Hanoï"
+          ],
+          "pronunciation_focus_en": [
+            "mêle → 'mehl' — short flat 'e'",
+            "gestion → 'zhes-TYON' — 'g' = 'zh'",
+            "stage → 'stahzh' — final '-ge' = 'zh'",
+            "liaison 'à Hanoï' — flows together"
           ]
         },
         {
@@ -1251,6 +1542,11 @@ export const lessons: FrenchLesson[] =           [
             "m'attire → ma-tir",
             "responsabilisation → res-pon-sa-bi-li-za-sion",
             "r uvulaire"
+          ],
+          "pronunciation_focus_en": [
+            "m'attire → 'mah-TEER' — uvular 'r'",
+            "responsabilisation → 'res-pon-sah-bee-lee-zah-SYON' — seven syllables",
+            "uvular 'r' throughout"
           ]
         },
         {
@@ -1260,6 +1556,11 @@ export const lessons: FrenchLesson[] =           [
             "à l'aise → a-lèz",
             "environnements → ăn-vi-ron-mã",
             "exigeants → eg-zi-jăn"
+          ],
+          "pronunciation_focus_en": [
+            "à l'aise → 'ah-LEZ' — clean final 'z' sound",
+            "environnements → 'ahn-vee-ron-MAHN' — nasal 'en'+'on'+'an'",
+            "exigeants → 'eg-zee-ZHAHN' — 'g' = 'zh'"
           ]
         },
         {
@@ -1269,102 +1570,123 @@ export const lessons: FrenchLesson[] =           [
             "rémunération → ré-mu-né-ra-sion",
             "attentes → a-tăn-tơ",
             "fourchette → fur-shet"
+          ],
+          "pronunciation_focus_en": [
+            "rémunération → 'ray-myu-nay-rah-SYON'",
+            "attentes → 'ah-TAHNT' — nasal 'en'",
+            "fourchette → 'foor-SHET' — uvular 'r'"
           ]
         }
       ],
       "cultural_notes_vi": "Phỏng vấn ở công ty Pháp đặt giá trị cao vào việc ứng viên thể hiện « problématique propre » — tức là đã suy nghĩ rõ ràng về vai trò cụ thể, không phải chỉ « em mong được học hỏi ». Câu hỏi « Pourquoi nous ? » (Vì sao chọn chúng tôi?) gần như chắc chắn sẽ xuất hiện — phải có câu trả lời cụ thể, dựa trên dữ liệu (sản phẩm cụ thể của công ty, một bài blog của họ, một người bạn đã trao đổi), không phải nhận xét chung chung kiểu « tôi thích văn hóa công ty ». Khác với văn hóa Việt Nam — nơi sự khiêm tốn và « em xin các anh chỉ dạy » được coi trọng — ở Pháp giọng đó bị đọc là thiếu trưởng thành nghề nghiệp. « Esprit critique » — sẵn lòng phản biện sếp một cách tôn trọng — được xem là dấu hiệu của ứng viên chín chắn, không phải sự bất kính.",
+      "cultural_notes_en": "French companies expect candidates to arrive with their own framing of the role — a 'problématique propre' (your own clearly-thought-out angle), not just 'I hope to learn from you'. The question 'Pourquoi nous ?' (Why us?) is almost certain to come up; have a specific, evidence-backed answer (a product of theirs, a blog post they wrote, a person you've already talked to), not generic 'I like the company culture'. Where Vietnamese culture rewards modesty and 'em xin các anh chỉ dạy' (please teach me), French interviewers read that tone as a lack of professional maturity. 'Esprit critique' — the willingness to push back on the boss respectfully — is read as a sign of a serious candidate, not as disrespect.",
       "tip_advice_vi": "Chuẩn bị 3 câu chuyện ngắn (mỗi câu 90 giây) theo cấu trúc STAR — Situation, Tâche, Action, Résultat — minh họa các kỹ năng cốt lõi. Tập kể tự nhiên, không đọc thuộc lòng. Khi được hỏi điểm yếu, trả lời thật kèm hành động khắc phục cụ thể. Nói số tiền lương rõ ràng — không « around 40k » mà « 42 000 euros bruts annuels ». Cuối phỏng vấn, hỏi 2-3 câu thực sự về vai trò và đội nhóm; tránh câu mà website đã trả lời.",
+      "tip_advice_en": "Prepare three 90-second stories using the STAR framework — Situation, Tâche, Action, Résultat — illustrating your core competencies. Practice telling them naturally, not memorized. When asked about weaknesses, answer honestly and pair the weakness with a concrete corrective action. State salary numbers clearly — not 'around 40k' but '42 000 euros bruts annuels'. At the end, ask 2-3 substantive questions about the role and the team; avoid anything the website already answers.",
       "vocabulary": [
         {
           "word": "un entretien d'embauche",
           "en": "a job interview",
           "vi": "buổi phỏng vấn việc làm",
           "pos": "n.m.",
-          "pronunciation_vi": "ăn-trơ-tiang dăm-bôsh"
+          "pronunciation_vi": "ăn-trơ-tiang dăm-bôsh",
+          "pronunciation_en": "UN ahn-truh-tyan dahn-BOSH — three syllables for 'entretien'"
         },
         {
           "word": "le parcours",
           "en": "career path",
           "vi": "hành trình nghề nghiệp",
           "pos": "n.m.",
-          "pronunciation_vi": "par-kur"
+          "pronunciation_vi": "par-kur",
+          "pronunciation_en": "luh par-KOOR — uvular 'r'"
         },
         {
           "word": "mes attentes",
           "en": "my expectations",
           "vi": "kỳ vọng của tôi",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "mê-z-a-tăn-tơ"
+          "pronunciation_vi": "mê-z-a-tăn-tơ",
+          "pronunciation_en": "may-zah-TAHNT — liaison 'mes' → 'z' onto 'attentes'"
         },
         {
           "word": "la fourchette salariale",
           "en": "salary range",
           "vi": "khoảng lương",
           "pos": "n.f.",
-          "pronunciation_vi": "fur-shét sa-la-ri-al"
+          "pronunciation_vi": "fur-shét sa-la-ri-al",
+          "pronunciation_en": "lah foor-SHET sah-lah-RYAL — uvular 'r'"
         },
         {
           "word": "se situer dans",
           "en": "to fall within",
           "vi": "nằm trong",
           "pos": "v.",
-          "pronunciation_vi": "sơ si-tu-ê dăn"
+          "pronunciation_vi": "sơ si-tu-ê dăn",
+          "pronunciation_en": "suh see-tyu-AY dahn — 'situer' has French 'u' rounded"
         },
         {
           "word": "la responsabilisation",
           "en": "empowerment culture",
           "vi": "văn hóa trao quyền",
           "pos": "n.f.",
-          "pronunciation_vi": "res-pon-sa-bi-li-za-sion"
+          "pronunciation_vi": "res-pon-sa-bi-li-za-sion",
+          "pronunciation_en": "lah res-pon-sah-bee-lee-zah-SYON — track the syllable count"
         },
         {
           "word": "l'esprit critique",
           "en": "critical thinking",
           "vi": "tư duy phản biện",
           "pos": "n.m.",
-          "pronunciation_vi": "les-pri kri-tik"
+          "pronunciation_vi": "les-pri kri-tik",
+          "pronunciation_en": "less-PREE kree-TEEK — final 'esprit' has silent 't'"
         },
         {
           "word": "être à l'aise dans",
           "en": "to be comfortable in",
           "vi": "thoải mái trong",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ a-lèz dăn"
+          "pronunciation_vi": "é-trơ a-lèz dăn",
+          "pronunciation_en": "EH-truh ah-LEZ dahn — clean 'lez'"
         },
         {
           "word": "un environnement exigeant",
           "en": "a demanding environment",
           "vi": "môi trường đòi hỏi cao",
           "pos": "n.m.",
-          "pronunciation_vi": "ăn-vi-ron-mã eg-zi-jăn"
+          "pronunciation_vi": "ăn-vi-ron-mã eg-zi-jăn",
+          "pronunciation_en": "UN ahn-vee-ron-MAHN eg-zee-ZHAHN — multiple nasals"
         },
         {
           "word": "argumenter",
           "en": "to build a case",
           "vi": "lập luận có dẫn chứng",
           "pos": "v.",
-          "pronunciation_vi": "ar-gu-mãn-tê"
+          "pronunciation_vi": "ar-gu-mãn-tê",
+          "pronunciation_en": "ar-gyu-mahn-TAY — same final '-er' = 'ay'"
         }
       ],
       "dialogue": [
         {
           "speaker": "M. Dupont",
           "text": "Bonjour. Pourquoi avoir candidaté chez nous précisément ?",
+          "en": "Good morning. Why did you apply specifically to us?",
           "vi": "Chào em. Vì sao em ứng tuyển chính xác là ở chỗ chúng tôi?"
         },
         {
           "speaker": "Linh",
           "text": "Votre approche du conseil sur l'Asie du Sud-Est correspond exactement à ce que je veux développer.",
+          "en": "Your approach to Southeast Asia consulting is exactly what I want to develop.",
           "vi": "Cách tiếp cận của công ty về tư vấn Đông Nam Á chính là điều em muốn phát triển."
         },
         {
           "speaker": "M. Dupont",
           "text": "Précisez. Qu'est-ce qui vous distingue d'un autre candidat parisien ?",
+          "en": "Be specific. What sets you apart from another Paris-based candidate?",
           "vi": "Cụ thể đi. Điều gì khiến em khác với một ứng viên Paris?"
         },
         {
           "speaker": "Linh",
           "text": "Mon double regard franco-vietnamien et trois ans de terrain à Hanoï.",
+          "en": "My dual French-Vietnamese perspective and three years on the ground in Hanoi.",
           "vi": "Cái nhìn song song Pháp-Việt và ba năm thực địa ở Hà Nội."
         }
       ],
@@ -1372,61 +1694,73 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "M. Dupont",
           "text": "Bonjour Madame Trần, asseyez-vous. Je vous remercie d'être venue jusqu'ici.",
+          "en": "Good morning, Madame Trần, please have a seat. Thank you for coming all the way here.",
           "vi": "Chào chị Trần, chị ngồi đi. Cảm ơn chị đã đến tận đây."
         },
         {
           "speaker": "Linh",
           "text": "Merci, Monsieur Dupont. C'est un plaisir d'échanger avec vous aujourd'hui.",
+          "en": "Thank you, Monsieur Dupont. It's a pleasure to speak with you today.",
           "vi": "Cảm ơn anh Dupont. Em rất vui được trao đổi với anh hôm nay."
         },
         {
           "speaker": "M. Dupont",
           "text": "Présentez-vous en cinq minutes — formation, expériences clés, et pourquoi vous postulez chez nous.",
+          "en": "Introduce yourself in five minutes — education, key experiences, and why you're applying with us.",
           "vi": "Chị giới thiệu bản thân trong năm phút — học vấn, kinh nghiệm chính, và lý do ứng tuyển ở chỗ chúng tôi."
         },
         {
           "speaker": "Linh",
           "text": "Très bien. J'ai un master en gestion à HEC Hanoï, suivi d'un stage de six mois chez Bolloré Logistics à Paris. Mon projet : devenir consultante junior sur le marché vietnamien, où vous ouvrez un bureau l'an prochain.",
+          "en": "Of course. I have a master's in management from HEC Hanoi, followed by a six-month internship at Bolloré Logistics in Paris. My goal: to become a junior consultant on the Vietnamese market, where you're opening an office next year.",
           "vi": "Vâng. Em có bằng thạc sĩ quản trị tại HEC Hà Nội, sau đó là sáu tháng thực tập tại Bolloré Logistics Paris. Dự án của em: trở thành tư vấn junior cho thị trường Việt Nam, nơi công ty đang mở văn phòng năm tới."
         },
         {
           "speaker": "M. Dupont",
           "text": "Vous avez bien fait vos devoirs. Mais soyons francs : qu'est-ce qui vous différencie d'un consultant français bilingue qu'on pourrait envoyer là-bas ?",
+          "en": "You've done your homework. But let's be candid: what sets you apart from a bilingual French consultant we could send out there?",
           "vi": "Chị đã làm bài tập về nhà rất kỹ. Nhưng nói thẳng: điều gì khiến chị khác biệt với một tư vấn người Pháp song ngữ mà công ty có thể cử đi?"
         },
         {
           "speaker": "Linh",
           "text": "Trois choses concrètes : un réseau professionnel actif à Hanoï, une compréhension des codes implicites des PME vietnamiennes, et la capacité de sortir d'une réunion en français pour entrer dans une autre en vietnamien sans changer de registre.",
+          "en": "Three concrete things: an active professional network in Hanoi, a working knowledge of the unwritten codes of Vietnamese SMEs, and the ability to walk out of a meeting in French and straight into another in Vietnamese without changing register.",
           "vi": "Ba điều cụ thể: một mạng lưới chuyên môn đang hoạt động ở Hà Nội, sự hiểu biết về luật ngầm của doanh nghiệp vừa và nhỏ Việt Nam, và khả năng rời cuộc họp tiếng Pháp để bước vào cuộc họp tiếng Việt mà không đổi giọng điệu."
         },
         {
           "speaker": "M. Dupont",
           "text": "C'est un argument fort. Parlons d'une faiblesse réelle de votre profil.",
+          "en": "That's a strong argument. Let's talk about a real weakness in your profile.",
           "vi": "Đó là lập luận mạnh. Bây giờ ta nói về một điểm yếu thực sự trong hồ sơ của chị."
         },
         {
           "speaker": "Linh",
           "text": "Mon expérience en conseil pur est limitée — six mois en stage. Pour combler cela, je suis en train de passer la certification BCG Online et je me forme aux frameworks classiques avec un mentor à Paris.",
+          "en": "My experience in pure consulting is limited — six months as an intern. To address that, I'm currently completing the BCG Online certification and working through the classic frameworks with a mentor in Paris.",
           "vi": "Kinh nghiệm tư vấn thuần túy của em còn hạn chế — sáu tháng thực tập. Để bù điều đó, em đang thi chứng chỉ BCG Online và học các framework cổ điển với một mentor ở Paris."
         },
         {
           "speaker": "M. Dupont",
           "text": "Honnête, et bien anticipé. Sur la rémunération, qu'attendez-vous ?",
+          "en": "Honest, and well anticipated. On compensation, what are you expecting?",
           "vi": "Trung thực và biết trước. Về lương, chị kỳ vọng gì?"
         },
         {
           "speaker": "Linh",
           "text": "La fourchette annoncée de 42 à 48 mille euros bruts annuels me convient. Je viserais 46 mille compte tenu de mon double profil franco-vietnamien.",
+          "en": "The announced range of 42 to 48 thousand euros gross annually suits me. I'd target 46K given my dual French-Vietnamese profile.",
           "vi": "Khoảng lương đã công bố từ 42 đến 48 nghìn euro gross/năm phù hợp với em. Em nhắm 46 nghìn xét đến hồ sơ song ngữ Pháp-Việt."
         },
         {
           "speaker": "M. Dupont",
           "text": "C'est cohérent. On a deux autres candidats à voir cette semaine. Je vous reviens d'ici dix jours, positif ou négatif.",
+          "en": "That's reasonable. We have two more candidates to see this week. I'll get back to you within ten days, positive or negative.",
           "vi": "Hợp lý. Còn hai ứng viên khác phải gặp tuần này. Tôi sẽ phản hồi chị trong vòng mười ngày, có hay không."
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie pour cette franchise. Bonne fin de journée, Monsieur Dupont.",
+          "en": "Thank you for the candor. Have a good rest of your day, Monsieur Dupont.",
           "vi": "Em cảm ơn anh vì sự thẳng thắn. Chúc anh cuối ngày tốt lành, anh Dupont."
         }
       ],
@@ -1435,30 +1769,44 @@ export const lessons: FrenchLesson[] =           [
         "Nhà tuyển dụng nói: « Votre niveau de français à l'oral nous inquiète » (Trình độ tiếng Pháp nói của bạn khiến chúng tôi lo). Phản hồi vừa giữ được tự tin, vừa thừa nhận điểm cần cải thiện, kèm kế hoạch cụ thể.",
         "Cuối phỏng vấn, người tuyển hỏi « Vous avez des questions ? ». Đặt 3 câu hỏi thông minh — không hỏi điều mà website đã trả lời (lương, ngày nghỉ, văn hóa)."
       ],
+      "roleplay_prompts_en": [
+        "You're applying for a junior consultant role in Paris with 6 months of experience. Answer « Pourquoi nous et pas un autre cabinet ? » (Why us and not another firm?) in 90 seconds — specific, evidence-backed, no clichés.",
+        "The recruiter says: « Votre niveau de français à l'oral nous inquiète » (Your spoken French level concerns us). Respond confidently while acknowledging room for improvement, paired with a concrete plan.",
+        "At the end of the interview, the recruiter asks « Vous avez des questions ? ». Ask 3 substantive questions — nothing the website already answers (salary, holidays, culture)."
+      ],
       "register_notes": "Phỏng vấn việc làm ở Pháp luôn dùng « vous » — kể cả khi LinkedIn hoặc email trước đó dùng « tu ». « Vouvoiement » không lạnh; nó là tín hiệu « ta đang ở chế độ chuyên nghiệp ». Tránh hai cực: (1) khúm núm kiểu « em mong các anh tạo điều kiện » — bị đọc là thiếu chín chắn; (2) sao chép giọng Mỹ « I'm passionate about your mission » — nghe sáo. Giọng đúng: trung tính, dữ liệu, có cấu trúc. Khi không hiểu câu hỏi, hỏi lại lịch sự: « Pourriez-vous reformuler ? » thay vì gật đầu giả vờ hiểu.",
+      "register_notes_en": "A job interview in France stays on 'vous' — even if your LinkedIn or earlier emails used 'tu'. 'Vouvoiement' here isn't cold; it signals 'we're in professional mode now'. Avoid both poles: (1) overly deferential phrasing ('I hope you'll give me a chance') — reads as immature; (2) the American-imported 'I'm passionate about your mission' — reads as clichéd. The right register is neutral, data-driven, structured. When you don't catch a question, politely ask: « Pourriez-vous reformuler ? » (Could you rephrase?) instead of nodding through.",
       "idiom_glosses": [
         {
           "idiom": "Faire ses preuves",
           "literal": "Đưa ra các bằng chứng của mình",
+          "literal_en": "to give one's proofs",
           "meaning": "Chứng minh năng lực qua kết quả cụ thể.",
+          "meaning_en": "to prove your worth through concrete results",
           "example": "Pendant ce stage, j'ai eu l'occasion de faire mes preuves sur le projet Asia."
         },
         {
           "idiom": "Avoir le pied à l'étrier",
           "literal": "Có chân vào bàn đạp ngựa",
+          "literal_en": "to have a foot in the stirrup",
           "meaning": "Bước đầu vào nghề; có cơ hội khởi đầu.",
+          "meaning_en": "to get one's first foot in the door of a profession",
           "example": "Ce poste me permettrait d'avoir le pied à l'étrier dans le conseil."
         },
         {
           "idiom": "Mettre toutes les chances de son côté",
           "literal": "Đặt mọi cơ hội về phía mình",
+          "literal_en": "to put all the chances on one's side",
           "meaning": "Chuẩn bị kỹ lưỡng để tối đa hóa khả năng thành công.",
+          "meaning_en": "to do the maximum preparation to maximize success",
           "example": "J'ai préparé trois études de cas pour mettre toutes les chances de mon côté."
         },
         {
           "idiom": "Tirer son épingle du jeu",
           "literal": "Rút cây ghim khỏi trò chơi",
+          "literal_en": "to pull one's pin out of the game",
           "meaning": "Xoay xở khéo léo, vượt qua khó khăn.",
+          "meaning_en": "to navigate skillfully through a tough spot, to come out on top",
           "example": "Dans un marché tendu, mon double profil m'aide à tirer mon épingle du jeu."
         }
       ],
@@ -1466,6 +1814,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm còn thiếu vào câu phỏng vấn lịch sự.",
+          "instruction_en": "Fill in the missing phrase in the polite interview sentence.",
           "items": [
             {
               "prompt": "Je vous ___ de m'accorder cet entretien.",
@@ -1488,6 +1837,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ Pháp với nghĩa tiếng Việt khi phỏng vấn.",
+          "instruction_en": "Match each French idiom with the Vietnamese meaning used in interviews.",
           "items": [
             {
               "prompt": "Faire ses preuves",
@@ -1510,6 +1860,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — không dùng « je veux ».",
+          "instruction_en": "Translate into B2 French — do not use « je veux ».",
           "items": [
             {
               "prompt": "Em muốn nói rõ điều khiến em khác biệt.",
@@ -1541,6 +1892,11 @@ export const lessons: FrenchLesson[] =           [
             "s'inscrit → san-skri",
             "continuité → kon-ti-nu-i-té",
             "mémoire → mé-mwar"
+          ],
+          "pronunciation_focus_en": [
+            "s'inscrit → 'san-SKREE' — nasal 'in', silent 't'",
+            "continuité → 'kon-tee-nyu-ee-TAY'",
+            "mémoire → 'may-MWAHR' — 'oi' = 'wa'; uvular 'r'"
           ]
         },
         {
@@ -1550,6 +1906,11 @@ export const lessons: FrenchLesson[] =           [
             "vise → viz",
             "complète → kom-plèt",
             "volet → vo-lè"
+          ],
+          "pronunciation_focus_en": [
+            "vise → 'veez' — final 'e' silent",
+            "complète → 'kom-PLET' — nasal 'om'",
+            "volet → 'voh-LAY' — silent 't'"
           ]
         },
         {
@@ -1559,6 +1920,11 @@ export const lessons: FrenchLesson[] =           [
             "à l'issue → a-li-syu",
             "compte → kont",
             "co-encadrer → ko-an-ka-dré"
+          ],
+          "pronunciation_focus_en": [
+            "à l'issue → 'ah lee-SYU' — French 'u' rounded",
+            "compte → 'KONT' — nasal 'om', silent 'p'",
+            "co-encadrer → 'koh-ahn-kah-DRAY'"
           ]
         },
         {
@@ -1569,6 +1935,12 @@ export const lessons: FrenchLesson[] =           [
             "offrirait → o-fri-ré",
             "matérielle → ma-té-riel",
             "pleinement → plè-nơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "bourse → 'BOORS' — uvular 'r'",
+            "offrirait → 'oh-free-REH' — conditional 'ait'",
+            "matérielle → 'mah-tay-RYEL'",
+            "pleinement → 'plen-MAHN' — nasal 'em'"
           ]
         },
         {
@@ -1579,102 +1951,124 @@ export const lessons: FrenchLesson[] =           [
             "retour → rơ-tur",
             "scientifique → sian-ti-fik",
             "accueil → a-kơy"
+          ],
+          "pronunciation_focus_en": [
+            "m'engage → 'mahn-GAHZH' — nasal 'en'; final 'ge' = 'zh'",
+            "retour → 'ruh-TOOR' — uvular 'r'",
+            "scientifique → 'syan-tee-FEEK'",
+            "accueil → 'ah-KUH-y' — French 'œ'"
           ]
         }
       ],
       "cultural_notes_vi": "Phỏng vấn học bổng Pháp (Eiffel, Campus France, IDEX) đánh giá trên ba trục: chất lượng học thuật, dự án nghề nghiệp rõ ràng, và « projet de retour » — kế hoạch sau khi tốt nghiệp đóng góp lại cho nước nhà. Điểm thứ ba đặc biệt quan trọng với Eiffel: học bổng này nằm trong chính sách ngoại giao mềm của Pháp — họ muốn xây dựng một mạng lưới cựu sinh viên ưu tú quay về vị trí có ảnh hưởng tại nước mình. Trả lời « em sẽ ở lại Pháp làm việc » không phải lựa chọn khôn — sẽ làm hỏng hồ sơ. Khác văn hóa Việt Nam (nơi đôi khi việc « ở lại nước ngoài » được nhìn như thành công), với học bổng nhà nước Pháp thì « về nước có dự án cụ thể » mới là câu trả lời được mong đợi. Phải nêu được: nơi sẽ làm, vai trò, cách kiến thức học ở Pháp tạo giá trị tại Việt Nam.",
+      "cultural_notes_en": "French state scholarship interviews (Eiffel, Campus France, IDEX) score on three axes: academic quality, a clear career project, and the 'projet de retour' — what you'll contribute back home after graduation. That third point matters especially for Eiffel: this scholarship is part of France's soft-power diplomacy — they're building a network of elite alumni who return to positions of influence in their home country. Answering 'I plan to stay and work in France' is not a savvy move — it will sink the application. Unlike Vietnamese contexts where 'staying abroad' can be a marker of success, with French state scholarships 'returning home with a concrete project' is the expected answer. Be ready to name: where you'll work, in what role, and how the knowledge gained in France will create value back in Vietnam.",
       "tip_advice_vi": "Chuẩn bị một « projet de retour » cụ thể trên một trang A4: nơi làm việc dự kiến (trường đại học, viện nghiên cứu, công ty), vai trò, các cộng tác Pháp-Việt bạn sẽ duy trì. Trả lời câu « Pourquoi la France ? » bằng tên cụ thể (giáo sư, lab, sách, hội nghị bạn đã tham dự) — không phải « tôi yêu văn hóa Pháp ». Khi nói tiền, hãy nói rằng học bổng cho phép tập trung vào học thuật, không phải « em thiếu tiền ». Trong phỏng vấn nhóm Campus France, đến trước 15 phút và mặc trang phục business smart — không quá trang trọng nhưng không jeans-tshirt.",
+      "tip_advice_en": "Prepare a concrete 'projet de retour' that fits on one A4 page: the institution you'll join (university, research center, company), your role, the France-Vietnam collaborations you'll maintain. Answer 'Pourquoi la France ?' with specifics — name a professor, a lab, a book, a conference you've attended — never generic 'I love French culture'. When money comes up, frame the scholarship as enabling academic focus, not as 'I need the money'. For group Campus France interviews, arrive 15 minutes early and dress business smart — not formal suit, but not jeans and t-shirt either.",
       "vocabulary": [
         {
           "word": "une bourse d'études",
           "en": "a study scholarship",
           "vi": "học bổng học tập",
           "pos": "n.f.",
-          "pronunciation_vi": "burs dé-tyud"
+          "pronunciation_vi": "burs dé-tyud",
+          "pronunciation_en": "ün BOORS day-TYUD — uvular 'r'"
         },
         {
           "word": "le projet de retour",
           "en": "return project (post-degree plan)",
           "vi": "dự án trở về sau tốt nghiệp",
           "pos": "n.m.",
-          "pronunciation_vi": "pro-jé dơ rơ-tur"
+          "pronunciation_vi": "pro-jé dơ rơ-tur",
+          "pronunciation_en": "luh proh-ZHAY duh ruh-TOOR — soft 'g' = 'zh'"
         },
         {
           "word": "un volet (de recherche)",
           "en": "a (research) component",
           "vi": "phần (nghiên cứu)",
           "pos": "n.m.",
-          "pronunciation_vi": "vo-lè"
+          "pronunciation_vi": "vo-lè",
+          "pronunciation_en": "UN voh-LAY (duh ruh-SHEHRSH) — silent final 't'"
         },
         {
           "word": "co-encadrer",
           "en": "to co-supervise",
           "vi": "đồng hướng dẫn",
           "pos": "v.",
-          "pronunciation_vi": "ko-an-ka-dré"
+          "pronunciation_vi": "ko-an-ka-dré",
+          "pronunciation_en": "koh-ahn-kah-DRAY — five syllables, even stress"
         },
         {
           "word": "la stabilité matérielle",
           "en": "financial stability",
           "vi": "sự ổn định vật chất",
           "pos": "n.f.",
-          "pronunciation_vi": "sta-bi-li-té ma-té-riel"
+          "pronunciation_vi": "sta-bi-li-té ma-té-riel",
+          "pronunciation_en": "lah stah-bee-lee-TAY mah-tay-RYEL — long but rhythmic"
         },
         {
           "word": "un laboratoire d'accueil",
           "en": "host laboratory",
           "vi": "phòng lab tiếp nhận",
           "pos": "n.m.",
-          "pronunciation_vi": "la-bo-ra-twar da-kơy"
+          "pronunciation_vi": "la-bo-ra-twar da-kơy",
+          "pronunciation_en": "UN lah-boh-rah-TWAHR dah-KUHY — 'oir' has uvular 'r'"
         },
         {
           "word": "s'engager à",
           "en": "to commit to",
           "vi": "cam kết",
           "pos": "v.",
-          "pronunciation_vi": "sãn-ga-jé a"
+          "pronunciation_vi": "sãn-ga-jé a",
+          "pronunciation_en": "sahn-gah-ZHAY ah — 's' reflexive contracted"
         },
         {
           "word": "un dossier de candidature",
           "en": "an application file",
           "vi": "hồ sơ ứng tuyển",
           "pos": "n.m.",
-          "pronunciation_vi": "do-sié dơ kan-di-da-tur"
+          "pronunciation_vi": "do-sié dơ kan-di-da-tur",
+          "pronunciation_en": "UN doh-SYAY duh kahn-dee-dah-TYUR — 'dossier' has silent 'r'"
         },
         {
           "word": "être éligible à",
           "en": "to be eligible for",
           "vi": "đủ điều kiện cho",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ é-li-jib a"
+          "pronunciation_vi": "é-trơ é-li-jib a",
+          "pronunciation_en": "EH-truh ay-lee-ZHEEBL ah — soft 'g' = 'zh'"
         },
         {
           "word": "valoriser ses acquis",
           "en": "to highlight one's achievements",
           "vi": "làm nổi bật thành tựu",
           "pos": "expr.",
-          "pronunciation_vi": "va-lo-ri-zé sé-z-a-ki"
+          "pronunciation_vi": "va-lo-ri-zé sé-z-a-ki",
+          "pronunciation_en": "vah-loh-ree-ZAY say-zah-KEE — liaison 'ses' → 'z' onto 'acquis'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Mme Roy",
           "text": "Bonjour. Pourquoi la France et pas un autre pays ?",
+          "en": "Good morning. Why France and not another country?",
           "vi": "Chào em. Vì sao là Pháp mà không phải nước khác?"
         },
         {
           "speaker": "Mai",
           "text": "Le programme du Pr Lefèvre à Paris-Saclay est unique en Europe sur l'IA explicable.",
+          "en": "Professor Lefèvre's programme at Paris-Saclay is unique in Europe on explainable AI.",
           "vi": "Chương trình của giáo sư Lefèvre ở Paris-Saclay là độc đáo ở châu Âu về AI có thể giải thích."
         },
         {
           "speaker": "Mme Roy",
           "text": "Et après le master, qu'envisagez-vous concrètement ?",
+          "en": "And after the master's, what are you concretely planning?",
           "vi": "Và sau master, em cụ thể tính làm gì?"
         },
         {
           "speaker": "Mai",
           "text": "Rentrer à Hanoï pour rejoindre le laboratoire d'IA de l'USTH, où mon ancienne directrice m'attend.",
+          "en": "To return to Hanoi and join the AI lab at USTH, where my former advisor is waiting for me.",
           "vi": "Trở về Hà Nội tham gia phòng AI của USTH, nơi nguyên giáo sư hướng dẫn của em đang chờ."
         }
       ],
@@ -1682,66 +2076,79 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Mme Roy",
           "text": "Bonjour, Mademoiselle Phạm. Asseyez-vous. Vous avez quinze minutes pour défendre votre dossier devant ce jury.",
+          "en": "Good morning, Mademoiselle Phạm. Please have a seat. You have fifteen minutes to defend your application in front of this committee.",
           "vi": "Chào em Phạm. Em ngồi đi. Em có mười lăm phút để bảo vệ hồ sơ trước hội đồng này."
         },
         {
           "speaker": "Mai",
           "text": "Bonjour Madame, bonjour à toute l'équipe. Je vais structurer ma présentation en trois temps : pourquoi ce master, pourquoi maintenant, et pourquoi un retour au Vietnam.",
+          "en": "Good morning, Madame, and good morning to the panel. I'll structure my presentation in three parts: why this master's, why now, and why a return to Vietnam.",
           "vi": "Chào bà, chào toàn hội đồng. Em sẽ chia phần trình bày thành ba đoạn: vì sao master này, vì sao bây giờ, và vì sao trở về Việt Nam."
         },
         {
           "speaker": "Mme Roy",
           "text": "Très bien. Allez-y.",
+          "en": "Very good. Go ahead.",
           "vi": "Tốt. Em bắt đầu đi."
         },
         {
           "speaker": "Mai",
           "text": "Premièrement, le master « IA et Société » à Paris-Saclay est l'un des rares à articuler informatique avancée et éthique. Mon mémoire de licence à Hanoï portait déjà sur les biais algorithmiques en santé publique — j'ai donc une question de recherche que je veux approfondir, pas une vocation à découvrir.",
+          "en": "First, the 'AI and Society' master's at Paris-Saclay is one of the few that combines advanced computer science with ethics. My bachelor's thesis in Hanoi already focused on algorithmic bias in public health — I bring a research question to deepen, not a vocation to discover.",
           "vi": "Thứ nhất, master « AI và Xã hội » ở Paris-Saclay là một trong số ít kết hợp tin học nâng cao và đạo đức. Luận văn cử nhân của em ở Hà Nội đã tập trung vào thiên kiến thuật toán trong y tế công cộng — em có sẵn một câu hỏi nghiên cứu muốn đào sâu, không phải tìm đam mê mới."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Pourquoi maintenant et pas dans deux ans, après une expérience professionnelle ?",
+          "en": "Why now and not in two years, after some professional experience?",
           "vi": "Vì sao bây giờ mà không phải hai năm nữa sau khi đi làm?"
         },
         {
           "speaker": "Mai",
           "text": "Parce que les outils méthodologiques évoluent vite. Si j'attends, je devrai me reformer en parallèle de mon travail. Faire le master maintenant, c'est sécuriser une base scientifique solide avant d'entrer en milieu professionnel.",
+          "en": "Because the methodological tools are evolving fast. If I wait, I'll have to retrain in parallel with my job. Doing the master's now means locking in a solid scientific base before entering a professional setting.",
           "vi": "Vì các công cụ phương pháp thay đổi rất nhanh. Nếu em đợi, em sẽ phải tự đào tạo lại trong khi đi làm. Học master ngay là cách giữ một nền tảng khoa học vững trước khi vào môi trường chuyên nghiệp."
         },
         {
           "speaker": "Mme Roy",
           "text": "Parlons du projet de retour. Soyez précise.",
+          "en": "Let's talk about the return project. Be specific.",
           "vi": "Ta nói về dự án trở về. Em cụ thể đi."
         },
         {
           "speaker": "Mai",
           "text": "À l'issue du master, je rejoins le laboratoire d'IA de l'USTH à Hanoï comme assistante de recherche. Ma directrice de licence m'a confirmé une lettre d'intention. À moyen terme, je souhaite co-encadrer une thèse en cotutelle avec Paris-Saclay — c'est mon engagement concret de pont franco-vietnamien.",
+          "en": "After the master's, I'll join the AI lab at USTH in Hanoi as a research assistant. My bachelor's advisor has confirmed a letter of intent. Medium-term, I want to co-supervise a thesis in cotutelle with Paris-Saclay — that's my concrete France-Vietnam bridge commitment.",
           "vi": "Sau master, em sẽ vào phòng lab AI của USTH ở Hà Nội với tư cách trợ lý nghiên cứu. Giáo sư hướng dẫn cử nhân đã xác nhận một thư ý định. Trung hạn, em muốn đồng hướng dẫn một luận án cotutelle với Paris-Saclay — đó là cam kết cụ thể của em về cây cầu Pháp-Việt."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Si la bourse Eiffel ne vous est pas accordée, votre projet tient-il toujours ?",
+          "en": "If you don't receive the Eiffel scholarship, does your project still hold?",
           "vi": "Nếu không được học bổng Eiffel, dự án của em còn tiến hành được không?"
         },
         {
           "speaker": "Mai",
           "text": "Honnêtement, ce serait beaucoup plus difficile. J'ai un dossier en parallèle pour la bourse de l'AUF, mais l'Eiffel offre un encadrement administratif et un réseau d'anciens auxquels je tiens beaucoup. Sans elle, je devrais probablement reporter d'un an pour économiser.",
+          "en": "Honestly, it would be much harder. I have a parallel application for the AUF scholarship, but Eiffel offers administrative support and an alumni network I value highly. Without it, I'd probably have to postpone by a year to save money.",
           "vi": "Thật lòng, sẽ khó hơn rất nhiều. Em có hồ sơ song song cho học bổng AUF, nhưng Eiffel có hệ thống hỗ trợ hành chính và mạng cựu sinh viên mà em rất quý. Không có nó, em có thể phải hoãn một năm để tiết kiệm tiền."
         },
         {
           "speaker": "Mme Roy",
           "text": "Merci pour cette franchise. Une dernière question : qu'apporterez-vous à la communauté Eiffel pendant vos études ?",
+          "en": "Thank you for the candor. One last question: what will you contribute to the Eiffel community during your studies?",
           "vi": "Cảm ơn em vì sự thẳng thắn. Câu hỏi cuối: em sẽ đóng góp gì cho cộng đồng Eiffel trong thời gian học?"
         },
         {
           "speaker": "Mai",
           "text": "Je propose d'animer un atelier mensuel pour les boursiers d'Asie du Sud-Est sur la transition culturelle, et de servir d'interface avec les anciens vietnamiens d'Eiffel — je connais déjà personnellement trois d'entre eux à Hanoï.",
+          "en": "I'd propose to run a monthly workshop for Southeast Asian scholars on cultural transition, and to act as a liaison with Vietnamese Eiffel alumni — I already know three of them personally in Hanoi.",
           "vi": "Em đề xuất tổ chức một workshop hàng tháng cho học bổng sinh Đông Nam Á về chuyển tiếp văn hóa, và làm cầu nối với cựu sinh viên Eiffel Việt Nam — em đã quen ba người trong số họ ở Hà Nội."
         },
         {
           "speaker": "Mme Roy",
           "text": "Très bien. Le jury vous remercie. Réponse par écrit dans six semaines.",
+          "en": "Very good. The committee thanks you. Written reply in six weeks.",
           "vi": "Tốt. Hội đồng cảm ơn em. Phản hồi bằng văn bản trong sáu tuần."
         }
       ],
@@ -1750,30 +2157,44 @@ export const lessons: FrenchLesson[] =           [
         "Hội đồng hỏi: « Si vous obtenez la bourse, accepteriez-vous de rester travailler en France après le diplôme ? ». Hãy trả lời thật mà vẫn giữ được sức mạnh hồ sơ — nhớ rằng Eiffel ưu tiên « projet de retour ».",
         "Cuối phỏng vấn, hội đồng cho 60 giây cuối để bạn nói thêm bất cứ điều gì. Đừng cảm ơn vu vơ — hãy gói lại hồ sơ bằng một câu chốt mạnh, có hình ảnh hoặc con số."
       ],
+      "roleplay_prompts_en": [
+        "You're at an Eiffel scholarship interview. The panel asks « Pourquoi la France ? ». Answer in 60 seconds with 3 concrete pieces of evidence (a professor, a book, a conference) — avoid clichés like « j'aime la culture française ».",
+        "The panel asks: « Si vous obtenez la bourse, accepteriez-vous de rester travailler en France après le diplôme ? » (If you get the scholarship, would you stay and work in France after graduating?). Answer honestly while preserving the application's strength — remember Eiffel prioritizes the 'projet de retour'.",
+        "At the end, the panel gives you 60 seconds to add anything. Don't thank them vaguely — close with a strong final sentence, an image or a number that anchors your application."
+      ],
       "register_notes": "Phỏng vấn học bổng nhà nước Pháp luôn dùng « vous » đa chiều — bạn dùng « vous » với hội đồng, hội đồng cũng dùng « vous » với bạn (không vì bạn trẻ mà họ tutoyer). Tránh kể chuyện cá nhân quá đậm (cha mẹ hy sinh, gia đình khó khăn) — người Pháp đánh giá cao việc tách riêng chuyện riêng và chuyện học thuật. Nếu hoàn cảnh khó khăn của bạn liên quan trực tiếp đến chủ đề nghiên cứu, có thể nhắc một câu ngắn, không nhấn mạnh. Khi bí câu trả lời, không gật đầu giả vờ — hãy nói « C'est une excellente question, je vais y réfléchir un instant » để câu giờ một cách lịch thiệp.",
+      "register_notes_en": "French state scholarship interviews use 'vous' both ways — you 'vous' the committee, and they 'vous' you back (your age doesn't trigger 'tutoiement'). Avoid heavy personal narratives (parents' sacrifices, family hardship) — French academic culture values keeping personal and intellectual matters separate. If your background connects directly to the research topic, mention it briefly and don't dwell. When stuck on a question, never nod and fake understanding — say « C'est une excellente question, je vais y réfléchir un instant » (That's an excellent question, let me think about it for a moment) to buy time gracefully.",
       "idiom_glosses": [
         {
           "idiom": "Mettre toutes les chances de son côté",
           "literal": "Đặt mọi cơ hội về phía mình",
+          "literal_en": "to put all the chances on one's side",
           "meaning": "Chuẩn bị kỹ để tối đa hóa khả năng được chọn.",
+          "meaning_en": "to do the maximum preparation to maximize selection chances",
           "example": "J'ai postulé à trois bourses pour mettre toutes les chances de mon côté."
         },
         {
           "idiom": "Faire ses gammes",
           "literal": "Tập âm giai (như học piano)",
+          "literal_en": "to play one's scales (like piano practice)",
           "meaning": "Học bài bản, tích lũy kinh nghiệm cơ bản trước khi đi xa.",
+          "meaning_en": "to learn the basics methodically, build the foundation before going further",
           "example": "Le master me permettra de faire mes gammes en méthodologie avant la thèse."
         },
         {
           "idiom": "Avoir le vent en poupe",
           "literal": "Có gió thuận sau lưng (như cánh buồm)",
+          "literal_en": "to have the wind in the stern (like a sailboat)",
           "meaning": "Đang ở giai đoạn thuận lợi, đà tiến tốt.",
+          "meaning_en": "to be on a favorable wave, riding momentum in your field",
           "example": "L'IA explicable a le vent en poupe dans la recherche européenne — c'est le bon moment pour s'y former."
         },
         {
           "idiom": "Jeter des ponts",
           "literal": "Bắc các cây cầu",
+          "literal_en": "to throw bridges",
           "meaning": "Tạo cầu nối giữa hai nhóm/cộng đồng/quốc gia.",
+          "meaning_en": "to build bridges between two groups, communities, or countries",
           "example": "Mon projet de retour vise à jeter des ponts entre la recherche française et l'écosystème vietnamien."
         }
       ],
@@ -1781,6 +2202,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm còn thiếu vào câu phỏng vấn học bổng.",
+          "instruction_en": "Fill in the missing phrase in the scholarship interview sentence.",
           "items": [
             {
               "prompt": "Mon projet ___ dans la continuité de mon mémoire.",
@@ -1803,6 +2225,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với nghĩa khi nói về học bổng.",
+          "instruction_en": "Match each idiom to its meaning in the scholarship context.",
           "items": [
             {
               "prompt": "Mettre toutes les chances de son côté",
@@ -1825,6 +2248,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2.",
+          "instruction_en": "Translate into B2 French.",
           "items": [
             {
               "prompt": "Em muốn quay lại Việt Nam để đồng hướng dẫn các dự án.",
@@ -1857,6 +2281,12 @@ export const lessons: FrenchLesson[] =           [
             "affiner → a-fi-né",
             "problématique → pro-blé-ma-tik",
             "soumettre → su-mè-trơ"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → 'voo-DREH' — conditional 'ais' = 'eh'",
+            "affiner → 'ah-fee-NAY'",
+            "problématique → 'pro-blay-mah-TEEK'",
+            "soumettre → 'soo-MEH-truh' — final 'tre' = 'truh'"
           ]
         },
         {
@@ -1867,6 +2297,12 @@ export const lessons: FrenchLesson[] =           [
             "attaque → a-tak",
             "politiques → po-li-tik",
             "migration → mi-gra-sion"
+          ],
+          "pronunciation_focus_en": [
+            "angle → 'AHN-gluh' — nasal 'an'",
+            "attaque → 'ah-TAK' — final '-que' = 'k'",
+            "politiques → 'poh-lee-TEEK'",
+            "migration → 'mee-grah-SYON'"
           ]
         },
         {
@@ -1876,6 +2312,11 @@ export const lessons: FrenchLesson[] =           [
             "m'appuie → ma-pyu-i",
             "principalement → pran-si-pal-mã",
             "travaux → tra-vo"
+          ],
+          "pronunciation_focus_en": [
+            "m'appuie → 'mah-PWEE' — 'u' is French rounded",
+            "principalement → 'pran-see-pahl-MAHN' — nasal 'in'+'an'",
+            "travaux → 'trah-VOH' — 'aux' = 'oh'"
           ]
         },
         {
@@ -1886,6 +2327,12 @@ export const lessons: FrenchLesson[] =           [
             "comporterait → kom-por-tơ-ré",
             "entretiens → ãn-trơ-tian",
             "semi-directifs → sơ-mi-di-rek-tif"
+          ],
+          "pronunciation_focus_en": [
+            "terrain → 'teh-RAN' — nasal 'in' at end",
+            "comporterait → 'kom-por-tuh-REH' — conditional ending",
+            "entretiens → 'ahn-truh-TYAN' — nasal 'en'+'in'",
+            "semi-directifs → 'suh-mee-dee-rek-TEEF'"
           ]
         },
         {
@@ -1895,102 +2342,123 @@ export const lessons: FrenchLesson[] =           [
             "regard → rơ-gar",
             "faisabilité → fơ-za-bi-li-té",
             "calendrier → ka-lăn-dri-é"
+          ],
+          "pronunciation_focus_en": [
+            "regard → 'ruh-GAHR' — uvular 'r' twice",
+            "faisabilité → 'fuh-zah-bee-lee-TAY'",
+            "calendrier → 'kah-lahn-dree-AY'"
           ]
         }
       ],
       "cultural_notes_vi": "Buổi gặp giáo sư hướng dẫn ở Pháp khác hẳn cuộc gặp ở Việt Nam. Ở Việt Nam, sinh viên thường đến để « xin thầy cho đề tài » — một thái độ tôn kính và phụ thuộc. Ở Pháp, giáo sư mong sinh viên đến với một « problématique propre » đã được suy nghĩ kỹ — vai trò của giáo sư là phản biện, tinh chỉnh, mở rộng, không phải « giao đề ». Đến tay không và nói « em chưa biết làm gì, xin thầy gợi ý » sẽ làm giáo sư mất kiên nhẫn và hồ sơ luận văn của bạn coi như có vấn đề ngay từ đầu. Hãy đến với một bản hai trang: câu hỏi nghiên cứu, lý do quan trọng, ba tác giả nền tảng, phương pháp dự kiến, lịch trình. Giáo sư có thể bác bỏ tất cả — đó là chuyện thường, không phải sỉ nhục. Sự « sécheresse » (khô khan) của góp ý Pháp khiến nhiều sinh viên Việt khóc trên đường về — hãy xem đó là tôn trọng trí tuệ của bạn, không phải công kích cá nhân.",
+      "cultural_notes_en": "A meeting with a thesis supervisor in France differs sharply from Vietnam. In Vietnam, students often come to 'ask the professor for a topic' — a deferential, dependent posture. In France, the supervisor expects you to arrive with a 'problématique propre' (your own carefully-thought-out research question); their job is to challenge, refine, and expand it, not to hand you one. Showing up empty-handed and saying 'I don't know what to research, please suggest' will lose the supervisor's patience and damage your thesis dossier from the start. Bring a two-page document: research question, why it matters, three foundational authors, projected method, timeline. The supervisor may demolish all of it — that's normal, not a humiliation. The 'sécheresse' (dryness) of French academic feedback drives many international students to tears on the walk home — read it instead as respect for your intellect, not a personal attack.",
       "tip_advice_vi": "Mang theo một bản giấy hai trang in ra, kể cả khi đã gửi PDF — giáo sư Pháp thích viết lên giấy. Mở đầu bằng câu hỏi cụ thể bạn cần thầy/cô trả lời (« J'ai trois doutes : 1, 2, 3 »), không phải kể lể về bối cảnh. Khi giáo sư đề xuất tài liệu, ghi ngay tên tác giả và năm — đừng tin trí nhớ. Cuối buổi, tóm tắt ba điểm hành động trong ba câu, và hỏi giáo sư có chỉnh không. Sau buổi họp, gửi email cảm ơn kèm ba điểm hành động đó trong vòng 24 giờ — không phải vì lễ phép, mà để có vết bằng văn bản về cam kết hai bên.",
+      "tip_advice_en": "Bring a printed two-page document, even if you've already emailed the PDF — French professors like to write on paper. Open with the specific questions you need the supervisor to answer ('J'ai trois doutes : 1, 2, 3'), not with background context. When the supervisor recommends sources, write down author and year immediately — don't trust your memory. At the end, summarize three action items in three sentences and ask the supervisor to confirm or correct. Within 24 hours, send a thank-you email with those three action items in writing — not for politeness, but to create a written trace of the mutual commitment.",
       "vocabulary": [
         {
           "word": "affiner",
           "en": "to refine",
           "vi": "tinh chỉnh",
           "pos": "v.",
-          "pronunciation_vi": "a-fi-né"
+          "pronunciation_vi": "a-fi-né",
+          "pronunciation_en": "ah-fee-NAY — final '-er' = 'ay'"
         },
         {
           "word": "une problématique",
           "en": "a research question",
           "vi": "câu hỏi nghiên cứu",
           "pos": "n.f.",
-          "pronunciation_vi": "pro-blé-ma-tik"
+          "pronunciation_vi": "pro-blé-ma-tik",
+          "pronunciation_en": "ün pro-blay-mah-TEEK — final '-que' = 'k'"
         },
         {
           "word": "l'angle d'attaque",
           "en": "angle of approach",
           "vi": "hướng tiếp cận",
           "pos": "n.m.",
-          "pronunciation_vi": "ãgl da-tak"
+          "pronunciation_vi": "ãgl da-tak",
+          "pronunciation_en": "lahn-gluh dah-TAK — uvular 'r' on neither (no r here)"
         },
         {
           "word": "s'appuyer sur",
           "en": "to rely / build upon",
           "vi": "dựa trên",
           "pos": "v.",
-          "pronunciation_vi": "sa-pyu-i-é syur"
+          "pronunciation_vi": "sa-pyu-i-é syur",
+          "pronunciation_en": "sah-pwee-YAY syur — French 'u' rounded"
         },
         {
           "word": "un entretien semi-directif",
           "en": "semi-structured interview",
           "vi": "phỏng vấn bán cấu trúc",
           "pos": "n.m.",
-          "pronunciation_vi": "ãn-trơ-tian sơ-mi-di-rek-tif"
+          "pronunciation_vi": "ãn-trơ-tian sơ-mi-di-rek-tif",
+          "pronunciation_en": "UN ahn-truh-TYAN suh-mee-dee-rek-TEEF — long compound"
         },
         {
           "word": "la faisabilité",
           "en": "feasibility",
           "vi": "tính khả thi",
           "pos": "n.f.",
-          "pronunciation_vi": "fơ-za-bi-li-té"
+          "pronunciation_vi": "fơ-za-bi-li-té",
+          "pronunciation_en": "lah fuh-zah-bee-lee-TAY — five syllables"
         },
         {
           "word": "un calendrier prévisionnel",
           "en": "projected timeline",
           "vi": "lịch trình dự kiến",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-lăn-dri-é pré-vi-zio-nèl"
+          "pronunciation_vi": "ka-lăn-dri-é pré-vi-zio-nèl",
+          "pronunciation_en": "UN kah-lahn-dree-AY pray-vee-zyoh-NEL — track the syllables"
         },
         {
           "word": "un cadre théorique",
           "en": "theoretical framework",
           "vi": "khung lý thuyết",
           "pos": "n.m.",
-          "pronunciation_vi": "kadr té-o-rik"
+          "pronunciation_vi": "kadr té-o-rik",
+          "pronunciation_en": "UN KAH-druh tay-oh-REEK — silent 'e' on 'cadre'"
         },
         {
           "word": "la revue de littérature",
           "en": "literature review",
           "vi": "tổng quan tài liệu",
           "pos": "n.f.",
-          "pronunciation_vi": "rơ-vyu dơ li-té-ra-tur"
+          "pronunciation_vi": "rơ-vyu dơ li-té-ra-tur",
+          "pronunciation_en": "lah ruh-VYU duh lee-tay-rah-TYUR — uvular 'r'"
         },
         {
           "word": "un livrable intermédiaire",
           "en": "interim deliverable",
           "vi": "sản phẩm trung gian",
           "pos": "n.m.",
-          "pronunciation_vi": "liv-rabl an-tèr-mé-dièr"
+          "pronunciation_vi": "liv-rabl an-tèr-mé-dièr",
+          "pronunciation_en": "UN lee-VRAH-bluh an-tehr-may-DYEHR — multi-syllable formal term"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr Lefèvre",
           "text": "Bonjour. Vous m'apportez quoi aujourd'hui ?",
+          "en": "Good morning. What are you bringing me today?",
           "vi": "Chào em. Hôm nay em mang gì đến?"
         },
         {
           "speaker": "Tâm",
           "text": "Une note de deux pages avec ma problématique et trois doutes méthodologiques.",
+          "en": "A two-page note with my research question and three methodological doubts.",
           "vi": "Một bản hai trang với câu hỏi nghiên cứu và ba điểm còn nghi ngờ về phương pháp."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Bien. Lisez-moi votre problématique en une phrase.",
+          "en": "Good. Read me your research question in one sentence.",
           "vi": "Tốt. Đọc cho tôi câu hỏi nghiên cứu trong một câu."
         },
         {
           "speaker": "Tâm",
           "text": "Comment les politiques migratoires françaises et vietnamiennes structurent-elles différemment les parcours des travailleurs qualifiés ?",
+          "en": "How do French and Vietnamese migration policies structure the trajectories of skilled workers differently?",
           "vi": "Chính sách di cư Pháp và Việt cấu trúc khác nhau như thế nào hành trình của người lao động có trình độ?"
         }
       ],
@@ -1998,76 +2466,91 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Pr Lefèvre",
           "text": "Bonjour, asseyez-vous. Vous avez vingt minutes — soyez précise.",
+          "en": "Good morning, please sit down. You have twenty minutes — be precise.",
           "vi": "Chào em, ngồi đi. Em có hai mươi phút — hãy chính xác."
         },
         {
           "speaker": "Tâm",
           "text": "Merci. Voici ma note. Ma problématique provisoire : comment les politiques migratoires françaises et vietnamiennes structurent-elles différemment les parcours des travailleurs qualifiés ?",
+          "en": "Thank you. Here's my note. My provisional research question: how do French and Vietnamese migration policies structure the trajectories of skilled workers differently?",
           "vi": "Cảm ơn cô. Đây là bản tóm tắt của em. Câu hỏi nghiên cứu tạm thời: chính sách di cư Pháp và Việt cấu trúc khác nhau ra sao hành trình người lao động có trình độ?"
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "La question est trop large. « Travailleurs qualifiés » couvre dix professions très différentes. Il vous faut restreindre.",
+          "en": "The question is too broad. 'Skilled workers' covers ten very different professions. You need to narrow it.",
           "vi": "Câu hỏi quá rộng. « Lao động có trình độ » bao trùm mười nghề rất khác nhau. Em phải thu hẹp."
         },
         {
           "speaker": "Tâm",
           "text": "Vous avez raison. Je peux restreindre aux infirmières et aux ingénieurs informatiques — deux profils où la mobilité Vietnam-France est documentée.",
+          "en": "You're right. I can narrow it to nurses and IT engineers — two profiles where Vietnam-France mobility is documented.",
           "vi": "Cô đúng. Em có thể thu hẹp về y tá và kỹ sư tin học — hai nhóm mà di động Việt-Pháp đã được ghi nhận."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Encore trop. Choisissez l'un des deux. Pour un mémoire de M2, deux populations comparées font déjà beaucoup de terrain.",
+          "en": "Still too much. Pick one. For an M2 thesis, two compared populations is already a heavy load of fieldwork.",
           "vi": "Vẫn nhiều. Chọn một trong hai. Với luận văn M2, so sánh hai nhóm dân cư đã là rất nhiều thực địa."
         },
         {
           "speaker": "Tâm",
           "text": "Je penche pour les infirmières — il y a un accord bilatéral récent qui encadre leur recrutement, et c'est un terrain documenté à la DGOS.",
+          "en": "I'm leaning toward nurses — there's a recent bilateral agreement framing the recruitment, and it's a field documented at the DGOS.",
           "vi": "Em nghiêng về y tá — có một hiệp định song phương gần đây quy định việc tuyển dụng, và đó là thực địa đã được lưu trữ tại DGOS."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Bien. Maintenant les sources. Sayad, oui — incontournable. Wihtol de Wenden, oui. Mais ajoutez Beaud sur l'enquête de terrain et Connell sur les soignantes migrantes.",
+          "en": "Good. Now sources. Sayad, yes — unavoidable. Wihtol de Wenden, yes. But add Beaud on fieldwork methodology and Connell on migrant care workers.",
           "vi": "Tốt. Giờ về nguồn. Sayad, đúng — không thể thiếu. Wihtol de Wenden, đúng. Nhưng thêm Beaud về phương pháp thực địa và Connell về y tá di cư."
         },
         {
           "speaker": "Tâm",
           "text": "Je note. Connell est une référence anglo-saxonne — j'imagine que vous me suggérez de l'inclure pour le cadre comparatif ?",
+          "en": "Noted. Connell is an anglophone reference — I assume you're suggesting I include her for the comparative framework?",
           "vi": "Em ghi. Connell là tham chiếu Anh ngữ — em đoán cô gợi ý đưa vào để có khung so sánh?"
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Exactement. Et un mémoire qui ne cite que des Français se voit, et pas en bien. Sur la méthode : vingt entretiens, c'est ambitieux pour un M2. Visez quinze, mieux travaillés.",
+          "en": "Exactly. And a thesis that cites only French authors shows it, and not in a good way. On method: twenty interviews is ambitious for an M2. Aim for fifteen, better-worked.",
           "vi": "Chính xác. Và một luận văn chỉ dẫn nguồn Pháp dễ nhận ra, và không tích cực. Về phương pháp: hai mươi phỏng vấn là tham vọng cho M2. Nhắm mười lăm, làm kỹ hơn."
         },
         {
           "speaker": "Tâm",
           "text": "D'accord. Donc quinze entretiens semi-directifs avec des infirmières vietnamiennes en France. Calendrier : avril-juin pour le terrain, juillet-août pour la rédaction.",
+          "en": "Alright. So fifteen semi-structured interviews with Vietnamese nurses in France. Timeline: April-June for fieldwork, July-August for writing.",
           "vi": "Vâng. Vậy mười lăm phỏng vấn bán cấu trúc với y tá Việt Nam tại Pháp. Tiến độ: tháng 4-6 thực địa, tháng 7-8 viết."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Le terrain en avril-juin est trop tendu. Vous aurez vos accès via quel canal — l'AVF ? Une association locale ? Sans porte d'entrée, vous n'aurez pas dix entretiens.",
+          "en": "Fieldwork in April-June is tight. What channel will you use for access — the AVF? A local association? Without an entry point, you won't get ten interviews.",
           "vi": "Thực địa tháng 4-6 quá gấp. Em có quyền tiếp cận qua kênh nào — AVF? Một hiệp hội địa phương? Không có cửa vào, em không kiếm nổi mười phỏng vấn."
         },
         {
           "speaker": "Tâm",
           "text": "J'ai déjà un contact à l'Union Générale des Vietnamiens de France qui m'ouvre trois personnes. Pour les autres, je passerai par effet boule de neige.",
+          "en": "I already have a contact at the Union Générale des Vietnamiens de France who opens three people for me. For the rest, I'll go by snowball sampling.",
           "vi": "Em đã có một liên hệ ở Hội Người Việt Nam tại Pháp cho em ba người. Còn lại em sẽ đi theo hiệu ứng quả bóng tuyết."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Bien anticipé. Dernière chose : me rendre un livrable intermédiaire fin mai — vos cinq premiers entretiens, transcrits et codés. Si on attend juillet, c'est trop tard pour ajuster.",
+          "en": "Well anticipated. One last thing: deliver an interim milestone by end of May — your first five interviews, transcribed and coded. If we wait until July, it's too late to adjust.",
           "vi": "Lường trước tốt. Điều cuối: nộp một sản phẩm trung gian cuối tháng 5 — năm phỏng vấn đầu, đã chuyển ngữ và mã hóa. Nếu đợi đến tháng 7, quá muộn để điều chỉnh."
         },
         {
           "speaker": "Tâm",
           "text": "Noté. Je vous envoie une version révisée de la note d'ici une semaine, et on caler un point fin mai.",
+          "en": "Noted. I'll send you a revised note within a week, and let's set a checkpoint at end of May.",
           "vi": "Em ghi. Em sẽ gửi bản chỉnh sửa trong một tuần, và mình hẹn một buổi cuối tháng 5."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Parfait. Bon courage.",
+          "en": "Perfect. Good luck.",
           "vi": "Hoàn hảo. Cố lên."
         }
       ],
@@ -2076,30 +2559,44 @@ export const lessons: FrenchLesson[] =           [
         "Giáo sư bác bỏ phương pháp của bạn (« vingt entretiens, c'est trop »). Thương lượng phiên bản giảm xuống 15 phỏng vấn nhưng giữ được câu hỏi nghiên cứu — không xuôi tay đầu hàng.",
         "Giáo sư im lặng 10 giây sau khi bạn trình bày, rồi nói: « Je ne suis pas convaincu. ». Đáp lại không hoảng loạn — yêu cầu cô/thầy nói rõ điều gì khiến không thuyết phục, rồi điều chỉnh."
       ],
+      "roleplay_prompts_en": [
+        "You're meeting your M2 thesis supervisor for the first time. Present your problématique in 90 seconds — broad enough to be researchable, narrow enough to be feasible in 6 months.",
+        "The supervisor rejects your method (« vingt entretiens, c'est trop » — twenty interviews is too many). Negotiate a scaled-back version to 15 interviews while keeping your research question intact — don't capitulate.",
+        "The supervisor goes silent for 10 seconds after your presentation, then says: « Je ne suis pas convaincu. » (I'm not convinced). Respond without panicking — ask what specifically isn't convincing, then adjust."
+      ],
       "register_notes": "Với giáo sư hướng dẫn, vouvoiement bắt buộc kể cả sau nhiều năm — chuyển sang « tu » chỉ khi giáo sư chủ động đề nghị, mà điều đó hiếm khi xảy ra trong M2. Tránh các cụm hời hợt « j'aimerais explorer », « je voudrais ouvrir une réflexion » — chúng nghe mơ hồ. Thay bằng động từ hành động: « je propose de comparer », « je vais tester l'hypothèse que ». Khi giáo sư phản biện, không xin lỗi (« désolée, je ne savais pas… ») — phản hồi bằng nội dung: « Vous avez raison, dans ce cas je modifie X ». Sự khô khan của góp ý không phải bất kính — đó là chuẩn của giảng dạy đại học Pháp.",
+      "register_notes_en": "With a thesis supervisor, 'vouvoiement' is mandatory even after years of working together — switching to 'tu' happens only if the supervisor proactively offers it, which is rare during M2. Avoid hedging phrases like 'j'aimerais explorer', 'je voudrais ouvrir une réflexion' — they sound vague. Use action verbs instead: 'je propose de comparer' (I propose to compare), 'je vais tester l'hypothèse que' (I'll test the hypothesis that). When the supervisor pushes back, don't apologize ('désolée, je ne savais pas…') — respond with content: 'Vous avez raison, dans ce cas je modifie X' (You're right, in that case I'll modify X). The dryness of the feedback isn't disrespect — it's the standard register of French university teaching.",
       "idiom_glosses": [
         {
           "idiom": "Aller droit au but",
           "literal": "Đi thẳng đến đích",
+          "literal_en": "to go straight to the goal",
           "meaning": "Vào thẳng vấn đề, không vòng vo.",
+          "meaning_en": "to get straight to the point, no detour",
           "example": "Allons droit au but : votre problématique est trop large."
         },
         {
           "idiom": "Tenir la route",
           "literal": "Giữ được đường",
+          "literal_en": "to hold the road",
           "meaning": "Vững vàng, chịu được sự xét nét.",
+          "meaning_en": "to be solid, to withstand scrutiny — said of an argument or framework",
           "example": "Votre cadre théorique tient la route, mais le terrain doit être resserré."
         },
         {
           "idiom": "Ne pas tourner autour du pot",
           "literal": "Không xoay quanh cái nồi",
+          "literal_en": "not to turn around the pot",
           "meaning": "Nói thẳng, không né tránh.",
+          "meaning_en": "to speak plainly, not to dance around the subject",
           "example": "Je ne vais pas tourner autour du pot : votre échantillon est trop petit."
         },
         {
           "idiom": "Mettre le pied à l'étrier",
           "literal": "Đặt chân vào bàn đạp",
+          "literal_en": "to put one's foot in the stirrup",
           "meaning": "Khởi đầu chính thức một dự án.",
+          "meaning_en": "to formally launch a project, to get the first foot in",
           "example": "Le livrable de fin mai vous mettra le pied à l'étrier pour la rédaction."
         }
       ],
@@ -2107,6 +2604,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm còn thiếu khi trao đổi với giáo sư.",
+          "instruction_en": "Fill in the missing phrase when speaking with a supervisor.",
           "items": [
             {
               "prompt": "Je voudrais ___ ma problématique avant de la soumettre.",
@@ -2129,6 +2627,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "matching",
           "instruction_vi": "Nối thuật ngữ với định nghĩa.",
+          "instruction_en": "Match each academic term with its definition.",
           "items": [
             {
               "prompt": "une problématique",
@@ -2151,6 +2650,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 trong giọng học thuật.",
+          "instruction_en": "Translate into B2 French in an academic register.",
           "items": [
             {
               "prompt": "Cô đúng, em sẽ thu hẹp về y tá Việt Nam tại Pháp.",
@@ -2182,6 +2682,11 @@ export const lessons: FrenchLesson[] =           [
             "remercie → rơ-mer-si",
             "proposition → pro-po-zi-sion",
             "stage → staj"
+          ],
+          "pronunciation_focus_en": [
+            "remercie → 'ruh-MEHR-see' — uvular 'r'",
+            "proposition → 'pro-poh-zee-SYON'",
+            "stage → 'stahzh' — final '-ge' = 'zh'"
           ]
         },
         {
@@ -2191,6 +2696,11 @@ export const lessons: FrenchLesson[] =           [
             "clarifier → kla-ri-fié",
             "quelques → kèl-kơ",
             "convention → kon-vãn-sion"
+          ],
+          "pronunciation_focus_en": [
+            "clarifier → 'klah-ree-FYAY'",
+            "quelques → 'KEL-kuh' — final 'es' silent",
+            "convention → 'kon-vahn-SYON' — nasal 'on'+'en'"
           ]
         },
         {
@@ -2201,6 +2711,12 @@ export const lessons: FrenchLesson[] =           [
             "légale → lé-gal",
             "s'élève → sé-lèv",
             "environ → ãn-vi-rõ"
+          ],
+          "pronunciation_focus_en": [
+            "gratification → 'grah-tee-fee-kah-SYON'",
+            "légale → 'lay-GAL'",
+            "s'élève → 'say-LEV' — final 've'",
+            "environ → 'ahn-vee-RON' — nasal 'en'+'on'"
           ]
         },
         {
@@ -2210,6 +2726,11 @@ export const lessons: FrenchLesson[] =           [
             "télétravail → té-lé-tra-vay",
             "partiel → par-siel",
             "soutenable → su-tơ-nabl"
+          ],
+          "pronunciation_focus_en": [
+            "télétravail → 'tay-lay-trah-VYE' — final '-ail' = 'eye'",
+            "partiel → 'par-SYEL' — 'ti' → 'sy' before 'el'",
+            "soutenable → 'soo-tuh-NAH-bluh' — final 'e' silent"
           ]
         },
         {
@@ -2219,102 +2740,123 @@ export const lessons: FrenchLesson[] =           [
             "pourrions → pu-rion",
             "formaliser → for-ma-li-zé",
             "avenant → av-nã"
+          ],
+          "pronunciation_focus_en": [
+            "pourrions → 'poo-RYON' — nasal 'on'",
+            "formaliser → 'for-mah-lee-ZAY'",
+            "avenant → 'av-NAHN' — nasal 'an'"
           ]
         }
       ],
       "cultural_notes_vi": "Stage (thực tập) ở Pháp được luật điều chỉnh chặt: trên 308 giờ phải có « gratification » (trợ cấp) tối thiểu 4,35 €/giờ năm 2026, có « convention de stage » (thỏa thuận ba bên: trường-công ty-sinh viên), và phải có « tuteur » trong công ty cùng « référent pédagogique » trong trường. Đừng nhầm lẫn với Việt Nam — nơi thực tập thường không lương và hợp đồng lỏng. Sinh viên Việt khi sang Pháp hay sai ở chỗ « ngại đòi hỏi » và chấp nhận điều kiện thấp hơn luật quy định — đó không phải khiêm tốn, đó là tự đánh giá thấp bản thân và làm khó cả người ký sau bạn. Khi công ty đề nghị mức 500 €/tháng cho stage 35h/tuần, bạn nên lịch sự nói rằng đó dưới mức luật và đề nghị 620-700 €. Người Pháp tôn trọng ứng viên biết quyền của mình.",
+      "cultural_notes_en": "Internships ('stages') in France are tightly regulated: above 308 hours, the company must pay a 'gratification' (stipend) of at least €4.35/hour (2026 rate), there must be a 'convention de stage' (a three-way agreement between school, company, and student), and the student must have both a 'tuteur' (supervisor at the company) and a 'référent pédagogique' (academic advisor at the school). Don't import the Vietnamese pattern — where internships are often unpaid with loose terms. Vietnamese students arriving in France often make the mistake of 'not wanting to ask for too much' and accepting conditions below the legal minimum — that's not modesty, it's underselling yourself and making it harder for the next student who signs there. When a company offers €500/month for a 35h/week internship, politely point out that's below the legal minimum and counter at €620-700. French companies respect candidates who know their rights.",
       "tip_advice_vi": "Trước khi ký, đọc kỹ ba điểm: (1) horaires — số giờ/tuần và linh hoạt; (2) gratification — phải bằng hoặc trên mức tối thiểu, ghi rõ tính theo tháng hay theo giờ; (3) télétravail — bao nhiêu ngày, có ghi văn bản không. Đừng đàm phán bằng tiếng Anh nếu công ty Pháp — họ đánh giá việc bạn dùng tiếng Pháp đúng chỗ. Khi không chắc một điều khoản, nói « Pourriez-vous m'expliquer la clause sur X ? » thay vì gật đầu giả vờ hiểu. Sau khi đồng ý miệng, gửi email tóm tắt các điểm để có vết bằng văn bản trước khi convention được soạn chính thức.",
+      "tip_advice_en": "Before signing, read three points carefully: (1) horaires — hours per week and any flexibility; (2) gratification — must equal or exceed the legal minimum, and be clearly stated as monthly or hourly; (3) télétravail — how many days, whether it's in writing. Don't negotiate in English if the company is French — they value seeing you use French in the right context. When uncertain about a clause, ask 'Pourriez-vous m'expliquer la clause sur X ?' (Could you explain the clause on X?) instead of pretending to understand. After verbal agreement, send a summary email of the points to create a written trace before the convention is formally drafted.",
       "vocabulary": [
         {
           "word": "une convention de stage",
           "en": "internship agreement",
           "vi": "thỏa thuận thực tập",
           "pos": "n.f.",
-          "pronunciation_vi": "kon-vãn-sion dơ staj"
+          "pronunciation_vi": "kon-vãn-sion dơ staj",
+          "pronunciation_en": "ün kon-vahn-SYON duh STAHZH — soft 'g' = 'zh'"
         },
         {
           "word": "la gratification",
           "en": "internship stipend",
           "vi": "trợ cấp thực tập",
           "pos": "n.f.",
-          "pronunciation_vi": "gra-ti-fi-ka-sion"
+          "pronunciation_vi": "gra-ti-fi-ka-sion",
+          "pronunciation_en": "lah grah-tee-fee-kah-SYON — five syllables"
         },
         {
           "word": "un avenant",
           "en": "amendment / addendum",
           "vi": "phụ lục sửa đổi",
           "pos": "n.m.",
-          "pronunciation_vi": "av-nã"
+          "pronunciation_vi": "av-nã",
+          "pronunciation_en": "UN av-NAHN — nasal 'an'"
         },
         {
           "word": "le télétravail",
           "en": "remote work",
           "vi": "làm việc từ xa",
           "pos": "n.m.",
-          "pronunciation_vi": "té-lé-tra-vay"
+          "pronunciation_vi": "té-lé-tra-vay",
+          "pronunciation_en": "luh tay-lay-trah-VYE — final '-ail' = 'eye'"
         },
         {
           "word": "un tuteur",
           "en": "company supervisor",
           "vi": "người hướng dẫn tại công ty",
           "pos": "n.m.",
-          "pronunciation_vi": "tu-tơr"
+          "pronunciation_vi": "tu-tơr",
+          "pronunciation_en": "UN tyu-TUHR — French 'u' rounded; uvular 'r'"
         },
         {
           "word": "un référent pédagogique",
           "en": "academic advisor",
           "vi": "người phụ trách phía trường",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-fé-rã pé-da-go-jik"
+          "pronunciation_vi": "ré-fé-rã pé-da-go-jik",
+          "pronunciation_en": "UN ray-fay-RAHN pay-dah-goh-ZHEEK — soft 'g' = 'zh'"
         },
         {
           "word": "les horaires de travail",
           "en": "working hours",
           "vi": "giờ làm việc",
           "pos": "n.m. pl.",
-          "pronunciation_vi": "o-rer dơ tra-vay"
+          "pronunciation_vi": "o-rer dơ tra-vay",
+          "pronunciation_en": "lay zoh-REHR duh trah-VYE — liaison 'les' → 'z' onto 'horaires' (silent h)"
         },
         {
           "word": "prendre acte de",
           "en": "to take note of (formally)",
           "vi": "ghi nhận chính thức",
           "pos": "v.",
-          "pronunciation_vi": "prãndr akt dơ"
+          "pronunciation_vi": "prãndr akt dơ",
+          "pronunciation_en": "PRAHN-druh AKT duh — final 'dre' = 'druh'"
         },
         {
           "word": "être soutenable financièrement",
           "en": "to be financially sustainable",
           "vi": "duy trì được về tài chính",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ su-tơ-nabl fi-nãn-sièr-mã"
+          "pronunciation_vi": "é-trơ su-tơ-nabl fi-nãn-sièr-mã",
+          "pronunciation_en": "EH-truh soo-tuh-NAH-bluh fee-nahn-SYEHR-mahn — long but rhythmic"
         },
         {
           "word": "signer en l'état",
           "en": "to sign as-is",
           "vi": "ký nguyên trạng",
           "pos": "expr.",
-          "pronunciation_vi": "si-nié ãn lé-tà"
+          "pronunciation_vi": "si-nié ãn lé-tà",
+          "pronunciation_en": "see-NYAY ahn lay-TAH — nasal 'en'; silent final 't'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Mme Petit",
           "text": "Bonjour Hà, voici la convention. Vous pouvez la signer aujourd'hui ?",
+          "en": "Good morning, Hà. Here's the convention. Can you sign today?",
           "vi": "Chào Hà, đây là thỏa thuận. Em có thể ký hôm nay không?"
         },
         {
           "speaker": "Hà",
           "text": "Bonjour. Avant de signer, j'aimerais clarifier deux points.",
+          "en": "Good morning. Before signing, I'd like to clarify two points.",
           "vi": "Chào chị. Trước khi ký, em muốn làm rõ hai điểm."
         },
         {
           "speaker": "Mme Petit",
           "text": "Allez-y.",
+          "en": "Go ahead.",
           "vi": "Em nói đi."
         },
         {
           "speaker": "Hà",
           "text": "Le montant de la gratification et la possibilité de deux jours de télétravail par semaine.",
+          "en": "The stipend amount and the possibility of two days of remote work per week.",
           "vi": "Mức trợ cấp và khả năng có hai ngày làm việc từ xa mỗi tuần."
         }
       ],
@@ -2322,66 +2864,79 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Mme Petit",
           "text": "Bonjour Hà. J'ai votre convention prête à signer. Six mois, à plein temps, dans l'équipe marketing.",
+          "en": "Good morning, Hà. I have your convention ready to sign. Six months, full time, in the marketing team.",
           "vi": "Chào Hà. Chị đã chuẩn bị thỏa thuận sẵn để ký. Sáu tháng, toàn thời gian, trong đội marketing."
         },
         {
           "speaker": "Hà",
           "text": "Merci, Madame Petit. Avant de signer, j'aimerais clarifier trois points si vous avez quinze minutes.",
+          "en": "Thank you, Madame Petit. Before signing, I'd like to clarify three points if you have fifteen minutes.",
           "vi": "Cảm ơn chị Petit. Trước khi ký, em muốn làm rõ ba điểm nếu chị có mười lăm phút."
         },
         {
           "speaker": "Mme Petit",
           "text": "Bien sûr, allez-y.",
+          "en": "Of course, go ahead.",
           "vi": "Tất nhiên, em nói đi."
         },
         {
           "speaker": "Hà",
           "text": "D'abord, la gratification. Le document indique 530 euros par mois pour 35 heures hebdomadaires. Sauf erreur, le minimum légal pour cette durée s'élève à environ 620 euros.",
+          "en": "First, the stipend. The document indicates 530 euros per month for 35 hours weekly. Unless I'm mistaken, the legal minimum for that duration comes to around 620 euros.",
           "vi": "Đầu tiên, trợ cấp. Tài liệu ghi 530 euro/tháng cho 35 giờ/tuần. Nếu em không nhầm, mức tối thiểu theo luật cho thời lượng này là khoảng 620 euro."
         },
         {
           "speaker": "Mme Petit",
           "text": "Ah. Vous avez raison, je vais vérifier avec les RH — il s'agit probablement d'un calcul fait sur 30 heures et mal recopié.",
+          "en": "Ah. You're right, I'll check with HR — it's probably a calculation done on 30 hours and copied over incorrectly.",
           "vi": "À. Em đúng, chị sẽ kiểm tra với phòng Nhân sự — có lẽ là tính theo 30 giờ và chép sai."
         },
         {
           "speaker": "Hà",
           "text": "Merci. Deuxième point : le télétravail. Le document n'en mentionne pas, mais lors de l'entretien on m'a parlé de deux jours par semaine. Pourriez-vous l'inscrire dans la convention ?",
+          "en": "Thank you. Second point: remote work. The document doesn't mention it, but the interview talked about two days per week. Could you write it into the convention?",
           "vi": "Cảm ơn chị. Điểm hai: làm việc từ xa. Tài liệu không nhắc đến, nhưng trong phỏng vấn em được nói hai ngày/tuần. Chị có thể ghi vào thỏa thuận được không?"
         },
         {
           "speaker": "Mme Petit",
           "text": "Le télétravail dépend de l'équipe et du manager. Pour vous, ce sera Antoine. Je peux ajouter une clause générique « jusqu'à deux jours selon accord du tuteur », mais pas de garantie ferme.",
+          "en": "Remote work depends on the team and the manager. For you, that's Antoine. I can add a generic clause 'up to two days subject to the tutor's agreement', but no firm guarantee.",
           "vi": "Làm việc từ xa tùy đội và quản lý. Với em là anh Antoine. Chị có thể thêm điều khoản chung « tối đa hai ngày theo sự đồng ý của người hướng dẫn », nhưng không phải cam kết cứng."
         },
         {
           "speaker": "Hà",
           "text": "Cette formulation me convient — j'aurai une base écrite pour en discuter avec Antoine. Troisième point : les horaires. La convention dit « 9h-17h30 ». Je dois rendre mon mémoire en juin et je suivrai un séminaire le mardi matin pendant six semaines. Y a-t-il une flexibilité ?",
+          "en": "That wording works for me — I'll have a written basis to discuss it with Antoine. Third point: working hours. The convention says '9:00-17:30'. I have to turn in my thesis in June and I'll be in a seminar on Tuesday mornings for six weeks. Is there any flexibility?",
           "vi": "Cách diễn đạt đó phù hợp với em — em sẽ có cơ sở văn bản để thảo luận với anh Antoine. Điểm ba: giờ làm. Thỏa thuận ghi « 9h-17h30 ». Em phải nộp luận văn tháng sáu và sẽ theo một hội thảo sáng thứ ba trong sáu tuần. Có linh hoạt không?"
         },
         {
           "speaker": "Mme Petit",
           "text": "Pour le séminaire, oui — vous pouvez décaler vos heures le mardi, à condition de prévenir Antoine la semaine d'avant et de récupérer les heures sur la semaine.",
+          "en": "For the seminar, yes — you can shift your Tuesday hours, provided you let Antoine know the week before and make up the hours within the same week.",
           "vi": "Về hội thảo thì có — em có thể dời giờ thứ ba, với điều kiện báo anh Antoine tuần trước và bù giờ trong tuần."
         },
         {
           "speaker": "Hà",
           "text": "C'est tout à fait acceptable. Si je résume les ajustements : gratification recalculée à 620 euros, clause télétravail jusqu'à deux jours, et flexibilité du mardi matin pendant les six semaines de séminaire.",
+          "en": "That's entirely acceptable. So to summarize the adjustments: stipend recalculated at 620 euros, remote-work clause up to two days, and Tuesday-morning flexibility during the six weeks of the seminar.",
           "vi": "Hoàn toàn chấp nhận được. Em tóm tắt các điều chỉnh: trợ cấp tính lại 620 euro, điều khoản làm việc từ xa tối đa hai ngày, và linh hoạt sáng thứ ba trong sáu tuần hội thảo."
         },
         {
           "speaker": "Mme Petit",
           "text": "C'est ça. Je fais corriger la convention par les RH cet après-midi et je vous l'envoie demain matin pour signature électronique.",
+          "en": "That's right. I'll have HR correct the convention this afternoon and send it to you tomorrow morning for electronic signature.",
           "vi": "Đúng vậy. Chị sẽ cho phòng Nhân sự sửa thỏa thuận chiều nay và gửi em sáng mai để ký điện tử."
         },
         {
           "speaker": "Hà",
           "text": "Parfait. Je vous remercie d'avoir pris le temps. Bonne fin de journée, Madame Petit.",
+          "en": "Perfect. Thank you for taking the time. Have a good rest of your day, Madame Petit.",
           "vi": "Hoàn hảo. Em cảm ơn chị đã dành thời gian. Chúc chị cuối ngày tốt lành, chị Petit."
         },
         {
           "speaker": "Mme Petit",
           "text": "Bonne fin de journée à vous aussi, Hà. À demain.",
+          "en": "Have a good rest of your day too, Hà. See you tomorrow.",
           "vi": "Chúc em cuối ngày tốt lành, Hà. Hẹn mai gặp."
         }
       ],
@@ -2390,30 +2945,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong convention không ghi télétravail, dù phỏng vấn đã nói có. Đề nghị thêm điều khoản — chấp nhận một công thức linh hoạt « jusqu'à X jours selon accord du tuteur » nếu công ty không cam kết cứng.",
         "Sếp tương lai (tuteur) đến giữa cuộc đàm phán và nói: « Les stagiaires chez nous, ils ne demandent pas autant. ». Phản hồi giữ được tự tin nhưng không leo thang — nhắc đến luật, không nhắc đến « các bạn cũ »."
       ],
+      "roleplay_prompts_en": [
+        "The company offers a 6-month internship, 35h/week, at €500/month. Politely point out that this is below the legal minimum and ask for an increase — don't apologize for 'asking', don't back down too fast.",
+        "The convention omits télétravail, even though it was mentioned in the interview. Ask to add the clause — accept a flexible 'up to X days subject to the tutor's agreement' if the company won't commit firmly.",
+        "Your future manager (tuteur) walks in mid-negotiation and says: « Les stagiaires chez nous, ils ne demandent pas autant. » (Our interns don't ask for this much). Respond confidently without escalating — mention the law, don't mention 'previous interns'."
+      ],
       "register_notes": "Đàm phán điều khoản stage dùng « vous » với cả phòng Nhân sự lẫn người tuteur — kể cả khi tuyển dụng đã « tu » với bạn trong phỏng vấn. « Vouvoiement » trong văn bản hợp đồng là chuẩn không thương lượng. Tránh hai cực: (1) khúm núm « pourriez-vous éventuellement, si possible, peut-être considérer… » — quá nhiều lớp lịch sự thành sự thiếu tự tin; (2) trực diện kiểu Anh-Mỹ « I want X » — mất điểm. Giọng đúng: « Je souhaiterais clarifier X » (tôi muốn làm rõ X) hoặc « Pourrions-nous envisager Y ? » (mình có thể tính đến Y không?). Khi nhắc đến luật, dùng cụm « Sauf erreur de ma part, le minimum légal s'élève à… » — câu này vừa khẳng định bạn đã kiểm tra, vừa để mở khả năng phòng Nhân sự đã tính đúng.",
+      "register_notes_en": "Negotiating internship terms uses 'vous' with both HR and the tuteur — even if the recruiter used 'tu' with you during the interview. 'Vouvoiement' in a contractual context is non-negotiable. Avoid both poles: (1) over-hedging 'pourriez-vous éventuellement, si possible, peut-être considérer…' — layering politeness markers reads as a lack of confidence; (2) bluntness imported from English 'I want X' — costs you goodwill. The right register: 'Je souhaiterais clarifier X' (I'd like to clarify X) or 'Pourrions-nous envisager Y ?' (Could we consider Y?). When citing the law, use 'Sauf erreur de ma part, le minimum légal s'élève à…' (Unless I'm mistaken, the legal minimum is…) — this both confirms you've checked and leaves room for HR to have it right.",
       "idiom_glosses": [
         {
           "idiom": "Mettre les choses au clair",
           "literal": "Đặt mọi việc cho rõ",
+          "literal_en": "to put things in the clear",
           "meaning": "Làm rõ điều khoản, không để mơ hồ.",
+          "meaning_en": "to clear up the terms, leave no ambiguity",
           "example": "Avant de signer, mettons les choses au clair sur le télétravail."
         },
         {
           "idiom": "Donner sa parole",
           "literal": "Cho lời của mình",
+          "literal_en": "to give one's word",
           "meaning": "Cam kết bằng lời nói (danh dự).",
+          "meaning_en": "to commit verbally, on one's honor",
           "example": "Le tuteur m'a donné sa parole sur les deux jours, mais je préfère l'écrit."
         },
         {
           "idiom": "En bonne et due forme",
           "literal": "Theo đúng và hình thức tốt",
+          "literal_en": "in good and due form",
           "meaning": "Đúng quy cách pháp lý / hình thức.",
+          "meaning_en": "in proper legal/formal form",
           "example": "Je veux un avenant en bonne et due forme, signé par les RH."
         },
         {
           "idiom": "Joindre les deux bouts",
           "literal": "Nối hai đầu (dây)",
+          "literal_en": "to join the two ends (of a rope)",
           "meaning": "Đủ tiền sống — kết thúc tháng không thiếu hụt.",
+          "meaning_en": "to make ends meet — to have enough to live on through the month",
           "example": "Avec 530 euros à Paris, c'est très difficile de joindre les deux bouts."
         }
       ],
@@ -2421,6 +2990,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu đàm phán stage.",
+          "instruction_en": "Fill in the missing phrase in the internship-negotiation sentence.",
           "items": [
             {
               "prompt": "J'aimerais ___ quelques points avant de signer.",
@@ -2443,6 +3013,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "matching",
           "instruction_vi": "Nối thuật ngữ stage với định nghĩa.",
+          "instruction_en": "Match each internship term with its definition.",
           "items": [
             {
               "prompt": "un avenant",
@@ -2465,6 +3036,7 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+          "instruction_en": "Translate into polite B2 French.",
           "items": [
             {
               "prompt": "Em xin lỗi nếu nhầm, nhưng mức tối thiểu là 620 euro.",
