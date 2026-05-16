@@ -10,6 +10,7 @@ import {
   Globe,
   ArrowRight,
 } from "lucide-react";
+import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 
 const HERO_VI = "Practical language learning";
 // De-narrowed: the hub serves every audience at once and has no single
@@ -25,6 +26,11 @@ type Card = {
   title_en: string;
   flag: string;
   blurb_vi: string;
+  // English blurb shown when the global uiLanguage is "en". For the
+  // Vietnamese-for-foreigners and Spanish cards the source blurb is
+  // already English, so blurb_en is the same string (byte-identical
+  // either mode).
+  blurb_en: string;
   href: string;
   accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose";
 };
@@ -37,6 +43,8 @@ const CARDS: Card[] = [
     flag: "🇫🇷",
     blurb_vi:
       "50 bài: chào hỏi, số đếm, câu giao tiếp, ngữ pháp, ẩm thực, thành ngữ, tranh luận và hơn thế nữa.",
+    blurb_en:
+      "50 lessons: greetings, numbers, everyday phrases, grammar, food, idioms, debate, and more.",
     href: "/languages/french",
     accent: "blue",
   },
@@ -47,6 +55,8 @@ const CARDS: Card[] = [
     flag: "🇩🇪",
     blurb_vi:
       "50 bài: chào hỏi, số đếm, câu giao tiếp, cách (cases), công việc, xã hội, thành ngữ và hơn thế nữa.",
+    blurb_en:
+      "50 lessons: greetings, numbers, everyday phrases, cases, work, society, idioms, and more.",
     href: "/languages/german",
     accent: "red",
   },
@@ -57,6 +67,8 @@ const CARDS: Card[] = [
     flag: "🇨🇳",
     blurb_vi:
       "50 bài: bính âm, chữ Hán cơ bản, câu giao tiếp, ngữ pháp, văn hoá Trung Quốc — A1 → B2.",
+    blurb_en:
+      "50 lessons: pinyin, basic characters, everyday phrases, grammar, Chinese culture — A1 → B2.",
     href: "/languages/chinese",
     accent: "crimson",
   },
@@ -67,6 +79,8 @@ const CARDS: Card[] = [
     flag: "🇯🇵",
     blurb_vi:
       "50 bài: hiragana, katakana, mẫu câu cơ bản, kính ngữ, văn hoá Nhật — A1 → B2.",
+    blurb_en:
+      "50 lessons: hiragana, katakana, core sentence patterns, honorifics, Japanese culture — A1 → B2.",
     href: "/languages/japanese",
     accent: "amber",
   },
@@ -77,6 +91,8 @@ const CARDS: Card[] = [
     flag: "🇰🇷",
     blurb_vi:
       "50 bài: hangul, ngữ pháp nền tảng, câu giao tiếp, văn hoá Hàn Quốc — A1 → B2.",
+    blurb_en:
+      "50 lessons: hangul, foundational grammar, everyday phrases, Korean culture — A1 → B2.",
     href: "/languages/korean",
     accent: "violet",
   },
@@ -87,6 +103,8 @@ const CARDS: Card[] = [
     flag: "🇻🇳",
     blurb_vi:
       "96 short lessons with 627 audio-backed phrase and dialogue lines, 39 dialogues, and 12 pronunciation mini-lessons for real life in Vietnam.",
+    blurb_en:
+      "96 short lessons with 627 audio-backed phrase and dialogue lines, 39 dialogues, and 12 pronunciation mini-lessons for real life in Vietnam.",
     href: "/languages/vietnamese",
     accent: "green",
   },
@@ -96,6 +114,8 @@ const CARDS: Card[] = [
     title_en: "Español — A1 to C2",
     flag: "🇪🇸",
     blurb_vi:
+      "110 lessons built for English speakers. Ser vs estar, por vs para, subjunctive — explained the way you actually need to hear them. Peninsular and Latin American variants throughout.",
+    blurb_en:
       "110 lessons built for English speakers. Ser vs estar, por vs para, subjunctive — explained the way you actually need to hear them. Peninsular and Latin American variants throughout.",
     href: "/languages/spanish",
     accent: "rose",
@@ -141,6 +161,9 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
 };
 
 export default function LanguagesIndexPage() {
+  // Global gloss language (default "vi"); toggle lives in the chrome
+  // band. VI keeps the page byte-identical to before this change.
+  const [uiLang] = useLessonUiLang();
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-6">
@@ -151,14 +174,20 @@ export default function LanguagesIndexPage() {
 
       <div className="grid gap-3 sm:grid-cols-2">
         {CARDS.map((card) => (
-          <CardTile key={card.slug} card={card} />
+          <CardTile key={card.slug} card={card} uiLang={uiLang} />
         ))}
       </div>
     </div>
   );
 }
 
-function CardTile({ card }: { card: Card }) {
+function CardTile({
+  card,
+  uiLang,
+}: {
+  card: Card;
+  uiLang: "vi" | "en";
+}) {
   const accent = ACCENT_CLASSES[card.accent] ?? ACCENT_CLASSES.blue;
   const inner = (
     <article
@@ -171,13 +200,13 @@ function CardTile({ card }: { card: Card }) {
         </p>
       </div>
       <h2 className="mt-2 text-base font-semibold text-slate-900">
-        {card.title_vi}
+        {uiLang === "en" ? card.title_en : card.title_vi}
       </h2>
       <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-700">
-        {card.blurb_vi}
+        {uiLang === "en" ? card.blurb_en : card.blurb_vi}
       </p>
       <p className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-slate-900">
-        Bắt đầu học
+        {uiLang === "en" ? "Start learning" : "Bắt đầu học"}
         <ArrowRight className="h-3 w-3" />
       </p>
     </article>
