@@ -280,12 +280,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter chỉ ra rằng dùng ‚Verfremdung' Brecht-nahe có thể không phù hợp. Acknowledge formal: ‚Eine berechtigte Anfrage' + thay tham chiếu chính xác hơn bằng Schklowski (Wahrnehmungsverlangsamung).",
       "Doktormutter yêu cầu Rückbindung — kết nối micro-quan sát với macro-thematik. Diễn đạt formal: 'Die drei mikrologischen Beobachtungen lassen sich rückbinden an die Verfallsthematik des Romans als Ganzes' + cụ thể."
     ],
+    "roleplay_prompts_en": [
+      "You present a close reading of the opening of Buddenbrooks at a Habilitanden-Kolloquium. Present a four-step Gliederung (ritual repeatability / free indirect speech / materiality / re-anchoring) with the standard opener 'Mein Zugriff ist viergliedrig'.",
+      "Your Doktormutter notes that a Brecht-adjacent use of 'Verfremdung' may not fit. Acknowledge formally: 'Eine berechtigte Anfrage' + substitute the more precise reference to Shklovsky (the slowing of perception, Wahrnehmungsverlangsamung).",
+      "Your Doktormutter asks for the Rückbindung — linking the micro-observation to the macro-theme. Express formally: 'Die drei mikrologischen Beobachtungen lassen sich rückbinden an die Verfallsthematik des Romans als Ganzes' + specifics."
+    ],
     "register_notes": "Close reading C2 Đức: Konjunktiv I cho indirekte Rede ('Iser zufolge sei der Akt des Lesens als interaktiver Prozess zu begreifen'). Konjunktiv II cho Hypothetik ('das ließe sich mit Schklowskij genauer fassen'). Funktionsverbgefüge: 'ins Zentrum rücken' (đặt vào trung tâm), 'in Einklang bringen mit' (hòa hợp với), 'gleichsam zum Träger werden' (như thể trở thành kẻ mang). Connectors: 'bezeichnenderweise' (đáng lưu ý), 'gleichsam' (như thể), 'mithin' (do đó formal). Cấu trúc câu: hypotaktische Verschachtelung khuyến khích — 'Die Stelle, in der X vorkommt, das aber wiederum nur dann gilt, wenn Y, lässt sich Z lesen'. Werkimmanenz vs Rückbindung — KHÔNG drift vào purely formalist; phải connect đến diễn giải. KHÔNG paraphrase ('In dieser Szene sagt Mann, dass...'). KHÔNG intentionalistic ('Der Autor will sagen...'). Thay bằng: 'Die Stelle eröffnet einen Bedeutungsspielraum' / 'Im Vorgang des Lesens entfaltet sich X'.",
     "register_notes_en": "C2 German close reading: use Konjunktiv I for reported speech ('Iser zufolge sei der Akt des Lesens als interaktiver Prozess zu begreifen'). Use Konjunktiv II for hypothetical claims ('das ließe sich mit Schklowskij genauer fassen'). Funktionsverbgefüge (light-verb constructions) to keep on hand: 'ins Zentrum rücken' (to foreground), 'in Einklang bringen mit' (to reconcile with), 'gleichsam zum Träger werden' (to become, as it were, the carrier of). Connectors: 'bezeichnenderweise' (tellingly), 'gleichsam' (as it were), 'mithin' (therefore — formal). Sentence shape: hypotactic nesting is encouraged — 'Die Stelle, in der X vorkommt, das aber wiederum nur dann gilt, wenn Y, lässt sich Z lesen'. Werkimmanenz vs. Rückbindung — do NOT drift into pure formalism; every observation has to land in an interpretation. Do NOT paraphrase ('In dieser Szene sagt Mann, dass…'). Do NOT go intentionalist ('Der Autor will sagen…'). Use instead: 'Die Stelle eröffnet einen Bedeutungsspielraum' / 'Im Vorgang des Lesens entfaltet sich X'.",
     "idiom_glosses": [
       {
         "idiom": "den Text gegen den Strich lesen",
         "literal": "đọc văn bản ngược chiều lông",
+        "literal_en": "to read the text against the grain",
         "meaning": "đọc văn bản chống lại ý nghĩa hiển nhiên (gehoben/literarisch)",
         "meaning_en": "to read a text against its obvious meaning, against the grain (gehoben/literarisch)",
         "example": "Erst das Lesen gegen den Strich offenbart die ironische Doppelung, die der Erzähler in den ersten Absatz eingelassen hat.",
@@ -294,6 +300,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "zwischen den Zeilen lesen",
         "literal": "đọc giữa các dòng",
+        "literal_en": "to read between the lines",
         "meaning": "đọc cái không nói trực tiếp, ý ngầm (standardsprachlich)",
         "meaning_en": "to read between the lines — to read what is not said directly, the implied meaning (standardsprachlich)",
         "example": "Wer zwischen den Zeilen liest, erkennt: was als Familienroman erscheint, ist in Wahrheit eine Verfallsdiagnose.",
@@ -302,6 +309,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Schleier heben",
         "literal": "nâng màn che",
+        "literal_en": "to lift the veil",
         "meaning": "phơi bày, làm sáng tỏ (gehoben/literarisch)",
         "meaning_en": "to lift the veil — to expose, to bring to light (gehoben/literarisch)",
         "example": "Die mikrologische Lektüre hebt den Schleier, der bürgerliche Selbstgewissheit über den Verfall legt.",
@@ -310,6 +318,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Wasser auf die Mühlen X",
         "literal": "nước cho cối xay của X",
+        "literal_en": "water on X's mills",
         "meaning": "ủng hộ luận điểm của X (gehoben)",
         "meaning_en": "grist to X's mill — to support X's argument (gehoben)",
         "example": "Vagets Forschung ist Wasser auf die Mühlen einer rückbindenden Lektüre — er liefert genau den biographischen Kontext, der die innere Strukturlogik bestätigt.",
@@ -669,12 +678,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter hỏi về cạm bẫy đồng nhất Erzähler-Autor ở Sebald. Diễn đạt Doppelformel formal: ‚analytische Redlichkeit verlangt nicht in eins zu setzen' + ‚Identifikationsangebote nicht aufgelöst, sondern produktiv in der Schwebe gehalten'.",
       "Doktormutter yêu cầu xác lập theoretische Verortung. Trích Booth (impliziter Autor), Hamburger (Logik der Dichtung), Genette (Stimme-Fokus), bổ sung Barthes (l'effet de réel) eingedeutscht qua Müller-Funk cho Sebald."
     ],
+    "roleplay_prompts_en": [
+      "You give a 30-minute Habilitationsvortrag on the narrative instance (Erzählinstanz) across Kafka–Mann–Sebald. Sketch a three-tableau Gliederung (hybrid focalisation / authorial sovereignty / staged blurring) for your Doktormutter. About 10 minutes per tableau.",
+      "Your Doktormutter asks about the trap of equating narrator and author in Sebald. Express a formal twofold formula: 'analytische Redlichkeit verlangt nicht in eins zu setzen' + 'Identifikationsangebote nicht aufgelöst, sondern produktiv in der Schwebe gehalten'.",
+      "Your Doktormutter asks you to establish the theoretical positioning. Cite Booth (the implied author), Hamburger (Die Logik der Dichtung), Genette (voice vs focus), plus Barthes (l'effet de reel) Germanised via Müller-Funk for Sebald."
+    ],
     "register_notes": "Erzählinstanz-Analyse C2: phân biệt strict Erzähler ≠ Autor. Konjunktiv I cho indirect quote: ‚Genette zufolge sei wer spricht nicht zwangsläufig wer sieht'. Genette-Achse: Stimme (hetero-/homo-diegetisch) + Fokus (null/intern/extern). Stanzel-Trias: auktorial / personal / Ich-Form. Funktionsverbgefüge: ‚formal hinter X zurücktreten' (rút lui hình thức), ‚den Anschein erwecken' (gợi vẻ), ‚in eins setzen' (đồng nhất), ‚in der Schwebe halten' (giữ lửng lơ). Khi Sebald-style: ‚Verwischung als Verfahren' — không là defect, là procédé. Termen sai phổ biến: ‚allwissender Erzähler' khi thực ra Reflektor; ‚Innensicht' đơn lẻ thiếu specification. KHÔNG ‚der Autor sagt' khi gặp Erzähler-Aussage.",
     "register_notes_en": "C2 Erzählinstanz analysis: strictly distinguish Erzähler from Autor. Use Konjunktiv I for indirect quotation: 'Genette zufolge sei wer spricht nicht zwangsläufig wer sieht'. Genette's axes: Stimme (hetero-/homo-diegetic) + Fokus (zero/internal/external). Stanzel's triad: auktorial / personal / Ich-Form. Funktionsverbgefüge to internalise: 'formal hinter X zurücktreten' (to formally recede behind X), 'den Anschein erwecken' (to give the appearance of), 'in eins setzen' (to collapse into one), 'in der Schwebe halten' (to keep in suspension). With Sebald-style: 'Verwischung als Verfahren' — the blurring is not a defect, it is the procédé. Common terminological mistakes: 'allwissender Erzähler' when the structure is actually a Reflektor; 'Innensicht' on its own without specification. Do NOT write 'der Autor sagt' when the source of the statement is the Erzähler.",
     "idiom_glosses": [
       {
         "idiom": "Stimme leihen",
         "literal": "cho mượn giọng",
+        "literal_en": "to lend one's voice",
         "meaning": "tác giả cấp giọng cho nhân vật / người kể (literarisch)",
         "meaning_en": "to lend one's voice — the author lends a voice to a character or narrator (literarisch)",
         "example": "Mann leiht seinem Erzähler eine ironische Stimme — sie gehört nicht ihm selbst, doch sie trägt sein Werkprogramm.",
@@ -683,6 +698,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "hinter dem Vorhang stehen",
         "literal": "đứng sau màn",
+        "literal_en": "to stand behind the curtain",
         "meaning": "ẩn nhưng không vắng mặt (literarisch)",
         "meaning_en": "to stand behind the curtain — hidden but not absent (literarisch)",
         "example": "Bei Kafka steht der Erzähler hinter dem Vorhang — formal abwesend, faktisch jederzeit interventionsbereit.",
@@ -691,6 +707,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Maske abnehmen / aufsetzen",
         "literal": "lấy / đặt mặt nạ",
+        "literal_en": "to take off / put on the mask",
         "meaning": "tiết lộ / che giấu danh tính tường thuật (literarisch)",
         "meaning_en": "to take off / to put on the mask — to reveal or conceal narrative identity (literarisch)",
         "example": "Sebald nimmt die Erzähler-Maske nie ganz ab — und setzt sie nie ganz auf; das ist sein Verfahren.",
@@ -699,6 +716,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
+        "literal_en": "to lay the cards on the table",
         "meaning": "minh bạch hóa procédés (standardsprachlich)",
         "meaning_en": "to lay one's cards on the table — to be transparent about one's procédés (standardsprachlich)",
         "example": "Eine analytische Lektüre legt die erzähltheoretischen Karten auf den Tisch, bevor sie zur Deutung übergeht.",
@@ -1058,12 +1076,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter hỏi về Adornos Bildverbot và Diskursivierungspflicht. Diễn đạt Doppelbewegung formal: ‚das Bild nicht zu entzaubern, sondern in seiner produktiven Vieldeutigkeit zu erhalten — gleichwohl ohne sich der Diskursivierungspflicht zu entziehen'.",
       "Doktormutter cảnh báo về motivgeschichtliche Schleife (Petrarca-Mallarmé). Đề xuất giải pháp: Curtius làm neo cho tradition + Stierle làm cầu Mallarmé tiếng Đức + return to Blumenberg-Adorno-Achse trong 3-4 câu."
     ],
+    "roleplay_prompts_en": [
+      "You present a DVjs article on the snow chapter of Der Zauberberg to your Doktormutter. Distinguish formally allegory (one-to-one) from Blumenberg's absolute metaphor (no conceptual resolution without remainder) — with the standard defining sentence.",
+      "Your Doktormutter asks about Adorno's image-prohibition (Bildverbot) and the duty of discursivisation. Express the formal double movement: 'das Bild nicht zu entzaubern, sondern in seiner produktiven Vieldeutigkeit zu erhalten — gleichwohl ohne sich der Diskursivierungspflicht zu entziehen'.",
+      "Your Doktormutter warns about a motif-history loop (Petrarch–Mallarme). Propose a solution: Curtius as an anchor for the tradition + Stierle as the bridge to a German Mallarme + a return to the Blumenberg-Adorno axis in 3-4 sentences."
+    ],
     "register_notes": "Symbol-Metapher-Analyse C2: phân biệt Goethe-Dualismus (Symbol vs Allegorie) + Blumenberg's absolute Metapher + Jakobson Metapher-Metonymie. Konjunktiv I cho theory citation: ‚Blumenberg zufolge sei die absolute Metapher als kognitive Unverzichtbarkeit zu begreifen'. Funktionsverbgefüge: ‚in Begriffe auflösen' (giải về khái niệm), ‚in Bilder bannen' (đóng vào hình ảnh), ‚aus Beachtung getilgt werden' (bị xóa khỏi chú ý). Connectors gehoben: ‚gleichwohl', ‚dergestalt', ‚je nachdem ob'. Doppelbewegung formula: ‚nicht entzaubern, sondern in produktiver Vieldeutigkeit erhalten — gleichwohl ohne Diskursivierungspflicht entziehen'. KHÔNG ‚X bedeutet Y' (Allegorie-Reduktion); thay bằng ‚X aktualisiert ein Bedeutungsgeflecht, in dem Y, Z, W einander durchdringen'. Citations: chỉ reference verifierte quotes; mô tả scenes hơn là quote literal khi không chắc.",
     "register_notes_en": "Symbol-Metapher-Analyse at C2: hold three frames simultaneously — Goethe's dualism (Symbol vs Allegorie), Blumenberg's absolute Metapher, Jakobson's Metapher-Metonymie. Use Konjunktiv I for theory citation: 'Blumenberg zufolge sei die absolute Metapher als kognitive Unverzichtbarkeit zu begreifen'. Functional-verb collocations: 'in Begriffe auflösen' (dissolve into concepts), 'in Bilder bannen' (capture in images), 'aus Beachtung getilgt werden' (be erased from view). Elevated connectors: 'gleichwohl', 'dergestalt', 'je nachdem ob'. The Doppelbewegung formula: 'nicht entzaubern, sondern in produktiver Vieldeutigkeit erhalten — gleichwohl ohne Diskursivierungspflicht entziehen'. NEVER 'X bedeutet Y' (allegory reduction); replace with 'X aktualisiert ein Bedeutungsgeflecht, in dem Y, Z, W einander durchdringen'. Citations: only use verified quotations; describe scenes rather than quote dialogue verbatim when you are not certain.",
     "idiom_glosses": [
       {
         "idiom": "den Schleier lüften",
         "literal": "vén màn",
+        "literal_en": "to lift the veil",
         "meaning": "phơi bày cái ẩn (gehoben/literarisch)",
         "meaning_en": "to expose what is hidden (gehoben/literarisch)",
         "example": "Eine sorgsame Lektüre lüftet den Schleier, der das Schnee-Bild umgibt — ohne es zu zerstören.",
@@ -1072,6 +1096,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ein Bild prägen",
         "literal": "đúc hình ảnh",
+        "literal_en": "to coin an image",
         "meaning": "tạo / định hình một biểu tượng (literarisch)",
         "meaning_en": "to coin / shape a symbol (literarisch)",
         "example": "Mann prägt im Schneekapitel ein Bild, das die Forschung bis heute beschäftigt.",
@@ -1080,6 +1105,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas in Worte fassen",
         "literal": "đóng cái gì đó vào lời",
+        "literal_en": "to put something into words",
         "meaning": "diễn đạt thành ngôn ngữ (standardsprachlich)",
         "meaning_en": "to put something into words (standardsprachlich)",
         "example": "Was Hans Castorp im Traum erfährt, lässt sich nur unvollständig in Worte fassen — und gerade darin liegt die Pointe.",
@@ -1088,6 +1114,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "der rote Faden",
         "literal": "sợi chỉ đỏ",
+        "literal_en": "the red thread",
         "meaning": "mạch xuyên suốt (standardsprachlich)",
         "meaning_en": "the through-line, the unifying thread (standardsprachlich)",
         "example": "Der rote Faden meines Aufsatzes ist die Doppelbewegung von Bildwahrung und Diskursivierung.",
@@ -1432,12 +1459,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter hỏi về ‚zweite Welle' Bachmann-Forschung. Trích Sigrid Weigel ‚Die Stimme der Medusa' (1987) + Christa Bürger làm neo, sau đó định vị bản thân ‚im Anschluss, aber gehe weiter durch Jausses Erwartungshorizont'.",
       "Doktormutter yêu cầu kết bài cương lĩnh hóa Doppelbewegung. Diễn đạt Schlüsselsatz: ‚Subversion gelingt nicht als bloßer Bruch, sondern als produktive Re-Lektüre — der Text muss die Konvention zugleich aufrufen und destabilisieren'."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a DVjs article on Bachmann's Malina as a Bildungsroman subversion. Sketch the norm-elements of the Bildungsroman (the Wilhelm Meister model) + concrete inversion points (four of them). Your Doktormutter insists on a 'productive re-reading' — not merely a rupture.",
+      "Your Doktormutter asks about the 'second wave' of Bachmann scholarship. Cite Sigrid Weigel's Die Stimme der Medusa (1987) + Christa Bürger as anchors, then position yourself 'im Anschluss, aber gehe weiter' through Jauss's horizon of expectation.",
+      "Your Doktormutter asks you to make the closing programmatic about the double movement. Express the key sentence: 'Subversion gelingt nicht als bloßer Bruch, sondern als produktive Re-Lektüre — der Text muss die Konvention zugleich aufrufen und destabilisieren'."
+    ],
     "register_notes": "Gattungs-Subversion-Analyse C2: Jaussesche Erwartungshorizont vs Goethesche Naturformen — biết cả hai, ưa phương pháp lịch sử. Funktionsverbgefüge: ‚zur Disposition stellen' (đặt vào tình trạng có thể bàn lại), ‚in Anspruch nehmen' (đòi hỏi), ‚Rechnung tragen' (tính đến), ‚gerecht werden' (làm công bằng). Doppelbewegung formula bắt buộc cho Subversion: ‚zugleich aufrufen und destabilisieren'. Khi feministische Lesart: phải verorten in Forschungslandschaft (Weigel, Bürger) — không claim ban đầu. Konjunktiv I cho theory: ‚Jauss zufolge sei die Gattung als Erwartungshorizont zu begreifen'. Phân biệt Subversion (produktiv, kognitiv) ≠ bloßer Bruch (rein negativ) ≠ Variation (innerhalb Konvention). Khi referenzing real works (Bachmann ‚Malina', Goethe ‚Wilhelm Meister'): ok mô tả Schluss-Ereignisse verifizierte (‚in der Wand verschwindet') nhưng KHÔNG fabricated quote dialogues.",
     "register_notes_en": "Gattungs-Subversion-Analyse at C2: Jauss's Erwartungshorizont vs Goethe's Naturformen — know both, lean towards the historical method. Functional-verb collocations: 'zur Disposition stellen' (place up for renegotiation), 'in Anspruch nehmen' (claim), 'Rechnung tragen' (take into account), 'gerecht werden' (do justice to). The Doppelbewegung formula is mandatory for subversion: 'zugleich aufrufen und destabilisieren'. For a feminist reading: position yourself within the existing scholarship (Weigel, Bürger) — never claim originality where it isn't yours. Konjunktiv I for theory: 'Jauss zufolge sei die Gattung als Erwartungshorizont zu begreifen'. Keep three concepts distinct — Subversion (productive, cognitive) ≠ bloßer Bruch (purely negative) ≠ Variation (within convention). When referencing real works (Bachmann's 'Malina', Goethe's 'Wilhelm Meister'): you may describe verified closing events ('in der Wand verschwindet'), but DO NOT fabricate quoted dialogue.",
     "idiom_glosses": [
       {
         "idiom": "den Boden unter den Füßen wegziehen",
         "literal": "kéo nền đất khỏi dưới chân",
+        "literal_en": "to pull the ground out from under someone's feet",
         "meaning": "làm mất nền tảng (gehoben/literarisch)",
         "meaning_en": "to pull the ground out from under something — destabilise its foundation (gehoben/literarisch)",
         "example": "Bachmanns Schlussbild zieht der Bildungsroman-Konvention den Boden unter den Füßen weg — und doch nicht, denn die Konvention bleibt Bezugspunkt.",
@@ -1446,6 +1479,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas auf den Kopf stellen",
         "literal": "đặt cái gì lên đầu",
+        "literal_en": "to stand something on its head",
         "meaning": "đảo ngược, lật úp (standardsprachlich)",
         "meaning_en": "to turn something on its head, invert it (standardsprachlich)",
         "example": "Bachmann stellt die Bildungsroman-Logik auf den Kopf — Synthese wird Verschwinden, Integration wird Auslöschung.",
@@ -1454,6 +1488,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Spieß umdrehen",
         "literal": "xoay ngược cây giáo",
+        "literal_en": "to turn the spit around",
         "meaning": "đảo ngược tình thế (standardsprachlich)",
         "meaning_en": "to turn the tables (standardsprachlich)",
         "example": "Subversive Texte drehen den Spieß um: was als Halt der Tradition erschien, wird zum Anlass ihrer Krise.",
@@ -1462,6 +1497,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "der Stein des Anstoßes",
         "literal": "viên đá gây vấp",
+        "literal_en": "the stone of offence",
         "meaning": "điểm tranh cãi cốt lõi (gehoben)",
         "meaning_en": "the stumbling block, the core sticking point (gehoben)",
         "example": "Bachmanns weibliche Ich-Erzählerin war der Stein des Anstoßes für die feministische Bildungsroman-Forschung.",
@@ -1811,12 +1847,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter cảnh báo về Werturteile (‚Schlegel klingt schöner', ‚Günther verfehlt Original'). Diễn đạt nguyên tắc: ‚Die analytische Aufgabe besteht nicht im Verteilen von Noten, sondern im Sichtbarmachen impliziter Voraussetzungen'.",
       "Doktormutter gợi ý dùng Frank Günthers ‚Unser Shakespeare' (translatologie tự ông) làm primary source. Diễn đạt Schlüsselformel kết bài Benjamin-nahe: ‚Erst die Pluralität der Übersetzungen macht die Pluralität des Originals sichtbar'."
     ],
+    "roleplay_prompts_en": [
+      "You are writing for ZfdPh, comparing three translations of Hamlet's soliloquy (Schlegel / Fried / Günther). Sketch a three-layer theory: Schleiermacher's dichotomy + Benjamin's pure language + Berman's shock of the foreign. Position the three translators within the dichotomy.",
+      "Your Doktormutter warns against value judgements ('Schlegel klingt schöner', 'Günther verfehlt Original'). Express the principle: 'Die analytische Aufgabe besteht nicht im Verteilen von Noten, sondern im Sichtbarmachen impliziter Voraussetzungen'.",
+      "Your Doktormutter suggests using Frank Günther's Unser Shakespeare (his own translatology) as a primary source. Express a Benjamin-adjacent key closing formula: 'Erst die Pluralität der Übersetzungen macht die Pluralität des Originals sichtbar'."
+    ],
     "register_notes": "Übersetzungsvergleich C2: Schleiermacher-Dichotomie (verfremdend/einbürgernd) + Benjamin (reine Sprache) + Berman (Schock des Fremden) làm theoretical Bezugsrahmen. KHÔNG ‚noten verteilen' — analytische Aufgabe = Sichtbarmachen impliziter Voraussetzungen. Funktionsverbgefüge: ‚zur Sprache bringen' (đưa đến lời), ‚zur Erscheinung kommen' (xuất hiện), ‚zur Geltung bringen' (làm có hiệu lực), ‚durchscheinend lassen' (để xuyên qua). Konjunktiv I cho Benjamin-Zitat: ‚Benjamin zufolge sei die Aufgabe des Übersetzers...'. Khi reference quotes, chỉ verifizierte (Benjamin's ‚durchscheinend' formulation OK). KHÔNG fabricate Schlegel/Fried/Günther quote. Phân tích achsen: lexikalisch/syntaktisch/prosodisch/semantisch/pragmatisch — bắt buộc systematic. Wirkungsgeschichte phải verorten — Schlegel-Tieck Klassiker influence Đức Shakespeare-Verständnis lâu dài.",
     "register_notes_en": "Übersetzungsvergleich at C2: Schleiermacher's dichotomy (foreignising/domesticating) + Benjamin (reine Sprache) + Berman (Schock des Fremden) form the theoretical reference frame. NEVER 'verteilen Noten' — the analytical task is Sichtbarmachen impliziter Voraussetzungen. Functional-verb collocations: 'zur Sprache bringen' (bring to expression), 'zur Erscheinung kommen' (come into view), 'zur Geltung bringen' (give full force to), 'durchscheinend lassen' (let shine through). Konjunktiv I for Benjamin citation: 'Benjamin zufolge sei die Aufgabe des Übersetzers…'. When you reference quotations, only use verified ones (Benjamin's 'durchscheinend' formulation is fine). DO NOT fabricate Schlegel/Fried/Günther quotations. Analytical axes — lexical / syntactic / prosodic / semantic / pragmatic — are mandatory and must be systematic. Wirkungsgeschichte has to be situated — the Schlegel–Tieck classic shaped German Shakespeare reception for the long haul.",
     "idiom_glosses": [
       {
         "idiom": "den Worten Gewalt antun",
         "literal": "làm bạo lực với lời",
+        "literal_en": "to do violence to the words",
         "meaning": "ép lời để khít với hình thức (gehoben/literarisch)",
         "meaning_en": "to do violence to words — bend language to fit a form (gehoben/literarisch)",
         "example": "Hölderlin tut den deutschen Worten Gewalt an, um Sophokles' griechische Brüche hörbar zu machen.",
@@ -1825,6 +1867,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Wein in neue Schläuche füllen",
         "literal": "đổ rượu vào da rượu mới (gốc Kinh Thánh)",
+        "literal_en": "to pour wine into new skins",
         "meaning": "đặt nội dung cũ vào hình thức mới (gehoben)",
         "meaning_en": "to pour old wine into new wineskins — put old content into new form (gehoben; biblical in origin)",
         "example": "Frieds Übersetzung füllt Shakespeares Wein in neue Schläuche — der Geist bleibt, das Gefäß ist zeitgenössisch.",
@@ -1833,6 +1876,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "an der Oberfläche bleiben",
         "literal": "ở lại trên bề mặt",
+        "literal_en": "to stay at the surface",
         "meaning": "không đi sâu (standardsprachlich)",
         "meaning_en": "to stay on the surface — not to go deep (standardsprachlich)",
         "example": "Eine Übersetzung, die nur an der Oberfläche bleibt, verfehlt das, was Benjamin ‚reine Sprache' nennt.",
@@ -1841,6 +1885,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas in andere Worte kleiden",
         "literal": "mặc cái gì vào lời khác",
+        "literal_en": "to clothe something in other words",
         "meaning": "diễn đạt lại bằng từ khác (standardsprachlich)",
         "meaning_en": "to clothe something in other words — paraphrase (standardsprachlich)",
         "example": "Übersetzen heißt nicht, dasselbe in andere Worte zu kleiden — heißt, das Original durchscheinend zu machen.",
@@ -2190,12 +2235,18 @@ export const lessons: GermanLesson[] = [
       "Diễn đạt theoretische Trias formal: Bourdieu ‚biographische Illusion' (Hauptanker) + Foucault ‚Was ist ein Autor?' (Diskursfunktion) + Barthes ‚Tod des Autors' (korrektives Manifest, nicht Programm).",
       "Phân tích Vater-Figur ở ‚Das Urteil' và ‚Brief an den Vater' — cùng substrat (Hermann Kafka), khác transformation văn chương. Diễn đạt Schlüsselformel kết: ‚produktive Differenz als analytischen Gegenstand fassen, nicht Biographie hinter den Text setzen'."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a Kafka-Studien article on the letters-versus-work relation. Sketch a four-step programme: a work-immanent basis → biographical material handled critically → productive difference → synthesis. Your Doktormutter asks about the theoretical positioning.",
+      "Express the formal theoretical triad: Bourdieu's 'biographical illusion' (the main anchor) + Foucault's 'What is an Author?' (the discourse function) + Barthes's 'Death of the Author' (a corrective manifesto, not a programme).",
+      "Analyse the father figure in Das Urteil and the Brief an den Vater — the same substrate (Hermann Kafka), a different literary transformation. Express the closing key formula: 'produktive Differenz als analytischen Gegenstand fassen, nicht Biographie hinter den Text setzen'."
+    ],
     "register_notes": "Biographie-Werk-Analyse C2: phân biệt Werkimmanenz (Kayser, Staiger) / Biographismus (Dilthey-Tradition) / produktive Doppelbewegung (post-1970 Konstanzer Schule + Bourdieu). Theoretical anchors: Barthes ‚Tod des Autors', Foucault ‚Was ist ein Autor?', Bourdieu ‚biographische Illusion'. Konjunktiv I cho theory citation: ‚Bourdieu zufolge sei die Biographie als nachträgliche Konstruktion zu begreifen'. Funktionsverbgefüge: ‚hinter den Text setzen' (đặt sau văn bản), ‚als analytischen Gegenstand fassen' (nắm bắt như đối tượng phân tích), ‚in Anschluss an X arbeiten' (làm việc kế tiếp X). Quellenstatus phải reflektiert: Tagebuch ≠ Brief ≠ Aufsatz ≠ Drittquelle. Self-Mythologisierung (Goethe Dichtung und Wahrheit, Mann Tagebücher, Kafka Briefe) phải critical, không naive. KHÔNG ‚X IST der Autor' (Identifikation), KHÔNG ‚Biographie erklärt Werk' (causal Kurzschluss). Schlüsselformel: ‚produktive Differenz als analytischen Gegenstand fassen — Biographik als ergänzende, nicht ablösende Perspektive'.",
     "register_notes_en": "C2 biography-and-work analysis: distinguish Werkimmanenz (Kayser, Staiger) / biographism (Dilthey tradition) / productive double-move (post-1970 Konstanz school plus Bourdieu). Theoretical anchors: Barthes 'Death of the Author', Foucault 'What Is an Author?', Bourdieu 'biographical illusion'. Konjunktiv I for citing theory: 'Bourdieu zufolge sei die Biographie als nachträgliche Konstruktion zu begreifen'. Funktionsverbgefüge: 'hinter den Text setzen' (place behind the text), 'als analytischen Gegenstand fassen' (treat as analytical object), 'in Anschluss an X arbeiten' (work in the line of X). Source status has to be reflected on: diary ≠ letter ≠ essay ≠ third-party source. Self-mythologisation (Goethe's 'Dichtung und Wahrheit', Mann's diaries, Kafka's letters) must be handled critically, not naïvely. Avoid 'X IS the author' (identification); avoid 'biography explains the work' (causal short-circuit). Key formula: 'productive difference as the analytical object — biographical work as complementary, not substitutive perspective'.",
     "idiom_glosses": [
       {
         "idiom": "den Schlüssel finden",
         "literal": "tìm chìa khóa",
+        "literal_en": "to find the key",
         "meaning": "tìm cách giải thích cuối cùng (gehoben)",
         "meaning_en": "to find the final explanation (gehoben)",
         "example": "Die biographistische Lektüre verspricht, den Schlüssel zum Werk zu finden — ein Versprechen, das der Werkbefund selten einlöst.",
@@ -2204,6 +2255,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "hinter etwas Stehendes vermuten",
         "literal": "đoán cái đứng sau gì đó",
+        "literal_en": "to suspect something standing behind something",
         "meaning": "đoán nguyên nhân ẩn (gehoben)",
         "meaning_en": "to suspect a hidden cause (gehoben)",
         "example": "Eine schlechte Praxis vermutet hinter jeder literarischen Geste etwas Biographisches — die Werkanalyse leidet unter dieser Hypothesen-Verkehrung.",
@@ -2212,6 +2264,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "in der Schwebe halten",
         "literal": "giữ lửng lơ",
+        "literal_en": "to hold in suspension",
         "meaning": "không quyết định, giữ tension năng suất (gehoben)",
         "meaning_en": "to hold in suspension, to keep a productive tension open (gehoben)",
         "example": "Eine gelungene Lektüre hält die Differenz zwischen Brief und Werk in der Schwebe — sie löst sie nicht voreilig auf.",
@@ -2220,6 +2273,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Karten neu mischen",
         "literal": "trộn lại bài",
+        "literal_en": "to reshuffle the cards",
         "meaning": "đặt lại nền đề diễn giải (standardsprachlich)",
         "meaning_en": "to reshuffle the deck, to reset the interpretive premises (standardsprachlich)",
         "example": "Bourdieus ‚biographische Illusion' mischt die Karten der Biographik neu — ohne sie aus dem Spiel zu nehmen.",
@@ -2559,12 +2613,18 @@ export const lessons: GermanLesson[] = [
       "Diễn đạt Selektionsmechanismen-Trias formal: institutionell (Lehrstühle prioritise Goethe-Solitär), ökonomisch (Verlage publishing Goethe ohne Bettinas Antworten), ideologisch (Wilhelminische Genie-Ästhetik gendered male).",
       "Doktormutter gợi ý nhắc Reich-Ranicki Kanon-Edition (2002). Diễn đạt produktive Aporie: Bettina aufgewertet mit drei Bänden, doch in einer Auswahl-Logik, die feministische Kritik selbst als problematisch markiert."
     ],
+    "roleplay_prompts_en": [
+      "You are writing for the Bettina-von-Arnim-Gesellschaft yearbook. Sketch a four-phase architecture: first reception / marginalisation / feminist rediscovery / current positioning. Your Doktormutter insists on finding a critical point — not merely a description of the phases.",
+      "Express the formal triad of selection mechanisms: institutional (chairs prioritise the Goethe solitaire), economic (publishers issuing Goethe without Bettina's replies), ideological (Wilhelmine genius-aesthetics gendered male).",
+      "Your Doktormutter suggests referencing Reich-Ranicki's canon edition (2002). Express the productive aporia: Bettina upgraded with three volumes, yet within a selection logic that feminist critique itself marks as problematic."
+    ],
     "register_notes": "Wirkungsgeschichte-Analyse C2: Jauss Rezeptionsästhetik làm theoretical anchor. Phasen-Architektur bắt buộc chronologisch. Selektionsmechanismen-Trias: institutionell / ökonomisch / ideologisch — formal C2 phải benennen. Kanonkritik không destruktiv: ‚wer den Kanon historisiert, lässt ihn nicht hinter sich' bắt buộc. Konjunktiv I cho theory: ‚Jauss zufolge erweise sich das Werk erst durch seine Wirkungsgeschichte als historisch'. Funktionsverbgefüge: ‚in Anhängsel verstehen' (đặt như phụ lục), ‚im Schatten von X stehen' (trong bóng X), ‚zur Erscheinung kommen' (xuất hiện), ‚kritisch verfügbar machen' (làm có thể phê phán). KHÔNG ‚X gehört in den Kanon, Y nicht' (Wertung); KHÔNG ‚der Kanon muss verworfen werden' (destruktiv). Reich-Ranicki Edition (2002), Sebald ‚Luftkrieg und Literatur' (1999), Bodyguard-Streit (1995) là cụ thể canonical Streits có thể referenzieren.",
     "register_notes_en": "C2 Wirkungsgeschichte analysis: Jauss's Rezeptionsästhetik is the theoretical anchor. The phase architecture has to be chronological. The selection-mechanism triad — institutional / economic / ideological — has to be named explicitly at C2. Canon criticism is not destruktiv: 'wer den Kanon historisiert, lässt ihn nicht hinter sich' is mandatory. Konjunktiv I for theory: 'Jauss zufolge erweise sich das Werk erst durch seine Wirkungsgeschichte als historisch'. Funktionsverbgefüge: 'als Anhängsel verstehen' (treat as appendix), 'im Schatten von X stehen' (stand in X's shadow), 'zur Erscheinung kommen' (come into view), 'kritisch verfügbar machen' (make available for critique). Avoid 'X belongs in the canon, Y doesn't' (a valuation move); avoid 'the canon must be rejected' (destruktiv). Reich-Ranicki's edition (2002), Sebald's 'Luftkrieg und Literatur' (1999), and the Bocksgesang dispute (1995) are concrete canonical controversies you can reference.",
     "idiom_glosses": [
       {
         "idiom": "im Schatten stehen",
         "literal": "đứng trong bóng",
+        "literal_en": "to stand in the shadow",
         "meaning": "ở vị trí thứ yếu (standardsprachlich)",
         "meaning_en": "to be in second place, eclipsed (standardsprachlich)",
         "example": "Bettina von Arnim stand jahrzehntelang im Schatten Goethes — die feministische Forschung hat sie sichtbar gemacht.",
@@ -2573,6 +2633,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ans Licht bringen",
         "literal": "đưa ra ánh sáng",
+        "literal_en": "to bring to light",
         "meaning": "phơi bày, làm thấy được (gehoben/standardsprachlich)",
         "meaning_en": "to bring to light, to expose (gehoben/standardsprachlich)",
         "example": "Die Kanondebatten der neunziger Jahre haben blinde Flecken ans Licht gebracht, die Generationen unsichtbar geblieben waren.",
@@ -2581,6 +2642,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Spreu vom Weizen trennen",
         "literal": "tách trấu khỏi lúa mì (gốc Kinh Thánh)",
+        "literal_en": "to separate the chaff from the wheat",
         "meaning": "phân biệt cốt lõi khỏi phế (gehoben)",
         "meaning_en": "to separate the wheat from the chaff (biblical) — to sift the essential from the inessential (gehoben)",
         "example": "Die Kanonisierung versucht, die Spreu vom Weizen zu trennen — kritische Wirkungsgeschichtsforschung fragt: wer trennt nach welchen Kriterien?",
@@ -2589,6 +2651,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Boden bereiten",
         "literal": "chuẩn bị đất",
+        "literal_en": "to prepare the ground",
         "meaning": "tạo điều kiện (standardsprachlich)",
         "meaning_en": "to prepare the ground, to lay the groundwork (standardsprachlich)",
         "example": "Weigels ‚Stimme der Medusa' (1987) bereitete den Boden für die feministische Bettina-Forschung der neunziger Jahre.",
@@ -2933,12 +2996,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter ép phải markieren Begrenzungen jeder Linse. Diễn đạt formalistisch klammert Geschlecht ein, feminist hat blind spot Verfahrensebene, postkolonial may oversimplify literarische Komplexität — và Synthese gọi metatheoretische Reflexion.",
       "Doktormutter chỉ ra Aufsatz quá dài (42 Seiten) cho DVjs (max 35). Đề xuất Lösung: formalistisch nicht als separate Sektion, sondern als methodische Basis trong jedem Linsen-Abschnitt — Platzeinsparung + Kohärenz."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a DVjs article on Goethe's West-östlicher Divan with three lenses (formalist / feminist / postcolonial). Your Doktormutter asks about methodological cleanliness. Express 'sequenziell statt simultan' + a justification of why an additive combination is unclean.",
+      "Your Doktormutter insists you mark the limitations of each lens. Express that the formalist brackets out gender, the feminist has a blind spot at the level of technique, the postcolonial may oversimplify literary complexity — and that synthesis calls for metatheoretical reflection.",
+      "Your Doktormutter notes the article is too long (42 pages) for DVjs (max 35). Propose a solution: the formalist lens not as a separate section but as the methodological basis within each lens-section — saving space + improving coherence."
+    ],
     "register_notes": "Theoretische Lensen-Diskussion C2: Linsen sind nicht ‚Werkzeuge' (instrumentalistic, naive) — sondern ‚methodische Versprechen mit Voraussetzungen'. Sequenzielle vs simultane Linsen-Anwendung — sequenziell ưa chuộng wenn Voraussetzungen widersprechen. Formalistic Tradition deutsch: Schklowski → Werkimmanenz (Kayser, Staiger) → Kittler. Feministische Anker deutsch: Weigel, Stephan, Bürger; ergänzt internationally Spivak. Postkoloniale Anker: Said hauptsächlich, ergänzt Bhabha (Hybridität), Mignolo (dekolonial). Funktionsverbgefüge: ‚zur Erscheinung kommen' (xuất hiện), ‚in den Blick nehmen' (đưa vào tầm nhìn), ‚methodisch einklammern' (đặt vào ngoặc về phương pháp). Schlüsselformel: ‚Eine theoretische Linse ist kein neutrales Instrument, sondern ein methodisches Versprechen — sie verspricht Sichtbarmachung bestimmter Strukturen um den Preis der Verdunklung anderer'. Reife Kritik weiß um Begrenzungen + kombiniert reflektiert. KHÔNG ‚orthodoxe Linsen-Treue' — auch KHÔNG ‚beliebige Kombination'.",
     "register_notes_en": "C2 theoretical-lens discussion: lenses are not 'tools' (instrumentalist, naïve) — they are 'methodological promises with premises'. Sequential vs simultaneous application of lenses — sequential is preferred when the premises clash. The German formalist tradition: Shklovsky → Werkimmanenz (Kayser, Staiger) → Kittler. German feminist anchors: Weigel, Stephan, Bürger; supplemented internationally by Spivak. Postcolonial anchors: Said as main, supplemented by Bhabha (hybridity) and Mignolo (decolonial). Funktionsverbgefüge: 'zur Erscheinung kommen' (come into view), 'in den Blick nehmen' (bring into focus), 'methodisch einklammern' (methodologically bracket). Key formula: 'A theoretical lens is not a neutral instrument but a methodological promise — it promises to make certain structures visible at the cost of obscuring others.' Mature criticism knows the limits and combines reflektiert. Avoid 'orthodox lens loyalty' — but also avoid 'arbitrary combination'.",
     "idiom_glosses": [
       {
         "idiom": "die Brille aufsetzen",
         "literal": "đặt kính lên",
+        "literal_en": "to put on the glasses",
         "meaning": "áp dụng góc nhìn nhất định (standardsprachlich)",
         "meaning_en": "to put on the glasses, to adopt a specific perspective (standardsprachlich)",
         "example": "Wer die postkoloniale Brille aufsetzt, sieht in Goethes ‚Divan' Strukturen, die der hermeneutische Goethe-Kult lange übersah.",
@@ -2947,6 +3016,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Wald vor lauter Bäumen nicht sehen",
         "literal": "không thấy rừng vì nhiều cây",
+        "literal_en": "to not see the forest for all the trees",
         "meaning": "mất tổng thể vì chi tiết (standardsprachlich)",
         "meaning_en": "to miss the forest for the trees, to lose the big picture in details (standardsprachlich)",
         "example": "Wer rein formalistisch liest, riskiert, vor lauter Verfahren den ideologischen Wald nicht zu sehen.",
@@ -2955,6 +3025,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ein blinder Fleck",
         "literal": "một điểm mù",
+        "literal_en": "a blind spot",
         "meaning": "vùng không thấy được trong perspective riêng (gehoben/standardsprachlich)",
         "meaning_en": "a blind spot — a region your own perspective can't see (gehoben/standardsprachlich)",
         "example": "Jede theoretische Linse hat ihre blinden Flecken — die Aufgabe der Synthese ist, sie zu benennen.",
@@ -2963,6 +3034,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf zwei Hochzeiten tanzen",
         "literal": "nhảy ở hai đám cưới",
+        "literal_en": "to dance at two weddings",
         "meaning": "cố gắng làm hai chuyện không tương thích cùng lúc (standardsprachlich)",
         "meaning_en": "to dance at two weddings, to try to do two incompatible things at once (standardsprachlich)",
         "example": "Wer auf zwei theoretischen Hochzeiten tanzen will, ohne die Voraussetzungen zu reflektieren, verfehlt beide.",
@@ -3307,12 +3379,18 @@ export const lessons: GermanLesson[] = [
       "Sửa Eröffnung Kafka thành Beobachtungs-Einstieg: ‚Im ‚Brief an den Vater' und in ‚Das Urteil' begegnet uns dieselbe Vater-Figur — und doch sind beide Texte konstitutiv inkompatibel'. Doktormutter validate cấu trúc: konkreter Befund / präzise Pointe / methodisches Versprechen.",
       "Sửa Eröffnung Bachmann thành Kontroverse-Einstieg, sửa Eröffnung Goethe thành Spannungs-Einstieg. Doktormutter tổng kết drei Eröffnungs-Modi như Standard-Repertoire C2."
     ],
+    "roleplay_prompts_en": [
+      "You show three opening paragraphs (Kafka / Bachmann / Goethe). Your Doktormutter points out all three contain platitudes + a research-gap lament. Express the cutting line: 'Streichen Sie alle drei Sätze' + 'Beginnen Sie neu mit konkretem Befund'.",
+      "Rewrite the Kafka opening as an observation-entry: 'Im 'Brief an den Vater' und in 'Das Urteil' begegnet uns dieselbe Vater-Figur — und doch sind beide Texte konstitutiv inkompatibel'. Your Doktormutter validates the structure: concrete finding / precise point / methodological promise.",
+      "Rewrite the Bachmann opening as a controversy-entry, the Goethe opening as a tension-entry. Your Doktormutter sums up the three opening modes as the standard C2 repertoire."
+    ],
     "register_notes": "Eröffnungs-Strategie C2: drei Standard-Modi — Beobachtungs / Kontroverse / Begriffs-Einstieg. Verboten: Allgemeinplätze (‚X gehört zu den größten...'), Forschungslücken-Klage (‚Die Forschung beschäftigt sich seit Jahrzehnten...'), zeitgeistige Floskel (‚In einer zunehmend...'), biographische Eingangsfloskel (‚Thomas Mann wurde geboren...'), Autoritätszitat-Eröffnung (‚Was Adorno einmal sagte...'). Drei-Satz-Regel: Frage + Verortung + methodisches Versprechen verdichtet. Forschungsstand-Verortung gehört NICHT in ersten Absatz. Funktionsverbgefüge: ‚in den Blick rücken' (đưa vào tầm nhìn), ‚zur Sprache bringen' (đưa đến lời), ‚zur Disposition stellen' (đặt vào tình trạng có thể bàn). Konjunktiv II cho hedged thesen: ‚wäre denkbar', ‚ließe sich lesen'. Korrespondenz Eröffnung-Schluss: gelungener Essay schließt, wo er begann — Eröffnungs-Befund transformiert wiederkehrend. Provokative These möglich, aber muss durch Argumentation gedeckt sein.",
     "register_notes_en": "C2 opening strategy: three standard modes — observation / controversy / concept. Forbidden: platitudes ('X is one of the greatest...'), research-gap lament ('Scholarship has long...'), zeitgeisty cliché ('In an increasingly...'), biographical opener ('Thomas Mann was born...'), authority-quote opener ('What Adorno once said...'). The three-sentence rule: condense question + positioning + methodological promise. Research-state positioning does NOT belong in the first paragraph. Funktionsverbgefüge: 'in den Blick rücken' (bring into focus), 'zur Sprache bringen' (bring to speech), 'zur Disposition stellen' (put up for discussion). Konjunktiv II for hedged theses: 'wäre denkbar', 'ließe sich lesen'. Opening-ending correspondence: a successful essay closes where it began — the opening Befund returns transformed. A provocative thesis is fine but has to be covered by the argument.",
     "idiom_glosses": [
       {
         "idiom": "in medias res",
         "literal": "vào giữa sự việc (gốc Horaz)",
+        "literal_en": "in medias res (Latin: into the middle of things)",
         "meaning": "bắt đầu trực tiếp giữa hành động, không Vorspiel (gehoben/literarisch)",
         "meaning_en": "to begin in the middle of the action, without preamble — Latin, from Horace (gehoben/literarisch)",
         "example": "Eine professionelle Eröffnung beginnt in medias res — kein Warmup, kein Allgemeinplatz, sondern unmittelbar der Befund.",
@@ -3321,6 +3399,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Stier bei den Hörnern packen",
         "literal": "nắm bò ở sừng",
+        "literal_en": "to grab the bull by the horns",
         "meaning": "đối mặt thẳng với vấn đề khó (gehoben/standardsprachlich)",
         "meaning_en": "to grab the bull by the horns, to face a hard problem head-on (gehoben/standardsprachlich)",
         "example": "Wer mit einer provokanten These eröffnet, packt den Stier bei den Hörnern — und muss dann argumentieren können.",
@@ -3329,6 +3408,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Nagel auf den Kopf treffen",
         "literal": "đóng đinh trúng đầu",
+        "literal_en": "to hit the nail on the head",
         "meaning": "trúng tâm điểm (gehoben/standardsprachlich)",
         "meaning_en": "to hit the nail on the head (gehoben/standardsprachlich)",
         "example": "Eine gelungene Eröffnung trifft den Nagel auf den Kopf — sie pointiert das, was sonst implizit bleibt.",
@@ -3337,6 +3417,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Eulen nach Athen tragen",
         "literal": "mang cú đến Athen (gốc Hy Lạp cổ)",
+        "literal_en": "to carry owls to Athens",
         "meaning": "làm việc thừa, mang điều hiển nhiên (gehoben)",
         "meaning_en": "to carry coals to Newcastle (literally: to carry owls to Athens, an Ancient Greek saying) — to do something redundant (gehoben)",
         "example": "Mit Allgemeinplätzen zu eröffnen heißt, Eulen nach Athen zu tragen — der Lektor weiß ohnehin, dass Goethe wichtig ist.",
@@ -3691,12 +3772,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter ép phải Reichweite-Markierung. Diễn đạt formal: ‚Meine Lesart trägt für Erzählinstanz, weniger für formale Erzählorganisation. Vagets Lesart bleibt produktiv für letztere'. Differenzierte Anerkennung statt Verdrängung.",
       "Vaget selbst sitzt in Disputation und sagt ‚Sie haben mich nicht verstanden'. Diễn đạt ideal Antwort: Anerkennung + ergänzende statt ablösende Perspektive + Reichweite-Markierung + Selbstkorrekturbereitschaft."
     ],
+    "roleplay_prompts_en": [
+      "At your Disputation you must defend a controversial Mann reading ('the Buddenbrooks decline-schema as ironic affirmation') against Vaget's established self-critique reading. Steelman Vaget formally — present Vaget's strongest variant in full force, then give your own three-part answer.",
+      "Your Doktormutter insists on a scope-marking. Express formally: 'Meine Lesart trägt für Erzählinstanz, weniger für formale Erzählorganisation. Vagets Lesart bleibt produktiv für letztere'. Differentiated acknowledgement rather than suppression.",
+      "Vaget himself is sitting in the Disputation and says 'Sie haben mich nicht verstanden'. Express the ideal answer: acknowledgement + a complementary rather than displacing perspective + scope-marking + readiness for self-correction."
+    ],
     "register_notes": "Verteidigung kontroverser Lektüre C2: Steelmanning bắt buộc — rekonstruieren Gegenposition stärkste Form. Cấu trúc 5 bước: Steelmanning → Anerkennung → Argumentation → Reichweite-Markierung → Selbstreflexion. Konjunktiv I cho indirect quote: ‚Vaget zufolge sei das Verfallsschema als bürgerliche Selbstkritik zu lesen'. Funktionsverbgefüge: ‚in voller Stärke rekonstruieren' (tái dựng đầy đủ), ‚in den Blick nehmen' (đưa vào tầm nhìn), ‚zur Geltung bringen' (làm có hiệu lực). Differenzierte Anerkennung formula: ‚Ihre Lesart ist nicht ‚richtiger', sondern eröffnet eine bislang nicht systematisch verfolgte Perspektive'. KHÔNG ‚X hat das nicht verstanden' (Personalisierung), KHÔNG ‚meine Lesart ist die einzig richtige' (anti-pluralistisch). Polemik ≠ wissenschaftliche Verteidigung — sachlich-substantiell statt aggressiv. Konsens-Anspruch: ‚Der hermeneutische Konsens ist nicht Wahrheit, sondern Forschungsmehrheit'. Ideal Disputation-Antwort 6 Sätze: 1 Anerkennung + 2 Steelmanning + 2 eigene Antwort + 1 Reichweite — ca. 90 Sekunden.",
     "register_notes_en": "C2 defence of a controversial reading: steelmanning is required — reconstruct the opposing position in its strongest form. Five-step structure: steelmanning → acknowledgment → argument → scope-marking → self-reflection. Konjunktiv I for indirect quotation: 'Vaget zufolge sei das Verfallsschema als bürgerliche Selbstkritik zu lesen'. Funktionsverbgefüge: 'in voller Stärke rekonstruieren' (reconstruct in full strength), 'in den Blick nehmen' (bring into focus), 'zur Geltung bringen' (bring into force). Differentiated-recognition formula: 'Your reading is not ‚more correct' — it opens up a perspective that hasn't been systematically pursued.' Avoid 'X didn't understand' (personalisation); avoid 'my reading is the only correct one' (anti-pluralistic). Polemic ≠ scholarly defence — substantive and sober, not aggressive. On the consensus claim: 'The hermeneutic consensus is not truth, it's a scholarly majority.' Ideal Disputation answer in six sentences: 1 acknowledgment + 2 steelmanning + 2 your answer + 1 scope — about 90 seconds.",
     "idiom_glosses": [
       {
         "idiom": "die Stirn bieten",
         "literal": "trao trán",
+        "literal_en": "to offer the forehead (to stand up to)",
         "meaning": "đối đầu can đảm (gehoben/literarisch)",
         "meaning_en": "to stand up to, to face down — literally 'to offer the forehead' (gehoben/literarisch)",
         "example": "Wer dem hermeneutischen Konsens die Stirn bietet, muss seine Argumentation mehrfach gegenprüfen.",
@@ -3705,6 +3792,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Spieß umdrehen",
         "literal": "xoay ngược cây giáo",
+        "literal_en": "to turn the spit around",
         "meaning": "đảo ngược tình thế (standardsprachlich)",
         "meaning_en": "to turn the tables, to reverse the situation (standardsprachlich)",
         "example": "Mein Argument dreht den Spieß um: das Verfallsschema selbst ist die bürgerliche Geste, die Mann inszeniert.",
@@ -3713,6 +3801,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf festen Boden stehen",
         "literal": "đứng trên đất cứng",
+        "literal_en": "to stand on firm ground",
         "meaning": "có cơ sở vững (standardsprachlich)",
         "meaning_en": "to be on solid ground, to have a firm basis (standardsprachlich)",
         "example": "Eine kontroverse Lektüre muss auf festem Boden stehen — sonst bricht sie unter dem ersten Einwand.",
@@ -3721,6 +3810,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Gegner ernst nehmen",
         "literal": "coi trọng đối thủ",
+        "literal_en": "to take the opponent seriously",
         "meaning": "respektiere Gegenposition (standardsprachlich)",
         "meaning_en": "to take your opponent seriously, to respect the opposing position (standardsprachlich)",
         "example": "Steelmanning heißt, den Gegner so ernst zu nehmen, dass man seinen besten Einwand selbst formuliert — bevor er ihn vorträgt.",
@@ -4055,12 +4145,18 @@ export const lessons: GermanLesson[] = [
       "Trong Kolloquium, Doktorvater phản biện: 'Ihre Beuys-Lektüre ist zu affirmativ.' Bạn acknowledge rồi nêu giới hạn của chính mình: 'Die Grenze meiner Arbeit liegt darin, dass ich Beuys' problematische Selbstinszenierung nicht hinreichend problematisiere.' Dùng Konjunktiv II.",
       "Bạn so sánh hai Ausstellungskritiken về cùng một Documenta-Ausstellung (FAZ vs taz). Phân tích sự khác biệt về lập trường chính trị ngầm qua Wortwahl (FAZ: 'anspruchsvoll', taz: 'elitär')."
     ],
+    "roleplay_prompts_en": [
+      "You are writing an art review for the FAZ on an exhibition of contemporary oil painting. Enter with a concrete observation about the material, develop two interpretive approaches (formal + societal), and conclude with a judgement. Register: objective, not gushing.",
+      "In the Kolloquium, your Doktorvater pushes back: 'Ihre Beuys-Lektüre ist zu affirmativ.' Acknowledge it, then state your own limitation: 'Die Grenze meiner Arbeit liegt darin, dass ich Beuys' problematische Selbstinszenierung nicht hinreichend problematisiere.' Use Konjunktiv II.",
+      "You compare two exhibition reviews of the same Documenta exhibition (FAZ vs taz). Analyse the difference in implicit political stance through word choice (FAZ: 'anspruchsvoll', taz: 'elitär')."
+    ],
     "register_notes": "KUNSTKRITIK C2 ĐỨC — đặc điểm ngữ vực:\n\nKONJUNKTIV I cho indirekte Rede: 'Richter selbst sagt, seine Malerei sei kein Statement, sondern ein Befragen.'\nKONJUNKTIV II cho giả định phản thực: 'Hätte die Jury das Werk anders gehängt, wäre seine räumliche Dimension deutlicher geworden.'\n\nNOMINALSTIL: thay vì 'der Künstler malt, um zu zeigen', viết 'das malerische Verfahren dient der Sichtbarmachung von...'\n\nKOMPOSITA (từ ghép): đặc sản tiếng Đức — Bildsprache, Materialgerechtigkeit, Wahrnehmungsbedingungen, Ausstellungsdispositiv. Không ngại tạo Komposita mới miễn rõ nghĩa.\n\nPASSIV: rất thường dùng trong học thuật Đức: 'Das Werk wird als Kommentar zur Konsumkultur gelesen.'\n\nMAN: chủ ngữ không xác định phổ biến: 'Man könnte einwenden, dass...', 'Man sieht sich konfrontiert mit...'\n\nFUNKTIONSVERBGEFÜGE: 'zur Anwendung kommen', 'in den Blick nehmen', 'zur Diskussion stellen'.\n\nTRÁNH:\n- 'Ich finde das Werk schön' → zu subjektiv\n- Umgangssprache: 'toll', 'super', 'krass'\n- Anglizismen quá nhiều: 'Das Statement des Künstlers' → 'Die Aussage des Künstlers' (nếu có thể)\n- Unbelegte Behauptungen: nếu nói 'Das Werk kritisiert den Kapitalismus', phải chỉ ra WIE (chất liệu, hình thức, bối cảnh trưng bày)",
     "register_notes_en": "C2 GERMAN KUNSTKRITIK — register markers:\n\nKONJUNKTIV I for indirect speech: 'Richter himself says his painting is not a statement, but a questioning.' ('Richter selbst sagt, seine Malerei sei kein Statement, sondern ein Befragen.')\nKONJUNKTIV II for counterfactuals: 'Had the jury hung the work differently, its spatial dimension would have become clearer.'\n\nNOMINALSTIL: instead of 'the artist paints in order to show', write 'the painterly procedure serves to render visible…' ('das malerische Verfahren dient der Sichtbarmachung von…').\n\nKOMPOSITA (compound nouns): a German speciality — Bildsprache, Materialgerechtigkeit, Wahrnehmungsbedingungen, Ausstellungsdispositiv. Don't be afraid to coin new compounds as long as they're transparent.\n\nPASSIVE: very common in German academic writing: 'The work is read as a comment on consumer culture.'\n\nMAN: the impersonal subject is everywhere: 'Man könnte einwenden, dass…' ('One could object that…'), 'Man sieht sich konfrontiert mit…' ('One finds oneself confronted with…').\n\nFUNKTIONSVERBGEFÜGE (light-verb constructions): 'zur Anwendung kommen' (to be applied), 'in den Blick nehmen' (to bring into focus), 'zur Diskussion stellen' (to put up for discussion).\n\nAVOID:\n- 'Ich finde das Werk schön' → too subjective.\n- Colloquialisms: 'toll', 'super', 'krass'.\n- Too many Anglicisms: 'Das Statement des Künstlers' → 'Die Aussage des Künstlers' where possible.\n- Unsupported claims: if you say 'the work critiques capitalism', you must show HOW (material, form, exhibition context).",
     "idiom_glosses": [
       {
         "idiom": "ins Auge fallen",
         "literal": "rơi vào mắt",
+        "literal_en": "to fall into the eye",
         "meaning": "Gây chú ý thị giác tức thì — dùng trong mô tả triển lãm.",
         "meaning_en": "To catch the eye immediately — used when describing what hits you on entering an exhibition.",
         "example": "Als Erstes fällt der monströse Kronleuchter ins Auge — er besteht aus gebrauchten Tampons.",
@@ -4069,6 +4165,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "zu denken geben",
         "literal": "cho để suy nghĩ",
+        "literal_en": "to give to think",
         "meaning": "Khiến suy nghĩ — formal, lịch sự, dùng khi tác phẩm không đưa ra câu trả lời dễ.",
         "meaning_en": "To give one pause for thought — formal, polite; used when a work refuses easy answers.",
         "example": "Die Arbeit gibt zu denken, gerade weil sie sich einer raschen Deutung verweigert.",
@@ -4077,6 +4174,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ins Werk setzen",
         "literal": "đặt vào tác phẩm",
+        "literal_en": "to set into the work",
         "meaning": "Hiện thực hóa trong tác phẩm — formal, gehoben.",
         "meaning_en": "To realise / put into a work — formal, elevated register (gehoben).",
         "example": "Was der Künstler theoretisch entwirft, setzt er in dieser Installation konsequent ins Werk.",
@@ -4085,6 +4183,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf den Punkt bringen",
         "literal": "đưa đến điểm",
+        "literal_en": "to bring to the point",
         "meaning": "Diễn đạt chính xác, cô đọng — dùng khi khen một nghệ sĩ hoặc một critique.",
         "meaning_en": "To put it precisely / nail it — used when praising an artist or a critic for hitting the mark.",
         "example": "Diese Arbeit bringt das Unbehagen der Gegenwart auf den Punkt.",
@@ -4410,12 +4509,18 @@ export const lessons: GermanLesson[] = [
       "Trong Seminar về Haneke, đồng nghiệp chỉ trích 'Gewaltverherrlichung'. Bạn phản bác: phân biệt Darstellung và Befürwortung, nêu ví dụ cụ thể một cảnh không chiếu bạo lực (Aussparung), kết luận: 'Der eigentliche Schock liegt im Nicht-Gezeigten.'",
       "Bạn so sánh Filmkritik FAZ và taz về cùng một Berlinale-Beitrag. Phân tích sự khác biệt về lập trường qua Wortwahl: FAZ dùng 'formal überzeugend', taz dùng 'politisch fragwürdig'. Chỉ ra mỗi tờ presupponiert tiêu chí đánh giá khác nhau."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a film review for Die Zeit on a film of the Berlin School. Structure: (1) enter with a concrete shot, (2) analyse the framing and the editing, (3) place it in the contemporary German socio-political context, (4) a clear Fazit.",
+      "In a seminar on Haneke, a colleague accuses him of 'glorifying violence' (Gewaltverherrlichung). Counter: distinguish depiction from endorsement, give a concrete example of a scene that does NOT show violence (an Aussparung, an omission), conclude: 'Der eigentliche Schock liegt im Nicht-Gezeigten.'",
+      "You compare a film review in the FAZ and one in the taz of the same Berlinale entry. Analyse the difference in stance through word choice: the FAZ uses 'formal überzeugend', the taz uses 'politisch fragwürdig'. Show that each presupposes different evaluative criteria."
+    ],
     "register_notes": "FILMKRITIK C2 ĐỨC:\n\nPRÄSENS cho mô tả phim: 'Der Film beginnt mit...', 'Die Kamera folgt...'\nPERFEKT cho bình luận: 'Der Regisseur hat sich hier für eine ungewöhnliche Kadrage entschieden.'\nKONJUNKTIV II cho phê bình: 'Es wäre besser gewesen, die Szene zu kürzen.'\n\nPASSIV: 'Der Film wird getragen von...', 'Die Spannung wird nicht durch Handlung, sondern durch Blicke erzeugt.'\n\nADJEKTIV chính xác (không rỗng):\n- 'sperrig' (cứng đầu, chống lại tiếp nhận dễ)\n- 'spröde' (khô khan, không chiều lòng)\n- 'lakonisch' (kiệm lời, ít thoại)\n- 'unterkühlt' (lạnh dưới mức bình thường)\n\nFACHLICHE PRÄZISION:\n- 'Die Totale wird hier durch eine Großaufnahme abgelöst' (viễn cảnh được thay bằng cận cảnh)\n- 'Der Schnitt erfolgt auf Blickachse' (cắt theo trục nhìn)\n\nTRÁNH:\n- Anglizismen: 'Der Film featured...' → 'Der Film zeigt...'\n- 'Der beste Film des Jahres' → tuyên bố tuyệt đối không có chứng cứ\n- Spoiler: không bao giờ tiết lộ kết thúc trong Filmkritik Đức",
     "register_notes_en": "C2 GERMAN FILMKRITIK:\n\nPRÄSENS for description of what's on screen: 'The film begins with…', 'The camera follows…'\nPERFEKT for commentary on directorial choices: 'The director has gone for an unusual framing here.'\nKONJUNKTIV II for criticism: 'It would have been better to cut the scene shorter.'\n\nPASSIVE: 'The film is carried by…', 'The tension is generated not by plot but by glances.'\n\nPRECISE ADJECTIVES (not empty ones):\n- 'sperrig' (difficult, resisting easy reception)\n- 'spröde' (dry, refusing to flatter the viewer)\n- 'lakonisch' (laconic, sparse dialogue)\n- 'unterkühlt' (chilled below normal — emotionally restrained)\n\nTECHNICAL PRECISION:\n- 'Die Totale wird hier durch eine Großaufnahme abgelöst' (the wide shot is here replaced by a close-up).\n- 'Der Schnitt erfolgt auf Blickachse' (the cut follows the eyeline).\n\nAVOID:\n- Anglicisms: 'Der Film featured…' → 'Der Film zeigt…'\n- 'The best film of the year' — an absolute claim with no evidence.\n- Spoilers: German Filmkritik never reveals the ending.",
     "idiom_glosses": [
       {
         "idiom": "unter die Haut gehen",
         "literal": "đi dưới da",
+        "literal_en": "to go under the skin",
         "meaning": "Tác động sâu sắc, ám ảnh — dùng sparingly trong critique formal.",
         "meaning_en": "To get under your skin — haunting, deeply affecting; use sparingly in a formal review.",
         "example": "Die letzte Einstellung geht unter die Haut — ein stummes Gesicht, das länger steht, als man erträgt.",
@@ -4424,6 +4529,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Ton angeben",
         "literal": "đưa ra âm",
+        "literal_en": "to set the tone",
         "meaning": "Định hình giọng điệu / dẫn dắt — dùng trong phân tích nhạc phim hoặc phong cách.",
         "meaning_en": "To set the tone — used in analysis of soundtrack or directorial style.",
         "example": "Schon der Vorspann gibt den Ton an: ein dissonantes Cello, das nie aufgelöst wird.",
@@ -4432,6 +4538,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ins Leere laufen",
         "literal": "chạy vào khoảng không",
+        "literal_en": "to run into the void",
         "meaning": "Dẫn đến hư vô, không giải quyết — geignet cho phim kết thúc mở.",
         "meaning_en": "To lead nowhere / peter out — fits films with deliberately open endings.",
         "example": "Die Handlung läuft bewusst ins Leere — eine Auflösung würde den Film um seine eigentliche Aussage bringen.",
@@ -4440,6 +4547,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Blick lenken",
         "literal": "dẫn dắt cái nhìn",
+        "literal_en": "to steer the gaze",
         "meaning": "Hướng dẫn thị giác người xem — dùng cho phân tích Kadrage / mise en scène.",
         "meaning_en": "To direct the gaze — used when analysing framing or mise en scène.",
         "example": "Die Kadrage lenkt den Blick auf das, was am Rand geschieht — das Zentrum bleibt leer.",
@@ -4744,12 +4852,17 @@ export const lessons: GermanLesson[] = [
       "Bạn phân tích một Bundestagsrede gần đây. Dùng 5 bước: Redesituation, Aufbau, Sprachliche Mittel (Passiv! Modalverben!), Schlüsselwörter, Historische Bezüge. Kết luận: 'Die Rede konstruiert ein Deutschland, das...'",
       "Trong Seminar, bạn defend Merkels 'Wir schaffen das' gegen chỉ trích là 'politisch naiv'. Phân biệt rhetorische Funktion (tạo niềm tin) và politische Umsetzung (chính sách thực tế). Dùng Konjunktiv II cho hedge."
     ],
+    "roleplay_prompts_en": [
+      "You analyse a recent Bundestag speech. Use five steps: the speech situation, the structure, linguistic devices (passive! modal verbs!), key words, historical references. Conclude: 'Die Rede konstruiert ein Deutschland, das...'",
+      "In a seminar you defend Merkel's 'Wir schaffen das' against the criticism that it is 'politically naive'. Distinguish the rhetorical function (creating confidence) from the political implementation (actual policy). Use Konjunktiv II to hedge."
+    ],
     "register_notes": "POLITISCHE REDE C2 ĐỨC: Nominalstil là dấu hiệu quan trọng nhất. 'Die zur Diskussion stehende Frage' > 'Die Frage, die diskutiert wird'. Passiv tránh nêu chủ thể: 'Es wurde entschieden' (ai?). Modalverben vẽ nghĩa vụ: 'müssen' (bắt buộc), 'sollen' (đạo đức), 'dürfen' (được phép). Konjunktiv I cho indirekte Rede trong Bundestag: 'Der Minister sagte, die Lage sei unter Kontrolle.' Tránh: Pathos quá mức, Umgangssprache, Anglizismen.",
     "register_notes_en": "C2 GERMAN POLITICAL SPEECH: Nominalstil is the single biggest register marker. 'Die zur Diskussion stehende Frage' beats 'Die Frage, die diskutiert wird'. Passive constructions hide the subject: 'It was decided' (by whom?). Modal verbs sketch obligation: 'müssen' (must), 'sollen' (should — moral), 'dürfen' (be permitted). Konjunktiv I for indirect speech inside the Bundestag: 'The minister said the situation was under control.' Avoid: overblown pathos, colloquialisms, too many Anglicisms.",
     "idiom_glosses": [
       {
         "idiom": "Wir schaffen das",
         "literal": "Chúng ta làm được điều đó",
+        "literal_en": "we will manage it (Merkel's 2015 refugee-policy formula)",
         "meaning": "Câu nói của Merkel tháng 8/2015 về khủng hoảng tị nạn. Đã thành idiom chính trị Đức — vừa được ca ngợi là can đảm, vừa bị chỉ trích là ngây thơ.",
         "meaning_en": "Merkel's August 2015 line on the refugee crisis. It's become a German political idiom — praised as courageous, attacked as naïve.",
         "example": "Mit 'Wir schaffen das' setzte Merkel 2015 eine Formel in die Welt, die bis heute die deutsche Asyldebatte polarisiert.",
@@ -5021,12 +5134,17 @@ export const lessons: GermanLesson[] = [
       "Bạn điều hành một Bürgerdialog về chính sách khí hậu. Một công dân nói: 'Das ist doch alles Ideologie!' Trả lời: acknowledge cảm xúc, tách Ideologie khỏi Wissenschaft, mời đối thoại dựa trên dữ liệu cụ thể.",
       "Bạn tham gia tranh luận truyền hình về tự do ngôn luận. Đối thủ nói: 'Man muss doch mal sagen dürfen, was Sache ist!' Bạn phản bác: phân biệt Meinungsfreiheit (được bảo vệ) và Meinungsäußerung ohne Faktenbasis (không giúp ích cho tranh luận)."
     ],
+    "roleplay_prompts_en": [
+      "You moderate a citizens' dialogue (Bürgerdialog) on climate policy. A citizen says 'Das ist doch alles Ideologie!' Respond: acknowledge the emotion, separate ideology from science, and invite a dialogue grounded in concrete data.",
+      "You take part in a TV debate on freedom of speech. Your opponent says 'Man muss doch mal sagen dürfen, was Sache ist!' Counter: distinguish freedom of opinion (protected) from an expression of opinion with no factual basis (which doesn't help the debate)."
+    ],
     "register_notes": "BÜRGERDEBATTE C2: Ton lịch sự nhưng kiên quyết. Siezen bắt buộc nếu không thân. Konjunktiv II cho lịch sự: 'Ich würde vorschlagen...', 'Könnten Sie erläutern...'. Không ngắt lời (đặc thù Đức — chờ người kia nói xong). Khi phản bác: 'Da muss ich widersprechen' > 'Das ist Quatsch'.",
     "register_notes_en": "C2 BÜRGERDEBATTE: polite but firm. Siezen is mandatory unless you know the person well. Konjunktiv II for politeness: 'Ich würde vorschlagen…' (I'd suggest…), 'Könnten Sie erläutern…' (could you explain…). Don't interrupt — German debate convention is to let the other person finish. When you push back: 'Da muss ich widersprechen' (I have to disagree there) beats 'Das ist Quatsch' (that's nonsense).",
     "idiom_glosses": [
       {
         "idiom": "Zur Sache kommen",
         "literal": "Đến việc",
+        "literal_en": "to come to the matter",
         "meaning": "Đi vào vấn đề chính — German love of Sachlichkeit. Dùng khi tranh luận lan man.",
         "meaning_en": "To get to the point — the German love of Sachlichkeit in action. Used when a debate is wandering.",
         "example": "Lassen Sie uns zur Sache kommen — welche konkreten Zahlen legen Sie Ihrer Prognose zugrunde?",
