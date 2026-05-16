@@ -44,6 +44,8 @@ import type {
   LessonTheme,
   NormalizedExercise,
   NormalizedIdiomGloss,
+  NormalizedDialogueLine,
+  NormalizedAudioKinds,
 } from "./LessonRenderer.types";
 import { cefrPillColors, cefrPillLabels } from "./lessonThemes";
 import { LessonAudioButton } from "./LessonAudioButton";
@@ -157,6 +159,9 @@ interface LessonRendererProps {
 export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRendererProps) {
   const labels = RENDERER_LABELS[uiLanguage];
   const [open, setOpen] = useState(false);
+  // dialogue_long is opt-in; default (false) keeps the dialogue card
+  // showing only the short form so the default view is unchanged.
+  const [showLong, setShowLong] = useState(false);
 
   const vocabCount = lesson.vocabulary?.length ?? 0;
   const sentCount = lesson.sentences?.length ?? 0;
@@ -386,51 +391,56 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             </div>
           )}
 
-          {lesson.dialogue && lesson.dialogue.length > 0 && (
+          {((lesson.dialogue?.length ?? 0) > 0 ||
+            (lesson.dialogueLong?.length ?? 0) > 0) && (
             <div className="rounded-lg border border-purple-100 bg-purple-50/60 p-3">
-              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
-                <Sparkles className="h-3 w-3" />
-                {labels.dialogueHeading}
-              </p>
-              <div className="mt-2 space-y-2">
-                {lesson.dialogue.map((d, di) => (
-                  <div key={di} className="text-xs flex items-start gap-1.5">
-                    {lesson.audioBase && (
-                      <LessonAudioButton
-                        audioKey={lessonAudioKey(
-                          lesson.audioBase,
-                          lesson.audioKinds?.dialogue === "dialogue_vi"
-                            ? { kind: "dialogue_vi", index: di + 1 }
-                            : {
-                                kind: "dialogue_short",
-                                index: di + 1,
-                                speaker: dialogueShortSpeakerLetter(d.speaker),
-                              },
-                        )}
-                        ariaLabel={`${labels.dialogueAudioAria}: ${d.native}`}
-                        accent={theme.accent}
-                      />
-                    )}
-                    <div className="min-w-0 flex-1">
-                      <span className="font-bold" style={{ color: theme.accent }}>
-                        {d.speaker}:
-                      </span>{" "}
-                      <span className="text-slate-900 font-medium">{d.native}</span>
-                      {d.romanization && (
-                        <span className="text-slate-400 ml-1 italic">
-                          ({d.romanization})
-                        </span>
-                      )}
-                      {(() => {
-                        const gloss = pick(uiLanguage, d.en, d.vi);
-                        return gloss ? (
-                          <div className="text-slate-500 ml-5">{gloss}</div>
-                        ) : null;
-                      })()}
-                    </div>
-                  </div>
-                ))}
+              <div className="flex items-center justify-between gap-2">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                  <Sparkles className="h-3 w-3" />
+                  {labels.dialogueHeading}
+                </p>
+                {lesson.dialogueLong && lesson.dialogueLong.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowLong((v) => !v)}
+                    aria-pressed={showLong}
+                    className="shrink-0 rounded-full border border-purple-200 px-2 py-0.5 text-[10px] font-medium text-purple-700 transition hover:bg-purple-100"
+                  >
+                    {showLong
+                      ? labels.dialogueShortToggle
+                      : labels.dialogueLongToggle}
+                  </button>
+                )}
               </div>
+              {lesson.dialogue && lesson.dialogue.length > 0 && (
+                <DialogueLineRows
+                  lines={lesson.dialogue}
+                  theme={theme}
+                  uiLanguage={uiLanguage}
+                  audioAria={labels.dialogueAudioAria}
+                  audio={
+                    lesson.audioBase
+                      ? { base: lesson.audioBase, kinds: lesson.audioKinds }
+                      : undefined
+                  }
+                />
+              )}
+              {showLong &&
+                lesson.dialogueLong &&
+                lesson.dialogueLong.length > 0 && (
+                  <div className="mt-3 border-t border-purple-100 pt-2">
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-purple-400">
+                      {labels.dialogueLongToggle}
+                    </p>
+                    {/* No audio buttons: long-form has no generated audio. */}
+                    <DialogueLineRows
+                      lines={lesson.dialogueLong}
+                      theme={theme}
+                      uiLanguage={uiLanguage}
+                      audioAria={labels.dialogueAudioAria}
+                    />
+                  </div>
+                )}
             </div>
           )}
 
@@ -668,6 +678,66 @@ function ExerciseRow({
         )}
       </span>
     </>
+  );
+}
+
+// Renders a list of dialogue lines (speaker + native + romanization +
+// glossed translation). Shared by the short `dialogue` and the opt-in
+// `dialogue_long` forms. `audio` is omitted for the long form because
+// only the short form has generated audio assets.
+function DialogueLineRows({
+  lines,
+  theme,
+  uiLanguage,
+  audioAria,
+  audio,
+}: {
+  lines: NormalizedDialogueLine[];
+  theme: LessonTheme;
+  uiLanguage: "vi" | "en";
+  audioAria: string;
+  audio?: { base: string; kinds?: NormalizedAudioKinds };
+}) {
+  return (
+    <div className="mt-2 space-y-2">
+      {lines.map((d, di) => (
+        <div key={di} className="text-xs flex items-start gap-1.5">
+          {audio && (
+            <LessonAudioButton
+              audioKey={lessonAudioKey(
+                audio.base,
+                audio.kinds?.dialogue === "dialogue_vi"
+                  ? { kind: "dialogue_vi", index: di + 1 }
+                  : {
+                      kind: "dialogue_short",
+                      index: di + 1,
+                      speaker: dialogueShortSpeakerLetter(d.speaker),
+                    },
+              )}
+              ariaLabel={`${audioAria}: ${d.native}`}
+              accent={theme.accent}
+            />
+          )}
+          <div className="min-w-0 flex-1">
+            <span className="font-bold" style={{ color: theme.accent }}>
+              {d.speaker}:
+            </span>{" "}
+            <span className="text-slate-900 font-medium">{d.native}</span>
+            {d.romanization && (
+              <span className="text-slate-400 ml-1 italic">
+                ({d.romanization})
+              </span>
+            )}
+            {(() => {
+              const gloss = pick(uiLanguage, d.en, d.vi);
+              return gloss ? (
+                <div className="text-slate-500 ml-5">{gloss}</div>
+              ) : null;
+            })()}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
