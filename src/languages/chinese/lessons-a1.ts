@@ -955,27 +955,56 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "请给我一杯水。",
         "pinyin": "qǐng gěi wǒ yī bēi shuǐ.",
-        "english": "Please give me a glass of water."
+        "english": "Please give me a glass of water.",
+        "pronunciation_focus_en": [
+          "q in qǐng → hissy 'ch', tongue near the lower teeth",
+          "ei in gěi / bēi → 'ay' as in 'day'",
+          "ui in shuǐ → 'way', not 'wee'"
+        ]
       },
       {
         "chinese": "中国人喜欢喝绿茶。",
         "pinyin": "zhōng guó rén xǐ huān hē lǜ chá.",
-        "english": "Chinese people like to drink green tea."
+        "english": "Chinese people like to drink green tea.",
+        "pronunciation_focus_en": [
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "hē → soft-throat 'h' + 'uh', flat high tone; this is the verb 'drink'",
+          "lǜ → say 'lee', then round the lips tightly (the ü), falling tone",
+          "ch in chá → curled-back 'ch', rising tone"
+        ]
       },
       {
         "chinese": "我每天早上喝一杯咖啡。",
         "pinyin": "wǒ měi tiān zǎo shang hē yī bēi kā fēi.",
-        "english": "I drink a cup of coffee every morning."
+        "english": "I drink a cup of coffee every morning.",
+        "pronunciation_focus_en": [
+          "ei in měi → 'ay' as in 'day', dipping 3rd tone",
+          "zǎo shang → 3rd tone then neutral: 'DZAO-shahng'",
+          "k in kā → strong puff of air (aspirated)",
+          "ei in fēi → 'ay' as in 'day'"
+        ]
       },
       {
         "chinese": "小孩子应该多喝牛奶。",
         "pinyin": "xiǎo hái zi yīng gāi duō hē niú nǎi.",
-        "english": "Children should drink more milk."
+        "english": "Children should drink more milk.",
+        "pronunciation_focus_en": [
+          "iao in xiǎo → 'shyow', dipping 3rd tone",
+          "ying in yīng → 'ing' as in 'sing'",
+          "niú → 'nyoh', rising tone",
+          "ai in nǎi → 'nye' (rhymes with 'eye'), 3rd tone"
+        ]
       },
       {
         "chinese": "果汁比可乐更健康。",
         "pinyin": "guǒ zhī bǐ kě lè gèng jiàn kāng.",
-        "english": "Fruit juice is healthier than cola."
+        "english": "Fruit juice is healthier than cola.",
+        "pronunciation_focus_en": [
+          "uo in guǒ → 'waw', dipping 3rd tone",
+          "zh in zhī → 'j' as in 'jaw'; vowel is a buzz, not 'ee'",
+          "bǐ → 'bee' with a dip; this is the comparison word ('than')",
+          "gèng → 'gung' with 'ng' as in 'sing', falling tone"
+        ]
       }
     ],
     "dialogue": [
@@ -1032,7 +1061,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "请给我一杯水。",
         "pinyin": "qǐng gěi wǒ yī bēi shuǐ."
       }
-    ]
+    ],
+    "cultural_notes_en": "The default drink in China is hot water (热水, rè shuǐ) or warm tea, not the ice water Americans reach for by reflex — restaurants often bring room-temperature or hot water, and asking for ice can draw a puzzled look or a small surcharge. Tea is social infrastructure, not just a beverage: green tea (绿茶) is the everyday standard, and a host refilling your cup is hospitality, not a hint that you've overstayed. 干杯 (gān bēi, 'dry the cup') at a meal is closer to a binding 'bottoms-up' than a casual American 'cheers' — if someone toasts you directly, draining the glass is the expected reply, so pace yourself. 豆浆 (soy milk) here is a hot breakfast drink, not the cold dairy substitute it is in an American café. City coffee culture is real and growing, but tea is still the cultural default the way drip coffee is the American one.",
+    "tip_advice_en": "The verb you'll lean on all lesson is 喝 (hē, 'drink') — a clean, flat first tone with a soft throat 'h,' not the hard English 'h' in 'hat.' Keep it distinct from 和 (hé, 'and,' rising) and 河 (hé, 'river'): same consonant, different pitch, different word. The lesson's real trap is 绿茶 (lǜ chá, green tea): 绿 stacks the ü vowel and a falling fourth tone — say 'lee,' round the lips to a whistle without moving the tongue, then drop the pitch. If 绿 sounds like 'loo,' you've slipped back into an English vowel. Also bank the measure word 杯 (bēi, 'cup/glass'): Chinese never says 'a water' — it's always 一杯水 ('one cup [of] water'), and that 杯 is mandatory, like English 'a glass of' but never optional."
   },
   {
     "id": 7,
@@ -1096,27 +1127,56 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "今天是星期一。",
         "pinyin": "jīn tiān shì xīng qī yī.",
-        "english": "Today is Monday."
+        "english": "Today is Monday.",
+        "pronunciation_focus_en": [
+          "j in jīn → 'j' as in 'jeep'",
+          "shì → curled-back tongue; the vowel is a buzz, not 'ee'",
+          "x in xīng → light 'sh', tongue near the lower teeth",
+          "ing in xīng → 'ing' as in 'sing'"
+        ]
       },
       {
         "chinese": "我星期五有中文课。",
         "pinyin": "wǒ xīng qī wǔ yǒu zhōng wén kè.",
-        "english": "I have Chinese class on Friday."
+        "english": "I have Chinese class on Friday.",
+        "pronunciation_focus_en": [
+          "x in xīng → light 'sh', tongue near the lower teeth",
+          "wǔ yǒu → two 3rd tones, so the first rises: 'wú yǒu'",
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "kè → 'kuh', falling tone; this is the word for 'class / lesson'"
+        ]
       },
       {
         "chinese": "周末你要做什么？",
         "pinyin": "zhōu mò nǐ yào zuò shén me?",
-        "english": "What are you going to do this weekend?"
+        "english": "What are you going to do this weekend?",
+        "pronunciation_focus_en": [
+          "zh in zhōu → 'j' as in 'jaw', flat high tone",
+          "mò → 'maw', falling tone",
+          "yào → 'yow', falling tone; here 'going to / will'",
+          "zuò → 'dzwaw', falling tone; no air puff"
+        ]
       },
       {
         "chinese": "星期三见！",
         "pinyin": "xīng qī sān jiàn!",
-        "english": "See you on Wednesday!"
+        "english": "See you on Wednesday!",
+        "pronunciation_focus_en": [
+          "q in qī → hissy 'ch', flat high tone",
+          "s in sān → 's' as in 'sun' + 'ahn'",
+          "jiàn → 'jyen', falling tone; the 'see [you]' word from Lesson 1"
+        ]
       },
       {
         "chinese": "我星期四和星期五都很忙。",
         "pinyin": "wǒ xīng qī sì hé xīng qī wǔ dōu hěn máng.",
-        "english": "I'm busy on Thursday and Friday."
+        "english": "I'm busy on Thursday and Friday.",
+        "pronunciation_focus_en": [
+          "sì → tight buzzy vowel, no 'ee', falling; 'four/Thursday' (contrast shí, 'ten')",
+          "hé → 'huh' rising; this is the word for 'and'",
+          "dōu → 'doh', flat high tone; means 'both / all'",
+          "máng → 'mahng' with 'ng' as in 'sing', rising; means 'busy'"
+        ]
       }
     ],
     "dialogue": [
@@ -1173,7 +1233,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "星期二我有英语课。",
         "pinyin": "xīng qī èr wǒ yǒu yīng yǔ kè."
       }
-    ]
+    ],
+    "cultural_notes_en": "China's week is built like a numbered list, not a set of names: 星期 (xīng qī, 'week') plus a number. 星期一 is literally 'week-one' = Monday, 星期二 'week-two' = Tuesday, straight through. The single exception is Sunday — 星期天 or 星期日 ('week-sky' / 'week-sun'), never 'week-seven.' This is far easier than English's mythological names (Saturn's day, Woden's day), so lean into the pattern rather than memorizing seven words. The week officially starts on Monday, not Sunday as on a typical American wall calendar, so 'the first day of the week' means Monday to a Chinese speaker. 周末 (zhōu mò, 'weekend') uses the alternate week-word 周 — both 星期 and 周 mean 'week,' with 周 slightly more clipped/written, roughly like 'wk.' shortening 'week' but spoken aloud.",
+    "tip_advice_en": "Highest-leverage move: learn the frame 星期 + [number] once and you get all seven days for free — don't study them as separate vocabulary. The recurring sound trap is 四 (sì, four → Thursday 星期四) vs. 十 (shí, ten): 'sì' is a tight buzz with a sharp falling tone and no real vowel, 'shí' curls the tongue back and rises. Mixing them up turns Thursday into something else. To ask 'what day is it?', the question word 几 (jǐ, 'which/how many') slots straight into the frame: 今天星期几? ('today week-which?') — note Chinese drops 'is' (是) in this set phrase, so don't insert a verb. And 见 (jiàn, 'see') from Lesson 1 returns in 星期三见 ('Wednesday see-[you]') — bank that 'time-word + 见' goodbye pattern as a reusable unit."
   },
   {
     "id": 8,
@@ -1237,27 +1299,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我的生日在五月。",
         "pinyin": "wǒ de shēng rì zài wǔ yuè.",
-        "english": "My birthday is in May."
+        "english": "My birthday is in May.",
+        "pronunciation_focus_en": [
+          "de → neutral 'duh', the possessive particle, never stressed",
+          "sh in shēng → curled-back 'sh'",
+          "eng in shēng → 'ung' as in 'sung'",
+          "yuè → 'yweh' with a rounded ü-glide, falling tone; this is 'month'"
+        ]
       },
       {
         "chinese": "中国的新年在一月或二月。",
         "pinyin": "zhōng guó de xīn nián zài yī yuè huò èr yuè.",
-        "english": "Chinese New Year is in January or February."
+        "english": "Chinese New Year is in January or February.",
+        "pronunciation_focus_en": [
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "x in xīn → light 'sh', tongue near the lower teeth",
+          "ian in nián → 'yen', not 'nee-ahn'",
+          "huò → 'hwaw', falling tone; means 'or'"
+        ]
       },
       {
         "chinese": "八月的天气很热。",
         "pinyin": "bā yuè de tiān qì hěn rè.",
-        "english": "The weather in August is very hot."
+        "english": "The weather in August is very hot.",
+        "pronunciation_focus_en": [
+          "bā → unaspirated, between English 'b' and 'p', flat high tone",
+          "ian in tiān → 'yen', not 'tee-ahn'",
+          "q in qì → hissy 'ch', tongue near the lower teeth",
+          "rè → buzzy retroflex 'r' (tongue curled, not English 'r'), falling; 'hot'"
+        ]
       },
       {
         "chinese": "学校九月开学。",
         "pinyin": "xué xiào jiǔ yuè kāi xué.",
-        "english": "School starts in September."
+        "english": "School starts in September.",
+        "pronunciation_focus_en": [
+          "xué → light 'sh' + ü: 'shweh', rising tone",
+          "iao in xiào → 'shyow', falling tone",
+          "jiǔ → 'jyoh', dipping 3rd tone; 'nine / September'",
+          "kāi → 'kye' (rhymes with 'eye'), strong air puff"
+        ]
       },
       {
         "chinese": "十月一日是中国的国庆节。",
         "pinyin": "shí yuè yī rì shì zhōng guó de guó qìng jié.",
-        "english": "October 1st is China's National Day."
+        "english": "October 1st is China's National Day.",
+        "pronunciation_focus_en": [
+          "shí → curled-back 'sh', rising tone; 'ten / October'",
+          "rì → buzzy retroflex 'r'; the 'i' is not 'ee', falling; means 'day / date'",
+          "guó → 'gwaw', rising tone",
+          "jié → 'jyeh', rising tone; means 'festival'"
+        ]
       }
     ],
     "dialogue": [
@@ -1314,7 +1406,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "你的生日是几月？",
         "pinyin": "nǐ de shēng rì shì jǐ yuè?"
       }
-    ]
+    ],
+    "cultural_notes_en": "Months work exactly like days: 月 (yuè, 'moon/month') plus a number — 一月 'moon-one' = January through 十二月 = December. No names to memorize; if you can count to twelve you can say every month. The catch is the lunisolar calendar running alongside the Western one. 春节 (Spring Festival, the 'Chinese New Year') falls in 一月 or 二月 on the Western calendar because it tracks the moon, not January 1 — much like Easter drifting across March/April for an American. 国庆节 (National Day, October 1) anchors a week-long 'Golden Week' when much of the country travels at once — closer in scale to a combined Thanksgiving-plus-Fourth-of-July than to a single day off. 月 by itself also means 'moon,' which is why the Mid-Autumn 'Moon Festival' (中秋节) and the calendar share the character — a memory hook, not a coincidence.",
+    "tip_advice_en": "Same leverage as Lesson 7: master 月 + [number] once and all twelve months come free — never drill them as twelve separate words. The pronunciation watch-point is 月 (yuè) itself: it is not 'you-eh.' Start from the ü vowel (round-lipped 'ee'), glide to 'eh,' and fall the pitch — 'ywEH,' one syllable. Dates run largest-to-smallest: 十月一日 is 'month-ten, day-one' = October 1, the reverse of American 'October 1st' word order but the same logic as ISO/military dates, so think 'big to small.' One register note: 日 (rì) for the date is formal/written; in speech people normally say 号 (hào) — 十月一号 in conversation, 十月一日 on a document."
   },
   {
     "id": 9,
@@ -1378,27 +1472,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "今天天气很好。",
         "pinyin": "jīn tiān tiān qì hěn hǎo.",
-        "english": "The weather is very good today."
+        "english": "The weather is very good today.",
+        "pronunciation_focus_en": [
+          "j in jīn → 'j' as in 'jeep'",
+          "ian in tiān → 'yen', not 'tee-ahn'",
+          "q in qì → hissy 'ch', tongue near the lower teeth",
+          "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'"
+        ]
       },
       {
         "chinese": "明天可能会下雨。",
         "pinyin": "míng tiān kě néng huì xià yǔ.",
-        "english": "It might rain tomorrow."
+        "english": "It might rain tomorrow.",
+        "pronunciation_focus_en": [
+          "ng in míng → 'ng' as in 'sing', rising tone",
+          "kě néng → 'kuh nung'; the 'e' is 'uh', not 'ee'",
+          "huì → 'hway', falling tone; the 'will / likely' word",
+          "yǔ → round-lipped 'ee' (ü), dipping tone; means 'rain'"
+        ]
       },
       {
         "chinese": "北京的冬天很冷。",
         "pinyin": "běi jīng de dōng tiān hěn lěng.",
-        "english": "Beijing's winter is very cold."
+        "english": "Beijing's winter is very cold.",
+        "pronunciation_focus_en": [
+          "ei in běi → 'ay' as in 'day'",
+          "j in jīng → 'j' as in 'jeep'",
+          "dōng → 'doong', flat high tone",
+          "lěng → 'lung' with 'ng' as in 'sing', dipping 3rd tone; means 'cold'"
+        ]
       },
       {
         "chinese": "夏天太热了，我不喜欢。",
         "pinyin": "xià tiān tài rè le, wǒ bù xǐ huān.",
-        "english": "Summer is too hot, I don't like it."
+        "english": "Summer is too hot, I don't like it.",
+        "pronunciation_focus_en": [
+          "x in xià → light 'sh', falling tone",
+          "tài → 'tye' (rhymes with 'eye'), strong air puff; means 'too'",
+          "rè → buzzy retroflex 'r' (tongue curled), falling; means 'hot'",
+          "bù → 'boo', falling here; the negation 'not'"
+        ]
       },
       {
         "chinese": "外面的温度是多少？",
         "pinyin": "wài miàn de wēn dù shì duō shao?",
-        "english": "What's the temperature outside?"
+        "english": "What's the temperature outside?",
+        "pronunciation_focus_en": [
+          "wài → 'wye' (rhymes with 'why'), falling tone",
+          "ian in miàn → 'yen', not 'mee-ahn'",
+          "wēn dù → 'wun doo'; together 温度 = 'temperature'",
+          "duō shao → 'dwaw show'; the question phrase 'how much'"
+        ]
       }
     ],
     "dialogue": [
@@ -1455,7 +1579,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "明天会很冷。",
         "pinyin": "míng tiān huì hěn lěng."
       }
-    ]
+    ],
+    "cultural_notes_en": "Weather small talk works in China much as it does for Americans — a safe, neutral opener — but the script differs in two ways. First, 你吃了吗? ('have you eaten?') competes with weather as the default phatic opener, so weather is one option, not the automatic reflex English speakers reach for. Second, temperature is always Celsius (摄氏度): '十度' (10 degrees) is chilly, not freezing, and '三十度' is hot, not a mild spring afternoon — recalibrate the numbers. China spans climates from Harbin's brutal Siberian winters to tropical Hainan, so 'Chinese weather' is as meaningless as 'American weather'; 北京的冬天 (Beijing's winter) is genuinely harsh and bone-dry. Air quality (空气质量) is a weather-adjacent daily topic in big cities the way pollen counts are in parts of the US — checking it before heading out is routine, not alarmist.",
+    "tip_advice_en": "The highest-leverage grammar here is the modal stack 可能会 (kě néng huì, 'might / will probably') in 明天可能会下雨 — 可能 = 'possibly,' 会 = 'will/likely,' and Chinese cheerfully stacks them. Don't translate word-for-word; treat 可能会 as one 'might' chunk. Weather verbs are bare: 下雨 is literally 'fall-rain,' 下雪 'fall-snow' — there is no dummy 'it' subject the way English forces ('it's raining'); Chinese just says 'rain falls,' and resisting the urge to insert a subject is the A1 habit to build now. Sound trap: 热 (rè, hot) and 冷 (lěng, cold) are your highest-frequency words here — 热 opens with the buzzy retroflex 'r' (tongue curled back, not the English 'r'); flatten the tongue and it drifts toward 'le.' Drill 很热 / 很冷 as a contrasting pair."
   },
   {
     "id": 10,
@@ -1519,27 +1645,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我有一只可爱的小猫。",
         "pinyin": "wǒ yǒu yī zhī kě ài de xiǎo māo.",
-        "english": "I have a cute little cat."
+        "english": "I have a cute little cat.",
+        "pronunciation_focus_en": [
+          "wǒ yǒu → T3+T3, so the first rises: 'wó yǒu'",
+          "zh in zhī → 'j' as in 'jaw'; vowel is a buzz, not 'ee'; the animal measure word",
+          "iao in xiǎo → 'shyow', dipping 3rd tone",
+          "ao in māo → 'ow' as in 'cow', flat high tone; 'cat'"
+        ]
       },
       {
         "chinese": "狗是人类最好的朋友。",
         "pinyin": "gǒu shì rén lèi zuì hǎo de péng yǒu.",
-        "english": "Dogs are humans' best friends."
+        "english": "Dogs are humans' best friends.",
+        "pronunciation_focus_en": [
+          "gǒu → 'goh', dipping 3rd tone; 'dog'",
+          "rén → buzzy retroflex 'r' + 'en' as 'un', rising; means 'person / human'",
+          "zuì → 'dzway', falling tone; means 'most'",
+          "péng yǒu → 'pung yoh'; 'ng' as in 'sing'; means 'friend'"
+        ]
       },
       {
         "chinese": "熊猫是中国的国宝。",
         "pinyin": "xióng māo shì zhōng guó de guó bǎo.",
-        "english": "Pandas are China's national treasure."
+        "english": "Pandas are China's national treasure.",
+        "pronunciation_focus_en": [
+          "xióng → light 'sh' + 'yong': 'shyong', rising tone",
+          "ao in māo → 'ow' as in 'cow' (熊猫 = panda, literally 'bear-cat')",
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "bǎo → 'bow' (as in bow-down), dipping 3rd tone; means 'treasure'"
+        ]
       },
       {
         "chinese": "马跑得很快。",
         "pinyin": "mǎ pǎo de hěn kuài.",
-        "english": "Horses run very fast."
+        "english": "Horses run very fast.",
+        "pronunciation_focus_en": [
+          "mǎ → 'mah' with a dip, 3rd tone; contrast mā 'mom' (flat) / mà 'scold' (falling)",
+          "pǎo → strong air puff, 'pow', dipping 3rd tone; means 'run'",
+          "de → neutral 'duh'; here it links the verb to its description",
+          "kuài → 'kwai' (rhymes with 'why'), falling tone; means 'fast'"
+        ]
       },
       {
         "chinese": "我喜欢去动物园看动物。",
         "pinyin": "wǒ xǐ huān qù dòng wù yuán kàn dòng wù.",
-        "english": "I like going to the zoo to see animals."
+        "english": "I like going to the zoo to see animals.",
+        "pronunciation_focus_en": [
+          "x in xǐ → light 'sh', tongue near the lower teeth",
+          "qù → hissy 'ch' + ü: 'chü', falling tone; means 'go'",
+          "dòng wù → 'doong woo', both falling; means 'animal'",
+          "yuán → 'ywen', rising tone; 园 = garden/park, here 'zoo'"
+        ]
       }
     ],
     "dialogue": [
@@ -1596,7 +1752,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我有一只黑色的狗。",
         "pinyin": "wǒ yǒu yī zhī hēi sè de gǒu."
       }
-    ]
+    ],
+    "cultural_notes_en": "Animals carry symbolic weight that can override their literal meaning in China. The 熊猫 (xióng māo, panda — literally 'bear-cat') is a national symbol and diplomatic instrument ('panda diplomacy'), closer to the bald eagle's status for Americans than to a generic zoo animal. The twelve zodiac animals (生肖) are a live social fact, not folklore: people genuinely ask your birth-year animal, and certain years (Dragon especially) drive measurable baby-booms — there is no clean American equivalent, since star signs are casual small talk, not life-planning. 龙 (lóng, dragon) is auspicious and imperial in China — the opposite of the monster-to-be-slain of Western tradition; never assume 'dragon' carries the same connotation. Pets (宠物) are now common in cities, but the older rural frame treated 狗 and 猫 as working animals; the American 'dogs are family' default is recent and urban here, not universal.",
+    "tip_advice_en": "The single most useful thing in this lesson is the measure word 只 (zhī) — Chinese cannot say 'a cat,' only 一只猫 ('one [animal-measure] cat'). 只 covers most animals (一只猫, 一只狗, 一只兔子); large animals like horses take 匹 (一匹马) — beyond strict A1, but be aware measure words vary by noun, like English 'a head of cattle' vs. 'a school of fish,' except mandatory every single time. The headline pronunciation drill is the 妈/麻/马/骂 tone quartet: 马 (mǎ, horse) is third tone (dipping). Said flat it becomes 妈 (mā, mom); rising, 麻 (má, hemp/numb); falling, 骂 (mà, to scold) — same consonant and vowel, four different words by pitch alone. Practice 马 in isolation with an exaggerated dip until your ear tracks the pitch, not the consonant. Also note 熊猫 is transparently 'bear-cat': Chinese animal names often describe, so reading them literally is a legitimate memory aid, not a mistake."
   },
   {
     "id": 11,
