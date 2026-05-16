@@ -23,6 +23,9 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import TrialExpiredScreen from "@/components/TrialExpiredScreen";
 import ChatSupportButton from "@/components/support/ChatSupportButton";
 import { FeedbackBar } from "@/components/FeedbackBar";
+import LessonUiLangToggle, {
+  useLessonUiLang,
+} from "@/components/mercy-guide/tabs/LessonUiLangToggle";
 // 2FA Phase 1 — route guard that forces aal=2 when the user has a
 // verified MFA factor. Pairs with the RLS gate from migration
 // 20260524 so neither layer is the only line of defense.
@@ -427,6 +430,10 @@ function AppHeroShell() {
   const nav = useNavigate();
   const loc = useLocation();
   const { user, isLoading } = useAuth();
+  // Global gloss-language toggle (default "vi"; opt-in "en"). One
+  // instance lives here in the chrome band so it persists across every
+  // page instead of fragmenting per language page.
+  const [uiLang, setUiLang] = useLessonUiLang();
 
   const pathname    = String(loc.pathname || "");
   const isAdmin     = pathname.startsWith("/admin");
@@ -549,6 +556,9 @@ function AppHeroShell() {
               </Link>
 
               <div style={rightWrap}>
+                {/* Global VI/EN gloss-language toggle — one control for
+                    the whole app, persisted via UiLanguageProvider. */}
+                <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
                 {isLoading ? (
                   <div style={authStatusPill} aria-live="polite">
                     <span style={statusDot} />
