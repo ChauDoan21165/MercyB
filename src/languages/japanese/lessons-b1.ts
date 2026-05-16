@@ -1654,25 +1654,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "電車よりバスのほうが安いです。",
-        "english": "The bus is cheaper than the train."
+        "english": "The bus is cheaper than the train.",
+        "pronunciation_focus_en": [
+          "電車より → 'den-sha yo-ri'; 〜より = 'than ~' (the standard of comparison)",
+          "バスのほうが → 'ba-su no ho-o ga'; 〜のほうが = 'the ~ side is more'; ほう long 'oh'",
+          "安い → 'ya-su-i'; i-adjective ('cheap')",
+          "です → 'des'; the full frame is 'A より B のほうが [adj]' = 'B is more [adj] than A'"
+        ]
       },
       {
         "japanese": "A社とB社を比べてみましょう。",
-        "english": "Let's compare Company A and Company B."
+        "english": "Let's compare Company A and Company B.",
+        "pronunciation_focus_en": [
+          "A社・B社 → 'A-sha / B-sha'; 社 = 'sha' (company suffix)",
+          "と → 'to' = 'and' (links the two compared)",
+          "比べて → 'ku-ra-be-te'; te-form of 比べる",
+          "みましょう → 'mi-ma-sho-o'; 〜てみる ('try') + ましょう ('let's') = 'let's try comparing'"
+        ]
       },
       {
         "japanese": "両者には多くの共通点があります。",
-        "english": "Both have many common points."
+        "english": "Both have many common points.",
+        "pronunciation_focus_en": [
+          "両者には → 'ryo-o-sha ni wa'; りょう long 'oh'; には ('as for both')",
+          "多くの → 'o-o-ku no'; 多く a long 'oh' ('many')",
+          "共通点 → 'kyo-o-tsu-u-ten'; きょう and つう both long; ん a beat",
+          "があります → が subject, あります inanimate existence"
+        ]
       },
       {
         "japanese": "品質ではA社が優れていますが、価格ではB社が劣ります。",
-        "english": "Company A is superior in quality, but Company B is inferior in price."
+        "english": "Company A is superior in quality, but Company B is inferior in price.",
+        "pronunciation_focus_en": [
+          "品質では → 'hin-shi-tsu de wa'; で (domain 'in quality') + は (contrast)",
+          "優れています → 'su-gu-re-te i-mas'; 優れる takes が; 〜ている = a held state ('is superior')",
+          "が、 → 'ga' here = contrastive 'but' (mid-sentence connector, not the subject particle)",
+          "劣ります → 'o-to-ri-mas'; 劣る ('be inferior'), the が-marked counterpart"
+        ]
       },
       {
         "japanese": "どちらかと言えば、私は都市より田舎が好きです。",
-        "english": "If I had to choose, I prefer the countryside over the city."
+        "english": "If I had to choose, I prefer the countryside over the city.",
+        "pronunciation_focus_en": [
+          "どちらかと言えば → 'do-chi-ra ka to i-e-ba'; set phrase 'if anything / if I had to say' (〜ば conditional inside it)",
+          "都市より → 'to-shi yo-ri'; 〜より = 'than/over'",
+          "田舎が → 'i-na-ka ga'; 好き takes が for the liked thing (carried from A2)",
+          "好きです → 'su-ki des'; う devoiced ('ski des')"
+        ]
       }
     ],
+    "cultural_notes_en": "The comparison frame itself — A より B のほうが [adjective] — is structurally back-to-front for English speakers: the standard ('than the train') comes first with より, then the winner with のほうが, then the quality. Reading it left-to-right as English word order produces the wrong comparison; you have to hold より as 'compared to' and wait. Culturally, the lesson also models Japanese hedged preference: どちらかと言えば ('if anything,' 'if pressed I'd say') is the polite way to state a preference without a blunt either/or — flatly declaring 'I prefer X' can sound abrupt and close off the other view, so speakers downgrade it to 'if I had to choose…'. This matches the opinion/suggestion lessons: even a simple preference is offered provisionally. Note 優れている/劣る are stative and take が (not を), and 〜ている here is the resultant-state reading again ('is superior,' not 'is becoming superior'). B1 takeaway: parse the comparative frame from より outward, and soften stated preferences with どちらかと言えば rather than a bare 'I prefer.'",
+    "tip_advice_en": "Highest-leverage structure: lock the comparative template 'A より B のほうが [adj] です' = 'B is more [adj] than A.' The trap is order — より ('than') attaches to the LOSER and comes first; のほうが marks the WINNER. English speakers reverse it; drill it as a fixed shape, not word-by-word. For questions: 'A と B と、どちらのほうが [adj] ですか'. Soften preferences with どちらかと言えば ('if anything') — bare 'X のほうが好き' can sound categorical. Particle carry: 好き・優れている・劣る take が for the thing liked/compared, never を; and mid-sentence が = 'but' (contrastive), distinct from subject が — context disambiguates. Pronunciation watch-points: long 'oh' stacks in ほう/りょう/きょう/つう (each held two beats); 好き drops its う ('ski'). Drill: compare two things both directions — 'A より B のほうが安い' then 'B より A のほうが高い.'",
     "dialogue": [
       {
         "speaker": "A",
@@ -1781,25 +1813,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "もし宝くじが当たったら、世界旅行をしたいです。",
-        "english": "If I won the lottery, I'd want to travel the world."
+        "english": "If I won the lottery, I'd want to travel the world.",
+        "pronunciation_focus_en": [
+          "もし → 'mo-shi'; signals a hypothetical (pairs with the conditional, not standalone)",
+          "宝くじが → 'ta-ka-ra-ku-ji ga'; が subject",
+          "当たったら → 'a-ta(t)-ta-ra'; small っ a held beat; 〜たら = the most general 'if/when' conditional",
+          "世界旅行を → 'se-ka-i ryo-ko-o o'; りょ glided, こう long 'oh'; を object 'o'"
+        ]
       },
       {
         "japanese": "もっと時間があれば、もっと勉強できるのに。",
-        "english": "If I had more time, I could study more."
+        "english": "If I had more time, I could study more.",
+        "pronunciation_focus_en": [
+          "もっと → 'mo(t)-to'; small っ held ('more')",
+          "時間があれば → 'ji-kan ga a-re-ba'; 〜ば = conditional stressing the CONDITION ('if only there were')",
+          "できるのに → 'de-ki-ru no ni'; 〜のに = counterfactual regret ('…but [I can't]')",
+          "the 〜ば…のに pairing = 'if X (which isn't so), then Y — what a pity'"
+        ]
       },
       {
         "japanese": "雨が降らなければ、ピクニックに行けたのに。",
-        "english": "If it hadn't rained, we could have gone on a picnic."
+        "english": "If it hadn't rained, we could have gone on a picnic.",
+        "pronunciation_focus_en": [
+          "雨が → 'a-me ga'; が subject",
+          "降らなければ → 'fu-ra-na-ke-re-ba'; the NEGATIVE 〜ば ('if … did not')",
+          "行けた → 'i-ke-ta'; potential past of 行く ('could have gone')",
+          "のに → 'no ni'; counterfactual 'but (it did, so we couldn't)' — regret over the past"
+        ]
       },
       {
         "japanese": "日本語がもっと上手なら、日本人と友達になれるのに。",
-        "english": "If I were better at Japanese, I could make friends with Japanese people."
+        "english": "If I were better at Japanese, I could make friends with Japanese people.",
+        "pronunciation_focus_en": [
+          "上手なら → 'jo-o-zu na-ra'; じょう long 'oh'; 〜なら = conditional on a stated premise/topic ('if [it's the case that] ~')",
+          "日本人と → 'ni-hon-jin to'; と = 'with' (the partner of 友達になる)",
+          "友達になれる → 'to-mo-da-chi ni na-re-ru'; に + なる ('become'); potential なれる ('could become')",
+          "のに → counterfactual regret again"
+        ]
       },
       {
         "japanese": "彼が来ればいいのに。",
-        "english": "I wish he would come."
+        "english": "I wish he would come.",
+        "pronunciation_focus_en": [
+          "彼が → 'ka-re ga'; が subject",
+          "来れば → 'ku-re-ba'; the 〜ば conditional of irregular 来る (くる→くれば)",
+          "いいのに → 'i-i no ni'; 〜ばいいのに = 'I wish ~ would happen / if only ~'",
+          "trailing 〜のに with no main clause = an unspoken 'but it won't' — a wistful set ending"
+        ]
       }
     ],
+    "cultural_notes_en": "This is the lesson English speakers most often conflate, because English has essentially one 'if' and Japanese has FOUR conditionals with different jobs: 〜と (automatic/inevitable result — covered in Lessons 27/34: 'X すると, Y' = whenever X, Y), 〜たら (the most general 'if/when,' good for one-off hypotheticals and 'when X happens then…'), 〜ば (foregrounds the condition itself, common in 'if only ~' wishes and general truths), and 〜なら (conditional on a premise just raised — 'if [we're talking about / if it's true that] X, then…'). They are NOT freely interchangeable: 〜と can't take a request or volitional in its result clause; 〜なら can flip order ('日本に行くなら、京都がいい' = 'if you're going to Japan, Kyoto is good'); 〜たら is the safe default when unsure. The cultural layer is the 〜のに ending: 来ればいいのに ('I wish he'd come') trails off into an unspoken 'but he won't' — Japanese leaves the disappointment implied rather than stated, the same indirection as the soft 'no.' Even daydreaming (もし一億円あったら…) is offered lightly and often deflected with 現実的だね ('how realistic of you') — wishing out loud is fine, but stated wistfully, not earnestly pressed.",
+    "tip_advice_en": "Highest-leverage B1 lesson, full stop: the four conditionals. Lock each one's core job — 〜と: inevitable/automatic consequence (no requests/commands in the result; 'push it and it opens'); 〜たら: general all-purpose 'if/when,' the safe default and the only one comfortable with one-time future events + a request/volitional result; 〜ば: spotlights the condition, native to 'if only' wishes (〜ばいいのに) and general truths; 〜なら: conditional on a just-raised premise ('if [as for] X…'), uniquely able to precede its trigger in time. Do NOT try to make one 'if' cover all four — that is the defining English-speaker error; when unsure, default to 〜たら and learn the others by their signature uses. Pair 〜ば/〜たら + 〜のに for counterfactual regret ('if X were so, Y — but it isn't'). Pronunciation watch-points: small っ a held beat (当たったら, もっと); 来れば is irregular 'ku-re-ba'. Drill ONE wish through all usable conditionals to feel the nuance shift, then end with 〜ばいいのに.",
     "dialogue": [
       {
         "speaker": "A",
@@ -1908,25 +1972,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "彼は明日来ると言っていました。",
-        "english": "He said he would come tomorrow."
+        "english": "He said he would come tomorrow.",
+        "pronunciation_focus_en": [
+          "彼は → 'ka-re wa'; は = 'wa'",
+          "明日来ると → 'a-shi-ta ku-ru to'; the quotative と marks the end of the reported content",
+          "NO tense backshift: Japanese keeps 来る (plain present) inside the quote — English shifts to 'would come', Japanese does NOT",
+          "言っていました → 'i(t)-te i-ma-shi-ta'; small っ held; 〜ていた = was-saying/had said state"
+        ]
       },
       {
         "japanese": "田中さんは来月結婚するそうです。",
-        "english": "I heard that Tanaka-san is getting married next month."
+        "english": "I heard that Tanaka-san is getting married next month.",
+        "pronunciation_focus_en": [
+          "田中さんは → 'ta-na-ka-san wa'; は = 'wa'",
+          "来月 → 'ra-i-ge-tsu'; relative-time word, no particle",
+          "結婚する → 'ke(k)-kon-su-ru'; small っ a held beat, ん a beat — plain form before そう",
+          "そうです → 'so-o des'; 〜そうだ (hearsay) attaches to PLAIN form = 'I hear that ~' (carried from A2)"
+        ]
       },
       {
         "japanese": "社長は新しいプロジェクトを始めると発表しました。",
-        "english": "The president announced that he would start a new project."
+        "english": "The president announced that he would start a new project.",
+        "pronunciation_focus_en": [
+          "社長は → 'sha-cho-o wa'; ちょう long 'oh'; は = 'wa'",
+          "プロジェクトを → 'pu-ro-je-ku-to o'; を object 'o'",
+          "始めると → 'ha-ji-me-ru to'; quotative と + verb of announcing (始める stays plain present)",
+          "発表しました → 'ha(p)-pyo-o-shi-ma-shi-ta'; small っ held, ぴょう glided + long 'oh'"
+        ]
       },
       {
         "japanese": "天気予報によると、明日は雨とのことです。",
-        "english": "According to the weather forecast, it will rain tomorrow."
+        "english": "According to the weather forecast, it will rain tomorrow.",
+        "pronunciation_focus_en": [
+          "天気予報 → 'ten-ki-yo-ho-o'; ほう long 'oh'",
+          "によると → 'ni-yo-ru-to'; 'according to ~' (source attribution, carried from A2)",
+          "雨 → 'a-me' ('rain')",
+          "とのことです → 'to no ko-to des'; 〜とのことだ = formal/reported 'it is said that ~' (written/business hearsay register)"
+        ]
       },
       {
         "japanese": "彼女は「今日は忙しい」と言いました。",
-        "english": "She said, 'I'm busy today.'"
+        "english": "She said, 'I'm busy today.'",
+        "pronunciation_focus_en": [
+          "彼女は → 'ka-no-jo wa'; じょ one mora; は = 'wa'",
+          "「今日は忙しい」 → DIRECT quote inside 「」 (Japanese quote brackets); 今日 = 'kyo-o'",
+          "と → the quotative particle closing the verbatim quote",
+          "言いました → 'i-i-ma-shi-ta'; いい a held long 'ee'; polite past of 言う"
+        ]
       }
     ],
+    "cultural_notes_en": "Reported speech is where the quotative particle と does its central job: [content] + と + a verb of saying/thinking/announcing (言う, 思う, 聞く, 発表する). The single biggest English-speaker trap is tense backshift: English forces 'He said he WOULD come' (past 'said' drags 'will' → 'would'); Japanese does NOT backshift — 来ると言っていました keeps 来る in plain present because the embedded clause reports what was true from the speaker's standpoint at the time. Importing English backshift (using 来た or a past form there) is a systematic error. Two register notes: direct quotes use 「…」 brackets + と (彼女は「忙しい」と言いました); casual speech replaces と言っていた with the contraction 〜って (山田さんが転職するって, 'I heard Yamada's changing jobs') — extremely common and you must recognize it. 〜そうだ (hearsay, on plain form) and 〜とのことです (formal reported) layer on evidential precision Japanese cares about: who said it, how directly you know — sloppier in casual English ('I heard…' covers everything), grammaticalized here. B1 takeaway: anchor on と as the quote boundary, kill the backshift reflex, and recognize 〜って as casual 〜と.",
+    "tip_advice_en": "Highest-leverage rule: NO tense backshift in Japanese reported speech. English 'she said she WAS busy' → Japanese keeps the original tense the speaker used: 「忙しい」と言いました (present 忙しい stays present). Resetting the embedded tense to match English is the defining error here — train the reflex out now. Structure to lock: [plain-form clause] + と + {言う/思う/聞く/発表する/伝える}; と is the quote boundary, the same quotative と you've met since A2 (〜と思います). Register ladder: 〜と言っていた (neutral) → 〜そうだ (hearsay, plain-form + そう) → 〜とのことだ (formal reported) → casual 〜って (= spoken 〜と, recognize it everywhere). Pronunciation watch-points: small っ a held silent beat (言って, 結婚, 発表); the quotative と is light and unstressed — don't pause before it. Drill: report one statement neutrally with 〜と言っていました, then re-report it casually with 〜って, keeping the original tense both times.",
     "dialogue": [
       {
         "speaker": "A",
@@ -2035,25 +2131,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "この寺は何世紀に建てられましたか。",
-        "english": "In what century was this temple built?"
+        "english": "In what century was this temple built?",
+        "pronunciation_focus_en": [
+          "この寺は → 'ko-no te-ra wa'; は = 'wa'",
+          "何世紀に → 'nan-se-i-ki ni'; に marks the time-point ('in what century')",
+          "建てられました → 'ta-te-ra-re-ma-shi-ta'; PASSIVE of 建てる (Group-2: stem + られる)",
+          "the subject (寺) is what RECEIVES the action; no agent stated — neutral/objective passive"
+        ]
       },
       {
         "japanese": "日本のアニメは世界中で見られています。",
-        "english": "Japanese anime is watched all over the world."
+        "english": "Japanese anime is watched all over the world.",
+        "pronunciation_focus_en": [
+          "アニメは → 'a-ni-me wa'; は = 'wa'",
+          "世界中で → 'se-ka-i-ju-u de'; じゅう long 'oh'; で = location of the action",
+          "見られています → 'mi-ra-re-te i-mas'; 見られる is AMBIGUOUS: passive 'is seen' / potential 'can see' / respectful 'sees' — context picks passive here",
+          "〜られている = ongoing passive state ('is [being] watched')"
+        ]
       },
       {
         "japanese": "この言葉はあまり使われません。",
-        "english": "This word is not used much."
+        "english": "This word is not used much.",
+        "pronunciation_focus_en": [
+          "言葉は → 'ko-to-ba wa'; は = 'wa'",
+          "あまり → 'a-ma-ri'; negative-polarity adverb — REQUIRES the negative ending (carried from A2)",
+          "使われません → 'tsu-ka-wa-re-ma-sen'; passive of 使う (Group-1: う→わ + れる) + negative",
+          "つ in 使 is 'tsu'; the passive of う-verbs is 〜われる, not 〜られる"
+        ]
       },
       {
         "japanese": "その本は多くの人に読まれています。",
-        "english": "That book is read by many people."
+        "english": "That book is read by many people.",
+        "pronunciation_focus_en": [
+          "その本は → 'so-no hon wa'; は = 'wa'",
+          "多くの人に → 'o-o-ku no hi-to ni'; に = the AGENT 'by' in a passive (people who do the reading)",
+          "読まれています → 'yo-ma-re-te i-mas'; passive of 読む (Group-1: む→ま + れる)",
+          "frame: [receiver] は [agent] に [verb-passive] = '~ is V-ed by ~'"
+        ]
       },
       {
         "japanese": "彼はクラスで一番賢いと考えられています。",
-        "english": "He is considered the smartest in the class."
+        "english": "He is considered the smartest in the class.",
+        "pronunciation_focus_en": [
+          "彼は → 'ka-re wa'; は = 'wa'",
+          "一番賢い → 'i-chi-ban ka-shi-ko-i'; 一番 = 'most'; 賢い an i-adjective",
+          "と考えられています → 'to kan-ga-e-ra-re-te i-mas'; quotative と + passive of 考える",
+          "〜と考えられている = 'it is considered/thought that ~' — agentless impersonal passive (very common in formal/academic JP)"
+        ]
       }
     ],
+    "cultural_notes_en": "Japanese reaches for the passive far more than English, and often agentlessly, because it lets the speaker state things objectively without pointing at a doer — 考えられている ('it is considered'), 言われている ('it is said'), 使われている ('it is used') are the default register of news, academic writing, and careful speech. An American writer is taught to prefer the active voice ('many people read that book'); Japanese frequently prefers その本は読まれています precisely to keep the agent backgrounded, which reads as measured and non-presumptuous, not evasive. The agent, when named, takes に ('多くの人に読まれる,' read BY many) or によって for creation/formal contexts ('画家によって描かれた'). The hard B1 trap is form ambiguity: 見られる / 食べられる / 考えられる can be passive, potential ('can see/eat'), OR respectful (尊敬語) — only context disambiguates, and English has no equivalent collision. (One major passive type, the 'suffering / adversity passive' like 雨に降られた 'I was rained on [to my detriment],' is NOT covered by this lesson's examples — flagged below for B2.) B1 takeaway: read 〜られる by context, expect agentless passives as normal good style, and mark the agent with に.",
+    "tip_advice_en": "Highest-leverage formation rule: passive = Group-2 stem + られる (食べる→食べられる); Group-1 final -u → -a row + れる (読む→読まれる, 使う→使われる, NOT 使われる via られる); irregulars される (する) and 来られる (くる). The defining B1 ambiguity to internalize: 〜られる is passive OR potential OR respectful — 見られる = 'is seen' / 'can see' / '(esteemed person) sees'; let context decide, there is no English parallel for this three-way collision. Agent particle: に for ordinary agents (人に読まれる), によって for creators/formal (画家によって描かれた). Honest scope flag (the #488/#491 restraint rule): this lesson covers only the plain/objective passive — the **suffering passive (迷惑の受身, e.g. 雨に降られた, 子供に泣かれた) and causative-passive 〜させられる have no example coverage at B1 and are flagged for B2**; don't fabricate them into the notes. Pronunciation: passive endings are long (読まれています = 'yo-ma-re-te-i-mas', six mora) — don't compress. Drill: convert three actives to agentless passives, then add an に-agent.",
     "dialogue": [
       {
         "speaker": "A",
@@ -2162,25 +2290,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "昨日食べたラーメンはとても美味しかった。",
-        "english": "The ramen I ate yesterday was very delicious."
+        "english": "The ramen I ate yesterday was very delicious.",
+        "pronunciation_focus_en": [
+          "昨日食べた → 'ki-no-o ta-be-ta'; 昨日 long final 'oh'; PLAIN past 食べた modifies ラーメン directly — no 'that/which'",
+          "ラーメンは → 'ra-a-men wa'; the head noun comes AFTER its modifier; は = 'wa'",
+          "とても → 'to-te-mo' ('very')",
+          "美味しかった → 'o-i-shi-ka(t)-ta'; i-adjective PLAIN past (〜かった); small っ a held beat"
+        ]
       },
       {
         "japanese": "あそこに立っている人は田中さんです。",
-        "english": "The person standing over there is Tanaka-san."
+        "english": "The person standing over there is Tanaka-san.",
+        "pronunciation_focus_en": [
+          "あそこに → 'a-so-ko ni'; に marks where they stand",
+          "立っている → 'ta(t)-te i-ru'; small っ held; 〜ている STATE ('standing') modifying 人",
+          "人は → 'hi-to wa'; the head noun follows the whole modifying clause",
+          "田中さんです → 'ta-na-ka-san des'; です devoiced"
+        ]
       },
       {
         "japanese": "私が買いたい本はどこですか。",
-        "english": "Where is the book I want to buy?"
+        "english": "Where is the book I want to buy?",
+        "pronunciation_focus_en": [
+          "私が買いたい → 'wa-ta-shi ga ka-i-ta-i'; が may become の inside a modifier (私の買いたい本 is equally correct)",
+          "本は → 'hon wa'; the noun 本 is modified by the whole clause before it",
+          "どこ → 'do-ko' ('where')",
+          "ですか → 'des-ka'; pitch rises only on か"
+        ]
       },
       {
         "japanese": "これは日本語の勉強に使うテキストです。",
-        "english": "This is the textbook used for studying Japanese."
+        "english": "This is the textbook used for studying Japanese.",
+        "pronunciation_focus_en": [
+          "これは → 'ko-re wa'; は = 'wa'",
+          "勉強に使う → 'ben-kyo-o ni tsu-ka-u'; PLAIN present 使う modifies テキスト ('[that one] uses for study')",
+          "テキスト → 'te-ki-su-to'; katakana = textbook (a 和製英語 clip of 'text(book)')",
+          "です → 'des'; the modifier sits between に and the head noun"
+        ]
       },
       {
         "japanese": "彼女が作ったケーキを食べました。",
-        "english": "I ate the cake she made."
+        "english": "I ate the cake she made.",
+        "pronunciation_focus_en": [
+          "彼女が作った → 'ka-no-jo ga tsu-ku(t)-ta'; small っ held; が→の possible (彼女の作った)",
+          "ケーキを → 'ke-e-ki o'; ケー a long 'eh'; を object 'o' — the head noun modified by 作った",
+          "食べました → 'ta-be-ma-shi-ta'; main verb stays polite even though the modifier is plain",
+          "parse order: '[she-made] cake [I] ate' — modifier first, then noun, then main clause"
+        ]
       }
     ],
+    "cultural_notes_en": "This is the structural shift English speakers find most disorienting, and it deserves its own lesson. Japanese has NO relative pronouns — no 'who, which, that.' Instead a whole clause sits, in plain form, directly BEFORE the noun it modifies: 昨日食べたラーメン = literally '[yesterday-ate] ramen' = 'the ramen [I] ate yesterday.' English builds rightward ('the ramen THAT I ate'); Japanese builds leftward and silent — the head noun is the last word, and you must hold the modifier in memory until it lands. There is no American parallel for the missing relative pronoun; the closest intuition is a stacked English participle ('the standing-over-there person'), but Japanese does this for ANY clause, including ones with their own subject ('[she-made] cake'). Two B1 mechanics: inside a modifying clause the subject が can swap to の (私が買いたい本 = 私の買いたい本, identical meaning) — a hallmark of the construction; and the clause uses PLAIN form even in an otherwise polite sentence (…作ったケーキを食べました) — politeness lives only on the final verb. Mastering this unlocks real reading, because Japanese stacks long modifiers where English would use 'who/which' chains.",
+    "tip_advice_en": "Highest-leverage structural skill of B1: noun-modifying (relative) clauses with NO relative pronoun. The rule: [plain-form clause] + [head noun]; the noun the clause describes is the FIRST thing after the clause, and there is no word for 'that/which/who.' Train a new parsing reflex: when you see a plain verb followed by a noun, expect 'the [noun] that [clause]' and read the modifier as attaching forward. Two signatures to lock: (1) subject が↔の inside the modifier are interchangeable (彼女が作った = 彼女の作った); (2) the modifier stays PLAIN even when the sentence is polite — politeness sits only on the final verb (作ったケーキを食べました, not 作りましたケーキ). This is the engine behind reading real Japanese, where modifiers can be long; the A2/B1 'preview' sightings (留学した時, 拡散されたニュース) were this all along. Pronunciation: small っ a held silent beat recurs (食べた is clean, but 作った/立って/おいしかった have it); plain past i-adjective is 〜かった ('o-i-shi-kat-ta'). Drill: take 'I bought a book' → 'the book I bought' → 'the book I bought is interesting,' building the modifier leftward.",
     "dialogue": [
       {
         "speaker": "A",
