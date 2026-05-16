@@ -283,12 +283,18 @@ export const lessons: GermanLesson[] = [
       "Một giáo sư đặt câu hỏi cứng về việc cách tiếp cận của bạn khác gì với trường phái đã có. Đáp formal: acknowledge ('eine berechtigte Frage'), trích Konjunktiv I cho nguồn ('Auer (1998) zufolge sei...'), nêu khác biệt cụ thể.",
       "Một đồng nghiệp postdoc đặt câu hỏi về tính khái quát của nghiên cứu. Đáp bằng Funktionsverbgefüge + tự giới hạn formal: 'meine Studie erhebt keinen Anspruch auf statistische Repräsentativität' — không defensive, không apologetic."
     ],
+    "roleplay_prompts_en": [
+      "You are a Vietnamese doctoral candidate at Universität Bielefeld, presenting your central thesis (These) at your first Doktorandenkolloquium. Open in 30 seconds with the These + Hypothese — do NOT recount your personal biography.",
+      "A professor asks a hard question about how your approach differs from an established school of thought. Answer formally: acknowledge ('eine berechtigte Frage'), cite the source in Konjunktiv I ('Auer (1998) zufolge sei...'), and name a concrete difference.",
+      "A postdoc colleague asks about the generalisability of your study. Answer with a Funktionsverbgefüge + a formal self-limitation: 'meine Studie erhebt keinen Anspruch auf statistische Repräsentativität' — not defensive, not apologetic."
+    ],
     "register_notes": "Trình bày luận điểm C1 academic: 'Sie' tuyệt đối với tất cả participants kể cả đồng nghiệp postdoc gặp lần đầu. Konjunktiv II cho hedging luận điểm: 'es ließe sich argumentieren', 'dürfte', 'wäre denkbar'. Konjunktiv I cho citing nguồn: 'Bourdieu zufolge sei...', 'Nach Auer handle es sich um...'. Funktionsverbgefüge bắt buộc: 'zur Anwendung kommen' (= angewendet werden), 'in Frage stellen' (= bezweifeln), 'Bezug nehmen auf' (= sich beziehen auf), 'in Erwägung ziehen' (= überlegen). Connectors C1 chuẩn: 'mithin' (do đó, formal hơn 'also'), 'demzufolge' (theo đó), 'gleichwohl' (tuy nhiên, formal), 'insofern als' (xét rằng), 'sodann' (tiếp đó). KHÔNG dùng 'und so' / 'aber' / 'auch' đơn lẻ — colloquial. Genitiv bắt buộc với: 'aufgrund', 'hinsichtlich', 'zugunsten', 'ungeachtet'. Khi không biết: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung' — không bịa, không 'ich weiß nicht' đơn lẻ.",
     "register_notes_en": "C1 academic presentation register: 'Sie' is absolute with every participant — including postdoc peers you've just met. Konjunktiv II for thesis-hedging: 'es ließe sich argumentieren' (one could argue), 'dürfte' (might/should), 'wäre denkbar' (would be conceivable). Konjunktiv I for citing sources: 'Bourdieu zufolge sei...' (according to Bourdieu, it is...), 'Nach Auer handle es sich um...' (according to Auer it concerns...). Funktionsverbgefüge are required: 'zur Anwendung kommen' (= 'angewendet werden' — to be applied), 'in Frage stellen' (= 'bezweifeln' — to call into question), 'Bezug nehmen auf' (= 'sich beziehen auf' — to refer to), 'in Erwägung ziehen' (= 'überlegen' — to consider). C1 connectors: 'mithin' (therefore, more formal than 'also'), 'demzufolge' (consequently), 'gleichwohl' (nonetheless, formal), 'insofern als' (insofar as), 'sodann' (then, next). DO NOT use bare 'und so' / 'aber' / 'auch' as connectors — that reads as colloquial. Genitiv is required after: 'aufgrund' (due to), 'hinsichtlich' (regarding), 'zugunsten' (in favour of), 'ungeachtet' (despite). When you don't know: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (that exceeds the scope of my current investigation) — never fabricate, never bare 'ich weiß nicht'.",
     "idiom_glosses": [
       {
         "idiom": "den Nagel auf den Kopf treffen",
         "literal": "đóng đinh ngay vào đầu",
+        "literal_en": "to hit the nail on the head",
         "meaning": "nói trúng tâm điểm vấn đề (gehoben/standardsprachlich)",
         "meaning_en": "to hit the nail on the head — pinpoint the heart of the matter (elevated/standard register)",
         "example": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere.",
@@ -297,6 +303,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas auf den Punkt bringen",
         "literal": "đưa điều gì đến đúng điểm",
+        "literal_en": "to bring something to the point",
         "meaning": "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)",
         "meaning_en": "to bring something to a point — sum it up at its essential core (standard register)",
         "example": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit.",
@@ -305,6 +312,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ein zweischneidiges Schwert sein",
         "literal": "là một thanh kiếm hai lưỡi",
+        "literal_en": "to be a double-edged sword",
         "meaning": "có cả mặt lợi và mặt hại (gehoben)",
         "meaning_en": "to be a double-edged sword — cuts both ways (elevated register)",
         "example": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe.",
@@ -313,6 +321,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Wasser auf jemandes Mühle sein",
         "literal": "là nước cho cối xay của ai đó",
+        "literal_en": "to be water on someone's mill",
         "meaning": "ủng hộ luận điểm của ai đó (gehoben)",
         "meaning_en": "to be water on someone's mill — to support/play into someone's argument (elevated register; closest English equivalent: 'grist to one's mill')",
         "example": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz.",
@@ -669,12 +678,18 @@ export const lessons: GermanLesson[] = [
       "Doktormutter đề xuất bạn modify khái niệm habitus dựa theo Wacquant. Diễn đạt sự sửa đổi đó bằng formula chuẩn: 'In Anlehnung an Wacquant (2014) modifiziere ich ... dergestalt, dass...'",
       "Hỏi về Selbstzitation: bạn đã viết một đoạn trong Konferenzpapier 2023, giờ muốn dùng lại trong luận án. Doktormutter giải thích bắt buộc tự trích — diễn đạt câu chuẩn 'Wie bereits an anderer Stelle ausgeführt wurde'."
     ],
+    "roleplay_prompts_en": [
+      "You are preparing chapter three of your dissertation and go to see your Doktormutter to discuss how to cite Bourdieu. Open formally, asking specifically about the focus (Schwerpunktsetzung) and the ratio of direct quotation versus paraphrase.",
+      "Your Doktormutter suggests you modify the concept of habitus following Wacquant. Express that modification using the standard formula: 'In Anlehnung an Wacquant (2014) modifiziere ich ... dergestalt, dass...'",
+      "Ask about self-citation: you wrote a passage in a 2023 conference paper and now want to reuse it in the dissertation. Your Doktormutter explains self-citation is mandatory — express the standard line 'Wie bereits an anderer Stelle ausgeführt wurde'."
+    ],
     "register_notes": "Trích dẫn C1 academic: Konjunktiv I bắt buộc cho indirekte Rede. 'Bourdieu sagt, X ist' SAI; phải là 'Bourdieu zufolge sei X' / 'Nach Bourdieu handle es sich um X'. Khi quote literal: dấu ‚...' (Anführungszeichen Đức) hoặc Anführungszeichen kép + trang chính xác. Khi paraphrase: 'vgl. X (Jahr, S. xx-yy)'. Funktionsverbgefüge: 'Bezug nehmen auf' (= sich beziehen auf), 'in Anlehnung an' (= sich anlehnen), 'in Abgrenzung von' (= sich abgrenzen). Connectors: 'andernfalls' (nếu không), 'gleichwohl' (tuy nhiên formal), 'insofern als' (xét rằng). Khi không đồng ý: 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' / 'Gegen diese Lesart spricht jedoch...' — KHÔNG 'X ist falsch' / 'X liegt daneben'. Selbstzitation bắt buộc: 'wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin Jahr, S. xx)'. Sekundärliteratur ('zit. nach') khi không tiếp cận được nguồn gốc — formal phải đánh dấu rõ.",
     "register_notes_en": "C1 academic citation register: Konjunktiv I is obligatory for indirekte Rede (reported speech). 'Bourdieu sagt, X ist' (Bourdieu says X is) is WRONG; it must be 'Bourdieu zufolge sei X' (according to Bourdieu, X is) or 'Nach Bourdieu handle es sich um X' (according to Bourdieu, it concerns X). For literal quotation: German-style quotation marks ‚…' (or \"…\") plus an exact page number. For paraphrase: 'vgl. X (Jahr, S. xx–yy)'. Funktionsverbgefüge: 'Bezug nehmen auf' (= sich beziehen auf, to refer to), 'in Anlehnung an' (= sich anlehnen, following), 'in Abgrenzung von' (= sich abgrenzen, distinguishing from). Connectors: 'andernfalls' (otherwise), 'gleichwohl' (nonetheless, formal), 'insofern als' (insofar as). When disagreeing: 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (at that level of generality, one cannot agree) / 'Gegen diese Lesart spricht jedoch…' (against this reading, however, speaks…) — NEVER 'X ist falsch' / 'X liegt daneben' (X is wrong / X misses the mark) which read colloquial. Self-citation is mandatory: 'wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin Jahr, S. xx)'. Use 'zit. nach' for secondary citation when the primary source is inaccessible — at formal register this must be explicitly marked.",
     "idiom_glosses": [
       {
         "idiom": "auf den Schultern von Riesen stehen",
         "literal": "đứng trên vai của những người khổng lồ",
+        "literal_en": "to stand on the shoulders of giants",
         "meaning": "kế thừa và xây dựng trên thành tựu của các học giả lớn (gehoben)",
         "meaning_en": "to stand on the shoulders of giants — to build on the achievements of great predecessors (elevated register; the English original from Bernard of Chartres / Newton works equally in German)",
         "example": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet.",
@@ -683,6 +698,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Stein des Anstoßes liefern",
         "literal": "cung cấp viên đá gây vấp",
+        "literal_en": "to supply the stone of offence",
         "meaning": "đưa ra điểm gây tranh luận quyết định (gehoben)",
         "meaning_en": "to provide the stone of offence — to deliver the decisive point of contention/disagreement (elevated register)",
         "example": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs.",
@@ -691,6 +707,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ins selbe Horn stoßen",
         "literal": "thổi cùng một cái sừng (gốc săn bắn)",
+        "literal_en": "to blow into the same horn",
         "meaning": "đồng tình với quan điểm của ai đó (gehoben)",
         "meaning_en": "to blow the same horn (origin: hunting) — to agree with someone's position, to take the same line (elevated register)",
         "example": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart.",
@@ -699,6 +716,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "der rote Faden",
         "literal": "sợi chỉ đỏ",
+        "literal_en": "the red thread",
         "meaning": "chủ đề xuyên suốt, mạch lập luận trung tâm (standardsprachlich)",
         "meaning_en": "the red thread — the through-line, the central thread of an argument (standard register; closest English equivalent: 'the common thread' or 'through-line')",
         "example": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation.",
@@ -1055,36 +1073,49 @@ export const lessons: GermanLesson[] = [
       "Postdoc chỉ ra một câu cụ thể trong luận án nơi bạn đã diễn đạt quá rộng. Thừa nhận: 'In diesem Punkt müssen Sie mir Recht geben' + đề xuất sửa đổi cụ thể.",
       "Postdoc khẳng định bạn diễn giải sai một tác giả (Auer). Phản biện lại bằng 'Gegen Ihre Auffassung spricht jedoch...' + cấu trúc 'Insofern als ... scheint mir die Inkompatibilität zwingend' — và khi postdoc cung cấp evidence cập nhật, chấp nhận xem xét lại."
     ],
+    "roleplay_prompts_en": [
+      "A postdoc raises a hard objection that your conclusion over-generalises from a small sample. Answer formally: 'Das ist ein berechtigter Einwand' + distinguish typological depth (typologische Tiefenschärfe) from statistical representativeness.",
+      "The postdoc points to a specific sentence in your dissertation where you phrased something too broadly. Concede: 'In diesem Punkt müssen Sie mir Recht geben' + propose a concrete revision.",
+      "The postdoc claims you misread an author (Auer). Counter with 'Gegen Ihre Auffassung spricht jedoch...' + the structure 'Insofern als ... scheint mir die Inkompatibilität zwingend' — and when the postdoc provides updated evidence, agree to reconsider."
+    ],
     "register_notes": "Phản biện C1 academic: 'Sie' tuyệt đối. Konjunktiv II cho hedging: 'wäre einzuwenden', 'ließe sich tragen', 'erschiene mir'. Connectors C1: 'demgegenüber' (đối lại), 'gleichwohl' (tuy nhiên formal), 'insofern als' (xét rằng), 'mithin' (do đó), 'andernfalls' (nếu không). Funktionsverbgefüge: 'in Frage stellen' (đặt vấn đề), 'in Zweifel ziehen' (nghi ngờ), 'einen Einwand erheben' (đưa phản đối), 'einer Kritik unterziehen' (tiến hành phê phán). Cấu trúc 5 bước: ANERKENNEN → EINSCHRÄNKEN → EINWAND → BEGRÜNDEN → ANGEBOT. Khi sai: 'In diesem Punkt müssen Sie mir Recht geben' — không apologetic, factual. Khi không biết: 'Gestatten Sie, dass ich darauf schriftlich zurückkomme' — không bịa. Tránh argumentum ad hominem ('Sie haben nicht verstanden'). Phân biệt 'Person vs Sache' bắt buộc. 'Mit Verlaub' — formal nhất khi bất đồng với Höhergestellten.",
     "register_notes_en": "C1 academic counter-argument: 'Sie' is absolute throughout. Use Konjunktiv II for hedging: 'wäre einzuwenden' (would have to be objected), 'ließe sich tragen' (could be sustained), 'erschiene mir' (would appear to me). C1 connectives: 'demgegenüber' (against this), 'gleichwohl' (nevertheless — formal), 'insofern als' (inasmuch as), 'mithin' (therefore — formal), 'andernfalls' (otherwise). Funktionsverbgefüge to internalise: 'in Frage stellen' (call into question), 'in Zweifel ziehen' (cast into doubt), 'einen Einwand erheben' (raise an objection), 'einer Kritik unterziehen' (subject to critique). The 5-step structure: ANERKENNEN → EINSCHRÄNKEN → EINWAND → BEGRÜNDEN → ANGEBOT. When wrong: 'In diesem Punkt müssen Sie mir Recht geben' — neither apologetic nor defensive, simply factual. When unsure: 'Gestatten Sie, dass ich darauf schriftlich zurückkomme' — never fabricate. Avoid argumentum ad hominem ('Sie haben nicht verstanden'). The 'Person vs Sache' (person vs matter) distinction is non-negotiable. 'Mit Verlaub' is the most formal hedge when disagreeing with someone of higher rank (Höhergestellten).",
     "idiom_glosses": [
       {
         "idiom": "den Finger in die Wunde legen",
         "literal": "đặt ngón tay vào vết thương",
+        "literal_en": "to lay the finger in the wound",
         "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
         "meaning_en": "to lay one's finger in the wound — to point precisely to a weakness (gehoben/standardsprachlich)",
-        "example": "Mit diesem Einwand legen Sie den Finger in die Wunde — meine Stichprobenkonstruktion ist tatsächlich angreifbar."
+        "example": "Mit diesem Einwand legen Sie den Finger in die Wunde — meine Stichprobenkonstruktion ist tatsächlich angreifbar.",
+        "example_en": "With that objection you put your finger on the sore spot — my sample construction is indeed open to attack."
       },
       {
         "idiom": "auf wackligen Beinen stehen",
         "literal": "đứng trên những chân run rẩy",
+        "literal_en": "to stand on wobbly legs",
         "meaning": "lập luận yếu, không vững (standardsprachlich)",
         "meaning_en": "to stand on shaky legs — to rest on weak, unstable argumentation (standardsprachlich)",
-        "example": "Ohne ein größeres Korpus steht die Generalisierung auf wackligen Beinen."
+        "example": "Ohne ein größeres Korpus steht die Generalisierung auf wackligen Beinen.",
+        "example_en": "Without a larger corpus the generalisation stands on shaky ground."
       },
       {
         "idiom": "Wasser predigen und Wein trinken",
         "literal": "rao giảng nước nhưng uống rượu",
+        "literal_en": "to preach water and drink wine",
         "meaning": "không nhất quán giữa lời và việc, đạo đức giả (gehoben)",
         "meaning_en": "to preach water and drink wine — to fail to practice what one preaches; hypocritical (gehoben)",
-        "example": "Wer methodische Strenge fordert, aber selbst keine Triangulation anbietet, predigt Wasser und trinkt Wein."
+        "example": "Wer methodische Strenge fordert, aber selbst keine Triangulation anbietet, predigt Wasser und trinkt Wein.",
+        "example_en": "Anyone who demands methodological rigour but offers no triangulation themselves is preaching water and drinking wine."
       },
       {
         "idiom": "ein Pferd vom anderen Ende aufzäumen",
         "literal": "thắng yên ngựa từ đầu kia",
+        "literal_en": "to bridle a horse from the wrong end",
         "meaning": "tiếp cận vấn đề sai chiều (standardsprachlich)",
         "meaning_en": "to bridle a horse from the other end — to approach a problem from the wrong direction (standardsprachlich)",
-        "example": "Methodologisch zäumen Sie das Pferd vom anderen Ende auf — zuerst die Theorie, dann die Daten, nicht umgekehrt."
+        "example": "Methodologisch zäumen Sie das Pferd vom anderen Ende auf — zuerst die Theorie, dann die Daten, nicht umgekehrt.",
+        "example_en": "Methodologically you're putting the cart before the horse — theory first, then data, not the other way round."
       }
     ],
     "exercises": [
@@ -1437,36 +1468,49 @@ export const lessons: GermanLesson[] = [
       "Reviewer giới thiệu mô hình 5 cấp hedging (10% → 30% → 60% → 75% → 90%). Xin clarification về cách map evidence strength vào lựa chọn hedge cụ thể.",
       "Reviewer khuyên dùng Konjunktiv II ở hypotheticals và tránh 'meiner Meinung nach' ở văn viết. Diễn đạt lại một câu cụ thể của bạn theo cả hai gợi ý cùng lúc."
     ],
+    "roleplay_prompts_en": [
+      "A reviewer points out that you use anti-hedging ('eindeutig zeigt sich') in several places. Acknowledge formally: 'Sie haben Recht — die Formulierung ist zu absolut'. Propose a hedged version that matches the evidence strength.",
+      "The reviewer introduces a five-level hedging model (10% → 30% → 60% → 75% → 90%). Ask for clarification on how to map evidence strength onto a specific hedge choice.",
+      "The reviewer advises using Konjunktiv II for hypotheticals and avoiding 'meiner Meinung nach' in written work. Reformulate one specific sentence of yours following both suggestions at once."
+    ],
     "register_notes": "Hedging C1: Konjunktiv II BẮT BUỘC cho hypotheticals — 'wäre denkbar' / 'ließe sich vermuten' / 'könnte erklärt werden'. Modal hedges: 'dürfte', 'könnte', 'mag'. Adverb hedges: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'. KHÔNG 'ich denke' / 'meiner Meinung nach' trong văn viết — colloquial. Thay bằng 'es lässt sich annehmen' / 'die Datenlage legt den Schluss nahe'. Anti-hedging ('eindeutig', 'offensichtlich', 'es steht außer Frage') CẤM trừ logic/toán. Cấu trúc Limitations bắt buộc: 'Eine endgültige Bewertung ließe sich erst auf der Grundlage X vornehmen'. Phân tầng cường độ 5 cấp: 'nicht auszuschließen' (10%), 'unter Umständen' (30%), 'vermutlich' (60%), 'wahrscheinlich' (75%), 'davon auszugehen' (90%). 'Indes' = formal hơn 'jedoch' / 'aber'.",
     "register_notes_en": "C1 hedging: Konjunktiv II is REQUIRED for hypotheticals — 'wäre denkbar' / 'ließe sich vermuten' / 'könnte erklärt werden'. Modal hedges: 'dürfte', 'könnte', 'mag'. Adverbial hedges: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'. Do NOT use 'ich denke' / 'meiner Meinung nach' ('I think' / 'in my opinion') in written academic German — they read colloquially. Replace with 'es lässt sich annehmen' (it can be assumed) or 'die Datenlage legt den Schluss nahe' (the state of the data suggests the conclusion). Anti-hedging ('eindeutig', 'offensichtlich', 'es steht außer Frage' — 'clearly', 'obviously', 'beyond question') is BANNED except for logic/maths. The mandatory Limitations structure: 'Eine endgültige Bewertung ließe sich erst auf der Grundlage X vornehmen' (a final assessment could only be made on the basis of X). The five-step confidence scale: 'nicht auszuschließen' (~10%), 'unter Umständen' (~30%), 'vermutlich' (~60%), 'wahrscheinlich' (~75%), 'davon auszugehen' (~90%). 'Indes' is more formal than 'jedoch' or 'aber' for 'however'.",
     "idiom_glosses": [
       {
         "idiom": "mit Vorsicht zu genießen sein",
         "literal": "phải được hưởng dụng cẩn thận",
+        "literal_en": "to be enjoyed with caution",
         "meaning": "phải được tiếp nhận với sự dè dặt (standardsprachlich)",
         "meaning_en": "to be enjoyed with caution — to be received with reservation (standardsprachlich)",
-        "example": "Diese vorläufigen Befunde sind mit Vorsicht zu genießen — die Stichprobengröße ist begrenzt."
+        "example": "Diese vorläufigen Befunde sind mit Vorsicht zu genießen — die Stichprobengröße ist begrenzt.",
+        "example_en": "These preliminary findings should be taken with a pinch of salt — the sample size is limited."
       },
       {
         "idiom": "mit allen Wassern gewaschen sein",
         "literal": "đã được tắm với mọi loại nước",
+        "literal_en": "to be washed with all waters",
         "meaning": "tinh thông, không dễ bị lừa (gehoben/standardsprachlich)",
         "meaning_en": "to have been washed in all the waters — to be experienced and street-smart, not easily fooled (gehoben/standardsprachlich)",
-        "example": "Ein erfahrener Methodologe ist mit allen Wassern gewaschen — er erkennt anti-hedging sofort."
+        "example": "Ein erfahrener Methodologe ist mit allen Wassern gewaschen — er erkennt anti-hedging sofort.",
+        "example_en": "An experienced methodologist is an old hand — they spot anti-hedging at once."
       },
       {
         "idiom": "auf dünnem Eis stehen",
         "literal": "đứng trên băng mỏng",
+        "literal_en": "to stand on thin ice",
         "meaning": "ở vị trí bấp bênh, dễ sụp (standardsprachlich)",
         "meaning_en": "to stand on thin ice — to occupy a precarious position, easily collapsed (standardsprachlich)",
-        "example": "Ohne Replikation steht jede Generalisierung auf dünnem Eis."
+        "example": "Ohne Replikation steht jede Generalisierung auf dünnem Eis.",
+        "example_en": "Without replication, any generalisation is on thin ice."
       },
       {
         "idiom": "ein Schuss ins Blaue sein",
         "literal": "một phát súng vào màu xanh",
+        "literal_en": "to be a shot into the blue",
         "meaning": "phỏng đoán không có cơ sở (standardsprachlich)",
         "meaning_en": "a shot into the blue — a wild guess with no foundation (standardsprachlich)",
-        "example": "Ohne Datenbasis wäre eine solche Behauptung ein Schuss ins Blaue."
+        "example": "Ohne Datenbasis wäre eine solche Behauptung ein Schuss ins Blaue.",
+        "example_en": "Without a data basis, such a claim would be a shot in the dark."
       }
     ],
     "exercises": [
@@ -1819,36 +1863,49 @@ export const lessons: GermanLesson[] = [
       "Doktormutter yêu cầu phân biệt Vier-Wege-Abgrenzung giữa Translanguaging, Code-Switching, Code-Mixing, Polylanguaging. Diễn đạt sự khác biệt cụ thể bằng formula 'X unterscheidet sich von Y dadurch, dass Z'.",
       "Doktormutter cảnh báo về Reifizierung (substantialistische Lesart). Diễn đạt câu protective formal: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'."
     ],
+    "roleplay_prompts_en": [
+      "You are working on chapter two of your dissertation about a key concept. Your Doktormutter requires the five-part definition structure: Begriffsgeschichte → Review → Kritik → Arbeitsdefinition → Operationalisierung. Present the outline formally.",
+      "Your Doktormutter asks for a four-way distinction (Vier-Wege-Abgrenzung) between Translanguaging, Code-Switching, Code-Mixing, and Polylanguaging. Express the concrete differences using the formula 'X unterscheidet sich von Y dadurch, dass Z'.",
+      "Your Doktormutter warns about reification (Reifizierung, a substantialist reading). Express the formal protective line: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'."
+    ],
     "register_notes": "Định nghĩa C1: phân biệt Nominaldefinition ('Unter dem Begriff X verstehe ich Y') vs Realdefinition ('Der Terminus X bezeichnet Y'). Cấu trúc 5 bước bắt buộc cho Schlüsselbegriff: Begriffsgeschichte → Review → Kritik → Arbeitsdefinition → Operationalisierung. Funktionsverbgefüge: 'in Abgrenzung zu' / 'im Anschluss an' / 'in Anlehnung an'. Operationalization formula: 'Operationalisiert wird das Konstrukt durch X Indikatoren: A, B, C'. Heuristic protection: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'. Eindeutschung vs Anglizismus formal: 'Im deutschsprachigen Raum existiert die Übersetzung X, jedoch verwende ich aus Gründen der Anschlussfähigkeit den englischen Originalterminus'. Konjunktiv I khi citing definitions: 'García (2009) zufolge sei Translanguaging zu verstehen als...'. KHÔNG dùng Duden / dictionary làm Begriffsquelle ở C1.",
     "register_notes_en": "C1 definition: distinguish Nominaldefinition ('Unter dem Begriff X verstehe ich Y') from Realdefinition ('Der Terminus X bezeichnet Y'). For any Schlüsselbegriff (key concept), the 5-step structure is obligatory: Begriffsgeschichte → Review → Kritik → Arbeitsdefinition → Operationalisierung. Use the Funktionsverbgefüge: 'in Abgrenzung zu' (in delimitation from), 'im Anschluss an' (following on from), 'in Anlehnung an' (drawing on). Operationalization formula: 'Operationalisiert wird das Konstrukt durch X Indikatoren: A, B, C'. Protective heuristic phrase: 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne, ohne damit eine substantialistische Lesart zu intendieren'. Eindeutschung vs Anglizismus, explicitly: 'Im deutschsprachigen Raum existiert die Übersetzung X, jedoch verwende ich aus Gründen der Anschlussfähigkeit den englischen Originalterminus'. Use Konjunktiv I when citing definitions: 'García (2009) zufolge sei Translanguaging zu verstehen als...'. Do NOT use Duden or a dictionary as a Begriffsquelle (source for a concept) at C1.",
     "idiom_glosses": [
       {
         "idiom": "den Begriff schärfen",
         "literal": "làm sắc khái niệm",
+        "literal_en": "to sharpen the concept",
         "meaning": "làm rõ và chính xác hóa khái niệm (gehoben)",
         "meaning_en": "to sharpen the concept — to make a concept more precise and discriminating (gehoben)",
-        "example": "In Abgrenzung zu Bourdieu schärfe ich den Habitus-Begriff durch Hinzunahme migrationsspezifischer Dimensionen."
+        "example": "In Abgrenzung zu Bourdieu schärfe ich den Habitus-Begriff durch Hinzunahme migrationsspezifischer Dimensionen.",
+        "example_en": "In contradistinction to Bourdieu, I sharpen the concept of habitus by adding migration-specific dimensions."
       },
       {
         "idiom": "auf den Begriff bringen",
         "literal": "đưa vào khái niệm",
+        "literal_en": "to bring something to the concept",
         "meaning": "tìm được khái niệm chính xác cho hiện tượng (gehoben)",
         "meaning_en": "to put it into a concept — to find the exact term that captures a phenomenon (gehoben)",
-        "example": "Was lange unbenannt blieb, hat García mit ‚Translanguaging' auf den Begriff gebracht."
+        "example": "Was lange unbenannt blieb, hat García mit ‚Translanguaging' auf den Begriff gebracht.",
+        "example_en": "What long went unnamed, García gave a name to with 'Translanguaging'."
       },
       {
         "idiom": "Wein in alten Schläuchen",
         "literal": "rượu trong da rượu cũ",
+        "literal_en": "wine in old skins",
         "meaning": "khái niệm mới trong vỏ bọc cũ, sự lừa dối khái niệm (gehoben)",
         "meaning_en": "wine in old wineskins — repackaging an old idea under a new label, conceptual sleight of hand (gehoben)",
-        "example": "Manche Forscher servieren Code-Mixing als Translanguaging — das ist Wein in alten Schläuchen."
+        "example": "Manche Forscher servieren Code-Mixing als Translanguaging — das ist Wein in alten Schläuchen.",
+        "example_en": "Some researchers serve up Code-Mixing as Translanguaging — that's old wine in new bottles."
       },
       {
         "idiom": "ein zweischneidiges Schwert",
         "literal": "thanh kiếm hai lưỡi",
+        "literal_en": "a double-edged sword",
         "meaning": "khái niệm có cả mặt lợi và bất lợi (standardsprachlich)",
         "meaning_en": "a double-edged sword — a concept that brings both an advantage and a risk (standardsprachlich)",
-        "example": "Die heuristische Verwendung eines Begriffs ist ein zweischneidiges Schwert: Sie schützt vor Reifizierung, riskiert aber Konturlosigkeit."
+        "example": "Die heuristische Verwendung eines Begriffs ist ein zweischneidiges Schwert: Sie schützt vor Reifizierung, riskiert aber Konturlosigkeit.",
+        "example_en": "The heuristic use of a concept is a double-edged sword: it guards against reification but risks losing all contour."
       }
     ],
     "exercises": [
@@ -2211,36 +2268,49 @@ export const lessons: GermanLesson[] = [
       "Doktormutter hỏi tại sao không Methodentriangulation. Đáp: triangulation IS planned — sequenziell (KA generates hypotheses, Korpus validates). Biện minh thứ tự bằng theory-driven argument.",
       "Doktormutter hỏi 'Wie positionieren Sie sich im Methodenstreit?' Đáp formal: pragmatistische Position theo Tashakkori & Teddlie — Methodenwahl von Fragestellung determiniert, không paradigmatisch."
     ],
+    "roleplay_prompts_en": [
+      "Your Doktormutter asks you to justify the methodological choice between Conversation Analysis, corpus linguistics, and ethnography. Present a four-criterion grid (Kriterienraster: depth, generalisability, context-sensitivity, effort) + an assessment of each method.",
+      "Your Doktormutter asks why not method triangulation (Methodentriangulation). Answer: triangulation IS planned — sequentially (CA generates hypotheses, the corpus validates). Justify the ordering with a theory-driven argument.",
+      "Your Doktormutter asks 'Wie positionieren Sie sich im Methodenstreit?'. Answer formally: a pragmatist position after Tashakkori & Teddlie — method choice is determined by the research question, not by paradigm."
+    ],
     "register_notes": "So sánh phương pháp C1: cấu trúc 4-bước Kriterienraster → Pro/Contra → Bezug zur Fragestellung → Entscheidung + Begründung. Connectors: 'während' (đối với so sánh đối lập), 'demgegenüber' (đối lại formal), 'allerdings auf Kosten von' (song trên giá của). Funktionsverbgefüge: 'in den Vordergrund rücken' (đặt ở vị trí trung tâm), 'auf X abzielen' (hướng đến X), 'X als geeigneter erweisen' (X tỏ ra phù hợp hơn). Gütekriterien phân biệt rõ: quantitative (Validität, Reliabilität, Objektivität) vs qualitative (Glaubwürdigkeit, Übertragbarkeit, Zuverlässigkeit, Bestätigbarkeit theo Lincoln & Guba 1985). Methodenstreit positioning: 'pragmatistische Position' (Tashakkori & Teddlie 2003) — Methodenwahl von Fragestellung determiniert. Triangulation: phân loại 4 (Daten-, Methoden-, Theorien-, Investigatortriangulation). Sequenziell vs parallel — bắt buộc làm rõ.",
     "register_notes_en": "C1 method comparison: the 4-step Kriterienraster → Pro/Contra → Bezug zur Fragestellung → Entscheidung + Begründung structure. Connectives: 'während' (while — for contrastive comparison), 'demgegenüber' (against this — formal), 'allerdings auf Kosten von' (however at the cost of). Funktionsverbgefüge to use: 'in den Vordergrund rücken' (to put at the centre), 'auf X abzielen' (to aim at X), 'X als geeigneter erweisen' (X proves more suitable). Keep Gütekriterien properly separated: quantitative (Validität, Reliabilität, Objektivität) vs qualitative (Glaubwürdigkeit, Übertragbarkeit, Zuverlässigkeit, Bestätigbarkeit per Lincoln & Guba 1985). Methodenstreit positioning: take a 'pragmatistische Position' (Tashakkori & Teddlie 2003) — Methodenwahl determined by Fragestellung. Triangulation has four kinds: Daten-, Methoden-, Theorien-, Investigatortriangulation. Always clarify whether your triangulation is sequenziell (sequential) or parallel.",
     "idiom_glosses": [
       {
         "idiom": "zwei Fliegen mit einer Klappe schlagen",
         "literal": "đánh hai con ruồi với một cái vợt",
+        "literal_en": "to hit two flies with one swat",
         "meaning": "đạt hai mục tiêu cùng lúc (standardsprachlich)",
         "meaning_en": "to kill two flies with one swatter — to achieve two goals at once (the German cousin of 'kill two birds with one stone') (standardsprachlich)",
-        "example": "Mit der Methodentriangulation schlage ich zwei Fliegen mit einer Klappe — Tiefenschärfe und Breite."
+        "example": "Mit der Methodentriangulation schlage ich zwei Fliegen mit einer Klappe — Tiefenschärfe und Breite.",
+        "example_en": "With method triangulation I kill two birds with one stone — depth and breadth."
       },
       {
         "idiom": "den Königsweg beschreiten",
         "literal": "đi con đường vua",
+        "literal_en": "to walk the king's road",
         "meaning": "đi con đường tối ưu, lý tưởng (gehoben)",
         "meaning_en": "to walk the royal road — to take the optimal, ideal path (gehoben)",
-        "example": "Eine vollständige Methodentriangulation wäre der Königsweg — im Rahmen einer Promotion jedoch zeitlich nicht zu leisten."
+        "example": "Eine vollständige Methodentriangulation wäre der Königsweg — im Rahmen einer Promotion jedoch zeitlich nicht zu leisten.",
+        "example_en": "A full method triangulation would be the royal road — but within a doctorate it isn't feasible time-wise."
       },
       {
         "idiom": "Äpfel mit Birnen vergleichen",
         "literal": "so sánh táo với lê",
+        "literal_en": "to compare apples with pears",
         "meaning": "so sánh hai thứ không thể so sánh (standardsprachlich)",
         "meaning_en": "to compare apples with pears — German equivalent of 'apples to oranges'; comparing incommensurable things (standardsprachlich)",
-        "example": "Korpuslinguistik und Konversationsanalyse direkt zu vergleichen heißt teilweise, Äpfel mit Birnen zu vergleichen — sie operieren auf verschiedenen Ebenen."
+        "example": "Korpuslinguistik und Konversationsanalyse direkt zu vergleichen heißt teilweise, Äpfel mit Birnen zu vergleichen — sie operieren auf verschiedenen Ebenen.",
+        "example_en": "Comparing corpus linguistics and conversation analysis directly is partly comparing apples and oranges — they operate on different levels."
       },
       {
         "idiom": "das Pferd vom Schwanz aufzäumen",
         "literal": "thắng yên ngựa từ đuôi",
+        "literal_en": "to bridle the horse from the tail",
         "meaning": "tiếp cận sai chiều, ngược thứ tự (standardsprachlich)",
         "meaning_en": "to bridle the horse from the tail — to do something in the wrong order, back to front (standardsprachlich)",
-        "example": "Erst die Korpusanalyse, dann die theoriegeleitete Hypothesenbildung — das hieße, das Pferd vom Schwanz aufzuzäumen."
+        "example": "Erst die Korpusanalyse, dann die theoriegeleitete Hypothesenbildung — das hieße, das Pferd vom Schwanz aufzuzäumen.",
+        "example_en": "Corpus analysis first, then theory-driven hypothesis formation — that would be putting the cart before the horse."
       }
     ],
     "exercises": [
@@ -2603,36 +2673,49 @@ export const lessons: GermanLesson[] = [
       "Doktormutter yêu cầu cân bằng Kritik với Würdigung. Diễn đạt Würdigungsformel chuẩn: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie...' — không lippenbekenntnis.",
       "Đề xuất Verbesserungsvorschläge cụ thể: erweiterte Stichprobe + Methodentriangulation. Diễn đạt formal 'Eine Replikation mit X wäre wünschenswert. Zudem Y'."
     ],
+    "roleplay_prompts_en": [
+      "You are writing a Rezension for sehepunkte on a study, Müller 2022. Present the four-level critique structure to your Doktormutter: theoretical, methodological, empirical, interpretative — one concrete sentence per level.",
+      "Your Doktormutter asks you to balance critique with appreciation (Würdigung). Express the standard Würdigung formula: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie...' — not lip service.",
+      "Propose concrete improvement suggestions: an enlarged sample + method triangulation. Express formally: 'Eine Replikation mit X wäre wünschenswert. Zudem Y'."
+    ],
     "register_notes": "Studienkritik C1: cấu trúc 4-cấp Kritik (theoretisch / methodisch / empirisch / interpretativ) + Würdigung + Verbesserungsvorschläge + Gesamteinschätzung. Tỷ lệ chuẩn: 60-65% Kritik / 35-40% Würdigung. Funktionsverbgefüge: 'in den Blick nehmen' (đưa vào tầm nhìn), 'Mängel aufweisen' (cho thấy thiếu sót), 'in Frage stellen' (đặt vấn đề), 'einer Kritik unterziehen' (tiến hành phê phán). Kritisches Vokabular formal: 'unterbestimmt' (under-determined), 'unterrepräsentiert' (under-represented), 'fragwürdig' (questionable), 'übergehen' (skip over), 'relativieren' (relativize), 'beeinträchtigen' (impair). Würdigungsformel bắt buộc cuối: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie X'. KHÔNG 'die Studie ist schlecht' / 'der Autor versteht X nicht' (ad hominem). Kritik personnel hierarchy: kommissarisch (junior) reviewer dùng nhiều hedging hơn senior reviewer trong same Rezension.",
     "register_notes_en": "C1 Studienkritik: the 4-level Kritik structure (theoretisch / methodisch / empirisch / interpretativ) + Würdigung + Verbesserungsvorschläge + Gesamteinschätzung. Target ratio: 60–65% Kritik / 35–40% Würdigung. Funktionsverbgefüge: 'in den Blick nehmen' (to focus on), 'Mängel aufweisen' (to exhibit shortcomings), 'in Frage stellen' (to call into question), 'einer Kritik unterziehen' (to subject to critique). Formal critical vocabulary: 'unterbestimmt' (under-determined), 'unterrepräsentiert' (under-represented), 'fragwürdig' (questionable), 'übergehen' (to skip over), 'relativieren' (to relativise), 'beeinträchtigen' (to impair). The Würdigungsformel is mandatory at the end: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem sie X'. Do NOT write 'die Studie ist schlecht' or 'der Autor versteht X nicht' (ad hominem). Reviewer hierarchy matters: a kommissarisch (junior) reviewer uses more hedging than a senior reviewer in the same Rezension.",
     "idiom_glosses": [
       {
         "idiom": "den Finger in die Wunde legen",
         "literal": "đặt ngón tay vào vết thương",
+        "literal_en": "to lay the finger in the wound",
         "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
         "meaning_en": "to lay one's finger in the wound — to point precisely at a weakness (gehoben/standardsprachlich)",
-        "example": "Mit der Kritik an der Stichprobengröße legen Sie den Finger in die Wunde."
+        "example": "Mit der Kritik an der Stichprobengröße legen Sie den Finger in die Wunde.",
+        "example_en": "With the critique of the sample size you put your finger on the sore point."
       },
       {
         "idiom": "das Kind mit dem Bade ausschütten",
         "literal": "đổ đứa bé cùng nước tắm",
+        "literal_en": "to throw the child out with the bath",
         "meaning": "phê phán quá đà, phủ nhận điều tốt cùng điều xấu (gehoben)",
         "meaning_en": "to throw out the baby with the bathwater — to overshoot in critique, rejecting the good along with the bad (gehoben)",
-        "example": "Bei aller berechtigten Kritik sollten wir das Kind nicht mit dem Bade ausschütten — die Datenerhebung selbst ist solide."
+        "example": "Bei aller berechtigten Kritik sollten wir das Kind nicht mit dem Bade ausschütten — die Datenerhebung selbst ist solide.",
+        "example_en": "For all the legitimate criticism, we shouldn't throw the baby out with the bathwater — the data collection itself is solid."
       },
       {
         "idiom": "Wasser in den Wein gießen",
         "literal": "đổ nước vào rượu",
+        "literal_en": "to pour water into the wine",
         "meaning": "làm dịu, hạn chế sự phấn khởi (standardsprachlich)",
         "meaning_en": "to pour water into the wine — to dampen enthusiasm, to introduce a sobering qualifier (standardsprachlich)",
-        "example": "Lassen Sie mich Wasser in den Wein gießen: die Generalisierbarkeit ist deutlich enger, als die Schlussfolgerung suggeriert."
+        "example": "Lassen Sie mich Wasser in den Wein gießen: die Generalisierbarkeit ist deutlich enger, als die Schlussfolgerung suggeriert.",
+        "example_en": "Let me be the one to dampen the enthusiasm: the generalisability is much narrower than the conclusion suggests."
       },
       {
         "idiom": "auf tönernen Füßen stehen",
         "literal": "đứng trên chân đất sét (gốc Kinh Thánh, Daniel 2)",
+        "literal_en": "to stand on feet of clay",
         "meaning": "đứng trên cơ sở yếu, dễ sụp (gehoben)",
         "meaning_en": "to stand on feet of clay (biblical: Daniel 2) — to rest on a fragile foundation that may collapse (gehoben)",
-        "example": "Die Kausalbehauptung der Studie steht auf tönernen Füßen — ohne Replikation lässt sie sich nicht halten."
+        "example": "Die Kausalbehauptung der Studie steht auf tönernen Füßen — ohne Replikation lässt sie sich nicht halten.",
+        "example_en": "The study's causal claim stands on feet of clay — without replication it cannot be sustained."
       }
     ],
     "exercises": [
@@ -2995,36 +3078,49 @@ export const lessons: GermanLesson[] = [
       "Bạn là speaker. Trả lời 3 câu hỏi đa phần bằng cấu trúc 'Was Ihren ersten/zweiten/dritten Aspekt betrifft, würde ich folgendermaßen argumentieren'. Trên một điểm bạn không có data, dùng 'Diese Frage übersteigt den Rahmen — ich nehme die Anregung gern auf'.",
       "Junior Professor đặt câu hỏi về Doppelmandat ethics. Trả lời formal: clarify situation, mention Ethikvotum + drei konkrete Auflagen (pseudonymisierte Transkription, separate Speicherung, Löschung nach fünf Jahren)."
     ],
+    "roleplay_prompts_en": [
+      "You are the official Diskutant:in at a Tagung. Put three structured questions to the speaker: theoretical positioning, methodological self-selection, generalisability. Open with acknowledgment + localisation + a concrete question.",
+      "You are the speaker. Answer three multi-part questions using the structure 'Was Ihren ersten/zweiten/dritten Aspekt betrifft, würde ich folgendermaßen argumentieren'. On one point where you have no data, use 'Diese Frage übersteigt den Rahmen — ich nehme die Anregung gern auf'.",
+      "A junior professor raises a question about Doppelmandat ethics. Answer formally: clarify the situation, mention the Ethikvotum + three concrete conditions (pseudonymised transcription, separate storage, deletion after five years)."
+    ],
     "register_notes": "Q&A tại Tagung C1: 'Sie' tuyệt đối kể cả với người cùng tuổi/cấp. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Đặt câu hỏi 3 bước: Acknowledgment → Lokalisierung → Konkrete Frage. Trả lời 4 bước: Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (chạm điểm), 'den Rahmen übersteigen' (vượt khuôn khổ), 'eine Anregung aufnehmen' (tiếp thu gợi ý), 'eine Frage präzisieren' (làm chính xác). Khi không biết: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. KHÔNG 'Ich weiß es nicht' đơn. KHÔNG 'Das ist eine gute Frage' (clichéd). Multi-part question: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands có authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction tại Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 giây tối đa.",
     "register_notes_en": "C1 Tagung Q&A: 'Sie' is absolute, even with peers of equal age or rank. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Question structure (3 steps): Acknowledgment → Lokalisierung → Konkrete Frage. Answer structure (4 steps): Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (to touch on a point), 'den Rahmen übersteigen' (to exceed the scope), 'eine Anregung aufnehmen' (to take up a suggestion), 'eine Frage präzisieren' (to clarify). When you don't know: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. Do NOT say a bare 'Ich weiß es nicht'. Do NOT say 'Das ist eine gute Frage' (clichéd). For multi-part questions: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands carry authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction at Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 seconds maximum.",
     "idiom_glosses": [
       {
         "idiom": "den Ball zurückspielen",
         "literal": "đá quả bóng trở lại",
+        "literal_en": "to play the ball back",
         "meaning": "phản hồi lại câu hỏi (gehoben/standardsprachlich)",
         "meaning_en": "to play the ball back — to throw a question back to the asker (gehoben/standardsprachlich)",
-        "example": "Den Ball spiele ich kurz zurück: Bevor ich antworte, bitte ich um Klärung Ihrer Begrifflichkeit."
+        "example": "Den Ball spiele ich kurz zurück: Bevor ich antworte, bitte ich um Klärung Ihrer Begrifflichkeit.",
+        "example_en": "Let me play the ball back briefly: before I answer, I'd ask you to clarify your terminology."
       },
       {
         "idiom": "ins Schwarze treffen",
         "literal": "đánh trúng tâm đen (mục tiêu)",
+        "literal_en": "to hit the black (bullseye)",
         "meaning": "trúng đích, đặt câu hỏi hay (gehoben/standardsprachlich)",
         "meaning_en": "to hit the bullseye (the 'black' on a German target) — to ask a question right on point (gehoben/standardsprachlich)",
-        "example": "Mit dieser Frage haben Sie ins Schwarze getroffen — genau diesen Punkt diskutiere ich gerade in der Druckfassung."
+        "example": "Mit dieser Frage haben Sie ins Schwarze getroffen — genau diesen Punkt diskutiere ich gerade in der Druckfassung.",
+        "example_en": "With that question you hit the bullseye — that's exactly the point I'm discussing in the print version."
       },
       {
         "idiom": "den Punkt erschöpfen",
         "literal": "khai thác cạn điểm",
+        "literal_en": "to exhaust the point",
         "meaning": "thảo luận đầy đủ một chủ đề (gehoben)",
         "meaning_en": "to exhaust the point — to discuss a topic in full (gehoben)",
-        "example": "Diesen Punkt können wir nicht in fünf Minuten erschöpfen — gestatten Sie, dass ich Sie in der Pause anspreche."
+        "example": "Diesen Punkt können wir nicht in fünf Minuten erschöpfen — gestatten Sie, dass ich Sie in der Pause anspreche.",
+        "example_en": "We can't exhaust this point in five minutes — allow me to come back to you in the break."
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
         "literal": "là nước cho cối xay của ai đó",
+        "literal_en": "to be water on someone's mill",
         "meaning": "ủng hộ luận điểm của ai (gehoben)",
         "meaning_en": "to be water on someone's mill — to support someone's argument (the English equivalent is 'grist to one's mill') (gehoben)",
-        "example": "Ihr Einwand ist Wasser auf meine Mühle — er bestätigt meine Skepsis gegenüber pauschalen Generalisierungen."
+        "example": "Ihr Einwand ist Wasser auf meine Mühle — er bestätigt meine Skepsis gegenüber pauschalen Generalisierungen.",
+        "example_en": "Your objection is grist to my mill — it confirms my scepticism about sweeping generalisations."
       }
     ],
     "exercises": [
@@ -3392,36 +3488,49 @@ export const lessons: GermanLesson[] = [
       "Doktormutter yêu cầu chuyển từ 'wir haben aufgezeichnet und ausgewertet' sang Passiv + Nominalstil. Thực hành: 'Auf der Grundlage eines Korpus von X werden mittels Y-Verfahren ... rekonstruiert'.",
       "Doktormutter chỉ ra anti-hedging trong câu kết quả. Hedge xuống bằng 'Die Befunde legen nahe, dass...'. Hoàn thành Abstract 5-câu chuẩn (Frage / Methode / Befund / Beitrag) + 5 Schlüsselwörter."
     ],
+    "roleplay_prompts_en": [
+      "You submit a 320-word abstract for a Tagung that asks for max 250. Your Doktormutter points out the background warm-up (Hintergrund-Warmup) in the first sentence must be cut entirely. Express a replacement opening sentence that starts directly with the research question.",
+      "Your Doktormutter asks you to switch from 'wir haben aufgezeichnet und ausgewertet' to passive + nominal style. Practise: 'Auf der Grundlage eines Korpus von X werden mittels Y-Verfahren ... rekonstruiert'.",
+      "Your Doktormutter points out anti-hedging in the results sentence. Hedge it down with 'Die Befunde legen nahe, dass...'. Complete the standard five-sentence abstract (question / method / finding / contribution) + five keywords."
+    ],
     "register_notes": "Abstract C1: cấu trúc 5-câu IMRAD (Frage / Methode / Befund / Beitrag) + 4-6 Schlüsselwörter. 150-250 từ. Bắt đầu DIRECT với Forschungsfrage — KHÔNG Hintergrund-Warmup. Nominalstil heavy: 'auf der Grundlage von X' / 'mittels Y-Verfahren' / 'werden ... rekonstruiert' (Passiv). KHÔNG 'wir' / 'ich' nếu có thể tránh — Passiv ưa chuộng. Konjunktiv II hedge cho Befunde: 'Die Befunde legen nahe, dass...' / 'Es lässt sich annehmen, dass...'. Phân biệt: Abstract (≤250) ≠ Zusammenfassung (500-1000) ≠ Kurzfassung (~100) ≠ Exposé (5-10 trang plan). Schlüsselwörter: single nouns hoặc 2-word compounds, semicolon-separated. Tense: Präsens cho purpose / methods / results, Konjunktiv II cho hedged claims. Selbstreferenz: 'der vorliegende Beitrag' (formal nhất) > 'in diesem Beitrag'. Funktionsverbgefüge: 'einen Beitrag leisten zu' (đóng góp cho), 'eine Lücke schließen hinsichtlich' (khép khoảng trống về).",
     "register_notes_en": "C1 Abstract: 5-sentence IMRAD structure (Frage / Methode / Befund / Beitrag) + 4–6 Schlüsselwörter. 150–250 words. Start DIRECTLY with the Forschungsfrage — NO Hintergrund-Warmup. Heavy Nominalstil: 'auf der Grundlage von X' / 'mittels Y-Verfahren' / 'werden ... rekonstruiert' (Passiv). Avoid 'wir' / 'ich' where possible — Passiv is preferred. Konjunktiv II hedging for findings: 'Die Befunde legen nahe, dass...' / 'Es lässt sich annehmen, dass...'. Distinguish: Abstract (≤250) ≠ Zusammenfassung (500–1000) ≠ Kurzfassung (~100) ≠ Exposé (5–10 page plan). Schlüsselwörter: single nouns or 2-word compounds, semicolon-separated. Tense: Präsens for purpose / methods / results, Konjunktiv II for hedged claims. Selbstreferenz: 'der vorliegende Beitrag' (most formal) > 'in diesem Beitrag'. Funktionsverbgefüge: 'einen Beitrag leisten zu' (to make a contribution to), 'eine Lücke schließen hinsichtlich' (to close a gap with respect to).",
     "idiom_glosses": [
       {
         "idiom": "auf den Punkt bringen",
         "literal": "đưa vào đúng điểm",
+        "literal_en": "to bring to the point",
         "meaning": "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)",
         "meaning_en": "to bring to the point — to distil down to the essential core (standardsprachlich)",
-        "example": "Ein gelungenes Abstract bringt die Argumentation auf zwei Sätze auf den Punkt."
+        "example": "Ein gelungenes Abstract bringt die Argumentation auf zwei Sätze auf den Punkt.",
+        "example_en": "A successful abstract gets the argument across in two sentences."
       },
       {
         "idiom": "in aller Kürze",
         "literal": "trong tất cả ngắn gọn",
+        "literal_en": "in all brevity",
         "meaning": "rất ngắn gọn (gehoben/standardsprachlich)",
         "meaning_en": "in all brevity — very briefly (gehoben/standardsprachlich)",
-        "example": "Das Abstract muss in aller Kürze die zentrale These und die methodische Anlage vermitteln."
+        "example": "Das Abstract muss in aller Kürze die zentrale These und die methodische Anlage vermitteln.",
+        "example_en": "The abstract has to convey the central thesis and the methodological design in the briefest form."
       },
       {
         "idiom": "ein Schaufenster sein",
         "literal": "là một cửa sổ trưng bày",
+        "literal_en": "to be a shop window",
         "meaning": "là showcase đại diện cho work (standardsprachlich)",
         "meaning_en": "to be a shop window — to be the public-facing showcase of the work (standardsprachlich)",
-        "example": "Das Abstract ist das Schaufenster Ihrer Arbeit — Tagungs-Komitees entscheiden auf seiner Grundlage."
+        "example": "Das Abstract ist das Schaufenster Ihrer Arbeit — Tagungs-Komitees entscheiden auf seiner Grundlage.",
+        "example_en": "The abstract is the shop window of your work — conference committees decide on its basis."
       },
       {
         "idiom": "die Spreu vom Weizen trennen",
         "literal": "tách trấu khỏi lúa mì (gốc Kinh Thánh)",
+        "literal_en": "to separate the chaff from the wheat",
         "meaning": "phân biệt cốt lõi khỏi không cần thiết (gehoben)",
         "meaning_en": "to separate the chaff from the wheat (biblical) — to distinguish the essential from the inessential (gehoben)",
-        "example": "Bei der Abstract-Kürzung müssen Sie die Spreu vom Weizen trennen — Hintergrundsätze sind Spreu."
+        "example": "Bei der Abstract-Kürzung müssen Sie die Spreu vom Weizen trennen — Hintergrundsätze sind Spreu.",
+        "example_en": "When cutting an abstract you have to separate the wheat from the chaff — background sentences are chaff."
       }
     ],
     "exercises": [
@@ -3769,36 +3878,49 @@ export const lessons: GermanLesson[] = [
       "Reviewer 2 yêu cầu thay thế khung lý thuyết (Bourdieu → Foucault). Diễn đạt câu từ chối khôn khéo: 'Ihre Anregung habe ich sorgfältig erwogen' + lý do từ chối + thừa nhận một phần ('eine Diskussion habe ich auf S. 78 ergänzt').",
       "Editor (Herausgeberin) hỏi tại sao bạn accept Reviewer 1 + 3 nhưng reject 2 đề xuất của Reviewer 2. Trình bày rõ ràng cấu trúc Begründung formal — không defensive, không apologetic."
     ],
+    "roleplay_prompts_en": [
+      "You have received peer review on a submitted article with three reviewers. Reviewer 2 proposes a quantitative expansion that conflicts with your qualitative design. Express the formal refusal: 'An diesem Punkt sehe ich mich aus methodischen Gründen nicht in der Lage, dem Vorschlag zu folgen' + a two-point justification.",
+      "Reviewer 2 wants you to replace the theoretical framework (Bourdieu → Foucault). Express a tactful refusal: 'Ihre Anregung habe ich sorgfältig erwogen' + the reason for declining + a partial concession ('eine Diskussion habe ich auf S. 78 ergänzt').",
+      "The editor (Herausgeberin) asks why you accepted Reviewers 1 and 3 but rejected two of Reviewer 2's proposals. Present the justification clearly and formally — not defensive, not apologetic."
+    ],
     "register_notes": "Peer review C1 Đức: cấu trúc Gutachten 5-phần (Zusammenfassung / allgemeine Bewertung / substanzielle Anmerkungen / formale Anmerkungen / Empfehlung). 4 Empfehlungskategorien: Annahme / Annahme mit kleinen Änderungen / Überarbeitung erforderlich / Ablehnung. Erwiderung cấu trúc: Anschreiben + Punkt-für-Punkt-Antwort. Khi từ chối reviewer comment: 'An diesem Punkt sehe ich mich aus X-Gründen nicht in der Lage, dem Vorschlag zu folgen' + Begründung explizit. KHÔNG silent ignore. KHÔNG 'Reviewer hat das nicht verstanden' (defensive). Funktionsverbgefüge: 'einen Vorschlag erwägen' (cân nhắc đề xuất), 'von einer Umsetzung absehen' (từ chối thực hiện), 'einer Anregung gerecht werden' (làm công bằng gợi ý). Tone formal: substantive + balanced + constructive. Tránh Reviewer-2-pattern (nitpick / harsh / over-extending). Konjunktiv II cho hypothetische changes: 'Eine Erweiterung würde X gefährden'. Acknowledge partial uptake khi từ chối main proposal: 'eine Diskussion habe ich auf S. X ergänzt'.",
     "register_notes_en": "German C1 peer review: 5-part Gutachten structure (Zusammenfassung / allgemeine Bewertung / substanzielle Anmerkungen / formale Anmerkungen / Empfehlung). Four Empfehlung categories: Annahme / Annahme mit kleinen Änderungen / Überarbeitung erforderlich / Ablehnung. Erwiderung structure: Anschreiben + Punkt-für-Punkt-Antwort. When declining a reviewer comment: 'An diesem Punkt sehe ich mich aus X-Gründen nicht in der Lage, dem Vorschlag zu folgen' + explicit Begründung. Do NOT silently ignore. Do NOT 'Reviewer hat das nicht verstanden' (defensive). Funktionsverbgefüge: 'einen Vorschlag erwägen' (to weigh a proposal), 'von einer Umsetzung absehen' (to refrain from implementation), 'einer Anregung gerecht werden' (to do justice to a suggestion). Tone: substantive + balanced + constructive. Avoid the Reviewer-2 pattern (nitpicking / harsh / over-extending). Use Konjunktiv II for hypothetical changes: 'Eine Erweiterung würde X gefährden'. Acknowledge partial uptake when declining the main proposal: 'eine Diskussion habe ich auf S. X ergänzt'.",
     "idiom_glosses": [
       {
         "idiom": "das Salz in der Suppe sein",
         "literal": "là muối trong canh",
+        "literal_en": "to be the salt in the soup",
         "meaning": "yếu tố then chốt làm cái gì có giá trị (gehoben/standardsprachlich)",
         "meaning_en": "to be the salt in the soup — the key element that gives something its value (gehoben/standardsprachlich)",
-        "example": "Substantielle Begutachtungen sind das Salz des wissenschaftlichen Diskurses."
+        "example": "Substantielle Begutachtungen sind das Salz des wissenschaftlichen Diskurses.",
+        "example_en": "Substantive reviews are the salt of scholarly discourse."
       },
       {
         "idiom": "Reviewer 2",
         "literal": "(người đánh giá thứ 2 — tiếng lóng quốc tế)",
+        "literal_en": "Reviewer 2 (the proverbially harsh anonymous reviewer)",
         "meaning": "reviewer khắt khe / nitpicky (umgangssprachlich, science Twitter)",
         "meaning_en": "international science-Twitter shorthand for a harsh / nitpicky reviewer (umgangssprachlich)",
-        "example": "Achten Sie darauf, in Ihrem Gutachten nicht zu Reviewer 2 zu werden — bleiben Sie konstruktiv."
+        "example": "Achten Sie darauf, in Ihrem Gutachten nicht zu Reviewer 2 zu werden — bleiben Sie konstruktiv.",
+        "example_en": "Be careful not to become 'Reviewer 2' in your own report — stay constructive."
       },
       {
         "idiom": "den Spagat machen",
         "literal": "tách chân (kiểu thể dục)",
+        "literal_en": "to do the splits",
         "meaning": "balance giữa hai yêu cầu mâu thuẫn (gehoben/standardsprachlich)",
         "meaning_en": "to do the splits — to balance between two conflicting demands (gehoben/standardsprachlich)",
-        "example": "Bei der Erwiderung machen Sie den Spagat zwischen Konsistenz Ihrer Position und Anerkennung der Reviewer-Kritik."
+        "example": "Bei der Erwiderung machen Sie den Spagat zwischen Konsistenz Ihrer Position und Anerkennung der Reviewer-Kritik.",
+        "example_en": "In the response you do a balancing act between the consistency of your position and acknowledgement of the reviewer's critique."
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
         "literal": "là nước cho cối xay của ai",
+        "literal_en": "to be water on someone's mill",
         "meaning": "ủng hộ luận điểm của ai (gehoben)",
         "meaning_en": "to be water on someone's mill — to support someone's argument ('grist to one's mill') (gehoben)",
-        "example": "Gutachter 1's Anregung war Wasser auf meine Mühle — sie bestätigte einen Punkt, den ich bereits ausführlich behandelt hatte."
+        "example": "Gutachter 1's Anregung war Wasser auf meine Mühle — sie bestätigte einen Punkt, den ich bereits ausführlich behandelt hatte.",
+        "example_en": "Reviewer 1's suggestion was grist to my mill — it confirmed a point I had already treated at length."
       }
     ],
     "exercises": [
@@ -4151,36 +4273,49 @@ export const lessons: GermanLesson[] = [
       "HR-Leiter đề xuất 6% thay vì 8%. Đáp formal: chấp nhận hiện tại không đủ + đề nghị Zwischenüberprüfung im Q2 mit konkreten Meilensteinen. KHÔNG ‚das ist zu wenig' (zu konfrontativ).",
       "Khi rejected complete (‚Budget zu eng'): đề nghị alternative Komponenten (Weiterbildungsbudget, Home-Office, Dienstwagen) — diễn đạt ‚Wäre alternativ X denkbar?' formal."
     ],
+    "roleplay_prompts_en": [
+      "You are a Senior Engineer in Munich with five years' experience. You request a +8% salary adjustment in the annual Mitarbeitergespräch. Open formally: 'Vor dem Hintergrund der erweiterten Verantwortung halte ich X für angemessen' + three concrete achievements.",
+      "The HR head offers 6% instead of 8%. Respond formally: accept that the present figure isn't enough + propose a mid-year review (Zwischenüberprüfung im Q2) with concrete milestones. Do NOT say 'das ist zu wenig' (too confrontational).",
+      "When rejected completely ('Budget zu eng'): propose alternative components (training budget, home office, company car) — express 'Wäre alternativ X denkbar?' formally."
+    ],
     "register_notes": "Gehaltsverhandlung C1: ‚Sie' tuyệt đối với HR-Leiter / Vorgesetzte. Konjunktiv II cho soft request: ‚Ich hätte gerne über X gesprochen' / ‚wäre Y denkbar'. Funktionsverbgefüge: ‚in ein klares Verhältnis setzen' (đặt vào quan hệ rõ), ‚zur Kenntnis nehmen' (ghi nhận), ‚an X koppeln' (gắn với X). Argument-Struktur: ‚Vor dem Hintergrund von X halte ich Y für angemessen' — Kausale Begründung formal. Marktreferenz bắt buộc: ‚gemessen an vergleichbaren Positionen im Markt'. KHÔNG ‚ich brauche mehr' (persönliches Bedürfnis), KHÔNG ‚alle anderen verdienen mehr' (peer-Vergleich, schwach). Khi sếp gegenangebot: KHÔNG sofort accept; nói ‚Ich möchte das in Ruhe prüfen — Anfang nächster Woche melde ich mich zurück' để có Bedenkzeit. Khi rejected: ‚Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' — wandelt Niederlage in roadmap.",
     "register_notes_en": "C1 Gehaltsverhandlung: 'Sie' is absolute with HR-Leiter / Vorgesetzte. Konjunktiv II for soft requests: 'Ich hätte gerne über X gesprochen' / 'wäre Y denkbar'. Funktionsverbgefüge: 'in ein klares Verhältnis setzen' (to put into a clear ratio), 'zur Kenntnis nehmen' (to take note), 'an X koppeln' (to tie to X). Argument structure: 'Vor dem Hintergrund von X halte ich Y für angemessen' — formal causal Begründung. Marktreferenz is mandatory: 'gemessen an vergleichbaren Positionen im Markt'. Do NOT 'ich brauche mehr' (persönliches Bedürfnis); do NOT 'alle anderen verdienen mehr' (peer comparison, weak). When the boss counter-offers: do NOT immediately accept; say 'Ich möchte das in Ruhe prüfen — Anfang nächster Woche melde ich mich zurück' to gain Bedenkzeit. When rejected: 'Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' — turns the defeat into a roadmap.",
     "idiom_glosses": [
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
+        "literal_en": "to lay the cards on the table",
         "meaning": "minh bạch hóa, công khai dữ liệu (standardsprachlich)",
         "meaning_en": "to lay one's cards on the table — to be transparent, put the data in plain view (standardsprachlich)",
-        "example": "Lassen Sie uns die Karten auf den Tisch legen — hier ist mein Stepstone-Vergleich, und hier ist meine Leistungsbilanz."
+        "example": "Lassen Sie uns die Karten auf den Tisch legen — hier ist mein Stepstone-Vergleich, und hier ist meine Leistungsbilanz.",
+        "example_en": "Let's put our cards on the table — here is my Stepstone comparison, and here is my performance record."
       },
       {
         "idiom": "in trockenen Tüchern sein",
         "literal": "ở trong khăn khô",
+        "literal_en": "to be in dry cloths",
         "meaning": "đã được giải quyết chắc chắn, ‚in the bag' (standardsprachlich)",
         "meaning_en": "to be 'in dry towels' — to be settled, signed, sealed (English: 'in the bag') (standardsprachlich)",
-        "example": "Sobald die Freigabe vom Bereichsleiter da ist, ist die Anpassung in trockenen Tüchern."
+        "example": "Sobald die Freigabe vom Bereichsleiter da ist, ist die Anpassung in trockenen Tüchern.",
+        "example_en": "Once the divisional head's approval is in, the adjustment is done and dusted."
       },
       {
         "idiom": "Spielraum haben",
         "literal": "có không gian chơi",
+        "literal_en": "to have room to manoeuvre",
         "meaning": "có dư địa thương lượng (standardsprachlich)",
         "meaning_en": "to have play-room — to have negotiating room or wiggle room (standardsprachlich)",
-        "example": "Ich gehe davon aus, dass beim variablen Anteil noch Spielraum besteht."
+        "example": "Ich gehe davon aus, dass beim variablen Anteil noch Spielraum besteht.",
+        "example_en": "I assume there's still some room to move on the variable component."
       },
       {
         "idiom": "den Ball flach halten",
         "literal": "giữ quả bóng thấp (gốc bóng đá)",
+        "literal_en": "to keep the ball low",
         "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
         "meaning_en": "to keep the ball low (football idiom) — to keep tone calm, don't escalate (standardsprachlich)",
-        "example": "Auch wenn ich enttäuscht bin, halte ich den Ball flach — das nächste Gespräch ist wichtiger als heute."
+        "example": "Auch wenn ich enttäuscht bin, halte ich den Ball flach — das nächste Gespräch ist wichtiger als heute.",
+        "example_en": "Even though I'm disappointed, I'm keeping things low-key — the next conversation matters more than today's."
       }
     ],
     "exercises": [
@@ -4531,36 +4666,49 @@ export const lessons: GermanLesson[] = [
       "HR đề nghị Wettbewerbsverbot 24 Monate gesamteuropäisch. Đáp formal: ‚unverhältnismäßig' + Alternativvorschlag: 12 Monate DACH-Raum + Karenzentschädigung 50%. KHÔNG ‚das ist zu viel' (zu vage).",
       "HR sagt Standardvertrag nicht änderbar. Đáp formal: ‚Ich verstehe — gleichwohl bitte ich um Prüfung. In der jetzigen Form könnte ich nicht unterzeichnen' — KHÔNG drohung, KHÔNG emotional, sachlich + alternativ-orientiert."
     ],
+    "roleplay_prompts_en": [
+      "You receive a draft contract for a senior position at a Berlin startup. Open the negotiation formally: 'Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen' + name the specific sections (non-compete, confidentiality, overtime).",
+      "HR proposes a 24-month, pan-European non-compete. Respond formally: 'unverhältnismäßig' + a counterproposal: 12 months DACH region + 50% compensation during the restraint period (Karenzentschädigung). Do NOT say 'das ist zu viel' (too vague).",
+      "HR says the standard contract isn't changeable. Respond formally: 'Ich verstehe — gleichwohl bitte ich um Prüfung. In der jetzigen Form könnte ich nicht unterzeichnen' — no threat, no emotion, factual + alternative-oriented."
+    ],
     "register_notes": "Vertragsverhandlung C1: ‚Sie' tuyệt đối với HR. Konjunktiv II cho Vorschläge: ‚würde ich anregen', ‚wäre denkbar', ‚schlage ich vor'. Funktionsverbgefüge: ‚in Frage stellen' (đặt vấn đề), ‚zur Kenntnis nehmen' (ghi nhận), ‚Abstand nehmen von' (rút khỏi). Khi pushback: ‚in der vorliegenden Form nicht tragfähig' / ‚unverhältnismäßig' (formal kritik). Konstruktiv: ‚würde ich anregen, X' / ‚schlage ich Y vor' — alternativ statt nur Ablehnung. Top 3 typische Klauseln: Wettbewerbsverbot, Vertraulichkeit, Überstunden. KHÔNG verhandeln 5+ Klauseln (signalisiert ‚schwierig'). KHÔNG drohung (‚sonst gehe ich'). Khi Standard-Klausel argumentiert: ‚Ich verstehe — gleichwohl bitte ich um Prüfung' (formal Pushback ohne Konfrontation). Schlüsselformel: ‚Diese Anpassungen sind nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' — kết hợp Konstruktivität + Prinzip.",
     "register_notes_en": "C1 Vertragsverhandlung: 'Sie' is absolute with HR. Konjunktiv II for proposals: 'würde ich anregen', 'wäre denkbar', 'schlage ich vor'. Funktionsverbgefüge: 'in Frage stellen' (call into question), 'zur Kenntnis nehmen' (note), 'Abstand nehmen von' (withdraw from). When pushing back: 'in der vorliegenden Form nicht tragfähig' / 'unverhältnismäßig' (formal critique). Stay constructive: 'würde ich anregen, X' / 'schlage ich Y vor' — propose an alternative rather than only refusing. Top 3 typical clauses: Wettbewerbsverbot, Vertraulichkeit, Überstunden. Do NOT negotiate 5+ clauses (signals 'difficult'). Do NOT threaten ('sonst gehe ich'). When HR argues a standard clause: 'Ich verstehe — gleichwohl bitte ich um Prüfung' (formal pushback without confrontation). Key closing formula: 'Diese Anpassungen sind nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' — combines constructiveness with principle.",
     "idiom_glosses": [
       {
         "idiom": "die Symmetrie wahren",
         "literal": "giữ tính đối xứng",
+        "literal_en": "to preserve the symmetry",
         "meaning": "duy trì cân bằng hai bên trong hợp đồng (gehoben/standardsprachlich)",
         "meaning_en": "to preserve the symmetry — to maintain balance between the two sides of a contract (gehoben/standardsprachlich)",
-        "example": "Eine symmetrische Kündigungsfrist wahrt die Symmetrie zwischen Arbeitgeber und Arbeitnehmer."
+        "example": "Eine symmetrische Kündigungsfrist wahrt die Symmetrie zwischen Arbeitgeber und Arbeitnehmer.",
+        "example_en": "A symmetrical notice period preserves the balance between employer and employee."
       },
       {
         "idiom": "in trockenen Tüchern",
         "literal": "trong khăn khô",
+        "literal_en": "in dry cloths",
         "meaning": "đã được giải quyết chắc chắn (standardsprachlich)",
         "meaning_en": "in dry towels — done and dusted, 'in the bag' (standardsprachlich)",
-        "example": "Sobald die drei Klauseln angepasst sind, ist der Vertrag in trockenen Tüchern."
+        "example": "Sobald die drei Klauseln angepasst sind, ist der Vertrag in trockenen Tüchern.",
+        "example_en": "Once the three clauses are adjusted, the contract is signed and sealed."
       },
       {
         "idiom": "Hand und Fuß haben",
         "literal": "có tay và chân",
+        "literal_en": "to have hand and foot",
         "meaning": "có cơ sở vững chắc (standardsprachlich)",
         "meaning_en": "to have hand and foot — to have a solid, well-grounded basis (standardsprachlich)",
-        "example": "Mein Einwand zum Wettbewerbsverbot hat Hand und Fuß — ohne Karenzentschädigung ist die Klausel ohnehin nichtig."
+        "example": "Mein Einwand zum Wettbewerbsverbot hat Hand und Fuß — ohne Karenzentschädigung ist die Klausel ohnehin nichtig.",
+        "example_en": "My objection to the non-compete holds water — without compensation the clause is void anyway."
       },
       {
         "idiom": "die Pferde scheu machen",
         "literal": "làm ngựa hoảng (gốc cưỡi ngựa)",
+        "literal_en": "to make the horses skittish",
         "meaning": "gây hoang mang, đẩy đối phương vào defensive (gehoben/standardsprachlich)",
         "meaning_en": "to spook the horses (equestrian origin) — to alarm the other side, push them into defensive mode (gehoben/standardsprachlich)",
-        "example": "Ich verhandle gleichzeitig nur drei Klauseln — fünf wären zu viel, das macht die HR-Pferde scheu."
+        "example": "Ich verhandle gleichzeitig nur drei Klauseln — fünf wären zu viel, das macht die HR-Pferde scheu.",
+        "example_en": "I'm only negotiating three clauses at once — five would be too many and would spook HR."
       }
     ],
     "exercises": [
@@ -4911,36 +5059,49 @@ export const lessons: GermanLesson[] = [
       "Engineering muốn skip 3-Punkte-Regel ‚wir haben nur 80 Minuten'. Đáp formal: ‚Bevor wir das tun, schlage ich vor...' + Begründung tại sao 3 điểm cốt lõi vor Diskussion produktiver hơn.",
       "Sackgasse zwischen Engineering Ressourcen-Schutz và Vertrieb Customizing-Zusage. Diễn đạt formal: ‚auf höhere Aggregationsebene heben' + đề xuất Bilateral-Pause 15 phút + Schlüsselformel Abschluss-Zusammenfassung."
     ],
+    "roleplay_prompts_en": [
+      "You moderate a 90-minute multi-party negotiation between Engineering, Sales, and Legal. Open formally: stake out the frame (Rahmen abstecken) + clarify your role ('Meine Rolle ist heute moderierend') + clarify the minutes + the three-point rule.",
+      "Engineering wants to skip the three-point rule 'wir haben nur 80 Minuten'. Respond formally: 'Bevor wir das tun, schlage ich vor...' + a justification of why three core points before discussion is more productive.",
+      "A deadlock between Engineering's resource protection and Sales's customising commitment. Express formally: 'auf höhere Aggregationsebene heben' + propose a 15-minute bilateral pause + a closing-summary key formula."
+    ],
     "register_notes": "Mehrparteien-Verhandlung-Moderation C1: ‚Sie' tuyệt đối với mọi Teilnehmer. Konjunktiv II cho Vorschläge: ‚Ich schlage vor, dass...', ‚Wäre denkbar...'. Funktionsverbgefüge: ‚den Rahmen abstecken' (xác định khung), ‚Klarheit verschaffen' (làm rõ), ‚in Sackgasse geraten' (rơi vào ngõ cụt), ‚auf höhere Aggregationsebene heben' (nâng cấp tổng hợp). Rollenklarheit bắt buộc: ‚Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. 3-Punkte-Regel: ‚jede Seite formuliert ihre Kernanforderungen in höchstens drei Punkten'. Khi dominiert: ‚Lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch X dazu die Gelegenheit hat'. Bilateral-Pause Tool: ‚fünfzehn Minuten Bilateral-Pause — kommen mit Vorschlag zurück'. Abschluss-Verifikation: ‚Habe ich das richtig zusammengefasst?'. KHÔNG ankert (zuerst Zahl nennen) als Moderator. KHÔNG eigene fachliche Position vertreten ohne explicite Rollen-Wechsel-Ankündigung.",
     "register_notes_en": "C1 Mehrparteien-Verhandlung moderation: 'Sie' is absolute with every participant. Konjunktiv II for proposals: 'Ich schlage vor, dass…', 'Wäre denkbar…'. Funktionsverbgefüge: 'den Rahmen abstecken' (mark out the frame), 'Klarheit verschaffen' (provide clarity), 'in Sackgasse geraten' (end up in a dead end), 'auf höhere Aggregationsebene heben' (lift to a higher level of aggregation). Rollenklarheit is mandatory: 'Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. The 3-Punkte-Regel: 'jede Seite formuliert ihre Kernanforderungen in höchstens drei Punkten'. When dominated: 'Lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch X dazu die Gelegenheit hat'. Bilateral-Pause tool: 'fünfzehn Minuten Bilateral-Pause — kommen mit Vorschlag zurück'. Closing verification: 'Habe ich das richtig zusammengefasst?'. Do NOT anchor (name a number first) as moderator. Do NOT represent your own fachliche Position without an explicit role-switch announcement.",
     "idiom_glosses": [
       {
         "idiom": "die Fäden in der Hand halten",
         "literal": "giữ các sợi chỉ trong tay",
+        "literal_en": "to hold the threads in one's hand",
         "meaning": "kiểm soát quá trình (gehoben/standardsprachlich)",
         "meaning_en": "to hold the threads in one's hand — to control the process (gehoben/standardsprachlich)",
-        "example": "Als Moderator halte ich die Fäden in der Hand, ohne selbst Position zu beziehen."
+        "example": "Als Moderator halte ich die Fäden in der Hand, ohne selbst Position zu beziehen.",
+        "example_en": "As moderator I hold the strings without taking a position myself."
       },
       {
         "idiom": "alle ins Boot holen",
         "literal": "đưa tất cả lên thuyền",
+        "literal_en": "to get everyone into the boat",
         "meaning": "đảm bảo mọi bên tham gia / đồng thuận (standardsprachlich)",
         "meaning_en": "to get everyone into the boat — to ensure every party is on board / aligned (standardsprachlich)",
-        "example": "Bevor wir entscheiden, müssen wir alle drei Bereiche ins Boot holen — sonst trägt die Vereinbarung nicht."
+        "example": "Bevor wir entscheiden, müssen wir alle drei Bereiche ins Boot holen — sonst trägt die Vereinbarung nicht.",
+        "example_en": "Before we decide, we have to get all three divisions on board — otherwise the agreement won't hold."
       },
       {
         "idiom": "auf den Tisch bringen",
         "literal": "đưa lên bàn",
+        "literal_en": "to bring onto the table",
         "meaning": "đặt lên bàn thảo luận, công khai (standardsprachlich)",
         "meaning_en": "to put on the table — to make explicit, open it up for discussion (standardsprachlich)",
-        "example": "Bringen wir die Konflikte auf den Tisch, statt sie in Kaffee-Pausen auszutragen."
+        "example": "Bringen wir die Konflikte auf den Tisch, statt sie in Kaffee-Pausen auszutragen.",
+        "example_en": "Let's get the conflicts out into the open instead of fighting them out in coffee breaks."
       },
       {
         "idiom": "ein gemeinsamer Nenner",
         "literal": "một mẫu số chung",
+        "literal_en": "a common denominator",
         "meaning": "điểm đồng thuận tối thiểu (standardsprachlich)",
         "meaning_en": "a common denominator — the minimum point of agreement (standardsprachlich)",
-        "example": "Auf höherer Aggregationsebene finden wir den gemeinsamen Nenner — beide Seiten wollen Vertragsabschluss noch dieses Quartal."
+        "example": "Auf höherer Aggregationsebene finden wir den gemeinsamen Nenner — beide Seiten wollen Vertragsabschluss noch dieses Quartal.",
+        "example_en": "At a higher level of aggregation we find common ground — both sides want a contract signed this quarter."
       }
     ],
     "exercises": [
@@ -5296,36 +5457,49 @@ export const lessons: GermanLesson[] = [
       "Lieferant counter-offer 3% statt 4%. Đáp formal: chấp nhận như erster Schritt + Bewährungs-Pfad zu 4% mit konkreten KPIs (Forecast-Genauigkeit 90%, Pünktlichkeit 95%). KHÔNG ‚Wettbewerber gibt billiger'.",
       "Đề xuất Lieferzeit-Reduktion von 12 auf 10 Wochen über Forecast-getriebene Vorfertigung mit 80% Commit-Rate. Diễn đạt Schlussformel partnership-orientiert: ‚gemeinsame Optimierung von Preis, Qualität, Lieferzuverlässigkeit'."
     ],
+    "roleplay_prompts_en": [
+      "You are a Procurement Lead negotiating with a German machine-building supplier in Stuttgart. Open formally: 'Vor dem Hintergrund unserer Volumen-Steigerung von 18%...' + three topics (terms / lead times / quality assurance).",
+      "The supplier counters with 3% instead of 4%. Respond formally: accept it as a first step + a probation path to 4% with concrete KPIs (forecast accuracy 90%, punctuality 95%). Do NOT say 'a competitor offers cheaper'.",
+      "Propose reducing lead time from 12 to 10 weeks via forecast-driven pre-production with an 80% commit rate. Express a partnership-oriented closing formula: 'gemeinsame Optimierung von Preis, Qualität, Lieferzuverlässigkeit'."
+    ],
     "register_notes": "Lieferanten-Verhandlung C1: ‚Sie' tuyệt đối với Vertrieb. Konjunktiv II không obligatory — Indikativ direct + sachlich OK. Funktionsverbgefüge: ‚an der Grenze des Tragbaren liegen' (ở giới hạn chịu đựng), ‚in Anpassung treten' (đi vào điều chỉnh), ‚zur Geltung bringen' (làm có hiệu lực). Argument-Struktur: ‚Vor dem Hintergrund von X halten wir Y für angezeigt' (trên cơ sở X, Y là cần thiết). Konkret-Vorschlag formula: ‚Konkret schlagen wir A vor, gekoppelt an B' (cụ thể đề xuất A, gắn với B). Win-Win framing: ‚Im Gegenzug bieten wir X' (đổi lại chúng tôi đề xuất X). Partnership formula bắt buộc: ‚langfristige Partnerschaft setzt voraus, dass beide Seiten X gemeinsam optimieren'. KHÔNG ‚Wettbewerb gibt billiger' (unprofessional in DACH). KHÔNG aggressive Threats. Bewährungs-Mechanismus oft hữu ích — Probezeit + KPIs + Eskalation zu besseren Konditionen.",
     "register_notes_en": "C1 Lieferanten-Verhandlung: 'Sie' is absolute with sales. Konjunktiv II is NOT obligatory here — direct, sachlich indicative is fine. Funktionsverbgefüge: 'an der Grenze des Tragbaren liegen' (to be at the limit of what's bearable), 'in Anpassung treten' (to enter into an adjustment), 'zur Geltung bringen' (to bring into effect). Argument structure: 'Vor dem Hintergrund von X halten wir Y für angezeigt' (against the background of X, we consider Y warranted). Concrete-proposal formula: 'Konkret schlagen wir A vor, gekoppelt an B'. Win-Win framing: 'Im Gegenzug bieten wir X'. Mandatory partnership formula: 'langfristige Partnerschaft setzt voraus, dass beide Seiten X gemeinsam optimieren'. Do NOT 'Wettbewerb gibt billiger' (reads as unprofessional in DACH). Do NOT use aggressive threats. A Bewährungs-Mechanismus is often useful — a trial period + KPIs + escalation to better terms.",
     "idiom_glosses": [
       {
         "idiom": "Hand in Hand arbeiten",
         "literal": "làm việc tay trong tay",
+        "literal_en": "to work hand in hand",
         "meaning": "hợp tác chặt chẽ (standardsprachlich)",
         "meaning_en": "to work hand in hand — to cooperate closely (standardsprachlich)",
-        "example": "Eine langfristige Partnerschaft funktioniert nur, wenn Procurement und Lieferant Hand in Hand arbeiten."
+        "example": "Eine langfristige Partnerschaft funktioniert nur, wenn Procurement und Lieferant Hand in Hand arbeiten.",
+        "example_en": "A long-term partnership only works if procurement and supplier work hand in hand."
       },
       {
         "idiom": "den Markt sondieren",
         "literal": "thăm dò thị trường",
+        "literal_en": "to sound out the market",
         "meaning": "khảo sát giá / điều kiện thị trường (gehoben/standardsprachlich)",
         "meaning_en": "to sound out the market — to survey prices/conditions on the market (gehoben/standardsprachlich)",
-        "example": "Bevor wir verhandeln, sondieren wir den Markt — drei alternative Lieferanten benchmarked."
+        "example": "Bevor wir verhandeln, sondieren wir den Markt — drei alternative Lieferanten benchmarked.",
+        "example_en": "Before we negotiate, we sound out the market — three alternative suppliers benchmarked."
       },
       {
         "idiom": "ein Ass im Ärmel haben",
         "literal": "có quân Át trong tay áo",
+        "literal_en": "to have an ace up one's sleeve",
         "meaning": "có lợi thế bí mật trong đàm phán (standardsprachlich)",
         "meaning_en": "to have an ace up one's sleeve — to hold a hidden advantage in a negotiation (standardsprachlich)",
-        "example": "Mit Forecast-Sharing haben wir ein Ass im Ärmel — der Lieferant gewinnt Planungssicherheit, wir gewinnen Preisspielraum."
+        "example": "Mit Forecast-Sharing haben wir ein Ass im Ärmel — der Lieferant gewinnt Planungssicherheit, wir gewinnen Preisspielraum.",
+        "example_en": "With forecast-sharing we have an ace up our sleeve — the supplier gains planning certainty, we gain price latitude."
       },
       {
         "idiom": "die Spreu vom Weizen trennen",
         "literal": "tách trấu khỏi lúa",
+        "literal_en": "to separate the chaff from the wheat",
         "meaning": "phân biệt cốt lõi khỏi không cần (gehoben)",
         "meaning_en": "to separate the chaff from the wheat — to distinguish the essential from the inessential (gehoben)",
-        "example": "Im Mengenrabatt-Verhandlung trennt sich die Spreu vom Weizen — strategische Lieferanten geben mehr nach als reine Transaktionsanbieter."
+        "example": "Im Mengenrabatt-Verhandlung trennt sich die Spreu vom Weizen — strategische Lieferanten geben mehr nach als reine Transaktionsanbieter.",
+        "example_en": "In a volume-discount negotiation the wheat is separated from the chaff — strategic suppliers concede more than pure transactional ones."
       }
     ],
     "exercises": [
@@ -5686,36 +5860,49 @@ export const lessons: GermanLesson[] = [
       "CEO accept partial pushback (Zeitplan extended) but resists Engineering-Veto-Recht. Đề xuất Kompromiss: Veto giới hạn cho Re-Work-Potenzial >100k EUR / 4 tuần. Diễn đạt formal: ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern...'.",
       "CEO setzt rote Linie bei 15 Wochen vs 17 Wochen vorgeschlagen. Diễn đạt Kompromiss + Loyalitäts-Zusicherung: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Risiken transparent gemacht haben'."
     ],
+    "roleplay_prompts_en": [
+      "You are a senior manager proposing pushback to the CEO on the cloud-migration timeline (12 weeks is too short). Open formally: 'Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen' + two points, factually.",
+      "The CEO accepts partial pushback (the schedule is extended) but resists an engineering veto right. Propose a compromise: a veto limited to re-work potential >100k EUR / 4 weeks. Express formally: 'Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern...'.",
+      "The CEO draws a red line at 15 weeks versus the 17 you proposed. Express the compromise + a loyalty assurance: 'Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Risiken transparent gemacht haben'."
+    ],
     "register_notes": "Konstruktiver Widerspruch C1: ‚Sie' tuyệt đối với Direktorin/Geschäftsführung. Konjunktiv II cho Vorschläge: ‚würde ich anregen', ‚wäre denkbar', ‚halte X für ambitioniert'. Funktionsverbgefüge: ‚zur Diskussion stellen' (đưa ra thảo luận), ‚in Frage stellen' (đặt vấn đề), ‚Risiken abfedern' (giảm thiểu rủi ro), ‚die Linie übernehmen' (theo chỉ đạo). 5-Schritte-Struktur bắt buộc: Zustimmung → Ankündigung → Risiken → Alternative → Loyalitäts-Zusicherung. Schlüsselformeln:\n- Mở đầu: ‚Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch...'\n- Reframing: ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- Kết: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\nKHÔNG ‚Sie haben das nicht durchdacht' (Personalisierung). KHÔNG persönliche Kritik. KHÔNG Pushback nach öffentlicher Verkündung. ‚Anliegen' weicher als ‚Forderung'. Memo nach Pushback empfehlenswert für Dokumentation.",
     "register_notes_en": "C1 Konstruktiver Widerspruch: 'Sie' is absolute with the Direktorin/Geschäftsführung. Konjunktiv II for proposals: 'würde ich anregen', 'wäre denkbar', 'halte X für ambitioniert'. Funktionsverbgefüge: 'zur Diskussion stellen' (put up for discussion), 'in Frage stellen' (call into question), 'Risiken abfedern' (mitigate risks), 'die Linie übernehmen' (follow the official line). The 5-step structure is mandatory: Zustimmung → Ankündigung → Risiken → Alternative → Loyalitäts-Zusicherung. Key formulas:\n- Opener: 'Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch...'\n- Reframing: 'Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- Close: 'Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\nDo NOT 'Sie haben das nicht durchdacht' (personalises). Avoid personal criticism. Avoid pushback after public announcement of the decision. 'Anliegen' is softer than 'Forderung'. A memo after the pushback is recommended for documentation.",
     "idiom_glosses": [
       {
         "idiom": "den Finger in die Wunde legen",
         "literal": "đặt ngón tay vào vết thương",
+        "literal_en": "to lay the finger in the wound",
         "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
         "meaning_en": "to lay one's finger in the wound — to point precisely to a weakness (gehoben/standardsprachlich)",
-        "example": "Mit dem Hinweis auf das Bauer-Beispiel haben Sie den Finger in die Wunde gelegt — das war damals tatsächlich vermeidbar."
+        "example": "Mit dem Hinweis auf das Bauer-Beispiel haben Sie den Finger in die Wunde gelegt — das war damals tatsächlich vermeidbar.",
+        "example_en": "With the reference to the Bauer example you put your finger on the sore spot — that really was avoidable back then."
       },
       {
         "idiom": "Klartext reden",
         "literal": "nói chữ rõ",
+        "literal_en": "to speak plain text",
         "meaning": "nói thẳng không vòng vo (standardsprachlich)",
         "meaning_en": "to talk plainly — speak directly, no beating around the bush (standardsprachlich)",
-        "example": "Lassen Sie mich Klartext reden: der Zeitplan ist mit den vorhandenen Ressourcen nicht haltbar."
+        "example": "Lassen Sie mich Klartext reden: der Zeitplan ist mit den vorhandenen Ressourcen nicht haltbar.",
+        "example_en": "Let me speak plainly: the schedule is not sustainable with the resources we have."
       },
       {
         "idiom": "die rote Linie",
         "literal": "đường đỏ",
+        "literal_en": "the red line",
         "meaning": "giới hạn cuối không thể vượt (standardsprachlich)",
         "meaning_en": "the red line — the final non-negotiable limit (standardsprachlich)",
-        "example": "Fünfzehn Wochen wären meine rote Linie — alles darüber kann ich der Geschäftsführung nicht vermitteln."
+        "example": "Fünfzehn Wochen wären meine rote Linie — alles darüber kann ich der Geschäftsführung nicht vermitteln.",
+        "example_en": "Fifteen weeks would be my red line — anything beyond that I can't sell to the executive board."
       },
       {
         "idiom": "auf einen gemeinsamen Nenner kommen",
         "literal": "đến mẫu số chung",
+        "literal_en": "to come to a common denominator",
         "meaning": "đạt đồng thuận (standardsprachlich)",
         "meaning_en": "to arrive at a common denominator — to reach agreement (standardsprachlich)",
-        "example": "Wir kommen auf einen gemeinsamen Nenner — sechzehn Wochen mit integrierter Stabilisierung."
+        "example": "Wir kommen auf einen gemeinsamen Nenner — sechzehn Wochen mit integrierter Stabilisierung.",
+        "example_en": "We reach common ground — sixteen weeks with an integrated stabilisation phase."
       }
     ],
     "exercises": [
@@ -6066,36 +6253,49 @@ export const lessons: GermanLesson[] = [
       "Deutsche Seite frustriert über VN-Indirektheit. Diễn đạt formal: ‚Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim' + Brücken-Formulierung-Beispiel (‚das ist nicht akzeptabel' → ‚wir sehen das aktuell schwierig').",
       "Konflikt zwischen DE Entscheidung-heute Erwartung und VN Konsens-erst Erwartung. Đề xuất Hybrid-Modus formal: position-statements heute, internal consultation 1 Woche, decision in 10 Tagen mit hard external deadlines + fluid internal alignment."
     ],
+    "roleplay_prompts_en": [
+      "You are the bridging link between a German negotiator (directness norm) and a Vietnamese counterpart (indirectness norm). Open formally: clarify your bridging role + a five-minute expectation-alignment phase (Erwartungsabgleich).",
+      "The German side is frustrated by Vietnamese indirectness. Express formally: 'Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim' + a bridging-formulation example ('das ist nicht akzeptabel' → 'wir sehen das aktuell schwierig').",
+      "A conflict between the German 'decide today' expectation and the Vietnamese 'consensus first' expectation. Propose a hybrid mode formally: position statements today, internal consultation for one week, a decision in 10 days with hard external deadlines + fluid internal alignment."
+    ],
     "register_notes": "Interkulturelle Verhandlung-Moderation C1: ‚Sie' tuyệt đối với Teilnehmer. Konjunktiv II cho Brücken-Vorschläge: ‚Eine Brücken-Formulierung wäre...'. Funktionsverbgefüge: ‚explizit machen' (làm rõ), ‚stillschweigend voraussetzen' (giả định ngầm), ‚produktiv machen' (làm năng suất), ‚als Bindeglied agieren' (vận hành như cầu nối). Schlüsselformel cho cultural translation: ‚Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim, aber muss übersetzt werden'. Bindeglied-Rolle bắt buộc transparent gemacht werden — không pretend culturally neutral. KHÔNG ‚VN-Seite versteht nicht' / ‚DE-Seite ist hart' (Personalisierung der Kultur). Stattdessen: ‚VN-Norm ist X, DE-Norm ist Y' (Sachebene). Hybrid-Modus oft Lösung für direkte Konflikte zwischen Normen — hard deadlines for external, fluid for internal alignment.",
     "register_notes_en": "C1 intercultural-negotiation moderation: 'Sie' is absolute with participants. Konjunktiv II for bridge proposals: 'Eine Brücken-Formulierung wäre…'. Funktionsverbgefüge: 'explizit machen' (make explicit), 'stillschweigend voraussetzen' (tacitly assume), 'produktiv machen' (make productive), 'als Bindeglied agieren' (act as a bridge). Key formula for cultural translation: 'Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim, aber muss übersetzt werden'. The Bindeglied role MUST be made transparent — don't pretend to be culturally neutral. Do NOT 'VN-Seite versteht nicht' or 'DE-Seite ist hart' (personalises the culture). Instead: 'the VN norm is X, the DE norm is Y' (Sachebene). A Hybrid-Modus is often the solution for direct norm clashes — hard deadlines for external, fluid for internal alignment.",
     "idiom_glosses": [
       {
         "idiom": "die Brücke schlagen",
         "literal": "đập cầu (build a bridge)",
+        "literal_en": "to build the bridge",
         "meaning": "tạo kết nối giữa các bên (gehoben/standardsprachlich)",
         "meaning_en": "to build a bridge — to create a connection between sides (gehoben/standardsprachlich)",
-        "example": "Als Bindeglied schlage ich die Brücke zwischen deutscher Direktheit und vietnamesischer Höflichkeit."
+        "example": "Als Bindeglied schlage ich die Brücke zwischen deutscher Direktheit und vietnamesischer Höflichkeit.",
+        "example_en": "As the bridging link I build the bridge between German directness and Vietnamese politeness."
       },
       {
         "idiom": "etwas in andere Worte fassen",
         "literal": "đặt cái gì vào từ khác",
+        "literal_en": "to put something into other words",
         "meaning": "diễn đạt lại cho phù hợp ngữ cảnh khác (standardsprachlich)",
         "meaning_en": "to put something into other words — to rephrase to fit a different context (standardsprachlich)",
-        "example": "Wenn die deutsche Direktheit die VN-Seite verletzt, fasse ich es in andere Worte — Inhalt bleibt, Form passt."
+        "example": "Wenn die deutsche Direktheit die VN-Seite verletzt, fasse ich es in andere Worte — Inhalt bleibt, Form passt.",
+        "example_en": "When German directness hurts the Vietnamese side, I put it into other words — the content stays, the form is adapted."
       },
       {
         "idiom": "auf Augenhöhe verhandeln",
         "literal": "đàm phán ở mức mắt",
+        "literal_en": "to negotiate at eye level",
         "meaning": "đàm phán trên cơ sở bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "to negotiate at eye level — to negotiate as equals (gehoben/standardsprachlich)",
-        "example": "Auf Augenhöhe verhandeln heißt: weder die deutsche noch die vietnamesische Norm wird privilegiert — beide werden übersetzt."
+        "example": "Auf Augenhöhe verhandeln heißt: weder die deutsche noch die vietnamesische Norm wird privilegiert — beide werden übersetzt.",
+        "example_en": "Negotiating on an equal footing means neither the German nor the Vietnamese norm is privileged — both are translated."
       },
       {
         "idiom": "den Boden bereiten",
         "literal": "chuẩn bị đất",
+        "literal_en": "to prepare the ground",
         "meaning": "tạo điều kiện cho điều gì đó (standardsprachlich)",
         "meaning_en": "to prepare the ground — to set the conditions for something (standardsprachlich)",
-        "example": "Der Erwartungsabgleich bereitet den Boden für eine produktive Sach-Diskussion."
+        "example": "Der Erwartungsabgleich bereitet den Boden für eine produktive Sach-Diskussion.",
+        "example_en": "The expectation alignment prepares the ground for a productive substantive discussion."
       }
     ],
     "exercises": [
@@ -6451,12 +6651,18 @@ export const lessons: GermanLesson[] = [
       "HR fragt liệu đây có phải Mobbing-Vorwurf không. Diễn đạt formal: ‚Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden' + cụ thể về Sachebene (3 sự việc tư liệu).",
       "Đề xuất Mediation als Stufe 3 + transparent über Stufenmodell: ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor'."
     ],
+    "roleplay_prompts_en": [
+      "You request a formal clarification with HR after three direct conversations failed. Open formally: 'Ich bitte um eine formelle Klärung' + clarify it's a substantive-level (Sachebene) conflict, NOT a mobbing allegation.",
+      "HR asks whether this is a mobbing allegation. Express formally: 'Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden' + specifics on the substantive level (three documented incidents).",
+      "Propose mediation as stage 3 + be transparent about the escalation ladder: 'Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor'."
+    ],
     "register_notes": "Streitbeilegung formal C1: ‚Sie' tuyệt đối với HR / Betriebsrat. Konjunktiv II cho Eskalations-Hypothese: ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X'. Funktionsverbgefüge: ‚das direkte Gespräch suchen' (tìm trao đổi trực tiếp), ‚Vereinbarungen umsetzen' (triển khai thỏa thuận), ‚Sachebene betreffen' (liên quan Sachebene), ‚in Frage stellen' (đặt vấn đề). Sachebene vs Personebene phân biệt strict — không trộn lẫn. Stufenmodell explicit: Direktgespräch → Vorgesetzter → HR-Mediation → Betriebsrat → Arbeitsgericht. Mobbing-Vorwurf NUR khi juristisch erfüllbar (systematisches Anfeinden, Schikanieren) — không leichtfertig. Dokumentation bắt buộc: E-Mail-Memos nach jedem Gespräch, mit Datum + Vereinbarungen. ‚Ergebnisoffen' khi Mediation — beide Parteien gleichberechtigt. Verhaltensvereinbarung schriftlich mit Eskalationsmechanismus.",
     "register_notes_en": "C1 formal dispute-resolution register: 'Sie' is absolute with HR and the Betriebsrat. Konjunktiv II for hypothetical escalation: 'Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X' (should the mediation fail, the next step would be X). Funktionsverbgefüge are required: 'das direkte Gespräch suchen' (seek a direct conversation), 'Vereinbarungen umsetzen' (implement agreements), 'Sachebene betreffen' (concern the substantive level), 'in Frage stellen' (call into question). Distinguish Sachebene and Personebene strictly — never mix them. The Stufenmodell is explicit and ordered: Direktgespräch → Vorgesetzter → HR-Mediation → Betriebsrat → Arbeitsgericht. Use a Mobbing accusation ONLY when the legal threshold (systematic hostility, harassment) is met — never frivolously. Documentation is required: email-memos after every conversation, with date and agreed actions. 'Ergebnisoffen' (open-ended) is the expected framing for mediation — both parties on equal footing. Behavioural agreements are written down with an escalation mechanism for breaches.",
     "idiom_glosses": [
       {
         "idiom": "den Stier bei den Hörnern packen",
         "literal": "nắm bò ở sừng",
+        "literal_en": "to grab the bull by the horns",
         "meaning": "đối mặt thẳng vấn đề khó (gehoben/standardsprachlich)",
         "meaning_en": "to take the bull by the horns — confront a difficult problem head-on (elevated/standard register; the English idiom is identical)",
         "example": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation.",
@@ -6465,6 +6671,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Wogen glätten",
         "literal": "làm phẳng sóng",
+        "literal_en": "to smooth the waves",
         "meaning": "làm dịu xung đột (gehoben)",
         "meaning_en": "to smooth the waves — calm a conflict (elevated register; closest English equivalent is 'pour oil on troubled waters')",
         "example": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen.",
@@ -6473,6 +6680,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "vom Hundertsten ins Tausendste kommen",
         "literal": "từ 100 sang 1000",
+        "literal_en": "to go from the hundredth into the thousandth",
         "meaning": "leo thang từ chuyện nhỏ sang chuyện lớn (standardsprachlich)",
         "meaning_en": "to go from the hundredth to the thousandth — escalate from a small issue to a sprawling one; lose the thread (standard register)",
         "example": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste.",
@@ -6481,6 +6689,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Brücken bauen",
         "literal": "xây cầu",
+        "literal_en": "to build bridges",
         "meaning": "tạo kết nối, hòa giải (standardsprachlich)",
         "meaning_en": "to build bridges — create connections, mediate (standard register; identical English idiom)",
         "example": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern.",
@@ -6840,12 +7049,18 @@ export const lessons: GermanLesson[] = [
       "Counterparty đề xuất 95% SLA + 4% Preisaufschlag. Tính TCO und stelle fest, alternative immer noch besser. Diễn đạt formal Walk-Away: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene Führung der Gespräche'.",
       "Halten die Tür offen: ‚Sollte sich die Lage Ihrerseits ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen'. Folgen mit E-Mail-Bestätigung 24 Stunden später."
     ],
+    "roleplay_prompts_en": [
+      "You are in negotiation round 3 with a German supplier. The 95% SLA requirement isn't met. Open the walk-away phase formally: 'Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative verfolge — meine BATNA liegt nicht im Hypothetischen'.",
+      "The counterparty proposes a 95% SLA + 4% price surcharge. Calculate the TCO and find the alternative is still better. Express a formal walk-away: 'Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene Führung der Gespräche'.",
+      "Keep the door open: 'Sollte sich die Lage Ihrerseits ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen'. Follow up with an email confirmation 24 hours later."
+    ],
     "register_notes": "BATNA / Walk-Away C1: ‚Sie' tuyệt đối. Konjunktiv II cho hypothetische Eskalation: ‚Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen'. Funktionsverbgefüge: ‚Abstand nehmen von' (rút khỏi), ‚zur Verfügung stehen' (sẵn sàng), ‚in Frage kommen' (được tính đến), ‚außer Betracht bleiben' (không được tính). Schlüsselformeln:\n- BATNA-Ankündigung: ‚meine BATNA liegt nicht im Hypothetischen'\n- Walk-Away-Begründung: ‚nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität'\n- Walk-Away-Bedauern: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen'\n- Tür offen halten: ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'\nKHÔNG bluff (BATNA muss real sein). KHÔNG hostile Walk-Away (verbrennt Brücken). Schriftliche Bestätigung 24h danach Standard.",
     "register_notes_en": "C1 BATNA / walk-away register: 'Sie' is absolute. Konjunktiv II for hypothetical escalation: 'Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen' (should we fail to agree, I see myself forced to step back from the negotiation). Funktionsverbgefüge: 'Abstand nehmen von' (step back from), 'zur Verfügung stehen' (be available), 'in Frage kommen' (come into consideration), 'außer Betracht bleiben' (remain out of consideration).\nKey formulas:\n- BATNA announcement: 'meine BATNA liegt nicht im Hypothetischen'\n- Walk-away justification: 'nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität'\n- Walk-away regret: 'Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen'\n- Door open: 'Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'\nDON'T bluff (the BATNA must be real). DON'T do a hostile walk-away (it burns bridges). Written confirmation within 24 hours is standard.",
     "idiom_glosses": [
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
+        "literal_en": "to lay the cards on the table",
         "meaning": "minh bạch hóa Position (standardsprachlich)",
         "meaning_en": "to put the cards on the table — make one's position transparent (standard register; identical English idiom)",
         "example": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen.",
@@ -6854,6 +7069,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Reißleine ziehen",
         "literal": "kéo dây kéo dù",
+        "literal_en": "to pull the rip cord",
         "meaning": "stop khẩn cấp, walk-away (standardsprachlich)",
         "meaning_en": "to pull the ripcord — make an emergency stop, walk away (standard register; closer to English 'pull the plug')",
         "example": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen.",
@@ -6862,6 +7078,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Brücken nicht abreißen",
         "literal": "không phá cầu",
+        "literal_en": "not to tear down the bridges",
         "meaning": "không cắt đứt quan hệ trong walk-away (standardsprachlich)",
         "meaning_en": "not to tear down the bridges — preserve the relationship even at walk-away (standard register; the English equivalent is 'don't burn bridges')",
         "example": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern.",
@@ -6870,6 +7087,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf Augenhöhe verhandeln",
         "literal": "đàm phán ngang mắt",
+        "literal_en": "to negotiate at eye level",
         "meaning": "đàm phán bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "to negotiate at eye level — negotiate as equals (elevated/standard register; the English idiom is 'on a level playing field')",
         "example": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt.",
@@ -7229,12 +7447,18 @@ export const lessons: GermanLesson[] = [
       "Counterparty fragt nach Annäherung-Maß. Đáp formal: ‚Konkretes nenne ich nicht — das wäre Verhandlungsnaivität' + signal range (10% Annäherung würde Spielraum schaffen). KHÔNG geben Sie Walk-Away-Punkt preis.",
       "Diễn đạt niedrigschwellige Lösung: ‚überarbeiteter Vorschlag in 14 Tagen — wir bewerten ihn ohne Vorwurf, ohne Statussignal'. Folgen mit ehrlicher Schlussfomula: ‚Auch wenn keine Einigung, professioneller Kontakt für die Zukunft'."
     ],
+    "roleplay_prompts_en": [
+      "You receive an offer 14% below the market average from a German IT-consulting supplier. Open the refusal formally: 'Vielen Dank — ich schätze die Sorgfalt' + a concrete market reference (an industry report + comparison offers).",
+      "The counterparty asks how much of a move you'd need. Respond formally: 'Konkretes nenne ich nicht — das wäre Verhandlungsnaivität' + signal a range (a 10% move would create room). Do NOT reveal your walk-away point.",
+      "Express a low-threshold solution: 'überarbeiteter Vorschlag in 14 Tagen — wir bewerten ihn ohne Vorwurf, ohne Statussignal'. Follow up with an honest closing formula: 'Auch wenn keine Einigung, professioneller Kontakt für die Zukunft'."
+    ],
     "register_notes": "Niedrige Angebote ablehnen C1: ‚Sie' tuyệt đối. Konjunktiv II cho hypothetische Spielräume: ‚Eine Annäherung wäre erforderlich', ‚wenn Sie keinen weiteren Spielraum sehen'. Funktionsverbgefüge: ‚zur Verfügung stehen' (sẵn sàng), ‚in Frage kommen' (được tính), ‚außerhalb des wirtschaftlich tragfähigen Bereichs liegen' (nằm ngoài vùng kinh tế khả thi). Schlüsselformeln:\n- Anerkennung: ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n- Sachliche Ablehnung: ‚X Prozent unter dem Marktdurchschnitt'\n- Intent: ‚daher meine offene Rückmeldung statt höflicher Hinhaltung'\n- Niedrigschwellige Lösung: ‚überarbeiteter Vorschlag in 14 Tagen, ohne Vorwurf, ohne Statussignal'\nKHÔNG ‚das ist zu wenig' (vage). KHÔNG ‚wir gehen zu Wettbewerber' (Status-Drohung). KHÔNG höfliche Hinhaltung (länger schlechter als direkte Ablehnung). Marktreferenz mit konkreter Quelle bắt buộc.",
     "register_notes_en": "C1 low-offer-rejection register: 'Sie' is absolute. Konjunktiv II for hypothetical leeway: 'Eine Annäherung wäre erforderlich' (a convergence would be required), 'wenn Sie keinen weiteren Spielraum sehen' (if you see no further leeway). Funktionsverbgefüge: 'zur Verfügung stehen' (be available), 'in Frage kommen' (come into consideration), 'außerhalb des wirtschaftlich tragfähigen Bereichs liegen' (lie outside the economically viable range).\nKey formulas:\n- Acknowledgement: 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n- Factual rejection: 'X Prozent unter dem Marktdurchschnitt'\n- Intent: 'daher meine offene Rückmeldung statt höflicher Hinhaltung'\n- Low-threshold solution: 'überarbeiteter Vorschlag in 14 Tagen, ohne Vorwurf, ohne Statussignal'\nDON'T say 'das ist zu wenig' (vague). DON'T say 'wir gehen zum Wettbewerber' (status threat). DON'T do polite stalling — that's worse than direct rejection. A market reference with a concrete source is required.",
     "idiom_glosses": [
       {
         "idiom": "die Tür offen halten",
         "literal": "giữ cửa mở",
+        "literal_en": "to keep the door open",
         "meaning": "duy trì option re-engage future (standardsprachlich)",
         "meaning_en": "to keep the door open — preserve the option to re-engage in the future (standard register; identical English idiom)",
         "example": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich.",
@@ -7243,6 +7467,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf Augenhöhe",
         "literal": "ở mức mắt",
+        "literal_en": "at eye level",
         "meaning": "trên cơ sở bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "at eye level — on equal footing (elevated/standard register; English equivalent is 'on a level playing field')",
         "example": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal.",
@@ -7251,6 +7476,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Mantel des Schweigens hüllen",
         "literal": "phủ áo choàng im lặng",
+        "literal_en": "to draw the cloak of silence over",
         "meaning": "im lặng về điều khó (gehoben)",
         "meaning_en": "to wrap something in the cloak of silence — stay silent on something difficult (elevated register; closer to English 'draw a veil over')",
         "example": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty.",
@@ -7259,6 +7485,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "es rechnet sich nicht",
         "literal": "không tính ra (kinh tế)",
+        "literal_en": "it doesn't add up",
         "meaning": "không kinh tế khả thi (standardsprachlich)",
         "meaning_en": "it doesn't pay off / it doesn't add up — it's not economically viable (standard register; the most natural German way to put this)",
         "example": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen.",
@@ -7613,12 +7840,18 @@ export const lessons: GermanLesson[] = [
       "Counterparty lautstark + Druck. Diễn đạt: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' + Mandat-Reframing depersonalisiert Position.",
       "Sau Eskalation, đề xuất 15-Min-Pause: ‚Wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln'. Sau Pause + Counterparty xin lỗi, accept Entschuldigung professionell + reframing zur Sachebene."
     ],
+    "roleplay_prompts_en": [
+      "A negotiating partner attacks with an ethnic stereotype ('a typical Asian tactic'). Respond formally: 'Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' + draw a clear line: personal attacks have no place in a negotiation.",
+      "The counterparty is loud + applies pressure. Express: 'Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' + a mandate reframing that depersonalises your position.",
+      "After the escalation, propose a 15-minute break: 'Wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln'. After the break + the counterparty apologises, accept the apology professionally + reframe back to the substantive level."
+    ],
     "register_notes": "Mit feindlichem Verhandlungspartner umgehen C1: ‚Sie' tuyệt đối — auch unter Druck. Funktionsverbgefüge: ‚zur Kenntnis nehmen' (ghi nhận), ‚zur Geltung bringen' (làm có hiệu lực), ‚in Frage stellen' (đặt vấn đề), ‚den Ton verschärfen' (làm gay gắt giọng). Mandat-Reframing als Schutz: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' depersonalisiert Position. Pause als de-escalation tool legitim, không Schwäche. Walk-Away bei Grenzüberschreitung möglich aber rare. Schlüsselformel cho personal attacks: ‚Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter'. KHÔNG gegen-aggressiv. KHÔNG validate hostility durch defensive emotion. KHÔNG Sachebene verlassen.",
     "register_notes_en": "C1 hostile-counterpart register: 'Sie' is absolute — even under pressure. Funktionsverbgefüge: 'zur Kenntnis nehmen' (take note of), 'zur Geltung bringen' (bring into effect), 'in Frage stellen' (call into question), 'den Ton verschärfen' (sharpen the tone). The Mandat reframe is your shield: 'Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' depersonalises the position. Pause as a de-escalation tool is legitimate, not weakness. Walk-away on a line crossing is possible but rare. The key formula for personal attacks: 'Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter' (if you're using personal attacks as a negotiation tactic, I'm telling you openly: it doesn't work — my position doesn't get softer that way, it gets harder). DON'T counter-aggress. DON'T validate hostility through defensive emotion. DON'T leave the Sachebene.",
     "idiom_glosses": [
       {
         "idiom": "ein dickes Fell haben",
         "literal": "có lông da dày",
+        "literal_en": "to have a thick fur",
         "meaning": "kiên cường trước phê phán/tấn công (standardsprachlich)",
         "meaning_en": "to have a thick skin / a thick fur — be resilient under criticism or attack (standard register; the English equivalent is 'have thick skin')",
         "example": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen.",
@@ -7627,6 +7860,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Ruhe bewahren",
         "literal": "giữ yên tĩnh",
+        "literal_en": "to keep the calm",
         "meaning": "giữ bình tĩnh dưới áp lực (standardsprachlich)",
         "meaning_en": "to keep one's composure (standard register; literally 'preserve calm')",
         "example": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig.",
@@ -7635,6 +7869,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Ball flach halten",
         "literal": "giữ bóng thấp",
+        "literal_en": "to keep the ball low",
         "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
         "meaning_en": "to keep the ball flat / low — keep the tone low, don't escalate (standard register; closer to English 'keep your head down' or 'don't make waves')",
         "example": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren.",
@@ -7643,6 +7878,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ins Schwarze treffen",
         "literal": "đánh trúng tâm đen",
+        "literal_en": "to hit the black (bullseye)",
         "meaning": "trúng đích chính xác (gehoben/standardsprachlich)",
         "meaning_en": "to hit the bullseye — strike the target precisely (elevated/standard register; identical English idiom)",
         "example": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden.",
