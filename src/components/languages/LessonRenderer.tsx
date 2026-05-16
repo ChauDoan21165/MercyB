@@ -74,8 +74,13 @@ const RENDERER_LABELS = {
     vocabAudioAria: "Phát âm",
     dialogueAudioAria: "Phát âm hội thoại",
     dialogueHeading: "Hội thoại",
+    dialogueShortToggle: "Ngắn",
+    dialogueLongToggle: "Mở rộng",
     cultureHeading: "Văn hoá",
     tipHeading: "Mẹo học",
+    registerHeading: "Văn phong",
+    roleplayHeading: "Luyện nói",
+    idiomHeading: "Thành ngữ",
     grammarHeading: "Ngữ pháp",
     vocabHeading: "Từ vựng",
     vocabUnit: "từ",
@@ -95,8 +100,13 @@ const RENDERER_LABELS = {
     vocabAudioAria: "Play",
     dialogueAudioAria: "Play dialogue",
     dialogueHeading: "Dialogue",
+    dialogueShortToggle: "Short",
+    dialogueLongToggle: "Extended",
     cultureHeading: "Culture",
     tipHeading: "Study tip",
+    registerHeading: "Register",
+    roleplayHeading: "Practice",
+    idiomHeading: "Idioms",
     grammarHeading: "Grammar",
     vocabHeading: "Vocabulary",
     vocabUnit: "words",
@@ -485,6 +495,33 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-slate-700">{text}</p>
               </div>
+            );
+          })()}
+
+          {/* register_notes — meta-advice, rendered as a small italic
+              note under the study-tip card (per #496-locked decision). */}
+          {(() => {
+            const text = pick(
+              uiLanguage,
+              lesson.registerNotesEn,
+              lesson.registerNotesVi,
+            );
+            if (!text) return null;
+            const fallback = isFallback(
+              uiLanguage,
+              lesson.registerNotesEn,
+              lesson.registerNotesVi,
+            );
+            return (
+              <p className="px-1 text-[11px] italic leading-relaxed text-slate-500">
+                <span className="font-semibold uppercase tracking-wide text-slate-400 not-italic">
+                  {labels.registerHeading}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </span>{" "}
+                {text}
+              </p>
             );
           })()}
 
