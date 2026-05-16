@@ -48,6 +48,26 @@ export function normalizeKoreanLesson(
     culturalNotesEn: lesson.cultural_notes_en,
     tipAdviceVi: lesson.tip_advice_vi,
     tipAdviceEn: lesson.tip_advice_en,
+    registerNotesVi: lesson.register_notes,
+    registerNotesEn: lesson.register_notes_en,
+    roleplayPromptsVi: lesson.roleplay_prompts,
+    roleplayPromptsEn: lesson.roleplay_prompts_en,
+    idiomGlosses: lesson.idiom_glosses?.map((g) => ({
+      idiom: g.idiom,
+      literal: g.literal,
+      meaning: g.meaning,
+      example: g.example,
+      literalEn: g.literal_en,
+      meaningEn: g.meaning_en,
+      exampleEn: g.example_en,
+    })),
+    // KoreanB2DialogueLine glosses Vietnamese in `meaning` (mirrors the
+    // short-dialogue mapping above); `vi` overrides when present.
+    dialogueLong: lesson.dialogue_long?.map((d) => ({
+      speaker: d.speaker,
+      native: d.hangul,
+      vi: d.vi ?? d.meaning,
+    })),
     audioBase: lessonAudioBase("ko", lesson.id, lesson.level),
   };
 }

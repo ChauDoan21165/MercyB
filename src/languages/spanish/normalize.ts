@@ -15,10 +15,10 @@
 //     article (el/la/los/las/un/una/unos/unas) are passed through unchanged
 //     since the article already encodes gender.
 //
-//   - dialogue_long, roleplay_prompts, register_notes, idiom_glosses,
-//     regional_variants are NOT emitted to the normalized shape — they
-//     aren't part of the shared NormalizedLesson contract yet. Raw data
-//     persists in Supabase for a future contract extension.
+//   - dialogue_long, roleplay_prompts, register_note, idiom_glosses are
+//     now emitted (contract extended — see LessonRenderer.types.ts).
+//     regional_variants is still NOT part of the shared contract; its
+//     raw data persists in Supabase for a future extension.
 
 import type { SpanishGender, SpanishLesson } from "./lessons";
 import type {
@@ -141,6 +141,24 @@ export function normalizeSpanishLesson(
     // correct and removes the prior `culturalNotesVi`-stuffing workaround.
     culturalNotesEn: lesson.cultural_note,
     tipAdviceEn: lesson.tip,
+    // Spanish module is English-source (uiLanguage="en"); content goes
+    // into the `*En` slots so the renderer's pick() returns it directly.
+    registerNotesEn: lesson.register_note,
+    roleplayPromptsEn: lesson.roleplay_prompts,
+    // SpanishIdiomGloss has a different shape: figurative→meaning,
+    // usage→example (per #496 §6.1). English content → base slots.
+    idiomGlosses: lesson.idiom_glosses?.map((g) => ({
+      idiom: g.idiom,
+      literal: g.literal,
+      meaning: g.figurative,
+      example: g.usage,
+    })),
+    dialogueLong: lesson.dialogue_long?.map((d) => ({
+      speaker: d.speaker,
+      native: d.spanish,
+      romanization: d.pronunciation,
+      en: d.english,
+    })),
     audioBase: lessonAudioBase("es", lesson.id, lesson.level),
   };
 }

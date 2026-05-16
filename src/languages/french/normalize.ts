@@ -52,6 +52,25 @@ export function normalizeFrenchLesson(
     culturalNotesEn: lesson.cultural_notes_en,
     tipAdviceVi: lesson.tip_advice_vi,
     tipAdviceEn: lesson.tip_advice_en,
+    registerNotesVi: lesson.register_notes,
+    registerNotesEn: lesson.register_notes_en,
+    roleplayPromptsVi: lesson.roleplay_prompts,
+    roleplayPromptsEn: lesson.roleplay_prompts_en,
+    idiomGlosses: lesson.idiom_glosses?.map((g) => ({
+      idiom: g.idiom,
+      literal: g.literal,
+      meaning: g.meaning,
+      example: g.example,
+      literalEn: g.literal_en,
+      meaningEn: g.meaning_en,
+      exampleEn: g.example_en,
+    })),
+    dialogueLong: lesson.dialogue_long?.map((d) => ({
+      speaker: d.speaker,
+      native: d.text,
+      en: d.en,
+      vi: d.vi,
+    })),
     audioBase: lessonAudioBase("fr", lesson.id, lesson.level),
   };
 }
