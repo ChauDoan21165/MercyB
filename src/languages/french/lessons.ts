@@ -140,6 +140,7 @@ export type FrenchLesson = {
     meaning: string;
     meaning_en?: string;
     example: string;
+    example_en?: string;
   }[];
 };
 

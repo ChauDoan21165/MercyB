@@ -135,6 +135,8 @@ export type GermanCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export type GermanIdiomGloss = {
   idiom: string;
   literal: string;
+  /** English mirror of literal. B2+ packs. */
+  literal_en?: string;
   meaning: string;
   /** English mirror of meaning. B2+ packs. */
   meaning_en?: string;
@@ -164,6 +166,8 @@ export type GermanLesson = {
   // B2 calibration fields — optional passthrough; consumed by normalizer + renderer
   dialogue_long?: DialogueLine[];
   roleplay_prompts?: string[];
+  /** English mirror of roleplay_prompts. B2+ only. */
+  roleplay_prompts_en?: string[];
   register_notes?: string;
   /** English mirror of register_notes. B2+ only. */
   register_notes_en?: string;
