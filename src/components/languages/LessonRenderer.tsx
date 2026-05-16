@@ -43,6 +43,7 @@ import type {
   NormalizedLesson,
   LessonTheme,
   NormalizedExercise,
+  NormalizedIdiomGloss,
 } from "./LessonRenderer.types";
 import { cefrPillColors, cefrPillLabels } from "./lessonThemes";
 import { LessonAudioButton } from "./LessonAudioButton";
@@ -563,6 +564,17 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             );
           })()}
 
+          {/* idiom_glosses — inline expandable list, one row per idiom
+              (collapsed: idiom; expanded: literal/meaning/example,
+              pick() per sub-field). #496-locked: not tooltips. */}
+          {lesson.idiomGlosses && lesson.idiomGlosses.length > 0 && (
+            <IdiomGlossList
+              glosses={lesson.idiomGlosses}
+              uiLanguage={uiLanguage}
+              heading={labels.idiomHeading}
+            />
+          )}
+
           {lesson.grammar && lesson.grammar.length > 0 && (
             <div className="rounded-lg border border-violet-100 bg-violet-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-violet-700">
@@ -656,6 +668,82 @@ function ExerciseRow({
         )}
       </span>
     </>
+  );
+}
+
+// Inline expandable idiom list. One row per idiom; the row is the
+// idiom itself, expanding to literal / meaning / example. Each sub-
+// field is picked by uiLanguage with the same fallback-badge contract
+// as the prose pedagogy fields. Tooltips were rejected in #496 §7 as
+// mobile-hostile at 375px — an accordion keeps the lesson scannable.
+function IdiomGlossList({
+  glosses,
+  uiLanguage,
+  heading,
+}: {
+  glosses: NormalizedIdiomGloss[];
+  uiLanguage: "vi" | "en";
+  heading: string;
+}) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  return (
+    <div className="rounded-lg border border-teal-100 bg-teal-50/60 p-3">
+      <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-teal-700">
+        <BookOpen className="h-3 w-3" />
+        {heading}
+      </p>
+      <ul className="mt-2 space-y-1">
+        {glosses.map((g, gi) => {
+          const isOpen = openIdx === gi;
+          const literal = pick(uiLanguage, g.literalEn, g.literal);
+          const meaning = pick(uiLanguage, g.meaningEn, g.meaning);
+          const example = pick(uiLanguage, g.exampleEn, g.example);
+          const fallback = isFallback(uiLanguage, g.meaningEn, g.meaning);
+          return (
+            <li
+              key={gi}
+              className="overflow-hidden rounded-md border border-teal-100 bg-white"
+            >
+              <button
+                type="button"
+                onClick={() => setOpenIdx(isOpen ? null : gi)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center justify-between gap-2 px-2.5 py-1.5 text-left transition hover:bg-teal-50/50"
+              >
+                <span className="text-xs font-semibold text-slate-800">
+                  {g.idiom}
+                </span>
+                {isOpen ? (
+                  <ChevronUp className="h-3 w-3 shrink-0 text-teal-600" />
+                ) : (
+                  <ChevronDown className="h-3 w-3 shrink-0 text-teal-600" />
+                )}
+              </button>
+              {isOpen && (
+                <div className="space-y-0.5 border-t border-teal-50 px-2.5 py-1.5 text-xs">
+                  {literal && (
+                    <p className="text-slate-500">
+                      <span className="italic">{literal}</span>
+                    </p>
+                  )}
+                  {meaning && (
+                    <p className="text-slate-700">
+                      {meaning}
+                      {fallback && (
+                        <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                      )}
+                    </p>
+                  )}
+                  {example && (
+                    <p className="italic text-slate-400">{example}</p>
+                  )}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
