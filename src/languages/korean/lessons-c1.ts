@@ -4,7 +4,7 @@
 
 import type { KoreanLesson } from "./lessons";
 
-export const lessons: KoreanLesson[] =     [
+export const lessons: KoreanLesson[] =       [
     {
       "id": 92,
       "level": "C1",
@@ -4347,6 +4347,11 @@ export const lessons: KoreanLesson[] =     [
             "심사위원님 → /심사위원님/",
             "지적 → /지적/",
             "말씀드리고자 → /말씀드리고자/"
+          ],
+          "pronunciation_focus_en": [
+            "심사위원님 'sim-sa-wi-won-nim' — honorific 'examiner'; all plain, even stress",
+            "지적 'ji-jeok' — plain ㅈ; 'a (critical) point'; ㅓ ('uh'), final ㄱ stop",
+            "말씀드리고자 'mal-sseum-deu-ri-go-ja' — tense ㅆ in 말씀; humble 'I wish to say'"
           ]
         },
         {
@@ -4358,6 +4363,11 @@ export const lessons: KoreanLesson[] =     [
             "한계점 → /한계점/",
             "표본 규모 → /표본규모/",
             "사료됩니다 → /사료됩니다/"
+          ],
+          "pronunciation_focus_en": [
+            "한계점 'han-gye-jeom' — plain ㄱ in 계; 'limitation'; ㅕ→'yeo' soft",
+            "표본 규모 'pyo-bon gyu-mo' — gloss /표본규모/ links across the space; ㅛ in 표",
+            "사료됩니다 'sa-ryo-doem-ni-da' — humble 'is considered'; ㅚ in 됩 ≈ 'dwem'"
           ]
         },
         {
@@ -4369,6 +4379,11 @@ export const lessons: KoreanLesson[] =     [
             "후속 연구 → /후송녕구/",
             "보완할 → /보완할/",
             "계획임을 → /계회김을/"
+          ],
+          "pronunciation_focus_en": [
+            "후속 연구 'hu-song-nyeon-gu' — gloss /후송녕구/: 속+연 → ㄱ becomes nasal 'ng', then ㄴ→'ny' liaison",
+            "보완할 'bo-wan-hal' — plain ㅂ; 완 final ㄴ; 할 batchim ㄹ",
+            "계획임을 'gye-hoe-gim-eul' — gloss /계회김을/: 획 batchim ㄱ links into 임 → 'gim'"
           ]
         },
         {
@@ -4380,6 +4395,11 @@ export const lessons: KoreanLesson[] =     [
             "지적해 주신 → /지저캐주신/",
             "검토한 → /검토한/",
             "답변드리겠습니다 → /답뼌드리겟씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "지적해 주신 'ji-jeo-kae ju-sin' — gloss /지저캐주신/: 적+해 → ㄱ+ㅎ = aspirated 'k'; 적 links",
+            "검토한 'geom-to-han' — ㅓ ('uh') in 검; aspirated ㅌ in 토",
+            "답변드리겠습니다 'dap-byeon-deu-ri-get-seum-ni-da' — gloss /답뼌.../: 답 batchim ㅂ tenses ㅂ"
           ]
         },
         {
@@ -4391,6 +4411,11 @@ export const lessons: KoreanLesson[] =     [
             "방법론상의 → /방범논상의/",
             "타당성 → /타당성/",
             "확인되었습니다 → /화긴되어씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "방법론상의 'bang-beom-non-sang-ui' — gloss /방범논상의/: 법 ㅂ→'m' before ㄹ, 론→'non'",
+            "타당성 'ta-dang-seong' — aspirated ㅌ in 타; final ㅇ nasal",
+            "확인되었습니다 'hwa-gin-doe-eot-seum-ni-da' — gloss /화긴.../: 확 batchim ㄱ links into 인"
           ]
         }
       ],
@@ -4517,7 +4542,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Buổi 논문 공개 심사 ở Hàn rất nghi thức: (1) Bắt đầu, 심사위원장 mở phiên — diễn giả KHÔNG tự bắt đầu. (2) Phải 인사 (cúi nhẹ) khi vào và ra phòng. (3) Khi 심사위원 đặt câu hỏi: KHÔNG cắt lời, ghi chép trên giấy, đáp khi họ kết thúc. (4) Một câu hỏi khó luôn đi qua 3 giai đoạn: thừa nhận điểm hợp lý → nêu giới hạn cụ thể → cam kết bổ sung. (5) Sau buổi, gửi email cảm ơn riêng đến từng 심사위원 trong vòng 24h — quy ước bất thành văn. (6) Nếu hỏng một câu, KHÔNG sụp đổ — '추후 검토하겠습니다' giữ thể diện cho cả hai bên. (7) Người Việt dễ rơi vào hai lỗi: (a) over-defensive — cãi lại từng điểm, làm hội đồng cảnh giác; (b) over-apologetic — '죄송합니다' liên tục, làm mất uy tín học thuật. Khoảng giữa = '지적해 주신 점에 동의합니다 + 다만 〜은 〜라고 사료됩니다' — công nhận + bảo vệ phần đáng giữ.",
+      "cultural_notes_en": "A 논문 공개 심사 (open thesis defense) in Korea is highly ritualized: (1) the 심사위원장 (committee chair) opens the session — the candidate does NOT start on their own. (2) You must 인사 (a slight bow) when entering and leaving the room. (3) When a 심사위원 (examiner) asks a question: do NOT interrupt, take notes on paper, answer when they finish. (4) A hard question always runs through 3 stages: acknowledge the valid point → state a specific limitation → commit to supplementing it. (5) Afterward, send a separate thank-you email to each 심사위원 within 24h — an unwritten convention. (6) If you flub a question, do NOT collapse — '추후 검토하겠습니다' (I'll review it later) saves face for both sides. (7) Vietnamese speakers fall into two errors: (a) over-defensive — rebutting every point, putting the committee on guard; (b) over-apologetic — a stream of '죄송합니다' that erodes academic credibility. The middle = '지적해 주신 점에 동의합니다 + 다만 〜은 〜라고 사료됩니다' — acknowledge + defend the part worth keeping.",
       "tip_advice_vi": "Chuẩn bị 30 phút Q&A trên 1 luận án: (1) DỰ ĐOÁN 10 câu hỏi — dùng abstract của bạn, mỗi mệnh đề là một câu hỏi tiềm ẩn. (2) MỖI CÂU HỎI có 3 phương án trả lời — ngắn (30s), trung bình (90s), dài (3 phút). 사회자 sẽ điều tiết. (3) MARKERS chuyển trang: '먼저 ~을 말씀드리고, 다음으로 ~에 대해 답변드리겠습니다' — cấu trúc rõ giúp hội đồng theo dõi. (4) KHI bị truy vấn dồn: KHÔNG vội trả lời — 1-2 giây im lặng để soạn câu là dấu hiệu trưởng thành. (5) HEDGE LEVEL phải khớp evidence — full-data finding dùng '확인되었습니다'; preliminary dùng '시사됩니다'; speculative dùng '추정됩니다'. Nhầm cấp = mất uy tín. (6) NẾU CHƯA ĐỌC một tác giả mà 심사위원 trích: KHÔNG nói '읽어봤습니다' (giả vờ); nói '아직 충분히 검토하지 못했습니다. 보완하도록 하겠습니다' — trung thực được tôn trọng. (7) Cảm ơn cuối — đứng dậy 인사 90 độ với 심사위원장.",
+      "tip_advice_en": "Preparing 30 min of Q&A on a thesis: (1) PREDICT 10 questions — use your own abstract; each clause is a latent question. (2) EACH QUESTION gets 3 answer lengths — short (30s), medium (90s), long (3 min). The 사회자 controls pacing. (3) TRANSITION MARKERS: '먼저 ~을 말씀드리고, 다음으로 ~에 대해 답변드리겠습니다' — clear structure helps the committee follow. (4) WHEN pressed in a barrage: do NOT rush — 1–2 seconds of silence to compose is a sign of maturity. (5) HEDGE LEVEL must match the evidence — a full-data finding uses '확인되었습니다'; preliminary uses '시사됩니다'; speculative uses '추정됩니다'. Mixing levels loses credibility. (6) IF you haven't read an author the 심사위원 cites: do NOT say '읽어봤습니다' (pretending); say '아직 충분히 검토하지 못했습니다. 보완하도록 하겠습니다' — honesty is respected. (7) Final thanks — stand and 인사 90 degrees to the 심사위원장.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -4607,6 +4634,11 @@ export const lessons: KoreanLesson[] =     [
             "심사위원께서 → /심사위원께서/",
             "지적하신 → /지저카신/",
             "답변드립니다 → /답뼌드림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "심사위원께서 'sim-sa-wi-won-kke-seo' — honorific subject marker 께서; even stress",
+            "지적하신 'ji-jeo-ka-sin' — gloss /지저카신/: 적+하 → ㄱ+ㅎ = aspirated 'k'; 적 links",
+            "답변드립니다 'dap-byeon-deu-rim-ni-da' — gloss /답뼌.../: 답 ㅂ tenses next ㅂ"
           ]
         },
         {
@@ -4618,6 +4650,11 @@ export const lessons: KoreanLesson[] =     [
             "전면 수용하여 → /전면수용하여/",
             "원고 → /원고/",
             "수정하였습니다 → /수정하여씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "전면 수용하여 'jeon-myeon su-yong-ha-yeo' — ㅕ glides; 'fully accepting'",
+            "원고 'won-go' — plain ㄱ; 'the manuscript'; ㅝ in 원 ≈ 'wo'",
+            "수정하였습니다 'su-jeong-ha-yeot-seum-ni-da' — 였 batchim ㅆ → 't' stop"
           ]
         },
         {
@@ -4629,6 +4666,11 @@ export const lessons: KoreanLesson[] =     [
             "일부만 → /일부만/",
             "수용하기로 하고 → /수용하기로하고/",
             "상술하겠습니다 → /상술하게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "일부만 'il-bu-man' — 일 batchim ㄹ; keep ㅏ open in 만 ('ah-n')",
+            "수용하기로 하고 'su-yong-ha-gi-ro ha-go' — links smoothly; plain ㄱ",
+            "상술하겠습니다 'sang-sul-ha-get-seum-ni-da' — 술 batchim ㄹ; 겠 → 't' stop"
           ]
         },
         {
@@ -4640,6 +4682,11 @@ export const lessons: KoreanLesson[] =     [
             "근거로 → /근거로/",
             "원래의 → /월래의/",
             "유지하고자 → /유지하고자/"
+          ],
+          "pronunciation_focus_en": [
+            "근거로 'geun-geo-ro' — plain ㄱ twice; ㅓ ('uh') in 거",
+            "원래의 'wol-lae-ui' — gloss /월래의/: 원래 → 'wol-lae' (ㄴ→ㄹ); ㅢ often 'e'",
+            "유지하고자 'yu-ji-ha-go-ja' — plain ㅈ; humble 'wish to maintain'"
           ]
         },
         {
@@ -4651,6 +4698,11 @@ export const lessons: KoreanLesson[] =     [
             "유익한 → /유이칸/",
             "주신 → /주신/",
             "드립니다 → /드림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "유익한 'yu-i-kan' — gloss /유이칸/: 익+한 → ㄱ+ㅎ = aspirated 'k'",
+            "주신 'ju-sin' — plain ㅈ; honorific 'gave (to me)'",
+            "드립니다 'deu-rim-ni-da' — 드 tight 'eu'; humble 'I give/offer'"
           ]
         }
       ],
@@ -4777,7 +4829,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Văn hóa peer review tạp chí Hàn: (1) Reviewer thường ẩn danh nhưng giới học thuật nhỏ — phong cách answer phải dự liệu reviewer có thể đoán được bạn là ai. (2) 'Major revision' ở Hàn quenly mất 2-4 tuần để answer; 'minor revision' 1 tuần. Trễ deadline mất uy tín nghiêm trọng. (3) Cấu trúc 'point-by-point' bắt buộc — KHÔNG được trả lời gộp. (4) Mỗi tap chí có 답변서 양식 — kiểm tra trước khi viết. (5) Khi reviewer sai factual rõ rệt: vẫn giữ tone tôn trọng — '본 원고 5쪽에 다음과 같이 명시되어 있습니다' (chỉ ra văn bản); KHÔNG '오해하셨습니다'. (6) 한국 학회지 thường cho 1-2 round revision tối đa; lần 3 thường reject. (7) Người Việt dễ sai: (a) over-accept tất cả để xuôi việc — làm bài mất chất; (b) defensive — cãi từng điểm, làm reviewer + editor mệt và reject. Khoảng giữa = strategic — chấp nhận 70% (dễ), giữ 30% (cốt lõi) với lý lẽ chắc.",
+      "cultural_notes_en": "Korean journal peer-review culture: (1) reviewers are usually anonymous but the academic community is small — your response style must assume the reviewer might guess who you are. (2) A 'major revision' in Korea customarily takes 2–4 weeks to answer; 'minor revision' 1 week. Missing the deadline seriously damages credibility. (3) A 'point-by-point' structure is mandatory — you may NOT answer in a lump. (4) Each journal has a 답변서 양식 (response-letter template) — check it before writing. (5) When a reviewer is clearly wrong on a fact: still keep a respectful tone — '본 원고 5쪽에 다음과 같이 명시되어 있습니다' (it is stated as follows on page 5); NOT '오해하셨습니다' (you misunderstood). (6) Korean journals usually allow 1–2 revision rounds max; a 3rd round usually means reject. (7) Vietnamese speakers err: (a) over-accepting everything to move it along — gutting the paper; (b) defensive — rebutting every point, tiring the reviewer + editor into a reject. The middle = strategic — accept 70% (the easy parts), hold 30% (the core) with solid reasoning.",
       "tip_advice_vi": "Quy trình viết 답변서 trong 1 tuần: (1) NGÀY 1: đọc kỹ 심사평 — gạch dưới 3 màu: xanh (chấp nhận ngay), vàng (cần suy nghĩ), đỏ (cần bảo vệ giữ). (2) NGÀY 2: xử lý XANH — dễ nhất, tăng động lực. (3) NGÀY 3-4: xử lý VÀNG — quyết định partial accept; viết lý do thật rõ. (4) NGÀY 5-6: xử lý ĐỎ — viết defense — cấu trúc 'thừa nhận + lý lẽ + bổ sung'. (5) NGÀY 7: đọc lại toàn 답변서; yêu cầu 1 đồng nghiệp đọc kiểm tra giọng. (6) MẸO PHÁT ÂM: '답변서' đọc /답뼌서/ với 'ㄴ→ㄹ' không đổi; 'ㅂ' đậm. '심사평' đọc /심사평/ với 'ㅍ' bật hơi. (7) BẪY NGƯỜI VIỆT: gửi response không có chỉ số trang/dòng cụ thể — reviewer không tìm được, reject tâm lý. LUÔN ghi '〜쪽 〜줄' cho mỗi sửa đổi.",
+      "tip_advice_en": "Writing the 답변서 in one week: (1) DAY 1: read the 심사평 carefully — underline in 3 colors: green (accept now), yellow (need to think), red (need to defend/keep). (2) DAY 2: handle GREEN — easiest, builds momentum. (3) DAYS 3–4: handle YELLOW — decide on partial accept; write the reason very clearly. (4) DAYS 5–6: handle RED — write the defense — structure 'acknowledge + reasoning + supplement'. (5) DAY 7: re-read the whole 답변서; ask a colleague to check the tone. (6) PRONUNCIATION TIP: '답변서' is read /답뼌서/ — the ㄴ→ㄹ does not change here; ㅂ is tensed. '심사평' is /심사평/ with an aspirated ㅍ. (7) VIETNAMESE TRAP: sending a response with no specific page/line numbers — the reviewer can't find it and psychologically rejects. ALWAYS write '〜쪽 〜줄' (page X, line Y) for each change.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -4867,6 +4921,11 @@ export const lessons: KoreanLesson[] =     [
             "지금부터 → /지금부터/",
             "본 세션 → /본세션/",
             "시작하겠습니다 → /시자카게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "지금부터 'ji-geum-bu-teo' — plain ㅈ; 금 final ㅁ; ㅓ ('uh') in 터",
+            "본 세션 'bon se-syeon' — gloss /본세션/ links; 'session' loaned",
+            "시작하겠습니다 'si-ja-ka-get-seum-ni-da' — gloss /시자카.../: 작+하 → aspirated 'k'"
           ]
         },
         {
@@ -4878,6 +4937,11 @@ export const lessons: KoreanLesson[] =     [
             "발표자께서는 → /발표자께서는/",
             "정해진 → /정해진/",
             "주시기 → /주시기/"
+          ],
+          "pronunciation_focus_en": [
+            "발표자께서는 'bal-pyo-ja-kke-seo-neun' — 발 batchim ㄹ; honorific 께서는",
+            "정해진 'jeong-hae-jin' — plain ㅈ; ㅐ in 해 ≈ 'eh'",
+            "주시기 'ju-si-gi' — plain ㅈ/ㄱ; honorific request stem"
           ]
         },
         {
@@ -4889,6 +4953,11 @@ export const lessons: KoreanLesson[] =     [
             "두 분 발표 → /두분발표/",
             "토론자께 → /토론자께/",
             "드리겠습니다 → /드리게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "두 분 발표 'du bun bal-pyo' — gloss /두분발표/ links; ㅛ in 표",
+            "토론자께 'to-ron-ja-kke' — aspirated ㅌ in 토; honorific 께",
+            "드리겠습니다 'deu-ri-get-seum-ni-da' — 겠 batchim ㅆ → 't' stop"
           ]
         },
         {
@@ -4900,6 +4969,11 @@ export const lessons: KoreanLesson[] =     [
             "한 분당 → /한분당/",
             "제한해 → /제한해/",
             "주시기 → /주시기/"
+          ],
+          "pronunciation_focus_en": [
+            "한 분당 'han bun-dang' — gloss /한분당/ links; final ㅇ nasal in 당",
+            "제한해 'je-han-hae' — plain ㅈ; ㅐ in 해 ≈ 'eh'; 'to limit'",
+            "주시기 'ju-si-gi' — repeated honorific request stem"
           ]
         },
         {
@@ -4911,6 +4985,11 @@ export const lessons: KoreanLesson[] =     [
             "이상으로 → /이상으로/",
             "마무리하겠습니다 → /마무리하게씀니다/",
             "박수 부탁드립니다 → /박쑤부탁드림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "이상으로 'i-sang-eu-ro' — 상 final ㅇ; 으 tight 'eu'",
+            "마무리하겠습니다 'ma-mu-ri-ha-get-seum-ni-da' — flowing, no break; 겠 → 't' stop",
+            "박수 부탁드립니다 'bak-su bu-tak-deu-rim-ni-da' — gloss /박쑤.../: 박 ㄱ tenses ㅅ"
           ]
         }
       ],
@@ -5037,7 +5116,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "사회 (chair) ở hội thảo Hàn là vai trò có uy tín cao — thường là 부교수 trở lên hoặc 박사 thâm niên. (1) Trang phục: complet tối, không có ngoại lệ. (2) Trước phiên: gặp riêng diễn giả + discussant 30 phút trước, kiểm tra phát âm tên, hỏi cách giới thiệu (chức danh nào). (3) Trong phiên: ghi chú trên giấy giấy ngày tháng, đánh dấu thời gian — Hàn rất chặt về timing. (4) Vượt giờ là sỉ nhục cho cả phiên — đến lúc, chair phải ngắt. (5) Sau phiên: cảm ơn riêng từng diễn giả + discussant tại 다과실 (phòng nghỉ); discussant cao niên thì 인사 90 độ. (6) Người Việt làm chair Hàn dễ rơi: (a) over-polite — cứ '죄송합니다만 죄송합니다만…' nhiều lần làm yếu authority; (b) dưới-formal — dùng '님' không đầy đủ chức danh. Khoảng giữa = một '죄송합니다만' đủ + chức danh đầy đủ. (7) Nếu một diễn giả bị câu hỏi tấn công: chair có quyền can thiệp '제가 보충 설명을 드리자면' để giảm áp lực — chức năng bảo vệ.",
+      "cultural_notes_en": "The 사회 (chair) at a Korean conference is a high-prestige role — usually an associate professor or above, or a senior PhD. (1) Dress: a dark suit, no exception. (2) Before the session: meet the presenter + discussant privately 30 min ahead, check name pronunciation, ask how to introduce them (which title). (3) During: take notes on paper with timestamps — Korea is very strict about timing. (4) Running over time is a humiliation for the whole session — at the limit, the chair must cut in. (5) After: thank each presenter + discussant separately in the 다과실 (reception room); for a senior discussant, 인사 90 degrees. (6) A Vietnamese chair in Korea falls into: (a) over-polite — repeating '죄송합니다만 죄송합니다만…' weakens authority; (b) under-formal — using '님' without the full title. The middle = one '죄송합니다만' is enough + the full title. (7) If a presenter is attacked by a question: the chair may step in '제가 보충 설명을 드리자면' to reduce pressure — a protective function.",
       "tip_advice_vi": "Chuẩn bị panel 90 phút trên 1 phiên: (1) MỘT TUẦN trước — gửi email confirm timeline cho diễn giả + discussant; xác nhận chức danh chính xác. (2) NGÀY trước — chuẩn bị 'cheat sheet' giới thiệu mỗi người (3-4 dòng — học vị, công trình mới nhất, mối liên hệ với chủ đề). (3) 30 phút TRƯỚC — gặp diễn giả tại phòng; nhắc timing; hỏi 'phát âm tên có đúng không?'. (4) MỞ phiên — chuẩn bị câu cố định: '안녕하십니까. 제〜분과 세션의 사회를 맡은 〜입니다.' (5) CẢNH BÁO TIME — viết lên paperboard hoặc giơ giấy '2분', '1분', '시간 종료'. (6) Q&A — nếu khán giả không có câu hỏi: chair có 1 câu chuẩn bị sẵn để mở; nếu nhiều quá: ưu tiên người đứng giữa-sau-phải (Hàn quy ước). (7) ĐÓNG phiên — 3 phần cảm ơn cố định: 발표자 / 토론자 / 청중; KHÔNG quên ai. MẸO PHÁT ÂM: '발언권' đọc /바런꿘/ với 받침; '마무리' đọc /마무리/ trôi chảy không ngắt.",
+      "tip_advice_en": "Preparing a 90-min panel: (1) ONE WEEK before — email to confirm the timeline with presenter + discussant; verify exact titles. (2) THE DAY before — prepare an introduction 'cheat sheet' for each person (3–4 lines — degree, latest work, link to the topic). (3) 30 min BEFORE — meet the presenter in the room; remind them of timing; ask 'is the name pronunciation right?'. (4) OPEN the session — a fixed line ready: '안녕하십니까. 제〜분과 세션의 사회를 맡은 〜입니다.' (5) TIME WARNINGS — write on a paperboard or hold a card '2분', '1분', '시간 종료'. (6) Q&A — if the audience has no question, the chair has one prepared to open; if too many, prioritize center–back–right (the Korean convention). (7) CLOSE the session — 3 fixed thanks: 발표자 / 토론자 / 청중; don't forget anyone. PRONUNCIATION TIP: '발언권' is read /바런꿘/ with the batchim liaison; '마무리' is /마무리/ flowing, no break.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -5127,6 +5208,11 @@ export const lessons: KoreanLesson[] =     [
             "~에 따르면 → /에따르면/",
             "긍정적 → /긍정적/",
             "보고된다 → /보고된다/"
+          ],
+          "pronunciation_focus_en": [
+            "~에 따르면 'e tta-reu-myeon' — gloss /에따르면/ links; tense ㄸ in 따; 'according to'",
+            "긍정적 'geung-jeong-jeok' — ㅡ tight 'eu' in 긍; final ㄱ stop",
+            "보고된다 'bo-go-doen-da' — ㅚ in 된 ≈ 'dwen'; 'is reported'"
           ]
         },
         {
@@ -5138,6 +5224,11 @@ export const lessons: KoreanLesson[] =     [
             "지적한 바와 같이 → /지저칸바와가치/",
             "매개 효과 → /매개효과/",
             "검토되지 → /검토되지/"
+          ],
+          "pronunciation_focus_en": [
+            "지적한 바와 같이 'ji-jeo-kan ba-wa ga-chi' — gloss /지저칸바와가치/: 적+한 aspirated 'k'; 같이→'ga-chi'",
+            "매개 효과 'mae-gae hyo-gwa' — ㅐ ≈ 'eh' twice; ㅛ in 효",
+            "검토되지 'geom-to-doe-ji' — ㅓ ('uh') in 검; aspirated ㅌ in 토"
           ]
         },
         {
@@ -5149,6 +5240,11 @@ export const lessons: KoreanLesson[] =     [
             "통찰을 제공하지만 → /통차를제공하지만/",
             "두 가지 점에서 → /두가지저메서/",
             "한계가 있다 → /한계가읻따/"
+          ],
+          "pronunciation_focus_en": [
+            "통찰을 제공하지만 'tong-cha-reul je-gong-ha-ji-man' — gloss /통차를.../: 찰 ㄹ links into 을",
+            "두 가지 점에서 'du ga-ji jeo-me-seo' — gloss /두가지저메서/: 점에 links → 'jeo-me'",
+            "한계가 있다 'han-gye-ga it-da' — gloss /한계가읻따/: 있 batchim ㅆ→'t', tenses ㄷ"
           ]
         },
         {
@@ -5160,6 +5256,11 @@ export const lessons: KoreanLesson[] =     [
             "두 입장을 → /두입짱을/",
             "절충하여 → /절충하여/",
             "제안하고자 → /제안하고자/"
+          ],
+          "pronunciation_focus_en": [
+            "두 입장을 'du ip-jang-eul' — gloss /두입짱을/: 입 ㅂ tenses ㅈ → 'ip-jjang'",
+            "절충하여 'jeol-chung-ha-yeo' — 절 batchim ㄹ; aspirated ㅊ in 충",
+            "제안하고자 'je-an-ha-go-ja' — plain ㅈ; humble 'wishing to propose'"
           ]
         },
         {
@@ -5171,6 +5272,11 @@ export const lessons: KoreanLesson[] =     [
             "기존의 → /기존의/",
             "비판적으로 → /비판적으로/",
             "재해석함으로써 → /재해서캄으로써/"
+          ],
+          "pronunciation_focus_en": [
+            "기존의 'gi-jon-ui' — plain ㄱ; ㅢ in 의 often 'e'; 'existing'",
+            "비판적으로 'bi-pan-jeo-geu-ro' — aspirated ㅍ in 판; 적으 links 'jeo-geu'",
+            "재해석함으로써 'jae-hae-seo-kam-eu-ro-sseo' — gloss /재해서캄.../: 석+함 → aspirated 'k'; tense ㅆ"
           ]
         }
       ],
@@ -5291,7 +5397,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Văn hóa trích dẫn ở Hàn: (1) Hệ thứ bậc nghiêm — học giả lớn, GS đầu ngành (대가) thường được trích ở mức 1-2 dù bạn không đồng ý; mức 3-4 chỉ dùng khi có evidence không thể chối. (2) Self-citation phải sparse — '본 연구자의 선행 연구(2022)' chỉ 1-2 lần, không lạm. (3) Trích bằng tiếng Anh KHÔNG được dịch sang Hàn cho luận văn Hàn — giữ nguyên cụm tiếng Anh trong ngoặc kép, paraphrase tiếng Hàn ngoài. (4) Trang phải đầy đủ: 'Kim(2018: 45)' — KHÔNG '(Kim 2018)' kiểu Anglo. (5) Nếu trích dẫn từ một bản dịch (예: Foucault qua bản dịch tiếng Hàn): ghi rõ 'Foucault(1975/2003: 67)' — năm gốc / năm dịch. (6) Rủi ro lớn cho người Việt: trộn nhãn — '주장하다' và '말하다' không thay thế nhau; '말하다' không phù hợp văn học thuật. (7) Khi phê bình một học giả Hàn còn sống: dùng 'OO 교수님' khi nói; trong văn dùng 'OOO(년도)' không '님' — chuyển trang trọng theo media.",
+      "cultural_notes_en": "Korean citation culture: (1) Hierarchy is strict — a major scholar or field-founding professor (대가) is usually cited at level 1–2 even if you disagree; level 3–4 only with undeniable evidence. (2) Self-citation must be sparse — '본 연구자의 선행 연구(2022)' only 1–2 times, no overuse. (3) An English quotation is NOT translated into Korean for a Korean thesis — keep the English phrase in quotes, paraphrase in Korean around it. (4) Pages must be complete: 'Kim(2018: 45)' — NOT '(Kim 2018)' Anglo-style. (5) If quoting from a translation (e.g. Foucault via the Korean translation): note clearly 'Foucault(1975/2003: 67)' — original year / translation year. (6) A big risk for Vietnamese: mixing reporting verbs — '주장하다' (argues) and '말하다' (says) are not interchangeable; '말하다' is not appropriate in academic writing. (7) When critiquing a living Korean scholar: use 'OO 교수님' when speaking; in writing use 'OOO(year)' without '님' — shift formality by medium.",
       "tip_advice_vi": "Quy trình kiểm tra 'critical posture' của tổng quan: (1) ĐẾM nhãn trong 5 trích dẫn cốt lõi — nếu 5/5 là mức 1, văn yếu (purely descriptive); nếu 5/5 là mức 4, văn kiêu (over-aggressive). Lý tưởng: 1-2 / 2 / 2 / 0-1 trên mức 1/2/3/4. (2) MỖI MỨC 3 phải kèm '본 연구가 어떻게 보완하는지' — không chỉ ra giới hạn rồi bỏ đi, đó là vô ích. (3) MỨC 4 PHẢI kèm bằng chứng cụ thể (자료, 새로운 분석); KHÔNG chỉ là ý kiến cá nhân. (4) PHÁT ÂM: '한계가 있다' đọc /한계가읻따/ với 받침 'ㅏ→ㅓ' lưu ý; '재고하다' đọc /재고하다/ trôi chảy. (5) BẪY: '~의 주장은 잘못이다' (lập luận của X sai) — KHÔNG dùng — quá thẳng, công kích cá nhân. Thay '~의 주장은 ~점에서 재고될 필요가 있다'. (6) THAM CHIẾU CHÉO: nếu Kim(2018) và Park(2020) mâu thuẫn, đừng nhặt cái phù hợp — nêu cả hai kèm '두 입장의 차이는 〜에서 비롯된다' (sự khác biệt bắt nguồn từ).",
+      "tip_advice_en": "A routine to check the 'critical posture' of a literature review: (1) COUNT the labels in 5 core citations — if 5/5 are level 1, the prose is weak (purely descriptive); if 5/5 are level 4, the prose is arrogant (over-aggressive). Ideal: 1–2 / 2 / 2 / 0–1 across levels 1/2/3/4. (2) EVERY level 3 must include '본 연구가 어떻게 보완하는지' (how this study supplements it) — pointing out a limit then walking away is useless. (3) LEVEL 4 MUST carry concrete evidence (data, a new analysis); NOT just a personal opinion. (4) PRONUNCIATION: '한계가 있다' is read /한계가읻따/ — note the batchim and the tensed ㄸ; '재고하다' is /재고하다/ flowing. (5) TRAP: '~의 주장은 잘못이다' (X's argument is wrong) — do NOT use — too blunt, a personal attack. Replace with '~의 주장은 ~점에서 재고될 필요가 있다' (X's argument needs reconsideration on point ~). (6) CROSS-REFERENCE: if Kim(2018) and Park(2020) conflict, don't cherry-pick the convenient one — present both with '두 입장의 차이는 〜에서 비롯된다' (the difference stems from ~).",
       "exercises": [
         {
           "type": "fill-blank",
@@ -5381,6 +5489,11 @@ export const lessons: KoreanLesson[] =     [
             "전적으로 공감하면서도 → /전저그로공감하면서도/",
             "여쭙고 → /여쭙꼬/",
             "있습니다 → /읻씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "전적으로 공감하면서도 'jeon-jeo-geu-ro gong-gam-ha-myeon-seo-do' — gloss /전저그로.../: 적으 links",
+            "여쭙고 'yeo-jjup-go' — gloss /여쭙꼬/: tense ㅉ; 쭙 ㅂ tenses ㄱ → 'kko'",
+            "있습니다 'it-seum-ni-da' — gloss /읻씀니다/: 있 ㅆ → 't' stop, tenses ㅅ"
           ]
         },
         {
@@ -5392,6 +5505,11 @@ export const lessons: KoreanLesson[] =     [
             "미처 → /미처/",
             "이해하지 못한 → /이해하지모탄/",
             "어떻게 보십니까 → /어떠케보심니까/"
+          ],
+          "pronunciation_focus_en": [
+            "미처 'mi-cheo' — aspirated ㅊ; ㅓ ('uh'); 'not yet / failed to'",
+            "이해하지 못한 'i-hae-ha-ji mo-tan' — gloss /이해하지모탄/: 못+한 → aspirated 't'",
+            "어떻게 보십니까 'eo-tteo-ke bo-sim-ni-kka' — gloss /어떠케.../: 떻+게 → aspirated 'k'"
           ]
         },
         {
@@ -5403,6 +5521,11 @@ export const lessons: KoreanLesson[] =     [
             "설득력이 있다고 → /설뜽녀기읻따고/",
             "다음의 → /다으믜/",
             "여쭙고 싶습니다 → /여쭙꼬싑씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "설득력이 있다고 'seol-deung-nyeo-gi it-da-go' — gloss /설뜽녀기.../: 득력→'deung-nyeok', links",
+            "다음의 'da-eu-mui' — gloss /다으믜/: 음의 → 'eu-mui'; ㅢ here ≈ 'ui'",
+            "여쭙고 싶습니다 'yeo-jjup-go ship-seum-ni-da' — gloss /여쭙꼬싑씀니다/: tense ㅉ, tensed clusters"
           ]
         },
         {
@@ -5414,6 +5537,11 @@ export const lessons: KoreanLesson[] =     [
             "결국은 → /결구근/",
             "관점의 차이 → /관저믜차이/",
             "또 다른 해석 → /또다른해석/"
+          ],
+          "pronunciation_focus_en": [
+            "결국은 'gyeol-gu-geun' — gloss /결구근/: 국은 → 'gu-geun' liaison",
+            "관점의 차이 'gwan-jeo-mui cha-i' — gloss /관저믜차이/: 점의 → 'jeo-mui'; aspirated ㅊ",
+            "또 다른 해석 'tto da-reun hae-seok' — tense ㄸ in 또; 다른 → 'da-reun' liaison"
           ]
         },
         {
@@ -5424,6 +5552,10 @@ export const lessons: KoreanLesson[] =     [
           "pronunciation_focus": [
             "지도 편달을 → /지도편다를/",
             "부탁드립니다 → /부탁뜨림니다/"
+          ],
+          "pronunciation_focus_en": [
+            "지도 편달을 'ji-do pyeon-da-reul' — gloss /지도편다를/: 달을 → 'da-reul' liaison; ㅕ glide",
+            "부탁드립니다 'bu-tak-deu-rim-ni-da' — gloss /부탁뜨림니다/: 탁 ㄱ tenses ㄷ → 'tteu'"
           ]
         }
       ],
@@ -5550,7 +5682,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Giai cấp học thuật Hàn cực kỳ phân lớp: (1) 학부생 → 석사 → 박사 → 박사 후 → 시간강사 → 부교수 → 정교수 → 석좌교수. Mỗi cấp có 호칭 khác. Vượt cấp phát ngôn = vô lễ nghiêm trọng. (2) Khi 박사 과정생 bất đồng với 정교수 cùng ngành: cần 3 lớp hedge tối thiểu; bỏ một lớp = bị xem là arrogant. (3) Khi không cùng ngành (ví dụ: y học vs. xã hội học): có thể nhẹ nhàng hơn — 'chuyên môn không cùng' tạo ra khoảng cách cho phép. (4) Bất đồng trong 콜로키움 (oral): KHÔNG ngay tại buổi — chờ về 1대1 hoặc viết email. Bất đồng công khai = gọi 윗사람 ra trước mặt người khác = có thể chấm dứt quan hệ. (5) Trong văn (논문): có thể phê bình mức 3 (xem bài 115) nhưng giọng vẫn phải tôn trọng. (6) Người Việt có thể rơi vào 2 lỗi: (a) over-defer — '예, 알겠습니다' liên tục dù không đồng ý → không tiến bộ; (b) under-hedge — bỏ qua các marker mềm, bị xem là vô lễ. Khoảng giữa = 3 lớp hedge + cụm '지도 편달' kết thúc — chuẩn. (7) Có một ngoại lệ: khi 윗사람 chính xác hỏi ý kiến phản đối ('비판적으로 봐주세요'), bạn vẫn phải hedge nhưng có thể giảm xuống 2 lớp.",
+      "cultural_notes_en": "Korean academic class structure is extremely stratified: (1) 학부생 → 석사 → 박사 → post-doc → 시간강사 → 부교수 → 정교수 → 석좌교수. Each level has different 호칭 (address terms). Speaking out of rank = a serious breach. (2) When a 박사 과정생 (PhD candidate) disagrees with a 정교수 (full professor) in the same field: at least 3 layers of hedging; dropping one = read as arrogant. (3) Across fields (e.g. medicine vs sociology): you can be softer — 'different specialties' creates an allowable distance. (4) Disagreement in a 콜로키움 (oral): NOT in the room — wait for a 1-on-1 or write an email. Public disagreement = calling out a 윗사람 in front of others = can end the relationship. (5) In writing (a paper): you may critique at level 3 (see lesson 115) but the tone must stay respectful. (6) Vietnamese speakers fall into 2 errors: (a) over-defer — '예, 알겠습니다' constantly while disagreeing → no progress; (b) under-hedge — skipping the soft markers, read as rude. The middle = 3 layers of hedge + closing with '지도 편달' (please continue to guide me) — standard. (7) One exception: when the 윗사람 explicitly asks for a dissenting view ('비판적으로 봐주세요'), you still hedge but may drop to 2 layers.",
       "tip_advice_vi": "Quy trình bày tỏ bất đồng với 윗사람 trong 5 bước: (1) CHỜ thời điểm phù hợp — KHÔNG ngay sau bài giảng/colloquium; chờ 1 ngày để bạn calm và GS có không gian. (2) ĐĂNG KÝ gặp 1대1 — email với chủ đề rõ '조심스럽게 여쭙고 싶은 점이 있어'. (3) CHUẨN BỊ cả ba lớp hedge ở đầu, không vội vào nội dung. (4) KÈM evidence — không vào tay không; mang dữ liệu, paper, slide cụ thể. (5) KẾT bằng '지도 편달' — chuyển quyền phán quyết về GS. MẸO PHÁT ÂM: '여쭙고' đọc /여쭙꼬/ với 'ㅂ' đậm; '미처' đọc /미처/ trôi chảy; '편달' đọc /편달/ với 'ㄹ' nhẹ. ĐỪNG: (a) email nói '교수님께서 틀리셨습니다' (không bao giờ); (b) cãi ngay tại colloquium; (c) lên giọng mỉa mai dù 1대1; (d) bỏ qua bước cảm ơn cuối — luôn '시간 내주셔서 감사합니다'. Nếu GS không thừa nhận sau cuộc gặp: tôn trọng, ghi chú, dùng quan sát đó cho luận văn của riêng bạn — KHÔNG mang ra đấu tiếp.",
+      "tip_advice_en": "Expressing disagreement with a 윗사람, in 5 steps: (1) WAIT for the right moment — NOT right after the lecture/colloquium; wait a day so you're calm and the professor has space. (2) REQUEST a 1-on-1 — an email with a clear subject '조심스럽게 여쭙고 싶은 점이 있어' (something I'd carefully like to ask). (3) PREPARE all three hedge layers up front, don't rush into content. (4) BRING evidence — don't come empty-handed; bring data, a paper, a specific slide. (5) CLOSE with '지도 편달' — handing the verdict back to the professor. PRONUNCIATION: '여쭙고' is read /여쭙꼬/ with a tensed ㅂ; '미처' is /미처/ flowing; '편달' is /편달/ with a soft ㄹ. DON'T: (a) email '교수님께서 틀리셨습니다' (never); (b) argue right at the colloquium; (c) raise a sarcastic tone even 1-on-1; (d) skip the closing thanks — always '시간 내주셔서 감사합니다'. If the professor doesn't concede after the meeting: respect it, note it, use the observation for your own thesis — do NOT keep fighting it.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -5640,6 +5774,11 @@ export const lessons: KoreanLesson[] =     [
             "디지털 학습 → /디지털학씁/",
             "상호작용 → /상호자굥/",
             "다룬다 → /다룬다/"
+          ],
+          "pronunciation_focus_en": [
+            "디지털 학습 'di-ji-teol hak-seup' — gloss /디지털학씁/: 습 tenses, 'digital' loaned",
+            "상호작용 'sang-ho-ja-gyong' — gloss /상호자굥/: 작용 → 'ja-gyong' liaison",
+            "다룬다 'da-run-da' — plain ㄷ; 'addresses/handles'; even stress"
           ]
         },
         {
@@ -5651,6 +5790,11 @@ export const lessons: KoreanLesson[] =     [
             "보고해 왔으나 → /보고해와스나/",
             "매개 효과 → /매개효과/",
             "검토되지 않았다 → /검토되지아낟따/"
+          ],
+          "pronunciation_focus_en": [
+            "보고해 왔으나 'bo-go-hae wa-sseu-na' — gloss /보고해와스나/: 왔 batchim ㅆ links → 'wa-sseu'",
+            "매개 효과 'mae-gae hyo-gwa' — ㅐ ≈ 'eh'; ㅛ in 효",
+            "검토되지 않았다 'geom-to-doe-ji a-nat-da' — gloss /...아낟따/: 않았 → 't' stop, tenses ㄷ"
           ]
         },
         {
@@ -5662,6 +5806,11 @@ export const lessons: KoreanLesson[] =     [
             "패널 자료 → /패널자료/",
             "다층 회귀 → /다층회귀/",
             "분석하였다 → /분서카여따/"
+          ],
+          "pronunciation_focus_en": [
+            "패널 자료 'pae-neol ja-ryo' — 'panel' loaned; ㅐ ≈ 'eh'; ㅛ in 료",
+            "다층 회귀 'da-cheung hoe-gwi' — aspirated ㅊ in 층; ㅚ in 회 ≈ 'hwe'",
+            "분석하였다 'bun-seo-ka-yeot-da' — gloss /분서카여따/: 석+하 → aspirated 'k'; 였 → 't'"
           ]
         },
         {
@@ -5673,6 +5822,11 @@ export const lessons: KoreanLesson[] =     [
             "분석 결과 → /분석껼과/",
             "1.6배 → /일쩜육빼/",
             "강하게 나타났다 → /강하게나타낟따/"
+          ],
+          "pronunciation_focus_en": [
+            "분석 결과 'bun-seok gyeol-gwa' — gloss /분석껼과/: 석 ㄱ tenses ㄱ → 'kkyeol'",
+            "1.6배 'il-jjeom-yuk-bae' — gloss /일쩜육빼/: 점 tensed → 'jjeom'; 배 tensed → 'ppae'",
+            "강하게 나타났다 'gang-ha-ge na-ta-nat-da' — 났 batchim ㅆ → 't' stop"
           ]
         },
         {
@@ -5684,6 +5838,11 @@ export const lessons: KoreanLesson[] =     [
             "이론적·실천적 → /이론저씰천적/",
             "함의를 → /하므를/",
             "기여를 갖는다 → /기여를간는다/"
+          ],
+          "pronunciation_focus_en": [
+            "이론적·실천적 'i-ron-jeok-sil-cheon-jeok' — gloss /이론저씰천적/: links across the middot",
+            "함의를 'ha-mi-reul' — gloss /하므를/: 함의 → 'ha-mui/ha-meu' liaison",
+            "기여를 갖는다 'gi-yeo-reul gan-neun-da' — gloss /기여를간는다/: 갖 ㅈ→'t'→'n' before ㄴ"
           ]
         }
       ],
@@ -5828,7 +5987,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Văn hóa nộp abstract Hàn: (1) 학회 lớn (한국심리학회, 한국교육학회) thường 한 해 2 lần — 봄 학술대회 và 가을 학술대회. (2) Mỗi 학회 có template riêng cho abstract — bắt buộc dùng, KHÔNG sáng tạo. (3) Đăng ký nộp qua hệ thống online; giấy tờ phải có: 초록 + 주제어 + 발표자 정보 + 학회비 영수증. (4) Sau nộp, có 동료 심사 — 1-2 tuần. Phản hồi thường: '발표 채택' / '포스터 추천' / '발표 거절'. Khoảng 30-50% được chấp nhận làm 구두 발표. (5) Nếu được chấp nhận: phải nộp 발표문 đầy đủ trong 4-6 tuần — đó là phiên bản dài hơn của abstract. (6) BẪY người Việt: (a) lặp '본 연구는' nhiều lần — Hàn ít lặp, văn rườm; (b) trộn 〜다 và 〜습니다 — sai register; (c) bỏ qua 글자 수 — bị reject ngay khi quét tự động. (7) Một abstract tốt được đánh giá bởi 'reproducibility check' — đọc xong, người khác có thể đoán được phương pháp + kết quả không.",
+      "cultural_notes_en": "Korean conference-abstract submission culture: (1) major 학회 (한국심리학회, 한국교육학회) usually hold 2 conferences/year — a spring and a fall academic meeting. (2) Each 학회 has its own abstract template — mandatory, do NOT improvise. (3) Submit via an online system; required: 초록 (abstract) + 주제어 (keywords) + 발표자 정보 + 학회비 영수증 (membership-fee receipt). (4) After submission, 동료 심사 (peer review) — 1–2 weeks. Typical decision: '발표 채택' (accepted for talk) / '포스터 추천' (poster recommended) / '발표 거절'. About 30–50% are accepted for an oral talk. (5) If accepted: submit a full 발표문 within 4–6 weeks — a longer version of the abstract. (6) VIETNAMESE TRAP: (a) repeating '본 연구는' many times — Korean avoids repetition, reads as padded; (b) mixing 〜다 and 〜습니다 — wrong register; (c) ignoring the 글자 수 (character count) — auto-scanned and rejected on the spot. (7) A good abstract passes a 'reproducibility check' — after reading, can someone else guess the method + results?",
       "tip_advice_vi": "Quy trình viết abstract trong 1 tuần: (1) NGÀY 1 — đọc 5 abstract đã được chấp nhận của 학회 đó (xem trong proceedings cũ). Ghi pattern. (2) NGÀY 2 — soạn 5 câu, mỗi câu 1 ô, KHÔNG đếm 글자 ngay. (3) NGÀY 3 — đo 글자 수, cắt nếu vượt; ưu tiên cắt ô bối cảnh + hàm ý (giữ phương pháp + kết quả nguyên). (4) NGÀY 4 — đọc to cho 1 đồng nghiệp; nhờ check ngữ pháp, register. (5) NGÀY 5 — yêu cầu GS hướng dẫn xem; chỉnh theo phản hồi. (6) NGÀY 6 — kiểm tra cuối: 글자 수 chính xác, từ khóa, format theo template. (7) NGÀY 7 — nộp, KHÔNG ngày cuối (server có thể nghẽn). MẸO PHÁT ÂM: '초록' đọc /초록/ với 'ㅗ→ㅗ' rõ; '주제어' đọc /주제어/. ĐỪNG: nộp abstract dùng template từ 학회 khác — mỗi 학회 thuần riêng; '본 연구자는 미래에 〜할 것이다' — abstract không có future tense; gửi PDF không có metadata người gửi — thường bị reject hệ thống.",
+      "tip_advice_en": "Writing an abstract in one week: (1) DAY 1 — read 5 accepted abstracts of that 학회 (in old proceedings). Note the pattern. (2) DAY 2 — draft 5 sentences, one per box, do NOT count 글자 yet. (3) DAY 3 — measure the 글자 수, trim if over; cut the context box + implications first (keep method + results intact). (4) DAY 4 — read aloud to a colleague; ask for a grammar + register check. (5) DAY 5 — have your advisor look; revise per feedback. (6) DAY 6 — final check: exact 글자 수, keywords, format per the template. (7) DAY 7 — submit, NOT on the last day (the server may jam). PRONUNCIATION TIP: '초록' is read /초록/ with a clear ㅗ–ㅗ; '주제어' is /주제어/. DON'T: submit an abstract using another 학회's template — each is its own; '본 연구자는 미래에 〜할 것이다' — an abstract has no future tense; send a PDF with no sender metadata — usually system-rejected.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -5918,6 +6079,11 @@ export const lessons: KoreanLesson[] =     [
             "디지털 격차 → /디지털껵차/",
             "해소라는 → /해소라는/",
             "사회적 시급성 → /사회적씨급쌍/"
+          ],
+          "pronunciation_focus_en": [
+            "디지털 격차 'di-ji-teol gyeok-cha' — gloss /디지털껵차/: 격 ㄱ tenses → 'kkyeok'; aspirated ㅊ",
+            "해소라는 'hae-so-ra-neun' — ㅐ in 해 ≈ 'eh'; 'the so-called resolving of'",
+            "사회적 시급성 'sa-hoe-jeok si-geup-sseong' — gloss /...씨급쌍/: 적 ㄱ tenses ㅅ; tensed 성"
           ]
         },
         {
@@ -5929,6 +6095,11 @@ export const lessons: KoreanLesson[] =     [
             "기존 연구와의 → /기존녕구와의/",
             "차별성 → /차별성/",
             "요약된다 → /요약된다/"
+          ],
+          "pronunciation_focus_en": [
+            "기존 연구와의 'gi-jon yeon-gu-wa-ui' — gloss /기존녕구.../: 존+연 → ㄴ liaison 'jon-nyeon'",
+            "차별성 'cha-byeol-seong' — aspirated ㅊ; 별 batchim ㄹ; final ㅇ nasal",
+            "요약된다 'yo-yak-doen-da' — ㅛ in 요; ㅚ in 된 ≈ 'dwen'"
           ]
         },
         {
@@ -5940,6 +6111,11 @@ export const lessons: KoreanLesson[] =     [
             "3년에 걸쳐 → /삼녀네걸쳐/",
             "단계별로 → /단계별로/",
             "추진하며 → /추진하며/"
+          ],
+          "pronunciation_focus_en": [
+            "3년에 걸쳐 'sam-nyeo-ne geol-chyeo' — gloss /삼녀네.../: 년에 → 'nyeo-ne'; aspirated ㅊ",
+            "단계별로 'dan-gye-byeol-lo' — plain ㄱ in 계; 별로 → 'byeol-lo' (ㄹㄹ)",
+            "추진하며 'chu-jin-ha-myeo' — aspirated ㅊ; ㅕ glide in 며"
           ]
         },
         {
@@ -5951,6 +6127,11 @@ export const lessons: KoreanLesson[] =     [
             "연차별로 → /연차별로/",
             "인건비 → /인건비/",
             "구성된다 → /구성된다/"
+          ],
+          "pronunciation_focus_en": [
+            "연차별로 'yeon-cha-byeol-lo' — aspirated ㅊ; 별로 → 'byeol-lo' (ㄹㄹ)",
+            "인건비 'in-geon-bi' — plain ㄱ; ㅓ ('uh') in 건; 'personnel cost'",
+            "구성된다 'gu-seong-doen-da' — plain ㄱ; ㅚ in 된 ≈ 'dwen'"
           ]
         },
         {
@@ -5962,6 +6143,11 @@ export const lessons: KoreanLesson[] =     [
             "학술적 기여뿐 → /학쑬쩍기여뿐/",
             "정책적 → /정책쩍/",
             "활용 가능성 → /화룡가능성/"
+          ],
+          "pronunciation_focus_en": [
+            "학술적 기여뿐 'hak-sul-jeok gi-yeo-ppun' — gloss /학쑬쩍.../: 학 ㄱ tenses ㅅ; 적 tenses ㅈ",
+            "정책적 'jeong-chaek-jeok' — gloss /정책쩍/: 책 ㄱ tenses next → 'chaek-jjeok'",
+            "활용 가능성 'hwa-ryong ga-neung-seong' — gloss /화룡.../: 활용 → 'hwa-ryong' liaison"
           ]
         }
       ],
@@ -6094,7 +6280,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Hệ thống tài trợ Hàn: (1) NRF (한국연구재단) là nguồn lớn nhất — 신진연구자 (post-PhD ~5 năm), 중견연구자 (mid-career), 중점연구소 (research center), 일반공동연구 (collaborative). Mỗi loại có khung ngân sách + thời gian. (2) Ngoài NRF: 한국학중앙연구원, 정부 부처별 (교육부, 산업통상자원부), 사기업 재단 (삼성, LG). (3) Tỷ lệ chấp nhận NRF 신진: ~20-25%; 중견: ~15-20%; 중점: ~10%. Cạnh tranh cao. (4) Phần điểm số: 연구 필요성 (20%), 추진 계획 (30%), 연구진 역량 (20%), 기대 효과 (20%), 예산 적정성 (10%). (5) BẪY người Việt: (a) 시급성 quá tổng quát — 'Vietnam's education needs reform' không passable; cần 통계 cụ thể của Hàn Quốc; (b) 차별성 mơ hồ — 'something different' không passable; cần định lượng so với 3 선행 연구 cụ thể; (c) Predicted budget mismatch — vượt cap nhân sự, thiếu mục bắt buộc. (6) Sau khi được tài trợ: yêu cầu nộp '연차 보고서' mỗi năm; vi phạm timeline = mất uy tín và lần sau khó qua. (7) Co-PI từ Việt: cho phép nhưng PI phải Hàn Quốc.",
+      "cultural_notes_en": "Korean research-funding system: (1) the NRF (한국연구재단) is the largest source — 신진연구자 (post-PhD ~5 yrs), 중견연구자 (mid-career), 중점연구소 (research center), 일반공동연구 (collaborative). Each has a budget range + duration. (2) Beyond the NRF: 한국학중앙연구원, government ministries (교육부, 산업통상자원부), corporate foundations (Samsung, LG). (3) NRF acceptance rates: 신진 ~20–25%; 중견 ~15–20%; 중점 ~10%. Highly competitive. (4) Scoring: 연구 필요성 (need, 20%), 추진 계획 (plan, 30%), 연구진 역량 (team capacity, 20%), 기대 효과 (expected effect, 20%), 예산 적정성 (budget adequacy, 10%). (5) VIETNAMESE TRAP: (a) 시급성 (urgency) too general — 'Vietnam's education needs reform' won't pass; you need concrete Korean statistics; (b) 차별성 (distinctiveness) vague — 'something different' won't pass; quantify against 3 specific prior studies; (c) predicted-budget mismatch — over the personnel cap, missing mandatory items. (6) After being funded: a 연차 보고서 (annual report) is required each year; violating the timeline = lost credibility and a harder time next round. (7) A Co-PI from Vietnam is allowed but the PI must be Korean.",
       "tip_advice_vi": "Quy trình viết 연구 계획서 trong 6 tuần: (1) TUẦN 1-2 — đọc 3-5 계획서 đã trúng (xin từ senior); làm template từ structure thấy; xác định khung ngân sách. (2) TUẦN 3 — viết 연구 필요성 (1.5 trang); kèm 통계 mạnh + 선행 연구 critique. (3) TUẦN 4 — viết 추진 전략 (2 trang); chia 단계 + sản phẩm cụ thể mỗi 단계. (4) TUẦN 5 — viết 예산 + 기대 효과; check guideline NRF từng dòng. (5) TUẦN 6 — đọc lại; nhờ 1-2 đồng nghiệp đọc; chỉnh giọng. MẸO PHÁT ÂM: '시급성' /시급쌍/, '차별성' /차별쌍/ — 받침 sau '성' bị 된소리화. ĐỪNG: copy-paste từ 선행 계획서 — quét antiplagiarism của NRF rất chặt; vượt cap nhân sự — bị khấu trừ điểm; bỏ 'expected social impact' — phải có dù grant cơ bản. Lời khuyên cuối: PI có 'track record' tốt (논문 SSCI 5+ trong 3 năm) làm tỷ lệ trúng tăng 2x — nếu thiếu, xin co-PI là senior cũng có hiệu ứng.",
+      "tip_advice_en": "Writing the 연구 계획서 in 6 weeks: (1) WEEKS 1–2 — read 3–5 winning proposals (ask a senior); build a template from the structure you see; fix the budget range. (2) WEEK 3 — write 연구 필요성 (1.5 pages); include strong statistics + a critique of prior work. (3) WEEK 4 — write 추진 전략 (2 pages); split into 단계 (phases) + concrete deliverables per phase. (4) WEEK 5 — write 예산 + 기대 효과; check the NRF guideline line by line. (5) WEEK 6 — re-read; have 1–2 colleagues read it; adjust the tone. PRONUNCIATION TIP: '시급성' /시급쌍/, '차별성' /차별쌍/ — the consonant after '성' tenses (된소리화). DON'T: copy-paste from a prior proposal — NRF's anti-plagiarism scan is strict; exceed the personnel cap — points deducted; omit 'expected social impact' — required even for a basic grant. Final tip: a PI with a good track record (5+ SSCI papers in 3 years) roughly doubles the win rate — if you lack it, adding a senior co-PI has a similar effect.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -6183,6 +6371,10 @@ export const lessons: KoreanLesson[] =     [
           "pronunciation_focus": [
             "화요일 오후 → /화요이로후/",
             "진행할게요 → /진행할께요/"
+          ],
+          "pronunciation_focus_en": [
+            "화요일 오후 'hwa-yo-il o-hu' — gloss /화요이로후/: 일+오 → 'yo-i-ro' liaison",
+            "진행할게요 'jin-haeng-hal-kke-yo' — gloss /진행할께요/: 할 ㄹ tenses ㄱ → 'kke'"
           ]
         },
         {
@@ -6194,6 +6386,11 @@ export const lessons: KoreanLesson[] =     [
             "지난주 → /지난주/",
             "한번 살펴보고 → /한번살펴보고/",
             "싶어요 → /시퍼요/"
+          ],
+          "pronunciation_focus_en": [
+            "지난주 'ji-nan-ju' — plain ㅈ; even stress; 'last week'",
+            "한번 살펴보고 'han-beon sal-pyeo-bo-go' — gloss /한번살펴보고/ links; 살 batchim ㄹ",
+            "싶어요 'si-peo-yo' — gloss /시퍼요/: 싶 ㅍ links into 어 → 'si-peo'"
           ]
         },
         {
@@ -6205,6 +6402,11 @@ export const lessons: KoreanLesson[] =     [
             "민지 씨 → /민지씨/",
             "슬라이드 초안 → /슬라이드초안/",
             "있나요 → /인나요/"
+          ],
+          "pronunciation_focus_en": [
+            "민지 씨 'min-ji ssi' — tense ㅆ in 씨; a name + the 씨 address term",
+            "슬라이드 초안 'seul-la-i-deu cho-an' — 'slide' loaned; aspirated ㅊ in 초",
+            "있나요 'in-na-yo' — gloss /인나요/: 있 ㅆ → 'n' before ㄴ"
           ]
         },
         {
@@ -6216,6 +6418,11 @@ export const lessons: KoreanLesson[] =     [
             "혹시 → /혹씨/",
             "이해 안 가는 → /이해안가는/",
             "편하게 → /편하게/"
+          ],
+          "pronunciation_focus_en": [
+            "혹시 'hok-si' — gloss /혹씨/: 혹 ㄱ tenses ㅅ → 'hok-ssi'",
+            "이해 안 가는 'i-hae an ga-neun' — gloss /이해안가는/ links; ㅐ ≈ 'eh'",
+            "편하게 'pyeon-ha-ge' — aspirated ㅍ; ㅕ glide; 'comfortably'"
           ]
         },
         {
@@ -6227,6 +6434,11 @@ export const lessons: KoreanLesson[] =     [
             "다음 주까지 → /다음주까지/",
             "데이터 점검 → /데이터점검/",
             "공유해 주실래요 → /공유해주실래요/"
+          ],
+          "pronunciation_focus_en": [
+            "다음 주까지 'da-eum ju-kka-ji' — gloss /다음주까지/: tense ㄲ in 까",
+            "데이터 점검 'de-i-teo jeom-geom' — 'data' loaned; ㅓ ('uh') in 점/검",
+            "공유해 주실래요 'gong-yu-hae ju-sil-lae-yo' — flowing; ㅐ in 래 ≈ 'eh'"
           ]
         }
       ],
@@ -6371,7 +6583,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Văn hóa lab Hàn: (1) Lab họp 1 tuần / lần — thường buổi sáng thứ hai (한 주 시작) hoặc chiều thứ sáu (한 주 정리). (2) Quy ước trật tự: GS đến cuối, học sinh đến trước 5-10 phút. (3) Tham gia BẮT BUỘC — vắng mặt phải báo trước; vắng 3 lần liên tục = mất uy tín. (4) Sau lab meeting hay có 회식 (đi ăn) — không bắt buộc nhưng được kỳ vọng đi 1-2 lần / tháng. (5) GS dùng 해요체 với 학생 KHÔNG có nghĩa thân — vẫn là quan hệ thầy-trò, không '친구'. (6) Một 학생 dùng 반말 với GS = chấm dứt quan hệ học thuật. (7) Người Việt dễ rơi: (a) over-formal — 'OOO 교수님께서 〜하셨습니다' trong lab nội bộ thì rườm; (b) under-formal — '내일 만나' (반말) bị xem là vô lễ. (8) Nội ngày sinh nhật của một thành viên: lab có quy ước nhỏ (cake, message group). (9) Khi tốt nghiệp, học sinh trao 사진 + cảm ơn note tới GS — quy ước. (10) Lab Hàn vẫn rất cluster theo 학파 — một GS có 'ai đỡ đầu' và mạng lưới riêng; quan hệ này có ý nghĩa cho đến khi nghỉ hưu.",
+      "cultural_notes_en": "Korean lab culture: (1) the lab meets once a week — usually Monday morning (week start) or Friday afternoon (week wrap-up). (2) Order convention: the professor arrives last, students 5–10 min early. (3) Attendance is MANDATORY — an absence must be reported in advance; 3 consecutive absences = lost credibility. (4) After a lab meeting there's often 회식 (going out to eat) — not mandatory but you're expected to go 1–2 times/month. (5) The professor using 해요체 with a 학생 does NOT mean closeness — it's still a teacher–student relationship, not '친구' (friend). (6) A 학생 using 반말 with the professor = ends the academic relationship. (7) Vietnamese speakers fall into: (a) over-formal — 'OOO 교수님께서 〜하셨습니다' inside an internal lab is padded; (b) under-formal — '내일 만나' (반말) read as rude. (8) On a member's birthday: the lab has a small convention (cake, group message). (9) On graduating, the student gives a 사진 + thank-you note to the professor — a convention. (10) Korean labs still cluster strongly by 학파 (school) — a professor has 'who mentored them' and their own network; this relationship matters until retirement.",
       "tip_advice_vi": "Quy trình tham gia lab Hàn cho người Việt: (1) WEEK 1 — quan sát meeting, KHÔNG nói nhiều; ghi pattern xưng hô + ai làm gì. (2) WEEK 2 — chuẩn bị 1 câu hỏi cụ thể về data; hỏi ở meeting. (3) WEEK 3-4 — bắt đầu volunteer làm phần nhỏ (data cleaning, literature search) để hiển thị engagement. (4) MONTH 2 — lần đầu trình bày; chuẩn bị kỹ + hỏi 박사 과정생 trước. (5) THƯỜNG XUYÊN — đến 회식 1-2 lần / tháng để xây quan hệ. MẸO PHÁT ÂM: '랩 미팅' /래미팅/ với 'ㅂ' nuốt; '슬라이드' /슬라이드/ trôi chảy không Hàn hóa quá; '진행할게요' /진행할께요/ — 받침 'ㄹ' liên với 'ㄱ' thành /ㄲ/. ĐỪNG: (a) ngồi im suốt 3 meeting đầu — bị xem là 무관심; (b) hỏi quá nhiều câu cơ bản — chuẩn bị trước; (c) so sánh lab Hàn với lab Việt công khai — bị xem là không tôn trọng; (d) gọi 'OO 박사님' với 박사 과정생 (bị xem là sai cấp).",
+      "tip_advice_en": "A routine for a Vietnamese person joining a Korean lab: (1) WEEK 1 — observe the meeting, don't talk much; note the address patterns + who does what. (2) WEEK 2 — prepare one specific question about the data; ask it at the meeting. (3) WEEKS 3–4 — start volunteering for small parts (data cleaning, literature search) to show engagement. (4) MONTH 2 — present for the first time; prepare thoroughly + ask the PhD candidates beforehand. (5) REGULARLY — go to 회식 1–2 times/month to build the relationship. PRONUNCIATION TIP: '랩 미팅' /래미팅/ with the ㅂ swallowed; '슬라이드' /슬라이드/ flowing, not over-Koreanized; '진행할게요' /진행할께요/ — the batchim ㄹ links with ㄱ to /ㄲ/. DON'T: (a) sit silent through the first 3 meetings — read as 무관심 (indifferent); (b) ask too many basic questions — prepare beforehand; (c) compare the Korean lab to a Vietnamese lab publicly — read as disrespectful; (d) call a PhD candidate 'OO 박사님' (wrong rank).",
       "exercises": [
         {
           "type": "fill-blank",
@@ -6461,6 +6675,11 @@ export const lessons: KoreanLesson[] =     [
             "쉽게 말씀드리면 → /쉽께말씀드리면/",
             "스스로 → /스스로/",
             "여지를 → /여지를/"
+          ],
+          "pronunciation_focus_en": [
+            "쉽게 말씀드리면 'swip-ge mal-sseum-deu-ri-myeon' — gloss /쉽께.../: 쉽 ㅂ tenses ㄱ → 'kke'",
+            "스스로 'seu-seu-ro' — ㅡ tight 'eu' twice; 'oneself' — not English 'soo'",
+            "여지를 'yeo-ji-reul' — ㅕ glide; plain ㅈ; 'room/leeway'"
           ]
         },
         {
@@ -6472,6 +6691,11 @@ export const lessons: KoreanLesson[] =     [
             "비유하자면 → /비유하자면/",
             "정원이고 → /정워니고/",
             "햇빛과 같습니다 → /햗삗꽈갇씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "비유하자면 'bi-yu-ha-ja-myeon' — flowing; plain ㅂ/ㅈ; 'to use a metaphor'",
+            "정원이고 'jeong-wo-ni-go' — gloss /정워니고/: 원이 → 'wo-ni' liaison",
+            "햇빛과 같습니다 'haet-bit-gwa gat-seum-ni-da' — gloss /햗삗꽈갇씀니다/: ㅅ/ㅊ→'t' stops, tensed"
           ]
         },
         {
@@ -6483,6 +6707,11 @@ export const lessons: KoreanLesson[] =     [
             "단순히 → /단순히/",
             "성적이 오른다 → /성저기오른다/",
             "오해가 생깁니다 → /오해가생김니다/"
+          ],
+          "pronunciation_focus_en": [
+            "단순히 'dan-sun-hi' — plain ㄷ; final ㄴ in 순; soft ㅎ",
+            "성적이 오른다 'seong-jeo-gi o-reun-da' — gloss /성저기.../: 적이 → 'jeo-gi' liaison",
+            "오해가 생깁니다 'o-hae-ga saeng-gim-ni-da' — gloss /...생김니다/: 깁 ㅂ→'m' before ㄴ"
           ]
         },
         {
@@ -6494,6 +6723,11 @@ export const lessons: KoreanLesson[] =     [
             "핵심은 → /핵씨믄/",
             "함께 작용한다 → /함께자굥한다/",
             "있습니다 → /읻씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "핵심은 'haek-si-meun' — gloss /핵씨믄/: 핵 ㄱ tenses ㅅ; 심은 → 'si-meun'",
+            "함께 작용한다 'ham-kke ja-gyong-han-da' — gloss /함께자굥한다/: tense ㄲ; 작용 liaison",
+            "있습니다 'it-seum-ni-da' — gloss /읻씀니다/: 있 ㅆ → 't', tenses ㅅ"
           ]
         },
         {
@@ -6505,6 +6739,11 @@ export const lessons: KoreanLesson[] =     [
             "우리 사회에 → /우리사회에/",
             "어떻게 설계하느냐가 → /어떠케설계하느냐가/",
             "중요하다는 것입니다 → /중요하다는거심니다/"
+          ],
+          "pronunciation_focus_en": [
+            "우리 사회에 'u-ri sa-hoe-e' — plain; ㅚ in 회 ≈ 'hwe'",
+            "어떻게 설계하느냐가 'eo-tteo-ke seol-gye-ha-neu-nya-ga' — gloss /어떠케.../: 떻+게 aspirated 'k'",
+            "중요하다는 것입니다 'jung-yo-ha-da-neun geo-sim-ni-da' — gloss /...거심니다/: 것입 → 'geo-sim'"
           ]
         }
       ],
@@ -6655,7 +6894,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Văn hóa scicomm Hàn: (1) Hàn Quốc có truyền thống mạnh về scicomm qua TV (KBS, EBS), radio, podcast — '지대넓얕', '알릴레오 북's'. (2) Học giả tham gia public engagement được công nhận trong 업적 평가 (ngoài 논문) — quy ước thay đổi 5-10 năm gần đây. (3) Phóng viên Hàn (특히 한겨레, 경향신문) thường có 학술 background — câu hỏi sắc sảo. (4) Khi viết op-ed: thường 1500-2500 글자; chia 5 đoạn; câu cuối phải actionable. (5) Khi xuất hiện TV: trang phục formal, tránh tay rườm; nói chậm, dừng giữa câu để cắt edit. (6) Quy ước về thí nghiệm/thống kê: KHÔNG nói '통계적으로 유의' — công chúng không hiểu; nói '실제로 다른 패턴이다'. (7) Người Việt (esp. học giả mới) dễ rơi: (a) overly cẩn thận, không dám đơn giản — bị xem chán; (b) đơn giản quá mức — bị giới học thuật phản đối. Khoảng giữa: 70% đơn giản + 30% chính xác + warn cụ thể về limit. (8) Khi phỏng vấn xong: yêu cầu xem bản gốc (cho podcast/print) trước khi phát — quy ước cho phép.",
+      "cultural_notes_en": "Korean science-communication culture: (1) Korea has a strong scicomm tradition via TV (KBS, EBS), radio, podcasts — '지대넓얕', '알릴레오 북's'. (2) Scholars who do public engagement get recognized in 업적 평가 (performance review) (beyond papers) — the convention shifted in the last 5–10 years. (3) Korean journalists (especially 한겨레, 경향신문) often have an academic background — sharp questions. (4) Writing an op-ed: usually 1,500–2,500 글자; 5 paragraphs; the last sentence must be actionable. (5) On TV: formal dress, avoid fidgety hands; speak slowly, pause between sentences for the edit. (6) Stats convention: do NOT say '통계적으로 유의' (statistically significant) — the public won't follow; say '실제로 다른 패턴이다' (it's actually a different pattern). (7) Vietnamese speakers (esp. new scholars) fall into: (a) overly cautious, not daring to simplify — read as boring; (b) over-simplifying — pushback from academia. The middle: 70% simple + 30% precise + a concrete caveat about the limit. (8) After the interview: ask to see the original (for podcast/print) before it airs — a permitted convention.",
       "tip_advice_vi": "Chuẩn bị 1 phỏng vấn TV/radio 10 phút: (1) NGÀY trước — soạn 3 thông điệp cốt lõi (KHÔNG quá 3); mỗi cái 1 câu, không thuật ngữ. (2) SOẠN 2-3 phép ẩn dụ chính cho concept khó (vd. p-value, mediator, ICC). (3) CHUẨN BỊ 1 con số đắt giá (nội dung) — vd. '1.6배 강하게'. (4) VIẾT câu kết '한 줄로 말씀드리면' để fall back nếu hết thời gian. (5) TẬP nói to với đồng nghiệp 1 lần — đo nhịp 100-110 글자/phút (không nhanh). (6) NGÀY ghi: đến sớm 30 phút; uống ấm cho giọng; KHÔNG ăn no. MẸO PHÁT ÂM: '쉽게' /쉽께/ với 'ㅂ→ㅍ→ㅋ' nhẹ; '비유하자면' /비유하자면/ trôi chảy; '햇빛과' /해삗꽈/ với 'ㅅ→ㄷ' và 'ㅂ→ㅂ' đậm. ĐỪNG: (a) đọc giấy trên TV — bị xem là không tự tin; (b) chêm tiếng Anh trừ khi không có Hàn (ChatGPT OK; 'random' KHÔNG); (c) cười khi không phù hợp — TV Hàn đánh giá cao gravitas; (d) bị dẫn dụ nói điều bạn không có dữ liệu — luôn '이 부분은 본 연구 자료로는 확인하기 어렵습니다'.",
+      "tip_advice_en": "Preparing a 10-min TV/radio interview: (1) THE DAY before — draft 3 core messages (NO more than 3); each one sentence, no jargon. (2) DRAFT 2–3 main metaphors for a hard concept (e.g. p-value, mediator, ICC). (3) PREPARE one 'expensive' number (substantive) — e.g. '1.6배 강하게'. (4) WRITE a closing line '한 줄로 말씀드리면' (to put it in one line) as a fallback if time runs out. (5) PRACTICE aloud with a colleague once — pace at 100–110 글자/min (not fast). (6) RECORDING DAY: arrive 30 min early; warm drink for the voice; don't eat heavily. PRONUNCIATION TIP: '쉽게' /쉽께/ with a soft ㅂ→ㅍ→ㅋ; '비유하자면' /비유하자면/ flowing; '햇빛과' /해삗꽈/ with ㅅ→ㄷ and a tensed ㅂ. DON'T: (a) read from paper on TV — read as not confident; (b) insert English unless there's no Korean (ChatGPT OK; 'random' NO); (c) laugh when inappropriate — Korean TV values gravitas; (d) get led into saying something you have no data for — always '이 부분은 본 연구 자료로는 확인하기 어렵습니다'.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -6745,6 +6986,11 @@ export const lessons: KoreanLesson[] =     [
             "지적하신 점은 → /지저카신저믄/",
             "방법론적 한계 → /방범논적한계/",
             "직결되는 → /직껼되는/"
+          ],
+          "pronunciation_focus_en": [
+            "지적하신 점은 'ji-jeo-ka-sin jeo-meun' — gloss /지저카신저믄/: 적+하 aspirated 'k'; 점은 links",
+            "방법론적 한계 'bang-beom-non-jeok han-gye' — gloss /방범논적.../: 법→'m', 론→'non'",
+            "직결되는 'jik-gyeol-doe-neun' — gloss /직껼되는/: 직 ㄱ tenses ㄱ → 'kkyeol'; ㅚ ≈ 'dwe'"
           ]
         },
         {
@@ -6756,6 +7002,11 @@ export const lessons: KoreanLesson[] =     [
             "전체를 → /전체를/",
             "무너뜨릴 정도는 → /무너뜨릴쩡도는/",
             "사료됩니다 → /사료됨니다/"
+          ],
+          "pronunciation_focus_en": [
+            "전체를 'jeon-che-reul' — aspirated ㅊ in 체; ㅕ glide in 전",
+            "무너뜨릴 정도는 'mu-neo-tteu-ril jeong-do-neun' — gloss /...쩡도는/: tense ㄸ; 도는 tenses → 'jjeong'",
+            "사료됩니다 'sa-ryo-doem-ni-da' — humble 'is considered'; ㅚ in 됩 ≈ 'dwem'"
           ]
         },
         {
@@ -6767,6 +7018,11 @@ export const lessons: KoreanLesson[] =     [
             "근거를 → /근거를/",
             "정리해 → /정리해/",
             "말씀드리겠습니다 → /말씀드리게씀니다/"
+          ],
+          "pronunciation_focus_en": [
+            "근거를 'geun-geo-reul' — plain ㄱ twice; ㅓ ('uh') in 거; 'the grounds'",
+            "정리해 'jeong-ni-hae' — 정리 → 'jeong-ni' (ㄹ→ㄴ); ㅐ in 해 ≈ 'eh'",
+            "말씀드리겠습니다 'mal-sseum-deu-ri-get-seum-ni-da' — tense ㅆ; 겠 → 't' stop"
           ]
         },
         {
@@ -6778,6 +7034,11 @@ export const lessons: KoreanLesson[] =     [
             "우려를 완전히 → /우려를완전히/",
             "재검증이 → /재검증이/",
             "필요할 것입니다 → /피료할거심니다/"
+          ],
+          "pronunciation_focus_en": [
+            "우려를 완전히 'u-ryeo-reul wan-jeon-hi' — ㅕ glide in 려; soft ㅎ in 히",
+            "재검증이 'jae-geom-jeung-i' — ㅐ ≈ 'eh'; ㅡ tight 'eu' in 증; 증이 links",
+            "필요할 것입니다 'pi-ryo-hal geo-sim-ni-da' — gloss /피료할거심니다/: 것입 → 'geo-sim'"
           ]
         },
         {
@@ -6789,6 +7050,11 @@ export const lessons: KoreanLesson[] =     [
             "공격적 질문 → /공격쩍질문/",
             "근거하여 → /근거하여/",
             "차분하게 → /차분하게/"
+          ],
+          "pronunciation_focus_en": [
+            "공격적 질문 'gong-gyeok-jeok jil-mun' — gloss /공격쩍질문/: 격 ㄱ tenses → 'kkyeok-jjeok'",
+            "근거하여 'geun-geo-ha-yeo' — plain ㄱ; ㅕ glide; 'grounded on'",
+            "차분하게 'cha-bun-ha-ge' — aspirated ㅊ; plain ㄱ; 'calmly'"
           ]
         }
       ],
@@ -6921,7 +7187,9 @@ export const lessons: KoreanLesson[] =     [
         }
       ],
       "cultural_notes_vi": "Văn hóa Q&A gay gắt ở Hàn: (1) 강한 비판 (phê bình mạnh) là CÁCH 心사위원 senior thể hiện họ đã đọc kỹ — paradoxical: càng bị tấn công, càng được tôn trọng (đến mức nào đó). (2) Người đáp KHÔNG được rút lui ngay — đáp 'lùi' 1 vòng đầu thì OK, lùi cả 3 vòng = mất uy tín hoàn toàn. (3) Nhưng KHÔNG được cãi tay đôi — 'parry then advance' tốt hơn 'advance then advance'. (4) Quy ước: nếu sau 3 round 심사위원 vẫn gay gắt, 위원장 thường can thiệp '건설적인 방향으로 갑시다'. (5) Sau buổi: nếu bị tấn công gay gắt, gửi email cảm ơn (KHÔNG xin lỗi) trong 24h — quy ước '나는 흔들리지 않았다' bằng cách respond bình tĩnh. (6) Người Việt dễ rơi: (a) cãi cảm xúc '제가 정말 열심히 했습니다!' (yếu); (b) đầu hàng '죄송합니다, 제가 잘못했습니다' — vô lý vì bài chưa hỏng; (c) im lặng dài quá 5 giây — bị đọc là không có câu trả lời. Khoảng giữa = pause 1-2 giây + cấu trúc 4 bước. (7) Một số 심사위원 cố ý dùng tactic 'good cop / bad cop' — không bị lừa bởi tone; cùng cấu trúc đáp với cả hai.",
+      "cultural_notes_en": "Korean hostile-Q&A culture: (1) 강한 비판 (sharp critique) is HOW a senior 심사위원 shows they read closely — paradoxical: the more you're attacked, the more respected (up to a point). (2) The respondent must NOT retreat immediately — retreating one round is OK, retreating all 3 rounds = total loss of credibility. (3) But you must NOT trade blows — 'parry then advance' beats 'advance then advance'. (4) Convention: if after 3 rounds the 심사위원 is still sharp, the 위원장 usually steps in '건설적인 방향으로 갑시다' (let's move constructively). (5) Afterward: if you were attacked sharply, send a thank-you email (NOT an apology) within 24h — the convention '나는 흔들리지 않았다' (I wasn't shaken) by responding calmly. (6) Vietnamese speakers fall into: (a) an emotional rebuttal '제가 정말 열심히 했습니다!' (weak); (b) surrender '죄송합니다, 제가 잘못했습니다' — illogical since the paper isn't broken; (c) silence longer than 5 seconds — read as having no answer. The middle = a 1–2 second pause + a 4-step structure. (7) Some 심사위원 deliberately use a 'good cop / bad cop' tactic — don't be fooled by tone; use the same response structure with both.",
       "tip_advice_vi": "Chuẩn bị cho hostile Q&A — quy trình 5 ngày: (1) NGÀY 1 — list 10 câu hỏi 'tệ nhất' bạn có thể bị; mỗi câu, viết 4-bước response. (2) NGÀY 2 — đọc 10 phản hồi cho 1 đồng nghiệp; nhờ họ tấn công gay gắt thử. (3) NGÀY 3 — viết 'cheat sheet' với 5 cụm khung — '잠시 숨을 고르고…', '위원님께서 지적하신 점은…', '근거를 두 가지로…'. (4) NGÀY 4 — luyện pause 1-2 giây trước mỗi câu trả lời; quay video chính mình kiểm tra body language. (5) NGÀY 5 — đêm trước, ngủ đủ; KHÔNG ôn nội dung mới. MẸO PHÁT ÂM dưới áp lực: nếu giọng run, hạ thấp âm thanh + nói chậm hơn 20%; '잠시' /잠시/, '근거' /근거/, '입각하여' /입까카여/. ĐỪNG: (a) uống cà phê quá nhiều ngày defense — tăng anxiety; (b) ăn no — máu xuống dạ dày; (c) đeo trang phục mới chưa quen; (d) trả lời ngay khi 심사위원 còn nói — chờ họ kết. Nếu thực sự bí: '구체적인 수치는 자료를 확인해서 답변드리겠습니다' — giấy là cứu cánh hợp pháp.",
+      "tip_advice_en": "Preparing for hostile Q&A — a 5-day routine: (1) DAY 1 — list the 10 'worst' questions you could get; for each, write a 4-step response. (2) DAY 2 — read the 10 responses to a colleague; ask them to attack sharply as practice. (3) DAY 3 — write a 'cheat sheet' with 5 frame phrases — '잠시 숨을 고르고…', '위원님께서 지적하신 점은…', '근거를 두 가지로…'. (4) DAY 4 — practice a 1–2 second pause before each answer; video yourself to check body language. (5) DAY 5 — the night before, sleep enough; do NOT cram new content. PRONUNCIATION UNDER PRESSURE: if your voice shakes, lower the pitch + slow down 20%; '잠시' /잠시/, '근거' /근거/, '입각하여' /입까카여/. DON'T: (a) drink too much coffee on defense day — raises anxiety; (b) eat heavily — blood to the stomach; (c) wear new unfamiliar clothes; (d) answer while the 심사위원 is still speaking — wait for them to finish. If you're truly stuck: '구체적인 수치는 자료를 확인해서 답변드리겠습니다' — paper is the legitimate lifeline.",
       "exercises": [
         {
           "type": "fill-blank",
