@@ -89,22 +89,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "발표자",
           "hangul": "본 연구의 핵심 논지는 두 변수가 비선형 관계를 형성한다는 것입니다.",
-          "meaning": "The core thesis of this study is that the two variables form a non-linear relationship."
+          "meaning": "The core thesis of this study is that the two variables form a non-linear relationship.",
+          "text_vi": "Luận điểm cốt lõi của nghiên cứu này là hai biến số hình thành một mối quan hệ phi tuyến."
         },
         {
           "speaker": "청중",
           "hangul": "그 가설을 어떤 자료로 검증하셨습니까?",
-          "meaning": "What data did you use to test that hypothesis?"
+          "meaning": "What data did you use to test that hypothesis?",
+          "text_vi": "Quý vị đã kiểm định giả thuyết đó bằng dữ liệu nào ạ?"
         },
         {
           "speaker": "발표자",
           "hangul": "2015년부터 2024년까지의 패널 자료를 활용하였습니다.",
-          "meaning": "We used panel data from 2015 to 2024."
+          "meaning": "We used panel data from 2015 to 2024.",
+          "text_vi": "Chúng tôi đã sử dụng dữ liệu bảng từ năm 2015 đến năm 2024."
         },
         {
           "speaker": "청중",
           "hangul": "선행 연구와의 차별점을 말씀해 주시겠습니까?",
-          "meaning": "Could you explain how this differs from prior work?"
+          "meaning": "Could you explain how this differs from prior work?",
+          "text_vi": "Quý vị có thể trình bày điểm khác biệt so với các nghiên cứu đi trước được không ạ?"
         }
       ],
       "dialogue_long": [
@@ -378,22 +382,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "지도교수",
           "hangul": "이 문장은 출처가 없는데, Kim 선생의 글에서 그대로 가져온 것 아닙니까?",
-          "meaning": "This sentence lacks a source — isn't it lifted from Prof. Kim's piece?"
+          "meaning": "This sentence lacks a source — isn't it lifted from Prof. Kim's piece?",
+          "text_vi": "Câu này không có nguồn trích dẫn — chẳng phải nó được lấy nguyên văn từ bài viết của thầy Kim hay sao?"
         },
         {
           "speaker": "학생",
           "hangul": "죄송합니다. 다음 판본에서 출처를 명시하겠습니다.",
-          "meaning": "I apologise. I will state the source in the next draft."
+          "meaning": "I apologise. I will state the source in the next draft.",
+          "text_vi": "Em xin lỗi ạ. Ở bản thảo tiếp theo em sẽ ghi rõ nguồn trích dẫn."
         },
         {
           "speaker": "지도교수",
           "hangul": "직접 인용이라면 큰따옴표를, 간접 인용이라면 패러프레이즈를 분명히 해 주십시오.",
-          "meaning": "If it's a direct quote use double quotes; if it's indirect, make the paraphrase clear."
+          "meaning": "If it's a direct quote use double quotes; if it's indirect, make the paraphrase clear.",
+          "text_vi": "Nếu là trích dẫn trực tiếp thì dùng dấu ngoặc kép, còn nếu là trích dẫn gián tiếp thì hãy diễn giải lại cho rõ ràng."
         },
         {
           "speaker": "학생",
           "hangul": "네, 표절을 피하기 위해 인용 규정을 다시 확인하겠습니다.",
-          "meaning": "Yes, I will re-check the citation rules to avoid plagiarism."
+          "meaning": "Yes, I will re-check the citation rules to avoid plagiarism.",
+          "text_vi": "Vâng ạ, để tránh đạo văn em sẽ kiểm tra lại các quy định về trích dẫn."
         }
       ],
       "dialogue_long": [
@@ -679,22 +687,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "발표자",
           "hangul": "본 연구는 자율성이 성취에 직접 영향을 미친다고 주장합니다.",
-          "meaning": "This study argues that autonomy directly influences achievement."
+          "meaning": "This study argues that autonomy directly influences achievement.",
+          "text_vi": "Nghiên cứu này lập luận rằng tính tự chủ ảnh hưởng trực tiếp đến thành tích."
         },
         {
           "speaker": "토론자",
           "hangul": "그 부분에는 일부 동의합니다만, 매개 변수의 역할이 간과된 듯합니다.",
-          "meaning": "I partially agree, but the role of mediator variables seems overlooked."
+          "meaning": "I partially agree, but the role of mediator variables seems overlooked.",
+          "text_vi": "Tôi đồng ý một phần với điểm đó, nhưng có vẻ vai trò của biến trung gian đã bị bỏ qua."
         },
         {
           "speaker": "발표자",
           "hangul": "좋은 지적이십니다. 다만 본 자료에서는 매개 효과가 통계적으로 유의하지 않았습니다.",
-          "meaning": "An astute point. However, in our data the mediation effect was not statistically significant."
+          "meaning": "An astute point. However, in our data the mediation effect was not statistically significant.",
+          "text_vi": "Đó là một nhận xét sắc sảo. Tuy nhiên, trong dữ liệu của chúng tôi, hiệu ứng trung gian không có ý nghĩa thống kê."
         },
         {
           "speaker": "토론자",
           "hangul": "그렇다면 표본 특성이 일반화를 제약할 가능성을 검토하셨는지요?",
-          "meaning": "Then have you considered that sample characteristics may limit generalisability?"
+          "meaning": "Then have you considered that sample characteristics may limit generalisability?",
+          "text_vi": "Vậy thì quý vị đã xem xét khả năng đặc điểm mẫu có thể giới hạn tính khái quát hóa hay chưa ạ?"
         }
       ],
       "dialogue_long": [
@@ -956,22 +968,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "발표자",
           "hangul": "본 결과는 음주 빈도와 우울 수준 간의 연관성을 시사합니다.",
-          "meaning": "The results suggest an association between drinking frequency and depression level."
+          "meaning": "The results suggest an association between drinking frequency and depression level.",
+          "text_vi": "Kết quả này gợi ý về mối liên hệ giữa tần suất uống rượu và mức độ trầm cảm."
         },
         {
           "speaker": "토론자",
           "hangul": "'시사한다'와 '입증한다' 사이에서 어느 정도의 표현을 쓰셨습니까?",
-          "meaning": "Where did you place your expression between 'suggests' and 'demonstrates'?"
+          "meaning": "Where did you place your expression between 'suggests' and 'demonstrates'?",
+          "text_vi": "Giữa 'gợi ý' và 'chứng minh', quý vị đã dùng cách diễn đạt ở mức độ nào?"
         },
         {
           "speaker": "발표자",
           "hangul": "자료가 횡단면이라 '시사한다' 수준에서 멈추었습니다.",
-          "meaning": "Since the data are cross-sectional, I stopped at 'suggests.'"
+          "meaning": "Since the data are cross-sectional, I stopped at 'suggests.'",
+          "text_vi": "Vì dữ liệu là cắt ngang nên tôi dừng lại ở mức 'gợi ý'."
         },
         {
           "speaker": "토론자",
           "hangul": "그 신중함이 본 결과의 신뢰성을 높여 준다고 봅니다.",
-          "meaning": "That caution, I believe, strengthens the credibility of the results."
+          "meaning": "That caution, I believe, strengthens the credibility of the results.",
+          "text_vi": "Tôi cho rằng sự thận trọng đó làm tăng độ tin cậy của kết quả này."
         }
       ],
       "dialogue_long": [
@@ -1233,22 +1249,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "학생",
           "hangul": "교수님, '학습 자율성'을 어떻게 정의하면 될까요?",
-          "meaning": "Professor, how should I define 'learning autonomy'?"
+          "meaning": "Professor, how should I define 'learning autonomy'?",
+          "text_vi": "Thưa giáo sư, em nên định nghĩa 'tính tự chủ trong học tập' như thế nào ạ?"
         },
         {
           "speaker": "교수",
           "hangul": "Deci와 Ryan(2000)의 정의를 출발점으로 하되, 본 연구에 맞게 조작적 정의를 추가하십시오.",
-          "meaning": "Take Deci and Ryan's (2000) definition as a starting point, then add an operational definition fitted to your study."
+          "meaning": "Take Deci and Ryan's (2000) definition as a starting point, then add an operational definition fitted to your study.",
+          "text_vi": "Hãy lấy định nghĩa của Deci và Ryan (2000) làm điểm xuất phát, rồi bổ sung một định nghĩa thao tác phù hợp với nghiên cứu của em."
         },
         {
           "speaker": "학생",
           "hangul": "조작적 정의는 어떤 형태로 제시해야 합니까?",
-          "meaning": "What form should the operational definition take?"
+          "meaning": "What form should the operational definition take?",
+          "text_vi": "Định nghĩa thao tác nên được trình bày dưới hình thức nào ạ?"
         },
         {
           "speaker": "교수",
           "hangul": "측정 도구와 점수 산출 방식을 한 문장으로 명시하면 충분합니다.",
-          "meaning": "Stating the measurement instrument and the scoring method in one sentence is sufficient."
+          "meaning": "Stating the measurement instrument and the scoring method in one sentence is sufficient.",
+          "text_vi": "Chỉ cần nêu rõ công cụ đo lường và cách tính điểm trong một câu là đủ."
         }
       ],
       "dialogue_long": [
@@ -1534,22 +1554,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "발표자",
           "hangul": "본 연구는 양적 방법과 질적 방법을 함께 사용하였습니다.",
-          "meaning": "This study used both quantitative and qualitative methods."
+          "meaning": "This study used both quantitative and qualitative methods.",
+          "text_vi": "Nghiên cứu này đã sử dụng kết hợp cả phương pháp định lượng và phương pháp định tính."
         },
         {
           "speaker": "토론자",
           "hangul": "두 방법의 결합 근거를 설명해 주실 수 있겠습니까?",
-          "meaning": "Could you explain the rationale for combining the two methods?"
+          "meaning": "Could you explain the rationale for combining the two methods?",
+          "text_vi": "Quý vị có thể giải thích cơ sở của việc kết hợp hai phương pháp được không ạ?"
         },
         {
           "speaker": "발표자",
           "hangul": "양적 자료로 일반 경향을 파악하고, 질적 자료로 그 메커니즘을 규명하는 보완적 설계입니다.",
-          "meaning": "It's a complementary design — quantitative data identify the trend, qualitative data clarify the mechanism."
+          "meaning": "It's a complementary design — quantitative data identify the trend, qualitative data clarify the mechanism.",
+          "text_vi": "Đây là một thiết kế bổ trợ — dữ liệu định lượng nắm bắt xu hướng chung, còn dữ liệu định tính làm rõ cơ chế của xu hướng đó."
         },
         {
           "speaker": "토론자",
           "hangul": "두 자료의 통합 방식이 결과 해석에 어떻게 반영되었는지 궁금합니다.",
-          "meaning": "I'd like to know how the integration of the two data is reflected in the interpretation."
+          "meaning": "I'd like to know how the integration of the two data is reflected in the interpretation.",
+          "text_vi": "Tôi muốn biết cách tích hợp hai loại dữ liệu đã được phản ánh ra sao trong việc diễn giải kết quả."
         }
       ],
       "dialogue_long": [
@@ -1811,22 +1835,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "발표자",
           "hangul": "오늘 저는 Kim(2020) 논문을 비평적으로 검토하겠습니다.",
-          "meaning": "Today I will critically review Kim's (2020) paper."
+          "meaning": "Today I will critically review Kim's (2020) paper.",
+          "text_vi": "Hôm nay tôi sẽ xem xét một cách phê phán bài báo của Kim (2020)."
         },
         {
           "speaker": "참석자",
           "hangul": "어떤 점에 초점을 두실 예정이십니까?",
-          "meaning": "Which point do you plan to focus on?"
+          "meaning": "Which point do you plan to focus on?",
+          "text_vi": "Quý vị dự định tập trung vào điểm nào ạ?"
         },
         {
           "speaker": "발표자",
           "hangul": "공헌 두 가지, 한계 세 가지, 그리고 후속 과제 한 가지를 다루겠습니다.",
-          "meaning": "I'll address two contributions, three limitations, and one follow-up direction."
+          "meaning": "I'll address two contributions, three limitations, and one follow-up direction.",
+          "text_vi": "Tôi sẽ đề cập đến hai đóng góp, ba hạn chế và một hướng nghiên cứu tiếp theo."
         },
         {
           "speaker": "참석자",
           "hangul": "균형 있는 구성이군요. 시작하시지요.",
-          "meaning": "A balanced structure. Please proceed."
+          "meaning": "A balanced structure. Please proceed.",
+          "text_vi": "Một cấu trúc cân đối. Xin mời quý vị bắt đầu."
         }
       ],
       "dialogue_long": [
@@ -2076,22 +2104,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "사회자",
           "hangul": "발표 잘 들었습니다. 질문 받겠습니다.",
-          "meaning": "Thank you for the talk. I'll take questions."
+          "meaning": "Thank you for the talk. I'll take questions.",
+          "text_vi": "Cảm ơn quý vị về phần trình bày. Tôi xin nhận câu hỏi."
         },
         {
           "speaker": "질문자",
           "hangul": "한 가지 여쭙겠습니다. 표본 규모를 어떻게 결정하셨습니까?",
-          "meaning": "I'd like to ask — how was the sample size determined?"
+          "meaning": "I'd like to ask — how was the sample size determined?",
+          "text_vi": "Tôi xin hỏi một điều. Quý vị đã xác định quy mô mẫu như thế nào ạ?"
         },
         {
           "speaker": "발표자",
           "hangul": "선행 연구의 효과 크기를 바탕으로 최소 200명 이상으로 설정하였습니다.",
-          "meaning": "Based on prior effect sizes, we set a minimum of 200."
+          "meaning": "Based on prior effect sizes, we set a minimum of 200.",
+          "text_vi": "Dựa trên độ lớn hiệu ứng của các nghiên cứu đi trước, chúng tôi đã ấn định tối thiểu từ 200 người trở lên."
         },
         {
           "speaker": "사회자",
           "hangul": "다음 질문 받겠습니다.",
-          "meaning": "Next question please."
+          "meaning": "Next question please.",
+          "text_vi": "Xin mời câu hỏi tiếp theo."
         }
       ],
       "dialogue_long": [
@@ -2365,22 +2397,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "지도교수",
           "hangul": "초록을 250자 이내로 줄여 주십시오.",
-          "meaning": "Please cut the abstract to within 250 Korean characters."
+          "meaning": "Please cut the abstract to within 250 Korean characters.",
+          "text_vi": "Xin hãy rút gọn phần tóm tắt xuống trong vòng 250 ký tự."
         },
         {
           "speaker": "학생",
           "hangul": "현재 320자입니다. 어디를 우선 줄이면 좋겠습니까?",
-          "meaning": "It's currently 320. Where should I cut first?"
+          "meaning": "It's currently 320. Where should I cut first?",
+          "text_vi": "Hiện tại đang là 320 ký tự ạ. Em nên rút gọn phần nào trước ạ?"
         },
         {
           "speaker": "지도교수",
           "hangul": "방법 부분의 부수적 설명을 없애고, 결과를 한 문장으로 압축하십시오.",
-          "meaning": "Remove ancillary description in the method, and compress results into one sentence."
+          "meaning": "Remove ancillary description in the method, and compress results into one sentence.",
+          "text_vi": "Hãy bỏ phần giải thích phụ trợ ở mục phương pháp, và nén phần kết quả lại thành một câu."
         },
         {
           "speaker": "학생",
           "hangul": "알겠습니다. 핵심어도 5개 이내로 정리하겠습니다.",
-          "meaning": "Understood. I'll also keep keywords to within five."
+          "meaning": "Understood. I'll also keep keywords to within five.",
+          "text_vi": "Em hiểu rồi ạ. Em cũng sẽ chỉnh từ khóa lại trong vòng 5 từ."
         }
       ],
       "dialogue_long": [
@@ -2654,22 +2690,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "편집장",
           "hangul": "심사 결과 '주요 수정' 판정이 나왔습니다.",
-          "meaning": "The review verdict is 'major revision.'"
+          "meaning": "The review verdict is 'major revision.'",
+          "text_vi": "Kết quả phản biện đưa ra phán định 'chỉnh sửa lớn'."
         },
         {
           "speaker": "저자",
           "hangul": "지적 사항을 정리해 보내 주시면 감사하겠습니다.",
-          "meaning": "I'd appreciate it if you could send the consolidated comments."
+          "meaning": "I'd appreciate it if you could send the consolidated comments.",
+          "text_vi": "Nếu quý vị tổng hợp các điểm góp ý rồi gửi cho tôi thì tôi rất cảm kích."
         },
         {
           "speaker": "편집장",
           "hangul": "오늘 안에 응답서 양식과 함께 송부드리겠습니다.",
-          "meaning": "I'll send them today along with the response-letter template."
+          "meaning": "I'll send them today along with the response-letter template.",
+          "text_vi": "Trong hôm nay tôi sẽ gửi kèm theo mẫu thư phản hồi."
         },
         {
           "speaker": "저자",
           "hangul": "한 달 이내에 수정본과 응답서를 제출하도록 하겠습니다.",
-          "meaning": "I'll submit the revision and response letter within a month."
+          "meaning": "I'll submit the revision and response letter within a month.",
+          "text_vi": "Tôi sẽ nộp bản chỉnh sửa và thư phản hồi trong vòng một tháng."
         }
       ],
       "dialogue_long": [
@@ -4602,22 +4642,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "심사위원",
           "hangul": "표본의 대표성에 대해 다시 한번 설명해 주시겠습니까?",
-          "meaning": "Could you explain once more the representativeness of the sample?"
+          "meaning": "Could you explain once more the representativeness of the sample?",
+          "text_vi": "Quý vị có thể giải thích lại một lần nữa về tính đại diện của mẫu được không ạ?"
         },
         {
           "speaker": "발표자",
           "hangul": "예, 좋은 지적이십니다. 표본은 층화 무작위 추출 방식으로 구성하였습니다.",
-          "meaning": "Yes, thank you for the point. The sample was constructed via stratified random sampling."
+          "meaning": "Yes, thank you for the point. The sample was constructed via stratified random sampling.",
+          "text_vi": "Vâng, đó là một nhận xét xác đáng. Mẫu được cấu thành theo phương thức lấy mẫu ngẫu nhiên phân tầng."
         },
         {
           "speaker": "심사위원",
           "hangul": "그 방식이 본 연구 맥락에서 충분히 타당하다고 보십니까?",
-          "meaning": "Do you regard that method as sufficiently valid in the context of this study?"
+          "meaning": "Do you regard that method as sufficiently valid in the context of this study?",
+          "text_vi": "Quý vị có cho rằng phương thức đó đủ giá trị trong bối cảnh của nghiên cứu này không ạ?"
         },
         {
           "speaker": "발표자",
           "hangul": "선행 연구에서 동일 방식이 채택된 사례를 근거로 타당하다고 사료됩니다.",
-          "meaning": "Based on prior cases that adopted the same method, it is considered valid."
+          "meaning": "Based on prior cases that adopted the same method, it is considered valid.",
+          "text_vi": "Dựa trên các trường hợp ở nghiên cứu đi trước đã áp dụng cùng phương thức, chúng tôi cho rằng nó có giá trị."
         }
       ],
       "dialogue_long": [
@@ -4907,22 +4951,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "공동 저자",
           "hangul": "심사위원 2가 표본 편향을 지적했어요. 어떻게 답변하실래요?",
-          "meaning": "Reviewer 2 raised the sampling bias. How will you respond?"
+          "meaning": "Reviewer 2 raised the sampling bias. How will you respond?",
+          "text_vi": "Phản biện viên thứ 2 đã chỉ ra sai lệch chọn mẫu. Anh định trả lời thế nào?"
         },
         {
           "speaker": "주저자",
           "hangul": "전면 수용하기로 했습니다. 부록에 표본 비교표를 추가하고, 6쪽 결론도 보완할 계획입니다.",
-          "meaning": "I've decided to fully accept it. We'll add a sample comparison in the appendix and revise the conclusion on page 6."
+          "meaning": "I've decided to fully accept it. We'll add a sample comparison in the appendix and revise the conclusion on page 6.",
+          "text_vi": "Tôi đã quyết định tiếp thu hoàn toàn. Tôi dự định bổ sung bảng so sánh mẫu vào phụ lục, và bổ sung thêm cho phần kết luận ở trang 6."
         },
         {
           "speaker": "공동 저자",
           "hangul": "심사위원 1이 이론 틀을 바꾸라고 했는데, 그건 좀 어렵잖아요?",
-          "meaning": "Reviewer 1 asked to change the theoretical frame, but that's difficult, isn't it?"
+          "meaning": "Reviewer 1 asked to change the theoretical frame, but that's difficult, isn't it?",
+          "text_vi": "Phản biện viên thứ 1 yêu cầu thay đổi khung lý thuyết, nhưng điều đó hơi khó phải không?"
         },
         {
           "speaker": "주저자",
           "hangul": "그 부분은 일부만 수용하기로 하고, 사유를 답변서에 상술하겠습니다.",
-          "meaning": "That part we'll accept only in part, and detail the rationale in the response letter."
+          "meaning": "That part we'll accept only in part, and detail the rationale in the response letter.",
+          "text_vi": "Phần đó tôi quyết định chỉ tiếp thu một phần, và sẽ trình bày tường tận lý do trong thư phản hồi."
         }
       ],
       "dialogue_long": [
@@ -5212,22 +5260,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "사회자",
           "hangul": "안녕하십니까. 오늘 세션 사회를 맡은 김민지입니다.",
-          "meaning": "Good day. I am Kim Minji, chair of today's session."
+          "meaning": "Good day. I am Kim Minji, chair of today's session.",
+          "text_vi": "Xin kính chào quý vị. Tôi là Kim Minji, người điều phối phiên họp hôm nay."
         },
         {
           "speaker": "사회자",
           "hangul": "첫 번째 발표는 박지훈 교수님께서 '디지털 학습과 자율성'이라는 주제로 진행하시겠습니다.",
-          "meaning": "The first presentation will be given by Prof. Park Jihoon on 'Digital Learning and Autonomy'."
+          "meaning": "The first presentation will be given by Prof. Park Jihoon on 'Digital Learning and Autonomy'.",
+          "text_vi": "Bài trình bày đầu tiên sẽ do Giáo sư Park Jihoon thực hiện với chủ đề 'Học tập số và tính tự chủ'."
         },
         {
           "speaker": "발표자",
           "hangul": "감사합니다. 안녕하십니까, 박지훈입니다.",
-          "meaning": "Thank you. Good day, I am Park Jihoon."
+          "meaning": "Thank you. Good day, I am Park Jihoon.",
+          "text_vi": "Xin cảm ơn. Kính chào quý vị, tôi là Park Jihoon."
         },
         {
           "speaker": "사회자",
           "hangul": "발표 시간은 15분, 질의응답은 5분으로 진행됩니다.",
-          "meaning": "The talk will run 15 minutes, with 5 minutes for Q&A."
+          "meaning": "The talk will run 15 minutes, with 5 minutes for Q&A.",
+          "text_vi": "Thời gian trình bày là 15 phút, phần hỏi đáp là 5 phút."
         }
       ],
       "dialogue_long": [
@@ -5517,22 +5569,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "지도교수",
           "hangul": "Kim(2018)을 근거로만 인용하면 약합니다. 비판적 거리를 두세요.",
-          "meaning": "Citing Kim (2018) only as ground is weak. Keep critical distance."
+          "meaning": "Citing Kim (2018) only as ground is weak. Keep critical distance.",
+          "text_vi": "Nếu chỉ trích dẫn Kim (2018) như một căn cứ thì còn yếu. Em hãy giữ khoảng cách phê phán."
         },
         {
           "speaker": "학생",
           "hangul": "그렇다면 'Kim(2018)이 지지하지만, 〜라는 점에서 한계가 있다'로 수정하는 것이 좋겠습니까?",
-          "meaning": "Should I revise it to 'Kim (2018) supports this, but it has limits in the following respect'?"
+          "meaning": "Should I revise it to 'Kim (2018) supports this, but it has limits in the following respect'?",
+          "text_vi": "Vậy thì em sửa thành 'Kim (2018) ủng hộ điều này, nhưng nó có hạn chế ở điểm là ~' thì có tốt hơn không ạ?"
         },
         {
           "speaker": "지도교수",
           "hangul": "그게 훨씬 좋습니다. 그리고 그 한계를 본 연구가 어떻게 보완하는지 한 줄을 추가하세요.",
-          "meaning": "Much better. And add one line on how this study addresses the limitation."
+          "meaning": "Much better. And add one line on how this study addresses the limitation.",
+          "text_vi": "Như vậy tốt hơn nhiều. Và hãy bổ sung một dòng về việc nghiên cứu này khắc phục hạn chế đó như thế nào."
         },
         {
           "speaker": "학생",
           "hangul": "예, 알겠습니다. 보완하여 다시 보여드리겠습니다.",
-          "meaning": "Yes, understood. I'll revise and show you again."
+          "meaning": "Yes, understood. I'll revise and show you again.",
+          "text_vi": "Vâng, em hiểu rồi ạ. Em sẽ bổ sung rồi trình thầy xem lại ạ."
         }
       ],
       "dialogue_long": [
@@ -5814,22 +5870,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "박사 과정생",
           "hangul": "교수님, 한 가지 여쭙고 싶은 점이 있습니다.",
-          "meaning": "Professor, there is one point I should like to raise."
+          "meaning": "Professor, there is one point I should like to raise.",
+          "text_vi": "Thưa giáo sư, có một điểm em muốn xin được hỏi ạ."
         },
         {
           "speaker": "교수",
           "hangul": "예, 말씀해 보세요.",
-          "meaning": "Yes, please go ahead."
+          "meaning": "Yes, please go ahead.",
+          "text_vi": "Vâng, em cứ nói đi."
         },
         {
           "speaker": "박사 과정생",
           "hangul": "교수님께서 제시하신 모형에 전적으로 공감하지만, 자료의 비선형 패턴은 또 다른 해석을 시사할 수도 있을 듯합니다.",
-          "meaning": "I fully concur with your model, yet the non-linear pattern in the data may suggest another interpretation."
+          "meaning": "I fully concur with your model, yet the non-linear pattern in the data may suggest another interpretation.",
+          "text_vi": "Em hoàn toàn đồng cảm với mô hình thầy đưa ra, nhưng dường như mẫu hình phi tuyến trong dữ liệu cũng có thể gợi ý một cách diễn giải khác ạ."
         },
         {
           "speaker": "교수",
           "hangul": "흥미로운 지적입니다. 그 부분은 다음 미팅에서 함께 검토합시다.",
-          "meaning": "That is an interesting point. Let us look at it together in the next meeting."
+          "meaning": "That is an interesting point. Let us look at it together in the next meeting.",
+          "text_vi": "Đó là một nhận xét thú vị. Phần đó chúng ta hãy cùng xem xét ở buổi gặp lần tới."
         }
       ],
       "dialogue_long": [
@@ -6119,22 +6179,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "공동 저자",
           "hangul": "초록 글자 수가 320자입니다. 50자를 줄여야 합니다.",
-          "meaning": "The abstract is 320 characters. We need to cut 50."
+          "meaning": "The abstract is 320 characters. We need to cut 50.",
+          "text_vi": "Số ký tự của phần tóm tắt là 320. Chúng ta phải cắt bớt 50 ký tự."
         },
         {
           "speaker": "주저자",
           "hangul": "배경 부분에서 두 문장을 압축해 보겠습니다.",
-          "meaning": "Let me compress two sentences in the background."
+          "meaning": "Let me compress two sentences in the background.",
+          "text_vi": "Để tôi thử nén lại hai câu ở phần bối cảnh."
         },
         {
           "speaker": "공동 저자",
           "hangul": "함의 부분도 한 문장으로 줄일 수 있을 듯합니다.",
-          "meaning": "The implications part could also be reduced to one sentence."
+          "meaning": "The implications part could also be reduced to one sentence.",
+          "text_vi": "Có vẻ phần hàm ý cũng có thể rút gọn xuống còn một câu."
         },
         {
           "speaker": "주저자",
           "hangul": "그러면 270자 안에 들어올 듯합니다.",
-          "meaning": "Then it should fit within 270 characters."
+          "meaning": "Then it should fit within 270 characters.",
+          "text_vi": "Vậy thì có vẻ sẽ nằm gọn trong 270 ký tự."
         }
       ],
       "dialogue_long": [
@@ -6442,22 +6506,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "공동 연구자",
           "hangul": "예산 항목에서 인건비 비율이 50%를 넘는데, NRF 가이드라인 어긋나지 않을까요?",
-          "meaning": "Personnel exceeds 50% of the budget — won't it conflict with NRF guidelines?"
+          "meaning": "Personnel exceeds 50% of the budget — won't it conflict with NRF guidelines?",
+          "text_vi": "Trong các hạng mục ngân sách, tỷ lệ chi phí nhân công vượt quá 50%, liệu có vi phạm hướng dẫn của NRF không ạ?"
         },
         {
           "speaker": "주연구자",
           "hangul": "맞습니다. 가이드라인이 50%까지인데 우리 비율은 53%입니다. 박사 후 연구원 1명을 자료 수집비로 옮기겠습니다.",
-          "meaning": "Right. The guideline caps at 50%, ours is 53%. I'll move one post-doc to data collection."
+          "meaning": "Right. The guideline caps at 50%, ours is 53%. I'll move one post-doc to data collection.",
+          "text_vi": "Đúng vậy. Hướng dẫn cho phép đến 50% mà tỷ lệ của chúng ta là 53%. Tôi sẽ chuyển một nghiên cứu viên sau tiến sĩ sang khoản chi phí thu thập dữ liệu."
         },
         {
           "speaker": "공동 연구자",
           "hangul": "기대 효과 부분도 사회적 함의를 좀 더 강조해야 할 것 같습니다.",
-          "meaning": "The expected impact section should emphasise social implications more."
+          "meaning": "The expected impact section should emphasise social implications more.",
+          "text_vi": "Có vẻ phần hiệu quả kỳ vọng cũng cần nhấn mạnh hơn nữa về hàm ý xã hội."
         },
         {
           "speaker": "주연구자",
           "hangul": "동의합니다. 정책 적용 시나리오 한 단락을 추가하겠습니다.",
-          "meaning": "Agreed. I'll add a paragraph on policy application scenarios."
+          "meaning": "Agreed. I'll add a paragraph on policy application scenarios.",
+          "text_vi": "Tôi đồng ý. Tôi sẽ bổ sung một đoạn về kịch bản áp dụng chính sách."
         }
       ],
       "dialogue_long": [
@@ -6751,22 +6819,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "지도교수 (랩 미팅 시작)",
           "hangul": "다들 모였네요. 시작할까요?",
-          "meaning": "Everyone's here. Shall we begin?"
+          "meaning": "Everyone's here. Shall we begin?",
+          "text_vi": "Mọi người tụ họp đông đủ rồi nhỉ. Chúng ta bắt đầu nhé?"
         },
         {
           "speaker": "박사 과정생",
           "hangul": "예, 시작하시면 좋겠어요. 오늘 분석 결과 보고 드릴게요.",
-          "meaning": "Yes, please begin. I'll report the analysis results today."
+          "meaning": "Yes, please begin. I'll report the analysis results today.",
+          "text_vi": "Vâng, thầy bắt đầu thì tốt ạ. Hôm nay em sẽ báo cáo kết quả phân tích ạ."
         },
         {
           "speaker": "지도교수",
           "hangul": "지영 씨, 오늘 발표 시간은 20분이에요. 충분하죠?",
-          "meaning": "Jiyoung-ssi, you have 20 minutes today. Enough?"
+          "meaning": "Jiyoung-ssi, you have 20 minutes today. Enough?",
+          "text_vi": "Jiyoung này, thời gian trình bày hôm nay của em là 20 phút. Đủ chứ?"
         },
         {
           "speaker": "박사 과정생",
           "hangul": "네, 충분합니다. 질문은 발표 끝나고 받을게요.",
-          "meaning": "Yes, enough. I'll take questions after the talk."
+          "meaning": "Yes, enough. I'll take questions after the talk.",
+          "text_vi": "Vâng, đủ ạ. Câu hỏi thì em sẽ nhận sau khi trình bày xong ạ."
         }
       ],
       "dialogue_long": [
@@ -7073,22 +7145,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "기자",
           "hangul": "교수님, 일반 독자에게 이 연구를 한 줄로 설명해 주실 수 있을까요?",
-          "meaning": "Professor, could you explain this research in one sentence for general readers?"
+          "meaning": "Professor, could you explain this research in one sentence for general readers?",
+          "text_vi": "Thưa giáo sư, ông có thể giải thích nghiên cứu này trong một câu cho độc giả phổ thông được không ạ?"
         },
         {
           "speaker": "교수",
           "hangul": "예, 한 줄로 말씀드리면 — 학습자에게 자유를 주는 것만으로는 부족하고, 동기와 함께 줘야 효과가 있다는 겁니다.",
-          "meaning": "Yes — in one line, simply giving learners freedom isn't enough; it works only when paired with motivation."
+          "meaning": "Yes — in one line, simply giving learners freedom isn't enough; it works only when paired with motivation.",
+          "text_vi": "Vâng, nói gọn trong một câu thì — chỉ trao cho người học sự tự do thôi là chưa đủ, phải trao kèm cả động lực thì mới có hiệu quả."
         },
         {
           "speaker": "기자",
           "hangul": "그러면 학교에서는 무엇을 바꿔야 할까요?",
-          "meaning": "Then what should schools change?"
+          "meaning": "Then what should schools change?",
+          "text_vi": "Vậy thì ở trường học cần phải thay đổi điều gì ạ?"
         },
         {
           "speaker": "교수",
           "hangul": "자유 시간을 단순히 늘리기보다, 그 시간을 의미 있게 설계하는 것이 핵심입니다.",
-          "meaning": "Rather than simply expanding free time, the key is designing it meaningfully."
+          "meaning": "Rather than simply expanding free time, the key is designing it meaningfully.",
+          "text_vi": "Thay vì chỉ đơn thuần tăng thời gian tự do, điều then chốt là thiết kế khoảng thời gian đó một cách có ý nghĩa."
         }
       ],
       "dialogue_long": [
@@ -7402,22 +7478,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "심사위원",
           "hangul": "솔직히 이 분석은 결론을 끌어내기에 자료가 부족하지 않습니까?",
-          "meaning": "Frankly — isn't the data insufficient to draw this conclusion?"
+          "meaning": "Frankly — isn't the data insufficient to draw this conclusion?",
+          "text_vi": "Nói thẳng thì — chẳng phải dữ liệu còn thiếu để rút ra kết luận này hay sao?"
         },
         {
           "speaker": "발표자",
           "hangul": "위원님께서 지적하신 점은 본 연구의 한계와 직결되는 매우 중요한 부분입니다.",
-          "meaning": "The point you raise is tied to the limitation of this study, and is genuinely important."
+          "meaning": "The point you raise is tied to the limitation of this study, and is genuinely important.",
+          "text_vi": "Điểm mà thầy chỉ ra là một phần rất quan trọng, liên quan trực tiếp đến hạn chế của nghiên cứu này."
         },
         {
           "speaker": "발표자",
           "hangul": "다만 자료의 양보다는 분석의 정밀도로 결론의 견고함을 확보하였다고 사료됩니다.",
-          "meaning": "However, the robustness was secured through analytical precision rather than sample size, it is considered."
+          "meaning": "However, the robustness was secured through analytical precision rather than sample size, it is considered.",
+          "text_vi": "Tuy nhiên, chúng tôi cho rằng độ vững chắc của kết luận đã được bảo đảm bằng độ chính xác của phân tích chứ không phải bằng khối lượng dữ liệu."
         },
         {
           "speaker": "심사위원",
           "hangul": "그 정밀도라는 것이 구체적으로 무엇입니까?",
-          "meaning": "What does that 'precision' refer to specifically?"
+          "meaning": "What does that 'precision' refer to specifically?",
+          "text_vi": "Cái gọi là độ chính xác đó cụ thể là gì ạ?"
         }
       ],
       "dialogue_long": [
@@ -7713,22 +7793,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "사회자",
           "hangul": "지금부터 한국교육개발원 기자회견을 시작하겠습니다.",
-          "meaning": "We shall now begin the press briefing of the Korea Educational Development Institute."
+          "meaning": "We shall now begin the press briefing of the Korea Educational Development Institute.",
+          "text_vi": "Từ bây giờ chúng tôi xin bắt đầu buổi họp báo của Viện Phát triển Giáo dục Hàn Quốc."
         },
         {
           "speaker": "사회자",
           "hangul": "먼저 본원 대외협력실장께서 회견 목적과 진행 순서를 안내해 드리겠습니다.",
-          "meaning": "First, the Director of External Affairs will outline the purpose and order of proceedings."
+          "meaning": "First, the Director of External Affairs will outline the purpose and order of proceedings.",
+          "text_vi": "Trước hết, Trưởng phòng Đối ngoại của Viện sẽ giới thiệu mục đích buổi họp và trình tự tiến hành."
         },
         {
           "speaker": "발표자",
           "hangul": "안녕하십니까. 본원 대외협력실장 김민지입니다.",
-          "meaning": "Good day. I am Kim Minji, Director of External Affairs."
+          "meaning": "Good day. I am Kim Minji, Director of External Affairs.",
+          "text_vi": "Xin kính chào quý vị. Tôi là Kim Minji, Trưởng phòng Đối ngoại của Viện."
         },
         {
           "speaker": "발표자",
           "hangul": "협조 부탁드리며, 본격적인 발표를 시작하겠습니다.",
-          "meaning": "Thank you for your cooperation. Let me now begin the main briefing."
+          "meaning": "Thank you for your cooperation. Let me now begin the main briefing.",
+          "text_vi": "Kính mong quý vị hợp tác, và tôi xin bắt đầu phần trình bày chính thức."
         }
       ],
       "dialogue_long": [
@@ -8014,22 +8098,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "공보팀장",
           "hangul": "헤드라인이 길어요. 한 줄로 줄이고 부제목에 세부 정보 넣읍시다.",
-          "meaning": "The headline is too long. Cut to one line and put details in the subhead."
+          "meaning": "The headline is too long. Cut to one line and put details in the subhead.",
+          "text_vi": "Tiêu đề dài quá. Hãy rút gọn thành một dòng và đưa thông tin chi tiết vào tiêu đề phụ."
         },
         {
           "speaker": "주무관",
           "hangul": "예. '학습 격차 보완 3개년 시범 사업, 5,000명 대상으로 추진'으로 해 보겠습니다.",
-          "meaning": "Yes — let me try 'Three-year Pilot Programme for Learning-Gap Remediation, Targeting 5,000 Learners'."
+          "meaning": "Yes — let me try 'Three-year Pilot Programme for Learning-Gap Remediation, Targeting 5,000 Learners'.",
+          "text_vi": "Vâng. Tôi sẽ thử đặt là 'Dự án thí điểm 3 năm bù đắp khoảng cách học tập, triển khai cho 5.000 người'."
         },
         {
           "speaker": "공보팀장",
           "hangul": "좋습니다. 그리고 엠바고 시간 — 4월 1일 오전 10시 — 헤더에 명시하세요.",
-          "meaning": "Good. And the embargo — 10 AM on 1 April — note it explicitly in the header."
+          "meaning": "Good. And the embargo — 10 AM on 1 April — note it explicitly in the header.",
+          "text_vi": "Tốt lắm. Và thời gian cấm đăng — 10 giờ sáng ngày 1 tháng 4 — hãy ghi rõ ở phần đầu đề."
         },
         {
           "speaker": "주무관",
           "hangul": "알겠습니다. 보도자료 상단에 '4월 1일 오전 10시 엠바고'로 표기하겠습니다.",
-          "meaning": "Understood. I will mark '10 AM on 1 April Embargo' at the top of the release."
+          "meaning": "Understood. I will mark '10 AM on 1 April Embargo' at the top of the release.",
+          "text_vi": "Tôi hiểu rồi. Tôi sẽ ghi 'Cấm đăng đến 10 giờ sáng ngày 1 tháng 4' ở phần trên cùng của thông cáo báo chí."
         }
       ],
       "dialogue_long": [
@@ -8325,22 +8413,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "한겨레 칼럼 담당 데스크",
           "hangul": "1,800자 칼럼 한 편 부탁드립니다. 학습 격차 주제로요. 마감 사흘 후입니다.",
-          "meaning": "Could you write an 1,800-character column on the learning-gap theme? Deadline three days."
+          "meaning": "Could you write an 1,800-character column on the learning-gap theme? Deadline three days.",
+          "text_vi": "Nhờ anh viết giúp một bài bình luận 1.800 chữ. Với chủ đề khoảng cách học tập. Hạn chót là ba ngày sau."
         },
         {
           "speaker": "필자 (대학교수)",
           "hangul": "예, 가능합니다. 헤드라인은 어느 정도 자유롭게 잡아도 되겠습니까?",
-          "meaning": "Yes, doable. May I have leeway on the headline?"
+          "meaning": "Yes, doable. May I have leeway on the headline?",
+          "text_vi": "Vâng, được ạ. Tiêu đề thì tôi được tự do đặt đến mức nào ạ?"
         },
         {
           "speaker": "데스크",
           "hangul": "예. 다만 너무 길거나 학술적 용어 위주는 피해 주십시오.",
-          "meaning": "Yes — but please avoid overly long or jargon-heavy headlines."
+          "meaning": "Yes — but please avoid overly long or jargon-heavy headlines.",
+          "text_vi": "Vâng. Tuy nhiên xin tránh tiêu đề quá dài hoặc thiên về thuật ngữ học thuật."
         },
         {
           "speaker": "필자",
           "hangul": "알겠습니다. 토요일 오전까지 보내드리겠습니다.",
-          "meaning": "Understood. I'll send by Saturday morning."
+          "meaning": "Understood. I'll send by Saturday morning.",
+          "text_vi": "Tôi hiểu rồi. Tôi sẽ gửi trước sáng thứ Bảy."
         }
       ],
       "dialogue_long": [
@@ -8630,22 +8722,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "진행자",
           "hangul": "박사님, 학습 격차 문제 — 해결할 수 있을까요? 솔직히 어려워 보이는데요.",
-          "meaning": "Doctor — the learning gap, can we really solve it? Honestly, it looks hard."
+          "meaning": "Doctor — the learning gap, can we really solve it? Honestly, it looks hard.",
+          "text_vi": "Thưa tiến sĩ, vấn đề khoảng cách học tập — liệu có giải quyết được không ạ? Nói thật thì trông có vẻ khó."
         },
         {
           "speaker": "박사",
           "hangul": "어렵죠. 그런데 '시간 늘리기'에서 '시간 의미 있게 채우기'로 관점만 바꿔도 절반은 풀려요.",
-          "meaning": "It's hard, yes. But shifting from 'expand time' to 'fill time meaningfully' resolves half of it."
+          "meaning": "It's hard, yes. But shifting from 'expand time' to 'fill time meaningfully' resolves half of it.",
+          "text_vi": "Khó chứ. Nhưng chỉ cần đổi góc nhìn từ 'tăng thời gian' sang 'lấp đầy thời gian một cách có ý nghĩa' thì đã giải được một nửa."
         },
         {
           "speaker": "진행자",
           "hangul": "오, 그게 핵심이군요. 청취자분들 잘 이해하셨을 것 같아요.",
-          "meaning": "Oh, that's the heart of it. I think listeners got that."
+          "meaning": "Oh, that's the heart of it. I think listeners got that.",
+          "text_vi": "Ồ, đó chính là điểm cốt lõi. Tôi nghĩ quý thính giả đã hiểu rõ điều đó."
         },
         {
           "speaker": "박사",
           "hangul": "감사합니다. 더 풀어 드리고 싶지만 시간이 짧네요!",
-          "meaning": "Thanks. I'd love to elaborate, but time's short!"
+          "meaning": "Thanks. I'd love to elaborate, but time's short!",
+          "text_vi": "Xin cảm ơn. Tôi muốn giải thích thêm nữa nhưng thời gian ngắn quá!"
         }
       ],
       "dialogue_long": [
@@ -8951,22 +9047,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "앵커",
           "hangul": "오늘 KEDI 김민지 박사님 모셨습니다. 박사님, 안녕하십니까.",
-          "meaning": "Tonight Dr. Kim Minji of KEDI joins us. Doctor, good evening."
+          "meaning": "Tonight Dr. Kim Minji of KEDI joins us. Doctor, good evening.",
+          "text_vi": "Tối nay chúng tôi có sự hiện diện của Tiến sĩ Kim Minji thuộc KEDI. Thưa tiến sĩ, xin chào ông."
         },
         {
           "speaker": "박사",
           "hangul": "안녕하십니까. 불러 주셔서 감사합니다.",
-          "meaning": "Good evening. Thank you for having me."
+          "meaning": "Good evening. Thank you for having me.",
+          "text_vi": "Xin chào. Cảm ơn quý vị đã mời tôi."
         },
         {
           "speaker": "앵커",
           "hangul": "박사님, 이번 보고서의 핵심을 30초 안에 정리해 주실 수 있겠습니까?",
-          "meaning": "Doctor, could you summarise the report's core in 30 seconds?"
+          "meaning": "Doctor, could you summarise the report's core in 30 seconds?",
+          "text_vi": "Thưa tiến sĩ, ông có thể tóm tắt cốt lõi của báo cáo lần này trong vòng 30 giây được không ạ?"
         },
         {
           "speaker": "박사",
           "hangul": "예. 학습 격차는 시간 부족이 아닌 동기 부족에서 비롯되며, 정책은 양이 아닌 질에 집중해야 합니다.",
-          "meaning": "Yes. The learning gap stems not from time but from motivation; policy should focus on quality, not quantity."
+          "meaning": "Yes. The learning gap stems not from time but from motivation; policy should focus on quality, not quantity.",
+          "text_vi": "Vâng. Khoảng cách học tập bắt nguồn không phải từ việc thiếu thời gian mà từ việc thiếu động lực, và chính sách phải tập trung vào chất lượng chứ không phải số lượng."
         }
       ],
       "dialogue_long": [
@@ -9256,22 +9356,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "원장 (단상에서)",
           "hangul": "안녕하십니까. 한국교육개발원 원장 박지훈입니다.",
-          "meaning": "Good day. I am Park Jihoon, President of KEDI."
+          "meaning": "Good day. I am Park Jihoon, President of KEDI.",
+          "text_vi": "Xin kính chào quý vị. Tôi là Park Jihoon, Viện trưởng Viện Phát triển Giáo dục Hàn Quốc."
         },
         {
           "speaker": "원장",
           "hangul": "먼저, 이번 일로 심려를 끼쳐 드린 점, 머리 숙여 사과드립니다.",
-          "meaning": "First, for the concern this matter has caused, I bow my head in apology."
+          "meaning": "First, for the concern this matter has caused, I bow my head in apology.",
+          "text_vi": "Trước hết, về việc đã gây lo lắng cho quý vị qua sự việc lần này, tôi xin cúi đầu tạ lỗi."
         },
         {
           "speaker": "원장 (90도 인사 후 다시 일어남)",
           "hangul": "본 사안에 대한 모든 책임은 본원에 있습니다.",
-          "meaning": "All responsibility for this matter rests with the Institute."
+          "meaning": "All responsibility for this matter rests with the Institute.",
+          "text_vi": "Toàn bộ trách nhiệm về sự việc này thuộc về Viện chúng tôi."
         },
         {
           "speaker": "원장",
           "hangul": "다시 한번 진심으로 사과드립니다.",
-          "meaning": "Once again, I sincerely apologise."
+          "meaning": "Once again, I sincerely apologise.",
+          "text_vi": "Một lần nữa, tôi xin chân thành tạ lỗi."
         }
       ],
       "dialogue_long": [
@@ -9561,22 +9665,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "대변인",
           "hangul": "오늘 자리는 백브리핑입니다. 인용은 '관계자' 익명으로 부탁드립니다.",
-          "meaning": "Today's meeting is a background briefing. Please attribute as 'a source', anonymously."
+          "meaning": "Today's meeting is a background briefing. Please attribute as 'a source', anonymously.",
+          "text_vi": "Buổi gặp hôm nay là họp báo nền. Xin quý vị trích dẫn ẩn danh dưới danh nghĩa 'người có liên quan'."
         },
         {
           "speaker": "기자",
           "hangul": "예, 알겠습니다. 데이터 부분에 대해 좀 더 풀어 주실 수 있겠습니까?",
-          "meaning": "Understood. Could you elaborate on the data portion?"
+          "meaning": "Understood. Could you elaborate on the data portion?",
+          "text_vi": "Vâng, tôi hiểu rồi. Ông có thể giải thích thêm một chút về phần dữ liệu được không ạ?"
         },
         {
           "speaker": "대변인",
           "hangul": "예. 이 부분은 공식 발표 전이라 맥락만 이해해 주시면 됩니다.",
-          "meaning": "Yes. As this is pre-announcement, just grasp the context."
+          "meaning": "Yes. As this is pre-announcement, just grasp the context.",
+          "text_vi": "Vâng. Phần này là trước khi công bố chính thức nên quý vị chỉ cần nắm bối cảnh là được."
         },
         {
           "speaker": "기자",
           "hangul": "감사합니다. 엠바고는 언제까지입니까?",
-          "meaning": "Thank you. Until when does the embargo apply?"
+          "meaning": "Thank you. Until when does the embargo apply?",
+          "text_vi": "Xin cảm ơn. Lệnh cấm đăng có hiệu lực đến khi nào ạ?"
         }
       ],
       "dialogue_long": [
@@ -9878,22 +9986,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "기자 (강한 톤)",
           "hangul": "박사님, 이 자료가 조작되었다는 의혹이 나오고 있는데 어떻게 해명하시겠습니까?",
-          "meaning": "Doctor — there are suspicions the data has been manipulated. How do you account for this?"
+          "meaning": "Doctor — there are suspicions the data has been manipulated. How do you account for this?",
+          "text_vi": "Thưa tiến sĩ, đang có nghi ngờ rằng dữ liệu này đã bị thao túng, ông sẽ giải trình thế nào ạ?"
         },
         {
           "speaker": "박사 (1초 pause)",
           "hangul": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다.",
-          "meaning": "I take the journalist's concern as a significant one."
+          "meaning": "I take the journalist's concern as a significant one.",
+          "text_vi": "Tôi đang tiếp nhận điểm mà phóng viên chỉ ra như một mối quan ngại rất quan trọng."
         },
         {
           "speaker": "박사",
           "hangul": "다만, 질문에 포함된 '조작' 전제는 사실관계와 다릅니다. 본 자료는 측정 시점이 다르게 기록된 부분이 있어, 의도적 왜곡이 아닌 측정 차이임을 본원이 확인하였습니다.",
-          "meaning": "However, the premise of 'manipulation' in the question differs from the facts. The data show measurement-timing differences, not intentional distortion — verified by the Institute."
+          "meaning": "However, the premise of 'manipulation' in the question differs from the facts. The data show measurement-timing differences, not intentional distortion — verified by the Institute.",
+          "text_vi": "Tuy nhiên, tiền đề 'thao túng' bao hàm trong câu hỏi khác với thực tế sự việc. Bộ dữ liệu này có phần được ghi nhận ở các thời điểm đo lường khác nhau, và Viện chúng tôi đã xác nhận rằng đó là sự khác biệt về đo lường chứ không phải sự bóp méo có chủ ý."
         },
         {
           "speaker": "박사",
           "hangul": "추가 자료를 정리하여 회견 종료 후 별도로 전달드리겠습니다.",
-          "meaning": "I will compile further materials and deliver them after the briefing."
+          "meaning": "I will compile further materials and deliver them after the briefing.",
+          "text_vi": "Tôi sẽ tổng hợp các tài liệu bổ sung và chuyển đến quý vị riêng sau khi kết thúc buổi họp báo."
         }
       ],
       "dialogue_long": [
@@ -10181,22 +10293,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "기자",
           "hangul": "원장님이 어제 학회에서 발언하신 부분 — 본원 입장과 일치합니까?",
-          "meaning": "Yesterday's remarks by the President at the conference — do they align with the Institute's position?"
+          "meaning": "Yesterday's remarks by the President at the conference — do they align with the Institute's position?",
+          "text_vi": "Phần Viện trưởng phát biểu tại hội thảo hôm qua — có nhất quán với lập trường của Viện không ạ?"
         },
         {
           "speaker": "대변인",
           "hangul": "예, 일치합니다. 원장의 발언은 본원의 공식 입장이며, 발언 전문은 본원 홈페이지에 공개되어 있습니다.",
-          "meaning": "Yes, they align. The President's remarks reflect the Institute's official position; the full transcript is on our homepage."
+          "meaning": "Yes, they align. The President's remarks reflect the Institute's official position; the full transcript is on our homepage.",
+          "text_vi": "Vâng, có nhất quán. Phát biểu của Viện trưởng là lập trường chính thức của Viện, và toàn văn phát biểu đã được công bố trên trang chủ của Viện."
         },
         {
           "speaker": "기자",
           "hangul": "5월 시범 사업 일정 — 변동 가능성이 있습니까?",
-          "meaning": "The May pilot — any possibility of schedule change?"
+          "meaning": "The May pilot — any possibility of schedule change?",
+          "text_vi": "Lịch trình dự án thí điểm tháng 5 — có khả năng thay đổi không ạ?"
         },
         {
           "speaker": "대변인",
           "hangul": "현 시점에서는 5월 1일 시작으로 확정되어 있습니다. 변경 사항이 발생하면 즉시 안내드리겠습니다.",
-          "meaning": "As of now, the start is firmly 1 May. Any change will be communicated promptly."
+          "meaning": "As of now, the start is firmly 1 May. Any change will be communicated promptly.",
+          "text_vi": "Tại thời điểm hiện tại, lịch đã được chốt là bắt đầu vào ngày 1 tháng 5. Nếu phát sinh thay đổi, chúng tôi sẽ thông báo ngay."
         }
       ],
       "dialogue_long": [
@@ -10498,22 +10614,26 @@ export const lessons: KoreanLesson[] =         [
         {
           "speaker": "공보팀장",
           "hangul": "트위터에 5분 안에 발표문 올려야 합니다. 한 문장 lead 부탁드립니다.",
-          "meaning": "We need to post on X in five minutes. One-sentence lead, please."
+          "meaning": "We need to post on X in five minutes. One-sentence lead, please.",
+          "text_vi": "Phải đăng văn bản công bố lên Twitter trong vòng 5 phút. Nhờ anh viết câu mở đầu một câu."
         },
         {
           "speaker": "주무관",
           "hangul": "'본원은 SNS상에서 유포되는 일부 주장에 대해 다음과 같이 입장을 밝힙니다.' — 280자 안에 들어옵니다.",
-          "meaning": "'The Institute states its position on certain claims circulating on social media as follows.' — fits within 280 characters."
+          "meaning": "'The Institute states its position on certain claims circulating on social media as follows.' — fits within 280 characters.",
+          "text_vi": "'Viện chúng tôi xin bày tỏ lập trường như sau đối với một số luận điệu đang lan truyền trên mạng xã hội.' — câu này nằm gọn trong 280 ký tự."
         },
         {
           "speaker": "공보팀장",
           "hangul": "본문은 페이스북 1,000자 버전과 트위터 280자 압축 버전 두 가지 만들어 주세요.",
-          "meaning": "Make two versions — full 1,000 characters for Facebook and a 280-character compressed version for X."
+          "meaning": "Make two versions — full 1,000 characters for Facebook and a 280-character compressed version for X.",
+          "text_vi": "Phần nội dung chính thì hãy làm hai phiên bản — bản đầy đủ 1.000 chữ cho Facebook và bản nén 280 ký tự cho Twitter."
         },
         {
           "speaker": "주무관",
           "hangul": "예. 두 버전 다 끝나면 법무 확인 거쳐 즉시 게시하겠습니다.",
-          "meaning": "Yes. Both versions go to Legal, then post immediately."
+          "meaning": "Yes. Both versions go to Legal, then post immediately.",
+          "text_vi": "Vâng. Khi xong cả hai phiên bản, tôi sẽ qua bước kiểm tra pháp lý rồi đăng ngay lập tức."
         }
       ],
       "dialogue_long": [
