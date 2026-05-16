@@ -298,7 +298,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make the hypothesis according to which",
           "meaning": "Đặt một giả thuyết một cách trang trọng — chuẩn học thuật.",
           "meaning_en": "To posit a hypothesis in formal register — the academic standard. English equivalent is roughly 'to hypothesize that', but the French construction is heavier and more frequent in scholarly writing.",
-          "example": "L'auteur fait l'hypothèse selon laquelle l'inégalité scolaire reproduit l'inégalité sociale."
+          "example": "L'auteur fait l'hypothèse selon laquelle l'inégalité scolaire reproduit l'inégalité sociale.",
+          "example_en": "The author hypothesizes that educational inequality reproduces social inequality."
         },
         {
           "idiom": "Force est de constater que (formel)",
@@ -306,7 +307,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Force is to observe that",
           "meaning": "Phải thừa nhận một sự thật khó khăn — tu từ học thuật cao.",
           "meaning_en": "To be forced to acknowledge an uncomfortable truth — high academic rhetoric. Closest English equivalent: 'one cannot but observe that…' or 'it must be acknowledged that…'. Used to signal that the evidence pushes you somewhere you didn't want to go.",
-          "example": "Force est de constater que les résultats infirment partiellement notre hypothèse initiale."
+          "example": "Force est de constater que les résultats infirment partiellement notre hypothèse initiale.",
+          "example_en": "It must be acknowledged that the results partially disconfirm our initial hypothesis."
         },
         {
           "idiom": "Sous réserve de (formel)",
@@ -314,7 +316,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Under the reservation of",
           "meaning": "Với điều kiện tiên quyết — phòng ngừa kết luận quá sớm.",
           "meaning_en": "With the precondition that — a hedge that protects you from over-claiming. Closer to English 'subject to' or 'pending' than 'in reserve'. Essential for any C1 claim about empirical results.",
-          "example": "Sous réserve d'une réplication sur un échantillon plus large, ces conclusions tiennent."
+          "example": "Sous réserve d'une réplication sur un échantillon plus large, ces conclusions tiennent.",
+          "example_en": "Subject to replication on a larger sample, these conclusions hold."
         },
         {
           "idiom": "En l'occurrence (soutenu)",
@@ -322,7 +325,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "In the occurrence (of this case)",
           "meaning": "Cụ thể trong trường hợp đang bàn — chuyển sự chú ý vào ví dụ.",
           "meaning_en": "In this particular case — used to pivot from general discussion to the specific example at hand. English 'in this case' is functionally similar but two register-levels lower; the French marks academic precision.",
-          "example": "Plusieurs auteurs ont traité ce point — en l'occurrence, Bourdieu et Passeron en 1970."
+          "example": "Plusieurs auteurs ont traité ce point — en l'occurrence, Bourdieu et Passeron en 1970.",
+          "example_en": "Several authors have addressed this point — in this case, Bourdieu and Passeron in 1970."
         }
       ],
       "exercises": [
@@ -665,7 +669,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "In the lineage of",
           "meaning": "Tiếp nối truyền thống tư tưởng của — không cần trích cụ thể.",
           "meaning_en": "Following the intellectual tradition of — no specific citation required. Closer to English 'in the tradition of' than 'in the wake of'. Permitted in literature reviews; never permitted when advancing a specific claim attributable to a single text.",
-          "example": "Cette analyse s'inscrit dans la lignée de l'école durkheimienne."
+          "example": "Cette analyse s'inscrit dans la lignée de l'école durkheimienne.",
+          "example_en": "This analysis follows in the tradition of the Durkheimian school."
         },
         {
           "idiom": "Faire date (soutenu)",
@@ -673,7 +678,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make a date",
           "meaning": "Trở thành mốc tham chiếu trong lĩnh vực.",
           "meaning_en": "To become a landmark reference in the field. Roughly equivalent to English 'to mark a turning point' or 'to be a watershed' — but the French construction is more compact and frequent in scholarly writing.",
-          "example": "Surveiller et punir a fait date dans la pensée critique des années 1970."
+          "example": "Surveiller et punir a fait date dans la pensée critique des années 1970.",
+          "example_en": "Discipline and Punish marked a turning point in the critical thought of the 1970s."
         },
         {
           "idiom": "Citer en référence (formel)",
@@ -681,7 +687,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To cite as reference",
           "meaning": "Đưa làm điểm tựa lý thuyết, không phải đối tượng phê phán.",
           "meaning_en": "To use an author as theoretical scaffolding, not as the object of critique. Equivalent to English 'to invoke X' — signals supportive use rather than analysis.",
-          "example": "Je cite Mauss en référence sur le don, sans m'attarder sur ses limites."
+          "example": "Je cite Mauss en référence sur le don, sans m'attarder sur ses limites.",
+          "example_en": "I cite Mauss as a reference on the gift, without dwelling on his limitations."
         },
         {
           "idiom": "À ma connaissance (soutenu)",
@@ -689,7 +696,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To my knowledge",
           "meaning": "Mệnh đề dè dặt — thừa nhận giới hạn của tổng quan.",
           "meaning_en": "A formal hedge — explicitly acknowledging the limits of your literature review. Identical in function to English 'to my knowledge' but more frequent in French scholarly prose; omitting it before a 'first occurrence' claim invites immediate refutation by anyone who knows an earlier source.",
-          "example": "À ma connaissance, ce point n'a jamais été traité de façon systématique."
+          "example": "À ma connaissance, ce point n'a jamais été traité de façon systématique.",
+          "example_en": "To my knowledge, this point has never been treated systematically."
         }
       ],
       "exercises": [
@@ -1032,7 +1040,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To offer one's flank to",
           "meaning": "Tự để hở mặt yếu cho lời phản biện.",
           "meaning_en": "To leave oneself exposed to critique — a military metaphor (the flank is the vulnerable side). Closest English equivalent: 'to leave oneself open to' or 'to invite criticism'. A self-aware academic acknowledges where their argument 'prête le flanc' before the committee finds it.",
-          "example": "Cette formulation prête le flanc à une critique méthodologique évidente."
+          "example": "Cette formulation prête le flanc à une critique méthodologique évidente.",
+          "example_en": "This formulation lays itself open to an obvious methodological criticism."
         },
         {
           "idiom": "Tenir la route (courant en académique)",
@@ -1040,7 +1049,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To hold the road",
           "meaning": "Vẫn vững chắc qua kiểm tra; chịu được phản biện.",
           "meaning_en": "To remain solid under scrutiny; to withstand critique. Originally an automotive metaphor (a car that 'holds the road' handles well). English equivalent: 'to hold up' or 'to stand up to scrutiny'. Used to commend an argument that survives a tough Q&A.",
-          "example": "L'argumentation tient la route, malgré les objections soulevées."
+          "example": "L'argumentation tient la route, malgré les objections soulevées.",
+          "example_en": "The argument holds up, despite the objections raised."
         },
         {
           "idiom": "Battre en brèche (soutenu)",
@@ -1048,7 +1058,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To beat into the breach",
           "meaning": "Bác bỏ có hệ thống; phá vỡ một luận điểm.",
           "meaning_en": "To dismantle systematically; to demolish a thesis. A siege-warfare metaphor (a 'brèche' is a wall-breach). English equivalent: 'to demolish' or 'to dismantle the argument'. Used for fundamental, not incidental, refutation.",
-          "example": "Bourdieu bat en brèche l'idée d'une école méritocratique neutre."
+          "example": "Bourdieu bat en brèche l'idée d'une école méritocratique neutre.",
+          "example_en": "Bourdieu demolishes the idea of a neutral, meritocratic school system."
         },
         {
           "idiom": "Faire mouche (soutenu)",
@@ -1056,7 +1067,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To hit the fly",
           "meaning": "Trúng đích — luận điểm đánh chính xác vào điểm yếu.",
           "meaning_en": "To hit the target — an objection that lands precisely on a weak point. The 'mouche' is the bullseye on an archery target (originally a literal painted fly). English equivalent: 'to hit the mark' or 'to land a blow'. A graceful concession to an opponent: 'Votre objection a fait mouche.'",
-          "example": "Votre objection a fait mouche — je dois revoir mon raisonnement."
+          "example": "Votre objection a fait mouche — je dois revoir mon raisonnement.",
+          "example_en": "Your objection hit home — I need to reconsider my reasoning."
         }
       ],
       "exercises": [
@@ -1405,7 +1417,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Under all reservations",
           "meaning": "Với mọi điều kiện thận trọng cần có — đóng câu khiêm tốn.",
           "meaning_en": "With all due caution — closes a claim with built-in epistemic humility. English equivalent: 'with all caveats' or 'with the usual disclaimers'. Standard in French scholarly writing to soften any estimate that could be later revised.",
-          "example": "Cette estimation, sous toutes réserves, situe l'effet à environ 15 %."
+          "example": "Cette estimation, sous toutes réserves, situe l'effet à environ 15 %.",
+          "example_en": "This estimate, with all due caveats, places the effect at around 15%."
         },
         {
           "idiom": "Garder une longueur d'avance (en rest. courant)",
@@ -1413,7 +1426,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To keep a length of lead",
           "meaning": "Giữ chỗ cho khả năng sai và sửa lại — phòng xa.",
           "meaning_en": "To stay one step ahead — used here in the sense of leaving rhetorical room for revision. Originally a horse-racing metaphor (the 'longueur' is a horse-length of advantage). Closest English: 'to leave oneself room to maneuver'.",
-          "example": "En sciences, mieux vaut garder une longueur d'avance que d'avoir à se rétracter."
+          "example": "En sciences, mieux vaut garder une longueur d'avance que d'avoir à se rétracter.",
+          "example_en": "In science, it's better to stay one step ahead than to have to retract."
         },
         {
           "idiom": "Avoir bon dos (courant à familier)",
@@ -1421,7 +1435,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To have a good back",
           "meaning": "Bị đổ lỗi cho tất cả — không nên hedge bằng cách đổ lên một biến « tiện lợi ».",
           "meaning_en": "To take the blame for everything — used critically. A variable that 'has good back' is one that researchers conveniently blame for unexplained results. English equivalent: 'a convenient scapegoat'. Use this idiom to push back on lazy hedging that hides behind catch-all explanations like 'culture' or 'context'.",
-          "example": "Le contexte « culturel » a bon dos — il faut chercher des explications plus précises."
+          "example": "Le contexte « culturel » a bon dos — il faut chercher des explications plus précises.",
+          "example_en": "The 'cultural' context is a convenient scapegoat — we need to look for more precise explanations."
         },
         {
           "idiom": "Couper la poire en deux (courant)",
@@ -1429,7 +1444,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To cut the pear in half",
           "meaning": "Tìm trung điểm — hedge bằng cách giữa hai luận điểm cực.",
           "meaning_en": "To split the difference — find a midpoint between two extreme positions. English equivalent: 'to meet in the middle'. Useful when summarizing a debate where neither side is fully right and the productive hedge is to credit each partially.",
-          "example": "La vérité est sans doute à couper la poire en deux entre les positions de A et de B."
+          "example": "La vérité est sans doute à couper la poire en deux entre les positions de A et de B.",
+          "example_en": "The truth probably lies in splitting the difference between A's and B's positions."
         }
       ],
       "exercises": [
@@ -1766,7 +1782,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make the share of things",
           "meaning": "Phân biệt rạch ròi giữa nhiều khía cạnh; tránh trộn lẫn.",
           "meaning_en": "To distinguish clearly between aspects; avoid conflation. English equivalent: 'to draw a distinction' or 'to keep things in perspective'. Essential when an author has lumped two concepts together — 'il convient de faire la part des choses' signals you're about to unbraid them.",
-          "example": "Il convient de faire la part des choses entre la critique de fond et la simple objection rhétorique."
+          "example": "Il convient de faire la part des choses entre la critique de fond et la simple objection rhétorique.",
+          "example_en": "We should distinguish between substantive criticism and a mere rhetorical objection."
         },
         {
           "idiom": "Couper les cheveux en quatre (courant)",
@@ -1774,7 +1791,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To split hairs in four",
           "meaning": "Phân biệt quá tinh tế đến mức vô ích.",
           "meaning_en": "Hair-splitting — making distinctions too fine to matter. English equivalent: 'to split hairs'. Used either as self-deprecation ('without splitting hairs, we can accept…') or as critique ('don't split hairs over a marginal terminological point').",
-          "example": "Sans couper les cheveux en quatre, on peut admettre une certaine porosité entre ces deux notions."
+          "example": "Sans couper les cheveux en quatre, on peut admettre une certaine porosité entre ces deux notions.",
+          "example_en": "Without splitting hairs, one can grant a certain porousness between these two notions."
         },
         {
           "idiom": "Border le concept (jargon académique)",
@@ -1782,7 +1800,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To border the concept",
           "meaning": "Định nghĩa rõ giới hạn để tránh hiểu lầm.",
           "meaning_en": "To set the boundaries of a concept precisely — French academic jargon with no direct English equivalent. Closest gloss: 'to delimit the concept' or 'to scope the term'. Used in methods sections to flag a deliberate boundary-drawing step.",
-          "example": "Cette section vise à border le concept avant de l'employer dans l'analyse empirique."
+          "example": "Cette section vise à border le concept avant de l'employer dans l'analyse empirique.",
+          "example_en": "This section aims to fence off the concept before using it in the empirical analysis."
         },
         {
           "idiom": "Faire le ménage dans les concepts (familier en académique)",
@@ -1790,7 +1809,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To do the cleaning in the concepts",
           "meaning": "Loại bỏ các từ thừa, định nghĩa lại — clarifier le vocabulaire.",
           "meaning_en": "To clean house among the concepts — remove redundant or vague terms, restate definitions. English equivalent: 'to tidy up the vocabulary' or 'to clean up the conceptual apparatus'. Informally academic; signals a methodological discipline applied to the author's own vocabulary.",
-          "example": "Avant l'analyse, je fais le ménage dans les concepts pour éviter les ambiguïtés."
+          "example": "Avant l'analyse, je fais le ménage dans les concepts pour éviter les ambiguïtés.",
+          "example_en": "Before the analysis, I tidy up the concepts to avoid ambiguities."
         }
       ],
       "exercises": [
@@ -2115,7 +2135,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make arrows from all wood",
           "meaning": "Sử dụng tất cả nguồn dữ liệu hiện có — tinh thần méthodes mixtes.",
           "meaning_en": "To use every available resource — the spirit of mixed methods. English equivalent: 'to leave no stone unturned' or 'to use every tool in the box'. A pragmatic methodological stance against purism.",
-          "example": "Sur un sujet aussi complexe, il faut faire flèche de tout bois — ne se priver d'aucune méthode."
+          "example": "Sur un sujet aussi complexe, il faut faire flèche de tout bois — ne se priver d'aucune méthode.",
+          "example_en": "On so complex a subject, you have to use every tool available — deny yourself no method."
         },
         {
           "idiom": "Triangler les sources (jargon)",
@@ -2123,7 +2144,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To triangulate the sources",
           "meaning": "Đối chiếu nhiều nguồn / phương pháp để xác minh kết quả.",
           "meaning_en": "To cross-check multiple sources or methods to validate results. The same term and concept exist in English methodological literature ('triangulation' — Denzin's term); used identically.",
-          "example": "Trianguler les sources renforce la validité des conclusions tirées d'une seule méthode."
+          "example": "Trianguler les sources renforce la validité des conclusions tirées d'une seule méthode.",
+          "example_en": "Triangulating the sources strengthens the validity of conclusions drawn from a single method."
         },
         {
           "idiom": "Avoir le compas dans l'œil (courant)",
@@ -2131,7 +2153,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To have a compass in the eye",
           "meaning": "Cảm nhận tốt độ lớn / tỷ lệ — utile pour le quanti exploratoire.",
           "meaning_en": "To have an intuitive sense of magnitude or proportion — useful for exploratory quantitative work. Closest English: 'to have a good eye for it' or 'to have an instinct for numbers'. Praises a researcher who can detect when a sample is too small before running the math.",
-          "example": "Le bon enquêteur quanti a le compas dans l'œil — il sent quand un effectif sera trop faible."
+          "example": "Le bon enquêteur quanti a le compas dans l'œil — il sent quand un effectif sera trop faible.",
+          "example_en": "A good quantitative researcher has a trained eye — they sense when a sample will be too small."
         },
         {
           "idiom": "Ne pas mettre tous ses œufs dans le même panier (courant)",
@@ -2139,7 +2162,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Not to put all one's eggs in the same basket",
           "meaning": "Không phụ thuộc vào một phương pháp duy nhất — biện minh cho mixed methods.",
           "meaning_en": "Don't put all your eggs in one basket — same idiom and meaning as English. Used here to justify methodological diversification: relying on a single method makes the whole study fragile to that method's blind spots.",
-          "example": "En sciences sociales, mieux vaut ne pas mettre tous ses œufs dans le même panier méthodologique."
+          "example": "En sciences sociales, mieux vaut ne pas mettre tous ses œufs dans le même panier méthodologique.",
+          "example_en": "In the social sciences, it's better not to put all your eggs in one methodological basket."
         }
       ],
       "exercises": [
@@ -2470,7 +2494,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make the fine share for",
           "meaning": "Dành chỗ rộng / ưu tiên — phê bình ngầm về sự ưu ái không cân bằng.",
           "meaning_en": "To give pride of place to — used as implicit critique of an unbalanced privileging. English equivalent: 'to give disproportionate weight to' or 'to favor at the expense of'. Signals that an author has skewed coverage in a way that distorts the overall picture.",
-          "example": "L'ouvrage fait la part belle aux hommes politiques, au détriment des mouvements sociaux."
+          "example": "L'ouvrage fait la part belle aux hommes politiques, au détriment des mouvements sociaux.",
+          "example_en": "The book gives pride of place to politicians, at the expense of social movements."
         },
         {
           "idiom": "Tomber à plat (courant)",
@@ -2478,7 +2503,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To fall flat",
           "meaning": "Không gây hiệu ứng — lập luận / chương sách tệ.",
           "meaning_en": "To fall flat — same idiom and meaning as English. Used to describe an argument or chapter that, after promising buildup, fails to land. Mild critique.",
-          "example": "La conclusion, après un développement brillant, tombe à plat."
+          "example": "La conclusion, après un développement brillant, tombe à plat.",
+          "example_en": "The conclusion, after a brilliant development, falls flat."
         },
         {
           "idiom": "Mettre le doigt sur (courant)",
@@ -2486,7 +2512,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put one's finger on",
           "meaning": "Nhận ra chính xác / chỉ ra điểm cốt yếu.",
           "meaning_en": "To put one's finger on something — pinpoint precisely. Same idiom and meaning as English. Used as praise when an author identifies a previously unnamed phenomenon or dynamic.",
-          "example": "L'auteur met le doigt sur une dynamique souvent négligée par la sociologie classique."
+          "example": "L'auteur met le doigt sur une dynamique souvent négligée par la sociologie classique.",
+          "example_en": "The author puts their finger on a dynamic often overlooked by classical sociology."
         },
         {
           "idiom": "Ne pas faire l'unanimité (formel)",
@@ -2494,7 +2521,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Not to make unanimity",
           "meaning": "Gây tranh luận trong giới — diplomatically marquer le désaccord.",
           "meaning_en": "Not to enjoy unanimous support — a diplomatic way to signal disagreement in the field. English equivalent: 'to be controversial' or 'not to be without its critics'. The polite frame that lets you flag debate without taking sides yourself.",
-          "example": "Cette thèse, à juste titre influente, ne fait pourtant pas l'unanimité dans le champ."
+          "example": "Cette thèse, à juste titre influente, ne fait pourtant pas l'unanimité dans le champ.",
+          "example_en": "This thesis, rightly influential, nonetheless does not command unanimous agreement in the field."
         }
       ],
       "exercises": [
@@ -2825,7 +2853,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To take the word",
           "meaning": "Phát biểu trong một bối cảnh chính thức.",
           "meaning_en": "To speak in a formal context — literally 'to take the word'. English equivalent: 'to take the floor'. Used both for being recognized to speak and for the act of speaking up.",
-          "example": "Avant de prendre la parole, attendez que le modérateur vous donne le micro."
+          "example": "Avant de prendre la parole, attendez que le modérateur vous donne le micro.",
+          "example_en": "Before speaking, wait for the moderator to give you the microphone."
         },
         {
           "idiom": "Mettre les pieds dans le plat (courant)",
@@ -2833,7 +2862,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put one's feet in the dish",
           "meaning": "Đặt câu hỏi thẳng thắn về điểm nhạy cảm — đôi khi gây khó chịu.",
           "meaning_en": "To bring up something awkward directly — sometimes deliberately, sometimes by accident. English equivalent: 'to put one's foot in it' (if accidental) or 'to bring up the elephant in the room' (if deliberate). At a conference, asking the question everyone is thinking but no one will voice.",
-          "example": "Sa question a mis les pieds dans le plat — toute la salle a retenu son souffle."
+          "example": "Sa question a mis les pieds dans le plat — toute la salle a retenu son souffle.",
+          "example_en": "His question put its foot right in it — the whole room held its breath."
         },
         {
           "idiom": "Botter en touche (courant)",
@@ -2841,7 +2871,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To kick into touch",
           "meaning": "Né tránh câu hỏi — thoát bằng câu trả lời lệch.",
           "meaning_en": "To dodge a question — kick the ball out of play (rugby metaphor). English equivalent: 'to punt on' or 'to sidestep'. A speaker who 'bote en touche' on a hard question signals they don't have a strong answer.",
-          "example": "L'orateur a botté en touche sur la question méthodologique la plus difficile."
+          "example": "L'orateur a botté en touche sur la question méthodologique la plus difficile.",
+          "example_en": "The speaker dodged the trickiest methodological question."
         },
         {
           "idiom": "Renvoyer la balle dans le camp adverse (courant)",
@@ -2849,7 +2880,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To send the ball back into the opposing camp",
           "meaning": "Trả lại trách nhiệm cho người hỏi — đôi khi né tránh, đôi khi hợp lý.",
           "meaning_en": "To return the question to the asker — turn the rhetorical tables. English equivalent: 'to turn the question back' or 'to put the ball back in someone's court'. Sometimes evasion, sometimes a legitimate move when the question is itself contested.",
-          "example": "Plutôt que répondre, l'oratrice a renvoyé la balle: « Et vous, comment articuleriez-vous cela ? »"
+          "example": "Plutôt que répondre, l'oratrice a renvoyé la balle: « Et vous, comment articuleriez-vous cela ? »",
+          "example_en": "Rather than answer, the speaker lobbed the ball back: « And you, how would you frame that? »"
         }
       ],
       "exercises": [
@@ -3210,7 +3242,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put to day",
           "meaning": "Phơi bày — làm xuất hiện điều ẩn giấu.",
           "meaning_en": "To bring to light — make visible what was hidden. English equivalent: 'to bring to light' or 'to uncover'. Stronger than 'révéler'; used for analytical work that surfaces previously unseen patterns.",
-          "example": "L'analyse met au jour des dynamiques que les acteurs eux-mêmes ne percevaient pas."
+          "example": "L'analyse met au jour des dynamiques que les acteurs eux-mêmes ne percevaient pas.",
+          "example_en": "The analysis brings to light dynamics that the actors themselves did not perceive."
         },
         {
           "idiom": "Faire saillir (soutenu)",
@@ -3218,7 +3251,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make protrude",
           "meaning": "Làm nổi bật một điểm đặc biệt — utile en abstract.",
           "meaning_en": "To highlight a specific point — useful in an abstract. English equivalent: 'to bring into relief' or 'to foreground'. A precise verb for what good analysis does: makes salient features stand out from the background.",
-          "example": "L'enquête fait saillir un paradoxe central que la littérature avait jusqu'ici négligé."
+          "example": "L'enquête fait saillir un paradoxe central que la littérature avait jusqu'ici négligé.",
+          "example_en": "The study throws into relief a central paradox the literature had so far neglected."
         },
         {
           "idiom": "Aller à l'essentiel (courant)",
@@ -3226,7 +3260,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To go to the essential",
           "meaning": "Vào thẳng vấn đề chính — chuẩn cho abstract.",
           "meaning_en": "To get to the point — the gold standard for abstract writing. English equivalent: 'to get to the essence' or 'to cut to the chase'. The opposite of academic verbosity.",
-          "example": "Un bon abstract va à l'essentiel — pas de circonvolutions, pas de phrases vides."
+          "example": "Un bon abstract va à l'essentiel — pas de circonvolutions, pas de phrases vides.",
+          "example_en": "A good abstract gets to the point — no circumlocution, no empty sentences."
         },
         {
           "idiom": "Ouvrir des perspectives (formel)",
@@ -3234,7 +3269,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To open perspectives",
           "meaning": "Đề xuất hướng nghiên cứu mới — câu kết luận chuẩn.",
           "meaning_en": "To open up new research directions — a standard closing move in an abstract. English equivalent: 'to open avenues for' or 'to suggest directions for future work'. Signals that the work, while complete in itself, generates new questions.",
-          "example": "Cette analyse ouvre des perspectives pour les travaux futurs sur le bilinguisme tardif."
+          "example": "Cette analyse ouvre des perspectives pour les travaux futurs sur le bilinguisme tardif.",
+          "example_en": "This analysis opens up avenues for future work on late bilingualism."
         }
       ],
       "exercises": [
@@ -3565,7 +3601,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Under reservation of",
           "meaning": "Với điều kiện — câu kết verdict tiêu chuẩn.",
           "meaning_en": "Subject to the condition that — the standard closing for a 'major revisions' verdict. English equivalent: 'subject to' or 'pending'. The hedge that lets you conditionally endorse a paper.",
-          "example": "Sous réserve des révisions ci-dessus, l'article me paraît publiable."
+          "example": "Sous réserve des révisions ci-dessus, l'article me paraît publiable.",
+          "example_en": "Subject to the revisions above, the article seems to me publishable."
         },
         {
           "idiom": "Sans préjudice pour (formel)",
@@ -3573,7 +3610,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "Without prejudice to",
           "meaning": "Không ảnh hưởng đến — utilisé pour reject ouvert à re-soumission.",
           "meaning_en": "Without prejudice to — used for a rejection that leaves the door open for resubmission. English equivalent identical: 'without prejudice to'. A legal-register hedge softening the blow of rejection.",
-          "example": "Je recommande un rejet, sans préjudice pour une soumission ultérieure d'une version profondément remaniée."
+          "example": "Je recommande un rejet, sans préjudice pour une soumission ultérieure d'une version profondément remaniée.",
+          "example_en": "I recommend a rejection, without prejudice to a later submission of a deeply reworked version."
         },
         {
           "idiom": "Tirer la sonnette d'alarme (courant)",
@@ -3581,7 +3619,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To pull the alarm bell",
           "meaning": "Cảnh báo về một vấn đề lớn — utile dans review pour signaler une faiblesse structurelle.",
           "meaning_en": "To sound the alarm — flag a major problem. English equivalent: 'to ring the alarm' or 'to raise a red flag'. Used in reviews to signal a structural weakness the author cannot ignore.",
-          "example": "Je tire la sonnette d'alarme sur la dimension méthodologique — sans révision, l'article reste vulnérable."
+          "example": "Je tire la sonnette d'alarme sur la dimension méthodologique — sans révision, l'article reste vulnérable.",
+          "example_en": "I'm sounding the alarm on the methodological dimension — without revision, the article remains vulnerable."
         },
         {
           "idiom": "Mettre la barre haut (courant)",
@@ -3589,7 +3628,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To set the bar high",
           "meaning": "Đặt tiêu chuẩn cao — utile pour justifier un avis exigeant.",
           "meaning_en": "To set the bar high — useful to justify a demanding verdict. English equivalent identical: 'to set the bar high'. Frames a strict review as a positional choice of the journal, not personal harshness of the reviewer.",
-          "example": "La revue met la barre haut sur la rigueur méthodologique — c'est ce qui justifie cet avis exigeant."
+          "example": "La revue met la barre haut sur la rigueur méthodologique — c'est ce qui justifie cet avis exigeant.",
+          "example_en": "The journal sets the bar high on methodological rigor — that is what justifies this demanding assessment."
         }
       ],
       "exercises": [
@@ -3932,7 +3972,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put one's feet in the dish",
           "meaning": "Dấn vào chủ đề tế nhị mà không vòng vo — utile quand on veut couper court à des sous-entendus.",
           "meaning_en": "To address a sensitive topic head-on without circling — useful when you want to cut through subtext. English equivalent: 'to address the elephant in the room'. Used as a deliberate rhetorical move, not as a gaffe.",
-          "example": "À un moment, j'ai mis les pieds dans le plat: « Soixante-huit, c'est en dessous du marché. Je viserai quatre-vingts. »"
+          "example": "À un moment, j'ai mis les pieds dans le plat: « Soixante-huit, c'est en dessous du marché. Je viserai quatre-vingts. »",
+          "example_en": "At one point, I came right out with it: « Sixty-eight is below market. I'll be aiming for eighty. »"
         },
         {
           "idiom": "Tirer son épingle du jeu (courant)",
@@ -3940,7 +3981,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To pull one's pin out of the game",
           "meaning": "Thoát khỏi tình huống một cách có lợi — résultat d'une bonne négo.",
           "meaning_en": "To come out of a situation favorably — the outcome of a well-handled negotiation. English equivalent: 'to come out ahead' or 'to land on one's feet'. Used to describe someone who navigated a tricky setup with skill.",
-          "example": "Avec sa préparation chiffrée, elle a su tirer son épingle du jeu malgré le budget gelé."
+          "example": "Avec sa préparation chiffrée, elle a su tirer son épingle du jeu malgré le budget gelé.",
+          "example_en": "With her data-backed preparation, she managed to come out ahead despite the frozen budget."
         },
         {
           "idiom": "Mettre la barre haut (courant)",
@@ -3948,7 +3990,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To set the bar high",
           "meaning": "Đặt mục tiêu cao — anchor stratégique en début de négo.",
           "meaning_en": "To set the bar high — direct equivalent in English. In negotiation, a strategic anchoring move: start above your target so the negotiation drift lands you near it. Anglophones call this 'anchoring high'.",
-          "example": "Je préfère mettre la barre haut au départ — il est toujours possible de redescendre."
+          "example": "Je préfère mettre la barre haut au départ — il est toujours possible de redescendre.",
+          "example_en": "I'd rather set the bar high at the start — you can always come back down."
         },
         {
           "idiom": "Couper la poire en deux (courant)",
@@ -3956,7 +3999,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To cut the pear in two",
           "meaning": "Tìm điểm trung gian — formule classique de compromis salarial.",
           "meaning_en": "To split the difference — the classic compromise formula. English equivalent: 'to meet in the middle' or 'to split the difference'. Often offered by the side that wants the negotiation to close; accepting it gives away half of any anchored gap.",
-          "example": "Vous voulez quatre-vingts, je propose soixante-quinze; coupons la poire en deux à soixante-dix-sept et demi."
+          "example": "Vous voulez quatre-vingts, je propose soixante-quinze; coupons la poire en deux à soixante-dix-sept et demi.",
+          "example_en": "You want eighty, I'm offering seventy-five; let's split the difference at seventy-seven and a half."
         }
       ],
       "exercises": [
@@ -4305,7 +4349,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put up a guard-rail",
           "meaning": "Đặt giới hạn để bảo vệ — utile pour clauses de responsabilité.",
           "meaning_en": "To set up a safeguard — install a limit to protect. English equivalent: 'to put a guardrail in place' or 'to establish a safety net'. The contractual version of building a fence before the cliff.",
-          "example": "Le plafond à six mois de rémunération sert de garde-fou contre toute exposition disproportionnée."
+          "example": "Le plafond à six mois de rémunération sert de garde-fou contre toute exposition disproportionnée.",
+          "example_en": "The cap at six months' compensation acts as a safeguard against any disproportionate exposure."
         },
         {
           "idiom": "Faire un pas vers l'autre (soutenu)",
@@ -4313,7 +4358,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To take a step toward the other",
           "meaning": "Lùi một bước trong đàm phán — geste de bonne foi.",
           "meaning_en": "To meet the other halfway — a good-faith gesture. English equivalent: 'to meet in the middle' or 'to take a step toward each other'. Used to invite reciprocal concession.",
-          "example": "J'accepte de réduire ma demande sur la clause A si vous faites un pas vers nous sur la clause B."
+          "example": "J'accepte de réduire ma demande sur la clause A si vous faites un pas vers nous sur la clause B.",
+          "example_en": "I'll agree to scale back my request on clause A if you meet us halfway on clause B."
         },
         {
           "idiom": "Mettre les choses au clair (courant)",
@@ -4321,7 +4367,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put things into the clear",
           "meaning": "Làm rõ kỳ vọng — préalable à toute négociation contractuelle.",
           "meaning_en": "To clarify expectations — a prerequisite for any contractual negotiation. English equivalent: 'to set the record straight' or 'to put cards on the table'. Said before a frank exchange about misaligned assumptions.",
-          "example": "Avant de poursuivre, je voudrais qu'on mette les choses au clair sur la durée d'engagement."
+          "example": "Avant de poursuivre, je voudrais qu'on mette les choses au clair sur la durée d'engagement.",
+          "example_en": "Before going further, I'd like us to get things clear about the length of commitment."
         },
         {
           "idiom": "Parler franchement (courant)",
@@ -4329,7 +4376,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To speak frankly",
           "meaning": "Nói thẳng vấn đề — apprécié dans le monde des affaires français.",
           "meaning_en": "To speak frankly — direct equivalent in English. Valued in French business culture as a sign of seriousness, not rudeness. Often opens a critical moment in a negotiation.",
-          "example": "Je vais vous parler franchement: en l'état, je ne pourrais pas engager ma signature."
+          "example": "Je vais vous parler franchement: en l'état, je ne pourrais pas engager ma signature.",
+          "example_en": "I'll speak frankly: as it stands, I couldn't put my signature to this."
         }
       ],
       "exercises": [
@@ -4678,7 +4726,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To hold the reins",
           "meaning": "Kiểm soát mà không can thiệp quá — rôle du chair.",
           "meaning_en": "To hold the reins — control without over-interfering, the ideal chair posture. Direct English equivalent. The horseman's metaphor: guide, don't pull too hard.",
-          "example": "Le bon chair tient les rênes sans tirer trop fort: il oriente sans imposer."
+          "example": "Le bon chair tient les rênes sans tirer trop fort: il oriente sans imposer.",
+          "example_en": "A good chair holds the reins without pulling too hard: they steer without imposing."
         },
         {
           "idiom": "Calmer le jeu (courant)",
@@ -4686,7 +4735,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To calm the game",
           "meaning": "Làm dịu căng thẳng — utile en négo bloquée.",
           "meaning_en": "To defuse tension — useful when negotiation is deadlocked. English equivalent: 'to de-escalate' or 'to cool things down'. A suspension is the classic move to calm the game.",
-          "example": "Quand le ton est monté, le chair a suspendu la séance pour calmer le jeu."
+          "example": "Quand le ton est monté, le chair a suspendu la séance pour calmer le jeu.",
+          "example_en": "When the tone rose, the chair adjourned the session to calm things down."
         },
         {
           "idiom": "Prendre du recul (courant à soutenu)",
@@ -4694,7 +4744,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To take a step back",
           "meaning": "Lùi để có cái nhìn rộng — recommandé aux parties bloquées.",
           "meaning_en": "To take a step back — to get perspective. English equivalent identical. Recommended phrase when delegates are entrenched in detail and missing the bigger picture.",
-          "example": "Je vous propose qu'on prenne du recul vingt minutes; nous reprendrons à tête reposée."
+          "example": "Je vous propose qu'on prenne du recul vingt minutes; nous reprendrons à tête reposée.",
+          "example_en": "I suggest we step back for twenty minutes; we'll resume with clearer heads."
         },
         {
           "idiom": "Faire avancer le schmilblick (familier-courant)",
@@ -4702,7 +4753,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To advance the schmilblick",
           "meaning": "Làm tiến vấn đề — usage familier pour réintroduire le pragmatisme.",
           "meaning_en": "To move the thing forward — colloquial-but-acceptable usage to inject pragmatism. 'Schmilblick' is a made-up French word from a 1969 comedy sketch, now meaning 'the matter at hand'. Closest English: 'to move the needle'. Use sparingly — signals informality.",
-          "example": "Tout cela est intéressant, mais qu'est-ce qui fait avancer le schmilblick concrètement ?"
+          "example": "Tout cela est intéressant, mais qu'est-ce qui fait avancer le schmilblick concrètement ?",
+          "example_en": "All of this is interesting, but what actually moves things forward concretely?"
         }
       ],
       "exercises": [
@@ -5069,7 +5121,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make competition play",
           "meaning": "Sử dụng đối thủ cạnh tranh để có giá tốt hơn — levier achat classique.",
           "meaning_en": "To leverage competition — get a better price by playing vendors against each other. English equivalent: 'to play the field' or 'to leverage competing bids'. The classic procurement lever.",
-          "example": "Sans faire jouer la concurrence, vous payez systématiquement quinze à vingt pour cent de plus."
+          "example": "Sans faire jouer la concurrence, vous payez systématiquement quinze à vingt pour cent de plus.",
+          "example_en": "Without playing competitors off against each other, you systematically pay fifteen to twenty percent more."
         },
         {
           "idiom": "Caler les fondamentaux (courant)",
@@ -5077,7 +5130,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To lock in the fundamentals",
           "meaning": "Thống nhất các điểm then chốt trước khi vào chi tiết.",
           "meaning_en": "To align on the key points before diving into details. English equivalent: 'to nail down the basics'. The discipline that separates professional buyers from amateurs.",
-          "example": "Avant d'entrer dans le détail, calons les fondamentaux: périmètre, durée, budget."
+          "example": "Avant d'entrer dans le détail, calons les fondamentaux: périmètre, durée, budget.",
+          "example_en": "Before getting into the detail, let's lock down the fundamentals: scope, duration, budget."
         },
         {
           "idiom": "Mettre la pression (courant)",
@@ -5085,7 +5139,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put on pressure",
           "meaning": "Tăng áp lực — tactique classique mais à doser.",
           "meaning_en": "To put on pressure — direct English equivalent. A classic tactic but one to use sparingly: too much pressure on a key vendor breaks the relationship and you lose long-term value.",
-          "example": "Mettre trop de pression dès le début sur un fournisseur clé peut casser la relation."
+          "example": "Mettre trop de pression dès le début sur un fournisseur clé peut casser la relation.",
+          "example_en": "Putting too much pressure on a key supplier right from the start can break the relationship."
         },
         {
           "idiom": "Trouver un terrain d'entente (courant à soutenu)",
@@ -5093,7 +5148,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To find common ground",
           "meaning": "Tìm điểm chung — objectif final de toute négociation.",
           "meaning_en": "To find common ground — the ultimate goal of any negotiation. Direct English equivalent. Used to describe a successful close.",
-          "example": "Après deux heures, nous avons trouvé un terrain d'entente sur le SAV et les pénalités."
+          "example": "Après deux heures, nous avons trouvé un terrain d'entente sur le SAV et les pénalités.",
+          "example_en": "After two hours, we found common ground on after-sales support and penalties."
         }
       ],
       "exercises": [
@@ -5430,7 +5486,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To put one's feet in the dish",
           "meaning": "Dấn vào chủ đề tế nhị mà không vòng vo — utile en bilatéral, dangereux en réunion publique.",
           "meaning_en": "To address a sensitive topic head-on — useful in bilateral meetings, dangerous in public ones. English equivalent: 'to call out the elephant in the room'. Timing-sensitive.",
-          "example": "En bilatéral, j'ai mis les pieds dans le plat: « Madame, le calendrier ne tient pas. »"
+          "example": "En bilatéral, j'ai mis les pieds dans le plat: « Madame, le calendrier ne tient pas. »",
+          "example_en": "In the one-on-one, I came right out with it: « Madame, the timeline doesn't hold up. »"
         },
         {
           "idiom": "Faire valoir son point de vue (soutenu)",
@@ -5438,7 +5495,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To make one's point of view count",
           "meaning": "Bảo vệ quan điểm — formule de désaccord constructif.",
           "meaning_en": "To make one's case — defend a viewpoint. English equivalent: 'to state one's case' or 'to make oneself heard'. The polite verb for constructive pushback before a decision is sealed.",
-          "example": "Je voudrais faire valoir mon point de vue avant que la décision soit officialisée."
+          "example": "Je voudrais faire valoir mon point de vue avant que la décision soit officialisée.",
+          "example_en": "I'd like to make my point heard before the decision is made official."
         },
         {
           "idiom": "Marquer son désaccord (soutenu)",
@@ -5446,7 +5504,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To mark one's disagreement",
           "meaning": "Bày tỏ phản đối có chính thức — sans rupture.",
           "meaning_en": "To officially register disagreement — without breaking the relationship. English equivalent: 'to go on record as opposed' or 'to register one's dissent'. A formal procedural move that preserves loyalty.",
-          "example": "Je tiens à marquer mon désaccord, tout en m'engageant à appliquer la décision."
+          "example": "Je tiens à marquer mon désaccord, tout en m'engageant à appliquer la décision.",
+          "example_en": "I want to register my disagreement, while committing to carry out the decision."
         },
         {
           "idiom": "Botter en touche (courant)",
@@ -5454,7 +5513,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To kick into touch",
           "meaning": "Né tránh trả lời — défense maladroite face à un désaccord.",
           "meaning_en": "To dodge the question — a clumsy defense in the face of disagreement. Rugby metaphor (kicking the ball out of play). English equivalent: 'to punt on' or 'to dodge the question'. When a senior 'bote en touche', they're tacitly acknowledging the objection is well-founded.",
-          "example": "Quand le DG botte en touche au lieu de répondre, c'est qu'il sait que le désaccord est fondé."
+          "example": "Quand le DG botte en touche au lieu de répondre, c'est qu'il sait que le désaccord est fondé.",
+          "example_en": "When the CEO dodges instead of answering, it means he knows the disagreement is well founded."
         }
       ],
       "exercises": [
@@ -5803,7 +5863,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To save the face",
           "meaning": "Tránh sự xấu hổ công khai — concept central en négo asiatique.",
           "meaning_en": "To save face — direct English calque from the East Asian concept. A good negotiator in Vietnamese context always leaves the other side an exit door. Anglophones recognize the phrase; many underuse it in practice.",
-          "example": "Le bon négociateur en contexte vietnamien sait toujours laisser à l'autre une porte pour sauver la face."
+          "example": "Le bon négociateur en contexte vietnamien sait toujours laisser à l'autre une porte pour sauver la face.",
+          "example_en": "A good negotiator in the Vietnamese context always leaves the other side a door to save face."
         },
         {
           "idiom": "Lire entre les lignes (courant)",
@@ -5811,7 +5872,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To read between the lines",
           "meaning": "Hiểu điều ngầm — compétence indispensable face aux non implicites.",
           "meaning_en": "To read between the lines — direct English equivalent. An indispensable skill in high-context cultures where the literal words may understate or invert the actual position.",
-          "example": "Avec un partenaire vietnamien, il faut savoir lire entre les lignes — le « oui » poli n'est pas toujours un oui."
+          "example": "Avec un partenaire vietnamien, il faut savoir lire entre les lignes — le « oui » poli n'est pas toujours un oui.",
+          "example_en": "With a Vietnamese partner, you have to know how to read between the lines — a polite « yes » isn't always a yes."
         },
         {
           "idiom": "Tisser des liens (soutenu)",
@@ -5819,7 +5881,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To weave links",
           "meaning": "Xây dựng quan hệ — démarche longue, indispensable en Asie.",
           "meaning_en": "To weave relationships — a long process, indispensable in Asia. Closest English: 'to forge connections' or 'to build ties'. The metaphor of weaving captures the patience and texture required.",
-          "example": "Avant de signer, il faut tisser des liens — c'est ce que les Français pressés négligent souvent."
+          "example": "Avant de signer, il faut tisser des liens — c'est ce que les Français pressés négligent souvent.",
+          "example_en": "Before signing, you have to build a relationship — that's what hurried French negotiators often neglect."
         },
         {
           "idiom": "Marcher sur des œufs (courant)",
@@ -5827,7 +5890,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To walk on eggs",
           "meaning": "Tiến rất thận trọng — utile dans les négos sensibles interculturelles.",
           "meaning_en": "To walk on eggshells — direct English equivalent ('eggshells' in English; 'eggs' in French). Means proceeding very cautiously where any wrong word could break trust.",
-          "example": "Sur le sujet du prix, on marchait sur des œufs; chaque mot pouvait casser la confiance."
+          "example": "Sur le sujet du prix, on marchait sur des œufs; chaque mot pouvait casser la confiance.",
+          "example_en": "On the price issue, we were walking on eggshells; every word could break the trust."
         }
       ],
       "exercises": [
@@ -6164,7 +6228,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To seize an instance",
           "meaning": "Đệ trình một cơ quan có thẩm quyền — terme procédural précis.",
           "meaning_en": "To formally refer to an institutional body — a precise procedural term. English equivalent: 'to bring before' or 'to file with'. Used when escalating from informal to formal channels.",
-          "example": "Si la médiation échoue, je saisirai le CSE pour droit d'alerte."
+          "example": "Si la médiation échoue, je saisirai le CSE pour droit d'alerte.",
+          "example_en": "If mediation fails, I'll refer the matter to the works council for a formal alert."
         },
         {
           "idiom": "Crever l'abcès (courant)",
@@ -6172,7 +6237,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To burst the abscess",
           "meaning": "Giải quyết một vấn đề bị nén lâu — utile en début d'échange formel.",
           "meaning_en": "To address a long-suppressed problem — useful at the opening of a formal exchange. English equivalent: 'to clear the air' or 'to lance the boil'. The medical metaphor signals that the catharsis is necessary, not gratuitous.",
-          "example": "Cet entretien doit servir à crever l'abcès — la situation ne peut plus rester en suspens."
+          "example": "Cet entretien doit servir à crever l'abcès — la situation ne peut plus rester en suspens.",
+          "example_en": "This meeting must serve to lance the boil — the situation can't stay in limbo any longer."
         },
         {
           "idiom": "Mettre à plat (courant)",
@@ -6180,7 +6246,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To lay flat",
           "meaning": "Trình bày minh bạch tất cả — phương pháp médiation.",
           "meaning_en": "To lay everything out transparently — a mediation methodology. English equivalent: 'to put everything on the table'. Used to invite each side to surface facts, feelings, and expectations openly.",
-          "example": "Je propose qu'on mette tout à plat dans cet entretien: les faits, les ressentis, les attentes."
+          "example": "Je propose qu'on mette tout à plat dans cet entretien: les faits, les ressentis, les attentes.",
+          "example_en": "I propose we lay everything out in this meeting: the facts, the feelings, the expectations."
         },
         {
           "idiom": "Préserver ses arrières (courant)",
@@ -6188,7 +6255,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To protect one's rear",
           "meaning": "Giữ chứng cứ và quyền trong dự phòng — discipline du dossier.",
           "meaning_en": "To cover one's back — keep evidence and rights in reserve. Military metaphor. English equivalent: 'to cover one's back / six' or 'to have one's affairs in order'. Not paranoia, but standard professional discipline.",
-          "example": "Tenir un journal des faits, ce n'est pas être paranoïaque — c'est préserver ses arrières."
+          "example": "Tenir un journal des faits, ce n'est pas être paranoïaque — c'est préserver ses arrières.",
+          "example_en": "Keeping a log of the facts isn't paranoia — it's covering yourself."
         }
       ],
       "exercises": [
@@ -6531,7 +6599,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To leave the table",
           "meaning": "Bỏ đàm phán không có thỏa thuận — terme business courant pour walk away.",
           "meaning_en": "To walk away from negotiations without a deal — colloquial-but-business-acceptable French. English equivalent: 'to walk away from the table'. The standard professional term for the walk-away act.",
-          "example": "Plutôt que de signer un mauvais contrat, mieux vaut sortir de table dignement."
+          "example": "Plutôt que de signer un mauvais contrat, mieux vaut sortir de table dignement.",
+          "example_en": "Rather than sign a bad contract, it's better to walk away from the table with dignity."
         },
         {
           "idiom": "Avoir un atout dans sa manche (courant)",
@@ -6539,7 +6608,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To have an ace up one's sleeve",
           "meaning": "Có quân bài dự phòng — exactement la MESORE.",
           "meaning_en": "To have an ace up one's sleeve — direct English equivalent. The card-game metaphor captures the MESORE exactly: a hidden reserve that gives you leverage.",
-          "example": "Le bon négociateur a toujours un atout dans sa manche — sans cela, il subit."
+          "example": "Le bon négociateur a toujours un atout dans sa manche — sans cela, il subit.",
+          "example_en": "A good negotiator always has a card up their sleeve — without one, they're at the mercy of the other side."
         },
         {
           "idiom": "Tirer son épingle du jeu (courant)",
@@ -6547,7 +6617,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To pull one's pin out of the game",
           "meaning": "Rút lui có lợi — walk away réussi.",
           "meaning_en": "To come out of a tricky situation favorably — a successful walk away. English equivalent: 'to come out ahead' or 'to extricate oneself well'. Used to describe someone who navigated a tough negotiation with skill.",
-          "example": "Avec sa MESORE solide, elle a su tirer son épingle du jeu sans casser la relation."
+          "example": "Avec sa MESORE solide, elle a su tirer son épingle du jeu sans casser la relation.",
+          "example_en": "With her solid fallback option, she managed to come out ahead without breaking the relationship."
         },
         {
           "idiom": "Vendre la peau de l'ours avant de l'avoir tué (courant)",
@@ -6555,7 +6626,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To sell the bear's skin before having killed it",
           "meaning": "Tự tin quá sớm — éviter de fermer l'accord trop tôt.",
           "meaning_en": "To count one's chickens before they hatch — direct English-French parallel idiom with different animals. Warns against premature closure: don't celebrate the deal until it's signed.",
-          "example": "Ne signons pas avant la validation finale du DAF — ne vendons pas la peau de l'ours avant de l'avoir tué."
+          "example": "Ne signons pas avant la validation finale du DAF — ne vendons pas la peau de l'ours avant de l'avoir tué.",
+          "example_en": "Let's not sign before the CFO's final sign-off — let's not count our chickens before they hatch."
         }
       ],
       "exercises": [
@@ -6898,7 +6970,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To keep one's cold blood",
           "meaning": "Giữ bình tĩnh — qualité essentielle face au lowball.",
           "meaning_en": "To keep one's cool — direct English equivalent. Essential quality facing a lowball: emotional reaction validates the tactic.",
-          "example": "Face à une offre méprisante, le bon négociateur garde son sang-froid et demande à comprendre."
+          "example": "Face à une offre méprisante, le bon négociateur garde son sang-froid et demande à comprendre.",
+          "example_en": "Faced with a contemptuous offer, a good negotiator keeps their cool and asks to understand it."
         },
         {
           "idiom": "Refuser de mordre à l'hameçon (courant)",
@@ -6906,7 +6979,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To refuse to bite at the hook",
           "meaning": "Không rơi vào bẫy tactique — utile face à l'ancrage.",
           "meaning_en": "To refuse the bait — useful facing anchoring. English equivalent: 'not to take the bait'. The fish-hook metaphor captures exactly the trap a lowball sets.",
-          "example": "Quand le client a lancé son chiffre dérisoire, j'ai refusé de mordre à l'hameçon — j'ai recadré sur la valeur."
+          "example": "Quand le client a lancé son chiffre dérisoire, j'ai refusé de mordre à l'hameçon — j'ai recadré sur la valeur.",
+          "example_en": "When the client threw out his derisory figure, I refused to take the bait — I reframed on value."
         },
         {
           "idiom": "Renvoyer la balle (courant)",
@@ -6914,7 +6988,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To send the ball back",
           "meaning": "Trả lại trách nhiệm trả lời — demander à l'autre de justifier.",
           "meaning_en": "To bounce the question back — make the other side justify. English equivalent: 'to turn the question back' or 'to put it back in their court'. The defensive-to-offensive pivot.",
-          "example": "Au lieu de baisser mon prix, j'ai renvoyé la balle: « Sur quels comparables vous appuyez-vous ? »"
+          "example": "Au lieu de baisser mon prix, j'ai renvoyé la balle: « Sur quels comparables vous appuyez-vous ? »",
+          "example_en": "Instead of lowering my price, I sent the ball back: « What comparables are you basing that on? »"
         },
         {
           "idiom": "Couper la poire en deux (courant)",
@@ -6922,7 +6997,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To cut the pear in two",
           "meaning": "Tìm điểm trung gian — DANGEREUX face au lowball, valide l'ancrage bas.",
           "meaning_en": "To split the difference — DANGEROUS facing a lowball; it validates the low anchor. English equivalent: 'to meet in the middle'. The trap is precisely that splitting the difference between a fair price and a lowball lands you well below market.",
-          "example": "Couper la poire en deux face à un lowball, c'est exactement ce qu'attend l'autre — vous l'avez ancré."
+          "example": "Couper la poire en deux face à un lowball, c'est exactement ce qu'attend l'autre — vous l'avez ancré.",
+          "example_en": "Splitting the difference against a lowball is exactly what the other side expects — they've anchored you."
         }
       ],
       "exercises": [
@@ -7277,7 +7353,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To keep one's cold blood",
           "meaning": "Giữ bình tĩnh — qualité essentielle face à l'hostilité.",
           "meaning_en": "To keep one's cool — direct English equivalent. The essential quality facing hostility; emotional reaction is what the hostile party hopes for.",
-          "example": "Face aux attaques de l'avocat adverse, elle a gardé son sang-froid — c'est ce qui a renversé la négociation."
+          "example": "Face aux attaques de l'avocat adverse, elle a gardé son sang-froid — c'est ce qui a renversé la négociation.",
+          "example_en": "Faced with the opposing lawyer's attacks, she kept her cool — that's what turned the negotiation around."
         },
         {
           "idiom": "Désamorcer la bombe (courant)",
@@ -7285,7 +7362,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To defuse the bomb",
           "meaning": "Trung hòa căng thẳng trước khi nó nổ — technique de recadrage.",
           "meaning_en": "To defuse the bomb — direct English equivalent. The explosives metaphor for neutralizing rising tension before it detonates publicly.",
-          "example": "Le bon négociateur sait désamorcer la bombe avant qu'elle n'explose en public."
+          "example": "Le bon négociateur sait désamorcer la bombe avant qu'elle n'explose en public.",
+          "example_en": "A good negotiator knows how to defuse the bomb before it goes off in public."
         },
         {
           "idiom": "Renvoyer dos à dos (soutenu)",
@@ -7293,7 +7371,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To send back to back",
           "meaning": "Đặt cả hai bên vào cùng một vị trí — éviter de prendre parti.",
           "meaning_en": "To send both parties packing — refuse to take sides, hold them both equally responsible. English equivalent: 'a plague on both your houses' or 'six of one, half a dozen of the other'. Used by mediators to refuse a one-sided blame frame.",
-          "example": "Le médiateur a renvoyé dos à dos les deux parties — chacune avait sa part de responsabilité dans l'escalade."
+          "example": "Le médiateur a renvoyé dos à dos les deux parties — chacune avait sa part de responsabilité dans l'escalade.",
+          "example_en": "The mediator sent both parties packing — each had its share of responsibility in the escalation."
         },
         {
           "idiom": "Reprendre le dessus (courant)",
@@ -7301,7 +7380,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "To take back the upper hand",
           "meaning": "Lấy lại kiểm soát — après une attaque destabilisante.",
           "meaning_en": "To regain the upper hand — direct English equivalent. After a destabilizing attack, the move of regaining control through composure rather than counter-attack.",
-          "example": "Il a fallu cinq minutes de silence pour reprendre le dessus après ses propos méprisants."
+          "example": "Il a fallu cinq minutes de silence pour reprendre le dessus après ses propos méprisants.",
+          "example_en": "It took five minutes of silence to regain the upper hand after his contemptuous remarks."
         }
       ],
       "exercises": [
@@ -7618,7 +7698,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to lead a work to good",
           "meaning": "Hoàn thành một công trình đến nơi đến chốn — chuẩn học thuật.",
           "meaning_en": "to bring a piece of work to a successful completion — an academic standard phrase",
-          "example": "Le directeur de thèse a permis à la candidate de mener à bien un travail ambitieux."
+          "example": "Le directeur de thèse a permis à la candidate de mener à bien un travail ambitieux.",
+          "example_en": "The thesis supervisor enabled the candidate to bring an ambitious piece of work to completion."
         },
         {
           "idiom": "Sous la direction du Pr. X (formel)",
@@ -7626,7 +7707,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "under the direction of Prof. X",
           "meaning": "Cú pháp chuẩn để tri ân directeur — không thay được bằng « avec ».",
           "meaning_en": "the fixed syntax for crediting one's supervisor — cannot be replaced by « avec »",
-          "example": "Cette thèse a été menée sous la direction du professeur Lefèvre."
+          "example": "Cette thèse a été menée sous la direction du professeur Lefèvre.",
+          "example_en": "This thesis was carried out under the supervision of Professor Lefèvre."
         },
         {
           "idiom": "Qu'il me soit permis de (très soutenu)",
@@ -7634,7 +7716,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "may it be permitted to me to",
           "meaning": "Subjunctif littéraire — formules mở đầu remerciements ở registre cao.",
           "meaning_en": "a literary subjunctive opening formula for acknowledgments at the highest register",
-          "example": "Qu'il me soit permis de remercier ma directrice de thèse pour sa patience."
+          "example": "Qu'il me soit permis de remercier ma directrice de thèse pour sa patience.",
+          "example_en": "Allow me to thank my thesis supervisor for her patience."
         },
         {
           "idiom": "Sans laquelle ... n'eût pas vu le jour (littéraire)",
@@ -7642,7 +7725,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "without which ... would not have seen the day",
           "meaning": "Plus-que-parfait du subjonctif — registre littéraire, dùng cho remerciements thiết chế.",
           "meaning_en": "pluperfect-subjunctive formula (literary register) for institutional acknowledgments — '... would never have come into being'",
-          "example": "Cette recherche, sans le concours de ces archives, n'eût pas vu le jour."
+          "example": "Cette recherche, sans le concours de ces archives, n'eût pas vu le jour.",
+          "example_en": "This research, without access to these archives, would never have seen the light of day."
         }
       ],
       "exercises": [
@@ -7971,7 +8055,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to carry off-square",
           "meaning": "Bắn lệch / không trúng đích — phép phản bác lịch sự nhưng dứt khoát.",
           "meaning_en": "to miss the mark / be off-target — a polite but firm refutation move",
-          "example": "Votre objection, sur ce point précis, porte à faux: la question est ailleurs."
+          "example": "Votre objection, sur ce point précis, porte à faux: la question est ailleurs.",
+          "example_en": "Your objection, on this precise point, misses the mark: the question lies elsewhere."
         },
         {
           "idiom": "Sans détour (formel)",
@@ -7979,7 +8064,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "without detour",
           "meaning": "Không quanh co — báo hiệu sẽ nói thẳng, biện minh cho directness.",
           "meaning_en": "without circumlocution — signals you're about to speak plainly, licensing the directness",
-          "example": "Je vous le dis sans détour: cette critique me paraît mal fondée."
+          "example": "Je vous le dis sans détour: cette critique me paraît mal fondée.",
+          "example_en": "I'll tell you plainly: this criticism seems to me ill-founded."
         },
         {
           "idiom": "Avec netteté (soutenu)",
@@ -7987,7 +8073,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "with sharpness",
           "meaning": "Một cách dứt khoát — assertion firmness, registre élevé.",
           "meaning_en": "with firmness — an assertion of firmness, elevated register",
-          "example": "Je tiens à dire avec netteté que je ne partage pas votre lecture."
+          "example": "Je tiens à dire avec netteté que je ne partage pas votre lecture.",
+          "example_en": "I want to state clearly that I do not share your reading."
         },
         {
           "idiom": "S'inscrire en faux contre (soutenu)",
@@ -7995,7 +8082,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to register oneself in false against",
           "meaning": "Phản bác mạnh mẽ — formule académique standard cho désaccord ferme.",
           "meaning_en": "to firmly disagree with — the standard academic formula for a firm dissent",
-          "example": "Je m'inscris en faux contre l'idée qu'il faille importer ici les normes quantitatives."
+          "example": "Je m'inscris en faux contre l'idée qu'il faille importer ici les normes quantitatives.",
+          "example_en": "I take strong exception to the idea that quantitative norms should be imported here."
         }
       ],
       "exercises": [
@@ -8330,7 +8418,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to lift a lock",
           "meaning": "Phá một nút thắt khoa học — formule ANR standard.",
           "meaning_en": "to break a scientific bottleneck — the standard ANR formula ('lever un verrou')",
-          "example": "Le verrou que nous nous proposons de lever concerne la modélisation des médiateurs humains."
+          "example": "Le verrou que nous nous proposons de lever concerne la modélisation des médiateurs humains.",
+          "example_en": "The bottleneck we propose to unlock concerns the modeling of human intermediaries."
         },
         {
           "idiom": "Faire l'objet de (formel)",
@@ -8338,7 +8427,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to be the object of",
           "meaning": "Được nghiên cứu / xử lý — registre académique.",
           "meaning_en": "to be studied / dealt with — academic register for 'has been researched'",
-          "example": "Ce terrain a fait l'objet d'études ponctuelles, mais d'aucune enquête longitudinale."
+          "example": "Ce terrain a fait l'objet d'études ponctuelles, mais d'aucune enquête longitudinale.",
+          "example_en": "This field has been the subject of occasional studies, but of no longitudinal investigation."
         },
         {
           "idiom": "Combler une lacune (formel)",
@@ -8346,7 +8436,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to fill a gap",
           "meaning": "Lấp khoảng trống tài liệu — justification standard de projet.",
           "meaning_en": "to fill a gap in the literature — a standard project justification",
-          "example": "Le présent projet entend combler cette lacune par une enquête longitudinale."
+          "example": "Le présent projet entend combler cette lacune par une enquête longitudinale.",
+          "example_en": "The present project aims to fill this gap through a longitudinal study."
         },
         {
           "idiom": "Capitaliser sur les résultats (institutionnel)",
@@ -8354,7 +8445,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to capitalize on the results",
           "meaning": "Tận dụng các kết quả — vocabulaire de gestion de projet.",
           "meaning_en": "to build on the results — project-management vocabulary for leveraging outputs",
-          "example": "Nous capitaliserons sur les résultats du présent projet pour candidater ensuite à Horizon Europe."
+          "example": "Nous capitaliserons sur les résultats du présent projet pour candidater ensuite à Horizon Europe.",
+          "example_en": "We will build on the results of this project to apply next to Horizon Europe."
         }
       ],
       "exercises": [
@@ -8689,7 +8781,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to come to maturity (of a term)",
           "meaning": "Tới hạn — vocabulaire institutionnel des contrats.",
           "meaning_en": "to reach its end / fall due — institutional vocabulary for contracts",
-          "example": "Le contrat quinquennal vient à échéance en décembre deux mille vingt-quatre."
+          "example": "Le contrat quinquennal vient à échéance en décembre deux mille vingt-quatre.",
+          "example_en": "The five-year contract comes due in December 2024."
         },
         {
           "idiom": "Accuser un retard (institutionnel)",
@@ -8697,7 +8790,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to accuse a delay",
           "meaning": "Có một sự chậm trễ rõ — formule pour signaler une faiblesse.",
           "meaning_en": "to have a clear delay — the formula for flagging a weakness ('our policy accuses a delay')",
-          "example": "Notre politique de science ouverte accuse un retard de deux à trois ans."
+          "example": "Notre politique de science ouverte accuse un retard de deux à trois ans.",
+          "example_en": "Our open-science policy is running two to three years behind."
         },
         {
           "idiom": "Croiser les données (méthodologique)",
@@ -8705,7 +8799,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to cross the data",
           "meaning": "Đối chiếu dữ liệu — méthode SHS standard.",
           "meaning_en": "to cross-check data — a standard SHS method",
-          "example": "Nous prions le comité de croiser ces données avec l'analyse qualitative."
+          "example": "Nous prions le comité de croiser ces données avec l'analyse qualitative.",
+          "example_en": "We ask the committee to cross-reference these data with the qualitative analysis."
         },
         {
           "idiom": "Atteindre la masse critique (institutionnel)",
@@ -8713,7 +8808,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to reach critical mass",
           "meaning": "Đạt đủ ngưỡng để tự duy trì — vocabulaire de gouvernance scientifique.",
           "meaning_en": "to reach a self-sustaining threshold — scientific-governance vocabulary",
-          "example": "L'axe a désormais une masse critique propre, indépendamment de son fondateur."
+          "example": "L'axe a désormais une masse critique propre, indépendamment de son fondateur.",
+          "example_en": "The research strand now has a critical mass of its own, independent of its founder."
         }
       ],
       "exercises": [
@@ -9048,7 +9144,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "a conducting thread",
           "meaning": "Sợi chỉ đỏ — formule centrale pour articuler une trajectoire.",
           "meaning_en": "the unifying thread (red thread) — the central formula for articulating a trajectory",
-          "example": "Mon parcours s'organise autour d'un fil conducteur unique: la circulation transnationale des savoirs."
+          "example": "Mon parcours s'organise autour d'un fil conducteur unique: la circulation transnationale des savoirs.",
+          "example_en": "My career is organized around a single thread: the transnational circulation of knowledge."
         },
         {
           "idiom": "S'inscrire dans la continuité de (formel)",
@@ -9056,7 +9153,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to register oneself in the continuity of",
           "meaning": "Nối tiếp công trình — formule de positionnement.",
           "meaning_en": "to follow on from / continue prior work — a positioning formula",
-          "example": "Mes travaux post-thèse s'inscrivent dans la continuité de la thèse, tout en s'en démarquant sur deux points."
+          "example": "Mes travaux post-thèse s'inscrivent dans la continuité de la thèse, tout en s'en démarquant sur deux points.",
+          "example_en": "My post-doctoral work follows on from the thesis, while departing from it on two points."
         },
         {
           "idiom": "Mettre en évidence (académique)",
@@ -9064,7 +9162,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to put into evidence",
           "meaning": "Làm nổi bật — formule standard pour signaler un résultat.",
           "meaning_en": "to highlight / bring out — the standard formula for flagging a result",
-          "example": "C'est cette cohérence interne que le présent rapport entend mettre en évidence."
+          "example": "C'est cette cohérence interne que le présent rapport entend mettre en évidence.",
+          "example_en": "It is this internal coherence that the present report aims to bring out."
         },
         {
           "idiom": "Faire l'objet d'une attention soutenue (institutionnel)",
@@ -9072,7 +9171,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to be the object of sustained attention",
           "meaning": "Được chú ý kỹ — registre formel pour signaler une thématique traitée en profondeur.",
           "meaning_en": "to be examined in depth — formal register for a thoroughly-treated theme",
-          "example": "La dimension pédagogique a fait l'objet d'une attention soutenue tout au long du parcours."
+          "example": "La dimension pédagogique a fait l'objet d'une attention soutenue tout au long du parcours.",
+          "example_en": "The teaching dimension has received sustained attention throughout the trajectory."
         }
       ],
       "exercises": [
@@ -9425,7 +9525,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "earmarked in (a domain)",
           "meaning": "Đánh dấu hướng đến (lĩnh vực) — vocabulaire de la fiche de poste.",
           "meaning_en": "earmarked for / targeted at (a domain) — fiche-de-poste vocabulary",
-          "example": "Le poste est fléché en sociolinguistique du bilinguisme avec section secondaire en sciences de l'éducation."
+          "example": "Le poste est fléché en sociolinguistique du bilinguisme avec section secondaire en sciences de l'éducation.",
+          "example_en": "The post is earmarked for the sociolinguistics of bilingualism, with a secondary section in education science."
         },
         {
           "idiom": "Ne pas être un parachutage (institutionnel)",
@@ -9433,7 +9534,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "not to be a parachuting-in",
           "meaning": "Không bị áp đặt từ ngoài — argument standard pour candidat externe au labo.",
           "meaning_en": "not to be an externally imposed appointment — the standard argument for a lab-external candidate",
-          "example": "Mon insertion dans le laboratoire ne serait pas un parachutage, puisque j'y collabore depuis 2024."
+          "example": "Mon insertion dans le laboratoire ne serait pas un parachutage, puisque j'y collabore depuis 2024.",
+          "example_en": "My joining the lab would not be a parachute landing, since I've been collaborating with it since 2024."
         },
         {
           "idiom": "Au regard de (formel)",
@@ -9441,7 +9543,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "in regard of",
           "meaning": "So với / khi xét tới — registre administratif-académique.",
           "meaning_en": "with regard to / in light of — administrative-academic register",
-          "example": "La cohérence du parcours, au regard du profil du poste, paraît établie."
+          "example": "La cohérence du parcours, au regard du profil du poste, paraît établie.",
+          "example_en": "The coherence of the trajectory, in light of the post profile, appears established."
         },
         {
           "idiom": "Une convergence rare (institutionnel)",
@@ -9449,7 +9552,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "a rare convergence",
           "meaning": "Sự gặp gỡ hiếm — formule de conclusion d'audition pour synthétiser la pertinence.",
           "meaning_en": "a rare convergence — an audition-conclusion formula synthesizing the candidacy's fit",
-          "example": "Ma candidature s'inscrit dans une convergence rare entre profil de poste et projet de recherche."
+          "example": "Ma candidature s'inscrit dans une convergence rare entre profil de poste et projet de recherche.",
+          "example_en": "My application reflects a rare convergence between the post profile and the research project."
         }
       ],
       "exercises": [
@@ -9784,7 +9888,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to cede the speech",
           "meaning": "Nhường lời — formule animateur standard.",
           "meaning_en": "to give the floor — the standard animator's formula",
-          "example": "Je vous cède la parole, Madame Sapiro. Vous disposez de quarante-cinq minutes."
+          "example": "Je vous cède la parole, Madame Sapiro. Vous disposez de quarante-cinq minutes.",
+          "example_en": "I give you the floor, Madame Sapiro. You have forty-five minutes."
         },
         {
           "idiom": "Esquisser une question (intellectuel)",
@@ -9792,7 +9897,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to sketch a question",
           "meaning": "Đặt một câu hỏi tổng quát, ngắn gọn — pour ouvrir un séminaire.",
           "meaning_en": "to pose a brief, general framing question — used to open a seminar",
-          "example": "Avant de céder la parole, permettez-moi d'esquisser la question qui nous réunit aujourd'hui."
+          "example": "Avant de céder la parole, permettez-moi d'esquisser la question qui nous réunit aujourd'hui.",
+          "example_en": "Before yielding the floor, allow me to sketch the question that brings us together today."
         },
         {
           "idiom": "Jouer l'avocat du diable (idiomatique)",
@@ -9800,7 +9906,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to play the devil's advocate",
           "meaning": "Đặt phản biện cố ý — formule pour annoncer une provocation intellectuelle.",
           "meaning_en": "to deliberately raise a counter-argument — a formula for announcing an intellectual provocation",
-          "example": "Je joue l'avocat du diable un instant: et si la circulation se faisait surtout par les médiateurs informels ?"
+          "example": "Je joue l'avocat du diable un instant: et si la circulation se faisait surtout par les médiateurs informels ?",
+          "example_en": "Let me play devil's advocate for a moment: what if circulation happened mainly through informal intermediaries?"
         },
         {
           "idiom": "Trancher une question (formel)",
@@ -9808,7 +9915,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to slice a question",
           "meaning": "Phân định dứt khoát — souvent au négatif: « rien n'est tranché ».",
           "meaning_en": "to settle a question definitively — often used negatively: « rien n'est tranché »",
-          "example": "À l'issue de cette séance, rien n'est tranché — la discussion reprendra le quinze mai."
+          "example": "À l'issue de cette séance, rien n'est tranché — la discussion reprendra le quinze mai.",
+          "example_en": "At the end of this session, nothing is settled — the discussion will resume on May fifteenth."
         }
       ],
       "exercises": [
@@ -10143,7 +10251,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "from the outset",
           "meaning": "Ngay từ đầu — formule pour signaler une distinction initiale.",
           "meaning_en": "from the very start — a formula for signalling an initial distinction",
-          "example": "Je tiens à distinguer d'emblée le désaccord scientifique du désaccord idéologique."
+          "example": "Je tiens à distinguer d'emblée le désaccord scientifique du désaccord idéologique.",
+          "example_en": "I want to distinguish from the outset scientific disagreement from ideological disagreement."
         },
         {
           "idiom": "Être en porte-à-faux (formel)",
@@ -10151,7 +10260,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to be off-square (off-balance)",
           "meaning": "Ở trong vị trí mâu thuẫn — formule de débat pour signaler une accusation d'incohérence.",
           "meaning_en": "to be in a contradictory/untenable position — a debate formula for an accusation of inconsistency",
-          "example": "On me reproche d'être en porte-à-faux ; je conteste cette lecture."
+          "example": "On me reproche d'être en porte-à-faux ; je conteste cette lecture.",
+          "example_en": "I'm accused of being inconsistent; I dispute that reading."
         },
         {
           "idiom": "Couper court à un débat (idiomatique)",
@@ -10159,7 +10269,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to cut a debate short",
           "meaning": "Đóng một tranh luận sớm — souvent négatif, accusation contre un présentateur.",
           "meaning_en": "to close a debate prematurely — often negative, an accusation against a host",
-          "example": "En coupant court au débat, le présentateur a ramené la complexité à un slogan."
+          "example": "En coupant court au débat, le présentateur a ramené la complexité à un slogan.",
+          "example_en": "By cutting the debate short, the presenter reduced the complexity to a slogan."
         },
         {
           "idiom": "L'effet rhétorique de disqualification (académique)",
@@ -10167,7 +10278,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the rhetorical effect of disqualification",
           "meaning": "Hiệu ứng tu từ nhằm phế bỏ đối thủ — analyse standard de la polémique.",
           "meaning_en": "a rhetorical move designed to discredit the opponent — the standard analysis of polemic",
-          "example": "L'accusation de nostalgie coloniale est, en l'occurrence, un effet rhétorique de disqualification."
+          "example": "L'accusation de nostalgie coloniale est, en l'occurrence, un effet rhétorique de disqualification.",
+          "example_en": "The accusation of colonial nostalgia is, in this case, a rhetorical move to disqualify."
         }
       ],
       "exercises": [
@@ -10502,7 +10614,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to rejoin someone on",
           "meaning": "Đồng ý với ai về một điểm — formule de positionnement standard.",
           "meaning_en": "to agree with someone on a point — the standard positioning formula",
-          "example": "Je rejoins Madame Sapiro sur le constat; je m'en sépare sur l'interprétation."
+          "example": "Je rejoins Madame Sapiro sur le constat; je m'en sépare sur l'interprétation.",
+          "example_en": "I agree with Madame Sapiro on the observation; I part ways with her on the interpretation."
         },
         {
           "idiom": "Tenir l'épreuve de (formel)",
@@ -10510,7 +10623,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to hold the test of",
           "meaning": "Trụ được trước — pour évaluer si un cadre tient face aux données.",
           "meaning_en": "to withstand the test of — used to assess whether a framework holds against the data",
-          "example": "Votre cadre, brillant pour le cas franco-allemand, ne tient pas l'épreuve des données vietnamiennes."
+          "example": "Votre cadre, brillant pour le cas franco-allemand, ne tient pas l'épreuve des données vietnamiennes.",
+          "example_en": "Your framework, brilliant for the Franco-German case, does not survive the test of the Vietnamese data."
         },
         {
           "idiom": "Trancher entre deux thèses (académique)",
@@ -10518,7 +10632,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to slice between two theses",
           "meaning": "Phân định giữa hai luận điểm — souvent au négatif: « plus fécond que de trancher ».",
           "meaning_en": "to adjudicate between two theses — often negative: « plus fécond que de trancher »",
-          "example": "Cette question sera plus féconde que de chercher à trancher entre nos deux cadres."
+          "example": "Cette question sera plus féconde que de chercher à trancher entre nos deux cadres.",
+          "example_en": "This question will be more fruitful than trying to decide between our two frameworks."
         },
         {
           "idiom": "Amicalement mais fermement (formel)",
@@ -10526,7 +10641,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "in a friendly but firm way",
           "meaning": "Thân thiện nhưng dứt khoát — formule emblématique du désaccord civil.",
           "meaning_en": "in a friendly but firm way — the emblematic formula of civil disagreement",
-          "example": "À Monsieur Schmitt, je voudrais répondre amicalement mais fermement: votre cadre ne tient pas."
+          "example": "À Monsieur Schmitt, je voudrais répondre amicalement mais fermement: votre cadre ne tient pas.",
+          "example_en": "To Monsieur Schmitt, I would like to reply in a friendly but firm way: your framework does not hold."
         }
       ],
       "exercises": [
@@ -10849,7 +10965,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to register oneself in a tradition",
           "meaning": "Đăng ký vào một truyền thống — formule cho ancrage dans une lignée intellectuelle.",
           "meaning_en": "to anchor oneself in an intellectual lineage — a formula for situating heterodoxy within a tradition",
-          "example": "Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez."
+          "example": "Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez.",
+          "example_en": "I explicitly situate myself in a heterodox tradition — that of Lordon, Lahire, Quemada-Diez."
         },
         {
           "idiom": "Le droit à l'hétérodoxie (philosophique)",
@@ -10857,7 +10974,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the right to heterodoxy",
           "meaning": "Quyền được giữ vị trí không chính thống — argument méta de la vie scientifique.",
           "meaning_en": "the right to hold a non-orthodox position — a meta-argument for scientific vitality",
-          "example": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique."
+          "example": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique.",
+          "example_en": "I claim the right to heterodoxy as a condition of scientific vitality."
         },
         {
           "idiom": "Le mépris symétrique (formel)",
@@ -10865,7 +10983,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "symmetrical contempt",
           "meaning": "Sự khinh thị đối xứng — đặc điểm cần tránh khi bảo vệ vị trí thiểu số.",
           "meaning_en": "mutual disdain between heterodox and orthodox — the trap to avoid when defending a minority position",
-          "example": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique."
+          "example": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique.",
+          "example_en": "To my orthodox opponents, I do not respond with a matching contempt."
         },
         {
           "idiom": "Le glissement vers la doctrine (philosophique)",
@@ -10873,7 +10992,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the slide toward doctrine",
           "meaning": "Sự trượt về giáo điều — risque que court un champ qui refuse l'hétérodoxie.",
           "meaning_en": "the drift of a field into dogma — the risk a field runs when it refuses heterodoxy",
-          "example": "Quand un champ utilise le vocabulaire religieux pour qualifier un désaccord, le glissement vers la doctrine est en cours."
+          "example": "Quand un champ utilise le vocabulaire religieux pour qualifier un désaccord, le glissement vers la doctrine est en cours.",
+          "example_en": "When a field uses religious vocabulary to characterize a disagreement, the slide toward doctrine is under way."
         }
       ],
       "exercises": [
