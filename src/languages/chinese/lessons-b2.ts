@@ -730,6 +730,12 @@ export const lessons: ChineseLesson[] = [
           "汇报 → huìbào (formal: 'báo cáo cấp trên')",
           "私事 → sī shì (việc riêng)",
           "经理 → jīnglǐ (chức danh, đứng sau họ)"
+        ],
+        "pronunciation_focus_en": [
+          "您 → nín, rising 2nd tone (NOT nǐ, the dipping 3rd) — the formal 'you'",
+          "汇报 → huìbào (formal: 'to report upward to a superior')",
+          "私事 → sī shì ('private matter'); sī is a flat 'sz' buzz",
+          "经理 → jīnglǐ ('manager'); the title follows the surname (王经理 = 'Manager Wang')"
         ]
       },
       {
@@ -742,6 +748,12 @@ export const lessons: ChineseLesson[] = [
           "陪 → péi thanh 2 (đi cùng/chăm sóc)",
           "一段时间 → yīduàn shíjiān (một quãng thời gian — vague intentionally)",
           "母亲 → mǔqīn (formal hơn 妈妈)"
+        ],
+        "pronunciation_focus_en": [
+          "出了状况 → chū le zhuàngkuàng (set phrase: 'something has come up / a problem arose')",
+          "陪 → péi, rising 2nd tone ('to accompany / care for')",
+          "一段时间 → yīduàn shíjiān ('a period of time' — deliberately vague)",
+          "母亲 → mǔqīn ('mother', more formal than 妈妈 māma)"
         ]
       },
       {
@@ -754,6 +766,12 @@ export const lessons: ChineseLesson[] = [
           "无薪 → wú xīn (không lương)",
           "形式 → xíngshì (hình thức/cách thức)",
           "办理 → bànlǐ (xử lý chính thức qua thủ tục)"
+        ],
+        "pronunciation_focus_en": [
+          "事假 → shì jià ('personal leave' — NOT 病假 bìng jià, which is sick leave)",
+          "无薪 → wú xīn ('unpaid')",
+          "形式 → xíngshì ('form / arrangement')",
+          "办理 → bànlǐ ('to process formally, through procedure')"
         ]
       },
       {
@@ -766,6 +784,12 @@ export const lessons: ChineseLesson[] = [
           "工作交接 → gōngzuò jiāojiē (bàn giao công việc — cụm chuẩn)",
           "项目进度 → xiàngmù jìndù (tiến độ dự án)",
           "确保 → quèbǎo (đảm bảo — formal)"
+        ],
+        "pronunciation_focus_en": [
+          "提前 → tíqián, rising-rising (2-2) ('ahead of schedule')",
+          "工作交接 → gōngzuò jiāojiē ('work handover' — the standard collocation)",
+          "项目进度 → xiàngmù jìndù ('project progress/schedule')",
+          "确保 → quèbǎo ('to ensure' — formal)"
         ]
       },
       {
@@ -778,6 +802,12 @@ export const lessons: ChineseLesson[] = [
           "情非得已 → qíng fēi dé yǐ (idiom 4 chữ: bất đắc dĩ)",
           "实在 → shízài (thật sự, thành thật)",
           "团队 → tuánduì (team/đội)"
+        ],
+        "pronunciation_focus_en": [
+          "添麻烦 → tiān máfan, tones 1-2-2 ('to cause trouble' — a courtesy formula)",
+          "情非得已 → qíng fēi dé yǐ (4-char idiom: 'forced by circumstance, no choice')",
+          "实在 → shízài ('truly, sincerely')",
+          "团队 → tuánduì ('team')"
         ]
       }
     ],
@@ -1034,7 +1064,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa công sở Trung Quốc xem việc về quê chăm gia đình là một trong những lý do chính đáng nhất để xin nghỉ — bắt nguồn từ giá trị 孝道 (xiàodào — đạo hiếu). Khi bạn nói '母亲身体不太好' (mẹ tôi sức khỏe không tốt), gần như mọi sếp Trung Quốc thế hệ trước sẽ hiểu và chấp nhận, vì văn hóa Khổng giáo đặt nghĩa vụ với cha mẹ trên hầu hết các nghĩa vụ khác — bao gồm công việc. Khác biệt với Việt Nam: ở Việt Nam, lý do 'gia đình' cũng được chấp nhận nhưng thường gắn với 'lễ tết' hoặc 'đám cưới'; ở Trung Quốc, 'thăm bệnh cha mẹ' được trọng vọng đặc biệt và gần như không bị chất vấn lý do.\n\nTuy nhiên, KHÔNG có nghĩa là dễ dãi — người Trung Quốc vẫn sẽ đo 'thể diện' (面子) qua cách bạn xử lý quá trình. Sáu quy tắc:\n\n(1) Báo càng SỚM càng tốt — 越早越好 (yuè zǎo yuè hǎo). Báo trước 1-2 ngày là xúc phạm trầm trọng; báo trước 2-3 tuần là chuẩn; báo trước 1 tháng là lý tưởng. Báo qua tin nhắn WeChat sẽ bị coi là không trang trọng — phải gọi điện hoặc gặp trực tiếp, sau đó mới gửi văn bản chính thức qua hệ thống HR.\n\n(2) Đừng giải thích quá nhiều chi tiết riêng tư. Sếp Trung Quốc tôn trọng 'có chuyện riêng' hơn là biết tỉ mỉ. Nói '母亲身体出了状况, 需要照顾' là đủ — không cần kể bệnh gì, ai chăm, chi tiết bác sĩ. Quá nhiều chi tiết = nghi ngờ lý do thật.\n\n(3) PHẢI có kế hoạch bàn giao TRƯỚC khi xin nghỉ — không thể vừa xin vừa hỏi 'ai sẽ làm thay em'. Đó là trách nhiệm của bạn, không phải sếp. Đề xuất tên cụ thể, có hướng dẫn chi tiết, cam kết hỗ trợ từ xa = cách duy nhất để sếp đồng ý mà không mất thể diện.\n\n(4) Luôn bao gồm cụm '添麻烦了' (tiān máfan le — gây phiền hà) — đây không phải xin lỗi mà là dấu hiệu lễ phép tiêu chuẩn. Thiếu nó sẽ bị coi là vô tâm, không biết điều.\n\n(5) Sau khi quay lại, BẮT BUỘC mang quà nhỏ (土特产 tǔtèchǎn — đặc sản quê hương) cho team — đó là 礼尚往来 (lǐ shàng wǎng lái — qua lại có lễ). Không cần đắt tiền, chỉ cần biểu trưng. Bỏ qua bước này sẽ bị nhớ rất lâu trong văn hóa workplace Trung Quốc.\n\n(6) Tuần đầu sau khi quay lại, viết một báo cáo tóm tắt cho sếp — không cần dài, chỉ cần 'tôi đã quay lại, mọi thứ ổn, cảm ơn anh đã cho phép' + cập nhật về việc tiếp quản các dự án. Đây là đóng vòng tròn giao tiếp.\n\nKhác biệt cơ bản với Pháp/Đức/Việt:\n- Pháp: xin nghỉ là quyền hợp đồng (entitled time off) → đàm phán dựa trên dữ liệu;\n- Đức: xin nghỉ là quá trình formal có quy tắc → tuân thủ luật và process;\n- Việt Nam: xin nghỉ là chuyện cá nhân giữa nhân viên và sếp → tương đối linh hoạt;\n- Trung Quốc: xin nghỉ là một sự BAN ƠN từ sếp → cần đáp lại bằng 'thể diện' (làm tròn trách nhiệm trước/sau, mang quà, viết báo cáo).\n\nHiểu khung này sẽ giúp người Việt làm việc ở Trung Quốc tránh hai cái bẫy phổ biến: (1) cứng nhắc theo phong cách Pháp/Đức ('đây là quyền của tôi') — bị coi là vô lễ; (2) quá linh hoạt theo phong cách Việt ('em báo gấp lát ạ') — bị coi là thiếu chuyên nghiệp.",
+    "cultural_notes_en": "Chinese workplace culture treats going home to care for family as one of the most legitimate possible reasons to request leave — it is rooted in 孝道 (xiàodào, filial piety). When you say 母亲身体不太好 (my mother isn't well), almost any older-generation Chinese manager will understand and accept it, because Confucian values place duty to one's parents above nearly every other obligation, work included. This runs deeper than the Western default: in most US/UK workplaces 'a family thing' is accepted but kept vague and is no more privileged than any other personal reason; in China, 'my parent is ill and needs me' carries special moral weight and is almost never interrogated.\n\nThat does NOT make it casual — Chinese colleagues still measure your 面子 (miànzi, face) by how you handle the process. Six rules:\n\n(1) Give notice as EARLY as possible — 越早越好 (yuè zǎo yuè hǎo). One or two days' notice is a serious affront; 2-3 weeks is standard; a month is ideal. Announcing it by WeChat message reads as disrespectful — call or speak in person first, and only then file the formal request through HR.\n\n(2) Don't over-explain private details. A Chinese manager respects 'you have a private matter' more than knowing the specifics. 母亲身体出了状况，需要照顾 ('my mother has had a health problem and needs care') is enough — no diagnosis, no who-is-caring-for-her, no doctor details. Too much detail reads as a fabricated reason.\n\n(3) You MUST bring a handover plan BEFORE you ask — you cannot request leave and in the same breath ask 'who will cover for me?' That is your responsibility, not your boss's. Name a specific person, give detailed instructions, and commit to remote support — that is the only way the boss can say yes without losing face.\n\n(4) Always include 添麻烦了 (tiān máfan le, 'sorry for the trouble I'm causing') — this is not an apology but a standard marker of courtesy. Omitting it reads as thoughtless and socially tone-deaf.\n\n(5) After you return, it is MANDATORY to bring a small gift (土特产 tǔtèchǎn, a local specialty from your hometown) for the team — this is 礼尚往来 (lǐ shàng wǎng lái, courtesy returns courtesy). It need not be expensive, only symbolic. Skipping this step is remembered for a long time in Chinese workplace culture.\n\n(6) In your first week back, write a short summary to your boss — not long, just 'I'm back, everything is fine, thank you for allowing it' plus an update on the project handover. This closes the communication loop.\n\nA useful spectrum — how four cultures frame 'asking for leave':\n- France: leave is a contractual right (entitled time off) → negotiated on the data;\n- Germany: leave is a formal, rule-bound process → follow the law and the procedure;\n- A typical US/UK workplace: leave is largely a personal matter between employee and manager → relatively flexible, low ceremony;\n- China: leave is a FAVOR granted by the boss → repaid with 面子 (do the duties properly before and after, bring a gift, write the report).\n\nKnowing this frame lets an English speaker working in China avoid two common traps: (1) the rights-based reflex ('this is my entitlement, here are my days') — read as disrespectful; (2) the over-casual reflex ('hey, taking off Thursday, I'll sort cover') — read as unprofessional.",
     "tip_advice_vi": "(1) Mở đầu KHÔNG nói thẳng '请假'. Bắt đầu bằng '王经理, 我有件私事想向您汇报' hoặc '您现在方便吗? 我想跟您商量一下' — cho sếp không gian chuẩn bị tâm lý. Cụm 商量 (shāngliang — thảo luận) làm nhẹ tone hơn 请示 (qǐngshì — xin chỉ thị); cụm 汇报 (huìbào — báo cáo) hạ vai bạn xuống, nâng sếp lên.\n\n(2) Nói lý do TRƯỚC, yêu cầu SAU. Người Trung Quốc xử lý theo trật tự: bối cảnh → cảm xúc → đề xuất. Nói thẳng 'tôi cần nghỉ 3 tuần' trước khi giải thích lý do sẽ bị coi là transactional, lạnh lùng. Trật tự đúng: '母亲身体出了状况' → '需要我回去陪她' → '想请三到四周事假'.\n\n(3) Khi sếp pushback (gần như chắc chắn sẽ có, ít nhất một lần), đừng phản pháo bằng '我必须'. Dùng '我也很为难, 但是情非得已' (tôi cũng khó xử nhưng bất đắc dĩ) — báo hiệu bạn cũng cảm nhận vấn đề về phía sếp, và mượn cụm 情非得已 để chuyển trách nhiệm sang hoàn cảnh, không phải lựa chọn cá nhân. Sếp sẽ thấy bạn không bướng bỉnh.\n\n(4) Đề xuất luôn cụ thể: tên người tiếp quản, ngày bắt đầu/kết thúc, kế hoạch hỗ trợ từ xa, cách liên lạc khẩn cấp. Sếp Trung Quốc đánh giá cao sự CHỦ ĐỘNG hơn sự tuân lệnh. Đừng chỉ phàn nàn rồi đợi sếp giải quyết — sẽ bị coi là không có năng lực.\n\n(5) Đáp ứng cảm xúc của sếp. Nếu sếp lo lắng về dự án, nói '我理解您的顾虑' (em hiểu mối quan tâm của anh, wǒ lǐjiě nín de gùlǜ). Nếu sếp tỏ ra thông cảm, nói '感谢您的体谅' (cảm ơn anh đã thấu hiểu, gǎnxiè nín de tǐliàng). Lờ đi cảm xúc của sếp = bị coi là không nhạy cảm — một điểm trừ lớn trong văn hóa Trung Quốc.\n\n(6) Câu chốt PHẢI là cảm ơn — không phải '好的, 那就这样' (OK, vậy quyết định thế) mà là '非常感谢您的支持, 我会做好交接' (rất cảm ơn sự ủng hộ của anh, em sẽ bàn giao tốt). Đóng vòng tròn bằng cảm xúc tích cực.\n\n(7) Mẹo phát âm cuối cho người Việt: 您 (nín, thanh 2 — đi lên) khác 你 (nǐ, thanh 3 — xuống rồi lên). Sai thanh điệu sẽ làm rớt formal register ngay. Tập đọc to '您好' '您看' '您觉得' nhiều lần trước cuộc gặp. Cụm 4 chữ idiom 情非得已 cũng cần luyện thanh điệu (qíng-fēi-dé-yǐ = 2-1-2-3) — đọc sai sẽ bị nghe nhầm hoặc không hiểu.",
+    "tip_advice_en": "(1) Do NOT open by saying 请假 (qǐngjià, 'ask for leave') outright. Start with 王经理，我有件私事想向您汇报 ('Manager Wang, I have a personal matter I'd like to report to you') or 您现在方便吗？我想跟您商量一下 ('do you have a moment? I'd like to discuss something with you') — this gives the boss psychological space to prepare. 商量 (shāngliang, 'discuss together') softens the tone versus 请示 (qǐngshì, 'ask for instruction'); 汇报 (huìbào, 'report upward') lowers your position and raises the boss's.\n\n(2) Reason FIRST, request SECOND. Chinese listeners process in this order: context → feeling → proposal. Stating 'I need three weeks off' before the reason reads as transactional and cold. Correct order: 母亲身体出了状况 → 需要我回去陪她 → 想请三到四周事假.\n\n(3) When the boss pushes back (almost certain, at least once), don't counter with 我必须 ('I have to'). Use 我也很为难，但是情非得已 ('this is hard for me too, but circumstances leave no choice') — it signals you feel the problem from the boss's side as well, and the idiom 情非得已 shifts responsibility onto circumstance rather than personal choice, so you don't read as stubborn.\n\n(4) Always make the proposal concrete: who takes over, start/end dates, the remote-support plan, how to reach you in an emergency. A Chinese boss values INITIATIVE over mere obedience. Don't just present the problem and wait for the boss to solve it — that reads as incompetent.\n\n(5) Respond to the boss's emotions. If the boss worries about the project, say 我理解您的顾虑 ('I understand your concern', wǒ lǐjiě nín de gùlǜ). If the boss is sympathetic, say 感谢您的体谅 ('thank you for your understanding', gǎnxiè nín de tǐliàng). Ignoring the boss's emotion reads as insensitive — a big minus in Chinese culture.\n\n(6) The closing line MUST be thanks — not 好的，那就这样 ('OK, that's settled') but 非常感谢您的支持，我会做好交接 ('thank you very much for your support, I'll handle the handover well'). Close the loop on a positive note.\n\n(7) Pronunciation watch-point: 您 (nín, rising 2nd tone) is not 你 (nǐ, dipping 3rd tone). Getting the tone wrong instantly drops the formal register. Drill 您好 / 您看 / 您觉得 aloud before the meeting. The four-character idiom 情非得已 also needs tone practice (qíng-fēi-dé-yǐ = 2-1-2-3) — a wrong tone here gets you misheard or not understood.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1095,6 +1127,12 @@ export const lessons: ChineseLesson[] = [
           "面试 → miànshì (phỏng vấn — KHÔNG 面谈 miàntán)",
           "职位 → zhíwèi (vị trí — KHÔNG 工作 gōngzuò)",
           "软件 → ruǎnjiàn (mainland; Đài Loan dùng 軟體)"
+        ],
+        "pronunciation_focus_en": [
+          "您好 → nín hǎo (NOT nǐ hǎo in a formal setting)",
+          "面试 → miànshì ('job interview' — NOT 面谈 miàntán)",
+          "职位 → zhíwèi ('position' — NOT 工作 gōngzuò)",
+          "软件 → ruǎnjiàn ('software'; mainland — Taiwan uses 軟體)"
         ]
       },
       {
@@ -1107,6 +1145,12 @@ export const lessons: ChineseLesson[] = [
           "感谢 → gǎnxiè (formal hơn 谢谢 xièxie)",
           "机会 → jīhuì thanh 1-4",
           "这次 → zhè cì (lần này)"
+        ],
+        "pronunciation_focus_en": [
+          "贵公司 → guì gōngsī (formal: 'your esteemed company')",
+          "感谢 → gǎnxiè (more formal than 谢谢 xièxie)",
+          "机会 → jīhuì, tones 1-4",
+          "这次 → zhè cì ('this time')"
         ]
       },
       {
@@ -1119,6 +1163,12 @@ export const lessons: ChineseLesson[] = [
           "实习 → shíxí (thực tập)",
           "之前 → zhīqián (trước đây)",
           "河内 → Hénèi (Hà Nội)"
+        ],
+        "pronunciation_focus_en": [
+          "分公司 → fēn gōngsī ('branch office')",
+          "实习 → shíxí ('to intern')",
+          "之前 → zhīqián ('previously')",
+          "河内 → Hénèi ('Hanoi')"
         ]
       },
       {
@@ -1131,6 +1181,12 @@ export const lessons: ChineseLesson[] = [
           "市场 → shìchǎng (thị trường)",
           "力量 → lìliàng (sức lực)",
           "希望 → xīwàng (hy vọng)"
+        ],
+        "pronunciation_focus_en": [
+          "贡献 → gòngxiàn ('to contribute' — formal)",
+          "市场 → shìchǎng ('market')",
+          "力量 → lìliàng ('strength/effort')",
+          "希望 → xīwàng ('to hope')"
         ]
       },
       {
@@ -1143,6 +1199,12 @@ export const lessons: ChineseLesson[] = [
           "加入 → jiārù (gia nhập)",
           "全力以赴 → quánlì yǐ fù (idiom 4 chữ: dốc toàn lực)",
           "贵公司 → guì gōngsī"
+        ],
+        "pronunciation_focus_en": [
+          "有幸 → yǒu xìng ('to have the honor' — formal)",
+          "加入 → jiārù ('to join')",
+          "全力以赴 → quánlì yǐ fù (4-char idiom: 'to go all out')",
+          "贵公司 → guì gōngsī ('your esteemed company')"
         ]
       }
     ],
@@ -1392,7 +1454,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa phỏng vấn Trung Quốc khác biệt với Việt Nam ở bốn điểm chính: (1) Cấu trúc câu trả lời PHẢI có tổ chức 3 phần (tổng — phân tích — tổng) chứ không phải kể tự nhiên. Nói '我有三点想分享' (em có ba điểm muốn chia sẻ) trước khi liệt kê = ấn tượng tích cực; nói lan man = bị coi là thiếu logic. (2) Tự giới thiệu phải bao gồm: tên, tuổi, quê, học vấn, kinh nghiệm — theo trật tự đó, không đảo. Người Việt thường bỏ tuổi/quê — ở Trung Quốc đây là information cần có. (3) Nói về sếp cũ tuyệt đối tích cực, dù bạn rời vì sếp tệ — 我之前的领导教会了我很多. Nói xấu sếp cũ = tự đóng cửa với mọi sếp tương lai (giới HR Trung Quốc rất nhỏ và liên kết). (4) Trả lời câu hỏi về điểm yếu — phải có thật nhưng không nghiêm trọng, kèm cách bạn đang khắc phục. Mẫu chuẩn: '我有时候过于追求完美, 现在在学习更好地分配时间' (đôi khi em theo đuổi sự hoàn hảo quá mức, giờ em đang học cách phân bổ thời gian tốt hơn).\n\nVề 关系 (guānxi): nếu công ty này có nhân viên Việt Nam khác giới thiệu bạn, đừng giấu — đề cập tự nhiên sẽ tăng độ tin cậy. Trong văn hóa Trung Quốc, 'nội bộ giới thiệu' (内推 nèituī) là kênh tuyển dụng quan trọng nhất, không phải '走后门' (đi cửa sau) như nhiều người Việt lầm tưởng.",
+    "cultural_notes_en": "Chinese interview culture differs from the Western norm on four key points: (1) The answer MUST be organized in a 3-part structure (overview → analysis → wrap-up), not narrated freely. Saying 我有三点想分享 ('I have three points to share') before listing them makes a positive impression; rambling reads as illogical. (2) Self-introduction must include name, age, hometown, education, experience — in that order, not rearranged. Western candidates often omit age and hometown; in China these are expected information. (3) Speak about a former boss in absolutely positive terms, even if you left because the boss was bad — 我之前的领导教会了我很多 ('my previous leader taught me a lot'). Badmouthing a former boss closes the door with every future boss (China's HR circle is small and interconnected). (4) Answering the weakness question — it must be real but not serious, paired with how you're fixing it. Standard template: 我有时候过于追求完美，现在在学习更好地分配时间 ('I sometimes pursue perfection too much; I'm now learning to allocate my time better').\n\nOn 关系 (guānxi): if someone already at the company referred you, don't hide it — mentioning it naturally increases trust. In Chinese culture, an internal referral (内推 nèituī) is the single most important recruiting channel, NOT 走后门 (zǒu hòumén, 'going through the back door') as outsiders often mistake it for — closer to a US 'employee referral,' which is also seen as legitimate, but weighted even more heavily here.",
     "tip_advice_vi": "(1) Đến SỚM 15 phút, không sớm hơn (sếp chưa sẵn sàng tiếp), không muộn (mất điểm tức thì). (2) Trang phục: nam mặc sơ mi cài cúc + quần tây, nữ mặc váy công sở hoặc sơ mi + chân váy/quần. KHÔNG đeo túi xách hàng hiệu lộ liễu — văn hóa làm việc Trung Quốc đại lục đánh giá cao 'low-key'. (3) Bắt tay nhẹ — không quá mạnh kiểu Mỹ. Nữ ứng viên có thể không đưa tay trước; chờ HR chìa tay. (4) Khi HR mời ngồi, nói 谢谢 và ngồi nhẹ nhàng. Đừng tự rót nước cho mình — đợi HR mời. (5) Trả lời câu hỏi: dùng cấu trúc '首先...其次...最后...' (đầu tiên... tiếp theo... cuối cùng...) — sếp Trung Quốc cực thích cấu trúc rõ ràng này. (6) Khi không hiểu câu hỏi, KHÔNG đoán mò. Nói '不好意思, 您能再解释一下吗?' (xin lỗi, anh có thể giải thích lại không?) — chứng tỏ bạn cẩn thận, không phải yếu kém. (7) Cuối phỏng vấn, đứng dậy bắt tay (nếu HR đứng), cúi đầu nhẹ, nói '谢谢您今天的时间, 期待您的好消息'. Gửi email cảm ơn trong 24 giờ tiếp theo bằng tiếng Trung — đây là điểm cộng lớn vì rất ít ứng viên Trung Quốc làm bước này.",
+    "tip_advice_en": "(1) Arrive 15 minutes EARLY — not earlier (the interviewer isn't ready), not late (instant point loss). (2) Dress: men in a buttoned shirt + trousers, women in office wear or shirt + skirt/trousers. Do NOT carry a conspicuous designer bag — mainland Chinese work culture prizes 'low-key.' (3) Shake hands lightly — not the firm American grip. A female candidate may not extend a hand first; wait for the interviewer to offer. (4) When invited to sit, say 谢谢 and sit down gently. Don't pour water for yourself — wait to be offered. (5) Answer questions with the structure 首先…其次…最后… ('first… next… finally…') — Chinese interviewers love this explicit signposting. (6) When you don't understand a question, do NOT guess. Say 不好意思，您能再解释一下吗? ('sorry, could you explain that again?') — it shows care, not weakness. (7) At the end, stand and shake hands (if the interviewer stands), bow your head slightly, and say 谢谢您今天的时间，期待您的好消息. Send a thank-you email in Chinese within 24 hours — a strong plus, since very few candidates do this step.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1453,6 +1517,12 @@ export const lessons: ChineseLesson[] = [
           "各位 → gè wèi (mỗi vị — formal số nhiều)",
           "您们 → nínmen (số nhiều của 您, dùng formal)",
           "老师 → lǎoshī (giáo viên / thầy cô)"
+        ],
+        "pronunciation_focus_en": [
+          "尊敬的 → zūnjìng de ('respected' — formal academic); z is a dry 'dz', not English 'z'",
+          "各位 → gè wèi ('everyone' — formal plural address)",
+          "您们 → nínmen (formal plural of 您)",
+          "老师 → lǎoshī ('teacher')"
         ]
       },
       {
@@ -1465,6 +1535,12 @@ export const lessons: ChineseLesson[] = [
           "硕士 → shuòshì (thạc sĩ)",
           "清华 → Qīnghuá (Thanh Hoa)",
           "项目 → xiàngmù (chương trình; mainland; Đài Loan dùng 專案)"
+        ],
+        "pronunciation_focus_en": [
+          "申请 → shēnqǐng ('to apply')",
+          "硕士 → shuòshì (\"master's degree\")",
+          "清华 → Qīnghuá ('Tsinghua'); tones 1-2, not 1-1",
+          "项目 → xiàngmù ('program'; mainland — Taiwan uses 專案)"
         ]
       },
       {
@@ -1477,6 +1553,12 @@ export const lessons: ChineseLesson[] = [
           "人工智能 → réngōng zhìnéng (AI)",
           "越南语 → Yuènányǔ (tiếng Việt)",
           "应用 → yìngyòng (ứng dụng)"
+        ],
+        "pronunciation_focus_en": [
+          "研究方向 → yánjiū fāngxiàng ('research direction')",
+          "人工智能 → réngōng zhìnéng ('AI')",
+          "越南语 → Yuènányǔ ('Vietnamese language')",
+          "应用 → yìngyòng ('application')"
         ]
       },
       {
@@ -1489,6 +1571,12 @@ export const lessons: ChineseLesson[] = [
           "本国 → běn guó (nước nhà — formal)",
           "科技 → kējì (khoa học công nghệ)",
           "毕业 → bìyè (tốt nghiệp)"
+        ],
+        "pronunciation_focus_en": [
+          "所学 → suǒ xué ('what one has learned' — formal)",
+          "本国 → běn guó ('home country' — formal)",
+          "科技 → kējì ('science and technology')",
+          "毕业 → bìyè ('to graduate')"
         ]
       },
       {
@@ -1501,6 +1589,12 @@ export const lessons: ChineseLesson[] = [
           "厚望 → hòuwàng (kỳ vọng cao — formal)",
           "学习 → xuéxí (học tập)",
           "机会 → jīhuì (cơ hội)"
+        ],
+        "pronunciation_focus_en": [
+          "辜负 → gūfù ('to let down / fail expectations' — formal)",
+          "厚望 → hòuwàng ('high expectations' — formal)",
+          "学习 → xuéxí ('to study')",
+          "机会 → jīhuì ('opportunity')"
         ]
       }
     ],
@@ -1750,7 +1844,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Phỏng vấn CSC khác biệt với phỏng vấn xin việc ở ba điểm cốt lõi: (1) Trọng tâm là 'cam kết về Trung Quốc' và 'đóng góp cho Việt Nam' — KHÔNG phải năng lực cá nhân. Giám khảo CSC là cán bộ ngoại giao + giáo sư, họ đánh giá 'bạn có phải đại sứ tốt cho quan hệ Việt-Trung không'. Câu trả lời quan trọng nhất: 毕业后我会回越南做什么. Nói 'em muốn ở lại Trung Quốc làm việc' = mất học bổng ngay (CSC yêu cầu về nước). (2) Phải biết một thứ về 'Trung Quốc cụ thể' ngoài chương trình học — văn hóa, lịch sử, một thành phố, một tác giả. Cho thấy bạn quan tâm Trung Quốc, không chỉ học bổng. (3) Tuyệt đối tránh đề cập 'tôi không có tiền học' — CSC là quan hệ đối ngoại, không phải từ thiện. Lý do nên là 'cơ hội học tập với các giáo sư hàng đầu', KHÔNG 'không có tiền'.\n\nVề 关系 với giáo sư trước: nếu bạn đã liên lạc email với supervisor tiềm năng và có hồi đáp tích cực, hãy đề cập trong phỏng vấn — '我已经和孙教授通过邮件交流, 他对我的题目很感兴趣' (em đã trao đổi qua email với GS Tôn, ông ấy quan tâm đề tài của em). Đây là điểm cộng lớn.\n\nGiám khảo có thể test khả năng tiếng Trung bằng câu hỏi bất ngờ về tin tức, ẩm thực, lịch sử Trung Quốc. Chuẩn bị trước 5-10 câu trả lời ngắn về văn hóa Trung Quốc bạn yêu thích — '我喜欢苏轼的诗', '我对长城的历史感兴趣'.",
+    "cultural_notes_en": "A CSC (Chinese Government Scholarship) interview differs from a job interview on three core points: (1) The focus is your 'commitment to China' and 'contribution to your home country' — NOT individual ability. CSC panelists are diplomats plus professors; they assess 'will you be a good ambassador for the relationship between China and your country?' The most important answer is 毕业后我会回国做什么 ('what I'll do back home after graduating'). Saying 'I want to stay and work in China' loses the scholarship immediately (CSC requires you to return home). (2) You must know one thing about 'China specifically' beyond your program — a piece of culture, history, a city, an author. It shows you care about China, not just the funding. (3) Absolutely avoid 'I can't afford tuition' — CSC is foreign relations, not charity. The reason should be 'the chance to study with top professors,' NOT 'no money.'\n\nOn 关系 with a prospective supervisor: if you've emailed a potential supervisor and had a positive reply, mention it — 我已经和孙教授通过邮件交流，他对我的题目很感兴趣 ('I've already exchanged emails with Professor Sun; he's interested in my topic'). This is a strong plus.\n\nThe panel may test your Chinese with a surprise question about Chinese news, food, or history. Prepare 5-10 short answers about Chinese culture you genuinely like — 我喜欢苏轼的诗 ('I like Su Shi's poetry'), 我对长城的历史感兴趣 ('I'm interested in the Great Wall's history').",
     "tip_advice_vi": "(1) MẶC chỉnh tề, đứng đắn, không mặc áo in sao Việt Nam (cờ, anh hùng dân tộc) — giám khảo có thể không quen, gây phản ứng ngược. Sơ mi trắng + chân váy đen / quần tây đen là an toàn. (2) Mang theo bản in CV bằng tiếng Trung và tiếng Anh, kẹp file gọn gàng — giám khảo có thể yêu cầu. Bản tiếng Trung dùng tên Hán tự (Trần Thị Mai → 陈氏梅), KHÔNG để pinyin. (3) Mở đầu '尊敬的各位老师, 您们好' kèm cúi đầu nhẹ. Đây là chi tiết nhỏ nhưng tạo ấn tượng formal academic. (4) Khi không biết câu trả lời, KHÔNG bịa. Nói '这个问题我之前没有深入思考过, 但我可以从X的角度尝试回答' (câu này em chưa suy nghĩ sâu, nhưng em có thể thử trả lời từ góc độ X). Sự thật + thử nghiệm > bịa. (5) Câu hỏi 'tại sao Trung Quốc, không phải Mỹ/Anh/Úc' — chuẩn bị KỸ. Trả lời sai là CSC sẽ nghĩ Trung Quốc là 'lựa chọn dự phòng'. Mẫu: '中国在AI领域发展最快, 而且越中文化相近, 我适应得更快'. (6) Sau phỏng vấn, gửi thư cảm ơn bằng tiếng Trung tới ban tổ chức trong 24 giờ — đây là cử chỉ rất ít người Việt làm, gây ấn tượng tốt. (7) Mẹo phát âm: '尊敬的' (zūnjìng de) — z là âm khô như 'tz' không phải 'z' tiếng Anh; '清华' Qīnghuá thanh 1-2 (cao bằng-lên), tránh đọc thanh 1-1 thành tên không đúng.",
+    "tip_advice_en": "(1) Dress neat and conservative; do NOT wear clothing with your national flag or national heroes printed on it — panelists may not recognize it and it can backfire. A white shirt + black skirt / black trousers is safe. (2) Bring printed CVs in both Chinese and English in a tidy folder — the panel may ask. The Chinese version should use a Han-character name, NOT pinyin. (3) Open with 尊敬的各位老师，您们好 plus a slight head-bow. A small detail, but it sets a formal academic impression. (4) When you don't know an answer, do NOT make it up. Say 这个问题我之前没有深入思考过，但我可以从X的角度尝试回答 ('I haven't thought about this in depth, but I can try answering from the angle of X'). Honesty + an attempt beats fabrication. (5) The question 'why China, not the US/UK/Australia?' — prepare CAREFULLY. A weak answer makes CSC think China is your 'backup.' Template: 中国在AI领域发展最快，而且我们文化相近，我适应得更快 ('China is developing fastest in AI, and our cultures are close, so I adapt faster'). (6) After the interview, send a thank-you note in Chinese to the organizers within 24 hours — a gesture very few applicants make, which leaves a good impression. (7) Pronunciation: 尊敬的 (zūnjìng de) — z is a dry 'dz' as in 'kids', not the English voiced 'z'; 清华 Qīnghuá is tones 1-2 (high-level then rising) — flattening it to 1-1 produces the wrong name.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1811,6 +1907,12 @@ export const lessons: ChineseLesson[] = [
           "讨论 → tǎolùn (thảo luận)",
           "选题 → xuǎntí (chọn đề tài)",
           "毕业论文 → bìyè lùnwén (luận văn tốt nghiệp)"
+        ],
+        "pronunciation_focus_en": [
+          "王教授 → Wáng jiàoshòu ('Professor Wang'); title follows the surname",
+          "讨论 → tǎolùn ('to discuss')",
+          "选题 → xuǎntí ('topic selection')",
+          "毕业论文 → bìyè lùnwén ('graduation thesis')"
         ]
       },
       {
@@ -1823,6 +1925,12 @@ export const lessons: ChineseLesson[] = [
           "方向 → fāngxiàng (hướng đi)",
           "意见 → yìjiàn (ý kiến)",
           "目前 → mùqián (hiện tại)"
+        ],
+        "pronunciation_focus_en": [
+          "考虑 → kǎolǜ ('to consider'); ü is round-lipped 'ee'",
+          "方向 → fāngxiàng ('direction')",
+          "意见 → yìjiàn ('opinion')",
+          "目前 → mùqián ('at present')"
         ]
       },
       {
@@ -1835,6 +1943,12 @@ export const lessons: ChineseLesson[] = [
           "机器翻译 → jīqì fānyì (dịch máy)",
           "低资源 → dī zīyuán (ít tài nguyên)",
           "模型 → móxíng (mô hình)"
+        ],
+        "pronunciation_focus_en": [
+          "NLP → kept as the English acronym, said letter by letter",
+          "机器翻译 → jīqì fānyì ('machine translation')",
+          "低资源 → dī zīyuán ('low-resource')",
+          "模型 → móxíng ('model')"
         ]
       },
       {
@@ -1847,6 +1961,12 @@ export const lessons: ChineseLesson[] = [
           "适合 → shìhé (phù hợp)",
           "背景 → bèijǐng (nền tảng)",
           "您觉得 → nín juéde"
+        ],
+        "pronunciation_focus_en": [
+          "研究价值 → yánjiū jiàzhí ('research value')",
+          "适合 → shìhé ('to suit/fit')",
+          "背景 → bèijǐng ('background')",
+          "您觉得 → nín juéde ('what you think' — formal 'you')"
         ]
       },
       {
@@ -1859,6 +1979,12 @@ export const lessons: ChineseLesson[] = [
           "缩小范围 → suōxiǎo fànwéi (thu hẹp phạm vi)",
           "开题报告 → kāití bàogào (đề cương / proposal)",
           "进一步 → jìnyībù (đi thêm bước nữa)"
+        ],
+        "pronunciation_focus_en": [
+          "建议 → jiànyì ('suggestion/recommendation')",
+          "缩小范围 → suōxiǎo fànwéi ('to narrow the scope')",
+          "开题报告 → kāití bàogào ('thesis proposal')",
+          "进一步 → jìnyībù ('a step further')"
         ]
       }
     ],
@@ -2108,7 +2234,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Quan hệ giáo sư-học trò ở Trung Quốc đặc biệt hơn ở Việt Nam — không chỉ là quan hệ học thuật mà gần như quan hệ 'sư phụ-đệ tử'. Bốn nguyên tắc cốt lõi: (1) Giáo sư sẽ theo dõi bạn ngay cả sau khi tốt nghiệp — viết thư giới thiệu, kết nối công việc, mời về hội thảo. Vì vậy đầu tư vào quan hệ này = đầu tư dài hạn. (2) KHÔNG đổi giáo sư hướng dẫn giữa chừng trừ khi cực kỳ nghiêm trọng — bị coi là 'phản bội' (背叛 bèipàn). Nếu thực sự không hợp, phải làm qua trưởng khoa, không tự đi tìm thầy khác. (3) Thầy có thể yêu cầu bạn phụ việc cá nhân (mua sách, đặt vé hội thảo) — đây không phải lạm dụng mà là cách kiểm tra 'người có biết điều không'. Hợp tác = được dạy nhiều hơn. Từ chối thẳng = mất cơ hội. (4) Quà tặng đầu năm/tết Trung Thu — không bắt buộc nhưng được đánh giá cao. Quà nhỏ từ Việt Nam (cà phê, lụa) = lý tưởng. Đắt tiền = phản tác dụng (bị nghi hối lộ).\n\nVề thesis: chủ đề nghiên cứu thường là 'nửa của thầy, nửa của trò'. Thầy gợi ý hướng lớn (vì nó liên quan đến project quốc gia / quỹ nghiên cứu của thầy), bạn cụ thể hóa. Đừng đến cuộc gặp đầu với 'em đã quyết tâm làm X' — cứng quá. Nói 'em đang cân nhắc 3 hướng, muốn nghe thầy' = thầy có không gian định hình.\n\nNếu thesis của bạn tham gia project quốc gia của thầy, dữ liệu/code có thể cần ký NDA — KHÔNG được đăng GitHub public. Hỏi rõ trước khi làm, đừng giả định standard quốc tế.",
+    "cultural_notes_en": "The professor-student relationship in China runs deeper than the Western academic norm — it is less a contractual advising arrangement and closer to a 师徒 (shītú, master-disciple) bond. Four core principles: (1) The professor stays involved even after you graduate — recommendation letters, job connections, conference invitations. Investing in this relationship is a long-term investment, not a transaction that ends at the defense. (2) Do NOT switch advisors midway unless the situation is extremely serious — it is read as 背叛 (bèipàn, betrayal). If you are genuinely incompatible, go through the department head; never go shopping for another professor yourself. (3) The advisor may ask you to help with personal-ish tasks (sourcing books, booking conference travel) — this is not abuse but a quiet test of whether you 懂事 (dǒngshì, 'understand how things work'). Cooperating earns you more mentoring; a flat Western-style 'that's not in my job description' refusal closes doors. (4) Lunar New Year / Mid-Autumn gifts are not mandatory but are noticed and valued. A small gift from home is ideal; anything expensive backfires (it reads as a bribe).\n\nOn the thesis itself: the topic is usually 'half the professor's, half yours.' The advisor suggests the big direction (it ties to their national project or research fund); you make it concrete. Do NOT arrive at the first meeting with 'I've decided to do X' — too rigid. 'I'm weighing three directions and would like your view' gives the advisor room to shape it, which is what is expected. This is the reverse of the American instinct to come in with a strong independent thesis and defend it.\n\nIf your thesis feeds the professor's national project, data and code may require an NDA — do NOT post to a public GitHub. Ask explicitly before you act; don't assume international open-source norms apply.",
     "tip_advice_vi": "(1) Hẹn gặp giáo sư qua email TRANG TRỌNG, không qua WeChat trừ khi thầy đã cho phép. Tiêu đề: '关于毕业论文选题的请教 — 学生陈氏梅' (về việc xin thỉnh giáo đề tài luận văn — sinh viên Trần Thị Mai). (2) Đến đúng giờ — nếu trễ phút nào, gửi tin nhắn xin lỗi ngay. Đến SỚM 5-10 phút, đợi trước văn phòng. (3) Mang theo vở ghi chép VÀ thiết bị ghi âm (xin phép trước nếu dùng). Thầy nói nhanh, có nhiều cụm chuyên môn — không kịp ghi sẽ mất thông tin. (4) Đầu cuộc gặp, mở bằng câu cảm ơn cụ thể: '感谢您上次给我的反馈, 我已经按照您的建议修改了' (cảm ơn phản hồi lần trước của thầy, em đã sửa theo gợi ý). Đừng vào thẳng vấn đề mới — thầy sẽ cảm thấy mình chỉ là công cụ. (5) Khi không hiểu, KHÔNG gật đầu giả vờ. Hỏi '不好意思, 您能再说一遍吗?' hoặc '让我确认一下我的理解'. Giáo sư Trung Quốc tôn trọng sinh viên hỏi lại hơn là sinh viên giả vờ hiểu rồi sai. (6) Cuối cuộc gặp, tóm tắt 3 việc cần làm tiếp: '我接下来会做ABC, 下周X前向您汇报'. Đây là dấu hiệu chuyên nghiệp đặc biệt mạnh. (7) Sau cuộc gặp, gửi email tóm tắt trong 24h: nội dung thảo luận, action items, deadline. Tiêu đề '与王教授会议纪要 — DD/MM' — đây là chuẩn academic Trung Quốc.",
+    "tip_advice_en": "(1) Request the meeting by a FORMAL email, not WeChat unless the professor has invited it. Subject line: 关于毕业论文选题的请教 — 学生陈氏梅 ('seeking guidance on thesis topic — student [name]'). (2) Be on time — if you're even a minute late, message an apology immediately. Arrive 5-10 minutes early and wait outside the office. (3) Bring a notebook AND a recorder (ask permission first if you'll record). Professors speak fast with dense jargon; if you can't keep up you lose information. (4) Open with a specific thank-you: 感谢您上次给我的反馈，我已经按照您的建议修改了 ('thank you for last time's feedback; I've revised per your suggestions'). Don't dive straight into the new problem — that makes the advisor feel used as a tool. (5) When you don't understand, do NOT fake-nod. Ask 不好意思，您能再说一遍吗? or 让我确认一下我的理解. Chinese professors respect a student who re-asks over one who pretends and gets it wrong. (6) Close by summarizing three next actions: 我接下来会做ABC，下周X前向您汇报. This is an especially strong professionalism signal. (7) After, send a summary email within 24h: discussion points, action items, deadlines. Subject 与王教授会议纪要 — DD/MM — this is the Chinese academic standard.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2169,6 +2297,12 @@ export const lessons: ChineseLesson[] = [
           "机会 → jīhuì",
           "经理 → jīnglǐ",
           "谢谢 → xièxie (rút gọn của 谢谢您)"
+        ],
+        "pronunciation_focus_en": [
+          "李经理 → Lǐ jīnglǐ ('Manager Li')",
+          "实习 → shíxí ('internship')",
+          "机会 → jīhuì ('opportunity')",
+          "谢谢 → xièxie (clipped from 谢谢您)"
         ]
       },
       {
@@ -2181,6 +2315,12 @@ export const lessons: ChineseLesson[] = [
           "具体 → jùtǐ (cụ thể)",
           "安排 → ānpái (sắp xếp)",
           "实习 → shíxí"
+        ],
+        "pronunciation_focus_en": [
+          "讨论 → tǎolùn ('to discuss')",
+          "具体 → jùtǐ ('specific/concrete')",
+          "安排 → ānpái ('arrangement')",
+          "实习 → shíxí ('internship')"
         ]
       },
       {
@@ -2193,6 +2333,12 @@ export const lessons: ChineseLesson[] = [
           "项目 → xiàngmù (dự án)",
           "辅助 → fǔzhù (phụ trợ)",
           "希望 → xīwàng"
+        ],
+        "pronunciation_focus_en": [
+          "参与 → cānyù ('to participate in')",
+          "项目 → xiàngmù ('project')",
+          "辅助 → fǔzhù ('auxiliary/support')",
+          "希望 → xīwàng ('to hope')"
         ]
       },
       {
@@ -2205,6 +2351,12 @@ export const lessons: ChineseLesson[] = [
           "标准 → biāozhǔn (tiêu chuẩn)",
           "贵公司 → guì gōngsī (formal)",
           "关于 → guānyú (về)"
+        ],
+        "pronunciation_focus_en": [
+          "津贴 → jīntiē ('stipend/allowance')",
+          "标准 → biāozhǔn ('standard')",
+          "贵公司 → guì gōngsī ('your esteemed company' — formal)",
+          "关于 → guānyú ('regarding')"
         ]
       },
       {
@@ -2217,6 +2369,12 @@ export const lessons: ChineseLesson[] = [
           "交代 → jiāodài (giao phó)",
           "任务 → rènwù (nhiệm vụ)",
           "做到最好 → zuò dào zuì hǎo"
+        ],
+        "pronunciation_focus_en": [
+          "量力而行 → liànglì ér xíng (4-char idiom: 'act within your capacity')",
+          "交代 → jiāodài ('to assign/entrust')",
+          "任务 → rènwù ('task')",
+          "做到最好 → zuò dào zuì hǎo ('do it as well as possible')"
         ]
       }
     ],
@@ -2459,7 +2617,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa thực tập Trung Quốc đại lục đặc biệt khác biệt với Việt Nam ở bốn điểm: (1) Thực tập KHÔNG phải là 'học việc miễn phí' như nhiều người Việt nghĩ — phụ cấp 150-300 tệ/ngày là chuẩn, có hợp đồng chính thức, đóng bảo hiểm xã hội (一般实习生险 yībān shíxíshēng xiǎn). KHÔNG ký hợp đồng = công ty 'đen', tránh xa. (2) Thực tập sinh được kỳ vọng làm việc THẬT, không chỉ photocopy/pha trà. Nhưng cũng KHÔNG được phép sai sót lớn — khác Mỹ (nơi 'fail fast' OK), Trung Quốc kỳ vọng thực tập sinh chăm chỉ + ít sai. (3) Mối quan hệ với 'mentor' (đồng nghiệp được phân để hướng dẫn bạn) cực quan trọng — đây là người sẽ viết đánh giá cuối kỳ và quyết định 转正 (chuyển chính thức). Tặng quà cuối kỳ (không bắt buộc nhưng được đánh giá cao): cà phê Việt Nam, bánh kẹo, vật kỷ niệm — tránh đắt tiền. (4) 'Nhậu' (聚餐 jùcān) team là cơ hội xây dựng quan hệ — đừng từ chối hết. Nếu không uống rượu được, nói 'đang dùng thuốc' (在吃药) — không bị hỏi thêm. Người không đi 聚餐 = bị coi là 'không hòa nhập' và mất cơ hội 转正.\n\nVề 转正: tỉ lệ chuyển từ thực tập sang chính thức ở các công ty Trung Quốc lớn (Tencent, Alibaba, ByteDance) khoảng 30-50%. Yếu tố quyết định: (a) đánh giá của mentor; (b) đóng góp cụ thể cho project; (c) thái độ làm việc (khiêm tốn, chủ động, ít than vãn); (d) quan hệ với team — không phải chỉ kỹ năng. Sinh viên Việt Nam thường giỏi (a) và (c) nhưng yếu (d) — đầu tư vào quan hệ team từ đầu.\n\nThời gian thực tập tiêu chuẩn: 6 tháng cho mainland (3 tháng coi là 'quá ngắn', không đủ thấy biểu hiện). Nếu chỉ có 3 tháng do lịch học, đề xuất split (3 hè + 3 đông) hoặc 'remote part-time' giai đoạn giữa.",
+    "cultural_notes_en": "Mainland Chinese internship culture differs from the Western intern stereotype on four points: (1) An internship is NOT unpaid 'free apprenticeship' — a 150-300 RMB/day stipend is standard, with a formal contract and basic insurance (一般实习生险). No contract = a shady company; walk away. (2) Interns are expected to do REAL work, not just photocopying and coffee — but big mistakes are also not tolerated. Unlike the US 'fail fast, that's how you learn' ethos, China expects an intern to be diligent AND low-error. (3) The relationship with your assigned mentor is decisive — that person writes the final evaluation and effectively decides 转正 (zhuǎnzhèng, conversion to full-time). An end-of-term gift is not mandatory but valued: a small keepsake, sweets — never expensive. (4) Team meals (聚餐 jùcān) are relationship-building, not optional socializing — don't decline them all. If you can't drink, 在吃药 ('I'm on medication') closes the topic with no follow-up. Someone who skips every 聚餐 is read as 'not fitting in' and quietly loses 转正 odds.\n\nOn 转正: conversion from intern to full-time at big firms (Tencent, Alibaba, ByteDance) runs ~30-50%. It is decided by (a) the mentor's evaluation; (b) concrete project contribution; (c) attitude (humble, proactive, low-complaint); (d) team relationships — not skill alone. The common English-speaker trap is to nail (a) and (c) — diligence and competence are familiar virtues — while underinvesting in (d), treating team bonding as optional. Invest in the team from day one.\n\nStandard internship length is 6 months on the mainland (3 months reads as 'too short' to show your real pattern). If you only have 3 months because of a school calendar, propose a split (3 summer + 3 winter) or remote part-time in between.",
     "tip_advice_vi": "(1) Khi nhận offer thực tập, KHÔNG vội ký ngay. Yêu cầu hợp đồng văn bản (实习协议 shíxí xiéyì), đọc kỹ 6 mục: thời lượng, giờ làm, phụ cấp, công việc cụ thể, bảo hiểm, điều khoản chấm dứt. Nếu thiếu mục nào = công ty không chuyên nghiệp, cẩn thận. (2) Tuần đầu đến công ty SỚM 30 phút, làm quen với mọi người, ghi nhớ tên + chức vụ. Sếp Trung Quốc đặc biệt nhớ thực tập sinh chào hỏi đầy đủ. (3) KHÔNG mang đồ ăn nặng mùi (pho gà, mắm tôm) lên văn phòng — văn phòng Trung Quốc thường không có khu ăn riêng, mùi sẽ gây phản cảm. (4) Khi mentor giao việc, LUÔN tóm tắt lại để xác nhận: '我理解一下, 您是想让我做ABC, 截止时间是X, 对吗?'. Bước này cứu bạn khỏi 80% lỗi. (5) Khi sai, KHÔNG che giấu. Nói '我做错了, 现在的情况是X, 我想到的解决方案是Y, 您看可以吗?' — chuyển từ 'tôi sai' sang 'tôi đã có giải pháp'. Manager Trung Quốc đánh giá rất cao. (6) Cuối tuần, gửi email tóm tắt cho mentor: việc đã làm + việc tuần sau + câu hỏi cần hỗ trợ. Đây là 周报 (zhōubào — báo cáo tuần), chuẩn mực ở các công ty Trung Quốc lớn. (7) Nếu được chuyển chính thức, đừng vội đồng ý. Hỏi rõ vị trí, lương, lộ trình thăng tiến. Manager mong bạn 'chín chắn', không 'mê mẩn ngay'.",
+    "tip_advice_en": "(1) When you get the offer, do NOT sign on the spot. Ask for a written agreement (实习协议 shíxí xiéyì) and read six clauses: duration, hours, stipend, specific duties, insurance, termination terms. A missing clause means an unprofessional company — be careful. (2) The first week, arrive 30 minutes early, learn everyone's names and titles. Chinese managers especially notice an intern who greets people properly. (3) Don't bring strong-smelling food to the office — Chinese offices often have no separate eating area and the smell creates a bad impression. (4) When the mentor assigns work, ALWAYS read it back to confirm: 我理解一下，您是想让我做ABC，截止时间是X，对吗?. This step prevents 80% of errors. (5) When you make a mistake, do NOT hide it. Say 我做错了，现在的情况是X，我想到的解决方案是Y，您看可以吗? — moving from 'I failed' to 'I already have a fix.' Chinese managers rate this very highly. (6) Each Friday, email the mentor a summary: what you did + next week's plan + questions needing help. This is the 周报 (zhōubào, weekly report), standard at big Chinese firms. (7) If offered conversion, don't instantly accept. Ask about the role, salary, and promotion path. Managers want you 'measured,' not 'instantly smitten.'",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2520,6 +2680,12 @@ export const lessons: ChineseLesson[] = [
           "留学办公室 → liúxué bàngōngshì (văn phòng du học)",
           "您好 → nín hǎo",
           "老师 → lǎoshī (gọi chung cho cán bộ trường)"
+        ],
+        "pronunciation_focus_en": [
+          "尊敬的 → zūnjìng de ('respected' — formal opener); z is a dry 'dz'",
+          "留学办公室 → liúxué bàngōngshì ('study-abroad office')",
+          "您好 → nín hǎo (formal 'hello')",
+          "老师 → lǎoshī ('teacher' — used for any staff member)"
         ]
       },
       {
@@ -2532,6 +2698,12 @@ export const lessons: ChineseLesson[] = [
           "录取 → lùqǔ (tuyển nhận)",
           "越南籍 → Yuènán jí (quốc tịch Việt Nam)",
           "硕士新生 → shuòshì xīnshēng"
+        ],
+        "pronunciation_focus_en": [
+          "贵校 → guì xiào ('your esteemed school' — formal)",
+          "录取 → lùqǔ ('to admit/accept')",
+          "越南籍 → Yuènán jí ('of Vietnamese nationality')",
+          "硕士新生 → shuòshì xīnshēng ('new master's student')"
         ]
       },
       {
@@ -2544,6 +2716,12 @@ export const lessons: ChineseLesson[] = [
           "签证 → qiānzhèng (visa)",
           "X1 → loại visa du học dài hạn",
           "流程 → liúchéng (quy trình)"
+        ],
+        "pronunciation_focus_en": [
+          "咨询 → zīxún ('to inquire/consult')",
+          "签证 → qiānzhèng ('visa')",
+          "X1 → the long-term study visa type, said as English 'X-one'",
+          "流程 → liúchéng ('procedure/process')"
         ]
       },
       {
@@ -2556,6 +2734,12 @@ export const lessons: ChineseLesson[] = [
           "录取通知书 → lùqǔ tōngzhīshū (giấy báo nhập học)",
           "纸质版 → zhǐzhì bǎn (bản giấy)",
           "目前 → mùqián"
+        ],
+        "pronunciation_focus_en": [
+          "JW202表 → 'JW-202 form', a key visa document; say the letters/numbers in English",
+          "录取通知书 → lùqǔ tōngzhīshū ('admission letter')",
+          "纸质版 → zhǐzhì bǎn ('paper version')",
+          "目前 → mùqián ('at present')"
         ]
       },
       {
@@ -2568,6 +2752,12 @@ export const lessons: ChineseLesson[] = [
           "不胜感激 → bù shèng gǎnjī (vô cùng biết ơn — formal email closer)",
           "请问 → qǐng wèn (cho phép em hỏi)",
           "什么时候 → shénme shíhou"
+        ],
+        "pronunciation_focus_en": [
+          "大约 → dàyuē ('approximately')",
+          "不胜感激 → bù shèng gǎnjī ('greatly appreciated' — a formal email closer)",
+          "请问 → qǐng wèn ('may I ask')",
+          "什么时候 → shénme shíhou ('when')"
         ]
       }
     ],
@@ -2810,7 +3000,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn phòng du học (留学办公室 / 国际处) ở các đại học Trung Quốc có tốc độ phản hồi rất khác nhau: trường top (Bắc Đại, Thanh Hoa, Phúc Đán) phản hồi 1-3 ngày; trường địa phương 5-10 ngày. KHÔNG nên gửi email follow-up sớm hơn 5 ngày — bị coi là thiếu kiên nhẫn. Sau 7 ngày không phản hồi, gửi email follow-up nhẹ nhàng kèm tham chiếu email đầu.\n\nThời gian xử lý JW202: 2-4 tuần kể từ khi nhận hồ sơ điện tử. Nếu chưa đến trong 4 tuần, có khả năng (a) hồ sơ thiếu mục, (b) thông tin sai, (c) bưu điện. Hỏi văn phòng để có mã tracking.\n\nVề visa X1 vs X2: X1 cho học trên 6 tháng (du học chính thức), X2 cho học dưới 6 tháng (đoạn ngắn). KHÔNG nhầm — sai loại visa = bị từ chối nhập cảnh.\n\nKhám sức khỏe: phải làm ở bệnh viện được Bộ Y tế Việt Nam và Đại sứ quán Trung Quốc cùng công nhận. Tại Hà Nội: Bệnh viện Trung ương Quân đội 108, Bệnh viện E. Tại HCMC: Bệnh viện Chợ Rẫy, Bệnh viện Đại học Y Dược. Làm ở bệnh viện ngoài danh sách = kết quả bị từ chối, phải làm lại.\n\nKhi đến Trung Quốc, trong 30 ngày phải làm 'tạm trú' (临时居留 línshí jūliú) tại sở cảnh sát. Không làm = bị phạt 500-2000 tệ + có ghi vào hồ sơ. Văn phòng du học sẽ hướng dẫn nhưng bạn phải tự nhớ deadline.",
+    "cultural_notes_en": "A university study-abroad office (留学办公室 / 国际处) replies at very different speeds: top schools (Peking, Tsinghua, Fudan) in 1-3 days; local universities in 5-10. Don't send a follow-up sooner than 5 days — it reads as impatient. After 7 days of silence, send a gentle follow-up that references your first email.\n\nJW202 processing: 2-4 weeks from the e-receipt of your documents. If it hasn't arrived in 4 weeks, likely causes are (a) a missing item, (b) wrong information, or (c) the post; ask the office for a tracking number.\n\nX1 vs X2 visa: X1 is for study over 6 months (full degree study); X2 is for under 6 months (short programs). Do NOT confuse them — the wrong visa type means refused entry.\n\nThe medical check must be done at a hospital jointly recognized by your home country's health ministry and the Chinese embassy (the approved-hospital list is country-specific — confirm it for your country before booking). Using an off-list hospital means the results are rejected and you redo the whole exam.\n\nWithin 30 days of arriving in China you must register temporary residence (临时居留 línshí jūliú) at the local police station. Failure = a 500-2000 RMB fine plus a record on file. The study-abroad office will guide you, but the deadline is yours to remember.",
     "tip_advice_vi": "(1) MỌI email gửi văn phòng du học PHẢI có mã sinh viên/số đơn ở tiêu đề. Email không có mã = bị bỏ qua hoặc trả lời lệch nội dung. Chèn mã ngay sau chủ đề: '关于JW202表咨询 — QH202509-1234'. (2) Mỗi email chỉ hỏi 1 chủ đề. Nhồi 5 câu hỏi vào 1 email = nhân viên trả lời câu dễ trước, câu khó bỏ sót, bạn phải hỏi lại. Hỏi về visa = email A; hỏi về ký túc = email B. (3) ĐÍNH KÈM tài liệu liên quan (PDF của giấy báo nhập học, ảnh hộ chiếu) khi cần thiết — đừng để nhân viên phải tự tra. Tệp đặt tên rõ: 'TranThiMai_Passport_QH202509-1234.pdf'. (4) Định dạng email: font Arial/SimSun 12pt, line spacing 1.5, đoạn cách dòng. KHÔNG dùng emoji. KHÔNG viết hoa toàn bộ. Email lộn xộn = ấn tượng xấu. (5) Câu kết: 'XX 敬上' (XX kính trình) + dòng riêng cho chữ ký gồm tên + mã sinh viên + số điện thoại + email. Đây là chữ ký chuẩn academic Trung Quốc. (6) Nếu phải gửi email khẩn (visa sắp hết, hồ sơ thiếu), tiêu đề bắt đầu bằng '【紧急】' (jǐnjí — khẩn cấp). Lạm dụng = mất tác dụng; chỉ dùng khi thực sự khẩn. (7) Sau khi nhận phản hồi, gửi email cảm ơn ngắn gọn trong 24h: '谢谢您的解答, 我已经按照您的指导办理。如有疑问会再联系您'. Bước này tạo ấn tượng chuyên nghiệp và mở đường cho lần liên hệ tiếp theo.",
+    "tip_advice_en": "(1) EVERY email to the study-abroad office must carry your student/application ID in the subject. No ID = ignored or answered off-target. Put it right after the topic: 关于JW202表咨询 — QH202509-1234. (2) One topic per email. Cramming five questions in one email means the staffer answers the easy one and drops the hard ones, and you have to re-ask. Visa = email A; dorm = email B. (3) ATTACH the relevant documents (PDF of the admission letter, passport photo) when relevant — don't make staff dig. Name files clearly: 'Name_Passport_QH202509-1234.pdf'. (4) Email formatting: a readable serif/sans font 12pt, 1.5 line spacing, blank line between paragraphs. NO emoji, NO all-caps. A messy email makes a bad impression. (5) Closing line: XX 敬上 ('respectfully submitted by XX') plus a separate signature block with name + student ID + phone + email. This is the Chinese academic standard signature. (6) For a genuinely urgent email (visa expiring, missing document), start the subject with 【紧急】 (jǐnjí, urgent). Overuse kills its effect — use it only when truly urgent. (7) After you get a reply, send a short thank-you within 24h: 谢谢您的解答，我已经按照您的指导办理。如有疑问会再联系您. This builds a professional impression and smooths the next contact.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2871,6 +3063,12 @@ export const lessons: ChineseLesson[] = [
           "方便 → fāngbiàn (tiện)",
           "面试 → miànshì",
           "现在 → xiànzài"
+        ],
+        "pronunciation_focus_en": [
+          "应聘者 → yìngpìnzhě ('applicant' — formal)",
+          "方便 → fāngbiàn ('convenient')",
+          "面试 → miànshì ('interview')",
+          "现在 → xiànzài ('now')"
         ]
       },
       {
@@ -2883,6 +3081,12 @@ export const lessons: ChineseLesson[] = [
           "稳定 → wěndìng (ổn định)",
           "断开 → duànkāi (ngắt)",
           "回拨 → huíbō (gọi lại)"
+        ],
+        "pronunciation_focus_en": [
+          "信号 → xìnhào ('signal')",
+          "稳定 → wěndìng ('stable')",
+          "断开 → duànkāi ('to disconnect')",
+          "回拨 → huíbō ('to call back')"
         ]
       },
       {
@@ -2895,6 +3099,12 @@ export const lessons: ChineseLesson[] = [
           "大声 → dàshēng (to tiếng)",
           "清楚 → qīngchu (rõ ràng)",
           "听得 → tīng de"
+        ],
+        "pronunciation_focus_en": [
+          "稍微 → shāowēi ('slightly')",
+          "大声 → dàshēng ('loud')",
+          "清楚 → qīngchu ('clear'); 2nd syllable neutral",
+          "听得 → tīng de ('able to hear')"
         ]
       },
       {
@@ -2907,6 +3117,12 @@ export const lessons: ChineseLesson[] = [
           "确认 → quèrèn (xác nhận)",
           "理解 → lǐjiě (cách hiểu)",
           "那一点 → nà yī diǎn (điểm đó)"
+        ],
+        "pronunciation_focus_en": [
+          "刚才 → gāngcái ('just now')",
+          "确认 → quèrèn ('to confirm')",
+          "理解 → lǐjiě ('understanding')",
+          "那一点 → nà yī diǎn ('that point')"
         ]
       },
       {
@@ -2919,6 +3135,12 @@ export const lessons: ChineseLesson[] = [
           "期待 → qídài (mong chờ)",
           "好消息 → hǎo xiāoxi (tin tốt)",
           "今天 → jīntiān"
+        ],
+        "pronunciation_focus_en": [
+          "感谢 → gǎnxiè (more formal than 谢谢)",
+          "期待 → qídài ('to look forward to')",
+          "好消息 → hǎo xiāoxi ('good news')",
+          "今天 → jīntiān ('today')"
         ]
       }
     ],
@@ -3168,7 +3390,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Phỏng vấn điện thoại quốc tế (Việt Nam ↔ Trung Quốc) có những đặc thù mà phỏng vấn trực tiếp không có: (1) Múi giờ — Trung Quốc UTC+8, Việt Nam UTC+7, chênh lệch 1 giờ. KHÔNG nhầm: nếu HR ở Bắc Kinh đề xuất '下午三点' (3 giờ chiều) = 14:00 giờ Việt Nam. Hỏi rõ múi giờ trong email xác nhận. (2) Ngôn ngữ: HR có thể chuyển sang tiếng Anh nếu thấy bạn yếu tiếng Trung — đừng coi đó là tích cực. Họ đang thử bạn. Cố giữ tiếng Trung đến cuối; nếu thực sự không hiểu, nói '能用中文换一种说法吗?' (có thể nói bằng tiếng Trung theo cách khác không). (3) Wechat call vs điện thoại quốc tế: phần lớn HR Trung Quốc thích Wechat hơn vì rẻ và quen thuộc. Cài Wechat trước, kết bạn với HR vài ngày trước phỏng vấn để test signal. Nếu HR muốn gọi điện thoại quốc tế, không sao, nhưng tự xác nhận chi phí roaming. (4) Ghi âm: ở Trung Quốc, ghi âm cuộc gọi phỏng vấn KHÔNG được phép trừ khi cả hai bên đồng ý. Đừng tự ghi để 'review sau'. Nếu cần ghi nhớ, ghi chép tay trong khi nói.\n\nTâm lý qua điện thoại: HR Trung Quốc đánh giá ứng viên qua giọng nói cao hơn 30%. Giọng tự tin (đứng nói), giọng cười nhẹ trước câu trả lời, giọng nhanh nhưng rõ = ấn tượng tốt. Giọng lí nhí, ngập ngừng, dài dòng = ấn tượng xấu. Tập đứng trước gương phỏng vấn 30 phút trước cuộc gọi thật.\n\nVề follow-up: gửi email cảm ơn trong 24 giờ bằng tiếng Trung. Đính kèm portfolio/code samples nếu chưa gửi. Đây là điểm cộng đặc biệt vì ít ứng viên Việt Nam làm bước này.",
+    "cultural_notes_en": "An international phone interview (your country ↔ China) has traits an in-person interview doesn't: (1) Time zones — China is UTC+8. Confirm the time zone explicitly in the confirmation email: if Beijing HR proposes 下午三点 (3 PM), clarify it's Beijing time and convert to your own — a missed conversion means missing the call. (2) Language: HR may switch to English if they sense weak Chinese — do NOT read that as a good sign; it's a test. Stay in Chinese as long as you can; if truly stuck, say 能用中文换一种说法吗? ('could you rephrase that in Chinese?'). (3) WeChat call vs international call: most Chinese HR prefer WeChat (cheap, familiar). Install it and add HR a few days early to test the signal. If they want a regular international call, fine, but check your own roaming cost. (4) Recording: in China, recording an interview call is NOT allowed unless both sides agree. Don't secretly record 'to review later' — take handwritten notes while talking.\n\nVoice psychology: on the phone Chinese HR weight the voice ~30% more than in person. A confident voice (stand while speaking), a light smile before answering, fast but clear delivery = good impression. Mumbling, hesitation, rambling = bad. Practice standing and answering in a mirror 30 minutes before the real call.\n\nFollow-up: send a thank-you email in Chinese within 24 hours, attaching a portfolio/code samples if not yet sent — a strong differentiator, since few candidates do this step.",
     "tip_advice_vi": "(1) TEST setup 24 giờ trước: gọi thử bạn bè qua chính kênh sẽ dùng (WeChat call / Skype / Zoom), kiểm tra micro, headset, mạng. KHÔNG dùng wifi nhà cafe — phải mạng nhà cá nhân hoặc 4G ổn định. (2) Chuẩn bị 'crash kit': số WeChat của HR, email backup, số hotline lễ tân công ty (phòng khi mất tín hiệu). Nếu cuộc gọi rớt mà không liên lạc lại được = mất phỏng vấn. (3) Ngồi/đứng ở phòng yên tĩnh, đóng cửa, treo bảng 'không làm phiền' nếu sống chung. Tiếng trẻ con/chó sủa qua điện thoại = ứng viên không chuyên nghiệp. (4) Trước phỏng vấn 5 phút, uống nước ấm (giọng rõ hơn), KHÔNG cà phê (làm khô họng), KHÔNG sữa (làm nhầy họng). (5) Đặt CV, JD, ghi chú trên bàn — NHƯNG đừng đọc thuộc; HR sẽ nghe ra. Dùng làm tham chiếu khi cần. (6) Khi không hiểu một từ chuyên môn của HR, KHÔNG đoán. Hỏi '不好意思, 您说的XX是指...?' — chứng tỏ bạn cẩn thận. (7) Sau khi cúp máy, KHÔNG đăng status mạng xã hội ('vừa phỏng vấn xong căng quá') — HR Trung Quốc kiểm tra Linkedin/Facebook ứng viên trước khi quyết định.",
+    "tip_advice_en": "(1) TEST the setup 24h ahead: call a friend over the exact channel you'll use (WeChat call / Skype / Zoom), check mic, headset, network. NO cafe wifi — use your own home network or stable 4G. (2) Prepare a 'crash kit': HR's WeChat, a backup email, the company reception hotline (in case the line drops). A dropped call you can't re-establish = a lost interview. (3) Sit/stand in a quiet room, door closed, a 'do not disturb' note if you share space. Children or a barking dog over the phone reads as unprofessional. (4) Five minutes before, drink warm water (clearer voice), NOT coffee (dries the throat), NOT milk (coats the throat). (5) Put your CV, the JD, and notes on the desk — but don't read off them; HR will hear it. Use them only as reference. (6) When you don't know a technical term HR uses, do NOT guess. Ask 不好意思，您说的XX是指…? — it shows care. (7) After hanging up, do NOT post a social-media status ('just finished a brutal interview') — Chinese HR check candidates' LinkedIn/Facebook before deciding.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -3229,6 +3453,12 @@ export const lessons: ChineseLesson[] = [
           "市场 → shìchǎng (thị trường)",
           "胡志明市 → Húzhìmíng shì",
           "您好 → nín hǎo"
+        ],
+        "pronunciation_focus_en": [
+          "负责 → fùzé ('to be in charge of')",
+          "市场 → shìchǎng ('market')",
+          "胡志明市 → Húzhìmíng shì ('Ho Chi Minh City')",
+          "您好 → nín hǎo (formal 'hello')"
         ]
       },
       {
@@ -3241,6 +3471,12 @@ export const lessons: ChineseLesson[] = [
           "认识 → rènshi (làm quen)",
           "感到 → gǎndào (cảm thấy)",
           "非常 → fēicháng"
+        ],
+        "pronunciation_focus_en": [
+          "荣幸 → róngxìng ('honored')",
+          "认识 → rènshi ('to get acquainted')",
+          "感到 → gǎndào ('to feel')",
+          "非常 → fēicháng ('very')"
         ]
       },
       {
@@ -3253,6 +3489,12 @@ export const lessons: ChineseLesson[] = [
           "请多多指教 → qǐng duōduō zhǐjiào (cụm formal khi trao đổi danh thiếp)",
           "这是 → zhè shì",
           "我的 → wǒ de"
+        ],
+        "pronunciation_focus_en": [
+          "名片 → míngpiàn ('business card')",
+          "请多多指教 → qǐng duōduō zhǐjiào (set phrase used when exchanging cards)",
+          "这是 → zhè shì ('this is')",
+          "我的 → wǒ de ('my')"
         ]
       },
       {
@@ -3265,6 +3507,12 @@ export const lessons: ChineseLesson[] = [
           "金融科技 → jīnróng kējì (fintech)",
           "合作空间 → hézuò kōngjiān (không gian hợp tác)",
           "贵公司 → guì gōngsī"
+        ],
+        "pronunciation_focus_en": [
+          "电商 → diànshāng ('e-commerce', short for 电子商务)",
+          "金融科技 → jīnróng kējì ('fintech')",
+          "合作空间 → hézuò kōngjiān ('room for cooperation')",
+          "贵公司 → guì gōngsī ('your esteemed company')"
         ]
       },
       {
@@ -3277,6 +3525,12 @@ export const lessons: ChineseLesson[] = [
           "保持联系 → bǎochí liánxì (giữ liên lạc)",
           "以后 → yǐhòu (về sau)",
           "方便 → fāngbiàn"
+        ],
+        "pronunciation_focus_en": [
+          "微信 → wēixìn ('WeChat')",
+          "保持联系 → bǎochí liánxì ('keep in touch')",
+          "以后 → yǐhòu ('from now on')",
+          "方便 → fāngbiàn ('convenient')"
         ]
       }
     ],
@@ -3526,7 +3780,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Sự kiện giao lưu doanh nghiệp ở Trung Quốc đại lục là môi trường cực kỳ chiến lược — không phải 'cocktail party' nhẹ nhàng kiểu phương Tây. Bốn quy tắc cốt lõi: (1) Danh thiếp (名片) là CÔNG CỤ chuyên nghiệp, không phải mảnh giấy. In song ngữ Trung-Anh ở hai mặt; chức danh phải khớp tiếng Trung lẫn tiếng Anh. Mang TỐI THIỂU 50 cái cho một sự kiện 2 giờ. Cạn danh thiếp giữa chừng = thiếu chuẩn bị. (2) Quy tắc trao danh thiếp: hai tay đưa, mặt chữ hướng về phía người nhận, kèm câu '请多多指教'. Khi nhận, đọc kỹ 5-10 giây, có thể bình luận về công ty/chức vụ ('哦, 您是负责东南亚的'), sau đó cất vào ví danh thiếp (không phải ví tiền — bị coi là vô lễ). (3) Thứ tự giới thiệu: cấp thấp → cấp cao, trẻ → già, chủ → khách. Nếu bạn muốn người A gặp người B, giới thiệu A cho B trước (vì B là cấp cao hơn). Đừng tự xuất hiện trước người cao cấp — chờ được giới thiệu hoặc xin phép. (4) Sau sự kiện, gửi tin nhắn WeChat trong 24 giờ với: cảm ơn cuộc trò chuyện + đề cập 1 chi tiết cụ thể đã nói + đề xuất bước tiếp theo. Đây là yếu tố quyết định liệu mối quan hệ có sống tiếp hay không.\n\nVề 关系 (guānxi): mục tiêu networking ở Trung Quốc KHÔNG phải 'mở rộng mạng lưới rộng' (network) như phương Tây, mà 'xây dựng mối quan hệ sâu' (relationship) với 5-10 người chiến lược. Một bữa ăn dài 2 giờ với 1 người = giá trị hơn 10 cuộc trao danh thiếp ngắn. Đầu tư thời gian vào ít người chất lượng cao.\n\nĂn uống tại sự kiện: nếu có rượu trắng (白酒 báijiǔ), bạn KHÔNG bắt buộc phải uống nếu lý do hợp lý (đang lái xe, bị bệnh, theo tôn giáo). Nhưng nếu uống được, một-hai shot kèm câu 'cùng cạn ly vì hợp tác' sẽ tạo dấu ấn đặc biệt.",
+    "cultural_notes_en": "Mainland Chinese business networking is highly strategic — not the light Western cocktail party. Four core rules: (1) The 名片 (míngpiàn, business card) is a professional TOOL, not a scrap of paper. Print it bilingual (Chinese-English) on both sides, with titles matching in both languages. Bring at LEAST 50 for a 2-hour event; running out mid-event reads as unprepared. (2) Card exchange ritual: present with two hands, text facing the recipient, with 请多多指教. When receiving, read it for 5-10 seconds, you may comment on the company/title (哦，您是负责东南亚的), then put it in a card case — NOT your wallet (treating it like cash is rude). (3) Introduction order: junior → senior, young → old, host → guest. If you want A to meet B, introduce A to B first (B is the senior). Don't present yourself to a senior person uninvited — wait to be introduced or ask permission. (4) After the event, WeChat within 24 hours: thank them for the conversation + reference one specific detail discussed + propose a next step. This decides whether the relationship survives.\n\nOn 关系 (guānxi): the goal of networking in China is NOT a broad Western 'network' but deep relationships (关系) with 5-10 strategic people. One 2-hour meal with one person is worth more than ten quick card exchanges. Invest your time in a few high-quality people.\n\nDrinking at the event: if there's 白酒 (báijiǔ, strong grain liquor), you are NOT obliged to drink with a valid reason (driving, illness, religion). But if you can, one or two shots with 'let's drain the cup to our cooperation' leaves a strong mark.",
     "tip_advice_vi": "(1) Chuẩn bị 'elevator pitch' 30 giây bằng tiếng Trung: tên + công ty + 1 thành tựu + 1 đề xuất cụ thể. Tập đến mức tự nhiên, không như đọc thuộc. (2) Mang theo: ví danh thiếp (KHÔNG để trong ví tiền), bút (để ghi chú lên danh thiếp người khác SAU sự kiện), điện thoại đã sạc đầy (chụp QR WeChat), kẹo bạc hà. (3) Trang phục: nam mặc vest tối màu + cà vạt; nữ mặc váy công sở + áo khoác. Tránh: trang sức lộng lẫy (nữ), cà vạt sặc sỡ (nam) — văn hóa kinh doanh Trung Quốc đại lục thiên về 'trang nhã'. (4) Đi quanh phòng theo chiến thuật: 30 phút đầu quan sát ai có mặt, ai cần tiếp cận; 60 phút giữa tập trung vào 3-5 người chiến lược; 30 phút cuối follow-up với những người đã gặp. (5) Khi không nhớ tên người mới gặp, KHÔNG đoán mò. Hỏi lại: '不好意思, 您贵姓?' (xin lỗi, anh/chị họ gì?) — đây là cách lịch sự xác nhận. (6) Tránh chủ đề nhạy cảm: chính trị nội bộ Trung Quốc, Đài Loan, tranh chấp biển, tham nhũng. Nếu đối phương đề cập, chuyển chủ đề bằng '这是个复杂的问题, 我们改天慢慢聊' (đây là chủ đề phức tạp, mình từ từ nói sau). (7) Trong vòng 24 giờ sau sự kiện, gửi tin WeChat: '张总, 昨天和您聊得很愉快, 关于...我整理了一些资料, 方便的话我发给您' — đây là follow-up vàng, ít người làm.",
+    "tip_advice_en": "(1) Prepare a 30-second elevator pitch in Chinese: name + company + one achievement + one concrete proposal. Drill it until it sounds natural, not recited. (2) Bring: a card case (NOT in your wallet), a pen (to annotate others' cards AFTER the event), a fully charged phone (to scan WeChat QR), mints. (3) Dress: men in a dark suit + tie; women in office wear + jacket. Avoid flashy jewelry or a loud tie — mainland Chinese business culture leans 'understated.' (4) Work the room tactically: first 30 minutes observe who's present and whom to approach; middle 60 minutes focus on 3-5 strategic people; last 30 minutes follow up with those you met. (5) When you can't recall someone's name, do NOT guess. Ask 不好意思，您贵姓? ('may I ask your surname?') — the polite way to confirm. (6) Avoid sensitive topics: internal Chinese politics, Taiwan, maritime disputes, corruption. If the other person raises one, deflect with 这是个复杂的问题，我们改天慢慢聊 ('that's a complex topic, let's talk slowly another day'). (7) Within 24 hours, send a WeChat: 张总，昨天和您聊得很愉快，关于…我整理了一些资料，方便的话我发给您 — the golden follow-up few people do.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -3587,6 +3843,12 @@ export const lessons: ChineseLesson[] = [
           "尊敬的 → zūnjìng de",
           "已经 → yǐjīng (đã)",
           "贵校 → guì xiào"
+        ],
+        "pronunciation_focus_en": [
+          "拒信 → jù xìn ('rejection letter')",
+          "尊敬的 → zūnjìng de ('respected' — formal opener)",
+          "已经 → yǐjīng ('already')",
+          "贵校 → guì xiào ('your esteemed school')"
         ]
       },
       {
@@ -3599,6 +3861,12 @@ export const lessons: ChineseLesson[] = [
           "仍然 → réngrán (vẫn còn)",
           "考虑 → kǎolǜ (cân nhắc)",
           "感谢 → gǎnxiè"
+        ],
+        "pronunciation_focus_en": [
+          "遗憾 → yíhàn ('regrettable')",
+          "仍然 → réngrán ('still')",
+          "考虑 → kǎolǜ ('consideration')",
+          "感谢 → gǎnxiè ('to thank' — formal)"
         ]
       },
       {
@@ -3611,6 +3879,12 @@ export const lessons: ChineseLesson[] = [
           "不足之处 → bùzú zhī chù (chỗ thiếu sót — formal)",
           "方便的话 → fāngbiàn de huà",
           "申请材料 → shēnqǐng cáiliào"
+        ],
+        "pronunciation_focus_en": [
+          "指出 → zhǐchū ('to point out')",
+          "不足之处 → bùzú zhī chù ('shortcomings' — formal)",
+          "方便的话 → fāngbiàn de huà ('if convenient')",
+          "申请材料 → shēnqǐng cáiliào ('application materials')"
         ]
       },
       {
@@ -3623,6 +3897,12 @@ export const lessons: ChineseLesson[] = [
           "呈现 → chéngxiàn (thể hiện — formal)",
           "明年 → míngnián",
           "申请 → shēnqǐng"
+        ],
+        "pronunciation_focus_en": [
+          "届时 → jièshí ('by then' — formal)",
+          "呈现 → chéngxiàn ('to present' — formal)",
+          "明年 → míngnián ('next year')",
+          "申请 → shēnqǐng ('to apply')"
         ]
       },
       {
@@ -3635,6 +3915,12 @@ export const lessons: ChineseLesson[] = [
           "期待 → qídài (mong chờ)",
           "回复 → huífù (phản hồi)",
           "您的 → nín de"
+        ],
+        "pronunciation_focus_en": [
+          "不胜感激 → bù shèng gǎnjī ('greatly appreciated' — formal closer)",
+          "期待 → qídài ('to look forward to')",
+          "回复 → huífù ('reply')",
+          "您的 → nín de ('your' — formal)"
         ]
       }
     ],
@@ -3877,7 +4163,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa xin feedback sau khi bị từ chối ở Trung Quốc khác biệt với Mỹ/châu Âu: (1) Trường top Trung Quốc THƯỜNG KHÔNG cung cấp feedback cá nhân — không phải vì lười, mà vì sợ tranh chấp pháp lý. Đại đa số reply '我们对所有申请人保持公平, 不便对个案做点评' (chúng tôi công bằng với mọi ứng viên, không tiện đánh giá từng trường hợp). KHÔNG nài nỉ. (2) Tuy nhiên, nếu bạn ĐÃ CÓ quan hệ trước (đã email với GS, đã đến trường thăm) — feedback có thể có. Đầu tư xây dựng quan hệ TRƯỚC khi nộp đơn, không sau khi bị từ chối. (3) Nếu nhận được feedback, đó là TÀI SẢN. Phải đáp lại trang trọng: cảm ơn cụ thể từng điểm, mô tả cách bạn sẽ cải thiện, hứa cập nhật về tiến độ. Nhiều người Việt nhận feedback rồi im lặng — bị coi là thiếu tôn trọng và đóng cửa cho lần sau.\n\nVăn hóa 'thử lại' (再申请): Trung Quốc đại lục đặc biệt tôn trọng người kiên trì. Đỗ đại học/du học sau 2-3 lần thất bại = dấu hiệu của 'có chí'. Đừng giấu lịch sử thất bại trong đơn lần sau — đề cập trong personal statement với khung 'từ thất bại tôi học được X, Y, Z'. Đây là điểm cộng, không trừ.\n\nVề tone: KHÔNG bi lụy ('giấc mơ của em đã tan vỡ'), KHÔNG giả vờ bình thản ('không sao đâu, lần sau lại tới'). Tone đúng: 'tiếc nhưng học được, sẽ quay lại mạnh hơn'. Đây là phong thái 'reasonable resilience' (kiên cường lý tính) mà người Trung Quốc đánh giá cao.\n\nVề thời điểm follow-up: gửi email feedback trong 1-2 tuần sau khi nhận thư từ chối, KHÔNG quá sớm (1-2 ngày — nóng vội), KHÔNG quá muộn (1 tháng — không quan tâm).",
+    "cultural_notes_en": "Asking for feedback after a rejection works differently in China than in the US/Europe: (1) Top Chinese schools USUALLY do NOT give individual feedback — not from laziness but from fear of disputes. Most reply 我们对所有申请人保持公平，不便对个案做点评 ('we treat all applicants fairly and can't comment on individual cases'). Do NOT push. (2) However, if you ALREADY built a relationship beforehand (emailed a professor, visited the campus), feedback may come. Invest in the relationship BEFORE applying, not after being rejected. (3) If you do get feedback, it is an ASSET. Respond formally: thank them for each specific point, describe how you'll improve, promise a progress update. The common mistake is to receive feedback and then go silent — read as disrespectful and closing the door for next time.\n\nThe 're-apply' culture (再申请): mainland China especially respects persistence. Getting in after 2-3 failed attempts signals 有志 ('having determination'). Don't hide a history of failure in the next application — mention it in the personal statement with the frame 'from that failure I learned X, Y, Z.' It is a plus, not a minus.\n\nTone: NOT self-pitying ('my dream is shattered'), NOT fake-stoic ('no big deal, I'll just come back'). The right tone is 'regret, but I learned, and I'll return stronger' — a 'reasonable resilience' that Chinese readers rate highly.\n\nTiming: send the feedback email 1-2 weeks after the rejection — not too soon (1-2 days reads as hot-headed), not too late (a month reads as indifferent).",
     "tip_advice_vi": "(1) ĐỌC LẠI thư từ chối kỹ trước khi viết email follow-up. Một số trường đã ghi sẵn 'không cung cấp feedback' — nếu vậy, KHÔNG email xin. Chuyển sang trường khác. (2) Tiêu đề email cụ thể: '关于申请结果的请教 — 申请号QH202509-1234'. Đừng dùng '为什么没被录取' — quá đối đầu. (3) Cấu trúc email 4 đoạn: (a) thừa nhận + cảm ơn; (b) xin feedback cụ thể; (c) cam kết cải thiện; (d) đóng formal. Mỗi đoạn 2-3 câu, không lan man. (4) KHÔNG đính kèm CV mới hay portfolio — chưa đến lúc. Email này chỉ là xin feedback, không phải re-pitch. (5) Nếu nhận được feedback gay gắt ('hồ sơ của bạn quá yếu'), KHÔNG defensive. Reply: '感谢您坦诚的反馈, 我会认真消化, 努力改进' (cảm ơn phản hồi thẳng thắn, em sẽ tiếp thu nghiêm túc và cải thiện). Người Trung Quốc đặc biệt đánh giá cao thái độ này. (6) Cập nhật tiến độ sau 3-6 tháng: gửi email ngắn cho người đã cho feedback, kèm 'tôi đã cải thiện X, Y, Z theo gợi ý của thầy/cô' + đính kèm bản cập nhật ngắn. Đây là 'closing the loop' — ít người làm, gây ấn tượng đặc biệt mạnh. (7) Lần ứng tuyển sau, đề cập (ngắn gọn) trong personal statement: '去年申请未果, 我深刻反思了三点不足... 一年来我做了以下改进...'. Đây là dấu hiệu của 'growth mindset' — điểm cộng lớn ở Trung Quốc.",
+    "tip_advice_en": "(1) RE-READ the rejection letter carefully before writing a follow-up. Some schools state outright 'no feedback provided' — if so, do NOT email asking. Move on to other schools. (2) Specific subject line: 关于申请结果的请教 — 申请号QH202509-1234. Don't use 为什么没被录取 ('why wasn't I admitted') — too confrontational. (3) Four-paragraph email: (a) acknowledge + thank; (b) ask for specific feedback; (c) commit to improving; (d) formal close. Each paragraph 2-3 sentences, no rambling. (4) Do NOT attach a new CV or portfolio — it's not the moment. This email is only a feedback request, not a re-pitch. (5) If the feedback is harsh ('your profile was too weak'), do NOT get defensive. Reply 感谢您坦诚的反馈，我会认真消化，努力改进 ('thank you for the candid feedback; I'll absorb it seriously and work to improve'). Chinese readers especially value this posture. (6) Update them after 3-6 months: a short email to whoever gave feedback, 'I've improved X, Y, Z per your suggestions' + a brief updated document. This 'closing the loop' is rare and makes a strong impression. (7) Next application cycle, briefly mention it in the personal statement: 去年申请未果，我深刻反思了三点不足……一年来我做了以下改进…… A growth-mindset signal — a big plus in China.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -3938,6 +4226,12 @@ export const lessons: ChineseLesson[] = [
           "打扰 → dǎrǎo (làm phiền)",
           "抱歉 → bàoqiàn (xin lỗi)",
           "尊敬的 → zūnjìng de"
+        ],
+        "pronunciation_focus_en": [
+          "冒昧 → màomèi ('to presume / take the liberty' — formal)",
+          "打扰 → dǎrǎo ('to disturb')",
+          "抱歉 → bàoqiàn ('sorry')",
+          "尊敬的 → zūnjìng de ('respected')"
         ]
       },
       {
@@ -3950,6 +4244,12 @@ export const lessons: ChineseLesson[] = [
           "推荐信 → tuījiàn xìn (thư giới thiệu)",
           "硕士项目 → shuòshì xiàngmù",
           "申请 → shēnqǐng"
+        ],
+        "pronunciation_focus_en": [
+          "恳请 → kěnqǐng ('to earnestly request' — formal)",
+          "推荐信 → tuījiàn xìn ('recommendation letter')",
+          "硕士项目 → shuòshì xiàngmù (\"master's program\")",
+          "申请 → shēnqǐng ('to apply')"
         ]
       },
       {
@@ -3962,6 +4262,12 @@ export const lessons: ChineseLesson[] = [
           "学术能力 → xuéshù nénglì (năng lực học thuật)",
           "意义重大 → yìyì zhòngdà (ý nghĩa to lớn)",
           "推荐 → tuījiàn"
+        ],
+        "pronunciation_focus_en": [
+          "了解 → liǎojiě ('to know well')",
+          "学术能力 → xuéshù nénglì ('academic ability')",
+          "意义重大 → yìyì zhòngdà ('of great significance')",
+          "推荐 → tuījiàn ('recommendation')"
         ]
       },
       {
@@ -3974,6 +4280,12 @@ export const lessons: ChineseLesson[] = [
           "提前 → tíqián (trước hạn)",
           "相关材料 → xiāngguān cáiliào (tài liệu liên quan)",
           "十二月 → shí'èr yuè"
+        ],
+        "pronunciation_focus_en": [
+          "截止日期 → jiézhǐ rìqī ('deadline')",
+          "提前 → tíqián ('ahead of the deadline')",
+          "相关材料 → xiāngguān cáiliào ('relevant materials')",
+          "十二月 → shí'èr yuè ('December')"
         ]
       },
       {
@@ -3986,6 +4298,12 @@ export const lessons: ChineseLesson[] = [
           "永远 → yǒngyuǎn (mãi mãi)",
           "铭记在心 → míngjì zài xīn (khắc ghi trong lòng)",
           "您的 → nín de"
+        ],
+        "pronunciation_focus_en": [
+          "知遇之恩 → zhī yù zhī ēn (4-char idiom: 'the kindness of one who recognizes your worth')",
+          "永远 → yǒngyuǎn ('forever')",
+          "铭记在心 → míngjì zài xīn ('engraved on the heart')",
+          "您的 → nín de ('your' — formal)"
         ]
       }
     ],
@@ -4228,7 +4546,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa xin thư giới thiệu ở Trung Quốc đại lục có nét đặc thù: (1) Quan hệ giáo sư-học trò tiếp tục SAU khi tốt nghiệp — không như Mỹ (nơi giáo sư có thể bận đến mức quên học trò cũ). Giáo sư Trung Quốc thường nhớ học trò 5-10 năm sau, đặc biệt nếu bạn duy trì liên lạc (Tết gửi tin chúc, kỷ niệm kết quả thi). Đầu tư vào quan hệ này dài hạn. (2) Số lượng thư giới thiệu giáo sư có thể viết: thường giới hạn 5-10 thư/năm cho học bổng top. Nếu bạn xin và biết rằng thầy đã ngoài giới hạn, đề xuất 'nếu thầy không đủ thời gian, em hoàn toàn hiểu' — cho lối thoát. (3) 'Em viết nháp đi' không phải lười — đây là cách giáo sư kiểm tra: bạn có biết tự nhìn nhận điểm mạnh/yếu, có biết viết formal không. Bản nháp tốt = thầy viết nhanh và sâu sắc. Bản nháp kém = thầy phải sửa nhiều, dẫn đến thư không sâu. (4) Sau khi nhận thư, NHỚ cập nhật kết quả: nếu trúng tuyển, gửi tin báo + cảm ơn cụ thể; nếu trượt, vẫn gửi tin báo + cảm ơn (không bao giờ im lặng). Đây là 'closing the loop' quan trọng cho quan hệ tương lai. (5) Quà cảm ơn: KHÔNG bắt buộc nhưng phổ biến. Đặc sản quê (cà phê Việt Nam, trà sen) là lý tưởng — không quá đắt, biểu trưng quê hương. Tránh tiền mặt, voucher đắt tiền — bị nghi hối lộ.\n\nVề số lượng thư: chương trình Mỹ thường yêu cầu 3, Trung Quốc 2-3. KHÔNG xin thêm 'để dự phòng' — mỗi thư phải có lý do.\n\nVề ngôn ngữ thư: nếu chương trình đại học Trung Quốc, thư có thể tiếng Trung; nếu chương trình quốc tế tại Trung Quốc, thường yêu cầu tiếng Anh. Hỏi rõ trước khi giáo sư bắt đầu viết.",
+    "cultural_notes_en": "Asking for a recommendation letter in mainland China has its own conventions: (1) The professor-student relationship continues AFTER graduation — unlike the US, where a busy professor may simply forget a former student. Chinese professors often remember students 5-10 years later, especially if you keep in touch (New Year wishes, exam-result updates). Invest in this relationship for the long term. (2) Letter quota: a professor usually limits to 5-10 letters/year for top scholarships. If you ask and sense they're over quota, offer an exit — '如果时间不够我完全理解.' (3) 'Write a draft for me' is not laziness — it's the professor checking whether you can self-assess your strengths/weaknesses and write formally. A good draft = a fast, deep letter; a poor draft = heavy editing, a shallow letter. (4) After the letter, ALWAYS update the result: if admitted, send the news + specific thanks; if rejected, still send the news + thanks (never go silent). This 'closing the loop' matters for the future relationship. (5) Thank-you gift: not mandatory but common — a hometown specialty is ideal (not too expensive, symbolic). Avoid cash or expensive vouchers (suspected as a bribe).\n\nNumber of letters: US programs usually require 3, Chinese ones 2-3. Don't ask for an extra 'just in case' — each letter needs a reason.\n\nLanguage: a Chinese-university program may want the letter in Chinese; an international program in China usually wants English. Confirm before the professor starts writing.",
     "tip_advice_vi": "(1) HẸN trực tiếp gặp giáo sư trước, không xin qua email lần đầu — thể hiện sự trang trọng. Nếu không thể gặp (đã ra trường), email phải đặc biệt formal. (2) Khoảng cách thời gian xin: TỐI THIỂU 4 tuần trước deadline. Lý tưởng 6-8 tuần. Xin sát ngày = thư viết vội = thư yếu. (3) Cung cấp 'package' đầy đủ cho giáo sư: CV mới nhất, personal statement, research plan, danh sách 3-5 thành tựu cụ thể bạn muốn họ nhấn mạnh, link nộp + mật khẩu (nếu có), deadline rõ ràng. Đặt tất cả vào 1 email với tiêu đề rõ: '关于推荐信材料 — 陈氏梅 — 截止12月15日'. (4) Nếu giáo sư yêu cầu bản nháp, viết theo cấu trúc: (a) tôi biết người này thế nào (trong context nào, bao lâu); (b) 3 điểm mạnh chính với số liệu/ví dụ cụ thể; (c) so sánh với học sinh khác (top 5%, top 1%); (d) cam kết người này sẽ thành công. Tránh adjective trống ('rất giỏi') — thay bằng số liệu ('GPA top 5%'). (5) Một tuần trước deadline, gửi email nhắc nhẹ: '王教授, 关于12月15日截止的推荐信, 不知您方便的话什么时候可以提交?' — nhắc nhưng không thúc giục. (6) Ngay sau khi giáo sư nộp thư, gửi email cảm ơn: '感谢您及时提交了推荐信, 您的支持对我意义重大'. (7) Sau khi có kết quả (đỗ hoặc trượt), update giáo sư trong 1-2 tuần. Đỗ: '感谢您的推荐信, 我已被X录取'. Trượt: '虽然这次未果, 但您的支持我永远感激'. Đừng im lặng — giáo sư sẽ nhớ.",
+    "tip_advice_en": "(1) Request it in PERSON first, not by email the first time — it shows formality. If you can't meet (already graduated), the email must be especially formal. (2) Lead time: at least 4 weeks before the deadline, ideally 6-8. A last-minute ask = a rushed, weak letter. (3) Give the professor a full package: latest CV, personal statement, research plan, a list of 3-5 specific achievements you want emphasized, the submission link + password (if any), a clear deadline. Put it all in one email with a clear subject: 关于推荐信材料 — 陈氏梅 — 截止12月15日. (4) If asked for a draft, structure it: (a) how I know this person (in what context, how long); (b) 3 key strengths with data/concrete examples; (c) comparison to peers (top 5%, top 1%); (d) a commitment that this person will succeed. Avoid empty adjectives ('very good') — use figures ('GPA top 5%'). (5) One week before the deadline, a gentle reminder: 王教授，关于12月15日截止的推荐信，不知您方便的话什么时候可以提交? — reminding without pushing. (6) Right after the professor submits, thank them: 感谢您及时提交了推荐信，您的支持对我意义重大. (7) After the result (admit or reject), update the professor within 1-2 weeks. Admitted: 感谢您的推荐信，我已被X录取. Rejected: 虽然这次未果，但您的支持我永远感激. Don't go silent — the professor will remember.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -4289,6 +4609,12 @@ export const lessons: ChineseLesson[] = [
           "集中 → jízhōng (tập trung)",
           "低资源语言 → dī zīyuán yǔyán",
           "自然语言处理 → zìrán yǔyán chǔlǐ (NLP)"
+        ],
+        "pronunciation_focus_en": [
+          "研究兴趣 → yánjiū xìngqù ('research interests')",
+          "集中 → jízhōng ('to focus/concentrate')",
+          "低资源语言 → dī zīyuán yǔyán ('low-resource languages')",
+          "自然语言处理 → zìrán yǔyán chǔlǐ ('NLP')"
         ]
       },
       {
@@ -4301,6 +4627,12 @@ export const lessons: ChineseLesson[] = [
           "跨语言 → kuà yǔyán (xuyên ngôn ngữ)",
           "迁移学习 → qiānyí xuéxí (transfer learning)",
           "感兴趣 → gǎn xìngqù"
+        ],
+        "pronunciation_focus_en": [
+          "具体来说 → jùtǐ lái shuō ('specifically')",
+          "跨语言 → kuà yǔyán ('cross-lingual')",
+          "迁移学习 → qiānyí xuéxí ('transfer learning')",
+          "感兴趣 → gǎn xìngqù ('to be interested')"
         ]
       },
       {
@@ -4313,6 +4645,12 @@ export const lessons: ChineseLesson[] = [
           "填补 → tiánbǔ (lấp đầy)",
           "空白 → kòngbái (khoảng trống)",
           "在于 → zàiyú (nằm ở)"
+        ],
+        "pronunciation_focus_en": [
+          "学术价值 → xuéshù jiàzhí ('academic value')",
+          "填补 → tiánbǔ ('to fill in')",
+          "空白 → kòngbái ('gap/blank')",
+          "在于 → zàiyú ('lies in')"
         ]
       },
       {
@@ -4325,6 +4663,12 @@ export const lessons: ChineseLesson[] = [
           "深化 → shēnhuà (đào sâu)",
           "探索 → tànsuǒ (khám phá)",
           "进一步 → jìn yī bù"
+        ],
+        "pronunciation_focus_en": [
+          "博士阶段 → bóshì jiēduàn ('PhD stage')",
+          "深化 → shēnhuà ('to deepen')",
+          "探索 → tànsuǒ ('to explore')",
+          "进一步 → jìn yī bù ('a step further')"
         ]
       },
       {
@@ -4337,6 +4681,12 @@ export const lessons: ChineseLesson[] = [
           "一以贯之 → yī yǐ guàn zhī (nhất quán xuyên suốt)",
           "学术道路 → xuéshù dàolù (con đường học thuật)",
           "精神 → jīngshén"
+        ],
+        "pronunciation_focus_en": [
+          "锲而不舍 → qiè ér bù shě (4-char idiom: 'persevere without giving up'); qiè 4th, not 切",
+          "一以贯之 → yī yǐ guàn zhī ('consistent throughout')",
+          "学术道路 → xuéshù dàolù ('academic path')",
+          "精神 → jīngshén ('spirit')"
         ]
       }
     ],
@@ -4586,7 +4936,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Thảo luận hướng nghiên cứu trong context Trung Quốc khác biệt với phương Tây ở bốn điểm: (1) Người Trung Quốc đặt giá trị cao vào 'long-term consistency' (一以贯之). Đổi hướng nghiên cứu giữa chừng = bị nghi 'không kiên định'. Khác Mỹ (nơi pivot được đánh giá cao). Vì vậy, khi giới thiệu hướng nghiên cứu: trình bày như một 'mạch logic' kéo dài 5-10 năm, không phải 'sở thích hiện tại'. (2) Trọng nguồn gốc kế thừa: hướng nghiên cứu của bạn nên được khung hóa trong dòng chảy học thuật — kế thừa ai, đóng góp gì mới. KHÔNG nói 'em có ý tưởng riêng' — sẽ bị coi là vô ơn. Nói '受X老师启发' (được khơi nguồn từ thầy X) hoặc '在Y研究的基础上' (trên nền tảng nghiên cứu của Y). (3) Tính ứng dụng quan trọng hơn ở Trung Quốc đại lục so với Mỹ. Research thuần lý thuyết khó tài trợ — luôn kết nối với 'ứng dụng thực tế', 'lợi ích quốc gia', 'hợp tác quốc tế'. Với sinh viên Việt Nam: kết nối với 'hợp tác Việt-Trung' = lý lẽ vàng để tài trợ. (4) 'Tính khả thi' (可行性) trọng hơn 'tính sáng tạo' (创新性). Một đề tài cực sáng tạo nhưng không khả thi trong 3-5 năm = bị từ chối. Một đề tài kế thừa nhưng cụ thể, khả thi, có dữ liệu sẵn = được chấp nhận.\n\nVề tính liên ngành (跨学科): Trung Quốc đại lục đang đẩy mạnh interdisciplinary research, đặc biệt 'AI + X' (X = ngành khác). Sinh viên Việt Nam có lợi thế: AI + ngôn ngữ học, AI + văn hóa Á Đông, AI + lịch sử Hán-Việt. Khai thác điều này khi trình bày hướng research.\n\nVề tone: KHÔNG quá mơ mộng ('em muốn thay đổi thế giới') — mộng tưởng. KHÔNG quá thực dụng ('em muốn sau này có việc làm tốt') — xa rời học thuật. Tone đúng: 'có ý nghĩa học thuật rõ + ứng dụng thực tế + bản thân có lợi thế'.",
+    "cultural_notes_en": "Discussing research direction in a Chinese context differs from the West on four points: (1) Chinese academia prizes 'long-term consistency' (一以贯之). Switching research direction midway invites the suspicion of 'not steadfast' — unlike the US, where a well-told pivot is admired. So present your direction as a 5-10 year logical thread, not a 'current interest.' (2) Lineage matters: frame your direction within an academic current — whom you inherit from, what you add. Don't say 'I have my own idea' — it reads as ungrateful. Say 受X老师启发 ('inspired by Professor X') or 在Y研究的基础上 ('building on Y's research'). (3) Applicability weighs more on the mainland than in the US. Pure-theory research is hard to fund — always connect it to 'real application,' 'national benefit,' 'international cooperation.' Tying it to cross-border collaboration is a strong funding argument. (4) 'Feasibility' (可行性) outranks 'novelty' (创新性). A wildly creative but infeasible 3-5 year topic gets rejected; an incremental but concrete, feasible, data-available topic gets accepted.\n\nInterdisciplinarity (跨学科): the mainland is pushing interdisciplinary research hard, especially 'AI + X.' A learner with a distinctive background has an edge — AI + linguistics, AI + East Asian culture, AI + historical Han studies. Use that when presenting.\n\nTone: NOT too dreamy ('I want to change the world') — fantasy. NOT too utilitarian ('I want a good job later') — divorced from scholarship. The right tone: 'clear academic significance + real-world application + a personal edge.'",
     "tip_advice_vi": "(1) Chuẩn bị 'pitch ladder' — câu trả lời 30 giây / 2 phút / 5 phút / 15 phút cho cùng câu hỏi 'hướng research của bạn là gì'. Tùy đối tượng và ngữ cảnh chọn phiên bản phù hợp. Đầu tư nhiều nhất vào bản 2 phút — dùng nhiều nhất. (2) Khi mô tả hướng research, dùng cấu trúc 'tổ chức kim tự tháp': câu đầu tiên = ý chính (1 câu); câu 2-3 = mở rộng (2-3 câu); câu 4-5 = chi tiết cụ thể (con số, ví dụ). Nói rõ ý chính TRƯỚC chi tiết — người Trung Quốc đặc biệt thích cấu trúc này. (3) Khi giáo sư đặt câu hỏi 'tại sao quan trọng?', LUÔN có 3 lý do trong tay: (a) lý do học thuật (lấp khoảng trống lý thuyết), (b) lý do ứng dụng (giải quyết vấn đề thực tế), (c) lý do cá nhân (lợi thế đặc biệt của bạn). Đừng chỉ có 1. (4) Khi không biết câu trả lời chuyên sâu, KHÔNG bịa. Nói '这个角度我之前没有深入考虑过, 但我可以从X的方向尝试回答' (góc này em chưa nghĩ sâu nhưng em có thể thử từ hướng X). Sự thật + cố gắng > bịa. (5) Sau cuộc trao đổi, gửi email cảm ơn trong 24h kèm 'tiếp theo em sẽ': cụ thể 2-3 việc + deadline. Đây là 'closing the loop' chuẩn academic. (6) Đọc 5-10 paper mới nhất của giáo sư trước khi gặp. Đề cập một paper cụ thể trong cuộc trao đổi: '看了您去年那篇关于X的论文, 我特别认同Y的观点'. Đây là dấu hiệu mạnh nhất bạn nghiêm túc. (7) Mẹo phát âm cuối: '锲而不舍' (qiè ér bù shě) — qiè thanh 4 (xuống), shě thanh 3. Sai thanh = nghe nhầm '切' (cắt), thay đổi nghĩa hoàn toàn. Tập đọc to trước cuộc gặp.",
+    "tip_advice_en": "(1) Prepare a 'pitch ladder' — 30-second / 2-minute / 5-minute / 15-minute answers to the same 'what's your research direction' question. Pick the version by audience and context; invest most in the 2-minute one (most used). (2) Use pyramid structure: first sentence = the main point (1 sentence); sentences 2-3 = expansion; sentences 4-5 = specifics (numbers, examples). State the main point BEFORE the detail — Chinese listeners especially like this. (3) When a professor asks 'why is this important?', always have 3 reasons ready: (a) academic (fills a theory gap), (b) applied (solves a real problem), (c) personal (your distinctive edge). Don't have only one. (4) When you don't know a deep answer, do NOT fake it. Say 这个角度我之前没有深入考虑过，但我可以从X的方向尝试回答. Honesty + effort beats fabrication. (5) After the exchange, email thanks within 24h with 'next I will': 2-3 concrete actions + deadlines — the academic 'close the loop' standard. (6) Read 5-10 of the professor's recent papers before meeting. Reference one specifically: 看了您去年那篇关于X的论文，我特别认同Y的观点 — the strongest signal you're serious. (7) Pronunciation: 锲而不舍 (qiè ér bù shě) — qiè is 4th tone (falling), shě is 3rd; a wrong tone gets misheard as 切 (qiè/qiē, 'to cut'), changing the meaning entirely. Drill it aloud beforehand.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -4647,6 +4999,12 @@ export const lessons: ChineseLesson[] = [
           "一路辛苦 → yī lù xīnkǔ (cụm chuẩn đón khách đi xa)",
           "欢迎 → huānyíng (hoan nghênh)",
           "河内 → Hénèi"
+        ],
+        "pronunciation_focus_en": [
+          "李总 → Lǐ zǒng (surname + 总, 'Director/GM' title)",
+          "一路辛苦 → yī lù xīnkǔ (set greeting for a guest who has traveled far)",
+          "欢迎 → huānyíng ('welcome')",
+          "河内 → Hénèi ('Hanoi')"
         ]
       },
       {
@@ -4659,6 +5017,12 @@ export const lessons: ChineseLesson[] = [
           "酒店 → jiǔdiàn (khách sạn — formal hơn 旅馆)",
           "步行 → bùxíng (đi bộ)",
           "办公室 → bàngōngshì"
+        ],
+        "pronunciation_focus_en": [
+          "安排 → ānpái ('to arrange')",
+          "酒店 → jiǔdiàn ('hotel' — more formal than 旅馆)",
+          "步行 → bùxíng ('to go on foot')",
+          "办公室 → bàngōngshì ('office')"
         ]
       },
       {
@@ -4671,6 +5035,12 @@ export const lessons: ChineseLesson[] = [
           "体验 → tǐyàn (trải nghiệm)",
           "菜馆 → cài guǎn (nhà hàng)",
           "今天晚上 → jīntiān wǎnshàng"
+        ],
+        "pronunciation_focus_en": [
+          "地道 → dìdao ('authentic'); 2nd syllable neutral",
+          "体验 → tǐyàn ('to experience')",
+          "菜馆 → cài guǎn ('restaurant')",
+          "今天晚上 → jīntiān wǎnshàng ('tonight')"
         ]
       },
       {
@@ -4683,6 +5053,12 @@ export const lessons: ChineseLesson[] = [
           "联系 → liánxì (liên hệ)",
           "手机 → shǒujī (điện thoại)",
           "关机 → guānjī (tắt máy)"
+        ],
+        "pronunciation_focus_en": [
+          "随时 → suíshí ('any time')",
+          "联系 → liánxì ('to contact')",
+          "手机 → shǒujī ('mobile phone')",
+          "关机 → guānjī ('to turn off the phone')"
         ]
       },
       {
@@ -4695,6 +5071,12 @@ export const lessons: ChineseLesson[] = [
           "宾至如归 → bīn zhì rú guī (idiom 4 chữ: khách đến như về nhà)",
           "顺利 → shùnlì (thuận lợi)",
           "一切 → yīqiè"
+        ],
+        "pronunciation_focus_en": [
+          "访问 → fǎngwèn ('to visit')",
+          "宾至如归 → bīn zhì rú guī (4-char idiom: 'a guest feels at home')",
+          "顺利 → shùnlì ('smooth')",
+          "一切 → yīqiè ('everything')"
         ]
       }
     ],
@@ -4937,7 +5319,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Tiếp đón sếp/khách Trung Quốc đến Việt Nam là 'bài kiểm tra' đầu tiên về năng lực quan hệ của bạn trong mắt sếp. Văn hóa hospitality Trung Quốc khác Việt Nam ở năm điểm: (1) HOST CHỦ ĐỘNG, không hỏi khách. Khách Trung Quốc đến Việt Nam mong bạn lên lịch sẵn sàng (giờ ăn, nơi ăn, di chuyển, mua sắm) — không mong họ tự quyết định. Khác Mỹ (nơi 'free time' là điều tốt), Trung Quốc 'free time' = chủ nhà thiếu chuẩn bị. (2) Tần suất check-in cao: gọi/nhắn mỗi sáng để xác nhận lịch, mỗi tối hỏi 'hôm nay thế nào'. Sếp Trung Quốc cảm thấy được quan tâm khi bạn check-in nhiều, không bị làm phiền. (3) Mời ăn trưa + tối là CHUẨN — khác phương Tây (chỉ một bữa). 5 ngày ở Việt Nam = 10 bữa ăn cùng host. Lên kế hoạch trước: bữa pho, bữa bún chả, bữa hải sản, bữa Trung-Việt fusion. (4) Quà chia tay từ phía host (không phải khách): chuẩn bị quà nhỏ đặc sản Việt (cà phê G7, bánh đậu xanh, lụa Vạn Phúc) để gửi sếp khi tạm biệt. Tổng giá trị 200-500 nhân dân tệ là phù hợp. (5) Sau khi sếp về Trung Quốc, nhắn WeChat trong 24 giờ: '李总, 您一路平安到家了吗?' — đây là 'closing the loop' chuẩn quan hệ Trung Quốc.\n\nKhác biệt Việt-Trung trong tiếp khách: ở Việt Nam, host có thể 'thân mật' với khách (dùng 'em', 'anh' nhanh chóng); ở Trung Quốc 'thân mật' phải có quá trình. Đừng vội xưng hô thân với sếp Trung Quốc dù họ tỏ ra dễ tính.\n\nVề lịch trình: sếp Trung Quốc đến công tác thường có nhịp điệu '工作 + 应酬 + 放松' (làm việc + xã giao + thư giãn) — cứ 60% công việc, 30% xã giao (ăn uống), 10% thư giãn (mua sắm/tham quan). Đừng nhồi 100% công việc — sếp sẽ mệt và khó chịu.",
+    "cultural_notes_en": "Hosting a Chinese boss/guest visiting your country is the first 'test' of your relationship skills in the boss's eyes. Chinese hospitality differs from the Western default on five points: (1) The HOST drives, doesn't ask the guest. A Chinese guest expects you to have the schedule ready (meal times, venues, transport, shopping) — they don't expect to decide for themselves. Unlike the US, where 'free time' is a gift, in China 'free time' = the host was unprepared. (2) High check-in frequency: call/message every morning to confirm the schedule, every evening to ask 'how was today.' A Chinese boss feels cared for by frequent check-ins, not bothered. (3) Lunch AND dinner together is STANDARD — unlike the West (one meal). Five days = ten meals with the host. Plan ahead: a noodle meal, a seafood meal, a fusion meal. (4) Farewell gift from the HOST (not the guest): prepare a small local specialty (worth ~200-500 RMB) to give the boss at parting. (5) After the boss flies home, WeChat within 24 hours: 李总，您一路平安到家了吗? — the standard 'close the loop' of a Chinese relationship.\n\nA cultural calibration point: in some cultures a host gets 'familiar' with a guest quickly; in China familiarity must be earned over time. Don't rush into casual forms of address with a Chinese boss even if they seem easygoing.\n\nSchedule rhythm: a Chinese boss on a work trip runs on 工作 + 应酬 + 放松 (work + social obligation + relaxation) — roughly 60% work, 30% social meals, 10% relaxation (shopping/sightseeing). Don't pack 100% work — the boss tires and turns irritable.",
     "tip_advice_vi": "(1) ĐÓN tại sân bay — không bao giờ để sếp tự bắt taxi. Đứng ngay tại lối ra arrivals với bảng tên hoặc gọi điện hướng dẫn. Sếp Trung Quốc đặc biệt nhớ chi tiết này. (2) Chuẩn bị 'welcome kit' trong xe: chai nước khoáng, khăn lạnh, kẹo nhỏ, sạc dự phòng. Đây là chi tiết rất ít người Việt làm — gây ấn tượng mạnh. (3) Đặt khách sạn TRƯỚC, gửi check-in confirmation cho sếp qua WeChat 1 ngày trước. KHÔNG để sếp phải hỏi 'tôi ở khách sạn nào'. Khách sạn 4-5 sao gần văn phòng + có dịch vụ tiếng Trung là lý tưởng. (4) Bữa ăn đầu tiên: chọn món Việt có vị nhẹ (phở, bún chả, gỏi cuốn) — KHÔNG mắm tôm/bún đậu (mùi mạnh, sếp Trung Quốc khó chịu lần đầu). Lần 2-3 mới giới thiệu món mạnh hơn. (5) Trong các bữa ăn: ngồi cùng phía với sếp (không đối diện qua bàn lớn), dịch món ăn cho sếp, gọi đồ uống thay sếp (nước trà nóng là an toàn). (6) Tránh chủ đề tế nhị trong bữa ăn: chính trị (Việt-Trung-Mỹ), lịch sử (1979, Hoàng Sa, Trường Sa), tôn giáo. Nếu sếp khơi mào, chuyển chủ đề bằng '这个比较复杂, 我们改天聊'. Tập trung vào: ẩm thực, du lịch, công việc, gia đình (nếu sếp chia sẻ trước). (7) Sau khi sếp về, 24 giờ sau gửi WeChat: '李总, 您一路平安回到中国了吗? 这次访问越南办公室辛苦了!' — kèm 1 ảnh đẹp đã chụp. Đây là follow-up vàng.",
+    "tip_advice_en": "(1) MEET them at the airport — never let the boss grab a taxi alone. Stand right at the arrivals exit with a name sign, or call to guide them. Chinese bosses especially remember this detail. (2) Prepare a 'welcome kit' in the car: bottled water, a cold towel, small candy, a power bank — a detail few hosts do, and a strong impression. (3) Book the hotel IN ADVANCE and send the boss a check-in confirmation by WeChat the day before. Don't make the boss ask 'which hotel.' A 4-5 star hotel near the office with Chinese-language service is ideal. (4) First meal: choose mild local dishes — NOT strong-smelling ones (a Chinese boss may dislike them on a first visit). Introduce bolder dishes on the 2nd-3rd meal. (5) During meals: sit on the same side as the boss (not across a big table), translate the dishes, order drinks on the boss's behalf (hot tea is safe). (6) Avoid delicate topics at meals: politics, contested history, territorial disputes, religion. If the boss starts one, deflect with 这个比较复杂，我们改天聊. Focus on food, travel, work, family (if the boss shares first). (7) After the boss leaves, within 24h send WeChat: 李总，您一路平安回到中国了吗? 这次访问越南办公室辛苦了! plus one nice photo you took — the golden follow-up.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -4998,6 +5382,12 @@ export const lessons: ChineseLesson[] = [
           "选择 → xuǎnzé (chọn)",
           "作为 → zuòwéi (làm/với tư cách)",
           "感谢 → gǎnxiè"
+        ],
+        "pronunciation_focus_en": [
+          "合作伙伴 → hézuò huǒbàn ('partner')",
+          "选择 → xuǎnzé ('to choose')",
+          "作为 → zuòwéi ('as / in the capacity of')",
+          "感谢 → gǎnxiè ('to thank' — formal)"
         ]
       },
       {
@@ -5010,6 +5400,12 @@ export const lessons: ChineseLesson[] = [
           "工厂 → gōngchǎng (nhà máy)",
           "海鲜 → hǎixiān (hải sản)",
           "用餐 → yòngcān (dùng bữa — formal)"
+        ],
+        "pronunciation_focus_en": [
+          "参观 → cānguān ('to tour/visit')",
+          "工厂 → gōngchǎng ('factory')",
+          "海鲜 → hǎixiān ('seafood')",
+          "用餐 → yòngcān ('to dine' — formal)"
         ]
       },
       {
@@ -5022,6 +5418,12 @@ export const lessons: ChineseLesson[] = [
           "受益 → shòuyì (được lợi)",
           "互利共赢 → hùlì gòngyíng (đôi bên cùng có lợi)",
           "合作 → hézuò"
+        ],
+        "pronunciation_focus_en": [
+          "双方 → shuāngfāng ('both sides')",
+          "受益 → shòuyì ('to benefit')",
+          "互利共赢 → hùlì gòngyíng ('mutual benefit, win-win')",
+          "合作 → hézuò ('cooperation')"
         ]
       },
       {
@@ -5034,6 +5436,12 @@ export const lessons: ChineseLesson[] = [
           "意见 → yìjiàn (ý kiến)",
           "直接 → zhíjiē (trực tiếp)",
           "告诉 → gàosu"
+        ],
+        "pronunciation_focus_en": [
+          "产品 → chǎnpǐn ('product')",
+          "意见 → yìjiàn ('feedback/opinion')",
+          "直接 → zhíjiē ('directly')",
+          "告诉 → gàosu ('to tell')"
         ]
       },
       {
@@ -5046,6 +5454,12 @@ export const lessons: ChineseLesson[] = [
           "做东 → zuò dōng (làm chủ — đãi khách)",
           "下次 → xià cì (lần sau)",
           "一定 → yīdìng"
+        ],
+        "pronunciation_focus_en": [
+          "礼尚往来 → lǐ shàng wǎng lái (idiom: 'courtesy returns courtesy')",
+          "做东 → zuò dōng ('to host / pick up the bill')",
+          "下次 → xià cì ('next time')",
+          "一定 → yīdìng ('definitely')"
         ]
       }
     ],
@@ -5288,7 +5702,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Tiếp khách hàng Trung Quốc tại Việt Nam khác tiếp khách Mỹ/Âu ở năm điểm cốt lõi: (1) 'Quan hệ' (关系) đến TRƯỚC 'business' (生意). Người Trung Quốc thích biết người trước khi biết hợp đồng — họ đầu tư 30-40% thời gian gặp gỡ vào ăn uống/giao lưu, không phải vì lãng phí mà vì xây nền tảng tin cậy. Khác Mỹ (presentation → numbers → contract trong 2 giờ), Trung Quốc cần 2 ngày + 3 bữa ăn để 'cảm nhận' đối tác. (2) 'Mặt' (面子) đan xen: bạn cho mặt khách (đặt khách sạn 5 sao, tour VIP, quà có giá trị), khách trả lại bằng cách quyết định nhanh hoặc giới thiệu thêm khách. KHÔNG cho mặt = không nhận hợp đồng. (3) Bữa ăn QUAN TRỌNG hơn họp văn phòng. Hợp đồng thực sự được 'đàm phán' qua bữa cơm tối với rượu — không phải qua PowerPoint sáng. Đừng tiếc tiền cho bữa ăn. (4) Quyết định cuối cùng KHÔNG được đưa ra trong cuộc gặp đầu tiên. Khách Trung Quốc cần 'tham khảo nội bộ' (内部商量) sau chuyến thăm. Đừng ép quyết định ngay tại Việt Nam — cho khách 1-2 tuần. (5) Sau chuyến thăm, follow-up trong 24h bằng tin nhắn cá nhân (không email): 'Tổng Vương, anh đã về Trung Quốc bình an chứ?' + ảnh đẹp đã chụp. Đây là dấu hiệu bạn coi trọng quan hệ.\n\nVề thanh toán bữa ăn: chiến đấu trả tiền (抢着买单) là phong tục — bạn và khách sẽ giả vờ tranh nhau trả. Người 'thắng' là host. Khi khách giả vờ đòi trả, bạn dùng '远来是客' + 'này lần em mời, lần sau anh đến Trung Quốc anh mời'. Đừng để khách thực sự trả — coi như host thua.\n\nQuà hợp tác lần đầu: từ phía host (Việt Nam) khoảng 500-2000 nhân dân tệ — đặc sản Việt cao cấp (cà phê Trung Nguyên, lụa Vạn Phúc, tranh Đông Hồ). Khách thường mang quà từ Trung Quốc (trà cao cấp, rượu Mao Đài) — đáp lại bằng quà tương đương giá trị. Quá đắt = nhận hối lộ; quá rẻ = không tôn trọng.",
+    "cultural_notes_en": "Hosting a Chinese business client in your country differs from hosting US/European clients on five core points: (1) 关系 (guānxi, relationship) comes BEFORE 生意 (shēngyi, business). Chinese partners prefer to know the person before the contract — they invest 30-40% of meeting time in meals and socializing, not as waste but to build trust. Unlike the US (presentation → numbers → contract in 2 hours), a Chinese partner needs 2 days + 3 meals to 'feel out' a counterpart. (2) 面子 (miànzi, face) interlocks: you give the guest face (5-star hotel, VIP tour, a gift of value), the guest reciprocates by deciding faster or referring more clients. No face = no contract. (3) The meal matters MORE than the office meeting. The real deal is 'negotiated' over dinner with drinks, not the morning PowerPoint. Don't skimp on the meal. (4) The final decision is NOT made at the first meeting. The Chinese guest needs 'internal consultation' (内部商量) after the visit. Don't force a decision on the spot — give 1-2 weeks. (5) After the visit, follow up within 24h by a personal message (not email): '王总，您平安回到中国了吗?' + a nice photo. A signal you value the relationship.\n\nPaying for meals: 'fighting to pay the bill' (抢着买单) is the custom — you and the guest will mock-fight over it. The 'winner' is the host. When the guest pretends to insist on paying, use 远来是客 ('a guest from afar is a guest') + 'this round is on me, next round in China is on you.' Never let the guest actually pay — that means the host lost.\n\nFirst-cooperation gift: from the host side, worth ~500-2000 RMB — a premium local specialty. The guest usually brings a gift from China (premium tea, Maotai liquor) — reciprocate with something of equal value. Too expensive = a bribe; too cheap = disrespect.",
     "tip_advice_vi": "(1) GẶP TRƯỚC khi gửi báo giá. Lần đầu hợp tác, KHÔNG gửi quote qua email — mời khách đến Việt Nam hoặc bạn đi Trung Quốc, gặp mặt + tour + ăn cơm + mới thảo luận giá. Email-only deals với khách Trung Quốc thường không thành công. (2) Chuẩn bị 'pitch package' chuyên nghiệp: brochure tiếng Trung (KHÔNG dùng Google Translate — thuê dịch chuyên nghiệp), video sản phẩm 2 phút, mẫu sản phẩm thật, 3 case study khách hàng cũ. (3) Trong tour nhà máy, mời khách CHẠM vào sản phẩm, ngửi nguyên liệu, xem QC test. Sense experience > slide deck. Khách Trung Quốc đặc biệt tin 'thấy tận mắt'. (4) Tránh 4 chủ đề trong tất cả mọi cuộc trò chuyện: chính trị Việt-Trung-Mỹ, lịch sử (1979 border war, Hoàng Sa), tôn giáo, vấn đề người Hoa ở Việt Nam. Nếu khách khơi mào, chuyển khéo bằng '这是个复杂的话题, 我们改天慢慢聊'. (5) Mời 1 phiên dịch chuyên nghiệp cho cuộc thảo luận quan trọng — kể cả nếu bạn HSK 6. Hiểu sai 1 từ chuyên môn (vd: '不良率' nhầm '良率') có thể mất hợp đồng. Phiên dịch chuyên nghiệp 1.5-2 triệu/ngày, đầu tư đáng. (6) Sau cuộc gặp, gửi 'meeting summary' chi tiết qua email TRONG 24h: tóm tắt nội dung, action items, deadline, người chịu trách nhiệm. Đây là chuẩn business Trung Quốc — không gửi = bị coi là thiếu chuyên nghiệp. (7) Cập nhật quan hệ định kỳ: Tết Trung Quốc, Tết Trung Thu, đầu năm mới gửi tin chúc kèm ảnh (không chỉ text). 'Quan hệ' không phải 1 lần đầu tư mà là 'maintain' liên tục.",
+    "tip_advice_en": "(1) MEET before sending a quote. On a first cooperation, do NOT send the quote by email — invite the client over or visit China; meet + tour + meal, then discuss price. Email-only deals with Chinese clients usually fail. (2) Prepare a professional pitch package: a Chinese brochure (NOT Google Translate — hire a professional translator), a 2-minute product video, real product samples, 3 past-customer case studies. (3) On the factory tour, invite the client to TOUCH the product, smell the materials, watch the QC test. Sensory experience beats a slide deck — Chinese clients especially trust 'seeing with their own eyes.' (4) Avoid four topics in every conversation: politics, contested history, territorial disputes, and ethnic/minority issues. If the client starts one, deflect smoothly with 这是个复杂的话题，我们改天慢慢聊. (5) Hire a professional interpreter for the key discussion — even if you're HSK 6. Mishearing one technical term (e.g. 不良率 'defect rate' vs 良率 'yield rate') can lose the contract. A professional interpreter is a worthwhile investment. (6) After the meeting, send a detailed 'meeting summary' by email WITHIN 24h: content, action items, deadlines, owners. This is the Chinese business standard — not sending it reads as unprofessional. (7) Maintain the relationship periodically: Chinese New Year, Mid-Autumn, the new year — send wishes with a photo (not just text). 关系 is not a one-time investment but continuous maintenance.",
     "exercises": [
       {
         "type": "fill-blank",
