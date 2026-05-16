@@ -10751,6 +10751,12 @@ export const lessons: ChineseLesson[] = [
           "请问 → qǐngwèn (xin hỏi formal)",
           "怎么走 → zěnme zǒu (đi thế nào)",
           "故宫 → Gùgōng (Cố Cung)"
+        ],
+        "pronunciation_focus_en": [
+          "您好 → nín hǎo ('hello' — formal, with 您)",
+          "请问 → qǐngwèn ('may I ask' — formal)",
+          "怎么走 → zěnme zǒu ('how do I get there')",
+          "故宫 → Gùgōng ('the Forbidden City')"
         ]
       },
       {
@@ -10763,6 +10769,12 @@ export const lessons: ChineseLesson[] = [
           "你知道 → nǐ zhīdào (informal you)",
           "地铁站 → dìtiě zhàn (ga tàu điện ngầm)",
           "在哪里 → zài nǎlǐ"
+        ],
+        "pronunciation_focus_en": [
+          "嗨 → hāi ('hi' — informal hello)",
+          "你知道 → nǐ zhīdào ('do you know' — informal 你)",
+          "地铁站 → dìtiě zhàn ('metro station')",
+          "在哪里 → zài nǎlǐ ('where is')"
         ]
       },
       {
@@ -10775,6 +10787,12 @@ export const lessons: ChineseLesson[] = [
           "两百米 → liǎngbǎi mǐ (200 mét)",
           "右转 → yòu zhuǎn (rẽ phải)",
           "然后 → ránhòu"
+        ],
+        "pronunciation_focus_en": [
+          "往前走 → wǎng qián zǒu ('go straight ahead')",
+          "两百米 → liǎngbǎi mǐ ('200 meters')",
+          "右转 → yòu zhuǎn ('turn right')",
+          "然后 → ránhòu ('then')"
         ]
       },
       {
@@ -10787,6 +10805,12 @@ export const lessons: ChineseLesson[] = [
           "左转 → zuǒ zhuǎn (rẽ trái)",
           "肯德基 → Kěndéjī (KFC)",
           "就到了 → jiù dào le (là đến)"
+        ],
+        "pronunciation_focus_en": [
+          "十字路口 → shízì lùkǒu ('intersection/crossroads')",
+          "左转 → zuǒ zhuǎn ('turn left')",
+          "肯德基 → Kěndéjī ('KFC' — transliteration)",
+          "就到了 → jiù dào le ('and you're there')"
         ]
       },
       {
@@ -10799,6 +10823,12 @@ export const lessons: ChineseLesson[] = [
           "十五分钟 → shíwǔ fēnzhōng (15 phút)",
           "打车 → dǎchē (đi taxi)",
           "五块钱 → wǔ kuài qián (5 tệ)"
+        ],
+        "pronunciation_focus_en": [
+          "走路 → zǒulù ('to walk')",
+          "十五分钟 → shíwǔ fēnzhōng ('15 minutes')",
+          "打车 → dǎchē ('to take a taxi')",
+          "五块钱 → wǔ kuài qián ('5 RMB'); 块 spoken for yuan"
         ]
       }
     ],
@@ -11048,7 +11078,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Hỏi đường ở Trung Quốc là một trong những hành động thân thiện nhất. Người Trung Quốc thường rất nhiệt tình giúp đỡ người lạ — nhiều khi họ dẫn bạn đến tận nơi thay vì chỉ giải thích.\n\nNăm điều người Việt cần biết:\n\n(1) NGƯỜI HÀ NỘI/HỒ CHÍ MINH có thể quen chỉ đường ngắn gọn ('đi thẳng, rẽ phải, đến nhà cao'). Người Trung Quốc thường chỉ CHI TIẾT HƠN — kèm landmark, số mét, thời gian. Đừng cảm thấy bị 'over-helped' — đó là phong cách thân thiện chuẩn.\n\n(2) CHỌN NGƯỜI HỎI: bảo vệ tòa nhà (保安) > nhân viên cửa hàng (店员) > người trung niên đi bộ > người trẻ với điện thoại > tài xế xe đạp/xe máy đang chạy. Tránh: người mặc đồng phục công an (họ bận, có quy trình) trừ khi thực sự cần.\n\n(3) NGÔN NGỮ: nếu ở thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến, Hàng Châu), người trẻ nói tiếng Anh cơ bản. Người trung niên + ở thành phố nhỏ = chỉ tiếng Trung. Học 10 cụm cứng + dùng Baidu Maps để showing tên địa điểm bằng hanzi.\n\n(4) APP BẢN ĐỒ: tại đại lục, Google Maps bị BLOCK. Baidu Maps (百度地图) và Gaode Maps (高德地图) là hai app chính. TẢI TRƯỚC khi đến Trung Quốc — App Store ở đại lục có thể không cho download Google products. Cài tiếng Anh ở Settings để dễ dùng.\n\n(5) TÊN ĐỊA ĐIỂM bằng PINYIN có thể không được hiểu rõ. Ví dụ: 'Wangfujing' nói chậm có thể được hiểu, nhưng 'Tiananmen' phát âm sai (không có '天安门') = người Trung không nhận ra. Tốt nhất: dùng app translate cho đối phương xem hanzi, hoặc thuộc tone marks chính xác.\n\nVề an toàn: Trung Quốc đại lục thành phố lớn AN TOÀN cho khách du lịch. CCTV phổ biến, đường lớn đèn sáng. Đi bộ ban đêm (đến 23h) ở Bắc Kinh/Thượng Hải = OK. Sau 1h sáng, đi taxi/DiDi an toàn hơn.\n\nVề con số đường: 米 (mét) là đơn vị chính. 'Một nửa cây số' = '500米', không '0.5公里'. Chỉ đường: '一直走' (đi thẳng), '往北/南/东/西' (về Bắc/Nam/Đông/Tây — người TQ rất giỏi định hướng theo phương) hoặc '往那边走' kèm tay chỉ.\n\nVề help-and-receive: nếu ai đó dẫn bạn 5-10 phút đến tận nơi, đề nghị tip nhỏ (10-20 tệ) cho 'time'. Họ sẽ thường từ chối — chấp nhận 1-2 lần từ chối là chân thành. Nếu họ thực sự lấy = giúp họ tiền cà phê. Nếu họ thực sự từ chối = cảm ơn lớn + ghi nhớ. Người Trung Quốc đại lục KHÔNG có văn hóa tip mạnh như phương Tây.",
+    "cultural_notes_en": "Asking directions in China is one of the friendliest acts. Chinese people are often very willing to help a stranger — many will walk you there rather than just explain.\n\nFive things to know:\n\n(1) Some cultures give terse directions ('straight, right, the tall building'). Chinese people often give MORE DETAIL — landmarks, meters, minutes. Don't feel 'over-helped' — that's the standard friendly style.\n\n(2) WHO TO ASK: a building guard (保安) > a shop clerk (店员) > a middle-aged pedestrian > a young person with a phone > a cyclist/rider in motion. Avoid uniformed police (busy, procedural) unless truly necessary.\n\n(3) LANGUAGE: in big cities (Beijing, Shanghai, Guangzhou, Shenzhen, Hangzhou) young people speak basic English; middle-aged people and smaller cities = Chinese only. Learn 10 set phrases + use a map app to show place names in hanzi.\n\n(4) MAP APPS: on the mainland Google Maps is BLOCKED. Baidu Maps (百度地图) and Gaode/Amap (高德地图) are the two main apps. DOWNLOAD them before arriving — the mainland App Store may not let you download Google products. Set English in Settings.\n\n(5) Place names in PINYIN may not be understood. 'Tiananmen' mispronounced (no real 天安门) = not recognized. Best: show the hanzi on a translate app, or learn the tone marks precisely.\n\nSafety: big mainland cities are SAFE for travelers — CCTV is common, main roads well-lit. Walking at night (until ~11pm) in Beijing/Shanghai is fine; after 1am a taxi/DiDi is safer.\n\nDistances: 米 (meters) is the unit. 'Half a kilometer' = 500米, not 0.5公里. Directions: 一直走 ('go straight'), 往北/南/东/西 (Chinese people navigate by compass well), or 往那边走 with a hand point.\n\nHelp-and-receive: if someone walks you 5-10 minutes there, offer a small token (10-20 RMB). They'll usually refuse — accept 1-2 refusals as sincere. Mainland China does NOT have a strong tipping culture like the West.",
     "tip_advice_vi": "(1) TẢI BAIDU MAPS hoặc GAODE MAPS trước khi đi Trung Quốc. Cả hai có offline mode — tải bản đồ thành phố bạn sẽ đến (Bắc Kinh, Thượng Hải) ~500MB mỗi cái. Không cần VPN/internet để xem đường. (2) HỌC THUỘC 10 cụm chỉ đường: 怎么走, 往前走, 左/右转, 十字路口, 红绿灯, 走路, 打车, 地铁, 公交, 米/分钟. Đủ cho 90% tình huống. (3) KHI HỎI, dùng cấu trúc 4 phần: chào (您好) + xin lỗi (打扰一下) + xin hỏi (请问) + đích đến cụ thể (X怎么走?). Người Trung sẽ trả lời rõ ràng và đầy đủ. (4) CHỤP ẢNH BIỂN HIỆU lưu vào điện thoại — Hanzi của khách sạn, văn phòng, nhà hàng. Khi lạc, đưa biển hiệu cho người chỉ đường > đọc tên bằng pinyin. Ảnh = chính xác 100%. (5) DÙNG WECHAT TRANSLATE: trong WeChat có chức năng dịch nhắn tin. Người Trung gõ tiếng Trung, bạn xem dịch tiếng Anh/Việt. Dùng khi không chắc về cụm dài. (6) TIP DI CHUYỂN: tàu điện ngầm Bắc Kinh/Thượng Hải/Quảng Châu = 3-7 tệ/lần, có WeChat/Alipay payment. KHÔNG cần xếp hàng mua thẻ — quẹt mã QR ở cửa. Bus = 1-2 tệ. Taxi = 14 tệ khởi điểm + 2.3/km. DiDi (滴滴) = app gọi xe, có English mode. (7) NẾU LẠC NGHIÊM TRỌNG: đến cảnh sát giao thông (交警), bảo vệ tòa nhà (保安), hoặc cửa hàng tiện lợi (便利店 — 7-Eleven, FamilyMart, Lawson). Nhân viên thường nói tiếng Anh cơ bản và quen giúp người lạ. KHÔNG dừng giữa đường lớn — di chuyển vào lề/vỉa hè trước khi mở app/hỏi.",
+    "tip_advice_en": "(1) DOWNLOAD Baidu Maps or Gaode/Amap before traveling. Both have offline mode — download the city map (~500MB each). No VPN/internet needed to view routes. (2) MEMORIZE 10 direction phrases: 怎么走, 往前走, 左/右转, 十字路口, 红绿灯, 走路, 打车, 地铁, 公交, 米/分钟. Covers 90% of cases. (3) When asking, use a 4-part structure: greet (您好) + excuse (打扰一下) + ask (请问) + specific destination (X怎么走?). You'll get a clear, complete answer. (4) PHOTOGRAPH SIGNAGE to your phone — the hanzi of your hotel, office, restaurant. When lost, showing the sign beats reading a pinyin name — 100% accurate. (5) USE WECHAT TRANSLATE: WeChat has in-chat translation. They type Chinese; you read it in English. Use it for longer phrases. (6) TRANSPORT: metro in big cities = 3-7 RMB, WeChat/Alipay payment, scan a QR at the gate (no ticket queue). Bus = 1-2 RMB. Taxi = 14 RMB base + 2.3/km. DiDi (滴滴) has an English mode. (7) IF SERIOUSLY LOST: go to traffic police (交警), a building guard (保安), or a convenience store (7-Eleven, FamilyMart, Lawson). Staff usually speak basic English and are used to helping strangers. Don't stop in the middle of a big road — move to the sidewalk before opening an app or asking.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -11109,6 +11141,12 @@ export const lessons: ChineseLesson[] = [
           "点 → diǎn (gọi món)",
           "宫保鸡丁 → gōngbǎo jīdīng (Kung Pao gà)",
           "不是 → bù shì"
+        ],
+        "pronunciation_focus_en": [
+          "这道菜 → zhè dào cài ('this dish'); 道 is the measure word for dishes",
+          "点 → diǎn ('to order' food)",
+          "宫保鸡丁 → gōngbǎo jīdīng ('Kung Pao chicken')",
+          "不是 → bù shì ('is not')"
         ]
       },
       {
@@ -11121,6 +11159,12 @@ export const lessons: ChineseLesson[] = [
           "麻烦您 → máfan nín (formal request)",
           "没点 → méi diǎn (không gọi)",
           "帮我 → bāng wǒ"
+        ],
+        "pronunciation_focus_en": [
+          "换 → huàn ('to change/swap')",
+          "麻烦您 → máfan nín ('may I trouble you' — formal request)",
+          "没点 → méi diǎn ('did not order')",
+          "帮我 → bāng wǒ ('help me')"
         ]
       },
       {
@@ -11133,6 +11177,12 @@ export const lessons: ChineseLesson[] = [
           "算错 → suàn cuò (tính nhầm)",
           "酒 → jiǔ (rượu)",
           "请问 → qǐngwèn"
+        ],
+        "pronunciation_focus_en": [
+          "账单 → zhàngdān ('the bill')",
+          "算错 → suàn cuò ('to miscalculate')",
+          "酒 → jiǔ ('alcoholic drink')",
+          "请问 → qǐngwèn ('may I ask')"
         ]
       },
       {
@@ -11145,6 +11195,12 @@ export const lessons: ChineseLesson[] = [
           "四个人 → sì gè rén (4 người)",
           "服务费 → fúwùfèi (phí dịch vụ)",
           "账单 → zhàngdān"
+        ],
+        "pronunciation_focus_en": [
+          "一共 → yīgòng ('in total')",
+          "四个人 → sì gè rén ('four people')",
+          "服务费 → fúwùfèi ('service charge')",
+          "账单 → zhàngdān ('the bill')"
         ]
       },
       {
@@ -11157,6 +11213,12 @@ export const lessons: ChineseLesson[] = [
           "打 → dǎ (in)",
           "正确 → zhèngquè (đúng)",
           "麻烦您 → máfan nín"
+        ],
+        "pronunciation_focus_en": [
+          "重新 → chóngxīn ('anew / again from scratch')",
+          "打 → dǎ ('to print' a bill)",
+          "正确 → zhèngquè ('correct')",
+          "麻烦您 → máfan nín ('may I trouble you')"
         ]
       }
     ],
@@ -11406,7 +11468,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa nhà hàng Trung Quốc đại lục có những đặc thù mà người Việt nên biết:\n\n(1) GỌI MÓN: phục vụ thường đứng tại bàn chờ. Bạn xem menu, gọi tên/số món rõ ràng (vì âm thanh nhà hàng ồn). Nếu không chắc tên, chỉ vào ảnh menu. Số người = số món + 1 (rule of thumb). Quá nhiều = lãng phí + đắt; quá ít = không đủ ăn.\n\n(2) ĐỒ ĂN GIA ĐÌNH: khác phương Tây (mỗi người 1 đĩa), Trung Quốc dùng đĩa chung — cả bàn chia sẻ. Lazy Susan (转盘 — zhuànpán) ở giữa bàn tròn. Xoay theo chiều kim đồng hồ. Người ăn lấy bằng đũa của mình từ đĩa chung — KHÔNG dùng đũa cá nhân chấm vào nước chấm chung (dùng 公筷 — đũa công cộng).\n\n(3) MENU: thường có ảnh + giá + tên hanzi + (đôi khi) tiếng Anh dịch. Nhà hàng cao cấp có menu tiếng Anh. Nhà hàng địa phương = chỉ tiếng Trung. Dùng app dịch để xem nguyên liệu (đặc biệt nếu bạn dị ứng).\n\n(4) PHÍ DỊCH VỤ (服务费): 10-15% là chuẩn ở nhà hàng formal/khách sạn. Nhà hàng địa phương thường KHÔNG có phí dịch vụ. Hóa đơn ghi rõ 'service charge X%'. Đây không phải tip — phục vụ vẫn nhận lương, không trông chờ thêm.\n\n(5) THANH TOÁN: WeChat Pay/Alipay là chính (95% nhà hàng nhận). Tiền mặt OK. Visa/Mastercard CHỈ ở chuỗi quốc tế (Hilton, Marriott) hoặc nhà hàng cao cấp (>500 tệ/người). Không nên dựa vào credit card.\n\n(6) HÓA ĐƠN HỢP LỆ (发票 — fāpiào): hóa đơn có dấu đỏ + mã số thuế. Yêu cầu '我要发票' khi cần báo cáo phí công tác. Có thể request 1 ngày sau qua WeChat của nhà hàng.\n\nVề lỗi: nhà hàng Trung Quốc THƯỜNG XUYÊN có lỗi nhỏ (sai món, tính nhầm) vì hệ thống thủ công + giấy tờ tay tại quầy. KHÔNG phải lừa đảo — chỉ là sơ suất. Bình tĩnh chỉ ra, họ sẽ sửa nhanh. Nếu họ từ chối sửa lỗi rõ ràng = vấn đề lớn hơn (gọi 12315 — hotline bảo vệ người tiêu dùng).\n\nVề review: Dianping (大众点评) là Yelp Trung Quốc — review nhiều người đọc. Nhà hàng cực sợ rating <3.5 sao. Đây là leverage MẠNH cho khiếu nại lớn — nhưng chỉ dùng khi đã yêu cầu nhiều lần không sửa.\n\nVề người Việt và món Trung: Trung Quốc có nhiều món rất CAY (Tứ Xuyên 四川, Hồ Nam 湖南) hoặc rất NỒNG (Sơn Đông 山东). Nhiều người Việt không quen — báo trước với phục vụ '不要太辣' (đừng cay quá) hoặc '少油' (ít dầu). Họ sẽ điều chỉnh.\n\nVề kiêng kỵ thực phẩm: nếu Hồi giáo/Halal — tìm nhà hàng có biển '清真' (Halal). Nếu chay — '素食' (chay) hoặc '我吃素' (em ăn chay). Người Việt nói 'ăn chay' = vegetarian; người Trung phân '全素' (vegan, không trứng/sữa) và '蛋奶素' (lacto-ovo). Hỏi rõ.",
+    "cultural_notes_en": "Mainland Chinese restaurant culture has features worth knowing:\n\n(1) ORDERING: the server often stands at the table waiting. Read the menu, say the dish name/number clearly (it's noisy). If unsure of the name, point at the photo. People = dishes + 1 (rule of thumb).\n\n(2) FAMILY-STYLE: unlike the West (one plate each), China shares from common dishes. A Lazy Susan (转盘 zhuànpán) sits in the middle; turn it clockwise. Take from shared dishes with your own chopsticks — but do NOT dip personal chopsticks into a shared sauce (use 公筷, serving chopsticks).\n\n(3) MENU: usually photos + price + hanzi + (sometimes) English. Upscale places have English menus; local ones are Chinese-only. Use a translate app for ingredients (especially with allergies).\n\n(4) SERVICE CHARGE (服务费): 10-15% at formal/hotel restaurants; local places usually none. The bill states 'service charge X%.' It is not a tip — servers are salaried and don't expect extra.\n\n(5) PAYMENT: WeChat Pay/Alipay (95% of places). Cash OK. International Visa/Mastercard only at international chains or upscale places. Don't rely on a credit card.\n\n(6) OFFICIAL INVOICE (发票 fāpiào): a red-stamped, tax-ID receipt. Say 我要发票 if you need it for expense reports; can be requested a day later via the restaurant's WeChat.\n\nErrors: Chinese restaurants OFTEN have small errors (wrong dish, miscount) because of manual systems — NOT a scam, just a slip. Calmly point it out; they fix it fast. A refusal to fix a clear error = a bigger problem (call 12315, the consumer hotline).\n\nReviews: Dianping (大众点评) is China's Yelp — widely read. Restaurants dread a rating <3.5. Strong leverage for a big complaint — but only after repeated unaddressed requests.\n\nSpice: some Chinese cuisines are very spicy (Sichuan 四川, Hunan 湖南) or very pungent (Shandong 山东). If you're not used to it, tell the server 不要太辣 ('not too spicy') or 少油 ('less oil') — they'll adjust.\n\nDietary restrictions: Halal — look for a 清真 sign. Vegetarian — 素食 or 我吃素; note Chinese distinguishes 全素 (vegan) from 蛋奶素 (lacto-ovo). Ask explicitly.",
     "tip_advice_vi": "(1) ĐỌC REVIEW TRƯỚC khi chọn nhà hàng — Dianping (大众点评), Meituan (美团), Trip.com cho khách quốc tế. Tránh nhà hàng có >10% review nói 'sai món' hoặc 'tính nhầm'. Mức 4.0+/5 là an toàn. (2) GỌI MÓN BẰNG SỐ + TÊN: '我要15号宫保鸡丁' (em gọi số 15 gà Kung Pao). Phục vụ ghi cả 2 — khó nhầm hơn. (3) GIỮ GIẤY GHI MÓN (点菜单): phục vụ đưa cho bạn xem trước khi vào bếp. Kiểm tra: đúng số người, đúng món, đúng số lượng. Nếu có sai, sửa NGAY tại bàn — KHÔNG đợi món lên. (4) ẢNH MÀN HÌNH HÓA ĐƠN trước khi thanh toán: chụp ảnh hóa đơn giấy/màn hình. Bằng chứng nếu có tranh chấp sau. (5) KIỂM TRA TỪNG MỤC trên hóa đơn: số món, đơn giá, số lượng, phí dịch vụ. Tổng cộng dùng máy tính trên điện thoại. Sai > 5 tệ = báo. Sai < 5 tệ = bỏ qua (không đáng thời gian). (6) KHIẾU NẠI KHÉO: cấu trúc 3 bước — chỉ ra lỗi (1 câu), yêu cầu sửa (1 câu), kết thúc cảm ơn (1 câu). Không kéo dài 5 phút. (7) NẾU KHÔNG XỬ LÝ: gọi quản lý (经理 — jīnglǐ). Nếu vẫn không, gọi 12315 (hotline bảo vệ người tiêu dùng — miễn phí, có người nói tiếng Anh ở thành phố lớn). Đây là leverage cuối cùng, không lạm dụng.",
+    "tip_advice_en": "(1) READ REVIEWS first — Dianping (大众点评), Meituan (美团), Trip.com for international visitors. Avoid places with >10% reviews citing 'wrong dish' or 'miscount.' 4.0+/5 is safe. (2) ORDER BY NUMBER + NAME: '我要15号宫保鸡丁' ('I'll have No. 15, Kung Pao chicken'). The server writes both — harder to mix up. (3) KEEP THE ORDER SLIP (点菜单) the server shows you before the kitchen: check headcount, dishes, quantities. Fix errors AT THE TABLE — not after the food arrives. (4) SCREENSHOT/PHOTO THE BILL before paying — evidence if there's a later dispute. (5) CHECK EACH LINE on the bill: dish, unit price, quantity, service charge. Total it on your phone calculator. Off by >5 RMB = report; <5 RMB = let it go (not worth the time). (6) COMPLAIN TACTFULLY: 3 steps — point out the error (1 sentence), request a fix (1 sentence), close with thanks (1 sentence). No 5-minute speech. (7) IF UNRESOLVED: ask for the manager (经理). Still nothing → call 12315 (consumer hotline, free, English in big cities). A last-resort lever; don't overuse.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -11467,6 +11531,12 @@ export const lessons: ChineseLesson[] = [
           "走快点 → zǒu kuài diǎn (đi nhanh hơn)",
           "绕路 → rào lù (đi vòng)",
           "不要 → bù yào"
+        ],
+        "pronunciation_focus_en": [
+          "师傅 → shīfu (the standard address for a driver/tradesperson)",
+          "走快点 → zǒu kuài diǎn ('go a bit faster')",
+          "绕路 → rào lù ('to take a detour / the long way')",
+          "不要 → bù yào ('don't')"
         ]
       },
       {
@@ -11479,6 +11549,12 @@ export const lessons: ChineseLesson[] = [
           "赶时间 → gǎn shíjiān (vội)",
           "请走 → qǐng zǒu",
           "请 → qǐng"
+        ],
+        "pronunciation_focus_en": [
+          "最短路线 → zuì duǎn lùxiàn ('the shortest route')",
+          "赶时间 → gǎn shíjiān ('to be in a hurry')",
+          "请走 → qǐng zǒu ('please go/take')",
+          "请 → qǐng ('please')"
         ]
       },
       {
@@ -11491,6 +11567,12 @@ export const lessons: ChineseLesson[] = [
           "直走 → zhí zǒu (đi thẳng)",
           "十五分钟 → shíwǔ fēnzhōng (15 phút)",
           "刚才 → gāngcái"
+        ],
+        "pronunciation_focus_en": [
+          "地图 → dìtú ('map')",
+          "直走 → zhí zǒu ('go straight')",
+          "十五分钟 → shíwǔ fēnzhōng ('15 minutes')",
+          "刚才 → gāngcái ('just now')"
         ]
       },
       {
@@ -11503,6 +11585,12 @@ export const lessons: ChineseLesson[] = [
           "滴滴 → dīdī (DiDi app)",
           "30块 → sānshí kuài (30 tệ)",
           "为什么 → wèishéme"
+        ],
+        "pronunciation_focus_en": [
+          "显示 → xiǎnshì ('to display/show')",
+          "滴滴 → dīdī ('DiDi', the ride app)",
+          "30块 → sānshí kuài ('30 RMB'); 块 spoken for yuan",
+          "为什么 → wèishéme ('why')"
         ]
       },
       {
@@ -11515,6 +11603,12 @@ export const lessons: ChineseLesson[] = [
           "金额 → jīn'é (số tiền)",
           "额外 → éwài (thêm / extra)",
           "不付 → bù fù"
+        ],
+        "pronunciation_focus_en": [
+          "按 → àn ('according to')",
+          "金额 → jīn'é ('the amount/sum')",
+          "额外 → éwài ('extra/additional')",
+          "不付 → bù fù ('not pay')"
         ]
       }
     ],
@@ -11750,7 +11844,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Hệ thống di chuyển ở Trung Quốc đại lục có hai loại chính:\n\n(1) DIDI (滴滴出行): app gọi xe lớn nhất Trung Quốc — 600+ triệu user, có English mode. Tải miễn phí trên App Store. Đăng ký bằng số ĐT Trung Quốc HOẶC số quốc tế (cần OTP). Kết nối với Alipay/WeChat Pay HOẶC thẻ Visa/Mastercard quốc tế. Loại xe: 快车 (Express, rẻ nhất, sedan), 优享 (Comfort, sedan tốt hơn), 专车 (Premier, BMW/Mercedes), 拼车 (Carpool, share, rẻ nhất). Đi sân bay 50-150 tệ tùy thành phố.\n\n(2) TAXI ĐƯỜNG PHỐ: ở mọi thành phố. Vẫy tay là dừng. Khởi điểm 10-14 tệ + 2.3 tệ/km. KHÔNG cần app, nhưng:\n- Dễ bị từ chối nếu là người nước ngoài (số ít tài xế ngại communication)\n- Đôi khi đồng hồ 'bị hỏng' = bịa giá\n- Khó chứng minh khiếu nại\nKhuyến nghị: dùng DiDi 90% lúc, taxi đường phố chỉ khi không có DiDi (ngõ nhỏ, mưa to, app sập).\n\nVề bằng chứng: DiDi giữ FULL log: lộ trình GPS, ước tính giá, thời gian đón/trả, đánh giá tài xế. Khi khiếu nại qua app, DiDi nhìn vào log + xử lý 24-48 giờ. Bồi thường có thể là: hoàn tiền, voucher, phạt tài xế (giảm rating của họ — họ rất sợ điều này).\n\nVề ngôn ngữ tài xế: 90% tài xế Trung Quốc đại lục KHÔNG nói tiếng Anh. App DiDi có:\n- Translation function trong chat\n- Voice messages (gửi voice tiếng Anh, app dịch sang tiếng Trung cho tài xế nghe)\n- Pre-set messages: 'Where are you?', 'Please come faster', 'I'm here'\n\nVề an toàn: DiDi sau 'vụ Yueyue 2018' đã tăng cường security: tài xế phải verify danh tính + face recognition trước mỗi shift; có nút SOS trong app gọi 110; có tính năng share GPS với người thân real-time. Đêm khuya 23:00-05:00 có 'safety mode' — chỉ tài xế có rating cao được nhận khách.\n\nVề tip/phụ thu: KHÔNG có tip ở đại lục. Đôi khi tài xế hỏi tip 'làm tròn' (10 tệ → 15 tệ) — đặc biệt với khách nước ngoài. Lịch sự từ chối: '不用了, 谢谢' (không cần, cảm ơn). Nếu tài xế giúp đặc biệt (mang vali, đợi bạn rút tiền), cho 10-20 tệ là phù hợp.\n\nVề khiếu nại: nếu tranh chấp với tài xế:\n- DiDi: phần khiếu nại trong app, thường giải quyết 24h\n- Taxi truyền thống: gọi 12328 (transportation hotline) — có người tiếng Anh ở thành phố lớn\n- Cuối cùng: 110 (cảnh sát) — chỉ khi tài xế có hành vi nguy hiểm hoặc đe dọa\n\nVề thời gian cao điểm: Bắc Kinh + Thượng Hải kẹt khủng khiếp 7-9h sáng, 17-19h tối. Tránh đặt xe khi đó — chuyển sang tàu điện ngầm hoặc đặt sớm hơn.",
+    "cultural_notes_en": "Mainland China has two main ride options:\n\n(1) DIDI (滴滴出行): China's largest ride app — 600M+ users, has an English mode. Free on the App Store. Register with a Chinese OR international phone (needs OTP). Link Alipay/WeChat Pay OR an international Visa/Mastercard. Tiers: 快车 (Express, cheapest sedan), 优享 (Comfort), 专车 (Premier, luxury), 拼车 (Carpool, share). Airport runs 50-150 RMB by city.\n\n(2) STREET TAXIS: everywhere; wave to stop. Base 10-14 RMB + 2.3/km. No app needed, but: foreigners are more easily refused (some drivers avoid communication); the meter is sometimes 'broken' (a made-up fare); a complaint is hard to prove. Recommendation: use DiDi 90% of the time; street taxis only when no DiDi (small alleys, heavy rain, app down).\n\nEvidence: DiDi keeps a FULL log — GPS route, fare estimate, pickup/dropoff times, driver rating. An in-app complaint is judged on the log in 24-48h. Compensation can be a refund, voucher, or a driver penalty (lowering their rating — which they fear).\n\nDriver language: ~90% of mainland drivers do NOT speak English. The DiDi app has in-chat translation, voice messages (your English is translated to Chinese for the driver), and pre-set messages.\n\nSafety: after a 2018 incident, DiDi tightened security — driver identity + face verification per shift, an in-app SOS to 110, real-time GPS sharing. Late night (23:00-05:00) has a 'safety mode' (only high-rated drivers).\n\nTips/surcharge: NO tipping on the mainland. A driver may ask to 'round up' (esp. with foreigners) — politely decline: 不用了，谢谢. If they specially help (carrying a suitcase, waiting), 10-20 RMB is appropriate.\n\nComplaints: DiDi — the in-app section, usually resolved in 24h; traditional taxi — call 12328 (transport hotline, English in big cities); last resort 110 (police) only for dangerous or threatening behavior.\n\nRush hour: Beijing + Shanghai jam terribly 7-9am, 5-7pm. Avoid booking then — switch to the metro or book earlier.",
     "tip_advice_vi": "(1) TẢI DIDI TRƯỚC KHI ĐẾN TQ: cần số ĐT để OTP. Số quốc tế OK nhưng OTP từ Trung Quốc không phải lúc nào cũng đến. Tốt nhất: đăng ký với số ĐT Việt Nam khi bạn đang ở VN, sau khi cài đặt thành công thì bay qua. (2) KẾT NỐI THẺ: Visa/Mastercard quốc tế hoạt động trên DiDi (sau 2023). Setup trong app trước khi đi. KHÔNG dựa vào WeChat Pay nếu chưa có ID Trung Quốc — link thẻ quốc tế đã ổn định hơn. (3) KIỂM TRA BIỂN SỐ trước khi lên xe: app hiển thị biển số tài xế. Khớp với biển số xe thực = OK. Không khớp = HỦY ngay (Cancel + report). Có người giả vờ là DiDi để chở khách nước ngoài. (4) ĐÔ THỊ LỚN HƠN không cần dùng tiếng Trung nhiều: chỉ destination trên app, tài xế dùng GPS. Bạn chỉ cần nói '到了, 谢谢' (đến rồi, cảm ơn). 5 phút trên đường, không bắt buộc nói chuyện. (5) BẢN ĐỒ DỰ PHÒNG: Gaode Maps (高德) hoặc Baidu Maps (百度) — kiểm tra route + giá ước tính TRƯỚC khi đặt xe. Nếu DiDi báo giá quá cao (>50% Gaode estimate) = giờ cao điểm hoặc weather surcharge. Cân nhắc chờ. (6) AN TOÀN CÁ NHÂN: chia GPS với bạn/đồng nghiệp qua DiDi 'Share Trip'. Đến nơi rồi bấm 'I've arrived' để app biết bạn an toàn. Nếu tài xế đi sai đường nhiều >5 phút = SOS button có sẵn (gọi 110 + báo DiDi). (7) GIỮ HÓA ĐƠN ĐIỆN TỬ: trong app DiDi → Trips → trip cụ thể → Get Invoice. Email tự động sau 1-7 ngày. Đối với báo cáo công tác: cần fapiao chính quy với tax ID — thiết lập trong app trước khi đặt xe.",
+    "tip_advice_en": "(1) DOWNLOAD DIDI BEFORE arriving: it needs a phone for OTP. An international number works but the OTP doesn't always arrive from China — best to register with your home number while still home, then fly over. (2) LINK A CARD: international Visa/Mastercard works on DiDi (post-2023). Set it up before traveling; don't rely on WeChat Pay without a Chinese ID. (3) CHECK THE PLATE before boarding: the app shows the driver's plate. Matches the real car = OK. Doesn't match = CANCEL + report (some impostors target foreigners). (4) BIG CITIES NEED LITTLE CHINESE: set the destination in-app, the driver uses GPS. You only need 到了，谢谢 ('we're here, thanks'). (5) BACKUP MAP: Gaode (高德) or Baidu (百度) — check the route + estimated fare BEFORE booking. If DiDi quotes >50% over the Gaode estimate = surge or weather surcharge; consider waiting. (6) PERSONAL SAFETY: share GPS with a friend via DiDi 'Share Trip.' Tap 'I've arrived' so the app knows you're safe. If the driver goes off-route >5 minutes, the SOS button is there (110 + DiDi alert). (7) KEEP THE E-INVOICE: DiDi → Trips → the trip → Get Invoice; emailed in 1-7 days. For expense reports needing an official fapiao with a tax ID, set it in the app before booking.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -11811,6 +11907,12 @@ export const lessons: ChineseLesson[] = [
           "为我们好 → wèi wǒmen hǎo (vì tốt cho bọn con)",
           "自己决定 → zìjǐ juédìng (tự quyết định)",
           "您 → nín (formal với mẹ chồng)"
+        ],
+        "pronunciation_focus_en": [
+          "妈 → mā ('Mom' — used for the mother-in-law, no surname)",
+          "为我们好 → wèi wǒmen hǎo ('means well for us')",
+          "自己决定 → zìjǐ juédìng ('decide ourselves')",
+          "您 → nín (formal 'you', for in-laws)"
         ]
       },
       {
@@ -11823,6 +11925,12 @@ export const lessons: ChineseLesson[] = [
           "不一样 → bù yīyàng (không giống)",
           "理解 → lǐjiě (thông cảm)",
           "希望 → xīwàng"
+        ],
+        "pronunciation_focus_en": [
+          "习惯 → xíguàn ('custom/habit')",
+          "不一样 → bù yīyàng ('different')",
+          "理解 → lǐjiě ('to understand')",
+          "希望 → xīwàng ('to hope')"
         ]
       },
       {
@@ -11835,6 +11943,12 @@ export const lessons: ChineseLesson[] = [
           "想法 → xiǎngfǎ (ý kiến)",
           "选择 → xuǎnzé (lựa chọn)",
           "也希望 → yě xīwàng"
+        ],
+        "pronunciation_focus_en": [
+          "尊重 → zūnzhòng ('to respect')",
+          "想法 → xiǎngfǎ ('thoughts/views')",
+          "选择 → xuǎnzé ('choice')",
+          "也希望 → yě xīwàng ('also hope')"
         ]
       },
       {
@@ -11847,6 +11961,12 @@ export const lessons: ChineseLesson[] = [
           "接受 → jiēshòu (chấp nhận)",
           "办法 → bànfǎ (cách / phương án)",
           "大家 → dàjiā"
+        ],
+        "pronunciation_focus_en": [
+          "各让一步 → gè ràng yī bù ('each give a step / compromise')",
+          "接受 → jiēshòu ('to accept')",
+          "办法 → bànfǎ ('solution/method')",
+          "大家 → dàjiā ('everyone')"
         ]
       },
       {
@@ -11859,6 +11979,12 @@ export const lessons: ChineseLesson[] = [
           "永远 → yǒngyuǎn (mãi mãi)",
           "不会变 → bù huì biàn (không đổi)",
           "这点 → zhè diǎn"
+        ],
+        "pronunciation_focus_en": [
+          "儿媳妇 → érxífu ('daughter-in-law')",
+          "永远 → yǒngyuǎn ('forever')",
+          "不会变 → bù huì biàn ('won't change')",
+          "这点 → zhè diǎn ('this point')"
         ]
       }
     ],
@@ -12101,7 +12227,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Quan hệ con dâu - mẹ chồng (婆媳关系 — póxí guānxi) là một trong những mối quan hệ phức tạp nhất trong gia đình Trung Quốc. Khác Việt Nam ở vài điểm:\n\n(1) GIA ĐÌNH MỞ RỘNG: ở Trung Quốc đại lục (đặc biệt vùng nông thôn + thành phố nhỏ), bố mẹ chồng kỳ vọng can dự sâu vào đời sống con — lựa chọn nhà, đặt tên cháu, chăm cháu, quyết định khi nào sinh con thứ hai. Vợ chồng trẻ ở thành phố lớn (Bắc Kinh, Thượng Hải) đã thay đổi nhưng quê thì vẫn vậy. Bạn lấy chồng/vợ Trung Quốc cần biết gia đình họ thuộc cấp độ nào.\n\n(2) CON DÂU LÀ 'NGƯỜI NHÀ NHƯNG NGƯỜI NGOÀI': khái niệm '半个外人' (nửa người ngoài) — về mặt pháp luật là vợ con trai, về mặt văn hóa vẫn cần thời gian để được công nhận hoàn toàn. Khác Việt Nam (con dâu nhanh chóng được coi là con). Đầu tư 3-5 năm để xây quan hệ tốt.\n\n(3) MẸ CHỒNG TRUNG QUỐC THƯỜNG NÓI THẲNG: không bóng gió. Khen thì khen công khai, chê cũng chê công khai. Người Việt thường thấy 'thô lỗ' — nhưng đó là phong cách thân mật của họ. Đừng coi mọi lời nhận xét là tấn công cá nhân.\n\n(4) ÁP LỰC SINH CON, CHĂM CON: cao hơn Việt Nam. 'Cháu nội' (孙子) đặc biệt quan trọng cho hệ thống dòng họ Trung Quốc. Nếu vợ chồng bạn không muốn có con sớm hoặc không muốn có con, đây sẽ là điểm xung đột chính. Cách xử lý: đưa lý do CỤ THỂ + thời gian dự kiến + cam kết.\n\n(5) TIỀN BẠC GIA ĐÌNH: bố mẹ chồng có thể hỏi lương, hỏi tiền tiết kiệm, đề xuất bạn đưa tiền về quê hàng tháng. Đây là chuẩn mực 'gia đình một mối'. Cách từ chối khéo: 'bọn con đang trả nợ mua nhà, chưa dư nhiều' — không nói 'không có'.\n\nVề lễ Tết và quà: con dâu Việt Nam lấy chồng Trung Quốc cần học kỹ. Tết âm lịch tặng quà bố mẹ chồng (mỗi bên 200-1,000 tệ). Sinh nhật, Tết Trung Thu, đầu năm — đều có. Đặc sản Việt Nam (cà phê, bánh đậu xanh) là quà lý tưởng — vừa tinh tế vừa thể hiện gốc văn hóa.\n\nVề ngôn ngữ: bố mẹ chồng/vợ thường hơn 50 tuổi → khả năng tiếng Anh rất hạn chế. Bạn PHẢI học tiếng Trung tốt để giao tiếp trực tiếp. Học tiếng địa phương của họ (giọng Bắc Kinh, Thượng Hải, Quảng Đông) là điểm cộng rất lớn — họ sẽ cảm thấy được tôn trọng.\n\nVề mâu thuẫn: ƯU TIÊN giải quyết qua chồng/vợ — họ đóng vai trò trung gian. Đừng đối đầu trực tiếp với mẹ chồng. Nếu bố mẹ chồng làm bạn buồn, NÓI VỚI CHỒNG/VỢ TRƯỚC, để họ truyền đạt — văn hóa 'không trực tiếp' (间接 — jiànjiē).",
+    "cultural_notes_en": "The daughter-in-law / mother-in-law relationship (婆媳关系 póxí guānxi) is one of the most complex in a Chinese family. Key points:\n\n(1) EXTENDED FAMILY: on the mainland (especially rural + smaller cities) parents-in-law expect deep involvement — choosing the home, naming grandchildren, childcare, deciding when to have a second child. Big-city couples have shifted, but home regions often haven't. Know which level your spouse's family is at.\n\n(2) THE IN-MARRYING SPOUSE IS 'FAMILY YET OUTSIDER': the notion 半个外人 ('half an outsider') — legally family, culturally still earning full acceptance over time. Invest 3-5 years to build the relationship.\n\n(3) A CHINESE MOTHER-IN-LAW OFTEN SPEAKS DIRECTLY: no hinting — public praise, public criticism. It can read as 'rude' to outsiders, but it's their intimate style. Don't take every remark as a personal attack.\n\n(4) PRESSURE ABOUT CHILDREN: high. A grandson (孙子) carries weight in the lineage system. If you and your spouse don't want children soon or at all, this is the main conflict point. Handling: give a CONCRETE reason + an expected timeline + a commitment.\n\n(5) FAMILY MONEY: in-laws may ask about salary and savings and suggest sending money home monthly — a 'one-family' norm. Decline gracefully: 'we're paying off the home loan, not much spare' — not 'we have none.'\n\nGifts and festivals: Lunar New Year gifts to each set of in-laws (200-1,000 RMB each), plus birthdays and Mid-Autumn. A specialty from your home region is an ideal gift — refined and a nod to your roots.\n\nLanguage: in-laws are usually 50+ with very limited English. You MUST learn good Chinese to communicate directly; learning their regional accent is a big plus — they feel respected.\n\nConflict: PRIORITIZE resolving through your spouse, who is the intermediary. Don't confront the mother-in-law directly. If they upset you, tell your spouse FIRST and let them relay it — an indirect (间接 jiànjiē) culture.",
     "tip_advice_vi": "(1) HỌC GỌI TÊN ĐÚNG ngay từ đầu: 妈 (mẹ chồng/vợ), 爸 (bố chồng/vợ), 哥 (anh chồng), 嫂 (chị dâu)... Sai gọi tên = bị coi là không nghiêm túc. Hỏi chồng/vợ list cách gọi cho cả gia đình và học thuộc trước khi gặp lần đầu. (2) HỌC NẤU 1-2 MÓN TRUNG QUỐC chuẩn (đặc biệt món của bố/mẹ chồng — ví dụ Tứ Xuyên thì học 麻婆豆腐, Bắc Kinh thì 京酱肉丝). Nấu cho họ ăn trong cuộc gặp đầu = bonding mạnh. Học từ video Bilibili + thực tập 5-10 lần trước. (3) MANG QUÀ ĐẶC SẢN VIỆT NAM mỗi lần thăm: cà phê G7 cao cấp, bánh đậu xanh Hải Dương, lụa Vạn Phúc, tranh Đông Hồ. Tổng giá trị 200-500 tệ. Gói gọn gàng, KHÔNG đỏ-đen (màu tang). (4) DÀNH RIÊNG 5-10 PHÚT mỗi lần gặp để TRÒ CHUYỆN với mẹ chồng — về sức khỏe, hàng xóm, trẻ con, công việc. Đừng chỉ làm việc nhà rồi đi. Đầu tư thời gian = đầu tư quan hệ. (5) LƯU SỐ ĐT mẹ chồng + gọi mỗi tuần 1 lần (15-20 phút) — kể cả không có gì cụ thể. Hỏi sức khỏe, kể chuyện công việc nhẹ. Mẹ chồng Trung Quốc cảm thấy được quan tâm khi bạn chủ động liên lạc. (6) KHI BẤT ĐỒNG: KHÔNG cãi trước mặt cả nhà. Rút lui (đi nấu ăn, chăm con, ra ngoài), bình tĩnh lại, sau đó nói RIÊNG với mẹ chồng hoặc qua chồng. Không gây mất mặt mẹ chồng trước người khác. (7) NHỚ NGÀY SINH NHẬT, KỶ NIỆM bố mẹ chồng: đặt nhắc nhở trên điện thoại. Lễ Trung Thu, Tết âm — gọi đầu tiên. Mẹ chồng Trung Quốc nhớ rất kỹ ai đã nhớ ai đã quên.",
+    "tip_advice_en": "(1) LEARN THE CORRECT TERMS of address from the start: 妈, 爸, 哥, 嫂… Getting them wrong reads as not serious. Ask your spouse for the whole family's address list and memorize it before the first meeting. (2) LEARN TO COOK 1-2 authentic Chinese dishes (especially the in-laws' regional ones). Cooking for them at the first meeting = strong bonding; learn from videos + practice 5-10 times first. (3) BRING A HOME SPECIALTY each visit (premium coffee, sweets, silk). Total 200-500 RMB; wrap neatly, NOT red-black (mourning). (4) SET ASIDE 5-10 MINUTES each visit to TALK with the mother-in-law — health, neighbors, kids, work. Don't just do chores and leave. Time invested = relationship invested. (5) SAVE the mother-in-law's number + call weekly (15-20 min) even with nothing specific. A Chinese mother-in-law feels cared for when you reach out proactively. (6) WHEN YOU DISAGREE: do NOT argue in front of the whole family. Withdraw (cook, mind the kids, step out), calm down, then talk PRIVATELY or via your spouse. Never make her lose face publicly. (7) REMEMBER birthdays/anniversaries: set phone reminders. At Mid-Autumn and New Year, call first. A Chinese mother-in-law remembers exactly who remembered and who forgot.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -12162,6 +12290,12 @@ export const lessons: ChineseLesson[] = [
           "工作 → gōngzuò (công việc)",
           "受不了 → shòu bù liǎo (không chịu nổi)",
           "长期 → chángqī (lâu dài)"
+        ],
+        "pronunciation_focus_en": [
+          "996 → 'jiǔ-jiǔ-liù', said as the digits (9am-9pm, 6 days/week)",
+          "工作 → gōngzuò ('work')",
+          "受不了 → shòu bù liǎo ('can't bear it')",
+          "长期 → chángqī ('long-term')"
         ]
       },
       {
@@ -12174,6 +12308,12 @@ export const lessons: ChineseLesson[] = [
           "选择 → xuǎnzé (lựa chọn)",
           "不一样 → bù yīyàng (không giống)",
           "每个人 → měi gè rén"
+        ],
+        "pronunciation_focus_en": [
+          "想法 → xiǎngfǎ ('view / way of thinking')",
+          "选择 → xuǎnzé ('choice')",
+          "不一样 → bù yīyàng ('different')",
+          "每个人 → měi gè rén ('each person')"
         ]
       },
       {
@@ -12186,6 +12326,12 @@ export const lessons: ChineseLesson[] = [
           "平衡 → pínghéng (cân bằng)",
           "对错 → duì cuò (đúng sai)",
           "更喜欢 → gèng xǐhuan"
+        ],
+        "pronunciation_focus_en": [
+          "拼事业 → pīn shìyè ('to grind hard at one's career')",
+          "平衡 → pínghéng ('balance')",
+          "对错 → duì cuò ('right or wrong')",
+          "更喜欢 → gèng xǐhuan ('prefer')"
         ]
       },
       {
@@ -12198,6 +12344,12 @@ export const lessons: ChineseLesson[] = [
           "互相 → hùxiāng (lẫn nhau)",
           "尊重 → zūnzhòng (tôn trọng)",
           "就好 → jiù hǎo"
+        ],
+        "pronunciation_focus_en": [
+          "见仁见智 → jiàn rén jiàn zhì (idiom: 'different people, different views')",
+          "互相 → hùxiāng ('mutually')",
+          "尊重 → zūnzhòng ('respect')",
+          "就好 → jiù hǎo ('is enough')"
         ]
       },
       {
@@ -12210,6 +12362,12 @@ export const lessons: ChineseLesson[] = [
           "伤感情 → shāng gǎnqíng (tổn thương tình cảm)",
           "朋友 → péngyou",
           "还是 → háishì"
+        ],
+        "pronunciation_focus_en": [
+          "不管 → bùguǎn ('regardless / no matter')",
+          "伤感情 → shāng gǎnqíng ('to hurt the relationship/feelings')",
+          "朋友 → péngyou ('friend')",
+          "还是 → háishì ('still')"
         ]
       }
     ],
@@ -12445,7 +12603,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Bất đồng lối sống Việt-Trung là chủ đề tế nhị nhưng phổ biến trong tình bạn xuyên văn hóa. Năm điểm khác biệt thường gây tranh luận:\n\n(1) WORK CULTURE: Trung Quốc đại lục có '996' (9am-9pm, 6 ngày/tuần) trong tech và một số ngành. Đây là chuẩn mực được chấp nhận, dù bị chỉ trích. Người Việt thường có giờ làm 8-5 + 1-2 lần tăng ca/tuần. Khi bạn Trung Quốc nói '我加班到晚上11点' = không phàn nàn, là báo cáo bình thường. Không thương hại — họ không cảm thấy cần thương hại.\n\n(2) HỆ THỐNG HẸN HÒ / KẾT HÔN: Trung Quốc có truyền thống 相亲 (xiāngqīn — phối hôn nhân qua bố mẹ/người mai mối) vẫn phổ biến ở thành phố nhỏ + thế hệ lớn tuổi. Người trẻ thành phố thoát dần nhưng áp lực 'năm 30 tuổi vẫn chưa lấy chồng' cực mạnh. Khái niệm '剩女' (shèng nǚ — gái ế) là từ phổ biến và buồn. Người Việt không có khái niệm này mạnh đến vậy.\n\n(3) TIẾT KIỆM vs CHI TIÊU: tỷ lệ tiết kiệm hộ gia đình Trung Quốc cao nhất thế giới (~30-40% lương). Người Việt thường tiết kiệm ~15-25%. Nguyên nhân Trung Quốc: hệ thống an sinh xã hội yếu (y tế, hưu trí), văn hóa 'để con cháu', áp lực mua nhà cho con trai. Đừng coi thói tiết kiệm cực đoan của bạn Trung là 'keo kiệt' — đó là chiến lược sinh tồn.\n\n(4) FAMILY OBLIGATIONS: bố mẹ Trung Quốc gửi tiền hàng tháng cho ông bà ở quê là chuẩn mực. Người trẻ Trung Quốc thường gánh tài chính bố mẹ + ông bà 2 bên. Người Việt cũng có nhưng ít cường độ hơn. Khi bạn Trung Quốc nói 'mình phải gửi 5,000 tệ về quê' — đó không phải tự nguyện, là nghĩa vụ văn hóa.\n\n(5) FITNESS / HEALTH CULTURE: gym + tập thể hình rất phổ biến ở Trung Quốc đại lục đô thị (đặc biệt nam giới). Phòng gym 24/7 (Pure Fitness, Will's) ở Bắc Kinh, Thượng Hải. Người Việt thường tập nhẹ hơn — đi bộ, yoga, đạp xe. Khi bạn Trung Quốc đề xuất 'cùng đi gym 5 lần/tuần' = họ đang mời bạn vào hoạt động xã hội của họ. Từ chối nhẹ + đề xuất hoạt động khác.\n\nVỀ LỜI KHUYÊN không cần thiết: bạn bè Trung Quốc thường tự do đưa lời khuyên về lối sống của bạn. Đây không phải 'thô lỗ' mà là 'quan tâm thân tình'. Khác Việt Nam (lời khuyên thường được hỏi mới đưa). Không phật ý — cảm ơn + làm theo cách mình.\n\nVỀ CHỦ ĐỀ NHẠY CẢM riêng cá nhân (không phải chính trị): tiền lương, kế hoạch sinh con, lý do chưa kết hôn — bạn Trung Quốc có thể hỏi thẳng. Người Việt thường giấu. Cách trả lời: 'mình thoải mái với mức hiện tại', 'vẫn đang suy nghĩ', 'chưa gặp đúng người'. Nhẹ nhàng + không tiết lộ chi tiết.\n\nVỀ TỪ '三观' (sān guān — 3 quan điểm): rất phổ biến trong giới trẻ Trung Quốc — chỉ khái niệm tổng hợp về thế giới quan/nhân sinh quan/giá trị quan. '三观一致' = cùng tần số. '三观不合' = không cùng tần số. Khi bạn Trung Quốc nói '我们三观还挺一致的' = tín hiệu tốt cho tình bạn.",
+    "cultural_notes_en": "Lifestyle disagreement is a delicate but common theme in cross-cultural friendship. Five frequent flashpoints:\n\n(1) WORK CULTURE: the mainland has '996' (9am-9pm, 6 days) in tech and some sectors — an accepted (if criticized) norm. When a Chinese friend says 我加班到晚上11点 it is a normal report, not a complaint. Don't pity them — they don't feel they need it.\n\n(2) DATING/MARRIAGE: 相亲 (xiāngqīn, matchmaking via parents/go-betweens) is still common in smaller cities + older generations. Urban youth are moving away, but the pressure of 'still unmarried at 30' is intense, and 剩女 (shèng nǚ, 'leftover woman') is a common, sad term. Many cultures don't have this concept as strongly.\n\n(3) SAVING vs SPENDING: Chinese household savings rates are the world's highest (~30-40%). Causes: a weaker social safety net (health, pension), a 'for the children' culture, pressure to buy a home for a son. Don't read extreme thrift as 'stinginess' — it's a survival strategy.\n\n(4) FAMILY OBLIGATIONS: monthly money to grandparents back home is the norm; young Chinese often carry both parents + grandparents on both sides. When a friend says 'I have to send 5,000 RMB home,' it's not voluntary — it's a cultural duty.\n\n(5) FITNESS CULTURE: gyms and bodybuilding are very common in urban mainland (especially men); 24/7 gyms in Beijing/Shanghai. When a Chinese friend proposes 'gym 5x/week together,' they're inviting you into their social activity. Decline gently + propose another activity.\n\nUnsolicited advice: Chinese friends freely advise on your lifestyle. This is not 'rude' but 'caring intimacy.' Don't be offended — thank them + do it your way.\n\nSensitive personal topics (not politics): salary, plans for children, why still unmarried — a Chinese friend may ask directly. Reply lightly: 'I'm comfortable at my level,' 'still thinking about it,' 'haven't met the right person.' Gentle, no details.\n\nThe term 三观 (sān guān, 'three views' — worldview/life-view/values): very common among young Chinese. 三观一致 = on the same wavelength; 三观不合 = not. '我们三观还挺一致的' is a good signal for a friendship.",
     "tip_advice_vi": "(1) NGHE TRƯỚC, NÓI SAU. Khi bạn Trung Quốc bộc lộ lối sống/áp lực, dành 5-10 phút LẮNG NGHE trước khi đưa quan điểm. Hỏi: '你为什么这样选?' (sao bạn chọn thế?) — họ có lý do bạn không biết. (2) CHỌN BATTLE: không phải mọi bất đồng đều cần thảo luận. Bạn Trung Quốc tiết kiệm 80% lương = chuyện riêng của họ, không cần khuyên. Bạn ép bạn cũng thế = cần đặt giới hạn. Phân biệt 'họ làm gì' vs 'họ ép tôi làm gì'. (3) DÙNG NGÔN NGỮ '我' (mình) thay vì '你' (bạn): 'mình thấy 996 mệt' tốt hơn 'bạn làm 996 hại sức khỏe'. Chuyển từ phán xét sang chia sẻ. (4) KHEN ĐIỂM TÍCH CỰC trước khi đưa khác biệt: 'mình rất khâm phục nỗ lực của bạn, nhưng cá nhân mình chọn cách khác'. Cấu trúc compliment-but mềm hóa cuộc nói chuyện. (5) CHỮA LÀNH bằng HOẠT ĐỘNG CHUNG: sau cuộc nói chuyện về bất đồng, đề xuất hoạt động cùng (đi cà phê, ăn món bạn yêu thích). Củng cố tình bạn vượt qua bất đồng. (6) TRÁNH TRANH LUẬN chính trị/tôn giáo/Việt-Trung quan hệ. Bất đồng lối sống = OK, bất đồng chính trị = mất bạn. Nếu bạn Trung Quốc nêu chủ đề chính trị, chuyển hướng nhanh: '这个比较复杂, 我们改天再聊'. (7) CHẤP NHẬN bạn không thể thay đổi bạn Trung Quốc, họ không thể thay đổi bạn. Tình bạn lành mạnh = tôn trọng khác biệt + chia sẻ điểm chung. Sau 1-2 năm, bạn sẽ thấy bạn Trung Quốc dần điều chỉnh (ít gây áp lực hơn) — đó là dấu hiệu tình bạn đang chín.",
+    "tip_advice_en": "(1) LISTEN FIRST, speak second. When a Chinese friend reveals a lifestyle/pressure, spend 5-10 minutes LISTENING before opining. Ask 你为什么这样选? — they have reasons you don't know. (2) PICK YOUR BATTLES: not every disagreement needs a discussion. A friend saving 80% of salary = their business, no advice needed. A friend pressuring YOU to do the same = set a boundary. Distinguish 'what they do' vs 'what they push on me.' (3) USE '我' (I) not '你' (you): 'I find 996 tiring' beats 'you doing 996 harms your health.' Shift from judgment to sharing. (4) PRAISE the positive before raising the difference: 'I really admire your effort, but personally I choose differently.' The compliment-but structure softens it. (5) HEAL with a SHARED ACTIVITY: after a disagreement talk, propose doing something together (coffee, a favorite dish). Reinforce the friendship over the difference. (6) AVOID political/religious/relations debates. Lifestyle disagreement = OK; political = lost friend. If a Chinese friend raises politics, redirect fast: 这个比较复杂，我们改天再聊. (7) ACCEPT you can't change them and they can't change you. Healthy friendship = respecting difference + sharing common ground. Over 1-2 years you'll see a Chinese friend gradually ease off (less pressure) — a sign the friendship is maturing.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -12506,6 +12666,12 @@ export const lessons: ChineseLesson[] = [
           "节哀顺变 → jié āi shùn biàn (idiom chuẩn an ủi tang)",
           "消息 → xiāoxi (tin)",
           "听到 → tīngdào"
+        ],
+        "pronunciation_focus_en": [
+          "难过 → nánguò ('sad/sorrowful')",
+          "节哀顺变 → jié āi shùn biàn (the standard condolence idiom: 'restrain grief, accept change')",
+          "消息 → xiāoxi ('news')",
+          "听到 → tīngdào ('to hear')"
         ]
       },
       {
@@ -12518,6 +12684,12 @@ export const lessons: ChineseLesson[] = [
           "陪着 → péizhe (ở bên)",
           "多难 → duō nán (khó thế nào)",
           "现在 → xiànzài"
+        ],
+        "pronunciation_focus_en": [
+          "想象 → xiǎngxiàng ('to imagine')",
+          "陪着 → péizhe ('to stay with')",
+          "多难 → duō nán ('how hard')",
+          "现在 → xiànzài ('now')"
         ]
       },
       {
@@ -12530,6 +12702,12 @@ export const lessons: ChineseLesson[] = [
           "坚强 → jiānqiáng (mạnh mẽ)",
           "想哭就哭 → xiǎng kū jiù kū",
           "不用 → bù yòng"
+        ],
+        "pronunciation_focus_en": [
+          "强装 → qiáng zhuāng ('to force a pretense')",
+          "坚强 → jiānqiáng ('strong/tough')",
+          "想哭就哭 → xiǎng kū jiù kū ('cry if you want to')",
+          "不用 → bù yòng ('no need to')"
         ]
       },
       {
@@ -12542,6 +12720,12 @@ export const lessons: ChineseLesson[] = [
           "任何时候 → rènhé shíhou (bất cứ lúc nào)",
           "打电话 → dǎ diànhuà (gọi điện)",
           "需要 → xūyào"
+        ],
+        "pronunciation_focus_en": [
+          "帮忙 → bāngmáng ('to help')",
+          "任何时候 → rènhé shíhou ('any time')",
+          "打电话 → dǎ diànhuà ('to call')",
+          "需要 → xūyào ('to need')"
         ]
       },
       {
@@ -12554,6 +12738,12 @@ export const lessons: ChineseLesson[] = [
           "思念 → sīniàn (nhớ nhung)",
           "永远 → yǒngyuǎn (mãi mãi)",
           "心里 → xīnlǐ"
+        ],
+        "pronunciation_focus_en": [
+          "治愈 → zhìyù ('to heal')",
+          "思念 → sīniàn ('to long for / remembrance')",
+          "永远 → yǒngyuǎn ('forever')",
+          "心里 → xīnlǐ ('in the heart')"
         ]
       }
     ],
@@ -12796,7 +12986,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "An ủi sau mất mát trong văn hóa Trung Quốc đại lục có những đặc thù khác Việt Nam:\n\n(1) THỜI GIAN TANG: 7 ngày đầu (头七 — tóu qī) là thời gian quan trọng nhất, gia đình tập trung. Bạn bè đến viếng trong 7 ngày này. Sau 49 ngày (七七 — qī qī, theo Phật giáo) là kết thúc 'tang nặng'. 100 ngày + 1 năm là các mốc nhỏ. Người Việt có khái niệm tương tự (49 ngày, 100 ngày, giỗ) — cụm văn hóa shared.\n\n(2) MÀU SẮC TANG: trắng + đen + xám. KHÔNG đỏ tuyệt đối trong 49 ngày. Nếu bạn được mời đến nhà tang chủ, mặc TỐI MÀU. Mang phong bao tiền trợ phúng (奠仪 / 白包) — số lẻ (101, 201, 501, 1001) — KHÔNG số chẵn (200, 500). Khác cưới hỏi (số chẵn), đám tang dùng số lẻ.\n\n(3) NHẮN TIN TRONG TANG: KHÔNG dùng emoji vui (😊😄). Tin nhắn trang trọng, ngắn gọn. Mẫu chuẩn: '惊闻[称呼]噩耗, 万分悲痛。请节哀顺变, 多保重身体。如有需要, 随时找我。' (Đột nhiên nghe tin xấu của [người], vô cùng đau buồn. Xin nén đau thương, giữ gìn sức khỏe. Cần gì cứ tìm em.)\n\n(4) THĂM HỎI SAU 30 NGÀY: nhiều người Trung Quốc cảm thấy bị 'bỏ rơi' sau tuần đầu — bạn bè ngừng hỏi thăm. Là người Việt, BẠN có thể tạo khác biệt: nhắn tin nhẹ tuần thứ 2, thứ 4, tháng thứ 2 — chỉ '想到你了, 你怎么样了?' (mình nghĩ đến bạn, bạn dạo này thế nào). Không cần nhiều.\n\n(5) THÚ CƯNG: mất chó/mèo ở Trung Quốc đại lục đô thị giờ được công nhận là nỗi đau thật sự (giới trẻ + thành phố lớn). Đối xử như mất người thân nhỏ. Tang chôn cất tại 宠物殡仪馆 (pet funeral home) ở Bắc Kinh, Thượng Hải. Người lớn tuổi đôi khi không hiểu nỗi đau này — đừng kể với họ nếu họ không thân.\n\n(6) TỰ TỬ: chủ đề rất nhạy cảm + còn ít thảo luận công khai ở Trung Quốc. Khi bạn mất ai đó vì tự tử, KHÔNG hỏi 'tại sao'. KHÔNG đoán nguyên nhân. KHÔNG bình luận về chứng trầm cảm trừ khi bạn thân biết. Chỉ ở bên + lắng nghe.\n\n(7) NỀN TẢNG TÂM LINH: Trung Quốc đại lục có Phật giáo, Đạo giáo, không tôn giáo (atheist). KHÔNG nói 'họ ở thiên đàng' (天堂) trừ khi bạn biết người mất là Cơ Đốc giáo. Cụm trung tính: '愿他/她安息' (mong họ yên nghỉ), '一路走好' (đi yên — chúc đường về của người chết).\n\nVỀ TỪ '走了' (zǒu le — đã đi): cụm rất phổ biến, gentle. Khi bạn Trung Quốc nhắn '我外婆走了', họ đang nói bà ngoại mất. KHÔNG là 'đã đi đâu đó' theo nghĩa du lịch. Phản ứng đúng: '我很难过' (mình rất buồn) + '节哀顺变'.\n\nVỀ KHÔNG NÓI GÌ (沉默 — chénmò): trong văn hóa Trung Quốc, im lặng đồng cảm là OK. Bạn không cần nói nhiều — chỉ cần ở đó. 'Sự hiện diện > lời an ủi'. Đôi khi câu hay nhất là không nói gì, chỉ đưa khăn giấy và pha trà.",
+    "cultural_notes_en": "Comforting someone after a loss has mainland-specific features:\n\n(1) MOURNING TIMELINE: the first 7 days (头七 tóu qī) are the most important; friends visit then. After 49 days (七七 qī qī, Buddhist) 'heavy mourning' ends; 100 days + 1 year are smaller markers. Many lunar-calendar cultures have parallels (49 days, 100 days, anniversary) — shared cultural ground.\n\n(2) MOURNING COLORS: white + black + gray. Absolutely NO red within 49 days. If invited to the bereaved's home, wear DARK. Bring a condolence envelope (奠仪 / 白包) with an ODD number (101, 201, 501) — NOT even. The reverse of weddings (even numbers).\n\n(3) MESSAGING DURING MOURNING: NO cheerful emoji. Formal, brief. Template: 惊闻噩耗，万分悲痛。请节哀顺变，多保重身体。如有需要，随时找我。\n\n(4) CHECKING IN AFTER 30 DAYS: many feel 'abandoned' after week one when friends stop asking. You can make a difference with a light message at week 2, week 4, month 2 — just 想到你了，你怎么样了? Nothing more is needed.\n\n(5) PETS: in urban mainland, losing a dog/cat is now recognized as real grief (youth + big cities) — treat it as a small bereavement. Older people sometimes don't understand this; don't tell them if you aren't close.\n\n(6) SUICIDE: very sensitive, little public discussion. Do NOT ask 'why,' guess the cause, or comment on depression unless a close friend already discusses it. Just be present + listen.\n\n(7) SPIRITUAL FRAME: the mainland is Buddhist, Taoist, and non-religious. Do NOT say 'they're in heaven' (天堂) unless you know the deceased was Christian. Neutral phrases: 愿他/她安息 ('may they rest in peace'), 一路走好 ('safe journey on').\n\nThe phrase 走了 (zǒu le, 'has gone'): very common, gentle. '我外婆走了' means 'my grandmother passed' — NOT 'went somewhere.' The right reply: 我很难过 + 节哀顺变.\n\nSilence (沉默 chénmò): empathetic silence is fine in Chinese culture. You don't need to say much — just be there. Presence > words. Sometimes the best line is no line — just hand over a tissue and pour tea.",
     "tip_advice_vi": "(1) PHẢN HỒI NHANH khi nhận tin (1-2 giờ). Đừng chờ 'tìm câu hay'. Câu đơn giản '我太难过了, 节哀顺变, 我陪你' (mình rất buồn, nén đau thương, mình ở bên bạn) đủ và đúng. (2) ĐỀ XUẤT CỤ THỂ thay vì câu chung 'cần gì gọi mình'. Người đang đau không có năng lực yêu cầu. Hãy đề xuất rõ: 'tối nay sang nhà mình ăn cơm', 'mai mình đi mua đồ tang cùng', 'cuối tuần đi bộ công viên'. (3) MANG ĐỒ ĂN: người đau buồn quên ăn. Mang cơm, súp, đồ ăn dễ tiêu (cháo, súp gà). KHÔNG bánh ngọt sặc sỡ. (4) LẮNG NGHE > NÓI: trong cuộc gặp đầu, nói < 30% thời gian. 70% lắng nghe + đặt câu hỏi mở ('bạn nhớ nhất chuyện gì với bà?'). Để bạn ấy nói về người mất — đó là quá trình chữa lành. (5) ĐỪNG SỢ NƯỚC MẮT — của họ và của bạn. Nếu bạn cũng khóc, đó là chia sẻ chân thành. Đừng giả vờ bình thản. (6) NHẮN TIN ĐỀU 1 LẦN/TUẦN trong 2 tháng đầu. Mẫu '想到你了, 怎么样了?' (mình nghĩ đến bạn, bạn dạo này thế nào). Không cần dài. Chỉ cần đều. Nhiều người ngừng nhắn sau tuần đầu — bạn duy trì = khác biệt. (7) NHỚ NGÀY GIỖ (1 năm): đặt nhắc nhở. Nhắn tin: '今天是X一周年, 我也想她' (hôm nay là 1 năm mất X, mình cũng nhớ cô ấy). Cử chỉ này không bao giờ quên — bạn chứng minh tình bạn dài hạn.",
+    "tip_advice_en": "(1) RESPOND FAST on hearing the news (1-2 hours). Don't wait to 'find the perfect words.' A simple 我太难过了，节哀顺变，我陪你 is enough and right. (2) OFFER SPECIFICALLY instead of the generic 'call me if you need anything.' A grieving person can't make requests. Propose concretely: 'come to mine for dinner tonight,' 'I'll go with you to buy mourning items tomorrow,' 'a walk this weekend.' (3) BRING FOOD: the grieving forget to eat. Bring rice, soup, easy-to-digest food (congee, chicken soup). No bright pastries. (4) LISTEN > TALK: in the first meeting, speak <30% of the time. 70% listening + open questions ('what do you remember most about her?'). Letting them talk about the person is the healing. (5) DON'T FEAR TEARS — theirs or yours. If you cry too, that's sincere sharing. Don't fake composure. (6) MESSAGE WEEKLY for the first 2 months: 想到你了，怎么样了?. Short. Just consistent. Many stop after week one — your continuing makes the difference. (7) REMEMBER THE 1-YEAR ANNIVERSARY: set a reminder. Message: 今天是X一周年，我也想她. This gesture is never forgotten — it proves a long-term friendship.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -12857,6 +13049,12 @@ export const lessons: ChineseLesson[] = [
           "道歉 → dàoqiàn (xin lỗi)",
           "过分 → guòfèn (quá đáng)",
           "上周 → shàng zhōu (tuần trước)"
+        ],
+        "pronunciation_focus_en": [
+          "当面 → dāngmiàn ('face to face / in person')",
+          "道歉 → dàoqiàn ('to apologize')",
+          "过分 → guòfèn ('excessive / too much')",
+          "上周 → shàng zhōu ('last week')"
         ]
       },
       {
@@ -12869,6 +13067,12 @@ export const lessons: ChineseLesson[] = [
           "角度 → jiǎodù (góc độ)",
           "考虑不周 → kǎolǜ bù zhōu (suy nghĩ chưa chu toàn)",
           "我没 → wǒ méi"
+        ],
+        "pronunciation_focus_en": [
+          "站在 → zhàn zài ('to stand in [someone's position]')",
+          "角度 → jiǎodù ('angle/perspective')",
+          "考虑不周 → kǎolǜ bù zhōu ('did not think it through')",
+          "我没 → wǒ méi ('I didn't')"
         ]
       },
       {
@@ -12881,6 +13085,12 @@ export const lessons: ChineseLesson[] = [
           "意识到 → yìshí dào (nhận ra)",
           "真的 → zhēn de (thật sự)",
           "让你知道 → ràng nǐ zhīdào"
+        ],
+        "pronunciation_focus_en": [
+          "开脱 → kāituō ('to excuse oneself / shift blame')",
+          "意识到 → yìshí dào ('to realize')",
+          "真的 → zhēn de ('truly')",
+          "让你知道 → ràng nǐ zhīdào ('let you know')"
         ]
       },
       {
@@ -12893,6 +13103,12 @@ export const lessons: ChineseLesson[] = [
           "再犯 → zài fàn (tái phạm)",
           "机会 → jīhuì (cơ hội)",
           "以后 → yǐhòu"
+        ],
+        "pronunciation_focus_en": [
+          "绝对 → juéduì ('absolutely')",
+          "再犯 → zài fàn ('to do it again / re-offend')",
+          "机会 → jīhuì ('chance')",
+          "以后 → yǐhòu ('from now on')"
         ]
       },
       {
@@ -12905,6 +13121,12 @@ export const lessons: ChineseLesson[] = [
           "等 → děng (đợi)",
           "友谊 → yǒuyì (tình bạn)",
           "重要 → zhòngyào"
+        ],
+        "pronunciation_focus_en": [
+          "时间 → shíjiān ('time')",
+          "等 → děng ('to wait')",
+          "友谊 → yǒuyì ('friendship')",
+          "重要 → zhòngyào ('important')"
         ]
       }
     ],
@@ -13140,7 +13362,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Xin lỗi giữa bạn thân Trung Quốc là một trong những thử thách kỹ năng giao tiếp B2 cao nhất. Bốn nguyên tắc cốt lõi:\n\n(1) FACE (面子) GIỮA BẠN: khác với business/family, bạn thân CÓ THỂ chỉ ra lỗi của nhau. NHƯNG nếu lỗi xảy ra trước mặt người khác (như trong lesson — 'before everyone in the gathering'), việc làm 'mất mặt' đặc biệt nghiêm trọng. Xin lỗi PHẢI bao gồm 'phục hồi mặt' công khai — nói với những người đã chứng kiến rằng bạn sai.\n\n(2) THỜI GIAN: người Trung Quốc thường đợi xem ai 'nói lời đầu' (谁先开口). Người chủ động xin lỗi = thừa nhận lỗi của mình; người đợi = có thể đang dằn dỗi hoặc thực sự bị tổn thương. Bạn là người Việt, bạn nên CHỦ ĐỘNG nếu bạn sai — đừng đợi bạn Trung Quốc 'mở lời' với bạn.\n\n(3) CỤM 'CHO QUA' (放下) vs 'GHI LẠI' (记仇): bạn Trung Quốc có thể nói '没关系' (không sao) ngay khi nhận lời xin lỗi, NHƯNG đó không nghĩa là họ đã quên. Nhiều người Trung Quốc 记仇 (jì chóu — ghi nhớ thù hận, lit. 'remember enmity') nhiều năm. Quan sát hành vi tiếp theo: họ vẫn mời bạn ăn, vẫn nhắn tin = đã thật sự cho qua. Họ tránh, không trả lời = chưa.\n\n(4) BÙ ĐẮP CỤ THỂ (实际行动): lời xin lỗi không có hành động = rỗng. Văn hóa Trung Quốc đặc biệt coi trọng '将功补过' — bù lỗi cũ bằng việc tốt cụ thể: mời ăn món họ thích, làm việc gì cho họ, kỷ niệm ngày quan trọng của họ. Mỗi lỗi nghiêm trọng nên có 1 hành động bù đắp.\n\nVỀ XIN LỖI QUA TIN NHẮN vs GẶP MẶT: lỗi nhỏ qua text OK. Lỗi nghiêm trọng (như trong lesson 85) BẮT BUỘC gặp mặt. Người Trung Quốc đánh giá việc bạn dành thời gian gặp mặt > nội dung cụ thể. Nếu thực sự không thể gặp (xa cách), gọi video — không bao giờ chỉ text cho lỗi nặng.\n\nVỀ XIN LỖI VÀ TIỀN BẠC: nếu lỗi của bạn gây thiệt hại tài chính cho bạn (làm hỏng đồ, mất món bạn cho mượn), KHÔNG chỉ xin lỗi — đề xuất đền bù tiền mặt cụ thể. Bạn Trung Quốc thường từ chối ('不用了') nhưng đợi 2-3 lần đề nghị mới chấp nhận. Văn hóa 客气 (lịch sự đẩy lui) — bạn chân thành = đẩy lại 3 lần.\n\nVỀ TRA LỜI 'TÔI CŨNG CÓ LỖI' (我也有错) của bạn: nhiều bạn Trung Quốc sẽ chia sẻ một phần lỗi của họ để giảm áp lực cho bạn. KHÔNG là 'okay you don't need to apologize' — họ đang nâng đỡ bạn cảm xúc. Vẫn hoàn thành lời xin lỗi của mình + cảm ơn họ chia sẻ lỗi: '谢谢你这么说, 但这次主要是我的错'.\n\nVỀ SAY RƯỢU: bạn say rượu nói/làm tổn thương → KHÔNG dùng làm bào chữa ('我那天喝醉了, 不记得'). 'Đã say' không miễn trách nhiệm trong văn hóa Trung Quốc đại lục. Ngay cả nếu bạn không nhớ, đã làm tổn thương = phải xin lỗi như đã tỉnh táo.",
+    "cultural_notes_en": "Apologizing to a close Chinese friend is one of the highest B2 communication tests. Four core principles:\n\n(1) FACE (面子) BETWEEN FRIENDS: unlike business/family, close friends CAN point out each other's faults. BUT if the fault happened in front of others, causing loss of face is especially serious — the apology MUST include public face-restoration: telling those who witnessed it that you were wrong.\n\n(2) TIMING: Chinese people often wait to see who 'speaks first' (谁先开口). The one who apologizes first admits fault; the one who waits may be sulking or genuinely hurt. If you are wrong, take the INITIATIVE — don't wait for them to 'open the conversation.'\n\n(3) 'LET IT GO' (放下) vs 'KEEP THE GRUDGE' (记仇): a Chinese friend may say 没关系 the moment they hear the apology, but that doesn't mean they've forgotten. Many 记仇 (jì chóu) for years. Watch later behavior: still inviting you, still messaging = truly let go; avoiding, not replying = not yet.\n\n(4) CONCRETE AMENDS (实际行动): an apology without action is empty. Chinese culture values 将功补过 — offsetting an old fault with a concrete good deed: treat them to a favorite dish, do something for them, mark an important date. Each serious fault should have one amends action.\n\nTEXT vs IN PERSON: small faults by text are OK; a serious fault REQUIRES meeting. Chinese people weigh that you spent the time to meet > the exact words. If meeting is impossible (distance), video call — never just text for a heavy fault.\n\nAPOLOGY AND MONEY: if your fault caused them financial loss (broke something, lost a borrowed item), don't just apologize — propose concrete cash compensation. They'll usually refuse ('不用了') but wait for 2-3 offers before accepting — the 客气 (polite-decline) culture; sincerity = offering 3 times.\n\nTHEIR 'I WAS ALSO AT FAULT' (我也有错): a friend may share part of the blame to ease your pressure. This is NOT 'okay, you don't need to apologize' — they're emotionally supporting you. Still complete your apology + thank them: 谢谢你这么说，但这次主要是我的错.\n\nDRUNKENNESS: hurting someone while drunk → do NOT use it as an excuse ('I was drunk, I don't remember'). 'Being drunk' does not absolve responsibility on the mainland. Even if you don't remember, you must apologize as if sober.",
     "tip_advice_vi": "(1) ĐỪNG XIN LỖI NGAY trong 12 giờ đầu sau lỗi. Quá nhanh = phản xạ, không phải suy nghĩ. Cho mình 1 đêm ngủ + 1 ngày suy nghĩ. Viết bản nháp những gì sẽ nói trên giấy. (2) CHUẨN BỊ 4 PHẦN: thừa nhận cụ thể (làm gì), công nhận tác động (làm bạn cảm thấy thế nào), không bào chữa (không 'tại vì'), đề xuất bù đắp (sẽ làm gì để chuộc). Mỗi phần 1-2 câu. Tổng 1-2 phút. (3) GẶP MẶT cho lỗi nghiêm trọng. Hẹn cụ thể: 'tối mai 7 giờ, mình muốn gặp nói chuyện 30 phút'. KHÔNG xin lỗi qua tin nhắn dài lê thê. (4) CHỌN ĐỊA ĐIỂM RIÊNG: quán cà phê yên tĩnh, không nhiều người. KHÔNG quán đông + ồn. Bạn cần không gian để bạn ấy phản ứng (khóc, im lặng, thậm chí giận lại). (5) NGÔN NGỮ THÂN THỂ: nhìn vào mắt khi xin lỗi (không nhìn xuống). Cúi đầu nhẹ. KHÔNG cười (kể cả nụ cười tự nhiên ngại ngùng — bạn Trung sẽ hiểu nhầm là không nghiêm túc). (6) IM LẶNG SAU KHI XIN LỖI: đừng nói thêm. Để bạn ấy có thời gian phản ứng. 30 giây - 1 phút im lặng = OK, đôi khi cần. (7) KHÔNG ÉP THA THỨ NGAY: nếu bạn nói '我需要时间' (mình cần thời gian), CHẤP NHẬN. KHÔNG nói '我们还是朋友吧?' ép xác nhận. Hứa: 'mình đợi, có gì cần cứ nhắn'. Sau đó RÚT LUI — đừng nhắn tin liên tục, cho không gian. (8) KHÔNG NHẮC LẠI lỗi này sau khi đã được tha thứ. Nhắc lại = đào lại vết thương. Người Trung Quốc đặc biệt nhạy với điều này.",
+    "tip_advice_en": "(1) DON'T APOLOGIZE in the first 12 hours — too fast = reflex, not reflection. Give yourself a night's sleep + a day to think. Draft what you'll say on paper. (2) PREPARE 4 PARTS: specific admission (what you did), acknowledge the impact (how it made them feel), no excuse (no 'because'), proposed amends (what you'll do). Each 1-2 sentences; 1-2 minutes total. (3) MEET IN PERSON for a serious fault. Set it concretely: 'tomorrow 7pm, I'd like 30 minutes to talk.' No long rambling text. (4) CHOOSE A PRIVATE PLACE: a quiet cafe, not a loud crowded one. They need room to react (cry, go silent, even get angry back). (5) BODY LANGUAGE: eye contact while apologizing (not looking down). A slight bow. NO smile (even a nervous natural one — it reads as not serious). (6) STAY SILENT AFTER APOLOGIZING: don't add more. Give them time to react. 30 seconds to a minute of silence is fine, sometimes needed. (7) DON'T FORCE FORGIVENESS: if they say 我需要时间 ('I need time'), ACCEPT it. Don't push 我们还是朋友吧?. Promise: 'I'll wait, message me if you need anything.' Then withdraw — don't message constantly; give space. (8) DON'T RE-RAISE the fault after being forgiven — re-raising reopens the wound. Chinese friends are especially sensitive to this.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -13201,6 +13425,12 @@ export const lessons: ChineseLesson[] = [
           "美国 → Měiguó",
           "不舍 → bù shě (lưu luyến)",
           "心里 → xīnlǐ"
+        ],
+        "pronunciation_focus_en": [
+          "真的 → zhēn de ('really')",
+          "美国 → Měiguó ('America/USA')",
+          "不舍 → bù shě ('reluctant to part')",
+          "心里 → xīnlǐ ('in the heart')"
         ]
       },
       {
@@ -13213,6 +13443,12 @@ export const lessons: ChineseLesson[] = [
           "一辈子 → yībèizi (cả đời)",
           "忘 → wàng (quên)",
           "十年 → shí nián"
+        ],
+        "pronunciation_focus_en": [
+          "友谊 → yǒuyì ('friendship')",
+          "一辈子 → yībèizi ('a whole lifetime')",
+          "忘 → wàng ('to forget')",
+          "十年 → shí nián ('ten years')"
         ]
       },
       {
@@ -13225,6 +13461,12 @@ export const lessons: ChineseLesson[] = [
           "天涯若比邻 → tiānyá ruò bǐlín",
           "知己 → zhī jǐ (tri kỷ)",
           "比邻 → bǐlín (cận kề)"
+        ],
+        "pronunciation_focus_en": [
+          "海内存知己 → hǎi nèi cún zhī jǐ (Wang Bo: 'a true friend within the four seas')",
+          "天涯若比邻 → tiānyá ruò bǐlín ('though at the horizon, feels next door')",
+          "知己 → zhī jǐ ('a soulmate/true friend')",
+          "比邻 → bǐlín ('close neighbor')"
         ]
       },
       {
@@ -13237,6 +13479,12 @@ export const lessons: ChineseLesson[] = [
           "视频 → shìpín (video call)",
           "随时 → suíshí (bất cứ lúc nào)",
           "微信 → wēixìn"
+        ],
+        "pronunciation_focus_en": [
+          "保持联系 → bǎochí liánxì ('keep in touch')",
+          "视频 → shìpín ('video call')",
+          "随时 → suíshí ('any time')",
+          "微信 → wēixìn ('WeChat')"
         ]
       },
       {
@@ -13249,6 +13497,12 @@ export const lessons: ChineseLesson[] = [
           "高兴 → gāoxìng (mừng)",
           "幸福 → xìngfú (hạnh phúc)",
           "过得 → guò de"
+        ],
+        "pronunciation_focus_en": [
+          "无论 → wúlùn ('no matter / regardless')",
+          "高兴 → gāoxìng ('glad')",
+          "幸福 → xìngfú ('happy/blessed')",
+          "过得 → guò de ('to live / get on')"
         ]
       }
     ],
@@ -13491,7 +13745,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Tạm biệt vĩnh viễn (移民, 永别, 长别) là một trong những khoảnh khắc cảm xúc nhất trong văn hóa bạn bè Trung Quốc. Bốn nguyên tắc:\n\n(1) GẶP MẶT TẠM BIỆT trước khi đi: KHÔNG chỉ qua tin nhắn. Người Trung Quốc đại lục coi 'không gặp mặt tạm biệt' là thiếu lòng. Tổ chức bữa ăn tiễn (送行宴 — sòngxíng yàn) hoặc cuộc cà phê riêng, ít nhất 1-2 giờ. Đối với bạn rất thân: nhiều cuộc gặp trong tuần cuối + 1 cuộc tiễn cuối cùng (thường tại sân bay).\n\n(2) RA SÂN BAY TIỄN (送机 — sòngjī): hành động mạnh trong văn hóa Trung Quốc. Bạn ở Việt Nam có thể không tiễn được (visa, công việc), nhưng VIDEO CALL từ check-in counter là thay thế tốt. Cử chỉ này nhớ lâu.\n\n(3) QUÀ TẠM BIỆT (送行礼 — sòngxíng lǐ): không bắt buộc nhưng phổ biến. Quy tắc: cá nhân hóa + có giá trị kỷ niệm > giá trị tiền. Album ảnh chung, thư tay, vật kỷ niệm văn hóa (lụa Vạn Phúc, ấm trà). Tránh: tiền mặt (lạnh), đồng hồ (xui — sòng zhōng = sòng tiễn người chết — đại kỵ).\n\n(4) GIỮ LIÊN LẠC SAU: khoảng 70% tình bạn xuyên biên giới mai một sau 2 năm. NGUYÊN NHÂN: thiếu nỗ lực chủ động. Thiết lập 'quy tắc' cụ thể giúp duy trì:\n- Video call cố định mỗi 2-3 tháng (ghi vào lịch)\n- Gửi quà sinh nhật + Tết qua bưu điện quốc tế\n- WeChat Moments thường xuyên (like, comment ngắn)\n- 1 chuyến thăm trong 3 năm (xen kẽ — một lần bạn sang, một lần họ về)\n\nVỀ DI CƯ TRUNG QUỐC HIỆN ĐẠI: khoảng 100,000 người Trung Quốc đi định cư nước khác mỗi năm (Mỹ, Canada, Úc, Singapore — top 4). Lý do phổ biến: con cái học tập, môi trường, kinh tế. Đây là tâm trạng rất riêng (vừa hy vọng vừa mất mát) — đừng phán xét lựa chọn của bạn.\n\nVỀ THÔNG ĐIỆP TRỞ LẠI: khi bạn Trung Quốc đã ở nước ngoài, tâm lý thường: tháng 1-3 phấn khích thám hiểm; tháng 4-6 sốc văn hóa; tháng 7-12 ổn định; năm 2 nhớ nhà mạnh; năm 3+ ổn định new normal. Hỗ trợ tinh thần đặc biệt cần thiết tháng 4-6 (sốc) và năm 2 (nhớ nhà). Nhắn tin nhiều ở những giai đoạn này.\n\nVỀ CÔNG NGHỆ: WeChat hoạt động ở nước ngoài (không bị Trung Quốc chặn — vì chính TQ làm). Whatsapp, Telegram thì TQ chặn. Khi bạn Trung Quốc đi nước ngoài, có thể họ chuyển sang Whatsapp/Telegram cho bạn bè quốc tế nhưng vẫn giữ WeChat cho gia đình. Bạn có thể giữ WeChat làm kênh chính.",
+    "cultural_notes_en": "A permanent goodbye (emigration, a long parting) is one of the most emotional moments in Chinese friendship. Four principles:\n\n(1) MEET TO SAY GOODBYE before they leave — not just by text. The mainland reads 'no in-person goodbye' as a lack of heart. Hold a send-off meal (送行宴 sòngxíng yàn) or a private coffee, at least 1-2 hours. For a very close friend: several meetings in the last week + a final send-off (often at the airport).\n\n(2) SEEING THEM OFF AT THE AIRPORT (送机 sòngjī): a strong gesture in Chinese culture. If you can't be there (visa, work), a VIDEO CALL from the check-in counter is a good substitute — long remembered.\n\n(3) A FAREWELL GIFT (送行礼): not mandatory but common. Rule: personalized + sentimental value > monetary value. A shared photo album, a handwritten letter, a cultural keepsake. Avoid: cash (cold), a clock (送钟 sounds like 送终, 'see someone off in death' — a major taboo).\n\n(4) STAYING IN TOUCH AFTER: ~70% of cross-border friendships fade within 2 years — from lack of proactive effort. Set concrete 'rules': a fixed video call every 2-3 months (on the calendar); birthday + New Year gifts by international post; regular WeChat Moments (likes, short comments); one visit within 3 years (alternating who travels).\n\nMODERN CHINESE EMIGRATION: ~100,000 Chinese settle abroad yearly (US, Canada, Australia, Singapore — top 4). Common reasons: children's education, environment, economics. It's a very mixed emotion (hope + loss) — don't judge their choice.\n\nADJUSTMENT TIMELINE: months 1-3 excited exploration; 4-6 culture shock; 7-12 stabilizing; year 2 strong homesickness; year 3+ a new normal. Emotional support is most needed at months 4-6 (shock) and year 2 (homesickness) — message more then.\n\nTECH: WeChat works abroad (China doesn't block its own app). WhatsApp/Telegram are blocked inside China. Abroad, a friend may move to WhatsApp/Telegram for international friends but keep WeChat for family — you can keep WeChat as the main channel.",
     "tip_advice_vi": "(1) BẮT ĐẦU CHUẨN BỊ TẠM BIỆT từ 1 tháng trước. Đừng chờ tuần cuối. Lên kế hoạch: bữa ăn tiễn nhóm (2 tuần trước), cuộc gặp riêng 1-1 (1 tuần trước), tin nhắn cuối ngày khởi hành. (2) ALBUM ẢNH KỶ NIỆM: dành 2-3 ngày tổng hợp ảnh từ điện thoại + Cloud → app như Photobook (HK) hoặc Albelli — gửi đến địa chỉ trước khi họ đi. ~300-500 tệ. Quà ý nghĩa nhất bạn có thể tặng. (3) THƯ TAY (亲笔信): viết bằng TIẾNG TRUNG (kể cả nếu bạn vụng) — nỗ lực = ấn tượng. 1-2 trang viết tay (không in). Nội dung: 3 kỷ niệm cụ thể bạn nhớ + 3 điều bạn học được từ tình bạn + 1 lời chúc tương lai. Bỏ phong thư đỏ. (4) LIÊN LẠC ĐẦU TIÊN sau khi họ đi: 24 giờ sau khi họ đến nơi mới — '你到了吗? 怎么样?' (đến chưa, thế nào?). Câu hỏi đơn giản, không nói chuyện sâu. Họ đang mệt + thay đổi múi giờ. (5) ĐẶT CALENDAR REMINDER: video call mỗi 2-3 tháng. Sinh nhật + Tết — gửi quà qua bưu điện quốc tế (DHL ~30-60 USD). Lịch cụ thể giúp duy trì khi cuộc sống bận. (6) WECHAT MOMENTS: like + comment ngắn các bài đăng của họ — duy trì 'sự hiện diện' ngay cả khi không nói chuyện sâu. Một câu '看到你在新城市适应得很好' (thấy bạn thích nghi ở thành phố mới rất tốt) đủ. (7) THĂM TRỰC TIẾP: lập kế hoạch 1 chuyến thăm trong 2-3 năm đầu. Cộng visa + vé bay + khách sạn = 1,500-3,000 USD. Đắt nhưng đáng — gặp mặt 5 ngày = giá trị bằng 100 cuộc video call. Bạn Trung Quốc sẽ nhớ nỗ lực này cả đời.",
+    "tip_advice_en": "(1) START PREPARING the goodbye a month ahead, not the last week. Plan: a group send-off meal (2 weeks before), a private 1-1 (1 week before), a final message on departure day. (2) PHOTO ALBUM: spend 2-3 days compiling phone + cloud photos into a photobook app — ship it to arrive before they leave. ~300-500 RMB. The most meaningful gift you can give. (3) HANDWRITTEN LETTER (亲笔信): write it in CHINESE (even if clumsy — the effort impresses). 1-2 handwritten pages (not printed): 3 specific memories + 3 things the friendship taught you + 1 wish for the future. (4) FIRST CONTACT after they leave: 24 hours after they arrive — 你到了吗? 怎么样? Simple, not deep talk; they're tired + jet-lagged. (5) SET CALENDAR REMINDERS: a video call every 2-3 months; birthday + New Year gifts by international post. A concrete schedule sustains it through busy life. (6) WECHAT MOMENTS: like + short-comment their posts to keep 'presence' even without deep talk. One line like 看到你在新城市适应得很好 is enough. (7) VISIT IN PERSON: plan one visit within the first 2-3 years. Visa + flight + hotel = 1,500-3,000 USD. Expensive but worth it — 5 days in person = the value of 100 video calls, and they'll remember the effort for life.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -13552,6 +13808,12 @@ export const lessons: ChineseLesson[] = [
           "累 → lèi (mệt)",
           "陪你聊 → péi nǐ liáo (ngồi cùng bạn nói chuyện)",
           "怎么了 → zěnme le"
+        ],
+        "pronunciation_focus_en": [
+          "看起来 → kàn qǐlái ('to look/seem')",
+          "累 → lèi ('tired')",
+          "陪你聊 → péi nǐ liáo ('sit and talk with you')",
+          "怎么了 → zěnme le ('what's wrong')"
         ]
       },
       {
@@ -13564,6 +13826,12 @@ export const lessons: ChineseLesson[] = [
           "难 → nán (khó)",
           "面对 → miànduì (đối mặt)",
           "一个人 → yī gè rén"
+        ],
+        "pronunciation_focus_en": [
+          "听出来 → tīng chūlái ('to tell/hear from how you speak')",
+          "难 → nán ('hard/difficult')",
+          "面对 → miànduì ('to face')",
+          "一个人 → yī gè rén ('alone')"
         ]
       },
       {
@@ -13576,6 +13844,12 @@ export const lessons: ChineseLesson[] = [
           "分担 → fēndān (san sẻ / cùng gánh)",
           "需要 → xūyào",
           "告诉我 → gàosu wǒ"
+        ],
+        "pronunciation_focus_en": [
+          "具体 → jùtǐ ('specific/concrete')",
+          "分担 → fēndān ('to share the burden')",
+          "需要 → xūyào ('to need')",
+          "告诉我 → gàosu wǒ ('tell me')"
         ]
       },
       {
@@ -13588,6 +13862,12 @@ export const lessons: ChineseLesson[] = [
           "朋友 → péngyou (bạn)",
           "在这种时候 → zài zhè zhǒng shíhou (lúc thế này)",
           "不必 → bù bì"
+        ],
+        "pronunciation_focus_en": [
+          "扛 → káng ('to shoulder/carry')",
+          "朋友 → péngyou ('friend')",
+          "在这种时候 → zài zhè zhǒng shíhou ('at a time like this')",
+          "不必 → bù bì ('need not')"
         ]
       },
       {
@@ -13600,6 +13880,12 @@ export const lessons: ChineseLesson[] = [
           "重的事 → zhòng de shì (chuyện nặng)",
           "散散心 → sànsàn xīn (khuây khỏa)",
           "有空 → yǒu kòng"
+        ],
+        "pronunciation_focus_en": [
+          "散步 → sànbù ('to take a walk')",
+          "重的事 → zhòng de shì ('heavy matters')",
+          "散散心 → sànsàn xīn ('to unwind/clear the mind')",
+          "有空 → yǒu kòng ('to have free time')"
         ]
       }
     ],
@@ -13863,7 +14149,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Hỗ trợ bạn Trung Quốc qua khó khăn là một trong những kỹ năng tình bạn quan trọng nhất. Khác văn hóa Việt Nam ở vài điểm:\n\n(1) NGƯỜI TRUNG QUỐC GIẤU CẢM XÚC SÂU: văn hóa 含蓄 (hánxù — kín đáo) coi trọng việc không bộc lộ. Khi bạn Trung Quốc nói '我没事' (mình không sao) sau khi mất việc — họ thường CÓ CHUYỆN. Đọc tín hiệu hành vi (Moments, tin nhắn chậm, hủy hẹn) hơn là nghe lời nói. Người Việt thường nói thẳng cảm xúc hơn — đừng kỳ vọng cùng phong cách.\n\n(2) STIGMA TÂM LÝ: trầm cảm, lo âu vẫn còn stigma ở Trung Quốc đại lục, đặc biệt thế hệ ≥40 tuổi. Người trẻ thành phố lớn đã thoáng hơn (gen Z ở Bắc Kinh, Thượng Hải nói chuyện trầm cảm như chuyện thường). Nhưng đề xuất 'đi khám tâm lý' (看心理医生) cho bạn ≥35 tuổi — họ có thể từ chối. Cách thay thế: 'đi khám sức khỏe tổng quát' (体检) — bác sĩ sẽ nhận ra triệu chứng trầm cảm và refer.\n\n(3) ÁP LỰC GIA ĐÌNH ĐÔNG Á: bố mẹ Trung Quốc có thể can thiệp sâu vào đời sống con (kết hôn, công việc, mua nhà). Khi bạn nói '我妈逼我相亲' — đây là áp lực thực sự, không phải than vãn. Hỗ trợ: KHÔNG nói 'kệ mẹ bạn đi'; DÙNG 'mình hiểu áp lực gia đình lớn, nhưng sức khỏe bạn quan trọng nhất'.\n\n(4) WORK CULTURE 996: làm việc đến kiệt sức là 'bình thường' với nhiều người Trung Quốc. Nhưng cơ thể vẫn có giới hạn. Nếu bạn báo cơ thể đau, đó là KHẨN CẤP — không phải than vãn. Đẩy họ đi khám ngay. Nhiều người Trung Quốc trẻ đột tử (猝死 — cù sǐ) do overwork — đây là vấn đề được nhận biết công khai.\n\n(5) HỖ TRỢ THỰC TẾ > LỜI ĐỘNG VIÊN: văn hóa Trung Quốc đề cao hành động cụ thể (mang đồ ăn, đặt lịch khám, gọi HR thay). 'Tinh thần động viên' kiểu Mỹ ('I believe in you!') sẽ bị coi là rỗng. Hành động có giá trị nhất: nấu cơm cho họ, đến nhà chăm sóc họ, đi cùng họ đến chỗ khó.\n\nVỀ '相亲' (xiāngqīn — phối hôn): áp lực sinh con, kết hôn rất mạnh ở Trung Quốc, đặc biệt với phụ nữ ≥28 tuổi. Khái niệm '剩女' (shèng nǚ — gái ế) tuy bị chỉ trích nhiều ở thành phố lớn nhưng vẫn còn ở quê + thế hệ lớn tuổi. Khi bạn Trung Quốc nói 'mẹ giục mình' = áp lực thực sự, không nói chơi.\n\nVỀ TÀI CHÍNH: nhiều người Trung Quốc trẻ thành phố lớn vay nặng để mua nhà ('房奴' — nô lệ nhà), gửi tiền về quê cho bố mẹ, áp lực có con. Khi bạn mất việc, không chỉ là 'không có lương' — là cả hệ thống tài chính rạn vỡ. Hỗ trợ tài chính (cho mượn, cho không) trong khẩn cấp là cử chỉ rất mạnh — văn hóa '雪中送炭'.\n\nVỀ HOẠT ĐỘNG NHẸ: khi bạn bè đau, đề xuất hoạt động đơn giản — đi bộ công viên, ăn cơm tại nhà, xem phim, nấu ăn cùng. KHÔNG đề xuất 'đi club', 'đi du lịch xa' — quá nhiều. Hoạt động đơn giản giúp họ ra khỏi nhà mà không quá áp lực giao tiếp.",
+    "cultural_notes_en": "Supporting a Chinese friend through hardship is one of the most important friendship skills. Key differences:\n\n(1) DEEP EMOTIONS ARE HIDDEN: the 含蓄 (hánxù, reserved) culture prizes not displaying. When a Chinese friend says 我没事 ('I'm fine') after losing a job, they usually have a problem. Read behavioral signals (Moments, slow replies, cancelled plans) over the words. Speakers from more direct cultures shouldn't expect the same style.\n\n(2) MENTAL-HEALTH STIGMA: depression/anxiety still carry stigma on the mainland, especially the 40+ generation. Big-city youth are more open (Gen Z in Beijing/Shanghai discuss it normally), but suggesting 'see a therapist' (看心理医生) to a 35+ friend may be refused. Alternative: suggest a general health check (体检) — the doctor will spot the symptoms and refer.\n\n(3) EAST ASIAN FAMILY PRESSURE: parents may intervene deeply (marriage, career, buying a home). When a friend says 我妈逼我相亲, that's real pressure, not whining. Support: do NOT say 'just ignore your mom'; USE 'I understand family pressure is huge, but your health matters most.'\n\n(4) 996 WORK CULTURE: working to exhaustion is 'normal' for many. But the body has limits. If they report physical pain, it's URGENT — not complaining. Push them to see a doctor; young Chinese 猝死 (sudden death from overwork) is a publicly recognized problem.\n\n(5) PRACTICAL HELP > PEP TALK: Chinese culture values concrete action (bringing food, booking a doctor, calling HR for them). American-style 'I believe in you!' reads as empty. The most valued action: cooking for them, going to their home to care for them, going with them to a hard place.\n\nON 相亲 (matchmaking) PRESSURE: marriage/childbearing pressure is strong, especially on women 28+; 剩女 ('leftover woman'), though criticized in big cities, persists in home regions + older generations. 'My mom is pushing me' = real pressure, not a joke.\n\nON FINANCES: many urban young Chinese carry heavy mortgages ('房奴', mortgage slaves), send money home, face child pressure. Losing a job isn't just 'no salary' — a whole financial system cracks. Emergency financial help (a loan, a gift) is a very strong gesture — the culture of 雪中送炭 ('sending charcoal in snow').\n\nON LIGHT ACTIVITIES: when a friend is hurting, propose simple things — a park walk, a meal at home, a film, cooking together. NOT 'clubbing' or 'a far trip' — too much. Simple activities get them out without social pressure.",
     "tip_advice_vi": "(1) ĐỌC TÍN HIỆU SỚM: theo dõi Moments của bạn Trung Quốc 1 tuần/lần. Họ ngừng đăng = dấu hiệu. Nhắn tin nhẹ '想到你了, 怎么样?'. (2) GỌI ĐIỆN khi bạn nhắn nhưng họ trả lời ngắn. Nhiều người Trung Quốc thấy gọi quá xâm phạm — nhưng KHI HỌ ĐAU, gọi đúng cho họ. Mở đầu: '不打扰你, 就想听听你的声音'. (3) LẮNG NGHE TRƯỚC, KHUYÊN SAU. Trong cuộc gọi đầu, dành 70% thời gian lắng nghe. Câu hỏi mở: '什么时候开始的?', '最难的是哪部分?'. ĐỪNG cắt lời. (4) ĐỀ XUẤT 3 BƯỚC CỤ THỂ chỉ sau khi đã lắng nghe 30+ phút. Cấu trúc: ngắn hạn (tuần này — đi khám/nghỉ) + trung hạn (tháng này — nói với HR/gia đình) + dài hạn (6 tháng — kế hoạch tài chính/sức khỏe). (5) HÀNH ĐỘNG > LỜI: mang đồ ăn (cháo gà, súp Việt) đến nhà bạn. Đặt lịch khám bác sĩ thay. Đi cùng đến viện. KHÔNG chỉ '来我家吃饭' — chủ động đến NHÀ HỌ. (6) THIẾT LẬP NHỊP HỖ TRỢ: 2 lần/tuần gọi ngắn (15-30 phút) trong 1 tháng, sau đó 1 lần/tuần trong 2-3 tháng. Đừng quá nhiều (bạn cũng cần năng lượng), đừng quá ít (họ cảm thấy bị bỏ rơi). (7) BIẾT GIỚI HẠN của mình: nếu bạn nói về tự sát/tự hại — KHÔNG xử lý một mình. Gọi đại sứ quán Việt Nam (010-65325410), 110 (cảnh sát Trung Quốc), 12320 (hotline tâm lý quốc gia). Bạn là bạn, không phải bác sĩ. Hỗ trợ + giới thiệu chuyên gia không phải mâu thuẫn — là cùng một việc tốt.",
+    "tip_advice_en": "(1) READ SIGNALS EARLY: check the friend's Moments weekly. They stop posting = a sign. Light message: 想到你了，怎么样?. (2) CALL when you message and they reply curtly. Many Chinese find a call intrusive — but WHEN THEY'RE HURTING, a call is right for them. Open: 不打扰你，就想听听你的声音. (3) LISTEN FIRST, advise later. In the first call spend 70% listening. Open questions: 什么时候开始的?, 最难的是哪部分?. Don't interrupt. (4) PROPOSE 3 CONCRETE STEPS only after 30+ minutes of listening: short-term (this week — see a doctor/rest) + mid-term (this month — talk to HR/family) + long-term (6 months — financial/health plan). (5) ACTION > WORDS: bring food to their home. Book the doctor for them. Go with them. Don't just say '来我家吃饭' — go to THEIR home. (6) SET A SUPPORT RHYTHM: 2 short calls/week (15-30 min) for a month, then weekly for 2-3 months. Not too much (you need energy too), not too little (they feel abandoned). (7) KNOW YOUR LIMITS: if they mention self-harm/suicide, do NOT handle it alone — call the embassy, local police, or a mental-health hotline. You're a friend, not a doctor. Supporting + referring to a professional is not a contradiction — it's the same good act.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -13924,6 +14212,12 @@ export const lessons: ChineseLesson[] = [
           "借钱 → jiè qián (vay tiền)",
           "不太好开口 → bù tài hǎo kāikǒu (khó mở lời)",
           "想跟你 → xiǎng gēn nǐ"
+        ],
+        "pronunciation_focus_en": [
+          "开口 → kāikǒu ('to broach / bring up')",
+          "借钱 → jiè qián ('to borrow money')",
+          "不太好开口 → bù tài hǎo kāikǒu ('hard to bring up')",
+          "想跟你 → xiǎng gēn nǐ ('want to … with you')"
         ]
       },
       {
@@ -13936,6 +14230,12 @@ export const lessons: ChineseLesson[] = [
           "一时凑不齐 → yīshí còu bù qí (một lúc không gom đủ)",
           "一万 → yī wàn (10,000)",
           "借我 → jiè wǒ"
+        ],
+        "pronunciation_focus_en": [
+          "住院 → zhùyuàn ('to be hospitalized')",
+          "一时凑不齐 → yīshí còu bù qí ('can't gather enough at once')",
+          "一万 → yī wàn ('10,000')",
+          "借我 → jiè wǒ ('lend me')"
         ]
       },
       {
@@ -13948,6 +14248,12 @@ export const lessons: ChineseLesson[] = [
           "一定还 → yīdìng huán (chắc chắn trả)",
           "借条 → jiètiáo (giấy vay nợ)",
           "打 → dǎ (viết / lập)"
+        ],
+        "pronunciation_focus_en": [
+          "三个月 → sān gè yuè ('three months')",
+          "一定还 → yīdìng huán ('will definitely repay')",
+          "借条 → jiètiáo ('IOU / loan note')",
+          "打 → dǎ ('to draw up / write')"
         ]
       },
       {
@@ -13960,6 +14266,12 @@ export const lessons: ChineseLesson[] = [
           "之间 → zhījiān (giữa)",
           "应该 → yīnggāi (nên)",
           "明算账 → míng suàn zhàng"
+        ],
+        "pronunciation_focus_en": [
+          "亲兄弟明算账 → qīn xiōngdì míng suàn zhàng (idiom: 'even close brothers keep clear accounts')",
+          "之间 → zhījiān ('between')",
+          "应该 → yīnggāi ('should')",
+          "明算账 → míng suàn zhàng ('settle accounts clearly')"
         ]
       },
       {
@@ -13972,6 +14284,12 @@ export const lessons: ChineseLesson[] = [
           "受影响 → shòu yǐngxiǎng (bị ảnh hưởng)",
           "直接告诉 → zhíjiē gàosu",
           "友谊 → yǒuyì"
+        ],
+        "pronunciation_focus_en": [
+          "不方便 → bù fāngbiàn ('inconvenient')",
+          "受影响 → shòu yǐngxiǎng ('to be affected')",
+          "直接告诉 → zhíjiē gàosu ('tell directly')",
+          "友谊 → yǒuyì ('friendship')"
         ]
       }
     ],
@@ -14228,7 +14546,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Tiền bạc giữa bạn bè Trung Quốc phổ biến hơn người Việt thường nghĩ. Khác biệt văn hóa:\n\n(1) VAY MƯỢN GIỮA BẠN PHỔ BIẾN: ở Trung Quốc đại lục, vay 5,000-50,000 tệ giữa bạn thân là chuyện bình thường. Người Trung Quốc thường có '应急基金' (tiền dự phòng khẩn cấp) cho gia đình + bạn thân nhất. Vay không cần ngân hàng = nhanh + không lãi.\n\n(2) GIẤY VAY (借条) LÀ CHUẨN: kể cả giữa bạn thân, viết giấy vay là dấu hiệu chuyên nghiệp + bảo vệ cả hai. Mẫu chuẩn: '今借[tên người cho vay][tên đầy đủ]人民币X元整, X个月内归还。借款人[tên người vay], 日期[ngày]。' Ký tay + dấu vân tay (nếu formal). Chụp ảnh gửi qua WeChat = đủ giá trị pháp lý.\n\n(3) SỐ TIỀN VÀ MỐI QUAN HỆ:\n- Bạn quen thường (đồng nghiệp, bạn cũ): 500-3,000 tệ, không cần giấy vay (nhưng có lịch sử WeChat transfer = bằng chứng)\n- Bạn thân: 5,000-30,000 tệ, viết giấy vay\n- Bạn rất thân (10+ năm): 30,000+ tệ, viết giấy vay + thảo luận với chồng/vợ trước\n- Trên 100,000 tệ: hiếm giữa bạn — đề nghị họ vay ngân hàng\n\n(4) THỜI GIAN TRẢ TIÊU CHUẨN: 1-3 tháng cho ca nhỏ, 6-12 tháng cho ca lớn. Vượt quá 1 năm = bất thường, có thể là 'không có ý định trả'. Ngày trả CỤ THỂ + có ngày deadline.\n\n(5) KHÔNG LÃI GIỮA BẠN: lấy lãi giữa bạn thân = phá tình bạn. Nếu bạn cần tiền dài hạn (>1 năm) hoặc số lớn (>100k), hãy vay ngân hàng. Bạn bè cho ngắn hạn, không lãi.\n\n(6) QUÀ TRẢ KÈM (返还时的小礼): khi trả nợ, mang quà nhỏ kèm (1-5% giá trị nợ) — văn hóa cảm ơn. Ví dụ: vay 20k → trả 20k + tặng món quà 500-1,000 tệ (rượu vang, trà cao cấp). KHÔNG bắt buộc nhưng được đánh giá cao.\n\n(7) KHI BẠN KHÔNG TRẢ: nếu sau hạn 1 tháng vẫn không trả, vẫn không trả lời tin nhắn — quan hệ đã rạn. Phương án: gọi 1 lần lịch sự nhắc, nếu vẫn không = chấp nhận mất tiền + cắt quan hệ. Ở Trung Quốc đại lục có 'thẻ tín dụng cá nhân' (个人信用) — quỵt nợ bạn có thể bị báo lên hệ thống.\n\nVỀ TIỀN BẠC GIA ĐÌNH: bố mẹ Trung Quốc thường biết tài chính của con (lương, tiết kiệm, nợ). Khác Việt Nam (con thường giấu). Khi vay tiền bạn, họ THƯỜNG hỏi ý kiến chồng/vợ + có thể bố mẹ. Nếu bạn cho mượn, biết rằng cả gia đình họ biết.\n\nVỀ APP TÀI CHÍNH: WeChat Pay (微信支付) + Alipay (支付宝) là 2 ứng dụng chính. Cả hai có lịch sử transfer + chức năng 'nhắc trả'. Khi cho vay, transfer qua app = bằng chứng tự động.",
+    "cultural_notes_en": "Money between friends is more common in China than outsiders expect. Cultural differences:\n\n(1) BORROWING BETWEEN FRIENDS IS COMMON: on the mainland, borrowing 5,000-50,000 RMB between close friends is normal. People often keep an 应急基金 (emergency fund) for family + closest friends. No bank = fast + no interest.\n\n(2) A LOAN NOTE (借条) IS STANDARD: even between close friends, writing one signals professionalism + protects both. Template: 今借[lender][full name]人民币X元整，X个月内归还。借款人[name]，日期[date]。 Hand-signed (+ fingerprint if formal). A photo sent via WeChat carries legal weight.\n\n(3) AMOUNT vs RELATIONSHIP: an acquaintance (colleague, old classmate) 500-3,000 RMB, no note (but the WeChat transfer history = evidence); a close friend 5,000-30,000, write a note; a very close friend (10+ years) 30,000+, write a note + discuss with your spouse first; over 100,000 — rare between friends, suggest a bank.\n\n(4) STANDARD REPAYMENT TIME: 1-3 months for small, 6-12 for large. Over a year = abnormal, possibly 'no intention to repay.' Set a SPECIFIC repayment date with a deadline.\n\n(5) NO INTEREST BETWEEN FRIENDS: charging interest = destroying the friendship. For long-term (>1 year) or large (>100k) needs, use a bank. Friends are for short-term, interest-free.\n\n(6) A GIFT WITH REPAYMENT (返还时的小礼): when repaying, bring a small gift (1-5% of the loan) — a thank-you culture. Borrow 20k → repay 20k + a 500-1,000 RMB gift. Not mandatory but appreciated.\n\n(7) WHEN THEY DON'T REPAY: if a month past the deadline they still don't pay and don't reply, the relationship is fractured. Option: one polite reminder call; if still nothing, accept the loss + cut ties. The mainland has a personal-credit system (个人信用) — defaulting can be reported.\n\nFAMILY MONEY: Chinese parents often know a child's finances (salary, savings, debt). When borrowing from a friend, the friend usually consults their spouse + possibly parents. If you lend, know their whole family knows.\n\nFINANCE APPS: WeChat Pay (微信支付) + Alipay (支付宝). Both keep transfer history + a 'repayment reminder.' Lending via app = automatic evidence.",
     "tip_advice_vi": "(1) NẾU BẠN VAY: chuẩn bị tinh thần GIẤY VAY (借条) — không phải bạn không tin, là chuẩn mực. Mẫu trên Baidu, copy paste, điền tên + số tiền + ngày + ký. Chụp ảnh gửi WeChat người cho vay. (2) GIỚI HẠN: chỉ vay từ bạn thân (5+ năm). Không vay từ đồng nghiệp mới, bạn FB. Vay sai người = mất bạn + mất uy tín. (3) TRẢ ĐÚNG HẠN: ngày deadline ghi trong giấy vay, trả TRƯỚC ngày đó (1-3 ngày). Trả đúng ngày = OK. Trả muộn dù 1 ngày = phá uy tín. Nếu thực sự không thể, BÁO TRƯỚC 1 tuần + đề xuất ngày mới. (4) NẾU BẠN CHO VAY: chỉ cho vay số tiền BẠN CÓ THỂ MẤT. Coi như 'nếu không trả lại, mình không quá đau'. Đây không phải cynicism — là bảo vệ tình bạn. (5) TRANSFER QUA APP: dùng WeChat hoặc Alipay. Note transfer 'cho mượn 3 tháng' để có lịch sử. Tránh tiền mặt — không bằng chứng. (6) ĐÒI NỢ NHẸ: sau 1 tháng quá hạn không trả, nhắn 'không biết khoản đó đã tiện chưa?'. KHÔNG đòi gay gắt. Nếu họ nói 'sắp', đợi 2 tuần. Vẫn không trả = follow up cứng hơn. (7) TỪ CHỐI VAY KHÉO: '我现在自己手头也紧, 但我可以给你介绍一下X银行的紧急贷款' (mình giờ cũng eo hẹp, nhưng mình có thể giới thiệu khoản vay khẩn của ngân hàng X). Chuyển hướng — không bỏ rơi.",
+    "tip_advice_en": "(1) IF YOU BORROW: be ready for a LOAN NOTE (借条) — not distrust, it's the norm. Template online; fill name + amount + date + sign; photo to the lender via WeChat. (2) LIMIT: only borrow from close friends (5+ years). Not new colleagues or social-media contacts. Borrowing from the wrong person = lost friend + lost reputation. (3) REPAY ON TIME: pay BEFORE the deadline in the note (1-3 days early). Even one day late breaks trust. If truly unable, give a week's notice + propose a new date. (4) IF YOU LEND: only lend what you CAN AFFORD TO LOSE — 'if it's not repaid, I won't be too hurt.' Not cynicism — protecting the friendship. (5) TRANSFER VIA APP: WeChat or Alipay; note it 'loan, 3 months' for a record. Avoid cash — no evidence. (6) COLLECT GENTLY: a month past due, message 'just checking if that's convenient yet?'. Not harsh. If they say 'soon,' wait two weeks; still nothing = a firmer follow-up. (7) DECLINE GRACEFULLY: 我现在自己手头也紧，但我可以给你介绍一下X银行的紧急贷款 ('I'm tight myself, but I can point you to bank X's emergency loan'). Redirect — don't abandon.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -14289,6 +14609,12 @@ export const lessons: ChineseLesson[] = [
           "佛珠 → fózhū (chuỗi tràng hạt)",
           "戴 → dài (đeo)",
           "很多年 → hěn duō nián"
+        ],
+        "pronunciation_focus_en": [
+          "佛教徒 → Fójiào tú ('a Buddhist')",
+          "佛珠 → fózhū ('Buddhist prayer beads')",
+          "戴 → dài ('to wear' [accessories])",
+          "很多年 → hěn duō nián ('many years')"
         ]
       },
       {
@@ -14301,6 +14627,12 @@ export const lessons: ChineseLesson[] = [
           "信佛 → xìn Fó (theo Phật)",
           "寺庙 → sìmiào (chùa)",
           "外婆 → wàipó (bà ngoại)"
+        ],
+        "pronunciation_focus_en": [
+          "几代 → jǐ dài ('several generations')",
+          "信佛 → xìn Fó ('to be Buddhist / believe in Buddhism')",
+          "寺庙 → sìmiào ('temple')",
+          "外婆 → wàipó ('maternal grandmother')"
         ]
       },
       {
@@ -14313,6 +14645,12 @@ export const lessons: ChineseLesson[] = [
           "善有善报 → shàn yǒu shàn bào (làm thiện được thiện báo)",
           "相信 → xiāngxìn (tin)",
           "没有 → méiyǒu"
+        ],
+        "pronunciation_focus_en": [
+          "特定宗教 → tèdìng zōngjiào ('a specific religion')",
+          "善有善报 → shàn yǒu shàn bào ('good is rewarded with good')",
+          "相信 → xiāngxìn ('to believe')",
+          "没有 → méiyǒu ('to not have')"
         ]
       },
       {
@@ -14325,6 +14663,12 @@ export const lessons: ChineseLesson[] = [
           "信仰 → xìnyǎng (tín ngưỡng)",
           "选择 → xuǎnzé (lựa chọn)",
           "希望 → xīwàng"
+        ],
+        "pronunciation_focus_en": [
+          "尊重 → zūnzhòng ('to respect')",
+          "信仰 → xìnyǎng ('faith/belief')",
+          "选择 → xuǎnzé ('choice')",
+          "希望 → xīwàng ('to hope')"
         ]
       },
       {
@@ -14337,6 +14681,12 @@ export const lessons: ChineseLesson[] = [
           "个人 → gèrén (cá nhân)",
           "一致 → yīzhì (giống nhau)",
           "不需要 → bù xūyào"
+        ],
+        "pronunciation_focus_en": [
+          "宗教 → zōngjiào ('religion')",
+          "个人 → gèrén ('personal/individual')",
+          "一致 → yīzhì ('to be the same / agree')",
+          "不需要 → bù xūyào ('need not')"
         ]
       }
     ],
@@ -14579,7 +14929,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Tôn giáo ở Trung Quốc đại lục có khung văn hóa và pháp lý riêng. Năm điểm người Việt cần biết:\n\n(1) PHẬT GIÁO ở TRUNG QUỐC: phổ biến rộng, đặc biệt thế hệ ≥40 tuổi và vùng phía Nam (Phúc Kiến, Quảng Đông). Phật giáo Hán truyền (汉传佛教) chủ yếu Đại thừa (Mahayana) — ăn chay, chuỗi tràng, kinh kệ. Khác Phật giáo Việt Nam ít nhiều (Việt Nam có cả Đại thừa miền Bắc và Tiểu thừa miền Nam ở đồng bằng sông Cửu Long với cộng đồng Khmer).\n\n(2) NGÀY LỄ PHẬT GIÁO: Phật đản (佛诞日 — ngày 8 tháng 4 âm lịch), Vu Lan (盂兰盆 — ngày 15 tháng 7 âm lịch). Người Trung Quốc đến chùa thắp nhang, cầu nguyện, ăn chay. Người Việt Nam có ngày tương tự — chia sẻ văn hóa.\n\n(3) ĐẠO GIÁO (道教): bản địa Trung Quốc, ít phổ biến hơn Phật giáo nhưng có ảnh hưởng văn hóa lớn (Đạo gia, Phong thủy, Tử vi đều có gốc từ Đạo giáo). Hầu hết người Trung Quốc trộn lẫn Phật giáo + Đạo giáo + tín ngưỡng dân gian — không phân biệt rõ. Cụm '佛道双修' (theo cả Phật và Đạo) phổ biến.\n\n(4) CƠ ĐỐC GIÁO (基督教): phát triển nhanh ở thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu) — đặc biệt giới chuyên nghiệp + thế hệ trẻ. Có Catholic và Protestant chính thức được nhà nước công nhận. Bạn Trung Quốc theo Cơ Đốc thường ổn định + giáo dục cao + xã giao tốt.\n\n(5) VÔ THẦN (无神论): khoảng 60% dân số Trung Quốc tự nhận vô thần hoặc không tôn giáo. Đảng cộng sản chính thức là vô thần. Sinh viên đại học, công chức nhà nước thường không công khai tôn giáo. Người vô thần ở Trung Quốc thường có 'đạo đức thực dụng' — làm tốt, làm phải, không cần khái niệm nguồn từ tôn giáo.\n\nVỀ TÍN NGƯỠNG DÂN GIAN (民间信仰): cúng tổ tiên (拜祖宗), thần Thành Hoàng (城隍神), thần Tài (财神 — đặc biệt trước Tết), thần Bếp (灶王爷). Hầu hết người Trung Quốc có những hoạt động này NGAY CẢ KHI họ tự nhận vô thần. KHÔNG được coi là 'tôn giáo' chính thức — là văn hóa.\n\nVỀ KIÊNG KỴ ẨM THỰC:\n- Phật giáo Đại thừa nghiêm: chay trường, không trứng/sữa\n- Phật giáo bình thường: ăn chay vài ngày/tháng (ngày rằm, mùng 1 âm)\n- Hồi giáo: không thịt heo, không rượu\n- Cơ Đốc giáo: ít hạn chế ẩm thực (một số tránh rượu)\n- Hỏi TRƯỚC khi mời ăn — cụm '你有什么忌口吗?' (bạn có kiêng gì không?)\n\nVỀ TRUYỀN ĐẠO (传教): KHÔNG phổ biến ở Trung Quốc đại lục, đặc biệt từ phía người không phải đạo Cơ Đốc Mỹ. Nếu bạn Trung Quốc rủ đi chùa/nhà thờ, đó là 'mời xem văn hóa', không phải 'cố cải đạo bạn'. Thoải mái đi xem nếu tò mò, không bắt buộc nếu không.\n\nVỀ NGƯỜI VIỆT KHÔNG QUEN TÔN GIÁO TRUNG QUỐC: lễ chùa Trung Quốc và Việt Nam tương tự nhưng có khác biệt. Thắp 3 nén nhang là chuẩn. Quỳ lạy 3 lần. KHÔNG chụp ảnh tượng Phật trong nhà thờ trừ khi được phép. KHÔNG ăn mặc hở (váy ngắn, quần cộc) đến chùa.\n\nVỀ VIỆC PHỤC SINH KHÁC TÔN GIÁO: ở Trung Quốc đại lục, gia đình thường chấp nhận con cái khác tôn giáo, đặc biệt nếu là đến từ văn hóa khác (Việt Nam, đối tác quốc tế). Nhưng tôn giáo có thể là điểm bàn cãi trong việc dạy con. Thảo luận với chồng/vợ trước.",
+    "cultural_notes_en": "Religion on the mainland has its own cultural and legal frame. Five points to know:\n\n(1) BUDDHISM: widespread, especially the 40+ generation and the south (Fujian, Guangdong). Han Buddhism (汉传佛教) is mainly Mahayana — vegetarian practice, prayer beads, sutras. It differs somewhat from Buddhism elsewhere in the region.\n\n(2) BUDDHIST HOLIDAYS: 佛诞日 (Buddha's Birthday, 8th of the 4th lunar month), 盂兰盆 (Ullambana, 15th of the 7th). People visit temples, burn incense, eat vegetarian. Many lunar-calendar cultures have parallels — shared ground.\n\n(3) TAOISM (道教): indigenous to China, less widespread than Buddhism but culturally huge (Taoist philosophy, feng shui, astrology trace to it). Most Chinese blend Buddhism + Taoism + folk belief without sharp distinction — 佛道双修 ('cultivating both') is common.\n\n(4) CHRISTIANITY (基督教): growing fast in big cities, especially professionals + youth. State-recognized Catholic and Protestant churches exist. Christian friends are often stable, well-educated, socially adept.\n\n(5) ATHEISM (无神论): ~60% identify as atheist or non-religious. The Party is officially atheist; students and civil servants often don't display religion publicly. Mainland atheists usually have a pragmatic ethic — do good, do right, without a religious source concept.\n\nFOLK BELIEF (民间信仰): ancestor worship, the City God, the God of Wealth (财神, especially before New Year), the Kitchen God. Most Chinese do these EVEN IF they call themselves atheist — treated as culture, not formal religion.\n\nDIETARY: strict Mahayana = full vegetarian, no egg/dairy; ordinary Buddhist = vegetarian a few days/month; Muslim = no pork, no alcohol; Christian = few restrictions. Ask BEFORE inviting to eat: 你有什么忌口吗? ('any dietary restrictions?').\n\nPROSELYTIZING (传教): not common on the mainland. If a Chinese friend invites you to a temple/church, it's 'come see the culture,' not an attempt to convert you. Go if curious; not obligatory.\n\nFOR THOSE UNFAMILIAR WITH CHINESE TEMPLES: three sticks of incense is standard; bow three times; do NOT photograph statues inside unless permitted; don't wear revealing clothing.\n\nINTERFAITH IN FAMILY: mainland families often accept a child of a different religion, especially from another culture — but it can be debated over raising children. Discuss with your spouse first.\n\nNOTE — AVOID FIVE POLITICALLY SENSITIVE TOPICS (banned religious movements, unregistered churches, Tibet/Xinjiang as political subjects, the Cultural Revolution's treatment of religion). These are political landmines, not religious discussion — keep the conversation cultural.",
     "tip_advice_vi": "(1) HỎI TRƯỚC khi đề cập tôn giáo: 'cuộc nói chuyện này về tín ngưỡng có thoải mái không?' (聊宗教你方便吗?). Người Trung Quốc thường ngại tôn giáo, không cần ép nói. (2) CHIA SẺ TRƯỚC, hỏi sau: 'mình không theo tôn giáo cụ thể, bạn thì sao?' — bạn chia sẻ vị trí của mình giúp họ thoải mái chia sẻ. (3) DÙNG TỪ TRUNG TÍNH: 'tín ngưỡng' (信仰) thay vì 'tôn giáo' (宗教) khi nói chung. 'Mê tín' (迷信) chỉ dùng cho thực hành không lành mạnh — KHÔNG dùng để miêu tả tôn giáo của bạn. (4) ĐỊNH KHUNG VĂN HÓA: thay vì 'bạn theo gì?', dùng 'gia đình bạn có truyền thống tín ngưỡng nào không?'. Cho phép họ trả lời theo cấp độ thoải mái. (5) THỬ TRẢI NGHIỆM nếu được mời: bạn được mời đi chùa/nhà thờ = cử chỉ tin tưởng. Đi 1 lần như trải nghiệm văn hóa, ăn mặc kín đáo, làm theo chỉ dẫn (thắp nhang, ngồi yên). Sau đó cảm ơn — không cam kết quay lại nếu không muốn. (6) TRÁNH 5 CHỦ ĐỀ: Pháp Luân Công, hội thánh ngầm, Tây Tạng/Đạt Lai Lạt Ma chính trị, Duy Ngô Nhĩ chính trị, lịch sử Cách mạng Văn hóa với tôn giáo. Đây là 'mìn chính trị' không phải 'thảo luận tôn giáo'. (7) NẾU KHÁC TÔN GIÁO TRONG GIA ĐÌNH (chồng theo Phật, vợ theo Cơ Đốc): thảo luận với chồng/vợ TRƯỚC khi gặp gia đình mở rộng. Đặt nguyên tắc cho con: 'cho con tự do khám phá', 'dạy giá trị cốt lõi không phải tôn giáo cụ thể'. Văn hóa Trung Quốc thường chấp nhận điều này nếu gia đình ổn định + có sự thống nhất giữa vợ chồng.",
+    "tip_advice_en": "(1) ASK FIRST before raising religion: 聊宗教你方便吗? ('is it OK to talk about religion?'). Many Chinese are reticent — don't force it. (2) SHARE FIRST, ask second: 'I don't follow a specific religion, how about you?' — sharing your position eases theirs. (3) USE NEUTRAL WORDS: 信仰 ('faith/belief') rather than 宗教 ('religion') when speaking generally. 迷信 ('superstition') is only for unhealthy practice — never to describe their religion. (4) FRAME IT CULTURALLY: instead of 'what do you believe?', use 'does your family have a faith tradition?' — letting them answer at their comfort level. (5) TRY THE EXPERIENCE if invited: an invitation to a temple/church is a gesture of trust. Go once as a cultural experience, dress modestly, follow instructions, then thank them — no commitment to return. (6) AVOID THE FIVE political topics noted above — these are political landmines, not religious discussion. (7) IF INTERFAITH IN A FAMILY: discuss with your spouse BEFORE meeting extended family. Set principles for children ('let them explore freely', 'teach core values, not a specific religion'). Mainland culture usually accepts this if the family is stable + the couple is united.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -14640,6 +14992,12 @@ export const lessons: ChineseLesson[] = [
           "跟我说 → gēn wǒ shuō (kể với mình)",
           "感动 → gǎndòng (xúc động)",
           "这些 → zhèxiē"
+        ],
+        "pronunciation_focus_en": [
+          "愿意 → yuànyì ('to be willing')",
+          "跟我说 → gēn wǒ shuō ('to tell me')",
+          "感动 → gǎndòng ('moved/touched')",
+          "这些 → zhèxiē ('these things')"
         ]
       },
       {
@@ -14652,6 +15010,12 @@ export const lessons: ChineseLesson[] = [
           "感受到 → gǎnshòu dào (cảm nhận được)",
           "多难 → duō nán (khó thế nào)",
           "那样 → nàyàng"
+        ],
+        "pronunciation_focus_en": [
+          "经历 → jīnglì ('to experience / go through')",
+          "感受到 → gǎnshòu dào ('to be able to sense')",
+          "多难 → duō nán ('how hard')",
+          "那样 → nàyàng ('like that')"
         ]
       },
       {
@@ -14664,6 +15028,12 @@ export const lessons: ChineseLesson[] = [
           "想停就停 → xiǎng tíng jiù tíng",
           "讲 → jiǎng (kể)",
           "所有 → suǒyǒu"
+        ],
+        "pronunciation_focus_en": [
+          "不必 → bù bì ('need not')",
+          "想停就停 → xiǎng tíng jiù tíng ('stop whenever you want')",
+          "讲 → jiǎng ('to tell/recount')",
+          "所有 → suǒyǒu ('all')"
         ]
       },
       {
@@ -14676,6 +15046,12 @@ export const lessons: ChineseLesson[] = [
           "佩服 → pèifu (khâm phục)",
           "特别 → tèbié (đặc biệt)",
           "经历过 → jīnglì guò"
+        ],
+        "pronunciation_focus_en": [
+          "走到今天 → zǒu dào jīntiān ('to make it to today')",
+          "佩服 → pèifu ('to admire')",
+          "特别 → tèbié ('especially')",
+          "经历过 → jīnglì guò ('to have gone through')"
         ]
       },
       {
@@ -14688,6 +15064,12 @@ export const lessons: ChineseLesson[] = [
           "任何人 → rènhé rén (bất cứ ai)",
           "不会说 → bù huì shuō (sẽ không nói)",
           "这是 → zhè shì"
+        ],
+        "pronunciation_focus_en": [
+          "私人 → sīrén ('private/personal')",
+          "任何人 → rènhé rén ('anyone')",
+          "不会说 → bù huì shuō ('will not tell')",
+          "这是 → zhè shì ('this is')"
         ]
       }
     ],
@@ -14937,7 +15319,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Lắng nghe chuyện khó là kỹ năng tình bạn cấp cao. Khác văn hóa Việt Nam ở vài điểm:\n\n(1) NGƯỜI TRUNG QUỐC GIẤU SÂU: nỗi đau cá nhân, nhất là chuyện thời thơ ấu (gia đình, bạo lực, bệnh tâm thần) hiếm khi được kể. Khi họ chia sẻ với bạn = họ tin tưởng cao nhất. Đối xử với câu chuyện như 'kho báu được giao'.\n\n(2) STIGMA TÂM LÝ vẫn còn: ở Trung Quốc đại lục thế hệ ≥35 tuổi, đi gặp 心理医生 (psychologist) vẫn có stigma — bị coi là 'có bệnh tâm thần'. Người trẻ thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến) đã thoáng hơn. Khi bạn Trung Quốc thừa nhận đã đi khám tâm lý, đó là dấu hiệu họ tin bạn.\n\n(3) BULLYING (校园欺凌 — xiàoyuán qīlíng): vấn đề lớn ở trường học Trung Quốc, đặc biệt cấp 2-3. Những năm gần đây mới được công khai thảo luận sau nhiều vụ tự sát. Nếu bạn Trung Quốc kể về bị bắt nạt, ĐỪNG hỏi 'sao không báo thầy cô' — phần lớn không hiệu quả + có thể tăng bắt nạt.\n\n(4) GIA ĐÌNH RỐI LOẠN (失功能家庭): nghiện rượu, bạo lực gia đình, ly hôn không phổ biến công khai ở Trung Quốc nhưng tồn tại nhiều. Người Trung Quốc thường giấu vì 'thể diện gia đình' (家丑不可外扬 — chuyện xấu trong nhà không nên ra ngoài). Khi họ kể với bạn = vi phạm chuẩn mực gia đình truyền thống vì tin bạn.\n\n(5) THI ĐẠI HỌC (高考 — gāokǎo): áp lực không tưởng. Trượt cao khảo có thể là vết thương tâm lý cả đời. Khi bạn Trung Quốc kể về việc 'thi trượt', không nói 'thi cử không quan trọng' — đó là invalidate. Văn hóa Trung Quốc thực sự 'thi cử quyết định tương lai' với phần lớn người dân.\n\nVỀ THE 12-HOUR RULE: sau khi nghe chuyện khó, KHÔNG để đó. Nhắn lại trong 12-24 giờ: '昨天晚上你说的事我一直在想, 你今天怎么样?' (chuyện tối qua bạn kể mình vẫn đang nghĩ, hôm nay bạn thế nào?). Cử chỉ 'theo dõi' này quan trọng — chứng tỏ bạn thực sự nghe + quan tâm.\n\nVỀ TRIGGERING: tin tức về bạo lực/tự sát/lạm dụng có thể trigger người từng bị. Khi bạn Trung Quốc nói 'tuần này có chuyện trong tin tức làm tôi nhớ lại', đó là dấu hiệu PTSD hoặc trauma. Hỗ trợ thực tế: tránh thảo luận chi tiết tin tức + hỏi 'bạn cần gì bây giờ?'.\n\nVỀ BÍ MẬT: tuyệt đối tuyệt đối không kể cho ai khác. Kể cả chồng/vợ. Kể cả bạn chung. Người Trung Quốc 记仇 (ghi nhớ phản bội) — vi phạm bí mật = mất quan hệ vĩnh viễn + có thể bị họ kể với người khác để 'phản bội ngược'.\n\nVỀ HOTLINE TÂM LÝ tại Trung Quốc đại lục:\n- 12320 (hotline sức khỏe quốc gia, có nhánh tâm lý)\n- Beijing Suicide Hotline 010-82951332 (24/7, tiếng Trung)\n- 北京回龙观医院心理援助热线 010-82951332\n- Mạng lưới WeChat 'Crisis Lines China' có danh sách hotline cập nhật\n\nĐỀ XUẤT chuyên gia khi bạn không đủ năng lực: nếu bạn Trung Quốc nói về tự hại/tự sát, không xử lý một mình. Hỗ trợ + giới thiệu chuyên gia là CÙNG MỘT việc tốt, không phải mâu thuẫn.",
+    "cultural_notes_en": "Listening to a hard story is an advanced friendship skill. Key differences:\n\n(1) DEEP CONCEALMENT: personal pain, especially childhood (family, violence, mental illness), is rarely told. When they share with you = the highest trust. Treat the story as 'a treasure entrusted.'\n\n(2) MENTAL-HEALTH STIGMA persists: for the mainland 35+ generation, seeing a 心理医生 (psychologist) still carries stigma — read as 'mentally ill.' Big-city youth are more open. A friend admitting they've sought therapy is a sign they trust you.\n\n(3) BULLYING (校园欺凌): a big problem in Chinese schools, especially middle/high school; only recently openly discussed after suicides. If a friend recounts being bullied, do NOT ask 'why didn't you tell a teacher' — it's often ineffective + can worsen it.\n\n(4) DYSFUNCTIONAL FAMILIES (失功能家庭): alcoholism, domestic violence, divorce exist widely but are hidden for 'family face' (家丑不可外扬, 'family shame shouldn't go out'). Telling you breaks a traditional norm out of trust.\n\n(5) THE COLLEGE EXAM (高考 gāokǎo): unimaginable pressure; failing it can be a lifelong wound. If a friend recounts 'failing the exam,' do NOT say 'exams don't matter' — that invalidates. For most people in China, the exam genuinely shapes the future.\n\nTHE 12-HOUR RULE: after hearing a hard story, don't leave it. Message within 12-24 hours: 昨天晚上你说的事我一直在想，你今天怎么样? This 'follow-up' matters — it proves you truly listened + care.\n\nTRIGGERING: news of violence/suicide/abuse can trigger survivors. 'Something in the news this week made me remember' is a sign of trauma. Practical support: avoid detailed news discussion + ask 'what do you need right now?'.\n\nCONFIDENTIALITY: absolutely never tell anyone — not your spouse, not mutual friends. Chinese people 记仇 (remember betrayal); breaking confidence = permanently lost relationship.\n\nMENTAL-HEALTH HOTLINES exist on the mainland (e.g. the national health hotline 12320 with a psychological branch; city suicide-prevention lines). REFER to a professional when beyond your capacity: if they mention self-harm/suicide, don't handle it alone. Supporting + referring is the SAME good act, not a contradiction.",
     "tip_advice_vi": "(1) ĐẶT ĐIỆN THOẠI XUỐNG, im chuông. Đối tượng cuộc nói chuyện này = bạn ấy. Mọi sự xao nhãng = thiếu tôn trọng. (2) ĐẶT CÂU HỎI MỞ ngắn: '什么时候开始的?', '当时你怎么想的?', '你妈妈知道吗?' — không câu hỏi đóng có-không. Câu hỏi mở giúp họ kể tiếp. (3) IM LẶNG OK: nếu họ ngừng kể 30 giây - 1 phút, KHÔNG vội lấp đầy. Im lặng đồng cảm có giá trị. (4) ĐỪNG CỐ ĐOÁN ('chắc bạn cảm thấy X'). Hỏi: '你那时候是什么感觉?' (lúc đó bạn cảm thấy thế nào?). Để họ định danh cảm xúc. (5) LẶP LẠI KEY POINT để họ biết bạn thực sự nghe: '你说两年没人帮你, 妈妈又不知道...' — không tóm tắt cảm xúc, chỉ phản hồi sự kiện. (6) HỎI TRƯỚC khi đề xuất: '你想听听我的想法吗?' (bạn có muốn nghe ý của mình không?). Nếu họ nói không, tôn trọng. Họ chỉ cần bộc lộ, không cần lời khuyên. (7) CHẶT BẢO MẬT: viết 'không kể với ai' lên giấy + thực sự không kể. Bao gồm chồng/vợ + bạn chung. Sau cuộc nói chuyện, KHÔNG nhắc lại trên WeChat group hay trước người khác. KHÔNG ám chỉ 'có chuyện đặc biệt giữa mình và bạn'. (8) FOLLOW UP 12-24 GIỜ: nhắn ngắn '想到你了, 怎么样?' — không đào sâu lại, chỉ check-in. Tuần sau nhắn lại 1 lần. (9) BIẾT GIỚI HẠN: nếu họ kể về tự hại/tự sát, đó NGOÀI khả năng bạn. Khẩn trương đề xuất chuyên gia + không bỏ một mình + gọi 110 hoặc 12320 nếu nguy hiểm cấp tính. Bạn là bạn, không phải bác sĩ.",
+    "tip_advice_en": "(1) PUT THE PHONE DOWN, silence it. The subject of this conversation is them; any distraction = disrespect. (2) ASK SHORT OPEN QUESTIONS: 什么时候开始的?, 当时你怎么想的? — not closed yes/no questions. Open questions let them continue. (3) SILENCE IS OK: if they pause 30s-1min, do NOT rush to fill it. Empathetic silence has value. (4) DON'T GUESS ('you must have felt X'). Ask 你那时候是什么感觉? — let them name the emotion. (5) REFLECT KEY POINTS so they know you heard: 你说两年没人帮你，妈妈又不知道… — reflect the facts, not a feeling summary. (6) ASK BEFORE ADVISING: 你想听听我的想法吗? If no, respect it — they need to vent, not advice. (7) GUARD CONFIDENTIALITY: truly tell no one, spouse + mutual friends included. After, don't re-raise it on a WeChat group or before others, and don't hint 'there's something special between us.' (8) FOLLOW UP IN 12-24 HOURS: a short 想到你了，怎么样? — not re-digging, just a check-in; again the next week. (9) KNOW YOUR LIMITS: self-harm/suicide is BEYOND you — urgently suggest a professional + don't leave them alone + call emergency services if acutely dangerous. You're a friend, not a doctor.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -14998,6 +15382,12 @@ export const lessons: ChineseLesson[] = [
           "想跟你说 → xiǎng gēn nǐ shuō (muốn nói với bạn)",
           "不是 → bù shì (không phải)",
           "件事 → jiàn shì"
+        ],
+        "pronunciation_focus_en": [
+          "责备 → zébèi ('to blame/reproach')",
+          "想跟你说 → xiǎng gēn nǐ shuō ('want to tell you')",
+          "不是 → bù shì ('is not')",
+          "件事 → jiàn shì ('a matter'); 件 measure word"
         ]
       },
       {
@@ -15010,6 +15400,12 @@ export const lessons: ChineseLesson[] = [
           "经常 → jīngcháng (thường xuyên)",
           "第二天 → dì èr tiān (ngày hôm sau)",
           "上班 → shàngbān"
+        ],
+        "pronunciation_focus_en": [
+          "半夜 → bànyè ('the middle of the night')",
+          "经常 → jīngcháng ('often')",
+          "第二天 → dì èr tiān ('the next day')",
+          "上班 → shàngbān ('to go to work')"
         ]
       },
       {
@@ -15022,6 +15418,12 @@ export const lessons: ChineseLesson[] = [
           "紧急 → jǐnjí (khẩn cấp)",
           "发微信 → fā wēixìn (nhắn WeChat)",
           "再聊 → zài liáo"
+        ],
+        "pronunciation_focus_en": [
+          "调整 → tiáozhěng ('to adjust')",
+          "紧急 → jǐnjí ('urgent')",
+          "发微信 → fā wēixìn ('to send a WeChat')",
+          "再聊 → zài liáo ('talk later')"
         ]
       },
       {
@@ -15034,6 +15436,12 @@ export const lessons: ChineseLesson[] = [
           "长久 → chángjiǔ (lâu dài)",
           "关系 → guānxi (quan hệ)",
           "希望 → xīwàng"
+        ],
+        "pronunciation_focus_en": [
+          "在乎 → zàihu ('to care about')",
+          "长久 → chángjiǔ ('long-lasting')",
+          "关系 → guānxi ('relationship')",
+          "希望 → xīwàng ('to hope')"
         ]
       },
       {
@@ -15046,6 +15454,12 @@ export const lessons: ChineseLesson[] = [
           "距离产生美 → jùlí chǎnshēng měi",
           "边界 → biānjiè (ranh giới)",
           "需要 → xūyào"
+        ],
+        "pronunciation_focus_en": [
+          "君子之交淡如水 → jūnzǐ zhī jiāo dàn rú shuǐ (Zhuangzi idiom: 'a noble friendship is plain as water')",
+          "距离产生美 → jùlí chǎnshēng měi ('distance creates beauty')",
+          "边界 → biānjiè ('boundary')",
+          "需要 → xūyào ('to need')"
         ]
       }
     ],
@@ -15281,7 +15695,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Đặt giới hạn (设定界限 — shèdìng jièxiàn) là khái niệm tâm lý phương Tây mới được quan tâm ở Trung Quốc đại lục (đặc biệt từ 2015+). Khác văn hóa Việt Nam ở vài điểm:\n\n(1) FRIENDSHIP TRADITIONAL CHINA: ngày xưa, bạn 'thân' = chia sẻ tất cả, có mặt mọi lúc, can dự sâu vào đời sống nhau. Khái niệm 'boundary' bị coi là 'không thân'. Khi bạn đặt giới hạn với bạn Trung Quốc thế hệ ≥40 tuổi, có thể bị hiểu lầm là 'mình không thân nữa'.\n\n(2) FRIENDSHIP MODERN URBAN: thế hệ trẻ (millennials, gen Z) ở Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến đã chấp nhận boundary. Họ đọc tâm lý học, biết khái niệm 'attachment style', 'codependency'. Đặt giới hạn với họ = OK + được tôn trọng.\n\n(3) CỐT LÕI VĂN HÓA — '君子之交淡如水': Trang Tử (thế kỷ 4 TCN) đã viết về tình bạn 'nhạt như nước' — không ồn ào, không bám. Đây là cơ sở văn hóa Trung Quốc để biện minh cho boundary. Khi bạn dùng cụm này = bạn CÓ truyền thống Trung Quốc ủng hộ — không phải khái niệm 'phương Tây áp đặt'.\n\n(4) KIỂU LẠM DỤNG (over-friendship): bạn Trung Quốc có thể: gọi điện cuối tuần dài giờ, đến nhà không báo trước, đề xuất chia sẻ tài chính (vay không trả), kể chuyện riêng tư của bạn cho người khác, yêu cầu giúp đỡ liên tục, tham gia sự kiện gia đình của bạn không được mời. Đây không phải 'thô lỗ' — là phong cách 'thân' khác. Bạn cần đặt boundary nhẹ nhàng từng bước.\n\n(5) WECHAT BOUNDARIES: WeChat 24/7 → bạn có thể nhắn lúc nào cũng được. Đây là vấn đề boundary cơ bản. Cách giải quyết: tắt notification ban đêm + thông báo cho bạn 'mình không trả lời sau 22h, sáng mai trả lại'. Nếu họ thực sự khẩn, gọi thay vì nhắn.\n\nVỀ STAGES OF BOUNDARY SETTING:\n\nGiai đoạn 1 (1-2 lần): nhẹ nhàng, gián tiếp. 'Hôm nay mình mệt, mai gọi lại'. Họ có thể không nhận ra.\n\nGiai đoạn 2 (3-4 lần): cụ thể. 'Có thể không gọi nửa đêm trừ khi khẩn không?'. Họ có thể xin lỗi nhanh.\n\nGiai đoạn 3 (5+ lần lặp lại): nghiêm túc. Cuộc nói chuyện chính thức như trong dialogue 91. Đặt cấu trúc rõ ràng.\n\nGiai đoạn 4 (vẫn không thay đổi): xét lại quan hệ. Có thể chuyển sang quan hệ 'nhẹ hơn' (không phải bạn thân, chỉ là người quen).\n\nVỀ POST-BOUNDARY: trong 1-2 tháng sau khi đặt giới hạn, theo dõi:\n\n- Nếu họ điều chỉnh hành vi → quan hệ bền vững hơn, lên cấp trưởng thành\n- Nếu họ phớt lờ → lặp lại + nghiêm túc hơn\n- Nếu họ rút lui hoàn toàn → có thể họ không có khả năng quan hệ trưởng thành. Thư giãn, không níu kéo\n\nVỀ GENDER + AGE NORMS: phụ nữ đặt giới hạn với phụ nữ thường khó hơn (cảm xúc cao hơn). Nam đặt giới hạn với nam dễ hơn (ngắn gọn). Đặt giới hạn với người lớn tuổi hơn — đặc biệt khó (văn hóa kính trọng tuổi). Cần dùng cụm formal hơn + thừa nhận họ lớn tuổi.\n\nVỀ COUSIN TOPICS: tình bạn cộng hưởng (codependent friendship) — bạn thấy mình bị consume bởi cảm xúc của bạn → boundary là cứu chữa, không phải lạnh lùng. Tình bạn 'năng lượng âm' (toxic friendship) — bạn cảm thấy tệ sau mỗi cuộc nói chuyện → có thể cần khoảng cách lớn hơn boundary.",
+    "cultural_notes_en": "Setting boundaries (设定界限 shèdìng jièxiàn) is a Western psychological concept that has only recently gained traction on the mainland (especially since ~2015). Key differences:\n\n(1) TRADITIONAL CHINESE FRIENDSHIP: a 'close' friend used to mean sharing everything, being available always, deeply involved in each other's lives. 'Boundary' was read as 'not close.' With a 40+ friend, setting one can be misread as 'we're not close anymore.'\n\n(2) MODERN URBAN FRIENDSHIP: millennials/Gen Z in big cities accept boundaries — they read psychology, know 'attachment style,' 'codependency.' Setting one with them = fine + respected.\n\n(3) THE CULTURAL ANCHOR — 君子之交淡如水: Zhuangzi (4th c. BCE) wrote of friendship 'plain as water' — unclamorous, unclinging. This is the Chinese cultural basis for boundaries. Using this phrase shows you have a Chinese tradition behind you — not a 'Western imposition.'\n\n(4) OVER-FRIENDSHIP PATTERNS: long weekend calls, showing up unannounced, financial entanglement (unrepaid loans), telling others your private matters, constant requests for help, joining your family events uninvited. Not 'rude' — a different 'closeness' style. Set boundaries gently, step by step.\n\n(5) WECHAT BOUNDARIES: WeChat is 24/7, so people message anytime. Solution: silence night notifications + tell them 'I don't reply after 10pm, I'll respond in the morning.' If truly urgent, call rather than message.\n\nSTAGES OF BOUNDARY-SETTING: Stage 1 (1-2 times) gentle, indirect ('I'm tired today, I'll call tomorrow') — they may not notice. Stage 2 (3-4 times) specific ('could you not call at midnight unless it's urgent?') — they may apologize quickly. Stage 3 (5+ repeats) serious — a formal conversation with clear structure. Stage 4 (still unchanged) reconsider the relationship — possibly downshift to acquaintance.\n\nPOST-BOUNDARY (1-2 months): if they adjust → a stronger, more mature relationship; if they ignore → repeat more firmly; if they withdraw entirely → they may lack the capacity for a mature relationship — relax, don't cling.\n\nGENDER/AGE NORMS: woman-to-woman boundaries are often harder (higher emotion); man-to-man easier (terse). With someone older it's especially hard (age-respect culture) — use more formal phrasing + acknowledge their seniority.\n\nRELATED: codependent friendship — feeling consumed by a friend's emotions → a boundary is the cure, not coldness. Toxic friendship — feeling worse after every conversation → may need more distance than a boundary.",
     "tip_advice_vi": "(1) BẮT ĐẦU NHẸ trước: nếu vấn đề mới (1-2 lần), thử tín hiệu nhẹ trước. 'Mình hôm nay mệt, mai gọi lại nhé' qua WeChat. Đôi khi đủ. (2) CHỜ KHI BÌNH TĨNH để cuộc nói chuyện chính thức. Đừng đặt giới hạn ngay sau cuộc gọi 3 giờ sáng — bạn đang giận. Đợi 24 giờ, viết bản nháp những gì sẽ nói. (3) CHỌN ĐỊA ĐIỂM RIÊNG: quán cà phê yên tĩnh, không phải WeChat group. Cuộc nói chuyện cá nhân = không gian cá nhân. (4) DÙNG 'TÔI' không 'BẠN': 'Tôi cần nghỉ ngơi sau 10 giờ tối' tốt hơn 'Bạn không nên gọi sau 10 giờ'. Sự khác biệt nhỏ nhưng cảm xúc khác hoàn toàn. (5) ĐỀ XUẤT THAY THẾ cụ thể: không chỉ 'đừng gọi nửa đêm' mà 'gọi giờ X-Y, nửa đêm nhắn WeChat'. Cho họ biết NÊN làm gì, không chỉ KHÔNG nên. (6) DÙNG '君子之交淡如水': nếu bạn Trung Quốc có học thức, dùng cụm này = họ hiểu ngay đây là khái niệm văn hóa Trung Quốc, không phải 'phương Tây áp đặt'. Tăng tỷ lệ chấp nhận lên 50%+. (7) THEO DÕI 1 THÁNG sau khi đặt boundary. Nếu thay đổi tích cực = củng cố relationship. Nếu không = lặp lại nghiêm túc hơn hoặc xét lại bản chất quan hệ. (8) ĐỪNG CÁ NHÂN HÓA SỰ TỪ CHỐI của họ. Một số người không có khả năng quan hệ trưởng thành — không phải lỗi của bạn. Bạn đặt boundary hợp lý + họ không tôn trọng = vấn đề của họ, không phải của bạn.",
+    "tip_advice_en": "(1) START GENTLY first: if the issue is new (1-2 times), try a soft signal — 'I'm tired today, I'll call tomorrow' via WeChat. Sometimes enough. (2) WAIT UNTIL CALM for the formal talk. Don't set a boundary right after a 3am call — you're angry. Wait 24 hours, draft what you'll say. (3) CHOOSE A PRIVATE PLACE: a quiet cafe, not a WeChat group. A personal conversation = personal space. (4) USE 'I' not 'YOU': 'I need rest after 10pm' beats 'you shouldn't call after 10pm.' A small difference, a totally different feel. (5) PROPOSE A CONCRETE ALTERNATIVE: not just 'don't call at midnight' but 'call X-Y, WeChat at midnight.' Tell them what TO do, not only what not to. (6) USE 君子之交淡如水: with an educated friend, this phrase signals it's a Chinese cultural concept, not a 'Western imposition' — raising acceptance 50%+. (7) FOLLOW UP for a month. Positive change = reinforce the relationship; none = repeat more firmly or reconsider its nature. (8) DON'T PERSONALIZE their rejection. Some people lack the capacity for a mature relationship — not your fault. A reasonable boundary they won't respect = their problem, not yours.",
     "exercises": [
       {
         "type": "fill-blank",
