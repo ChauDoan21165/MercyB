@@ -868,6 +868,7 @@ export const lessons: KoreanLesson[] =       [
         "Sau khi bạn báo nghỉ, sếp đề nghị tăng lương 15% và promotion để giữ bạn lại (역제안 — counter-offer). Hãy diễn tập cách lịch sự nhưng kiên định từ chối, dùng cụm 'ồ thân tâm đã quyết định rồi' (마음을 굳혔습니다) mà vẫn giữ được mối quan hệ tốt sau khi rời đi."
       ],
       "register_notes": "Tiếng Hàn có 6 cấp kính ngữ. Khi báo nghỉ việc cho sếp, BẮT BUỘC dùng 하십시오체 (cấp deferential cao nhất, đuôi -습니다/-ㅂ니다) trong toàn bộ cuộc trò chuyện. Ví dụ: '사직하겠습니다' chứ KHÔNG phải '사직해요' (해요체 — vẫn lịch sự nhưng thân mật, không phù hợp tình huống nghiêm trọng). Đừng bao giờ gọi sếp bằng 'X 씨' (anh/chị X — quá thân) — phải gọi bằng chức danh kèm 님: 부장님 (giám đốc bộ phận), 팀장님 (trưởng nhóm), 사장님 (tổng giám đốc). Khi cảm ơn cuối cuộc trò chuyện, dùng '감사드립니다' (kính hơn) thay vì '감사합니다' (vẫn được nhưng nhẹ hơn). Sai cấp kính ngữ ở tình huống này có thể bị xem là thiếu chuyên nghiệp và phá hỏng quan hệ về lâu dài — cộng đồng ngành Hàn liên kết chặt, tiếng xấu lan nhanh.",
+      "register_notes_en": "Register: a resignation to a boss is maximal-deference 하십시오체 (hasipsio-che — top deferential level, -습니다/-ㅂ니다 endings) throughout; address by title + 님 (부장님 bujang-nim, dept head), never the too-familiar 'X 씨' (-ssi); close with elevated 감사드립니다, not the lighter 감사합니다.",
       "idiom_glosses": [
         {
           "idiom": "발을 빼다",
@@ -1151,6 +1152,7 @@ export const lessons: KoreanLesson[] =       [
         "Cuối phỏng vấn người Hàn LUÔN hỏi '마지막으로 질문 있으십니까?'. Trả lời '없습니다' = thiếu quan tâm. Diễn tập 2 câu hỏi thông minh về văn hóa team hoặc kỳ vọng đối với nhân viên mới — bằng 하십시오체. Tránh hỏi lương trong phỏng vấn đầu."
       ],
       "register_notes": "Phỏng vấn xin việc Hàn Quốc TUYỆT ĐỐI dùng 하십시오체 từ đầu đến cuối — đuôi -습니다/-ㅂ니다. Người phỏng vấn (면접관) hầu như luôn cấp bậc cao hơn nên kính ngữ tối đa. Cách xưng hô: 부장님, 차장님, 면접관님 — nếu không rõ chức danh dùng 선생님. KHÔNG dùng 해요체 ('-아요/어요') trong phỏng vấn — vẫn lịch sự với bạn bè nhưng thiếu chuyên nghiệp ở đây. Tự xưng 저, không 나. Đề cập công ty cũ chỉ dùng '회사' không gọi tên — kín đáo và an toàn pháp lý. Hai cụm bắt buộc thuộc: '감사드립니다' (cảm ơn cao) và '수고하셨습니다' (đáp lại khi sếp nói câu này).",
+      "register_notes_en": "Register: a Korean job interview is 하십시오체 (hasipsio-che — deferential, -습니다 endings) start to finish; self-refer as 저 (jeo), never 나 (na), and name a former employer only as 회사, never directly. 해요체 (haeyo-che, polite-informal) reads as unprofessional here.",
       "idiom_glosses": [
         {
           "idiom": "첫 단추를 끼우다",
@@ -1434,6 +1436,7 @@ export const lessons: KoreanLesson[] =       [
         "Đại sứ quán hỏi 'Có câu hỏi cho chúng tôi không?'. Diễn tập 2 câu hỏi thông minh: alumni network KGSP cũ, hoặc hỗ trợ định hướng nghề sau tốt nghiệp — bằng 하십시오체."
       ],
       "register_notes": "Phỏng vấn KGSP có ban giám khảo gồm tham tán giáo dục, cán bộ ngoại giao, đôi khi giáo sư Hàn — TUYỆT ĐỐI 하십시오체 toàn bộ. Đề cập giáo sư cụ thể PHẢI thêm 님: 박지원 교수님 chứ không 박지원 교수. Khi nói về Hàn-Việt, tránh '한국이 베트남보다 발달했다' (so sánh trên-dưới — bị xem là tự ti hoặc nịnh) — dùng cấu trúc bình đẳng '한국과 베트남' (Hàn Quốc và Việt Nam). Tự xưng nghiêm trang 저, đề cập đại sứ quán dùng 대사관 không gọi tên cá nhân. Từ 'mơ ước/dream' dịch là 꿈 thì OK trong phát biểu cuối — nhưng phần phân tích nghiên cứu phải dùng từ formal: 목표, 계획, 비전.",
+      "register_notes_en": "Register: a KGSP embassy panel is fully 하십시오체 (hasipsio-che, deferential); a named professor must take 님 (박지원 교수님, never bare 교수). Frame countries as equals — '한국과 베트남' — never the ranked '한국이 베트남보다…', which reads as servility.",
       "idiom_glosses": [
         {
           "idiom": "등용문",
@@ -1711,6 +1714,7 @@ export const lessons: KoreanLesson[] =       [
         "Giáo sư bảo lịch 6 tháng quá ngắn. Diễn tập cách (a) trình bày kế hoạch chi tiết để chứng minh khả thi, hoặc (b) lịch sự đề xuất kéo dài thêm 2 tháng — kèm lý do cụ thể. Tránh nói 'thầy nói gì em làm theo' — bị xem là không có chủ kiến."
       ],
       "register_notes": "Quan hệ 사제 (thầy-trò) ở Hàn rất chặt — học bổng, recommendation letter, cả việc làm sau tốt nghiệp đều phụ thuộc vào quan hệ này. Toàn bộ 하십시오체. Gọi giáo sư là 교수님 (KHÔNG '선생님' với giáo sư đại học — '선생님' là cho giáo viên phổ thông). Đề cập sinh viên/khóa khác dùng 선배/후배 + 님 với cấp trên: 선배님. Khi không đồng ý với gợi ý của giáo sư, cấu trúc an toàn: '교수님 말씀이 맞습니다. 다만 ~을 함께 고려하면 어떨까요?' (Thầy nói đúng. Tuy nhiên có thể xem xét thêm ~ được không?) — KHÔNG nói thẳng '아닙니다' (sai). Sau buổi gặp gửi email cảm ơn ngắn — văn hóa Hàn ưa appreciate-loop.",
+      "register_notes_en": "Register: the 사제 (saje, teacher–student) bond is full 하십시오체 (hasipsio-che); a university professor is 교수님, never 선생님 (that is for schoolteachers). Never flatly contradict with 아닙니다 — soften to '교수님 말씀이 맞습니다. 다만 ~을 함께 고려하면 어떨까요?'.",
       "idiom_glosses": [
         {
           "idiom": "머리를 맞대다",
@@ -1982,6 +1986,7 @@ export const lessons: KoreanLesson[] =       [
         "Sau buổi đàm phán, bạn quyết định ĐỒNG Ý nhưng yêu cầu thêm 1 điều khoản (vd: cho phép làm thêm ngoài giờ tối đa 10h/tuần để học tiếng Hàn). Diễn tập email gửi HR — chốt acceptance + nêu yêu cầu lịch sự — bằng 하십시오체."
       ],
       "register_notes": "Buổi đàm phán internship dù 'chỉ là internship' vẫn 하십시오체 vì HR là 인사팀 chuyên nghiệp + bạn chưa được nhận. Cấu trúc câu hỏi an toàn: '~에 대해 여쭤봐도 되겠습니까?' (Em được hỏi về ~ không ạ?) — formal hơn '~에 대해 알 수 있을까요?'. Đề cập tiền tránh dùng từ 돈 (tiền — quá thẳng) — dùng 급여 (lương) hoặc 처우 (đãi ngộ). Khi cần thời gian suy nghĩ: '검토 후 답변드리겠습니다' (Sau khi xem xét sẽ trả lời) — KHÔNG '생각해 볼게요' (해요체 — quá thân, không phù hợp với HR). Sau buổi gặp gửi email cảm ơn trong vòng 24h — đây là 'face culture' và cũng là cơ hội xác nhận lại các điểm đã thảo luận bằng văn bản.",
+      "register_notes_en": "Register: even an internship talk stays 하십시오체 (hasipsio-che) — HR is professional and you are not yet hired; ask via the deferential '~ 여쭤봐도 되겠습니까?'. Never say 돈 for money — use 급여 (salary) or 처우 (terms) — and buy time with '검토 후 답변드리겠습니다', not 해요체 '생각해 볼게요'.",
       "idiom_glosses": [
         {
           "idiom": "발걸음을 떼다",
@@ -2253,6 +2258,7 @@ export const lessons: KoreanLesson[] =       [
         "Phát hiện điền sai số hộ chiếu trong hồ sơ visa đã gửi đại sứ quán. Soạn email cấp tốc tới 국제처 nhờ trường viết thư xác nhận đính chính — cấu trúc khẩn cấp nhưng vẫn formal, bắt đầu với '죄송합니다만 긴급한 사안이 있어 메일 드립니다'."
       ],
       "register_notes": "Email tiếng Hàn formal có cấu trúc CỐ ĐỊNH: (1) 제목 (subject) bao gồm [thẻ phân loại] + nội dung + tên người gửi; (2) câu chào: '~님께 안녕하십니까' (formal nhất) hoặc '안녕하세요' (formal vừa); (3) tự giới thiệu 1 dòng — quan trọng vì cán bộ trường nhận hàng trăm email/ngày; (4) nội dung — gọn, KHÔNG dùng đoạn dài >5 dòng, dùng bullet hoặc gạch đầu dòng nếu nhiều câu hỏi; (5) câu kết: '회신 기다리겠습니다. 감사합니다.' hoặc '바쁘신 와중에 시간 내 주셔서 감사합니다.'; (6) chữ ký: 'XXX 드림' (lễ phép) hoặc 'XXX 올림' (lễ phép cao hơn). KHÔNG dùng emoji, KHÔNG '!!!', KHÔNG cảm thán. Khi reply lại, giữ tiêu đề có 'Re:' và câu chào lịch sự — đừng bỏ trực tiếp vào nội dung. // TODO native-review: '드림' vs '올림' for student-to-staff register choice.",
+      "register_notes_en": "Register: a formal Korean email is fixed-skeleton — '~님께 안녕하십니까' greeting, one-line self-intro, tight body, formal close, and a sign-off 'XXX 드림' (deurim, polite) or higher 'XXX 올림' (ollim). No emoji, no '!!!', no exclamations; on reply keep 'Re:' and re-greet, never dive straight in.",
       "idiom_glosses": [
         {
           "idiom": "발등에 불이 떨어지다",
@@ -2536,6 +2542,7 @@ export const lessons: KoreanLesson[] =       [
         "Cuối cuộc gọi, HR đề nghị offer ngay tại bàn điện thoại với deadline 3 ngày. Diễn tập câu LỊCH SỰ XIN THÊM THỜI GIAN: 'cảm ơn lời mời, em xin được xem xét và trả lời chính thức trong 1 tuần — vì cần thông báo công ty hiện tại'. Tránh gây cảm giác bạn từ chối."
       ],
       "register_notes": "Phỏng vấn điện thoại MẤT KÊNH HÌNH — bù bằng tiếng nói chuẩn xác và cấu trúc câu rõ ràng. Mở cuộc gọi BẮT BUỘC kiểm tra âm thanh: '잘 들리시나요?' (Anh/chị nghe rõ không?) — chứng tỏ chuyên nghiệp và tránh hiểu lầm sau. KHÔNG nói '여보세요' nhiều lần (chỉ 1 lần ở đầu) — giữ 하십시오체 toàn bộ. Khi mất tín hiệu hoặc không nghe rõ: '죄송하지만 통화가 잘 안 들리는데 다시 한 번 말씀해 주시겠습니까?' (Xin lỗi nhưng đường truyền không rõ, anh/chị nói lại được không ạ?) — KHÔNG đoán mò rồi trả lời sai. Khi đầu bên kia ngắt, KHÔNG ngắt lời — chờ họ kết câu rồi đợi 1 nhịp ngắn để chắc rằng họ đã xong. Cuối gọi LUÔN nói '안녕히 계십시오' (Tạm biệt — bên ở lại) chứ không '안녕히 가세요' (bên đi). // TODO native-review: '안녕히 계십시오' / '안녕히 가십시오' choice for end-of-call from caller side.",
+      "register_notes_en": "Register: a phone interview loses the visual channel — keep 하십시오체 (hasipsio-che) throughout and open by confirming audio ('잘 들리시나요?'). Never guess a missed line — '다시 한 번 말씀해 주시겠습니까?' — and close with '안녕히 계십시오' (to the party staying), not '안녕히 가세요'.",
       "idiom_glosses": [
         {
           "idiom": "귀를 기울이다",
@@ -2807,6 +2814,7 @@ export const lessons: KoreanLesson[] =       [
         "Sau sự kiện 24-48h, viết tin nhắn KakaoTalk follow-up tới một người bạn vừa gặp. Tránh quá formal (KaTalk nhẹ hơn email) nhưng vẫn 존댓말. Mẫu: chào → nhắc lại nội dung trao đổi → đề xuất gặp tiếp/gửi tài liệu liên quan."
       ],
       "register_notes": "Sự kiện networking Hàn có 2 layer kính ngữ: (1) 하십시오체 với người mới gặp, người cấp cao hơn rõ ràng (qua chức danh trên 명함); (2) 해요체 chỉ khi đối phương GỢI Ý '편하게 하세요' (cứ thoải mái). Cách an toàn cho người Việt: BẮT ĐẦU 하십시오체, chỉ chuyển nếu đối phương chủ động chuyển trước. Quy tắc 명함 (danh thiếp) — sai = bị xem là không chuyên nghiệp: (a) đưa hai tay; (b) nội dung quay về phía người nhận; (c) khi nhận, dùng hai tay, ĐỌC ngay 3-5 giây trước khi cất; (d) đặt danh thiếp lên bàn trong cuộc trò chuyện — KHÔNG bỏ vào túi quần. Khi không nghe rõ tên: '죄송하지만 성함을 한 번 더 알려 주시겠습니까?' (Em xin phép hỏi lại tên anh/chị) — formal hơn '이름이 뭐예요?'. Cuối cuộc gặp: '오늘 좋은 만남이었습니다. 또 뵙겠습니다' — KHÔNG '안녕!' (quá thân).",
+      "register_notes_en": "Register: networking has two layers — 하십시오체 (hasipsio-che) by default, dropping to 해요체 only if they offer '편하게 하세요'. Safest: start 하십시오체, switch only after they do. 명함 (myeongham, business card) is two-handed, read 3–5s, set on the table — never pocketed.",
       "idiom_glosses": [
         {
           "idiom": "인맥을 넓히다",
@@ -3078,6 +3086,7 @@ export const lessons: KoreanLesson[] =       [
         "6 tháng sau đăng ký vị trí KHÁC tại cùng công ty. Soạn email gửi cùng HR cũ — nhắc lại lần ứng tuyển trước, kết quả phát triển sau 6 tháng (thành tựu cụ thể), lý do quan tâm vị trí mới. Cấu trúc: cảm ơn lần trước → progress update → application chính thức."
       ],
       "register_notes": "Email follow-up sau bị từ chối là MOMENT văn hóa quan trọng nhất ở Hàn — quyết định bạn có 'door' cho lần sau hay không. 하십시오체 toàn bộ — kể cả khi đối phương dùng 해요체 trong reply. KHÔNG bao giờ tỏ ý: (a) tiếc nuối quá đà ('정말 아쉽습니다' lặp 3 lần — nghe whiny); (b) tranh cãi quyết định ('이상한 결정 같습니다' — burn bridge); (c) hỏi tên người trúng tuyển. Cấu trúc câu xin feedback PHẢI có 'cushion': '혹시 부담스럽지 않으시다면…' (Nếu không phiền…) hoặc '가능하시다면…' (Nếu có thể…). Câu kết: '다음 기회에 다시 뵙기를 진심으로 바랍니다' — formal và tích cực, KHÔNG '꼭 연락 주세요' (yêu cầu — quá thẳng). Chữ ký 'XXX 올림' formal hơn '드림' — phù hợp khi gửi đến cấp cao đã từ chối bạn.",
+      "register_notes_en": "Register: a post-rejection follow-up is the door to next time — 하십시오체 (hasipsio-che) even if their reply is 해요체. No over-regret, no arguing the decision; cushion any feedback ask with '혹시 부담스럽지 않으시다면…' and sign 'XXX 올림' (ollim, the highest), fitting a senior who rejected you.",
       "idiom_glosses": [
         {
           "idiom": "끝맺음을 잘하다",
@@ -3355,6 +3364,7 @@ export const lessons: KoreanLesson[] =       [
         "1 tuần trước hạn, giáo sư chưa upload thư. Diễn tập email follow-up LỊCH SỰ — KHÔNG nhắc thầy 'thầy quên rồi sao?' (mất phép) — dùng 'không biết có cần em hỗ trợ thêm tài liệu gì không ạ' để gợi ý nhẹ — bằng 하십시오체."
       ],
       "register_notes": "Xin 추천서 là cuộc gặp formal nhất giữa sinh viên và giáo sư — 하십시오체 toàn bộ kể cả khi thường ngày thầy/cô để bạn dùng 해요체. Gọi giáo sư '교수님' (KHÔNG '선생님' với giáo sư đại học). Câu xin BẮT BUỘC có cụm 'cushion': '다름이 아니라…' (Thực ra là…) hoặc '죄송합니다만 부탁드릴 일이 있어서…' (Em xin lỗi nhưng có việc nhờ…). KHÔNG hỏi 'thầy có sẵn sàng viết tốt cho em không?' ('잘 써 주실 수 있을까요?') — implicit và xúc phạm; nếu thầy không định viết tốt, sẽ tự nói 'tôi nghĩ em nên xin người khác' (đây là cách Hàn từ chối lịch sự). Sau khi nhận lời, gửi email cảm ơn ngay tối hôm đó kèm tài liệu đính kèm. Sau khi biết kết quả (đậu/rớt), BẮT BUỘC báo lại — KHÔNG báo = burn quan hệ vĩnh viễn. Nếu đậu: '교수님 덕분에 좋은 결과를 얻었습니다' (Nhờ thầy mà em được kết quả tốt). Nếu rớt: vẫn báo + cảm ơn lần nữa. // TODO native-review: '다름이 아니라' usage at sentence-opening for student-to-prof favor request.",
+      "register_notes_en": "Register: asking for a 추천서 (chucheonseo, recommendation) is the most formal student–professor exchange — full 하십시오체 (hasipsio-che), a mandatory cushion ('다름이 아니라…'), and you MUST report the outcome back afterward; silence permanently burns the bond.",
       "idiom_glosses": [
         {
           "idiom": "신세를 지다",
@@ -3626,6 +3636,7 @@ export const lessons: KoreanLesson[] =       [
         "Giáo sư đề nghị 'em có muốn participate vào lab seminar tuần tới không?'. Diễn tập câu CHẤP NHẬN lịch sự + 1 câu hỏi follow-up thông minh (chủ đề seminar, có cần đọc paper trước, dress code) — bằng 하십시오체."
       ],
       "register_notes": "Trong môi trường học thuật Hàn, ranking quan trọng: 학사 < 석사 < 박사 < 박사 후 연구원 (postdoc) < 조교수 (assistant prof) < 부교수 (associate) < 정교수 (full prof). 하십시오체 với người cấp cao hơn rõ ràng — kể cả khi ngang tuổi. Cách gọi an toàn: ai có 박사 → '~ 박사님'; giáo sư → '~ 교수님'; nghiên cứu sinh không title → '~ 선생님' (an toàn). Khi không đồng ý với góp ý academic của giáo sư, KHÔNG nói '아닙니다' (sai) — dùng cấu trúc '말씀하신 부분도 일리가 있습니다. 다만 ~ 측면에서는…' (Thầy nói có lý. Tuy nhiên về khía cạnh ~…). Khi đề cập paper khác, dùng 'X 교수님의 2024년도 논문' (paper năm 2024 của giáo sư X) chứ không 'X paper'. Khi giáo sư khen 'good research' — KHÔNG '아니에요, 부족합니다' (Việt-style false modesty quá đà) — chỉ '감사합니다, 더 발전시키겠습니다' là đủ. // TODO native-review: '신진 연구자' vs '초기 경력 연구자' — both used for early-career researcher, native preference for academic events.",
+      "register_notes_en": "Register: academia is ranked (학사 < 석사 < 박사 < 교수) — use 하십시오체 (hasipsio-che) with anyone clearly above and address by earned title ('~ 박사님', '~ 교수님'). Never academic-disagree with 아닙니다 — '말씀하신 부분도 일리가 있습니다. 다만 ~ 측면에서는…'.",
       "idiom_glosses": [
         {
           "idiom": "한 우물을 파다",
@@ -3903,6 +3914,7 @@ export const lessons: KoreanLesson[] =       [
         "Sếp đề nghị tự đi taxi ra ngoài tối nay vì 'không muốn làm phiền'. Diễn tập cách LỊCH SỰ KIÊN ĐỊNH đề nghị đưa đi — '제가 모시고 가겠습니다' — vì văn hóa Hàn xem đó là vai trò của host. Cấu trúc: thừa nhận lo lắng của sếp + giải thích đây là 'bổn phận' (도리) của bạn."
       ],
       "register_notes": "Đón sếp Hàn = 의전 (lễ tân chính thức) — Hàn cực nghiêm. 하십시오체 toàn bộ. Gọi '부장님', '차장님' + chức danh + 님. KHÔNG '아저씨' hay '~씨' với cấp trên. Khi sếp đến lần đầu Việt Nam, BẮT BUỘC: (1) ra tận sân bay đón — gửi xe không người = không tôn trọng; (2) bê hành lý cho sếp; (3) ngồi ghế phụ tài xế (sếp ngồi ghế sau bên phải = 'ghế VIP'); (4) chủ động giải thích lịch mà không cần sếp hỏi. Khi sếp đề nghị 'tôi tự đi được', NHẤT định lịch sự từ chối — '아닙니다, 제가 모시는 것이 도리입니다' (Không ạ, đưa sếp đi là bổn phận của em). Động từ 모시다 (rước/phục vụ kính ngữ) là chìa khóa — sai = thiếu lễ. // TODO native-review: '~을 모시다' usage at lower-rank Vietnamese → higher-rank Korean.",
+      "register_notes_en": "Register: collecting a Korean boss is 의전 (uijeon, formal protocol) — full 하십시오체 (hasipsio-che) on the load-bearing verb 모시다 (mosida, to attend/escort honorifically). If they say 'I can manage', refuse politely: '아닙니다, 제가 모시는 것이 도리입니다.'",
       "idiom_glosses": [
         {
           "idiom": "의전을 차리다",
@@ -4180,6 +4192,7 @@ export const lessons: KoreanLesson[] =       [
         "Khách hàng đề cập muốn 'điều chỉnh điều khoản phạt vi phạm trong MOU'. Diễn tập câu LỊCH SỰ NÉO (defer): 'Em đã ghi lại, sẽ trao đổi với phòng pháp lý và phản hồi sếp trong tuần này' — KHÔNG đồng ý/từ chối ngay tại bàn."
       ],
       "register_notes": "Tiếp 고객사 (khách hàng) khác hẳn tiếp 사장님 (sếp nội bộ): khách hàng có quyền lực thị trường, lễ tân phải TRANG TRỌNG HƠN nhưng KHÔNG được nịnh quá mức. 하십시오체 toàn bộ. Gọi '대표님' (TGĐ), '회장님' (chủ tịch tập đoàn), '사장님' (giám đốc công ty con) tùy chức danh — sai = mất face cho khách. Trao quà: dùng HAI TAY, nội dung quay về phía khách, câu chuẩn '작은 선물입니다만 받아 주십시오'. Nhận quà từ khách: cũng hai tay, ĐỌC nhãn 3 giây trước khi đặt xuống. KHÔNG mở quà ngay tại bàn (Hàn coi là thiếu tinh tế). Khi khách phàn nàn về điều khoản, KHÔNG đồng ý/từ chối ngay — '검토 후 답변드리겠습니다' (Em xem xét rồi trả lời) là an toàn nhất. Đêm sau ký kết, gửi email follow-up trong 24h — kèm bản chụp ảnh quà tặng + lời cảm ơn lần nữa.",
+      "register_notes_en": "Register: hosting a 고객사 (gogaeksa, client) means more ceremony than for an internal boss but no fawning — full 하십시오체 (hasipsio-che), precise titles (대표님 / 회장님 / 사장님). To a complaint about terms, neither agree nor refuse on the spot — '검토 후 답변드리겠습니다'.",
       "idiom_glosses": [
         {
           "idiom": "신뢰를 쌓다",
@@ -4451,6 +4464,7 @@ export const lessons: KoreanLesson[] =       [
         "Đồng nghiệp hỏi 'tại sao người Việt gọi nhau bằng tên cha mẹ (anh Tuấn = bố của Tuấn)?'. Diễn tập câu giải thích cấu trúc gia đình + ý nghĩa kính trọng — không có gì sai, đây là cách thể hiện tôn trọng vai trò làm cha mẹ."
       ],
       "register_notes": "Trò chuyện văn hóa với đồng nghiệp đã 해요체 — đây là dạng casual nhưng vẫn giữ '존댓말' (kính ngữ tôn trọng) ở mức 해요체 không lỏng. KHÔNG dùng 반말 ('-야', '-어/아') với đồng nghiệp Hàn dù 'đã thân' — chỉ chuyển 반말 khi (a) đối phương là 후배 (cấp dưới rõ ràng) và (b) đối phương đề xuất trước. Tự xưng giữ '저' (formal) thay vì '나' kể cả trong 해요체 nếu đang làm việc. Khi giải thích văn hóa Việt: tránh 2 trap: (1) 'self-depreciation' — '베트남은 한국보다 발달이 늦어서' (Việt Nam phát triển muộn hơn Hàn) — sai, mất face cả hai; (2) 'defensive' — '한국에서는 그렇겠지만' (Có lẽ ở Hàn thì vậy) — nghe phòng thủ. Cấu trúc bình đẳng: '베트남에서는 X, 한국과 비슷한/다른 점이에요' (Ở Việt Nam là X, giống/khác với Hàn ở chỗ này). // TODO native-review: '~거든요' particle usage — appropriate level for explaining culture to Korean peer.",
+      "register_notes_en": "Register: culture-chat with a colleague is 해요체 — casual but still 존댓말 (jondaenmal, respectful speech), not loosened to 반말 (banmal, plain speech) unless they are a clear junior and propose it first; keep 저 (jeo), not 나 (na), at work.",
       "idiom_glosses": [
         {
           "idiom": "동질감을 느끼다",
@@ -4728,6 +4742,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn không uống được rượu vì lý do sức khỏe. Diễn tập câu báo trước với 부장님 LỊCH SỰ KHÔNG XIN LỖI quá đà — '죄송하지만 술은 거의 못 마셔서 콜라로 건배 드려도 될까요?' (Em xin lỗi nhưng em hầu như không uống được, em xin phép cụng ly bằng coca có được không?). Tránh giả vờ uống — bị phát hiện = mất face nhiều hơn."
       ],
       "register_notes": "회식 (tiệc công sở Hàn) là không gian DUY NHẤT 하십시오체 có thể relax xuống 해요체 với đồng nghiệp ngang cấp — nhưng VẪN 하십시오체 với 부장님/cấp trên TOÀN BỘ tối. KHÔNG dùng 반말 ('야', '뭐해') với bất kỳ ai trong 회식 dù đã thân thường ngày. Nguyên tắc 술자리 (bàn rượu): (1) 부장님 nâng ly trước, sau đó tất cả nâng theo; (2) 'kốt rượu' bằng cụm '건배!' — KHÔNG '쨩!' (Trung Quốc); (3) Khi cụng ly, ly bạn phải THẤP HƠN ly cấp trên — sai = bất kính; (4) Rót và nhận đều HAI TAY; (5) Khi uống, NGHIÊNG ĐẦU SANG BÊN ~30 độ — không nhìn thẳng cấp trên; (6) Cốc trống = mời rót; KHÔNG tự rót cho mình; (7) Cuối tiệc, 부장님 tuyên bố '오늘은 여기까지' (Hôm nay đến đây), tất cả đứng dậy theo. // TODO native-review: '한 잔 받으십시오' phrasing for offering a drink to senior — verify formality level in modern usage.",
+      "register_notes_en": "Register: 회식 (hoesik, the company dinner) is the one place 하십시오체 (hasipsio-che) may relax to 해요체 with same-rank peers — but stays 하십시오체 with seniors all night; never 반말 (banmal). Keep your glass below a senior's, pour and receive two-handed.",
       "idiom_glosses": [
         {
           "idiom": "잔을 부딪치다",
@@ -4999,6 +5014,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn giới thiệu nhầm 차장님 thành 과장님 trong buổi họp với khách Hàn (downgraded chức danh). Diễn tập (a) sửa ngay tại chỗ với câu '죄송합니다, 차장님이셨네요' và (b) sau cuộc họp đến gặp 차장님 riêng để xin lỗi."
       ],
       "register_notes": "사과 (xin lỗi) đúng kiểu Hàn KHÁC kiểu Việt: (1) KHÔNG vòng vo qua nhiều câu lễ phép — vào thẳng vấn đề; (2) KHÔNG biện minh ('em đang bận', 'em không biết') — Hàn xem là evade trách nhiệm; (3) CỤ THỂ về lỗi đã phạm (KHÔNG '저번에 잘못한 것' = generic 'lần trước em sai'); (4) CAM KẾT không lặp lại; (5) KHÔNG xin lỗi quá nhiều lần ('정말 죄송합니다' lặp 5 lần = whiny). Cấu trúc 4 phần chuẩn: (a) 가 (xác nhận tình huống) — 'X 일에 대해 사과드리려고 합니다'; (b) 나 (mô tả lỗi cụ thể) — '제가 ~해서 결례를 범했습니다'; (c) 다 (giải thích — không biện minh) — '문화 차이로 몰랐습니다' OR '실수였습니다'; (d) 라 (cam kết) — '다시는 같은 실수 하지 않도록 주의하겠습니다'. 하십시오체 toàn bộ. Tự xưng '저', không '나'. Khi sếp nói '괜찮아요' (không sao), KHÔNG nói '괜찮으세요?' lại — đáp '이해해 주셔서 감사드립니다' (Cảm ơn sếp đã thông cảm). // TODO native-review: '결례를 범하다' as set phrase for cultural-faux-pas apology — confirm modern usage in workplace.",
+      "register_notes_en": "Register: a Korean 사과 (sagwa, apology) goes straight in with no excuses (which read as evading), is specific about the fault, and is NOT over-repeated ('정말 죄송합니다' ×5 reads as whiny). Full 하십시오체 (hasipsio-che); self as 저 (jeo), not 나 (na).",
       "idiom_glosses": [
         {
           "idiom": "결례를 범하다",
@@ -5270,6 +5286,7 @@ export const lessons: KoreanLesson[] =       [
         "Trong Q&A, một khán giả Hàn đặt câu hỏi NGẦM CHALLENGE quan điểm của bạn ('không phải Việt Nam vẫn phụ thuộc vào FDI Hàn quá nhiều sao?'). Diễn tập câu trả lời CÂN BẰNG: thừa nhận điểm hợp lý + nêu fact đối ứng + chuyển sang tone tích cực 'co-development' — KHÔNG defensive, KHÔNG nhược."
       ],
       "register_notes": "Hội nghị quốc tế Hàn-Việt — môi trường formal nhất ngoài lễ ngoại giao. 하십시오체 toàn bộ. Gọi diễn giả: '발제자님' (presenter), '토론자님' (discussant), '사회자님' (moderator); giáo sư cụ thể '~ 교수님', tiến sĩ '~ 박사님'. Khi đặt câu hỏi, BẮT BUỘC mở bằng câu khen ngắn '발표 잘 들었습니다' (đã nghe bài hay) — chứ không vào thẳng câu hỏi (Hàn coi là thiếu lễ ở conference). Tự giới thiệu phải có: tên + cơ quan + chức danh — '호치민대학교 경제학부 응웬티엔입니다' chứ không chỉ tên. Khi không đồng ý với panel khác, dùng cấu trúc 'mềm': '말씀하신 부분도 일리가 있습니다. 다만 ~ 측면에서는 다르게 볼 수도 있다고 생각합니다' (Phần ngài nói có lý. Tuy nhiên ở khía cạnh ~, có thể nhìn khác). KHÔNG '아닙니다' hoặc '틀렸습니다' công khai. Trong giờ break, tiếp cận giáo sư: '죄송하지만 잠깐 인사드리고 싶어서요' (Em xin lỗi nhưng em muốn chào ông một chút) — nhịp formal hơn networking event thường.",
+      "register_notes_en": "Register: a Korea–Vietnam conference is the most formal setting outside diplomacy — full 하십시오체 (hasipsio-che), roles by title + 님 (발제자님, 토론자님). Open every question with a short compliment ('발표 잘 들었습니다'), never straight into it; never a public '아닙니다'.",
       "idiom_glosses": [
         {
           "idiom": "공감대를 형성하다",
@@ -5553,6 +5570,7 @@ export const lessons: KoreanLesson[] =       [
         "Khách Hàn không quen ăn rau sống và sợ tiêu chảy. Diễn tập câu trấn an LỊCH SỰ: nói cách rau được rửa kỹ ở nhà hàng tốt + đề xuất nhúng rau vào nước nóng nếu lo + để khách tự quyết định. Tránh áp đặt 'không sao đâu, ăn đi'."
       ],
       "register_notes": "Bữa tối với khách Hàn — vẫn 하십시오체 dù không khí thân hơn buổi work. Khi khách Hàn rót cho bạn, NHẬN bằng hai tay (kể cả ở quán Việt — không cần hỏi 'sao phải hai tay khi đang ở Việt Nam'). Khi rót cho khách, cũng hai tay — chai dốc ~45 độ. Cụng ly: ly bạn THẤP HƠN ly khách — đây là quy tắc Hàn áp dụng kể cả ở Việt Nam. Khi gọi món, dùng tiếng Việt với phục vụ nhưng chuyển sang tiếng Hàn ngay khi xong: '분짜 둘 시켰습니다' (Em đã gọi 2 phần bún chả). KHÔNG translate menu word-by-word — giải thích CONCEPT (rau sống = aroma, không phải vegetables; nước mắm = umami sauce, không phải fish sauce). Khi khách Hàn nói '맛있어요' (ngon), đáp '입맛에 맞으셔서 다행입니다' (May là hợp khẩu vị sếp/anh). KHÔNG '감사합니다' lại — không nấu món thì không cần cảm ơn. Câu vàng cho moment tạm biệt: '오늘 좋은 시간 보냈습니다. 다음에 한국에서 또 뵙기를 바랍니다.' // TODO native-review: '대접해 드리다' as set phrase for treating senior to a meal — verify modern Korean usage.",
+      "register_notes_en": "Register: dinner with a Korean guest stays 하십시오체 (hasipsio-che) even as the mood warms; keep your glass below theirs and pour/receive two-handed even on Vietnamese ground. To '맛있어요' answer '입맛에 맞으셔서 다행입니다', not '감사합니다' (you didn't cook it).",
       "idiom_glosses": [
         {
           "idiom": "입맛에 맞다",
@@ -5830,6 +5848,7 @@ export const lessons: KoreanLesson[] =       [
         "Đồng nghiệp Hàn nói 'tôi nghe Tết Việt có 'kiêng' nhiều thứ — quét nhà, cãi nhau, mặc đen — đúng không?'. Diễn tập câu giải thích văn hóa kiêng kỵ với tone TÔN TRỌNG (không 'mê tín'); nêu paralle với Hàn (kiêng cắt tóc Seollal) để build đồng cảm."
       ],
       "register_notes": "Trò chuyện về Tết với đồng nghiệp Hàn = casual context — 해요체 phù hợp NHẤT (thay vì 하십시오체 quá formal cho topic personal). Nếu sếp Hàn cấp cao hỏi, vẫn 하십시오체. Khi giải thích Tết Việt: dùng từ Hàn '설날' để build kết nối ngay '베트남 뗏은 한국 설날과 같은 날이에요' — sau đó vào chi tiết. Tránh 'Lunar New Year' (English) — dùng '음력 새해' hoặc tận dụng '설날' của họ. Khi đối phương dùng tên Hàn cho khái niệm Việt ('베트남 떡국'), KHÔNG sửa thẳng — đáp '비슷한 의미인데 베트남에서는 반쯩이라고 해요' (Cùng ý nghĩa nhưng VN gọi là Banh Chung). Khi giải thích phong tục, mở bằng cấu trúc '한국과 비슷한데...' (Giống Hàn nhưng...) hoặc '한국과 다른 점은...' (Điểm khác Hàn là...) — luôn so sánh, KHÔNG nêu mình mỗi mình. Khi đối phương ngạc nhiên ('빨간 봉투요?'), KHÔNG defensive — chia sẻ thoải mái về ý nghĩa văn hóa. Câu vàng kết thúc: '김 씨도 한국 설 어떻게 보내는지 들려 줘요' (Anh Kim cũng kể em Seollal Hàn) — chuyển flow để học hỏi từ họ. // TODO native-review: '~잖아요' particle for shared knowledge — confirm Vietnamese-as-second-language usage doesn't sound presumptuous.",
+      "register_notes_en": "Register: Tết-talk with a colleague is most natural in 해요체 (haeyo-che; 하십시오체 over-formalises a personal topic), shifting up only for a senior boss. Build the bridge with their word — '한국 설날과 같은 날이에요' — and always compare ('한국과 비슷한데… / 다른 점은…') rather than stand alone.",
       "idiom_glosses": [
         {
           "idiom": "한솥밥을 먹다",
@@ -6101,6 +6120,7 @@ export const lessons: KoreanLesson[] =       [
         "Đồng nghiệp Hàn nói thẳng quan điểm về Trung Quốc tiêu cực ('중국은 못 믿겠어요'). Diễn tập cách KHÔNG đồng ý / KHÔNG bất đồng — dùng cấu trúc 'nhiều người Hàn nghĩ vậy' (acknowledging without endorsing) + chuyển sang quan điểm Việt 'nhiều quốc gia, nhiều quan hệ' — tránh bị kéo vào tranh luận chính trị tay ba."
       ],
       "register_notes": "Topic nhạy cảm — register CRITICAL: 하십시오체 với cấp trên / 해요체 với đồng nghiệp đã thân, KHÔNG xuống 반말 dù cuộc nói chuyện cá nhân. Cấu trúc câu trả lời an toàn 4 layer: (1) ACKNOWLEDGE — '민감한 주제라' (Là chủ đề nhạy); (2) DISCLAIM — '제 개인 의견이지만' (Ý kiến cá nhân em thôi); (3) ANSWER — câu trả lời thực tế dựa trên fact + 1 chi tiết cụ thể; (4) BRIDGE — '서로 존중하면서' (Tôn trọng lẫn nhau) chuyển sang positive frame. KHÔNG: (a) Né tránh hoàn toàn — '잘 모르겠어요' (em không biết) khi rõ ràng biết = hèn nhát + mất face; (b) Đồng ý quan điểm tiêu cực để 'hòa hợp' (vd đồng ý Trung Quốc xấu) — sau này hối hận; (c) Tranh luận emotional — Hàn coi là không chuyên nghiệp; (d) Trích cụ thể chính trị gia (đặc biệt 김정은, 박근혜) — quá risky. Cụm an toàn dùng nhiều: '베트남 정부 공식 입장은 ~이고, 제 개인 의견은 ~이에요' (Lập trường chính phủ là ~, ý cá nhân em là ~) — separate hai layer rõ. Nếu thực sự không muốn trả lời: '이 주제는 제가 충분히 알지 못해서 답하기 어려워요. 자세한 건 다른 자리에서 알아보고 답해 드릴까요?' — tế nhị defer. // TODO native-review: '~잖아요' usage in challenging topics — ensure not presumptuous between Vietnamese-Korean speakers.",
+      "register_notes_en": "Register: sensitive topics make register critical — 하십시오체 (hasipsio-che) with seniors, 해요체 with close peers, never down to 반말 (banmal). Use the four-layer answer: ACKNOWLEDGE → DISCLAIM ('제 개인 의견이지만') → fact-based ANSWER → BRIDGE; never name specific politicians.",
       "idiom_glosses": [
         {
           "idiom": "선을 긋다",
@@ -6378,6 +6398,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn Hàn rời Việt Nam về nước sau hợp đồng 3 năm. Diễn tập câu tạm biệt EMOTIONALLY HONEST — chia sẻ 정 cụ thể (3 kỷ niệm), cam kết giữ liên lạc, mời họ quay lại Việt Nam — bằng 해요체 với touch of personal warmth."
       ],
       "register_notes": "Chuyển từ 하십시오체 → 해요체 → 반말 là QUÁ TRÌNH có quy tắc trong văn hóa Hàn: (1) 하십시오체: từ ngày 1, formal nhất; (2) 해요체: chuyển sau 6-12 tháng khi đã đủ thân — đối phương ĐỀ XUẤT trước (KHÔNG bạn đề xuất trước với cấp trên); (3) 반말: chỉ với người ngang tuổi/dưới hoặc khi đã 'cùng cấp friendship' — KHÔNG dùng với cấp trên dù đã thân; (4) 호칭: trong friendship, dùng 형/오빠 (older male), 누나/언니 (older female) — không gọi tên + 씨 nữa khi đã có 정. Khi đối phương đề xuất 'mal nokko jinaeyo' (말 놓고 지내요 — bỏ kính ngữ), chấp nhận VINH DỰ, hỏi cách xưng hô cụ thể: '그럼 형이라고 불러도 돼요?'. KHÔNG đột nhiên bỏ — chuyển từ từ trong vài tuần. Concept 정 (jeong) — không có equivalent thẳng trong tiếng Việt; gần nhất là 'tình cảm bền' nhưng thiếu sắc 'không-tự-chọn / tích lũy theo thời gian'. Khi người Hàn nói '정 들었어요' (em/anh có 정 với bạn rồi) — đây là LỜI THỪA NHẬN tình cảm sâu — đáp lại với cùng tone reciprocity. Sau khi thân, vẫn giữ 존댓말 với cấp trên rõ ràng dù đã 'có 정' — formality và intimacy có thể đồng tồn tại trong văn hóa Hàn. // TODO native-review: '정 들었다' usage — verify Vietnamese-as-second-language speaker can naturally use this phrase.",
+      "register_notes_en": "Register: the 하십시오체 → 해요체 → 반말 (hasipsio→haeyo→banmal) descent is rule-bound — the OTHER person proposes each downshift, never you toward a senior. 정 (jeong) has no direct Vietnamese/English equivalent (an accumulated, unchosen bond); '정 들었어요' is a confession of deep feeling.",
       "idiom_glosses": [
         {
           "idiom": "정이 들다",
@@ -6661,6 +6682,7 @@ export const lessons: KoreanLesson[] =       [
         "Officer nghi ngờ: '정말 관광으로 왔습니까? 일하러 온 것 아닙니까?'. Diễn tập câu BÌNH TĨNH giải thích sự thật + chủ động đề xuất show evidence: '관광입니다. 왕복 항공권, 호텔 예약, 여행 일정 다 있습니다. 보여 드릴까요?' — KHÔNG defensive, KHÔNG raise voice."
       ],
       "register_notes": "Officer nhập cảnh là cán bộ chính phủ trong tình huống chính thức nhất — 하십시오체 BẮT BUỘC. Kết câu bằng -습니다/-ㅂ니다, KHÔNG -아/어요. Tự xưng 저, KHÔNG 나. Cách xưng hô: KHÔNG cần gọi officer bằng tên/chức danh — chỉ trả lời câu hỏi. Câu trả lời PHẢI NGẮN: '관광입니다' (chỉ một danh từ + 입니다) TỐT HƠN '저는 관광하러 왔습니다' (dài hơn = nghe rehearsed/đáng nghi). Khi không hiểu: '죄송합니다, 다시 한 번 말씀해 주시겠습니까?' — KHÔNG đoán mò. Tránh từ red-flag: 일 (work), 회사 (company), 면접 (interview), 친구 집 (ở nhà bạn — phải nói ở khách sạn). // TODO native review: '도장 찍어 드리겠습니다' — verify officer-side phrasing for stamping passport in modern usage.",
+      "register_notes_en": "Register: an immigration officer is the most official context — 하십시오체 (hasipsio-che) mandatory, self as 저 (jeo), and answers kept SHORT ('관광입니다' beats the rehearsed-sounding '저는 관광하러 왔습니다'). Avoid red-flag words: 일, 회사, 면접.",
       "idiom_glosses": [
         {
           "idiom": "발을 디디다",
@@ -6944,6 +6966,7 @@ export const lessons: KoreanLesson[] =       [
         "Nhân viên khách sạn đổ thừa 'chắc anh/chị mất ngoài đường, không phải ở khách sạn' để tránh trách nhiệm. Diễn tập câu KIÊN ĐỊNH yêu cầu họ kiểm tra CCTV: '죄송하지만 CCTV 확인을 부탁드립니다' — không emotional, professional."
       ],
       "register_notes": "Tình huống emergency — 하십시오체 với cán bộ Đại sứ quán (cấp ngoại giao) và với cảnh sát Hàn. Khi panic, có khuynh hướng dùng 해요체 sai chỗ — phải intentional về formality. Cán bộ ĐSQ Việt nói tiếng Việt được, nhưng nếu bạn vừa nói tiếng Hàn với cảnh sát Hàn, switch sang tiếng Hàn với cán bộ Việt-người trong khu lãnh sự là OK (signal bạn xử lý situation tốt — góp phần nâng credibility). Từ tránh khi panic: '잃어버렸어요!' (lost it! — quá casual + emotional), '도와주세요!' (help me! — không bad nhưng nghe desperate). Tốt hơn: '분실 신고를 하고 싶습니다' (I'd like to file a loss report) — formal, factual. Khi mô tả tình huống stressful, dùng past tense calm: '발견했습니다' (discovered), '확인했습니다' (verified). // TODO native review: '관할' (jurisdiction) — confirm modern usage in police-station-routing context.",
+      "register_notes_en": "Register: a lost-passport emergency stays deliberately 하십시오체 (hasipsio-che) — panic pushes you toward misplaced 해요체. Avoid emotional '잃어버렸어요!'; prefer the formal, factual '분실 신고를 하고 싶습니다' and calm past tense ('확인했습니다').",
       "idiom_glosses": [
         {
           "idiom": "정신을 차리다",
@@ -7227,6 +7250,7 @@ export const lessons: KoreanLesson[] =       [
         "Đã thanh toán xong nhưng phát hiện nhân viên charge sai (50,000 thay vì 30,000). Diễn tập câu yêu cầu refund: '죄송하지만 영수증 다시 확인해 주시겠어요? 금액이 맞지 않는 것 같아요' (Anh/chị kiểm tra lại hóa đơn được không? Hình như số tiền không khớp) — soft accusatory, không gay gắt."
       ],
       "register_notes": "Nhân viên KTX là customer-facing nên 해요체 PHÙ HỢP — giữ formal nhưng không quá stiff. KHÔNG dùng 하십시오체 (sounds bureaucratic, mismatched với customer service register). Khi pushback về policy, ALWAYS open với cushion phrase: '잠시만요' (just a moment), '죄송하지만' (I'm sorry but) — Hàn coi việc đặt câu hỏi về policy = OK nếu polite, NHƯNG nếu thẳng = bị xem là argumentative. Câu mẫu pushback: '정확한 정책이 어떻게 되나요?' (Chính xác chính sách là gì?) — request specifics, không challenge. Nếu cần escalate: '매니저와 얘기할 수 있을까요?' — formal nhưng không aggressive. Tránh: '말이 안 돼요' (vô lý — quá direct), '왜 이렇게 비싸요?' (sao đắt vậy?). // TODO native review: '특실' (premium class) vs '일반석' (regular class) terminology — confirm current KTX naming.",
+      "register_notes_en": "Register: KTX counter staff are customer-facing, so 해요체 fits — 하십시오체 (hasipsio-che) sounds bureaucratic here. Open any pushback with a cushion ('잠시만요', '죄송하지만') and request specifics, not a challenge: '정확한 정책이 어떻게 되나요?', not '왜 이렇게 비싸요?'.",
       "idiom_glosses": [
         {
           "idiom": "발이 묶이다",
@@ -7510,6 +7534,7 @@ export const lessons: KoreanLesson[] =       [
         "Dược sĩ giải thích cách uống thuốc (3x/ngày, sau ăn, 5 ngày). Diễn tập câu confirm bằng cách nhắc lại: '하루 3번, 식후, 5일이요. 맞나요?' — verification step để chắc chắn không hiểu nhầm."
       ],
       "register_notes": "Medical context = formal but warm. 해요체 với 간호사 (y tá), 접수원 (lễ tân), 약사 (dược sĩ). 하십시오체 với 의사 (bác sĩ) và trong 응급실 (cấp cứu — heightened formality). Cách xưng hô: 의사 = '선생님' (LUÔN 선생님, KHÔNG '의사님'); 간호사 = '간호사님'; 약사 = '약사님'. Khi mô tả triệu chứng: dùng past tense factual: '어제부터 ~했어요' (từ hôm qua em đã ~), '~ 시간 후에 시작됐어요' (bắt đầu ~ tiếng sau). Tránh dramatic words: '죽을 것 같아요' (em sắp chết — overstate, mất credibility), '너무 너무 아파요' (đau vô cùng — Hàn ưa specific scale). Tốt hơn: chỉ vào điểm đau, dùng scale 1-10 nếu được hỏi. Khi không hiểu medical term: '죄송하지만, 그 단어 영어로 뭐예요?' (Xin lỗi, từ đó tiếng Anh là gì?) — Hàn doctor majority biết English medical vocabulary. // TODO native review: '비보험 진료' (uninsured consultation) — confirm this is the term clinics use for foreign tourists.",
+      "register_notes_en": "Register: medical context is formal but warm — 해요체 with nurse/reception/pharmacist, 하십시오체 (hasipsio-che) with the doctor, who is ALWAYS '선생님', never '의사님'. State symptoms in factual past tense; avoid credibility-costing drama like '죽을 것 같아요'.",
       "idiom_glosses": [
         {
           "idiom": "식은땀이 나다",
@@ -7781,6 +7806,7 @@ export const lessons: KoreanLesson[] =       [
         "Manager xuất hiện sau khi receptionist không xử lý được. Diễn tập câu mở đầu RESET tone (đừng repeat phàn nàn) + summarize ngắn gọn vấn đề + ask manager's solution. Bằng 하십시오체 (formal hơn với manager)."
       ],
       "register_notes": "Khách sạn: 해요체 với receptionist (peer customer-service register). Lên 하십시오체 nếu manager xuất hiện hoặc tình huống escalate. Cấu trúc khiếu nại HIỆU QUẢ (Hàn-style): (1) IDENTIFY — nói số phòng + tên booking ngay; (2) FACTS — mô tả vấn đề CỤ THỂ (không 'phòng tệ' generic); (3) IMPACT — tác động lên trải nghiệm ('không ngủ được', 'không tắm được'); (4) ASK — đề xuất giải pháp RÕ RÀNG (đổi phòng, refund, late checkout). Tránh: 'this is unacceptable' (Hàn nghe aggressive), 'I want manager NOW' (demanding). Nếu không được resolve, escalate calmly: '죄송하지만 매니저와 얘기할 수 있을까요?' Câu '양해 부탁드립니다' (xin thông cảm) là chuyển từ ai dùng — nhân viên dùng với khách, KHÔNG khách dùng với nhân viên (hay bị ngược). Khách chỉ cần '도와주세요' (xin giúp). // TODO native review: '양해 부탁드립니다' direction of usage — verify staff-to-customer vs customer-to-staff appropriateness.",
+      "register_notes_en": "Register: a hotel complaint is 해요체 with reception, rising to 하십시오체 (hasipsio-che) if a manager appears. Use IDENTIFY → FACTS → IMPACT → ASK; note '양해 부탁드립니다' runs staff→guest, not guest→staff (commonly reversed) — a guest simply asks '도와주세요'.",
       "idiom_glosses": [
         {
           "idiom": "잠을 설치다",
@@ -8052,6 +8078,7 @@ export const lessons: KoreanLesson[] =       [
         "Hành lý tìm thấy nhưng có items bị mất bên trong. Diễn tập câu báo cáo loss-from-bag: factual list các items đã mang theo và items đang thiếu, request file insurance claim với receipts. KHÔNG accusatory với staff — accusatory với 'thieves at airport handling'."
       ],
       "register_notes": "Counter staff hãng bay: 해요체 phù hợp. Trong report stress situation, dễ slip vào tone emotional — TRÁNH. Dùng past tense factual: '나오지 않았어요' (didn't come out), '~ 안에 있어요' (~ is inside). Câu mô tả hành lý (PIR-critical): brand + size + color + distinguishing marks (ribbon, sticker) + ALL inside items. Càng cụ thể càng dễ tìm. KHÔNG nói '비싼 거예요' (it's expensive — invite suspicion of inflated claim) — nói price từng item nếu được hỏi cụ thể. Phrases vàng: '신고서 작성하고 싶어요' (want to file report); '추적 번호가 어떻게 되나요?' (what's tracking number?); '필수품 보상 정책이 어떻게 되나요?' (essential item compensation policy?). // TODO native review: '인상착의' (description of appearance) — confirm modern usage at airport luggage counter, vs more casual phrasing.",
+      "register_notes_en": "Register: airline counter staff take 해요체 — under stress, resist an emotional tone; use factual past tense ('나오지 않았어요'). Never say '비싼 거예요' (invites suspicion of an inflated claim); give per-item prices only if asked.",
       "idiom_glosses": [
         {
           "idiom": "발만 동동 구르다",
@@ -8329,6 +8356,7 @@ export const lessons: KoreanLesson[] =       [
         "Cảnh sát hỏi 'có camera điện thoại quay lại trước khi mất không?'. Diễn tập câu trả lời CỤ THỂ về digital evidence bạn có (ảnh chụp ngày trước khi mất với ví trong cảnh, video selfie, GPS history app). Đề xuất share evidence — collaboration with police = case ưu tiên hơn."
       ],
       "register_notes": "경찰서 = government context formal nhất. 하십시오체 BẮT BUỘC toàn bộ. Cảnh sát Hàn rất chuyên nghiệp với foreign victims — đa số biết English cơ bản và sẽ offer English-speaking staff. Trả lời trung thực, không exaggerate value (Hàn coi inflated claims = false report = serious offense). Past tense factual: '도둑맞았습니다' (was stolen — passive), '발견했습니다' (discovered). Tránh: '훔쳐갔어요!' (stole it! — emotional + active blame without proof), '확실해요!' (I'm sure! — without evidence sounds presumptuous). Khi không nhớ chi tiết: '정확히 기억나지 않습니다' (don't remember exactly) — honest is better than guess. Phrases vàng: '신고서 사본 받을 수 있을까요?' (may I get report copy?); '영문 사본도 부탁드립니다' (English copy too please); '보험 청구에 필요합니다' (need for insurance). // TODO native review: '도둑맞다' passive form vs '훔쳤다' active — confirm victim should always use passive form when reporting to police.",
+      "register_notes_en": "Register: a 경찰서 (gyeongchalseo, police-station) report is the most formal government context — full 하십시오체 (hasipsio-che), never inflating value (a false report is a serious offence). Use the passive, factual '도둑맞았습니다', not the accusatory '훔쳐갔어요!'.",
       "idiom_glosses": [
         {
           "idiom": "눈 깜짝할 사이에",
@@ -8600,6 +8628,7 @@ export const lessons: KoreanLesson[] =       [
         "Hỏi 1 student cùng tuổi (peer ~20-30 tuổi) đường đến cafe. Diễn tập 해요체 (KHÔNG 반말 vì lạ mặt). Mở '저기요' (excuse me — neutral peer attention-getter) thay vì '실례합니다' (formal cho elder). Tránh '야' (hey — chỉ dùng với bạn thân)."
       ],
       "register_notes": "Hỏi đường = pivot point quan trọng cho register. Cách chọn level: (1) Người mặc đồng phục (cảnh sát, station staff, security) → 하십시오체 luôn; (2) 어르신 (60+ tuổi) → 하십시오체 LUÔN, gọi '어르신' nếu cần address; (3) Adult chuyên nghiệp 30-60 → 해요체 với '실례합니다' opener; (4) Peer cùng tuổi → 해요체 với '저기요' opener (NEVER 반말 với người lạ); (5) Student/young 20s → 해요체. KHÔNG dùng 반말 với người lạ — kể cả nếu họ trẻ hơn bạn (Hàn coi là extreme rude). Khi không chắc tuổi → default 해요체 — neither too formal nor rude. Opener phrases: 실례합니다 (formal — used với elder/uniform), 저기요 (neutral — used với peer/younger), 죄송한데요 (sorry but — soft formal). Câu hỏi đường mẫu: '~이 어디예요?' (peer 해요체), '~이 어디입니까?' (formal 하십시오체), '~ 가는 길을 좀 알려 주시겠어요?' (formal-polite request). Câu cảm ơn: '감사합니다' (formal) > '감사해요' (peer) > '고마워요' (warm peer) — chọn theo register đã thiết lập. // TODO native review: '저기요' vs '실례합니다' opener — verify modern usage especially for tourists asking peers.",
+      "register_notes_en": "Register: asking directions is a register-pivot — uniformed staff and 어르신 (eoreusin, an elder 60+) → 하십시오체 (hasipsio-che); a peer → 해요체 opened with '저기요'. Never 반말 (banmal) with a stranger, even a younger one; default 해요체 when age is unclear.",
       "idiom_glosses": [
         {
           "idiom": "길을 잃다",
@@ -8871,6 +8900,7 @@ export const lessons: KoreanLesson[] =       [
         "Manager xuất hiện sau khi staff sai 2 lần. Diễn tập câu mở (formal, calm): '사장님, 식사는 잘 마쳤지만 두 번 잘못된 부분이 있었어요. 알려 드리고 싶었어요' — KHÔNG demand refund, chỉ inform. Hàn manager hầu như offer compensation tự động khi customer calm + factual."
       ],
       "register_notes": "Restaurant 해요체 với 종업원 (server). Lên 하십시오체 với 사장님 (owner/manager). Cách gọi attention: '저기요' (excuse me — universal restaurant attention-getter); '여기요' (here — gestural, đi kèm wave hand). KHÔNG dùng '아저씨/아주머니' (sir/ma'am — too informal cho service context); KHÔNG vỗ bàn hoặc raise voice. Khi mô tả problem: dùng '~ 것 같아요' (seems like ~) — soft, không accusatory. '잘못 나왔어요' (came out wrong — passive, blame-neutral) > '잘못 만들었어요' (you made it wrong — accusatory). Khi check bill: '계산서 확인 좀 부탁드려요' (please check the bill) — open ended, gives staff chance to fix without losing face. Phrases vàng: '교환해 주실 수 있나요?' (could you exchange?); '바로 다시 만들어 주세요' (please remake right away); '사장님 좀 부탁드릴 수 있을까요?' (could I speak with manager?). // TODO native review: '서비스 차지' (service charge) — verify whether this term is recognized at Korean restaurants for tourist-trap context.",
+      "register_notes_en": "Register: a restaurant is 해요체 with the 종업원 (jongeobwon, server), rising to 하십시오체 with the 사장님. Get attention with '저기요', never '아저씨/아주머니'; prefer the blame-neutral passive '잘못 나왔어요' over the accusatory '잘못 만들었어요'.",
       "idiom_glosses": [
         {
           "idiom": "입맛에 안 맞다",
@@ -9142,6 +9172,7 @@ export const lessons: KoreanLesson[] =       [
         "Sau ride bị overcharge, gọi Kakao Taxi customer service report. Diễn tập câu báo cáo: thời gian ride, biển số xe (plate number — luôn lưu khi vào), số tiền đúng vs số tiền charged, mô tả route detour. Cấu trúc factual, kèm timestamp."
       ],
       "register_notes": "Taxi context: 해요체 với 기사님. Gọi tài xế bằng '기사님' (driver-honorific) — KHÔNG '아저씨' (uncle — too informal cho service context, có thể nghe condescending). Khi pushback về route: dùng map evidence ('Naver 지도에는 ~' — on Naver Maps it shows ~) — Hàn drivers respect data evidence hơn intuition challenge. Phrase soft pushback: '한 번 더 확인해 주실 수 있어요?' (could you check once more?) — gives driver face-saving opportunity to correct without admitting mistake. Khi escalate: '경찰에 신고하겠어요' (will report to police) — last resort phrase, rất serious — dùng khi sure scam và driver từ chối correction. Sau ride: ALWAYS lấy 영수증 (receipt) — for dispute resolution. Phrases vàng: '미터기 확인해 주세요' (please check meter); '영수증 부탁드려요' (receipt please); '여기서 세워 주세요' (stop here please); '직진해 주세요' (go straight please). // TODO native review: '심야 할증' (night surcharge) — verify current Seoul taxi night-rate hours and percentage.",
+      "register_notes_en": "Register: a taxi is 해요체 with the 기사님 (gisanim, driver-honorific), never '아저씨' (too informal, can sound condescending). Push back on the route with map evidence and a face-saving '한 번 더 확인해 주실 수 있어요?'; always take the 영수증 (receipt) for any dispute.",
       "idiom_glosses": [
         {
           "idiom": "바가지를 쓰다",
@@ -9413,6 +9444,7 @@ export const lessons: KoreanLesson[] =       [
         "Trong bữa cơm gia đình, 시아버님 cứ rót rượu cho chồng bạn và muốn bạn rót cho ông theo truyền thống. Bạn không quen — diễn tập câu hỏi nhẹ nhàng để học cách rót đúng (lễ phép) thay vì refuse. Cấu trúc: '아버님, 처음이라 잘 모르는데, 어떻게 따라 드리면 될까요?' — bằng 하십시오체."
       ],
       "register_notes": "시부모님 / 처부모님 = cấp bậc cao nhất gia đình truyền thống Hàn — 하십시오체 BẮT BUỘC, KHÔNG bao giờ 반말 dù đã thân nhiều năm. Cách gọi: 어머님 (mẹ chồng/vợ honorific — KHÔNG '엄마' hay '어머니' vốn dành cho mẹ ruột), 아버님 (bố chồng/vợ honorific). Khi không đồng ý với expectation truyền thống, cấu trúc an toàn: '죄송합니다만, ~을 양해해 주십시오' — chấp nhận sự kỳ vọng + xin được điều chỉnh nhẹ. KHÔNG nói 'no' thẳng — Hàn coi là vô lễ với senior trong gia đình. Khi conflict không tránh được, thảo luận với chồng/vợ TRƯỚC, để họ là 'middle person' truyền tải — Hàn family hierarchy expects spouse mediate. Phrase vàng: '두 가족 모두 소중하게 여기고 싶습니다' (em muốn coi trọng cả hai gia đình) — frame kép tôn trọng, neutralize 'choosing sides' tone. // TODO native review: '며느리 도리' phrasing — modern Korean families đang shift towards softer 'family duty'; verify với native bilingual modern usage.",
+      "register_notes_en": "Register: Korean parents-in-law (시부모님) sit atop the traditional family rank — 하십시오체 (hasipsio-che) mandatory, never 반말; address them 어머님 / 아버님, never 엄마/어머니 (reserved for one's own parents). Never a flat 'no'; let your spouse mediate conflict.",
       "idiom_glosses": [
         {
           "idiom": "한 식구가 되다",
@@ -9684,6 +9716,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn Hàn passionately defend an action of Korean government bạn không đồng ý. Diễn tập câu DEFER conversation: '오늘 주제가 좀 무거워진 것 같아요. 다음에 자세히 얘기할까요?' (chủ đề hôm nay hơi nặng, lần sau bàn kỹ nhé?) — graceful exit, không avoidance."
       ],
       "register_notes": "Political/heavy topics với bạn Hàn: 해요체 phù hợp (peer adult). KHÔNG 반말 trong topic nhạy — 반말 + chính trị = sounds aggressive, dễ rupture friendship. Cấu trúc safe answer 4 layer: (1) ACKNOWLEDGE — '민감한 주제이지만'; (2) DISCLAIM — '제 개인 의견이지만'; (3) ANSWER — fact-based, brief; (4) BRIDGE — '서로 존중하면서…'. KHÔNG: (a) Tránh né hoàn toàn — '잘 모르겠어요' khi rõ ràng biết = mất face; (b) Đồng ý quan điểm tiêu cực để 'hòa hợp' — sau hối hận; (c) Quote politicians cụ thể (đặc biệt Kim Jong-un, Park Geun-hye, contentious figures) — quá risky. Phrase vàng: '입장 차이는 인정하지만…' (acknowledge position differences but…) — Hàn coi mature. // TODO native review: '입장 차이' usage in friendship context vs business — verify register fit cho conversation friendly tone.",
+      "register_notes_en": "Register: a political disagreement with a friend is 해요체 (peer adult) — never 반말 (banmal), where 반말 + politics sounds aggressive and can rupture the bond. Use ACKNOWLEDGE → DISCLAIM → brief fact ANSWER → BRIDGE; '입장 차이는 인정하지만…' reads as mature.",
       "idiom_glosses": [
         {
           "idiom": "입장 차이가 있다",
@@ -9961,6 +9994,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn Hàn ba tháng sau loss — vẫn buồn nhưng không muốn talk constantly về deceased. Diễn tập câu 'check-in nhẹ nhàng': '요즘 어때요?' (dạo này thế nào?) + listen, không bring up topic unless họ initiate. Long-term grief support — show up consistently nhưng không pressure."
       ],
       "register_notes": "위로 (an ủi) là moment đặc biệt: even close friends thường shift UP register lên 해요체 to signal gravity. Nếu bạn thường 반말 với friend, switching tới 해요체 = tone serious + respectful. Switching back tới 반말 sau 1-2 weeks là natural. Cách gọi người đã mất: '할머님' (bà honorific), '아버님' (cha honorific) — KHÔNG bare '할머니/아버지' (chỉ với người đang sống). 'X 님이 돌아가셨어요' (X qua đời — euphemistic, formal). KHÔNG '죽었어요' (chết — too direct/blunt). Cụm vàng: '명복을 빕니다' (cầu cho linh hồn yên nghỉ — formal); '얼마나 마음이 아프시겠어요' (lòng bạn chắc đau lắm); '힘드시면 언제든 연락 주세요' (khó khăn cứ liên lạc). KHÔNG: (a) '괜찮아질 거예요' early — too dismissive; (b) Religious framing nếu không sure faith ('하나님이 데려가신 거예요' — God took them); (c) Compare your loss ('우리 할아버지도…'); (d) Solution-oriented advice ('다음에 더 좋아질 거예요'). // TODO native review: '명복을 빕니다' — confirm cross-faith appropriateness; some sources say specifically Buddhist phrase; alternatives như '삼가 고인의 명복을 빕니다' (formal) hoặc đơn giản '깊은 위로 드립니다' may be safer for non-Buddhist families.",
+      "register_notes_en": "Register: 위로 (wiro, consolation) shifts UP — even close friends move to 해요체 to signal gravity. Name the deceased honorifically (할머님), say '돌아가셨어요', never the blunt '죽었어요', and avoid premature '괜찮아질 거예요'.",
       "idiom_glosses": [
         {
           "idiom": "가슴이 미어지다",
@@ -10238,6 +10272,7 @@ export const lessons: KoreanLesson[] =       [
         "Em ruột Hàn của partner của bạn. Bạn nói câu joke về Korean culture mà she took as insult. Diễn tập câu xin lỗi formal — vì đây là gia đình partner, dùng 하십시오체 dù tuổi nhỏ hơn. '제가 농담이라고 했지만, 듣기에 무례했을 거 같아요. 정말 죄송합니다.'"
       ],
       "register_notes": "사과 register matters intensely ở Hàn. Levels: (1) '미안' / '미안해' — 반말, between very close peers, light apology; (2) '미안해요' — 해요체, casual peers, medium apology; (3) '죄송해요' — 해요체 elevated, formal peers / mild seniors; (4) '죄송합니다' — 하십시오체, formal seniors / serious mistakes; (5) '사과드립니다' — most formal, business / public apology. CHỌN level theo: (a) relationship; (b) severity. Lỗi nhỏ + close friend = '미안해'; lỗi nghiêm trọng + same friend = shift up tới '정말 죄송해요' to signal weight. The shift itself communicates remorse. Cấu trúc 4-phần: (a) ACKNOWLEDGE specific harm — '~한 거 정말 잘못했어요'; (b) NO EXCUSES — '변명 하지 않을게요'; (c) TAKE RESPONSIBILITY — '제 책임이에요'; (d) CONCRETE REPAIR — '같은 실수 안 할게요' + actual action. KHÔNG: (a) '근데 그때는...' (but at that time...) — Hàn coi là evading; (b) Excessive apologies '정말 진짜 너무 죄송해요' lặp 5 lần — bị xem là performative; (c) Tặng đắt tiền quà — bị coi là mua chuộc. Once acknowledged + repair done, MOVE ON — Hàn không thích over-apologize. // TODO native review: '잘못했어요' admission of fault — confirm strong enough for serious-level apology vs '잘못했습니다' 하십시오체 form.",
+      "register_notes_en": "Register: 사과 (sagwa, apology) runs a scale — 미안해 (banmal) < 미안해요 < 죄송해요 < 죄송합니다 (하십시오체) — picked by relationship AND severity; with a close friend a serious fault means shifting UP, and the shift itself signals weight. No '근데 그때는...', then move on.",
       "idiom_glosses": [
         {
           "idiom": "고개를 숙이다",
@@ -10515,6 +10550,7 @@ export const lessons: KoreanLesson[] =       [
         "Co-worker Hàn quit job, leaving company forever. Final day office. Diễn tập câu chia tay professional context — 하십시오체 (workplace formal) nhưng warmth qua tone. Mention specific positive contribution của họ + đề xuất stay-in-touch via LinkedIn/email. Tránh oversharing emotion in office context."
       ],
       "register_notes": "Goodbye context: register depends on relationship + setting. (1) Close friend casual goodbye = 해요체 chính (shift up từ 반말 nếu thường dùng — to mark gravity); (2) Goodbye letter/message formal context = 하십시오체; (3) Funeral/serious context = 하십시오체. Cách nói: '잘 가요' (go well — neutral), '안녕히 가세요' (goodbye to person leaving — formal), '잘 지내요' (live well — for long-term separation). Avoid '안녕' alone (반말 too casual cho serious goodbye). Korean concept '안녕히 가세요' literally = 'go peacefully' — embedded blessing. Cụm vàng: '정 들었어요' (I've grown close to you — explicit acknowledgment of jeong); '꼭 연락하고 지내요' (let's stay in touch — promise of continued bond); '의리 지킬게요' (I'll keep faith — strong commitment in Korean culture). KHÔNG: (a) '나중에 봐요' (see you later — too casual cho permanent goodbye); (b) Western-style 'you'll always have a place in my heart' — Hàn coi là too dramatic; (c) Excessive 'I'll miss you' repetition — concise = sincere. // TODO native review: '의리 지킬게요' usage in non-business friendship context — confirm modern usage ranges; some sources suggest '의리' more bound to bromance/loyalty contexts.",
+      "register_notes_en": "Register: a goodbye's level tracks relationship + setting — a close-friend farewell shifts UP from 반말 to 해요체 to mark gravity. Use '안녕히 가세요' (to the one leaving — an embedded blessing); avoid casual '나중에 봐요' for a permanent goodbye, and repeated 'I'll miss you' (concise reads as sincere).",
       "idiom_glosses": [
         {
           "idiom": "정이 들다",
@@ -10792,6 +10828,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn Hàn đang care for sick parent, exhausted. 1 tháng sau bạn check in vẫn vậy. Diễn tập câu sustained-support: 'X 지난번 얘기한 어머니 어떻게 지내세요?' — show you remembered, không avoid topic. Even nếu họ nói 'still hard', that's OK to hear without trying solve."
       ],
       "register_notes": "Emotional support context: 해요체 với peer adult, even if usually 반말 — 반말 trong serious emotional moment can feel too casual. Stay 해요체 cho gravity. Cách hỏi: '어떤 마음인지 얘기해 줄 수 있어요?' (can you tell me how you're feeling?) — open-ended, không leading. KHÔNG: '왜 그래요?' (why are you like that? — sounds judgmental). Validation phrases: '많이 힘들겠어요' (must be hard); '그 마음 이해해요' (I understand that feeling); '듣기만 해도 무거워요' (just hearing is heavy — acknowledges weight). Listen-first phrases: '그냥 들어 줄게요' (I'll just listen); '답을 안 줘도 돼요' (I don't need to give answer). Practical offer: '필요한 거 있으면…' (if you need anything…) — open invitation. KHÔNG: (a) '다 잘 될 거예요' (everything will be fine — premature reassurance); (b) '나도 비슷한 일 있었는데…' (I had similar — centering self); (c) Solution rush — '이렇게 하면 어때요?' too early. // TODO native review: '한숨 돌리다' (catch breath / get relief moment) — verify common usage in adult emotional support context vs more colloquial.",
+      "register_notes_en": "Register: emotional support is 해요체 with a peer even if you usually use 반말 (banmal) — 반말 in a serious moment feels too casual. Stay open-ended, not judgmental: '어떤 마음인지 얘기해 줄 수 있어요?', never '왜 그래요?'; lead with listening, not an early solution rush.",
       "idiom_glosses": [
         {
           "idiom": "혼자 짊어지다",
@@ -11063,6 +11100,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn cho mượn 200만 won 1 năm trước. Friend never mentioned, never paid. Bạn quyết định write off (consider gift). Diễn tập câu cuối với họ: '돈 얘기 한 번 정리하고 싶어요. 그건 그냥 잊어요' — clean closure, không guilt-trip, restore quan hệ."
       ],
       "register_notes": "Money topic Hàn extremely sensitive — even close friends. 해요체 phù hợp (peer adult). Dùng 반말 chỉ if dynamic đã rất casual về tiền (rare). Cụm vàng để mở: '좀 어색한 주제이긴 한데요…' (awkward topic but…); '돈 얘기 꺼내는 거 정말 어색하지만요…' (awkward to bring up money but…) — acknowledges discomfort openly. Hàn appreciate honesty about awkwardness; pretending it's not awkward = worse. Specific over generic: '30만 원 빌려드렸잖아요' — exact amount, exact date if possible. Vague = uncomfortable for both. Khi từ chối mượn: '죄송하지만 이번에는 빌려드리기 어려워요' — formal-soft refusal. Tránh long explanation về why can't (Hàn coi như making excuses); một câu lý do đủ: '제 사정이 좀 그래요' (my situation is tough). KHÔNG: (a) Use 반말 trong topic tiền (sounds too casual); (b) Soft language ('아 그거…') — clear directness preferred; (c) Write IOU formally with friend (overly business — strange in friendship); (d) Bring up at group setting — strictly 1-on-1. Sau resolution: clean transaction, không bring up again, restore normal contact. // TODO native review: '돈 거래' (money transaction) usage trong friendship context — confirm not too business-formal cho casual peer relationship.",
+      "register_notes_en": "Register: money is extremely sensitive even among close friends — 해요체 (peer adult), not 반말 (banmal). Open by naming the awkwardness ('좀 어색한 주제이긴 한데요…'), be specific (exact amount and date), and refuse softly with ONE brief reason; strictly one-on-one.",
       "idiom_glosses": [
         {
           "idiom": "돈 거래는 안 하다",
@@ -11340,6 +11378,7 @@ export const lessons: KoreanLesson[] =       [
         "Tại bữa tối với 시부모님 (Christian Korean in-laws), bố chồng nói grace before meal. Bạn Buddhist không pray. Diễn tập respectful action: bow head silently for duration of grace (KHÔNG demand pray with them, KHÔNG leave room) + verbal '감사합니다' chung cho meal at end. Honor without compromising self."
       ],
       "register_notes": "Religion topic: 해요체 với peer adult is safest register. 하십시오체 nếu với senior or formal context. KHÔNG 반말 trong topic religion — too sensitive cho casual register. Cách hỏi an toàn: '혹시 종교 갖고 계세요?' (do you have a religion?) — 'happen to' particle 혹시 makes it optional to share. KHÔNG 'unbelievers' / 'wrong faith' framing of any sort. Korean Christian English-translation 'Christian' covers Protestant + Catholic; if specifying: 개신교 (Protestant) vs 천주교 (Catholic). Sensitive points: (a) Don't compliment one religion at expense of another; (b) Don't ask 'why' someone is no-religion (Hàn 무교 default position, doesn't need explanation); (c) Don't share theology unless asked. Cụm vàng: '각자 신앙은 다르지만 서로 존중해요' (different faiths but mutual respect); '관심 가져 주셔서 감사해요' (thanks for the interest — soft decline). // TODO native review: '모태신앙' (born into faith) — confirm this is term Korean Christians use vs newer alternative; some sources mention generation gap.",
+      "register_notes_en": "Register: a religion conversation is safest in 해요체 with a peer, never 반말 (banmal) — too sensitive for a casual level. Ask with the optional-marking 혹시 ('혹시 종교 갖고 계세요?'); never 'unbelievers/wrong faith' framing, and don't ask 'why' someone has 무교 (no religion — the default).",
       "idiom_glosses": [
         {
           "idiom": "마음만 받다",
@@ -11617,6 +11656,7 @@ export const lessons: KoreanLesson[] =       [
         "Friend share một mistake nghiêm trọng từ 5 năm trước (vd: lái xe gây tai nạn, làm tổn thương người khác). Họ shame nhiều. Diễn tập câu non-judgment: '그때 본인을 어떻게 추슬렀는지 듣고 싶어요' — focus on resilience không event itself. Tránh giải pháp / forgiveness preaching."
       ],
       "register_notes": "Listening to vulnerable share = HIGHEST trust moment in friendship. Register: 해요체 even nếu thường 반말 — shift up signals understanding của gravity. After moment passes, can resume 반말 nếu typical. Listening phrases (memorize these): '얘기해 줘서 고마워요' (thanks for telling me); '얼마나 힘들었을지 짐작도 안 가요' (can't imagine how hard); '지금까지 혼자 견디셨네요' (you've endured alone). Question phrases: '지금 어떤 마음인지 더 얘기해 줄래요?' (more about how you feel now?) — open-ended; '그때 어떤 사람이었어요?' (what kind of person were you then?) — humanizing past self. Privacy commitment: '이 얘기는 우리 둘 사이에서만 있을 거예요' (stays between us) — explicit verbal contract. KHÔNG: (a) '저도 비슷한 일 있었는데…' (I also had similar — centering self); (b) '왜 그땐 도움 안 받았어요?' (why didn't you get help — judgment); (c) '시간이 약이에요' (time is medicine — premature dismissal); (d) Solution rush — 'now you should X'. After story shared, DON'T bring it up uninvited later — only nếu họ initiate. // TODO native review: '강한 사람이에요' phrase as compliment after vulnerability — verify whether it lands as supportive or unwanted positive-spin; some sources say '잘 견디셨네요' more universally appropriate.",
+      "register_notes_en": "Register: hearing a vulnerable disclosure is the highest-trust moment — shift UP to 해요체 even from habitual 반말 (banmal) to signal you grasp its weight. Make the privacy contract explicit ('우리 둘 사이에서만'); don't self-center, judge, or dismiss with '시간이 약이에요'.",
       "idiom_glosses": [
         {
           "idiom": "마음을 털어놓다",
@@ -11900,6 +11940,7 @@ export const lessons: KoreanLesson[] =       [
         "Bạn Hàn ask đi ăn 4-5 lần/tuần — too much cho schedule của bạn. Diễn tập câu reduce frequency lịch sự: '매주 한두 번 만나면 더 의미 있을 거 같아요. 매번 만나면 같이 시간이 일상처럼 돼요' — frame như enhancing quality, không reducing care."
       ],
       "register_notes": "Boundary-setting với Korean friend = thử thách vì Korean culture coi 'asking for space' = signal of withdrawal hoặc rupture. Frame CẦN reposition: NOT 'I need less of you', BUT 'I want our friendship sustainable / quality time over quantity'. 해요체 phù hợp. Cụm vàng để mở: '솔직하게 말씀드려도 돼요?' (may I be honest?) — request permission first; '우리 우정 위해서요' (for our friendship) — frames as protecting relationship; '친구로서 한 가지 부탁이 있어요' (as friend, one request). Specific not generic: '11시 이후엔 카톡 자제해요' > 'less contact please'. Concrete = easier to accept; vague = sounds rejection. Reframe to MUTUAL: '서로 거리도 필요해요' (we both need space) > 'I need space'. KHÔNG: (a) Direct 'stop doing X' (sounds aggressive); (b) Long explanations (extends discomfort); (c) Apologize excessively for setting limit (signals you don't really mean it); (d) '나 바빠' (I'm busy — Hàn coi as polite excuse but eventually wears thin if you mean limit). Quy tắc 'enhance through limit': mỗi limit set = one positive action enhancing relationship. Reduce KaTalk → propose weekly cafe. Reduce evening calls → propose monthly dinner. Trade volume for quality. // TODO native review: '카톡 자제해요' direct phrasing — verify whether 자제하다 (restrain) sounds too formal/cold for casual peer; alternative '늦은 시간엔 답이 어려워요' may be softer.",
+      "register_notes_en": "Register: Korean culture can read 'asking for space' as withdrawal, so reframe it as protecting a sustainable friendship; 해요체 fits. Ask permission first ('솔직하게 말씀드려도 돼요?'), frame it as mutual ('서로 거리도 필요해요'), and pair every limit with one bond-enhancing action.",
       "idiom_glosses": [
         {
           "idiom": "선을 긋다",
