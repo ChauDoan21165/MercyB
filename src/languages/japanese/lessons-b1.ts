@@ -859,25 +859,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "私の意見を述べさせていただきます。",
-        "english": "Allow me to state my opinion."
+        "english": "Allow me to state my opinion.",
+        "pronunciation_focus_en": [
+          "意見 (いけん) → 'i-ken'; ん its own beat",
+          "を述べ → 'o no-be'; を object particle 'o'",
+          "させていただきます → 'sa-se-te i-ta-da-ki-mas'; CAUSATIVE 〜させて + humble いただく = 'allow me to ~' (I humbly receive permission to do it)",
+          "the most deferential way to introduce your own action — set business/formal phrase"
+        ]
       },
       {
         "japanese": "その主張には根拠があるとは言えません。",
-        "english": "Cannot say that claim has evidence."
+        "english": "One cannot say that the claim has solid grounds.",
+        "pronunciation_focus_en": [
+          "主張 (しゅちょう) → 'shu-cho-o'; しゅ and ちょう, ちょう a long 'oh'",
+          "には → 'ni wa'; に + は = 'as for [in] that claim'",
+          "根拠 (こんきょ) → 'kon-kyo'; ん a beat, きょ one glided mora",
+          "とは言えません → 'to wa i-e-ma-sen'; 〜とは言えない = 'cannot (go so far as to) say that ~' — soft denial"
+        ]
       },
       {
         "japanese": "経済の観点から見ると、この政策は有効です。",
-        "english": "From an economic perspective, this policy is effective."
+        "english": "From an economic perspective, this policy is effective.",
+        "pronunciation_focus_en": [
+          "経済の → 'ke-e-za-i no'; けい long 'eh', ざ voiced",
+          "観点 (かんてん) → 'kan-ten'; ん a beat",
+          "から見ると → 'ka-ra mi-ru to'; 〜から見ると = 'seen from ~ / from the ~ standpoint' (と = consequence conditional)",
+          "政策は → 'se-i-sa-ku wa'; は = 'wa'; 有効 'yu-u-ko-o' two long 'oh'"
+        ]
       },
       {
         "japanese": "私はその意見に反対です。",
-        "english": "I oppose that opinion."
+        "english": "I oppose that opinion.",
+        "pronunciation_focus_en": [
+          "私は → 'wa-ta-shi wa'; は = 'wa'",
+          "意見に → 'i-ken ni'; に marks what you oppose (反対 takes に, like 賛成)",
+          "反対 (はんたい) → 'han-ta-i'; ん a beat",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "もう一度説明していただければ納得します。",
-        "english": "If you explain again, I'll be convinced."
+        "english": "If you explain again, I'll be convinced.",
+        "pronunciation_focus_en": [
+          "もう一度 → 'mo-o i-chi-do'; もう long 'oh'",
+          "説明して → 'se-tsu-me-i-shi-te'; せつ ends in 'tsu'",
+          "いただければ → 'i-ta-da-ke-re-ba'; the 〜ば conditional ON the humble いただける ('if I may receive your ~ing')",
+          "納得します → 'na-t-to-ku-shi-mas'; small っ a held beat"
+        ]
       }
     ],
+    "cultural_notes_en": "Stating an opinion in Japanese is wrapped in deference machinery that English lacks. 述べさせていただきます ('allow me to state') is the headline: a causative (させる, 'cause/let to do') fused with the humble receiving verb いただく — literally 'I will humbly receive the favor of being allowed to state' — to introduce your own opinion as if it were a privilege granted by the room. There is no American equivalent; 'I'd just like to say' is far flatter. Denial is equally cushioned: 〜とは言えません ('one cannot quite say that ~') softens 'that's wrong' into 'that can't really be claimed,' preserving the other side's face — the same indirection as the negotiation and meeting lessons. Even disagreement (反対です) is usually prefaced with partial agreement ('I partly agree, but…', as the dialogue shows) before the 'but.' For an American learner the instinct to 'just give your honest take directly' reads as combative; competence here is showing your view through the polite scaffolding, and at B1 you should recognize させていただく as a fixed humble frame, not yet generate causative-humble forms freely.",
+    "tip_advice_en": "Highest-leverage recognition target: 〜させていただきます — causative (させる, B1 priority) + humble いただく — as a fixed 'allow me to ~' frame for your own actions in formal/business speech. At B1 you RECOGNIZE and deploy it whole (述べさせていただきます, 説明させていただきます); free causative and causative-passive production (〜させる / 〜させられる across verbs) is **flagged for B2 — no B1 lesson here teaches the causative system with example coverage**, only this frozen humble idiom, so don't back-fill a paradigm the lessons don't teach (the #488/#491 restraint rule). Second, lock 〜とは言えない as soft denial ('cannot go so far as to say'), and notice 〜ば conditional riding on a humble verb (いただければ, 'if I may receive'). Pronunciation watch-points: させていただきます is six even mora — don't compress; small っ a held beat in 納得 ('na-t-to-ku'). Drill: introduce one opinion with 〜させていただきます, then soft-deny a claim with 〜とは言えません.",
     "dialogue": [
       {
         "speaker": "A",
@@ -986,25 +1018,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "新しいシステムを導入してはいかがですか。",
-        "english": "How about introducing a new system?"
+        "english": "How about introducing a new system?",
+        "pronunciation_focus_en": [
+          "新しい → 'a-ta-ra-shi-i'; i-adjective, final いい held",
+          "システムを → 'shi-su-te-mu o'; katakana, を object particle 'o'",
+          "導入して → 'do-o-nyu-u-shi-te'; どう and にゅう both long (にゅ glided)",
+          "はいかがですか → 'wa i-ka-ga des-ka'; 〜てはいかがですか = polite 'how about ~ing?'"
+        ]
       },
       {
         "japanese": "まずは小規模で試したほうがいいでしょう。",
-        "english": "It would be better to try it on a small scale first."
+        "english": "It would be better to try it on a small scale first.",
+        "pronunciation_focus_en": [
+          "まずは → 'ma-zu wa'; ず voiced; は = 'wa' ('first of all')",
+          "小規模で → 'sho-o-ki-bo de'; しょう long 'oh'; で = means ('on a small scale')",
+          "試した → 'ta-me-shi-ta'; plain past required before ほうがいい (Lesson 31 trap)",
+          "ほうがいいでしょう → 'ho-o ga i-i de-sho-o'; でしょう softens the advice to a gentle conjecture"
+        ]
       },
       {
         "japanese": "代替案として、オンライン会議を提案します。",
-        "english": "As an alternative, I propose an online meeting."
+        "english": "As an alternative, I propose an online meeting.",
+        "pronunciation_focus_en": [
+          "代替案 (だいたいあん) → 'da-i-ta-i-an'; ん a beat",
+          "として → 'to-shi-te' = 'as / by way of' (set connector)",
+          "オンライン会議 → 'on-ra-i-n ka-i-gi'; katakana + kanji blend",
+          "提案します → 'te-i-an-shi-mas'; を marks 会議 as the object proposed"
+        ]
       },
       {
         "japanese": "このプランにはいくつかのメリットがあります。",
-        "english": "This plan has several merits."
+        "english": "This plan has several merits.",
+        "pronunciation_focus_en": [
+          "プランには → 'pu-ran ni wa'; に + は ('as for this plan')",
+          "いくつかの → 'i-ku-tsu-ka no'; つ is 'tsu' ('several')",
+          "メリット → 'me-ri(t)-to'; small っ held; means 'advantage/upside' — NOT English moral 'merit'",
+          "があります → が subject, あります inanimate existence"
+        ]
       },
       {
         "japanese": "優先順位を決める必要があります。",
-        "english": "We need to set priorities."
+        "english": "We need to set priorities.",
+        "pronunciation_focus_en": [
+          "優先順位 → 'yu-u-sen-jun-i'; ゆう long 'oh', two ん each a beat",
+          "を決める → 'o ki-me-ru'; を object particle 'o'",
+          "必要 (ひつよう) → 'hi-tsu-yo-o'; つ is 'tsu', よう long 'oh'",
+          "があります → 〜する必要がある = 'there is a need to ~'; が, not を"
+        ]
       }
     ],
+    "cultural_notes_en": "Japanese suggestions are calibrated by how much they leave the decision with the listener. 〜てはいかがですか ('how about ~ing?') floats an idea without pushing; 〜たほうがいいでしょう adds でしょう to soften 'you should' into 'it would probably be better' — the でしょう is doing face-work, not expressing doubt. An American 'I suggest we do X' or 'we should just do X' lands as more assertive than the Japanese register wants; the polite move is to under-state and let the group converge, consistent with the meeting/negotiation lessons. A vocabulary trap worth flagging: メリット / デメリット are everyday Japanese for 'advantage / disadvantage' (pros and cons), NOT the English moral senses of 'merit' / 'demerit' — a classic 和製英語 (Japanese-made-English) false friend; treating them as the English words mistranslates ordinary business speech. The practical B1 takeaway: pitch suggestions low (〜てはいかがですか / 〜でしょう), read メリット as 'upside,' and expect the real decision to form by consensus, not by the strength of your pitch.",
+    "tip_advice_en": "Highest-leverage suggestion ladder: 〜てはいかがですか (polite, hands the choice over) and 〜たほうがいいでしょう (soft 'you'd better,' でしょう blunts it) — both pitched below the American 'I suggest/we should' default; under-stating is the competent register here. Reuse the Lesson 31 trap: ほうがいい takes the PLAIN PAST (試した, not 試す) for the 'should' meaning. Vocabulary tip with teeth: メリット/デメリット = pros/cons (advantage/disadvantage), a 和製英語 false friend — never read them as English 'merit/demerit'; watch for more (テンション = mood/energy not 'tension,' クレーム = complaint not 'claim'). Pronunciation watch-points: long 'oh' in どう/しょう/ゆう held two beats; small っ a held silent beat in メリット ('me-ri-t-to'). Drill one proposal two ways: 〜てはいかがですか and 〜たほうがいいでしょう, feeling the deference.",
     "dialogue": [
       {
         "speaker": "A",
@@ -1113,25 +1177,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "大変申し訳ございません。私の不注意でした。",
-        "english": "I am very sorry. It was my carelessness."
+        "english": "I am very sorry. It was my carelessness.",
+        "pronunciation_focus_en": [
+          "大変 (たいへん) → 'ta-i-hen'; intensifier ('very/terribly')",
+          "申し訳ございません → 'mo-o-shi-wa-ke go-za-i-ma-sen'; the strongest everyday apology (carried from A2)",
+          "私の → 'wa-ta-shi no'; の possessive",
+          "不注意でした → 'fu-chu-u-i de-shi-ta'; ちゅう long 'oh'; でした = polite past of です"
+        ]
       },
       {
         "japanese": "約束を忘れてしまいました。",
-        "english": "I accidentally forgot the appointment."
+        "english": "I accidentally forgot the appointment.",
+        "pronunciation_focus_en": [
+          "約束 (やくそく) → 'ya-ku-so-ku', four even mora",
+          "を忘れて → 'o wa-su-re-te'; を object particle 'o'; te-form of 忘れる",
+          "しまいました → 'shi-ma-i-ma-shi-ta'; 〜てしまいました = completion + REGRET ('went and forgot')",
+          "in casual speech 〜てしまう contracts to 〜ちゃう (忘れちゃった) — note for recognition"
+        ]
       },
       {
         "japanese": "電車の遅れのせいで遅刻しました。",
-        "english": "I was late because of the train delay."
+        "english": "I was late because of the train delay.",
+        "pronunciation_focus_en": [
+          "電車の遅れ → 'den-sha no o-ku-re'; の possessive ('the train's delay')",
+          "せいで → 'se-i de' = 'because of ~' (BLAME — negative cause; contrast おかげで, positive)",
+          "遅刻 (ちこく) → 'chi-ko-ku' ('lateness/tardiness')",
+          "しました → 'shi-ma-shi-ta', polite past"
+        ]
       },
       {
         "japanese": "言い訳をするつもりはありません。",
-        "english": "I don't intend to make excuses."
+        "english": "I don't intend to make excuses.",
+        "pronunciation_focus_en": [
+          "言い訳 (いいわけ) → 'i-i-wa-ke'; いい a held long 'ee' ('excuse')",
+          "をする → 'o su-ru'; を object particle 'o'",
+          "つもり → 'tsu-mo-ri'; つ is 'tsu'; 〜つもり = 'intention to ~'",
+          "はありません → 'wa a-ri-ma-sen'; はありません (not がありません) — は marks the negated intention"
+        ]
       },
       {
         "japanese": "どうかお許しください。",
-        "english": "Please forgive me."
+        "english": "Please forgive me.",
+        "pronunciation_focus_en": [
+          "どうか → 'do-o-ka'; どう long 'oh' — an earnest 'please, I beg you' (stronger than どうぞ)",
+          "お許し → 'o yu-ru-shi'; お = humble/beautifying prefix on 許し",
+          "ください → 'ku-da-sa-i'; 〜ください request",
+          "said slowly and low — the pleading register, not a casual request"
+        ]
       }
     ],
+    "cultural_notes_en": "Apologizing in Japan is relationship repair, not an admission of legal fault, and the cultural script inverts the American litigation-shaped instinct to never say 'sorry' or to explain yourself. Here a fast, unqualified apology comes FIRST, and adding reasons reads as 言い訳 (iiwake, excuse-making) — socially worse than the original mistake, which is why 言い訳をするつもりはありません ('I don't intend to make excuses') is itself a virtuous thing to say. The apology scale from A2 deepens: すみません < ごめんなさい < 申し訳ありません < 大変申し訳ございません, matched to severity and audience. The grammar carries the attitude: 〜てしまいました is the key B1 form — it fuses completion with regret/unintendedness ('I went and forgot,' not just 'I forgot'); dropping it to plain 忘れました loses the contrition. Note the cause-particle asymmetry: せいで assigns blame (negative outcomes), おかげで assigns credit (positive) — using せいで for a good result, or おかげで for a bad one, is a real semantic error. B1 takeaway: apologize first and bare, hold the 〜てしまう regret nuance, and don't pile on reasons the way an American might 'explain.'",
+    "tip_advice_en": "Highest-leverage B1 form: 〜てしまう / 〜てしまいました — completion + regret/unintendedness. 忘れてしまいました = 'I (regrettably, unintentionally) forgot'; plain 忘れました is just 'I forgot.' In apologies the しまう is the contrition, so don't drop it. Recognize the casual contractions: 〜てしまう→〜ちゃう, 〜でしまう→〜じゃう (忘れちゃった) — you'll hear these constantly even if you produce the full form at B1. Second, the cause-particle pair: せいで = because-of (blame, bad outcome) vs おかげで = thanks-to (credit, good outcome) — they are not interchangeable; matching polarity wrong is a clear error. Reuse the apology scale (A2) and lead with the apology, not the reason — explaining first reads as 言い訳. Pronunciation watch-points: long 'oh' in どうか/ちゅう held two beats; いい in 言い訳 a held long 'ee.' Drill: apologize for one mistake using 〜てしまいました, then explicitly decline to excuse it.",
     "dialogue": [
       {
         "speaker": "A",
@@ -1240,25 +1336,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "早めに予約したほうがいいですよ。",
-        "english": "You should make a reservation early."
+        "english": "You should make a reservation early.",
+        "pronunciation_focus_en": [
+          "早めに → 'ha-ya-me ni'; に makes it adverbial ('early / sooner')",
+          "予約 (よやく) → 'yo-ya-ku', three even mora",
+          "したほうがいい → plain past した + ほうがいい (the Lesson 31 'should' frame)",
+          "ですよ → 'des yo'; the よ adds friendly emphasis to advice (softens, doesn't command)"
+        ]
       },
       {
         "japanese": "日本語の勉強にはアニメを見るといいですよ。",
-        "english": "For studying Japanese, it's good to watch anime."
+        "english": "For studying Japanese, it's good to watch anime.",
+        "pronunciation_focus_en": [
+          "勉強には → 'ben-kyo-o ni wa'; きょう long 'oh'; には = 'for the purpose of'",
+          "アニメを → 'a-ni-me o'; を object particle 'o'",
+          "見るといい → 'mi-ru to i-i'; 〜といい = 'it'd be good if/to ~' (と consequence + いい) — gentle advice",
+          "ですよ → 'des yo'; friendly advisory よ"
+        ]
       },
       {
         "japanese": "一度専門家に相談してみてはいかがですか。",
-        "english": "How about consulting an expert?"
+        "english": "How about consulting an expert?",
+        "pronunciation_focus_en": [
+          "一度 → 'i-chi-do' ('once / one time')",
+          "専門家に → 'sen-mon-ka ni'; に marks the consult target; two ん each a beat",
+          "相談してみて → 'so-o-dan-shi-te mi-te'; 〜てみる = 'try ~ing / give it a go' (te-form + みる)",
+          "はいかがですか → 'wa i-ka-ga des-ka'; polite 'how about ~?'"
+        ]
       },
       {
         "japanese": "私の経験から言うと、無理をしないことです。",
-        "english": "From my experience, don't overdo it."
+        "english": "From my experience, don't overdo it.",
+        "pronunciation_focus_en": [
+          "経験から言うと → 'ke-e-ken ka-ra i-u to'; 〜から言うと = 'speaking from ~'; と consequence",
+          "無理を → 'mu-ri o'; を object particle 'o' ('overdoing it')",
+          "しない → 'shi-na-i'; PLAIN negative of する (plain form inside the こと nominalization)",
+          "ことです → 'ko-to des'; 〜ことです = 'the thing (to do) is ~' — an advice-giving frame"
+        ]
       },
       {
         "japanese": "もっと休息を取ることをお勧めします。",
-        "english": "I recommend taking more rest."
+        "english": "I recommend taking more rest.",
+        "pronunciation_focus_en": [
+          "もっと → 'mo(t)-to'; small っ a held silent beat ('more')",
+          "休息を取る → 'kyu-u-so-ku o to-ru'; きゅう long 'oh'; を object 'o'",
+          "ことを → 'ko-to o'; こと nominalizes 'taking rest', を marks it as recommended",
+          "お勧めします → 'o-su-su-me-shi-mas'; お humble prefix; final す devoiced"
+        ]
       }
     ],
+    "cultural_notes_en": "Advice in Japanese is softened structurally because unsolicited direct advice can imply the listener couldn't figure it out themselves — a face issue. The toolkit graduates the directness: 〜といいですよ ('it'd be good if you ~,' lightest), 〜てみてはいかがですか ('how about giving ~ a try,' tentative), 〜たほうがいいですよ ('you'd better ~,' firmer but the よ keeps it friendly), 〜ことです ('the thing is to ~,' summarizing wisdom). The friendly よ on advice is not the assertive よ of an argument — context flips its tone, and dropping it can make advice sound like an order. 〜てみる ('try doing, see how it goes') frames a suggestion as low-stakes experimentation rather than a directive, which fits the face-preserving norm. Compared to the American readiness to give brisk, confident advice ('you should just…'), the Japanese register stays provisional and routes through the listener's autonomy. B1 takeaway: pick the rung to match how close you are and how solicited the advice is, and treat 〜てみる as the gentle 'give it a shot' move.",
+    "tip_advice_en": "Highest-leverage advice patterns to lock as a graded set: 〜といいですよ (lightest 'it'd be good if') → 〜てみてはいかがですか ('how about trying') → 〜たほうがいいですよ (firmer 'you'd better') → 〜ことです ('the thing is to'). Match the rung to closeness/solicitation; over-direct advice is a face issue, not just impolite. Key carry: 〜てみる = 'do ~ and see' (te-form + みる, the verb 'see' bleached to 'try') — a B1 attempt/experiment marker; recognize it everywhere. Reuse traps: ほうがいい takes plain PAST (したほうがいい); the こと/の nominalizer turns a clause into the advice noun (しないことです). Pronunciation watch-points: friendly よ stays light (not the argumentative よ); long 'oh' in きょう/きゅう/そう held two beats; small っ a held beat in もっと. Drill one piece of advice up the ladder: 〜といいですよ → 〜たほうがいいですよ.",
     "dialogue": [
       {
         "speaker": "A",
@@ -1367,25 +1495,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "富士山に登ったことがありますか。",
-        "english": "Have you ever climbed Mt. Fuji?"
+        "english": "Have you ever climbed Mt. Fuji?",
+        "pronunciation_focus_en": [
+          "富士山 (ふじさん) → 'fu-ji-san'; ふ soft bilabial, soft j",
+          "に登った → 'ni no-bo(t)-ta'; に marks the climb target; small っ a held beat in 登った",
+          "ことがありますか → 'ko-to ga a-ri-mas-ka'; 〜たことがある = 'have the experience of ~ing'",
+          "this is EXPERIENCE ('have you ever'), distinct from plain past 登りましたか ('did you climb')"
+        ]
       },
       {
         "japanese": "去年、日本に留学した時のことを話します。",
-        "english": "I'll talk about when I studied in Japan last year."
+        "english": "I'll talk about when I studied in Japan last year.",
+        "pronunciation_focus_en": [
+          "去年 → 'kyo-nen'; きょ one glided mora — relative-time word, no particle",
+          "留学した → 'ryu-u-ga-ku-shi-ta'; りゅう long (りゅ glided) — plain past MODIFYING 時 directly (no relative pronoun)",
+          "時のこと → 'to-ki no ko-to'; 〜た時 = 'when [I] did ~'; のこと = 'the matter of'",
+          "を話します → 'o ha-na-shi-mas'; を object 'o'"
+        ]
       },
       {
         "japanese": "その経験は私にとって貴重なものでした。",
-        "english": "That experience was valuable to me."
+        "english": "That experience was valuable to me.",
+        "pronunciation_focus_en": [
+          "経験は → 'ke-e-ken wa'; けい long 'eh'; は = 'wa'",
+          "私にとって → 'wa-ta-shi ni to(t)-te'; 〜にとって = 'for/to (someone)'; small っ a held beat",
+          "貴重な → 'ki-cho-o na'; ちょう long 'oh'; な = na-adjective linker before もの",
+          "ものでした → 'mo-no de-shi-ta'; でした = polite past of です"
+        ]
       },
       {
         "japanese": "初めての海外旅行はとても感動的でした。",
-        "english": "My first overseas trip was very moving."
+        "english": "My first overseas trip was very moving.",
+        "pronunciation_focus_en": [
+          "初めての → 'ha-ji-me-te no'; soft j; の links to the noun ('first-time ~')",
+          "海外旅行 → 'ka-i-ga-i ryo-ko-o'; りょ one glided mora, こう long 'oh'",
+          "は → topic particle, 'wa'; とても → 'to-te-mo' (positive degree adverb)",
+          "感動的でした → 'kan-do-o-te-ki de-shi-ta'; どう long 'oh'; な-adj past via でした"
+        ]
       },
       {
         "japanese": "子どもの頃の記憶をよく覚えています。",
-        "english": "I remember my childhood memories well."
+        "english": "I remember my childhood memories well.",
+        "pronunciation_focus_en": [
+          "子どもの頃 → 'ko-do-mo no ko-ro'; 頃 = 'around the time of' ('childhood')",
+          "記憶を → 'ki-o-ku o'; を object particle 'o'",
+          "よく → 'yo-ku' ('well / often')",
+          "覚えています → 'o-bo-e-te i-mas'; 〜ている = STATE: 覚えている = 'remember' (a held state), NOT 'am memorizing'"
+        ]
       }
     ],
+    "cultural_notes_en": "This lesson hinges on a distinction English collapses: 〜たことがある ('have the experience of having done ~') vs plain past ('did ~'). 富士山に登ったことがありますか asks whether climbing Fuji is somewhere in your life's experience set; 登りましたか asks whether you did it on a specific occasion. English 'Have you ever…?' vs 'Did you…?' is the closest mirror, but Japanese makes it a fixed grammatical frame you must choose deliberately. Two more B1 structural shifts surface here. First, noun-modifying clauses without a relative pronoun: 留学した時 = 'the time [I] studied abroad' — the verb sits directly before the noun, no 'when/that/which' (a full preview of Lesson 45, and the structure English speakers find most disorienting). Second, 覚えています is a resultant STATE ('I remember,' the knowledge is held), not progressive ('I am memorizing') — the same 〜ている nuance as Lessons 32/40, and a perennial English-speaker misread. Culturally, climbing 富士山 once is a near-canonical Japanese life experience (the saying: a wise person climbs it once, a fool twice), which is why it's the textbook example here.",
+    "tip_advice_en": "Highest-leverage B1 frame: 〜たことがある = experiential 'have you ever / I have once,' deliberately different from plain past 'did.' Choose by meaning: a life-experience question → 〜たことがありますか; a specific past event → 〜ましたか. Second, start internalizing noun-modifying clauses now (full lesson at 45): in 留学した時 / 子どもの頃 the modifier (verb or phrase) comes BEFORE the noun with no relative pronoun — there is no Japanese word for 'when/that/which'; the position does the work. Train yourself to read right-to-left from the head noun. Third, hold the 〜ている = state reading: 覚えています = 'I remember' (state), not 'I'm memorizing.' Pronunciation watch-points: small っ a held beat (登った, にとって); long glided mora りゅう/りょ/きょ; ふ in 富士 a soft bilabial. Drill: ask one 〜たことがありますか question, then answer with a 〜た時 modifying clause.",
     "dialogue": [
       {
         "speaker": "A",
