@@ -1048,25 +1048,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "情非得已",
         "literal": "tình cảnh không có đường nào khác (qíng fēi dé yǐ)",
         "meaning": "Bất đắc dĩ — hoàn cảnh ép buộc, không phải do mình chọn. Dùng để xin lỗi khi mình phải làm điều gây phiền hà cho người khác mà nguyên nhân nằm ngoài tầm kiểm soát của mình. Cụm này chuyển trách nhiệm từ 'lựa chọn cá nhân' sang 'hoàn cảnh' — một cách lịch sự để xin sự thông cảm. Đây là cụm CHÌA KHÓA cho mọi cuộc xin nghỉ/xin phá lệ trong tiếng Trung công sở.",
-        "example": "给您和团队添麻烦了, 实在是情非得已。"
+        "example": "给您和团队添麻烦了, 实在是情非得已。",
+        "literal_en": "a situation with no other way out (qíng fēi dé yǐ)",
+        "meaning_en": "Forced by circumstance, not by choice — used to apologize when you must do something that troubles others for reasons beyond your control; it shifts responsibility from 'personal choice' to 'circumstance', a polite way to ask for understanding, and is THE key phrase for any leave request or rule-bending in workplace Chinese. (spoken/formal)",
+        "example_en": "I'm causing you and the team trouble — I truly had no other choice."
       },
       {
         "idiom": "家家有本难念的经",
         "literal": "nhà nào cũng có một quyển kinh khó tụng (jiā jiā yǒu běn nán niàn de jīng)",
         "meaning": "Mỗi gia đình đều có vấn đề riêng, không ai được miễn nỗi khổ. Sếp dùng cụm này khi muốn báo hiệu sự thông cảm và đồng cảm: 'anh hiểu, ai cũng có việc nhà'. Đây là cách sếp Trung Quốc thể hiện humanity mà không phá vỡ formality của môi trường công sở. Khi sếp nói cụm này với bạn, đó là tín hiệu đèn xanh — cuộc đàm phán đã kết thúc thuận lợi.",
-        "example": "别这么说。家家有本难念的经, 大家互相理解就好。"
+        "example": "别这么说。家家有本难念的经, 大家互相理解就好。",
+        "literal_en": "every family has its own hard-to-chant scripture (jiā jiā yǒu běn nán niàn de jīng)",
+        "meaning_en": "Every household has its own troubles, no one is spared — a boss uses it to signal sympathy ('I understand, everyone has family matters'); it lets a Chinese boss show humanity without breaking workplace formality, and hearing it from your boss is a green light that the negotiation has ended well. (spoken)",
+        "example_en": "Don't say that. Every family has its hard chapter — we just understand each other, that's all."
       },
       {
         "idiom": "网开一面",
         "literal": "mở một mặt của lưới — để con vật chạy thoát (wǎng kāi yī miàn)",
         "meaning": "Châm chước, mở đường — bỏ qua một quy tắc/phá lệ cho ai đó trong hoàn cảnh đặc biệt. Đây là cụm bạn DÙNG khi xin sếp thể tất, hoặc cụm sếp DÙNG khi đồng ý phá lệ cho bạn. Nguồn gốc: vua Thành Tang thời Thương ra lệnh chỉ giăng lưới ba phía thay vì bốn phía để chim thú có đường thoát — biểu trưng cho lòng nhân từ.",
-        "example": "这次情况特殊, 还请王经理网开一面, 让我多请一周。"
+        "example": "这次情况特殊, 还请王经理网开一面, 让我多请一周。",
+        "literal_en": "leave one side of the net open — let the creature escape (wǎng kāi yī miàn)",
+        "meaning_en": "To grant leniency, to make an exception — overlooking a rule for someone in special circumstances; you USE it to ask a boss for a special dispensation, or the boss USES it when agreeing to bend a rule for you. Origin: King Tang of Shang ordered nets set on only three sides so birds and beasts had an escape — a symbol of benevolence. (spoken/formal)",
+        "example_en": "This situation is special — Manager Wang, please make an exception and let me take one more week."
       },
       {
         "idiom": "推心置腹",
         "literal": "đẩy tim vào bụng người khác (tuī xīn zhì fù)",
         "meaning": "Nói chuyện chân thành, mở lòng — không giấu giếm, không vòng vo. Dùng khi cuộc nói chuyện đã đến độ tin tưởng đủ để bộc lộ thật. Trong context xin nghỉ, sếp có thể dùng cụm này để mời bạn nói thật ('我们推心置腹地谈一谈' — chúng ta nói chân thành nhé). Khác 腹を割って話す (Nhật) ở chỗ này NHẸ HƠN, ít kịch tính hơn — chỉ là báo hiệu 'nói thật đi, tôi nghe'.",
-        "example": "既然你都说了, 那我们就推心置腹地谈一谈。"
+        "example": "既然你都说了, 那我们就推心置腹地谈一谈。",
+        "literal_en": "push one's heart into another's belly (tuī xīn zhì fù)",
+        "meaning_en": "To speak frankly and open one's heart — no hiding, no circling; used once a conversation has reached enough trust to be candid. In a leave context the boss may use it to invite you to speak truthfully ('我们推心置腹地谈一谈'); milder and less dramatic than the Japanese 'hara o watte hanasu' equivalent — it simply signals 'speak honestly, I'm listening.' (spoken)",
+        "example_en": "Since you've said this much, let's talk heart to heart."
       }
     ],
     "cultural_notes_vi": "Văn hóa công sở Trung Quốc xem việc về quê chăm gia đình là một trong những lý do chính đáng nhất để xin nghỉ — bắt nguồn từ giá trị 孝道 (xiàodào — đạo hiếu). Khi bạn nói '母亲身体不太好' (mẹ tôi sức khỏe không tốt), gần như mọi sếp Trung Quốc thế hệ trước sẽ hiểu và chấp nhận, vì văn hóa Khổng giáo đặt nghĩa vụ với cha mẹ trên hầu hết các nghĩa vụ khác — bao gồm công việc. Khác biệt với Việt Nam: ở Việt Nam, lý do 'gia đình' cũng được chấp nhận nhưng thường gắn với 'lễ tết' hoặc 'đám cưới'; ở Trung Quốc, 'thăm bệnh cha mẹ' được trọng vọng đặc biệt và gần như không bị chất vấn lý do.\n\nTuy nhiên, KHÔNG có nghĩa là dễ dãi — người Trung Quốc vẫn sẽ đo 'thể diện' (面子) qua cách bạn xử lý quá trình. Sáu quy tắc:\n\n(1) Báo càng SỚM càng tốt — 越早越好 (yuè zǎo yuè hǎo). Báo trước 1-2 ngày là xúc phạm trầm trọng; báo trước 2-3 tuần là chuẩn; báo trước 1 tháng là lý tưởng. Báo qua tin nhắn WeChat sẽ bị coi là không trang trọng — phải gọi điện hoặc gặp trực tiếp, sau đó mới gửi văn bản chính thức qua hệ thống HR.\n\n(2) Đừng giải thích quá nhiều chi tiết riêng tư. Sếp Trung Quốc tôn trọng 'có chuyện riêng' hơn là biết tỉ mỉ. Nói '母亲身体出了状况, 需要照顾' là đủ — không cần kể bệnh gì, ai chăm, chi tiết bác sĩ. Quá nhiều chi tiết = nghi ngờ lý do thật.\n\n(3) PHẢI có kế hoạch bàn giao TRƯỚC khi xin nghỉ — không thể vừa xin vừa hỏi 'ai sẽ làm thay em'. Đó là trách nhiệm của bạn, không phải sếp. Đề xuất tên cụ thể, có hướng dẫn chi tiết, cam kết hỗ trợ từ xa = cách duy nhất để sếp đồng ý mà không mất thể diện.\n\n(4) Luôn bao gồm cụm '添麻烦了' (tiān máfan le — gây phiền hà) — đây không phải xin lỗi mà là dấu hiệu lễ phép tiêu chuẩn. Thiếu nó sẽ bị coi là vô tâm, không biết điều.\n\n(5) Sau khi quay lại, BẮT BUỘC mang quà nhỏ (土特产 tǔtèchǎn — đặc sản quê hương) cho team — đó là 礼尚往来 (lǐ shàng wǎng lái — qua lại có lễ). Không cần đắt tiền, chỉ cần biểu trưng. Bỏ qua bước này sẽ bị nhớ rất lâu trong văn hóa workplace Trung Quốc.\n\n(6) Tuần đầu sau khi quay lại, viết một báo cáo tóm tắt cho sếp — không cần dài, chỉ cần 'tôi đã quay lại, mọi thứ ổn, cảm ơn anh đã cho phép' + cập nhật về việc tiếp quản các dự án. Đây là đóng vòng tròn giao tiếp.\n\nKhác biệt cơ bản với Pháp/Đức/Việt:\n- Pháp: xin nghỉ là quyền hợp đồng (entitled time off) → đàm phán dựa trên dữ liệu;\n- Đức: xin nghỉ là quá trình formal có quy tắc → tuân thủ luật và process;\n- Việt Nam: xin nghỉ là chuyện cá nhân giữa nhân viên và sếp → tương đối linh hoạt;\n- Trung Quốc: xin nghỉ là một sự BAN ƠN từ sếp → cần đáp lại bằng 'thể diện' (làm tròn trách nhiệm trước/sau, mang quà, viết báo cáo).\n\nHiểu khung này sẽ giúp người Việt làm việc ở Trung Quốc tránh hai cái bẫy phổ biến: (1) cứng nhắc theo phong cách Pháp/Đức ('đây là quyền của tôi') — bị coi là vô lễ; (2) quá linh hoạt theo phong cách Việt ('em báo gấp lát ạ') — bị coi là thiếu chuyên nghiệp.",
@@ -1444,25 +1456,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "全力以赴",
         "literal": "đem hết sức mạnh xông tới (quán lì yǐ fù)",
         "meaning": "Dốc toàn lực — cam kết làm hết khả năng. Cụm chuẩn ứng viên dùng cuối phỏng vấn để thể hiện cam kết. Mạnh hơn 努力工作 nhưng không cường điệu.",
-        "example": "如果有幸加入贵公司, 我会全力以赴。"
+        "example": "如果有幸加入贵公司, 我会全力以赴。",
+        "literal_en": "go all out, charging in with full strength (quán lì yǐ fù)",
+        "meaning_en": "To give it everything — a commitment to do one's utmost; the standard phrase a candidate uses at the end of an interview to show commitment, stronger than 努力工作 but not hyperbolic. (spoken/formal)",
+        "example_en": "If I'm fortunate enough to join your company, I'll give it everything I have."
       },
       {
         "idiom": "学有所长",
         "literal": "học có chỗ sở trường (xué yǒu suǒ cháng)",
         "meaning": "Học có chuyên môn — mỗi người có thế mạnh riêng. Dùng khi nói về kỹ năng đặc thù: '我学有所长, 在Go语言开发方面比较突出'.",
-        "example": "我学有所长, 在Go语言开发方面比较突出。"
+        "example": "我学有所长, 在Go语言开发方面比较突出。",
+        "literal_en": "one's study has a strong suit (xué yǒu suǒ cháng)",
+        "meaning_en": "To have a specialty in one's training — everyone has their own strength; used to speak about a particular skill ('I have a specialty — I'm strong in Go development'). (spoken/formal)",
+        "example_en": "I have a specialty — I'm quite strong in Go-language development."
       },
       {
         "idiom": "谦虚谨慎",
         "literal": "khiêm tốn cẩn trọng (qiān xū jǐn shèn)",
         "meaning": "Khiêm tốn và thận trọng — tự đặc tả phong cách làm việc lý tưởng cho ứng viên Trung Quốc. Đối lập với phong cách 'self-promotion' phương Tây. Dùng nó để miêu tả mình mà không bị coi là yếu đuối.",
-        "example": "我做事比较谦虚谨慎, 喜欢先听后说。"
+        "example": "我做事比较谦虚谨慎, 喜欢先听后说。",
+        "literal_en": "modest and prudent (qiān xū jǐn shèn)",
+        "meaning_en": "Humble and careful — the self-description of the ideal working style for a Chinese candidate, the opposite of Western self-promotion; use it to describe yourself without seeming weak. (spoken/formal)",
+        "example_en": "I work in a fairly modest and prudent way — I prefer to listen first and speak after."
       },
       {
         "idiom": "知人善任",
         "literal": "biết người khéo dùng (zhī rén shàn rèn)",
         "meaning": "Biết người và biết dùng người — phẩm chất khen sếp. Dùng khi nói về sếp cũ một cách tích cực: '我之前的领导知人善任, 教会了我很多'. Tránh tự khen mình bằng cụm này.",
-        "example": "我之前的领导知人善任, 教会了我很多。"
+        "example": "我之前的领导知人善任, 教会了我很多。",
+        "literal_en": "know people and employ them well (zhī rén shàn rèn)",
+        "meaning_en": "Skilled at recognizing and deploying people — a quality used to praise a boss; deploy it to speak positively about a former boss ('my previous leader had a great eye for people and taught me a lot'). Avoid using it to praise yourself. (spoken/formal)",
+        "example_en": "My previous leader had a great eye for people and taught me a great deal."
       }
     ],
     "cultural_notes_vi": "Văn hóa phỏng vấn Trung Quốc khác biệt với Việt Nam ở bốn điểm chính: (1) Cấu trúc câu trả lời PHẢI có tổ chức 3 phần (tổng — phân tích — tổng) chứ không phải kể tự nhiên. Nói '我有三点想分享' (em có ba điểm muốn chia sẻ) trước khi liệt kê = ấn tượng tích cực; nói lan man = bị coi là thiếu logic. (2) Tự giới thiệu phải bao gồm: tên, tuổi, quê, học vấn, kinh nghiệm — theo trật tự đó, không đảo. Người Việt thường bỏ tuổi/quê — ở Trung Quốc đây là information cần có. (3) Nói về sếp cũ tuyệt đối tích cực, dù bạn rời vì sếp tệ — 我之前的领导教会了我很多. Nói xấu sếp cũ = tự đóng cửa với mọi sếp tương lai (giới HR Trung Quốc rất nhỏ và liên kết). (4) Trả lời câu hỏi về điểm yếu — phải có thật nhưng không nghiêm trọng, kèm cách bạn đang khắc phục. Mẫu chuẩn: '我有时候过于追求完美, 现在在学习更好地分配时间' (đôi khi em theo đuổi sự hoàn hảo quá mức, giờ em đang học cách phân bổ thời gian tốt hơn).\n\nVề 关系 (guānxi): nếu công ty này có nhân viên Việt Nam khác giới thiệu bạn, đừng giấu — đề cập tự nhiên sẽ tăng độ tin cậy. Trong văn hóa Trung Quốc, 'nội bộ giới thiệu' (内推 nèituī) là kênh tuyển dụng quan trọng nhất, không phải '走后门' (đi cửa sau) như nhiều người Việt lầm tưởng.",
@@ -1840,25 +1864,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "鹏程万里",
         "literal": "đường chim bằng vạn dặm (péng chéng wàn lǐ)",
         "meaning": "Tiền đồ rộng mở — tương lai xa và lớn. Cụm chuẩn để diễn tả khát vọng học thuật của ứng viên: '希望能在贵校鹏程万里'. Nguồn gốc: Trang Tử kể về chim bằng bay vạn dặm về phương nam.",
-        "example": "希望能在贵校的支持下鹏程万里。"
+        "example": "希望能在贵校的支持下鹏程万里。",
+        "literal_en": "the roc's journey of ten thousand li (péng chéng wàn lǐ)",
+        "meaning_en": "A boundless, soaring future — the standard phrase to express a candidate's academic aspiration ('I hope to soar far at your school'). Origin: Zhuangzi's tale of the great peng bird flying ten thousand li south. (spoken/formal)",
+        "example_en": "I hope, with your school's support, to go far and high."
       },
       {
         "idiom": "勤能补拙",
         "literal": "cần cù bù đắp được sự vụng về (qín néng bǔ zhuō)",
         "meaning": "Chăm chỉ bù được sự kém cỏi. Cụm khiêm tốn lý tưởng cho phỏng vấn — thừa nhận có hạn chế nhưng cam kết bù bằng nỗ lực. Tránh dùng cụm này nếu bạn đang khoe điểm cao.",
-        "example": "我相信勤能补拙, 一定可以跟上课程。"
+        "example": "我相信勤能补拙, 一定可以跟上课程。",
+        "literal_en": "diligence can make up for clumsiness (qín néng bǔ zhuō)",
+        "meaning_en": "Hard work compensates for lack of talent — the ideal modest phrase for an interview, conceding a limitation but committing to make up for it with effort; don't use it while boasting about high scores. (spoken/formal)",
+        "example_en": "I believe diligence makes up for shortcomings — I can certainly keep up with the course."
       },
       {
         "idiom": "精益求精",
         "literal": "tinh đã tinh còn đòi tinh hơn (jīng yì qiú jīng)",
         "meaning": "Không ngừng cầu toàn — luôn muốn cải thiện hơn nữa. Cụm dùng khi nói về thái độ làm việc/nghiên cứu: '我对自己的研究始终精益求精'. Đặc biệt phù hợp ngữ cảnh academic.",
-        "example": "我对自己的研究始终精益求精。"
+        "example": "我对自己的研究始终精益求精。",
+        "literal_en": "refine the fine, then seek finer still (jīng yì qiú jīng)",
+        "meaning_en": "Constant striving for perfection — always wanting to improve further; used about one's working or research attitude ('I'm always striving to refine my research'), especially fitting in an academic context. (spoken/formal)",
+        "example_en": "I'm always striving to make my research better and better."
       },
       {
         "idiom": "学海无涯",
         "literal": "biển học không bờ (xué hǎi wú yá)",
         "meaning": "Sự học không có giới hạn — biển kiến thức mênh mông. Cụm khiêm tốn dùng cuối phỏng vấn để thể hiện thái độ học hỏi liên tục: '学海无涯, 我会一直努力'.",
-        "example": "学海无涯, 我会一直努力下去。"
+        "example": "学海无涯, 我会一直努力下去。",
+        "literal_en": "the sea of learning has no shore (xué hǎi wú yá)",
+        "meaning_en": "Learning is limitless — the ocean of knowledge is boundless; a modest phrase used at the close of an interview to show a continuous learning attitude. (spoken/formal)",
+        "example_en": "Learning has no limits — I will keep working at it."
       }
     ],
     "cultural_notes_vi": "Phỏng vấn CSC khác biệt với phỏng vấn xin việc ở ba điểm cốt lõi: (1) Trọng tâm là 'cam kết về Trung Quốc' và 'đóng góp cho Việt Nam' — KHÔNG phải năng lực cá nhân. Giám khảo CSC là cán bộ ngoại giao + giáo sư, họ đánh giá 'bạn có phải đại sứ tốt cho quan hệ Việt-Trung không'. Câu trả lời quan trọng nhất: 毕业后我会回越南做什么. Nói 'em muốn ở lại Trung Quốc làm việc' = mất học bổng ngay (CSC yêu cầu về nước). (2) Phải biết một thứ về 'Trung Quốc cụ thể' ngoài chương trình học — văn hóa, lịch sử, một thành phố, một tác giả. Cho thấy bạn quan tâm Trung Quốc, không chỉ học bổng. (3) Tuyệt đối tránh đề cập 'tôi không có tiền học' — CSC là quan hệ đối ngoại, không phải từ thiện. Lý do nên là 'cơ hội học tập với các giáo sư hàng đầu', KHÔNG 'không có tiền'.\n\nVề 关系 với giáo sư trước: nếu bạn đã liên lạc email với supervisor tiềm năng và có hồi đáp tích cực, hãy đề cập trong phỏng vấn — '我已经和孙教授通过邮件交流, 他对我的题目很感兴趣' (em đã trao đổi qua email với GS Tôn, ông ấy quan tâm đề tài của em). Đây là điểm cộng lớn.\n\nGiám khảo có thể test khả năng tiếng Trung bằng câu hỏi bất ngờ về tin tức, ẩm thực, lịch sử Trung Quốc. Chuẩn bị trước 5-10 câu trả lời ngắn về văn hóa Trung Quốc bạn yêu thích — '我喜欢苏轼的诗', '我对长城的历史感兴趣'.",
@@ -2236,25 +2272,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "有的放矢",
         "literal": "có đích thì bắn tên (yǒu dì fàng shǐ)",
         "meaning": "Có mục tiêu rõ ràng — không bắn tên vu vơ. Cụm chuẩn giáo sư dùng để khuyên sinh viên thu hẹp đề tài: '选题要有的放矢, 不能太宽泛'. Khi nghe thầy nói cụm này = đề tài bạn còn quá rộng, cần cụ thể hơn.",
-        "example": "选题要有的放矢, 不能太宽泛。"
+        "example": "选题要有的放矢, 不能太宽泛。",
+        "literal_en": "have a target, then loose the arrow (yǒu dì fàng shǐ)",
+        "meaning_en": "To have a clear aim — not shooting arrows at random; the standard phrase a professor uses to advise narrowing a topic ('the topic must be targeted, not too broad'). Hearing the professor say it = your topic is still too broad and needs to be more specific. (spoken/formal)",
+        "example_en": "The topic must have a clear target — it can't be too broad."
       },
       {
         "idiom": "集思广益",
         "literal": "tập hợp tư duy, làm rộng lợi ích (jí sī guǎng yì)",
         "meaning": "Tập hợp ý kiến rộng rãi để có lợi ích lớn — làm việc nhóm, không một mình. Giáo sư khuyên sinh viên không tự ôm đề tài quá lớn: 'một mình làm sẽ chậm, hãy tìm bạn cùng nhau'.",
-        "example": "你最好集思广益, 找两三个同学一起做。"
+        "example": "你最好集思广益, 找两三个同学一起做。",
+        "literal_en": "pool thoughts to broaden the benefit (jí sī guǎng yì)",
+        "meaning_en": "To gather wide-ranging ideas for greater gain — teamwork, not going it alone; a professor advises a student not to shoulder too large a topic alone ('working alone is slow; find people to work with'). (spoken/formal)",
+        "example_en": "You'd do best to pool ideas — find two or three classmates to do it together."
       },
       {
         "idiom": "推陈出新",
         "literal": "đẩy cũ ra, đưa mới vào (tuī chén chū xīn)",
         "meaning": "Loại bỏ cái cũ, đưa cái mới — tinh thần đổi mới trong nghiên cứu. Giáo sư Trung Quốc đặc biệt thích sinh viên làm được điều này: kế thừa nhưng có sáng tạo. Cụm dùng khi mô tả contribution của thesis.",
-        "example": "好的研究要在前人基础上推陈出新。"
+        "example": "好的研究要在前人基础上推陈出新。",
+        "literal_en": "push out the old, bring forth the new (tuī chén chū xīn)",
+        "meaning_en": "To discard the old and introduce the new — the spirit of innovation in research; Chinese professors especially like a student who can do this: inherit yet create. Used to describe a thesis's contribution. (written/formal)",
+        "example_en": "Good research builds on predecessors and brings forth something new."
       },
       {
         "idiom": "锲而不舍",
         "literal": "khắc mà không bỏ (qiè ér bù shě)",
         "meaning": "Kiên trì không bỏ cuộc — khắc đá không ngừng. Cụm dùng để miêu tả thái độ làm thesis. Khi giáo sư nói '希望你锲而不舍' = thầy đang động viên bạn kiên trì qua khó khăn.",
-        "example": "做研究最重要的是锲而不舍。"
+        "example": "做研究最重要的是锲而不舍。",
+        "literal_en": "carve without giving up (qiè ér bù shě)",
+        "meaning_en": "Persevere without quitting — chiseling stone without stopping; used to describe one's thesis attitude. When a professor says '希望你锲而不舍' they are encouraging you to persist through difficulty. (spoken/formal)",
+        "example_en": "The most important thing in research is to persevere without giving up."
       }
     ],
     "cultural_notes_vi": "Quan hệ giáo sư-học trò ở Trung Quốc đặc biệt hơn ở Việt Nam — không chỉ là quan hệ học thuật mà gần như quan hệ 'sư phụ-đệ tử'. Bốn nguyên tắc cốt lõi: (1) Giáo sư sẽ theo dõi bạn ngay cả sau khi tốt nghiệp — viết thư giới thiệu, kết nối công việc, mời về hội thảo. Vì vậy đầu tư vào quan hệ này = đầu tư dài hạn. (2) KHÔNG đổi giáo sư hướng dẫn giữa chừng trừ khi cực kỳ nghiêm trọng — bị coi là 'phản bội' (背叛 bèipàn). Nếu thực sự không hợp, phải làm qua trưởng khoa, không tự đi tìm thầy khác. (3) Thầy có thể yêu cầu bạn phụ việc cá nhân (mua sách, đặt vé hội thảo) — đây không phải lạm dụng mà là cách kiểm tra 'người có biết điều không'. Hợp tác = được dạy nhiều hơn. Từ chối thẳng = mất cơ hội. (4) Quà tặng đầu năm/tết Trung Thu — không bắt buộc nhưng được đánh giá cao. Quà nhỏ từ Việt Nam (cà phê, lụa) = lý tưởng. Đắt tiền = phản tác dụng (bị nghi hối lộ).\n\nVề thesis: chủ đề nghiên cứu thường là 'nửa của thầy, nửa của trò'. Thầy gợi ý hướng lớn (vì nó liên quan đến project quốc gia / quỹ nghiên cứu của thầy), bạn cụ thể hóa. Đừng đến cuộc gặp đầu với 'em đã quyết tâm làm X' — cứng quá. Nói 'em đang cân nhắc 3 hướng, muốn nghe thầy' = thầy có không gian định hình.\n\nNếu thesis của bạn tham gia project quốc gia của thầy, dữ liệu/code có thể cần ký NDA — KHÔNG được đăng GitHub public. Hỏi rõ trước khi làm, đừng giả định standard quốc tế.",
@@ -2625,25 +2673,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "量力而行",
         "literal": "đo sức rồi mà đi (liàng lì ér xíng)",
         "meaning": "Làm trong khả năng — biết giới hạn của mình. Cụm khiêm tốn lý tưởng cho thực tập sinh: thừa nhận chưa giàu kinh nghiệm nhưng cam kết làm tốt nhất có thể. Tránh hứa quá lớn rồi không làm được.",
-        "example": "我会量力而行, 把每件任务做到最好。"
+        "example": "我会量力而行, 把每件任务做到最好。",
+        "literal_en": "measure your strength, then act (liàng lì ér xíng)",
+        "meaning_en": "To act within one's means — knowing one's limits; the ideal modest phrase for an intern, conceding limited experience but committing to do one's best. Avoid over-promising and under-delivering. (spoken/formal)",
+        "example_en": "I'll work within my means and do every task as well as I can."
       },
       {
         "idiom": "循序渐进",
         "literal": "theo thứ tự dần tiến (xún xù jiàn jìn)",
         "meaning": "Tuần tự tiến lên — học từ cơ bản đến nâng cao. Cụm manager thường dùng để giải thích vì sao thực tập sinh phải bắt đầu từ việc cơ bản. Khi nghe manager nói cụm này = chấp nhận lộ trình, đừng đòi 'nhảy cóc'.",
-        "example": "实习初期循序渐进, 不要太着急。"
+        "example": "实习初期循序渐进, 不要太着急。",
+        "literal_en": "advance step by step in order (xún xù jiàn jìn)",
+        "meaning_en": "To progress in sequence — learning from basics to advanced; a manager often uses it to explain why an intern must start with basic work. Hearing it from the manager = accept the path, don't ask to leapfrog. (spoken/formal)",
+        "example_en": "Take it step by step early in the internship — don't be in too much of a hurry."
       },
       {
         "idiom": "实事求是",
         "literal": "tìm sự thật từ sự việc (shí shì qiú shì)",
         "meaning": "Thực sự cầu thị — nói thật, không khoe khoang, không che giấu. Cụm dùng khi báo cáo tiến độ với manager: thừa nhận điều chưa làm xong, đề xuất cách giải quyết. Manager Trung Quốc đánh giá rất cao thái độ này.",
-        "example": "汇报工作要实事求是, 不要虚报。"
+        "example": "汇报工作要实事求是, 不要虚报。",
+        "literal_en": "seek truth from facts (shí shì qiú shì)",
+        "meaning_en": "Be truthful — speak the truth, no boasting, no concealing; used when reporting progress to a manager: admit what isn't done, propose a solution. Chinese managers value this attitude highly. (spoken/formal)",
+        "example_en": "Report your work truthfully — don't pad the figures."
       },
       {
         "idiom": "抛砖引玉",
         "literal": "ném gạch dụ ngọc (pāo zhuān yǐn yù)",
         "meaning": "Đem cái thô (của mình) để dụ cái tinh (của người) — khiêm tốn dùng khi đề xuất ý tưởng. Cụm chuẩn khi thực tập sinh dám đưa đề xuất với senior: '我先抛砖引玉, 大家有更好的想法欢迎补充'.",
-        "example": "我先抛砖引玉, 提一个初步想法。"
+        "example": "我先抛砖引玉, 提一个初步想法。",
+        "literal_en": "throw a brick to draw a jade (pāo zhuān yǐn yù)",
+        "meaning_en": "Offer one's own crude idea to draw out a better one — a modest phrase when proposing an idea; the standard line when an intern dares to make a suggestion to seniors ('I'll start the ball rolling; anyone with a better idea, please add to it'). (spoken/formal)",
+        "example_en": "Let me start the ball rolling with a preliminary idea."
       }
     ],
     "cultural_notes_vi": "Văn hóa thực tập Trung Quốc đại lục đặc biệt khác biệt với Việt Nam ở bốn điểm: (1) Thực tập KHÔNG phải là 'học việc miễn phí' như nhiều người Việt nghĩ — phụ cấp 150-300 tệ/ngày là chuẩn, có hợp đồng chính thức, đóng bảo hiểm xã hội (一般实习生险 yībān shíxíshēng xiǎn). KHÔNG ký hợp đồng = công ty 'đen', tránh xa. (2) Thực tập sinh được kỳ vọng làm việc THẬT, không chỉ photocopy/pha trà. Nhưng cũng KHÔNG được phép sai sót lớn — khác Mỹ (nơi 'fail fast' OK), Trung Quốc kỳ vọng thực tập sinh chăm chỉ + ít sai. (3) Mối quan hệ với 'mentor' (đồng nghiệp được phân để hướng dẫn bạn) cực quan trọng — đây là người sẽ viết đánh giá cuối kỳ và quyết định 转正 (chuyển chính thức). Tặng quà cuối kỳ (không bắt buộc nhưng được đánh giá cao): cà phê Việt Nam, bánh kẹo, vật kỷ niệm — tránh đắt tiền. (4) 'Nhậu' (聚餐 jùcān) team là cơ hội xây dựng quan hệ — đừng từ chối hết. Nếu không uống rượu được, nói 'đang dùng thuốc' (在吃药) — không bị hỏi thêm. Người không đi 聚餐 = bị coi là 'không hòa nhập' và mất cơ hội 转正.\n\nVề 转正: tỉ lệ chuyển từ thực tập sang chính thức ở các công ty Trung Quốc lớn (Tencent, Alibaba, ByteDance) khoảng 30-50%. Yếu tố quyết định: (a) đánh giá của mentor; (b) đóng góp cụ thể cho project; (c) thái độ làm việc (khiêm tốn, chủ động, ít than vãn); (d) quan hệ với team — không phải chỉ kỹ năng. Sinh viên Việt Nam thường giỏi (a) và (c) nhưng yếu (d) — đầu tư vào quan hệ team từ đầu.\n\nThời gian thực tập tiêu chuẩn: 6 tháng cho mainland (3 tháng coi là 'quá ngắn', không đủ thấy biểu hiện). Nếu chỉ có 3 tháng do lịch học, đề xuất split (3 hè + 3 đông) hoặc 'remote part-time' giai đoạn giữa.",
@@ -3014,25 +3074,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "不胜感激",
         "literal": "không thể chịu nổi sự biết ơn (bù shèng gǎn jī)",
         "meaning": "Vô cùng biết ơn — câu kết email formal chuẩn. Mạnh hơn '感谢' nhưng không cường điệu. Thiếu cụm này ở email xin việc/du học bị coi là khô khan.",
-        "example": "请您协助处理, 不胜感激。"
+        "example": "请您协助处理, 不胜感激。",
+        "literal_en": "unable to bear the gratitude (bù shèng gǎn jī)",
+        "meaning_en": "Deeply grateful — the standard closing of a formal email, stronger than 感谢 but not hyperbolic; omitting it from a job/study-abroad email reads as cold. (written/formal)",
+        "example_en": "Please assist in handling this — I would be deeply grateful."
       },
       {
         "idiom": "有备无患",
         "literal": "có chuẩn bị thì không có nỗi lo (yǒu bèi wú huàn)",
         "meaning": "Có chuẩn bị thì không lo — chuẩn bị kỹ để tránh rắc rối. Cụm dùng khi giải thích vì sao bạn hỏi nhiều câu nhỏ về visa/khám sức khỏe: '我想有备无患, 提前确认一下'.",
-        "example": "我想有备无患, 提前确认一下细节。"
+        "example": "我想有备无患, 提前确认一下细节。",
+        "literal_en": "prepared, so no worry (yǒu bèi wú huàn)",
+        "meaning_en": "Be prepared and there's no trouble — thorough preparation to avoid problems; used to explain why you ask many small questions about a visa or medical check ('I want to be on the safe side and confirm in advance'). (spoken/formal)",
+        "example_en": "I want to be on the safe side and confirm the details in advance."
       },
       {
         "idiom": "按部就班",
         "literal": "theo bộ phận và thứ tự (àn bù jiù bān)",
         "meaning": "Theo từng bước, không bỏ qua quy trình. Cụm dùng khi cam kết tuân thủ thủ tục: '我会按部就班, 一步一步办理'. Đặc biệt phù hợp cho ngữ cảnh hành chính/visa.",
-        "example": "我会按部就班完成所有手续。"
+        "example": "我会按部就班完成所有手续。",
+        "literal_en": "by section and in order (àn bù jiù bān)",
+        "meaning_en": "Step by step, skipping no part of the procedure; used to pledge compliance with a process ('I'll handle it step by step'), especially fitting for an administrative/visa context. (written/formal)",
+        "example_en": "I will complete all the formalities step by step."
       },
       {
         "idiom": "名正言顺",
         "literal": "danh chính ngôn thuận (míng zhèng yán shùn)",
         "meaning": "Có cơ sở chính đáng — danh nghĩa đúng, lời nói thuận. Cụm dùng khi xin được làm điều gì có lý do hợp pháp/hợp lệ: '我已经被贵校录取, 申请X1签证名正言顺'.",
-        "example": "我已经被贵校录取, 申请X1签证名正言顺。"
+        "example": "我已经被贵校录取, 申请X1签证名正言顺。",
+        "literal_en": "the name is right and the words flow (míng zhèng yán shùn)",
+        "meaning_en": "To have a legitimate basis — a proper title, words that follow; used when requesting something with a lawful/valid reason ('I've already been admitted, so applying for the X1 visa is fully justified'). (written/formal)",
+        "example_en": "I've already been admitted by your school, so applying for the X1 visa is fully justified."
       }
     ],
     "cultural_notes_vi": "Văn phòng du học (留学办公室 / 国际处) ở các đại học Trung Quốc có tốc độ phản hồi rất khác nhau: trường top (Bắc Đại, Thanh Hoa, Phúc Đán) phản hồi 1-3 ngày; trường địa phương 5-10 ngày. KHÔNG nên gửi email follow-up sớm hơn 5 ngày — bị coi là thiếu kiên nhẫn. Sau 7 ngày không phản hồi, gửi email follow-up nhẹ nhàng kèm tham chiếu email đầu.\n\nThời gian xử lý JW202: 2-4 tuần kể từ khi nhận hồ sơ điện tử. Nếu chưa đến trong 4 tuần, có khả năng (a) hồ sơ thiếu mục, (b) thông tin sai, (c) bưu điện. Hỏi văn phòng để có mã tracking.\n\nVề visa X1 vs X2: X1 cho học trên 6 tháng (du học chính thức), X2 cho học dưới 6 tháng (đoạn ngắn). KHÔNG nhầm — sai loại visa = bị từ chối nhập cảnh.\n\nKhám sức khỏe: phải làm ở bệnh viện được Bộ Y tế Việt Nam và Đại sứ quán Trung Quốc cùng công nhận. Tại Hà Nội: Bệnh viện Trung ương Quân đội 108, Bệnh viện E. Tại HCMC: Bệnh viện Chợ Rẫy, Bệnh viện Đại học Y Dược. Làm ở bệnh viện ngoài danh sách = kết quả bị từ chối, phải làm lại.\n\nKhi đến Trung Quốc, trong 30 ngày phải làm 'tạm trú' (临时居留 línshí jūliú) tại sở cảnh sát. Không làm = bị phạt 500-2000 tệ + có ghi vào hồ sơ. Văn phòng du học sẽ hướng dẫn nhưng bạn phải tự nhớ deadline.",
@@ -3410,25 +3482,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "言简意赅",
         "literal": "lời ngắn ý đủ (yán jiǎn yì gāi)",
         "meaning": "Lời nói ngắn gọn nhưng ý nghĩa đầy đủ. Cụm khen kỹ năng giao tiếp lý tưởng cho phone interview — HR Trung Quốc đặc biệt thích ứng viên trả lời ngắn gọn rõ ý. Tự nhận: '我尽量言简意赅, 不耽误您的时间'.",
-        "example": "您的问题, 我尽量言简意赅地回答。"
+        "example": "您的问题, 我尽量言简意赅地回答。",
+        "literal_en": "few words, complete meaning (yán jiǎn yì gāi)",
+        "meaning_en": "Concise yet fully meaningful — praise for the ideal communication skill in a phone interview; Chinese HR especially likes a candidate who answers briefly and clearly. Self-description: 'I'll be concise and not waste your time.' (spoken/formal)",
+        "example_en": "I'll answer your question as concisely as I can."
       },
       {
         "idiom": "应对自如",
         "literal": "ứng đối tự nhiên (yìng duì zì rú)",
         "meaning": "Phản ứng nhanh, linh hoạt — không lúng túng. Cụm dùng khi tự miêu tả khả năng ứng phó: '在压力下我能应对自如'. Tránh dùng khi bạn đang lúng túng — sẽ phản tác dụng.",
-        "example": "在突发情况下我能应对自如。"
+        "example": "在突发情况下我能应对自如。",
+        "literal_en": "respond with ease (yìng duì zì rú)",
+        "meaning_en": "To react quickly and flexibly — never flustered; used to describe one's coping ability ('under pressure I can handle things smoothly'). Avoid using it while you're actually flustered — it backfires. (spoken/formal)",
+        "example_en": "In an unexpected situation I can handle things with ease."
       },
       {
         "idiom": "见机行事",
         "literal": "thấy cơ thì hành sự (jiàn jī xíng shì)",
         "meaning": "Tùy cơ ứng biến — không bám cứng kế hoạch. Cụm tích cực miêu tả phong cách làm việc linh hoạt. Đặc biệt phù hợp khi nói về kỹ năng xử lý dự án phức tạp.",
-        "example": "项目推进中我会见机行事, 灵活调整。"
+        "example": "项目推进中我会见机行事, 灵活调整。",
+        "literal_en": "see the moment, then act (jiàn jī xíng shì)",
+        "meaning_en": "To adapt to circumstances — not clinging rigidly to a plan; a positive description of a flexible working style, especially fitting when speaking about handling complex projects. (spoken/formal)",
+        "example_en": "As the project moves forward I'll read the situation and adjust flexibly."
       },
       {
         "idiom": "慎言慎行",
         "literal": "cẩn ngôn cẩn hành (shèn yán shèn xíng)",
         "meaning": "Cẩn trọng từng lời nói và hành động. Cụm khiêm tốn lý tưởng cho ứng viên trẻ — báo hiệu bạn không bốc đồng, không hứa quá. Đối lập với 'self-promotion' phương Tây.",
-        "example": "我做事比较慎言慎行, 喜欢先思考再行动。"
+        "example": "我做事比较慎言慎行, 喜欢先思考再行动。",
+        "literal_en": "careful in word, careful in deed (shèn yán shèn xíng)",
+        "meaning_en": "Prudent in every word and action — the ideal modest phrase for a young candidate, signaling you are not impulsive and don't over-promise; the opposite of Western self-promotion. (spoken/formal)",
+        "example_en": "I'm fairly careful in word and deed — I prefer to think before I act."
       }
     ],
     "cultural_notes_vi": "Phỏng vấn điện thoại quốc tế (Việt Nam ↔ Trung Quốc) có những đặc thù mà phỏng vấn trực tiếp không có: (1) Múi giờ — Trung Quốc UTC+8, Việt Nam UTC+7, chênh lệch 1 giờ. KHÔNG nhầm: nếu HR ở Bắc Kinh đề xuất '下午三点' (3 giờ chiều) = 14:00 giờ Việt Nam. Hỏi rõ múi giờ trong email xác nhận. (2) Ngôn ngữ: HR có thể chuyển sang tiếng Anh nếu thấy bạn yếu tiếng Trung — đừng coi đó là tích cực. Họ đang thử bạn. Cố giữ tiếng Trung đến cuối; nếu thực sự không hiểu, nói '能用中文换一种说法吗?' (có thể nói bằng tiếng Trung theo cách khác không). (3) Wechat call vs điện thoại quốc tế: phần lớn HR Trung Quốc thích Wechat hơn vì rẻ và quen thuộc. Cài Wechat trước, kết bạn với HR vài ngày trước phỏng vấn để test signal. Nếu HR muốn gọi điện thoại quốc tế, không sao, nhưng tự xác nhận chi phí roaming. (4) Ghi âm: ở Trung Quốc, ghi âm cuộc gọi phỏng vấn KHÔNG được phép trừ khi cả hai bên đồng ý. Đừng tự ghi để 'review sau'. Nếu cần ghi nhớ, ghi chép tay trong khi nói.\n\nTâm lý qua điện thoại: HR Trung Quốc đánh giá ứng viên qua giọng nói cao hơn 30%. Giọng tự tin (đứng nói), giọng cười nhẹ trước câu trả lời, giọng nhanh nhưng rõ = ấn tượng tốt. Giọng lí nhí, ngập ngừng, dài dòng = ấn tượng xấu. Tập đứng trước gương phỏng vấn 30 phút trước cuộc gọi thật.\n\nVề follow-up: gửi email cảm ơn trong 24 giờ bằng tiếng Trung. Đính kèm portfolio/code samples nếu chưa gửi. Đây là điểm cộng đặc biệt vì ít ứng viên Việt Nam làm bước này.",
@@ -3806,25 +3890,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "一见如故",
         "literal": "gặp lần đầu như đã thân quen (yī jiàn rú gù)",
         "meaning": "Gặp lần đầu mà cảm thấy như đã quen lâu — dùng để bày tỏ thiện cảm với người mới gặp. Cụm này ấm áp, lý tưởng cho networking. Tránh lạm dụng — chỉ dùng khi thật sự cảm thấy.",
-        "example": "和您一见如故, 真希望以后多多交流。"
+        "example": "和您一见如故, 真希望以后多多交流。",
+        "literal_en": "to meet for the first time yet feel like old friends (yī jiàn rú gù)",
+        "meaning_en": "Meeting someone for the first time but feeling long acquainted — used to express warmth toward a new acquaintance; warm, ideal for networking. Don't overuse it — only when you genuinely feel it. (spoken/formal)",
+        "example_en": "Meeting you feels like meeting an old friend — I do hope we'll talk more from now on."
       },
       {
         "idiom": "互利共赢",
         "literal": "có lợi lẫn nhau, cùng nhau thắng (hù lì gòng yíng)",
         "meaning": "Đôi bên cùng có lợi, cùng thắng — cụm chuẩn cho đề xuất hợp tác. Người Trung Quốc đặc biệt thích cụm này vì khẳng định không ai bị thiệt. Dùng thay cho 'win-win' tiếng Anh.",
-        "example": "我们的合作能做到互利共赢。"
+        "example": "我们的合作能做到互利共赢。",
+        "literal_en": "mutual benefit, shared victory (hù lì gòng yíng)",
+        "meaning_en": "Both sides benefit, both win — the standard phrase for a cooperation proposal; Chinese people especially like it because it affirms no one loses. Use it instead of the English 'win-win.' (spoken/formal)",
+        "example_en": "Our cooperation can be mutually beneficial."
       },
       {
         "idiom": "礼尚往来",
         "literal": "lễ là sự qua lại (lǐ shàng wǎng lái)",
         "meaning": "Có qua có lại mới toại lòng nhau — nguyên tắc đối nhân xử thế Trung Quốc. Khi đối tác giúp bạn, bạn phải đền đáp; khi bạn giúp họ, mong đợi họ đền đáp. KHÔNG phải hối lộ — đây là bản chất của 关系.",
-        "example": "礼尚往来嘛, 下次我请您吃饭。"
+        "example": "礼尚往来嘛, 下次我请您吃饭。",
+        "literal_en": "courtesy goes back and forth (lǐ shàng wǎng lái)",
+        "meaning_en": "Reciprocity makes everyone content — a core principle of Chinese social conduct; when a partner helps you, you must repay it, and vice versa. This is NOT bribery — it is the essence of 关系. (spoken/formal)",
+        "example_en": "It's all reciprocity — next time, dinner's on me."
       },
       {
         "idiom": "久仰大名",
         "literal": "lâu ngưỡng mộ tên lớn (jiǔ yǎng dà míng)",
         "meaning": "Đã ngưỡng mộ tên tuổi từ lâu — cụm trang trọng khi gặp người nổi tiếng/cấp cao. Chỉ dùng khi BẠN THỰC SỰ BIẾT về họ — nếu không sẽ bị hỏi 'biết gì về tôi?' và lúng túng.",
-        "example": "张总, 久仰大名, 今天终于见到您。"
+        "example": "张总, 久仰大名, 今天终于见到您。",
+        "literal_en": "long have I admired your great name (jiǔ yǎng dà míng)",
+        "meaning_en": "To have long admired one's reputation — a formal phrase when meeting someone famous or senior; only use it when you GENUINELY know about them — otherwise you'll be asked 'what do you know about me?' and be stuck. (spoken/formal)",
+        "example_en": "Mr. Zhang, I've long admired your name — I'm so glad to finally meet you today."
       }
     ],
     "cultural_notes_vi": "Sự kiện giao lưu doanh nghiệp ở Trung Quốc đại lục là môi trường cực kỳ chiến lược — không phải 'cocktail party' nhẹ nhàng kiểu phương Tây. Bốn quy tắc cốt lõi: (1) Danh thiếp (名片) là CÔNG CỤ chuyên nghiệp, không phải mảnh giấy. In song ngữ Trung-Anh ở hai mặt; chức danh phải khớp tiếng Trung lẫn tiếng Anh. Mang TỐI THIỂU 50 cái cho một sự kiện 2 giờ. Cạn danh thiếp giữa chừng = thiếu chuẩn bị. (2) Quy tắc trao danh thiếp: hai tay đưa, mặt chữ hướng về phía người nhận, kèm câu '请多多指教'. Khi nhận, đọc kỹ 5-10 giây, có thể bình luận về công ty/chức vụ ('哦, 您是负责东南亚的'), sau đó cất vào ví danh thiếp (không phải ví tiền — bị coi là vô lễ). (3) Thứ tự giới thiệu: cấp thấp → cấp cao, trẻ → già, chủ → khách. Nếu bạn muốn người A gặp người B, giới thiệu A cho B trước (vì B là cấp cao hơn). Đừng tự xuất hiện trước người cao cấp — chờ được giới thiệu hoặc xin phép. (4) Sau sự kiện, gửi tin nhắn WeChat trong 24 giờ với: cảm ơn cuộc trò chuyện + đề cập 1 chi tiết cụ thể đã nói + đề xuất bước tiếp theo. Đây là yếu tố quyết định liệu mối quan hệ có sống tiếp hay không.\n\nVề 关系 (guānxi): mục tiêu networking ở Trung Quốc KHÔNG phải 'mở rộng mạng lưới rộng' (network) như phương Tây, mà 'xây dựng mối quan hệ sâu' (relationship) với 5-10 người chiến lược. Một bữa ăn dài 2 giờ với 1 người = giá trị hơn 10 cuộc trao danh thiếp ngắn. Đầu tư thời gian vào ít người chất lượng cao.\n\nĂn uống tại sự kiện: nếu có rượu trắng (白酒 báijiǔ), bạn KHÔNG bắt buộc phải uống nếu lý do hợp lý (đang lái xe, bị bệnh, theo tôn giáo). Nhưng nếu uống được, một-hai shot kèm câu 'cùng cạn ly vì hợp tác' sẽ tạo dấu ấn đặc biệt.",
@@ -4195,25 +4291,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "屡败屡战",
         "literal": "thua nhiều, đánh nhiều (lǚ bài lǚ zhàn)",
         "meaning": "Thua nhiều lần vẫn chiến đấu — kiên trì không bỏ cuộc dù thất bại lặp lại. Cụm dùng để miêu tả tinh thần người trẻ ứng tuyển nhiều lần. Tích cực hơn '屡战屡败' (đánh nhiều, thua nhiều — bi quan).",
-        "example": "年轻人屡败屡战很正常, 重要的是不放弃。"
+        "example": "年轻人屡败屡战很正常, 重要的是不放弃。",
+        "literal_en": "defeated again and again, fighting again and again (lǚ bài lǚ zhàn)",
+        "meaning_en": "Repeatedly defeated yet still fighting — perseverance despite repeated failure; used to describe the spirit of a young person who keeps applying. More upbeat than 屡战屡败 (fights repeatedly, loses repeatedly — pessimistic). (spoken/formal)",
+        "example_en": "It's normal for a young person to be knocked down and get back up — what matters is not giving up."
       },
       {
         "idiom": "卷土重来",
         "literal": "cuốn đất quay lại (juǎn tǔ chóng lái)",
         "meaning": "Comeback mạnh mẽ — như cuộn đất bụi bay lên rồi xông trở lại trận địa. Cụm hùng hồn để miêu tả quyết tâm thử lại sau thất bại. Hơi cường điệu — dùng khi bạn thực sự cam kết.",
-        "example": "明年我会卷土重来, 这次一定更有准备。"
+        "example": "明年我会卷土重来, 这次一定更有准备。",
+        "literal_en": "roll up the dust and come back (juǎn tǔ chóng lái)",
+        "meaning_en": "A powerful comeback — like dust rolling up as one charges back to the field; a stirring phrase for the resolve to try again after failure. Slightly hyperbolic — use when you're truly committed. (spoken/formal)",
+        "example_en": "Next year I'll come back stronger — I'll definitely be better prepared."
       },
       {
         "idiom": "不耻下问",
         "literal": "không xấu hổ hỏi người dưới (bù chǐ xià wèn)",
         "meaning": "Không cảm thấy xấu hổ khi hỏi người có vẻ kém hơn mình — phẩm chất khiêm tốn của người ham học. Cụm tự miêu tả thái độ cầu thị: '我会不耻下问, 向所有人学习'.",
-        "example": "我会不耻下问, 不断向他人请教。"
+        "example": "我会不耻下问, 不断向他人请教。",
+        "literal_en": "not ashamed to ask those below (bù chǐ xià wèn)",
+        "meaning_en": "Not ashamed to ask someone who seems beneath you — the humble quality of an eager learner; a self-description of a teachable attitude ('I'll ask without ego and learn from everyone'). (spoken/formal)",
+        "example_en": "I'll ask without false pride and keep seeking advice from others."
       },
       {
         "idiom": "虚心求教",
         "literal": "hư tâm cầu giáo (xū xīn qiú jiào)",
         "meaning": "Khiêm tốn xin được chỉ giáo — thái độ học hỏi đúng. Cụm dùng khi xin feedback từ người trên: '请允许我向您虚心求教'. Đặc biệt phù hợp khi đang có thất bại — báo hiệu bạn sẵn sàng học.",
-        "example": "请允许我以后向您虚心求教。"
+        "example": "请允许我以后向您虚心求教。",
+        "literal_en": "with an open mind, seek instruction (xū xīn qiú jiào)",
+        "meaning_en": "To humbly ask for guidance — the right learning attitude; used when seeking feedback from a senior ('please allow me to seek your guidance'), especially fitting after a setback as it signals you're ready to learn. (spoken/formal)",
+        "example_en": "Please allow me to seek your guidance from now on."
       }
     ],
     "cultural_notes_vi": "Văn hóa xin feedback sau khi bị từ chối ở Trung Quốc khác biệt với Mỹ/châu Âu: (1) Trường top Trung Quốc THƯỜNG KHÔNG cung cấp feedback cá nhân — không phải vì lười, mà vì sợ tranh chấp pháp lý. Đại đa số reply '我们对所有申请人保持公平, 不便对个案做点评' (chúng tôi công bằng với mọi ứng viên, không tiện đánh giá từng trường hợp). KHÔNG nài nỉ. (2) Tuy nhiên, nếu bạn ĐÃ CÓ quan hệ trước (đã email với GS, đã đến trường thăm) — feedback có thể có. Đầu tư xây dựng quan hệ TRƯỚC khi nộp đơn, không sau khi bị từ chối. (3) Nếu nhận được feedback, đó là TÀI SẢN. Phải đáp lại trang trọng: cảm ơn cụ thể từng điểm, mô tả cách bạn sẽ cải thiện, hứa cập nhật về tiến độ. Nhiều người Việt nhận feedback rồi im lặng — bị coi là thiếu tôn trọng và đóng cửa cho lần sau.\n\nVăn hóa 'thử lại' (再申请): Trung Quốc đại lục đặc biệt tôn trọng người kiên trì. Đỗ đại học/du học sau 2-3 lần thất bại = dấu hiệu của 'có chí'. Đừng giấu lịch sử thất bại trong đơn lần sau — đề cập trong personal statement với khung 'từ thất bại tôi học được X, Y, Z'. Đây là điểm cộng, không trừ.\n\nVề tone: KHÔNG bi lụy ('giấc mơ của em đã tan vỡ'), KHÔNG giả vờ bình thản ('không sao đâu, lần sau lại tới'). Tone đúng: 'tiếc nhưng học được, sẽ quay lại mạnh hơn'. Đây là phong thái 'reasonable resilience' (kiên cường lý tính) mà người Trung Quốc đánh giá cao.\n\nVề thời điểm follow-up: gửi email feedback trong 1-2 tuần sau khi nhận thư từ chối, KHÔNG quá sớm (1-2 ngày — nóng vội), KHÔNG quá muộn (1 tháng — không quan tâm).",
@@ -4584,25 +4692,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "知遇之恩",
         "literal": "ơn của sự tri ngộ (zhī yù zhī ēn)",
         "meaning": "Ơn tri ngộ — ơn của người nhận ra giá trị mình và cho cơ hội. Cụm cổ điển formal dùng khi cảm ơn giáo sư/sếp đã giúp đỡ. Mạnh nhưng không bị coi là cường điệu trong context Trung Quốc.",
-        "example": "您的知遇之恩, 我永远铭记在心。"
+        "example": "您的知遇之恩, 我永远铭记在心。",
+        "literal_en": "the kindness of being recognized (zhī yù zhī ēn)",
+        "meaning_en": "The debt to one who recognized your worth and gave you a chance — a classical formal phrase to thank a professor or boss who has helped you; strong but not seen as hyperbolic in a Chinese context. (written/formal)",
+        "example_en": "I will forever keep in my heart your kindness in recognizing me."
       },
       {
         "idiom": "恩重如山",
         "literal": "ơn nặng như núi (ēn zhòng rú shān)",
         "meaning": "Ơn nặng như núi — biết ơn sâu sắc khó nói hết. Mạnh hơn 知遇之恩, dùng khi giáo sư đã làm việc lớn cho bạn (vd: dành 1 tuần viết thư chi tiết). Tránh dùng cho việc nhỏ — sẽ bị coi là sáo rỗng.",
-        "example": "老师的帮助恩重如山, 我无以为报。"
+        "example": "老师的帮助恩重如山, 我无以为报。",
+        "literal_en": "a kindness as heavy as a mountain (ēn zhòng rú shān)",
+        "meaning_en": "A kindness as heavy as a mountain — gratitude too deep to fully express; stronger than 知遇之恩, used when a professor has done something major for you (e.g. spent a week on a detailed letter). Avoid it for small favors — it reads as hollow. (written/formal)",
+        "example_en": "The teacher's help is as heavy as a mountain — I can never fully repay it."
       },
       {
         "idiom": "铭记在心",
         "literal": "khắc ghi vào tim (míng jì zài xīn)",
         "meaning": "Khắc ghi trong lòng — nhớ mãi không quên. Cụm formal dùng để cam kết nhớ ơn lâu dài. Đặc biệt phù hợp khi cảm ơn giáo sư cho cơ hội: '您的教诲我会铭记在心'.",
-        "example": "您的教导我会铭记在心, 终生不忘。"
+        "example": "您的教导我会铭记在心, 终生不忘。",
+        "literal_en": "engrave it on the heart (míng jì zài xīn)",
+        "meaning_en": "To etch it in one's heart — never to forget; a formal phrase pledging lasting gratitude, especially fitting when thanking a professor for an opportunity. (written/formal)",
+        "example_en": "I will keep your teaching engraved on my heart and never forget it."
       },
       {
         "idiom": "无以为报",
         "literal": "không có gì để báo đáp (wú yǐ wèi bào)",
         "meaning": "Không biết lấy gì báo đáp — biết ơn đến mức cảm thấy không xứng đáp lại. Cụm khiêm tốn lý tưởng cho thư cảm ơn cuối cùng. Tránh dùng quá sớm — sẽ bị coi là khách sáo.",
-        "example": "您的恩情我无以为报, 唯有努力学习。"
+        "example": "您的恩情我无以为报, 唯有努力学习。",
+        "literal_en": "nothing to repay it with (wú yǐ wèi bào)",
+        "meaning_en": "Not knowing how to repay — gratitude so great one feels unable to give back; the ideal modest phrase for a final thank-you letter. Avoid using it too early — it reads as a stock courtesy. (written/formal)",
+        "example_en": "I have no way to repay your kindness — only to study hard."
       }
     ],
     "cultural_notes_vi": "Văn hóa xin thư giới thiệu ở Trung Quốc đại lục có nét đặc thù: (1) Quan hệ giáo sư-học trò tiếp tục SAU khi tốt nghiệp — không như Mỹ (nơi giáo sư có thể bận đến mức quên học trò cũ). Giáo sư Trung Quốc thường nhớ học trò 5-10 năm sau, đặc biệt nếu bạn duy trì liên lạc (Tết gửi tin chúc, kỷ niệm kết quả thi). Đầu tư vào quan hệ này dài hạn. (2) Số lượng thư giới thiệu giáo sư có thể viết: thường giới hạn 5-10 thư/năm cho học bổng top. Nếu bạn xin và biết rằng thầy đã ngoài giới hạn, đề xuất 'nếu thầy không đủ thời gian, em hoàn toàn hiểu' — cho lối thoát. (3) 'Em viết nháp đi' không phải lười — đây là cách giáo sư kiểm tra: bạn có biết tự nhìn nhận điểm mạnh/yếu, có biết viết formal không. Bản nháp tốt = thầy viết nhanh và sâu sắc. Bản nháp kém = thầy phải sửa nhiều, dẫn đến thư không sâu. (4) Sau khi nhận thư, NHỚ cập nhật kết quả: nếu trúng tuyển, gửi tin báo + cảm ơn cụ thể; nếu trượt, vẫn gửi tin báo + cảm ơn (không bao giờ im lặng). Đây là 'closing the loop' quan trọng cho quan hệ tương lai. (5) Quà cảm ơn: KHÔNG bắt buộc nhưng phổ biến. Đặc sản quê (cà phê Việt Nam, trà sen) là lý tưởng — không quá đắt, biểu trưng quê hương. Tránh tiền mặt, voucher đắt tiền — bị nghi hối lộ.\n\nVề số lượng thư: chương trình Mỹ thường yêu cầu 3, Trung Quốc 2-3. KHÔNG xin thêm 'để dự phòng' — mỗi thư phải có lý do.\n\nVề ngôn ngữ thư: nếu chương trình đại học Trung Quốc, thư có thể tiếng Trung; nếu chương trình quốc tế tại Trung Quốc, thường yêu cầu tiếng Anh. Hỏi rõ trước khi giáo sư bắt đầu viết.",
@@ -4980,25 +5100,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "锲而不舍",
         "literal": "khắc mà không bỏ (qiè ér bù shě)",
         "meaning": "Kiên trì không bỏ cuộc — như khắc đá không ngừng. Cụm cốt lõi cho thái độ research. Khi nói '我以锲而不舍的精神' = cam kết theo đuổi đề tài đến cùng. Đặc biệt phù hợp khi giáo sư hỏi về cách đối phó bottleneck.",
-        "example": "做研究最重要的是锲而不舍。"
+        "example": "做研究最重要的是锲而不舍。",
+        "literal_en": "carve without giving up (qiè ér bù shě)",
+        "meaning_en": "Perseverance without quitting — like chiseling stone without stopping; a core phrase for a research attitude. Saying '我以锲而不舍的精神' = a commitment to pursue the topic to the end, especially fitting when a professor asks how you handle a bottleneck. (spoken/formal)",
+        "example_en": "The most important thing in research is to persevere without giving up."
       },
       {
         "idiom": "一以贯之",
         "literal": "một mà xuyên suốt (yī yǐ guàn zhī)",
         "meaning": "Nhất quán xuyên suốt — không thay đổi hướng tùy hứng. Cụm dùng để cam kết theo đuổi một chủ đề lâu dài. Đối lập với 'flighty researcher' (đổi hướng liên tục) — phẩm chất xấu trong văn hóa academic Trung Quốc.",
-        "example": "我会在这条研究路上一以贯之。"
+        "example": "我会在这条研究路上一以贯之。",
+        "literal_en": "run one thread through it all (yī yǐ guàn zhī)",
+        "meaning_en": "Consistent throughout — not changing direction on a whim; used to commit to pursuing one topic long-term. The opposite of a 'flighty researcher' (constantly switching), a poor quality in Chinese academic culture. (written/formal)",
+        "example_en": "I will stay consistent throughout this research path."
       },
       {
         "idiom": "博古通今",
         "literal": "thông cổ thông kim (bó gǔ tōng jīn)",
         "meaning": "Hiểu rộng cả cổ kim — kiến thức bao quát cả lịch sử và hiện tại. Cụm khen học giả uyên bác. Có thể dùng để cam kết: '我希望能博古通今, 从经典中找新意'. Tránh tự khen mình bằng cụm này.",
-        "example": "希望能在学术上博古通今, 不局限于一时一域。"
+        "example": "希望能在学术上博古通今, 不局限于一时一域。",
+        "literal_en": "versed in the ancient, conversant with the modern (bó gǔ tōng jīn)",
+        "meaning_en": "To know broadly across past and present — comprehensive knowledge of history and the present; praise for an erudite scholar. Can be used to commit ('I hope to draw on both old and new, finding fresh ideas in the classics'). Avoid using it to praise yourself. (written/formal)",
+        "example_en": "I hope to be versed in both old and new in my scholarship, not confined to one time or domain."
       },
       {
         "idiom": "学贯中西",
         "literal": "học vấn xuyên Trung Tây (xué guàn zhōng xī)",
         "meaning": "Học vấn xuyên cả phương Đông và phương Tây — kiến thức đa văn hóa. Cụm phù hợp đặc biệt cho sinh viên Việt Nam học ở Trung Quốc — làm cầu nối văn hóa. Cụm khen người giỏi cross-cultural.",
-        "example": "我希望未来能学贯中西, 把越中两国的语言学传统结合起来。"
+        "example": "我希望未来能学贯中西, 把越中两国的语言学传统结合起来。",
+        "literal_en": "learning bridging China and the West (xué guàn zhōng xī)",
+        "meaning_en": "Scholarship spanning both East and West — multicultural knowledge; especially fitting for a Vietnamese student studying in China as a cultural bridge. Praise for someone strong cross-culturally. (written/formal)",
+        "example_en": "I hope in future to bridge East and West in my learning, joining the linguistics traditions of Vietnam and China."
       }
     ],
     "cultural_notes_vi": "Thảo luận hướng nghiên cứu trong context Trung Quốc khác biệt với phương Tây ở bốn điểm: (1) Người Trung Quốc đặt giá trị cao vào 'long-term consistency' (一以贯之). Đổi hướng nghiên cứu giữa chừng = bị nghi 'không kiên định'. Khác Mỹ (nơi pivot được đánh giá cao). Vì vậy, khi giới thiệu hướng nghiên cứu: trình bày như một 'mạch logic' kéo dài 5-10 năm, không phải 'sở thích hiện tại'. (2) Trọng nguồn gốc kế thừa: hướng nghiên cứu của bạn nên được khung hóa trong dòng chảy học thuật — kế thừa ai, đóng góp gì mới. KHÔNG nói 'em có ý tưởng riêng' — sẽ bị coi là vô ơn. Nói '受X老师启发' (được khơi nguồn từ thầy X) hoặc '在Y研究的基础上' (trên nền tảng nghiên cứu của Y). (3) Tính ứng dụng quan trọng hơn ở Trung Quốc đại lục so với Mỹ. Research thuần lý thuyết khó tài trợ — luôn kết nối với 'ứng dụng thực tế', 'lợi ích quốc gia', 'hợp tác quốc tế'. Với sinh viên Việt Nam: kết nối với 'hợp tác Việt-Trung' = lý lẽ vàng để tài trợ. (4) 'Tính khả thi' (可行性) trọng hơn 'tính sáng tạo' (创新性). Một đề tài cực sáng tạo nhưng không khả thi trong 3-5 năm = bị từ chối. Một đề tài kế thừa nhưng cụ thể, khả thi, có dữ liệu sẵn = được chấp nhận.\n\nVề tính liên ngành (跨学科): Trung Quốc đại lục đang đẩy mạnh interdisciplinary research, đặc biệt 'AI + X' (X = ngành khác). Sinh viên Việt Nam có lợi thế: AI + ngôn ngữ học, AI + văn hóa Á Đông, AI + lịch sử Hán-Việt. Khai thác điều này khi trình bày hướng research.\n\nVề tone: KHÔNG quá mơ mộng ('em muốn thay đổi thế giới') — mộng tưởng. KHÔNG quá thực dụng ('em muốn sau này có việc làm tốt') — xa rời học thuật. Tone đúng: 'có ý nghĩa học thuật rõ + ứng dụng thực tế + bản thân có lợi thế'.",
@@ -5369,25 +5501,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "宾至如归",
         "literal": "khách đến như về nhà (bīn zhì rú guī)",
         "meaning": "Khách cảm thấy như đang ở nhà của mình — sự tiếp đãi chu đáo nhất. Cụm chuẩn để host kết thúc lời chào hoặc cam kết: '希望您宾至如归'. Đây là tiêu chuẩn vàng của tiếp khách Trung Quốc.",
-        "example": "希望您这次访问宾至如归。"
+        "example": "希望您这次访问宾至如归。",
+        "literal_en": "a guest arrives and feels at home (bīn zhì rú guī)",
+        "meaning_en": "A guest feels as though in their own home — the most attentive hospitality; the standard phrase for a host to close a greeting or make a commitment ('I hope you'll feel at home'). It is the gold standard of Chinese hosting. (spoken/formal)",
+        "example_en": "I hope you'll feel completely at home on this visit."
       },
       {
         "idiom": "入乡随俗",
         "literal": "vào làng theo lệ (rù xiāng suí sú)",
         "meaning": "Đến đâu theo phong tục đó — nhập gia tùy tục. Sếp Trung Quốc dùng khi sẵn sàng thử món/phong tục Việt. Bạn dùng khi giới thiệu phong tục Việt Nam: '在越南我们这样做, 入乡随俗嘛'.",
-        "example": "中国人来越南就要吃越南河粉, 入乡随俗。"
+        "example": "中国人来越南就要吃越南河粉, 入乡随俗。",
+        "literal_en": "enter the village, follow its customs (rù xiāng suí sú)",
+        "meaning_en": "When in Rome, do as the Romans — a Chinese boss uses it when willing to try local food/customs; you use it when introducing Vietnamese customs ('this is how we do it in Vietnam — when in Rome'). (spoken/formal)",
+        "example_en": "When a Chinese visitor comes to Vietnam, they should eat Vietnamese pho — when in Rome."
       },
       {
         "idiom": "远来是客",
         "literal": "đến từ xa là khách (yuǎn lái shì kè)",
         "meaning": "Người đến từ xa đều là khách quý — phải tiếp đãi tận tình. Triết lý gốc của tiếp khách Trung Quốc/Việt Nam. Dùng khi giải thích vì sao bạn dành nhiều thời gian/nguồn lực cho khách.",
-        "example": "远来是客, 您怎么也得让我们好好招待。"
+        "example": "远来是客, 您怎么也得让我们好好招待。",
+        "literal_en": "one who comes from afar is a guest (yuǎn lái shì kè)",
+        "meaning_en": "Anyone who comes from far away is an honored guest — to be received warmly; the founding philosophy of Chinese/Vietnamese hosting. Used to explain why you devote so much time/resource to a guest. (spoken/formal)",
+        "example_en": "You've come from far away — you simply must let us host you properly."
       },
       {
         "idiom": "主随客便",
         "literal": "chủ tùy theo khách (zhǔ suí kè biàn)",
         "meaning": "Chủ nhà tùy theo ý khách — linh hoạt theo mong muốn của khách. Dùng khi đưa ra lựa chọn cho khách: '主随客便, 您喜欢吃什么我们就吃什么'. Đối lập với 'chủ áp đặt khách'.",
-        "example": "主随客便, 您想去哪里我们就去哪里。"
+        "example": "主随客便, 您想去哪里我们就去哪里。",
+        "literal_en": "the host follows the guest's convenience (zhǔ suí kè biàn)",
+        "meaning_en": "The host defers to the guest's wishes — flexible to what the guest wants; used when offering choices ('whatever you'd like to eat, that's what we'll have'). The opposite of a host imposing on a guest. (spoken/formal)",
+        "example_en": "As you prefer — wherever you'd like to go, that's where we'll go."
       }
     ],
     "cultural_notes_vi": "Tiếp đón sếp/khách Trung Quốc đến Việt Nam là 'bài kiểm tra' đầu tiên về năng lực quan hệ của bạn trong mắt sếp. Văn hóa hospitality Trung Quốc khác Việt Nam ở năm điểm: (1) HOST CHỦ ĐỘNG, không hỏi khách. Khách Trung Quốc đến Việt Nam mong bạn lên lịch sẵn sàng (giờ ăn, nơi ăn, di chuyển, mua sắm) — không mong họ tự quyết định. Khác Mỹ (nơi 'free time' là điều tốt), Trung Quốc 'free time' = chủ nhà thiếu chuẩn bị. (2) Tần suất check-in cao: gọi/nhắn mỗi sáng để xác nhận lịch, mỗi tối hỏi 'hôm nay thế nào'. Sếp Trung Quốc cảm thấy được quan tâm khi bạn check-in nhiều, không bị làm phiền. (3) Mời ăn trưa + tối là CHUẨN — khác phương Tây (chỉ một bữa). 5 ngày ở Việt Nam = 10 bữa ăn cùng host. Lên kế hoạch trước: bữa pho, bữa bún chả, bữa hải sản, bữa Trung-Việt fusion. (4) Quà chia tay từ phía host (không phải khách): chuẩn bị quà nhỏ đặc sản Việt (cà phê G7, bánh đậu xanh, lụa Vạn Phúc) để gửi sếp khi tạm biệt. Tổng giá trị 200-500 nhân dân tệ là phù hợp. (5) Sau khi sếp về Trung Quốc, nhắn WeChat trong 24 giờ: '李总, 您一路平安到家了吗?' — đây là 'closing the loop' chuẩn quan hệ Trung Quốc.\n\nKhác biệt Việt-Trung trong tiếp khách: ở Việt Nam, host có thể 'thân mật' với khách (dùng 'em', 'anh' nhanh chóng); ở Trung Quốc 'thân mật' phải có quá trình. Đừng vội xưng hô thân với sếp Trung Quốc dù họ tỏ ra dễ tính.\n\nVề lịch trình: sếp Trung Quốc đến công tác thường có nhịp điệu '工作 + 应酬 + 放松' (làm việc + xã giao + thư giãn) — cứ 60% công việc, 30% xã giao (ăn uống), 10% thư giãn (mua sắm/tham quan). Đừng nhồi 100% công việc — sếp sẽ mệt và khó chịu.",
@@ -5758,25 +5902,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "礼尚往来",
         "literal": "lễ là sự qua lại (lǐ shàng wǎng lái)",
         "meaning": "Có qua có lại — quy tắc đáp lễ trong văn hóa Trung Quốc/Việt Nam. Khi bạn đãi khách, lần sau khách phải đãi bạn. Cụm dùng để thuyết phục khách đồng ý cho bạn host: '礼尚往来嘛, 这次我做东'.",
-        "example": "礼尚往来嘛, 下次您来河内一定要让我做东。"
+        "example": "礼尚往来嘛, 下次您来河内一定要让我做东。",
+        "literal_en": "courtesy goes back and forth (lǐ shàng wǎng lái)",
+        "meaning_en": "Reciprocity — the principle of returning courtesy in Chinese/Vietnamese culture; when you host the guest, next time they must host you. Used to persuade a guest to let you host ('it's all reciprocity — this round is on me'). (spoken/formal)",
+        "example_en": "It's all reciprocity — next time you come to Hanoi, you must let me host."
       },
       {
         "idiom": "投桃报李",
         "literal": "ném đào nhận mận (tóu táo bào lǐ)",
         "meaning": "Trao tặng đào nhận lại mận — quà đáp quà, giúp đỡ đáp giúp đỡ. Cụm cổ điển hơn 礼尚往来, dùng trong context formal. Phù hợp khi nói về mối quan hệ hợp tác lâu dài.",
-        "example": "我们做生意, 讲究投桃报李。"
+        "example": "我们做生意, 讲究投桃报李。",
+        "literal_en": "throw a peach, get back a plum (tóu táo bào lǐ)",
+        "meaning_en": "Give a peach and receive a plum — gift for gift, help for help; more classical than 礼尚往来, used in a formal context, fitting when speaking about a long-term cooperative relationship. (written/formal)",
+        "example_en": "In our business we value give-and-take."
       },
       {
         "idiom": "和气生财",
         "literal": "hòa khí sinh tài (hé qì shēng cái)",
         "meaning": "Hòa khí sinh ra của cải — quan hệ tốt là cơ sở của làm ăn. Triết lý kinh doanh Trung Quốc cổ điển. Khách Trung Quốc dùng để thể hiện thiện chí: 'cùng nhau hòa khí, tiền sẽ đến'.",
-        "example": "和气生财, 我们慢慢谈, 不着急。"
+        "example": "和气生财, 我们慢慢谈, 不着急。",
+        "literal_en": "harmony breeds wealth (hé qì shēng cái)",
+        "meaning_en": "Harmony generates wealth — a good relationship is the basis of business; a classical Chinese business philosophy. A Chinese client uses it to show goodwill ('let's keep things harmonious, the money will come'). (spoken/formal)",
+        "example_en": "Harmony breeds wealth — let's talk it over slowly, no rush."
       },
       {
         "idiom": "一视同仁",
         "literal": "một mắt nhìn cùng người (yī shì tóng rén)",
         "meaning": "Đối xử công bằng như nhau — không phân biệt khách lớn nhỏ, gần xa. Cụm cam kết phong cách phục vụ: '我们对所有客户一视同仁, 您是我们的VIP'. Dùng để xây niềm tin.",
-        "example": "我们对所有客户一视同仁。"
+        "example": "我们对所有客户一视同仁。",
+        "literal_en": "treat all with the same eye (yī shì tóng rén)",
+        "meaning_en": "To treat everyone equally — no distinction between big or small, near or far clients; a commitment about service style ('we treat all clients equally, you are our VIP'). Used to build trust. (spoken/formal)",
+        "example_en": "We treat all our clients equally."
       }
     ],
     "cultural_notes_vi": "Tiếp khách hàng Trung Quốc tại Việt Nam khác tiếp khách Mỹ/Âu ở năm điểm cốt lõi: (1) 'Quan hệ' (关系) đến TRƯỚC 'business' (生意). Người Trung Quốc thích biết người trước khi biết hợp đồng — họ đầu tư 30-40% thời gian gặp gỡ vào ăn uống/giao lưu, không phải vì lãng phí mà vì xây nền tảng tin cậy. Khác Mỹ (presentation → numbers → contract trong 2 giờ), Trung Quốc cần 2 ngày + 3 bữa ăn để 'cảm nhận' đối tác. (2) 'Mặt' (面子) đan xen: bạn cho mặt khách (đặt khách sạn 5 sao, tour VIP, quà có giá trị), khách trả lại bằng cách quyết định nhanh hoặc giới thiệu thêm khách. KHÔNG cho mặt = không nhận hợp đồng. (3) Bữa ăn QUAN TRỌNG hơn họp văn phòng. Hợp đồng thực sự được 'đàm phán' qua bữa cơm tối với rượu — không phải qua PowerPoint sáng. Đừng tiếc tiền cho bữa ăn. (4) Quyết định cuối cùng KHÔNG được đưa ra trong cuộc gặp đầu tiên. Khách Trung Quốc cần 'tham khảo nội bộ' (内部商量) sau chuyến thăm. Đừng ép quyết định ngay tại Việt Nam — cho khách 1-2 tuần. (5) Sau chuyến thăm, follow-up trong 24h bằng tin nhắn cá nhân (không email): 'Tổng Vương, anh đã về Trung Quốc bình an chứ?' + ảnh đẹp đã chụp. Đây là dấu hiệu bạn coi trọng quan hệ.\n\nVề thanh toán bữa ăn: chiến đấu trả tiền (抢着买单) là phong tục — bạn và khách sẽ giả vờ tranh nhau trả. Người 'thắng' là host. Khi khách giả vờ đòi trả, bạn dùng '远来是客' + 'này lần em mời, lần sau anh đến Trung Quốc anh mời'. Đừng để khách thực sự trả — coi như host thua.\n\nQuà hợp tác lần đầu: từ phía host (Việt Nam) khoảng 500-2000 nhân dân tệ — đặc sản Việt cao cấp (cà phê Trung Nguyên, lụa Vạn Phúc, tranh Đông Hồ). Khách thường mang quà từ Trung Quốc (trà cao cấp, rượu Mao Đài) — đáp lại bằng quà tương đương giá trị. Quá đắt = nhận hối lộ; quá rẻ = không tôn trọng.",
@@ -6147,25 +6303,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "同根同源",
         "literal": "cùng gốc cùng nguồn (tóng gēn tóng yuán)",
         "meaning": "Cùng gốc, cùng nguồn — chia sẻ nguồn gốc văn hóa/lịch sử. Cụm trung tính dùng để thừa nhận chia sẻ văn hóa Việt-Trung mà không nói 'một quốc gia'. Mở đường cho thảo luận tôn trọng.",
-        "example": "我们都受儒家影响, 同根同源。"
+        "example": "我们都受儒家影响, 同根同源。",
+        "literal_en": "same root, same source (tóng gēn tóng yuán)",
+        "meaning_en": "Same root, same origin — sharing cultural/historical roots; a neutral phrase to acknowledge shared Vietnam-China culture without saying 'one country', opening the way for respectful discussion. (spoken/formal)",
+        "example_en": "We're both shaped by Confucianism — same root, same source."
       },
       {
         "idiom": "求同存异",
         "literal": "cầu đồng tồn dị (qiú tóng cún yì)",
         "meaning": "Cầu cái chung, giữ cái khác — tìm điểm chung nhưng tôn trọng khác biệt. Cụm chuẩn ngoại giao Trung Quốc, áp dụng tuyệt vời cho giao tiếp Việt-Trung. Tránh xung đột vô ích.",
-        "example": "求同存异, 才能更好地交流。"
+        "example": "求同存异, 才能更好地交流。",
+        "literal_en": "seek common ground while keeping differences (qiú tóng cún yì)",
+        "meaning_en": "Seek the shared, keep the different — find common ground while respecting differences; a standard Chinese diplomatic phrase, applying superbly to Vietnam-China communication. Avoids pointless conflict. (spoken/formal)",
+        "example_en": "Seeking common ground while keeping differences is the only way to communicate well."
       },
       {
         "idiom": "各有千秋",
         "literal": "mỗi bên có ngàn thu (gè yǒu qiān qiū)",
         "meaning": "Mỗi bên có nét riêng đáng giá — không ai hơn ai. Cụm bình đẳng, dùng để khẳng định Việt Nam và Trung Quốc đều có giá trị riêng. Đối lập với 'so sánh hơn kém'.",
-        "example": "中越文化各有千秋, 都很精彩。"
+        "example": "中越文化各有千秋, 都很精彩。",
+        "literal_en": "each has its own millennia (gè yǒu qiān qiū)",
+        "meaning_en": "Each side has its own worthy distinctiveness — neither is above the other; an egalitarian phrase to affirm that Vietnam and China each have their own value. The opposite of ranking. (spoken/formal)",
+        "example_en": "Vietnamese and Chinese culture each have their own glories — both are wonderful."
       },
       {
         "idiom": "海内存知己, 天涯若比邻",
         "literal": "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
         "meaning": "Câu thơ nổi tiếng của Vương Bột (đời Đường): nếu trên đời có tri kỷ, dù xa cũng như gần. Dùng để kết nối tình bạn Việt-Trung. Cao cấp về văn hóa — sẽ gây ấn tượng mạnh nếu dùng đúng.",
-        "example": "海内存知己, 天涯若比邻 — 越中朋友永远不分离。"
+        "example": "海内存知己, 天涯若比邻 — 越中朋友永远不分离。",
+        "literal_en": "within the seas there is a soulmate, the ends of the earth feel next door (Wang Bo)",
+        "meaning_en": "A famous couplet by Wang Bo (Tang dynasty): if you have a true friend in the world, even far apart you feel close; used to bond a Vietnam-China friendship. Culturally advanced — it leaves a strong impression when used correctly. (written/literary)",
+        "example_en": "Within the seas a soulmate stays, the ends of the earth feel next door — Vietnamese and Chinese friends are never parted."
       }
     ],
     "cultural_notes_vi": "Giao tiếp văn hóa Việt-Trung là khu vực 'đẹp đẽ nhưng nhạy cảm'. Hai nước có 2000+ năm lịch sử giao thoa, cùng nền tảng Nho gia, cùng Tết âm lịch, cùng dùng đũa, cùng coi trọng học vấn và đạo hiếu — tỉ lệ tương đồng văn hóa cao hơn bất kỳ cặp nước nào khác. NHƯNG cũng có lịch sử xung đột (Bắc thuộc 1000 năm, 1979 border war, tranh chấp biển), nên giao tiếp văn hóa cần 'maturity' — không lảng tránh nhưng không khơi mào.\n\nKhi đồng nghiệp Trung Quốc hỏi câu nhạy cảm, có 4 cách phản ứng tốt: (1) Thừa nhận sự thật khách quan: 'lịch sử có giai đoạn X, sau đó Y' — không phán xét. (2) Chuyển sang khía cạnh tích cực: 'nhưng hiện nay quan hệ kinh tế rất tốt'. (3) Đề xuất chủ đề thay thế: 'mình nói về ẩm thực hai nước thì hay hơn'. (4) Dùng cụm 'đây là chủ đề phức tạp, mình từ từ nói sau' — để dành cho lúc thân hơn.\n\nVề 'điểm chung an toàn' nên khai thác: ẩm thực (cả hai có món tương tự — phở/lamian, bún/miến), Tết âm lịch (cùng ngày, cùng phong tục lì xì), đạo hiếu (giống nhau 90%), trà/cà phê, võ thuật (Việt Nam có Vovinam, Trung có wushu). Đây là 'safe zones' để bonding.\n\n'Điểm chung tránh': lịch sử cổ đại (Bắc thuộc), 1979, biển đảo, vấn đề Đài Loan, Tân Cương/Tây Tạng. Người Việt thông minh KHÔNG nêu quan điểm về vấn đề nội bộ Trung Quốc — không phải sợ, mà vì không phải việc của mình.\n\nVề ảnh hưởng Pháp: đề cập tự nhiên (kiến trúc Hà Nội, cà phê, bánh mì), KHÔNG so sánh thuộc địa Pháp với Bắc thuộc Trung Quốc — đó là so sánh sai và sẽ tạo căng thẳng. Pháp = colonial; Trung Quốc cổ đại = phức tạp hơn (vừa colonial vừa cultural exchange).\n\nMột mẹo cuối: học 5-10 cụm tiếng Trung về văn hóa (儒家, 孝道, 同根同源, 求同存异) — khi bạn dùng đúng cụm này, đồng nghiệp Trung sẽ cảm thấy bạn 'thông hiểu' văn hóa của họ và tôn trọng bạn hơn.",
@@ -6536,25 +6704,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "礼多人不怪",
         "literal": "lễ nhiều người không trách (lǐ duō rén bù guài)",
         "meaning": "Quá lễ độ không ai trách — thà thừa lịch sự còn hơn thiếu. Triết lý dùng cho người mới học etiquette: khi không chắc, chọn cách lịch sự nhất. Sếp Trung Quốc rất thích người tuân theo nguyên tắc này.",
-        "example": "礼多人不怪, 客套一点没坏处。"
+        "example": "礼多人不怪, 客套一点没坏处。",
+        "literal_en": "with much courtesy no one takes offense (lǐ duō rén bù guài)",
+        "meaning_en": "Excess politeness offends no one — better too courteous than too little; a philosophy for someone new to etiquette: when unsure, choose the most polite option. Chinese bosses much appreciate following this principle. (spoken)",
+        "example_en": "No one minds extra courtesy — a little formality never hurts."
       },
       {
         "idiom": "入境问禁",
         "literal": "vào cõi hỏi cấm (rù jìng wèn jìn)",
         "meaning": "Vào nơi nào nên hỏi điều cấm kỵ ở đó — chủ động tìm hiểu phong tục địa phương trước khi hành động. Cụm khuyến khích sự chuẩn bị, đặc biệt khi đến môi trường mới (Trung Quốc, công ty mới).",
-        "example": "入境问禁, 我提前问了同事很多礼仪。"
+        "example": "入境问禁, 我提前问了同事很多礼仪。",
+        "literal_en": "entering a region, ask its taboos (rù jìng wèn jìn)",
+        "meaning_en": "On entering a place, ask what is forbidden there — proactively learn local customs before acting; encourages preparation, especially when entering a new environment (China, a new company). (spoken/formal)",
+        "example_en": "On entering new ground I ask about the taboos — I asked colleagues a lot about etiquette in advance."
       },
       {
         "idiom": "面子工程",
         "literal": "công trình thể diện (miàn zi gōng chéng)",
         "meaning": "Việc làm vì thể diện — đầu tư vào hình thức để giữ hoặc tạo thể diện. Thường mang nghĩa hơi tiêu cực ('phô trương'), nhưng trong context business là điều cần thiết. Dùng để miêu tả các nghi thức đãi khách trang trọng.",
-        "example": "中国商务里, 面子工程是必不可少的。"
+        "example": "中国商务里, 面子工程是必不可少的。",
+        "literal_en": "a face-project (miàn zi gōng chéng)",
+        "meaning_en": "An act done for face — investing in form to keep or create face; usually slightly negative ('for show'), but in a business context it is necessary. Used to describe formal guest-hosting rituals. (spoken)",
+        "example_en": "In Chinese business, the face-work is indispensable."
       },
       {
         "idiom": "客随主便",
         "literal": "khách theo chủ tiện (kè suí zhǔ biàn)",
         "meaning": "Khách tùy theo sự sắp xếp của chủ nhà — không tự đặt yêu cầu. Phẩm chất khách lý tưởng: linh hoạt, không khó tính. Khi bạn là khách ở Trung Quốc, đây là phương châm an toàn.",
-        "example": "我客随主便, 您安排什么我都行。"
+        "example": "我客随主便, 您安排什么我都行。",
+        "literal_en": "the guest follows the host's convenience (kè suí zhǔ biàn)",
+        "meaning_en": "The guest defers to the host's arrangements — not setting one's own demands; the ideal guest quality: flexible, undemanding. When you are a guest in China, this is the safe motto. (spoken/formal)",
+        "example_en": "I'll go along with the host — whatever you arrange is fine with me."
       }
     ],
     "cultural_notes_vi": "Lễ nghi kinh doanh Trung Quốc đại lục là 'lớp học' phức tạp nhất mà người Việt phải học khi làm ăn xuyên biên giới. Sáu khu vực dễ sai nhất: (1) DANH THIẾP — hai tay đưa, mặt chữ hướng đối phương, kèm 'qǐng duōduō zhǐjiào'. Nhận xong PHẢI đọc kỹ 5-10 giây, có thể bình luận ('哦, 您是负责...'), sau đó đặt trên bàn TRƯỚC MẶT (không cất ngay). Cất ngay = không tôn trọng. (2) VỊ TRÍ NGỒI — vị trí 'đầu bàn' (主位) đối diện cửa, dành cho người quan trọng nhất (host hoặc khách VIP). Khách quý ngồi BÊN PHẢI host, không đối diện. Người trẻ/cấp thấp ngồi gần cửa (để tiện đi lấy đồ). KHÔNG bao giờ tự chọn vị trí — đợi host sắp xếp. (3) GỌI MÓN — host gọi món, khách KHÔNG nên gọi (kể cả nếu host hỏi). Nếu host nhất định mời gọi, gọi 1 món rẻ tiền nhất. Số món bằng số người + 1 (8 người = 9 món, kèm 1 món súp + 1 món tráng miệng). Đặt mức giá phải xứng tầm khách — quá rẻ làm mất thể diện chính mình. (4) ĐŨA — KHÔNG cắm thẳng vào bát cơm (giống nhang thắp trong tang); KHÔNG để chéo nhau (xui); KHÔNG dùng đũa để chỉ vào người (vô lễ). KHÔNG xoay đĩa Lazy Susan ngược chiều kim đồng hồ. (5) RƯỢU — host mời ly đầu, sau đó cấp dưới đi mời từng cấp trên một. Mời rượu = tay phải cầm ly, tay trái đỡ đáy ly, ly thấp hơn ly đối phương. '我先干为敬' (em cạn trước để tỏ kính) — câu mở chuẩn. Nếu uống Mao Đài hoặc Erguotou (rượu mạnh), mỗi shot 30-50ml. (6) THANH TOÁN — chiến đấu trả tiền là phong tục. Bạn và host sẽ giả vờ tranh nhau. Người 'thắng' là host. Khách không bao giờ thực sự được trả — chỉ giả vờ.\n\nVề face: 'cho mặt' và 'mất mặt' chi phối tất cả. Cho mặt = công nhận giá trị/chức vụ của đối phương trước người khác (gọi đúng chức danh, dành chỗ ngồi tốt, mời rượu trước, khen công khai). Mất mặt = chỉ trích trước mặt người khác, từ chối thẳng đề xuất, để thấy điểm yếu trước số đông.\n\nVề quà: ngân sách lần đầu 200-500 nhân dân tệ; lần thứ 2-3 lên 500-1000; quan hệ thân 1000-2000. Đắt hơn = nghi hối lộ, ảnh hưởng quan hệ. Đặc sản Việt Nam (cà phê G7, lụa, tranh Đông Hồ) là an toàn vì 'lạ' với người Trung.",
@@ -6925,25 +7105,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "知错就改",
         "literal": "biết sai liền sửa (zhī cuò jiù gǎi)",
         "meaning": "Biết sai sửa ngay — phẩm chất quân tử, không che giấu lỗi. Cụm cam kết khi xin lỗi: thừa nhận + cam kết thay đổi. Người Trung Quốc đánh giá rất cao thái độ này.",
-        "example": "知错就改是基本道德。"
+        "example": "知错就改是基本道德。",
+        "literal_en": "know the error, fix it at once (zhī cuò jiù gǎi)",
+        "meaning_en": "Recognize a mistake and correct it immediately — a gentleman's quality, not hiding a fault; a commitment phrase when apologizing: admit + commit to change. Chinese people value this attitude very highly. (spoken/formal)",
+        "example_en": "Recognizing and correcting one's mistakes is basic morality."
       },
       {
         "idiom": "将心比心",
         "literal": "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
         "meaning": "Lấy tâm mình đo tâm người — đặt mình vào vị trí người khác. Cụm thể hiện đồng cảm khi xin lỗi: 'nếu em là anh, em cũng sẽ buồn'. Tăng tính chân thành.",
-        "example": "将心比心, 我能理解您的感受。"
+        "example": "将心比心, 我能理解您的感受。",
+        "literal_en": "measure another's heart with your own (jiāng xīn bǐ xīn)",
+        "meaning_en": "Gauge another's heart by your own — putting yourself in their position; shows empathy when apologizing ('if I were you, I'd be upset too'). Adds sincerity. (spoken/formal)",
+        "example_en": "Putting myself in your place, I can understand how you feel."
       },
       {
         "idiom": "化干戈为玉帛",
         "literal": "hóa can qua thành ngọc lụa (huà gān gē wéi yù bó)",
         "meaning": "Biến vũ khí (干戈 — giáo mác) thành quà tặng (玉帛 — ngọc lụa) — chuyển xung đột thành hòa bình. Cụm cao cấp dùng khi muốn 'lật trang' sau xung đột. Văn vẻ — gây ấn tượng mạnh.",
-        "example": "希望我们能化干戈为玉帛, 重新合作。"
+        "example": "希望我们能化干戈为玉帛, 重新合作。",
+        "literal_en": "turn shields and spears into jade and silk (huà gān gē wéi yù bó)",
+        "meaning_en": "Turn weapons (干戈, spears) into gifts (玉帛, jade and silk) — transform conflict into peace; an advanced phrase to 'turn the page' after a conflict. Literary — leaves a strong impression. (written/literary)",
+        "example_en": "I hope we can turn swords into jade and silk, and work together again."
       },
       {
         "idiom": "赔礼道歉",
         "literal": "đền lễ xin lỗi (péi lǐ dào qiàn)",
         "meaning": "Tạ lỗi xin lỗi — xin lỗi formal kèm hành động bù đắp. Mạnh hơn '道歉' đơn lẻ. Dùng khi lỗi nghiêm trọng cần 'compensation' (quà, mời ăn, dịch vụ).",
-        "example": "我专程来赔礼道歉, 请您原谅。"
+        "example": "我专程来赔礼道歉, 请您原谅。",
+        "literal_en": "make amends and apologize (péi lǐ dào qiàn)",
+        "meaning_en": "To apologize with a compensating act — a formal apology accompanied by amends; stronger than a bare 道歉, used when a serious mistake needs compensation (a gift, a meal, a service). (spoken/formal)",
+        "example_en": "I've come specially to make amends and apologize — please forgive me."
       }
     ],
     "cultural_notes_vi": "Xin lỗi qua văn hóa Việt-Trung khác biệt sâu sắc: ở Việt Nam, 'xin lỗi' thường nhanh và nhẹ ('xin lỗi nhé'); ở Trung Quốc, xin lỗi formal là sự kiện QUAN TRỌNG, đòi hỏi nghi thức. Sáu nguyên tắc: (1) GẶP TRỰC TIẾP khi lỗi nghiêm trọng (làm mất mặt, vi phạm taboo lớn). Tin nhắn/email = nửa hiệu lực. Gọi điện tốt hơn tin nhắn nhưng vẫn kém gặp mặt. (2) XIN LỖI RIÊNG nếu lỗi gây mất mặt công khai. KHÔNG xin lỗi trước nhiều người — đó là tự gây thêm mất mặt cho cả hai bên. (3) THỜI ĐIỂM xin lỗi: trong 24-48 giờ sau lỗi. Quá sớm (1-2 giờ) = chưa kịp suy nghĩ thấu đáo, có vẻ phản xạ. Quá muộn (>3 ngày) = đã quên, không quan tâm. 'Sweet spot' là sáng hôm sau. (4) CẤU TRÚC chuẩn: (a) thừa nhận lỗi cụ thể; (b) giải thích nguyên nhân (không bào chữa); (c) thừa nhận hậu quả; (d) cam kết thay đổi; (e) đề xuất bù đắp cụ thể. Thiếu bước nào = không đủ chân thành. (5) 'BÙ ĐẮP' (补救) phải có hành động cụ thể: mời ăn, tặng quà phù hợp, làm việc gì đó cho đối phương. Lời xin lỗi mà không có action = lời rỗng. (6) Sau khi nhận tha thứ, KHÔNG nhắc lại lỗi đó nữa. Người Trung Quốc đã 'lật trang' — bạn cũng phải lật. Nhắc lại = dằn vặt + làm họ khó chịu.\n\nMột số 'lỗi văn hóa' phổ biến của người Việt khi làm với người Trung: tặng đồng hồ/ô/giày (taboo), phê bình công khai (làm mất mặt), gọi sếp bằng nickname trẻ trung (thiếu tôn trọng), từ chối rượu thẳng thừng (không cho mặt host), không trả lời WeChat trong nhiều giờ (xem nhẹ quan hệ), mặc áo trắng/đen tới tiệc (màu tang), tặng quà số 4 (xui).\n\nVề 'face' và xin lỗi: lỗi làm 'mất mặt' (丢面子) là lỗi nặng nhất trong văn hóa Trung Quốc — nặng hơn lỗi tiền/thời gian. Nếu bạn vô tình làm sếp/đối tác mất mặt trước người khác, xin lỗi RIÊNG + bồi thường bằng cách cho họ MẶT lại trong dịp tiếp theo (khen công khai, mời nói trước đoàn, đặt họ ở vị trí trang trọng).\n\nVề tha thứ: người Trung Quốc thường nói 'không sao' (没关系) ngay cả khi vẫn còn buồn — đây là phép lịch sự, không phải tha thứ thật. Quan sát hành vi tiếp theo: họ vẫn mời bạn ăn, vẫn invite bạn vào dự án = đã tha thứ thật. Họ né tránh, không trả lời tin nhắn = chưa tha thứ, cần xin lỗi sâu hơn.",
@@ -7314,25 +7506,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "推杯换盏",
         "literal": "đẩy ly đổi chén (tuī bēi huàn zhǎn)",
         "meaning": "Nâng ly và đổi chén — biểu tượng của bữa tiệc náo nhiệt, mời rượu qua lại. Cụm dùng để mô tả tình bạn xây qua bữa rượu: 'trong nâng ly đổi chén, tình bạn nảy sinh'. Văn vẻ — nâng tầm phát biểu.",
-        "example": "推杯换盏间, 朋友的情谊就深了。"
+        "example": "推杯换盏间, 朋友的情谊就深了。",
+        "literal_en": "push the cup, exchange the goblet (tuī bēi huàn zhǎn)",
+        "meaning_en": "Raising glasses and exchanging cups — the symbol of a lively banquet, toasts going back and forth; used to describe friendship built over drinks ('amid the toasts, friendship grows'). Literary — elevates a speech. (written/literary)",
+        "example_en": "Amid the clinking of cups, the friendship deepened."
       },
       {
         "idiom": "觥筹交错",
         "literal": "chén đũa giao thoa (gōng chóu jiāo cuò)",
         "meaning": "Chén rượu (觥) và thẻ thưởng rượu (筹) giao thoa — tiệc rượu náo nhiệt, vui vẻ. Cụm cao cấp hơn 推杯换盏, dùng trong context formal hoặc văn học để mô tả không khí tiệc.",
-        "example": "今晚觥筹交错, 大家都很尽兴。"
+        "example": "今晚觥筹交错, 大家都很尽兴。",
+        "literal_en": "goblets and tallies interlaced (gōng chóu jiāo cuò)",
+        "meaning_en": "Wine goblets (觥) and drinking tallies (筹) interlaced — a lively, merry drinking feast; more advanced than 推杯换盏, used in a formal or literary context to describe the atmosphere of a banquet. (written/literary)",
+        "example_en": "Tonight the cups and tallies flew — everyone had a wonderful time."
       },
       {
         "idiom": "一干而尽",
         "literal": "một cạn hết (yī gān ér jìn)",
         "meaning": "Cạn một hơi — uống cạn ly trong một ngụm. Thể hiện thiện chí cao nhất. Tuy nhiên ở Trung Quốc đại lục hiện nay không bắt buộc với khách nước ngoài — bạn có thể uống tùy lượng.",
-        "example": "我先一干而尽, 请您随意。"
+        "example": "我先一干而尽, 请您随意。",
+        "literal_en": "down it in one (yī gān ér jìn)",
+        "meaning_en": "To drain the cup in one gulp — the highest show of goodwill; however, in today's mainland China it is not required of a foreign guest — you may drink as much as you can manage. (spoken)",
+        "example_en": "Let me drain mine first — please drink as you like."
       },
       {
         "idiom": "客随主便",
         "literal": "khách tùy chủ tiện (kè suí zhǔ biàn)",
         "meaning": "Khách tùy theo sự sắp xếp của chủ — không tự ý đặt yêu cầu. Phẩm chất khách lý tưởng. Khi bạn là khách Trung Quốc tại nhà người Việt, dùng cụm này thể hiện sự khiêm tốn.",
-        "example": "我客随主便, 您安排什么我都喜欢。"
+        "example": "我客随主便, 您安排什么我都喜欢。",
+        "literal_en": "the guest follows the host's convenience (kè suí zhǔ biàn)",
+        "meaning_en": "The guest defers to the host's arrangements — not making one's own demands; the ideal guest quality. As a Chinese guest in a Vietnamese home, using it shows modesty. (spoken/formal)",
+        "example_en": "I'll follow the host — whatever you arrange, I'll enjoy."
       }
     ],
     "cultural_notes_vi": "Bữa tiệc Trung Quốc là môi trường nhiều quy tắc nhất bạn sẽ gặp. Bảy nguyên tắc cốt lõi: (1) VỊ TRÍ NGỒI: chủ nhà ngồi đối diện cửa (giúp ai vào cũng nhìn thấy chủ); khách quý nhất ngồi BÊN PHẢI chủ nhà; thứ tự cấp bậc giảm dần đi xuống vòng tròn theo chiều kim đồng hồ. Cấp thấp nhất ngồi gần cửa (để tiện đi lấy đồ, gọi nhân viên). (2) GỌI MÓN: chủ nhà gọi 100% trong lần đầu. Số món = số người + 1 (8 người = 9 món, kèm súp + tráng miệng). Có cá nguyên con (鱼 ngụ ý 余 = dư dả), gà nguyên con (鸡 ngụ ý 吉 = may mắn), súp cuối bữa (chuẩn bị xong cho 'kết'). (3) ĐŨA: nâng đũa khi chủ nhà đã nâng; KHÔNG cắm đũa thẳng vào cơm; KHÔNG để chéo nhau; KHÔNG dùng đũa chỉ vào người. Đặt đũa ngang trên giá đũa khi nghỉ. (4) RƯỢU: chủ nhà mời ly đầu (开场); cạn 100% ly đầu = thể hiện thiện chí cao nhất. Sau đó cấp dưới đi mời cấp trên từng người một; cấp trên có thể uống ít hơn (随意). Mỗi lượt mời PHẢI có lý do (cảm ơn, chúc, kỷ niệm) — mời 'cho có' bị coi là thiếu chân thành. (5) THANH TOÁN: chiến đấu trả tiền là phong tục — chủ và khách giả vờ tranh nhau. Người 'thắng' = chủ. Cách 'chiến' đúng: gọi nhân viên TRƯỚC khi khách kịp đứng dậy, đưa thẻ riêng, KHÔNG để khách thấy hóa đơn. Tip: 5-10% là chuẩn (Trung Quốc đại lục thấp hơn phương Tây). (6) RỜI BÀN: khách quý đứng dậy trước, các người khác theo sau. KHÔNG đứng dậy giữa bữa khi sếp đang phát biểu. (7) FOLLOW-UP: gửi tin WeChat trong 24h cảm ơn cụ thể: '王总, 昨晚的招待让我深受感动, 谢谢您的盛情'.\n\nVề rượu Mao Đài (茅台): rượu trắng cay 53% cồn, biểu tượng rượu Trung Quốc. Một shot 30-50ml, uống cạn. Nếu bạn không quen: (a) ăn nhiều trước khi uống (cơm, mỡ); (b) uống nước trà giữa các shot; (c) thừa nhận 'em không quen rượu mạnh' từ đầu và xin được uống ít — thật thà tốt hơn say. KHÔNG say tại bữa business — mất uy tín mãi.\n\nVề khách nữ: ở Trung Quốc đại lục hiện nay phụ nữ uống rượu cũng được chấp nhận, nhưng có thể từ chối lịch sự bằng '我酒量不好' hoặc 'with茶代酒' — không bị áp lực như Hàn Quốc/Nhật.\n\nKhác Việt Nam: ở Việt Nam, bữa nhậu thường thoải mái, mọi người tự rót rượu cho mình. Ở Trung Quốc, không bao giờ tự rót — luôn rót cho người bên cạnh, họ rót lại cho bạn. Rót cho mình = thiếu tinh tế.",
@@ -7703,25 +7907,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "阖家团圆",
         "literal": "cả nhà đoàn tụ (hé jiā tuán yuán)",
         "meaning": "Cả gia đình đoàn tụ — ý nghĩa cốt lõi của Tết. Cụm chuẩn dùng để chúc trong dịp Xuân: '阖家团圆, 幸福安康'. Mạnh hơn '一家团圆' đơn giản. Phù hợp với cả văn hóa Việt và Trung.",
-        "example": "祝您阖家团圆, 万事如意。"
+        "example": "祝您阖家团圆, 万事如意。",
+        "literal_en": "the whole family reunited (hé jiā tuán yuán)",
+        "meaning_en": "The entire family reunited — the core meaning of the lunar New Year; the standard phrase for a New Year wish ('a reunited family, happiness and health'), stronger than a plain 一家团圆, fitting for both Vietnamese and Chinese culture. (spoken/formal)",
+        "example_en": "Wishing you a reunited family and that all goes as you wish."
       },
       {
         "idiom": "万象更新",
         "literal": "vạn vật đổi mới (wàn xiàng gēng xīn)",
         "meaning": "Vạn vật được làm mới — biểu tượng đầu năm mới. Cụm dùng trong câu chúc/diễn văn Tết, đặc biệt khi muốn diễn đạt cảm giác 'reset' đầu năm. Cao cấp hơn 'happy new year'.",
-        "example": "新春到来, 万象更新。"
+        "example": "新春到来, 万象更新。",
+        "literal_en": "all things renewed (wàn xiàng gēng xīn)",
+        "meaning_en": "All things made new — a symbol of the new year; used in New Year wishes/speeches, especially to convey the 'reset' feeling of a new year. More elevated than 'happy new year.' (written/formal)",
+        "example_en": "With the new spring arriving, all things are renewed."
       },
       {
         "idiom": "辞旧迎新",
         "literal": "tiễn cũ đón mới (cí jiù yíng xīn)",
         "meaning": "Tiễn năm cũ, đón năm mới — biểu tượng chuyển giao thời gian. Cụm dùng trong đêm giao thừa hoặc đầu năm: '辞旧迎新, 万事如意'. Thể hiện tinh thần 'để lại điều xấu, đón điều tốt'.",
-        "example": "辞旧迎新, 一切重新开始。"
+        "example": "辞旧迎新, 一切重新开始。",
+        "literal_en": "farewell the old, welcome the new (cí jiù yíng xīn)",
+        "meaning_en": "See off the old year, welcome the new — a symbol of the passing of time; used on New Year's Eve or at the start of the year ('out with the old, in with the new, all goes as wished'), expressing 'leave the bad, welcome the good.' (written/formal)",
+        "example_en": "Out with the old, in with the new — everything begins again."
       },
       {
         "idiom": "福寿安康",
         "literal": "phúc thọ an khang (fú shòu ān kāng)",
         "meaning": "Phúc lộc, sống lâu, bình an, khỏe mạnh — bộ chúc 4 chữ kinh điển. Đặc biệt phù hợp khi chúc người lớn tuổi (ông bà, sếp lớn). Mạnh và sâu sắc hơn '身体健康' đơn lẻ.",
-        "example": "祝您福寿安康, 永远幸福。"
+        "example": "祝您福寿安康, 永远幸福。",
+        "literal_en": "fortune, longevity, peace and health (fú shòu ān kāng)",
+        "meaning_en": "Blessing, long life, peace, good health — a classic four-character set of wishes; especially fitting for an elder (grandparents, a senior boss), stronger and deeper than a plain 身体健康. (spoken/formal)",
+        "example_en": "Wishing you fortune, longevity, peace and health, and lasting happiness."
       }
     ],
     "cultural_notes_vi": "Tết Việt-Trung là 'điểm chung lớn nhất' giữa hai nước — cùng ngày, cùng âm lịch, cùng nhiều phong tục cốt lõi (đoàn tụ gia đình, lì xì, hoa, dọn nhà). Đây là chủ đề an toàn và phong phú để xây quan hệ. Năm điểm khác biệt then chốt người Việt nên biết khi giải thích cho bạn Trung Quốc:\n\n(1) BÁNH CHƯNG vs. JIAOZI: ở Trung Quốc, sủi cảo (饺子) là món chính đêm 30. Việt Nam KHÔNG ăn sủi cảo Tết — bánh chưng (vuông, gói lá dong) và bánh tét (tròn, gói lá chuối) là món chính. Nguồn gốc bánh chưng từ truyền thuyết Lang Liêu thời Hùng Vương — câu chuyện độc đáo Việt Nam, KHÔNG có ở Trung Quốc.\n\n(2) HOA: Việt Nam BẮT BUỘC có hoa đào (miền Bắc) hoặc hoa mai (miền Nam) — không có hoa = không phải Tết. Trung Quốc thiên về câu đối đỏ, đèn lồng, và hoa thủy tiên (水仙). Khi giới thiệu, chỉ ra rằng hoa đào/mai là TÂM ĐIỂM Tết Việt, trong khi với Trung Quốc đó là phụ.\n\n(3) MÀU SẮC: Trung Quốc gần như chỉ dùng đỏ. Việt Nam dùng đỏ (lì xì, câu đối) NHƯNG cũng vàng (mâm ngũ quả, hoa mai), hồng (hoa đào). Đa dạng màu sắc hơn.\n\n(4) XÔNG ĐẤT (踩地): khái niệm độc đáo Việt Nam — người ĐẦU TIÊN bước vào nhà sau giao thừa được tin sẽ mang vận may cả năm. Gia đình thường chọn người 'tốt vận' (tuổi hợp, làm ăn thuận, gia đình êm ấm) đến xông đất. Trung Quốc không có nghi thức này — chỉ có '开门红' (mở cửa đỏ) khái niệm chung.\n\n(5) MÂM NGŨ QUẢ: 5 loại quả trên bàn thờ tổ tiên, mang ý nghĩa 'đủ đầy'. Miền Nam có công thức 'cầu sung dừa đủ xoài' (cầu — sung — dừa — đủ — xoài → 'cầu cho được sung túc, vừa đủ, xài [tiền]'). Trung Quốc không có concept tương đương — chỉ có 'thờ tổ tiên' chung.\n\nVề từ vựng SHARED: nhiều từ Tết Việt là Hán-Việt từ Trung Quốc — 'lì xì' (利市), 'tân niên' (新年), 'phúc' (福), 'lộc' (禄), 'thọ' (寿), 'tổ tiên' (祖先), 'gia đình' (家庭). Khi nói chuyện với người Trung, chỉ ra điều này = họ sẽ ngạc nhiên thú vị.\n\nVề tuổi: cả Việt Nam và Trung Quốc cổ truyền tăng tuổi vào ngày Tết (không phải sinh nhật). Việt Nam dùng 'tuổi mụ' = tuổi sinh + 1 từ ngày Tết đầu tiên. Hệ thống này đang dần thay bằng tuổi dương, nhưng người lớn tuổi vẫn dùng. Khi giới thiệu, đề cập 'âm lịch tuổi' để bạn Trung Quốc hiểu — họ có khái niệm '虚岁' (hư tuổi) tương tự.\n\nVề kiêng kỵ Tết (chia sẻ Việt-Trung): mùng 1 KHÔNG quét nhà (quét đi vận may), KHÔNG cắt tóc, KHÔNG cho vay tiền, KHÔNG nói chuyện xui (đám tang, bệnh tật). Bạn Trung Quốc cũng theo những kiêng này — bonding point.",
@@ -8092,25 +8308,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "以诚相待",
         "literal": "lấy chân thành đối đãi (yǐ chéng xiāng dài)",
         "meaning": "Đối đãi với nhau bằng sự chân thành — không giả tạo, không tính toán. Triết lý cốt lõi của tình bạn Đông Á. Cụm thể hiện cam kết tình bạn không có hidden agenda.",
-        "example": "我们之间以诚相待, 不需要客套。"
+        "example": "我们之间以诚相待, 不需要客套。",
+        "literal_en": "treat each other with sincerity (yǐ chéng xiāng dài)",
+        "meaning_en": "To treat one another with sincerity — no pretense, no calculation; a core philosophy of East Asian friendship, expressing a commitment to friendship with no hidden agenda. (spoken/formal)",
+        "example_en": "Between us we treat each other sincerely — no need for formalities."
       },
       {
         "idiom": "肝胆相照",
         "literal": "gan mật soi nhau (gān dǎn xiāng zhào)",
         "meaning": "Lộ gan ruột cho nhau thấy — tin cậy sâu sắc, không giấu giếm. Cụm rất mạnh, dành cho bạn thân nhất. Tránh dùng cho mới quen — sẽ bị coi là cường điệu.",
-        "example": "我们是肝胆相照的好朋友。"
+        "example": "我们是肝胆相照的好朋友。",
+        "literal_en": "liver and gallbladder reflecting each other (gān dǎn xiāng zhào)",
+        "meaning_en": "To bare one's innermost self to each other — deep trust, nothing hidden; very strong, for the closest friends. Avoid it for new acquaintances — it reads as hyperbole. (written/literary)",
+        "example_en": "We are the closest of friends, holding nothing back from each other."
       },
       {
         "idiom": "患难见真情",
         "literal": "hoạn nạn thấy chân tình (huàn nàn jiàn zhēn qíng)",
         "meaning": "Khi gặp khó khăn mới thấy ai là bạn thật — sự thử thách của tình bạn. Cụm dùng khi đã giúp nhau qua khó khăn cụ thể. Mạnh và chân thực — thể hiện tình bạn đã được kiểm chứng.",
-        "example": "你这次帮我度过难关, 真是患难见真情。"
+        "example": "你这次帮我度过难关, 真是患难见真情。",
+        "literal_en": "hardship reveals true feeling (huàn nàn jiàn zhēn qíng)",
+        "meaning_en": "Only in adversity do you see who your true friends are — the test of friendship; used after helping each other through a specific hardship. Strong and genuine — it marks a friendship that has been tested. (spoken/formal)",
+        "example_en": "You helped me get through this — truly, hardship reveals a true friend."
       },
       {
         "idiom": "海内存知己, 天涯若比邻",
         "literal": "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
         "meaning": "Câu thơ Vương Bột — nếu có tri kỷ, dù xa cũng gần. Cụm cao cấp dùng cho tình bạn vượt khoảng cách. Đặc biệt phù hợp khi bạn về nước hoặc bạn đi xa — khẳng định khoảng cách không chia rẽ.",
-        "example": "你回中国了, 但海内存知己, 我们永远是朋友。"
+        "example": "你回中国了, 但海内存知己, 我们永远是朋友。",
+        "literal_en": "within the seas there is a soulmate, the ends of the earth feel next door (Wang Bo)",
+        "meaning_en": "Wang Bo's couplet — if you have a soulmate, even far apart you feel close; an advanced phrase for friendship across distance, especially fitting when you or a friend goes far away, affirming distance does not divide. (written/literary)",
+        "example_en": "You've gone back to China, but a soulmate makes the world's ends feel near — we'll always be friends."
       }
     ],
     "cultural_notes_vi": "Xây tình bạn với người Trung Quốc tại Việt Nam là cơ hội đặc biệt — họ rời quê hương đến đất khách, cần kết nối, và bạn có lợi thế là 'native + có nền văn hóa gần'. Năm giai đoạn xây tình bạn:\n\nGIAI ĐOẠN 1 (1-3 tháng): SOCIAL EXCHANGE.\n- Mời đi cà phê / ăn trưa\n- Nói chuyện công việc + interests + thành phố\n- Trao đổi WeChat\n- Test compatibility cá nhân\nKey skill: be friendly without overstepping. Đừng hỏi quá personal (tiền lương, tình yêu, chính trị).\n\nGIAI ĐOẠN 2 (3-6 tháng): SHARED EXPERIENCES.\n- Cuối tuần đi chơi cùng (Văn Miếu, Hạ Long, Sapa)\n- Mời về nhà ăn cơm (BƯỚC LỚN — gặp gia đình)\n- Cùng đi nhậu/karaoke\n- Bắt đầu kể chuyện riêng (gia đình, ước mơ)\nKey skill: mời về nhà là bước quan trọng — đảm bảo gia đình bạn welcoming, không hỏi câu khó (lương, tuổi kết hôn).\n\nGIAI ĐOẠN 3 (6-12 tháng): TRUST BUILDING.\n- Giúp họ trong khó khăn (đi bệnh viện, dịch giấy tờ, thuê nhà)\n- Họ giúp bạn (việc, dạy tiếng Trung, kết nối với người Trung khác)\n- Chia sẻ tâm sự cá nhân\n- Tham dự sự kiện quan trọng (sinh nhật, kỷ niệm)\nKey skill: 'patience over performance' — không ép thân thiết, để tự nhiên phát triển.\n\nGIAI ĐOẠN 4 (1-2 năm): LIFE INTEGRATION.\n- Bạn của họ thành bạn của bạn\n- Gia đình hai bên biết nhau qua kể chuyện\n- Kế hoạch dài hạn cùng nhau (du lịch chung, business cooperation)\n- Không cần lý do để gặp\nKey skill: maintain individuality — giữ identity riêng của mình.\n\nGIAI ĐOẠN 5 (2+ năm): LIFELONG FRIENDSHIP.\n- Họ về Trung Quốc, bạn ở Việt Nam, vẫn liên lạc\n- Thăm nhau qua biên giới\n- Hỗ trợ lẫn nhau career/family decisions\n- 'Knowing each other beyond words'\nKey skill: 'invest without expecting return' — tình bạn cấp độ này không có ROI, chỉ có meaning.\n\nVề khác biệt cá nhân: không phải mọi người Trung Quốc đều giống nhau. Người miền Bắc (Bắc Kinh, Hắc Long Giang) có xu hướng formal hơn; miền Nam (Quảng Đông, Phúc Kiến) thân thiện hơn; miền Tây (Tứ Xuyên, Vân Nam) cởi mở và bộc trực; người Thượng Hải sophisticated. Đọc đối phương cẩn thận, đừng generalize.\n\nVề người Trung Quốc Hoa Kiều ở Việt Nam (Chợ Lớn, Q.5 HCMC): họ là 'người Việt gốc Hoa', đã ở Việt Nam nhiều thế hệ. Ngôn ngữ chính có thể là tiếng Việt, tiếng Quảng Đông, không phải Mandarin. Khi kết bạn với họ, chuẩn bị tinh thần khác với 'người Trung mới sang'.\n\nVề tình bạn cross-gender: bạn bè khác giới ở Trung Quốc đại lục được chấp nhận, nhưng vẫn có giới hạn (tránh đi đêm muộn 1-1, tránh tuyên bố 'good friend' công khai khi cả hai đã có gia đình). Xử lý tinh tế.",
@@ -8481,25 +8709,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "通行无阻",
         "literal": "đi không bị cản (tōng xíng wú zǔ)",
         "meaning": "Đi qua thuận lợi, không gặp trở ngại — dùng để miêu tả việc qua hải quan/cửa khẩu suôn sẻ. 'Hộ chiếu của em qua hải quan thông hành vô trở.'",
-        "example": "我的护照过海关通行无阻。"
+        "example": "我的护照过海关通行无阻。",
+        "literal_en": "pass through with no obstruction (tōng xíng wú zǔ)",
+        "meaning_en": "To pass through smoothly without obstacle — used to describe a smooth passage through customs/a border crossing. (spoken)",
+        "example_en": "My passport cleared customs without a hitch."
       },
       {
         "idiom": "一帆风顺",
         "literal": "một cánh buồm thuận gió (yī fán fēng shùn)",
         "meaning": "Mọi việc thuận lợi từ đầu đến cuối — chúc người khởi hành. Cụm cao cấp dùng để chúc bạn bè trước chuyến công tác.",
-        "example": "祝您这次出差一帆风顺。"
+        "example": "祝您这次出差一帆风顺。",
+        "literal_en": "a single sail, a favorable wind (yī fán fēng shùn)",
+        "meaning_en": "Everything going smoothly from start to finish — a wish for someone setting off; an elevated phrase to wish a friend well before a business trip. (spoken/formal)",
+        "example_en": "Wishing you smooth sailing on this business trip."
       },
       {
         "idiom": "有备无患",
         "literal": "có chuẩn bị thì không lo (yǒu bèi wú huàn)",
         "meaning": "Có chuẩn bị thì không gặp rắc rối — chuẩn bị giấy tờ kỹ trước khi qua hải quan. Cụm dùng để giải thích tại sao bạn mang đầy đủ giấy tờ phụ.",
-        "example": "我把所有文件都带上, 有备无患。"
+        "example": "我把所有文件都带上, 有备无患。",
+        "literal_en": "prepared, so no worry (yǒu bèi wú huàn)",
+        "meaning_en": "Be prepared and there's no trouble — having one's papers in order before customs; used to explain why you brought all the supporting documents. (spoken/formal)",
+        "example_en": "I brought all the documents — better safe than sorry."
       },
       {
         "idiom": "万无一失",
         "literal": "vạn việc không thất (wàn wú yī shī)",
         "meaning": "Hoàn toàn chắc chắn không có sai sót — chuẩn bị rất kỹ. Cụm dùng khi muốn diễn đạt 'em đã kiểm tra mọi thứ rồi'. Mạnh hơn 有备无患.",
-        "example": "出行前我检查三遍, 万无一失。"
+        "example": "出行前我检查三遍, 万无一失。",
+        "literal_en": "not one in ten thousand goes wrong (wàn wú yī shī)",
+        "meaning_en": "Absolutely certain, no error possible — very thorough preparation; used to convey 'I've checked everything.' Stronger than 有备无患. (spoken/formal)",
+        "example_en": "I checked three times before setting off — nothing left to chance."
       }
     ],
     "cultural_notes_vi": "Hải quan Trung Quốc đại lục có quy trình chặt chẽ — không khó nhưng có vài điểm khác Việt Nam: (1) ĐIỀN TỜ KHAI NHẬP CẢNH (入境卡) trên máy bay, không phải tại sân bay. Tiếp viên phát trước hạ cánh 30-60 phút. Điền BẰNG CHỮ IN HOA + tiếng Anh, KHÔNG tiếng Việt. Nếu quên, có quầy điền tại sân bay (miễn phí). (2) KIỂM TRA SINH TRẮC HỌC: chụp ảnh + lấy vân tay (10 ngón) lần đầu nhập cảnh. Lần 2 trở đi chỉ cần ảnh. Quá trình 2-3 phút. (3) QUYỀN HÀNH LÝ: thường 1 vali xách tay + 1 ký gửi. Nếu mang đồ ăn (mắm, nem, lạp xưởng), khai báo — phần lớn bị tịch thu (Trung Quốc cấm sản phẩm thịt sống/ướp). Trà, cà phê, bánh khô = OK. (4) HỆ THỐNG XANH/ĐỎ: 'Nothing to declare' (绿色通道) hoặc 'Goods to declare' (红色通道). Nếu mang >5,000 USD tiền mặt, máy ảnh DSLR đắt tiền, đồng hồ Rolex — đi đỏ. Đi xanh khi có hàng cấm = phạt nặng. (5) CHỜ ĐỢI: cao điểm (15-22h) có thể chờ 30-90 phút. Có quầy 'Foreign passports' (外国人护照) riêng, thường ngắn hơn quầy Trung Quốc. (6) WIFI SÂN BAY: bắt buộc xác thực bằng số điện thoại + CMND/hộ chiếu. KHÔNG dùng wifi free để xử lý việc nhạy cảm — dùng 4G data Việt Nam (roaming) hoặc mua eSIM Trung Quốc trước khi đi.\n\nVề nhập cảnh khu vực đặc biệt: Hong Kong/Macau dùng giấy thông hành riêng (港澳通行证) cho công dân TQ; người Việt qua bằng hộ chiếu + visa riêng. Đại lục → Hong Kong vẫn phải qua hải quan như nhập nước khác. Đừng nhầm.\n\nVề thời gian visa: visa du lịch Trung Quốc thường 30 ngày, lưu trú đơn lẻ ≤30 ngày, hiệu lực 90 ngày từ ngày cấp. Quá hạn = phạt 500 tệ/ngày + có thể bị từ chối nhập cảnh lần sau.",
@@ -8870,25 +9110,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "雪上加霜",
         "literal": "tuyết trên thêm sương (xuě shàng jiā shuāng)",
         "meaning": "Tuyết phủ lại thêm sương — họa vô đơn chí, chuyện xấu chồng chất. Cụm dùng khi mô tả tình huống đã tệ lại càng tệ hơn (mất hộ chiếu + sắp hết visa). Tránh lạm dụng — chỉ dùng khi thực sự nghiêm trọng.",
-        "example": "本来要赶飞机, 又下大雨, 真是雪上加霜。"
+        "example": "本来要赶飞机, 又下大雨, 真是雪上加霜。",
+        "literal_en": "frost on top of snow (xuě shàng jiā shuāng)",
+        "meaning_en": "Frost added to snow — misfortunes piling up, when troubles never come singly; used to describe a bad situation getting worse (lost passport + visa about to expire). Don't overuse it — only when truly serious. (spoken)",
+        "example_en": "I was rushing for a flight, then it poured rain — truly one disaster on top of another."
       },
       {
         "idiom": "急中生智",
         "literal": "trong khẩn cấp sinh trí (jí zhōng shēng zhì)",
         "meaning": "Trong tình huống khẩn nảy ra ý hay — phản ứng sáng suốt khi gấp gáp. Cụm dùng để khen người xử lý khôn ngoan trong khẩn cấp: 'em đã 急中生智 đi báo công an ngay.'",
-        "example": "我急中生智, 立刻打电话给酒店。"
+        "example": "我急中生智, 立刻打电话给酒店。",
+        "literal_en": "in an emergency, wit is born (jí zhōng shēng zhì)",
+        "meaning_en": "A clever idea arises in an emergency — quick clear thinking under pressure; used to praise someone who handled a crisis wisely ('you had the presence of mind to report it to the police at once'). (spoken)",
+        "example_en": "With quick thinking I immediately phoned the hotel."
       },
       {
         "idiom": "化险为夷",
         "literal": "biến nguy thành an (huà xiǎn wéi yí)",
         "meaning": "Biến nguy hiểm thành an toàn — vượt qua khủng hoảng thành công. Cụm dùng để cảm ơn người đã giúp giải quyết tình huống khẩn: 'cảm ơn anh đã giúp em 化险为夷'.",
-        "example": "幸亏您帮忙, 才能化险为夷。"
+        "example": "幸亏您帮忙, 才能化险为夷。",
+        "literal_en": "turn danger into safety (huà xiǎn wéi yí)",
+        "meaning_en": "To turn peril into safety — successfully getting through a crisis; used to thank someone who helped resolve an emergency ('thank you for helping me through the danger'). (spoken/formal)",
+        "example_en": "Thanks to your help, the danger was turned into safety."
       },
       {
         "idiom": "有惊无险",
         "literal": "có sợ nhưng không nguy (yǒu jīng wú xiǎn)",
         "meaning": "Hết hồn nhưng không sao — sự việc kết thúc an toàn dù lúc đầu đáng sợ. Cụm an ủi cuối khi mọi việc đã xong: 'lần này 有惊无险, em rút kinh nghiệm rồi.'",
-        "example": "护照虽然丢了, 但及时补办, 有惊无险。"
+        "example": "护照虽然丢了, 但及时补办, 有惊无险。",
+        "literal_en": "a scare but no harm (yǒu jīng wú xiǎn)",
+        "meaning_en": "Frightened but unharmed — a matter that ended safely though it was scary at first; a comforting phrase once it's all over ('it was a scare but no harm done — I've learned my lesson'). (spoken)",
+        "example_en": "I lost the passport, but with a timely replacement it was a scare and no harm done."
       }
     ],
     "cultural_notes_vi": "Mất hộ chiếu ở Trung Quốc là tình huống có quy trình rõ — không dễ chịu nhưng giải quyết được trong 3-10 ngày. Bốn nguyên tắc cốt lõi: (1) BÁO CÔNG AN TRƯỚC khi đến đại sứ quán. Đại sứ quán Việt Nam YÊU CẦU biên nhận trình báo (报案回执) — không có = không tiếp nhận đơn. Đến 派出所 khu vực bạn mất (không phải khu khác), kể chi tiết, lấy giấy in dấu đỏ. Quá trình 30-60 phút, miễn phí. (2) GỌI ĐẠI SỨ QUÁN trước khi đến — số 010-65325410 (Bắc Kinh) hoặc Tổng lãnh sự quán TP HCM (021-) ở Thượng Hải. Họ sẽ tư vấn ngày giờ đến, giấy tờ cần. KHÔNG đến không hẹn — có thể phải đợi 2-3 giờ. (3) GIẤY TỜ MANG: (a) biên nhận trình báo; (b) bản sao hộ chiếu (chụp trước khi đi từ Việt Nam — bài học vàng); (c) bản số/sao CMND; (d) 2 ảnh thẻ 4x6 nền trắng (chụp tại studio gần đại sứ quán nếu không có); (e) đơn xin (lấy tại đại sứ quán hoặc download trước); (f) tiền mặt hoặc WeChat Pay (1,200 tệ cho giấy thông hành tạm). (4) HAI LOẠI GIẤY: 'hộ chiếu mới' (7-10 ngày, in từ Việt Nam) hoặc 'giấy thông hành tạm thời' (3 ngày, chỉ về Việt Nam, không đi nước khác). Nếu bay về Việt Nam trực tiếp, giấy thông hành tạm là đủ.\n\nVề bảo hiểm du lịch: nếu bạn có bảo hiểm du lịch (Bảo Việt, BSH, MIC), nó CHI TRẢ phí cấp lại hộ chiếu (~1,200 tệ) + chi phí thay đổi vé bay + thêm đêm khách sạn. Liên hệ hotline ngay sau khi báo công an. Yêu cầu mọi biên nhận (trình báo, đại sứ quán, vé bay đổi, khách sạn) — gửi cho bảo hiểm khi về Việt Nam.\n\nVề lần sau khi đi Trung Quốc: chụp ảnh hộ chiếu + visa LƯU CLOUD (Google Drive, iCloud) — không chỉ trong điện thoại. Mất điện thoại = mất luôn ảnh. Email cho bản thân = backup tốt nhất. In giấy 1 bản để trong vali ký gửi (riêng khỏi hộ chiếu chính).\n\nVề việc đi lại trong Trung Quốc khi không có hộ chiếu: KHÔNG bay nội địa được. KHÔNG mua vé tàu cao tốc được. KHÔNG check-in khách sạn được (cần đăng ký với công an). Nếu cần ở thêm, ở khách sạn nhỏ chấp nhận giấy báo công an (一些客栈) — chuẩn bị tiền mặt vì chuyển khoản cũng cần ID.",
@@ -9259,25 +9511,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "一分一毫",
         "literal": "một phân một hào (yī fēn yī háo)",
         "meaning": "Từng đồng từng xu — chính xác đến từng đơn vị nhỏ. Dùng khi cẩn thận tính tiền, không bỏ qua chi tiết phí. 'Em muốn rõ ràng từng đồng từng xu, đừng bị tính nhầm.'",
-        "example": "请把费用算清楚, 一分一毫都要明白。"
+        "example": "请把费用算清楚, 一分一毫都要明白。",
+        "literal_en": "every fen and every hao (yī fēn yī háo)",
+        "meaning_en": "Every cent and every penny — accurate down to the smallest unit; used when carefully checking money, not glossing over a fee detail ('I want it clear to the last cent, no mischarging'). (spoken)",
+        "example_en": "Please work out the fees clearly — every single cent must be accounted for."
       },
       {
         "idiom": "斤斤计较",
         "literal": "tính đếm từng cân (jīn jīn jì jiào)",
         "meaning": "So đo tính toán quá kỹ — thường mang ý hơi tiêu cực. Tránh tự nhận cụm này: 'em không 斤斤计较, chỉ muốn hiểu rõ phí.' Đối phương dùng cụm này về bạn = họ đang phòng thủ.",
-        "example": "我不是斤斤计较, 只是想搞清楚费用结构。"
+        "example": "我不是斤斤计较, 只是想搞清楚费用结构。",
+        "literal_en": "haggle over every catty (jīn jīn jì jiào)",
+        "meaning_en": "To calculate too pettily — usually slightly negative; avoid claiming it of yourself ('I'm not nitpicking, I just want to understand the fee'). If they use it about you, they're being defensive. (spoken)",
+        "example_en": "I'm not nitpicking — I just want to understand the fee structure."
       },
       {
         "idiom": "明明白白",
         "literal": "rõ ràng minh bạch (míng míng bái bái)",
         "meaning": "Rõ ràng minh bạch — yêu cầu thông tin hoàn toàn rõ ràng. 'Em muốn 明明白白biết phí thủ tục bao nhiêu.' Cụm chuẩn khi yêu cầu giải thích kỹ.",
-        "example": "我希望您把规定明明白白地告诉我。"
+        "example": "我希望您把规定明明白白地告诉我。",
+        "literal_en": "perfectly clear and plain (míng míng bái bái)",
+        "meaning_en": "Crystal clear and transparent — a request for fully clear information ('I want it perfectly clear how much the handling fee is'). The standard phrase when asking for a careful explanation. (spoken)",
+        "example_en": "I'd like you to tell me the rule perfectly clearly."
       },
       {
         "idiom": "公事公办",
         "literal": "việc công làm theo công (gōng shì gōng bàn)",
         "meaning": "Việc công xử lý theo quy định công — không thiên vị, không du di. Cán bộ dùng cụm này để giải thích vì sao họ tuân thủ quy định: 'em xin lỗi, nhưng 公事公办, anh phải trả phí'. Tôn trọng — đừng đối đầu.",
-        "example": "不好意思, 公事公办, 我必须按规定收费。"
+        "example": "不好意思, 公事公办, 我必须按规定收费。",
+        "literal_en": "public business handled by the book (gōng shì gōng bàn)",
+        "meaning_en": "Official matters handled by the rules — no favoritism, no leeway; a clerk uses it to explain why they follow the regulation ('sorry, but rules are rules, you must pay the fee'). Respectful — don't push back. (spoken/formal)",
+        "example_en": "Sorry, rules are rules — I must charge the fee as per regulation."
       }
     ],
     "cultural_notes_vi": "Hệ thống đường sắt Trung Quốc (中国铁路 / 12306) là một trong những hệ thống tàu cao tốc lớn nhất và hiệu quả nhất thế giới. Năm điều người Việt cần biết: (1) APP 12306 là chính thức và miễn phí — tải, đăng ký bằng hộ chiếu (KHÔNG cần CMND Trung Quốc nếu là khách nước ngoài). Tất cả thao tác đặt vé/đổi vé/hoàn vé đều có thể qua app, không cần ra quầy. App có tiếng Anh nhưng giới hạn — học cụm tiếng Trung sẽ giúp nhiều. (2) QUY ĐỊNH ĐỔI VÉ (改签 — gǎiqiān): trên 24 giờ trước khởi hành = miễn phí thủ tục; 8-24 giờ = 5% giá vé; <8 giờ và trước khởi hành = 10%; sau khởi hành = không đổi được. Nếu bị cán bộ tính phí sai (như trong dialogue), kiểm tra app và viện dẫn — họ sẽ sửa. (3) HẠNG GHẾ: 商务座 (thương vụ — đắt nhất, ghế ngả 180°), 一等座 (hạng 1, 4 ghế/hàng), 二等座 (hạng 2, 5 ghế/hàng — phổ biến nhất, đủ thoải mái), 无座 (đứng — chỉ cho chuyến ngắn <2 giờ). Du lịch business: hạng 2 đủ; cao cấp đi hạng 1. (4) GA TÀU LỚN: Bắc Kinh có Bắc Kinh Nam (cao tốc đi Thượng Hải), Bắc Kinh Đông (đi Đông Bắc), Bắc Kinh Tây (đi Tây Nam). Thượng Hải có Hồng Kiều (cao tốc, gần sân bay nội địa), Thượng Hải Nam (truyền thống). Quảng Châu có Quảng Châu Nam (cao tốc — KHÔNG nhầm với 'Quảng Châu' truyền thống). Đến NHẦM ga = lỡ tàu. (5) CHECK-IN: vé điện tử dùng hộ chiếu để check-in tại máy tự động. Nếu máy không nhận hộ chiếu nước ngoài, đến quầy '人工窗口' (quầy nhân viên). Đến SỚM 30 phút (an ninh sân bay-style), 1 giờ nếu mua vé hạng 'thương vụ' tại VIP lounge.\n\nVề chậm/hủy chuyến: tàu cao tốc Trung Quốc có tỉ lệ đúng giờ ~95%. Chậm <30 phút = không bồi thường. Chậm >30 phút hoặc hủy = hoàn tiền 100% qua app. KHÔNG cần đến quầy.\n\nVề thanh toán: Alipay/WeChat Pay là chính. Tiền mặt được chấp nhận tại quầy nhưng không phải máy tự động. Visa/Mastercard quốc tế ĐÔI KHI nhận tại quầy (cán bộ phải kiểm tra) — KHÔNG đáng tin. Bài học vàng: kết nối thẻ ngân hàng quốc tế (HSBC, Citibank, Stripe) với Alipay/WeChat trước khi đến Trung Quốc.",
@@ -9655,25 +9919,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "对症下药",
         "literal": "đối chứng hạ thuốc (duì zhèng xià yào)",
         "meaning": "Đúng bệnh kê thuốc — chẩn đoán đúng và điều trị đúng. Cụm khen bác sĩ giỏi: '王医生对症下药, 一吃就好.' Cũng dùng nghĩa rộng (giải pháp đúng cho vấn đề đúng).",
-        "example": "好医生会对症下药, 不会乱开药。"
+        "example": "好医生会对症下药, 不会乱开药。",
+        "literal_en": "match the remedy to the illness (duì zhèng xià yào)",
+        "meaning_en": "Diagnose correctly and treat correctly — praise for a good doctor ('Dr. Wang got the remedy right, one dose and I was better'); also used broadly (the right solution to the right problem). (spoken/formal)",
+        "example_en": "A good doctor matches the remedy to the illness and doesn't prescribe at random."
       },
       {
         "idiom": "病急乱投医",
         "literal": "bệnh gấp loạn tìm thầy (bìng jí luàn tóu yī)",
         "meaning": "Bệnh nặng tìm thầy bừa — quýnh quáng làm điều không suy nghĩ. Cụm cảnh báo: 'em đừng 病急乱投医, hãy đến bệnh viện công uy tín'. Tránh nói về mình — sẽ tự miêu tả là không sáng suốt.",
-        "example": "别病急乱投医, 找正规医院最重要。"
+        "example": "别病急乱投医, 找正规医院最重要。",
+        "literal_en": "when desperately ill, consult any doctor (bìng jí luàn tóu yī)",
+        "meaning_en": "To seek any doctor in a panic — acting rashly without thinking; a cautionary phrase ('don't panic and grab any treatment, go to a reputable public hospital'). Avoid using it about yourself — it self-describes as unwise. (spoken)",
+        "example_en": "Don't panic and grab any doctor — finding a proper hospital is what matters most."
       },
       {
         "idiom": "防患未然",
         "literal": "phòng họa khi chưa xảy ra (fáng huàn wèi rán)",
         "meaning": "Phòng bệnh hơn chữa bệnh — chuẩn bị trước rủi ro. Cụm dùng để giải thích vì sao bạn mua bảo hiểm du lịch trước khi đi: '我提前买了旅游保险, 防患未然'.",
-        "example": "出国前买保险, 防患未然。"
+        "example": "出国前买保险, 防患未然。",
+        "literal_en": "guard against trouble before it happens (fáng huàn wèi rán)",
+        "meaning_en": "Prevention is better than cure — preparing for risk in advance; used to explain why you bought travel insurance before the trip ('I bought travel insurance in advance, just in case'). (spoken/formal)",
+        "example_en": "Buying insurance before going abroad is preventing trouble before it strikes."
       },
       {
         "idiom": "因病施治",
         "literal": "theo bệnh chữa trị (yīn bìng shī zhì)",
         "meaning": "Tùy bệnh mà chữa — điều trị cá nhân hóa. Cụm dùng khi bác sĩ giải thích phác đồ điều trị cho bạn: 'mình 因病施治, không phải kê đại'. Khi bạn nghe bác sĩ nói cụm này = họ đang cẩn thận, tin được.",
-        "example": "我们医院讲究因病施治。"
+        "example": "我们医院讲究因病施治。",
+        "literal_en": "treat according to the illness (yīn bìng shī zhì)",
+        "meaning_en": "Treat in line with the specific illness — individualized treatment; used when a doctor explains the treatment plan to you. Hearing the doctor say it = they are being careful and trustworthy. (spoken/formal)",
+        "example_en": "Our hospital believes in treatment tailored to the illness."
       }
     ],
     "cultural_notes_vi": "Bệnh viện Trung Quốc đại lục có hệ thống ba cấp: 三甲医院 (sān jiǎ — top, đại học, đa khoa) > 二甲医院 (sān èr — tỉnh/thành phố) > 社区医院 (community clinic). Du khách nên đi 三甲 hoặc 二甲, không đi clinic nhỏ. Năm điều người Việt cần biết:\n\n(1) PHÒNG CẤP CỨU (急诊) mở 24/7. Đăng ký bằng hộ chiếu — KHÔNG cần CMND Trung Quốc. Phí đăng ký 10-30 tệ. Phí khám 50-200 tệ tùy bệnh viện. Phí thuốc/xét nghiệm tính riêng. Tổng cho ca thường 150-500 tệ.\n\n(2) THANH TOÁN: chấp nhận tiền mặt, WeChat Pay, Alipay. Visa quốc tế CHỈ ở bệnh viện quốc tế (国际医院 — đắt 3-5x). Bảo hiểm sức khỏe Trung Quốc của người dân = bạn không có. Bảo hiểm du lịch Việt Nam = TRẢ TRƯỚC tại bệnh viện, hoàn lại sau khi về Việt Nam.\n\n(3) GIẤY TỜ CẦN GIỮ cho bảo hiểm: (a) hóa đơn chính quy (正规发票 — có dấu đỏ); (b) đơn thuốc (处方); (c) giấy chẩn đoán (诊断书); (d) báo cáo xét nghiệm (化验单/检查报告). Yêu cầu BẢN GIẤY, không phải PDF — bảo hiểm Việt Nam có thể không nhận PDF.\n\n(4) THUỐC: chia hai loại — 西药 (thuốc Tây, kháng sinh, giảm đau, hạ sốt) và 中药 (thuốc bắc, viên/gói thảo dược). Du khách thường được kê thuốc Tây trừ khi yêu cầu. Bác sĩ Trung Quốc đôi khi kê CẢ HAI cùng lúc — đây là phong cách 'tích hợp', không phải lỗi. Nếu bạn không tin thuốc bắc, lịch sự nói '我只要西药就行' (em chỉ cần thuốc Tây là được).\n\n(5) BỆNH VIỆN QUỐC TẾ TẠI TQ (đại lục): Bắc Kinh — Beijing United Family (北京和睦家); Thượng Hải — Shanghai United Family (上海和睦家); Quảng Châu — Guangzhou United Family. Đắt 3-10x bệnh viện công, nhưng có bác sĩ nói tiếng Anh, không phải xếp hàng, môi trường giống quốc tế. Bảo hiểm du lịch cao cấp (Allianz, AXA) có thể chi trả trực tiếp ở đây không cần chờ. Bảo hiểm Việt Nam thường không.\n\nVề số khẩn cấp: 120 (救护车 — xe cứu thương). Cuộc gọi miễn phí. Tổng đài có người nói tiếng Anh ở thành phố lớn. Mô tả: tên bạn, vị trí (đường + tên cửa hàng/landmark), triệu chứng. Xe đến 10-30 phút tùy giao thông. Phí xe cứu thương 50-300 tệ tùy quãng đường, trả tại bệnh viện.\n\nVề bệnh truyền nhiễm/COVID-style: nếu bạn có triệu chứng hô hấp + sốt cao, một số bệnh viện sẽ đưa vào phòng riêng (发热门诊 — fātrè ménzhěn). Bình tĩnh hợp tác — quy trình tiêu chuẩn. KHÔNG bình luận chính trị về quy trình.",
@@ -10016,25 +10292,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "宾至如归",
         "literal": "khách đến như về nhà (bīn zhì rú guī)",
         "meaning": "Khách cảm thấy như ở nhà — chuẩn mực dịch vụ khách sạn. Cụm khách hàng dùng để gợi nhắc tiêu chuẩn: '我以为住您们酒店会宾至如归, 但...' (em tưởng ở khách sạn bọn anh sẽ như ở nhà, nhưng...). Mở đầu khiếu nại lịch sự.",
-        "example": "酒店的服务理念是宾至如归。"
+        "example": "酒店的服务理念是宾至如归。",
+        "literal_en": "a guest arrives and feels at home (bīn zhì rú guī)",
+        "meaning_en": "A guest feels as if at home — the hotel service standard; a customer uses it to invoke that standard ('I thought staying at your hotel would feel like home, but…'). A polite way to open a complaint. (spoken/formal)",
+        "example_en": "The hotel's service philosophy is to make every guest feel at home."
       },
       {
         "idiom": "将心比心",
         "literal": "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
         "meaning": "Đặt mình vào vị trí khách — đồng cảm. Cụm dùng để xin lễ tân thấu hiểu: '将心比心, 您也想睡好觉吧?' (đặt mình vào vị trí em, anh/chị cũng muốn ngủ ngon chứ?). Tránh đối đầu — chuyển sang đồng cảm.",
-        "example": "将心比心, 我相信您能理解我的感受。"
+        "example": "将心比心, 我相信您能理解我的感受。",
+        "literal_en": "measure another's heart with your own (jiāng xīn bǐ xīn)",
+        "meaning_en": "Put yourself in the guest's shoes — empathy; used to ask the front desk to understand ('put yourself in my place — you'd want a good night's sleep too, wouldn't you?'). Avoid confrontation — switch to empathy. (spoken/formal)",
+        "example_en": "Put yourself in my position — I'm sure you can understand how I feel."
       },
       {
         "idiom": "息事宁人",
         "literal": "dập việc làm yên người (xī shì níng rén)",
         "meaning": "Dập tắt vấn đề để mọi người yên ổn — giải quyết khiếu nại nhanh chóng. Cụm dùng để gợi ý lễ tân giải quyết nhanh: 'mình 息事宁人, đừng để cao trào'.",
-        "example": "我希望我们能息事宁人, 把问题解决了。"
+        "example": "我希望我们能息事宁人, 把问题解决了。",
+        "literal_en": "settle the matter and calm people (xī shì níng rén)",
+        "meaning_en": "Defuse the issue so everyone is at peace — resolve a complaint quickly; used to nudge the front desk to settle it fast ('let's settle this, don't let it escalate'). (spoken/formal)",
+        "example_en": "I hope we can put this to rest and get the problem solved."
       },
       {
         "idiom": "妥善处理",
         "literal": "thỏa đáng xử lý (tuǒ shàn chǔ lǐ)",
         "meaning": "Xử lý chu đáo, hợp lý — yêu cầu nhân viên giải quyết đầy đủ. Cụm formal dùng khi yêu cầu manager xử lý: '请您妥善处理这件事'. Tăng tính nghiêm túc của yêu cầu.",
-        "example": "希望您能妥善处理我的投诉。"
+        "example": "希望您能妥善处理我的投诉。",
+        "literal_en": "handle it properly and well (tuǒ shàn chǔ lǐ)",
+        "meaning_en": "To handle thoughtfully and reasonably — asking staff to resolve fully; a formal phrase when asking a manager to deal with it ('please handle this matter properly'). Raises the seriousness of the request. (written/formal)",
+        "example_en": "I hope you can handle my complaint properly."
       }
     ],
     "cultural_notes_vi": "Khiếu nại khách sạn ở Trung Quốc đại lục có khung văn hóa và pháp lý khác Việt Nam: (1) NHÂN VIÊN LỄ TÂN có thẩm quyền giải quyết phần lớn vấn đề — đổi phòng, nâng hạng miễn phí, giảm 1-2 đêm tiền phòng. KHÔNG cần gọi manager cho việc nhỏ. Manager chỉ cần khi: yêu cầu hoàn toàn bộ tiền, từ chối thanh toán cuối kỳ, sự cố nghiêm trọng (cháy, mất trộm, xâm phạm). (2) SỰ THỰC TIỄN > SỰ XIN LỖI: khác phương Tây (nơi 'I'm sorry' đủ để xoa dịu), khách sạn Trung Quốc giải quyết bằng HÀNH ĐỘNG (đổi phòng, hoàn tiền, quà). Đừng đòi xin lỗi long-winded — đòi giải pháp cụ thể. (3) BẰNG CHỨNG: chụp ảnh/quay video vấn đề (điều hòa không chạy, vết bẩn, hư hỏng) NGAY khi phát hiện. Gửi cho lễ tân qua WeChat — họ sẽ chuyển sếp xử lý nhanh hơn. KHÔNG đăng ngay lên Weibo/Trip.com — giữ làm leverage. (4) TIÊU CHUẨN BỒI THƯỜNG ngầm hiểu (không có luật cứng): vấn đề nhỏ (thiếu khăn, đèn cháy) = sửa trong 30 phút, không bồi thường; vấn đề trung bình (nước nóng, wifi) = đổi phòng + giảm 1 đêm; vấn đề nặng (sức khỏe, an toàn, thuốc lá nặng) = đổi phòng + giảm 50-100% tổng kỳ ở. Tự hỏi 'mức bồi thường hợp lý' trước khi yêu cầu — đừng đòi quá. (5) HỆ THỐNG REVIEW: Trung Quốc dùng Ctrip (携程), Trip.com (international), Meituan (美团 — local). Người dân + khách quốc tế đọc nhiều. Khách sạn lo review xấu lan ra > lo nhân viên 1 ngày. Đe dọa review xấu = vũ khí mạnh nhưng KHÔNG nên dùng đầu tiên — chỉ khi đã yêu cầu hợp lý mà bị từ chối.\n\nVề ăn cắp/mất đồ: nếu nghi nhân viên dọn dẹp lấy đồ, KHÔNG buộc tội trực tiếp. Báo lễ tân: 'tôi không tìm thấy X, có thể trong quá trình dọn phòng đã bị di chuyển?' (我找不到X, 是否在打扫时移动了?). Khách sạn sẽ kiểm tra camera + hỏi nhân viên. Nếu tìm được, OK. Nếu không, có thể yêu cầu xem báo cáo + làm bản kiểm điểm. Mất đồ giá trị (>500 USD) = báo công an + đại sứ quán.\n\nVề tiền cọc (押金 — yājīn): khách sạn Trung Quốc thường thu cọc 200-500 tệ tiền mặt hoặc giữ trên thẻ khi check-in. Hoàn lại trừ phí khi check-out (kiểm tra phòng 5-10 phút). Đừng quên đòi lại — nhân viên đôi khi 'quên'.",
@@ -10405,25 +10693,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "失而复得",
         "literal": "mất rồi tìm lại được (shī ér fù dé)",
         "meaning": "Mất rồi tìm lại — vui mừng vì lấy lại được vật. Cụm dùng khi vali về sau 1-2 ngày: '行李失而复得, 太好了!'. Tăng tính cảm xúc trong câu cảm ơn.",
-        "example": "我的行李失而复得, 真是万幸。"
+        "example": "我的行李失而复得, 真是万幸。",
+        "literal_en": "lost and then recovered (shī ér fù dé)",
+        "meaning_en": "Lost and then found again — joy at getting an item back; used when the suitcase returns after a day or two ('the luggage is back, wonderful!'). Adds feeling to a thank-you. (spoken)",
+        "example_en": "My luggage was lost and then recovered — how truly fortunate."
       },
       {
         "idiom": "万无一失",
         "literal": "vạn vô một thất (wàn wú yī shī)",
         "meaning": "Hoàn toàn chắc chắn không có sai sót. Cụm dùng để yêu cầu hệ thống cẩn thận: '请您万无一失地处理我的行李, 别再丢了'. Cũng dùng để cam kết khi đã sửa lỗi.",
-        "example": "下次我会万无一失, 不会再让行李丢了。"
+        "example": "下次我会万无一失, 不会再让行李丢了。",
+        "literal_en": "not one in ten thousand goes wrong (wàn wú yī shī)",
+        "meaning_en": "Absolutely certain, no error possible; used to ask a system to be careful ('please handle my luggage flawlessly, don't lose it again'); also used to pledge after fixing a mistake. (spoken/formal)",
+        "example_en": "Next time I'll leave nothing to chance — I won't let the luggage be lost again."
       },
       {
         "idiom": "亡羊补牢",
         "literal": "mất dê sửa chuồng (wáng yáng bǔ láo)",
         "meaning": "Mất dê rồi mới sửa chuồng — sửa sai sau khi đã sai, vẫn còn kịp. Cụm dùng để giải thích vì sao bạn mua bảo hiểm sau khi từng bị mất hành lý: 'tuy 亡羊补牢, nhưng vẫn còn kịp'.",
-        "example": "我从那次以后买了行李保险, 算是亡羊补牢。"
+        "example": "我从那次以后买了行李保险, 算是亡羊补牢。",
+        "literal_en": "mend the fold after the sheep is lost (wáng yáng bǔ láo)",
+        "meaning_en": "Fix the pen after losing the sheep — correcting a fault after the fact, still not too late; used to explain why you bought insurance after once losing luggage ('better late than never'). (spoken)",
+        "example_en": "Since that time I bought luggage insurance — better late than never."
       },
       {
         "idiom": "心急如焚",
         "literal": "lòng nóng như đốt (xīn jí rú fén)",
         "meaning": "Lòng nóng như cháy — quá lo lắng, sốt ruột. Cụm cảm xúc dùng để mô tả cảm giác chờ hành lý: '我现在心急如焚, 行李里有重要文件'. Tăng độ khẩn của yêu cầu mà không la mắng.",
-        "example": "行李里有重要资料, 我心急如焚。"
+        "example": "行李里有重要资料, 我心急如焚。",
+        "literal_en": "heart anxious as if burning (xīn jí rú fén)",
+        "meaning_en": "The heart aflame with worry — extremely anxious, on tenterhooks; an emotional phrase to describe waiting for luggage ('I'm worried sick — there are important documents in there'). Raises urgency without scolding. (spoken)",
+        "example_en": "There are important documents in the luggage — I'm worried sick."
       }
     ],
     "cultural_notes_vi": "Mất hành lý là tình huống phổ biến với chuyến bay quốc tế có transit (transfer). Năm điều người Việt cần biết khi bay Trung Quốc:\n\n(1) HÃNG BAY TRUNG QUỐC: Air China (国航 — CA), China Eastern (东航 — MU), China Southern (南航 — CZ), Hainan Airlines (海航 — HU). Tất cả đều có bộ phận hành lý mất 24/7 tại sân bay lớn. Tỉ lệ mất hành lý: 0.5-1% chuyến quốc tế (trung bình toàn cầu). Phần lớn tìm được trong 24-48 giờ.\n\n(2) NGUYÊN NHÂN PHỔ BIẾN: (a) Transit time quá ngắn (<60 phút) — vali không kịp chuyển; (b) Tag bị rách/dán không đúng tại điểm xuất phát; (c) Sót tại băng chuyền — quá đông, nhân viên không kịp xếp; (d) Nhầm với hành lý khác — ai đó lấy nhầm vali tương tự. CHỤP ẢNH VALI trước khi check-in = bằng chứng nhận diện tốt nhất.\n\n(3) BÁO NGAY TẠI SÂN BAY, không đi về. Quầy 'Lost & Found' (失物招领) hoặc 'Baggage Service' (行李服务) — tìm trên bản đồ sân bay. Giấy báo mất (Property Irregularity Report — PIR) PHẢI làm tại sân bay. Sau khi rời = không thể claim.\n\n(4) BỒI THƯỜNG: theo công ước Montreal (Trung Quốc tham gia): tối đa 1,131 SDR (~$1,500 USD) cho cả vali + đồ bên trong. Hãng bay sẽ yêu cầu hóa đơn/biên nhận để chứng minh giá trị — KHÔNG có hóa đơn = đền theo trọng lượng ($20/kg). Đồ giá trị (laptop, đồ trang sức) — KHÔNG ký gửi, mang xách tay. Nếu đã ký gửi = không được đền đầy đủ.\n\n(5) BẢO HIỂM DU LỊCH thường đền nhiều hơn hãng bay: cho phép kê cả vali + đồ + thiệt hại tinh thần (gọi 'inconvenience compensation'). Sau khi báo PIR tại sân bay, gửi mọi giấy tờ + biên nhận sang công ty bảo hiểm. Bảo Việt, Bảo Minh, MIC, BSH thường đền 5-15 triệu VND cho ca lost luggage.\n\nVề việc 'tip' để được ưu tiên: KHÔNG ở Trung Quốc đại lục. Hệ thống có quy trình + camera giám sát. Tip = phản tác dụng, có thể bị báo cáo. Ở Đông Nam Á (Việt Nam, Thái Lan, Indonesia) có thể tip để xử lý nhanh, nhưng KHÔNG ở Trung Quốc.\n\nVề ngôn ngữ: nhân viên hãng bay Trung Quốc tại sân bay quốc tế thường nói tiếng Anh cơ bản. Nếu bạn không thành thạo tiếng Trung, dùng tiếng Anh — họ chấp nhận. Cụm cứu nguy: 'My luggage didn't arrive, I want to file a report' / 'I need a delayed baggage report'.\n\nVề thời gian: đa số vali bị sót transit về trong 24 giờ qua chuyến tiếp theo. 1-3 ngày = có thể nhân viên đang tìm trong hệ thống. >5 ngày = cần follow up gắt và có khả năng mất luôn. Sau 21 ngày không tìm được = tuyên bố 'hành lý mất' (lost luggage), bắt đầu quá trình bồi thường.",
@@ -10822,25 +11122,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "防不胜防",
         "literal": "phòng không kịp phòng (fáng bù shèng fáng)",
         "meaning": "Phòng không xuể — kẻ xấu khôn ngoan, dù cẩn thận cũng có thể bị. Cụm dùng để miêu tả tình huống bị móc túi tinh vi: '我已经很小心了, 但小偷防不胜防'.",
-        "example": "我已经很小心了, 但小偷防不胜防。"
+        "example": "我已经很小心了, 但小偷防不胜防。",
+        "literal_en": "impossible to fully guard against (fáng bù shèng fáng)",
+        "meaning_en": "No amount of guarding is enough — thieves are clever, even the careful can be caught; used to describe a slick pickpocketing ('I was very careful, but pickpockets are impossible to fully guard against'). (spoken)",
+        "example_en": "I was very careful, but you simply can't guard against every pickpocket."
       },
       {
         "idiom": "小心驶得万年船",
         "literal": "cẩn thận lái thuyền vạn năm (xiǎo xīn shǐ de wàn nián chuán)",
         "meaning": "Cẩn thận thì tàu chạy được vạn năm — cẩn thận là biện pháp tốt nhất. Cụm khuyên cẩn thận trong tương lai: 'sau lần này, em sẽ 小心驶得万年船'.",
-        "example": "出门在外, 小心驶得万年船。"
+        "example": "出门在外, 小心驶得万年船。",
+        "literal_en": "caution sails a ten-thousand-year ship (xiǎo xīn shǐ de wàn nián chuán)",
+        "meaning_en": "Caution keeps the ship afloat for ten thousand years — care is the best safeguard; advice to be careful in future ('after this, I'll be extra careful'). (spoken)",
+        "example_en": "Away from home, caution keeps you safe."
       },
       {
         "idiom": "破财消灾",
         "literal": "phá của tan họa (pò cái xiāo zāi)",
         "meaning": "Mất tiền tránh được tai họa — an ủi người vừa mất tiền. Cụm cán bộ/người dân dùng để xoa dịu: 'mất tiền chứ không bị thương, 破财消灾, được rồi'. Tránh tự dùng — sẽ bị coi là tự an ủi giả.",
-        "example": "幸好只丢了钱包, 没受伤, 破财消灾。"
+        "example": "幸好只丢了钱包, 没受伤, 破财消灾。",
+        "literal_en": "lose money, ward off disaster (pò cái xiāo zāi)",
+        "meaning_en": "Losing money wards off calamity — comfort for someone who just lost money; used by an officer or others to soothe ('you lost money but weren't hurt — loss of wealth wards off disaster, it's fine'). Avoid using it of yourself — it reads as false self-comfort. (spoken)",
+        "example_en": "Lucky I only lost the wallet and wasn't hurt — money lost is disaster averted."
       },
       {
         "idiom": "失而复得",
         "literal": "mất rồi tìm được (shī ér fù dé)",
         "meaning": "Mất rồi tìm lại — vui mừng vì lấy lại được vật. Cụm dùng khi công an báo tìm được ví: '钱包失而复得, 太感谢了!'.",
-        "example": "钱包失而复得, 太感谢警察了。"
+        "example": "钱包失而复得, 太感谢警察了。",
+        "literal_en": "lost and then recovered (shī ér fù dé)",
+        "meaning_en": "Lost and then found again — joy at getting an item back; used when the police report the wallet is found ('the wallet is back, thank you so much!'). (spoken)",
+        "example_en": "The wallet was lost and recovered — I'm so grateful to the police."
       }
     ],
     "cultural_notes_vi": "派出所 (pàichūsuǒ) là đồn công an khu vực (cơ sở) — đơn vị nhỏ nhất trong hệ thống công an Trung Quốc. Mỗi quận/phường có 1-2 派出所. Đây là nơi xử lý: báo mất đồ, đăng ký tạm trú, làm hộ khẩu, hòa giải tranh chấp dân sự nhỏ. KHÔNG phải nơi xử lý hình sự nặng (việc đó của 公安局 — gōng'ānjú, cấp quận).\n\nBốn điều người Việt cần biết khi đến 派出所:\n\n(1) TÌM 派出所 GẦN NHẤT: Baidu Maps gõ '派出所' hoặc hỏi nhân viên khách sạn/lễ tân. Mở 24/7. Vào cửa, nói '我要报案' (em muốn trình báo). Nhân viên hướng dẫn quầy + lấy số.\n\n(2) GIẤY TỜ MANG: hộ chiếu (BẮT BUỘC), bản sao hộ chiếu (tốt), số visa, địa chỉ khách sạn. Nếu mất hộ chiếu, mang biên nhận của khách sạn (酒店登记单) — họ có copy hộ chiếu của bạn.\n\n(3) THỜI GIAN xử lý: báo mất ví/điện thoại = 30-60 phút từ khi vào đồn. Mất hộ chiếu = 1-2 giờ (cần thêm thông tin). Đông người vào cuối tuần — đến giờ làm việc thường (10-16h thứ 2-thứ 6) là nhanh nhất.\n\n(4) BIÊN NHẬN (报案回执 — bào'àn huízhí): bản giấy in dấu đỏ, có mã hồ sơ + thời gian + nội dung + tên cán bộ + số ĐT đồn. Quan trọng cho: bảo hiểm du lịch (claim), đại sứ quán (làm hộ chiếu mới nếu hộ chiếu mất), thẻ tín dụng (chứng minh không phải bạn dùng).\n\nVề ngôn ngữ tại đồn: cán bộ công an Trung Quốc đại lục PHẦN LỚN không nói tiếng Anh. Nếu bạn không thành thạo tiếng Trung: (a) gọi cán bộ tiếng Việt của đại sứ quán Việt Nam (010-65325410) để dịch qua điện thoại; (b) dùng app Google Translate offline (online thường không có VPN ở đại lục); (c) gọi trợ lý tiếng Trung từ khách sạn hoặc bạn Trung Quốc.\n\nVề tâm lý: KHÔNG sợ. Cán bộ công an phục vụ khách du lịch = công việc thường ngày của họ. Họ không có thẩm quyền/lý do gây khó cho bạn. Quy trình chuẩn, mất 30-60 phút, ra về với biên nhận. Đừng để câu chuyện 'cảnh sát Trung Quốc đáng sợ' từ phim ảnh ảnh hưởng — đó là hư cấu, không phải thực tế tại 派出所.\n\nVề tip/tiền: KHÔNG đưa tiền cho cán bộ công an. Đây là phạm pháp cả hai phía. Cảm ơn bằng lời + cúi đầu nhẹ + ra về là đủ.\n\nVề camera giám sát: CCTV phổ biến tại đồn. Đừng quay phim cán bộ — vi phạm quy định. Bạn có thể yêu cầu xem camera khu vực bị mất đồ (王府井 có CCTV mọi phố) — cán bộ sẽ giúp tra nếu mất đồ giá trị cao.\n\nVề mối liên hệ với bảo hiểm Việt Nam: Bảo Việt, Bảo Minh, MIC, BSH chấp nhận biên nhận từ 派出所 Trung Quốc. KHÔNG cần dịch tiếng Việt. Khi nộp về Việt Nam, kèm: (a) biên nhận gốc; (b) ảnh chụp biên nhận; (c) bản sao hộ chiếu; (d) chi tiết thiệt hại + chứng từ (nếu có hóa đơn mua đồ).",
@@ -11218,25 +11530,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "明察秋毫",
         "literal": "minh sát thu hào (míng chá qiū háo)",
         "meaning": "Quan sát rõ từng sợi lông mùa thu — quan sát tinh tường, nhận xét chính xác. Cụm khen người chỉ đường giỏi, biết landmark cụ thể: 'cô ấy 明察秋毫, chỉ đường rất chi tiết'.",
-        "example": "这位大爷明察秋毫, 把路线说得清清楚楚。"
+        "example": "这位大爷明察秋毫, 把路线说得清清楚楚。",
+        "literal_en": "discern the autumn hair-tip (míng chá qiū háo)",
+        "meaning_en": "To observe as finely as an autumn down-hair — sharp observation, precise judgment; praise for someone who gives directions well, knowing specific landmarks ('she was sharp-eyed, gave very detailed directions'). (spoken)",
+        "example_en": "This old gentleman didn't miss a detail — he laid out the route crystal clear."
       },
       {
         "idiom": "迷路",
         "literal": "mê lộ (mí lù)",
         "meaning": "Lạc đường — khái niệm cơ bản. KHÔNG phải idiom 4 chữ nhưng cần biết. Dùng: '我迷路了, 请问...'.",
-        "example": "我迷路了, 请问最近的地铁站在哪?"
+        "example": "我迷路了, 请问最近的地铁站在哪?",
+        "literal_en": "to lose the way (mí lù)",
+        "meaning_en": "To get lost — a basic notion. NOT a four-character idiom but worth knowing; used as '我迷路了, 请问…' ('I'm lost, may I ask…'). (spoken)",
+        "example_en": "I'm lost — may I ask where the nearest subway station is?"
       },
       {
         "idiom": "条条大路通罗马",
         "literal": "muôn đường đến La Mã (tiáo tiáo dà lù tōng Luó Mǎ)",
         "meaning": "Mọi con đường đều đến La Mã — nhiều cách đến cùng đích. Cụm dùng để nói có nhiều phương án di chuyển: 'đến chỗ đó có 3 cách, 条条大路通罗马'. Đùa nhẹ với người chỉ đường thân thiện.",
-        "example": "去王府井有好多路, 条条大路通罗马。"
+        "example": "去王府井有好多路, 条条大路通罗马。",
+        "literal_en": "all roads lead to Rome (tiáo tiáo dà lù tōng Luó Mǎ)",
+        "meaning_en": "Every road leads to Rome — many ways to the same destination; used to say there are several travel options ('there are 3 ways to get there — all roads lead to Rome'). A light joke with a friendly direction-giver. (spoken)",
+        "example_en": "There are lots of ways to Wangfujing — all roads lead to Rome."
       },
       {
         "idiom": "举手之劳",
         "literal": "việc của một cánh tay (jǔ shǒu zhī láo)",
         "meaning": "Việc rất nhỏ — không đáng cảm ơn. Cụm người chỉ đường dùng để khiêm tốn từ chối lời cảm ơn của bạn: '没什么, 举手之劳'. Đáp lại '太谢谢您了' của bạn.",
-        "example": "不用谢, 举手之劳而已。"
+        "example": "不用谢, 举手之劳而已。",
+        "literal_en": "the effort of lifting a hand (jǔ shǒu zhī láo)",
+        "meaning_en": "A trivial effort — not worth thanking for; a direction-giver uses it to modestly wave off your thanks ('it's nothing, just a small thing'). A reply to your '太谢谢您了'. (spoken)",
+        "example_en": "No need to thank me — it was nothing at all."
       }
     ],
     "cultural_notes_vi": "Hỏi đường ở Trung Quốc là một trong những hành động thân thiện nhất. Người Trung Quốc thường rất nhiệt tình giúp đỡ người lạ — nhiều khi họ dẫn bạn đến tận nơi thay vì chỉ giải thích.\n\nNăm điều người Việt cần biết:\n\n(1) NGƯỜI HÀ NỘI/HỒ CHÍ MINH có thể quen chỉ đường ngắn gọn ('đi thẳng, rẽ phải, đến nhà cao'). Người Trung Quốc thường chỉ CHI TIẾT HƠN — kèm landmark, số mét, thời gian. Đừng cảm thấy bị 'over-helped' — đó là phong cách thân thiện chuẩn.\n\n(2) CHỌN NGƯỜI HỎI: bảo vệ tòa nhà (保安) > nhân viên cửa hàng (店员) > người trung niên đi bộ > người trẻ với điện thoại > tài xế xe đạp/xe máy đang chạy. Tránh: người mặc đồng phục công an (họ bận, có quy trình) trừ khi thực sự cần.\n\n(3) NGÔN NGỮ: nếu ở thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến, Hàng Châu), người trẻ nói tiếng Anh cơ bản. Người trung niên + ở thành phố nhỏ = chỉ tiếng Trung. Học 10 cụm cứng + dùng Baidu Maps để showing tên địa điểm bằng hanzi.\n\n(4) APP BẢN ĐỒ: tại đại lục, Google Maps bị BLOCK. Baidu Maps (百度地图) và Gaode Maps (高德地图) là hai app chính. TẢI TRƯỚC khi đến Trung Quốc — App Store ở đại lục có thể không cho download Google products. Cài tiếng Anh ở Settings để dễ dùng.\n\n(5) TÊN ĐỊA ĐIỂM bằng PINYIN có thể không được hiểu rõ. Ví dụ: 'Wangfujing' nói chậm có thể được hiểu, nhưng 'Tiananmen' phát âm sai (không có '天安门') = người Trung không nhận ra. Tốt nhất: dùng app translate cho đối phương xem hanzi, hoặc thuộc tone marks chính xác.\n\nVề an toàn: Trung Quốc đại lục thành phố lớn AN TOÀN cho khách du lịch. CCTV phổ biến, đường lớn đèn sáng. Đi bộ ban đêm (đến 23h) ở Bắc Kinh/Thượng Hải = OK. Sau 1h sáng, đi taxi/DiDi an toàn hơn.\n\nVề con số đường: 米 (mét) là đơn vị chính. 'Một nửa cây số' = '500米', không '0.5公里'. Chỉ đường: '一直走' (đi thẳng), '往北/南/东/西' (về Bắc/Nam/Đông/Tây — người TQ rất giỏi định hướng theo phương) hoặc '往那边走' kèm tay chỉ.\n\nVề help-and-receive: nếu ai đó dẫn bạn 5-10 phút đến tận nơi, đề nghị tip nhỏ (10-20 tệ) cho 'time'. Họ sẽ thường từ chối — chấp nhận 1-2 lần từ chối là chân thành. Nếu họ thực sự lấy = giúp họ tiền cà phê. Nếu họ thực sự từ chối = cảm ơn lớn + ghi nhớ. Người Trung Quốc đại lục KHÔNG có văn hóa tip mạnh như phương Tây.",
@@ -11614,25 +11938,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "实事求是",
         "literal": "thực sự cầu thị (shí shì qiú shì)",
         "meaning": "Sự việc đúng như sự việc — báo cáo chân thực, không phóng đại. Cụm dùng để giải thích vì sao bạn báo lỗi cụ thể: 'em 实事求是, không tính nhầm phí.'",
-        "example": "我实事求是地告诉您, 这道菜真的不是我点的。"
+        "example": "我实事求是地告诉您, 这道菜真的不是我点的。",
+        "literal_en": "seek truth from facts (shí shì qiú shì)",
+        "meaning_en": "Things as they truly are — report honestly, no exaggeration; used to explain why you point out the specific error ('I'm being factual — I didn't miscount the fee'). (spoken/formal)",
+        "example_en": "I'm telling you factually — this dish really isn't what I ordered."
       },
       {
         "idiom": "明明白白",
         "literal": "rõ ràng minh bạch (míng míng bái bái)",
         "meaning": "Rõ ràng, minh bạch — yêu cầu thông tin đầy đủ. 'Em muốn 明明白白biết hóa đơn tính sao.' Cụm chuẩn khi yêu cầu kiểm tra hóa đơn.",
-        "example": "我希望您把账单算得明明白白。"
+        "example": "我希望您把账单算得明明白白。",
+        "literal_en": "perfectly clear and plain (míng míng bái bái)",
+        "meaning_en": "Clear and transparent — a request for full information ('I want it perfectly clear how the bill was calculated'). The standard phrase when asking to check a bill. (spoken)",
+        "example_en": "I'd like you to itemize the bill perfectly clearly."
       },
       {
         "idiom": "得理饶人",
         "literal": "được lý nhường người (dé lǐ ráo rén)",
         "meaning": "Có lý vẫn nhường người — không lợi dụng khi đối phương sai. Phẩm chất quân tử: dù bạn đúng (nhà hàng sai), không leo thang, vẫn lịch sự. Đối lập với 'kicking when down'.",
-        "example": "他们错了, 但我得理饶人, 不会闹大。"
+        "example": "他们错了, 但我得理饶人, 不会闹大。",
+        "literal_en": "having the right, still spare others (dé lǐ ráo rén)",
+        "meaning_en": "To be in the right yet still be lenient — not exploiting the other side's error; a gentleman's quality: even when you're right (the restaurant erred), you don't escalate, you stay polite. The opposite of kicking someone when they're down. (spoken/formal)",
+        "example_en": "They were in the wrong, but being right I let it go — I won't make a scene."
       },
       {
         "idiom": "皆大欢喜",
         "literal": "đều cùng vui (jiē dà huān xǐ)",
         "meaning": "Mọi người đều vui — kết quả khiến mọi bên hài lòng. Cụm dùng khi vấn đề được giải quyết: 'họ đổi món, hoàn tiền, 皆大欢喜'. Tích cực để kết thúc khiếu nại.",
-        "example": "服务员处理得很好, 皆大欢喜。"
+        "example": "服务员处理得很好, 皆大欢喜。",
+        "literal_en": "everyone is delighted (jiē dà huān xǐ)",
+        "meaning_en": "Everyone is happy — an outcome satisfying to all parties; used when the issue is resolved ('they swapped the dish and refunded — everyone's happy'). A positive way to close a complaint. (spoken)",
+        "example_en": "The server handled it well — everyone went away happy."
       }
     ],
     "cultural_notes_vi": "Văn hóa nhà hàng Trung Quốc đại lục có những đặc thù mà người Việt nên biết:\n\n(1) GỌI MÓN: phục vụ thường đứng tại bàn chờ. Bạn xem menu, gọi tên/số món rõ ràng (vì âm thanh nhà hàng ồn). Nếu không chắc tên, chỉ vào ảnh menu. Số người = số món + 1 (rule of thumb). Quá nhiều = lãng phí + đắt; quá ít = không đủ ăn.\n\n(2) ĐỒ ĂN GIA ĐÌNH: khác phương Tây (mỗi người 1 đĩa), Trung Quốc dùng đĩa chung — cả bàn chia sẻ. Lazy Susan (转盘 — zhuànpán) ở giữa bàn tròn. Xoay theo chiều kim đồng hồ. Người ăn lấy bằng đũa của mình từ đĩa chung — KHÔNG dùng đũa cá nhân chấm vào nước chấm chung (dùng 公筷 — đũa công cộng).\n\n(3) MENU: thường có ảnh + giá + tên hanzi + (đôi khi) tiếng Anh dịch. Nhà hàng cao cấp có menu tiếng Anh. Nhà hàng địa phương = chỉ tiếng Trung. Dùng app dịch để xem nguyên liệu (đặc biệt nếu bạn dị ứng).\n\n(4) PHÍ DỊCH VỤ (服务费): 10-15% là chuẩn ở nhà hàng formal/khách sạn. Nhà hàng địa phương thường KHÔNG có phí dịch vụ. Hóa đơn ghi rõ 'service charge X%'. Đây không phải tip — phục vụ vẫn nhận lương, không trông chờ thêm.\n\n(5) THANH TOÁN: WeChat Pay/Alipay là chính (95% nhà hàng nhận). Tiền mặt OK. Visa/Mastercard CHỈ ở chuỗi quốc tế (Hilton, Marriott) hoặc nhà hàng cao cấp (>500 tệ/người). Không nên dựa vào credit card.\n\n(6) HÓA ĐƠN HỢP LỆ (发票 — fāpiào): hóa đơn có dấu đỏ + mã số thuế. Yêu cầu '我要发票' khi cần báo cáo phí công tác. Có thể request 1 ngày sau qua WeChat của nhà hàng.\n\nVề lỗi: nhà hàng Trung Quốc THƯỜNG XUYÊN có lỗi nhỏ (sai món, tính nhầm) vì hệ thống thủ công + giấy tờ tay tại quầy. KHÔNG phải lừa đảo — chỉ là sơ suất. Bình tĩnh chỉ ra, họ sẽ sửa nhanh. Nếu họ từ chối sửa lỗi rõ ràng = vấn đề lớn hơn (gọi 12315 — hotline bảo vệ người tiêu dùng).\n\nVề review: Dianping (大众点评) là Yelp Trung Quốc — review nhiều người đọc. Nhà hàng cực sợ rating <3.5 sao. Đây là leverage MẠNH cho khiếu nại lớn — nhưng chỉ dùng khi đã yêu cầu nhiều lần không sửa.\n\nVề người Việt và món Trung: Trung Quốc có nhiều món rất CAY (Tứ Xuyên 四川, Hồ Nam 湖南) hoặc rất NỒNG (Sơn Đông 山东). Nhiều người Việt không quen — báo trước với phục vụ '不要太辣' (đừng cay quá) hoặc '少油' (ít dầu). Họ sẽ điều chỉnh.\n\nVề kiêng kỵ thực phẩm: nếu Hồi giáo/Halal — tìm nhà hàng có biển '清真' (Halal). Nếu chay — '素食' (chay) hoặc '我吃素' (em ăn chay). Người Việt nói 'ăn chay' = vegetarian; người Trung phân '全素' (vegan, không trứng/sữa) và '蛋奶素' (lacto-ovo). Hỏi rõ.",
@@ -11996,25 +12332,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "无奸不商",
         "literal": "không gian không thương (wú jiān bù shāng)",
         "meaning": "Người buôn không gian thì không kiếm được — câu đùa cũ ngầm chỉ thương nhân hay láu cá. Người Trung Quốc dùng để cảnh báo: '坐出租车要小心, 无奸不商'. Dùng cảnh giác, không phải tự miêu tả.",
-        "example": "出租车师傅有时候无奸不商, 我们要小心。"
+        "example": "出租车师傅有时候无奸不商, 我们要小心。",
+        "literal_en": "no cunning, no merchant (wú jiān bù shāng)",
+        "meaning_en": "A merchant who isn't crafty makes no money — an old joking remark implying traders can be sly; used as a warning ('be careful in taxis — merchants can be cunning'). Used to stay alert, not to describe yourself. (spoken)",
+        "example_en": "Taxi drivers can sometimes be a bit crafty — we have to be careful."
       },
       {
         "idiom": "条理清楚",
         "literal": "có thứ tự rõ ràng (tiáo lǐ qīng chu)",
         "meaning": "Có logic rõ ràng — yêu cầu trình bày có thứ tự. Cụm dùng khi tranh chấp: 'em sẽ nói 条理清楚 lý do'. Tránh nói cảm xúc lung tung.",
-        "example": "您条理清楚地说出您的理由。"
+        "example": "您条理清楚地说出您的理由。",
+        "literal_en": "clear and well-ordered (tiáo lǐ qīng chu)",
+        "meaning_en": "Clearly logical — a request to present in order; used in a dispute ('I'll state the reason in an orderly way'). Avoid rambling emotionally. (spoken)",
+        "example_en": "State your reasons clearly and in order."
       },
       {
         "idiom": "据理力争",
         "literal": "dựa lý tranh giành (jù lǐ lì zhēng)",
         "meaning": "Dựa vào lý lẽ tranh đấu — đứng vững trên lập trường có lý. Cụm tích cực, dùng khi bạn đứng đúng nhưng nhẹ nhàng: 'em 据理力争, không phải gây gổ'.",
-        "example": "我据理力争, 不付额外的钱。"
+        "example": "我据理力争, 不付额外的钱。",
+        "literal_en": "argue firmly on the merits (jù lǐ lì zhēng)",
+        "meaning_en": "To stand firm on a reasoned position — holding your ground on a valid point; positive, used when you're in the right but stay measured ('I'm arguing on the merits, not picking a fight'). (spoken)",
+        "example_en": "I'll stand firm on the facts — I won't pay the extra money."
       },
       {
         "idiom": "得不偿失",
         "literal": "được không bù mất (dé bù cháng shī)",
         "meaning": "Lợi ích không bù được mất mát — không đáng. Cụm dùng để phân tích: 'cãi nhau với tài xế 5 tệ là 得不偿失'. Cảnh báo bản thân khi muốn leo thang vì việc nhỏ.",
-        "example": "为五块钱跟司机大吵, 得不偿失。"
+        "example": "为五块钱跟司机大吵, 得不偿失。",
+        "literal_en": "the gain doesn't offset the loss (dé bù cháng shī)",
+        "meaning_en": "The benefit doesn't make up for the loss — not worth it; used to analyze ('arguing with the driver over 5 yuan isn't worth it'). A reminder to yourself not to escalate over something small. (spoken)",
+        "example_en": "Having a big row with the driver over five yuan isn't worth it."
       }
     ],
     "cultural_notes_vi": "Hệ thống di chuyển ở Trung Quốc đại lục có hai loại chính:\n\n(1) DIDI (滴滴出行): app gọi xe lớn nhất Trung Quốc — 600+ triệu user, có English mode. Tải miễn phí trên App Store. Đăng ký bằng số ĐT Trung Quốc HOẶC số quốc tế (cần OTP). Kết nối với Alipay/WeChat Pay HOẶC thẻ Visa/Mastercard quốc tế. Loại xe: 快车 (Express, rẻ nhất, sedan), 优享 (Comfort, sedan tốt hơn), 专车 (Premier, BMW/Mercedes), 拼车 (Carpool, share, rẻ nhất). Đi sân bay 50-150 tệ tùy thành phố.\n\n(2) TAXI ĐƯỜNG PHỐ: ở mọi thành phố. Vẫy tay là dừng. Khởi điểm 10-14 tệ + 2.3 tệ/km. KHÔNG cần app, nhưng:\n- Dễ bị từ chối nếu là người nước ngoài (số ít tài xế ngại communication)\n- Đôi khi đồng hồ 'bị hỏng' = bịa giá\n- Khó chứng minh khiếu nại\nKhuyến nghị: dùng DiDi 90% lúc, taxi đường phố chỉ khi không có DiDi (ngõ nhỏ, mưa to, app sập).\n\nVề bằng chứng: DiDi giữ FULL log: lộ trình GPS, ước tính giá, thời gian đón/trả, đánh giá tài xế. Khi khiếu nại qua app, DiDi nhìn vào log + xử lý 24-48 giờ. Bồi thường có thể là: hoàn tiền, voucher, phạt tài xế (giảm rating của họ — họ rất sợ điều này).\n\nVề ngôn ngữ tài xế: 90% tài xế Trung Quốc đại lục KHÔNG nói tiếng Anh. App DiDi có:\n- Translation function trong chat\n- Voice messages (gửi voice tiếng Anh, app dịch sang tiếng Trung cho tài xế nghe)\n- Pre-set messages: 'Where are you?', 'Please come faster', 'I'm here'\n\nVề an toàn: DiDi sau 'vụ Yueyue 2018' đã tăng cường security: tài xế phải verify danh tính + face recognition trước mỗi shift; có nút SOS trong app gọi 110; có tính năng share GPS với người thân real-time. Đêm khuya 23:00-05:00 có 'safety mode' — chỉ tài xế có rating cao được nhận khách.\n\nVề tip/phụ thu: KHÔNG có tip ở đại lục. Đôi khi tài xế hỏi tip 'làm tròn' (10 tệ → 15 tệ) — đặc biệt với khách nước ngoài. Lịch sự từ chối: '不用了, 谢谢' (không cần, cảm ơn). Nếu tài xế giúp đặc biệt (mang vali, đợi bạn rút tiền), cho 10-20 tệ là phù hợp.\n\nVề khiếu nại: nếu tranh chấp với tài xế:\n- DiDi: phần khiếu nại trong app, thường giải quyết 24h\n- Taxi truyền thống: gọi 12328 (transportation hotline) — có người tiếng Anh ở thành phố lớn\n- Cuối cùng: 110 (cảnh sát) — chỉ khi tài xế có hành vi nguy hiểm hoặc đe dọa\n\nVề thời gian cao điểm: Bắc Kinh + Thượng Hải kẹt khủng khiếp 7-9h sáng, 17-19h tối. Tránh đặt xe khi đó — chuyển sang tàu điện ngầm hoặc đặt sớm hơn.",
@@ -12385,25 +12733,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "和睦相处",
         "literal": "hòa thuận chung sống (hé mù xiāng chǔ)",
         "meaning": "Sống hòa thuận với nhau — mục tiêu cao nhất của gia đình mở rộng. Cụm chuẩn để mẹ chồng/vợ kết thúc bất đồng: '一家人嘛, 和睦相处最重要'. Dùng để nhắc nhau ưu tiên hòa khí.",
-        "example": "婆媳关系最重要的是和睦相处。"
+        "example": "婆媳关系最重要的是和睦相处。",
+        "literal_en": "live together in harmony (hé mù xiāng chǔ)",
+        "meaning_en": "To live together harmoniously — the highest aim of an extended family; the standard phrase a parent-in-law uses to end a disagreement ('we're family — living in harmony matters most'). Used to remind each other to prioritize harmony. (spoken/formal)",
+        "example_en": "The most important thing in the in-law relationship is living in harmony."
       },
       {
         "idiom": "各让一步",
         "literal": "mỗi bên nhường một bước (gè ràng yī bù)",
         "meaning": "Mỗi bên lùi một bước — đề xuất compromise công bằng. Cụm dùng khi không thể đồng ý hoàn toàn: '我们各让一步, 找一个折中方案'. Tinh thần thỏa hiệp văn hóa Á Đông.",
-        "example": "家事难断, 各让一步就好。"
+        "example": "家事难断, 各让一步就好。",
+        "literal_en": "each yields a step (gè ràng yī bù)",
+        "meaning_en": "Each side takes a step back — proposing a fair compromise; used when full agreement is impossible ('let's each give a little and find a middle way'). The East Asian spirit of compromise. (spoken/formal)",
+        "example_en": "Family matters are hard to judge — each giving a step is best."
       },
       {
         "idiom": "求同存异",
         "literal": "cầu đồng tồn dị (qiú tóng cún yì)",
         "meaning": "Tìm điểm chung, giữ điểm khác — không cần đồng thuận hoàn toàn. Áp dụng tốt cho khác biệt văn hóa Việt-Trung trong gia đình: 'mình 求同存异, không phải tranh ai đúng'.",
-        "example": "我们文化不同, 求同存异就好。"
+        "example": "我们文化不同, 求同存异就好。",
+        "literal_en": "seek common ground while keeping differences (qiú tóng cún yì)",
+        "meaning_en": "Find the shared, keep the different — no need for full consensus; applies well to Vietnam-China cultural differences within a family ('let's seek common ground, not argue over who's right'). (spoken/formal)",
+        "example_en": "Our cultures differ — seeking common ground while keeping differences is best."
       },
       {
         "idiom": "将心比心",
         "literal": "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
         "meaning": "Đặt mình vào vị trí người khác — đồng cảm. Cụm dùng để xin mẹ chồng/vợ thấu hiểu hoàn cảnh: '将心比心, 您也曾是儿媳妇' (đặt mình vào, mẹ cũng từng là con dâu). Cụm rất mạnh khi dùng đúng lúc.",
-        "example": "将心比心, 我能理解您的想法。"
+        "example": "将心比心, 我能理解您的想法。",
+        "literal_en": "measure another's heart with your own (jiāng xīn bǐ xīn)",
+        "meaning_en": "Put yourself in another's position — empathy; used to ask a parent-in-law to understand your situation ('put yourself in my place — you were once a daughter-in-law too'). Very powerful when used at the right moment. (spoken/formal)",
+        "example_en": "Putting myself in your place, I can understand your thinking."
       }
     ],
     "cultural_notes_vi": "Quan hệ con dâu - mẹ chồng (婆媳关系 — póxí guānxi) là một trong những mối quan hệ phức tạp nhất trong gia đình Trung Quốc. Khác Việt Nam ở vài điểm:\n\n(1) GIA ĐÌNH MỞ RỘNG: ở Trung Quốc đại lục (đặc biệt vùng nông thôn + thành phố nhỏ), bố mẹ chồng kỳ vọng can dự sâu vào đời sống con — lựa chọn nhà, đặt tên cháu, chăm cháu, quyết định khi nào sinh con thứ hai. Vợ chồng trẻ ở thành phố lớn (Bắc Kinh, Thượng Hải) đã thay đổi nhưng quê thì vẫn vậy. Bạn lấy chồng/vợ Trung Quốc cần biết gia đình họ thuộc cấp độ nào.\n\n(2) CON DÂU LÀ 'NGƯỜI NHÀ NHƯNG NGƯỜI NGOÀI': khái niệm '半个外人' (nửa người ngoài) — về mặt pháp luật là vợ con trai, về mặt văn hóa vẫn cần thời gian để được công nhận hoàn toàn. Khác Việt Nam (con dâu nhanh chóng được coi là con). Đầu tư 3-5 năm để xây quan hệ tốt.\n\n(3) MẸ CHỒNG TRUNG QUỐC THƯỜNG NÓI THẲNG: không bóng gió. Khen thì khen công khai, chê cũng chê công khai. Người Việt thường thấy 'thô lỗ' — nhưng đó là phong cách thân mật của họ. Đừng coi mọi lời nhận xét là tấn công cá nhân.\n\n(4) ÁP LỰC SINH CON, CHĂM CON: cao hơn Việt Nam. 'Cháu nội' (孙子) đặc biệt quan trọng cho hệ thống dòng họ Trung Quốc. Nếu vợ chồng bạn không muốn có con sớm hoặc không muốn có con, đây sẽ là điểm xung đột chính. Cách xử lý: đưa lý do CỤ THỂ + thời gian dự kiến + cam kết.\n\n(5) TIỀN BẠC GIA ĐÌNH: bố mẹ chồng có thể hỏi lương, hỏi tiền tiết kiệm, đề xuất bạn đưa tiền về quê hàng tháng. Đây là chuẩn mực 'gia đình một mối'. Cách từ chối khéo: 'bọn con đang trả nợ mua nhà, chưa dư nhiều' — không nói 'không có'.\n\nVề lễ Tết và quà: con dâu Việt Nam lấy chồng Trung Quốc cần học kỹ. Tết âm lịch tặng quà bố mẹ chồng (mỗi bên 200-1,000 tệ). Sinh nhật, Tết Trung Thu, đầu năm — đều có. Đặc sản Việt Nam (cà phê, bánh đậu xanh) là quà lý tưởng — vừa tinh tế vừa thể hiện gốc văn hóa.\n\nVề ngôn ngữ: bố mẹ chồng/vợ thường hơn 50 tuổi → khả năng tiếng Anh rất hạn chế. Bạn PHẢI học tiếng Trung tốt để giao tiếp trực tiếp. Học tiếng địa phương của họ (giọng Bắc Kinh, Thượng Hải, Quảng Đông) là điểm cộng rất lớn — họ sẽ cảm thấy được tôn trọng.\n\nVề mâu thuẫn: ƯU TIÊN giải quyết qua chồng/vợ — họ đóng vai trò trung gian. Đừng đối đầu trực tiếp với mẹ chồng. Nếu bố mẹ chồng làm bạn buồn, NÓI VỚI CHỒNG/VỢ TRƯỚC, để họ truyền đạt — văn hóa 'không trực tiếp' (间接 — jiànjiē).",
@@ -12767,25 +13127,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "见仁见智",
         "literal": "thấy nhân thấy trí (jiàn rén jiàn zhì)",
         "meaning": "Nhân giả thấy nhân, trí giả thấy trí — mỗi người nhìn nhận khác nhau. Cụm trung tính tuyệt vời cho bất đồng quan điểm: '这事见仁见智, 没有标准答案'. Khẳng định cả hai góc nhìn đều có giá trị.",
-        "example": "工作和生活的平衡, 见仁见智。"
+        "example": "工作和生活的平衡, 见仁见智。",
+        "literal_en": "the benevolent see benevolence, the wise see wisdom (jiàn rén jiàn zhì)",
+        "meaning_en": "Different people see it differently — an excellent neutral phrase for a difference of opinion ('this is a matter of perspective, there's no standard answer'). Affirms both viewpoints have value. (spoken/formal)",
+        "example_en": "Work-life balance is a matter of perspective."
       },
       {
         "idiom": "各有所好",
         "literal": "mỗi người có sở thích riêng (gè yǒu suǒ hào)",
         "meaning": "Mỗi người có sở thích/lựa chọn khác nhau. Cụm dùng để chấp nhận khác biệt: '吃辣还是不吃辣, 各有所好'. Đối lập với tâm lý 'phải giống nhau'.",
-        "example": "拼事业还是要平衡, 各有所好。"
+        "example": "拼事业还是要平衡, 各有所好。",
+        "literal_en": "each has their own liking (gè yǒu suǒ hào)",
+        "meaning_en": "Everyone has their own preferences/choices; used to accept difference ('spicy or not spicy, to each their own'). The opposite of a 'we must all be the same' mindset. (spoken)",
+        "example_en": "Chasing a career or seeking balance — to each their own."
       },
       {
         "idiom": "三观不合",
         "literal": "ba quan điểm không hợp (sān guān bù hé)",
         "meaning": "Ba quan điểm (世界观/人生观/价值观 — thế giới quan / nhân sinh quan / giá trị quan) không hợp — không cùng tần số sống. Cụm phổ biến trong giới trẻ Trung Quốc. Tránh áp đặt cụm này lên bạn — thường dùng để miêu tả người mình KHÔNG muốn thân thiết.",
-        "example": "我们三观不合, 但还是好朋友。"
+        "example": "我们三观不合, 但还是好朋友。",
+        "literal_en": "the three views don't match (sān guān bù hé)",
+        "meaning_en": "The 'three views' (worldview/life-view/value-view, 世界观/人生观/价值观) don't align — not on the same wavelength; common among young Chinese. Avoid imposing it on a friend — it usually describes someone you do NOT want to be close to. (spoken)",
+        "example_en": "Our outlooks don't quite match, but we're still good friends."
       },
       {
         "idiom": "互相尊重",
         "literal": "lẫn nhau tôn trọng (hù xiāng zūn zhòng)",
         "meaning": "Tôn trọng lẫn nhau — KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi cho khác biệt. Câu chốt sau khi đã tranh luận: '我们互相尊重就好' (tôn trọng nhau là được rồi).",
-        "example": "朋友之间最重要的是互相尊重。"
+        "example": "朋友之间最重要的是互相尊重。",
+        "literal_en": "mutual respect (hù xiāng zūn zhòng)",
+        "meaning_en": "To respect each other — NOT strictly a four-character idiom but a core phrase for difference; the closing line after a debate ('mutual respect is enough'). (spoken)",
+        "example_en": "The most important thing between friends is mutual respect."
       }
     ],
     "cultural_notes_vi": "Bất đồng lối sống Việt-Trung là chủ đề tế nhị nhưng phổ biến trong tình bạn xuyên văn hóa. Năm điểm khác biệt thường gây tranh luận:\n\n(1) WORK CULTURE: Trung Quốc đại lục có '996' (9am-9pm, 6 ngày/tuần) trong tech và một số ngành. Đây là chuẩn mực được chấp nhận, dù bị chỉ trích. Người Việt thường có giờ làm 8-5 + 1-2 lần tăng ca/tuần. Khi bạn Trung Quốc nói '我加班到晚上11点' = không phàn nàn, là báo cáo bình thường. Không thương hại — họ không cảm thấy cần thương hại.\n\n(2) HỆ THỐNG HẸN HÒ / KẾT HÔN: Trung Quốc có truyền thống 相亲 (xiāngqīn — phối hôn nhân qua bố mẹ/người mai mối) vẫn phổ biến ở thành phố nhỏ + thế hệ lớn tuổi. Người trẻ thành phố thoát dần nhưng áp lực 'năm 30 tuổi vẫn chưa lấy chồng' cực mạnh. Khái niệm '剩女' (shèng nǚ — gái ế) là từ phổ biến và buồn. Người Việt không có khái niệm này mạnh đến vậy.\n\n(3) TIẾT KIỆM vs CHI TIÊU: tỷ lệ tiết kiệm hộ gia đình Trung Quốc cao nhất thế giới (~30-40% lương). Người Việt thường tiết kiệm ~15-25%. Nguyên nhân Trung Quốc: hệ thống an sinh xã hội yếu (y tế, hưu trí), văn hóa 'để con cháu', áp lực mua nhà cho con trai. Đừng coi thói tiết kiệm cực đoan của bạn Trung là 'keo kiệt' — đó là chiến lược sinh tồn.\n\n(4) FAMILY OBLIGATIONS: bố mẹ Trung Quốc gửi tiền hàng tháng cho ông bà ở quê là chuẩn mực. Người trẻ Trung Quốc thường gánh tài chính bố mẹ + ông bà 2 bên. Người Việt cũng có nhưng ít cường độ hơn. Khi bạn Trung Quốc nói 'mình phải gửi 5,000 tệ về quê' — đó không phải tự nguyện, là nghĩa vụ văn hóa.\n\n(5) FITNESS / HEALTH CULTURE: gym + tập thể hình rất phổ biến ở Trung Quốc đại lục đô thị (đặc biệt nam giới). Phòng gym 24/7 (Pure Fitness, Will's) ở Bắc Kinh, Thượng Hải. Người Việt thường tập nhẹ hơn — đi bộ, yoga, đạp xe. Khi bạn Trung Quốc đề xuất 'cùng đi gym 5 lần/tuần' = họ đang mời bạn vào hoạt động xã hội của họ. Từ chối nhẹ + đề xuất hoạt động khác.\n\nVỀ LỜI KHUYÊN không cần thiết: bạn bè Trung Quốc thường tự do đưa lời khuyên về lối sống của bạn. Đây không phải 'thô lỗ' mà là 'quan tâm thân tình'. Khác Việt Nam (lời khuyên thường được hỏi mới đưa). Không phật ý — cảm ơn + làm theo cách mình.\n\nVỀ CHỦ ĐỀ NHẠY CẢM riêng cá nhân (không phải chính trị): tiền lương, kế hoạch sinh con, lý do chưa kết hôn — bạn Trung Quốc có thể hỏi thẳng. Người Việt thường giấu. Cách trả lời: 'mình thoải mái với mức hiện tại', 'vẫn đang suy nghĩ', 'chưa gặp đúng người'. Nhẹ nhàng + không tiết lộ chi tiết.\n\nVỀ TỪ '三观' (sān guān — 3 quan điểm): rất phổ biến trong giới trẻ Trung Quốc — chỉ khái niệm tổng hợp về thế giới quan/nhân sinh quan/giá trị quan. '三观一致' = cùng tần số. '三观不合' = không cùng tần số. Khi bạn Trung Quốc nói '我们三观还挺一致的' = tín hiệu tốt cho tình bạn.",
@@ -13156,25 +13528,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "节哀顺变",
         "literal": "tiết bi ai, thuận biến hóa (jié āi shùn biàn)",
         "meaning": "Hạn chế đau buồn, thuận theo biến cố — cụm cổ điển formal nhất để an ủi tang. Dùng trực tiếp với người mất thân hoặc trong văn bản chia buồn. Không thay thế tốt — học thuộc.",
-        "example": "听到您父亲去世, 节哀顺变。"
+        "example": "听到您父亲去世, 节哀顺变。",
+        "literal_en": "restrain grief, accept the change (jié āi shùn biàn)",
+        "meaning_en": "Hold back grief and go along with the change — the most classical, formal phrase for condolence; used directly with the bereaved or in a written message of sympathy. There's no good substitute — learn it by heart. (spoken/formal)",
+        "example_en": "I'm so sorry to hear of your father's passing — please accept my condolences and take care."
       },
       {
         "idiom": "化悲痛为力量",
         "literal": "biến đau buồn thành sức mạnh (huà bēi tòng wéi lì liang)",
         "meaning": "Chuyển hóa nỗi đau thành động lực — an ủi giai đoạn 2 (sau lễ tang, khi bạn bắt đầu hồi phục). Cụm tích cực nhưng không vô cảm. Tránh dùng quá sớm — sẽ bị coi là vội vã.",
-        "example": "我希望你能化悲痛为力量, 好好生活。"
+        "example": "我希望你能化悲痛为力量, 好好生活。",
+        "literal_en": "turn grief into strength (huà bēi tòng wéi lì liang)",
+        "meaning_en": "Transform sorrow into motivation — comfort for stage two (after the funeral, when recovery begins); positive but not callous. Avoid using it too early — it reads as rushed. (spoken/formal)",
+        "example_en": "I hope you can turn your grief into strength and live well."
       },
       {
         "idiom": "阴阳两隔",
         "literal": "âm dương hai cách (yīn yáng liǎng gé)",
         "meaning": "Cách trở sống chết — diễn tả nỗi đau xa cách vĩnh viễn. Cụm văn vẻ, dùng để cảm thông cho mất mát đặc biệt sâu (vợ chồng, con cái). Mạnh, không lạm dụng.",
-        "example": "母亲走了, 我们阴阳两隔, 心里空荡荡的。"
+        "example": "母亲走了, 我们阴阳两隔, 心里空荡荡的。",
+        "literal_en": "yin and yang forever parted (yīn yáng liǎng gé)",
+        "meaning_en": "Separated between the living and the dead — expressing the pain of a permanent parting; a literary phrase, used to sympathize with an especially deep loss (a spouse, a child). Strong — do not overuse. (written/literary)",
+        "example_en": "With Mother gone, we are parted between two worlds — there's an emptiness in my heart."
       },
       {
         "idiom": "时间会治愈",
         "literal": "thời gian sẽ chữa lành (shí jiān huì zhì yù)",
         "meaning": "Thời gian là thuốc chữa lành — câu an ủi phổ biến. KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi. Dùng giai đoạn 3 (vài tuần sau), không dùng ngay sau khi mất. Thêm '但思念永远在' (nhưng nhớ nhung mãi còn) để không tỏ ra coi nhẹ.",
-        "example": "时间会慢慢治愈伤痛, 但思念永远在心里。"
+        "example": "时间会慢慢治愈伤痛, 但思念永远在心里。",
+        "literal_en": "time will heal (shí jiān huì zhì yù)",
+        "meaning_en": "Time is the healer — a common comfort. NOT strictly a four-character idiom but a core phrase; used at stage three (some weeks later), not right after the loss. Add '但思念永远在' ('but the longing always remains') so as not to seem dismissive. (spoken)",
+        "example_en": "Time will slowly heal the wound, but the longing will always stay in the heart."
       }
     ],
     "cultural_notes_vi": "An ủi sau mất mát trong văn hóa Trung Quốc đại lục có những đặc thù khác Việt Nam:\n\n(1) THỜI GIAN TANG: 7 ngày đầu (头七 — tóu qī) là thời gian quan trọng nhất, gia đình tập trung. Bạn bè đến viếng trong 7 ngày này. Sau 49 ngày (七七 — qī qī, theo Phật giáo) là kết thúc 'tang nặng'. 100 ngày + 1 năm là các mốc nhỏ. Người Việt có khái niệm tương tự (49 ngày, 100 ngày, giỗ) — cụm văn hóa shared.\n\n(2) MÀU SẮC TANG: trắng + đen + xám. KHÔNG đỏ tuyệt đối trong 49 ngày. Nếu bạn được mời đến nhà tang chủ, mặc TỐI MÀU. Mang phong bao tiền trợ phúng (奠仪 / 白包) — số lẻ (101, 201, 501, 1001) — KHÔNG số chẵn (200, 500). Khác cưới hỏi (số chẵn), đám tang dùng số lẻ.\n\n(3) NHẮN TIN TRONG TANG: KHÔNG dùng emoji vui (😊😄). Tin nhắn trang trọng, ngắn gọn. Mẫu chuẩn: '惊闻[称呼]噩耗, 万分悲痛。请节哀顺变, 多保重身体。如有需要, 随时找我。' (Đột nhiên nghe tin xấu của [người], vô cùng đau buồn. Xin nén đau thương, giữ gìn sức khỏe. Cần gì cứ tìm em.)\n\n(4) THĂM HỎI SAU 30 NGÀY: nhiều người Trung Quốc cảm thấy bị 'bỏ rơi' sau tuần đầu — bạn bè ngừng hỏi thăm. Là người Việt, BẠN có thể tạo khác biệt: nhắn tin nhẹ tuần thứ 2, thứ 4, tháng thứ 2 — chỉ '想到你了, 你怎么样了?' (mình nghĩ đến bạn, bạn dạo này thế nào). Không cần nhiều.\n\n(5) THÚ CƯNG: mất chó/mèo ở Trung Quốc đại lục đô thị giờ được công nhận là nỗi đau thật sự (giới trẻ + thành phố lớn). Đối xử như mất người thân nhỏ. Tang chôn cất tại 宠物殡仪馆 (pet funeral home) ở Bắc Kinh, Thượng Hải. Người lớn tuổi đôi khi không hiểu nỗi đau này — đừng kể với họ nếu họ không thân.\n\n(6) TỰ TỬ: chủ đề rất nhạy cảm + còn ít thảo luận công khai ở Trung Quốc. Khi bạn mất ai đó vì tự tử, KHÔNG hỏi 'tại sao'. KHÔNG đoán nguyên nhân. KHÔNG bình luận về chứng trầm cảm trừ khi bạn thân biết. Chỉ ở bên + lắng nghe.\n\n(7) NỀN TẢNG TÂM LINH: Trung Quốc đại lục có Phật giáo, Đạo giáo, không tôn giáo (atheist). KHÔNG nói 'họ ở thiên đàng' (天堂) trừ khi bạn biết người mất là Cơ Đốc giáo. Cụm trung tính: '愿他/她安息' (mong họ yên nghỉ), '一路走好' (đi yên — chúc đường về của người chết).\n\nVỀ TỪ '走了' (zǒu le — đã đi): cụm rất phổ biến, gentle. Khi bạn Trung Quốc nhắn '我外婆走了', họ đang nói bà ngoại mất. KHÔNG là 'đã đi đâu đó' theo nghĩa du lịch. Phản ứng đúng: '我很难过' (mình rất buồn) + '节哀顺变'.\n\nVỀ KHÔNG NÓI GÌ (沉默 — chénmò): trong văn hóa Trung Quốc, im lặng đồng cảm là OK. Bạn không cần nói nhiều — chỉ cần ở đó. 'Sự hiện diện > lời an ủi'. Đôi khi câu hay nhất là không nói gì, chỉ đưa khăn giấy và pha trà.",
@@ -13538,25 +13922,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "知错就改",
         "literal": "biết sai liền sửa (zhī cuò jiù gǎi)",
         "meaning": "Biết sai sửa ngay — phẩm chất quân tử. Cụm dùng để cam kết khi xin lỗi: 'tôi 知错就改, sau này sẽ khác'. Người Trung Quốc đánh giá rất cao thái độ này — quan trọng hơn cả việc chưa từng sai.",
-        "example": "知错就改, 善莫大焉。"
+        "example": "知错就改, 善莫大焉。",
+        "literal_en": "know the error, fix it at once (zhī cuò jiù gǎi)",
+        "meaning_en": "Recognize a mistake and correct it immediately — a gentleman's quality; a commitment phrase when apologizing ('I'll own it and change'). Chinese people value this attitude very highly — more than never having erred. (spoken/formal)",
+        "example_en": "To know a fault and fix it — nothing is finer."
       },
       {
         "idiom": "真心诚意",
         "literal": "chân tâm thành ý (zhēn xīn chéng yì)",
         "meaning": "Bằng tấm lòng chân thành — không qua loa, không có tính toán. Cụm khẳng định lời xin lỗi không phải chiếu lệ: '我真心诚意地跟你道歉'. Mạnh và chân thực — chỉ dùng khi thực sự thế.",
-        "example": "我真心诚意地向你道歉, 请你原谅我。"
+        "example": "我真心诚意地向你道歉, 请你原谅我。",
+        "literal_en": "true heart, sincere intent (zhēn xīn chéng yì)",
+        "meaning_en": "With a genuinely sincere heart — not perfunctory, no calculation; affirms an apology isn't a token gesture ('I apologize to you with all sincerity'). Strong and genuine — use only when truly so. (spoken/formal)",
+        "example_en": "I apologize to you with complete sincerity — please forgive me."
       },
       {
         "idiom": "痛改前非",
         "literal": "đau đớn sửa cái sai trước (tòng gǎi qián fēi)",
         "meaning": "Sửa lỗi đến tận tâm — quyết tâm thay đổi triệt để. Mạnh hơn 知错就改, dùng khi sửa lỗi có hệ thống (không phải lỗi nhỏ một lần). Cảnh báo: lạm dụng = bị coi là cường điệu.",
-        "example": "我会痛改前非, 不会再让你失望。"
+        "example": "我会痛改前非, 不会再让你失望。",
+        "literal_en": "painfully correct past wrongs (tòng gǎi qián fēi)",
+        "meaning_en": "To reform thoroughly and from the heart — a resolve to change completely; stronger than 知错就改, used for a systemic fault (not a small one-off). Caution: overuse reads as hyperbole. (spoken/formal)",
+        "example_en": "I'll thoroughly mend my ways — I won't let you down again."
       },
       {
         "idiom": "将功补过",
         "literal": "lấy công bù lỗi (jiāng gōng bǔ guò)",
         "meaning": "Dùng việc tốt sau bù lỗi trước — đề xuất bù đắp bằng hành động. Cụm chuyển từ lời xin lỗi sang cam kết hành động: '我会将功补过, 用行动弥补'. Cụ thể hơn lời nói.",
-        "example": "我会将功补过, 用以后的行动证明。"
+        "example": "我会将功补过, 用以后的行动证明。",
+        "literal_en": "use merit to make up for a fault (jiāng gōng bǔ guò)",
+        "meaning_en": "Make up for a wrong with later good deeds — proposing amends through action; shifts an apology from words to a commitment to act ('I'll make up for it through my actions'). More concrete than words. (spoken/formal)",
+        "example_en": "I'll make up for it — I'll prove it through what I do from now on."
       }
     ],
     "cultural_notes_vi": "Xin lỗi giữa bạn thân Trung Quốc là một trong những thử thách kỹ năng giao tiếp B2 cao nhất. Bốn nguyên tắc cốt lõi:\n\n(1) FACE (面子) GIỮA BẠN: khác với business/family, bạn thân CÓ THỂ chỉ ra lỗi của nhau. NHƯNG nếu lỗi xảy ra trước mặt người khác (như trong lesson — 'before everyone in the gathering'), việc làm 'mất mặt' đặc biệt nghiêm trọng. Xin lỗi PHẢI bao gồm 'phục hồi mặt' công khai — nói với những người đã chứng kiến rằng bạn sai.\n\n(2) THỜI GIAN: người Trung Quốc thường đợi xem ai 'nói lời đầu' (谁先开口). Người chủ động xin lỗi = thừa nhận lỗi của mình; người đợi = có thể đang dằn dỗi hoặc thực sự bị tổn thương. Bạn là người Việt, bạn nên CHỦ ĐỘNG nếu bạn sai — đừng đợi bạn Trung Quốc 'mở lời' với bạn.\n\n(3) CỤM 'CHO QUA' (放下) vs 'GHI LẠI' (记仇): bạn Trung Quốc có thể nói '没关系' (không sao) ngay khi nhận lời xin lỗi, NHƯNG đó không nghĩa là họ đã quên. Nhiều người Trung Quốc 记仇 (jì chóu — ghi nhớ thù hận, lit. 'remember enmity') nhiều năm. Quan sát hành vi tiếp theo: họ vẫn mời bạn ăn, vẫn nhắn tin = đã thật sự cho qua. Họ tránh, không trả lời = chưa.\n\n(4) BÙ ĐẮP CỤ THỂ (实际行动): lời xin lỗi không có hành động = rỗng. Văn hóa Trung Quốc đặc biệt coi trọng '将功补过' — bù lỗi cũ bằng việc tốt cụ thể: mời ăn món họ thích, làm việc gì cho họ, kỷ niệm ngày quan trọng của họ. Mỗi lỗi nghiêm trọng nên có 1 hành động bù đắp.\n\nVỀ XIN LỖI QUA TIN NHẮN vs GẶP MẶT: lỗi nhỏ qua text OK. Lỗi nghiêm trọng (như trong lesson 85) BẮT BUỘC gặp mặt. Người Trung Quốc đánh giá việc bạn dành thời gian gặp mặt > nội dung cụ thể. Nếu thực sự không thể gặp (xa cách), gọi video — không bao giờ chỉ text cho lỗi nặng.\n\nVỀ XIN LỖI VÀ TIỀN BẠC: nếu lỗi của bạn gây thiệt hại tài chính cho bạn (làm hỏng đồ, mất món bạn cho mượn), KHÔNG chỉ xin lỗi — đề xuất đền bù tiền mặt cụ thể. Bạn Trung Quốc thường từ chối ('不用了') nhưng đợi 2-3 lần đề nghị mới chấp nhận. Văn hóa 客气 (lịch sự đẩy lui) — bạn chân thành = đẩy lại 3 lần.\n\nVỀ TRA LỜI 'TÔI CŨNG CÓ LỖI' (我也有错) của bạn: nhiều bạn Trung Quốc sẽ chia sẻ một phần lỗi của họ để giảm áp lực cho bạn. KHÔNG là 'okay you don't need to apologize' — họ đang nâng đỡ bạn cảm xúc. Vẫn hoàn thành lời xin lỗi của mình + cảm ơn họ chia sẻ lỗi: '谢谢你这么说, 但这次主要是我的错'.\n\nVỀ SAY RƯỢU: bạn say rượu nói/làm tổn thương → KHÔNG dùng làm bào chữa ('我那天喝醉了, 不记得'). 'Đã say' không miễn trách nhiệm trong văn hóa Trung Quốc đại lục. Ngay cả nếu bạn không nhớ, đã làm tổn thương = phải xin lỗi như đã tỉnh táo.",
@@ -13927,25 +14323,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "海内存知己, 天涯若比邻",
         "literal": "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
         "meaning": "Câu thơ Vương Bột đời Đường — nếu có tri kỷ, dù xa cũng gần. Cụm cao cấp dùng để chia tay bạn thân vĩnh viễn — khẳng định tình bạn vượt khoảng cách. Trích đúng tác giả thể hiện trình độ.",
-        "example": "海内存知己, 天涯若比邻 — 我们就是这样的朋友。"
+        "example": "海内存知己, 天涯若比邻 — 我们就是这样的朋友。",
+        "literal_en": "within the seas there is a soulmate, the ends of the earth feel next door (Wang Bo)",
+        "meaning_en": "Wang Bo's Tang-dynasty couplet — if you have a soulmate, even far apart you feel close; an advanced phrase for a permanent goodbye to a close friend, affirming friendship across distance. Citing the right author shows your level. (written/literary)",
+        "example_en": "Within the seas a soulmate stays, the ends of the earth feel next door — that's the kind of friends we are."
       },
       {
         "idiom": "依依不舍",
         "literal": "y y bất xả (yī yī bù shě)",
         "meaning": "Bịn rịn không nỡ rời — cảm giác lưu luyến mạnh. Cụm dùng để miêu tả khoảnh khắc tạm biệt: '我依依不舍地送她走'. Văn vẻ + chân thành.",
-        "example": "我依依不舍地送她去机场。"
+        "example": "我依依不舍地送她去机场。",
+        "literal_en": "reluctant to part (yī yī bù shě)",
+        "meaning_en": "Loath to leave — a strong sense of attachment; used to describe the moment of parting ('I saw her off, reluctant to let her go'). Literary and sincere. (written/literary)",
+        "example_en": "I saw her off to the airport, reluctant to let her go."
       },
       {
         "idiom": "后会有期",
         "literal": "lần sau có hẹn (hòu huì yǒu qī)",
         "meaning": "Hẹn gặp lại — câu kết tạm biệt chuẩn. Mạnh hơn 'goodbye' đơn giản, ngụ ý 'không kết thúc'. Cụm formal nhưng ấm.",
-        "example": "今天先这样, 后会有期。"
+        "example": "今天先这样, 后会有期。",
+        "literal_en": "there will be a time to meet again (hòu huì yǒu qī)",
+        "meaning_en": "We'll meet again — the standard closing of a farewell, stronger than a plain 'goodbye', implying 'this isn't the end.' Formal but warm. (spoken/formal)",
+        "example_en": "Let's leave it here for today — we'll meet again."
       },
       {
         "idiom": "天涯海角",
         "literal": "thiên nhai hải giác (tiān yá hǎi jiǎo)",
         "meaning": "Chân trời góc biển — nơi xa xôi nhất. Cụm để khẳng định tình bạn dù xa: '不管你在天涯海角, 我都记得你'. Cảm xúc + thi vị.",
-        "example": "天涯海角, 我们的友谊不变。"
+        "example": "天涯海角, 我们的友谊不变。",
+        "literal_en": "the edge of the sky, the corner of the sea (tiān yá hǎi jiǎo)",
+        "meaning_en": "The remotest ends of the earth — used to affirm a friendship despite distance ('wherever you are in the world, I'll remember you'). Emotional and poetic. (written/literary)",
+        "example_en": "To the ends of the earth, our friendship stays unchanged."
       }
     ],
     "cultural_notes_vi": "Tạm biệt vĩnh viễn (移民, 永别, 长别) là một trong những khoảnh khắc cảm xúc nhất trong văn hóa bạn bè Trung Quốc. Bốn nguyên tắc:\n\n(1) GẶP MẶT TẠM BIỆT trước khi đi: KHÔNG chỉ qua tin nhắn. Người Trung Quốc đại lục coi 'không gặp mặt tạm biệt' là thiếu lòng. Tổ chức bữa ăn tiễn (送行宴 — sòngxíng yàn) hoặc cuộc cà phê riêng, ít nhất 1-2 giờ. Đối với bạn rất thân: nhiều cuộc gặp trong tuần cuối + 1 cuộc tiễn cuối cùng (thường tại sân bay).\n\n(2) RA SÂN BAY TIỄN (送机 — sòngjī): hành động mạnh trong văn hóa Trung Quốc. Bạn ở Việt Nam có thể không tiễn được (visa, công việc), nhưng VIDEO CALL từ check-in counter là thay thế tốt. Cử chỉ này nhớ lâu.\n\n(3) QUÀ TẠM BIỆT (送行礼 — sòngxíng lǐ): không bắt buộc nhưng phổ biến. Quy tắc: cá nhân hóa + có giá trị kỷ niệm > giá trị tiền. Album ảnh chung, thư tay, vật kỷ niệm văn hóa (lụa Vạn Phúc, ấm trà). Tránh: tiền mặt (lạnh), đồng hồ (xui — sòng zhōng = sòng tiễn người chết — đại kỵ).\n\n(4) GIỮ LIÊN LẠC SAU: khoảng 70% tình bạn xuyên biên giới mai một sau 2 năm. NGUYÊN NHÂN: thiếu nỗ lực chủ động. Thiết lập 'quy tắc' cụ thể giúp duy trì:\n- Video call cố định mỗi 2-3 tháng (ghi vào lịch)\n- Gửi quà sinh nhật + Tết qua bưu điện quốc tế\n- WeChat Moments thường xuyên (like, comment ngắn)\n- 1 chuyến thăm trong 3 năm (xen kẽ — một lần bạn sang, một lần họ về)\n\nVỀ DI CƯ TRUNG QUỐC HIỆN ĐẠI: khoảng 100,000 người Trung Quốc đi định cư nước khác mỗi năm (Mỹ, Canada, Úc, Singapore — top 4). Lý do phổ biến: con cái học tập, môi trường, kinh tế. Đây là tâm trạng rất riêng (vừa hy vọng vừa mất mát) — đừng phán xét lựa chọn của bạn.\n\nVỀ THÔNG ĐIỆP TRỞ LẠI: khi bạn Trung Quốc đã ở nước ngoài, tâm lý thường: tháng 1-3 phấn khích thám hiểm; tháng 4-6 sốc văn hóa; tháng 7-12 ổn định; năm 2 nhớ nhà mạnh; năm 3+ ổn định new normal. Hỗ trợ tinh thần đặc biệt cần thiết tháng 4-6 (sốc) và năm 2 (nhớ nhà). Nhắn tin nhiều ở những giai đoạn này.\n\nVỀ CÔNG NGHỆ: WeChat hoạt động ở nước ngoài (không bị Trung Quốc chặn — vì chính TQ làm). Whatsapp, Telegram thì TQ chặn. Khi bạn Trung Quốc đi nước ngoài, có thể họ chuyển sang Whatsapp/Telegram cho bạn bè quốc tế nhưng vẫn giữ WeChat cho gia đình. Bạn có thể giữ WeChat làm kênh chính.",
@@ -14337,25 +14745,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "雪中送炭",
         "literal": "trong tuyết tặng than (xuě zhōng sòng tàn)",
         "meaning": "Tặng than trong tuyết — giúp đỡ đúng lúc cần nhất. Cụm khen hành động thiết thực: 'bạn 雪中送炭, mình không bao giờ quên'. Đối lập với '锦上添花' (gấm thêm hoa — giúp khi đã đủ).",
-        "example": "你今天的支持真是雪中送炭。"
+        "example": "你今天的支持真是雪中送炭。",
+        "literal_en": "send charcoal in the snow (xuě zhōng sòng tàn)",
+        "meaning_en": "To give charcoal in the snow — help exactly when it's needed most; praise for a practical, timely act ('you gave charcoal in the snow — I'll never forget it'). The opposite of 锦上添花 (adding flowers to brocade — helping when there's already plenty). (spoken/formal)",
+        "example_en": "Your support today was truly charcoal sent in the snow."
       },
       {
         "idiom": "患难见真情",
         "literal": "hoạn nạn thấy chân tình (huàn nàn jiàn zhēn qíng)",
         "meaning": "Khi gặp khó mới biết bạn thật — sự thử thách của tình bạn. Cụm dùng sau khi đã giúp nhau qua khó: '我们经历了这件事, 患难见真情'. Tăng độ thân của tình bạn.",
-        "example": "经过这次, 我才知道患难见真情。"
+        "example": "经过这次, 我才知道患难见真情。",
+        "literal_en": "hardship reveals true feeling (huàn nàn jiàn zhēn qíng)",
+        "meaning_en": "Adversity shows who your true friends are — the test of friendship; used after getting through hardship together ('we went through this — adversity reveals true friends'). Deepens a friendship. (spoken/formal)",
+        "example_en": "Going through this, I finally learned that hardship reveals a true friend."
       },
       {
         "idiom": "同舟共济",
         "literal": "đồng thuyền cộng tế (tóng zhōu gòng jì)",
         "meaning": "Cùng thuyền cùng vượt — chung số phận, cùng nhau qua khó. Cụm cam kết: 'mình 同舟共济, không bỏ bạn'. Cảm xúc + hành động.",
-        "example": "朋友之间应该同舟共济。"
+        "example": "朋友之间应该同舟共济。",
+        "literal_en": "same boat, crossing together (tóng zhōu gòng jì)",
+        "meaning_en": "In the same boat, crossing together — sharing a fate, getting through hardship together; a commitment phrase ('we're in the same boat, I won't abandon you'). Emotion plus action. (spoken/formal)",
+        "example_en": "Friends should be in the same boat together."
       },
       {
         "idiom": "互相扶持",
         "literal": "lẫn nhau dìu dắt (hù xiāng fú chí)",
         "meaning": "Hỗ trợ lẫn nhau — bạn bè dìu dắt qua những lúc yếu. Cụm dùng để cam kết quan hệ: '我们互相扶持, 一起走'. Đặc biệt phù hợp khi cả hai bên cùng có khó khăn.",
-        "example": "好朋友互相扶持是最重要的。"
+        "example": "好朋友互相扶持是最重要的。",
+        "literal_en": "support each other (hù xiāng fú chí)",
+        "meaning_en": "To prop each other up — friends helping each other through weak moments; a commitment phrase about the relationship ('we support each other, we walk together'), especially fitting when both sides face difficulty. (spoken/formal)",
+        "example_en": "The most important thing for good friends is to support each other."
       }
     ],
     "cultural_notes_vi": "Hỗ trợ bạn Trung Quốc qua khó khăn là một trong những kỹ năng tình bạn quan trọng nhất. Khác văn hóa Việt Nam ở vài điểm:\n\n(1) NGƯỜI TRUNG QUỐC GIẤU CẢM XÚC SÂU: văn hóa 含蓄 (hánxù — kín đáo) coi trọng việc không bộc lộ. Khi bạn Trung Quốc nói '我没事' (mình không sao) sau khi mất việc — họ thường CÓ CHUYỆN. Đọc tín hiệu hành vi (Moments, tin nhắn chậm, hủy hẹn) hơn là nghe lời nói. Người Việt thường nói thẳng cảm xúc hơn — đừng kỳ vọng cùng phong cách.\n\n(2) STIGMA TÂM LÝ: trầm cảm, lo âu vẫn còn stigma ở Trung Quốc đại lục, đặc biệt thế hệ ≥40 tuổi. Người trẻ thành phố lớn đã thoáng hơn (gen Z ở Bắc Kinh, Thượng Hải nói chuyện trầm cảm như chuyện thường). Nhưng đề xuất 'đi khám tâm lý' (看心理医生) cho bạn ≥35 tuổi — họ có thể từ chối. Cách thay thế: 'đi khám sức khỏe tổng quát' (体检) — bác sĩ sẽ nhận ra triệu chứng trầm cảm và refer.\n\n(3) ÁP LỰC GIA ĐÌNH ĐÔNG Á: bố mẹ Trung Quốc có thể can thiệp sâu vào đời sống con (kết hôn, công việc, mua nhà). Khi bạn nói '我妈逼我相亲' — đây là áp lực thực sự, không phải than vãn. Hỗ trợ: KHÔNG nói 'kệ mẹ bạn đi'; DÙNG 'mình hiểu áp lực gia đình lớn, nhưng sức khỏe bạn quan trọng nhất'.\n\n(4) WORK CULTURE 996: làm việc đến kiệt sức là 'bình thường' với nhiều người Trung Quốc. Nhưng cơ thể vẫn có giới hạn. Nếu bạn báo cơ thể đau, đó là KHẨN CẤP — không phải than vãn. Đẩy họ đi khám ngay. Nhiều người Trung Quốc trẻ đột tử (猝死 — cù sǐ) do overwork — đây là vấn đề được nhận biết công khai.\n\n(5) HỖ TRỢ THỰC TẾ > LỜI ĐỘNG VIÊN: văn hóa Trung Quốc đề cao hành động cụ thể (mang đồ ăn, đặt lịch khám, gọi HR thay). 'Tinh thần động viên' kiểu Mỹ ('I believe in you!') sẽ bị coi là rỗng. Hành động có giá trị nhất: nấu cơm cho họ, đến nhà chăm sóc họ, đi cùng họ đến chỗ khó.\n\nVỀ '相亲' (xiāngqīn — phối hôn): áp lực sinh con, kết hôn rất mạnh ở Trung Quốc, đặc biệt với phụ nữ ≥28 tuổi. Khái niệm '剩女' (shèng nǚ — gái ế) tuy bị chỉ trích nhiều ở thành phố lớn nhưng vẫn còn ở quê + thế hệ lớn tuổi. Khi bạn Trung Quốc nói 'mẹ giục mình' = áp lực thực sự, không nói chơi.\n\nVỀ TÀI CHÍNH: nhiều người Trung Quốc trẻ thành phố lớn vay nặng để mua nhà ('房奴' — nô lệ nhà), gửi tiền về quê cho bố mẹ, áp lực có con. Khi bạn mất việc, không chỉ là 'không có lương' — là cả hệ thống tài chính rạn vỡ. Hỗ trợ tài chính (cho mượn, cho không) trong khẩn cấp là cử chỉ rất mạnh — văn hóa '雪中送炭'.\n\nVỀ HOẠT ĐỘNG NHẸ: khi bạn bè đau, đề xuất hoạt động đơn giản — đi bộ công viên, ăn cơm tại nhà, xem phim, nấu ăn cùng. KHÔNG đề xuất 'đi club', 'đi du lịch xa' — quá nhiều. Hoạt động đơn giản giúp họ ra khỏi nhà mà không quá áp lực giao tiếp.",
@@ -14740,25 +15160,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "亲兄弟明算账",
         "literal": "anh em ruột tính sổ rõ (qīn xiōng dì míng suàn zhàng)",
         "meaning": "Anh em ruột thịt cũng tính tiền rõ ràng — quan hệ gần đến đâu cũng cần minh bạch tài chính. Cụm chuẩn cho việc vay-trả giữa bạn thân: 'mình viết giấy vay không phải không tin, là 亲兄弟明算账'.",
-        "example": "亲兄弟明算账, 我们之间也要清清楚楚。"
+        "example": "亲兄弟明算账, 我们之间也要清清楚楚。",
+        "literal_en": "even blood brothers settle accounts clearly (qīn xiōng dì míng suàn zhàng)",
+        "meaning_en": "Even real brothers keep money matters clear — however close the relationship, finances need transparency; the standard phrase for borrowing/repaying between close friends ('writing an IOU isn't distrust, it's keeping the accounts clear'). (spoken)",
+        "example_en": "Even brothers keep clear accounts — between us too, it should all be clear."
       },
       {
         "idiom": "有借有还",
         "literal": "có vay có trả (yǒu jiè yǒu huán)",
         "meaning": "Có mượn có trả, lần sau dễ mượn (后半句: 再借不难). Triết lý cốt lõi của vay mượn — cam kết uy tín. 'Mình 有借有还, lần sau không ngại nhờ bạn'.",
-        "example": "有借有还, 再借不难。"
+        "example": "有借有还, 再借不难。",
+        "literal_en": "borrow and you return (yǒu jiè yǒu huán)",
+        "meaning_en": "What's borrowed is returned, and next time it's easy (second half: 再借不难) — the core philosophy of lending, a pledge of credibility ('I return what I borrow, so I won't hesitate to ask you next time'). (spoken)",
+        "example_en": "Return what you borrow, and borrowing again is never hard."
       },
       {
         "idiom": "雪中送炭",
         "literal": "trong tuyết tặng than (xuě zhōng sòng tàn)",
         "meaning": "Tặng than trong tuyết — giúp đúng lúc khẩn. Cụm cảm ơn người cho mượn tiền lúc khẩn: '你这次真是雪中送炭'. Tăng độ thấm của lời cảm ơn.",
-        "example": "你这次借钱给我, 真是雪中送炭。"
+        "example": "你这次借钱给我, 真是雪中送炭。",
+        "literal_en": "send charcoal in the snow (xuě zhōng sòng tàn)",
+        "meaning_en": "To give charcoal in the snow — help at the urgent moment; a thank-you to someone who lent money in a crisis ('you lending me money this time was charcoal in the snow'). Deepens the thanks. (spoken/formal)",
+        "example_en": "Lending me the money this time was truly charcoal sent in the snow."
       },
       {
         "idiom": "君子爱财取之有道",
         "literal": "quân tử yêu của có cách lấy (jūn zǐ ài cái qǔ zhī yǒu dào)",
         "meaning": "Người quân tử yêu tiền nhưng kiếm có đạo — không quỵt nợ, không lừa lọc. Cụm cổ điển nhắc nguyên tắc đạo đức trong tiền bạc. Ít dùng hàng ngày, nhưng tốt cho lesson về uy tín.",
-        "example": "做生意要君子爱财取之有道。"
+        "example": "做生意要君子爱财取之有道。",
+        "literal_en": "a gentleman loves wealth but gains it the right way (jūn zǐ ài cái qǔ zhī yǒu dào)",
+        "meaning_en": "A gentleman may love money but earns it honorably — no defaulting, no cheating; a classical phrase recalling the moral principle around money. Rare in daily speech but apt for a lesson on credibility. (written/literary)",
+        "example_en": "In business one must love wealth but acquire it the right way."
       }
     ],
     "cultural_notes_vi": "Tiền bạc giữa bạn bè Trung Quốc phổ biến hơn người Việt thường nghĩ. Khác biệt văn hóa:\n\n(1) VAY MƯỢN GIỮA BẠN PHỔ BIẾN: ở Trung Quốc đại lục, vay 5,000-50,000 tệ giữa bạn thân là chuyện bình thường. Người Trung Quốc thường có '应急基金' (tiền dự phòng khẩn cấp) cho gia đình + bạn thân nhất. Vay không cần ngân hàng = nhanh + không lãi.\n\n(2) GIẤY VAY (借条) LÀ CHUẨN: kể cả giữa bạn thân, viết giấy vay là dấu hiệu chuyên nghiệp + bảo vệ cả hai. Mẫu chuẩn: '今借[tên người cho vay][tên đầy đủ]人民币X元整, X个月内归还。借款人[tên người vay], 日期[ngày]。' Ký tay + dấu vân tay (nếu formal). Chụp ảnh gửi qua WeChat = đủ giá trị pháp lý.\n\n(3) SỐ TIỀN VÀ MỐI QUAN HỆ:\n- Bạn quen thường (đồng nghiệp, bạn cũ): 500-3,000 tệ, không cần giấy vay (nhưng có lịch sử WeChat transfer = bằng chứng)\n- Bạn thân: 5,000-30,000 tệ, viết giấy vay\n- Bạn rất thân (10+ năm): 30,000+ tệ, viết giấy vay + thảo luận với chồng/vợ trước\n- Trên 100,000 tệ: hiếm giữa bạn — đề nghị họ vay ngân hàng\n\n(4) THỜI GIAN TRẢ TIÊU CHUẨN: 1-3 tháng cho ca nhỏ, 6-12 tháng cho ca lớn. Vượt quá 1 năm = bất thường, có thể là 'không có ý định trả'. Ngày trả CỤ THỂ + có ngày deadline.\n\n(5) KHÔNG LÃI GIỮA BẠN: lấy lãi giữa bạn thân = phá tình bạn. Nếu bạn cần tiền dài hạn (>1 năm) hoặc số lớn (>100k), hãy vay ngân hàng. Bạn bè cho ngắn hạn, không lãi.\n\n(6) QUÀ TRẢ KÈM (返还时的小礼): khi trả nợ, mang quà nhỏ kèm (1-5% giá trị nợ) — văn hóa cảm ơn. Ví dụ: vay 20k → trả 20k + tặng món quà 500-1,000 tệ (rượu vang, trà cao cấp). KHÔNG bắt buộc nhưng được đánh giá cao.\n\n(7) KHI BẠN KHÔNG TRẢ: nếu sau hạn 1 tháng vẫn không trả, vẫn không trả lời tin nhắn — quan hệ đã rạn. Phương án: gọi 1 lần lịch sự nhắc, nếu vẫn không = chấp nhận mất tiền + cắt quan hệ. Ở Trung Quốc đại lục có 'thẻ tín dụng cá nhân' (个人信用) — quỵt nợ bạn có thể bị báo lên hệ thống.\n\nVỀ TIỀN BẠC GIA ĐÌNH: bố mẹ Trung Quốc thường biết tài chính của con (lương, tiết kiệm, nợ). Khác Việt Nam (con thường giấu). Khi vay tiền bạn, họ THƯỜNG hỏi ý kiến chồng/vợ + có thể bố mẹ. Nếu bạn cho mượn, biết rằng cả gia đình họ biết.\n\nVỀ APP TÀI CHÍNH: WeChat Pay (微信支付) + Alipay (支付宝) là 2 ứng dụng chính. Cả hai có lịch sử transfer + chức năng 'nhắc trả'. Khi cho vay, transfer qua app = bằng chứng tự động.",
@@ -15129,25 +15561,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "殊途同归",
         "literal": "đường khác nhau cùng đến (shū tú tóng guī)",
         "meaning": "Đường khác nhau nhưng cùng đến một đích — phương pháp khác, kết quả như nhau. Cụm tuyệt vời để chấp nhận đa dạng tôn giáo: 'mình tin X, bạn tin Y, 殊途同归, mình đều muốn làm người tốt'.",
-        "example": "信佛和信基督教殊途同归, 都是希望做善良的人。"
+        "example": "信佛和信基督教殊途同归, 都是希望做善良的人。",
+        "literal_en": "different roads, same destination (shū tú tóng guī)",
+        "meaning_en": "Different roads arriving at the same place — different methods, the same result; an excellent phrase to accept religious diversity ('I believe X, you believe Y — different roads, same destination, we both want to be good people'). (spoken/formal)",
+        "example_en": "Faith in Buddha and faith in Christ are different roads to the same place — both hope to make people good."
       },
       {
         "idiom": "善有善报",
         "literal": "thiện có thiện báo (shàn yǒu shàn bào)",
         "meaning": "Làm thiện được báo đáp thiện — nguyên tắc nhân quả phổ quát. Cụm trung tính, dùng cả khi không theo tôn giáo cụ thể: 'mình tin 善有善报, không cần theo tôn giáo'.",
-        "example": "我虽然不信教, 但相信善有善报。"
+        "example": "我虽然不信教, 但相信善有善报。",
+        "literal_en": "good is repaid with good (shàn yǒu shàn bào)",
+        "meaning_en": "Good deeds are repaid with good — a universal principle of cause and effect; a neutral phrase usable even without a specific religion ('I believe good is rewarded — no need to follow a religion'). (spoken)",
+        "example_en": "I'm not religious, but I believe good is repaid with good."
       },
       {
         "idiom": "因果报应",
         "literal": "nhân quả báo ứng (yīn guǒ bào yìng)",
         "meaning": "Nhân quả báo ứng — khái niệm nhân quả Phật giáo. Cụm formal hơn 善有善报, dùng trong context tâm linh: '我们相信因果, 所以做事要有善心'.",
-        "example": "佛教讲究因果报应, 做坏事会有报应。"
+        "example": "佛教讲究因果报应, 做坏事会有报应。",
+        "literal_en": "cause and effect, retribution (yīn guǒ bào yìng)",
+        "meaning_en": "Karmic cause and effect — a Buddhist concept of causality; more formal than 善有善报, used in a spiritual context ('we believe in karma, so we act with a kind heart'). (written/formal)",
+        "example_en": "Buddhism stresses karma — do bad and there will be consequences."
       },
       {
         "idiom": "心诚则灵",
         "literal": "tâm thành thì linh (xīn chéng zé líng)",
         "meaning": "Tâm thành thì linh ứng — đức tin mới quan trọng, không phải hình thức. Cụm tích cực, có thể dùng cả từ người không theo tôn giáo: 'không cần đi chùa nhiều, 心诚则灵'.",
-        "example": "拜佛不在次数多, 心诚则灵。"
+        "example": "拜佛不在次数多, 心诚则灵。",
+        "literal_en": "a sincere heart brings the response (xīn chéng zé líng)",
+        "meaning_en": "Sincerity makes it efficacious — faith matters, not form; positive, usable even by a non-religious person ('no need to visit the temple often — a sincere heart is what counts'). (spoken)",
+        "example_en": "Worship isn't about how many times — a sincere heart is what makes it work."
       }
     ],
     "cultural_notes_vi": "Tôn giáo ở Trung Quốc đại lục có khung văn hóa và pháp lý riêng. Năm điểm người Việt cần biết:\n\n(1) PHẬT GIÁO ở TRUNG QUỐC: phổ biến rộng, đặc biệt thế hệ ≥40 tuổi và vùng phía Nam (Phúc Kiến, Quảng Đông). Phật giáo Hán truyền (汉传佛教) chủ yếu Đại thừa (Mahayana) — ăn chay, chuỗi tràng, kinh kệ. Khác Phật giáo Việt Nam ít nhiều (Việt Nam có cả Đại thừa miền Bắc và Tiểu thừa miền Nam ở đồng bằng sông Cửu Long với cộng đồng Khmer).\n\n(2) NGÀY LỄ PHẬT GIÁO: Phật đản (佛诞日 — ngày 8 tháng 4 âm lịch), Vu Lan (盂兰盆 — ngày 15 tháng 7 âm lịch). Người Trung Quốc đến chùa thắp nhang, cầu nguyện, ăn chay. Người Việt Nam có ngày tương tự — chia sẻ văn hóa.\n\n(3) ĐẠO GIÁO (道教): bản địa Trung Quốc, ít phổ biến hơn Phật giáo nhưng có ảnh hưởng văn hóa lớn (Đạo gia, Phong thủy, Tử vi đều có gốc từ Đạo giáo). Hầu hết người Trung Quốc trộn lẫn Phật giáo + Đạo giáo + tín ngưỡng dân gian — không phân biệt rõ. Cụm '佛道双修' (theo cả Phật và Đạo) phổ biến.\n\n(4) CƠ ĐỐC GIÁO (基督教): phát triển nhanh ở thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu) — đặc biệt giới chuyên nghiệp + thế hệ trẻ. Có Catholic và Protestant chính thức được nhà nước công nhận. Bạn Trung Quốc theo Cơ Đốc thường ổn định + giáo dục cao + xã giao tốt.\n\n(5) VÔ THẦN (无神论): khoảng 60% dân số Trung Quốc tự nhận vô thần hoặc không tôn giáo. Đảng cộng sản chính thức là vô thần. Sinh viên đại học, công chức nhà nước thường không công khai tôn giáo. Người vô thần ở Trung Quốc thường có 'đạo đức thực dụng' — làm tốt, làm phải, không cần khái niệm nguồn từ tôn giáo.\n\nVỀ TÍN NGƯỠNG DÂN GIAN (民间信仰): cúng tổ tiên (拜祖宗), thần Thành Hoàng (城隍神), thần Tài (财神 — đặc biệt trước Tết), thần Bếp (灶王爷). Hầu hết người Trung Quốc có những hoạt động này NGAY CẢ KHI họ tự nhận vô thần. KHÔNG được coi là 'tôn giáo' chính thức — là văn hóa.\n\nVỀ KIÊNG KỴ ẨM THỰC:\n- Phật giáo Đại thừa nghiêm: chay trường, không trứng/sữa\n- Phật giáo bình thường: ăn chay vài ngày/tháng (ngày rằm, mùng 1 âm)\n- Hồi giáo: không thịt heo, không rượu\n- Cơ Đốc giáo: ít hạn chế ẩm thực (một số tránh rượu)\n- Hỏi TRƯỚC khi mời ăn — cụm '你有什么忌口吗?' (bạn có kiêng gì không?)\n\nVỀ TRUYỀN ĐẠO (传教): KHÔNG phổ biến ở Trung Quốc đại lục, đặc biệt từ phía người không phải đạo Cơ Đốc Mỹ. Nếu bạn Trung Quốc rủ đi chùa/nhà thờ, đó là 'mời xem văn hóa', không phải 'cố cải đạo bạn'. Thoải mái đi xem nếu tò mò, không bắt buộc nếu không.\n\nVỀ NGƯỜI VIỆT KHÔNG QUEN TÔN GIÁO TRUNG QUỐC: lễ chùa Trung Quốc và Việt Nam tương tự nhưng có khác biệt. Thắp 3 nén nhang là chuẩn. Quỳ lạy 3 lần. KHÔNG chụp ảnh tượng Phật trong nhà thờ trừ khi được phép. KHÔNG ăn mặc hở (váy ngắn, quần cộc) đến chùa.\n\nVỀ VIỆC PHỤC SINH KHÁC TÔN GIÁO: ở Trung Quốc đại lục, gia đình thường chấp nhận con cái khác tôn giáo, đặc biệt nếu là đến từ văn hóa khác (Việt Nam, đối tác quốc tế). Nhưng tôn giáo có thể là điểm bàn cãi trong việc dạy con. Thảo luận với chồng/vợ trước.",
@@ -15525,25 +15969,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "感同身受",
         "literal": "cảm như chính mình trải qua (gǎn tóng shēn shòu)",
         "meaning": "Cảm như chính mình đã trải qua — đồng cảm sâu sắc. Cụm dùng khi bạn thực sự cảm nhận được nỗi đau của họ, KHÔNG phải so sánh ('tôi cũng từng...'). 'Tôi 感同身受 nỗi đau của bạn'.",
-        "example": "听到你的故事, 我感同身受。"
+        "example": "听到你的故事, 我感同身受。",
+        "literal_en": "feel it as if in one's own body (gǎn tóng shēn shòu)",
+        "meaning_en": "To feel as though you went through it yourself — deep empathy; used when you genuinely feel their pain, NOT a comparison ('I went through that too'). Use it as 'I feel your pain deeply.' (spoken/formal)",
+        "example_en": "Hearing your story, I feel it as if it were my own."
       },
       {
         "idiom": "设身处地",
         "literal": "đặt thân vào nơi (shè shēn chǔ dì)",
         "meaning": "Đặt mình vào hoàn cảnh người khác — đồng cảm. Cụm dùng để thể hiện thấu hiểu: '设身处地, 我能理解你那时候有多难'.",
-        "example": "设身处地想想, 我也会做同样的选择。"
+        "example": "设身处地想想, 我也会做同样的选择。",
+        "literal_en": "place yourself in their position (shè shēn chǔ dì)",
+        "meaning_en": "Put yourself in another's circumstances — empathy; used to show understanding ('putting myself in your place, I can see how hard it was for you then'). (spoken/formal)",
+        "example_en": "Putting myself in your shoes, I'd have made the same choice."
       },
       {
         "idiom": "倾听是金",
         "literal": "lắng nghe là vàng (qīng tīng shì jīn)",
         "meaning": "Lắng nghe quý như vàng — KHÔNG là idiom 4 chữ thuần nhưng cụm phổ biến. Triết lý của người nghe tốt: im lặng chăm chú > nhiều lời.",
-        "example": "有时候倾听是金, 比说什么都重要。"
+        "example": "有时候倾听是金, 比说什么都重要。",
+        "literal_en": "listening is gold (qīng tīng shì jīn)",
+        "meaning_en": "Listening is precious as gold — NOT strictly a four-character idiom but a common phrase; the philosophy of a good listener: attentive silence beats many words. (spoken)",
+        "example_en": "Sometimes listening is gold — more important than anything you could say."
       },
       {
         "idiom": "时间会治愈一切",
         "literal": "thời gian sẽ chữa lành tất cả (shí jiān huì zhì yù yī qiè)",
         "meaning": "Thời gian là thuốc — câu phổ biến nhưng cẩn thận. Tránh dùng khi nỗi đau còn TƯƠI — sẽ bị coi là vô cảm. Dùng khi họ đang ở giai đoạn hồi phục, công nhận rằng quá trình tiếp tục.",
-        "example": "时间会治愈, 但治愈不等于忘记。"
+        "example": "时间会治愈, 但治愈不等于忘记。",
+        "literal_en": "time will heal everything (shí jiān huì zhì yù yī qiè)",
+        "meaning_en": "Time is the medicine — a common phrase, but use with care. Avoid it while the pain is still RAW — it reads as callous. Use when they are in the recovery phase, acknowledging the process continues. (spoken)",
+        "example_en": "Time will heal — but healing isn't the same as forgetting."
       }
     ],
     "cultural_notes_vi": "Lắng nghe chuyện khó là kỹ năng tình bạn cấp cao. Khác văn hóa Việt Nam ở vài điểm:\n\n(1) NGƯỜI TRUNG QUỐC GIẤU SÂU: nỗi đau cá nhân, nhất là chuyện thời thơ ấu (gia đình, bạo lực, bệnh tâm thần) hiếm khi được kể. Khi họ chia sẻ với bạn = họ tin tưởng cao nhất. Đối xử với câu chuyện như 'kho báu được giao'.\n\n(2) STIGMA TÂM LÝ vẫn còn: ở Trung Quốc đại lục thế hệ ≥35 tuổi, đi gặp 心理医生 (psychologist) vẫn có stigma — bị coi là 'có bệnh tâm thần'. Người trẻ thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến) đã thoáng hơn. Khi bạn Trung Quốc thừa nhận đã đi khám tâm lý, đó là dấu hiệu họ tin bạn.\n\n(3) BULLYING (校园欺凌 — xiàoyuán qīlíng): vấn đề lớn ở trường học Trung Quốc, đặc biệt cấp 2-3. Những năm gần đây mới được công khai thảo luận sau nhiều vụ tự sát. Nếu bạn Trung Quốc kể về bị bắt nạt, ĐỪNG hỏi 'sao không báo thầy cô' — phần lớn không hiệu quả + có thể tăng bắt nạt.\n\n(4) GIA ĐÌNH RỐI LOẠN (失功能家庭): nghiện rượu, bạo lực gia đình, ly hôn không phổ biến công khai ở Trung Quốc nhưng tồn tại nhiều. Người Trung Quốc thường giấu vì 'thể diện gia đình' (家丑不可外扬 — chuyện xấu trong nhà không nên ra ngoài). Khi họ kể với bạn = vi phạm chuẩn mực gia đình truyền thống vì tin bạn.\n\n(5) THI ĐẠI HỌC (高考 — gāokǎo): áp lực không tưởng. Trượt cao khảo có thể là vết thương tâm lý cả đời. Khi bạn Trung Quốc kể về việc 'thi trượt', không nói 'thi cử không quan trọng' — đó là invalidate. Văn hóa Trung Quốc thực sự 'thi cử quyết định tương lai' với phần lớn người dân.\n\nVỀ THE 12-HOUR RULE: sau khi nghe chuyện khó, KHÔNG để đó. Nhắn lại trong 12-24 giờ: '昨天晚上你说的事我一直在想, 你今天怎么样?' (chuyện tối qua bạn kể mình vẫn đang nghĩ, hôm nay bạn thế nào?). Cử chỉ 'theo dõi' này quan trọng — chứng tỏ bạn thực sự nghe + quan tâm.\n\nVỀ TRIGGERING: tin tức về bạo lực/tự sát/lạm dụng có thể trigger người từng bị. Khi bạn Trung Quốc nói 'tuần này có chuyện trong tin tức làm tôi nhớ lại', đó là dấu hiệu PTSD hoặc trauma. Hỗ trợ thực tế: tránh thảo luận chi tiết tin tức + hỏi 'bạn cần gì bây giờ?'.\n\nVỀ BÍ MẬT: tuyệt đối tuyệt đối không kể cho ai khác. Kể cả chồng/vợ. Kể cả bạn chung. Người Trung Quốc 记仇 (ghi nhớ phản bội) — vi phạm bí mật = mất quan hệ vĩnh viễn + có thể bị họ kể với người khác để 'phản bội ngược'.\n\nVỀ HOTLINE TÂM LÝ tại Trung Quốc đại lục:\n- 12320 (hotline sức khỏe quốc gia, có nhánh tâm lý)\n- Beijing Suicide Hotline 010-82951332 (24/7, tiếng Trung)\n- 北京回龙观医院心理援助热线 010-82951332\n- Mạng lưới WeChat 'Crisis Lines China' có danh sách hotline cập nhật\n\nĐỀ XUẤT chuyên gia khi bạn không đủ năng lực: nếu bạn Trung Quốc nói về tự hại/tự sát, không xử lý một mình. Hỗ trợ + giới thiệu chuyên gia là CÙNG MỘT việc tốt, không phải mâu thuẫn.",
@@ -15907,25 +16363,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "君子之交淡如水",
         "literal": "tình bạn quân tử nhạt như nước (jūn zǐ zhī jiāo dàn rú shuǐ)",
         "meaning": "Tình bạn của quân tử nhạt như nước — không ồn ào, không bám dính, không kỳ vọng quá. Trang Tử (Zhuangzi). Cụm cao cấp dùng để định khung healthy boundaries: 'mình thân nhưng không cần liên lạc 24/7, đó là 君子之交'.",
-        "example": "君子之交淡如水, 不需要时时刻刻在一起。"
+        "example": "君子之交淡如水, 不需要时时刻刻在一起。",
+        "literal_en": "a gentleman's friendship is plain as water (jūn zǐ zhī jiāo dàn rú shuǐ)",
+        "meaning_en": "A noble person's friendship is plain as water — no noise, no clinging, no excessive expectation. From Zhuangzi. An advanced phrase to frame healthy boundaries ('we're close but don't need 24/7 contact — that's a gentleman's friendship'). (written/literary)",
+        "example_en": "A gentleman's friendship is plain as water — it doesn't need us together every moment."
       },
       {
         "idiom": "距离产生美",
         "literal": "khoảng cách sinh ra cái đẹp (jù lí chǎn shēng měi)",
         "meaning": "Khoảng cách tạo ra cái đẹp — không gian giúp giữ tình cảm. Cụm hiện đại, phổ biến trong giới trẻ. Dùng để giải thích vì sao cần boundary: 'mình không cần gặp mỗi tuần, 距离产生美'.",
-        "example": "好朋友也需要距离产生美。"
+        "example": "好朋友也需要距离产生美。",
+        "literal_en": "distance creates beauty (jù lí chǎn shēng měi)",
+        "meaning_en": "Distance produces beauty — space helps preserve affection; a modern phrase, popular among young people, used to explain why a boundary is needed ('we don't need to meet every week — distance creates beauty'). (spoken)",
+        "example_en": "Even good friends need a little distance to keep things beautiful."
       },
       {
         "idiom": "划清界限",
         "literal": "vạch rõ ranh giới (huà qīng jiè xiàn)",
         "meaning": "Vạch rõ ranh giới — đặt giới hạn rõ ràng. Cụm hành động cụ thể, đôi khi mang nghĩa hơi mạnh (như tách đôi quan hệ). Dùng cẩn thận — '我们要划清一些界限' nhẹ hơn '我要跟你划清界限' (cắt đứt).",
-        "example": "好朋友之间也需要划清一些界限。"
+        "example": "好朋友之间也需要划清一些界限。",
+        "literal_en": "draw a clear boundary line (huà qīng jiè xiàn)",
+        "meaning_en": "To draw a clear line — set explicit limits; a concrete action phrase, sometimes a bit strong (as in cutting a relationship). Use with care — '我们要划清一些界限' is gentler than '我要跟你划清界限' (a full cut-off). (spoken)",
+        "example_en": "Even good friends need to draw some clear lines."
       },
       {
         "idiom": "互相尊重",
         "literal": "lẫn nhau tôn trọng (hù xiāng zūn zhòng)",
         "meaning": "Tôn trọng lẫn nhau — KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi cho boundary. Câu kết sau khi đặt giới hạn: '我们互相尊重就好' (mình tôn trọng nhau là đủ).",
-        "example": "朋友之间最重要的是互相尊重。"
+        "example": "朋友之间最重要的是互相尊重。",
+        "literal_en": "mutual respect (hù xiāng zūn zhòng)",
+        "meaning_en": "To respect each other — NOT strictly a four-character idiom but a core phrase for boundaries; the closing line after setting a limit ('mutual respect is enough for us'). (spoken)",
+        "example_en": "The most important thing between friends is mutual respect."
       }
     ],
     "cultural_notes_vi": "Đặt giới hạn (设定界限 — shèdìng jièxiàn) là khái niệm tâm lý phương Tây mới được quan tâm ở Trung Quốc đại lục (đặc biệt từ 2015+). Khác văn hóa Việt Nam ở vài điểm:\n\n(1) FRIENDSHIP TRADITIONAL CHINA: ngày xưa, bạn 'thân' = chia sẻ tất cả, có mặt mọi lúc, can dự sâu vào đời sống nhau. Khái niệm 'boundary' bị coi là 'không thân'. Khi bạn đặt giới hạn với bạn Trung Quốc thế hệ ≥40 tuổi, có thể bị hiểu lầm là 'mình không thân nữa'.\n\n(2) FRIENDSHIP MODERN URBAN: thế hệ trẻ (millennials, gen Z) ở Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến đã chấp nhận boundary. Họ đọc tâm lý học, biết khái niệm 'attachment style', 'codependency'. Đặt giới hạn với họ = OK + được tôn trọng.\n\n(3) CỐT LÕI VĂN HÓA — '君子之交淡如水': Trang Tử (thế kỷ 4 TCN) đã viết về tình bạn 'nhạt như nước' — không ồn ào, không bám. Đây là cơ sở văn hóa Trung Quốc để biện minh cho boundary. Khi bạn dùng cụm này = bạn CÓ truyền thống Trung Quốc ủng hộ — không phải khái niệm 'phương Tây áp đặt'.\n\n(4) KIỂU LẠM DỤNG (over-friendship): bạn Trung Quốc có thể: gọi điện cuối tuần dài giờ, đến nhà không báo trước, đề xuất chia sẻ tài chính (vay không trả), kể chuyện riêng tư của bạn cho người khác, yêu cầu giúp đỡ liên tục, tham gia sự kiện gia đình của bạn không được mời. Đây không phải 'thô lỗ' — là phong cách 'thân' khác. Bạn cần đặt boundary nhẹ nhàng từng bước.\n\n(5) WECHAT BOUNDARIES: WeChat 24/7 → bạn có thể nhắn lúc nào cũng được. Đây là vấn đề boundary cơ bản. Cách giải quyết: tắt notification ban đêm + thông báo cho bạn 'mình không trả lời sau 22h, sáng mai trả lại'. Nếu họ thực sự khẩn, gọi thay vì nhắn.\n\nVỀ STAGES OF BOUNDARY SETTING:\n\nGiai đoạn 1 (1-2 lần): nhẹ nhàng, gián tiếp. 'Hôm nay mình mệt, mai gọi lại'. Họ có thể không nhận ra.\n\nGiai đoạn 2 (3-4 lần): cụ thể. 'Có thể không gọi nửa đêm trừ khi khẩn không?'. Họ có thể xin lỗi nhanh.\n\nGiai đoạn 3 (5+ lần lặp lại): nghiêm túc. Cuộc nói chuyện chính thức như trong dialogue 91. Đặt cấu trúc rõ ràng.\n\nGiai đoạn 4 (vẫn không thay đổi): xét lại quan hệ. Có thể chuyển sang quan hệ 'nhẹ hơn' (không phải bạn thân, chỉ là người quen).\n\nVỀ POST-BOUNDARY: trong 1-2 tháng sau khi đặt giới hạn, theo dõi:\n\n- Nếu họ điều chỉnh hành vi → quan hệ bền vững hơn, lên cấp trưởng thành\n- Nếu họ phớt lờ → lặp lại + nghiêm túc hơn\n- Nếu họ rút lui hoàn toàn → có thể họ không có khả năng quan hệ trưởng thành. Thư giãn, không níu kéo\n\nVỀ GENDER + AGE NORMS: phụ nữ đặt giới hạn với phụ nữ thường khó hơn (cảm xúc cao hơn). Nam đặt giới hạn với nam dễ hơn (ngắn gọn). Đặt giới hạn với người lớn tuổi hơn — đặc biệt khó (văn hóa kính trọng tuổi). Cần dùng cụm formal hơn + thừa nhận họ lớn tuổi.\n\nVỀ COUSIN TOPICS: tình bạn cộng hưởng (codependent friendship) — bạn thấy mình bị consume bởi cảm xúc của bạn → boundary là cứu chữa, không phải lạnh lùng. Tình bạn 'năng lượng âm' (toxic friendship) — bạn cảm thấy tệ sau mỗi cuộc nói chuyện → có thể cần khoảng cách lớn hơn boundary.",
