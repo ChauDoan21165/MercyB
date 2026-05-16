@@ -36,13 +36,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "図書館は静かです。",
-        "english": "The library is quiet."
+        "english": "The library is quiet.",
+        "pronunciation_focus_en": [
+          "図書館 (としょかん) → 'to-sho-kan'; ん is its own beat (moraic n), four even mora",
+          "は → topic particle, pronounced 'wa', never 'ha' (carried from A1)",
+          "静か (しずか) → 'shi-zu-ka'; ず is a voiced 'zu' — a na-adjective even though it ends in -a",
+          "です → 'des', final vowel devoiced; here です is the polite predicate, not 'is' as a verb"
+        ]
       },
       {
         "japanese": "彼女は元気な人です。",
-        "english": "She is an energetic person."
+        "english": "She is an energetic person.",
+        "pronunciation_focus_en": [
+          "彼女 (かのじょ) → 'ka-no-jo'; じょ is one beat (soft 'j' + 'o'), not 'jo-o'",
+          "元気な → 'gen-ki-na'; the な is the mandatory linker before a noun — drop it and it's wrong",
+          "人 (ひと) → 'hi-to' here ('person'); breathy ひ, two equal beats",
+          "です → 'des', devoiced final vowel"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Japanese splits adjectives into two grammatical machines, and na-adjectives are the half that behaves almost like a noun. 静か, 元気, 綺麗 attach to a following noun with な (元気な人 = 'energetic person') and take です as a polite predicate — structurally closer to 'is a quiet [thing]' than to English 'quiet,' which is just one word doing one job. There is no real American parallel: English never makes you pick an adjective 'type' before you can use it. The cultural payload is subtle but real — words like 元気 ('healthy/energetic/in good spirits') and 綺麗 ('beautiful/clean') bundle senses English keeps apart, so 元気ですか is closer to 'are you in good spirits?' than a literal health check, and calling a room 綺麗 praises its cleanliness as much as its looks. This is also where the politeness register established at A1 hardens into grammar: です is no longer optional decoration — its presence or absence is the difference between polite and plain speech, and A2 stays firmly in です/ます.",
+    "tip_advice_en": "Highest-leverage trap: you cannot tell a na-adjective from an i-adjective by its ending — you must learn the type with the word. 綺麗 (きれい) and 嫌い (きらい) END in -i but are na-adjectives (綺麗な花, NOT 綺麗い花); 元気 likewise. Mislabeling these as i-adjectives and conjugating 綺麗い is the single most common A2 error, precisely because the sound misleads you. Drill the contrast: na-adjective negative is ではありません / じゃないです (静かじゃないです), and — connecting to the A1 rule that an i-adjective rejects だ — a na-adjective DOES take だ in plain speech (静かだ), because it patterns like a noun. Pronunciation watch-point: the linking な (元気な人) is a full mora; English speakers swallow it. Say each new adjective aloud as 'X な + noun' so the な never goes missing."
   },
   {
     "id": 17,
@@ -79,13 +93,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "毎日コーヒーを飲みます。",
-        "english": "I drink coffee every day."
+        "english": "I drink coffee every day.",
+        "pronunciation_focus_en": [
+          "毎日 (まいにち) → 'mai-ni-chi'; a frequency word — like 今日/明日 it takes NO time particle",
+          "コーヒー → 'ko-o-hi-i', four beats, both ー held (carried from A1 L2)",
+          "を → object particle, pronounced 'o' (never 'wo'); keep it light",
+          "飲みます → 'no-mi-mas'; final す devoiced — present-tense ます also covers the future"
+        ]
       },
       {
         "japanese": "明日学校へ行きます。",
-        "english": "I will go to school tomorrow."
+        "english": "I will go to school tomorrow.",
+        "pronunciation_focus_en": [
+          "明日 (あした) → 'a-shi-ta', three even mora",
+          "学校 (がっこう) → 'ga(k)-ko-o'; small っ = a held silent beat, こう a long 'oh'",
+          "へ → direction particle: written as kana 'he' but pronounced 'e' (carried from A1)",
+          "行きます → 'i-ki-mas', devoiced final す; same form means 'go' and 'will go'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "The polite ます verb is the spine of adult Japanese, and meeting it here is a register decision as much as a grammar one: ます is the default for talking to anyone who isn't a close friend or family, so an adult learner who masters ます can function in nearly every public situation without ever touching the plain form. English has no equivalent — we don't re-conjugate 'eat' depending on who's listening. One structural fact surprises English speakers immediately: there is no separate future tense. 飲みます is both 'I drink' and 'I will drink'; time is carried by words like 明日 ('tomorrow') and 毎日 ('every day'), not by the verb. Verbs also sit at the very end of the sentence, after the object and destination, so a listener often doesn't learn the action until you finish — which is part of why interrupting is dispreferred and why 'aizuchi' (listener noises like ええ, そうですか) matter: the speaker needs to reach the verb. Note too that relative-time words (今日, 明日, 毎日) take no particle, unlike clock times and named days, which take に.",
+    "tip_advice_en": "Highest-leverage framework: every Japanese verb belongs to one of three groups, and the group decides every later conjugation (negative, past, te-form, potential). Group 2 / ichidan (食べる→食べます, 見る→見ます) just swaps る for ます; Group 1 / godan (飲む→飲みます, 行く→行きます) shifts the final sound to the -i row before ます; the irregulars are only します (do) and 来ます (come). Learn each new verb WITH its group from day one — this is the single best investment at A2, because te-form (Lesson 20), past, and potential all branch from it. Watch the two famous irregular readings: 行きます is 'i-ki-mas' and 来ます is 'ki-mas' (not 'ku-mas'). Pronunciation: every polite form ends in a devoiced す ('-mas', not '-masu') — overpronouncing the 'u' is the clearest non-native tell. Drill: take five verbs, say group number then ます form aloud."
   },
   {
     "id": 18,
@@ -122,13 +150,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "昨日すしを食べました。",
-        "english": "I ate sushi yesterday."
+        "english": "I ate sushi yesterday.",
+        "pronunciation_focus_en": [
+          "昨日 (きのう) → 'ki-no-o'; an irregular kanji reading, final long 'oh' — relative-time word, NO particle",
+          "すし → 'su-shi', two even mora; the す is light",
+          "を → object particle, 'o'",
+          "食べました → 'ta-be-ma-shi-ta'; the past ending is ました 'ma-shi-ta', the final た clipped"
+        ]
       },
       {
         "japanese": "映画を見ませんでした。",
-        "english": "I did not watch a movie."
+        "english": "I did not watch a movie.",
+        "pronunciation_focus_en": [
+          "映画 (えいが) → 'e-e-ga'; えい is a long 'eh' (two beats), hard g",
+          "を → object particle, 'o'",
+          "見ませんでした → 'mi-ma-sen-de-shi-ta'; the full negative-past tail — five beats, don't compress it",
+          "ません + でした → negative past is built by ADDING でした to ません, not by changing it"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Japanese past tense is mechanically simple but reveals a design principle worth noticing: politeness and tense are stacked as separate layers, not fused. ます → past ました; the negative ません → negative-past ませんでした (literally 'not-do' + 'was'). English fuses this ('didn't watch'); Japanese builds it block by block, which is actually a relief once you see the lego logic — there are no irregular past-tense verbs in the polite form, unlike English 'go/went, eat/ate.' A cultural note that matters for learners: Japanese conversation leans on the past politely and often — 〜ました for 'I did' reports, and the same form softens into etiquette set-phrases (どうも、ありがとうございました after a completed favor uses past ございました precisely because the act is finished). Time is still carried by adverbs (昨日 'yesterday'), not extra verb endings, and 昨日/今日/明日 take no particle. There's no American parallel for the politeness-layer being a separate slot; treat it as Japanese's way of keeping social register and time information independent.",
+    "tip_advice_en": "Highest-leverage rule: build the polite negative-past by ADDING でした to ません — 見ません → 見ませんでした. Don't look for a fused form; Japanese stacks layers (verb + politeness + tense), so once you can say ます/ません/ました the fourth form is just ません+でした. This regularity is a gift: there are zero irregular polite past tenses, unlike English go/went. The English-speaker error here is compressing the long tail — 'mi-masen-deshta' said too fast loses beats and intelligibility. Pronunciation watch-points: every ました ends 'ma-shi-ta' with a devoiced, almost-silent final 'ta'; 昨日 is irregular きのう ('ki-no-o', long final vowel), a frequent misread as 'sakujitsu' (that reading exists but is formal/written). Drill one verb through all four: 食べます / 食べません / 食べました / 食べませんでした, keeping every mora even."
   },
   {
     "id": 19,
@@ -157,17 +199,37 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "私は学生です。",
-        "english": "I am a student (topic)."
+        "english": "I am a student (topic).",
+        "pronunciation_focus_en": [
+          "私 (わたし) → 'wa-ta-shi', three flat even beats",
+          "は → TOPIC particle here: pronounced 'wa', never 'ha' (the spelling-vs-sound split from A1)",
+          "学生 (がくせい) → 'ga-ku-se-e'; せい is a long 'eh', not 'say'",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "猫がいます。",
-        "english": "There is a cat (subject)."
+        "english": "There is a cat (subject).",
+        "pronunciation_focus_en": [
+          "猫 (ねこ) → 'ne-ko', two even mora",
+          "が → SUBJECT particle: a hard 'g' as in 'go' ('ga'), not 'gha'; introduces new information",
+          "います → 'i-mas' (animate existence — used for the cat; あります for objects)",
+          "contrast: 猫がいます answers 'what's there?'; 猫はいます would answer 'is the cat there?'"
+        ]
       },
       {
         "japanese": "本を読みます。",
-        "english": "I read a book (object)."
+        "english": "I read a book (object).",
+        "pronunciation_focus_en": [
+          "本 (ほん) → 'hon'; ん is its own beat",
+          "を → OBJECT particle: pronounced 'o', a bare vowel — keep it nearly weightless",
+          "読みます → 'yo-mi-mas', devoiced final す",
+          "three particles, three jobs: は frames, が selects, を targets"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "は vs が is the deepest, longest-running difficulty English speakers have in Japanese, and it is genuinely structural, not a vocabulary gap — English has no topic particle at all. は marks the TOPIC ('as for X, …', the frame you're talking within); が marks the grammatical SUBJECT, and is the choice for new information, exhaustive identification ('it is X that…'), and the existence pattern (猫がいます). The classic contrast: 私は学生です answers 'tell me about you' (you, as topic, are a student), while 私が学生です answers 'which of you is the student?' (it's ME). There's no clean American analogy; the nearest is the difference between 'As for me, I'm the student' and stressed 'I'M the student,' but Japanese grammaticalizes that into a particle choice every sentence. を, the object marker, is comparatively easy — it just flags what the verb acts on. Pragmatically this maps onto a cultural habit: Japanese sentences are built topic-first, so conversation tends to establish a shared frame (は) before adding the new, informative piece (が) — front-loading common ground rather than the new claim, which can read as more cooperative and less assertive than English's subject-first default.",
+    "tip_advice_en": "Highest-leverage mental model: は is a spotlight on the TOPIC ('about X…'); が picks out the SUBJECT, especially new or contrastive information. Don't translate either as 'is' — both are invisible in English. A reliable A2 heuristic: answers to 'what/who?' questions and 'there is…' existence take が (猫がいます); statements framing a known thing take は (私は学生です). Memorize the three pronunciations as a set, because two break their spelling: は = 'wa' (topic), が = 'ga' (hard g), を = 'o' (bare vowel, never 'wo'). The predictable English-speaker error is defaulting everything to は because it appears first in textbooks; force yourself to ask 'am I framing (は) or selecting/introducing (が)?' Drill the minimal pair aloud: 私は学生です ('about me — student') vs 私が学生です ('the student is ME'), feeling the meaning flip with the particle, not the words."
   },
   {
     "id": 20,
@@ -204,13 +266,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "窓を開けてください。",
-        "english": "Please open the window."
+        "english": "Please open the window.",
+        "pronunciation_focus_en": [
+          "窓 (まど) → 'ma-do', two even mora",
+          "を → object particle, 'o'",
+          "開けて → 'a-ke-te'; the て-form of 開ける (a Group-2 verb: just る→て)",
+          "ください → 'ku-da-sa-i'; 〜てください = polite request 'please do' (carried from A1)"
+        ]
       },
       {
         "japanese": "今、勉強しています。",
-        "english": "I am studying now."
+        "english": "I am studying now.",
+        "pronunciation_focus_en": [
+          "今 (いま) → 'i-ma', two even mora; relative-time word, no particle",
+          "勉強 (べんきょう) → 'ben-kyo-o'; ん its own beat, きょう a long 'oh'",
+          "しています → 'shi-te-i-mas'; て-form + います = ongoing action ('am studying')",
+          "in speech the い of ています often drops → 'shi-te-mas' (normal, not sloppy)"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "The te-form is the single most productive conjugation in Japanese — the hinge the whole verb system swings on. It is not a tense; it is a connector that feeds dozens of A2–B1 patterns: 〜てください (please do), 〜ています (be doing / ongoing state), 〜てから (after doing), 〜てもいいです (may I), 〜てはいけません (must not). Learn it once and a large chunk of the grammar ahead unlocks; skip it and everything downstream stalls. There's no real English parallel — '-ing' covers only a sliver of what te-form does. A genuinely cultural point lives inside 〜ています: it expresses not just 'in progress' but resultant state, so 結婚しています means 'I am married' (state from a past act), not 'I am marrying' — mapping it onto English progressive misfires. And 〜てください, though textbook-'please,' is still a soft command; in service and senior-facing situations Japanese reaches for gentler forms (〜ていただけますか, Lessons 21–22), so treat 〜てください as polite-neutral, not maximally deferential.",
+    "tip_advice_en": "Highest-leverage investment of all of A2: drill te-form until it is automatic, because every later pattern (progressive, permission, sequence, prohibition, and B1's giving/receiving) is built on it. The work is the Group-1 (godan) sound changes — memorize them as song-like buckets: う・つ・る → って (買う→買って), む・ぶ・ぬ → んで (飲む→飲んで, 読む→読んで), く → いて (書く→書いて), ぐ → いで (泳ぐ→泳いで), す → して (話す→話して); Group-2 just る→て (食べる→食べて); irregulars して (する) and 来て (くる). The classic exception to flag, not skip: 行く → 行って (not 行いて). Pronunciation watch-point: the small っ in 買って/行って is a held silent beat — the #488 mora rule — and the い of ています routinely drops in speech ('-te-mas'), which is standard, not lazy. Drill: sort ten verbs into their te-form bucket out loud before forming any."
   },
   {
     "id": 21,
