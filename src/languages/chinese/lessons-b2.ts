@@ -5765,6 +5765,12 @@ export const lessons: ChineseLesson[] = [
           "特色 → tèsè (nét đặc sắc)",
           "既...也... → jì... yě... (vừa... vừa...)",
           "文化 → wénhuà (văn hóa)"
+        ],
+        "pronunciation_focus_en": [
+          "相似之处 → xiāngsì zhī chù ('points of similarity')",
+          "特色 → tèsè ('distinctive features')",
+          "既…也… → jì… yě… ('both… and…')",
+          "文化 → wénhuà ('culture')"
         ]
       },
       {
@@ -5777,6 +5783,12 @@ export const lessons: ChineseLesson[] = [
           "孝道 → xiàodào (đạo hiếu)",
           "同根同源 → tóng gēn tóng yuán (cùng gốc cùng nguồn)",
           "儒家 → Rújiā (Nho gia)"
+        ],
+        "pronunciation_focus_en": [
+          "重视 → zhòngshì ('to value')",
+          "孝道 → xiàodào ('filial piety')",
+          "同根同源 → tóng gēn tóng yuán ('same root, same source')",
+          "儒家 → Rújiā ('the Confucian school')"
         ]
       },
       {
@@ -5789,6 +5801,12 @@ export const lessons: ChineseLesson[] = [
           "元素 → yuánsù (yếu tố)",
           "奥黛 → àodài (áo dài)",
           "河粉 → héfěn (phở)"
+        ],
+        "pronunciation_focus_en": [
+          "独特 → dútè ('unique')",
+          "元素 → yuánsù ('element')",
+          "奥黛 → àodài ('ao dai', the loanword)",
+          "河粉 → héfěn ('pho')"
         ]
       },
       {
@@ -5801,6 +5819,12 @@ export const lessons: ChineseLesson[] = [
           "建筑 → jiànzhù (kiến trúc)",
           "饮食 → yǐnshí (ẩm thực)",
           "风情 → fēngqíng (phong vị)"
+        ],
+        "pronunciation_focus_en": [
+          "殖民 → zhímín ('to colonize / colonization')",
+          "建筑 → jiànzhù ('architecture')",
+          "饮食 → yǐnshí ('food and drink')",
+          "风情 → fēngqíng ('flavor/charm')"
         ]
       },
       {
@@ -5813,6 +5837,12 @@ export const lessons: ChineseLesson[] = [
           "尊重 → zūnzhòng (tôn trọng)",
           "差异 → chāyì (khác biệt)",
           "交流 → jiāoliú (giao lưu)"
+        ],
+        "pronunciation_focus_en": [
+          "求同存异 → qiú tóng cún yì (idiom: 'seek common ground while keeping differences')",
+          "尊重 → zūnzhòng ('to respect')",
+          "差异 → chāyì ('difference')",
+          "交流 → jiāoliú ('to exchange/communicate')"
         ]
       }
     ],
@@ -6055,7 +6085,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Giao tiếp văn hóa Việt-Trung là khu vực 'đẹp đẽ nhưng nhạy cảm'. Hai nước có 2000+ năm lịch sử giao thoa, cùng nền tảng Nho gia, cùng Tết âm lịch, cùng dùng đũa, cùng coi trọng học vấn và đạo hiếu — tỉ lệ tương đồng văn hóa cao hơn bất kỳ cặp nước nào khác. NHƯNG cũng có lịch sử xung đột (Bắc thuộc 1000 năm, 1979 border war, tranh chấp biển), nên giao tiếp văn hóa cần 'maturity' — không lảng tránh nhưng không khơi mào.\n\nKhi đồng nghiệp Trung Quốc hỏi câu nhạy cảm, có 4 cách phản ứng tốt: (1) Thừa nhận sự thật khách quan: 'lịch sử có giai đoạn X, sau đó Y' — không phán xét. (2) Chuyển sang khía cạnh tích cực: 'nhưng hiện nay quan hệ kinh tế rất tốt'. (3) Đề xuất chủ đề thay thế: 'mình nói về ẩm thực hai nước thì hay hơn'. (4) Dùng cụm 'đây là chủ đề phức tạp, mình từ từ nói sau' — để dành cho lúc thân hơn.\n\nVề 'điểm chung an toàn' nên khai thác: ẩm thực (cả hai có món tương tự — phở/lamian, bún/miến), Tết âm lịch (cùng ngày, cùng phong tục lì xì), đạo hiếu (giống nhau 90%), trà/cà phê, võ thuật (Việt Nam có Vovinam, Trung có wushu). Đây là 'safe zones' để bonding.\n\n'Điểm chung tránh': lịch sử cổ đại (Bắc thuộc), 1979, biển đảo, vấn đề Đài Loan, Tân Cương/Tây Tạng. Người Việt thông minh KHÔNG nêu quan điểm về vấn đề nội bộ Trung Quốc — không phải sợ, mà vì không phải việc của mình.\n\nVề ảnh hưởng Pháp: đề cập tự nhiên (kiến trúc Hà Nội, cà phê, bánh mì), KHÔNG so sánh thuộc địa Pháp với Bắc thuộc Trung Quốc — đó là so sánh sai và sẽ tạo căng thẳng. Pháp = colonial; Trung Quốc cổ đại = phức tạp hơn (vừa colonial vừa cultural exchange).\n\nMột mẹo cuối: học 5-10 cụm tiếng Trung về văn hóa (儒家, 孝道, 同根同源, 求同存异) — khi bạn dùng đúng cụm này, đồng nghiệp Trung sẽ cảm thấy bạn 'thông hiểu' văn hóa của họ và tôn trọng bạn hơn.",
+    "cultural_notes_en": "Cross-cultural communication between China and a neighboring country with deep shared heritage is 'beautiful but sensitive.' Such pairs share a Confucian base, the lunar New Year, chopsticks, and a reverence for learning and filial piety — a cultural overlap higher than almost any other country pair. But there is also a history of conflict, so this kind of communication needs maturity — neither avoiding the topic nor initiating it.\n\nWhen a Chinese colleague asks a sensitive question, there are four good responses: (1) Acknowledge the objective fact: 'history had a period X, then Y' — no judgment. (2) Pivot to the positive: 'but economic ties are very good now.' (3) Propose a substitute topic: 'it's nicer to talk about the two cuisines.' (4) Use 'this is a complex topic, let's talk slowly another time' — saving it for when you're closer.\n\n'Safe common ground' worth using: food (both have analogues), the lunar New Year (same date, same red-envelope custom), filial piety (~90% the same), tea/coffee, martial arts. These are bonding safe zones.\n\n'Common ground to avoid': ancient history, border conflict, maritime disputes, the Taiwan question, ethnic-region topics. A thoughtful speaker does NOT opine on China's internal affairs — not from fear, but because it isn't one's place.\n\nOn French colonial influence: mention it naturally (Hanoi architecture, coffee, the baguette), but do NOT equate French colonialism with ancient Chinese suzerainty — a false comparison that creates tension. The two histories are structurally different and shouldn't be flattened together.\n\nA final tip: learn 5-10 Chinese phrases about culture (儒家 'Confucianism', 孝道 'filial piety', 同根同源 'shared roots', 求同存异 'seek common ground while preserving differences') — using them correctly makes a Chinese colleague feel you 'truly understand' their culture and respect you more.",
     "tip_advice_vi": "(1) Chuẩn bị '5 facts về Việt Nam' để giới thiệu khi được hỏi: (a) dân số 100 triệu, (b) 54 dân tộc, (c) thủ đô Hà Nội 1000 năm, (d) 3000km bờ biển, (e) xuất khẩu cà phê thứ 2 thế giới. Số liệu cụ thể > adjective trống. (2) Mang theo 'cultural ambassador kit': bưu thiếp Hà Nội/Vịnh Hạ Long, mẫu cà phê G7, ảnh áo dài, bản nhạc dân ca. Chia sẻ tự nhiên trong cuộc nói chuyện, không bài bản. (3) KHI ĐƯỢC HỎI câu nhạy cảm (1979, biển đảo), đáp '这个问题比较复杂, 不同人有不同观点。我们还是聊文化吧' (câu này phức tạp, nhiều người có quan điểm khác. Mình nói văn hóa thôi nhé). Lịch sự + chuyển hướng. (4) Dạy đồng nghiệp 5-10 từ tiếng Việt cơ bản: chào, cảm ơn, ngon, đắt, rẻ, một, hai, ba — đây là cử chỉ thân thiện, mọi người đều thích. Chấp nhận họ phát âm sai, không cười. (5) Khi đồng nghiệp Trung Quốc đến Việt Nam, dẫn họ đến: phở (an toàn), cà phê trứng (đặc sản), Văn Miếu (chia sẻ Khổng Tử). Tránh: bún đậu mắm tôm (mùi mạnh lần đầu), nhà thờ (tôn giáo nhạy cảm). (6) Trên WeChat Moments của bạn, đăng ảnh văn hóa Việt Nam với caption tiếng Trung — đây là cách thụ động giáo dục đồng nghiệp. Họ sẽ học được nhiều mà bạn không cần giảng. (7) Cụm văn học 'mạnh': '海内存知己, 天涯若比邻' (Vương Bột) — dùng khi kết thúc cuộc nói chuyện văn hóa hay/sau khi cùng ăn cơm. Đồng nghiệp Trung Quốc sẽ ấn tượng mạnh vì bạn biết thơ Đường — văn hóa của họ.",
+    "tip_advice_en": "(1) Prepare '5 facts about your country' to share when asked: concrete figures beat empty adjectives. (2) Bring a 'cultural ambassador kit': postcards, a coffee/food sample, a photo of traditional dress, a folk-music clip. Share naturally in conversation, not as a lecture. (3) When asked a sensitive question (border conflict, maritime disputes), reply 这个问题比较复杂，不同人有不同观点。我们还是聊文化吧 ('this is complex, people hold different views — let's stick to culture'). Polite + redirect. (4) Teach the colleague 5-10 basic words of your language — a friendly gesture everyone enjoys. Accept their mispronunciation; don't laugh. (5) When a Chinese colleague visits, take them to safe, shareable experiences (a noodle classic, a local specialty, a Confucian temple to share Confucius); avoid strong-smelling food on a first visit and religiously sensitive sites. (6) On WeChat Moments, post cultural photos with Chinese captions — a passive way to educate colleagues; they learn without a lecture. (7) A 'strong' literary line: 海内存知己，天涯若比邻 (Wang Bo: 'a true friend within the seas makes the far horizon feel next door') — use it to close a good cultural conversation or after a shared meal. A Chinese colleague is strongly impressed that you know Tang poetry — their own heritage.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -6116,6 +6148,12 @@ export const lessons: ChineseLesson[] = [
           "合同 → hétong (hợp đồng)",
           "谈生意 → tán shēngyi (đàm phán làm ăn)",
           "重要 → zhòngyào (quan trọng)"
+        ],
+        "pronunciation_focus_en": [
+          "面子 → miànzi ('face/prestige')",
+          "合同 → hétong ('contract')",
+          "谈生意 → tán shēngyi ('to negotiate business')",
+          "重要 → zhòngyào ('important')"
         ]
       },
       {
@@ -6128,6 +6166,12 @@ export const lessons: ChineseLesson[] = [
           "谈成 → tán chéng (đàm phán thành)",
           "会议室 → huìyìshì (phòng họp)",
           "生意 → shēngyi"
+        ],
+        "pronunciation_focus_en": [
+          "饭桌 → fànzhuō ('dining table')",
+          "谈成 → tán chéng ('to close a deal by talking')",
+          "会议室 → huìyìshì ('meeting room')",
+          "生意 → shēngyi ('business')"
         ]
       },
       {
@@ -6140,6 +6184,12 @@ export const lessons: ChineseLesson[] = [
           "钟表 → zhōngbiǎo (đồng hồ)",
           "送终 → sòng zhōng (tiễn đưa người chết)",
           "谐音 → xiéyīn (đồng âm)"
+        ],
+        "pronunciation_focus_en": [
+          "双数 → shuāngshù ('even number')",
+          "钟表 → zhōngbiǎo ('clock/watch')",
+          "送钟 → sòng zhōng ('to give a clock' — homophone of 送终, 'attend a funeral')",
+          "谐音 → xiéyīn ('homophone')"
         ]
       },
       {
@@ -6152,6 +6202,12 @@ export const lessons: ChineseLesson[] = [
           "杯子 → bēizi (ly/cốc)",
           "对方 → duìfāng (đối phương)",
           "尊重 → zūnzhòng"
+        ],
+        "pronunciation_focus_en": [
+          "敬酒 → jìngjiǔ ('to propose a toast')",
+          "杯子 → bēizi ('glass/cup')",
+          "对方 → duìfāng ('the other party')",
+          "尊重 → zūnzhòng ('respect')"
         ]
       },
       {
@@ -6164,6 +6220,12 @@ export const lessons: ChineseLesson[] = [
           "客套 → kètào (lịch sự xã giao)",
           "不会错 → bù huì cuò (không sai)",
           "礼 → lǐ (lễ)"
+        ],
+        "pronunciation_focus_en": [
+          "礼多人不怪 → lǐ duō rén bù guài (idiom: 'no one objects to extra courtesy')",
+          "客套 → kètào ('social pleasantries')",
+          "不会错 → bù huì cuò ('cannot go wrong')",
+          "礼 → lǐ ('courtesy/ritual')"
         ]
       }
     ],
@@ -6406,7 +6468,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Lễ nghi kinh doanh Trung Quốc đại lục là 'lớp học' phức tạp nhất mà người Việt phải học khi làm ăn xuyên biên giới. Sáu khu vực dễ sai nhất: (1) DANH THIẾP — hai tay đưa, mặt chữ hướng đối phương, kèm 'qǐng duōduō zhǐjiào'. Nhận xong PHẢI đọc kỹ 5-10 giây, có thể bình luận ('哦, 您是负责...'), sau đó đặt trên bàn TRƯỚC MẶT (không cất ngay). Cất ngay = không tôn trọng. (2) VỊ TRÍ NGỒI — vị trí 'đầu bàn' (主位) đối diện cửa, dành cho người quan trọng nhất (host hoặc khách VIP). Khách quý ngồi BÊN PHẢI host, không đối diện. Người trẻ/cấp thấp ngồi gần cửa (để tiện đi lấy đồ). KHÔNG bao giờ tự chọn vị trí — đợi host sắp xếp. (3) GỌI MÓN — host gọi món, khách KHÔNG nên gọi (kể cả nếu host hỏi). Nếu host nhất định mời gọi, gọi 1 món rẻ tiền nhất. Số món bằng số người + 1 (8 người = 9 món, kèm 1 món súp + 1 món tráng miệng). Đặt mức giá phải xứng tầm khách — quá rẻ làm mất thể diện chính mình. (4) ĐŨA — KHÔNG cắm thẳng vào bát cơm (giống nhang thắp trong tang); KHÔNG để chéo nhau (xui); KHÔNG dùng đũa để chỉ vào người (vô lễ). KHÔNG xoay đĩa Lazy Susan ngược chiều kim đồng hồ. (5) RƯỢU — host mời ly đầu, sau đó cấp dưới đi mời từng cấp trên một. Mời rượu = tay phải cầm ly, tay trái đỡ đáy ly, ly thấp hơn ly đối phương. '我先干为敬' (em cạn trước để tỏ kính) — câu mở chuẩn. Nếu uống Mao Đài hoặc Erguotou (rượu mạnh), mỗi shot 30-50ml. (6) THANH TOÁN — chiến đấu trả tiền là phong tục. Bạn và host sẽ giả vờ tranh nhau. Người 'thắng' là host. Khách không bao giờ thực sự được trả — chỉ giả vờ.\n\nVề face: 'cho mặt' và 'mất mặt' chi phối tất cả. Cho mặt = công nhận giá trị/chức vụ của đối phương trước người khác (gọi đúng chức danh, dành chỗ ngồi tốt, mời rượu trước, khen công khai). Mất mặt = chỉ trích trước mặt người khác, từ chối thẳng đề xuất, để thấy điểm yếu trước số đông.\n\nVề quà: ngân sách lần đầu 200-500 nhân dân tệ; lần thứ 2-3 lên 500-1000; quan hệ thân 1000-2000. Đắt hơn = nghi hối lộ, ảnh hưởng quan hệ. Đặc sản Việt Nam (cà phê G7, lụa, tranh Đông Hồ) là an toàn vì 'lạ' với người Trung.",
+    "cultural_notes_en": "Mainland Chinese business etiquette is the most complex 'class' a cross-border partner must take. Six high-error zones: (1) BUSINESS CARD — two hands, text facing the recipient, with 请多多指教. After receiving, you MUST read it 5-10 seconds, may comment ('哦，您是负责…'), then place it on the table IN FRONT OF YOU (don't pocket it immediately — that reads as disrespect). (2) SEATING — the 'head seat' (主位) faces the door and goes to the most important person (host or VIP guest). The honored guest sits on the host's RIGHT, not opposite. Junior/low-rank sits near the door. NEVER pick your own seat — wait for the host to arrange. (3) ORDERING — the host orders; the guest should NOT (even if invited to). If the host insists, order the cheapest single dish. Number of dishes = number of people + 1. Price it to match the guest's status — too cheap loses your own face. (4) CHOPSTICKS — do NOT stick them upright in rice (resembles funeral incense); do NOT cross them (unlucky); do NOT point them at people. Don't spin a Lazy Susan counterclockwise. (5) DRINKING — the host offers the first glass, then juniors toast seniors one by one. To toast: right hand on the glass, left hand under the base, your glass lower than the other person's. 我先干为敬 ('I'll drain mine first to show respect') is the standard opener. (6) PAYING — 'fighting for the bill' is the custom; you and the host mock-fight; the host 'wins.' The guest never actually pays — only pretends.\n\nOn face: 'giving face' and 'losing face' govern everything. Giving face = publicly recognizing the other's status (correct title, good seat, first toast, public praise). Losing face = public criticism, a flat refusal, exposing a weakness before a crowd.\n\nGifts: first time ~200-500 RMB; 2nd-3rd ~500-1000; close relationship ~1000-2000. More expensive = suspected bribe. A local specialty is safe because it's 'novel' to the Chinese side.",
     "tip_advice_vi": "(1) HỌC THUỘC 10 cụm cứng trước khi đi Trung Quốc: '一路辛苦了', '请多多指教', '我先干为敬', '小小心意请您笑纳', '让您破费了', '客随主便', '入乡随俗', '礼多人不怪', '宾至如归', '后会有期'. Dùng đúng cụm = ấn tượng formal mạnh. (2) Mang theo 'gift kit' Việt Nam: 5-6 hộp quà nhỏ-vừa-lớn để chuẩn bị các tình huống. Gói sẵn bằng giấy đỏ (màu may mắn Trung Quốc), TUYỆT ĐỐI không trắng/đen. (3) Trước cuộc gặp, nghiên cứu cấp bậc của TẤT CẢ người sẽ tham dự + chức danh chính xác. Gọi sai chức danh ('Phó Tổng' thành 'Tổng', hay ngược lại) là lỗi nặng. Giấy ghi chú trong sổ tay là OK. (4) Đến SỚM 10-15 phút cho mọi cuộc hẹn. Trễ = thiếu tôn trọng nghiêm trọng (kể cả 5 phút). Nếu kẹt xe, gọi báo TRƯỚC khi trễ, không sau. (5) Trong bữa ăn, ĂN CHẬM, theo nhịp host. KHÔNG hết đồ trên đĩa của mình (nghĩa là chủ nhà chưa cho đủ). Cứ để lại 10-15% thức ăn = chủ nhà đãi đủ. KHÔNG xin thêm cơm khi sếp chưa xin. (6) Sau bữa ăn, gửi tin WeChat trong 24h: '王总, 昨晚的招待让我深受感动, 谢谢您的盛情' (cảm động vì sự đãi đằng tối qua, cảm ơn anh tận tình). Cụm '盛情' (shèngqíng — thịnh tình) là chuẩn formal. (7) Học thuộc 5 'gift taboos' (đồng hồ, ô, giày, dao, khăn tay) và 3 'số xui' (4, 14, 44). Dán bên trong wallet làm cheat sheet — KHÔNG để bị bắt gặp tặng nhầm.",
+    "tip_advice_en": "(1) MEMORIZE 10 set phrases before going: 一路辛苦了, 请多多指教, 我先干为敬, 小小心意请您笑纳, 让您破费了, 客随主便, 入乡随俗, 礼多人不怪, 宾至如归, 后会有期. Using them correctly = a strong formal impression. (2) Bring a 'gift kit' of small/medium/large boxes for different situations; pre-wrap in RED paper (lucky), never white or black. (3) Before the meeting, research the rank and exact title of EVERYONE attending. Getting a title wrong ('Deputy GM' vs 'GM') is a serious error. Notes in a notebook are fine. (4) Arrive 10-15 minutes early for every appointment. Late = serious disrespect (even 5 minutes). If stuck in traffic, call BEFORE you're late, not after. (5) At meals, eat SLOWLY, at the host's pace. Do NOT finish everything on your plate (it implies the host didn't feed you enough); leave 10-15%. Don't ask for more rice before the boss does. (6) After, WeChat within 24h: 王总，昨晚的招待让我深受感动，谢谢您的盛情. 盛情 (shèngqíng, 'gracious hospitality') is the standard formal word. (7) Memorize 5 gift taboos (clock, umbrella, shoes, knife, handkerchief) and 3 unlucky numbers (4, 14, 44). Keep a cheat-sheet in your wallet — never get caught giving the wrong thing.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -6467,6 +6531,12 @@ export const lessons: ChineseLesson[] = [
           "考虑不周 → kǎolǜ bù zhōu (suy nghĩ chưa chu toàn)",
           "昨天 → zuótiān",
           "事 → shì"
+        ],
+        "pronunciation_focus_en": [
+          "深感抱歉 → shēn gǎn bàoqiàn ('deeply apologize')",
+          "考虑不周 → kǎolǜ bù zhōu ('did not consider thoroughly')",
+          "昨天 → zuótiān ('yesterday')",
+          "事 → shì ('matter')"
         ]
       },
       {
@@ -6479,6 +6549,12 @@ export const lessons: ChineseLesson[] = [
           "恶意 → èyì (ý xấu)",
           "见谅 → jiànliàng (thông cảm — formal)",
           "送钟 → sòng zhōng"
+        ],
+        "pronunciation_focus_en": [
+          "忌讳 → jìhuì ('taboo')",
+          "恶意 → èyì ('ill intent')",
+          "见谅 → jiànliàng ('please forgive' — formal)",
+          "送钟 → sòng zhōng ('to give a clock' — taboo homophone)"
         ]
       },
       {
@@ -6491,6 +6567,12 @@ export const lessons: ChineseLesson[] = [
           "用心 → yòngxīn (chú tâm)",
           "贵国 → guì guó (quý quốc — formal)",
           "了解 → liǎojiě"
+        ],
+        "pronunciation_focus_en": [
+          "知错就改 → zhī cuò jiù gǎi (idiom: 'recognize the fault and fix it')",
+          "用心 → yòngxīn ('attentively / with care')",
+          "贵国 → guì guó ('your country' — formal)",
+          "了解 → liǎojiě ('to understand')"
         ]
       },
       {
@@ -6503,6 +6585,12 @@ export const lessons: ChineseLesson[] = [
           "合作关系 → hézuò guānxi (quan hệ hợp tác)",
           "希望 → xīwàng",
           "事 → shì"
+        ],
+        "pronunciation_focus_en": [
+          "影响 → yǐngxiǎng ('to affect')",
+          "合作关系 → hézuò guānxi ('cooperative relationship')",
+          "希望 → xīwàng ('to hope')",
+          "事 → shì ('incident')"
         ]
       },
       {
@@ -6515,6 +6603,12 @@ export const lessons: ChineseLesson[] = [
           "诚意 → chéngyì (chân thành)",
           "补救 → bǔjiù (chuộc lại)",
           "让 → ràng"
+        ],
+        "pronunciation_focus_en": [
+          "化干戈为玉帛 → huà gāngē wéi yùbó (idiom: 'turn weapons into jade and silk' — reconcile)",
+          "诚意 → chéngyì ('sincerity')",
+          "补救 → bǔjiù ('to make amends')",
+          "让 → ràng ('let')"
         ]
       }
     ],
@@ -6757,7 +6851,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Xin lỗi qua văn hóa Việt-Trung khác biệt sâu sắc: ở Việt Nam, 'xin lỗi' thường nhanh và nhẹ ('xin lỗi nhé'); ở Trung Quốc, xin lỗi formal là sự kiện QUAN TRỌNG, đòi hỏi nghi thức. Sáu nguyên tắc: (1) GẶP TRỰC TIẾP khi lỗi nghiêm trọng (làm mất mặt, vi phạm taboo lớn). Tin nhắn/email = nửa hiệu lực. Gọi điện tốt hơn tin nhắn nhưng vẫn kém gặp mặt. (2) XIN LỖI RIÊNG nếu lỗi gây mất mặt công khai. KHÔNG xin lỗi trước nhiều người — đó là tự gây thêm mất mặt cho cả hai bên. (3) THỜI ĐIỂM xin lỗi: trong 24-48 giờ sau lỗi. Quá sớm (1-2 giờ) = chưa kịp suy nghĩ thấu đáo, có vẻ phản xạ. Quá muộn (>3 ngày) = đã quên, không quan tâm. 'Sweet spot' là sáng hôm sau. (4) CẤU TRÚC chuẩn: (a) thừa nhận lỗi cụ thể; (b) giải thích nguyên nhân (không bào chữa); (c) thừa nhận hậu quả; (d) cam kết thay đổi; (e) đề xuất bù đắp cụ thể. Thiếu bước nào = không đủ chân thành. (5) 'BÙ ĐẮP' (补救) phải có hành động cụ thể: mời ăn, tặng quà phù hợp, làm việc gì đó cho đối phương. Lời xin lỗi mà không có action = lời rỗng. (6) Sau khi nhận tha thứ, KHÔNG nhắc lại lỗi đó nữa. Người Trung Quốc đã 'lật trang' — bạn cũng phải lật. Nhắc lại = dằn vặt + làm họ khó chịu.\n\nMột số 'lỗi văn hóa' phổ biến của người Việt khi làm với người Trung: tặng đồng hồ/ô/giày (taboo), phê bình công khai (làm mất mặt), gọi sếp bằng nickname trẻ trung (thiếu tôn trọng), từ chối rượu thẳng thừng (không cho mặt host), không trả lời WeChat trong nhiều giờ (xem nhẹ quan hệ), mặc áo trắng/đen tới tiệc (màu tang), tặng quà số 4 (xui).\n\nVề 'face' và xin lỗi: lỗi làm 'mất mặt' (丢面子) là lỗi nặng nhất trong văn hóa Trung Quốc — nặng hơn lỗi tiền/thời gian. Nếu bạn vô tình làm sếp/đối tác mất mặt trước người khác, xin lỗi RIÊNG + bồi thường bằng cách cho họ MẶT lại trong dịp tiếp theo (khen công khai, mời nói trước đoàn, đặt họ ở vị trí trang trọng).\n\nVề tha thứ: người Trung Quốc thường nói 'không sao' (没关系) ngay cả khi vẫn còn buồn — đây là phép lịch sự, không phải tha thứ thật. Quan sát hành vi tiếp theo: họ vẫn mời bạn ăn, vẫn invite bạn vào dự án = đã tha thứ thật. Họ né tránh, không trả lời tin nhắn = chưa tha thứ, cần xin lỗi sâu hơn.",
+    "cultural_notes_en": "A formal apology across cultures differs deeply: in some cultures 'sorry' is quick and light; in China a formal apology is an IMPORTANT event that demands ritual. Six principles: (1) MEET IN PERSON for a serious fault (causing loss of face, breaking a big taboo). A text/email is half-effective; a call beats a text but still loses to face-to-face. (2) Apologize PRIVATELY if the fault caused public loss of face. Do NOT apologize in front of many people — that compounds the loss for both sides. (3) TIMING: within 24-48 hours. Too soon (1-2 hours) seems reflexive, not considered; too late (>3 days) seems indifferent. The sweet spot is the next morning. (4) STRUCTURE: (a) admit the specific fault; (b) explain the cause (not an excuse); (c) acknowledge the consequence; (d) commit to change; (e) propose concrete amends. A missing step reads as insufficiently sincere. (5) AMENDS (补救) need concrete action — a meal, a fitting gift, doing something for the other person. An apology with no action is empty words. (6) After being forgiven, do NOT bring the fault up again. The Chinese side has 'turned the page' — you must too. Re-raising it is self-torment and makes them uncomfortable.\n\nCommon cultural missteps when working with Chinese partners: giving a clock/umbrella/shoes (taboo), public criticism (loss of face), an over-familiar nickname for the boss (disrespect), a blunt refusal of a toast (denying the host face), not replying to WeChat for hours (treating the relationship lightly), wearing white/black to a celebration (mourning colors), a gift built around the number 4 (unlucky).\n\nOn face and apology: a fault that causes loss of face (丢面子) is the heaviest in Chinese culture — heavier than a money or time fault. If you accidentally make a boss/partner lose face in front of others, apologize PRIVATELY and repay by GIVING them face on the next occasion (public praise, inviting them to speak first, a place of honor).\n\nOn forgiveness: a Chinese person often says 没关系 ('it's fine') even while still upset — politeness, not real forgiveness. Watch the subsequent behavior: still inviting you to meals/projects = truly forgiven; avoiding you, not replying = not yet, apologize more deeply.",
     "tip_advice_vi": "(1) ĐỪNG xin lỗi quá nhanh trên WeChat ngay sau lỗi — bị coi là phản xạ thiếu suy nghĩ. Đợi 12-24 giờ, gọi điện hoặc gặp trực tiếp. (2) Chuẩn bị 4 phần cho lời xin lỗi: thừa nhận cụ thể (lỗi gì) + nguyên nhân (không bào chữa) + cam kết thay đổi + đề xuất bù đắp. Mỗi phần 1-2 câu, tổng 4-8 câu. (3) Ngôn ngữ thân thể: cúi đầu nhẹ khi xin lỗi (15-30 độ), nhìn vào mắt, KHÔNG cười. Nụ cười tự nhiên của người Việt có thể bị hiểu lầm là không nghiêm túc. (4) Nếu lỗi liên quan đến tiền/business loss, phải có 'compensation' cụ thể: trả lại tiền, làm thêm dịch vụ miễn phí, giảm giá lần sau. Lời xin lỗi không + bù đắp = không đủ. (5) KHÔNG kể với người khác về lỗi của bạn (kể cả bạn bè) trước khi đối phương đã tha thứ. Người Trung Quốc rất ghét chuyện riêng bị lan truyền. (6) Sau khi nhận tha thứ, gửi tin WeChat trong 24-48h: '王总, 您的宽容让我深受感动。我会记住这次教训, 以后绝不再犯' (sự rộng lòng của anh khiến em xúc động. Em sẽ ghi nhớ bài học, sẽ không tái phạm). Đóng vòng tròn quan trọng. (7) Tránh '过度补救' (overcompensation) — tặng quà đắt sau khi xin lỗi sẽ bị coi là 'mua chuộc'. Quà nên ngang giá trị thông thường (200-500 tệ), tập trung vào sự chu đáo (đặc sản Việt, thư tay, ảnh cá nhân) thay vì giá tiền.",
+    "tip_advice_en": "(1) Do NOT apologize too fast on WeChat right after the fault — read as thoughtless reflex. Wait 12-24 hours, then call or meet. (2) Prepare four parts: specific admission + cause (not an excuse) + commitment to change + proposed amends. Each part 1-2 sentences, 4-8 total. (3) Body language: a slight bow (15-30°), eye contact, NO smile. A natural friendly smile can be misread as not taking it seriously. (4) If money/business loss is involved, there must be concrete compensation: refund, free extra service, a discount next time. Apology without amends = not enough. (5) Do NOT tell others (even friends) about your fault before the other person has forgiven you. Chinese partners strongly dislike private matters spreading. (6) After being forgiven, WeChat within 24-48h: 王总，您的宽容让我深受感动。我会记住这次教训，以后绝不再犯 ('your magnanimity moves me; I'll remember this lesson and never repeat it'). An important loop-closing. (7) Avoid overcompensation — an expensive gift after apologizing reads as a bribe. Keep the gift at a normal value (200-500 RMB) and make it about thoughtfulness (a local specialty, a handwritten note, a personal photo) rather than price.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -6818,6 +6914,12 @@ export const lessons: ChineseLesson[] = [
           "面对门 → miàn duì mén (đối diện cửa)",
           "座位 → zuòwèi (chỗ ngồi)",
           "旁边 → pángbiān"
+        ],
+        "pronunciation_focus_en": [
+          "主位 → zhǔ wèi ('the head/main seat')",
+          "面对门 → miàn duì mén ('facing the door')",
+          "座位 → zuòwèi ('seat')",
+          "旁边 → pángbiān ('beside')"
         ]
       },
       {
@@ -6830,6 +6932,12 @@ export const lessons: ChineseLesson[] = [
           "一直以来 → yīzhí yǐlái (từ trước đến nay)",
           "支持 → zhīchí (ủng hộ)",
           "感谢 → gǎnxiè"
+        ],
+        "pronunciation_focus_en": [
+          "敬您一杯 → jìng nín yī bēi ('a toast to you' — formal)",
+          "一直以来 → yīzhí yǐlái ('all along')",
+          "支持 → zhīchí ('support')",
+          "感谢 → gǎnxiè ('to thank' — formal)"
         ]
       },
       {
@@ -6842,6 +6950,12 @@ export const lessons: ChineseLesson[] = [
           "为敬 → wéi jìng (làm cho kính)",
           "随意 → suíyì (tùy ý)",
           "请您 → qǐng nín"
+        ],
+        "pronunciation_focus_en": [
+          "干 → gān ('to drain the cup')",
+          "为敬 → wéi jìng ('to show respect')",
+          "随意 → suíyì ('as you please' — drink freely)",
+          "请您 → qǐng nín ('please' + formal you)"
         ]
       },
       {
@@ -6854,6 +6968,12 @@ export const lessons: ChineseLesson[] = [
           "河粉 → héfěn (phở)",
           "春卷 → chūnjuǎn (nem rán)",
           "鱼露 → yúlù (nước mắm)"
+        ],
+        "pronunciation_focus_en": [
+          "特色菜 → tèsè cài ('signature/specialty dishes')",
+          "河粉 → héfěn ('pho')",
+          "春卷 → chūnjuǎn ('spring rolls')",
+          "鱼露 → yúlù ('fish sauce')"
         ]
       },
       {
@@ -6866,6 +6986,12 @@ export const lessons: ChineseLesson[] = [
           "情谊 → qíngyì (tình nghĩa)",
           "建立 → jiànlì (xây dựng)",
           "朋友 → péngyou"
+        ],
+        "pronunciation_focus_en": [
+          "推杯换盏 → tuī bēi huàn zhǎn (idiom: 'cups passed back and forth' — convivial drinking)",
+          "情谊 → qíngyì ('friendship/bond')",
+          "建立 → jiànlì ('to build')",
+          "朋友 → péngyou ('friend')"
         ]
       }
     ],
@@ -7108,7 +7234,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Bữa tiệc Trung Quốc là môi trường nhiều quy tắc nhất bạn sẽ gặp. Bảy nguyên tắc cốt lõi: (1) VỊ TRÍ NGỒI: chủ nhà ngồi đối diện cửa (giúp ai vào cũng nhìn thấy chủ); khách quý nhất ngồi BÊN PHẢI chủ nhà; thứ tự cấp bậc giảm dần đi xuống vòng tròn theo chiều kim đồng hồ. Cấp thấp nhất ngồi gần cửa (để tiện đi lấy đồ, gọi nhân viên). (2) GỌI MÓN: chủ nhà gọi 100% trong lần đầu. Số món = số người + 1 (8 người = 9 món, kèm súp + tráng miệng). Có cá nguyên con (鱼 ngụ ý 余 = dư dả), gà nguyên con (鸡 ngụ ý 吉 = may mắn), súp cuối bữa (chuẩn bị xong cho 'kết'). (3) ĐŨA: nâng đũa khi chủ nhà đã nâng; KHÔNG cắm đũa thẳng vào cơm; KHÔNG để chéo nhau; KHÔNG dùng đũa chỉ vào người. Đặt đũa ngang trên giá đũa khi nghỉ. (4) RƯỢU: chủ nhà mời ly đầu (开场); cạn 100% ly đầu = thể hiện thiện chí cao nhất. Sau đó cấp dưới đi mời cấp trên từng người một; cấp trên có thể uống ít hơn (随意). Mỗi lượt mời PHẢI có lý do (cảm ơn, chúc, kỷ niệm) — mời 'cho có' bị coi là thiếu chân thành. (5) THANH TOÁN: chiến đấu trả tiền là phong tục — chủ và khách giả vờ tranh nhau. Người 'thắng' = chủ. Cách 'chiến' đúng: gọi nhân viên TRƯỚC khi khách kịp đứng dậy, đưa thẻ riêng, KHÔNG để khách thấy hóa đơn. Tip: 5-10% là chuẩn (Trung Quốc đại lục thấp hơn phương Tây). (6) RỜI BÀN: khách quý đứng dậy trước, các người khác theo sau. KHÔNG đứng dậy giữa bữa khi sếp đang phát biểu. (7) FOLLOW-UP: gửi tin WeChat trong 24h cảm ơn cụ thể: '王总, 昨晚的招待让我深受感动, 谢谢您的盛情'.\n\nVề rượu Mao Đài (茅台): rượu trắng cay 53% cồn, biểu tượng rượu Trung Quốc. Một shot 30-50ml, uống cạn. Nếu bạn không quen: (a) ăn nhiều trước khi uống (cơm, mỡ); (b) uống nước trà giữa các shot; (c) thừa nhận 'em không quen rượu mạnh' từ đầu và xin được uống ít — thật thà tốt hơn say. KHÔNG say tại bữa business — mất uy tín mãi.\n\nVề khách nữ: ở Trung Quốc đại lục hiện nay phụ nữ uống rượu cũng được chấp nhận, nhưng có thể từ chối lịch sự bằng '我酒量不好' hoặc 'with茶代酒' — không bị áp lực như Hàn Quốc/Nhật.\n\nKhác Việt Nam: ở Việt Nam, bữa nhậu thường thoải mái, mọi người tự rót rượu cho mình. Ở Trung Quốc, không bao giờ tự rót — luôn rót cho người bên cạnh, họ rót lại cho bạn. Rót cho mình = thiếu tinh tế.",
+    "cultural_notes_en": "A Chinese banquet is the most rule-bound environment you'll encounter. Seven core principles: (1) SEATING: the host faces the door (so they see everyone who enters); the most honored guest sits on the host's RIGHT; rank decreases clockwise around the table; lowest rank sits near the door (to fetch things, call staff). (2) ORDERING: the host orders 100% the first time. Dishes = people + 1, with a whole fish (鱼 puns on 余 'surplus'), a whole chicken (鸡 puns on 吉 'luck'), and an end-of-meal soup. (3) CHOPSTICKS: raise yours after the host raises theirs; never stick them upright in rice; never cross them; never point them at people; rest them on the chopstick holder when pausing. (4) DRINKING: the host offers the first glass (开场); draining it 100% signals maximum goodwill; then juniors toast seniors one by one; seniors may drink less (随意); every toast MUST have a reason (thanks, a wish, a milestone) — a toast 'just because' reads as insincere. (5) PAYING: 'fighting for the bill' is the custom; the host 'wins.' The right move: call the server BEFORE the guest can stand, hand over your card privately, never let the guest see the bill. Tip 5-10% (lower than the West). (6) LEAVING: the honored guest stands first, others follow; don't stand mid-meal while the boss is speaking. (7) FOLLOW-UP: WeChat within 24h with specific thanks: 王总，昨晚的招待让我深受感动，谢谢您的盛情.\n\nOn Maotai (茅台): a 53% grain liquor, the symbol of Chinese baijiu. A shot is 30-50ml, drained. If you're not used to it: (a) eat plenty first (rice, fatty food); (b) drink tea between shots; (c) admit 'I'm not used to strong liquor' up front and ask to drink little — honest beats drunk. NEVER get drunk at a business banquet — it permanently damages your credibility.\n\nFemale guests: on the mainland today women drinking is accepted, but one can decline politely with 我酒量不好 or 以茶代酒 ('tea in place of wine') — less pressure than in Korea/Japan.\n\nA calibration point: in some cultures everyone pours their own drink freely. In China you NEVER pour your own — you pour for the person next to you and they pour for you. Pouring your own reads as tactless.",
     "tip_advice_vi": "(1) ĐẶT BÀN trước 1 tuần — phòng riêng (包间) không chung sảnh. Phòng riêng = thể diện cho khách + tiện thảo luận business. Đặt bàn tròn (圆桌) thay vì vuông — mọi người ngồi bình đẳng. (2) CHUẨN BỊ menu trước với restaurant manager: 8-10 món cho 6-8 người, đa dạng (rau, thịt, hải sản, súp, tráng miệng), 1-2 món Việt đặc sản (phở/nem) và 1-2 món gần phong cách Trung (gà nướng, cá hấp). Tránh món 'lạ' (mắm tôm, lươn). (3) MUA RƯỢU phù hợp: khách Trung Quốc cấp cao = Mao Đài (đắt nhưng đáng); cấp trung = rượu Trung Quốc khác (五粮液, 国窖); người không thích rượu mạnh = bia hoặc rượu vang. Đừng tiếc tiền rượu — đây là phần đầu tư quan trọng nhất. (4) CHUẨN BỊ 5-7 toast/lý do cụ thể trước: cảm ơn, chúc sức khỏe, chúc hợp tác, kỷ niệm gặp gỡ, chúc gia đình khách, chúc thành công dự án, chúc về Trung Quốc bình an. Mỗi lý do dùng 1 lần, không lặp. (5) NGỒI BÊN PHẢI khách chính (vị trí 'tay phải' của chủ) — vai trò 'phó host' giúp giới thiệu món, mời rượu, dịch tiếng. KHÔNG để khách phải hỏi 'cái này là gì'. (6) Trong bữa, dành ~70% thời gian cho personal/cultural topics (gia đình, du lịch, ẩm thực, văn hóa), ~30% cho business — đảo ngược tỉ lệ là sai văn hóa Trung Quốc. (7) SAU bữa, đưa khách về khách sạn (kể cả nếu họ tự đi được). Nếu khách say, sắp xếp bữa sáng nhẹ ngày hôm sau (cháo, bánh bao) — đây là chi tiết khách quý nhớ lâu.",
+    "tip_advice_en": "(1) BOOK a private room (包间) a week ahead — not the shared hall. A private room = face for the guest + room to discuss business. Book a round table (圆桌), not square — everyone seated as equals. (2) PRE-ARRANGE the menu with the manager: 8-10 dishes for 6-8 people, varied (veg, meat, seafood, soup, dessert), 1-2 local specialties and 1-2 dishes close to Chinese style (roast chicken, steamed fish). Avoid 'exotic' strong-smelling dishes. (3) BUY appropriate liquor: senior guests = Maotai (expensive but worth it); mid-level = other Chinese liquor (五粮液, 国窖); non-drinkers = beer or wine. Don't skimp on the liquor — it's the most important investment. (4) PREPARE 5-7 specific toasts in advance (thanks, health, cooperation, the meeting, the guest's family, project success, a safe trip home). Use each reason once, no repeats. (5) SIT on the main guest's right (the host's 'right-hand'), acting as 'deputy host' — introduce dishes, offer toasts, translate. Don't make the guest ask 'what is this.' (6) During the meal, spend ~70% on personal/cultural topics (family, travel, food, culture), ~30% on business — reversing the ratio is a cultural error. (7) AFTER, see the guest back to the hotel (even if they can manage). If they're drunk, arrange a light breakfast the next day (congee, baozi) — a detail honored guests remember.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -7169,6 +7297,12 @@ export const lessons: ChineseLesson[] = [
           "我们 → wǒmen (chúng tôi)",
           "越南人 → Yuènán rén (người Việt Nam)",
           "Tết → âm gốc tiếng Việt"
+        ],
+        "pronunciation_focus_en": [
+          "春节 → Chūnjié ('Spring Festival / Lunar New Year')",
+          "我们 → wǒmen ('we')",
+          "越南人 → Yuènán rén ('Vietnamese people')",
+          "Tết → kept as the original loanword"
         ]
       },
       {
@@ -7181,6 +7315,12 @@ export const lessons: ChineseLesson[] = [
           "农历 → nónglì (âm lịch)",
           "因为 → yīnwèi (vì)",
           "都 → dōu (đều)"
+        ],
+        "pronunciation_focus_en": [
+          "同一天 → tóng yī tiān ('the same day')",
+          "农历 → nónglì ('the lunar calendar')",
+          "因为 → yīnwèi ('because')",
+          "都 → dōu ('both/all')"
         ]
       },
       {
@@ -7193,6 +7333,12 @@ export const lessons: ChineseLesson[] = [
           "粽子 → zòngzi (bánh ú/bánh chưng)",
           "方形 → fāngxíng (hình vuông)",
           "不一样 → bù yīyàng (không giống)"
+        ],
+        "pronunciation_focus_en": [
+          "传统食物 → chuántǒng shíwù ('traditional food')",
+          "粽子 → zòngzi ('glutinous rice cake/zongzi')",
+          "方形 → fāngxíng ('square-shaped')",
+          "不一样 → bù yīyàng ('not the same')"
         ]
       },
       {
@@ -7205,6 +7351,12 @@ export const lessons: ChineseLesson[] = [
           "桃花 → táohuā (hoa đào)",
           "梅花 → méihuā (hoa mai)",
           "红灯笼 → hóng dēnglong (đèn lồng đỏ)"
+        ],
+        "pronunciation_focus_en": [
+          "北方 → běifāng ('the north')",
+          "桃花 → táohuā ('peach blossom')",
+          "梅花 → méihuā ('apricot/plum blossom')",
+          "红灯笼 → hóng dēnglong ('red lantern')"
         ]
       },
       {
@@ -7217,6 +7369,12 @@ export const lessons: ChineseLesson[] = [
           "阖家团圆 → hé jiā tuányuán (cả nhà đoàn tụ)",
           "万事如意 → wànshì rúyì (vạn sự như ý)",
           "阖 → hé (cả/toàn bộ)"
+        ],
+        "pronunciation_focus_en": [
+          "新年快乐 → xīnnián kuàilè ('Happy New Year')",
+          "阖家团圆 → hé jiā tuányuán ('whole family reunited')",
+          "万事如意 → wànshì rúyì ('may all go as you wish')",
+          "阖 → hé ('whole/entire')"
         ]
       }
     ],
@@ -7459,7 +7617,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Tết Việt-Trung là 'điểm chung lớn nhất' giữa hai nước — cùng ngày, cùng âm lịch, cùng nhiều phong tục cốt lõi (đoàn tụ gia đình, lì xì, hoa, dọn nhà). Đây là chủ đề an toàn và phong phú để xây quan hệ. Năm điểm khác biệt then chốt người Việt nên biết khi giải thích cho bạn Trung Quốc:\n\n(1) BÁNH CHƯNG vs. JIAOZI: ở Trung Quốc, sủi cảo (饺子) là món chính đêm 30. Việt Nam KHÔNG ăn sủi cảo Tết — bánh chưng (vuông, gói lá dong) và bánh tét (tròn, gói lá chuối) là món chính. Nguồn gốc bánh chưng từ truyền thuyết Lang Liêu thời Hùng Vương — câu chuyện độc đáo Việt Nam, KHÔNG có ở Trung Quốc.\n\n(2) HOA: Việt Nam BẮT BUỘC có hoa đào (miền Bắc) hoặc hoa mai (miền Nam) — không có hoa = không phải Tết. Trung Quốc thiên về câu đối đỏ, đèn lồng, và hoa thủy tiên (水仙). Khi giới thiệu, chỉ ra rằng hoa đào/mai là TÂM ĐIỂM Tết Việt, trong khi với Trung Quốc đó là phụ.\n\n(3) MÀU SẮC: Trung Quốc gần như chỉ dùng đỏ. Việt Nam dùng đỏ (lì xì, câu đối) NHƯNG cũng vàng (mâm ngũ quả, hoa mai), hồng (hoa đào). Đa dạng màu sắc hơn.\n\n(4) XÔNG ĐẤT (踩地): khái niệm độc đáo Việt Nam — người ĐẦU TIÊN bước vào nhà sau giao thừa được tin sẽ mang vận may cả năm. Gia đình thường chọn người 'tốt vận' (tuổi hợp, làm ăn thuận, gia đình êm ấm) đến xông đất. Trung Quốc không có nghi thức này — chỉ có '开门红' (mở cửa đỏ) khái niệm chung.\n\n(5) MÂM NGŨ QUẢ: 5 loại quả trên bàn thờ tổ tiên, mang ý nghĩa 'đủ đầy'. Miền Nam có công thức 'cầu sung dừa đủ xoài' (cầu — sung — dừa — đủ — xoài → 'cầu cho được sung túc, vừa đủ, xài [tiền]'). Trung Quốc không có concept tương đương — chỉ có 'thờ tổ tiên' chung.\n\nVề từ vựng SHARED: nhiều từ Tết Việt là Hán-Việt từ Trung Quốc — 'lì xì' (利市), 'tân niên' (新年), 'phúc' (福), 'lộc' (禄), 'thọ' (寿), 'tổ tiên' (祖先), 'gia đình' (家庭). Khi nói chuyện với người Trung, chỉ ra điều này = họ sẽ ngạc nhiên thú vị.\n\nVề tuổi: cả Việt Nam và Trung Quốc cổ truyền tăng tuổi vào ngày Tết (không phải sinh nhật). Việt Nam dùng 'tuổi mụ' = tuổi sinh + 1 từ ngày Tết đầu tiên. Hệ thống này đang dần thay bằng tuổi dương, nhưng người lớn tuổi vẫn dùng. Khi giới thiệu, đề cập 'âm lịch tuổi' để bạn Trung Quốc hiểu — họ có khái niệm '虚岁' (hư tuổi) tương tự.\n\nVề kiêng kỵ Tết (chia sẻ Việt-Trung): mùng 1 KHÔNG quét nhà (quét đi vận may), KHÔNG cắt tóc, KHÔNG cho vay tiền, KHÔNG nói chuyện xui (đám tang, bệnh tật). Bạn Trung Quốc cũng theo những kiêng này — bonding point.",
+    "cultural_notes_en": "The lunar New Year is the single biggest piece of common ground between China and a neighboring lunar-calendar culture — same date, same calendar, many shared core customs (family reunion, red envelopes, flowers, house-cleaning). It is a safe, rich relationship-building topic. Five key differences worth explaining to a Chinese friend:\n\n(1) RICE CAKE vs. JIAOZI: in China, dumplings (饺子) are the central New Year's Eve dish. A neighboring culture may instead center on its own glutinous-rice cakes, often tied to a founding legend with no Chinese counterpart. Frame it as 'our central dish, with its own origin story.'\n\n(2) FLOWERS: some cultures REQUIRE specific blossoms — without them it isn't the New Year — whereas China leans on red couplets, lanterns, and narcissus (水仙). Point out that the blossom is the FOCAL POINT in one tradition while peripheral in the other.\n\n(3) COLORS: China is almost exclusively red. Other lunar cultures use red but ALSO yellow and pink — a wider palette. Explain the broader color range.\n\n(4) FIRST-FOOTING: a custom where the FIRST person to enter the home after midnight is believed to bring the year's luck, so a 'lucky' person is chosen. China has no exact equivalent — only the general 开门红 ('open the door to good fortune'). State plainly that there is no direct Chinese match.\n\n(5) FRUIT-TRAY SYMBOLISM: a tray of five fruits on the ancestral altar meaning 'abundance,' sometimes via a pun on the fruit names. China has no equivalent concept — only general ancestor worship. Use 'no direct equivalent' honesty.\n\nSHARED vocabulary: many New Year words are Sino-derived — 'lì xì' (利市), 'tân niên' (新年), 'phúc' (福), 'lộc' (禄), 'thọ' (寿), 'tổ tiên' (祖先). Pointing this out pleasantly surprises a Chinese listener.\n\nAge: traditionally both add a year at the New Year (not on the birthday). Mention the 'lunar age' so a Chinese friend understands — they have the parallel concept 虚岁 (xūsuì, 'nominal age').\n\nShared New Year taboos: on day 1, do NOT sweep the floor (sweeps away luck), cut hair, lend money, or speak of unlucky things (funerals, illness). Chinese friends follow these too — a bonding point.",
     "tip_advice_vi": "(1) HỌC THUỘC 8 câu chúc Tết bằng tiếng Trung trước Tết: '新年快乐', '恭喜发财', '万事如意', '阖家团圆', '身体健康', '心想事成', '万象更新', '福寿安康'. Khi gặp bạn Trung Quốc, dùng đúng cụm theo đối tượng (người lớn tuổi: 福寿安康; bạn ngang cấp: 万事如意; trẻ con: 学业进步). (2) Nếu mời bạn Trung Quốc ăn Tết tại Việt Nam, chuẩn bị TRƯỚC: đặt vé máy bay sớm (Tết là cao điểm), book khách sạn 4-5 sao, lên menu chứa cả món Việt và món Trung quen thuộc (cá, gà nguyên con). Bạn Trung lần đầu ăn bánh chưng có thể lúng túng — chuẩn bị vài món 'quen' để dự phòng. (3) Quà cho bạn Trung Quốc dịp Tết: bánh chưng tươi (đông lạnh chân không, gửi máy bay), mứt Tết (mứt sen, mứt gừng), cà phê Trung Nguyên premium, lụa Vạn Phúc. Tổng giá trị 500-1500 nhân dân tệ. (4) Khi gửi tin chúc Tết qua WeChat, GỬI VỚI ẢNH/EMOJI — không chỉ text. Ảnh hoa đào, lì xì, gia đình ăn Tết. Tin chúc kèm hình ảnh nhân lên hiệu ứng cảm xúc. (5) Lì xì cho bạn Trung Quốc/Trẻ Trung Quốc: dùng phong bao đỏ (NÀY mua trước được ở Hà Nội), số tiền 50, 88, 100, 168, 188 (số có 8 — phát tài). TRÁNH 4, 14, 44, 444 (tử). (6) Trong các năm tiếp theo, gửi tin chúc Tết cho TỪNG quan hệ Trung Quốc bạn có — không chỉ tin nhắn nhóm. Mỗi tin riêng + tên người nhận = thể hiện sự quan tâm cá nhân. Tốn 30 phút nhưng giá trị xây quan hệ lớn. (7) Sau Tết, gửi 'cảm ơn lì xì' nếu bạn nhận từ ai — '谢谢您的红包, 我会把红包里的钱用来 [investment / book / family treat]' — đây là cử chỉ chu đáo ít người Việt làm.",
+    "tip_advice_en": "(1) MEMORIZE 8 Chinese New Year greetings: 新年快乐, 恭喜发财, 万事如意, 阖家团圆, 身体健康, 心想事成, 万象更新, 福寿安康. Match them to the person (elders: 福寿安康; peers: 万事如意; children: 学业进步). (2) If you invite a Chinese friend for the New Year, prepare AHEAD: book flights early (peak season), a 4-5 star hotel, a menu mixing local and familiar Chinese dishes (whole fish, whole chicken). A first-timer with the rice cake may be unsure — have a few 'familiar' dishes as backup. (3) Gifts for a Chinese friend at New Year: a vacuum-frozen rice cake, candied fruits, premium coffee, silk. Total ~500-1500 RMB. (4) When sending New Year wishes on WeChat, SEND WITH a photo/emoji — not just text. Blossom photos, red envelopes, the family meal. Images multiply the emotional effect. (5) Red envelopes for Chinese friends/children: use red packets, amounts of 50, 88, 100, 168, 188 (8 = prosperity). AVOID 4, 14, 44, 444 (death). (6) In later years, send New Year wishes to EACH Chinese contact individually — not a group blast. Each personal message + the recipient's name shows individual care; 30 minutes well spent for relationship value. (7) After the New Year, send a 'thank you for the red envelope' if you received one: 谢谢您的红包，我会把红包里的钱用来 [a thoughtful use] — a considerate gesture few people make.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -7520,6 +7680,12 @@ export const lessons: ChineseLesson[] = [
           "周末 → zhōumò (cuối tuần)",
           "打算 → dǎsuàn (dự định)",
           "咖啡店 → kāfēi diàn (quán cà phê)"
+        ],
+        "pronunciation_focus_en": [
+          "这么久 → zhème jiǔ ('such a long time')",
+          "周末 → zhōumò ('weekend')",
+          "打算 → dǎsuàn ('plan/intention')",
+          "咖啡店 → kāfēi diàn ('cafe')"
         ]
       },
       {
@@ -7532,6 +7698,12 @@ export const lessons: ChineseLesson[] = [
           "以诚相待 → yǐ chéng xiāng dài (đối đãi chân thành)",
           "之间 → zhī jiān (giữa)",
           "需要 → xūyào"
+        ],
+        "pronunciation_focus_en": [
+          "客套 → kètào ('social formalities')",
+          "以诚相待 → yǐ chéng xiāng dài ('treat each other with sincerity')",
+          "之间 → zhī jiān ('between')",
+          "需要 → xūyào ('to need')"
         ]
       },
       {
@@ -7544,6 +7716,12 @@ export const lessons: ChineseLesson[] = [
           "陪 → péi (đi cùng)",
           "中国菜 → Zhōngguó cài (món Trung)",
           "家的味道 → jiā de wèidao"
+        ],
+        "pronunciation_focus_en": [
+          "想家 → xiǎng jiā ('to be homesick')",
+          "陪 → péi ('to accompany')",
+          "中国菜 → Zhōngguó cài ('Chinese food')",
+          "家的味道 → jiā de wèidao ('the taste of home')"
         ]
       },
       {
@@ -7556,6 +7734,12 @@ export const lessons: ChineseLesson[] = [
           "找你玩 → zhǎo nǐ wán (sang chơi)",
           "导游 → dǎoyóu (hướng dẫn viên)",
           "做 → zuò"
+        ],
+        "pronunciation_focus_en": [
+          "下次 → xià cì ('next time')",
+          "找你玩 → zhǎo nǐ wán ('come visit you')",
+          "导游 → dǎoyóu ('tour guide')",
+          "做 → zuò ('to be/do')"
         ]
       },
       {
@@ -7568,6 +7752,12 @@ export const lessons: ChineseLesson[] = [
           "海内存知己 → hǎi nèi cún zhī jǐ (Vương Bột)",
           "朋友 → péngyou (bạn)",
           "我们 → wǒmen"
+        ],
+        "pronunciation_focus_en": [
+          "肝胆相照 → gān dǎn xiāng zhào (idiom: 'show one's true heart to a friend')",
+          "海内存知己 → hǎi nèi cún zhī jǐ (Wang Bo: 'a true friend within the seas')",
+          "朋友 → péngyou ('friend')",
+          "我们 → wǒmen ('we')"
         ]
       }
     ],
@@ -7810,7 +8000,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Xây tình bạn với người Trung Quốc tại Việt Nam là cơ hội đặc biệt — họ rời quê hương đến đất khách, cần kết nối, và bạn có lợi thế là 'native + có nền văn hóa gần'. Năm giai đoạn xây tình bạn:\n\nGIAI ĐOẠN 1 (1-3 tháng): SOCIAL EXCHANGE.\n- Mời đi cà phê / ăn trưa\n- Nói chuyện công việc + interests + thành phố\n- Trao đổi WeChat\n- Test compatibility cá nhân\nKey skill: be friendly without overstepping. Đừng hỏi quá personal (tiền lương, tình yêu, chính trị).\n\nGIAI ĐOẠN 2 (3-6 tháng): SHARED EXPERIENCES.\n- Cuối tuần đi chơi cùng (Văn Miếu, Hạ Long, Sapa)\n- Mời về nhà ăn cơm (BƯỚC LỚN — gặp gia đình)\n- Cùng đi nhậu/karaoke\n- Bắt đầu kể chuyện riêng (gia đình, ước mơ)\nKey skill: mời về nhà là bước quan trọng — đảm bảo gia đình bạn welcoming, không hỏi câu khó (lương, tuổi kết hôn).\n\nGIAI ĐOẠN 3 (6-12 tháng): TRUST BUILDING.\n- Giúp họ trong khó khăn (đi bệnh viện, dịch giấy tờ, thuê nhà)\n- Họ giúp bạn (việc, dạy tiếng Trung, kết nối với người Trung khác)\n- Chia sẻ tâm sự cá nhân\n- Tham dự sự kiện quan trọng (sinh nhật, kỷ niệm)\nKey skill: 'patience over performance' — không ép thân thiết, để tự nhiên phát triển.\n\nGIAI ĐOẠN 4 (1-2 năm): LIFE INTEGRATION.\n- Bạn của họ thành bạn của bạn\n- Gia đình hai bên biết nhau qua kể chuyện\n- Kế hoạch dài hạn cùng nhau (du lịch chung, business cooperation)\n- Không cần lý do để gặp\nKey skill: maintain individuality — giữ identity riêng của mình.\n\nGIAI ĐOẠN 5 (2+ năm): LIFELONG FRIENDSHIP.\n- Họ về Trung Quốc, bạn ở Việt Nam, vẫn liên lạc\n- Thăm nhau qua biên giới\n- Hỗ trợ lẫn nhau career/family decisions\n- 'Knowing each other beyond words'\nKey skill: 'invest without expecting return' — tình bạn cấp độ này không có ROI, chỉ có meaning.\n\nVề khác biệt cá nhân: không phải mọi người Trung Quốc đều giống nhau. Người miền Bắc (Bắc Kinh, Hắc Long Giang) có xu hướng formal hơn; miền Nam (Quảng Đông, Phúc Kiến) thân thiện hơn; miền Tây (Tứ Xuyên, Vân Nam) cởi mở và bộc trực; người Thượng Hải sophisticated. Đọc đối phương cẩn thận, đừng generalize.\n\nVề người Trung Quốc Hoa Kiều ở Việt Nam (Chợ Lớn, Q.5 HCMC): họ là 'người Việt gốc Hoa', đã ở Việt Nam nhiều thế hệ. Ngôn ngữ chính có thể là tiếng Việt, tiếng Quảng Đông, không phải Mandarin. Khi kết bạn với họ, chuẩn bị tinh thần khác với 'người Trung mới sang'.\n\nVề tình bạn cross-gender: bạn bè khác giới ở Trung Quốc đại lục được chấp nhận, nhưng vẫn có giới hạn (tránh đi đêm muộn 1-1, tránh tuyên bố 'good friend' công khai khi cả hai đã có gia đình). Xử lý tinh tế.",
+    "cultural_notes_en": "Building a friendship with a Chinese person living in your country is a special opportunity — they've left home for a foreign place, need connection, and you have the edge of being a culturally-close native. Five stages:\n\nSTAGE 1 (1-3 months): SOCIAL EXCHANGE. Invite for coffee/lunch; talk work, interests, the city; exchange WeChat; test personal compatibility. Key skill: friendly without overstepping — don't ask too-personal questions (salary, romance, politics).\n\nSTAGE 2 (3-6 months): SHARED EXPERIENCES. Weekend outings; invite them home for a meal (a BIG step — meeting family); go out for drinks/karaoke; start sharing personal stories. Key skill: the home invitation matters — make sure your family is welcoming and doesn't ask hard questions (salary, marriage age).\n\nSTAGE 3 (6-12 months): TRUST BUILDING. Help them in difficulty (hospital, translating documents, renting); they help you (jobs, teaching Chinese, introductions); share confidences; attend important events. Key skill: patience over performance — don't force closeness; let it develop.\n\nSTAGE 4 (1-2 years): LIFE INTEGRATION. Their friends become yours; the two families know each other through stories; long-term plans together; no reason needed to meet. Key skill: maintain individuality — keep your own identity.\n\nSTAGE 5 (2+ years): LIFELONG FRIENDSHIP. They return to China, you stay; you still keep in touch, visit across the border, support each other's career/family decisions — 'knowing each other beyond words.' Key skill: invest without expecting return — this level has no ROI, only meaning.\n\nIndividual variation: not all Chinese people are alike. Northerners tend to be more formal; southerners friendlier; westerners open and blunt; Shanghainese sophisticated. Read the person; don't generalize.\n\nDiaspora Chinese who have lived in your country for generations are a different case — their main language may not be Mandarin. Prepare mentally for a different dynamic than with a recent arrival.\n\nCross-gender friendship is accepted on the mainland but still has limits (avoid late one-on-one nights, avoid publicly declaring a 'good friend' when both are married). Handle it tactfully.",
     "tip_advice_vi": "(1) ĐẦU TƯ THỜI GIAN, không tiền. Tình bạn thật xây qua giờ chất lượng (đi cà phê, đi bộ, nói chuyện) hơn qua tiền (tặng quà đắt, mời nhà hàng sang). (2) CHỦ ĐỘNG mời. Người Trung Quốc mới sang Việt Nam thường e ngại mời người Việt — cảm thấy là 'imposing'. Bạn chủ động = giải tỏa căng thẳng đó. Mỗi tuần 1 lần mời cà phê / ăn trưa cuối tuần đầu tiên. (3) HỌC 5-10 cụm tiếng Trung casual để dùng hàng ngày: '走吧' (đi nào), '加油' (cố lên), '没事' (không sao), '谢了' (cảm ơn nhé), '哥们' (anh em — male only). Sử dụng tự nhiên trong WeChat = thể hiện thân thiết. (4) GIỚI THIỆU bạn Trung Quốc của bạn cho NHÓM bạn Việt của bạn. Họ cần expand network. Mở 1 bữa nhậu nhóm, mix 50% Việt + 50% Trung Quốc — bonding rất mạnh. (5) NHỚ những ngày quan trọng: sinh nhật, ngày họ chuyển đến Việt Nam, ngày họ về Trung Quốc thăm nhà. Gửi tin chúc / quà nhỏ. Mỗi 'kỷ niệm' bạn nhớ = 1 điểm gắn kết sâu. (6) GIẢI THÍCH Việt Nam một cách tự nhiên trong các cuộc đi chơi. Đến phố cổ, kể về lịch sử Hà Nội. Đến hồ Hoàn Kiếm, kể chuyện rùa thần. KHÔNG bài bản, mà như story-telling cá nhân. (7) KHI HỌ VỀ NƯỚC, không 'kết thúc' mối quan hệ. Gửi tin WeChat đều đặn (1 tuần 1 lần), gửi ảnh đời sống, mời họ quay lại Việt Nam, lên kế hoạch sang Trung Quốc thăm họ. Tình bạn lifelong = 'long-distance maintenance' liên tục.",
+    "tip_advice_en": "(1) INVEST TIME, not money. Real friendship is built through quality hours (coffee, walks, talking) more than money (expensive gifts, fancy restaurants). (2) Take the INITIATIVE to invite. A Chinese newcomer often hesitates to invite a local, fearing it's 'imposing.' You initiating relieves that tension — once a week, coffee or a weekend lunch early on. (3) Learn 5-10 casual Chinese phrases for daily use: 走吧 ('let's go'), 加油 ('you got this'), 没事 ('no worries'), 谢了 ('thanks'), 哥们 ('bro' — male only). Natural use on WeChat signals closeness. (4) Introduce your Chinese friend to your GROUP of local friends. They need to expand their network — host a group meal, 50/50 mix. Strong bonding. (5) Remember key dates: birthday, the day they moved here, the day they go home to visit. A wish or small gift each time = a deeper bond. (6) Explain your culture naturally during outings — like personal storytelling, not a lecture. (7) When they go home, do NOT 'end' the relationship. WeChat regularly (weekly), send life photos, invite them back, plan a trip to visit them. Lifelong friendship = continuous long-distance maintenance.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -7871,6 +8063,12 @@ export const lessons: ChineseLesson[] = [
           "签证 → qiānzhèng (visa)",
           "您好 → nín hǎo (chào formal)",
           "这是 → zhè shì"
+        ],
+        "pronunciation_focus_en": [
+          "护照 → hùzhào ('passport')",
+          "签证 → qiānzhèng ('visa')",
+          "您好 → nín hǎo ('hello' — formal)",
+          "这是 → zhè shì ('this is')"
         ]
       },
       {
@@ -7883,6 +8081,12 @@ export const lessons: ChineseLesson[] = [
           "待 → dāi (ở lại)",
           "五天 → wǔ tiān (năm ngày)",
           "中国 → Zhōngguó"
+        ],
+        "pronunciation_focus_en": [
+          "出差 → chū chāi ('to be on a business trip')",
+          "待 → dāi ('to stay')",
+          "五天 → wǔ tiān ('five days')",
+          "中国 → Zhōngguó ('China')"
         ]
       },
       {
@@ -7895,6 +8099,12 @@ export const lessons: ChineseLesson[] = [
           "国贸 → Guómào (Quốc Mậu — khu thương mại quốc tế)",
           "酒店 → jiǔdiàn (khách sạn)",
           "诺富特 → Nuòfùtè (Novotel)"
+        ],
+        "pronunciation_focus_en": [
+          "住在 → zhù zài ('to stay at')",
+          "国贸 → Guómào ('Guomao', the Beijing CBD)",
+          "酒店 → jiǔdiàn ('hotel')",
+          "诺富特 → Nuòfùtè ('Novotel' — transliteration)"
         ]
       },
       {
@@ -7907,6 +8117,12 @@ export const lessons: ChineseLesson[] = [
           "机票 → jīpiào (vé máy bay)",
           "下周一 → xiàzhōu yī (thứ Hai tuần sau)",
           "上午 → shàngwǔ (buổi sáng)"
+        ],
+        "pronunciation_focus_en": [
+          "返程 → fǎnchéng ('return leg')",
+          "机票 → jīpiào ('plane ticket')",
+          "下周一 → xiàzhōu yī ('next Monday')",
+          "上午 → shàngwǔ ('morning')"
         ]
       },
       {
@@ -7919,6 +8135,12 @@ export const lessons: ChineseLesson[] = [
           "行李 → xíngli (hành lý)",
           "取 → qǔ (lấy)",
           "哪里 → nǎlǐ"
+        ],
+        "pronunciation_focus_en": [
+          "请问 → qǐngwèn ('may I ask')",
+          "行李 → xíngli ('luggage')",
+          "取 → qǔ ('to pick up')",
+          "哪里 → nǎlǐ ('where')"
         ]
       }
     ],
@@ -8161,7 +8383,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Hải quan Trung Quốc đại lục có quy trình chặt chẽ — không khó nhưng có vài điểm khác Việt Nam: (1) ĐIỀN TỜ KHAI NHẬP CẢNH (入境卡) trên máy bay, không phải tại sân bay. Tiếp viên phát trước hạ cánh 30-60 phút. Điền BẰNG CHỮ IN HOA + tiếng Anh, KHÔNG tiếng Việt. Nếu quên, có quầy điền tại sân bay (miễn phí). (2) KIỂM TRA SINH TRẮC HỌC: chụp ảnh + lấy vân tay (10 ngón) lần đầu nhập cảnh. Lần 2 trở đi chỉ cần ảnh. Quá trình 2-3 phút. (3) QUYỀN HÀNH LÝ: thường 1 vali xách tay + 1 ký gửi. Nếu mang đồ ăn (mắm, nem, lạp xưởng), khai báo — phần lớn bị tịch thu (Trung Quốc cấm sản phẩm thịt sống/ướp). Trà, cà phê, bánh khô = OK. (4) HỆ THỐNG XANH/ĐỎ: 'Nothing to declare' (绿色通道) hoặc 'Goods to declare' (红色通道). Nếu mang >5,000 USD tiền mặt, máy ảnh DSLR đắt tiền, đồng hồ Rolex — đi đỏ. Đi xanh khi có hàng cấm = phạt nặng. (5) CHỜ ĐỢI: cao điểm (15-22h) có thể chờ 30-90 phút. Có quầy 'Foreign passports' (外国人护照) riêng, thường ngắn hơn quầy Trung Quốc. (6) WIFI SÂN BAY: bắt buộc xác thực bằng số điện thoại + CMND/hộ chiếu. KHÔNG dùng wifi free để xử lý việc nhạy cảm — dùng 4G data Việt Nam (roaming) hoặc mua eSIM Trung Quốc trước khi đi.\n\nVề nhập cảnh khu vực đặc biệt: Hong Kong/Macau dùng giấy thông hành riêng (港澳通行证) cho công dân TQ; người Việt qua bằng hộ chiếu + visa riêng. Đại lục → Hong Kong vẫn phải qua hải quan như nhập nước khác. Đừng nhầm.\n\nVề thời gian visa: visa du lịch Trung Quốc thường 30 ngày, lưu trú đơn lẻ ≤30 ngày, hiệu lực 90 ngày từ ngày cấp. Quá hạn = phạt 500 tệ/ngày + có thể bị từ chối nhập cảnh lần sau.",
+    "cultural_notes_en": "Mainland Chinese immigration is strict but not difficult — a few points differ from what travelers may expect: (1) FILL THE ARRIVAL CARD (入境卡) ON THE PLANE, not at the airport. Crew hand it out 30-60 minutes before landing. Fill it in BLOCK CAPITALS in English, NOT your native language. If you forget, there are free counters at the airport. (2) BIOMETRICS: photo + 10-fingerprint scan on first entry; photo only thereafter; 2-3 minutes. (3) BAGGAGE: usually 1 carry-on + 1 checked. If you carry food (cured meat, fermented products), declare it — most is confiscated (China bans raw/cured meat products). Tea, coffee, dry biscuits are fine. (4) GREEN/RED CHANNEL: 'nothing to declare' (绿色通道) or 'goods to declare' (红色通道). >5,000 USD cash, an expensive DSLR, a luxury watch → go red. Going green with prohibited goods = a heavy fine. (5) WAIT: at peak (3-10pm) it can be 30-90 minutes. There's a separate 'Foreign passports' (外国人护照) line, usually shorter. (6) AIRPORT WIFI requires verification by phone number + ID/passport. Don't do sensitive things on free wifi — use roaming data or a pre-bought China eSIM.\n\nSpecial regions: Hong Kong/Macau use separate travel documents for Chinese citizens; a foreign visitor crosses with passport + a separate visa, and mainland → Hong Kong still goes through immigration like entering another jurisdiction. Don't confuse them.\n\nVisa validity: a Chinese tourist visa is usually 30 days, single stay ≤30 days, valid 90 days from issue. Overstay = 500 RMB/day + possible refusal of future entry.",
     "tip_advice_vi": "(1) CHUẨN BỊ giấy tờ trong túi áo trước hạ cánh: hộ chiếu, visa, vé về (in giấy hoặc trong điện thoại), địa chỉ khách sạn (in giấy backup). KHÔNG để trong vali ký gửi — không có thì không qua được hải quan. (2) ĐIỀN TỜ KHAI NHẬP CẢNH cẩn thận trên máy bay: tên VIẾT HOA giống hộ chiếu, ngày tháng theo format DD/MM/YYYY, địa chỉ khách sạn ĐẦY ĐỦ (số nhà, đường, quận, thành phố). Sai = phải làm lại tại sân bay = mất thời gian. (3) BÌNH TĨNH khi bị hỏi nhiều câu — không phải lúc nào cũng có nghĩa là có vấn đề. Cán bộ hải quan có quyền hỏi tự do. Trả lời đúng, ngắn, không thêm thông tin. (4) KHÔNG MANG đồ ăn động vật (lạp xưởng, jerky, mắm tép, nem chua) — bị tịch thu chắc chắn. Cà phê, trà, bánh khô, trái cây sấy = OK. Nếu nghi ngờ, KHAI BÁO. (5) ĐỔI TIỀN trước hoặc tại sân bay (tỷ giá kém ~3-5%) hoặc dùng Alipay/WeChat Pay (cần kết nối với thẻ ngân hàng quốc tế từ trước). KHÔNG mang quá 5,000 USD tiền mặt mà không khai báo. (6) MUA SIM hoặc bật ROAMING: đại lục Trung Quốc chặn Google, Facebook, WhatsApp — dùng VPN nếu cần (nhưng VPN ở đại lục là khu vực xám, dùng thận trọng). Wifi sân bay free cần xác thực bằng số ĐT/hộ chiếu — chấp nhận được. (7) KHI BỊ KÉO RA QUẦY PHỤ (二次检查 — kiểm tra lần hai): không phải dấu hiệu xấu. Cán bộ kiểm tra ngẫu nhiên hoặc do hệ thống flag. Bình tĩnh, hợp tác, mở vali nếu được yêu cầu. Quá trình 5-15 phút. KHÔNG quay phim/chụp ảnh.",
+    "tip_advice_en": "(1) Keep documents in your jacket pocket before landing: passport, visa, return ticket, hotel address (paper backup). Do NOT put them in checked baggage — without them you can't clear immigration. (2) Fill the arrival card carefully on the plane: name in CAPITALS as in the passport, dates as DD/MM/YYYY, FULL hotel address. Errors mean redoing it at the airport. (3) Stay CALM if asked many questions — it doesn't necessarily mean a problem. Officers may ask freely. Answer accurately, briefly, no extra information. (4) Do NOT bring animal-product food (cured sausage, jerky, fermented seafood) — guaranteed confiscation. Coffee, tea, dry biscuits, dried fruit are fine. If unsure, DECLARE it. (5) Exchange money beforehand or at the airport (poor rate ~3-5%) or use Alipay/WeChat Pay (link an international card in advance). Don't carry >5,000 USD cash undeclared. (6) Get a SIM or enable ROAMING: the mainland blocks Google, Facebook, WhatsApp — a VPN is a gray area, use cautiously. Free airport wifi requiring phone/passport verification is acceptable. (7) If pulled to a secondary check (二次检查), it is NOT a bad sign — random or system-flagged. Stay calm, cooperate, open the suitcase if asked; 5-15 minutes. Do NOT film or photograph.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -8222,6 +8446,12 @@ export const lessons: ChineseLesson[] = [
           "补办 → bǔbàn (làm lại / cấp lại)",
           "申请 → shēnqǐng (xin)",
           "护照 → hùzhào"
+        ],
+        "pronunciation_focus_en": [
+          "丢 → diū ('to lose / drop')",
+          "补办 → bǔbàn ('to apply for a replacement')",
+          "申请 → shēnqǐng ('to apply')",
+          "护照 → hùzhào ('passport')"
         ]
       },
       {
@@ -8234,6 +8464,12 @@ export const lessons: ChineseLesson[] = [
           "报案 → bào'àn (trình báo)",
           "回执 → huízhí (biên nhận)",
           "已经 → yǐjīng"
+        ],
+        "pronunciation_focus_en": [
+          "派出所 → pàichūsuǒ ('local police station / precinct')",
+          "报案 → bào'àn ('to file a police report')",
+          "回执 → huízhí ('receipt/acknowledgment')",
+          "已经 → yǐjīng ('already')"
         ]
       },
       {
@@ -8246,6 +8482,12 @@ export const lessons: ChineseLesson[] = [
           "身份证 → shēnfènzhèng (CMND)",
           "电子版 → diànzǐ bǎn (bản điện tử)",
           "有 → yǒu"
+        ],
+        "pronunciation_focus_en": [
+          "复印件 → fùyìnjiàn ('photocopy')",
+          "身份证 → shēnfènzhèng ('ID card')",
+          "电子版 → diànzǐ bǎn ('digital version')",
+          "有 → yǒu ('to have')"
         ]
       },
       {
@@ -8258,6 +8500,12 @@ export const lessons: ChineseLesson[] = [
           "航班 → hángbān (chuyến bay)",
           "后天 → hòutiān (kia / hai ngày sau)",
           "需要 → xūyào"
+        ],
+        "pronunciation_focus_en": [
+          "多久 → duō jiǔ ('how long')",
+          "航班 → hángbān ('flight')",
+          "后天 → hòutiān ('the day after tomorrow')",
+          "需要 → xūyào ('to need/require')"
         ]
       },
       {
@@ -8270,6 +8518,12 @@ export const lessons: ChineseLesson[] = [
           "临时 → línshí (tạm thời)",
           "旅行证件 → lǚxíng zhèngjiàn (giấy đi đường)",
           "是否 → shìfǒu (có thể)"
+        ],
+        "pronunciation_focus_en": [
+          "来不及 → láibují ('not enough time')",
+          "临时 → línshí ('temporary/emergency')",
+          "旅行证件 → lǚxíng zhèngjiàn ('travel document')",
+          "是否 → shìfǒu ('whether / is it possible')"
         ]
       }
     ],
@@ -8512,7 +8766,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Mất hộ chiếu ở Trung Quốc là tình huống có quy trình rõ — không dễ chịu nhưng giải quyết được trong 3-10 ngày. Bốn nguyên tắc cốt lõi: (1) BÁO CÔNG AN TRƯỚC khi đến đại sứ quán. Đại sứ quán Việt Nam YÊU CẦU biên nhận trình báo (报案回执) — không có = không tiếp nhận đơn. Đến 派出所 khu vực bạn mất (không phải khu khác), kể chi tiết, lấy giấy in dấu đỏ. Quá trình 30-60 phút, miễn phí. (2) GỌI ĐẠI SỨ QUÁN trước khi đến — số 010-65325410 (Bắc Kinh) hoặc Tổng lãnh sự quán TP HCM (021-) ở Thượng Hải. Họ sẽ tư vấn ngày giờ đến, giấy tờ cần. KHÔNG đến không hẹn — có thể phải đợi 2-3 giờ. (3) GIẤY TỜ MANG: (a) biên nhận trình báo; (b) bản sao hộ chiếu (chụp trước khi đi từ Việt Nam — bài học vàng); (c) bản số/sao CMND; (d) 2 ảnh thẻ 4x6 nền trắng (chụp tại studio gần đại sứ quán nếu không có); (e) đơn xin (lấy tại đại sứ quán hoặc download trước); (f) tiền mặt hoặc WeChat Pay (1,200 tệ cho giấy thông hành tạm). (4) HAI LOẠI GIẤY: 'hộ chiếu mới' (7-10 ngày, in từ Việt Nam) hoặc 'giấy thông hành tạm thời' (3 ngày, chỉ về Việt Nam, không đi nước khác). Nếu bay về Việt Nam trực tiếp, giấy thông hành tạm là đủ.\n\nVề bảo hiểm du lịch: nếu bạn có bảo hiểm du lịch (Bảo Việt, BSH, MIC), nó CHI TRẢ phí cấp lại hộ chiếu (~1,200 tệ) + chi phí thay đổi vé bay + thêm đêm khách sạn. Liên hệ hotline ngay sau khi báo công an. Yêu cầu mọi biên nhận (trình báo, đại sứ quán, vé bay đổi, khách sạn) — gửi cho bảo hiểm khi về Việt Nam.\n\nVề lần sau khi đi Trung Quốc: chụp ảnh hộ chiếu + visa LƯU CLOUD (Google Drive, iCloud) — không chỉ trong điện thoại. Mất điện thoại = mất luôn ảnh. Email cho bản thân = backup tốt nhất. In giấy 1 bản để trong vali ký gửi (riêng khỏi hộ chiếu chính).\n\nVề việc đi lại trong Trung Quốc khi không có hộ chiếu: KHÔNG bay nội địa được. KHÔNG mua vé tàu cao tốc được. KHÔNG check-in khách sạn được (cần đăng ký với công an). Nếu cần ở thêm, ở khách sạn nhỏ chấp nhận giấy báo công an (一些客栈) — chuẩn bị tiền mặt vì chuyển khoản cũng cần ID.",
+    "cultural_notes_en": "Losing your passport in China is an unpleasant but well-defined situation, resolvable in 3-10 days. Four core principles: (1) FILE A POLICE REPORT BEFORE going to your embassy. The embassy REQUIRES the report receipt (报案回执) — without it they won't accept your application. Go to the 派出所 (precinct station) for the area where you lost it (not another district), give details, get the red-stamped paper; 30-60 minutes, free. (2) CALL the embassy before going — they advise on time and required documents. Do NOT show up unannounced — you may wait 2-3 hours. (3) DOCUMENTS to bring: (a) the police report receipt; (b) a passport copy (photographed before you traveled — the golden lesson); (c) an ID copy; (d) 2 passport photos, white background; (e) the application form; (f) cash or WeChat Pay (fee for an emergency travel document). (4) TWO document types: a 'new passport' (7-10 days, printed from home) or an 'emergency travel document' (3 days, return-home only, no other countries). If you fly directly home, the emergency document is enough.\n\nTravel insurance: if you have it, it COVERS the replacement fee + flight-change cost + extra hotel nights. Call the hotline right after the police report. Keep every receipt (report, embassy, changed ticket, hotel) — submit on return.\n\nNext time you travel to China: photograph passport + visa and SAVE TO THE CLOUD (Drive, iCloud) — not just on your phone. Lose the phone, lose the photos. Emailing it to yourself is the best backup. Print one copy for your checked bag (separate from the actual passport).\n\nMoving around China without a passport: you CANNOT fly domestically, buy a high-speed-rail ticket, or check into a hotel (which requires police registration). If you must stay longer, use a small inn that accepts the police report; bring cash, since transfers also need ID.",
     "tip_advice_vi": "(1) PHÒNG HỘ CHIẾU MẤT từ Việt Nam: chụp ảnh hộ chiếu + visa, lưu Google Drive + email cho bản thân + photocopy 2 bản để 1 trong vali ký gửi. Bài học vàng: 80% người mất hộ chiếu mất luôn cách giải quyết nhanh vì không có bản sao. (2) MẤT TẠI KHÁCH SẠN/TAXI/QUÁN ĂN: gọi ngay khách sạn/công ty taxi. 60% trường hợp nhân viên dọn dẹp nhặt được. Để lại số ĐT VN (kèm mã +84). (3) MẤT TẠI ĐÔNG NGƯỜI (chợ, ga, sân bay): xác suất tìm lại thấp. Đi thẳng đồn công an gần nhất, không lãng phí thời gian. (4) ĐỒN CÔNG AN: tìm 派出所 trên Baidu Maps, đến cửa, nói '我护照丢了, 来报案' (hộ chiếu em mất, đến trình báo). Cán bộ sẽ hướng dẫn điền form. KHÔNG đoán/buộc tội ai. KHÔNG nói 'có thể nhân viên khách sạn lấy' nếu không có bằng chứng. (5) CHỜ ĐẠI SỨ QUÁN: thường thứ 2-thứ 6, 8:30-11:30 sáng. Đến SỚM 30 phút, mang theo 2 ảnh thẻ + đầy đủ giấy tờ. Nếu thiếu, có studio chụp ảnh thẻ ngay gần đại sứ quán Việt Nam (Bắc Kinh — Triều Dương quận, Sanlitun phía Đông). (6) ĐỔI VÉ BAY: gọi hãng bay (Vietnam Airlines: 028-3823-2320, Vietjet: 1900-1886) trước khi đến đại sứ quán. Đổi vé thường mất 100-300 USD phí thay đổi + chênh lệch giá. Bảo hiểm du lịch trả phần này. (7) KHI VỀ VIỆT NAM: với giấy thông hành tạm, vào nhập cảnh quầy 'Vietnam citizens'. Cán bộ Việt Nam sẽ giữ giấy này. Sau 30 ngày, đi cảnh sát quận làm hộ chiếu mới (1.500.000 VND, 7-14 ngày). Báo cảnh sát cũ tại Việt Nam về việc mất hộ chiếu (nếu chưa).",
+    "tip_advice_en": "(1) PREVENT loss before you travel: photograph passport + visa, save to Drive + email yourself + photocopy 2 (one in the checked bag). The golden lesson: 80% of people who lose a passport also lose the fast fix because they have no copy. (2) LOST AT HOTEL/TAXI/RESTAURANT: call them immediately. In 60% of cases cleaning staff found it. Leave a phone number (with country code). (3) LOST IN A CROWD (market, station, airport): low recovery odds — go straight to the nearest police station, don't waste time. (4) POLICE STATION: find the 派出所 on a map, say 我护照丢了，来报案 ('I lost my passport, here to file a report'). The officer guides the form. Do NOT guess or accuse anyone without evidence. (5) EMBASSY WAIT: typically Mon-Fri mornings. Arrive 30 minutes early with 2 photos + full documents. If short, there are passport-photo studios near most embassies. (6) CHANGE THE FLIGHT: call the airline before going to the embassy. A change is usually a 100-300 USD fee + fare difference; travel insurance covers this. (7) RETURNING HOME: with an emergency document, use the citizens' immigration line; officers will retain the document. After 30 days, get a new passport from the local police; also report the loss to your home police if not done.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -8573,6 +8829,12 @@ export const lessons: ChineseLesson[] = [
           "高铁 → gāotiě (tàu cao tốc)",
           "上海到北京 → Shànghǎi dào Běijīng",
           "明天 → míngtiān"
+        ],
+        "pronunciation_focus_en": [
+          "改签 → gǎiqiān ('to change a ticket')",
+          "高铁 → gāotiě ('high-speed rail')",
+          "上海到北京 → Shànghǎi dào Běijīng ('Shanghai to Beijing')",
+          "明天 → míngtiān ('tomorrow')"
         ]
       },
       {
@@ -8585,6 +8847,12 @@ export const lessons: ChineseLesson[] = [
           "九点 → jiǔ diǎn (9 giờ)",
           "下午三点 → xiàwǔ sān diǎn (3 giờ chiều)",
           "改成 → gǎi chéng (đổi thành)"
+        ],
+        "pronunciation_focus_en": [
+          "原本 → yuánběn ('originally')",
+          "九点 → jiǔ diǎn ('9 o'clock')",
+          "下午三点 → xiàwǔ sān diǎn ('3 PM')",
+          "改成 → gǎi chéng ('to change into')"
         ]
       },
       {
@@ -8597,6 +8865,12 @@ export const lessons: ChineseLesson[] = [
           "多少 → duōshao (bao nhiêu)",
           "请问 → qǐngwèn",
           "改签 → gǎiqiān"
+        ],
+        "pronunciation_focus_en": [
+          "手续费 → shǒuxùfèi ('processing/change fee')",
+          "多少 → duōshao ('how much')",
+          "请问 → qǐngwèn ('may I ask')",
+          "改签 → gǎiqiān ('to change a ticket')"
         ]
       },
       {
@@ -8609,6 +8883,12 @@ export const lessons: ChineseLesson[] = [
           "微信支付 → wēixìn zhīfù (WeChat Pay)",
           "用 → yòng (dùng)",
           "支付 → zhīfù"
+        ],
+        "pronunciation_focus_en": [
+          "差额 → chā'é ('the difference in amount')",
+          "微信支付 → wēixìn zhīfù ('WeChat Pay')",
+          "用 → yòng ('to use')",
+          "支付 → zhīfù ('to pay')"
         ]
       },
       {
@@ -8621,6 +8901,12 @@ export const lessons: ChineseLesson[] = [
           "发 → fā (gửi)",
           "手机 → shǒujī (điện thoại)",
           "就行 → jiùxíng (là được)"
+        ],
+        "pronunciation_focus_en": [
+          "电子票 → diànzǐ piào ('e-ticket')",
+          "发 → fā ('to send')",
+          "手机 → shǒujī ('mobile phone')",
+          "就行 → jiùxíng ('that will do')"
         ]
       }
     ],
@@ -8863,7 +9149,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Hệ thống đường sắt Trung Quốc (中国铁路 / 12306) là một trong những hệ thống tàu cao tốc lớn nhất và hiệu quả nhất thế giới. Năm điều người Việt cần biết: (1) APP 12306 là chính thức và miễn phí — tải, đăng ký bằng hộ chiếu (KHÔNG cần CMND Trung Quốc nếu là khách nước ngoài). Tất cả thao tác đặt vé/đổi vé/hoàn vé đều có thể qua app, không cần ra quầy. App có tiếng Anh nhưng giới hạn — học cụm tiếng Trung sẽ giúp nhiều. (2) QUY ĐỊNH ĐỔI VÉ (改签 — gǎiqiān): trên 24 giờ trước khởi hành = miễn phí thủ tục; 8-24 giờ = 5% giá vé; <8 giờ và trước khởi hành = 10%; sau khởi hành = không đổi được. Nếu bị cán bộ tính phí sai (như trong dialogue), kiểm tra app và viện dẫn — họ sẽ sửa. (3) HẠNG GHẾ: 商务座 (thương vụ — đắt nhất, ghế ngả 180°), 一等座 (hạng 1, 4 ghế/hàng), 二等座 (hạng 2, 5 ghế/hàng — phổ biến nhất, đủ thoải mái), 无座 (đứng — chỉ cho chuyến ngắn <2 giờ). Du lịch business: hạng 2 đủ; cao cấp đi hạng 1. (4) GA TÀU LỚN: Bắc Kinh có Bắc Kinh Nam (cao tốc đi Thượng Hải), Bắc Kinh Đông (đi Đông Bắc), Bắc Kinh Tây (đi Tây Nam). Thượng Hải có Hồng Kiều (cao tốc, gần sân bay nội địa), Thượng Hải Nam (truyền thống). Quảng Châu có Quảng Châu Nam (cao tốc — KHÔNG nhầm với 'Quảng Châu' truyền thống). Đến NHẦM ga = lỡ tàu. (5) CHECK-IN: vé điện tử dùng hộ chiếu để check-in tại máy tự động. Nếu máy không nhận hộ chiếu nước ngoài, đến quầy '人工窗口' (quầy nhân viên). Đến SỚM 30 phút (an ninh sân bay-style), 1 giờ nếu mua vé hạng 'thương vụ' tại VIP lounge.\n\nVề chậm/hủy chuyến: tàu cao tốc Trung Quốc có tỉ lệ đúng giờ ~95%. Chậm <30 phút = không bồi thường. Chậm >30 phút hoặc hủy = hoàn tiền 100% qua app. KHÔNG cần đến quầy.\n\nVề thanh toán: Alipay/WeChat Pay là chính. Tiền mặt được chấp nhận tại quầy nhưng không phải máy tự động. Visa/Mastercard quốc tế ĐÔI KHI nhận tại quầy (cán bộ phải kiểm tra) — KHÔNG đáng tin. Bài học vàng: kết nối thẻ ngân hàng quốc tế (HSBC, Citibank, Stripe) với Alipay/WeChat trước khi đến Trung Quốc.",
+    "cultural_notes_en": "China Railway (中国铁路 / 12306) is one of the largest, most efficient high-speed rail systems in the world. Five things a traveler should know: (1) The 12306 APP is official and free — register with your passport (no Chinese ID needed for a foreigner). All booking/changing/refunding is in-app, no counter needed. It has English but limited; some Chinese phrases help a lot. (2) CHANGE RULES (改签 gǎiqiān): >24h before departure = free; 8-24h = 5% of fare; <8h and before departure = 10%; after departure = no change. If staff miscalculate the fee, check the app and cite it — they'll correct it. (3) SEAT CLASSES: 商务座 (business, lie-flat), 一等座 (first, 4/row), 二等座 (second, 5/row — most common, comfortable enough), 无座 (standing, short trips only). Second class is fine for business travel. (4) BIG STATIONS: cities often have multiple stations (e.g. Beijing South for high-speed to Shanghai; Guangzhou South for high-speed — NOT plain 'Guangzhou'). Going to the WRONG station = a missed train. (5) CHECK-IN: an e-ticket uses your passport at the automated gate. If the machine rejects a foreign passport, use the 人工窗口 (staffed counter). Arrive 30 minutes early (airport-style security), an hour for business class.\n\nDelays/cancellations: on-time rate ~95%. Delay <30 min = no compensation. Delay >30 min or cancellation = 100% refund via the app, no counter.\n\nPayment: Alipay/WeChat Pay are primary. Cash works at counters but not machines. International Visa/Mastercard SOMETIMES works at counters (unreliable). Golden lesson: link an international card to Alipay/WeChat before arriving in China.",
     "tip_advice_vi": "(1) ĐẶT VÉ TỪ APP 12306, không qua đại lý du lịch (giá +20-50%). App có giao diện tiếng Anh và tiếng Trung — chuyển đổi qua menu. Đặt 7-15 ngày trước cao điểm (Tết, Tuần Vàng tháng 10). Vé thương vụ luôn còn, hạng 1/2 hết nhanh. (2) HỘ CHIẾU = ID số 1: nhập số hộ chiếu khi đăng ký 12306. Vé in tên + số hộ chiếu. Đến ga, dùng hộ chiếu quét tại cổng — KHÔNG cần in vé giấy. Mất hộ chiếu = không đi tàu được. (3) ĐỔI/HOÀN VÉ qua APP nhanh hơn quầy: vào 'My Orders' → chọn vé → 'Change'/'Refund'. Hệ thống tự động tính phí theo thời gian. Tiền hoàn lại 7-14 ngày qua phương thức thanh toán cũ. (4) TÌM CHUYẾN TÀU: tìm theo 'Departure city' và 'Arrival city' — ví dụ 'Beijing' → Bắc Kinh Nam (BJN), KHÔNG phải Bắc Kinh chung chung. App hiện tất cả ga + giá. Chọn chuyến nhanh nhất (G ký hiệu = cao tốc, D = nhanh, T/K/Z = chậm). (5) NẾU APP KHÔNG VÀO ĐƯỢC khi ở Trung Quốc đại lục: VPN có thể giúp, hoặc dùng số ĐT Trung Quốc (cần ID Trung Quốc đăng ký SIM). Backup: đến quầy 12306 tại các ga lớn — luôn mở 24/7. Quầy 'foreign passport' thường ngắn hàng. (6) CHẬM/HỦY: kiểm tra app 30 phút trước giờ khởi hành. Nếu chậm >30 phút, có quyền hoàn vé miễn phí + đổi sang chuyến khác. Bồi thường thực tế chỉ ~10% giá vé qua coupon — không nhiều. (7) TRÊN TÀU: nước nóng miễn phí, đồ ăn nhẹ ~30-50 tệ/hộp (đắt + bình thường), wifi không có hoặc rất chậm. Mang theo: tai nghe, sạc dự phòng, snack từ siêu thị. Toilet: phương Tây kiểu (西式) ở toa nào cũng có 1, kiểu Trung Quốc (蹲坑) phổ biến hơn — chuẩn bị tâm lý.",
+    "tip_advice_en": "(1) BOOK FROM THE 12306 APP, not a travel agent (+20-50% markup). The app toggles English/Chinese in the menu. Book 7-15 days ahead at peak (New Year, October Golden Week). Business class is usually available; 1st/2nd sell out fast. (2) PASSPORT = ID #1: enter the passport number when registering. The ticket carries name + passport number; at the station scan the passport at the gate — no paper needed. Lose the passport = no train. (3) CHANGE/REFUND via the APP, faster than a counter: My Orders → ticket → Change/Refund. The system auto-computes the fee by timing; refunds take 7-14 days to the original method. (4) FIND TRAINS by departure/arrival city; the app shows all stations + prices. Pick the fastest (G = high-speed, D = fast, T/K/Z = slow). (5) IF THE APP WON'T LOAD on the mainland: a VPN may help, or a Chinese phone number (needs Chinese ID for a SIM). Backup: the 12306 counter at big stations, open 24/7; the 'foreign passport' counter is usually short. (6) DELAY/CANCEL: check the app 30 minutes before departure. If delayed >30 min, you may refund free + rebook; actual compensation is only ~10% via coupon. (7) ON BOARD: free hot water, snacks ~30-50 RMB/box (overpriced, mediocre), wifi absent or very slow. Bring earphones, a power bank, snacks from a supermarket. Toilets: a Western-style one per car, squat-style more common — be prepared.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -8924,6 +9212,12 @@ export const lessons: ChineseLesson[] = [
           "疼 → téng (đau)",
           "发烧 → fāshāo (sốt)",
           "昨天晚上 → zuótiān wǎnshàng"
+        ],
+        "pronunciation_focus_en": [
+          "肚子 → dùzi ('belly/stomach')",
+          "疼 → téng ('to ache/hurt')",
+          "发烧 → fāshāo ('to have a fever')",
+          "昨天晚上 → zuótiān wǎnshàng ('last night')"
         ]
       },
       {
@@ -8936,6 +9230,12 @@ export const lessons: ChineseLesson[] = [
           "拉肚子 → lā dùzi (tiêu chảy)",
           "一直 → yīzhí (liên tục)",
           "大概 → dàgài (chắc)"
+        ],
+        "pronunciation_focus_en": [
+          "吃错 → chī cuò ('to eat the wrong thing')",
+          "拉肚子 → lā dùzi ('to have diarrhea')",
+          "一直 → yīzhí ('continuously')",
+          "大概 → dàgài ('probably')"
         ]
       },
       {
@@ -8948,6 +9248,12 @@ export const lessons: ChineseLesson[] = [
           "报销 → bàoxiāo (hoàn tiền / báo cáo chi phí)",
           "越南 → Yuènán",
           "可以 → kěyǐ"
+        ],
+        "pronunciation_focus_en": [
+          "旅游保险 → lǚyóu bǎoxiǎn ('travel insurance')",
+          "报销 → bàoxiāo ('to claim reimbursement')",
+          "越南 → Yuènán ('Vietnam')",
+          "可以 → kěyǐ ('can/may')"
         ]
       },
       {
@@ -8960,6 +9266,12 @@ export const lessons: ChineseLesson[] = [
           "吃药 → chī yào (uống thuốc — TQ dùng 吃, không phải 喝)",
           "需要 → xūyào",
           "请问 → qǐngwèn"
+        ],
+        "pronunciation_focus_en": [
+          "医生 → yīshēng ('doctor')",
+          "吃药 → chī yào ('to take medicine' — Chinese uses 吃 'eat', not 喝)",
+          "需要 → xūyào ('to need')",
+          "请问 → qǐngwèn ('may I ask')"
         ]
       },
       {
@@ -8972,6 +9284,12 @@ export const lessons: ChineseLesson[] = [
           "处方 → chǔfāng (đơn thuốc)",
           "保险公司 → bǎoxiǎn gōngsī (công ty bảo hiểm)",
           "麻烦您 → máfan nín"
+        ],
+        "pronunciation_focus_en": [
+          "发票 → fāpiào ('official invoice' — vital for insurance)",
+          "处方 → chǔfāng ('prescription')",
+          "保险公司 → bǎoxiǎn gōngsī ('insurance company')",
+          "麻烦您 → máfan nín ('may I trouble you')"
         ]
       }
     ],
@@ -9221,7 +9539,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Bệnh viện Trung Quốc đại lục có hệ thống ba cấp: 三甲医院 (sān jiǎ — top, đại học, đa khoa) > 二甲医院 (sān èr — tỉnh/thành phố) > 社区医院 (community clinic). Du khách nên đi 三甲 hoặc 二甲, không đi clinic nhỏ. Năm điều người Việt cần biết:\n\n(1) PHÒNG CẤP CỨU (急诊) mở 24/7. Đăng ký bằng hộ chiếu — KHÔNG cần CMND Trung Quốc. Phí đăng ký 10-30 tệ. Phí khám 50-200 tệ tùy bệnh viện. Phí thuốc/xét nghiệm tính riêng. Tổng cho ca thường 150-500 tệ.\n\n(2) THANH TOÁN: chấp nhận tiền mặt, WeChat Pay, Alipay. Visa quốc tế CHỈ ở bệnh viện quốc tế (国际医院 — đắt 3-5x). Bảo hiểm sức khỏe Trung Quốc của người dân = bạn không có. Bảo hiểm du lịch Việt Nam = TRẢ TRƯỚC tại bệnh viện, hoàn lại sau khi về Việt Nam.\n\n(3) GIẤY TỜ CẦN GIỮ cho bảo hiểm: (a) hóa đơn chính quy (正规发票 — có dấu đỏ); (b) đơn thuốc (处方); (c) giấy chẩn đoán (诊断书); (d) báo cáo xét nghiệm (化验单/检查报告). Yêu cầu BẢN GIẤY, không phải PDF — bảo hiểm Việt Nam có thể không nhận PDF.\n\n(4) THUỐC: chia hai loại — 西药 (thuốc Tây, kháng sinh, giảm đau, hạ sốt) và 中药 (thuốc bắc, viên/gói thảo dược). Du khách thường được kê thuốc Tây trừ khi yêu cầu. Bác sĩ Trung Quốc đôi khi kê CẢ HAI cùng lúc — đây là phong cách 'tích hợp', không phải lỗi. Nếu bạn không tin thuốc bắc, lịch sự nói '我只要西药就行' (em chỉ cần thuốc Tây là được).\n\n(5) BỆNH VIỆN QUỐC TẾ TẠI TQ (đại lục): Bắc Kinh — Beijing United Family (北京和睦家); Thượng Hải — Shanghai United Family (上海和睦家); Quảng Châu — Guangzhou United Family. Đắt 3-10x bệnh viện công, nhưng có bác sĩ nói tiếng Anh, không phải xếp hàng, môi trường giống quốc tế. Bảo hiểm du lịch cao cấp (Allianz, AXA) có thể chi trả trực tiếp ở đây không cần chờ. Bảo hiểm Việt Nam thường không.\n\nVề số khẩn cấp: 120 (救护车 — xe cứu thương). Cuộc gọi miễn phí. Tổng đài có người nói tiếng Anh ở thành phố lớn. Mô tả: tên bạn, vị trí (đường + tên cửa hàng/landmark), triệu chứng. Xe đến 10-30 phút tùy giao thông. Phí xe cứu thương 50-300 tệ tùy quãng đường, trả tại bệnh viện.\n\nVề bệnh truyền nhiễm/COVID-style: nếu bạn có triệu chứng hô hấp + sốt cao, một số bệnh viện sẽ đưa vào phòng riêng (发热门诊 — fātrè ménzhěn). Bình tĩnh hợp tác — quy trình tiêu chuẩn. KHÔNG bình luận chính trị về quy trình.",
+    "cultural_notes_en": "Mainland Chinese hospitals have a three-tier system: 三甲 (top, university, general) > 二甲 (city/provincial) > 社区医院 (community clinic). A traveler should use a 三甲 or 二甲, not a small clinic. Five things to know:\n\n(1) The ER (急诊) is open 24/7. Register with your passport — no Chinese ID needed. Registration 10-30 RMB; consultation 50-200; medicine/tests separate; a typical case totals 150-500 RMB.\n\n(2) PAYMENT: cash, WeChat Pay, Alipay. International Visa only at an international hospital (国际医院, 3-5x pricier). You don't have Chinese national insurance; your travel insurance means PAY UPFRONT here, reclaim after returning home.\n\n(3) DOCUMENTS to keep for insurance: (a) an official red-stamped invoice (正规发票); (b) the prescription (处方); (c) the diagnosis (诊断书); (d) test reports (化验单/检查报告). Ask for PAPER, not PDF — your home insurer may not accept PDF.\n\n(4) MEDICINE splits into 西药 (Western: antibiotics, painkillers, fever) and 中药 (traditional herbal). Travelers usually get Western unless they ask. A Chinese doctor sometimes prescribes BOTH at once — an 'integrated' style, not an error. If you don't want herbal, politely say 我只要西药就行.\n\n(5) INTERNATIONAL HOSPITALS exist in big cities (e.g. United Family chains) — 3-10x public-hospital cost, but English-speaking doctors, no queues. Premium travel insurance may direct-bill there; basic home insurance usually won't.\n\nEmergency number: 120 (ambulance), free call, English operators in big cities. Describe: your name, location (street + a landmark), symptoms. Arrival 10-30 min; ambulance fee 50-300 RMB by distance, paid at the hospital.\n\nInfectious illness: with respiratory symptoms + high fever, some hospitals route you to a 发热门诊 (fever clinic). Stay calm and cooperate — it's standard procedure; don't editorialize about it.",
     "tip_advice_vi": "(1) MUA BẢO HIỂM DU LỊCH TRƯỚC khi đi — có loại 200,000-500,000 VND/tuần, chi trả ~50,000 USD chi phí y tế. Đọc kỹ điều khoản: tự xử lý/trả trước → hoàn lại (cash advance) hay cấp trực tiếp (direct billing). Direct billing đắt hơn nhưng tiện hơn ở Trung Quốc. (2) TẢI APP GOOGLE TRANSLATE OFFLINE tiếng Trung-tiếng Việt trước khi đi. Trong bệnh viện Trung Quốc, mạng có thể chậm + không VPN, app translation online không chạy. Mode offline tải xuống 100MB, dùng được cho từ vựng y tế cơ bản. (3) HỌC THUỘC 10 cụm cơ bản trước khi đi: 我X疼 (em đau X), 我发烧 (em sốt), 拉肚子 (tiêu chảy), 头晕 (chóng mặt), 想吐 (buồn nôn), 有过敏史 (có dị ứng), 麻烦您 (phiền anh/chị), 发票 (hóa đơn), 处方 (đơn thuốc), 诊断书 (giấy chẩn đoán). (4) KHI BỊ ỐM, ĐI BỆNH VIỆN SỚM, không chờ. Du khách thường chần chừ vì sợ tốn tiền — kết quả là bệnh nặng hơn = chi phí cao hơn 5-10x. (5) NẾU BỊ ỐM NGHIÊM TRỌNG (đau ngực, khó thở, chấn thương đầu): GỌI 120 NGAY, không bắt taxi. Xe cứu thương có thiết bị + đưa vào ER ưu tiên. (6) GIỮ ĐƠN THUỐC + HÓA ĐƠN trong túi nhựa riêng. Bệnh viện in giấy mỏng dễ rách/ướt. Chụp ảnh backup cloud ngay sau khi nhận. (7) KHI BÁC SĨ KÊ ĐƠN BẰNG TIẾNG TRUNG, dùng app dịch để hiểu tên thuốc + cách uống. Hỏi rõ: '一天吃几次?' (uống mấy lần/ngày), '饭前还是饭后?' (trước hay sau ăn), '需要吃几天?' (uống mấy ngày).",
+    "tip_advice_en": "(1) BUY TRAVEL INSURANCE before traveling — read whether it's reimburse-after (cash advance) or direct-billing. Direct billing costs more but is far easier in China. (2) DOWNLOAD an OFFLINE translation pack (Chinese↔your language) before traveling. In a Chinese hospital the network may be slow with no VPN, so online translation won't work; the offline pack (~100MB) covers basic medical vocabulary. (3) MEMORIZE 10 basics: 我X疼 ('my X hurts'), 我发烧 ('I have a fever'), 拉肚子 ('diarrhea'), 头晕 ('dizzy'), 想吐 ('nauseous'), 有过敏史 ('allergy history'), 麻烦您, 发票 ('invoice'), 处方 ('prescription'), 诊断书 ('diagnosis'). (4) When sick, GO EARLY — don't wait. Travelers hesitate over cost and the illness worsens, costing 5-10x more. (5) For serious symptoms (chest pain, breathing trouble, head injury): CALL 120 NOW, don't take a taxi. The ambulance has equipment and gets you priority ER. (6) Keep prescription + invoice in a separate plastic bag (hospital paper tears/wets easily) and back them up to the cloud immediately. (7) When the doctor prescribes in Chinese, use a translation app to understand the drug + dosage. Ask clearly: 一天吃几次? ('how many times a day'), 饭前还是饭后? ('before or after meals'), 需要吃几天? ('for how many days').",
     "exercises": [
       {
         "type": "fill-blank",
@@ -9282,6 +9602,12 @@ export const lessons: ChineseLesson[] = [
           "房间 → fángjiān (phòng)",
           "问题 → wèntí (vấn đề)",
           "您好 → nín hǎo"
+        ],
+        "pronunciation_focus_en": [
+          "反映 → fǎnyìng ('to report / bring to attention')",
+          "房间 → fángjiān ('room')",
+          "问题 → wèntí ('problem')",
+          "您好 → nín hǎo ('hello' — formal)"
         ]
       },
       {
@@ -9294,6 +9620,12 @@ export const lessons: ChineseLesson[] = [
           "空调 → kōngtiáo (điều hòa)",
           "不冷 → bù lěng (không lạnh)",
           "声音 → shēngyīn (tiếng kêu)"
+        ],
+        "pronunciation_focus_en": [
+          "805房 → bā líng wǔ fáng (room number — digits said individually)",
+          "空调 → kōngtiáo ('air conditioning')",
+          "不冷 → bù lěng ('not cold')",
+          "声音 → shēngyīn ('noise/sound')"
         ]
       },
       {
@@ -9306,6 +9638,12 @@ export const lessons: ChineseLesson[] = [
           "时有时无 → shí yǒu shí wú (lúc có lúc không)",
           "洗澡 → xǐzǎo (tắm)",
           "不方便 → bù fāngbiàn"
+        ],
+        "pronunciation_focus_en": [
+          "热水 → rèshuǐ ('hot water')",
+          "时有时无 → shí yǒu shí wú ('comes and goes')",
+          "洗澡 → xǐzǎo ('to shower')",
+          "不方便 → bù fāngbiàn ('inconvenient')"
         ]
       },
       {
@@ -9318,6 +9656,12 @@ export const lessons: ChineseLesson[] = [
           "能不能 → néng bù néng (có thể không)",
           "请问 → qǐngwèn",
           "给我 → gěi wǒ"
+        ],
+        "pronunciation_focus_en": [
+          "换房间 → huàn fángjiān ('to change rooms')",
+          "能不能 → néng bù néng ('can or can't' — A-not-A question)",
+          "请问 → qǐngwèn ('may I ask')",
+          "给我 → gěi wǒ ('for me')"
         ]
       },
       {
@@ -9330,6 +9674,12 @@ export const lessons: ChineseLesson[] = [
           "一晚 → yī wǎn (một đêm)",
           "是否 → shìfǒu (có thể)",
           "如果 → rúguǒ"
+        ],
+        "pronunciation_focus_en": [
+          "退房费 → tuì fángfèi ('to refund the room fee')",
+          "一晚 → yī wǎn ('one night')",
+          "是否 → shìfǒu ('whether / is it possible')",
+          "如果 → rúguǒ ('if')"
         ]
       }
     ],
@@ -9544,7 +9894,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Khiếu nại khách sạn ở Trung Quốc đại lục có khung văn hóa và pháp lý khác Việt Nam: (1) NHÂN VIÊN LỄ TÂN có thẩm quyền giải quyết phần lớn vấn đề — đổi phòng, nâng hạng miễn phí, giảm 1-2 đêm tiền phòng. KHÔNG cần gọi manager cho việc nhỏ. Manager chỉ cần khi: yêu cầu hoàn toàn bộ tiền, từ chối thanh toán cuối kỳ, sự cố nghiêm trọng (cháy, mất trộm, xâm phạm). (2) SỰ THỰC TIỄN > SỰ XIN LỖI: khác phương Tây (nơi 'I'm sorry' đủ để xoa dịu), khách sạn Trung Quốc giải quyết bằng HÀNH ĐỘNG (đổi phòng, hoàn tiền, quà). Đừng đòi xin lỗi long-winded — đòi giải pháp cụ thể. (3) BẰNG CHỨNG: chụp ảnh/quay video vấn đề (điều hòa không chạy, vết bẩn, hư hỏng) NGAY khi phát hiện. Gửi cho lễ tân qua WeChat — họ sẽ chuyển sếp xử lý nhanh hơn. KHÔNG đăng ngay lên Weibo/Trip.com — giữ làm leverage. (4) TIÊU CHUẨN BỒI THƯỜNG ngầm hiểu (không có luật cứng): vấn đề nhỏ (thiếu khăn, đèn cháy) = sửa trong 30 phút, không bồi thường; vấn đề trung bình (nước nóng, wifi) = đổi phòng + giảm 1 đêm; vấn đề nặng (sức khỏe, an toàn, thuốc lá nặng) = đổi phòng + giảm 50-100% tổng kỳ ở. Tự hỏi 'mức bồi thường hợp lý' trước khi yêu cầu — đừng đòi quá. (5) HỆ THỐNG REVIEW: Trung Quốc dùng Ctrip (携程), Trip.com (international), Meituan (美团 — local). Người dân + khách quốc tế đọc nhiều. Khách sạn lo review xấu lan ra > lo nhân viên 1 ngày. Đe dọa review xấu = vũ khí mạnh nhưng KHÔNG nên dùng đầu tiên — chỉ khi đã yêu cầu hợp lý mà bị từ chối.\n\nVề ăn cắp/mất đồ: nếu nghi nhân viên dọn dẹp lấy đồ, KHÔNG buộc tội trực tiếp. Báo lễ tân: 'tôi không tìm thấy X, có thể trong quá trình dọn phòng đã bị di chuyển?' (我找不到X, 是否在打扫时移动了?). Khách sạn sẽ kiểm tra camera + hỏi nhân viên. Nếu tìm được, OK. Nếu không, có thể yêu cầu xem báo cáo + làm bản kiểm điểm. Mất đồ giá trị (>500 USD) = báo công an + đại sứ quán.\n\nVề tiền cọc (押金 — yājīn): khách sạn Trung Quốc thường thu cọc 200-500 tệ tiền mặt hoặc giữ trên thẻ khi check-in. Hoàn lại trừ phí khi check-out (kiểm tra phòng 5-10 phút). Đừng quên đòi lại — nhân viên đôi khi 'quên'.",
+    "cultural_notes_en": "A hotel complaint on the mainland has a different cultural and procedural frame: (1) THE FRONT DESK can resolve most issues — room change, free upgrade, comping 1-2 nights. No need to call a manager for small things; reserve the manager for a full refund, refusing the final bill, or a serious incident (fire, theft, intrusion). (2) ACTION > APOLOGY: unlike the West (where 'I'm sorry' soothes), Chinese hotels resolve with ACTION (room change, refund, gift). Don't demand a long apology — demand a concrete solution. (3) EVIDENCE: photograph/film the problem (broken AC, stain, damage) IMMEDIATELY. Send it to the front desk via WeChat — they escalate faster. Do NOT post it to social media yet — keep it as leverage. (4) IMPLICIT COMPENSATION norms (no hard law): minor (missing towel, dead bulb) = fixed in 30 min, no comp; medium (hot water, wifi) = room change + 1 night off; severe (health, safety, heavy smoke smell) = room change + 50-100% off the stay. Ask yourself what's reasonable before demanding — don't over-ask. (5) REVIEW SYSTEMS: China uses Ctrip (携程), Trip.com, Meituan (美团). Hotels fear a bad review more than losing a staffer for a day. A bad-review threat is a strong weapon but NOT a first move — only after a reasonable request is refused.\n\nMissing/stolen items: if you suspect cleaning staff, do NOT accuse directly. Tell the front desk 我找不到X，是否在打扫时移动了? ('I can't find X — was it moved during cleaning?'). The hotel checks cameras + asks staff. Lost valuables (>500 USD) = police report + embassy.\n\nDeposit (押金 yājīn): hotels usually take 200-500 RMB cash or a card hold at check-in, refunded minus charges at check-out (a 5-10 min room check). Don't forget to reclaim it — staff sometimes 'forget.'",
     "tip_advice_vi": "(1) ĐỌC REVIEW TRƯỚC khi đặt — Trip.com, Booking.com có review khách quốc tế. Tránh khách sạn có >10% review nói 'noisy' hoặc 'AC broken'. Mức 4.0+/5 là an toàn. (2) ĐẶT QUA APP CHÍNH THỨC (Trip.com, Booking.com, Agoda) thay vì đại lý du lịch — có policy hoàn tiền/đổi phòng rõ ràng + customer support 24/7 bằng tiếng Anh. (3) KIỂM TRA PHÒNG NGAY khi check-in: bật điều hòa, mở vòi nước nóng (chờ 1 phút), kiểm tra wifi (kết nối + tốc độ), kiểm tra ổ cắm điện, kiểm tra cửa khóa. Tìm vấn đề trong 5-10 phút đầu — báo lễ tân ngay. Báo SAU đêm đầu = bị nghi 'làm tiền'. (4) CHỤP ẢNH VẤN ĐỀ kèm timestamp: dùng app camera mặc định, đảm bảo metadata có ngày giờ. Gửi qua WeChat cho lễ tân (chứng cứ + tốc độ phản hồi nhanh hơn). (5) KHIẾU NẠI KHÉO LÉO, không leo thang. Cấu trúc: mô tả vấn đề (1 câu) → tác động (1 câu) → đề xuất (1 câu). Ví dụ: 'điều hòa không chạy, đêm qua em không ngủ được, có thể đổi phòng không?'. Đừng kéo dài 5 phút mô tả. (6) KHI ĐƯỢC GIẢI QUYẾT, NÓI CẢM ƠN cụ thể: '太感谢您了, 您处理得很专业' (cảm ơn chị nhiều, chị xử lý chuyên nghiệp). Để lại tip 20-50 tệ cho nhân viên giúp đỡ — không bắt buộc nhưng được đánh giá cao. (7) NẾU KHÔNG XỬ LÝ ĐƯỢC: viết review trung thực + có ảnh trên Trip.com/Booking.com (NOT Weibo viral). Giữ tone factual, không cảm xúc — review mạnh nhất là 'fact-based'. Khách sạn có thể liên hệ lại offer hoàn tiền 1 phần để xin xóa/sửa review. Đó là leverage — dùng cẩn thận.",
+    "tip_advice_en": "(1) READ REVIEWS before booking — avoid hotels with >10% reviews mentioning 'noisy' or 'AC broken.' 4.0+/5 is safe. (2) BOOK VIA AN OFFICIAL APP (Trip.com, Booking.com, Agoda) rather than an agent — clear refund/change policy + 24/7 English support. (3) CHECK THE ROOM IMMEDIATELY at check-in: AC, hot water (wait 1 minute), wifi (connection + speed), sockets, the door lock. Find issues in the first 5-10 minutes — report at once. Reporting after the first night looks like a money-grab. (4) PHOTOGRAPH the problem with a timestamp; send via WeChat to the front desk (evidence + faster response). (5) COMPLAIN TACTFULLY, don't escalate. Structure: problem (1 sentence) → impact (1 sentence) → request (1 sentence). E.g. 'the AC doesn't work, I couldn't sleep last night, could you change my room?' Don't ramble for five minutes. (6) When resolved, THANK them specifically: 太感谢您了，您处理得很专业. A 20-50 RMB tip for the staffer who helped is not required but appreciated. (7) IF UNRESOLVED: write an honest, photo-backed review on Trip.com/Booking.com (NOT a viral social post). Keep the tone factual, not emotional — fact-based reviews are strongest. The hotel may then offer a partial refund to amend it — that's leverage, use it carefully.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -9605,6 +9957,12 @@ export const lessons: ChineseLesson[] = [
           "没出来 → méi chūlái (không ra)",
           "报失 → bào shī (báo mất)",
           "您好 → nín hǎo"
+        ],
+        "pronunciation_focus_en": [
+          "行李 → xíngli ('luggage')",
+          "没出来 → méi chūlái ('didn't come out')",
+          "报失 → bào shī ('to report a loss')",
+          "您好 → nín hǎo ('hello' — formal)"
         ]
       },
       {
@@ -9617,6 +9975,12 @@ export const lessons: ChineseLesson[] = [
           "转机 → zhuǎnjī (transit)",
           "昆明 → Kūnmíng",
           "登机牌 → dēngjī pái (thẻ lên máy bay)"
+        ],
+        "pronunciation_focus_en": [
+          "胡志明市 → Húzhìmíng shì ('Ho Chi Minh City')",
+          "转机 → zhuǎnjī ('to transfer flights')",
+          "昆明 → Kūnmíng ('Kunming')",
+          "登机牌 → dēngjī pái ('boarding pass')"
         ]
       },
       {
@@ -9629,6 +9993,12 @@ export const lessons: ChineseLesson[] = [
           "编号 → biānhào (mã số)",
           "在这里 → zài zhèlǐ",
           "行李 → xíngli"
+        ],
+        "pronunciation_focus_en": [
+          "托运凭条 → tuōyùn píngtiáo ('baggage claim tag')",
+          "编号 → biānhào ('reference number')",
+          "在这里 → zài zhèlǐ ('it's here')",
+          "行李 → xíngli ('luggage')"
         ]
       },
       {
@@ -9641,6 +10011,12 @@ export const lessons: ChineseLesson[] = [
           "硬壳箱 → yìngké xiāng (vali vỏ cứng)",
           "28寸 → èrshí bā cùn (28 inch)",
           "贴纸 → tiēzhǐ (sticker)"
+        ],
+        "pronunciation_focus_en": [
+          "黑色 → hēisè ('black')",
+          "硬壳箱 → yìngké xiāng ('hard-shell case')",
+          "28寸 → èrshí bā cùn ('28-inch')",
+          "贴纸 → tiēzhǐ ('sticker')"
         ]
       },
       {
@@ -9653,6 +10029,12 @@ export const lessons: ChineseLesson[] = [
           "酒店 → jiǔdiàn (khách sạn)",
           "找到 → zhǎodào (tìm thấy)",
           "请问 → qǐngwèn"
+        ],
+        "pronunciation_focus_en": [
+          "送到 → sòng dào ('to deliver to')",
+          "酒店 → jiǔdiàn ('hotel')",
+          "找到 → zhǎodào ('to find')",
+          "请问 → qǐngwèn ('may I ask')"
         ]
       }
     ],
@@ -9895,7 +10277,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Mất hành lý là tình huống phổ biến với chuyến bay quốc tế có transit (transfer). Năm điều người Việt cần biết khi bay Trung Quốc:\n\n(1) HÃNG BAY TRUNG QUỐC: Air China (国航 — CA), China Eastern (东航 — MU), China Southern (南航 — CZ), Hainan Airlines (海航 — HU). Tất cả đều có bộ phận hành lý mất 24/7 tại sân bay lớn. Tỉ lệ mất hành lý: 0.5-1% chuyến quốc tế (trung bình toàn cầu). Phần lớn tìm được trong 24-48 giờ.\n\n(2) NGUYÊN NHÂN PHỔ BIẾN: (a) Transit time quá ngắn (<60 phút) — vali không kịp chuyển; (b) Tag bị rách/dán không đúng tại điểm xuất phát; (c) Sót tại băng chuyền — quá đông, nhân viên không kịp xếp; (d) Nhầm với hành lý khác — ai đó lấy nhầm vali tương tự. CHỤP ẢNH VALI trước khi check-in = bằng chứng nhận diện tốt nhất.\n\n(3) BÁO NGAY TẠI SÂN BAY, không đi về. Quầy 'Lost & Found' (失物招领) hoặc 'Baggage Service' (行李服务) — tìm trên bản đồ sân bay. Giấy báo mất (Property Irregularity Report — PIR) PHẢI làm tại sân bay. Sau khi rời = không thể claim.\n\n(4) BỒI THƯỜNG: theo công ước Montreal (Trung Quốc tham gia): tối đa 1,131 SDR (~$1,500 USD) cho cả vali + đồ bên trong. Hãng bay sẽ yêu cầu hóa đơn/biên nhận để chứng minh giá trị — KHÔNG có hóa đơn = đền theo trọng lượng ($20/kg). Đồ giá trị (laptop, đồ trang sức) — KHÔNG ký gửi, mang xách tay. Nếu đã ký gửi = không được đền đầy đủ.\n\n(5) BẢO HIỂM DU LỊCH thường đền nhiều hơn hãng bay: cho phép kê cả vali + đồ + thiệt hại tinh thần (gọi 'inconvenience compensation'). Sau khi báo PIR tại sân bay, gửi mọi giấy tờ + biên nhận sang công ty bảo hiểm. Bảo Việt, Bảo Minh, MIC, BSH thường đền 5-15 triệu VND cho ca lost luggage.\n\nVề việc 'tip' để được ưu tiên: KHÔNG ở Trung Quốc đại lục. Hệ thống có quy trình + camera giám sát. Tip = phản tác dụng, có thể bị báo cáo. Ở Đông Nam Á (Việt Nam, Thái Lan, Indonesia) có thể tip để xử lý nhanh, nhưng KHÔNG ở Trung Quốc.\n\nVề ngôn ngữ: nhân viên hãng bay Trung Quốc tại sân bay quốc tế thường nói tiếng Anh cơ bản. Nếu bạn không thành thạo tiếng Trung, dùng tiếng Anh — họ chấp nhận. Cụm cứu nguy: 'My luggage didn't arrive, I want to file a report' / 'I need a delayed baggage report'.\n\nVề thời gian: đa số vali bị sót transit về trong 24 giờ qua chuyến tiếp theo. 1-3 ngày = có thể nhân viên đang tìm trong hệ thống. >5 ngày = cần follow up gắt và có khả năng mất luôn. Sau 21 ngày không tìm được = tuyên bố 'hành lý mất' (lost luggage), bắt đầu quá trình bồi thường.",
+    "cultural_notes_en": "Lost luggage is common on international flights with a transfer. Five things to know for China travel:\n\n(1) CHINESE AIRLINES: Air China (国航 CA), China Eastern (东航 MU), China Southern (南航 CZ), Hainan (海航 HU). All have a 24/7 lost-baggage desk at major airports. Loss rate ~0.5-1% of international flights; most are found in 24-48 hours.\n\n(2) COMMON CAUSES: (a) transit time too short (<60 min) — the case doesn't transfer in time; (b) a torn/mis-applied tag at origin; (c) left on the belt when it's crowded; (d) someone took a similar-looking case by mistake. PHOTOGRAPH the case before check-in = the best identification evidence.\n\n(3) REPORT AT THE AIRPORT, don't leave. Find 'Lost & Found' (失物招领) or 'Baggage Service' (行李服务). The Property Irregularity Report (PIR) MUST be filed at the airport — after you leave you cannot claim.\n\n(4) COMPENSATION under the Montreal Convention (China is a party): up to ~1,131 SDR (~1,500 USD) for the case + contents. The airline asks for receipts to prove value — no receipt = paid by weight (~20 USD/kg). Valuables (laptop, jewelry) — carry on, never check; if checked, you won't be fully compensated.\n\n(5) TRAVEL INSURANCE usually pays more than the airline (covers case + contents + inconvenience compensation). After the airport PIR, send all documents + receipts to the insurer.\n\nTipping for priority: NOT on the mainland. The system is procedural and camera-monitored; a tip backfires and can be reported. (It works in some Southeast Asian airports, but not in China.)\n\nLanguage: airline staff at international airports speak basic English; if your Chinese isn't fluent, English is accepted. Rescue phrase: 'My luggage didn't arrive, I want to file a delayed baggage report.'\n\nTiming: most transit-missed cases return within 24 hours on the next flight. 1-3 days = still being traced. >5 days = follow up hard, possible permanent loss. After 21 days unfound = declared 'lost,' and the compensation process begins.",
     "tip_advice_vi": "(1) CHỤP ẢNH VALI + ĐỒ BÊN TRONG trước khi check-in: cảnh tổng thể vali + nhãn hiệu + nội dung khi mở ra. Lưu cloud (Google Drive, iCloud). Bằng chứng vàng cho hãng + bảo hiểm. (2) TAG RIÊNG: dán nhãn tên + số ĐT (kèm mã +84) + email cá nhân + tên khách sạn đến BÊN NGOÀI vali. Bên trong cũng để 1 tờ giấy trùng thông tin (phòng trường hợp tag ngoài rách). (3) ĐỒ GIÁ TRỊ → XÁCH TAY: laptop, máy ảnh, kim hoàn, thuốc kê đơn, thiết bị điện tử, hộ chiếu/giấy tờ — KHÔNG ký gửi. Bảo hiểm hãng bay không đền đủ. (4) CHỌN CHUYẾN BAY có TRANSIT TỐI THIỂU 90 PHÚT cho hành lý transfer. Dưới 60 phút = rủi ro cao. Đặc biệt qua sân bay lớn (Bắc Kinh PEK, Thượng Hải PVG, Quảng Châu CAN) cần thêm thời gian. (5) BÁO NGAY TẠI SÂN BAY khi không thấy vali — KHÔNG đợi 1 giờ ở băng chuyền. Sau 30 phút mà chưa ra = đến quầy ngay. Xếp hàng có thể 30-60 phút khi nhiều người cùng báo. (6) GIỮ MỌI GIẤY TỜ trong túi ziplock: thẻ lên máy bay, cùi hành lý, giấy báo mất (PIR), tên + số ĐT nhân viên xử lý. Mất 1 tờ = quá trình claim chậm 1 tuần. (7) NẾU PHẢI MUA ĐỒ THAY THẾ (khi vali chưa đến sau 24 giờ): mua TỐI THIỂU cần thiết (1 bộ quần áo, đồ vệ sinh, sạc điện thoại — tổng 100-200 USD). Giữ HÓA ĐƠN — bảo hiểm sẽ hoàn lại khi nộp. KHÔNG mua hàng hiệu/đồ đắt — bảo hiểm chỉ trả 'reasonable replacement cost', không nâng cấp.",
+    "tip_advice_en": "(1) PHOTOGRAPH the case + contents before check-in: the whole case + brand + the contents when open. Save to the cloud. Golden evidence for airline + insurer. (2) TAG IT: name + phone (with country code) + email + destination hotel OUTSIDE the case; put a duplicate slip INSIDE too (in case the outer tag tears). (3) VALUABLES → CARRY-ON: laptop, camera, jewelry, prescription meds, electronics, passport/documents — never check; the airline won't fully compensate. (4) CHOOSE flights with at LEAST 90 MINUTES transit for transferred baggage. Under 60 = high risk, especially via big airports (Beijing PEK, Shanghai PVG, Guangzhou CAN). (5) REPORT IMMEDIATELY at the airport — don't wait an hour at the belt. After 30 minutes with no case, go to the desk; the queue can be 30-60 minutes when many report at once. (6) KEEP ALL PAPERS in a ziplock: boarding pass, baggage stub, the PIR, the handling staffer's name + phone. Losing one slows the claim by a week. (7) IF YOU MUST BUY replacements (case not arrived after 24h): buy the MINIMUM necessary (one outfit, toiletries, charger — 100-200 USD total). Keep RECEIPTS — insurance reimburses 'reasonable replacement cost,' not an upgrade. Don't buy luxury items.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -9956,6 +10340,12 @@ export const lessons: ChineseLesson[] = [
           "被偷 → bèi tōu (bị trộm — passive)",
           "报案 → bào'àn (trình báo)",
           "您好 → nín hǎo"
+        ],
+        "pronunciation_focus_en": [
+          "钱包 → qiánbāo ('wallet')",
+          "被偷 → bèi tōu ('was stolen' — 被 passive)",
+          "报案 → bào'àn ('to file a police report')",
+          "您好 → nín hǎo ('hello' — formal)"
         ]
       },
       {
@@ -9968,6 +10358,12 @@ export const lessons: ChineseLesson[] = [
           "购物 → gòuwù (mua sắm)",
           "发现 → fāxiàn (phát hiện)",
           "不见了 → bù jiàn le (không còn)"
+        ],
+        "pronunciation_focus_en": [
+          "王府井 → Wángfǔjǐng ('Wangfujing', a Beijing shopping street)",
+          "购物 → gòuwù ('to shop')",
+          "发现 → fāxiàn ('to discover/notice')",
+          "不见了 → bù jiàn le ('has gone missing')"
         ]
       },
       {
@@ -9980,6 +10376,12 @@ export const lessons: ChineseLesson[] = [
           "身份证复印件 → shēnfènzhèng fùyìnjiàn (bản sao CMND)",
           "两千块 → liǎngqiān kuài (2,000 tệ)",
           "里面 → lǐmiàn (bên trong)"
+        ],
+        "pronunciation_focus_en": [
+          "信用卡 → xìnyòngkǎ ('credit card')",
+          "身份证复印件 → shēnfènzhèng fùyìnjiàn ('ID photocopy')",
+          "两千块 → liǎngqiān kuài ('2,000 RMB'); 块 spoken for yuan",
+          "里面 → lǐmiàn ('inside')"
         ]
       },
       {
@@ -9992,6 +10394,12 @@ export const lessons: ChineseLesson[] = [
           "保险公司 → bǎoxiǎn gōngsī (công ty bảo hiểm)",
           "出 → chū (xuất / cấp)",
           "麻烦您 → máfan nín"
+        ],
+        "pronunciation_focus_en": [
+          "报案回执 → bào'àn huízhí ('police report receipt' — the key document)",
+          "保险公司 → bǎoxiǎn gōngsī ('insurance company')",
+          "出 → chū ('to issue')",
+          "麻烦您 → máfan nín ('may I trouble you')"
         ]
       },
       {
@@ -10004,6 +10412,12 @@ export const lessons: ChineseLesson[] = [
           "联系 → liánxì (liên hệ)",
           "理赔 → lǐpéi (yêu cầu bồi thường)",
           "已经 → yǐjīng"
+        ],
+        "pronunciation_focus_en": [
+          "挂失 → guàshī ('to report lost / freeze a card')",
+          "联系 → liánxì ('to contact')",
+          "理赔 → lǐpéi ('to file an insurance claim')",
+          "已经 → yǐjīng ('already')"
         ]
       }
     ],
@@ -10274,7 +10688,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "派出所 (pàichūsuǒ) là đồn công an khu vực (cơ sở) — đơn vị nhỏ nhất trong hệ thống công an Trung Quốc. Mỗi quận/phường có 1-2 派出所. Đây là nơi xử lý: báo mất đồ, đăng ký tạm trú, làm hộ khẩu, hòa giải tranh chấp dân sự nhỏ. KHÔNG phải nơi xử lý hình sự nặng (việc đó của 公安局 — gōng'ānjú, cấp quận).\n\nBốn điều người Việt cần biết khi đến 派出所:\n\n(1) TÌM 派出所 GẦN NHẤT: Baidu Maps gõ '派出所' hoặc hỏi nhân viên khách sạn/lễ tân. Mở 24/7. Vào cửa, nói '我要报案' (em muốn trình báo). Nhân viên hướng dẫn quầy + lấy số.\n\n(2) GIẤY TỜ MANG: hộ chiếu (BẮT BUỘC), bản sao hộ chiếu (tốt), số visa, địa chỉ khách sạn. Nếu mất hộ chiếu, mang biên nhận của khách sạn (酒店登记单) — họ có copy hộ chiếu của bạn.\n\n(3) THỜI GIAN xử lý: báo mất ví/điện thoại = 30-60 phút từ khi vào đồn. Mất hộ chiếu = 1-2 giờ (cần thêm thông tin). Đông người vào cuối tuần — đến giờ làm việc thường (10-16h thứ 2-thứ 6) là nhanh nhất.\n\n(4) BIÊN NHẬN (报案回执 — bào'àn huízhí): bản giấy in dấu đỏ, có mã hồ sơ + thời gian + nội dung + tên cán bộ + số ĐT đồn. Quan trọng cho: bảo hiểm du lịch (claim), đại sứ quán (làm hộ chiếu mới nếu hộ chiếu mất), thẻ tín dụng (chứng minh không phải bạn dùng).\n\nVề ngôn ngữ tại đồn: cán bộ công an Trung Quốc đại lục PHẦN LỚN không nói tiếng Anh. Nếu bạn không thành thạo tiếng Trung: (a) gọi cán bộ tiếng Việt của đại sứ quán Việt Nam (010-65325410) để dịch qua điện thoại; (b) dùng app Google Translate offline (online thường không có VPN ở đại lục); (c) gọi trợ lý tiếng Trung từ khách sạn hoặc bạn Trung Quốc.\n\nVề tâm lý: KHÔNG sợ. Cán bộ công an phục vụ khách du lịch = công việc thường ngày của họ. Họ không có thẩm quyền/lý do gây khó cho bạn. Quy trình chuẩn, mất 30-60 phút, ra về với biên nhận. Đừng để câu chuyện 'cảnh sát Trung Quốc đáng sợ' từ phim ảnh ảnh hưởng — đó là hư cấu, không phải thực tế tại 派出所.\n\nVề tip/tiền: KHÔNG đưa tiền cho cán bộ công an. Đây là phạm pháp cả hai phía. Cảm ơn bằng lời + cúi đầu nhẹ + ra về là đủ.\n\nVề camera giám sát: CCTV phổ biến tại đồn. Đừng quay phim cán bộ — vi phạm quy định. Bạn có thể yêu cầu xem camera khu vực bị mất đồ (王府井 có CCTV mọi phố) — cán bộ sẽ giúp tra nếu mất đồ giá trị cao.\n\nVề mối liên hệ với bảo hiểm Việt Nam: Bảo Việt, Bảo Minh, MIC, BSH chấp nhận biên nhận từ 派出所 Trung Quốc. KHÔNG cần dịch tiếng Việt. Khi nộp về Việt Nam, kèm: (a) biên nhận gốc; (b) ảnh chụp biên nhận; (c) bản sao hộ chiếu; (d) chi tiết thiệt hại + chứng từ (nếu có hóa đơn mua đồ).",
+    "cultural_notes_en": "派出所 (pàichūsuǒ) is the neighborhood police station — the smallest unit in the Chinese police system. Each district has one or two. It handles: loss reports, temporary-residence registration, household registration, small civil-dispute mediation. It is NOT for serious criminal matters (that's the 公安局 at district level).\n\nFour things to know:\n\n(1) FIND THE NEAREST 派出所: search '派出所' on a map or ask the hotel desk. Open 24/7. At the door, say 我要报案 ('I want to file a report'). Staff direct you and give a number.\n\n(2) DOCUMENTS: passport (REQUIRED), a passport copy (helpful), visa number, hotel address. If the passport is lost, bring the hotel registration slip (they have a copy of your passport).\n\n(3) TIME: a lost wallet/phone report = 30-60 minutes from arrival; a lost passport = 1-2 hours. Crowded on weekends — regular weekday hours are fastest.\n\n(4) THE RECEIPT (报案回执 bào'àn huízhí): a red-stamped paper with a case number + time + content + officer name + station phone. Essential for: travel insurance (claim), the embassy (a new passport if lost), the credit card company (proving the charges weren't you).\n\nLanguage: most mainland officers do NOT speak English. If your Chinese isn't fluent: (a) call your embassy's hotline for phone interpretation; (b) use an offline translation app (online often has no VPN on the mainland); (c) bring a Chinese-speaking helper from the hotel or a friend.\n\nMindset: do NOT be afraid. Serving travelers is routine work for these officers; they have no reason to make it hard. The process is standard, 30-60 minutes, and you leave with a receipt. Don't let movie portrayals of 'scary Chinese police' color this — that is fiction, not the reality of a 派出所.\n\nTipping: do NOT give money to an officer — illegal on both sides. Verbal thanks + a slight bow + leaving is enough.\n\nCCTV: cameras are common at the station. Don't film officers (against the rules). You may ask to review camera footage of where the item was lost; officers will help check for high-value losses.\n\nInsurance link: home insurers accept a receipt from a Chinese 派出所; no translation needed. When filing, include the original receipt, a photo of it, a passport copy, and damage details with any purchase receipts.",
     "tip_advice_vi": "(1) PHÒNG TỪ TRƯỚC: chia tiền + thẻ + ID thành 2-3 nơi (ví, túi áo, xách tay, trong khách sạn). Không bao giờ để TẤT CẢ trong một ví. Mất 1 ví = mất 1 phần, không phải tất cả. (2) CHỤP ẢNH ID + THẺ + HỘ CHIẾU lưu cloud TRƯỚC khi đi. Mất bản gốc = vẫn có cách chứng minh danh tính. (3) GHI NHỚ SỐ HOTLINE QUAN TRỌNG: số khẩn cảnh sát 110 (báo trộm cướp), 122 (giao thông), 119 (cứu hỏa), 120 (cứu thương). Số ĐT đại sứ quán Việt Nam Bắc Kinh: 010-65325410. Lưu trong điện thoại + giấy backup. (4) BÁO TRỘM TRONG VÒNG 24 GIỜ: bảo hiểm du lịch yêu cầu báo công an trong 24 giờ kể từ khi mất. Quá hạn = từ chối claim. Đến đồn ngay sau khi: (a) xác nhận thực sự mất, (b) khóa thẻ tín dụng. (5) ĐẾN ĐỒN GẦN NHẤT, không phải đồn nơi mất. Cán bộ ở đồn nào cũng làm được biên nhận. Nếu bạn ở khách sạn, hỏi lễ tân hoặc Baidu Maps để tìm. (6) KHÓA THẺ TÍN DỤNG TRƯỚC KHI ĐẾN ĐỒN: gọi hotline 24/7 của ngân hàng Việt Nam (Vietcombank: 1900-545413, Sacombank: 1900-555588, etc.) — đa số đều có hotline quốc tế miễn phí qua app banking. Khóa thẻ TRƯỚC khi báo công an = khi cán bộ hỏi 'thẻ đã khóa chưa' bạn nói 'rồi'. (7) NẾU CẢM THẤY KHÔNG AN TOÀN: yêu cầu phiên dịch chính thức qua đại sứ quán Việt Nam — họ có dịch vụ này miễn phí. Gọi hotline lãnh sự Việt Nam: 010-65325410 (Bắc Kinh) hoặc 021-62288811 (Thượng Hải). Nói rõ: 'em đang ở đồn công an X, muốn xin phiên dịch tiếng Việt'. Họ sẽ điều phối hoặc cung cấp dịch viên qua điện thoại.",
+    "tip_advice_en": "(1) PREVENT IT: split money + cards + ID across 2-3 places (wallet, jacket pocket, bag, hotel). Never keep EVERYTHING in one wallet — losing one = losing part, not all. (2) PHOTOGRAPH ID + cards + passport to the cloud BEFORE traveling — lose the originals and you can still prove identity. (3) MEMORIZE key hotlines: police emergency 110, traffic 122, fire 119, ambulance 120, plus your embassy's number. Save in phone + a paper backup. (4) REPORT WITHIN 24 HOURS: travel insurance requires a police report within 24h of the loss; past that = claim refused. Go to the station right after you (a) confirm it's truly gone, (b) freeze your cards. (5) GO TO THE NEAREST station, not where it was lost — any station can issue the receipt. (6) FREEZE CARDS BEFORE going: call your bank's 24/7 hotline (or via the banking app) — so when the officer asks 'is the card frozen?' you can say 'yes.' (7) IF YOU FEEL UNSAFE: request official interpretation via your embassy — usually a free service. State clearly: 'I'm at police station X and need [your-language] interpretation.' They'll coordinate or provide a phone interpreter.",
     "exercises": [
       {
         "type": "fill-blank",
