@@ -25,7 +25,8 @@ export const lessons: ChineseLesson[] = [
           "草蛇灰线 → cǎo shé huī xiàn (thủ pháp phục bút mờ — 文论术语)",
           "叙事手法 → xùshì shǒufǎ (thủ pháp tự sự)",
           "呼应 → hūyìng (hô ứng)"
-        ]
+        ],
+        "pronunciation_focus_en": ["拟 → nǐ ('proposes to' — literary-written register, 文白)","草蛇灰线 → cǎo shé huī xiàn ('grass-snake, ash-line' — a literary-theory term: a faint thread of foreshadowing; no exact English equivalent — cf. 'a planted, dormant motif')","叙事手法 → xùshì shǒufǎ ('narrative technique')","呼应 → hūyìng ('echo / correspondence')"]
       },
       {
         "chinese": "笔者假设, 曹雪芹于太虚幻境一回所设之十二钗判词, 实为全书命运结构之元图式, 后续诸回皆暗合其轨迹。",
@@ -37,7 +38,8 @@ export const lessons: ChineseLesson[] = [
           "判词 → pàncí (phán từ — 12 maidens' fate verses)",
           "元图式 → yuán túshì (siêu đồ thức / meta-schema)",
           "暗合 → àn hé (ngầm phù hợp)"
-        ]
+        ],
+        "pronunciation_focus_en": ["太虚幻境 → Tàixū Huànjìng ('the Illusory Realm of Great Void' — Chapter 5 of the novel)","判词 → pàncí ('fate verses' — the twelve maidens' prophetic poems)","元图式 → yuán túshì ('meta-schema')","暗合 → àn hé ('to tacitly align with')"]
       },
       {
         "chinese": "此假设之理论根基, 既源于王国维《人间词话》中'境界'说之启发, 亦借鉴钱钟书《管锥编》论文本互渗之精微辨析。",
@@ -49,7 +51,8 @@ export const lessons: ChineseLesson[] = [
           "境界 → jìngjiè (cảnh giới — 王国维 critical term)",
           "互渗 → hùshèn (thẩm thấu / interpenetration)",
           "精微辨析 → jīngwéi biànxī (phân tích tinh vi)"
-        ]
+        ],
+        "pronunciation_focus_en": ["既…亦 → jì…yì ('both … and' — 文言)","境界 → jìngjiè (Wang Guowei's critical term — roughly 'aesthetic realm/world'; no exact English equivalent, do not flatten to 'mood')","互渗 → hùshèn ('interpenetration')","精微辨析 → jīngwéi biànxī ('subtle analysis')"]
       },
       {
         "chinese": "然文本流变与版本歧异 — 尤以程甲本与脂评本之别为甚 — 实对本假设之可证伪性构成限制, 不容回避。",
@@ -61,7 +64,8 @@ export const lessons: ChineseLesson[] = [
           "尤以...为甚 → yóu yǐ...wèi shèn (đặc biệt là...nhất — 文言)",
           "脂评本 → Zhīpíngběn (bản chú phê của 脂砚斋)",
           "不容回避 → bù róng huíbì (không thể né tránh — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["然 → rán ('yet/however' — 文言)","尤以…为甚 → yóu yǐ…wèi shèn ('especially so in the case of …' — 文言)","脂评本 → Zhīpíngběn ('the Zhi-commentary recension')","不容回避 → bù róng huíbì ('may not be evaded' — written register)"]
       },
       {
         "chinese": "综上所述, 若文本细读所得之结构对应, 能于多版本间相互印证, 则本研究或可为红学'草蛇灰线'之传统读法, 提供一可量化之新视角。",
@@ -73,7 +77,8 @@ export const lessons: ChineseLesson[] = [
           "印证 → yìnzhèng (chứng thực lẫn nhau)",
           "红学 → Hóngxué (Hồng học — Redology)",
           "或可 → huò kě (có lẽ có thể — 书面 hedge)"
-        ]
+        ],
+        "pronunciation_focus_en": ["若…则 → ruò…zé ('if … then' — 文言)","印证 → yìnzhèng ('to mutually corroborate')","红学 → Hóngxué ('Redology')","或可 → huò kě ('may perhaps' — written-register hedge)"]
       }
     ],
     "vocab": [
@@ -287,7 +292,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa nghiên cứu văn học cổ điển ở Trung Quốc đại lục có những điểm khác biệt với Việt Nam mà sinh viên cần biết:\n\n(1) HỒNG HỌC LÀ MỘT NGÀNH RIÊNG: 红学 (Hồng học — Redology) đã thành một ngành học độc lập từ thời 胡适 (1921, 'Hồng Lâu Mộng khảo'). Hiện có 中国红楼梦学会, 学术期刊 《红楼梦学刊》, hàng nghìn luận văn / năm. Sinh viên Việt định làm Hồng học cần đọc Hồng học sử trước (nắm tóm các派 — 索隐派, 考证派, 文学派) để định vị mình. Không nên 'phát minh lại bánh xe'.\n\n(2) 脂批 (CHI BÌNH) LÀ NỀN TẢNG: bản chú phê bí ẩn ký 脂砚斋 / 畸笏叟 cung cấp bằng chứng văn bản học cốt yếu. 'Tiếp cận trực tiếp 脂本' (nhất là 庚辰本) trở thành dấu hiệu của learner Hồng học chuyên nghiệp. Sinh viên Việt nên đọc bản 红楼梦 in song song 脂批 chứ không phải chỉ bản 'phổ thông' (bản 程乙 đã chỉnh).\n\n(3) 王国维 LÀ FOUNDATIONAL: 王国维 (1877-1927) là người sáng lập modern Chinese literary criticism. Ba tác phẩm cốt lõi: 《人间词话》 (mỹ học từ), 《红楼梦评论》 (1904, áp dụng Schopenhauer vào Hồng Lâu Mộng), 《宋元戏曲史》. Citation 王国维 = signal của serious learner. Tránh chỉ trích dẫn câu '词以境界为最上' đứng riêng — phải đặt trong context toàn 64 则 + posthumous additions.\n\n(4) 钱钟书 LÀ ENCYCLOPEDIC: 钱钟书 (1910-1998) viết 《管锥编》 (1979) tổng cộng ~140万字, comparative poetics đan xen Trung-Tây-cổ-kim. Đây là pinnacle của thế kỷ 20 Chinese literary scholarship. Sinh viên Việt: đọc 管锥编 trong original cực khó (文言 + bilingual quotations). Khuyến nghị bắt đầu với 《谈艺录》 (1948) — ngắn hơn, tiếp cận hơn.\n\n(5) TRADITION VS THEORY: học giả Trung Quốc divides giữa 古典文论派 (王国维, 钱钟书, 朱光潜 + 陈寅恪 — focus 古典 lexicon) và 现代文学理论派 (importing Western theory: deconstruction, reception aesthetics, narratology). Top universities (北大, 清华, 复旦, 南大) có cả hai. Sinh viên Việt làm Trung văn nên decide early: traditional or theory-driven, then commit.\n\n(6) 脂学 vs 抄本学: Hồng học có debate lâu đời về quyền uy của các 脂本 ('the eight authentic versions' debate). 庚辰本, 甲戌本, 戚序本... mỗi bản có advocate. Sinh viên Việt: nắm rõ debate trước khi cite một version cụ thể.\n\n(7) PRE-MODERN AS LIVE TRADITION: tại Trung Quốc đại lục, classical Chinese poetry (Tang/Song) vẫn được học thuộc lòng từ tiểu học. Most undergraduate có thể recite 50-100 bài. So với phương Tây 'Shakespeare là cái cũ', cổ thi Tang/Song là cái sống động. Sinh viên Việt cần build base này bằng 200+ poems memorization.\n\n(8) PUBLICATION CULTURE: top journals Trung Quốc về 古典文学: 《文学评论》 (CASS), 《文学遗产》, 《中国比较文学》. Quy chuẩn citation rất nghiêm — incorrect citation = reject ngay. Use 中文社科引用规范 (GB/T 7714-2015).",
+    "cultural_notes_en": "Classical Chinese literary-studies culture has features an outsider should know:\n\n(1) REDOLOGY IS A DISCIPLINE: 红学 (Hóngxué, Redology — the study of Dream of the Red Chamber) has been an independent field since Hu Shi (1921). It has its own society, journal (《红楼梦学刊》), and thousands of theses a year — comparable in institutional weight to Joyce or Shakespeare studies in the Anglo world. Read a history of Redology first (the 索隐 / 考证 / 文学 schools) to position yourself; don't reinvent the wheel.\n\n(2) THE 脂批 (Zhīpī) COMMENTARY IS FOUNDATIONAL: the cryptic annotations signed 脂砚斋 / 畸笏叟 supply essential textual evidence. Working directly from a 脂本 (especially the 庚辰本) — not the smoothed popular 程乙 recension — marks a serious learner.\n\n(3) WANG GUOWEI IS FOUNDATIONAL: 王国维 (1877-1927) founded modern Chinese literary criticism. The core triad: 《人间词话》 (aesthetics of ci), 《红楼梦评论》 (1904, applying Schopenhauer to the novel), 《宋元戏曲史》. Don't quote '词以境界为最上' in isolation — place it within the full 64 sections + posthumous additions.\n\n(4) QIAN ZHONGSHU IS ENCYCLOPEDIC: 钱钟书's 《管锥编》 (1979, ~1.4M characters) interweaves Chinese, Western, ancient, and modern comparative poetics — the pinnacle of 20th-c. Chinese literary scholarship. The original is very hard (文言 + multilingual quotation); start with the shorter 《谈艺录》 (1948).\n\n(5) TRADITION vs THEORY: scholars split between 古典文论 (Wang Guowei, Qian Zhongshu, Zhu Guangqian — classical lexicon) and 现代文学理论 (importing deconstruction, reception aesthetics, narratology). Top departments host both. Decide early — traditional or theory-driven — then commit.\n\n(6) 脂学 vs 抄本学: Redology has a long-running 'authentic versions' debate (庚辰本, 甲戌本, 戚序本…), each with advocates. Understand the debate before citing a specific recension.\n\n(7) PRE-MODERN AS A LIVE TRADITION: Tang/Song poetry is memorized from primary school; most undergraduates can recite 50-100 poems. Unlike the Anglo 'Shakespeare is the old stuff', classical verse here is living — build a base of 200+ memorized poems.\n\n(8) PUBLICATION CULTURE: the top venues (《文学评论》 [CASS], 《文学遗产》, 《中国比较文学》) enforce citation rigor strictly — an incorrect citation is an immediate reject. Use GB/T 7714-2015.",
     "tip_advice_vi": "(1) READ 5 PAPERS từ 《文学评论》 hoặc 《文学遗产》 cùng chủ đề trước khi viết. C2 register học bằng cách imitate, không qua textbook. (2) BUILD A QUOTATION DATABASE: tạo file Markdown với 100 most-cited critical phrases (王国维, 钱钟书, 朱光潜...) — exact quote + 出处 + 原典context. Sinh viên Việt thường mắc lỗi cite từ memory, sai chữ, sai 出处. (3) DISTINGUISH TRADITIONAL vs MODERN LEXICON: '意境 / 风骨 / 神韵' = 古典 lexicon, không nên dùng cho 现代/当代 literature analysis. '叙述者 / 视点 / 互文性' = modern lexicon, không nên áp đặt vào Tang/Song poetry analysis (anachronism). Match lexicon to era. (4) NEVER FABRICATE QUOTES: nếu không 100% chắc một câu là của 王国维, paraphrase nội dung thay vì direct quote. C2 reviewers sẽ catch fake quotes ngay — career suicide. (5) 文言 LITE: dùng 之 / 其 / 此 / 然 mỗi page 5-10 lần. Quá nhiều (15+) = pretentious; quá ít (0-2) = không đạt C2. (6) HYPOTHESIS PHRASING: '笔者拟探讨...着重分析' rồi 'laughter假设...实为...' rồi '若...则本研究或可为...'. Học công thức này. Đa số C2 hypothesis trong 古典 ngành đều theo nó. (7) AVOID 'REVOLUTIONARY' CLAIMS về 古典: 红学 / 唐诗 đã được nghiên cứu 1000+ năm. Claim 'colon颠覆' / '突破性发现' = laughter naive. Position your work as 'modest extension / refinement / new perspective'. (8) ENGAGE WITH 学界 EXPLICITLY: name-check 3-5 living scholars trong field bạn (e.g., 周汝昌 cho Hồng học, 葛兆光 cho 思想史, 陈平原 cho 学术史) trong literature review. Ignore them = bị coi là 闭门造车. (9) VERSION-CITE RIGOROUSLY: '红楼梦 第28回' không đủ. '红楼梦 庚辰本 第28回 第X页' là chuẩn C2. Khác bản khác text — phải specify. (10) HEDGE LITERARY CLAIMS: '或可视为' / '似亦不无道理' / '颇可深思' — 古典 hedges hơn modern. Match register to period.",
+    "tip_advice_en": "(1) READ 5 PAPERS from 《文学评论》 or 《文学遗产》 on your topic before writing — the C2 register is learned by imitation, not from a textbook. (2) BUILD A QUOTATION DATABASE: a file of the 100 most-cited critical phrases (Wang Guowei, Qian Zhongshu, Zhu Guangqian) — exact quote + 出处 (source) + original context. The classic learner error is citing from memory with wrong characters or wrong source. (3) DISTINGUISH TRADITIONAL vs MODERN LEXICON: 意境 / 风骨 / 神韵 belong to the classical lexicon (not for modern-literature analysis); 叙述者 / 视点 / 互文性 are modern (don't impose them on Tang/Song poetry — that is anachronism). Match lexicon to era. (4) NEVER FABRICATE QUOTES: if not 100% sure a line is Wang Guowei's, paraphrase rather than direct-quote — C2 reviewers catch fakes instantly. (5) 文言-LITE: use 之 / 其 / 此 / 然 ~5-10 times per page; 15+ is pretentious, 0-2 fails C2. (6) HYPOTHESIS PHRASING: '笔者拟探讨…着重分析' → '笔者假设…实为…' → '若…则本研究或可为…'. (7) AVOID 'REVOLUTIONARY' CLAIMS about the classics: Redology and Tang poetry have 1,000+ years of scholarship — claiming a 'breakthrough' reads as naive; position the work as a modest extension or new perspective. (8) ENGAGE 学界 EXPLICITLY: name-check 3-5 living scholars in your subfield in the literature review; ignoring them reads as 闭门造车 ('working behind closed doors'). (9) VERSION-CITE RIGOROUSLY: '红楼梦 第28回' is not enough — '红楼梦 庚辰本 第28回 第X页'; different recensions, different text. (10) HEDGE LITERARY CLAIMS: '或可视为' / '似亦不无道理' / '颇可深思' — classical criticism hedges more than modern; match register to period.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -348,7 +355,8 @@ export const lessons: ChineseLesson[] = [
           "溯源 → sùyuán (truy nguyên)",
           "原典 → yuándiǎn (nguyên điển)",
           "题跋 → tíbá (đề bạt — colophon thể loại)"
-        ]
+        ],
+        "pronunciation_focus_en": ["论及 → lùn jí ('to discuss / touch upon' — 文白)","溯源 → sùyuán ('to trace to the source')","原典 → yuándiǎn ('the original/primary text')","题跋 → tíbá ('colophon' — a classical genre of postscript)"]
       },
       {
         "chinese": "王国维《人间词话》第一则即开宗明义指出'词以境界为最上, 有境界则自成高格', 此论已成为现代古典文论之基石。",
@@ -360,7 +368,8 @@ export const lessons: ChineseLesson[] = [
           "开宗明义 → kāizōng míngyì (mở đầu rõ ràng — idiom)",
           "境界 → jìngjiè (cảnh giới)",
           "高格 → gāogé (phẩm cách cao)"
-        ]
+        ],
+        "pronunciation_focus_en": ["第一则 → dì yī zé ('Section 1' — the 词话 unit of division)","开宗明义 → kāizōng míngyì (idiom: 'to state the thesis at the very outset')","境界 → jìngjiè (Wang Guowei's critical term — 'aesthetic realm'; no exact English equivalent)","高格 → gāogé ('lofty quality/grade')"]
       },
       {
         "chinese": "钱钟书《管锥编》对古今诗学之爬梳, 旁征博引, 涵盖中西, 实为研究中国古典诗学之必读之作。",
@@ -372,7 +381,8 @@ export const lessons: ChineseLesson[] = [
           "旁征博引 → pángzhēng bóyǐn (idiom)",
           "涵盖 → hángài (bao quát)",
           "必读之作 → bìdú zhī zuò (tác phẩm bắt buộc đọc)"
-        ]
+        ],
+        "pronunciation_focus_en": ["爬梳 → páshū ('to comb through / systematize' — 文白)","旁征博引 → pángzhēng bóyǐn (idiom: 'wide-ranging in citation and reference')","涵盖 → hángài ('to cover/encompass')","必读之作 → bìdú zhī zuò ('required reading')"]
       },
       {
         "chinese": "引用前贤之论, 切忌断章取义; 尤其是王国维'有我之境'与'无我之境'之分, 须置于其整体美学体系中方得其确解。",
@@ -384,7 +394,8 @@ export const lessons: ChineseLesson[] = [
           "切忌 → qièjì (kiêng kỵ — 书面)",
           "断章取义 → duàn zhāng qǔ yì (idiom)",
           "方得其确解 → fāng dé qí quèjiě (mới có hiểu đúng — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["前贤 → qiánxián ('earlier sages/predecessors' — 文白)","切忌 → qièjì ('must strictly avoid' — written register)","断章取义 → duàn zhāng qǔ yì (idiom: 'to quote out of context')","方得其确解 → fāng dé qí quèjiě ('only then is the correct reading obtained' — 文白)"]
       },
       {
         "chinese": "综上所述, 严谨之文献征引, 不仅是学术规范之要求, 更是与古今学者展开深度对话之前提。",
@@ -396,7 +407,8 @@ export const lessons: ChineseLesson[] = [
           "古今学者 → gǔjīn xuézhě (học giả cổ kim)",
           "深度对话 → shēndù duìhuà (đối thoại sâu)",
           "前提 → qiántí (tiền đề)"
-        ]
+        ],
+        "pronunciation_focus_en": ["征引 → zhēngyǐn ('to cite/adduce' — 文白)","古今学者 → gǔjīn xuézhě ('scholars ancient and modern')","深度对话 → shēndù duìhuà ('substantive dialogue')","前提 → qiántí ('prerequisite')"]
       }
     ],
     "vocab": [
@@ -610,7 +622,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa trích dẫn cổ điển ở Trung Quốc đại lục có những đặc điểm sinh viên Việt cần biết:\n\n(1) 古文献学 (TEXTUAL SCHOLARSHIP) LÀ NỀN: classical Chinese textual scholarship (考据学 / 文献学) có truyền thống từ 朴学 thời Càn-Gia (Qing). Modern continuation includes 陈寅恪, 余嘉锡, 余英时, 葛兆光. Sinh viên Việt cần đọc một intro cuốn — như 余嘉锡《古书通例》 — để hiểu tradition này.\n\n(2) 出处 (XUẤT XỨ) LÀ KEY CONCEPT: trong 古典 scholarship, biết 出处 = academic legitimacy. Một câu cite mà không 出处 = academic disgrace. 出处 phải bao gồm: tác giả, sách, thiên/quyển/则/章, edition (nếu có dispute).\n\n(3) 古典 EDITORS COMMITTEE: top editions của 古典 works thường được committee edit qua decades. 中华书局点校本 24 史 took ~20 years (1958-78). Sinh viên Việt cần biết: cite '中华书局1979年点校本' khác với '商务印书馆某某年版'. Different editions, different authority.\n\n(4) 海外汉学 (OVERSEAS SINOLOGY) BÌNH ĐẲNG VỚI 内地: top Chinese scholars cite Plaks, Hightower, Owen, Idema cùng 余英时, 钱钟书. Đây là cosmopolitan culture của Chinese 古典 studies từ ~1980. Sinh viên Việt nên biết Western sinologists nổi tiếng và cite cross-tradition.\n\n(5) 转引自 (CITED FROM) MUST BE EXPLICIT: nếu bạn cite Y thông qua 钱钟书 's quote of Y, bắt buộc viết '转引自钱钟书《管锥编》第N页'. Ngụy trang first-hand reading khi thực ra second-hand = academic dishonesty. Top journals catch this immediately.\n\n(6) 王国维 IS CULTURAL ICON: 王国维 (1877-1927) suicide trong 1927 đã trở thành cultural event. Citation 王国维 carries gravitas — không nên overuse, đặc biệt cho minor claims. Reserve for foundational moments.\n\n(7) 钱钟书 IS REPUTATION TEST: 钱钟书《管锥编》 reading is benchmark of 中文系 graduate. Sinh viên Việt admitted cite 管锥编 fluently = signal of seriousness. Cite incorrectly = signal of bluffing. Read at least 200 pages before citing.\n\n(8) 朱光潜 IS BRIDGE: 朱光潜 bridges 西方美学 (he studied Croce, Bergson) and 古典 lexicon. 《诗论》 (1943) is most accessible — 200 pages, read in a weekend. Foundational reading cho Vietnamese student going to Trung Quốc.\n\n(9) PUBLISHED CRITICAL EDITIONS: top 古典 publishers: 中华书局, 上海古籍出版社, 国家图书馆出版社. Sinh viên Việt: prefer these. Avoid pop edition (e.g., 民间 anthology) cho serious citation.\n\n(10) 古籍数字化 ETHICS: 中国基本古籍库, 中华经典古籍库 are massive digitized corpora. Use for discovery. But always verify against print critical edition for citations — digital errors common (OCR scanning errors, missing 字 / wrong 字).",
+    "cultural_notes_en": "Classical-citation culture has features an outsider should know:\n\n(1) TEXTUAL SCHOLARSHIP IS THE BASE: 考据学 / 文献学 has a lineage from the Qian-Jia 朴学 (Qing) through Chen Yinke, Yu Jiaxi, Yu Yingshi, Ge Zhaoguang. Read one introduction (e.g. Yu Jiaxi's 《古书通例》) to grasp the tradition.\n\n(2) 出处 (chūchù, provenance) IS A KEY CONCEPT: in classical scholarship, knowing the 出处 IS academic legitimacy; a quote without one is an academic disgrace. It must include author, work, chapter/section/juan, and edition (if disputed).\n\n(3) EDITORS' COMMITTEES: top editions of classical works are committee-edited over decades (the Zhonghua Shuju punctuated 24 Histories took ~20 years). Citing '中华书局1979年点校本' differs from another press's edition — different editions, different authority.\n\n(4) OVERSEAS SINOLOGY IS A PEER: top Chinese scholars cite Plaks, Hightower, Owen, Idema alongside Yu Yingshi and Qian Zhongshu — a cosmopolitan culture since ~1980. Know the major Western sinologists and cite cross-tradition.\n\n(5) 转引自 (zhuǎnyǐn zì, 'cited from') MUST BE EXPLICIT: if you cite Y via Qian Zhongshu's quotation of Y, you must write '转引自钱钟书《管锥编》第N页' — exactly the Anglo 'as cited in'. Disguising second-hand as first-hand is dishonesty; top journals catch it.\n\n(6) WANG GUOWEI IS A CULTURAL ICON: his 1927 suicide became a cultural event; citing him carries gravitas — don't overuse it for minor claims; reserve it for foundational moments.\n\n(7) QIAN ZHONGSHU IS A REPUTATION TEST: fluent citation of 《管锥编》 signals seriousness; incorrect citation signals bluffing — read at least 200 pages before citing.\n\n(8) ZHU GUANGQIAN IS A BRIDGE: 朱光潜 bridges Western aesthetics (Croce, Bergson) and the classical lexicon; 《诗论》 (1943, ~200pp) is the accessible foundational reading.\n\n(9) PUBLISHED CRITICAL EDITIONS: prefer 中华书局, 上海古籍出版社, 国家图书馆出版社; avoid popular anthologies for serious citation.\n\n(10) DIGITIZED-CORPUS ETHICS: the big digitized corpora are excellent for discovery but error-prone (OCR errors, missing/wrong characters) — always verify against the print critical edition before citing.",
     "tip_advice_vi": "(1) BUILD A CITATION DATABASE: tạo file Markdown với 50-100 most-cited 古典 phrases (王国维 / 钱钟书 / 苏轼 / 陶渊明). Mỗi entry: exact quote + 出处 + page + 1-line context. Build over months. Pay for itself trong luận án. (2) FORMAT CONSISTENCY: trước khi nộp paper, search bài cho '《' và '\"'. Đảm bảo mọi citation tuân theo cùng format. Top reviewers reject for inconsistency. (3) PRIMARY SOURCE WHEN POSSIBLE: nếu cite 王国维 từ secondary scholar, đặt thời gian đọc primary. Nếu thực sự không tiếp cận được, '转引自' explicit. Don't fake. (4) SECTION/PAGE NUMBER MANDATORY: '王国维曰' không enough. '王国维《人间词话》第十五则' is minimum standard. (5) ENGLISH-CHINESE PARALLEL CITATIONS: when citing Western sinologist, give original term + Chinese translation. 'narrative recursion (叙述递归)'. Preserves precision + serves Chinese readers. (6) AVOID ANACHRONISM: don't apply '叙述者' to Tang poetry — wrong period. Don't apply '风骨' to 现代 novels — wrong tradition. Match concept to era. (7) PRIMARY SOURCES OVER POPULAR EDITIONS: cite 中华书局 hoặc 上海古籍 critical edition rather than mass-market paperback. (8) READ KEY SECTIONS BEFORE CITING: don't cite 王国维 chỉ from secondary discussions. Read sections you cite, plus surrounding 5-10 sections. (9) ENGAGE IN 学界 DEBATES: name 3-5 living scholars in your field (周汝昌 cho Hồng học, 葛兆光 cho 思想史). Position your citation in their debates. (10) TRUST BUT VERIFY 古籍数字化: digital corpora useful for discovery but error-prone. Always verify against print critical edition before citing.",
+    "tip_advice_en": "(1) BUILD A CITATION DATABASE: 50-100 most-cited classical phrases (Wang Guowei / Qian Zhongshu / Su Shi / Tao Yuanming) — exact quote + 出处 + page + a one-line context; build it over months. (2) FORMAT CONSISTENCY: before submitting, search for '《' and '\"' and ensure every citation follows one format — reviewers reject for inconsistency. (3) PRIMARY SOURCE WHEN POSSIBLE: if citing Wang Guowei via a secondary scholar, make time to read the primary; if truly inaccessible, mark '转引自' explicitly — don't fake. (4) SECTION/PAGE MANDATORY: '王国维曰' is not enough; '王国维《人间词话》第十五则' is the minimum. (5) ENGLISH-CHINESE PARALLEL CITATION: when citing a Western sinologist, give the original term + Chinese rendering — 'narrative recursion (叙述递归)' — preserving precision and serving Chinese readers. (6) AVOID ANACHRONISM: don't apply 叙述者 to Tang poetry (wrong period) or 风骨 to modern novels (wrong tradition). (7) PRIMARY OVER POPULAR EDITIONS: cite a 中华书局 / 上海古籍 critical edition, not a mass-market paperback. (8) READ THE SECTIONS YOU CITE plus the surrounding 5-10. (9) ENGAGE IN 学界 DEBATES: name 3-5 living scholars and position your citation within their debates. (10) TRUST BUT VERIFY digitized corpora — useful for discovery, verify against the print critical edition before citing.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -671,7 +685,8 @@ export const lessons: ChineseLesson[] = [
           "众说纷纭 → zhòngshuō fēnyún (idiom — nhiều ý kiến trái chiều)",
           "或...或 → huò...huò (có người...có người — 文白)",
           "归诸 → guī zhū (quy về — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["归属 → guīshǔ ('provenance / where it belongs')","众说纷纭 → zhòngshuō fēnyún (idiom: 'opinions differ widely')","或…或 → huò…huò ('some … others' — 文白)","归诸 → guī zhū ('to ascribe to' — 文白)"]
       },
       {
         "chinese": "持'境界'说者以为, 王维'空山不见人, 但闻人语响'之句, 正契合王国维所谓'无我之境', 物我两忘, 神与境会。",
@@ -683,7 +698,8 @@ export const lessons: ChineseLesson[] = [
           "契合 → qìhé (phù hợp)",
           "无我之境 → wú wǒ zhī jìng (王国维 critical term)",
           "物我两忘 → wù wǒ liǎng wàng (idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["持…者以为 → chí…zhě yǐwéi ('those who hold … contend' — 文白)","契合 → qìhé ('to accord with')","无我之境 → wú wǒ zhī jìng (Wang Guowei's term: 'the realm without self')","物我两忘 → wù wǒ liǎng wàng (idiom: 'self and object both forgotten')"]
       },
       {
         "chinese": "然而, 反对方指出, 以王国维之范畴溯及王维, 实为'以今律古', 王维之时代尚无此一系统化美学话语, 此为根本之时代错置。",
@@ -695,7 +711,8 @@ export const lessons: ChineseLesson[] = [
           "时代错置 → shídài cuòzhì (anachronism)",
           "话语 → huàyǔ (ngôn từ / discourse)",
           "根本之 → gēnběn zhī (căn bản — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["以今律古 → yǐ jīn lǜ gǔ ('measuring antiquity by present standards' — a scholarly idiom for anachronism/presentism)","时代错置 → shídài cuòzhì ('anachronism')","话语 → huàyǔ ('discourse')","根本之 → gēnběn zhī ('a fundamental …' — 文白)"]
       },
       {
         "chinese": "笔者愚以为, 此辩之症结在于'境界'一词在王国维处兼具描述性与规范性双重功能, 论辩双方各执一端, 实皆有所偏。",
@@ -707,7 +724,8 @@ export const lessons: ChineseLesson[] = [
           "症结 → zhèngjié (nút thắt)",
           "兼具 → jiānjù (gồm cả)",
           "各执一端 → gè zhí yī duān (mỗi bên giữ một đầu)"
-        ]
+        ],
+        "pronunciation_focus_en": ["笔者愚以为 → bǐzhě yú yǐwéi ('this humble author maintains' — 文白, humble)","症结 → zhèngjié ('the crux')","兼具 → jiānjù ('to bear/possess both')","各执一端 → gè zhí yī duān (idiom: 'each seizes one end')"]
       },
       {
         "chinese": "综上所述, 与其在'是境界'与'非境界'间作非此即彼之裁断, 毋宁分层次而论之, 庶几两家之得皆可保全。",
@@ -719,7 +737,8 @@ export const lessons: ChineseLesson[] = [
           "非此即彼 → fēi cǐ jí bǐ (cái này không phải cái kia — idiom)",
           "庶几 → shùjī (có lẽ — 文白 hedge)",
           "保全 → bǎoquán (bảo toàn)"
-        ]
+        ],
+        "pronunciation_focus_en": ["与其…毋宁 → yǔqí…wúnìng ('rather than … better to' — 文白 contrastive)","非此即彼 → fēi cǐ jí bǐ (idiom: 'either-or')","庶几 → shùjī ('perhaps thereby' — 文白 hedge)","保全 → bǎoquán ('to preserve')"]
       }
     ],
     "vocab": [
@@ -919,7 +938,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa tranh biện văn học cổ điển ở Trung Quốc đại lục có những đặc điểm sinh viên Việt cần biết:\n\n(1) TRADITION 论辩: tranh luận học thuật ở Trung Quốc có truyền thống từ 先秦 (诸子百家). Mạnh Tử vs Cáo Tử, Tuân Tử vs Mạnh Tử, 朱熹 vs 陆九渊. Mỗi cuộc 论辩 trở thành text được học. Vì vậy 学界 hiện đại vẫn coi 论辩 là phong cách scholarly chuẩn — không phải 'fight'.\n\n(2) HARMONY-COMPATIBLE DISAGREEMENT: 君子之争 (gentlemen's dispute) ideal — disagree on substance, không attack person. Trung Quốc tradition coi public scholarly fights là scholar's failing. So sinh viên Việt: criticize idea, không criticize scholar.\n\n(3) SCHOOL POLITICS: 中文系 ở các đại học top có established schools — e.g., 北大 文学批评派 vs 复旦 古典文学派 vs 南大 文献学派. Mỗi school có its own preferred lexicon, methodology, citation patterns. Sinh viên Việt cần biết school của supervisor để align (or carefully push back).\n\n(4) ANTI-IMPORTATION DEBATE: từ 1990s, có ongoing debate về nhập khẩu Western theory vào 古典 studies. Một phái (e.g. 童庆炳) advocate critical importation. Một phái (e.g. 朱光潜 in his later work) advocate 古典 lexicon priority. Sinh viên Việt: choose your stance early.\n\n(5) ANACHRONISM CHARGE WEIGHT: '以今律古' là cú đánh nặng. Receiving this critique = bị coi là không sensitive về 历史 context. Apply this critique nhẹ tay — only when clearly justified. Sinh viên Việt thường over-apply Western theory → easy target.\n\n(6) GENERATION GAP: scholars older than 70 (born pre-1955) thường skeptical về Western theory imports. Younger scholars (born post-1975) more eclectic. Sinh viên Việt: adjust register based on audience.\n\n(7) SUPERVISORS NHƯ CULTURAL GUARDIANS: trong 古典 fields, supervisor not just academic guide but cultural transmitter. Chống supervisor publicly = unthinkable. Disagree với supervisor: trong private, with extreme humility, possibly through written letter.\n\n(8) CONFERENCE DEBATE PHRASING: tại 学术会议, opening remarks chuẩn: '感谢主持, 感谢与会同仁, 笔者今日想就X提出一些初步看法, 以就正于诸位'. Note '初步看法' (preliminary view) + '就正于' (request correction) — humble conventions cứng. Sinh viên Việt skip = unprofessional.\n\n(9) PUBLISHED DEBATE FORMAT: top journals trong 古典文学 (e.g., 《文学评论》, 《文学遗产》) thường dành riêng section cho 'X 与 Y 之 商榷'. Format: opener author, response author, possible third-round response. Đây là chuẩn mực academic dialogue. Sinh viên Việt nên đọc 5-10 such exchanges để học.\n\n(10) CULTURAL TABOO: don't impose moral / political reading vào 古典 literature analysis. 古典 scholars Trung Quốc generally favor purely-aesthetic readings. Apply Marxist / feminist / postcolonial reading sẽ bị resistance từ traditional 古典 audience. Sinh viên Việt: know audience trước khi pick theory.",
+    "cultural_notes_en": "Classical literary-debate culture has features an outsider should know:\n\n(1) THE 论辩 TRADITION: scholarly disputation runs from the pre-Qin Hundred Schools (Mengzi vs Gaozi, Zhu Xi vs Lu Jiuyuan); each 论辩 became a studied text. Modern scholarship still treats argued debate as the standard scholarly mode — not a 'fight'.\n\n(2) HARMONY-COMPATIBLE DISAGREEMENT: the ideal is 君子之争 (a gentlemen's dispute) — disagree on substance, never attack the person. Public scholarly brawls are seen as a scholar's failing. Critique the idea, never the scholar.\n\n(3) SCHOOL POLITICS: top departments host established schools, each with a preferred lexicon, methodology, and citation pattern. Know your supervisor's school to align with it (or push back carefully).\n\n(4) THE ANTI-IMPORTATION DEBATE: since the 1990s an ongoing debate over importing Western theory into classical studies — one camp (e.g. Tong Qingbing) favors critical importation, another (later Zhu Guangqian) prioritizes the classical lexicon. Choose your stance early.\n\n(5) THE WEIGHT OF THE ANACHRONISM CHARGE: 以今律古 ('measuring antiquity by present standards' — essentially presentism/anachronism) is a heavy blow; receiving it marks you as historically insensitive. Apply it sparingly, only when clearly justified — over-applying Western theory makes you an easy target.\n\n(6) GENERATION GAP: scholars over ~70 tend to be skeptical of Western-theory imports; younger ones are more eclectic. Adjust register to the audience.\n\n(7) SUPERVISORS AS CULTURAL GUARDIANS: in classical fields the supervisor is also a cultural transmitter; opposing one publicly is unthinkable — disagree privately, with extreme humility, possibly by written letter.\n\n(8) CONFERENCE-DEBATE PHRASING: the standard opener is '感谢主持，感谢与会同仁，笔者今日想就X提出一些初步看法，以就正于诸位' — note '初步看法' (preliminary view) + '就正于' (request correction); skipping these humble conventions reads as unprofessional.\n\n(9) PUBLISHED-DEBATE FORMAT: top journals run dedicated 'X 与 Y 之商榷' exchanges (opener → response → possible third round) — read 5-10 such exchanges to learn the form.\n\n(10) A CULTURAL CAUTION: traditional classical audiences favor purely aesthetic readings; imposing a Marxist / feminist / postcolonial reading meets resistance — know your audience before choosing a theory.",
     "tip_advice_vi": "(1) READ 10 PUBLISHED DEBATES trong 《文学评论》 hoặc 《文学遗产》 trước khi viết bài tranh biện. C2 register học bằng imitation. (2) NEVER ATTACK SCHOLAR PERSONALLY: critique idea, không critique person. '此论存在不足' tốt hơn '该作者不严谨'. (3) ACKNOWLEDGE BEFORE COUNTER: BAB STRUCTURE (Build-up → Acknowledge → But). Câu acknowledge chỉ 1-2 sentences nhưng essential. Skip = đối phương defensive ngay. (4) USE 文白 CONNECTORS: 然 / 然则 / 抑或 / 与其...毋宁. Mỗi page 5-15 markers natural. Quá ít = không reach C2. Quá nhiều = pretentious. (5) HEDGE WHEN UNCERTAIN: '或可言之' / '庶几' / '殆' / '不无道理'. C2 cấp cấp đòi hỏi nhiều hedging hơn C1. (6) CITE 古典 ACCURATELY: dùng exact 出处 (《人间词话》第十五则). Vague '王国维 something something' = academic disgrace. (7) NAME-CHECK 学派: nắm các派 trong field bạn. Reference 朱光潜 派, 钱钟书 派, 王国维 派. Position your stance explicitly. (8) AVOID OVER-WESTERNIZATION: dùng Bakhtin / Foucault sparingly trong 古典 analysis. Where bridges đúng, justify. Where forced, expect '以今律古' charge. (9) END WITH SYNTHESIS NOT VICTORY: '与其...毋宁' / '庶几两家之得皆可保全'. Synthesis = mature scholarship. Insistence = sophomoric. (10) WRITE FINAL RESPONSE GRACEFULLY: nếu opponent's argument changes your mind, acknowledge: '经先生指出, 笔者方知前论之偏'. Reversal of position = academic maturity. (11) PRACTICE THE PHRASES: học 30 cụm 论辩 chuẩn (反驳 / 商榷 / 然 / 然则 / 不无道理 / 庶几 / 笔者愚以为...). Dùng tự động trong written response. (12) DEFER TO AGE WHEN APPROPRIATE: senior scholar errors = handle via written letter, không public seminar. Cultural sensitivity = career longevity.",
+    "tip_advice_en": "(1) READ 10 PUBLISHED DEBATES in 《文学评论》 or 《文学遗产》 before writing one — the C2 register is learned by imitation. (2) NEVER ATTACK A SCHOLAR PERSONALLY: '此论存在不足' beats '该作者不严谨'. (3) ACKNOWLEDGE BEFORE COUNTERING (build-up → acknowledge → but): the concession is 1-2 sentences but essential; skip it and the other side goes defensive. (4) USE 文白 CONNECTORS: 然 / 然则 / 抑或 / 与其…毋宁 — ~5-15 per page is natural; too few fails C2, too many is pretentious. (5) HEDGE WHEN UNCERTAIN: '或可言之' / '庶几' / '殆' / '不无道理' — C2 demands more hedging than C1. (6) CITE CLASSICS ACCURATELY with an exact 出处 ('《人间词话》第十五则'); a vague 'Wang Guowei something' is an academic disgrace. (7) NAME-CHECK SCHOOLS: reference the Zhu Guangqian / Qian Zhongshu / Wang Guowei lines and position your stance explicitly. (8) AVOID OVER-WESTERNIZATION: use Bakhtin/Foucault sparingly in classical analysis; justify a real bridge, expect the 以今律古 charge for a forced one. (9) END WITH SYNTHESIS, NOT VICTORY: '与其…毋宁' / '庶几两家之得皆可保全' — synthesis is mature, insistence is sophomoric. (10) WRITE A FINAL RESPONSE GRACEFULLY: if the opponent changes your mind, say '经先生指出，笔者方知前论之偏' — a reversal of position is academic maturity. (11) DRILL ~30 standard 论辩 phrases (反驳 / 商榷 / 然 / 然则 / 不无道理 / 庶几 / 笔者愚以为). (12) DEFER TO AGE: a senior scholar's error → handle by written letter, not a public seminar — cultural sensitivity is career longevity.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -980,7 +1001,8 @@ export const lessons: ChineseLesson[] = [
           "散佚 → sànyì (thất lạc / tản mất)",
           "殊为 → shū wéi (thực sự — 文白)",
           "推衍 → tuīyǎn (suy diễn — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["鉴于 → jiànyú ('given that' — 文白)","散佚 → sànyì ('scattered and lost' [of texts])","殊为 → shū wéi ('quite / particularly' — 文白)","推衍 → tuīyǎn ('to over-extrapolate' — written register)"]
       },
       {
         "chinese": "在某种程度上, 沈德符《万历野获编》之记载支持本研究关于早期演出形态之假设, 然其个人视角与其史料价值仍有待审慎权衡。",
@@ -992,7 +1014,8 @@ export const lessons: ChineseLesson[] = [
           "记载 → jìzǎi (ghi chép)",
           "审慎权衡 → shěnshèn quánhéng (cân nhắc thận trọng)",
           "仍有待 → réng yǒu dài (vẫn cần)"
-        ]
+        ],
+        "pronunciation_focus_en": ["万历野获编 → Wànlì Yěhuòbiān (a 1607 literati notebook chronicle)","记载 → jìzǎi ('records / to record')","审慎权衡 → shěnshèn quánhéng ('to weigh prudently')","仍有待 → réng yǒu dài ('still awaits')"]
       },
       {
         "chinese": "牡丹亭于明末士大夫圈中之接受机制, 目前尚不明朗, 学界对此存在多种解释, 各有其据。",
@@ -1004,7 +1027,8 @@ export const lessons: ChineseLesson[] = [
           "士大夫 → shìdàfū (sĩ đại phu)",
           "尚不明朗 → shàng bù mínglǎng (chưa sáng tỏ — 文白)",
           "各有其据 → gè yǒu qí jù (mỗi cái có căn cứ — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["接受机制 → jiēshòu jīzhì ('reception mechanism' — a reception-aesthetics term)","士大夫 → shìdàfū ('the scholar-official class')","尚不明朗 → shàng bù mínglǎng ('remains unclear' — 文白)","各有其据 → gè yǒu qí jù ('each with its own grounds' — 文白)"]
       },
       {
         "chinese": "笔者并非否认昆腔演出对戏曲传播之关键作用, 而是认为, 仓促得出'昆腔即唯一传播路径'之结论, 恐生不必要之片面性。",
@@ -1016,7 +1040,8 @@ export const lessons: ChineseLesson[] = [
           "戏曲 → xìqǔ (hí khúc)",
           "并非否认 → bìngfēi fǒurèn (không phủ nhận — 书面)",
           "片面性 → piànmiànxìng (phiến diện)"
-        ]
+        ],
+        "pronunciation_focus_en": ["昆腔 → Kūnqiāng (the Ming operatic vocal style 'Kunqiang')","戏曲 → xìqǔ ('operatic/dramatic literature')","并非否认 → bìngfēi fǒurèn ('does not deny' — written register)","片面性 → piànmiànxìng ('one-sidedness')"]
       },
       {
         "chinese": "综上所述, 此一研究结果可视为通向更精微理解之初步探索, 而远未达致定论之阶段, 后续研究尚待于新文献之发现。",
@@ -1028,7 +1053,8 @@ export const lessons: ChineseLesson[] = [
           "通向 → tōng xiàng (hướng tới)",
           "远未达致 → yuǎn wèi dázhì (còn xa chưa đạt — 文白)",
           "尚待于 → shàng dài yú (còn chờ — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["可视为 → kě shìwéi ('may be regarded as' — 文白 passive)","通向 → tōng xiàng ('leading toward')","远未达致 → yuǎn wèi dázhì ('far from reaching' — 文白)","尚待于 → shàng dài yú ('still awaits' — 文白)"]
       }
     ],
     "vocab": [
@@ -1249,7 +1275,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa hedging trong phê bình văn học cổ điển ở Trung Quốc đại lục mang dấu ấn cổ thư truyền thống:\n\n(1) 文献学 LÀ NỀN TẢNG HEDGING: Trung Quốc có truyền thống 文献学 (textual scholarship) từ 朴学 thời Càn-Gia (Qing). Mọi claim về 古典 phải đi kèm acknowledgment về textual transmission. Nếu cite 红楼梦 mà không specify version (脂本 vs 程本) = academic disgrace.\n\n(2) 散佚率 (LOSS RATE) AS CULTURAL FACT: Chinese pre-modern literary corpus được estimate có loss rate 50-70% (more for popular genres like 戏曲 / 评话, less for canonical 经史). C2 essay must explicitly acknowledge this. Sinh viên Việt: dùng cụm '文献散佚率约X成' = signal of awareness.\n\n(3) MULTIPLE EDITIONS = MULTIPLE TEXTS: cùng một 古典 work có thể có 5-30 versions. 红楼梦 có 12 surviving 脂本 + 程甲 + 程乙. 杜诗 có 仇兆鳌 + 杨伦 + 浦起龙 注本. C2 must cite specific edition. Single bare title = unprofessional.\n\n(4) RECEPTION AESTHETICS IS NEW IMPORT: 接受美学 (Hans Robert Jauss) was imported to China around 1980s. Combining Chinese textual scholarship + Western reception theory = signature of contemporary 古典 scholarship. Sinh viên Việt: nắm cả hai.\n\n(5) HEDGING TRADITION IN CỔ THƯ: Chinese cổ thư có hedging tradition lâu đời. 司马迁《史记》 dùng '盖' / '殆' / '或者' nhiều. 王国维 hedges nặng trong 《人间词话》. So hedging không phải foreign import — là native scholarly virtue.\n\n(6) DEFER TO 古人: trong 古典 studies, claim 'X 学者 (古人) was wrong' bị considered impertinent. Phrase chuẩn: 'X 之 论 不 无 可 商 榷 之 处' (X's view is not without points open to deliberation). Sinh viên Việt mới thường over-direct.\n\n(7) CULTURAL REVOLUTION HISTORICAL TRAUMA: từ 1949-1976, Chinese 古典 scholarship was disrupted; 1976+ rebuilt. Senior scholars (born pre-1955) lived through. Ngày nay: traditional 古典 scholars (e.g., 周勋初, 莫砺锋) revere 文献学 chặt chẽ. Trẻ scholars more eclectic. Sinh viên Việt: adjust register based on supervisor's generation.\n\n(8) DIGITAL CORPORA AS DOUBLE-EDGED: 中国基本古籍库, 中华经典古籍库 enable rapid search. Sinh viên Việt: search nhanh nhưng confirm against print critical edition. OCR errors in digitized 古籍 common.\n\n(9) JOURNAL EXPECTATIONS: top 古典 journals (《文学遗产》, 《文学评论》, 《文献》) require specific edition citation + hedge usage. Quoting bare without edition = desk reject. Loss-rate acknowledgment in pre-modern reception studies = expected.\n\n(10) PUBLIC INTELLECTUAL CULTURE: 古典 scholars Trung Quốc đôi khi write public essays in newspapers / WeChat. Different register. Sinh viên Việt: don't confuse public-intellectual register với academic — academic stricter, more hedged.",
+    "cultural_notes_en": "Hedging culture in classical literary criticism bears the imprint of the textual-scholarship tradition:\n\n(1) TEXTUAL SCHOLARSHIP IS THE BASIS OF HEDGING: every claim about the classics must carry an acknowledgment of textual transmission; citing the novel without specifying the recension (脂本 vs 程本) is an academic disgrace.\n\n(2) LOSS RATE AS A CULTURAL FACT: the pre-modern literary corpus is estimated to have a 50-70% loss rate (higher for popular genres like drama, lower for canonical classics). A C2 essay must explicitly acknowledge this — '文献散佚率约X成' signals awareness.\n\n(3) MULTIPLE EDITIONS = MULTIPLE TEXTS: one classical work can have 5-30 versions (the novel has 12 surviving 脂本 + two Cheng recensions; Du Fu's poetry has several major commentaries). Cite the specific edition; a bare title is unprofessional.\n\n(4) RECEPTION AESTHETICS IS A NEW IMPORT: Jauss's 接受美学 was imported around the 1980s; combining Chinese textual scholarship with Western reception theory is the signature of contemporary classical scholarship — command both.\n\n(5) A HEDGING TRADITION IN OLD TEXTS: classical texts hedge heavily (Sima Qian's 盖 / 殆 / 或者; Wang Guowei in 《人间词话》). Hedging is a native scholarly virtue, not a foreign import — cf. the Anglo academic 'arguably / it may be that'.\n\n(6) DEFERENCE TO THE ANCIENTS: claiming a 古人 (an ancient authority) 'was wrong' is impertinent; the conventional phrase is 'X之论不无可商榷之处' ('X's view is not without points open to deliberation'). Newcomers are often over-direct.\n\n(7) HISTORICAL TRAUMA: 1949-1976 disrupted classical scholarship, rebuilt after 1976; senior scholars who lived through it revere strict textual scholarship, while younger ones are more eclectic — adjust register to the supervisor's generation.\n\n(8) DIGITAL CORPORA ARE DOUBLE-EDGED: enable rapid search but are OCR-error-prone — confirm against the print critical edition.\n\n(9) JOURNAL EXPECTATIONS: top venues require specific-edition citation + hedge usage; a bare quote without the edition is a desk reject, and a loss-rate acknowledgment in pre-modern reception studies is expected.\n\n(10) PUBLIC-INTELLECTUAL CULTURE: classical scholars also write public essays in a different, looser register — don't confuse it with the academic register, which is stricter and more hedged.",
     "tip_advice_vi": "(1) HEDGE EVERY CLAIM, không hedge cả paragraph: '据现存文献所示, X似乎在Y条件下产生Z'. Mỗi claim một hedge. Hedging cả paragraph = noise. (2) READ TOP-TIER PAPERS: chọn 5 papers từ 《文学遗产》 cùng chuyên ngành. Đếm số 殆 / 庶几 / 似乎 / 据现存. Match density của họ. (3) CONFIDENCE AUDIT trước nộp: search file cho '证明 / 必然 / 肯定 / 毫无疑问 / 完全'. Nếu xuất hiện > 3 lần in 文学 paper, replace 80% chỗ bằng hedge. (4) LIMITATIONS SECTION = 15-20%: của methodology cho 古典 paper. 文献散佚 + 区域偏向 + 视角局限 — list explicitly. (5) 'NOT SEEN IN EXTANT' KHÔNG = 'DOES NOT EXIST': absence of evidence ≠ evidence of absence. Use '于现存文献中未见' không '不存在'. (6) 文白 HEDGES: 殆 / 庶几 / 恐 / 不无 — C2 dùng 5-10 lần per essay. Quá ít = không đạt C2. Quá nhiều = pretentious. (7) MULTI-EDITION CITATION: 红楼梦 第28回 不đủ. 红楼梦 庚辰本 第28回 第X页 (中华书局1979年点校本) là chuẩn C2. (8) DOUBLE NEGATIVE FORMALS: '不无道理' soft acknowledge. '此点不无可商榷' soft critique. C2 reviewers expect 2-3 per essay. (9) HISTORICAL DISTANCE EXPLICIT: when discussing pre-modern reception, always note distance: '我们今日所见之X, 与明人当日所感受之X, 未必尽同'. (10) TRANSLATE ENGLISH HEDGES CORRECTLY: 'arguably' → 或可言之 / 似可. 'tentatively' → 暂时 / 初步而言. Don't drop English direct.",
+    "tip_advice_en": "(1) HEDGE EVERY CLAIM, not the whole paragraph: '据现存文献所示，X似乎在Y条件下产生Z' — one hedge per claim; hedging a whole paragraph is noise. (2) READ TOP-TIER PAPERS: count 殆 / 庶几 / 似乎 / 据现存 in 5 papers from 《文学遗产》 and match their density. (3) CONFIDENCE AUDIT before submitting: search for 证明 / 必然 / 肯定 / 毫无疑问 / 完全 — if >3 in a literary paper, replace ~80% with hedges. (4) LIMITATIONS = 15-20% of the methodology for a classical paper: 文献散佚 + 区域偏向 + 视角局限, listed explicitly. (5) 'NOT SEEN IN EXTANT [SOURCES]' ≠ 'DOES NOT EXIST': use '于现存文献中未见', not '不存在' — absence of evidence is not evidence of absence. (6) 文白 HEDGES: 殆 / 庶几 / 恐 / 不无 — 5-10 per essay at C2; too few fails, too many is pretentious. (7) MULTI-EDITION CITATION: '红楼梦 第28回' is not enough — '红楼梦 庚辰本 第28回 第X页 (中华书局1979年点校本)'. (8) FORMAL DOUBLE NEGATIVES: '不无道理' (soft acknowledge), '此点不无可商榷' (soft critique) — reviewers expect 2-3 per essay. (9) MAKE HISTORICAL DISTANCE EXPLICIT: '我们今日所见之X，与明人当日所感受之X，未必尽同'. (10) TRANSLATE ENGLISH HEDGES CORRECTLY: 'arguably' → 或可言之 / 似可; 'tentatively' → 初步而言 — don't drop the hedge in translation.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1310,7 +1338,8 @@ export const lessons: ChineseLesson[] = [
           "境界 → jìngjiè (cảnh giới — 王国维)",
           "神韵 → shényùn (thần vận — 王士禛)",
           "气韵 → qìyùn (khí vận — 谢赫 painting then literature)"
-        ]
+        ],
+        "pronunciation_focus_en": ["意境 → yìjìng ('yìjìng' — a classical-poetics term, roughly 'the realized aesthetic world of a poem')","境界 → jìngjiè ('jìngjiè' — Wang Guowei's term)","神韵 → shényùn ('shényùn' — Wang Shizhen's term; rendered 'numinous/spirit resonance')","气韵 → qìyùn ('qìyùn' — from Xie He's painting criticism, later literature)"]
       },
       {
         "chinese": "所谓'意境', 顾名思义, 即指主体之意与客体之境互融而成之审美整体, 此一概念可溯至唐代王昌龄《诗格》中之'三境'说。",
@@ -1322,7 +1351,8 @@ export const lessons: ChineseLesson[] = [
           "互融 → hùróng (dung hợp lẫn nhau)",
           "审美整体 → shěnměi zhěngtǐ (chỉnh thể thẩm mỹ)",
           "可溯至 → kě sù zhì (có thể truy đến — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["顾名思义 → gùmíng sīyì (idiom: 'as the name suggests')","互融 → hùróng ('to interfuse')","审美整体 → shěnměi zhěngtǐ ('an aesthetic whole')","可溯至 → kě sù zhì ('may be traced to' — 文白)"]
       },
       {
         "chinese": "需要指出, '意境'与王国维所立之'境界'虽词形相近, 然内涵实有差异: 前者偏于诗学之传统范畴, 后者则兼具现代美学之系统性。",
@@ -1334,7 +1364,8 @@ export const lessons: ChineseLesson[] = [
           "内涵 → nèihán (nội hàm)",
           "前者...后者 → qiánzhě...hòuzhě (cái trước...cái sau — 文白)",
           "兼具 → jiānjù (đồng thời mang)"
-        ]
+        ],
+        "pronunciation_focus_en": ["词形相近 → cí xíng xiāngjìn ('similar in lexical form')","内涵 → nèihán ('intension / conceptual content')","前者…后者 → qiánzhě…hòuzhě ('the former … the latter' — 文白)","兼具 → jiānjù ('to additionally bear')"]
       },
       {
         "chinese": "至于'神韵', 乃王士禛诗论之核心范畴, 强调诗境之超逸与含蓄, 与谢赫论画'气韵生动'之范畴, 形似而所指实异。",
@@ -1346,7 +1377,8 @@ export const lessons: ChineseLesson[] = [
           "超逸 → chāoyì (siêu dật)",
           "含蓄 → hánxù (hàm súc)",
           "气韵生动 → qìyùn shēngdòng (谢赫《古画品录》)"
-        ]
+        ],
+        "pronunciation_focus_en": ["王士禛 → Wáng Shìzhēn (the Qing critic who founded the 神韵 doctrine)","超逸 → chāoyì ('transcendent / unworldly')","含蓄 → hánxù ('reserved / implicit')","气韵生动 → qìyùn shēngdòng (Xie He's canonical phrase, 'lifelike spirit-resonance')"]
       },
       {
         "chinese": "综上所述, 严谨之概念界定不仅是学术写作之基本要求, 更是论证得以展开之前提条件, 无此则全文皆失其立锥之地。",
@@ -1358,7 +1390,8 @@ export const lessons: ChineseLesson[] = [
           "得以展开 → déyǐ zhǎnkāi (có thể triển khai)",
           "前提条件 → qiántí tiáojiàn (tiền đề)",
           "无此则 → wú cǐ zé (không có thì — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["立锥之地 → lì zhuī zhī dì (idiom: 'ground to plant an awl' — the barest standing room)","得以展开 → déyǐ zhǎnkāi ('to be able to unfold')","前提条件 → qiántí tiáojiàn ('prerequisite condition')","无此则 → wú cǐ zé ('without this, then …' — 文白)"]
       }
     ],
     "vocab": [
@@ -1572,7 +1605,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa định nghĩa thuật ngữ 古典文论 ở Trung Quốc đại lục:\n\n(1) 概念史 (BEGRIFFSGESCHICHTE) AS ESTABLISHED METHOD: from 1990s+, 古典 scholars Trung Quốc adopt Reinhart Koselleck's 概念史 method for tracing concept evolution. 葛兆光《思想史》, 余英时's历代 thought studies are exemplars. Sinh viên Việt cần nắm: định nghĩa concept không phải static, mà historical.\n\n(2) DICTIONARY OF CONCEPTS: 中国诗学大辞典 (上海辞书出版社) is comprehensive resource cho 古典文论 terms. Sinh viên Việt: own a copy / digital access. Each term entry has: 起源 + 发展 + canonical citation.\n\n(3) WANG GUOWEI'S MODERNIZING ROLE: 王国维 (1877-1927) systematized 古典 critical lexicon for modern audience. His coinages like '境界' = bridges 古典 + Western (Schopenhauer, Kant) aesthetics. Contemporary 学界 sometimes over-credits him; sinh viên Việt: understand pre-王国维 usage too.\n\n(4) 朱光潜 + 宗白华 SECOND-WAVE MODERNIZERS: 朱光潜 (1897-1986) brought Croce, Bergson into 古典 lexicon. 宗白华 (1897-1986) wrote《美学散步》(1981) reframing 古典 aesthetics for modern Chinese audience. Both pre-1949 + early-1980s work safe canonical references.\n\n(5) 钱钟书 ENCYCLOPEDIC METHOD: 钱钟书《管锥编》, 《谈艺录》 use lateral cross-cultural definition (Chinese term + Western parallel). Sinh viên Việt: study his method for handling concept-equivalence.\n\n(6) DISAMBIGUATION CULTURE: Chinese 古典 scholarship has tradition of '辨义' (semantic distinction) essays. Genre includes 张相《诗词曲语辞汇释》, 王力《古代汉语》. C2 essay can adopt this genre's structure.\n\n(7) INTERLINGUAL TRANSLATION CHALLENGE: when defining 古典 concepts in English, sinh viên Việt must navigate translation choices. 神韵 → 'numinous resonance' (Susan Bush) / 'spirit resonance' (David Hawkes). Choose, cite, justify.\n\n(8) CRITIQUE-OF-WESTERNIZATION DEBATE: ongoing debate trong 古典 community: should Chinese aesthetics be expressed in 古典 terms only, or translated to Western theoretical idiom? Two camps. Sinh viên Việt: be aware of this debate when writing literature reviews.\n\n(9) DEFINITION DENSITY: top 古典文学 papers ở Trung Quốc usually have 'Term Definitions' subsection (5-10% of paper). Lower-tier papers skip — that's a tier-marker. Sinh viên Việt: include explicit term definitions in any C2 essay.\n\n(10) ETYMOLOGY MATTERS: 古典 concepts often retain etymology in their meaning. '风骨' has 风 (wind) + 骨 (bone) — windy vigor + skeletal structure. Western 'style' loses both. C2 essay can leverage etymology for differentiation.",
+    "cultural_notes_en": "The culture of defining classical critical terms (古典文论) has these features:\n\n(1) CONCEPTUAL HISTORY AS AN ESTABLISHED METHOD: since the 1990s, scholars adopt Koselleck's Begriffsgeschichte (概念史) to trace concept evolution — a definition is not static but historical.\n\n(2) A DICTIONARY OF CONCEPTS: 《中国诗学大辞典》 is the comprehensive resource; each term entry gives origin + development + canonical citation — have access to it.\n\n(3) WANG GUOWEI'S MODERNIZING ROLE: he systematized the classical critical lexicon for a modern audience; coinages like '境界' bridge classical and Western (Schopenhauer, Kant) aesthetics. Contemporary scholarship sometimes over-credits him — also understand pre-Wang usage.\n\n(4) SECOND-WAVE MODERNIZERS: Zhu Guangqian brought Croce and Bergson into the classical lexicon; Zong Baihua's 《美学散步》 (1981) reframed classical aesthetics for a modern audience — both safe canonical references.\n\n(5) QIAN ZHONGSHU'S ENCYCLOPEDIC METHOD: 《管锥编》/《谈艺录》 use lateral cross-cultural definition (a Chinese term + a Western parallel) — study his method for handling concept-equivalence.\n\n(6) A DISAMBIGUATION TRADITION: classical scholarship has a '辨义' (semantic-distinction) essay genre; a C2 essay can adopt its structure.\n\n(7) THE INTERLINGUAL-TRANSLATION CHALLENGE: when defining classical concepts in English you must choose among renderings — 神韵 → 'numinous resonance' (Bush) / 'spirit resonance' (Hawkes). Choose, cite, justify.\n\n(8) THE CRITIQUE-OF-WESTERNIZATION DEBATE: should Chinese aesthetics be expressed only in classical terms, or translated into Western theoretical idiom? Two camps — note the debate in your literature review.\n\n(9) DEFINITION DENSITY: top papers have a 'Term Definitions' subsection (5-10% of the paper); skipping it is a tier-marker — include explicit definitions.\n\n(10) ETYMOLOGY MATTERS: classical concepts retain etymology — 风骨 = 风 (wind/vigor) + 骨 (bone/structure); the Western 'style' loses both. Leverage etymology for differentiation.",
     "tip_advice_vi": "(1) DRAW A FAMILY TREE: trước khi viết, draw genealogy của each key term across dynasties. 意境: 王昌龄 → 严羽 → 王国维. Show graphically. Even if not in paper, helps you write. (2) BUILD A DEFINITION DATABASE: tạo file Markdown với 30 most-used 古典文论 terms. Mỗi entry: Aristotelian def + 起源 + 发展 stations + 1 example quote. Pay back over years. (3) ARISTOTELIAN STRUCTURE STRICTLY: 'X 是 一种 (genus), 其 特征 在于 (differentia)'. Mỗi definition fit pattern. Không fit = re-write. (4) DISAMBIGUATE FROM ENGLISH: when using English equivalent, explicitly note non-equivalence. '意境 (often translated as ''aesthetic realm''; the present term, however, emphasizes 主客互融, while ''aesthetic realm'' lacks this dimension)'. (5) CITE LINEAGE WITH SPECIFIC TEXTS: vague 'this concept developed in Tang dynasty' insufficient. '王昌龄《诗格》 (now lost in original; reconstructed from Song-dynasty quotations)'. Specific. (6) AVOID '顾名思义' BEFORE FORMAL DEFINITION: '顾名思义' chỉ trước short gloss. Real definition uses '所谓 X 即指'. (7) CONSISTENCY CHECK: search paper for mỗi term. Đếm occurrences. Confirm each occurrence uses defined meaning. Chuyển meaning between paragraphs without flag = violation. (8) FIRST OCCURRENCE RULE: when term first appears, italicize / bold + immediate definition. Subsequent uses plain. (9) HISTORICAL DISTANCE: when applying 古典 term to modern text, explicitly hedge: '借用古典之概念, 非欲混淆历史距离, 而仅为 aesthetic resonance'. (10) BACK-TRANSLATE TEST: translate definition Chinese → English → Vietnamese. If English/Vietnamese vague, Chinese vague — fix.",
+    "tip_advice_en": "(1) DRAW A FAMILY TREE of each key term across dynasties (e.g. 意境: 王昌龄 → 严羽 → 王国维) — even if it's not in the paper, it helps you write. (2) BUILD A DEFINITION DATABASE: 30 most-used 古典文论 terms — Aristotelian definition + origin + development stations + one example quote. (3) ARISTOTELIAN STRUCTURE STRICTLY: 'X 是一种 (genus), 其特征在于 (differentia)'; if it doesn't fit, rewrite. (4) DISAMBIGUATE FROM ENGLISH explicitly: '意境 (often translated ''aesthetic realm''; the present term, however, emphasizes 主客互融, which ''aesthetic realm'' lacks)'. (5) CITE LINEAGE WITH SPECIFIC TEXTS: not 'developed in the Tang' but '王昌龄《诗格》 (original lost; reconstructed from Song-dynasty quotations)'. (6) AVOID 顾名思义 BEFORE A FORMAL DEFINITION (it precedes a short gloss; the real definition uses '所谓 X 即指'). (7) CONSISTENCY CHECK: count each term's occurrences; confirm each uses the defined meaning — shifting it between paragraphs without flagging is a violation. (8) FIRST-OCCURRENCE RULE: italicize/bold + define on first appearance, plain thereafter. (9) HEDGE HISTORICAL DISTANCE when applying a classical term to a modern text: '借用古典之概念，非欲混淆历史距离，而仅为 aesthetic resonance'. (10) BACK-TRANSLATE TEST: Chinese → English; if the English is vague, the Chinese is too — fix it.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1633,7 +1668,8 @@ export const lessons: ChineseLesson[] = [
           "接受美学 → jiēshòu měixué (reception aesthetics — Jauss/Iser)",
           "互文性 → hùwénxìng (intertextuality — Kristeva)",
           "各有千秋 → gè yǒu qiānqiū (idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["文本细读 → wénběn xìdú ('close reading')","接受美学 → jiēshòu měixué ('reception aesthetics' — Jauss/Iser)","互文性 → hùwénxìng ('intertextuality' — Kristeva)","各有千秋 → gè yǒu qiānqiū (idiom: 'each has its own merits')"]
       },
       {
         "chinese": "前者着重于文本之内在结构与微观措辞, 后者则致力于揭示读者—文本之动态互动关系。",
@@ -1645,7 +1681,8 @@ export const lessons: ChineseLesson[] = [
           "微观措辞 → wéiguān cuòcí (diễn đạt vi mô)",
           "致力于 → zhìlì yú (dành cho — 文白)",
           "动态互动 → dòngtài hùdòng (tương tác động)"
-        ]
+        ],
+        "pronunciation_focus_en": ["前者…后者 → qiánzhě…hòuzhě ('the former … the latter' — 文白)","微观措辞 → wéiguān cuòcí ('micro-level diction')","致力于 → zhìlì yú ('is devoted to' — 文白)","动态互动 → dòngtài hùdòng ('dynamic interaction')"]
       },
       {
         "chinese": "若研究问题侧重于'文本内部之诗学结构', 则文本细读更为适宜; 若研究问题转向'读者群体之历史接受', 则接受美学之路径当可优先考虑。",
@@ -1657,7 +1694,8 @@ export const lessons: ChineseLesson[] = [
           "诗学结构 → shīxué jiégòu (cấu trúc thi học)",
           "更为适宜 → gèng wéi shìyí (phù hợp hơn — 文白)",
           "当可优先考虑 → dāng kě yōuxiān kǎolǜ (có thể được ưu tiên — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["若…则 → ruò…zé ('if … then' — 文白)","诗学结构 → shīxué jiégòu ('poetic structure')","更为适宜 → gèng wéi shìyí ('more suitable' — 文白)","当可优先考虑 → dāng kě yōuxiān kǎolǜ ('may take priority' — 文白)"]
       },
       {
         "chinese": "诚然, 单一方法之研究存在固有局限, 尤其于《红楼梦》这般体量浩大之文本; 因此混合方法研究近年来颇受学界青睐。",
@@ -1669,7 +1707,8 @@ export const lessons: ChineseLesson[] = [
           "固有局限 → gùyǒu júxiàn (hạn chế cố hữu)",
           "体量浩大 → tǐliàng hàodà (đồ sộ)",
           "颇受青睐 → pō shòu qīnglài (khá được ưa chuộng — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["诚然 → chéngrán ('admittedly' — 文白)","固有局限 → gùyǒu júxiàn ('inherent limitation')","体量浩大 → tǐliàng hàodà ('of vast scale')","颇受青睐 → pō shòu qīnglài ('quite favored' — 文白)"]
       },
       {
         "chinese": "综上所述, 方法之选择不应囿于流派之偏见, 而当依据具体研究问题之性质审慎决定, 庶几殊途同归。",
@@ -1681,7 +1720,8 @@ export const lessons: ChineseLesson[] = [
           "审慎决定 → shěnshèn juédìng (quyết định thận trọng)",
           "庶几 → shùjī (có lẽ — 文白 hedge)",
           "殊途同归 → shū tú tóng guī (idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["不应囿于 → bù yīng yòu yú ('should not be confined by' — 文白)","审慎决定 → shěnshèn juédìng ('to decide prudently')","庶几 → shùjī ('perhaps thereby' — 文白 hedge)","殊途同归 → shū tú tóng guī (idiom: 'different paths, same destination')"]
       }
     ],
     "vocab": [
@@ -1881,7 +1921,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa method choice trong nghiên cứu văn học cổ điển Trung Quốc đại lục:\n\n(1) WESTERN THEORY IMPORT WAVES: Trung Quốc đại lục có 3 waves nhập khẩu Western literary theory. Wave 1 (1930s-40s): 朱光潜, 宗白华 import Croce, Bergson. Wave 2 (1950-70s): blocked by political conditions. Wave 3 (1980s+): mass import — Russian formalism, New Criticism, structuralism, post-structuralism, reception aesthetics, narratology. Sinh viên Việt cần biết wave nào in vogue trong subfield của bạn.\n\n(2) JAUSS RECEPTION: 接受美学 (Jauss & Iser) was first translated 1980s, became major critical paradigm trong Trung Quốc đại lục cuối 1980s-90s. 童庆炳 senior scholar cho 接受美学 application to Chinese classics. Sinh viên Việt: read 童庆炳《文学理论教程》— foundational textbook.\n\n(3) INTERTEXTUALITY ADAPTATION: 互文性 (Kristeva) translated 1990s. 古典 scholars adapted it to Chinese tradition by aligning với 'allusion' (用典) studies. 黄维樑 wrote influential bridges. Sinh viên Việt: 互文性 in Chinese context often means '用典 studies enriched by Western theory'.\n\n(4) CLOSE READING TRADITION: 文本细读 (close reading) overlap với traditional Chinese 训诂学 (philological commentary). 朱熹's 《诗集传》, 《楚辞集注》 are pre-modern close-reading exemplars. So 文本细读 in China have continuity with 古典 tradition; not pure Western import.\n\n(5) CHINA-SPECIFIC METHODOLOGIES: 中国 古典 scholarship has its own methodologies not reducible to Western frameworks. 考据 (textual criticism), 评点 (commentary point-by-point), 笺注 (annotation). Each has distinct methodological status. C2 scholar should mention these alongside Western methods.\n\n(6) METHODOLOGY DEBATES: ongoing trong 中国文学学界. 古典派 vs 理论派 (theory-driven). 古典派 emphasizes 文献学 + 评点 + 训诂. 理论派 imports Western theory. Top universities have mixture. Sinh viên Việt: declare your camp early but engage both.\n\n(7) METHODOLOGY POLITICS: choice of method reveals school alignment. 北大 古典 派 favors 文献学. 复旦 favors 接受美学. 清华 cross-cultural. Sinh viên Việt: know your supervisor's school before submitting.\n\n(8) MIXED METHODS RISE: từ 2010+, mixed methods (文本细读 + 接受美学, 文献学 + 互文性) very popular ở Trung Quốc. Allows paper to satisfy multiple traditions. Sinh viên Việt: consider mixed methods to maximize reach.\n\n(9) DIGITAL HUMANITIES INTEGRATION: từ 2015+, Chinese 古典 scholars integrate computational methods (text mining, network analysis, GIS). 北大 数字人文中心 leading. Sinh viên Việt: combining Trung Quốc text + Western computational tools = novel niche.\n\n(10) INTERNATIONAL JOURNAL EXPECTATIONS: top Western journals (T'oung Pao, Harvard Journal of Asiatic Studies, Journal of Chinese Literature and Culture) require detailed methodology justification. Paper với 'we read these poems' single sentence bị reject. Sinh viên Việt: methodology section trong international submission phải DENSE.",
+    "cultural_notes_en": "Method-choice culture in classical literary studies has these features:\n\n(1) WESTERN-THEORY IMPORT WAVES: three waves — Wave 1 (1930s-40s: Zhu Guangqian, Zong Baihua import Croce, Bergson); Wave 2 (1950s-70s: blocked by political conditions); Wave 3 (1980s+: mass import — Russian formalism, New Criticism, structuralism, post-structuralism, reception aesthetics, narratology). Know which wave is in vogue in your subfield.\n\n(2) JAUSS RECEPTION: 接受美学 (Jauss & Iser) was translated in the 1980s and became a major paradigm by the late 1980s-90s; Tong Qingbing's textbook is foundational.\n\n(3) INTERTEXTUALITY ADAPTATION: 互文性 (Kristeva), translated in the 1990s, was adapted by aligning it with allusion (用典) studies — in the Chinese context 互文性 often means 'allusion studies enriched by Western theory'.\n\n(4) A CLOSE-READING TRADITION: 文本细读 overlaps with traditional philological commentary (训诂学); Zhu Xi's commentaries are pre-modern close-reading exemplars — so close reading here has classical continuity, not pure Western import.\n\n(5) CHINA-SPECIFIC METHODOLOGIES not reducible to Western frameworks: 考据 (textual criticism), 评点 (point-by-point commentary), 笺注 (annotation), each with distinct methodological status — mention these alongside Western methods.\n\n(6) METHODOLOGY DEBATES: classical-camp (文献学 + 评点 + 训诂) vs theory-camp (Western imports); top departments mix both — declare your camp early but engage both.\n\n(7) METHODOLOGY POLITICS: method choice reveals school alignment; know your supervisor's school before submitting.\n\n(8) MIXED METHODS RISE: since ~2010, mixed methods (close reading + reception aesthetics; textual scholarship + intertextuality) are popular and satisfy multiple traditions.\n\n(9) DIGITAL-HUMANITIES INTEGRATION: since ~2015, computational methods (text mining, network analysis, GIS) — combining a Chinese corpus with computational tools is a novel niche.\n\n(10) INTERNATIONAL-JOURNAL EXPECTATIONS: top Western Sinology journals require dense methodology justification — a one-sentence 'we read these poems' is rejected.",
     "tip_advice_vi": "(1) START FROM QUESTION, NOT METHOD: viết research question đầu tiên. Method chỉ chọn sau. Sinh viên Việt thường mắc lỗi 'tôi muốn dùng deconstruction' rồi mới tìm question — đảo ngược order. (2) MAP QUESTION TYPE TO METHOD: 'How structure works' → 文本细读. 'Why reception varies' → 接受美学. 'Where text fits' → 互文性. Mismatch = paper bị reviewer bash. (3) JUSTIFY METHOD CHOICE: dù chọn method nào, dedicate 1-2 paragraphs giải thích why this method fits this question. Không justify = lazy. (4) DON'T DISPARAGE OTHER METHODS: đừng viết 'reception aesthetics is superficial' hay 'close reading is reductionist'. Tôn trọng both → reviewer respect bạn. (5) TRIANGULATION: nếu mixed methods, mention triangulation explicitly. '本研究采用三角验证策略, 通过文本细读 + 接受美学之相互印证以增强结论之可信度'. (6) HISTORICAL CONTEXTUALIZATION for 接受美学: justify reception sources (笔记 + 序跋 + 评点 + 网络评论). Reviewer luôn hỏi. (7) READ CHINESE METHODOLOGY TEXTBOOKS: 童庆炳《文学理论教程》, 王宁《当代文学理论》— foundational. 沿读 along with original Western theorists (Jauss, Iser, Kristeva) in translation. (8) READ TWO PAPERS AS MODELS: trước khi viết methodology section, đọc 2 papers cùng topic ở top journal. Một dùng 文本细读 + một dùng 接受美学. Note their structure (NOT content). (9) AVOID METHODOLOGY-WAR LANGUAGE: 'X school is wrong' = sophomoric. 'X school addresses different questions than Y school' = mature. (10) ACKNOWLEDGE LIMITS: 'method 文本细读 has historical-context blind spots' / 'method 接受美学 requires substantial reception evidence'. Honest limits = mature scholarship.",
+    "tip_advice_en": "(1) START FROM THE QUESTION, NOT THE METHOD: 'I want to use deconstruction, now find a question' is the reversed (wrong) order. (2) MAP QUESTION TYPE TO METHOD: 'how structure works' → close reading; 'why reception varies' → reception aesthetics; 'where the text fits' → intertextuality. (3) JUSTIFY THE CHOICE in 1-2 paragraphs — not justifying is lazy. (4) DON'T DISPARAGE OTHER METHODS ('reception aesthetics is superficial' / 'close reading is reductionist') — respecting both earns reviewer respect. (5) TRIANGULATION: with mixed methods, state it — '本研究采用三角验证策略，通过文本细读 + 接受美学之相互印证以增强结论之可信度'. (6) HISTORICAL CONTEXTUALIZATION for reception aesthetics: justify the reception sources (笔记 + 序跋 + 评点 + modern commentary). (7) READ CHINESE METHODOLOGY TEXTBOOKS alongside the original theorists (Jauss, Iser, Kristeva) in translation. (8) READ TWO MODEL PAPERS first (one close-reading, one reception-aesthetics) at a top journal; reuse the structure, not the content. (9) AVOID METHODOLOGY-WAR LANGUAGE: 'X school addresses different questions than Y' is mature; 'X school is wrong' is sophomoric. (10) ACKNOWLEDGE LIMITS: 'close reading has historical-context blind spots' / 'reception aesthetics requires substantial reception evidence' — honest limits are mature scholarship.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -1942,7 +1984,8 @@ export const lessons: ChineseLesson[] = [
           "法译 → fǎyì (French translation)",
           "颇具价值 → pō jù jiàzhí (khá có giá trị — 文白)",
           "予以肯定 → yǔyǐ kěndìng (tán đồng — 书面)"
-        ]
+        ],
+        "pronunciation_focus_en": ["《登高》 → «Dēnggāo» (Du Fu's 762 poem 'Climbing Heights')","法译 → fǎyì ('French translation')","颇具价值 → pō jù jiàzhí ('rather valuable' — 文白)","予以肯定 → yǔyǐ kěndìng ('to affirm' — written register)"]
       },
       {
         "chinese": "然而, 在方法论层面, 本稿尚有若干值得商榷之处, 兹择要论之。",
@@ -1954,7 +1997,8 @@ export const lessons: ChineseLesson[] = [
           "若干 → ruògān (một số — 文白)",
           "兹 → zī (nay / ở đây — 文白)",
           "择要论之 → zé yào lùn zhī (chọn điểm chính để luận — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["然而 → rán'ér ('however' — 文白)","若干 → ruògān ('several' — 文白)","兹 → zī ('herewith' — 文白)","择要论之 → zé yào lùn zhī ('to discuss the main points selectively' — 文白)"]
       },
       {
         "chinese": "其一, 作者所取之三种译本——程抱一、桑兹 (Sandys) 与一位匿名译者——在出版年代上跨度逾五十年, 然作者未充分讨论此一时间差对译本之影响。",
@@ -1966,7 +2010,8 @@ export const lessons: ChineseLesson[] = [
           "跨度 → kuàdù (khoảng cách)",
           "逾 → yú (vượt quá — 文白)",
           "时间差 → shíjiān chā (khoảng cách thời gian)"
-        ]
+        ],
+        "pronunciation_focus_en": ["其一 → qí yī ('first(ly)' — 文白)","跨度 → kuàdù ('span/range')","逾 → yú ('exceeding' — 文白)","时间差 → shíjiān chā ('temporal gap')"]
       },
       {
         "chinese": "其二, 论文之 'forme' 与 'sens' 二分法略嫌简化; 当今翻译研究多采 source-domain / target-domain 之多维框架, 单一二分恐难尽其复杂。",
@@ -1978,7 +2023,8 @@ export const lessons: ChineseLesson[] = [
           "二分法 → èr fēn fǎ (binary)",
           "略嫌简化 → lüè xián jiǎnhuà (hơi đơn giản hoá — 文白 hedge)",
           "恐难尽其复杂 → kǒng nán jǐn qí fùzá (khó nói hết phức tạp — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["其二 → qí èr ('second(ly)' — 文白)","二分法 → èr fēn fǎ ('a binary')","略嫌简化 → lüè xián jiǎnhuà ('somewhat over-simplifying' — 文白 hedge)","恐难尽其复杂 → kǒng nán jǐn qí fùzá ('may not exhaust the complexity' — 文白)"]
       },
       {
         "chinese": "瑕不掩瑜, 该研究于唐诗外译领域仍具相当贡献, 然其结论之外推性应受适度约束, 笔者建议接受重大修改后再审。",
@@ -1990,7 +2036,8 @@ export const lessons: ChineseLesson[] = [
           "仍具 → réng jù (vẫn có — 文白)",
           "外推性 → wàituīxìng (tính khái quát hóa)",
           "适度约束 → shìdù yuēshù (ràng buộc thích hợp)"
-        ]
+        ],
+        "pronunciation_focus_en": ["瑕不掩瑜 → xiá bù yǎn yú (idiom: 'a flaw does not obscure the jade')","仍具 → réng jù ('still possesses' — 文白)","外推性 → wàituīxìng ('extrapolability')","适度约束 → shìdù yuēshù ('appropriate restraint')"]
       }
     ],
     "vocab": [
@@ -2211,7 +2258,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa peer review trong nghiên cứu dịch thuật văn học cổ điển ở Trung Quốc đại lục:\n\n(1) FU LEI 之 神似 IS LANDMARK: 傅雷 (1908-1966) coined '神似 重于 形似' (spirit-likeness over form-likeness) — landmark Chinese translation theory. Ngày nay 中国 translation studies always reference 傅雷 alongside Western theorists (Mounin, Toury, Venuti). Sinh viên Việt: must know 傅雷.\n\n(2) YAN FU 之 信达雅: 严复 (1854-1921) coined '信达雅' (faithfulness, expressiveness, elegance) for translation in 1898. Foundational. Modern 信达雅 debates: which to prioritize when conflict? Sinh viên Việt: cite 严复 in any literary translation paper.\n\n(3) PROGRESSIVE FRAMEWORKS: 中国 translation studies historically progressed through stages: 严复 (1898 信达雅) → 林纾 (1852-1924 文言 translator of Western literature) → 傅雷 (1950s 神似论) → 许渊冲 (1980s+ '三美论') → 当代 (cultural turn imports). Sinh viên Việt: mention progression to show awareness.\n\n(4) 程抱一 (FRANÇOIS CHENG) AS BRIDGE: 程抱一 (born 1929, Académie Française elected 2002) bridges Chinese-Western. His《中国诗语言研究》(1977 French; Chinese translation 2006) is essential reading for Tang-poetry外译 studies. Politically benign — pure scholar.\n\n(5) 许渊冲 AS POPULAR ICON: 许渊冲 (1921-2021) translated thousands of classical Chinese poems into English/French. Known for '三美论': 形美/音美/意美. Sometimes criticized for over-rhyme. Sinh viên Việt: cite cautiously — his work is contested but important.\n\n(6) TRANSLATION JOURNAL CULTURE: top Chinese translation journals: 《中国翻译》, 《外语教学与研究》, 《外国语》, 《中国比较文学》. Different focuses. Sinh viên Việt: study target journal's previous issues before submitting.\n\n(7) DOUBLE-BLIND IS NORM: top translation journals Trung Quốc đa số dùng double-blind review. Reviewer không biết author + author không biết reviewer. Reduces guanxi influence. Sinh viên Việt: review with full integrity.\n\n(8) RESPONSE-TO-REVIEWER FORMAT: rebuttal letter must be polite. Standard opener: '感谢审稿人指出, 该意见非常宝贵. 我们已...'. Defensive responses ('reviewer misunderstood') = will anger reviewer + push reject.\n\n(9) AI-ASSISTED TRANSLATION REVIEW: từ 2023+, ChatGPT / DeepL widely used for translation drafts. Several Trung Quốc journals require disclosure. Sinh viên Việt: disclose any AI usage in translation studies.\n\n(10) TIMING EXPECTATIONS: tier-1 Chinese translation journals expect review trong 30-45 days. Sinh viên Việt: commit only if can deliver. Late review = reviewer reputation damage.",
+    "cultural_notes_en": "Peer-review culture in classical literary-translation studies has these features:\n\n(1) FU LEI'S 神似 IS A LANDMARK: Fu Lei coined '神似重于形似' (spirit-likeness over form-likeness) — a landmark Chinese translation theory always referenced alongside Western theorists (Mounin, Toury, Venuti). Know it.\n\n(2) YAN FU'S 信达雅: Yan Fu coined '信达雅' (faithfulness, expressiveness, elegance) in 1898 — foundational; cite him in any literary-translation paper.\n\n(3) PROGRESSIVE FRAMEWORKS: the field progressed Yan Fu (1898) → Lin Shu (classical-language translator) → Fu Lei (1950s 神似论) → Xu Yuanchong (1980s+ 'three beauties') → the contemporary cultural turn — mention the progression to show awareness.\n\n(4) FRANÇOIS CHENG (程抱一) AS A BRIDGE: elected to the Académie Française (2002); his study of Chinese poetic language is essential for Tang-poetry-into-foreign-language studies — a purely scholarly, politically benign reference.\n\n(5) XU YUANCHONG AS A POPULAR ICON: translated thousands of classical poems into English/French, known for the 'three beauties' (form/sound/sense), sometimes criticized for over-rhyme — cite cautiously; contested but important.\n\n(6) TRANSLATION-JOURNAL CULTURE: the top journals have different focuses — study a target journal's prior issues before submitting.\n\n(7) DOUBLE-BLIND IS THE NORM at top translation journals, reducing guanxi influence — review with full integrity.\n\n(8) RESPONSE-TO-REVIEWER FORMAT must be polite: '感谢审稿人指出，该意见非常宝贵。我们已…'; a defensive 'reviewer misunderstood' angers the reviewer and pushes a reject.\n\n(9) AI-ASSISTED TRANSLATION REVIEW: since 2023, several journals require disclosure of ChatGPT/DeepL drafting — disclose any AI use.\n\n(10) TIMING: tier-1 journals expect review in 30-45 days; commit only if you can deliver — a late review damages the reviewer's reputation.",
     "tip_advice_vi": "(1) READ TARGET JOURNAL: trước khi review for《中国翻译》, đọc 5 papers cùng chuyên ngành published. Match style + register. (2) ACKNOWLEDGE FIRST: dù paper hopeless, bắt đầu với positive: '该选题具学术价值'. Set tone collaborative. (3) NUMBERED ISSUES: 其一 / 其二 / 其三. Author phải đáp from điểm. (4) CITE LINE/PAGE NUMBERS: vague critique = ignored. 'Section 3.2, paragraph 2: argument không clear'. Specific = actionable. (5) HEDGE EVEN WHEN CONFIDENT: '此论似乎' / '可能存在' giảm confrontation 50%. (6) END WITH CLEAR DECISION: accept / minor / major / reject. Editor expects ONE word recommendation. (7) RESPECT TRANSLATOR DIGNITY: critique work, không critique person. 'Methodology存在不足' tốt hơn 'translator unprofessional'. (8) RESPONSE TIMELINE: commit deadline strictly. Late review = editor remembers. Decline upfront if can't make. (9) SAVE TEMPLATE: review structure stable across papers. Make personal template (opening / structure / closing). Saves time. (10) AI USAGE DISCLOSURE: nếu dùng AI to draft review, even minor, disclose. Failure to disclose = academic misconduct nếu later discovered. (11) AVOID 民族 ESSENTIALISM: don't write 'Chinese poetry's spirit cannot be conveyed in Western languages' — too sweeping. Specific case-by-case analysis. (12) BENCHMARK AGAINST FU LEI / YAN FU: when assessing translation quality, compare against 傅雷 / 严复 standards, not personal taste.",
+    "tip_advice_en": "(1) READ THE TARGET JOURNAL: 5 same-field papers before reviewing — match its style and register. (2) ACKNOWLEDGE FIRST even if the paper is hopeless ('该选题具学术价值') — set a collaborative tone. (3) NUMBERED ISSUES: 其一 / 其二 / 其三. (4) CITE LINE/PAGE NUMBERS — vague critique is ignored; 'Section 3.2, para 2: the argument is unclear' is actionable. (5) HEDGE EVEN WHEN CONFIDENT: '此论似乎' / '可能存在' cuts confrontation ~50%. (6) END WITH A CLEAR DECISION (accept / minor / major / reject) — editors expect one word. (7) RESPECT THE TRANSLATOR'S DIGNITY: 'methodology 存在不足' beats 'the translator is unprofessional'. (8) RESPONSE TIMELINE: commit strictly; decline up front if you can't. (9) SAVE A TEMPLATE (opening/structure/closing). (10) DISCLOSE AI USE even for minor drafting — non-disclosure is misconduct if later found. (11) AVOID ETHNIC ESSENTIALISM: not 'Chinese poetry's spirit cannot be conveyed in Western languages' (too sweeping) — analyze case by case. (12) BENCHMARK against Fu Lei / Yan Fu standards, not personal taste.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2272,7 +2321,8 @@ export const lessons: ChineseLesson[] = [
           "陈述 → chénshù (trình bày)",
           "寓言 → yùyán (ngụ ngôn — Zhuangzi's literary form)",
           "抛砖引玉 → pāo zhuān yǐn yù (humble idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["请允许 → qǐng yǔnxǔ ('allow me to' — formal)","陈述 → chénshù ('to state/set out')","寓言 → yùyán ('parable/fable' — Zhuangzi's literary form)","抛砖引玉 → pāo zhuān yǐn yù (humble idiom: 'cast a brick to attract jade')"]
       },
       {
         "chinese": "感谢这位老师指出, 您所提之问题极具启发性, 触及了本研究尚未充分展开之层面——即《庄子》'卮言' 之 hermeneutic ambiguity。",
@@ -2284,7 +2334,8 @@ export const lessons: ChineseLesson[] = [
           "极具启发性 → jí jù qǐfāxìng (rất gợi mở)",
           "卮言 → zhīyán (chi ngôn — overflowing words, Zhuangzi term)",
           "尚未 → shàng wèi (chưa — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["感谢…指出 → gǎnxiè…zhǐchū ('thank you for pointing out')","极具启发性 → jí jù qǐfāxìng ('highly illuminating')","卮言 → zhīyán ('overflowing words' — a Zhuangzi term; no exact English equivalent)","尚未 → shàng wèi ('not yet' — 文白)"]
       },
       {
         "chinese": "诚如您所言, 本研究在样本规模上确有局限——仅讨论《庄子·内篇》七篇, 而 未涉外篇 与 杂篇——此点 笔者 亦 深以为憾, 拟在 后续 工作 中 加以 改进。",
@@ -2296,7 +2347,8 @@ export const lessons: ChineseLesson[] = [
           "内篇 → Nèipiān (Inner Chapters of Zhuangzi)",
           "外篇 → wàipiān (Outer Chapters)",
           "深以为憾 → shēn yǐwéi hàn (rất tiếc — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["诚如您所言 → chéngrú nín suǒ yán ('as you have rightly said' — formal)","内篇 → Nèipiān ('the Inner Chapters' of the Zhuangzi)","外篇 → wàipiān ('the Outer Chapters')","深以为憾 → shēn yǐwéi hàn ('deeply regret' — 文白)"]
       },
       {
         "chinese": "至于您所关切之另一问题——即 庄子 是否 自觉 运用 unreliable narrator——限于会议时间, 笔者愚以为 可在 会后 另行 探讨, 不知您 意下如何?",
@@ -2308,7 +2360,8 @@ export const lessons: ChineseLesson[] = [
           "限于 → xiànyú (giới hạn bởi)",
           "愚以为 → yú yǐwéi (kẻ ngu cho rằng — humble)",
           "意下如何 → yìxià rúhé (ý ngài thế nào — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["至于 → zhìyú ('as for' — 文白)","限于 → xiànyú ('limited by')","愚以为 → yú yǐwéi ('this humble one believes' — humble)","意下如何 → yìxià rúhé ('what is your view' — 文白)"]
       },
       {
         "chinese": "再次感谢各位评委及与会同仁之宝贵意见, 笔者将认真整理。不吝赐教之处望诸位继续关注。",
@@ -2320,7 +2373,8 @@ export const lessons: ChineseLesson[] = [
           "宝贵意见 → bǎoguì yìjiàn (ý kiến quý báu)",
           "不吝赐教 → bùlìn cìjiào (không tiếc dạy bảo — humble)",
           "诸位 → zhūwèi (các vị — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["与会同仁 → yùhuì tóngrén ('colleagues present' — 文白)","宝贵意见 → bǎoguì yìjiàn ('valuable comments')","不吝赐教 → bùlìn cìjiào ('unsparing instruction' — humble)","诸位 → zhūwèi ('all of you' — 文白)"]
       }
     ],
     "vocab": [
@@ -2534,7 +2588,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa Q&A tại conference văn học cổ điển Trung Quốc đại lục:\n\n(1) HUMBLE-FIRST CONVENTION: ngay cả khi bạn là expert, register opening phải humble. Câu '我是这个领域的专家, 让我告诉你...' = career-ending. Phải là '笔者愚以为 / 学生愚见 / 不揣冒昧地说'. Ironically, càng humble = càng được respect.\n\n(2) TIME PRESSURE: defense Trung Quốc thường strict 60-90 phút total. Q&A khoảng 30-45 phút. Mỗi câu hỏi expect 2-4 phút response. Quá ngắn = không đủ tôn trọng. Quá dài = sai etiquette về time.\n\n(3) HIERARCHY MATTERS: cách trả lời thay đổi based trên rank của người hỏi. Trả lời tenured professor (e.g., 周勋初, 莫砺锋, 张伯伟): tăng humble + extended thanks. Trả lời peer: bình thường formal. Trả lời junior: vẫn polite nhưng có thể direct hơn.\n\n(4) FACE-PRESERVING DURING ATTACK: nếu evaluator hostile (đôi khi xảy ra ở Trung Quốc), KHÔNG fight back trực tiếp. Phong cách: redirect to substance, hedge own claim, propose follow-up. Direct combat = lose face cho cả 2.\n\n(5) ENGLISH MIXING ALLOWED: Trung Quốc đại lục Q&A cho phép mix English technical terms (như 'narrative function', 'self-referential', 'paradigm-shifting') vì nhiều terms chưa có established Chinese translation. Sinh viên Việt có lợi: dùng English terms khi cần.\n\n(6) PRESENTATIONS DOUBLE WAY: nhiều conferences Trung Quốc ngày nay có cả English-language sessions và Chinese-language sessions. Tier-1 international conferences (NACS, AAS-in-Asia) dùng English. Tier-2 domestic (各地 中文系 学术 会议) dùng Chinese. Sinh viên Việt cần biết tone của venue.\n\n(7) POST-Q&A NETWORKING: sau Q&A, evaluator/audience có thể đến tiếp tục dialogue 1-on-1. Đây là moment quan trọng — junior nên chủ động tìm senior reviewer, '感谢您今天的指点, 笔者愿继续向您请教'. Networking opportunity.\n\n(8) FAILURE TO ANSWER: nếu bạn really không biết answer, phrase chuẩn: '这是笔者尚未深入考虑的角度, 您的指出令笔者深受启发. 笔者会后定当深入研读, 也愿继续向您请教'. KHÔNG bullshit. KHÔNG fake.\n\n(9) FOLLOW-UP EMAILS: 24-48 hours sau Q&A, gửi email thank-you cho evaluators chính, attached revised draft notes của câu hỏi của họ. Đây là cultural standard ở Trung Quốc top universities. Skip = no follow-up = cold.\n\n(10) GENDER & AGE DYNAMICS: nữ student trẻ trả lời Q&A thường được suggest tăng humble register so với nam senior. Đây là cultural pressure (không công bằng nhưng tồn tại). Cách balance: humble register + substantive content. Senior evaluator respect content over hierarchy form khi content thật sự strong.",
+    "cultural_notes_en": "Conference Q&A culture in classical-literature settings has these features:\n\n(1) HUMBLE-FIRST CONVENTION: even as an expert, the opening register must be humble — '我是这个领域的专家，让我告诉你…' is career-ending; it must be '笔者愚以为 / 学生愚见 / 不揣冒昧地说'. The more humble, the more respected.\n\n(2) TIME PRESSURE: a defense is a strict 60-90 minutes total, Q&A ~30-45; each answer ~2-4 minutes — too short reads as insufficient respect, too long breaks time etiquette.\n\n(3) HIERARCHY MATTERS: tune the answer to the asker's rank — a tenured professor gets more humility + extended thanks; a peer, normal formal; a junior, polite but more direct.\n\n(4) FACE-PRESERVING UNDER ATTACK: with a hostile evaluator, do NOT fight back directly — redirect to substance, hedge your claim, propose follow-up. Direct combat loses face for both.\n\n(5) ENGLISH MIXING ALLOWED: technical terms ('narrative function', 'self-referential', 'paradigm-shifting') may be kept in English since many lack an established Chinese rendering — an advantage for a learner.\n\n(6) VENUE LANGUAGE: tier-1 international venues run English sessions, domestic ones Chinese — know the venue's register.\n\n(7) POST-Q&A NETWORKING: an evaluator may continue 1-on-1 afterward — the junior should proactively approach: '感谢您今天的指点，笔者愿继续向您请教'.\n\n(8) FAILURE TO ANSWER: if you genuinely don't know — '这是笔者尚未深入考虑的角度，您的指出令笔者深受启发。笔者会后定当深入研读' — do NOT bluff or fake.\n\n(9) FOLLOW-UP EMAILS: 24-48h after, email thanks to the main evaluators with revised notes — a cultural standard; skipping reads as cold.\n\n(10) GENDER & AGE DYNAMICS: younger women are often advised to raise the humble register relative to senior men — an unfair but real pressure; balance with humble register + substantive content (strong content earns respect over hierarchy form).",
     "tip_advice_vi": "(1) PREP STANDARD OPENINGS: học thuộc 5 cụm opening responses trước khi defense. '感谢评委指出 / 这个问题非常重要 / 您所提之角度极具启发性 / 诚如您所言 / 限于时间...'. Tự động dùng — đỡ panic. (2) NUMBER YOUR ANSWERS: nếu câu hỏi multi-part, dùng '其一 / 其二 / 其三'. Reviewer follow easily. (3) ACKNOWLEDGE BEFORE RESPONDING: dù bạn disagree, START với acknowledge. '诚如您所言, X 是个真问题 ... 不过, 笔者拟从另一角度补充: ...' Acknowledge → pivot. (4) DON'T BLUFF: khi không biết, '这是笔者尚未深入考虑的角度' tốt hơn fake answer. Reviewer respect honest 'don't know' hơn confident wrong. (5) HEDGE WHEN APPROPRIATE: nếu data của bạn chỉ partial support claim, acknowledge: '本研究在X方面确有局限'. Don't over-promise. (6) USE TIME-LIMIT WISELY: '限于会议时间, 可否会后另行探讨?' — dùng khi câu hỏi cần extensive answer. Don't dodge — committed to dialogue post-session. (7) RESPOND ON SUBSTANCE EVEN UNDER ATTACK: nếu reviewer harsh, redirect to substance: '关于X点, 笔者持Y立场, 是出于Z之考虑'. Substance over emotion. (8) END WITH GRATITUDE: kết Q&A bằng '再次感谢各位评委之宝贵意见, 不吝赐教之处望诸位继续关注'. Ngắn, formal, gracious. (9) PRACTICE WITH MOCK PANEL: trước defense, mock 3-4 lần với senior students/postdocs. Build muscle memory. (10) DRESS + POSTURE: cultural norm ở Trung Quốc đại lục: business casual cho students defense. Stand straight. Eye contact với evaluator đang hỏi. Câu trả lời directed at chair khi answer applies broadly. (11) BORROW FROM 论语: thỉnh thoảng (1 lần per session), quoting '三人行必有我师' or '不耻下问' as humble framing = signal of cultural depth. (12) FOLLOW UP WITHIN 24-48 HOURS: send thank-you email + brief acknowledgment of valuable points after defense. Standard Trung Quốc convention.",
+    "tip_advice_en": "(1) PREP STANDARD OPENINGS: memorize 5 — '感谢评委指出 / 这个问题非常重要 / 您所提之角度极具启发性 / 诚如您所言 / 限于时间…' — deploy automatically, avoid panic. (2) NUMBER YOUR ANSWERS for multi-part questions (其一 / 其二 / 其三). (3) ACKNOWLEDGE BEFORE RESPONDING even when disagreeing: '诚如您所言，X 是个真问题… 不过，笔者拟从另一角度补充：…'. (4) DON'T BLUFF: '这是笔者尚未深入考虑的角度' beats a fake answer — an honest 'don't know' beats a confident wrong. (5) HEDGE PARTIAL DATA: '本研究在X方面确有局限' — don't over-promise. (6) USE THE TIME LIMIT WISELY: '限于会议时间，可否会后另行探讨?' — don't dodge; commit to post-session dialogue. (7) STAY ON SUBSTANCE UNDER ATTACK: '关于X点，笔者持Y立场，是出于Z之考虑'. (8) END WITH GRATITUDE: '再次感谢各位评委之宝贵意见，不吝赐教之处望诸位继续关注'. (9) MOCK PANEL 3-4 times with seniors/postdocs. (10) DRESS + POSTURE: business casual; stand straight; eye contact with the asker; direct broad answers to the chair. (11) BORROW FROM THE ANALECTS sparingly (once/session): '三人行必有我师' or '不耻下问' as a humble frame signals cultural depth. (12) FOLLOW UP within 24-48h with a thank-you email + brief acknowledgment of valuable points.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2595,7 +2651,8 @@ export const lessons: ChineseLesson[] = [
           "开宗明义 → kāi zōng míng yì (idiom)",
           "言简意赅 → yán jiǎn yì gāi (idiom)",
           "一目了然 → yī mù liǎo rán (idiom)"
-        ]
+        ],
+        "pronunciation_focus_en": ["乃 → nǎi ('is precisely' — 文白)","开宗明义 → kāi zōng míng yì (idiom: 'state the thesis at the outset')","言简意赅 → yán jiǎn yì gāi (idiom: 'concise wording, complete meaning')","一目了然 → yī mù liǎo rán (idiom: 'clear at a glance')"]
       },
       {
         "chinese": "结构上, 一份合格之文学论文摘要通常包括四要素: 研究问题、方法、文本案例及结论, 缺一不可。",
@@ -2607,7 +2664,8 @@ export const lessons: ChineseLesson[] = [
           "四要素 → sì yàosù (bốn yếu tố)",
           "及 → jí (và — 文白)",
           "缺一不可 → quē yī bùkě (thiếu một không được)"
-        ]
+        ],
+        "pronunciation_focus_en": ["合格之 → hégé zhī ('a qualified …' — 文白)","四要素 → sì yàosù ('the four elements')","及 → jí ('and' — 文白)","缺一不可 → quē yī bùkě ('none can be omitted')"]
       },
       {
         "chinese": "撰写时, 笔者宜删繁就简, 剔除冗余之表述, 保留最具信息密度之内容, 切忌冗长。",
@@ -2619,7 +2677,8 @@ export const lessons: ChineseLesson[] = [
           "剔除 → tīchú (loại bỏ — 文白)",
           "冗余 → rǒngyú (thừa)",
           "切忌 → qièjì (kiêng kỵ — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["删繁就简 → shān fán jiù jiǎn (idiom: 'cut the superfluous, keep it simple')","剔除 → tīchú ('to excise' — 文白)","冗余 → rǒngyú ('redundant')","切忌 → qièjì ('absolutely avoid' — 文白)"]
       },
       {
         "chinese": "以《西游记》八十一难之结构研究为例, 一份典型摘要应明示: 'forty-second-octet symmetry'之 hypothesis、所采 narrative-segment analysis 方法、第二十七至第三十二回之案例分析、以及对'劫数即叙事时态'之结论。",
@@ -2631,7 +2690,8 @@ export const lessons: ChineseLesson[] = [
           "八十一难 → bāshí yī nán (81 calamities)",
           "narrative-segment → English term in C2 critical lexicon",
           "劫数 → jiéshù (calamities / fated tribulations)"
-        ]
+        ],
+        "pronunciation_focus_en": ["《西游记》 → «Xīyóujì» (Journey to the West, a Ming novel)","八十一难 → bāshí yī nán ('the Eighty-One Calamities')","narrative-segment → kept as the English critical term","劫数 → jiéshù ('calamities / fated tribulations')"]
       },
       {
         "chinese": "综上所述, 一份精良之摘要应'画龙点睛'而非'画蛇添足', 应'开宗明义'而非'徐徐道来', 此 乃 学术 写作 之 基本功夫。",
@@ -2643,7 +2703,8 @@ export const lessons: ChineseLesson[] = [
           "画蛇添足 → huà shé tiān zú (idiom)",
           "徐徐道来 → xúxú dàolái (thong thả kể — descriptive prose, NOT for abstract)",
           "基本功夫 → jīběn gōngfū (công phu cơ bản — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["画龙点睛 → huà lóng diǎn jīng (idiom: 'dot the dragon's eye' — the decisive finishing touch)","画蛇添足 → huà shé tiān zú (idiom: 'add feet to a snake' — a ruinous excess)","徐徐道来 → xúxú dàolái ('to unfold leisurely' — descriptive prose, NOT for an abstract)","基本功夫 → jīběn gōngfū ('fundamental craft' — 文白)"]
       }
     ],
     "vocab": [
@@ -2871,7 +2932,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa abstract / lit review trong giới văn học cổ điển Trung Quốc đại lục:\n\n(1) BILINGUAL ABSTRACTS REQUIREMENT: nhiều tạp chí Trung Quốc tier-1 yêu cầu BOTH Chinese abstract VÀ English abstract. Hai abstract phải parallel ý nhưng không phải translation 1:1. 文学评论, 文学遗产, 比较文学 đều require.\n\n(2) STRUCTURED ABSTRACT (结构化摘要): tạp chí 古典文学 đôi khi require structured abstract với explicit headers: 研究目的, 研究方法, 文本案例, 主要发现, 学术意义. Tạp chí khác cho phép unstructured nhưng vẫn cần 4 elements implicit.\n\n(3) AVERSION TO OPENING CLICHÉS: từ 2018+, top journals 古典文学 explicitly reject abstracts opening với '近年来, 随着X的迅猛发展'. Editor đếm số lần phrase này xuất hiện trong submitted manuscripts > 90% — bị coi là templated, lazy. Sinh viên Việt copy phrase này từ Chinese papers cũ = bị reject.\n\n(4) LITERATURE REVIEW LENGTH: standard Trung Quốc top journals 古典文学 require lit review chiếm 20-30% paper length. Quá ngắn = không đủ acknowledge prior work. Quá dài = không đủ contribution. Sinh viên Việt thường viết quá ngắn (5-10%) — needs expansion.\n\n(5) FOREIGN vs DOMESTIC CITATIONS BALANCE: top journals 古典文学 expect lit review balance international (≥40% — sinology in West) + domestic Chinese (≤60%). Quá nhiều domestic = parochial. Quá ít domestic = ignoring local field. Adjust based on subfield maturity.\n\n(6) CONCEPTUAL CLARIFICATION GENRE: Trung Quốc có sub-genre 概念辨析 — clarifying a concept. Ví dụ '论X与Y之辨'. Abstract phải clearly identify if your paper is 概念辨析 type or 文本细读 type or 比较 type.\n\n(7) PRE-REGISTRATION CULTURE: từ 2020+, top Chinese journals trong literary criticism khuyến khích pre-registration cho large empirical studies. Đăng ký research plan trước khi collect data. Sinh viên Việt: nắm trend này.\n\n(8) AI-ASSISTED SUMMARIZATION: từ 2023+, học giả Trung Quốc sử dụng GPT/Claude để help draft lit reviews. Một số journals chấp nhận if disclosed; khác lại banned. Sinh viên Việt: disclose if used, even minor edits.\n\n(9) ABSTRACTS GET INDEXED, FULL TEXT CHƯA: trong Chinese academic search engines (CNKI, WANFANG), abstract is what users see when browsing. Abstract weak = paper invisible regardless of full-text quality. Sinh viên Việt: abstract is FRONTLINE, not afterthought.\n\n(10) GRADUATE DEFENSE ABSTRACT: defense submission ở Trung Quốc đại lục requires Chinese abstract VÀ English abstract trên thesis cover page. Hội đồng thường judge thesis quality SOLELY based on abstract trong 60 seconds đầu tiên of defense. Underestimate abstract = underestimate defense success rate.",
+    "cultural_notes_en": "Abstract / literature-review culture in classical-literature studies has these features:\n\n(1) BILINGUAL ABSTRACT REQUIREMENT: many tier-1 journals require BOTH a Chinese and an English abstract — parallel in idea but not a 1:1 translation.\n\n(2) STRUCTURED ABSTRACT (结构化摘要): some classical-literature journals require explicit headers — 研究目的, 研究方法, 文本案例, 主要发现, 学术意义; others allow unstructured but still need the four elements.\n\n(3) AVERSION TO OPENING CLICHÉS: since ~2018, top journals reject abstracts opening with '近年来，随着X的迅猛发展' (>90% of submissions) as templated and lazy.\n\n(4) LITERATURE-REVIEW LENGTH: top classical journals expect 20-30% of paper length — too short under-acknowledges prior work; learners tend to write too short (5-10%), so expand.\n\n(5) FOREIGN vs DOMESTIC CITATION BALANCE: ~≥40% international (Western sinology) + ≤60% domestic; too much domestic reads parochial, too little ignores the local field.\n\n(6) THE 概念辨析 GENRE: classical scholarship has a concept-clarification sub-genre ('论X与Y之辨') — the abstract must signal whether the paper is a clarification, close-reading, or comparative type.\n\n(7) PRE-REGISTRATION CULTURE: since ~2020, top journals encourage pre-registration for large empirical studies.\n\n(8) AI-ASSISTED SUMMARIZATION: since 2023, some journals accept disclosed AI-assisted lit-review drafting, others ban it — disclose if used.\n\n(9) ABSTRACTS GET INDEXED, FULL TEXT DOESN'T: in Chinese search engines the abstract is what browsers see — a weak abstract makes the paper invisible regardless of full-text quality; it is the frontline.\n\n(10) DEFENSE ABSTRACT: a thesis cover page needs both Chinese and English abstracts; the committee often judges quality from the abstract in the first 60 seconds.",
     "tip_advice_vi": "(1) WRITE ABSTRACT LAST: viết toàn bộ paper trước, abstract cuối cùng. Bạn không thể tóm tắt cái bạn chưa viết. Nếu phải submit proposal, viết structured abstract trước (working draft), then revise sau khi paper xong. (2) CONTRIBUTION SENTENCE FIRST: câu đầu là CONTRIBUTION, không phải background. Format: '本文采[方法]重读[文本], 提出[假设]'. Practice this pattern. (3) AT LEAST 2 SPECIFIC DETAILS: abstract không có specifics = không convincing. Mục tiêu: chapter range + edition specification, hoặc tương tự. (4) WORD COUNT TARGET = LIMIT × 0.85: nếu limit 250 words, target 200-220. Buffer cho revision. (5) DELETE PASS: viết bản 1 → lưu → đêm sau → mở ra → DELETE 30%. Đa số abstract bản 1 quá dài. (6) NO 'IN THIS PAPER, WE': dùng '本文 + 提出/研究/探讨'. Avoid first person plural - awkward in Chinese formal register. (7) SCAN TOP TIER ABSTRACTS: trước khi viết, đọc 5 abstracts published in your target journal. Note their sentence patterns + Chinese word choice. Imitate structure (NOT content). (8) LIT REVIEW: ORGANIZE BY THEMES not papers. Each subsection = 1 theme/issue, citing 5-10 papers in conversation, not 1 paper per paragraph. (9) POSITION YOUR WORK EXPLICITLY: lit review must end với clear statement '本研究填补了 [specific gap]'. Don't make reader infer. (10) META: sinh viên Việt thường viết lit review quá ngắn (under 10% paper). Top 古典 journal expect 20-30%. Expand if necessary. (11) CHINESE-ENGLISH DOUBLE PASS: viết Chinese abstract → translate sang English → adjust English to native fluency → translate English back sang Chinese → polish Chinese. Iteration tốt cho cả 2 languages.",
+    "tip_advice_en": "(1) WRITE THE ABSTRACT LAST — you can't summarize what isn't written; for a proposal, draft a structured working abstract then revise. (2) CONTRIBUTION SENTENCE FIRST, not background: '本文采[方法]重读[文本]，提出[假设]'. (3) AT LEAST 2 SPECIFIC DETAILS (chapter range + edition specification) — without them it isn't convincing. (4) WORD-COUNT TARGET = LIMIT × 0.85 (buffer for revision). (5) DELETE PASS: draft → sleep → reopen → cut 30%. (6) NO 'IN THIS PAPER, WE': use '本文 + 提出/研究/探讨'; first-person plural is awkward in formal register. (7) SCAN 5 TOP-TIER ABSTRACTS in the target journal; imitate sentence patterns and word choice (structure, not content). (8) ORGANIZE THE REVIEW BY THEMES, not papers — each subsection one theme citing 5-10 papers in conversation. (9) POSITION YOUR WORK EXPLICITLY: end the review with '本研究填补了 [specific gap]' — don't make the reader infer. (10) EXPAND if your review is under 10% (top classical journals expect 20-30%). (11) CHINESE-ENGLISH DOUBLE PASS: Chinese → English → polish English → back to Chinese → polish.",
     "exercises": [
       {
         "type": "fill-blank",
@@ -2932,7 +2995,8 @@ export const lessons: ChineseLesson[] = [
           "审读 → shěndú (đọc xét — 文白)",
           "评审意见 → píngshěn yìjiàn (ý kiến đánh giá)",
           "如下 → rúxià (như sau — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["手稿 → shǒugǎo ('manuscript')","审读 → shěndú ('to read and review' — 文白)","评审意见 → píngshěn yìjiàn ('review comments')","如下 → rúxià ('as follows' — 文白)"]
       },
       {
         "chinese": "整体观之, 本稿选题前沿—— Hawkes 与 杨戴 二种译本之 paratext 比较——实证扎实, 言之有据, 笔者对其学术价值予以肯定。",
@@ -2944,7 +3008,8 @@ export const lessons: ChineseLesson[] = [
           "Hawkes → David Hawkes (1923-2009 红楼梦 translator)",
           "杨戴 → Yáng-Dài (杨宪益 + Gladys Yang)",
           "paratext → English term used in Chinese translation studies"
-        ]
+        ],
+        "pronunciation_focus_en": ["整体观之 → zhěngtǐ guān zhī ('viewed as a whole' — 文白)","Hawkes → David Hawkes (the canonical English translator of the novel)","杨戴 → Yáng-Dài (the Yang Xianyi + Gladys Yang translation pair)","paratext → kept as the English term, standard in translation studies"]
       },
       {
         "chinese": "然而, 在方法层面, 本稿尚有若干值得改进之处, 兹提出三点具体建议, 供作者参考。",
@@ -2956,7 +3021,8 @@ export const lessons: ChineseLesson[] = [
           "若干 → ruògān (một số — 文白)",
           "兹 → zī (nay — 文白)",
           "供 → gōng (cung cấp — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["然而 → rán'ér ('however' — 文白)","若干 → ruògān ('several' — 文白)","兹 → zī ('herewith' — 文白)","供 → gōng ('for [reference]' — 文白)"]
       },
       {
         "chinese": "建议作者针对上述三点逐一回应, 并在修订版中以颜色标注修改之处, 以便复审。",
@@ -2968,7 +3034,8 @@ export const lessons: ChineseLesson[] = [
           "逐一回应 → zhú yī huíyìng (từng điểm trả lời)",
           "标注 → biāozhù (đánh dấu)",
           "以便 → yǐbiàn (để thuận lợi — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["针对 → zhēnduì ('to address' — 文白)","逐一回应 → zhú yī huíyìng ('respond to each one by one')","标注 → biāozhù ('to mark/annotate')","以便 → yǐbiàn ('so as to facilitate' — 文白)"]
       },
       {
         "chinese": "综合评审意见, 本稿宜接受重大修改后再审, 不宜直接接受, 亦无须立即拒稿。",
@@ -2980,7 +3047,8 @@ export const lessons: ChineseLesson[] = [
           "重大修改 → zhòngdà xiūgǎi (major revision)",
           "再审 → zài shěn (re-review)",
           "亦无须 → yì wúxū (cũng không cần — 文白)"
-        ]
+        ],
+        "pronunciation_focus_en": ["综合 → zōnghé ('to synthesize')","重大修改 → zhòngdà xiūgǎi ('major revision')","再审 → zài shěn ('re-review')","亦无须 → yì wúxū ('nor is it necessary to' — 文白)"]
       }
     ],
     "vocab": [
@@ -3201,7 +3269,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_vi": "Văn hóa peer review trong giới văn学 cổ điển Trung Quốc đại lục:\n\n(1) ANONYMITY VS DISCLOSED: top 古典文学 journals Trung Quốc đa số dùng single-blind (reviewer biết author, author không biết reviewer). Một số top journals (như 《文学评论》, 《文学遗产》) tier-1 hiện đang move sang double-blind. Hệ quả của single-blind: power asymmetry. Senior authors có lợi.\n\n(2) FACE-PRESERVING REVIEW: phản biện 中国 thường gentler bề ngoài so với phương Tây. '此点尚需斟酌' (point needs deliberation) thực ra nghĩa 'wrong'. Sinh viên Việt phải đọc subtle: phrase nhẹ trên giấy có thể nghĩa heavy.\n\n(3) GUANXI INFLUENCE: trong 古典 fields ở Trung Quốc, có hiện tượng 'review network' giữa các labs cùng trường phái. Reviewer thường mềm với papers từ same lab / same supervisor's network. Top journals đang đẩy mạnh blinding để giảm hiện tượng này.\n\n(4) RETRACTION CULTURE: Trung Quốc có rate retraction cao (especially 古典 papers caught in plagiarism / fabrication). Vì vậy review hiện nay được nhấn mạnh hơn nhiều so với 10 năm trước. 学术不端 (academic misconduct) cases tăng investigation rigor.\n\n(5) SPECIAL ROLE OF '通讯作者' (corresponding author): trong reviews ở Trung Quốc, corresponding author thường là supervisor (PI). Sinh viên là first author nhưng PI takes responsibility cho review responses. Hệ quả: sinh viên Việt collaborate phải clear với PI trước về division of review labor.\n\n(6) AI-ASSISTED REVIEW: từ 2023+, một số reviewers dùng AI để help draft reviews. Một số journals đã ban (rejecting LLM-drafted reviews); khác lại allow as long as disclosed. Sinh viên Việt review papers should disclose nếu dùng AI.\n\n(7) LANGUAGE OF REVIEW: tier-1 古典 journals Trung Quốc thường receive Chinese reviews (preferred). Tier-2/3 nhận cả Chinese và English. Sinh viên Việt review tiếng Trung trừ khi journal explicitly require English.\n\n(8) RESPONSE-TO-REVIEWER (回复审稿人): rebuttal letter ở Trung Quốc thường rất polite. Format: '感谢审稿人指出, 该意见非常宝贵 / 我们已按建议修改 / 详见正文p.X'. Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(9) REVIEWING GIÚP CAREER: review cho top journals = bonus cho academic CV ở Trung Quốc. Nếu được《文学评论》/《文学遗产》mời review, accept ngay — đây là invitation đáng giá.\n\n(10) CULTURAL TABOO: don't impose moral / political reading vào 古典 critique. 古典 scholars Trung Quốc generally favor purely-aesthetic readings. Apply Marxist / feminist / postcolonial reading sẽ bị resistance từ traditional 古典 audience. Sinh viên Việt: know audience trước khi pick theory.",
+    "cultural_notes_en": "Peer-review culture in classical-literature studies has these features:\n\n(1) ANONYMITY: most tier-1 classical-literature journals are single-blind (reviewer knows author, not vice versa); a few are moving to double-blind. Single-blind produces a power asymmetry favoring senior authors.\n\n(2) FACE-PRESERVING REVIEW: critique is gentler on the surface than the Anglo norm — '此点尚需斟酌' ('this point needs deliberation') actually means 'wrong'. Read the subtext: a soft phrase can carry a heavy verdict.\n\n(3) GUANXI INFLUENCE: a same-school 'review network' can soften reviews of papers from the same supervisor's network; top journals push blinding to reduce this.\n\n(4) RETRACTION CULTURE: a high retraction rate (plagiarism/fabrication caught in classical papers) is precisely why review is now far more emphasized than a decade ago.\n\n(5) ROLE OF THE 通讯作者 (corresponding author): usually the supervisor/PI, who owns review responses while the student is first author — clarify the division of review labor with the PI up front.\n\n(6) AI-ASSISTED REVIEW: since 2023 some journals ban LLM-drafted reviews, others allow if disclosed — disclose if you use AI.\n\n(7) LANGUAGE OF REVIEW: tier-1 classical journals usually receive (and prefer) Chinese reviews; tier-2/3 accept either — review in Chinese unless English is required.\n\n(8) RESPONSE-TO-REVIEWER: very polite — '感谢审稿人指出，该意见非常宝贵 / 我们已按建议修改 / 详见正文p.X'; a defensive 'reviewer misunderstood' angers the reviewer even if they truly misread.\n\n(9) REVIEWING HELPS YOUR CAREER: reviewing for a top venue is a CV asset; if invited by 《文学评论》/《文学遗产》, accept.\n\n(10) A CULTURAL TABOO: traditional classical audiences favor purely-aesthetic readings; imposing a Marxist/feminist/postcolonial reading meets resistance — know the audience before choosing a theory.",
     "tip_advice_vi": "(1) ACKNOWLEDGE TRƯỚC: bắt đầu critique luôn bằng câu công nhận. Không acknowledge = author defensive ngay, sẽ không accept changes. '该研究确有其价值' / '论述基本扎实' — câu mở. (2) NUMBERED ISSUES: dùng 其一 / 其二 / 其三 để liệt kê. Không scattered. Reviewer top tier expect numbered structure. (3) EVIDENCE FOR EACH ISSUE: mỗi issue phải có evidence cụ thể (page #, table #, formula #). Vague critique = author dismiss. (4) SUGGEST SOLUTIONS: critique không có solution = chỉ là phá. Mỗi issue must end với '笔者建议...' hoặc '或可考虑...'. (5) LEAVE 'BIG PICTURE' VERDICT: kết review với '瑕不掩瑜, recommend major revision' hoặc tương tự. Cho author biết overall assessment. (6) HEDGE WHEN APPROPRIATE: '此点 似乎 / 或许 / 在某种程度上' khi không 100% chắc. Reviewer over-confident sẽ bị author rebut. (7) SOFTEN CRITICISM: dùng '不足 / 有待 / 尚需' thay vì '错 / 失败 / 不行'. Same critique, gentler delivery. Author respect more. (8) 'CRITIQUE THE WORK, NOT THE AUTHOR': '论证存在不足' tốt hơn '作者论证不力'. Subject = work, không phải person. (9) AVOID NIT-PICKING: don't critique typos in main text. Critique architecture-level issues. Reviewer chỉ chỉ format = annoyed editor + author. (10) C2-SPECIFIC EXTRAS: cite specific 古典 edition (脂本 / 程甲本 / 程乙本) khi relevant. Use 文白 markers (殆 / 庶几 / 不无 / 兹) per review 3-5 times. Quote 古典 phrases (字斟句酌 / 实事求是) for register depth. (11) AI USAGE DISCLOSURE: nếu dùng AI to draft review, even minor, disclose to editor in submission notes. Failure to disclose = academic misconduct nếu later discovered. (12) AVOID SUBJECT-SPECIFIC JARGON IN REVIEW: review may be read by editors from different sub-areas. Explain key technical terms. Inclusivity = professional.",
+    "tip_advice_en": "(1) ACKNOWLEDGE FIRST: open the critique with a concession ('该研究确有其价值' / '论述基本扎实'); skipping it makes the author defensive. (2) NUMBERED ISSUES: 其一 / 其二 / 其三 — top reviewers expect numbered structure. (3) EVIDENCE FOR EACH ISSUE (page/section); vague critique gets dismissed. (4) SUGGEST SOLUTIONS: every issue ends with '笔者建议…' or '或可考虑…' — critique with no solution is mere demolition. (5) BIG-PICTURE VERDICT: close with '瑕不掩瑜，recommend major revision' or similar. (6) HEDGE WHEN UNSURE: '此点似乎 / 或许 / 在某种程度上'. (7) SOFTEN: 不足 / 有待 / 尚需 rather than 错 / 失败 / 不行. (8) CRITIQUE THE WORK, NOT THE AUTHOR: '论证存在不足' beats '作者论证不力'. (9) AVOID NIT-PICKING (typos) — address architecture-level issues. (10) C2-SPECIFIC EXTRAS: cite the specific classical edition (脂本 / 程甲本 / 程乙本) where relevant; use 文白 markers (殆 / 庶几 / 不无 / 兹) 3-5 times; quote a classical phrase (字斟句酌 / 实事求是) for register depth. (11) DISCLOSE AI USE to the editor even for minor drafting — non-disclosure is misconduct if later found. (12) AVOID NICHE JARGON: editors from other sub-areas may read the review; explain key terms — inclusivity is professional.",
     "exercises": [
       {
         "type": "fill-blank",
