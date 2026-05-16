@@ -276,25 +276,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "言之有据",
         "literal": "lời nói có căn cứ (yán zhī yǒu jù)",
         "meaning": "Lời nói có căn cứ — phát biểu được hỗ trợ bởi bằng chứng. Cụm 4 chữ 书面, dùng để khen luận án/giả thuyết có cơ sở. (书面/正式)",
-        "example": "笔者所提出的假设言之有据, 并非凭空推测。"
+        "example": "笔者所提出的假设言之有据, 并非凭空推测。",
+        "literal_en": "speech has grounds (yán zhī yǒu jù)",
+        "meaning_en": "Statements backed by evidence — a 4-character 书面 phrase used to praise a thesis or hypothesis as well-grounded. (written/formal)",
+        "example_en": "The hypothesis I have put forward is well-grounded, not mere conjecture."
       },
       {
         "idiom": "立论严谨",
         "literal": "lập luận nghiêm cẩn (lì lùn yán jǐn)",
         "meaning": "Lập luận nghiêm cẩn — argumentation rigorous. Cụm khen ngợi cao trong giới học thuật. Dùng khi review bài hoặc đánh giá hội đồng. (书面/正式)",
-        "example": "该研究立论严谨, 数据翔实。"
+        "example": "该研究立论严谨, 数据翔实。",
+        "literal_en": "establishes-argument rigorous (lì lùn yán jǐn)",
+        "meaning_en": "Rigorous in argumentation — high praise in academia, used in reviews or committee assessments. (written/formal)",
+        "example_en": "This study is rigorous in its argumentation and rich in data."
       },
       {
         "idiom": "有待商榷",
         "literal": "đáng để cùng thảo luận (yǒu dài shāng què)",
         "meaning": "Đáng cùng thảo luận / vẫn cần bàn — academic euphemism cho 'có vấn đề'. Khi reviewer viết '此结论有待商榷', nghĩa là 'kết luận này có lỗi'. Cực formal. (书面/正式)",
-        "example": "该假设虽有创意, 但其理论基础有待商榷。"
+        "example": "该假设虽有创意, 但其理论基础有待商榷。",
+        "literal_en": "awaits joint deliberation (yǒu dài shāng què)",
+        "meaning_en": "Open to debate — an academic euphemism for 'has a problem'; when a reviewer writes 此结论有待商榷 it means the conclusion is flawed. (written/formal)",
+        "example_en": "Although the hypothesis is creative, its theoretical basis is open to question."
       },
       {
         "idiom": "推陈出新",
         "literal": "đẩy cũ ra cái mới (tuī chén chū xīn)",
         "meaning": "Loại bỏ cũ đưa ra mới — innovate. Dùng để mô tả contribution của một nghiên cứu. (书面/正式)",
-        "example": "本研究在方法论上推陈出新, 突破了传统框架。"
+        "example": "本研究在方法论上推陈出新, 突破了传统框架。",
+        "literal_en": "push out the old, bring forth the new (tuī chén chū xīn)",
+        "meaning_en": "To innovate by superseding the old — used to describe a study's contribution. (written/formal)",
+        "example_en": "This study innovates methodologically, breaking through the traditional framework."
       }
     ],
     "cultural_notes_vi": "Văn hóa học thuật Trung Quốc đại lục có một vài đặc điểm khác Việt Nam:\n\n(1) HIERARCHY THẦY-TRÒ: quan hệ supervisor-student (导师-学生 / 导生关系) gần như cha-con học thuật. Sinh viên xưng '老师 / 教授' chứ KHÔNG bao giờ gọi tên. Email mở đầu bằng '尊敬的X教授'. Sinh viên không tranh luận trực diện với supervisor — bất đồng được biểu đạt qua câu hỏi ('我能不能问一下...').\n\n(2) HEDGING STRONG: học giả Trung Quốc viết hedge nhiều hơn Mỹ/Anh. Câu English 'X causes Y' viết Trung Quốc thành 'X 可能 与 Y 之间 存在 一定 相关性'. Đây không phải thiếu tự tin — là chuẩn epistemic kế thừa từ tư duy Đạo gia/Khổng giáo: không khẳng định tuyệt đối.\n\n(3) FACE & CRITICISM: phê bình một nghiên cứu trong tiếng Trung dùng eufemism nhiều. Reviewer KHÔNG viết 'this study is flawed' mà viết '该研究有待进一步完善'. 'Sai' = 不当 (không thỏa đáng). 'Yếu' = 略显不足 (hơi thiếu). Sinh viên Việt Nam đến Trung Quốc thường thấy phản hồi quá nhẹ — đó là sự thật, đọc lại trong context cultural sẽ thấy criticism.\n\n(4) THESIS DEFENSE (答辩 — dábiàn): tại đại học Trung Quốc, defense kéo dài 30-90 phút, có 3-5 giáo sư hỏi. Câu hỏi thường mạnh, đôi khi mang tính 'đập' (打). Sinh viên không được defensive — phải LẮNG NGHE, nhận hạn chế, đề xuất cải thiện. Câu mở đầu chuẩn: '感谢评委指出, 您的意见很有道理, 笔者将在修订版中...'.\n\n(5) GIA ĐÌNH HỌC THUẬT (学术家庭): supervisor + sinh viên cùng supervisor (师兄/师姐/师弟/师妹) tạo thành 'gia đình' kết nối suốt đời. Network nghề nghiệp cực kỳ giá trị. Tham gia bữa ăn, tiệc supervisor là bắt buộc văn hóa.",
@@ -619,25 +631,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "言之凿凿",
         "literal": "lời nói đinh ninh chắc chắn (yán zhī záo záo)",
         "meaning": "Lời nói chắc chắn, có căn cứ. Dùng để mô tả citation/argument vững chắc. 'Tác giả的论述 言之凿凿, 难以反驳.' (书面/正式)",
-        "example": "该作者言之凿凿, 引证翔实, 令人信服。"
+        "example": "该作者言之凿凿, 引证翔实, 令人信服。",
+        "literal_en": "speech is rock-solid (yán zhī záo záo)",
+        "meaning_en": "Stated with firm certainty and grounds — describes a solid citation or argument. (written/formal)",
+        "example_en": "This author writes with firm assurance, citing the literature meticulously and convincingly."
       },
       {
         "idiom": "旁征博引",
         "literal": "rộng tham khảo nhiều dẫn chứng (páng zhēng bó yǐn)",
         "meaning": "Tham khảo rộng, dẫn chứng nhiều — khen một bài viết có range tài liệu rộng. (书面/正式)",
-        "example": "本章旁征博引, 涵盖了近三十年的相关研究。"
+        "example": "本章旁征博引, 涵盖了近三十年的相关研究。",
+        "literal_en": "widely cite, broadly quote (páng zhēng bó yǐn)",
+        "meaning_en": "To draw on wide-ranging sources — praises a piece for the breadth of its references. (written/formal)",
+        "example_en": "This chapter draws widely on the literature, covering nearly three decades of related research."
       },
       {
         "idiom": "不容置疑",
         "literal": "không cho phép nghi ngờ (bù róng zhì yí)",
         "meaning": "Không thể nghi ngờ — đi với fact đã được xác lập. Dùng cho reference cốt lõi. CHÚ Ý: chỉ dùng cho fact đã established, không phải opinion. (书面/正式)",
-        "example": "深度学习对自然语言处理的革命性影响不容置疑。"
+        "example": "深度学习对自然语言处理的革命性影响不容置疑。",
+        "literal_en": "does not permit doubt (bù róng zhì yí)",
+        "meaning_en": "Beyond doubt — used for an established fact and a core reference; reserve for established fact, never opinion. (written/formal)",
+        "example_en": "The revolutionary impact of deep learning on natural language processing is beyond doubt."
       },
       {
         "idiom": "不容懈怠",
         "literal": "không được phép lơ là (bù róng xiè dài)",
         "meaning": "Không được lơ là, không được sao nhãng. Dùng để nhấn mạnh tầm quan trọng của một quy chuẩn (như citation integrity). (书面/正式)",
-        "example": "学术诚信是研究者的底线, 不容懈怠。"
+        "example": "学术诚信是研究者的底线, 不容懈怠。",
+        "literal_en": "does not permit slackening (bù róng xiè dài)",
+        "meaning_en": "Allows no laxity — emphasizes the importance of a norm such as citation integrity. (written/formal)",
+        "example_en": "Academic integrity is a researcher's bottom line and admits no laxity."
       }
     ],
     "cultural_notes_vi": "Quy chuẩn trích dẫn trong giới học thuật Trung Quốc đại lục có một số khác biệt với Việt Nam và phương Tây:\n\n(1) PLAGIARISM ENFORCEMENT NGHIÊM khắc hơn so với 10 năm trước: từ 2017, các đại học Trung Quốc đại lục triển khai phần mềm 知网 (CNKI) để check duplicate. Tỷ lệ 'duplicate rate' (重复率) >15% bị từ chối answer luận án thạc sĩ; >20% bị tiến sĩ. Sinh viên Việt Nam KHÔNG nên đánh giá thấp việc này.\n\n(2) 转引自 (zhuǎnyǐn zì — cited from) là KHÁI NIỆM bắt buộc nhưng người Việt thường bỏ qua. Khi bạn đọc Smith (2019) trong đó Smith trích Jones (2010), và bạn không đọc Jones gốc, BẮT BUỘC ghi: '...Jones (2010) (转引自 Smith, 2019, p.X)'. Nếu chỉ ghi 'Jones (2010)' = giả vờ đã đọc bản gốc = đạo văn về mặt kỹ thuật.\n\n(3) DUPLICATE RATE CALCULATION: 知网 không chỉ check copy thuần, mà còn paraphrase ngụy trang. Thuật toán n-gram + semantic — nó phát hiện được khi bạn đổi từng từ một mà giữ structure. Kinh nghiệm thực tế: nếu duplicate rate quá cao, viết lại HOÀN TOÀN, không 'sửa từ' — algorithm bắt được.\n\n(4) GHOST AUTHORSHIP / 代写 (dài xiě — ghostwriting): BẤT HỢP PHÁP ở Trung Quốc, từ 2018 chính thức bị ban hành luật cấm. Sinh viên không được nhờ người khác viết, ngay cả native speaker để 'làm cho đẹp'. Editing được phép — chỉ proofreading + grammar fix. Re-write đoạn = vi phạm.\n\n(5) AI WRITING (AI写作): chính sách năm 2024-2025 đang định hình. Đa số đại học Trung Quốc top yêu cầu khai báo AI usage. ChatGPT để hỗ trợ idea OK, nhưng generate text sẽ bị reject. Thanh toán: an toàn nhất là không dùng AI cho text trong luận án.\n\n(6) FAIR USE (合理使用) trong tiếng Trung CHẶT hơn so với English fair use. Trích dẫn không quá 1/3 paragraph hoặc 1/4 chapter. Nếu cần dài hơn = phải xin permission tác giả.\n\n(7) CO-AUTHORSHIP CULTURE: bài báo Trung Quốc thường có 5-8 co-authors. Author order cực kỳ chính trị — đầu list là contribution lớn nhất, cuối list thường là supervisor. Sinh viên Việt collaborate phải bàn order trước, viết MOU nếu nghiêm túc.\n\n(8) RETRACTION CULTURE (撤稿): Trung Quốc có rate retraction cao nhất thế giới (Springer Nature 2017 — 107 papers Trung Quốc bị retract cùng lúc). Vì vậy citation integrity bây giờ được đặc biệt nhấn mạnh.",
@@ -955,25 +979,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "据理力争",
         "literal": "căn cứ lẽ phải nỗ lực tranh đấu (jù lǐ lì zhēng)",
         "meaning": "Căn cứ vào lẽ phải mà tranh luận hết sức — kiên trì lập luận khi mình đúng. Cụm tích cực, dùng để khen người tranh luận có nguyên tắc, không nhường khi không đáng. (书面/正式)",
-        "example": "面对评审的质疑, 他据理力争, 最终说服了委员会。"
+        "example": "面对评审的质疑, 他据理力争, 最终说服了委员会。",
+        "literal_en": "argue forcefully on grounds of reason (jù lǐ lì zhēng)",
+        "meaning_en": "To argue one's case firmly on principle — a positive phrase praising principled, non-yielding-when-right argument. (written/formal)",
+        "example_en": "Faced with the reviewers' challenge, he argued his case firmly on the merits and ultimately convinced the committee."
       },
       {
         "idiom": "众说纷纭",
         "literal": "nhiều thuyết bay tản (zhòng shuō fēn yún)",
         "meaning": "Nhiều ý kiến trái chiều — academic standard cụm để mở đầu một review về vấn đề tranh cãi. (书面/正式)",
-        "example": "关于此现象的成因, 学术界至今众说纷纭。"
+        "example": "关于此现象的成因, 学术界至今众说纷纭。",
+        "literal_en": "many theories, scattered like clouds (zhòng shuō fēn yún)",
+        "meaning_en": "Many conflicting views — the standard academic phrase to open a review of a contested issue. (written/formal)",
+        "example_en": "As to the cause of this phenomenon, the academic community remains divided to this day."
       },
       {
         "idiom": "一概而论",
         "literal": "vơ một mà luận (yī gài ér lùn)",
         "meaning": "Vơ đũa cả nắm / khái quát vô lý. Dùng để cảnh báo: 'không thể一概而论' = 'không thể khái quát một cách đơn giản'. (书面/正式)",
-        "example": "不同语言的语法结构差异巨大, 不可一概而论。"
+        "example": "不同语言的语法结构差异巨大, 不可一概而论。",
+        "literal_en": "lump all under one judgement (yī gài ér lùn)",
+        "meaning_en": "To over-generalize — used as a warning: 不可一概而论 = 'cannot be generalized so simply'. (written/formal)",
+        "example_en": "Grammatical structures differ enormously across languages and cannot be lumped together under one generalization."
       },
       {
         "idiom": "无可辩驳",
         "literal": "không thể nào bác bỏ (wú kě biàn bó)",
         "meaning": "Không thể bác bỏ — dùng cho fact đã được chứng minh chắc chắn. Cẩn thận: chỉ dùng khi BẰNG CHỨNG thật sự overwhelming. (书面/正式)",
-        "example": "近十年来气候变化与人类活动之关联, 在数据上已无可辩驳。"
+        "example": "近十年来气候变化与人类活动之关联, 在数据上已无可辩驳。",
+        "literal_en": "nothing can refute it (wú kě biàn bó)",
+        "meaning_en": "Irrefutable — for a firmly proven fact; use only when the evidence is genuinely overwhelming. (written/formal)",
+        "example_en": "Over the past decade the link between climate change and human activity has become, in the data, irrefutable."
       }
     ],
     "cultural_notes_vi": "Văn hóa lập luận học thuật ở Trung Quốc đại lục có một số đặc điểm khác Việt Nam và phương Tây:\n\n(1) HARMONY VS CONFRONTATION: Trung Quốc có truyền thống Khổng giáo coi trọng 'hài hòa' (和谐). Phản biện trực diện trong public bị coi là 'không lễ phép' (失礼). Vì vậy phản biện học thuật được wrap nhiều lớp khiêm nhường: '愚以为', '不揣冒昧', '尚祈指正'.\n\n(2) HIERARCHY ẢNH HƯỞNG: phản biện một giáo sư cao tuổi/cao cấp khác phản biện một sinh viên ngang bằng. Với senior, BẮT BUỘC: (a) đặt câu hỏi thay vì khẳng định, (b) dùng cụm 'humble first person' (笔者愚以为, 学生愚见), (c) thừa nhận expertise của họ trước khi disagree.\n\n(3) FACE-SAVING TRONG CRITIQUE: nếu phải critique mạnh, KHÔNG critique trực tiếp tác giả mà critique luận điểm: 'X观点存在问题' (quan điểm X có vấn đề) thay vì '您的观点错了'. Subtle nhưng quan trọng. Subject của critique = ý tưởng, không phải con người.\n\n(4) DEBATE STYLE 答辩 (defending thesis): kéo dài 30-90 phút, có 3-5 giáo sư hỏi. Câu hỏi mạnh, có khi sharp. Sinh viên KHÔNG được defensive. Câu chuẩn để mở đầu trả lời: '感谢老师指出, 这个问题很有意思. 笔者的回答是...' (Cảm ơn thầy đã chỉ ra, câu hỏi này rất thú vị. Câu trả lời của tác giả là...).\n\n(5) TRUYỀN THỐNG 辩 (biàn — debate): Trung Quốc cổ đại có truyền thống 辩 từ thời Mạnh Tử, Trang Tử. Đến thời Tống có 朱熹辩论. Lập luận học thuật là phẩm chất tốt — không phải confrontation nghĩa xấu. Phân biệt: 辩 (debate có nguyên tắc) ≠ 吵 (cãi vã).\n\n(6) PEER REVIEW VĂN HÓA: reviewer Trung Quốc thường viết phản biện ngắn hơn reviewer Anh-Mỹ. Lý do: (a) tránh điểm soft, (b) tránh face issues. Sinh viên Việt khi nộp paper Trung Quốc cần đọc reviews carefully — short comment có thể chứa critique mạnh.\n\n(7) PUBLIC vs PRIVATE CRITIQUE: critique mạnh thường được giới hạn trong tin nhắn riêng / email. Public seminar = soft critique + private follow-up = real critique. Đây là sự khác biệt lớn so với phương Tây nơi public critique được coi là chuẩn mực.\n\n(8) SCHOLAR DUEL HISTORICAL: ở thế kỷ 20, có những 'cuộc đấu' học thuật nổi tiếng giữa các trí thức (như 鲁迅 vs 梁实秋). Nhưng nay những cuộc đấu này thường được coi là không lành mạnh. Phong cách hiện đại: lập luận chắc, register nghiêm túc, không attack cá nhân.",
@@ -1298,25 +1334,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "不无道理",
         "literal": "không phải không có lý (bù wú dào lǐ)",
         "meaning": "Không phải không có lý — double negative formal hedge. Diplomat way of saying 'has merit' khi bạn vừa muốn công nhận một phần vừa muốn giữ ngầm reservation. (书面/正式)",
-        "example": "您的观点不无道理, 然笔者尚有几点保留意见。"
+        "example": "您的观点不无道理, 然笔者尚有几点保留意见。",
+        "literal_en": "not without reason (bù wú dào lǐ)",
+        "meaning_en": "Has some merit — a double-negative formal hedge, the diplomatic way to grant partial validity while keeping a tacit reservation. (written/formal)",
+        "example_en": "Your view is not without merit; the author, however, still has a few reservations."
       },
       {
         "idiom": "尚需斟酌",
         "literal": "vẫn cần cân nhắc (shàng xū zhēn zhuó)",
         "meaning": "Vẫn cần cân nhắc — formal way to say 'this needs more thought / not finalized'. Dùng trong review feedback. (书面/正式)",
-        "example": "结论部分的措辞尚需斟酌, 建议加入更多hedge。"
+        "example": "结论部分的措辞尚需斟酌, 建议加入更多hedge。",
+        "literal_en": "still needs weighing (shàng xū zhēn zhuó)",
+        "meaning_en": "Still needs careful consideration — a formal way to say something is not finalized; used in review feedback. (written/formal)",
+        "example_en": "The wording of the conclusion still needs careful consideration; adding more hedging is advisable."
       },
       {
         "idiom": "莫衷一是",
         "literal": "không biết theo cái nào là đúng (mò zhōng yī shì)",
         "meaning": "Không biết theo ai là đúng — academic phrase cho 'disagreement with no consensus'. Dùng để mô tả tình trạng tranh luận chưa kết. (书面/正式)",
-        "example": "对于此问题, 学术界至今莫衷一是。"
+        "example": "对于此问题, 学术界至今莫衷一是。",
+        "literal_en": "cannot settle on one as right (mò zhōng yī shì)",
+        "meaning_en": "No consensus reached — the academic phrase for an unresolved disagreement. (written/formal)",
+        "example_en": "On this question the academic community has reached no consensus to this day."
       },
       {
         "idiom": "言不轻发",
         "literal": "lời không nhẹ phát (yán bù qīng fā)",
         "meaning": "Không phát ngôn tùy tiện — academic virtue: weighing words carefully before claiming. Khen reviewer/scholar có discipline. (书面/正式)",
-        "example": "他治学严谨, 言不轻发, 每一论断皆有据可查。"
+        "example": "他治学严谨, 言不轻发, 每一论断皆有据可查。",
+        "literal_en": "does not utter words lightly (yán bù qīng fā)",
+        "meaning_en": "Never speaks rashly — an academic virtue: weighing words carefully before claiming; praises a disciplined scholar. (written/formal)",
+        "example_en": "He is rigorous in scholarship and never speaks rashly; every assertion he makes can be verified."
       }
     ],
     "cultural_notes_vi": "Văn hóa hedging trong học thuật Trung Quốc đại lục có một số đặc điểm:\n\n(1) TRADITION: hedging trong văn ngôn cổ đại đã có ('恐 / 似 / 庶几'). Tư tưởng Đạo gia coi 'không khẳng định tuyệt đối' là một virtue. Câu mở đầu của Đạo Đức Kinh '道可道, 非常道' chính là một hedge văn hoá: 'cái có thể nói được không phải cái thường tại'. Vì vậy hedging không phải foreign import — là native Chinese intellectual style.\n\n(2) DEFERENCE TO AUTHORITY: học giả Trung Quốc thường ngại challenge quan điểm của 大家 (great masters). Nếu cần phản biện một published authority, hedging cực mạnh: '愚以为...不揣冒昧地提出...或可商榷' (Kẻ ngu này cho rằng... không tự lượng đề xuất... có thể bàn luận).\n\n(3) MODERN OVERSWING: từ 2000-2010, một thế hệ scholars Trung Quốc trẻ chịu ảnh hưởng phương Tây bắt đầu viết 'confident' claims kiểu Mỹ ('我们的研究证明X'). Năm 2015+, swing back: hedging mạnh trở lại sau khi nhiều papers bị retract vì over-claim. Ngày nay viết quá confident = bị reviewer nghi không kinh nghiệm.\n\n(4) FACE & HEDGING: hedge cũng là face-saving cho future-self. Nếu bạn viết 'A 必然 提升 B' và 5 năm sau replication failure, bạn lose face. Nếu viết 'A 似乎 提升 B, 在 X 条件下', failure không hurt face — vì bạn đã hedge.\n\n(5) FOREIGN PAPERS xếp loại: paper Trung Quốc top tiers đọc Anh-Mỹ papers một cách critical. Họ note: paper Mỹ thường over-confident, paper Đức thường over-conservative, paper Nhật thường lỗi grammar nhưng claims chính xác. Học giả Trung Quốc cố gắng balance: structure Anh-Mỹ + hedging European + precision Nhật.\n\n(6) TRANSLATION TRAP: dịch thẳng English 'X causes Y' → tiếng Trung 'X 造成 Y' = quá mạnh. Đúng: 'X 与 Y 之间 存在 关联 / 在 某种 条件 下 影响 Y'. Sinh viên Việt thường mắc lỗi translate 1:1.\n\n(7) AI-ERA HEDGING: từ 2022 (ChatGPT release), giới học thuật Trung Quốc đặc biệt thận trọng với AI claims. 'AI 替代 X' / 'AI 颠覆 Y' bị flag automatically là buzz-word. Sinh viên viết 'AI có thể hỗ trợ X trong điều kiện Y' = tỉnh táo + được respect.\n\n(8) GENDER + AGE: sinh viên nữ trẻ thường được suggest hedge mạnh hơn (cultural pressure đối với 'không tự cao'). Sinh viên nam senior có thể hedge ít hơn mà vẫn được accept. Khi dạy hedging, các giáo sư nữ thường nhấn mạnh balance: enough hedge for safety, không quá nhiều để mất authority.",
@@ -1634,25 +1682,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "顾名思义",
         "literal": "nhìn tên nghĩ ý nghĩa (gù míng sī yì)",
         "meaning": "Đúng như tên gọi — dùng để giới thiệu một term mà nghĩa khá hiển nhiên từ tên. CHỈ dùng trước SHORT GLOSS, không phải full formal definition. (书面/正式)",
-        "example": "所谓'迁移学习', 顾名思义, 即将一个领域的知识迁移到另一领域。"
+        "example": "所谓'迁移学习', 顾名思义, 即将一个领域的知识迁移到另一领域。",
+        "literal_en": "consider the name, infer the meaning (gù míng sī yì)",
+        "meaning_en": "As the name implies — introduces a term whose sense is fairly obvious from its name; use only before a SHORT gloss, never a full formal definition. (written/formal)",
+        "example_en": "So-called 'transfer learning,' as the name implies, transfers knowledge from one domain to another."
       },
       {
         "idiom": "不言自明",
         "literal": "không nói tự rõ (bù yán zì míng)",
         "meaning": "Không cần nói cũng rõ — self-evident. CẨN THẬN: nếu một term thực sự self-evident, không cần định nghĩa. Nếu reviewer hỏi, nghĩa là không self-evident. (书面/正式)",
-        "example": "概念清晰是学术论证之前提, 此点不言自明。"
+        "example": "概念清晰是学术论证之前提, 此点不言自明。",
+        "literal_en": "needs no words to be clear (bù yán zì míng)",
+        "meaning_en": "Self-evident — caveat: if a term truly is self-evident it needs no definition; if a reviewer asks, it was not self-evident. (written/formal)",
+        "example_en": "Conceptual clarity is a prerequisite of academic argument; this point is self-evident."
       },
       {
         "idiom": "鞭辟入里",
         "literal": "đào sâu thấu đáo (biān pì rù lǐ)",
         "meaning": "Phân tích thấu đáo, đi đến tận cốt lõi. Khen một định nghĩa hoặc analysis đào sâu được core mechanism. (书面/正式)",
-        "example": "作者对'涌现能力'一概念的界定鞭辟入里, 令人受益。"
+        "example": "作者对'涌现能力'一概念的界定鞭辟入里, 令人受益。",
+        "literal_en": "lash into the inner layer (biān pì rù lǐ)",
+        "meaning_en": "Penetrating to the core — praises a definition or analysis that reaches the underlying mechanism. (written/formal)",
+        "example_en": "The author's definition of the concept of 'emergent ability' is incisive and illuminating."
       },
       {
         "idiom": "一言以蔽之",
         "literal": "một lời che hết (yī yán yǐ bì zhī)",
         "meaning": "Trong một lời tóm gọn — academic phrase để give a concise summary definition. Khổng Tử dùng. (书面/正式)",
-        "example": "一言以蔽之, 注意力机制即一种动态加权之表示学习方法。"
+        "example": "一言以蔽之, 注意力机制即一种动态加权之表示学习方法。",
+        "literal_en": "cover it in one word (yī yán yǐ bì zhī)",
+        "meaning_en": "To put it in a nutshell — an academic phrase for a concise summary definition (used by Confucius). (written/formal)",
+        "example_en": "In a word, the attention mechanism is a representation-learning method based on dynamic weighting."
       }
     ],
     "cultural_notes_vi": "Văn hóa định nghĩa thuật ngữ ở Trung Quốc đại lục có một số đặc điểm:\n\n(1) TRADITION 名实之辨 (DEBATE OF NAMES AND REALITIES): Trung Quốc cổ đại có truyền thống triết học từ thời Khổng Tử (正名 — chính danh) đến Mặc Tử và Tuân Tử về tầm quan trọng của định nghĩa chính xác. 'Danh không chính thì lời không thuận, lời không thuận thì việc không thành' (名不正则言不顺, 言不顺则事不成 — Khổng Tử). Vì vậy student Trung Quốc tradition coi định nghĩa thuật ngữ là DUTY MORAL của scholar, không chỉ là technical requirement.\n\n(2) TRANSLATION OF FOREIGN TERMS: Trung Quốc đối mặt câu hỏi 'phiên dịch hay sáng tạo từ mới' khi import western technical terms. Có 4 strategies: (a) phonetic transliteration (Transformer → 特兰斯福莫 — gần như không dùng), (b) semantic translation (Transformer → 变换器 — dùng cho hardware), (c) calque (machine learning → 机器学习), (d) keep English. Strategy (c) thắng đa số ở ML — sinh viên thấy '机器学习', '深度学习', '神经网络' thay vì English.\n\n(3) AI-ERA TERMINOLOGY EXPLOSION: từ 2017+, AI/ML literature Trung Quốc bùng nổ. Hiệp hội terminology Trung Quốc (全国科学技术名词审定委员会) chưa kịp standardize. Vì vậy cùng một term có 2-3 cách dịch trong các papers khác nhau. Sinh viên Việt cần nắm: 'attention mechanism' = 注意力机制 (chuẩn) / 关注机制 (rare). 'Transformer' = thường giữ English / 变换器. 'Embedding' = 嵌入 (chuẩn) / 词嵌入 (cho word embedding).\n\n(4) ACADEMIC GENRE OF 概念辨析 (CONCEPTUAL CLARIFICATION): Trung Quốc có sub-genre học thuật riêng để 'làm rõ một concept'. Bài viết kiểu '论X与Y之辨' (about the distinction between X and Y) là staple của journals nhân văn. ML papers gần đây cũng có genre tương tự: 'Reasoning vs Pattern Matching: A Conceptual Clarification'.\n\n(5) AVOIDED OVERLY FOREIGN-LOOKING DEFINITIONS: students Trung Quốc tradition không thích định nghĩa quá phương Tây (ví dụ Wittgenstein style 'meaning is use'). Họ thích định nghĩa kiểu Aristotelian (genus + differentia) — clear, hierarchical, applicable.\n\n(6) DEFINITION DENSITY: papers Trung Quốc tier-1 thường có 2-5 thuật ngữ được định nghĩa rõ trong 'Term Definitions' subsection (chiếm 5-10% paper). Papers Trung Quốc tier thấp hơn ít định nghĩa terms — đó là dấu hiệu của 'không trưởng thành'. Sinh viên Việt: định nghĩa nhiều hơn = signal mature.\n\n(7) BACK-TRANSLATION TEST: cách verify định nghĩa của bạn rõ ràng: dịch ngược định nghĩa Trung Quốc sang English. Nếu English mơ hồ, định nghĩa Trung Quốc cũng mơ hồ. Iterate cho đến khi back-translation clear.\n\n(8) ETHICS OF TERMINOLOGY: dùng term mà không define = một số journals coi là minor academic misconduct (lừa người đọc về việc bạn đã làm rõ). Đặc biệt với terms có nhiều nghĩa.",
@@ -1970,25 +2030,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "各有千秋",
         "literal": "mỗi cái có ngàn thu (gè yǒu qiān qiū)",
         "meaning": "Mỗi bên đều có điểm mạnh riêng — academic phrase chuẩn để mở đầu so sánh không kết luận một phía. (书面/正式)",
-        "example": "定量与定性方法各有千秋, 适用场景不同。"
+        "example": "定量与定性方法各有千秋, 适用场景不同。",
+        "literal_en": "each has its thousand autumns (gè yǒu qiān qiū)",
+        "meaning_en": "Each has its own strengths — the standard academic phrase for opening a comparison without taking a side. (written/formal)",
+        "example_en": "Quantitative and qualitative methods each have their own strengths, suited to different scenarios."
       },
       {
         "idiom": "相辅相成",
         "literal": "hỗ trợ nhau và tạo thành nhau (xiāng fǔ xiāng chéng)",
         "meaning": "Bổ sung cho nhau, mỗi bên giúp bên kia hoàn thiện — academic justification cho mixed methods. (书面/正式)",
-        "example": "理论与实证相辅相成, 缺一不可。"
+        "example": "理论与实证相辅相成, 缺一不可。",
+        "literal_en": "mutually assist, mutually complete (xiāng fǔ xiāng chéng)",
+        "meaning_en": "Complement each other, each completing the other — the academic justification for mixed methods. (written/formal)",
+        "example_en": "Theory and empirical evidence complement each other; neither can be dispensed with."
       },
       {
         "idiom": "殊途同归",
         "literal": "đường khác nhau cùng đến (shū tú tóng guī)",
         "meaning": "Đường lối khác nhau cùng đi đến đích — methodology pluralism khi triangulation. Khen tu khi different methods reach same conclusion. (书面/正式)",
-        "example": "定量分析与定性访谈在此点上殊途同归, 结论一致, 互为印证。"
+        "example": "定量分析与定性访谈在此点上殊途同归, 结论一致, 互为印证。",
+        "literal_en": "different roads, same destination (shū tú tóng guī)",
+        "meaning_en": "Different paths reaching the same goal — methodological pluralism in triangulation; praises different methods reaching the same conclusion. (written/formal)",
+        "example_en": "On this point quantitative analysis and qualitative interviews converge by different routes — consistent in conclusion and mutually corroborating."
       },
       {
         "idiom": "大相径庭",
         "literal": "khác nhau như đường lớn và sân (dà xiāng jìng tíng)",
         "meaning": "Vô cùng khác biệt — dùng khi hai methods produce DIFFERENT results, signaling cần investigate further. (书面/正式)",
-        "example": "两种方法所得结论大相径庭, 提示其测量构念实非同物。"
+        "example": "两种方法所得结论大相径庭, 提示其测量构念实非同物。",
+        "literal_en": "as far apart as a road and a courtyard (dà xiāng jìng tíng)",
+        "meaning_en": "Vastly different — used when two methods produce divergent results, signalling a need for further investigation. (written/formal)",
+        "example_en": "The conclusions from the two methods diverge vastly, suggesting their measured constructs are not in fact the same thing."
       }
     ],
     "cultural_notes_vi": "Văn hóa method choice trong nghiên cứu Trung Quốc đại lục có một số đặc điểm:\n\n(1) HISTORICAL BIAS TOWARDS QUANTITATIVE: từ 1980s-2000s, đại học Trung Quốc đại lục copy mô hình Mỹ-Anh, ưu tiên quantitative. Sociology, education, psychology đều push quant. Qualitative bị coi 'soft', 'không khoa học'. Từ 2010+, qualitative bắt đầu được công nhận, đặc biệt qua các trường top ở Bắc Kinh, Thượng Hải và Quảng Châu.\n\n(2) STATISTICS WORSHIP: nhiều papers Trung Quốc tier-2 / tier-3 dùng statistics excessive nhưng questionable. Common errors: p-hacking, multiple testing without correction, overfitting, sample size issues. Reviewer top-tier journals bây giờ cảnh giác. Sinh viên Việt: dùng appropriate statistics > impressive looking statistics.\n\n(3) QUALITATIVE METHODOLOGY MATURITY: qualitative methodology infrastructure ở Trung Quốc đại lục vẫn đang xây. Software như NVivo / Atlas.ti / MAXQDA chưa phổ biến — hầu hết qualitative researcher còn coding manual. Sinh viên Việt dùng qualitative tools = competitive advantage.\n\n(4) MIXED METHODS POPULARITY: từ 2015+, mixed methods rất hot trong giáo dục, public health, software engineering ở Trung Quốc. Lý do: cho phép paper bao quát hơn, satisfy reviewer từ multiple traditions, fit complex social phenomena. Đa số grants 国家自然科学基金 (NSFC) khuyến khích mixed methods cho social science topics.\n\n(5) COMPUTATIONAL METHODS RISE: với big data + AI, computational social science đang nổi ở Trung Quốc. 北京大学, 清华, 复旦 đều có computational social science centers. Sinh viên trẻ Trung Quốc nhiều người làm web scraping + NLP analysis của social media data.\n\n(6) METHODOLOGY DEBATES: trong giới triết học khoa học Trung Quốc, có debate giữa positivism và interpretivism (实证主义 vs 解释主义). Câu trả lời mature: depends on research question, not philosophical preference.\n\n(7) INTERNATIONAL JOURNAL REQUIREMENTS: top journals quốc tế (especially in software engineering — TSE, ICSE, FSE) bây giờ require detailed methodology justification. Paper với một sentence như 'we conducted a survey' bị reject ngay. Sinh viên Việt cần biết: methodology section phải DENSE.\n\n(8) ETHICS CONCERN: bất kể method, IRB approval (伦理审查) hiện được đại học Trung Quốc top-tier require. Chỉ vài năm trước còn lax. Sinh viên Việt: budget thời gian cho ethics review (2-4 weeks), đặc biệt nếu interviews, surveys với human subjects.",
@@ -2313,25 +2385,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "瑕不掩瑜",
         "literal": "lỗi không che ưu điểm (xiá bù yǎn yú)",
         "meaning": "Khiếm khuyết không che lấp ưu điểm — phrase quan trọng để soften critique. Dùng để chỉ paper có flaws nhưng overall vẫn worthy. (书面/正式)",
-        "example": "该研究虽存在若干局限, 然瑕不掩瑜, 仍具相当贡献。"
+        "example": "该研究虽存在若干局限, 然瑕不掩瑜, 仍具相当贡献。",
+        "literal_en": "the flaw does not hide the jade (xiá bù yǎn yú)",
+        "meaning_en": "Flaws don't outweigh the merits — a key phrase for softening critique: the paper has flaws but remains worthy overall. (written/formal)",
+        "example_en": "Although this study has several limitations, its flaws do not outweigh its merits; it still makes a considerable contribution."
       },
       {
         "idiom": "美中不足",
         "literal": "đẹp trong không đủ (měi zhōng bù zú)",
         "meaning": "Cái đẹp vẫn còn thiếu sót — minor critique phrase. Mostly positive với một small concern. (书面/正式)",
-        "example": "该paper论述详尽, 美中不足者, 实验样本规模略小。"
+        "example": "该paper论述详尽, 美中不足者, 实验样本规模略小。",
+        "literal_en": "a flaw amid the beauty (měi zhōng bù zú)",
+        "meaning_en": "A blemish in something otherwise fine — a minor-critique phrase, mostly positive with one small concern. (written/formal)",
+        "example_en": "This paper's exposition is thorough; the one blemish is that the experimental sample size is somewhat small."
       },
       {
         "idiom": "见仁见智",
         "literal": "người thấy nhân, người thấy trí (jiàn rén jiàn zhì)",
         "meaning": "Mỗi người mỗi cách nhìn — diplomatic phrase cho legitimate disagreement. Khi reviewer không đồng ý nhưng acknowledge có nhiều quan điểm hợp lý. (书面/正式)",
-        "example": "对于该方法的解释机制, 学界见仁见智。"
+        "example": "对于该方法的解释机制, 学界见仁见智。",
+        "literal_en": "the benevolent see benevolence, the wise see wisdom (jiàn rén jiàn zhì)",
+        "meaning_en": "A matter of differing legitimate opinion — diplomatic phrase for disagreement where multiple views are reasonable. (written/formal)",
+        "example_en": "On the explanatory mechanism of this method, opinions in the field legitimately differ."
       },
       {
         "idiom": "一叶障目",
         "literal": "một lá che mắt (yī yè zhàng mù)",
         "meaning": "Một chiếc lá che mắt — chỉ tập trung vào một chi tiết mà bỏ qua tổng thể. Dùng để chỉ ra reviewer focus quá hẹp. (书面/正式)",
-        "example": "评审若仅纠结于个别数据点, 难免一叶障目, 失之偏颇。"
+        "example": "评审若仅纠结于个别数据点, 难免一叶障目, 失之偏颇。",
+        "literal_en": "a single leaf blocks the eye (yī yè zhàng mù)",
+        "meaning_en": "Fixating on one detail and missing the whole — used to point out an overly narrow reviewer focus. (written/formal)",
+        "example_en": "If a reviewer fixates only on individual data points, they will inevitably miss the forest for a leaf and fall into bias."
       }
     ],
     "cultural_notes_vi": "Văn hóa peer review trong giới học thuật Trung Quốc đại lục có một số đặc điểm:\n\n(1) HỆ THỐNG REVIEW PHẦN LỚN BLIND nhưng không double-blind: Trung Quốc tier-1 journals đa số dùng single-blind (reviewer biết author, author không biết reviewer). Một số top journals (như 计算机学报) dùng double-blind. Hệ quả: power asymmetry. Senior authors có lợi.\n\n(2) FACE-PRESERVING REVIEW: phản biện Trung Quốc thường gentler bề ngoài so với phương Tây. '此点尚需斟酌' (point needs deliberation) thực ra nghĩa 'wrong'. Sinh viên Việt phải đọc subtle: phrase nhẹ trên giấy có thể nghĩa heavy.\n\n(3) GUANXI INFLUENCE: trong vài lĩnh vực ở Trung Quốc, có hiện tượng 'review network' giữa các labs cùng trường phái. Reviewer thường mềm với papers từ same lab / same supervisor's network. Top journals đang đẩy mạnh blinding để giảm hiện tượng này.\n\n(4) RETRACTION CULTURE: Trung Quốc có rate retraction cao nhất thế giới (so với US, EU). Lý do: pressure publish, P-hacking, ghost authorship. Vì vậy review hiện nay được nhấn mạnh hơn nhiều so với 10 năm trước.\n\n(5) SPECIAL ROLE OF '通讯作者' (corresponding author): trong reviews ở Trung Quốc, corresponding author thường là supervisor (PI). Sinh viên là first author nhưng PI takes responsibility cho review responses. Hệ quả: sinh viên Việt collaborate phải clear với PI trước về division of review labor.\n\n(6) AI-ASSISTED REVIEW: từ 2023+, một số reviewers dùng AI để help draft reviews. Một số journals đã ban (rejecting LLM-drafted reviews); khác lại allow as long as disclosed. Sinh viên Việt review papers should disclose nếu dùng AI.\n\n(7) LANGUAGE OF REVIEW: tier-1 journals Trung Quốc thường receive English reviews; tier-2/3 nhận cả English và Chinese. Sinh viên Việt nên review bằng English trừ khi journal explicitly require Chinese.\n\n(8) RESPONSE-TO-REVIEWER (回复审稿人): rebuttal letter ở Trung Quốc thường rất polite. Format: '感谢审稿人指出, 该意见非常宝贵 / 我们已按建议修改 / 详见正文p.X'. Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(9) REVIEWING GIÚP CAREER: review cho top journals = bonus cho academic CV ở Trung Quốc. Nếu được ACL / NeurIPS / ICML mời review, accept ngay — đây là invitation đáng giá.",
@@ -2649,25 +2733,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "抛砖引玉",
         "literal": "ném gạch dẫn ngọc (pāo zhuān yǐn yù)",
         "meaning": "Ném gạch để hấp dẫn ngọc — đóng góp khiêm tốn của mình mong dẫn ra suy nghĩ giá trị từ người khác. Phrase mở đầu / kết thúc presentation cực formal academic. (书面/khiêm)",
-        "example": "笔者今日所言, 不过抛砖引玉, 望诸位多加指教。"
+        "example": "笔者今日所言, 不过抛砖引玉, 望诸位多加指教。",
+        "literal_en": "throw a brick to draw jade (pāo zhuān yǐn yù)",
+        "meaning_en": "Offering one's modest contribution to draw out valuable insight from others — a very formal opening/closing phrase for a presentation. (written/humble)",
+        "example_en": "What I have said today is but a brick thrown to draw out jade; I hope you will all offer your guidance."
       },
       {
         "idiom": "不吝赐教",
         "literal": "không tiếc cho dạy bảo (bù lìn cì jiào)",
         "meaning": "Không tiếc dạy bảo — cụm humble thỉnh giáo cuối Q&A. Tradition Khổng giáo. (书面/khiêm)",
-        "example": "笔者拙文若有不足之处, 望诸位评委不吝赐教。"
+        "example": "笔者拙文若有不足之处, 望诸位评委不吝赐教。",
+        "literal_en": "do not begrudge bestowing instruction (bù lìn cì jiào)",
+        "meaning_en": "Please share your guidance freely — a humble phrase to close a Q&A, of Confucian tradition. (written/humble)",
+        "example_en": "Should my humble paper have shortcomings, I hope the committee will not begrudge their instruction."
       },
       {
         "idiom": "不揣冒昧",
         "literal": "không tự lượng cái mạo muội (bù chuǎi mào mèi)",
         "meaning": "Không tự lượng sức mà mạo muội — phrase mở đầu trước khi đặt một câu hỏi bold / hoặc challenge senior. (书面/khiêm)",
-        "example": "学生不揣冒昧, 想请教教授一个问题..."
+        "example": "学生不揣冒昧, 想请教教授一个问题...",
+        "literal_en": "not measuring my own presumption (bù chuǎi mào mèi)",
+        "meaning_en": "Begging pardon for my presumption — a phrase prefacing a bold question or a challenge to a senior. (written/humble)",
+        "example_en": "At the risk of presumption, this student would like to ask the professor a question…"
       },
       {
         "idiom": "略陈管见",
         "literal": "trình bày sơ lược ý kiến hẹp hòi (lüè chén guǎn jiàn)",
         "meaning": "Trình bày sơ lược ý kiến hạn hẹp — humble cách diễn đạt 'I'll share my view' trước peers/seniors. (书面/khiêm)",
-        "example": "笔者于此略陈管见, 不当之处, 敬请指正。"
+        "example": "笔者于此略陈管见, 不当之处, 敬请指正。",
+        "literal_en": "briefly set out my narrow view (through-a-tube view) (lüè chén guǎn jiàn)",
+        "meaning_en": "A humble way to say 'I'll share my limited view' before peers or seniors. (written/humble)",
+        "example_en": "Here the author briefly sets out a narrow view; where it is amiss, corrections are respectfully invited."
       }
     ],
     "cultural_notes_vi": "Văn hóa Q&A tại hội nghị/defense Trung Quốc đại lục có nhiều điểm khác Việt Nam và phương Tây:\n\n(1) HUMBLE-FIRST CONVENTION: ngay cả khi bạn là expert, register opening phải humble. Câu '我是这个领域的专家, 让我告诉你...' = career-ending. Phải là '笔者愚以为 / 学生愚见 / 不揣冒昧地说'. Ironically, càng humble = càng được respect.\n\n(2) TIME PRESSURE: defense Trung Quốc thường strict 60-90 phút total. Q&A khoảng 30-45 phút. Mỗi câu hỏi expect 2-4 phút response. Nếu trả lời quá ngắn = không đủ tôn trọng. Nếu quá dài = sai etiquette về time.\n\n(3) HIERARCHY MATTERS: cách trả lời thay đổi based trên rank của người hỏi. Trả lời tenured professor: tăng humble + extended thanks. Trả lời peer: bình thường formal. Trả lời junior: vẫn polite nhưng có thể direct hơn.\n\n(4) FACE-PRESERVING DURING ATTACK: nếu evaluator hostile (đôi khi xảy ra ở Trung Quốc), KHÔNG fight back trực tiếp. Phong cách: redirect to substance, hedge own claim, propose follow-up. Direct combat = lose face cho cả 2.\n\n(5) ENGLISH MIXING ALLOWED: Trung Quốc đại lục Q&A cho phép mix English technical terms (như 'AUC', 'p-value', 'Transformer') vì nhiều terms chưa có established Chinese translation. Sinh viên Việt có lợi: dùng English terms khi cần.\n\n(6) PRESENTATIONS DOUBLE WAY: nhiều conferences Trung Quốc ngày nay có cả English-language sessions và Chinese-language sessions. Tier-1 international conferences (CCL, CSAI) là English. Tier-2 domestic (中文信息学报) là Chinese. Sinh viên Việt cần biết tone của venue.\n\n(7) POST-Q&A NETWORKING: sau Q&A, evaluator/audience có thể đến tiếp tục dialogue 1-on-1. Đây là moment quan trọng — junior nên chủ động tìm senior reviewer, '感谢您今天的指点, 笔者愿继续向您请教'. Networking opportunity.\n\n(8) FAILURE TO ANSWER: nếu bạn really không biết answer, phrase chuẩn: '这是笔者尚未深入考虑的角度, 您的指出令笔者深受启发. 笔者会后定当深入研读, 也愿继续向您请教'. KHÔNG bullshit. KHÔNG fake. Acknowledge + commit to learning.\n\n(9) FOLLOW-UP EMAILS: 24-48 hours sau Q&A, gửi email thank-you cho evaluators chính, attached revised draft notes của câu hỏi của họ. Đây là cultural standard ở Trung Quốc top universities. Skip = no follow-up = cold.\n\n(10) GENDER & AGE: nữ student trẻ trả lời Q&A thường được suggest tăng humble register so với nam senior. Đây là cultural pressure (không công bằng nhưng tồn tại). Cách balance: humble register + substantive content. Senior evaluator respect content over hierarchy form khi content thật sự strong.",
@@ -2999,25 +3095,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "开宗明义",
         "literal": "mở môn phái rõ nghĩa (kāi zōng míng yì)",
         "meaning": "Mở đầu rõ nghĩa — point out main thesis at the very start. Critical principle for abstract / introduction first sentence. (书面/正式)",
-        "example": "摘要应开宗明义, 第一句即点出研究核心贡献。"
+        "example": "摘要应开宗明义, 第一句即点出研究核心贡献。",
+        "literal_en": "open the school, make the meaning clear (kāi zōng míng yì)",
+        "meaning_en": "To state the main thesis at the very outset — a critical principle for the first sentence of an abstract or introduction. (written/formal)",
+        "example_en": "An abstract should state its thesis up front: the first sentence must point out the study's core contribution."
       },
       {
         "idiom": "言简意赅",
         "literal": "lời ngắn ý đủ (yán jiǎn yì gāi)",
         "meaning": "Lời ngắn nhưng ý đầy đủ — academic writing virtue. Cụm khen abstract / executive summary good. (书面/正式)",
-        "example": "该摘要言简意赅, 紧扣四要素, 堪称典范。"
+        "example": "该摘要言简意赅, 紧扣四要素, 堪称典范。",
+        "literal_en": "words concise, meaning complete (yán jiǎn yì gāi)",
+        "meaning_en": "Concise yet substantively complete — an academic-writing virtue, used to praise a good abstract or executive summary. (written/formal)",
+        "example_en": "This abstract is concise yet complete, sticking closely to the four elements — a model of its kind."
       },
       {
         "idiom": "画龙点睛",
         "literal": "vẽ rồng điểm mắt (huà lóng diǎn jīng)",
         "meaning": "Vẽ rồng điểm mắt — last touch that brings the whole alive. Cụm khen the most insight-dense sentence in a paper. (书面/正式)",
-        "example": "结论一段堪称画龙点睛, 升华了全文论证。"
+        "example": "结论一段堪称画龙点睛, 升华了全文论证。",
+        "literal_en": "paint the dragon, dot the eyes (huà lóng diǎn jīng)",
+        "meaning_en": "The finishing touch that brings the whole alive — praises the single most insight-dense sentence in a paper. (written/formal)",
+        "example_en": "The conclusion is the finishing stroke that elevates the argument of the whole paper."
       },
       {
         "idiom": "画蛇添足",
         "literal": "vẽ rắn thêm chân (huà shé tiān zú)",
         "meaning": "Vẽ rắn thêm chân — adding the unnecessary, ruining the whole. Cụm phê bình redundancy / over-explanation. (书面/正式)",
-        "example": "abstract最后两句在重复结论, 实属画蛇添足。"
+        "example": "abstract最后两句在重复结论, 实属画蛇添足。",
+        "literal_en": "paint a snake, add feet (huà shé tiān zú)",
+        "meaning_en": "Adding the superfluous and spoiling the whole — a critique of redundancy or over-explanation. (written/formal)",
+        "example_en": "The last two sentences of the abstract merely repeat the conclusion — a needless addition of snake's feet."
       }
     ],
     "cultural_notes_vi": "Văn hóa abstract / lit review trong giới học thuật Trung Quốc đại lục có một số điểm khác biệt với phương Tây và Việt Nam:\n\n(1) BILINGUAL ABSTRACTS REQUIREMENT: nhiều tạp chí Trung Quốc tier-1 yêu cầu BOTH Chinese abstract VÀ English abstract. Hai abstract phải parallel ý nhưng không phải translation 1:1. Sinh viên Việt cần biết: viết hai bản abstract = hai job, dù share content.\n\n(2) STRUCTURED ABSTRACT (结构化摘要): tạp chí y học và một số tạp chí khoa học xã hội Trung Quốc require structured abstract với explicit headers: 目的 (Objective), 方法 (Methods), 结果 (Results), 结论 (Conclusion). Tạp chí khác cho phép unstructured nhưng vẫn cần 4 elements implicit.\n\n(3) AVERSION TO OPENING CLICHÉS: từ 2018+, top journals Trung Quốc explicitly reject abstracts opening với '近年来, 随着X的迅猛发展'. Editor đếm số lần phrase này xuất hiện trong submitted manuscripts đã > 90% — bị coi là templated, lazy. Sinh viên Việt copy phrase này từ Chinese papers cũ = bị reject.\n\n(4) LITERATURE REVIEW LENGTH: standard Trung Quốc top journals require lit review chiếm 15-25% paper length. Quá ngắn = không đủ acknowledge prior work. Quá dài = không đủ contribution của bạn. Sinh viên Việt thường viết quá ngắn (5-10%) — needs expansion.\n\n(5) FOREIGN vs DOMESTIC CITATIONS BALANCE: top journals Trung Quốc expect lit review balance international (≥60%) + domestic Chinese (≤40%) sources. Quá nhiều domestic = parochial. Quá ít domestic = ignoring local field. Adjust based on subfield maturity.\n\n(6) META-ANALYSIS as alternative: ngày càng nhiều papers Trung Quốc ML/biomedical write systematic meta-analysis thay vì narrative review. Methodology stricter, subjectivity giảm. Sinh viên Việt nên consider meta-analysis cho thesis nếu field allows.\n\n(7) PRE-REGISTRATION CULTURE: từ 2020+, top Chinese journals trong psychology / education khuyến khích pre-registration. Đăng ký research plan trước khi collect data. Lit review section trở thành phần background of pre-registration.\n\n(8) AI-ASSISTED SUMMARIZATION: từ 2023+, học giả Trung Quốc sử dụng GPT/Claude để help draft lit reviews. Một số journals chấp nhận if disclosed; khác lại banned. Sinh viên Việt: disclose if used, even minor edits.\n\n(9) ABSTRACTS GET INDEXED, FULL TEXT KHÔNG: trong Chinese academic search engines (CNKI, WANFANG), abstract is what users see when browsing. Abstract weak = paper invisible regardless of full-text quality. Sinh viên Việt: abstract is FRONTLINE, not afterthought.\n\n(10) GRADUATE DEFENSE ABSTRACT: defense submission ở Trung Quốc đại lục requires Chinese abstract VÀ English abstract trên thesis cover page. Hội đồng thường judge thesis quality SOLELY based on abstract trong 60 seconds đầu tiên of defense. Underestimate abstract = underestimate defense success rate.",
@@ -3342,25 +3450,37 @@ export const lessons: ChineseLesson[] = [
         "idiom": "字斟句酌",
         "literal": "cân nhắc từng chữ từng câu (zì zhēn jù zhuó)",
         "meaning": "Cân nhắc từng câu chữ — academic virtue cho viết review hoặc rebuttal. Reviewer phải '字斟句酌' để critique chính xác mà không gây offense. (书面/正式)",
-        "example": "评审意见之撰写, 务必字斟句酌, 切忌情绪用事。"
+        "example": "评审意见之撰写, 务必字斟句酌, 切忌情绪用事。",
+        "literal_en": "weigh each word, deliberate each phrase (zì zhēn jù zhuó)",
+        "meaning_en": "Choosing every word with care — an academic virtue for writing a review or rebuttal precisely without giving offense. (written/formal)",
+        "example_en": "When writing review comments, weigh every word with care and never let emotion drive the pen."
       },
       {
         "idiom": "实事求是",
         "literal": "thực sự tìm ra cái thực (shí shì qiú shì)",
         "meaning": "Thực sự cầu thị / theo sự thật mà tìm — academic ethic principle. Reviewer phải 'từ data tìm sự thật', không bias by author identity. (书面/正式)",
-        "example": "审稿人当本着实事求是之原则, 客观评价手稿。"
+        "example": "审稿人当本着实事求是之原则, 客观评价手稿。",
+        "literal_en": "seek truth from facts (shí shì qiú shì)",
+        "meaning_en": "Seeking truth from the facts — a core academic ethic: judge from the data, never biased by the author's identity. (written/formal)",
+        "example_en": "A reviewer should evaluate a manuscript objectively, on the principle of seeking truth from facts."
       },
       {
         "idiom": "直言不讳",
         "literal": "nói thẳng không kiêng kỵ (zhí yán bù huì)",
         "meaning": "Nói thẳng không kiêng kỵ — academic frankness, dùng để khen reviewer dám pointing out hard truths. Caveat: phải đi kèm với 客观 (objective). (书面/正式)",
-        "example": "该审稿人直言不讳, 指出了本稿的核心methodology问题。"
+        "example": "该审稿人直言不讳, 指出了本稿的核心methodology问题。",
+        "literal_en": "speak straight without concealment (zhí yán bù huì)",
+        "meaning_en": "Frank and unreserved — praises a reviewer willing to point out hard truths; caveat: must be paired with 客观 (objectivity). (written/formal)",
+        "example_en": "This reviewer spoke frankly and unreservedly, identifying the manuscript's core methodology problem."
       },
       {
         "idiom": "客观公正",
         "literal": "khách quan công bằng (kè guān gōng zhèng)",
         "meaning": "Khách quan công bằng — review ethics core. Reviewer commit to neither favoritism nor hostility. Standard phrase trong reviewer guidelines. (书面/正式)",
-        "example": "评审过程必须坚持客观公正, 不受外部因素影响。"
+        "example": "评审过程必须坚持客观公正, 不受外部因素影响。",
+        "literal_en": "objective and fair (kè guān gōng zhèng)",
+        "meaning_en": "Objective and impartial — a core review ethic: neither favoritism nor hostility; a standard phrase in reviewer guidelines. (written/formal)",
+        "example_en": "The review process must remain objective and impartial, unaffected by external factors."
       }
     ],
     "cultural_notes_vi": "Văn hóa peer review trong giới học thuật Trung Quốc đại lục:\n\n(1) ANONYMITY VS DISCLOSED: top journals Trung Quốc dùng single-blind (reviewer anonymous, author known). Một số top venues international (NeurIPS, ICML) dùng double-blind. Sinh viên Việt review cho Trung Quốc venues: bạn biết author, author không biết bạn. Power asymmetry — phải responsibly use.\n\n(2) HIDDEN GUANXI NETWORK: Trung Quốc có 'reviewer network' - các labs cùng trường phái thường review papers cho nhau softly. Top journals đang push double-blind để giảm bias này. Sinh viên Việt review papers from same advisor's network = explicitly declare conflict.\n\n(3) RESPONSE-TO-REVIEWER FORMAT: rebuttal trong giới học thuật Trung Quốc rất polite. Format: '审稿人意见: ...' '作者回复: 感谢审稿人指出, 该意见非常宝贵. 我们已...' Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry và push reject. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(4) DECISION TIME EXPECTATIONS: Trung Quốc top journals expect review trong 21-30 days. Tier 2-3 trong 30-45 days. Review chậm = editor sẽ swap reviewer. Sinh viên Việt review: commit đúng thời hạn hoặc decline upfront.\n\n(5) AI-ASSISTED REVIEW POLICY: từ 2023+, một số journals Trung Quốc allow AI to help draft (must disclose), khác lại fully banned. ACL 2024, NeurIPS 2024 banned LLM-drafted reviews. Sinh viên Việt: check journal policy carefully, disclose dù chỉ minor edit.\n\n(6) REVIEW LANGUAGE: tier-1 Chinese journals nay accept English reviews (preferred). Tier-2/3 nhận cả Chinese và English. Sinh viên Việt: review tiếng Anh trừ khi journal explicitly requires Chinese.\n\n(7) REPUTATION AT STAKE: Trung Quốc có public review reputation system (Publons, ORCID). Reviewer quality tracked. Bad / unprofessional reviews → editors won't invite again. Career đụng độ. Sinh viên trẻ Việt: invest in review quality từ đầu.\n\n(8) ETHICS BOARD INVOLVEMENT: nếu review có serious concerns (ethics violation, data fabrication), report to ethics board (伦理委员会), không chỉ editor. Trung Quốc top journals đều có ethics board.\n\n(9) AUTHOR-REVIEWER RECIPROCITY: 'cycle of review' — reviewers cũng là authors. 'Treat others as you'd be treated'. Harsh review = bạn cũng sẽ nhận harsh review. Sinh viên Việt: maintain karma.\n\n(10) RESPONSE-TO-REVIEWER LETTERS PUBLISHED: một số journals ngày nay (như eLife, F1000Research) public publish review letters + responses. Sinh viên Việt: every word in your review may be public. Write accordingly.",
