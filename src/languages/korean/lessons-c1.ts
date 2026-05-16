@@ -221,26 +221,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "공백을 메우다",
           "literal": "lấp khoảng trống",
+          "literal_en": "fill the gap (gongbaegeul meuda)",
           "meaning": "(문어/격식) lấp khoảng trống nghiên cứu — cụm chuẩn trong intro của bản thảo",
-          "example": "본 연구는 선행 연구의 공백을 메우고자 한다."
+          "meaning_en": "To fill a research gap — the standard phrase in a manuscript's introduction. (literary / formal)",
+          "example": "본 연구는 선행 연구의 공백을 메우고자 한다.",
+          "example_en": "This study seeks to fill the gap in prior research."
         },
         {
           "idiom": "논지를 전개하다",
           "literal": "triển khai luận điểm",
+          "literal_en": "develop the line of argument (nonjireul jeongaehada)",
           "meaning": "(문어/격식) trình bày triển khai lập luận",
-          "example": "필자는 다음 절에서 논지를 단계적으로 전개하고자 한다."
+          "meaning_en": "To lay out and advance an argument. (literary / formal)",
+          "example": "필자는 다음 절에서 논지를 단계적으로 전개하고자 한다.",
+          "example_en": "In the next section the author develops the argument step by step."
         },
         {
           "idiom": "근거를 들다",
           "literal": "viện dẫn căn cứ",
+          "literal_en": "adduce grounds (geungeoreul deulda)",
           "meaning": "(격식) viện dẫn bằng chứng / luận cứ",
-          "example": "주장을 뒷받침할 근거를 충분히 들었다."
+          "meaning_en": "To cite evidence / supporting reasons. (formal)",
+          "example": "주장을 뒷받침할 근거를 충분히 들었다.",
+          "example_en": "Sufficient grounds were adduced to support the claim."
         },
         {
           "idiom": "사료된다",
           "literal": "được suy xét rằng",
+          "literal_en": "it is surmised that (saryodoenda)",
           "meaning": "(문어/매우 격식) hedging cao cấp — thường gặp ở kết luận",
-          "example": "본 결과는 선행 모형을 보완할 수 있다고 사료된다."
+          "meaning_en": "An elevated hedge — typically found in the conclusion. (literary / very formal)",
+          "example": "본 결과는 선행 모형을 보완할 수 있다고 사료된다.",
+          "example_en": "It is surmised that this result can supplement the prior model."
         }
       ],
       "cultural_notes_vi": "Văn hóa thuyết trình học thuật Hàn (학회) khác Việt ở vài điểm: (1) Mở đầu trang trọng — '안녕하십니까. 본 발표는 ~을/를 다룹니다' là khung chuẩn; bỏ phần này bị coi là không lễ độ. (2) Hệ thứ bậc: tiến sĩ + giáo sư trong phòng được xưng 〜교수님; chủ tịch hội thảo (사회자) điều phối, đáp lại 사회자 trước khi trả lời câu hỏi. (3) Câu hỏi từ thành viên cao niên thường có thuật ngữ '여쭙다' (xin hỏi — khiêm cung): bạn đáp lại bằng '좋은 지적이십니다 / 중요한 질문이십니다' để công nhận trước khi vào nội dung. (4) Bác bỏ giả thuyết của diễn giả khác hiếm khi trực diện — thường mở bằng 'A 부분에는 동의하지만, B에 대해서는 다른 해석도 가능할 듯합니다'. (5) Q&A ở Hàn thường dài hơn Việt; nhiều câu hỏi cùng lúc bị coi là không tôn trọng — chờ 사회자 chọn người tiếp theo. (6) Sau buổi, danh thiếp (명함) trao hai tay; nói '잘 부탁드립니다' khi muốn duy trì liên hệ.",
@@ -510,26 +522,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "출처를 밝히다",
           "literal": "làm rõ xuất xứ",
+          "literal_en": "make the source clear (chulcheoreul balkida)",
           "meaning": "(격식) ghi rõ nguồn — cụm chuẩn của đạo đức học thuật",
-          "example": "모든 인용은 출처를 정확히 밝혀야 한다."
+          "meaning_en": "To state the source explicitly — the standard phrase of research ethics. (formal)",
+          "example": "모든 인용은 출처를 정확히 밝혀야 한다.",
+          "example_en": "Every citation must state its source accurately."
         },
         {
           "idiom": "지적한 바와 같이",
           "literal": "đúng như đã chỉ ra",
+          "literal_en": "as has been pointed out (jijeokan bawa gachi)",
           "meaning": "(문어/격식) như đã được chỉ ra — chuyển ý liên kết với nguồn",
-          "example": "Lee(2019)가 지적한 바와 같이, 이 효과는 일관되지 않는다."
+          "meaning_en": "As has been noted — a transition linking to a source. (literary / formal)",
+          "example": "Lee(2019)가 지적한 바와 같이, 이 효과는 일관되지 않는다.",
+          "example_en": "As Lee (2019) pointed out, this effect is not consistent."
         },
         {
           "idiom": "선행 연구를 검토하다",
           "literal": "rà soát nghiên cứu tiền bối",
+          "literal_en": "review the prior research (seonhaeng yeongureul geomtohada)",
           "meaning": "(격식) đánh giá tổng quan — bước bắt buộc của literature review",
-          "example": "본 절에서는 선행 연구를 비판적으로 검토한다."
+          "meaning_en": "To survey and appraise prior work — an obligatory step of the literature review. (formal)",
+          "example": "본 절에서는 선행 연구를 비판적으로 검토한다.",
+          "example_en": "This section critically reviews the prior research."
         },
         {
           "idiom": "한 발 더 나아가다",
           "literal": "tiến thêm một bước",
+          "literal_en": "take one step further (han bal deo naagada)",
           "meaning": "(문어) đi xa hơn — dùng khi nghiên cứu kế thừa và mở rộng kết luận trước",
-          "example": "본 연구는 Kim(2020)에서 한 발 더 나아가 매개 효과를 검증한다."
+          "meaning_en": "To go further — used when research inherits and extends a previous conclusion. (literary)",
+          "example": "본 연구는 Kim(2020)에서 한 발 더 나아가 매개 효과를 검증한다.",
+          "example_en": "This study takes one step further than Kim (2020) and tests the mediation effect."
         }
       ],
       "cultural_notes_vi": "Văn hóa trích dẫn Hàn ở học thuật: (1) Đạo văn (표절) bị xử lý nghiêm — đại học top như SNU, Yonsei có hệ thống Turnitin tự động; sinh viên Việt cần đặc biệt cẩn trọng. (2) Phong cách APA / Chicago được dùng chủ yếu trong KHXH; ngành kỹ thuật theo IEEE. Nhiều tạp chí Hàn ngữ có riêng quy ước — kiểm tra '투고 규정' của tạp chí trước khi nộp. (3) Khi dẫn học giả Hàn cao niên, kèm danh xưng 〜교수 trong văn nói (학회 발표) nhưng KHÔNG trong văn viết — văn viết chỉ ghi họ + năm. (4) Self-citation ở Hàn ít gắt như phương Tây nhưng cần thiết phải có lý do chính đáng — 'Kim(2022) đã từng làm X, nay mở rộng sang Y'. (5) Ý thức về 'lineage học thuật' (학맥) cao — biết ai là học trò ai sẽ giúp dẫn nguồn khôn khéo. (6) Khi gặp khó khăn về diễn ngôn vì là người không nói tiếng Hàn bản ngữ, viện đào tạo có 글쓰기 센터 (Writing Center) hỗ trợ — đa số cho phép sinh viên quốc tế. (7) Tài liệu Hán Nôm cổ Việt Nam có thể được trích dẫn ở Hàn — nhiều trường có khoa Hán học (한문학) nghiên cứu kinh điển khu vực. (8) Sau công bố, gửi bản tách 별쇄본 cho người được trích dẫn là phép lịch sự còn được giữ.",
@@ -775,26 +799,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "이의를 제기하다",
           "literal": "đưa ra ý phản đối",
+          "literal_en": "raise an objection (iuireul jegihada)",
           "meaning": "(격식) nêu phản đối — cụm chuẩn của Q&A và peer review",
-          "example": "본 결론에 두 가지 이의를 제기하고자 한다."
+          "meaning_en": "To raise an objection — the standard phrase of Q&A and peer review. (formal)",
+          "example": "본 결론에 두 가지 이의를 제기하고자 한다.",
+          "example_en": "I wish to raise two objections to this conclusion."
         },
         {
           "idiom": "한 발 양보하다",
           "literal": "lùi một bước",
+          "literal_en": "yield one step (han bal yangbohada)",
           "meaning": "(문어/구어) nhượng bộ một phần — chiến thuật phản biện ôn hòa",
-          "example": "한 발 양보하더라도, 핵심 결론은 유지된다."
+          "meaning_en": "To concede partially — a moderate rebuttal tactic. (literary / spoken)",
+          "example": "한 발 양보하더라도, 핵심 결론은 유지된다.",
+          "example_en": "Even conceding one step, the core conclusion holds."
         },
         {
           "idiom": "타당성을 인정하다",
           "literal": "công nhận tính chính đáng",
+          "literal_en": "acknowledge the validity (tadangseongeul injeonghada)",
           "meaning": "(격식) thừa nhận có cơ sở — buffer trước phản biện",
-          "example": "그 주장의 타당성은 인정하나, 자료가 부족하다."
+          "meaning_en": "To grant that there is a basis — a buffer before a rebuttal. (formal)",
+          "example": "그 주장의 타당성은 인정하나, 자료가 부족하다.",
+          "example_en": "I acknowledge the validity of that claim, but the data are insufficient."
         },
         {
           "idiom": "결론에 도달하다",
           "literal": "đến được kết luận",
+          "literal_en": "reach a conclusion (gyeolrone dodalhada)",
           "meaning": "(격식) đi đến kết luận — đối tượng hay bị phản biện về quá trình",
-          "example": "결론에 도달하는 과정에 보완이 필요하다."
+          "meaning_en": "To arrive at a conclusion — the process is often what gets challenged. (formal)",
+          "example": "결론에 도달하는 과정에 보완이 필요하다.",
+          "example_en": "The process of reaching the conclusion needs supplementing."
         }
       ],
       "cultural_notes_vi": "Văn hóa tranh luận học thuật Hàn: (1) 토론자 (discussant) là vai trò chính thức — phản biện trong phạm vi đã chuẩn bị, không phải hỏi tự do. Vai discussant đòi hỏi cân bằng giữa khen điểm mạnh và chỉ điểm yếu — pattern '강점 인정 → 약점 지적 → 보완 제안'. (2) Tuổi và chức danh ảnh hưởng cách phản biện: học giả trẻ phản biện học giả cao niên cần soft framing 'malsseum-deurim sajiseureopji-man' (cho phép em được thưa). (3) Phản biện công khai trong học hội (학회) ít gay gắt hơn lab seminar — public face must be saved. Bất đồng nặng được giải quyết qua email/buổi cá nhân sau. (4) Kết thúc Q&A người trình bày bao giờ cũng cảm ơn discussant — '오히려 제가 더 많이 배웠습니다' là cụm mặc định. (5) Người Việt có xu hướng phản biện trực diện hơn (Việt văn hóa thẳng thắn hơn Hàn trong context này) — học cách thêm buffer là kỹ năng phải luyện. (6) Disagreement chuyển sang published critique (반론논문) thay vì kéo dài tại chỗ. Ở Hàn, 'người không nhường bước trong Q&A' nhanh chóng được dán nhãn 'không có phép tắc' (예의 없다). (7) Trợ giảng và sinh viên cao học không nên phản biện giáo sư cao niên trong public space trừ khi được mời rõ ràng.",
@@ -1040,26 +1076,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "단정하기 어렵다",
           "literal": "khó kết luận chắc nịch",
+          "literal_en": "hard to assert conclusively (danjeonghagi eoryeopda)",
           "meaning": "(격식) khó khẳng định — hedging chuẩn của learning paragraph",
-          "example": "이 결과만으로 인과 관계를 단정하기 어렵다."
+          "meaning_en": "Hard to state definitively — the standard hedge of a learning paragraph. (formal)",
+          "example": "이 결과만으로 인과 관계를 단정하기 어렵다.",
+          "example_en": "From this result alone, causality is hard to assert conclusively."
         },
         {
           "idiom": "배제할 수 없다",
           "literal": "không thể loại trừ",
+          "literal_en": "cannot be ruled out (baejehal su eopda)",
           "meaning": "(문어/격식) không thể loại bỏ — soft positive qua phủ định kép",
-          "example": "다른 요인의 영향을 배제할 수 없다."
+          "meaning_en": "Cannot be excluded — a soft positive via double negation. (literary / formal)",
+          "example": "다른 요인의 영향을 배제할 수 없다.",
+          "example_en": "The influence of other factors cannot be ruled out."
         },
         {
           "idiom": "신중을 기하다",
           "literal": "thận trọng cẩn thận",
+          "literal_en": "exercise caution (sinjungeul gihada)",
           "meaning": "(격식) đặt sự thận trọng — cụm cảnh báo trong discussion",
-          "example": "결론을 일반화함에 있어 신중을 기해야 한다."
+          "meaning_en": "To proceed with care — a cautionary phrase in the discussion. (formal)",
+          "example": "결론을 일반화함에 있어 신중을 기해야 한다.",
+          "example_en": "Caution must be exercised in generalising the conclusion."
         },
         {
           "idiom": "여지를 남기다",
           "literal": "để lại khoảng trống",
+          "literal_en": "leave room (yeojireul namgida)",
           "meaning": "(문어) để ngỏ khả năng — không đóng cứng kết luận",
-          "example": "다른 해석의 여지를 남겨 두었다."
+          "meaning_en": "To leave the possibility open — not closing the conclusion off. (literary)",
+          "example": "다른 해석의 여지를 남겨 두었다.",
+          "example_en": "Room was left for other interpretations."
         }
       ],
       "cultural_notes_vi": "Văn hóa hedging Hàn vs Việt: (1) Tiếng Hàn học thuật 'over-hedge' so với tiếng Anh — bài viết tiếng Anh dùng 1-2 hedges/đoạn, tiếng Hàn có thể 4-5. Sinh viên Việt thường thiếu hedges vì văn hóa Việt thẳng thắn hơn — cần chủ động bổ sung. (2) Kiểu hedging quá đà ('것으로 보일 수도 있다고 사료될 가능성이 있다') ngược lại bị phê 'không có chính kiến'. Cân bằng là kỹ năng. (3) Trong văn nói (학회 발표), 〜습니다 thể tự thân đã trang trọng — không cần thêm 사료된다 mỗi câu. (4) Hàn coi confidence quá cao ở junior researcher là vô lễ với senior — sinh viên cao học mặc nhiên hedge nhiều hơn giáo sư. (5) Trong abstract, hedging gọn — '시사한다' / '확인되었다' đủ; KHÔNG dùng '사료된다' trong abstract vì abstract phải cô đọng. (6) Khi reviewer yêu cầu giảm hedging ('over-hedged') hoặc tăng hedging ('over-claimed'), đó là feedback chuẩn — không phải tấn công cá nhân. (7) Tạp chí Hàn ngữ và Anh ngữ có chuẩn khác — bản English version của cùng bài thường ít hedge hơn 30-40%.",
@@ -1329,26 +1377,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "용어를 정의하다",
           "literal": "định nghĩa thuật ngữ",
+          "literal_en": "define a term (yongeoreul jeonguihada)",
           "meaning": "(격식) định nghĩa thuật ngữ — bước bắt buộc trong intro/method",
-          "example": "본 절에서는 핵심 용어를 명확히 정의한다."
+          "meaning_en": "To define a term — an obligatory step in the introduction/method. (formal)",
+          "example": "본 절에서는 핵심 용어를 명확히 정의한다.",
+          "example_en": "This section clearly defines the key terms."
         },
         {
           "idiom": "개념을 명확히 하다",
           "literal": "làm rõ khái niệm",
+          "literal_en": "clarify a concept (gaenyeomeul myeonghwaki hada)",
           "meaning": "(문어/격식) làm rõ khái niệm — đối tượng của định nghĩa",
-          "example": "혼란을 막기 위해 개념을 명확히 한다."
+          "meaning_en": "To make a concept clear — the object of a definition. (literary / formal)",
+          "example": "혼란을 막기 위해 개념을 명확히 한다.",
+          "example_en": "To prevent confusion, the concept is clarified."
         },
         {
           "idiom": "외연과 내포",
           "literal": "ngoại diên và nội hàm",
+          "literal_en": "extension and intension (oeyeongwa naepo)",
           "meaning": "(문어) extension and intension — cặp thuật ngữ logic / triết học",
-          "example": "용어의 외연과 내포를 모두 다룬다."
+          "meaning_en": "Extension and intension — a logic/philosophy term pair. (literary)",
+          "example": "용어의 외연과 내포를 모두 다룬다.",
+          "example_en": "Both the extension and intension of the term are addressed."
         },
         {
           "idiom": "조작적으로 정의하다",
           "literal": "định nghĩa theo cách hoạt động",
+          "literal_en": "define operationally (jojakjeogeuro jeonguihada)",
           "meaning": "(격식) operational definition — gắn với công cụ đo",
-          "example": "본 연구에서는 자율성을 조작적으로 정의한다."
+          "meaning_en": "To give an operational definition — tied to a measurement instrument. (formal)",
+          "example": "본 연구에서는 자율성을 조작적으로 정의한다.",
+          "example_en": "In this study, autonomy is defined operationally."
         }
       ],
       "cultural_notes_vi": "Văn hóa định nghĩa thuật ngữ Hàn: (1) Mỗi luận văn (학위 논문) bắt buộc có chương '용어 정의' hoặc 'key terms' trong intro — bỏ qua bị hội đồng phản biện ngay. (2) Hàn ngành KHXH thường mượn thuật ngữ từ Anh ngữ — viết kèm bản gốc trong ngoặc lần đầu xuất hiện: '자율성(autonomy)'. (3) Nếu thuật ngữ chưa có bản dịch chính thức, sinh viên có thể đề xuất nhưng phải chú thích: '본 연구에서는 'X'를 'Y'로 번역하여 사용한다'. (4) Ngành tự nhiên (이공계) ít tự định nghĩa hơn — dùng định nghĩa chuẩn của IUPAC, IEEE; KHXH có nhiều biến thể nên cần định nghĩa rõ. (5) Hàn coi việc 'không phân biệt được khái niệm tương tự' là dấu hiệu thiếu sâu — phải show được hiểu được sắc thái. (6) Khi dịch thuật ngữ Việt sang Hàn, cẩn thận với từ đa nghĩa — 'tu thân' không có equivalent một-một, cần explain. (7) Trong defense thesis, thường có câu hỏi 'X와 Y의 차이를 설명해 주십시오' — chuẩn bị sẵn 3-5 cặp khái niệm dễ nhầm trong field của bạn.",
@@ -1594,26 +1654,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "강점을 지니다",
           "literal": "mang sức mạnh",
+          "literal_en": "possess a strength (gangjeomeul jinida)",
           "meaning": "(격식) có ưu thế / điểm mạnh — neutral, dùng cho method comparison",
-          "example": "양적 연구는 일반화에 강점을 지닌다."
+          "meaning_en": "To have an advantage / strong point — neutral, used in method comparison. (formal)",
+          "example": "양적 연구는 일반화에 강점을 지닌다.",
+          "example_en": "Quantitative research possesses a strength in generalisation."
         },
         {
           "idiom": "한계가 있다",
           "literal": "có giới hạn",
+          "literal_en": "have a limitation (hangyega itda)",
           "meaning": "(격식) có hạn chế — softer than '단점이 있다'",
-          "example": "횡단면 자료에는 시간적 한계가 있다."
+          "meaning_en": "To have a limitation — softer than '단점이 있다' (has a weakness). (formal)",
+          "example": "횡단면 자료에는 시간적 한계가 있다.",
+          "example_en": "Cross-sectional data have a temporal limitation."
         },
         {
           "idiom": "보완적 관계",
           "literal": "quan hệ bù đắp",
+          "literal_en": "a complementary relationship (bowanjeok gwangye)",
           "meaning": "(격식) quan hệ bổ sung lẫn nhau — frame mixed methods",
-          "example": "두 방법은 대립적이라기보다 보완적 관계에 있다."
+          "meaning_en": "A mutually supplementary relationship — the frame for mixed methods. (formal)",
+          "example": "두 방법은 대립적이라기보다 보완적 관계에 있다.",
+          "example_en": "The two methods are complementary rather than opposed."
         },
         {
           "idiom": "방법론을 채택하다",
           "literal": "chọn phương pháp luận",
+          "literal_en": "adopt a methodology (bangbeoproneul chaetaekada)",
           "meaning": "(격식) áp dụng / chọn phương pháp luận — động từ chuẩn cho method section",
-          "example": "본 연구는 혼합 방법론을 채택한다."
+          "meaning_en": "To adopt / select a methodology — the standard verb of the method section. (formal)",
+          "example": "본 연구는 혼합 방법론을 채택한다.",
+          "example_en": "This study adopts a mixed methodology."
         }
       ],
       "cultural_notes_vi": "Văn hóa method choice ở Hàn academia: (1) KHXH Hàn lâu nay nghiêng định lượng, gần đây thừa nhận định tính nhiều hơn — sinh viên Việt nên biết xu hướng của ngành mình. (2) Mixed methods được coi 'an toàn' nhưng đòi expertise gấp đôi — chuẩn bị defense kỹ. (3) Reviewer Hàn thường hỏi 'why not the other method' — chuẩn bị câu trả lời sẵn. (4) Trong khoa thầy là 양적 expert, dùng nhiều định tính bị soi; ngược lại tương tự — biết political environment của khoa. (5) Tiêu chuẩn sample size khác giữa các tạp chí Hàn: KCI tier 1 thường yêu cầu N>200 cho khảo sát; tạp chí quốc tế chấp nhận N=100 nếu effect size cao. (6) Phương pháp 액션리서치 (action research), 사례 연구 (case study), 근거 이론 (grounded theory) ngày càng phổ biến trong giáo dục, công tác xã hội, điều dưỡng — nhưng cần biện hộ kỹ hơn vì là 'newer' methods. (7) Các hội nghị KSE (한국교육학회), KSA (한국사회학회) có session riêng cho qualitative — networking ở đó giúp tìm advisor cùng method preference. (8) Việt Nam có ngành 행동 연구 đang nổi — phương pháp tương đồng giữa hai văn hóa, dễ collaborative.",
@@ -1847,26 +1919,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "공헌을 남기다",
           "literal": "để lại đóng góp",
+          "literal_en": "leave a contribution (gongheoneul namgida)",
           "meaning": "(격식) tạo đóng góp lâu dài — opener của critique paragraph",
-          "example": "Kim(2020)은 이 분야에 중요한 공헌을 남겼다."
+          "meaning_en": "To make a lasting contribution — the opener of a critique paragraph. (formal)",
+          "example": "Kim(2020)은 이 분야에 중요한 공헌을 남겼다.",
+          "example_en": "Kim (2020) left an important contribution to this field."
         },
         {
           "idiom": "디딤돌을 놓다",
           "literal": "đặt bậc đệm chân",
+          "literal_en": "lay a stepping stone (didimdoreul nota)",
           "meaning": "(문어) đặt nền tảng / bậc đệm — frame work tiền bối tích cực",
-          "example": "선행 연구는 후속 연구의 디딤돌을 놓았다."
+          "meaning_en": "To lay a foundation / stepping stone — a positive frame for prior work. (literary)",
+          "example": "선행 연구는 후속 연구의 디딤돌을 놓았다.",
+          "example_en": "The prior research laid a stepping stone for subsequent work."
         },
         {
           "idiom": "보완이 필요하다",
           "literal": "cần bổ sung",
+          "literal_en": "needs supplementing (bowani piryohada)",
           "meaning": "(격식) softer than 'wrong' — chuẩn của constructive critique",
-          "example": "표본 다양성 측면에서 보완이 필요하다."
+          "meaning_en": "Softer than 'wrong' — the standard of constructive critique. (formal)",
+          "example": "표본 다양성 측면에서 보완이 필요하다.",
+          "example_en": "It needs supplementing in terms of sample diversity."
         },
         {
           "idiom": "비약이 있다",
           "literal": "có bước nhảy",
+          "literal_en": "there is a leap (biyagi itda)",
           "meaning": "(격식) có bước nhảy logic — nhãn cho over-interpretation",
-          "example": "결론에서 자료를 넘어선 비약이 있다."
+          "meaning_en": "There is a logical leap — a label for over-interpretation. (formal)",
+          "example": "결론에서 자료를 넘어선 비약이 있다.",
+          "example_en": "In the conclusion there is a leap beyond the data."
         }
       ],
       "cultural_notes_vi": "Văn hóa critique trong Hàn academia: (1) Journal club (저널 클럽) là sinh hoạt định kỳ ở lab — sinh viên cao học bị giao bài để review trước nhóm. Đây là môi trường an toàn để tập kỹ năng phê bình. (2) Critique senior scholar trong public space (논평) cần soft framing — 'malsseum-deurim sajiseureopji-man' (xin phép em được thưa). (3) Critique sinh viên junior cùng lab có thể trực diện hơn nhưng vẫn không humiliate — sandwich pattern bắt buộc. (4) Đề tài của giáo sư hướng dẫn KHÔNG nên critique trực diện trước nhóm — phương án: gửi feedback riêng, hoặc frame như 'tôi đang cân nhắc về câu hỏi mở: ~?'. (5) Hàn coi 'critique không có alternative' là không có giá trị — luôn kết bằng forward direction. (6) Khi viết literature review, critique các bài đối thủ chính của field nhưng KHÔNG critique bài của hội đồng giám khảo của bạn (academic politics — biết ai sẽ review). (7) Tạp chí Hàn ngữ thường blind peer review nhưng community nhỏ — phong cách viết của bạn dễ bị nhận ra. Critique professional, không personal. (8) Việt Nam có culture critique trực hơn Hàn — sinh viên Việt nên giảm cường độ 1-2 bậc khi viết tiếng Hàn.",
@@ -2124,26 +2208,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "답변드리다",
           "literal": "(khiêm cung) trả lời",
+          "literal_en": "offer a reply (humble) (dapbyeondeurida)",
           "meaning": "(격식) đáp dưới — verb chuẩn cho Q&A",
-          "example": "두 가지로 나누어 답변드리겠습니다."
+          "meaning_en": "To answer (humbly) — the standard verb for Q&A. (formal)",
+          "example": "두 가지로 나누어 답변드리겠습니다.",
+          "example_en": "I will answer in two parts."
         },
         {
           "idiom": "여쭙다",
           "literal": "(khiêm cung) hỏi",
+          "literal_en": "ask (humble) (yeojjupda)",
           "meaning": "(격식) xin hỏi — junior nói với senior",
-          "example": "한 가지 여쭙겠습니다."
+          "meaning_en": "To humbly ask — a junior speaking to a senior. (formal)",
+          "example": "한 가지 여쭙겠습니다.",
+          "example_en": "I would like to ask one thing."
         },
         {
           "idiom": "마무리하다",
           "literal": "kết thúc gọn",
+          "literal_en": "wrap up (mamurihada)",
           "meaning": "(격식/구어) đóng phiên — chair dùng nhiều",
-          "example": "시간 관계상 여기서 마무리하겠습니다."
+          "meaning_en": "To close the session — used often by the chair. (formal / spoken)",
+          "example": "시간 관계상 여기서 마무리하겠습니다.",
+          "example_en": "Given the time, I will wrap up here."
         },
         {
           "idiom": "추후 답변드리다",
           "literal": "trả lời về sau",
+          "literal_en": "reply later (chuhu dapbyeondeurida)",
           "meaning": "(격식) defer answer politely — cụm cứu nguy",
-          "example": "그 부분은 추후 답변드리겠습니다."
+          "meaning_en": "To defer an answer politely — a rescue phrase. (formal)",
+          "example": "그 부분은 추후 답변드리겠습니다.",
+          "example_en": "I will reply to that part later."
         }
       ],
       "cultural_notes_vi": "Văn hóa Q&A hội nghị Hàn: (1) Người điều phối (사회자) là vai trò quan trọng — họ chọn người hỏi, quản lý thời gian. Đáp lại 사회자 trước khi đáp người hỏi: '예, 답변드리겠습니다.' (2) Câu hỏi đầu thường dành cho người cao niên trong phòng — sinh viên cao học chờ đến cuối. (3) 'Question that's actually a comment' (câu hỏi thực ra là bình luận) phổ biến — chỉ cần thừa nhận: '말씀하신 부분에 동의합니다. 짧게 보충드리면 ~.' (4) Khi nhận câu hỏi sai về method/data: KHÔNG correction trực diện ('아닙니다, 그것은…'). Soft: '말씀하신 부분과 약간 다른 측면이 있는데, ~.' (5) Sau Q&A, business card exchange — '명함 한 장 부탁드려도 되겠습니까?' Chuẩn bị business cards in 양면 (Hàn một mặt, Anh một mặt). (6) 'Coffee break offline question' culture — câu hỏi 'sensitive' hoặc 'detailed' chuyển ra giờ giải lao. (7) Tạp chí của hội thảo lớn (학회지) sau đó publish summary — câu hỏi và câu trả lời của bạn có thể xuất hiện trong proceedings. Trả lời cẩn thận. (8) Việt khác Hàn ở chỗ Q&A Việt thường ít hierarchical — sinh viên Việt ở Hàn nên chờ thêm 1-2 phút trước khi giơ tay, để senior hỏi trước.",
@@ -2401,26 +2497,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "압축적으로 정리하다",
           "literal": "tổ chức cô đọng",
+          "literal_en": "organise compactly (apchukjeogeuro jeongrihada)",
           "meaning": "(격식) sắp xếp nén chặt — kỹ năng cốt lõi của abstract",
-          "example": "결과를 한 문장으로 압축적으로 정리한다."
+          "meaning_en": "To arrange in condensed form — a core skill of the abstract. (formal)",
+          "example": "결과를 한 문장으로 압축적으로 정리한다.",
+          "example_en": "The results are organised compactly into one sentence."
         },
         {
           "idiom": "함의를 갖다",
           "literal": "mang hàm ý",
+          "literal_en": "carry an implication (hamuireul gatda)",
           "meaning": "(격식) có hàm ý / implication — kết bài abstract",
-          "example": "본 연구는 이론적 함의를 갖는다."
+          "meaning_en": "To have an implication — the closing of an abstract. (formal)",
+          "example": "본 연구는 이론적 함의를 갖는다.",
+          "example_en": "This study carries a theoretical implication."
         },
         {
           "idiom": "결과를 도출하다",
           "literal": "rút ra kết quả",
+          "literal_en": "derive a result (gyeolgwareul dochulhada)",
           "meaning": "(격식) suy ra kết quả — neutral, formal",
-          "example": "분석을 통해 결과를 도출한다."
+          "meaning_en": "To draw out a result — neutral, formal. (formal)",
+          "example": "분석을 통해 결과를 도출한다.",
+          "example_en": "The result is derived through the analysis."
         },
         {
           "idiom": "한 문장에 담다",
           "literal": "đặt trong một câu",
+          "literal_en": "put it in one sentence (han munjange damda)",
           "meaning": "(문어/격식) nén vào một câu — yêu cầu của summary",
-          "example": "핵심 발견을 한 문장에 담아 표현한다."
+          "meaning_en": "To compress into a single sentence — a requirement of the summary. (literary / formal)",
+          "example": "핵심 발견을 한 문장에 담아 표현한다.",
+          "example_en": "The key finding is expressed in one sentence."
         }
       ],
       "cultural_notes_vi": "Văn hóa abstract Hàn academia: (1) Tạp chí KCI tier 1 thường yêu cầu 200-300 자 (chữ Hàn) cho abstract Hàn ngữ + 250-300 từ cho English abstract. Hai bản phải parallel nhưng KHÔNG dịch trực tiếp word-by-word. (2) Hàn coi abstract như 'cửa vào' của bài — nếu abstract weak, reviewer mặc định bài cũng weak. (3) Một số tạp chí Hàn yêu cầu structured abstract (Background-Method-Results-Conclusions) với heading; số khác chỉ yêu cầu unstructured paragraph. Kiểm tra '투고 규정'. (4) Keywords ở Hàn thường gồm 1-2 từ chung và 2-3 từ cụ thể — '학습 자율성, 학업 성취, 동기' (cụ thể) + '교육심리학' (chung). (5) Trong field KHXH, abstract Hàn có thể bao gồm 'theoretical framework' (이론적 틀) — KHTN không cần. (6) Một số tạp chí Hàn cho phép graphical abstract (그래픽 초록) — sinh viên Việt nên biết khai thác để stand out. (7) Conference proceedings thường có 'extended abstract' 1-2 trang — khác abstract của journal. (8) Tựa đề (제목) phải <30 chữ; sub-title cho specifying scope: '~ 연구: ~을 중심으로'. (9) Khi nộp song ngữ Hàn-Anh, KHÔNG để Google Translate — abstract English phải được native speaker review.",
@@ -2678,26 +2786,37 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "지적을 반영하다",
           "literal": "phản ánh góp ý",
+          "literal_en": "reflect the comment (jijeogeul banyeonghada)",
           "meaning": "(격식) áp dụng góp ý — verb chuẩn của response letter",
-          "example": "지적해 주신 모든 부분을 본문에 반영하였습니다."
+          "meaning_en": "To incorporate the feedback — the standard verb of a response letter. (formal)",
+          "example": "지적해 주신 모든 부분을 본문에 반영하였습니다.",
+          "example_en": "All the points you raised have been reflected in the text."
         },
         {
           "idiom": "우려를 해소하다",
           "literal": "giải tỏa lo ngại",
+          "literal_en": "resolve the concern (uryeoreul haesohada)",
           "meaning": "(격식) giải quyết quan ngại — closing standard",
-          "example": "본 응답서가 심사위원의 우려를 해소할 수 있기를 바랍니다."
+          "meaning_en": "To address the concern — a standard closing. (formal)",
+          "example": "본 응답서가 심사위원의 우려를 해소할 수 있기를 바랍니다.",
+          "example_en": "I hope this response letter resolves the reviewers' concerns."
         },
         {
           "idiom": "이의를 제기하다",
           "literal": "đưa ra phản đối",
+          "literal_en": "raise an objection (iuireul jegihada)",
           "meaning": "(격식) raise dispute respectfully — middle of response",
-          "example": "한 가지 점에 대해서는 이의를 제기하고자 합니다."
+          "example": "한 가지 점에 대해서는 이의를 제기하고자 합니다.",
+          "example_en": "On one point I wish to raise an objection."
         },
         {
           "idiom": "재투고하다",
           "literal": "nộp lại",
+          "literal_en": "resubmit (jaetugohada)",
           "meaning": "(격식) resubmit — verb gốc Hán Việt 'tái đầu cảo'",
-          "example": "한 달 이내에 수정본을 재투고할 예정이다."
+          "meaning_en": "To resubmit — from the Sino-Korean root 'jae-tu-go'. (formal)",
+          "example": "한 달 이내에 수정본을 재투고할 예정이다.",
+          "example_en": "I plan to resubmit the revised manuscript within a month."
         }
       ],
       "cultural_notes_vi": "Văn hóa peer review Hàn academia: (1) Tạp chí KCI có 3 mức quyết định: 게재 (accept), 수정 후 게재 (accept after revision), 게재 불가 (reject). 'Major revision' thực chất là 'conditional accept' nếu đáp ứng đủ. (2) Hệ thống thường blind — cả author và reviewer ẩn danh. KHÔNG đề tên người trong response letter. (3) Response letter ngày càng được đính kèm như supplementary material — public sau publication. Viết professional. (4) Hàn coi 'response letter perfunctory' (thư phản hồi qua loa) là dấu hiệu thiếu cẩn trọng — gây ấn tượng xấu cho editor lần sau. (5) Khi reviewer comments có vẻ không hiểu bài: KHÔNG argue 'reviewer didn't read carefully'. Soft: '본 부분의 표현이 명확하지 않았던 것으로 사료됩니다. 다음과 같이 보완하였습니다.' (6) Đối thoại giữa author và editor (편집장) qua email rất formal — bắt đầu bằng '편집장님께' (Dear Editor) và đóng bằng '깊이 감사드립니다.' (7) Khi reject quyết liệt nhưng bạn nghĩ unfair: có thể appeal qua editor-in-chief, nhưng rất hiếm thành công và damage reputation. Better: revise và submit tạp chí khác. (8) Việt vs Hàn: tone của response Việt thường thẳng hơn — sinh viên Việt nên thêm 1-2 lớp polite framing. (9) Reviewing cho người khác: nhận lời reviewing là nghĩa vụ học thuật — bạn có thời gian thì làm, không nên nhận quá 5 bài/năm.",
@@ -4585,26 +4704,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "지적해 주신 점에 대해서는",
           "literal": "về điểm thầy/cô đã chỉ ra",
+          "literal_en": "regarding the point you raised (jijeokae jusin jeome daehaeseoneun)",
           "meaning": "(격식) cụm chuẩn để mở câu trả lời cho 심사위원 — bắt buộc trong defense Hàn",
-          "example": "지적해 주신 점에 대해서는 추가로 검토한 뒤 답변드리겠습니다."
+          "meaning_en": "The standard phrase to open an answer to an examiner — mandatory in a Korean defense. (formal)",
+          "example": "지적해 주신 점에 대해서는 추가로 검토한 뒤 답변드리겠습니다.",
+          "example_en": "Regarding the point you raised, I will review it further and then reply."
         },
         {
           "idiom": "전적으로 동의합니다",
           "literal": "hoàn toàn đồng ý",
+          "literal_en": "I fully agree (jeonjeogeuro donguihamnida)",
           "meaning": "(격식) công nhận chỉ trích đúng — không phải nhân nhượng yếu",
-          "example": "그 점에 전적으로 동의합니다. 최종본에서 보완하겠습니다."
+          "meaning_en": "To grant that the critique is right — not weak capitulation. (formal)",
+          "example": "그 점에 전적으로 동의합니다. 최종본에서 보완하겠습니다.",
+          "example_en": "I fully agree on that point. I will supplement it in the final version."
         },
         {
           "idiom": "사료됩니다 / 판단됩니다",
           "literal": "được suy xét / đánh giá",
+          "literal_en": "it is surmised / judged (saryodoemnida / pandandoemnida)",
           "meaning": "(매우 격식) hedging cao cấp — chỉ dùng cho phát biểu chính, không cho fact mô tả",
-          "example": "본 연구 모형 검증에는 충분하다고 사료됩니다."
+          "meaning_en": "An elevated hedge — only for the main claim, not for describing a fact. (very formal)",
+          "example": "본 연구 모형 검증에는 충분하다고 사료됩니다.",
+          "example_en": "It is surmised to be sufficient for validating this study's model."
         },
         {
           "idiom": "후속 과제로 두다",
           "literal": "đặt làm nhiệm vụ tiếp theo",
+          "literal_en": "leave it as a follow-up task (husok gwajero duda)",
           "meaning": "(격식) cam kết khắc phục giới hạn trong nghiên cứu sau — kỹ thuật né phản biện ổn",
-          "example": "장기 종단 자료 분석은 후속 과제로 두고 있습니다."
+          "meaning_en": "To commit to remedying a limitation in later research — a sound deflection technique. (formal)",
+          "example": "장기 종단 자료 분석은 후속 과제로 두고 있습니다.",
+          "example_en": "Long-term longitudinal analysis is left as a follow-up task."
         }
       ],
       "cultural_notes_vi": "Buổi 논문 공개 심사 ở Hàn rất nghi thức: (1) Bắt đầu, 심사위원장 mở phiên — diễn giả KHÔNG tự bắt đầu. (2) Phải 인사 (cúi nhẹ) khi vào và ra phòng. (3) Khi 심사위원 đặt câu hỏi: KHÔNG cắt lời, ghi chép trên giấy, đáp khi họ kết thúc. (4) Một câu hỏi khó luôn đi qua 3 giai đoạn: thừa nhận điểm hợp lý → nêu giới hạn cụ thể → cam kết bổ sung. (5) Sau buổi, gửi email cảm ơn riêng đến từng 심사위원 trong vòng 24h — quy ước bất thành văn. (6) Nếu hỏng một câu, KHÔNG sụp đổ — '추후 검토하겠습니다' giữ thể diện cho cả hai bên. (7) Người Việt dễ rơi vào hai lỗi: (a) over-defensive — cãi lại từng điểm, làm hội đồng cảnh giác; (b) over-apologetic — '죄송합니다' liên tục, làm mất uy tín học thuật. Khoảng giữa = '지적해 주신 점에 동의합니다 + 다만 〜은 〜라고 사료됩니다' — công nhận + bảo vệ phần đáng giữ.",
@@ -4878,26 +5009,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "전면 수용하다",
           "literal": "tiếp nhận toàn diện",
+          "literal_en": "fully accept (jeonmyeon suyonghada)",
           "meaning": "(격식, 답변서) chấp nhận đầy đủ — chuẩn của response letter Hàn",
-          "example": "심사위원 1번의 의견을 전면 수용하여 결론을 수정하였습니다."
+          "meaning_en": "To accept in full — the standard of a Korean response letter. (formal, response letter)",
+          "example": "심사위원 1번의 의견을 전면 수용하여 결론을 수정하였습니다.",
+          "example_en": "I fully accepted Reviewer 1's comment and revised the conclusion."
         },
         {
           "idiom": "일부만 수용하기로 하다",
           "literal": "quyết định chỉ tiếp nhận một phần",
+          "literal_en": "decide to accept only partially (ilbuman suyonghagiro hada)",
           "meaning": "(격식, 답변서) chấp nhận có chọn lọc — bắt buộc giải thích kèm theo",
-          "example": "이 견해는 일부만 수용하기로 하였습니다. 사유는 다음과 같습니다."
+          "meaning_en": "To accept selectively — an accompanying explanation is mandatory. (formal, response letter)",
+          "example": "이 견해는 일부만 수용하기로 하였습니다. 사유는 다음과 같습니다.",
+          "example_en": "I decided to accept this view only partially. The reasons are as follows."
         },
         {
           "idiom": "유지하고자 하다",
           "literal": "muốn giữ nguyên",
+          "literal_en": "wish to retain (yujihagoja hada)",
           "meaning": "(격식) bảo vệ giữ phần — phải kèm 근거 mạnh",
-          "example": "다음과 같은 근거로 원래의 표현을 그대로 유지하고자 합니다."
+          "meaning_en": "To defend keeping a part — must come with strong grounds. (formal)",
+          "example": "다음과 같은 근거로 원래의 표현을 그대로 유지하고자 합니다.",
+          "example_en": "On the following grounds I wish to retain the original wording."
         },
         {
           "idiom": "보완적으로 추가하다",
           "literal": "thêm vào có tính bổ sung",
+          "literal_en": "add as a supplement (bowanjeogeuro chugahada)",
           "meaning": "(격식) hòa giải — chấp nhận quan điểm reviewer mà không thay khung chính",
-          "example": "사회인지 이론의 자기효능감 개념을 논의 절에서 보완적으로 추가하였습니다."
+          "meaning_en": "To reconcile — accepting the reviewer's view without changing the main framework. (formal)",
+          "example": "사회인지 이론의 자기효능감 개념을 논의 절에서 보완적으로 추가하였습니다.",
+          "example_en": "The self-efficacy concept of social-cognitive theory was added supplementarily in the discussion."
         }
       ],
       "cultural_notes_vi": "Văn hóa peer review tạp chí Hàn: (1) Reviewer thường ẩn danh nhưng giới học thuật nhỏ — phong cách answer phải dự liệu reviewer có thể đoán được bạn là ai. (2) 'Major revision' ở Hàn quenly mất 2-4 tuần để answer; 'minor revision' 1 tuần. Trễ deadline mất uy tín nghiêm trọng. (3) Cấu trúc 'point-by-point' bắt buộc — KHÔNG được trả lời gộp. (4) Mỗi tap chí có 답변서 양식 — kiểm tra trước khi viết. (5) Khi reviewer sai factual rõ rệt: vẫn giữ tone tôn trọng — '본 원고 5쪽에 다음과 같이 명시되어 있습니다' (chỉ ra văn bản); KHÔNG '오해하셨습니다'. (6) 한국 학회지 thường cho 1-2 round revision tối đa; lần 3 thường reject. (7) Người Việt dễ sai: (a) over-accept tất cả để xuôi việc — làm bài mất chất; (b) defensive — cãi từng điểm, làm reviewer + editor mệt và reject. Khoảng giữa = strategic — chấp nhận 70% (dễ), giữ 30% (cốt lõi) với lý lẽ chắc.",
@@ -5171,26 +5314,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "발언권을 드리다",
           "literal": "trao quyền phát biểu",
+          "literal_en": "give the floor (bareongwoneul deurida)",
           "meaning": "(격식, 사회자 전용) cụm chuẩn của chair — BẮT BUỘC dùng kèm 〜님께",
-          "example": "이제 토론자 정민호 박사님께 발언권을 드리겠습니다."
+          "meaning_en": "The chair's standard phrase — MUST be used with 〜님께. (formal, chair only)",
+          "example": "이제 토론자 정민호 박사님께 발언권을 드리겠습니다.",
+          "example_en": "I now give the floor to Dr Jeong Minho."
         },
         {
           "idiom": "시간 관계상",
           "literal": "do quan hệ thời gian",
+          "literal_en": "for reasons of time (sigan gwangyesang)",
           "meaning": "(격식) cụm dùng để ngắt một cách lịch sự — không cần xin lỗi dài",
-          "example": "시간 관계상 한 가지 질문으로 압축해 주시기 바랍니다."
+          "meaning_en": "A phrase to interrupt politely — no long apology needed. (formal)",
+          "example": "시간 관계상 한 가지 질문으로 압축해 주시기 바랍니다.",
+          "example_en": "For reasons of time, please compress this into one question."
         },
         {
           "idiom": "마무리하다",
           "literal": "kết thúc / dọn dẹp",
+          "literal_en": "wrap up (mamurihada)",
           "meaning": "(격식, 사회자) đóng phiên — 3 chức năng: tóm tắt + cảm ơn + chuyển",
-          "example": "이상으로 본 세션을 마무리하겠습니다."
+          "meaning_en": "To close the session — three functions: summarise + thank + transition. (formal, chair)",
+          "example": "이상으로 본 세션을 마무리하겠습니다.",
+          "example_en": "With that, I will wrap up this session."
         },
         {
           "idiom": "박수 부탁드립니다",
           "literal": "xin nhờ tràng pháo tay",
+          "literal_en": "please give a round of applause (baksu butakdeurimnida)",
           "meaning": "(격식) cụm chuẩn kết phiên — 〜드립니다 khiêm cung",
-          "example": "발표자와 토론자께 다시 한번 박수 부탁드립니다."
+          "meaning_en": "The standard session-closing phrase — humble 〜드립니다. (formal)",
+          "example": "발표자와 토론자께 다시 한번 박수 부탁드립니다.",
+          "example_en": "Once more, please give the presenter and discussant a round of applause."
         }
       ],
       "cultural_notes_vi": "사회 (chair) ở hội thảo Hàn là vai trò có uy tín cao — thường là 부교수 trở lên hoặc 박사 thâm niên. (1) Trang phục: complet tối, không có ngoại lệ. (2) Trước phiên: gặp riêng diễn giả + discussant 30 phút trước, kiểm tra phát âm tên, hỏi cách giới thiệu (chức danh nào). (3) Trong phiên: ghi chú trên giấy giấy ngày tháng, đánh dấu thời gian — Hàn rất chặt về timing. (4) Vượt giờ là sỉ nhục cho cả phiên — đến lúc, chair phải ngắt. (5) Sau phiên: cảm ơn riêng từng diễn giả + discussant tại 다과실 (phòng nghỉ); discussant cao niên thì 인사 90 độ. (6) Người Việt làm chair Hàn dễ rơi: (a) over-polite — cứ '죄송합니다만 죄송합니다만…' nhiều lần làm yếu authority; (b) dưới-formal — dùng '님' không đầy đủ chức danh. Khoảng giữa = một '죄송합니다만' đủ + chức danh đầy đủ. (7) Nếu một diễn giả bị câu hỏi tấn công: chair có quyền can thiệp '제가 보충 설명을 드리자면' để giảm áp lực — chức năng bảo vệ.",
@@ -5458,26 +5613,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "〜에 따르면",
           "literal": "theo ~",
+          "literal_en": "according to ~ (~e ttareumyeon)",
           "meaning": "(격식, 인용) cụm trung tính — bắt đầu trích dẫn ủng hộ",
-          "example": "Kim(2018)에 따르면 자율성은 성취에 긍정적 영향을 미친다."
+          "meaning_en": "A neutral phrase — opens a supportive citation. (formal, citation)",
+          "example": "Kim(2018)에 따르면 자율성은 성취에 긍정적 영향을 미친다.",
+          "example_en": "According to Kim (2018), autonomy has a positive effect on achievement."
         },
         {
           "idiom": "〜이/가 지적한 바와 같이",
           "literal": "như ~ đã chỉ ra",
+          "literal_en": "as ~ pointed out (~i/ga jijeokan bawa gachi)",
           "meaning": "(격식) gợi mức 3 — báo trước sẽ có nhận xét phê bình",
-          "example": "Park(2020)이 지적한 바와 같이 매개 효과는 충분히 검토되지 않았다."
+          "meaning_en": "Signals tier 3 — foreshadows a critical remark. (formal)",
+          "example": "Park(2020)이 지적한 바와 같이 매개 효과는 충분히 검토되지 않았다.",
+          "example_en": "As Park (2020) pointed out, the mediation effect was not sufficiently examined."
         },
         {
           "idiom": "〜라는 점에서 한계가 있다",
           "literal": "có giới hạn ở chỗ ~",
+          "literal_en": "has a limitation in that ~ (~raneun jeomeseo hangyega itda)",
           "meaning": "(격식) cụm chuẩn cho phê bình một phần — định cụ thể giới hạn",
-          "example": "이 주장은 동기 변수에 한정되었다는 점에서 한계가 있다."
+          "meaning_en": "The standard phrase for a partial critique — specify the limitation concretely. (formal)",
+          "example": "이 주장은 동기 변수에 한정되었다는 점에서 한계가 있다.",
+          "example_en": "This claim has a limitation in that it is confined to motivational variables."
         },
         {
           "idiom": "재고될 필요가 있다",
           "literal": "cần được xem xét lại",
+          "literal_en": "needs to be reconsidered (jaegodoel piryoga itda)",
           "meaning": "(매우 격식) cụm chuẩn cho phản bác mạnh — không công kích",
-          "example": "이 통념은 다음 자료로 보아 재고될 필요가 있다."
+          "meaning_en": "The standard phrase for a strong rebuttal — not a personal attack. (very formal)",
+          "example": "이 통념은 다음 자료로 보아 재고될 필요가 있다.",
+          "example_en": "Given the following data, this received view needs to be reconsidered."
         }
       ],
       "cultural_notes_vi": "Văn hóa trích dẫn ở Hàn: (1) Hệ thứ bậc nghiêm — học giả lớn, GS đầu ngành (대가) thường được trích ở mức 1-2 dù bạn không đồng ý; mức 3-4 chỉ dùng khi có evidence không thể chối. (2) Self-citation phải sparse — '본 연구자의 선행 연구(2022)' chỉ 1-2 lần, không lạm. (3) Trích bằng tiếng Anh KHÔNG được dịch sang Hàn cho luận văn Hàn — giữ nguyên cụm tiếng Anh trong ngoặc kép, paraphrase tiếng Hàn ngoài. (4) Trang phải đầy đủ: 'Kim(2018: 45)' — KHÔNG '(Kim 2018)' kiểu Anglo. (5) Nếu trích dẫn từ một bản dịch (예: Foucault qua bản dịch tiếng Hàn): ghi rõ 'Foucault(1975/2003: 67)' — năm gốc / năm dịch. (6) Rủi ro lớn cho người Việt: trộn nhãn — '주장하다' và '말하다' không thay thế nhau; '말하다' không phù hợp văn học thuật. (7) Khi phê bình một học giả Hàn còn sống: dùng 'OO 교수님' khi nói; trong văn dùng 'OOO(년도)' không '님' — chuyển trang trọng theo media.",
@@ -5749,26 +5916,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "여쭙고 싶은 점이 있습니다",
           "literal": "có điểm muốn xin hỏi",
+          "literal_en": "there is something I would like to ask (humble) (yeojjupgo sipeun jeomi itseumnida)",
           "meaning": "(매우 격식, 윗사람 대상) cụm chuẩn để mở câu hỏi đến 윗사람 — kính ngữ '여쭙다' bắt buộc",
-          "example": "교수님, 한 가지 여쭙고 싶은 점이 있습니다."
+          "meaning_en": "The standard phrase to open a question to a senior — the honorific 여쭙다 is mandatory. (very formal, toward a superior)",
+          "example": "교수님, 한 가지 여쭙고 싶은 점이 있습니다.",
+          "example_en": "Professor, there is one thing I would like to ask."
         },
         {
           "idiom": "미처 이해하지 못한 부분이 있을지도 모르겠습니다만",
           "literal": "có thể có phần em chưa hiểu hết được",
+          "literal_en": "there may be a part I have not fully understood, but (micheo ihaehaji motan bubuni itsseuljido moreugetseumnidaman)",
           "meaning": "(매우 격식) cụm hedge cấp cao — báo trước có thể bạn sai để bảo vệ thể diện cả hai bên",
-          "example": "제가 미처 이해하지 못한 부분이 있을지도 모르겠습니다만, 다른 해석도 가능할 듯합니다."
+          "meaning_en": "A high-level hedge — pre-signals you may be wrong, to protect both sides' face. (very formal)",
+          "example": "제가 미처 이해하지 못한 부분이 있을지도 모르겠습니다만, 다른 해석도 가능할 듯합니다.",
+          "example_en": "There may be a part I have not fully understood, but another interpretation also seems possible."
         },
         {
           "idiom": "관점의 차이일 수 있겠습니다만",
           "literal": "có thể chỉ là khác biệt về góc nhìn, nhưng",
+          "literal_en": "it may be a difference of perspective, but (gwanjeomui chaiil su itgetseumnidaman)",
           "meaning": "(격식) định khung bất đồng như khác biệt khách quan thay vì sai-đúng — bảo vệ uy tín 윗사람",
-          "example": "결국은 관점의 차이일 수 있겠습니다만, 본 자료에서는 또 다른 해석도 가능해 보입니다."
+          "meaning_en": "Frames the disagreement as an objective difference rather than right-vs-wrong — protects the senior's standing. (formal)",
+          "example": "결국은 관점의 차이일 수 있겠습니다만, 본 자료에서는 또 다른 해석도 가능해 보입니다.",
+          "example_en": "It may ultimately be a difference of perspective, but another reading of this data also seems possible."
         },
         {
           "idiom": "지도 편달을 부탁드립니다",
           "literal": "kính nhờ chỉ bảo và rèn dạy",
+          "literal_en": "I ask for your guidance (jido pyeondareul butakdeurimnida)",
           "meaning": "(매우 격식, 학생→교수) cụm kết câu chuẩn — chuyển toàn bộ quyền phán quyết về 교수",
-          "example": "분석이 부족할 수 있으니 지도 편달을 부탁드립니다."
+          "meaning_en": "The standard closing — hands full adjudication back to the professor. (very formal, student→professor)",
+          "example": "분석이 부족할 수 있으니 지도 편달을 부탁드립니다.",
+          "example_en": "My analysis may be lacking, so I ask for your guidance."
         }
       ],
       "cultural_notes_vi": "Giai cấp học thuật Hàn cực kỳ phân lớp: (1) 학부생 → 석사 → 박사 → 박사 후 → 시간강사 → 부교수 → 정교수 → 석좌교수. Mỗi cấp có 호칭 khác. Vượt cấp phát ngôn = vô lễ nghiêm trọng. (2) Khi 박사 과정생 bất đồng với 정교수 cùng ngành: cần 3 lớp hedge tối thiểu; bỏ một lớp = bị xem là arrogant. (3) Khi không cùng ngành (ví dụ: y học vs. xã hội học): có thể nhẹ nhàng hơn — 'chuyên môn không cùng' tạo ra khoảng cách cho phép. (4) Bất đồng trong 콜로키움 (oral): KHÔNG ngay tại buổi — chờ về 1대1 hoặc viết email. Bất đồng công khai = gọi 윗사람 ra trước mặt người khác = có thể chấm dứt quan hệ. (5) Trong văn (논문): có thể phê bình mức 3 (xem bài 115) nhưng giọng vẫn phải tôn trọng. (6) Người Việt có thể rơi vào 2 lỗi: (a) over-defer — '예, 알겠습니다' liên tục dù không đồng ý → không tiến bộ; (b) under-hedge — bỏ qua các marker mềm, bị xem là vô lễ. Khoảng giữa = 3 lớp hedge + cụm '지도 편달' kết thúc — chuẩn. (7) Có một ngoại lệ: khi 윗사람 chính xác hỏi ý kiến phản đối ('비판적으로 봐주세요'), bạn vẫn phải hedge nhưng có thể giảm xuống 2 lớp.",
@@ -6060,26 +6239,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "본 연구는 〜을/를 다룬다",
           "literal": "nghiên cứu này xử lý ~",
+          "literal_en": "this study deals with ~ (bon yeonguneun ~eul/reul darunda)",
           "meaning": "(격식, 초록 전용) cụm mở chuẩn — KHÔNG '본 연구는 〜에 대해 연구한다' (lặp ý)",
-          "example": "본 연구는 자율성과 동기의 상호작용을 다룬다."
+          "meaning_en": "The standard opening phrase — NOT '본 연구는 ~에 대해 연구한다' (redundant). (formal, abstract only)",
+          "example": "본 연구는 자율성과 동기의 상호작용을 다룬다.",
+          "example_en": "This study deals with the interaction of autonomy and motivation."
         },
         {
           "idiom": "분석 결과, 〜으로 나타났다",
           "literal": "kết quả phân tích, được biểu hiện là ~",
+          "literal_en": "analysis showed that ~ (bunseok gyeolgwa, ~euro natanatda)",
           "meaning": "(격식, 초록 전용) công thức câu kết quả — không thay '〜라는 것이 발견되었다' (rườm rà)",
-          "example": "분석 결과, 동기 수준에 따른 차이가 통계적으로 유의한 것으로 나타났다."
+          "meaning_en": "The result-sentence formula — not '〜라는 것이 발견되었다' (wordy). (formal, abstract only)",
+          "example": "분석 결과, 동기 수준에 따른 차이가 통계적으로 유의한 것으로 나타났다.",
+          "example_en": "The analysis showed that the difference by motivation level was statistically significant."
         },
         {
           "idiom": "기여를 갖는다",
           "literal": "có đóng góp",
+          "literal_en": "holds a contribution (giyeoreul ganneunda)",
           "meaning": "(격식, 초록) cụm câu hàm ý — định khung đóng góp một cách trang trọng",
-          "example": "본 연구는 이론적 확장에 기여를 갖는다."
+          "meaning_en": "An implication-sentence phrase — frames the contribution formally. (formal, abstract)",
+          "example": "본 연구는 이론적 확장에 기여를 갖는다.",
+          "example_en": "This study holds a contribution to theoretical extension."
         },
         {
           "idiom": "글자 수 제한을 맞추다",
           "literal": "khớp giới hạn số chữ",
+          "literal_en": "meet the character-count limit (geulja su jehaneul matchuda)",
           "meaning": "(실무) công việc thường nhật khi viết abstract — quy ước 학회 nghiêm",
-          "example": "300자 제한을 맞추기 위해 배경 부분을 한 문장으로 압축하였다."
+          "meaning_en": "Everyday work when writing an abstract — conferences enforce it strictly. (practitioner)",
+          "example": "300자 제한을 맞추기 위해 배경 부분을 한 문장으로 압축하였다.",
+          "example_en": "To meet the 300-character limit, the background was compressed into one sentence."
         }
       ],
       "cultural_notes_vi": "Văn hóa nộp abstract Hàn: (1) 학회 lớn (한국심리학회, 한국교육학회) thường 한 해 2 lần — 봄 학술대회 và 가을 학술대회. (2) Mỗi 학회 có template riêng cho abstract — bắt buộc dùng, KHÔNG sáng tạo. (3) Đăng ký nộp qua hệ thống online; giấy tờ phải có: 초록 + 주제어 + 발표자 정보 + 학회비 영수증. (4) Sau nộp, có 동료 심사 — 1-2 tuần. Phản hồi thường: '발표 채택' / '포스터 추천' / '발표 거절'. Khoảng 30-50% được chấp nhận làm 구두 발표. (5) Nếu được chấp nhận: phải nộp 발표문 đầy đủ trong 4-6 tuần — đó là phiên bản dài hơn của abstract. (6) BẪY người Việt: (a) lặp '본 연구는' nhiều lần — Hàn ít lặp, văn rườm; (b) trộn 〜다 và 〜습니다 — sai register; (c) bỏ qua 글자 수 — bị reject ngay khi quét tự động. (7) Một abstract tốt được đánh giá bởi 'reproducibility check' — đọc xong, người khác có thể đoán được phương pháp + kết quả không.",
@@ -6359,26 +6550,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "시급성을 갖다",
           "literal": "có tính cấp thiết",
+          "literal_en": "have urgency (sigeupseongeul gatda)",
           "meaning": "(격식, 공모서) cụm chuẩn của 연구 필요성 — định khung dự án có giá trị xã hội",
-          "example": "본 연구는 디지털 격차 해소의 시급성을 갖는다."
+          "meaning_en": "The standard phrase of '연구 필요성' (research need) — frames the project as socially valuable. (formal, proposal)",
+          "example": "본 연구는 디지털 격차 해소의 시급성을 갖는다.",
+          "example_en": "This study has the urgency of closing the digital divide."
         },
         {
           "idiom": "차별성을 갖다",
           "literal": "có tính khác biệt",
+          "literal_en": "have distinctiveness (chabyeolseongeul gatda)",
           "meaning": "(격식) cụm chuẩn để định vị so với 선행 연구 — bắt buộc trong 연구 계획서",
-          "example": "본 연구는 메커니즘 분석을 차별성으로 삼는다."
+          "meaning_en": "The standard phrase to position against prior research — mandatory in a proposal. (formal)",
+          "example": "본 연구는 메커니즘 분석을 차별성으로 삼는다.",
+          "example_en": "This study takes mechanism analysis as its distinctiveness."
         },
         {
           "idiom": "단계별로 추진하다",
           "literal": "triển khai theo giai đoạn",
+          "literal_en": "advance in phases (dangyebyeolro chujinhada)",
           "meaning": "(공식) khung tổ chức 추진 일정 — chuẩn 5-7 năm grant",
-          "example": "본 사업은 3년에 걸쳐 단계별로 추진한다."
+          "meaning_en": "The framing for the project timeline — standard for a 5–7-year grant. (official)",
+          "example": "본 사업은 3년에 걸쳐 단계별로 추진한다.",
+          "example_en": "This project will be advanced in phases over three years."
         },
         {
           "idiom": "파급 효과를 갖다",
           "literal": "có hiệu ứng lan tỏa",
+          "literal_en": "have a ripple effect (pageup hyogwareul gatda)",
           "meaning": "(격식) khung kỳ vọng — định lượng tác động ngoài giới học thuật",
-          "example": "본 사업은 학술 외에도 사회적 파급 효과를 갖는다."
+          "meaning_en": "The framing for expected impact — quantifies impact beyond academia. (formal)",
+          "example": "본 사업은 학술 외에도 사회적 파급 효과를 갖는다.",
+          "example_en": "Beyond academia, this project has a social ripple effect."
         }
       ],
       "cultural_notes_vi": "Hệ thống tài trợ Hàn: (1) NRF (한국연구재단) là nguồn lớn nhất — 신진연구자 (post-PhD ~5 năm), 중견연구자 (mid-career), 중점연구소 (research center), 일반공동연구 (collaborative). Mỗi loại có khung ngân sách + thời gian. (2) Ngoài NRF: 한국학중앙연구원, 정부 부처별 (교육부, 산업통상자원부), 사기업 재단 (삼성, LG). (3) Tỷ lệ chấp nhận NRF 신진: ~20-25%; 중견: ~15-20%; 중점: ~10%. Cạnh tranh cao. (4) Phần điểm số: 연구 필요성 (20%), 추진 계획 (30%), 연구진 역량 (20%), 기대 효과 (20%), 예산 적정성 (10%). (5) BẪY người Việt: (a) 시급성 quá tổng quát — 'Vietnam's education needs reform' không passable; cần 통계 cụ thể của Hàn Quốc; (b) 차별성 mơ hồ — 'something different' không passable; cần định lượng so với 3 선행 연구 cụ thể; (c) Predicted budget mismatch — vượt cap nhân sự, thiếu mục bắt buộc. (6) Sau khi được tài trợ: yêu cầu nộp '연차 보고서' mỗi năm; vi phạm timeline = mất uy tín và lần sau khó qua. (7) Co-PI từ Việt: cho phép nhưng PI phải Hàn Quốc.",
@@ -6669,25 +6872,36 @@ export const lessons: KoreanLesson[] =         [
           "idiom": "랩 미팅",
           "literal": "lab meeting",
           "meaning": "(외래어, 학계) cuộc họp lab thường tuần — chuẩn của ngành STEM/sosci ở Hàn",
-          "example": "이번 주 랩 미팅은 화요일 오후 2시에 진행할게요."
+          "meaning_en": "A weekly lab meeting — standard in Korean STEM/social-science fields. (loanword, academia)",
+          "example": "이번 주 랩 미팅은 화요일 오후 2시에 진행할게요.",
+          "example_en": "This week's lab meeting will be Tuesday at 2 pm."
         },
         {
           "idiom": "도움이 필요하면",
           "literal": "nếu cần hỗ trợ",
+          "literal_en": "if you need help (doumi piryohamyeon)",
           "meaning": "(해요체) cụm chuẩn của GS với 학생 — invite collaboration mà không ép",
-          "example": "도움이 필요하면 언제든 메신저로 연락해요."
+          "meaning_en": "A professor's standard phrase to a student — invites collaboration without pressure. (haeyo-che)",
+          "example": "도움이 필요하면 언제든 메신저로 연락해요.",
+          "example_en": "If you need help, reach out on the messenger anytime."
         },
         {
           "idiom": "초안 공유해 주실래요?",
           "literal": "chia sẻ bản nháp giúp được không?",
+          "literal_en": "could you share the draft? (choan gongyuhae jusilraeyo?)",
           "meaning": "(해요체) request mềm — '~해 주실래요' khác '~해 주세요' (sai khiến)",
-          "example": "민지 씨, 이번 발표 슬라이드 초안 공유해 주실래요?"
+          "meaning_en": "A soft request — '~해 주실래요' differs from the imperative '~해 주세요'. (haeyo-che)",
+          "example": "민지 씨, 이번 발표 슬라이드 초안 공유해 주실래요?",
+          "example_en": "Minji, could you share the draft slides for this presentation?"
         },
         {
           "idiom": "여기서 마무리할게요",
           "literal": "kết thúc tại đây",
+          "literal_en": "let's wrap up here (yeogiseo mamurihalgeyo)",
           "meaning": "(해요체) đóng buổi informal — đăng ký nội bộ; không '여기서 마무리하겠습니다' (over-formal cho lab)",
-          "example": "오늘 미팅은 여기서 마무리할게요."
+          "meaning_en": "An informal session close — internal register; not '여기서 마무리하겠습니다' (over-formal for a lab). (haeyo-che)",
+          "example": "오늘 미팅은 여기서 마무리할게요.",
+          "example_en": "Let's wrap up today's meeting here."
         }
       ],
       "cultural_notes_vi": "Văn hóa lab Hàn: (1) Lab họp 1 tuần / lần — thường buổi sáng thứ hai (한 주 시작) hoặc chiều thứ sáu (한 주 정리). (2) Quy ước trật tự: GS đến cuối, học sinh đến trước 5-10 phút. (3) Tham gia BẮT BUỘC — vắng mặt phải báo trước; vắng 3 lần liên tục = mất uy tín. (4) Sau lab meeting hay có 회식 (đi ăn) — không bắt buộc nhưng được kỳ vọng đi 1-2 lần / tháng. (5) GS dùng 해요체 với 학생 KHÔNG có nghĩa thân — vẫn là quan hệ thầy-trò, không '친구'. (6) Một 학생 dùng 반말 với GS = chấm dứt quan hệ học thuật. (7) Người Việt dễ rơi: (a) over-formal — 'OOO 교수님께서 〜하셨습니다' trong lab nội bộ thì rườm; (b) under-formal — '내일 만나' (반말) bị xem là vô lễ. (8) Nội ngày sinh nhật của một thành viên: lab có quy ước nhỏ (cake, message group). (9) Khi tốt nghiệp, học sinh trao 사진 + cảm ơn note tới GS — quy ước. (10) Lab Hàn vẫn rất cluster theo 학파 — một GS có 'ai đỡ đầu' và mạng lưới riêng; quan hệ này có ý nghĩa cho đến khi nghỉ hưu.",
@@ -6985,26 +7199,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "쉽게 말씀드리면",
           "literal": "nói dễ hiểu",
+          "literal_en": "to put it simply (swipge malsseumdeurimyeon)",
           "meaning": "(scicomm) cụm chuyển sang ngôn ngữ thường ngày — chuẩn cho mọi format media",
-          "example": "쉽게 말씀드리면, 자율성은 학습자 스스로 선택할 여지를 뜻합니다."
+          "meaning_en": "A phrase to switch into everyday language — standard across every media format. (scicomm)",
+          "example": "쉽게 말씀드리면, 자율성은 학습자 스스로 선택할 여지를 뜻합니다.",
+          "example_en": "To put it simply, autonomy means the room a learner has to choose for themselves."
         },
         {
           "idiom": "비유하자면",
           "literal": "nếu ví von",
+          "literal_en": "by way of analogy (biyuhajamyeon)",
           "meaning": "(scicomm) báo trước phép ẩn dụ — yêu cầu analogy phải giữ chính xác",
-          "example": "비유하자면, 학습 환경은 정원이고 자율성은 햇빛입니다."
+          "meaning_en": "Pre-announces a metaphor — the analogy must preserve accuracy. (scicomm)",
+          "example": "비유하자면, 학습 환경은 정원이고 자율성은 햇빛입니다.",
+          "example_en": "By way of analogy, the learning environment is a garden and autonomy is the sunlight."
         },
         {
           "idiom": "오해가 생기다",
           "literal": "hiểu lầm phát sinh",
+          "literal_en": "a misunderstanding arises (ohaega saenggida)",
           "meaning": "(scicomm) cảnh báo về diễn giải sai — bảo vệ kết quả khỏi simplification",
-          "example": "이 결과를 단순히 〜라고 해석하면 오해가 생깁니다."
+          "meaning_en": "A warning about misinterpretation — protects the result from oversimplification. (scicomm)",
+          "example": "이 결과를 단순히 〜라고 해석하면 오해가 생깁니다.",
+          "example_en": "If you simply interpret this result as ~, a misunderstanding arises."
         },
         {
           "idiom": "한 줄로 말씀드리면",
           "literal": "nói trong một dòng",
+          "literal_en": "to put it in one line (han julro malsseumdeurimyeon)",
           "meaning": "(scicomm) cụm cô đọng — câu kết của phỏng vấn chuẩn",
-          "example": "한 줄로 말씀드리면, 교실의 자유 시간을 어떻게 설계하느냐가 중요합니다."
+          "meaning_en": "A condensing phrase — the standard closing of an interview. (scicomm)",
+          "example": "한 줄로 말씀드리면, 교실의 자유 시간을 어떻게 설계하느냐가 중요합니다.",
+          "example_en": "To put it in one line, how you design free time in the classroom is what matters."
         }
       ],
       "cultural_notes_vi": "Văn hóa scicomm Hàn: (1) Hàn Quốc có truyền thống mạnh về scicomm qua TV (KBS, EBS), radio, podcast — '지대넓얕', '알릴레오 북's'. (2) Học giả tham gia public engagement được công nhận trong 업적 평가 (ngoài 논문) — quy ước thay đổi 5-10 năm gần đây. (3) Phóng viên Hàn (특히 한겨레, 경향신문) thường có 학술 background — câu hỏi sắc sảo. (4) Khi viết op-ed: thường 1500-2500 글자; chia 5 đoạn; câu cuối phải actionable. (5) Khi xuất hiện TV: trang phục formal, tránh tay rườm; nói chậm, dừng giữa câu để cắt edit. (6) Quy ước về thí nghiệm/thống kê: KHÔNG nói '통계적으로 유의' — công chúng không hiểu; nói '실제로 다른 패턴이다'. (7) Người Việt (esp. học giả mới) dễ rơi: (a) overly cẩn thận, không dám đơn giản — bị xem chán; (b) đơn giản quá mức — bị giới học thuật phản đối. Khoảng giữa: 70% đơn giản + 30% chính xác + warn cụ thể về limit. (8) Khi phỏng vấn xong: yêu cầu xem bản gốc (cho podcast/print) trước khi phát — quy ước cho phép.",
@@ -7284,26 +7510,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "잠시 숨을 고르다",
           "literal": "tạm điều hòa hơi thở",
+          "literal_en": "catch one's breath for a moment (jamsi sumeul goreuda)",
           "meaning": "(격식, defense) tạm 1-2 giây trước khi trả lời — kỹ thuật giữ bình tĩnh được tôn trọng",
-          "example": "위원님 질문에 잠시 숨을 고른 뒤 답변드리겠습니다."
+          "meaning_en": "A 1–2-second pause before answering — a respected composure technique. (formal, defense)",
+          "example": "위원님 질문에 잠시 숨을 고른 뒤 답변드리겠습니다.",
+          "example_en": "I will catch my breath for a moment and then answer the committee member's question."
         },
         {
           "idiom": "재구성하다",
           "literal": "tái cấu trúc",
+          "literal_en": "reconstruct (jaeguseonghada)",
           "meaning": "(격식) reframe câu hỏi tấn công thành câu hỏi mang tính xây dựng",
-          "example": "지적하신 우려는 본 모형의 핵심 가정에 관한 질문으로 재구성할 수 있습니다."
+          "meaning_en": "To reframe an attacking question into a constructive one. (formal)",
+          "example": "지적하신 우려는 본 모형의 핵심 가정에 관한 질문으로 재구성할 수 있습니다.",
+          "example_en": "The concern you raised can be reconstructed as a question about this model's core assumption."
         },
         {
           "idiom": "근거에 입각하여 답변드리다",
           "literal": "đáp dựa trên căn cứ",
+          "literal_en": "answer on the basis of evidence (geungeoe ipgakayeo dapbyeondeurida)",
           "meaning": "(매우 격식) cụm chống cảm xúc — báo cho hội đồng biết bạn không trả lời theo cảm tính",
-          "example": "감정적 대응 대신 자료 근거에 입각하여 답변드리겠습니다."
+          "meaning_en": "An anti-emotion phrase — signals to the committee you are not answering by feeling. (very formal)",
+          "example": "감정적 대응 대신 자료 근거에 입각하여 답변드리겠습니다.",
+          "example_en": "Rather than reacting emotionally, I will answer on the basis of the data."
         },
         {
           "idiom": "방어적 자세를 버리다",
           "literal": "bỏ tư thế phòng thủ",
+          "literal_en": "drop the defensive posture (bangeojeok jasereul beorida)",
           "meaning": "(soutenu) chấp nhận chỉ trích đúng — paradoxically tăng uy tín bằng cách lùi",
-          "example": "방어적 자세를 버리고, 한계를 한계로 명시하는 것이 더 학술적입니다."
+          "meaning_en": "To accept a valid critique — paradoxically gains credibility by stepping back. (elevated)",
+          "example": "방어적 자세를 버리고, 한계를 한계로 명시하는 것이 더 학술적입니다.",
+          "example_en": "Dropping the defensive posture and stating a limitation as a limitation is more scholarly."
         }
       ],
       "cultural_notes_vi": "Văn hóa Q&A gay gắt ở Hàn: (1) 강한 비판 (phê bình mạnh) là CÁCH 心사위원 senior thể hiện họ đã đọc kỹ — paradoxical: càng bị tấn công, càng được tôn trọng (đến mức nào đó). (2) Người đáp KHÔNG được rút lui ngay — đáp 'lùi' 1 vòng đầu thì OK, lùi cả 3 vòng = mất uy tín hoàn toàn. (3) Nhưng KHÔNG được cãi tay đôi — 'parry then advance' tốt hơn 'advance then advance'. (4) Quy ước: nếu sau 3 round 심사위원 vẫn gay gắt, 위원장 thường can thiệp '건설적인 방향으로 갑시다'. (5) Sau buổi: nếu bị tấn công gay gắt, gửi email cảm ơn (KHÔNG xin lỗi) trong 24h — quy ước '나는 흔들리지 않았다' bằng cách respond bình tĩnh. (6) Người Việt dễ rơi: (a) cãi cảm xúc '제가 정말 열심히 했습니다!' (yếu); (b) đầu hàng '죄송합니다, 제가 잘못했습니다' — vô lý vì bài chưa hỏng; (c) im lặng dài quá 5 giây — bị đọc là không có câu trả lời. Khoảng giữa = pause 1-2 giây + cấu trúc 4 bước. (7) Một số 심사위원 cố ý dùng tactic 'good cop / bad cop' — không bị lừa bởi tone; cùng cấu trúc đáp với cả hai.",
@@ -7577,26 +7815,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "오늘 이 자리는 〜을/를 위하여 마련되었습니다",
           "literal": "buổi này hôm nay được sắp xếp vì ~",
+          "literal_en": "this gathering today has been arranged for ~ (oneul i jarineun ~eul/reul wihayeo maryeondoeeotseumnida)",
           "meaning": "(매우 격식, 기자회견 도입부) cụm cố định để định mục đích — học thuộc làm chuẩn",
-          "example": "오늘 이 자리는 본원의 공식 입장을 말씀드리고자 마련되었습니다."
+          "meaning_en": "A fixed phrase to state the purpose — memorise as a template. (very formal, press-conference opening)",
+          "example": "오늘 이 자리는 본원의 공식 입장을 말씀드리고자 마련되었습니다.",
+          "example_en": "This gathering today has been arranged to convey the institute's official position."
         },
         {
           "idiom": "사전에 안내해 드리다",
           "literal": "thông báo trước (kính ngữ)",
+          "literal_en": "inform you in advance (sajeone annaehae deurida)",
           "meaning": "(격식) cụm chuẩn cho thông tin meta — agenda, time limit, broadcast rules",
-          "example": "영상 송출은 질의응답 부분만 가능함을 사전에 안내해 드립니다."
+          "meaning_en": "The standard phrase for meta-information — agenda, time limits, broadcast rules. (formal)",
+          "example": "영상 송출은 질의응답 부분만 가능함을 사전에 안내해 드립니다.",
+          "example_en": "We inform you in advance that video broadcast is permitted only for the Q&A portion."
         },
         {
           "idiom": "협조 부탁드립니다",
           "literal": "kính mong hợp tác",
+          "literal_en": "we ask for your cooperation (hyeopjo butakdeurimnida)",
           "meaning": "(매우 격식) closing chuẩn của 대변인 — 〜드립니다 khiêm cung max",
-          "example": "협조 부탁드리며, 그러면 본격적인 발표를 시작하겠습니다."
+          "meaning_en": "A standard closing for a spokesperson — maximally humble 〜드립니다. (very formal)",
+          "example": "협조 부탁드리며, 그러면 본격적인 발표를 시작하겠습니다.",
+          "example_en": "We ask for your cooperation, and with that I will begin the briefing."
         },
         {
           "idiom": "본원의 공식 입장으로 말씀드리다",
           "literal": "trình bày như lập trường chính thức của Viện",
+          "literal_en": "I speak as the institute's official position (bonwonui gongsik ipjangeuro malsseumdeurida)",
           "meaning": "(격식, 대변인 전용) chuyển trách nhiệm phát ngôn lên tổ chức, không cá nhân",
-          "example": "본 회견의 모든 발언은 본원의 공식 입장으로 말씀드리는 것입니다."
+          "meaning_en": "Shifts the responsibility of speaking onto the organisation, not the individual. (formal, spokesperson only)",
+          "example": "본 회견의 모든 발언은 본원의 공식 입장으로 말씀드리는 것입니다.",
+          "example_en": "Every remark in this conference is delivered as the institute's official position."
         }
       ],
       "cultural_notes_vi": "기자회견 ở Hàn là một thể loại nghi lễ chặt chẽ — khác xa Việt Nam và cũng khác Mỹ. Hiểu sai vài điểm là tin sốc trong vòng 24 giờ.\n\n(1) THỜI GIAN: 기자회견 cấp Viện (or hơn) thường diễn ra ở 정부세종청사, 한국프레스센터 (서울 광화문), hoặc trụ sở tổ chức. Bắt đầu chính xác đến phút — 14:00 nghĩa là phát biểu mở đầu lúc 14:00:00, không 14:00:30. Trễ 1 phút = tin với headline 'X 분 지각'.\n\n(2) TRANG PHỤC: 정장 (suit) tối, cà-vạt cho nam, áo blazer cho nữ. Một 대변인 đến mặc áo polo = vô lý nghiêm trọng. KBS, MBC, JTBC, YTN sẽ chụp toàn cảnh và toàn diện trang phục — bất kỳ lệch chuẩn đều thành câu chuyện riêng.\n\n(3) CẤU TRÚC HỌP BÁO chuẩn ở Hàn có 4 ô: 사회자 mở phiên → 발표자 phát biểu → 질의응답 → 사회자 đóng phiên. Bỏ một ô = không chuyên nghiệp. Trong họp báo nhỏ, 사회자 và 발표자 có thể là một người, nhưng phải nói rõ chuyển vai.\n\n(4) 눈치 TRAP cho người Việt: trong họp báo Việt thường có khoảnh khắc 'cả buổi cùng cười nhẹ' để giải tỏa căng thẳng. Ở Hàn KHÔNG — họp báo là nghi thức, cười tự nhiên hoặc nói chuyện riêng = bị đọc là không nghiêm trọng. Tỉnh táo, gravitas duy trì cả buổi. Một 발표자 cười nhẹ trên TV trong họp báo về crisis = tựa đề báo 'X 웃으며 답변, 시민들 분노'. Đây là 눈치 đặc biệt cấp Hàn.\n\n(5) PHƯƠNG TIỆN MEDIA: trong họp báo, các tay máy KBS, MBC, SBS, YTN, JTBC, 채널A, MBN ngồi ở hàng đầu; 한겨레, 조선, 중앙, 동아, 경향 ở hàng giữa; báo điện tử (오마이뉴스, 뉴스1, 뉴시스) ở phía sau. Khi 사회자 mời câu hỏi, quy ước là cho các báo đài lớn trước. Đảo thứ tự = vô lý chính trị (tỏ ra ưu ái).\n\n(6) DANH XƯNG: 'OOO 기자님' khi mời lên hỏi; 'OOO 기자' khi nhắc đến trong cuộc nói chuyện sau. Không bao giờ chỉ 'OOO 씨' với phóng viên trong 기자회견 — họ là chuyên môn, dùng 'OOO 기자님' là chuẩn nhất.\n\n(7) Sau buổi: 대변인실 sẽ gửi 보도자료 chính thức (text + media kit) trong 30 phút — đó là hợp đồng ngầm. Không gửi = báo chí tự diễn giải, có thể sai. Lưu ý: tên các nhà báo, đài cụ thể trong bài này (한겨레 박지훈) là illustrative — sự nghiệp của các phóng viên thay đổi nhanh, học viên nên xác nhận hiện tại trước khi trích trong tác phẩm riêng.",
@@ -7872,26 +8122,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "〜이라고 밝혔다",
           "literal": "đã làm rõ rằng ~",
+          "literal_en": "stated that ~ (~irago balkyeotda)",
           "meaning": "(보도자료 전용) cụm chuẩn để dẫn quote — KHÔNG '말했다' (sai register)",
-          "example": "김 실장은 \"본 사업은 단순 지원이 아니다\"라고 밝혔다."
+          "meaning_en": "The standard phrase to introduce a quote — NOT '말했다' (wrong register). (press release only)",
+          "example": "김 실장은 \"본 사업은 단순 지원이 아니다\"라고 밝혔다.",
+          "example_en": "Director Kim stated that 'this project is not mere funding.'"
         },
         {
           "idiom": "엠바고 처리하다",
           "literal": "xử lý theo embargo",
+          "literal_en": "place under embargo (embago cheorihada)",
           "meaning": "(보도자료) áp lệnh cấm đăng trước thời điểm — chuẩn quốc tế nhập vào Hàn",
-          "example": "본 보도자료는 4월 1일 오전 10시까지 엠바고 처리한다."
+          "meaning_en": "To impose a ban on publishing before a set time — an international convention adopted in Korea. (press release)",
+          "example": "본 보도자료는 4월 1일 오전 10시까지 엠바고 처리한다.",
+          "example_en": "This press release is under embargo until 10 am on 1 April."
         },
         {
           "idiom": "별첨",
           "literal": "đính kèm riêng",
+          "literal_en": "attachment (byeolcheom)",
           "meaning": "(공식 문서) phụ lục đính kèm — phải đánh số (별첨 1, 2, 3)",
-          "example": "별첨 1: 사업 개요 / 별첨 2: 통계 표 5종"
+          "meaning_en": "A separately attached appendix — must be numbered (별첨 1, 2, 3). (official document)",
+          "example": "별첨 1: 사업 개요 / 별첨 2: 통계 표 5종",
+          "example_en": "Attachment 1: project overview / Attachment 2: 5 statistical tables."
         },
         {
           "idiom": "5W1H를 챙기다",
           "literal": "trông coi 5W1H",
+          "literal_en": "cover the 5W1H (5W1Hreul chaenggida)",
           "meaning": "(언론 작성) đảm bảo lead có ai-cái gì-khi nào-ở đâu-tại sao-thế nào",
-          "example": "lead 단락에서 5W1H를 챙기는 것이 보도자료 작성의 기본이다."
+          "meaning_en": "To ensure the lead has who-what-when-where-why-how. (journalism)",
+          "example": "lead 단락에서 5W1H를 챙기는 것이 보도자료 작성의 기본이다.",
+          "example_en": "Covering the 5W1H in the lead paragraph is the basic of press-release writing."
         }
       ],
       "cultural_notes_vi": "보도자료 ở Hàn là một thể loại nghi thức nghiêm ngặt và là cầu nối giữa tổ chức và báo chí.\n\n(1) HỆ THỐNG 출입처: ở Hàn, các 청사 (cơ quan chính phủ) và tổ chức lớn có 'press pool' đăng ký — chỉ phóng viên đã đăng ký mới được vào. 보도자료 đầu tiên gửi đến danh sách này, sau đó công khai. Người Việt mới làm PR ở Hàn dễ bỏ qua hệ thống và gửi rộng — bị phóng viên 출입처 phản ứng vì 'mất ưu tiên'.\n\n(2) THỜI ĐIỂM PHÁT: quy ước phát 보도자료 vào buổi chiều (15:00–17:00) một ngày trước ngày bài lên báo — để báo có thời gian biên tập. Phát buổi sáng = báo phải tin ngay, gây áp lực; phát buổi tối = báo bỏ. Crisis communication có thể phát ngay nhưng phải kèm 'EMBARGO: NONE' (KHÔNG embargo).\n\n(3) 눈치 TRAP cho người Việt: khi tổ chức bạn có tin xấu, đừng cố che giấu trong 보도자료 dài — báo Hàn rất giỏi trích lọc. Quy ước: nêu tin xấu trong câu đầu (lead) đầy đủ + ngay sau đó là biện pháp khắc phục. Cố giấu sẽ bị 한겨레, 시사IN khui vào tuần sau với headline 'KEDI 숨겼다'. Quote nổi tiếng từ 김어준 podcast: '나쁜 뉴스는 첫 줄에 박아야 한다.'\n\n(4) DEFINITION CỦA 'INFORMATION CONTROL' KHÁC VIỆT: ở Hàn, kiểm soát thông tin thông qua TIMING + FRAMING (chọn câu trích, chọn người trích, chọn ngày phát), KHÔNG qua dấu cấm thông tin. 엠바고 là công cụ chuẩn — vi phạm = bị 출입처 cấm trong 1-3 tháng.\n\n(5) QUOTES ĐƯỢC THIẾT KẾ: một 보도자료 có 1-2 quote 'designed for headline' — đó là kỹ năng đặc biệt. Quote không quá 30 글자, gây ấn tượng (paradox, contrast, soundbite). Một 보도자료 không có quote đáng trích = báo đặt headline tự, có thể sai. Một quote tốt: '단순 지원이 아닌 학습자 중심 모델.' Một quote tồi: '우리는 학생들의 미래를 위해 최선을 다하겠습니다.' (rỗng).\n\n(6) DANH XƯNG TỔ CHỨC: 'KEDI' (영문) + '한국교육개발원' (한글) — luôn ghi cả hai trong 보도자료, vì báo nước ngoài cũng nhận. Tên tổ chức trong câu đầu phải đầy đủ; sau đó có thể rút gọn. Tên các đài, báo nhắc trong dialogue (한겨레, 조선일보, 한국일보) là illustrative — học viên nên xác nhận tên đầy đủ và 출입처 hiện tại trước khi dùng trong tác phẩm riêng.",
@@ -8165,26 +8427,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "〜이/가 필요한 시점이다",
           "literal": "là thời điểm cần ~",
+          "literal_en": "it is the moment that ~ is needed (~i/ga piryohan sijeomida)",
           "meaning": "(칼럼 closer) cụm chuẩn closer of op-ed — đáng làm header",
-          "example": "지금이야말로 근본적 처방이 필요한 시점이다."
+          "meaning_en": "The standard op-ed closer — header-worthy. (column closer)",
+          "example": "지금이야말로 근본적 처방이 필요한 시점이다.",
+          "example_en": "Now is precisely the moment that a fundamental remedy is needed."
         },
         {
           "idiom": "본질을 놓치다",
           "literal": "bỏ lỡ bản chất",
+          "literal_en": "miss the essence (bonjireul notchida)",
           "meaning": "(칼럼) cụm phê bình một diagnosis sai — soutenu",
-          "example": "단순한 자원 배분 문제로 진단해서는 본질을 놓치게 된다."
+          "meaning_en": "A phrase criticising a wrong diagnosis — elevated. (column)",
+          "example": "단순한 자원 배분 문제로 진단해서는 본질을 놓치게 된다.",
+          "example_en": "Diagnosing it as a mere resource-allocation problem misses the essence."
         },
         {
           "idiom": "단편적 지원이 아니라",
           "literal": "không phải hỗ trợ rời rạc mà",
+          "literal_en": "not piecemeal support but ~ (danpyeonjeok jiwoni anira)",
           "meaning": "(칼럼 정책 제안) thiết lập đối lập hỗ trợ-rời-rạc-vs-chính-sách-tổng-thể — hữu hiệu",
-          "example": "필요한 것은 단편적 지원이 아니라 종합 정책이다."
+          "meaning_en": "Sets up the piecemeal-support-vs-comprehensive-policy opposition — effective. (column, policy proposal)",
+          "example": "필요한 것은 단편적 지원이 아니라 종합 정책이다.",
+          "example_en": "What is needed is not piecemeal support but a comprehensive policy."
         },
         {
           "idiom": "격차로 누적되다",
           "literal": "tích lũy thành khoảng cách",
+          "literal_en": "accumulates into a gap (gyeokcharo nujeokdoeda)",
           "meaning": "(칼럼) cụm cảnh báo về compound effect — closer mạnh",
-          "example": "교육의 격차는 결국 사회의 격차로 누적된다."
+          "meaning_en": "A warning about a compound effect — a strong closer. (column)",
+          "example": "교육의 격차는 결국 사회의 격차로 누적된다.",
+          "example_en": "Educational gaps ultimately accumulate into a societal gap."
         }
       ],
       "cultural_notes_vi": "기고문 / 칼럼 trong báo Hàn là một thể loại có cấu trúc kinh tế-văn hóa riêng.\n\n(1) HỆ THỐNG 면 (trang): các báo lớn có 오피니언 면 chuẩn — 사설 + 칼럼 + 기고. 사설 = ban biên tập viết (anonymous, voice của báo); 칼럼 = chuyên gia thường kỳ ký tên; 기고 = chuyên gia khách mời. Mỗi loại có giá trị uy tín khác — 칼럼 thường kỳ là ổn định nhất.\n\n(2) PHÂN PHE Ý THỨC: báo Hàn phân chia 진보 (한겨레, 경향) vs 보수 (조선, 중앙, 동아) vs 중도 (한국일보) — học giả chọn báo thường theo định hướng. Một học giả viết cho cả 한겨레 lẫn 조선 = bị xem là cơ hội. Quy ước: chọn 1 mạng và viết thường trên đó.\n\n(3) 눈치 TRAP cho người Việt: trong 칼럼 Việt, tác giả thường kết bằng '나' — quan điểm cá nhân. Ở Hàn, '나' / '저' rất hiếm; thay là impersonal hoặc '필자는'. Phong cách 칼럼 Hàn là 'objectivity-flavored opinion' — tác giả có quan điểm rõ nhưng giọng văn không cá nhân hóa.\n\n(4) ĐỘ DÀI VÀ NHỊP: 칼럼 chuẩn 1,500-2,500 글자. Một câu trung bình 50-60 글자. Ngắt câu mạnh — '왜 그런가? 답은 분명하다.' = nhịp đắc địa. Đoạn không quá 5 câu — vì lên báo bị wrap khó đọc.\n\n(5) HEADER LIFTING: desk thường tự đặt header dựa trên câu mạnh nhất trong bài — không phải tiêu đề tác giả nộp. Tác giả khôn lửa designed sentences để dễ trích — đó là kỹ năng đặc biệt. Câu kết của 칼럼 này (지금이야말로 근본적 처방이 필요한 시점이다) chính là một 'header bait'.\n\n(6) THÙ LAO: 칼럼 cho học giả ở báo lớn ở Hàn ~30-50만원/bài — không cao nhưng uy tín. Nguồn uy tín đi kèm cơ hội tham gia 자문 정책 (tư vấn chính sách) sau đó. Lưu ý các báo, biên tập viên cụ thể nhắc trong dialogue (한겨레 데스크) là illustrative — sự tổ chức biên tập thay đổi nhanh ở Hàn, học viên xác nhận hiện tại trước khi nộp bài thực.",
@@ -8476,26 +8750,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "아, 좋은 질문이세요",
           "literal": "à, đó là câu hỏi tốt",
+          "literal_en": "ah, that's a good question (a, joheun jilmuniseyo)",
           "meaning": "(해요체, 팟캐스트) cụm chuyển ý chuẩn — thừa nhận host đặt câu hay rồi vào nội dung",
-          "example": "아, 좋은 질문이세요. 말씀드리자면 — 저희 연구는 〜를 다뤄요."
+          "meaning_en": "A standard transition — acknowledges the host's good question, then into content. (haeyo-che, podcast)",
+          "example": "아, 좋은 질문이세요. 말씀드리자면 — 저희 연구는 〜를 다뤄요.",
+          "example_en": "Ah, that's a good question. To put it this way — our research deals with ~."
         },
         {
           "idiom": "쉽게 풀어 드리면",
           "literal": "nếu trình bày dễ hiểu",
+          "literal_en": "to unpack it simply (swipge pureo deurimyeon)",
           "meaning": "(해요체) cụm chuyển sang ngôn ngữ thường ngày — đặc biệt cho thính giả không chuyên",
-          "example": "쉽게 풀어 드리면, 자유 시간을 어떻게 채우는지가 더 중요해요."
+          "meaning_en": "A phrase to switch into everyday language — especially for a lay audience. (haeyo-che)",
+          "example": "쉽게 풀어 드리면, 자유 시간을 어떻게 채우는지가 더 중요해요.",
+          "example_en": "To unpack it simply, how you fill free time matters more."
         },
         {
           "idiom": "그렇죠",
           "literal": "đúng vậy nhỉ",
+          "literal_en": "right, exactly (geureochyo)",
           "meaning": "(해요체) câu xác nhận mềm — chuẩn cho dialogue podcast; có cảm giác bằng nhau với host",
-          "example": "그렇죠. 동기와 시간을 함께 봐야 해요."
+          "meaning_en": "A soft confirmation — standard for podcast dialogue; conveys equal footing with the host. (haeyo-che)",
+          "example": "그렇죠. 동기와 시간을 함께 봐야 해요.",
+          "example_en": "Right, exactly. You have to look at motivation and time together."
         },
         {
           "idiom": "한 번 보시면 좋겠어요",
           "literal": "nếu xem một lần thì hay",
+          "literal_en": "it'd be good to take a look (han beon bosimyeon joketsseoyo)",
           "meaning": "(해요체) khuyến nghị mềm cho thính giả — KHÔNG '꼭 보세요' (cứng); KHÔNG '보십시오' (over-formal)",
-          "example": "보고서 PDF로 공개되어 있어요. 청취자분들 한 번 보시면 좋겠어요."
+          "meaning_en": "A soft recommendation to listeners — not the curt '꼭 보세요', not the over-formal '보십시오'. (haeyo-che)",
+          "example": "보고서 PDF로 공개되어 있어요. 청취자분들 한 번 보시면 좋겠어요.",
+          "example_en": "The report is open as a PDF. Listeners, it'd be good to take a look."
         }
       ],
       "cultural_notes_vi": "팟캐스트 và 시사 토크쇼 ở Hàn là một thể loại sôi động — và chuyển từ thể loại 기자회견 (formal) là một bước đăng ký lớn người Việt dễ nhầm.\n\n(1) PHÂN PHE PODCAST: ở Hàn có dải rộng — '김어준의 뉴스공장 historical' và '김현정의 뉴스쇼' (CBS) — 진보 leaning; '주진우 라이브' — center-left; 정치 podcasts gắn với từng phe. Một học giả xuất hiện trên một chương trình = thường được đọc là chính trị aligned. Quy ước: chọn cẩn thận; nếu là chuyên gia trung lập, có thể xuất hiện trên cả hai phía.\n\n(2) PHÂN TÔNG VỚI TV NEWS: TV news 앵커 dùng 〜습니다 cứng; podcast host dùng 해요체 ấm. Khi guest học thuật chuyển từ TV news sang podcast trong cùng tuần — phải chuyển đăng ký toàn diện. Một câu '오늘 이 자리는 〜을/를 위하여…' (격식) trên podcast = đọc là 'không hiểu media'.\n\n(3) 눈치 TRAP: ở 팟캐스트, host thường dùng cụm 'hint' thông báo time đang hết — '한 마디만 더 하시죠' (một lời nữa thôi nhé), '이제 마무리할 시간이…' (sắp đến giờ kết). Guest người Việt mới làm podcast Hàn dễ bỏ qua hint, nói tiếp đến khi host phải ngắt rõ. Cách đúng: khi nghe hint, kết câu trong 30 giây.\n\n(4) RECORDING vs LIVE: 라이브 방송 (live broadcast) — KHÔNG sửa được; cẩn trọng từng từ. 녹음 후 편집 (record then edit) — có thể yêu cầu cắt một câu sau ('아까 그 부분, 편집 가능할까요?'). Quy ước: hỏi trước recording — 'editing 가능 여부 확인 부탁드려요.'\n\n(5) PODCAST CULTURE: thính giả Hàn rất tích cực — bình luận live trên YouTube cùng lúc, gọi vào, nhắn lên trang. Guest có thể mời thính giả tương tác '댓글로 의견 보내 주시면…' nhưng KHÔNG quá thường (vô tổ chức).\n\n(6) Tên các chương trình radio / podcast nhắc trong dialogue (CBS 김현정의 뉴스쇼) là illustrative — landscape media Hàn thay đổi nhanh, host đến và đi. Học viên xác nhận chương trình hiện hoạt động trước khi nhắc trong tác phẩm riêng.",
@@ -8767,26 +9053,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "결론부터 말씀드리면",
           "literal": "nói từ kết luận",
+          "literal_en": "to give you the conclusion first (gyeolronbuteo malsseumdeurimyeon)",
           "meaning": "(TV news) cụm chuẩn để bắt đầu câu trả lời quan trọng — báo trước cho viewer 'chuẩn bị nghe điểm chính'",
-          "example": "결론부터 말씀드리면, 학습 격차는 동기 부족에서 비롯됩니다."
+          "meaning_en": "The standard phrase to start an important answer — tells the viewer to 'get ready for the main point'. (TV news)",
+          "example": "결론부터 말씀드리면, 학습 격차는 동기 부족에서 비롯됩니다.",
+          "example_en": "To give you the conclusion first, the learning gap stems from a lack of motivation."
         },
         {
           "idiom": "간단히 말씀드리면",
           "literal": "nói một cách đơn giản",
+          "literal_en": "to put it briefly (gandanhi malsseumdeurimyeon)",
           "meaning": "(TV news) cụm chuẩn cho 시청자 — báo trước câu trả lời được đơn giản hóa cho hiểu nhanh",
-          "example": "간단히 말씀드리면, 양이 아닌 질입니다."
+          "meaning_en": "A standard phrase for viewers — flags that the answer is simplified for quick understanding. (TV news)",
+          "example": "간단히 말씀드리면, 양이 아닌 질입니다.",
+          "example_en": "To put it briefly, it is quality, not quantity."
         },
         {
           "idiom": "본 연구의 결론입니다",
           "literal": "đây là kết luận của nghiên cứu này",
+          "literal_en": "that is this study's conclusion (bon yeonguui gyeolronimnida)",
           "meaning": "(격식) cụm đóng câu mạnh — chuyển trách nhiệm phát ngôn lên 'nghiên cứu', không cá nhân",
-          "example": "정책은 양이 아닌 질에 집중해야 한다는 것이 본 연구의 결론입니다."
+          "meaning_en": "A strong closing phrase — shifts the responsibility onto 'the research', not the individual. (formal)",
+          "example": "정책은 양이 아닌 질에 집중해야 한다는 것이 본 연구의 결론입니다.",
+          "example_en": "That policy must focus on quality, not quantity — that is this study's conclusion."
         },
         {
           "idiom": "한 말씀 부탁드립니다",
           "literal": "kính nhờ một lời",
+          "literal_en": "a closing word, please (han malsseum butakdeurimnida)",
           "meaning": "(TV news) cụm 앵커 mời câu kết — guest đáp với câu thông điệp + actionable",
-          "example": "끝으로, 시청자분들께 한 말씀 부탁드립니다."
+          "meaning_en": "The anchor's phrase inviting a closing remark — the guest answers with a message + an actionable. (TV news)",
+          "example": "끝으로, 시청자분들께 한 말씀 부탁드립니다.",
+          "example_en": "Finally, a closing word for our viewers, please."
         }
       ],
       "cultural_notes_vi": "TV news Hàn là một thể loại nghiêm ngặt với cấu trúc thời lượng cứng và đăng ký formal nhất.\n\n(1) PHÂN PHE TV NEWS: KBS 뉴스9 (공영방송, balance), MBC 뉴스데스크 (truyền thống tả-trung), SBS 8뉴스 (commercial), JTBC 뉴스룸 (손석희 시기 trung-tả, hiện tại biến đổi), YTN/연합뉴스TV (cable). Khi guest học giả xuất hiện, chọn channel phù hợp với chuyên môn và độ chính xác của số liệu — sai số liệu trên KBS 뉴스9 là tin sốc cấp quốc gia.\n\n(2) TIME COMPRESSION CỰC KỲ NGHIÊM: trong 톱뉴스 (top news), guest có 3-5 phút TỐI ĐA cho cả phỏng vấn. Mỗi câu trả lời 60-90 giây. Vượt = 앵커 ngắt; bị ngắt = đọc là không hiểu media. QUY TẮC '결론부터' (kết luận trước) là chuẩn TV — vì viewer có thể chuyển kênh giữa câu.\n\n(3) 눈치 TRAP cho người Việt: 앵커 dùng câu hỏi 'hint' — '간단히' (đơn giản), '한 마디로' (một lời), '30초 안에' — đó là tín hiệu 'TÔI CÒN ÍT THỜI GIAN'. Người Việt mới làm TV Hàn thường ignored hint và trả lời chi tiết → 앵커 ngắt → guest mất uy tín. Cách đúng: ngay khi nghe hint, kết câu trong 30s.\n\n(4) STUDIO ETIQUETTE: arrive 1 tiếng trước; trang điểm bắt buộc nam và nữ; trang phục không họa tiết nhỏ (gây 'moiré' trên TV). Trên ghế studio: ngồi thẳng, chân đặt cố định (chân nhịp = micro thu được); tay đặt trên đùi hoặc bàn; mắt tới 앵커, KHÔNG camera (trừ khi 앵커 mời 'camera 향해 한 말씀').\n\n(5) GỮI BIỂU CẢM: TV Hàn phóng đại biểu cảm. Một nhếch mép = TV reading 'sarcasm'. Một nháy mắt = 'tired/uncomfortable'. Trang phục, biểu cảm, tone — tất cả đều phải 'serious-warm-controlled'.\n\n(6) LỖI THƯỜNG GẶP: (a) Cười khi nói số liệu (TV reading 'không nghiêm túc'); (b) trả lời '잘 모르겠습니다' (KHÔNG được — guest lên TV phải có câu trả lời, dù hedge — '추후 검토하여 답변드리겠습니다'); (c) chỉ vào 앵커 hoặc camera — vô lễ; (d) đùa nhẹ — không phù hợp news context; phù hợp talk show.\n\n(7) Tên các 앵커 cụ thể nhắc trong dialogue (KBS 뉴스9 류) là illustrative — danh sách 앵커 thay đổi theo seasonal renewal; học viên xác nhận 앵커 hiện tại của chương trình trước khi nhắc trong tác phẩm.",
@@ -9060,26 +9358,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "머리 숙여 사과드리다",
           "literal": "cúi đầu xin lỗi",
+          "literal_en": "bow one's head and apologise (meori sugyeo sagwadeurida)",
           "meaning": "(매우 격식, 사과 기자회견 전용) cụm chuẩn cao nhất của xin lỗi công khai — kèm bow physical 90 độ",
-          "example": "이번 일로 심려를 끼쳐 드린 점 머리 숙여 사과드립니다."
+          "meaning_en": "The highest standard phrase of a public apology — accompanied by a physical 90° bow. (very formal, apology conference only)",
+          "example": "이번 일로 심려를 끼쳐 드린 점 머리 숙여 사과드립니다.",
+          "example_en": "I bow my head and apologise for the worry this has caused."
         },
         {
           "idiom": "변명의 여지가 없다",
           "literal": "không có chỗ biện minh",
+          "literal_en": "there is no room for excuse (byeonmyeongui yeojiga eopda)",
           "meaning": "(격식, 사과) cụm thừa nhận trách nhiệm tuyệt đối — bắt buộc trong 사과문 nghiêm trọng",
-          "example": "본 사안에 대한 모든 책임은 본원에 있으며, 어떠한 변명의 여지도 없습니다."
+          "meaning_en": "A phrase of absolute responsibility — mandatory in a serious apology statement. (formal, apology)",
+          "example": "본 사안에 대한 모든 책임은 본원에 있으며, 어떠한 변명의 여지도 없습니다.",
+          "example_en": "All responsibility for this matter lies with the institute, and there is no room for any excuse."
         },
         {
           "idiom": "전적인 책임을 지다",
           "literal": "gánh trách nhiệm hoàn toàn",
+          "literal_en": "bear full responsibility (jeonjeogin chaegimeul jida)",
           "meaning": "(매우 격식) cụm chuyển trách nhiệm về cá nhân/tổ chức — KHÔNG '관련된 책임' (yếu)",
-          "example": "그 책임의 전적은 원장인 본인에게 있음을 분명히 밝힙니다."
+          "meaning_en": "Shifts responsibility onto the individual/organisation — NOT '관련된 책임' (weak). (very formal)",
+          "example": "그 책임의 전적은 원장인 본인에게 있음을 분명히 밝힙니다.",
+          "example_en": "I make clear that full responsibility lies with me as the director."
         },
         {
           "idiom": "재발 방지 대책",
           "literal": "biện pháp ngăn tái phát",
+          "literal_en": "recurrence-prevention measures (jaebal bangji daechaek)",
           "meaning": "(공식) cụm cấu trúc chuẩn — phải đánh số (첫째/둘째/셋째) với biện pháp cụ thể, không trừu tượng",
-          "example": "재발 방지를 위해 다음 세 가지 대책을 즉시 시행하겠습니다."
+          "meaning_en": "A standard structural phrase — must be numbered (첫째/둘째/셋째) with concrete, non-abstract measures. (official)",
+          "example": "재발 방지를 위해 다음 세 가지 대책을 즉시 시행하겠습니다.",
+          "example_en": "To prevent recurrence, the following three measures will be implemented immediately."
         }
       ],
       "cultural_notes_vi": "사과 기자회견 ở Hàn là một thể loại nghi lễ độc đáo và cực kỳ nghiêm — không có tương đương trực tiếp ở Việt Nam, và khác xa cả Mỹ và Nhật.\n\n(1) BOW GRADIENT: ở Hàn, độ sâu cúi đầu mang ý nghĩa định lượng. 15° = chào lịch sự bình thường; 30° = cảm ơn / xin lỗi nhỏ; 45° = lỗi nghiêm trọng cá nhân; 90° = lỗi công khai cấp tổ chức. Một CEO cúi 30° trong họp báo về tử nạn nhân viên = headline 'X 가벼운 사과' = thiệt hại lớn hơn không xin lỗi. Một CEO cúi 90° giữ 7 giây = ổn. Quy ước: chờ phóng viên ngẩng đầu (sau khi chụp ảnh) trước khi bạn ngẩng đầu.\n\n(2) TIMING TUYỆT ĐỐI: 사과 기자회견 phải diễn ra trong 24-48 giờ kể từ khi sự việc bùng nổ. Trễ = 'không thành tâm'; tổ chức bị đọc là 'tính toán PR'. Trong 24h đầu, tổ chức phải: (a) công bố 사과문 viết qua 보도자료, (b) gọi 사과 기자회견 cho 36-48h sau, (c) ngừng mọi hoạt động không cốt yếu (mạng xã hội, marketing).\n\n(3) 눈치 TRAP cho người Việt — RẤT NGHIÊM: trong 사과 기자회견, KHÔNG được biểu cảm gì ngoài serious-grim. Một micro-expression nhếch môi = TV slow-mo, viral 24h. Một câu 'thực sự rất buồn' kèm tiếng cười nhẹ ngại ngùng = headline '울먹이며 웃었다, 시민 분노'. Người Việt có habit cười nhẹ trong tình huống bối rối — Hàn TV reading là 'mocking the public'. Tập kiểm soát mặt 7 phút trước gương trước.\n\n(4) NGÔN NGỮ TUYỆT ĐỐI KHÔNG ĐƯỢC: 'I think', 'maybe', 'I'll try', 'we hope', '~ㄹ까 합니다' (mơ hồ), '아마' (có lẽ). PHẢI: 'I will' / '시행하겠습니다' / '책임지겠습니다' (chắc chắn). Người Việt mới làm crisis comm Hàn dễ rơi vào hedge — bị đọc là 'không cam kết'.\n\n(5) FOLLOW-UP THIẾT YẾU: trong 1 tuần sau 사과 기자회견, tổ chức phải có MIN 3 hành động cụ thể visible — (a) báo cáo 백서 đầu tiên (interim), (b) sa thải / luân chuyển ít nhất 1 nhân sự cao cấp (nếu nghiêm trọng), (c) liên lạc trực tiếp với người bị ảnh hưởng. Thiếu = 'sám hối giả'; báo Hàn (한겨레, 시사IN) sẽ khui trong 1-2 tuần.\n\n(6) NGÔN NGỮ NHẠY CẢM: KHÔNG '실수' (sai sót — quá nhẹ); KHÔNG '오해' (hiểu lầm — đẩy lỗi sang người khác); KHÔNG '유감' (lấy làm tiếc — KHÔNG phải xin lỗi, là expressing regret kiểu chính trị quốc tế). PHẢI: '잘못' (lỗi sai), '책임' (trách nhiệm), '사과드립니다' (xin lỗi). Một quan chức Hàn từng dùng '유감' thay '사과' = bão dư luận trong 72h.\n\n(7) Tên các tổ chức, người cụ thể nhắc trong dialogue (KEDI, 박지훈 원장) là illustrative — học viên KHÔNG được dùng nguyên trong tác phẩm thực, vì 사과 thực sự gắn với một sự kiện cụ thể của tổ chức cụ thể; nhầm = vô tình bôi nhọ.",
@@ -9365,26 +9675,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "오늘 자리는 백브리핑임을 안내드립니다",
           "literal": "tôi thông báo buổi hôm nay là 백브리핑",
+          "literal_en": "I inform you that today's session is a background briefing (oneul jarineun baekbeuripingimeul annaedeurimnida)",
           "meaning": "(매우 격식, 백브리핑 도입부) cụm cố định bắt buộc — bỏ = không có defense nếu phóng viên trích sai",
-          "example": "오늘 자리는 백브리핑임을 사전에 안내드립니다."
+          "meaning_en": "The mandatory fixed opener — omit it and there is no defence against a misquote. (very formal, background-briefing opening)",
+          "example": "오늘 자리는 백브리핑임을 사전에 안내드립니다.",
+          "example_en": "I inform you in advance that today's session is a background briefing."
         },
         {
           "idiom": "관계자 익명으로 처리하다",
           "literal": "xử lý ẩn danh quy về 'nguồn'",
+          "literal_en": "handle it anonymously as 'a source' (gwangyeja ingmyeongeuro cheorihada)",
           "meaning": "(공식 PR) cụm chuẩn cho attribution agreement — phóng viên quote nội dung mà không lộ tên nguồn",
-          "example": "이 부분은 본원 관계자 익명으로 처리해 주시면 감사하겠습니다."
+          "meaning_en": "The standard phrase for an attribution agreement — reporters quote the content without revealing the source. (official PR)",
+          "example": "이 부분은 본원 관계자 익명으로 처리해 주시면 감사하겠습니다.",
+          "example_en": "I would be grateful if this part were handled anonymously as an institute source."
         },
         {
           "idiom": "엠바고로 처리하다",
           "literal": "xử lý theo embargo",
+          "literal_en": "place under embargo (embagoro cheorihada)",
           "meaning": "(공식) áp giới hạn thời gian — vi phạm = 출입처 đóng cửa",
-          "example": "공식 발표 전까지 엠바고로 처리해 주시기 바랍니다."
+          "meaning_en": "To impose a time limit — a breach gets the press corps's access closed. (official)",
+          "example": "공식 발표 전까지 엠바고로 처리해 주시기 바랍니다.",
+          "example_en": "Please keep this under embargo until the official announcement."
         },
         {
           "idiom": "맥락을 함께 이해하다",
           "literal": "cùng hiểu bối cảnh",
+          "literal_en": "understand the context together (maekrageul hamkke ihaehada)",
           "meaning": "(백브리핑 전용) cụm chỉ rõ rằng nội dung được chia sẻ là 'context' không 'fact for direct quote'",
-          "example": "맥락을 함께 이해해 주시는 것이 중요하다고 판단됩니다."
+          "meaning_en": "A phrase making clear the content is shared as 'context', not 'fact for direct quotation'. (background briefing only)",
+          "example": "맥락을 함께 이해해 주시는 것이 중요하다고 판단됩니다.",
+          "example_en": "It is judged important that you understand the context together."
         }
       ],
       "cultural_notes_vi": "백브리핑 là một thể loại 'middle-ground' giữa họp báo công khai và đối thoại không chính thức — và là một institution đặc thù của 출입처 Hàn.\n\n(1) HỆ THỐNG 출입처: ở Hàn, 'press pool' đăng ký theo cơ quan — 청와대 출입처, 국회 출입처, 대법원 출입처, 각 부처 출입처, KEDI 출입처 v.v. Mỗi 출입처 có 5-30 phóng viên cố định. 백브리핑 chỉ dành cho 출입처 — KHÔNG mở cho phóng viên ngoài. Người Việt mới làm PR ở Hàn dễ gửi thông báo 백브리핑 rộng — vi phạm nghiêm trọng.\n\n(2) ATTRIBUTION GRADIENT: 4 cấp với consequence khác nhau cho cả nguồn và phóng viên. (a) 'on the record' / 대변인 quote — full name, full quote OK; (b) 'on background' / '본원 관계자 익명' — quote OK, name NOT; (c) 'deep background' / '정부 소식통' — paraphrase OK, direct quote NOT; (d) 'off the record' — KHÔNG được dùng dưới hình thức nào, kể cả paraphrase. Phóng viên Hàn quen các cấp này; 대변인 phải gọi tên cấp trước phát ngôn.\n\n(3) 눈치 TRAP cho người Việt: trong 백브리핑, có thể có lúc phóng viên hỏi 'Tôi có thể nói thêm gì với editor?' — đó KHÔNG phải sự tò mò, mà là yêu cầu chính thức về phạm vi share. Trả lời cụ thể: 'editor 한 분께만 백그라운드로, 데스크 회의 외 공개 금지' — chuẩn. Mơ hồ '편하게요' = bị diễn giải tự, có thể leak.\n\n(4) VI PHẠM EMBARGO: là tội nặng. Một phóng viên vi phạm = 출입처 cấm 1-3 tháng cho cả tờ báo, không chỉ cá nhân; danh tiếng phóng viên hỏng. Tổ chức cũng phải chịu trách nhiệm — nếu lỗi kỹ thuật của 대변인실 (ví dụ gửi sớm) = 대변인 phải xin lỗi 출입처 chính thức. Quy ước nghiêm.\n\n(5) MOTIVATION CHO 백브리핑: tổ chức dùng 백브리핑 để (a) 'trial balloon' (test reaction trước khi công bố); (b) prebuttal (đối phó tin xấu sắp ra); (c) 'context-setting' (làm phóng viên hiểu sâu để không trích sai sau khi công bố). Người Việt thường dùng cho mục đích (c) đầu tiên — đó là cách an toàn nhất.\n\n(6) TIMING TỐI ƯU: 24-48h trước công bố chính thức. Quá sớm = leak risk; quá muộn = phóng viên không có thời gian thu thập context.\n\n(7) Tên các báo cụ thể nhắc trong dialogue (한겨레, 조선일보, 중앙일보) là illustrative — 출입처 composition thay đổi theo organisation; học viên xác nhận 출입처 hiện tại của tổ chức trước khi áp dụng.",
@@ -9658,26 +9980,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "받아들이고 있다",
           "literal": "đang tiếp nhận",
+          "literal_en": "am taking it in (badadeurigo itda)",
           "meaning": "(격식, hostile Q&A 1단계) cụm 'acknowledge' chuẩn — present continuous = đang xử lý nghiêm",
-          "example": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다."
+          "meaning_en": "The standard 'acknowledge' phrase — the present continuous signals it is being handled seriously. (formal, hostile Q&A step 1)",
+          "example": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다.",
+          "example_en": "I am taking in the point you raised as a very important concern."
         },
         {
           "idiom": "전제를 구분하다",
           "literal": "phân tách giả định",
+          "literal_en": "distinguish the premise (jeonjereul gubunhada)",
           "meaning": "(격식, hostile Q&A 2단계) tách lỗi của câu hỏi khỏi nội dung — không phải từ chối câu hỏi",
-          "example": "질문에 포함된 한 가지 전제는 사실관계와 다릅니다."
+          "meaning_en": "To separate the question's flaw from its content — not a refusal of the question. (formal, hostile Q&A step 2)",
+          "example": "질문에 포함된 한 가지 전제는 사실관계와 다릅니다.",
+          "example_en": "One premise embedded in the question differs from the facts."
         },
         {
           "idiom": "근거하여 답변드리자면",
           "literal": "nếu trả lời dựa trên căn cứ",
+          "literal_en": "if I may answer on the basis of evidence (geungeohayeo dapbyeondeurijamyeon)",
           "meaning": "(격식, hostile Q&A 3단계) tín hiệu chuyển sang fact-based response — báo trước evidence sẽ đến",
-          "example": "본원이 확인한 자료에 근거하여 답변드리자면, 다음과 같습니다."
+          "meaning_en": "A signal switching to a fact-based response — foreshadows that evidence is coming. (formal, hostile Q&A step 3)",
+          "example": "본원이 확인한 자료에 근거하여 답변드리자면, 다음과 같습니다.",
+          "example_en": "If I may answer on the basis of the data the institute has verified, it is as follows."
         },
         {
           "idiom": "별도 전달드리겠습니다",
           "literal": "tôi sẽ gửi riêng",
+          "literal_en": "I will convey it separately (byeoldo jeondaldeurigetseumnida)",
           "meaning": "(격식, hostile Q&A 4단계) commitment to follow-up — chuyển closure mà không cãi tiếp",
-          "example": "추가 자료를 정리하여 회견 종료 후 별도 전달드리겠습니다."
+          "meaning_en": "A commitment to follow up — moves to closure without arguing further. (formal, hostile Q&A step 4)",
+          "example": "추가 자료를 정리하여 회견 종료 후 별도 전달드리겠습니다.",
+          "example_en": "I will compile the additional materials and convey them separately after the conference."
         }
       ],
       "cultural_notes_vi": "송곳 질문 — câu hỏi mũi dùi — là một thể loại đặc trưng của báo chí Hàn, đặc biệt trong các crisis press conference.\n\n(1) BÁO PHE GAY GẮT: ở Hàn, một số tờ báo có 'attack reporter' chuyên — 한겨레, 시사IN cho 진보 attack 보수 organisations; 조선일보, 동아일보 cho 보수 attack 진보. Nếu tổ chức bạn align với một phe, expect đối nghịch từ phóng viên phe ngược. Chuẩn bị câu hỏi từ phóng viên đối nghịch chiếm 70% prep time.\n\n(2) 눈치 TRAP — 가장 위험: trong 송곳 Q&A, phóng viên thường dùng 'compound question' — 1 câu hỏi chứa 2-3 giả định gài bẫy. Ví dụ: 'X 박사님, 자료를 6개월 보유했다는 점에서 자료가 조작되었다는 시민들의 의혹은 정당하지 않습니까?' (chứa 3 yếu tố: 6 tháng giữ + nghi điều giả định + 'citizens believe'). Nếu trả lời 'X 부분은 동의합니다, Y 부분은 동의하지 않습니다' kiểu phân tích — bị quote sai 'X 박사 일부 인정'. Cách đúng: tách câu hỏi thành 3 sub-questions trong câu trả lời ('질문에 세 가지 요소가 있습니다…') rồi đáp từng cái — kéo dài câu trả lời nhưng bảo vệ nội dung.\n\n(3) 1 / 2 / 3 ROUND CONVENTION: ở Hàn, phóng viên có thể truy 1-2 round liên tiếp; round 3 = 사회자 BẮT BUỘC can thiệp. Nếu 사회자 không can thiệp ở round 3 = 사회자 bị xem là không chuyên. Người Việt mới làm 대변인 cần nhận biết tín hiệu sau round 2 (giọng phóng viên cao hơn) và chuẩn bị cụm '추가 질문은 회견 종료 후 별도 부탁드립니다' để kích hoạt 사회자 chuyển.\n\n(4) FAKE-CALM TRAP: phóng viên gay gắt thường dùng tone bình thường, làm guest hạ guard, rồi gài bẫy. Nguyên tắc: tone phóng viên KHÔNG là tín hiệu — content mới là. Nếu câu hỏi chứa 'really', 'truly', 'honestly', 'in fact' — nó gay gắt dù tone calm.\n\n(5) BIỂU CẢM CONTROL: TV phóng đại micro-expressions. Khi bị tấn công gay gắt, mặt phải giữ neutral; có thể nhẹ gật đầu '진지하게 듣고 있습니다' để cho thấy listening. KHÔNG: nhếch môi, nháy mắt, lắc đầu, cau mày — bất kỳ cái nào cũng = headline.\n\n(6) AFTER-EFFECT: sau 송곳 Q&A — KHÔNG cãi tiếp ngoài hành lang; KHÔNG cười với một phóng viên friendlier (làm phóng viên tấn công 'thấy' mất mặt); rời đi nghiêm trang; tweet/social media im lặng 24h. Trong 24h sau, gửi tài liệu bổ sung qua 대변인실 — đó là 'documentary defense' mạnh hơn defense miệng.\n\n(7) Tên các phóng viên cụ thể nhắc trong dialogue (한겨레 기자) là illustrative — phóng viên cụ thể của các đài/báo thay đổi nhanh; học viên xác nhận hiện tại trước khi nhắc trong tác phẩm.",
@@ -9961,26 +10295,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "본원의 공식 입장은",
           "literal": "lập trường chính thức của Viện là",
+          "literal_en": "the institute's official position is (bonwonui gongsik ipjangeun)",
           "meaning": "(격식, 대변인 전용) cụm chuyển trách nhiệm phát ngôn lên tổ chức — báo trước 'điều sắp nói được duyệt'",
-          "example": "본원의 공식 입장은 다음과 같습니다."
+          "meaning_en": "Shifts the responsibility of speaking onto the organisation — flags that 'what follows is approved'. (formal, spokesperson only)",
+          "example": "본원의 공식 입장은 다음과 같습니다.",
+          "example_en": "The institute's official position is as follows."
         },
         {
           "idiom": "결정된 바 없다",
           "literal": "chưa có quyết định",
+          "literal_en": "nothing has been decided (gyeoljeongdoen ba eopda)",
           "meaning": "(격식) cụm thay 'no comment' khi tổ chức thực sự chưa quyết — chỉ dùng khi đúng",
-          "example": "그 사안은 아직 결정된 바 없으며, 결정 즉시 별도로 안내드리겠습니다."
+          "meaning_en": "A substitute for 'no comment' when the organisation genuinely has not decided — use only when true. (formal)",
+          "example": "그 사안은 아직 결정된 바 없으며, 결정 즉시 별도로 안내드리겠습니다.",
+          "example_en": "Nothing has been decided on that matter; we will inform you separately as soon as it is."
         },
         {
           "idiom": "답변드릴 위치에 있지 않다",
           "literal": "không ở vị trí trả lời",
+          "literal_en": "not in a position to answer (dapbyeondeuril wichie itji anta)",
           "meaning": "(격식) cụm chuẩn để chuyển câu hỏi về cơ quan đúng thẩm quyền — không né mà đúng quy trình",
-          "example": "본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다."
+          "meaning_en": "The standard phrase to redirect a question to the proper authority — not evasion but due process. (formal)",
+          "example": "본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다.",
+          "example_en": "This matter is outside the institute's policy remit, so we are not in a position to answer."
         },
         {
           "idiom": "별도로 안내드리겠습니다",
           "literal": "tôi sẽ thông báo riêng",
+          "literal_en": "I will inform you separately (byeoldoro annaedeurigetseumnida)",
           "meaning": "(격식, 대변인) cụm commitment to follow-up — chuyển closure mà không cãi",
-          "example": "결정 즉시 별도로 안내드리겠습니다."
+          "meaning_en": "A follow-up commitment phrase — moves to closure without arguing. (formal, spokesperson)",
+          "example": "결정 즉시 별도로 안내드리겠습니다.",
+          "example_en": "We will inform you separately as soon as it is decided."
         }
       ],
       "cultural_notes_vi": "대변인 ở Hàn là một vai có trọng lượng — đặc biệt ở cấp 청와대, 정부 부처, và 대기업 (Samsung, LG, Hyundai). Mỗi 대변인실 có 5-10 nhân sự phối hợp.\n\n(1) HỆ THỐNG 정례 브리핑: trong các tổ chức lớn, weekly briefing với 출입처 là quy ước cố định. 청와대 가능 매일; 부처 thường 1-2 lần/tuần; 기업 1 lần/tuần. Bỏ một buổi không thông báo trước = scandal nhỏ. Thường vào cùng giờ một ngày trong tuần (예: 매주 화요일 오전 10시).\n\n(2) PHÂN BIỆT '대변인' VỚI 'CEO/원장': 대변인 KHÔNG phải decision-maker. Khi phóng viên hỏi câu yêu cầu policy decision, 대변인 phải '확인 후 답변드리겠습니다'. Cố trả lời quyết định thay CEO = bị CEO bác sau, mất uy tín. Người Việt mới làm 대변인 dễ rơi vào 'over-step' — trả lời câu chưa được duyệt.\n\n(3) 눈치 TRAP — RẤT TINH TẾ: phóng viên hay 'gài' bằng câu hỏi 'cá nhân của bạn nghĩ gì?'. 대변인 KHÔNG bao giờ cá nhân hóa. Cụm chuẩn để né: '본 대변인실의 모든 발언은 본원의 공식 입장으로 전달됩니다. 개인 견해는 본 자리에서 발표하지 않겠습니다.' Một slip vào '제 생각엔…' = câu trích đó thành 'X 대변인 개인 견해' và vô hiệu hóa toàn brief tuần đó.\n\n(4) RELATIONSHIP 출입처: 대변인 phải biết tên + tờ báo + style của tất cả phóng viên 출입처 — quy ước. Gọi sai tên = scandal nhỏ. Thường có 사전 만남 (pre-meeting) trước briefing đầu tiên với phóng viên mới — chuẩn etiquette.\n\n(5) WEEKLY RHYTHM: thứ hai sáng, 대변인실 họp với CEO + 법무 + PR — quyết định content briefing tuần. Thứ ba/thứ năm: briefing. Thứ sáu chiều: review tuần — đánh giá quote nào đã ra, có sai lệch nào không. Quy trình tight.\n\n(6) NGÔN NGỮ TUYỆT ĐỐI KHÔNG: 'I think', '제 생각에는', 'maybe', '아마' — 대변인 mất uy tín ngay; '잘 모르겠습니다' — phóng viên kết luận 'incompetent'; '편하게 묻지 마세요' — vô lễ. PHẢI: 'X에 대해서는 확인 후 답변드리겠습니다' / '본원의 공식 입장은 〜입니다'.\n\n(7) Tên các 출입처, briefing room cụ thể nhắc trong dialogue (한국프레스센터 19층) là illustrative — địa điểm cụ thể của các tổ chức thay đổi; học viên xác nhận trước khi viết tác phẩm thực.",
@@ -10266,26 +10612,38 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "본원의 입장을 다음과 같이 밝힌다",
           "literal": "Viện công bố lập trường như sau",
+          "literal_en": "the institute states its position as follows (bonwonui ipjangeul daeumgwa gachi balkinda)",
           "meaning": "(매우 격식, 입장문 도입부) cụm cố định bắt buộc — phải nói trước nội dung, vì user social scroll nhanh",
-          "example": "본원은 SNS상에서 유포되는 일부 주장에 대하여 다음과 같이 본원의 입장을 밝힌다."
+          "meaning_en": "The mandatory fixed opener — the content must come first, as social-media users scroll fast. (very formal, statement opening)",
+          "example": "본원은 SNS상에서 유포되는 일부 주장에 대하여 다음과 같이 본원의 입장을 밝힌다.",
+          "example_en": "Regarding some claims circulating on social media, the institute states its position as follows."
         },
         {
           "idiom": "사실과 다르다",
           "literal": "khác với sự thật",
+          "literal_en": "differs from the facts (sasilgwa dareuda)",
           "meaning": "(입장문, denial) cụm phủ nhận chuẩn — KHÔNG '거짓이다' (cứng), KHÔNG '아니다' (yếu)",
-          "example": "본원이 자료를 조작하였다는 주장은 사실과 다르다."
+          "meaning_en": "The standard denial phrase — NOT '거짓이다' (curt), NOT '아니다' (weak). (statement, denial)",
+          "example": "본원이 자료를 조작하였다는 주장은 사실과 다르다.",
+          "example_en": "The claim that the institute manipulated the data differs from the facts."
         },
         {
           "idiom": "법적 대응을 검토할 수 있다",
           "literal": "có thể xem xét biện pháp pháp lý",
+          "literal_en": "may consider legal action (beopjeok daeeungeul geomtohal su itda)",
           "meaning": "(공식, 향후 조치) cụm cảnh báo về fake news — '검토할 수 있다' (may), KHÔNG '검토할 것이다' (will)",
-          "example": "허위 사실 유포에 대해서는 향후 법적 대응을 검토할 수 있다."
+          "meaning_en": "A standard warning about fake news — '검토할 수 있다' (may), NOT '검토할 것이다' (will). (official, future measure)",
+          "example": "허위 사실 유포에 대해서는 향후 법적 대응을 검토할 수 있다.",
+          "example_en": "Regarding the spread of false information, legal action may be considered going forward."
         },
         {
           "idiom": "본원의 공식 입장은 본 채널을 통해서만 발표된다",
           "literal": "lập trường chính thức của Viện chỉ công bố qua kênh này",
+          "literal_en": "the institute's official position is announced only through this channel (bonwonui gongsik ipjangeun bon chaeneoreul tonghaeseoman balpyodoenda)",
           "meaning": "(공식, 입장문 closing) cụm vô hiệu hóa fake accounts giả mạo — quan trọng cho social ecosystem",
-          "example": "본원의 모든 공식 입장은 본 채널과 본원 홈페이지를 통해서만 발표된다."
+          "meaning_en": "A phrase to invalidate impersonating fake accounts — important for the social ecosystem. (official, statement closing)",
+          "example": "본원의 모든 공식 입장은 본 채널과 본원 홈페이지를 통해서만 발표된다.",
+          "example_en": "All of the institute's official positions are announced only through this channel and the institute's website."
         }
       ],
       "cultural_notes_vi": "공식 입장문 trên kênh mạng xã hội ở Hàn là một thể loại mới (5-10 năm gần đây) nhưng đã có quy ước rõ ràng — và đầy bẫy.\n\n(1) ECOSYSTEM CHANNELS: tổ chức Hàn lớn thường có (a) Twitter/X — fast response (5-30 phút sau crisis); (b) Facebook page — medium-form (200-1000 chữ); (c) YouTube — video statement nếu nghiêm trọng; (d) Instagram — hình ảnh-driven, ít official; (e) Naver blog — long-form, SEO; (f) website pressroom — văn bản đầy đủ. Mỗi kênh đăng ký + content khác.\n\n(2) TIMING NGHIÊM: trong crisis, '24h golden rule' — phải có 입장문 đầu tiên trong 24 giờ. '1h golden rule' cho fast-moving tin đồn trên X — chậm hơn = tin đồn nhân lên 10x. Người Việt thường nghĩ 'gather all facts first, then respond'; ở Hàn social, 'respond fast with what you know + commit to update' tốt hơn.\n\n(3) 눈치 TRAP TRÊN SOCIAL: đặc biệt nguy. Bình luận trên post 입장문 thường có 50% là phản ứng emotional. KHÔNG trả lời bình luận — quy ước Hàn nghiêm. Một câu trả lời cho 1 user = câu đó thành 'phát ngôn mới', đôi khi mâu thuẫn với 입장문 chính. Một số org Hàn (특히 chính phủ) tắt comments — làm cho user phẫn nộ ban đầu nhưng tránh được crisis lan thêm.\n\n(4) FONT VÀ TIME: post 입장문 nên dùng default font; KHÔNG bold màu mè; KHÔNG emoji; KHÔNG hashtag marketing-flavored. Time đăng tốt nhất: 10-11 sáng (working hours), TRÁNH 6-9 tối (peak troll time), TRÁNH cuối tuần (low engagement, leak risk).\n\n(5) ATTRIBUTION CỦA POST: post BẮT BUỘC ký bằng tên tổ chức ở cuối ('— 한국교육개발원') hoặc bằng badge verification. KHÔNG ký tên cá nhân — vì kênh là organisation channel, không cá nhân.\n\n(6) CROSS-PLATFORM CONSISTENCY: 280-char Twitter version PHẢI khớp về thông điệp với 1000-char Facebook version với 1500-char website version. User screenshot từng phiên bản — nếu thông điệp lệch, rất nguy hiểm. Quy trình PR Hàn chuyên nghiệp: 1 master statement + 3 versions cùng được duyệt cùng lúc.\n\n(7) Tên các kênh, platform cụ thể (Twitter/X, Facebook, Naver blog) là illustrative — landscape platform thay đổi nhanh; học viên xác nhận platform đang được dùng trong tổ chức cụ thể trước khi áp dụng.",
