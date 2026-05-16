@@ -94,6 +94,12 @@ export type IdiomGloss = {
   literal: string;
   meaning: string;
   example: string;
+  /** English mirror of literal. B2+ only. */
+  literal_en?: string;
+  /** English mirror of meaning. B2+ only. */
+  meaning_en?: string;
+  /** English mirror of example. B2+ only. */
+  example_en?: string;
 };
 
 // B2-specific dialogue line — adds Vietnamese gloss to the existing
@@ -124,7 +130,11 @@ export type ChineseLesson = {
   tip_advice_en?: string;
   dialogue_long?: ChineseB2DialogueLine[];
   roleplay_prompts?: string[];
+  /** English mirror of roleplay_prompts. B2+ only. */
+  roleplay_prompts_en?: string[];
   register_notes?: string;
+  /** English mirror of register_notes. B2+ only. */
+  register_notes_en?: string;
   idiom_glosses?: IdiomGloss[];
   // Forward-compatible fields for the cross-language B2 template.
   // Legacy `title` / `topic` remain authoritative until the renderer reads these.

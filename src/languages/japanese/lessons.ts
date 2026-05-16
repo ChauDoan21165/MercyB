@@ -71,8 +71,23 @@ export type JapaneseLesson = {
   // B2 calibration fields — optional passthrough; consumed by normalizer + renderer
   dialogue_long?: JapaneseDialogueLine[];
   roleplay_prompts?: string[];
+  /** English mirror of roleplay_prompts. B2+ only. */
+  roleplay_prompts_en?: string[];
   register_notes?: string;
-  idiom_glosses?: { idiom: string; literal: string; meaning: string; example: string }[];
+  /** English mirror of register_notes. B2+ only. */
+  register_notes_en?: string;
+  idiom_glosses?: {
+    idiom: string;
+    literal: string;
+    meaning: string;
+    example: string;
+    /** English mirror of literal. B2+ only. */
+    literal_en?: string;
+    /** English mirror of meaning. B2+ only. */
+    meaning_en?: string;
+    /** English mirror of example. B2+ only. */
+    example_en?: string;
+  }[];
 };
 
 // ── Lazy lesson registry ────────────────────────────────────────────────

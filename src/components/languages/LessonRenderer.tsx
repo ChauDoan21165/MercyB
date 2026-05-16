@@ -9,7 +9,8 @@
 //   header  : number badge, title.vi, title.en, optional native title,
 //             CEFR pill, expand chevron
 //   stats   : counts of vocab/sentences/dialogue/exercises (when collapsed)
-//   intro   : amber card if lesson.intro
+//   intro   : amber card; picks introEn/introVi by uiLanguage with a
+//             fallback badge (legacy single-string `intro` = no badge)
 //   sentences: slate card; native + romanization + en + vi + focus chips + note
 //   vocab   : green 2-col grid if lesson.vocabulary
 //   dialogue: purple card if lesson.dialogue
@@ -43,6 +44,9 @@ import type {
   NormalizedLesson,
   LessonTheme,
   NormalizedExercise,
+  NormalizedIdiomGloss,
+  NormalizedDialogueLine,
+  NormalizedAudioKinds,
 } from "./LessonRenderer.types";
 import { cefrPillColors, cefrPillLabels } from "./lessonThemes";
 import { LessonAudioButton } from "./LessonAudioButton";
@@ -74,8 +78,13 @@ const RENDERER_LABELS = {
     vocabAudioAria: "Phát âm",
     dialogueAudioAria: "Phát âm hội thoại",
     dialogueHeading: "Hội thoại",
+    dialogueShortToggle: "Ngắn",
+    dialogueLongToggle: "Mở rộng",
     cultureHeading: "Văn hoá",
     tipHeading: "Mẹo học",
+    registerHeading: "Văn phong",
+    roleplayHeading: "Luyện nói",
+    idiomHeading: "Thành ngữ",
     grammarHeading: "Ngữ pháp",
     vocabHeading: "Từ vựng",
     vocabUnit: "từ",
@@ -95,8 +104,13 @@ const RENDERER_LABELS = {
     vocabAudioAria: "Play",
     dialogueAudioAria: "Play dialogue",
     dialogueHeading: "Dialogue",
+    dialogueShortToggle: "Short",
+    dialogueLongToggle: "Extended",
     cultureHeading: "Culture",
     tipHeading: "Study tip",
+    registerHeading: "Register",
+    roleplayHeading: "Practice",
+    idiomHeading: "Idioms",
     grammarHeading: "Grammar",
     vocabHeading: "Vocabulary",
     vocabUnit: "words",
@@ -146,6 +160,9 @@ interface LessonRendererProps {
 export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRendererProps) {
   const labels = RENDERER_LABELS[uiLanguage];
   const [open, setOpen] = useState(false);
+  // dialogue_long is opt-in; default (false) keeps the dialogue card
+  // showing only the short form so the default view is unchanged.
+  const [showLong, setShowLong] = useState(false);
 
   const vocabCount = lesson.vocabulary?.length ?? 0;
   const sentCount = lesson.sentences?.length ?? 0;
@@ -231,13 +248,29 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
           className="border-t px-4 py-3 space-y-3"
           style={{ borderColor: `${theme.accent}11`, background: "rgb(248 250 252 / 0.6)" }}
         >
-          {lesson.intro && (
-            <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
-              <p className="text-xs leading-relaxed text-amber-900">
-                {lesson.intro}
-              </p>
-            </div>
-          )}
+          {/* intro — Incidental D fix: pick introEn/introVi by
+              uiLanguage with a fallback badge so an English-UI user
+              seeing Vietnamese intro content is told so. Legacy single-
+              language `intro` (pre-bilingual modules) renders with no
+              badge — it is language-agnostic by contract. */}
+          {(() => {
+            const picked = pick(uiLanguage, lesson.introEn, lesson.introVi);
+            const text = picked ?? lesson.intro;
+            if (!text) return null;
+            const fallback =
+              picked !== undefined &&
+              isFallback(uiLanguage, lesson.introEn, lesson.introVi);
+            return (
+              <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
+                <p className="text-xs leading-relaxed text-amber-900">
+                  {text}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </p>
+              </div>
+            );
+          })()}
 
           {sentCount > 0 && (
             <ol className="space-y-2">
@@ -375,51 +408,56 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             </div>
           )}
 
-          {lesson.dialogue && lesson.dialogue.length > 0 && (
+          {((lesson.dialogue?.length ?? 0) > 0 ||
+            (lesson.dialogueLong?.length ?? 0) > 0) && (
             <div className="rounded-lg border border-purple-100 bg-purple-50/60 p-3">
-              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
-                <Sparkles className="h-3 w-3" />
-                {labels.dialogueHeading}
-              </p>
-              <div className="mt-2 space-y-2">
-                {lesson.dialogue.map((d, di) => (
-                  <div key={di} className="text-xs flex items-start gap-1.5">
-                    {lesson.audioBase && (
-                      <LessonAudioButton
-                        audioKey={lessonAudioKey(
-                          lesson.audioBase,
-                          lesson.audioKinds?.dialogue === "dialogue_vi"
-                            ? { kind: "dialogue_vi", index: di + 1 }
-                            : {
-                                kind: "dialogue_short",
-                                index: di + 1,
-                                speaker: dialogueShortSpeakerLetter(d.speaker),
-                              },
-                        )}
-                        ariaLabel={`${labels.dialogueAudioAria}: ${d.native}`}
-                        accent={theme.accent}
-                      />
-                    )}
-                    <div className="min-w-0 flex-1">
-                      <span className="font-bold" style={{ color: theme.accent }}>
-                        {d.speaker}:
-                      </span>{" "}
-                      <span className="text-slate-900 font-medium">{d.native}</span>
-                      {d.romanization && (
-                        <span className="text-slate-400 ml-1 italic">
-                          ({d.romanization})
-                        </span>
-                      )}
-                      {(() => {
-                        const gloss = pick(uiLanguage, d.en, d.vi);
-                        return gloss ? (
-                          <div className="text-slate-500 ml-5">{gloss}</div>
-                        ) : null;
-                      })()}
-                    </div>
-                  </div>
-                ))}
+              <div className="flex items-center justify-between gap-2">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                  <Sparkles className="h-3 w-3" />
+                  {labels.dialogueHeading}
+                </p>
+                {lesson.dialogueLong && lesson.dialogueLong.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowLong((v) => !v)}
+                    aria-pressed={showLong}
+                    className="shrink-0 rounded-full border border-purple-200 px-2 py-0.5 text-[10px] font-medium text-purple-700 transition hover:bg-purple-100"
+                  >
+                    {showLong
+                      ? labels.dialogueShortToggle
+                      : labels.dialogueLongToggle}
+                  </button>
+                )}
               </div>
+              {lesson.dialogue && lesson.dialogue.length > 0 && (
+                <DialogueLineRows
+                  lines={lesson.dialogue}
+                  theme={theme}
+                  uiLanguage={uiLanguage}
+                  audioAria={labels.dialogueAudioAria}
+                  audio={
+                    lesson.audioBase
+                      ? { base: lesson.audioBase, kinds: lesson.audioKinds }
+                      : undefined
+                  }
+                />
+              )}
+              {showLong &&
+                lesson.dialogueLong &&
+                lesson.dialogueLong.length > 0 && (
+                  <div className="mt-3 border-t border-purple-100 pt-2">
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-purple-400">
+                      {labels.dialogueLongToggle}
+                    </p>
+                    {/* No audio buttons: long-form has no generated audio. */}
+                    <DialogueLineRows
+                      lines={lesson.dialogueLong}
+                      theme={theme}
+                      uiLanguage={uiLanguage}
+                      audioAria={labels.dialogueAudioAria}
+                    />
+                  </div>
+                )}
             </div>
           )}
 
@@ -487,6 +525,82 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
               </div>
             );
           })()}
+
+          {/* register_notes — meta-advice, rendered as a small italic
+              note under the study-tip card (per #496-locked decision). */}
+          {(() => {
+            const text = pick(
+              uiLanguage,
+              lesson.registerNotesEn,
+              lesson.registerNotesVi,
+            );
+            if (!text) return null;
+            const fallback = isFallback(
+              uiLanguage,
+              lesson.registerNotesEn,
+              lesson.registerNotesVi,
+            );
+            return (
+              <p className="px-1 text-[11px] italic leading-relaxed text-slate-500">
+                <span className="font-semibold uppercase tracking-wide text-slate-400 not-italic">
+                  {labels.registerHeading}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </span>{" "}
+                {text}
+              </p>
+            );
+          })()}
+
+          {/* roleplay_prompts — static speaking-practice card in the
+              indigo (speaking) family. No interactivity wired yet. */}
+          {(() => {
+            const prompts = pick(
+              uiLanguage,
+              lesson.roleplayPromptsEn,
+              lesson.roleplayPromptsVi,
+            );
+            if (!prompts || prompts.length === 0) return null;
+            const fallback = isFallback(
+              uiLanguage,
+              lesson.roleplayPromptsEn,
+              lesson.roleplayPromptsVi,
+            );
+            return (
+              <div className="rounded-lg border border-indigo-100 bg-indigo-50/60 p-3">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
+                  <MessageCircle className="h-3 w-3" />
+                  {labels.roleplayHeading}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </p>
+                <ul className="mt-2 space-y-1.5">
+                  {prompts.map((p, pi) => (
+                    <li
+                      key={pi}
+                      className="flex items-start gap-2 text-xs leading-relaxed text-slate-700"
+                    >
+                      <MessageCircle className="mt-0.5 h-3 w-3 shrink-0 text-indigo-400" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })()}
+
+          {/* idiom_glosses — inline expandable list, one row per idiom
+              (collapsed: idiom; expanded: literal/meaning/example,
+              pick() per sub-field). #496-locked: not tooltips. */}
+          {lesson.idiomGlosses && lesson.idiomGlosses.length > 0 && (
+            <IdiomGlossList
+              glosses={lesson.idiomGlosses}
+              uiLanguage={uiLanguage}
+              heading={labels.idiomHeading}
+            />
+          )}
 
           {lesson.grammar && lesson.grammar.length > 0 && (
             <div className="rounded-lg border border-violet-100 bg-violet-50/60 p-3">
@@ -581,6 +695,142 @@ function ExerciseRow({
         )}
       </span>
     </>
+  );
+}
+
+// Renders a list of dialogue lines (speaker + native + romanization +
+// glossed translation). Shared by the short `dialogue` and the opt-in
+// `dialogue_long` forms. `audio` is omitted for the long form because
+// only the short form has generated audio assets.
+function DialogueLineRows({
+  lines,
+  theme,
+  uiLanguage,
+  audioAria,
+  audio,
+}: {
+  lines: NormalizedDialogueLine[];
+  theme: LessonTheme;
+  uiLanguage: "vi" | "en";
+  audioAria: string;
+  audio?: { base: string; kinds?: NormalizedAudioKinds };
+}) {
+  return (
+    <div className="mt-2 space-y-2">
+      {lines.map((d, di) => (
+        <div key={di} className="text-xs flex items-start gap-1.5">
+          {audio && (
+            <LessonAudioButton
+              audioKey={lessonAudioKey(
+                audio.base,
+                audio.kinds?.dialogue === "dialogue_vi"
+                  ? { kind: "dialogue_vi", index: di + 1 }
+                  : {
+                      kind: "dialogue_short",
+                      index: di + 1,
+                      speaker: dialogueShortSpeakerLetter(d.speaker),
+                    },
+              )}
+              ariaLabel={`${audioAria}: ${d.native}`}
+              accent={theme.accent}
+            />
+          )}
+          <div className="min-w-0 flex-1">
+            <span className="font-bold" style={{ color: theme.accent }}>
+              {d.speaker}:
+            </span>{" "}
+            <span className="text-slate-900 font-medium">{d.native}</span>
+            {d.romanization && (
+              <span className="text-slate-400 ml-1 italic">
+                ({d.romanization})
+              </span>
+            )}
+            {(() => {
+              const gloss = pick(uiLanguage, d.en, d.vi);
+              return gloss ? (
+                <div className="text-slate-500 ml-5">{gloss}</div>
+              ) : null;
+            })()}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Inline expandable idiom list. One row per idiom; the row is the
+// idiom itself, expanding to literal / meaning / example. Each sub-
+// field is picked by uiLanguage with the same fallback-badge contract
+// as the prose pedagogy fields. Tooltips were rejected in #496 §7 as
+// mobile-hostile at 375px — an accordion keeps the lesson scannable.
+function IdiomGlossList({
+  glosses,
+  uiLanguage,
+  heading,
+}: {
+  glosses: NormalizedIdiomGloss[];
+  uiLanguage: "vi" | "en";
+  heading: string;
+}) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  return (
+    <div className="rounded-lg border border-teal-100 bg-teal-50/60 p-3">
+      <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-teal-700">
+        <BookOpen className="h-3 w-3" />
+        {heading}
+      </p>
+      <ul className="mt-2 space-y-1">
+        {glosses.map((g, gi) => {
+          const isOpen = openIdx === gi;
+          const literal = pick(uiLanguage, g.literalEn, g.literal);
+          const meaning = pick(uiLanguage, g.meaningEn, g.meaning);
+          const example = pick(uiLanguage, g.exampleEn, g.example);
+          const fallback = isFallback(uiLanguage, g.meaningEn, g.meaning);
+          return (
+            <li
+              key={gi}
+              className="overflow-hidden rounded-md border border-teal-100 bg-white"
+            >
+              <button
+                type="button"
+                onClick={() => setOpenIdx(isOpen ? null : gi)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center justify-between gap-2 px-2.5 py-1.5 text-left transition hover:bg-teal-50/50"
+              >
+                <span className="text-xs font-semibold text-slate-800">
+                  {g.idiom}
+                </span>
+                {isOpen ? (
+                  <ChevronUp className="h-3 w-3 shrink-0 text-teal-600" />
+                ) : (
+                  <ChevronDown className="h-3 w-3 shrink-0 text-teal-600" />
+                )}
+              </button>
+              {isOpen && (
+                <div className="space-y-0.5 border-t border-teal-50 px-2.5 py-1.5 text-xs">
+                  {literal && (
+                    <p className="text-slate-500">
+                      <span className="italic">{literal}</span>
+                    </p>
+                  )}
+                  {meaning && (
+                    <p className="text-slate-700">
+                      {meaning}
+                      {fallback && (
+                        <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                      )}
+                    </p>
+                  )}
+                  {example && (
+                    <p className="italic text-slate-400">{example}</p>
+                  )}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
