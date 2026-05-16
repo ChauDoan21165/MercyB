@@ -1047,24 +1047,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "情非得已",
         "literal": "tình cảnh không có đường nào khác (qíng fēi dé yǐ)",
+        "literal_en": "the situation leaves no other course (qíng fēi dé yǐ)",
         "meaning": "Bất đắc dĩ — hoàn cảnh ép buộc, không phải do mình chọn. Dùng để xin lỗi khi mình phải làm điều gây phiền hà cho người khác mà nguyên nhân nằm ngoài tầm kiểm soát của mình. Cụm này chuyển trách nhiệm từ 'lựa chọn cá nhân' sang 'hoàn cảnh' — một cách lịch sự để xin sự thông cảm. Đây là cụm CHÌA KHÓA cho mọi cuộc xin nghỉ/xin phá lệ trong tiếng Trung công sở.",
         "example": "给您和团队添麻烦了, 实在是情非得已。"
       },
       {
         "idiom": "家家有本难念的经",
         "literal": "nhà nào cũng có một quyển kinh khó tụng (jiā jiā yǒu běn nán niàn de jīng)",
+        "literal_en": "every household has its own hard scripture to chant (jiā jiā yǒu běn nán niàn de jīng)",
         "meaning": "Mỗi gia đình đều có vấn đề riêng, không ai được miễn nỗi khổ. Sếp dùng cụm này khi muốn báo hiệu sự thông cảm và đồng cảm: 'anh hiểu, ai cũng có việc nhà'. Đây là cách sếp Trung Quốc thể hiện humanity mà không phá vỡ formality của môi trường công sở. Khi sếp nói cụm này với bạn, đó là tín hiệu đèn xanh — cuộc đàm phán đã kết thúc thuận lợi.",
         "example": "别这么说。家家有本难念的经, 大家互相理解就好。"
       },
       {
         "idiom": "网开一面",
         "literal": "mở một mặt của lưới — để con vật chạy thoát (wǎng kāi yī miàn)",
+        "literal_en": "leave one side of the net open, so the creature can escape (wǎng kāi yī miàn)",
         "meaning": "Châm chước, mở đường — bỏ qua một quy tắc/phá lệ cho ai đó trong hoàn cảnh đặc biệt. Đây là cụm bạn DÙNG khi xin sếp thể tất, hoặc cụm sếp DÙNG khi đồng ý phá lệ cho bạn. Nguồn gốc: vua Thành Tang thời Thương ra lệnh chỉ giăng lưới ba phía thay vì bốn phía để chim thú có đường thoát — biểu trưng cho lòng nhân từ.",
         "example": "这次情况特殊, 还请王经理网开一面, 让我多请一周。"
       },
       {
         "idiom": "推心置腹",
         "literal": "đẩy tim vào bụng người khác (tuī xīn zhì fù)",
+        "literal_en": "to push one's heart into the other's belly (tuī xīn zhì fù)",
         "meaning": "Nói chuyện chân thành, mở lòng — không giấu giếm, không vòng vo. Dùng khi cuộc nói chuyện đã đến độ tin tưởng đủ để bộc lộ thật. Trong context xin nghỉ, sếp có thể dùng cụm này để mời bạn nói thật ('我们推心置腹地谈一谈' — chúng ta nói chân thành nhé). Khác 腹を割って話す (Nhật) ở chỗ này NHẸ HƠN, ít kịch tính hơn — chỉ là báo hiệu 'nói thật đi, tôi nghe'.",
         "example": "既然你都说了, 那我们就推心置腹地谈一谈。"
       }
@@ -1443,24 +1447,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "全力以赴",
         "literal": "đem hết sức mạnh xông tới (quán lì yǐ fù)",
+        "literal_en": "go forward with all one's strength (quán lì yǐ fù)",
         "meaning": "Dốc toàn lực — cam kết làm hết khả năng. Cụm chuẩn ứng viên dùng cuối phỏng vấn để thể hiện cam kết. Mạnh hơn 努力工作 nhưng không cường điệu.",
         "example": "如果有幸加入贵公司, 我会全力以赴。"
       },
       {
         "idiom": "学有所长",
         "literal": "học có chỗ sở trường (xué yǒu suǒ cháng)",
+        "literal_en": "one's study has its area of strength (xué yǒu suǒ cháng)",
         "meaning": "Học có chuyên môn — mỗi người có thế mạnh riêng. Dùng khi nói về kỹ năng đặc thù: '我学有所长, 在Go语言开发方面比较突出'.",
         "example": "我学有所长, 在Go语言开发方面比较突出。"
       },
       {
         "idiom": "谦虚谨慎",
         "literal": "khiêm tốn cẩn trọng (qiān xū jǐn shèn)",
+        "literal_en": "modest and prudent (qiān xū jǐn shèn)",
         "meaning": "Khiêm tốn và thận trọng — tự đặc tả phong cách làm việc lý tưởng cho ứng viên Trung Quốc. Đối lập với phong cách 'self-promotion' phương Tây. Dùng nó để miêu tả mình mà không bị coi là yếu đuối.",
         "example": "我做事比较谦虚谨慎, 喜欢先听后说。"
       },
       {
         "idiom": "知人善任",
         "literal": "biết người khéo dùng (zhī rén shàn rèn)",
+        "literal_en": "to know people and employ them well (zhī rén shàn rèn)",
         "meaning": "Biết người và biết dùng người — phẩm chất khen sếp. Dùng khi nói về sếp cũ một cách tích cực: '我之前的领导知人善任, 教会了我很多'. Tránh tự khen mình bằng cụm này.",
         "example": "我之前的领导知人善任, 教会了我很多。"
       }
@@ -1839,24 +1847,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "鹏程万里",
         "literal": "đường chim bằng vạn dặm (péng chéng wàn lǐ)",
+        "literal_en": "the roc's flight spans ten thousand li (péng chéng wàn lǐ)",
         "meaning": "Tiền đồ rộng mở — tương lai xa và lớn. Cụm chuẩn để diễn tả khát vọng học thuật của ứng viên: '希望能在贵校鹏程万里'. Nguồn gốc: Trang Tử kể về chim bằng bay vạn dặm về phương nam.",
         "example": "希望能在贵校的支持下鹏程万里。"
       },
       {
         "idiom": "勤能补拙",
         "literal": "cần cù bù đắp được sự vụng về (qín néng bǔ zhuō)",
+        "literal_en": "diligence can make up for clumsiness (qín néng bǔ zhuō)",
         "meaning": "Chăm chỉ bù được sự kém cỏi. Cụm khiêm tốn lý tưởng cho phỏng vấn — thừa nhận có hạn chế nhưng cam kết bù bằng nỗ lực. Tránh dùng cụm này nếu bạn đang khoe điểm cao.",
         "example": "我相信勤能补拙, 一定可以跟上课程。"
       },
       {
         "idiom": "精益求精",
         "literal": "tinh đã tinh còn đòi tinh hơn (jīng yì qiú jīng)",
+        "literal_en": "refine what is already fine, and demand finer still (jīng yì qiú jīng)",
         "meaning": "Không ngừng cầu toàn — luôn muốn cải thiện hơn nữa. Cụm dùng khi nói về thái độ làm việc/nghiên cứu: '我对自己的研究始终精益求精'. Đặc biệt phù hợp ngữ cảnh academic.",
         "example": "我对自己的研究始终精益求精。"
       },
       {
         "idiom": "学海无涯",
         "literal": "biển học không bờ (xué hǎi wú yá)",
+        "literal_en": "the sea of learning is boundless (xué hǎi wú yá)",
         "meaning": "Sự học không có giới hạn — biển kiến thức mênh mông. Cụm khiêm tốn dùng cuối phỏng vấn để thể hiện thái độ học hỏi liên tục: '学海无涯, 我会一直努力'.",
         "example": "学海无涯, 我会一直努力下去。"
       }
@@ -2235,24 +2247,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "有的放矢",
         "literal": "có đích thì bắn tên (yǒu dì fàng shǐ)",
+        "literal_en": "to shoot the arrow with a target in view (yǒu dì fàng shǐ)",
         "meaning": "Có mục tiêu rõ ràng — không bắn tên vu vơ. Cụm chuẩn giáo sư dùng để khuyên sinh viên thu hẹp đề tài: '选题要有的放矢, 不能太宽泛'. Khi nghe thầy nói cụm này = đề tài bạn còn quá rộng, cần cụ thể hơn.",
         "example": "选题要有的放矢, 不能太宽泛。"
       },
       {
         "idiom": "集思广益",
         "literal": "tập hợp tư duy, làm rộng lợi ích (jí sī guǎng yì)",
+        "literal_en": "pool ideas to broaden the benefit (jí sī guǎng yì)",
         "meaning": "Tập hợp ý kiến rộng rãi để có lợi ích lớn — làm việc nhóm, không một mình. Giáo sư khuyên sinh viên không tự ôm đề tài quá lớn: 'một mình làm sẽ chậm, hãy tìm bạn cùng nhau'.",
         "example": "你最好集思广益, 找两三个同学一起做。"
       },
       {
         "idiom": "推陈出新",
         "literal": "đẩy cũ ra, đưa mới vào (tuī chén chū xīn)",
+        "literal_en": "push out the old, bring forth the new (tuī chén chū xīn)",
         "meaning": "Loại bỏ cái cũ, đưa cái mới — tinh thần đổi mới trong nghiên cứu. Giáo sư Trung Quốc đặc biệt thích sinh viên làm được điều này: kế thừa nhưng có sáng tạo. Cụm dùng khi mô tả contribution của thesis.",
         "example": "好的研究要在前人基础上推陈出新。"
       },
       {
         "idiom": "锲而不舍",
         "literal": "khắc mà không bỏ (qiè ér bù shě)",
+        "literal_en": "keep carving and never give up (qiè ér bù shě)",
         "meaning": "Kiên trì không bỏ cuộc — khắc đá không ngừng. Cụm dùng để miêu tả thái độ làm thesis. Khi giáo sư nói '希望你锲而不舍' = thầy đang động viên bạn kiên trì qua khó khăn.",
         "example": "做研究最重要的是锲而不舍。"
       }
@@ -2624,24 +2640,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "量力而行",
         "literal": "đo sức rồi mà đi (liàng lì ér xíng)",
+        "literal_en": "measure your strength, then act (liàng lì ér xíng)",
         "meaning": "Làm trong khả năng — biết giới hạn của mình. Cụm khiêm tốn lý tưởng cho thực tập sinh: thừa nhận chưa giàu kinh nghiệm nhưng cam kết làm tốt nhất có thể. Tránh hứa quá lớn rồi không làm được.",
         "example": "我会量力而行, 把每件任务做到最好。"
       },
       {
         "idiom": "循序渐进",
         "literal": "theo thứ tự dần tiến (xún xù jiàn jìn)",
+        "literal_en": "advance step by step in order (xún xù jiàn jìn)",
         "meaning": "Tuần tự tiến lên — học từ cơ bản đến nâng cao. Cụm manager thường dùng để giải thích vì sao thực tập sinh phải bắt đầu từ việc cơ bản. Khi nghe manager nói cụm này = chấp nhận lộ trình, đừng đòi 'nhảy cóc'.",
         "example": "实习初期循序渐进, 不要太着急。"
       },
       {
         "idiom": "实事求是",
         "literal": "tìm sự thật từ sự việc (shí shì qiú shì)",
+        "literal_en": "seek truth from the facts (shí shì qiú shì)",
         "meaning": "Thực sự cầu thị — nói thật, không khoe khoang, không che giấu. Cụm dùng khi báo cáo tiến độ với manager: thừa nhận điều chưa làm xong, đề xuất cách giải quyết. Manager Trung Quốc đánh giá rất cao thái độ này.",
         "example": "汇报工作要实事求是, 不要虚报。"
       },
       {
         "idiom": "抛砖引玉",
         "literal": "ném gạch dụ ngọc (pāo zhuān yǐn yù)",
+        "literal_en": "cast a brick to draw out jade (pāo zhuān yǐn yù)",
         "meaning": "Đem cái thô (của mình) để dụ cái tinh (của người) — khiêm tốn dùng khi đề xuất ý tưởng. Cụm chuẩn khi thực tập sinh dám đưa đề xuất với senior: '我先抛砖引玉, 大家有更好的想法欢迎补充'.",
         "example": "我先抛砖引玉, 提一个初步想法。"
       }
@@ -3013,24 +3033,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "不胜感激",
         "literal": "không thể chịu nổi sự biết ơn (bù shèng gǎn jī)",
+        "literal_en": "unable to bear the weight of one's gratitude (bù shèng gǎn jī)",
         "meaning": "Vô cùng biết ơn — câu kết email formal chuẩn. Mạnh hơn '感谢' nhưng không cường điệu. Thiếu cụm này ở email xin việc/du học bị coi là khô khan.",
         "example": "请您协助处理, 不胜感激。"
       },
       {
         "idiom": "有备无患",
         "literal": "có chuẩn bị thì không có nỗi lo (yǒu bèi wú huàn)",
+        "literal_en": "with preparation there is no calamity (yǒu bèi wú huàn)",
         "meaning": "Có chuẩn bị thì không lo — chuẩn bị kỹ để tránh rắc rối. Cụm dùng khi giải thích vì sao bạn hỏi nhiều câu nhỏ về visa/khám sức khỏe: '我想有备无患, 提前确认一下'.",
         "example": "我想有备无患, 提前确认一下细节。"
       },
       {
         "idiom": "按部就班",
         "literal": "theo bộ phận và thứ tự (àn bù jiù bān)",
+        "literal_en": "follow the sections and the set order (àn bù jiù bān)",
         "meaning": "Theo từng bước, không bỏ qua quy trình. Cụm dùng khi cam kết tuân thủ thủ tục: '我会按部就班, 一步一步办理'. Đặc biệt phù hợp cho ngữ cảnh hành chính/visa.",
         "example": "我会按部就班完成所有手续。"
       },
       {
         "idiom": "名正言顺",
         "literal": "danh chính ngôn thuận (míng zhèng yán shùn)",
+        "literal_en": "the name is right and the words are fitting (míng zhèng yán shùn)",
         "meaning": "Có cơ sở chính đáng — danh nghĩa đúng, lời nói thuận. Cụm dùng khi xin được làm điều gì có lý do hợp pháp/hợp lệ: '我已经被贵校录取, 申请X1签证名正言顺'.",
         "example": "我已经被贵校录取, 申请X1签证名正言顺。"
       }
@@ -3409,24 +3433,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "言简意赅",
         "literal": "lời ngắn ý đủ (yán jiǎn yì gāi)",
+        "literal_en": "few words, complete meaning (yán jiǎn yì gāi)",
         "meaning": "Lời nói ngắn gọn nhưng ý nghĩa đầy đủ. Cụm khen kỹ năng giao tiếp lý tưởng cho phone interview — HR Trung Quốc đặc biệt thích ứng viên trả lời ngắn gọn rõ ý. Tự nhận: '我尽量言简意赅, 不耽误您的时间'.",
         "example": "您的问题, 我尽量言简意赅地回答。"
       },
       {
         "idiom": "应对自如",
         "literal": "ứng đối tự nhiên (yìng duì zì rú)",
+        "literal_en": "respond with ease (yìng duì zì rú)",
         "meaning": "Phản ứng nhanh, linh hoạt — không lúng túng. Cụm dùng khi tự miêu tả khả năng ứng phó: '在压力下我能应对自如'. Tránh dùng khi bạn đang lúng túng — sẽ phản tác dụng.",
         "example": "在突发情况下我能应对自如。"
       },
       {
         "idiom": "见机行事",
         "literal": "thấy cơ thì hành sự (jiàn jī xíng shì)",
+        "literal_en": "act as the moment dictates (jiàn jī xíng shì)",
         "meaning": "Tùy cơ ứng biến — không bám cứng kế hoạch. Cụm tích cực miêu tả phong cách làm việc linh hoạt. Đặc biệt phù hợp khi nói về kỹ năng xử lý dự án phức tạp.",
         "example": "项目推进中我会见机行事, 灵活调整。"
       },
       {
         "idiom": "慎言慎行",
         "literal": "cẩn ngôn cẩn hành (shèn yán shèn xíng)",
+        "literal_en": "careful in word, careful in deed (shèn yán shèn xíng)",
         "meaning": "Cẩn trọng từng lời nói và hành động. Cụm khiêm tốn lý tưởng cho ứng viên trẻ — báo hiệu bạn không bốc đồng, không hứa quá. Đối lập với 'self-promotion' phương Tây.",
         "example": "我做事比较慎言慎行, 喜欢先思考再行动。"
       }
@@ -3805,24 +3833,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "一见如故",
         "literal": "gặp lần đầu như đã thân quen (yī jiàn rú gù)",
+        "literal_en": "on first meeting, like old friends (yī jiàn rú gù)",
         "meaning": "Gặp lần đầu mà cảm thấy như đã quen lâu — dùng để bày tỏ thiện cảm với người mới gặp. Cụm này ấm áp, lý tưởng cho networking. Tránh lạm dụng — chỉ dùng khi thật sự cảm thấy.",
         "example": "和您一见如故, 真希望以后多多交流。"
       },
       {
         "idiom": "互利共赢",
         "literal": "có lợi lẫn nhau, cùng nhau thắng (hù lì gòng yíng)",
+        "literal_en": "mutual benefit, shared winning (hù lì gòng yíng)",
         "meaning": "Đôi bên cùng có lợi, cùng thắng — cụm chuẩn cho đề xuất hợp tác. Người Trung Quốc đặc biệt thích cụm này vì khẳng định không ai bị thiệt. Dùng thay cho 'win-win' tiếng Anh.",
         "example": "我们的合作能做到互利共赢。"
       },
       {
         "idiom": "礼尚往来",
         "literal": "lễ là sự qua lại (lǐ shàng wǎng lái)",
+        "literal_en": "courtesy values reciprocity (lǐ shàng wǎng lái)",
         "meaning": "Có qua có lại mới toại lòng nhau — nguyên tắc đối nhân xử thế Trung Quốc. Khi đối tác giúp bạn, bạn phải đền đáp; khi bạn giúp họ, mong đợi họ đền đáp. KHÔNG phải hối lộ — đây là bản chất của 关系.",
         "example": "礼尚往来嘛, 下次我请您吃饭。"
       },
       {
         "idiom": "久仰大名",
         "literal": "lâu ngưỡng mộ tên lớn (jiǔ yǎng dà míng)",
+        "literal_en": "long have I admired your great name (jiǔ yǎng dà míng)",
         "meaning": "Đã ngưỡng mộ tên tuổi từ lâu — cụm trang trọng khi gặp người nổi tiếng/cấp cao. Chỉ dùng khi BẠN THỰC SỰ BIẾT về họ — nếu không sẽ bị hỏi 'biết gì về tôi?' và lúng túng.",
         "example": "张总, 久仰大名, 今天终于见到您。"
       }
@@ -4194,24 +4226,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "屡败屡战",
         "literal": "thua nhiều, đánh nhiều (lǚ bài lǚ zhàn)",
+        "literal_en": "defeated repeatedly, yet fighting on repeatedly (lǚ bài lǚ zhàn)",
         "meaning": "Thua nhiều lần vẫn chiến đấu — kiên trì không bỏ cuộc dù thất bại lặp lại. Cụm dùng để miêu tả tinh thần người trẻ ứng tuyển nhiều lần. Tích cực hơn '屡战屡败' (đánh nhiều, thua nhiều — bi quan).",
         "example": "年轻人屡败屡战很正常, 重要的是不放弃。"
       },
       {
         "idiom": "卷土重来",
         "literal": "cuốn đất quay lại (juǎn tǔ chóng lái)",
+        "literal_en": "roll up the dust and come back (juǎn tǔ chóng lái)",
         "meaning": "Comeback mạnh mẽ — như cuộn đất bụi bay lên rồi xông trở lại trận địa. Cụm hùng hồn để miêu tả quyết tâm thử lại sau thất bại. Hơi cường điệu — dùng khi bạn thực sự cam kết.",
         "example": "明年我会卷土重来, 这次一定更有准备。"
       },
       {
         "idiom": "不耻下问",
         "literal": "không xấu hổ hỏi người dưới (bù chǐ xià wèn)",
+        "literal_en": "not ashamed to ask those below you (bù chǐ xià wèn)",
         "meaning": "Không cảm thấy xấu hổ khi hỏi người có vẻ kém hơn mình — phẩm chất khiêm tốn của người ham học. Cụm tự miêu tả thái độ cầu thị: '我会不耻下问, 向所有人学习'.",
         "example": "我会不耻下问, 不断向他人请教。"
       },
       {
         "idiom": "虚心求教",
         "literal": "hư tâm cầu giáo (xū xīn qiú jiào)",
+        "literal_en": "with an open mind, seek instruction (xū xīn qiú jiào)",
         "meaning": "Khiêm tốn xin được chỉ giáo — thái độ học hỏi đúng. Cụm dùng khi xin feedback từ người trên: '请允许我向您虚心求教'. Đặc biệt phù hợp khi đang có thất bại — báo hiệu bạn sẵn sàng học.",
         "example": "请允许我以后向您虚心求教。"
       }
@@ -4583,24 +4619,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "知遇之恩",
         "literal": "ơn của sự tri ngộ (zhī yù zhī ēn)",
+        "literal_en": "the kindness of one who recognized your worth (zhī yù zhī ēn)",
         "meaning": "Ơn tri ngộ — ơn của người nhận ra giá trị mình và cho cơ hội. Cụm cổ điển formal dùng khi cảm ơn giáo sư/sếp đã giúp đỡ. Mạnh nhưng không bị coi là cường điệu trong context Trung Quốc.",
         "example": "您的知遇之恩, 我永远铭记在心。"
       },
       {
         "idiom": "恩重如山",
         "literal": "ơn nặng như núi (ēn zhòng rú shān)",
+        "literal_en": "a kindness as heavy as a mountain (ēn zhòng rú shān)",
         "meaning": "Ơn nặng như núi — biết ơn sâu sắc khó nói hết. Mạnh hơn 知遇之恩, dùng khi giáo sư đã làm việc lớn cho bạn (vd: dành 1 tuần viết thư chi tiết). Tránh dùng cho việc nhỏ — sẽ bị coi là sáo rỗng.",
         "example": "老师的帮助恩重如山, 我无以为报。"
       },
       {
         "idiom": "铭记在心",
         "literal": "khắc ghi vào tim (míng jì zài xīn)",
+        "literal_en": "engraved and kept in the heart (míng jì zài xīn)",
         "meaning": "Khắc ghi trong lòng — nhớ mãi không quên. Cụm formal dùng để cam kết nhớ ơn lâu dài. Đặc biệt phù hợp khi cảm ơn giáo sư cho cơ hội: '您的教诲我会铭记在心'.",
         "example": "您的教导我会铭记在心, 终生不忘。"
       },
       {
         "idiom": "无以为报",
         "literal": "không có gì để báo đáp (wú yǐ wèi bào)",
+        "literal_en": "having nothing with which to repay (wú yǐ wèi bào)",
         "meaning": "Không biết lấy gì báo đáp — biết ơn đến mức cảm thấy không xứng đáp lại. Cụm khiêm tốn lý tưởng cho thư cảm ơn cuối cùng. Tránh dùng quá sớm — sẽ bị coi là khách sáo.",
         "example": "您的恩情我无以为报, 唯有努力学习。"
       }
@@ -4979,24 +5019,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "锲而不舍",
         "literal": "khắc mà không bỏ (qiè ér bù shě)",
+        "literal_en": "keep carving and never give up (qiè ér bù shě)",
         "meaning": "Kiên trì không bỏ cuộc — như khắc đá không ngừng. Cụm cốt lõi cho thái độ research. Khi nói '我以锲而不舍的精神' = cam kết theo đuổi đề tài đến cùng. Đặc biệt phù hợp khi giáo sư hỏi về cách đối phó bottleneck.",
         "example": "做研究最重要的是锲而不舍。"
       },
       {
         "idiom": "一以贯之",
         "literal": "một mà xuyên suốt (yī yǐ guàn zhī)",
+        "literal_en": "run one thread through it all (yī yǐ guàn zhī)",
         "meaning": "Nhất quán xuyên suốt — không thay đổi hướng tùy hứng. Cụm dùng để cam kết theo đuổi một chủ đề lâu dài. Đối lập với 'flighty researcher' (đổi hướng liên tục) — phẩm chất xấu trong văn hóa academic Trung Quốc.",
         "example": "我会在这条研究路上一以贯之。"
       },
       {
         "idiom": "博古通今",
         "literal": "thông cổ thông kim (bó gǔ tōng jīn)",
+        "literal_en": "versed in the ancient, conversant with the present (bó gǔ tōng jīn)",
         "meaning": "Hiểu rộng cả cổ kim — kiến thức bao quát cả lịch sử và hiện tại. Cụm khen học giả uyên bác. Có thể dùng để cam kết: '我希望能博古通今, 从经典中找新意'. Tránh tự khen mình bằng cụm này.",
         "example": "希望能在学术上博古通今, 不局限于一时一域。"
       },
       {
         "idiom": "学贯中西",
         "literal": "học vấn xuyên Trung Tây (xué guàn zhōng xī)",
+        "literal_en": "learning that bridges China and the West (xué guàn zhōng xī)",
         "meaning": "Học vấn xuyên cả phương Đông và phương Tây — kiến thức đa văn hóa. Cụm phù hợp đặc biệt cho sinh viên Việt Nam học ở Trung Quốc — làm cầu nối văn hóa. Cụm khen người giỏi cross-cultural.",
         "example": "我希望未来能学贯中西, 把越中两国的语言学传统结合起来。"
       }
@@ -5368,24 +5412,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "宾至如归",
         "literal": "khách đến như về nhà (bīn zhì rú guī)",
+        "literal_en": "the guest arrives as if coming home (bīn zhì rú guī)",
         "meaning": "Khách cảm thấy như đang ở nhà của mình — sự tiếp đãi chu đáo nhất. Cụm chuẩn để host kết thúc lời chào hoặc cam kết: '希望您宾至如归'. Đây là tiêu chuẩn vàng của tiếp khách Trung Quốc.",
         "example": "希望您这次访问宾至如归。"
       },
       {
         "idiom": "入乡随俗",
         "literal": "vào làng theo lệ (rù xiāng suí sú)",
+        "literal_en": "enter a village, follow its customs (rù xiāng suí sú)",
         "meaning": "Đến đâu theo phong tục đó — nhập gia tùy tục. Sếp Trung Quốc dùng khi sẵn sàng thử món/phong tục Việt. Bạn dùng khi giới thiệu phong tục Việt Nam: '在越南我们这样做, 入乡随俗嘛'.",
         "example": "中国人来越南就要吃越南河粉, 入乡随俗。"
       },
       {
         "idiom": "远来是客",
         "literal": "đến từ xa là khách (yuǎn lái shì kè)",
+        "literal_en": "one who comes from afar is a guest (yuǎn lái shì kè)",
         "meaning": "Người đến từ xa đều là khách quý — phải tiếp đãi tận tình. Triết lý gốc của tiếp khách Trung Quốc/Việt Nam. Dùng khi giải thích vì sao bạn dành nhiều thời gian/nguồn lực cho khách.",
         "example": "远来是客, 您怎么也得让我们好好招待。"
       },
       {
         "idiom": "主随客便",
         "literal": "chủ tùy theo khách (zhǔ suí kè biàn)",
+        "literal_en": "the host follows the guest's convenience (zhǔ suí kè biàn)",
         "meaning": "Chủ nhà tùy theo ý khách — linh hoạt theo mong muốn của khách. Dùng khi đưa ra lựa chọn cho khách: '主随客便, 您喜欢吃什么我们就吃什么'. Đối lập với 'chủ áp đặt khách'.",
         "example": "主随客便, 您想去哪里我们就去哪里。"
       }
@@ -5757,24 +5805,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "礼尚往来",
         "literal": "lễ là sự qua lại (lǐ shàng wǎng lái)",
+        "literal_en": "courtesy values reciprocity (lǐ shàng wǎng lái)",
         "meaning": "Có qua có lại — quy tắc đáp lễ trong văn hóa Trung Quốc/Việt Nam. Khi bạn đãi khách, lần sau khách phải đãi bạn. Cụm dùng để thuyết phục khách đồng ý cho bạn host: '礼尚往来嘛, 这次我做东'.",
         "example": "礼尚往来嘛, 下次您来河内一定要让我做东。"
       },
       {
         "idiom": "投桃报李",
         "literal": "ném đào nhận mận (tóu táo bào lǐ)",
+        "literal_en": "throw a peach, repaid with a plum (tóu táo bào lǐ)",
         "meaning": "Trao tặng đào nhận lại mận — quà đáp quà, giúp đỡ đáp giúp đỡ. Cụm cổ điển hơn 礼尚往来, dùng trong context formal. Phù hợp khi nói về mối quan hệ hợp tác lâu dài.",
         "example": "我们做生意, 讲究投桃报李。"
       },
       {
         "idiom": "和气生财",
         "literal": "hòa khí sinh tài (hé qì shēng cái)",
+        "literal_en": "harmony breeds wealth (hé qì shēng cái)",
         "meaning": "Hòa khí sinh ra của cải — quan hệ tốt là cơ sở của làm ăn. Triết lý kinh doanh Trung Quốc cổ điển. Khách Trung Quốc dùng để thể hiện thiện chí: 'cùng nhau hòa khí, tiền sẽ đến'.",
         "example": "和气生财, 我们慢慢谈, 不着急。"
       },
       {
         "idiom": "一视同仁",
         "literal": "một mắt nhìn cùng người (yī shì tóng rén)",
+        "literal_en": "regard all with the same benevolence (yī shì tóng rén)",
         "meaning": "Đối xử công bằng như nhau — không phân biệt khách lớn nhỏ, gần xa. Cụm cam kết phong cách phục vụ: '我们对所有客户一视同仁, 您是我们的VIP'. Dùng để xây niềm tin.",
         "example": "我们对所有客户一视同仁。"
       }
@@ -6146,24 +6198,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "同根同源",
         "literal": "cùng gốc cùng nguồn (tóng gēn tóng yuán)",
+        "literal_en": "same root, same source (tóng gēn tóng yuán)",
         "meaning": "Cùng gốc, cùng nguồn — chia sẻ nguồn gốc văn hóa/lịch sử. Cụm trung tính dùng để thừa nhận chia sẻ văn hóa Việt-Trung mà không nói 'một quốc gia'. Mở đường cho thảo luận tôn trọng.",
         "example": "我们都受儒家影响, 同根同源。"
       },
       {
         "idiom": "求同存异",
         "literal": "cầu đồng tồn dị (qiú tóng cún yì)",
+        "literal_en": "seek the common, keep the differences (qiú tóng cún yì)",
         "meaning": "Cầu cái chung, giữ cái khác — tìm điểm chung nhưng tôn trọng khác biệt. Cụm chuẩn ngoại giao Trung Quốc, áp dụng tuyệt vời cho giao tiếp Việt-Trung. Tránh xung đột vô ích.",
         "example": "求同存异, 才能更好地交流。"
       },
       {
         "idiom": "各有千秋",
         "literal": "mỗi bên có ngàn thu (gè yǒu qiān qiū)",
+        "literal_en": "each has its own thousand autumns (gè yǒu qiān qiū)",
         "meaning": "Mỗi bên có nét riêng đáng giá — không ai hơn ai. Cụm bình đẳng, dùng để khẳng định Việt Nam và Trung Quốc đều có giá trị riêng. Đối lập với 'so sánh hơn kém'.",
         "example": "中越文化各有千秋, 都很精彩。"
       },
       {
         "idiom": "海内存知己, 天涯若比邻",
         "literal": "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
+        "literal_en": "within the four seas a true friend remains; though at the sky's edge, near as a neighbour (Wang Bo)",
         "meaning": "Câu thơ nổi tiếng của Vương Bột (đời Đường): nếu trên đời có tri kỷ, dù xa cũng như gần. Dùng để kết nối tình bạn Việt-Trung. Cao cấp về văn hóa — sẽ gây ấn tượng mạnh nếu dùng đúng.",
         "example": "海内存知己, 天涯若比邻 — 越中朋友永远不分离。"
       }
@@ -6535,24 +6591,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "礼多人不怪",
         "literal": "lễ nhiều người không trách (lǐ duō rén bù guài)",
+        "literal_en": "no one faults you for too much courtesy (lǐ duō rén bù guài)",
         "meaning": "Quá lễ độ không ai trách — thà thừa lịch sự còn hơn thiếu. Triết lý dùng cho người mới học etiquette: khi không chắc, chọn cách lịch sự nhất. Sếp Trung Quốc rất thích người tuân theo nguyên tắc này.",
         "example": "礼多人不怪, 客套一点没坏处。"
       },
       {
         "idiom": "入境问禁",
         "literal": "vào cõi hỏi cấm (rù jìng wèn jìn)",
+        "literal_en": "entering a territory, ask what is forbidden (rù jìng wèn jìn)",
         "meaning": "Vào nơi nào nên hỏi điều cấm kỵ ở đó — chủ động tìm hiểu phong tục địa phương trước khi hành động. Cụm khuyến khích sự chuẩn bị, đặc biệt khi đến môi trường mới (Trung Quốc, công ty mới).",
         "example": "入境问禁, 我提前问了同事很多礼仪。"
       },
       {
         "idiom": "面子工程",
         "literal": "công trình thể diện (miàn zi gōng chéng)",
+        "literal_en": "a face project (miàn zi gōng chéng)",
         "meaning": "Việc làm vì thể diện — đầu tư vào hình thức để giữ hoặc tạo thể diện. Thường mang nghĩa hơi tiêu cực ('phô trương'), nhưng trong context business là điều cần thiết. Dùng để miêu tả các nghi thức đãi khách trang trọng.",
         "example": "中国商务里, 面子工程是必不可少的。"
       },
       {
         "idiom": "客随主便",
         "literal": "khách theo chủ tiện (kè suí zhǔ biàn)",
+        "literal_en": "the guest follows the host's arrangements (kè suí zhǔ biàn)",
         "meaning": "Khách tùy theo sự sắp xếp của chủ nhà — không tự đặt yêu cầu. Phẩm chất khách lý tưởng: linh hoạt, không khó tính. Khi bạn là khách ở Trung Quốc, đây là phương châm an toàn.",
         "example": "我客随主便, 您安排什么我都行。"
       }
@@ -6924,24 +6984,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "知错就改",
         "literal": "biết sai liền sửa (zhī cuò jiù gǎi)",
+        "literal_en": "know the error, then correct it (zhī cuò jiù gǎi)",
         "meaning": "Biết sai sửa ngay — phẩm chất quân tử, không che giấu lỗi. Cụm cam kết khi xin lỗi: thừa nhận + cam kết thay đổi. Người Trung Quốc đánh giá rất cao thái độ này.",
         "example": "知错就改是基本道德。"
       },
       {
         "idiom": "将心比心",
         "literal": "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
+        "literal_en": "measure another's heart with your own (jiāng xīn bǐ xīn)",
         "meaning": "Lấy tâm mình đo tâm người — đặt mình vào vị trí người khác. Cụm thể hiện đồng cảm khi xin lỗi: 'nếu em là anh, em cũng sẽ buồn'. Tăng tính chân thành.",
         "example": "将心比心, 我能理解您的感受。"
       },
       {
         "idiom": "化干戈为玉帛",
         "literal": "hóa can qua thành ngọc lụa (huà gān gē wéi yù bó)",
+        "literal_en": "turn weapons into jade and silk (huà gān gē wéi yù bó)",
         "meaning": "Biến vũ khí (干戈 — giáo mác) thành quà tặng (玉帛 — ngọc lụa) — chuyển xung đột thành hòa bình. Cụm cao cấp dùng khi muốn 'lật trang' sau xung đột. Văn vẻ — gây ấn tượng mạnh.",
         "example": "希望我们能化干戈为玉帛, 重新合作。"
       },
       {
         "idiom": "赔礼道歉",
         "literal": "đền lễ xin lỗi (péi lǐ dào qiàn)",
+        "literal_en": "make amends and apologise (péi lǐ dào qiàn)",
         "meaning": "Tạ lỗi xin lỗi — xin lỗi formal kèm hành động bù đắp. Mạnh hơn '道歉' đơn lẻ. Dùng khi lỗi nghiêm trọng cần 'compensation' (quà, mời ăn, dịch vụ).",
         "example": "我专程来赔礼道歉, 请您原谅。"
       }
@@ -7313,24 +7377,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "推杯换盏",
         "literal": "đẩy ly đổi chén (tuī bēi huàn zhǎn)",
+        "literal_en": "push the cup, exchange the goblet (tuī bēi huàn zhǎn)",
         "meaning": "Nâng ly và đổi chén — biểu tượng của bữa tiệc náo nhiệt, mời rượu qua lại. Cụm dùng để mô tả tình bạn xây qua bữa rượu: 'trong nâng ly đổi chén, tình bạn nảy sinh'. Văn vẻ — nâng tầm phát biểu.",
         "example": "推杯换盏间, 朋友的情谊就深了。"
       },
       {
         "idiom": "觥筹交错",
         "literal": "chén đũa giao thoa (gōng chóu jiāo cuò)",
+        "literal_en": "wine-horns and tally-sticks crisscross (gōng chóu jiāo cuò)",
         "meaning": "Chén rượu (觥) và thẻ thưởng rượu (筹) giao thoa — tiệc rượu náo nhiệt, vui vẻ. Cụm cao cấp hơn 推杯换盏, dùng trong context formal hoặc văn học để mô tả không khí tiệc.",
         "example": "今晚觥筹交错, 大家都很尽兴。"
       },
       {
         "idiom": "一干而尽",
         "literal": "một cạn hết (yī gān ér jìn)",
+        "literal_en": "down it in one go (yī gān ér jìn)",
         "meaning": "Cạn một hơi — uống cạn ly trong một ngụm. Thể hiện thiện chí cao nhất. Tuy nhiên ở Trung Quốc đại lục hiện nay không bắt buộc với khách nước ngoài — bạn có thể uống tùy lượng.",
         "example": "我先一干而尽, 请您随意。"
       },
       {
         "idiom": "客随主便",
         "literal": "khách tùy chủ tiện (kè suí zhǔ biàn)",
+        "literal_en": "the guest follows the host's arrangements (kè suí zhǔ biàn)",
         "meaning": "Khách tùy theo sự sắp xếp của chủ — không tự ý đặt yêu cầu. Phẩm chất khách lý tưởng. Khi bạn là khách Trung Quốc tại nhà người Việt, dùng cụm này thể hiện sự khiêm tốn.",
         "example": "我客随主便, 您安排什么我都喜欢。"
       }
@@ -7702,24 +7770,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "阖家团圆",
         "literal": "cả nhà đoàn tụ (hé jiā tuán yuán)",
+        "literal_en": "the whole household reunited (hé jiā tuán yuán)",
         "meaning": "Cả gia đình đoàn tụ — ý nghĩa cốt lõi của Tết. Cụm chuẩn dùng để chúc trong dịp Xuân: '阖家团圆, 幸福安康'. Mạnh hơn '一家团圆' đơn giản. Phù hợp với cả văn hóa Việt và Trung.",
         "example": "祝您阖家团圆, 万事如意。"
       },
       {
         "idiom": "万象更新",
         "literal": "vạn vật đổi mới (wàn xiàng gēng xīn)",
+        "literal_en": "ten thousand things renewed (wàn xiàng gēng xīn)",
         "meaning": "Vạn vật được làm mới — biểu tượng đầu năm mới. Cụm dùng trong câu chúc/diễn văn Tết, đặc biệt khi muốn diễn đạt cảm giác 'reset' đầu năm. Cao cấp hơn 'happy new year'.",
         "example": "新春到来, 万象更新。"
       },
       {
         "idiom": "辞旧迎新",
         "literal": "tiễn cũ đón mới (cí jiù yíng xīn)",
+        "literal_en": "see off the old, welcome the new (cí jiù yíng xīn)",
         "meaning": "Tiễn năm cũ, đón năm mới — biểu tượng chuyển giao thời gian. Cụm dùng trong đêm giao thừa hoặc đầu năm: '辞旧迎新, 万事如意'. Thể hiện tinh thần 'để lại điều xấu, đón điều tốt'.",
         "example": "辞旧迎新, 一切重新开始。"
       },
       {
         "idiom": "福寿安康",
         "literal": "phúc thọ an khang (fú shòu ān kāng)",
+        "literal_en": "blessing, longevity, peace, health (fú shòu ān kāng)",
         "meaning": "Phúc lộc, sống lâu, bình an, khỏe mạnh — bộ chúc 4 chữ kinh điển. Đặc biệt phù hợp khi chúc người lớn tuổi (ông bà, sếp lớn). Mạnh và sâu sắc hơn '身体健康' đơn lẻ.",
         "example": "祝您福寿安康, 永远幸福。"
       }
@@ -8091,24 +8163,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "以诚相待",
         "literal": "lấy chân thành đối đãi (yǐ chéng xiāng dài)",
+        "literal_en": "treat one another with sincerity (yǐ chéng xiāng dài)",
         "meaning": "Đối đãi với nhau bằng sự chân thành — không giả tạo, không tính toán. Triết lý cốt lõi của tình bạn Đông Á. Cụm thể hiện cam kết tình bạn không có hidden agenda.",
         "example": "我们之间以诚相待, 不需要客套。"
       },
       {
         "idiom": "肝胆相照",
         "literal": "gan mật soi nhau (gān dǎn xiāng zhào)",
+        "literal_en": "liver and gall reflecting each other (gān dǎn xiāng zhào)",
         "meaning": "Lộ gan ruột cho nhau thấy — tin cậy sâu sắc, không giấu giếm. Cụm rất mạnh, dành cho bạn thân nhất. Tránh dùng cho mới quen — sẽ bị coi là cường điệu.",
         "example": "我们是肝胆相照的好朋友。"
       },
       {
         "idiom": "患难见真情",
         "literal": "hoạn nạn thấy chân tình (huàn nàn jiàn zhēn qíng)",
+        "literal_en": "in hardship, true feeling is seen (huàn nàn jiàn zhēn qíng)",
         "meaning": "Khi gặp khó khăn mới thấy ai là bạn thật — sự thử thách của tình bạn. Cụm dùng khi đã giúp nhau qua khó khăn cụ thể. Mạnh và chân thực — thể hiện tình bạn đã được kiểm chứng.",
         "example": "你这次帮我度过难关, 真是患难见真情。"
       },
       {
         "idiom": "海内存知己, 天涯若比邻",
         "literal": "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
+        "literal_en": "within the four seas a true friend remains; though at the sky's edge, near as a neighbour (Wang Bo)",
         "meaning": "Câu thơ Vương Bột — nếu có tri kỷ, dù xa cũng gần. Cụm cao cấp dùng cho tình bạn vượt khoảng cách. Đặc biệt phù hợp khi bạn về nước hoặc bạn đi xa — khẳng định khoảng cách không chia rẽ.",
         "example": "你回中国了, 但海内存知己, 我们永远是朋友。"
       }
@@ -8480,24 +8556,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "通行无阻",
         "literal": "đi không bị cản (tōng xíng wú zǔ)",
+        "literal_en": "passage with nothing blocking it (tōng xíng wú zǔ)",
         "meaning": "Đi qua thuận lợi, không gặp trở ngại — dùng để miêu tả việc qua hải quan/cửa khẩu suôn sẻ. 'Hộ chiếu của em qua hải quan thông hành vô trở.'",
         "example": "我的护照过海关通行无阻。"
       },
       {
         "idiom": "一帆风顺",
         "literal": "một cánh buồm thuận gió (yī fán fēng shùn)",
+        "literal_en": "a single sail, a favourable wind (yī fán fēng shùn)",
         "meaning": "Mọi việc thuận lợi từ đầu đến cuối — chúc người khởi hành. Cụm cao cấp dùng để chúc bạn bè trước chuyến công tác.",
         "example": "祝您这次出差一帆风顺。"
       },
       {
         "idiom": "有备无患",
         "literal": "có chuẩn bị thì không lo (yǒu bèi wú huàn)",
+        "literal_en": "with preparation there is no calamity (yǒu bèi wú huàn)",
         "meaning": "Có chuẩn bị thì không gặp rắc rối — chuẩn bị giấy tờ kỹ trước khi qua hải quan. Cụm dùng để giải thích tại sao bạn mang đầy đủ giấy tờ phụ.",
         "example": "我把所有文件都带上, 有备无患。"
       },
       {
         "idiom": "万无一失",
         "literal": "vạn việc không thất (wàn wú yī shī)",
+        "literal_en": "ten thousand without a single slip (wàn wú yī shī)",
         "meaning": "Hoàn toàn chắc chắn không có sai sót — chuẩn bị rất kỹ. Cụm dùng khi muốn diễn đạt 'em đã kiểm tra mọi thứ rồi'. Mạnh hơn 有备无患.",
         "example": "出行前我检查三遍, 万无一失。"
       }
@@ -8869,24 +8949,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "雪上加霜",
         "literal": "tuyết trên thêm sương (xuě shàng jiā shuāng)",
+        "literal_en": "frost added on top of snow (xuě shàng jiā shuāng)",
         "meaning": "Tuyết phủ lại thêm sương — họa vô đơn chí, chuyện xấu chồng chất. Cụm dùng khi mô tả tình huống đã tệ lại càng tệ hơn (mất hộ chiếu + sắp hết visa). Tránh lạm dụng — chỉ dùng khi thực sự nghiêm trọng.",
         "example": "本来要赶飞机, 又下大雨, 真是雪上加霜。"
       },
       {
         "idiom": "急中生智",
         "literal": "trong khẩn cấp sinh trí (jí zhōng shēng zhì)",
+        "literal_en": "wit born in an emergency (jí zhōng shēng zhì)",
         "meaning": "Trong tình huống khẩn nảy ra ý hay — phản ứng sáng suốt khi gấp gáp. Cụm dùng để khen người xử lý khôn ngoan trong khẩn cấp: 'em đã 急中生智 đi báo công an ngay.'",
         "example": "我急中生智, 立刻打电话给酒店。"
       },
       {
         "idiom": "化险为夷",
         "literal": "biến nguy thành an (huà xiǎn wéi yí)",
+        "literal_en": "turn danger into safety (huà xiǎn wéi yí)",
         "meaning": "Biến nguy hiểm thành an toàn — vượt qua khủng hoảng thành công. Cụm dùng để cảm ơn người đã giúp giải quyết tình huống khẩn: 'cảm ơn anh đã giúp em 化险为夷'.",
         "example": "幸亏您帮忙, 才能化险为夷。"
       },
       {
         "idiom": "有惊无险",
         "literal": "có sợ nhưng không nguy (yǒu jīng wú xiǎn)",
+        "literal_en": "a fright but no real danger (yǒu jīng wú xiǎn)",
         "meaning": "Hết hồn nhưng không sao — sự việc kết thúc an toàn dù lúc đầu đáng sợ. Cụm an ủi cuối khi mọi việc đã xong: 'lần này 有惊无险, em rút kinh nghiệm rồi.'",
         "example": "护照虽然丢了, 但及时补办, 有惊无险。"
       }
@@ -9258,24 +9342,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "一分一毫",
         "literal": "một phân một hào (yī fēn yī háo)",
+        "literal_en": "every fen and every hao (yī fēn yī háo)",
         "meaning": "Từng đồng từng xu — chính xác đến từng đơn vị nhỏ. Dùng khi cẩn thận tính tiền, không bỏ qua chi tiết phí. 'Em muốn rõ ràng từng đồng từng xu, đừng bị tính nhầm.'",
         "example": "请把费用算清楚, 一分一毫都要明白。"
       },
       {
         "idiom": "斤斤计较",
         "literal": "tính đếm từng cân (jīn jīn jì jiào)",
+        "literal_en": "haggling over every catty (jīn jīn jì jiào)",
         "meaning": "So đo tính toán quá kỹ — thường mang ý hơi tiêu cực. Tránh tự nhận cụm này: 'em không 斤斤计较, chỉ muốn hiểu rõ phí.' Đối phương dùng cụm này về bạn = họ đang phòng thủ.",
         "example": "我不是斤斤计较, 只是想搞清楚费用结构。"
       },
       {
         "idiom": "明明白白",
         "literal": "rõ ràng minh bạch (míng míng bái bái)",
+        "literal_en": "clear and plain (míng míng bái bái)",
         "meaning": "Rõ ràng minh bạch — yêu cầu thông tin hoàn toàn rõ ràng. 'Em muốn 明明白白biết phí thủ tục bao nhiêu.' Cụm chuẩn khi yêu cầu giải thích kỹ.",
         "example": "我希望您把规定明明白白地告诉我。"
       },
       {
         "idiom": "公事公办",
         "literal": "việc công làm theo công (gōng shì gōng bàn)",
+        "literal_en": "official matters handled by the rules (gōng shì gōng bàn)",
         "meaning": "Việc công xử lý theo quy định công — không thiên vị, không du di. Cán bộ dùng cụm này để giải thích vì sao họ tuân thủ quy định: 'em xin lỗi, nhưng 公事公办, anh phải trả phí'. Tôn trọng — đừng đối đầu.",
         "example": "不好意思, 公事公办, 我必须按规定收费。"
       }
@@ -9654,24 +9742,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "对症下药",
         "literal": "đối chứng hạ thuốc (duì zhèng xià yào)",
+        "literal_en": "match the illness, then administer the medicine (duì zhèng xià yào)",
         "meaning": "Đúng bệnh kê thuốc — chẩn đoán đúng và điều trị đúng. Cụm khen bác sĩ giỏi: '王医生对症下药, 一吃就好.' Cũng dùng nghĩa rộng (giải pháp đúng cho vấn đề đúng).",
         "example": "好医生会对症下药, 不会乱开药。"
       },
       {
         "idiom": "病急乱投医",
         "literal": "bệnh gấp loạn tìm thầy (bìng jí luàn tóu yī)",
+        "literal_en": "gravely ill, seeking any doctor at random (bìng jí luàn tóu yī)",
         "meaning": "Bệnh nặng tìm thầy bừa — quýnh quáng làm điều không suy nghĩ. Cụm cảnh báo: 'em đừng 病急乱投医, hãy đến bệnh viện công uy tín'. Tránh nói về mình — sẽ tự miêu tả là không sáng suốt.",
         "example": "别病急乱投医, 找正规医院最重要。"
       },
       {
         "idiom": "防患未然",
         "literal": "phòng họa khi chưa xảy ra (fáng huàn wèi rán)",
+        "literal_en": "guard against trouble before it arises (fáng huàn wèi rán)",
         "meaning": "Phòng bệnh hơn chữa bệnh — chuẩn bị trước rủi ro. Cụm dùng để giải thích vì sao bạn mua bảo hiểm du lịch trước khi đi: '我提前买了旅游保险, 防患未然'.",
         "example": "出国前买保险, 防患未然。"
       },
       {
         "idiom": "因病施治",
         "literal": "theo bệnh chữa trị (yīn bìng shī zhì)",
+        "literal_en": "treat according to the illness (yīn bìng shī zhì)",
         "meaning": "Tùy bệnh mà chữa — điều trị cá nhân hóa. Cụm dùng khi bác sĩ giải thích phác đồ điều trị cho bạn: 'mình 因病施治, không phải kê đại'. Khi bạn nghe bác sĩ nói cụm này = họ đang cẩn thận, tin được.",
         "example": "我们医院讲究因病施治。"
       }
@@ -10015,24 +10107,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "宾至如归",
         "literal": "khách đến như về nhà (bīn zhì rú guī)",
+        "literal_en": "the guest arrives as if coming home (bīn zhì rú guī)",
         "meaning": "Khách cảm thấy như ở nhà — chuẩn mực dịch vụ khách sạn. Cụm khách hàng dùng để gợi nhắc tiêu chuẩn: '我以为住您们酒店会宾至如归, 但...' (em tưởng ở khách sạn bọn anh sẽ như ở nhà, nhưng...). Mở đầu khiếu nại lịch sự.",
         "example": "酒店的服务理念是宾至如归。"
       },
       {
         "idiom": "将心比心",
         "literal": "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
+        "literal_en": "measure another's heart with your own (jiāng xīn bǐ xīn)",
         "meaning": "Đặt mình vào vị trí khách — đồng cảm. Cụm dùng để xin lễ tân thấu hiểu: '将心比心, 您也想睡好觉吧?' (đặt mình vào vị trí em, anh/chị cũng muốn ngủ ngon chứ?). Tránh đối đầu — chuyển sang đồng cảm.",
         "example": "将心比心, 我相信您能理解我的感受。"
       },
       {
         "idiom": "息事宁人",
         "literal": "dập việc làm yên người (xī shì níng rén)",
+        "literal_en": "settle the matter, set people at ease (xī shì níng rén)",
         "meaning": "Dập tắt vấn đề để mọi người yên ổn — giải quyết khiếu nại nhanh chóng. Cụm dùng để gợi ý lễ tân giải quyết nhanh: 'mình 息事宁人, đừng để cao trào'.",
         "example": "我希望我们能息事宁人, 把问题解决了。"
       },
       {
         "idiom": "妥善处理",
         "literal": "thỏa đáng xử lý (tuǒ shàn chǔ lǐ)",
+        "literal_en": "handle it properly and well (tuǒ shàn chǔ lǐ)",
         "meaning": "Xử lý chu đáo, hợp lý — yêu cầu nhân viên giải quyết đầy đủ. Cụm formal dùng khi yêu cầu manager xử lý: '请您妥善处理这件事'. Tăng tính nghiêm túc của yêu cầu.",
         "example": "希望您能妥善处理我的投诉。"
       }
@@ -10404,24 +10500,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "失而复得",
         "literal": "mất rồi tìm lại được (shī ér fù dé)",
+        "literal_en": "lost and then regained (shī ér fù dé)",
         "meaning": "Mất rồi tìm lại — vui mừng vì lấy lại được vật. Cụm dùng khi vali về sau 1-2 ngày: '行李失而复得, 太好了!'. Tăng tính cảm xúc trong câu cảm ơn.",
         "example": "我的行李失而复得, 真是万幸。"
       },
       {
         "idiom": "万无一失",
         "literal": "vạn vô một thất (wàn wú yī shī)",
+        "literal_en": "ten thousand without a single slip (wàn wú yī shī)",
         "meaning": "Hoàn toàn chắc chắn không có sai sót. Cụm dùng để yêu cầu hệ thống cẩn thận: '请您万无一失地处理我的行李, 别再丢了'. Cũng dùng để cam kết khi đã sửa lỗi.",
         "example": "下次我会万无一失, 不会再让行李丢了。"
       },
       {
         "idiom": "亡羊补牢",
         "literal": "mất dê sửa chuồng (wáng yáng bǔ láo)",
+        "literal_en": "mend the pen after the sheep is lost (wáng yáng bǔ láo)",
         "meaning": "Mất dê rồi mới sửa chuồng — sửa sai sau khi đã sai, vẫn còn kịp. Cụm dùng để giải thích vì sao bạn mua bảo hiểm sau khi từng bị mất hành lý: 'tuy 亡羊补牢, nhưng vẫn còn kịp'.",
         "example": "我从那次以后买了行李保险, 算是亡羊补牢。"
       },
       {
         "idiom": "心急如焚",
         "literal": "lòng nóng như đốt (xīn jí rú fén)",
+        "literal_en": "the heart burning with anxiety (xīn jí rú fén)",
         "meaning": "Lòng nóng như cháy — quá lo lắng, sốt ruột. Cụm cảm xúc dùng để mô tả cảm giác chờ hành lý: '我现在心急如焚, 行李里有重要文件'. Tăng độ khẩn của yêu cầu mà không la mắng.",
         "example": "行李里有重要资料, 我心急如焚。"
       }
@@ -10821,24 +10921,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "防不胜防",
         "literal": "phòng không kịp phòng (fáng bù shèng fáng)",
+        "literal_en": "guard as you might, you can't guard against it all (fáng bù shèng fáng)",
         "meaning": "Phòng không xuể — kẻ xấu khôn ngoan, dù cẩn thận cũng có thể bị. Cụm dùng để miêu tả tình huống bị móc túi tinh vi: '我已经很小心了, 但小偷防不胜防'.",
         "example": "我已经很小心了, 但小偷防不胜防。"
       },
       {
         "idiom": "小心驶得万年船",
         "literal": "cẩn thận lái thuyền vạn năm (xiǎo xīn shǐ de wàn nián chuán)",
+        "literal_en": "steer carefully and the boat sails ten thousand years (xiǎo xīn shǐ de wàn nián chuán)",
         "meaning": "Cẩn thận thì tàu chạy được vạn năm — cẩn thận là biện pháp tốt nhất. Cụm khuyên cẩn thận trong tương lai: 'sau lần này, em sẽ 小心驶得万年船'.",
         "example": "出门在外, 小心驶得万年船。"
       },
       {
         "idiom": "破财消灾",
         "literal": "phá của tan họa (pò cái xiāo zāi)",
+        "literal_en": "lose money, avert disaster (pò cái xiāo zāi)",
         "meaning": "Mất tiền tránh được tai họa — an ủi người vừa mất tiền. Cụm cán bộ/người dân dùng để xoa dịu: 'mất tiền chứ không bị thương, 破财消灾, được rồi'. Tránh tự dùng — sẽ bị coi là tự an ủi giả.",
         "example": "幸好只丢了钱包, 没受伤, 破财消灾。"
       },
       {
         "idiom": "失而复得",
         "literal": "mất rồi tìm được (shī ér fù dé)",
+        "literal_en": "lost and then regained (shī ér fù dé)",
         "meaning": "Mất rồi tìm lại — vui mừng vì lấy lại được vật. Cụm dùng khi công an báo tìm được ví: '钱包失而复得, 太感谢了!'.",
         "example": "钱包失而复得, 太感谢警察了。"
       }
@@ -11217,24 +11321,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "明察秋毫",
         "literal": "minh sát thu hào (míng chá qiū háo)",
+        "literal_en": "discern the tip of an autumn hair (míng chá qiū háo)",
         "meaning": "Quan sát rõ từng sợi lông mùa thu — quan sát tinh tường, nhận xét chính xác. Cụm khen người chỉ đường giỏi, biết landmark cụ thể: 'cô ấy 明察秋毫, chỉ đường rất chi tiết'.",
         "example": "这位大爷明察秋毫, 把路线说得清清楚楚。"
       },
       {
         "idiom": "迷路",
         "literal": "mê lộ (mí lù)",
+        "literal_en": "to lose one's way (mí lù)",
         "meaning": "Lạc đường — khái niệm cơ bản. KHÔNG phải idiom 4 chữ nhưng cần biết. Dùng: '我迷路了, 请问...'.",
         "example": "我迷路了, 请问最近的地铁站在哪?"
       },
       {
         "idiom": "条条大路通罗马",
         "literal": "muôn đường đến La Mã (tiáo tiáo dà lù tōng Luó Mǎ)",
+        "literal_en": "every road leads to Rome (tiáo tiáo dà lù tōng Luó Mǎ)",
         "meaning": "Mọi con đường đều đến La Mã — nhiều cách đến cùng đích. Cụm dùng để nói có nhiều phương án di chuyển: 'đến chỗ đó có 3 cách, 条条大路通罗马'. Đùa nhẹ với người chỉ đường thân thiện.",
         "example": "去王府井有好多路, 条条大路通罗马。"
       },
       {
         "idiom": "举手之劳",
         "literal": "việc của một cánh tay (jǔ shǒu zhī láo)",
+        "literal_en": "the effort of lifting a hand (jǔ shǒu zhī láo)",
         "meaning": "Việc rất nhỏ — không đáng cảm ơn. Cụm người chỉ đường dùng để khiêm tốn từ chối lời cảm ơn của bạn: '没什么, 举手之劳'. Đáp lại '太谢谢您了' của bạn.",
         "example": "不用谢, 举手之劳而已。"
       }
@@ -11613,24 +11721,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "实事求是",
         "literal": "thực sự cầu thị (shí shì qiú shì)",
+        "literal_en": "seek truth from the facts (shí shì qiú shì)",
         "meaning": "Sự việc đúng như sự việc — báo cáo chân thực, không phóng đại. Cụm dùng để giải thích vì sao bạn báo lỗi cụ thể: 'em 实事求是, không tính nhầm phí.'",
         "example": "我实事求是地告诉您, 这道菜真的不是我点的。"
       },
       {
         "idiom": "明明白白",
         "literal": "rõ ràng minh bạch (míng míng bái bái)",
+        "literal_en": "clear and plain (míng míng bái bái)",
         "meaning": "Rõ ràng, minh bạch — yêu cầu thông tin đầy đủ. 'Em muốn 明明白白biết hóa đơn tính sao.' Cụm chuẩn khi yêu cầu kiểm tra hóa đơn.",
         "example": "我希望您把账单算得明明白白。"
       },
       {
         "idiom": "得理饶人",
         "literal": "được lý nhường người (dé lǐ ráo rén)",
+        "literal_en": "having the right, still spare the other (dé lǐ ráo rén)",
         "meaning": "Có lý vẫn nhường người — không lợi dụng khi đối phương sai. Phẩm chất quân tử: dù bạn đúng (nhà hàng sai), không leo thang, vẫn lịch sự. Đối lập với 'kicking when down'.",
         "example": "他们错了, 但我得理饶人, 不会闹大。"
       },
       {
         "idiom": "皆大欢喜",
         "literal": "đều cùng vui (jiē dà huān xǐ)",
+        "literal_en": "everyone greatly delighted (jiē dà huān xǐ)",
         "meaning": "Mọi người đều vui — kết quả khiến mọi bên hài lòng. Cụm dùng khi vấn đề được giải quyết: 'họ đổi món, hoàn tiền, 皆大欢喜'. Tích cực để kết thúc khiếu nại.",
         "example": "服务员处理得很好, 皆大欢喜。"
       }
@@ -11995,24 +12107,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "无奸不商",
         "literal": "không gian không thương (wú jiān bù shāng)",
+        "literal_en": "no cunning, no merchant (wú jiān bù shāng)",
         "meaning": "Người buôn không gian thì không kiếm được — câu đùa cũ ngầm chỉ thương nhân hay láu cá. Người Trung Quốc dùng để cảnh báo: '坐出租车要小心, 无奸不商'. Dùng cảnh giác, không phải tự miêu tả.",
         "example": "出租车师傅有时候无奸不商, 我们要小心。"
       },
       {
         "idiom": "条理清楚",
         "literal": "có thứ tự rõ ràng (tiáo lǐ qīng chu)",
+        "literal_en": "orderly and clear (tiáo lǐ qīng chu)",
         "meaning": "Có logic rõ ràng — yêu cầu trình bày có thứ tự. Cụm dùng khi tranh chấp: 'em sẽ nói 条理清楚 lý do'. Tránh nói cảm xúc lung tung.",
         "example": "您条理清楚地说出您的理由。"
       },
       {
         "idiom": "据理力争",
         "literal": "dựa lý tranh giành (jù lǐ lì zhēng)",
+        "literal_en": "argue forcefully on grounds of reason (jù lǐ lì zhēng)",
         "meaning": "Dựa vào lý lẽ tranh đấu — đứng vững trên lập trường có lý. Cụm tích cực, dùng khi bạn đứng đúng nhưng nhẹ nhàng: 'em 据理力争, không phải gây gổ'.",
         "example": "我据理力争, 不付额外的钱。"
       },
       {
         "idiom": "得不偿失",
         "literal": "được không bù mất (dé bù cháng shī)",
+        "literal_en": "the gain does not make up for the loss (dé bù cháng shī)",
         "meaning": "Lợi ích không bù được mất mát — không đáng. Cụm dùng để phân tích: 'cãi nhau với tài xế 5 tệ là 得不偿失'. Cảnh báo bản thân khi muốn leo thang vì việc nhỏ.",
         "example": "为五块钱跟司机大吵, 得不偿失。"
       }
@@ -12384,24 +12500,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "和睦相处",
         "literal": "hòa thuận chung sống (hé mù xiāng chǔ)",
+        "literal_en": "live together in harmony (hé mù xiāng chǔ)",
         "meaning": "Sống hòa thuận với nhau — mục tiêu cao nhất của gia đình mở rộng. Cụm chuẩn để mẹ chồng/vợ kết thúc bất đồng: '一家人嘛, 和睦相处最重要'. Dùng để nhắc nhau ưu tiên hòa khí.",
         "example": "婆媳关系最重要的是和睦相处。"
       },
       {
         "idiom": "各让一步",
         "literal": "mỗi bên nhường một bước (gè ràng yī bù)",
+        "literal_en": "each yields one step (gè ràng yī bù)",
         "meaning": "Mỗi bên lùi một bước — đề xuất compromise công bằng. Cụm dùng khi không thể đồng ý hoàn toàn: '我们各让一步, 找一个折中方案'. Tinh thần thỏa hiệp văn hóa Á Đông.",
         "example": "家事难断, 各让一步就好。"
       },
       {
         "idiom": "求同存异",
         "literal": "cầu đồng tồn dị (qiú tóng cún yì)",
+        "literal_en": "seek the common, keep the differences (qiú tóng cún yì)",
         "meaning": "Tìm điểm chung, giữ điểm khác — không cần đồng thuận hoàn toàn. Áp dụng tốt cho khác biệt văn hóa Việt-Trung trong gia đình: 'mình 求同存异, không phải tranh ai đúng'.",
         "example": "我们文化不同, 求同存异就好。"
       },
       {
         "idiom": "将心比心",
         "literal": "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
+        "literal_en": "measure another's heart with your own (jiāng xīn bǐ xīn)",
         "meaning": "Đặt mình vào vị trí người khác — đồng cảm. Cụm dùng để xin mẹ chồng/vợ thấu hiểu hoàn cảnh: '将心比心, 您也曾是儿媳妇' (đặt mình vào, mẹ cũng từng là con dâu). Cụm rất mạnh khi dùng đúng lúc.",
         "example": "将心比心, 我能理解您的想法。"
       }
@@ -12766,24 +12886,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "见仁见智",
         "literal": "thấy nhân thấy trí (jiàn rén jiàn zhì)",
+        "literal_en": "the benevolent see benevolence, the wise see wisdom (jiàn rén jiàn zhì)",
         "meaning": "Nhân giả thấy nhân, trí giả thấy trí — mỗi người nhìn nhận khác nhau. Cụm trung tính tuyệt vời cho bất đồng quan điểm: '这事见仁见智, 没有标准答案'. Khẳng định cả hai góc nhìn đều có giá trị.",
         "example": "工作和生活的平衡, 见仁见智。"
       },
       {
         "idiom": "各有所好",
         "literal": "mỗi người có sở thích riêng (gè yǒu suǒ hào)",
+        "literal_en": "each has their own likings (gè yǒu suǒ hào)",
         "meaning": "Mỗi người có sở thích/lựa chọn khác nhau. Cụm dùng để chấp nhận khác biệt: '吃辣还是不吃辣, 各有所好'. Đối lập với tâm lý 'phải giống nhau'.",
         "example": "拼事业还是要平衡, 各有所好。"
       },
       {
         "idiom": "三观不合",
         "literal": "ba quan điểm không hợp (sān guān bù hé)",
+        "literal_en": "the three outlooks don't match (sān guān bù hé)",
         "meaning": "Ba quan điểm (世界观/人生观/价值观 — thế giới quan / nhân sinh quan / giá trị quan) không hợp — không cùng tần số sống. Cụm phổ biến trong giới trẻ Trung Quốc. Tránh áp đặt cụm này lên bạn — thường dùng để miêu tả người mình KHÔNG muốn thân thiết.",
         "example": "我们三观不合, 但还是好朋友。"
       },
       {
         "idiom": "互相尊重",
         "literal": "lẫn nhau tôn trọng (hù xiāng zūn zhòng)",
+        "literal_en": "respect one another (hù xiāng zūn zhòng)",
         "meaning": "Tôn trọng lẫn nhau — KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi cho khác biệt. Câu chốt sau khi đã tranh luận: '我们互相尊重就好' (tôn trọng nhau là được rồi).",
         "example": "朋友之间最重要的是互相尊重。"
       }
@@ -13155,24 +13279,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "节哀顺变",
         "literal": "tiết bi ai, thuận biến hóa (jié āi shùn biàn)",
+        "literal_en": "restrain grief, accede to the change (jié āi shùn biàn)",
         "meaning": "Hạn chế đau buồn, thuận theo biến cố — cụm cổ điển formal nhất để an ủi tang. Dùng trực tiếp với người mất thân hoặc trong văn bản chia buồn. Không thay thế tốt — học thuộc.",
         "example": "听到您父亲去世, 节哀顺变。"
       },
       {
         "idiom": "化悲痛为力量",
         "literal": "biến đau buồn thành sức mạnh (huà bēi tòng wéi lì liang)",
+        "literal_en": "turn grief into strength (huà bēi tòng wéi lì liang)",
         "meaning": "Chuyển hóa nỗi đau thành động lực — an ủi giai đoạn 2 (sau lễ tang, khi bạn bắt đầu hồi phục). Cụm tích cực nhưng không vô cảm. Tránh dùng quá sớm — sẽ bị coi là vội vã.",
         "example": "我希望你能化悲痛为力量, 好好生活。"
       },
       {
         "idiom": "阴阳两隔",
         "literal": "âm dương hai cách (yīn yáng liǎng gé)",
+        "literal_en": "the yin and yang worlds, parted (yīn yáng liǎng gé)",
         "meaning": "Cách trở sống chết — diễn tả nỗi đau xa cách vĩnh viễn. Cụm văn vẻ, dùng để cảm thông cho mất mát đặc biệt sâu (vợ chồng, con cái). Mạnh, không lạm dụng.",
         "example": "母亲走了, 我们阴阳两隔, 心里空荡荡的。"
       },
       {
         "idiom": "时间会治愈",
         "literal": "thời gian sẽ chữa lành (shí jiān huì zhì yù)",
+        "literal_en": "time will heal (shí jiān huì zhì yù)",
         "meaning": "Thời gian là thuốc chữa lành — câu an ủi phổ biến. KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi. Dùng giai đoạn 3 (vài tuần sau), không dùng ngay sau khi mất. Thêm '但思念永远在' (nhưng nhớ nhung mãi còn) để không tỏ ra coi nhẹ.",
         "example": "时间会慢慢治愈伤痛, 但思念永远在心里。"
       }
@@ -13537,24 +13665,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "知错就改",
         "literal": "biết sai liền sửa (zhī cuò jiù gǎi)",
+        "literal_en": "know the error, then correct it (zhī cuò jiù gǎi)",
         "meaning": "Biết sai sửa ngay — phẩm chất quân tử. Cụm dùng để cam kết khi xin lỗi: 'tôi 知错就改, sau này sẽ khác'. Người Trung Quốc đánh giá rất cao thái độ này — quan trọng hơn cả việc chưa từng sai.",
         "example": "知错就改, 善莫大焉。"
       },
       {
         "idiom": "真心诚意",
         "literal": "chân tâm thành ý (zhēn xīn chéng yì)",
+        "literal_en": "true heart, sincere intent (zhēn xīn chéng yì)",
         "meaning": "Bằng tấm lòng chân thành — không qua loa, không có tính toán. Cụm khẳng định lời xin lỗi không phải chiếu lệ: '我真心诚意地跟你道歉'. Mạnh và chân thực — chỉ dùng khi thực sự thế.",
         "example": "我真心诚意地向你道歉, 请你原谅我。"
       },
       {
         "idiom": "痛改前非",
         "literal": "đau đớn sửa cái sai trước (tòng gǎi qián fēi)",
+        "literal_en": "painfully reform past wrongs (tòng gǎi qián fēi)",
         "meaning": "Sửa lỗi đến tận tâm — quyết tâm thay đổi triệt để. Mạnh hơn 知错就改, dùng khi sửa lỗi có hệ thống (không phải lỗi nhỏ một lần). Cảnh báo: lạm dụng = bị coi là cường điệu.",
         "example": "我会痛改前非, 不会再让你失望。"
       },
       {
         "idiom": "将功补过",
         "literal": "lấy công bù lỗi (jiāng gōng bǔ guò)",
+        "literal_en": "use merit to make up for a fault (jiāng gōng bǔ guò)",
         "meaning": "Dùng việc tốt sau bù lỗi trước — đề xuất bù đắp bằng hành động. Cụm chuyển từ lời xin lỗi sang cam kết hành động: '我会将功补过, 用行动弥补'. Cụ thể hơn lời nói.",
         "example": "我会将功补过, 用以后的行动证明。"
       }
@@ -13926,24 +14058,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "海内存知己, 天涯若比邻",
         "literal": "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
+        "literal_en": "within the four seas a true friend remains; though at the sky's edge, near as a neighbour (Wang Bo)",
         "meaning": "Câu thơ Vương Bột đời Đường — nếu có tri kỷ, dù xa cũng gần. Cụm cao cấp dùng để chia tay bạn thân vĩnh viễn — khẳng định tình bạn vượt khoảng cách. Trích đúng tác giả thể hiện trình độ.",
         "example": "海内存知己, 天涯若比邻 — 我们就是这样的朋友。"
       },
       {
         "idiom": "依依不舍",
         "literal": "y y bất xả (yī yī bù shě)",
+        "literal_en": "lingering, unwilling to part (yī yī bù shě)",
         "meaning": "Bịn rịn không nỡ rời — cảm giác lưu luyến mạnh. Cụm dùng để miêu tả khoảnh khắc tạm biệt: '我依依不舍地送她走'. Văn vẻ + chân thành.",
         "example": "我依依不舍地送她去机场。"
       },
       {
         "idiom": "后会有期",
         "literal": "lần sau có hẹn (hòu huì yǒu qī)",
+        "literal_en": "there will be a time to meet again (hòu huì yǒu qī)",
         "meaning": "Hẹn gặp lại — câu kết tạm biệt chuẩn. Mạnh hơn 'goodbye' đơn giản, ngụ ý 'không kết thúc'. Cụm formal nhưng ấm.",
         "example": "今天先这样, 后会有期。"
       },
       {
         "idiom": "天涯海角",
         "literal": "thiên nhai hải giác (tiān yá hǎi jiǎo)",
+        "literal_en": "the edge of the sky, the corner of the sea (tiān yá hǎi jiǎo)",
         "meaning": "Chân trời góc biển — nơi xa xôi nhất. Cụm để khẳng định tình bạn dù xa: '不管你在天涯海角, 我都记得你'. Cảm xúc + thi vị.",
         "example": "天涯海角, 我们的友谊不变。"
       }
@@ -14336,24 +14472,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "雪中送炭",
         "literal": "trong tuyết tặng than (xuě zhōng sòng tàn)",
+        "literal_en": "send charcoal in the snow (xuě zhōng sòng tàn)",
         "meaning": "Tặng than trong tuyết — giúp đỡ đúng lúc cần nhất. Cụm khen hành động thiết thực: 'bạn 雪中送炭, mình không bao giờ quên'. Đối lập với '锦上添花' (gấm thêm hoa — giúp khi đã đủ).",
         "example": "你今天的支持真是雪中送炭。"
       },
       {
         "idiom": "患难见真情",
         "literal": "hoạn nạn thấy chân tình (huàn nàn jiàn zhēn qíng)",
+        "literal_en": "in hardship, true feeling is seen (huàn nàn jiàn zhēn qíng)",
         "meaning": "Khi gặp khó mới biết bạn thật — sự thử thách của tình bạn. Cụm dùng sau khi đã giúp nhau qua khó: '我们经历了这件事, 患难见真情'. Tăng độ thân của tình bạn.",
         "example": "经过这次, 我才知道患难见真情。"
       },
       {
         "idiom": "同舟共济",
         "literal": "đồng thuyền cộng tế (tóng zhōu gòng jì)",
+        "literal_en": "in the same boat, crossing together (tóng zhōu gòng jì)",
         "meaning": "Cùng thuyền cùng vượt — chung số phận, cùng nhau qua khó. Cụm cam kết: 'mình 同舟共济, không bỏ bạn'. Cảm xúc + hành động.",
         "example": "朋友之间应该同舟共济。"
       },
       {
         "idiom": "互相扶持",
         "literal": "lẫn nhau dìu dắt (hù xiāng fú chí)",
+        "literal_en": "support each other along (hù xiāng fú chí)",
         "meaning": "Hỗ trợ lẫn nhau — bạn bè dìu dắt qua những lúc yếu. Cụm dùng để cam kết quan hệ: '我们互相扶持, 一起走'. Đặc biệt phù hợp khi cả hai bên cùng có khó khăn.",
         "example": "好朋友互相扶持是最重要的。"
       }
@@ -14739,24 +14879,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "亲兄弟明算账",
         "literal": "anh em ruột tính sổ rõ (qīn xiōng dì míng suàn zhàng)",
+        "literal_en": "even blood brothers settle accounts clearly (qīn xiōng dì míng suàn zhàng)",
         "meaning": "Anh em ruột thịt cũng tính tiền rõ ràng — quan hệ gần đến đâu cũng cần minh bạch tài chính. Cụm chuẩn cho việc vay-trả giữa bạn thân: 'mình viết giấy vay không phải không tin, là 亲兄弟明算账'.",
         "example": "亲兄弟明算账, 我们之间也要清清楚楚。"
       },
       {
         "idiom": "有借有还",
         "literal": "có vay có trả (yǒu jiè yǒu huán)",
+        "literal_en": "borrow, and you repay (yǒu jiè yǒu huán)",
         "meaning": "Có mượn có trả, lần sau dễ mượn (后半句: 再借不难). Triết lý cốt lõi của vay mượn — cam kết uy tín. 'Mình 有借有还, lần sau không ngại nhờ bạn'.",
         "example": "有借有还, 再借不难。"
       },
       {
         "idiom": "雪中送炭",
         "literal": "trong tuyết tặng than (xuě zhōng sòng tàn)",
+        "literal_en": "send charcoal in the snow (xuě zhōng sòng tàn)",
         "meaning": "Tặng than trong tuyết — giúp đúng lúc khẩn. Cụm cảm ơn người cho mượn tiền lúc khẩn: '你这次真是雪中送炭'. Tăng độ thấm của lời cảm ơn.",
         "example": "你这次借钱给我, 真是雪中送炭。"
       },
       {
         "idiom": "君子爱财取之有道",
         "literal": "quân tử yêu của có cách lấy (jūn zǐ ài cái qǔ zhī yǒu dào)",
+        "literal_en": "the gentleman loves wealth but gains it the right way (jūn zǐ ài cái qǔ zhī yǒu dào)",
         "meaning": "Người quân tử yêu tiền nhưng kiếm có đạo — không quỵt nợ, không lừa lọc. Cụm cổ điển nhắc nguyên tắc đạo đức trong tiền bạc. Ít dùng hàng ngày, nhưng tốt cho lesson về uy tín.",
         "example": "做生意要君子爱财取之有道。"
       }
@@ -15128,24 +15272,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "殊途同归",
         "literal": "đường khác nhau cùng đến (shū tú tóng guī)",
+        "literal_en": "different roads, the same destination (shū tú tóng guī)",
         "meaning": "Đường khác nhau nhưng cùng đến một đích — phương pháp khác, kết quả như nhau. Cụm tuyệt vời để chấp nhận đa dạng tôn giáo: 'mình tin X, bạn tin Y, 殊途同归, mình đều muốn làm người tốt'.",
         "example": "信佛和信基督教殊途同归, 都是希望做善良的人。"
       },
       {
         "idiom": "善有善报",
         "literal": "thiện có thiện báo (shàn yǒu shàn bào)",
+        "literal_en": "good is repaid with good (shàn yǒu shàn bào)",
         "meaning": "Làm thiện được báo đáp thiện — nguyên tắc nhân quả phổ quát. Cụm trung tính, dùng cả khi không theo tôn giáo cụ thể: 'mình tin 善有善报, không cần theo tôn giáo'.",
         "example": "我虽然不信教, 但相信善有善报。"
       },
       {
         "idiom": "因果报应",
         "literal": "nhân quả báo ứng (yīn guǒ bào yìng)",
+        "literal_en": "cause and effect, retribution and reward (yīn guǒ bào yìng)",
         "meaning": "Nhân quả báo ứng — khái niệm nhân quả Phật giáo. Cụm formal hơn 善有善报, dùng trong context tâm linh: '我们相信因果, 所以做事要有善心'.",
         "example": "佛教讲究因果报应, 做坏事会有报应。"
       },
       {
         "idiom": "心诚则灵",
         "literal": "tâm thành thì linh (xīn chéng zé líng)",
+        "literal_en": "if the heart is sincere, it works (xīn chéng zé líng)",
         "meaning": "Tâm thành thì linh ứng — đức tin mới quan trọng, không phải hình thức. Cụm tích cực, có thể dùng cả từ người không theo tôn giáo: 'không cần đi chùa nhiều, 心诚则灵'.",
         "example": "拜佛不在次数多, 心诚则灵。"
       }
@@ -15524,24 +15672,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "感同身受",
         "literal": "cảm như chính mình trải qua (gǎn tóng shēn shòu)",
+        "literal_en": "feel it as if undergoing it oneself (gǎn tóng shēn shòu)",
         "meaning": "Cảm như chính mình đã trải qua — đồng cảm sâu sắc. Cụm dùng khi bạn thực sự cảm nhận được nỗi đau của họ, KHÔNG phải so sánh ('tôi cũng từng...'). 'Tôi 感同身受 nỗi đau của bạn'.",
         "example": "听到你的故事, 我感同身受。"
       },
       {
         "idiom": "设身处地",
         "literal": "đặt thân vào nơi (shè shēn chǔ dì)",
+        "literal_en": "place yourself in their position (shè shēn chǔ dì)",
         "meaning": "Đặt mình vào hoàn cảnh người khác — đồng cảm. Cụm dùng để thể hiện thấu hiểu: '设身处地, 我能理解你那时候有多难'.",
         "example": "设身处地想想, 我也会做同样的选择。"
       },
       {
         "idiom": "倾听是金",
         "literal": "lắng nghe là vàng (qīng tīng shì jīn)",
+        "literal_en": "listening is gold (qīng tīng shì jīn)",
         "meaning": "Lắng nghe quý như vàng — KHÔNG là idiom 4 chữ thuần nhưng cụm phổ biến. Triết lý của người nghe tốt: im lặng chăm chú > nhiều lời.",
         "example": "有时候倾听是金, 比说什么都重要。"
       },
       {
         "idiom": "时间会治愈一切",
         "literal": "thời gian sẽ chữa lành tất cả (shí jiān huì zhì yù yī qiè)",
+        "literal_en": "time will heal all things (shí jiān huì zhì yù yī qiè)",
         "meaning": "Thời gian là thuốc — câu phổ biến nhưng cẩn thận. Tránh dùng khi nỗi đau còn TƯƠI — sẽ bị coi là vô cảm. Dùng khi họ đang ở giai đoạn hồi phục, công nhận rằng quá trình tiếp tục.",
         "example": "时间会治愈, 但治愈不等于忘记。"
       }
@@ -15906,24 +16058,28 @@ export const lessons: ChineseLesson[] = [
       {
         "idiom": "君子之交淡如水",
         "literal": "tình bạn quân tử nhạt như nước (jūn zǐ zhī jiāo dàn rú shuǐ)",
+        "literal_en": "a gentleman's friendship is plain as water (jūn zǐ zhī jiāo dàn rú shuǐ)",
         "meaning": "Tình bạn của quân tử nhạt như nước — không ồn ào, không bám dính, không kỳ vọng quá. Trang Tử (Zhuangzi). Cụm cao cấp dùng để định khung healthy boundaries: 'mình thân nhưng không cần liên lạc 24/7, đó là 君子之交'.",
         "example": "君子之交淡如水, 不需要时时刻刻在一起。"
       },
       {
         "idiom": "距离产生美",
         "literal": "khoảng cách sinh ra cái đẹp (jù lí chǎn shēng měi)",
+        "literal_en": "distance produces beauty (jù lí chǎn shēng měi)",
         "meaning": "Khoảng cách tạo ra cái đẹp — không gian giúp giữ tình cảm. Cụm hiện đại, phổ biến trong giới trẻ. Dùng để giải thích vì sao cần boundary: 'mình không cần gặp mỗi tuần, 距离产生美'.",
         "example": "好朋友也需要距离产生美。"
       },
       {
         "idiom": "划清界限",
         "literal": "vạch rõ ranh giới (huà qīng jiè xiàn)",
+        "literal_en": "draw a clear boundary line (huà qīng jiè xiàn)",
         "meaning": "Vạch rõ ranh giới — đặt giới hạn rõ ràng. Cụm hành động cụ thể, đôi khi mang nghĩa hơi mạnh (như tách đôi quan hệ). Dùng cẩn thận — '我们要划清一些界限' nhẹ hơn '我要跟你划清界限' (cắt đứt).",
         "example": "好朋友之间也需要划清一些界限。"
       },
       {
         "idiom": "互相尊重",
         "literal": "lẫn nhau tôn trọng (hù xiāng zūn zhòng)",
+        "literal_en": "respect one another (hù xiāng zūn zhòng)",
         "meaning": "Tôn trọng lẫn nhau — KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi cho boundary. Câu kết sau khi đặt giới hạn: '我们互相尊重就好' (mình tôn trọng nhau là đủ).",
         "example": "朋友之间最重要的是互相尊重。"
       }
