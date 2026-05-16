@@ -40,17 +40,34 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "あい",
-        "english": "love"
+        "english": "love",
+        "pronunciation_focus_en": [
+          "あ → 'ah' as in 'father', short and flat — never the English 'ay'",
+          "い → 'ee' as in 'see', but clipped short",
+          "あい → two equal beats 'a-i', NOT the single glide in English 'eye'"
+        ]
       },
       {
         "japanese": "うえ",
-        "english": "above"
+        "english": "above",
+        "pronunciation_focus_en": [
+          "う → 'oo' as in 'food' but lips relaxed and unrounded — lighter than English 'oo'",
+          "え → 'eh' as in 'bed', flat; do not let it drift toward 'ay'",
+          "うえ → two even mora 'u-e', each held the same length"
+        ]
       },
       {
         "japanese": "えいご",
-        "english": "English language"
+        "english": "English language",
+        "pronunciation_focus_en": [
+          "え → 'eh' as in 'bed'",
+          "えい → a long 'eh' held two beats here, not 'ay' as in 'day'",
+          "ご → hard 'g' as in 'go' (g is always hard in Japanese) + short 'oh'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Japanese writes with three scripts at once — hiragana, katakana, and kanji — and one ordinary sentence routinely uses all three. There is no real American parallel; the nearest is mixing print, italics, and numerals, and that still understates it. Hiragana is the phonetic backbone: ~46 basic characters, each a fixed sound, learned first because it spells grammar and any word not written in kanji. Unlike English letters, a hiragana character never changes its sound — あ is always 'a' as in 'father,' anywhere it appears, which makes Japanese reading far more predictable than English spelling (compare English 'a' in 'cat / car / care / about'). The five vowels あいうえお are the foundation of the whole system: every other kana is a consonant fused onto one of these five, so locking them in now pays off for the entire language. Children's books and learner signage are written largely in hiragana, so this one script already unlocks a surprising amount.",
+    "tip_advice_en": "Highest-leverage habit: treat the five vowels as pure and constant — they never glide. Japanese あ/い/う/え/お are 'ah/ee/oo/eh/oh,' and crucially they do NOT diphthongize the way English stressed vowels do (English 'o' drifts to 'ow,' long 'a' to 'ay-ee'). Say え as a flat, short 'eh' and stop — don't let it slide toward 'ay.' う is lighter and less rounded than English 'oo'; relax the lips. When two vowels sit together (あい, うえ, えいご) give each its own equal beat — Japanese is mora-timed, so あい is two even beats 'a-i,' not the single English glide in 'eye.' Drill: clap once per mora — え-い-ご, three claps, three even sounds. Lock the evenness in now; this same mora timing governs long vowels and double consonants for the rest of the language."
   },
   {
     "id": 2,
@@ -87,17 +104,37 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "カメラ",
-        "english": "camera"
+        "english": "camera",
+        "pronunciation_focus_en": [
+          "カ → 'ka' as in 'car', hard k, short 'ah'",
+          "メ → 'meh' as in 'met'",
+          "ラ → a light tapped 'r', between English 'r' and 'd' (like the fast 'tt' in American 'butter')",
+          "カメラ → three even beats, no stressed syllable (not 'CA-me-ra')"
+        ]
       },
       {
         "japanese": "コーヒー",
-        "english": "coffee"
+        "english": "coffee",
+        "pronunciation_focus_en": [
+          "コ → 'ko', short 'oh'",
+          "コー → the ー is a length mark, not a letter: hold the 'oh' two beats",
+          "ヒ → 'hi' as in 'he', breathy",
+          "ヒー → hold 'ee' two beats; コーヒー is four beats ko-o-hi-i, not two-syllable 'CAW-fee'"
+        ]
       },
       {
         "japanese": "アメリカ",
-        "english": "America"
+        "english": "America",
+        "pronunciation_focus_en": [
+          "ア → 'ah' as in 'father'",
+          "メ → 'meh' as in 'met'",
+          "リ → light tapped 'r' + 'ee'",
+          "アメリカ → four flat even beats a-me-ri-ka; no stressed syllable, unlike English 'a-MER-i-ca'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Katakana is the second phonetic script — the same sound inventory as hiragana but a sharper, more angular set of characters. Functionally it works like italics or ALL CAPS in English: it flags a word as foreign, technical, onomatopoeic, or emphasized. The payoff for an English speaker is immediate and motivating: a huge share of katakana words are borrowed from English, so once you can sound out the script you can already read コーヒー (coffee), カメラ (camera), テレビ (TV), コンピューター (computer), and アメリカ (America) with no new vocabulary. The catch is that loanwords are remodeled to Japanese sound rules — every consonant gets a vowel, English v/l/r collapse, and word stress disappears — so マクドナルド ('Makudonarudo') is McDonald's only once you stop expecting English rhythm. Brand names, menus, and tech terms lean heavily on katakana, which makes this script disproportionately useful from day one in a Japanese city. Think of it like reading words you already know in a thick, regular accent: the meaning is there once you drop the English stress pattern.",
+    "tip_advice_en": "Highest-leverage habit: don't read katakana as English — read it as even Japanese mora and the English word surfaces. Each katakana is a consonant+vowel beat, so コーヒー is four beats, ko-o-hi-i, where ー doubles the previous vowel. That long-vowel bar is the single biggest katakana trap for English speakers: ビル (biru, building) vs ビール (bīru, beer) differ ONLY by that held vowel — a genuine ordering mistake waiting to happen. Drill: read アメリカ as four flat even beats 'a-me-ri-ka,' not English 'a-MER-i-ca' — Japanese has no English-style stress accent, so deliberately flatten it. Train your eye to spot ー and physically hold the vowel; mora length carries meaning here, exactly as in Lesson 1."
   },
   {
     "id": 3,
@@ -134,13 +171,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "こんにちは、元気ですか？",
-        "english": "Hello, how are you?"
+        "english": "Hello, how are you?",
+        "pronunciation_focus_en": [
+          "こんにちは → 'kon-ni-chi-wa'; the final は is the topic particle, pronounced 'wa', NEVER 'ha'",
+          "元気 (げんき) → 'gen-ki', hard g, two even beats",
+          "ですか → 'des-ka'; the う in です is devoiced — say 'des', not 'deh-soo'",
+          "let the pitch rise only on the final か to mark the question; keep everything before it flat"
+        ]
       },
       {
         "japanese": "ありがとうございます、お元気で。",
-        "english": "Thank you, take care."
+        "english": "Thank you, take care.",
+        "pronunciation_focus_en": [
+          "ありがとう → 'a-ri-ga-to-o', five even mora; final とう is a long 'oh', not 'tow'",
+          "ございます → 'go-za-i-mas'; final す devoiced to a soft 's', not 'moss'",
+          "お元気で → 'o-gen-ki-de'; the お is a polite prefix, kept light",
+          "で → short flat 'deh', the particle that closes this fixed farewell"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Greetings in Japan ride on a bow, not a handshake and emphatically not a hug — an American-style hug, or even a hand on the shoulder, reads as startling intimacy with someone you have just met. The everyday version is a small head-nod and it is genuinely expected; you do not need a deep formal bow for a casual hello. The greetings are time-boxed more strictly than English: おはようございます until roughly 10–11 a.m., こんにちは midday to dusk, こんばんは after dark. Two things surprise English speakers. First, こんにちは and こんばんは are sentence fragments ('as for today… / this evening…'), so they are greetings only — never a bedtime 'good night' (that is おやすみなさい). Second, the ございます on おはようございます is a politeness layer, so close friends clip it to plain おはよう, much as Americans drop 'good' and just say 'morning.' さようなら is heavier and more final than English 'goodbye' — for everyday partings Japanese speakers say じゃあ ('well then…') or またね ('see you'); さようなら to a coworker you'll see in an hour sounds oddly dramatic. Well-being sign-offs like お元気で ('keep well') are routine, reflecting a culture that builds health and season into ordinary phatic speech.",
+    "tip_advice_en": "Highest-leverage fact: は in こんにちは is pronounced 'wa,' not 'ha.' This is your first meeting with Japanese's single biggest beginner trap — the topic particle は — frozen inside a fixed greeting. こんにちは = 'kon-ni-chi-wa'; こんばんは = 'kon-ban-wa.' Pronounce the 'ha' and you mark yourself instantly as someone who has never heard the word spoken. Second watch-point: long vowels carry meaning — おはよう ends in a held 'oh' (o-ha-yo-o) and さようなら has a long 'oh' (sa-yo-o-na-ra); clipping them sounds abrupt. ございます is 'go-za-i-mas' with a devoiced final す, almost a whispered 's.' Drill the greetings aloud while giving a small head-nod on each; pairing the bow with the sound now builds the motor habit before you need it live."
   },
   {
     "id": 4,
@@ -173,13 +224,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "わたしは田中です。",
-        "english": "I am Tanaka."
+        "english": "I am Tanaka.",
+        "pronunciation_focus_en": [
+          "わたし → 'wa-ta-shi', three flat even beats; the final し is 'shi', not 'see'",
+          "は → here the topic particle: pronounced 'wa', not 'ha' (same rule as こんにちは)",
+          "田中 (たなか) → 'ta-na-ka', evenly weighted; a surname — Japanese gives family name first",
+          "です → 'des', devoiced final vowel; do not say 'deh-soo'"
+        ]
       },
       {
         "japanese": "出身は東京です。",
-        "english": "I am from Tokyo."
+        "english": "I am from Tokyo.",
+        "pronunciation_focus_en": [
+          "出身 (しゅっしん) → 'shu(s)-shin'; the small っ is a held beat of silence — a full mora, not skipped",
+          "は → topic particle 'wa'",
+          "東京 (とうきょう) → 'to-o-kyo-o', four beats — BOTH long vowels held; 'TOH-kee-oh' is wrong",
+          "です → 'des'"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "This lesson introduces the structural heart of Japanese, and the gap from English is large. Word order is subject–object–verb, with the verb (or です) last — 'I Tanaka am,' not 'I am Tanaka.' Names run family-name-first (田中 is the surname), the reverse of American order, and in real life a Japanese person introducing themselves usually gives only the surname. Crucially, さん is an honorific you attach to OTHER people's names (田中さん) and never to your own — calling yourself 'Tanaka-san' is like an American saying 'I'm Mr. Smith' to a peer: it lands as either a joke or arrogance. The topic particle は (written with the hiragana for 'ha' but read 'wa') marks what the sentence is about; English has no equivalent, so learners over-translate it as 'is.' です is a polite copula roughly equal to 'am/is/are,' but its real job is signaling politeness, which is why A1 lives almost entirely in the です/ます polite register — the casual plain form exists but is socially risky for a learner and is deferred. American comparison: think of です as closer to the deference baked into 'sir/ma'am' than to a neutral verb 'to be.'",
+    "tip_advice_en": "Highest-leverage point of the whole level: は is the topic marker and it is pronounced 'wa.' Lock in the template 'X は Y です' = 'as for X, it is Y' and you can already self-introduce, state your origin, and describe things. Do not hunt for a word-by-word English match — は has no English word; treat 'X は' as 'speaking of X.' Pronunciation watch-points: the small っ in 出身 (しゅっしん) is a real silent beat — pause on it, because しゅしん and しゅっしん are different words elsewhere; and 東京 is four held beats (to-o-kyo-o), a classic place where English speakers crush a long vowel and say 'Tokyo' in two. Drill aloud: わたしは [your name] です — five-plus even beats, は as 'wa,' です as 'des.'"
   },
   {
     "id": 5,
@@ -236,13 +301,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "りんごが三つあります。",
-        "english": "There are three apples."
+        "english": "There are three apples.",
+        "pronunciation_focus_en": [
+          "りんご → 'rin-go', tapped r; the ん is its own beat (a moraic 'n')",
+          "が → subject particle, hard 'g' as in 'go' — say 'ga', not 'gha'",
+          "三つ (みっつ) → 'mi(t)-tsu'; the small っ doubles the t and is a held beat — みつ ≠ みっつ",
+          "あります → 'a-ri-mas', final す devoiced ('-mas', not '-masu')"
+        ]
       },
       {
-        "japanese": "時は四時です。",
-        "english": "It is 4 o'clock."
+        "japanese": "今、四時です。",
+        "english": "It is 4 o'clock now.",
+        "pronunciation_focus_en": [
+          "今 (いま) → 'i-ma', two flat even beats",
+          "四時 → read 'yo-ji' (4 o'clock); the '4' here is よ, NOT し or よん — an irregular counter reading",
+          "じ → soft 'j' as in 'jeep' + short 'i'",
+          "です → 'des', devoiced final vowel"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Number-sound superstition runs through Japanese life much as it does in China, and the mechanism is the same: homophones. 四 (four) can be read し, which is identical to 死 ('death'), and 九 (nine) can be read く, a homophone of 苦 ('suffering'). The cultural result is concrete: hospital room and floor numbering frequently skips 4 (and sometimes 9), gift sets avoid quantities of four, and speakers actively prefer the alternate readings よん (4) and きゅう (9) to dodge the unlucky sound — exactly why this lesson lists both readings. Compare the American hotel that has no 13th floor; here it is the 4 that vanishes. Counting on the hand also differs from the American style: Japanese typically starts from an open palm and folds fingers IN for 1–5, then unfolds for 6–10. And numbers almost never travel alone — Japanese attaches a counter word to whatever is being counted (covered next lesson), so 'three apples' is not 'three + apple' but a number-plus-counter unit. Dates and prices, like Chinese, run large-to-small.",
+    "tip_advice_en": "Highest-leverage warning: several Japanese numbers have two readings, and which one you use is not free — it is fixed by context, especially by the counter that follows. 4 is し OR よん, 7 is しち OR なな, 9 is きゅう OR く; よん/なな/きゅう dominate modern speech, but 4 o'clock is irregularly よじ (yo-ji), not し-じ or よん-じ. Do not try to systematize this today — just expect that 'four' will not always sound like the 'shi' you first learned. Pronunciation watch-point: いち and ろく end in vowels that devoice or clip before some counters (いっぷん, ろっぷん), so the clean dictionary form is not always what you hear. Drill 1–10 aloud twice, once with し/しち/く and once with よん/なな/きゅう, so both are familiar when a counter forces one."
   },
   {
     "id": 6,
