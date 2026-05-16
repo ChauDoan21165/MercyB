@@ -94,9 +94,16 @@ export default function FrenchLessonsPage() {
         <h1 className="mt-1 text-2xl font-bold text-slate-900 leading-tight">
           {uiLang === "en" ? HERO_EN : HERO_VI}
         </h1>
-        <p className="mt-1 text-sm font-medium text-slate-600">
-          {uiLang === "en" ? HERO_VI : HERO_EN}
-        </p>
+        {/* Secondary line is the *other* language. In VI mode that is
+            the de-narrowed English line (kept, byte-identical). In EN
+            mode it would be the "… cho người Việt" VI line — hidden so
+            EN users are never shown audience-exclusionary text; the
+            de-narrowed EN title above is already a full sentence. */}
+        {uiLang !== "en" && (
+          <p className="mt-1 text-sm font-medium text-slate-600">
+            {HERO_EN}
+          </p>
+        )}
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">
           {uiLang === "en"
             ? "Pronunciation written for English speakers. Nasal vowels, silent letters, and liaison — explained the way English speakers actually need."
