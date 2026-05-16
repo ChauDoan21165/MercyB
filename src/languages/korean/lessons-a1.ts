@@ -89,22 +89,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이게 뭐예요?",
-        "meaning": "What is this?"
+        "meaning": "What is this?",
+        "text_vi": "Cái này là gì?"
       },
       {
         "speaker": "B",
         "hangul": "그건 '아'예요.",
-        "meaning": "That is 'a'."
+        "meaning": "That is 'a'.",
+        "text_vi": "Đó là chữ 'a'."
       },
       {
         "speaker": "A",
         "hangul": "아, 알겠어요.",
-        "meaning": "Ah, I understand."
+        "meaning": "Ah, I understand.",
+        "text_vi": "À, tôi hiểu rồi."
       },
       {
         "speaker": "B",
         "hangul": "네, 잘했어요!",
-        "meaning": "Yes, well done!"
+        "meaning": "Yes, well done!",
+        "text_vi": "Vâng, bạn làm tốt lắm!"
       }
     ],
     "exercises": [
@@ -218,22 +222,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이건 무슨 글자예요?",
-        "meaning": "What letter?"
+        "meaning": "What letter?",
+        "text_vi": "Đây là chữ gì?"
       },
       {
         "speaker": "B",
         "hangul": "'ㄱ'이에요.",
-        "meaning": "It's ㄱ."
+        "meaning": "It's ㄱ.",
+        "text_vi": "Là chữ 'ㄱ'."
       },
       {
         "speaker": "A",
         "hangul": "어려워요.",
-        "meaning": "It's hard."
+        "meaning": "It's hard.",
+        "text_vi": "Khó quá."
       },
       {
         "speaker": "B",
         "hangul": "괜찮아요. 연습하면 돼요.",
-        "meaning": "Practice makes perfect."
+        "meaning": "Practice makes perfect.",
+        "text_vi": "Không sao đâu. Cứ luyện tập là được."
       }
     ],
     "exercises": [
@@ -347,22 +355,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이 글자 읽을 수 있어요?",
-        "meaning": "Can you read this?"
+        "meaning": "Can you read this?",
+        "text_vi": "Bạn đọc được chữ này không?"
       },
       {
         "speaker": "B",
         "hangul": "네, '가'예요.",
-        "meaning": "Yes, it's 'ga'."
+        "meaning": "Yes, it's 'ga'.",
+        "text_vi": "Vâng, là 'ga'."
       },
       {
         "speaker": "A",
         "hangul": "잘했어요!",
-        "meaning": "Well done!"
+        "meaning": "Well done!",
+        "text_vi": "Làm tốt lắm!"
       },
       {
         "speaker": "B",
         "hangul": "감사합니다!",
-        "meaning": "Thank you!"
+        "meaning": "Thank you!",
+        "text_vi": "Cảm ơn ạ!"
       }
     ],
     "exercises": [
@@ -476,22 +488,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이거 비싸요?",
-        "meaning": "Is it expensive?"
+        "meaning": "Is it expensive?",
+        "text_vi": "Cái này có đắt không?"
       },
       {
         "speaker": "B",
         "hangul": "아니요, 싸요.",
-        "meaning": "No, it's cheap."
+        "meaning": "No, it's cheap.",
+        "text_vi": "Không, rẻ mà."
       },
       {
         "speaker": "A",
         "hangul": "빨리 사세요!",
-        "meaning": "Buy it fast!"
+        "meaning": "Buy it fast!",
+        "text_vi": "Mua nhanh đi!"
       },
       {
         "speaker": "B",
         "hangul": "네, 살게요.",
-        "meaning": "Yes, I'll buy it."
+        "meaning": "Yes, I'll buy it.",
+        "text_vi": "Vâng, tôi sẽ mua."
       }
     ],
     "exercises": [
@@ -605,22 +621,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "한국어 어때요?",
-        "meaning": "How's Korean?"
+        "meaning": "How's Korean?",
+        "text_vi": "Tiếng Hàn thế nào?"
       },
       {
         "speaker": "B",
         "hangul": "쉬워요!",
-        "meaning": "Easy!"
+        "meaning": "Easy!",
+        "text_vi": "Dễ lắm!"
       },
       {
         "speaker": "A",
         "hangul": "정말요?",
-        "meaning": "Really?"
+        "meaning": "Really?",
+        "text_vi": "Thật không?"
       },
       {
         "speaker": "B",
         "hangul": "네, 한글은 배우기 쉬워요.",
-        "meaning": "Yes, Hangul is easy."
+        "meaning": "Yes, Hangul is easy.",
+        "text_vi": "Vâng, Hangeul học rất dễ."
       }
     ],
     "exercises": [
@@ -734,22 +754,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "어디 가요?",
-        "meaning": "Where?"
+        "meaning": "Where?",
+        "text_vi": "Bạn đi đâu vậy?"
       },
       {
         "speaker": "B",
         "hangul": "산에 가요.",
-        "meaning": "To the mountain."
+        "meaning": "To the mountain.",
+        "text_vi": "Tôi đi lên núi."
       },
       {
         "speaker": "A",
         "hangul": "누구랑?",
-        "meaning": "With whom?"
+        "meaning": "With whom?",
+        "text_vi": "Đi với ai?"
       },
       {
         "speaker": "B",
         "hangul": "친구랑 같이.",
-        "meaning": "With a friend."
+        "meaning": "With a friend.",
+        "text_vi": "Đi cùng bạn."
       }
     ],
     "exercises": [
@@ -863,22 +887,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "여기 앉으세요.",
-        "meaning": "Sit here."
+        "meaning": "Sit here.",
+        "text_vi": "Mời ngồi đây ạ."
       },
       {
         "speaker": "B",
         "hangul": "감사합니다.",
-        "meaning": "Thanks."
+        "meaning": "Thanks.",
+        "text_vi": "Cảm ơn ạ."
       },
       {
         "speaker": "A",
         "hangul": "뭐 드실래요?",
-        "meaning": "What to eat?"
+        "meaning": "What to eat?",
+        "text_vi": "Bạn muốn ăn gì?"
       },
       {
         "speaker": "B",
         "hangul": "닭 먹을래요.",
-        "meaning": "I'll have chicken."
+        "meaning": "I'll have chicken.",
+        "text_vi": "Tôi muốn ăn gà."
       }
     ],
     "exercises": [
@@ -992,22 +1020,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "안녕하세요! 저는 민수예요.",
-        "meaning": "Hello! I'm Minsu."
+        "meaning": "Hello! I'm Minsu.",
+        "text_vi": "Xin chào! Tôi là Minsu."
       },
       {
         "speaker": "B",
         "hangul": "안녕하세요, 지영이에요. 반갑습니다.",
-        "meaning": "Hi, I'm Jiyoung. Nice to meet you."
+        "meaning": "Hi, I'm Jiyoung. Nice to meet you.",
+        "text_vi": "Xin chào, tôi là Jiyoung. Rất vui được gặp bạn."
       },
       {
         "speaker": "A",
         "hangul": "지금 어디 가세요?",
-        "meaning": "Where are you going?"
+        "meaning": "Where are you going?",
+        "text_vi": "Bây giờ bạn đi đâu vậy?"
       },
       {
         "speaker": "B",
         "hangul": "집에 가요. 안녕히 계세요!",
-        "meaning": "Going home. Bye!"
+        "meaning": "Going home. Bye!",
+        "text_vi": "Tôi về nhà đây. Tạm biệt nhé!"
       }
     ],
     "exercises": [
@@ -1121,22 +1153,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이름이 뭐예요?",
-        "meaning": "Your name?"
+        "meaning": "Your name?",
+        "text_vi": "Bạn tên là gì?"
       },
       {
         "speaker": "B",
         "hangul": "저는 투안입니다.",
-        "meaning": "I'm Tuan."
+        "meaning": "I'm Tuan.",
+        "text_vi": "Tôi là Tuấn."
       },
       {
         "speaker": "A",
         "hangul": "어디에서 오셨어요?",
-        "meaning": "Where from?"
+        "meaning": "Where from?",
+        "text_vi": "Bạn đến từ đâu?"
       },
       {
         "speaker": "B",
         "hangul": "베트남에서 왔어요.",
-        "meaning": "From Vietnam."
+        "meaning": "From Vietnam.",
+        "text_vi": "Tôi đến từ Việt Nam."
       }
     ],
     "exercises": [
@@ -1250,22 +1286,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "몇 살이에요?",
-        "meaning": "How old?"
+        "meaning": "How old?",
+        "text_vi": "Bạn bao nhiêu tuổi?"
       },
       {
         "speaker": "B",
         "hangul": "스물셋 살이에요.",
-        "meaning": "23."
+        "meaning": "23.",
+        "text_vi": "Tôi hai mươi ba tuổi."
       },
       {
         "speaker": "A",
         "hangul": "커피 몇 잔?",
-        "meaning": "How many coffees?"
+        "meaning": "How many coffees?",
+        "text_vi": "Mấy ly cà phê?"
       },
       {
         "speaker": "B",
         "hangul": "두 잔 주세요.",
-        "meaning": "Two please."
+        "meaning": "Two please.",
+        "text_vi": "Cho tôi hai ly."
       }
     ],
     "exercises": [
@@ -1379,22 +1419,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "오늘 무슨 요일?",
-        "meaning": "What day?"
+        "meaning": "What day?",
+        "text_vi": "Hôm nay thứ mấy?"
       },
       {
         "speaker": "B",
         "hangul": "금요일이에요!",
-        "meaning": "Friday!"
+        "meaning": "Friday!",
+        "text_vi": "Thứ Sáu rồi!"
       },
       {
         "speaker": "A",
         "hangul": "주말에 뭐 해요?",
-        "meaning": "Weekend plans?"
+        "meaning": "Weekend plans?",
+        "text_vi": "Cuối tuần bạn làm gì?"
       },
       {
         "speaker": "B",
         "hangul": "쇼핑 갈 거예요.",
-        "meaning": "Shopping."
+        "meaning": "Shopping.",
+        "text_vi": "Tôi sẽ đi mua sắm."
       }
     ],
     "exercises": [
@@ -1508,22 +1552,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "뭐 해요?",
-        "meaning": "What doing?"
+        "meaning": "What doing?",
+        "text_vi": "Bạn đang làm gì?"
       },
       {
         "speaker": "B",
         "hangul": "책 읽어요.",
-        "meaning": "Reading."
+        "meaning": "Reading.",
+        "text_vi": "Tôi đang đọc sách."
       },
       {
         "speaker": "A",
         "hangul": "무슨 책?",
-        "meaning": "What book?"
+        "meaning": "What book?",
+        "text_vi": "Sách gì vậy?"
       },
       {
         "speaker": "B",
         "hangul": "한국어 책.",
-        "meaning": "Korean book."
+        "meaning": "Korean book.",
+        "text_vi": "Sách tiếng Hàn."
       }
     ],
     "exercises": [
@@ -1637,22 +1685,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "취미가 뭐예요?",
-        "meaning": "Hobby?"
+        "meaning": "Hobby?",
+        "text_vi": "Sở thích của bạn là gì?"
       },
       {
         "speaker": "B",
         "hangul": "한국어 공부해요.",
-        "meaning": "Studying Korean."
+        "meaning": "Studying Korean.",
+        "text_vi": "Tôi học tiếng Hàn."
       },
       {
         "speaker": "A",
         "hangul": "매일 해요?",
-        "meaning": "Every day?"
+        "meaning": "Every day?",
+        "text_vi": "Ngày nào cũng học à?"
       },
       {
         "speaker": "B",
         "hangul": "네, 한 시간씩.",
-        "meaning": "Yes, 1 hour."
+        "meaning": "Yes, 1 hour.",
+        "text_vi": "Vâng, mỗi ngày một tiếng."
       }
     ],
     "exercises": [
@@ -1766,22 +1818,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "오늘 날씨 어때요?",
-        "meaning": "Weather today?"
+        "meaning": "Weather today?",
+        "text_vi": "Hôm nay thời tiết thế nào?"
       },
       {
         "speaker": "B",
         "hangul": "날씨가 정말 좋아요.",
-        "meaning": "Really nice."
+        "meaning": "Really nice.",
+        "text_vi": "Thời tiết đẹp lắm."
       },
       {
         "speaker": "A",
         "hangul": "공원에 갈까요?",
-        "meaning": "Park?"
+        "meaning": "Park?",
+        "text_vi": "Mình đi công viên nhé?"
       },
       {
         "speaker": "B",
         "hangul": "네, 좋아요!",
-        "meaning": "Yes!"
+        "meaning": "Yes!",
+        "text_vi": "Vâng, được đấy!"
       }
     ],
     "exercises": [
@@ -1895,22 +1951,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이 음식 어때요?",
-        "meaning": "How's the food?"
+        "meaning": "How's the food?",
+        "text_vi": "Món ăn này thế nào?"
       },
       {
         "speaker": "B",
         "hangul": "정말 맛있어요!",
-        "meaning": "Delicious!"
+        "meaning": "Delicious!",
+        "text_vi": "Ngon thật đấy!"
       },
       {
         "speaker": "A",
         "hangul": "다행이에요. 더 드세요!",
-        "meaning": "Glad! Eat more!"
+        "meaning": "Glad! Eat more!",
+        "text_vi": "May quá. Ăn thêm chút nữa đi!"
       },
       {
         "speaker": "B",
         "hangul": "감사합니다!",
-        "meaning": "Thanks!"
+        "meaning": "Thanks!",
+        "text_vi": "Cảm ơn ạ!"
       }
     ],
     "exercises": [

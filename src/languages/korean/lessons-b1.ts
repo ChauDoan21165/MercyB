@@ -89,22 +89,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "모두 모였으니 회의를 시작하겠습니다.",
-        "meaning": "Since everyone is here, let's start the meeting."
+        "meaning": "Since everyone is here, let's start the meeting.",
+        "text_vi": "Mọi người đã đến đông đủ, chúng ta bắt đầu cuộc họp nhé."
       },
       {
         "speaker": "B",
         "hangul": "네, 먼저 지난주 진행 상황을 보고하겠습니다.",
-        "meaning": "Yes, first I will report on last week's progress."
+        "meaning": "Yes, first I will report on last week's progress.",
+        "text_vi": "Vâng, trước tiên tôi xin báo cáo tiến độ tuần trước ạ."
       },
       {
         "speaker": "A",
         "hangul": "수고하셨습니다. 다음 의제로 넘어갑시다.",
-        "meaning": "Good work. Let's move to the next agenda."
+        "meaning": "Good work. Let's move to the next agenda.",
+        "text_vi": "Mọi người vất vả rồi. Chúng ta chuyển sang vấn đề tiếp theo."
       },
       {
         "speaker": "B",
         "hangul": "새로운 마케팅 전략에 대해 논의하고 싶습니다.",
-        "meaning": "I'd like to discuss the new marketing strategy."
+        "meaning": "I'd like to discuss the new marketing strategy.",
+        "text_vi": "Tôi muốn thảo luận về chiến lược marketing mới ạ."
       }
     ],
     "exercises": [
@@ -218,22 +222,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "안녕하세요, 오늘 발표를 시작하겠습니다.",
-        "meaning": "Hello, I will begin today's presentation."
+        "meaning": "Hello, I will begin today's presentation.",
+        "text_vi": "Xin chào, hôm nay tôi xin bắt đầu phần thuyết trình ạ."
       },
       {
         "speaker": "B",
         "hangul": "주제가 무엇인가요?",
-        "meaning": "What is the topic?"
+        "meaning": "What is the topic?",
+        "text_vi": "Chủ đề là gì vậy ạ?"
       },
       {
         "speaker": "A",
         "hangul": "신제품 출시 전략에 관한 것입니다.",
-        "meaning": "It is about the new product launch strategy."
+        "meaning": "It is about the new product launch strategy.",
+        "text_vi": "Là về chiến lược ra mắt sản phẩm mới ạ."
       },
       {
         "speaker": "B",
         "hangul": "자료를 미리 받을 수 있나요?",
-        "meaning": "Can I get the materials in advance?"
+        "meaning": "Can I get the materials in advance?",
+        "text_vi": "Tôi nhận tài liệu trước được không ạ?"
       }
     ],
     "exercises": [
@@ -347,22 +355,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "가격을 낮출 수 있을까요?",
-        "meaning": "Can you lower the price?"
+        "meaning": "Can you lower the price?",
+        "text_vi": "Có thể giảm giá được không ạ?"
       },
       {
         "speaker": "B",
         "hangul": "최대 5%까지 할인이 가능합니다.",
-        "meaning": "A maximum of 5% discount is possible."
+        "meaning": "A maximum of 5% discount is possible.",
+        "text_vi": "Chúng tôi có thể giảm tối đa 5% ạ."
       },
       {
         "speaker": "A",
         "hangul": "그럼 10% 할인은 어려운가요?",
-        "meaning": "Then is 10% discount difficult?"
+        "meaning": "Then is 10% discount difficult?",
+        "text_vi": "Vậy giảm 10% thì khó phải không ạ?"
       },
       {
         "speaker": "B",
         "hangul": "죄송합니다. 그 이상은 어렵습니다.",
-        "meaning": "Sorry, it's difficult beyond that."
+        "meaning": "Sorry, it's difficult beyond that.",
+        "text_vi": "Tôi xin lỗi. Hơn mức đó thì khó ạ."
       }
     ],
     "exercises": [
@@ -476,22 +488,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "인스타그램 계정이 있어요?",
-        "meaning": "Do you have an Instagram account?"
+        "meaning": "Do you have an Instagram account?",
+        "text_vi": "Bạn có tài khoản Instagram không?"
       },
       {
         "speaker": "B",
         "hangul": "네, 있어요. 당신을 팔로우할게요.",
-        "meaning": "Yes, I do. I'll follow you."
+        "meaning": "Yes, I do. I'll follow you.",
+        "text_vi": "Có chứ. Mình sẽ theo dõi bạn."
       },
       {
         "speaker": "A",
         "hangul": "감사합니다. 저도 팔로우할게요.",
-        "meaning": "Thank you. I'll follow you too."
+        "meaning": "Thank you. I'll follow you too.",
+        "text_vi": "Cảm ơn nhé. Mình cũng theo dõi lại bạn."
       },
       {
         "speaker": "B",
         "hangul": "게시물이 정말 예쁘네요!",
-        "meaning": "Your posts are really pretty!"
+        "meaning": "Your posts are really pretty!",
+        "text_vi": "Bài đăng của bạn đẹp thật đấy!"
       }
     ],
     "exercises": [
@@ -605,22 +621,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "요즘 환경 문제에 관심이 많아졌어요.",
-        "meaning": "I've become more interested in environmental issues these days."
+        "meaning": "I've become more interested in environmental issues these days.",
+        "text_vi": "Dạo này mình quan tâm nhiều hơn đến vấn đề môi trường."
       },
       {
         "speaker": "B",
         "hangul": "저도요. 특히 플라스틱 사용을 줄이려고 해요.",
-        "meaning": "Me too. Especially I try to reduce plastic use."
+        "meaning": "Me too. Especially I try to reduce plastic use.",
+        "text_vi": "Mình cũng vậy. Nhất là mình đang cố giảm dùng đồ nhựa."
       },
       {
         "speaker": "A",
         "hangul": "재활용도 열심히 하고 있어요.",
-        "meaning": "I'm also doing recycling diligently."
+        "meaning": "I'm also doing recycling diligently.",
+        "text_vi": "Mình cũng chăm chỉ phân loại tái chế nữa."
       },
       {
         "speaker": "B",
         "hangul": "작은 실천이 큰 변화를 만들 수 있죠.",
-        "meaning": "Small actions can make big changes."
+        "meaning": "Small actions can make big changes.",
+        "text_vi": "Những hành động nhỏ có thể tạo nên thay đổi lớn mà."
       }
     ],
     "exercises": [
@@ -734,22 +754,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "새 정책에 대해 어떻게 생각하세요?",
-        "meaning": "What do you think about the new policy?"
+        "meaning": "What do you think about the new policy?",
+        "text_vi": "Bạn nghĩ thế nào về chính sách mới?"
       },
       {
         "speaker": "B",
         "hangul": "저는 찬성합니다. 효과적일 거예요.",
-        "meaning": "I agree. It will be effective."
+        "meaning": "I agree. It will be effective.",
+        "text_vi": "Tôi ủng hộ. Nó sẽ hiệu quả thôi."
       },
       {
         "speaker": "A",
         "hangul": "그런데 비용이 너무 많이 들지 않을까요?",
-        "meaning": "But won't it cost too much?"
+        "meaning": "But won't it cost too much?",
+        "text_vi": "Nhưng liệu có tốn kém quá không?"
       },
       {
         "speaker": "B",
         "hangul": "장기적으로 보면 이익이 더 클 거예요.",
-        "meaning": "In the long run, the benefits will be greater."
+        "meaning": "In the long run, the benefits will be greater.",
+        "text_vi": "Xét về lâu dài thì lợi ích sẽ lớn hơn."
       }
     ],
     "exercises": [
@@ -863,22 +887,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이번 주말에 뭐 할까요?",
-        "meaning": "What shall we do this weekend?"
+        "meaning": "What shall we do this weekend?",
+        "text_vi": "Cuối tuần này mình làm gì nhỉ?"
       },
       {
         "speaker": "B",
         "hangul": "등산 가는 게 어때요?",
-        "meaning": "How about going hiking?"
+        "meaning": "How about going hiking?",
+        "text_vi": "Đi leo núi thì sao?"
       },
       {
         "speaker": "A",
         "hangul": "좋아요! 어디로 갈까요?",
-        "meaning": "Good idea! Where shall we go?"
+        "meaning": "Good idea! Where shall we go?",
+        "text_vi": "Hay đấy! Mình đi đâu nhỉ?"
       },
       {
         "speaker": "B",
         "hangul": "북한산이 어때요? 경치가 좋아요.",
-        "meaning": "How about Bukhansan? The scenery is nice."
+        "meaning": "How about Bukhansan? The scenery is nice.",
+        "text_vi": "Núi Bukhansan thì sao? Phong cảnh đẹp lắm."
       }
     ],
     "exercises": [
@@ -992,22 +1020,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "어제 약속에 늦어서 정말 미안해요.",
-        "meaning": "I'm really sorry for being late to the appointment yesterday."
+        "meaning": "I'm really sorry for being late to the appointment yesterday.",
+        "text_vi": "Hôm qua mình đến trễ hẹn, thật sự xin lỗi nhé."
       },
       {
         "speaker": "B",
         "hangul": "괜찮아요. 무슨 일이 있었어요?",
-        "meaning": "It's okay. What happened?"
+        "meaning": "It's okay. What happened?",
+        "text_vi": "Không sao đâu. Có chuyện gì vậy?"
       },
       {
         "speaker": "A",
         "hangul": "교통이 많이 막혔어요.",
-        "meaning": "There was heavy traffic."
+        "meaning": "There was heavy traffic.",
+        "text_vi": "Đường kẹt xe quá trời."
       },
       {
         "speaker": "B",
         "hangul": "다행히 큰 문제는 없었어요.",
-        "meaning": "Luckily, there was no big issue."
+        "meaning": "Luckily, there was no big issue.",
+        "text_vi": "May là không có vấn đề gì lớn."
       }
     ],
     "exercises": [
@@ -1121,22 +1153,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "한국어 공부가 어려워요. 조언 좀 해 주세요.",
-        "meaning": "Studying Korean is difficult. Please give me some advice."
+        "meaning": "Studying Korean is difficult. Please give me some advice.",
+        "text_vi": "Học tiếng Hàn khó quá. Cho mình xin lời khuyên với."
       },
       {
         "speaker": "B",
         "hangul": "매일 조금씩 꾸준히 공부하는 게 좋아요.",
-        "meaning": "It's good to study a little bit every day consistently."
+        "meaning": "It's good to study a little bit every day consistently.",
+        "text_vi": "Mỗi ngày học một chút đều đặn là tốt nhất."
       },
       {
         "speaker": "A",
         "hangul": "듣기 실력을 어떻게 늘릴까요?",
-        "meaning": "How can I improve my listening skills?"
+        "meaning": "How can I improve my listening skills?",
+        "text_vi": "Làm sao để cải thiện kỹ năng nghe nhỉ?"
       },
       {
         "speaker": "B",
         "hangul": "한국 드라마를 보는 것도 도움이 돼요.",
-        "meaning": "Watching Korean dramas also helps."
+        "meaning": "Watching Korean dramas also helps.",
+        "text_vi": "Xem phim Hàn cũng giúp ích đấy."
       }
     ],
     "exercises": [
@@ -1250,22 +1286,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "제주도에 가 본 적 있어요?",
-        "meaning": "Have you ever been to Jeju Island?"
+        "meaning": "Have you ever been to Jeju Island?",
+        "text_vi": "Bạn từng đến đảo Jeju chưa?"
       },
       {
         "speaker": "B",
         "hangul": "네, 작년에 다녀왔어요. 정말 아름다웠어요.",
-        "meaning": "Yes, I went last year. It was really beautiful."
+        "meaning": "Yes, I went last year. It was really beautiful.",
+        "text_vi": "Rồi, năm ngoái mình đi rồi. Đẹp thật sự luôn."
       },
       {
         "speaker": "A",
         "hangul": "무엇이 가장 기억에 남나요?",
-        "meaning": "What is most memorable?"
+        "meaning": "What is most memorable?",
+        "text_vi": "Điều gì khiến bạn nhớ nhất?"
       },
       {
         "speaker": "B",
         "hangul": "한라산 등반이 가장 인상 깊었어요.",
-        "meaning": "Climbing Hallasan was the most impressive."
+        "meaning": "Climbing Hallasan was the most impressive.",
+        "text_vi": "Leo núi Hallasan để lại ấn tượng sâu nhất."
       }
     ],
     "exercises": [
@@ -1379,22 +1419,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이 핸드폰과 저 핸드폰 중에 뭐가 더 좋아요?",
-        "meaning": "Between this phone and that phone, which is better?"
+        "meaning": "Between this phone and that phone, which is better?",
+        "text_vi": "Giữa điện thoại này và điện thoại kia, cái nào tốt hơn?"
       },
       {
         "speaker": "B",
         "hangul": "이쪽이 카메라가 더 좋지만 배터리는 짧아요.",
-        "meaning": "This one has a better camera but shorter battery."
+        "meaning": "This one has a better camera but shorter battery.",
+        "text_vi": "Cái này camera tốt hơn nhưng pin lại yếu."
       },
       {
         "speaker": "A",
         "hangul": "가격은 비슷한가요?",
-        "meaning": "Are the prices similar?"
+        "meaning": "Are the prices similar?",
+        "text_vi": "Giá có gần bằng nhau không?"
       },
       {
         "speaker": "B",
         "hangul": "아니요, 이게 조금 더 비싸요.",
-        "meaning": "No, this one is a bit more expensive."
+        "meaning": "No, this one is a bit more expensive.",
+        "text_vi": "Không, cái này đắt hơn một chút."
       }
     ],
     "exercises": [
@@ -1508,22 +1552,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "만약 시간을 되돌릴 수 있다면 뭘 하고 싶어요?",
-        "meaning": "If you could turn back time, what would you want to do?"
+        "meaning": "If you could turn back time, what would you want to do?",
+        "text_vi": "Nếu có thể quay ngược thời gian, bạn muốn làm gì?"
       },
       {
         "speaker": "B",
         "hangul": "더 열심히 공부할 거예요.",
-        "meaning": "I would study harder."
+        "meaning": "I would study harder.",
+        "text_vi": "Mình sẽ học chăm chỉ hơn."
       },
       {
         "speaker": "A",
         "hangul": "저도요. 후회되는 일이 있어요.",
-        "meaning": "Me too. I have some regrets."
+        "meaning": "Me too. I have some regrets.",
+        "text_vi": "Mình cũng vậy. Mình có vài điều hối tiếc."
       },
       {
         "speaker": "B",
         "hangul": "하지만 과거는 바꿀 수 없으니 미래를 위해 노력합시다.",
-        "meaning": "But we can't change the past, so let's work for the future."
+        "meaning": "But we can't change the past, so let's work for the future.",
+        "text_vi": "Nhưng quá khứ không thể thay đổi, nên hãy cố gắng cho tương lai nhé."
       }
     ],
     "exercises": [
@@ -1637,22 +1685,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "민수가 뭐라고 했어요?",
-        "meaning": "What did Minsu say?"
+        "meaning": "What did Minsu say?",
+        "text_vi": "Minsu nói gì vậy?"
       },
       {
         "speaker": "B",
         "hangul": "내일 시간이 안 된다고 했어요.",
-        "meaning": "He said he doesn't have time tomorrow."
+        "meaning": "He said he doesn't have time tomorrow.",
+        "text_vi": "Cậu ấy bảo ngày mai không có thời gian."
       },
       {
         "speaker": "A",
         "hangul": "그럼 모레는 괜찮다고 물어봐 주세요.",
-        "meaning": "Then please ask if the day after tomorrow is okay."
+        "meaning": "Then please ask if the day after tomorrow is okay.",
+        "text_vi": "Vậy bạn hỏi giúp xem ngày kia có được không nhé."
       },
       {
         "speaker": "B",
         "hangul": "알겠어요. 전해 줄게요.",
-        "meaning": "Okay. I'll pass it on."
+        "meaning": "Okay. I'll pass it on.",
+        "text_vi": "Được rồi. Mình sẽ nhắn lại."
       }
     ],
     "exercises": [
@@ -1766,22 +1818,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "이 건물은 언제 지어졌어요?",
-        "meaning": "When was this building built?"
+        "meaning": "When was this building built?",
+        "text_vi": "Tòa nhà này được xây khi nào vậy?"
       },
       {
         "speaker": "B",
         "hangul": "10년 전에 지어졌어요.",
-        "meaning": "It was built 10 years ago."
+        "meaning": "It was built 10 years ago.",
+        "text_vi": "Nó được xây cách đây 10 năm."
       },
       {
         "speaker": "A",
         "hangul": "누구에 의해 설계되었나요?",
-        "meaning": "By whom was it designed?"
+        "meaning": "By whom was it designed?",
+        "text_vi": "Do ai thiết kế vậy?"
       },
       {
         "speaker": "B",
         "hangul": "유명한 건축가에 의해 설계되었어요.",
-        "meaning": "It was designed by a famous architect."
+        "meaning": "It was designed by a famous architect.",
+        "text_vi": "Nó do một kiến trúc sư nổi tiếng thiết kế."
       }
     ],
     "exercises": [
@@ -1895,22 +1951,26 @@ export const lessons: KoreanLesson[] = [
       {
         "speaker": "A",
         "hangul": "어제 산 치마가 마음에 들어요?",
-        "meaning": "Do you like the skirt you bought yesterday?"
+        "meaning": "Do you like the skirt you bought yesterday?",
+        "text_vi": "Cái váy bạn mua hôm qua có ưng không?"
       },
       {
         "speaker": "B",
         "hangul": "네, 그런데 좀 작아요.",
-        "meaning": "Yes, but it's a bit small."
+        "meaning": "Yes, but it's a bit small.",
+        "text_vi": "Ưng chứ, nhưng hơi nhỏ một chút."
       },
       {
         "speaker": "A",
         "hangul": "다른 색으로 교환할 수 있어요.",
-        "meaning": "You can exchange it for another color."
+        "meaning": "You can exchange it for another color.",
+        "text_vi": "Bạn có thể đổi sang màu khác mà."
       },
       {
         "speaker": "B",
         "hangul": "괜찮아요. 그냥 입을게요.",
-        "meaning": "It's okay. I'll just wear it."
+        "meaning": "It's okay. I'll just wear it.",
+        "text_vi": "Không sao đâu. Mình cứ mặc vậy."
       }
     ],
     "exercises": [
