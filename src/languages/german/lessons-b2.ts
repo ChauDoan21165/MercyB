@@ -1558,36 +1558,49 @@ export const lessons: GermanLesson[] = [
       "Sếp giao thêm dự án thứ tư trong khi bạn đang quá tải với 3 cái đang dở. Hãy từ chối lịch sự bằng tiếng Đức công sở — dùng Konjunktiv II ('ich könnte', 'ich würde') và đề xuất ai trong team có thể nhận thay.",
       "Đồng nghiệp Đức (đã 'du') hỏi sao bạn trông kiệt sức. Hãy dùng thành ngữ 'die Nase voll haben' để than vãn ngắn — sau đó hỏi ý kiến: nên nói chuyện với sếp như thế nào."
     ],
+    "roleplay_prompts_en": [
+      "You have worked 50 hours of overtime over two months and your leave request was denied. Set up a meeting with your boss (use 'Sie'), state the concrete facts, and propose two solutions. Keep your tone calm and factual.",
+      "Your boss assigns a fourth project while you are already overloaded with three unfinished ones. Decline politely in German workplace register — use Konjunktiv II ('ich könnte', 'ich würde') and suggest which team member could take it on instead.",
+      "A German colleague (already on 'du' terms) asks why you look so worn out. Use the idiom 'die Nase voll haben' for a short vent — then ask for their take on how to raise this with the boss."
+    ],
     "register_notes": "Toàn bộ cuộc nói chuyện này dùng 'Sie' (lịch sự), không 'du'. Lý do: (1) đây là buổi nói chuyện chính thức về xung đột — không phải lúc duzen; (2) công ty truyền thống Đức (luật, ngân hàng, bảo hiểm, công ty gia đình) mặc định 'Sie' với cấp trên kể cả khi đã làm chung nhiều năm; (3) trong tình huống căng thẳng, 'Sie' giúp giữ khoảng cách lý trí, tránh cảm xúc lan vào.\n\nKhác Pháp: 'vous' Pháp có thể lỏng — đồng nghiệp Pháp nhanh chóng 'tu' sau vài tháng. Đức nghiêm hơn nhiều. Startup, agency, IT trẻ thường 'du' từ ngày đầu, nhưng phần lớn ngành khác giữ 'Sie' lâu. Quy tắc vàng cho người Việt: theo dõi sếp dùng gì với bạn — nếu sếp 'Sie', bạn 'Sie'. Đề nghị chuyển 'du' luôn đến từ người cao hơn (cấp trên, lớn tuổi) — bạn KHÔNG được đề nghị trước với cấp trên.\n\nTín hiệu cần chú ý: nếu bạn và sếp đã 'du' từ lâu, nhưng trong cuộc họp về vấn đề nghiêm trọng sếp đột ngột chuyển lại 'Sie' — đây là báo hiệu 'đây là chuyện công việc, không phải bạn bè'. Hiểu được tín hiệu này tránh hiểu lầm. Ngược lại, nếu cuộc họp căng thẳng và sếp vẫn 'du', tức là sếp coi bạn như đồng minh, không phải đối thủ.",
     "register_notes_en": "The entire conversation uses 'Sie' (formal), never 'du'. Why: (1) this is a formal conflict conversation — not the moment to duzen; (2) traditional German companies (law, banking, insurance, family-owned firms) default to 'Sie' with supervisors even after many years working together; (3) under stress, 'Sie' keeps a rational distance and stops emotion from spilling in.\n\nCompared to French: French 'vous' can be loose — French colleagues often switch to 'tu' after a few months. Germans hold the line much more strictly. Startups, agencies, and young IT firms typically duzen from day one, but most other sectors stay on 'Sie' for a long time. Golden rule for non-Germans: watch what your boss uses with YOU — if they're on 'Sie', you stay on 'Sie'. The invitation to switch to 'du' always comes from the senior party (boss, older person) — you do NOT propose it first to a superior.\n\nSignals to watch: if you and your boss have been on 'du' for a long time, and suddenly in a meeting about a serious issue they switch back to 'Sie' — that is a flag: 'this is business, not friendship'. Reading that signal avoids misunderstanding. Conversely, if the meeting is tense and your boss stays on 'du', they're treating you as an ally, not an adversary.",
     "idiom_glosses": [
       {
         "idiom": "die Nase voll haben",
         "literal": "có cái mũi đầy",
+        "literal_en": "to have the nose full",
         "meaning": "chán ngấy, hết chịu nổi",
         "meaning_en": "to be fed up, to have had enough",
-        "example": "Ich habe die Nase voll von diesen ständigen Überstunden."
+        "example": "Ich habe die Nase voll von diesen ständigen Überstunden.",
+        "example_en": "I am completely fed up with all this constant overtime."
       },
       {
         "idiom": "Klartext reden",
         "literal": "nói chữ rõ ràng",
+        "literal_en": "to speak plain text",
         "meaning": "nói thẳng, không vòng vo",
         "meaning_en": "to speak plainly, no beating around the bush",
-        "example": "Ich möchte Klartext reden: das geht so nicht weiter."
+        "example": "Ich möchte Klartext reden: das geht so nicht weiter.",
+        "example_en": "I want to speak plainly: this cannot go on like this."
       },
       {
         "idiom": "kein Blatt vor den Mund nehmen",
         "literal": "không cầm chiếc lá trước miệng",
+        "literal_en": "to not hold a leaf in front of one's mouth",
         "meaning": "nói thẳng, không che giấu",
         "meaning_en": "to speak frankly, to not mince words",
-        "example": "Frau Becker nimmt kein Blatt vor den Mund — das schätze ich."
+        "example": "Frau Becker nimmt kein Blatt vor den Mund — das schätze ich.",
+        "example_en": "Ms Becker doesn't mince her words — and I respect that."
       },
       {
         "idiom": "das Maß ist voll",
         "literal": "cái đong đã đầy",
+        "literal_en": "the measure is full",
         "meaning": "đã đến giới hạn, giọt nước tràn ly",
         "meaning_en": "the limit has been reached, the last straw",
-        "example": "Nach diesem Vorfall ist das Maß voll. Es muss sich etwas ändern."
+        "example": "Nach diesem Vorfall ist das Maß voll. Es muss sich etwas ändern.",
+        "example_en": "After this incident, that's the last straw. Something has to change."
       }
     ],
     "exercises": [
@@ -1954,36 +1967,49 @@ export const lessons: GermanLesson[] = [
       "Người phỏng vấn đề nghị mức lương thấp hơn kỳ vọng 8.000€/năm. Hãy thương lượng dùng Konjunktiv II ('ich hätte gehofft', 'wäre es möglich'), đề xuất các lựa chọn ngoài lương cơ bản (Bonus, Weiterbildungsbudget, Homeoffice).",
       "Cuối phỏng vấn, người phỏng vấn hỏi 'Haben Sie noch Fragen?'. Hãy hỏi 3 câu thông minh thể hiện anh đã nghiên cứu công ty — không hỏi về lương/nghỉ phép ở giai đoạn này."
     ],
+    "roleplay_prompts_en": [
+      "You have just been invited to a final-round interview at Siemens. Your prospective boss asks 'Warum sollten wir Sie einstellen und nicht einen deutschen Bewerber?' Answer politely but confidently — do NOT apologise for being a foreigner; make your bilingual edge and cross-cultural bridge-building your main strength.",
+      "The interviewer offers a salary 8,000 EUR/year below your expectation. Negotiate using Konjunktiv II ('ich hätte gehofft', 'wäre es möglich'), and propose options beyond base pay (bonus, training budget, home office).",
+      "At the end of the interview, the interviewer asks 'Haben Sie noch Fragen?'. Ask three sharp questions that show you have researched the company — do NOT ask about salary or leave at this stage."
+    ],
     "register_notes": "Trong môi trường phỏng vấn truyền thống Đức (công ty kỹ thuật, ngân hàng, công ty gia đình lớn), 'Sie' là chuẩn từ đầu đến cuối — kể cả khi không khí thân thiện. KHÔNG bao giờ chuyển sang 'du' trừ khi người phỏng vấn chủ động đề nghị (rất hiếm trong vòng đầu). Kết câu bằng 'Konjunktiv II' để biểu hiện lịch sự: 'Ich würde sagen...', 'Es wäre mir wichtig...', 'Könnten Sie...?' — tránh 'ich will', 'ich brauche'.\n\nNgoại lệ: startup ở Berlin/Hamburg, công ty IT hiện đại, agency sáng tạo thường 'du' từ ngày đầu — kể cả với CEO. Dấu hiệu: nếu trang web công ty xưng 'du' với khách thăm trang, nếu bài đăng tuyển dụng có 'duzen' trong văn hoá công ty, hoặc nếu người phỏng vấn mở đầu bằng tên (không Frau/Herr) — bạn được phép 'du'. Nhưng quy tắc vàng: chờ người phỏng vấn dùng 'du' với bạn TRƯỚC; đừng tự ý chuyển.\n\nNgười Việt hay mắc lỗi tự khiêm thái quá ('Em chưa có nhiều kinh nghiệm') — bị đọc là thiếu tự tin, không bán được giá trị bản thân. Văn hoá Đức expect bạn nói thẳng đóng góp được gì, kèm bằng chứng cụ thể.",
     "register_notes_en": "In a traditional German interview setting (engineering firms, banks, large family-owned companies), 'Sie' is standard from start to finish — even when the atmosphere is friendly. NEVER switch to 'du' unless the interviewer proactively invites it (which is very rare in a first round). Wrap requests in Konjunktiv II to signal politeness: 'Ich würde sagen…', 'Es wäre mir wichtig…', 'Könnten Sie…?' — avoid 'ich will' (I want) or 'ich brauche' (I need) which both sound blunt.\n\nException: Berlin/Hamburg startups, modern IT firms, and creative agencies routinely 'du' from day one — even with the CEO. Tells: if the company website addresses visitors with 'du', if the job posting mentions 'duzen' as part of the culture, or if the interviewer opens by first name (no Frau/Herr) — you're cleared to 'du'. But the golden rule: wait for the interviewer to use 'du' with you FIRST; never switch on your own.\n\nA common trap for non-Western candidates is over-self-deprecation ('I don't have much experience yet') — that reads as a lack of confidence and fails to sell your value. German culture expects you to state plainly what you contribute, backed by concrete evidence.",
     "idiom_glosses": [
       {
         "idiom": "Tacheles reden",
         "literal": "Nói thẳng (Tacheles từ tiếng Yiddish)",
+        "literal_en": "to speak Tacheles (Yiddish: 'purpose, business')",
         "meaning": "Nói thẳng vào vấn đề, không vòng vo. Trong phỏng vấn, dùng để báo hiệu bạn sẵn sàng cho phản hồi trực tiếp về điểm yếu hoặc lương.",
         "meaning_en": "to talk straight, get to the point (Tacheles is from Yiddish). In an interview, signals that you're ready for blunt feedback on weaknesses or salary.",
-        "example": "Ich kann auf Deutsch Tacheles reden — auch in schwierigen Verhandlungen."
+        "example": "Ich kann auf Deutsch Tacheles reden — auch in schwierigen Verhandlungen.",
+        "example_en": "I can talk straight in German — even in tough negotiations."
       },
       {
         "idiom": "Nägel mit Köpfen machen",
         "literal": "Đóng đinh có đầu",
+        "literal_en": "to make nails with heads",
         "meaning": "Làm việc gì đến nơi đến chốn, dứt khoát — thay vì để dở dang. Dùng khi muốn báo hiệu bạn không phải kiểu nửa vời.",
         "meaning_en": "to do something properly and decisively, see it through to the end — not leave it half-finished. Signals you're not the kind to do things by halves.",
-        "example": "Bei jedem Projekt mache ich Nägel mit Köpfen — angefangenes wird beendet."
+        "example": "Bei jedem Projekt mache ich Nägel mit Köpfen — angefangenes wird beendet.",
+        "example_en": "On every project I see things through properly — what I start, I finish."
       },
       {
         "idiom": "Über den Tellerrand schauen",
         "literal": "Nhìn qua mép đĩa",
+        "literal_en": "to look beyond the rim of the plate",
         "meaning": "Nhìn xa hơn phạm vi nhỏ hẹp của mình, có cái nhìn tổng thể. Dùng để mô tả tầm nhìn liên ngành, bilingual, cross-cultural.",
         "meaning_en": "to look beyond the narrow scope of your own field, to have the big-picture view. Useful for describing cross-disciplinary, bilingual, or cross-cultural perspective.",
-        "example": "Mit meiner internationalen Erfahrung kann ich gut über den Tellerrand schauen."
+        "example": "Mit meiner internationalen Erfahrung kann ich gut über den Tellerrand schauen.",
+        "example_en": "With my international experience I'm good at seeing the bigger picture."
       },
       {
         "idiom": "Ein Eisen im Feuer haben",
         "literal": "Có một thanh sắt trong lửa",
+        "literal_en": "to have an iron in the fire",
         "meaning": "Có một phương án/cơ hội đang chờ. Số nhiều ('mehrere Eisen im Feuer') = có nhiều phương án dự phòng.",
         "meaning_en": "to have an option / opportunity in play (think 'an iron in the fire'). Plural form ('mehrere Eisen im Feuer') = multiple fallback options.",
-        "example": "Ich habe noch ein anderes Eisen im Feuer, aber Ihre Stelle ist meine Priorität."
+        "example": "Ich habe noch ein anderes Eisen im Feuer, aber Ihre Stelle ist meine Priorität.",
+        "example_en": "I do have another iron in the fire, but your position is my priority."
       }
     ],
     "exercises": [
@@ -2350,36 +2376,49 @@ export const lessons: GermanLesson[] = [
       "Bạn được hỏi 'Warum sollten wir gerade Sie fördern, wenn Sie kein Deutsch B2 vorweisen können?'. Hãy thừa nhận thực tế nhưng đưa ra kế hoạch học cụ thể (Goethe-Institut, Studienkolleg, deadline có chứng chỉ trước khi nhập học) — không xin xỏ, không lảng tránh.",
       "Người phỏng vấn nghi ngờ kế hoạch về nước của bạn: 'Viele DAAD-Stipendiaten bleiben am Ende doch in Deutschland.'. Hãy thuyết phục bằng cách nêu liên kết cụ thể với cơ quan/đại học VN đã ký cam kết (MOU, lời mời làm việc), và chỉ rõ vì sao về nước có lợi cho cá nhân bạn."
     ],
+    "roleplay_prompts_en": [
+      "The DAAD panel asks: 'Was unterscheidet Ihren Antrag von den hundert anderen aus Vietnam?'. Answer confidently in 90 seconds — do NOT put down other Vietnamese applicants; instead raise your own concrete points of difference (topic, method, link to a German professor, your post-doctorate plan).",
+      "You are asked 'Warum sollten wir gerade Sie fördern, wenn Sie kein Deutsch B2 vorweisen können?'. Acknowledge the reality but present a concrete study plan (Goethe-Institut, Studienkolleg, a deadline for the certificate before enrolment) — no pleading, no dodging.",
+      "The interviewer is sceptical about your plan to return home: 'Viele DAAD-Stipendiaten bleiben am Ende doch in Deutschland.'. Persuade them by naming a concrete tie to a Vietnamese institution or university that has signed a commitment (an MOU, a job offer), and spell out why returning is in your own interest."
+    ],
     "register_notes": "Phỏng vấn DAAD dùng 'Sie' tuyệt đối — không có ngoại lệ, kể cả khi không khí thân thiện. Người phỏng vấn thường là giáo sư hoặc cán bộ DAAD cao cấp; tone là 'akademisch und respektvoll'. Cấu trúc kính ngữ học thuật quan trọng: 'Mein Forschungsvorhaben befasst sich mit...' chứ không 'Ich erforsche...' (quá thẳng thừng); 'Ich bin überzeugt, dass...' chứ không 'Ich glaube...' (quá yếu).\n\nKonjunktiv II là chuẩn cho mọi yêu cầu/giả định: 'Es wäre mir eine Ehre...', 'Ich würde gerne...', 'Könnten Sie...?'. Sử dụng Konjunktiv I cho gián tiếp khi trích dẫn người khác: 'Professor Müller schrieb, er sei interessiert...'. Đừng dùng plain form cho academic content.\n\nChú ý titles: gọi 'Herr Dr. Wagner' chứ không 'Herr Wagner' (giáo sư có học hàm phải gọi đầy đủ); 'Frau Professor Schmidt' không 'Frau Schmidt'. Bỏ qua title = thiếu tôn trọng học thuật.\n\nNgười Việt thường mắc hai lỗi: (1) khiêm tốn Á Đông quá mức ('Em chỉ là sinh viên thường') — bị đọc là không tự tin; (2) đề cao đất nước/gia đình hơn cá nhân — DAAD chọn CÁ NHÂN, không chọn gia đình.",
     "register_notes_en": "A DAAD interview uses 'Sie' absolutely — no exceptions, even when the atmosphere turns warm. Interviewers are typically professors or senior DAAD officers; the tone is 'akademisch und respektvoll'. Academic phrasing matters: 'Mein Forschungsvorhaben befasst sich mit…' beats 'Ich erforsche…' (too blunt); 'Ich bin überzeugt, dass…' beats 'Ich glaube…' (too weak).\n\nKonjunktiv II is standard for any request or hypothetical: 'Es wäre mir eine Ehre…', 'Ich würde gerne…', 'Könnten Sie…?'. Use Konjunktiv I for reported speech when quoting someone else: 'Professor Müller schrieb, er sei interessiert…'. Don't use plain indicative for academic content.\n\nTitles matter: say 'Herr Dr. Wagner' not 'Herr Wagner' (a professor with a doctorate must be addressed with the full title); 'Frau Professor Schmidt' not 'Frau Schmidt'. Dropping the title reads as a failure of academic respect.\n\nTwo common traps for non-Western candidates: (1) over-self-deprecation ('I'm only an ordinary student') — reads as a lack of confidence; (2) elevating country or family over individual — DAAD selects the INDIVIDUAL, not the family.",
     "idiom_glosses": [
       {
         "idiom": "Wo ein Wille ist, ist auch ein Weg",
         "literal": "Nơi có ý chí, ở đó cũng có đường",
+        "literal_en": "where there is a will, there is also a way",
         "meaning": "Có chí thì nên — ý chí mạnh sẽ tìm ra cách. Câu thành ngữ phổ biến để biểu hiện quyết tâm vượt khó.",
         "meaning_en": "'Where there's a will, there's a way' — strong will finds a way. A familiar saying to express determination through hardship.",
-        "example": "Wo ein Wille ist, ist auch ein Weg — deshalb habe ich neben dem Studium vier Jahre lang Deutsch gelernt."
+        "example": "Wo ein Wille ist, ist auch ein Weg — deshalb habe ich neben dem Studium vier Jahre lang Deutsch gelernt.",
+        "example_en": "Where there's a will, there's a way — that's why I studied German for four years alongside my degree."
       },
       {
         "idiom": "Aller Anfang ist schwer",
         "literal": "Mọi khởi đầu đều khó",
+        "literal_en": "every beginning is hard",
         "meaning": "Vạn sự khởi đầu nan. Dùng để biểu hiện sự kiên trì khi bắt đầu — học tiếng, hội nhập, làm quen môi trường mới.",
         "meaning_en": "Every beginning is hard. Used to acknowledge the persistence required at the start — language learning, integration, adjusting to a new environment.",
-        "example": "Aller Anfang ist schwer, aber ich habe mich schnell in die deutsche Hochschulkultur eingefunden."
+        "example": "Aller Anfang ist schwer, aber ich habe mich schnell in die deutsche Hochschulkultur eingefunden.",
+        "example_en": "Every beginning is hard, but I settled into German university culture quickly."
       },
       {
         "idiom": "Sich ins Zeug legen",
         "literal": "Đặt mình vào xe ngựa kéo",
+        "literal_en": "to put oneself into the harness",
         "meaning": "Nỗ lực hết mình, dồn sức. Dùng để mô tả quá trình chuẩn bị khắt khe (luyện tiếng, viết đề cương).",
         "meaning_en": "to put all one's effort into something, to throw yourself into the work. Used to describe an intense preparation phase (language drilling, writing a proposal).",
-        "example": "Für die DAAD-Bewerbung habe ich mich enorm ins Zeug gelegt — sechs Monate intensive Vorbereitung."
+        "example": "Für die DAAD-Bewerbung habe ich mich enorm ins Zeug gelegt — sechs Monate intensive Vorbereitung.",
+        "example_en": "For the DAAD application I really threw myself into it — six months of intensive preparation."
       },
       {
         "idiom": "Glück im Unglück haben",
         "literal": "Có may mắn trong bất hạnh",
+        "literal_en": "to have luck within misfortune",
         "meaning": "Trong cái rủi có cái may. Phù hợp khi kể về một bước ngoặt: Covid khiến phải hoãn đi học một năm → có thêm thời gian học tiếng và nâng cao đề tài.",
         "meaning_en": "to find luck within bad luck — a silver lining. Useful for narrating a turning point: Covid forced a year's delay → which gave more time for language and improving the proposal.",
-        "example": "Durch Covid musste ich ein Jahr warten — Glück im Unglück, denn so konnte ich mein Forschungsdesign verbessern."
+        "example": "Durch Covid musste ich ein Jahr warten — Glück im Unglück, denn so konnte ich mein Forschungsdesign verbessern.",
+        "example_en": "Covid forced me to wait a year — a blessing in disguise, because it let me improve my research design."
       }
     ],
     "exercises": [
@@ -2745,36 +2784,49 @@ export const lessons: GermanLesson[] = [
       "Trong giờ Sprechstunde đầu tiên, GS hỏi 'Warum gerade mein Lehrstuhl?'. Hãy trả lời cụ thể: trích dẫn 1 bài báo gần đây, kết nối với đề tài của bạn, và nêu lý do đề tài quan trọng cho VN — KHÔNG nói chung chung kiểu 'thầy nổi tiếng'.",
       "GS đồng ý hướng dẫn nhưng đề xuất đề tài khác với cái bạn muốn — gắn với dự án industrial của bộ môn, không phải về cấy ghép y tế cho VN. Hãy đàm phán: cảm ơn lời đề nghị, giải thích vì sao đề tài cũ của bạn quan trọng, và đề xuất compromise."
     ],
+    "roleplay_prompts_en": [
+      "You have just received an email from Prof. Müller: 'Mein Lehrstuhl ist überlastet, ich kann keine weiteren Masterarbeiten betreuen'. Write a 4-5 line reply — don't give up; propose options (co-supervision, a smaller topic, a one-semester delay) and ask for a recommendation of another professor.",
+      "In your first Sprechstunde (office hour), the professor asks 'Warum gerade mein Lehrstuhl?'. Answer specifically: cite one recent paper, link it to your topic, and explain why the topic matters for Vietnam — do NOT say something generic like 'you are famous'.",
+      "The professor agrees to supervise but proposes a different topic from the one you want — tied to the department's industrial project, not medical implants for Vietnam. Negotiate: thank them for the offer, explain why your original topic matters, and propose a compromise."
+    ],
     "register_notes": "Liên lạc với giáo sư Đức tuyệt đối formal — luôn 'Sie', luôn dùng đầy đủ chức danh ('Herr Professor Müller', không 'Herr Müller'; 'Frau Professor Doktor Schmidt' với giáo sư có hai học hàm). Email mở đầu bằng 'Sehr geehrter Herr Professor Müller', kết bằng 'Mit freundlichen Grüßen'. KHÔNG dùng 'Hallo' hay 'Liebe Grüße' với giáo sư trừ khi đã trao đổi nhiều lần.\n\nKonjunktiv II là chuẩn cho mọi yêu cầu: 'Ich würde mich freuen, wenn...', 'Hätten Sie Zeit...?', 'Wäre es möglich...?'. Plain form ('Können Sie?') nghe quá thẳng. Trong email/cuộc gặp đầu tiên, đặc biệt phải dùng Konjunktiv II — biểu hiện bạn hiểu cấp bậc học thuật.\n\nNgoại lệ: một số giáo sư trẻ ở các bộ môn IT, Computer Science, hoặc các trường tư mới thường ít formal hơn. Quy tắc: theo dõi giáo sư mở đầu email với bạn thế nào — nếu họ dùng 'Lieber Herr Linh', bạn có thể đáp 'Lieber Herr Professor Müller' nhưng vẫn giữ Sie. KHÔNG bao giờ chuyển sang 'du' với giáo sư trừ khi họ EXPLICITLY đề nghị.\n\nNgười Việt hay mắc lỗi: (1) email quá ngắn — bị coi là không nghiêm túc; (2) email quá dài (3 trang giới thiệu cuộc đời) — không có ai đọc; (3) gọi sai chức danh — bị coi là thiếu tôn trọng học hàm.",
     "register_notes_en": "Contact with a German professor is absolutely formal — always 'Sie', always with the full title ('Herr Professor Müller', not 'Herr Müller'; 'Frau Professor Doktor Schmidt' if the professor holds two doctorates). Email opens with 'Sehr geehrter Herr Professor Müller', closes with 'Mit freundlichen Grüßen'. Do NOT use 'Hallo' or 'Liebe Grüße' with a professor unless you've exchanged many messages already.\n\nKonjunktiv II is standard for every request: 'Ich würde mich freuen, wenn…', 'Hätten Sie Zeit…?', 'Wäre es möglich…?'. The plain indicative ('Können Sie?') sounds too blunt. In your first email or meeting, Konjunktiv II is especially important — it signals that you understand the academic hierarchy.\n\nException: some younger professors in IT, Computer Science, or newer private universities are less formal. Rule: watch how the professor addresses you — if they open with 'Lieber Herr Linh', you can reply with 'Lieber Herr Professor Müller' but still keep 'Sie'. NEVER switch to 'du' with a professor unless they EXPLICITLY invite it.\n\nCommon traps for non-Western students: (1) email too short — read as not serious; (2) email too long (a 3-page life story) — nobody reads it; (3) wrong title — read as a failure of academic respect.",
     "idiom_glosses": [
       {
         "idiom": "Den Stier bei den Hörnern packen",
         "literal": "Túm sừng con bò mộng",
+        "literal_en": "to grab the bull by the horns",
         "meaning": "Bắt tay vào làm ngay, không trì hoãn — đặc biệt với việc khó. Dùng để báo hiệu bạn không phải kiểu sinh viên lề mề, sẵn sàng nhảy vào đề tài khó.",
         "meaning_en": "to take the bull by the horns — to dive in immediately, no delay, especially on hard work. Signals you're not the slow-starting kind of student and you're ready to tackle a difficult topic.",
-        "example": "Wenn Sie zustimmen, würde ich gerne den Stier bei den Hörnern packen und im April beginnen."
+        "example": "Wenn Sie zustimmen, würde ich gerne den Stier bei den Hörnern packen und im April beginnen.",
+        "example_en": "If you agree, I'd like to take the bull by the horns and start in April."
       },
       {
         "idiom": "Auf eigenen Beinen stehen",
         "literal": "Đứng trên chính đôi chân mình",
+        "literal_en": "to stand on one's own legs",
         "meaning": "Tự lập, độc lập. Trong context luận văn, biểu hiện bạn làm việc tự chủ, không cần hand-holding — điều giáo sư Đức đánh giá rất cao.",
         "meaning_en": "to stand on your own feet — to be independent. In a thesis context, it signals you can drive your own work without hand-holding — something German professors value highly.",
-        "example": "Bei der Masterarbeit kann ich auf eigenen Beinen stehen — ich brauche nur methodische Korrekturen."
+        "example": "Bei der Masterarbeit kann ich auf eigenen Beinen stehen — ich brauche nur methodische Korrekturen.",
+        "example_en": "On the master's thesis I can stand on my own feet — I only need methodological corrections."
       },
       {
         "idiom": "Nicht auf den Mund gefallen sein",
         "literal": "Không bị ngã trên miệng",
+        "literal_en": "to not have fallen on one's mouth",
         "meaning": "Có khả năng diễn đạt, không thiếu ngôn từ. Dùng để nói về khả năng thuyết trình, bảo vệ luận văn, đặt câu hỏi trong seminar.",
         "meaning_en": "to be articulate, never short of words. Used about presentation skill, thesis defence, asking questions in a seminar.",
-        "example": "Ich bin nicht auf den Mund gefallen — ich kann mein Forschungsthema klar präsentieren."
+        "example": "Ich bin nicht auf den Mund gefallen — ich kann mein Forschungsthema klar präsentieren.",
+        "example_en": "I'm not lost for words — I can present my research topic clearly."
       },
       {
         "idiom": "Daumen drücken",
         "literal": "Bấm ngón cái xuống",
+        "literal_en": "to press the thumbs",
         "meaning": "Chúc may mắn (tương đương cross fingers). Giáo sư có thể nói câu này khi tiễn bạn ra khỏi giờ Sprechstunde — đây là dấu hiệu thân thiện, ủng hộ.",
         "meaning_en": "to wish good luck (the German equivalent of crossing fingers — Germans 'press thumbs'). A professor may say this as you leave the Sprechstunde — a friendly, supportive signal.",
-        "example": "Ich drücke Ihnen die Daumen für Ihr Exposé."
+        "example": "Ich drücke Ihnen die Daumen für Ihr Exposé.",
+        "example_en": "I'm keeping my fingers crossed for you on your proposal."
       }
     ],
     "exercises": [
@@ -3140,36 +3192,49 @@ export const lessons: GermanLesson[] = [
       "HR muốn bạn ký Praktikumsvertrag NGAY trong cuộc phỏng vấn 'để tránh người khác lấy cơ hội'. Hãy lịch sự từ chối — yêu cầu 48h để đọc kỹ hợp đồng, kiểm tra với cố vấn ở trường (Praktikumsbeauftragte). Dùng cụm 'Ich möchte den Vertrag erst gründlich durchgehen'.",
       "Sau 3 tháng thực tập tốt, bạn được offer ở lại làm Werkstudent (sinh viên làm thêm) song song học. Hãy thương lượng số giờ/tuần (max 20h trong kỳ học), lương theo giờ, và thoả thuận rằng kỳ thi sẽ ưu tiên hơn công việc."
     ],
+    "roleplay_prompts_en": [
+      "HR offers 1,000 EUR/month — below a livable minimum in Munich. Negotiate by citing the TVöD pay scale and market data (Stepstone, Praktikum.info); do NOT say 'I can't afford to live'. Propose alternatives: beyond pay, a housing allowance, a Bahncard, a training budget.",
+      "HR wants you to sign the internship contract RIGHT NOW during the interview 'so nobody else takes the opportunity'. Decline politely — ask for 48 hours to read the contract carefully and check with your university's internship advisor (Praktikumsbeauftragte). Use the phrase 'Ich möchte den Vertrag erst gründlich durchgehen'.",
+      "After three good months of internship, you are offered a Werkstudent (working-student) role alongside your studies. Negotiate the hours per week (max 20h during term), the hourly rate, and an agreement that exams take priority over the job."
+    ],
     "register_notes": "Cuộc đàm phán Praktikum dùng 'Sie' formal — kể cả khi HR Manager còn trẻ và không khí thân thiện. Đặc biệt với cuộc gặp đầu tiên hoặc qua điện thoại. Sau khi ký hợp đồng và bắt đầu làm, đa số công ty Đức (đặc biệt startup, IT, agency) sẽ chuyển sang 'du' với đồng nghiệp; với sếp trực tiếp có thể tuỳ. Trong các bộ phận truyền thống (R&D, Engineering, Finanzen, Recht ở các công ty lớn như Bosch, Siemens, BMW, BASF), 'Sie' giữ lâu hơn — kể cả nội bộ.\n\nCấu trúc đàm phán: dùng Konjunktiv II liên tục — 'Ich hatte mir vorgestellt', 'Wäre es möglich', 'Könnten wir'. Plain form ('Ich will 1.500') cực kỳ thẳng và bất lịch sự. 'Ich brauche' (em cần) cũng yếu thế. Tone đúng: 'Bezüglich der Vergütung würde ich gerne den TVöD-Tarif als Orientierung nehmen' — formal, có dữ liệu, để cánh cửa mở.\n\nKhi đối tác pushback, KHÔNG cãi lý — dùng 'Das verstehe ich' (em hiểu) trước, sau đó đề xuất alternative.\n\nKhác Việt Nam: ở VN, đàm phán lương thực tập gần như không có; ở Đức, có khung pháp lý (Mindestlohn cho Pflichtpraktikum > 3 tháng) và TVöD-Tarif như benchmark — bạn HOÀN TOÀN có quyền đàm phán.",
     "register_notes_en": "A Praktikum negotiation uses formal 'Sie' — even when the HR Manager is young and the atmosphere is friendly. Especially so in the first meeting or on the phone. After you sign the contract and start the role, most German companies (especially startups, IT firms, agencies) will switch to 'du' with colleagues; with the direct boss it can vary. In traditional departments (R&D, Engineering, Finanzen, Recht at large firms like Bosch, Siemens, BMW, BASF), 'Sie' holds longer — even internally.\n\nNegotiation structure: lean on Konjunktiv II throughout — 'Ich hatte mir vorgestellt' (I had pictured), 'Wäre es möglich' (would it be possible), 'Könnten wir' (could we). The plain indicative ('Ich will 1.500') sounds extremely blunt and rude. 'Ich brauche' (I need) also sounds weak. The right tone: 'Bezüglich der Vergütung würde ich gerne den TVöD-Tarif als Orientierung nehmen' — formal, data-anchored, leaves the door open.\n\nWhen the other side pushes back, do NOT argue back — say 'Das verstehe ich' (I understand) first, then propose an alternative.\n\nContrast with home: in Vietnam, salary negotiation for an internship barely exists; in Germany, the legal framework (Mindestlohn for Pflichtpraktikum over 3 months) and the TVöD-Tarif as a benchmark mean you absolutely have the right to negotiate.",
     "idiom_glosses": [
       {
         "idiom": "Die Hand reichen",
         "literal": "Đưa tay (cho người khác)",
+        "literal_en": "to reach out one's hand",
         "meaning": "Đề nghị hợp tác, hoà giải, hoặc giúp đỡ. Trong context đàm phán, dùng để báo hiệu đôi bên đã đến thoả thuận.",
         "meaning_en": "to offer your hand — to propose cooperation, reconciliation, or help. In a negotiation, signals that both sides have reached agreement.",
-        "example": "Wenn Sie mir entgegenkommen, reiche ich Ihnen gerne die Hand."
+        "example": "Wenn Sie mir entgegenkommen, reiche ich Ihnen gerne die Hand.",
+        "example_en": "If you meet me halfway, I'll gladly shake on it."
       },
       {
         "idiom": "Lehrgeld zahlen",
         "literal": "Trả học phí",
+        "literal_en": "to pay tuition money",
         "meaning": "Học từ sai lầm — trả giá để có kinh nghiệm. Praktikum chính là quá trình 'Lehrgeld zahlen'. Cụm tích cực, không tiêu cực.",
         "meaning_en": "literally 'to pay tuition' — to learn through mistakes, to pay for experience. A Praktikum is essentially that process of 'Lehrgeld zahlen'. The phrase is positive, not negative.",
-        "example": "Im ersten Praktikum musste ich viel Lehrgeld zahlen — aber dadurch habe ich enorm gelernt."
+        "example": "Im ersten Praktikum musste ich viel Lehrgeld zahlen — aber dadurch habe ich enorm gelernt.",
+        "example_en": "In my first internship I paid my dues — but I learned an enormous amount that way."
       },
       {
         "idiom": "Ein offenes Ohr haben",
         "literal": "Có một tai mở",
+        "literal_en": "to have an open ear",
         "meaning": "Sẵn sàng lắng nghe — về vấn đề cá nhân hoặc nghề nghiệp. Khi sếp/HR Đức nói 'Bei Fragen habe ich immer ein offenes Ohr', đó là invitation thật.",
         "meaning_en": "to have an open ear — to be ready to listen on personal or professional issues. When a German boss/HR says 'Bei Fragen habe ich immer ein offenes Ohr', that's a genuine invitation.",
-        "example": "Bei Problemen habe ich für Sie immer ein offenes Ohr."
+        "example": "Bei Problemen habe ich für Sie immer ein offenes Ohr.",
+        "example_en": "If problems come up, my door is always open to you."
       },
       {
         "idiom": "Unter vier Augen reden",
         "literal": "Nói dưới bốn con mắt",
+        "literal_en": "to talk under four eyes",
         "meaning": "Nói chuyện riêng tư, chỉ giữa hai người — không có ai khác. Phù hợp khi cần đàm phán nhạy cảm (lương, conflict).",
         "meaning_en": "to speak privately, just between two people ('under four eyes', i.e. yours and mine, no one else's) — appropriate for sensitive negotiation (salary, conflict).",
-        "example": "Diese Frage zur Vergütung sollten wir unter vier Augen besprechen."
+        "example": "Diese Frage zur Vergütung sollten wir unter vier Augen besprechen.",
+        "example_en": "This question about the pay is something we should discuss in private."
       }
     ],
     "exercises": [
@@ -3536,12 +3601,18 @@ export const lessons: GermanLesson[] = [
       "Sau visa được cấp, bạn muốn xin Studienkolleg cho phép trễ 2 tuần vì gia đình có việc. Hãy viết email formal — không xin lỗi quá mức, đưa lý do cụ thể, đề xuất kế hoạch bù học.",
       "Email từ Studienkolleg yêu cầu thêm tài liệu (APS-Bescheinigung) mà bạn KHÔNG có. Hãy phản hồi giải thích bạn đã nộp đơn xin APS từ 2 tháng trước, hiện chưa nhận được, và xin gia hạn deadline submission."
     ],
+    "roleplay_prompts_en": [
+      "You receive an email from the Studienkolleg: 'Aufgrund interner Verzögerungen können wir die Zulassungsbestätigung erst Mitte April versenden' — one month after your visa appointment. Write a reply: state the concrete consequences (a lost semester, a missed blocked account), and propose three options (an interim PDF, express post, dispatch via DHL).",
+      "After your visa is granted, you want to ask the Studienkolleg to allow a two-week late start because of a family matter. Write a formal email — don't over-apologise, give a concrete reason, and propose a catch-up plan.",
+      "An email from the Studienkolleg asks for an extra document (the APS certificate) that you do NOT have. Reply explaining that you applied for the APS two months ago and have not received it yet, and ask for an extension to the submission deadline."
+    ],
     "register_notes": "Email chính thức tiếng Đức tuân thủ cấu trúc cứng nhắc — sai cấu trúc = thiếu chuyên nghiệp ngay lập tức. (1) MỞ ĐẦU: 'Sehr geehrte Damen und Herren' (không biết tên), 'Sehr geehrte Frau Weber' / 'Sehr geehrter Herr Müller' (biết tên). KHÔNG dùng 'Hallo' hoặc 'Hi' với cơ quan công, đại học, công ty truyền thống. Sau dấu phẩy XUỐNG DÒNG và viết thường chữ đầu của câu tiếp ('ich' không 'Ich'). (2) THÂN BÀI: chia thành các đoạn ngắn (3-4 câu mỗi đoạn). (3) KẾT: 'Mit freundlichen Grüßen' (hoặc viết tắt 'MfG' chỉ với người đã quen).\n\nNgôn ngữ: dùng kính ngữ tuyệt đối — Konjunktiv II cho mọi yêu cầu ('Wäre es möglich', 'Könnten Sie', 'Ich würde mich freuen, wenn'); động từ formal ('benötigen' thay vì 'brauchen', 'erbitten' thay vì 'wollen', 'mitteilen' thay vì 'sagen', 'übermitteln' thay vì 'schicken').\n\nĐộng từ tách formal-only: 'Anbei sende ich Ihnen...' (Đính kèm em gửi anh chị), 'Ich verbleibe mit freundlichen Grüßen' (formal extreme).\n\nNgười Việt thường mắc lỗi: (1) email dùng 'kindly' kiểu Anh — không có equivalent trong Đức formal; (2) thêm nhiều exclamation mark/emoji — bị coi là không nghiêm túc; (3) xin lỗi quá mức.",
     "register_notes_en": "Formal German email follows a rigid frame — break the frame and you instantly read as unprofessional. (1) OPENING: 'Sehr geehrte Damen und Herren' (name unknown), 'Sehr geehrte Frau Weber' / 'Sehr geehrter Herr Müller' (name known). Do NOT use 'Hallo' or 'Hi' with public offices, universities, or traditional companies. After the comma there is a LINE BREAK and the next sentence starts in lowercase ('ich' not 'Ich'). (2) BODY: short paragraphs, three to four sentences each. (3) CLOSING: 'Mit freundlichen Grüßen' (or the abbreviation 'MfG' only with people you already know).\n\nLanguage: stay in absolute polite register — Konjunktiv II for every request ('Wäre es möglich', 'Könnten Sie', 'Ich würde mich freuen, wenn'); use the formal verbs ('benötigen' rather than 'brauchen', 'erbitten' rather than 'wollen', 'mitteilen' rather than 'sagen', 'übermitteln' rather than 'schicken').\n\nFormal-only separable verbs: 'Anbei sende ich Ihnen…' (I am attaching…), 'Ich verbleibe mit freundlichen Grüßen' (extreme formal close, common from older Beamte).\n\nFrequent learner mistakes: (1) Anglicism 'kindly do X' — German has no neat equivalent; use Konjunktiv II instead. (2) Stacked exclamation marks or emojis — read as juvenile. (3) Over-apologising ('Es tut mir wirklich, wirklich leid…') — flatten to one polite acknowledgement.",
     "idiom_glosses": [
       {
         "idiom": "Geduld ist eine Tugend",
         "literal": "Kiên nhẫn là đức tính",
+        "literal_en": "patience is a virtue",
         "meaning": "Phải kiên nhẫn — câu thành ngữ phổ biến để nhắc nhở bản thân hoặc người khác đừng vội vàng. Khi xử lý giấy tờ Đức, câu này áp dụng thường xuyên — bộ máy hành chính chậm.",
         "meaning_en": "Patience is a virtue — the standard German line for reminding yourself or others not to rush. When you are dealing with German paperwork this proverb earns its keep daily, since the bureaucracy is genuinely slow.",
         "example": "Bei der Visumsbeantragung gilt: Geduld ist eine Tugend.",
@@ -3550,6 +3621,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Etwas auf die lange Bank schieben",
         "literal": "Đẩy việc gì lên ghế dài",
+        "literal_en": "to push something onto the long bench",
         "meaning": "Trì hoãn, để lại làm sau. Phù hợp khi nói về việc cơ quan trì hoãn xử lý giấy tờ.",
         "meaning_en": "To put something off, to procrastinate. Useful when the office itself is the one delaying — 'please don't push my application onto the long bench, the deadline is tight.'",
         "example": "Bitte schieben Sie meinen Antrag nicht auf die lange Bank — der Termin ist dringend.",
@@ -3558,6 +3630,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Das letzte Wort haben",
         "literal": "Có lời cuối cùng",
+        "literal_en": "to have the last word",
         "meaning": "Có quyền quyết định cuối — không thể thay đổi sau quyết định của họ. Trong context Đại sứ quán/Visa: 'Die Botschaft hat das letzte Wort'.",
         "meaning_en": "To have the final say — the decision cannot be appealed. In the embassy/visa context: 'Die Botschaft hat das letzte Wort' is the standard line.",
         "example": "Bei der Visumsentscheidung hat die Botschaft das letzte Wort.",
@@ -3566,6 +3639,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Steine in den Weg legen",
         "literal": "Đặt đá lên đường",
+        "literal_en": "to lay stones in someone's path",
         "meaning": "Cản trở, gây khó khăn — cố ý hoặc do bureaucracy. Dùng để phàn nàn về cơ quan tạo trở ngại không cần thiết.",
         "meaning_en": "To put obstacles in someone's way — intentionally or as a side-effect of bureaucracy. Useful to describe an office creating unnecessary friction.",
         "example": "Die Verzögerung der Bestätigung legt mir Steine in den Weg.",
@@ -3934,12 +4008,18 @@ export const lessons: GermanLesson[] = [
       "Người phỏng vấn hỏi 'Sind Sie bereit, jeden zweiten Sonntag eine Videokonferenz mit Asien zu machen?' — vì vai trò bridging Á-Âu. Hãy trả lời thực tế (đồng ý/từ chối/đề xuất alternative) mà không 'over-promise' chỉ để được nhận việc.",
       "Người phỏng vấn nói 'Wir hatten gehofft, jemanden aus dem deutschsprachigen Raum zu finden — Ihr Akzent macht es manchmal etwas schwierig'. Hãy phản hồi tự tin và không tự ái — nêu giải pháp (luyện thêm, dùng video để có lip-reading), nhấn mạnh khả năng cải thiện."
     ],
+    "roleplay_prompts_en": [
+      "Halfway through the interview, the line DROPS for 30 seconds. When it reconnects, you didn't catch the last question. Politely ask for it to be repeated — do NOT pretend you heard it and guess; a wrong guess loses points. Use 'Entschuldigung, die Verbindung war gerade unterbrochen — könnten Sie das letzte bitte wiederholen?'",
+      "The interviewer asks 'Sind Sie bereit, jeden zweiten Sonntag eine Videokonferenz mit Asien zu machen?' — because the role bridges Asia and Europe. Answer realistically (accept / decline / propose an alternative) without over-promising just to land the job.",
+      "The interviewer says 'Wir hatten gehofft, jemanden aus dem deutschsprachigen Raum zu finden — Ihr Akzent macht es manchmal etwas schwierig'. Respond with confidence and without taking offence — offer a solution (extra practice, using video so they can lip-read), and stress your capacity to improve."
+    ],
     "register_notes": "Phỏng vấn qua điện thoại có quy tắc riêng khác phỏng vấn trực tiếp. (1) MỞ ĐẦU CỨNG: 'Guten Tag/Abend, hier spricht [Tên] von [Công ty]. Spreche ich mit [Tên ứng viên]?'. Trả lời: 'Ja, am Apparat' (vâng, đây ạ) — formal hơn 'Ja, das bin ich'. (2) FORMAL TUYỆT ĐỐI: 'Sie' ngay từ đầu, không ngoại lệ. Khác phỏng vấn trực tiếp ở Berlin/Hamburg startup, qua điện thoại CHƯA bao giờ chuyển 'du'. (3) IM LẶNG là RỦI RO: trên điện thoại, im lặng > 3 giây bị hiểu là kết nối hỏng. Khi cần suy nghĩ, BÁO HIỆU: 'Lassen Sie mich kurz nachdenken' hoặc 'Einen Moment, bitte'. (4) KHI KHÔNG NGHE RÕ, NÓI NGAY: 'Entschuldigung, könnten Sie das wiederholen?' — không đoán mò. (5) TỐC ĐỘ NÓI CHẬM HƠN: do không có visual feedback, nói chậm hơn 20% so với in-person.\n\nVấn đề kết nối: nếu mạng kém kéo dài, đề xuất chủ động 'Wäre es möglich, in 5 Minuten erneut zu telefonieren?'. Đừng kéo dài cuộc gọi tệ — chuyển sang Plan B sớm.\n\nVăn hoá Đức ưa accent rõ và phát âm đúng hơn fluency với accent dày. Nếu accent của bạn dày, NÓI CHẬM HƠN. Tránh đặt câu phức tạp khi qua điện thoại.\n\nKhác Việt Nam: ở VN, phỏng vấn điện thoại thường ít formal; ở Đức, phỏng vấn điện thoại NGHIÊM TÚC như in-person — bạn nên ngồi thẳng, mặc smart casual (kể cả không thấy hình), và có CV trên bàn.",
     "register_notes_en": "Phone interviews carry their own rules, distinct from in-person. (1) RIGID OPENING: 'Guten Tag/Abend, hier spricht [Name] von [Company]. Spreche ich mit [Candidate]?'. The candidate replies 'Ja, am Apparat' (lit. 'at the receiver') — more formal than 'Ja, das bin ich'. (2) FULLY FORMAL: 'Sie' from the first second, no exceptions. Unlike a startup in Berlin or Hamburg where the in-person interview might slip into 'du', a phone interview NEVER does. (3) SILENCE IS RISKY: on a phone line, three seconds of silence reads as a dropped connection. When you need to think, SIGNAL it: 'Lassen Sie mich kurz nachdenken' or 'Einen Moment, bitte'. (4) WHEN YOU CAN'T HEAR, SAY SO IMMEDIATELY: 'Entschuldigung, könnten Sie das wiederholen?' — never guess. (5) SLOWER PACE: with no visual feedback to lean on, talk 20% slower than you would in person.\n\nConnection issues: if the line stays bad, take the initiative: 'Wäre es möglich, in 5 Minuten erneut zu telefonieren?'. Don't soldier through a dying call — switch to plan B early.\n\nGerman corporate culture prefers a clear accent with correct phonemes over fluent speech with heavy distortion. If your accent is thick, slow down further and avoid long subordinate-clause stacks on the phone.\n\nHow this differs from US/UK practice: an Anglophone phone screen is often informal and brief; the German equivalent is taken as seriously as an in-person interview — sit up straight, wear something tidy (even though they can't see), have the CV in front of you.",
     "idiom_glosses": [
       {
         "idiom": "Über den Berg sein",
         "literal": "Đã qua khỏi ngọn núi",
+        "literal_en": "to be over the mountain",
         "meaning": "Đã vượt qua phần khó nhất — vẫn còn việc nhưng đã qua đoạn nguy hiểm. Trong context phỏng vấn: 'Nach dem ersten Gespräch sind wir über den Berg' = sau vòng 1 đã vượt được giai đoạn khó nhất.",
         "meaning_en": "To be 'over the mountain' — to have the worst part behind you. There's still work to do, but you've cleared the dangerous stretch. In an interview context: 'Nach dem ersten Gespräch sind wir über den Berg' = after round 1 the hardest part is past.",
         "example": "Mit dem Sprachzeugnis sind wir über den Berg.",
@@ -3948,6 +4028,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Sich bemerkbar machen",
         "literal": "Tự làm cho mình được chú ý",
+        "literal_en": "to make oneself noticed",
         "meaning": "Tạo ấn tượng, để người khác nhận ra bạn. Trong context phỏng vấn từ xa: cần chủ động hơn, nói nhiều hơn để 'sich bemerkbar machen' qua điện thoại — không có body language hỗ trợ.",
         "meaning_en": "To make oneself noticed. In a phone-interview context, you have to do more of this actively — talk a bit more, fill pauses with summary — because the interviewer has no body language to read.",
         "example": "Bei einem Telefoninterview muss man sich aktiv bemerkbar machen.",
@@ -3956,6 +4037,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Den Faden verlieren",
         "literal": "Mất sợi chỉ",
+        "literal_en": "to lose the thread",
         "meaning": "Quên mất mình đang nói gì, mất mạch suy nghĩ. Phổ biến khi căng thẳng phỏng vấn. Có thể admit lịch sự: 'Entschuldigung, ich habe den Faden verloren'.",
         "meaning_en": "To lose the thread — to forget what you were saying mid-sentence. Common under interview pressure. You can admit it politely: 'Entschuldigung, ich habe den Faden verloren'.",
         "example": "Vor Aufregung habe ich kurz den Faden verloren.",
@@ -3964,6 +4046,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Etwas auf den Punkt bringen",
         "literal": "Đưa cái gì đến điểm",
+        "literal_en": "to bring something to the point",
         "meaning": "Nói thẳng vào trọng tâm, không vòng vo. Báo hiệu bạn sắp tóm tắt. Rất hữu ích khi cuộc gọi kéo dài và bạn cần kết.",
         "meaning_en": "To bring something to the point — to cut to the chase. Useful to signal that you are about to summarise. Helpful when a call has run long and you need to close strongly.",
         "example": "Lassen Sie mich das auf den Punkt bringen: ich bin sehr interessiert.",
@@ -4332,12 +4415,18 @@ export const lessons: GermanLesson[] = [
       "Một CEO Đức (60+ tuổi) đến gian hàng của bạn, hỏi 'Was ist Ihre USP gegenüber den Chinesen?'. Hãy trả lời mạnh và cụ thể trong < 60 giây — KHÔNG hạ thấp đối thủ Trung Quốc, mà nâng cao điểm khác biệt rõ của Việt Nam (chất lượng, ngôn ngữ Đức, gần Đức về văn hoá kinh doanh).",
       "Sau Messe 1 tuần, bạn gửi follow-up email cho Herr Bauer nhưng không nhận được phản hồi sau 10 ngày. Hãy viết email follow-up lần 2 — lịch sự, không trách móc, đính kèm thêm tài liệu (case study) làm 'reason to reply'. CC trợ lý của Bauer nếu biết."
     ],
+    "roleplay_prompts_en": [
+      "You're standing next to the stand of a promising German company, but the staff are busy with another visitor. Wait politely — then go in with a smart opener in under 30 seconds to catch their attention at once (NOT too long; Germans at a trade fair are very economical with time). Goal: exchange business cards and set a follow-up date.",
+      "A German CEO (60+) comes to your stand and asks 'Was ist Ihre USP gegenüber den Chinesen?'. Answer strongly and concretely in under 60 seconds — do NOT put down the Chinese competition; instead raise Vietnam's clear points of difference (quality, German-language ability, cultural proximity to German business norms).",
+      "A week after the fair, you sent Mr Bauer a follow-up email but got no reply after 10 days. Write a second follow-up — polite, no reproach, attaching one extra document (a case study) as a 'reason to reply'. CC Bauer's assistant if you know them."
+    ],
     "register_notes": "Tại Messe (hội chợ thương mại như Hannover Messe, CeBIT, drupa), văn hoá giao tiếp khác phỏng vấn formal. (1) MỞ ĐẦU NHANH: 'Darf ich Sie kurz ansprechen?' — câu mở chuẩn. Sau đó tự giới thiệu trong < 30 giây: tên + công ty + ngành + mục đích. Lan man = mất khách. (2) 'SIE' VẪN LÀ CHUẨN: tại Messe vẫn 'Sie' từ đầu, kể cả không khí năng động. Chuyển 'du' chỉ khi đối tác chủ động đề nghị HOẶC tại After-Party. (3) NGÔN NGỮ HỖN HỢP: Anh + Đức là chuẩn. Nếu đối tác bắt đầu Đức → tiếp Đức; bắt đầu Anh → tiếp Anh. (4) DANH THIẾP (VISITENKARTE) là NGHI LỄ: nhận bằng hai tay, đọc trước khi cất. KHÔNG bỏ vào túi quần (thiếu tôn trọng); cất vào ví danh thiếp riêng. (5) AFTER-PARTY là EXTENSION: networking thật sự xảy ra ở After-Party tối hôm đó. Đây là nơi 'das Eis brechen' (phá băng), chuyển từ formal sang relationship.\n\nKhác Việt Nam: ở VN Vietfair/VIMEXPO, có thể chào hỏi rất xã giao; ở Đức Messe, time = money — vào thẳng vấn đề trong 30 giây. Nhưng đồng thời, không quá pushy.\n\nVăn hoá Smalltalk Đức ở Messe: an toàn = thời tiết, chuyến bay/đi lại, gian hàng. KHÔNG nói chính trị, gia đình, lương. Câu mở chuẩn: 'Wie war Ihre Anreise?', 'Sind Sie zum ersten Mal auf der Hannover Messe?'.",
     "register_notes_en": "Trade-fair register is not the same as formal-interview register. (1) FAST OPENERS: 'Darf ich Sie kurz ansprechen?' is the canonical opener. Self-introduce in under 30 seconds: name + company + sector + reason for approaching. Long-winded = lost prospect. (2) 'SIE' IS STILL DEFAULT: even with the more dynamic vibe of a trade fair, 'Sie' from the start. Switch to 'du' only if your counterpart offers it OR at the After-Party. (3) MIXED-LANGUAGE NORM: English/German blend is standard. If they open in German, stay in German; if they open in English, stay in English. (4) CARDS ARE RITUAL: take with both hands, read before stowing. NEVER stuff into a back pocket (read as disrespect); use a dedicated card case. (5) THE AFTER-PARTY EXTENDS THE DAY: the real networking shifts to the After-Party. That's where 'das Eis brechen' (breaking the ice) happens and tones move from formal to relational.\n\nHow this differs from US/UK fairs: at a US convention you can chat openly across roles and personal topics; at a German Messe time IS money — get to the point in 30 seconds. That said, do not be pushy.\n\nSafe German small-talk topics at a Messe: weather, flight/travel, the stand itself. AVOID politics, family, salary. Standard openers: 'Wie war Ihre Anreise?', 'Sind Sie zum ersten Mal auf der Hannover Messe?'.",
     "idiom_glosses": [
       {
         "idiom": "Die Werbetrommel rühren",
         "literal": "Đánh trống quảng cáo",
+        "literal_en": "to beat the advertising drum",
         "meaning": "Quảng bá mạnh, marketing tích cực. Phù hợp khi nói về hoạt động marketing của công ty: 'Wir rühren die Werbetrommel für unser neues Produkt'.",
         "meaning_en": "To beat the advertising drum — to market aggressively, push promotion. Fits when describing strong marketing campaigns: 'Wir rühren die Werbetrommel für unser neues Produkt'.",
         "example": "Auf der Messe muss man kräftig die Werbetrommel rühren.",
@@ -4346,6 +4435,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Das Eis brechen",
         "literal": "Phá băng",
+        "literal_en": "to break the ice",
         "meaning": "Khởi đầu cuộc trò chuyện, vượt qua ngại ngùng ban đầu. Tại Messe và networking, đây là kỹ năng then chốt — câu chuyện vui, câu hỏi nhẹ về thời tiết hay chuyến đi.",
         "meaning_en": "To break the ice — start a conversation, get past the initial awkwardness. At a Messe and at networking events this is the foundational skill — a light joke or a question about the booth.",
         "example": "Eine gute Frage zu seinem Stand bricht das Eis sofort.",
@@ -4354,6 +4444,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Schmieden, solange das Eisen heiß ist",
         "literal": "Rèn khi sắt còn nóng",
+        "literal_en": "to forge while the iron is hot",
         "meaning": "Hành động ngay khi cơ hội còn — đừng đợi. Phù hợp khi nói về việc gặp khách hàng tại Messe phải follow-up nhanh sau đó.",
         "meaning_en": "To strike while the iron is hot — act while the chance is still there. Fits the post-Messe situation: contacts made on the floor must be followed up fast, before they cool off.",
         "example": "Nach dem Messekontakt schmiede ich das Eisen, solange es heiß ist.",
@@ -4362,6 +4453,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Eine Hand wäscht die andere",
         "literal": "Một tay rửa cho tay kia",
+        "literal_en": "one hand washes the other",
         "meaning": "Có đi có lại — nguyên tắc tương trợ trong kinh doanh. Đức không có ý xấu (như VN có thể có ý 'lobby'); chỉ là biểu hiện của reciprocity bình thường.",
         "meaning_en": "One hand washes the other — the German equivalent of 'you scratch my back, I'll scratch yours'. No negative implication in German (unlike a possible 'corruption' read in some other cultures); just ordinary business reciprocity.",
         "example": "Im Geschäftsleben gilt: eine Hand wäscht die andere.",
@@ -4731,12 +4823,18 @@ export const lessons: GermanLesson[] = [
       "Recruiter trả lời feedback request của bạn rất thật: 'Ihr Deutsch war für die Position nicht ausreichend'. Hãy phản hồi: cảm ơn sự thẳng thắn, đề xuất kế hoạch cải thiện cụ thể (Sprachzertifikat trong 6 tháng), xin được ứng tuyển lại sau khi đạt mục tiêu.",
       "6 tháng sau bị từ chối, bạn thấy công ty đó mở vị trí mới phù hợp hơn. Hãy viết email tới recruiter cũ — tham chiếu cuộc trao đổi trước, cập nhật những gì bạn đã cải thiện trong 6 tháng, và xin ứng tuyển lại. Tone: quan hệ đã có, không phải cold outreach."
     ],
+    "roleplay_prompts_en": [
+      "You receive a rejection letter with just two generic lines ('Wir haben uns für einen anderen Kandidaten entschieden'). Write a reply asking for specific feedback — do NOT beg or reproach; show the kind of professionalism that makes them LIKE you even after a rejection. Goal: get into the talent pool for next time.",
+      "The recruiter answers your feedback request very honestly: 'Ihr Deutsch war für die Position nicht ausreichend'. Reply: thank them for their candour, propose a concrete improvement plan (a language certificate within six months), and ask to be allowed to reapply once you've hit the target.",
+      "Six months after the rejection, you see the company has opened a new role that fits you better. Write an email to the old recruiter — reference your earlier exchange, update them on what you've improved over six months, and ask to reapply. Tone: an existing relationship, not a cold outreach."
+    ],
     "register_notes": "Email follow-up sau rejection có quy tắc tế nhị riêng — sai tone = không bao giờ được call back. (1) FORMAL TUYỆT ĐỐI: 'Sehr geehrte Frau Bauer' luôn, kể cả khi đã có cuộc nói chuyện thân thiện trong phỏng vấn. Sau rejection, formality LẠI tăng — không phải giảm. (2) KHÔNG XIN LỖI VÌ HỎI: 'Es tut mir leid, dass ich Sie störe' bị coi là yếu thế. Tone đúng: câu hỏi thẳng thắn, lịch sự, không van xin. (3) KHÔNG TRÁCH MÓC: 'Ich verstehe nicht, warum...' bị coi là attack. Thay bằng 'Würden Sie mir konkretes Feedback geben?'. (4) KONJUNKTIV II 100%: 'Würden Sie...?', 'Sollte sich ergeben...', 'Es wäre mir wichtig...'. (5) KẾT BẰNG MỞ CỬA: 'Ich würde mich freuen, in Zukunft erneut von Ihnen zu hören' — báo hiệu bạn xem rejection này là tạm thời.\n\nKhác Việt Nam: ở VN, sau khi bị từ chối, ít người follow-up; ở Đức, follow-up CHUYÊN NGHIỆP là expected — recruiter Đức sẽ note ai làm điều này và prioritize cho lần sau.\n\nNgười Việt thường mắc lỗi: (1) SILENT — không phản hồi gì sau rejection; (2) email quá dài — recruiter chỉ skim; (3) yêu cầu 'cuộc gặp giải thích' — recruiter không có thời gian.",
     "register_notes_en": "Post-rejection follow-up has its own delicate rules — get the tone wrong and you never get called back. (1) FORMALITY GOES UP, NOT DOWN: 'Sehr geehrte Frau Bauer' always, even if the interview was friendly. After the rejection, formality TIGHTENS, not loosens. (2) DO NOT APOLOGISE FOR ASKING: 'Es tut mir leid, dass ich Sie störe' reads as weakness. The right tone is direct, polite, no begging. (3) DO NOT ATTACK: 'Ich verstehe nicht, warum…' reads as confrontation. Use 'Würden Sie mir konkretes Feedback geben?' instead. (4) KONJUNKTIV II THROUGHOUT: 'Würden Sie…?', 'Sollte sich ergeben…', 'Es wäre mir wichtig…'. (5) CLOSE BY OPENING A DOOR: 'Ich würde mich freuen, in Zukunft erneut von Ihnen zu hören' — signals that you treat this rejection as temporary.\n\nHow this differs from US/UK practice: in the US many candidates simply ghost a rejection; in Germany a professional follow-up is EXPECTED, and recruiters note who does it well and prioritise them next time.\n\nFrequent learner mistakes: (1) Going silent and missing the relationship opportunity; (2) Writing essays — recruiters skim, keep it tight; (3) Requesting an 'explanatory meeting' — they don't have the time.",
     "idiom_glosses": [
       {
         "idiom": "Aus Schaden wird man klug",
         "literal": "Từ tổn thất ta trở nên khôn",
+        "literal_en": "from harm one grows wise",
         "meaning": "Trong cái rủi có cái khôn — học từ thất bại. Câu thành ngữ phổ biến để biểu hiện thái độ tích cực sau rejection.",
         "meaning_en": "Out of damage one becomes wise — the German cousin of 'every cloud has a silver lining' or 'learn from your mistakes'. Standard line for expressing a constructive attitude after a rejection.",
         "example": "Aus Schaden wird man klug — ich nehme diese Absage als Lernchance.",
@@ -4745,6 +4843,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Den Kopf hängen lassen",
         "literal": "Để đầu rủ xuống",
+        "literal_en": "to let one's head hang",
         "meaning": "Nản chí, mất tinh thần. Phù hợp cho recruiter để khích lệ. Bạn KHÔNG nên dùng câu này về bản thân — bị coi là yếu thế.",
         "meaning_en": "To let one's head hang — to lose heart. A line a recruiter may use to encourage you ('don't lose heart'). DON'T use it about yourself — it reads as self-defeating.",
         "example": "Lassen Sie nicht den Kopf hängen — bei Ihrem Profil kommt die nächste Chance schnell.",
@@ -4753,6 +4852,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Tür und Tor öffnen",
         "literal": "Mở cửa và cổng",
+        "literal_en": "to open door and gate",
         "meaning": "Mở rộng cơ hội — tạo điều kiện thuận lợi cho điều gì xảy ra. Phù hợp khi muốn mô tả việc rejection chuyên nghiệp 'mở cửa' cho cơ hội tương lai.",
         "meaning_en": "To open doors and gates — to widen opportunities. Fits when describing how a professional response to a rejection opens future doors.",
         "example": "Eine konstruktive Antwort auf eine Absage öffnet Tür und Tor für künftige Chancen.",
@@ -4761,6 +4861,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Es nochmal versuchen",
         "literal": "Thử lại lần nữa",
+        "literal_en": "to try it once more",
         "meaning": "Quay lại thử thêm — không bỏ cuộc. Sử dụng khi xin được ứng tuyển lại sau improvement.",
         "meaning_en": "To try one more time — to come back for another go after improvement. Useful when proposing to reapply after you have closed a specific gap.",
         "example": "Nach sechs Monaten Verbesserung möchte ich es nochmal bei Ihnen versuchen.",
@@ -5130,12 +5231,18 @@ export const lessons: GermanLesson[] = [
       "GS đồng ý nhưng sau 3 tuần CHƯA viết. Deadline còn 5 ngày. Hãy viết email follow-up lịch sự — không trách móc, đưa ra reminder, có thể đề xuất 'chỉ vài câu cũng đủ' nếu thầy bận, hoặc xin được 'điền sẵn template để thầy review'.",
       "GS từ chối: 'Ich kenne Sie nicht gut genug, um ein gutes Schreiben zu verfassen'. Hãy phản hồi tế nhị — không tranh luận, đề xuất alternative (gặp 30 phút để thầy hiểu thêm về dự án của em, gửi memo chi tiết), hoặc cảm ơn và chuyển sang xin GS khác."
     ],
+    "roleplay_prompts_en": [
+      "You need a letter of recommendation WITHIN ONE WEEK (not the standard four weeks' lead time) because a scholarship has a near deadline. Write an email to the professor — acknowledge the time crunch, give a legitimate reason (the deadline was only just announced), and propose the option that's easiest for them (a full briefing memo, a ready draft). Don't over-apologise, but don't demand either.",
+      "The professor agreed but after three weeks still hasn't written it. Five days to the deadline. Write a polite follow-up — no reproach, give a reminder, perhaps offer 'a few sentences would be enough' if they're busy, or ask to 'fill in a template for them to review'.",
+      "The professor declines: 'Ich kenne Sie nicht gut genug, um ein gutes Schreiben zu verfassen'. Respond tactfully — don't argue; propose an alternative (a 30-minute meeting so they understand your project better, a detailed memo), or thank them and move on to ask a different professor."
+    ],
     "register_notes": "Xin Empfehlungsschreiben có quy tắc cứng nhắc — vi phạm = GS từ chối hoặc viết thư yếu. (1) FORMAL TUYỆT ĐỐI: 'Sehr geehrter Herr Professor' luôn, kể cả khi GS đã 'du' với bạn. Việc xin thư là FORMAL act, không casual. (2) KONJUNKTIV II BẮT BUỘC: 'Würden Sie freundlicherweise...?', 'Wäre es möglich, dass Sie...?', 'Ich würde mich freuen, wenn...'. (3) TIMING LÀ NGHI LỄ: phải xin 4 TUẦN trước deadline tối thiểu, lý tưởng là 6 tuần. (4) CUNG CẤP TÀI LIỆU ĐẦY ĐỦ: GS Đức expect bạn cung cấp 'Bewerberpaket' — CV, Motivationsschreiben, Notenübersicht, danh sách deadlines, MEMO 3-5 gạch đầu dòng. (5) CHỈ XIN GS BIẾT BẠN TỐT: Empfehlungsschreiben từ GS chỉ dạy 1 môn = thư yếu. Phải là GS đã làm việc với bạn (Seminararbeit, Praktikum, Forschungsprojekt, Bachelorarbeit, Masterarbeit).\n\nKhi nói chuyện trực tiếp (Sprechstunde): mở đầu lịch sự ('Es geht um eine persönliche Bitte'), giải thích context, nêu yêu cầu cụ thể, đề xuất giúp GS dễ nhất. KẾT bằng cảm ơn và CONFIRM next steps.\n\nKhác Việt Nam: ở VN, có thể xin thư trong vài ngày, đôi khi nhờ assistant viết hộ; ở Đức, GS TỰ viết toàn bộ, thường mất 2-4 giờ làm việc — đó là lý do cần lead time. KHÔNG bao giờ submit Empfehlungsschreiben do bạn tự draft và xin GS ký — coi là 'akademisches Fehlverhalten'.\n\nNgười Việt thường mắc lỗi: (1) xin GS không quen biết — thư yếu; (2) xin quá gần deadline — bị từ chối; (3) không cung cấp memo — GS không nhớ chi tiết về bạn, viết generic; (4) follow-up quá nhiều — quấy rối GS; (5) không cảm ơn sau khi nhận thư — phá quan hệ cho lần sau.",
     "register_notes_en": "Requesting an Empfehlungsschreiben follows rigid conventions — break them and the professor declines or writes weakly. (1) ABSOLUTE FORMALITY: 'Sehr geehrter Herr Professor' always, even if they say 'du' to you in class. Asking for a letter is a FORMAL act, not casual. (2) KONJUNKTIV II IS MANDATORY: 'Würden Sie freundlicherweise…?', 'Wäre es möglich, dass Sie…?', 'Ich würde mich freuen, wenn…'. (3) TIMING IS RITUAL: ask 4 WEEKS before the deadline at minimum, 6 weeks ideal. (4) PROVIDE A COMPLETE PACKAGE: German professors expect a 'Bewerberpaket' — CV, Motivationsschreiben, Notenübersicht, list of deadlines, MEMO of 3–5 bullet points. (5) ONLY ASK PROFESSORS WHO KNOW YOU: a letter from a prof who only taught you one course is a weak letter. Ask someone who has worked with you on a Seminararbeit, Praktikum, Forschungsprojekt, Bachelorarbeit, or Masterarbeit.\n\nIn an in-person Sprechstunde: open politely ('Es geht um eine persönliche Bitte'), explain context, state the concrete ask, offer to make it easy. CLOSE by thanking and CONFIRMING next steps.\n\nHow this differs from US/UK norms: in the US you can sometimes get a letter on a few days' notice, sometimes drafted in part by the student. In Germany the prof writes the whole letter, often spending 2–4 working hours on it — hence the lead time. NEVER submit a letter you have drafted and asked the prof to sign — this is treated as 'akademisches Fehlverhalten' (academic misconduct).\n\nFrequent learner mistakes: (1) Asking a professor who doesn't really know you — weak letter; (2) Asking too close to the deadline — declined; (3) Not providing a memo — generic letter; (4) Following up too aggressively — harassment; (5) Failing to thank afterwards — kills the relationship for next time.",
     "idiom_glosses": [
       {
         "idiom": "Ein gutes Wort einlegen",
         "literal": "Đặt một lời tốt vào",
+        "literal_en": "to put in a good word",
         "meaning": "Nói lời tốt cho ai — vouch for someone. Đây là cụm CHÍNH XÁC để mô tả việc xin recommendation: 'Würden Sie ein gutes Wort für mich einlegen?'.",
         "meaning_en": "To put in a good word — to vouch for someone. This is the EXACT phrase for asking for a recommendation: 'Würden Sie ein gutes Wort für mich einlegen?'.",
         "example": "Würden Sie freundlicherweise ein gutes Wort für mich einlegen?",
@@ -5144,6 +5251,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Auf Augenhöhe",
         "literal": "Ở tầm mắt (cùng độ cao)",
+        "literal_en": "at eye level",
         "meaning": "Ngang hàng — đối xử như equals. Mô tả mối quan hệ tôn trọng giữa GS và sinh viên giỏi.",
         "meaning_en": "On eye level — as equals. Describes a respectful relationship between a professor and a strong student.",
         "example": "Professor Müller behandelt seine Doktoranden immer auf Augenhöhe.",
@@ -5152,6 +5260,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "In den höchsten Tönen loben",
         "literal": "Khen với những âm cao nhất",
+        "literal_en": "to praise in the highest tones",
         "meaning": "Khen ngợi cực kỳ — đây là cụm CHÍNH XÁC mô tả thư giới thiệu mạnh nhất. Khi GS nói 'Ich werde Sie in den höchsten Tönen loben', họ cam kết viết thư xuất sắc.",
         "meaning_en": "To praise in the highest tones — to praise to the skies. The EXACT phrase describing the strongest possible letter. When a professor says 'Ich werde Sie in den höchsten Tönen loben', they are committing to write you an excellent letter.",
         "example": "Ich werde Sie in den höchsten Tönen loben — Sie haben es verdient.",
@@ -5160,6 +5269,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Sich auf jemanden verlassen können",
         "literal": "Có thể dựa vào ai",
+        "literal_en": "to be able to rely on someone",
         "meaning": "Có thể tin tưởng — biết ai sẽ làm điều đã hứa. Cả hai chiều trong context recommendation.",
         "meaning_en": "To be able to rely on someone — to know they will do what they promised. Used in both directions in a recommendation context.",
         "example": "Sie können sich auf mich verlassen — das Schreiben ist in 4 Wochen fertig.",
@@ -5529,12 +5639,18 @@ export const lessons: GermanLesson[] = [
       "GS pushback mạnh: 'Ich glaube nicht, dass ML allein die Klimavorhersage revolutionieren kann — Sie überschätzen die Methode'. Hãy phản hồi không nhượng bộ vô lý nhưng không cãi cứng — thừa nhận có hạn chế, đề xuất hybrid approach (ML + physical models), nêu evidence từ literature gần đây.",
       "Sau cuộc gặp tốt, GS đề xuất bạn TỪ BỎ đề tài Mekong và làm về dữ liệu Đức để 'dễ publish hơn'. Hãy đàm phán: cảm ơn lời khuyên, giải thích vì sao Mekong quan trọng cho cá nhân/quê hương, đề xuất compromise (phương pháp dùng cho cả 2 vùng, comparative study Đức-VN)."
     ],
+    "roleplay_prompts_en": [
+      "The professor asks 'Worin unterscheidet sich Ihr Ansatz von dem meiner aktuellen Doktorandin Frau Schmidt?'. Answer tactfully — do NOT put down Ms Schmidt; instead raise your own concrete points of difference (geographic region, dataset, methodological variant). Goal: prove you are an addition, not a duplication.",
+      "The professor pushes back hard: 'Ich glaube nicht, dass ML allein die Klimavorhersage revolutionieren kann — Sie überschätzen die Methode'. Respond without conceding unreasonably but without stubbornly arguing — acknowledge the limitations, propose a hybrid approach (ML + physical models), cite evidence from recent literature.",
+      "After a good meeting, the professor suggests you DROP the Mekong topic and work on German data to 'make it easier to publish'. Negotiate: thank them for the advice, explain why the Mekong matters to you personally and to your home region, propose a compromise (a method usable for both regions, a comparative Germany-Vietnam study)."
+    ],
     "register_notes": "Trao đổi nghiên cứu với GS Đức tuyệt đối formal — 'Sie' luôn, kể cả với GS trẻ hoặc trong môi trường postdoc thân mật. Tone là 'akademisch und respektvoll' nhưng KHÔNG khúm núm. Sự khác biệt tế nhị: bạn là 'Nachwuchsforscher:in' (nhà nghiên cứu trẻ), không phải 'Schüler:in' (học sinh) — bạn đến trao đổi như nhà nghiên cứu sơ khởi với chuyên gia.\n\nNgôn ngữ học thuật: dùng nominalization (danh từ hoá) — 'Mein Forschungsinteresse liegt...' chứ không 'Ich interessiere mich für...'; 'die Anwendung der Methode' chứ không 'wenn man die Methode anwendet'. Đây là Wissenschaftssprache (ngôn ngữ khoa học) Đức — sinh viên VN học từ tiếng Anh thường viết Verbal-style; phải chuyển sang Nominal-style.\n\nKonjunktiv I cho gián tiếp: 'Frau Wagner schrieb in ihrer Veröffentlichung, ML könne eine Revolution darstellen' — dùng để trích dẫn lý thuyết của người khác mà không cam kết bạn đồng ý. Konjunktiv II cho yêu cầu/giả định.\n\nKHI PUSHBACK TỪ GS: KHÔNG nhượng bộ ngay nếu bạn có lý lẽ vững. Người Đức đánh giá cao 'wissenschaftliche Auseinandersetzung' (tranh luận học thuật) — admit điểm GS đúng, sau đó counter với evidence: 'Sie haben recht, dass... Allerdings zeigt die Studie von X aus 2023, dass...'. Đồng ý mọi điều = bị coi là không có chính kiến.\n\nKHÁC VN: ở VN, sinh viên thường nhận lời GS không tranh luận; ở Đức, GS EXPECT bạn defend ý kiến — đó là dấu hiệu intellectual maturity.",
     "register_notes_en": "Research conversations with a German prof are absolutely formal — 'Sie' throughout, even with younger profs or in friendlier postdoc settings. The tone is 'akademisch und respektvoll' but NOT subservient. The subtle distinction: you are a 'Nachwuchsforscher:in' (junior researcher), not a 'Schüler:in' (pupil) — you come to exchange as a junior researcher with an expert.\n\nAcademic language: use nominalization — 'Mein Forschungsinteresse liegt…' rather than 'Ich interessiere mich für…'; 'die Anwendung der Methode' rather than 'wenn man die Methode anwendet'. This is Wissenschaftssprache (academic German). Anglophone students often write in the verbal style they're used to in English; you need to shift into the nominal style.\n\nKonjunktiv I for reported speech: 'Frau Wagner schrieb in ihrer Veröffentlichung, ML könne eine Revolution darstellen' — used to cite another scholar's claim without committing to agreeing. Konjunktiv II for requests/hypotheticals.\n\nWHEN THE PROF PUSHES BACK: do NOT cave instantly if you have a solid argument. Germans value 'wissenschaftliche Auseinandersetzung' (academic disputation) — acknowledge where the prof is right, then counter with evidence: 'Sie haben recht, dass… Allerdings zeigt die Studie von X aus 2023, dass…'. Agreeing with everything reads as having no academic personality.\n\nHow this differs from many anglophone contexts: in some teaching cultures students rarely push back; in Germany the prof EXPECTS you to defend your view — it is a sign of intellectual maturity.",
     "idiom_glosses": [
       {
         "idiom": "Den Horizont erweitern",
         "literal": "Mở rộng đường chân trời",
+        "literal_en": "to widen the horizon",
         "meaning": "Mở rộng tầm nhìn, tiếp cận perspectives mới — qua đọc, nghiên cứu, đối thoại với chuyên gia. Trong context academic: cảm ơn GS đã giúp bạn nhìn xa hơn — không phải xã giao mà thực sự công nhận growth.",
         "meaning_en": "To broaden the horizon — to widen one's view, take in new perspectives through reading, research, conversation with experts. In an academic setting, thanking a prof for having helped you see further is not small-talk; it genuinely registers growth.",
         "example": "Sie haben meinen Horizont in dieser Stunde erheblich erweitert.",
@@ -5543,6 +5659,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Brennen für etwas",
         "literal": "Cháy vì cái gì",
+        "literal_en": "to burn for something",
         "meaning": "Say mê, đam mê thực sự — không chỉ 'thích' mà là động lực đẩy bạn forward. Trong academic context, đây là cách thể hiện passion mà không melodramatic — chuẩn formal nhưng emotional.",
         "meaning_en": "To burn for something — to be deeply passionate about it, not merely 'like' it. In academic register this is how you signal passion without going melodramatic — formal but emotional.",
         "example": "Ich brenne für interdisziplinäre Forschung.",
@@ -5551,6 +5668,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Auf den Zahn fühlen",
         "literal": "Sờ vào răng (kiểm tra răng ngựa khi mua)",
+        "literal_en": "to feel someone on the tooth",
         "meaning": "Kiểm tra, test ai một cách kỹ lưỡng — bằng câu hỏi khó để xem họ thực sự biết gì. GS Đức thường 'auf den Zahn fühlen' candidate trong cuộc gặp đầu — không phải để tra tấn mà để đánh giá depth.",
         "meaning_en": "To feel for someone's tooth — literally to check a horse's teeth before buying, figuratively to test someone thoroughly with hard questions. German profs will 'auf den Zahn fühlen' a candidate in the first meeting — not to torture, but to gauge depth.",
         "example": "Lassen Sie mich Ihnen kurz auf den Zahn fühlen — was ist Ihre Hypothese?",
@@ -5559,6 +5677,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Eine Lanze brechen für",
         "literal": "Bẻ một cây thương cho",
+        "literal_en": "to break a lance for something",
         "meaning": "Bảo vệ, đứng ra ủng hộ điều gì — đặc biệt khi không phải mainstream. Phù hợp khi GS bảo vệ một hướng nghiên cứu interdisciplinary hoặc chủ đề ít được công nhận.",
         "meaning_en": "To break a lance for — to stand up for, defend (especially something not mainstream). Useful when a prof defends interdisciplinary research or an unfashionable topic.",
         "example": "Eine Lanze für interdisziplinäre Forschung möchte ich immer brechen.",
@@ -5922,12 +6041,18 @@ export const lessons: GermanLesson[] = [
       "Sếp Đức nói tối nay anh muốn 'ein bisschen die Stadt erkunden alleine' (đi khám phá thành phố một mình). Bạn lo về an toàn (móc túi khu Bùi Viện, scam taxi). Hãy đưa ra warning lịch sự — không paranoid, không condescending — gợi ý các quận an toàn, app Grab thay vì taxi đường, và để lại số điện thoại khẩn cấp.",
       "Sau 3 ngày, sếp Đức nói 'Frau Linh, ich finde, das vietnamesische Essen ist auf Dauer zu schwer für mich — gibt es etwas Leichteres?'. Hãy xử lý không tự ái — đề xuất các lựa chọn (salad, fish, soup, vegetarian options), gợi ý nhà hàng phương Tây tốt ở quận 1 (Pizza 4P's, L'Usine), và đảm bảo các bữa còn lại đa dạng hơn."
     ],
+    "roleplay_prompts_en": [
+      "Your German boss has just landed at Tan Son Nhat airport after an 11-hour flight. His luggage is lost. Handle it politely — brief the boss on the situation, give a temporary fix (buy toiletries and a clean shirt at Vincom), and promise to follow up with the airline. Don't apologise for something that isn't your fault, but SHOW empathy.",
+      "Your German boss says he wants to 'ein bisschen die Stadt erkunden alleine' (explore the city a bit on his own) tonight. You're worried about safety (pickpockets around Bui Vien, taxi scams). Give a polite warning — not paranoid, not condescending — suggest the safe districts, the Grab app instead of street taxis, and leave him an emergency number.",
+      "After three days, your German boss says 'Frau Linh, ich finde, das vietnamesische Essen ist auf Dauer zu schwer für mich — gibt es etwas Leichteres?'. Handle it without taking offence — propose options (salad, fish, soup, vegetarian), suggest good Western restaurants in District 1 (Pizza 4P's, L'Usine), and ensure the remaining meals are more varied."
+    ],
     "register_notes": "Đón sếp Đức ở VN có quy tắc tế nhị riêng. (1) FORMAL TUYỆT ĐỐI khi gặp lần đầu: 'Herr Direktor Schmidt' — full title + name. KHÔNG bao giờ chỉ 'Herr Schmidt' khi sếp có chức danh, KHÔNG nói tên riêng (Klaus) trừ khi sếp explicitly đề nghị. (2) KONJUNKTIV II là chuẩn cho mọi đề xuất: 'Möchten Sie...?' (anh có muốn...?), 'Wäre es Ihnen recht, wenn...?' (anh thấy ổn nếu...?), 'Würden Sie lieber...?' (anh thích hơn...?). KHÔNG dùng plain form ('Wir essen jetzt') — quá thẳng, không cho lựa chọn. (3) NGÔN NGỮ TÔN TRỌNG TỰ DO: 'Falls Sie Lust haben' (nếu anh có hứng), 'Sollten Sie Zeit haben' (nếu anh có thời gian), 'Es liegt ganz bei Ihnen' (hoàn toàn tuỳ anh) — báo hiệu bạn KHÔNG ép buộc. Người Đức ghét cảm giác bị 'controlled' bởi host. (4) ENGLISH FALLBACK: nếu sếp đang khó nghe Đức (vì Jetlag hoặc accent), CHUYỂN sang Anh tự nhiên — không có ego về language proficiency.\n\nNgoại lệ ở môi trường startup, IT trẻ Đức tại VN: nếu sếp cùng tuổi/trẻ hơn, sau buổi gặp đầu có thể chuyển sang du. Quy tắc: chờ sếp đề nghị TRƯỚC, không tự chuyển.\n\nKhác Việt Nam: ở VN, đón khách = bạn lo MỌI thứ, khách không phải nghĩ; ở Đức, đón khách = bạn cung cấp options, khách CHỌN.",
     "register_notes_en": "Hosting a German boss in Vietnam has its own delicate rules. (1) FULL FORMAL on first meeting: 'Herr Direktor Schmidt' — full title + name. NEVER just 'Herr Schmidt' when the boss has a title; NEVER use the first name (Klaus) unless explicitly invited. (2) KONJUNKTIV II IS DEFAULT for every suggestion: 'Möchten Sie…?', 'Wäre es Ihnen recht, wenn…?', 'Würden Sie lieber…?'. Do NOT use the plain form ('Wir essen jetzt') — it's too direct, offers no choice. (3) RESPECT-FOR-AUTONOMY LANGUAGE: 'Falls Sie Lust haben', 'Sollten Sie Zeit haben', 'Es liegt ganz bei Ihnen' — signals you are NOT pushing. Germans dislike feeling 'controlled' by a host. (4) ENGLISH FALLBACK: if the boss is struggling with German (jetlag, your accent), switch to English naturally — no ego about language proficiency.\n\nException in young/IT/startup environments: if the boss is your age or younger, after the first meeting they may switch to 'du'. Rule: wait for THEM to propose it, never switch on your own.\n\nHow this differs from VN host norms: in Vietnam, hosting = you take care of EVERYTHING, the guest doesn't have to think; in Germany, hosting = you provide OPTIONS, the guest CHOOSES.",
     "idiom_glosses": [
       {
         "idiom": "Höflichkeit ist eine Tugend",
         "literal": "Lịch sự là đức tính",
+        "literal_en": "politeness is a virtue",
         "meaning": "Lịch sự là phẩm chất quan trọng. Câu thành ngữ thường được dùng để khen thái độ chuẩn mực.",
         "meaning_en": "Politeness is a virtue — a standard line, often used to compliment proper conduct.",
         "example": "Ihre Aufmerksamkeit zeigt: Höflichkeit ist eine Tugend.",
@@ -5936,6 +6061,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Pünktlichkeit ist die Höflichkeit der Könige",
         "literal": "Đúng giờ là phép lịch sự của vua",
+        "literal_en": "punctuality is the politeness of kings",
         "meaning": "Đúng giờ là phẩm chất cao quý — câu thành ngữ Đức nổi tiếng. Người Đức coi đúng giờ là biểu hiện tôn trọng nghiêm túc; trễ 5 phút có thể bị coi là thiếu chuyên nghiệp.",
         "meaning_en": "Punctuality is the politeness of kings — a well-known German proverb. Germans treat punctuality as a serious sign of respect; being 5 minutes late can already read as unprofessional.",
         "example": "Wir holen Sie 30 Minuten vor Ankunft ab — Pünktlichkeit ist die Höflichkeit der Könige.",
@@ -5944,6 +6070,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Direktheit schätzen",
         "literal": "Đánh giá cao sự trực tiếp",
+        "literal_en": "to value directness",
         "meaning": "Coi trọng sự thẳng thắn. Văn hoá Đức đặt trực tiếp lên cao — host VN nên báo hiệu hiểu điều này.",
         "meaning_en": "To appreciate directness — to value plain speaking. German culture puts directness high; a Vietnamese host should signal awareness of this.",
         "example": "Im Geschäftsleben muss man Direktheit schätzen.",
@@ -5952,6 +6079,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Einen guten ersten Eindruck hinterlassen",
         "literal": "Để lại ấn tượng đầu tốt",
+        "literal_en": "to leave a good first impression",
         "meaning": "Tạo ấn tượng đầu tốt — câu cửa miệng cho mọi cuộc gặp đầu tiên. Trong context đón sếp: cố gắng để 'erste Eindruck' tích cực vì khó sửa sau.",
         "meaning_en": "To leave a good first impression — the catchphrase for any first encounter. When hosting a boss, you want 'erste Eindruck' to land positively because it's hard to correct later.",
         "example": "Der erste Eindruck zählt — wir wollen einen guten ersten Eindruck hinterlassen.",
@@ -6316,12 +6444,18 @@ export const lessons: GermanLesson[] = [
       "Sau dinner, khách Đức đề xuất 'Lassen Sie uns morgen Karaoke machen — ich habe gehört, das ist sehr vietnamesisch'. Hãy đáp ứng nhưng SET expectation đúng — đề xuất loại karaoke private room (không phải hostess bar), giải thích 'in Vietnam ist Karaoke unter Geschäftsleuten normal' để khách không bị surprise.",
       "Khách Đức tỏ ra concerned về 'Compliance' (chống tham nhũng): 'Wir bei Bosch dürfen keine Geschenke über 30€ annehmen'. Bạn đã chuẩn bị quà silk scarf trị giá 80€. Hãy giải thích lịch sự, đề xuất alternative (gửi đến HR/CSR thay vì cá nhân, hoặc giảm xuống 30€ symbol)."
     ],
+    "roleplay_prompts_en": [
+      "A German client challenges you sharply: 'Ihre Defect Rate ist niedriger als die Konkurrenz, aber Ihre Preise sind 12% höher — das geht nicht auf'. Respond with concrete data: the reason for the higher price (raw-material quality, certification, after-sales), and propose a compromise (a volume discount, a longer contract).",
+      "After dinner, the German client suggests 'Lassen Sie uns morgen Karaoke machen — ich habe gehört, das ist sehr vietnamesisch'. Go along with it but SET the right expectation — propose a private-room karaoke (not a hostess bar), and explain 'in Vietnam ist Karaoke unter Geschäftsleuten normal' so the client isn't surprised.",
+      "The German client is concerned about compliance (anti-corruption): 'Wir bei Bosch dürfen keine Geschenke über 30€ annehmen'. You had prepared an 80 EUR silk-scarf gift. Explain politely, propose an alternative (send it to HR/CSR instead of to him personally, or reduce it to a 30 EUR symbolic gift)."
+    ],
     "register_notes": "Tiếp đón business client Đức tại VN — formal nhưng KHÁC formal đón sếp. Client có quyền lực hơn vì họ có thể chọn supplier khác — bạn cần balance giữa CONFIDENT (chứng minh năng lực) và HUMBLE (tôn trọng decision của họ). (1) 'SIE' luôn, kể cả khi khách trẻ. Chỉ chuyển 'du' nếu KHÁCH explicitly đề nghị (rất hiếm trong B2B). (2) BUSINESS LANGUAGE: dùng từ technical Đức chính xác — 'Defect Rate', 'Lieferzeit', 'Marge', 'Engpass', 'Compliance'. Trộn lẫn Anh-Đức là bình thường. (3) DATA-DRIVEN: mọi claim phải có DATA backup. 'Wir sind führend in Qualität' = vague, weak. 'Defect Rate von 0,3% gegenüber Branchenschnitt 0,9%' = strong. (4) ADMIT WEAKNESSES: 'Wir spielen mit offenen Karten — unsere Schwachstelle ist...'. Đây là COUNTER-INTUITIVE cho VN nhưng cực kỳ effective ở Đức.\n\nKhi khách pushback: KHÔNG defensive. Patterns đúng: 'Sie haben einen wichtigen Punkt angesprochen — lassen Sie mich das wie folgt einordnen...'. Pattern sai: 'Aber wir sind besser als...' (defensive comparison).\n\nNgoại lệ ở dinner: tone vẫn formal nhưng softer. Có thể nói chuyện cá nhân (gia đình, hobbies) — short, polite. Tránh sales pitch trong dinner; save cho meetings.\n\nKhác Việt Nam: ở VN, business meeting có thể chuyển thành nhậu nhẹt thân mật; ở Đức, business meeting + business dinner = TWO different modes. Dinner là relationship-building, không phải đàm phán nối tiếp.",
     "register_notes_en": "Hosting a German business client in Vietnam is formal — but a different formal than hosting your boss. The CLIENT has more leverage because they can choose another supplier — so you have to balance CONFIDENT (proof of capability) with HUMBLE (respect their decision authority). (1) 'SIE' THROUGHOUT, even with a younger client. Switch to 'du' ONLY if the client explicitly proposes it (rare in B2B). (2) BUSINESS LANGUAGE: use the correct German technical terms — 'Defect Rate', 'Lieferzeit', 'Marge', 'Engpass', 'Compliance'. English/German mixing is normal. (3) DATA-DRIVEN CLAIMS: every claim needs data behind it. 'Wir sind führend in Qualität' = vague, weak. 'Defect Rate von 0,3 % gegenüber Branchenschnitt 0,9 %' = strong. (4) ADMIT WEAKNESSES: 'Wir spielen mit offenen Karten — unsere Schwachstelle ist…'. This is counter-intuitive in many Asian B2B cultures but extremely effective in Germany.\n\nWhen the client pushes back: do NOT get defensive. Right pattern: 'Sie haben einen wichtigen Punkt angesprochen — lassen Sie mich das wie folgt einordnen…'. Wrong pattern: 'Aber wir sind besser als…' (defensive comparison).\n\nException at dinner: tone stays formal but softens. Personal topics (family, hobbies) are fine — short and polite. Don't pitch over dinner; save sales talk for meetings.\n\nHow this differs from VN B2B norms: in Vietnam a business meeting can blur into an evening of drinking and become an implicit negotiation; for Germans, business meeting + business dinner = TWO different modes. Dinner is relationship, not extended negotiation.",
     "idiom_glosses": [
       {
         "idiom": "Hand und Fuß haben",
         "literal": "Có tay và chân",
+        "literal_en": "to have hand and foot",
         "meaning": "Có cơ sở vững chắc, có logic và data backup. Trong context business: 'Mein Vorschlag hat Hand und Fuß' = đề xuất của tôi có cơ sở.",
         "meaning_en": "To have hand and foot — to have solid grounding, to be backed by logic and data. In business: 'Mein Vorschlag hat Hand und Fuß' = my proposal is well-founded.",
         "example": "Unser Qualitätsverbesserungs-Programm hat Hand und Fuß — die Daten beweisen es.",
@@ -6330,6 +6464,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Nicht um den heißen Brei herumreden",
         "literal": "Không quanh quẩn cháo nóng",
+        "literal_en": "to not talk around the hot porridge",
         "meaning": "Vào thẳng vấn đề, không vòng vo. Khi khách Đức nói 'Reden wir nicht um den heißen Brei herum' = mình nói thẳng đi.",
         "meaning_en": "Not to talk around the hot porridge — to get to the point without circling. When a German client says 'Reden wir nicht um den heißen Brei herum', that is a direct request to drop the euphemisms.",
         "example": "Reden wir nicht um den heißen Brei herum — wo liegt Ihr Engpass?",
@@ -6338,6 +6473,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Auf Herz und Nieren prüfen",
         "literal": "Kiểm tra tim và thận",
+        "literal_en": "to test on heart and kidneys",
         "meaning": "Test cực kỳ kỹ lưỡng — không chỉ surface mà sâu. Trong context audit/quality: là dấu hiệu khách serious về relationship dài hạn.",
         "meaning_en": "To test on heart and kidneys — to scrutinise extremely thoroughly, not just the surface. In audit/quality context, a sign the client is serious about a long-term relationship.",
         "example": "Vor dem Vertragsabschluss prüfen wir den Lieferanten auf Herz und Nieren.",
@@ -6346,6 +6482,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Mit offenen Karten spielen",
         "literal": "Chơi với bài ngửa",
+        "literal_en": "to play with open cards",
         "meaning": "Hoàn toàn minh bạch — show toàn bộ thông tin (margins, costs, weaknesses). Cụm này CỰC KỲ value trong B2B Đức.",
         "meaning_en": "To play with open cards — full transparency, showing all the information (margins, costs, weaknesses). This phrase is GOLD in German B2B.",
         "example": "Wir spielen mit offenen Karten: hier sind unsere Margen, unsere Lieferzeiten und unsere Engpässe.",
@@ -6709,12 +6846,18 @@ export const lessons: GermanLesson[] = [
       "Sếp Đức assigns workshop về 'Vietnamese Business Culture' cho team toàn người Đức ở Stuttgart. Bạn được giao chuẩn bị 30 phút. Hãy outline 3 KEY POINTS bạn sẽ chia sẻ (face culture, hierarchy in addressing, group decision-making) + 1 example mỗi point. KHÔNG academic, MUST practical.",
       "Đồng nghiệp Đức tham dự đám cưới của bạn ở VN. Anh ấy bối rối với phong tục (lì xì, hỏi 'Khi nào sinh con?', ăn 7 món). Hãy giải thích nhanh các phong tục anh ấy sẽ gặp + cung cấp 'cheat sheet' câu Đức để anh ấy interact lịch sự."
     ],
+    "roleplay_prompts_en": [
+      "A German colleague says 'Warum bringen vietnamesische Frauen immer Essen ins Büro mit? Bei uns ist das ungewöhnlich'. Explain Vietnam's food-sharing culture — don't be offended by the question, don't put down German culture ('cold'), validate both approaches.",
+      "Your German boss assigns a workshop on 'Vietnamese Business Culture' to an all-German team in Stuttgart. You're asked to prepare 30 minutes. Outline three KEY POINTS you'll share (face culture, hierarchy in addressing, group decision-making) plus one example each. NOT academic — MUST be practical.",
+      "A German colleague attends your wedding in Vietnam. He's confused by the customs (lì xì, being asked 'When will you have children?', a seven-course meal). Quickly explain the customs he'll encounter plus give him a 'cheat sheet' of German phrases so he can interact politely."
+    ],
     "register_notes": "Giải thích văn hoá VN cho đồng nghiệp Đức có register độc đáo — không phải full formal, không phải casual. Đây là EDUCATIONAL TONE giữa equals. (1) DEPENDS ON RELATIONSHIP: nếu đồng nghiệp đã 'du', dùng 'du'. Nếu mới gặp, 'Sie'. (2) NEUTRAL FRAMING: dùng 'In Vietnam ist es so, dass...' — không 'Bei uns ist...' (implies Đức không phải 'của chúng ta'). Bạn giờ là CULTURAL BRIDGE, có cả hai văn hoá. (3) AVOID SUPERLATIVES: KHÔNG nói 'Vietnamesen sind die höflichsten der Welt' hoặc 'Deutsche sind direkter als jeder andere'. Pattern đúng: 'In meiner Erfahrung...'. (4) WELCOME PUSHBACK: nếu đồng nghiệp Đức challenge — không defensive. (5) USE BOTH LANGUAGES: dạy đồng nghiệp Đức một vài cụm VN — 'Cảm ơn' = Vielen Dank, 'Xin chào' = Hallo.\n\nKhác Việt Nam: ở VN, người Việt giải thích văn hoá VN không phải skill cần luyện. Ở môi trường công sở Đức/quốc tế, đây là COMPETITIVE ADVANTAGE.\n\nNgười Việt thường mắc lỗi: (1) APOLOGIZE cho văn hoá VN — không cần apologize, đó là di sản; (2) IDEALIZE văn hoá Đức — patronizes both sides; (3) ASSUME đồng nghiệp Đức là expert về VN sau khi sống 1 năm — phải tiếp tục educate gentle.",
     "register_notes_en": "Explaining Vietnamese culture to a German colleague has a unique register — neither fully formal nor casual. It's EDUCATIONAL TONE between equals. (1) DEPENDS ON RELATIONSHIP: if the colleague already uses 'du', use 'du'. If just met, 'Sie'. (2) NEUTRAL FRAMING: use 'In Vietnam ist es so, dass…' — not 'Bei uns ist…' (implies Germany isn't 'ours'). You are now a CULTURAL BRIDGE, you have both cultures. (3) AVOID SUPERLATIVES: DON'T say 'Vietnamesen sind die höflichsten der Welt' or 'Deutsche sind direkter als jeder andere'. Right pattern: 'In meiner Erfahrung…'. (4) WELCOME PUSHBACK: if the colleague challenges you — don't get defensive. (5) USE BOTH LANGUAGES: teach the colleague a few Vietnamese phrases — 'Cảm ơn' = Vielen Dank, 'Xin chào' = Hallo.\n\nHow this differs from life in Vietnam: in Vietnam, explaining Vietnamese culture is not a skill you practise. In a German/international workplace it is a COMPETITIVE ADVANTAGE.\n\nFrequent learner mistakes: (1) APOLOGISING for Vietnamese culture — don't, it's your heritage; (2) IDEALISING German culture — patronises both sides; (3) ASSUMING the German colleague is an expert on Vietnam after living there one year — keep gently educating.",
     "idiom_glosses": [
       {
         "idiom": "Aus dem Bauch heraus",
         "literal": "Từ trong bụng ra",
+        "literal_en": "out of the belly",
         "meaning": "Theo trực giác — quyết định không phải data-driven mà gut feel. Khi giải thích sao người VN ra quyết định: đôi khi 'aus dem Bauch heraus' về relationships hơn là logic.",
         "meaning_en": "Out of the gut — by intuition. A decision made not from data but from gut feel. Useful when explaining how Vietnamese business people often decide based on relationships rather than pure logic.",
         "example": "Vietnamesische Geschäftsleute treffen Entscheidungen oft aus dem Bauch heraus — basierend auf Beziehungen.",
@@ -6723,6 +6866,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Den Nagel auf den Kopf treffen",
         "literal": "Đóng đinh trúng đầu",
+        "literal_en": "to hit the nail on the head",
         "meaning": "Nói chính xác, hit the nail on the head. Khi đồng nghiệp Đức observe đúng về văn hoá VN.",
         "meaning_en": "To hit the nail on the head — to say exactly the right thing. Used when a German colleague's observation about Vietnamese culture is spot-on.",
         "example": "Mit deiner Beobachtung über die indirekte Kommunikation hast du den Nagel auf den Kopf getroffen.",
@@ -6731,6 +6875,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Wie aus dem Ei gepellt",
         "literal": "Như từ trứng bóc ra",
+        "literal_en": "as if peeled from the egg",
         "meaning": "Ăn mặc gọn gàng, perfect — như mới bóc khỏi vỏ trứng. Mô tả người VN tham dự sự kiện trang trọng.",
         "meaning_en": "As though peeled out of an egg — impeccably groomed, perfect-looking. Describes how Vietnamese people dress for formal events.",
         "example": "Beim Tết-Fest erscheinen alle wie aus dem Ei gepellt.",
@@ -6739,6 +6884,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Über seinen Schatten springen",
         "literal": "Nhảy qua bóng của chính mình",
+        "literal_en": "to jump over one's own shadow",
         "meaning": "Vượt qua chính mình, làm điều ngược lại bản tính. Khi giải thích cho đồng nghiệp Đức rằng người VN trẻ đang adapt với international workplace.",
         "meaning_en": "To jump over one's own shadow — to overcome one's own nature, do the opposite of what comes naturally. Useful when describing how young Vietnamese adapt to international workplaces.",
         "example": "Junge Vietnamesen müssen oft über ihren Schatten springen, um direkter zu kommunizieren.",
@@ -7112,12 +7258,18 @@ export const lessons: GermanLesson[] = [
       "Sếp Đức yêu cầu bạn coach một German colleague mới sang VN, người vừa có 'cultural incident' (mắng nhân viên VN trong public meeting). Hãy tóm tắt 3 KEY DIFFERENCES anh ấy cần biết + 2 PRACTICAL TIPS có thể áp dụng tuần đầu — KHÔNG academic, focus on actionable.",
       "Bạn cần đưa critical feedback cho team Đức về deadline missed (3 lần liên tiếp). Bản năng VN bảo bạn vòng vo. Đồng nghiệp Đức expect directness. Hãy draft cách bạn sẽ open conversation: balance giữa direct (vì văn hoá Đức) và respectful (vì bản chất bạn)."
     ],
+    "roleplay_prompts_en": [
+      "A German colleague says bluntly in a meeting: 'Linh, deine Präsentation war nicht überzeugend'. You feel humiliated in front of the team. Respond PROFESSIONALLY (not weak, not emotional), then ask to meet privately to discuss the feedback in detail.",
+      "Your German boss asks you to coach a German colleague newly arrived in Vietnam, who has just had a 'cultural incident' (scolding a Vietnamese employee in a public meeting). Summarise three KEY DIFFERENCES he needs to know plus two PRACTICAL TIPS he can apply in the first week — NOT academic, focus on what's actionable.",
+      "You need to give critical feedback to the German team about a missed deadline (three times in a row). Your Vietnamese instinct says to be indirect. The German colleagues expect directness. Draft how you'll open the conversation: balancing direct (because of German culture) and respectful (because of who you are)."
+    ],
     "register_notes": "Etiquette differences là chủ đề tế nhị — bạn cần tone NEUTRAL và TWO-WAY, không 'người Việt phải học người Đức' hay ngược lại. (1) AVOID JUDGMENT WORDS: tránh 'besser/schlechter', 'richtig/falsch' khi compare cultures. Dùng 'unterschiedlich', 'kontextabhängig', 'beide haben ihre Funktion'. (2) ACKNOWLEDGE LIMITATIONS OF YOUR OWN CULTURE: nếu chỉ nói về điểm yếu của Đức, người Đức defensive. Nếu chỉ nói về điểm yếu của VN, bạn self-deprecate. Balance: 'Indirektheit kann zu Missverständnissen führen, aber sie schützt Beziehungen'. (3) SỬ DỤNG 'WIR' framing: 'Wir können beide voneinander lernen'. (4) WHEN GIVING DIRECTNESS COACHING: tone phải warm, không cynical. (5) WHEN RECEIVING DIRECTNESS as VN learner: KHÔNG defensive, KHÔNG over-apologize. Pattern: 'Vielen Dank für das ehrliche Feedback. Ich denke darüber nach.'\n\nKhác Việt Nam: ở VN, etiquette discussions thường happen 1-on-1 với người thân quen, không trong workplace context. Ở môi trường Đức/quốc tế, etiquette discussions là PROFESSIONAL TOPIC.\n\nNgười Việt thường mắc lỗi: (1) idolize directness Đức ('Em ước em direct hơn') — bị coi là self-deprecating; (2) defend indirectness VN aggressively ('Direkt là rude') — alienate German colleagues; (3) avoid topic entirely — miss opportunity to be cultural bridge.",
     "register_notes_en": "Etiquette differences is a delicate topic — your tone needs to be NEUTRAL and TWO-WAY, not 'Vietnamese must learn from Germans' or vice versa. (1) AVOID JUDGEMENT WORDS: don't use 'besser/schlechter', 'richtig/falsch' when comparing cultures. Use 'unterschiedlich', 'kontextabhängig', 'beide haben ihre Funktion'. (2) ACKNOWLEDGE LIMITATIONS OF YOUR OWN CULTURE: if you only talk about weaknesses of German culture, Germans get defensive. If you only talk about weaknesses of Vietnamese culture, you self-deprecate. Balance: 'Indirektheit kann zu Missverständnissen führen, aber sie schützt Beziehungen'. (3) USE 'WIR' FRAMING: 'Wir können beide voneinander lernen'. (4) WHEN GIVING DIRECTNESS COACHING: tone must be warm, not cynical. (5) WHEN RECEIVING DIRECTNESS AS A VN LEARNER: don't get defensive, don't over-apologise. Pattern: 'Vielen Dank für das ehrliche Feedback. Ich denke darüber nach.'\n\nHow this differs from life in Vietnam: in Vietnam etiquette discussions usually happen 1-on-1 with people you know, not in a workplace context. In a German/international environment, etiquette discussion is a PROFESSIONAL TOPIC.\n\nFrequent learner mistakes: (1) Idolising German directness ('I wish I were more direct') — reads as self-deprecating; (2) Defending Vietnamese indirectness aggressively ('Direkt is rude') — alienates German colleagues; (3) Avoiding the topic entirely — misses the chance to be a cultural bridge.",
     "idiom_glosses": [
       {
         "idiom": "Zwischen den Zeilen lesen",
         "literal": "Đọc giữa các dòng",
+        "literal_en": "to read between the lines",
         "meaning": "Hiểu ý ngầm — không chỉ đọc bề mặt mà còn understand subtext. Chính xác là kỹ năng mà người Đức cần học khi work với người VN.",
         "meaning_en": "To read between the lines — to understand the implicit meaning beyond the literal text. The exact skill Germans need to learn when working with Vietnamese colleagues.",
         "example": "Wenn du mit vietnamesischen Kollegen arbeitest, musst du oft zwischen den Zeilen lesen.",
@@ -7126,6 +7278,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Jemandem den Spiegel vorhalten",
         "literal": "Đưa gương trước mặt ai",
+        "literal_en": "to hold up a mirror to someone",
         "meaning": "Giúp ai nhìn thấy chính mình — phản chiếu hành vi của họ một cách thẳng thắn nhưng không hostile.",
         "meaning_en": "To hold a mirror up to someone — to help them see themselves, to reflect their own behaviour back directly but not hostilely.",
         "example": "Lass uns einen Spiegel vorhalten: was wirkt in Deutschland normal, in Vietnam aber abrupt?",
@@ -7134,6 +7287,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Mit gleicher Münze zurückzahlen",
         "literal": "Trả lại bằng cùng đồng tiền",
+        "literal_en": "to pay back in the same coin",
         "meaning": "Đáp lại bằng cùng phong cách. Trong cross-cultural communication: nếu German colleague direct, bạn cũng direct (adapt up).",
         "meaning_en": "To pay back in the same coin — to respond in the same style. In cross-cultural communication: if a German colleague is direct, you also be direct (adapt up).",
         "example": "Wenn du direkt bist, antworte ich direkt — mit gleicher Münze zurückgezahlt.",
@@ -7142,6 +7296,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Über die Stränge schlagen",
         "literal": "Đập qua dây cương",
+        "literal_en": "to hit over the ropes",
         "meaning": "Đi quá xa, vượt giới hạn — đặc biệt về behavior/words. Khi German colleague directness 'über die Stränge schlägt' trong VN context.",
         "meaning_en": "To strike beyond the reins — to go too far, cross a line, especially in behaviour or speech. Used when a German colleague's directness 'crosses the line' in a Vietnamese context.",
         "example": "Mit deinem direkten Feedback im Meeting bist du etwas über die Stränge geschlagen.",
@@ -7510,36 +7665,49 @@ export const lessons: GermanLesson[] = [
       "Trong dinner với German clients, bạn order liên tục cho cả bàn (kiểu host VN), nhưng sau đó realize họ uncomfortable vì không được chọn món. Sáng hôm sau gửi email xin lỗi ngắn (5-7 dòng) — thừa nhận miscommunication, giải thích culture VN, đề xuất next dinner sẽ menu options.",
       "Bạn vô tình hỏi German colleague 'Wann heiratest du?' — câu hỏi bình thường ở VN nhưng PERSONAL ở Đức. Anh ấy phản ứng cool và đổi chủ đề. Hãy gặp riêng vài giờ sau, xin lỗi cho cultural blunder, giải thích vì sao câu này bình thường ở VN, hứa sẽ aware hơn về privacy norms Đức."
     ],
+    "roleplay_prompts_en": [
+      "You've just realised that yesterday you gave a German colleague a 100 EUR birthday gift — over Bosch's 30 EUR compliance limit. Meet him privately, apologise for the awkward situation, and propose a fix (he reports it to Compliance, or you withdraw the gift and give a smaller symbolic one). Frame it as a cultural learning moment, no drama.",
+      "At dinner with German clients, you kept ordering for the whole table (the Vietnamese host style), but then realise they were uncomfortable not getting to choose. The next morning, send a short apology email (5-7 lines) — acknowledge the miscommunication, explain Vietnamese culture, and propose that the next dinner will offer menu options.",
+      "You accidentally asked a German colleague 'Wann heiratest du?' — a normal question in Vietnam but PERSONAL in Germany. He reacted coolly and changed the subject. Meet him privately a few hours later, apologise for the cultural blunder, explain why the question is normal in Vietnam, and promise to be more aware of German privacy norms."
+    ],
     "register_notes": "Apology cross-cultural có register tế nhị riêng. (1) FORMAL hoặc INFORMAL? Phụ thuộc vào relationship. Với sếp/khách → 'Sie' + formal phrasing. Với đồng nghiệp 'du' → vẫn formal vocabulary cho apology act, nhưng 'du'. (2) AVOID 'sorry, sorry, sorry': người Đức coi over-apology là dramatic + insincere. MỘT lần đủ. (3) AVOID self-erasing phrases: 'Sorry, ich bin nur...' yếu thế, không sincere. CONFIDENT apology: 'Ich habe X getan, das war Y, hätte ich anders gemacht' — full sentences, full accountability. (4) DIRECT EYE CONTACT khi xin lỗi face-to-face. Nhìn xuống = bị coi là không sincere ở Đức. (5) DON'T REPEAT THE OFFENSE: nếu đã xin lỗi 1 lần, không bring up lại 5 lần sau đó.\n\nNgôn ngữ formal cho apology Đức:\n- 'Es tut mir aufrichtig leid' — strong sincere\n- 'Ich entschuldige mich für...' — formal admission\n- 'Bitte verzeihen Sie mir...' — old-fashioned, dùng cho chính thức nhất\n- 'Asche auf mein Haupt' (idiom) — playful + formal admission\n- 'Reinen Wein einschenken' (idiom) — báo hiệu sắp nói thật\n\nKhi RECEIVING apology: KHÔNG dismiss với 'Kein Problem' — invalidates apology. Pattern đúng: 'Vielen Dank, dass du es ansprichst' + 'Lass uns nach vorne schauen'.\n\nKhác Việt Nam: ở VN, apology có thể vague và short. Ở Đức, apology phải structured và specific. Người Việt mới làm việc Đức cần PRACTICE structured apology.",
     "register_notes_en": "Cross-cultural apologies carry their own delicate register. (1) FORMAL OR INFORMAL? Depends on the relationship. With a boss or client → 'Sie' + formal phrasing. With a 'du' colleague → still formal apology vocabulary, but 'du'. (2) AVOID 'sorry, sorry, sorry': Germans hear over-apologising as theatrical and insincere. ONE is enough. (3) AVOID self-erasing phrases: 'Sorry, ich bin nur…' reads as weak, not sincere. A CONFIDENT apology: 'Ich habe X getan, das war Y, hätte ich anders gemacht' — full sentences, full accountability. (4) MAKE EYE CONTACT for a face-to-face apology. Looking down reads as insincere in Germany. (5) DON'T REPEAT THE OFFENCE: once you've apologised, don't bring it up five more times.\n\nFormal German apology phrasing:\n- 'Es tut mir aufrichtig leid' — strong, sincere\n- 'Ich entschuldige mich für…' — formal admission\n- 'Bitte verzeihen Sie mir…' — old-fashioned, used for the most formal contexts\n- 'Asche auf mein Haupt' (idiom) — playful + formal admission\n- 'Reinen Wein einschenken' (idiom) — signals the speaker is about to be honest\n\nWhen RECEIVING an apology: DO NOT dismiss it with 'Kein Problem' — that invalidates the apology. The right pattern is: 'Vielen Dank, dass du es ansprichst' + 'Lass uns nach vorne schauen'.\n\nDifferent from many Anglo-American workplaces: a vague, short apology often passes there. In Germany the apology must be structured and specific. Speakers used to the lighter style need to PRACTICE the structured form deliberately.",
     "idiom_glosses": [
       {
         "idiom": "Auf dem falschen Fuß erwischt werden",
         "literal": "Bị bắt trên chân sai",
+        "literal_en": "to be caught on the wrong foot",
         "meaning": "Bị bắt gặp ở thời điểm không sẵn sàng — caught off guard. Khi explain tại sao bạn đã react incorrectly.",
         "meaning_en": "To be caught off guard — caught at a moment you're not ready. Useful when you need to explain why you reacted badly.",
-        "example": "Tut mir leid, ich war von deiner direkten Frage auf dem falschen Fuß erwischt."
+        "example": "Tut mir leid, ich war von deiner direkten Frage auf dem falschen Fuß erwischt.",
+        "example_en": "I'm sorry, your direct question caught me on the back foot."
       },
       {
         "idiom": "Reinen Wein einschenken",
         "literal": "Rót rượu trong vắt",
+        "literal_en": "to pour pure wine",
         "meaning": "Nói thật hoàn toàn — không vòng vo. Báo hiệu sắp nói điều khó nói nhưng quan trọng.",
         "meaning_en": "To speak completely frankly — no detours. Signals that you're about to say something difficult but important.",
-        "example": "Ich möchte reinen Wein einschenken: in unserer Kultur ist das normal, aber ich verstehe jetzt, dass es bei euch unangemessen wirkt."
+        "example": "Ich möchte reinen Wein einschenken: in unserer Kultur ist das normal, aber ich verstehe jetzt, dass es bei euch unangemessen wirkt.",
+        "example_en": "Let me be completely honest with you: in our culture this is normal, but I now see that it comes across as inappropriate where you're from."
       },
       {
         "idiom": "Auf den Sack schlagen wollen, aber den Esel meinen",
         "literal": "Muốn đánh bao nhưng nhắm con lừa",
+        "literal_en": "to mean to hit the sack but mean the donkey",
         "meaning": "Phê bình ai gián tiếp — đả kích A nhưng thực ra nhắm B. Người Việt có thể vô tình làm điều này.",
         "meaning_en": "To criticise someone indirectly — hitting A while really aiming at B. Newcomers to German offices sometimes do this without meaning to.",
-        "example": "Stefan dachte, ich kritisierte ihn, aber eigentlich schlug ich auf den Sack und meinte den Esel — den Prozess, nicht ihn persönlich."
+        "example": "Stefan dachte, ich kritisierte ihn, aber eigentlich schlug ich auf den Sack und meinte den Esel — den Prozess, nicht ihn persönlich.",
+        "example_en": "Stefan thought I was criticising him, but really I was getting at the process, not him personally."
       },
       {
         "idiom": "Asche auf mein Haupt",
         "literal": "Tro trên đầu em",
+        "literal_en": "ashes on my head",
         "meaning": "Lỗi hoàn toàn tại em — admission formal. Gốc tôn giáo (sám hối thời cổ). Trong context modern: dùng playfully nhưng sincere.",
         "meaning_en": "It's entirely my fault — a formal admission. Religious origin (ash on the head as a sign of penance). Used today playfully but sincerely.",
-        "example": "Asche auf mein Haupt — ich hätte das nicht im Plenum sagen sollen."
+        "example": "Asche auf mein Haupt — ich hätte das nicht im Plenum sagen sollen.",
+        "example_en": "Mea culpa — I shouldn't have said that in front of everyone."
       }
     ],
     "exercises": [
@@ -7911,36 +8079,49 @@ export const lessons: GermanLesson[] = [
       "Trong coffee break, bạn muốn approach một CEO Đức bạn ngưỡng mộ (đang đứng một mình). Hãy script 30-second elevator pitch: tên + công ty + 1 sentence why bạn appreciate his work + 1 question để bắt đầu conversation. KHÔNG sales pitch ngay.",
       "Conference cuối ngày, bạn được mời đến VIP dinner với 8 senior delegates. Tất cả đều là người Đức trừ bạn. Hãy chuẩn bị 3 conversation starters phù hợp với business dinner Đức (avoid politics, religion, salary): industry trends, conference highlights, German cities you're visiting."
     ],
+    "roleplay_prompts_en": [
+      "You're a speaker at Hannover Messe. During Q&A, a German engineer pushes back very technically: 'Ihre Methodik ignoriert das wichtige Paper von Müller 2023 zum gleichen Thema'. You did NOT read that paper. Admit the gap without losing face — acknowledge it, ask him to share the key insights, promise to follow up.",
+      "During a coffee break, you want to approach a German CEO you admire (currently standing alone). Script a 30-second elevator pitch: name + company + one sentence on why you appreciate his work + one question to open a conversation. NOT an immediate sales pitch.",
+      "On the last day of the conference you're invited to a VIP dinner with eight senior delegates. All are German except you. Prepare three conversation starters suitable for a German business dinner (avoid politics, religion, salary): industry trends, conference highlights, German cities you're visiting."
+    ],
     "register_notes": "Conference Đức formal nhưng KHÔNG stuffy. (1) ADDRESS: 'Sehr geehrte Damen und Herren' chỉ cho large audiences/openings. Trong Q&A: 'Frau Schulz' / 'Herr Wagner' với last name. Trong networking 1-on-1: business cards exchange first, then first names if they offer. (2) PRESENTATION VOCABULARY: dùng từ academic Đức — 'These', 'Methodik', 'Ergebnisse', 'Schlussfolgerungen', 'Limitationen'. KHÔNG slang or casual fillers. (3) Q&A DEFENSE: pattern chuẩn cho mọi câu hỏi: 'Eine sehr berechtigte/gute/spannende Frage. Lassen Sie mich das wie folgt einordnen...'. Cho bạn 3 giây thinking time. (4) ADMIT LIMITATIONS GRACEFULLY: nếu data không có, 'Diese spezifischen Daten habe ich nicht parat — ich folge per E-Mail nach'. (5) ENGLISH VS GERMAN: nếu conference international, English thường default. Nhưng nếu audience >50% German, switch to German để show effort.\n\nNetworking register: smalltalk safe topics — chuyến đi, conference highlights, city. AVOID: politics, religion, personal life (gia đình, lương).\n\nKhác Việt Nam: ở VN conference, có thể có nhiều slang, jokes, personal stories trong presentation. Ở Đức, presentation = data + structure.\n\nNgười Việt thường mắc lỗi: (1) over-thank — Đức coi là too much. 1 acknowledgment đủ. (2) under-prepare cho Q&A — focus 100% vào presentation, quên Q&A là 50% of impression. (3) shy networking — đứng góc với đồng nghiệp VN.",
     "register_notes_en": "German conferences are formal but not stuffy. (1) ADDRESS: 'Sehr geehrte Damen und Herren' only for large audiences / opening sessions. In Q&A: 'Frau Schulz' / 'Herr Wagner' with last name. In 1-on-1 networking: business cards exchange first, then first names if they offer. (2) PRESENTATION VOCABULARY: use German academic vocabulary — 'These', 'Methodik', 'Ergebnisse', 'Schlussfolgerungen', 'Limitationen'. NO slang or casual fillers. (3) Q&A DEFENCE: the standard opener for every question is 'Eine sehr berechtigte/gute/spannende Frage. Lassen Sie mich das wie folgt einordnen…' — it buys you three seconds of thinking time. (4) ADMIT LIMITATIONS GRACEFULLY: if the data isn't there, 'Diese spezifischen Daten habe ich nicht parat — ich folge per E-Mail nach'. (5) ENGLISH VS GERMAN: at an international conference English is usually the default. But if >50% of the audience is German, switch to German to show effort.\n\nNetworking register: small-talk safe topics — your trip, conference highlights, the city. AVOID: politics, religion, personal life (family, salary).\n\nDifferent from many Anglo-American conferences: those often include personal stories and jokes inside a presentation. In Germany, the presentation is data + structure.\n\nCommon mistakes from less experienced delegates: (1) over-thanking — Germans read this as too much; one acknowledgement is enough; (2) under-preparing for Q&A — putting 100% into the talk and forgetting the Q&A is 50% of the impression; (3) shy networking — clustering in the corner with colleagues from home.",
     "idiom_glosses": [
       {
         "idiom": "Eindruck machen",
         "literal": "Tạo ấn tượng",
+        "literal_en": "to make an impression",
         "meaning": "Tạo impression. Trong context conference: 'einen guten Eindruck machen' = tạo ấn tượng tốt — quan trọng cho speaker và networking.",
         "meaning_en": "To make an impression. In conference context: 'einen guten Eindruck machen' = make a good impression — central for speakers and networking.",
-        "example": "Mit Ihrer fundierten Antwort haben Sie einen sehr guten Eindruck gemacht."
+        "example": "Mit Ihrer fundierten Antwort haben Sie einen sehr guten Eindruck gemacht.",
+        "example_en": "With your well-founded answer you made a very good impression."
       },
       {
         "idiom": "Den Stein ins Rollen bringen",
         "literal": "Đẩy đá lăn",
+        "literal_en": "to get the stone rolling",
         "meaning": "Khởi xướng, mở đầu cho điều gì lớn hơn. Trong opening của presentation hoặc panel: 'Lassen Sie mich den Stein ins Rollen bringen' = Cho phép em khởi xướng.",
         "meaning_en": "To get the ball rolling. Used at the opening of a presentation or panel: 'Lassen Sie mich den Stein ins Rollen bringen' = let me kick things off.",
-        "example": "Lassen Sie mich den Stein ins Rollen bringen mit einer Provokation."
+        "example": "Lassen Sie mich den Stein ins Rollen bringen mit einer Provokation.",
+        "example_en": "Let me get the ball rolling with a provocation."
       },
       {
         "idiom": "Sich aus dem Staub machen",
         "literal": "Tự mình từ bụi đi ra",
+        "literal_en": "to make oneself off into the dust",
         "meaning": "Lẻn đi, biến mất nhanh. Mô tả networking failure: nếu cuộc trò chuyện không đi đến đâu, có thể politely 'sich aus dem Staub machen' với 'Es war ein nettes Gespräch — ich gehe noch zum Stand X'.",
         "meaning_en": "To slip away — quietly disappear. Useful for networking failure: if a conversation isn't going anywhere, you can politely 'sich aus dem Staub machen' with 'Es war ein nettes Gespräch — ich gehe noch zum Stand X'.",
-        "example": "Nach 10 Minuten Smalltalk habe ich mich elegant aus dem Staub gemacht."
+        "example": "Nach 10 Minuten Smalltalk habe ich mich elegant aus dem Staub gemacht.",
+        "example_en": "After ten minutes of small talk I made a graceful exit."
       },
       {
         "idiom": "Wer A sagt, muss auch B sagen",
         "literal": "Đã nói A phải nói B",
+        "literal_en": "whoever says A must also say B",
         "meaning": "Một khi đã commit, phải đi tiếp đến cuối. Logic chain: nếu nhận premise A, phải accept consequence B. Trong Q&A.",
         "meaning_en": "Once committed, follow through to the end. A logic chain: if you accept premise A, you have to accept consequence B. Useful in Q&A.",
-        "example": "Wer A sagt, muss auch B sagen — wenn wir Nachhaltigkeit fordern, müssen wir die Mehrkosten akzeptieren."
+        "example": "Wer A sagt, muss auch B sagen — wenn wir Nachhaltigkeit fordern, müssen wir die Mehrkosten akzeptieren.",
+        "example_en": "In for a penny, in for a pound — if we demand sustainability, we have to accept the extra costs."
       }
     ],
     "exercises": [
@@ -8312,36 +8493,49 @@ export const lessons: GermanLesson[] = [
       "Trong dinner, khách Đức nói thẳng 'Ich finde, das Essen ist auf Dauer zu salzig'. Bạn slightly hurt nhưng professional. Hãy phản hồi không tự ái — thừa nhận VN cuisine có sodium cao do nước mắm, đề xuất giải pháp (less fish sauce next time, request 'leicht gewürzt' khi order).",
       "Khách Đức say bia hơn dự kiến (3 chai Saigon thay vì 1). Anh ấy bắt đầu ask personal questions ('Wann heiratest du?', 'Wie viel verdient man hier?'). Hãy gracefully redirect, không embarrass anh ấy, và đảm bảo anh ấy về hotel an toàn (book Grab, đưa địa chỉ)."
     ],
+    "roleplay_prompts_en": [
+      "The German guest is shocked to see 'Hot Pot Schlangenfleisch' (snake hot pot) on the menu at the place you chose. He asks 'Essen die Vietnamesen wirklich Schlangen?' in a curious but slightly disgusted tone. Explain Vietnamese food culture in a balanced way — not apologetic, not defensive. Validate cuisine diversity, suggest alternative dishes.",
+      "Over dinner, the German guest says bluntly 'Ich finde, das Essen ist auf Dauer zu salzig'. You're slightly hurt but stay professional. Respond without taking offence — acknowledge that Vietnamese cuisine is high in sodium because of fish sauce, propose a fix (less fish sauce next time, request 'leicht gewürzt' when ordering).",
+      "The German guest is drunker than expected (three Saigon beers instead of one). He starts asking personal questions ('Wann heiratest du?', 'Wie viel verdient man hier?'). Gracefully redirect without embarrassing him, and make sure he gets back to his hotel safely (book a Grab, give the address)."
+    ],
     "register_notes": "Dinner với khách Đức = balance giữa formal (vẫn 'Sie') và relaxed (smalltalk casual hơn meeting). (1) GIỮ 'SIE' xuyên suốt nếu là business dinner. Chỉ chuyển 'du' nếu khách EXPLICITLY đề nghị. (2) FOOD VOCABULARY: học vocabulary cho VN dishes bằng Đức — 'Sommerrollen' (gỏi cuốn), 'Rindfleisch-Nudelsuppe' (phở bò). KHÔNG để khách phải đoán. (3) RECOMMENDATIONS, KHÔNG ORDERS: 'Ich empfehle Ihnen...', 'Sehr beliebt ist...', 'Würden Sie probieren...?'. KHÔNG 'Sie müssen das essen'. (4) SMALLTALK TOPICS: SAFE = chuyến đi, conference, sightseeing, food preferences. RISKY = politics, religion, lương cá nhân. AVOID = personal life questions. (5) SILENCES OK: ở Đức dinner, có khoảng silence là natural. KHÔNG fill mọi second với chatter.\n\nKhi khách order: KHÔNG override choice. Có thể gentle suggest: 'Eine Alternative wäre...' — sau đó để họ decide.\n\nBill: signal waiter discreetly. Sign credit card không show total. Nếu khách insist split, accept gracefully.\n\nKhác Việt Nam: ở VN, host thường order cho cả bàn; ở Đức, mỗi người chọn. Trong dinner cross-cultural, ASK first: 'Möchten Sie selbst aussuchen oder soll ich Empfehlungen aussprechen?'.\n\nNgười Việt thường mắc lỗi: (1) load plate khách full — controlling; (2) ép uống bia; (3) order quá nhiều dishes; (4) không brief waiter về language preferences.",
     "register_notes_en": "A dinner with a German guest sits between formal (still 'Sie') and relaxed (small-talk is more casual than a meeting). (1) STICK WITH 'SIE' throughout a business dinner. Only switch to 'du' if the guest EXPLICITLY offers. (2) FOOD VOCABULARY: learn the German names for Vietnamese dishes — 'Sommerrollen' (gỏi cuốn), 'Rindfleisch-Nudelsuppe' (phở bò). DO NOT make the guest guess. (3) RECOMMENDATIONS, NOT ORDERS: 'Ich empfehle Ihnen…', 'Sehr beliebt ist…', 'Würden Sie probieren…?'. NOT 'Sie müssen das essen'. (4) SMALL-TALK TOPICS: SAFE = trip, conference, sightseeing, food preferences. RISKY = politics, religion, personal salary. AVOID = personal life questions. (5) SILENCES ARE OK: in a German dinner some silence is natural. DO NOT fill every second with chatter.\n\nWhen the guest orders: DO NOT override their choice. You can gently suggest: 'Eine Alternative wäre…' — then let them decide.\n\nThe bill: signal the waiter discreetly. Sign the credit card slip without showing the total. If the guest insists on splitting, accept gracefully.\n\nDifferent from Vietnamese norms: in Vietnam the host usually orders for the whole table; in Germany each person picks their own. In a cross-cultural dinner, ASK first: 'Möchten Sie selbst aussuchen oder soll ich Empfehlungen aussprechen?'.\n\nCommon mistakes from less experienced hosts: (1) loading the guest's plate full — reads as controlling; (2) pushing more beer; (3) over-ordering; (4) not briefing the waiter on language preferences.",
     "idiom_glosses": [
       {
         "idiom": "Hunger ist der beste Koch",
         "literal": "Đói là đầu bếp tuyệt nhất",
+        "literal_en": "hunger is the best cook",
         "meaning": "Khi đói, mọi thứ đều ngon. Câu thành ngữ phổ biến để break ice trước bữa ăn — báo hiệu thái độ relaxed về food expectations.",
         "meaning_en": "When you're hungry, everything tastes good. Common phrase to break the ice before a meal — it signals a relaxed attitude about food expectations.",
-        "example": "Nach dem langen Flug ist Hunger der beste Koch — heute schmeckt sicher alles."
+        "example": "Nach dem langen Flug ist Hunger der beste Koch — heute schmeckt sicher alles.",
+        "example_en": "After the long flight hunger is the best sauce — everything's bound to taste good today."
       },
       {
         "idiom": "Auf den Geschmack kommen",
         "literal": "Đến với vị giác",
+        "literal_en": "to come onto the taste",
         "meaning": "Bắt đầu thích, develop a taste for. Trong context food: 'Sie kommen langsam auf den Geschmack' = anh đang dần thích. Phù hợp khi khách lần đầu thử món lạ.",
         "meaning_en": "To start liking, develop a taste for. In food context: 'Sie kommen langsam auf den Geschmack' = you're starting to enjoy it. Useful when the guest is trying an unfamiliar dish for the first time.",
-        "example": "Probieren Sie ruhig — Sie kommen sicher auf den Geschmack."
+        "example": "Probieren Sie ruhig — Sie kommen sicher auf den Geschmack.",
+        "example_en": "Do go ahead and try it — you'll surely acquire a taste for it."
       },
       {
         "idiom": "Die Gastfreundschaft genießen",
         "literal": "Hưởng sự hiếu khách",
+        "literal_en": "to enjoy the hospitality",
         "meaning": "Tận hưởng sự đón tiếp nồng hậu. Đây là cụm formal khách dùng để compliment host.",
         "meaning_en": "To enjoy the hospitality. A formal phrase guests use to compliment a host.",
-        "example": "Vielen Dank — wir genießen Ihre Gastfreundschaft sehr."
+        "example": "Vielen Dank — wir genießen Ihre Gastfreundschaft sehr.",
+        "example_en": "Thank you very much — we're really enjoying your hospitality."
       },
       {
         "idiom": "Mit Messer und Gabel essen",
         "literal": "Ăn bằng dao và nĩa",
+        "literal_en": "to eat with knife and fork",
         "meaning": "Ăn theo cách phương Tây (table manners). Trong context VN-Đức: cần explain cho khách rằng VN ăn với chopsticks và spoon.",
         "meaning_en": "To eat the Western way (with knife and fork). In a Vietnam–Germany context: you may need to explain that Vietnamese cuisine is eaten with chopsticks and a spoon.",
-        "example": "Bei uns benutzen wir Stäbchen, nicht Messer und Gabel — aber wenn Sie lieber das hätten, fragen wir den Kellner."
+        "example": "Bei uns benutzen wir Stäbchen, nicht Messer und Gabel — aber wenn Sie lieber das hätten, fragen wir den Kellner.",
+        "example_en": "We use chopsticks here, not a knife and fork — but if you'd rather have those, we'll ask the waiter."
       }
     ],
     "exercises": [
@@ -8723,36 +8917,49 @@ export const lessons: GermanLesson[] = [
       "Bạn được mời German colleague + family đến nhà mình ăn Tết. Họ chưa bao giờ trải nghiệm Tết. Hãy chuẩn bị 'briefing' 5 minutes: what to expect (lì xì cho trẻ con, ăn nhiều món, thắp hương bàn thờ), what to bring (giỏ trái cây, kẹo), do/don'ts (đừng quét nhà, đừng cãi nhau).",
       "Sếp Đức lên kế hoạch product launch ngay vào tuần Tết — không biết về Tết. Hãy explain tại sao timing này thảm hoạ (factories đóng, supply chain dừng, no media coverage), đề xuất alternatives (1 tuần trước hoặc 2 tuần sau), và educate cho future planning."
     ],
+    "roleplay_prompts_en": [
+      "A German colleague at Bosch HCMC says 'Ich verstehe nicht, warum Vietnamesen so viel Geld für Tết ausgeben — das ist doch nicht nachhaltig'. Explain the economic and emotional context (the annual family reunion, the obligation to ancestors, gift culture) without being defensive — validate the concern, frame it as a cultural value.",
+      "You invite a German colleague and family to your home for Tết. They've never experienced Tết. Prepare a five-minute briefing: what to expect (lì xì for the children, many dishes, lighting incense at the family altar), what to bring (a fruit basket, sweets), the dos and don'ts (don't sweep the floor, don't quarrel).",
+      "Your German boss schedules a product launch right in the week of Tết — unaware of Tết. Explain why this timing is disastrous (factories closed, the supply chain halts, no media coverage), propose alternatives (a week earlier or two weeks later), and educate them for future planning."
+    ],
     "register_notes": "Explain Tết = personal storytelling + cultural context. (1) USE 'WIR' framing: 'Wir Vietnamesen feiern Tết so...'. Báo hiệu insider perspective. (2) ANALOGIES với Weihnachten OK nhưng KHÔNG over-equate. 'Tết ist wie Weihnachten, aber...' — cho difference rõ. (3) PROPER NOUNS: keep VN tên gốc trong tiếng Đức ('Bánh Chưng' không 'Reiskuchen' duy nhất; 'Tết' không 'vietnamesisches Neujahr' duy nhất). (4) AVOID OVER-DRAMATIZE: Tết là wonderful nhưng cũng có downsides. Honest framing > fairy tale. (5) ENGAGE WITH QUESTIONS: nếu Đức ask question 'naive', KHÔNG defensive.\n\nKhi mời German guest tham gia Tết: register hơi formal hơn nếu sếp ('Es wäre mir eine Ehre, wenn Sie unser Tết-Fest miterleben würden'). Casual hơn với colleague gần ('Komm doch zu uns Tết feiern!').\n\nKhác Việt Nam: ở VN, Tết là common knowledge — bạn không phải explain. Ở Đức/quốc tế, bạn là cultural educator — practice cách explain succinctly + emotionally engaging.\n\nNgười Việt thường mắc lỗi: (1) over-explain (5-minute lecture về 4000 năm history) — Đức bored quickly; (2) under-explain (dismiss với 'It's like Christmas') — miss richness; (3) apologize cho 'lạc hậu' aspects — nothing to apologize for.",
     "register_notes_en": "Explaining Tết = personal storytelling + cultural context. (1) USE 'WIR' framing: 'Wir Vietnamesen feiern Tết so…'. It signals an insider perspective. (2) ANALOGIES with Weihnachten are OK but DO NOT over-equate. 'Tết ist wie Weihnachten, aber…' — make the difference explicit. (3) PROPER NOUNS: keep the original Vietnamese names in German ('Bánh Chưng' rather than only 'Reiskuchen'; 'Tết' rather than only 'vietnamesisches Neujahr'). (4) AVOID OVER-DRAMATISING: Tết is wonderful but it has its downsides. Honest framing > fairy tale. (5) ENGAGE WITH QUESTIONS: if a German asks a 'naive' question, DO NOT get defensive.\n\nWhen inviting a German guest to join Tết: register is slightly more formal if it's your boss ('Es wäre mir eine Ehre, wenn Sie unser Tết-Fest miterleben würden'). More casual with a close colleague ('Komm doch zu uns Tết feiern!').\n\nDifferent from a Vietnamese setting: at home Tết is common knowledge — you don't have to explain. Abroad you're a cultural educator — practise explaining it succinctly and engagingly.\n\nCommon mistakes from less experienced explainers: (1) over-explain (a 5-minute lecture on 4,000 years of history) — Germans bore quickly; (2) under-explain (dismiss with 'It's like Christmas') — miss the richness; (3) apologise for 'old-fashioned' aspects — nothing to apologise for.",
     "idiom_glosses": [
       {
         "idiom": "Das Fest aller Feste",
         "literal": "Lễ của mọi lễ",
+        "literal_en": "the festival of all festivals",
         "meaning": "Lễ quan trọng nhất, ưu việt nhất. Câu thành ngữ siêu quy mô — phù hợp khi explain Tết với người Đức để convey emotional weight.",
         "meaning_en": "The most important festival, the pre-eminent one. A grand, sweeping phrase — useful when you want to convey to a German listener how much emotional weight Tết carries.",
-        "example": "Tết ist für uns Vietnamesen das Fest aller Feste — wichtiger als Weihnachten."
+        "example": "Tết ist für uns Vietnamesen das Fest aller Feste — wichtiger als Weihnachten.",
+        "example_en": "For us Vietnamese, Tết is the festival of festivals — more important than Christmas."
       },
       {
         "idiom": "Tradition wahren",
         "literal": "Giữ truyền thống",
+        "literal_en": "to preserve tradition",
         "meaning": "Duy trì truyền thống thay vì để mai một. Phù hợp khi explain ancient practices (bàn thờ, lì xì) — báo hiệu intentional preservation.",
         "meaning_en": "To preserve tradition rather than let it fade. Useful when explaining ancient practices (the altar, lì xì) — it signals intentional preservation.",
-        "example": "Wer Tradition wahren will, isst Bánh Chưng zu Tết."
+        "example": "Wer Tradition wahren will, isst Bánh Chưng zu Tết.",
+        "example_en": "Anyone who wants to keep up tradition eats Bánh Chưng at Tết."
       },
       {
         "idiom": "Glück bringen",
         "literal": "Mang lại may mắn",
+        "literal_en": "to bring luck",
         "meaning": "Mang điều may mắn. Cụm chuyên dùng cho Tết practices: rote Umschläge bringen Glück, Pflaumenblüten bringen Glück.",
         "meaning_en": "To bring luck. A stock phrase for Tết practices: red envelopes bring luck, plum blossoms bring luck.",
-        "example": "Der rote Umschlag bringt Glück fürs neue Jahr."
+        "example": "Der rote Umschlag bringt Glück fürs neue Jahr.",
+        "example_en": "The red envelope brings good luck for the new year."
       },
       {
         "idiom": "Vom Hocker hauen",
         "literal": "Đập từ ghế đẩu xuống",
+        "literal_en": "to knock someone off their stool",
         "meaning": "Làm choáng váng (positive sense) — impress mạnh đến mức gần như đổ ghế. Câu thành ngữ casual để hứa experience powerful.",
         "meaning_en": "To knock you off your stool (positive) — to impress someone so much they almost fall over. A casual phrase used to promise a powerful experience.",
-        "example": "Wenn du Tết wirklich erlebst, wird es dich vom Hocker hauen."
+        "example": "Wenn du Tết wirklich erlebst, wird es dich vom Hocker hauen.",
+        "example_en": "If you really experience Tết, it will absolutely blow you away."
       }
     ],
     "exercises": [
@@ -9124,36 +9331,49 @@ export const lessons: GermanLesson[] = [
       "Nhân viên VN dưới quyền bạn nói thẳng 'Bạn (Đức boss) thiếu cultural sensitivity' trong 360 review. Bạn shocked vì nghĩ mình đã adapt tốt. Hãy approach nhân viên đó cho cuộc trò chuyện — show you take feedback seriously, ask specific examples, propose action plan together. NO defensive.",
       "Trong project meeting, một German colleague mới (chưa hiểu VN context) nói 'Eure Produktion in Vietnam ist unzuverlässig' trước khách hàng VN. Khách hàng visibly hurt. Bạn cần handle ngay tại meeting (de-escalate) AND sau (private conversation với colleague Đức về cultural impact)."
     ],
+    "roleplay_prompts_en": [
+      "A German colleague keeps overruling your decisions in meetings without consulting you first. After the fourth time, you decide to confront it. Script a 1-on-1 meeting: the opening, concrete examples, the impact on you (lost credibility with the team), a proposed solution (consult beforehand, or raise concerns privately afterwards).",
+      "A Vietnamese employee who reports to you states bluntly in a 360 review that you (the German boss) 'lack cultural sensitivity'. You're shocked because you thought you'd adapted well. Approach that employee for a conversation — show you take feedback seriously, ask for specific examples, propose an action plan together. NO defensiveness.",
+      "In a project meeting, a new German colleague (who doesn't yet understand the Vietnam context) says 'Eure Produktion in Vietnam ist unzuverlässig' in front of a Vietnamese client. The client is visibly hurt. You need to handle it right there in the meeting (de-escalate) AND afterwards (a private conversation with the German colleague about the cultural impact)."
+    ],
     "register_notes": "Cuộc trò chuyện khó cross-cultural đòi hỏi REGISTER ĐẶC BIỆT. (1) FORMAL HƠN bình thường: kể cả với 'du' colleague, language structure formal hơn — full sentences, careful word choice. (2) NEUTRAL VOCABULARY: tránh emotionally charged words. 'Ich habe mich gemaßregelt gefühlt' > 'Du hast mich gedemütigt'. (3) HEDGING phrases: 'Vielleicht...', 'Mein Eindruck war...', 'Ich kann mich auch täuschen, aber...' — báo hiệu open to other interpretation. (4) PAUSES OK: difficult conversations naturally have silences. KHÔNG fill mọi gap với chatter. (5) AVOID HUMOR: jokes có thể được hiểu là minimizing.\n\nChuẩn mở/kết:\n- Opening: 'Hast du Zeit für ein offenes Gespräch?'\n- Framing: 'Ich möchte etwas ansprechen, das mich beschäftigt'\n- Acknowledge: 'Ich verstehe deine Sicht'\n- Forward: 'Wie können wir besser zusammenarbeiten?'\n- Closing: 'Vielen Dank für das offene Gespräch'\n\nKhi RECEIVING criticism từ colleague Đức: pattern: (1) thank for raising it, (2) listen fully, (3) acknowledge their perspective, (4) ask clarifying questions, (5) take time to respond if needed, (6) propose action.\n\nKhác Việt Nam: ở VN, conflicts thường avoided face-to-face. Ở Đức, expected face-to-face.\n\nNgười Việt thường mắc lỗi: (1) avoid conversation entirely; (2) bring up via email; (3) escalate to HR/manager too quickly; (4) over-apologize; (5) cry/get emotional.",
     "register_notes_en": "A difficult cross-cultural conversation calls for a SPECIAL REGISTER. (1) MORE FORMAL than usual: even with a 'du' colleague, the sentence structure is more formal — full sentences, careful word choice. (2) NEUTRAL VOCABULARY: avoid emotionally charged words. 'Ich habe mich gemaßregelt gefühlt' > 'Du hast mich gedemütigt'. (3) HEDGING phrases: 'Vielleicht…', 'Mein Eindruck war…', 'Ich kann mich auch täuschen, aber…' — they signal you're open to another interpretation. (4) PAUSES ARE OK: difficult conversations naturally have silences. DO NOT fill every gap with chatter. (5) AVOID HUMOUR: jokes can read as minimising.\n\nStandard opening/closing:\n- Opening: 'Hast du Zeit für ein offenes Gespräch?'\n- Framing: 'Ich möchte etwas ansprechen, das mich beschäftigt'\n- Acknowledge: 'Ich verstehe deine Sicht'\n- Forward: 'Wie können wir besser zusammenarbeiten?'\n- Closing: 'Vielen Dank für das offene Gespräch'\n\nWhen RECEIVING criticism from a German colleague, the pattern is: (1) thank them for raising it, (2) listen fully, (3) acknowledge their perspective, (4) ask clarifying questions, (5) take time to respond if needed, (6) propose action.\n\nDifferent from many indirect-communication cultures: there, face-to-face conflicts are usually avoided. In Germany, face-to-face is expected.\n\nCommon mistakes: (1) avoiding the conversation entirely; (2) raising it by email; (3) escalating to HR / manager too quickly; (4) over-apologising; (5) crying / getting emotional.",
     "idiom_glosses": [
       {
         "idiom": "Aneinander vorbeireden",
         "literal": "Nói qua nhau",
+        "literal_en": "to talk past one another",
         "meaning": "Communicating without truly understanding each other — talking past each other. Cụm CHÍNH XÁC để mô tả cross-cultural miscommunication.",
         "meaning_en": "Talking past each other — communicating without actually understanding the other side. The precise phrase to describe cross-cultural miscommunication.",
-        "example": "Ich glaube, wir reden seit Wochen aneinander vorbei."
+        "example": "Ich glaube, wir reden seit Wochen aneinander vorbei.",
+        "example_en": "I think we've been talking past each other for weeks."
       },
       {
         "idiom": "Jemandem auf den Schlips treten",
         "literal": "Đạp lên cravat ai",
+        "literal_en": "to step on someone's tie",
         "meaning": "Vô tình xúc phạm ai. Phù hợp khi reference past offense without dramatizing.",
         "meaning_en": "To accidentally offend someone (literally: 'to step on someone's tie'). Useful when you want to reference a past offence without dramatising it.",
-        "example": "Es war nicht meine Absicht, dir auf den Schlips zu treten — entschuldige bitte."
+        "example": "Es war nicht meine Absicht, dir auf den Schlips zu treten — entschuldige bitte.",
+        "example_en": "It wasn't my intention to step on your toes — I'm sorry."
       },
       {
         "idiom": "Tabula rasa machen",
         "literal": "Làm bảng trắng",
+        "literal_en": "to make a clean slate (Latin: tabula rasa)",
         "meaning": "Xoá sạch và bắt đầu mới — wipe slate clean. Phù hợp khi cuộc trò chuyện khó kết thúc tích cực.",
         "meaning_en": "To wipe the slate clean and start fresh. Useful when a difficult conversation ends on a positive note.",
-        "example": "Lass uns Tabula rasa machen — alte Missverständnisse beiseite."
+        "example": "Lass uns Tabula rasa machen — alte Missverständnisse beiseite.",
+        "example_en": "Let's wipe the slate clean — old misunderstandings aside."
       },
       {
         "idiom": "Andere Länder, andere Sitten",
         "literal": "Đất khác, phong tục khác",
+        "literal_en": "other countries, other customs",
         "meaning": "Mỗi nơi có cultural norms riêng — frame để invoke cultural difference without judgment.",
         "meaning_en": "Different countries, different customs. A frame for invoking cultural difference without passing judgement.",
-        "example": "Andere Länder, andere Sitten — wir müssen beide etwas anpassen."
+        "example": "Andere Länder, andere Sitten — wir müssen beide etwas anpassen.",
+        "example_en": "When in Rome — we both have to adapt a little."
       }
     ],
     "exercises": [
@@ -9525,36 +9745,49 @@ export const lessons: GermanLesson[] = [
       "German friend bạn (đã 'du') invite bạn đến Oktoberfest at his expat home. Bạn không thích bia mạnh + loud party scene. Hãy decline politely without offending — propose alternative time/activity 1-on-1.",
       "German friend chuẩn bị về Đức sau 2 năm ở VN. Bạn muốn maintain long-distance friendship. Hãy script farewell conversation: thank for friendship, propose specific plan to stay in touch (monthly call, meet when both in same city), give meaningful small gift."
     ],
+    "roleplay_prompts_en": [
+      "After six months of working together, a German colleague still uses 'Sie' with you. You're not sure whether that's distance or just their personality. Try a gentle bridge — propose 'du' through a casual line: 'Stefan, ich finde, wir kennen uns gut genug — sollen wir zum Du übergehen?'.",
+      "A German friend of yours (already on 'du' terms) invites you to Oktoberfest at his expat home. You don't like strong beer or a loud party scene. Decline politely without offending — propose an alternative time/activity, just the two of you.",
+      "A German friend is about to return to Germany after two years in Vietnam. You want to keep up a long-distance friendship. Script the farewell conversation: thank them for the friendship, propose a concrete plan to stay in touch (a monthly call, meeting when you're both in the same city), give a meaningful small gift."
+    ],
     "register_notes": "Kết bạn với German register chuyển đổi tinh tế. (1) START 'SIE': trong workplace context, ngay cả đồng nghiệp gần, 'Sie' là default. Chuyển 'du' khi: (a) họ propose, (b) social context bên ngoài work, (c) startup/agency culture. (2) 'DU' = MEANINGFUL: nếu họ propose 'du', đây là intimacy upgrade. Accept gracefully. (3) DEPTH STAGES: Stage 1 Smalltalk (weather, sport, food); Stage 2 Personal interests (hobbies, travel); Stage 3 Vulnerable topics (work struggles, family). Đừng skip stages. (4) HUMOR EVOLVES: early friendship — safe humor (observational, self-deprecating). Established friendship — sarcasm, German dry wit. (5) PRIVACY tôn trọng.\n\nNgôn ngữ chuẩn cho từng stage:\n- Stage 1 (early): 'Lust auf einen Kaffee?'\n- Stage 2 (developing): 'Hast du am Wochenende was vor?'\n- Stage 3 (close): 'Bei mir kannst du jederzeit vorbeikommen'\n\nKhi German friend share emotional content (rare): LISTEN, don't fix.\n\nKhác Việt Nam: ở VN, friendship can be high-touch. Ở Đức, healthy friendship có space — weekly contact, monthly meetings = normal close.\n\nNgười Việt thường mắc lỗi: (1) over-communicate early; (2) expect họ available 24/7; (3) take silence as rejection; (4) push for label; (5) under-communicate after they leave VN.",
     "register_notes_en": "Becoming friends with a German involves subtle register shifts. (1) START WITH 'SIE': in a workplace context, even with a close colleague, 'Sie' is the default. Switch to 'du' when: (a) they propose it, (b) the social context is outside work, (c) startup/agency culture. (2) 'DU' = MEANINGFUL: if they offer 'du', that's an intimacy upgrade. Accept gracefully. (3) DEPTH STAGES: Stage 1 small-talk (weather, sport, food); Stage 2 personal interests (hobbies, travel); Stage 3 vulnerable topics (work struggles, family). Don't skip stages. (4) HUMOUR EVOLVES: early friendship — safe humour (observational, self-deprecating). Established friendship — sarcasm, German dry wit. (5) PRIVACY is respected.\n\nStandard phrasing by stage:\n- Stage 1 (early): 'Lust auf einen Kaffee?'\n- Stage 2 (developing): 'Hast du am Wochenende was vor?'\n- Stage 3 (close): 'Bei mir kannst du jederzeit vorbeikommen'\n\nWhen a German friend shares emotional content (rare): LISTEN, don't try to fix it.\n\nDifferent from Vietnamese norms: in Vietnam friendship can be high-touch. In Germany a healthy friendship has space — weekly contact, monthly meetings = a normal close friendship.\n\nCommon mistakes: (1) over-communicating early; (2) expecting them available 24/7; (3) reading silence as rejection; (4) pushing for a label; (5) under-communicating after they leave Vietnam.",
     "idiom_glosses": [
       {
         "idiom": "Über den eigenen Schatten springen",
         "literal": "Nhảy qua bóng của chính mình",
+        "literal_en": "to jump over one's own shadow",
         "meaning": "Vượt qua chính mình — làm điều ngược lại bản tính. Trong context kết bạn cross-cultural: cả hai bên có lúc 'über den eigenen Schatten springen'.",
         "meaning_en": "To jump over your own shadow — to overcome yourself, to do something against your own nature. In cross-cultural friendship: both sides sometimes have to 'über den eigenen Schatten springen'.",
-        "example": "Beide Seiten müssen über ihren eigenen Schatten springen, damit eine Freundschaft funktioniert."
+        "example": "Beide Seiten müssen über ihren eigenen Schatten springen, damit eine Freundschaft funktioniert.",
+        "example_en": "Both sides have to step out of their comfort zone for a friendship to work."
       },
       {
         "idiom": "Sich anfreunden",
         "literal": "Tự kết bạn với",
+        "literal_en": "to befriend oneself",
         "meaning": "Become friends with someone — gradual process word, không event. Đức use to describe friendship development.",
         "meaning_en": "To become friends with someone — describes the gradual process, not an event. Germans use this verb to describe how a friendship develops.",
-        "example": "Wir haben uns über die letzten sechs Monate angefreundet."
+        "example": "Wir haben uns über die letzten sechs Monate angefreundet.",
+        "example_en": "We've become friends over the last six months."
       },
       {
         "idiom": "Auf gleicher Wellenlänge sein",
         "literal": "Trên cùng bước sóng",
+        "literal_en": "to be on the same wavelength",
         "meaning": "Cùng wavelength — communicate easily, share humor, similar values. Khi friendship really click.",
         "meaning_en": "To be on the same wavelength — to communicate easily, share humour, share values. The phrase for the moment a friendship really clicks.",
-        "example": "Wenn man auf gleicher Wellenlänge ist, spielen Kultur und Sprache eine kleinere Rolle."
+        "example": "Wenn man auf gleicher Wellenlänge ist, spielen Kultur und Sprache eine kleinere Rolle.",
+        "example_en": "When you're on the same wavelength, culture and language matter less."
       },
       {
         "idiom": "Eine Schulter zum Anlehnen",
         "literal": "Một bờ vai để dựa",
+        "literal_en": "a shoulder to lean on",
         "meaning": "Người ai có thể tựa vào trong khó khăn. Cụm warm cho true friendship.",
         "meaning_en": "A shoulder to lean on — someone you can rely on through difficult times. A warm phrase for genuine friendship.",
-        "example": "In schweren Zeiten brauche ich eine Schulter zum Anlehnen — und du bist diese Schulter."
+        "example": "In schweren Zeiten brauche ich eine Schulter zum Anlehnen — und du bist diese Schulter.",
+        "example_en": "In hard times I need a shoulder to lean on — and you are that shoulder."
       }
     ],
     "exercises": [
@@ -9926,36 +10159,49 @@ export const lessons: GermanLesson[] = [
       "Bạn đang transit qua Frankfurt sang Stuttgart, nhưng hành lý bạn check-in từ Hà Nội còn ở Frankfurt. Hành lý chứa giấy tờ Arbeitsvertrag bản gốc. Hãy giải thích tình huống cho sĩ quan, đề xuất giải pháp (xuất trình bản scan trên phone, gọi HR), và xin được phép nhập cảnh dù tạm thời thiếu giấy gốc.",
       "Sĩ quan hỏi 'Sprechen Sie nur Englisch oder auch Deutsch?'. Bạn ở mức B2. Hãy trả lời tự tin — confirm B2 (không nói 'fluent' nếu không thật, không nói 'kein Deutsch' nếu B2), và proceed bằng Đức trong khả năng. Pattern: 'Ich spreche Deutsch auf B2-Niveau, aber bei komplizierten Fragen wäre Englisch sicherer'."
     ],
+    "roleplay_prompts_en": [
+      "The border officer is suspicious of your work visa (very rare with Bosch, but possible with a small company): 'Ihr Arbeitgeber ist nicht in unserer Datenbank — bitte warten Sie zur Sekundärkontrolle'. Respond calmly — don't panic, don't argue, ask for an interpreter if needed, and offer to call Bosch HR to verify.",
+      "You're in transit through Frankfurt to Stuttgart, but the luggage you checked in from Hanoi is still in Frankfurt. The bag contains your original employment contract. Explain the situation to the officer, propose a solution (show a scan on your phone, call HR), and ask to be admitted even though the originals are temporarily missing.",
+      "The officer asks 'Sprechen Sie nur Englisch oder auch Deutsch?'. You're at B2 level. Answer confidently — confirm B2 (don't say 'fluent' if it isn't true, don't say 'no German' if you're at B2), and proceed in German as far as you can. Pattern: 'Ich spreche Deutsch auf B2-Niveau, aber bei komplizierten Fragen wäre Englisch sicherer'."
+    ],
     "register_notes": "Hải quan Đức formal tuyệt đối. (1) 'SIE' luôn — sĩ quan không bao giờ 'du'. Trả lời cũng 'Sie': 'Ja, hier ist mein Pass' (KHÔNG 'Hier hast du'). (2) GIỌNG NGẮN, FACTUAL: câu trả lời 5-10 từ tốt hơn câu 30 từ. 'Arbeit. Zwei Jahre' đủ; 'Tôi sang Đức làm việc lâu dài để phát triển sự nghiệp...' = quá dài. (3) ĐỪNG ĐÙA: jokes về drugs, weapons, illegal status có thể dẫn đến secondary inspection 2-3 giờ. Sĩ quan có training để spot evasion, không có training để appreciate humor. (4) NGÔN NGỮ Y TẾ/PHÁP LÝ: dùng từ formal — 'Reisepass' (không 'Pass'), 'Aufenthalt' (không 'Bleibe'), 'Arbeitgeber' (không 'Chef'). (5) HỎI LẠI LỊCH SỰ: nếu không hiểu, 'Könnten Sie das wiederholen?' hoặc 'Entschuldigung, ich habe nicht verstanden'. KHÔNG nod im lặng nếu không hiểu — bị coi là evasion.\n\nNgôn ngữ chuẩn cho mỗi loại câu hỏi:\n- Mục đích: 'Arbeit / Tourismus / Studium / Familie'\n- Thời gian: 'Zwei Jahre' / 'Drei Wochen' / 'Sechs Monate'\n- Địa chỉ: full address với PLZ\n- Tiền: con số chính xác trong euro\n- Khai báo: 'Nein, nichts zu verzollen' hoặc 'Ja, ich möchte X verzollen'\n\nKhác Việt Nam: ở VN có thể chat thân thiện với hải quan, đôi khi cười đùa. Ở Đức: zero smalltalk. Đợi sĩ quan greet, trả lời, đợi câu hỏi tiếp.\n\nNgười Việt thường mắc lỗi: (1) over-explain — đưa thông tin sĩ quan không hỏi; (2) Mỹ-English style 'Hi, how are you?' — sĩ quan Đức expect 'Guten Tag' formal; (3) cãi lại nếu bị nghi ngờ — tuân thủ, không argue.",
     "register_notes_en": "German border control is absolutely formal. (1) ALWAYS 'SIE' — the officer never uses 'du'. Your answer is also 'Sie': 'Ja, hier ist mein Pass' (NOT 'Hier hast du'). (2) SHORT, FACTUAL TONE: a 5–10-word answer beats a 30-word one. 'Arbeit. Zwei Jahre' is enough; 'I am coming to Germany long-term to develop my career…' = too long. (3) DON'T JOKE: jokes about drugs, weapons, illegal status can trigger a 2–3-hour secondary inspection. Officers are trained to spot evasion, not appreciate humour. (4) MEDICAL/LEGAL VOCABULARY: use formal terms — 'Reisepass' (not 'Pass'), 'Aufenthalt' (not 'Bleibe'), 'Arbeitgeber' (not 'Chef'). (5) POLITELY ASK AGAIN: if you didn't understand, 'Könnten Sie das wiederholen?' or 'Entschuldigung, ich habe nicht verstanden'. DO NOT nod silently if you don't understand — that reads as evasion.\n\nStandard phrasing for each question type:\n- Purpose: 'Arbeit / Tourismus / Studium / Familie'\n- Duration: 'Zwei Jahre' / 'Drei Wochen' / 'Sechs Monate'\n- Address: full address with PLZ (postcode)\n- Money: exact figure in euros\n- Declaration: 'Nein, nichts zu verzollen' or 'Ja, ich möchte X verzollen'\n\nDifferent from many Anglo-American settings: there you can chat lightly with the officer ('How's your day?'). At German control: zero small-talk. Wait for the officer to greet you, answer, wait for the next question.\n\nCommon mistakes from less experienced travellers: (1) over-explain — giving information the officer didn't ask for; (2) American-style 'Hi, how are you?' — the German officer expects formal 'Guten Tag'; (3) arguing if questioned — comply, don't argue.",
     "idiom_glosses": [
       {
         "idiom": "Auf Nummer sicher gehen",
         "literal": "Đi theo số an toàn",
+        "literal_en": "to go on the safe number",
         "meaning": "Cẩn thận, làm theo cách an toàn nhất — không liều. Trong context biên giới: 'Ich gehe auf Nummer sicher und nehme alle Dokumente in Papierform mit' = Em cẩn thận, mang tất cả giấy tờ bản giấy.",
         "meaning_en": "To play it safe — go with the safest option, don't take risks. In a border context: 'Ich gehe auf Nummer sicher und nehme alle Dokumente in Papierform mit' = I'm playing it safe and bringing all documents on paper.",
-        "example": "Beim Grenzübertritt gehe ich immer auf Nummer sicher — alle Dokumente in Papierform."
+        "example": "Beim Grenzübertritt gehe ich immer auf Nummer sicher — alle Dokumente in Papierform.",
+        "example_en": "At a border crossing I always play it safe — all documents on paper."
       },
       {
         "idiom": "Reinen Tisch machen",
         "literal": "Làm sạch bàn",
+        "literal_en": "to make a clean table",
         "meaning": "Khai báo trung thực, không giấu — đặt mọi thứ lên bàn rõ ràng. Trong context customs declaration: nếu có gì cần khai, khai ngay đầu, không đợi sĩ quan tìm.",
         "meaning_en": "To make a clean slate — declare everything honestly, put it all on the table. In a customs context: if you have something to declare, declare it up front; don't wait for the officer to find it.",
-        "example": "Bei der Zollkontrolle empfiehlt es sich, gleich reinen Tisch zu machen — alle deklarierungspflichtigen Gegenstände vorab nennen."
+        "example": "Bei der Zollkontrolle empfiehlt es sich, gleich reinen Tisch zu machen — alle deklarierungspflichtigen Gegenstände vorab nennen.",
+        "example_en": "At customs it's wise to come clean right away — name everything declarable up front."
       },
       {
         "idiom": "Mit der Tür ins Haus fallen",
         "literal": "Đập cửa ngã vào nhà",
+        "literal_en": "to fall into the house with the door",
         "meaning": "Vào thẳng vấn đề thiếu lịch sự — quá đột ngột. Trong context biên giới: tránh 'Mit der Tür ins Haus fallen' bằng câu mở đầu lễ phép trước khi đưa giấy tờ.",
         "meaning_en": "To barge straight in (literally: 'to fall into the house with the door'). In a border context: avoid 'Mit der Tür ins Haus fallen' by opening with a polite phrase before handing over your documents.",
-        "example": "Mit einem höflichen 'Guten Tag' anfangen, nicht gleich mit der Tür ins Haus fallen."
+        "example": "Mit einem höflichen 'Guten Tag' anfangen, nicht gleich mit der Tür ins Haus fallen.",
+        "example_en": "Start with a polite 'Guten Tag', don't blurt it straight out."
       },
       {
         "idiom": "Glück im Unglück haben",
         "literal": "Có may trong rủi",
+        "literal_en": "to have luck within misfortune",
         "meaning": "Trong cái rủi có cái may. Phù hợp cho situations bất tiện ở biên giới (chờ lâu, secondary check) nhưng kết thúc êm.",
         "meaning_en": "To have luck within bad luck — a silver lining in an awkward situation. Fits border scenarios where things are inconvenient (long wait, secondary check) but end smoothly.",
-        "example": "Trotz der zweistündigen Wartezeit hatte ich Glück im Unglück — der Beamte war sehr verständnisvoll."
+        "example": "Trotz der zweistündigen Wartezeit hatte ich Glück im Unglück — der Beamte war sehr verständnisvoll.",
+        "example_en": "Despite the two-hour wait, it was a blessing in disguise — the officer was very understanding."
       }
     ],
     "exercises": [
@@ -10327,36 +10573,49 @@ export const lessons: GermanLesson[] = [
       "Tại Đại sứ quán, cán bộ nói: 'Anh không có Anzeige cảnh sát hợp lệ — biên bản này là 'Verlustanzeige' (báo mất) chứ không phải 'Diebstahlsanzeige' (báo bị trộm). Mình cần Diebstahlsanzeige nếu hộ chiếu bị trộm'. Hãy phản hồi giải thích — anh không chắc mất hay bị trộm, hỏi xem có thể adjust biên bản hay phải làm lại.",
       "Sau khi nhận Notpass, hãng bay (Lufthansa) yêu cầu thêm 'Confirmation letter from embassy stating Notpass is valid for travel to Vietnam'. Đại sứ quán không quen với yêu cầu này. Hãy đàm phán — xin cán bộ viết letter ngắn (3-4 dòng) hoặc cung cấp số liên hệ Đại sứ quán cho Lufthansa gọi xác minh."
     ],
+    "roleplay_prompts_en": [
+      "You've just discovered your passport is missing at a Frankfurt hotel on Friday evening — the embassy is closed at the weekend. Your flight home is Monday morning. Script an action plan: (1) Friday night — call the embassy emergency hotline; (2) Saturday — file a report at the Polizeiwache; (3) early Monday — go to the embassy for an emergency passport (Notpass) and rebook the flight.",
+      "At the embassy, the officer says: 'You don't have a valid police report — this is a 'Verlustanzeige' (loss report), not a 'Diebstahlsanzeige' (theft report). We need a Diebstahlsanzeige if the passport was stolen'. Respond and explain — you aren't sure whether it was lost or stolen; ask whether the report can be adjusted or has to be redone.",
+      "After getting the emergency passport, the airline (Lufthansa) asks for an extra 'confirmation letter from the embassy stating the Notpass is valid for travel to Vietnam'. The embassy isn't familiar with this request. Negotiate — ask the officer to write a short letter (3-4 lines) or provide an embassy contact number for Lufthansa to call and verify."
+    ],
     "register_notes": "Tại Đại sứ quán VN ở Berlin, register là TIẾNG VIỆT — formal/lễ phép vì đây là cơ quan nhà nước. Xưng 'em/cô/anh' theo tuổi tác cán bộ; 'cháu/cô/chú' với cán bộ lớn tuổi. Tránh 'bạn/tôi' (quá casual). KHÔNG nói tiếng Đức ngay cả khi cán bộ biết — họ ở đó phục vụ công dân VN bằng tiếng mẹ đẻ.\n\nTrường hợp PHẢI dùng tiếng Đức:\n- Tại Polizeiwache (làm Anzeige) — toàn bộ tiếng Đức formal\n- Khi gọi airline xác nhận Notpass — tiếng Đức hoặc Anh\n- Khi đến Ausländerbehörde xin lại Aufenthaltstitel — tiếng Đức formal\n\nNgôn ngữ Đức formal cho biên giới/cảnh sát:\n- 'Ich möchte einen verlorenen Reisepass melden' (em muốn báo mất hộ chiếu)\n- 'Ich möchte Anzeige erstatten' (em muốn trình báo)\n- 'Bitte stellen Sie eine Bescheinigung aus' (xin cấp biên bản)\n- 'Wann kann ich die Bescheinigung abholen?' (khi nào em lấy được biên bản)\n\nMột chi tiết quan trọng: tại Polizeiwache, sĩ quan ĐỨC — không nói VN. Bạn cần Đức B2 hoặc bring phiên dịch. Nếu không tự tin, request 'Ich brauche einen Dolmetscher' (em cần phiên dịch) — họ sẽ schedule (có thể đợi 1-2 giờ).\n\nNgười Việt thường mắc lỗi: (1) panic + nói nhanh — sĩ quan Đức không hiểu; (2) bring quá ít giấy tờ — yêu cầu quay lại; (3) không tự tin về timeline — Notpass thật sự express trong 24-48h, không cần lo.",
     "register_notes_en": "At the Vietnamese Embassy in Berlin, the register is in VIETNAMESE — formal and polite because this is a state agency. Use age-appropriate Vietnamese honorifics. DO NOT speak German even if the officer knows it — they're there to serve Vietnamese citizens in their mother tongue.\n\nWhen you MUST use German:\n- At the Polizeiwache (filing the Anzeige) — all in formal German\n- When calling the airline to confirm the Notpass — German or English\n- At the Ausländerbehörde for a new Aufenthaltstitel — formal German\n\nFormal German for border/police:\n- 'Ich möchte einen verlorenen Reisepass melden' (I'd like to report a lost passport)\n- 'Ich möchte Anzeige erstatten' (I'd like to file a police report)\n- 'Bitte stellen Sie eine Bescheinigung aus' (Please issue me a certificate)\n- 'Wann kann ich die Bescheinigung abholen?' (When can I collect the certificate?)\n\nOne crucial detail: at the Polizeiwache the officers are GERMAN — they don't speak Vietnamese. You need German at B2 or you need to bring a translator. If you're not confident, request 'Ich brauche einen Dolmetscher' (I need an interpreter) — they'll schedule one (possibly a 1–2 hour wait).\n\nCommon mistakes from less experienced travellers: (1) panicking and speaking too fast — German officers can't follow; (2) bringing too few documents — sent back; (3) being uncertain about the timeline — Notpass really is express in 24–48h, no need to worry.",
     "idiom_glosses": [
       {
         "idiom": "Aus der Patsche helfen",
         "literal": "Giúp ra khỏi vũng lầy",
+        "literal_en": "to help out of the puddle",
         "meaning": "Cứu ai khỏi tình huống khó khăn — Đại sứ quán literally 'aus der Patsche helfen' khi du khách mất giấy tờ. Cụm warm, dùng để cảm ơn cứu trợ thực sự.",
         "meaning_en": "To help someone out of a tight spot. The embassy literally 'hilft aus der Patsche' when a traveller has lost their documents. A warm phrase, used to thank someone for a real rescue.",
-        "example": "Die Botschaft hat mir wirklich aus der Patsche geholfen."
+        "example": "Die Botschaft hat mir wirklich aus der Patsche geholfen.",
+        "example_en": "The embassy really got me out of a tight spot."
       },
       {
         "idiom": "Mit dem Schrecken davonkommen",
         "literal": "Thoát đi với sự kinh hoàng",
+        "literal_en": "to get away with the fright",
         "meaning": "Thoát một việc tệ với hậu quả tối thiểu — chỉ là sợ, không bị thiệt hại lớn. Phù hợp khi mất hộ chiếu nhưng được Notpass kịp thời, không lỡ chuyến bay.",
         "meaning_en": "To get away with just a fright — to escape a bad situation with minimal damage. Fits cases where you lose your passport but get a Notpass in time and don't miss your flight.",
-        "example": "Mit dem Schrecken bin ich davongekommen — der Notpass kam pünktlich."
+        "example": "Mit dem Schrecken bin ich davongekommen — der Notpass kam pünktlich.",
+        "example_en": "I got off with just a scare — the emergency passport arrived on time."
       },
       {
         "idiom": "Auf den letzten Drücker",
         "literal": "Vào cái nhấn cuối cùng",
+        "literal_en": "on the last pusher",
         "meaning": "Vào phút chót — last minute. Mô tả tình huống mất hộ chiếu sát ngày bay: 'Auf den letzten Drücker den Notpass bekommen' = lấy được Notpass vào phút chót.",
         "meaning_en": "At the very last minute. Describes losing your passport close to the departure date: 'Auf den letzten Drücker den Notpass bekommen' = picked up the Notpass at the last minute.",
-        "example": "Auf den letzten Drücker habe ich den Notpass bekommen."
+        "example": "Auf den letzten Drücker habe ich den Notpass bekommen.",
+        "example_en": "I got the emergency passport at the very last minute."
       },
       {
         "idiom": "Bei Verstand bleiben",
         "literal": "Giữ trí tỉnh",
+        "literal_en": "to stay by one's mind",
         "meaning": "Giữ bình tĩnh, không hoảng — keep your head. Lời khuyên cho situations khẩn (mất hộ chiếu, bị mất cắp): panic = quyết định sai. 'Bei Verstand bleiben und systematisch vorgehen'.",
         "meaning_en": "To keep your head — stay calm, don't panic. The standard advice for emergencies (lost passport, theft): panic = bad decisions. 'Bei Verstand bleiben und systematisch vorgehen' = stay calm and proceed systematically.",
-        "example": "Bei einem verlorenen Pass: bei Verstand bleiben und systematisch vorgehen."
+        "example": "Bei einem verlorenen Pass: bei Verstand bleiben und systematisch vorgehen.",
+        "example_en": "With a lost passport: keep a level head and work through it methodically."
       }
     ],
     "exercises": [
@@ -10723,36 +10982,49 @@ export const lessons: GermanLesson[] = [
       "Bạn miss chuyến nối tiếp ở München vì tàu đầu trễ 90 phút. DB nhân viên đề xuất: 'Đợi chuyến tiếp theo cùng tuyến — sau 3 giờ'. Nhưng bạn cần đến Salzburg trong 4 giờ. Hãy negotiate alternative routing (qua tàu khác hoặc bus DB) viện dẫn 'Mobilitätsgarantie'.",
       "Trên tàu, conductor (Zugbegleiter:in) phát hiện ticket của bạn không hợp lệ cho chuyến này (đã đổi nhưng app chưa update). Hãy explain situation calmly, show original ticket + change confirmation email, request grace period để contact DB hotline. Tránh tranh cãi với conductor — họ chỉ enforce, không decide."
     ],
+    "roleplay_prompts_en": [
+      "The DB clerk firmly refuses a free ticket change: 'Der Ausfall ist nicht in unserem System — bitte zeigen Sie offizielle Bestätigung'. You have a DB Navigator screenshot but the clerk claims it isn't 'official'. Escalate — ask for a supervisor (Vorgesetzte), cite the EU passenger-rights law (Fahrgastrechte) specifically, NO yelling.",
+      "You miss your connection in Munich because the first train was 90 minutes late. The DB clerk proposes 'wait for the next train on the same line — in three hours'. But you need to reach Salzburg within four hours. Negotiate an alternative routing (via a different train or a DB bus), invoking the 'Mobilitätsgarantie'.",
+      "On the train, the conductor (Zugbegleiter:in) finds that your ticket isn't valid for this service (you changed it but the app hasn't updated). Explain the situation calmly, show the original ticket plus the change-confirmation email, request a grace period to contact the DB hotline. Avoid arguing with the conductor — they only enforce, they don't decide."
+    ],
     "register_notes": "Tại DB counter / với conductor / qua DB hotline, register ASSERTIVE FORMAL — bạn assert rights nhưng không hostile. (1) 'SIE' luôn — nhân viên DB không 'du'. (2) RIGHTS LANGUAGE: 'Anspruch auf', 'laut Beförderungsbedingungen', 'gemäß Fahrgastrechten' — báo hiệu bạn biết luật. Nhân viên ít pushback khi nghe legal terminology. (3) ESCALATION POLITE: 'Könnten Sie das bitte mit Ihrer Vorgesetzten klären?' = formal escalation. KHÔNG 'Lass mich mit dem Manager sprechen' (Anh/chị, cho tôi gặp manager) — quá Mỹ-style, alienates. (4) DOCUMENT REQUEST: 'Ich möchte das schriftlich' (em muốn bằng văn bản) — formal request for written reason. Powerful tool — nhân viên không thích paper trail cho refusal, often approve immediately. (5) BLAME LANGUAGE: tránh 'Ihre Schuld' (lỗi của anh/chị) — accusatory, làm nhân viên defensive. Dùng impersonal: 'Die Verspätung liegt nicht bei mir' (sự trễ không nằm ở phía em). Frame issue, không person.\n\nNgôn ngữ chuẩn cho dispute:\n- 'Ich verstehe — aber laut Beförderungsbedingungen...' (Em hiểu — nhưng theo điều kiện vận chuyển)\n- 'Welche rechtliche Grundlage haben Sie dafür?' (Anh/chị có cơ sở pháp lý gì cho điều đó?)\n- 'Bitte begründen Sie die Ablehnung schriftlich' (Xin giải thích sự từ chối bằng văn bản)\n- 'Wer ist für Beschwerden zuständig?' (Ai phụ trách khiếu nại?)\n\nKhi PHẢI accept loss: 'Ich akzeptiere das jetzt — werde aber online über bahn.de/fahrgastrechte claimen' (Em chấp nhận bây giờ — nhưng sẽ claim online).\n\nKhác Việt Nam: ở VN, dispute với staff thường resolve qua relationship/personal connection. Ở Đức, dispute resolve qua RIGHTS + DOCUMENTATION. Personal appeal ('I'm a foreigner, please help') rarely works; legal appeal ('I have right X') often works.\n\nNgười Việt thường mắc lỗi: (1) accept first refusal — bỏ tiền oan; (2) yell — counterproductive in Đức; (3) miss claim deadline (60 ngày từ ngày tàu) — lost forever; (4) không screenshot evidence — không có document = không có claim.",
     "register_notes_en": "At a DB counter / with a conductor / on the DB hotline, the register is ASSERTIVE FORMAL — you're asserting rights but not hostile. (1) 'SIE' always — DB staff never 'du'. (2) RIGHTS LANGUAGE: 'Anspruch auf', 'laut Beförderungsbedingungen', 'gemäß Fahrgastrechten' — these signal you know the law. Staff push back less when they hear legal terminology. (3) POLITE ESCALATION: 'Könnten Sie das bitte mit Ihrer Vorgesetzten klären?' = formal escalation. NOT 'Lass mich mit dem Manager sprechen' (let me talk to the manager) — too American-style, alienates. (4) DOCUMENT REQUEST: 'Ich möchte das schriftlich' (I want that in writing) — a formal request for written reasoning. Powerful tool — staff don't want a paper trail behind a refusal and will often approve immediately. (5) BLAME LANGUAGE: avoid 'Ihre Schuld' (your fault) — accusatory, puts staff on the defensive. Use impersonal language: 'Die Verspätung liegt nicht bei mir' (the delay isn't on my side). Frame the issue, not the person.\n\nStandard phrasing for a dispute:\n- 'Ich verstehe — aber laut Beförderungsbedingungen…' (I understand — but under the transport conditions…)\n- 'Welche rechtliche Grundlage haben Sie dafür?' (What legal basis do you have for that?)\n- 'Bitte begründen Sie die Ablehnung schriftlich' (Please justify the refusal in writing)\n- 'Wer ist für Beschwerden zuständig?' (Who handles complaints?)\n\nWhen you have to ACCEPT a loss: 'Ich akzeptiere das jetzt — werde aber online über bahn.de/fahrgastrechte claimen' (I'll accept it for now — but I'll claim online).\n\nDifferent from Vietnamese norms: in Vietnam staff disputes are usually resolved via relationship / personal connection. In Germany they're resolved via RIGHTS + DOCUMENTATION. A personal appeal ('I'm a foreigner, please help') rarely works; a legal appeal ('I have a right to X') often does.\n\nCommon mistakes from less experienced travellers: (1) accepting the first refusal — losing money for nothing; (2) yelling — counterproductive in Germany; (3) missing the claim deadline (60 days from the date of travel) — lost forever; (4) not screenshotting evidence — no document = no claim.",
     "idiom_glosses": [
       {
         "idiom": "Recht haben und Recht bekommen",
         "literal": "Có lý và được lý",
+        "literal_en": "to be right and to get one's right",
         "meaning": "Có đúng nhưng phải fight để được công nhận. Câu Đức cảnh báo: pháp lý đúng không tự động thắng — phải assert + escalate. Phù hợp khi DB từ chối claim hợp lệ; mô tả tình huống.",
         "meaning_en": "To be right and to be granted you're right — being legally correct doesn't automatically win the argument; you have to assert and escalate. Useful when DB refuses a legitimate claim.",
-        "example": "Bei DB-Beschwerden gilt: Recht haben und Recht bekommen sind zwei verschiedene Dinge."
+        "example": "Bei DB-Beschwerden gilt: Recht haben und Recht bekommen sind zwei verschiedene Dinge.",
+        "example_en": "With DB complaints: being in the right and getting your right are two different things."
       },
       {
         "idiom": "Auf stur schalten",
         "literal": "Chuyển sang cứng đầu",
+        "literal_en": "to switch to stubborn",
         "meaning": "Trở nên không nhân nhượng — cố thủ position. Dùng để mô tả khi nhân viên DB từ chối mọi argument. Có thể nói: 'Wenn der Schalter auf stur schaltet, eskalieren Sie zur Vorgesetzten' (Khi nhân viên cứng đầu, escalate lên cấp trên).",
         "meaning_en": "To dig in and refuse to budge. Used to describe a DB agent who refuses every argument. You can then say: 'Wenn der Schalter auf stur schaltet, eskalieren Sie zur Vorgesetzten' (when the agent digs in, escalate to the supervisor).",
-        "example": "Wenn ein DB-Schalter auf stur schaltet, hilft nur die Vorgesetzte."
+        "example": "Wenn ein DB-Schalter auf stur schaltet, hilft nur die Vorgesetzte.",
+        "example_en": "When a DB ticket counter digs in its heels, only the supervisor helps."
       },
       {
         "idiom": "Den Kürzeren ziehen",
         "literal": "Kéo cái ngắn hơn",
+        "literal_en": "to draw the shorter one",
         "meaning": "Bị thiệt — nhận phần thiệt trong dispute. Khi bạn không assert rights, bạn 'ziehen den Kürzeren'. Phù hợp để cảnh báo bản thân: phải fight để không 'ziehen den Kürzeren'.",
         "meaning_en": "To draw the short straw — to come out the loser in a dispute. If you don't assert your rights, you 'ziehen den Kürzeren'. A useful warning to yourself: you have to push, or you end up out of pocket.",
-        "example": "Ohne Belege ziehen Sie bei DB-Streitigkeiten immer den Kürzeren."
+        "example": "Ohne Belege ziehen Sie bei DB-Streitigkeiten immer den Kürzeren.",
+        "example_en": "Without proof you always come off worse in disputes with DB."
       },
       {
         "idiom": "In den sauren Apfel beißen",
         "literal": "Cắn vào quả táo chua",
+        "literal_en": "to bite into the sour apple",
         "meaning": "Chấp nhận điều khó chịu — bite the bullet. Mô tả accepting unfavorable outcome khi alternative tệ hơn. Trong DB context: chấp nhận trả 19 EUR umbuchungsgebühr nếu không có time fight, claim sau qua online form.",
         "meaning_en": "To bite into the sour apple — bite the bullet, accept the unfavourable outcome when the alternative is worse. In a DB context: accept the EUR 19 rebooking fee if you don't have time to fight, then claim it back online.",
-        "example": "Manchmal muss man in den sauren Apfel beißen und vor Ort zahlen — Erstattung kommt später online."
+        "example": "Manchmal muss man in den sauren Apfel beißen und vor Ort zahlen — Erstattung kommt später online.",
+        "example_en": "Sometimes you have to bite the bullet and pay on the spot — the refund comes later online."
       }
     ],
     "exercises": [
@@ -11124,36 +11396,49 @@ export const lessons: GermanLesson[] = [
       "Bác sĩ kê thuốc Penicillin nhưng bạn dị ứng — họ quên/không nghe rõ khi bạn nói. Bạn nhận Rezept, đọc thấy. Hãy quay lại ngay, refuse thuốc, request kê alternative. KHÔNG just take to Apotheke và hope nó OK.",
       "Apotheke từ chối kê thuốc vì Rezept thiếu Stempel của bác sĩ. Bạn cần thuốc gấp. Hãy gọi lại bệnh viện hỏi xem có thể fax/email Rezept đầy đủ không, hoặc xin Rezept mới qua Hausarzt."
     ],
+    "roleplay_prompts_en": [
+      "At the emergency room you have no insurance card because you only arrived in Germany a week ago — your insurance isn't active yet. Explain the situation to the receptionist (you have travel health insurance from Vietnam), ask whether you can be treated or have to go to a Hausarzt. Stay calm despite the pain.",
+      "The doctor prescribes penicillin but you're allergic — they forgot or didn't hear you clearly when you said so. You take the Rezept (prescription) and read it. Go back immediately, refuse the medication, request an alternative prescription. Do NOT just take it to the Apotheke and hope it's fine.",
+      "The Apotheke refuses to dispense because the prescription is missing the doctor's stamp (Stempel). You need the medication urgently. Call the hospital back to ask whether they can fax/email a complete prescription, or request a new one via a Hausarzt."
+    ],
     "register_notes": "Tại Notaufnahme/Hausarzt, register FORMAL nhưng RÕ RÀNG. Bác sĩ Đức ghét vague symptoms. (1) 'SIE' với bác sĩ + nhân viên — luôn formal. (2) MEDICAL VOCABULARY: dùng từ chuyên môn nếu biết, không 'Bauchweh' (informal) mà 'Bauchschmerzen' (formal). 'Übelkeit' không 'mir ist schlecht'. (3) MÔ TẢ SYMPTOMS theo cấu trúc: KHI BẮT ĐẦU + Ở ĐÂU + MỨC ĐỘ + KÈM GÌ. Pattern: 'Seit [thời gian] habe ich [triệu chứng] in [vị trí], Skala [1-10], außerdem [triệu chứng phụ]'. (4) HỎI CONFIRMATION: 'Verstehe ich richtig — Sie verschreiben mir [tên thuốc]?' (Em hiểu đúng — bác sĩ kê thuốc [tên]?). Tránh assume. (5) CULTURAL NOTE: bác sĩ Đức ÍT bedside manner so với US — short, factual, không 'How are you feeling?' empathy. Đừng coi đó là rude. Họ focus vào diagnosis.\n\nCâu hỏi bác sĩ thường hỏi (chuẩn bị trả lời sẵn):\n- 'Wann haben die Beschwerden begonnen?' (triệu chứng bắt đầu khi nào)\n- 'Wo genau tut es weh?' (đau chính xác ở đâu)\n- 'Wie stark sind die Schmerzen, Skala 1-10?' (mức độ đau)\n- 'Haben Sie Fieber gemessen?' (đã đo nhiệt độ chưa)\n- 'Allergien?' (dị ứng?)\n- 'Welche Medikamente nehmen Sie?' (uống thuốc gì?)\n- 'Vorerkrankungen?' (bệnh sử trước đây?)\n- 'Sind Sie krankenversichert?' (có bảo hiểm y tế?)\n\nNgôn ngữ assertive khi cần:\n- 'Bitte bestätigen Sie schriftlich, dass...' (Xin xác nhận bằng văn bản rằng...)\n- 'Ich brauche eine zweite Meinung' (Em cần ý kiến thứ hai)\n- 'Welche Alternativen gibt es?' (Có lựa chọn nào khác?)\n\nKhác Việt Nam: ở VN có thể nói chuyện thân mật với bác sĩ, expect họ chăm sóc tinh thần. Ở Đức, bác sĩ chuyên về diagnosis/treatment, tinh thần là việc của bạn/gia đình. Không expect emotional support từ bác sĩ.\n\nNgười Việt thường mắc lỗi: (1) underestimate severity — 'không sao đâu' rồi worse hơn; (2) embarrass nói symptoms (đặc biệt phụ khoa, đường ruột) — bác sĩ Đức coi đây là medical info bình thường; (3) accept thuốc không hỏi side effects.",
     "register_notes_en": "At a Notaufnahme/Hausarzt, the register is FORMAL but CLEAR. German doctors dislike vague symptoms. (1) 'SIE' with the doctor + staff — always formal. (2) MEDICAL VOCABULARY: use the technical term if you know it, not 'Bauchweh' (informal) but 'Bauchschmerzen' (formal). 'Übelkeit' rather than 'mir ist schlecht'. (3) DESCRIBE SYMPTOMS in structure: WHEN STARTED + WHERE + INTENSITY + ACCOMPANYING. Pattern: 'Seit [time] habe ich [symptom] in [location], Skala [1–10], außerdem [secondary symptom]'. (4) ASK FOR CONFIRMATION: 'Verstehe ich richtig — Sie verschreiben mir [drug]?' (Do I understand correctly — you're prescribing me [drug]?). Don't assume. (5) CULTURAL NOTE: German doctors have LESS bedside manner than US doctors — short, factual, no 'How are you feeling?' empathy. Don't read that as rudeness. They focus on diagnosis.\n\nQuestions doctors typically ask (prepare answers in advance):\n- 'Wann haben die Beschwerden begonnen?' (when did the symptoms start)\n- 'Wo genau tut es weh?' (exactly where does it hurt)\n- 'Wie stark sind die Schmerzen, Skala 1–10?' (pain level)\n- 'Haben Sie Fieber gemessen?' (have you measured the fever)\n- 'Allergien?' (allergies?)\n- 'Welche Medikamente nehmen Sie?' (what medications are you taking?)\n- 'Vorerkrankungen?' (pre-existing conditions?)\n- 'Sind Sie krankenversichert?' (do you have health insurance?)\n\nAssertive phrasing when needed:\n- 'Bitte bestätigen Sie schriftlich, dass…' (please confirm in writing that…)\n- 'Ich brauche eine zweite Meinung' (I need a second opinion)\n- 'Welche Alternativen gibt es?' (what alternatives are there?)\n\nDifferent from many other systems: in Vietnam you may chat informally with the doctor and expect emotional support. In Germany the doctor focuses on diagnosis/treatment; emotional support is up to you and your family. Don't expect emotional comfort from the doctor.\n\nCommon mistakes from less experienced patients: (1) underestimating severity — 'it's nothing' until it's worse; (2) embarrassment about symptoms (especially gynaecological, intestinal) — German doctors treat these as normal medical info; (3) accepting a prescription without asking about side effects.",
     "idiom_glosses": [
       {
         "idiom": "Sich auf die Zähne beißen",
         "literal": "Cắn răng",
+        "literal_en": "to bite on one's teeth",
         "meaning": "Chịu đau, không complain — bite the bullet. Trong context y tế: KHÔNG nên 'auf die Zähne beißen' khi đau thật — đến bác sĩ. Idiom thường dùng ngược lại: 'Beißen Sie nicht auf die Zähne, kommen Sie zum Arzt'.",
         "meaning_en": "To grit your teeth and bear it — bite the bullet. In medical context: you should NOT 'auf die Zähne beißen' when you're genuinely in pain — go to the doctor. The idiom is often used in reverse: 'don't grit your teeth, come to the doctor'.",
-        "example": "Bei starken Schmerzen sollte man nicht auf die Zähne beißen, sondern zum Arzt gehen."
+        "example": "Bei starken Schmerzen sollte man nicht auf die Zähne beißen, sondern zum Arzt gehen.",
+        "example_en": "With severe pain you shouldn't just grit your teeth — you should see a doctor."
       },
       {
         "idiom": "Auf der Hut sein",
         "literal": "Trong nón cảnh giác",
+        "literal_en": "to be on the guard",
         "meaning": "Cảnh giác, đề phòng. Bác sĩ có thể nói 'Sein Sie auf der Hut bei [triệu chứng]' = cảnh giác nếu thấy triệu chứng. Cụm dùng cho symptom monitoring.",
         "meaning_en": "To be on your guard — to watch out for something. A doctor may say 'Seien Sie auf der Hut bei [symptom]' = watch out if you notice [symptom]. Used for symptom monitoring.",
-        "example": "Seien Sie auf der Hut: bei zunehmenden Schmerzen oder Fieber sofort wiederkommen."
+        "example": "Seien Sie auf der Hut: bei zunehmenden Schmerzen oder Fieber sofort wiederkommen.",
+        "example_en": "Stay alert: with increasing pain or fever, come back immediately."
       },
       {
         "idiom": "Auf Nummer sicher gehen",
         "literal": "Đi theo số an toàn",
+        "literal_en": "to go on the safe number",
         "meaning": "Cẩn thận, không liều — better safe than sorry. Bác sĩ thường recommend 'auf Nummer sicher gehen' = làm thêm xét nghiệm dù có thể không cần. Hành khách Việt nên take this approach với bệnh.",
         "meaning_en": "To play it safe — better safe than sorry. A doctor often recommends 'auf Nummer sicher gehen' = run an extra test even if it's likely unnecessary. Worth following for visitors.",
-        "example": "Bei Verdacht auf Blinddarmentzündung gehen wir auf Nummer sicher und machen Ultraschall."
+        "example": "Bei Verdacht auf Blinddarmentzündung gehen wir auf Nummer sicher und machen Ultraschall.",
+        "example_en": "If appendicitis is suspected we play it safe and do an ultrasound."
       },
       {
         "idiom": "Mit einem blauen Auge davonkommen",
         "literal": "Thoát đi với mắt thâm",
+        "literal_en": "to get away with a blue eye",
         "meaning": "Thoát một việc tệ với hậu quả nhẹ. Phù hợp khi medical scare nhưng kết thúc OK — 'Glück gehabt: mit einem blauen Auge davongekommen'.",
         "meaning_en": "To get away with a black eye — to escape a bad situation with minor consequences. Fits a medical scare that ends OK — 'Glück gehabt: mit einem blauen Auge davongekommen'.",
-        "example": "Es war kein Blinddarm — ich bin mit einem blauen Auge davongekommen."
+        "example": "Es war kein Blinddarm — ich bin mit einem blauen Auge davongekommen.",
+        "example_en": "It wasn't the appendix — I got off lightly."
       }
     ],
     "exercises": [
@@ -11520,36 +11805,49 @@ export const lessons: GermanLesson[] = [
       "Phòng có côn trùng (gián, kiến). Bạn quay lại reception, nhưng staff đề nghị 'just spray' và stay. Bạn refuse — yêu cầu phòng khác hoặc full refund. Hãy script conversation: factual evidence (photo gián), citing health concern, refusing 'spray' solution, demanding immediate alternative.",
       "Sau check-out, bạn phát hiện hotel charge thêm 50€ 'Reinigungsgebühr extra' (phí vệ sinh thêm) — không có trong agreement. Bạn đã về VN. Hãy viết email khiếu nại tới hotel: tham chiếu invoice number, dispute charge, request refund trong 14 ngày, mention sẽ contact credit card chargeback nếu không respond."
     ],
+    "roleplay_prompts_en": [
+      "The hotel is fully booked — no room to switch to. The receptionist offers a 10% discount. You feel that's not enough because the AC was broken all night plus you have an important appointment tomorrow. Escalate — ask for the shift manager (Schichtleiter), propose alternatives (book another hotel at the same rate with the hotel covering the difference, or a 50% discount, or a free upgrade tomorrow).",
+      "The room has insects (cockroaches, ants). You go back to reception, but the staff suggest 'just spray' and stay. You refuse — demand a different room or a full refund. Script the conversation: factual evidence (a photo of the roach), citing a health concern, refusing the 'spray' solution, demanding an immediate alternative.",
+      "After check-out you find the hotel charged an extra 50 EUR 'Reinigungsgebühr extra' (extra cleaning fee) — not in the agreement. You're already back in Vietnam. Write a complaint email to the hotel: reference the invoice number, dispute the charge, request a refund within 14 days, mention you'll pursue a credit-card chargeback if they don't respond."
+    ],
     "register_notes": "Khiếu nại hotel = ASSERTIVE FORMAL. Bạn là khách trả tiền — có quyền expect quality, không phải đến xin. (1) 'SIE' luôn — receptionist không 'du'. (2) FACTUAL FRAMING: 'Die Klimaanlage funktioniert nicht' (factual) > 'Die Klimaanlage ist schrecklich' (emotional). Đức respond fast tới facts, slow tới emotions. (3) DOCUMENT REQUEST: 'Ich möchte das schriftlich' (em muốn văn bản) — formal request for written confirmation. Powerful tool. (4) ESCALATION POLITE: 'Könnte ich bitte mit dem Schichtleiter sprechen?' — formal escalation. KHÔNG 'Get me your manager' Mỹ-style. (5) SOLUTION ORIENTATION: đề xuất GIẢI PHÁP (Zimmerwechsel, Reduzierung, Erstattung) thay vì chỉ phàn nàn. Đức appreciate problem-solvers, không complainers.\n\nNgôn ngữ chuẩn:\n- 'Leider gibt es ein Problem' (mở đầu khiếu nại lịch sự)\n- 'Wäre es möglich, ...?' (Konjunktiv II — đề xuất giải pháp)\n- 'Ich erwarte eine Lösung bis [thời gian]' (đặt deadline)\n- 'Das ist nicht akzeptabel' (firm rejection — formal)\n- 'Ich werde Booking.com kontaktieren' (escalation threat — chỉ dùng khi cần)\n\nKhi staff offer giải pháp KHÔNG ĐỦ:\n- 'Das ist ein guter Anfang, aber...' (Đó là khởi đầu tốt, nhưng...) — soft pushback\n- 'Können Sie etwas Besseres anbieten?' (Anh/chị có thể đề xuất tốt hơn không?)\n- 'Was ist die maximale Kompensation, die Sie anbieten können?' (Mức đền bù tối đa anh/chị có thể đề xuất là gì?)\n\nKhi staff offer giải pháp ĐỦ:\n- 'Das ist eine faire Lösung' (Đó là giải pháp công bằng) — accept gracefully\n- 'Vielen Dank für Ihre schnelle Reaktion' (Cảm ơn phản ứng nhanh)\n\nKhác Việt Nam: ở VN, complaint qua personal connection/relationship. Ở Đức, complaint qua FACTS + DOCUMENTATION + ESCALATION CHAIN. Personal appeal không hiệu quả; factual + assertive hiệu quả.\n\nNgười Việt thường mắc lỗi: (1) tolerate problems để 'không gây phiền' — thật ra hotel staff EXPECT complaints về real issues; (2) yelling khi escalate — counterproductive ở Đức; (3) accept first refusal — first 'Nein' không phải cuối; (4) không document evidence — không có bằng chứng = không có claim.",
     "register_notes_en": "Hotel complaints in German operate in an ASSERTIVE-FORMAL register. You're a paying customer — you have the right to expect quality, not to beg for it. (1) Always 'Sie' with reception — never 'du'. (2) FACTUAL FRAMING: 'Die Klimaanlage funktioniert nicht' (factual) beats 'Die Klimaanlage ist schrecklich' (emotional). Germans respond quickly to facts, slowly to emotion. (3) DOCUMENT REQUEST: 'Ich möchte das schriftlich' (I want that in writing) — a formal request for written confirmation. A powerful tool. (4) POLITE ESCALATION: 'Könnte ich bitte mit dem Schichtleiter sprechen?' is the German version of asking for a manager — NEVER the American 'Get me your manager'. (5) SOLUTION ORIENTATION: propose a solution (Zimmerwechsel, Reduzierung, Erstattung) instead of just complaining. Germans appreciate problem-solvers, not complainers.\n\nStandard phrases:\n- 'Leider gibt es ein Problem' (polite opener for a complaint)\n- 'Wäre es möglich, …?' (Konjunktiv II — proposing a solution)\n- 'Ich erwarte eine Lösung bis [time]' (sets a deadline)\n- 'Das ist nicht akzeptabel' (firm rejection — still formal)\n- 'Ich werde Booking.com kontaktieren' (escalation threat — only when needed)\n\nWhen the offer is NOT enough:\n- 'Das ist ein guter Anfang, aber…' (That's a good start, but…) — soft pushback\n- 'Können Sie etwas Besseres anbieten?' (Can you offer something better?)\n- 'Was ist die maximale Kompensation, die Sie anbieten können?' (What's the maximum compensation you can offer?)\n\nWhen the offer IS enough:\n- 'Das ist eine faire Lösung' (That's a fair solution) — accept gracefully\n- 'Vielen Dank für Ihre schnelle Reaktion' (Thank you for the quick response)\n\nContrast with Vietnam: in Vietnam, complaints work through personal connection. In Germany, complaints work through FACTS + DOCUMENTATION + ESCALATION CHAIN. Personal appeals don't help; factual + assertive does.\n\nCommon Vietnamese-speaker mistakes: (1) tolerating problems so as not to 'cause trouble' — German hotel staff actually EXPECT complaints about real issues; (2) yelling when escalating — counterproductive in Germany; (3) accepting the first refusal — the first 'Nein' is never the final word; (4) not documenting — no evidence = no claim.",
     "idiom_glosses": [
       {
         "idiom": "Mit Engelszungen reden",
         "literal": "Nói với lưỡi thiên thần",
+        "literal_en": "to talk with angels' tongues",
         "meaning": "Nói rất ngọt ngào, persuasive — sweet-talk. Trong context khiếu nại: receptionist có thể 'mit Engelszungen reden' để bạn accept giải pháp tệ. Cảnh giác — listen to substance, không tone.",
         "meaning_en": "Literally 'to speak with angel's tongues' — to sweet-talk, to be very persuasive. In a complaint context, a receptionist may 'mit Engelszungen reden' to talk you into accepting a weak offer. Stay alert — listen to the substance, not the tone.",
-        "example": "Der Rezeptionist redete mit Engelszungen, aber das Angebot war trotzdem nicht ausreichend."
+        "example": "Der Rezeptionist redete mit Engelszungen, aber das Angebot war trotzdem nicht ausreichend.",
+        "example_en": "The receptionist was honey-tongued, but the offer still wasn't enough."
       },
       {
         "idiom": "Den Spieß umdrehen",
         "literal": "Quay xiên thịt ngược",
+        "literal_en": "to turn the spit around",
         "meaning": "Đảo ngược tình thế — turn the tables. Khi staff cố blame customer, bạn 'den Spieß umdrehen' bằng cách show evidence + cite consumer rights. Powerful in disputes.",
         "meaning_en": "Literally 'to turn the spit around' — to turn the tables. When staff try to shift blame onto the customer, you 'den Spieß umdrehen' by showing your evidence and citing consumer rights. Powerful in disputes.",
-        "example": "Als der Rezeptionist mir die Schuld geben wollte, habe ich den Spieß umgedreht und das Foto gezeigt."
+        "example": "Als der Rezeptionist mir die Schuld geben wollte, habe ich den Spieß umgedreht und das Foto gezeigt.",
+        "example_en": "When the receptionist tried to blame me, I turned the tables and showed the photo."
       },
       {
         "idiom": "Bei der Stange bleiben",
         "literal": "Ở lại với cái thanh",
+        "literal_en": "to stay by the rod",
         "meaning": "Bám sát mục tiêu, không bỏ cuộc — stick to it. Trong negotiations: nếu first offer không đủ, 'bei der Stange bleiben' — keep pushing politely.",
         "meaning_en": "Literally 'to stay at the pole' (a medieval banner) — to stick with it, to keep going. In a negotiation, if the first offer isn't enough, 'bei der Stange bleiben' — keep pushing, politely.",
-        "example": "Bei der ersten Ablehnung nicht aufgeben — bei der Stange bleiben und eskalieren."
+        "example": "Bei der ersten Ablehnung nicht aufgeben — bei der Stange bleiben und eskalieren.",
+        "example_en": "Don't give up at the first refusal — stay the course and escalate."
       },
       {
         "idiom": "Das letzte Wort haben",
         "literal": "Có lời cuối cùng",
+        "literal_en": "to have the last word",
         "meaning": "Có quyết định cuối — final say. Trong escalation chain: Schichtleiter có 'das letzte Wort' về giảm giá; Hotelmanager có 'das letzte Wort' về full refund. Hỏi: 'Wer hat das letzte Wort hier?' (Ai có quyết định cuối ở đây?).",
         "meaning_en": "To have the final say — exactly the English idiom. Useful for navigating the escalation chain: the Schichtleiter has 'das letzte Wort' on a discount; the Hotelmanager has 'das letzte Wort' on a full refund. Ask 'Wer hat das letzte Wort hier?' to find out who can actually approve what you're asking for.",
-        "example": "Wer hat hier das letzte Wort über eine vollständige Erstattung?"
+        "example": "Wer hat hier das letzte Wort über eine vollständige Erstattung?",
+        "example_en": "Who has the final say here on a full refund?"
       }
     ],
     "exercises": [
@@ -11925,36 +12223,49 @@ export const lessons: GermanLesson[] = [
       "Khi vali tìm thấy, bạn nhận thấy LAPTOP MẤT TÍCH — chỉ còn quần áo và sạc. Hãy quay lại Lufthansa office, file Schadensmeldung (báo cáo thiệt hại), provide laptop receipt + photo evidence, demand replacement value claim. Tránh accusatory tone; frame as 'discrepancy with PIR contents declaration'.",
       "Bạn cần thuốc trong vali NGAY (không thay thế được, từ VN). Hãy escalate at counter — explain medical urgency, request alternatives (deliver to nearest Apotheke for emergency prescription, expedite tracking with priority status, or refund flight + book another)."
     ],
+    "roleplay_prompts_en": [
+      "After five days the suitcase still hasn't arrived. The airline says 'Es ist immer noch unterwegs' (it's still on its way) with no concrete timeline. Call the hotline, escalate — ask for a manager, propose higher compensation given the impact (you missed a meeting plus had to buy a replacement suit), and threaten a formal complaint if there's no resolution within 48 hours.",
+      "When the suitcase is found, you notice the LAPTOP IS MISSING — only clothes and a charger remain. Go back to the Lufthansa office, file a Schadensmeldung (damage report), provide the laptop receipt plus photo evidence, demand a replacement-value claim. Avoid an accusatory tone; frame it as a 'discrepancy with the PIR contents declaration'.",
+      "You need medication from the suitcase NOW (it can't be replaced, it's from Vietnam). Escalate at the counter — explain the medical urgency, request alternatives (deliver to the nearest Apotheke for an emergency prescription, expedite tracking with priority status, or refund the flight plus book another)."
+    ],
     "register_notes": "Lufthansa Service Counter = formal customer service. (1) 'SIE' luôn — staff không 'du'. (2) FACTUAL DESCRIPTION: 'Mein Koffer ist nicht angekommen' (factual) > 'Das ist eine Katastrophe' (emotional). Đức process facts fast, emotions slow. (3) DOCUMENT EVERYTHING: PIR number là legal document — verify spelling tên, address, phone trước khi sign. Errors trong PIR = problems trong claim sau. (4) RIGHTS-BASED LANGUAGE: 'Wäre eine Vorab-Erstattung möglich?' (Konjunktiv II — polite ask về quyền pháp lý). KHÔNG demand 'Ich verlange...' (em yêu cầu) — too aggressive cho first interaction. (5) SOLUTION-ORIENTED: đề xuất GIẢI PHÁP cụ thể (Vorab-Erstattung, Nachsendung tới address) thay vì chỉ phàn nàn.\n\nDescriptive vocabulary cho luggage:\n- Marke (brand)\n- Größe: groß / mittel / klein\n- Farbe: schwarz, dunkelblau, silber, rot, etc.\n- Form: Hartschalenkoffer (hard case) / Weichschalenkoffer (soft case)\n- Besonderheiten: Aufkleber, Band, Initiale, Beschädigungen\n- Inhalt: Kleidung, Elektronik, Dokumente, Medikamente, Wertgegenstände\n\nNgôn ngữ chuẩn cho lost luggage:\n- 'Mein Koffer ist nicht angekommen' (vali em không đến)\n- 'Hier ist mein Gepäckabschnitt' (đây là tem hành lý)\n- 'Wäre eine Vorab-Erstattung möglich?' (có thể tạm ứng không?)\n- 'Bitte schicken Sie den Koffer an...' (xin gửi vali tới...)\n- 'Ich brauche eine PIR-Nummer für die Verfolgung' (em cần PIR để tracking)\n\nKhi escalate (sau 3-5 ngày không update):\n- 'Ich möchte mit Ihrem Vorgesetzten sprechen' (em muốn nói với cấp trên)\n- 'Welche Kompensation bieten Sie?' (đền bù gì?)\n- 'Ich werde formelle Beschwerde einreichen' (em sẽ khiếu nại chính thức)\n\nKhác Việt Nam: ở VN, lost luggage thường resolve qua personal connection. Ở Đức, qua FORMAL PROCESS — PIR là backbone. Without PIR = no claim.\n\nNgười Việt thường mắc lỗi: (1) leave airport without PIR — major mistake, claim invalid; (2) accept first 'maybe tomorrow' answer without timeline; (3) over-claim items không có evidence — bị reject; (4) miss claim deadline (21 ngày từ ngày bay) — lost forever; (5) không track online — wait passively.",
     "register_notes_en": "The Lufthansa Service Counter operates in a formal customer-service register. (1) Always 'Sie' — never 'du' with staff. (2) FACTUAL DESCRIPTION: 'Mein Koffer ist nicht angekommen' (factual) beats 'Das ist eine Katastrophe' (emotional). Germans process facts quickly, emotions slowly. (3) DOCUMENT EVERYTHING: the PIR is a legal document — verify the spelling of your name, address, and phone number before signing. Errors in the PIR cause problems with the later claim. (4) RIGHTS-BASED LANGUAGE: 'Wäre eine Vorab-Erstattung möglich?' (Konjunktiv II — a polite ask about a right you have). Don't demand with 'Ich verlange…' — too aggressive for the first interaction. (5) SOLUTION-ORIENTED: propose a concrete solution (Vorab-Erstattung, Nachsendung to your address) instead of just complaining.\n\nDescriptive vocabulary for the luggage itself:\n- Marke (brand)\n- Größe: groß / mittel / klein\n- Farbe: schwarz, dunkelblau, silber, rot, etc.\n- Form: Hartschalenkoffer (hard case) / Weichschalenkoffer (soft case)\n- Besonderheiten: Aufkleber, Band, Initialen, Beschädigungen\n- Inhalt: Kleidung, Elektronik, Dokumente, Medikamente, Wertgegenstände\n\nStandard phrases for lost luggage:\n- 'Mein Koffer ist nicht angekommen' (my suitcase didn't arrive)\n- 'Hier ist mein Gepäckabschnitt' (here is my luggage-tag receipt)\n- 'Wäre eine Vorab-Erstattung möglich?' (would an advance reimbursement be possible?)\n- 'Bitte schicken Sie den Koffer an…' (please send the suitcase to…)\n- 'Ich brauche eine PIR-Nummer für die Verfolgung' (I need a PIR number for tracking)\n\nWhen escalating (after 3–5 days with no update):\n- 'Ich möchte mit Ihrem Vorgesetzten sprechen' (I'd like to speak to your supervisor)\n- 'Welche Kompensation bieten Sie?' (what compensation are you offering?)\n- 'Ich werde formelle Beschwerde einreichen' (I will file a formal complaint)\n\nContrast with Vietnam: in Vietnam, lost luggage typically resolves through personal connection. In Germany, through FORMAL PROCESS — the PIR is the spine. No PIR = no claim.\n\nCommon Vietnamese-speaker mistakes: (1) leaving the airport without a PIR — major mistake, invalidates the claim; (2) accepting the first 'maybe tomorrow' answer without a concrete timeline; (3) over-claiming items without evidence — those get rejected; (4) missing the claim deadline (21 days from the flight date) — lost forever; (5) not tracking online — waiting passively.",
     "idiom_glosses": [
       {
         "idiom": "Auf glühenden Kohlen sitzen",
         "literal": "Ngồi trên than nóng",
+        "literal_en": "to sit on glowing coals",
         "meaning": "Cực kỳ sốt ruột, không yên — like sitting on burning coals. Phù hợp khi đợi vali với tin tức quan trọng/thuốc bên trong: 'Ich saß auf glühenden Kohlen, weil meine Medikamente im Koffer waren'.",
         "meaning_en": "Literally 'to sit on glowing coals' — the German equivalent of 'to be on tenterhooks'. Fits the situation of waiting for a bag with critical items inside: 'Ich saß auf glühenden Kohlen, weil meine Medikamente im Koffer waren'.",
-        "example": "Während ich auf den verlorenen Koffer wartete, saß ich auf glühenden Kohlen — meine Medikamente waren drin."
+        "example": "Während ich auf den verlorenen Koffer wartete, saß ich auf glühenden Kohlen — meine Medikamente waren drin.",
+        "example_en": "While I waited for the lost suitcase I was on tenterhooks — my medication was inside."
       },
       {
         "idiom": "Aus dem Ruder laufen",
         "literal": "Chạy ra khỏi mái chèo",
+        "literal_en": "to run out of the rudder",
         "meaning": "Ra khỏi tầm kiểm soát — get out of hand. Mô tả situation lost luggage escalating: trễ 1 ngày OK, trễ 2 tuần = 'aus dem Ruder gelaufen'. Có thể dùng để escalate: 'Die Situation läuft aus dem Ruder — ich brauche eine Lösung'.",
         "meaning_en": "Literally 'to run out of the rudder' — to spiral out of control, to get out of hand. Use it when the lost-luggage situation has escalated: one day's delay is fine, two weeks is 'aus dem Ruder gelaufen'. A useful escalation phrase: 'Die Situation läuft aus dem Ruder — ich brauche eine Lösung'.",
-        "example": "Nach zwei Wochen ohne Updates läuft die Situation aus dem Ruder."
+        "example": "Nach zwei Wochen ohne Updates läuft die Situation aus dem Ruder.",
+        "example_en": "After two weeks with no updates, the situation is getting out of hand."
       },
       {
         "idiom": "In den sauren Apfel beißen",
         "literal": "Cắn quả táo chua",
+        "literal_en": "to bite into the sour apple",
         "meaning": "Chấp nhận điều khó chịu — bite the bullet. Khi compensation offer không đủ nhưng alternatives tệ hơn: 'In den sauren Apfel beißen' và accept, claim thêm sau qua formal process.",
         "meaning_en": "Literally 'to bite into the sour apple' — the German equivalent of 'to bite the bullet'. When the compensation offer is too low but the alternatives are worse: bite the sour apple, accept, and pursue more later through the formal process.",
-        "example": "Manchmal muss man in den sauren Apfel beißen und die 100 Euro Vorab-Erstattung akzeptieren."
+        "example": "Manchmal muss man in den sauren Apfel beißen und die 100 Euro Vorab-Erstattung akzeptieren.",
+        "example_en": "Sometimes you have to bite the bullet and accept the 100-euro advance refund."
       },
       {
         "idiom": "Etwas auf den Weg bringen",
         "literal": "Đưa cái gì lên đường",
+        "literal_en": "to bring something onto the way",
         "meaning": "Khởi xướng, set in motion. Nhân viên hãng bay có thể nói 'Ich bringe das auf den Weg' = em sẽ khởi động process. Báo hiệu action sắp xảy ra.",
         "meaning_en": "Literally 'to bring something onto the path' — to set it in motion, to get the ball rolling. An airline agent may say 'Ich bringe das auf den Weg' meaning 'I'll start the process' — it signals that action is about to happen, not just discussion.",
-        "example": "Ich bringe die PIR-Bearbeitung auf den Weg — Sie bekommen heute Abend ein Update."
+        "example": "Ich bringe die PIR-Bearbeitung auf den Weg — Sie bekommen heute Abend ein Update.",
+        "example_en": "I'll set the PIR processing in motion — you'll get an update this evening."
       }
     ],
     "exercises": [
@@ -12320,36 +12631,49 @@ export const lessons: GermanLesson[] = [
       "Cảnh sát hỏi bạn đã khóa thẻ ngân hàng chưa và có nhân chứng không. Trả lời và xin Anzeige-Bestätigung có Aktenzeichen.",
       "Giải thích bạn cần xác nhận này cho bảo hiểm du lịch và cho đại sứ quán Việt Nam để xin Notpass thay hộ chiếu bị mất."
     ],
+    "roleplay_prompts_en": [
+      "You've just been pickpocketed on the U8 in Berlin. Go into the Polizeiwache and file a formal report: the date and time, the train line, the items lost, and a description of two suspects OBJECTIVELY (height, clothing).",
+      "The police ask whether you've blocked your bank card and whether there are any witnesses. Answer, and ask for an Anzeige-Bestätigung (report confirmation) with a case number (Aktenzeichen).",
+      "Explain that you need this confirmation for your travel insurance and for the Vietnamese embassy to issue an emergency passport (Notpass) replacing the lost passport."
+    ],
     "register_notes": "Khi trình báo cảnh sát: dùng 'Sie', formal 100%. Cấu trúc 'Anzeige erstatten' (động từ tách: erstatten đứng cuối câu phụ). 'wegen + Genitiv' (wegen Taschendiebstahls). Tránh dùng 'klauen' (lóng) — dùng 'stehlen' / 'gestohlen werden'. Khi tả nghi phạm chỉ dùng Indikativ tả thực tế đã thấy + dùng từ KHÁCH QUAN (mittlere Größe, dunkle Jacke, schwarze Kappe). KHÔNG dùng race/ethnicity. Cấu trúc trang trọng để xin: 'Könnten Sie mir bitte... aushändigen?' (Konjunktiv II + bitte).",
     "register_notes_en": "Filing a police report: 'Sie' throughout, 100% formal. Key construction 'Anzeige erstatten' (the verb 'erstatten' takes final position in a subordinate clause). 'wegen + Genitiv' (wegen Taschendiebstahls). Avoid the slang verb 'klauen' — use 'stehlen' / 'gestohlen werden' (passive: 'something was stolen'). When describing a suspect, stick to the Indikativ for things you actually saw, and use OBJECTIVE descriptors (mittlere Größe, dunkle Jacke, schwarze Kappe). Do NOT use race or ethnicity. The polite formula for requesting your confirmation paper: 'Könnten Sie mir bitte … aushändigen?' (Konjunktiv II + bitte).",
     "idiom_glosses": [
       {
         "idiom": "jemandem das Fell über die Ohren ziehen",
         "literal": "kéo da qua tai ai đó",
+        "literal_en": "to pull the fur over someone's ears",
         "meaning": "lừa lọc trắng trợn ai đó",
         "meaning_en": "Literally 'to pull someone's fur over their ears' — to rip someone off blatantly, the German equivalent of 'to fleece someone'.",
-        "example": "Der Taxifahrer wollte mir das Fell über die Ohren ziehen — er wollte 95 Euro für eine 60-Euro-Strecke."
+        "example": "Der Taxifahrer wollte mir das Fell über die Ohren ziehen — er wollte 95 Euro für eine 60-Euro-Strecke.",
+        "example_en": "The taxi driver tried to rip me off — he wanted 95 euros for a 60-euro ride."
       },
       {
         "idiom": "mit heiler Haut davonkommen",
         "literal": "thoát đi với da còn lành",
+        "literal_en": "to get away with whole skin",
         "meaning": "thoát nạn an toàn, không bị thương",
         "meaning_en": "Literally 'to get away with intact skin' — to escape unharmed, to come out of it in one piece. Often heard after near-misses where only property is lost.",
-        "example": "Beim Taschendiebstahl bin ich mit heiler Haut davongekommen — nur das Portemonnaie ist weg."
+        "example": "Beim Taschendiebstahl bin ich mit heiler Haut davongekommen — nur das Portemonnaie ist weg.",
+        "example_en": "In the pickpocketing I got off lightly — only the wallet is gone."
       },
       {
         "idiom": "die Spur ist kalt",
         "literal": "dấu vết đã nguội",
+        "literal_en": "the trail is cold",
         "meaning": "không còn manh mối, khó tìm ra thủ phạm",
         "meaning_en": "Literally 'the trail has gone cold' — exactly the English idiom from crime fiction. Used when leads have dried up and the suspect is unlikely to be caught.",
-        "example": "Der Polizist sagte, die Spur sei kalt — die Täter sind längst über alle Berge."
+        "example": "Der Polizist sagte, die Spur sei kalt — die Täter sind längst über alle Berge.",
+        "example_en": "The officer said the trail had gone cold — the culprits are long gone."
       },
       {
         "idiom": "auf der Hut sein",
         "literal": "đứng trên cái mũ bảo hộ",
+        "literal_en": "to be on the guard",
         "meaning": "đề cao cảnh giác, đề phòng",
         "meaning_en": "Literally 'to be on the hat' (an old guard-duty metaphor) — to be on one's guard, vigilant. Use it about pickpocket-prone places like crowded U-Bahn carriages.",
-        "example": "In der U-Bahn muss man auf der Hut sein — Taschendiebe sind dort aktiv."
+        "example": "In der U-Bahn muss man auf der Hut sein — Taschendiebe sind dort aktiv.",
+        "example_en": "On the underground you have to stay alert — pickpockets are active there."
       }
     ],
     "exercises": [
@@ -12715,36 +13039,49 @@ export const lessons: GermanLesson[] = [
       "Người chỉ đường nói nhanh — yêu cầu họ nhắc lại chậm hơn, xác nhận lại từng bước (ngã tư nào, đường nào, qua cầu nào).",
       "Tóm tắt lại lời chỉ đường thành 3-4 bước rõ ràng để xác nhận đã hiểu, sau đó cảm ơn formal."
     ],
+    "roleplay_prompts_en": [
+      "You're at Marienplatz in Munich and need to ask the way to the Deutsches Museum, a 15-20 minute walk away. Ask whether to take the U-Bahn or walk, then ask for detailed directions.",
+      "The person giving directions speaks fast — ask them to repeat more slowly, and confirm each step (which junction, which street, over which bridge).",
+      "Summarise the directions back into 3-4 clear steps to confirm you've understood, then thank them formally."
+    ],
     "register_notes": "Khi hỏi đường người lạ ở Đức: 'Sie' bắt buộc, mở đầu 'Entschuldigung' hoặc 'Entschuldigen Sie bitte'. Konjunktiv II 'Könnten Sie...' lịch sự hơn 'Können Sie...'. Cấu trúc chỉ đường dùng nhiều giới từ + Akkusativ/Dativ: 'in die Maximilianstraße' (Akk = vào), 'an der Kreuzung' (Dat = tại). Động từ tách: 'abbiegen' (rẽ) — 'biegen Sie rechts ab'. Khi tóm tắt lại dùng 'Heißt das, ...?' (tức là... đúng không) — rất Đức và lịch sự. Khi cảm ơn dùng 'Vielen Dank' formal hơn 'Danke'.",
     "register_notes_en": "Asking strangers for directions in Germany: 'Sie' is mandatory; open with 'Entschuldigung' or 'Entschuldigen Sie bitte'. Konjunktiv II — 'Könnten Sie…' — is more polite than the plain 'Können Sie…'. Directions use a lot of two-way prepositions with Akkusativ/Dativ: 'in die Maximilianstraße' (Akkusativ = motion into), 'an der Kreuzung' (Dativ = stationary 'at'). Separable verbs are everywhere: 'abbiegen' (to turn) splits as 'biegen Sie rechts ab'. When you read directions back, use 'Heißt das, …?' (literally 'does that mean…?') — very German and very polite. For thanks, 'Vielen Dank' is more formal than the plain 'Danke'.",
     "idiom_glosses": [
       {
         "idiom": "jemanden auf den richtigen Weg bringen",
         "literal": "đưa ai đó đi đúng đường",
+        "literal_en": "to bring someone onto the right way",
         "meaning": "định hướng đúng cho ai đó (cả nghĩa đen + bóng)",
         "meaning_en": "Literally 'to bring someone onto the right path' — to point someone in the right direction, both literally (giving directions) and figuratively (setting someone straight on a decision).",
-        "example": "Der Münchner hat mich auf den richtigen Weg gebracht — ohne ihn wäre ich verloren gewesen."
+        "example": "Der Münchner hat mich auf den richtigen Weg gebracht — ohne ihn wäre ich verloren gewesen.",
+        "example_en": "The Munich local set me on the right track — without him I'd have been lost."
       },
       {
         "idiom": "vom Weg abkommen",
         "literal": "lệch khỏi đường đi",
+        "literal_en": "to come off the way",
         "meaning": "bị lạc đường, đi sai hướng",
         "meaning_en": "Literally 'to come off the path' — to get lost, to lose your way. Used literally for navigation and figuratively for life decisions.",
-        "example": "Ich bin in der Altstadt vom Weg abgekommen — die kleinen Gassen sehen alle gleich aus."
+        "example": "Ich bin in der Altstadt vom Weg abgekommen — die kleinen Gassen sehen alle gleich aus.",
+        "example_en": "I lost my way in the old town — the little lanes all look the same."
       },
       {
         "idiom": "auf halbem Weg stehen bleiben",
         "literal": "dừng giữa đường",
+        "literal_en": "to stop standing at half the way",
         "meaning": "bỏ dở giữa chừng, không hoàn thành",
         "meaning_en": "Literally 'to stop halfway along the path' — to give up halfway, to leave something half-finished. Same image as the English 'to stop halfway'.",
-        "example": "Ich kann das Projekt nicht auf halbem Weg stehen lassen."
+        "example": "Ich kann das Projekt nicht auf halbem Weg stehen lassen.",
+        "example_en": "I can't leave the project half-finished."
       },
       {
         "idiom": "alle Wege führen nach Rom",
         "literal": "mọi con đường đều dẫn đến Roma",
+        "literal_en": "all ways lead to Rome",
         "meaning": "có nhiều cách để đến cùng đích",
         "meaning_en": "Exactly the English idiom 'all roads lead to Rome' — there's more than one way to get to the same destination. Same Roman-empire image, same usage.",
-        "example": "Ob U-Bahn oder zu Fuß — alle Wege führen nach Rom."
+        "example": "Ob U-Bahn oder zu Fuß — alle Wege führen nach Rom.",
+        "example_en": "Whether by U-Bahn or on foot — all roads lead to Rome."
       }
     ],
     "exercises": [
@@ -13100,36 +13437,49 @@ export const lessons: GermanLesson[] = [
       "Bạn báo dị ứng hạt khi gọi món, nhưng sốt vẫn có Haselnuss. Yêu cầu gặp Geschäftsführer (quản lý), trình bày mức độ nghiêm trọng.",
       "Quản lý đề nghị 'auf das Haus' (mời cả bàn). Bạn chấp nhận lịch sự nhưng yêu cầu thêm: kiểm tra quy trình dị ứng của bếp, lấy danh thiếp phòng có triệu chứng."
     ],
+    "roleplay_prompts_en": [
+      "You ordered a schnitzel 'gut durch' (well done) in Munich, but it comes out still raw. Call the waiter formally, point out the problem clearly, and ask for it to be remade.",
+      "You declared a nut allergy when ordering, but the sauce still contains Haselnuss (hazelnut). Ask to speak to the Geschäftsführer (manager), and explain how serious this is.",
+      "The manager offers 'auf das Haus' (on the house, for the whole table). Accept politely but also ask for more: that they review the kitchen's allergy procedure, and take a contact card in case symptoms appear."
+    ],
     "register_notes": "Khiếu nại nhà hàng: 'Sie' bắt buộc, giọng kiên quyết nhưng không to tiếng. Konjunktiv II 'Ich hätte gerne...' (em muốn) thay vì 'Ich will' (em đòi). 'Es tut mir leid' từ nhân viên là chuẩn — đừng nhầm với xin lỗi quá mức kiểu Mỹ. Cấu trúc passive 'Das hätte so nicht serviert werden dürfen' (đáng lẽ không được mang lên như vậy) — rất Đức, không cá nhân hóa lỗi. Khi yêu cầu gặp quản lý: 'Ich hätte gerne den Geschäftsführer gesprochen' — Konjunktiv II + 'gesprochen' (đã nói chuyện) lịch sự nhất. Tránh 'Manager' — dùng 'Geschäftsführer' (Đức) hoặc 'Restaurantleiter'.",
     "register_notes_en": "Restaurant complaints: 'Sie' is mandatory, with a firm but not loud tone. Use Konjunktiv II 'Ich hätte gerne…' (I would like…) instead of 'Ich will' (I want, which sounds demanding). 'Es tut mir leid' from staff is the standard apology — don't mistake it for the over-apologetic American style. The passive construction 'Das hätte so nicht serviert werden dürfen' (this should not have been served like this) is very German — it depersonalises the fault. To request the manager, the most polite form is 'Ich hätte gerne den Geschäftsführer gesprochen' — Konjunktiv II + the participle 'gesprochen'. Avoid the English loanword 'Manager' — use 'Geschäftsführer' (the German term) or 'Restaurantleiter'.",
     "idiom_glosses": [
       {
         "idiom": "jemandem schmeckt etwas nicht",
         "literal": "ai đó thấy gì đó không ngon",
+        "literal_en": "something doesn't taste to someone",
         "meaning": "không hài lòng (cả nghĩa đen + bóng)",
         "meaning_en": "Literally 'something doesn't taste good to someone' — used both literally (the food really doesn't taste good) and figuratively (you're not happy about something).",
-        "example": "Das Schnitzel schmeckt mir nicht — es ist innen roh."
+        "example": "Das Schnitzel schmeckt mir nicht — es ist innen roh.",
+        "example_en": "I don't like the schnitzel — it's raw inside."
       },
       {
         "idiom": "die Suppe auslöffeln, die man sich eingebrockt hat",
         "literal": "múc cạn món súp mình đã chế",
+        "literal_en": "to spoon out the soup one has dished oneself",
         "meaning": "tự gánh hậu quả mình gây ra",
         "meaning_en": "Literally 'to spoon out the soup you cooked for yourself' — to face the consequences of your own actions. Close to the English 'you made your bed, now lie in it'.",
-        "example": "Die Küche muss jetzt die Suppe auslöffeln, die sie sich eingebrockt hat."
+        "example": "Die Küche muss jetzt die Suppe auslöffeln, die sie sich eingebrockt hat.",
+        "example_en": "The kitchen now has to clean up the mess it made."
       },
       {
         "idiom": "etwas auf die Karte setzen",
         "literal": "đặt cái gì đó vào thực đơn",
+        "literal_en": "to put something on the menu card",
         "meaning": "đưa món vào menu (cả nghĩa đen + bóng: đặt cược)",
         "meaning_en": "Literally 'to put something on the menu' — used literally for a new dish, and figuratively (overlapping with the gambling sense of 'Karte' = card) for putting something on the agenda or betting on an option.",
-        "example": "Das Restaurant hat ein neues vegetarisches Gericht auf die Karte gesetzt."
+        "example": "Das Restaurant hat ein neues vegetarisches Gericht auf die Karte gesetzt.",
+        "example_en": "The restaurant has put a new vegetarian dish on the menu."
       },
       {
         "idiom": "Hand und Fuß haben",
         "literal": "có tay và chân",
+        "literal_en": "to have hand and foot",
         "meaning": "có lý có cơ sở, có căn cứ chắc",
         "meaning_en": "Literally 'to have hand and foot' — to be solidly grounded, to hold up to scrutiny. Closest English equivalent: 'to have legs', or 'to have substance'.",
-        "example": "Meine Beschwerde hat Hand und Fuß — ich habe sogar Fotos."
+        "example": "Meine Beschwerde hat Hand und Fuß — ich habe sogar Fotos.",
+        "example_en": "My complaint holds water — I even have photos."
       }
     ],
     "exercises": [
@@ -13490,36 +13840,49 @@ export const lessons: GermanLesson[] = [
       "Tài xế nói có kẹt xe nên đi đường vòng. Yêu cầu hóa đơn đúng quy cách (Taxameter + Strecke), ghi lại số Konzessionsnummer.",
       "Đe dọa báo Verbraucherzentrale + Ordnungsamt nếu không thỏa thuận được. Khi tài xế giảm xuống mức hợp lý, chấp nhận lịch sự và yêu cầu hóa đơn đã chỉnh."
     ],
+    "roleplay_prompts_en": [
+      "A taxi driver at Frankfurt airport charges 95 euros for an 18-km ride that normally costs 60 euros. Challenge it formally, use Google Maps as evidence, and ask for an explanation.",
+      "The driver says there was traffic so he took a detour. Ask for a proper receipt (Taxameter + route), and note down the licence number (Konzessionsnummer).",
+      "Threaten to report it to the Verbraucherzentrale plus the Ordnungsamt if you can't reach an agreement. When the driver lowers it to a reasonable amount, accept politely and ask for the corrected receipt."
+    ],
     "register_notes": "Tranh cãi taxi: 'Sie' bắt buộc, giữ giọng bình tĩnh — to tiếng không có lợi ở Đức. Konjunktiv II 'Wäre eine Erklärung möglich?' lịch sự hơn nhiều 'Geben Sie mir eine Erklärung'. Khi muốn cứng rắn: 'Ich bestehe auf...' (em yêu cầu/em nhất quyết) — formal nhưng không gây hấn. Cấu trúc 'haben + zu + Infinitiv' = phải làm gì (luật) — 'Sie haben die Quittung auszuhändigen' = anh phải đưa hóa đơn. KHÔNG dùng 'Du' với tài xế (sai register hoàn toàn). Khi đe dọa báo cáo: dùng 'Sollten wir... finden, werde ich...' (Konjunktiv II) — formal cảnh báo, không hung hăng.",
     "register_notes_en": "Taxi disputes: 'Sie' is mandatory; keep your voice calm — raising it doesn't help you in Germany. Konjunktiv II 'Wäre eine Erklärung möglich?' is far more polite than 'Geben Sie mir eine Erklärung'. To go firm: 'Ich bestehe auf…' (I insist on…) — formal but not aggressive. The construction 'haben + zu + Infinitiv' expresses legal obligation: 'Sie haben die Quittung auszuhändigen' = you are required to issue the receipt. NEVER use 'du' with a taxi driver — completely wrong register. When threatening to report: 'Sollten wir … finden, werde ich…' (Konjunktiv II) — a formal warning, not an aggressive threat.",
     "idiom_glosses": [
       {
         "idiom": "jemanden über den Tisch ziehen",
         "literal": "kéo ai đó qua bàn",
+        "literal_en": "to pull someone over the table",
         "meaning": "lừa lọc, chặt chém ai đó",
         "meaning_en": "Literally 'to pull someone across the table' (an old wrestling image) — to rip someone off, to take them for a ride. The German equivalent of 'to be taken to the cleaners' from the victim's side.",
-        "example": "Der Taxifahrer wollte mich über den Tisch ziehen — 95 Euro für eine 60-Euro-Strecke."
+        "example": "Der Taxifahrer wollte mich über den Tisch ziehen — 95 Euro für eine 60-Euro-Strecke.",
+        "example_en": "The taxi driver tried to fleece me — 95 euros for a 60-euro route."
       },
       {
         "idiom": "den Hals nicht voll genug bekommen",
         "literal": "cổ không bao giờ đầy đủ",
+        "literal_en": "to not be able to get the throat full enough",
         "meaning": "tham lam vô đáy, không bao giờ đủ",
         "meaning_en": "Literally 'unable to fill one's throat enough' — to be insatiably greedy. The English 'can never get enough' or 'bottomless greed' captures the same idea.",
-        "example": "Manche Taxifahrer können den Hals nicht voll genug bekommen — sie nehmen Touristen aus."
+        "example": "Manche Taxifahrer können den Hals nicht voll genug bekommen — sie nehmen Touristen aus.",
+        "example_en": "Some taxi drivers just can't get enough — they take tourists for a ride."
       },
       {
         "idiom": "Tacheles reden",
         "literal": "nói tacheles (gốc Yiddish)",
+        "literal_en": "to speak Tacheles (Yiddish: 'business')",
         "meaning": "nói thẳng thắn, không vòng vo",
         "meaning_en": "From the Yiddish 'tachles' (purpose, substance) — to talk straight, no beating around the bush. The English 'to talk turkey' is the closest match.",
-        "example": "Mit dem Taxifahrer musste ich Tacheles reden — sonst hätte er nicht eingelenkt."
+        "example": "Mit dem Taxifahrer musste ich Tacheles reden — sonst hätte er nicht eingelenkt.",
+        "example_en": "With the taxi driver I had to talk turkey — otherwise he wouldn't have backed down."
       },
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
+        "literal_en": "to lay the cards on the table",
         "meaning": "minh bạch hết, không giấu giếm",
         "meaning_en": "Exactly the English idiom 'to lay your cards on the table' — to be completely transparent. Same poker image, same meaning.",
-        "example": "Bitte legen Sie die Karten auf den Tisch — wie kommt der Preis zustande?"
+        "example": "Bitte legen Sie die Karten auf den Tisch — wie kommt der Preis zustande?",
+        "example_en": "Please put your cards on the table — how does this price come about?"
       }
     ],
     "exercises": [
@@ -13875,36 +14238,49 @@ export const lessons: GermanLesson[] = [
       "Trình bày 2 vấn đề: (a) áp lực sinh con sớm — bạn cần thời gian cho sự nghiệp; (b) Tết quan trọng với gia đình bạn ngang Giáng sinh với họ. Dùng Konjunktiv II + 'Ich-messages'.",
       "Mời mẹ chồng đến ăn Tết tại nhà bạn năm sau. Cảm ơn bà đã lắng nghe và đồng ý tìm 'Mittelweg' (điểm dung hòa)."
     ],
+    "roleplay_prompts_en": [
+      "You (Linh) arrange a private talk with your future mother-in-law (Frau Schneider). Open formally with 'Sie' + Frau Schneider. When she offers to switch to 'du' and introduces herself as 'Hannelore', respond naturally.",
+      "Present two issues: (a) the pressure to have children early — you need time for your career; (b) Tết matters as much to your family as Christmas does to theirs. Use Konjunktiv II + 'I-messages'.",
+      "Invite your mother-in-law to celebrate Tết at your home next year. Thank her for listening and for agreeing to find a 'Mittelweg' (middle ground)."
+    ],
     "register_notes": "Trò chuyện với bố mẹ chồng/vợ Đức: BẮT ĐẦU bằng 'Sie' + Frau/Herr [họ]. Chuyển sang Du CHỈ khi họ đề nghị — câu chuẩn của họ: 'Wir müssen nicht mehr siezen' / 'Wir können gerne Du sagen'. Đáp 'Sehr gerne, ich heiße [tên]'. Sau đó dùng Du + tên — đừng quay lại Sie. Konjunktiv II là CHÌA KHÓA: 'Ich würde sagen...', 'Es würde mir bedeuten...', 'Hätten Sie Zeit?' (Konjunktiv II + bitte = formal lịch sự nhất). 'Ich-messages' thay vì 'Sie-Anklagen': 'Ich fühle mich unter Druck' KHÔNG 'Sie setzen mich unter Druck'. Khi giới thiệu vấn đề: 'Ich würde gerne offen mit Ihnen sprechen' — formal, không sợ. Khi xác nhận đã hiểu: 'Ich verstehe Ihre Perspektive — gleichzeitig...' (em hiểu góc nhìn — đồng thời...). Tránh 'aber' (nhưng) — dùng 'gleichzeitig' (đồng thời) — không đối đầu.",
     "register_notes_en": "Talking with German in-laws: BEGIN with 'Sie' + Frau/Herr [last name]. Switch to 'du' ONLY when they invite it — their standard phrasings: 'Wir müssen nicht mehr siezen' / 'Wir können gerne Du sagen'. Reply 'Sehr gerne, ich heiße [name]'. From that point use 'du' + first name — don't slip back into 'Sie'. Konjunktiv II is the KEY tool: 'Ich würde sagen…', 'Es würde mir bedeuten…', 'Hätten Sie Zeit?' (Konjunktiv II + bitte is the most polite possible register). Use I-statements, not you-accusations: 'Ich fühle mich unter Druck' NOT 'Sie setzen mich unter Druck'. To introduce a difficult topic: 'Ich würde gerne offen mit Ihnen sprechen' — formal, unafraid. To acknowledge their view: 'Ich verstehe Ihre Perspektive — gleichzeitig…' (I understand your perspective — at the same time…). Avoid 'aber' (but) — use 'gleichzeitig' (at the same time) — less confrontational.",
     "idiom_glosses": [
       {
         "idiom": "den Stier bei den Hörnern packen",
         "literal": "nắm bò mộng ở hai sừng",
+        "literal_en": "to grab the bull by the horns",
         "meaning": "đối mặt thẳng với vấn đề khó",
         "meaning_en": "Exactly the English idiom 'to take the bull by the horns' — to confront a hard problem head-on. Same image, same usage.",
-        "example": "Ich habe den Stier bei den Hörnern gepackt und das Thema mit meiner Schwiegermutter offen angesprochen."
+        "example": "Ich habe den Stier bei den Hörnern gepackt und das Thema mit meiner Schwiegermutter offen angesprochen.",
+        "example_en": "I took the bull by the horns and raised the matter openly with my mother-in-law."
       },
       {
         "idiom": "auf einen grünen Zweig kommen",
         "literal": "đến được cành xanh",
+        "literal_en": "to come onto a green branch",
         "meaning": "đạt được sự đồng thuận, tiến bộ trong quan hệ",
         "meaning_en": "Literally 'to come onto a green branch' — to get somewhere, to make real progress (often after long stagnation). Closest English: 'to get somewhere' or 'to make headway'.",
-        "example": "Nach dem Gespräch sind wir endlich auf einen grünen Zweig gekommen."
+        "example": "Nach dem Gespräch sind wir endlich auf einen grünen Zweig gekommen.",
+        "example_en": "After the conversation we finally found common ground."
       },
       {
         "idiom": "Öl ins Feuer gießen",
         "literal": "đổ dầu vào lửa",
+        "literal_en": "to pour oil into the fire",
         "meaning": "làm tình hình căng thẳng hơn",
         "meaning_en": "Exactly the English idiom 'to pour oil on the fire' — to make a tense situation worse. Same image, same meaning.",
-        "example": "Vermeide diesen Tonfall — das gießt nur Öl ins Feuer."
+        "example": "Vermeide diesen Tonfall — das gießt nur Öl ins Feuer.",
+        "example_en": "Avoid that tone — it only adds fuel to the fire."
       },
       {
         "idiom": "die Kirche im Dorf lassen",
         "literal": "để nhà thờ ở trong làng",
+        "literal_en": "to leave the church in the village",
         "meaning": "không làm to chuyện, giữ tỷ lệ phù hợp",
         "meaning_en": "Literally 'to leave the church in the village' — to keep things in proportion, not to blow them out of proportion. Closest English: 'don't make a mountain out of a molehill'.",
-        "example": "Lass die Kirche im Dorf — es geht nur um einen Familienurlaub, nicht ums Erbe."
+        "example": "Lass die Kirche im Dorf — es geht nur um einen Familienurlaub, nicht ums Erbe.",
+        "example_en": "Let's not blow this out of proportion — it's only a family holiday, not the inheritance."
       }
     ],
     "exercises": [
@@ -14265,36 +14641,49 @@ export const lessons: GermanLesson[] = [
       "Anna phòng thủ ('du nimmst das persönlich'). Bạn tách 'Sache' khỏi 'Person': 'Es ist persönlich — aber lass uns über die Sache reden, nicht übereinander'.",
       "Cuộc tranh luận xuống thang khi Anna xin lỗi. Bạn acknowledge xin lỗi, đề nghị tra cứu fact tuần sau, reaffirm tình bạn quan trọng hơn ai đúng."
     ],
+    "roleplay_prompts_en": [
+      "Your friend Anna makes a sweeping generalisation about Vietnamese immigrants. Use the technique 'I hear you → I see it differently → that's not my experience' to disagree politely but firmly.",
+      "Anna gets defensive ('du nimmst das persönlich'). Separate the 'Sache' (the issue) from the 'Person': 'Es ist persönlich — aber lass uns über die Sache reden, nicht übereinander'.",
+      "The argument de-escalates when Anna apologises. Acknowledge the apology, propose checking the facts next week, and reaffirm that the friendship matters more than who's right."
+    ],
     "register_notes": "Tranh luận với bạn Đức: dùng 'Du'. Konjunktiv II vẫn cần cho hedging: 'Ich würde sagen...', 'Es scheint mir...'. Quan trọng nhất: 'Ich höre, was du sagst — gleichzeitig sehe ich das anders'. KHÔNG 'Ja, aber' (phủ nhận) — DÙNG 'Ja, und' / 'gleichzeitig' (đồng thời). Tách Sache (vấn đề) khỏi Person (con người): 'Diese Aussage finde ich problematisch' KHÔNG 'Du bist rassistisch'. Khi không có fact: 'Ich kenne die Statistik nicht auswendig — aber meine Erfahrung sagt anderes' (trung thực hơn invent). Khi muốn deescalate: 'Wir sind uns hier nicht einig — das ist okay' + reaffirm Freundschaft. Cấu trúc dễ nhớ: ACKNOWLEDGE (höre dich) → DISAGREE (sehe ich anders) → SPECIFIC (Verallgemeinerung X) → INVITE (Wir können nachschauen).",
     "register_notes_en": "Debating with a German friend: use 'du'. You still need Konjunktiv II for hedging: 'Ich würde sagen…', 'Es scheint mir…'. The most important formula: 'Ich höre, was du sagst — gleichzeitig sehe ich das anders'. AVOID 'Ja, aber' (reads as cancelling) — USE 'Ja, und' / 'gleichzeitig' (at the same time). Separate Sache (issue) from Person (person): 'Diese Aussage finde ich problematisch' NOT 'Du bist rassistisch'. When you don't have facts: 'Ich kenne die Statistik nicht auswendig — aber meine Erfahrung sagt anderes' (more honest than inventing). To de-escalate: 'Wir sind uns hier nicht einig — das ist okay' + reaffirm Freundschaft. The easy-to-remember structure: ACKNOWLEDGE (höre dich) → DISAGREE (sehe ich anders) → SPECIFIC (Verallgemeinerung X) → INVITE (Wir können nachschauen).",
     "idiom_glosses": [
       {
         "idiom": "über den eigenen Tellerrand schauen",
         "literal": "nhìn qua mép đĩa của mình",
+        "literal_en": "to look beyond one's own plate rim",
         "meaning": "mở rộng góc nhìn, không bị giới hạn trong kinh nghiệm bản thân",
         "meaning_en": "Literally 'to look beyond your own plate-rim' — to broaden your perspective beyond your own experience. Closest English: 'to look beyond your own backyard' or 'to think outside your bubble'.",
-        "example": "Manchmal hilft es, über den eigenen Tellerrand zu schauen — meine Erfahrung ist nicht die einzige."
+        "example": "Manchmal hilft es, über den eigenen Tellerrand zu schauen — meine Erfahrung ist nicht die einzige.",
+        "example_en": "Sometimes it helps to look beyond your own nose — my experience isn't the only one."
       },
       {
         "idiom": "Tacheles reden",
         "literal": "nói tacheles (gốc Yiddish 'sự thật')",
+        "literal_en": "to speak Tacheles (Yiddish: 'business')",
         "meaning": "nói thẳng thắn, không vòng vo",
         "meaning_en": "From the Yiddish 'tachles' (substance, the point) — to talk straight, get to the heart of it. The English 'to talk turkey' is the closest match.",
-        "example": "Lass uns Tacheles reden — was hat dich an dieser Aussage wirklich gestört?"
+        "example": "Lass uns Tacheles reden — was hat dich an dieser Aussage wirklich gestört?",
+        "example_en": "Let's talk straight — what really bothered you about that statement?"
       },
       {
         "idiom": "über einen Kamm scheren",
         "literal": "chải qua một cái lược",
+        "literal_en": "to shear over one comb",
         "meaning": "đánh đồng tất cả, khái quát hóa",
         "meaning_en": "Literally 'to shear everything with one comb' (an old sheep-shearing image) — to lump everyone together, to over-generalise. Closest English: 'to tar everyone with the same brush'.",
-        "example": "Du scherst alle Migrant:innen über einen Kamm — das ist mir zu pauschal."
+        "example": "Du scherst alle Migrant:innen über einen Kamm — das ist mir zu pauschal.",
+        "example_en": "You're tarring all migrants with the same brush — that's too sweeping for me."
       },
       {
         "idiom": "auf einen Nenner kommen",
         "literal": "đến được một mẫu số chung",
+        "literal_en": "to come to one denominator",
         "meaning": "đạt sự đồng thuận",
         "meaning_en": "Literally 'to come to a common denominator' (from maths) — to reach a shared understanding. Closest English: 'to find common ground'.",
-        "example": "Wir kommen heute Abend nicht auf einen Nenner — und das ist auch okay."
+        "example": "Wir kommen heute Abend nicht auf einen Nenner — und das ist auch okay.",
+        "example_en": "We're not going to reach common ground tonight — and that's okay too."
       }
     ],
     "exercises": [
@@ -14655,36 +15044,49 @@ export const lessons: GermanLesson[] = [
       "Sophie kể về kỷ niệm bà làm bánh mận. Lắng nghe, mời cô ấy kể tiếp ('Erzähl mir davon — ich höre gerne zu'). Acknowledge cả niềm vui kỷ niệm và nỗi đau hiện tại.",
       "Đề nghị support CỤ THỂ — mang súp tối mai, đi đám tang thứ Sáu cùng. Không vague 'sag wenn du was brauchst'."
     ],
+    "roleplay_prompts_en": [
+      "You've just learned that Sophie's grandmother has died. Open with the formal 'Mein herzliches Beileid' — do NOT over-apologise, do NOT say 'Sie ist an einem besseren Ort'.",
+      "Sophie tells you a memory of her grandmother baking plum cake. Listen, invite her to keep telling it ('Erzähl mir davon — ich höre gerne zu'). Acknowledge both the joy of the memory and the present pain.",
+      "Offer CONCRETE support — bring soup tomorrow evening, go to the funeral together on Friday. Not a vague 'sag wenn du was brauchst'."
+    ],
     "register_notes": "Chia buồn với bạn thân Đức: 'Du'. Câu mở đầu 'Mein herzliches Beileid' (hoặc 'aufrichtiges Beileid') — formula CHUẨN, dùng formal cả với bạn thân. Sau câu này không lặp lại — chuyển sang lắng nghe. KHÔNG dùng 'Es tut mir leid' đơn lẻ — quá generic. Konjunktiv II cho đề nghị: 'Soll ich vorbeikommen?', 'Würde es dir helfen, wenn...?'. Câu hỏi 'Wie hältst du dich?' (cậu chịu đựng thế nào?) thay 'Wie geht's?' (vô nghĩa khi mới mất). KHÔNG advice ('du musst stark sein'), KHÔNG religious platitudes ('sie ist an einem besseren Ort'). Khi bạn khóc: im lặng + presence. Khi bạn kể về người mất: ENCOURAGE ('Erzähl mir davon'). Câu kết: 'Ich bin für dich da' / 'Immer' (luôn luôn) — concise, sincere.",
     "register_notes_en": "Condolences with a close German friend: 'du'. The opener 'Mein herzliches Beileid' (or 'aufrichtiges Beileid') is the STANDARD formula — used formally even with close friends. Say it once, then move on to listening — don't repeat it. Don't use a bare 'Es tut mir leid' — too generic. Konjunktiv II for offers: 'Soll ich vorbeikommen?', 'Würde es dir helfen, wenn…?'. The question 'Wie hältst du dich?' (how are you holding up?) replaces 'Wie geht's?', which is meaningless right after a death. Avoid advice ('du musst stark sein'), avoid religious platitudes ('sie ist an einem besseren Ort'). When your friend cries: silence + presence. When they share memories: ENCOURAGE ('Erzähl mir davon'). Closing line: 'Ich bin für dich da' / 'Immer' (always) — concise, sincere.",
     "idiom_glosses": [
       {
         "idiom": "in stillem Mitgefühl",
         "literal": "trong sự đồng cảm im lặng",
+        "literal_en": "in quiet sympathy",
         "meaning": "lời chia buồn formula trên Trauerkarte",
         "meaning_en": "Literally 'in quiet compassion' — a fixed closing formula on condolence cards, similar to the English 'with deepest sympathy'.",
-        "example": "In stillem Mitgefühl — Familie Müller. (chuẩn dòng cuối thiệp chia buồn)"
+        "example": "In stillem Mitgefühl — Familie Müller. (chuẩn dòng cuối thiệp chia buồn)",
+        "example_en": "With our deepest sympathy — the Müller family. (standard closing line of a condolence card)"
       },
       {
         "idiom": "jemandem zur Seite stehen",
         "literal": "đứng bên cạnh ai đó",
+        "literal_en": "to stand by someone's side",
         "meaning": "support ai đó trong lúc khó khăn",
         "meaning_en": "Literally 'to stand at someone's side' — to support someone through a hard time. Closest English: 'to stand by someone'.",
-        "example": "In dieser schweren Zeit stehe ich dir zur Seite."
+        "example": "In dieser schweren Zeit stehe ich dir zur Seite.",
+        "example_en": "In this hard time I'm here for you."
       },
       {
         "idiom": "in Wellen kommen",
         "literal": "đến theo từng đợt sóng",
+        "literal_en": "to come in waves",
         "meaning": "đau buồn không liên tục, đến rồi đi",
         "meaning_en": "Literally 'to come in waves' — exactly the English image. Grief isn't continuous; it comes and goes.",
-        "example": "Trauer kommt in Wellen — manchmal stark, manchmal ruhig."
+        "example": "Trauer kommt in Wellen — manchmal stark, manchmal ruhig.",
+        "example_en": "Grief comes in waves — sometimes strong, sometimes calm."
       },
       {
         "idiom": "Abschied nehmen",
         "literal": "nhận lời chia tay",
+        "literal_en": "to take leave",
         "meaning": "nói lời từ biệt (thường khi tang lễ)",
         "meaning_en": "Literally 'to take leave' — to say goodbye, typically at a funeral. Closest English: 'to say farewell' / 'to say one's goodbyes'.",
-        "example": "Bei der Beerdigung können wir Abschied nehmen — das ist wichtig."
+        "example": "Bei der Beerdigung können wir Abschied nehmen — das ist wichtig.",
+        "example_en": "At the funeral we can say our goodbyes — that matters."
       }
     ],
     "exercises": [
@@ -15040,36 +15442,49 @@ export const lessons: GermanLesson[] = [
       "Tobias hỏi sao bạn lại kể. Phân biệt 'Erklärung' (giải thích) khỏi 'Entschuldigung' (biện minh) — câu chuẩn: 'Das ist kein Grund, das ist nur eine Erklärung'.",
       "Tobias yêu cầu thời gian + đính chính với Anna/Markus. Đáp lại tôn trọng: không gây áp lực timeline, đề nghị cho Tobias xem trước text đính chính."
     ],
+    "roleplay_prompts_en": [
+      "You have just retold Tobias's private story to Anna and Markus. Go and see Tobias, open formally: 'Ich möchte mich aufrichtig entschuldigen' + name the specific wrong, not something vague.",
+      "Tobias asks why you told it. Distinguish an 'Erklärung' (explanation) from an 'Entschuldigung' (an apology that becomes an excuse) — the standard line: 'Das ist kein Grund, das ist nur eine Erklärung'.",
+      "Tobias asks for time and for you to set the record straight with Anna/Markus. Respond with respect: don't pressure a timeline, offer to let Tobias see the correction text in advance."
+    ],
     "register_notes": "Xin lỗi nghiêm trọng với bạn Đức: 'Du'. Câu mở đầu formal 'Ich möchte mich aufrichtig bei dir entschuldigen' — KHÔNG 'Sorry' (Anh) hoặc 'Es tut mir leid' đơn lẻ. Konjunktiv II Vergangenheit (quá khứ giả định) là CHÌA KHÓA: 'Ich hätte schweigen müssen' (lẽ ra phải im lặng), 'Ich hätte anders handeln sollen' (lẽ ra phải làm khác). Cấu trúc 'es gibt keine Entschuldigung dafür' = REJECT trước các 'lý do biện minh'. Phân biệt 'Erklärung' (giải thích sự kiện) ≠ 'Entschuldigung' (biện minh) — 'Das ist kein Grund, das ist nur eine Erklärung' = formula chuẩn. KHÔNG dùng 'aber' (nhưng) sau xin lỗi: 'Es tut mir leid, aber...' = phá hủy xin lỗi. Khi nhận trách nhiệm: 'Ich übernehme die volle Verantwortung'. Khi đối phương cần thời gian: KHÔNG 'können wir das hinter uns lassen?' — DÙNG 'Ich verstehe, wenn du Zeit brauchst' + 'Wenn du soweit bist, melde dich'.",
     "register_notes_en": "Serious apology to a German friend: 'du'. The formal opener is 'Ich möchte mich aufrichtig bei dir entschuldigen' — NOT the English 'Sorry' or a bare 'Es tut mir leid'. Konjunktiv II Vergangenheit (past counterfactual) is the KEY tool: 'Ich hätte schweigen müssen' (I should have stayed silent), 'Ich hätte anders handeln sollen' (I should have acted differently). The construction 'Es gibt keine Entschuldigung dafür' rejects excuses pre-emptively. Distinguish 'Erklärung' (factual explanation) from 'Entschuldigung' (justification) — 'Das ist kein Grund, das ist nur eine Erklärung' is the standard formula. NEVER follow an apology with 'aber' (but): 'Es tut mir leid, aber…' destroys the apology. To take responsibility: 'Ich übernehme die volle Verantwortung'. When the other person needs time: NOT 'können wir das hinter uns lassen?' — USE 'Ich verstehe, wenn du Zeit brauchst' + 'Wenn du soweit bist, melde dich'.",
     "idiom_glosses": [
       {
         "idiom": "reinen Tisch machen",
         "literal": "làm sạch bàn",
+        "literal_en": "to make a clean table",
         "meaning": "làm rõ mọi chuyện, nhận lỗi và bắt đầu lại",
         "meaning_en": "Literally 'to make a clean table' — to clear the air, own up to everything, and start fresh. Closest English: 'to wipe the slate clean'.",
-        "example": "Ich möchte mit dir reinen Tisch machen — und dann sehen, ob du mir noch vertrauen kannst."
+        "example": "Ich möchte mit dir reinen Tisch machen — und dann sehen, ob du mir noch vertrauen kannst.",
+        "example_en": "I want to come clean with you — and then see whether you can still trust me."
       },
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
+        "literal_en": "to lay the cards on the table",
         "meaning": "minh bạch hết, không giấu giếm",
         "meaning_en": "Exactly the English 'to lay your cards on the table' — to be completely transparent. Same poker image, same meaning.",
-        "example": "Ich lege die Karten auf den Tisch: ich habe deine Geschichte weitererzählt."
+        "example": "Ich lege die Karten auf den Tisch: ich habe deine Geschichte weitererzählt.",
+        "example_en": "I'll put my cards on the table: I passed your story on."
       },
       {
         "idiom": "über den eigenen Schatten springen",
         "literal": "nhảy qua bóng của chính mình",
+        "literal_en": "to jump over one's own shadow",
         "meaning": "vượt qua tự ái, làm điều khó (như xin lỗi thật lòng)",
         "meaning_en": "Literally 'to jump over your own shadow' — to push past your own ego to do something hard, like a real apology. Closest English: 'to swallow one's pride'.",
-        "example": "Es kostet mich Überwindung, aber ich muss über meinen eigenen Schatten springen und mich entschuldigen."
+        "example": "Es kostet mich Überwindung, aber ich muss über meinen eigenen Schatten springen und mich entschuldigen.",
+        "example_en": "It takes a lot for me, but I have to swallow my pride and apologise."
       },
       {
         "idiom": "Asche auf mein Haupt",
         "literal": "tro lên đầu mình (gốc Kinh Thánh)",
+        "literal_en": "ashes on my head",
         "meaning": "thừa nhận lỗi nặng (formal/dramatic)",
         "meaning_en": "Literally 'ashes on my head' — from the biblical gesture of penitence. The English equivalent is the phrase 'mea culpa' or 'sackcloth and ashes'. Formal and slightly dramatic.",
-        "example": "Asche auf mein Haupt — ich hätte das niemals weitererzählen dürfen."
+        "example": "Asche auf mein Haupt — ich hätte das niemals weitererzählen dürfen.",
+        "example_en": "Mea culpa — I should never have passed that on."
       }
     ],
     "exercises": [
@@ -15435,12 +15850,18 @@ export const lessons: GermanLesson[] = [
       "Marie bắt đầu khóc. Đáp 'Tränen sind okay' (nước mắt là được) — KHÔNG xin lỗi vì cảm xúc, KHÔNG cố làm dịu. Acknowledge cả 'mất mát' và 'điều mới bắt đầu'.",
       "Hứa giữ liên lạc CỤ THỂ (Videocall 1 lần/tháng, Chủ nhật đầu tháng) — không vague 'wir bleiben in Kontakt'. Kết bằng câu chuẩn 'Komm gut an' + 'Pass auf dich auf'."
     ],
+    "roleplay_prompts_en": [
+      "You (Linh) are saying goodbye to Marie — a friend of 10 years about to emigrate to Australia. Open by acknowledging the reality ('I can't believe...'), then bring up a CONCRETE memory (the three-hour walk in 2019).",
+      "Marie starts to cry. Respond 'Tränen sind okay' (tears are okay) — do NOT apologise for the emotion, do NOT try to smooth it over. Acknowledge both 'the loss' and 'the new beginning'.",
+      "Promise to stay in touch CONCRETELY (a video call once a month, the first Sunday of the month) — not a vague 'wir bleiben in Kontakt'. End with the standard lines 'Komm gut an' + 'Pass auf dich auf'."
+    ],
     "register_notes": "Chia tay cuối với bạn thân Đức: 'Du'. Câu mở đầu acknowledge thực tế: 'Ich kann gar nicht glauben, dass...'. Konjunktiv II không cần ở đây — Indikativ trực tiếp + cảm xúc. Câu cảm xúc trực tiếp: 'Du hast mich geprägt' (cậu đã định hình mình), 'Du wirst mir fehlen' (mình sẽ nhớ cậu) — không hedging, không vòng vo. Câu acknowledge cả vui và buồn: 'Es ist schwer und schön zugleich' / 'Beides darf da sein'. Câu chuẩn tiễn đi: 'Komm gut an' (đến nơi an toàn) + 'Pass auf dich auf' (giữ gìn). Cụ thể KỶ NIỆM (Sonntags-Spaziergänge am Schlachtensee) > generic ('die schöne Zeit'). Khi tình bạn KẾT THÚC (không xa thể chất): 'Ich glaube, unsere Wege trennen sich hier' (đường đi tách ra) — không 'Es liegt nicht an dir' (quá break-up).",
     "register_notes_en": "Permanent goodbye with a close German friend (Du): the opener acknowledges the reality directly: 'Ich kann gar nicht glauben, dass…' (I can't believe…). Konjunktiv II isn't needed here — use direct Indikativ + feeling. Direct emotion lines: 'Du hast mich geprägt' (you've shaped me), 'Du wirst mir fehlen' (I'll miss you) — no hedging, no softeners. Lines that hold both joy and sadness together: 'Es ist schwer und schön zugleich' / 'Beides darf da sein' (both are allowed to be here). The standard send-off pair: 'Komm gut an' (get there safely) + 'Pass auf dich auf' (take care of yourself). Use SPECIFIC memories (Sonntags-Spaziergänge am Schlachtensee) over generic ones ('die schöne Zeit'). When a friendship is ENDING (not physical distance): 'Ich glaube, unsere Wege trennen sich hier' (our paths separate here) — avoid 'Es liegt nicht an dir' (too breakup-coded for a friendship).",
     "idiom_glosses": [
       {
         "idiom": "die Wege trennen sich",
         "literal": "đường đi tách ra",
+        "literal_en": "the paths separate",
         "meaning": "rẽ hướng khác nhau, kết thúc đường chung",
         "meaning_en": "the paths separate — to go different ways, to end a shared journey",
         "example": "Manchmal merken Freunde, dass sich ihre Wege trennen — das ist okay.",
@@ -15449,6 +15870,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Komm gut an",
         "literal": "đến nơi tốt đẹp",
+        "literal_en": "arrive well",
         "meaning": "đến nơi an toàn (formula chia tay khi tiễn đi xa)",
         "meaning_en": "the standard German farewell formula when seeing someone off to a distant place — literally 'arrive well'",
         "example": "Komm gut an, Marie — schreib mir, sobald du gelandet bist.",
@@ -15457,6 +15879,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas im Herzen tragen",
         "literal": "mang điều gì đó trong tim",
+        "literal_en": "to carry something in the heart",
         "meaning": "giữ kỷ niệm/người mãi trong lòng",
         "meaning_en": "to carry something in one's heart — to keep a memory or person alive inside you",
         "example": "Egal wo du bist — ich trage unsere Freundschaft im Herzen.",
@@ -15465,6 +15888,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "Spuren hinterlassen",
         "literal": "để lại dấu chân",
+        "literal_en": "to leave traces",
         "meaning": "ảnh hưởng lâu dài, để lại dấu ấn",
         "meaning_en": "to leave traces / footprints — to have a lasting influence, to make a mark on someone",
         "example": "Marie hat in meinem Leben tiefe Spuren hinterlassen.",
@@ -15829,12 +16253,18 @@ export const lessons: GermanLesson[] = [
       "Lukas mở lòng: áp lực công việc + cãi vã với chị + chưa nguôi nỗi đau cha mất. Phản ánh cảm xúc + acknowledge mức độ ('Das klingt nach sehr viel — drei Sachen gleichzeitig'). KHÔNG đưa giải pháp ngay.",
       "Khi Lukas mô tả mất ngủ + kiệt sức, gợi ý NHẸ về Hausarzt — không ép buộc, không chẩn đoán. Đề nghị đi cùng đến phòng khám: 'Du musst nicht alleine hingehen'."
     ],
+    "roleplay_prompts_en": [
+      "Lukas — your friend — has gone quiet for a few weeks (cancelling plans, fewer WhatsApps). Reach out with something specific: 'Mir ist aufgefallen, dass...'. Create space for him to DECLINE if he isn't ready.",
+      "Lukas opens up: work pressure + a quarrel with his sister + grief over his father's death not yet eased. Reflect the feelings + acknowledge the scale ('Das klingt nach sehr viel — drei Sachen gleichzeitig'). Do NOT offer a solution right away.",
+      "When Lukas describes insomnia + exhaustion, GENTLY suggest a Hausarzt — without pressuring, without diagnosing. Offer to go with him to the clinic: 'Du musst nicht alleine hingehen'."
+    ],
     "register_notes": "Hỗ trợ bạn đang khó khăn (Du): Konjunktiv II vẫn dùng cho hedging gentle: 'Hast du schon mal überlegt...?', 'Was würde dir helfen?'. Câu mở 'Mir ist aufgefallen, dass...' (mình để ý thấy) — proaktiv không waiting. 'Wie geht's dir wirklich?' (nhấn 'wirklich') — distinguish khỏi 'wie geht's' generic. Active listening: 'Das klingt nach...' (nghe có vẻ...) — phản ánh không diagnose. Khi gợi ý chuyên môn: 'Hast du schon mal überlegt, mit deinem Hausarzt zu sprechen?' — gentle, NICHT 'du musst' (ép buộc), NICHT 'du hast Burnout' (chẩn đoán). Phân biệt 'krank genug' fallacy: 'man muss nicht krank genug sein, um Hilfe zu bekommen'. Đề nghị support CỤ THỂ: 'Ich kann dich begleiten' (đi cùng) > 'sag wenn du was brauchst' (vague). Câu kết: 'Du brauchst dich für nichts zu bedanken' + 'Ich bin da'.",
     "register_notes_en": "Supporting a struggling friend (Du): use Konjunktiv II for gentle hedging: 'Hast du schon mal überlegt…?' (have you ever considered…?), 'Was würde dir helfen?' (what would help you?). Opener 'Mir ist aufgefallen, dass…' (I've noticed that…) — proactive, not waiting. 'Wie geht's dir wirklich?' (with stress on 'wirklich') — distinguishes from the throwaway 'wie geht's'. Active-listening frame: 'Das klingt nach…' (that sounds like…) — reflecting, not diagnosing. When suggesting professional help: 'Hast du schon mal überlegt, mit deinem Hausarzt zu sprechen?' — gentle. NEVER 'du musst' (pressure), NEVER 'du hast Burnout' (diagnosing). Push back on the 'krank genug' fallacy: 'man muss nicht krank genug sein, um Hilfe zu bekommen' (you don't have to be sick enough to deserve help). Offer support CONCRETELY: 'Ich kann dich begleiten' (I can come with you) over 'sag wenn du was brauchst' (vague). Close with 'Du brauchst dich für nichts zu bedanken' + 'Ich bin da' (you don't have to thank me for anything + I'm here).",
     "idiom_glosses": [
       {
         "idiom": "am Limit sein",
         "literal": "đang ở giới hạn",
+        "literal_en": "to be at the limit",
         "meaning": "kiệt sức, quá tải",
         "meaning_en": "to be at the limit — to be running on empty, completely overloaded",
         "example": "Lukas ist seit zwei Monaten am Limit — 55 Stunden pro Woche.",
@@ -15843,6 +16273,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "alles wächst über den Kopf",
         "literal": "tất cả lớn vượt đầu",
+        "literal_en": "everything grows over one's head",
         "meaning": "mọi thứ vượt khả năng đối phó",
         "meaning_en": "everything grows over your head — everything is too much to cope with at once",
         "example": "Manchmal wächst einem alles über den Kopf — und das ist okay zuzugeben.",
@@ -15851,6 +16282,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "ein offenes Ohr haben",
         "literal": "có cái tai mở",
+        "literal_en": "to have an open ear",
         "meaning": "sẵn sàng lắng nghe",
         "meaning_en": "to have an open ear — to be available to listen",
         "example": "Ich habe immer ein offenes Ohr für dich — auch nachts.",
@@ -15859,6 +16291,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "jemandem den Rücken stärken",
         "literal": "làm mạnh lưng ai đó",
+        "literal_en": "to strengthen someone's back",
         "meaning": "support ai đó về mặt tinh thần/thực tế",
         "meaning_en": "to strengthen someone's back — to back them up emotionally or practically",
         "example": "Ich möchte dir den Rücken stärken — was würde dir helfen?",
@@ -16218,12 +16651,18 @@ export const lessons: GermanLesson[] = [
       "Jonas thừa nhận quên + xin lỗi + nói tài khoản hơi căng. Đề nghị giải pháp Konjunktiv II: 'Wäre ein Rückzahlungsplan möglich — meinetwegen in zwei Raten?'.",
       "Thỏa thuận xong: 150 EUR cuối tuần + 150 EUR ngày 15 tháng sau. Đề nghị ghi qua Whatsapp ('damit wir beide den gleichen Überblick haben'). Acknowledge tình bạn quan trọng hơn tiền."
     ],
+    "roleplay_prompts_en": [
+      "You lent Jonas 300 EUR back in March for a broken washing machine. Now you need it back to pay an insurance bill. Open with 'Ich möchte etwas Unangenehmes ansprechen' — be specific about the amount + the date + why you need it.",
+      "Jonas admits he forgot + apologises + says his account is a bit tight. Propose a solution in Konjunktiv II: 'Wäre ein Rückzahlungsplan möglich — meinetwegen in zwei Raten?'.",
+      "Once agreed: 150 EUR at the weekend + 150 EUR on the 15th of next month. Propose recording it over WhatsApp ('damit wir beide den gleichen Überblick haben'). Acknowledge that the friendship matters more than the money."
+    ],
     "register_notes": "Trao đổi tiền với bạn Đức (Du): câu mở đầu acknowledge awkward 'Ich möchte etwas Unangenehmes ansprechen'. CỤ THỂ: số tiền + ngày + ngữ cảnh ('die 300 Euro vom 12. März, als deine Waschmaschine kaputtgegangen ist'). Konjunktiv II cho hedging: 'Wäre ein Rückzahlungsplan möglich?', 'Meinetwegen in zwei Raten' (mình ok 2 đợt). Cho space để honest: 'Falls es bei dir schwierig ist — sag's mir ehrlich'. Văn bản hóa qua Whatsapp ('damit wir beide den gleichen Überblick haben') — chuyên nghiệp, không thiếu tin tưởng. Câu chốt 'Bei Geld hört die Freundschaft auf' = idiom cảnh báo, dùng để giải thích TẠI SAO cần rõ ràng. Khi BẠN bị đòi: 'Du hast Recht' (cậu đúng) + 'Ich hatte das verdrängt' (mình không nhớ) — KHÔNG defensive 'aber'. Nếu khó trả: COUNTER-OFFER cụ thể, không ghosting.",
     "register_notes_en": "Money talk with a German friend (Du): open by acknowledging the awkwardness: 'Ich möchte etwas Unangenehmes ansprechen'. Be SPECIFIC: amount + date + context ('die 300 Euro vom 12. März, als deine Waschmaschine kaputtgegangen ist'). Use Konjunktiv II for hedging: 'Wäre ein Rückzahlungsplan möglich?', 'Meinetwegen in zwei Raten' (two installments works for me). Leave room for honesty: 'Falls es bei dir schwierig ist — sag's mir ehrlich'. Move it to text — 'damit wir beide den gleichen Überblick haben' (so we both have the same overview) — professional, not a lack of trust. The closer 'Bei Geld hört die Freundschaft auf' = a warning-idiom; use it to explain WHY you want clarity. When YOU'RE being asked: 'Du hast Recht' (you're right) + 'Ich hatte das verdrängt' (I'd pushed it out of mind) — never start with a defensive 'aber'. If you can't pay, COUNTER-OFFER concretely. Don't go silent.",
     "idiom_glosses": [
       {
         "idiom": "Bei Geld hört die Freundschaft auf",
         "literal": "Đến tiền là tình bạn dừng",
+        "literal_en": "with money the friendship stops",
         "meaning": "Tiền có thể phá vỡ tình bạn — cảnh báo cần rõ ràng",
         "meaning_en": "where money begins, friendship ends — a warning that money can break a friendship; reason to be clear",
         "example": "Bei Geld hört die Freundschaft auf — deshalb möchte ich das jetzt klären, bevor es ein Problem wird.",
@@ -16232,6 +16671,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "in den roten Zahlen sein",
         "literal": "đang ở số đỏ",
+        "literal_en": "to be in the red figures",
         "meaning": "tài khoản âm, hết tiền",
         "meaning_en": "to be in the red — to be overdrawn, out of money",
         "example": "Mein Konto ist diesen Monat in den roten Zahlen — ich kann nicht alles auf einmal zurückzahlen.",
@@ -16240,6 +16680,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Rechnung begleichen",
         "literal": "cân bằng hóa đơn",
+        "literal_en": "to settle the bill",
         "meaning": "trả nợ, thanh toán",
         "meaning_en": "to settle the bill — to pay off a debt",
         "example": "Ich werde die Rechnung in zwei Raten begleichen — ist das okay für dich?",
@@ -16248,6 +16689,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas auf die lange Bank schieben",
         "literal": "đẩy điều gì đó lên ghế dài",
+        "literal_en": "to push something onto the long bench",
         "meaning": "trì hoãn, để lâu",
         "meaning_en": "to push something onto the long bench — to keep putting it off, to procrastinate",
         "example": "Ich habe das Thema Geld zu lange auf die lange Bank geschoben — heute spreche ich es an.",
@@ -16617,12 +17059,18 @@ export const lessons: GermanLesson[] = [
       "Khi Tobias chia sẻ Glaube của cậu, chia sẻ Ahnenverehrung của bạn — nhấn 'kulturelle Praxis als eine Religion im westlichen Sinn'. Tự gọi 'spirituell suchend' thay 'religiös'.",
       "Mời nhau đến lễ của bên kia (Tét + Christmette) — đặt frame 'bereichernd' (làm phong phú). Câu chốt 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'."
     ],
+    "roleplay_prompts_en": [
+      "Ask your German friend (Tobias) about going to church on Sunday — the opener is 'Was bedeutet dir das eigentlich?' (not 'Glaubst du wirklich an Gott?').",
+      "When Tobias shares his faith (Glaube), share your ancestor veneration (Ahnenverehrung) — stress it's a 'kulturelle Praxis als eine Religion im westlichen Sinn' (cultural practice rather than a religion in the Western sense). Call yourself 'spirituell suchend' rather than 'religiös'.",
+      "Invite each other to the other's celebration (Tết + Christmas Mass) — set the frame as 'bereichernd' (enriching). The closing line: 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'."
+    ],
     "register_notes": "Trao đổi tín ngưỡng (Du): Konjunktiv II hữu ích cho hedging: 'Ich würde mich nicht als religiös bezeichnen', 'Ich würde sagen, ich glaube an etwas — aber...'. Câu mở mở: 'Was bedeutet dir das?' (KHÔNG 'glaubst du wirklich?'). Phân biệt 'religiös' / 'gläubig' / 'spirituell' / 'konfessionslos' / 'praktizierend'. Khi giải thích thực hành VN: 'Es ist mehr eine kulturelle Praxis als eine Religion im westlichen Sinn' — formula chuẩn. Câu tôn trọng: 'Ich respektiere deinen Glauben — auch wenn ich anders sehe'. Câu de-escalate: 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'. KHÔNG 'das ist Quatsch' / 'das ist primitiv' — TUYỆT ĐỐI tránh. Khi không đồng ý: 'Ich kann das für mich nicht so übernehmen' / 'Aus meiner Sicht...'.",
     "register_notes_en": "Cross-faith conversation (Du): Konjunktiv II is useful for hedging: 'Ich würde mich nicht als religiös bezeichnen' (I wouldn't describe myself as religious), 'Ich würde sagen, ich glaube an etwas — aber…' (I'd say I believe in something — but…). Open with an OPEN question: 'Was bedeutet dir das?' (NOT 'glaubst du wirklich?'). Hold the distinctions between 'religiös' / 'gläubig' / 'spirituell' / 'konfessionslos' / 'praktizierend'. When you explain a Vietnamese practice: 'Es ist mehr eine kulturelle Praxis als eine Religion im westlichen Sinn' — standard framing. Respect line: 'Ich respektiere deinen Glauben — auch wenn ich anders sehe'. De-escalation line: 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'. ABSOLUTELY avoid 'das ist Quatsch' / 'das ist primitiv'. When you disagree: 'Ich kann das für mich nicht so übernehmen' / 'Aus meiner Sicht…'.",
     "idiom_glosses": [
       {
         "idiom": "den Glauben verlieren",
         "literal": "mất đức tin",
+        "literal_en": "to lose the faith",
         "meaning": "thôi tin (tôn giáo hoặc nói chung)",
         "meaning_en": "to lose one's faith — to stop believing (religious, or more general)",
         "example": "Manche Menschen verlieren ihren Glauben nach einem schweren Verlust — das ist menschlich.",
@@ -16631,6 +17079,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf Sand bauen",
         "literal": "xây trên cát",
+        "literal_en": "to build on sand",
         "meaning": "đặt nền móng trên thứ không vững (gốc Kinh Thánh)",
         "meaning_en": "to build on sand — to base something on shaky ground (biblical origin: Sermon on the Mount)",
         "example": "Eine Beziehung auf Lügen ist auf Sand gebaut — sie wird nicht halten.",
@@ -16639,6 +17088,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "der Glaube versetzt Berge",
         "literal": "đức tin di chuyển núi",
+        "literal_en": "the faith moves mountains",
         "meaning": "niềm tin có sức mạnh lớn (gốc Kinh Thánh)",
         "meaning_en": "faith moves mountains — belief carries great power (biblical origin)",
         "example": "Ich bin nicht religiös — aber 'der Glaube versetzt Berge' stimmt für mich auch in einem säkularen Sinn.",
@@ -16647,6 +17097,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "leben und leben lassen",
         "literal": "sống và để người khác sống",
+        "literal_en": "to live and let live",
         "meaning": "tôn trọng cách sống của người khác",
         "meaning_en": "live and let live — respect other people's ways of living",
         "example": "Bei Religion gilt für mich: leben und leben lassen — solange niemand verletzt wird.",
@@ -17021,12 +17472,18 @@ export const lessons: GermanLesson[] = [
       "Sophie sợ bạn sẽ nhìn cô khác đi. Đáp 'was du mir erzählst, ändert nichts daran, wie ich dich sehe' — câu validation chuẩn. KHÔNG so sánh kinh nghiệm cá nhân.",
       "Sau khi cô ấy kể, validate ('was du erlebt hast, war nicht okay — nicht deine Schuld') + đề nghị support cụ thể (ngủ lại) + gợi ý NHẸ về Therapie ('wenn du soweit bist'). KHÔNG ép."
     ],
+    "roleplay_prompts_en": [
+      "Sophie shares something difficult from when she was 16 — you don't need the details. Open by listening formally: 'Ich höre dir zu' + 'Du musst nicht mehr erzählen, als sich gut anfühlt'. Do NOT ask WHY or WHAT EXACTLY.",
+      "Sophie is afraid you'll see her differently. Respond 'was du mir erzählst, ändert nichts daran, wie ich dich sehe' — the standard validation line. Do NOT compare it to your own experience.",
+      "After she's told you, validate ('was du erlebt hast, war nicht okay — nicht deine Schuld') + offer concrete support (staying over) + GENTLY suggest therapy ('wenn du soweit bist'). Do NOT push."
+    ],
     "register_notes": "Lắng nghe câu chuyện khó (Du): câu mở 'Ich höre dir zu' — không Konjunktiv II ở đây, Indikativ direct + present. 'Du musst nicht mehr erzählen, als sich gut anfühlt' — KEY câu để cho space. 'Danke, dass du mir das anvertraust' — nhận GIFT. Validation: 'Was du erlebt hast, war nicht okay' / 'Es war nicht deine Schuld'. KHÔNG diagnose ('du hast Trauma'), KHÔNG fix ('ich werde nicht versuchen, es zu reparieren'). Câu hỏi WHY (warum hast du nicht...) = CẤM. Câu hỏi WHAT (was genau ist passiert) = CHỈ khi họ mời. Khi gợi ý Therapie: 'manche Menschen finden es hilfreich, mit einem Therapeuten zu reden — nicht weil mit dir was falsch ist'. Khi end: 'das bleibt zwischen uns' (confidentiality formal). Body language quan trọng hơn lời.",
     "register_notes_en": "Listening to a hard story (Du): opener 'Ich höre dir zu' — no Konjunktiv II here, direct Indikativ + present. 'Du musst nicht mehr erzählen, als sich gut anfühlt' — the KEY line for giving them room. 'Danke, dass du mir das anvertraust' — receive the gift. Validation: 'Was du erlebt hast, war nicht okay' / 'Es war nicht deine Schuld'. NO diagnosing ('du hast Trauma'), NO fixing ('ich werde nicht versuchen, es zu reparieren'). 'Why' questions ('warum hast du nicht…') = FORBIDDEN. 'What' questions ('was genau ist passiert') = ONLY if they invite them. When suggesting therapy: 'manche Menschen finden es hilfreich, mit einem Therapeuten zu reden — nicht weil mit dir was falsch ist'. At the end: 'das bleibt zwischen uns' (formal confidentiality). Body language matters more than words.",
     "idiom_glosses": [
       {
         "idiom": "ein offenes Ohr haben",
         "literal": "có cái tai mở",
+        "literal_en": "to have an open ear",
         "meaning": "sẵn sàng lắng nghe",
         "meaning_en": "to have an open ear — to be available to listen",
         "example": "Wenn du irgendwann reden möchtest — ich habe immer ein offenes Ohr.",
@@ -17035,6 +17492,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "etwas auf dem Herzen haben",
         "literal": "có điều gì đó trên trái tim",
+        "literal_en": "to have something on the heart",
         "meaning": "có điều quan trọng muốn chia sẻ",
         "meaning_en": "to have something on one's heart — to have something important you want to share",
         "example": "Du hast etwas auf dem Herzen — ich höre zu, ohne zu drängen.",
@@ -17043,6 +17501,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "sich vom Herzen reden",
         "literal": "nói từ trái tim",
+        "literal_en": "to talk something off one's heart",
         "meaning": "kể ra hết cảm xúc/chuyện đè nặng",
         "meaning_en": "to talk something off your heart — to get an emotional weight out, just by speaking it",
         "example": "Manchmal hilft es, sich etwas vom Herzen zu reden — selbst wenn man keine Lösung sucht.",
@@ -17051,6 +17510,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Seele baumeln lassen",
         "literal": "để tâm hồn lủng lẳng",
+        "literal_en": "to let the soul dangle",
         "meaning": "thư giãn, không nghĩ ngợi",
         "meaning_en": "to let the soul dangle — to unwind, to stop thinking, to recover",
         "example": "Nach so einem Gespräch braucht man Zeit, die Seele baumeln zu lassen.",
@@ -17425,12 +17885,18 @@ export const lessons: GermanLesson[] = [
       "Anna defensive ('aus einer Mücke einen Elefanten'). Đáp 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'. Giữ vững Grenze.",
       "Đặt Grenze cụ thể: 'keine Anrufe nach Mitternacht' + alternative ('1x/Woche, je halb deine/meine Themen'). Khi Anna hỏi 'echte Krise nachts?', cung cấp Telefonseelsorge 0800 111 0 111. Tham khảo cuối: re-evaluate sau 1 tuần."
     ],
+    "roleplay_prompts_en": [
+      "Anna has called you 14 times in eight weeks, 13 of the 14 about a crisis. Open with 'Mir liegt etwas auf dem Herzen' + cite the concrete numbers (NOT a vague 'too much').",
+      "Anna gets defensive ('aus einer Mücke einen Elefanten'). Respond 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'. Hold the boundary (Grenze).",
+      "Set a concrete boundary: 'no calls after midnight' + an alternative ('once a week, half your topics half mine'). When Anna asks 'a real crisis at night?', provide the Telefonseelsorge line 0800 111 0 111. Closing note: re-evaluate after a week."
+    ],
     "register_notes": "Đặt Grenze với bạn Đức (Du): câu mở 'Mir liegt etwas auf dem Herzen' (formal, signal cuộc trò chuyện quan trọng). Konjunktiv II không cần ở đây — Indikativ direct. Cấu trúc: ICH-MESSAGE ('Ich habe gemerkt, dass') → SPECIFIC (số liệu cụ thể) → NEED ('Ich brauche') → ALTERNATIVE ('Was möglich ist'). Câu reframe key: 'Es ist nicht persönlich gegen dich — es ist eine Grenze, die ich für mich brauche'. Khi defensive: 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'. Khi guilt-trip: 'Ich verstehe, dass das schwer zu hören ist — und gleichzeitig brauche ich das'. KHÔNG escalate, KHÔNG rút lại. Câu reframe Grenze là healthy: 'Eine Freundschaft, in der ich erschöpft bin, ist auf Dauer nicht haltbar' / 'Es ist Selbstfürsorge'. Khi đối phương hỏi alternative cho khủng hoảng đêm: cung cấp Telefonseelsorge 0800 111 0 111 (resource thực tế).",
     "register_notes_en": "Boundary-setting with a German friend (Du): opener 'Mir liegt etwas auf dem Herzen' (something is on my heart — formal, signals an important conversation). Konjunktiv II isn't needed — direct Indikativ. Structure: I-MESSAGE ('Ich habe gemerkt, dass') → SPECIFIC (numbers, concrete) → NEED ('Ich brauche') → ALTERNATIVE ('Was möglich ist'). Key reframe line: 'Es ist nicht persönlich gegen dich — es ist eine Grenze, die ich für mich brauche'. When they go defensive: 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'. When they guilt-trip: 'Ich verstehe, dass das schwer zu hören ist — und gleichzeitig brauche ich das'. DON'T escalate, DON'T retreat. Reframe the Grenze as healthy: 'Eine Freundschaft, in der ich erschöpft bin, ist auf Dauer nicht haltbar' / 'Es ist Selbstfürsorge'. If they ask for an alternative for genuine crisis nights: hand them Telefonseelsorge 0800 111 0 111 (a real resource).",
     "idiom_glosses": [
       {
         "idiom": "aus einer Mücke einen Elefanten machen",
         "literal": "biến con muỗi thành con voi",
+        "literal_en": "to make an elephant out of a mosquito",
         "meaning": "phóng đại vấn đề",
         "meaning_en": "to make an elephant out of a mosquito — to make a mountain out of a molehill, to blow something out of proportion",
         "example": "Du machst aus einer Mücke einen Elefanten — ich habe doch nur dreimal angerufen.",
@@ -17439,6 +17905,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "die Reißleine ziehen",
         "literal": "kéo dây kéo cứu (parachute)",
+        "literal_en": "to pull the rip cord",
         "meaning": "stop khẩn cấp khi tình huống đi quá xa",
         "meaning_en": "to pull the rip-cord (parachute) — to make an emergency stop when a situation has gone too far",
         "example": "Bei dieser Freundschaft musste ich die Reißleine ziehen — sonst wäre ich zusammengebrochen.",
@@ -17447,6 +17914,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "auf eigene Kappe nehmen",
         "literal": "nhận lên mũ của chính mình",
+        "literal_en": "to take onto one's own cap",
         "meaning": "chịu trách nhiệm về điều gì đó",
         "meaning_en": "to take it onto one's own cap — to take responsibility for something yourself",
         "example": "Diese Grenze nehme ich auf meine eigene Kappe — auch wenn andere es nicht verstehen.",
@@ -17455,6 +17923,7 @@ export const lessons: GermanLesson[] = [
       {
         "idiom": "den Knoten durchschlagen",
         "literal": "chém đứt nút thắt (gốc Alexander Đại đế)",
+        "literal_en": "to strike through the knot",
         "meaning": "giải quyết vấn đề phức tạp dứt khoát",
         "meaning_en": "to cut through the knot (the Gordian knot of Alexander the Great) — to resolve a tangled problem decisively",
         "example": "Mit diesem Gespräch haben wir den Knoten durchgeschlagen — endlich Klarheit.",
