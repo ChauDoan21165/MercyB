@@ -269,7 +269,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to read between the lines",
           "meaning": "Hiểu điều ngầm — không công thức học thuật cao.",
           "meaning_en": "to grasp the implicit — common register, not an elevated academic formula",
-          "example": "Madame Bovary se lit aussi entre les lignes — l'ironie y est rarement explicite."
+          "example": "Madame Bovary se lit aussi entre les lignes — l'ironie y est rarement explicite.",
+          "example_en": "Madame Bovary, too, is read between the lines — the irony in it is rarely explicit."
         },
         {
           "idiom": "En filigrane (littéraire)",
@@ -277,7 +278,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "like a watermark in paper",
           "meaning": "Ẩn ngầm dưới bề mặt — formel littéraire.",
           "meaning_en": "implied beneath the surface — formal/literary register",
-          "example": "En filigrane de cette page descriptive, on lit déjà le drame qui s'annonce."
+          "example": "En filigrane de cette page descriptive, on lit déjà le drame qui s'annonce.",
+          "example_en": "Beneath the surface of this descriptive page, you can already read the drama about to unfold."
         },
         {
           "idiom": "Faire entendre (littéraire)",
@@ -285,7 +287,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to make (something) heard",
           "meaning": "Để lộ ngầm — sản sinh ý nghĩa qua hình thức.",
           "meaning_en": "to let be understood implicitly — meaning produced through form, not stated outright",
-          "example": "Le narrateur fait entendre, sans jamais le dire, son désaccord avec son personnage."
+          "example": "Le narrateur fait entendre, sans jamais le dire, son désaccord avec son personnage.",
+          "example_en": "The narrator makes his disagreement with his own character felt, without ever stating it."
         },
         {
           "idiom": "Tirer le texte de son côté (soutenu critique)",
@@ -293,7 +296,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to pull the text to one's own side",
           "meaning": "Áp đặt cách đọc lên văn bản — phê bình một thực hành sai.",
           "meaning_en": "to force a reading onto the text — naming a flawed practice (the Anglo analogue is the 'intentional fallacy')",
-          "example": "Cette lecture sociologique tire le texte de son côté — Flaubert n'est pas un sociologue."
+          "example": "Cette lecture sociologique tire le texte de son côté — Flaubert n'est pas un sociologue.",
+          "example_en": "This sociological reading bends the text to its own ends — Flaubert is not a sociologist."
         }
       ],
       "exercises": [
@@ -590,7 +594,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to pull the strings",
           "meaning": "Điều khiển từ hậu trường — utilisé pour le narrateur omniscient.",
           "meaning_en": "to control from behind the scenes — used of the omniscient narrator; common register",
-          "example": "Le narrateur balzacien tire les ficelles de tous les destins du roman."
+          "example": "Le narrateur balzacien tire les ficelles de tous les destins du roman.",
+          "example_en": "The Balzacian narrator pulls the strings of every destiny in the novel."
         },
         {
           "idiom": "Donner la parole à (soutenu)",
@@ -598,7 +603,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to give the floor to",
           "meaning": "Cấp giọng nói cho — analyse de la polyphonie.",
           "meaning_en": "to grant voice to (a character) — used in analysing polyphony; elevated register",
-          "example": "Flaubert donne la parole à ses personnages tout en s'en distanciant."
+          "example": "Flaubert donne la parole à ses personnages tout en s'en distanciant.",
+          "example_en": "Flaubert gives his characters a voice while keeping his distance from them."
         },
         {
           "idiom": "Effacer les traces de l'énonciation (littéraire)",
@@ -606,7 +612,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to erase the traces of enunciation",
           "meaning": "Làm tan biến sự hiện diện của người trần thuật — idéal réaliste.",
           "meaning_en": "to make the narrator's presence vanish — the realist ideal; literary register",
-          "example": "L'écriture flaubertienne s'efforce d'effacer les traces de l'énonciation."
+          "example": "L'écriture flaubertienne s'efforce d'effacer les traces de l'énonciation.",
+          "example_en": "Flaubertian writing strives to erase the traces of its own narration."
         },
         {
           "idiom": "Tenir la dragée haute à (soutenu rare)",
@@ -614,7 +621,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to hold the sugared almond up high (out of reach)",
           "meaning": "Giữ khoảng cách — narrateur ironique avec ses personnages.",
           "meaning_en": "to keep at an ironic distance — of a narrator superior to his characters; rare, elevated register",
-          "example": "Voltaire tient la dragée haute à Candide, ce qui produit l'ironie philosophique du conte."
+          "example": "Voltaire tient la dragée haute à Candide, ce qui produit l'ironie philosophique du conte.",
+          "example_en": "Voltaire keeps Candide at arm's length, which produces the philosophical irony of the tale."
         }
       ],
       "exercises": [
@@ -906,7 +914,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to spin out the metaphor (as one spins thread)",
           "meaning": "Triển khai một ẩn dụ qua nhiều câu liên tiếp.",
           "meaning_en": "to develop one metaphor across several consecutive sentences; common in criticism",
-          "example": "Baudelaire, dans Correspondances, file la métaphore de la forêt de symboles tout au long du sonnet."
+          "example": "Baudelaire, dans Correspondances, file la métaphore de la forêt de symboles tout au long du sonnet.",
+          "example_en": "In Correspondances, Baudelaire sustains the metaphor of the forest of symbols throughout the sonnet."
         },
         {
           "idiom": "Le grain de l'image (littéraire bachelardien)",
@@ -914,7 +923,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the grain of the image",
           "meaning": "Tính cụ thể vật chất của một hình ảnh thi ca.",
           "meaning_en": "the material concreteness of a poetic image; Bachelardian literary register",
-          "example": "Bachelard nous invite à ressentir le grain de l'image avant de chercher son sens."
+          "example": "Bachelard nous invite à ressentir le grain de l'image avant de chercher son sens.",
+          "example_en": "Bachelard invites us to feel the texture of the image before searching for its meaning."
         },
         {
           "idiom": "Tisser un réseau (littéraire)",
@@ -922,7 +932,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to weave a network",
           "meaning": "Tạo một mạng lưới các hình ảnh liên kết qua tác phẩm.",
           "meaning_en": "to build a web of linked images across a work; literary register",
-          "example": "Le poète tisse un réseau d'images aquatiques qui structure tout le recueil."
+          "example": "Le poète tisse un réseau d'images aquatiques qui structure tout le recueil.",
+          "example_en": "The poet weaves a network of water imagery that structures the entire collection."
         },
         {
           "idiom": "Crever l'écran (familier appliqué littéraire)",
@@ -930,7 +941,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to burst through the screen",
           "meaning": "Một hình ảnh / nhân vật vượt qua khung văn bản — utilisé pour des figures inoubliables.",
           "meaning_en": "(of an image or character) to be unforgettable, to leap off the page — a colloquial term applied to literature",
-          "example": "Le cygne mallarméen, à force de densité symbolique, crève l'écran du sonnet."
+          "example": "Le cygne mallarméen, à force de densité symbolique, crève l'écran du sonnet.",
+          "example_en": "The Mallarmean swan, through sheer symbolic density, leaps off the page of the sonnet."
         }
       ],
       "exercises": [
@@ -1227,7 +1239,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to push a logic to its end-point",
           "meaning": "Đưa một quy ước đến cực để bộc lộ giới hạn — Houellebecquian.",
           "meaning_en": "to drive a convention to its extreme so as to expose its limit — the Houellebecquian move; elevated register",
-          "example": "Houellebecq pousse la logique du naturalisme zolien à son terme — et révèle son épuisement."
+          "example": "Houellebecq pousse la logique du naturalisme zolien à son terme — et révèle son épuisement.",
+          "example_en": "Houellebecq pushes the logic of Zola's naturalism to its limit — and reveals its exhaustion."
         },
         {
           "idiom": "Miner de l'intérieur (soutenu)",
@@ -1235,7 +1248,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to undermine from within",
           "meaning": "Phá từ bên trong bằng cách giả vờ tôn trọng — subversion subtile.",
           "meaning_en": "to subvert from inside while feigning respect — a subtle subversion; elevated register",
-          "example": "Beckett mine de l'intérieur les conventions du théâtre classique sans jamais les rejeter ouvertement."
+          "example": "Beckett mine de l'intérieur les conventions du théâtre classique sans jamais les rejeter ouvertement.",
+          "example_en": "Beckett undermines the conventions of classical theatre from within, without ever openly rejecting them."
         },
         {
           "idiom": "Faire école (courant littéraire)",
@@ -1243,7 +1257,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to found a school",
           "meaning": "Trở thành mô hình cho thế hệ sau.",
           "meaning_en": "to become a model for the following generation; common literary register",
-          "example": "Le Nouveau Roman a fait école auprès des écrivains des années 1960."
+          "example": "Le Nouveau Roman a fait école auprès des écrivains des années 1960.",
+          "example_en": "The Nouveau Roman set a precedent for the writers of the 1960s."
         },
         {
           "idiom": "Tirer son épingle du jeu (courant)",
@@ -1251,7 +1266,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to pull one's pin out of the game",
           "meaning": "Thoát khỏi một tình thế khó — analyse de Modiano qui maintient un classicisme dans une époque expérimentale.",
           "meaning_en": "to extricate oneself well from a tricky situation — here, Modiano keeping an assumed classicism in an experimental age; common register",
-          "example": "Modiano tire son épingle du jeu en maintenant un classicisme assumé là où ses contemporains expérimentent."
+          "example": "Modiano tire son épingle du jeu en maintenant un classicisme assumé là où ses contemporains expérimentent.",
+          "example_en": "Modiano comes out ahead by maintaining a deliberate classicism where his contemporaries experiment."
         }
       ],
       "exercises": [
@@ -1538,7 +1554,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the beautiful unfaithful ones",
           "meaning": "Truyền thống dịch tự do thế kỷ XVII-XVIII — đẹp văn nhưng không trung thành.",
           "meaning_en": "the 17th-18th-c. tradition of free, fluent but unfaithful translation; common historical register",
-          "example": "Les belles infidèles, comme la traduction de Lucain par Brébeuf, ont été critiquées dès le XIXe siècle."
+          "example": "Les belles infidèles, comme la traduction de Lucain par Brébeuf, ont été critiquées dès le XIXe siècle.",
+          "example_en": "The 'belles infidèles', like Brébeuf's translation of Lucan, were already criticized in the nineteenth century."
         },
         {
           "idiom": "Sourcier vs cibliste (jargon traductologique)",
@@ -1546,7 +1563,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "source-seeker vs target-clinger",
           "meaning": "Hai trường phái dịch — gần văn nguồn vs gần văn đích.",
           "meaning_en": "the two schools of translation — close to the source vs close to the target; field jargon",
-          "example": "Berman était ouvertement sourcier — il défendait la priorité du texte source contre les ciblistes."
+          "example": "Berman était ouvertement sourcier — il défendait la priorité du texte source contre les ciblistes.",
+          "example_en": "Berman was openly a 'sourcier' — he defended the priority of the source text against the 'ciblistes'."
         },
         {
           "idiom": "Faire passer en français (courant)",
@@ -1554,7 +1572,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to make (a text) pass into French",
           "meaning": "Dịch sang tiếng Pháp — dùng cho dịch văn học.",
           "meaning_en": "to translate into French — used of literary translation; common register",
-          "example": "Faire passer Mallarmé en vietnamien sans en perdre la densité tient du défi structurel."
+          "example": "Faire passer Mallarmé en vietnamien sans en perdre la densité tient du défi structurel.",
+          "example_en": "Carrying Mallarmé over into Vietnamese without losing its density is a structural challenge."
         },
         {
           "idiom": "Rendre la lettre et l'esprit (soutenu)",
@@ -1562,7 +1581,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to render both the letter and the spirit",
           "meaning": "Khôi phục cả hình thức và ý nghĩa — yêu cầu tối đa.",
           "meaning_en": "to restore both form and meaning — the maximal demand on a translation; elevated register",
-          "example": "Une grande traduction rend la lettre et l'esprit — la plupart se contentent de l'esprit."
+          "example": "Une grande traduction rend la lettre et l'esprit — la plupart se contentent de l'esprit.",
+          "example_en": "A great translation renders both the letter and the spirit — most settle for the spirit."
         }
       ],
       "exercises": [
@@ -1854,7 +1874,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to bring a text back to its author",
           "meaning": "Giải thích văn bản chỉ qua tiểu sử tác giả — biographisme bị phê phán.",
           "meaning_en": "to explain a text solely through the author's biography — the criticised biographism; common critical register",
-          "example": "Sainte-Beuve avait tendance à ramener tout texte à son auteur — Proust a démonté ce réflexe."
+          "example": "Sainte-Beuve avait tendance à ramener tout texte à son auteur — Proust a démonté ce réflexe.",
+          "example_en": "Sainte-Beuve tended to reduce every text to its author — Proust dismantled that reflex."
         },
         {
           "idiom": "La mort de l'auteur (formule consacrée)",
@@ -1862,7 +1883,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the death of the author",
           "meaning": "Cụm Barthes 1968 — văn bản tự lập, tách khỏi tác giả empirique.",
           "meaning_en": "Barthes's 1968 formula — the text stands on its own, severed from the empirical author; a fixed, canonical phrase",
-          "example": "Depuis « la mort de l'auteur » de Barthes, la critique a appris à se méfier de l'argument biographique."
+          "example": "Depuis « la mort de l'auteur » de Barthes, la critique a appris à se méfier de l'argument biographique.",
+          "example_en": "Since Barthes's 'death of the author', criticism has learned to distrust the biographical argument."
         },
         {
           "idiom": "Lire au plus près (soutenu)",
@@ -1870,7 +1892,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to read as closely as possible",
           "meaning": "Đọc bám sát văn bản, tránh phóng chiếu — close reading rigoureux.",
           "meaning_en": "to read sticking tightly to the text, avoiding projection — rigorous close reading; elevated register",
-          "example": "Lire Ernaux au plus près suppose qu'on prenne au sérieux son pacte référentiel."
+          "example": "Lire Ernaux au plus près suppose qu'on prenne au sérieux son pacte référentiel.",
+          "example_en": "Reading Ernaux closely assumes that you take her referential pact seriously."
         },
         {
           "idiom": "Tirer une œuvre vers la confidence (littéraire)",
@@ -1878,7 +1901,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to pull a work toward (personal) confession",
           "meaning": "Đọc văn bản như tâm sự cá nhân — réducteur.",
           "meaning_en": "to read a text as personal confession — a reductive move; literary register",
-          "example": "Tirer La Place d'Ernaux vers la confidence, c'est ignorer son ambition sociologique."
+          "example": "Tirer La Place d'Ernaux vers la confidence, c'est ignorer son ambition sociologique.",
+          "example_en": "To pull Ernaux's La Place toward confessional writing is to ignore its sociological ambition."
         }
       ],
       "exercises": [
@@ -2175,7 +2199,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to be the object of a rediscovery",
           "meaning": "Được giới critique chú ý lại sau thời gian quên — pattern de réception.",
           "meaning_en": "to draw critical attention again after a period of neglect — a reception pattern; elevated register",
-          "example": "Roussel a fait l'objet d'une redécouverte spectaculaire dans les années 1960, par les surréalistes et l'Oulipo."
+          "example": "Roussel a fait l'objet d'une redécouverte spectaculaire dans les années 1960, par les surréalistes et l'Oulipo.",
+          "example_en": "Roussel was the object of a spectacular rediscovery in the 1960s, by the Surrealists and the Oulipo."
         },
         {
           "idiom": "Sortir du purgatoire (littéraire)",
@@ -2183,7 +2208,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to come out of purgatory",
           "meaning": "Thoát khỏi giai đoạn ít được đọc — réhabilitation critique.",
           "meaning_en": "to emerge from a period of being little read — critical rehabilitation; literary register",
-          "example": "Céline est sorti du purgatoire dans les années 1980, au prix de débats vifs."
+          "example": "Céline est sorti du purgatoire dans les années 1980, au prix de débats vifs.",
+          "example_en": "Céline emerged from critical oblivion in the 1980s, at the cost of heated debate."
         },
         {
           "idiom": "Faire école (courant littéraire)",
@@ -2191,7 +2217,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to found a school",
           "meaning": "Trở thành mô hình cho thế hệ sau.",
           "meaning_en": "to become a model for the following generation; common literary register",
-          "example": "Le Nouveau Roman a fait école — mais brièvement; les années 1980 marquent un reflux."
+          "example": "Le Nouveau Roman a fait école — mais brièvement; les années 1980 marquent un reflux.",
+          "example_en": "The Nouveau Roman set a precedent — but briefly; the 1980s mark a retreat from it."
         },
         {
           "idiom": "Être inscrit au panthéon (soutenu)",
@@ -2199,7 +2226,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to be inscribed in the pantheon",
           "meaning": "Vào kinh điển chính thức — métaphore du Panthéon parisien.",
           "meaning_en": "to enter the official canon — a metaphor from the Paris Panthéon; elevated register",
-          "example": "Avec son Nobel, Ernaux est désormais inscrite au panthéon littéraire français contemporain."
+          "example": "Avec son Nobel, Ernaux est désormais inscrite au panthéon littéraire français contemporain.",
+          "example_en": "With her Nobel, Ernaux is now enshrined in the contemporary French literary canon."
         }
       ],
       "exercises": [
@@ -2496,7 +2524,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to slap a grid on",
           "meaning": "Áp dụng cứng nhắc một lý thuyết bất chấp văn bản — péjoratif.",
           "meaning_en": "to apply a theory rigidly regardless of the text — pejorative; common critical register",
-          "example": "Plaquer la grille bourdieusienne sur Mallarmé manque de pertinence textuelle."
+          "example": "Plaquer la grille bourdieusienne sur Mallarmé manque de pertinence textuelle.",
+          "example_en": "Imposing the Bourdieusian grid on Mallarmé lacks textual relevance."
         },
         {
           "idiom": "Croiser les approches (courant)",
@@ -2504,7 +2533,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to cross/combine the approaches",
           "meaning": "Khớp nhiều lý thuyết để làm phong phú phân tích.",
           "meaning_en": "to combine several theories to enrich the analysis; common register",
-          "example": "Croiser l'approche formaliste et l'approche féministe sur Madame Bovary fait apparaître la critique flaubertienne du formatage."
+          "example": "Croiser l'approche formaliste et l'approche féministe sur Madame Bovary fait apparaître la critique flaubertienne du formatage.",
+          "example_en": "Combining the formalist and the feminist approaches to Madame Bovary brings out Flaubert's critique of social conditioning."
         },
         {
           "idiom": "Pousser une grille à son terme (soutenu)",
@@ -2512,7 +2542,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to push a grid to its end-point",
           "meaning": "Khai thác đầy đủ một lý thuyết để xem nó dẫn đến đâu.",
           "meaning_en": "to exploit a theory fully to see where it leads; elevated register",
-          "example": "Pousser la grille postcoloniale à son terme sur Glissant suppose qu'on accepte la créolisation comme catégorie centrale."
+          "example": "Pousser la grille postcoloniale à son terme sur Glissant suppose qu'on accepte la créolisation comme catégorie centrale.",
+          "example_en": "Pushing the postcolonial framework to its limit on Glissant assumes that you accept creolization as a central category."
         },
         {
           "idiom": "Faire flèche de tout bois (soutenu)",
@@ -2520,7 +2551,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to make an arrow out of any wood",
           "meaning": "Sử dụng mọi nguồn / lý thuyết — éclectisme assumé.",
           "meaning_en": "to use every available resource/theory — an assumed eclecticism; elevated register (closest English: 'to use every tool in the box')",
-          "example": "En sciences humaines, on fait flèche de tout bois — l'éclectisme est une vertu épistémologique."
+          "example": "En sciences humaines, on fait flèche de tout bois — l'éclectisme est une vertu épistémologique.",
+          "example_en": "In the humanities you draw on anything you can — eclecticism is an epistemological virtue."
         }
       ],
       "exercises": [
@@ -2822,7 +2854,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to enter into the matter",
           "meaning": "Bắt đầu nội dung sau phần dẫn nhập — formel.",
           "meaning_en": "to get into the substance after the opening — formal; common academic register",
-          "example": "Une bonne amorce permet d'entrer en matière sans rupture brutale."
+          "example": "Une bonne amorce permet d'entrer en matière sans rupture brutale.",
+          "example_en": "A good opening lets you enter the subject without an abrupt break."
         },
         {
           "idiom": "Poser le décor (courant)",
@@ -2830,7 +2863,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to set the scenery",
           "meaning": "Thiết lập bối cảnh trước khi đi vào trọng tâm.",
           "meaning_en": "to establish the context before reaching the core; common register (English: 'to set the stage')",
-          "example": "L'amorce historique pose le décor avant que ne soit posée la problématique."
+          "example": "L'amorce historique pose le décor avant que ne soit posée la problématique.",
+          "example_en": "The historical opening sets the scene before the central question is posed."
         },
         {
           "idiom": "Creuser la question (soutenu)",
@@ -2838,7 +2872,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to dig into the question",
           "meaning": "Đào sâu vấn đề — analyse en profondeur.",
           "meaning_en": "to probe the issue in depth — in-depth analysis; elevated register",
-          "example": "Une bonne dissertation creuse la question, plutôt que d'en rester à la surface."
+          "example": "Une bonne dissertation creuse la question, plutôt que d'en rester à la surface.",
+          "example_en": "A good essay digs into the question, rather than staying on the surface."
         },
         {
           "idiom": "Tirer son fil (littéraire)",
@@ -2846,7 +2881,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to draw out its thread",
           "meaning": "Theo dõi một logic — méthode de la dissertation.",
           "meaning_en": "to follow one logical thread through — a dissertation method; literary register",
-          "example": "La problématique tire son fil tout au long du devoir, sans rupture."
+          "example": "La problématique tire son fil tout au long du devoir, sans rupture.",
+          "example_en": "The central question runs its thread throughout the essay, without a break."
         }
       ],
       "exercises": [
@@ -3143,7 +3179,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to hold a position",
           "meaning": "Bảo vệ quan điểm dưới phản biện — không lùi vì áp lực.",
           "meaning_en": "to defend a view under objection — not retreating under pressure; common register",
-          "example": "Bonnefoy a tenu sa position sur Rimbaud pendant cinquante ans, malgré les contestations."
+          "example": "Bonnefoy a tenu sa position sur Rimbaud pendant cinquante ans, malgré les contestations.",
+          "example_en": "Bonnefoy held his position on Rimbaud for fifty years, despite the challenges to it."
         },
         {
           "idiom": "Mettre cartes sur table (courant)",
@@ -3151,7 +3188,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to put one's cards on the table",
           "meaning": "Trình bày minh bạch các giả định và lý lẽ.",
           "meaning_en": "to lay out one's assumptions and arguments transparently; common register (exact English equivalent)",
-          "example": "Mettre cartes sur table dès l'introduction permet au lecteur d'évaluer la position en connaissance de cause."
+          "example": "Mettre cartes sur table dès l'introduction permet au lecteur d'évaluer la position en connaissance de cause.",
+          "example_en": "Laying your cards on the table from the introduction lets the reader assess the position with full knowledge."
         },
         {
           "idiom": "Croiser le fer (soutenu littéraire)",
@@ -3159,7 +3197,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to cross swords",
           "meaning": "Tranh luận sâu, không né tránh — débat de haut niveau.",
           "meaning_en": "to debate deeply, without evasion — high-level debate; elevated literary register (exact English equivalent)",
-          "example": "Bourdieu et Compagnon ont croisé le fer sur l'autonomie du champ littéraire pendant deux décennies."
+          "example": "Bourdieu et Compagnon ont croisé le fer sur l'autonomie du champ littéraire pendant deux décennies.",
+          "example_en": "Bourdieu and Compagnon crossed swords over the autonomy of the literary field for two decades."
         },
         {
           "idiom": "Rester sur ses positions (courant)",
@@ -3167,7 +3206,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to stay on one's positions",
           "meaning": "Không thay đổi quan điểm — neutre.",
           "meaning_en": "to keep one's view unchanged — neutral register (English: 'to stand one's ground')",
-          "example": "Tadié est resté sur ses positions concernant l'esthétique proustienne, malgré le retour des lectures psychanalytiques."
+          "example": "Tadié est resté sur ses positions concernant l'esthétique proustienne, malgré le retour des lectures psychanalytiques.",
+          "example_en": "Tadié stood his ground on Proustian aesthetics, despite the return of psychoanalytic readings."
         }
       ],
       "exercises": [
@@ -3477,7 +3517,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to hook the eye",
           "meaning": "Thu hút thị giác — critique d'art pour décrire ce qui saisit d'abord le regard.",
           "meaning_en": "to catch the eye — what first seizes the gaze (a critic's term for visual arrest)",
-          "example": "Ce qui accroche l'œil dans cette toile, c'est moins la composition d'ensemble que ce minuscule détail rouge au bord droit."
+          "example": "Ce qui accroche l'œil dans cette toile, c'est moins la composition d'ensemble que ce minuscule détail rouge au bord droit.",
+          "example_en": "What catches the eye in this canvas is less the overall composition than that tiny red detail at the right edge."
         },
         {
           "idiom": "Donner à voir",
@@ -3485,7 +3526,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to give to see",
           "meaning": "Rendre visible — verbe central de la critique d'art française, issu de Paul Éluard (Donner à voir, 1939).",
           "meaning_en": "to make visible — a central verb of French art criticism, from Paul Éluard's 'Donner à voir' (1939)",
-          "example": "Cette installation donne à voir l'invisible — le passage du temps rendu sensible par l'accumulation d'objets quotidiens."
+          "example": "Cette installation donne à voir l'invisible — le passage du temps rendu sensible par l'accumulation d'objets quotidiens.",
+          "example_en": "This installation makes the invisible visible — the passage of time rendered tangible through the accumulation of everyday objects."
         },
         {
           "idiom": "Faire date",
@@ -3493,7 +3535,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to make a date",
           "meaning": "Marquer l'histoire — pour désigner une œuvre / exposition qui fait époque.",
           "meaning_en": "to be epoch-making — said of a work or exhibition that marks art history",
-          "example": "L'exposition 'Magiciens de la terre' (1989) a fait date en mettant fin à l'hégémonie occidentale dans l'art contemporain."
+          "example": "L'exposition 'Magiciens de la terre' (1989) a fait date en mettant fin à l'hégémonie occidentale dans l'art contemporain.",
+          "example_en": "The exhibition 'Magiciens de la terre' (1989) marked a turning point by ending Western hegemony in contemporary art."
         },
         {
           "idiom": "Prendre le parti de",
@@ -3501,7 +3544,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to take the side of",
           "meaning": "Chọn cách tiếp cận — 'le parti pris esthétique de l'artiste'.",
           "meaning_en": "to choose an aesthetic approach — 'le parti pris esthétique de l'artiste'",
-          "example": "L'artiste prend le parti du vide contre le plein, du silence contre le bruit — un ascétisme formel radical."
+          "example": "L'artiste prend le parti du vide contre le plein, du silence contre le bruit — un ascétisme formel radical.",
+          "example_en": "The artist sides with emptiness over fullness, silence over noise — a radical formal asceticism."
         }
       ],
       "exercises": [
@@ -3818,7 +3862,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to make a school",
           "meaning": "Tạo ảnh hưởng đến thế hệ sau — critique khen cinéaste có descendance.",
           "meaning_en": "to be foundational — to influence later generations (a critic's praise: the filmmaker has 'descendants')",
-          "example": "Bresson a fait école — sans lui, ni Rohmer, ni Dumont, ni Kaurismäki ne filmeraient comme ils le font."
+          "example": "Bresson a fait école — sans lui, ni Rohmer, ni Dumont, ni Kaurismäki ne filmeraient comme ils le font.",
+          "example_en": "Bresson set a precedent — without him, neither Rohmer, nor Dumont, nor Kaurismäki would film the way they do."
         },
         {
           "idiom": "Film d'auteur",
@@ -3826,7 +3871,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "auteur film",
           "meaning": "Phim trong đó cinéaste là auteur véritable, không simple exécutant — terme central politique des auteurs.",
           "meaning_en": "a film where the director is the true author, not a mere executant — the central term of auteur theory",
-          "example": "Malgré son budget confortable, ce blockbuster reste un film d'auteur — on reconnaît la patte de Nolan à chaque plan."
+          "example": "Malgré son budget confortable, ce blockbuster reste un film d'auteur — on reconnaît la patte de Nolan à chaque plan.",
+          "example_en": "Despite its comfortable budget, this blockbuster remains an auteur film — you recognize Nolan's signature in every shot."
         },
         {
           "idiom": "Mettre en scène",
@@ -3834,7 +3880,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to put on stage",
           "meaning": "Không chỉ 'réaliser', mà penser le cinéma par l'espace, le temps, les corps — verbe sacré critique française.",
           "meaning_en": "not merely 'to direct' but to think cinema through space, time, bodies — the sacred verb of French criticism",
-          "example": "Ce n'est pas l'histoire qui compte, c'est comment le cinéaste la met en scène."
+          "example": "Ce n'est pas l'histoire qui compte, c'est comment le cinéaste la met en scène.",
+          "example_en": "It's not the story that matters, it's how the filmmaker stages it."
         },
         {
           "idiom": "Tenir le plan",
@@ -3842,7 +3889,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to hold the shot",
           "meaning": "Garder le plan sans couper — qualité: résister à la tentation du montage rapide. 'Tenir un plan-séquence de 8 minutes.'",
           "meaning_en": "to keep the shot running without cutting — a quality: resisting the temptation of rapid editing",
-          "example": "Peu de cinéastes osent encore tenir le plan — la mode est au montage clip. Ce film, lui, prend le temps de regarder."
+          "example": "Peu de cinéastes osent encore tenir le plan — la mode est au montage clip. Ce film, lui, prend le temps de regarder.",
+          "example_en": "Few filmmakers still dare to hold a shot — the fashion is for clip-style editing. This film, by contrast, takes the time to look."
         }
       ],
       "exercises": [
@@ -4152,7 +4200,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "a floating signifier",
           "meaning": "Thuật ngữ mượn từ Lacan / Lévi-Strauss: một từ mà nghĩa trở nên bất định vì mỗi phe gán cho nó một nội dung khác. Trong tranh luận laïcité, 'laïcité' chính là signifiant flottant.",
           "meaning_en": "a term (from Lacan/Lévi-Strauss) whose meaning becomes unstable because each side fills it with different content — in the laïcité debate, 'laïcité' itself is the floating signifier",
-          "example": "Le mot 'laïcité' est devenu un signifiant flottant — chacun y met ce qu'il veut, et c'est précisément ce qui rend le débat si difficile."
+          "example": "Le mot 'laïcité' est devenu un signifiant flottant — chacun y met ce qu'il veut, et c'est précisément ce qui rend le débat si difficile.",
+          "example_en": "The word 'laïcité' has become a floating signifier — everyone reads into it what they want, and that is precisely what makes the debate so difficult."
         },
         {
           "idiom": "La loi dispose que...",
@@ -4160,7 +4209,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "the law provides that...",
           "meaning": "Công thức pháp lý chuẩn để trích dẫn luật — tín hiệu cho thấy bạn nói từ văn bản, không từ ý kiến cá nhân.",
           "meaning_en": "the standard legal formula for quoting a statute — a signal that you speak from the text, not from personal opinion",
-          "example": "La loi de 1905 dispose que la République ne reconnaît aucun culte — cela ne signifie pas qu'elle les ignore, mais qu'elle ne les institutionnalise pas."
+          "example": "La loi de 1905 dispose que la République ne reconnaît aucun culte — cela ne signifie pas qu'elle les ignore, mais qu'elle ne les institutionnalise pas.",
+          "example_en": "The 1905 law provides that the Republic recognizes no religion — this doesn't mean it ignores them, but that it doesn't institutionalize them."
         }
       ],
       "exercises": [
@@ -4463,7 +4513,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "a piece of anthology",
           "meaning": "Một đoạn văn / diễn văn xuất sắc đến mức xứng đáng được đưa vào sách giáo khoa — khen discours politique.",
           "meaning_en": "a passage or speech so outstanding it deserves to be anthologized — a critic's praise for political oratory",
-          "example": "Le 'Je vous ai compris' du général de Gaulle à Alger, en 1958, est un morceau d'anthologie de l'ambiguïté politique assumée."
+          "example": "Le 'Je vous ai compris' du général de Gaulle à Alger, en 1958, est un morceau d'anthologie de l'ambiguïté politique assumée.",
+          "example_en": "De Gaulle's 'I have understood you' in Algiers, in 1958, is a textbook piece of deliberately assumed political ambiguity."
         }
       ],
       "exercises": [
@@ -5220,7 +5271,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to do right to",
           "meaning": "Reconnaître la légitimité de — en philo: 'faire droit à l'objection', 'faire droit à la complexité du réel'.",
           "meaning_en": "to acknowledge the legitimacy of — in philosophy, 'faire droit à l'objection' = to take an objection seriously and confront it rather than dodge it",
-          "example": "Une philosophie rigoureuse fait droit aux objections les plus fortes — elle ne les esquive pas, elle les affronte."
+          "example": "Une philosophie rigoureuse fait droit aux objections les plus fortes — elle ne les esquive pas, elle les affronte.",
+          "example_en": "A rigorous philosophy gives the strongest objections their due — it doesn't sidestep them, it confronts them."
         }
       ],
       "exercises": [
@@ -5517,7 +5569,8 @@ export const lessons: FrenchLesson[] =           [
           "literal_en": "to hit the fly",
           "meaning": "Atteindre exactement son but persuasif — un argument qui 'fait mouche' touche l'auditoire exactement là où il fallait.",
           "meaning_en": "to hit the bullseye — an argument that 'fait mouche' reaches the audience exactly where it needed to (from archery)",
-          "example": "Sa concession sur le point secondaire a fait mouche: le jury, qui était hostile, a soudainement prêté l'oreille."
+          "example": "Sa concession sur le point secondaire a fait mouche: le jury, qui était hostile, a soudainement prêté l'oreille.",
+          "example_en": "His concession on the secondary point hit home: the jury, which had been hostile, suddenly lent an ear."
         }
       ],
       "exercises": [
