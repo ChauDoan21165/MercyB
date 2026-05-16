@@ -1818,27 +1818,58 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "她的眼睛很漂亮。",
         "pinyin": "tā de yǎn jing hěn piào liang.",
-        "english": "Her eyes are very beautiful."
+        "english": "Her eyes are very beautiful.",
+        "pronunciation_focus_en": [
+          "de → neutral 'duh', the possessive particle, never stressed",
+          "yǎn jing → 3rd tone then neutral: 'YEN-jing' (眼睛, 'eyes')",
+          "iao in piào → 'pyow', falling tone",
+          "liang → neutral and light here: 'lyahng' (漂亮, 'pretty')"
+        ]
       },
       {
         "chinese": "我头疼，想休息一下。",
         "pinyin": "wǒ tóu téng, xiǎng xiū xi yī xià.",
-        "english": "I have a headache, I want to rest."
+        "english": "I have a headache, I want to rest.",
+        "pronunciation_focus_en": [
+          "tóu → 'toh', rising tone (头, 'head')",
+          "téng → 'tung' with 'ng' as in 'sing', rising; means 'ache'",
+          "iao/iang in xiǎng → light 'sh' + 'yahng', dipping 3rd tone",
+          "iu in xiū → 'syoh', flat high tone (休息, 'rest')"
+        ]
       },
       {
-        "chinese": "请用手吃饭在中国是正常的。",
-        "pinyin": "qǐng yòng shǒu chī fàn zài zhōng guó shì zhèng cháng de.",
-        "english": "Eating with hands is normal in China."
+        "chinese": "中国人吃饭用筷子，不用手。",
+        "pinyin": "zhōng guó rén chī fàn yòng kuài zi, bù yòng shǒu.",
+        "english": "Chinese people eat with chopsticks, not with their hands.",
+        "pronunciation_focus_en": [
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "ch in chī → curled-back 'ch'; vowel is a buzz, not 'ee'",
+          "yòng → 'yong' with 'ng' as in 'sing', falling; means 'use'",
+          "kuài → 'kwai' (rhymes with 'why'), falling (筷子, 'chopsticks')",
+          "shǒu → 'shoh', dipping 3rd tone (手, 'hand')"
+        ]
       },
       {
         "chinese": "跑步对腿很有好处。",
         "pinyin": "pǎo bù duì tuǐ hěn yǒu hǎo chù.",
-        "english": "Running is good for your legs."
+        "english": "Running is good for your legs.",
+        "pronunciation_focus_en": [
+          "pǎo → strong air puff, 'pow', dipping 3rd tone (跑步, 'run')",
+          "duì → 'dway', falling tone; here means 'for / toward'",
+          "tuǐ → 'tway', dipping 3rd tone (腿, 'leg')",
+          "ch in chù → curled-back 'ch', falling (好处, 'benefit')"
+        ]
       },
       {
         "chinese": "他说的话我听不懂，可能是耳朵有问题。",
         "pinyin": "tā shuō de huà wǒ tīng bù dǒng, kě néng shì ěr duo yǒu wèn tí.",
-        "english": "I can't understand what he says, maybe there's something wrong with my ears."
+        "english": "I can't understand what he says, maybe there's something wrong with my ears.",
+        "pronunciation_focus_en": [
+          "sh in shuō → curled-back 'sh' + 'waw'",
+          "tīng → 'ting' with 'ng' as in 'sing'; means 'listen / hear'",
+          "dǒng → 'doong', dipping 3rd tone; means 'understand'",
+          "ěr → 'er' as in 'her' with the tongue curled, dipping (耳朵, 'ear')"
+        ]
       }
     ],
     "dialogue": [
@@ -1895,7 +1926,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我的耳朵疼。",
         "pinyin": "wǒ de ěr duo téng."
       }
-    ]
+    ],
+    "cultural_notes_en": "Talking about the body in China leans medical-traditional in ways that surprise Americans. 'I have a headache' (我头疼) often gets a Traditional Chinese Medicine framing — too much internal 'heat' (上火), needing rest or warm water — alongside or instead of the reach-for-ibuprofen reflex; offering hot water for an ailment is genuine care here, not a brush-off. China is a chopsticks (筷子) culture, not a hands culture: apart from a few specific foods, using your hands for rice or dishes reads as improper, the way eating mashed potatoes with your fingers would at an American dinner table. Pointing at your own nose (鼻子) — not your chest — is the standard gesture for 'me/myself,' which trips up English speakers who thumb their chest. And blunt talk about someone's body (weight especially) is far less taboo than in the US — '你胖了' ('you've put on weight') can be neutral observation among close family, not the insult it would be stateside.",
+    "tip_advice_en": "The pattern to lock in is 'body part + 疼 (téng, ache)': 头疼 (headache), 肚子疼 (stomachache), 牙疼 (toothache) — no 'have a,' no 'my'; Chinese just says '[part] aches.' Build the slot, not the phrases. The pronunciation crux is the syllable-final 'ng' that pervades this lesson (疼 téng, 听 tīng, 懂 dǒng): let it ring through the nose like the end of English 'sing,' never clipped like 'tan.' Watch the neutral-toned second syllables in the body words — 眼睛 (yǎn-jing), 耳朵 (ěr-duo), 鼻子 (bí-zi), 肚子 (dù-zi): full tone on syllable one, weightless on syllable two. Saying 'bí-ZI' instead of 'BÍ-zi' is the single most common A1 stumble here; let the second syllable fall away."
   },
   {
     "id": 12,
@@ -1959,27 +1992,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "邮局在银行的左边。",
         "pinyin": "yóu jú zài yín háng de zuǒ biān.",
-        "english": "The post office is to the left of the bank."
+        "english": "The post office is to the left of the bank.",
+        "pronunciation_focus_en": [
+          "yóu → 'yoh', rising tone",
+          "jú → 'jü' (j + rounded ü), rising tone (邮局, 'post office')",
+          "háng → 'hahng' with 'ng' as in 'sing'; 银行 'bank' uses háng, not xíng",
+          "ian in biān → 'byen', not 'bee-ahn' (边, 'side')"
+        ]
       },
       {
         "chinese": "一直往前走，不要转弯。",
         "pinyin": "yī zhí wǎng qián zǒu, bù yào zhuǎn wān.",
-        "english": "Go straight ahead, don't turn."
+        "english": "Go straight ahead, don't turn.",
+        "pronunciation_focus_en": [
+          "zhí → curled-back 'j', rising; buzzed vowel, not 'ee' (一直, 'straight')",
+          "wǎng → 'wahng', dipping 3rd tone; means 'toward'",
+          "ian in qián → 'chyen', rising (前, 'front / ahead')",
+          "zhuǎn → curled-back 'j' + 'wahn', dipping (转弯, 'turn')"
+        ]
       },
       {
         "chinese": "学校在超市旁边。",
         "pinyin": "xué xiào zài chāo shì páng biān.",
-        "english": "The school is next to the supermarket."
+        "english": "The school is next to the supermarket.",
+        "pronunciation_focus_en": [
+          "xué → light 'sh' + ü: 'shweh', rising tone",
+          "chāo → curled-back 'ch' + 'ow', strong air puff (超市, 'supermarket')",
+          "sh in shì → curled-back; vowel is a buzz, not 'ee'",
+          "páng → 'pahng' with 'ng' as in 'sing', rising (旁边, 'beside')"
+        ]
       },
       {
         "chinese": "北京在河北的北边。",
         "pinyin": "běi jīng zài hé běi de běi biān.",
-        "english": "Beijing is north of Hebei."
+        "english": "Beijing is north of Hebei.",
+        "pronunciation_focus_en": [
+          "ei in běi → 'ay' as in 'day' (recurs three times here)",
+          "j in jīng → 'j' as in 'jeep'",
+          "hé → 'huh', rising tone (河北, 'Hebei [province]')",
+          "ian in biān → 'byen' (北边, 'the north side')"
+        ]
       },
       {
         "chinese": "我的家在市中心中间。",
         "pinyin": "wǒ de jiā zài shì zhōng xīn zhōng jiān.",
-        "english": "My home is in the center of the city."
+        "english": "My home is in the center of the city.",
+        "pronunciation_focus_en": [
+          "jiā → 'jyah', flat high tone (家, 'home')",
+          "shì → buzzed vowel, falling (市, 'city')",
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "jiān → 'jyen' (中间, 'middle / center')"
+        ]
       }
     ],
     "dialogue": [
@@ -2036,7 +2099,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "在下一个路口右转。",
         "pinyin": "zài xià yī gè lù kǒu yòu zhuǎn."
       }
-    ]
+    ],
+    "cultural_notes_en": "Chinese directions are anchored to the cardinal compass far more than American ones. Locals — and even taxi-style instructions — say '往南走' (go south) where an American would say 'go left,' and apartments are advertised by which way they face (朝南, 'south-facing,' commands a premium for sunlight). Beijing's grid, laid out on a strict north-south axis, makes this second nature for residents. The compass loop itself differs: Chinese conventionally recites 东南西北 (east-south-west-north), not the American 'north-east-south-west.' Position words attach to a noun with 的 and sit after it: 银行的左边 is literally 'bank's left-side,' the reverse of English 'left of the bank.' One reassurance: addresses are logical, not the American patchwork — 北京市朝阳区… runs city → district → street → number, the same big-to-small logic as dates.",
+    "tip_advice_en": "The structural habit to build is the locative frame: [landmark] + 在 + [reference] + 的 + [position word]. '学校在超市旁边' = 'school is-at supermarket('s) beside.' English puts the position word in the middle ('next to the supermarket'); Chinese puts it last — drill the slot order, not the sentences. The pronunciation pitfall is 边 (biān, 'side'), which closes nearly every direction word (左边, 右边, 旁边): it's 'byen,' a single glide, not 'bee-an' in two beats. Also keep 银行 (yín háng, 'bank') apart from the same character read 行 (xíng, 'to be OK') — 行 is one of Chinese's notorious two-pronunciation characters; here it's háng. To ask the way, the set phrase is '怎么走?' ('how [to] walk?'), using 走 (zǒu, go on foot) — a different verb from 去 (qù, to go generally)."
   },
   {
     "id": 13,
@@ -2100,27 +2165,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "现在几点了？",
         "pinyin": "xiàn zài jǐ diǎn le?",
-        "english": "What time is it now?"
+        "english": "What time is it now?",
+        "pronunciation_focus_en": [
+          "ian in xiàn → 'syen', falling tone (现在, 'now')",
+          "zài → 'dzye' (rhymes with 'eye'), falling",
+          "diǎn → 'dyen', dipping 3rd tone; means 'o'clock'",
+          "le → neutral 'luh', the change-of-state particle, weightless"
+        ]
       },
       {
         "chinese": "现在是下午三点十五分。",
         "pinyin": "xiàn zài shì xià wǔ sān diǎn shí wǔ fēn.",
-        "english": "It's 3:15 PM now."
+        "english": "It's 3:15 PM now.",
+        "pronunciation_focus_en": [
+          "shì → curled-back tongue; vowel is a buzz, not 'ee'",
+          "x in xià → light 'sh', falling (下午, 'afternoon')",
+          "shí → curled-back 'sh', rising; 'ten' (contrast sì, 'four')",
+          "fēn → 'fun', flat high tone; means 'minute'"
+        ]
       },
       {
         "chinese": "我每天早上七点起床。",
         "pinyin": "wǒ měi tiān zǎo shang qī diǎn qǐ chuáng.",
-        "english": "I get up at 7 AM every day."
+        "english": "I get up at 7 AM every day.",
+        "pronunciation_focus_en": [
+          "ei in měi → 'ay' as in 'day', dipping 3rd tone",
+          "zǎo shang → 3rd tone then neutral: 'DZAO-shahng'",
+          "q in qī / qǐ → hissy 'ch', tongue near the lower teeth",
+          "chuáng → curled-back 'ch' + 'wahng', rising (起床, 'get up')"
+        ]
       },
       {
         "chinese": "会议是几点开始？",
         "pinyin": "huì yì shì jǐ diǎn kāi shǐ?",
-        "english": "What time does the meeting start?"
+        "english": "What time does the meeting start?",
+        "pronunciation_focus_en": [
+          "huì → 'hway', falling tone",
+          "yì → 'ee', falling tone (会议, 'meeting')",
+          "kāi → 'kye' (rhymes with 'eye'), strong air puff",
+          "shǐ → curled-back 'sh', dipping 3rd tone (开始, 'start')"
+        ]
       },
       {
         "chinese": "我们有一个小时的休息时间。",
         "pinyin": "wǒ men yǒu yī gè xiǎo shí de xiū xi shí jiān.",
-        "english": "We have one hour of rest time."
+        "english": "We have one hour of rest time.",
+        "pronunciation_focus_en": [
+          "men → neutral 'mun', unstressed",
+          "iao in xiǎo → 'shyow', dipping 3rd tone (小时, 'hour' — not 'small ten')",
+          "iu in xiū → 'syoh', flat high tone (休息, 'rest')",
+          "jiān → 'jyen' (时间, 'time')"
+        ]
       }
     ],
     "dialogue": [
@@ -2177,7 +2272,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "现在几点了？",
         "pinyin": "xiàn zài jǐ diǎn le?"
       }
-    ]
+    ],
+    "cultural_notes_en": "Telling time is structurally easy in Chinese but the day is cut differently. 点 (diǎn, literally 'dot/point') = o'clock (三点 = 'three points' = 3:00), and 半 (bàn, half) gives the half-hour (两点半 = 2:30). Spoken Chinese front-loads the period word — 下午三点 ('afternoon three o'clock') rather than tacking AM/PM after the number. China runs on a single official time zone (Beijing time) despite spanning roughly five geographic ones, so 'what time is it' has one national answer — unlike the four continental US zones. Watch the clock-vs-duration split English blurs: 点 is a clock position, 小时 is an elapsed hour — 三点 (3 o'clock) and 三个小时 (three hours) are not interchangeable, where English 'three' rides on context. And 2 o'clock is 两点 (liǎng diǎn), using 两, not 二 — a quantity-vs-counting distinction worth flagging early.",
+    "tip_advice_en": "The single highest-leverage item: 2 o'clock is 两点 (liǎng diǎn), never 二点. 二 (èr) is for counting and ordinals; 两 (liǎng) is for quantities before a measure, and 点 behaves like a measure here — this 二/两 split recurs for the rest of your Chinese life, so anchor it now. The change-of-state 了 in '几点了?' is not past tense — it signals 'as of now' ('what time has it become?'); resist mapping 了 to English '-ed.' Pronunciation watch-point: 点 (diǎn) is 'dyen' (a 'd' + glide), not 'dee-an' in two syllables, and it ends almost every time expression you'll say. Also keep the shared character 时 apart: 小时 (xiǎo shí, an hour of duration) vs. 时间 (shí jiān, time in general) — different words, both high-frequency."
   },
   {
     "id": 14,
@@ -2241,27 +2338,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我的爱好是看书。",
         "pinyin": "wǒ de ài hào shì kàn shū.",
-        "english": "My hobby is reading books."
+        "english": "My hobby is reading books.",
+        "pronunciation_focus_en": [
+          "ai in ài → 'eye', falling tone",
+          "hào → 'how', falling tone — note 好 here is 4th tone (hào, 'be fond of'), not 3rd hǎo 'good'",
+          "sh in shì → curled-back; vowel is a buzz, not 'ee'",
+          "sh in shū → curled-back 'sh' (书, 'book')"
+        ]
       },
       {
         "chinese": "周末我喜欢去游泳。",
         "pinyin": "zhōu mò wǒ xǐ huān qù yóu yǒng.",
-        "english": "On weekends I like to go swimming."
+        "english": "On weekends I like to go swimming.",
+        "pronunciation_focus_en": [
+          "zh in zhōu → 'j' as in 'jaw', flat high (周末, 'weekend')",
+          "x in xǐ → light 'sh', tongue near the lower teeth",
+          "qù → hissy 'ch' + ü: 'chü', falling tone; means 'go'",
+          "yóu yǒng → 'yoh yong', rising then dipping (游泳, 'swim')"
+        ]
       },
       {
         "chinese": "她唱歌唱得很好听。",
         "pinyin": "tā chàng gē chàng de hěn hǎo tīng.",
-        "english": "She sings very beautifully."
+        "english": "She sings very beautifully.",
+        "pronunciation_focus_en": [
+          "ch in chàng → curled-back 'ch', strong air puff, falling (唱, 'sing')",
+          "gē → 'guh', flat high tone (歌, 'song')",
+          "de → neutral 'duh'; here the 得 complement marker (V + 得 + how-well)",
+          "tīng → 'ting' with 'ng' as in 'sing' (好听, 'nice to hear')"
+        ]
       },
       {
         "chinese": "我最近在学习跳舞。",
         "pinyin": "wǒ zuì jìn zài xué xí tiào wǔ.",
-        "english": "I am learning to dance recently."
+        "english": "I am learning to dance recently.",
+        "pronunciation_focus_en": [
+          "zuì → 'dzway', falling tone",
+          "jìn → 'jin', falling tone (最近, 'recently')",
+          "xué xí → 'shweh shee', light 'sh' both (学习, 'study / learn')",
+          "iao in tiào → 'tyow', falling tone (跳舞, 'dance')"
+        ]
       },
       {
         "chinese": "旅行是我最喜欢的活动。",
         "pinyin": "lǚ xíng shì wǒ zuì xǐ huān de huó dòng.",
-        "english": "Travel is my favorite activity."
+        "english": "Travel is my favorite activity.",
+        "pronunciation_focus_en": [
+          "lǚ → 'l' + ü: say 'lee', then round the lips tightly, dipping (旅行, 'travel')",
+          "x in xíng → light 'sh' + 'ing'",
+          "huó → 'hwaw', rising tone",
+          "dòng → 'doong' with 'ng' as in 'sing', falling (活动, 'activity')"
+        ]
       }
     ],
     "dialogue": [
@@ -2318,7 +2445,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "周末你喜欢做什么？",
         "pinyin": "zhōu mò nǐ xǐ huān zuò shén me?"
       }
-    ]
+    ],
+    "cultural_notes_en": "How you frame hobbies signals values in China in ways the American 'just for fun' framing misses. 爱好 carries a faint sense of cultivation — calligraphy (书法), tea, an instrument, photography read as self-improvement, not idle time, especially to an older generation; the four classical 'scholar's arts' (琴棋书画 — music, the game of go, calligraphy, painting) still tint what counts as a respectable hobby. Group and outdoor activity is highly visible: at dawn and dusk parks fill with collective tai chi, line-dancing 'square dancing' (广场舞), and badminton — physical leisure skews communal where the American default skews individual. KTV (karaoke) is mainstream adult socializing across all ages, not the slightly ironic activity it can be in the US, so '唱歌' as a stated hobby is unremarkable. Note 好 is a two-tone character: 好 (hǎo, 'good,' 3rd tone) vs. 爱好 (… hào, 'to be fond of,' 4th tone) — the hobby word forces the rarer reading.",
+    "tip_advice_en": "The grammar to internalize: most Chinese hobbies are [verb + object], not single nouns — 看书 (read-books), 唱歌 (sing-songs), 跳舞 (jump-dance), 画画 (paint-paintings). Don't hunt for a one-word noun; say the action. The headline pronunciation item is the tone flip on 好: in 爱好 (ài hào) it is fourth tone (hào, 'to be fond of'), not the third-tone hǎo you learned for 'good' in Lesson 1 — same character, pitch changes the meaning. Second, the 得 in '唱得很好听' is the neutral-toned 'de' linking a verb to how well it's done (V + 得 + result); it sounds identical to possessive 的 but does a different job — don't let the shared sound collapse them. And 旅行 opens with 旅 (lǚ): the ü again — 'lee' with whistle-rounded lips, never 'loo.'"
   },
   {
     "id": 15,
@@ -2382,27 +2511,57 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我在北京大学学习。",
         "pinyin": "wǒ zài běi jīng dà xué xué xí.",
-        "english": "I study at Peking University."
+        "english": "I study at Peking University.",
+        "pronunciation_focus_en": [
+          "ei in běi → 'ay' as in 'day'",
+          "j in jīng → 'j' as in 'jeep' (北京, 'Beijing')",
+          "dà → 'dah', falling tone (大学, 'university')",
+          "xué xí → 'shweh shee'; 学 repeats back-to-back here (学习, 'study')"
+        ]
       },
       {
         "chinese": "我们的老师很严格。",
         "pinyin": "wǒ men de lǎo shī hěn yán gé.",
-        "english": "Our teacher is very strict."
+        "english": "Our teacher is very strict.",
+        "pronunciation_focus_en": [
+          "men / de → both neutral and weightless: 'mun', 'duh'",
+          "lǎo shī → 'lao shrr', 3rd tone then flat; the shī vowel is a buzz (老师, 'teacher')",
+          "ian in yán → 'yen', rising tone",
+          "gé → 'guh', rising tone (严格, 'strict')"
+        ]
       },
       {
         "chinese": "今天的作业做完了吗？",
         "pinyin": "jīn tiān de zuò yè zuò wán le ma?",
-        "english": "Have you finished today's homework?"
+        "english": "Have you finished today's homework?",
+        "pronunciation_focus_en": [
+          "j in jīn → 'j' as in 'jeep'",
+          "zuò yè → 'dzwaw yeh', both falling (作业, 'homework')",
+          "wán → 'wahn', rising tone; means 'finish'",
+          "le ma → both neutral and weightless; the yes/no question tail"
+        ]
       },
       {
         "chinese": "下个星期有考试。",
         "pinyin": "xià gè xīng qī yǒu kǎo shì.",
-        "english": "There is an exam next week."
+        "english": "There is an exam next week.",
+        "pronunciation_focus_en": [
+          "x in xià → light 'sh', falling tone",
+          "x in xīng → light 'sh' + 'ing' as in 'sing'",
+          "q in qī → hissy 'ch', tongue near the lower teeth",
+          "kǎo shì → 'kow shrr', 3rd then falling (考试, 'exam')"
+        ]
       },
       {
         "chinese": "我希望这学期的成绩能更好。",
         "pinyin": "wǒ xī wàng zhè xué qī de chéng jì néng gèng hǎo.",
-        "english": "I hope my grades will be better this semester."
+        "english": "I hope my grades will be better this semester.",
+        "pronunciation_focus_en": [
+          "x in xī → light 'sh', flat high tone",
+          "wàng → 'wahng' with 'ng' as in 'sing', falling (希望, 'hope')",
+          "ch in chéng → curled-back 'ch', rising tone",
+          "jì → 'jee', falling tone (成绩, 'grade / score')"
+        ]
       }
     ],
     "dialogue": [
@@ -2459,7 +2618,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我是大学生。",
         "pinyin": "wǒ shì dà xué shēng."
       }
-    ]
+    ],
+    "cultural_notes_en": "School carries a cultural weight in China that the casual American 'how's school?' doesn't capture. The 高考 (gāo kǎo, the national college entrance exam) is a single, life-shaping event with no clean American equivalent — imagine the SAT, but it largely determines your university, is taken essentially once, and the whole society pauses around it (traffic rerouted near test sites). 老师 (teacher) is a high-status title used as respectful address even outside school, the way Americans might use 'Doctor' or 'Professor,' and a teacher being 严格 ('strict') is praise here, not a complaint. Grades attach to family 'face' (面子): a child's results reflect on the parents, so the American 'grades are the kid's own business' framing doesn't hold. Naming 北京大学 (Peking University) or 清华 carries the prestige of saying 'Harvard' or 'MIT' — useful cultural shorthand. The school year starts in September with two semesters (学期), like the US, but the long breaks are the hot Jul–Aug summer and the Spring Festival winter break.",
+    "tip_advice_en": "The most reusable structure here is 'V + 完 + 了' for completion: 做完了 ('do-finish-[change]') = 'have finished.' 完 is a result complement glued to the verb, and 了 marks the new state — together closer to English perfect 'have done' than to simple past; build the V+完+了 unit. Pronunciation focus: 学 (xué) appears back-to-back in '大学学习' — it's 'shweh' (light x + ü-glide + rising), and the doubled 学学 is a genuine tongue-twister; slow it deliberately. Don't confuse 老师 (lǎo shī, 'teacher') with 老是 (lǎo shì, 'always'): the difference is the tone on the second syllable plus the sh-buzz vowel — high-frequency words, easy to blur. Finally, 严格 (yán gé) describing a teacher is a compliment in context; don't reach for an apologetic English softener when you translate it back."
   }
 ];
 
