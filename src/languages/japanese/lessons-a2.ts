@@ -347,25 +347,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "田中さんはいらっしゃいますか。",
-        "english": "Is Mr./Ms. Tanaka there?"
+        "english": "Is Mr./Ms. Tanaka there?",
+        "pronunciation_focus_en": [
+          "田中さん → 'ta-na-ka-san'; さん on someone else's name (never your own, from A1 L4)",
+          "は → topic particle, 'wa'",
+          "いらっしゃいます → 'i-ra(s)-sha-i-mas'; small っ held; this is the RESPECTFUL form of いる ('to be/exist')",
+          "か → question particle; let the pitch rise only here"
+        ]
       },
       {
         "japanese": "山田と申しますが、田中さんをお願いします。",
-        "english": "My name is Yamada, may I speak to Tanaka?"
+        "english": "My name is Yamada, may I speak to Tanaka?",
+        "pronunciation_focus_en": [
+          "山田と申します → 'ya-ma-da to mo-o-shi-mas'; 申します = HUMBLE 'I am called' (about yourself)",
+          "が → here a soft sentence-connector ('…, and'), trailing off politely — not the subject particle",
+          "を → object particle, 'o'",
+          "お願いします → 'o-ne-ga-i-shi-mas'; お polite prefix, devoiced final す"
+        ]
       },
       {
         "japanese": "すみません、今電話に出られません。",
-        "english": "Sorry, I can't answer the phone right now."
+        "english": "Sorry, I can't answer the phone right now.",
+        "pronunciation_focus_en": [
+          "すみません → 'su-mi-ma-sen'; the all-purpose 'excuse me / sorry'",
+          "電話 (でんわ) → 'den-wa'; ん is its own beat",
+          "に → particle marking the phone as what you respond TO (出る takes に, not を)",
+          "出られません → 'de-ra-re-ma-sen'; potential negative of 出る = 'cannot answer'"
+        ]
       },
       {
         "japanese": "折り返しお電話いただけますか。",
-        "english": "Could you call me back?"
+        "english": "Could you call me back?",
+        "pronunciation_focus_en": [
+          "折り返し → 'o-ri-ka-e-shi', tapped r; means 'calling back'",
+          "お電話 → 'o-den-wa'; the お is a respectful prefix on the other person's action",
+          "いただけますか → 'i-ta-da-ke-mas-ka'; humble-receiving request 'could I have you (call)?'",
+          "rising pitch only on the final か"
+        ]
       },
       {
         "japanese": "伝言をお願いできますか。",
-        "english": "Can I leave a message?"
+        "english": "Can I leave a message?",
+        "pronunciation_focus_en": [
+          "伝言 (でんごん) → 'den-gon'; two moraic ん, hard g",
+          "を → object particle, 'o'",
+          "お願いできますか → 'o-ne-ga-i de-ki-mas-ka'; 'can I request…?' (potential of できる)",
+          "keep every mora even; no English-style stress on any syllable"
+        ]
       }
     ],
+    "cultural_notes_en": "The Japanese phone call is one of the most scripted speech situations in the language, and it is where honorific/humble verbs (keigo) first become unavoidable rather than optional. You raise the other side with respectful verbs (いらっしゃいます = 'is [present]', honorific いる) and lower yourself with humble ones (申します = 'am called', humble 言う) — the same uchi/soto in-group/out-group logic introduced with A1 family terms, now driving verb choice. もしもし is phone-only; using it face-to-face is a known joke. The asymmetry with American phone habits is sharp: you typically state your own name and affiliation first and humbly (〜と申します), not 'Hi, is Tanaka there?'; trailing 〜が ('…山田ですが') is a deliberate soft incompleteness that invites the other person to continue — it is politeness, not hesitation, and mirrors the A1 'no that isn't said.' Business callers identify by company before self (会社名 + 名前). Note 電話に出る uses に, not を — you 'come out TO' a call; the particle is fixed and worth locking now.",
+    "tip_advice_en": "Highest-leverage pair to memorize as opposites: いらっしゃる (respectful, for THEM) vs 申す/おる (humble, for YOU). 田中さんはいらっしゃいますか raises Tanaka; 山田と申します lowers yourself — get the direction backwards and you honor yourself while humbling your boss, a real social error, not a grammar slip. This is the A1 family-term uchi/soto rule generalized to verbs; drill the two as a contrasting pair, never alone. Second, treat trailing 〜が as a politeness device, not a conjunction to translate: '〜ですが…' = 'I'm …, and [over to you]'. Pronunciation watch-points: いらっしゃいます hides a small っ (a held beat) — 'i-ra(s)-sha-i-mas'; 申します is 'mo-o-shi-mas' with a long first 'oh'. Drill a 20-second call opening aloud: もしもし → [name]と申します → 〜さんはいらっしゃいますか, in that fixed order.",
     "dialogue": [
       {
         "speaker": "A",
@@ -474,25 +506,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "件名：来週の打ち合わせについて",
-        "english": "Subject: Regarding next week's meeting"
+        "english": "Subject: Regarding next week's meeting",
+        "pronunciation_focus_en": [
+          "件名 (けんめい) → 'ken-mei'; ん its own beat, めい a long 'eh'",
+          "来週 (らいしゅう) → 'rai-shu-u'; しゅう held two beats — relative-time word, takes no particle",
+          "打ち合わせ → 'u-chi-a-wa-se', five even mora ('meeting/briefing')",
+          "について → 'ni-tsu-i-te' = 'regarding'; the つ is 'tsu', tongue behind teeth"
+        ]
       },
       {
         "japanese": "お世話になっております。",
-        "english": "Thank you for your continued support (standard opening)."
+        "english": "Thank you for your continued support (standard opening).",
+        "pronunciation_focus_en": [
+          "お世話 → 'o-se-wa'; お is the polite prefix, light",
+          "になって → 'ni-na(t)-te'; small っ = a held beat (te-form of なる)",
+          "おります → 'o-ri-mas'; humble form of いる; final す devoiced",
+          "say it as ONE fixed unit — it is a frozen ritual greeting, not built word by word"
+        ]
       },
       {
         "japanese": "資料を添付いたしました。",
-        "english": "I have attached the documents."
+        "english": "I have attached the documents.",
+        "pronunciation_focus_en": [
+          "資料 (しりょう) → 'shi-ryo-o'; りょ is one beat, りょう a long 'oh'",
+          "を → object particle, 'o'",
+          "添付 (てんぷ) → 'ten-pu'; ん its own beat",
+          "いたしました → 'i-ta-shi-ma-shi-ta'; いたす = HUMBLE する, here past — 'I (humbly) did'"
+        ]
       },
       {
         "japanese": "ご確認のほど、よろしくお願いいたします。",
-        "english": "Please review it. (formal request)"
+        "english": "Please review it. (formal request)",
+        "pronunciation_focus_en": [
+          "ご確認 → 'go-ka-ku-nin'; ご is the honorific prefix (Sino words take ご, native words お)",
+          "のほど → 'no-ho-do'; a softener that blunts the request — no English equivalent, don't translate it literally",
+          "よろしく → 'yo-ro-shi-ku', tapped r, four even mora",
+          "お願いいたします → 'o-ne-ga-i i-ta-shi-mas'; the humble いたします raises formality above します"
+        ]
       },
       {
         "japanese": "以上、よろしくお願い申し上げます。",
-        "english": "That is all, thank you. (formal closing)"
+        "english": "That is all, thank you. (formal closing)",
+        "pronunciation_focus_en": [
+          "以上 (いじょう) → 'i-jo-o'; じょう a long 'joh' — set word meaning 'that is all / end of message'",
+          "よろしく → 'yo-ro-shi-ku'",
+          "お願い → 'o-ne-ga-i', four mora",
+          "申し上げます → 'mo-o-shi-a-ge-mas'; the most humble 'I (respectfully) say' — formal email peak"
+        ]
       }
     ],
+    "cultural_notes_en": "Japanese business email is ritual before it is content, and this is the clearest 'no real American parallel' in A2. An American work email opens with the point ('Hi Ken — quick question on the deck'); a Japanese one opens with お世話になっております ('thank you for your ongoing support') — a fixed greeting sent even to someone you've never personally helped or been helped by, because it greets the relationship between the companies, not the individuals. The body is wrapped in humble verbs (いたします for する, 申し上げます for 言う) and softeners (〜のほど, 〜について) whose job is to lower the writer and blur the imperative, not to add meaning — translating them literally produces nonsense. Structure is equally fixed: 拝啓 / 件名 / お世話 opening / body / 以上 / よろしくお願い申し上げます closing, in that order, like a kata. The American instinct to 'just be clear and friendly' reads in Japan as abrupt or even rude in a first business contact; the ritual frame IS the politeness. Treat these phrases as set pieces to deploy whole, not grammar to parse.",
+    "tip_advice_en": "Highest-leverage move: learn the email skeleton as fixed blocks, not as sentences to compose — お世話になっております (open) … body … 以上、よろしくお願い申し上げます (close). At A2 you deploy these whole; trying to build them from grammar is wasted effort and sounds wrong. The reusable rule worth extracting is the honorific-prefix split: ご attaches to Sino-Japanese (kanji-compound) words — ご確認, ご連絡 — while お attaches to native words — お願い, お名前; picking the wrong prefix is a giveaway. Note いたします/申し上げます are humble upgrades of します/言います — same meaning, lower stance, higher formality. Pronunciation watch-points: 申し上げます = 'mo-o-shi-a-ge-mas' (long first 'oh'); the small っ in なって is a held beat. Don't fabricate creativity here — copying the ritual exactly is the competent A2 behavior.",
     "dialogue": [
       {
         "speaker": "A",
@@ -601,25 +665,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "口座を開きたいんですが。",
-        "english": "I'd like to open an account."
+        "english": "I'd like to open an account.",
+        "pronunciation_focus_en": [
+          "口座 (こうざ) → 'ko-o-za'; こう a long 'oh', ざ a voiced 'za'",
+          "を → object particle, 'o'",
+          "開きたい → 'hi-ra-ki-ta-i'; 〜たい = 'want to' (the desiderative; attaches to the verb stem)",
+          "んですが → 'n-des-ga'; soft explanatory opener trailing off — politeness, not a real 'but'"
+        ]
       },
       {
         "japanese": "お金を預けたいです。",
-        "english": "I want to deposit money."
+        "english": "I want to deposit money.",
+        "pronunciation_focus_en": [
+          "お金 (おかね) → 'o-ka-ne'; the お is a near-fixed polite prefix on this word",
+          "を → object particle, 'o' (with 〜たい, を is standard; が is also heard — see the tip)",
+          "預けたい → 'a-zu-ke-ta-i'; ず voiced; 〜たいです = polite 'want to'",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "残高を確認してください。",
-        "english": "Please check the balance."
+        "english": "Please check the balance.",
+        "pronunciation_focus_en": [
+          "残高 (ざんだか) → 'zan-da-ka'; ざ voiced, ん its own beat",
+          "を → object particle, 'o'",
+          "確認して → 'ka-ku-nin-shi-te'; the て-form of 確認する (Lesson 20)",
+          "ください → 'ku-da-sa-i'; 〜てください = polite request"
+        ]
       },
       {
         "japanese": "振り込みをお願いします。",
-        "english": "I'd like to make a transfer."
+        "english": "I'd like to make a transfer.",
+        "pronunciation_focus_en": [
+          "振り込み → 'fu-ri-ko-mi'; ふ is between English 'f' and 'h' (lips not touching teeth)",
+          "を → object particle, 'o'",
+          "お願いします → 'o-ne-ga-i-shi-mas'; the safe default request frame (carried from A1 L11)",
+          "even, unstressed delivery — no English-style stress peak"
+        ]
       },
       {
         "japanese": "キャッシュカードをなくしました。",
-        "english": "I lost my cash card."
+        "english": "I lost my cash card.",
+        "pronunciation_focus_en": [
+          "キャッシュカード → 'kya(s)-shu-ka-a-do'; katakana loanword, small っ held, カー a long 'ah'",
+          "を → object particle, 'o'",
+          "なくしました → 'na-ku-shi-ma-shi-ta'; past of なくす ('to lose') — plain factual past",
+          "kya- is one mora (キャ), not 'ki-ya' — glide it"
+        ]
       }
     ],
+    "cultural_notes_en": "A Japanese bank visit runs on formality and paperwork in ways that surprise Americans used to app-first banking. Counter (窓口) interactions are highly scripted: staff use deep keigo (かしこまりました 'certainly', ご記入ください 'please fill in'), and you are expected to match with polite requests, not casual ones. The hanko/印鑑 (registered name seal) historically replaces the signature for opening accounts and transfers — closer to a notarized stamp than an American signature, and still common even as digital options grow. Identity rules bite foreigners specifically: a residence card (在留カード) is typically required, and some banks add hurdles a tourist passport won't clear — worth knowing before you go. 振り込み (bank transfer) is the cultural default for paying rent, utilities, and person-to-person money, where Americans would use a check, Venmo, or autopay; ATMs themselves keep limited hours and may charge time-based 手数料 (fees), unlike the 24/7 fee-free American expectation. The soft 〜んですが opener ('I'd like to…, and…') is the polite way to start a counter request — trailing off invites the teller to take over, the same indirectness pattern as the phone lesson.",
+    "tip_advice_en": "Highest-leverage A2 pattern here: 〜たい ('want to') + the soft frame 〜んですが. 口座を開きたいんですが is the all-purpose 'I'd like to ~, [could you help]' counter opener — verb-stem + たい, then んですが trailing off. The particle nuance worth flagging: with 〜たい the object can take を OR が — お金を預けたい and お金が預けたい are both heard; を is the safe A2 default, が adds a 'it's money I want to deposit' focus. Don't over-worry it now, but know both are correct so a heard が doesn't confuse you. Also note 〜たい describes the SPEAKER's desire — using it to ask about someone else's wish (あなたは〜たいですか) can sound blunt; Japanese softens that to 〜たいですか only with care or switches to 〜ますか. Pronunciation watch-points: 振り込み's ふ is a soft bilabial 'f' (no teeth); キャッシュ's キャ is a single glided mora. Drill: 〜たいんですが with three bank verbs (開く・預ける・引き出す).",
     "dialogue": [
       {
         "speaker": "A",
@@ -728,25 +824,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "この手紙を航空便で送りたいです。",
-        "english": "I want to send this letter by airmail."
+        "english": "I want to send this letter by airmail.",
+        "pronunciation_focus_en": [
+          "手紙 (てがみ) → 'te-ga-mi', hard g, three even mora",
+          "を → object particle, 'o'",
+          "航空便で → 'ko-o-ku-u-bin de'; で here = the MEANS particle ('by airmail'), not location",
+          "送りたい → 'o-ku-ri-ta-i'; 〜たいです polite 'want to'"
+        ]
       },
       {
         "japanese": "切手を五枚ください。",
-        "english": "Please give me five stamps."
+        "english": "Please give me five stamps.",
+        "pronunciation_focus_en": [
+          "切手 (きって) → 'ki(t)-te'; small っ is a held silent beat — きて and きって are different words",
+          "を → object particle, 'o'",
+          "五枚 (ごまい) → 'go-mai'; 枚 = the counter for FLAT thin things (stamps, paper, tickets)",
+          "ください → 'ku-da-sa-i'; counted-item + ください = 'please give me N'"
+        ]
       },
       {
         "japanese": "小包を海外に送りたいんですが。",
-        "english": "I'd like to send a parcel overseas."
+        "english": "I'd like to send a parcel overseas.",
+        "pronunciation_focus_en": [
+          "小包 (こづつみ) → 'ko-zu-tsu-mi'; づ voiced 'zu', つ is 'tsu'",
+          "海外に → 'ka-i-ga-i ni'; に marks the destination ('to overseas')",
+          "を → object particle, 'o'",
+          "んですが → soft trailing opener, 'n-des-ga' (carried from Lesson 23)"
+        ]
       },
       {
         "japanese": "書留にしてください。",
-        "english": "Please make it registered mail."
+        "english": "Please make it registered mail.",
+        "pronunciation_focus_en": [
+          "書留 (かきとめ) → 'ka-ki-to-me', four even mora",
+          "に → goes with する: 〜にする = 'decide on / make it ~' (a fixed pattern)",
+          "してください → 'shi-te ku-da-sa-i'; て-form of する + request",
+          "no を here — 〜にする takes に, a structural point worth noticing"
+        ]
       },
       {
         "japanese": "追跡番号を教えてください。",
-        "english": "Please tell me the tracking number."
+        "english": "Please tell me the tracking number.",
+        "pronunciation_focus_en": [
+          "追跡 (ついせき) → 'tsu-i-se-ki'; つ is 'tsu' (tongue behind teeth), not 'too'",
+          "番号 (ばんごう) → 'ban-go-o'; ん its own beat, ごう a long 'oh'",
+          "を → object particle, 'o'",
+          "教えてください → 'o-shi-e-te ku-da-sa-i'; て-form of 教える + request"
+        ]
       }
     ],
+    "cultural_notes_en": "The Japanese post office (郵便局, marked with the 〒 symbol — itself a useful sign to recognize) is a broader institution than its American counterpart: 'Japan Post' is also a bank and insurer (ゆうちょ), so the building blends USPS, a retail bank, and an ATM hub. Two service realities differ sharply from the US. First, redelivery culture: missed parcels leave a 不在票 (absence slip) and redelivery is the norm — precise, on-request, often same-day, not 'the truck might come back.' Second, packaging and method are explicit choices you state: 航空便 (air) vs 船便 (surface), 速達 (express), 書留 (registered) — the clerk expects you to specify, using the means particle で or the 〜にする pattern. The counter system from A1 reappears with force here: stamps and postcards are counted with 枚 (flat things), parcels differently — counters are not optional. There isn't a clean American analogy for the post-office-as-bank breadth; treat 郵便局 as its own category. Politeness stays high at the counter (〜たいんですが openers), mirroring the bank lesson.",
+    "tip_advice_en": "Highest-leverage A2 expansion: counters get specific, and 枚 is the one this lesson drills — it counts FLAT, thin things (stamps 切手, paper, tickets, plates, shirts): 五枚 = 'go-mai', 一枚 'i-chi-mai', 三枚 'san-mai'. Pair it mentally against 本 (long cylinders), 冊 (bound books), 台 (machines), 匹 (small animals) — learn each counter with the noun class it serves, exactly as A1 advised, because there is still no general fallback for most nouns. Second pattern: the means particle で ('航空便で' = by airmail) vs the destination に ('海外に' = to overseas) — same sentence often has both; don't blur them. Also note 〜にする ('書留にして') = 'decide on / make it ~', which takes に, not を. Pronunciation watch-point: 切手 = きって with a held small っ ('ki(t)-te'); dropping it gives きて ('come'), a real and embarrassing mix-up at a counter. Drill: count stamps 1–5 with 枚 aloud, then state a method with で.",
     "dialogue": [
       {
         "speaker": "A",
@@ -855,25 +983,57 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "駅から徒歩五分以内のアパートを探しています。",
-        "english": "I'm looking for an apartment within a 5-minute walk from the station."
+        "english": "I'm looking for an apartment within a 5-minute walk from the station.",
+        "pronunciation_focus_en": [
+          "駅から → 'e-ki ka-ra'; から = the SOURCE particle here ('from the station')",
+          "徒歩五分以内 → 'to-ho go-fun i-na-i'; 以内 = 'within'; ふん is the minute counter",
+          "を → object particle, 'o'",
+          "探しています → 'sa-ga-shi-te-i-mas'; 〜ています = ongoing action ('am searching'); い often drops"
+        ]
       },
       {
         "japanese": "家賃はいくらですか。",
-        "english": "How much is the rent?"
+        "english": "How much is the rent?",
+        "pronunciation_focus_en": [
+          "家賃 (やちん) → 'ya-chin'; ん is its own beat",
+          "は → topic particle, 'wa'",
+          "いくら → 'i-ku-ra' ('how much', carried from A1 L12)",
+          "ですか → 'des-ka'; rising pitch only on か"
+        ]
       },
       {
         "japanese": "敷金と礼金はそれぞれ一か月分です。",
-        "english": "Deposit and key money are each one month's rent."
+        "english": "Deposit and key money are each one month's rent.",
+        "pronunciation_focus_en": [
+          "敷金 / 礼金 → 'shi-ki-kin' / 're-i-kin'; と = 'and' (exhaustive list of two)",
+          "は → topic particle, 'wa'",
+          "それぞれ → 'so-re-zo-re', four even mora ('each / respectively')",
+          "一か月分 → 'i(k)-ka-ge-tsu-bun'; small っ held; 分 here = 'worth/portion'"
+        ]
       },
       {
         "japanese": "保証人が必要ですか。",
-        "english": "Is a guarantor necessary?"
+        "english": "Is a guarantor necessary?",
+        "pronunciation_focus_en": [
+          "保証人 (ほしょうにん) → 'ho-sho-o-nin'; しょう a long 'oh', ん its own beat",
+          "が → SUBJECT particle: 必要 ('necessary') takes が for the thing needed, not を",
+          "必要 (ひつよう) → 'hi-tsu-yo-o'; つ is 'tsu', よう a long 'oh' — a na-adjective",
+          "ですか → 'des-ka', question pitch on か"
+        ]
       },
       {
         "japanese": "契約期間は二年です。",
-        "english": "The contract period is two years."
+        "english": "The contract period is two years.",
+        "pronunciation_focus_en": [
+          "契約 (けいやく) → 'ke-e-ya-ku'; けい a long 'eh'",
+          "期間 (きかん) → 'ki-kan'; ん its own beat",
+          "二年 → 'ni-nen' (2 years); 年 is the year counter, regular here",
+          "です → 'des', devoiced final vowel"
+        ]
       }
     ],
+    "cultural_notes_en": "Renting in Japan is one of the largest culture gaps an American learner will hit, and the vocabulary encodes a system, not just words. Beyond 家賃 (rent) you typically pay, up front, 敷金 (deposit, partly refundable) AND 礼金 ('gratitude money' — a non-refundable gift to the landlord with no American equivalent at all; it is not a deposit and you never get it back), often each one to two months' rent, plus agent fees and 更新料 (a renewal fee every ~2 years just to keep living there). Most contracts require a 保証人 (guarantor) — a person, often family, legally liable for your rent — or a paid guarantor company; this gatekeeps foreigners specifically, and some landlords still decline non-Japanese tenants outright. Apartments are described by 間取り codes (1K, 2LDK) and 駅から徒歩◯分 (walk-minutes from the station), a near-universal metric in listings. The takeaway for an American: budget roughly 4–6 months' rent to move in, and treat 礼金 as a cultural fact to plan around, not a fee to negotiate away. The polite house-hunting register stays high (〜を探しています, 〜が必要ですか).",
+    "tip_advice_en": "Highest-leverage grammar here: 〜ています for an ongoing activity/state — アパートを探しています = 'I am (in the process of) looking for an apartment,' not a one-time act; this is the te-form (Lesson 20) paying off, and the い routinely drops in speech ('-te-mas'). Pair it with the source particle から ('駅から' = from the station) — the SAME から also means 'because,' two jobs for one particle, so context decides; flag it now, you'll meet the 'because' use soon. Particle watch-point that recurs: 必要 ('necessary') and 好き/上手 take が for the thing needed/liked, not を — 保証人が必要 (a guarantor is needed), never を. Pronunciation: 一か月分 hides a small っ ('i(k)-ka…', a held beat); 保証人 is 'ho-sho-o-nin' with a long 'oh', commonly clipped by English speakers. Drill: describe a flat search with 〜から…を探しています, then ask 〜が必要ですか.",
     "dialogue": [
       {
         "speaker": "A",
