@@ -67,27 +67,60 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "你好吗？",
         "pinyin": "nǐ hǎo ma?",
-        "english": "How are you?"
+        "english": "How are you?",
+        "pronunciation_focus_en": [
+          "nǐ → 'nee', but with a falling-then-rising dip (3rd tone)",
+          "h in hǎo → breathier and further back than English 'h', like softly clearing your throat",
+          "ao → 'ow' as in 'cow'",
+          "ma → toneless and light here; it's just the question marker, so don't stress it"
+        ]
       },
       {
         "chinese": "我很好，谢谢。",
         "pinyin": "wǒ hěn hǎo, xiè xiè.",
-        "english": "I'm fine, thank you."
+        "english": "I'm fine, thank you.",
+        "pronunciation_focus_en": [
+          "wǒ → 'wuh' with a dipping 3rd tone",
+          "hěn + hǎo → two 3rd tones collide: the first rises (T3+T3 → T2+T3), so it sounds like 'hén hǎo'",
+          "x in xiè → a light 'sh', tongue near the lower front teeth (not the heavy English 'sh')",
+          "ie → 'yeh' as in 'yes' without the 's'"
+        ]
       },
       {
         "chinese": "早上好，今天天气不错。",
         "pinyin": "zǎo shang hǎo, jīn tiān tiān qì bù cuò.",
-        "english": "Good morning, the weather is nice today."
+        "english": "Good morning, the weather is nice today.",
+        "pronunciation_focus_en": [
+          "z in zǎo → 'ds' as in 'kids', with no puff of air",
+          "sh in shang → English 'sh' but with the tongue tip curled back",
+          "j in jīn → 'j' as in 'jeep', tongue flat and forward",
+          "q in qì → 'ch' as in 'cheese' but hissier, tongue near the lower teeth",
+          "cuò → 'tswaw'; the 'c' is a hard 'ts' as in 'cats'"
+        ]
       },
       {
         "chinese": "再见，明天见。",
         "pinyin": "zài jiàn, míng tiān jiàn.",
-        "english": "Goodbye, see you tomorrow."
+        "english": "Goodbye, see you tomorrow.",
+        "pronunciation_focus_en": [
+          "z in zài → 'ds' in 'kids', no air puff",
+          "ai → 'eye'",
+          "j in jiàn → 'j' as in 'jeep'",
+          "ian → sounds like 'yen', not 'yahn' — the 'a' is swallowed",
+          "ng in míng → 'ng' as in 'sing'; let it ring"
+        ]
       },
       {
         "chinese": "欢迎来到中国！",
         "pinyin": "huān yíng lái dào zhōng guó!",
-        "english": "Welcome to China!"
+        "english": "Welcome to China!",
+        "pronunciation_focus_en": [
+          "h in huān → soft throat-clear, not a hard English 'h'",
+          "uan → 'wahn'",
+          "y in yíng → a gliding 'ee', like the start of 'year'",
+          "zh in zhōng → 'j' as in 'jaw' with the tongue tip curled back",
+          "guó → 'gwaw', one syllable, rising tone"
+        ]
       }
     ],
     "dialogue": [
@@ -144,7 +177,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "早上好，你好吗？",
         "pinyin": "zǎo shang hǎo, nǐ hǎo ma?"
       }
-    ]
+    ],
+    "cultural_notes_en": "你好 (nǐ hǎo) is the safe, universal 'hello,' but native speakers lean on time-of-day greetings far more than Americans do: 早上好 before about 10 a.m., and a casual 你吃了吗? ('Have you eaten?') often works like 'How's it going?' — it's phatic, not a literal dinner question, so a light 'I have, you?' is the expected reply, not a menu. Mainland China largely skips the American 'How are you?' reflex with strangers; 你好吗? is textbook and sounds slightly stiff between people who already know each other. A handshake is normal in business settings; the American greeting-hug is not, and is best avoided until a relationship is well established. 再见 literally means 'see again' — that same 见 (jiàn, 'see') closes 明天见 ('see you tomorrow') and 回头见 ('see you later'), so it's worth memorizing the 'time-word + 见' pattern as a unit.",
+    "tip_advice_en": "The biggest day-one trap is the third tone. 你 (nǐ) and 好 (hǎo) are both third tone, but two third tones in a row never both fully dip — the first becomes a rising tone, so 你好 actually comes out closer to 'ní hǎo.' Drill this 'T3 + T3 → T2 + T3' shift now; it recurs constantly (你好, 很好, 我也好). Just as important: don't hear tones as English sentence intonation. A falling fourth tone (谢, xiè) is not anger, and a rising second tone is not a question — the pitch is baked into the word's identity, like a vowel is. Say each greeting aloud five times with the pitch exaggerated; you can shrink the movement later once your ear locks in."
   },
   {
     "id": 2,
@@ -208,27 +243,62 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我有三个苹果。",
         "pinyin": "wǒ yǒu sān gè píng guǒ.",
-        "english": "I have three apples."
+        "english": "I have three apples.",
+        "pronunciation_focus_en": [
+          "wǒ yǒu → two 3rd tones, so the first rises: 'wó yǒu'",
+          "s in sān → plain 's' as in 'sun', tongue forward",
+          "an in sān → 'ahn', not the flat English 'an' in 'can'",
+          "gè → a short 'guh'; it's the measure word, keep it light",
+          "uo in guǒ → 'waw'"
+        ]
       },
       {
         "chinese": "今天是五月二号。",
         "pinyin": "jīn tiān shì wǔ yuè èr hào.",
-        "english": "Today is May 2nd."
+        "english": "Today is May 2nd.",
+        "pronunciation_focus_en": [
+          "j in jīn → 'j' as in 'jeep'",
+          "ian in tiān → 'yen', not 'tee-ahn'",
+          "shì → tongue tip curled back; the 'i' is a buzzed 'rrr'-ish vowel, not 'ee'",
+          "yuè → 'yweh'; round the lips for the ü-glide",
+          "èr → like 'er' in 'her' with the tongue curled, falling tone"
+        ]
       },
       {
         "chinese": "这个多少钱？十块钱。",
         "pinyin": "zhè gè duō shao qián? shí kuài qián.",
-        "english": "How much is this? Ten yuan."
+        "english": "How much is this? Ten yuan.",
+        "pronunciation_focus_en": [
+          "zh in zhè → 'j' as in 'jaw', tongue tip curled back",
+          "duō → 'dwaw', flat high 1st tone",
+          "shao → 'show', light and neutral here",
+          "q in qián → 'ch' as in 'cheese' but hissier",
+          "kuài → 'kwai' (rhymes with 'why'), sharp falling tone"
+        ]
       },
       {
         "chinese": "我们班有八个学生。",
         "pinyin": "wǒ men bān yǒu bā gè xué shēng.",
-        "english": "Our class has eight students."
+        "english": "Our class has eight students.",
+        "pronunciation_focus_en": [
+          "men → neutral and swallowed, 'mun'; don't stress it",
+          "b in bān / bā → unaspirated, between English 'b' and 'p', no air puff",
+          "x in xué → light 'sh', tongue near the lower teeth",
+          "ué in xué → 'yweh' with rounded lips, rising tone",
+          "eng in shēng → 'ung' as in 'sung', not 'eng' as in 'length'"
+        ]
       },
       {
         "chinese": "请给我五杯水。",
         "pinyin": "qǐng gěi wǒ wǔ bēi shuǐ.",
-        "english": "Please give me five glasses of water."
+        "english": "Please give me five glasses of water.",
+        "pronunciation_focus_en": [
+          "q in qǐng → hissy 'ch', tongue near the lower teeth",
+          "ing in qǐng → 'ing' as in 'sing'",
+          "ei in gěi / bēi → 'ay' as in 'day'",
+          "wǔ → 'oo' with a dipping 3rd tone, lips tightly rounded",
+          "ui in shuǐ → 'way', not 'wee'"
+        ]
       }
     ],
     "dialogue": [
@@ -285,7 +355,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "桌子上有八本书。",
         "pinyin": "zhuō zi shàng yǒu bā běn shū."
       }
-    ]
+    ],
+    "cultural_notes_en": "Numbers carry real cultural weight in China. 八 (bā, eight) sounds like 发 (fā, 'to prosper'), so it's lucky — phone numbers and license plates loaded with 8s genuinely sell at a premium. 四 (sì, four) sounds like 死 (sǐ, 'death'), so it's avoided much the way some American buildings skip the 13th floor; many mainland Chinese elevators omit floor 4 (and 14, 24…). Hand-counting also differs: one hand counts all the way to ten, with distinct shapes for 6–10 — 6 is thumb-plus-pinky (the 'hang loose' sign), not the two-hand method most Americans use, so a vendor flashing that shape means six, not 'relax.' Dates run big-to-small (year, month, day), so 五月二号 is 'May, 2nd day' and a full date is written 2026年5月2号. In speech, prices use 块 (kuài) for the yuan the way Americans say 'bucks' instead of 'dollars'; 元 (yuán) is the written/formal form.",
+    "tip_advice_en": "一 (yī, 'one') is a shape-shifter. Alone it's first tone (yī), but it changes tone with what follows — fourth tone before most syllables (yì běn shū) and second tone before another fourth tone (yí gè). Don't try to master that rule today; just expect that the 'one' you hear won't always match the 'yī' you learned. For the ear, the classic English-speaker trap is 四 (sì) vs. 十 (shí): 'sì' has a tight, buzzy vowel with no real 'ee' and a sharp falling tone, while 'shí' curls the tongue back and rises. Confuse them at a market and you'll pay 10 when you meant 4. Drill 4–10–14–40 aloud until the s/sh contrast is automatic before you ever need it for money."
   },
   {
     "id": 3,
@@ -349,27 +421,62 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我爸爸是医生。",
         "pinyin": "wǒ bà ba shì yī shēng.",
-        "english": "My father is a doctor."
+        "english": "My father is a doctor.",
+        "pronunciation_focus_en": [
+          "bà ba → falling 4th tone then a light neutral: 'BAH-buh'",
+          "shì → tongue tip curled back; the vowel is a buzz, not 'ee'",
+          "yī → a high, flat 'ee' (1st tone here)",
+          "sh in shēng → curled-back 'sh'",
+          "eng in shēng → 'ung' as in 'sung'"
+        ]
       },
       {
         "chinese": "我妈妈做的饭很好吃。",
         "pinyin": "wǒ mā ma zuò de fàn hěn hǎo chī.",
-        "english": "The food my mother makes is delicious."
+        "english": "The food my mother makes is delicious.",
+        "pronunciation_focus_en": [
+          "mā ma → high flat 1st tone then neutral: 'MAH-muh'",
+          "zuò → 'dzwaw', no air puff, falling tone",
+          "de → neutral 'duh', the possessive particle, never stressed",
+          "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'",
+          "ch in chī → 'ch' with the tongue tip curled back; vowel is a buzz, not 'ee'"
+        ]
       },
       {
         "chinese": "我有一个哥哥和一个妹妹。",
         "pinyin": "wǒ yǒu yī gè gē ge hé yī gè mèi mei.",
-        "english": "I have one older brother and one younger sister."
+        "english": "I have one older brother and one younger sister.",
+        "pronunciation_focus_en": [
+          "wǒ yǒu → T3+T3, first rises",
+          "gē ge → 1st tone then neutral: 'GUH-guh'",
+          "hé → 'huh' rising to mid; this is the word for 'and'",
+          "ei in mèi → 'ay' as in 'day', falling tone",
+          "mèi mei → falling then neutral: 'MAY-may'"
+        ]
       },
       {
         "chinese": "爷爷和奶奶住在老家。",
         "pinyin": "yé ye hé nǎi nai zhù zài lǎo jiā.",
-        "english": "Grandpa and grandma live in the hometown."
+        "english": "Grandpa and grandma live in the hometown.",
+        "pronunciation_focus_en": [
+          "yé ye → rising then neutral: 'YEH-yuh'",
+          "ai in nǎi / zài → 'eye'",
+          "nǎi nai → 3rd tone then neutral",
+          "zh in zhù → 'j' as in 'jaw', tongue curled back",
+          "jiā → 'jyah', flat high 1st tone"
+        ]
       },
       {
         "chinese": "我女儿今年五岁了。",
         "pinyin": "wǒ nǚ ér jīn nián wǔ suì le.",
-        "english": "My daughter is five years old this year."
+        "english": "My daughter is five years old this year.",
+        "pronunciation_focus_en": [
+          "nǚ → say 'nee', hold the tongue there, then round the lips like a whistle (the ü sound)",
+          "ér → 'er' as in 'her' with the tongue curled, rising tone",
+          "ian in nián → 'yen', not 'nee-ahn'",
+          "suì → 'sway', sharp falling tone; this is the word for years of age",
+          "le → neutral 'luh', the change-of-state particle, kept weightless"
+        ]
       }
     ],
     "dialogue": [
@@ -426,7 +533,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我的家有五口人。",
         "pinyin": "wǒ de jiā yǒu wǔ kǒu rén."
       }
-    ]
+    ],
+    "cultural_notes_en": "Chinese kinship terms are far more specific than English ones, and A1 forces the issue right away: there is no plain word for 'brother' or 'sister' — you must pick by relative age. 哥哥 (older brother) and 弟弟 (younger brother) are different words, as are 姐姐 (older sister) and 妹妹 (younger sister). Birth order is socially load-bearing, not trivia: older siblings are often addressed by their title rather than their name even as adults, and the same age-ranking logic later extends to cousins, aunts, and uncles, including a maternal-vs-paternal split (well beyond A1, but it's coming). 老家 (lǎo jiā, literally 'old home') has no clean English match — it's your ancestral hometown, the place you 'go back to' for Spring Festival even if you never lived there; it's closer to an American's 'where my family's from' than to 'hometown.' Notice the doubled syllables in 妈妈, 爸爸, 哥哥, 弟弟: that reduplication is the warm, intimate register, much like English 'mama' and 'papa.'",
+    "tip_advice_en": "The reduplicated family words (māma, bàba, gēge, dìdi, jiějie, mèimei) carry a full tone on the first syllable and a light, neutral tone on the second — fight the English instinct to stress both equally. Say 'MA-muh,' not 'ma-MA.' The hardest sound here is ü in 女 (nǚ): say 'ee' as in 'see,' freeze the tongue exactly there, then round your lips as if to whistle. It is not 'oo' and not 'noo' — a botched 女儿 (nǚ ér, daughter) tends to land as 牛 (niú, 'cow'), which a native listener will enjoy more than you will. Drill nǚ on its own until it's stable before attempting the whole sentence."
   },
   {
     "id": 4,
@@ -490,27 +599,62 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我喜欢红色的花。",
         "pinyin": "wǒ xǐ huān hóng sè de huā.",
-        "english": "I like red flowers."
+        "english": "I like red flowers.",
+        "pronunciation_focus_en": [
+          "x in xǐ → light 'sh', tongue near the lower teeth",
+          "xǐ huān → 3rd then 1st tone; xǐ keeps its low dip",
+          "hóng → 'hong' with 'ng' as in 'sing', rising tone",
+          "sè → 'suh', falling tone; this is the 'color' syllable on every color word",
+          "uā in huā → 'wah', flat high 1st tone"
+        ]
       },
       {
         "chinese": "天空是蓝色的。",
         "pinyin": "tiān kōng shì lán sè de.",
-        "english": "The sky is blue."
+        "english": "The sky is blue.",
+        "pronunciation_focus_en": [
+          "ian in tiān → 'yen', not 'tee-ahn'",
+          "k in kōng → strong puff of air (aspirated), unlike the soft k in English 'sky'",
+          "ong in kōng → 'oong'",
+          "shì → curled-back tongue; buzzed vowel, not 'ee'",
+          "an in lán → 'ahn'"
+        ]
       },
       {
         "chinese": "她穿了一件白色的裙子。",
         "pinyin": "tā chuān le yī jiàn bái sè de qún zi.",
-        "english": "She wore a white dress."
+        "english": "She wore a white dress.",
+        "pronunciation_focus_en": [
+          "ch in chuān → curled-back 'ch' with a big air puff",
+          "uan in chuān → 'wahn'",
+          "ai in bái → 'eye'",
+          "q in qún → hissy 'ch', tongue near the lower teeth",
+          "ún in qún → ü (rounded 'ee') + 'n', not English 'oon'"
+        ]
       },
       {
         "chinese": "这件黑色的外套很好看。",
         "pinyin": "zhè jiàn hēi sè de wài tào hěn hǎo kàn.",
-        "english": "This black coat looks very nice."
+        "english": "This black coat looks very nice.",
+        "pronunciation_focus_en": [
+          "zh in zhè → 'j' as in 'jaw', tongue curled back",
+          "ei in hēi → 'ay' as in 'day'",
+          "ai in wài → 'eye'",
+          "ao in tào → 'ow' as in 'cow', falling tone",
+          "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'"
+        ]
       },
       {
         "chinese": "春天有很多绿色的植物。",
         "pinyin": "chūn tiān yǒu hěn duō lǜ sè de zhí wù.",
-        "english": "There are many green plants in spring."
+        "english": "There are many green plants in spring.",
+        "pronunciation_focus_en": [
+          "ch in chūn → curled-back 'ch' with a strong air puff",
+          "un in chūn → 'wun', not 'oon'",
+          "lǜ → 'l' + ü: say 'lee' then round the lips tightly; falling tone",
+          "zh in zhí → 'j' as in 'jaw', tongue curled; vowel is a buzz",
+          "wù → 'oo' with tightly rounded lips, falling tone"
+        ]
       }
     ],
     "dialogue": [
@@ -567,7 +711,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我想买一件黑色的衣服。",
         "pinyin": "wǒ xiǎng mǎi yī jiàn hēi sè de yī fu."
       }
-    ]
+    ],
+    "cultural_notes_en": "Color symbolism in China often runs opposite to American defaults, and missing it is socially visible. 红色 (red) means luck, weddings, and celebration — the cash gift envelope is literally the 红包 ('red packet'), and a traditional bride wears red, not white. 白色 (white), and to a degree 黑色 (black), are mourning/funeral colors, so white at a Chinese wedding can jar an older guest the way black at a wedding might jar an American (modern city weddings increasingly mix in Western white, but the older association is still alive). 黄色 (yellow) was the imperial color, historically reserved for the emperor; in modern slang it can also mean 'pornographic' (黄色电影 = an adult film), so use it plainly for the color but know the second sense exists. Structurally, every color here is root + 色 (sè, 'color') — 红色, 蓝色, 绿色 — and a color modifying a noun normally takes 的: 红色的花 ('red one's flower'). American 'gray' vs. British/Commonwealth 'grey' is just spelling; 灰色 is one word regardless.",
+    "tip_advice_en": "Two things trip English speakers in this set. First, 的 (de) — the linking particle in 红色的花 — is always neutral and nearly swallowed: say 'hóngsè-duh huā,' never a stressed 'DUH.' It shows up in almost every descriptive sentence you'll ever speak, so make it weightless now. Second, 绿 (lǜ, 'green') stacks the two hardest things for English speakers at once: the ü vowel and a sharp falling 4th tone. Say 'ee,' round the lips to a whistle without moving the tongue, then drop the pitch hard. 'loo' is wrong; 'lyoo' is closer. If 绿 (lǜ) and 路 (lù, 'road') sound identical when you say them, your ü hasn't separated from 'oo' yet — drill that minimal pair until it does."
   },
   {
     "id": 5,
@@ -631,27 +777,62 @@ export const lessons: ChineseLesson[] = [
       {
         "chinese": "我喜欢吃中国菜。",
         "pinyin": "wǒ xǐ huān chī zhōng guó cài.",
-        "english": "I like eating Chinese food."
+        "english": "I like eating Chinese food.",
+        "pronunciation_focus_en": [
+          "x in xǐ → light 'sh', tongue near the lower teeth",
+          "ch in chī → curled-back 'ch'; the vowel is a buzz, not 'ee'",
+          "zh in zhōng → 'j' as in 'jaw', tongue curled back",
+          "guó → 'gwaw', rising tone",
+          "c in cài → hard 'ts' as in 'cats', with a puff of air"
+        ]
       },
       {
         "chinese": "饺子是我最喜欢的食物。",
         "pinyin": "jiǎo zi shì wǒ zuì xǐ huān de shí wù.",
-        "english": "Dumplings are my favorite food."
+        "english": "Dumplings are my favorite food.",
+        "pronunciation_focus_en": [
+          "j in jiǎo → 'j' as in 'jeep'",
+          "iao in jiǎo → 'yow' (a y-glide into 'ow' as in 'cow'), dipping 3rd tone",
+          "zi → buzzed 'dz' plus the no-'ee' buzz vowel; neutral here",
+          "zuì → 'dzway', falling tone",
+          "shí → curled-back 'sh', rising tone; vowel is a buzz"
+        ]
       },
       {
         "chinese": "今天中午我吃了面条。",
         "pinyin": "jīn tiān zhōng wǔ wǒ chī le miàn tiáo.",
-        "english": "I ate noodles for lunch today."
+        "english": "I ate noodles for lunch today.",
+        "pronunciation_focus_en": [
+          "j in jīn → 'j' as in 'jeep'",
+          "zh in zhōng → curled-back 'j' (as in 'jaw')",
+          "wǔ wǒ → two 3rd tones, so the first rises: 'wú wǒ'",
+          "ian in miàn → 'yen', not 'mee-ahn'",
+          "iao in tiáo → 'yow' with a rising tone"
+        ]
       },
       {
         "chinese": "多吃蔬菜对身体好。",
         "pinyin": "duō chī shū cài duì shēn tǐ hǎo.",
-        "english": "Eating more vegetables is good for your health."
+        "english": "Eating more vegetables is good for your health.",
+        "pronunciation_focus_en": [
+          "duō → 'dwaw', flat high 1st tone",
+          "sh in shū → curled-back 'sh'",
+          "c in cài → hard 'ts' as in 'cats', aspirated",
+          "duì → 'dway', falling tone; here it means 'for / toward'",
+          "tǐ hǎo → T3+T3, so the first rises: 'tí hǎo'"
+        ]
       },
       {
         "chinese": "妈妈做的鱼很好吃。",
         "pinyin": "mā ma zuò de yú hěn hǎo chī.",
-        "english": "The fish mom makes is delicious."
+        "english": "The fish mom makes is delicious.",
+        "pronunciation_focus_en": [
+          "mā ma → high flat then neutral: 'MAH-muh'",
+          "zuò → 'dzwaw', no air puff, falling tone",
+          "yú → round-lipped 'yee' (the ü with a y-glide), rising tone; this is 'fish'",
+          "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'",
+          "ch in chī → curled-back 'ch'; buzzed vowel, not 'ee'"
+        ]
       }
     ],
     "dialogue": [
@@ -708,7 +889,9 @@ export const lessons: ChineseLesson[] = [
         "chinese": "我喜欢吃中国饺子。",
         "pinyin": "wǒ xǐ huān chī zhōng guó jiǎo zi."
       }
-    ]
+    ],
+    "cultural_notes_en": "Food is arguably the central social currency in China, and the vocabulary carries that weight. 饺子 (jiǎozi, dumplings) are tied to family and the Lunar New Year — folding them together is a group activity, and they're shaped like old gold ingots to signal prosperity; they are not 包子 (bāozi, steamed filled buns) or pan-fried potstickers, even though menus abroad blur all three. 米饭 (mǐ fàn) means cooked rice in a bowl specifically; the uncooked grain and the plant are separate words (米, 稻), a distinction English's single 'rice' hides. The greeting 你吃了吗? ('Have you eaten?') lives here too: it's social glue, not a dinner invitation, much like American 'How's it going?' Hosting norms diverge sharply from the American script: the host usually orders for the whole table and keeps refilling your bowl, politely declining the first offer is expected ritual, and a cleared plate can read as 'still hungry, give me more' rather than 'I'm finished.' Tipping is generally not expected in mainland restaurants and can genuinely confuse staff.",
+    "tip_advice_en": "吃 (chī, 'eat') is the highest-frequency verb here and the perfect drill for the retroflex 'ch': curl the tongue tip back toward the ridge behind your teeth, then release with a strong puff. The vowel after it is not 'ee' — it's a tight buzz with the tongue still curled, the same vowel in 是 (shì) and 知 (zhī). If your 吃 sounds like English 'chee,' the tongue is too far forward. Second watch-point: 鱼 (yú, 'fish') reuses the ü from earlier lessons but with a rising tone — say round-lipped 'ee' and let the pitch climb like the end of a question; a flat or falling 'yu' drifts toward other words, so the rising pitch is doing real work. Build 我喜欢吃鱼 slowly: it chains three of A1's hardest sounds (x, ch, ü) in five syllables."
   },
   {
     "id": 6,
