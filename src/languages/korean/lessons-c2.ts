@@ -227,26 +227,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "행간을 읽다",
           "literal": "đọc giữa các dòng",
+          "literal_en": "read between the lines (haengganeul ikda)",
           "meaning": "đọc giữa dòng / đọc nghĩa hàm chứa (격식/문어 — classical critical idiom)",
-          "example": "비평가는 행간을 읽어 작가의 의도를 추적한다."
+          "meaning_en": "To read between the lines / read implied meaning. (formal / literary — a classical critical idiom)",
+          "example": "비평가는 행간을 읽어 작가의 의도를 추적한다.",
+          "example_en": "The critic reads between the lines to trace the author's intent."
         },
         {
           "idiom": "결을 살피다",
           "literal": "xem kỹ đường vân/sớ",
+          "literal_en": "examine the grain (gyeoreul salpida)",
           "meaning": "khảo sát kết cấu văn bản / đọc texture (격식/문어 — refined critical idiom)",
-          "example": "정독은 텍스트의 결을 살피는 작업이다."
+          "meaning_en": "To examine a text's texture / structure. (formal / literary — a refined critical idiom)",
+          "example": "정독은 텍스트의 결을 살피는 작업이다.",
+          "example_en": "Close reading is the work of examining a text's grain."
         },
         {
           "idiom": "단어가 무게를 지니다",
           "literal": "từ ngữ mang trọng lượng",
+          "literal_en": "a word carries weight (daneoga mugereul jinida)",
           "meaning": "từng từ có sức nặng nghĩa (격식/문어 — emphasis on word density)",
-          "example": "이상의 시는 단어 하나하나가 무게를 지닌다."
+          "meaning_en": "Each word carries semantic weight. (formal / literary — emphasis on word density)",
+          "example": "이상의 시는 단어 하나하나가 무게를 지닌다.",
+          "example_en": "In Yi Sang's poetry, every single word carries weight."
         },
         {
           "idiom": "과잉 해석을 경계하다",
           "literal": "cảnh giác với diễn giải thái quá",
+          "literal_en": "guard against over-interpretation (gwaing haeseogeul gyeonggyehada)",
           "meaning": "thận trọng tránh đọc thêm thắt (격식/문어 — methodological discipline)",
-          "example": "정독은 정밀하되 과잉 해석을 경계해야 한다."
+          "meaning_en": "To take care against reading too much in. (formal / literary — methodological discipline)",
+          "example": "정독은 정밀하되 과잉 해석을 경계해야 한다.",
+          "example_en": "Close reading must be precise yet guard against over-interpretation."
         }
       ],
       "cultural_notes_vi": "Korean literary critical tradition về close reading: (1) Pre-1960s — biographical / historical criticism dominant; (2) 1960s — 김현, 김치수, 김주연 등 '문학과지성' coterie introduces French structuralism + close reading discipline. 김현 (1942-1990) đặc biệt nhấn mạnh 정독 như nền tảng của mọi phê bình; (3) 1980s — 백낙청 / '창작과비평' coterie balance close reading với historical context (민족문학론); (4) 1990s-2000s — 황종연, 신형철 thế hệ tiếp tục close-reading tradition cập nhật theory; (5) Truyền thống Hàn coi balance là chuẩn — pure formalist close reading bị coi escapist; pure historicist bị coi reductionist; (6) Texts thường được dùng trong close reading exercises ở 국문학과: 이상 (modernism), 김동인 (naturalism), 염상섭 (realism), 박경리 (대하소설), 한강 (contemporary noir-poetic); (7) Đối với người Việt: close reading Korean text khó vì 한자어 + modernism syntax disruption + classical references. Strategy: read aloud first (phát hiện sound patterns), tra mọi từ không chắc, đánh dấu recurring images.",
@@ -510,26 +522,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "행간에 의미를 두다",
           "literal": "đặt nghĩa vào giữa dòng",
+          "literal_en": "place meaning between the lines (haenggane uimireul duda)",
           "meaning": "đặt ý nghĩa giữa các dòng / hide meaning in subtext (격식/문어)",
-          "example": "박완서는 행간에 의미를 두는 작가이다."
+          "meaning_en": "To place meaning in the subtext / hide meaning between the lines. (formal / literary)",
+          "example": "박완서는 행간에 의미를 두는 작가이다.",
+          "example_en": "Park Wan-suh is a writer who places meaning between the lines."
         },
         {
           "idiom": "두 의식을 겹치다",
           "literal": "chồng hai ý thức",
+          "literal_en": "overlay two consciousnesses (du uisigeul gyeopchida)",
           "meaning": "lồng ghép hai ý thức (FID effect, 격식/문어)",
-          "example": "자유간접화법은 두 의식을 겹치는 기법이다."
+          "meaning_en": "To layer two consciousnesses (the FID effect). (formal / literary)",
+          "example": "자유간접화법은 두 의식을 겹치는 기법이다.",
+          "example_en": "Free indirect discourse is a technique that overlays two consciousnesses."
         },
         {
           "idiom": "거리를 조절하다",
           "literal": "điều chỉnh khoảng cách",
+          "literal_en": "modulate the distance (georireul jojeolhada)",
           "meaning": "điều chỉnh khoảng cách tự sự (격식/문어)",
-          "example": "1인칭 회고체는 거리를 정교하게 조절한다."
+          "meaning_en": "To adjust narrative distance. (formal / literary)",
+          "example": "1인칭 회고체는 거리를 정교하게 조절한다.",
+          "example_en": "A first-person retrospective voice modulates the distance with precision."
         },
         {
           "idiom": "어조에 묻어 있다",
           "literal": "ngấm trong âm điệu",
+          "literal_en": "be steeped in the tone (eojoe mudeo itda)",
           "meaning": "ẩn trong tone (격식/문어 — atmospheric idiom)",
-          "example": "작가의 비판은 어조에 묻어 있다."
+          "meaning_en": "To be embedded in the tone. (formal / literary — an atmospheric idiom)",
+          "example": "작가의 비판은 어조에 묻어 있다.",
+          "example_en": "The author's critique is steeped in the tone."
         }
       ],
       "cultural_notes_vi": "Korean narrative voice tradition: (1) Classical 판소리 narration — omniscient narrator with shifting voices; (2) Late 19c — 신소설 introduces realist 3rd person; (3) 1920s — 김동인 「감자」 (1925) establishes naturalist 3rd-person limited; 이광수 「무정」 (1917) oscillates between omniscient và sentimental; (4) 1930s — 이상 introduces modernist FID, fragmented narration; 염상섭 sustains realist 3rd-person omniscient ('삼대'); (5) Post-war — 1인칭 회고체 dominant trong 박완서, 박경리, 김원일 (war memoirs); (6) Contemporary — 한강 ('소년이 온다') alternates 2인칭 직접 호명 với detached 3인칭; 김애란 1인칭 generation-defining voice; 정유정 thriller 3인칭 제한적 dominant. (7) 자유간접화법 less common in classical Korean literature than European modernism, but mature in 박완서 / 한강 / 김애란. (8) 신뢰할 수 없는 화자 — 정유정 「7년의 밤」 famous example.",
@@ -787,26 +811,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "상징의 그물을 짜다",
           "literal": "dệt lưới biểu tượng",
+          "literal_en": "weave a web of symbols (sangjingui geumureul jjada)",
           "meaning": "xây dựng mạng lưới biểu tượng (격식/문어 — image of constructive analysis)",
-          "example": "한강은 식물 모티프로 상징의 그물을 짠다."
+          "meaning_en": "To build a network of symbols. (formal / literary — an image of constructive analysis)",
+          "example": "한강은 식물 모티프로 상징의 그물을 짠다.",
+          "example_en": "Han Kang weaves a web of symbols through the plant motif."
         },
         {
           "idiom": "의미가 축적되다",
           "literal": "nghĩa tích lũy",
+          "literal_en": "meaning accumulates (uimiga chukjeokdoeda)",
           "meaning": "nghĩa dày lên qua lặp lại (격식/문어 — symbol's defining property)",
-          "example": "반복을 통해 의미가 축적되어야 진정한 상징이다."
+          "meaning_en": "Meaning thickens through repetition. (formal / literary — a symbol's defining property)",
+          "example": "반복을 통해 의미가 축적되어야 진정한 상징이다.",
+          "example_en": "Only when meaning accumulates through repetition is it a true symbol."
         },
         {
           "idiom": "비유의 네트워크",
           "literal": "mạng lưới tu từ",
+          "literal_en": "a network of figures (biyuui neteuwokeu)",
           "meaning": "mạng quan hệ giữa các tu từ (격식/문어 — modern critical idiom)",
-          "example": "텍스트의 의미는 단일 비유가 아니라 비유의 네트워크에서 생성된다."
+          "meaning_en": "A web of relations among figures of speech. (formal / literary — a modern critical idiom)",
+          "example": "텍스트의 의미는 단일 비유가 아니라 비유의 네트워크에서 생성된다.",
+          "example_en": "A text's meaning is generated not from a single figure but from a network of figures."
         },
         {
           "idiom": "단순한 알레고리를 넘어서다",
           "literal": "vượt qua ngụ ngôn đơn giản",
+          "literal_en": "go beyond simple allegory (dansunhan alregorireul neomeoseoda)",
           "meaning": "vượt khỏi mapping cố định / open beyond fixed allegory (격식/문어)",
-          "example": "이 작품은 단순한 알레고리를 넘어서는 다층적 상징을 보여 준다."
+          "meaning_en": "To move past a fixed mapping / open beyond fixed allegory. (formal / literary)",
+          "example": "이 작품은 단순한 알레고리를 넘어서는 다층적 상징을 보여 준다.",
+          "example_en": "This work shows a multi-layered symbolism that goes beyond simple allegory."
         }
       ],
       "cultural_notes_vi": "Korean symbolic tradition 비평사: (1) Pre-modern — Confucian / Buddhist symbolism dominant in 한문학 (Sino-Korean classical literature); 매난국죽 (plum-orchid-chrysanthemum-bamboo) gentleman virtue symbolism; (2) 1920-30s — modernist 이상, 김기림 introduce free symbolism unconstrained by allegory; (3) 1960-70s — 김현 distinguishes symbol from allegory consistently; (4) 1980s — 백낙청 reads symbols politically (민족문학론); (5) 2000s onwards — 한강, 김애란 use dense symbol networks; critical responses by 신형철, 황종연 develop network-based analysis; (6) Plant/vegetable symbolism strong tradition in Korean lit: from 김소월 「진달래꽃」 to 한강. Vietnamese learner: 한자어 root knowledge helps — 상징 (象徵) literally 'image-evidence', 은유 (隱喩) 'hidden-figure'; (7) 사자성어 với literary critical valence: 함의무궁 (含意無窮 — meaning is inexhaustible), 의재언외 (意在言外 — meaning lies beyond words) — both classical, used in 비평; (8) 한국 비평 ưa balance — pure formalist symbol reading bị xem là escapist; political-only reading bị xem là reductionist.",
@@ -1076,26 +1112,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "관습을 깨뜨리다",
           "literal": "đập vỡ ước lệ",
+          "literal_en": "break the convention (gwanseubeul kkaetteurida)",
           "meaning": "phá ước lệ thể loại (격식/문어 — basic critical phrasing)",
-          "example": "이 작품은 추리소설 관습을 깨뜨린다."
+          "meaning_en": "To break a genre convention. (formal / literary — basic critical phrasing)",
+          "example": "이 작품은 추리소설 관습을 깨뜨린다.",
+          "example_en": "This work breaks the conventions of the mystery novel."
         },
         {
           "idiom": "장르의 외피를 빌리다",
           "literal": "mượn vỏ ngoài thể loại",
+          "literal_en": "borrow the genre's outer skin (jangreuui oepireul bilrida)",
           "meaning": "vay mượn vỏ thể loại / khoác hình thức (격식/문어 — sophisticated)",
-          "example": "정유정은 추리소설의 외피를 빌려 사회 비판을 시도한다."
+          "meaning_en": "To borrow a genre's shell / don its form. (formal / literary — sophisticated)",
+          "example": "정유정은 추리소설의 외피를 빌려 사회 비판을 시도한다.",
+          "example_en": "Jeong You-jeong borrows the outer skin of the mystery novel to attempt social critique."
         },
         {
           "idiom": "메타화하다",
           "literal": "làm cho meta",
+          "literal_en": "meta-fictionalise (metahwahada)",
           "meaning": "siêu hư cấu hóa / make meta (격식/문어 — newer critical term)",
-          "example": "김영하는 장르 자체를 메타화하는 작가이다."
+          "meaning_en": "To turn into metafiction / make meta. (formal / literary — a newer critical term)",
+          "example": "김영하는 장르 자체를 메타화하는 작가이다.",
+          "example_en": "Kim Young-ha is a writer who meta-fictionalises genre itself."
         },
         {
           "idiom": "명명을 유보하다",
           "literal": "tạm hoãn việc đặt tên",
+          "literal_en": "withhold the naming (myeongmyeongeul yubohada)",
           "meaning": "không vội đặt nhãn (격식/문어 — sophisticated critical move)",
-          "example": "다중 장르 작품 앞에서는 명명을 유보하는 것이 안전하다."
+          "meaning_en": "To not rush to apply a label. (formal / literary — a sophisticated critical move)",
+          "example": "다중 장르 작품 앞에서는 명명을 유보하는 것이 안전하다.",
+          "example_en": "Before a multi-genre work it is safer to withhold the naming."
         }
       ],
       "cultural_notes_vi": "Korean genre tradition: (1) Pre-1900 — 한문학 (classical Sino-Korean) + 한글 소설 (vernacular novels: 홍길동전, 춘향전, 박씨전); (2) 1900-1945 — 신소설 → 근대소설 transition; genre clarifies into 단편/장편; (3) Post-war — 순문학 (pure literature) vs 대중문학 (popular literature) sharp divide; (4) 1990s onwards — divide collapses; 김영하, 정유정, 박민규, 김애란 freely cross 추리/SF/판타지/순문학; (5) Korean genre criticism: 황종연 「내향적 인간의 동성애」 examines genre subversion; 신형철 「몰락의 에티카」 reads contemporary genre work; (6) Korean literary scene now thrives on hybrid: thriller-literary (정유정), SF-literary (김초엽), memoir-fiction (김혜진); (7) Vietnamese learner note: '순문학' / 'pure literature' is a Korean cultural category — không giống 'literary fiction' phương Tây, 순문학 carries strong institutional weight (학회, 문학상, 학과). Genre mixing reads as modern, không 'normal'; (8) 사자성어 useful trong genre criticism: 환골탈태 (換骨奪胎 — bone-changing transformation) — used cho fundamental refashioning của older genre material.",
@@ -1365,26 +1413,34 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "원전의 결을 살리다",
           "literal": "giữ kết cấu nguyên bản",
+          "literal_en": "preserve the original's grain (wonjeonui gyeoreul salrida)",
           "meaning": "preserve the original's texture (격식/문어 — translation aesthetic)",
-          "example": "직역은 원전의 결을 살리지만 가독성은 떨어진다."
+          "example": "직역은 원전의 결을 살리지만 가독성은 떨어진다.",
+          "example_en": "Literal translation preserves the original's grain but loses readability."
         },
         {
           "idiom": "등가가 성립하다",
           "literal": "tương đương được thiết lập",
+          "literal_en": "equivalence holds (deunggaga seongripada)",
           "meaning": "equivalence holds — usually negated in C2 critique (격식/문어)",
-          "example": "두 언어 사이에 절대적 등가는 성립하지 않는다."
+          "example": "두 언어 사이에 절대적 등가는 성립하지 않는다.",
+          "example_en": "Absolute equivalence does not hold between two languages."
         },
         {
           "idiom": "손실과 획득을 추적하다",
           "literal": "truy vết mất và được",
+          "literal_en": "track losses and gains (sonsilgwa hoekdeugeul chujeokada)",
           "meaning": "track losses and gains — translation criticism standard (격식/문어)",
-          "example": "번역 비교는 손실과 획득을 추적하는 작업이다."
+          "example": "번역 비교는 손실과 획득을 추적하는 작업이다.",
+          "example_en": "Translation comparison is the work of tracking losses and gains."
         },
         {
           "idiom": "외국어 효과를 보존하다",
           "literal": "bảo toàn hiệu ứng ngoại ngữ",
+          "literal_en": "preserve the foreignisation effect (oegugeo hyogwareul bojonhada)",
           "meaning": "preserve foreignization effect — Venuti-derived (격식/문어)",
-          "example": "외국어 효과를 보존할 것인가 자연화할 것인가는 번역자의 선택이다."
+          "example": "외국어 효과를 보존할 것인가 자연화할 것인가는 번역자의 선택이다.",
+          "example_en": "Whether to preserve the foreignisation effect or naturalise it is the translator's choice."
         }
       ],
       "cultural_notes_vi": "Korean translation studies (번역학): (1) 1980s — Korean academia begins systematic translation studies, influenced by German (Wolfram Wilss), French (Antoine Berman) traditions; (2) 1990s — debate về 한자어 retention vs 고유어 modernization in literary translation; (3) 2000s — 영문학과 / 불문학과 graduate programs include translation theory; (4) Major translators: 안정효 (English-Korean classics), 김화영 (French — Camus, Saint-Exupéry); (5) Korean-to-foreign translation: KLTI (Korean Literature Translation Institute) supports outbound translation; major translators 데보라 스미스 (English), 권은희 (English); (6) 한강 'The Vegetarian' (Smith trans.) won 2016 Man Booker International — translation controversy ('Smith too domesticating') very real, well-documented; Han Kang herself defended Smith publicly; (7) Vietnamese learner: 한자어 root knowledge useful — 충실성 (忠實性) literally 'loyalty-trueness', 가독성 (可讀性) 'can-read-property'; (8) 번역학 in Korea increasingly empirical — corpus-based translation analysis common in graduate work; (9) Reference: 김욱동 「번역과 한국의 근대」 (Korean modernity through translation), Venuti 「번역가의 보이지 않는 손」 Korean trans.",
@@ -1642,26 +1698,34 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "작가의 흔적을 추적하다",
           "literal": "truy vết tác giả",
+          "literal_en": "track the author's traces (jakgaui heunjeogeul chujeokada)",
           "meaning": "track author's traces in text — legitimate biographical-textual move (격식/문어)",
-          "example": "전기 정보로 작가의 흔적을 텍스트에서 추적할 수 있다."
+          "example": "전기 정보로 작가의 흔적을 텍스트에서 추적할 수 있다.",
+          "example_en": "Biographical information lets one track the author's traces in the text."
         },
         {
           "idiom": "텍스트로 환원하다",
           "literal": "quy giảm về văn bản",
+          "literal_en": "reduce to the text (tekseuteuro hwanwonhada)",
           "meaning": "reduce to text only / pure formalism (격식/문어 — often used critically)",
-          "example": "모든 의미를 텍스트로 환원하는 것은 컨텍스트의 풍부함을 잃는다."
+          "example": "모든 의미를 텍스트로 환원하는 것은 컨텍스트의 풍부함을 잃는다.",
+          "example_en": "Reducing all meaning to the text loses the richness of context."
         },
         {
           "idiom": "컨텍스트 없이 의미가 해명되지 않다",
           "literal": "không có bối cảnh, nghĩa không được làm sáng",
+          "literal_en": "meaning is not explicable without context (keontekseuteu eopsi uimiga haemyeongdoeji anta)",
           "meaning": "meaning not explicable without context (격식/문어 — historicist position)",
-          "example": "식민지 문학에서는 컨텍스트 없이 의미가 충분히 해명되지 않는다."
+          "example": "식민지 문학에서는 컨텍스트 없이 의미가 충분히 해명되지 않는다.",
+          "example_en": "In colonial-era literature, meaning is not adequately explicable without context."
         },
         {
           "idiom": "비평 방법이 진동하다",
           "literal": "phương pháp phê bình dao động",
+          "literal_en": "the critical method oscillates (bipyeong bangbeobi jindonghada)",
           "meaning": "critical method oscillates between approaches (격식/문어 — modern synthesis)",
-          "example": "성숙한 비평은 텍스트와 컨텍스트 사이에서 진동한다."
+          "example": "성숙한 비평은 텍스트와 컨텍스트 사이에서 진동한다.",
+          "example_en": "Mature criticism oscillates between text and context."
         }
       ],
       "cultural_notes_vi": "Korean critical tradition về 전기 vs 텍스트: (1) Pre-1960s — biographical criticism dominant in Korean academia, often celebratory ('great writer = great life'); (2) 1960s-70s — 김현, 김치수, 김주연 introduce New Criticism via French structuralism + American formalism; emphasizes textual autonomy; (3) 1980s — 백낙청 / 민족문학론 reintroduces historical context for political reasons (colonial-postcolonial reading); (4) 1990s — Barthes' '작가의 죽음' translated and debated; Korean reception nuanced (not as enthusiastic as French); (5) 2000s — synthesis: most contemporary Korean criticism balances textual analysis với historical context, particularly for colonial-era and partition-era works; (6) Korean colonial literature (1910-1945) — almost universally requires historical context due to censorship; key works: 이상 (modernist), 김유정 (rural realism), 채만식 ('Peace under Heaven' satire), 박태원 (modernist Seoul vignettes); (7) 사자성어 useful: 지인논세 (知人論世 — know person, judge era — classical Confucian critical principle, paradoxically supports biographical reading); (8) Vietnamese learner note: Việt Nam similarly torn — Marxist tradition emphasized social context, post-Đổi Mới increases textual analysis. Korean và Vietnamese debates parallel.",
@@ -1931,26 +1995,37 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "시대마다 다르게 읽히다",
           "literal": "đọc khác nhau qua các thời",
+          "literal_en": "be read differently in each era (sidaemada dareuge ilkida)",
           "meaning": "đọc khác nhau qua từng thời đại — core insight reception aesthetics (격식/문어)",
-          "example": "「토지」는 시대마다 다르게 읽혀 왔다."
+          "meaning_en": "To be read differently across eras — the core insight of reception aesthetics. (formal / literary)",
+          "example": "「토지」는 시대마다 다르게 읽혀 왔다.",
+          "example_en": "「Toji」 has been read differently in each era."
         },
         {
           "idiom": "정전을 형성하다",
           "literal": "hình thành kinh điển",
+          "literal_en": "form the canon (jeongjeoneul hyeongseonghada)",
           "meaning": "hình thành / build the canon (격식/문어 — institutional process)",
-          "example": "한국 현대문학 정전을 형성하는 과정에서 「토지」는 핵심적 위치를 차지했다."
+          "meaning_en": "To form / build the canon. (formal / literary — an institutional process)",
+          "example": "한국 현대문학 정전을 형성하는 과정에서 「토지」는 핵심적 위치를 차지했다.",
+          "example_en": "In forming the canon of modern Korean literature, 「Toji」 held a central place."
         },
         {
           "idiom": "비평사적 침묵",
           "literal": "im lặng phê bình sử",
+          "literal_en": "a critical-history silence (bipyeongsajeok chimmuk)",
           "meaning": "thời kỳ phê bình bỏ qua một tác phẩm (격식/문어)",
-          "example": "1996-2005년 「토지」에 대한 비평사적 침묵이 있었다."
+          "meaning_en": "A period when criticism passes a work over. (formal / literary)",
+          "example": "1996-2005년 「토지」에 대한 비평사적 침묵이 있었다.",
+          "example_en": "From 1996–2005 there was a critical-history silence around 「Toji」."
         },
         {
           "idiom": "재발견하다",
           "literal": "tái phát hiện",
+          "literal_en": "rediscover (jaebalgyeonhada)",
           "meaning": "rediscover — typical reception-history move (격식/문어)",
-          "example": "2010년 이후 페미니즘 비평이 박완서를 재발견하였다."
+          "example": "2010년 이후 페미니즘 비평이 박완서를 재발견하였다.",
+          "example_en": "After 2010, feminist criticism rediscovered Park Wan-suh."
         }
       ],
       "cultural_notes_vi": "Korean reception history tradition: (1) 수용미학 (Iser, Jauss) introduced 1980s via 김주연, 김현; (2) Korean 정전 formation: 1980-90s critical effort to define 한국 현대문학 canon; debated by 황종연 ('canon as institutional'); (3) 박경리 「토지」 reception is exemplary case study — well-documented across 4 decades; (4) Major reception history projects: 「창작과비평」 50주년 회고 (2016), 「문학과지성」 50주년 (2020); (5) Database resources: RISS (riss.kr), KCI (kci.go.kr) for academic reception; KISS (한국 학술지 인용 색인) for citation analysis; (6) Vietnamese learner: reception history particularly rich field for Korean literature because rapid modernization compressed many reception phases into one century — same novel can have totally different meanings in 1970s vs 2020s; (7) Reception of Korean lit abroad: 한강 'Vegetarian' Booker 2016 transformed Korean lit's global reception almost overnight — case study in cross-cultural reception; (8) Korean institutional reception markers: 문학상 (literary prizes — 이상문학상, 동인문학상), 교과서 등재 (textbook inclusion), 학회 발표 (conference presentations) all systematic indicators.",
@@ -2226,26 +2301,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "이론을 쇼핑하다",
           "literal": "shopping lý thuyết",
+          "literal_en": "theory-shop (ironeul syopinghada)",
           "meaning": "chọn lý thuyết tùy hứng / theory-shop — pejorative (격식/구어 mixed)",
-          "example": "이론을 쇼핑하듯 갈아입는 비평은 깊이를 결여한다."
+          "meaning_en": "To pick a theory on a whim / theory-shopping — pejorative. (formal / spoken, mixed)",
+          "example": "이론을 쇼핑하듯 갈아입는 비평은 깊이를 결여한다.",
+          "example_en": "Criticism that changes theories as if theory-shopping lacks depth."
         },
         {
           "idiom": "텍스트가 응답하다",
           "literal": "văn bản đáp lại",
+          "literal_en": "the text responds (tekseuteuga eungdapada)",
           "meaning": "văn bản đáp lại / text responds to theory (격식/문어 — methodological)",
-          "example": "이론 선택의 첫 단계는 텍스트가 응답하는지를 묻는 것이다."
+          "meaning_en": "The text responds (to a theory). (formal / literary — methodological)",
+          "example": "이론 선택의 첫 단계는 텍스트가 응답하는지를 묻는 것이다.",
+          "example_en": "The first step in choosing a theory is to ask whether the text responds."
         },
         {
           "idiom": "이론을 강요하다",
           "literal": "ép lý thuyết",
+          "literal_en": "force a theory (ironeul gangyohada)",
           "meaning": "ép lý thuyết lên văn bản — pejorative (격식/문어)",
-          "example": "텍스트의 저항을 무시하고 이론을 강요하면 분석은 실패한다."
+          "meaning_en": "To impose a theory on a text — pejorative. (formal / literary)",
+          "example": "텍스트의 저항을 무시하고 이론을 강요하면 분석은 실패한다.",
+          "example_en": "If you ignore the text's resistance and force a theory, the analysis fails."
         },
         {
           "idiom": "보이는 것과 가려지는 것",
           "literal": "cái thấy và cái bị che",
+          "literal_en": "what is shown and what is hidden (boineun geotgwa garyeojineun geot)",
           "meaning": "phần được làm hiện và phần bị che — methodological awareness (격식/문어)",
-          "example": "모든 관점에는 보이는 것과 가려지는 것이 있다."
+          "meaning_en": "What a lens makes visible and what it conceals — methodological awareness. (formal / literary)",
+          "example": "모든 관점에는 보이는 것과 가려지는 것이 있다.",
+          "example_en": "Every perspective has what it shows and what it hides."
         }
       ],
       "cultural_notes_vi": "Korean theoretical reception: (1) 1980s — Marxism (đặc biệt Lukács, Goldmann) dominant in literary criticism, allied với 민족문학론 ('national literature theory'); (2) Late 1980s — feminism arrives via 영문학과 (English-lit dept), 정희진 và others; (3) 1990s — post-structuralism (Barthes, Foucault, Derrida) translated; reception cooler than France/US; (4) 2000s — postcolonialism (Spivak, Bhabha) heavily debated re 식민지 vs 해방 frame; (5) 2010s — ecocriticism rising với 한강, 김초엽 generation; trauma theory deepens với 5·18 / Sewol commemoration; (6) Korean theoretical scene: prefer mid-range theory over grand theory — Foucault, Bourdieu more cited than Heidegger / Hegel; (7) 사자성어: 격물치지 (格物致知 — investigate things to gain knowledge — Confucian principle, oft-invoked in critical method debates); (8) Vietnamese learner: Korean theoretical scene similar to Vietnamese in 1990s onwards reception of post-structuralism; differences: Korea heavier in feminism, Vietnam heavier in Marxist literary tradition. Korean and Vietnamese share complicated relations với postcolonial frame because of Cold War alignments.",
@@ -2515,26 +2602,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "화두를 던지다",
           "literal": "ném chủ đề chính",
+          "literal_en": "throw the keynote (hwadureul deonjida)",
           "meaning": "đặt đề tài chính / opening keynote (격식/문어 — Buddhist-derived term)",
-          "example": "도입부에서 화두를 던지면 본론의 방향이 분명해진다."
+          "meaning_en": "To pose the central theme / opening keynote. (formal / literary — a Buddhist-derived term)",
+          "example": "도입부에서 화두를 던지면 본론의 방향이 분명해진다.",
+          "example_en": "Throwing the keynote in the opening makes the body's direction clear."
         },
         {
           "idiom": "시선을 사로잡다",
           "literal": "bắt giữ ánh nhìn",
+          "literal_en": "seize the gaze (siseoneul sarojapda)",
           "meaning": "nắm bắt sự chú ý — opening's primary function (격식/문어)",
-          "example": "첫 문장이 시선을 사로잡지 못하면 독자는 다음 문장으로 넘어가지 않는다."
+          "meaning_en": "To capture attention — the opening's primary function. (formal / literary)",
+          "example": "첫 문장이 시선을 사로잡지 못하면 독자는 다음 문장으로 넘어가지 않는다.",
+          "example_en": "If the first sentence does not seize the gaze, the reader does not move to the next."
         },
         {
           "idiom": "결론을 미리 누설하다",
           "literal": "tiết lộ kết luận trước",
+          "literal_en": "reveal the conclusion prematurely (gyeolroneul miri nuseolhada)",
           "meaning": "tiết lộ kết luận sớm — pejorative (격식/문어)",
-          "example": "도입부에서 결론을 미리 누설하면 본론의 긴장감이 사라진다."
+          "meaning_en": "To leak the conclusion early — pejorative. (formal / literary)",
+          "example": "도입부에서 결론을 미리 누설하면 본론의 긴장감이 사라진다.",
+          "example_en": "Revealing the conclusion prematurely in the opening drains the body's tension."
         },
         {
           "idiom": "도입부가 본론을 예고하다",
           "literal": "mở đầu báo trước thân bài",
+          "literal_en": "the opening foreshadows the body (doipbuga bolloneul yegohada)",
           "meaning": "mở đầu hé báo thân bài / foreshadow body (격식/문어 — structural advice)",
-          "example": "성공한 도입부는 본론을 예고하되 모두 보여 주지 않는다."
+          "meaning_en": "The opening hints at the body without showing all of it. (formal / literary — structural advice)",
+          "example": "성공한 도입부는 본론을 예고하되 모두 보여 주지 않는다.",
+          "example_en": "A successful opening foreshadows the body without revealing all of it."
         }
       ],
       "cultural_notes_vi": "Korean critical essay opening conventions: (1) Korean academic 비평 traditionally open formally — author + work overview. Modern 비평 (post-1960s 김현 era) introduces more inventive openings; (2) Three opening styles dominant in contemporary Korean literary criticism: (a) 화두 던지기 (throwing keynote concept), (b) 일화 도입 (anecdote), (c) 문제 제기 (problem statement); (3) 김현 famous for short, incisive openings — often single sentence 'X란 ~다' definition challenge; (4) 신형철 known for personal-essay-style openings borrowing creative writing tradition; (5) 학회 발표 (academic conference) papers often more formal opening — title + author + research question; literary 평론 (review essays in 「문학동네」, 「창작과비평」) more flexible; (6) Length conventions: short essay (1500-2000자) = opening 10-15%; long essay (5000자+) = opening 5-10%; (7) Vietnamese learner: opening conventions differ across Korean contexts — academic vs literary essay. Confirm target venue before drafting opening; (8) Korean critical culture appreciates 명문 (well-crafted prose) — opening sentence often anthologized, quoted, taught. 김현의 첫 문장 famous in Korean criticism circles.",
@@ -2816,26 +2915,38 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "통설을 흔들다",
           "literal": "lay cách đọc thông thường",
+          "literal_en": "shake the received view (tongseoreul heundeulda)",
           "meaning": "lay nền cách đọc đã định / shake received wisdom — moderate critical move (격식/문어)",
-          "example": "본 비평은 통설을 흔들되 부정하지는 않는다."
+          "meaning_en": "To unsettle the established reading / shake received wisdom — a moderate critical move. (formal / literary)",
+          "example": "본 비평은 통설을 흔들되 부정하지는 않는다.",
+          "example_en": "This critique shakes the received view without negating it."
         },
         {
           "idiom": "통설이 보지 못한 것",
           "literal": "cái cách đọc thông thường không thấy",
+          "literal_en": "what the received view cannot see (tongseori boji motan geot)",
           "meaning": "phần received wisdom không thấy / what received wisdom can't see (격식/문어)",
-          "example": "본 해석의 가치는 통설이 보지 못한 것을 드러내는 데 있다."
+          "meaning_en": "The part received wisdom does not see. (formal / literary)",
+          "example": "본 해석의 가치는 통설이 보지 못한 것을 드러내는 데 있다.",
+          "example_en": "The value of this reading lies in revealing what the received view cannot see."
         },
         {
           "idiom": "자기 약화에 빠지다",
           "literal": "rơi vào tự suy yếu",
+          "literal_en": "fall into self-weakening (jagi yakwae ppajida)",
           "meaning": "rơi vào tự suy yếu / over-hedging — pejorative (격식/문어)",
-          "example": "옹호하는 비평이 자기 약화에 빠지면 설득력이 사라진다."
+          "meaning_en": "To fall into over-hedging — pejorative. (formal / literary)",
+          "example": "옹호하는 비평이 자기 약화에 빠지면 설득력이 사라진다.",
+          "example_en": "If an advocating critique falls into self-weakening, its persuasiveness disappears."
         },
         {
           "idiom": "텍스트적 잉여",
           "literal": "phần dư của văn bản",
+          "literal_en": "textual surplus (tekseuteujeok ingyeo)",
           "meaning": "phần văn bản cách đọc cũ không giải thích / textual surplus — basis for new reading (격식/문어)",
-          "example": "텍스트적 잉여가 있어야 새 해석이 정당화된다."
+          "meaning_en": "The part of the text the old reading cannot explain / textual surplus — the basis for a new reading. (formal / literary)",
+          "example": "텍스트적 잉여가 있어야 새 해석이 정당화된다.",
+          "example_en": "There must be a textual surplus for a new interpretation to be justified."
         }
       ],
       "cultural_notes_vi": "Korean academic culture and controversial readings: (1) Korean academia generally CONSERVATIVE với new readings — junior scholar challenging senior reading carries social risk; (2) Strategic moves: (a) frame as 'extension' not 'refutation'; (b) cite supportive senior in field; (c) propose as 'one of multiple valid readings'; (3) Korean academic genres for controversial reading: 학위 논문 (most permissive — full development possible), 학술지 논문 (compressed but rigorous), 문학 평론 (most flexible — popular venue); (4) 서평 (book review) limited venue cho controversial reading — too short; (5) 사후 인정 patterns — Korean criticism shows several cases where controversial readings of period X gained acceptance period X+10 (예: feminist readings of 박경리 1980s → 2000s acceptance); (6) 학계 정치 — be aware of school affiliations: 문학과지성 group vs 창작과비평 group historically had different readings of same works; (7) International route — sometimes Korean controversial readings gain traction first in Korean studies abroad, then return to Korean academia; (8) Vietnamese learner: similar dynamics in Vietnamese academia — controversial reading risky for junior scholar but possible với strategic framing. Korean và Vietnamese share: emphasis on consensus / 학계 hierarchy makes radical individual readings socially costly.",
@@ -3025,14 +3136,20 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "단색화 (單色畫 / Dansaekhwa)",
           "literal": "Tranh đơn sắc",
+          "literal_en": "monochrome painting",
           "meaning": "Trường phái hội họa Hàn Quốc 1970s: tranh đơn sắc, lặp đi lặp lại cử chỉ vẽ, nhấn mạnh quá trình và vật liệu — Park Seo-Bo, Ha Chong-Hyun, Yun Hyong-Keun.",
-          "example": "단색화는 한국 현대미술이 국제적 담론에 진입한 최초의 사례로 평가되지만, 그 '한국성'을 둘러싼 논쟁은 현재진행형이다."
+          "meaning_en": "A 1970s Korean painting school: monochrome canvases, repeated painterly gesture, an emphasis on process and material — Park Seo-Bo, Ha Chong-Hyun, Yun Hyong-Keun.",
+          "example": "단색화는 한국 현대미술이 국제적 담론에 진입한 최초의 사례로 평가되지만, 그 '한국성'을 둘러싼 논쟁은 현재진행형이다.",
+          "example_en": "Dansaekhwa is regarded as the first case of Korean contemporary art entering international discourse, though the debate over its 'Koreanness' is ongoing."
         },
         {
           "idiom": "민중미술 (民衆美術)",
           "literal": "Mỹ thuật dân chúng",
+          "literal_en": "people's art (minjungmisul (民衆美術))",
           "meaning": "Phong trào mỹ thuật chính trị 1980s Hàn, gắn với phong trào dân chủ hóa. Phê phán chủ nghĩa hình thức, nhấn mạnh nội dung hiện thực và sự tham gia của quần chúng.",
-          "example": "민중미술은 '예술의 사회적 책임'이라는 물음을 한국 현대미술의 중심 의제로 삼았다."
+          "meaning_en": "A 1980s Korean political-art movement tied to the democratisation movement. It critiqued formalism and stressed realist content and mass participation.",
+          "example": "민중미술은 '예술의 사회적 책임'이라는 물음을 한국 현대미술의 중심 의제로 삼았다.",
+          "example_en": "Minjung art made the question of 'art's social responsibility' a central agenda of Korean contemporary art."
         }
       ],
       "cultural_notes_vi": "PHÊ BÌNH MỸ THUẬT HÀN:\n(1) DANSAEKHWA (1970s): Park Seo-Bo, Ha Chong-Hyun. Tranh đơn sắc + lặp cử chỉ. Được Joan Kee (2013) đưa vào canon toàn cầu.\n(2) MINJUNG ART (1980s): mỹ thuật dân chúng — gắn với phong trào dân chủ hóa Gwangju 1980. Phê phán formalism. Oh Yoon, Lim Ok-sang.\n(3) LEE UFAN (1936-): người Hàn-Nhật, triết gia và họa sĩ, lý thuyết gia Mono-ha. Tác phẩm tối giản, nhấn mạnh 'quan hệ'.\n(4) ĐƯƠNG ĐẠI: Yang Haegue (sắp đặt), Lee Bul (cyborg feminism), Do Ho Suh (nhà ở / di dân).\n(5) PHÊ BÌNH GIA: Oh Kwang-su (lịch sử), Yoon Nan-ji (nữ quyền), Kim Hong-hee (bảo tàng).",
@@ -3216,14 +3333,20 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "봉준호의 프레임",
           "literal": "Khung hình của Bong Joon-ho",
+          "literal_en": "Bong Joon-ho's frame (bongjunhoui peureim)",
           "meaning": "Phân tích lớp học qua không gian — Bong Joon-ho nổi tiếng với việc dùng kiến trúc (thẳng đứng / ngầm) để biểu đạt giai cấp.",
-          "example": "봉준호의 프레임은 계급을 '보이게' 만드는 것이 아니라, 계급이 어떻게 '보이지 않게' 작동하는지를 드러낸다."
+          "meaning_en": "Analysing class through space — Bong Joon-ho is known for using architecture (vertical / underground) to express class.",
+          "example": "봉준호의 프레임은 계급을 '보이게' 만드는 것이 아니라, 계급이 어떻게 '보이지 않게' 작동하는지를 드러낸다.",
+          "example_en": "Bong Joon-ho's frame does not make class 'visible' but reveals how class operates 'invisibly'."
         },
         {
           "idiom": "한국형 블록버스터 (Hangukhyeong beullokbeoseuteo)",
           "literal": "Blockbuster kiểu Hàn",
+          "literal_en": "the Korean-style blockbuster",
           "meaning": "Term chỉ các phim thương mại quy mô lớn của Hàn từ 1990s (Shiri, 1999) kết hợp Hollywood spectacle với sentiment Hàn. Thường mang yếu tố 민족주의.",
-          "example": "한국형 블록버스터는 할리우드의 공식을 차용하면서도, 그 서사적 정서에서는 철저히 한국적이다."
+          "meaning_en": "A term for Korea's large-scale commercial films since the 1990s (Shiri, 1999) blending Hollywood spectacle with Korean sentiment, often carrying a nationalist element.",
+          "example": "한국형 블록버스터는 할리우드의 공식을 차용하면서도, 그 서사적 정서에서는 철저히 한국적이다.",
+          "example_en": "The Korean-style blockbuster borrows Hollywood's formula yet remains thoroughly Korean in its narrative sentiment."
         }
       ],
       "cultural_notes_vi": "PHÊ BÌNH ĐIỆN ẢNH HÀN:\n(1) KIỂM DUYỆT (1961-1987): dưới Park Chung-hee và Chun Doo-hwan, phim bị kiểm duyệt gắt gao. Phê bình cũng bị giới hạn.\n(2) NEW KOREAN CINEMA (1990s): sau dân chủ hóa 1987, bùng nổ sáng tạo. Park Chan-wook, Bong Joon-ho, Kim Ki-duk, Hong Sang-soo, Lee Chang-dong.\n(3) CINE21 (1995-): tạp chí điện ảnh hàng đầu — nơi phê bình báo chí chuyên nghiệp phát triển.\n(4) TOÀN CẦU HÓA: Parasite (2019) giành Oscar — đưa phê bình điện ảnh Hàn ra toàn cầu.\n(5) ĐẶC THÙ: Phê bình Hàn không dùng từ vựng nặng lý thuyết Âu-Mỹ như Pháp. Thiên về phân tích narrative và 사회적 맥락 hơn là hình thức thuần túy.",
@@ -3385,8 +3508,11 @@ export const lessons: KoreanLesson[] =     [
         {
           "idiom": "촛불혁명 (Candlelight Revolution)",
           "literal": "Cách mạng Nến",
+          "literal_en": "the Candlelight Revolution",
           "meaning": "Cuộc biểu tình toàn quốc 2016-2017 dẫn đến luận tội Park Geun-hye. Từ này đã trở thành mốc lịch sử trong chính trị Hàn và xuất hiện dày đặc trong diễn văn chính trị hậu-2017.",
-          "example": "촛불혁명 이후, '국민'이라는 말은 더 이상 통치의 대상이 아니라, 통치를 심판하는 주권자를 의미하게 되었다."
+          "meaning_en": "The nationwide 2016–2017 protests that led to Park Geun-hye's impeachment. The term has become a historical marker in Korean politics and appears densely in post-2017 political discourse.",
+          "example": "촛불혁명 이후, '국민'이라는 말은 더 이상 통치의 대상이 아니라, 통치를 심판하는 주권자를 의미하게 되었다.",
+          "example_en": "After the Candlelight Revolution, the word '국민' (the people) no longer means the object of governance but the sovereign who judges it."
         }
       ],
       "cultural_notes_vi": "DIỄN NGÔN CHÍNH TRỊ HÀN:\n(1) KIM DAE-JUNG (1998-2003): 햇볕정책 — đại từ '형제' thay '적'. Nobel Hòa bình 2000.\n(2) ROH MOO-HYUN (2003-2008): phong cách 'người bình thường', 자유주의. '권력의 국민 환원'.\n(3) PARK GEUN-HYE (2013-2017): câu ngắn, quyết đoán, ít tu từ. Bị luận tội 2017.\n(4) MOON JAE-IN (2017-2022): câu dài, phức hợp, nhấn mạnh 대화와 타협. Cựu luật sư nhân quyền.\n(5) PHÂN CỰC: 진보 (민주당 계열) vs 보수 (국민의힘 계열) — hai hệ từ vựng chính trị gần như không giao nhau.",
