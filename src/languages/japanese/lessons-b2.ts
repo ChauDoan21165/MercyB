@@ -834,31 +834,49 @@ export const lessons: JapaneseLesson[] = [
       "Sếp đề nghị tăng lương 20% và đổi phòng ban để giữ bạn lại (慰留). Hãy từ chối khéo léo trong 3 lượt nói, vẫn giữ thiện cảm — dùng cụm 'お気持ちはありがたく頂戴いたしますが、この件は譲ることができません'. Không để cuộc thương lượng kéo dài quá 3 lượt.",
       "Bạn muốn nghỉ trong 1 tháng, sếp xin 3 tháng để tìm người thay thế. Thương lượng và đi đến thỏa thuận 2 tháng. Kết thúc bằng cam kết 'tatsu tori ato wo nigosazu' — bàn giao sạch sẽ, viết tài liệu hướng dẫn, đào tạo người kế nhiệm."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself resigning in order to return to Vietnam to care for your aging parents. Your Japanese boss asks why — explain politely, using kenjougo (申し上げる, 存じる, させていただく). You MUST open with a phrase requesting their time; do not bluntly say 'I'm quitting'.",
+      "Your boss offers a 20% raise and a department change to keep you (慰留). Decline gracefully within 3 turns of speech while keeping the goodwill — use the phrase 'お気持ちはありがたく頂戴いたしますが、この件は譲ることができません'. Do not let the negotiation stretch past 3 turns.",
+      "You want to leave in 1 month; your boss asks for 3 months to find a replacement. Negotiate and reach a 2-month agreement. Close with a commitment to 'tatsu tori ato wo nigosazu' — a clean handover: write a guidance document and train your successor."
+    ],
     "register_notes": "Tiếng Nhật có ba tầng kính ngữ (敬語 keigo) — trong cuộc nói chuyện xin nghỉ này BẮT BUỘC dùng cả ba, và lẫn lộn sẽ làm hỏng cuộc nói chuyện trước cả khi nội dung được lắng nghe. (1) Teineigo (丁寧語) là dạng lịch sự cơ bản — kết câu bằng です/ます. Đây là sàn tối thiểu khi nói với sếp, không bao giờ tụt xuống plain form. (2) Sonkeigo (尊敬語) là dạng tôn kính dùng cho HÀNH ĐỘNG CỦA SẾP — nâng người nghe lên: いらっしゃる (đến/có mặt), おっしゃる (nói), ご検討ください (xin xem xét), なさる (làm). KHÔNG dùng sonkeigo cho hành động của chính mình — đó là tự đề cao, rất khiếm nhã. (3) Kenjougo (謙譲語) là dạng khiêm nhường dùng cho HÀNH ĐỘNG CỦA MÌNH — hạ mình xuống: 申し上げる (thưa/nói), 伺う (đến/hỏi), させていただく (xin được làm), 存じる (biết/nghĩ), 頂戴いたす (xin nhận). KHÔNG dùng kenjougo cho sếp — đó là hạ thấp người nghe. Nguyên tắc: teineigo làm nền, sonkeigo phủ lên hành động của sếp, kenjougo phủ lên hành động của mình. Khi xin nghỉ việc, cụm chuẩn 'させていただきたく存じます' là kenjougo bậc cao — gộp させていただく (xin được) với 存じる (nghĩ/biết khiêm nhường) — sếp Nhật mong đợi cụm này từ một nhân viên có ý thức trách nhiệm. Cụm 'お時間をいただけませんでしょうか' chồng ba lớp lịch sự (いただける + ません + でしょうか) để báo hiệu bạn biết mình đang làm phiền — đây là cách mở đầu chuẩn cho mọi cuộc nói chuyện khó.",
+    "register_notes_en": "Japanese has three tiers of honorific speech (敬語 keigo) — in this resignation conversation you MUST use all three, and mixing them up wrecks the conversation before the content is even heard. (1) Teineigo (丁寧語) is the basic polite form — sentences end in です/ます. This is the minimum floor when speaking to your boss; never drop to plain form. (2) Sonkeigo (尊敬語) is the respectful form used for YOUR BOSS'S ACTIONS — it elevates the listener: いらっしゃる (to come/be present), おっしゃる (to say), ご検討ください (please consider), なさる (to do). Do NOT use sonkeigo for your own actions — that is self-elevation and very rude. (3) Kenjougo (謙譲語) is the humble form used for YOUR OWN ACTIONS — it lowers yourself: 申し上げる (to say/state), 伺う (to come/ask), させていただく (to be allowed to do), 存じる (to know/think), 頂戴いたす (to receive). Do NOT use kenjougo for your boss — that lowers the listener. The principle: teineigo as the base, sonkeigo layered onto the boss's actions, kenjougo layered onto your own. When resigning, the standard phrase 'させていただきたく存じます' is high-level kenjougo — it fuses させていただく (to be allowed to) with 存じる (to humbly think/know) — and a Japanese boss expects this phrase from an employee with a sense of responsibility. The phrase 'お時間をいただけませんでしょうか' stacks three layers of politeness (いただける + ません + でしょうか) to signal that you know you are imposing — this is the standard opening for any difficult conversation.",
     "idiom_glosses": [
       {
         "idiom": "腹を割って話す",
         "literal": "Mổ bụng ra mà nói chuyện",
+        "literal_en": "to slice your belly open and talk (hara o watte hanasu)",
         "meaning": "Nói chuyện thẳng thắn, không che giấu, để mọi suy nghĩ thật lên bàn. Trong cuộc xin nghỉ, sếp dùng cụm này khi mời bạn nói thật lý do — không dùng để mở lời mà dùng để PHẢN ỨNG khi cảm thấy bạn đang giấu điều gì.",
-        "example": "うちの会社で何か問題でも？腹を割って話してください。"
+        "meaning_en": "To speak frankly, hiding nothing, putting every real thought on the table. In a resignation conversation, the boss uses this phrase to invite you to tell the real reason — not as an opener but as a REACTION when they feel you are concealing something.",
+        "example": "うちの会社で何か問題でも？腹を割って話してください。",
+        "example_en": "Is there some problem at our company? Please speak frankly and hold nothing back."
       },
       {
         "idiom": "石の上にも三年",
         "literal": "Trên hòn đá cũng phải ba năm",
+        "literal_en": "three years even on a stone (ishi no ue ni mo san-nen)",
         "meaning": "Kiên trì sẽ được đền đáp — ngồi trên đá lạnh ba năm thì đá cũng ấm. Dùng để thừa nhận quãng thời gian khó khăn nhưng có ý nghĩa, phù hợp khi nói lời cảm ơn về thời gian làm việc đã qua.",
-        "example": "三年間お世話になりました。石の上にも三年と申しますが、本当にいい経験をさせていただきました。"
+        "meaning_en": "Perseverance is rewarded — sit on a cold stone for three years and even the stone grows warm. Used to acknowledge a hard but meaningful stretch of time, fitting when expressing gratitude for the time you have worked there.",
+        "example": "三年間お世話になりました。石の上にも三年と申しますが、本当にいい経験をさせていただきました。",
+        "example_en": "Thank you for everything over these three years. They say 'three years even on a stone', and I truly had a wonderful experience here."
       },
       {
         "idiom": "立つ鳥跡を濁さず",
         "literal": "Con chim bay đi không làm đục nước phía sau",
+        "literal_en": "a departing bird does not foul the water behind it (tatsu tori ato o nigosazu)",
         "meaning": "Khi rời đi phải để lại mọi thứ sạch sẽ, gọn gàng — không để rắc rối cho người ở lại. Đây là chuẩn mực đạo đức Nhật khi nghỉ việc: bàn giao đầy đủ, viết tài liệu, không nói xấu công ty, kết thúc êm đẹp. Sếp dùng cụm này để nhắc bạn về kỳ vọng văn hóa.",
-        "example": "立つ鳥跡を濁さず、丁寧に引き継ぎをお願いします。"
+        "meaning_en": "When you leave, you must leave everything clean and tidy — no trouble left for those who remain. This is the Japanese moral standard for resigning: a full handover, written documentation, no badmouthing the company, a graceful exit. The boss uses this phrase to remind you of the cultural expectation.",
+        "example": "立つ鳥跡を濁さず、丁寧に引き継ぎをお願いします。",
+        "example_en": "A departing bird leaves no trace — please handle the handover carefully and thoroughly."
       },
       {
         "idiom": "後足で砂をかける",
         "literal": "Hất cát bằng chân sau",
+        "literal_en": "to kick sand with your hind legs (atoashi de suna o kakeru)",
         "meaning": "Rời đi trong sự bất hòa, vong ơn — như con vật hất cát vào người vừa cho ăn. Đây là điều CẦN TRÁNH khi nghỉ việc: đừng nói xấu công ty cũ, đừng cãi nhau, đừng kéo đồng nghiệp đi theo mình. Giới làm việc Nhật rất nhỏ — tiếng xấu sẽ theo bạn cả đời nghề.",
-        "example": "辞めるときは後足で砂をかけるようなことをしてはいけない。"
+        "meaning_en": "To leave in discord and ingratitude — like an animal kicking sand at the hand that just fed it. This is what to AVOID when resigning: do not badmouth your old company, do not quarrel, do not pull colleagues away with you. Japan's working world is very small — a bad reputation will follow you your entire career.",
+        "example": "辞めるときは後足で砂をかけるようなことをしてはいけない。",
+        "example_en": "When you quit, you must never do anything like kicking sand with your hind legs."
       }
     ],
     "cultural_notes_vi": "Người Nhật xem việc xin nghỉ là sự kiện trang trọng, KHÔNG phải giao dịch. Khác hẳn Việt Nam (nơi có thể nhắn tin báo sếp, nói qua điện thoại, hoặc báo trước 2 tuần), ở Nhật bạn PHẢI tuân thủ bảy quy tắc: (1) Xin một cuộc gặp riêng — không nói trong giờ họp, không nói khi sếp đang vội. Mở đầu bằng 'お忙しいところ恐れ入りますが、少しお時間をいただけませんでしょうか'. (2) Báo TRỰC TIẾP cho sếp TRƯỚC tiên, không báo đồng nghiệp trước. Nếu lộ ra ngoài qua người khác sẽ bị coi là phản bội niềm tin và làm sếp mất mặt. (3) Đưa thời gian bàn giao 2-3 tháng. Đưa 2 tuần như ở Việt Nam là KHÔNG ĐỦ — sẽ bị nhớ lâu trong nghề và ảnh hưởng đến reference cho công việc tiếp theo. (4) Nộp 退職届 (đơn xin nghỉ) bằng giấy, viết tay, đưa cho phòng nhân sự — không gửi email. Định dạng có sẵn, dùng từ chuẩn '一身上の都合により' (vì lý do cá nhân). (5) Cuộc nói chuyện đầu tiên KHÔNG được nói thẳng 'tôi nghỉ việc' — phải mở bằng cụm xin tham vấn ('ご相談させていただきたく…') để sếp có không gian phản hồi. Đây là 根回し (nemawashi) — chuẩn bị tâm lý cho người nghe trước khi đưa quyết định chính. (6) Nếu sếp đề nghị tăng lương để giữ bạn lại (慰留 iryuu), từ chối phải khéo: cảm ơn nhưng giữ vững quyết định, KHÔNG để cuộc thương lượng kéo dài qua nhiều buổi vì sẽ bị coi là mặc cả. Một lần từ chối là đủ; ba lần là quá. (7) Sau khi xin nghỉ, vẫn phải giữ thái độ chuyên nghiệp 100% đến ngày cuối. Nếu lười biếng tuần cuối, hoặc rút lui khỏi dự án, danh tiếng sẽ theo bạn cả đời — giới làm việc Nhật rất nhỏ, người ta sẽ hỏi tham khảo. Quy tắc 立つ鳥跡を濁さず áp dụng nghiêm ngặt. Khác biệt văn hóa lớn nhất với Việt Nam: ở VN nghỉ việc là chuyện cá nhân; ở Nhật nó là sự kiện ảnh hưởng đến cả nhóm, và cách bạn xử lý nó là báo cáo cuối cùng về tư cách của bạn.",
@@ -1090,31 +1108,49 @@ export const lessons: JapaneseLesson[] = [
       "Người phỏng vấn hỏi naze nihon de hatarakitai no desu ka (sao bạn muốn làm việc ở Nhật?). Trả lời trong 90 giây — phải gắn với CỤ THỂ công ty này, không nói chung chung về thích văn hóa Nhật. Dùng cụm onsha no ni kyoukan shi và kouken sasete itadakitaku.",
       "Người phỏng vấn hỏi mức lương kỳ vọng (kibou nenshuu). Hãy trả lời mà KHÔNG đưa con số — dùng cụm onsha no kitei ni shitagawasete itadakitaku zonjimasu và xác nhận đã đọc range trong job posting. Đây là chuẩn mực Nhật cho fresh hire."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself having just walked into the interview room. Greet and introduce yourself in 60 seconds in kenjougo — including your name, university, current company, and a closing line on why you are applying. Do NOT use casual forms; do NOT end sentences with a curt desu.",
+      "The interviewer asks naze nihon de hatarakitai no desu ka (why do you want to work in Japan?). Answer in 90 seconds — it must tie SPECIFICALLY to this company, not a generic love of Japanese culture. Use the phrases onsha no ni kyoukan shi and kouken sasete itadakitaku.",
+      "The interviewer asks your expected salary (kibou nenshuu). Answer WITHOUT giving a number — use the phrase onsha no kitei ni shitagawasete itadakitaku zonjimasu and confirm you have read the range in the job posting. This is the Japanese norm for a fresh hire."
+    ],
     "register_notes": "Phỏng vấn ở Nhật yêu cầu kenjougo (謙譲語) đặc trưng nhất trong tất cả các tình huống công việc. Năm cụm bắt buộc thuộc lòng: (1) to moushimasu (tôi tên là) — kenjougo của 言う khi tự giới thiệu, KHÔNG dùng desu cho tên. (2) mairimashita (tôi đã đến) — kenjougo của 来る khi nói mình đã đến công ty. (3) sasete itadakitaku zonjimasu (xin được làm) — chồng させていただく cộng 存じる, dùng khi đề cập điều mình muốn làm. (4) chodai itashimasu (xin nhận) — kenjougo cao của もらう. (5) ukagaimasu (tôi đến/hỏi) — kenjougo của 行く và 聞く. Bên cạnh đó, đại từ chỉ công ty CỰC KỲ quan trọng: 御社 (onsha — nói) hoặc 貴社 (kisha — viết) cho công ty bên kia; 弊社 (heisha) cho công ty của mình (kể cả công ty cũ). Nhầm 御社 và 弊社 là lỗi cấp 0 — có thể loại ngay vòng phỏng vấn. // TODO: native review — go-kitei ni shitagawasete itadakitaku zonjimasu phrasing cho câu lương; có nguồn dùng o-makase itashimasu thay thế.",
+    "register_notes_en": "A Japanese job interview demands the most distinctive kenjougo (謙譲語) of any work situation. Five phrases to memorize cold: (1) to moushimasu (my name is) — kenjougo of 言う when introducing yourself; do NOT use desu for your name. (2) mairimashita (I have come) — kenjougo of 来る when saying you have arrived at the company. (3) sasete itadakitaku zonjimasu (I would like to be allowed to) — stacking させていただく plus 存じる, used when mentioning something you wish to do. (4) chodai itashimasu (I gratefully receive) — high kenjougo of もらう. (5) ukagaimasu (I will come/ask) — kenjougo of 行く and 聞く. Beyond that, the company pronouns are EXTREMELY important: 御社 (onsha — spoken) or 貴社 (kisha — written) for the other company; 弊社 (heisha) for your own company (including a former one). Confusing 御社 and 弊社 is a level-0 error — it can get you cut on the spot.",
     "idiom_glosses": [
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp là duy nhất trong đời — phải dồn hết tâm sức như thể không có lần thứ hai. Dùng trong văn cảnh phỏng vấn để bày tỏ sự trân trọng cơ hội này; cũng là tinh thần omotenashi của trà đạo.",
-        "example": "本日のご面接を一期一会の機会と捉え、誠心誠意お話しさせていただきます。"
+        "meaning_en": "Every meeting is unique in a lifetime — you must pour your whole heart in as though there will be no second time. Used in an interview context to express how much you treasure this opportunity; it is also the omotenashi spirit of the tea ceremony.",
+        "example": "本日のご面接を一期一会の機会と捉え、誠心誠意お話しさせていただきます。",
+        "example_en": "I regard today's interview as a once-in-a-lifetime encounter and will speak with all sincerity."
       },
       {
         "idiom": "七転び八起き",
         "literal": "Bảy lần ngã, tám lần đứng dậy",
+        "literal_en": "fall seven times, rise eight (nanakorobi yaoki)",
         "meaning": "Kiên cường — ngã bao nhiêu lần cũng đứng dậy thêm một lần. Cụm vàng để dùng khi kể chuyện thất bại trong phỏng vấn: thừa nhận thất bại nhưng cho thấy đã đứng dậy.",
-        "example": "失敗を経験するたびに、七転び八起きの精神で立ち上がってまいりました。"
+        "meaning_en": "Resilience — however many times you fall, you stand up one more time. The golden phrase for telling a failure story in an interview: acknowledge the failure but show that you got back up.",
+        "example": "失敗を経験するたびに、七転び八起きの精神で立ち上がってまいりました。",
+        "example_en": "Each time I experienced failure, I rose again in the spirit of falling seven times and rising eight."
       },
       {
         "idiom": "千里の道も一歩から",
         "literal": "Đường nghìn dặm cũng bắt đầu từ một bước",
+        "literal_en": "even a thousand-league road begins with a single step (senri no michi mo ippo kara)",
         "meaning": "Việc lớn bắt đầu từ bước nhỏ — bày tỏ sự khiêm tốn và sẵn sàng học từ đầu. Phù hợp khi nói về kế hoạch nghề nghiệp dài hạn ở công ty mới.",
-        "example": "千里の道も一歩からと申します。まずは現場でしっかりと学ばせていただきたく存じます。"
+        "meaning_en": "Great undertakings begin with a small step — expressing humility and a readiness to learn from the ground up. Fitting when discussing a long-term career plan at a new company.",
+        "example": "千里の道も一歩からと申します。まずは現場でしっかりと学ばせていただきたく存じます。",
+        "example_en": "They say even a thousand-league road begins with one step. First, I would like to be allowed to learn thoroughly on the front line."
       },
       {
         "idiom": "初心忘るべからず",
         "literal": "Đừng quên tâm ban đầu",
+        "literal_en": "do not forget your beginner's spirit (shoshin wasuru bekarazu)",
         "meaning": "Đừng quên động lực ban đầu khi mới bắt đầu — câu này từ Zeami (zen, kịch Noh). Trong phỏng vấn, dùng để cho thấy mình hiểu giá trị của sự bền bỉ với mục tiêu.",
-        "example": "入社後も初心忘るべからずの気持ちで、謙虚に学んでまいります。"
+        "meaning_en": "Do not forget the motivation you had at the very start — this saying comes from Zeami (Zen, Noh theatre). In an interview, use it to show that you understand the value of staying steadfast to your goal.",
+        "example": "入社後も初心忘るべからずの気持ちで、謙虚に学んでまいります。",
+        "example_en": "Even after joining, I will keep learning humbly, never forgetting my beginner's spirit."
       }
     ],
     "cultural_notes_vi": "Phỏng vấn ở công ty Nhật khác Việt Nam ở năm điểm cốt lõi. (1) THỜI ĐIỂM: đến SỚM 10 phút, KHÔNG sớm hơn (sớm hơn làm phiền lễ tân) và KHÔNG đúng giờ (đúng giờ ở Nhật là muộn). Vào sảnh, nói shamei no Nguyen to moushimasu, bu no Tanaka-sama to N-ji ni o-yakusoku wo itadaite orimasu với lễ tân. (2) NGOẠI HÌNH: vest đen hoặc xanh navy, áo trắng, tóc gọn, không nước hoa nồng. Phụ nữ tóc buộc, móng tay không sơn nổi. Đây không phải cá nhân hóa — đây là tín hiệu tôi hiểu chuẩn mực. (3) CHÀO HỎI VÀ GHẾ NGỒI: gõ cửa 3 lần (KHÔNG 2 lần — 2 lần là gõ toilet), đợi douzo, vào nói shitsurei itashimasu, đứng cạnh ghế cho đến khi được mời ngồi bằng o-kake kudasai. Túi đặt cạnh ghế trên sàn, không trên bàn. (4) NỘI DUNG: không nói tôi muốn học hỏi rồi rời đi — công ty Nhật trao tin tưởng thông qua giả định bạn ở lâu dài (shuushin koyou vẫn là tinh thần ngầm). Nói về 5 năm, 10 năm tới ở công ty này là điểm cộng, không phải red flag. (5) ĐẠI TỪ NHÂN XƯNG: tôi bằng watashi hoặc watakushi (formal hơn); KHÔNG dùng boku hoặc ore. Ngôi họ: ano kata lịch sự hơn ano hito. Khác biệt lớn với Việt Nam: ở VN người ta đánh giá kỹ năng và tính cách trong phỏng vấn; ở Nhật, 70 phần trăm đánh giá là VỀ CÁCH bạn nói (keigo, lễ tiết, ánh mắt) — tức là về văn hóa fit. Một ứng viên giỏi nhưng dùng sai keigo sẽ thua một ứng viên khá nhưng nhuần nhuyễn lễ tiết.",
@@ -1346,31 +1382,49 @@ export const lessons: JapaneseLesson[] = [
       "Người phỏng vấn hỏi naze amerika ya doitsu dewa naku nihon na no ka (sao không phải Mỹ hay Đức?). Trả lời với 3 lý do CỤ THỂ — không nói chung tôi thích văn hóa Nhật. Dùng số đếm hitotsume futatsume mittsume để có cấu trúc rõ ràng.",
       "Người phỏng vấn lo bạn sẽ ở lại Nhật sau khi học xong (đây là red flag với MEXT — họ muốn bạn về nước). Hãy thuyết phục họ bạn sẽ về VN, đề cập nghĩa vụ với koushin no ikusei, gắn với research plan."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself in a MEXT interview at the Japanese embassy. Present your research plan in 3 minutes — it must include: the problem in Vietnam, why you chose this specific university/professor, a 3-year plan, and your contribution after returning home. Use the phrases to kangaete orimasu and shitaku zonjimasu.",
+      "The interviewer asks naze amerika ya doitsu dewa naku nihon na no ka (why not the US or Germany?). Answer with 3 SPECIFIC reasons — do not give a generic 'I like Japanese culture'. Use the counters hitotsume, futatsume, mittsume to give a clear structure.",
+      "The interviewer is concerned you will stay in Japan after finishing (a red flag for MEXT — they want you to return home). Convince them you will return to Vietnam, mentioning your duty toward koushin no ikusei (nurturing the next generation), tied to your research plan."
+    ],
     "register_notes": "Phỏng vấn MEXT khác phỏng vấn doanh nghiệp ở ba điểm về register. (1) ĐỘNG TỪ HÀN LÂM: dùng động từ tầng cao như haidoku suru (đọc — kenjougo của 読む), haiken suru (xem — kenjougo của 見る), aogu (xin — như go-shidou wo aogu), tamawaru (được trao — kenjougo cao của もらう). Đây là dấu hiệu bạn đã quen môi trường học thuật. (2) CỤM CỐ ĐỊNH HỌC THUẬT: kensan wo tsumu (tích lũy nghiên cứu), gakuon wo ukeru (nhận ơn giáo dục), kyouben wo toru (cầm bút giảng dạy) — những cụm này không dùng trong văn nói thường nhưng phải có trong phỏng vấn học bổng. (3) CHỈ TÊN GIÁO SƯ: sensei BẮT BUỘC, không bao giờ san với giáo sư. Khi nhắc đến research lab: kenkyuushitsu chứ không rabo (quá casual). Khi nói về luận văn: ronbun — không pe-pa-. Khác với phỏng vấn doanh nghiệp, MEXT panel ưa chuộng cách diễn đạt cổ điển/văn chương; trộn vào idiom kiểu onko chishin hoặc gakumon ni oudou nashi tăng điểm rõ rệt. // TODO: native review — naidaku wo itadaite orimasu phrasing for informal acceptance from prof; alt is uke-ire no shoudaku.",
+    "register_notes_en": "A MEXT scholarship interview differs from a corporate interview in three register points. (1) ACADEMIC VERBS: use high-tier verbs such as haidoku suru (to read — kenjougo of 読む), haiken suru (to view — kenjougo of 見る), aogu (to seek — as in go-shidou wo aogu), tamawaru (to be granted — high kenjougo of もらう). These signal that you are at home in an academic environment. (2) SET ACADEMIC PHRASES: kensan wo tsumu (to accumulate scholarship), gakuon wo ukeru (to receive the favour of education), kyouben wo toru (to take up teaching) — these are not used in ordinary speech but must appear in a scholarship interview. (3) NAMING THE PROFESSOR: sensei is MANDATORY; never -san with a professor. When referring to a research lab, kenkyuushitsu, not rabo (too casual). When discussing a thesis, ronbun — not pe-pa-. Unlike a corporate interview, the MEXT panel favours classical/literary expression; weaving in idioms like onko chishin or gakumon ni oudou nashi raises your score markedly.",
     "idiom_glosses": [
       {
         "idiom": "学問に王道なし",
         "literal": "Học vấn không có đường vương đạo",
+        "literal_en": "there is no royal road to learning (gakumon ni oudou nashi)",
         "meaning": "Không có đường tắt trong học tập — phải đi từng bước. Cụm cổ điển từ Euclid (gốc Hy Lạp), được dịch sang tiếng Nhật và trở thành kinh điển trong giáo dục. Dùng để thừa nhận khó khăn của con đường học thuật.",
-        "example": "学問に王道なしと申しますが、三年間、地道に研鑽を積む覚悟でおります。"
+        "meaning_en": "There is no shortcut in study — you must take it step by step. A classical phrase from Euclid (Greek origin), translated into Japanese and now a classic in education. Used to acknowledge the hardship of the academic path.",
+        "example": "学問に王道なしと申しますが、三年間、地道に研鑽を積む覚悟でおります。",
+        "example_en": "They say there is no royal road to learning, but I am prepared to accumulate steady scholarship over these three years."
       },
       {
         "idiom": "温故知新",
         "literal": "Ôn cũ biết mới",
+        "literal_en": "review the old to know the new (onko chishin)",
         "meaning": "Học từ quá khứ để hiểu hiện tại — gốc Khổng Tử, du nhập từ Trung Quốc. Trong nghiên cứu, dùng để bày tỏ lòng kính trọng với thành tựu trước và sự tiếp nối.",
-        "example": "山田教授の従来の研究を温故知新の精神で学ばせていただきたく存じます。"
+        "meaning_en": "Learn from the past to understand the present — from Confucius, imported from China. In research, used to express respect for prior achievements and a sense of continuity.",
+        "example": "山田教授の従来の研究を温故知新の精神で学ばせていただきたく存じます。",
+        "example_en": "I would like to be allowed to study Professor Yamada's prior research in the spirit of reviewing the old to know the new."
       },
       {
         "idiom": "三人寄れば文殊の知恵",
         "literal": "Ba người tụ lại có trí tuệ Bồ Tát Văn Thù",
+        "literal_en": "three people together have the wisdom of Monju (sannin yoreba Monju no chie)",
         "meaning": "Ba cái đầu hơn một — trí tuệ tập thể vượt trí tuệ cá nhân. Phù hợp khi nói về làm việc nhóm trong lab, không khoe cá nhân.",
-        "example": "研究室の皆様と三人寄れば文殊の知恵で、課題を解決していきたいと存じます。"
+        "meaning_en": "Three heads are better than one — collective wisdom surpasses the individual. Fitting when speaking about teamwork in the lab, without boasting about yourself.",
+        "example": "研究室の皆様と三人寄れば文殊の知恵で、課題を解決していきたいと存じます。",
+        "example_en": "Together with everyone in the lab, in the spirit that three heads hold the wisdom of Monju, I wish to solve the problems before us."
       },
       {
         "idiom": "井の中の蛙大海を知らず",
         "literal": "Ếch trong giếng không biết biển lớn",
+        "literal_en": "a frog in a well does not know the great ocean (i no naka no kawazu taikai o shirazu)",
         "meaning": "Người chỉ biết thế giới hẹp của mình thì không hiểu cái rộng lớn ngoài kia. Trong phỏng vấn học bổng, dùng để giải thích vì sao bạn cần đi du học — để thoát khỏi cái giếng của hiểu biết hiện tại.",
-        "example": "ベトナム国内に留まれば井の中の蛙となります。日本での経験を通じ、視野を広げたく存じます。"
+        "meaning_en": "Someone who knows only their own narrow world cannot grasp the vastness beyond it. In a scholarship interview, used to explain why you need to study abroad — to escape the well of your current understanding.",
+        "example": "ベトナム国内に留まれば井の中の蛙となります。日本での経験を通じ、視野を広げたく存じます。",
+        "example_en": "If I stay only within Vietnam I will be a frog in a well. Through my experience in Japan, I wish to broaden my horizons."
       }
     ],
     "cultural_notes_vi": "MEXT (文部科学省 — Bộ Giáo dục Nhật) xét cấp học bổng theo bốn tiêu chí, theo thứ tự ưu tiên: (1) RESEARCH PLAN cụ thể và khả thi — không phải GPA, không phải điểm tiếng Nhật. Một sinh viên N3 với research plan rõ ràng được ưu tiên hơn N1 với plan mơ hồ. Plan phải nêu vấn đề CỤ THỂ ở VN, lý do CHỌN CHÍNH XÁC giáo sư đó (đã đọc bài báo nào, lý thuyết nào ăn khớp), kế hoạch 3 năm chia theo học kỳ, output dự kiến (số bài báo, hội nghị). (2) KẾT NỐI TRƯỚC với giáo sư người Nhật — gửi email research proposal, đợi giáo sư trả lời tôi quan tâm, xin naidaku (informal acceptance). KHÔNG vào phỏng vấn mà chưa kết nối với prof — 90 phần trăm rớt. (3) LỜI HỨA VỀ NƯỚC: MEXT không muốn cấp tiền cho người sẽ ở lại Nhật. Phải giải thích RÕ RÀNG vai trò bạn sẽ đóng ở VN sau khi tốt nghiệp — giảng dạy, nghiên cứu, làm policy. (4) TIẾNG NHẬT: N2 là sàn để phỏng vấn được tiến hành bằng tiếng Nhật; N1 là điểm cộng, không bắt buộc. Khác biệt với học bổng phương Tây: MEXT KHÔNG đặt nặng research output cá nhân (publications, awards) — họ đặt nặng FIT với một lab cụ thể và CAM KẾT đóng góp lại cho VN. Không khoe khoang thành tích cá nhân; khoe sự khiêm nhường và sự kết nối với thế hệ trước-sau. Nếu bạn là người đầu tiên trong gia đình đi du học, hãy nói — đây là điểm cộng (story of nurturing potential).",
@@ -1602,31 +1656,49 @@ export const lessons: JapaneseLesson[] = [
       "Giáo sư khuyên bạn chọn đề tài A nhưng bạn nghiêng về B. Hãy bày tỏ sự cân nhắc lại MÀ KHÔNG bác lời khuyên — dùng go-jogen wo fumae, mou sukoshi kangaesasete itadaite mo yoroshii deshou ka. Tuyệt đối không nói ie watashi wa.",
       "Giáo sư hỏi bạn đã đọc bao nhiêu paper. Bạn mới đọc 5 cái nhưng định nói rất nhiều. Hãy nói THẬT — đây là lúc Honest Uncertainty quan trọng hơn impression management. Dùng shoujiki ni moushiagemasu to, mada gohon teido de gozaimasu và đề xuất kế hoạch đọc thêm."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself entering the professor's office to consult on a topic. You have 2 ideas but cannot decide which. Present them in 90 seconds — you must show problem awareness for both and why you are hesitating. Use the phrases go-soudan sasete itadakitaku and o-kangae wo o-kikase itadakemasu deshou ka.",
+      "The professor advises topic A but you lean toward B. Express reconsideration WITHOUT rejecting the advice — use go-jogen wo fumae, mou sukoshi kangaesasete itadaite mo yoroshii deshou ka. Absolutely do not say ie watashi wa.",
+      "The professor asks how many papers you have read. You have read only 5 but are tempted to claim many. Tell the TRUTH — this is a moment where Honest Uncertainty matters more than impression management. Use shoujiki ni moushiagemasu to, mada gohon teido de gozaimasu and propose a plan to read more."
+    ],
     "register_notes": "Khi nói chuyện với giáo sư về luận văn, register hơi khác phỏng vấn doanh nghiệp ở chỗ MỀM HƠN nhưng VẪN keigo đầy đủ. Năm điểm: (1) Gọi giáo sư bằng XX-sensei BẮT BUỘC — không anata, không yamada-san. Ngay cả khi giáo sư bảo gọi tên, vẫn giữ sensei. (2) Khi không đồng ý, KHÔNG dùng iie hay demo — dùng ossharu toori de gozaimasu ga, XX to iu kangae mo aru ka to zonjimasu (đúng như thầy nói, nhưng cũng có cách nghĩ là XX). (3) Khi xin tư vấn, ni tsuite, go-soudan sasete itadakitaku zonjimasu (về đó, em xin được tham vấn) — không dùng tasukete kudasai (giúp em). (4) Khi nhận lời khuyên, dùng kimo ni meijimasu (em sẽ khắc sâu) hoặc go-jogen wo fumaemashite (dựa trên lời khuyên của thầy) — KHÔNG wakarimashita đơn giản, hơi quá ngang. (5) Khi rời phòng, kichou na o-jikan wo chodai shi, arigatou gozaimashita và shitsurei itashimasu khi đóng cửa. Phong cách hội thoại với giáo sư cũng có sắc thái tự kiểm tra — nói to zonjimasu ga, ikaga deshou ka (em nghĩ vậy, nhưng thầy thấy thế nào?) thay vì khẳng định mạnh. Đây là cách thể hiện kohai đúng chuẩn.",
+    "register_notes_en": "When discussing your thesis with your professor, the register differs slightly from a corporate interview in that it is SOFTER but still fully keigo. Five points: (1) Address the professor as XX-sensei — MANDATORY; not anata, not yamada-san. Even if the professor tells you to use their name, keep sensei. (2) When you disagree, do NOT use iie or demo — use ossharu toori de gozaimasu ga, XX to iu kangae mo aru ka to zonjimasu (it is exactly as you say, but I think there may also be a view that XX). (3) When asking for advice, ni tsuite, go-soudan sasete itadakitaku zonjimasu (about that, I would like to be allowed to consult you) — do not use tasukete kudasai (help me). (4) When receiving advice, use kimo ni meijimasu (I will engrave it on my heart) or go-jogen wo fumaemashite (based on your advice) — NOT a plain wakarimashita, which is a touch too blunt. (5) When leaving the room, kichou na o-jikan wo chodai shi, arigatou gozaimashita and shitsurei itashimasu as you close the door. The conversational style with a professor also carries a self-checking nuance — say to zonjimasu ga, ikaga deshou ka (I think so, but how do you see it?) rather than a strong assertion. This is the correct way to show yourself as a proper kohai.",
     "idiom_glosses": [
       {
         "idiom": "三人寄れば文殊の知恵",
         "literal": "Ba người tụ lại có trí tuệ Bồ Tát Văn Thù",
+        "literal_en": "three people together have the wisdom of Monju (sannin yoreba Monju no chie)",
         "meaning": "Trí tuệ tập thể vượt cá nhân — Văn Thù là Bồ Tát của trí tuệ trong Phật giáo. Trong nghiên cứu, dùng để bày tỏ sự sẵn sàng học từ ゼミ và đồng môn.",
-        "example": "ゼミの皆様と三人寄れば文殊の知恵で、テーマを磨いてまいります。"
+        "meaning_en": "Collective wisdom surpasses the individual — Monju is the bodhisattva of wisdom in Buddhism. In research, used to express a readiness to learn from your seminar (ゼミ) and fellow students.",
+        "example": "ゼミの皆様と三人寄れば文殊の知恵で、テーマを磨いてまいります。",
+        "example_en": "Together with everyone in the seminar, in the spirit that three heads hold the wisdom of Monju, I will refine the topic."
       },
       {
         "idiom": "肝に銘じる",
         "literal": "Khắc sâu vào gan",
+        "literal_en": "to engrave it on your liver (kimo ni meijiru)",
         "meaning": "Khắc cốt ghi tâm — tiếp nhận lời dạy với sự nghiêm túc tối đa. Câu chuẩn để đáp lời khuyên của giáo sư.",
-        "example": "先生のご助言を肝に銘じ、研究を進めてまいります。"
+        "meaning_en": "To carve into the heart and bones — to receive teaching with the utmost seriousness. The standard line for responding to a professor's advice.",
+        "example": "先生のご助言を肝に銘じ、研究を進めてまいります。",
+        "example_en": "I will engrave your advice on my heart and press forward with my research."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Nếu vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã thì hỏng việc — nên chọn con đường an toàn dù có vẻ chậm hơn. Phù hợp khi bàn về việc làm research carefully thay vì rush.",
-        "example": "急がば回れと申します。先行研究をしっかり読んでから方法を決めたく存じます。"
+        "meaning_en": "Haste ruins things — better to take the safe road even if it seems slower. Fitting when discussing doing research carefully rather than rushing.",
+        "example": "急がば回れと申します。先行研究をしっかり読んでから方法を決めたく存じます。",
+        "example_en": "They say if you are in a hurry, go around. I would like to read the prior research thoroughly before deciding on a method."
       },
       {
         "idiom": "百聞は一見に如かず",
         "literal": "Trăm nghe không bằng một thấy",
+        "literal_en": "a hundred hearings are not equal to one seeing (hyakubun wa ikken ni shikazu)",
         "meaning": "Tự mình quan sát hơn nghe người khác kể — phù hợp khi đề xuất đi field trip, làm thí nghiệm thực tế thay vì chỉ đọc paper.",
-        "example": "百聞は一見に如かずと申しますので、現地調査もぜひ計画したく存じます。"
+        "meaning_en": "Observing for yourself beats hearing it from others — fitting when proposing a field trip or a real experiment rather than only reading papers.",
+        "example": "百聞は一見に如かずと申しますので、現地調査もぜひ計画したく存じます。",
+        "example_en": "Since a hundred hearings are not equal to one seeing, I would very much like to plan a field investigation as well."
       }
     ],
     "cultural_notes_vi": "Trong văn hóa nghiên cứu Nhật, giáo sư là sensei theo nghĩa đầy đủ — không chỉ teacher, mà người sinh ra trước (saki ni umareta hito). Đây là khái niệm sempai/kouhai cấp đặc biệt. Khác với phương Tây nơi mqh giáo sư-sinh viên ngang hơn, ở Nhật: (1) BẠN ĐẾN giáo sư, không ngược lại. Đặt lịch qua email với chủ đề rõ ràng (ví dụ: go-soudan: sotsugyou kenkyuu te-ma ni tsuite), KHÔNG nhắn LINE/messenger. (2) Trước khi đến, chuẩn bị TÀI LIỆU cụ thể: research plan draft, danh sách paper đã đọc, câu hỏi cụ thể. Đến tay không bằng phí thời gian giáo sư bằng mất điểm. (3) Trong cuộc nói, giáo sư đặt câu hỏi và bạn TRẢ LỜI — đừng độc thoại 10 phút. Cấu trúc: bạn nói 1 phút, giáo sư phản hồi, bạn nói tiếp 1 phút, cycle. (4) KHÔNG cãi giáo sư trực diện. Nếu không đồng ý, chấp nhận lời khuyên trên bề mặt và đem về suy nghĩ — nếu vẫn muốn theo hướng khác, lần sau quay lại với LÝ DO MỚI và dữ liệu MỚI. (5) Sau cuộc gặp, gửi email cảm ơn trong 12 giờ — tóm tắt lời khuyên giáo sư đã cho và bước tiếp theo bạn sẽ làm. Đây không phải nghi thức — đây là cách giáo sư biết bạn ĐÃ NGHE. (6) Seminar (zemi) là nơi presentation hàng tuần. Đến muộn 5 phút bằng đến muộn nửa ngày — coi như xúc phạm cả lab. Khác biệt văn hóa với VN: ở VN sinh viên có thể coi giáo sư là người chỉ chấm điểm; ở Nhật, giáo sư là người sẽ viết suisenjou cho cả nghề nghiệp của bạn — quan hệ kéo dài 30-40 năm. Đầu tư vào quan hệ này cẩn thận hơn bất kỳ networking nào khác.",
@@ -1858,31 +1930,49 @@ export const lessons: JapaneseLesson[] = [
       "Mentor giao bạn việc ngoài scope job description (làm việc của full-time staff). Hãy từ chối khéo trong 2-3 câu — bảo vệ việc cốt lõi mà không xúc phạm. Dùng o-yaku ni tatereba ureshii no desu ga, genzai XX no gyoumu ni shuuchuu sasete itadaite orimashite (em rất muốn giúp, nhưng hiện đang tập trung vào…).",
       "Sau internship, bạn muốn dùng dữ liệu cho luận văn tốt nghiệp. Hãy viết email xin phép — gồm: cảm ơn về internship, lý do dùng data, cam kết bảo mật (anonymize, no client name), thời gian bạn cần phản hồi. Tone trang trọng tối đa."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself phoning the HR department of a Japanese company. You want to request a 2-week internship extension. Open the conversation with the phrase o-isogashii tokoro osore irimasu, give a SPECIFIC reason tied to your academic schedule, and use go-kentou itadakemasen deshou ka when making the request.",
+      "Your mentor assigns you work outside your job description (full-time staff work). Decline gracefully in 2-3 sentences — protect your core work without giving offence. Use o-yaku ni tatereba ureshii no desu ga, genzai XX no gyoumu ni shuuchuu sasete itadaite orimashite (I would be glad to help, but I am currently focused on…).",
+      "After the internship, you want to use the data for your graduation thesis. Write an email asking permission — covering: thanks for the internship, the reason for using the data, a confidentiality commitment (anonymize, no client name), and how long you need for a reply. Maximum formal tone."
+    ],
     "register_notes": "Đàm phán internship khác đàm phán việc full-time ở chỗ vị thế của bạn YẾU HƠN — bạn là sinh viên xin cơ hội học, không phải candidate có giá trị thị trường. Vì vậy register cần MỀM hơn: (1) Mở đầu mỗi yêu cầu với kanou deshitara (nếu có thể) hoặc sashitsukae nakereba (nếu không phiền) — báo hiệu bạn hiểu đây là favor, không phải right. (2) Dùng sasete itadakemasen deshou ka (xin được làm không?) — đây là dạng yêu cầu lịch sự nhất, chồng させていただく cộng ません cộng でしょうか. (3) Khi giải thích lý do, ưu tiên gakugyou to no ryouritsu (cân bằng học) hơn lý do cá nhân — Nhật chấp nhận cao priorities học thuật. (4) KHÔNG nói về tiền/lương trừ khi họ hỏi trước — internship Nhật phần lớn không lương hoặc lương rất thấp, đòi hỏi compensation đầu tiên là red flag. (5) Khi đồng ý điều bất lợi (như pro-rated pay), nói shouchi shite orimasu (em hiểu) cộng nattoku shite orimasu (em chấp nhận) — không ii desu (cộc lốc). Khác với đàm phán salary B2 (nơi bạn có thể đẩy ngược pushback), với internship: nhận push back lần đầu bằng chấp nhận hoặc rút lui, KHÔNG đẩy lần hai. // TODO: native review — higari de keisan phrasing vs nissuu anbun.",
+    "register_notes_en": "Negotiating an internship differs from negotiating full-time work in that your position is WEAKER — you are a student asking for a chance to learn, not a candidate with market value. So the register must be SOFTER: (1) Open every request with kanou deshitara (if possible) or sashitsukae nakereba (if it is no trouble) — signalling you understand this is a favour, not a right. (2) Use sasete itadakemasen deshou ka (might I be allowed to do…?) — the most polite request form, stacking させていただく plus ません plus でしょうか. (3) When explaining a reason, prioritise gakugyou to no ryouritsu (balancing study) over personal reasons — Japan grants high acceptance to academic priorities. (4) Do NOT bring up money/pay unless they raise it first — Japanese internships are largely unpaid or very low-paid, and asking about compensation first is a red flag. (5) When agreeing to something unfavourable (such as pro-rated pay), say shouchi shite orimasu (I understand) plus nattoku shite orimasu (I accept) — not a curt ii desu. Unlike a B2 salary negotiation (where you can push back), with an internship: meet the first pushback with acceptance or withdrawal — do NOT push a second time.",
     "idiom_glosses": [
       {
         "idiom": "急がば回れ",
         "literal": "Nếu vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã thì hỏng việc — chọn đường an toàn dù chậm hơn. Phù hợp khi giải thích vì sao bạn không muốn rush một quyết định về internship.",
-        "example": "急がば回れと申します。慎重に契約内容を確認させていただきます。"
+        "meaning_en": "Haste ruins things — take the safe road even if slower. Fitting when explaining why you do not want to rush a decision about the internship.",
+        "example": "急がば回れと申します。慎重に契約内容を確認させていただきます。",
+        "example_en": "They say if you are in a hurry, go around. I will confirm the contract terms carefully."
       },
       {
         "idiom": "石橋を叩いて渡る",
         "literal": "Gõ cầu đá rồi mới qua",
+        "literal_en": "cross the stone bridge after tapping it (ishibashi o tataite wataru)",
         "meaning": "Cẩn thận đến mức gõ thử cả cầu đá để chắc chắn không sập — sự thận trọng tối đa. Dùng khi nói về việc đọc kỹ hợp đồng hoặc NDA.",
-        "example": "守秘義務契約は石橋を叩いて渡る思いで、慎重に確認させていただきます。"
+        "meaning_en": "So cautious that you tap even a stone bridge to be sure it will not collapse — maximum prudence. Used when talking about reading a contract or NDA carefully.",
+        "example": "守秘義務契約は石橋を叩いて渡る思いで、慎重に確認させていただきます。",
+        "example_en": "I will review the confidentiality agreement carefully, with the care of one who taps a stone bridge before crossing."
       },
       {
         "idiom": "二兎を追う者は一兎をも得ず",
         "literal": "Người đuổi hai thỏ không bắt được con nào",
+        "literal_en": "one who chases two hares catches neither (nito o ou mono wa itto o mo ezu)",
         "meaning": "Tham nhiều thì mất hết — nên tập trung vào một mục tiêu. Dùng khi từ chối thêm việc ngoài scope ban đầu.",
-        "example": "二兎を追う者は一兎をも得ずと申しますので、まずは現在の業務に集中させていただきたく存じます。"
+        "meaning_en": "Wanting too much loses everything — better to focus on a single goal. Used when declining extra work outside the original scope.",
+        "example": "二兎を追う者は一兎をも得ずと申しますので、まずは現在の業務に集中させていただきたく存じます。",
+        "example_en": "They say one who chases two hares catches neither, so first I would like to be allowed to focus on my current duties."
       },
       {
         "idiom": "ご縁",
         "literal": "Mối duyên (gắn kết bởi định mệnh)",
+        "literal_en": "a tie/connection bound by destiny (go-en)",
         "meaning": "Khái niệm duyên đặc trưng của Nhật — sự kết nối có ý nghĩa mà không thể giải thích bằng lý trí. Dùng để diễn tả niềm trân trọng cơ hội internship.",
-        "example": "今回のインターンシップのご縁を大切にし、誠心誠意取り組ませていただきます。"
+        "meaning_en": "The distinctively Japanese concept of en — a meaningful connection that cannot be explained by reason. Used to express how much you treasure the internship opportunity.",
+        "example": "今回のインターンシップのご縁を大切にし、誠心誠意取り組ませていただきます。",
+        "example_en": "I will treasure this connection of the internship and devote myself to it with all sincerity."
       }
     ],
     "cultural_notes_vi": "Internship ở Nhật khác Việt Nam và phương Tây ở năm điểm. (1) THƯỜNG KHÔNG LƯƠNG hoặc lương thấp (3000-5000 yên/ngày bằng 500K-800K VND/ngày). Đây là opportunity to learn, không phải paid work. Đòi lương đầu tiên bằng mất cơ hội. (2) NGẮN — phổ biến 1-2 tuần (tanki intern), 1-3 tháng là dài (chouki intern). 6 tháng cộng là rất hiếm và thường có chuyển đổi sang full-time hire ngầm. (3) RẤT CHÍNH THỨC — bạn ký shuhi gimu keiyaku (NDA), tuân thủ giờ giấc tuyệt đối, mặc đồng phục/business casual, không ăn ở bàn làm việc, dọn cốc của mình, chào hỏi otsukaresama desu khi gặp đồng nghiệp. (4) NHIỆM VỤ THƯỜNG NHỎ — đừng kỳ vọng được giao project lớn. Bạn sẽ làm data entry, dịch tài liệu, phân tích reports đơn giản. Giá trị KHÔNG ở task quy mô — giá trị ở việc bạn được quan sát môi trường công ty Nhật bên trong. (5) CHUYỂN SANG NỘI ĐỊNH (naitei): nhiều internship có ẩn ý chuyển sang internship dẫn đến naitei. Nếu công ty thích bạn, mentor sẽ giới thiệu HR cho phỏng vấn full-time. Bạn cũng nên mượn cơ hội này để xem có muốn làm full-time không — không hứa hẹn ngầm nếu không chắc. Khác văn hóa với VN: ở VN internship thường freelance-style, đến lúc nào cũng được; ở Nhật, đến muộn 5 phút đầu tiên đã bị nhớ. Cuối ngày làm việc, viết nippou (báo cáo ngày) ngắn gửi mentor — không phải tùy chọn. Sau internship, gửi thư cảm ơn (oreijou) viết tay đến mentor và HR — đây là chuẩn mực Nhật, đừng bỏ qua dù coi là old school.",
@@ -2109,31 +2199,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn nhận được email từ giáo sư hướng dẫn báo lab full, không thể nhận thêm sinh viên. Hãy viết email phản hồi xin gặp trao đổi — KHÔNG bác lời, KHÔNG van xin, đề xuất khả năng học kỳ sau hoặc lab khác trong cùng khoa.",
       "Giả sử bạn cần gửi email cho HR công ty Nhật xin hoãn ngày bắt đầu internship 2 tuần (do visa delay). Hãy viết email — bao gồm: lý do (visa), bằng chứng (số đơn nộp cộng ngày), đề xuất ngày mới, cam kết bù task thiếu hụt nếu có."
     ],
+    "roleplay_prompts_en": [
+      "Write an email to the kokusai kouryuu-ka (international exchange office) reporting that you have received your Certificate of Eligibility (CoE). It must include: (1) a clear subject, (2) specific thanks, (3) the next step (you have booked your visa interview at the embassy), (4) a question if any. Maximum formal tone.",
+      "You receive an email from your supervising professor saying the lab is full and cannot take more students. Write a reply asking to meet and discuss — do NOT contradict them, do NOT plead, propose the possibility of the next semester or another lab in the same department.",
+      "Suppose you need to email a Japanese company's HR to postpone your internship start by 2 weeks (due to a visa delay). Write the email — including: the reason (visa), evidence (application number plus date), a proposed new date, and a commitment to make up any missed tasks."
+    ],
     "register_notes": "Email tiếng Nhật trang trọng có cấu trúc cố định, lệch cấu trúc bằng bị coi là không tôn trọng. Bảy phần bắt buộc theo thứ tự: (1) kenmei (subject) phải có 【...】 prefix biểu thị loại email: o-toiawase (inquiry), go-houkoku (report), go-soudan (consultation), o-rei (thanks). Subject phải đủ ngắn (40 chữ), có tên bạn cuối nếu thuộc cá nhân. (2) Greeting: sama với người cụ thể, go-tantou-sha-sama nếu chưa biết tên. KHÔNG san trong email công việc. (3) totsuzen no go-renraku shitsurei itashimasu (xin lỗi đã bất ngờ liên hệ) — chuẩn cho lần đầu email, bỏ qua nếu đã trao đổi trước. (4) Tự giới thiệu lại MỖI EMAIL: tên cộng tư cách (sinh viên, công ty, năm). (5) Mục đích email — câu thứ ba từ trên xuống. (6) Nội dung: dùng đánh số ichi ni san hoặc dấu chấm tròn cho list. KHÔNG dùng emoji, KHÔNG dùng chấm than hoặc chấm hỏi. (7) Closing: nanitozo yoroshiku onegai moushiagemasu (formal cao nhất) hoặc yoroshiku onegai itashimasu (formal trung). Sau closing là shomei — tên cộng tư cách cộng contact info. Email không có shomei bằng không chuyên nghiệp. Văn phong động từ: dùng gozaimasu thay desu, itashimasu thay shimasu, sasete itadakimasu thay shimasu khi liên quan hành động của mình. Tránh omoimasu — quá yếu trong email business; dùng zonjimasu (kenjougo của 思う). // TODO: native review — futegiwa usage; some prefer kochira no kakunin more for milder tone.",
+    "register_notes_en": "A formal Japanese email has a fixed structure; deviating from it is read as disrespectful. Seven mandatory parts in order: (1) kenmei (subject) must carry a 【...】 prefix indicating the email type: o-toiawase (inquiry), go-houkoku (report), go-soudan (consultation), o-rei (thanks). The subject must be short enough (40 characters) and end with your name if it is personal. (2) Greeting: -sama for a specific person, go-tantou-sha-sama if you do not yet know the name. Do NOT use -san in a work email. (3) totsuzen no go-renraku shitsurei itashimasu (forgive me for contacting you out of the blue) — standard for a first email, omit it if you have corresponded before. (4) Re-introduce yourself in EVERY email: name plus status (student, company, year). (5) The email's purpose — by the third sentence from the top. (6) Body: use numbering ichi, ni, san or round bullets for lists. Do NOT use emoji; do NOT use exclamation or question marks. (7) Closing: nanitozo yoroshiku onegai moushiagemasu (the most formal) or yoroshiku onegai itashimasu (mid-formal). After the closing comes the shomei — name plus status plus contact info. An email with no shomei reads as unprofessional. Verb register: use gozaimasu instead of desu, itashimasu instead of shimasu, sasete itadakimasu instead of shimasu when it concerns your own actions. Avoid omoimasu — too weak in a business email; use zonjimasu (kenjougo of 思う).",
     "idiom_glosses": [
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — trong email business dùng để giải thích vì sao bạn muốn chuẩn bị kỹ trước khi action.",
-        "example": "急がば回れと申しますので、念のため書類を再度ご確認いただけますと幸いでございます。"
+        "meaning_en": "Haste ruins things — in a business email, used to explain why you want to prepare carefully before acting.",
+        "example": "急がば回れと申しますので、念のため書類を再度ご確認いただけますと幸いでございます。",
+        "example_en": "Since they say if you are in a hurry, go around, I would be grateful if you could check the documents once more, just to be sure."
       },
       {
         "idiom": "言葉を選ぶ",
         "literal": "Chọn từ ngữ",
+        "literal_en": "to choose your words (kotoba o erabu)",
         "meaning": "Cẩn thận với cách diễn đạt — đặc biệt quan trọng trong email vì người nhận không thấy giọng nói. Câu này không phải để dùng trực tiếp, mà là nguyên tắc.",
-        "example": "メールでは言葉を選ぶ必要があるため、慎重に表現を確認いたします。"
+        "meaning_en": "To be careful with how you phrase things — especially important in email because the reader cannot hear your voice. This is not a phrase to use directly, but a principle.",
+        "example": "メールでは言葉を選ぶ必要があるため、慎重に表現を確認いたします。",
+        "example_en": "Because one must choose one's words in email, I will check my wording carefully."
       },
       {
         "idiom": "ご多忙のところ恐縮ですが",
         "literal": "Xin lỗi đã làm phiền lúc đang bận",
+        "literal_en": "I am sorry to trouble you while you are busy (go-tabou no tokoro kyoushuku desu ga)",
         "meaning": "Cụm cố định mở đầu yêu cầu trong email business. Không phải idiom truyền thống nhưng là chuẩn mực không thể thiếu — bỏ qua bị coi là vô lễ.",
-        "example": "ご多忙のところ恐縮ではございますが、ご確認のほどお願い申し上げます。"
+        "meaning_en": "A set phrase that opens a request in a business email. Not a traditional idiom but an indispensable norm — omitting it is read as rude.",
+        "example": "ご多忙のところ恐縮ではございますが、ご確認のほどお願い申し上げます。",
+        "example_en": "I am sorry to trouble you while you are so busy, but I would be grateful if you could confirm this."
       },
       {
         "idiom": "拝啓・敬具",
         "literal": "Kính khải / Kính thượng",
+        "literal_en": "Haikei / Keigu (respectful opening / respectful close)",
         "meaning": "Cụm mở-đóng cho thư trang trọng kiểu cũ (handwritten letter, formal business letter). Trong email thường KHÔNG dùng — quá cổ. Nhưng phải biết tồn tại để không bị shock khi nhận thư từ giáo sư già.",
-        "example": "拝啓 時下ますますご清祥のこととお慶び申し上げます。... 敬具"
+        "meaning_en": "The opening-and-closing pair for an old-style formal letter (a handwritten letter, a formal business letter). It is generally NOT used in email — too archaic. But you must know it exists so you are not shocked when you receive a letter from an older professor.",
+        "example": "拝啓 時下ますますご清祥のこととお慶び申し上げます。... 敬具",
+        "example_en": "Haikei. I am delighted to learn that you are flourishing more and more these days. ... Keigu."
       }
     ],
     "cultural_notes_vi": "Email tiếng Nhật khác email phương Tây ở năm điểm. (1) ĐỘ DÀI: dài hơn — một email request đơn giản dễ thành 200-300 chữ. Gắn vào: chào hỏi, xin lỗi đã làm phiền, tự giới thiệu, lý do, request, cảm ơn, ký tên. KHÔNG cắt ngắn — bị coi là cộc lốc. (2) THỜI GIAN PHẢN HỒI: kỳ vọng phản hồi trong 24 giờ vào ngày làm việc, không bao giờ vào tối/cuối tuần. Nếu bạn cần thời gian, gửi email ittan go-renraku made (gửi tạm) trong 4 giờ và phản hồi đầy đủ sau. (3) CHỦ ĐỀ EMAIL: phải cực kỳ rõ. o-toiawase, go-soudan, go-houkoku prefix là chuẩn — giúp người nhận filter inbox. KHÔNG có prefix bằng email yếu. Cuối subject thêm tên bạn (Nguyen Thi Chau) để nhận diện ngay. (4) TỪ XƯNG HÔ: watashi trong email professional, watakushi formal hơn cho email gửi giáo sư già/CEO. KHÔNG boku hoặc ore. Khi nhắc đến công ty/trường mình: heisha, shoushoku (humble). Bên kia: kisha (viết), kidaigaku (quy đại học). (5) CC/BCC: dùng cẩn thận. CC sếp của bạn vào email phàn nàn bằng leo thang xung đột; ở Nhật điều này được coi là khiêu khích. Chỉ CC khi có lý do procedural (như HR cần thấy email request). Khác biệt với VN: ở VN email business thường ngắn, prompt; ở Nhật, email NGẮN bị coi là không quan trọng đối với người gửi. Đầu tư thời gian viết email bằng dấu hiệu bạn coi trọng quan hệ. Mẹo: nếu phải gửi email khó (apology, complaint, bad news), viết draft, để 2 tiếng, đọc lại, gửi. Nhật cực kỳ nhạy với tone email; một câu khó nghe sẽ được nhớ rất lâu.",
@@ -2385,31 +2493,49 @@ export const lessons: JapaneseLesson[] = [
       "Giữa cuộc phỏng vấn, đường truyền yếu và bạn nghe không rõ câu hỏi. Hãy yêu cầu lặp lại MÀ KHÔNG thừa nhận lỗi tại bạn — dùng o-denwa no onsei ga sukoshi kikitorinikui you de gozaimasu. Đề xuất gọi lại nếu vấn đề kéo dài.",
       "Người phỏng vấn hỏi naze toyota wo yameru no desu ka (sao bạn nghỉ Toyota?). Trả lời tích cực — KHÔNG nói xấu Toyota. Dùng cụm kore made no keiken wo ikashi, arata na chousen wo shitaku (em muốn ứng dụng kinh nghiệm và thách thức mới)."
     ],
+    "roleplay_prompts_en": [
+      "You get an unexpected call during lunch and do not have enough time to interview (15 minutes before you must work). Propose calling back another time WITHOUT losing the impression — use the phrase makoto ni moushiwake gozaimasen ga, genzai gaishutsu-chuu de gozaimashite and offer 2 specific time windows.",
+      "Mid-interview, the line is weak and you cannot hear the question clearly. Ask for a repeat WITHOUT admitting it is your fault — use o-denwa no onsei ga sukoshi kikitorinikui you de gozaimasu. Propose calling back if the problem persists.",
+      "The interviewer asks naze toyota wo yameru no desu ka (why are you leaving Toyota?). Answer positively — do NOT badmouth Toyota. Use the phrase kore made no keiken wo ikashi, arata na chousen wo shitaku (I want to apply my experience and take on a new challenge)."
+    ],
     "register_notes": "Phỏng vấn điện thoại có 4 patterns keigo riêng khác phỏng vấn trực tiếp. (1) MỞ ĐẦU: KHÔNG nói desu khi nhận máy — nói hai, Nguyen de gozaimasu (vâng, Nguyen đây). moshi moshi chỉ dùng KHI BẠN GỌI và hỏi xác nhận; người NHẬN máy thường KHÔNG nói moshi moshi. (2) XÁC NHẬN ĐỐI PHƯƠNG: itsumo o-sewa ni natte orimasu (em luôn được anh/chị giúp đỡ) — câu mở đầu chuẩn của business call ở Nhật, dùng kể cả khi mới gọi LẦN ĐẦU. Đây là tatemae — thừa nhận quan hệ kể cả khi chưa có. (3) KHI ÂM THANH KHÔNG TỐT: KHÔNG đổ tại đường truyền của bên kia — dùng cấu trúc kochira no XX no sei ka (có thể do XX bên em) hoặc o-denwa no onsei ga sukoshi kikitorinikui you de gozaimasu (âm thanh có vẻ hơi khó nghe — KHÔNG khẳng định ai gây). Đề xuất gọi lại bằng o-kakenaoshi itadaite mo yoroshii deshou ka (xin anh gọi lại) nếu họ gọi cho bạn; o-kakenaoshi itashimasu (em xin gọi lại) nếu bạn gọi cho họ. (4) KẾT THÚC: sore dewa, shitsurei itashimasu rồi ĐỢI bên kia gác máy trước. KHÔNG gác máy đột ngột. Người Nhật chú ý cả tiếng gác máy — gác máy mạnh bằng thô lỗ. Đặt máy nhẹ nhàng. // TODO: native review — jisa phrasing for Vietnam: betonamu jikan de gogo san-ji vs kochira genchi jikan de; second is more standard.",
+    "register_notes_en": "A phone interview has 4 keigo patterns of its own, different from an in-person interview. (1) OPENING: do NOT say desu when you pick up — say hai, Nguyen de gozaimasu (yes, this is Nguyen). moshi moshi is only used WHEN YOU ARE CALLING and asking to confirm; the person ANSWERING usually does NOT say moshi moshi. (2) ACKNOWLEDGING THE OTHER PARTY: itsumo o-sewa ni natte orimasu (you are always so good to me) — the standard opener for a Japanese business call, used even on a FIRST call. This is tatemae — acknowledging a relationship even when none yet exists. (3) WHEN THE AUDIO IS POOR: do NOT blame their line — use the structure kochira no XX no sei ka (perhaps because of XX on my end) or o-denwa no onsei ga sukoshi kikitorinikui you de gozaimasu (the audio seems a little hard to hear — without asserting who caused it). Propose calling back with o-kakenaoshi itadaite mo yoroshii deshou ka (could you call back) if they called you; o-kakenaoshi itashimasu (I will call back) if you called them. (4) ENDING: sore dewa, shitsurei itashimasu, then WAIT for the other party to hang up first. Do NOT hang up abruptly. Japanese people notice even the sound of the receiver — hanging up hard is rude. Set the phone down gently.",
     "idiom_glosses": [
       {
         "idiom": "声色を読む",
         "literal": "Đọc sắc giọng nói",
+        "literal_en": "to read the colour of a voice (kowairo o yomu)",
         "meaning": "Cảm nhận cảm xúc qua giọng nói — đặc biệt quan trọng trong phỏng vấn điện thoại nơi không có biểu cảm gương mặt. Không phải cụm dùng trực tiếp, mà là kỹ năng cần có.",
-        "example": "電話面接では声色を読むことが重要でございます。"
+        "meaning_en": "To sense emotion through tone of voice — especially important in a phone interview where there are no facial expressions. Not a phrase to use directly, but a skill you need.",
+        "example": "電話面接では声色を読むことが重要でございます。",
+        "example_en": "In a phone interview, reading the colour of the voice is important."
       },
       {
         "idiom": "電話越し",
         "literal": "Qua điện thoại",
+        "literal_en": "across the phone (denwa-goshi)",
         "meaning": "Sự kết nối qua đường điện — dùng để diễn tả khoảng cách giảm nhờ công nghệ. Phù hợp khi mở đầu cảm ơn cuộc gọi từ xa.",
-        "example": "電話越しではございますが、誠意を持ってお話しさせていただきます。"
+        "meaning_en": "Connection across the wire — used to describe distance reduced by technology. Fitting when opening with thanks for a call from afar.",
+        "example": "電話越しではございますが、誠意を持ってお話しさせていただきます。",
+        "example_en": "Although it is across the phone, I will speak with all sincerity."
       },
       {
         "idiom": "間 (ま) を取る",
         "literal": "Lấy khoảng nghỉ",
+        "literal_en": "to take a pause (ma o toru)",
         "meaning": "Để khoảng lặng có chủ ý — không vội vã trả lời. Trong phỏng vấn điện thoại, ma là vũ khí: nó cho thấy bạn suy nghĩ thay vì lảm nhảm.",
-        "example": "電話面接では適切に間を取ることで、落ち着いた印象を与えられます。"
+        "meaning_en": "To leave a deliberate silence — not rushing to answer. In a phone interview, ma is a weapon: it shows you are thinking rather than rambling.",
+        "example": "電話面接では適切に間を取ることで、落ち着いた印象を与えられます。",
+        "example_en": "In a phone interview, taking pauses appropriately gives a composed impression."
       },
       {
         "idiom": "聞き上手",
         "literal": "Người giỏi lắng nghe",
+        "literal_en": "someone skilled at listening (kiki-jouzu)",
         "meaning": "Người nghe tốt — biết khi nào lặng, biết khi nào hỏi. Quan trọng hơn hanashi-jouzu (người giỏi nói) trong phỏng vấn Nhật.",
-        "example": "面接では話し上手より聞き上手であることが評価されます。"
+        "meaning_en": "A good listener — knows when to stay silent and when to ask. More valued than hanashi-jouzu (a good talker) in a Japanese interview.",
+        "example": "面接では話し上手より聞き上手であることが評価されます。",
+        "example_en": "In an interview, being a good listener is valued more than being a good talker."
       }
     ],
     "cultural_notes_vi": "Phỏng vấn điện thoại ở Nhật khác phương Tây ở năm điểm. (1) THỜI GIAN: phỏng vấn từ VN đến Nhật thường vào sáng sớm hoặc chiều VN (tương đương giờ làm việc Nhật). KHÔNG đề xuất giờ tối Nhật — bị coi là không hiểu múi giờ. Khi đề xuất giờ, luôn nói cả múi giờ: betonamu jikan de gozen juu-ji (nihon jikan de gozen juu-ni-ji). (2) MÔI TRƯỜNG: phải im lặng tuyệt đối. KHÔNG ngồi quán cafe, KHÔNG có tiếng xe ngoài phố, KHÔNG có chó sủa. Nhật rất nhạy với background noise; tiếng ồn nhẹ nhất bị nghe thấy bằng không chuẩn bị. Tốt nhất ngồi phòng đóng cửa với cửa sổ kín. (3) GIỌNG NÓI: nói CHẬM HƠN bình thường 20 phần trăm. Phỏng vấn điện thoại không có visual cues, nên người nghe cần thêm thời gian xử lý. Tốc độ thường: tầm 150 từ/phút. KHÔNG ăn, không uống, không hắt hơi vào điện thoại. (4) GIẤY TỜ: bày sẵn trước mặt: CV, research plan, bảng tính time-zone, danh sách câu hỏi. Phỏng vấn điện thoại bằng bạn được phép có cheat sheet. Tận dụng. (5) GHI CHÉP: ghi chép DUY trong cuộc gọi. Nếu bạn không nghe rõ tên người phỏng vấn, hỏi NGAY ở đầu — không phỏng vấn cả 30 phút mà không biết tên người ta. Tên ghi vào sổ kèm chức vụ — sẽ dùng trong email cảm ơn sau. Khác biệt với VN: ở VN phỏng vấn điện thoại thường casual hơn; ở Nhật, công ty đánh giá phỏng vấn điện thoại NGHIÊM TÚC như phỏng vấn trực tiếp. Nhiều khi đây là vòng đầu lọc 80 phần trăm candidate. Mặc đồ trang trọng kể cả khi họ không thấy — giọng nói thay đổi khi bạn mặc vest và ngồi thẳng (nguyên tắc tâm thân nhất như). Nếu cuộc gọi kết thúc tốt, gửi email cảm ơn trong 24 giờ với tóm tắt 3 điểm thảo luận chính.",
@@ -2641,31 +2767,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn nhận business card từ người Nhật. Hãy thực hiện đầy đủ nghi lễ: nhận hai tay, đọc to tên, xác nhận chức vụ, đặt cẩn thận trên bàn (KHÔNG bỏ vào túi quần). Mô tả từng bước bằng tiếng Nhật khi thực hiện.",
       "Bạn quên mang business card đến event. Hãy xin lỗi MÀ KHÔNG mất mặt — dùng o-watashi dekiru mono wo o-mochi shite orazu, makoto ni moushiwake gozaimasen. Đề xuất gửi email với thông tin liên lạc thay thế, kèm chú thích về dự án bạn quan tâm."
     ],
+    "roleplay_prompts_en": [
+      "You are at an igyoushu kouryuukai (cross-industry networking event) in Tokyo. Approach a Japanese CEO with a 30-second self-introduction — name, company, title, and why you came to this event. Do NOT rush to ask for a business card — wait for the conversation to lead there naturally.",
+      "You receive a business card from a Japanese person. Perform the full ritual: receive with both hands, read the name aloud, confirm the title, place it carefully on the table (do NOT put it in your trouser pocket). Describe each step in Japanese as you do it.",
+      "You forgot to bring business cards to the event. Apologize WITHOUT losing face — use o-watashi dekiru mono wo o-mochi shite orazu, makoto ni moushiwake gozaimasen. Propose sending an email with your contact details instead, with a note about the project you are interested in."
+    ],
     "register_notes": "meishi koukan là nghi lễ trang trọng nhất trong business networking Nhật. Bảy quy tắc: (1) ĐƯA NHẬN HAI TAY — đưa với chữ hướng về phía người nhận, ngón cái không che tên/logo. Một tay bằng vô lễ. (2) KHI NHẬN: dùng nó nhỏ ngữ chodai itashimasu hoặc o-meishi, arigatou gozaimasu. KHÔNG thank you tiếng Anh, KHÔNG moraimasu (cộc lốc). (3) ĐỌC NGAY tên cộng chức vụ trên card to — Sato Yuuichi-sama, kaigai jigyou-bu no buchou de irasshu no desu ne. Nếu không biết đọc kanji tên, hỏi: o-namae wa nan to o-yomi sureba yoroshii deshou ka. KHÔNG nhét card vào túi mà không đọc. (4) ĐẶT CARD TRÊN BÀN cẩn thận trong cuộc nói chuyện — không bỏ vào túi quần (thô tục), không dùng làm gạt tàn (cấm tuyệt đối), không viết lên card. Sau cuộc nói, cất vào danh thiếp dụng cụ (meishi-ire). (5) THỨ TỰ ĐƯA: junior đưa trước, senior đưa sau. Trong VN bạn không biết rank của họ, an toàn là đưa TRƯỚC khi họ đưa — biểu thị sự khiêm nhường. (6) NÓI VỚI HỌ trong câu chuyện sau đó, dùng TÊN cộng sama — Sato-sama. KHÔNG Sato-san trong networking event với người mới gặp. (7) SAU EVENT: trong 24 giờ gửi email theo format: cảm ơn cuộc gặp cộng nhắc một điểm cụ thể họ nói cộng đề xuất next step. Email này kích hoạt card — không có email bằng card bị xếp xó. // TODO: native review — sode furiau mo tashou no en usage in modern Tokyo business setting; kept for cultural depth but some find it old-fashioned.",
+    "register_notes_en": "meishi koukan (business-card exchange) is the most formal ritual in Japanese business networking. Seven rules: (1) GIVE AND RECEIVE WITH BOTH HANDS — present it with the text facing the recipient, your thumb not covering the name/logo. One hand is rude. (2) WHEN RECEIVING: use a low murmured chodai itashimasu or o-meishi, arigatou gozaimasu. No English 'thank you'; no curt moraimasu. (3) READ ALOUD immediately the name plus title on the card — Sato Yuuichi-sama, kaigai jigyou-bu no buchou de irassharu no desu ne. If you cannot read the kanji of the name, ask: o-namae wa nan to o-yomi sureba yoroshii deshou ka. Do NOT pocket the card without reading it. (4) PLACE THE CARD ON THE TABLE carefully during the conversation — not in your trouser pocket (vulgar), not as an ashtray (absolutely forbidden), no writing on it. After the conversation, put it in a card case (meishi-ire). (5) ORDER OF GIVING: the junior gives first, the senior after. In Vietnam you will not know their rank, so it is safest to give BEFORE they do — it signals humility. (6) WHEN SPEAKING about them afterwards, use the NAME plus -sama — Sato-sama. NOT Sato-san with someone newly met at a networking event. (7) AFTER THE EVENT: within 24 hours send an email in this format: thanks for the meeting plus a reference to one specific thing they said plus a proposed next step. This email activates the card — without it, the card is filed away and forgotten.",
     "idiom_glosses": [
       {
         "idiom": "袖触れ合うも他生の縁",
         "literal": "Tay áo chạm nhau cũng là duyên kiếp khác",
+        "literal_en": "even a brush of sleeves is a karmic tie from another life (sode fureau mo tashou no en)",
         "meaning": "Ngay cả chuyện nhỏ như chạm tay áo người lạ cũng là karma từ kiếp trước. Trong networking, dùng để bày tỏ sự trân trọng cuộc gặp tình cờ. Cụm cổ điển, gốc Phật giáo.",
-        "example": "袖触れ合うも他生の縁と申しますので、本日のご縁を大切にさせていただきます。"
+        "meaning_en": "Even something as small as brushing a stranger's sleeve is karma from a past life. In networking, used to express how much you treasure a chance meeting. A classical phrase, Buddhist in origin.",
+        "example": "袖触れ合うも他生の縁と申しますので、本日のご縁を大切にさせていただきます。",
+        "example_en": "Since they say even a brush of sleeves is a karmic tie from another life, I will treasure today's encounter."
       },
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp là duy nhất — phải dồn hết tâm sức như không có lần thứ hai. Gốc trà đạo Sen no Rikyu. Trong networking, bày tỏ sự nghiêm túc với cuộc gặp dù ngắn.",
-        "example": "本日のお出会いを一期一会と捉え、誠意を持って交流させていただきます。"
+        "meaning_en": "Every meeting is unique — you must pour your whole heart in as though there will be no second time. Originating in Sen no Rikyu's tea ceremony. In networking, it expresses seriousness about an encounter, however brief.",
+        "example": "本日のお出会いを一期一会と捉え、誠意を持って交流させていただきます。",
+        "example_en": "Regarding today's meeting as a once-in-a-lifetime encounter, I will engage with all sincerity."
       },
       {
         "idiom": "縁の下の力持ち",
         "literal": "Người gánh sức dưới hiên nhà",
+        "literal_en": "the strong one who holds up the floor beneath the veranda (en no shita no chikara-mochi)",
         "meaning": "Người làm việc không ai thấy nhưng nâng đỡ mọi thứ — biểu tượng sự khiêm nhường Nhật. Trong networking, dùng khi giới thiệu vai trò behind-the-scenes của mình.",
-        "example": "私の業務は縁の下の力持ちでございますが、現場改善に貢献できればと存じます。"
+        "meaning_en": "Someone who does the work no one sees but who holds everything up — a symbol of Japanese humility. In networking, used when introducing your behind-the-scenes role.",
+        "example": "私の業務は縁の下の力持ちでございますが、現場改善に貢献できればと存じます。",
+        "example_en": "My work is that of the unseen support beneath the floor, but I hope to contribute to improvements on the front line."
       },
       {
         "idiom": "渡る世間に鬼はなし",
         "literal": "Đi qua thế gian không gặp quỷ",
+        "literal_en": "there are no demons throughout the world (wataru seken ni oni wa nashi)",
         "meaning": "Trên đời này luôn có người tốt sẵn sàng giúp đỡ. Phù hợp khi bày tỏ lòng biết ơn về sự giúp đỡ bất ngờ ở event.",
-        "example": "渡る世間に鬼はなしと申しますが、本日皆様に親切にしていただき感謝しております。"
+        "meaning_en": "There are always kind people in the world ready to help. Fitting when expressing gratitude for unexpected help at an event.",
+        "example": "渡る世間に鬼はなしと申しますが、本日皆様に親切にしていただき感謝しております。",
+        "example_en": "They say there are no demons throughout the world, and indeed I am grateful for everyone's kindness today."
       }
     ],
     "cultural_notes_vi": "Networking ở Nhật khác phương Tây ở năm điểm. (1) RẤT CÓ CẤU TRÚC — không phải small talk ngẫu nhiên. Có agenda, danh sách người tham dự, thường có MC giới thiệu chính. Đến lễ tân, ký tên, nhận tag tên, lấy chương trình. (2) MOJUSUUKAN (jisan-kan) — bạn mang công ty mình theo, không phải là chính bạn. Khi nói, bạn nói nhân danh công ty: heisha de wa, wareware wa. KHÔNG nói watashi wa XX ga suki desu (tôi thích) — quá cá nhân. (3) NAME CARD HOLDER (meishi-ire): bắt buộc có. Mua loại da đen, không lòe loẹt. Đến event mà cầm card lẻ trong ví/túi quần bằng không chuyên nghiệp. (4) UỐNG RƯỢU (osake): nếu là mixer (konshinkai) sau event, có rượu sake/beer. Quy tắc: rót cho người khác trước (KHÔNG tự rót cho mình), nhận rượu cầm cốc HAI TAY, uống ít — không say. Nếu không uống được, nói o-sake wa yowai mono desu kara (em uống rượu yếu) — chấp nhận được. (5) RỜI EVENT: KHÔNG rời sớm trừ khi báo trước với người mời. Đi tìm host nói honjitsu wa makoto ni arigatou gozaimashita. Hitoashi saki ni shitsurei itashimasu (cảm ơn rất nhiều, em xin phép về trước). Rời lén bằng không lễ tiết. Khác biệt với VN: ở VN networking thường thân mật ngay từ đầu; ở Nhật, giai đoạn làm quen dài (3-5 cuộc gặp), rồi mới đến giai đoạn thân thiết. KHÔNG vội vàng đề xuất hợp tác kinh doanh trong cuộc gặp đầu — bị xem là pushy. Chiến lược chuẩn: cuộc gặp 1 — name card cộng small talk; cuộc 2 — email theo dõi cộng lunch nhẹ; cuộc 3 — discuss potential collaboration; cuộc 4 cộng — concrete proposal. Mỗi cuộc cách nhau 2-4 tuần.",
@@ -2897,31 +3041,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn xin feedback từ HR công ty đã từ chối, họ phản hồi: mid-term strategy understanding could be deeper. Hãy phản hồi cảm ơn — xác nhận đã hiểu, cam kết cải thiện cụ thể (đọc IR reports, tìm hiểu industry trends), giữ cửa mở cho cơ hội tương lai.",
       "Sau 6 tháng, công ty đã từ chối có vị trí mở mới khớp profile bạn. Hãy viết email re-apply — nhắc về lần phỏng vấn trước, kể những gì bạn đã cải thiện từ feedback, ứng tuyển vị trí mới."
     ],
+    "roleplay_prompts_en": [
+      "You have just received an email informing you of a rejection (omiokuri). Reply within 24 hours — give specific thanks, do NOT apologize for having applied, do NOT try to make them change the decision. Propose asking for specific feedback on your weak points to improve. Formal, positive tone.",
+      "You ask the HR of the company that rejected you for feedback, and they reply: your mid-term strategy understanding could be deeper. Reply with thanks — confirm you understood, commit to specific improvement (read IR reports, study industry trends), and keep the door open for a future opportunity.",
+      "After 6 months, the company that rejected you has a new opening that matches your profile. Write a re-application email — recall the previous interview, describe what you have improved based on the feedback, and apply for the new position."
+    ],
     "register_notes": "Phản hồi sau bị từ chối là test register cao nhất — đây là moment người Nhật ĐÁNH GIÁ tư cách. Năm patterns bắt buộc: (1) KHÔNG nói rejection hoặc rejected trong tiếng Nhật — dùng euphemism go-en ga nakatta (không có duyên) hoặc o-miokuri (đưa tiễn — của họ với bạn). KHÔNG dùng fusaiyou (non-hire) tự gọi mình. (2) KHÔNG xin lỗi đã nộp đơn — oubo shite sumimasen là sai. Cảm ơn cơ hội thay vì xin lỗi. (3) XIN FEEDBACK với cụm khiêm tốn makoto ni katte na o-negai dewa gozaimasu ga (đây là yêu cầu vô lễ, nhưng…) cộng sashitsukae nakereba (nếu không phiền) — báo hiệu bạn biết đây là favor. KHÔNG demand feedback. Khoảng 30-50 phần trăm công ty Nhật sẽ phản hồi nếu được hỏi đúng cách; demanding sẽ bị 0 phần trăm phản hồi. (4) KẾT EMAIL với mappitsu nagara, kisha no masumasu no go-hatten wo kokoro yori o-inori moushiagemasu — cụm cố định cuối thư formal, biểu thị lòng tốt với công ty kể cả sau từ chối. (5) MỞ CỬA TƯƠNG LAI: shourai-teki ni go-en ga gozaimashitara, zehi saido oubo sasete itadakitaku — không hứa nhưng để mở khả năng. Một số công ty giữ pool reapply candidates và 30 phần trăm được hire vòng 2. Tránh: jikai mo zehi saiyou shite kudasai (please hire next time — quá demanding), konkai no kettei ni nattoku dekimasen (I don't accept this decision — combat). // TODO: native review — go-jogen is direct; some prefer o-kizuki no ten (something you noticed) for milder ask.",
+    "register_notes_en": "Following up after a rejection is the highest test of register — this is the moment a Japanese counterpart JUDGES your character. Five mandatory patterns: (1) Do NOT say 'rejection' or 'rejected' in Japanese — use the euphemism go-en ga nakatta (it was not meant to be) or o-miokuri (a send-off — what they did to you). Do NOT use fusaiyou (non-hire) about yourself. (2) Do NOT apologize for having applied — oubo shite sumimasen is wrong. Thank them for the opportunity instead of apologizing. (3) ASK FOR FEEDBACK with the humble phrase makoto ni katte na o-negai dewa gozaimasu ga (this is a presumptuous request, but…) plus sashitsukae nakereba (if it is no trouble) — signalling you know this is a favour. Do NOT demand feedback. About 30-50 percent of Japanese companies will respond if asked correctly; demanding gets a 0 percent response. (4) CLOSE THE EMAIL with mappitsu nagara, kisha no masumasu no go-hatten wo kokoro yori o-inori moushiagemasu — a set closing phrase showing goodwill toward the company even after a rejection. (5) LEAVE THE FUTURE OPEN: shourai-teki ni go-en ga gozaimashitara, zehi saido oubo sasete itadakitaku — no promise, but leaving the door open. Some companies keep a pool of reapply candidates and 30 percent are hired the second round. Avoid: jikai mo zehi saiyou shite kudasai (please hire me next time — too demanding), konkai no kettei ni nattoku dekimasen (I don't accept this decision — combative).",
     "idiom_glosses": [
       {
         "idiom": "七転び八起き",
         "literal": "Bảy lần ngã, tám lần đứng dậy",
+        "literal_en": "fall seven times, rise eight (nanakorobi yaoki)",
         "meaning": "Kiên cường — ngã bao nhiêu cũng đứng dậy thêm một lần. Cụm vàng cho phản hồi từ chối: thừa nhận thất bại nhưng cho thấy resilience.",
-        "example": "今回は残念な結果でしたが、七転び八起きの精神で、新たな機会に挑戦してまいります。"
+        "meaning_en": "Resilience — however many times you fall, you stand up one more time. The golden phrase for a post-rejection follow-up: acknowledge the failure but show resilience.",
+        "example": "今回は残念な結果でしたが、七転び八起きの精神で、新たな機会に挑戦してまいります。",
+        "example_en": "This time the result was disappointing, but in the spirit of falling seven times and rising eight, I will take on a new opportunity."
       },
       {
         "idiom": "失敗は成功のもと",
         "literal": "Thất bại là gốc của thành công",
+        "literal_en": "failure is the root of success (shippai wa seikou no moto)",
         "meaning": "Mọi thất bại chứa hạt giống của thành công — học từ thất bại sẽ dẫn đến thành tựu sau. Phù hợp khi xin feedback để cải thiện.",
-        "example": "失敗は成功のもとと申しますので、今回の経験を糧に精進してまいります。"
+        "meaning_en": "Every failure contains the seed of success — learning from failure leads to later achievement. Fitting when asking for feedback in order to improve.",
+        "example": "失敗は成功のもとと申しますので、今回の経験を糧に精進してまいります。",
+        "example_en": "Since they say failure is the root of success, I will use this experience as nourishment and devote myself to improvement."
       },
       {
         "idiom": "捨てる神あれば拾う神あり",
         "literal": "Có thần bỏ thì có thần nhặt",
+        "literal_en": "if there is a god who discards you, there is a god who picks you up (suteru kami areba hirou kami ari)",
         "meaning": "Nếu một cánh cửa đóng thì cánh khác mở — không nên thất vọng quá. Cụm an ủi cổ điển; có thể dùng tự nhủ với chính mình hoặc trong context informal.",
-        "example": "捨てる神あれば拾う神ありと申します。次のご縁を信じて前進してまいります。"
+        "meaning_en": "If one door closes, another opens — do not despair too much. A classical phrase of consolation; can be used to reassure yourself or in an informal context.",
+        "example": "捨てる神あれば拾う神ありと申します。次のご縁を信じて前進してまいります。",
+        "example_en": "They say if there is a god who discards you, there is a god who picks you up. Believing in the next connection, I will move forward."
       },
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau mưa to, đất chặt hơn — sau khó khăn, mọi thứ vững hơn. Nguyên tắc: thất bại làm bạn mạnh hơn. Phù hợp khi nói về growth từ rejection.",
-        "example": "雨降って地固まると申します。今回の経験で、より強い自分になれるよう努めてまいります。"
+        "meaning_en": "After heavy rain the ground is firmer — after hardship, everything is more solid. The principle: failure makes you stronger. Fitting when speaking of growth from rejection.",
+        "example": "雨降って地固まると申します。今回の経験で、より強い自分になれるよう努めてまいります。",
+        "example_en": "They say after the rain the ground hardens. I will strive to become a stronger version of myself through this experience."
       }
     ],
     "cultural_notes_vi": "Văn hóa rejection ở Nhật khác phương Tây ở năm điểm. (1) NGÔN NGỮ ÁM CHỈ — công ty Nhật không nói we rejected you thẳng. Thay vào đó: go-en ga nakatta (không có duyên), o-miokuri (đưa tiễn), konkai wa saiyou wo miokurasete itadaku (lần này xin được không tuyển). Bạn phải hiểu ngầm. (2) HỒI ĐÁP LÀ BẮT BUỘC — KHÔNG im lặng sau email từ chối. Im lặng bằng thô lỗ cộng không chuyên nghiệp cộng không bao giờ được xét tuyển lại. Hồi đáp trong 24-48 giờ. (3) FEEDBACK CÓ ĐƯỢC — khoảng 30-50 phần trăm công ty sẽ cho feedback nếu được hỏi đúng cách. Email phải khiêm tốn (makoto ni katte na o-negai), không demanding, không phòng thủ. (4) RE-APPLY: nhiều công ty Nhật KHÔNG cấm reapply — sau 1-2 năm, với cải tiến rõ rệt, có thể nộp lại. Nhưng phải có CONTEXT trong email reapply: Lần trước em nhận được feedback rằng X. Trong 1 năm qua em đã cải thiện X bằng Y, Z. Nay em xin được nộp đơn lại. Reapply mà không tham chiếu lần trước bằng không nhớ history bằng candidate yếu. (5) NETWORK GIỮ NGUYÊN: nếu người phỏng vấn bạn (interviewer) là cá nhân ấn tượng, có thể connect LinkedIn (cẩn trọng — chỉ sau email cảm ơn) hoặc giữ liên lạc qua email Tết Nhật (nenga mail). Đây là chiến thuật long game — sau 5 năm họ chuyển công ty khác, có thể thành recruiter cho bạn ở công ty mới. Khác biệt với VN: ở VN bị từ chối thường có pháp cắt đứt với công ty đó; ở Nhật, từ chối là pause chứ không end của relationship. Quản lý tốt sau-từ-chối có thể quan trọng hơn ấn tượng trong phỏng vấn.",
@@ -3153,31 +3315,49 @@ export const lessons: JapaneseLesson[] = [
       "Giáo sư đồng ý viết nhưng nói thường tôi cần 3 tuần — bạn chỉ có 2 tuần. Hãy thương lượng MÀ KHÔNG ép — đề xuất giúp giáo sư bằng cách cung cấp draft điểm chính (đặc điểm bạn, dự án bạn đã làm với prof) để giảm workload. Dùng go-futan wo karuku suru tame.",
       "Sau khi nhận thư giới thiệu (genpuu envelope), bạn KHÔNG được mở. Hãy diễn tả lời cảm ơn nhận thư cộng cam kết báo cáo kết quả cộng đề xuất nani-ka o-rei (món quà nhỏ cảm ơn — phong tục VN/Nhật). Đặc biệt nói itadaita suisenjou wa sekinin wo motte teishutsu itashimasu."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself entering the professor's office to ask for a recommendation letter for a MEXT scholarship. Prepare the FOUR ITEMS in Japanese before entering (research plan, transcript, achievement list, university format). On entering, open with o-isogashii tokoro osore irimasu and state the deadline clearly.",
+      "The professor agrees to write it but says I usually need 3 weeks — you only have 2. Negotiate WITHOUT pressuring — offer to help the professor by providing a draft of key points (your characteristics, projects you did with the prof) to lighten the workload. Use go-futan wo karuku suru tame.",
+      "After receiving the recommendation letter (in a genpuu envelope), you may NOT open it. Express thanks for the letter plus a commitment to report the outcome plus a proposal of nani-ka o-rei (a small thank-you gift — a Vietnamese/Japanese custom). In particular, say itadaita suisenjou wa sekinin wo motte teishutsu itashimasu."
+    ],
     "register_notes": "Xin thư giới thiệu là test register cao nhất với giáo sư — bạn đang xin một favor LỚN, kéo dài hàng giờ làm việc của họ. Sáu patterns: (1) ĐẶT LỊCH TRƯỚC qua email — KHÔNG lao vào phòng giáo sư xin. Email với subject 【go-soudan】suisenjou no ken ni tsuite. (2) CHUẨN BỊ FOUR ITEMS không thiếu: research plan/SOP, transcript, achievement list (CV), university recommendation form. Đến tay không bằng thiếu chuyên nghiệp. (3) DEADLINE ĐỀ XUẤT ÍT NHẤT 1 tháng — yêu cầu giáo sư trong 2 tuần là disrespectful. Cụm: teishutsu kigen wa XX de gozaimashite, moshi kanou deshitara, ni-shuukan mae made ni chodai dekireba saiwai de gozaimasu (deadline là XX, nếu có thể, em xin được nhận trước 2 tuần). (4) NHẮC ĐẾN TIỀN/QUÀ THẾ NÀO: trong nhiều khoa Nhật, sau khi giáo sư viết thư, sinh viên đưa món quà nhỏ (orei no shina — bánh kẹo cao cấp, không quá 5000 yên bằng 800K VND). KHÔNG đưa tiền mặt — bị coi là xúc phạm. (5) THƯ KHÔNG ĐƯỢC MỞ: thư giới thiệu thường ở genpuu (sealed envelope) — KHÔNG được mở để xem. Nhật xem việc mở thư đã sealed bằng phá vỡ trust bằng sẽ bị nhớ cả nghề. (6) BÁO CÁO KẾT QUẢ: khi có kết quả (đỗ hay trượt), QUAY LẠI báo cáo — XX ni goukaku itashimashita. Sensei no o-kage de gozaimasu (em đã đỗ XX. Nhờ thầy cả). Đây không phải tùy chọn. Giáo sư đã đầu tư vào bạn; bạn nợ họ kết quả. Cụm gakuon wa kesshite wasuremasen (em sẽ không quên học ơn) là cao điểm thứ tự kính ngữ với giáo sư. // TODO: native review — genpuu is correct; alternate mippuu is for general sealing, not academic context.",
+    "register_notes_en": "Asking for a letter of recommendation is the highest register test with a professor — you are asking for a BIG favour that costs them hours of work. Six patterns: (1) BOOK AHEAD by email — do NOT barge into the professor's office to ask. Email with the subject 【go-soudan】suisenjou no ken ni tsuite. (2) PREPARE FOUR ITEMS with nothing missing: research plan/SOP, transcript, achievement list (CV), the university's recommendation form. Showing up empty-handed reads as unprofessional. (3) PROPOSE A DEADLINE AT LEAST 1 month out — asking the professor within 2 weeks is disrespectful. Phrase: teishutsu kigen wa XX de gozaimashite, moshi kanou deshitara, ni-shuukan mae made ni chodai dekireba saiwai de gozaimasu (the deadline is XX; if possible, I would be grateful to receive it 2 weeks beforehand). (4) HOW TO HANDLE MONEY/GIFTS: in many Japanese departments, after the professor writes the letter the student gives a small gift (orei no shina — high-quality sweets, no more than 5,000 yen). Do NOT give cash — it is read as an insult. (5) THE LETTER MUST NOT BE OPENED: a recommendation letter is usually in a genpuu (sealed envelope) — you may NOT open it to look. Japan regards opening a sealed letter as breaking trust, and it will be remembered for your whole career. (6) REPORT THE OUTCOME: when you have the result (pass or fail), GO BACK and report — XX ni goukaku itashimashita. Sensei no o-kage de gozaimasu (I passed XX. It is thanks to you). This is not optional. The professor invested in you; you owe them the outcome. The phrase gakuon wa kesshite wasuremasen (I will never forget my debt of learning) is the peak of honorific order with a professor.",
     "idiom_glosses": [
       {
         "idiom": "学恩",
         "literal": "Học ơn — ơn giáo dục",
+        "literal_en": "debt of learning — the favour of education (gakuon)",
         "meaning": "Sự biết ơn sâu sắc với người dạy — concept Nho giáo nhập vào Nhật. Khác với gratitude phương Tây ở chỗ là MÓN NỢ kéo dài cả đời. Cụm chuẩn dùng với giáo sư hướng dẫn.",
-        "example": "学恩は決して忘れません。合格しましたら、必ずご報告に伺います。"
+        "meaning_en": "A deep gratitude toward the one who taught you — a Confucian concept absorbed into Japan. It differs from Western gratitude in that it is a DEBT lasting a lifetime. The standard phrase to use with a supervising professor.",
+        "example": "学恩は決して忘れません。合格しましたら、必ずご報告に伺います。",
+        "example_en": "I will never forget my debt of learning. When I pass, I will surely come to report it to you in person."
       },
       {
         "idiom": "三顧の礼",
         "literal": "Lễ ba lần thăm hỏi",
+        "literal_en": "the courtesy of three visits (sanko no rei)",
         "meaning": "Đi ba lần để xin sự giúp đỡ — gốc Tam Quốc Diễn Nghĩa (Lưu Bị xin Khổng Minh ba lần). Biểu tượng sự kiên nhẫn và kính trọng tối đa khi xin favor lớn.",
-        "example": "三顧の礼を尽くす覚悟で、推薦状をお願い申し上げます。"
+        "meaning_en": "Going three times to ask for someone's help — from the Romance of the Three Kingdoms (Liu Bei visiting Zhuge Liang three times). A symbol of patience and the utmost respect when asking a great favour.",
+        "example": "三顧の礼を尽くす覚悟で、推薦状をお願い申し上げます。",
+        "example_en": "Prepared to show the courtesy of three visits, I humbly ask you for a letter of recommendation."
       },
       {
         "idiom": "石の上にも三年",
         "literal": "Trên đá cũng phải ba năm",
+        "literal_en": "three years even on a stone (ishi no ue ni mo san-nen)",
         "meaning": "Kiên trì — ngồi trên đá lạnh ba năm thì đá cũng ấm. Phù hợp khi nói về quãng thời gian học cùng giáo sư trước khi xin recommendation.",
-        "example": "三年間ご指導いただき、石の上にも三年と申すように、今ようやく次の段階に進めるかと存じます。"
+        "meaning_en": "Perseverance — sit on a cold stone for three years and even the stone grows warm. Fitting when speaking of the stretch of time you studied under the professor before asking for a recommendation.",
+        "example": "三年間ご指導いただき、石の上にも三年と申すように、今ようやく次の段階に進めるかと存じます。",
+        "example_en": "Having been under your guidance for three years, as they say 'three years even on a stone', I believe I can finally move on to the next stage."
       },
       {
         "idiom": "恩を仇で返す",
         "literal": "Lấy thù trả ơn",
+        "literal_en": "to repay kindness with enmity (on o ada de kaesu)",
         "meaning": "Phản bội ân huệ — điều cấm kỵ tuyệt đối. KHÔNG dùng trực tiếp trong email/cuộc nói; chỉ là nguyên tắc tránh né. Sau khi nhận recommendation, nếu im lặng không báo cáo kết quả bằng behavior gần với cụm này.",
-        "example": "推薦状を頂戴した後、結果をご報告しないことは恩を仇で返すような行為でございますので、必ずお伺いいたします。"
+        "meaning_en": "To betray a favour — an absolute taboo. Do NOT use it directly in an email or conversation; it is only a principle to avoid. After receiving a recommendation, staying silent and not reporting the outcome is behaviour close to this phrase.",
+        "example": "推薦状を頂戴した後、結果をご報告しないことは恩を仇で返すような行為でございますので、必ずお伺いいたします。",
+        "example_en": "After receiving a letter of recommendation, failing to report the outcome would be an act akin to repaying kindness with enmity, so I will surely come to tell you."
       }
     ],
     "cultural_notes_vi": "Recommendation letter ở Nhật khác phương Tây ở năm điểm. (1) GIÁO SƯ VIẾT THỰC SỰ — không phải bạn draft rồi giáo sư ký. Giáo sư Nhật đọc kỹ research plan, suy nghĩ về quan hệ với bạn, viết letter cá nhân. KHÔNG được đề xuất em viết draft rồi thầy chỉnh — bị coi là không tôn trọng. (2) THƯ DÀI VÀ CỤ THỂ — 1-2 trang A4, kể detailed về dự án bạn đã làm, traits cá nhân quan sát, comparison với students khác. Khác recommendation generic phương Tây kiểu XX is a good student. (3) THƯƠNG MẠI HÓA NGẦM — nếu giáo sư viết thư cho bạn vào trường top, đó là PHIẾU BẦU CỦA HỌ với reputation cá nhân. Họ chỉ làm cho student họ TIN sẽ đại diện họ tốt. Vì vậy, sau khi vào trường top, bạn KHÔNG ĐƯỢC làm gì gây mất mặt giáo sư cũ — drop out, scandal, etc. Hành vi của bạn ở trường mới ảnh hưởng đến reputation của giáo sư cũ trong cộng đồng học thuật. (4) THƯỜNG ĐƯỢC TRẢ LỜI YES — giáo sư Nhật rất ít từ chối viết recommendation cho student của mình. Nhưng nếu họ DO-DỰ trong câu trả lời (kangaesasete kudasai), đó là red flag — họ đang muốn từ chối nhưng không nói thẳng. Đừng push. (5) BÁO CÁO KẾT QUẢ: BẮT BUỘC quay lại báo dù đỗ hay trượt. Đỗ — đem cake thank-you và báo. Trượt — báo cộng cảm ơn cộng chia sẻ kế hoạch tiếp theo. Im lặng bằng nợ tích lũy không trả bằng sẽ KHÔNG được viết letter lần thứ 2. Khác biệt với VN: ở VN sinh viên có thể có nhiều người viết recommendation casual; ở Nhật, 1-2 giáo sư viết recommendation official và serious. Quan hệ thầy-trò Nhật là quan hệ KÉO DÀI — giáo sư là người sẽ viết recommendation cho bạn ở 5 năm, 10 năm, 20 năm sau. Đầu tư vào quan hệ này nghiêm túc hơn bất kỳ networking nào.",
@@ -3409,31 +3589,49 @@ export const lessons: JapaneseLesson[] = [
       "Giáo sư hỏi naze kono kenkyuu ga juuyou na no ka (sao nghiên cứu này quan trọng?). Hãy trả lời với CẤU TRÚC 3 tầng: vấn đề thực tế ở VN, khoảng trống trong literature, cách bạn đề xuất lấp khoảng trống. Dùng cụm to iu kanten kara (từ góc nhìn).",
       "Giáo sư đề xuất bạn xem xét hướng khác (X) thay vì hướng bạn đang theo (Y). Hãy phản hồi cởi mở MÀ KHÔNG bỏ ngay hướng Y — kichou na go-shisa wo arigatou gozaimasu. X to iu houkou mo kyoumibukaku zonjimasu. Ichido ryouhou no kanousei wo seiri sasete itadaite mo yoroshii deshou ka."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself entering the office of a target professor (kenkyuushitsu houmon). Introduce your research direction in 2 minutes — it must tie specifically to one of that professor's papers (title plus year plus the point you found interesting). Do NOT say a generic 'I like your research'.",
+      "The professor asks naze kono kenkyuu ga juuyou na no ka (why is this research important?). Answer with a 3-layer STRUCTURE: the real-world problem in Vietnam, the gap in the literature, how you propose to fill the gap. Use the phrase to iu kanten kara (from the standpoint of).",
+      "The professor suggests you consider a different direction (X) instead of the one you are pursuing (Y). Respond open-mindedly WITHOUT abandoning Y on the spot — kichou na go-shisa wo arigatou gozaimasu. X to iu houkou mo kyoumibukaku zonjimasu. Ichido ryouhou no kanousei wo seiri sasete itadaite mo yoroshii deshou ka."
+    ],
     "register_notes": "Trao đổi học thuật với giáo sư mục tiêu (chưa phải supervisor) khác trao đổi với supervisor đang dạy bạn ở chỗ register CAO HƠN MỘT BẬC. Năm patterns: (1) Mở đầu ALWAYS bằng tự giới thiệu cộng ai giới thiệu bạn (yamada-sensei kara go-shoukai wo itadakimashita) — networking ở Nhật chạy qua introducer; nói tên introducer làm giáo sư mới đặt bạn vào context. (2) Dùng động từ học thuật kenjougo: haidoku suru (đọc — của bài báo của giáo sư), haichou suru (nghe — bài thuyết trình của họ), ukagau (hỏi/đến). KHÔNG yomimashita với bài báo của giáo sư — phải haidoku itashimashita. (3) Khi nói research interest, dùng cấu trúc watashi no kenkyuu kanshin wa, ni kansuru mono de gozaimasu — KHÔNG kenkyuu shitai desu (quá yếu/sinh viên). (4) Khi đặt câu hỏi về research của giáo sư, dùng o-sashitsukae nakereba (nếu không phiền) hoặc sashitsukae nai han'i de (trong phạm vi không phiền) — báo hiệu bạn biết một số research là confidential. KHÔNG hỏi về kinh phí hoặc collaborator names trừ khi giáo sư mở đề. (5) Khi đồng ý hoặc cảm ơn ý kiến, dùng kichou na go-shisa wo arigatou gozaimasu (cảm ơn ý kiến quý báu — thay yoi adobaisu desu bằng register chuẩn). go-shisa là thuật ngữ học thuật cao hơn adobaisu. // TODO: native review — kenkyuu kanshin phrasing; some labs prefer kenkyuu te-ma or risa-chi intaresuto (loanword in academic context).",
+    "register_notes_en": "An academic exchange with a target professor (not yet your supervisor) differs from talking with the supervisor who is teaching you in that the register is ONE TIER HIGHER. Five patterns: (1) ALWAYS open with a self-introduction plus who introduced you (yamada-sensei kara go-shoukai wo itadakimashita) — networking in Japan runs through an introducer; naming the introducer places you in context for the new professor. (2) Use academic kenjougo verbs: haidoku suru (to read — of the professor's paper), haichou suru (to listen — to their presentation), ukagau (to ask/come). Do NOT yomimashita for the professor's paper — it must be haidoku itashimashita. (3) When stating a research interest, use the structure watashi no kenkyuu kanshin wa, ni kansuru mono de gozaimasu — NOT kenkyuu shitai desu (too weak/student-like). (4) When asking a question about the professor's research, use o-sashitsukae nakereba (if it is no trouble) or sashitsukae nai han'i de (within the bounds that cause no trouble) — signalling that you know some research is confidential. Do NOT ask about funding or collaborator names unless the professor opens the topic. (5) When agreeing with or thanking them for an opinion, use kichou na go-shisa wo arigatou gozaimasu (thank you for the valuable insight — replacing yoi adobaisu desu with the proper register). go-shisa is a higher academic term than adobaisu.",
     "idiom_glosses": [
       {
         "idiom": "温故知新",
         "literal": "Ôn cũ biết mới",
+        "literal_en": "review the old to know the new (onko chishin)",
         "meaning": "Học từ quá khứ để hiểu hiện tại — gốc Khổng Tử. Trong research, dùng để bày tỏ sự kính trọng với literature trước đó và sự tiếp nối nghiêm túc.",
-        "example": "先生のこれまでのご研究を温故知新の精神で学ばせていただきたく存じます。"
+        "meaning_en": "Learn from the past to understand the present — from Confucius. In research, used to express respect for prior literature and serious continuity.",
+        "example": "先生のこれまでのご研究を温故知新の精神で学ばせていただきたく存じます。",
+        "example_en": "I would like to be allowed to study your prior research in the spirit of reviewing the old to know the new."
       },
       {
         "idiom": "千里の道も一歩から",
         "literal": "Đường nghìn dặm bắt đầu từ một bước",
+        "literal_en": "even a thousand-league road begins with a single step (senri no michi mo ippo kara)",
         "meaning": "Việc lớn từ bước nhỏ — bày tỏ khiêm tốn và sẵn sàng học từ đầu. Phù hợp khi giáo sư khen tiếng Nhật của bạn (đáp khiêm nhường).",
-        "example": "千里の道も一歩からと申しますので、入学までにさらに研鑽を積んでまいります。"
+        "meaning_en": "Great undertakings begin with a small step — expressing humility and a readiness to learn from the ground up. Fitting when the professor praises your Japanese (a humble reply).",
+        "example": "千里の道も一歩からと申しますので、入学までにさらに研鑽を積んでまいります。",
+        "example_en": "Since they say even a thousand-league road begins with one step, I will accumulate further scholarship before enrollment."
       },
       {
         "idiom": "啐啄同時",
         "literal": "Mổ trứng cùng lúc",
+        "literal_en": "the chick and hen peck at the same moment (sottaku doji)",
         "meaning": "Khoảnh khắc gà mẹ và gà con cùng mổ vỏ trứng — gốc Zen. Biểu thị sự đồng điệu hoàn hảo giữa thầy-trò: trò sẵn sàng học, thầy sẵn sàng dạy. Cụm cao cấp dùng khi xác lập mối quan hệ học trò mới.",
-        "example": "啐啄同時の機を捉え、先生のご指導を仰ぎたく存じます。"
+        "meaning_en": "The moment the mother hen and the chick peck the eggshell at the same time — Zen in origin. It signifies a perfect attunement between teacher and student: the student ready to learn, the teacher ready to teach. A high-level phrase used when establishing a new mentor relationship.",
+        "example": "啐啄同時の機を捉え、先生のご指導を仰ぎたく存じます。",
+        "example_en": "Seizing the moment of the chick and hen pecking together, I would like to seek your guidance."
       },
       {
         "idiom": "井の中の蛙大海を知らず",
         "literal": "Ếch trong giếng không biết biển lớn",
+        "literal_en": "a frog in a well does not know the great ocean (i no naka no kawazu taikai o shirazu)",
         "meaning": "Người chỉ biết thế giới hẹp không hiểu rộng lớn ngoài kia. Dùng để giải thích vì sao bạn cần ra ngoài VN học — không bằng lòng với cái giếng hiện tại.",
-        "example": "ベトナム国内の研究のみでは井の中の蛙となります。日本での研鑽を通じ、視野を広げたく存じます。"
+        "meaning_en": "Someone who knows only a narrow world cannot grasp the vastness beyond. Used to explain why you need to leave Vietnam to study — not content with your current well.",
+        "example": "ベトナム国内の研究のみでは井の中の蛙となります。日本での研鑽を通じ、視野を広げたく存じます。",
+        "example_en": "With only domestic research in Vietnam I would be a frog in a well. Through scholarship in Japan, I wish to broaden my horizons."
       }
     ],
     "cultural_notes_vi": "kenkyuushitsu houmon (lab visit) là nghi lễ quan trọng nhất trong việc xin vào lab tiến sĩ ở Nhật. Khác phương Tây ở năm điểm. (1) ĐÒI HỎI INTRODUCER — không tự dưng email cold giáo sư xin gặp. Phải có người Nhật quen biết (giáo sư hiện tại, alumni, contact qua MEXT) giới thiệu trước. Email mở đầu: XX-sensei yori go-shoukai itadakimashita, to moushimasu. Cold email vào prof Nhật top tier có rate phản hồi dưới 5 phần trăm. (2) ĐỌC SÂU 3-5 BÀI BÁO GẦN NHẤT của giáo sư trước cuộc gặp — biết tựa đề, methodology, kết luận. Khi vào phòng, nhắc bài cụ thể với năm và điểm thú vị: sensei's 2023 paper on XX — particularly the section. KHÔNG biết bài nào bằng câu trả lời generic bằng giáo sư đánh giá thấp ngay. (3) RESEARCH FIT trên GPA trên NGÔN NGỮ. Giáo sư Nhật chọn student bằng research fit chính, không bằng điểm số. Một N3 student với research fit perfect được ưu tiên hơn N1 student với fit yếu. (4) KHIÊM TỐN VỀ THÀNH TÍCH MÌNH — không khoe publications, awards, GPA top. Phong cách Nhật là để giáo sư PHÁT HIỆN ra điểm mạnh của bạn, không phải bạn pitch chúng. Nếu giáo sư hỏi cụ thể về achievement, mới trả lời ngắn gọn. (5) FOLLOW UP TRONG 24 GIỜ — email cảm ơn với tóm tắt thảo luận cộng research plan v2 (đã refine theo feedback của giáo sư trong cuộc gặp). Email này là real interview — giáo sư đánh giá tốc độ phản hồi, chất lượng refine, và sự nhạy cảm với feedback của họ. Khác biệt với VN: ở VN sinh viên thường tiếp cận giáo sư đẳng cấp ngang hàng hơn; ở Nhật, vai trò deshi (đệ tử) vẫn còn — bạn không phải consumer của education, bạn enter the lineage của giáo sư. Khi giáo sư đồng ý nhận bạn, đó là cam kết kéo dài cuộc đời nghề nghiệp — họ sẽ viết recommendation cho bạn ở năm thứ 5, 10, 20 sau khi tốt nghiệp. Đầu tư tỷ lệ thuận với weight của decision.",
@@ -3665,31 +3863,49 @@ export const lessons: JapaneseLesson[] = [
       "Sếp Nhật than phiền về tiếng ồn xe máy ngoài đường. Hãy phản hồi MÀ KHÔNG biện hộ — thừa nhận, giải thích context văn hóa ngắn gọn (đây là đặc trưng HCM), đề xuất tuyến đường ít kẹt. KHÔNG nói VN tốt hơn nơi khác. Dùng cụm shitsurei wo o-kake shi, moushiwake gozaimasen.",
       "Cuối ngày, sếp hỏi muốn ăn tối ở đâu. Đề xuất nhà hàng Nhật chuẩn HCM (như Sushi Hokkaido, Hokkien) MÀ không áp đặt — đề xuất 2 lựa chọn (Nhật / Việt) và để sếp chọn. Dùng o-kosomi ni o-makase itashimasu (em xin để theo ý thích của sếp)."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself meeting your Japanese boss at Tan Son Nhat airport. Open the meeting with o-tsukaresama de gozaimasu plus enro harubaru. Thank the boss for coming, ask about the flight, offer to take the luggage. Tone: kenjougo for your own actions, sonkeigo for the boss's.",
+      "The Japanese boss complains about the noise of motorbikes outside. Respond WITHOUT defending — acknowledge, give brief cultural context (this is characteristic of Ho Chi Minh City), propose a less congested route. Do NOT say Vietnam is better than anywhere else. Use the phrase shitsurei wo o-kake shi, moushiwake gozaimasen.",
+      "At the end of the day, the boss asks where to have dinner. Suggest a proper Japanese restaurant in Ho Chi Minh City (such as Sushi Hokkaido) WITHOUT imposing — offer 2 options (Japanese / Vietnamese) and let the boss choose. Use o-konomi ni o-makase itashimasu (I leave it to your preference)."
+    ],
     "register_notes": "Khi VN là host và sếp Nhật là khách, register có 4 đặc trưng. (1) BẢO QUẢN KEIGO MẶC DÙ Ở NHÀ MÌNH — VN là host nhưng sếp vẫn là sếp. KHÔNG nới keigo vì lý do địa lý. Cụm chuẩn arrival: o-tsukaresama de gozaimasu (cảm ơn sếp đã nỗ lực). (2) CỤM ĐÓN TIẾP CỐ ĐỊNH: enro harubaru o-koshi itadaki, makoto ni arigatou gozaimasu (cảm ơn sếp đã đến từ xa). enro harubaru là cụm cố định cho khách đến từ nước khác — bỏ cụm này bằng chào không đầy đủ. (3) KHIÊM TỐN VỀ BẢN THÂN VÀ ĐẤT NƯỚC: KHÔNG khoe HCM/VN. Khi sếp khen, dùng osore irimasu (em không xứng) hoặc tonde mo gozaimasen (không có gì). Khi sếp than phiền, KHÔNG biện hộ — thừa nhận và đề xuất giải pháp. (4) CỤM CHỦ ĐỘNG SERVICE: nani-ka go-fuben ga gozaimashitara, itsudemo o-mooshitsuke kudasai (nếu có gì bất tiện, xin sếp cứ bảo) — câu nên nói LẶP LẠI mỗi 2-3 giờ trong cuộc thăm. Cụm hỏi nhu cầu: o-kosomi wa go-zaimasu deshou ka (sếp có sở thích gì không?). // TODO: native review — enro harubaru phrasing for short flights (6h Tokyo-HCM); some prefer just toui michinori for shorter distances.",
+    "register_notes_en": "When Vietnam is the host and your Japanese boss is the guest, the register has 4 features. (1) MAINTAIN KEIGO EVEN ON YOUR OWN TURF — Vietnam is the host but the boss is still the boss. Do NOT relax keigo for geographic reasons. The standard arrival phrase: o-tsukaresama de gozaimasu (thank you for your effort, boss). (2) SET WELCOMING PHRASES: enro harubaru o-koshi itadaki, makoto ni arigatou gozaimasu (thank you for coming all this way). enro harubaru is the set phrase for a guest arriving from another country — omitting it makes the greeting incomplete. (3) BE HUMBLE ABOUT YOURSELF AND YOUR COUNTRY: do NOT boast about Ho Chi Minh City/Vietnam. When the boss praises something, use osore irimasu (I am not worthy) or tonde mo gozaimasen (not at all). When the boss complains, do NOT defend — acknowledge and propose a solution. (4) PROACTIVE SERVICE PHRASES: nani-ka go-fuben ga gozaimashitara, itsudemo o-mooshitsuke kudasai (if anything is inconvenient, please just tell me) — a line you should REPEAT every 2-3 hours during the visit. The phrase for asking about needs: o-konomi wa go-zaimasu deshou ka (do you have any preferences?).",
     "idiom_glosses": [
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp là duy nhất — gốc trà đạo Sen no Rikyu. Khi sếp Nhật đến VN lần đầu, dùng cụm này để bày tỏ sự trân trọng cuộc thăm.",
-        "example": "山田部長のベトナムご訪問を一期一会の機会と捉え、誠心誠意ご対応させていただきます。"
+        "meaning_en": "Every meeting is unique — originating in Sen no Rikyu's tea ceremony. When your Japanese boss visits Vietnam for the first time, use this phrase to express how much you treasure the visit.",
+        "example": "山田部長のベトナムご訪問を一期一会の機会と捉え、誠心誠意ご対応させていただきます。",
+        "example_en": "Regarding Manager Yamada's visit to Vietnam as a once-in-a-lifetime encounter, I will attend to it with all sincerity."
       },
       {
         "idiom": "おもてなし",
         "literal": "Hospitality (lòng tiếp khách kiểu Nhật)",
+        "literal_en": "omotenashi (Japanese-style hospitality)",
         "meaning": "Khái niệm hospitality đặc trưng Nhật — chăm lo cho khách không cần nói ra (proactive hospitality). VN khi host nên bày tỏ omotenashi spirit dù khái niệm gốc Nhật.",
-        "example": "ベトナム流のおもてなしの心で、山田部長をお迎えいたします。"
+        "meaning_en": "The distinctively Japanese concept of hospitality — caring for the guest without needing to be told (proactive hospitality). When Vietnam is the host, you should show the omotenashi spirit even though the concept is originally Japanese.",
+        "example": "ベトナム流のおもてなしの心で、山田部長をお迎えいたします。",
+        "example_en": "I will welcome Manager Yamada with the Vietnamese-style spirit of omotenashi."
       },
       {
         "idiom": "遠路はるばる",
         "literal": "Đường xa lê thê",
+        "literal_en": "all the long way (enro harubaru)",
         "meaning": "Cụm cố định chào khách đến từ xa — không phải idiom truyền thống nhưng là chuẩn mực bắt buộc khi đón khách international. Bỏ qua bằng thiếu lễ.",
-        "example": "遠路はるばるベトナムまでお越しいただき、誠にありがとうございます。"
+        "meaning_en": "A set phrase to greet a guest who has come from afar — not a traditional idiom but a mandatory norm when receiving an international guest. Omitting it is a lapse of courtesy.",
+        "example": "遠路はるばるベトナムまでお越しいただき、誠にありがとうございます。",
+        "example_en": "Thank you most sincerely for coming all the long way to Vietnam."
       },
       {
         "idiom": "袖振り合うも他生の縁",
         "literal": "Tay áo chạm nhau cũng là duyên kiếp khác",
+        "literal_en": "even a brush of sleeves is a karmic tie from another life (sode furiau mo tashou no en)",
         "meaning": "Mỗi cuộc gặp dù nhỏ cũng là duyên — gốc Phật giáo. Trong context business, dùng để diễn tả tâm trạng cảm kích khi sếp đến thăm.",
-        "example": "袖振り合うも他生の縁と申しますが、ベトナムでお会いできること、大変光栄に存じます。"
+        "meaning_en": "Every meeting, however small, is a karmic tie — Buddhist in origin. In a business context, used to express the gratitude you feel when the boss comes to visit.",
+        "example": "袖振り合うも他生の縁と申しますが、ベトナムでお会いできること、大変光栄に存じます。",
+        "example_en": "They say even a brush of sleeves is a karmic tie from another life — I am deeply honoured to be able to meet you here in Vietnam."
       }
     ],
     "cultural_notes_vi": "Đón sếp Nhật ở VN khác đón đối tác phương Tây ở năm điểm. (1) ĐẾN SÂN BAY: BẮT BUỘC. Dù sếp tự đặt khách sạn, dù sếp nói không cần, VN host phải đến sân bay đón. KHÔNG cử taxi đi đón — phải MẶT BẠN ở cửa ra. Đứng ở cửa ra với bảng tên tiếng Nhật (romaji không đủ). Cúi 30 độ khi gặp. (2) KÉO HÀNH LÝ: BẮT BUỘC offer kéo hành lý. Sếp sẽ từ chối lần đầu — vẫn đề xuất lần thứ hai mạnh hơn. Sau lần thứ hai, nếu vẫn từ chối, cầm 1 cái nhỏ thôi (laptop bag). KHÔNG để sếp tự kéo nhiều hành lý. (3) THỜI GIAN BIỂU IN SẴN: chuẩn bị schedule song ngữ (Nhật-Anh) với thời gian cộng địa điểm cộng tên người gặp. Đưa cho sếp khi vào xe. Sếp Nhật thích biết trước MỌI thứ — surprise bằng stress. (4) KHÔNG ĐỀ XUẤT QUÁ NHIỀU LỰA CHỌN cho ăn: hỏi 2 lựa chọn (Nhật / Việt) thì đủ. Hỏi 5 lựa chọn bằng không quyết định bằng stress cho sếp jetlag. Default an toàn: ngày 1 bằng Nhật (sếp jetlag), ngày 2 bằng VN. (5) GIẤY VIỆC PHẢI IN: KHÔNG show iPad/laptop slides ở quán cafe — nhiều sếp Nhật vẫn thích giấy. In schedule, factory map, attendance list. Khác biệt với VN: ở VN host thường welcoming bằng food và alcohol; ở Nhật, host welcoming bằng PROCESS và ATTENTION TO DETAIL. Hỏi sếp cảm thấy thế nào mỗi vài giờ là tốt; im lặng và assume sếp ổn là không tốt. Ngày cuối, BẮT BUỘC tiễn ra sân bay — ngay cả khi sếp tự gọi taxi được. Tiễn ra sân bay là dấu cuối của omotenashi.",
@@ -3921,31 +4137,49 @@ export const lessons: JapaneseLesson[] = [
       "Bữa tối, khách Nhật đề xuất uống sake nhưng bạn không uống được. Hãy từ chối khéo trong văn hóa Nhật — KHÔNG nói thẳng iie. Dùng o-sake wa yowai mono desu kara, jusu de kanpai sasete itadaite mo yoroshii deshou ka (em rượu yếu, xin được cụng ly bằng nước trái cây).",
       "Cuối ngày, đưa khách ra sân bay tiễn về Nhật. Hãy nói lời tạm biệt với cụm honjitsu wa makoto ni arigatou gozaimashita cộng lời chúc chuyến bay an toàn cộng cụm closing kongo to mo, kawaranu go-hiiki no hodo, nanitozo yoroshiku onegai moushiagemasu (xin được hoan nghênh sự ưu ái không đổi của khách trong tương lai)."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself taking a Japanese client on a factory tour. Introduce the production line in B2 Japanese — line name, product, capacity, quality control. When the client asks a technical question, do NOT pretend to know — use kakunin shite mairimasu (I will confirm and come back with an answer).",
+      "At dinner, the Japanese client suggests drinking sake but you cannot drink. Decline gracefully within Japanese culture — do NOT say a flat iie. Use o-sake wa yowai mono desu kara, jusu de kanpai sasete itadaite mo yoroshii deshou ka (I am weak with alcohol, may I be allowed to toast with juice).",
+      "At the end of the day, see the client off to the airport. Say goodbye with the phrase honjitsu wa makoto ni arigatou gozaimashita plus a wish for a safe flight plus the closing phrase kongo to mo, kawaranu go-hiiki no hodo, nanitozo yoroshiku onegai moushiagemasu (we ask for your continued, unchanging patronage in the future)."
+    ],
     "register_notes": "Khi tiếp khách Nhật business, register cao hơn cả khi tiếp sếp — vì khách bằng REVENUE bằng trên cả hierarchy nội bộ. Năm patterns: (1) GỌI KHÁCH BẰNG TÊN cộng sama, KHÔNG san. Lặp tên trong câu chuyện: sato-sama no go-iken wo o-kikase itadakemasu deshou ka. Nhắc tên bằng thể hiện tôn trọng cá nhân. (2) DÙNG ONSHA cho công ty khách trong lúc nói (heisha cho công ty mình). Nhầm bằng lỗi cấp 0. (3) CỤM CỐ ĐỊNH KẾT THÚC: kongo to mo, kawaranu go-hiiki no hodo, nanitozo yoroshiku onegai moushiagemasu (xin được hoan nghênh sự ưu ái không đổi trong tương lai) — go-hiiki là từ business cổ điển không thể bỏ. Bỏ qua bằng quan hệ business kết thúc. (4) APOLOGY PATTERNS đặc biệt cho khách: dù không có lỗi cụ thể, dùng o-tesuu wo o-kake itashimashite, makoto ni moushiwake gozaimasen (em đã làm phiền khách, xin lỗi). Đây là apologize cho situation, không phải fault. (5) ĐỀ XUẤT KHÔNG ÉP: dùng moshi go-tsugou ga yoroshikereba (nếu thuận tiện) hoặc go-jikan ga yurusebe (nếu thời gian cho phép) — báo hiệu bạn không ép. Nhật ghét feeling phải làm gì. // TODO: native review — okyakusama wa kamisama desu phrasing — câu cũ của Mihohashi Haruo (1960s), một số người Nhật trẻ thấy outdated; nên dùng cẩn thận, có thể dùng okyakusama wo daiichi ni thay thế.",
+    "register_notes_en": "When hosting a Japanese business client, the register is even higher than when hosting your boss — because a client equals revenue and ranks above the internal hierarchy. Five patterns: (1) ADDRESS THE CLIENT BY NAME plus -sama, NOT -san. Repeat the name in the conversation: sato-sama no go-iken wo o-kikase itadakemasu deshou ka. Saying the name shows personal respect. (2) USE ONSHA for the client's company while speaking (heisha for your own). Confusing them is a level-0 error. (3) SET CLOSING PHRASE: kongo to mo, kawaranu go-hiiki no hodo, nanitozo yoroshiku onegai moushiagemasu (we ask for your continued, unchanging patronage going forward) — go-hiiki is a classical business word that cannot be dropped. Omitting it ends the business relationship. (4) SPECIAL APOLOGY PATTERNS for clients: even with no specific fault, use o-tesuu wo o-kake itashimashite, makoto ni moushiwake gozaimasen (I have caused you trouble, I am sorry). This apologizes for the situation, not a fault. (5) PROPOSE WITHOUT PRESSURING: use moshi go-tsugou ga yoroshikereba (if it is convenient) or go-jikan ga yurusebe (if time permits) — signalling no pressure. Japanese people dislike the feeling of being made to do something.",
     "idiom_glosses": [
       {
         "idiom": "お客様は神様です",
         "literal": "Khách là thần linh",
+        "literal_en": "the customer is god (o-kyaku-sama wa kamisama desu)",
         "meaning": "Khách hàng quan trọng nhất — gốc câu hát của Mihohashi Haruo 1960s. Đã thành phương châm business Nhật. Trong context này, có thể nhắc đến nhưng KHÔNG nên áp đặt vì một số người Nhật trẻ đã chuyển sang thấy câu này outdated.",
-        "example": "お客様は神様という精神で、最高の品質をお届けいたします。"
+        "meaning_en": "The customer matters most — originating in a 1960s song by Haruo Minami. It became a Japanese business maxim. In this context you may allude to it but should NOT impose it, since some younger Japanese now find it outdated.",
+        "example": "お客様は神様という精神で、最高の品質をお届けいたします。",
+        "example_en": "In the spirit that the customer is god, we will deliver the highest quality."
       },
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — gốc trà đạo. Áp dụng vào business client interaction: mỗi đơn hàng, mỗi cuộc gặp với khách hàng quan trọng đều phải dồn 100 phần trăm.",
-        "example": "一期一会の精神で、お一人お一人のお客様に最高のサービスをお届けしたく存じます。"
+        "meaning_en": "Every meeting is unique — from the tea ceremony. Applied to client interaction: every order, every meeting with an important customer demands 100 percent.",
+        "example": "一期一会の精神で、お一人お一人のお客様に最高のサービスをお届けしたく存じます。",
+        "example_en": "In the spirit of a once-in-a-lifetime encounter, I would like to deliver the very best service to each and every customer."
       },
       {
         "idiom": "ご贔屓に",
         "literal": "Sự ưu ái / favoritism",
+        "literal_en": "with your patronage (go-hiiki ni)",
         "meaning": "Cụm business cố điển — biểu thị mong muốn khách hàng tiếp tục ủng hộ. Từ thời Edo, gốc kabuki theater. Cụm chuẩn closing trong mọi business interaction.",
-        "example": "今後とも変わらぬご贔屓のほど、何卒よろしくお願い申し上げます。"
+        "meaning_en": "A classical business phrase — expressing the wish for a customer's continued support. From the Edo period, originating in kabuki theatre. The standard closing phrase in any business interaction.",
+        "example": "今後とも変わらぬご贔屓のほど、何卒よろしくお願い申し上げます。",
+        "example_en": "We sincerely ask for your continued, unchanging patronage going forward."
       },
       {
         "idiom": "袖振り合うも他生の縁",
         "literal": "Tay áo chạm nhau cũng là duyên kiếp khác",
+        "literal_en": "even a brush of sleeves is a karmic tie from another life (sode furiau mo tashou no en)",
         "meaning": "Mỗi mqh, dù bắt đầu nhỏ, đều là karma. Dùng khi muốn nâng tầm relationship business từ transaction lên kết nối có ý nghĩa.",
-        "example": "袖振り合うも他生の縁と申します。今回のお取引を、ぜひ長いお付き合いに発展させていただきたく存じます。"
+        "meaning_en": "Every relationship, however small its start, is karma. Used when you wish to elevate a business relationship from a transaction to a meaningful connection.",
+        "example": "袖振り合うも他生の縁と申します。今回のお取引を、ぜひ長いお付き合いに発展させていただきたく存じます。",
+        "example_en": "They say even a brush of sleeves is a karmic tie from another life. I would very much like to develop this transaction into a long relationship."
       }
     ],
     "cultural_notes_vi": "Tiếp khách business Nhật ở VN khác tiếp khách Tây ở 6 điểm. (1) THỜI GIAN: đến SỚM 15 phút (không 5, không 30) ở nơi gặp đầu. Khi đón ở sân bay/khách sạn, đứng ở vị trí đầu của cửa ra. KHÔNG ngồi cafe gần đó vừa đợi vừa chờ — phải ĐỨNG eye-contact với cửa ra. (2) FACTORY TOUR: in trước briefing 2 trang (tiếng Nhật) gồm: lịch sử công ty, sản phẩm, vai trò khách trong business, các số liệu. Đưa vào tay khách lúc bắt đầu, KHÔNG đợi khách hỏi. Đeo helmet và safety shoes — đưa khách thật đẹp (mới, sạch). Trên line, giải thích bằng cách CHỈ TRỰC TIẾP, không qua bảng — Nhật trọng evidence visible. (3) BỮA TRƯA: KHÔNG dẫn khách Nhật đến quán đường phố ngày đầu — dù bạn nghĩ ngon. Dẫn nhà hàng có air-conditioning, menu tiếng Anh/Nhật, vệ sinh rõ ràng. Nếu khách CHỦ ĐỘNG xin đi quán đường phố từ ngày 2, OK — nhưng ngày 1 không bao giờ. (4) ALCOHOL: bữa tối có rượu là tiêu chuẩn. KHÔNG tự rót rượu cho mình — luôn rót cho khách trước, để khách rót lại. Cụm khi rót: o-tsugi shimasu. Cụm khi nhận: itadakimasu. Cụng ly: kanpai (KHÔNG chichin chichin). Nếu bạn không uống rượu được, từ chối lần đầu được — lần thứ hai từ chối nếu khách insist sẽ awkward. Cách out: jusu de kanpai sasete itadakimasu (xin được cụng ly bằng nước trái cây). (5) GIFT: cuối visit đưa o-miyage (souvenir). Không quá đắt (300K-1M VND), không cá nhân hóa quá (không có tên khách khắc lên). Lựa chọn an toàn: cà phê G7, đặc sản địa phương đóng hộp đẹp, lụa Bao Loc. Đưa với hai tay, nói tsumaranai mono desu ga (đây là món không đáng kể). (6) SEEING OFF: BẮT BUỘC tiễn ra sân bay ngày cuối. Đưa đến counter check-in, đợi đến khi khách qua security, THẬM CHÍ vẫy tay từ kính. Nhật để ý chi tiết này — tiễn nửa chừng bằng quan hệ nửa chừng. Khác biệt với VN: ở VN khách đến hôm nay đi tomorrow là OK; ở Nhật, mỗi cuộc thăm là ichigo-ichie moment đáng đầu tư cao nhất. Một khách hài lòng bằng đơn đặt hàng kéo dài 10 năm. Tỷ suất ROI của omotenashi với khách Nhật cao nhất trong tất cả nationalities.",
@@ -4177,31 +4411,49 @@ export const lessons: JapaneseLesson[] = [
       "Đồng nghiệp Nhật khen người VN luôn có thời gian cho gia đình. Hãy phản hồi cân bằng — đừng over-claim, đừng under-claim. Dùng cụm o-machigai mo aru ka to zonjimasu ga (có thể có misunderstanding) và đưa nuance — không phải VN nào cũng thế.",
       "Đồng nghiệp Nhật hỏi sao trên đường VN nhiều người dắt em bé không đội mũ bằng xe máy. Đây là câu KHÓ — VN có vấn đề thật. KHÔNG bào chữa. Hãy thừa nhận, giải thích context, đề xuất câu chuyện bạn cá nhân làm gì khác."
     ],
+    "roleplay_prompts_en": [
+      "A Japanese colleague asks why many people in Vietnam do not put helmets on their children when riding motorbikes. Answer HONESTLY — do not make things up, do not make excuses. Use the phrase jitsu wa, kotoshi kara giteki ni narimashita and explain the historical context. Tone: open, thankful for the question.",
+      "A Japanese colleague praises that Vietnamese people always have time for family. Respond in a balanced way — do not over-claim, do not under-claim. Use the phrase o-machigai mo aru ka to zonjimasu ga (there may be misunderstanding) and give nuance — not every Vietnamese person is like that.",
+      "A Japanese colleague asks why so many people on Vietnamese roads carry small children on motorbikes without helmets. This is a HARD question — Vietnam has a real problem. Do NOT make excuses. Acknowledge it, explain the context, and describe what you personally do differently."
+    ],
     "register_notes": "Nói chuyện với đồng nghiệp Nhật về văn hóa VN, register tùy mức quen: ban đầu desu/masu, sau khi quen có thể giảm xuống casual nhưng vẫn polite. Bốn patterns đặc biệt: (1) AIZUCHI (đáp lời) — Nhật expect bạn đáp naruhodo, sou nan desu ne, hee liên tục khi nghe. KHÔNG im lặng nghe — Nhật sẽ tưởng bạn không đồng ý hoặc không hiểu. Đáp mỗi 5-10 giây. (2) JITSU WA (thực ra) — câu mở đầu chuẩn khi bạn đưa thông tin cultural mới: jitsu wa, betonamu de wa (thực ra ở VN). Báo hiệu có điều thú vị bạn không biết. (3) HAI BÊN ĐỀU CÓ ĐIỂM TỐT: KHÔNG nói VN tốt hơn hoặc Nhật tốt hơn — luôn dùng oogami ni manabu tokoro ga aru to omoimasu (hai bên đều có chỗ học của nhau). Đây là chuẩn xã giao Nhật — comparison không kẻ thắng kẻ thua. (4) GIẢI THÍCH BẰNG NUMBER cộng REASON: Nhật ưa fact-based. KHÔNG người Việt thân thiện (vague), nói theo khảo sát X năm 2023, 75 phần trăm người VN sẵn sàng giúp người lạ (specific). Khi không có data, dùng watashi no shuukan dewa (theo cảm quan của em). // TODO: native review — bunka chuushin (family-centered) phrasing; some sources prefer kazoku juushi (family-emphasizing) which is closer to Japanese collocation.",
+    "register_notes_en": "Talking with a Japanese colleague about Vietnamese culture: the register depends on familiarity — desu/masu at first, then once you are familiar it can drop to casual but still polite. Four special patterns: (1) AIZUCHI (responsive backchannel) — Japanese people expect you to respond with naruhodo, sou nan desu ne, hee continuously while listening. Do NOT listen in silence — they will think you disagree or do not understand. Respond every 5-10 seconds. (2) JITSU WA (actually) — the standard opener when you offer new cultural information: jitsu wa, betonamu de wa (actually, in Vietnam). It signals there is something interesting they do not know. (3) BOTH SIDES HAVE GOOD POINTS: do NOT say Vietnam is better or Japan is better — always use oogami ni manabu tokoro ga aru to omoimasu (both sides have something to learn from each other). This is the Japanese social norm — a comparison with no winner and loser. (4) EXPLAIN WITH NUMBER plus REASON: Japanese people prefer fact-based. Not 'Vietnamese people are friendly' (vague), but 'according to an X survey in 2023, 75 percent of Vietnamese are willing to help a stranger' (specific). When you have no data, use watashi no shuukan dewa (in my own sense of it).",
     "idiom_glosses": [
       {
         "idiom": "以心伝心",
         "literal": "Lòng truyền lòng",
+        "literal_en": "heart transmits to heart (ishin denshin)",
         "meaning": "Thông hiểu không cần nói — gốc Phật giáo Zen. Đây là ESSENCE của giao tiếp Nhật. Khác với VN explicit. Dùng cụm này để giải thích RIÊNG cho VN học giao tiếp Nhật: hiểu Nhật cần đọc ngầm.",
-        "example": "日本では以心伝心という考えがあり、言葉にしないことも多いです。ベトナムは逆に、はっきり言うのが普通ですね。"
+        "meaning_en": "Mutual understanding without words — from Zen Buddhism. This is the ESSENCE of Japanese communication. It contrasts with Vietnam's explicitness. Use this phrase to explain SPECIFICALLY to a Vietnamese learner: understanding Japanese requires reading the unspoken.",
+        "example": "日本では以心伝心という考えがあり、言葉にしないことも多いです。ベトナムは逆に、はっきり言うのが普通ですね。",
+        "example_en": "In Japan there is the idea of heart transmitting to heart, and much goes unsaid. Vietnam is the opposite — saying things plainly is the norm, isn't it."
       },
       {
         "idiom": "郷に入っては郷に従え",
         "literal": "Vào làng nào theo làng đó",
+        "literal_en": "when in a village, follow the village (go ni itte wa go ni shitagae)",
         "meaning": "When in Rome, do as Romans do — gốc cổ Nhật. Phù hợp khi giải thích cho đồng nghiệp Nhật rằng họ ở VN nên thử làm theo VN cách.",
-        "example": "郷に入っては郷に従えと申しますので、ぜひベトナムのカフェ文化を体験してみてください。"
+        "meaning_en": "When in Rome, do as the Romans do — old Japanese in origin. Fitting when explaining to a Japanese colleague that since they are in Vietnam they should try doing things the Vietnamese way.",
+        "example": "郷に入っては郷に従えと申しますので、ぜひベトナムのカフェ文化を体験してみてください。",
+        "example_en": "They say when in a village, follow the village — so please do try out Vietnam's cafe culture."
       },
       {
         "idiom": "お互い様",
         "literal": "Bên kia cũng vậy / cùng nhau",
+        "literal_en": "the other side is the same too / mutually (o-tagai-sama)",
         "meaning": "Cả hai bên đều vậy — biểu thị sự tương đối, không có ai trên ai. Cụm cốt lõi của giao tiếp Nhật khi tránh comparison thắng/thua.",
-        "example": "日本もベトナムも、文化の違いはお互い様。学び合いながら理解を深めたいです。"
+        "meaning_en": "Both sides are alike — expressing reciprocity, with no one above the other. A core phrase of Japanese communication when avoiding a win/lose comparison.",
+        "example": "日本もベトナムも、文化の違いはお互い様。学び合いながら理解を深めたいです。",
+        "example_en": "Japan and Vietnam alike — cultural differences go both ways. I want to deepen understanding while we learn from each other."
       },
       {
         "idiom": "百聞は一見に如かず",
         "literal": "Trăm nghe không bằng một thấy",
+        "literal_en": "a hundred hearings are not equal to one seeing (hyakubun wa ikken ni shikazu)",
         "meaning": "Tự thấy tốt hơn nghe — phù hợp khi mời đồng nghiệp Nhật trải nghiệm thực tế (đi chợ, ăn quán đường phố) thay vì chỉ giải thích.",
-        "example": "百聞は一見に如かずと申します。今度ぜひローカルの市場へご案内させていただきます。"
+        "meaning_en": "Seeing for yourself beats hearing about it — fitting when inviting a Japanese colleague to experience the real thing (going to a market, eating street food) rather than just explaining.",
+        "example": "百聞は一見に如かずと申します。今度ぜひローカルの市場へご案内させていただきます。",
+        "example_en": "They say a hundred hearings are not equal to one seeing. Next time, please let me take you to a local market."
       }
     ],
     "cultural_notes_vi": "Khi giải thích văn hóa VN cho người Nhật, có 5 traps cần tránh. (1) ĐỪNG over-explain — người Nhật ngại làm bạn nói nhiều. Mỗi câu hỏi của họ, trả lời CỤ THỂ trong 30-60 giây, đợi aizuchi của họ, rồi nói tiếp nếu họ muốn nghe nữa. Độc thoại 5 phút bằng họ thoải mái nhưng đầu họ overload. (2) ĐỪNG so sánh thắng/thua — KHÔNG VN có thiên nhiên đẹp hơn Nhật hoặc Nhật giàu hơn VN. Dùng oogami ni manabu (mỗi bên có chỗ học) hoặc context nuance: betonamu wa kotonatte imashite (VN khác đi một cách). (3) ĐỪNG giấu vấn đề — Nhật rất nhạy với spin. Nếu họ hỏi về tham nhũng, ô nhiễm, traffic deaths — KHÔNG bào chữa, KHÔNG nói VN cũng có chỗ tốt. Thừa nhận, giải thích context, kể bạn cá nhân làm gì khác. Honesty về vấn đề thực bằng bạn được respect. (4) ĐỪNG dùng quá nhiều VN words không giải thích — dù đồng nghiệp Nhật học VN có thể khá, đừng dùng pho, banh mi, ao dai mà không gloss. Cụm chuẩn: pho to iu betonamu no men ryouri (mì pho — món mì VN). (5) BÀN VỀ POLITICS, RELIGION, MISTAKES OF VN: tránh trừ khi họ chủ động hỏi. Nếu họ hỏi về chiến tranh VN, hãy trả lời ngắn gọn FACTUAL, KHÔNG cảm xúc. Nhật rất careful với các topic nhạy cảm. Mẹo cuối: VN host có UNIQUE ADVANTAGE — đồng nghiệp Nhật ở VN cô đơn (không tiếng Nhật xung quanh, không gia đình ở đây), bạn là người mở cửa văn hóa của họ. Đây là long-term relationship cơ hội — nếu xử lý tốt, đồng nghiệp Nhật sẽ là cầu nối của bạn vào Nhật trong 10-20 năm tới. Đầu tư.",
@@ -4433,31 +4685,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn không đồng ý với plan dự án nhưng đang trong meeting công khai. Hãy KHÔNG phản đối trực tiếp. Sau meeting, đến chỗ leader lúc đi cafe, dùng cụm betsu no mikata mo aru ka to zonjimasu (em nghĩ có cách nhìn khác) để truyền message. Mô tả cách thực hiện nemawashi này.",
       "Đồng nghiệp Nhật mới trẻ (kohai) hỏi bạn — sempai — về cách làm việc. Hãy trả lời với register sempai (KHÔNG kenjougo, dùng casual desu/masu hoặc thậm chí da/dearu cho tương tác này). Cảm ơn họ vì câu hỏi nhưng không quá khúm núm — bạn là sempai, role là dạy dỗ với sự tự tin."
     ],
+    "roleplay_prompts_en": [
+      "A younger Japanese colleague (5 years at their previous company before rejoining) is your sempai. Describe how you communicate with them — full keigo but WITHOUT awkwardness. Use the phrase o-tsukaresama desu plus XX-senpai in the conversation. Do NOT use -san with a sempai.",
+      "You disagree with the project plan but you are in a public meeting. Do NOT object directly. After the meeting, approach the leader over coffee and use the phrase betsu no mikata mo aru ka to zonjimasu (I think there may be another way) to convey the message. Describe how you carry out this nemawashi.",
+      "A new young Japanese colleague (kohai) asks you — the sempai — about how to do the work. Answer with sempai register (NOT kenjougo, use casual desu/masu or even da/dearu for this interaction). Thank them for the question but do not be overly servile — you are the sempai; the role is to teach with confidence."
+    ],
     "register_notes": "Khi giải thích business etiquette Nhật cho người VN, register có 3 layers. (1) NÓI VỀ VĂN HÓA NHẬT: dùng desu/masu chuẩn, KHÔNG kenjougo (vì đồng nghiệp VN, không phải cấp trên). Khi nhắc đến hành vi của người Nhật, dùng dạng người ta general: nihon-jin wa XX shimasu hoặc XX no bunka ga arimasu. (2) NÓI VỀ SEMPAI/KOHAI: khi mình nói chuyện với sempai cụ thể, register chuyển sang keigo nhẹ (desu/masu thấp nhất, sometimes kenjougo cho hành động của mình). KHÔNG sonkeigo cho sempai trong giao tiếp hàng ngày — chỉ dành cho buchou/kachou level. Cụm gọi: XX-sempai (KHÔNG XX-san). (3) NÓI VỀ RINGI/NEMAWASHI: dùng thuật ngữ Nhật KHÔNG dịch sang VN. ringi nghĩa là circulating decision document, nemawashi là pre-consensus, nemu (gốc của nemawashi) là rễ — biểu tượng đào rễ xung quanh cây trước khi di chuyển nó. Đồng nghiệp VN có thể không hiểu — giải thích bằng analogy như đào rễ trước khi trồng cây sang chỗ khác — chuẩn bị soil/đường (one-on-one chats) trước khi formal decision (transplant). // TODO: native review — ringi vs ringi-sho phrasing; ringi là quy trình, ringi-sho là document — đồng nghiệp VN nên biết phân biệt.",
+    "register_notes_en": "When explaining Japanese business etiquette to a Vietnamese person, the register has 3 layers. (1) TALKING ABOUT JAPANESE CULTURE: use standard desu/masu, NOT kenjougo (because the colleague is Vietnamese, not your superior). When referring to Japanese people's behaviour, use the general form: nihon-jin wa XX shimasu or XX no bunka ga arimasu. (2) TALKING ABOUT SEMPAI/KOHAI: when you yourself speak with a specific sempai, the register shifts to light keigo (lowest desu/masu, sometimes kenjougo for your own actions). Do NOT use sonkeigo for a sempai in daily interaction — that is reserved for buchou/kachou level. Address them: XX-sempai (NOT XX-san). (3) TALKING ABOUT RINGI/NEMAWASHI: use the Japanese terms WITHOUT translating into Vietnamese. ringi means a circulating decision document, nemawashi is pre-consensus, nemu (the root of nemawashi) is 'root' — a metaphor for digging around a tree's roots before moving it. A Vietnamese colleague may not understand — explain by analogy as digging around the roots before transplanting a tree — preparing the soil/path (one-on-one chats) before the formal decision (the transplant).",
     "idiom_glosses": [
       {
         "idiom": "和を以て貴しとなす",
         "literal": "Lấy hòa làm quý",
+        "literal_en": "hold harmony as precious (wa o motte toutoshi to nasu)",
         "meaning": "Hòa hợp là điều cao quý nhất — gốc Hiến pháp 17 điều của Hoàng Thái tử Shotoku năm 604. Nguyên tắc nền tảng cho consensus-building Nhật. Trong meeting, harmony trên opinion clarity.",
-        "example": "和を以て貴しとなすという考えが、日本のチームワークの基盤です。"
+        "meaning_en": "Harmony is the most noble thing — from the Seventeen-Article Constitution of Crown Prince Shotoku in 604. The foundational principle for Japanese consensus-building. In a meeting, harmony over clarity of opinion.",
+        "example": "和を以て貴しとなすという考えが、日本のチームワークの基盤です。",
+        "example_en": "The idea of holding harmony as precious is the foundation of Japanese teamwork."
       },
       {
         "idiom": "出る杭は打たれる",
         "literal": "Cọc nhô ra sẽ bị đóng xuống",
+        "literal_en": "the stake that sticks out gets hammered down (deru kui wa utareru)",
         "meaning": "Người nổi bật sẽ bị đè xuống — văn hóa không khuyến khích cá nhân nổi trội. Khác với VN nơi cá nhân được khuyến khích thể hiện. Hiểu cụm này bằng hiểu vì sao Nhật ngại phát biểu trong meeting.",
-        "example": "出る杭は打たれる文化ですから、会議で目立つ反対意見は避けられがちです。"
+        "meaning_en": "The person who stands out gets pushed down — a culture that does not encourage individual prominence. Unlike Vietnam, where individuals are encouraged to show themselves. Understanding this phrase means understanding why Japanese people hesitate to speak up in a meeting.",
+        "example": "出る杭は打たれる文化ですから、会議で目立つ反対意見は避けられがちです。",
+        "example_en": "It is a culture where the stake that sticks out gets hammered down, so a prominent dissenting opinion in a meeting tends to be avoided."
       },
       {
         "idiom": "以心伝心",
         "literal": "Lòng truyền lòng",
+        "literal_en": "heart transmits to heart (ishin denshin)",
         "meaning": "Hiểu nhau không cần lời — gốc Phật giáo Zen. Trong business Nhật, sếp mong nhân viên đọc tâm — không phải mọi thứ phải nói ra. Điểm khó nhất với người VN.",
-        "example": "日本では以心伝心で察する文化があり、言葉にしないことも多いです。ベトナム人にとって、これが一番の壁かもしれません。"
+        "meaning_en": "Understanding each other without words — from Zen Buddhism. In Japanese business, the boss expects the employee to read their mind — not everything has to be said. The hardest point for Vietnamese people.",
+        "example": "日本では以心伝心で察する文化があり、言葉にしないことも多いです。ベトナム人にとって、これが一番の壁かもしれません。",
+        "example_en": "In Japan there is a culture of sensing through heart-to-heart transmission, and much goes unsaid. For Vietnamese people, this may be the biggest wall."
       },
       {
         "idiom": "石の上にも三年",
         "literal": "Trên đá cũng phải ba năm",
+        "literal_en": "three years even on a stone (ishi no ue ni mo san-nen)",
         "meaning": "Kiên trì sẽ được đền đáp — phù hợp khi nói về việc làm quen với business etiquette Nhật cần ít nhất 3 năm để thấm.",
-        "example": "日本の礼儀に慣れるには、石の上にも三年と言うように、時間が必要です。"
+        "meaning_en": "Perseverance is rewarded — fitting when saying that getting used to Japanese business etiquette takes at least 3 years to sink in.",
+        "example": "日本の礼儀に慣れるには、石の上にも三年と言うように、時間が必要です。",
+        "example_en": "To get used to Japanese etiquette, as the saying 'three years even on a stone' goes, it takes time."
       }
     ],
     "cultural_notes_vi": "Sự khác biệt sâu sắc nhất giữa business VN và Nhật KHÔNG phải ở keigo (đó chỉ là bề mặt) — mà ở 4 cấu trúc xã hội đằng sau. (1) HIERARCHY THEO 入社年 (NHẬP CÔNG NIÊN): Nhật rank theo NĂM JOIN công ty, không theo tuổi/title/skill. Một người 25 tuổi vào công ty trước 5 năm có thể là sempai của một người 35 tuổi mới vào. Người VN khó accept — ở VN tuổi tác là tiêu chí số 1. Quy tắc thực hành: trong meeting, hỏi XX-san wa nyuusha sannen-me desu yo ne (anh là năm thứ 3 đúng không?) — biết hierarchy ngay. (2) RINGI (稟議) DECISION-MAKING: ở Nhật, decision đi BOTTOM-UP qua document gọi là ringi-sho. Mỗi level circle, đóng dấu (印鑑/hanko), thêm comment, gửi up. Đến khi tới CEO, đã có 8-15 dấu. Quyết định không một-mình. Khác với VN nơi sếp quyết định và push xuống. Quy tắc thực hành: KHÔNG đề xuất gì big trong meeting — viết ringi-sho gửi qua chain. Chuẩn bị, đợi 2-3 tuần. (3) NEMAWASHI (根回し) PRE-CONSENSUS: trước khi ringi-sho gửi, người đề xuất phải đi GẶP TỪNG người trong chain riêng (cafe break, lunch, sau giờ làm) để giải thích, lấy ý kiến, điều chỉnh. Đến khi document ringi đến mỗi người, họ ALREADY agree. Đây là 80 phần trăm communication thực sự — meeting chỉ là 20 phần trăm. Người VN miss point này, gọi nemawashi là gossip hoặc lobbying — sai. Đó là DUE PROCESS. (4) WA (和) HARMONY trên TRUTH: Nhật ưu tiên không gây xáo trộn nhóm trên việc nói thật. Nếu một plan có lỗ hổng nhưng team đã đồng ý, KHÔNG nên public expose lỗ hổng. Approach đúng: gặp riêng leader, dùng cụm betsu no mikata mo aru ka to zonjimasu (có cách nhìn khác). Leader sau đó re-do nemawashi nếu thấy concern hợp lý. Người VN đặt truth trên harmony — cấu trúc xã hội phương Đông hơi khác hẳn nhau ở điểm này. Khi giải thích cho đồng nghiệp VN: nói rằng đây không phải Nhật giấu vấn đề — mà là Nhật xử lý vấn đề qua kênh không công khai để bảo vệ social bond. Khác cấu trúc, không phải khác đạo đức. Mẹo cuối: VN đang ở giai đoạn corporatize theo Nhật/Hàn (chaebol-style hierarchy), nhiều công ty large-scale ở VN (Vingroup, Viettel, FPT) đã adopt một phần Nhật-style. Hiểu Nhật etiquette bằng competitive advantage cho career VN trong 10 năm tới.",
@@ -4684,31 +4954,49 @@ export const lessons: JapaneseLesson[] = [
       "Tại bữa tối với khách Nhật, bạn cắt ngang đối tác cấp cao của họ giữa câu (theo phản xạ VN). Sếp Nhật báo cho bạn sau bữa ăn. Hãy chuẩn bị apology cho cuộc gặp NGÀY MAI với khách — bao gồm: thừa nhận lỗi cụ thể, không bào chữa, đề xuất cách ngừa, đề xuất action remedial.",
       "Bạn từ chối invitation đến nhà đồng nghiệp Nhật vào dịp Obon (rất quan trọng) vì lý do bận. Đồng nghiệp im lặng đột ngột sau đó. Hãy tiếp cận lại — gửi handwritten note xin lỗi, giải thích bạn không hiểu Obon là gia đình tụ họp đặc biệt, đề xuất gặp dịp khác. Tone: deep, không quá long-winded."
     ],
+    "roleplay_prompts_en": [
+      "You accidentally called your Japanese boss -san instead of buchou in front of a client. The boss stays silent but you know it was awkward. Go to the boss's office to apologize THAT SAME DAY — do NOT wait until next week. Use the phrase watashi no ninshiki busoku ni yori, go-burei wo hatarakimashite plus moushiwake gozaimasen deshita.",
+      "At dinner with a Japanese client, you cut off their senior partner mid-sentence (a Vietnamese reflex). Your Japanese boss tells you after the meal. Prepare an apology for TOMORROW's meeting with the client — including: acknowledging the specific fault, no excuses, a way to prevent it, a remedial action.",
+      "You declined an invitation to a Japanese colleague's home during Obon (very important) because you were busy. The colleague suddenly goes quiet afterward. Reach out again — send a handwritten note of apology, explain you did not understand that Obon is a special family gathering, propose meeting another time. Tone: deep, not too long-winded."
+    ],
     "register_notes": "Apology Nhật KHÔNG giống western I'm sorry, my bad. Bốn cấu trúc bắt buộc: (1) MOUSHIWAKE GOZAIMASEN cho lỗi nhẹ, MOUSHIWAKE GOZAIMASEN DESHITA cho lỗi quá khứ, KOKORO YORI O-WABI MOUSHIAGEMASU cho lỗi nghiêm trọng. KHÔNG dùng sumimasen cho cultural mistake — quá nhẹ. (2) THỪA NHẬN ROOT CAUSE: watashi no ninshiki busoku ni yori (do em thiếu nhận thức), watashi no fuiki ni yori (do em không cẩn thận) — cụ thể về NGUYÊN NHÂN từ phía mình. KHÔNG dùng culture barrier / misunderstanding — bị xem là đổ lỗi cho khái niệm. (3) NO EXCUSES: BENKAI NO YOCHI MO GOZAIMASEN (không có chỗ biện hộ). Sau cụm này, KHÔNG được giải thích tại vì. Apology Nhật là pure ownership, không kèm context. (4) PLEDGE cộng ACTION: nidoto kono youna koto ga nai you, fukaku hansei shite orimasu (em sâu sắc tự kiểm để chuyện này không lặp lại) cộng cụ thể action: saihatsu boushi no tame, XX itashimasu (để ngừa tái phát, em sẽ làm XX). KHÔNG vague pledge — phải có bước concrete. Ngoài ra 4 điều TRÁNH: (a) KHÔNG nói tôi tưởng là (sounds like blaming the other for not clarifying); (b) KHÔNG cười nhẹ trong câu chuyện apology (cười bằng không serious); (c) KHÔNG nhìn xuống đất quá lâu (eye contact intermittent là chuẩn); (d) KHÔNG say thank you khi họ accept apology — say jouken yorishihai itashimasu (em xin được tiếp tục cố gắng thêm). // TODO: native review — ninshiki busoku phrasing — cụm chuẩn business; alternative haien ga itarazu (lack of consideration) cũng dùng được, hơi formal hơn.",
+    "register_notes_en": "A Japanese apology is NOT like a Western 'I'm sorry, my bad'. Four mandatory structures: (1) MOUSHIWAKE GOZAIMASEN for a light fault, MOUSHIWAKE GOZAIMASEN DESHITA for a past fault, KOKORO YORI O-WABI MOUSHIAGEMASU for a serious fault. Do NOT use sumimasen for a cultural mistake — too light. (2) ACKNOWLEDGE THE ROOT CAUSE: watashi no ninshiki busoku ni yori (due to my lack of awareness), watashi no fuiki ni yori (due to my carelessness) — be specific about the CAUSE from your side. Do NOT use 'culture barrier' / 'misunderstanding' — that is read as blaming an abstraction. (3) NO EXCUSES: BENKAI NO YOCHI MO GOZAIMASEN (there is no room for excuse). After this phrase, you may NOT explain 'because…'. A Japanese apology is pure ownership with no context attached. (4) PLEDGE plus ACTION: nidoto kono youna koto ga nai you, fukaku hansei shite orimasu (I am reflecting deeply so this never happens again) plus a concrete action: saihatsu boushi no tame, XX itashimasu (to prevent recurrence, I will do XX). Do NOT make a vague pledge — there must be a concrete step. Also 4 things to AVOID: (a) do NOT say 'I thought it was' (sounds like blaming the other for not clarifying); (b) do NOT smile lightly during the apology (smiling signals you are not serious); (c) do NOT stare at the ground too long (intermittent eye contact is standard); (d) do NOT say 'thank you' when they accept the apology — say jouken yorishihai itashimasu (I will keep striving further).",
     "idiom_glosses": [
       {
         "idiom": "過ちては改むるに憚ること勿れ",
         "literal": "Đã lỗi thì đừng ngại sửa",
+        "literal_en": "having erred, do not hesitate to correct it (ayamachite wa aratamuru ni habakaru koto nakare)",
         "meaning": "Khi sai thì đừng ngại sửa — gốc Luận Ngữ Khổng Tử. Cụm cao cấp dùng khi cam kết cải thiện sau apology. Show bạn có literacy classical — Nhật rất trọng.",
-        "example": "過ちては改むるに憚ること勿れと申しますので、しっかりと改善してまいります。"
+        "meaning_en": "When you are wrong, do not hesitate to fix it — from Confucius's Analects. A high-level phrase used when committing to improvement after an apology. It shows you have classical literacy — which Japan values highly.",
+        "example": "過ちては改むるに憚ること勿れと申しますので、しっかりと改善してまいります。",
+        "example_en": "They say, having erred, do not hesitate to correct it — so I will improve thoroughly."
       },
       {
         "idiom": "弁解の余地もございません",
         "literal": "Không có chỗ để biện hộ",
+        "literal_en": "there is no room for excuse (benkai no yochi mo gozaimasen)",
         "meaning": "Cụm cố định trong apology Nhật — biểu thị bạn không có ý bào chữa. Cụm này đẩy weight của apology lên cao — phải dùng cẩn thận, không dùng cho lỗi nhỏ.",
-        "example": "弁解の余地もございません。心よりお詫び申し上げます。"
+        "meaning_en": "A set phrase in a Japanese apology — signalling that you have no intention of making excuses. This phrase raises the weight of the apology high — use it carefully, not for small faults.",
+        "example": "弁解の余地もございません。心よりお詫び申し上げます。",
+        "example_en": "There is no room for excuse. I apologize from the bottom of my heart."
       },
       {
         "idiom": "深く反省",
         "literal": "Sâu sắc tự kiểm",
+        "literal_en": "to reflect deeply (fukaku hansei)",
         "meaning": "Pledge phrase — biểu thị bạn đã reflect deeply. Khác với I'm sorry phương Tây ở chỗ Nhật mong actual reflection process, không chỉ verbal apology.",
-        "example": "二度とこのようなことがないよう、深く反省しております。"
+        "meaning_en": "A pledge phrase — signalling that you have reflected deeply. Unlike the Western 'I'm sorry', Japan expects an actual process of reflection, not just a verbal apology.",
+        "example": "二度とこのようなことがないよう、深く反省しております。",
+        "example_en": "I am reflecting deeply so that nothing like this ever happens again."
       },
       {
         "idiom": "石の上にも三年",
         "literal": "Trên đá cũng phải ba năm",
+        "literal_en": "three years even on a stone (ishi no ue ni mo san-nen)",
         "meaning": "Kiên trì cải thiện sẽ được đền đáp — phù hợp khi đề xuất quá trình learn cultural manner kéo dài. Show bạn understand đây là long process, không phải one-time fix.",
-        "example": "石の上にも三年と申します。日本のマナーを身につけるには時間が必要だと存じます。"
+        "meaning_en": "Perseverance in improvement is rewarded — fitting when proposing that the process of learning cultural manners takes a long time. It shows you understand this is a long process, not a one-time fix.",
+        "example": "石の上にも三年と申します。日本のマナーを身につけるには時間が必要だと存じます。",
+        "example_en": "They say three years even on a stone. I believe it takes time to truly acquire Japanese manners."
       }
     ],
     "cultural_notes_vi": "Apology Nhật khác phương Tây ở 6 tầng cấu trúc. (1) APOLOGY VÌ SITUATION TỒN TẠI, KHÔNG PHẢI VÌ FAULT. Người Nhật xin lỗi vì tôi đã làm cho bạn khó xử — kể cả khi không có lỗi cụ thể. Câu chuẩn: o-tesuu wo o-kake shimashite (em đã làm phiền), go-meiwaku wo o-kake shimashite (em đã gây phiền). Người VN nghe apology không có lỗi thấy lạ — nhưng đây là proactive apology văn hóa Nhật. (2) APOLOGY DEPTH MATCHES CRIME WEIGHT. Lỗi nhẹ: sumimasen. Lỗi vừa: moushiwake gozaimasen. Lỗi nặng: kokoro yori o-wabi moushiagemasu. Lỗi đặc biệt nghiêm trọng (ảnh hưởng business): saiken (sau khi xác minh) cộng dogeza (quỳ xuống — chỉ trong context xấu nhất). Dùng sai level bằng tệ hơn không xin lỗi. (3) IN-PERSON KHÔNG EMAIL. Apology nghiêm trọng PHẢI in-person. Nếu khoảng cách xa, gọi điện trước, sau đó in-person khi có thể. KHÔNG email/text apology cho lỗi nghiêm trọng — bị xem là cowardice. Bằng chứng bạn sẵn sàng đối mặt bằng serious apology. (4) NO PUBLIC SPECTACLE. Apology in-person nhưng PRIVATE. Đến phòng sếp riêng, KHÔNG xin lỗi giữa văn phòng. Public apology bằng làm sếp mất mặt vì phải xử lý tình huống công khai. (5) ACCEPTANCE BY OTHER PARTY bằng OBLIGATION FOR YOU. Sau khi sếp/đối tác nhận apology, bạn phải show change. Nếu lặp lại lỗi cũ trong 6 tháng, apology lần đầu bị xem như insincere — relationship damaged permanent. Vì vậy, đừng apologize cho điều bạn không sẵn sàng cải thiện. (6) THIRD-PARTY APOLOGY chain. Đôi khi apology phải đi qua sếp của bạn xin lỗi sếp của họ — không xin lỗi trực tiếp peer-to-peer. Đây là face-saving protocol. Hỏi sếp trước về cách correct. Khác biệt với VN: ở VN apology thường ngắn, casual, đi kèm explanation tại vì; ở Nhật apology dài, formal, KHÔNG kèm explanation. Apology là về ownership, không về context. Mẹo cuối: nếu là VN host và làm sai với khách Nhật, KHÔNG đợi đến cuối ngày để xin lỗi — xin lỗi ngay khi nhận ra (nếu trong cùng phòng) hoặc đến phòng họ trong 1-2 giờ. Nhật trọng tốc độ phản ứng — slow apology bằng không nghiêm túc. Một apology kịp thời và chân thành có thể turn incident thành positive memory of integrity — paradox của văn hóa Nhật.",
@@ -4925,31 +5213,49 @@ export const lessons: JapaneseLesson[] = [
       "Trong Q&A, một người hỏi câu khó mà bạn không biết câu trả lời cụ thể. KHÔNG fake. Dùng cụm makoto ni moushiwake gozaimasen, sono ten ni tsuite wa, mochi-kaette kakunin sasete itadakimasu (em xin lỗi, em sẽ về xác nhận và liên lạc lại). Đề xuất follow up qua email với business card exchange.",
       "Sau presentation, một giáo sư top university tiếp cận và đề xuất collaboration. Hãy phản hồi NGHIÊM TÚC nhưng không over-commit ngay tại event — dùng cụm zehi maemuki ni go-soudan sasete itadaite mo yoroshii deshou ka cộng đề xuất gặp follow up tại research lab khi có thể."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself stepping up to the podium for the first time before 200 Japanese people. Open the speech with a 90-second self-introduction — name, delegation, why you are attending the conference. Use the phrase honjitsu wa toudan no kikai wo itadaki, kokoro yori kouei ni zonjimasu (I am deeply honoured to speak today).",
+      "In Q&A, someone asks a hard question to which you do not know the specific answer. Do NOT fake it. Use the phrase makoto ni moushiwake gozaimasen, sono ten ni tsuite wa, mochi-kaette kakunin sasete itadakimasu (I am sorry, I will take that back, confirm it, and follow up). Propose following up by email with a business card exchange.",
+      "After the presentation, a professor from a top university approaches and proposes a collaboration. Respond SERIOUSLY but without over-committing on the spot at the event — use the phrase zehi maemuki ni go-soudan sasete itadaite mo yoroshii deshou ka plus a proposal to meet for a follow-up at the research lab when possible."
+    ],
     "register_notes": "International conference register là public formal — khác business 1-on-1 ở 4 điểm. (1) GREETING TO AUDIENCE: minasama, konnichi wa hoặc minasama, hajimemashite tùy lần đầu hay lặp. KHÔNG dùng yorosiku onegaishimasu mở đầu — câu này là kết thúc, không phải mở. (2) SELF-INTRO IN-FORMAL: KHÔNG dùng kenjougo nặng kiểu watakushi — dùng watashi (formal trung). watakushi reserved cho ceremonial occasions kiểu sokui (enthronement). Public conference dùng watashi đủ. (3) PRESENTATION OPENING-CLOSING CỐ ĐỊNH: mở: honjitsu wa toudan no kikai wo itadaki, kokoro yori kouei ni zonjimasu (vô cùng vinh dự). Đóng: ijou ga watashi kara no houkoku de gozaimasu. Go-seichou, makoto ni arigatou gozaimashita (kết thúc báo cáo, cảm ơn quý vị đã lắng nghe). go-seichou (kính nghe) là từ formal cho audience listening — KHÔNG dùng kiku no koto. (4) Q&A REGISTER: trả lời câu hỏi: go-shitsumon, arigatou gozaimasu cộng câu trả lời. KHÔNG bắt đầu trả lời trước khi xác nhận hiểu câu hỏi. Nếu không nghe rõ: osore irimasu ga, mou ichido go-shitsumon wo o-ukagai shite mo yoroshii deshou ka. Nếu không biết: mochi-kaette kakunin sasete itadakimasu cộng đề xuất follow up. KHÔNG bịa câu trả lời — Nhật đánh giá honesty trên seemingly-knowing. // TODO: native review — sessa-takuma usage in modern academic conference; classical phrase, có thể outdated cho younger academic generations; alternative kenkyuu kouryuu more modern.",
+    "register_notes_en": "International conference register is public-formal — different from a business one-on-one in 4 points. (1) GREETING TO THE AUDIENCE: minasama, konnichi wa or minasama, hajimemashite depending on whether it is the first or a repeated meeting. Do NOT use yoroshiku onegaishimasu as an opener — that phrase is a closer, not an opener. (2) IN-FORMAL SELF-INTRO: do NOT use heavy kenjougo like watakushi — use watashi (mid-formal). watakushi is reserved for ceremonial occasions such as an enthronement (sokui). A public conference uses watashi sufficiently. (3) FIXED PRESENTATION OPENING-CLOSING: open: honjitsu wa toudan no kikai wo itadaki, kokoro yori kouei ni zonjimasu (I am deeply honoured). Close: ijou ga watashi kara no houkoku de gozaimasu. Go-seichou, makoto ni arigatou gozaimashita (that concludes my report, thank you for your attention). go-seichou (respectful listening) is the formal word for the audience's listening — do NOT use kiku no koto. (4) Q&A REGISTER: answering a question: go-shitsumon, arigatou gozaimasu plus the answer. Do NOT start answering before confirming you understood the question. If you did not hear clearly: osore irimasu ga, mou ichido go-shitsumon wo o-ukagai shite mo yoroshii deshou ka. If you do not know: mochi-kaette kakunin sasete itadakimasu plus a proposed follow-up. Do NOT fabricate an answer — Japan values honesty over seeming-to-know.",
     "idiom_glosses": [
       {
         "idiom": "切磋琢磨",
         "literal": "Cắt giũa, mài giũa",
+        "literal_en": "cut, file, grind, polish (sessa takuma)",
         "meaning": "Cùng nhau cải thiện qua tương tác — gốc Kinh Thi (Trung Quốc cổ). Cụm chuẩn cho academic exchange. Khi networking ở conference, dùng để bày tỏ tinh thần học hỏi lẫn nhau, không cạnh tranh.",
-        "example": "懇親会で、ぜひ皆様と切磋琢磨できる機会を持ちたく存じます。"
+        "meaning_en": "Improving together through mutual interaction — from the Classic of Poetry (ancient China). The standard phrase for academic exchange. When networking at a conference, used to express a spirit of learning from each other, not competing.",
+        "example": "懇親会で、ぜひ皆様と切磋琢磨できる機会を持ちたく存じます。",
+        "example_en": "At the social gathering, I would like to have a chance to cut, file, grind and polish together with everyone."
       },
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — trong conference context, ý nghĩa là cuộc gặp này đặc biệt — researchers từ nhiều nước về cùng một phòng, có thể không lặp. Dùng để add depth vào networking conversation.",
-        "example": "国際会議は一期一会の場でございますので、皆様とのご縁を大切にしたく存じます。"
+        "meaning_en": "Every meeting is unique — in a conference context, it means this meeting is special: researchers from many countries in one room, perhaps never to recur. Used to add depth to a networking conversation.",
+        "example": "国際会議は一期一会の場でございますので、皆様とのご縁を大切にしたく存じます。",
+        "example_en": "An international conference is a once-in-a-lifetime occasion, so I would like to treasure my connection with everyone."
       },
       {
         "idiom": "ご清聴",
         "literal": "Nghe trong sự thanh nhã",
+        "literal_en": "your kind, quiet listening (go-seichou)",
         "meaning": "Cụm formal cho sự lắng nghe của quý vị — dùng kết thúc presentation. KHÔNG dùng okiki itadaite arigatou (quá casual). Bỏ qua bằng kết thúc thiếu lễ.",
-        "example": "ご清聴、誠にありがとうございました。"
+        "meaning_en": "A formal phrase for the audience's listening — used to close a presentation. Do NOT use okiki itadaite arigatou (too casual). Omitting it makes the closing discourteous.",
+        "example": "ご清聴、誠にありがとうございました。",
+        "example_en": "Thank you most sincerely for your kind attention."
       },
       {
         "idiom": "三人寄れば文殊の知恵",
         "literal": "Ba người tụ lại có trí tuệ Văn Thù",
+        "literal_en": "three people together have the wisdom of Monju (sannin yoreba Monju no chie)",
         "meaning": "Trí tuệ tập thể — khi networking, dùng để gợi ý collaborative research. Bày tỏ rằng một mình bạn không giải pháp được, cần collaboration.",
-        "example": "三人寄れば文殊の知恵と申します。日越共同研究の可能性を探ってまいりたく存じます。"
+        "meaning_en": "Collective wisdom — when networking, used to suggest collaborative research. It expresses that you alone cannot solve it and need collaboration.",
+        "example": "三人寄れば文殊の知恵と申します。日越共同研究の可能性を探ってまいりたく存じます。",
+        "example_en": "They say three heads hold the wisdom of Monju. I would like to explore the possibility of joint Japan–Vietnam research."
       }
     ],
     "cultural_notes_vi": "International conference Nhật khác phương Tây ở 6 điểm. (1) THỜI GIAN: cực kỳ chính xác. Slot 15 phút bằng 15 phút, không 16. Người vượt thời gian bị thấy rất tệ. Mang theo timer đặt trên bục, nhìn liên tục. Slide cuối nên là thank you slide để có thể wrap nhanh nếu hết giờ. (2) SLIDE DESIGN: Nhật ưa minimalist — KHÔNG slide với 10 bullet points và images. Mỗi slide 1 ý chính, max 30 chữ. Background trắng, font sans-serif. Animation tối thiểu — KHÔNG slide-in effects, KHÔNG sound effects (làm Nhật khó chịu). (3) Q&A ETIQUETTE: người hỏi thường giới thiệu mình trước (tên cộng university), sau đó hỏi. Bạn cảm ơn câu hỏi trước khi trả lời. Trả lời CỤ THỂ — Nhật ghét vague answers. Nếu không biết, nói thật cộng đề xuất follow up. (4) NETWORKING SAU PRESENTATION: tại konshinkai (mixer), người ta tiếp cận presenter để complement và networking. Bạn cần có business cards (50 cộng) và elevator pitch 30 giây về nghiên cứu. Khi nhận card từ giáo sư top university, treat như sacred — đọc to tên, lưu cẩn thận. (5) DRESS CODE: business formal. Vest đen/navy, áo trắng, giày da. Nữ buộc tóc, makeup nhẹ. KHÔNG dress local (áo dài) trừ khi conference yêu cầu cultural showcase. (6) PHOTO/SOCIAL MEDIA: trước khi chụp ảnh, hỏi permission (shashin wo tora-sete itadaite mo yoroshii deshou ka). KHÔNG post photo lên LinkedIn/Twitter mà không hỏi. Conference thường có official photographer — wait for their photos để post. Khác biệt với VN: ở VN conference thường relaxed, có thể đến muộn 5 phút, presenter có thể chuẩn bị tại chỗ; ở Nhật, mỗi giây trên stage được đo lường kỹ. Investment vào conference Nhật trả ROI dài hạn — một presentation tốt có thể mở 5-10 collaboration opportunity trong 5 năm. Mẹo: chuẩn bị 3 killer slides — slide có insight unique sẽ được people nhắc đến trong networking. Một insight unique trên một presentation hoàn hảo nhưng generic.",
@@ -5196,31 +5502,49 @@ export const lessons: JapaneseLesson[] = [
       "Khách Nhật từ chối uống thêm rượu (đã uống 2 ly). Hãy KHÔNG ép thêm — văn hóa Nhật chấp nhận từ chối lần đầu. Đề xuất alternative: trà, nước hoa quả. Dùng cụm o-cha demo o-mochi shimashou ka cộng đảm bảo họ feel comfortable.",
       "Khách Nhật hỏi tại sao VN ăn family-style (chung đĩa) thay vì individual portions. Hãy giải thích từ góc cultural — connection và gia đình ở VN, nuôi dưỡng qua bữa ăn chung. Dùng cụm onaji kama no meshi và contrast với JP individual portion mà KHÔNG so sánh thắng/thua."
     ],
+    "roleplay_prompts_en": [
+      "The Japanese guest hesitates to try fish sauce because of its strong smell. Explain the origin of fish sauce (fermented fish), connect it to shottsuru (Japanese fish sauce), suggest how to try it (taste with your mouth, not your nose). Do NOT force them to eat it — kanou deshitara plus o-shimi ni narareru kata mo irasshaimasu yo.",
+      "The Japanese guest declines another drink (already had 2). Do NOT press for more — Japanese culture accepts the first refusal. Suggest an alternative: tea, juice. Use the phrase o-cha demo o-mochi shimashou ka plus making sure they feel comfortable.",
+      "The Japanese guest asks why Vietnamese people eat family-style (shared dishes) instead of individual portions. Explain it from a cultural angle — connection and family in Vietnam, nurtured through the shared meal. Use the phrase onaji kama no meshi and contrast it with Japanese individual portions WITHOUT a win/lose comparison."
+    ],
     "register_notes": "Bữa tối với khách Nhật, register hơi thấp hơn meeting (vì food relaxes mood) NHƯNG vẫn keigo nếu khách là sếp/business client. Ba điểm điều chỉnh: (1) DRINK ETIQUETTE: rót cho khách trước, để khách rót cho mình. KHÔNG tự rót. Khi nhận, cầm cốc bằng hai tay, hơi cúi đầu. Câu khi rót: o-tsugi shimasu hoặc dou-zo. Câu khi nhận: itadakimasu cộng cảm ơn. Toast: kanpai (KHÔNG chichin). (2) FOOD INTRODUCTION: giới thiệu món với 3 phần: (a) tên Nhật / Anh, (b) tên VN, (c) ingredients chính cộng cách ăn. Cụm: kochira wa XX (tên Nhật) — betonamu de wa YY to moushimasu (tên VN). Mỗi món max 30 giây giới thiệu — KHÔNG lecture food history (nhàm). (3) SPICE/INGREDIENT WARNING: trước khi món đến, warn nếu spicy/funky: kochira no ryouri wa, sukoshi karame de gozaimasu (món này hơi cay). Đề xuất tự tune. KHÔNG để khách shock. Cụm khi khách ngại: muri ni mesh-iagaranakute, daijoubu de gozaimasu (không cần ép, không sao). Nói cụm này cho khách feel comfortable từ chối — Nhật ngại từ chối, bạn pre-empt cho họ. Khi khách thử và thích, dùng o-kuchi ni atte saiwai de gozaimasu (vui vì hợp khẩu vị). Khi khách thử nhưng không thích, KHÔNG hỏi tại sao — chuyển topic: betsu no ryouri mo go-junbi shite orimasu node, dochira ka o-meshi-agari kudasai (có món khác, mời thử). // TODO: native review — onaji kama no meshi cụm hơi formal/old, nhiều người Nhật trẻ không dùng; có thể thay bằng oogami sama hoặc shoku-taku wo kakomu nakama mềm mại hơn.",
+    "register_notes_en": "At dinner with a Japanese guest, the register is a touch lower than a meeting (food relaxes the mood) BUT still keigo if the guest is your boss/business client. Three adjustment points: (1) DRINK ETIQUETTE: pour for the guest first, let the guest pour for you. Do NOT pour for yourself. When receiving, hold the cup with both hands and bow slightly. The phrase when pouring: o-tsugi shimasu or dou-zo. The phrase when receiving: itadakimasu plus thanks. Toast: kanpai (NOT chichin). (2) FOOD INTRODUCTION: introduce a dish in 3 parts: (a) Japanese/English name, (b) Vietnamese name, (c) main ingredients plus how to eat it. Phrase: kochira wa XX (Japanese name) — betonamu de wa YY to moushimasu (Vietnamese name). Maximum 30 seconds per dish — do NOT lecture on food history (boring). (3) SPICE/INGREDIENT WARNING: before the dish arrives, warn if it is spicy/funky: kochira no ryouri wa, sukoshi karame de gozaimasu (this dish is a little spicy). Suggest they adjust to taste. Do NOT let the guest be shocked. The phrase when the guest hesitates: muri ni meshiagaranakute, daijoubu de gozaimasu (no need to force it, it is fine). Say this so the guest feels comfortable declining — Japanese people hesitate to decline, so you pre-empt it for them. When the guest tries it and likes it, use o-kuchi ni atte saiwai de gozaimasu (I am glad it suits your taste). When the guest tries it but does not like it, do NOT ask why — change topic: betsu no ryouri mo go-junbi shite orimasu node, dochira ka o-meshi-agari kudasai (we have other dishes prepared, please try one).",
     "idiom_glosses": [
       {
         "idiom": "同じ釜の飯を食う",
         "literal": "Ăn cơm cùng nồi",
+        "literal_en": "to eat rice from the same pot (onaji kama no meshi o kuu)",
         "meaning": "Cùng ăn cơm cùng nồi bằng chia sẻ cuộc sống thân mật bằng bạn bè/đồng đội thân thiết. Cụm thường dùng giữa đồng nghiệp lâu năm hoặc samurai cùng đoàn. Trong context VN-JP dinner, dùng để bày tỏ mong muốn deepen relationship.",
-        "example": "同じ釜の飯を食う仲、これからも長くお付き合いいただければ幸いでございます。"
+        "meaning_en": "Eating rice from the same pot means sharing an intimate life together, like close friends or comrades. Often used between long-time colleagues or samurai of the same band. In a Vietnam–Japan dinner context, used to express a wish to deepen the relationship.",
+        "example": "同じ釜の飯を食う仲、これからも長くお付き合いいただければ幸いでございます。",
+        "example_en": "We are comrades who eat from the same pot — I would be glad to keep this long acquaintance going."
       },
       {
         "idiom": "腹を割って話す",
         "literal": "Mổ bụng ra mà nói chuyện",
+        "literal_en": "to slice your belly open and talk (hara o watte hanasu)",
         "meaning": "Nói chuyện thẳng thắn, không che giấu — thường xảy ra sau vài ly rượu. Trong dinner culture Nhật, đây là moment chuyển từ formal sang real conversation. Bạn không khởi xướng — đợi khách Nhật.",
-        "example": "お酒も入りましたから、腹を割ってお話ししましょうか。"
+        "meaning_en": "To speak frankly, hiding nothing — often happens after a few drinks. In Japanese dinner culture, this is the moment of shifting from formal to real conversation. You do not initiate it — you wait for the Japanese guest.",
+        "example": "お酒も入りましたから、腹を割ってお話ししましょうか。",
+        "example_en": "The drinks have flowed, so shall we talk frankly, with nothing held back?"
       },
       {
         "idiom": "酒は百薬の長",
         "literal": "Rượu là vị thuốc đầu trong trăm vị thuốc",
+        "literal_en": "sake is the chief of a hundred medicines (sake wa hyakuyaku no chou)",
         "meaning": "Rượu uống vừa phải là tốt cho sức khỏe — gốc Hán cổ. Cụm classical dùng để justify uống rượu xã giao. KHÔNG dùng để encourage uống nhiều.",
-        "example": "酒は百薬の長と申しますが、お一杯だけでもいかがでしょうか。"
+        "meaning_en": "Drink in moderation and sake is good for your health — Chinese-classical in origin. A classical phrase used to justify a social drink. Do NOT use it to encourage heavy drinking.",
+        "example": "酒は百薬の長と申しますが、お一杯だけでもいかがでしょうか。",
+        "example_en": "They say sake is the chief of a hundred medicines — how about just one cup?"
       },
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — gốc trà đạo. Trong dinner context, dùng để nâng tầm bữa ăn từ meal lên memorable shared experience. Phù hợp khi cảm ơn end of dinner.",
-        "example": "本日のお食事は一期一会の機会でございます。心より光栄に存じます。"
+        "meaning_en": "Every meeting is unique — from the tea ceremony. In a dinner context, used to elevate the meal from a meal to a memorable shared experience. Fitting when thanking someone at the end of dinner.",
+        "example": "本日のお食事は一期一会の機会でございます。心より光栄に存じます。",
+        "example_en": "Today's meal is a once-in-a-lifetime occasion. I am deeply honoured."
       }
     ],
     "cultural_notes_vi": "Dinner với khách Nhật khác Western dinner ở 7 điểm. (1) SEAT POSITIONING: khách ngồi vị trí KAMIZA (vị trí xa cửa, có view tốt nhất). Bạn ngồi vị trí SHIMOZA (gần cửa, để dễ ra ngoài giao thiệp với staff). KHÔNG để khách phải tự chọn ghế. (2) BIA TRƯỚC SAKE: nguyên tắc japanese dinner: bia là first drink (toripiizu — beer first), sau đó switch sang rượu (sake/wine). Hỏi khách first drink: toriaezu nan ni sasete itadakimashou ka. (3) FOOD ORDERING: bạn order cho cả bàn — KHÔNG để khách tự order (lúng túng với menu VN). Hỏi preference (thịt, hải sản, vegetarian, allergy) trước khi đến nhà hàng, order based on info. (4) CHOPSTICK ETIQUETTE: KHÔNG cắm đũa vào cơm thẳng đứng (như nghi lễ tang). KHÔNG chuyền thức ăn từ đũa sang đũa (cũng nghi lễ tang). KHÔNG chỉ trỏ bằng đũa. KHÔNG đặt đũa ngang trên cốc/đĩa khi nói chuyện — đặt trên hashioki (gác đũa). Người Nhật để ý chi tiết này. (5) NUOC MAM CONCERN: nhiều người Nhật ngại fish sauce vì mùi. Pre-empt warn về mùi, kết nối với shottsuru (fish sauce JP), đề xuất thử cách taste với miệng (không mũi). KHÔNG offer cho khách dạng riêng — bring small dish bạn dùng minh họa. (6) LEFTOVERS: ở VN để leftover là OK; ở Nhật hơi waste. Nếu khách không ăn hết, KHÔNG hỏi tại sao — assume họ no. Order lượng vừa đủ (3-4 món cho 2 người), không over-order. (7) PAYMENT: bạn (host) trả ALL. KHÔNG split bill. Khi khách offer trả, từ chối lịch sự nhiều lần (3 lần): douzo, watashitachi no obanrou de gozaimasu (đây là trách nhiệm của em phía bên này). Sau lần thứ 3, khách sẽ accept. (8) TIMING: dinner Nhật lý tưởng 90-120 phút — KHÔNG kéo dài 3-4 giờ. Sau khi món chính xong, đề xuất dessert/coffee. Sau dessert, signal end với o-saki ni shitsurei sasete itadaite mo yoroshii deshou ka. Cuối bữa, gọi taxi cho khách về hotel — KHÔNG để khách tự đi. Khác biệt với VN: ở VN dinner là bonding, có thể kéo dài nhiều giờ với uống nhiều; ở Nhật, dinner là structured event với quy tắc. Khi khách Nhật thoải mái và muốn nijikai (afterparty), bạn host nijikai (bar/karaoke). Đây là moment quan hệ thực sự sâu thêm.",
@@ -5472,31 +5796,49 @@ export const lessons: JapaneseLesson[] = [
       "Đồng nghiệp Nhật xin nghỉ làm để celebrate Tet với bạn (không phải kì nghỉ chính thức, đó là tuần làm việc của bạn). Hãy giải thích politely — Tết là FAMILY-only event, không invite outsiders trong những ngày đầu tiên (kiêng người lạ). Đề xuất gặp họ ngày thứ 5-6 sau Tết (an toàn để invite).",
       "Sếp Nhật hỏi Có nên gửi New Year card cho đối tác VN dịp Tết không. Trả lời: KHÔNG dịp 1/1 (vì VN dùng lịch âm), DỊP Tết âm là tốt nhưng phải gửi VN card với hình hoa mai/hoa đào, không phải nengajou Nhật. Đề xuất pre-translate message tiếng VN."
     ],
+    "roleplay_prompts_en": [
+      "A Japanese colleague asks whether Tet is Chinese New Year. Answer with TACT — do NOT say 'it's not Chinese' (defensive), do NOT say 'it's the same as China' (loss of identity). Use the phrase koyomi wa onaji desu ga, sugoshi-kata wa kotonatte orimasu (the calendar is the same, but the way it is spent differs) and explain 1-2 distinctively Vietnamese features.",
+      "A Japanese colleague asks for time off work to celebrate Tet with you (it is not an official holiday — it is a working week for you). Explain politely — Tet is a FAMILY-only event; outsiders are not invited in the first few days (it is a taboo to have strangers). Propose meeting them on the 5th-6th day after Tet (safe to invite).",
+      "Your Japanese boss asks whether to send a New Year card to Vietnamese partners during Tet. Answer: NOT on Jan 1 (because Vietnam uses the lunar calendar); during lunar Tet is good but you must send a Vietnamese card with apricot/peach blossom, not a Japanese nengajou. Propose pre-translating the message into Vietnamese."
+    ],
     "register_notes": "Khi giải thích Tết cho người Nhật, register lựa cẩn thận — đây là cultural identity moment. Bốn patterns: (1) PARALLEL HÓA QUA JP CONCEPT: nói Tết là kết hợp oshougatsu cộng obon giúp người Nhật understand. KHÔNG explain abstract — họ cần concrete reference. Cụm chuẩn: nihon no oshougatsu to obon wo awaseta you na (giống combine New Year và Obon). (2) DIFFERENTIATE FROM CHINESE: nhiều người Nhật assume Tết bằng Chinese New Year. Dùng cụm koyomi wa chuugoku to onaji desu ga, sugoshi-kata wa kotonatte orimasu (lịch giống Trung Quốc nhưng cách sống khác nhau). Sau đó nêu 1-2 đặc trưng VN cụ thể: bánh chưng, lì xì, thờ cúng tổ tiên, hoa mai/hoa đào. KHÔNG defensive nationalism — chỉ neutral facts. (3) TERMINOLOGY: dùng katakana テト (Tet) cho từ riêng. KHÔNG dịch sang kyuushougatsu trừ khi cần generalize. Bánh chưng giữ là バインチュン. Lì xì giữ là リーシー. Đây là vocabulary loanwords — Nhật thích chuẩn xác trong dịch tên riêng. (4) INVITATION ETIQUETTE: nếu mời đồng nghiệp Nhật về nhà dịp Tết, KHÔNG mời 3 ngày đầu (mồng 1-3, family-only). Mời từ mồng 5-6 hoặc sau khi hết Tết. Cụm: moshi go-kyoumi ga oari deshitara, raishuu no testo no ato hambun ni nara, watakushi no jitaku ni o-shoutai shitai to zonjimasu (nếu thích, nửa sau Tết em xin được mời về nhà). // TODO: native review — banh chung phonetic in katakana — チュン vs チョン both used; banh chong is older transliteration; banh chung mới hơn nhưng katakana không có nasal vowel chuẩn.",
+    "register_notes_en": "When explaining Tet to a Japanese person, choose the register carefully — this is a cultural-identity moment. Four patterns: (1) PARALLEL THROUGH A JAPANESE CONCEPT: saying Tet is a combination of oshougatsu plus obon helps a Japanese person understand. Do NOT explain it abstractly — they need a concrete reference. Standard phrase: nihon no oshougatsu to obon wo awaseta you na (like combining New Year and Obon). (2) DIFFERENTIATE FROM CHINESE: many Japanese assume Tet equals Chinese New Year. Use the phrase koyomi wa chuugoku to onaji desu ga, sugoshi-kata wa kotonatte orimasu (the calendar is the same as China's but the way it is spent differs). Then give 1-2 specific Vietnamese features: banh chung, lucky money, ancestor worship, apricot/peach blossom. Do NOT do defensive nationalism — only neutral facts. (3) TERMINOLOGY: use the katakana テト (Tet) as a proper noun. Do NOT translate it to kyuushougatsu unless you need to generalize. Keep banh chung as バインチュン. Keep li xi as リーシー. These are vocabulary loanwords — Japanese people like accuracy in rendering proper names. (4) INVITATION ETIQUETTE: if you invite a Japanese colleague to your home during Tet, do NOT invite them for the first 3 days (the 1st to the 3rd, family-only). Invite them from the 5th-6th or after Tet ends. Phrase: moshi go-kyoumi ga oari deshitara, raishuu no tesuto no ato hambun ni nara, watakushi no jitaku ni o-shoutai shitai to zonjimasu (if you are interested, in the latter half of Tet next week I would like to invite you to my home).",
     "idiom_glosses": [
       {
         "idiom": "一年の計は元旦にあり",
         "literal": "Kế hoạch một năm bắt đầu ở ngày đầu năm",
+        "literal_en": "the plan for the year lies in New Year's Day (ichinen no kei wa gantan ni ari)",
         "meaning": "Plan cho cả năm đặt vào New Year — gốc Trung Quốc cổ. Áp dụng cả ở Nhật và VN. Cụm chuẩn dùng để giải thích vì sao Tết quan trọng — không chỉ celebration mà là planning moment.",
-        "example": "一年の計は元旦にあり、と申します。テトは家族と一年の計画を立てる大切な時間でございます。"
+        "meaning_en": "The plan for the whole year is set at New Year — ancient Chinese in origin. It applies in both Japan and Vietnam. The standard phrase to explain why Tet matters — not just a celebration but a planning moment.",
+        "example": "一年の計は元旦にあり、と申します。テトは家族と一年の計画を立てる大切な時間でございます。",
+        "example_en": "They say the plan for the year lies in New Year's Day. Tet is a precious time to make the year's plans with family."
       },
       {
         "idiom": "初心忘るべからず",
         "literal": "Đừng quên tâm ban đầu",
+        "literal_en": "do not forget your beginner's spirit (shoshin wasuru bekarazu)",
         "meaning": "Đừng quên động lực ban đầu — gốc Zeami. Phù hợp khi nói về tâm trạng đón Tết — refresh tinh thần, nhớ về root values.",
-        "example": "テトの時期は、初心忘るべからずの気持ちで、一年を振り返る機会でございます。"
+        "meaning_en": "Do not forget your original motivation — from Zeami. Fitting when speaking of the mood of welcoming Tet — refreshing the spirit, remembering root values.",
+        "example": "テトの時期は、初心忘るべからずの気持ちで、一年を振り返る機会でございます。",
+        "example_en": "The Tet season is an occasion to look back on the year, in the spirit of not forgetting one's beginnings."
       },
       {
         "idiom": "縁起がいい",
         "literal": "May mắn / điềm tốt",
+        "literal_en": "auspicious / a good omen (engi ga ii)",
         "meaning": "Auspicious — không phải idiom mà là khái niệm cốt lõi của Tết và Nhật New Year. Mọi quyết định Tết (first guest, first food, first activity) liên quan đến engi.",
-        "example": "新年最初に家に入る人は、縁起がいい人物を選ぶのが習慣でございます。"
+        "meaning_en": "Auspicious — not an idiom but a core concept of both Tet and Japanese New Year. Every Tet decision (first guest, first food, first activity) relates to engi.",
+        "example": "新年最初に家に入る人は、縁起がいい人物を選ぶのが習慣でございます。",
+        "example_en": "It is customary to choose an auspicious person to be the first to enter the house in the new year."
       },
       {
         "idiom": "袖振り合うも他生の縁",
         "literal": "Tay áo chạm nhau cũng là duyên kiếp khác",
+        "literal_en": "even a brush of sleeves is a karmic tie from another life (sode furiau mo tashou no en)",
         "meaning": "Mỗi mqh dù nhỏ đều là karma. Phù hợp khi mời đồng nghiệp Nhật về nhà dịp Tết — bày tỏ rằng cuộc gặp này không tình cờ.",
-        "example": "袖振り合うも他生の縁と申します。来年のテトに、ぜひお越しいただきたく存じます。"
+        "meaning_en": "Every relationship, however small, is karma. Fitting when inviting a Japanese colleague to your home during Tet — expressing that this meeting is not by chance.",
+        "example": "袖振り合うも他生の縁と申します。来年のテトに、ぜひお越しいただきたく存じます。",
+        "example_en": "They say even a brush of sleeves is a karmic tie from another life. Next year at Tet, I would very much like you to come."
       }
     ],
     "cultural_notes_vi": "Khi giải thích Tết cho người Nhật, có 6 điểm tinh tế. (1) TÊN GỌI TET: trong tiếng Nhật, dùng テト (katakana, từ riêng) hoặc ベトナム正月. Tránh kyuushougatsu vì từ này chung cho Lunar New Year (China, Korea). VN identity yêu cầu name-specific. (2) THỜI GIAN: VN có 7-9 ngày nghỉ chính thức (cộng cuối tuần). Dài gấp 2-3 lần oshougatsu Nhật (3 ngày). Nhiều khách Nhật shock vì office shut down — báo trước MỘT THÁNG về schedule, đề xuất họ schedule no-meeting period. (3) GIA ĐÌNH bằng CORE: Tết là family time, không networking. Đồng nghiệp Nhật mong VN colleague invite — nhưng QUY TẮC: không invite 3 ngày đầu (kiêng người lạ vào nhà). Ngày 4-6 OK invite. Cuối Tết bayer (mồng 7-10) là thời điểm tốt cho casual hangout với colleagues. (4) FOOD: bánh chưng (bắc) hoặc bánh tét (nam) là central. Khi invite Nhật về nhà, luôn serve bánh chưng. Giải thích cách ăn (cắt thành miếng vuông, ăn với dưa hành, có thể chấm nước mắm). KHÔNG ép họ ăn nhiều — họ rice culture nhưng glutinous rice với pork cộng mung bean nhiều cho 1 người Nhật. (5) LÌ XÌ: nếu khách Nhật ngẫu nhiên có mặt khi cha mẹ bạn give lì xì cho trẻ con, đừng để khách Nhật ngại. Giải thích custom trước. KHÔNG để khách Nhật cảm thấy obligated phải lì xì lại — đây là trad VN, họ là khách. (6) HOA MAI / HOA ĐÀO: nếu nhà có cây mai/đào, giới thiệu — đây là biểu tượng Tết. Mai (vàng) ở Nam, đào (hồng) ở Bắc. Khác biệt với JP sakura (hoa anh đào không liên quan New Year). Mỗi cây mua chợ Tết tốn 500K-2M VND, bạn có thể giải thích economics nếu khách hỏi. Khác biệt với JP New Year: oshougatsu Nhật là 1/1 (lịch dương), Tết VN âm lịch. Nhật có hatsumode (đi đền/chùa); VN có thờ cúng TỔ TIÊN at home altar. Nhật có osechi ryouri (lunch box of preserved food); VN có bữa ăn lớn home-cooked. Nhật có otoshidama trong phong bì trắng/nhỏ; VN có lì xì trong phong bì đỏ to. Mỗi country có own rhythm — KHÔNG so sánh thắng/thua. Mẹo: nếu invite được Nhật về nhà dịp Tết, đó là MOMENT relationship transform from colleague to family friend. ROI 10-năm.",
@@ -5718,31 +6060,49 @@ export const lessons: JapaneseLesson[] = [
       "Khách Nhật nhận hàng VN chậm 1 tuần. Họ gọi điện angry. Hãy KHÔNG defensive, KHÔNG đổ lỗi (logistics, weather). Dùng cụm watashi no kanrifuyuki ni yori (do em quản lý không tới) cộng take ownership cộng đề xuất concrete remedy (overnight ship cộng 5 phần trăm discount).",
       "Đồng nghiệp Nhật nói chào hỏi của VN không đủ formal. Bạn cảm thấy đây là cultural superiority. Hãy phản hồi MÀ KHÔNG tranh cãi — dùng cụm go-shisa, arigatou gozaimasu. Issho ni manabasete itadakimasu (cảm ơn ý kiến, em sẽ cùng học) cộng nhẹ nhàng đề xuất reverse: cũng có VN customs Nhật có thể học."
     ],
+    "roleplay_prompts_en": [
+      "Your Japanese boss criticizes you right in front of the team. You feel humiliated but do NOT cut the boss off. After the meeting, ask to speak privately — use the phrase shoushou o-jikan, yoroshii deshou ka plus speak your mind in private. Propose 'in private next time' WITHOUT sounding critical.",
+      "A Japanese client receives a Vietnamese shipment 1 week late. They call angry. Do NOT be defensive, do NOT shift blame (logistics, weather). Use the phrase watashi no kanrifuyuki ni yori (due to my own inadequate management) plus take ownership plus propose a concrete remedy (overnight ship plus 5 percent discount).",
+      "A Japanese colleague says Vietnamese greetings are not formal enough. You feel this is cultural superiority. Respond WITHOUT arguing — use the phrase go-shisa, arigatou gozaimasu. Issho ni manabasete itadakimasu (thank you for the insight, I will learn alongside you) plus gently propose the reverse: there are also Vietnamese customs Japanese people could learn."
+    ],
     "register_notes": "Khi xảy ra cuộc hội thoại khó với người Nhật, register cao hơn bình thường để DEFUSE tension. Năm patterns: (1) PAUSE-RESET CỤM: khi cảm thấy tension building, dùng ittan, seiri sasete itadaite mo yoroshii deshou ka (xin được tạm dừng tổ chức lại) hoặc shoushou, ochitsuite kangaesasete itadakemasu deshou ka (xin được suy nghĩ bình tĩnh chút). Cụm này signal bạn không emotional react — gain time. (2) DISTINGUISH POSITION FROM PERSON: dùng tachiba no chigai kara shoujiru ninshiki no sa (sự khác biệt nhận thức xuất phát từ vị trí khác nhau). Cụm này tách opinion khỏi person — không phải personal attack. (3) ACKNOWLEDGE BEFORE COUNTER: KHÔNG bắt đầu phản hồi với demo (nhưng) hay shikashi (tuy nhiên) — dùng go-shiteki, arigatou gozaimasu (cảm ơn feedback) trước, rồi mới explain. Acknowledge first bằng lower defenses. (4) SOFT COUNTER: thay vì I don't agree, dùng watashi no ninshiki to sukoshi kotonatte iru you ni kanjimashita (em cảm thấy hơi khác với nhận thức của em) — hơn nhẹ. Hoặc betsu no mikata mo aru ka to zonjimasu (cũng có cách nhìn khác). (5) CLOSE WITH GRATITUDE: cuối cuộc nói (kể cả khi không reach agreement), dùng harawhotekitagi to o-hanashi sasete itadaki, kokoro yori kansha shimasu (cảm ơn đã được nói chuyện thẳng thắn). Cụm này frame cuộc nói khó như positive bonding moment — Nhật rất appreciated. // TODO: native review — sogo phrasing hơi formal/old; alternative ninshiki no zure (lệch nhận thức) modern hơn cho casual office.",
+    "register_notes_en": "When a difficult conversation arises with a Japanese person, the register goes higher than usual to DEFUSE tension. Five patterns: (1) PAUSE-RESET PHRASE: when you feel tension building, use ittan, seiri sasete itadaite mo yoroshii deshou ka (may I be allowed to pause and reorganize) or shoushou, ochitsuite kangaesasete itadakemasu deshou ka (may I be allowed to think calmly for a moment). This phrase signals you are not reacting emotionally — and buys time. (2) DISTINGUISH POSITION FROM PERSON: use tachiba no chigai kara shoujiru ninshiki no sa (a difference in perception arising from different positions). This phrase separates the opinion from the person — it is not a personal attack. (3) ACKNOWLEDGE BEFORE COUNTER: do NOT begin your reply with demo (but) or shikashi (however) — use go-shiteki, arigatou gozaimasu (thank you for the feedback) first, then explain. Acknowledging first lowers defences. (4) SOFT COUNTER: instead of 'I don't agree', use watashi no ninshiki to sukoshi kotonatte iru you ni kanjimashita (I felt it is a little different from my understanding) — softer. Or betsu no mikata mo aru ka to zonjimasu (there may also be another way of seeing it). (5) CLOSE WITH GRATITUDE: at the end (even if you did not reach agreement), use 'thank you for being able to speak frankly'. This phrase frames a difficult conversation as a positive bonding moment — which Japanese people appreciate greatly.",
     "idiom_glosses": [
       {
         "idiom": "腹を割って話す",
         "literal": "Mổ bụng ra mà nói chuyện",
+        "literal_en": "to slice your belly open and talk (hara o watte hanasu)",
         "meaning": "Nói chuyện thẳng thắn, không che giấu — gốc samurai era. Trong cuộc nói khó, bạn KHÔNG khởi xướng (audacious cho non-Japanese), nhưng có thể dùng để cảm ơn khi sếp Nhật khởi xướng: hara wo watte o-hanashi itadaki, arigatou gozaimasu.",
-        "example": "腹を割ってお話しできて良かったです。これからも建設的に進められます。"
+        "meaning_en": "To speak frankly, hiding nothing — originating in the samurai era. In a difficult conversation you do NOT initiate it (presumptuous for a non-Japanese), but you can use it to give thanks when the Japanese counterpart initiates: hara wo watte o-hanashi itadaki, arigatou gozaimasu.",
+        "example": "腹を割ってお話しできて良かったです。これからも建設的に進められます。",
+        "example_en": "I am glad we could speak frankly and openly. We can keep moving forward constructively from here."
       },
       {
         "idiom": "歩み寄る",
         "literal": "Tiến bước gặp nhau",
+        "literal_en": "to step toward each other (ayumiyoru)",
         "meaning": "Meet halfway — không phải idiom mà là verb phổ biến. Cụm chuẩn cho conflict resolution Nhật. Dùng để frame disagreement không phải win-lose mà là cùng tiến.",
-        "example": "柔軟にお互いに歩み寄ることで、最善の道が見えてくるかと存じます。"
+        "meaning_en": "To meet halfway — not an idiom but a common verb phrase. The standard phrase for Japanese conflict resolution. Used to frame a disagreement not as win-lose but as moving forward together.",
+        "example": "柔軟にお互いに歩み寄ることで、最善の道が見えてくるかと存じます。",
+        "example_en": "By flexibly stepping toward each other, I believe the best path will come into view."
       },
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau mưa to, đất chặt hơn — sau khó khăn, mọi thứ vững hơn. Phù hợp cuối cuộc nói khó để frame disagreement như growth opportunity.",
-        "example": "雨降って地固まると申します。今回のお話を経て、より良い関係になれると確信しております。"
+        "meaning_en": "After heavy rain the ground is firmer — after hardship, everything is more solid. Fitting at the close of a difficult conversation to frame the disagreement as a growth opportunity.",
+        "example": "雨降って地固まると申します。今回のお話を経て、より良い関係になれると確信しております。",
+        "example_en": "They say after the rain the ground hardens. I am confident that through this talk we will have a better relationship."
       },
       {
         "idiom": "和をもって尊しとなす",
         "literal": "Lấy hòa làm quý",
+        "literal_en": "hold harmony as precious (wa o motte toutoshi to nasu)",
         "meaning": "Hòa hợp là cao quý — gốc Hiến pháp 17 điều của Hoàng Thái tử Shotoku. Trong cuộc nói khó, dùng để remind về shared value, không phải để stop conversation mà để frame nó.",
-        "example": "和をもって尊しとなすという考えを大切に、お話を進めさせていただきます。"
+        "meaning_en": "Harmony is noble — from Crown Prince Shotoku's Seventeen-Article Constitution. In a difficult conversation, used to recall a shared value — not to stop the conversation but to frame it.",
+        "example": "和をもって尊しとなすという考えを大切に、お話を進めさせていただきます。",
+        "example_en": "Treasuring the idea of holding harmony as precious, I will continue this conversation."
       }
     ],
     "cultural_notes_vi": "Cuộc hội thoại khó với người Nhật có cấu trúc khác phương Tây ở 6 điểm. (1) NEVER PUBLIC: Nhật disagreement không bao giờ ở public. Nếu sếp Nhật chỉ trích bạn trước team, không phải vì họ thiếu tế nhị — là vì họ đã FAIL nemawashi trước đó. Bạn không nên fight back công khai — chỉ acknowledge ngắn, rồi đề xuất gặp riêng để discuss thêm (hai te koso, kochira wa ato hodo go-soudan ni mairitai zonjimasu). (2) INDIRECT BEFORE DIRECT: Nhật thường indirect trước. Nếu sếp nói chotto muzukashii desu ne (hơi khó nhỉ), đó KHÔNG phải mild concern — đó là strong NO. Học đọc indirectness. Cụm Nhật indirect bằng no: muzukashii (khó), kentou itashimasu (em sẽ xem xét — không actually làm), kangae sasete kudasai (xin để em suy nghĩ — soft no). (3) NO RAISED VOICE: Nhật không raise voice trong disagreement. Nếu họ raise voice, đã là EXTREMELY upset — beyond fixable. Nếu bạn raise voice trước, relationship damaged 100 phần trăm. Học breathe trước phản hồi. (4) APOLOGIZE FIRST, EXPLAIN SECOND: bất kể context, apology đầu (kể cả khi bạn nghĩ không sai). Sau apology, mới explain. Cụm: makoto ni moushiwake gozaimasen. Ittan, jouhou wo seiri sasete itadakemasu deshou ka cộng explanation. KHÔNG explain trước apology — sounds defensive. (5) THIRD-PARTY MEDIATION: nếu disagreement không resolve direct, dùng third-party (sếp chung, HR, sempai). Đây không phải escalation — đây là face-saving protocol. Cụm: moshi yoroshikereba, XX-buchou nimo dou-zo jouhou wo o-tsutae itadaite, sangawa de seiri sasete itadakitaku zonjimasu (nếu được, xin báo sếp XX cùng dàn xếp 3 bên). (6) RECOVERY POST-CONFLICT: sau cuộc nói khó, KHÔNG act như nothing happened (sounds dismissive) và KHÔNG over-apologize lặp đi lặp lại (sounds insincere). Dùng pattern dignified continuity — gặp họ next day, chào normal, dần dần mention 1 lần kế thừa lesson learned. Cụm: senjitsu no o-hanashi, kokoro ni kizamasete itadaki, jissen ni utsushite orimasu (lời nói hôm trước em đã khắc ghi và đang thực hiện). Khác biệt với VN: ở VN disagreement có thể loud, public, immediate; ở Nhật, mọi thing là private, indirect, slow. KHÔNG phải Nhật avoid conflict — họ resolve conflict qua kênh khác. Hiểu khác biệt này bằng bạn không bị mất points trong cuộc nói khó. Long-term: một cuộc nói khó được handled tốt bằng relationship deeper than no-conflict. Trust by fire.",
@@ -5994,31 +6354,49 @@ export const lessons: JapaneseLesson[] = [
       "Tại quán bia, đồng nghiệp Nhật bắt đầu kể problem cá nhân (mqh xa với gia đình ở Nhật, lonely). Bạn nhận ra đây là honne moment hiếm. Hãy KHÔNG đẩy advice, KHÔNG dramatize. Chỉ aizuchi (sou desu ka, naruhodo, taihen deshita ne), uống chậm, để họ talk. Cuối: bày tỏ trân trọng cuộc nói chuyện.",
       "Sau 6 tháng friendship, đồng nghiệp Nhật gửi tin nhắn about to leave Vietnam, transfer back Tokyo. Hãy phản hồi — KHÔNG dramatic, KHÔNG cliché. Đề xuất last meal cùng (ở quán đầu tiên cả hai đến), gift một món có ý nghĩa cá nhân (album ảnh chung, không vật chất). Long-term: hứa giữ contact via Tết card hand-written."
     ],
+    "roleplay_prompts_en": [
+      "A Japanese colleague has been in Vietnam 6 months. You want to invite them home for a meal but they are too hesitant. Invite them in 3 rounds — each lighter than the last: (1) first a casual cafe (the safest); (2) second lunch at a familiar place; (3) third dinner at your home. Wait 2-3 weeks between each, using dou-zo go-muri no nai han'i de (please, only within what is no trouble for you).",
+      "At a beer bar, a Japanese colleague starts to talk about a personal problem (distant relationship with family in Japan, lonely). You realize this is a rare honne moment. Do NOT push advice, do NOT dramatize. Just aizuchi (sou desu ka, naruhodo, taihen deshita ne), drink slowly, let them talk. At the end: express how much you treasure the conversation.",
+      "After 6 months of friendship, the Japanese colleague sends a message that they are about to leave Vietnam, transferring back to Tokyo. Respond — NOT dramatic, NOT cliche. Propose a last meal together (at the first place you both went), a gift with personal meaning (a shared photo album, not something material). Long-term: promise to keep contact via a hand-written Tet card."
+    ],
     "register_notes": "Friendship với Nhật cần register switching, không như casual VN friend. Năm phases: (1) PHASE 1 (TUẦN 1-4): chỉ desu/masu polite. KHÔNG joke. KHÔNG personal questions. Chỉ shared work topics. Bắt đầu với Tanaka-san, otsukaresama desu mỗi sáng, nhưng KHÔNG more. Phase này test cultural literacy của bạn. (2) PHASE 2 (THÁNG 2-3): vẫn desu/masu nhưng có thể small talk: weather, food, weekend. Đề xuất lunch invitation đầu tiên — bữa trưa, không bữa tối. Cụm: moshi yoroshikereba, kondo issho ni o-hiru demo dou desu ka. Light dose. (3) PHASE 3 (THÁNG 4-6): có thể casual desu/masu (drop thiêu), share more personal (family, hobbies). Đề xuất bia evening — bia là bonding ritual ở Nhật. Phase này họ sẽ test bạn — kể câu thoại nhẹ về Japan/VN, xem reaction. (4) PHASE 4 (THÁNG 7-12): có thể plain form (da/dearu) trong CASUAL conversation, nhưng SWITCH back desu/masu khi sếp/khách hiện diện. Giai đoạn này họ share honne. Bạn có thể kể về VN problem (traffic, corruption) — không spin. (5) PHASE 5 (NĂM 2 cộng): true friendship. Casual constantly. Gọi nhau bằng tên (KHÔNG san giữa close friends sau 1 năm cộng — tùy individual). Có thể tease nhẹ. Có thể không reply tin nhắn 1 tuần mà không hard feelings. KHÔNG rush phases. Người VN hay rush — invite về nhà tuần 2 bằng scare họ. Học chờ. Mẹo: dùng cụm noni-kee-shon (nominication — drinking communication) khi thân hơn Phase 3 — show bạn understand cultural concept. Cụm honne wo kikasete itadaite, arigatou (cảm ơn vì share honne) sau khi họ open up. Đây là validation họ trust bạn. // TODO: native review — nominication phrasing — modern slang, 1990s gốc; some senior Japanese (60 cộng) think outdated; safer alternative is just nomi-kai (drinking party).",
+    "register_notes_en": "Friendship with a Japanese person requires register switching, unlike a casual Vietnamese friend. Five phases: (1) PHASE 1 (WEEKS 1-4): only polite desu/masu. NO jokes. NO personal questions. Only shared work topics. Start with Tanaka-san, otsukaresama desu every morning, but NO more. This phase tests your cultural literacy. (2) PHASE 2 (MONTHS 2-3): still desu/masu but small talk is possible: weather, food, weekend. Propose the first lunch invitation — lunch, not dinner. Phrase: moshi yoroshikereba, kondo issho ni o-hiru demo dou desu ka. A light dose. (3) PHASE 3 (MONTHS 4-6): casual desu/masu is possible (dropping the keigo), share more personal things (family, hobbies). Propose an evening beer — beer is a bonding ritual in Japan. In this phase they will test you — tell a light story about Japan/Vietnam and watch the reaction. (4) PHASE 4 (MONTHS 7-12): plain form (da/dearu) is possible in CASUAL conversation, but SWITCH back to desu/masu when the boss/client is present. In this stage they share honne. You can talk about a Vietnamese problem (traffic, corruption) — without spinning it. (5) PHASE 5 (YEAR 2 plus): true friendship. Casual constantly. Calling each other by name (NO -san between close friends after 1 year plus — depends on the individual). Light teasing is possible. Not replying to a message for a week is possible without hard feelings. Do NOT rush the phases. Vietnamese people tend to rush — inviting them home in week 2 scares them. Learn to wait. Tip: use the phrase noni-kee-shon (nominication — drinking communication) once you are closer than Phase 3 — it shows you understand the cultural concept. The phrase honne wo kikasete itadaite, arigatou (thank you for sharing your honne) after they open up. This validates that they trust you.",
     "idiom_glosses": [
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau khó khăn, mọi thứ vững hơn — rain compacts the soil. Phù hợp khi friendship deepen sau initial misunderstanding hoặc cuộc nói khó. Cụm này frame conflict not as problem but as relationship-strengthener.",
-        "example": "雨降って地固まると申します。今回の出来事を経て、もっと親しくなれた気がします。"
+        "meaning_en": "After hardship, everything is more solid — rain compacts the soil. Fitting when a friendship deepens after an initial misunderstanding or a difficult conversation. This phrase frames conflict not as a problem but as a relationship-strengthener.",
+        "example": "雨降って地固まると申します。今回の出来事を経て、もっと親しくなれた気がします。",
+        "example_en": "They say after the rain the ground hardens. After this incident, I feel we have grown closer."
       },
       {
         "idiom": "三度目の正直",
         "literal": "Lần thứ ba mới thật",
+        "literal_en": "the third time is the honest one (sandome no shoujiki)",
         "meaning": "Third time's the charm — gốc Nhật cổ. Phù hợp khi invite Nhật bạn nhiều lần (hai lần đầu họ từ chối, lần thứ ba accept). Đừng give up sau 1-2 từ chối.",
-        "example": "三度目の正直と言いますが、今回こそご自宅にお招きしたく存じます。"
+        "meaning_en": "Third time's the charm — old Japanese in origin. Fitting when you invite a Japanese friend several times (they declined the first two, accept on the third). Do not give up after 1-2 refusals.",
+        "example": "三度目の正直と言いますが、今回こそご自宅にお招きしたく存じます。",
+        "example_en": "They say the third time is the honest one — this time, I really would like to invite you to my home."
       },
       {
         "idiom": "以心伝心",
         "literal": "Lòng truyền lòng",
+        "literal_en": "heart transmits to heart (ishin denshin)",
         "meaning": "Hiểu nhau không cần lời — gốc Phật giáo Zen. Trong friendship matured, dùng để bày tỏ sự thông hiểu sâu. Bạn nhận ra một silent moment hai người cùng nghĩ same thing.",
-        "example": "もう何年も一緒に仕事してきましたから、ほとんど以心伝心ですね。"
+        "meaning_en": "Understanding each other without words — from Zen Buddhism. In a matured friendship, used to express a deep mutual understanding. You realize a silent moment in which you both think the same thing.",
+        "example": "もう何年も一緒に仕事してきましたから、ほとんど以心伝心ですね。",
+        "example_en": "We have worked together for years now, so it's almost heart-to-heart, isn't it."
       },
       {
         "idiom": "馴染みの店",
         "literal": "Quán quen / quán mình thường lui tới",
+        "literal_en": "a familiar shop / the place we always go (najimi no mise)",
         "meaning": "Familiar shop — biểu thị mqh long-term với một place. Dùng khi friendship has our regular spot. Show shared history.",
-        "example": "ここはもう馴染みの店ですね。マスターも私たちの顔を覚えてくれて。"
+        "meaning_en": "A familiar shop — signifying a long-term relationship with a place. Used when a friendship has 'our regular spot'. It shows shared history.",
+        "example": "ここはもう馴染みの店ですね。マスターも私たちの顔を覚えてくれて。",
+        "example_en": "This is our regular place now, isn't it. Even the owner remembers our faces."
       }
     ],
     "cultural_notes_vi": "Friendship với Nhật ở VN khác friendship với Tây hoặc với Việt khác ở 7 điểm. (1) THỜI GIAN: trung bình 1 năm để reach Phase 4 (true honne sharing). KHÔNG phải Nhật slow — họ careful. Người VN hay quick (1 tháng đã best friend). Học chờ. (2) GROUP BEFORE INDIVIDUAL: ban đầu invite Nhật vào group hangout (3-4 người), không 1-on-1. Group là safer cho Nhật. Sau 2-3 group sessions, Nhật sẽ tự gợi ý 1-on-1. (3) ALCOHOL AS BRIDGE: nominication (nomi-cation bằng drinking communication) là chuẩn ở Nhật. Trong VN, có thể adapt — bia tươi quán địa phương là default. KHÔNG tự rót cho mình, luôn rót cho bạn trước. Khi say lightly, Nhật sẽ open up — đây là expected, không weakness. (4) HONNE/TATEMAE: bạn nghe nhiều về 2 layer này, nhưng thực ra ở friendship phase Nhật vẫn dùng. Khác là honne layer được unlock dần. Ban đầu họ chỉ tatemae (polite, professional, agree với bạn). Sau drinks, một số honne lộ. Sau 1 năm, full honne — bao gồm complaint về Japan, lonely abroad, marriage troubles. Bạn KHÔNG advice — chỉ listen và acknowledge. (5) GIFT GIVING: chuẩn mực Nhật là khi visit nhà, mang temiyage (gift). Khi đi du lịch, mang omiyage cho friends. Bạn cũng adopt — VN customs: mang trái cây hoặc bánh tươi khi visit. KHÔNG đắt — symbolic value matter. (6) PHYSICAL CONTACT: KHÔNG hug, KHÔNG kiss má, KHÔNG vai. Nhật personal space lớn hơn VN. Maximum: handshake (chỉ first meeting), bow. Sau nhiều năm có thể light pat on shoulder cho male-male — male-female còn cẩn thận hơn. (7) SOCIAL MEDIA: Nhật ít share trên FB/Instagram. Đừng tag họ photo nếu họ không hỏi. LINE messages OK 1-on-1, nhưng KHÔNG group chat random. Email vẫn là kênh business primary cho Japanese của thế hệ 30 cộng. Khác biệt với VN: ở VN friendship all in or all out — share mọi thứ, hangout nhiều, post FB. Ở Nhật, friendship vô hạn về depth nhưng có boundaries rất rõ về time/space/sharing. Mẹo cuối: nếu friendship survive khi bạn của Nhật transfer về Tokyo — kept up qua Tết card, occasional visit khi họ về VN, qua Christmas/New Year LINE — đây là LIFETIME friendship. Người VN có thể có nhiều friends; người Nhật có ít friends nhưng deeply lasting. Quality on quantity. Một người Nhật bạn keep 10 năm bằng giá trị bằng 50 acquaintances bình thường.",
@@ -6245,31 +6623,49 @@ export const lessons: JapaneseLesson[] = [
       "Cán bộ hỏi câu khó: anata no shokugyou wa nan desu ka (nghề của bạn?). Bạn là sinh viên VN du lịch — KHÔNG nói daigakusei desu (sinh viên đại học) cộc lốc; dùng cụm gakusei de, genzai betonamu kokka daigaku ni zaiseki shite orimasu (em đang học tại ĐH Quốc gia VN).",
       "Cán bộ thấy nghi ngờ vì bạn không có hotel booking confirmation in giấy (chỉ có trên điện thoại). Hãy xin phép xem trên điện thoại — dùng cụm sumahō ni hokan shite orimasu, gokakunin itadaite mo yoroshii deshou ka (em lưu trên điện thoại, xin được cho xem). KHÔNG panic; KHÔNG offer tiền."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself having just got off the plane at Narita for the first time. Rehearse answering the 5 standard questions of the immigration officer: (1) purpose, (2) length of stay, (3) where you are staying, (4) return ticket, (5) first time/which visit. Answer each in 5-10 seconds, using kenjougo (de gozaimasu, mairimashita).",
+      "The officer asks a hard question: anata no shokugyou wa nan desu ka (what is your occupation?). You are a Vietnamese student on tourism — do NOT say a curt daigakusei desu (university student); use the phrase gakusei de, genzai betonamu kokka daigaku ni zaiseki shite orimasu (I am a student, currently enrolled at Vietnam National University).",
+      "The officer is suspicious because you have no printed hotel booking confirmation (only on your phone). Ask permission to show it on your phone — use the phrase sumaho ni hokan shite orimasu, gokakunin itadaite mo yoroshii deshou ka (I have it saved on my phone, may I let you check it). Do NOT panic; do NOT offer money."
+    ],
     "register_notes": "Cán bộ nhập cảnh tại Narita/Haneda mong khách trả lời CỤ THỂ và NGẮN GỌN trong keigo. Bốn patterns bắt buộc: (1) DÙNG -mairimashita THAY -kimashita: kankou de mairimashita (em đến vì du lịch — kenjougo của 来る). Đây là dấu hiệu bạn hiểu register; cán bộ Nhật chú ý ngay. (2) DÙNG -de gozaimasu THAY -desu: ni-shuukan de gozaimasu thay vì ni-shuukan desu. Hơi formal nhưng phù hợp situation. (3) NÓI ĐỊA CHỈ ĐẦY ĐỦ: KHÔNG nói shinjuku no hoteru (khách sạn ở Shinjuku) — quá vague. Nói cụ thể: Shinjuku no Keio Plaza Hotel de gozaimasu. Cán bộ cần verify với landing card. (4) ANSWER ONLY WHAT'S ASKED: KHÔNG over-explain. Nếu họ hỏi mục đích, trả lời mục đích thôi — đừng kể luôn lịch trình. Nhật trọng efficiency trong officer interactions. Câu mở đầu chuẩn khi đến counter: yoroshiku onegai itashimasu (đặt landing card xuống). Câu kết thúc khi qua: arigatou gozaimashita. Shitsurei itashimasu (cảm ơn, em xin phép). // TODO native review — fukurobin (復路便) phrasing — alternative kikoku-bin (帰国便) more common in spoken contexts; passport-ese vs ticket-ese.",
+    "register_notes_en": "An immigration officer at Narita/Haneda expects you to answer SPECIFICALLY and BRIEFLY in keigo. Four mandatory patterns: (1) USE -mairimashita INSTEAD OF -kimashita: kankou de mairimashita (I have come for tourism — kenjougo of 来る). This signals you understand the register; the Japanese officer notices immediately. (2) USE -de gozaimasu INSTEAD OF -desu: ni-shuukan de gozaimasu rather than ni-shuukan desu. A touch formal but it suits the situation. (3) GIVE THE FULL ADDRESS: do NOT say shinjuku no hoteru (a hotel in Shinjuku) — too vague. Say specifically: Shinjuku no Keio Plaza Hotel de gozaimasu. The officer needs to verify it against the landing card. (4) ANSWER ONLY WHAT IS ASKED: do NOT over-explain. If they ask the purpose, answer only the purpose — do not also recite your itinerary. Japan values efficiency in officer interactions. The standard opening phrase when you reach the counter: yoroshiku onegai itashimasu (placing the landing card down). The closing phrase when you pass through: arigatou gozaimashita. Shitsurei itashimasu (thank you, excuse me).",
     "idiom_glosses": [
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — gốc trà đạo. Tại immigration, không dùng trực tiếp với cán bộ (out of place), nhưng là tinh thần khi đến Nhật lần đầu — mỗi tương tác đều đáng trân trọng.",
-        "example": "初めての日本訪問、一期一会の気持ちで臨ませていただきます。"
+        "meaning_en": "Every meeting is unique — from the tea ceremony. At immigration, do not use it directly with the officer (out of place), but it is the spirit of arriving in Japan for the first time — every interaction is worth treasuring.",
+        "example": "初めての日本訪問、一期一会の気持ちで臨ませていただきます。",
+        "example_en": "My first visit to Japan — I will face it in the spirit of a once-in-a-lifetime encounter."
       },
       {
         "idiom": "郷に入っては郷に従え",
         "literal": "Vào làng nào theo làng đó",
+        "literal_en": "when in a village, follow the village (go ni itte wa go ni shitagae)",
         "meaning": "When in Rome, do as Romans do — gốc Nhật cổ. Tinh thần khi qua immigration: theo procedure Nhật, không phàn nàn waiting time, không tranh cãi questions.",
-        "example": "郷に入っては郷に従え、入国審査の手続きにきちんと従います。"
+        "meaning_en": "When in Rome, do as the Romans do — old Japanese in origin. The spirit when passing through immigration: follow the Japanese procedure, do not grumble about the waiting time, do not argue with questions.",
+        "example": "郷に入っては郷に従え、入国審査の手続きにきちんと従います。",
+        "example_en": "When in a village, follow the village — I will follow the immigration procedures properly."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi cán bộ hỏi nhiều câu, đừng rush trả lời. Nhật cảnh giác với traveler trả lời quá nhanh (= scripted, suspicious).",
-        "example": "急がば回れ、慎重に質問にお答えいたします。"
+        "meaning_en": "Haste ruins things — fitting when the officer asks many questions; do not rush your answers. Japan is wary of a traveller who answers too fast (= scripted, suspicious).",
+        "example": "急がば回れ、慎重に質問にお答えいたします。",
+        "example_en": "If you are in a hurry, go around — I will answer the questions carefully."
       },
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry — gốc Trung Quốc cổ. Phù hợp khi mang đầy đủ giấy tờ (passport, return ticket, hotel booking, cash). Cán bộ thấy bạn có document = bạn được trust.",
-        "example": "備えあれば憂いなしで、必要な書類はすべて持参しております。"
+        "meaning_en": "Better safe than sorry — ancient Chinese in origin. Fitting when you carry all the documents (passport, return ticket, hotel booking, cash). When the officer sees you have the documents, you are trusted.",
+        "example": "備えあれば憂いなしで、必要な書類はすべて持参しております。",
+        "example_en": "If you are prepared there is no worry — I have brought all the necessary documents."
       }
     ],
     "cultural_notes_vi": "Nhập cảnh Narita/Haneda khác phương Tây ở 5 điểm. (1) THỜI GIAN: peak hours (sáng 6-9, chiều 14-17) có thể chờ 60-90 phút. KHÔNG complain với cán bộ về wait time — bị xem là disrespect. Pre-fill landing card trên máy bay (tiếp viên đưa form 30 phút trước landing) để khi xuống máy bay đi thẳng đến lane. (2) BIẾT LANE NÀO: foreign passport có 2 lanes — automated gate (nếu là registered traveler) và manual counter. Lần đầu Nhật, dùng manual. Đứng sau line màu vàng, đợi cán bộ vẫy tay. KHÔNG đi tới counter trước khi được vẫy. (3) DOCUMENT ORDER: chuẩn bị TRƯỚC khi đến counter: passport mở ở photo page, landing card on top, return ticket in giấy ở dưới. Đưa cùng lúc bằng HAI TAY (Nhật quan sát chi tiết này). KHÔNG đưa từng tờ một. (4) PHONE: KHÔNG dùng phone tại counter (không nghe nhạc, không chụp ảnh, không quay). Nếu họ ask phone access (rare), unlock và đưa face-up. KHÔNG resist. (5) FINGERPRINT cộng PHOTO: bắt buộc mọi visitor 16+ kể từ 2007. Đặt cả hai ngón trỏ ĐỒNG THỜI lên scanner — không tuần tự. Nhìn camera ngang tầm mắt, KHÔNG mỉm cười (passport-style). Khác biệt với VN: ở VN immigration thường formal nhưng cán bộ có thể chat nhỏ; ở Nhật, immigration là pure procedure — không small talk, không cảm xúc. Nếu họ ask câu phụ (sao đến Nhật, có biết người Nhật không), trả lời ngắn POSITIVE — kể về interest in văn hóa, food, anime. KHÔNG nói lý do tiêu cực (avoid VN food, escape weather). Một câu trả lời thân thiện kéo dài 5 giây, không 30 giây.",
@@ -6496,31 +6892,49 @@ export const lessons: JapaneseLesson[] = [
       "Staff hỏi bạn đã có 紛失届 chưa. Bạn CHƯA đi cảnh sát. Hãy KHÔNG nói dối — thừa nhận chưa làm và xin hướng dẫn. Dùng cụm mada irashitemashita ga, dochira no keisatsusho ni ireba yoroshii deshou ka (em chưa làm, xin hỏi nên đến đồn cảnh sát nào).",
       "Bạn cần 緊急渡航書 (emergency travel document) vì bay về VN trong 3 ngày. Hãy giải thích urgency MÀ KHÔNG panic, MÀ KHÔNG demand. Dùng cụm makoto ni katte na onegai de gozaimasu ga (em xin lỗi vì yêu cầu đột ngột) cộng giải thích lý do."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself having just arrived at the Vietnamese embassy in Tokyo (Akasaka). Open the conversation with the staff in Japanese — do NOT use Vietnamese because the staff may also be Japanese. Use the phrase pasupooto wo funshitsu shite shimaimashite, saihakkou wo onegai itashitaku mairimashita.",
+      "The staff ask whether you have a 紛失届 yet. You have NOT been to the police. Do NOT lie — admit you have not done it and ask for guidance. Use the phrase mada itashite orimasen ga, dochira no keisatsusho ni ireba yoroshii deshou ka (I have not done it yet — may I ask which police station I should go to).",
+      "You need an 緊急渡航書 (emergency travel document) because you fly back to Vietnam in 3 days. Explain the urgency WITHOUT panicking and WITHOUT demanding. Use the phrase makoto ni katte na onegai de gozaimasu ga (I am sorry for the sudden request) plus explain the reason."
+    ],
     "register_notes": "Tại đại sứ quán VN ở Tokyo, register tùy staff bạn gặp. Staff Việt: có thể tiếng Việt. Staff Nhật (consular section thường có): tiếng Nhật trang trọng. An toàn: bắt đầu bằng tiếng Nhật, switch sang Việt nếu staff đáp Việt. Bốn patterns đặc biệt: (1) MỞ ĐẦU KHIÊM TỐN: KHÔNG vào reception nói pasupooto kudasai (give me passport — kiểu demand). Dùng pasupooto wo funshitsu shite shimaimashite, saihakkou wo onegai itashitaku mairimashita (em đã lỡ làm mất hộ chiếu, em xin được nhờ cấp lại). 'Shimatte' = lỡ làm — show ownership. (2) ADMIT WHEN YOU DON'T KNOW: nếu chưa làm 紛失届 hoặc thiếu giấy tờ, KHÔNG bịa. Dùng moushiwake gozaimasen, mada XX wo shite orimasen (xin lỗi, em chưa làm XX). Honesty earns trust hơn fake competency. (3) URGENCY VS DEMAND: nếu cần 緊急渡航書, FRAME ở dạng request, không demand. Cụm: makoto ni katte na onegai de gozaimasu ga, raishuu suiyoubi ni kikoku no yotei de gozaimashite (em xin lỗi vì yêu cầu đột ngột, em định bay về thứ tư tuần sau). KHÔNG isoide kudasai (please hurry — sounds bossy). (4) GRATITUDE THROUGHOUT: cảm ơn nhiều lần — khi nhận hướng dẫn, khi nhận paperwork, cuối cuộc nói. Đặc biệt câu cuối: kasanete, go-teinei na go-taiou wo itadaki, makoto ni arigatou gozaimashita. Staff đại sứ quán xử lý nhiều cases khó — gratitude làm họ remember bạn trong positive light. // TODO native review — sai-hakkou (再発行) phrasing — alternative re-shinsei (再申請) hơi khác nghĩa nhưng đôi khi staff dùng; emergency document có thể là 渡航書 hoặc 緊急パスポート tùy thời điểm.",
+    "register_notes_en": "At the Vietnamese embassy in Tokyo, the register depends on the staff you meet. Vietnamese staff: Vietnamese is possible. Japanese staff (the consular section often has them): formal Japanese. The safe approach: start in Japanese, switch to Vietnamese if the staff reply in Vietnamese. Four special patterns: (1) HUMBLE OPENING: do NOT walk up to reception and say pasupooto kudasai (give me a passport — a demand). Use pasupooto wo funshitsu shite shimaimashite, saihakkou wo onegai itashitaku mairimashita (I have unfortunately lost my passport and have come to ask for a reissue). 'Shimatte' = unfortunately did — it shows ownership. (2) ADMIT WHEN YOU DON'T KNOW: if you have not filed the 紛失届 or are missing documents, do NOT make things up. Use moushiwake gozaimasen, mada XX wo shite orimasen (I am sorry, I have not yet done XX). Honesty earns more trust than fake competency. (3) URGENCY VS DEMAND: if you need an 緊急渡航書, FRAME it as a request, not a demand. Phrase: makoto ni katte na onegai de gozaimasu ga, raishuu suiyoubi ni kikoku no yotei de gozaimashite (I am sorry for the sudden request, but I plan to fly home next Wednesday). Do NOT say isoide kudasai (please hurry — it sounds bossy). (4) GRATITUDE THROUGHOUT: thank them many times — when you receive guidance, when you receive paperwork, at the end of the conversation. Especially the final line: kasanete, go-teinei na go-taiou wo itadaki, makoto ni arigatou gozaimashita. Embassy staff handle many difficult cases — gratitude makes them remember you in a positive light.",
     "idiom_glosses": [
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau mưa to, đất chặt hơn — sau khó khăn, mọi thứ vững hơn. Phù hợp khi mất passport — frame incident as growth opportunity, không là drama.",
-        "example": "雨降って地固まると申します。今回の経験を教訓にいたします。"
+        "meaning_en": "After heavy rain the ground is firmer — after hardship, everything is more solid. Fitting when you lose a passport — frame the incident as a growth opportunity, not a drama.",
+        "example": "雨降って地固まると申します。今回の経験を教訓にいたします。",
+        "example_en": "They say after the rain the ground hardens. I will take this experience as a lesson."
       },
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry. Phù hợp cho lesson learned — luôn có copy passport ở chỗ khác (cloud, suitcase, friend).",
-        "example": "今後は備えあれば憂いなしで、コピーを別の場所にも保管いたします。"
+        "meaning_en": "Better safe than sorry. Fitting for the lesson learned — always keep a copy of the passport somewhere else (cloud, suitcase, friend).",
+        "example": "今後は備えあれば憂いなしで、コピーを別の場所にも保管いたします。",
+        "example_en": "From now on, better safe than sorry — I will keep a copy in another place too."
       },
       {
         "idiom": "肝に銘じる",
         "literal": "Khắc sâu vào gan",
+        "literal_en": "to engrave it on your liver (kimo ni meijiru)",
         "meaning": "Khắc cốt ghi tâm. Câu chuẩn để đáp lời khuyên của staff về việc giữ giấy tờ trong tương lai.",
-        "example": "ご助言を肝に銘じ、二度と紛失しないよう注意いたします。"
+        "meaning_en": "To carve into the heart and bones. The standard line for responding to the staff's advice about keeping documents safe in the future.",
+        "example": "ご助言を肝に銘じ、二度と紛失しないよう注意いたします。",
+        "example_en": "I will engrave your advice on my heart and take care never to lose it again."
       },
       {
         "idiom": "七転び八起き",
         "literal": "Bảy lần ngã, tám lần đứng dậy",
+        "literal_en": "fall seven times, rise eight (nanakorobi yaoki)",
         "meaning": "Kiên cường — ngã bao nhiêu cũng đứng dậy thêm một lần. Phù hợp cho mindset khi xử lý emergency abroad — không panic, methodical recovery.",
-        "example": "七転び八起きの精神で、落ち着いて手続きを進めてまいります。"
+        "meaning_en": "Resilience — however many times you fall, you stand up one more time. Fitting for the mindset when handling an emergency abroad — no panic, a methodical recovery.",
+        "example": "七転び八起きの精神で、落ち着いて手続きを進めてまいります。",
+        "example_en": "In the spirit of falling seven times and rising eight, I will calmly proceed with the procedures."
       }
     ],
     "cultural_notes_vi": "Mất passport ở Nhật là crisis cá nhân nhưng có procedure rõ ràng. 6 bước theo thứ tự PHẢI đúng. (1) RETRACE: trong 24 giờ đầu, gọi mọi nơi đã đến (hotel reception, restaurant, tàu lost-and-found). Tỉ lệ recovery ở Nhật cao bất thường — Nhật trả lại đồ bị mất với rate 80 phần trăm trong Tokyo (theo Tokyo Metropolitan Police 2023 data). (2) POLICE 紛失届: trong 48 giờ, đến đồn cảnh sát gần nhất (KHÔNG cần đến nơi mất). Mang theo bất kỳ ID nào (CMND, passport copy trên phone, driver's license). Staff sẽ điền form, đưa số receipt — KHÔNG mất phí. KHÔNG bỏ qua bước này — đại sứ quán YÊU CẦU receipt này. (3) EMBASSY APPOINTMENT: gọi đại sứ quán VN trước (số: 03-3466-3311). Có thể cần appointment, hoặc walk-in tùy ngày. Hours: 9-12, 14-17 thứ 2-6. Đóng cửa ngày lễ Nhật cộng VN. (4) BRING DOCUMENTS: passport copy (digital OK), CMND copy, 6 photos chuẩn 4.5x3.5cm white background, application form (lấy tại embassy hoặc download trước), tiền mặt fee. (5) WAIT TIME: passport mới: 10 ngày làm việc. Emergency travel document (TPHS — thông phận hồi sang): same-day hoặc 1-2 ngày, một lần dùng cho return only, không re-enter Japan. Phải có vé về VN đã booked để qualify. (6) RETURN TO VN: với TPHS, immigration VN có thể ask thêm questions tại sân bay — bring police report receipt + embassy issuance letter. Khác biệt với phương Tây: ở Nhật, passport là sacred — mất passport không bị xem như fault của bạn (Nhật biết phải mất rất lâu để phục hồi). Police và embassy đối xử professional, không judgment. Nhưng ở VN, một số cán bộ có thể stigmatize. Mang đủ documents để minimize friction. Mẹo cuối: nếu mất tại tourist area (Asakusa, Akihabara, Shibuya), có lost-and-found dedicated cho tourists — Tokyo Metropolitan Police Lost Property Center (Iidabashi station). Online database tra cứu các đồ đã turn-in trong 30 ngày qua.",
@@ -6747,31 +7161,49 @@ export const lessons: JapaneseLesson[] = [
       "Staff nói phí 30 phần trăm nhưng bạn nhớ thấy quy định khác trên website. Hãy KHÔNG cãi thẳng — dùng cụm hommepe-ji ni wa XX to kakarete orimashita ga, kakunin sasete itadakemasu deshou ka (website ghi XX, xin được kiểm tra). Nhật accept polite challenge nếu có evidence cụ thể.",
       "Staff nhận sai và xin lỗi. Bạn đã chờ thêm 10 phút. Hãy phản hồi khen ngợi sự cẩn thận — go-teinei ni kakunin itadaki, arigatou gozaimasu. KHÔNG say it's no problem (tonde mo nai) qua nhanh — Nhật appreciate khi acknowledge effort của staff."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself at the みどりの窓口. Open the request to change the ticket — do NOT complain about the price right away. Use the phrase shinkansen no kippu wo henkou itashitaku, ukagaimashita and wait for the staff to ask question by question rather than over-explaining.",
+      "The staff say the fee is 30 percent but you recall seeing a different rule on the website. Do NOT argue head-on — use the phrase hoomupeeji ni wa XX to kakarete orimashita ga, kakunin sasete itadakemasu deshou ka (the website said XX, may I verify it). Japan accepts a polite challenge if you have specific evidence.",
+      "The staff find their error and apologize. You waited an extra 10 minutes. Respond praising their thoroughness — go-teinei ni kakunin itadaki, arigatou gozaimasu. Do NOT say it's no problem (tonde mo nai) too quickly — Japanese people appreciate it when you acknowledge the staff's effort."
+    ],
     "register_notes": "Tại みどりの窓口 (JR Green Window), staff được train về Q&A với customer trong keigo cao. Bạn match register họ. Năm patterns: (1) MỞ ĐẦU: kippu no henkou wo onegai shitaku, ukagaimashita (em đến nhờ đổi vé). 'Ukagaimashita' (đã đến — kenjougo) — hơn shaa khi nói 'kimashita'. (2) PARSE STAFF SPEED: staff nói nhanh khi list rules (rules là scripted speech). KHÔNG ngại xin lặp: osore irimasu ga, mou ichido o-negai dekimasu deshou ka. Nhật staff KHÔNG annoyed bởi this — họ scripted phải nói lại. (3) POLITE CHALLENGE WITH EVIDENCE: nếu staff sai (rare nhưng happens), KHÔNG cãi thẳng. Frame như 'em có thể nhầm, xin được verify': watashi no rikai ga matchigatte iru ka mo shiremasen ga, hommepe-ji ni wa XX to kakarete orimashita (em có thể hiểu sai, nhưng website ghi XX). Show evidence nếu có (screenshot trên phone). (4) ACCEPT CORRECTION GRACEFULLY: nếu họ correct lỗi (như dialogue trên), KHÔNG over-celebrate. Cụm: go-teinei ni kakunin itadaki, arigatou gozaimasu (cảm ơn sự xác minh cẩn thận). Maintain dignity for staff. (5) NEVER ARGUE OVER FEE: nếu fee đúng nhưng đắt, KHÔNG argue. Pay hoặc không đổi. Nhật staff không có authority discount. Trying to negotiate fee = make staff lose face = bad reputation. // TODO native review — eki-net (えきねっと) phrasing — tên service JR online; spelling capitalize hay không tùy context, paper ticket vs e-ticket rules thay đổi sau 2024 reform.",
+    "register_notes_en": "At the みどりの窓口 (JR Green Window), the staff are trained for customer Q&A in high keigo. You match their register. Five patterns: (1) OPENING: kippu no henkou wo onegai shitaku, ukagaimashita (I have come to ask for a ticket change). 'Ukagaimashita' (have come — kenjougo) — better than a flat 'kimashita'. (2) PARSE STAFF SPEED: the staff speak fast when listing rules (rules are scripted speech). Do NOT hesitate to ask for a repeat: osore irimasu ga, mou ichido o-negai dekimasu deshou ka. Japanese staff are NOT annoyed by this — they are scripted and have to repeat. (3) POLITE CHALLENGE WITH EVIDENCE: if the staff are wrong (rare but it happens), do NOT argue head-on. Frame it as 'I may be mistaken, may I verify': watashi no rikai ga machigatte iru ka mo shiremasen ga, hoomupeeji ni wa XX to kakarete orimashita (I may have misunderstood, but the website said XX). Show evidence if you have it (a screenshot on your phone). (4) ACCEPT CORRECTION GRACEFULLY: if they correct an error (as in the dialogue above), do NOT over-celebrate. Phrase: go-teinei ni kakunin itadaki, arigatou gozaimasu (thank you for checking so carefully). Maintain dignity for the staff. (5) NEVER ARGUE OVER A FEE: if the fee is correct but expensive, do NOT argue. Pay or do not change. Japanese staff have no authority to discount. Trying to negotiate the fee makes the staff lose face = a bad reputation.",
     "idiom_glosses": [
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi đổi vé. Đừng rush, hỏi staff verify rules trước khi pay fee.",
-        "example": "急がば回れと申します。手数料を支払う前に、念のため確認させていただきます。"
+        "meaning_en": "Haste ruins things — fitting when changing a ticket. Do not rush; ask the staff to verify the rules before you pay the fee.",
+        "example": "急がば回れと申します。手数料を支払う前に、念のため確認させていただきます。",
+        "example_en": "They say if you are in a hurry, go around. Before paying the fee, I would like to confirm it just to be sure."
       },
       {
         "idiom": "石橋を叩いて渡る",
         "literal": "Gõ cầu đá rồi mới qua",
+        "literal_en": "cross the stone bridge after tapping it (ishibashi o tataite wataru)",
         "meaning": "Cẩn thận tối đa — verify trước khi commit. Phù hợp khi staff quote fee mà bạn nghi ngờ.",
-        "example": "石橋を叩いて渡るで、手数料の規定を再度確認させていただけますでしょうか。"
+        "meaning_en": "Maximum caution — verify before you commit. Fitting when the staff quote a fee you are doubtful about.",
+        "example": "石橋を叩いて渡るで、手数料の規定を再度確認させていただけますでしょうか。",
+        "example_en": "Being cautious, may I have you check the fee rules once more?"
       },
       {
         "idiom": "三人寄れば文殊の知恵",
         "literal": "Ba người tụ lại có trí tuệ Văn Thù",
+        "literal_en": "three people together have the wisdom of Monju (sannin yoreba Monju no chie)",
         "meaning": "Trí tuệ tập thể — phù hợp khi staff cần consult với supervisor về một edge case rule.",
-        "example": "三人寄れば文殊の知恵で、上司に確認していただいてもよろしいでしょうか。"
+        "meaning_en": "Collective wisdom — fitting when the staff need to consult a supervisor about an edge-case rule.",
+        "example": "三人寄れば文殊の知恵で、上司に確認していただいてもよろしいでしょうか。",
+        "example_en": "Since three heads hold the wisdom of Monju, could you check with your supervisor?"
       },
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — phù hợp cuối cuộc nói khi cảm ơn staff đã xử lý cẩn thận. Frame customer-service interaction như meaningful, không transactional.",
-        "example": "本日のご対応、一期一会と感じております。誠にありがとうございました。"
+        "meaning_en": "Every meeting is unique — fitting at the end of the conversation when thanking the staff for handling it carefully. It frames a customer-service interaction as meaningful, not transactional.",
+        "example": "本日のご対応、一期一会と感じております。誠にありがとうございました。",
+        "example_en": "I feel today's service was a once-in-a-lifetime encounter. Thank you most sincerely."
       }
     ],
     "cultural_notes_vi": "JR ticket change ở Nhật có 5 đặc điểm khác phương Tây. (1) RULES VARY BY CHANNEL: vé giấy mua tại みどりの窓口 vs vé Eki-net online vs vé qua agency có rules KHÁC nhau. Eki-net thường nhẹ nhất (nhiều free changes), agency strict nhất. Khi mua vé, hỏi rõ về change/refund rules. (2) FEE STRUCTURE: tiêu chuẩn 30 phần trăm nếu trong 2 ngày trước departure. Free trước đó. Nhưng có exception: ngày trước departure cũng có thể free cho một số ticket types. STAFF có thể không know mọi exception — đừng ngại verify. (3) CASH PRICING: nhiều JR offices vẫn cash-only cho refunds. Mang đủ tiền mặt phòng khi cần pay fee. Card OK cho new ticket nhưng refund thường cash. (4) TIMING SENSITIVITY: nếu vé là cùng ngày departure, change rules khác — có thể paid full nếu không có vé thay thế trong cùng category. Đến office EARLY (ít nhất 30 phút trước departure ban đầu) để có flexibility. (5) GUI DI RULES: nếu vé là return-trip combo, change một chiều có thể affect chiều kia. Hỏi staff verify total impact trước khi confirm. Khác biệt với VN: ở VN ticket change thường flexible negotiate, có thể beg staff giảm fee; ở Nhật, fee là hard rule, không negotiable. Argue về fee = mất face cho staff = bị nhớ negative. Nhưng ASKING TO VERIFY rule là OK — staff Japanese rất hỗ trợ với verification request, sometimes find exception cho bạn. Mẹo: Eki-net registration tại nhà trước trip cho phép online changes (no office visit) cho most tickets. Free first change online. App download trước departure save thời gian. Nếu missed train completely (departure passed), KHÔNG bao giờ refund — chỉ option là buy mới ticket. Đến office trong 30 phút sau missed time có thể qualify cho 'late change' với một số fee thay vì buy mới — phụ thuộc staff discretion.",
@@ -7013,31 +7445,49 @@ export const lessons: JapaneseLesson[] = [
       "Bác sĩ hỏi alergi. Bạn có dị ứng penicillin nhưng không nhớ tiếng Nhật của penicillin. Hãy KHÔNG fake — dùng cụm peniciilin to iu kusuri ni areriguii ga gozaimasu (em dị ứng với thuốc tên penicillin) cộng spell ra nếu bác sĩ ask. Nhật accept English drug names.",
       "Bạn cần 診断書 (medical certificate) cho công ty Nhật vì phải nghỉ 5 ngày. Hãy request explicitly — KHÔNG ngại — diagnostic certificate là routine ở Nhật. Cụm: shindansho wo o-negai shitaku zonjimasu, kaisha ni teishutsu suru hitsuyou ga gozaimasu node."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself visiting a hospital in Tokyo for the first time. Open with reception — the phrase hajimete de gozaimasu plus specific symptoms (since when, where it hurts). Do NOT use a casual sukoshi guai ga warui (a bit unwell) — Japan needs a specific timeline and body parts.",
+      "The doctor asks about allergies. You are allergic to penicillin but cannot recall the Japanese for penicillin. Do NOT fake it — use the phrase penishirin to iu kusuri ni arerugii ga gozaimasu (I am allergic to a medicine called penicillin) plus spell it out if the doctor asks. Japan accepts English drug names.",
+      "You need a 診断書 (medical certificate) for your Japanese company because you must take 5 days off. Request it explicitly — do NOT hesitate — a diagnostic certificate is routine in Japan. Phrase: shindansho wo o-negai shitaku zonjimasu, kaisha ni teishutsu suru hitsuyou ga gozaimasu node."
+    ],
     "register_notes": "Hospital ở Nhật uses teineigo cao (desu/masu+) cho tất cả interactions. Bốn patterns đặc biệt: (1) SYMPTOM REPORTING: dùng -ga gozaimasu thay -ga arimasu cho bệnh: hatsunetsu to zutsuu ga gozaimasu (em có sốt và đau đầu). 'Gozaimasu' show humility với bác sĩ. Cụm timeline cụ thể: kinou no yoru kuji-goro kara (từ 9 giờ tối qua), KHÔNG vague kinou kara (từ hôm qua). (2) DESCRIBE PAIN PRECISELY: Nhật cần specifics về pain location + intensity. nodo (cổ họng), atama (đầu), onaka (bụng), mune (ngực). Intensity: sukoshi (nhẹ), kanari (đáng kể), hidoi (nặng). Type: zukinzukin (đập đập), kirikiri (nhói). (3) MEDICAL HISTORY: dùng bigieni-teki na byouki (chronic disease), genzai fukuyou-chuu no kusuri (current medications). Cẩn thận: dị ứng = areriguii (アレルギー), KHÔNG dị ứng = areriguii wa gozaimasen. (4) FOLLOW DOCTOR'S DIRECTION: khi bác sĩ ask move/breathe/etc, dùng hai (yes) cộng tuân theo. KHÔNG ask why during procedure — wait until end. Câu cuối khi rời: o-daiji ni (take care — bác sĩ Nhật) — bạn đáp: arigatou gozaimashita. Shitsurei itashimasu. // TODO native review — tamifuru (タミフル) brand name vs generic oseltamivir; some hospitals dùng generic name now post-2023; medical certificate có thể là 診断書 hoặc 病気証明書 tùy hospital.",
+    "register_notes_en": "Hospitals in Japan use high teineigo (desu/masu and above) for all interactions. Four special patterns: (1) SYMPTOM REPORTING: use -ga gozaimasu instead of -ga arimasu for ailments: hatsunetsu to zutsuu ga gozaimasu (I have a fever and a headache). 'Gozaimasu' shows humility toward the doctor. A specific timeline phrase: kinou no yoru kuji-goro kara (since around 9 p.m. last night), NOT a vague kinou kara (since yesterday). (2) DESCRIBE PAIN PRECISELY: Japan needs specifics on pain location plus intensity. nodo (throat), atama (head), onaka (stomach), mune (chest). Intensity: sukoshi (mild), kanari (considerable), hidoi (severe). Type: zukinzukin (throbbing), kirikiri (sharp). (3) MEDICAL HISTORY: use jisei-teki na byouki (chronic disease), genzai fukuyou-chuu no kusuri (current medications). Be careful: allergy = arerugii (アレルギー), no allergy = arerugii wa gozaimasen. (4) FOLLOW THE DOCTOR'S DIRECTION: when the doctor asks you to move/breathe/etc., use hai (yes) and comply. Do NOT ask why during a procedure — wait until the end. The final line as you leave: o-daiji ni (take care — the Japanese doctor's line) — you reply: arigatou gozaimashita. Shitsurei itashimasu.",
     "idiom_glosses": [
       {
         "idiom": "お大事に",
         "literal": "Hãy giữ gìn (sức khỏe)",
+        "literal_en": "please take care (of your health) (o-daiji ni)",
         "meaning": "Take care of yourself — câu chuẩn bác sĩ/nurse nói khi bạn rời. Không phải idiom truyền thống nhưng là cụm cố định trong medical context. Bạn KHÔNG nói lại 'o-daiji ni' với bác sĩ (out of place); đáp arigatou gozaimashita.",
-        "example": "十分な水分と休養をお取りください。お大事に。"
+        "meaning_en": "Take care of yourself — the standard line a doctor/nurse says when you leave. Not a traditional idiom but a set phrase in a medical context. You do NOT say 'o-daiji ni' back to the doctor (out of place); you reply arigatou gozaimashita.",
+        "example": "十分な水分と休養をお取りください。お大事に。",
+        "example_en": "Please take plenty of fluids and rest. Take care."
       },
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry — phù hợp khi bác sĩ test cho cả flu khi bạn nghĩ là common cold. Frame test like preparedness, không over-treatment.",
-        "example": "備えあれば憂いなし、念のため検査いたしましょう。"
+        "meaning_en": "Better safe than sorry — fitting when the doctor tests for the flu as well when you think it is a common cold. Frame the test as preparedness, not over-treatment.",
+        "example": "備えあれば憂いなし、念のため検査いたしましょう。",
+        "example_en": "Better safe than sorry — let's run a test, just in case."
       },
       {
         "idiom": "病は気から",
         "literal": "Bệnh phát từ tinh thần",
+        "literal_en": "illness comes from the mind (yamai wa ki kara)",
         "meaning": "Stress affects health — gốc Nhật cổ. Phù hợp khi nói về work stress contributing to illness. Bác sĩ Nhật accept như factor.",
-        "example": "病は気からと申します。最近、お仕事のストレスが多かったかもしれません。"
+        "meaning_en": "Stress affects health — old Japanese in origin. Fitting when speaking of work stress contributing to illness. A Japanese doctor accepts it as a factor.",
+        "example": "病は気からと申します。最近、お仕事のストレスが多かったかもしれません。",
+        "example_en": "They say illness comes from the mind. Lately there may have been a lot of work stress."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi bạn muốn rush back to work nhưng bác sĩ recommend rest 5 ngày. Take rest properly để phục hồi đầy đủ.",
-        "example": "急がば回れ、しっかり休んで早く治すよう心がけます。"
+        "meaning_en": "Haste ruins things — fitting when you want to rush back to work but the doctor recommends 5 days of rest. Rest properly to recover fully.",
+        "example": "急がば回れ、しっかり休んで早く治すよう心がけます。",
+        "example_en": "If you are in a hurry, go around — I will rest properly and aim to recover quickly."
       }
     ],
     "cultural_notes_vi": "Bệnh viện Nhật khác phương Tây ở 6 điểm. (1) INSURANCE EVERYTHING: bắt buộc 国民健康保険 (national health insurance) hoặc 社会保険 (employer insurance) trước khi đến. Nếu là tourist, mang travel insurance. KHÔNG có insurance = pay 100 phần trăm cash (often 30,000-50,000 yen cho consultation). (2) APPOINTMENT VS WALK-IN: bệnh viện lớn (大学病院) cần referral từ clinic nhỏ. Walk-in tại 大学病院 không có referral charge thêm 5,000 yen 'selection fee'. Cách tốt: đến clinic nhỏ (クリニック) trước, get referral nếu cần specialist. (3) LANGUAGE BARRIER: ít bác sĩ Nhật fluent English. Mang theo translation app, hoặc đến bệnh viện International (Tokyo: St. Luke's, Akasaka International Clinic) where staff English-speaking. Một số ward có volunteer interpreters — gọi trước hỏi. (4) PRESCRIPTION SEPARATE: Nhật tách medical exam và pharmacy. Bác sĩ khám, prescribe trên paper 処方箋. Bạn cầm processhei đến 薬局 (drugstore với green cross sign) — usually within walk distance. Pharmacy hơn 100m từ hospital là norm. (5) WAIT TIME: bệnh viện công thường wait 1-2 giờ. Mang sách/laptop, không có WiFi reliable ở nhiều hospital. Lunch break 12-13 không khám — schedule around. (6) PAYMENT: cuối visit, đến 会計 (cashier) pay. Card OK ở major hospital, cash-only ở clinic nhỏ. Mang đủ 5,000-15,000 yen cash cho first visit. Khác biệt với VN: ở VN bạn chọn bác sĩ specific trước; ở Nhật, được assigned theo schedule. Ở VN có thể tip extra cho tốt hơn; ở Nhật, KHÔNG tip — illegal trong medical context, đẳng cấp insult bác sĩ. Mẹo cuối: học 5 từ medical key thuộc lòng trước khi đi: 痛い (đau), 熱 (sốt), 咳 (ho), 吐き気 (buồn nôn), 頭痛 (đau đầu). Pattern symptom + ga arimasu là reliable. Cho emergency: 119 cho ambulance, English available 24/7. Không hesitate to call — Nhật ambulance free at point of service.",
@@ -7259,31 +7709,49 @@ export const lessons: JapaneseLesson[] = [
       "Hotel staff đề xuất technical fix nhưng bạn muốn đổi phòng. Hãy KHÔNG ép — request softly với kanou deshitara, o-heya no henkou mo go-kentou itadakitaku zonjimasu (nếu có thể, em xin được xem xét đổi phòng). Cho staff option để decide.",
       "Khách sạn đề xuất phòng thay thế nhưng có thêm phí 5,000 yen vì upgrade category. Hãy thương lượng — KHÔNG demand phải free. Cụm: kanou deshitara, dou itta gokentou itadakemasu deshou ka (nếu có thể, xin được xem xét) cộng đề xuất compromise (downgrade category để no fee)."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself at a Tokyo hotel, the room AC is broken. Go to reception WITHOUT a hostile complaint — frame it as a 'consult' (go-soudan). Use the phrase o-heya ni tsuite go-soudan ga gozaimasu (I have something to consult you about regarding the room). Japanese staff respond well to a polite frame.",
+      "The hotel staff propose a technical fix but you want to change rooms. Do NOT pressure — request softly with kanou deshitara, o-heya no henkou mo go-kentou itadakitaku zonjimasu (if possible, I would like a room change to be considered too). Give the staff the option to decide.",
+      "The hotel offers a replacement room but with an extra 5,000 yen fee because it is an upgraded category. Negotiate — do NOT demand it be free. Phrase: kanou deshitara, dou itta go-kentou itadakemasu deshou ka (if possible, may I ask what can be considered) plus propose a compromise (a downgraded category for no fee)."
+    ],
     "register_notes": "Khiếu nại tại hotel Nhật cần frame as 'consultation' (go-soudan), không 'complaint' (kujo). Bốn patterns: (1) MỞ ĐẦU MỀM: o-heya ni tsuite go-soudan ga gozaimasu (em có việc xin tham vấn về phòng) — frame như cooperative problem-solving, không adversarial. KHÔNG dùng kujo wo iitai (muốn complain) — quá direct. (2) STATE FACTS, NOT FEELINGS: KHÔNG urusai desu (ồn quá!) — dùng ue no kai kara no oto-oto to hanashi-goe ga ookiku, nakanaka nemuremasen deshita (tiếng bước chân và nói chuyện từ tầng trên to, em không ngủ được). Specific facts trên emotional reaction. (3) PROPOSE SOLUTION: KHÔNG để hotel decide alone. Dùng kanou deshitara, o-heya no henkou wo o-negai shitaku zonjimasu (nếu có thể, em xin đổi phòng). Show bạn thinking constructively. (4) CỬA SAU CHO HOTEL FACE: nếu hotel admit fault, KHÔNG over-celebrate. Dùng cụm o-tesuu wo o-kake itashimashite, moushiwake gozaimasen (em đã làm phiền, xin lỗi) — even when hotel is at fault. Maintain mutual respect. // TODO native review — fugu-ai (不具合) phrasing — alternative koshou (故障) more specific to mechanical break vs vague problem; neighborhood noise complaint may need 騒音問題 phrasing tùy intensity.",
+    "register_notes_en": "Complaining at a Japanese hotel must be framed as a 'consultation' (go-soudan), not a 'complaint' (kujou). Four patterns: (1) SOFT OPENING: o-heya ni tsuite go-soudan ga gozaimasu (I have something to consult you about regarding the room) — framed as cooperative problem-solving, not adversarial. Do NOT use kujou wo iitai (I want to complain) — too direct. (2) STATE FACTS, NOT FEELINGS: do NOT urusai desu (it's too noisy!) — use ue no kai kara no ashi-oto to hanashi-goe ga ookiku, nakanaka nemuremasen deshita (the footsteps and voices from the floor above were loud, and I could not sleep). Specific facts over an emotional reaction. (3) PROPOSE A SOLUTION: do NOT let the hotel decide alone. Use kanou deshitara, o-heya no henkou wo o-negai shitaku zonjimasu (if possible, I would like to ask for a room change). Show you are thinking constructively. (4) A BACK DOOR FOR THE HOTEL'S FACE: if the hotel admits fault, do NOT over-celebrate. Use the phrase o-tesuu wo o-kake itashimashite, moushiwake gozaimasen (I have caused you trouble, I am sorry) — even when the hotel is at fault. Maintain mutual respect.",
     "idiom_glosses": [
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau khó khăn, mọi thứ vững hơn — phù hợp khi staff respond well to complaint, frame interaction như growth opportunity for hotel.",
-        "example": "雨降って地固まると申しますが、本日のご対応を機に、より良いサービスをお届けできるよう努めてまいります。"
+        "meaning_en": "After hardship, everything is more solid — fitting when staff respond well to a complaint; it frames the interaction as a growth opportunity for the hotel.",
+        "example": "雨降って地固まると申しますが、本日のご対応を機に、より良いサービスをお届けできるよう努めてまいります。",
+        "example_en": "They say after the rain the ground hardens — taking today's response as a chance, we will strive to deliver even better service."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi đề xuất hotel take time để properly fix issue thay vì band-aid solution.",
-        "example": "急がば回れで、しっかり原因を確認いただけますと幸いでございます。"
+        "meaning_en": "Haste ruins things — fitting when proposing the hotel take time to properly fix the issue rather than a band-aid solution.",
+        "example": "急がば回れで、しっかり原因を確認いただけますと幸いでございます。",
+        "example_en": "If you are in a hurry, go around — I would be grateful if you could check the cause thoroughly."
       },
       {
         "idiom": "おもてなし",
         "literal": "Hospitality",
+        "literal_en": "omotenashi (hospitality)",
         "meaning": "Khái niệm hospitality Nhật — proactive guest care. Khi staff handle complaint well, dùng để complement: omotenashi no kokoro ga kanjirаremashita (em cảm nhận được tinh thần omotenashi).",
-        "example": "本日のご対応に、おもてなしの心が感じられました。"
+        "meaning_en": "The Japanese concept of hospitality — proactive guest care. When staff handle a complaint well, used as a compliment: omotenashi no kokoro ga kanjiraremashita (I felt the spirit of omotenashi).",
+        "example": "本日のご対応に、おもてなしの心が感じられました。",
+        "example_en": "In today's response, I felt the spirit of omotenashi."
       },
       {
         "idiom": "お互い様",
         "literal": "Cả hai bên cùng vậy",
+        "literal_en": "we are both in the same boat / mutually (o-tagai-sama)",
         "meaning": "Mutual — phù hợp khi defuse tension. Frame complaint như shared interest (hotel muốn satisfied customer, you muốn good stay) — KHÔNG zero-sum.",
-        "example": "お客様もホテルも満足する形が一番ですね。お互い様で解決策を考えましょう。"
+        "meaning_en": "Mutual — fitting when defusing tension. Frame the complaint as a shared interest (the hotel wants a satisfied customer, you want a good stay) — NOT zero-sum.",
+        "example": "お客様もホテルも満足する形が一番ですね。お互い様で解決策を考えましょう。",
+        "example_en": "It is best when both the guest and the hotel are satisfied. Let's think of a solution together, in a spirit of mutual give-and-take."
       }
     ],
     "cultural_notes_vi": "Khiếu nại hotel ở Nhật khác phương Tây ở 5 điểm. (1) FRAME MATTERS: complaint trong VN có thể direct, ở Nhật MUST frame như 'consultation' (go-soudan). Cùng content nhưng cách trình bày quyết định kết quả. Direct complaint = staff defensive = no flexibility. Soft consult = staff find creative solution. (2) DOCUMENT WITH PHOTOS: nếu có visible defect (mold, broken lamp, dirty bathroom), chụp ảnh trước. Khi present, dùng kochira no shashin wo go-ran kudasai (mời xem ảnh). Photo evidence prevents he-said-she-said. (3) NEVER YELL: bất kể frustrated, KHÔNG raise voice. Một lần shout = mất hết good will + có thể bị politely asked to leave. Maintain calm dignified tone. Nếu thực sự upset, đi back đến phòng cool down 10 phút trước khi đến reception. (4) ESCALATION PATH: nếu front desk staff không resolve, ask to speak with 支配人 (manager). Cụm: shihainin san to o-hanashi sasete itadakemasu deshou ka. KHÔNG escalate via TripAdvisor/social media trước — Nhật xem public shaming as ultimate insult, will ruin relationship and reputation hotel needs. Internal resolution first, public review only if internal fails completely. (5) COMPENSATION EXPECTATION: trong VN, complaint thường = expect refund. Ở Nhật, primary expectation là PROBLEM SOLVED, not compensation. Một số hotels offer voluntary discount/upgrade as goodwill, KHÔNG demand. Refund đầy đủ chỉ khi service không delivered (room not available). Khác biệt với VN: ở VN có thể leverage 1-star Google review threat; ở Nhật, threat-based negotiation = enemy created. Cooperative-frame negotiation = ally created. Long term, second visit có discount + better room nếu first complaint handled cooperatively. Mẹo: ryokan (traditional inn) khác hotel ở point: ryokan owner thường family business, complaint = personal hurt to family. Be EXTRA gentle. Frame như feedback to help them improve, không complaint. Họ sẽ go above-and-beyond để fix.",
@@ -7510,31 +7978,49 @@ export const lessons: JapaneseLesson[] = [
       "Staff ANA xin lỗi nhiều lần. Hãy KHÔNG over-reassure (sounds dismissive of their apology). Dùng cụm go-teinei na go-taiou, arigatou gozaimasu (cảm ơn xử lý chu đáo) một lần đủ. Họ appreciate acknowledgment of their effort.",
       "Sau khi staff offer free delivery + compensation cho emergency purchases, bạn hỏi thêm về possible compensation cho stress / delay. Hãy KHÔNG escalate to demand — Nhật airline không offer cash for emotional damages. Accept what offered gracefully."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself having just arrived at Narita; your bag does not appear on the belt. Go to the lost-baggage counter — do NOT panic. Phrase: azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita (I could not find my checked baggage, so I have come here). Have the receipt stub ready.",
+      "The ANA staff apologize many times. Do NOT over-reassure (it sounds dismissive of their apology). Use the phrase go-teinei na go-taiou, arigatou gozaimasu (thank you for handling it so carefully) once is enough. They appreciate acknowledgment of their effort.",
+      "After the staff offer free delivery plus compensation for emergency purchases, you ask further about possible compensation for stress / delay. Do NOT escalate into a demand — a Japanese airline does not offer cash for emotional damages. Accept what is offered gracefully."
+    ],
     "register_notes": "Lost luggage counter của ANA/JAL trained for keigo cao. Bốn patterns: (1) MỞ ĐẦU CALM: KHÔNG panic, KHÔNG demand. Frame như 'investigation' (kakunin): azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita. Staff response cao hơn với calm guests. (2) PROVIDE FACTS UPFRONT: flight number, departure, arrival time, receipt stub — all on first sentence if possible. Save staff investigation time = faster resolution. (3) ACCEPT APOLOGY GRACEFULLY: Nhật airline staff được train apologize EVEN khi không phải lỗi của họ specifically. KHÔNG over-reassure (daijoubu desu repeated = dismissive). Nói arigatou gozaimasu cộng move to next step. (4) ASK ABOUT COMPENSATION POLITELY: KHÔNG demand money. Frame như verification: bishou no joukensaikou wa ikaga deshou ka (em xin hỏi về compensation criteria). Nhật airline có set policies — staff sẽ explain. Dùng amount limits (5,000 yen/day for emergencies) như reasonable expectation, KHÔNG try to inflate. // TODO native review — bishou (賠償) phrasing — alternative o-mimai-kin (お見舞金) softer for goodwill payment vs hard compensation; tùy airline policy.",
+    "register_notes_en": "The lost-luggage counter of ANA/JAL is trained for high keigo. Four patterns: (1) CALM OPENING: do NOT panic, do NOT demand. Frame it as an 'investigation' (kakunin): azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita. Staff respond better to calm guests. (2) PROVIDE FACTS UPFRONT: flight number, departure, arrival time, receipt stub — all in the first sentence if possible. Saving the staff investigation time = a faster resolution. (3) ACCEPT THE APOLOGY GRACEFULLY: Japanese airline staff are trained to apologize EVEN when it is not specifically their fault. Do NOT over-reassure (daijoubu desu repeated = dismissive). Say arigatou gozaimasu and move to the next step. (4) ASK ABOUT COMPENSATION POLITELY: do NOT demand money. Frame it as verification: baishou no jouken nado wa ikaga deshou ka (may I ask about the compensation criteria). Japanese airlines have set policies — the staff will explain. Treat the amount limits (5,000 yen/day for emergencies) as a reasonable expectation, do NOT try to inflate them.",
     "idiom_glosses": [
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau khó khăn, mọi thứ vững hơn — phù hợp khi airline handle issue well, frame như trust-deepening moment.",
-        "example": "雨降って地固まると申しますが、本日のご対応で、ANAへの信頼がさらに深まりました。"
+        "meaning_en": "After hardship, everything is more solid — fitting when the airline handles the issue well, framing it as a trust-deepening moment.",
+        "example": "雨降って地固まると申しますが、本日のご対応で、ANAへの信頼がさらに深まりました。",
+        "example_en": "They say after the rain the ground hardens — through today's response, my trust in ANA has deepened further."
       },
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry — phù hợp khi nói về việc luôn pack essentials in carry-on (toothbrush, change of clothes) phòng khi bag thất lạc.",
-        "example": "備えあれば憂いなし、貴重品と必需品は手荷物に入れておくべきでございました。"
+        "meaning_en": "Better safe than sorry — fitting when speaking of always packing essentials in your carry-on (toothbrush, change of clothes) in case the bag is lost.",
+        "example": "備えあれば憂いなし、貴重品と必需品は手荷物に入れておくべきでございました。",
+        "example_en": "Better safe than sorry — I should have kept my valuables and essentials in my carry-on."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi staff cần thời gian xử lý paperwork. Đừng rush họ. Quality processing > speed.",
-        "example": "急がば回れで、慎重に手続きをお願いいたします。"
+        "meaning_en": "Haste ruins things — fitting when the staff need time to process paperwork. Do not rush them. Quality processing beats speed.",
+        "example": "急がば回れで、慎重に手続きをお願いいたします。",
+        "example_en": "If you are in a hurry, go around — please proceed with the procedures carefully."
       },
       {
         "idiom": "ご縁",
         "literal": "Mối duyên",
+        "literal_en": "a tie/connection bound by destiny (go-en)",
         "meaning": "Duyên / fated connection — Nhật concept. Phù hợp khi airline goes above expectations to help. Express gratitude khái niệm tinh tế.",
-        "example": "本日のご縁、感謝申し上げます。"
+        "meaning_en": "A fated connection — a Japanese concept. Fitting when the airline goes above expectations to help. It expresses gratitude in a subtle way.",
+        "example": "本日のご縁、感謝申し上げます。",
+        "example_en": "I am grateful for today's connection."
       }
     ],
     "cultural_notes_vi": "Lost luggage ở Nhật khác phương Tây ở 5 điểm. (1) RECOVERY RATE HIGH: airline Nhật có recovery rate >95 phần trăm trong 24-48 giờ. KHÔNG panic — usually flights connecting Asia, bag chỉ on next flight. (2) FREE DELIVERY: ANA/JAL/Skymark đều offer free delivery to hotel/home. KHÔNG cần tự đi airport pick up. Delivery thường within 12 giờ sau bag arrival. (3) COMPENSATION POLICY: emergency purchases (toothbrush, underwear, toiletries) covered up to 5,000-10,000 yen/day. Lưu mọi receipt. Submit qua email form trong 7 ngày. Reimbursement bằng bank transfer trong 2-4 tuần. (4) ESCALATION: nếu bag MISSING (not delayed) — sau 21 ngày declared lost. Compensation cho contents up to ~$1,500 USD per bag (Montreal Convention) cho international flights. Domestic Japan: lower limits. Mua additional insurance trước flight nếu carry valuable items. (5) DOCUMENTATION: lưu mọi paperwork (claim form, tracking number, email receipts). Nếu cần escalate tới corporate, paper trail là evidence. Khác biệt với VN/phương Tây: ở phương Tây, demand compensation aggressive là normal; ở Nhật, polite request gets MORE — staff has discretion to offer extras (extra meal voucher, lounge access, free upgrade) for cooperative customers. Threat-based negotiation = staff stick to minimum. (6) FOLLOW UP: nếu bag arrives damaged (not just delayed), report DAMAGE within 24 hours of delivery — sau đó claim might be denied. Bring damaged item to airline office hoặc photograph and email với reference number. Mẹo: nếu travel often, register frequent flyer programs (ANA Mileage Club, JAL Mileage Bank) — status members get priority handling, faster resolution, sometimes auto-compensation. Pre-emptive: pack 1 day's clothes + toiletries + medications + valuables in CARRY-ON. Check-in only what you can survive without 24-48 hours.",
@@ -7766,31 +8252,49 @@ export const lessons: JapaneseLesson[] = [
       "Cảnh sát hỏi chi tiết — bao nhiêu tiền, thẻ gì, mất ở đâu. Hãy give SPECIFIC info: số tiền (xấp xỉ OK), tên brand of card, tên cụ thể địa điểm (Doutor Coffee Shinjuku east exit, KHÔNG vague 'gần Shinjuku'). Specifics = cảnh sát có thể action.",
       "Cảnh sát đề xuất bạn fill form bằng tiếng Nhật. Bạn không tự tin viết đầy đủ. Hãy KHÔNG fake — admit và xin assistance: kihon jouhou wa nihongo de kakemasu ga, joukyou setsumei wa daihitsu wo o-negai shitaku zonjimasu. Cảnh sát Nhật được trained help foreigners."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself entering a koban (police box) in Shinjuku to report a lost wallet. Do NOT walk in and say a curt 'wallet stolen' in English — open with the Japanese phrase shitsurei itashimasu plus tounan no ken de mairimashita. The police notice the effort = they treat it seriously.",
+      "The police ask for details — how much money, which card, where it was lost. Give SPECIFIC info: the amount (approximate is OK), the brand of the card, the specific location name (Doutor Coffee Shinjuku east exit, NOT a vague 'near Shinjuku'). Specifics = the police can act.",
+      "The police suggest you fill in the form in Japanese. You are not confident writing all of it. Do NOT fake it — admit it and ask for assistance: kihon jouhou wa nihongo de kakemasu ga, joukyou setsumei wa daihitsu wo o-negai shitaku zonjimasu. Japanese police are trained to help foreigners."
+    ],
     "register_notes": "Tại 交番 (koban) hoặc 警察署 (police station), register là teineigo cao plus kenjougo cho hành động của mình. Cảnh sát Nhật uses keigo formal ngay cả với citizens — bạn match. Bốn patterns: (1) MỞ ĐẦU: shitsurei itashimasu cộng tounan no ken de mairimashita (em đến vì việc bị trộm). KHÔNG hung hốt rush in. (2) PROVIDE ID FIRST: trước khi cảnh sát ask, offer residence card hoặc passport. zairyuu kado wo o-mise itashimasu (em xin trình thẻ cư trú). Show cooperative attitude. (3) PRECISE FACTS: timeline (bao nhiêu giờ, đâu cụ thể), monetary value (estimate OK), card details (brand + last 4 digits if known). Vague answers waste time. (4) ACCEPT POLICE PACE: Nhật police thorough, cuộc nói có thể 30-60 phút cho theft report. KHÔNG rush police. Bring water + phone charger nếu bạn jet-lagged. Câu cuối: kasanete, go-teinei na go-taiou wo itadaki, makoto ni arigatou gozaimashita. Cảnh sát Nhật appreciate gratitude từ foreigners — có thể lead to extra effort recovering items. // TODO native review — daihitsu (代筆) phrasing — alternative tasukete itadaku (xin được giúp đỡ) hơi soft hơn but less specific; daihitsu là legal/admin term Nhật accept.",
+    "register_notes_en": "At a 交番 (koban) or 警察署 (police station), the register is high teineigo plus kenjougo for your own actions. Japanese police use formal keigo even with citizens — you match it. Four patterns: (1) OPENING: shitsurei itashimasu plus tounan no ken de mairimashita (I have come about a theft). Do NOT rush in flustered. (2) PROVIDE ID FIRST: before the police ask, offer your residence card or passport. zairyuu kado wo o-mise itashimasu (I will show my residence card). Show a cooperative attitude. (3) PRECISE FACTS: timeline (what time, where exactly), monetary value (an estimate is OK), card details (brand plus last 4 digits if known). Vague answers waste time. (4) ACCEPT THE POLICE'S PACE: Japanese police are thorough; the conversation can take 30-60 minutes for a theft report. Do NOT rush the police. Bring water plus a phone charger if you are jet-lagged. The final line: kasanete, go-teinei na go-taiou wo itadaki, makoto ni arigatou gozaimashita. Japanese police appreciate gratitude from foreigners — it can lead to extra effort recovering items.",
     "idiom_glosses": [
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry — phù hợp lesson sau theft: split tiền/cards giữa 2 wallets, photo cards trước khi đi.",
-        "example": "備えあれば憂いなし、今後はカードと現金を分けて持ち歩きます。"
+        "meaning_en": "Better safe than sorry — fitting as a lesson after a theft: split money/cards between 2 wallets, photograph cards before you travel.",
+        "example": "備えあれば憂いなし、今後はカードと現金を分けて持ち歩きます。",
+        "example_en": "Better safe than sorry — from now on I will carry my cards and cash separately."
       },
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau khó khăn, mọi thứ vững hơn — phù hợp khi police handle case professionally, frame như growth experience.",
-        "example": "雨降って地固まると申します。今回の経験を教訓にいたします。"
+        "meaning_en": "After hardship, everything is more solid — fitting when the police handle the case professionally, framing it as a growth experience.",
+        "example": "雨降って地固まると申します。今回の経験を教訓にいたします。",
+        "example_en": "They say after the rain the ground hardens. I will take this experience as a lesson."
       },
       {
         "idiom": "渡る世間に鬼はなし",
         "literal": "Đi qua thế gian không gặp quỷ",
+        "literal_en": "there are no demons throughout the world (wataru seken ni oni wa nashi)",
         "meaning": "Trên đời này luôn có người tốt sẵn sàng giúp đỡ. Phù hợp khi cảm ơn cảnh sát cho thorough help.",
-        "example": "渡る世間に鬼はなしと申しますが、警察の方の親切に感謝しております。"
+        "meaning_en": "There are always kind people in the world ready to help. Fitting when thanking the police for thorough help.",
+        "example": "渡る世間に鬼はなしと申しますが、警察の方の親切に感謝しております。",
+        "example_en": "They say there are no demons throughout the world — I am grateful for the kindness of the police."
       },
       {
         "idiom": "一期一会",
         "literal": "Một đời một lần gặp",
+        "literal_en": "one lifetime, one encounter (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — police interaction này có thể là one-time, nhưng matter của trust với Japanese institutions.",
-        "example": "本日のご対応を一期一会と感じております。"
+        "meaning_en": "Every meeting is unique — this police interaction may be one-time, but it is a matter of trust in Japanese institutions.",
+        "example": "本日のご対応を一期一会と感じております。",
+        "example_en": "I feel today's response was a once-in-a-lifetime encounter."
       }
     ],
     "cultural_notes_vi": "Báo cảnh sát ở Nhật khác phương Tây ở 6 điểm. (1) RECOVERY RATE HIGH: Nhật theft recovery rate ~60-80 phần trăm trong Tokyo (theo Tokyo Metropolitan Police 2023). Cảnh sát Nhật actively investigate even small thefts (lost iPhone, wallet). KHÔNG dismiss your case as too small. (2) KOBAN CULTURE: 交番 (neighborhood police box) handles initial report. Maps online show locations — most train stations have one nearby. KHÔNG drive to main precinct first; koban first. Koban officer may escalate to precinct if needed. (3) PAPERWORK MATTERS: cảnh sát Nhật love documentation. 被害届 (victim report) tạo case number, kích hoạt investigation. KHÔNG skip này — không paperwork = no investigation. Bring time để fill out properly. (4) NO BRIBES, NO TIPS: KHÔNG offer money to officers — illegal Nhật, will offend severely. Nhật police strict on integrity. Thank you words enough. (5) FOLLOW UP: cảnh sát call bạn nếu có progress (recovery, suspect identified). Trong 30 ngày, nếu no update, OK to call koban back asking. Cụm: senjitsu no tounan no ken, sono go ikaga deshou ka (về vụ trộm hôm trước, sau đó như thế nào). (6) INSURANCE PROCESS: travel insurance / homeowner insurance VN cần Japanese police case number. Receipt với 受理番号 là proof. Email scan đến insurance company within 30 days for claim. Khác biệt với VN: ở VN có thể bribe officer nhanh hơn; ở Nhật, KHÔNG. Honest cooperation = thorough investigation. Cảnh sát Nhật accept rằng foreigners có language barrier — họ patience với English/Vietnamese mixed in. Mẹo: nếu phone stolen, register 'Find My iPhone' trước khi đi Nhật. Police sẽ check device tracking trong investigation. AirTag in wallet (popular trend) — police accept this evidence. iPhone screen lock + bio-metric prevents thieves access.",
@@ -8012,31 +8516,49 @@ export const lessons: JapaneseLesson[] = [
       "Ở Akihabara, bạn hỏi student cùng tuổi (20-30 tuổi) đường đến quán cafe. Hãy switch sang casual: sumimasen, chotto kiite mo ii desu ka (xin lỗi, hỏi chút được không?). KHÔNG dùng kenjougo (sasete itadaku) với peer — sounds quá formal, awkward.",
       "Sau khi nhận hướng dẫn phức tạp 5-step, hãy XÁC NHẬN bằng cách lặp lại đầy đủ. Nhật appreciate verification step. Cụm: saigo ni kakunin sasete itadakitai no desu ga (cuối cùng em xin được xác nhận) cộng repeat instructions back theo trình tự."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself at Shibuya Station — lost, you need to ask a 50-something businessman who is walking in a hurry. Open with the formal phrase: shitsurei itashimasu, o-isogashii tokoro osore irimasu ga (I am sorry to trouble you while you are busy). This is the correct register for a formal stranger.",
+      "In Akihabara, you ask a student of your own age (20-30) the way to a cafe. Switch to casual: sumimasen, chotto kiite mo ii desu ka (excuse me, may I ask something?). Do NOT use kenjougo (sasete itadaku) with a peer — it sounds too formal, awkward.",
+      "After receiving complex 5-step directions, CONFIRM by repeating them back in full. Japan appreciates the verification step. Phrase: saigo ni kakunin sasete itadakitai no desu ga (finally, I would like to confirm) plus repeat the instructions back in order."
+    ],
     "register_notes": "Hỏi đường ở Nhật REQUIRES register matching to person + situation. Năm patterns: (1) ELDERLY/BUSINESSMAN/AUTHORITY: cao keigo. shitsurei itashimasu cộng o-tazune shitai no desu ga (em xin được hỏi). KHÔNG dùng casual sumimasen với người 50+. (2) PEER (20-30 tuổi student/casual worker): mid-formal. sumimasen, chotto ii desu ka cộng casual question. KHÔNG cao keigo (sounds patronizing). (3) STAFF (station, store, koban): mid-formal teineigo. shitsurei shimasu cộng question với desu/masu. Staff được trained respond keigo back. (4) RESPONSE LANGUAGE: match speed của họ. Nếu họ slow + careful, response slow + verify. Nếu họ rapid + casual, you keep up. (5) THANK YOU LEVEL: cao formal: makoto ni arigatou gozaimashita (cúi 30 độ). Mid: arigatou gozaimasu. Casual: arigatou. KHÔNG mixing — cao greeting + casual thanks = inconsistent = awkward. Một thực tập: trước khi hỏi, observe person 5 giây — judge their register based on age, dress, body language. Errors common: dùng quá formal với peer (sounds robotic), dùng casual với elderly (sounds disrespectful). // TODO native review — chotto kiite mo ii desu ka phrasing — alternative chotto sumimasen lighter but less specific to question framing; regional differences (Kansai dialect uses ii ya naa instead).",
+    "register_notes_en": "Asking for directions in Japan REQUIRES matching the register to the person plus the situation. Five patterns: (1) ELDERLY/BUSINESSMAN/AUTHORITY: high keigo. shitsurei itashimasu plus o-tazune shitai no desu ga (I would like to ask you something). Do NOT use a casual sumimasen with someone 50+. (2) PEER (a student/casual worker aged 20-30): mid-formal. sumimasen, chotto ii desu ka plus a casual question. Do NOT use high keigo (it sounds patronizing). (3) STAFF (station, store, koban): mid-formal teineigo. shitsurei shimasu plus a question with desu/masu. Staff are trained to respond in keigo back. (4) RESPONSE LANGUAGE: match their speed. If they are slow plus careful, your response is slow plus verifying. If they are rapid plus casual, you keep up. (5) THANK-YOU LEVEL: high formal: makoto ni arigatou gozaimashita (a 30-degree bow). Mid: arigatou gozaimasu. Casual: arigatou. Do NOT mix — a high greeting plus casual thanks = inconsistent = awkward. One practice: before asking, observe the person for 5 seconds — judge their register based on age, dress, body language. Common errors: too formal with a peer (sounds robotic), casual with the elderly (sounds disrespectful).",
     "idiom_glosses": [
       {
         "idiom": "渡る世間に鬼はなし",
         "literal": "Đi qua thế gian không gặp quỷ",
+        "literal_en": "there are no demons throughout the world (wataru seken ni oni wa nashi)",
         "meaning": "Trên đời này luôn có người tốt sẵn sàng giúp đỡ. Phù hợp khi cảm ơn stranger giúp đỡ chu đáo.",
-        "example": "渡る世間に鬼はなしと申しますが、皆様のご親切に感謝しております。"
+        "meaning_en": "There are always kind people in the world ready to help. Fitting when thanking a stranger who helped you carefully.",
+        "example": "渡る世間に鬼はなしと申しますが、皆様のご親切に感謝しております。",
+        "example_en": "They say there are no demons throughout the world — I am grateful for everyone's kindness."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi xác minh đường đi cẩn thận trước khi rush.",
-        "example": "急がば回れで、念のため確認させていただきます。"
+        "meaning_en": "Haste ruins things — fitting when carefully verifying the route before rushing off.",
+        "example": "急がば回れで、念のため確認させていただきます。",
+        "example_en": "If you are in a hurry, go around — let me confirm just to be sure."
       },
       {
         "idiom": "ご縁",
         "literal": "Mối duyên",
+        "literal_en": "a tie/connection bound by destiny (go-en)",
         "meaning": "Duyên / fated connection — Nhật concept. Stranger interaction casual nhưng có ý nghĩa nhỏ. Express gratitude tinh tế.",
-        "example": "本日のご縁に感謝申し上げます。"
+        "meaning_en": "A fated connection — a Japanese concept. A stranger interaction is casual but has a small meaning. It expresses gratitude subtly.",
+        "example": "本日のご縁に感謝申し上げます。",
+        "example_en": "I am grateful for today's connection."
       },
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry — phù hợp với tình huống cẩn thận hỏi đường thay vì lạc tiếp.",
-        "example": "備えあれば憂いなし、念のため道を聞いてから行きます。"
+        "meaning_en": "Better safe than sorry — fitting for the situation of carefully asking the way rather than getting lost further.",
+        "example": "備えあれば憂いなし、念のため道を聞いてから行きます。",
+        "example_en": "Better safe than sorry — I will ask for directions, just to be sure, before going."
       }
     ],
     "cultural_notes_vi": "Hỏi đường ở Nhật khác phương Tây ở 5 điểm. (1) NHẬT GENUINELY HELP: stranger Nhật help with directions ở rate cao bất thường — including walking 5-10 phút với bạn nếu directions phức tạp. KHÔNG ngại nhận help. (2) BODY LANGUAGE: khi hỏi, cúi nhẹ 15 độ + eye contact. KHÔNG approach quá close (Nhật personal space lớn ~1m). Stand to side, không in front blocking path. (3) ASKING WHERE: dùng 'doko' cho location, 'dochira' (formal) cho direction. dochira polite hơn doko khi hỏi stranger. (4) MAP FAILURE: nếu show map trên phone, hold phone steady, không thrust into their face. Họ sẽ point trên map nếu helpful, không point in air. (5) WHEN GRATEFUL: nếu họ went out of way (walked you to destination), mua small gift cho họ as thank-you là lovely gesture (drink from konbini), nhưng KHÔNG offer money. Insulting. Khác biệt với VN: ở VN có thể stop random person at intersection với 'Em ơi, X ở đâu?' rồi tiếp tục di chuyển. Ở Nhật, full stop, full attention, full keigo (or appropriate register). Mẹo: railway staff (driver style, blue uniform) at major stations là experts on directions to anywhere. Always reliable. Ở koban, officer có map, sẽ print directions cho bạn nếu cần. Free service. Long-term: học 5 phrases thuộc lòng cho tourist mode: shitsurei desu ga (excuse me), kono chizu de docchi desu ka (which way on this map?), hidari/migi/massugu (left/right/straight), arigatou gozaimasu, gomennasai (sorry — universal apology nếu mistake). Five phrases cover 90 phần trăm interactions.",
@@ -8268,31 +8790,49 @@ export const lessons: JapaneseLesson[] = [
       "Staff xác nhận bạn đúng và xin lỗi lần thứ ba. Hãy KHÔNG over-reassure (tonde mo nai = dismissive). Một lần response polite đủ: o-isogashii tokoro o-tesuu wo o-kake shite, koehrazu sumimasen. Maintain dignity for staff.",
       "Khi check bill, có sai 100 yen (charge nhiều hơn). Hãy KHÔNG ignore vì small amount — Nhật appreciate accuracy. Cụm: shitsurei desu ga, mainyu hyou ni hyaku-en hikui kakaku ga hyouji sarete imashita ga, kakunin itadakemasu deshou ka (xin lỗi nhưng menu show giá thấp hơn 100 yen, xác minh được không?)."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself at a rice restaurant in Tokyo, brought the wrong dish. POLITELY raise the issue — do NOT immediately demand a new dish. Phrase: chotto, kakunin shite itadakemasu deshou ka (could you check, please). Frame it as 'maybe I am mistaken', not 'the restaurant is wrong'.",
+      "The staff confirm you are right and apologize for the third time. Do NOT over-reassure (tonde mo nai = dismissive). One polite response is enough: o-isogashii tokoro o-tesuu wo o-kake shite, kochira koso sumimasen. Maintain dignity for the staff.",
+      "When you check the bill there is a 100-yen error (overcharged). Do NOT ignore it because it is a small amount — Japan appreciates accuracy. Phrase: shitsurei desu ga, menyuu-hyou ni hyaku-en hikui kakaku ga hyouji sarete imashita ga, kakunin itadakemasu deshou ka (excuse me, but the menu showed a price 100 yen lower — could you check?)."
+    ],
     "register_notes": "Restaurant complaint Nhật khác hotel/business — staff is service-tier, register hơi nhẹ hơn. Bốn patterns: (1) FRAME AS QUESTION: KHÔNG declare error. Frame như 'I might be wrong, can we check'. Cụm: chigatte iru you na ki ga shimasu (em cảm thấy có thể khác). Soft frame = staff không defensive. (2) THANK FOR VERIFICATION: ngay cả khi staff confirms YOUR error (you ordered wrong), thank verification: kakunin itadaki, arigatou gozaimasu. KHÔNG complain that they took time. (3) ACCEPT APOLOGY GRACEFULLY: staff Nhật apologize MULTIPLE TIMES. Một lần response đủ. tonde mo gozaimasen cộng smile. Đừng repeat 'no problem' nhiều lần — staff feel awkward. (4) LEAVE GOOD: nếu staff offer goodwill (drink free, voucher), accept GRACEFULLY. Decline = insult. Cụm: o-kotoba ni amaeて, dou itashimashite (xin nhận lời mời). Future visits welcomed. // TODO native review — saidai-kau (再確認) phrasing — alternative kakunin wo o-negai shimasu mềm hơn for verification request; mainyu kaitei (menu revision) is restaurant-specific timing.",
+    "register_notes_en": "Complaining at a restaurant in Japan differs from a hotel/business — the staff are service-tier, so the register is a touch lighter. Four patterns: (1) FRAME AS A QUESTION: do NOT declare an error. Frame it as 'I might be wrong, can we check'. Phrase: chigatte iru you na ki ga shimasu (it feels like it might be different). A soft frame = the staff are not defensive. (2) THANK FOR VERIFICATION: even when the staff confirm YOUR error (you ordered wrong), thank them for verifying: kakunin itadaki, arigatou gozaimasu. Do NOT complain that they took time. (3) ACCEPT THE APOLOGY GRACEFULLY: Japanese staff apologize MULTIPLE TIMES. One response is enough. tonde mo gozaimasen plus a smile. Do not repeat 'no problem' many times — the staff feel awkward. (4) LEAVE ON A GOOD NOTE: if the staff offer goodwill (a free drink, a voucher), accept GRACEFULLY. Declining = an insult. Phrase: o-kotoba ni amaete, dou itashimashite (I will gladly accept your kind offer). Future visits welcomed.",
     "idiom_glosses": [
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau khó khăn, mọi thứ vững hơn — phù hợp khi restaurant handle complaint with grace, frame interaction như relationship-building.",
-        "example": "雨降って地固まると申しますが、本日のご対応で、より良いお店だと感じました。"
+        "meaning_en": "After hardship, everything is more solid — fitting when the restaurant handles the complaint with grace, framing the interaction as relationship-building.",
+        "example": "雨降って地固まると申しますが、本日のご対応で、より良いお店だと感じました。",
+        "example_en": "They say after the rain the ground hardens — through today's response, I felt this is a better restaurant."
       },
       {
         "idiom": "お互い様",
         "literal": "Cả hai bên cùng vậy",
+        "literal_en": "we are both in the same boat / mutually (o-tagai-sama)",
         "meaning": "Mutual — khi cả 2 bên có thể nhầm. Frame restaurant complaint không adversarial.",
-        "example": "お互い様、人間ですから誰でも間違えます。"
+        "meaning_en": "Mutual — when either side might be mistaken. It frames a restaurant complaint as non-adversarial.",
+        "example": "お互い様、人間ですから誰でも間違えます。",
+        "example_en": "It goes both ways — we are all human, anyone can make a mistake."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — phù hợp khi cho restaurant time để fix without rush.",
-        "example": "急がば回れ、慎重にご確認いただいて構いません。"
+        "meaning_en": "Haste ruins things — fitting when giving the restaurant time to fix it without rushing.",
+        "example": "急がば回れ、慎重にご確認いただいて構いません。",
+        "example_en": "If you are in a hurry, go around — please take your time to check, it is fine."
       },
       {
         "idiom": "おもてなし",
         "literal": "Hospitality",
+        "literal_en": "omotenashi (hospitality)",
         "meaning": "Khái niệm hospitality Nhật — proactive customer care. Khi staff offer drink free as goodwill, đó là omotenashi spirit.",
-        "example": "おもてなしの心、ありがとうございます。"
+        "meaning_en": "The Japanese concept of hospitality — proactive customer care. When the staff offer a free drink as goodwill, that is the omotenashi spirit.",
+        "example": "おもてなしの心、ありがとうございます。",
+        "example_en": "Thank you for the spirit of omotenashi."
       }
     ],
     "cultural_notes_vi": "Restaurant complaint Nhật khác phương Tây ở 5 điểm. (1) STAFF EMPOWERMENT: server Nhật có authority decide rebuild dish, offer free drinks, voucher. KHÔNG cần escalate to manager cho most issues. Họ resolve in seconds. (2) FACE-SAVING: complaint resolved primary trong cùng cuộc nói. KHÔNG public spectacle. Restaurant won't shame you, you don't shame them. Mutual respect throughout. (3) NO TIPPING: KHÔNG tip extra để 'make up' for trouble. Staff không expect — illegal in many establishments. Thank you words enough. Service charge (10 phần trăm) at high-end restaurants automatic, không additional. (4) APOLOGY DEPTH: server xin lỗi multiple times for any mistake — including if YOU ordered wrong. Don't be confused — họ taking responsibility for any confusion. Accept once đủ. (5) GOODWILL OFFERS: nhiều restaurant offer voucher/free drink for next visit khi mistake happens. Decline = insult. Accept với gratitude — và do return. Restaurant remember repeat customers. Khác biệt với VN: ở VN restaurant complaint có thể loud/public if not resolved; ở Nhật, soft and resolved trong cuộc nói đầu. Một quiet polite request ở Nhật = same outcome như loud demand ở VN, with much better feeling for both sides. Mẹo: payment phương thức Nhật thường: cash hoặc card, KHÔNG cash + card splits. Một số izakaya ngừng cards entirely — bring cash backup. Receipt 領収書 critical for business expense — nếu ko có, ask shouhi-zei (consumption tax) breakdown explicitly. Check bill carefully BEFORE pay — một số khá strict about no refunds after pay. Nếu chần chừ, ask kakunin sasete itadakitai (xin được verify) trước khi commit.",
@@ -8509,31 +9049,49 @@ export const lessons: JapaneseLesson[] = [
       "Driver giải thích lý do detour nhưng bạn vẫn nghĩ extra fare unfair. Hãy negotiate firm-but-polite: KHÔNG demand discount, frame như shared concern. Cụm: sashitsukae nakereba, sagaku no go-soudan wo sasete itadakitaku zonjimasu (nếu không phiền, em xin tham vấn về chênh lệch).",
       "Driver xin lỗi và agree to absorb 300 yen difference. Hãy accept gracefully — KHÔNG over-thank (sounds patronizing) hoặc rush. Cụm: go-taiou, makoto ni arigatou gozaimasu cộng nhận change cộng nhận receipt. Maintain mutual respect."
     ],
+    "roleplay_prompts_en": [
+      "In a Japanese taxi, you notice the driver is taking a detour. Do NOT accuse — frame it as 'let's verify together'. Phrase: kakunin sasete itadakemasen deshou ka plus show Google Maps on your phone. The driver may have a legitimate reason (avoiding construction, traffic).",
+      "The driver explains the reason for the detour but you still think the extra fare is unfair. Negotiate firm-but-polite: do NOT demand a discount, frame it as a shared concern. Phrase: sashitsukae nakereba, sagaku no go-soudan wo sasete itadakitaku zonjimasu (if it is no trouble, I would like to consult about the difference).",
+      "The driver apologizes and agrees to absorb the 300-yen difference. Accept gracefully — do NOT over-thank (it sounds patronizing) or rush. Phrase: go-taiou, makoto ni arigatou gozaimasu plus take the change plus take the receipt. Maintain mutual respect."
+    ],
     "register_notes": "Taxi dispute Nhật khác hotel/restaurant ở 1 critical point: driver KHÔNG là service-tier như waiter — họ là independent professional. Register: firm-but-polite, KHÔNG over-deferential. Bốn patterns: (1) RAISE ISSUE EARLY: nếu thấy detour, raise WITHIN 5 phút of noticing — KHÔNG wait until destination. Mid-route fix possible, post-arrival hard. (2) FRAME AS COLLABORATION: kakunin sasete itadakemasen deshou ka (xin được kiểm tra). Show evidence (Google Maps). KHÔNG accuse. Driver might have legit reason. (3) NEGOTIATE LIKE EQUALS: KHÔNG ask discount kiểu pleading — request fair settlement: o-kyaku-sama no go-futan ni naru bun wa, watakushi ga futanru beki dato omoimasu (em nghĩ phần burden của khách thì khách không nên trả). Frame logic, không emotion. (4) TAXI CENTER ESCALATION: nếu driver refuse fairness, mention タクシーセンター (Taxi Center) — Tokyo Hire-Taxi Association. Driver lose license sau multiple complaints. Mention this politely, không threaten. // TODO native review — sagaku (差額) phrasing — alternative kingaku no chigai (different amount) more casual; some passengers prefer mawa-michi-bun (detour-portion) to specify what's disputed.",
+    "register_notes_en": "A taxi dispute in Japan differs from a hotel/restaurant on 1 critical point: the driver is NOT service-tier like a waiter — they are an independent professional. Register: firm-but-polite, NOT over-deferential. Four patterns: (1) RAISE THE ISSUE EARLY: if you see a detour, raise it WITHIN 5 minutes of noticing — do NOT wait until the destination. A mid-route fix is possible; a post-arrival one is hard. (2) FRAME AS COLLABORATION: kakunin sasete itadakemasen deshou ka (may I be allowed to check). Show evidence (Google Maps). Do NOT accuse. The driver may have a legitimate reason. (3) NEGOTIATE LIKE EQUALS: do NOT ask for a discount in a pleading way — request a fair settlement: o-kyaku-sama no go-futan ni naru bun wa, watakushi ga futanru beki dato omoimasu (I think the part that becomes the customer's burden is not one the customer should bear). Frame logic, not emotion. (4) TAXI CENTER ESCALATION: if the driver refuses fairness, mention the タクシーセンター (Taxi Center) — the Tokyo Hire-Taxi Association. A driver loses their licence after multiple complaints. Mention this politely, not as a threat.",
     "idiom_glosses": [
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau khó khăn, mọi thứ vững hơn — phù hợp khi driver accept feedback gracefully, frame như learning opportunity for them.",
-        "example": "雨降って地固まると申します。今回の経験で、より良いサービスができるようになります。"
+        "meaning_en": "After hardship, everything is more solid — fitting when the driver accepts the feedback gracefully, framing it as a learning opportunity for them.",
+        "example": "雨降って地固まると申します。今回の経験で、より良いサービスができるようになります。",
+        "example_en": "They say after the rain the ground hardens. Through this experience, they can provide better service."
       },
       {
         "idiom": "急がば回れ",
         "literal": "Vội thì đi vòng",
+        "literal_en": "if you are in a hurry, go around (isogaba maware)",
         "meaning": "Vội vã hỏng việc — ironic context: driver chose detour to be 'faster', nhưng confused customer. Lesson: communicate first.",
-        "example": "急がば回れ、最初に経路をご相談いただければ、お互い明確でした。"
+        "meaning_en": "Haste ruins things — an ironic context here: the driver chose a detour to be 'faster', but it confused the customer. The lesson: communicate first.",
+        "example": "急がば回れ、最初に経路をご相談いただければ、お互い明確でした。",
+        "example_en": "If you are in a hurry, go around — if you had consulted me about the route first, it would have been clear for us both."
       },
       {
         "idiom": "お互い様",
         "literal": "Cả hai bên cùng vậy",
+        "literal_en": "we are both in the same boat / mutually (o-tagai-sama)",
         "meaning": "Mutual — frame dispute như shared learning. Both passenger and driver có expectations về clear comms.",
-        "example": "お互い様で、コミュニケーションが大切でございます。"
+        "meaning_en": "Mutual — frame the dispute as shared learning. Both passenger and driver have expectations of clear communication.",
+        "example": "お互い様で、コミュニケーションが大切でございます。",
+        "example_en": "It goes both ways — communication is what matters."
       },
       {
         "idiom": "備えあれば憂いなし",
         "literal": "Có chuẩn bị thì không lo",
+        "literal_en": "if you are prepared, there is no worry (sonae areba urei nashi)",
         "meaning": "Better safe than sorry — phù hợp lesson sau dispute: confirm route + price BEFORE departure.",
-        "example": "備えあれば憂いなし、次回は乗車前に経路と料金を確認いたします。"
+        "meaning_en": "Better safe than sorry — fitting as a lesson after a dispute: confirm the route plus price BEFORE departure.",
+        "example": "備えあれば憂いなし、次回は乗車前に経路と料金を確認いたします。",
+        "example_en": "Better safe than sorry — next time I will confirm the route and fare before getting in."
       }
     ],
     "cultural_notes_vi": "Taxi disputes Nhật khác phương Tây ở 5 điểm. (1) METER LAW: Tokyo taxi must use meter except long-distance fixed routes. KHÔNG meter = illegal. Always confirm meter at start: meeta de o-negai shimasu (please use meter). (2) BASIC ROUTE EXPECTATION: driver expected to take 'reasonable shortest route'. Detour OK only if (a) traffic genuine, (b) construction, (c) PASSENGER ASKED. Without reason, detour = bad service possible refund. (3) RECEIPT MANDATORY: 領収書 (receipt) required when asked. Driver MUST provide. Save it — number on receipt is taxi company ID for complaints. (4) TAXI CENTER OVERSIGHT: Tokyo Hire-Taxi Association investigates complaints. Driver fault after 3-5 complaints can lose license. Companies discipline drivers based on complaints. (5) NIGHT SURCHARGE: 22:00-05:00 = 20 phần trăm extra. Built into meter. Confirm time on receipt — discrepancy = error. Khác biệt với VN: ở VN taxi có thể negotiate fare freely; ở Nhật, meter là law. KHÔNG offer cash discount — driver may decline if it violates meter. Negotiate trên LEGITIMATE grounds (detour, error) chỉ. Mẹo: airport taxi có flat rate options (Narita-Tokyo: ~24,000 yen flat). Confirm flat OR meter at start. Train là cheaper for solo travel. Foreigners often defaulted to taxi — train often better. Long-term: app-based taxi (GO, S.RIDE) eliminate route disputes — fare estimated upfront, route shown trên app. Pay digital, automatic receipt. Recommend over street-hail taxi for foreigners. Mẹo cuối: dù dispute resolved positively, gửi feedback to taxi company qua online form (most major companies — Nihon Kotsu, Daiwa Taxi). Companies use feedback for driver training. Constructive feedback > revenge.",
@@ -8765,31 +9323,49 @@ export const lessons: JapaneseLesson[] = [
       "Mẹ chồng nhắc một việc bạn làm sai năm ngoái (cách dâng cơm tổ tiên / cách thắp hương). Hãy KHÔNG over-apologize, KHÔNG defensive — acknowledge + ask học cách đúng. Cụm: jizen ni o-kiki suru beki deshita (em nên hỏi trước). Frame như cơ hội học hỏi, không như lỗi cần xóa.",
       "Mẹ chồng tỏ ra hơi thất vọng nhưng KHÔNG nói thẳng — khoảng dừng dài, ánh mắt rời đi (察する moment). Hãy đọc ý — KHÔNG ép bà giải thích. Acknowledge: o-kimochi, juubun ni rikai shite orimasu (con hiểu được tâm trạng của mẹ). Sau đó offer một compromise nhỏ (ngày khác về phụ, gọi video Obon ngày đầu) để giữ relationship."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself in the living room of your Japanese in-laws' home, after dinner. You need to say that this year you cannot stay at the in-laws' hometown as long as usual. Do NOT begin with 'sumimasen ga' (it sounds defensive) — frame it as a consultation (gosoudan). Phrase: okaa-sama, sukoshi o-hanashi sasete itadaite mo yoroshii desu ka. Put the context (the reasons back in Vietnam) BEFORE the request.",
+      "Your mother-in-law mentions something you did wrong last year (how you offered rice to the ancestors / how you lit the incense). Do NOT over-apologize, do NOT be defensive — acknowledge plus ask to learn the right way. Phrase: jizen ni o-kiki suru beki deshita (I should have asked beforehand). Frame it as a chance to learn, not a fault to erase.",
+      "Your mother-in-law seems a little disappointed but does NOT say so directly — a long pause, eyes turning away (a 察する moment). Read the meaning — do NOT force her to explain. Acknowledge: o-kimochi, juubun ni rikai shite orimasu (I fully understand how you feel). Then offer a small compromise (come back another day to help, video call on the first day of Obon) to preserve the relationship."
+    ],
     "register_notes": "Trò chuyện với 義両親 KHÁC trò chuyện công việc dù cùng register cao. Năm patterns: (1) FRAME AS CONSULTATION, NOT ANNOUNCEMENT: KHÔNG declare 'em sẽ về sớm' — frame 'em xin được tham vấn'. Cụm: go-soudan sasete itadakitaku zonjimasu. In-law có face — họ phải feel consulted, không thông báo. (2) CONTEXT BEFORE REQUEST: Vietnamese instinct là apologize first; Japanese in-law instinct là hear context. Đặt lý do (mẹ ốm, em gái cưới) TRƯỚC, request ngắn sau. Reverse order = sounds entitled. (3) READ 察する MOMENTS: in-law thường KHÔNG nói thẳng nếu thất vọng — biểu hiện qua silent pause, eye-aversion, tone shift. Khi thấy, KHÔNG ép giải thích. Acknowledge softly: o-kimochi rikai shite orimasu. (4) ENRYO BALANCE: trong gia đình chồng, dùng polite forms KHÔNG quá deferential (sounds như khách lạ). Mid-keigo (desu/masu + occasional itadaku) phù hợp daughter/son-in-law. Quá keigo = họ nói 'kazoku nan da kara, sonnani katai koto wa nai yo' (nhà mình mà, không cần khách sáo) — đó là gentle correction. (5) HONNE OPENING: nếu bạn share một tình cảm thật (con cũng nhớ ba mẹ ở VN), in-law thường đáp lại bằng honne của họ. Mutual vulnerability builds connection. // TODO native review — gosoudan sasete itadakitaku zonjimasu phrasing — alternative chotto gosoudan ga arimasu ít formal hơn cho closer in-law relationships; one Japanese reviewer suggested 'osore-irimasu ga' opening for first serious conversation.",
+    "register_notes_en": "Talking with your 義両親 (parents-in-law) DIFFERS from a work conversation even though both use a high register. Five patterns: (1) FRAME AS CONSULTATION, NOT ANNOUNCEMENT: do NOT declare 'I will go back early' — frame it as 'I would like to consult you'. Phrase: go-soudan sasete itadakitaku zonjimasu. The in-laws have face — they must feel consulted, not informed. (2) CONTEXT BEFORE REQUEST: the Vietnamese instinct is to apologize first; the Japanese in-law instinct is to hear context. Put the reason (mother is ill, sister's wedding) BEFORE the request, the request short after. The reverse order sounds entitled. (3) READ 察する MOMENTS: in-laws often do NOT say so directly if they are disappointed — it shows in a silent pause, eye-aversion, a tone shift. When you see it, do NOT force an explanation. Acknowledge softly: o-kimochi rikai shite orimasu. (4) ENRYO BALANCE: in your spouse's family, use polite forms but NOT overly deferential (it sounds like a stranger-guest). Mid-keigo (desu/masu plus occasional itadaku) suits a daughter/son-in-law. Too much keigo and they will say 'kazoku nan da kara, sonnani katai koto wa nai yo' (we're family, no need to be so stiff) — that is a gentle correction. (5) HONNE OPENING: if you share a true feeling (you also miss your parents in Vietnam), the in-law often responds with their own honne. Mutual vulnerability builds connection.",
     "idiom_glosses": [
       {
         "idiom": "親しき仲にも礼儀あり",
         "literal": "Trong quan hệ thân thiết cũng có lễ nghi",
+        "literal_en": "even between close ones there is courtesy (shitashiki naka ni mo reigi ari)",
         "meaning": "Dù gia đình thân, vẫn cần lịch sự — phù hợp khi nhắc nhở chính bản thân không quá casual với mẹ chồng.",
-        "example": "親しき仲にも礼儀ありと申しますし、お義母さまには丁寧にお話ししたく存じます。"
+        "meaning_en": "Even though family is close, courtesy is still needed — fitting as a reminder to yourself not to be too casual with your mother-in-law.",
+        "example": "親しき仲にも礼儀ありと申しますし、お義母さまには丁寧にお話ししたく存じます。",
+        "example_en": "They say even between close ones there is courtesy, so I would like to speak politely with my mother-in-law."
       },
       {
         "idiom": "縁は異なもの",
         "literal": "Duyên là điều kỳ lạ",
+        "literal_en": "fate is a curious thing (en wa i na mono)",
         "meaning": "Duyên kết nối những con người không tưởng — phù hợp frame xuyên-văn-hóa marriage như duyên định.",
-        "example": "縁は異なものと申します。文化が違っても、こうして家族になれましたこと、感謝しております。"
+        "meaning_en": "Destiny connects people you would never expect — fitting to frame a cross-cultural marriage as a destined connection.",
+        "example": "縁は異なものと申します。文化が違っても、こうして家族になれましたこと、感謝しております。",
+        "example_en": "They say fate is a curious thing. Even though our cultures differ, I am grateful that we have become a family like this."
       },
       {
         "idiom": "雨降って地固まる",
         "literal": "Mưa rơi đất rắn lại",
+        "literal_en": "after the rain, the ground hardens (ame futte ji katamaru)",
         "meaning": "Sau mâu thuẫn, quan hệ vững hơn — phù hợp đóng cuộc trò chuyện khó với in-laws bằng note tích cực.",
-        "example": "雨降って地固まると申しますし、今日のお話で、より理解が深まったかと存じます。"
+        "meaning_en": "After conflict, the relationship is firmer — fitting to close a difficult conversation with in-laws on a positive note.",
+        "example": "雨降って地固まると申しますし、今日のお話で、より理解が深まったかと存じます。",
+        "example_en": "They say after the rain the ground hardens, and I believe today's talk has deepened our understanding."
       },
       {
         "idiom": "以心伝心",
         "literal": "Truyền tâm bằng tâm",
+        "literal_en": "heart transmits to heart (ishin denshin)",
         "meaning": "Hiểu nhau không cần lời — Nhật value khả năng đọc tâm tư mà không phải nói. In-law đánh giá cao khi bạn 察する được.",
-        "example": "以心伝心と申しますが、お義母さまのお気持ち、少しでも汲み取れていれば幸いです。"
+        "meaning_en": "Understanding each other without words — Japan values the ability to read someone's feelings without needing to say them. The in-laws value it highly when you can 察する.",
+        "example": "以心伝心と申しますが、お義母さまのお気持ち、少しでも汲み取れていれば幸いです。",
+        "example_en": "They say heart transmits to heart — I would be glad if I have managed to read even a little of how you feel, Mother."
       }
     ],
     "cultural_notes_vi": "Quan hệ với 義両親 ở Nhật khác hẳn VN ở 6 điểm. (1) HOUSEHOLD HEAD CONCEPT: dù 'ie' (家) system đã abolished sau 1947, văn hóa vẫn deep — eldest son's gia đình expected to honor ancestors, take care of parents in old age. Nếu chồng/vợ bạn là chōnan (長男, eldest son) hoặc chōjo (長女, eldest daughter, especially nếu không có nam), expectations về visiting + ritual cao. Discussing this UPFRONT before marriage saves grief. (2) OBON + NEW YEAR ARE NON-NEGOTIABLE: hai dịp này — お盆 (mid-August) và お正月 (New Year, Jan 1-3) — gia đình expected to gather. Skip lần đầu OK với good reason; skip nhiều năm = serious damage relationship. Nếu phải skip, GỌI ngay từ tháng trước, KHÔNG sát ngày. (3) GIFT CULTURE NUANCES: お中元 (ochuugen, July gift), お歳暮 (oseibo, December gift) — nhiều gia đình modern đã skip, nhưng nếu in-laws traditional, mỗi năm bỏ không gửi = noticed. Hỏi chồng/vợ verify expectations. Gift KHÔNG cần đắt (3,000-5,000 yen typical), nhưng phải có. (4) YOME VS MUKO: con dâu (yome, 嫁) historically có nghĩa vụ heavier hơn con rể (muko, 婿), nhưng gen Z+ in-laws relaxed nhiều. Tuy nhiên, ngay cả modern in-laws still appreciate khi yome remember birthdays, anniversaries của họ. (5) DIRECTNESS LEVEL: in-laws rarely tell you directly họ unhappy — họ tell con của họ (chồng/vợ bạn), người này tell bạn. Đây không phải gossip — là protocol. Nếu chồng/vợ bring up 'ba mẹ nhắc...', listen carefully. (6) NEVER COMPLAIN ABOUT IN-LAWS TO YOUR OWN PARENTS: ở VN ok đôi khi nhắc khó khăn với ba mẹ — at Nhật, in-laws hearing this gián tiếp là big betrayal. Khác biệt với VN: ở VN con dâu thường visit chợ với mẹ chồng, cùng nấu ăn, build relationship qua daily acts; ở Nhật, in-law relationship build qua structured events (festivals, gifts, formal visits) hơn casual time together. Mẹo: khi visit lần đầu, mang gift từ Vietnam (specialty trà, cà phê, snacks) — tạo ấn tượng tốt + cultural exchange. Một bộ tea set Bát Tràng, một hộp bánh đậu xanh, một hộp cà phê Trung Nguyên — all welcomed.",
@@ -9021,31 +9597,49 @@ export const lessons: JapaneseLesson[] = [
       "Đồng nghiệp giải thích xong, bạn cần đưa quan điểm khác. Hãy frame như experiential perspective (tôi nói từ trải nghiệm cá nhân), KHÔNG abstract debate. Cụm: gaikokujin to shite Nihon de hataraita keiken kara moushiagemasu to. Phần personal lived experience khó để counter mà không rude — đây là Japanese cách giữ disagreement trong civility.",
       "Đồng nghiệp tỏ ra hơi defensive. Hãy NHẬN chỗ họ đúng — KHÔNG rút lui hoàn toàn (yields-too-much), nhưng acknowledge điểm tốt: anata no shiteki, tashika ni sono toori dato omoimasu. Sau đó re-state your view một cách softer: kojin-teki ni wa, mada kininaru tokoro ga gozaimasu (cá nhân con vẫn còn điểm băn khoăn)."
     ],
+    "roleplay_prompts_en": [
+      "You are having lunch with a Japanese colleague who states a political view (foreign-labour policy / Japan-Vietnam relations / a social issue). You disagree but do NOT want to damage the relationship. OPEN by asking them to clarify their view FIRST: mazu o-kangae wo kikasete itadaite mo yoroshii desu ka. Do NOT counter-attack right away.",
+      "The colleague has finished explaining; you need to offer a different view. Frame it as an experiential perspective (I speak from personal experience), NOT an abstract debate. Phrase: gaikokujin to shite Nihon de hataraita keiken kara moushiagemasu to. Personal lived experience is hard to counter without rudeness — this is the Japanese way of keeping a disagreement civil.",
+      "The colleague seems a little defensive. ACKNOWLEDGE where they are right — do NOT retreat entirely (it yields too much), but acknowledge the good point: anata no shiteki, tashika ni sono toori dato omoimasu. Then re-state your view more softly: kojin-teki ni wa, mada kininaru tokoro ga gozaimasu (personally, I still have a point I am uneasy about)."
+    ],
     "register_notes": "Bất đồng chính trị với người Nhật khác Mỹ/VN ở core: Nhật value WA (和, harmony) — direct counter-argument bị coi rude dù logic đúng. Năm patterns: (1) ASK FIRST, ANSWER SECOND: nguyên tắc bất di dịch. Khi friend bring up political topic, KHÔNG immediately give your view. Ask theirs first: o-kangae wo kikasete itadaite mo yoroshii deshou ka. Lý do: (a) thể hiện respect, (b) cho bạn time to calibrate response, (c) nếu họ có nuance bạn miss, bạn có thể tránh straw-man. (2) FRAME AS EXPERIENCE, NOT ABSTRACT: Nhật accept personal lived experience hơn abstract argument. Cụm: gaikokujin to shite (với tư cách người nước ngoài), watakushi no keiken kara (từ trải nghiệm cá nhân). Đây là conversational shield — họ không thể counter your lived experience một cách rude. (3) ACKNOWLEDGE BEFORE DISAGREE: 'I understand X, but Y' pattern. Cụm: oshatte iru koto wa rikai dekimasu ga (hiểu được điều bạn nói, nhưng). Without acknowledgment, disagreement bị nghe như dismissal. (4) PERSONAL OPINION FRAME: dùng watakushi to shite wa (riêng tôi thì), kojin-teki ni wa (cá nhân thì). Tránh universal claims (must, should, all Japanese). Frame như cá nhân = họ không cần defend cả nhóm. (5) CLOSE WITH RELATIONSHIP NOT POSITION: dù không reach agreement, kết thúc bằng affirmation về relationship: i-ken ga chigatte mo, kou shite hanaseru kankei wa kichou desu (dù khác ý kiến, mối quan hệ trò chuyện thế này quý lắm). Friend nhớ lại closing tone hơn debate detail. // TODO native review — sandou itashikanemasu phrasing — alternative kanari muzukashii kamoshiremasen mềm hơn cho strong disagreement; some natives caution that 'kanemasu' form sounds bureaucratic in casual political talk.",
+    "register_notes_en": "A political disagreement with a Japanese person differs from the US/Vietnam at its core: Japan values WA (和, harmony) — a direct counter-argument is read as rude even if the logic is correct. Five patterns: (1) ASK FIRST, ANSWER SECOND: an unbreakable principle. When a friend brings up a political topic, do NOT immediately give your view. Ask theirs first: o-kangae wo kikasete itadaite mo yoroshii deshou ka. The reasons: (a) it shows respect, (b) it gives you time to calibrate your response, (c) if they have a nuance you missed, you can avoid a straw-man. (2) FRAME AS EXPERIENCE, NOT ABSTRACT: Japan accepts personal lived experience more than an abstract argument. Phrase: gaikokujin to shite (as a foreigner), watakushi no keiken kara (from my personal experience). This is a conversational shield — they cannot rudely counter your lived experience. (3) ACKNOWLEDGE BEFORE DISAGREE: the 'I understand X, but Y' pattern. Phrase: ossharu koto wa rikai dekimasu ga (I understand what you are saying, but). Without the acknowledgment, the disagreement is heard as a dismissal. (4) PERSONAL OPINION FRAME: use watakushi to shite wa (as for me personally), kojin-teki ni wa (personally). Avoid universal claims (must, should, all Japanese). Framing it as personal = they do not need to defend the whole group. (5) CLOSE WITH RELATIONSHIP, NOT POSITION: even if you did not reach agreement, end by affirming the relationship: i-ken ga chigatte mo, kou shite hanaseru kankei wa kichou desu (even though our opinions differ, a relationship where we can talk like this is precious). The friend remembers the closing tone more than the debate detail.",
     "idiom_glosses": [
       {
         "idiom": "和をもって貴しとなす",
         "literal": "Coi sự hòa làm điều quý",
+        "literal_en": "hold harmony as precious (wa o motte toutoshi to nasu)",
         "meaning": "Lời của Thái tử Shōtoku — harmony cao hơn debate. Phù hợp khi đặt khung dialogue: dù bất đồng, mục tiêu vẫn là harmony.",
-        "example": "和をもって貴しとなすと申しますし、意見が違っても、対話を大切にしたいと存じます。"
+        "meaning_en": "The words of Crown Prince Shotoku — harmony is above debate. Fitting when setting the frame for the dialogue: even if you disagree, the goal is still harmony.",
+        "example": "和をもって貴しとなすと申しますし、意見が違っても、対話を大切にしたいと存じます。",
+        "example_en": "They say to hold harmony as precious, and even if our opinions differ I would like to value the dialogue."
       },
       {
         "idiom": "十人十色",
         "literal": "Mười người mười màu",
+        "literal_en": "ten people, ten colours (juunin toiro)",
         "meaning": "Mỗi người mỗi ý — frame disagreement như tự nhiên, không bất thường.",
-        "example": "十人十色と申します。立場が違えば、見方も違って当然かと。"
+        "meaning_en": "Each person has their own view — frame a disagreement as natural, not abnormal.",
+        "example": "十人十色と申します。立場が違えば、見方も違って当然かと。",
+        "example_en": "They say ten people, ten colours. If our positions differ, it is only natural our views differ too."
       },
       {
         "idiom": "鶴の一声",
         "literal": "Một tiếng kêu của hạc",
+        "literal_en": "a single cry of the crane (tsuru no hitokoe)",
         "meaning": "Lời quyết định từ người có quyền — context: disagreement không cần ai quyết, mỗi người giữ ý mình.",
-        "example": "鶴の一声で結論を出す必要はないかと。お互いの意見を持ち続けて構わないと存じます。"
+        "meaning_en": "A decisive word from someone in authority — context: a disagreement does not need anyone to decide; each person keeps their own view.",
+        "example": "鶴の一声で結論を出す必要はないかと。お互いの意見を持ち続けて構わないと存じます。",
+        "example_en": "There is no need for a single cry of the crane to settle this. I believe we may each keep our own opinions."
       },
       {
         "idiom": "腹を割って話す",
         "literal": "Mổ bụng ra mà nói",
+        "literal_en": "to slice your belly open and talk (hara o watte hanasu)",
         "meaning": "Nói thẳng từ tim — phù hợp khi friendship đủ thân để chia sẻ honest view.",
-        "example": "腹を割って話せる関係は、本当に貴重だと感じております。"
+        "meaning_en": "To speak straight from the heart — fitting when the friendship is close enough to share an honest view.",
+        "example": "腹を割って話せる関係は、本当に貴重だと感じております。",
+        "example_en": "A relationship where we can speak frankly from the heart is something I truly treasure."
       }
     ],
     "cultural_notes_vi": "Bất đồng chính trị với bạn Nhật đặc biệt khó vì 6 yếu tố. (1) POLITICS = TABOO IN MOST SETTINGS: tại Nhật, politics rarely discussed at workplace, KHÔNG ở family dinner, KHÔNG with new friends. Nếu friend bring up, đó là sign of trust — họ test bạn có civilly handle được không. Disrespect = friendship damage permanent. (2) NUCLEAR / CONSTITUTION / U.S. BASES / IMMIGRATION = HOT TOPICS: bốn chủ đề có deep emotional layers. Nhiều Nhật không có strong opinion (silent majority); minority có very strong opinion (cả hai phía). Khi friend share, họ thường thuộc minority engaged — calibrate accordingly. (3) RELATIVITY OF FOREIGN OPINION: dù bạn ở Nhật 5 năm, người Nhật vẫn perceive bạn như outside observer. Strong opinion về Nhật politics sometimes nghe rude (như tourist phán nhà chủ). FRAME experiential ('với tư cách người nước ngoài sống ở Nhật') giúp legitimize. (4) DON'T COMPARE NEGATIVELY VS VIETNAM: tránh 'ở VN tốt hơn / xấu hơn'. Comparisons feel competitive. Dùng 'differently' thay 'better/worse'. (5) JAPANESE CONSERVATISM ≠ U.S. CONSERVATISM: spectrum chính trị Nhật khác hẳn Mỹ. Ngay center-left Nhật strict immigration hơn center-right Mỹ. Đừng map onto familiar frames. (6) AGREEMENT PRESSURE IS REAL: friend có thể continue press đồng ý. Bạn KHÔNG cần. Cụm: i-ken wa wakaremasu ga (ý kiến chia rẽ rồi) closes graceful. KHÔNG cần convert. Khác biệt với VN: ở VN bạn bè debate politics over rượu thường nóng, nhưng quan hệ thường survive vì văn hóa expressive forgive bigger; ở Nhật, một harsh political comment có thể end friendship — không recovery vì face damage permanent. Tone matters more than content. Mẹo: nếu chủ đề getting heated, deflect grace: kono hanashi, mata kondo yukkuri shimashou (chủ đề này hôm khác bàn từ tốn). Nhật accept time-out. KHÔNG insist resolve trong cùng buổi. Long-term: learn vài cụm shield: nhom — sou kamo shiremasen ga (có thể vậy nhưng), naruhodo (à ra vậy — neutral acknowledge), watakushi ni wa muzukashii topikku desu (chủ đề này khó với tôi). Last shield: humour. Nếu pressed too hard: politics no hanashi de, biiru ga oishiku naranaku narimashita (chuyện chính trị rồi bia thấy nhạt) — laugh + change subject.",
@@ -9282,31 +9876,49 @@ export const lessons: JapaneseLesson[] = [
       "Vào phòng, bạn ngồi xuống. Bạn của bạn có thể nói hoặc lặng thinh. Hãy KHÔNG chủ động hỏi 'do you want to talk' — đó là pressure. Đợi. Nếu họ nói, lắng nghe. Nếu họ im, ngồi với họ trong im lặng. Cụm khi cần phá im lặng: muri ni o-hanashi itadakanakute daijoubu desu (không cần cố nói).",
       "Bạn của bạn share một kỷ niệm về người mất (e.g., câu nói cuối, một đặc điểm tính cách). Hãy KHÔNG immediately reply 'I understand' — chưa hiểu được. Cụm: sou deshita ka cộng pause cộng o-tou-sama rashii go-seikaku datta no deshou ne (chắc đó là tính cách của ba). Reflect lại điều họ said, KHÔNG generic comfort."
     ],
+    "roleplay_prompts_en": [
+      "You are going to the home of a Japanese friend whose father just died. At the door, you must GREET them not too brightly (joy = inappropriate) and not too tearfully (drama = a burden for them). Phrase: kono tabi wa, makoto ni go-shuushou-sama de gozaimasu plus a slight bow. Do NOT hug, do NOT hold hands (Japanese people use little physical touch even in these emotional moments).",
+      "Entering the room, you sit down. Your friend may speak or stay silent. Do NOT proactively ask 'do you want to talk' — that is pressure. Wait. If they speak, listen. If they are silent, sit with them in silence. The phrase when you need to break the silence: muri ni o-hanashi itadakanakute daijoubu desu (there is no need to force yourself to talk).",
+      "Your friend shares a memory of the deceased (e.g., their last words, a personality trait). Do NOT immediately reply 'I understand' — you cannot yet understand. Phrase: sou deshita ka plus a pause plus o-tou-sama rashii go-seikaku datta no deshou ne (that must have been just like your father). Reflect back what they said, NOT generic comfort."
+    ],
     "register_notes": "An ủi sau mất mát ở Nhật khác hẳn nhiều văn hóa. Mục tiêu KHÔNG là cheer them up — là 寄り添う (yorisou, ngồi cạnh). Năm patterns: (1) USE 申し上げる FORMS: condolences dùng formal gozaimasu / moushiagemasu — không casual. Cụm chuẩn: kono tabi wa, makoto ni go-shuushou-sama de gozaimasu (lần này, thực sự xin chia buồn). KHÔNG dùng 'sumimasen' (sorry) — đó là apology, không phải condolence. (2) AVOID 大変 IN OPENING: nhiều người nước ngoài say 'taihen desu ne' (it must be hard). Trong context tử thi, sounds dismissive — minimize their grief. Tránh. Dùng 'go-shinpai no koto to omoimasu' (you must be worried/troubled) hoặc 'osasshi shimasu' (I imagine deeply). (3) FUNERAL VOCABULARY: お通夜 (otsuya, wake), お葬式 (osoushiki, funeral), 告別式 (kokubetsushiki, farewell ceremony), 香典 (kouden, condolence money), 喪主 (moshu, chief mourner). Biết minimum để không hỏi kỳ. Kouden ~5,000-10,000 yen for friend, in special envelope (不祝儀袋, bushuugibukuro). (4) NEVER SAY '元気を出して': Western 'cheer up' direct translation = genki wo dashite. Trong grief context Nhật = sounds like they shouldn't grieve. Tránh. Dùng: muri sezu, go-jibun no kimochi wo taisetsu ni nasatte kudasai (đừng cố, hãy quý trọng cảm xúc của bạn). (5) PRACTICAL HELP > EMOTIONAL WORDS: lời nhiều nhiều khi vô dụng. Offer concrete: cooking, kid pickup, errand, paperwork help. Cụm: gohan no junbi, kaimono nado, dou ka go-enryo naku. Practical help = thật sự chia tải. // TODO native review — sou deshita ka after share phrasing — alternative oshatte iru go-kimochi wakarimasu KHÔNG nên dùng (claim hiểu when bạn không thật sự hiểu — sounds presumptuous). Native reviewer suggested 'sou de gozaimashita ka' as more reverent variant.",
+    "register_notes_en": "Comforting someone after a loss in Japan differs greatly from many cultures. The goal is NOT to cheer them up — it is to 寄り添う (yorisou, to sit beside them). Five patterns: (1) USE 申し上げる FORMS: condolences use the formal gozaimasu / moushiagemasu — not casual. Standard phrase: kono tabi wa, makoto ni go-shuushou-sama de gozaimasu (this time, my sincere condolences). Do NOT use 'sumimasen' (sorry) — that is an apology, not a condolence. (2) AVOID 大変 IN THE OPENING: many foreigners say 'taihen desu ne' (it must be hard). In a bereavement context, it sounds dismissive — it minimizes their grief. Avoid it. Use 'go-shinpai no koto to omoimasu' (you must be troubled) or 'osasshi shimasu' (I can deeply imagine). (3) FUNERAL VOCABULARY: お通夜 (otsuya, wake), お葬式 (osoushiki, funeral), 告別式 (kokubetsushiki, farewell ceremony), 香典 (kouden, condolence money), 喪主 (moshu, chief mourner). Know the minimum so you do not ask something odd. Kouden is ~5,000-10,000 yen for a friend, in a special envelope (不祝儀袋, bushuugibukuro). (4) NEVER SAY '元気を出して': a direct translation of the Western 'cheer up' = genki wo dashite. In a Japanese grief context = it sounds as though they should not grieve. Avoid it. Use: muri sezu, go-jibun no kimochi wo taisetsu ni nasatte kudasai (do not force yourself, please cherish your own feelings). (5) PRACTICAL HELP > EMOTIONAL WORDS: many words are often useless. Offer concrete help: cooking, kid pickup, an errand, paperwork help. Phrase: gohan no junbi, kaimono nado, dou ka go-enryo naku. Practical help genuinely shares the load.",
     "idiom_glosses": [
       {
         "idiom": "寄り添う",
         "literal": "Đứng/ngồi sát bên",
+        "literal_en": "to stand/sit close beside (yorisou)",
         "meaning": "Khái niệm Nhật về an ủi: không cố sửa, chỉ ở bên. Cốt lõi văn hóa grief support.",
-        "example": "言葉ではなく、ただ寄り添うだけで十分なときもございます。"
+        "meaning_en": "The Japanese concept of comfort: not trying to fix, just being there. A cultural core of grief support.",
+        "example": "言葉ではなく、ただ寄り添うだけで十分なときもございます。",
+        "example_en": "Sometimes, not words but simply being close beside someone is enough."
       },
       {
         "idiom": "故人を偲ぶ",
         "literal": "Tưởng nhớ người quá cố",
+        "literal_en": "to remember the deceased (kojin o shinobu)",
         "meaning": "Cụm formal cho 'remembering the deceased' — dùng tại funeral, anniversary, conversation về người mất.",
-        "example": "お父さまを偲びながら、これからもご家族で支え合っていただければと存じます。"
+        "meaning_en": "A formal phrase for 'remembering the deceased' — used at a funeral, an anniversary, a conversation about someone who has died.",
+        "example": "お父さまを偲びながら、これからもご家族で支え合っていただければと存じます。",
+        "example_en": "While remembering your father, I hope your family can keep supporting one another from here on."
       },
       {
         "idiom": "時が薬",
         "literal": "Thời gian là thuốc",
+        "literal_en": "time is the medicine (toki ga kusuri)",
         "meaning": "Thời gian chữa lành — phù hợp khi nói về quá trình hồi phục dần dần, KHÔNG quick fix.",
-        "example": "時が薬と申しますが、無理なさらず、少しずつで構いません。"
+        "meaning_en": "Time heals — fitting when speaking of the gradual process of recovery, NOT a quick fix.",
+        "example": "時が薬と申しますが、無理なさらず、少しずつで構いません。",
+        "example_en": "They say time is the medicine. Please do not force yourself; little by little is fine."
       },
       {
         "idiom": "ご冥福をお祈りいたします",
         "literal": "Cầu nguyện cho an nghỉ ở thế giới bên kia",
+        "literal_en": "I pray for their peaceful rest in the next world (go-meifuku o o-inori itashimasu)",
         "meaning": "Cụm chuẩn cho condolence cards, formal expressions. Phật giáo origin nhưng dùng broadly.",
-        "example": "心よりご冥福をお祈りいたします。"
+        "meaning_en": "The standard phrase for condolence cards and formal expressions. Buddhist in origin but used broadly.",
+        "example": "心よりご冥福をお祈りいたします。",
+        "example_en": "I pray from the bottom of my heart for their peaceful rest."
       }
     ],
     "cultural_notes_vi": "Văn hóa tang lễ Nhật khác VN ở 7 điểm. (1) NOTIFICATION TIMING: bạn có thể được thông báo qua SMS/LINE, không call. Đáp ngay với short message: kono tabi wa, makoto ni go-shuushou-sama desu. Sugu ni go-renraku itadaki, arigatou gozaimasu. Sau đó, ask về otsuya (wake) timing. (2) OTSUYA VS OSOUSHIKI: otsuya thường tối ngày sau passing (or sau several ngày nếu prep). Osoushiki ngày sau. Friends thường attend otsuya, not osoushiki (osoushiki cho close family + formal acquaintances). Confirm với chief mourner (or via họ family member). (3) DRESS CODE: black mourning suit/dress (喪服, mofuku). Black tie cho nam. Black or pearl earrings only cho nữ. KHÔNG colored jewelry, KHÔNG bright watch. White shirt only. Closed-toe black shoes. Không có outfit này: black formal wear acceptable as substitute, never colored. (4) KOUDEN: condolence money in special black-and-white envelope (不祝儀袋, bushuugibukuro available at convenience store, write 御霊前 (go-reizen) or 御香典 (go-kouden) trên outside). Amount varies by relationship: friend 5,000-10,000 yen; close friend 10,000-30,000 yen; coworker 3,000-5,000 yen. New bills KHÔNG used (only old bills, opposite of wedding). (5) CEREMONIAL ACTIONS: tại otsuya/osoushiki, bạn sẽ 焼香 (shoukou, incense offering). Steps: bow to family (1 cúi), bow to deceased's photo (1 cúi), pinch incense powder, raise to forehead (depending sect 1-3 times), drop in burner, hands together prayer, bow again. Watch person trước bạn nếu unsure — copy. (6) NO PHOTOS: tại funeral home, KHÔNG photo. KHÔNG video. Phone silent always. (7) POST-FUNERAL FOOD: nhiều nơi serve light meal (otoki) sau ceremony. Eat modestly, KHÔNG drink heavily even if alcohol available. Khác biệt với VN: ở VN funeral có thể có cười nói chia sẻ kỷ niệm; Nhật funerals quiet, somber, formal throughout. Speech only when invited. Mẹo: nếu bạn không thể attend (out of country, work emergency), gửi telegram (弔電, chouden) qua post office hoặc online — service tới in vài giờ. Plus follow-up handwritten condolence note. KHÔNG chỉ text. Long-term: 49 ngày sau (49日, shijuukunichi) là ceremony quan trọng — Buddhist belief soul transitions. Reach out around then with brief message. Sau đó, anniversary (一周忌, isshuuki) ngày 1 năm — small reach-out OK. Tránh major holidays (Obon, year-end) for grief check-in — quá heavy load thời gian đó. Chọn ordinary morning, simple message: o-genki ni o-sugoshi desu ka (mong bạn ổn).",
@@ -9543,31 +10155,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn đưa lý do (tâm trạng rối, vừa bị mắng nơi khác). Hãy KHÔNG dùng lý do để excuse — frame như explanation MÀ đồng thời accept là không xóa được lỗi. Cụm: iiwake ni narimasu node, nagaku wa moushimasen cộng riyuu wa, watakushi no sekinin wo karuku suru mono dewa gozaimasen.",
       "Bạn KHÔNG ask forgiveness today. Hãy show concrete actions bạn sẽ làm — KHÔNG vague promises. Cụm: o-yurushi wo itadakitai to iu o-negai wa itashimasen. Liệt kê 2-3 việc cụ thể (e.g., correct misinformation với nhóm, change behavior pattern). Frame như bạn earn trust trở lại, KHÔNG demand it."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself sitting down before the Japanese friend you hurt. You must OPEN with a deep apology — NO explanation first, NO context. Phrase: makoto ni moushiwake gozaimasen deshita plus a 30-45 degree bow. Wait for their reaction. Do NOT lift your head until they say 'atama wo agete' (raise your head).",
+      "You give a reason (you were in a confused state, you had just been scolded elsewhere). Do NOT use the reason to excuse yourself — frame it as an explanation while at the same time accepting it does not erase the fault. Phrase: iiwake ni narimasu node, nagaku wa moushimasen plus riyuu wa, watakushi no sekinin wo karuku suru mono dewa gozaimasen.",
+      "You do NOT ask for forgiveness today. Show the concrete actions you will take — NOT vague promises. Phrase: o-yurushi wo itadakitai to iu o-negai wa itashimasen. List 2-3 specific things (e.g., correct the misinformation with the group, change a behaviour pattern). Frame it as earning trust back, NOT demanding it."
+    ],
     "register_notes": "Apology nghiêm trọng ở Nhật là craft. Năm patterns: (1) BOW DEPTH SIGNALS DEPTH: 15 độ = light apology (bumping into someone); 30 độ = medium (forgetting appointment); 45 độ = deep (hurt feelings, broken trust); 90 độ + holding 5 giây = serious wrongdoing. KHÔNG over-bow — 90 độ for forgotten lunch sounds melodramatic. Friend-level deep apology = 30-45 độ, hold 3-5 giây. (2) APOLOGY VERB STAGE: makoto ni moushiwake gozaimasen deshita (truly inexcusable) > moushiwake gozaimasen (apologetic) > sumimasen deshita (sorry — too light for serious). For meaningful break, dùng moushiwake gozaimasen deshita stage. (3) NO EXCUSE BEFORE APOLOGY: cardinal rule. KHÔNG 'I'm sorry but...' Open với apology raw. Reason ONLY if asked, AFTER apology accepted at least partially. Even then, frame: iiwake ni narimasu ga (this will become an excuse). Acknowledging excuse-status preempts criticism. (4) ACCOUNTABILITY OWNS THE FAULT: KHÔNG say 'misunderstanding' (gokai), 'I didn't mean it' (sou iu tsumori dewa nakatta) — sounds như deflecting. Use: subete watakushi no sekinin desu (entirely my responsibility). Even if shared blame realistic, in apology moment, take 100 phần trăm. (5) DON'T DEMAND FORGIVENESS: 'I hope you can forgive me' = subtle pressure. Better: o-yurushi wo itadakitai to iu o-negai wa itashimasen. sore wa, watakushi ga kimeru koto dewa gozaimasen (I'm not asking for forgiveness — that isn't mine to decide). Releases pressure, paradoxically increases forgiveness chance. // TODO native review — ano hi no hatsugen phrasing — alternative ano toki no kotoba feels more relational; native reviewers split on whether 'fukaku hansei shite orimasu' sounds sincere or formulaic in friend context — context-dependent.",
+    "register_notes_en": "A serious apology in Japan is a craft. Five patterns: (1) BOW DEPTH SIGNALS DEPTH: 15 degrees = a light apology (bumping into someone); 30 degrees = medium (forgetting an appointment); 45 degrees = deep (hurt feelings, broken trust); 90 degrees plus holding for 5 seconds = serious wrongdoing. Do NOT over-bow — 90 degrees for a forgotten lunch sounds melodramatic. A friend-level deep apology = 30-45 degrees, held 3-5 seconds. (2) APOLOGY VERB STAGE: makoto ni moushiwake gozaimasen deshita (truly inexcusable) > moushiwake gozaimasen (apologetic) > sumimasen deshita (sorry — too light for serious). For a meaningful breach, use the moushiwake gozaimasen deshita stage. (3) NO EXCUSE BEFORE THE APOLOGY: a cardinal rule. Do NOT 'I'm sorry but…'. Open with the apology raw. Give the reason ONLY if asked, AFTER the apology is at least partially accepted. Even then, frame it: iiwake ni narimasu ga (this will become an excuse). Acknowledging the excuse-status pre-empts criticism. (4) ACCOUNTABILITY OWNS THE FAULT: do NOT say 'misunderstanding' (gokai), 'I didn't mean it' (sou iu tsumori dewa nakatta) — it sounds like deflecting. Use: subete watakushi no sekinin desu (entirely my responsibility). Even if shared blame is realistic, in the apology moment take 100 percent. (5) DON'T DEMAND FORGIVENESS: 'I hope you can forgive me' = subtle pressure. Better: o-yurushi wo itadakitai to iu o-negai wa itashimasen. sore wa, watakushi ga kimeru koto dewa gozaimasen (I am not asking for forgiveness — that is not mine to decide). It releases the pressure and, paradoxically, increases the chance of forgiveness.",
     "idiom_glosses": [
       {
         "idiom": "覆水盆に返らず",
         "literal": "Nước đổ không thể về khay",
+        "literal_en": "spilt water does not return to the tray (fukusui bon ni kaerazu)",
         "meaning": "Việc đã làm không thể hoàn lại — phù hợp acknowledge mistake không thể undo, chỉ làm gì đó từ đây trở đi.",
-        "example": "覆水盆に返らずと申しますが、これからの行動でお返しできればと存じます。"
+        "meaning_en": "What is done cannot be undone — fitting to acknowledge a mistake cannot be reversed; you can only do something from here onward.",
+        "example": "覆水盆に返らずと申しますが、これからの行動でお返しできればと存じます。",
+        "example_en": "They say spilt water does not return to the tray, but I hope to make up for it through my actions from here on."
       },
       {
         "idiom": "禊を済ます",
         "literal": "Hoàn thành lễ tẩy uế",
+        "literal_en": "to complete the purification rite (misogi o sumasu)",
         "meaning": "Trong context apology, frame act of apology như ritual cleansing — không erase error, mà mark willingness to begin again.",
-        "example": "今日のお詫びで全てが済むとは思っておりません。これは始まりに過ぎません。"
+        "meaning_en": "In an apology context, frame the act of apologizing as a ritual cleansing — not erasing the error, but marking a willingness to begin again.",
+        "example": "今日のお詫びで全てが済むとは思っておりません。これは始まりに過ぎません。",
+        "example_en": "I do not think today's apology settles everything. This is only a beginning."
       },
       {
         "idiom": "立つ鳥跡を濁さず",
         "literal": "Chim bay đi không làm đục nước",
+        "literal_en": "a departing bird does not foul the water (tatsu tori ato o nigosazu)",
         "meaning": "Đi mà không để lại vết bẩn — phù hợp frame commitment không tái phạm, để lại quan hệ sạch.",
-        "example": "立つ鳥跡を濁さずと申しますし、今後は一切、同じ過ちを繰り返さぬよう努めます。"
+        "meaning_en": "To leave without leaving a stain — fitting to frame a commitment not to repeat the offence, leaving the relationship clean.",
+        "example": "立つ鳥跡を濁さずと申しますし、今後は一切、同じ過ちを繰り返さぬよう努めます。",
+        "example_en": "They say a departing bird leaves no trace, and from now on I will strive never to repeat the same mistake."
       },
       {
         "idiom": "誠心誠意",
         "literal": "Hết lòng hết dạ",
+        "literal_en": "with all one's heart and sincerity (seishin seii)",
         "meaning": "Cụm 4 chữ về sincerity tuyệt đối — nhấn rằng apology không formality.",
-        "example": "誠心誠意、向き合わせていただきます。"
+        "meaning_en": "A four-character phrase for absolute sincerity — stressing that the apology is not a formality.",
+        "example": "誠心誠意、向き合わせていただきます。",
+        "example_en": "With all my heart and sincerity, I will face this."
       }
     ],
     "cultural_notes_vi": "Apology văn hóa Nhật khác VN ở 7 điểm. (1) APOLOGY = ACT, NOT WORD: Nhật phân biệt 言葉のお詫び (lời apology) vs 行動のお詫び (apology bằng hành động). Word alone không đủ for serious wrong. Action: in-person visit, gift (omiyage), follow-up commitment, behavior change. Foreigners thường stop at words — Nhật wait for action. (2) IN-PERSON > MESSAGE: serious apology phải in-person. Text/call đầu OK để request meeting, KHÔNG là apology itself. Nếu khoảng cách lớn (overseas), video call > text. (3) GIFT IF APPROPRIATE: cho serious apology, mang omiyage nhỏ — KHÔNG expensive (sounds như bribe). Một hộp wagashi (Japanese sweets, 2,000-3,000 yen), một chai sake nice (3,000-5,000 yen). Wrap trong simple paper, white not flashy. Present after apology accepted, KHÔNG before. (4) TIME GAP MATTERS: apology 1-2 ngày after offense better than 1 tuần. Delay = perceived indifference. Nếu cần time để cool down (yours), brief acknowledgment + request meeting trong 48 hours: hansei shite orimasu. mou sukoshi shitara, jikan wo itadaitemo yoroshii deshou ka (đang reflecting, sau ít hôm xin được thời gian). (5) WITNESS MATTERS: nếu offense was public, apology nên có public component (correction in same group, public retraction). Nếu offense private, apology stay private. Mismatch = noted as awkward. (6) DOGEZA IS RARE: 土下座 (full prostration) extreme apology — appropriate for major wrongs (financial damage, public dishonor). KHÔNG cho friend hurt feelings. Over-doing đó = melodrama, friend uncomfortable. (7) FORGIVENESS NOT GUARANTEED: dù apology perfect, friend có thể không forgive. Accept gracefully. Cụm: o-yurushi itadakenakute mo, sore mo touzen no koto kato zonjimasu (dù không được tha thứ, đó cũng tự nhiên). Don't double down. Khác biệt với VN: ở VN apology thường over-emotional, immediate makeup, nhanh chóng moving on; Nhật apology measured, formal, KHÔNG rush. Process slow, but resolution thường stronger. Mẹo: practice apology speech 1-2 lần before delivery. Ghi out keypoints: (a) what bạn did, (b) what consequence, (c) what bạn understand of their pain, (d) what bạn'll do từ đây, (e) bạn không expect forgiveness today. Năm phần này, mỗi phần 2-3 câu. Total ~5 phút. Long-term: friend recovery takes 3-6 tháng even sau perfect apology. Patient. Don't withdraw if họ cool. Don't push if họ silent. Just stay available. Most relationships heal nếu offender stays consistent.",
@@ -9804,31 +10434,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn của bạn nói 'I'm sad to leave'. Hãy KHÔNG say 'don't be sad' (dismisses feeling). Cụm: o-kimochi, juubun ni rikai dekimasu cộng share lại sự sad của chính bạn — mutual vulnerability. Sau đó frame như chuyến đi mới, KHÔNG kết thúc.",
       "Cuối bữa, bạn cần đóng cuộc gặp với gì hơn 'see you later'. Cụm phù hợp: anata to no en wa, isshou no mono desu (mối duyên với bạn là cả đời). Plus một concrete plan reconnection (call once a year, visit specific year). Reality > vague promise."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself at a farewell dinner seeing off a Japanese friend who is emigrating to Germany. Do NOT cry loudly (Japanese restraint), do NOT over-promise the future. Main phrase: kyou made, makoto ni arigatou gozaimashita plus share one specific memory (NOT a generic 'good times'). Specific = sincere.",
+      "Your friend says 'I'm sad to leave'. Do NOT say 'don't be sad' (it dismisses the feeling). Phrase: o-kimochi, juubun ni rikai dekimasu plus share your own sadness in return — mutual vulnerability. Then frame it as a new journey, NOT an ending.",
+      "At the end of the meal, you need to close the gathering with something more than 'see you later'. A fitting phrase: anata to no en wa, isshou no mono desu (the bond with you is for a lifetime). Plus a concrete reconnection plan (call once a year, visit in a specific year). Reality > a vague promise."
+    ],
     "register_notes": "Lời tạm biệt vĩnh viễn ở Nhật là restraint + specificity. Năm patterns: (1) GRATITUDE BEFORE SADNESS: open với thanks, not sad. Cụm: kyou made, makoto ni arigatou gozaimashita. Lý do: Nhật value gratitude làm anchor; sadness allowed but secondary frame. Khác Western style 'I'm so sad you're leaving' direct opener. (2) SPECIFIC MEMORIES > GENERAL: dùng 1-2 specific memory references — câu họ said, một meal cụ thể, một moment shared. Generic 'good times' sounds rote. Specific shows you valued the relationship deeply. (3) RESTRAINT IN CRYING: tears OK quietly, KHÔNG sobbing. Một single tear with a smile = poetic Nhật image. Loud emotion makes Nhật uncomfortable, perceived as performative. (4) KHÔNG OVER-PROMISE FUTURE: instead of 'we'll talk every week!' (likely false), use realistic: ichinen ni ikkai, denwa shimashou (let's call once a year). Realistic promise more likely kept = more meaningful. (5) FRAME AS NEW BEGINNING THEIR SIDE: shift focus to their atarashii kadode (new departure). Send energy outward. Cụm: anata no atarashii kadode ni, kokoro kara ehru wo okurasete itadakimasu. KHÔNG self-focus on your own loss. // TODO native review — 'isshou no mono' phrasing — alternative kekko fukai en mềm hơn cho close-but-not-romantic friendship; native reviewer suggested 'kako no fubuki' for permanent end of romantic relationship to avoid implications.",
+    "register_notes_en": "A permanent goodbye in Japan is restraint plus specificity. Five patterns: (1) GRATITUDE BEFORE SADNESS: open with thanks, not sadness. Phrase: kyou made, makoto ni arigatou gozaimashita. The reason: Japan values gratitude as an anchor; sadness is allowed but as a secondary frame. Unlike the Western style of a direct 'I'm so sad you're leaving' opener. (2) SPECIFIC MEMORIES > GENERAL: use 1-2 specific memory references — something they said, a particular meal, a moment shared. Generic 'good times' sounds rote. Specifics show you valued the relationship deeply. (3) RESTRAINT IN CRYING: tears are OK quietly, NOT sobbing. A single tear with a smile = a poetic Japanese image. Loud emotion makes Japanese people uncomfortable, perceived as performative. (4) DON'T OVER-PROMISE THE FUTURE: instead of 'we'll talk every week!' (likely false), use a realistic one: ichinen ni ikkai, denwa shimashou (let's call once a year). A realistic promise is more likely kept = more meaningful. (5) FRAME AS A NEW BEGINNING ON THEIR SIDE: shift the focus to their atarashii kadode (new departure). Send energy outward. Phrase: anata no atarashii kadode ni, kokoro kara eeru wo okurasete itadakimasu. Do NOT focus on your own loss.",
     "idiom_glosses": [
       {
         "idiom": "袖振り合うも他生の縁",
         "literal": "Vạt áo chạm nhau cũng là duyên kiếp trước",
+        "literal_en": "even a brush of sleeves is a karmic tie from a former life (sode furiau mo tashou no en)",
         "meaning": "Cuộc gặp gỡ tưởng tình cờ thực ra có duyên — phù hợp frame friendship như có ý nghĩa hơn ngẫu nhiên.",
-        "example": "袖振り合うも他生の縁と申しますが、あなたとの出会いは、私にとって特別なものでした。"
+        "meaning_en": "A seemingly chance meeting is in fact a karmic tie — fitting to frame a friendship as more meaningful than coincidence.",
+        "example": "袖振り合うも他生の縁と申しますが、あなたとの出会いは、私にとって特別なものでした。",
+        "example_en": "They say even a brush of sleeves is a karmic tie from a former life — meeting you was something special to me."
       },
       {
         "idiom": "会うは別れの始め",
         "literal": "Gặp gỡ là khởi đầu của chia ly",
+        "literal_en": "to meet is the beginning of parting (au wa wakare no hajime)",
         "meaning": "Triết lý vô thường (mujou) Phật giáo — cuộc gặp ẩn chứa cuộc chia. Thừa nhận parting là không tránh được.",
-        "example": "会うは別れの始めと申しますが、それでも、共に過ごせた日々に感謝しております。"
+        "meaning_en": "The Buddhist philosophy of impermanence (mujou) — a meeting contains within it a parting. It acknowledges that parting cannot be avoided.",
+        "example": "会うは別れの始めと申しますが、それでも、共に過ごせた日々に感謝しております。",
+        "example_en": "They say to meet is the beginning of parting, but even so, I am grateful for the days we spent together."
       },
       {
         "idiom": "去る者日々に疎し",
         "literal": "Người đi xa ngày càng nhạt",
+        "literal_en": "the one who leaves grows distant day by day (saru mono hibi ni utoshi)",
         "meaning": "Câu cảnh báo: người đi xa thường nhạt dần — phù hợp khi commit chống lại trend này, mà KHÔNG over-promise.",
-        "example": "去る者日々に疎しと申しますが、私たちはそうならないよう、お互い努力したく存じます。"
+        "meaning_en": "A cautionary saying: someone who goes far tends to fade — fitting when you commit to resisting this trend, WITHOUT over-promising.",
+        "example": "去る者日々に疎しと申しますが、私たちはそうならないよう、お互い努力したく存じます。",
+        "example_en": "They say the one who leaves grows distant day by day, but I would like us both to make an effort so that does not happen to us."
       },
       {
         "idiom": "一期一会",
         "literal": "Một thời, một gặp",
+        "literal_en": "one time, one meeting (ichigo ichie)",
         "meaning": "Mỗi cuộc gặp duy nhất — tea ceremony origin, khái niệm rằng từng moment với người là không thể lặp lại. Phù hợp closing toast.",
-        "example": "一期一会の精神で、今日の時間を心に刻みたく存じます。"
+        "meaning_en": "Every meeting is unique — tea-ceremony in origin, the idea that each moment with someone can never be repeated. Fitting for a closing toast.",
+        "example": "一期一会の精神で、今日の時間を心に刻みたく存じます。",
+        "example_en": "In the spirit of one time, one meeting, I would like to engrave today's hours on my heart."
       }
     ],
     "cultural_notes_vi": "Lời tạm biệt văn hóa Nhật khác VN ở 6 điểm. (1) GIFT EXCHANGE TRADITION: tại tiệc tiễn (送別会, soubetsukai), người ra đi thường nhận gifts — book about Japan để nhớ, photo album, regional specialties. Bạn cho người đi gift KHÔNG quá expensive (5,000-10,000 yen) hoặc bulky (họ phải pack). Light, meaningful: book of haiku, simple ceramic, photo printed nicely. Họ thường give gift back (memorabilia from soon-to-be-far place). Mutual exchange. (2) LETTER OVER SPEECH: at parting, brief handwritten letter (tegami) treasured more than long verbal speech. Letter survives years. Verbal speech forgotten. Write letter beforehand — even 1 page handwritten Japanese (or English với careful translation). Present at closing of meal. (3) NO HUGGING: dù emotional moment, hug KHÔNG là default. Bow at parting, perhaps light touch on shoulder. Hug only if individual relationship has established touch. Forced hug = awkward. (4) RAILWAY STATION FAREWELL: nếu seeing off at train station, classical pattern: walk to ticket gate, exchange final words on outside, watch them pass through, wave qua glass barrier until train pulls out. Don't leave first — let them disappear from view. Powerful imagery in Japanese culture — many films showcase this. (5) NEW YEAR CARD COMMITMENT: New Year cards (年賀状, nengajou) traditional way maintain long-distance friendship. Even loose ties survive via annual card. Commit to nengajou exchange — write address ngay. Continues decades. (6) RECONNECTION WHEN VISITING: nếu họ về Japan visit, expectation = họ contact bạn. Reverse same. Don't assume — explicit promise: kondo nihon ni kaette kuru toki wa, kanarazu o-shirase kudasai (next time you come back, please tell me). KHÔNG passive 'maybe see you'. Khác biệt với VN: ở VN tiệc chia tay thường rộn ràng, nhiều speech, nhiều rượu, late-night karaoke; Nhật quieter, deeper. Vietnamese might find Japanese parting feels 'cold' — đó không phải cold, là restraint với heaviness underneath. Mẹo: nếu mất relationship qua break-up rather than physical move, văn hóa Nhật thường ngừng contact hoàn toàn (ghosting). Foreigners có thể find this jarring. KHÔNG read như rejection of you — là Nhật cách closing emotional chapter. Don't push to reconnect. Long-term: track key dates — họ birthday, năm họ moved, anniversary của một moment shared. Brief contact một trong những ngày này per year keeps thread alive. Không phải over-contact, một thread thin mạnh hơn cuộc gọi forced không đều.",
@@ -10065,31 +10713,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn của bạn share work + family stress. Hãy KHÔNG offer solutions immediately — first acknowledge weight. Cụm: kata no ni, omoi desu ne. shokuba demo ie demo, yasumaru basho ga nai (gánh nặng đè vai. ở work hay home không có chỗ nghỉ). Reflect lại. Solution-mode quá sớm = họ feel unheard.",
       "Sau khi listen, bạn move to practical help — KHÔNG generic 'let me know if you need anything' (họ never ask). Specific: 'cuối tuần em đi cùng bạn lên trung tâm hỗ trợ điều thủ tục cho mẹ'. Cụm: go-issho ni ukagatte mo yoroshii deshou ka. Specific + concrete + you-going = thật sự share burden."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself noticing a Japanese friend has been worn out for weeks. Open the conversation NOT with 'are you OK?' (a yes/no that closes the door) — but with a specific observation. Phrase: saikin, o-tsukare no go-yousu de, shinpai shite orimasu (lately you've seemed tired, and I'm worried). Then pause so they can choose to share or deflect.",
+      "Your friend shares work plus family stress. Do NOT offer solutions immediately — first acknowledge the weight. Phrase: kata no ni, omoi desu ne. shokuba demo ie demo, yasumaru basho ga nai (the burden on your shoulders is heavy. At work or at home, there's no place to rest). Reflect it back. Solution-mode too early = they feel unheard.",
+      "After listening, move to practical help — do NOT a generic 'let me know if you need anything' (they never ask). Specific: 'this weekend I'll go with you to the support centre to handle the procedures for your mother'. Phrase: go-issho ni ukagatte mo yoroshii deshou ka. Specific plus concrete plus you-going = genuinely sharing the burden."
+    ],
     "register_notes": "Hỗ trợ bạn khó khăn ở Nhật cần balance enryo (không xâm phạm) và sasshi (đọc tâm). Năm patterns: (1) OPEN WITH SPECIFIC OBSERVATION, NOT QUESTION: 'are you OK' yes/no closes door. 'You've seemed tired' opens. Cụm: o-tsukare no go-yousu de cộng shinpai. Họ có agency to deflect (sou desu ne, jissai ni wa heiki desu) hoặc share. Both responses valid. (2) RESPECT THEIR PACE: nếu họ deflect, accept. KHÔNG push. Cụm: hai, kashikomarimashita. mata, o-itsudemo, o-koe gake itashimasu (vâng, lúc nào cũng có thể nhắn). Ý: door open. Họ come back when ready. (3) NO 'TAIHEN DESU NE' AS DISMISSAL: 'taihen' OK in light context. In serious sharing, sounds dismissive ('that sounds rough') — close conversation. Use heavier acknowledgment: kata no ni, omoi desu ne (the burden is heavy, isn't it) hoặc o-kimochi, juubun ni rikai dekimasu. (4) ASK PERMISSION TO ASK: nếu nghi gì cụ thể (đã apply support? đã talk to HR?), ASK PERMISSION first. Cụm: hitotsu, ukagatte mo yoroshii deshou ka. Then ask. Direct probing without permission = invasive. (5) OFFER SPECIFIC HELP, NOT GENERIC: KHÔNG 'let me know if anything I can do' (Japanese never ask — burdens you = they avoid). Cụm specific: konshuumatsu, go-issho ni X ni ukagaitemo yoroshii deshou ka. Concrete time + concrete action. Họ accept hoặc decline cụ thể. // TODO native review — 'kata no ni, omoi desu ne' phrasing — alternative go-fudan ga ookii desu ne sounds slightly more formal; some natives prefer 'tsurai desu ne' for emotional weight; never use 'oyousu yo' as closing — sounds dismissive in this register.",
+    "register_notes_en": "Supporting a friend through a hard time in Japan requires balancing enryo (not intruding) and sasshi (reading the heart). Five patterns: (1) OPEN WITH A SPECIFIC OBSERVATION, NOT A QUESTION: 'are you OK' is a yes/no that closes the door. 'You've seemed tired' opens it. Phrase: o-tsukare no go-yousu de plus shinpai. They have the agency to deflect (sou desu ne, jissai ni wa heiki desu) or to share. Both responses are valid. (2) RESPECT THEIR PACE: if they deflect, accept it. Do NOT push. Phrase: hai, kashikomarimashita. mata, o-itsudemo, o-koe gake itashimasu (yes, understood; please reach out anytime). The meaning: the door is open. They come back when ready. (3) NO 'TAIHEN DESU NE' AS A DISMISSAL: 'taihen' is OK in a light context. In serious sharing, it sounds dismissive ('that sounds rough') — it closes the conversation. Use a heavier acknowledgment: kata no ni, omoi desu ne (the burden on your shoulders is heavy, isn't it) or o-kimochi, juubun ni rikai dekimasu. (4) ASK PERMISSION TO ASK: if you wonder something specific (have they applied for support? have they talked to HR?), ASK PERMISSION first. Phrase: hitotsu, ukagatte mo yoroshii deshou ka. Then ask. Direct probing without permission = invasive. (5) OFFER SPECIFIC HELP, NOT GENERIC: do NOT 'let me know if there's anything I can do' (Japanese people never ask — it burdens you, so they avoid it). Specific phrase: konshuumatsu, go-issho ni X ni ukagatte mo yoroshii deshou ka. A concrete time plus a concrete action. They accept or decline specifically.",
     "idiom_glosses": [
       {
         "idiom": "肩の荷が下りる",
         "literal": "Gánh nặng rời vai",
+        "literal_en": "the load comes off your shoulders (kata no ni ga oriru)",
         "meaning": "Cảm giác nhẹ vai sau khi share — phù hợp closing: thank họ for trusting you with the burden.",
-        "example": "今日、お話しいただいて、少しでも肩の荷が下りていれば嬉しく存じます。"
+        "meaning_en": "The feeling of relief after sharing — fitting for a closing: thank them for trusting you with the burden.",
+        "example": "今日、お話しいただいて、少しでも肩の荷が下りていれば嬉しく存じます。",
+        "example_en": "I would be glad if, by talking with me today, even a little of the load has come off your shoulders."
       },
       {
         "idiom": "親しき仲にも礼儀あり",
         "literal": "Gần thân cũng cần lễ nghi",
+        "literal_en": "even between close ones there is courtesy (shitashiki naka ni mo reigi ari)",
         "meaning": "Trong friendship sâu, vẫn ask permission trước khi probe — respect maintained.",
-        "example": "親しき仲にも礼儀ありと申しますし、立ち入ったことを伺う前に、一言お断りさせていただきます。"
+        "meaning_en": "In a deep friendship, you still ask permission before probing — respect is maintained.",
+        "example": "親しき仲にも礼儀ありと申しますし、立ち入ったことを伺う前に、一言お断りさせていただきます。",
+        "example_en": "They say even between close ones there is courtesy, so before asking something private, let me say a word first."
       },
       {
         "idiom": "情けは人の為ならず",
         "literal": "Lòng tốt không vì người khác",
+        "literal_en": "kindness is not for the sake of others (nasake wa hito no tame narazu)",
         "meaning": "Thực ra: lòng tốt cuối cùng quay lại với chính mình — KHÔNG misread như 'don't be kind'. Phù hợp khi friend nói 'sorry to bother you'.",
-        "example": "情けは人の為ならずと申します。私もいつかお世話になりますので、お互い様です。"
+        "meaning_en": "Actually: kindness ultimately comes back to yourself — do NOT misread it as 'don't be kind'. Fitting when a friend says 'sorry to bother you'.",
+        "example": "情けは人の為ならずと申します。私もいつかお世話になりますので、お互い様です。",
+        "example_en": "They say kindness is not only for the other's sake. Someday I will rely on you too, so it goes both ways."
       },
       {
         "idiom": "腹を割って話す",
         "literal": "Mổ bụng ra mà nói",
+        "literal_en": "to slice your belly open and talk (hara o watte hanasu)",
         "meaning": "Nói thẳng từ tim — phù hợp acknowledge friend đã honne với bạn, đó là big trust.",
-        "example": "腹を割って話してくださって、こちらこそ感謝しております。"
+        "meaning_en": "To speak straight from the heart — fitting to acknowledge that the friend was honest with you, which is a big trust.",
+        "example": "腹を割って話してくださって、こちらこそ感謝しております。",
+        "example_en": "Thank you for speaking so openly with me — I am the one who is grateful."
       }
     ],
     "cultural_notes_vi": "Văn hóa hỗ trợ ở Nhật khác VN ở 6 điểm. (1) ENRYO BARRIER: Nhật value KHÔNG burden others (meiwaku wo kakenai). Họ tự nhiên hide stress, decline help. Bạn có thể ask 5 lần, mỗi lần họ say 'daijoubu' before họ accept once. KHÔNG read 'daijoubu' literal — read context (body language, tone). (2) SOLUTION FATIGUE: Nhật stressed thường KHÔNG want solutions — họ already considered them. Want sasshi (acknowledgment), không advice. Don't jump to solutions. Listen 80 phần trăm, suggest 20 phần trăm. (3) PROFESSIONAL HELP STIGMA: mental health professional consultation in Japan increasing nhưng still stigma. Friend may resist 'see a counselor'. Better frame: chiiki no soudan madoguchi (community consultation desk) hoặc hokenfu-san (public health nurse) — feels less 'mental health' và more 'general support'. (4) FAMILY CARE INSURANCE (介護保険): nếu friend caring for elderly parent với dementia/disability, Japan has comprehensive family-care insurance system (kaigo hoken). Most Japanese KHÔNG aware of full benefits. Encourage application via 地域包括支援センター (chiiki houkatsu shien sentaa, community comprehensive support center) — every neighborhood has one. Free consultation. (5) WORKPLACE LEAVE OPTIONS: 介護休暇 (family-care leave) entitlement là legally protected. Most employees KHÔNG know. Up to 93 days unpaid leave protected from termination. Encourage friend ask HR. KHÔNG forced — just inform. (6) PHYSICAL CONTACT MINIMAL: comfort instinct ôm = KHÔNG culturally normal. Light pat on shoulder OK with established close friend. Better comfort: physically present, listen, follow-up message. Khác biệt với VN: ở VN bạn bè khó khăn thường gather to drink, eat heavy, share loud — collective release. Ở Nhật, support quieter, more individual, more practical infrastructure. Vietnamese instinct 'come over right now, let's drink' may feel intrusive to Japanese friend stressed. Adjust: brief specific offer (one tea, 1 hour), KHÔNG long open-ended. Mẹo: nếu friend có nguy cơ burnout cụ thể (suicidal speech, long isolation, severe physical symptoms), gọi 24h hotline TELL Hotline (03-5774-0992 — TELL Tokyo English/Japanese support) hoặc local hokenfu-san. Don't carry alone. Long-term: support is marathon, not sprint. Friend khó khăn typically 6-18 tháng để stabilize. Bạn role: maintain consistent presence ở thấp intensity (weekly brief message), KHÔNG burst high-intensity 1 month then disappear. Sustainable > intense.",
@@ -10321,31 +10987,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn của bạn ASK YOU vay tiền (200,000 yen, hoàn trong 6 tháng). Bạn không thoải mái nhưng không muốn từ chối thô lỗ. Hãy KHÔNG immediately yes, KHÔNG immediately no — request time to think. Cụm: o-kimochi wa juubun ni rikai dekimasu. tada, kingaku ga ookii node, sukoshi kangae sasete itadakitaku zonjimasu (em hiểu — nhưng số tiền lớn, xin được suy nghĩ ít hôm). Avoid yes/no in moment.",
       "Sau 2 ngày suy nghĩ, bạn quyết định decline. Cụm: kongo no jibun no keikaku to terashite, kondo wa o-yaku ni tatemasen (đối chiếu kế hoạch của em sắp tới, lần này em không giúp được). Suggest alternative: kingaku ga chiisakute mo, sukoshi nara kinougatta jibun de tasukerareru tokoro ga arimasu (số nhỏ thì em có thể). Maintain dignity for both."
     ],
+    "roleplay_prompts_en": [
+      "Play yourself needing to ask back 30,000 yen you covered during a trip. It has been 3 weeks. Do NOT a vague hint, do NOT be dramatic — frame it directly but gently. Phrase: kiridashi nikukute, mayotte orimashita ga (it was hard to bring up and I hesitated, but) plus senjitsu no ryokou de, tatekaesete itadaita bun ga arimashita (the other day on the trip there was a portion I covered). Specific amount plus context. They apologize; accept it gracefully — do NOT over-reassure ('it's nothing').",
+      "Your friend ASKS YOU to lend money (200,000 yen, repaid in 6 months). You are uncomfortable but do not want to decline rudely. Do NOT an immediate yes, do NOT an immediate no — ask for time to think. Phrase: o-kimochi wa juubun ni rikai dekimasu. tada, kingaku ga ookii node, sukoshi kangae sasete itadakitaku zonjimasu (I fully understand your feelings — but the amount is large, so I would like a few days to think). Avoid yes/no in the moment.",
+      "After 2 days of thinking, you decide to decline. Phrase: kongo no jibun no keikaku to terashite, kondo wa o-yaku ni tatemasen (against my own plans for the period ahead, this time I cannot help). Suggest an alternative: kingaku ga chiisakute mo, sukoshi nara jibun de tasukerareru tokoro ga arimasu (if the amount is small, I can help a little). Maintain dignity for both."
+    ],
     "register_notes": "Tiền với bạn ở Nhật là minefield. Năm patterns: (1) BRING UP EARLIEST POSSIBLE: nếu tatekae (cover for friend), say in moment hoặc ngay sau (within 2-3 days). Wait > 2 weeks và conversation gets harder. Cụm in-moment: kyou no bun, ato de seisan deki masu ka. Modern apps (PayPay, LINE Pay, Kyash) make on-spot split easy — encourage. (2) FRAME AS SHARED PROBLEM: KHÔNG accuse 'you forgot' (kashi-tana). Frame như communication issue. Cụm: itai sobirete shimatte (tôi miss the moment), kiridashi nikukute (hard to bring up). Self-attribute hesitancy = preserves face. (3) NEVER ANGRY TONE: dù họ delay months, voice stay calm. Anger over money = friendship damage permanent. Calm clarity = friendship survives. Một câu firm-but-warm > mười câu emotional. (4) DECLINING LOAN REQUEST: KHÔNG immediate no (sounds dismissive of trust they showed). Buy time. Cụm: o-kimochi rikai dekimasu. sukoshi kangae sasete itadakitaku zonjimasu. 1-3 ngày sau, decline với reason concrete (kongo no shukyou ga, ima koukai ga genjitsu-teki dewa nai — current plans don't make this realistic). Specific reason > vague no. (5) KEEP RECORDS: dù trust friend, record dates + amounts in phone (private). Fading memory = source of friction. Có record = both can verify, không argue. Friendship transparency tools, không suspicion. // TODO native review — 'kiridashi nikukute, mayotte orimashita' phrasing — alternative iidashi nikukute mềm hơn cho closer friends; native reviewer noted 'kanjo nin' awkwardness in dialogue context — replaced with 'tatekaesase' which works for casual situations.",
+    "register_notes_en": "Money with a friend in Japan is a minefield. Five patterns: (1) BRING IT UP AS EARLY AS POSSIBLE: if you tatekae (cover for a friend), say so in the moment or right after (within 2-3 days). Wait > 2 weeks and the conversation gets harder. In-moment phrase: kyou no bun, ato de seisan deki masu ka. Modern apps (PayPay, LINE Pay, Kyash) make an on-the-spot split easy — encourage it. (2) FRAME AS A SHARED PROBLEM: do NOT accuse 'you forgot' (kashi-tana). Frame it as a communication issue. Phrase: ii sobirete shimatte (I missed the moment), kiridashi nikukute (it was hard to bring up). Self-attributing the hesitancy preserves face. (3) NEVER AN ANGRY TONE: even if they delay for months, keep your voice calm. Anger over money = permanent friendship damage. Calm clarity = the friendship survives. One firm-but-warm sentence > ten emotional ones. (4) DECLINING A LOAN REQUEST: do NOT an immediate no (it sounds dismissive of the trust they showed). Buy time. Phrase: o-kimochi rikai dekimasu. sukoshi kangae sasete itadakitaku zonjimasu. 1-3 days later, decline with a concrete reason (kongo no shukyou ga, ima koukai ga genjitsu-teki dewa nai — current plans don't make this realistic). A specific reason > a vague no. (5) KEEP RECORDS: even if you trust the friend, record dates plus amounts in your phone (privately). A fading memory = a source of friction. Having a record = both can verify, no argument. Friendship transparency tools, not suspicion.",
     "idiom_glosses": [
       {
         "idiom": "親しき仲にも礼儀あり",
         "literal": "Trong gần thân vẫn có lễ",
+        "literal_en": "even between close ones there is courtesy (shitashiki naka ni mo reigi ari)",
         "meaning": "Bạn thân vẫn cần clarity về tiền — context apply directly here.",
-        "example": "親しき仲にも礼儀ありと申しますし、お金のことは曖昧にせず、はっきりさせたく存じます。"
+        "meaning_en": "Close friends still need clarity about money — the context applies directly here.",
+        "example": "親しき仲にも礼儀ありと申しますし、お金のことは曖昧にせず、はっきりさせたく存じます。",
+        "example_en": "They say even between close ones there is courtesy, so I would like to keep money matters clear rather than vague."
       },
       {
         "idiom": "金の切れ目が縁の切れ目",
         "literal": "Tiền hết là duyên hết",
+        "literal_en": "where the money ends, the bond ends (kane no kireme ga en no kireme)",
         "meaning": "Cảnh báo: friendship can break over money — phù hợp explain why bạn want to be clear NOW.",
-        "example": "金の切れ目が縁の切れ目と申しますので、関係を大切にするためにも、お金のことはきちんと話したく存じます。"
+        "meaning_en": "A warning: a friendship can break over money — fitting to explain why you want to be clear NOW.",
+        "example": "金の切れ目が縁の切れ目と申しますので、関係を大切にするためにも、お金のことはきちんと話したく存じます。",
+        "example_en": "They say where the money ends, the bond ends — so to treasure our relationship, I would like to talk about money properly."
       },
       {
         "idiom": "立つ鳥跡を濁さず",
         "literal": "Chim bay đi không làm đục nước",
+        "literal_en": "a departing bird does not foul the water (tatsu tori ato o nigosazu)",
         "meaning": "Đi mà không để vết — phù hợp cho khi paying back: settle clean leave no residue.",
-        "example": "立つ鳥跡を濁さずと申しますし、今夜中に振り込ませていただきます。"
+        "meaning_en": "To leave without leaving a stain — fitting for paying back: settle cleanly, leave no residue.",
+        "example": "立つ鳥跡を濁さずと申しますし、今夜中に振り込ませていただきます。",
+        "example_en": "They say a departing bird leaves no trace, so I will transfer it to you tonight."
       },
       {
         "idiom": "貸した金は忘れろ、借りた金は忘れるな",
         "literal": "Tiền cho mượn thì quên, tiền mượn thì nhớ",
+        "literal_en": "forget money you lent, do not forget money you borrowed (kashita kane wa wasurero, karita kane wa wasureru na)",
         "meaning": "Lời khuyên cũ: lender forgets, borrower remembers — câu hỏi đạo đức trao cho cả 2 phía.",
-        "example": "「貸した金は忘れろ、借りた金は忘れるな」と申します。私も、お返しすべきものは、必ず覚えております。"
+        "meaning_en": "Old advice: the lender forgets, the borrower remembers — a moral question handed to both sides.",
+        "example": "「貸した金は忘れろ、借りた金は忘れるな」と申します。私も、お返しすべきものは、必ず覚えております。",
+        "example_en": "They say, 'forget money you lent, do not forget money you borrowed.' I too will always remember what I should pay back."
       }
     ],
     "cultural_notes_vi": "Văn hóa tiền-bạn ở Nhật khác VN ở 6 điểm. (1) WARIKAN DEFAULT: 割り勘 (split bill) là standard, even between close friends. Nhật rarely 'I'll get this one' as habit — exceptions: senpai treating kohai (workplace), or special occasion. Foreigners may default to alternating treats. Disclose preference upfront: warikan ga ii desu — itsumo (let's always split). (2) CASH STILL DOMINANT: dù IT advanced, cash still common. Khi splitting, exact amount expected — bring small bills. KHÔNG round up. Apps Solving this — encourage friend uses PayPay/LINE Pay if possible. (3) LOANS BETWEEN FRIENDS RARE: borrow significant from Japanese friend = reduce relationship to acquaintance level. Most Japanese have family/bank for big needs. Foreigner asking JP friend for loan = potentially severs friendship. Try alternative routes (employer advance, regional bank, family) before asking friend. (4) SHARED EXPENSES BUDGET: nếu group plan trip, often 1 person designated kanjou-gakari (treasury role). Họ collect, settle, distribute. Volunteer this role builds reputation, KHÔNG burden. (5) GIFT RECIPROCITY ECONOMY: nếu họ give expensive gift (omiyage worth 5,000+), reciprocity expected within 1-3 events together. KHÔNG necessarily money — comparable gift value. Foreigners sometimes don't track — Nhật notice. (6) BIRTHDAY EXPENSES: at restaurant for friend's birthday, friend whose birthday IS often expected to be treated by group, but friend pays back equivalent gift. Loose rule. Khác biệt với VN: ở VN bạn thân thay phiên trả luôn (turn-based treat economy), forgetting OK; ở Nhật, exact split or measured reciprocity. Vietnamese instinct 'I'll get this, you get next time' Japanese friend may feel awkward — feels like hidden ledger. Prefer warikan upfront. Mẹo: nếu bạn thấy friend never offer to pay (always you), brief observation can fix. Cụm: kondo, warikan demo daijoubu desu yo (next time, splitting is fine). Họ may not realize cultural mismatch. Long-term: keep friendship money-clean. Money confusion is one of top 3 reasons cross-cultural friendships in Japan dissolve. Worth bringing up early than late.",
@@ -10577,31 +11261,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn Nhật hỏi 'are you Buddhist?' Hãy KHÔNG declare definitively. Frame như practice-oriented identity. Cụm: sosen e no keii wa fukaku kanjite orimasu ga, shinkou no katachi wa yawarakai kato zonjimasu (em cảm reverence sâu với tổ tiên, nhưng tín ngưỡng dạng mềm). Avoid both 'yes I am' and 'no I'm not' — Japanese register prefers ambiguous middle.",
       "Bạn Nhật có grandfather đã mất, đang đi viếng mộ. Bạn xin được đi cùng. Hãy frame như continuation của cultural value bạn cũng share, không như religious tourism. Cụm: sosen wo uyamau o-kimochi wa, watakushi ni mo shizen na mono desu node, ojiisama no o-haka mairi ni, go-issho sasete itadaite mo yoroshii deshou ka. Reverent, brief, sincere."
     ],
+    "roleplay_prompts_en": [
+      "A Japanese friend invites you to 初詣 (hatsumode) for the first time. Do NOT say 'I'm not religious' (it sounds dismissive of their invitation). Phrase: zehi ukagaitai no desu ga, sahou wo kichinto zonjimasen de (I would very much like to go, but I do not properly know the etiquette). Frame it as willingness to participate respectfully, not a declaration of belief.",
+      "A Japanese friend asks 'are you Buddhist?' Do NOT declare definitively. Frame it as a practice-oriented identity. Phrase: sosen e no keii wa fukaku kanjite orimasu ga, shinkou no katachi wa yawarakai kato zonjimasu (I feel a deep reverence for my ancestors, but my faith takes a soft form). Avoid both 'yes I am' and 'no I'm not' — the Japanese register prefers an ambiguous middle.",
+      "Your Japanese friend has a grandfather who has died and is visiting the grave. You ask to come along. Frame it as a continuation of a cultural value you also share, not as religious tourism. Phrase: sosen wo uyamau o-kimochi wa, watakushi ni mo shizen na mono desu node, ojiisama no o-haka mairi ni, go-issho sasete itadaite mo yoroshii deshou ka. Reverent, brief, sincere."
+    ],
     "register_notes": "Tôn giáo Nhật khác phương Tây ở core. Năm patterns: (1) PRACTICE > DECLARATION: Nhật define religious identity through practice (visit shrine, observe Obon, do hatsumode), không through belief statement ('I am Christian'). KHÔNG ask 'what's your religion' bluntly — ask 'do you visit shrine at New Year' or 'do you observe Obon'. Practice-question là culturally fluent. (2) MULTI-PRACTICE NORMAL: nhiều Nhật visit shrine, temple, celebrate Christmas, marry Christian-style chapel. Foreigners may find logical contradiction; Japanese see như multiple cultural participations. KHÔNG point out 'inconsistency' — sounds insulting. (3) AVOID DOCTRINAL DEPTH: don't ask deep theology (which sect of Buddhism, which kami). Most Japanese don't know detail. Like asking American 'which exact Christianity'. Họ probably can't answer. Stay surface: practice questions, festival meanings broadly. (4) RESPECT ANCESTRAL PRACTICE: お墓参り (grave visit), お盆 ancestor festival — these resonate cross-culturally. Vietnamese ancestor reverence frames overlap. Lean into shared reverence, KHÔNG try to convert frame. (5) NEVER EVANGELIZE OR CRITIQUE: dù bạn deeply religious (Christian missionary background, Buddhist devotee), tránh sharing belief unless asked. Critiquing Japanese practices (Shinto as 'pagan', Buddhism as 'idolatrous') = serious offense. KHÔNG. // TODO native review — 'shinkou no katachi wa yawarakai' phrasing — alternative shinkou ga yuruyaka clearer cho some natives; one reviewer suggested 'shinkou-shin wa dansei ni atte' for personal frame though feels overly philosophical for casual register.",
+    "register_notes_en": "Japanese religion differs from the West at its core. Five patterns: (1) PRACTICE > DECLARATION: Japan defines religious identity through practice (visiting a shrine, observing Obon, doing hatsumode), not through a belief statement ('I am Christian'). Do NOT ask 'what's your religion' bluntly — ask 'do you visit a shrine at New Year' or 'do you observe Obon'. A practice-question is culturally fluent. (2) MULTI-PRACTICE IS NORMAL: many Japanese visit a shrine, a temple, celebrate Christmas, and marry in a Christian-style chapel. Foreigners may see a logical contradiction; Japanese see it as multiple cultural participations. Do NOT point out the 'inconsistency' — it sounds insulting. (3) AVOID DOCTRINAL DEPTH: do not ask deep theology (which sect of Buddhism, which kami). Most Japanese do not know the detail. It is like asking an American 'which exact Christianity'. They probably cannot answer. Stay at the surface: practice questions, festival meanings broadly. (4) RESPECT ANCESTRAL PRACTICE: お墓参り (grave visit), お盆 (ancestor festival) — these resonate cross-culturally. Vietnamese ancestor reverence frames overlap. Lean into the shared reverence, do NOT try to convert the frame. (5) NEVER EVANGELIZE OR CRITIQUE: even if you are deeply religious (a Christian missionary background, a Buddhist devotee), avoid sharing belief unless asked. Critiquing Japanese practices (Shinto as 'pagan', Buddhism as 'idolatrous') = a serious offence. Do NOT.",
     "idiom_glosses": [
       {
         "idiom": "苦しい時の神頼み",
         "literal": "Khi khổ thì cầu thần",
+        "literal_en": "praying to the gods in times of trouble (kurushii toki no kami-danomi)",
         "meaning": "Cầu khẩn chỉ khi cần — câu hơi tự châm biếm về cách nhiều Nhật engage tôn giáo, casual, KHÔNG sâu doctrine.",
-        "example": "苦しい時の神頼みと申しますが、平時から手を合わせる気持ちは大切にしたく存じます。"
+        "meaning_en": "Praying only when you need to — a slightly self-mocking line about how many Japanese engage with religion, casually and NOT deep in doctrine.",
+        "example": "苦しい時の神頼みと申しますが、平時から手を合わせる気持ちは大切にしたく存じます。",
+        "example_en": "They say one prays to the gods only in times of trouble, but I want to value the feeling of putting my hands together even in ordinary times."
       },
       {
         "idiom": "和をもって貴しとなす",
         "literal": "Coi sự hòa làm điều quý",
+        "literal_en": "hold harmony as precious (wa o motte toutoshi to nasu)",
         "meaning": "Lời Thái tử Shotoku — harmony between beliefs cao hơn doctrinal correctness.",
-        "example": "和をもって貴しとなすと申しますし、信仰が違っても、お互いを尊重したく存じます。"
+        "meaning_en": "The words of Crown Prince Shotoku — harmony between beliefs is higher than doctrinal correctness.",
+        "example": "和をもって貴しとなすと申しますし、信仰が違っても、お互いを尊重したく存じます。",
+        "example_en": "They say to hold harmony as precious, and even if our faiths differ, I would like us to respect each other."
       },
       {
         "idiom": "袖振り合うも他生の縁",
         "literal": "Vạt áo chạm nhau cũng là duyên kiếp",
+        "literal_en": "even a brush of sleeves is a karmic tie from another life (sode furiau mo tashou no en)",
         "meaning": "Phật giáo nhân quả — encounter là karma. Phù hợp frame cross-cultural friendship as meaningful.",
-        "example": "袖振り合うも他生の縁と申しますが、文化を共有できる縁を、ありがたく感じております。"
+        "meaning_en": "Buddhist cause-and-effect — an encounter is karma. Fitting to frame a cross-cultural friendship as meaningful.",
+        "example": "袖振り合うも他生の縁と申しますが、文化を共有できる縁を、ありがたく感じております。",
+        "example_en": "They say even a brush of sleeves is a karmic tie from another life — I am grateful for the connection that lets us learn each other's cultures."
       },
       {
         "idiom": "ご縁",
         "literal": "Mối duyên",
+        "literal_en": "a tie/connection bound by destiny (go-en)",
         "meaning": "Cụm Phật giáo gốc nhưng broadly used cho any meaningful connection — comfortably bridges religious vs secular.",
-        "example": "ご縁があって、お互いの文化を学べる関係になれましたこと、心より感謝しております。"
+        "meaning_en": "A phrase Buddhist in origin but used broadly for any meaningful connection — it comfortably bridges the religious and the secular.",
+        "example": "ご縁があって、お互いの文化を学べる関係になれましたこと、心より感謝しております。",
+        "example_en": "I am deeply grateful that, by some connection, we have come to a relationship where we can learn each other's cultures."
       }
     ],
     "cultural_notes_vi": "Tôn giáo Nhật khác hẳn nhiều quốc gia ở 6 điểm. (1) RELIGIOUS POPULATION FIGURES MISLEADING: surveys show ~70 phần trăm Japanese 'Buddhist', ~70 phần trăm 'Shinto' — overlaps because most practice both. Census doesn't capture 'declared belief' meaningfully. Don't take official statistics as identity statements. (2) TWO RELIGIONS COEXIST IN ONE LIFE: typical Japanese pattern — born blessed at Shinto shrine, married Christian-chapel style, funeral Buddhist. Each life event has dominant tradition. KHÔNG contradiction — different traditions for different roles. (3) SHINTO IS NATURE-BASED: 神社 (shrine) honors kami, often nature-related (mountains, trees, water). Worship is connection-with-nature ritual. KHÔNG comparable to monotheistic concept of god. Visiting shrine is more like visiting sacred park than 'house of god'. (4) BUDDHISM IS ANCESTOR-BASED PRIMARILY: most Japanese Buddhism practice là centered on ancestor remembrance (お盆, お彼岸 ohigan, お墓参り). Doctrinal depth (which sect, which sutra) rarely engaged. Funerals dominantly Buddhist. (5) CHRISTIANITY IS WEDDING/AESTHETIC: ~1-2 phần trăm Japanese identify Christian. But ~50 phần trăm of weddings have Christian-style chapel ceremony. Kitch role, không faith. KHÔNG conflate. (6) NEW RELIGIOUS MOVEMENTS (新興宗教): groups like Soka Gakkai, Tenrikyo, smaller — sometimes politically active. Mention of 新興宗教 thường carries skeptical tone. Don't bring up. Khác biệt với VN: ở VN tôn giáo thường declared (Phật giáo, Công giáo, Cao Đài, Hòa Hảo); ở Nhật, identity diffuse, practice-based. Vietnamese instinct 'I'm Buddhist therefore I do A, B, C' may feel rigid to Japanese friend. Họ practice without label. Mẹo: nếu bạn deeply Catholic (or other declared faith), share that fact gently, KHÔNG as identity claim. Cụm: watakushi wa katorikku no katei de sodachimashita node, kazoku no kankei de mai-shu kyoukai ni mairimasu (em lớn lên trong gia đình Công giáo, vì gia đình em đi nhà thờ hàng tuần). Frame qua practice and family, không belief statement. Long-term: many Japanese friends grateful when foreigner show interest in their festival practices (matsuri, hatsumode, Obon). Genuine engagement honors. Tour-guide engagement (ask 'Which exact deity is enshrined here?') feels academic. Engagement-mode (light prayer, follow customs, eat festival food, stay quiet at solemn moments) more meaningful. Mẹo cuối: khi at temple/shrine/funeral, observe trước, copy. KHÔNG ask 'what should I do' loud. Watch one or two people, follow. Nếu unsure of one specific (cuối nào, hands clap mấy lần), ask whisper to friend beside you. Quiet observation is honored.",
@@ -10838,31 +11540,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn Nhật share một event broad strokes ('tough experience 10 năm trước'). Hãy KHÔNG ask 'what happened'. Cụm: shousai wo ukagau tsumori wa gozaimasen (em không có ý hỏi chi tiết). Receive what they offered, không probe. Detail belongs to them — bạn không có right.",
       "Sau khi listen, bạn ask gentle về current support. Hãy KHÔNG sound clinical, KHÔNG suggest counseling như judgment. Cụm: senmon no sapooto wo ukete irassharu masu ka. sashi-tsukae nakereba (đang nhận support chuyên nghiệp không, nếu không phiền). Frame như care, không as 'you should get help'."
     ],
+    "roleplay_prompts_en": [
+      "A Japanese friend opens with 'there's something I haven't told anyone'. Do NOT start an interview. A safe response phrase: ukagatte mo yoroshii desu ka. hanashitakunakereba, mochiron daijoubu desu (may I hear it — and of course it's fine if you don't want to talk). They get full agency to start, pause, stop.",
+      "A Japanese friend shares an event in broad strokes ('a tough experience 10 years ago'). Do NOT ask 'what happened'. Phrase: shousai wo ukagau tsumori wa gozaimasen (I do not intend to ask for the details). Receive what they offered, do not probe. The detail belongs to them — you have no right to it.",
+      "After listening, ask gently about current support. Do NOT sound clinical, do NOT suggest counselling as a judgment. Phrase: senmon no sapooto wo ukete irasshaimasu ka. sashitsukae nakereba (are you receiving professional support, if it is no trouble). Frame it as care, NOT as 'you should get help'."
+    ],
     "register_notes": "Listen to past trauma in Nhật cần extreme restraint. Mục tiêu: nhận, không xử lý. Năm patterns: (1) ASK PERMISSION TO HEAR: dù họ initiate share, ask permission to receive: ukagatte mo yoroshii desu ka cộng remind họ can stop: hanashitakunakereba, mochiron daijoubu desu. Đây không là rejection — là respect for agency. They feel safer. (2) NEVER PROBE FOR DETAILS: dù curiosity nature, KHÔNG ask 'what happened'. Họ already chose how much to share. Probing = retraumatize. Cụm explicit: shousai wo ukagau tsumori wa gozaimasen (don't intend to ask details). Họ feel safe. (3) AIZUCHI DURING LISTEN: Nhật conversational rhythm needs verbal cues — soft 'sou desu ka', 'naruhodo', 'hai'. Without them, sounds như bạn không listening. Use them often, low volume, neutral tone. KHÔNG say 'wakarimasu' (I understand) — bạn KHÔNG fully understand, sounds dismissive. (4) DON'T COMPARE: KHÔNG share parallel story unless họ explicitly invite ('have you experienced something like that'). Otherwise feels like bạn making it about you. Nhật value fully receiving, không exchanging. (5) CONFIDENTIALITY VERBAL COMMITMENT: explicit say bạn'll keep it. Cụm: kyou ukagatta o-hanashi wa, watakushi no naka dake ni todomete okimasu. Đây signals safety. Without it, họ wonder if họ shared too much. // TODO native review — 'shousai wa kyou no kakushin de wa nai kato' phrasing — alternative shousai yori, kotoba ni shitai koto wo o-machi shimasu mềm hơn cho some natives; reviewer cautioned 'soredemo' as opener might sound too soft, suggested 'tatoe so dewa nakute mo'.",
+    "register_notes_en": "Listening to past trauma in Japan requires extreme restraint. The goal: to receive, not to process. Five patterns: (1) ASK PERMISSION TO HEAR: even if they initiate the share, ask permission to receive it: ukagatte mo yoroshii desu ka plus a reminder that they can stop: hanashitakunakereba, mochiron daijoubu desu. This is not a rejection — it is respect for agency. They feel safer. (2) NEVER PROBE FOR DETAILS: however natural the curiosity, do NOT ask 'what happened'. They already chose how much to share. Probing = re-traumatizing. Explicit phrase: shousai wo ukagau tsumori wa gozaimasen (I do not intend to ask for details). They feel safe. (3) AIZUCHI DURING LISTENING: the Japanese conversational rhythm needs verbal cues — a soft 'sou desu ka', 'naruhodo', 'hai'. Without them, it sounds as though you are not listening. Use them often, low volume, a neutral tone. Do NOT say 'wakarimasu' (I understand) — you do NOT fully understand, and it sounds dismissive. (4) DON'T COMPARE: do NOT share a parallel story unless they explicitly invite it ('have you experienced something like that'). Otherwise it feels like you are making it about you. Japan values fully receiving, not exchanging. (5) A VERBAL COMMITMENT TO CONFIDENTIALITY: explicitly say you will keep it. Phrase: kyou ukagatta o-hanashi wa, watakushi no naka dake ni todomete okimasu. This signals safety. Without it, they wonder if they shared too much.",
     "idiom_glosses": [
       {
         "idiom": "胸に秘める",
         "literal": "Giữ trong lòng",
+        "literal_en": "to keep it hidden in your chest (mune ni himeru)",
         "meaning": "Giữ điều gì kín — phù hợp commit confidentiality after hearing past.",
-        "example": "今日伺ったお話は、胸に秘めておきます。"
+        "meaning_en": "To keep something secret — fitting to commit to confidentiality after hearing about a past.",
+        "example": "今日伺ったお話は、胸に秘めておきます。",
+        "example_en": "What you told me today, I will keep hidden in my chest."
       },
       {
         "idiom": "沈黙は金",
         "literal": "Im lặng là vàng",
+        "literal_en": "silence is golden (chinmoku wa kin)",
         "meaning": "Đôi lúc im lặng quý hơn lời — phù hợp resist urge to fill space khi friend share painful.",
-        "example": "沈黙は金と申しますが、相手の方がお話しになる時は、ただ静かに伺うのが、いちばんの応援かと存じます。"
+        "meaning_en": "Sometimes silence is more precious than words — fitting to resist the urge to fill the space when a friend shares something painful.",
+        "example": "沈黙は金と申しますが、相手の方がお話しになる時は、ただ静かに伺うのが、いちばんの応援かと存じます。",
+        "example_en": "They say silence is golden — when the other person is speaking, simply listening quietly is, I believe, the greatest support."
       },
       {
         "idiom": "察する",
         "literal": "Đọc, cảm nhận",
+        "literal_en": "to sense, to read (sassuru)",
         "meaning": "Khái niệm core Japan — read what's not said. Phù hợp listen nuance, không demand explicit.",
-        "example": "察するという言葉、お話を伺いながら、改めて深さを感じております。"
+        "meaning_en": "A core Japanese concept — reading what is not said. Fitting to listen for nuance, not to demand the explicit.",
+        "example": "察するという言葉、お話を伺いながら、改めて深さを感じております。",
+        "example_en": "The word 'to sense' — while listening to you, I feel its depth all over again."
       },
       {
         "idiom": "そっと寄り添う",
         "literal": "Nhẹ nhàng kề bên",
+        "literal_en": "to draw quietly close (sotto yorisou)",
         "meaning": "Stay close softly — Nhật ideal cho support without intrusion.",
-        "example": "言葉ではなく、そっと寄り添うことが、いちばん大切なときかと存じます。"
+        "meaning_en": "To stay close softly — the Japanese ideal for support without intrusion.",
+        "example": "言葉ではなく、そっと寄り添うことが、いちばん大切なときかと存じます。",
+        "example_en": "Not words, but quietly drawing close — that, I believe, is what matters most at a time like this."
       }
     ],
     "cultural_notes_vi": "Lắng nghe đau thương quá khứ ở Nhật khác phương Tây ở 6 điểm. (1) DETAIL HIERARCHY: Nhật value tóm tắt high-level over detail. 'Tough experience 10 years ago' đủ. KHÔNG follow-up với 'tell me what happened'. Foreigner instinct là understand fully — Nhật give safe abstraction. (2) SILENCE SUPPORTS: Western instinct fill silence với supportive words. Nhật silence as support. Sit with friend in quiet 30 giây sau they finish a hard sentence — that silence acknowledges weight. Words too quick = minimize. (3) NO COMPARISON: KHÔNG 'I had something similar'. Even if true. Họ chose to bring story to you, không to invite mutual exchange. Wait until they explicitly invite. (4) CONFIDENTIALITY ABSOLUTE: don't tell anyone, even spouse, even subtle hint. Nhật small social circles — leak gets back. Once trust violated, never recovered. (5) PROFESSIONAL HELP STIGMA SHIFTING: counseling/therapy stigma reducing in Japan, but still exist. If friend mention they're in therapy, treat as positive (not concerning). Cụm: senmon no sapooto wo erabareta, sore jitai ga go-jishin no tame no tsuyosa kato zonjimasu (choosing professional support is itself strength chosen for self). Affirms strength, không pathologize. (6) NOT YOUR JOB TO FIX: foreigner instinct là solve. Nhật instinct là witness. Mục tiêu: họ feel less alone, không họ healed. Healing belongs to them + therapist. Bạn role: be one trustworthy witness. Khác biệt với VN: ở VN trauma sharing thường includes group support, family-wide knowledge, public emotional release; ở Nhật, intensely private, often confided to one or two people max. Vietnamese 'let me tell my mother so she can also support you' = breach of trust to Japanese friend. Confidentiality stricter than VN expects. Mẹo: nếu friend's share suggest current safety risk (active danger from someone, suicidal ideation, severe symptoms not getting help), gently inform crisis resources — TELL Hotline 03-5774-0992 (Japanese/English 24h), Yorisoi Hotline 0120-279-338. Don't insist. Plant seed. Long-term: chỉ vì họ shared, đừng treat họ như fragile. Day after, tomorrow, next week — treat normal. Bring up only if họ initiate. Forced check-ins ('how are you doing with that thing') makes them feel defined by trauma. They trusted you to receive AND move on normally. Hold both. Mẹo cuối: process your own response. Hearing friend's pain heavy. Talk with your own support (your spouse, your own therapist). KHÔNG share friend's specifics — share your own emotional response. Self-care protects your capacity to be there long-term.",
@@ -11114,31 +11834,49 @@ export const lessons: JapaneseLesson[] = [
       "Bạn Nhật ask về money/partner relationship details bạn không muốn share. Hãy KHÔNG harsh refuse. Cụm: puraibeeto ni kakawaru shitsumon wa, moushiwake nai no desu ga, o-kotae shikaaemasu cộng remind tình cảm. KHÔNG explain why — explanation invites debate.",
       "Bạn Nhật understand and apologize for overstepping. Hãy KHÔNG over-reassure (sounds insincere). Brief acceptance: warugi ga nai koto wa, juubun ni zonjite orimasu (em hiểu bạn không có ý xấu). Then move forward — KHÔNG dwell. Quick reset preserves dignity for both."
     ],
+    "roleplay_prompts_en": [
+      "You need to reduce how often you see a Japanese friend from weekly to bi-weekly. Do NOT accuse them ('you ask too much'), do NOT be vague ('busy'). Phrase: kankei wo taisetsu ni shitai kara koso (precisely because I want to treasure the relationship) plus kongo, ni-shuukan ni ichido kurai ni sasete itadaite. Frame it as preserving the relationship, NOT avoiding them.",
+      "A Japanese friend asks about money/partner-relationship details you do not want to share. Do NOT a harsh refusal. Phrase: puraibeeto ni kakawaru shitsumon wa, moushiwake nai no desu ga, o-kotae shikanemasu plus reaffirm the affection. Do NOT explain why — an explanation invites debate.",
+      "Your Japanese friend understands and apologizes for overstepping. Do NOT over-reassure (it sounds insincere). A brief acceptance: warugi ga nai koto wa, juubun ni zonjite orimasu (I fully know you meant no harm). Then move forward — do NOT dwell. A quick reset preserves dignity for both."
+    ],
     "register_notes": "Setting boundaries với bạn thân ở Nhật cần frame as preservation, không rejection. Năm patterns: (1) FRAME PROTECTS RELATIONSHIP: open với 'because I value you'. Cụm: kankei wo taisetsu ni shitai kara koso, kyou kono o-hanashi wo sasete itadaite imasu. KHÔNG sound like complaint — sound như mutual investment in long-term. (2) SELF-ATTRIBUTE LIMITATION: KHÔNG accuse họ ('you ask too much'). Self-attribute: jibun no naka de kakaeru no ga muzukashiku natte (becoming hard for me to hold). Họ save face; bạn don't accuse. Both walk away clean. (3) BE SPECIFIC ABOUT CHANGE: KHÔNG vague 'less often'. Specific: ni-shuukan ni ichido (every two weeks). Số rõ. Allows họ adjust expectations precisely. Vague invites repeated boundary testing. (4) PROTECT PRIVATE TOPICS WITHOUT EXPLANATION: KHÔNG justify why a topic off-limits. Cụm: sono atari wa, watakushi no naka de mada kotoba ni shi nikui bubun ga gozaimashite (those parts I'm finding hard to put in words). Genuine, không argumentative. Họ accept without debate. (5) RESET QUICK: sau họ acknowledge và apologize, KHÔNG dwell. Brief acceptance + move on. Cụm: warugi ga nai koto wa juubun zonjite orimasu cộng pivot to lighter topic. Long apology dwell = makes them feel defective. // TODO native review — 'kazoku no o-kane no koto ya fuufu no koto' phrasing — alternative kazoku no jijou (family circumstances) more general; native reviewer suggested 'kojin teki na koto' for cleaner private-frame; some natives uncomfortable with 'fuufu no koto' as it implies marital trouble — alternative go-katei no naijou.",
+    "register_notes_en": "Setting boundaries with a close friend in Japan must be framed as preservation, not rejection. Five patterns: (1) THE FRAME PROTECTS THE RELATIONSHIP: open with 'because I value you'. Phrase: kankei wo taisetsu ni shitai kara koso, kyou kono o-hanashi wo sasete itadaite imasu. Do NOT sound like a complaint — sound like a mutual investment in the long term. (2) SELF-ATTRIBUTE THE LIMITATION: do NOT accuse them ('you ask too much'). Self-attribute: jibun no naka de kakaeru no ga muzukashiku natte (it has become hard for me to hold). They save face; you do not accuse. Both walk away clean. (3) BE SPECIFIC ABOUT THE CHANGE: do NOT a vague 'less often'. Specific: ni-shuukan ni ichido (once every two weeks). A clear number. It lets them adjust expectations precisely. A vague one invites repeated boundary-testing. (4) PROTECT PRIVATE TOPICS WITHOUT EXPLANATION: do NOT justify why a topic is off-limits. Phrase: sono atari wa, watakushi no naka de mada kotoba ni shi nikui bubun ga gozaimashite (those parts I am still finding hard to put into words). Genuine, not argumentative. They accept without debate. (5) RESET QUICKLY: after they acknowledge and apologize, do NOT dwell. A brief acceptance plus move on. Phrase: warugi ga nai koto wa juubun zonjite orimasu plus pivot to a lighter topic. Dwelling on a long apology makes them feel defective.",
     "idiom_glosses": [
       {
         "idiom": "親しき仲にも礼儀あり",
         "literal": "Trong gần thân vẫn có lễ",
+        "literal_en": "even between close ones there is courtesy (shitashiki naka ni mo reigi ari)",
         "meaning": "Bài học core cho lesson này — ngay cả friendship sâu cần boundary respect.",
-        "example": "親しき仲にも礼儀ありと申しますし、お互いの領域を少し意識することで、長くいい関係でいられるかと。"
+        "meaning_en": "The core lesson for this topic — even a deep friendship needs respect for boundaries.",
+        "example": "親しき仲にも礼儀ありと申しますし、お互いの領域を少し意識することで、長くいい関係でいられるかと。",
+        "example_en": "They say even between close ones there is courtesy, and by being a little mindful of each other's space, I believe we can stay good friends for a long time."
       },
       {
         "idiom": "腹八分に医者いらず",
         "literal": "Bụng tám phần thì không cần bác sĩ",
+        "literal_en": "eat to eighty percent and you need no doctor (hara hachibu ni isha irazu)",
         "meaning": "Không tham, ăn 80 phần trăm — phù hợp metaphor cho friendship: 80 phần trăm closeness sustainable, 100 phần trăm burns out.",
-        "example": "腹八分に医者いらずと申しますが、関係も同じで、適度な距離感が長続きの秘訣かと存じます。"
+        "meaning_en": "Do not be greedy, eat to 80 percent — a fitting metaphor for friendship: 80 percent closeness is sustainable, 100 percent burns out.",
+        "example": "腹八分に医者いらずと申しますが、関係も同じで、適度な距離感が長続きの秘訣かと存じます。",
+        "example_en": "They say eat to eighty percent and you need no doctor — relationships are the same; a moderate sense of distance is the secret to lasting long."
       },
       {
         "idiom": "立つ鳥跡を濁さず",
         "literal": "Chim bay đi không làm đục nước",
+        "literal_en": "a departing bird does not foul the water (tatsu tori ato o nigosazu)",
         "meaning": "Để không vết bẩn — phù hợp khi reset friendship dynamic, mỗi side leaves clean.",
-        "example": "立つ鳥跡を濁さずと申しますし、今日のお話で、お互い気持ちよく次の段階に進めればと存じます。"
+        "meaning_en": "To leave no stain — fitting when resetting a friendship dynamic, each side leaving clean.",
+        "example": "立つ鳥跡を濁さずと申しますし、今日のお話で、お互い気持ちよく次の段階に進めればと存じます。",
+        "example_en": "They say a departing bird leaves no trace, and I hope today's talk lets us both move comfortably on to the next stage."
       },
       {
         "idiom": "わきまえる",
         "literal": "Biết phận mình",
+        "literal_en": "to know one's place (wakimaeru)",
         "meaning": "Khái niệm Nhật về biết giới hạn của mình + người khác. Apply both ways here.",
-        "example": "お互いに、わきまえるべきところはわきまえる、それが大人の友情かと存じます。"
+        "meaning_en": "The Japanese concept of knowing your own and the other's limits. It applies both ways here.",
+        "example": "お互いに、わきまえるべきところはわきまえる、それが大人の友情かと存じます。",
+        "example_en": "Each of us knowing where the line is and respecting it — that, I believe, is grown-up friendship."
       }
     ],
     "cultural_notes_vi": "Boundaries trong friendship Nhật khác phương Tây ở 6 điểm. (1) BOUNDARIES IMPLIED, NOT NAMED: phương Tây openly discuss 'boundaries'. Nhật rarely use word 境界 trong personal context — too clinical. Frame qua action ('reduce frequency') rather than concept ('I'm setting a boundary'). Verbal directness tự nó gây awkward. (2) ENRYO PROTECTS BOTH SIDES: Nhật default đã có hidden boundary qua enryo (politely holding back). Foreigners may feel Japanese 'cold' in early friendship — actually Nhật protecting both. As friendship deepens, less enryo, more access. Trip line is mutual signal. (3) FREQUENCY HAS NORMS: weekend friendship contact: monthly meet for casual friendship, bi-weekly for close, weekly for very close (but rare). Daily messaging unusual outside romantic relationships. If your friend started weekly + daily messages quickly, đó intensity outside Japanese norm. Pulling back to bi-weekly = realigning to norm, không rejection. (4) PRIVATE TOPICS ARE NOT-DISCUSSED LIST: salary, debt, marital issues, parent health, fertility — most Nhật don't discuss with friends. Even close. Pháp gia keeps these. Foreign friends may bring openness from home culture — Japanese friend may quietly retreat. (5) ASKING ABOUT INCOME = SERIOUS BREACH: Western 'how much do you make' = perceived as deeply rude, even between close friends. KHÔNG ask. Even joking. Flag as boundary instantly if friend asks bạn — gentle redirect. (6) FAMILY MATTERS MOSTLY OFF-LIMITS: parents, siblings, marital — most Nhật share little. Foreigners trained sharing as bonding may overshare and confuse. Calibrate to friend's level. Khác biệt với VN: ở VN bạn thân chia sẻ rộng rãi family, money, romance — bonding qua disclosure; ở Nhật, bonding qua shared activity, time, restraint. Vietnamese 'tell me about your husband' may startle Japanese friend. Adjust questions. Mẹo: nếu bạn want share khía cạnh personal, share YOUR side first — họ may reciprocate or may not. KHÔNG demand reciprocity. Nếu họ don't reciprocate, accept as preference. Long-term: Nhật friendships build slowly, last decades. Boundary respect early prevents burnout. Friend who pushes too fast often loses Japanese friend permanently — họ withdraw silent, no second chance. Better: maintain measured pace, expand slowly. Mẹo cuối: nếu boundary conversation goes badly (họ defensive, không accept), give space. KHÔNG escalate. 1-2 weeks of less contact often resets. Họ may reach out với accommodation. Nếu họ truly don't accommodate, friendship may not be compatible long-term — accept gracefully.",
