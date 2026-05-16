@@ -679,17 +679,37 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ラーメンをください。",
-        "english": "Ramen, please."
+        "english": "Ramen, please.",
+        "pronunciation_focus_en": [
+          "ラーメン → 'ra-a-men'; ー holds the 'ah' two beats, ん is its own beat (katakana = loanword styling)",
+          "を → object particle, pronounced 'o' (never 'wo'); keep it very light",
+          "ください → 'ku-da-sa-i', four even beats; final い is a clear short 'ee'",
+          "no stress accent — flat, even timing across the whole phrase"
+        ]
       },
       {
         "japanese": "コーヒーをお願いします。",
-        "english": "Coffee, please."
+        "english": "Coffee, please.",
+        "pronunciation_focus_en": [
+          "コーヒー → 'ko-o-hi-i', four beats (both ー held) — same word as Lesson 2",
+          "を → object particle, 'o'",
+          "お願いします → 'o-ne-ga-i-shi-mas'; お is the polite prefix, final す devoiced",
+          "ねがい → 'ne-ga-i', three even mora; do not crush 'ga-i' into one"
+        ]
       },
       {
         "japanese": "お会計お願いします。",
-        "english": "Check, please."
+        "english": "Check, please.",
+        "pronunciation_focus_en": [
+          "お会計 (おかいけい) → 'o-ka-i-ke-e'; the お is a politeness prefix on 会計",
+          "けい → a long 'eh' (ke held two beats), not 'kay'",
+          "お願いします → 'o-ne-ga-i-shi-mas', devoiced final す",
+          "slight natural pause between お会計 and お願いします (a comma is often implied)"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Restaurant Japanese has a politeness ladder English flattens into one word, 'please.' 〜をください is 'give me ~' — direct, fine for ordering a dish; 〜をお願いします is softer and more deferential ('I request ~'), the safer default with staff and the normal way to ask for the check (お会計お願いします). The honorific お on お会計, お願い, お茶, お水 is not optional decoration — dropping it sounds curt. Behaviorally, several things invert American instincts: slurping noodles audibly is correct and signals enjoyment, not rudeness; you do not tip — leaving cash on the table reads as confusing or as if you forgot your change, and staff may chase you to return it; water and tea are free, brought unasked, and refilled; and you typically pay at a register on the way out, not by leaving money at the table. Menus lean heavily on katakana for foreign dishes (ラーメン, カレー, ハンバーガー), so Lesson 2's loanword skill pays off directly here. Calling a server is done with a clear 'すみません' (excuse me) across the room — normal and expected, not impolite.",
+    "tip_advice_en": "Highest-leverage habit: default to 〜をお願いします for almost everything in a shop or restaurant — it is never too polite, while 〜をください can sound brusque to staff if your tone is flat. Reserve plain ください for simple item requests. The grammar to lock is the object particle を: it marks WHAT you want and is pronounced 'o,' a bare vowel — the third hiragana-particle-with-a-surprise after は='wa' and へ='e.' English speakers over-pronounce it as 'wo' or stress it; keep it nearly weightless. Pronunciation watch-point: long vowels decide meaning on menus — ビール (beer) vs ビル (building), コーヒー's doubled vowels — so hold every ー. Drill the three politeness levels on one item: 'コーヒー' / 'コーヒーをください' / 'コーヒーをお願いします,' feeling the deference rise."
   },
   {
     "id": 12,
@@ -726,13 +746,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "これはいくらですか？",
-        "english": "How much is this?"
+        "english": "How much is this?",
+        "pronunciation_focus_en": [
+          "これ → 'ko-re' ('this one, near me'); tapped r, two even beats",
+          "は → topic particle, 'wa'",
+          "いくら → 'i-ku-ra' ('how much'); flat and even, no stressed syllable",
+          "ですか → 'des-ka'; pitch rises only on か"
+        ]
       },
       {
         "japanese": "もう少し安いのはありますか？",
-        "english": "Do you have something a bit cheaper?"
+        "english": "Do you have something a bit cheaper?",
+        "pronunciation_focus_en": [
+          "もう少し → 'mo-o-su-ko-shi'; もう is a long 'oh' (two beats) = 'a bit more'",
+          "安い (やすい) → 'ya-su-i', three mora; an い-adjective ('cheap')",
+          "のは → 'no-wa'; の turns 'cheap' into 'a cheap one', は again 'wa'",
+          "ありますか → 'a-ri-mas-ka', devoiced す; rising pitch on final か"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Prices in Japan are almost always fixed and displayed; haggling is normal only at flea markets and some electronics districts, so the everyday shopping script is 'ask, decide, pay,' not 'negotiate' — closer to an American department store than a bazaar. The deictic これ/それ/あれ ('this near me / that near you / that over there') is doing real work in a shop: which word you choose tells the clerk which item, so pointing plus これ is a complete, polite request. The cultural subtlety to internalize is indirect refusal: a shop that cannot do something will rarely say a flat 'no.' You will hear ちょっと…('that's a little…', trailing off), 難しいですね ('it's difficult, isn't it'), or a sucked-in breath — all of which mean no. Pushing for an explicit 'no' makes everyone uncomfortable; reading the soft signal and backing off gracefully is the competent move, the opposite of the American instinct to get a clear yes/no. Sales tax is usually already shown, and a small tray is used for money rather than hand-to-hand exchange — place cash on the tray, don't press it into the clerk's palm.",
+    "tip_advice_en": "Highest-leverage template: 〜はいくらですか ('how much is ~?') plus これ/それ/あれ and pointing handles essentially all A1 shopping. Memorize これ as 'this (by me)' and you can buy anything by pointing. The cultural skill that matters more than vocabulary: learn to hear soft 'no.' ちょっと… with a trailing pause, an inhaled breath, or 難しいですね is a polite refusal — accept it with わかりました ('understood') and stop; do not press for a yes. Pronunciation watch-points: もう and other long-'oh' words must be held (もう少し) or they change meaning; the の in 安いの is a nominalizer ('a cheap one'), unstressed and light. Drill: point at three things and ask これはいくらですか, then practice receiving a soft 'ちょっと…' without pushing back."
   },
   {
     "id": 13,
@@ -773,13 +807,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "私の父は医者です。",
-        "english": "My father is a doctor."
+        "english": "My father is a doctor.",
+        "pronunciation_focus_en": [
+          "私の → 'wa-ta-shi-no'; の = possessive 'my', light and short",
+          "父 → read 'chi-chi' (my own father) — the humble form, NOT お父さん here",
+          "は → topic particle, 'wa'",
+          "医者 (いしゃ) → 'i-sha', two beats; です → 'des', devoiced"
+        ]
       },
       {
         "japanese": "お母さんは元気ですか？",
-        "english": "How is your mother?"
+        "english": "How is your mother?",
+        "pronunciation_focus_en": [
+          "お母さん → 'o-ka-a-san'; ー-like long 'ah' in かあ (two beats), さん the polite suffix — used for SOMEONE ELSE'S mother",
+          "は → topic particle, 'wa'",
+          "元気 (げんき) → 'gen-ki', hard g, ん its own beat",
+          "ですか → 'des-ka'; pitch rises only on か"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Family words encode the deepest organizing principle in Japanese politeness: uchi (内, in-group/'us') vs soto (外, out-group/'them'). You use HUMBLE plain words for your own family when speaking to outsiders — 父 (chichi) 'my father,' 母 (haha) 'my mother' — but RESPECTFUL お…さん forms for someone else's family — お父さん, お母さん. Saying お父さん about your own dad to a stranger sounds childish or self-elevating; saying 父 about their dad sounds rude. English has no grammatical version of this; the nearest analogy is the American instinct to say 'my dad' casually but 'your father' more carefully — Japanese turns that instinct into a hard lexical rule. (Inside the family, children do call their own parents お母さん/お父さん directly — the humble form is specifically for talking ABOUT them to outsiders.) The same uchi/soto axis later governs honorific and humble verbs, so meeting it here with concrete kin terms builds the intuition early. Note also the possessive の (私の父 = 'my father'), which is the same particle as Lesson 12's nominalizer doing a different job — context decides.",
+    "tip_advice_en": "Highest-leverage rule, and it is cultural before it is grammatical: two words for every relative — humble for mine, honorific for yours. 父/母/兄/姉 when talking about MY family to others; お父さん/お母さん/お兄さん/お姉さん for YOUR family (and when calling my own parents directly at home). Get the direction wrong and the error is social, not just grammatical, so drill them as opposing pairs, never singly. The grammar to lock is possessive の: 'A の B' = 'A's B' (私の父 = my father) — same character as the Lesson 12 の, different job; let context, not a rule, sort them at A1. Pronunciation watch-point: お母さん (o-kaa-san) and お父さん (o-tou-san) hide long vowels (かあ, とう) — clip them and they sound wrong; 父 alone is ちち (chi-chi), two crisp equal beats. Drill: introduce your family with humble forms, then ask about someone's with お…さん."
   },
   {
     "id": 14,
@@ -820,13 +868,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "赤い花が好きです。",
-        "english": "I like red flowers."
+        "english": "I like red flowers.",
+        "pronunciation_focus_en": [
+          "赤い (あかい) → 'a-ka-i', three even mora; the trailing い makes it the ADJECTIVE 'red' (赤 alone = the noun)",
+          "花 (はな) → 'ha-na' (here 花 IS 'ha-na' — flower); が = subject particle, hard 'ga'",
+          "好き (すき) → 'su-ki'; the う is devoiced, so it sounds almost 'ski'",
+          "です → 'des', devoiced final vowel"
+        ]
       },
       {
         "japanese": "青い空がきれいです。",
-        "english": "The blue sky is beautiful."
+        "english": "The blue sky is beautiful.",
+        "pronunciation_focus_en": [
+          "青い (あおい) → 'a-o-i', three separate even mora — do not glide 'a-o' together",
+          "空 (そら) → 'so-ra', tapped r; が subject particle",
+          "きれい → 'ki-re-e'; the final い is a long 'eh', so it sounds 'ki-ray', NOT 'ee'",
+          "です → 'des', devoiced"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "Colors hide two traps for English speakers. First, grammatical: some colors are both a noun and an い-adjective (赤 'red [noun]' → 赤い 'red [describing something]'), while others, like 緑 (green), are noun-only and cannot take い — so 赤い花 works but 緑い is wrong; you say 緑の (green + の). Second, cultural-historical: 青 (ao) classically covered both blue AND green, and that older boundary survives in fixed expressions — a green traffic light is 青信号 (literally 'blue signal'), unripe/green apples and fresh greenery are 青…, and a 'greenhorn' is 青二才. 緑 (midori) as a separate everyday 'green' is relatively modern. The American parallel: imagine if 'blue' had once meant blue-or-green and English still said 'the blue light means go' — that is exactly the residue here, so don't 'correct' 青信号 to green. White (白) and red (赤) also carry strong ceremonial weight (the 紅白 red-white pairing is celebratory, on the flag and at weddings), unlike their more neutral US associations.",
+    "tip_advice_en": "Highest-leverage distinction: is the color an い-adjective or a noun? 赤・青・白・黒・黄色 add い to describe something (赤い車); 緑 does not — use 緑の (緑の車). Mislabeling a noun-color as an い-adjective is the predictable A1 error. Don't fight 青信号 ('blue' = green light): memorize it as a fixed phrase and you've absorbed a real piece of the language's history. Pronunciation watch-points: きれい ends in a long 'eh' and sounds 'ki-ray,' a classic mishearing as 'ee'; 好き drops its う and comes out near 'ski'; and 青い is three clean mora a-o-i — English speakers collapse 'a-o' into one. Drill: pair each color with a noun, switching between 赤い〜 (adjective) and 緑の〜 (noun + の) so the two patterns stay separate."
   },
   {
     "id": 15,
@@ -863,13 +925,27 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "このケーキは美味しいです。",
-        "english": "This cake is delicious."
+        "english": "This cake is delicious.",
+        "pronunciation_focus_en": [
+          "この → 'ko-no' ('this' + noun); ケーキ → 'ke-e-ki' (katakana 'cake', ー holds the 'eh')",
+          "は → topic particle, 'wa'",
+          "美味しい (おいしい) → 'o-i-shi-i', four mora; the final いい is a held long 'ee'",
+          "です → 'des'; here です adds POLITENESS, not 'is' — 美味しい already means 'is delicious'"
+        ]
       },
       {
         "japanese": "そのスマホは高くないです。",
-        "english": "That smartphone is not expensive."
+        "english": "That smartphone is not expensive.",
+        "pronunciation_focus_en": [
+          "その → 'so-no' ('that, near you'); スマホ → 'su-ma-ho' (clipped loanword, 'smartphone')",
+          "は → topic particle, 'wa'",
+          "高くない → 'ta-ka-ku-na-i'; the い of 高い becomes くない for the negative — the い itself conjugates",
+          "です → 'des', devoiced; keeps the negative polite (高くないです)"
+        ]
       }
-    ]
+    ],
+    "cultural_notes_en": "This lesson exposes a deep design difference: in Japanese an い-adjective is itself a predicate — 美味しい already means 'is delicious,' tense and all. There is no separate verb 'to be' propping it up the way English needs 'is' in 'the cake IS good.' The です that follows (美味しいです) is a politeness marker, not the verb — which is why the negative changes the adjective itself (高い → 高くない, 'is not expensive'), not a separate 'be' verb. English speakers consistently misanalyze this because their native grammar forces a 'to be': they produce ×美味しいだ or ×高いじゃないです by analogy with noun sentences (学生だ / 学生じゃない). The cultural-pragmatic layer matters too: 美味しい said aloud during a meal is active, expected appreciation — Japanese dining is verbally responsive (a clear ごちそうさま after, いただきます before), more vocal about food than typical American table habits. この/その/あの mirror the これ/それ/あれ system from Lesson 12, but attach directly to a noun (このケーキ = 'this cake'), so the deixis you already learned transfers with a small shape change.",
+    "tip_advice_en": "Highest-leverage rule that closes A1: an い-adjective is a complete predicate — 高い = 'is expensive' — so do NOT add だ to it (×高いだ is wrong; 学生だ is right because 学生 is a noun). For the polite negative, conjugate the adjective, not a 'be' verb: 高い → 高くないです (or 高くありません), never ×高いじゃないです. This だ/じゃない-with-い-adjectives error is the single most common A1 graduation mistake for English speakers, precisely because English grammar pushes you toward it. Pronunciation watch-points: doubled final vowels — 美味しい ends おいしい (long 'ee'), ケーキ holds the ー — and loanword clipping (スマホ, not 'smart-phone'). Drill the contrast aloud: 高いです / 高くないです / 美味しいです / 美味しくないです, feeling that the い is what carries tense and polarity while です only carries politeness."
   }
 ];
 
