@@ -455,6 +455,7 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                       theme={theme}
                       uiLanguage={uiLanguage}
                       audioAria={labels.dialogueAudioAria}
+                      showFallbackBadge
                     />
                   </div>
                 )}
@@ -708,12 +709,20 @@ function DialogueLineRows({
   uiLanguage,
   audioAria,
   audio,
+  showFallbackBadge = false,
 }: {
   lines: NormalizedDialogueLine[];
   theme: LessonTheme;
   uiLanguage: "vi" | "en";
   audioAria: string;
   audio?: { base: string; kinds?: NormalizedAudioKinds };
+  // Badge the gloss when pick() fell back to the non-UI language (the
+  // #499 contract). Enabled ONLY for dialogue_long, whose normalized
+  // en/vi are truthful. Left OFF for short `dialogue`: the Korean
+  // short-dialogue normalizer puts English in the vi-named slot for all
+  // 151 lessons (pre-existing, out of this PR's scope — see PR §10), so
+  // badging it would falsely label English as "vi".
+  showFallbackBadge?: boolean;
 }) {
   return (
     <div className="mt-2 space-y-2">
@@ -746,10 +755,24 @@ function DialogueLineRows({
               </span>
             )}
             {(() => {
+              // Pick the gloss in the UI language; badge (dialogue_long
+              // only) when it fell back to the other language — same
+              // #499 contract as the intro / sentence / cultural
+              // surfaces. Under the default uiLanguage="vi" pick()
+              // returns vi with no fallback, so the existing language
+              // pages are unchanged.
               const gloss = pick(uiLanguage, d.en, d.vi);
-              return gloss ? (
-                <div className="text-slate-500 ml-5">{gloss}</div>
-              ) : null;
+              if (!gloss) return null;
+              const fallback =
+                showFallbackBadge && isFallback(uiLanguage, d.en, d.vi);
+              return (
+                <div className="text-slate-500 ml-5">
+                  {gloss}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </div>
+              );
             })()}
           </div>
         </div>
