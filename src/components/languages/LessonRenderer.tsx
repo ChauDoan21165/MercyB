@@ -525,6 +525,44 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             );
           })()}
 
+          {/* roleplay_prompts — static speaking-practice card in the
+              indigo (speaking) family. No interactivity wired yet. */}
+          {(() => {
+            const prompts = pick(
+              uiLanguage,
+              lesson.roleplayPromptsEn,
+              lesson.roleplayPromptsVi,
+            );
+            if (!prompts || prompts.length === 0) return null;
+            const fallback = isFallback(
+              uiLanguage,
+              lesson.roleplayPromptsEn,
+              lesson.roleplayPromptsVi,
+            );
+            return (
+              <div className="rounded-lg border border-indigo-100 bg-indigo-50/60 p-3">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
+                  <MessageCircle className="h-3 w-3" />
+                  {labels.roleplayHeading}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </p>
+                <ul className="mt-2 space-y-1.5">
+                  {prompts.map((p, pi) => (
+                    <li
+                      key={pi}
+                      className="flex items-start gap-2 text-xs leading-relaxed text-slate-700"
+                    >
+                      <MessageCircle className="mt-0.5 h-3 w-3 shrink-0 text-indigo-400" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })()}
+
           {lesson.grammar && lesson.grammar.length > 0 && (
             <div className="rounded-lg border border-violet-100 bg-violet-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-violet-700">
