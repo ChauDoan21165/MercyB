@@ -217,6 +217,7 @@ export const lessons: KoreanLesson[] =     [
         "지도교수 yêu cầu phân biệt close reading vs distant reading. Diễn tập câu trả lời 30 giây — define each concept + when each is appropriate (close reading cho 미시 / distant reading cho corpus-level patterns)."
       ],
       "register_notes": "C2 비평문체 (literary critical writing): 문어체 강한 형태 — '~다' / '~는다' / '~기에' / '~으로써'. Lexicon C2: 정독, 미시적/거시적, 함축, 모순, 텍스트 내부/외부, 어휘 선택, 통사 구조 (syntactic structure). Critical move trong analysis: KHÔNG chỉ describe textual feature, MÀ show how feature produces meaning. Phrase vàng: '~로 읽힌다' (reads as), '~로 사료된다' (is judged), '~을 강요한다' (imposes), '~을 표면화한다' (surfaces). Hedging C2: '과잉 해석을 경계해야 한다' (must guard against overinterpretation), '~의 가능성을 배제할 수 없다' (cannot exclude the possibility). KHÔNG '내가 보기에' / '제 의견은' — 학술 비평 impersonal: '본 분석은', '본 정독은'. Khi attribute tradition: '김현 이후의 한국 비평 전통' — phrase canonical without direct quotation.",
+      "register_notes_en": "Register: C2 literary criticism is 비평문체 (bipyeongmunche, the critical-essay register) in strong 문어체 (muneoche, literary written form: ~다/~는다/~기에/~으로써). The core move is not to describe a textual feature but to show how it produces meaning ('~로 읽힌다', reads as; '~을 표면화한다', surfaces); stay impersonal ('본 분석은', this analysis), never '제 의견은'.",
       "idiom_glosses": [
         {
           "idiom": "행간을 읽다",
@@ -494,6 +495,7 @@ export const lessons: KoreanLesson[] =     [
         "Sinh viên hỏi vì sao narrative voice quan trọng. Diễn tập câu giải thích 30 giây — voice = ai nói = ai thấy = ai biết = ý thức hệ. Tránh jargon overload — khái niệm phải accessible."
       ],
       "register_notes": "서술자 분석 register: 문어체. Lexicon C2: 시점 (POV), 1인칭/3인칭 전지적/제한적, 자유간접화법 (FID), 초점화 (focalization, Genette term), 신뢰할 수 없는 화자 (unreliable narrator), 거리 (narrative distance). Critical move trong analysis: KHÔNG describe POV, MÀ show how POV produces meaning. Phrase vàng: '~로 분석된다', '~로 읽힌다', '~을 표면화한다' (surfaces). KHÔNG '~다고 생각해요' — 학술 비평 impersonal: '본 분석은', '본 정독은'. Hedging C2: '~로 사료된다' (judged), '~로 해석할 수 있다' (can be interpreted as), '주관성이 강한 영역' (strongly subjective domain — for self-acknowledged interpretive moves). Khi attribute reading: '본 분석은 ~ 한다'. Khi đề cập canonical position: 'X 이후의 한국 비평 전통' / '~로 평가된다' (passive academic).",
+      "register_notes_en": "Register: narrator analysis is 문어체 (muneoche, literary written) and impersonal ('본 분석은', this analysis) — never '~다고 생각해요'. Don't describe the 시점 (sijeom, POV); show how it produces meaning. Flag self-acknowledged interpretive moves with '주관성이 강한 영역' (a strongly subjective domain); hedge with '~로 사료된다' (is judged).",
       "idiom_glosses": [
         {
           "idiom": "행간에 의미를 두다",
@@ -765,6 +767,7 @@ export const lessons: KoreanLesson[] =     [
         "Reviewer phê bình 'too much theory, too little textual evidence'. Diễn tập câu re-balance: '다음 수정에서 텍스트 증거 비중을 확대하겠습니다' + nêu 1 specific concrete textual moment cho mỗi argument. Bằng 하십시오체."
       ],
       "register_notes": "비유 분석 register: 문어체. C2 lexicon: 상징/은유/직유/환유/제유, 알레고리, 형상화 (figuration), 상징체계 (symbolic system). Critical move: KHÔNG identify symbol mà show how symbol functions trong textual economy. Phrase vàng: '상징은 ~을 환기한다' (symbol evokes), '~의 모티프가 ~로 변주된다' (motif is varied as), '~ 층위에서 작동한다' (operates at level of). KHÔNG '~를 상징한다' (symbolizes — too definitive); thay bằng '~로 읽힐 수 있다' (can be read as) hoặc '~ 다층적 상징체계를 구성한다' (constitutes a multi-layered symbolic system). Hedging C2 đặc biệt critical trong symbol analysis vì interpretive overreach phổ biến: '~로 사료된다', '~로 보인다', '~ 가능성을 배제할 수 없다'. Khi attribute interpretive choice: '본 분석은 ~을 한정한다' (this analysis restricts itself to ~).",
+      "register_notes_en": "Register: figurative analysis is 문어체 (muneoche). Never the too-definitive '~를 상징한다' (symbolises) — use '~로 읽힐 수 있다' (can be read as) or '다층적 상징체계를 구성한다' (constitutes a multi-layered symbolic system). Hedging is especially critical here as interpretive overreach is common: '~로 사료된다', '~ 가능성을 배제할 수 없다'.",
       "idiom_glosses": [
         {
           "idiom": "상징의 그물을 짜다",
@@ -1048,6 +1051,7 @@ export const lessons: KoreanLesson[] =     [
         "Bạn được hỏi đặt label cho 1 hybrid work. Diễn tập câu HEDGE labeling: '잠정적 명칭', '다중성을 환원할 위험'. Show critical self-awareness — naming as provisional move, not definition."
       ],
       "register_notes": "Genre analysis register: 문어체. Lexicon C2: 장르, 관습 (convention), 전복 (subversion), 패러디 (parody), 패스티시 (pastiche), 메타픽션 (metafiction), 굴절 (refraction). Critical distinction: 위반 (violation) vs 전복 (subversion) vs 굴절 (refraction) vs 혼합 (mixing) — must be precise. Phrase vàng: '관습을 굴절시키다' (refract conventions), '~ 신호를 의심하게 만들다' (makes signals suspect), '명명 자체가 본질이 아니다' (naming itself isn't essence), '~을 메타화한다' (meta-fictionalizes). Self-aware về labeling: '잠정적 명칭', '다중성을 환원할 위험' — C2 hallmark. Hedging về 의도성: 'X를 단정하기 어렵다' (hard to assert X), '~로 한정한다' (this analysis restricts itself to). KHÔNG '이 작품은 X 장르이다' definitive — 'X 장르 관습을 차용한다' / 'X 장르 신호와 함께 ~ 신호도 작동한다'.",
+      "register_notes_en": "Register: genre analysis is 문어체 (muneoche), and the term must be precise — 위반 (wiban, violation) vs 전복 (jeonbok, subversion) vs 굴절 (guljeol, refraction) vs 혼합 (honhap, mixing). Never the definitive 'this work is genre X' — say 'X 장르 관습을 차용한다' (borrows genre X's conventions); self-aware labelling ('잠정적 명칭', a provisional label) is the C2 hallmark.",
       "idiom_glosses": [
         {
           "idiom": "관습을 깨뜨리다",
@@ -1331,6 +1335,7 @@ export const lessons: KoreanLesson[] =     [
         "지도교수 yêu cầu compare 2 specific translations. Diễn tập câu mở 30 giây — set 3 criteria + briefly preview findings. Cấu trúc: criteria first, findings second, judgment LAST. Bằng 하십시오체."
       ],
       "register_notes": "번역 비교 register: 문어체. C2 lexicon: 원전 / 직역 / 의역 / 충실성 / 가독성 / 등가 / 외국화 / 자연화 / 번역자의 보이지 않는 손 (Venuti). Critical move: KHÔNG declare one translation better, MÀ analyze trade-offs. Phrase vàng: '~을 얻고 ~을 잃다' (gains X loses Y), '비평적 판단의 영역' (domain of critical judgment), '절대적 등가는 성립하지 않는다' (absolute equivalence does not hold), '~을 우선한다면 ~인 선택이다' (if X is prioritized, it is a Y choice). KHÔNG '잘된 번역' / '잘못된 번역' — instead '~을 우선한 번역' (translation prioritizing ~). Reference Venuti's domestication/foreignization explicitly khi relevant — concept널리 received in Korean translation theory. Hedging C2 trong translation criticism: '서로 다른 독자층을 상정한다' (posit different readerships), '어느 한쪽이 절대적으로 우월하다고 말하기 어렵다' (difficult to claim absolute superiority).",
+      "register_notes_en": "Register: translation comparison is 문어체 (muneoche) — never '잘된/잘못된 번역' (a good/bad translation), but '~을 우선한 번역' (a translation that prioritised ~). Analyse trade-offs ('~을 얻고 ~을 잃다', gains X loses Y); '절대적 등가는 성립하지 않는다' (absolute equivalence does not hold). Invoke Venuti's domestication/foreignisation where relevant.",
       "idiom_glosses": [
         {
           "idiom": "원전의 결을 살리다",
@@ -1602,6 +1607,7 @@ export const lessons: KoreanLesson[] =     [
         "Bạn writing about colonial-era Korean text. Reviewer says 'too much historical context, not enough textual analysis'. Diễn tập câu rebalance: '시대적 맥락은 보조적 자원이며, 분석의 중심은 텍스트 형식이다.' Show specific textual evidence. Bằng 하십시오체."
       ],
       "register_notes": "Biographical vs textual debate register: 문어체. C2 lexicon: 전기 (biography), 작가 의도 (authorial intent), 의도주의의 오류 (intentional fallacy), 신비평 (New Criticism), 텍스트 자율성 (textual autonomy), 컨텍스트 (context), 작가의 죽음 (Barthes' death of author), 흔적 (trace). Phrase vàng: '~의 흔적' (trace of ~), '~으로 환원하는 읽기' (reading reduced to ~), '경계는 모호하다' (boundary is ambiguous), '컨텍스트 없이 의미가 충분히 해명되지 않는다' (meaning not adequately illuminated without context). KHÔNG '작가가 X를 의도했다' definitive — '~의 흔적이 텍스트에 남아 있다' (trace of ~ remains in text). C2 hallmark: balance — neither pure formalism nor biographical reductionism. Critical phrase: '의도가 아닌 흔적' (trace, not intent) — distinguishes 의도주의 오류 from legitimate biographical-textual analysis.",
+      "register_notes_en": "Register: the biography-vs-text debate is 문어체 (muneoche), balanced between neither pure formalism nor biographical reductionism. Never the definitive '작가가 X를 의도했다' (the author intended X) — use '~의 흔적이 텍스트에 남아 있다' (a trace of ~ remains in the text). The hallmark distinction: '의도가 아닌 흔적' (trace, not intent), separating the intentional fallacy from legitimate analysis.",
       "idiom_glosses": [
         {
           "idiom": "작가의 흔적을 추적하다",
@@ -1885,6 +1891,7 @@ export const lessons: KoreanLesson[] =     [
         "지도교수 yêu cầu choose between studying production (작가 / 시대) and reception (독자 / 후속). Diễn tập câu argue for reception focus với specific advantages — show how reception reveals what production analysis cannot. Bằng 하십시오체."
       ],
       "register_notes": "수용사 register: 문어체. C2 lexicon: 수용 / 수용사 / 수용미학 / 시대정신 / 독해 공동체 / 정전 / 재발견 / 비평사적 침묵. Phrase vàng: '~로 받아들여졌다' (was received as), '~로 재평가되었다' (was reevaluated as), '~의 변화는 독자의 변화이다' (X's change is reader's change), '비평사적 침묵기' (critical silence period), '동일 텍스트가 다른 의미를 산출하다' (identical text produces different meaning). KHÔNG '이 작품은 항상 ~로 평가받았다' (always evaluated as) — historicize. Hedging C2 critical: '~ 와 관련 있다고 사료된다' / '~인 것으로 해석된다'. Reference Iser, Jauss khi relevant — 수용미학 received in Korean critical theory. C2 hallmark: distinguish production-side analysis (text + author + context) from reception-side analysis (text + readers + period); recognize each illuminates different aspects.",
+      "register_notes_en": "Register: reception history is 문어체 (muneoche) and must historicise — never '이 작품은 항상 ~로 평가받았다' (this work was always evaluated as ~), but '~로 재평가되었다' (was re-evaluated as). Distinguish production-side from reception-side analysis ('동일 텍스트가 다른 의미를 산출하다'); hedge '~인 것으로 해석된다' (is interpreted as).",
       "idiom_glosses": [
         {
           "idiom": "시대마다 다르게 읽히다",
@@ -2174,6 +2181,7 @@ export const lessons: KoreanLesson[] =     [
         "Defend choice of trauma theory over Marxist for 「소년이 온다」. Diễn tập câu 30 giây — cite specific textual evidence (non-linear time, bodily memory) + acknowledge what Marxist lens would add (political-economy of state violence) + justify why trauma is central. Bằng 하십시오체."
       ],
       "register_notes": "이론적 관점 register: 문어체. C2 lexicon: 이론 / 관점 / 비평 — 마르크스주의 / 페미니즘 / 정신분석 / 탈식민주의 / 생태비평 / 퀴어. Critical move: 이론을 텍스트에 강요하지 말고, 텍스트가 어떤 이론에 응답하는지 듣기. Phrase vàng: '텍스트가 ~ 이론에 응답한다' (text responds to ~), '~ 관점은 ~을 보이게 만들고 ~을 가린다' (lens makes X visible, hides Y), '병치를 시도한다' (attempt juxtaposition vs synthesis), '중심축을 두다' (place central axis). Hedging C2: '이론을 강요하다' (negative — 'force theory upon text'); '텍스트의 저항을 인정하다' (positive — acknowledge text's resistance). Khi pluralistic: '복수 관점을 병치하되 환원하지 않는다' (juxtapose multiple lenses without reducing to single synthesis). C2 critical phrase: '절충주의로 빠지다' (fall into eclecticism — depth-less multi-perspectivism).",
+      "register_notes_en": "Register: theoretical-lens criticism is 문어체 (muneoche) — do not force a theory onto the text but hear which theory the text answers ('텍스트가 ~ 이론에 응답한다'). When pluralistic, '복수 관점을 병치하되 환원하지 않는다' (juxtapose multiple lenses without reducing to one synthesis); the C2 warning is '절충주의로 빠지다' (falling into depth-less eclecticism).",
       "idiom_glosses": [
         {
           "idiom": "이론을 쇼핑하다",
@@ -2457,6 +2465,7 @@ export const lessons: KoreanLesson[] =     [
         "지도교수 yêu cầu critique 1 famous Korean critic's opening (예: 김현의 첫 문장). Diễn tập analysis 30 giây — what move does opening make, why is it effective. Bằng 하십시오체."
       ],
       "register_notes": "Essay opening register: 문어체 학술적 nhưng allow 일상어 carefully. C2 lexicon: 도입부 / 화두 / 논점 / 비평적 거리 / 인용 도입 / 일화 도입 / 개념 흔들기. Phrase vàng: '독자의 시선을 잡다' (capture reader's attention), '비평적 거리를 정립하다' (establish critical distance), '결론을 누설하지 않다' (don't reveal conclusion prematurely), '도입부가 본론의 톤을 미리 보여 주는 거울이다' (opening is mirror of body's tone), '화두를 던지다' (throw the keynote). KHÔNG '이 글은 ~에 대한 글이다' (this is a piece about — too announcing). Critical move: opening should DO something, not just announce. Hedging C2 không cần trong opening — confidence + précis are valued. C2 hallmark: opening that performs the analytic move it announces, không describes it.",
+      "register_notes_en": "Register: an essay opening is 문어체 (muneoche) academic but allows careful 일상어 (ilsangeo, everyday language). The opening should DO the analytic move, not announce it — never '이 글은 ~에 대한 글이다' (this is a piece about ~). Hedging is NOT needed here; confidence and a precis are valued, the opening mirroring the body's tone.",
       "idiom_glosses": [
         {
           "idiom": "화두를 던지다",
@@ -2752,6 +2761,7 @@ export const lessons: KoreanLesson[] =     [
         "Reviewer rejects paper saying 'argument unconvincing'. Diễn tập câu revise abstract to better SIGNAL controversial reading + frame as 'parallel' rather than 'replacement'. Cấu trúc opening: '통설은 ~을 잘 설명한다. 본 연구는 통설이 다루지 못한 ~을 보완한다.' Bằng 문어체."
       ],
       "register_notes": "Defending controversial reading register: 문어체. C2 lexicon: 논쟁적 / 통설 / 도전 / 반박 / 새로운 시각 / 텍스트 잉여 / 평행적 다층 해석. Critical move: not 'I'm right, they're wrong' but 'multiple readings illuminate different aspects'. Phrase vàng: '통설을 부정하지 않고 통설이 보지 못한 것을 드러내다' (don't refute received wisdom, reveal what it can't see), '평행적 다층 해석' (parallel multi-layered interpretation), '한정된 우월성을 주장하다' (claim limited superiority), '필요조건이지만 충분조건은 아니다' (necessary but not sufficient condition). Two traps to avoid: (a) 단정적 어조 'X is wrong' — provokes reflexive resistance; (b) 자기 약화 'merely my opinion' — disables advocacy. Middle path: confident proposal + acknowledge limits + invite engagement. C2 hallmark: hedging used strategically, not pervasively — over-hedging in controversial reading = signal weakness.",
+      "register_notes_en": "Register: defending a controversial reading is 문어체 (muneoche), avoiding two traps — the definitive 'X is wrong' (provokes reflexive resistance) and the self-weakening 'merely my opinion' (disables advocacy). The middle path: confident proposal + '한정된 우월성' (limited superiority) + invite engagement; hedge strategically, never pervasively (over-hedging signals weakness).",
       "idiom_glosses": [
         {
           "idiom": "통설을 흔들다",
@@ -2956,6 +2966,7 @@ export const lessons: KoreanLesson[] =     [
         "Trong hội thảo, đồng nghiệp phê phán bạn '서구 이론에 지나치게 의존'. Phản bác: thừa nhận 한계, nhưng chỉ ra cách bạn bổ sung lý thuyết bản địa (이우환의 관계항 / 민중미술론)."
       ],
       "register_notes": "C2 미술비평 문체: 기본적으로 문어체 — '~다' / '~는다' 종결. Khi lập luận: '~로 읽힌다', '~로 사료된다'. Khi phê phán: '~라는 한계를 갖는다', '~에는 신중을 기해야 한다'. Khi so sánh với lý thuyết Tây: '서구 이론의 틀로는 포착되지 않는 ~'. Hạn chế dùng cảm thán từ hoặc tính từ đánh giá rỗng (훌륭하다, 아름답다).",
+      "register_notes_en": "Register: art criticism is 문어체 (muneoche, ~다/~는다). Argue with '~로 읽힌다' (reads as) / '~로 사료된다' (is judged); critique with '~라는 한계를 갖는다' (has the limitation that ~). Where Western theory fails, '서구 이론의 틀로는 포착되지 않는 ~'; avoid exclamatives and empty evaluative adjectives (훌륭하다, 아름답다).",
       "idiom_glosses": [
         {
           "idiom": "단색화 (單色畫 / Dansaekhwa)",
@@ -3142,6 +3153,7 @@ export const lessons: KoreanLesson[] =     [
         "Trong hội thảo, có người nói '한국 영화는 할리우드 공식의 복제일 뿐'. Phản bác: nêu ví dụ Bong Joon-ho hoặc Park Chan-wook — chỉ ra cách họ chiếm dụng好莱坞 코드 và 변형. Dùng '~로 사료된다'."
       ],
       "register_notes": "C2 영화비평: 문어체 '~다' / '~는다'. Khi phân tích kỹ thuật: 외래어 phổ biến (미장센, 롱테이크, 사운드 디자인) — Hàn ngữ hóa thuật ngữ điện ảnh. Khi đánh giá: '~로 읽힌다', '~로 사료된다'. Tránh khen rỗng (훌륭한 영화, 감동적이다) — thay bằng phân tích hiệu ứng: '~라는 효과를 낳는다'. Cite nhà phê bình Hàn: 김소영, 이효인, 정성일.",
+      "register_notes_en": "Register: film criticism is 문어체 (muneoche, ~다/~는다), with Koreanised loan-term technical vocabulary (미장센 mise-en-scene, 롱테이크 long take, 사운드 디자인). Replace empty praise (훌륭한 영화, 감동적이다) with effect analysis ('~라는 효과를 낳는다', produces the effect that ~); cite Korean critics (김소영, 이효인, 정성일).",
       "idiom_glosses": [
         {
           "idiom": "봉준호의 프레임",
@@ -3306,6 +3318,7 @@ export const lessons: KoreanLesson[] =     [
         "So sánh 연설 phong cách của hai tổng thống Hàn. Điểm khác biệt chính về 문체 (câu dài vs câu ngắn), 감정적 호소 (pathos nhiều vs ít), và 역사적 정당성 (ai được viện dẫn?)."
       ],
       "register_notes": "C2 정치 담화 분석: 문어체 '~다' / '~는다'. Khi phân tích: '~로 읽힌다', '~로 기능한다', '~로 사료된다'. Khi chỉ ra chiến lược: '~라는 수사적 전략은...을 겨냥한 것이다'. Tránh phán xét chính trị ('이 연설은 거짓이다') — phân tích cơ chế tu từ.",
+      "register_notes_en": "Register: political-discourse analysis is 문어체 (muneoche, ~다/~는다). Analyse the rhetorical mechanism — '~로 기능한다' (functions as), '~라는 수사적 전략은 ~을 겨냥한 것이다' (the rhetorical strategy ~ targets ~) — and never pass political judgement ('this speech is a lie'); analyse how it works, not whether it is true.",
       "idiom_glosses": [
         {
           "idiom": "촛불혁명 (Candlelight Revolution)",
@@ -3452,6 +3465,7 @@ export const lessons: KoreanLesson[] =     [
         "Bạn phân tích so sánh 신고리 공론화 (Hàn Quốc, 2017) và Bürgerdialog Stuttgart 21 (Đức). Điểm giống / khác về 절차, 대표성, 영향력."
       ],
       "register_notes": "C2 시민 토론: 존댓말 (합니다/합니다) bắt buộc. Khi phản bác: '말씀하신 점 이해합니다만...' > '틀렸습니다'. Khi chất vấn: '~에 대해 구체적인 데이터를 제시해 주실 수 있습니까?'. Tránh: 감정적 공격, 단정 ('이것은 무조건 잘못이다'), 소수 의견 무시.",
+      "register_notes_en": "Register: citizen deliberation requires 존댓말 (jondaenmal, the respectful 합니다 register) throughout. Rebut with '말씀하신 점 이해합니다만…' (I understand your point, but…), not '틀렸습니다' (you are wrong); challenge by requesting specifics ('구체적인 데이터를 제시해 주실 수 있습니까?'). Avoid emotional attack, flat assertion, and dismissing minority views.",
       "cultural_notes_vi": "THẢO LUẬN CÔNG DÂN HÀN:\n(1) 1980s: các cuộc họp dân chủ hóa — 공청회 (public hearing) trở thành công cụ của phong trào dân chủ.\n(2) 2017: 신고리 5·6호기 공론화 — mô hình deliberative polling đầu tiên ở cấp quốc gia. 471 công dân được chọn ngẫu nhiên, thảo luận 3 ngày, bỏ phiếu.\n(3) ONLINE: từ 2010s, 정치 유튜브 bùng nổ — cả tích cực (thông tin) lẫn tiêu cực (확증 편향, phân cực).\n(4) VẤN ĐỀ: phân cực chính trị cực đoan làm xói mòn niềm tin vào '중립적 절차'.",
       "cultural_notes_en": "KOREAN CITIZEN DELIBERATION: (1) 1980s: democratization assemblies — the 공청회 (public hearing) becomes a tool of the democracy movement. (2) 2017: the 신고리 5·6호기 공론화 (Shin-Kori reactors 5 & 6 deliberation) — the first deliberative-polling model at the national level: 471 randomly selected citizens deliberated for three days, then voted. (3) ONLINE: from the 2010s, political YouTube exploded — both positively (information) and negatively (확증 편향 / confirmation bias, polarization). (4) THE PROBLEM: extreme political polarization erodes trust in any '중립적 절차' (neutral procedure).",
       "tip_advice_vi": "Tham gia 시민 토론 Hàn C2: (1) Xác định tiền đề chung trước khi tranh luận. (2) Yêu cầu 데이터 khi có 주장 không 근거. (3) 인정 điểm mạnh của đối phương. (4) Kết thúc bằng đề xuất 절차 thay vì kết luận nội dung.",
