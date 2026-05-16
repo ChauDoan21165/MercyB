@@ -48,7 +48,7 @@ import type {
   NormalizedDialogueLine,
   NormalizedAudioKinds,
 } from "./LessonRenderer.types";
-import { cefrPillColors, cefrPillLabels } from "./lessonThemes";
+import { cefrPillColors, cefrPillLabel } from "./lessonThemes";
 import { LessonAudioButton } from "./LessonAudioButton";
 import {
   lessonAudioKey,
@@ -195,7 +195,7 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             <span
               className={`inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${cefrPillColors[lesson.level] ?? ""}`}
             >
-              {cefrPillLabels[lesson.level] ?? lesson.level}
+              {cefrPillLabel(lesson.level, uiLanguage)}
             </span>
           </div>
           <p className="text-xs text-slate-500">{lesson.title.en}</p>

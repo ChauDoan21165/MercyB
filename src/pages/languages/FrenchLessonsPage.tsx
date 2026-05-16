@@ -24,7 +24,7 @@ import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
-  cefrPillLabels,
+  cefrPillLabel,
 } from "@/components/languages/lessonThemes";
 import type { LessonTheme } from "@/components/languages/LessonRenderer.types";
 import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
@@ -140,7 +140,7 @@ export default function FrenchLessonsPage() {
               }`}
               aria-pressed={active}
             >
-              {cefrPillLabels[lv] ?? lv}
+              {cefrPillLabel(lv, uiLang)}
             </button>
           );
         })}
@@ -149,8 +149,8 @@ export default function FrenchLessonsPage() {
       {lessons === null ? (
         <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
           {uiLang === "en"
-            ? `Loading ${cefrPillLabels[level] ?? level} lessons…`
-            : `Đang tải bài học cấp độ ${cefrPillLabels[level] ?? level}…`}
+            ? `Loading ${cefrPillLabel(level, uiLang)} lessons…`
+            : `Đang tải bài học cấp độ ${cefrPillLabel(level, uiLang)}…`}
         </p>
       ) : lessons.length === 0 ? (
         <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
