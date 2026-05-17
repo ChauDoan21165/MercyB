@@ -168,7 +168,9 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
             <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
               {config.vocab.map((entry, i) => {
                 const gloss =
-                  uiLang === "en" ? (entry.en ?? entry.vi) : entry.vi;
+                  uiLang === "en"
+                    ? (entry.en ?? entry.vi)
+                    : (entry.vi ?? entry.en);
                 return (
                   <div
                     key={i}
@@ -235,10 +237,17 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                   {uiLang === "en" ? cat.title_en : cat.title_vi}
                 </h3>
+                {/* Count only — the other-language category title was UI
+                    duplication of the <h3> above (which already picks
+                    uiLang). Mirrors GermanLessonsPage; honors #523
+                    single-language rule. */}
                 <span className="text-[10px] text-slate-400">
+                  {catLessons.length}{" "}
                   {uiLang === "en"
-                    ? `${cat.title_vi} · ${catLessons.length} ${catLessons.length === 1 ? "lesson" : "lessons"}`
-                    : `${cat.title_en} · ${catLessons.length} bài`}
+                    ? catLessons.length === 1
+                      ? "lesson"
+                      : "lessons"
+                    : "bài"}
                 </span>
               </header>
               <ol className="space-y-1.5">
