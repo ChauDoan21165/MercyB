@@ -107,13 +107,18 @@ export default defineConfig({
             // still goes through. No data leaves the build host except
             // the sourcemaps.
             telemetry: false,
-            // Delete every .map file produced by the build once upload
-            // completes, so they never ship to clients. Top-level (not
-            // nested under `sourcemaps`) is the canonical option in
-            // @sentry/vite-plugin v3+; the glob is intentionally rooted
-            // at the project so dist outputs are matched cleanly
-            // regardless of outDir resolution.
-            filesToDeleteAfterUpload: ['**/*.map'],
+            // Per @sentry/vite-plugin v4.x API, sourcemap-related
+            // options nest under `sourcemaps:`. A bare top-level
+            // `filesToDeleteAfterUpload` was the v2.x shape, removed in
+            // v3+; 4.9.1's `Options` type rejects it (TS2353), which is
+            // what broke CI's bare `tsc --noEmit`. Deleting the .map
+            // files once upload completes keeps them out of the client
+            // deploy artifact; the glob is intentionally rooted at the
+            // project so dist outputs match cleanly regardless of how
+            // outDir resolves.
+            sourcemaps: {
+              filesToDeleteAfterUpload: ['**/*.map'],
+            },
           }),
         ]
       : []),
@@ -452,7 +457,7 @@ export default defineConfig({
     // configured — this writes .map files to dist for upload, but the
     // emitted JS bundle has no //# sourceMappingURL= comment, so the
     // client never fetches them. The plugin then deletes the .map files
-    // after upload (filesToDeleteAfterUpload above). Without the token,
+    // after upload (sourcemaps.filesToDeleteAfterUpload above). Without the token,
     // we keep the historical no-sourcemap behavior for laptop builds.
     sourcemap:
       process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ORG && process.env.SENTRY_PROJECT

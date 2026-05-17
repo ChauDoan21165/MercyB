@@ -31,6 +31,13 @@ export default defineConfig({
       "**/.{idea,git,cache,output,temp}/**",
       "**/e2e/**",
       "**/playwright/**",
+      // Nested agent git worktrees live under the main checkout's
+      // .claude/worktrees/. Without this, `vitest run` from the repo
+      // root re-discovers every test inside each worktree copy and
+      // reports hundreds of duplicate "failures". Excludes the copies,
+      // not the real src/**/*.test.ts suite.
+      ".claude/worktrees/**",
+      "**/.claude/**",
     ],
 
     // stable test execution

@@ -43,8 +43,11 @@ npm run build
 npm run preview
 
 # Verification gates — run BOTH before committing non-trivial changes
-npm run typecheck      # uses tsconfig.typecheck.json (NOT tsconfig.json)
+npm run typecheck      # fast: tsconfig.typecheck.json, src/** only (NOT tsconfig.json)
+npm run typecheck:ci   # what CI runs: bare `tsc --noEmit` (tsconfig.json, incl. vite.config.ts)
 npm run lint
+# Run typecheck:ci before push — `npm run typecheck` excludes config files
+# (vite.config.ts etc.) and will not catch type errors CI rejects.
 
 # Tests
 npm test                                     # vitest run
