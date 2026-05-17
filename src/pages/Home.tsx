@@ -22,7 +22,6 @@ import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 import { XPBadge } from "@/components/xp/XPBadge";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const MercyGuide = lazyWithRetry(() => import("@/components/MercyGuide"));
 
@@ -1063,11 +1062,6 @@ export default function Home() {
 
           {/* Weekly leaderboard — retention card (feature-flagged). */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
-
-          {/* Language switcher — European + Asian language cards.
-              At the very bottom so core learning paths are surfaced
-              before supplementary languages. */}
-          <LanguageSwitcher />
         </section>
 
         {/* Floating bubbles */}
