@@ -13,8 +13,14 @@
   "entries": [
     {
       "slug": "fluency-is-a-band-descriptor",
-      "keywords_en": ["fluency", "pauses"],
-      "keywords_vi": ["trôi chảy", "ngập ngừng"],
+      "keywords_en": [
+        "fluency",
+        "pauses"
+      ],
+      "keywords_vi": [
+        "trôi chảy",
+        "ngập ngừng"
+      ],
       "copy": {
         "en": "The examiner scores how smoothly you keep going, not whether every word is perfect. A short natural hesitation is normal and fine. A long silent pause while you search for the perfect word is what lowers the fluency band. Speaking on with a small mistake beats stopping dead to fix it. At B2, keep moving is the rule; accuracy is repaired while talking, not by going silent.",
         "vi": "Giám khảo chấm bạn đi tiếp mượt thế nào, không phải mọi từ có hoàn hảo không. Một khoảng ngập ngừng ngắn tự nhiên là bình thường và không sao. Một khoảng lặng dài trong lúc bạn tìm từ hoàn hảo mới là thứ hạ band trôi chảy. Nói tiếp với một lỗi nhỏ hơn là dừng phắt để sửa nó. Ở B2, keep moving là quy tắc; độ chính xác được sửa khi đang nói, không phải bằng cách im lặng."
@@ -24,8 +30,14 @@
     },
     {
       "slug": "natural-fillers",
-      "keywords_en": ["fillers", "thinking time"],
-      "keywords_vi": ["từ đệm", "thời gian nghĩ"],
+      "keywords_en": [
+        "fillers",
+        "thinking time"
+      ],
+      "keywords_vi": [
+        "từ đệm",
+        "thời gian nghĩ"
+      ],
       "copy": {
         "en": "Native speakers buy thinking time with fillers, and you should too. Use well, I mean, let me think, that's a good question, to be honest. Asked something tricky about Tết spending, you can open with That's a good question — I suppose it depends on the family. The filler is not wasted time; it keeps sound flowing while your idea forms, which protects the fluency score.",
         "vi": "Người bản xứ mua thời gian nghĩ bằng từ đệm, và bạn cũng nên thế. Dùng well, I mean, let me think, that's a good question, to be honest. Khi được hỏi một câu khó về chi tiêu dịp Tết, bạn có thể mở bằng That's a good question — I suppose it depends on the family. Từ đệm không phải thời gian phí; nó giữ âm thanh tiếp tục trong lúc ý của bạn hình thành, bảo vệ điểm trôi chảy."
@@ -35,8 +47,14 @@
     },
     {
       "slug": "talk-around-the-word",
-      "keywords_en": ["paraphrase", "unknown word"],
-      "keywords_vi": ["nói vòng", "từ không biết"],
+      "keywords_en": [
+        "paraphrase",
+        "unknown word"
+      ],
+      "keywords_vi": [
+        "nói vòng",
+        "từ không biết"
+      ],
       "copy": {
         "en": "When you do not know a word, describe it instead of freezing. Forgot fuel? Say the thing you put in the xe máy to make it run. Forgot helmet? Say the hard hat you wear for safety on a motorbike. The examiner rewards this — it shows communicative skill, not weakness. A learner who can talk around a gap never goes silent, and never going silent protects the band.",
         "vi": "Khi không biết một từ, hãy mô tả nó thay vì đứng hình. Quên fuel? Nói the thing you put in the xe máy to make it run. Quên helmet? Nói the hard hat you wear for safety on a motorbike. Giám khảo cho điểm việc này — nó cho thấy kỹ năng giao tiếp, không phải sự yếu kém. Người học nói vòng được qua chỗ thiếu thì không bao giờ im lặng, và không bao giờ im lặng thì giữ được band."
@@ -46,8 +64,14 @@
     },
     {
       "slug": "self-repair-cleanly",
-      "keywords_en": ["self-repair", "correction"],
-      "keywords_vi": ["tự sửa", "sửa lời"],
+      "keywords_en": [
+        "self-repair",
+        "correction"
+      ],
+      "keywords_vi": [
+        "tự sửa",
+        "sửa lời"
+      ],
       "copy": {
         "en": "Correcting yourself is good — examiners like it — but do it cleanly and keep going. Use sorry, I mean or rather, then continue. I goed — sorry, I mean I went home for Tết last year. One quick repair and straight on. Do not stop, apologise three times, and lose the thread. A clean self-repair shows control; a panicked one breaks the fluency the repair was meant to protect.",
         "vi": "Tự sửa là tốt — giám khảo thích — nhưng hãy sửa gọn và đi tiếp. Dùng sorry, I mean hoặc rather, rồi tiếp tục. I goed — sorry, I mean I went home for Tết last year. Một lần sửa nhanh rồi đi thẳng. Đừng dừng lại, xin lỗi ba lần, và mất mạch. Tự sửa gọn cho thấy sự kiểm soát; sửa hoảng loạn phá đúng cái trôi chảy mà việc sửa đáng lẽ phải bảo vệ."
@@ -57,8 +81,14 @@
     },
     {
       "slug": "buy-time-without-dead-air",
-      "keywords_en": ["stall", "rephrase"],
-      "keywords_vi": ["câu giờ", "diễn đạt lại"],
+      "keywords_en": [
+        "stall",
+        "rephrase"
+      ],
+      "keywords_vi": [
+        "câu giờ",
+        "diễn đạt lại"
+      ],
       "copy": {
         "en": "If a Part 3 question stuns you, repeat or rephrase it instead of going silent. So, you are asking whether motorbikes will disappear in the future... well, I think it is unlikely soon. Restating the question is natural, buys two or three seconds, and often starts your answer for you. Dead air is the only thing that always lowers the score; a thoughtful rephrase never does.",
         "vi": "Nếu một câu Part 3 làm bạn sững, hãy nhắc lại hoặc diễn đạt lại nó thay vì im lặng. So, you are asking whether motorbikes will disappear in the future... well, I think it is unlikely soon. Nhắc lại câu hỏi là tự nhiên, mua được hai ba giây, và thường tự khởi động câu trả lời cho bạn. Khoảng lặng chết là thứ duy nhất luôn hạ điểm; một câu diễn đạt lại có suy nghĩ thì không bao giờ."
@@ -68,8 +98,14 @@
     },
     {
       "slug": "final-daily-routine-capstone",
-      "keywords_en": ["routine", "capstone"],
-      "keywords_vi": ["thói quen", "tổng kết"],
+      "keywords_en": [
+        "routine",
+        "capstone"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "tổng kết"
+      ],
       "copy": {
         "en": "This closes the B2 ladder. Each day, pick one question about Vietnamese life and speak for two minutes, recording it. Use a four-part answer, one filler, one talk-around if a word fails, and one clean self-repair — the moves from across this B2 set. Listen back and fix only one thing per day. Two focused minutes a day, sustained, is what carries a Vietnamese learner from band 5.5 to a confident 6.5.",
         "vi": "Đây khép lại thang B2. Mỗi ngày, chọn một câu hỏi về đời sống Việt Nam và nói hai phút, có ghi âm. Dùng câu trả lời bốn phần, một từ đệm, một lần nói vòng nếu hụt từ, và một lần tự sửa gọn — các bước trong cả bộ B2 này. Nghe lại và chỉ sửa một thứ mỗi ngày. Hai phút tập trung mỗi ngày, làm đều, là thứ đưa người học Việt Nam từ band 5.5 lên một band 6.5 tự tin."

@@ -13,8 +13,14 @@
   "entries": [
     {
       "slug": "why-cohesion-is-the-band-6-lever",
-      "keywords_en": ["cohesion", "band"],
-      "keywords_vi": ["mạch lạc", "band điểm"],
+      "keywords_en": [
+        "cohesion",
+        "band"
+      ],
+      "keywords_vi": [
+        "mạch lạc",
+        "band điểm"
+      ],
       "copy": {
         "en": "Disconnected sentences read like a list, even when each one is correct. Listed: Motorbikes are cheap. Motorbikes are fast. Traffic is bad. Connected: Motorbikes are cheap and fast, which is why so many people ride them; however, this also makes city traffic very heavy. Same facts, but the second version shows the relationship between ideas. Examiners grade the joins, not just the parts.",
         "vi": "Những câu rời rạc đọc như một danh sách, dù từng câu đều đúng. Liệt kê: Motorbikes are cheap. Motorbikes are fast. Traffic is bad. Có liên kết: Motorbikes are cheap and fast, which is why so many people ride them; however, this also makes city traffic very heavy. Cùng dữ kiện, nhưng bản hai cho thấy mối quan hệ giữa các ý. Giám khảo chấm chỗ nối, không chỉ từng phần."
@@ -24,8 +30,14 @@
     },
     {
       "slug": "reference-words",
-      "keywords_en": ["reference", "pronouns"],
-      "keywords_vi": ["từ thay thế", "đại từ"],
+      "keywords_en": [
+        "reference",
+        "pronouns"
+      ],
+      "keywords_vi": [
+        "từ thay thế",
+        "đại từ"
+      ],
       "copy": {
         "en": "Reference words point back so you do not repeat a noun. Use this, these, such, it, and that. The city built a new metro line. This has reduced some traffic. Many people still prefer a xe máy; such habits change slowly. Without reference words you must repeat the metro line and the xe máy habit every time, which sounds heavy and lowers cohesion.",
         "vi": "Từ thay thế trỏ ngược lại để bạn không lặp danh từ. Dùng this, these, such, it, và that. The city built a new metro line. This has reduced some traffic. Many people still prefer a xe máy; such habits change slowly. Không có từ thay thế thì bạn phải lặp the metro line và the xe máy habit mỗi lần, nghe nặng và giảm tính mạch lạc."
@@ -35,8 +47,14 @@
     },
     {
       "slug": "linkers-beyond-and-but-so",
-      "keywords_en": ["linkers", "connectors"],
-      "keywords_vi": ["từ nối", "liên kết"],
+      "keywords_en": [
+        "linkers",
+        "connectors"
+      ],
+      "keywords_vi": [
+        "từ nối",
+        "liên kết"
+      ],
       "copy": {
         "en": "Replace overused and, but, so with precise linkers. Add an idea: moreover, in addition. Contrast: however, on the other hand. Result: as a result, therefore. Example: for instance. Phở is cheap; moreover, it is sold everywhere. Tết is joyful; however, it can be expensive. The bus network is small; as a result, most people ride a motorbike. The right linker names the exact relationship.",
         "vi": "Thay and, but, so bị lạm dụng bằng từ nối chính xác. Thêm ý: moreover, in addition. Đối lập: however, on the other hand. Kết quả: as a result, therefore. Ví dụ: for instance. Phở is cheap; moreover, it is sold everywhere. Tết is joyful; however, it can be expensive. The bus network is small; as a result, most people ride a motorbike. Từ nối đúng gọi tên chính xác mối quan hệ."
@@ -46,8 +64,14 @@
     },
     {
       "slug": "dont-overuse-linkers",
-      "keywords_en": ["overuse", "natural"],
-      "keywords_vi": ["lạm dụng", "tự nhiên"],
+      "keywords_en": [
+        "overuse",
+        "natural"
+      ],
+      "keywords_vi": [
+        "lạm dụng",
+        "tự nhiên"
+      ],
       "copy": {
         "en": "Starting every sentence with Firstly, Secondly, Moreover, In conclusion sounds mechanical and actually lowers the cohesion score. Good writing mixes linkers with reference words and natural flow. Use a strong linker where the logic genuinely turns — at a real contrast or result — not on every sentence. One well-placed however beats four forced ones. Cohesion means smooth, not labelled.",
         "vi": "Mở mỗi câu bằng Firstly, Secondly, Moreover, In conclusion nghe máy móc và thực ra làm giảm điểm mạch lạc. Viết tốt trộn từ nối với từ thay thế và mạch chảy tự nhiên. Dùng một từ nối mạnh ở chỗ logic thật sự rẽ — ở một đối lập hoặc kết quả thật — không phải ở mỗi câu. Một however đặt đúng chỗ hơn bốn cái gượng ép. Mạch lạc nghĩa là mượt, không phải dán nhãn."
@@ -57,8 +81,14 @@
     },
     {
       "slug": "cohesion-in-speaking",
-      "keywords_en": ["speaking", "spoken"],
-      "keywords_vi": ["nói", "khẩu ngữ"],
+      "keywords_en": [
+        "speaking",
+        "spoken"
+      ],
+      "keywords_vi": [
+        "nói",
+        "khẩu ngữ"
+      ],
       "copy": {
         "en": "Spoken cohesion uses lighter connectors than writing. Natural in speech: the thing is, what's more, anyway, that's why. The thing is, a xe máy is just more practical here. I love Tết; that's why I always travel home for it. These keep your long turn flowing and give you a little thinking time, without sounding like a written essay read aloud.",
         "vi": "Mạch lạc trong nói dùng từ nối nhẹ hơn trong viết. Tự nhiên trong khẩu ngữ: the thing is, what's more, anyway, that's why. The thing is, a xe máy is just more practical here. I love Tết; that's why I always travel home for it. Chúng giữ phần nói dài của bạn trôi chảy và cho bạn chút thời gian nghĩ, mà không nghe như một bài luận viết đọc to."
@@ -68,8 +98,14 @@
     },
     {
       "slug": "daily-cohesion-routine",
-      "keywords_en": ["routine", "daily"],
-      "keywords_vi": ["thói quen", "hằng ngày"],
+      "keywords_en": [
+        "routine",
+        "daily"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hằng ngày"
+      ],
       "copy": {
         "en": "Each day take three short facts about Vietnamese life and join them into two flowing sentences using one reference word and one precise linker. Facts: motorbikes are everywhere; the bus network is small; the metro is new. Joined version, said aloud, two minutes. Practising the joins specifically — not new vocabulary — is the fastest route from band 5.5 to 6.5.",
         "vi": "Mỗi ngày lấy ba dữ kiện ngắn về đời sống Việt Nam và nối thành hai câu trôi chảy dùng một từ thay thế và một từ nối chính xác. Dữ kiện: motorbikes are everywhere; the bus network is small; the metro is new. Bản đã nối, nói to, hai phút. Luyện riêng chỗ nối — không phải từ vựng mới — là con đường nhanh nhất từ band 5.5 lên 6.5."

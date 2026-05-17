@@ -13,8 +13,14 @@
   "entries": [
     {
       "slug": "why-paraphrase",
-      "keywords_en": ["paraphrase", "lexical"],
-      "keywords_vi": ["diễn đạt lại", "vốn từ"],
+      "keywords_en": [
+        "paraphrase",
+        "lexical"
+      ],
+      "keywords_vi": [
+        "diễn đạt lại",
+        "vốn từ"
+      ],
       "copy": {
         "en": "Two places demand paraphrase. In the Writing introduction, copying the prompt scores zero for those words. In Reading, the correct option restates the passage in different words, so matching identical words is a trap. Prompt phrase: more young people are moving to cities. Paraphrase: urban migration among the young is rising. Same meaning, new words — that is the entire skill.",
         "vi": "Hai chỗ đòi diễn đạt lại. Trong mở bài Writing, chép đề thì những chữ đó được không điểm. Trong Reading, đáp án đúng diễn đạt lại bài bằng từ khác, nên khớp y nguyên từ là một cái bẫy. Cụm trong đề: more young people are moving to cities. Diễn đạt lại: urban migration among the young is rising. Cùng nghĩa, từ mới — đó là toàn bộ kỹ năng."
@@ -24,8 +30,14 @@
     },
     {
       "slug": "synonyms-with-care",
-      "keywords_en": ["synonyms", "meaning"],
-      "keywords_vi": ["từ đồng nghĩa", "nghĩa"],
+      "keywords_en": [
+        "synonyms",
+        "meaning"
+      ],
+      "keywords_vi": [
+        "từ đồng nghĩa",
+        "nghĩa"
+      ],
       "copy": {
         "en": "Swap words for close synonyms, but only ones that keep the exact meaning. Safe: young people becomes the younger generation; cheap becomes affordable; popular becomes widespread. Risky: a famous dish becomes a notorious dish — notorious means famous for something bad, so phở is not notorious. At B2, choose the synonym you are sure of over the impressive one you are guessing.",
         "vi": "Đổi từ sang từ đồng nghĩa gần, nhưng chỉ những từ giữ đúng nghĩa. An toàn: young people thành the younger generation; cheap thành affordable; popular thành widespread. Liều: a famous dish thành a notorious dish — notorious nghĩa là nổi tiếng vì điều xấu, nên phở không phải notorious. Ở B2, chọn từ đồng nghĩa bạn chắc chắn hơn là từ oách bạn đang đoán."
@@ -35,8 +47,14 @@
     },
     {
       "slug": "change-the-word-form",
-      "keywords_en": ["word form", "grammar"],
-      "keywords_vi": ["dạng từ", "ngữ pháp"],
+      "keywords_en": [
+        "word form",
+        "grammar"
+      ],
+      "keywords_vi": [
+        "dạng từ",
+        "ngữ pháp"
+      ],
       "copy": {
         "en": "Often the easiest paraphrase is changing the part of speech, not finding a synonym. The city is becoming more polluted becomes there is a rise in urban pollution. Families decided to travel home for Tết becomes their decision to travel home for Tết. Verb to noun, adjective to noun — the meaning is identical but the sentence looks new. This is safer than synonym-hunting because you keep the original keyword.",
         "vi": "Thường cách diễn đạt lại dễ nhất là đổi từ loại, không phải tìm từ đồng nghĩa. The city is becoming more polluted thành there is a rise in urban pollution. Families decided to travel home for Tết thành their decision to travel home for Tết. Động từ sang danh từ, tính từ sang danh từ — nghĩa y hệt nhưng câu trông mới. Cách này an toàn hơn săn từ đồng nghĩa vì bạn giữ lại từ khóa gốc."
@@ -46,8 +64,14 @@
     },
     {
       "slug": "change-the-structure",
-      "keywords_en": ["structure", "voice"],
-      "keywords_vi": ["cấu trúc", "thể"],
+      "keywords_en": [
+        "structure",
+        "voice"
+      ],
+      "keywords_vi": [
+        "cấu trúc",
+        "thể"
+      ],
       "copy": {
         "en": "Change the sentence shape to paraphrase without risky vocabulary. Active to passive: Many people ride motorbikes becomes Motorbikes are ridden by many people. Clause to phrase: Because the holiday is long, factories close becomes Owing to the long holiday, factories close. Restructuring proves grammatical range, which Writing rewards, while keeping the meaning exactly intact.",
         "vi": "Đổi hình dạng câu để diễn đạt lại mà không cần từ vựng liều. Chủ động sang bị động: Many people ride motorbikes thành Motorbikes are ridden by many people. Mệnh đề sang cụm từ: Because the holiday is long, factories close thành Owing to the long holiday, factories close. Tái cấu trúc chứng minh dải ngữ pháp, điều Writing cho điểm, mà vẫn giữ nghĩa nguyên vẹn."
@@ -57,8 +81,14 @@
     },
     {
       "slug": "reading-spotting-paraphrase",
-      "keywords_en": ["reading", "answers"],
-      "keywords_vi": ["đọc hiểu", "đáp án"],
+      "keywords_en": [
+        "reading",
+        "answers"
+      ],
+      "keywords_vi": [
+        "đọc hiểu",
+        "đáp án"
+      ],
       "copy": {
         "en": "In Reading, train yourself to match meaning, not words. The passage may say most commuters rely on a xe máy to reach work; the correct answer says workers depend on motorbikes for their daily journey. No word is shared, yet they mean the same. The wrong options often reuse the passage's exact words to tempt you. At B2, the learner who chases meaning beats the learner who chases matching words.",
         "vi": "Trong Reading, hãy luyện khớp nghĩa, không khớp từ. Bài có thể viết most commuters rely on a xe máy to reach work; đáp án đúng viết workers depend on motorbikes for their daily journey. Không từ nào chung, nhưng cùng nghĩa. Các phương án sai thường dùng lại đúng từ trong bài để dụ bạn. Ở B2, người chạy theo nghĩa thắng người chạy theo từ trùng."
@@ -68,8 +98,14 @@
     },
     {
       "slug": "daily-paraphrase-routine",
-      "keywords_en": ["routine", "daily"],
-      "keywords_vi": ["thói quen", "hằng ngày"],
+      "keywords_en": [
+        "routine",
+        "daily"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hằng ngày"
+      ],
       "copy": {
         "en": "Each day take one sentence about Vietnamese life and rewrite it three ways: a synonym version, a word-form version, and a structure version. Original: Many young Vietnamese are learning English to work abroad. Three rewrites, five minutes. After a few weeks paraphrasing becomes automatic, which protects your Reading score and lifts your Writing lexical resource at the same time.",
         "vi": "Mỗi ngày lấy một câu về đời sống Việt Nam và viết lại ba kiểu: kiểu từ đồng nghĩa, kiểu đổi dạng từ, và kiểu đổi cấu trúc. Câu gốc: Many young Vietnamese are learning English to work abroad. Ba bản viết lại, năm phút. Sau vài tuần, diễn đạt lại thành tự động, vừa bảo vệ điểm Reading vừa nâng vốn từ Writing cùng lúc."
