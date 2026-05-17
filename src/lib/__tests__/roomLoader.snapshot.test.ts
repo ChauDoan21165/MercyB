@@ -50,19 +50,6 @@ vi.mock("../roomLoaderHelpers", () => ({
 }));
 
 // --------------------
-// accessControl mock
-// --------------------
-const accessMocks = vi.hoisted(() => ({
-  mockCanUserAccessRoom: vi.fn(),
-  mockDetermineAccess: vi.fn(),
-}));
-
-vi.mock("../accessControl", () => ({
-  canUserAccessRoom: accessMocks.mockCanUserAccessRoom,
-  determineAccess: accessMocks.mockDetermineAccess,
-}));
-
-// --------------------
 // constants mock
 // --------------------
 vi.mock("@/lib/constants/rooms", () => ({
@@ -167,12 +154,6 @@ describe("loadMergedRoom snapshots", () => {
       if (t === "room_entries") return roomEntriesChain;
       if (t === "rooms") return roomsChain;
       return makeChain();
-    });
-
-    accessMocks.mockCanUserAccessRoom.mockReturnValue(true);
-    accessMocks.mockDetermineAccess.mockReturnValue({
-      hasFullAccess: true,
-      isPreview: false,
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValue(null);
