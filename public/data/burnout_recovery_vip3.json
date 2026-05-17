@@ -40,9 +40,7 @@
         "rest",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip3_1_en.mp3"
-      }
+      "audio": "bur_vip3_1_en.mp3"
     }
   ],
   "audio": "bur_vip3_8_en.mp3",

@@ -36,10 +36,7 @@
         "stress",
         "breathing"
       ],
-      "audio": {
-        "en": "mastering_deep_breathing_for_calm_vip3.mp3",
-        "vi": "mastering_deep_breathing_for_calm_vip3.mp3"
-      },
+      "audio": "mastering_deep_breathing_for_calm_vip3.mp3",
       "essay_ref": ""
     }
   ],

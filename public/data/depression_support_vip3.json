@@ -39,9 +39,7 @@
         "routine",
         "depression"
       ],
-      "audio": {
-        "en": "dep_vip3_1_en.mp3"
-      },
+      "audio": "dep_vip3_1_en.mp3",
       "essay_ref": "dep_vip3_1_essay.txt"
     }
   ],

@@ -39,9 +39,7 @@
         "resilience",
         "anxiety"
       ],
-      "audio": {
-        "en": "soc_vip3_8_en.mp3"
-      }
+      "audio": "soc_vip3_8_en.mp3"
     }
   ],
   "keywords": {

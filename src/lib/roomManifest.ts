@@ -231,7 +231,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "interpersonal_intelligence_mastery_vip5": "data/interpersonal_intelligence_mastery_vip5.json",
   "journaling_reflection_kids_l3": "data/journaling_reflection_kids_l3.json",
   "julius_caesar_vip9_vol1": "data/julius_caesar_vip9_vol1.json",
-  "julius_caesar_vip9_vol1_copy": "data/julius_caesar_vip9_vol1_copy.json",
   "julius_caesar_vip9_vol2": "data/julius_caesar_vip9_vol2.json",
   "julius_caesar_vip9_vol3": "data/julius_caesar_vip9_vol3.json",
   "kautilya_grand_strategy_vip9_vol1": "data/kautilya_grand_strategy_vip9_vol1.json",

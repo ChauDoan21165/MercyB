@@ -36,9 +36,7 @@
         "rest",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip1_1_en.mp3"
-      }
+      "audio": "bur_vip1_1_en.mp3"
     },
     {
       "slug": "all",
