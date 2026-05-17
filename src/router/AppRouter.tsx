@@ -101,8 +101,8 @@ const HealthcareLessonsPage = lazyWithRetry(() => import("@/pages/professions/He
 const DriversLessonsPage = lazyWithRetry(() => import("@/pages/professions/DriversLessonsPage"));
 const HospitalityLessonsPage = lazyWithRetry(() => import("@/pages/professions/HospitalityLessonsPage"));
 
-// Language learning verticals — hub un-surfaced (STRATEGY §4); the
-// per-language pages below stay live for direct-URL access.
+// Language learning verticals
+const LanguagesIndexPage   = lazyWithRetry(() => import("@/pages/languages/LanguagesIndexPage"));
 const FrenchLessonsPage    = lazyWithRetry(() => import("@/pages/languages/FrenchLessonsPage"));
 const GermanLessonsPage    = lazyWithRetry(() => import("@/pages/languages/GermanLessonsPage"));
 const JapaneseLessonsPage  = lazyWithRetry(() => import("@/pages/languages/JapaneseLessonsPage"));
@@ -894,12 +894,10 @@ export default function AppRouter() {
             element={<LazyPage><HospitalityLessonsPage /></LazyPage>}
           />
 
-          {/* Language learning verticals. The /languages hub is
-              un-surfaced per STRATEGY §4 (off-mission portfolio + the
-              deferred secondary Vietnamese-for-foreigners track) — it
-              now redirects home. The per-language routes below stay
-              live so anyone with a direct URL keeps full access. */}
-          <Route path="/languages" element={<Navigate to="/" replace />} />
+          {/* Language learning verticals */}
+          <Route path="/languages"
+            element={<LazyPage><LanguagesIndexPage /></LazyPage>}
+          />
           <Route path="/languages/french"
             element={<LazyPage><FrenchLessonsPage /></LazyPage>}
           />

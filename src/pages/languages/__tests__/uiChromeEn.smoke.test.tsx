@@ -43,6 +43,7 @@ import JapaneseLessonsPage from "@/pages/languages/JapaneseLessonsPage";
 import ChineseLessonsPage from "@/pages/languages/ChineseLessonsPage";
 import FrenchLessonsPage from "@/pages/languages/FrenchLessonsPage";
 import GermanLessonsPage from "@/pages/languages/GermanLessonsPage";
+import LanguagesIndexPage from "@/pages/languages/LanguagesIndexPage";
 
 const STORAGE_KEY = "mercyblade.lessonUiLang";
 
@@ -122,10 +123,24 @@ describe("language-page chrome — VI mode is byte-identical (#509 §8)", () => 
       expect(navAria).not.toBe("Choose level");
     });
   }
-  // The /languages hub is un-surfaced (STRATEGY §4) — it now redirects
-  // home and the LanguagesIndexPage component is deleted, so its former
-  // VI/EN Hub blurb + subtitle assertions are gone with it. Per-language
-  // page chrome (the loop above) is the surviving contract.
+
+  it("Hub: VI blurbs + 'Bắt đầu học' CTA unchanged, no English blurb leak", () => {
+    const { text } = renderPage(LanguagesIndexPage);
+    expect(text).toContain("chào hỏi, số đếm, câu giao tiếp"); // a VI blurb
+    expect(text).toContain("Bắt đầu học");
+    expect(text).not.toContain("Start learning");
+    expect(text).not.toContain(
+      "greetings, numbers, everyday phrases, grammar, food",
+    );
+    // Header subtitle byte-identical in VI mode (#hub-audience-fix):
+    // SUBTITLE_VI must render in full, SUBTITLE_EN must not leak.
+    expect(text).toContain(
+      "Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.",
+    );
+    expect(text).not.toContain(
+      "real-world context across Korean, Japanese, Chinese, French, German, Spanish",
+    );
+  });
 });
 
 describe("language-page chrome — EN mode is fully English (#509 §8)", () => {
@@ -154,6 +169,23 @@ describe("language-page chrome — EN mode is fully English (#509 §8)", () => {
       expect(navAria).not.toBe("Chọn cấp độ");
     });
   }
-  // EN-mode Hub assertions removed with the deleted LanguagesIndexPage
-  // (see VI describe above). Per-language EN chrome remains covered.
+
+  it("Hub: EN blurbs + 'Start learning' CTA, no Vietnamese blurb", () => {
+    const { text } = renderPage(LanguagesIndexPage);
+    expect(text).toContain(
+      "greetings, numbers, everyday phrases, grammar, food",
+    );
+    expect(text).toContain("Start learning");
+    expect(text).not.toContain("Bắt đầu học");
+    expect(text).not.toContain("chào hỏi, số đếm, câu giao tiếp");
+    // Header subtitle de-narrowed in EN mode (#hub-audience-fix): the
+    // audience-exclusionary SUBTITLE_VI must NOT reach EN users.
+    expect(text).toContain(
+      "real-world context across Korean, Japanese, Chinese, French, German, Spanish",
+    );
+    expect(text).not.toContain("for Vietnamese speakers");
+    expect(text).not.toContain(
+      "survival-speaking MVP for foreigners in Vietnam",
+    );
+  });
 });
