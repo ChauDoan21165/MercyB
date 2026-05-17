@@ -56,6 +56,7 @@ import { BrowserRouter } from "react-router-dom";
 import AppRouter from "@/router/AppRouter";
 import { LanguageProgressProvider } from "@/store/languageProgress";
 import { UiLanguageProvider } from "@/contexts/UiLanguageContext";
+import { NativeLanguageProvider } from "@/contexts/NativeLanguageContext";
 import OfflineIndicator from "@/components/offline/OfflineIndicator";
 // Keyboard surfaces are only reached when the user actually presses a key
 // (focus shortcuts, "?" help overlay). Lazy-loading them out of the critical
@@ -541,9 +542,16 @@ w.__MB_REACT_ROOT__.render(
           <LanguageProgressProvider>
             {/* UiLanguageProvider wraps the router so the global VI/EN
                 toggle in AppHeroShell and every routed language surface
-                share one reactive state (default "vi"). */}
+                share one reactive state (default "vi").
+                NativeLanguageProvider is the distinct *native-language*
+                (pedagogy L1) axis — Phase 2 / Option C plumbing. Inert
+                today (no consumer until PR-A2; default "vi" ⇒ no behavior
+                change); mounted here so the eventual repoint is a pure
+                swap. See RECON-schema-generalize-phase2.md. */}
             <UiLanguageProvider>
-              <AppRouter />
+              <NativeLanguageProvider>
+                <AppRouter />
+              </NativeLanguageProvider>
             </UiLanguageProvider>
           </LanguageProgressProvider>
         </AuthProvider>
