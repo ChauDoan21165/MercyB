@@ -42,14 +42,6 @@ const supabaseMock = (SupaMod as any).__mock;
 // --------------------
 // Other mocks
 // --------------------
-const accessMocks = vi.hoisted(() => ({
-  mockDetermineAccess: vi.fn(),
-}));
-
-vi.mock("../accessControl", () => ({
-  determineAccess: accessMocks.mockDetermineAccess,
-}));
-
 vi.mock("../roomLoaderHelpers", () => ({
   processEntriesOptimized: vi.fn((entries: any[]) => {
     const safeEntries = Array.isArray(entries) ? entries : [];
@@ -157,7 +149,6 @@ describe("loadMergedRoom corruption handling", () => {
       error: null,
     });
 
-    accessMocks.mockDetermineAccess.mockReturnValue({ hasFullAccess: true });
     jsonMocks.mockLoadRoomJson.mockResolvedValue(null);
 
     supabaseMock.from.mockImplementation((table: string) => {
