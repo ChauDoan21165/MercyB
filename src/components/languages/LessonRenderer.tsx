@@ -1,23 +1,30 @@
 // src/components/languages/LessonRenderer.tsx
 //
-// Shared lesson renderer used by all 5 language module pages.
+// Shared lesson renderer used by the language module pages — the six
+// foreign-language modules (ko/ja/zh/fr/de/es) plus the Vietnamese-for-
+// foreigners page (which sets dualTitle).
 // Field-name-pure: takes a NormalizedLesson + LessonTheme. Per-language
 // field-name aliasing happens at the normalizer boundary, NOT here —
 // no s.en ?? s.english fallback chains, no isKorean(lang) branching.
 //
-// Sections (collapsed → expanded):
-//   header  : number badge, title.vi, title.en, optional native title,
-//             CEFR pill, expand chevron
+// Sections, in render order (collapsed → expanded):
+//   header  : number badge, title (single language via pick(), or
+//             title.vi + title.en subtitle when dualTitle), optional
+//             native title + romanization, CEFR pill, expand chevron
 //   stats   : counts of vocab/sentences/dialogue/exercises (when collapsed)
 //   intro   : amber card; picks introEn/introVi by uiLanguage with a
 //             fallback badge (legacy single-string `intro` = no badge)
-//   sentences: slate card; native + romanization + en + vi + focus chips + note
+//   sentences: slate card; native + romanization + single gloss
+//             (pick en/vi by uiLanguage, no badge — #523) + focus chips + note
 //   vocab   : green 2-col grid if lesson.vocabulary
-//   dialogue: purple card if lesson.dialogue
+//   dialogue: purple card if lesson.dialogue (+ opt-in dialogue_long)
 //   exercises: orange card; type-discriminated render per `kind`
 //   cultural: blue card if lesson.culturalNotesEn / Vi (picks by uiLanguage, falls back)
 //   tip     : amber card if lesson.tipAdviceEn / Vi (picks by uiLanguage, falls back)
-//   grammar : violet card if lesson.grammar (Japanese-specific)
+//   register: italic meta-note if lesson.registerNotesEn / Vi (picks, falls back)
+//   roleplay: indigo card if lesson.roleplayPromptsEn / Vi (picks, falls back)
+//   idiom   : teal accordion if lesson.idiomGlosses (per-subfield pick)
+//   grammar : violet card if lesson.grammar (Japanese + Spanish)
 //
 // Bilingual content selection: every `*Vi` field has an optional `*En`
 // sibling on NormalizedLesson (see LessonRenderer.types.ts). For each
@@ -736,10 +743,14 @@ function DialogueLineRows({
   audio?: { base: string; kinds?: NormalizedAudioKinds };
   // Badge the gloss when pick() fell back to the non-UI language (the
   // #499 contract). Enabled ONLY for dialogue_long, whose normalized
-  // en/vi are truthful. Left OFF for short `dialogue`: the Korean
-  // short-dialogue normalizer puts English in the vi-named slot for all
-  // 151 lessons (pre-existing, out of this PR's scope — see PR §10), so
-  // badging it would falsely label English as "vi".
+  // en/vi are truthful. Left OFF for short `dialogue`: post-#514 the
+  // Korean short-dialogue normalizer maps `vi = text_vi ?? meaning`
+  // (korean/normalize.ts) — lines without an authored `text_vi` still
+  // fall back to the English `meaning`, so badging would falsely label
+  // that English as "vi". (Pre-#514/#529 this comment claimed English
+  // filled the vi slot for *all* 151 lessons; no longer true — ~544
+  // `text_vi` were authored in #514 — but the badge stays off because
+  // the un-authored remainder still leaks English into the vi slot.)
   showFallbackBadge?: boolean;
 }) {
   return (
