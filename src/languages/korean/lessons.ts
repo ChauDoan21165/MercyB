@@ -147,4 +147,9 @@ export function getLessonById(id: number | string): KoreanLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const KOREAN_TOTAL_LESSONS = 131;
+// Actual catalogue: A1 15 + A2 15 + B1 15 + B2 46 + C1 40 + C2 20 = 151.
+// (Was 131 — C1's max id mistaken for a count; C2's 20 lessons were
+// uncounted because their ids 102–121 collide with C1's range. The id
+// collision itself is fixed separately; see RECON-korean-id-fix.md / the
+// C2-renumber PR. This constant is display-only — KoreanLessonsPage hero.)
+export const KOREAN_TOTAL_LESSONS = 151;
