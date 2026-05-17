@@ -1,9 +1,10 @@
 // src/components/languages/LessonRenderer.types.ts
 //
 // Canonical contract for the shared LessonRenderer component.
-// All 5 language modules normalize their per-language lesson shape
-// to NormalizedLesson at the page-module boundary; the renderer is
-// field-name-pure and never reads per-language field aliases.
+// All language modules — the six foreign-language modules plus the
+// Vietnamese-for-foreigners page — normalize their per-language lesson
+// shape to NormalizedLesson at the page-module boundary; the renderer
+// is field-name-pure and never reads per-language field aliases.
 //
 // Bilingual pedagogy fields: Vietnamese-suffixed (`*Vi`) and English-
 // suffixed (`*En`) fields are independent siblings, not translations
