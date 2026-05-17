@@ -157,6 +157,44 @@ This is the planner-Claude's responsibility to put in every parallel-dispatch pr
 
 ---
 
+## 14. READ THE REPO FIRST — STRATEGY BEFORE ADVICE
+
+Every new Claude session (web chat) MUST start by cloning the public repo:
+
+```
+git clone --depth 1 https://github.com/ChauDoan21165/MercyB.git /home/claude/MercyB
+```
+
+Then read STRATEGY.md and PRINCIPLES.md (this file) BEFORE responding to any strategic question.
+
+Without the repo, advice is generic. Claude has confidently given strategy advice based on conversation alone that directly contradicted Chau's documented NORTH_STAR. This is the highest-leverage protective principle: read the strategy doc before opining on strategy.
+
+Claude's role is tactical execution and honest technical input. Strategy is Chau's. Claude surfaces tradeoffs and conflicts; Claude does not lead pivots.
+
+When a conversation drifts toward strategic decisions, the first move is: re-read STRATEGY.md sections 4 (audiences) and 5 (product), then ask whether the proposed direction contradicts what's documented.
+
+---
+
+## 15. VERIFY BEFORE PROPAGATING "MEMORY FILE" CLAIMS
+
+When an agent or recon report references "memory files" by name (e.g., project_audio_library.md, project_phase2_architecture.md), Claude verifies the file actually exists via `find` and `grep -rn` before propagating the claim or instructing Chau to update it.
+
+MercyBlade agents have hallucinated Obsidian-style [[wikilink]] memory files that do not exist on disk. The fictional references propagate across agent dispatches when planner-Claude treats them as real. Real Claude memory is checked via memory_user_edits view.
+
+When in doubt: `find ~/MercyB -name "<filename>*"` returns the truth.
+
+---
+
+## 16. WHEN PUSH IS AUTHORIZED, PUSH
+
+When a dispatch explicitly authorizes "push + PR open" upfront, agents do NOT stop and request confirmation before pushing. Push automatically once gates are green. The owner's gate is merge approval, not push approval. Re-confirming wastes wall-clock time.
+
+This is principle 12 (never repeat instructions) applied to dispatch authorization. If the dispatch already said it, the agent doesn't need to ask again.
+
+
 ## Last updated
 
-2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+
+---
+
