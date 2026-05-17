@@ -127,4 +127,17 @@ npx tsx scripts/generate-spanish-audio.ts --level=b2 --dry-run   # expect skippe
 
 ---
 
-**Awaiting Phase 1 approval before any generation/upload.**
+## 8. Phase 2 — EXECUTED (2026-05-17, approved: es-US Neural2, no swap)
+
+| Step | Result |
+|---|---|
+| Smoke test (`--limit=5`) | 5/5 generated, 0 failed, 150 chars — GCP TTS API + billing confirmed live |
+| Full run (`--level=b2`) | **294 generated, 5 skipped, 0 failed**, 7,508 chars (7,658 total incl. smoke) |
+| Idempotency re-run | processed 299 → **skipped=299, generated=0, failed=0** (every manifest key present in bucket) |
+| Live HTTP check | 30 real manifest-derived keys (every 12th + first + last + all 4 dialogue): **30/30 → HTTP 200 `audio/mpeg`, zero non-200** |
+
+**Outcome:** all 299 Spanish B2 audio files uploaded to `room-audio` at `b2/es/l*/...`. **Zero 404** on the resolver's keys — verified two independent ways (script existence check + live public-URL HEAD). Spanish B2 is no longer silent.
+
+**Actual cost:** 7,658 chars × $16/1M = **$0.12 max** (inside the 1M/month free Neural2 tier → effectively $0.00). 0 failures, no retry/cleanup needed.
+
+Status: **COMPLETE.**
