@@ -24,7 +24,16 @@ node scripts/validate-kids-rooms.js
 echo "🔄  Regenerating room registry…"
 npm run --silent generate:room-registry
 
-# Re-stage the registry if it changed during regen so the commit captures it.
+# The manifest is a pure function of the ENTIRE public/data/ working tree.
+# In a shared checkout, a parallel agent's uncommitted room add/delete/rename
+# leaks into the regen and used to be silently force-staged into THIS commit
+# (Principle #13 amplifier). Refuse the commit unless the manifest delta is
+# fully explained by room JSON staged here. See
+# reports/RECON-pre-commit-hook-audit.md.
+echo "🧾  Verifying room-manifest delta…"
+node scripts/check-manifest-delta.mjs
+
+# Delta is empty or fully explained — capture the regenerated manifest.
 git add src/lib/roomManifest.ts 2>/dev/null || true
 
 echo "✅  Pre-commit OK"
