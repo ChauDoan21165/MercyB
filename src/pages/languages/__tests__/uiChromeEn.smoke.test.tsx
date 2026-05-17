@@ -132,6 +132,14 @@ describe("language-page chrome — VI mode is byte-identical (#509 §8)", () => 
     expect(text).not.toContain(
       "greetings, numbers, everyday phrases, grammar, food",
     );
+    // Header subtitle byte-identical in VI mode (#hub-audience-fix):
+    // SUBTITLE_VI must render in full, SUBTITLE_EN must not leak.
+    expect(text).toContain(
+      "Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.",
+    );
+    expect(text).not.toContain(
+      "real-world context across Korean, Japanese, Chinese, French, German, Spanish",
+    );
   });
 });
 
@@ -170,5 +178,14 @@ describe("language-page chrome — EN mode is fully English (#509 §8)", () => {
     expect(text).toContain("Start learning");
     expect(text).not.toContain("Bắt đầu học");
     expect(text).not.toContain("chào hỏi, số đếm, câu giao tiếp");
+    // Header subtitle de-narrowed in EN mode (#hub-audience-fix): the
+    // audience-exclusionary SUBTITLE_VI must NOT reach EN users.
+    expect(text).toContain(
+      "real-world context across Korean, Japanese, Chinese, French, German, Spanish",
+    );
+    expect(text).not.toContain("for Vietnamese speakers");
+    expect(text).not.toContain(
+      "survival-speaking MVP for foreigners in Vietnam",
+    );
   });
 });
