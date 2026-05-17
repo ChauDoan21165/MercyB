@@ -523,7 +523,17 @@ export default function AccountPage() {
   if (!user && !isLoading) return null;
 
   return (
-    <div style={wrap}>
+    // translate="no" prevents Chrome/Google Translate (and similar extensions)
+    // from wrapping text nodes inside React-managed children with <font>/<b>
+    // tags, which desyncs the virtual DOM and crashes reconciliation with
+    // "NotFoundError: Failed to execute 'insertBefore' on 'Node'".
+    // Closes Sentry MERCYBLADE-WEB-Y (P1, route=/account, Chrome Mobile on a
+    // vi-locale Android device). Same failure class previously mitigated on
+    // RoomLayout.tsx:34 and LoginPage.tsx:404. The bilingual VI/EN labels on
+    // every account button + the status card text are exactly the kind of
+    // bilingual content Chrome's auto-translate flags on a Vietnamese-locale
+    // device.
+    <div translate="no" style={wrap}>
       <style>{`
         details[open] > summary .mb-chevron { transform: rotate(180deg); }
         summary::-webkit-details-marker { display: none; }
