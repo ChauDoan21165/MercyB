@@ -1,10 +1,10 @@
 # LessonRenderer Schema Contract — Canonical Reference
 
-**Status:** authoritative reference · **Generated:** 2026-05-17 · **Branch:** `renderer-schema-docs` · **Code basis:** `origin/main @ 29bc2b75` (post #523, #520/#521, #501/#502, #499, #514, #529)
+**Status:** authoritative reference · **Generated:** 2026-05-17 (#533) · **Regenerated:** 2026-05-17 (doctrine-truth-up — line-number truth-up) · **Code basis:** `origin/main @ b3e7d590` (#536; post-#533 D1–D4 fix applied, post #530/#532/#534/#535)
 
 **Source of truth:**
-- `src/components/languages/LessonRenderer.tsx` (878 lines — renderer + inline `pick()` / `isFallback()` / `FallbackBadge`)
-- `src/components/languages/LessonRenderer.types.ts` (183 lines — `NormalizedLesson` contract)
+- `src/components/languages/LessonRenderer.tsx` (889 lines — renderer + inline `pick()` / `isFallback()` / `FallbackBadge`)
+- `src/components/languages/LessonRenderer.types.ts` (184 lines — `NormalizedLesson` contract)
 - `src/languages/{korean,japanese,chinese,french,german,spanish,vietnamese}/normalize.ts` (7 normalizers)
 
 > Why this doc exists: across 30+ PRs this session the renderer's schema contract was re-derived ad hoc by each recon agent. This is the single place to look instead. If code and this doc diverge, the code wins — file an update.
@@ -27,42 +27,42 @@
 
 | Rendered field | Normalized field(s) | Swaps w/ uiLanguage? | FallbackBadge? | Required? | Renderer lines |
 |---|---|---|---|---|---|
-| Lesson number badge | `id` | no | no | **required** (`number`) | 204 |
-| Title (primary) | `title.en` / `title.vi` via `pick` | yes (unless `dualTitle`) | **yes** (unless `dualTitle`) | **both required** (`string`) | 210–217 |
-| Title subtitle line | `title.en` | only shown when `dualTitle` | no | — | 227–229 |
-| Title native | `title.native` | **no** (target text) | no | optional | 230–238 |
-| Title romanization | `title.romanization` | **no** (target text) | no | optional | 233–237 |
-| CEFR pill | `level` (label localized by `cefrPillLabel(level, uiLanguage)`) | label only (chrome) | no | **required** (`CefrLevel`) | 218–222 |
-| Count chips | array `.length` + `RENDERER_LABELS[uiLanguage]` | units only (chrome) | no | — | 241–264 |
-| Intro | `pick(introEn, introVi)` then `?? intro` (legacy) | yes (`introEn`/`introVi`) | **yes** — *but never for legacy `intro`* | all optional; `intro` `@deprecated` | 284–301 |
-| Sentence — native | `sentences[].native` | **no** (target text) | no | array **required** (may be empty); `native` required | 323–325 |
-| Sentence — romanization | `sentences[].romanization` | **no** | no | optional | 327–331 |
-| Sentence — gloss | `pick(s.en, s.vi)` | yes | **NO** (intentional, #523) | optional | 337–344 |
-| Sentence — pronunciation focus | `pick(s.pronunciationFocusEn, s.pronunciationFocus)` — `string[]`, joined `" · "` | yes | **YES** | optional | 345–369 |
-| Sentence — note | `sentences[].note` | **no** (as-authored) | no | optional | 370–374 |
-| Vocab — native | `vocabulary[].native` | **no** (target text) | no | array optional; `native` required | 400–402 |
-| Vocab — romanization | `vocabulary[].romanization` | **no** | no | optional | 403–407 |
-| Vocab — gloss | `pick(v.en, v.vi)` | yes | **NO** | optional | 408–413 |
-| Vocab — phonetic | `pick(v.phoneticEn, v.phonetic)` | yes | **NO** | optional | 414–421 |
-| Dialogue — speaker | `dialogue[].speaker` | **no** | no | array optional; `speaker` required | 766–768 |
-| Dialogue — native | `dialogue[].native` | **no** (target text) | no | required | 769 |
-| Dialogue — romanization | `dialogue[].romanization` | **no** | no | optional | 770–774 |
-| Dialogue — gloss (short) | `pick(d.en, d.vi)` | yes | **NO** (`showFallbackBadge=false` for short) | optional | 775–794 |
-| Dialogue — gloss (long) | `pick(d.en, d.vi)` | yes | **YES** (`showFallbackBadge=true` for long) | optional | 775–794 |
-| Dialogue long | `dialogueLong[]` (opt-in toggle, **no audio**) | per-line, as above | yes (long) | optional | 463–479 |
-| Exercise — fill-blank | `question`, `answer` shown; hint `pick(hintEn, hint)` | hint swaps | **NO** | array optional | 662–677 |
-| Exercise — matching | `pairs[].a/.b` shown; instruction `pick(instructionEn, instruction)` | instruction swaps | **NO** | — | 680–698 |
-| Exercise — translation | prompt `pick(ex.en, ex.vi)`; `native` (+ `romanization`) shown as answer | prompt swaps | **NO** | `vi` required, `en` optional | 700–717 |
-| Cultural notes | `pick(culturalNotesEn, culturalNotesVi)` | yes | **YES** (badge by heading) | optional | 504–524 |
-| Tip / advice | `pick(tipAdviceEn, tipAdviceVi)` | yes | **YES** (badge by heading) | optional | 526–546 |
-| Register notes | `pick(registerNotesEn, registerNotesVi)` — italic meta-note | yes | **YES** (badge in label) | optional | 548–573 |
-| Roleplay prompts | `pick(roleplayPromptsEn, roleplayPromptsVi)` — `string[]`, bullet list | yes | **YES** (badge by heading) | optional | 575–611 |
-| Idiom — idiom | `idiomGlosses[].idiom` | **no** (target text) | no | array optional; `idiom`/`literal`/`meaning` required | 841–843 |
-| Idiom — literal | `pick(g.literalEn, g.literal)` | yes | no (badge is meaning-only) | `literal` required, `literalEn` optional | 826, 852–856 |
-| Idiom — meaning | `pick(g.meaningEn, g.meaning)` | yes | **YES** (the *only* idiom badge) | `meaning` required, `meaningEn` optional | 827, 857–864 |
-| Idiom — example | `pick(g.exampleEn, g.example)` | yes | no | optional | 828, 865–867 |
-| Grammar | `grammar[].point` / `.explanation` | **no** (as-authored, single language) | no | array optional; both fields required | 624–642 |
-| Audio | `audioBase`, `audioKinds` (drives `LessonAudioButton`) | n/a (not text) | n/a | both optional | 311–322, 389–398 |
+| Lesson number badge | `id` | no | no | **required** (`number`) | 211 |
+| Title (primary) | `title.en` / `title.vi` via `pick` | yes (unless `dualTitle`) | **yes** (unless `dualTitle`) | **both required** (`string`) | 216–224 |
+| Title subtitle line | `title.en` | only shown when `dualTitle` | no | — | 234–236 |
+| Title native | `title.native` | **no** (target text) | no | optional | 237–246 |
+| Title romanization | `title.romanization` | **no** (target text) | no | optional | 240–244 |
+| CEFR pill | `level` (label localized by `cefrPillLabel(level, uiLanguage)`) | label only (chrome) | no | **required** (`CefrLevel`) | 225–229 |
+| Count chips | array `.length` + `RENDERER_LABELS[uiLanguage]` | units only (chrome) | no | — | 248–271 |
+| Intro | `pick(introEn, introVi)` then `?? intro` (legacy) | yes (`introEn`/`introVi`) | **yes** — *but never for legacy `intro`* | all optional; `intro` `@deprecated` | 291–308 |
+| Sentence — native | `sentences[].native` | **no** (target text) | no | array **required** (may be empty); `native` required | 330–332 |
+| Sentence — romanization | `sentences[].romanization` | **no** | no | optional | 334–338 |
+| Sentence — gloss | `pick(s.en, s.vi)` | yes | **NO** (intentional, #523) | optional | 344–351 |
+| Sentence — pronunciation focus | `pick(s.pronunciationFocusEn, s.pronunciationFocus)` — `string[]`, joined `" · "` | yes | **YES** | optional | 352–376 |
+| Sentence — note | `sentences[].note` | **no** (as-authored) | no | optional | 377–381 |
+| Vocab — native | `vocabulary[].native` | **no** (target text) | no | array optional; `native` required | 407–409 |
+| Vocab — romanization | `vocabulary[].romanization` | **no** | no | optional | 410–414 |
+| Vocab — gloss | `pick(v.en, v.vi)` | yes | **NO** | optional | 415–420 |
+| Vocab — phonetic | `pick(v.phoneticEn, v.phonetic)` | yes | **NO** | optional | 421–428 |
+| Dialogue — speaker | `dialogue[].speaker` | **no** | no | array optional; `speaker` required | 777–779 |
+| Dialogue — native | `dialogue[].native` | **no** (target text) | no | required | 780 |
+| Dialogue — romanization | `dialogue[].romanization` | **no** | no | optional | 781–785 |
+| Dialogue — gloss (short) | `pick(d.en, d.vi)` | yes | **NO** (`showFallbackBadge=false` for short) | optional | 786–805 |
+| Dialogue — gloss (long) | `pick(d.en, d.vi)` | yes | **YES** (`showFallbackBadge=true` for long) | optional | 786–805 |
+| Dialogue long | `dialogueLong[]` (opt-in toggle, **no audio**) | per-line, as above | yes (long) | optional | 470–486 |
+| Exercise — fill-blank | `question`, `answer` shown; hint `pick(hintEn, hint)` | hint swaps | **NO** | array optional | 669–685 |
+| Exercise — matching | `pairs[].a/.b` shown; instruction `pick(instructionEn, instruction)` | instruction swaps | **NO** | — | 687–705 |
+| Exercise — translation | prompt `pick(ex.en, ex.vi)`; `native` (+ `romanization`) shown as answer | prompt swaps | **NO** | `vi` required, `en` optional | 707–724 |
+| Cultural notes | `pick(culturalNotesEn, culturalNotesVi)` | yes | **YES** (badge by heading) | optional | 511–531 |
+| Tip / advice | `pick(tipAdviceEn, tipAdviceVi)` | yes | **YES** (badge by heading) | optional | 533–553 |
+| Register notes | `pick(registerNotesEn, registerNotesVi)` — italic meta-note | yes | **YES** (badge in label) | optional | 557–580 |
+| Roleplay prompts | `pick(roleplayPromptsEn, roleplayPromptsVi)` — `string[]`, bullet list | yes | **YES** (badge by heading) | optional | 584–618 |
+| Idiom — idiom | `idiomGlosses[].idiom` | **no** (target text) | no | array optional; `idiom`/`literal`/`meaning` required | 852–854 |
+| Idiom — literal | `pick(g.literalEn, g.literal)` | yes | no (badge is meaning-only) | `literal` required, `literalEn` optional | 837, 863–867 |
+| Idiom — meaning | `pick(g.meaningEn, g.meaning)` | yes | **YES** (the *only* idiom badge) | `meaning` required, `meaningEn` optional | 838 (fallback 840), 868–875 |
+| Idiom — example | `pick(g.exampleEn, g.example)` | yes | no | optional | 839, 876–878 |
+| Grammar | `grammar[].point` / `.explanation` | **no** (as-authored, single language) | no | array optional; both fields required | 631–649 |
+| Audio | `audioBase`, `audioKinds` (drives `LessonAudioButton`) | n/a (not text) | n/a | both optional | 318–329, 396–405 |
 
 ### FallbackBadge — fires vs. silent
 
@@ -98,7 +98,7 @@ pronunciationFocus?: string[];    // hints calibrated for Vietnamese-speaker lea
 pronunciationFocusEn?: string[];  // hints calibrated for English-speaker learners — independent sibling
 ```
 
-- **It is an array of short strings**, not prose. The renderer joins with `" · "` and prefixes a `Volume2` icon (`LessonRenderer.tsx:345–369`).
+- **It is an array of short strings**, not prose. The renderer joins with `" · "` and prefixes a `Volume2` icon (`LessonRenderer.tsx:352–376`).
 - `pick(uiLanguage, pronunciationFocusEn, pronunciationFocus)`; renders nothing if the picked array is empty/absent.
 - **`FallbackBadge` fires** here (unlike the sentence gloss): pronunciation focus is audience-specific pedagogy, so a language fallback is surfaced.
 - Normalizer source field (all of ko/ja/zh/fr/de): `pronunciation_focus` → `pronunciationFocus`, `pronunciation_focus_en` → `pronunciationFocusEn`. **Spanish maps `pronunciationFocus` only** (`s.pronunciation_focus`, no `_en`).
@@ -112,7 +112,7 @@ Authored content examples:
 
 ## 5. Idiom subfield contract (#502)
 
-`NormalizedIdiomGloss` (`LessonRenderer.types.ts:96–107`), rendered by `IdiomGlossList` as an inline accordion (collapsed = idiom; expanded = literal / meaning / example). Tooltips were rejected in #496 §7 as mobile-hostile at 375 px.
+`NormalizedIdiomGloss` (`LessonRenderer.types.ts:97–108`), rendered by `IdiomGlossList` as an inline accordion (collapsed = idiom; expanded = literal / meaning / example). Tooltips were rejected in #496 §7 as mobile-hostile at 375 px.
 
 | Subfield | Type | Required | `pick` pair | Badge |
 |---|---|---|---|---|
@@ -121,7 +121,7 @@ Authored content examples:
 | `meaning` / `meaningEn` | `string` / `string?` | `meaning` required | `pick(meaningEn, meaning)` | **YES — the only idiom badge** |
 | `example` / `exampleEn` | `string?` / `string?` | optional | `pick(exampleEn, example)` | no |
 
-The single `fallback` is computed once from `isFallback(uiLanguage, g.meaningEn, g.meaning)` and rendered next to the **meaning** line only (`LessonRenderer.tsx:829, 860–862`). literal/example fall back silently.
+The single `fallback` is computed once from `isFallback(uiLanguage, g.meaningEn, g.meaning)` and rendered next to the **meaning** line only (`LessonRenderer.tsx:840, 868–875`). literal/example fall back silently.
 
 **Per-language source:** ko/ja/zh/fr/de map `idiom_glosses[]` 1:1 incl. `literal_en`/`meaning_en`/`example_en`. **Spanish has a different shape** (`normalize.ts:152–157`): `meaning ← g.figurative`, `example ← g.usage`, and **no `*En` siblings** (Spanish is English-source; base slots already hold English).
 
@@ -140,7 +140,7 @@ registerNotesVi?: string;  // register / tone meta-advice for Vietnamese-speaker
 registerNotesEn?: string;  // independent sibling for English-speaker learners
 ```
 
-- Rendered as a **small italic meta-note**, not a card (per the #496-locked decision), under the tip card (`LessonRenderer.tsx:548–573`).
+- Rendered as a **small italic meta-note**, not a card (per the #496-locked decision), under the tip card (`LessonRenderer.tsx:557–580`).
 - `pick(uiLanguage, registerNotesEn, registerNotesVi)`; **`FallbackBadge` fires**, rendered *inside* the uppercase "Register"/"Văn phong" label span (not after the heading like cultural/tip).
 - Normalizer source: `register_notes` → `registerNotesVi`, `register_notes_en` → `registerNotesEn` (ko/ja/zh/fr/de). **Spanish:** `registerNotesEn ← lesson.register_note` (no Vi; English-source).
 - **#501** was the pilot — Chinese C1 `register_notes_en` batch 1.
@@ -156,7 +156,7 @@ roleplayPromptsVi?: string[];  // speaking-practice prompts for Vietnamese-speak
 roleplayPromptsEn?: string[];  // independent sibling for English-speaker learners
 ```
 
-- **Array of prompt strings.** Rendered as a bulleted list in an indigo ("speaking" family) card (`LessonRenderer.tsx:575–611`). **No interactivity is wired** — it is a static practice card.
+- **Array of prompt strings.** Rendered as a bulleted list in an indigo ("speaking" family) card (`LessonRenderer.tsx:584–618`). **No interactivity is wired** — it is a static practice card.
 - `pick(uiLanguage, roleplayPromptsEn, roleplayPromptsVi)`; renders nothing if the picked array is empty/absent. **`FallbackBadge` fires** next to the heading.
 - Normalizer source: `roleplay_prompts` → `roleplayPromptsVi`, `roleplay_prompts_en` → `roleplayPromptsEn` (ko/ja/zh/fr/de). **Spanish:** `roleplayPromptsEn ← lesson.roleplay_prompts` (no Vi).
 - **#502** added Chinese C1 `roleplay_prompts_en`.
@@ -187,7 +187,7 @@ These carry the **language being learned** (or as-authored content) and are comp
 
 | Module | sentence `vi` | sentence `en` | `*En` siblings authored | `uiLanguage` at call site | Notes |
 |---|---|---|---|---|---|
-| Korean | `s.vi` | `s.en` | cultural/tip/register/roleplay/idiom `_en` | page toggle | short-dialogue `vi = text_vi ?? meaning` (post-#514, ×544 `text_vi` authored) |
+| Korean | `s.vi` | `s.en` | cultural/tip/register/roleplay/idiom `_en` | page toggle | short-dialogue `vi = text_vi ?? meaning` (post-#514, ×544 `text_vi` authored, `korean/normalize.ts:50`) |
 | Japanese | — (none) | `e.english` | `_en` siblings | page toggle | no sentence `vi`, no romanization; has `grammar` |
 | Chinese | `s.vi` | `s.english` | `_en` siblings | page toggle | full romanization (pinyin) everywhere; `title.native`/`romanization` |
 | French | `s.vi` | — (`s.en` is the target!) | `_en` siblings | page toggle | exercises have two shapes (nested 1-20 / flat 21-50) |
@@ -197,36 +197,31 @@ These carry the **language being learned** (or as-authored content) and are comp
 
 ---
 
-## 9. Drift catch — code vs. existing comments
+## 9. Drift catch — code vs. comments (RESOLVED in #533)
 
-Audited the in-file doc comments against current code on `origin/main @ 29bc2b75`. Four divergences found. **All are comment-only and low-risk; none affect runtime.** A small comment-only PR is recommended (see below).
+Audited the in-file doc comments against the code as of the doc's creation (`origin/main @ 29bc2b75`). Four divergences (D1–D4) were found. **All were comment-only, low-risk, runtime-neutral, and were fixed in the same PR that introduced this doc** — #533 (squash commit `97623db8`, which modified `LessonRenderer.tsx` +22/-11 and `LessonRenderer.types.ts` +4/-3). The descriptions below are retained as the historical record of the drift this doc exists to prevent; **all four are CLOSED**. Parenthetical line numbers are post-fix (HEAD `b3e7d590`).
 
-**D1 — Stale section list in `LessonRenderer.tsx` header (lines 8–20).**
-The header enumerates `header / stats / intro / sentences / vocab / dialogue / exercises / cultural / tip / grammar` and stops at `grammar`. The actual render order (lines 504–642) is `… cultural → tip → register → roleplay → idiom → grammar`. **`register`, `roleplay`, and `idiom` sections are missing entirely** — they were added by #499/#501/#502 and the header was never updated. Re-deriving the render order from this comment would be wrong.
+**D1 — Stale section list in `LessonRenderer.tsx` header. ✅ Fixed.**
+Pre-fix the header enumerated `header / stats / intro / sentences / vocab / dialogue / exercises / cultural / tip / grammar` and stopped at `grammar`, omitting `register`, `roleplay`, `idiom` (added by #499/#501/#502). The header (now lines 10–27) lists the full render order `… cultural → tip → register → roleplay → idiom → grammar`, matching the actual render block (lines 511–649). Re-deriving the render order from the old comment would have been wrong.
 
-**D2 — "5 language module(s)" is stale.**
-`LessonRenderer.tsx:3` ("used by all 5 language module pages") and `LessonRenderer.types.ts:4` ("All 5 language modules normalize…"). There are **7 normalizers** (`src/languages/{korean,japanese,chinese,french,german,spanish,vietnamese}/normalize.ts`) and **7 page callers**. The count became wrong when Spanish (the 6th, English-source) and Vietnamese-for-foreigners (the 7th, `dualTitle`) were added.
+**D2 — "5 language module(s)" stale count. ✅ Fixed.**
+`LessonRenderer.tsx:3–5` and `LessonRenderer.types.ts:4–6` now read "the six foreign-language modules (ko/ja/zh/fr/de/es) … plus the Vietnamese-for-foreigners page" (7 normalizers, 7 page callers) instead of "5". The count had been wrong since Spanish (6th, English-source) and Vietnamese-for-foreigners (7th, `dualTitle`) were added.
 
-**D3 — `DialogueLineRows` rationale comment is stale post-#514/#529 (the important one).**
-`LessonRenderer.tsx:738–743` justifies `showFallbackBadge=false` for short dialogue with: *"the Korean short-dialogue normalizer puts English in the vi-named slot for **all 151 lessons**."* Post-#514 the Korean normalizer is `vi: d.text_vi ?? d.meaning` (`korean/normalize.ts:50`) and #514 authored `text_vi` for ~544 dialogue lines. **For authored lines `vi` is now genuine Vietnamese, not English** — "all 151 lessons" is no longer true. #529 already corrected the *equivalent* comments inside `korean/normalize.ts` ("post-#514") but did **not** propagate the fix to this downstream comment in the renderer. The `showFallbackBadge=false` decision itself is still defensible (lines lacking `text_vi` still fall back to English `meaning`, which a badge would mislabel as "vi"), but the stated reason is factually outdated. This is exactly the re-derivation hazard this doc exists to prevent.
+**D3 — `DialogueLineRows` rationale comment stale post-#514/#529 (the important one). ✅ Fixed.**
+`LessonRenderer.tsx:744–754` previously justified `showFallbackBadge=false` for short dialogue with "the Korean short-dialogue normalizer puts English in the vi-named slot for **all 151 lessons**." Post-#514 the Korean normalizer is `vi: d.text_vi ?? d.meaning` (`korean/normalize.ts:50`) with ~544 authored `text_vi`. The comment now states the post-#514 reality: the `showFallbackBadge=false` decision is still defensible, but because un-authored lines still fall back to English `meaning` (which a "vi" badge would mislabel), **not** because all lines are English. #529 had corrected the equivalent comments inside `korean/normalize.ts` but not propagated to this downstream renderer comment; #533 closed that gap.
 
-**D4 — Header line 14 predates #523.**
-`LessonRenderer.tsx:14`: *"sentences: slate card; native + romanization + en + vi + focus chips + note"*. Post-#523 the sentence card renders a **single** gloss (`pick(s.en, s.vi)`), not `en + vi`. Minor, but consistent with D1/D3 — the header block as a whole predates the #499/#523 expansion.
+**D4 — Header line predated #523. ✅ Fixed.**
+The header (now lines 17–18) reads "sentences: slate card; native + romanization + single gloss (pick en/vi by uiLanguage, no badge — #523) + focus chips + note" instead of the pre-#523 "native + romanization + en + vi …". The `grammar` parenthetical was also corrected from "(Japanese-specific)" to "(Japanese + Spanish)" — Spanish emits `grammar` via `normalizeSpanishGrammar`, so the original parenthetical was wrong.
 
-### Recommended fix (comment-only PR — Phase 2)
+### Resolution — applied in #533 (squash `97623db8`)
 
-A single comment-only commit on this branch addresses D1–D4 with zero behavior change:
-- `LessonRenderer.tsx` header: add `register / roleplay / idiom` to the section list in render order; fix line 14 to "single gloss (pick en/vi)"; fix the "5 … pages" count.
-- `LessonRenderer.tsx:738–743`: rewrite the `showFallbackBadge` rationale to reflect `vi = text_vi ?? meaning` (badge stays off because un-authored lines still fall back to English `meaning`).
-- `LessonRenderer.types.ts:4`: fix the "All 5 language modules" count.
-
-`grammar` is **not** Japanese-specific (Spanish emits it via `normalizeSpanishGrammar`); the header line 20 "(Japanese-specific)" parenthetical should also be dropped — folded into the same commit.
+D1–D4 + the grammar parenthetical shipped in the **same PR** that introduced this doc (`renderer-schema-docs` → `main`, merged 2026-05-17T06:21:29Z; pre-squash commits `ba1180c6` canonical doc + `79a99ef6` D1–D4 comment fix). There is no open follow-up. This section is kept only as the historical drift record — there is nothing left to do here.
 
 ---
 
 ## Appendix — `NormalizedLesson` required vs. optional (type contract)
 
-From `LessonRenderer.types.ts:119–179`:
+From `LessonRenderer.types.ts:120–180`:
 
 **Required:** `id: number`, `level: CefrLevel`, `title: { vi: string; en: string; native?; romanization? }`, `sentences: NormalizedSentence[]` (the array is required; may be empty).
 
@@ -236,4 +231,4 @@ From `LessonRenderer.types.ts:119–179`:
 
 Within sub-records: `NormalizedSentence.native`, `NormalizedDialogueLine.{speaker,native}`, `NormalizedVocabEntry.native`, `NormalizedIdiomGloss.{idiom,literal,meaning}`, `NormalizedGrammarPoint.{point,explanation}`, `NormalizedExerciseTranslation.{vi,native}`, `NormalizedExerciseFillBlank.{question,answer}` are required; everything else in those records is optional.
 
-`NormalizedAudioKinds`: `sentence?: "sentence" | "phrase"`, `dialogue?: "dialogue_short" | "dialogue_vi"` — set at the normalizer boundary so the renderer stays field-name-pure (Vietnamese-for-foreigners uses `phrase`/`dialogue_vi`; the other six default to `sentence`/`dialogue_short`).
+`NormalizedAudioKinds` (`LessonRenderer.types.ts:115–118`): `sentence?: "sentence" | "phrase"`, `dialogue?: "dialogue_short" | "dialogue_vi"` — set at the normalizer boundary so the renderer stays field-name-pure (Vietnamese-for-foreigners uses `phrase`/`dialogue_vi`; the other six default to `sentence`/`dialogue_short`).

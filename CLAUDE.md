@@ -9,7 +9,7 @@ Make MercyBlade the #1 English-learning app for Vietnamese learners — the one 
 ## The five non-negotiables — a feature that violates any of these is rejected
 
 1. **Vietnamese-first, always.** Never generic English features that happen to be translated. If non-Vietnamese users feel slightly out of place, that's correct.
-2. **Kids mode is sacred.** Offline-first, no login friction, no monetization CTAs, age-appropriate. Parents trust us.
+2. **Kids mode is sacred.** Offline-first, no login friction, no monetization CTAs, age-appropriate. (Audio is Supabase-served + SW-cached for offline-after-first-play since d2951ddd — see Architecture; the principle stands, the delivery mechanism changed.) Parents trust us.
 3. **Mobile-first.** Every feature must work at 375–414 px. Install size matters.
 4. **Outcomes over engagement.** No dark gamification, no streak-shaming. If a feature boosts retention but hurts learning, reject it.
 5. **No VIP tier.** Users are at `profiles.tier = 0..N` (level 0 = free, higher = paid). Any code that references `'vip'` / `'all_vip'` as an audience/cohort is **legacy** — skip it. Room-name prefixes like `vip6_…` in content files are fine (historical filename pattern, not a tier).
@@ -77,11 +77,11 @@ npx cap open ios             # opens ios/App/App.xcworkspace (always the workspa
 One canonical path from any raw audio reference to a playable URL:
 
 1. `toAudioKey(raw)` — sync, pure, **idempotent** (while-loop strip of `audio/` prefix is load-bearing).
-2. `tryResolveLocal(key)` — sync. Returns a local URL for `kids/*`, `music/*`, and absolute `https://…`. Returns null for adult-room keys.
-3. `resolveRoomAudioUrl(raw, opts)` — async. Calls `tryResolveLocal` first (enforces the kids invariant); adult-room keys go to Supabase via `getPublicUrl('room-audio', filename)`. On error, returns `{ url: '/audio/{key}', fallback: true, error }` for silent degradation.
+2. `tryResolveLocal(key)` — sync. Returns a local URL only for absolute `http(s)://` keys and `images/…` paths (kids page-3 audio still lives next to its images). Returns null for all room/kids/music keys → they resolve via Supabase.
+3. `resolveRoomAudioUrl(raw, opts)` — async. Calls `tryResolveLocal` first (http(s)/images passthrough); **all** other keys — adult-room, `kids/*`, `music/*` — go to Supabase via `getPublicUrl('room-audio', filename)`. On error, returns `{ url: '/audio/{key}', fallback: true, error }` for silent degradation.
 4. `useAudioUrl(filename)` hook (`src/hooks/useAudioUrl.ts`) — React-facing layer. Seeds `useState` synchronously via `tryResolveLocal` so local keys have no loading flash. Contract: `{ url, loading, error, refresh }`.
 
-**Hard invariant:** `kids/*` and `music/*` never reach Supabase. Tests in `src/hooks/__tests__/useAudioUrl.test.ts` guard this. Violating it breaks the kids offline-first rule.
+**Hard invariant (since d2951ddd, 2026-04-21 — "migrate kids + music to Supabase, Google Play 200 MB fix"):** ALL audio (adult-room, `kids/*`, `music/*`) flows through the Supabase `room-audio` public bucket; the PWA service worker caches responses so offline playback works after first play. `tryResolveLocal` handles only `http(s)://` + `images/…`. Canonical reference: `roomAudioResolver.ts:9–16`. Tests in `src/hooks/__tests__/useAudioUrl.test.ts` (`describe('useAudioUrl — kids and music go through Supabase')`) guard the **new** behavior — re-inverting it back to local re-bloats the bundle past Google Play's 200 MB base-module limit.
 
 Consumer pattern: pass canonical keys (not URLs) to `<TalkingFacePlayButton src={key} />`. Use `toAudioKey(raw)` anywhere you take messy input. Use `useAudioUrl` in React render; use `resolveRoomAudioUrl` in imperative contexts like `MusicPlayerContext.play()`.
 
@@ -92,7 +92,7 @@ Room JSON in `public/data/*.json` (~476 rooms) → loaded by `src/lib/roomLoader
 ### Mercy character / Speak tab dual invariant
 
 `MercyGuidePanel` has four tabs: Journey, Grammar, **Speak**, Logic. `MercySpeakTab.tsx` has two audio paths that are easy to break:
-- **Kids mode** → pre-recorded ElevenLabs mp3 at `/audio/kids/<key>.mp3` (or `/audio/kids/josh/<key>.mp3` for male voice).
+- **Kids mode** → pre-recorded ElevenLabs mp3, key `kids/<key>.mp3` (or `kids/josh/<key>.mp3` for male voice), resolved through `resolveRoomAudioUrl()` → Supabase `room-audio` bucket (post-d2951ddd; `/images/mercy-kids-page-3/*` is the lone still-local exception).
 - **Adult mode** → browser `window.speechSynthesis.speak()`. The current implementation chunks text > 180 chars into sentence-sized utterances because Chrome silently drops utterances that exceed ~15s or ~250 chars. See `speakViaTTS` + `chunkForTTS` helper.
 
 ### Boot entry (`src/main.tsx`)
@@ -107,7 +107,7 @@ Not a vanilla create-react-app boot. Includes:
 
 ### Supabase
 
-- Singleton client at `src/lib/supabaseClient.ts` — the **ONLY** `createClient()` call in the app.
+- One **browser** Supabase client — singleton at `src/lib/supabaseClient.ts` (anon key, the only client that ships to the browser bundle). SSR has a **separate** service-role client at `src/server/host/renderer.ts:39` — intentional, server-only, never bundled. Don't add a third.
 - 9 edge functions for email (`email-broadcast`, `send-email-campaign`, `email-automations`, `send-redeem-email`, `send-feedback-reply`, `send-pending-emails`, `admin-daily-digest`, `test-email`, `mercy-ai-builder-email`). Plus billing, audio generation, admin, etc.
 - `room-audio` Storage bucket is PUBLIC (post-Phase-2). Tier-gating lives in the app layer, not in RLS. Revisit tracked in NORTH_STAR Deferred Tech Debt.
 - DNS is on Cloudflare. `admin@mercyblade.com` → forwarded to Chau's personal inbox via Cloudflare Email Routing.
@@ -130,14 +130,14 @@ Not a vanilla create-react-app boot. Includes:
 
 ## Non-obvious invariants and gotchas
 
-- **Kids audio stays local.** Never route `kids/*` or `music/*` through Supabase. P0.
+- **Kids/music audio resolves via Supabase (since d2951ddd, 2026-04-21).** `kids/*` and `music/*` go through the `room-audio` public bucket, SW-cached for offline-after-first-play. The old "kids stays local P0" rule is **reversed** — required for Google Play's 200 MB base-module limit. Do not re-localize; see `roomAudioResolver.ts:9–16`.
 - **`toAudioKey` must remain idempotent.** Call sites use it defensively; the while-loop on `audio/` is load-bearing.
 - **Four tsconfigs.** `tsconfig.json` (editor), `tsconfig.typecheck.json` (app typecheck), `tsconfig.scripts.json` (scripts), `tsconfig.core.json` (leaner build variant).
 - **Workbox cache pattern now matches `(sign|public)` for `room-audio`** (`vite.config.ts`). Don't narrow it back to `/sign/` — the bucket is public today.
-- **Bundled adult-room audio was removed** from `public/audio/*.mp3` (kids/ and music/ kept). Development requires Supabase reachability OR acceptance of the local fallback. Don't re-add the removed files.
-- **`.env.local` was deleted** (its only unique value duplicated into `.env`). Both files are gitignored.
+- **All bundled audio was removed** from `public/audio/` (adult-room AND kids/ AND music/, since d2951ddd). `public/audio/` now holds only auto-generated json. Development requires Supabase reachability OR acceptance of the `/audio/{key}` local fallback. Don't re-add removed files.
+- **`.env` and `.env.local` are both gitignored** (local-only, never committed; presence varies by environment/worktree). No secrets in git history; don't rely on `.env.local` existing.
 - **`public/audio/manifest.json` and `public/version.json` are gitignored** (auto-regenerated by prebuild hook).
-- **Vitest config must not import `@vitejs/plugin-react-swc`** unless installed (noted in `package.json._meta`).
+- **`@vitejs/plugin-react-swc` is now a devDependency** (`package.json`); only the bundle-analysis/performance vite configs use it. `vitest.config.ts` uses `@vitejs/plugin-react`. The old "don't import unless installed" guardrail in `package.json._meta` is moot.
 - **`rooms:check` prebuild hook** blocks builds on bad JSON. Run `npm run validate-rooms` directly for full error list.
 
 ## Traps this codebase hit recently — don't repeat them

@@ -3,8 +3,10 @@
  * MercyBlade Blue — Supabase Client (CANONICAL)
  *
  * RULE (LOCKED):
- * - ONLY ONE createClient() in the entire app → this file.
- * - All imports must come from here.
+ * - ONLY browser/client createClient() in the app → this file. (SSR has a
+ *   separate service-role client in src/server/host/renderer.ts that never
+ *   ships to the browser bundle — that exception is intentional.)
+ * - All browser-code imports must come from here.
  *
  * WHY THIS FILE MATTERS:
  * - Prevents “Signed out” UI desync caused by multiple clients or mismatched storage keys.
