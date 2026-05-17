@@ -1,11 +1,31 @@
 # MercyBlade Latency Audit
 
+> **STATUS 2026-05-17 (audit-latency-fixes recon):** The three highest-impact
+> findings — §1 (mercy-guide chunk), §2 (precache), §4 (feature-flag per-mount),
+> plus the §5 French/German sub-case — were **RESOLVED** by PRs that merged after
+> this audit was written. Verified with a measured `MB_BUNDLE_VIZ=1` build on
+> `origin/main` @ f66eefc5. Per-finding notes inline below; full evidence in
+> `reports/RECON-audit-latency.md`. §3/§6/§7 were out of this recon's scope and
+> are unchanged.
+
 ## Executive Summary
 The biggest latency cost is the `mercy-guide` feature cluster: the latest build emits a 2.49 MB chunk (`gzip: 767.24 kB`), and the code path behind it eagerly pulls a large subgraph into the first visit to Home. The second largest user-perceived cost is offline precaching: the build generated 285 precache entries totaling 10,797.38 KiB, so installs and updates re-download a lot of code even when the user never opens those routes. The next tier is repeated access/flag hydration on the critical path: Home waits on a profile query plus an entitlement lookup, and the feature-flag hook repeats an auth lookup plus a flag query on every mount.
 
 ## Findings
 
 ### 1. Mercy Guide is one giant hot chunk
+> **✅ RESOLVED — PR #317 (`a3c34fbb perf(mercy-guide): split into lazy chunks per tab`).**
+> Measured 2026-05-17 on f66eefc5: eager `mercy-guide` chunk went
+> **2,493.12 kB / gz 767.24 kB → 114.36 kB / gz 36.57 kB (−95%)**. The six heavy
+> tabs are now `lazyWithRetry` imports (`MercyGuidePanel.tsx:32-43`), `MercyGuide`
+> itself is lazy (`Home.tsx:27`), and tab chunks are filtered out of the homepage
+> modulepreload (`vite.config.ts:443-455`). Residual: the 36.57 kB gz *shell*
+> chunk is still on the homepage critical path due to Rollup co-locating shared
+> utilities — a known/deferred item with measured evidence in
+> `reports/a7-bundle-audit.md` (2026-05-13); both obvious fixes were tried there
+> and regressed. Estimated remaining upside ~13–18 kB gz / ~30–45 ms Slow 4G —
+> deliberately not chased (high-risk central config, low reward).
+
 **Severity**: HIGH  
 **Category**: INITIAL PAGE LOAD  
 **Location**: `dist/assets/mercy-guide-CLjCU_6T.js`; `src/pages/Home.tsx:10-25`; `src/components/MercyGuide.tsx:14,38,40`; `src/components/mercy-guide/MercyGuidePanel.tsx:26-30`; `src/components/mercy-guide/MercyTeacherTab.tsx:20-40`; `src/components/mercy-guide/tabs/LanguageLessonsTab.tsx:21-27`  
@@ -15,6 +35,14 @@ The biggest latency cost is the `mercy-guide` feature cluster: the latest build 
 **Effort**: large
 
 ### 2. Workbox precaches too much app code
+> **✅ RESOLVED — PR #392 (`128678ff perf(pwa): exclude rarely-visited route chunks from precache`) + #434 (`72fcfaed fix(sw): network-first HTML`).**
+> Measured 2026-05-17 on f66eefc5: precache went
+> **285 entries / 10,797.38 KiB → 54 entries / 3,678.42 KiB (−81% entries, −66% / −7.1 MiB)**.
+> `vite.config.ts:165` `globIgnores: ['**/lessons-*.js', 'index.html']` moves the
+> 36 lesson chunks (~9.5 MB) to runtime CacheFirst; `vite.config.ts:197-223`
+> allowlists JS precache to 8 shell stems. The remaining 54 entries are the
+> intended small shell (CSS, icons, 35 core room JSONs, 8 JS stems).
+
 **Severity**: HIGH  
 **Category**: SERVICE WORKER / PWA  
 **Location**: `vite.config.ts:130-165`; `src/lib/offline/precacheManifest.ts:18-74`  
@@ -33,6 +61,15 @@ The biggest latency cost is the `mercy-guide` feature cluster: the latest build 
 **Effort**: small / medium
 
 ### 4. Feature flags are fetched on every mount
+> **✅ RESOLVED — `d9154cdc perf(queries): migrate feature flags + auth.user to React Query`** (+ `1f6a4ddf` profiles).
+> `src/hooks/useFeatureFlag.ts` is now a one-line re-export of
+> `useFeatureFlagQuery` (`src/lib/queries/useFeatureFlagQuery.ts`). The per-mount
+> `Promise.all([auth.getUser(), feature_flags query])` is gone: flag query is
+> React Query (`staleTime: 5 min`, `gcTime: 10 min`, `refetchOnWindowFocus: false`,
+> key `qk.featureFlag(key, userId)`), `auth.getUser()` shared via
+> `useAuthUserQuery()`. Every component reading the same `flag_key` on a page
+> now shares one cached fetch; route transitions within 5 min hit cache.
+
 **Severity**: MEDIUM  
 **Category**: DATA FETCHING  
 **Location**: `src/hooks/useFeatureFlag.ts:22-34`; `src/pages/Home.tsx:71-72`  
@@ -42,6 +79,12 @@ The biggest latency cost is the `mercy-guide` feature cluster: the latest build 
 **Effort**: medium
 
 ### 5. Mercy Guide’s language tab drags in full French and German curricula
+> **✅ RESOLVED — folded into PR #317 (§1).** Measured 2026-05-17 on f66eefc5:
+> French/German are now isolated `mercy-french-tab` (13.25 kB) / `mercy-german-tab`
+> (11.85 kB) chunks plus per-level `lessons-french-{a1..c2}` / `lessons-german-*`
+> splits (`vite.config.ts:565-597`), lazy-loaded only when the tab opens. No
+> longer eager in the guide chunk.
+
 **Severity**: MEDIUM  
 **Category**: INITIAL PAGE LOAD  
 **Location**: `src/components/mercy-guide/MercyGuidePanel.tsx:26-30`; `src/components/mercy-guide/tabs/LanguageLessonsTab.tsx:21-27`  
