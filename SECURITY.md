@@ -1,6 +1,20 @@
-# 🛡️ Security Monitoring & Alert System - Setup Guide
+# Security Monitoring & Alert System
 
-Your Mercy Blade project now has comprehensive security monitoring with instant alerts!
+> **Canonical security-monitoring reference.** Promoted from
+> `SECURITY_MONITORING_SETUP.md` on 2026-05-17. The edge functions below
+> (`security-alert`, `uptime-monitor`, `health-check`) were **verified present** in
+> `supabase/functions/` and `security-alert` is actively invoked from
+> `src/utils/securityUtils.ts` + `src/components/SecurityAlertSettings.tsx`.
+>
+> **Verified correction:** the `/security-dashboard` route no longer exists — security
+> alert configuration now lives in the **`SecurityAlertSettings.tsx`** component
+> (surfaced under settings), not a dedicated route.
+>
+> For the founder-level threat model (Vietnamese state actors, defense layers, recovery
+> playbook) see `.claude/strategic-defenses.md` — that is the security *doctrine*; this
+> file is the operational *monitoring* reference.
+
+Comprehensive security monitoring with instant alerts.
 
 ## ✅ What's Been Implemented
 
@@ -14,9 +28,9 @@ Your Mercy Blade project now has comprehensive security monitoring with instant 
 - `uptime-monitor` - Checks site status and detects issues
 - `health-check` - Public endpoint for external monitoring services (UptimeRobot)
 
-### 3. **Frontend Pages**
-- `/security-dashboard` - View all incidents and uptime history (Admin only)
-- `/settings` - Configure Discord webhook and alert preferences
+### 3. **Frontend**
+- `SecurityAlertSettings.tsx` - Configure Discord webhook + alert preferences (Admin)
+  *(superseded the old `/security-dashboard` route — see header note)*
 
 ### 4. **Features**
 - Real-time security incident tracking
