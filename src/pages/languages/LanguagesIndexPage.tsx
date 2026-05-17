@@ -19,6 +19,14 @@ const HERO_VI = "Practical language learning";
 const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German & more";
 const SUBTITLE_VI =
   "Learn useful phrases, pronunciation, and context. Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.";
+// EN-mode subtitle. SUBTITLE_VI narrows the audience ("for Vietnamese
+// speakers" / "for foreigners in Vietnam") — left byte-identical so VI
+// users (the default) see no change, while EN users get a de-narrowed
+// rewrite that keeps the same pedagogy promise. Mirrors the #517 locked
+// decision (uiLang-conditional, rewrite EN only, VI untouched); closes
+// the residue #518/#519 deferred on the hub.
+const SUBTITLE_EN =
+  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, and survival Vietnamese.";
 
 type Card = {
   slug: string;
@@ -169,7 +177,9 @@ export default function LanguagesIndexPage() {
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900">{HERO_VI}</h1>
         <p className="text-sm text-slate-500">{HERO_EN}</p>
-        <p className="mt-3 text-sm text-slate-700">{SUBTITLE_VI}</p>
+        <p className="mt-3 text-sm text-slate-700">
+          {uiLang === "en" ? SUBTITLE_EN : SUBTITLE_VI}
+        </p>
       </header>
 
       <div className="grid gap-3 sm:grid-cols-2">
