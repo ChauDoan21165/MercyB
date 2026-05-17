@@ -184,12 +184,24 @@ export default defineConfig({
         //   ui        — UI primitives (shadcn/radix)
         //   vendor    — common vendor bundle
         //   supabase  — supabase-js client (used by auth on landing)
-        //   sentry    — error reporting wires up on first paint
         //   Home      — landing route
         //   LoginPage — auth route reached from landing
         //
+        // NOT precached — `sentry` (removed PR: SW precache fix): the
+        // @sentry/react SDK is deliberately lazy-loaded at runtime
+        // (`await import("@sentry/react")` inside initSentry's async IIFE,
+        // src/lib/monitoring/sentryInit.ts) and carved into its own chunk
+        // so it never modulepreloads. Precaching it silently undid that —
+        // the SW fetched the single largest JS chunk (~462 KB raw /
+        // ~152 KB gzip) in the background on every first visit, racing the
+        // eager critical graph on the exact constrained-3G mobile networks
+        // STRATEGY §4 targets. The runtime dynamic import (already deferred
+        // off first paint) still fetches it once and the browser
+        // HTTP-caches it (hashed/immutable), so error reporting is
+        // unaffected. See reports/RECON-bundle-perf-audit.md §1.
+        //
         // The list is intentionally tiny. The acceptance bar is < 30
-        // precached JS chunks; everything beyond the eight above is
+        // precached JS chunks; everything beyond the seven above is
         // a route the median user may never visit. If a chunk turns
         // out to be hot enough that runtime-fetching it hurts a real
         // user flow, add it here (one line, one rebuild) — don't
@@ -202,7 +214,6 @@ export default defineConfig({
               "ui",
               "vendor",
               "supabase",
-              "sentry",
               "Home",
               "LoginPage",
             ]);
