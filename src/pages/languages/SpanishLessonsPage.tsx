@@ -114,7 +114,7 @@ export default function SpanishLessonsPage() {
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link to="/languages" className="font-medium text-rose-700 underline">
-            ← All languages
+            Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
       </header>

@@ -120,7 +120,7 @@ export default function KoreanLessonsPage() {
             className="font-medium underline"
             style={{ color: theme.accent }}
           >
-            ← All languages
+            Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
       </header>
