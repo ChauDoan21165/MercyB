@@ -87,13 +87,25 @@ rooms, "1 entry" display bugs, silent import failures).
 
 ## 4. Validation modes
 
-Entry-count limits are mode-aware (`VITE_MB_VALIDATION_MODE`):
+Entry-count limits are mode-aware (`VITE_MB_VALIDATION_MODE`), per the
+`VALIDATION_CONFIGS` table in `scripts/validate-rooms-ci.js` (source of truth):
 
-| Mode | Min | Max | Use |
-|---|---|---|---|
-| `strict` | 2 | 8 | production / CI (default in production) |
-| `preview` | 1 | 15 | staging |
-| `wip` | 1 | 20 | development (default in development) |
+| Mode | Min | Max | Requires audio | Use |
+|---|---|---|---|---|
+| `strict` | 1 | 15 | yes | production / CI (default) |
+| `preview` | 1 | 8 | no | staging |
+| `wip` | 1 | 20 | no | development |
+
+> **The `strict` bound was widened from `[2,8]` to `[1,15]` in #51 Path A** —
+> short preview/aggregator rooms and long VIP9/VIP6 collections are legitimate
+> shipped content. Earlier revisions of this table (and the archived 2025 docs)
+> printed `strict 2/8`; that is historical, not current. Anything claiming a
+> `[2,8]` violation is measuring against the stale bound.
+>
+> Note the **prebuild** gate (`npm run validate-rooms:core`, `MB_VALIDATE_CORE_ONLY=1`)
+> is the *core* subset: it hard-fails only on `entries.length === 0`, not on the
+> upper/lower count bounds. The full `[1,15]` strict enforcement runs via
+> `validate-rooms-ci.js` in CI.
 
 ---
 
