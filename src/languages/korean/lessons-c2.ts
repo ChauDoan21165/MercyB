@@ -6,7 +6,7 @@ import type { KoreanLesson } from "./lessons";
 
 export const lessons: KoreanLesson[] =     [
     {
-      "id": 102,
+      "id": 132,
       "level": "C2",
       "title_vi": "Đọc kỹ văn bản (정독)",
       "title_en": "Close reading",
@@ -305,7 +305,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 103,
+      "id": 133,
       "level": "C2",
       "title_vi": "Tiếng nói tự sự (서술자의 목소리)",
       "title_en": "Narrative voice",
@@ -604,7 +604,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 104,
+      "id": 134,
       "level": "C2",
       "title_vi": "Biểu tượng và ẩn dụ (상징과 은유)",
       "title_en": "Symbol and metaphor",
@@ -897,7 +897,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 105,
+      "id": 135,
       "level": "C2",
       "title_vi": "Phá vỡ thể loại (장르 전복)",
       "title_en": "Genre subversion",
@@ -1202,7 +1202,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 106,
+      "id": 136,
       "level": "C2",
       "title_vi": "So sánh bản dịch văn học (번역 비교)",
       "title_en": "Translation comparison",
@@ -1503,7 +1503,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 107,
+      "id": 137,
       "level": "C2",
       "title_vi": "Tiểu sử và văn bản (전기 vs 텍스트)",
       "title_en": "Biography vs text — when to invoke author's life",
@@ -1792,7 +1792,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 108,
+      "id": 138,
       "level": "C2",
       "title_vi": "Lịch sử tiếp nhận (수용사)",
       "title_en": "Reception history",
@@ -2096,7 +2096,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 109,
+      "id": 139,
       "level": "C2",
       "title_vi": "Các góc nhìn lý thuyết (이론적 관점)",
       "title_en": "Theoretical lenses",
@@ -2407,7 +2407,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 110,
+      "id": 140,
       "level": "C2",
       "title_vi": "Mở đầu bài phê bình (비평문 도입부)",
       "title_en": "Essay opening — opening moves of literary critical writing",
@@ -2712,7 +2712,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 111,
+      "id": 141,
       "level": "C2",
       "title_vi": "Bảo vệ một cách đọc gây tranh cãi (논쟁적 해석 옹호)",
       "title_en": "Defending a controversial reading",
@@ -3029,7 +3029,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 112,
+      "id": 142,
       "level": "C2",
       "title_vi": "Phê bình mỹ thuật (미술 비평)",
       "title_en": "Art criticism",
@@ -3236,7 +3236,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 113,
+      "id": 143,
       "level": "C2",
       "title_vi": "Phê bình điện ảnh (영화 비평)",
       "title_en": "Film criticism",
@@ -3437,7 +3437,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 114,
+      "id": 144,
       "level": "C2",
       "title_vi": "Phân tích diễn văn chính trị (정치 담화 분석)",
       "title_en": "Analyzing political discourse",
@@ -3605,7 +3605,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 115,
+      "id": 145,
       "level": "C2",
       "title_vi": "Thảo luận công dân và lý tính công cộng (시민 토론과 공적 이성)",
       "title_en": "Citizen deliberation and public reason",
@@ -3750,7 +3750,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 116,
+      "id": 146,
       "level": "C2",
       "title_vi": "Viết tiểu luận học thuật (학술 에세이 작성)",
       "title_en": "Writing the academic essay",
@@ -3831,7 +3831,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 117,
+      "id": 147,
       "level": "C2",
       "title_vi": "Bảo vệ luận văn (논문 구술 심사)",
       "title_en": "Thesis oral defense",
@@ -3904,7 +3904,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 118,
+      "id": 148,
       "level": "C2",
       "title_vi": "Tư duy triết học và lập luận trừu tượng (철학적 사고와 추상적 추론)",
       "title_en": "Philosophical thinking and abstract reasoning",
@@ -4016,7 +4016,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 119,
+      "id": 149,
       "level": "C2",
       "title_vi": "Lý thuyết thuyết phục và tu từ học (설득 이론과 수사학)",
       "title_en": "Persuasion theory and classical rhetoric",
@@ -4110,7 +4110,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 120,
+      "id": 150,
       "level": "C2",
       "title_vi": "Phê bình truyền thông và phân tích ngôn ngữ báo chí (미디어 비평과 언론 분석)",
       "title_en": "Media criticism and journalistic language analysis",
@@ -4208,7 +4208,7 @@ export const lessons: KoreanLesson[] =     [
       ]
     },
     {
-      "id": 121,
+      "id": 151,
       "level": "C2",
       "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế (외교 언어와 국제 담론)",
       "title_en": "Diplomatic language and international discourse",
