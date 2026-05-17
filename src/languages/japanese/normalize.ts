@@ -4,9 +4,11 @@
 // Japanese uses 'examples' instead of 'sentences' on the lesson; this is
 // collapsed into NormalizedLesson.sentences.
 //
-// JapaneseLesson has only a single `title: string` field (no separate vi/en
-// in the data), so title.vi and title.en both fall back to lesson.title.
-// The renderer or page can choose to deduplicate when both halves match.
+// JapaneseLesson carries a legacy single `title: string` (English label) plus
+// optional bilingual `title_vi` / `title_en`. title.vi prefers `title_vi`
+// (falling back to `title`); title.en prefers `title_en` (falling back to
+// `title`). Lessons without the bilingual fields still render English in both
+// halves until authored. The renderer/page may dedupe when both halves match.
 
 import type { JapaneseLesson, JapaneseExercise } from "./lessons";
 import type {
@@ -22,8 +24,11 @@ export function normalizeJapaneseLesson(
   return {
     id: id ?? lesson.id,
     level: lesson.level,
-    // Japanese data has only one `title` field; both halves fall back to it.
-    title: { vi: lesson.title, en: lesson.title },
+    // Prefer authored bilingual titles; fall back to the legacy `title`.
+    title: {
+      vi: lesson.title_vi ?? lesson.title,
+      en: lesson.title_en ?? lesson.title,
+    },
     sentences: (lesson.examples ?? []).map((e) => ({
       native: e.japanese,
       en: e.english,
