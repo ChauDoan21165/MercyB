@@ -2,7 +2,7 @@
 
 > **Goal:** #1 English learning app for Vietnamese people (5-6M diaspora globally).
 > **Owner:** Chau Doan (solo dev, Grande Prairie AB, exiled Vietnamese journalist, Article 117 warrant).
-> **App:** mercyblade.com · Bundle `com.chaudoan.mercyblade` · App ID `6762480486`
+> **App:** mercyblade.com · iOS bundle `com.chaudoan.mercyblade` · Android applicationId `com.mercyapps.mercyblade` (divergent + locked — do NOT "align") · Apple App ID `6762480486`
 > **Last updated:** 25 Apr 2026 (Round 9 complete, ~65-70% reached)
 
 Each step is worth ~5%. Steps are intentionally coarse — the work inside each step is what agents tackle in parallel "rounds."
