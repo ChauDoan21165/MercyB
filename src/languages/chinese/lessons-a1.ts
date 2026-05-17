@@ -11,6 +11,7 @@ export const lessons: ChineseLesson[] = [
     "title": "你好",
     "pinyin": "nǐ hǎo",
     "topic": "Greetings",
+    "title_vi": "Chào hỏi",
     "vocab": [
       {
         "chinese": "你好",
@@ -222,6 +223,7 @@ export const lessons: ChineseLesson[] = [
     "title": "数字",
     "pinyin": "shù zì",
     "topic": "Numbers 1-10",
+    "title_vi": "Các số từ 1 đến 10",
     "vocab": [
       {
         "chinese": "一",
@@ -437,6 +439,7 @@ export const lessons: ChineseLesson[] = [
     "title": "家人",
     "pinyin": "jiā rén",
     "topic": "Family",
+    "title_vi": "Gia đình",
     "vocab": [
       {
         "chinese": "妈妈",
@@ -652,6 +655,7 @@ export const lessons: ChineseLesson[] = [
     "title": "颜色",
     "pinyin": "yán sè",
     "topic": "Colors",
+    "title_vi": "Màu sắc",
     "vocab": [
       {
         "chinese": "红色",
@@ -867,6 +871,7 @@ export const lessons: ChineseLesson[] = [
     "title": "食物",
     "pinyin": "shí wù",
     "topic": "Food",
+    "title_vi": "Đồ ăn",
     "vocab": [
       {
         "chinese": "米饭",
@@ -1082,6 +1087,7 @@ export const lessons: ChineseLesson[] = [
     "title": "饮料",
     "pinyin": "yǐn liào",
     "topic": "Drinks",
+    "title_vi": "Đồ uống",
     "vocab": [
       {
         "chinese": "水",
@@ -1285,6 +1291,7 @@ export const lessons: ChineseLesson[] = [
     "title": "星期",
     "pinyin": "xīng qī",
     "topic": "Days of the Week",
+    "title_vi": "Các ngày trong tuần",
     "vocab": [
       {
         "chinese": "星期一",
@@ -1488,6 +1495,7 @@ export const lessons: ChineseLesson[] = [
     "title": "月份",
     "pinyin": "yuè fèn",
     "topic": "Months",
+    "title_vi": "Các tháng trong năm",
     "vocab": [
       {
         "chinese": "一月",
@@ -1693,6 +1701,7 @@ export const lessons: ChineseLesson[] = [
     "title": "天气",
     "pinyin": "tiān qì",
     "topic": "Weather",
+    "title_vi": "Thời tiết",
     "vocab": [
       {
         "chinese": "晴天",
@@ -1898,6 +1907,7 @@ export const lessons: ChineseLesson[] = [
     "title": "动物",
     "pinyin": "dòng wù",
     "topic": "Animals",
+    "title_vi": "Động vật",
     "vocab": [
       {
         "chinese": "猫",
@@ -2103,6 +2113,7 @@ export const lessons: ChineseLesson[] = [
     "title": "身体",
     "pinyin": "shēn tǐ",
     "topic": "Body Parts",
+    "title_vi": "Các bộ phận cơ thể",
     "vocab": [
       {
         "chinese": "头",
@@ -2310,6 +2321,7 @@ export const lessons: ChineseLesson[] = [
     "title": "方向",
     "pinyin": "fāng xiàng",
     "topic": "Directions",
+    "title_vi": "Chỉ đường",
     "vocab": [
       {
         "chinese": "左边",
@@ -2515,6 +2527,7 @@ export const lessons: ChineseLesson[] = [
     "title": "时间",
     "pinyin": "shí jiān",
     "topic": "Time",
+    "title_vi": "Thời gian",
     "vocab": [
       {
         "chinese": "点",
@@ -2720,6 +2733,7 @@ export const lessons: ChineseLesson[] = [
     "title": "爱好",
     "pinyin": "ài hào",
     "topic": "Hobbies",
+    "title_vi": "Sở thích",
     "vocab": [
       {
         "chinese": "看书",
@@ -2925,6 +2939,7 @@ export const lessons: ChineseLesson[] = [
     "title": "学校",
     "pinyin": "xué xiào",
     "topic": "School",
+    "title_vi": "Trường học",
     "vocab": [
       {
         "chinese": "学校",
