@@ -195,8 +195,11 @@ function CardTile({
     >
       <div className="flex items-center gap-2">
         <span className="text-xl">{card.flag}</span>
+        {/* Eyebrow follows the active uiLang (was always-English, a
+            cross-language duplicate of the localized <h2> below). In
+            EN mode it mirrors the <h2> exactly as it already did. */}
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-          {card.title_en}
+          {uiLang === "en" ? card.title_en : card.title_vi}
         </p>
       </div>
       <h2 className="mt-2 text-base font-semibold text-slate-900">

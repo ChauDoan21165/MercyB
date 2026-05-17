@@ -162,6 +162,12 @@ export default function VietnameseLessonsPage() {
                       key={lesson.id}
                       lesson={lesson}
                       theme={theme}
+                      // Vietnamese-for-foreigners: title.vi = English
+                      // lesson title, title.en = English subtitle — both
+                      // the learner's language, not a UI duplicate. Keep
+                      // both lines (the single-language collapse would
+                      // otherwise drop the subtitle).
+                      dualTitle
                     />
                   ))}
                 </div>

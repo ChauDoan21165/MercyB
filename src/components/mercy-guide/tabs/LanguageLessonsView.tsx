@@ -271,11 +271,12 @@ function LessonTile({
 }) {
   const [open, setOpen] = useState(false);
 
+  // Single language only — the active uiLang. The other-language title
+  // was UI duplication; users who want it switch modes via the toggle.
   const title =
     uiLang === "en"
       ? (lesson.title.en ?? lesson.title.vi)
       : (lesson.title.vi ?? lesson.title.en);
-  const subtitle = uiLang === "en" ? lesson.title.vi : lesson.title.en;
 
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 bg-white">
@@ -287,9 +288,6 @@ function LessonTile({
       >
         <div className="min-w-0 flex-1">
           <p className="text-xs font-medium text-slate-900">{title}</p>
-          {subtitle && subtitle !== title && (
-            <p className="text-[10px] text-slate-500">{subtitle}</p>
-          )}
         </div>
         {open ? (
           <ChevronUp className="h-3 w-3 shrink-0 text-slate-400" />

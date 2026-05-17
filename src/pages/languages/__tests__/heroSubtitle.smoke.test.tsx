@@ -8,10 +8,11 @@
 // mode the subtitle rendered the Vietnamese "… cho người Việt" line
 // directly under the de-narrowed English title.
 //
-// Fix (Option A): in EN mode the VI-string subtitle is hidden entirely.
-// VI mode is byte-identical (still: VI title + de-narrowed EN secondary
-// line). This test renders all five affected pages in BOTH modes and
-// asserts the hero is audience-appropriate each way.
+// SUPERSEDED by the single-language requirement (uilang-single-language):
+// the hero now shows ONLY the active uiLanguage in BOTH modes. #518's
+// asymmetry (VI mode kept the EN secondary line) is gone — the secondary
+// <p> was deleted entirely. This test renders all five affected pages in
+// both modes and asserts a single-language, audience-appropriate hero.
 //
 // Each page's hero <header> renders synchronously; the lesson fetch is
 // in a caught useEffect and does not block (or crash) first render, so
@@ -64,16 +65,15 @@ describe("language-page hero subtitle (smoke, #509 §8)", () => {
   });
 
   for (const { name, Page, viTitle } of PAGES) {
-    it(`${name}: VI mode (default) — VI title + de-narrowed EN secondary line, byte-identical`, () => {
+    it(`${name}: VI mode (default) — VI title only, NO EN secondary line`, () => {
       // No stored value → provider defaults to "vi" (existing behavior).
       const { container } = renderPage(Page);
       const text = container.textContent ?? "";
       // VI title still present (Vietnamese-first, untouched).
       expect(text).toContain(viTitle);
-      // Secondary line still renders in VI mode = the de-narrowed EN
-      // line. This is the slot we made conditional; it MUST still show
-      // here so VI users get byte-identical copy.
-      expect(text).toContain(EN_TITLE_ANCHOR);
+      // The EN secondary line is now GONE in VI mode too (single
+      // language — supersedes #518's asymmetry).
+      expect(text).not.toContain(EN_TITLE_ANCHOR);
     });
 
     it(`${name}: EN mode — de-narrowed EN title, NO exclusionary VI subtitle`, () => {
