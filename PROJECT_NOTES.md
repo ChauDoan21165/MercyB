@@ -190,7 +190,7 @@ WHERE user_id = '9957f25a-7b58-4a17-a3f2-4b91e63e69ae';
 | Push notifications deferred indefinitely | Facebook handles re-engagement |
 | 3-day trial (not 7-day) | Decision locked; templates updated to match |
 | Drop D-3 email stage | For 3-day trial, D-3 fires on signup day |
-| Bundle ID: com.chaudoan.mercyblade (both iOS + Android) | Aligned PR #152 |
+| Bundle ID divergent + permanent: iOS `com.chaudoan.mercyblade`, Android `com.mercyapps.mercyblade` | PR #152 aligned iOS only; Android applicationId locked at first Play publish — do NOT "align" |
 | OAuth deep-link scheme stays com.mercyapps.mercyblade | Decoupled from bundle ID, registered with Supabase |
 | Anonymous auth ships dark (flag OFF) first | Cleanup migration + rate limit needed before flag-on |
 | IELTS Path C: skeleton-only, content TODO | Avoids copyright on Cambridge/IDP/British Council material |

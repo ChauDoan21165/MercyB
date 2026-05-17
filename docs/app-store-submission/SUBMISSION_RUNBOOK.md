@@ -22,7 +22,10 @@ Companion reading:
 
 Decide and lock the following — they're either irreversible or expensive to change later:
 
-- [ ] **Bundle ID:** confirm `com.chaudoan.mercyblade` is what App Store Connect + Play Console will register. Both platforms now agree (audit §10) — do NOT revert this.
+- [ ] **Bundle / package ID — the two platforms are PERMANENTLY DIVERGENT. This is correct. Do NOT "align" them:**
+  - **iOS bundle ID:** `com.chaudoan.mercyblade` (in `ios/App/App.xcodeproj/project.pbxproj` + `capacitor.config.ts` `appId`) — matches the App Store Connect upload.
+  - **Android `applicationId`:** `com.mercyapps.mercyblade` (in `android/app/build.gradle`) — this is what the **live** Play Store listing is keyed to. It has only ever been `com.mercyapps.mercyblade`; PR #152 ("align bundle ID") changed **iOS only**.
+  - ⚠️ **An Android `applicationId` is permanently locked after first publish.** Android Build 4 went Live in Play Closed Testing under `com.mercyapps.mercyblade`. Do NOT change Android to `com.chaudoan.mercyblade` to "match" iOS — Google Play binds a listing to its `applicationId` forever; changing it orphans the existing Play Store listing, destroys the Closed Testing track + Build history, and forces a brand-new app entry. The iOS/Android divergence is acceptable and final. (Any earlier doc claiming "both platforms now agree on `com.chaudoan.mercyblade`" is false — see `reports/RECON-mobile-build-status.md` §3.)
 - [ ] **Apple App Name:** `MercyBlade — IELTS & English` (24/30) — locked at first submission for ~30 days.
 - [ ] **Play App Title:** `MercyBlade — Học tiếng Anh cho người Việt` (42/50) — editable but indexed.
 - [ ] **Predicted age rating:** 4+ Apple / 3+ IARC — confirm before answering questionnaire.

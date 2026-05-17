@@ -20,7 +20,7 @@
 | 7. Microphone + speech permission strings | ✅ | Bilingual `NSMicrophoneUsageDescription` + `NSSpeechRecognitionUsageDescription` in `Info.plist`. |
 | 8. Photo library permission string | ✅ | Bilingual `NSPhotoLibraryUsageDescription`. |
 | 9. Export compliance | ✅ | `ITSAppUsesNonExemptEncryption` = false in `Info.plist`. |
-| 10. Bundle ID alignment | ✅ | Both platforms now `com.chaudoan.mercyblade` (was divergent at A6 audit). |
+| 10. Bundle ID alignment | ⚠️ | **CORRECTED 2026-05-17 — original claim was false.** iOS = `com.chaudoan.mercyblade`; Android `applicationId` = `com.mercyapps.mercyblade` (never changed — PR #152 aligned iOS only). Divergence is permanent + acceptable; Android is locked at first Play publish. Do NOT "align". See `reports/RECON-mobile-build-status.md` §3. |
 | 11. Sentry crash gating | ✅ | DSN-gated; PII-scrubbed; `ui.input` breadcrumbs dropped. |
 | 12. Localization (VI primary, EN fallback) | ✅ | Bilingual hardcoded `{ vi, en }` pattern across user-facing components. No missing-key risk. |
 | 13. Functional completeness — gift purchase placeholder | 🟡 | `/gift` page shows literal text "Stripe checkout coming soon." in `PurchaseGiftForm.tsx:185` and is NOT iOS-gated. |
@@ -211,7 +211,7 @@ These were checked and look correct as-shipped. Listed for completeness so futur
 - **Restore Purchases** — `src/components/iap/RestorePurchasesButton.tsx:59` gates render on iOS only; `src/components/pricing/IapPlanCard.tsx:242–249` includes a secondary copy on Pricing.
 - **iOS payment routing** — `src/screens/Pricing.tsx:134–137, 792, 873–880` hides Stripe yearly comparison + Stripe cards on `getPlatform() === 'ios'`.
 - **Sign in with Apple** — `src/pages/LoginPage.tsx:363–395` wires `signInWithNativeOAuth({ provider: 'apple' })` for iOS + web fallback. Comment at the top references Apple Guideline 4.8.
-- **Bundle ID alignment** — both `ios/App/App.xcodeproj/project.pbxproj` and `android/app/build.gradle` declare `com.chaudoan.mercyblade`.
+- **Bundle ID alignment** — ⚠️ **CORRECTED 2026-05-17:** `ios/App/App.xcodeproj/project.pbxproj` declares `com.chaudoan.mercyblade`; `android/app/build.gradle` declares `com.mercyapps.mercyblade`. The original "both declare `com.chaudoan.mercyblade`" was false. Divergence is permanent — Android `applicationId` is locked after first Play publish, do NOT "align". See `reports/RECON-mobile-build-status.md` §3.
 - **Permission strings** — `ios/App/App/Info.plist` has bilingual `NSMicrophoneUsageDescription`, `NSSpeechRecognitionUsageDescription`, `NSPhotoLibraryUsageDescription`.
 - **Export compliance** — `ITSAppUsesNonExemptEncryption = false` in `Info.plist`.
 - **Sentry** — `src/lib/monitoring/sentryInit.ts` is DSN-gated, PII-scrubbed (`stripPII()` at :133), drops `ui.input` breadcrumbs.
