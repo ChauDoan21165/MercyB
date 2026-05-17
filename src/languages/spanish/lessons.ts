@@ -78,10 +78,11 @@ export type SpanishCategoryMeta = {
   expected_count: number;
 };
 
-// Curriculum design — counts sum to 110 across 41 categories spanning
-// all six CEFR levels. PR-C ships the A1 corpus; A2-C2 land in
-// subsequent rounds. Adjusting expected_count later is cheap; the page
-// just renders whatever lessons exist regardless of the planned total.
+// Curriculum design — expected_count sums to 110 across 41 categories
+// spanning all six CEFR levels. All six levels are now populated (109
+// lessons shipped; see SPANISH_TOTAL_LESSONS). expected_count is the
+// original planning target and is not read at runtime; the page just
+// renders whatever lessons exist regardless of the planned total.
 export const SPANISH_CATEGORIES: ReadonlyArray<SpanishCategoryMeta> = [
   // A1 — 16 lessons across 9 categories
   { id: "greetings", level: "A1", title: "Greetings & introductions", description: "Hola, buenos días, mucho gusto — first 30 seconds of every conversation.", expected_count: 2 },
@@ -227,10 +228,11 @@ export type SpanishLesson = {
 
 // ── Lazy lesson registry ────────────────────────────────────────────────
 //
-// Mirrors src/languages/french/lessons.ts. PR-C populates lessons-a1.ts;
-// A2-C2 remain empty stubs until subsequent rounds. The page resolves
-// lessons via fetchLessonsBatch (Supabase) at runtime — these locals are
-// just the API surface preserved for any direct importers.
+// Mirrors src/languages/french/lessons.ts. All six lessons-{level}.ts
+// files are fully populated; these loader functions stay []-returning
+// stubs by design. The page resolves lessons via fetchLessonsBatch
+// (Supabase) at runtime — these locals are just the API surface
+// preserved for any direct importers.
 
 const _cache = new Map<string, SpanishLesson[]>();
 
@@ -274,7 +276,7 @@ export function getSpanishLessonById(id: string): SpanishLesson | undefined {
   return undefined;
 }
 
-// Total planned lesson count across every level. Per-level lessons-{level}.ts
-// files are the source of truth at runtime; this constant is just the
-// curriculum-design target for the page hero subtitle.
-export const SPANISH_TOTAL_LESSONS = 110;
+// Actual shipped lesson count across all six levels (A1 14 + A2 15 +
+// B1 20 + B2 25 + C1 20 + C2 15). Per-level lessons-{level}.ts files are
+// the runtime source of truth; this constant feeds the page hero subtitle.
+export const SPANISH_TOTAL_LESSONS = 109;

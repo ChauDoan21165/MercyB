@@ -21,7 +21,7 @@
 //      vocabulary required to discuss them with any literate speaker.
 //
 // This file completes the Spanish curriculum: A1 (14) + A2 (15) +
-// B1 (20) + B2 (25) + C1 (20) + C2 (15) = 110 lessons.
+// B1 (20) + B2 (25) + C1 (20) + C2 (15) = 109 lessons.
 
 import type { SpanishLesson } from "./lessons";
 
