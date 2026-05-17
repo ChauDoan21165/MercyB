@@ -298,7 +298,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "nói trúng tâm điểm vấn đề (gehoben/standardsprachlich)",
         "meaning_en": "to hit the nail on the head — pinpoint the heart of the matter (elevated/standard register)",
         "example": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere.",
-        "example_en": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere. ('With that observation you've hit the nail on the head — that's exactly the research gap I'm addressing.')"
+        "example_en": "With that observation you've hit the nail on the head — that's exactly the research gap I'm addressing."
       },
       {
         "idiom": "etwas auf den Punkt bringen",
@@ -307,7 +307,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)",
         "meaning_en": "to bring something to a point — sum it up at its essential core (standard register)",
         "example": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit.",
-        "example_en": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit. ('If I may bring my thesis to a point: linguistic hybridity is a resource, not a deficit.')"
+        "example_en": "If I may bring my thesis to a point: linguistic hybridity is a resource, not a deficit."
       },
       {
         "idiom": "ein zweischneidiges Schwert sein",
@@ -316,7 +316,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "có cả mặt lợi và mặt hại (gehoben)",
         "meaning_en": "to be a double-edged sword — cuts both ways (elevated register)",
         "example": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe.",
-        "example_en": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe. ('The quantitative method is a double-edged sword — it brings representativeness, but at the cost of analytical depth.')"
+        "example_en": "The quantitative method is a double-edged sword — it brings representativeness, but at the cost of analytical depth."
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
@@ -325,7 +325,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "ủng hộ luận điểm của ai đó (gehoben)",
         "meaning_en": "to be water on someone's mill — to support/play into someone's argument (elevated register; closest English equivalent: 'grist to one's mill')",
         "example": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz.",
-        "example_en": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz. ('Pennycook's latest findings are grist to my mill — they confirm my resource-based approach.')"
+        "example_en": "Pennycook's latest findings are grist to my mill — they confirm my resource-based approach."
       }
     ],
     "exercises": [
@@ -693,7 +693,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "kế thừa và xây dựng trên thành tựu của các học giả lớn (gehoben)",
         "meaning_en": "to stand on the shoulders of giants — to build on the achievements of great predecessors (elevated register; the English original from Bernard of Chartres / Newton works equally in German)",
         "example": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet.",
-        "example_en": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet. ('With this investigation I stand on the shoulders of giants — Bourdieu, Habermas, Garfinkel paved the way.')"
+        "example_en": "With this investigation I stand on the shoulders of giants — Bourdieu, Habermas, Garfinkel paved the way."
       },
       {
         "idiom": "den Stein des Anstoßes liefern",
@@ -702,7 +702,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đưa ra điểm gây tranh luận quyết định (gehoben)",
         "meaning_en": "to provide the stone of offence — to deliver the decisive point of contention/disagreement (elevated register)",
         "example": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs.",
-        "example_en": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs. ('Wacquant's critique (2014) provided the catalyst for my modification of the habitus concept.')"
+        "example_en": "Wacquant's critique (2014) provided the catalyst for my modification of the habitus concept."
       },
       {
         "idiom": "ins selbe Horn stoßen",
@@ -711,7 +711,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đồng tình với quan điểm của ai đó (gehoben)",
         "meaning_en": "to blow the same horn (origin: hunting) — to agree with someone's position, to take the same line (elevated register)",
         "example": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart.",
-        "example_en": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart. ('García & Wei (2014) take the same line as Pennycook — both argue for a resource-oriented reading.')"
+        "example_en": "García & Wei (2014) take the same line as Pennycook — both argue for a resource-oriented reading."
       },
       {
         "idiom": "der rote Faden",
@@ -720,7 +720,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "chủ đề xuyên suốt, mạch lập luận trung tâm (standardsprachlich)",
         "meaning_en": "the red thread — the through-line, the central thread of an argument (standard register; closest English equivalent: 'the common thread' or 'through-line')",
         "example": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation.",
-        "example_en": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation. ('Bourdieu's concept of symbolic power forms the through-line of my argument.')"
+        "example_en": "Bourdieu's concept of symbolic power forms the through-line of my argument."
       }
     ],
     "exercises": [
@@ -2876,7 +2876,7 @@ export const lessons: GermanLesson[] = [
     "cultural_notes_vi": "Q&A tại Tagung (hội nghị) Đức tuân theo quy ước rất khác Anh-Mỹ. (1) FRAGE-RANKING: tại hội nghị Đức điển hình, người đặt câu hỏi đầu tiên là 'discussant' chính thức được mời trước (Diskutant:in / Kommentator:in). Họ có 5-10 phút commentary + câu hỏi. Sau đó open floor — các câu hỏi từ audience. Trong hierarchy: Senior professors > Habilitierte > Postdocs > Promovierende. Junior thường để Senior hỏi trước. (2) FRAGEFORMAT: câu hỏi formal Đức luôn bắt đầu với (a) Acknowledgment ngắn ('Vielen Dank für den anregenden Vortrag'), (b) Lokalisierung des Punktes ('zu Ihrem Punkt X'), (c) Konkrete Frage ('inwiefern...'). KHÔNG đặt câu hỏi multiple stacked như Anh-Mỹ — có thể bị chair cắt. Một câu hỏi rõ ràng. (3) ANTWORT-FORMAT: trả lời formal phải (a) acknowledge câu hỏi ('Diese Frage berührt einen wesentlichen Punkt'), (b) signalize ý định ('gestatten Sie, dass ich...'), (c) trả lời rõ ràng, (d) acknowledge limitation nếu có ('das übersteigt den Rahmen').\n\nKhác Việt Nam: ở hội thảo VN, Q&A thường có yếu tố 'thầy dạy thêm cho học trò' — speaker thường rất polite, nhận hết feedback. Ở Đức, speaker được expect DEFEND quan điểm — không từ chối acknowledge limitation, nhưng cũng không over-apologize. 'Diese Kritik teile ich nicht — ich begründe wie folgt' (tôi không chia sẻ phê phán này — tôi biện minh như sau) hoàn toàn OK.\n\nMột chi tiết quan trọng: chair của session có quyền (a) cắt câu hỏi quá dài ('Bitte fassen Sie sich kurz'), (b) cắt câu trả lời nếu cần ('Aufgrund der Zeit müssen wir die Diskussion abbrechen'), (c) chỉ định người đặt câu hỏi tiếp theo. Chair commands có authority — KHÔNG ignore.\n\nVề handzeichen: tại Đức Tagung, người muốn đặt câu hỏi giơ tay (Hand heben). Chair sẽ point + giới thiệu: 'Bitte, Frau Müller'. Junior wartet trên patience. Chỉ khi đã được called, mới nói. KHÔNG interrupt.\n\nVề Self-introduction: khi đặt câu hỏi formal, nên giới thiệu ngắn: 'Kurz zur Vorstellung: ich bin Linh Nguyễn, Doktorandin an der Universität Bielefeld' — 5 giây tối đa. Sau đó câu hỏi.\n\nVề post-Q&A: người đặt câu hỏi quan trọng nên approach speaker tại Coffee Break — đó là Vernetzung (networking). Câu chuẩn: 'Frau Nguyễn, ich bin Dr. Schmidt — meine Frage hat sich nicht erschöpft, könnten wir das in Ruhe weiterdiskutieren?' (câu hỏi của tôi chưa hết, chúng ta có thể thảo luận tiếp trong yên tĩnh không?). Đó là cách sciencer Đức xây dựng quan hệ.",
     "cultural_notes_en": "Q&A at a German Tagung (conference) follows conventions that differ noticeably from US/UK practice. (1) FRAGE-RANKING: at a typical German conference, the first question is asked by a formally pre-invited 'discussant' (Diskutant:in / Kommentator:in). They get 5–10 minutes of commentary plus a question. Only then does the floor open. In the implicit hierarchy: Senior professors > Habilitierte > Postdocs > Promovierende. Junior scholars typically wait for seniors to ask first. (2) FRAGEFORMAT: a formal German question always opens with (a) a brief acknowledgment ('Vielen Dank für den anregenden Vortrag'), (b) Lokalisierung of the point ('zu Ihrem Punkt X'), (c) the konkrete Frage itself ('inwiefern...'). Do NOT stack multiple questions in one turn the way US conferences sometimes tolerate — the chair will cut you off. One clear question. (3) ANTWORT-FORMAT: a formal answer must (a) acknowledge the question ('Diese Frage berührt einen wesentlichen Punkt'), (b) signal the intent ('gestatten Sie, dass ich...'), (c) deliver a clear answer, (d) acknowledge limitations if needed ('das übersteigt den Rahmen').\n\nContrast with US/UK norms: in some Anglo conferences, Q&A trends toward consensus-building — speakers nod, accept everything, and thank everyone. In Germany the speaker is expected to DEFEND their position — not refuse to acknowledge a limitation, but also not over-apologise. 'Diese Kritik teile ich nicht — ich begründe wie folgt' (I don't share this critique — I argue as follows) is perfectly acceptable.\n\nOne crucial detail: the chair has authority to (a) cut an over-long question ('Bitte fassen Sie sich kurz'), (b) cut an over-long answer if necessary ('Aufgrund der Zeit müssen wir die Diskussion abbrechen'), (c) call the next questioner. The chair's commands carry authority — do NOT ignore them.\n\nOn Handzeichen (hand-raising): at a German Tagung, anyone wishing to ask raises their hand. The chair will point and announce: 'Bitte, Frau Müller'. Juniors wait patiently. Speak only after being called — do NOT interrupt.\n\nOn self-introduction: when you ask a formal question, give a brief introduction: 'Kurz zur Vorstellung: ich bin Linh Nguyễn, Doktorandin an der Universität Bielefeld' — five seconds maximum. Then the question.\n\nOn post-Q&A: if you've asked a question that mattered to you, approach the speaker during the Coffee Break — that's Vernetzung (networking). The canonical opener: 'Frau Nguyễn, ich bin Dr. Schmidt — meine Frage hat sich nicht erschöpft, könnten wir das in Ruhe weiterdiskutieren?' (my question wasn't exhausted; could we continue more calmly?). That is how German academics build relationships.",
     "tip_advice_vi": "Khi đặt câu hỏi tại Tagung (cấu trúc 3 bước):\n1. ACKNOWLEDGMENT (5-10 giây): 'Vielen Dank für den anregenden Vortrag, Frau Nguyễn'\n2. LOKALISIERUNG (5-10 giây): 'Ich hätte eine Frage zu Ihrem Punkt zur Stichprobenkonstruktion'\n3. KONKRETE FRAGE (10-20 giây): 'Inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?'\n\nNgôn ngữ đặt câu hỏi formal:\n- 'Vielen Dank für den anregenden Vortrag' (cảm ơn vì bài kích thích tư duy)\n- 'Ich hätte eine Frage zu...' (tôi có một câu hỏi về...)\n- 'Mich würde interessieren...' (tôi muốn quan tâm...)\n- 'Inwiefern...' (ở mức độ nào)\n- 'Wie verhält es sich mit...?' (sự việc với... thế nào?)\n- 'Könnten Sie präzisieren, ob...?' (bạn có thể làm chính xác liệu...?)\n- 'Wie würden Sie auf den Einwand reagieren, dass...?' (bạn sẽ phản ứng thế nào với phản đối rằng...?)\n\nKhi trả lời câu hỏi (cấu trúc 4 bước):\n1. ACKNOWLEDGMENT: 'Diese Frage berührt einen wesentlichen Punkt' / 'Eine sehr berechtigte Frage'\n2. SIGNALISIERUNG: 'gestatten Sie, dass ich differenziert darauf eingehe'\n3. ANTWORT: rõ ràng, cấu trúc\n4. SCHLUSSWENDUNG: signal kết thúc — 'Das wäre meine erste Antwort dazu' / 'Ich danke für den Hinweis'\n\nKhi không biết câu trả lời:\n- 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (câu này vượt khuôn khổ nghiên cứu hiện tại)\n- 'Ich nehme die Anregung sehr gern auf' (tôi rất sẵn lòng tiếp thu gợi ý)\n- 'Auf diesen Punkt müsste ich Sie um Geduld bitten — ich werde ihn schriftlich nachreichen' (cho điểm này tôi phải xin bạn kiên nhẫn — tôi sẽ trả lời bằng văn bản sau)\n- KHÔNG: 'Ich weiß es nicht' đơn lẻ. KHÔNG: 'Das ist eine gute Frage' (clichéd in formal German).\n\nKhi câu hỏi có nhiều phần:\n- 'Was Ihren ersten Aspekt betrifft, würde ich folgendermaßen argumentieren — was den zweiten betrifft, müsste ich Sie um Geduld bitten' (về khía cạnh thứ nhất tôi sẽ lập luận như sau — về khía cạnh thứ hai phải xin kiên nhẫn)\n- Nếu chair cắt: 'Aufgrund der Zeit muss ich auf den dritten Aspekt verzichten — ich biete Ihnen gern an, das im Anschluss zu vertiefen' (vì thời gian tôi phải bỏ qua khía cạnh thứ ba — tôi sẵn lòng đào sâu sau buổi)\n\nKhi không đồng ý với câu hỏi:\n- 'Diese Lesart Ihrer Frage teile ich nicht ganz' (tôi không hoàn toàn chia sẻ cách đọc câu hỏi của bạn)\n- 'Wenn ich Sie richtig verstanden habe, fragen Sie X — meine Antwort wäre Y' (nếu tôi hiểu bạn đúng, bạn hỏi X — câu trả lời của tôi là Y)\n\nKhi chair cắt câu hỏi của bạn:\n- 'Verstanden — ich fasse zusammen: ...' (hiểu rồi — tôi tóm gọn: ...)\n- KHÔNG protest, KHÔNG continue ignoring chair.\n\nMẹo cuối: ghi tên + Affiliation của những người đặt câu hỏi quan trọng cho bạn — sau Q&A approach họ tại Coffee Break để follow up. Tagung chính = Vernetzungsereignis. Một câu hỏi tốt + một follow-up conversation = potential collaboration partner.",
-    "tip_advice_en": "Asking a question at a Tagung (3-step structure):\n1. ACKNOWLEDGMENT (5–10 seconds): 'Vielen Dank für den anregenden Vortrag, Frau Nguyễn'\n2. LOKALISIERUNG (5–10 seconds): 'Ich hätte eine Frage zu Ihrem Punkt zur Stichprobenkonstruktion'\n3. KONKRETE FRAGE (10–20 seconds): 'Inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?'\n\nFormal question language:\n- 'Vielen Dank für den anregenden Vortrag' (many thanks for the stimulating talk)\n- 'Ich hätte eine Frage zu...' (I'd have a question about...)\n- 'Mich würde interessieren...' (I'd be interested to know...)\n- 'Inwiefern...' (to what extent)\n- 'Wie verhält es sich mit...?' (how does it stand with...?)\n- 'Könnten Sie präzisieren, ob...?' (could you clarify whether...?)\n- 'Wie würden Sie auf den Einwand reagieren, dass...?' (how would you respond to the objection that...?)\n\nAnswering a question (4-step structure):\n1. ACKNOWLEDGMENT: 'Diese Frage berührt einen wesentlichen Punkt' / 'Eine sehr berechtigte Frage'\n2. SIGNALISIERUNG: 'gestatten Sie, dass ich differenziert darauf eingehe'\n3. ANTWORT: clear, structured\n4. SCHLUSSWENDUNG: signal the close — 'Das wäre meine erste Antwort dazu' / 'Ich danke für den Hinweis'\n\nWhen you don't know the answer:\n- 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (this question exceeds the scope of my current investigation)\n- 'Ich nehme die Anregung sehr gern auf' (I'm very glad to take the suggestion on board)\n- 'Auf diesen Punkt müsste ich Sie um Geduld bitten — ich werde ihn schriftlich nachreichen' (on this point I'd have to ask for your patience — I'll respond in writing)\n- AVOID: a bare 'Ich weiß es nicht'. AVOID: 'Das ist eine gute Frage' (clichéd in formal German).\n\nFor multi-part questions:\n- 'Was Ihren ersten Aspekt betrifft, würde ich folgendermaßen argumentieren — was den zweiten betrifft, müsste ich Sie um Geduld bitten' (regarding your first aspect, I'd argue as follows — regarding the second, I must ask for patience)\n- If the chair cuts you off: 'Aufgrund der Zeit muss ich auf den dritten Aspekt verzichten — ich biete Ihnen gern an, das im Anschluss zu vertiefen' (due to time I must skip the third aspect — I'd be glad to dig into it afterwards)\n\nWhen you disagree with the question itself:\n- 'Diese Lesart Ihrer Frage teile ich nicht ganz' (I don't fully share that reading of your question)\n- 'Wenn ich Sie richtig verstanden habe, fragen Sie X — meine Antwort wäre Y' (if I've understood you correctly, you're asking X — my answer would be Y)\n\nWhen the chair cuts your question short:\n- 'Verstanden — ich fasse zusammen: ...' (understood — I'll summarise: ...)\n- Do NOT protest, do NOT continue ignoring the chair.\n\nFinal tip: write down the names and affiliations of people whose questions matter to you — approach them at the Coffee Break to follow up. A Tagung is fundamentally a Vernetzungsereignis (networking event). One good question plus one follow-up conversation = a potential collaboration partner.",
+    "tip_advice_en": "Asking a question at a Tagung (3-step structure):\n1. ACKNOWLEDGMENT (5–10 seconds): 'Vielen Dank für den anregenden Vortrag, Frau Nguyễn'\n2. LOKALISIERUNG (5–10 seconds): 'Ich hätte eine Frage zu Ihrem Punkt zur Stichprobenkonstruktion'\n3. KONKRETE FRAGE (10–20 seconds): 'Inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?'\n\nFormal question language:\n- 'Vielen Dank für den anregenden Vortrag' (many thanks for the stimulating talk)\n- 'Ich hätte eine Frage zu...' (I'd have a question about...)\n- 'Mich würde interessieren...' (I'd be interested to know...)\n- 'Inwiefern...' (to what extent)\n- 'Wie verhält es sich mit...?' (how does it stand with...?)\n- 'Könnten Sie präzisieren, ob...?' (could you clarify whether...?)\n- 'Wie würden Sie auf den Einwand reagieren, dass...?' (how would you respond to the objection that...?)\n\nAnswering a question (4-step structure):\n1. ACKNOWLEDGMENT: 'Diese Frage berührt einen wesentlichen Punkt' / 'Eine sehr berechtigte Frage'\n2. SIGNALISIERUNG: 'gestatten Sie, dass ich differenziert darauf eingehe'\n3. ANTWORT: clear, structured\n4. SCHLUSSWENDUNG: signal the close — 'Das wäre meine erste Antwort dazu' / 'Ich danke für den Hinweis'\n\nWhen you don't know the answer:\n- 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (this question exceeds the scope of my current investigation)\n- 'Ich nehme die Anregung sehr gern auf' (I'm very glad to take the suggestion on board)\n- 'Auf diesen Punkt müsste ich Sie um Geduld bitten — ich werde ihn schriftlich nachreichen' (on this point I'd have to ask for your patience — I'll respond in writing)\n- AVOID: a bare 'Ich weiß es nicht'. AVOID: 'Das ist eine gute Frage' (cliched in formal German).\n\nFor multi-part questions:\n- 'Was Ihren ersten Aspekt betrifft, würde ich folgendermaßen argumentieren — was den zweiten betrifft, müsste ich Sie um Geduld bitten' (regarding your first aspect, I'd argue as follows — regarding the second, I must ask for patience)\n- If the chair cuts you off: 'Aufgrund der Zeit muss ich auf den dritten Aspekt verzichten — ich biete Ihnen gern an, das im Anschluss zu vertiefen' (due to time I must skip the third aspect — I'd be glad to dig into it afterwards)\n\nWhen you disagree with the question itself:\n- 'Diese Lesart Ihrer Frage teile ich nicht ganz' (I don't fully share that reading of your question)\n- 'Wenn ich Sie richtig verstanden habe, fragen Sie X — meine Antwort wäre Y' (if I've understood you correctly, you're asking X — my answer would be Y)\n\nWhen the chair cuts your question short:\n- 'Verstanden — ich fasse zusammen: ...' (understood — I'll summarise: ...)\n- Do NOT protest, do NOT continue ignoring the chair.\n\nFinal tip: write down the names and affiliations of people whose questions matter to you — approach them at the Coffee Break to follow up. A Tagung is fundamentally a Vernetzungsereignis (networking event). One good question plus one follow-up conversation = a potential collaboration partner.",
     "vocabulary": [
       {
         "word": "der Vortrag (pl. Vorträge)",
@@ -3084,7 +3084,7 @@ export const lessons: GermanLesson[] = [
       "A junior professor raises a question about Doppelmandat ethics. Answer formally: clarify the situation, mention the Ethikvotum + three concrete conditions (pseudonymised transcription, separate storage, deletion after five years)."
     ],
     "register_notes": "Q&A tại Tagung C1: 'Sie' tuyệt đối kể cả với người cùng tuổi/cấp. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Đặt câu hỏi 3 bước: Acknowledgment → Lokalisierung → Konkrete Frage. Trả lời 4 bước: Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (chạm điểm), 'den Rahmen übersteigen' (vượt khuôn khổ), 'eine Anregung aufnehmen' (tiếp thu gợi ý), 'eine Frage präzisieren' (làm chính xác). Khi không biết: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. KHÔNG 'Ich weiß es nicht' đơn. KHÔNG 'Das ist eine gute Frage' (clichéd). Multi-part question: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands có authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction tại Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 giây tối đa.",
-    "register_notes_en": "C1 Tagung Q&A: 'Sie' is absolute, even with peers of equal age or rank. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Question structure (3 steps): Acknowledgment → Lokalisierung → Konkrete Frage. Answer structure (4 steps): Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (to touch on a point), 'den Rahmen übersteigen' (to exceed the scope), 'eine Anregung aufnehmen' (to take up a suggestion), 'eine Frage präzisieren' (to clarify). When you don't know: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. Do NOT say a bare 'Ich weiß es nicht'. Do NOT say 'Das ist eine gute Frage' (clichéd). For multi-part questions: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands carry authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction at Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 seconds maximum.",
+    "register_notes_en": "C1 Tagung Q&A: 'Sie' is absolute, even with peers of equal age or rank. Hierarchy: Senior > Habilitierte > Postdocs > Promovierende. Question structure (3 steps): Acknowledgment → Lokalisierung → Konkrete Frage. Answer structure (4 steps): Acknowledgment → Signalisierung → Antwort → Schlusswendung. Funktionsverbgefüge: 'einen Punkt berühren' (to touch on a point), 'den Rahmen übersteigen' (to exceed the scope), 'eine Anregung aufnehmen' (to take up a suggestion), 'eine Frage präzisieren' (to clarify). When you don't know: 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf'. Do NOT say a bare 'Ich weiß es nicht'. Do NOT say 'Das ist eine gute Frage' (cliched). For multi-part questions: 'Was Ihren ersten Aspekt betrifft... was den zweiten betrifft...'. Chair commands carry authority — 'Bitte fassen Sie sich kurz' / 'Aufgrund der Zeit'. Self-introduction at Q&A: 'Kurz zur Vorstellung: ich bin X von Universität Y' — 5 seconds maximum.",
     "idiom_glosses": [
       {
         "idiom": "den Ball zurückspielen",
@@ -6666,7 +6666,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đối mặt thẳng vấn đề khó (gehoben/standardsprachlich)",
         "meaning_en": "to take the bull by the horns — confront a difficult problem head-on (elevated/standard register; the English idiom is identical)",
         "example": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation.",
-        "example_en": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation. ('After three failed direct conversations you have to take the bull by the horns — formal mediation.')"
+        "example_en": "After three failed direct conversations you have to take the bull by the horns — formal mediation."
       },
       {
         "idiom": "die Wogen glätten",
@@ -6675,7 +6675,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "làm dịu xung đột (gehoben)",
         "meaning_en": "to smooth the waves — calm a conflict (elevated register; closest English equivalent is 'pour oil on troubled waters')",
         "example": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen.",
-        "example_en": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen. ('A moderated discussion can smooth the waves — if both sides come open-ended.')"
+        "example_en": "A moderated discussion can smooth the waves — if both sides come open-ended."
       },
       {
         "idiom": "vom Hundertsten ins Tausendste kommen",
@@ -6684,7 +6684,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "leo thang từ chuyện nhỏ sang chuyện lớn (standardsprachlich)",
         "meaning_en": "to go from the hundredth to the thousandth — escalate from a small issue to a sprawling one; lose the thread (standard register)",
         "example": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste.",
-        "example_en": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste. ('If you mix the substantive level with the personal level, you quickly drift from the hundredth to the thousandth.')"
+        "example_en": "If you mix the substantive level with the personal level, you quickly drift from the hundredth to the thousandth."
       },
       {
         "idiom": "Brücken bauen",
@@ -6693,7 +6693,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "tạo kết nối, hòa giải (standardsprachlich)",
         "meaning_en": "to build bridges — create connections, mediate (standard register; identical English idiom)",
         "example": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern.",
-        "example_en": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern. ('A successful mediation builds bridges between the conflict parties — without papering over the difference.')"
+        "example_en": "A successful mediation builds bridges between the conflict parties — without papering over the difference."
       }
     ],
     "exercises": [
@@ -7064,7 +7064,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "minh bạch hóa Position (standardsprachlich)",
         "meaning_en": "to put the cards on the table — make one's position transparent (standard register; identical English idiom)",
         "example": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen.",
-        "example_en": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen. ('By announcing the BATNA I put my cards on the table — without showing every detail.')"
+        "example_en": "By announcing the BATNA I put my cards on the table — without showing every detail."
       },
       {
         "idiom": "die Reißleine ziehen",
@@ -7073,7 +7073,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "stop khẩn cấp, walk-away (standardsprachlich)",
         "meaning_en": "to pull the ripcord — make an emergency stop, walk away (standard register; closer to English 'pull the plug')",
         "example": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen.",
-        "example_en": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen. ('After three rounds of negotiation without convergence, it was time to pull the ripcord.')"
+        "example_en": "After three rounds of negotiation without convergence, it was time to pull the ripcord."
       },
       {
         "idiom": "Brücken nicht abreißen",
@@ -7082,7 +7082,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "không cắt đứt quan hệ trong walk-away (standardsprachlich)",
         "meaning_en": "not to tear down the bridges — preserve the relationship even at walk-away (standard register; the English equivalent is 'don't burn bridges')",
         "example": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern.",
-        "example_en": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern. ('Even at walk-away we don't tear down the bridges — the market can change.')"
+        "example_en": "Even at walk-away we don't tear down the bridges — the market can change."
       },
       {
         "idiom": "auf Augenhöhe verhandeln",
@@ -7091,7 +7091,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đàm phán bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "to negotiate at eye level — negotiate as equals (elevated/standard register; the English idiom is 'on a level playing field')",
         "example": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt.",
-        "example_en": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt. ('A BATNA gives you the power to negotiate at eye level — without one you are structurally disadvantaged.')"
+        "example_en": "A BATNA gives you the power to negotiate at eye level — without one you are structurally disadvantaged."
       }
     ],
     "exercises": [
@@ -7462,7 +7462,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "duy trì option re-engage future (standardsprachlich)",
         "meaning_en": "to keep the door open — preserve the option to re-engage in the future (standard register; identical English idiom)",
         "example": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich.",
-        "example_en": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich. ('Even on rejection we keep the door open — markets change, conditions change.')"
+        "example_en": "Even on rejection we keep the door open — markets change, conditions change."
       },
       {
         "idiom": "auf Augenhöhe",
@@ -7471,7 +7471,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "trên cơ sở bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "at eye level — on equal footing (elevated/standard register; English equivalent is 'on a level playing field')",
         "example": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal.",
-        "example_en": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal. ('I reject at eye level — factually, with a market reference, without a status signal.')"
+        "example_en": "I reject at eye level — factually, with a market reference, without a status signal."
       },
       {
         "idiom": "den Mantel des Schweigens hüllen",
@@ -7480,7 +7480,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "im lặng về điều khó (gehoben)",
         "meaning_en": "to wrap something in the cloak of silence — stay silent on something difficult (elevated register; closer to English 'draw a veil over')",
         "example": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty.",
-        "example_en": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty. ('I don't wrap my veto in the cloak of silence — direct feedback respects the counterparty.')"
+        "example_en": "I don't wrap my veto in the cloak of silence — direct feedback respects the counterparty."
       },
       {
         "idiom": "es rechnet sich nicht",
@@ -7489,7 +7489,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "không kinh tế khả thi (standardsprachlich)",
         "meaning_en": "it doesn't pay off / it doesn't add up — it's not economically viable (standard register; the most natural German way to put this)",
         "example": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen.",
-        "example_en": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen. ('At fourteen percent below the market average the agreement doesn't pay off for us — I have to say that openly.')"
+        "example_en": "At fourteen percent below the market average the agreement doesn't pay off for us — I have to say that openly."
       }
     ],
     "exercises": [
@@ -7855,7 +7855,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "kiên cường trước phê phán/tấn công (standardsprachlich)",
         "meaning_en": "to have a thick skin / a thick fur — be resilient under criticism or attack (standard register; the English equivalent is 'have thick skin')",
         "example": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen.",
-        "example_en": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen. ('In hostile negotiations you need a thick skin — personal attacks must not get through.')"
+        "example_en": "In hostile negotiations you need a thick skin — personal attacks must not get through."
       },
       {
         "idiom": "Ruhe bewahren",
@@ -7864,7 +7864,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "giữ bình tĩnh dưới áp lực (standardsprachlich)",
         "meaning_en": "to keep one's composure (standard register; literally 'preserve calm')",
         "example": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig.",
-        "example_en": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig. ('Whoever keeps their composure wins in a hostile environment — escalation never pays off long-term.')"
+        "example_en": "Whoever keeps their composure wins in a hostile environment — escalation never pays off long-term."
       },
       {
         "idiom": "den Ball flach halten",
@@ -7873,7 +7873,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
         "meaning_en": "to keep the ball flat / low — keep the tone low, don't escalate (standard register; closer to English 'keep your head down' or 'don't make waves')",
         "example": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren.",
-        "example_en": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren. ('Even when Müller gets loud, I keep the ball low. Escalation would only validate his tactic.')"
+        "example_en": "Even when Müller gets loud, I keep the ball low. Escalation would only validate his tactic."
       },
       {
         "idiom": "ins Schwarze treffen",
@@ -7882,7 +7882,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "trúng đích chính xác (gehoben/standardsprachlich)",
         "meaning_en": "to hit the bullseye — strike the target precisely (elevated/standard register; identical English idiom)",
         "example": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden.",
-        "example_en": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden. ('With the mandate reframe I hit the bullseye — Müller couldn't continue to be personal.')"
+        "example_en": "With the mandate reframe I hit the bullseye — Müller couldn't continue to be personal."
       }
     ],
     "exercises": [
