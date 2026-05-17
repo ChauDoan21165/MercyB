@@ -5,8 +5,11 @@
 // Chinese title shape:
 //   - lesson.title       → Chinese characters (e.g. "你好")          → title.native
 //   - lesson.pinyin      → romanization     (e.g. "nǐ hǎo")           → title.romanization
-//   - lesson.topic       → English label    (e.g. "Greetings")        → title.en (and title.vi fallback)
-// There is no Vietnamese title in the data; title.vi falls back to lesson.topic.
+//   - lesson.title_vi    → Vietnamese label (optional)               → title.vi
+//   - lesson.title_en    → English label    (optional)               → title.en
+//   - lesson.topic       → English label    (e.g. "Greetings")        → fallback for title.vi/title.en
+// title.vi prefers `title_vi`, title.en prefers `title_en`; both fall back to
+// `lesson.topic` when the authored bilingual fields are absent.
 //
 // Chinese vocabulary uses the legacy `vocab` field (not `vocabulary`).
 // Chinese sentences have no Vietnamese; vi is undefined.
@@ -26,8 +29,8 @@ export function normalizeChineseLesson(
     id: id ?? lesson.id,
     level: lesson.level,
     title: {
-      vi: lesson.topic,
-      en: lesson.topic,
+      vi: lesson.title_vi ?? lesson.topic,
+      en: lesson.title_en ?? lesson.topic,
       native: lesson.title,
       romanization: lesson.pinyin,
     },
