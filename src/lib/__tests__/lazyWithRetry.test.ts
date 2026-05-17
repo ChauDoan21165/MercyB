@@ -75,6 +75,54 @@ describe("createRetryLoader", () => {
     expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
   });
 
+  it("clears a previously-set reload mark on a successful chunk load", async () => {
+    // A prior stale-chunk recovery this session left the one-shot set.
+    sessionStorage.setItem(RELOAD_KEY, "1");
+    const fakeComponent = () => null;
+    const loader = createRetryLoader(async () => ({ default: fakeComponent }));
+
+    await expect(loader()).resolves.toEqual({ default: fakeComponent });
+    // Clean load proves HTML/chunk hashes are consistent again → reset the
+    // one-shot so a later deploy in this session can recover too.
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+    expect(reloadSpy).not.toHaveBeenCalled();
+  });
+
+  it("re-arms recovery: success-then-stale-chunk reloads again (later deploy in same session)", async () => {
+    // Session already spent its first reload on an earlier deploy.
+    sessionStorage.setItem(RELOAD_KEY, "1");
+
+    // Post-reload boot: a chunk loads cleanly → mark is cleared.
+    const ok = createRetryLoader(async () => ({ default: () => null }));
+    await expect(ok()).resolves.toBeTruthy();
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+
+    // A NEW deploy ships; the user navigates to a now-stale lazy route.
+    const stale = createRetryLoader(async () => {
+      throw makeStaleChunkError();
+    });
+    void stale();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    // Recovery is re-armed: it reloads again instead of crashing into the
+    // ErrorBoundary, and re-sets the one-shot for loop protection.
+    expect(reloadSpy).toHaveBeenCalledTimes(1);
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
+  });
+
+  it("supports the .then(m => ({ default: m.X })) factory shape (main.tsx toasters)", async () => {
+    sessionStorage.setItem(RELOAD_KEY, "1");
+    const Named = () => null;
+    const loader = createRetryLoader(() =>
+      Promise.resolve({ Toaster: Named }).then((m) => ({ default: m.Toaster })),
+    );
+
+    await expect(loader()).resolves.toEqual({ default: Named });
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+    expect(reloadSpy).not.toHaveBeenCalled();
+  });
+
   it("matches all chunk-load error message variants Vite/browsers emit", async () => {
     const variants = [
       "Failed to fetch dynamically imported module",
