@@ -1428,7 +1428,7 @@ export const lessons: FrenchLesson[] = [
       }
     ],
     "cultural_notes_vi": "Bưu điện Pháp (La Poste) cũng là ngân hàng. Tem mua ở quán cà phê-tabac. 'Chronopost' là chuyển phát nhanh.",
-    "cultural_notes_en": "La Poste is also a bank — many French keep accounts there. You can buy stamps at any tabac (corner café/tobacco shop) and skip the post-office queue entirely. 'Chronopost' = fast express; 'Colissimo' = standard parcel with tracking.",
+    "cultural_notes_en": "La Poste is also a bank — many French keep accounts there. You can buy stamps at any tabac (corner cafe/tobacco shop) and skip the post-office queue entirely. 'Chronopost' = fast express; 'Colissimo' = standard parcel with tracking.",
     "tip_advice_vi": "Chọn 'Colissimo' để có tracking. Khai hải quan nếu trên 45€.",
     "tip_advice_en": "Always pay the few extra euros for 'Colissimo' if you want tracking — base shipping has none. Anything valued over 45€ leaving the EU needs a customs declaration ('déclaration douanière') — fill it in clearly or your parcel sits in customs for weeks.",
     "vocabulary": [
