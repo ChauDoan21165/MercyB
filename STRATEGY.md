@@ -107,25 +107,16 @@ Expansion does NOT happen if:
 
 > Update this section every 1-2 weeks. Reality drift = strategy drift.
 
-### As of May 17, 2026
+### As of May 17, 2026 (end-of-day re-audit)
 
-- **Roadmap progress:** ~65-70% (per .claude/roadmap.md Step 9-ish, post Round 9)
-- **Schema generalization:** In flight — PR-A1 merged (#540), PR-A2 next. Foundation for two-audience expansion.
-- **CI/CD:** Restored to green via #536 (vite.config.ts Sentry plugin nesting fix). Production deploy pipeline now gates type errors properly.
-- **Doctrine:** CLAUDE.md doctrine errors fixed via #537 (kids/music inversion, createClient claim, stale facts).
-- **Recent bug fixes today:** German cleanup (#530), Chinese count + Cyrillic typos (#538), Mercy-guide single-language (#539).
-- **App stores:** Status to confirm — Apple Build 8 was uploaded April 25, Google Play Build 4 was Live in Closed Testing. Update when known.
-- **Paying users:** Last documented at 6 on April 24. Update when current.
-
-### What's running right now (agents)
-
-- Schema generalization agent (PR-A2 in flight)
-- Survival cleanup agent (JA C2 renumber + audio rekey first)
-- French ASCII normalization agent
-- ZH C2 chengyu cleanup agent
-- Sentry sourcemap-resolved triage agent
-- Repo cleanup agent (recon phase)
-- Docs consolidate agent (this work)
+- **Roadmap progress:** ~65-70% (`.claude/roadmap.md` figure, last recomputed 25 Apr / Round 9). Today closed no new 5% step; it advanced Step 10's schema foundation (now landed) — not yet re-scored.
+- **Schema generalization:** ✅ Phase 2 seam fully landed today — PR-A1 (#540), PR-A2 (#543), PR-A3 (#550), all behavior-identical. Native-language selection + pedagogy-axis split are in place. This is the foundation for the two-audience expansion (Roadmap Step 10).
+- **CI/CD:** Green and stable. Restored via #536 (Sentry plugin nesting fix); ~17 PRs merged green after it (#537–#553) confirm the pipeline holds.
+- **Doctrine & docs:** CLAUDE.md doctrine fixed (#537). Root markdown consolidated 74→16 with ROOM_GUIDE.md + SECURITY.md added (#549). Canonical STRATEGY.md + PRINCIPLES.md landed (#546). AUDIT_LATENCY §1/§2/§4/§5 marked RESOLVED with measured evidence (#552).
+- **Content correctness:** Lesson-count truth-ups across ZH/ES/KO; JA & ZH C2 id-collision renumbers (#541, #542); raw-chengyu and French/German loanword EN-field cleanups (#545, #547, #530). VI-first sibling content authored for JA A2 16–30 and B1 31–45 (#548, #551).
+- **Strategy (§4):** 6 off-mission language tracks un-surfaced; VN-for-foreigners deferred (#553).
+- **App stores:** Apple Build 8 uploaded April 25, status unverified. Google Play Build 4 Live in Closed Testing as of April 25, status unverified. Verification deferred until next active mobile push.
+- **Paying users:** Last documented at 6 on April 24. Current unverified.
 
 ---
 
@@ -338,6 +329,13 @@ NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy 
 ---
 
 ## 15. Changelog
+
+### May 17, 2026 — v2.1 (Same-day §6 re-audit)
+
+- Re-audited §6 per locked principle #9 (status docs drift): 25 PRs (#529–#553) merged after v2.0 landed the same day; §6 refreshed to end-of-day reality.
+- §6: schema-generalization Phase 2 marked complete (PR-A1/A2/A3 all merged — was "PR-A2 next"); CI marked stable (17 PRs green post-#536); shipped-work summary expanded from 3 items to a themed list; app-store + paying-user claims left explicitly unverified (no dashboard access).
+- Removed the "What's running right now (agents)" subsection — volatile by nature (stale within hours); live truth is `git worktree list`.
+- Noted the §4 change shipped by #553 (6 off-mission language tracks un-surfaced, VN-for-foreigners deferred); §4 body was edited by that PR — logged here for the trail.
 
 ### May 17, 2026 — v2.0 (Two-Audience Update)
 
