@@ -1012,23 +1012,91 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "お忙しいところ恐れ入りますが、少しお時間をいただけませんでしょうか。",
-        "english": "I'm sorry to interrupt when you're busy — could I please have a moment of your time?"
+        "english": "I'm sorry to interrupt when you're busy — could I please have a moment of your time?",
+        "pronunciation_focus": [
+          "お忙しいところ → 'o-i-so-ga-shii-to-ko-ro'; 美化語 お đọc thấp dính 忙しい; しい kéo dài 2 mora — đừng rút thành 'shi'",
+          "恐れ入りますが → 'o-so-re-i-ri-mas-ga'; cụm khiêm nhường mở đầu, đọc liền một hơi giọng hạ; ます lướt 'mas', が trôi không nhấn",
+          "少し → 'su-ko-shi'; す gần câm (devoiced u) nghe như 's-ko-shi' — đọc rõ 'su' kiểu Việt là lộ ngay",
+          "お時間 → 'o-ji-kan'; お nâng nhã, ん là một nhịp (mora) riêng, không dính nguyên âm trước",
+          "いただけませんでしょうか → 'i-ta-da-ke-ma-sen-de-shoo-ka'; chồng ba lớp lịch sự; か cuối CHỈ đi lên nhẹ — đây là lời thỉnh cầu, KHÔNG cao như câu hỏi yes/no"
+        ],
+        "pronunciation_focus_en": [
+          "お忙しいところ → 'o-i-so-ga-shii-to-ko-ro'; beautifier お low, bound to 忙しい; long しい (2 mora), not 'shi'",
+          "恐れ入りますが → 'o-so-re-i-ri-mas-ga'; humble opener in one low breath; ます glides to 'mas', が trails unstressed",
+          "少し → 'su-ko-shi'; devoiced す, near 's-ko-shi' — over-pronouncing 'su' marks a learner",
+          "お時間 → 'o-ji-kan'; honorific お; moraic ん is its own beat",
+          "いただけませんでしょうか → 'i-ta-da-ke-ma-sen-de-shoo-ka'; triple-stacked politeness; only a slight rise on か — a petition, not a yes/no question rise"
+        ]
       },
       {
         "japanese": "退職のことで、ご相談させていただきたく存じます。",
-        "english": "I would humbly like to consult with you regarding my resignation."
+        "english": "I would humbly like to consult with you regarding my resignation.",
+        "pronunciation_focus": [
+          "退職 → 'tai-sho-ku'; たい là nguyên âm đôi 2 mora, く cuối gần câm — gần 'tai-sho-k'",
+          "のことで → 'no-ko-to-de'; cụm đệm 'về việc ~', đọc nhanh và thấp, ngắt nhẹ sau で trước mệnh đề chính",
+          "ご相談 → 'go-soo-dan'; 美化語 ご + そう nguyên âm dài 2 mora; KHÔNG nhấn đầu — keigo càng phẳng càng nhã",
+          "させていただきたく → 'sa-se-te-i-ta-da-ki-ta-ku'; chuỗi kenjougo dài, giữ từng mora đều, đừng nuốt させて",
+          "存じます → 'zon-ji-mas'; ぞ là 'z' (không phải 'gi' Việt); kenjougo của 思う, hạ giọng kết câu trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "退職 → 'tai-sho-ku'; たい diphthong (2 mora), final く nearly devoiced ('tai-sho-k')",
+          "のことで → 'no-ko-to-de'; low fast filler 'regarding ~', slight break after で before the main clause",
+          "ご相談 → 'go-soo-dan'; beautifier ご + long そう; no initial stress — flatter keigo is more polite",
+          "させていただきたく → 'sa-se-te-i-ta-da-ki-ta-ku'; long kenjougo chain, even mora, don't swallow させて",
+          "存じます → 'zon-ji-mas'; 'z' (not 'gi'); humble verb for 思う, falling formal sentence-end"
+        ]
       },
       {
         "japanese": "三年間、本当にお世話になりました。",
-        "english": "For three years, I have truly been in your care. (set farewell phrase)"
+        "english": "For three years, I have truly been in your care. (set farewell phrase)",
+        "pronunciation_focus": [
+          "三年間 → 'san-nen-kan'; ba khối ん, mỗi ん một mora — người Việt hay nuốt ん giữa; phải tách rõ 'san·nen·kan'",
+          "本当に → 'hon-too-ni'; とう nguyên âm dài 2 mora; nhấn cảm xúc rất nhẹ ở 本当 để nghe thành thật, không kịch",
+          "お世話に → 'o-se-wa-ni'; cụm cố định, お thấp dính 世話, đọc liền một nhịp",
+          "なりました → 'na-ri-ma-shi-ta'; ました quá khứ; した cuối gần câm 'sh-ta'; giọng kết hạ ấm, không lạnh"
+        ],
+        "pronunciation_focus_en": [
+          "三年間 → 'san-nen-kan'; three ん blocks, each one mora — keep them separate, don't merge the middle ん",
+          "本当に → 'hon-too-ni'; long とう (2 mora); very light emotive lift on 本当 for sincerity, not drama",
+          "お世話に → 'o-se-wa-ni'; set phrase, low お bound to 世話, one unit",
+          "なりました → 'na-ri-ma-shi-ta'; past ました; final した nearly devoiced 'sh-ta'; warm falling close"
+        ]
       },
       {
         "japanese": "後任の方への引き継ぎは責任を持って行います。",
-        "english": "I will take full responsibility for the handover to my successor."
+        "english": "I will take full responsibility for the handover to my successor.",
+        "pronunciation_focus": [
+          "後任 → 'koo-nin'; こう nguyên âm dài 2 mora, ん một nhịp riêng",
+          "の方へ → 'no-ka-ta-e'; 方 ở đây đọc 'kata' (người — kính ngữ), KHÔNG 'hoo'; trợ từ へ đọc 'e' không 'he'",
+          "引き継ぎは → 'hi-ki-tsu-gi wa'; ぎ là 'g' cứng; は trợ từ chủ đề đọc 'wa', không 'ha'",
+          "責任を持って → 'se-ki-nin o mot-te'; もって có っ (sokuon) — ngắt một mora, đọc 'mot·te' dứt khoát",
+          "行います → 'o-ko-na-i-mas'; 行う đọc 'okonau' (KHÔNG 'iku' ở đây); ます lướt, giọng cam kết chắc"
+        ],
+        "pronunciation_focus_en": [
+          "後任 → 'koo-nin'; long こう (2 mora), moraic ん",
+          "の方へ → 'no-ka-ta-e'; 方 read 'kata' (honorific 'person'), NOT 'hoo'; particle へ is 'e', not 'he'",
+          "引き継ぎは → 'hi-ki-tsu-gi wa'; hard ぎ; topic は read 'wa'",
+          "責任を持って → 'se-ki-nin o mot-te'; もって has sokuon っ — hold one mora, crisp 'mot-te'",
+          "行います → 'o-ko-na-i-mas'; 行う is 'okonau' here (not 'iku'); ます glides, firm committed tone"
+        ]
       },
       {
         "japanese": "皆様にご迷惑をおかけしますことを、深くお詫び申し上げます。",
-        "english": "I deeply apologize for the inconvenience this causes everyone."
+        "english": "I deeply apologize for the inconvenience this causes everyone.",
+        "pronunciation_focus": [
+          "皆様 → 'mi-na-sa-ma'; さま (kính ngữ, cao hơn さん), bốn mora đều — đừng rút thành 'mina'",
+          "ご迷惑を → 'go-mei-wa-ku o'; めい đọc dài 'me-e'; を trợ từ đọc 'o' không 'wo'",
+          "おかけします → 'o-ka-ke-shi-mas'; お khiêm + động từ, ます lướt 'mas'",
+          "深く → 'fu-ka-ku'; ふ là âm môi nhẹ (không 'f' rõ kiểu Việt, cũng không 'h'); く cuối gần câm",
+          "お詫び申し上げます → 'o-wa-bi moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う; もう nguyên âm dài; cả cụm hạ trầm, CHẬM — đỉnh điểm xin lỗi, đọc nhanh là mất trọng lượng"
+        ],
+        "pronunciation_focus_en": [
+          "皆様 → 'mi-na-sa-ma'; さま (honorific, higher than さん), four even mora — don't clip to 'mina'",
+          "ご迷惑を → 'go-mei-wa-ku o'; long めい ('me-e'); を particle is 'o', not 'wo'",
+          "おかけします → 'o-ka-ke-shi-mas'; humble お + verb; ます glides to 'mas'",
+          "深く → 'fu-ka-ku'; ふ is a soft bilabial (not a hard Vietnamese 'f', not 'h'); final く near-devoiced",
+          "お詫び申し上げます → 'o-wa-bi moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う; long もう; whole phrase low and SLOW — the apology peak; rushing it loses weight"
+        ]
       }
     ],
     "vocabulary": [
@@ -1328,23 +1396,93 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "本日はお忙しいところ、貴重なお時間を頂戴し、誠にありがとうございます。",
-        "english": "Thank you sincerely for taking your valuable time today out of your busy schedule."
+        "english": "Thank you sincerely for taking your valuable time today out of your busy schedule.",
+        "pronunciation_focus": [
+          "本日は → 'hon-jitsu wa'; văn trang trọng đọc 'honjitsu' KHÔNG 'kyou'; は trợ từ = 'wa'; じつ つ='tsu' (đầu lưỡi sau răng)",
+          "お忙しいところ → 'o-i-so-ga-shii-to-ko-ro'; しい dài 2 mora, đừng rút 'shi'",
+          "貴重な → 'ki-choo-na'; ちょう nguyên âm dài 2 mora",
+          "お時間を頂戴し → 'o-ji-kan o choo-dai-shi'; を='o'; 頂戴 kenjougo của もらう, ちょう dài; し cuối devoiced",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; とう dài; ございます lướt 'go-zai-mas', giọng kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "本日は → 'hon-jitsu wa'; formal register 'honjitsu' (not 'kyou'); は = 'wa'; つ in じつ is 'tsu'",
+          "お忙しいところ → 'o-i-so-ga-shii-to-ko-ro'; long しい (2 mora), not 'shi'",
+          "貴重な → 'ki-choo-na'; long ちょう (2 mora)",
+          "お時間を頂戴し → 'o-ji-kan o choo-dai-shi'; を='o'; 頂戴 humble for もらう, long ちょう; final し devoiced",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; long とう; ございます glides to 'go-zai-mas', formal falling close"
+        ]
       },
       {
         "japanese": "ベトナムのハノイ工科大学を卒業し、現在トヨタベトナムで品質管理を担当しております。",
-        "english": "I graduated from Hanoi University of Science and Technology and currently handle quality control at Toyota Vietnam."
+        "english": "I graduated from Hanoi University of Science and Technology and currently handle quality control at Toyota Vietnam.",
+        "pronunciation_focus": [
+          "ベトナム → 'be-to-na-mu'; bốn mora rõ ràng đều nhau — đừng đọc thành 'Việt Nam' hai âm tiếng Việt",
+          "工科大学を → 'koo-ka-dai-ga-ku o'; こう dài 2 mora; が 'g' cứng; を='o'",
+          "卒業し → 'so-tsu-gyoo-shi'; つ='tsu'; ぎょう dài 2 mora; し cuối devoiced",
+          "現在 → 'gen-zai'; ん một mora riêng; ざ là 'z' không 'gi'",
+          "品質管理を担当しております → 'hin-shitsu-kan-ri o tan-too-shi-te-o-ri-mas'; しつ つ='tsu' (し devoiced); り tapped r; おります kenjougo của いる, ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナム → 'be-to-na-mu'; four even mora — not the two-syllable Vietnamese 'Việt Nam'",
+          "工科大学を → 'koo-ka-dai-ga-ku o'; long こう (2 mora); hard が; を='o'",
+          "卒業し → 'so-tsu-gyoo-shi'; つ='tsu'; long ぎょう; final し devoiced",
+          "現在 → 'gen-zai'; moraic ん; ざ is 'z', not 'gi'",
+          "品質管理を担当しております → 'hin-shitsu-kan-ri o tan-too-shi-te-o-ri-mas'; つ in しつ='tsu' (devoiced し); tapped り; おります humble for いる, ます glides"
+        ]
       },
       {
         "japanese": "御社のものづくりの精神に深く共感し、ぜひ貢献させていただきたく、応募いたしました。",
-        "english": "I deeply resonate with your company's monozukuri spirit, and I applied with the wish to contribute."
+        "english": "I deeply resonate with your company's monozukuri spirit, and I applied with the wish to contribute.",
+        "pronunciation_focus": [
+          "御社の → 'on-sha no'; ん một mora; 御社 = cách nói công ty ĐỐI PHƯƠNG (khi nói) — phát âm rõ để không lẫn 弊社 (heisha)",
+          "ものづくり → 'mo-no-zu-ku-ri'; づ đọc 'zu'; り tapped r (giữa l/r Việt)",
+          "精神に → 'sei-shin ni'; せい dài 'se-e' 2 mora; ん một mora riêng",
+          "深く共感し → 'fu-ka-ku kyoo-kan-shi'; ふ môi nhẹ; く devoiced; きょう dài; し devoiced",
+          "応募いたしました → 'oo-bo i-ta-shi-ma-shi-ta'; おう dài 2 mora; いたしました kenjougo của する; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "御社の → 'on-sha no'; moraic ん; 御社 = the LISTENER's company (spoken) — keep it crisp so it isn't heard as 弊社 (heisha, your own)",
+          "ものづくり → 'mo-no-zu-ku-ri'; づ is 'zu'; tapped り",
+          "精神に → 'sei-shin ni'; long せい ('se-e', 2 mora); moraic ん",
+          "深く共感し → 'fu-ka-ku kyoo-kan-shi'; soft ふ; devoiced く; long きょう; devoiced し",
+          "応募いたしました → 'oo-bo i-ta-shi-ma-shi-ta'; long おう (2 mora); いたしました humble for する; final した 'shta'"
+        ]
       },
       {
         "japanese": "私の強みは、現場で課題を発見し、改善策まで落とし込む実行力でございます。",
-        "english": "My strength is execution — finding issues on the floor and following through to concrete countermeasures."
+        "english": "My strength is execution — finding issues on the floor and following through to concrete countermeasures.",
+        "pronunciation_focus": [
+          "私の強みは → 'wa-ta-shi no tsu-yo-mi wa'; 強み bắt đầu bằng つ='tsu' (không 'chư'); は='wa'",
+          "現場で → 'gen-ba de'; ん một mora; ば 'b' rõ",
+          "課題を → 'ka-dai o'; だい = 'da-i' 2 mora; を='o'",
+          "発見し → 'hak-ken-shi'; っ sokuon — ngắt một mora trước け ('hak·ken'); し devoiced",
+          "実行力でございます → 'jik-koo-ryoku de go-zai-mas'; じっ sokuon + こう dài; りょく ry tapped r; でございます hạ giọng trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "私の強みは → 'wa-ta-shi no tsu-yo-mi wa'; 強み starts with つ='tsu'; は='wa'",
+          "現場で → 'gen-ba de'; moraic ん; clear ば",
+          "課題を → 'ka-dai o'; だい = 'da-i' (2 mora); を='o'",
+          "発見し → 'hak-ken-shi'; sokuon っ — hold one mora before け ('hak-ken'); devoiced し",
+          "実行力でございます → 'jik-koo-ryoku de go-zai-mas'; sokuon じっ + long こう; tapped りょく; でございます formal falling"
+        ]
       },
       {
         "japanese": "本日伺ったお話を踏まえ、改めて志望度が高まりました。引き続きよろしくお願い申し上げます。",
-        "english": "Based on what I heard today, my motivation has risen further. I respectfully ask for your continued consideration."
+        "english": "Based on what I heard today, my motivation has risen further. I respectfully ask for your continued consideration.",
+        "pronunciation_focus": [
+          "本日伺った → 'hon-jitsu u-ka-gat-ta'; 伺う kenjougo của 聞く/行く; がった っ sokuon ngắt một mora",
+          "お話を踏まえ → 'o-ha-na-shi o fu-ma-e'; を='o'; ふ âm môi nhẹ",
+          "改めて → 'a-ra-ta-me-te'; ら tapped r; bốn mora đều, ngắt nhẹ trước cụm để nhấn 'một lần nữa'",
+          "志望度が高まりました → 'shi-boo-do ga ta-ka-ma-ri-ma-shi-ta'; ぼう dài; が 'g' cứng; した cuối 'shta'",
+          "引き続きよろしくお願い申し上げます → 'hi-ki-tsu-zu-ki yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; つ='tsu', づ='zu'; 申し上げる kenjougo cao; もう dài; kết câu hạ trầm"
+        ],
+        "pronunciation_focus_en": [
+          "本日伺った → 'hon-jitsu u-ka-gat-ta'; 伺う humble for 聞く/行く; がった sokuon っ holds one mora",
+          "お話を踏まえ → 'o-ha-na-shi o fu-ma-e'; を='o'; soft bilabial ふ",
+          "改めて → 'a-ra-ta-me-te'; tapped ら; four even mora, slight break before it to flag 'once again'",
+          "志望度が高まりました → 'shi-boo-do ga ta-ka-ma-ri-ma-shi-ta'; long ぼう; hard が; final した 'shta'",
+          "引き続きよろしくお願い申し上げます → 'hi-ki-tsu-zu-ki yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; つ='tsu', づ='zu'; 申し上げる high kenjougo; long もう; low falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -1602,23 +1740,91 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "本日は面接の機会をいただき、誠にありがとうございます。",
-        "english": "Thank you sincerely for the opportunity of this interview today."
+        "english": "Thank you sincerely for the opportunity of this interview today.",
+        "pronunciation_focus": [
+          "本日は → 'hon-jitsu wa'; trang trọng 'honjitsu'; は='wa'; じつ つ='tsu'",
+          "面接の → 'men-setsu no'; ん một mora; せつ つ='tsu'",
+          "機会を → 'ki-kai o'; かい='ka-i' 2 mora; を='o'",
+          "いただき → 'i-ta-da-ki'; kenjougo của もらう, bốn mora đều, đừng nuốt",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; とう dài; ございます lướt, kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "本日は → 'hon-jitsu wa'; formal 'honjitsu'; は='wa'; つ in じつ='tsu'",
+          "面接の → 'men-setsu no'; moraic ん; せつ つ='tsu'",
+          "機会を → 'ki-kai o'; かい = 'ka-i' (2 mora); を='o'",
+          "いただき → 'i-ta-da-ki'; humble for もらう, four even mora, don't swallow",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; long とう; ございます glides, formal falling"
+        ]
       },
       {
         "japanese": "ベトナムにおける環境工学の発展に、日本の知見を持ち帰りたいと考えております。",
-        "english": "I wish to bring back Japanese expertise to advance environmental engineering in Vietnam."
+        "english": "I wish to bring back Japanese expertise to advance environmental engineering in Vietnam.",
+        "pronunciation_focus": [
+          "ベトナムにおける → 'be-to-na-mu ni-o-ke-ru'; ベトナム bốn mora đều; る tapped r",
+          "環境工学の → 'kan-kyoo-koo-ga-ku no'; きょう dài, こう dài (HAI nguyên âm dài liền — đừng rút); が 'g' cứng",
+          "発展に → 'hat-ten ni'; っ sokuon ngắt một mora trước て",
+          "日本の知見を → 'ni-hon no chi-ken o'; ち='chi'; を='o'",
+          "持ち帰りたいと考えております → 'mo-chi-ka-e-ri-tai to kan-ga-e-te-o-ri-mas'; ち='chi'; たい mong muốn; おります kenjougo, ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムにおける → 'be-to-na-mu ni-o-ke-ru'; even four-mora ベトナム; tapped る",
+          "環境工学の → 'kan-kyoo-koo-ga-ku no'; long きょう + long こう (two long vowels in a row — don't shorten); hard が",
+          "発展に → 'hat-ten ni'; sokuon っ holds one mora before て",
+          "日本の知見を → 'ni-hon no chi-ken o'; ち='chi'; を='o'",
+          "持ち帰りたいと考えております → 'mo-chi-ka-e-ri-tai to kan-ga-e-te-o-ri-mas'; ち='chi'; desiderative たい; おります humble, ます glides"
+        ]
       },
       {
         "japanese": "京都大学の山田研究室で、水質浄化の研究を希望しております。",
-        "english": "I wish to pursue water-purification research at Professor Yamada's lab at Kyoto University."
+        "english": "I wish to pursue water-purification research at Professor Yamada's lab at Kyoto University.",
+        "pronunciation_focus": [
+          "京都大学の → 'kyoo-to-dai-ga-ku no'; きょう dài 2 mora; が 'g' cứng",
+          "山田研究室で → 'ya-ma-da ken-kyuu-shitsu de'; きゅう dài; しつ つ='tsu' (し devoiced)",
+          "水質浄化の → 'sui-shitsu joo-ka no'; すい='su-i' 2 mora; じょう dài",
+          "研究を → 'ken-kyuu o'; きゅう dài 2 mora; を='o'",
+          "希望しております → 'ki-boo-shi-te-o-ri-mas'; ぼう dài; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "京都大学の → 'kyoo-to-dai-ga-ku no'; long きょう (2 mora); hard が",
+          "山田研究室で → 'ya-ma-da ken-kyuu-shitsu de'; long きゅう; つ in しつ='tsu' (devoiced し)",
+          "水質浄化の → 'sui-shitsu joo-ka no'; すい='su-i' (2 mora); long じょう",
+          "研究を → 'ken-kyuu o'; long きゅう (2 mora); を='o'",
+          "希望しております → 'ki-boo-shi-te-o-ri-mas'; long ぼう; おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "帰国後は、ハノイ工科大学で教鞭を執り、後進の育成に尽力したく存じます。",
-        "english": "After returning, I humbly wish to teach at Hanoi University of Science and Technology and devote myself to nurturing the next generation."
+        "english": "After returning, I humbly wish to teach at Hanoi University of Science and Technology and devote myself to nurturing the next generation.",
+        "pronunciation_focus": [
+          "帰国後は → 'ki-ko-ku-go wa'; く cuối 帰国 devoiced; は='wa'",
+          "教鞭を執り → 'kyoo-ben o to-ri'; きょう dài; を='o'; り tapped r; cụm văn chương — đọc chậm, trang trọng",
+          "後進の育成に → 'koo-shin no i-ku-sei ni'; こう dài; せい dài 'se-e'",
+          "尽力したく存じます → 'jin-ryoku-shi-ta-ku zon-ji-mas'; りょく ry tapped r; 存じる kenjougo của 思う; ぞ='z'; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "帰国後は → 'ki-ko-ku-go wa'; final く of 帰国 devoiced; は='wa'",
+          "教鞭を執り → 'kyoo-ben o to-ri'; long きょう; を='o'; tapped り; literary phrase — slow and formal",
+          "後進の育成に → 'koo-shin no i-ku-sei ni'; long こう; long せい ('se-e')",
+          "尽力したく存じます → 'jin-ryoku-shi-ta-ku zon-ji-mas'; tapped りょく; 存じる humble for 思う; ぞ='z'; formal falling close"
+        ]
       },
       {
         "japanese": "学問に王道なしと申しますが、日本での三年間、研鑽を積む覚悟でおります。",
-        "english": "As they say, there is no royal road to learning — I am prepared to apply myself diligently for three years in Japan."
+        "english": "As they say, there is no royal road to learning — I am prepared to apply myself diligently for three years in Japan.",
+        "pronunciation_focus": [
+          "学問に王道なし → 'ga-ku-mon ni oo-doo na-shi'; が 'g' cứng; おう/どう đều dài 2 mora; tục ngữ — đọc rõ từng cụm, nhịp chậm trịnh trọng",
+          "と申しますが → 'to moo-shi-mas-ga'; 申す kenjougo của 言う; もう dài; が nối không nhấn",
+          "日本での → 'ni-hon de no'; ん một mora",
+          "三年間 → 'san-nen-kan'; ba khối ん mỗi cái một mora — tách rõ 'san·nen·kan'",
+          "研鑽を積む覚悟でおります → 'ken-san o tsu-mu ka-ku-go de-o-ri-mas'; を='o'; つ='tsu'; 覚悟 đọc 'ka-ku-go' — KHÔNG có っ sokuon; おります kenjougo của いる; ます lướt 'mas'"
+        ],
+        "pronunciation_focus_en": [
+          "学問に王道なし → 'ga-ku-mon ni oo-doo na-shi'; hard が; long おう + long どう (2 mora each); a proverb — clear phrasing, slow dignified pace",
+          "と申しますが → 'to moo-shi-mas-ga'; 申す humble for 言う; long もう; が trails unstressed",
+          "日本での → 'ni-hon de no'; moraic ん",
+          "三年間 → 'san-nen-kan'; three ん blocks, one mora each — keep 'san·nen·kan' distinct",
+          "研鑽を積む覚悟でおります → 'ken-san o tsu-mu ka-ku-go de-o-ri-mas'; を='o'; つ='tsu'; 覚悟 is 'ka-ku-go' (no sokuon); おります humble for いる"
+        ]
       }
     ],
     "dialogue": [
@@ -1876,23 +2082,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "卒業研究のテーマについて、ご相談させていただきたく存じます。",
-        "english": "I would humbly like to consult with you regarding my graduation-research topic."
+        "english": "I would humbly like to consult with you regarding my graduation-research topic.",
+        "pronunciation_focus": [
+          "卒業研究の → 'so-tsu-gyoo-ken-kyuu no'; つ='tsu'; ぎょう dài, きゅう dài (hai nguyên âm dài — đừng rút)",
+          "テーマについて → 'tee-ma ni-tsu-i-te'; テー nguyên âm dài 2 mora; つ='tsu'",
+          "ご相談 → 'go-soo-dan'; ご 美化語; そう dài; đọc phẳng, không nhấn đầu",
+          "させていただきたく存じます → 'sa-se-te-i-ta-da-ki-ta-ku zon-ji-mas'; chuỗi kenjougo; ぞ='z'; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "卒業研究の → 'so-tsu-gyoo-ken-kyuu no'; つ='tsu'; long ぎょう + long きゅう (don't shorten)",
+          "テーマについて → 'tee-ma ni-tsu-i-te'; long テー (2 mora); つ='tsu'",
+          "ご相談 → 'go-soo-dan'; beautifier ご; long そう; flat, no initial stress",
+          "させていただきたく存じます → 'sa-se-te-i-ta-da-ki-ta-ku zon-ji-mas'; kenjougo chain; ぞ='z'; formal falling close"
+        ]
       },
       {
         "japanese": "現時点では、二つのテーマで迷っております。",
-        "english": "At present, I am torn between two topics."
+        "english": "At present, I am torn between two topics.",
+        "pronunciation_focus": [
+          "現時点では → 'gen-ji-ten de wa'; ん hai chỗ mỗi cái một mora; では = 'de wa' (は='wa')",
+          "二つの → 'fu-ta-tsu no'; ふ âm môi nhẹ; つ='tsu'",
+          "テーマで → 'tee-ma de'; テー dài 2 mora",
+          "迷っております → 'ma-yot-te-o-ri-mas'; よって っ sokuon ngắt một mora; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "現時点では → 'gen-ji-ten de wa'; two ん each one mora; では = 'de wa' (は='wa')",
+          "二つの → 'fu-ta-tsu no'; soft bilabial ふ; つ='tsu'",
+          "テーマで → 'tee-ma de'; long テー (2 mora)",
+          "迷っております → 'ma-yot-te-o-ri-mas'; sokuon よって holds one mora; おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "先生のお考えをお聞かせいただけますでしょうか。",
-        "english": "Could I please hear your thinking on this?"
+        "english": "Could I please hear your thinking on this?",
+        "pronunciation_focus": [
+          "先生の → 'sen-sei no'; ん một mora; せい dài 'se-e' 2 mora",
+          "お考えを → 'o-kan-ga-e o'; お sonkeigo (hành động của thầy); が 'g' cứng; を='o'",
+          "お聞かせ → 'o-ki-ka-se'; お kính; cụm sai khiến lịch sự 'cho (tôi) được nghe'",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; chồng lịch sự; か cuối đi lên RẤT nhẹ — thỉnh cầu, không phải câu hỏi cộc"
+        ],
+        "pronunciation_focus_en": [
+          "先生の → 'sen-sei no'; moraic ん; long せい ('se-e', 2 mora)",
+          "お考えを → 'o-kan-ga-e o'; お sonkeigo (the professor's action); hard が; を='o'",
+          "お聞かせ → 'o-ki-ka-se'; honorific お; polite causative 'let me hear'",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; stacked politeness; very slight rise on か — a petition, not a blunt question"
+        ]
       },
       {
         "japanese": "先行研究を整理した上で、改めてご報告に伺います。",
-        "english": "After organizing the prior literature, I will visit again to report."
+        "english": "After organizing the prior literature, I will visit again to report.",
+        "pronunciation_focus": [
+          "先行研究を → 'sen-koo-ken-kyuu o'; こう dài, きゅう dài (hai nguyên âm dài liền); を='o'",
+          "整理した上で → 'sei-ri-shi-ta u-e de'; せい dài 'se-e'; り tapped r",
+          "改めて → 'a-ra-ta-me-te'; ら tapped r; bốn mora đều",
+          "ご報告に伺います → 'go-hoo-ko-ku ni u-ka-ga-i-mas'; ほう dài; 伺う kenjougo của 行く/聞く; ます lướt, giọng cam kết"
+        ],
+        "pronunciation_focus_en": [
+          "先行研究を → 'sen-koo-ken-kyuu o'; long こう + long きゅう (two long vowels adjacent); を='o'",
+          "整理した上で → 'sei-ri-shi-ta u-e de'; long せい ('se-e'); tapped り",
+          "改めて → 'a-ra-ta-me-te'; tapped ら; four even mora",
+          "ご報告に伺います → 'go-hoo-ko-ku ni u-ka-ga-i-mas'; long ほう; 伺う humble for 行く/聞く; ます glides, committed tone"
+        ]
       },
       {
         "japanese": "ご指導のほど、何卒よろしくお願い申し上げます。",
-        "english": "I respectfully ask for your guidance."
+        "english": "I respectfully ask for your guidance.",
+        "pronunciation_focus": [
+          "ご指導のほど → 'go-shi-doo no ho-do'; ご 美化語; どう dài 2 mora; cụm 'のほど' làm lời nhờ mềm đi — đọc nhẹ, không nhấn",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; trạng từ trang trọng nhất của lời thỉnh cầu — đọc rõ, hơi chậm",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う; もう dài; cả cụm hạ trầm kết câu trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "ご指導のほど → 'go-shi-doo no ho-do'; beautifier ご; long どう (2 mora); 'のほど' softens the request — light, unstressed",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; the most formal request adverb — clear and a touch slow",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う; long もう; whole phrase low, formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -2150,23 +2414,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "インターンシップの件で、ご相談させていただきたく存じます。",
-        "english": "I would humbly like to consult about the internship matter."
+        "english": "I would humbly like to consult about the internship matter.",
+        "pronunciation_focus": [
+          "インターンシップの件で → 'in-taa-n-ship-pu no ken de'; ン moraic n một mora; ター nguyên âm dài; っぷ sokuon ngắt một mora trước ぷ",
+          "ご相談 → 'go-soo-dan'; ご 美化語; そう dài; đọc phẳng",
+          "させていただきたく → 'sa-se-te-i-ta-da-ki-ta-ku'; chuỗi kenjougo, mora đều",
+          "存じます → 'zon-ji-mas'; ぞ='z'; kenjougo của 思う; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "インターンシップの件で → 'in-taa-n-ship-pu no ken de'; moraic ン (one mora); long ター; sokuon っぷ holds one mora before ぷ",
+          "ご相談 → 'go-soo-dan'; beautifier ご; long そう; flat delivery",
+          "させていただきたく → 'sa-se-te-i-ta-da-ki-ta-ku'; kenjougo chain, even mora",
+          "存じます → 'zon-ji-mas'; ぞ='z'; humble for 思う; formal falling close"
+        ]
       },
       {
         "japanese": "期間について、可能でしたら二週間延長させていただけませんでしょうか。",
-        "english": "Regarding the period, if possible could I please be allowed to extend by two weeks?"
+        "english": "Regarding the period, if possible could I please be allowed to extend by two weeks?",
+        "pronunciation_focus": [
+          "期間について → 'ki-kan ni-tsu-i-te'; ん một mora; つ='tsu'",
+          "可能でしたら → 'ka-noo-de-shi-ta-ra'; のう dài 2 mora; ら tapped r; cụm 'nếu có thể' báo hiệu đây là favor — đọc khiêm, hơi ngập ngừng",
+          "二週間 → 'ni-shuu-kan'; しゅう dài 2 mora; ん một mora",
+          "延長させていただけませんでしょうか → 'en-choo sa-se-te-i-ta-da-ke-ma-sen-de-shoo-ka'; ちょう dài; chồng nhiều lớp lịch sự; か đi lên rất nhẹ — thỉnh cầu nhún nhường, không phải đòi hỏi"
+        ],
+        "pronunciation_focus_en": [
+          "期間について → 'ki-kan ni-tsu-i-te'; moraic ん; つ='tsu'",
+          "可能でしたら → 'ka-noo-de-shi-ta-ra'; long のう (2 mora); tapped ら; 'if possible' flags a favor — humble, slightly tentative",
+          "二週間 → 'ni-shuu-kan'; long しゅう (2 mora); moraic ん",
+          "延長させていただけませんでしょうか → 'en-choo sa-se-te-i-ta-da-ke-ma-sen-de-shoo-ka'; long ちょう; many stacked layers; barely-rising か — a deferential petition, not a demand"
+        ]
       },
       {
         "japanese": "業務内容に関しまして、一点確認させていただきたい点がございます。",
-        "english": "Regarding the work content, there is one point I would like to confirm."
+        "english": "Regarding the work content, there is one point I would like to confirm.",
+        "pronunciation_focus": [
+          "業務内容に関しまして → 'gyoo-mu-nai-yoo ni kan-shi-ma-shi-te'; ぎょう dài, よう dài; 関しまして trang trọng hơn 関して",
+          "一点 → 'it-ten'; いっ sokuon — ngắt một mora trước て ('it·ten')",
+          "確認させていただきたい → 'ka-ku-nin sa-se-te-i-ta-da-ki-tai'; く giữa devoiced nhẹ; chuỗi kenjougo; たい mong muốn khiêm",
+          "点がございます → 'ten ga go-zai-mas'; が 'g' cứng; ございます lướt 'go-zai-mas' kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "業務内容に関しまして → 'gyoo-mu-nai-yoo ni kan-shi-ma-shi-te'; long ぎょう + long よう; 関しまして more formal than 関して",
+          "一点 → 'it-ten'; sokuon いっ — hold one mora before て ('it-ten')",
+          "確認させていただきたい → 'ka-ku-nin sa-se-te-i-ta-da-ki-tai'; medial く lightly devoiced; kenjougo chain; humble desiderative たい",
+          "点がございます → 'ten ga go-zai-mas'; hard が; ございます glides to 'go-zai-mas', formal falling"
+        ]
       },
       {
         "japanese": "学業との両立を考慮し、週四日勤務を希望しております。",
-        "english": "Considering the balance with my studies, I hope for four-day-per-week attendance."
+        "english": "Considering the balance with my studies, I hope for four-day-per-week attendance.",
+        "pronunciation_focus": [
+          "学業との両立を → 'ga-ku-gyoo to no ryoo-ritsu o'; が 'g' cứng; ぎょう dài, りょう dài; りつ ry tapped r; を='o'",
+          "考慮し → 'koo-ryo-shi'; こう dài; りょ ry tapped r; し devoiced",
+          "週四日勤務を → 'shuu-yok-ka kin-mu o'; しゅう dài; よっか っ sokuon (四日='yokka'); を='o'",
+          "希望しております → 'ki-boo-shi-te-o-ri-mas'; ぼう dài; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "学業との両立を → 'ga-ku-gyoo to no ryoo-ritsu o'; hard が; long ぎょう + long りょう; tapped りつ; を='o'",
+          "考慮し → 'koo-ryo-shi'; long こう; tapped りょ; devoiced し",
+          "週四日勤務を → 'shuu-yok-ka kin-mu o'; long しゅう; sokuon よっか (四日='yokka'); を='o'",
+          "希望しております → 'ki-boo-shi-te-o-ri-mas'; long ぼう; おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "ご検討のほど、何卒よろしくお願い申し上げます。",
-        "english": "I respectfully ask for your consideration."
+        "english": "I respectfully ask for your consideration.",
+        "pronunciation_focus": [
+          "ご検討のほど → 'go-ken-too no ho-do'; ご 美化語; とう dài 2 mora; 'のほど' làm lời nhờ mềm — đọc nhẹ không nhấn",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; trạng từ thỉnh cầu trang trọng nhất — rõ, hơi chậm",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる kenjougo cao; もう dài; kết câu hạ trầm"
+        ],
+        "pronunciation_focus_en": [
+          "ご検討のほど → 'go-ken-too no ho-do'; beautifier ご; long とう (2 mora); 'のほど' softens the request — light, unstressed",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; most formal request adverb — clear, slightly slow",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる high kenjougo; long もう; low formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -2424,23 +2746,83 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "件名:【お問い合わせ】在留資格認定証明書の発行遅延について",
-        "english": "Subject: [Inquiry] Regarding the delay in issuing the Certificate of Eligibility"
+        "english": "Subject: [Inquiry] Regarding the delay in issuing the Certificate of Eligibility",
+        "pronunciation_focus": [
+          "件名 → 'ken-mei'; ん một mora; めい dài 'me-e' 2 mora; đây là dòng tiêu đề email — đọc tách bạch như nhãn",
+          "お問い合わせ → 'o-to-i-a-wa-se'; お 美化語; sáu mora đều, đừng nuốt",
+          "在留資格認定証明書 → 'zai-ryuu-shi-ka-ku nin-tei-shoo-mei-sho'; りゅう dài; く devoiced; てい/しょう/めい đều dài — danh từ ghép dài, đọc theo cụm 2-2",
+          "発行遅延について → 'hak-koo-chi-en ni-tsu-i-te'; はっ sokuon + こう dài; ち='chi'; つ='tsu'"
+        ],
+        "pronunciation_focus_en": [
+          "件名 → 'ken-mei'; moraic ん; long めい ('me-e', 2 mora); this is the subject line — read it label-like, segmented",
+          "お問い合わせ → 'o-to-i-a-wa-se'; beautifier お; six even mora, don't swallow",
+          "在留資格認定証明書 → 'zai-ryuu-shi-ka-ku nin-tei-shoo-mei-sho'; long りゅう; devoiced く; long てい/しょう/めい — long compound, chunk it 2-by-2",
+          "発行遅延について → 'hak-koo-chi-en ni-tsu-i-te'; sokuon はっ + long こう; ち='chi'; つ='tsu'"
+        ]
       },
       {
         "japanese": "国際交流課 ご担当者様",
-        "english": "To the responsible staff member, International Exchange Office"
+        "english": "To the responsible staff member, International Exchange Office",
+        "pronunciation_focus": [
+          "国際交流課 → 'ko-ku-sai-koo-ryuu-ka'; さい='sa-i'; こう dài; りゅう dài; く đầu devoiced nhẹ",
+          "ご担当者様 → 'go-tan-too-sha-sa-ma'; ご 美化語; とう dài; 様 'sama' kính ngữ cao — đọc rõ bốn mora của 者様",
+          "(dòng chào email) → đọc như một nhãn riêng, ngắt rõ sau 課 và trước 様, không nối liền cả câu"
+        ],
+        "pronunciation_focus_en": [
+          "国際交流課 → 'ko-ku-sai-koo-ryuu-ka'; さい='sa-i'; long こう; long りゅう; initial く lightly devoiced",
+          "ご担当者様 → 'go-tan-too-sha-sa-ma'; beautifier ご; long とう; 様 'sama' (high honorific) — keep 者様 four mora distinct",
+          "(email salutation line) → read as a standalone label: clear breaks after 課 and before 様, not run together"
+        ]
       },
       {
         "japanese": "現在、ベトナムから来年四月の入学に向けて、在留資格の手続きを進めております。",
-        "english": "I am currently advancing residency-status procedures from Vietnam toward enrollment next April."
+        "english": "I am currently advancing residency-status procedures from Vietnam toward enrollment next April.",
+        "pronunciation_focus": [
+          "現在 → 'gen-zai'; ん một mora; ざ='z'",
+          "ベトナムから → 'be-to-na-mu ka-ra'; bốn mora đều; ら tapped r",
+          "来年四月の → 'rai-nen shi-ga-tsu no'; らい='ra-i' ら tapped r; が 'g' cứng; がつ つ='tsu'",
+          "入学に向けて → 'nyuu-ga-ku ni mu-ke-te'; にゅう dài 2 mora; が 'g' cứng",
+          "進めております → 'su-su-me-te-o-ri-mas'; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "現在 → 'gen-zai'; moraic ん; ざ='z'",
+          "ベトナムから → 'be-to-na-mu ka-ra'; four even mora; tapped ら",
+          "来年四月の → 'rai-nen shi-ga-tsu no'; らい='ra-i' tapped ら; hard が; つ in がつ='tsu'",
+          "入学に向けて → 'nyuu-ga-ku ni mu-ke-te'; long にゅう (2 mora); hard が",
+          "進めております → 'su-su-me-te-o-ri-mas'; おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "つきましては、現状の進捗状況をご教示いただけますでしょうか。",
-        "english": "Therefore, could you please inform me of the current progress status?"
+        "english": "Therefore, could you please inform me of the current progress status?",
+        "pronunciation_focus": [
+          "つきましては → 'tsu-ki-ma-shi-te wa'; つ='tsu' đầu cụm; は='wa'; từ nối email trang trọng — ngắt nhẹ sau nó",
+          "現状の → 'gen-joo no'; ん một mora; じょう dài 2 mora",
+          "進捗状況を → 'shin-cho-ku-joo-kyoo o'; ち='cho'; く devoiced; じょう/きょう đều dài; を='o'",
+          "ご教示いただけますでしょうか → 'go-kyoo-ji i-ta-da-ke-mas-de-shoo-ka'; きょう dài; chồng lịch sự; か đi lên rất nhẹ — thỉnh cầu thông tin, không phải tra hỏi"
+        ],
+        "pronunciation_focus_en": [
+          "つきましては → 'tsu-ki-ma-shi-te wa'; つ='tsu' at the start; は='wa'; formal email connector — slight break after it",
+          "現状の → 'gen-joo no'; moraic ん; long じょう (2 mora)",
+          "進捗状況を → 'shin-cho-ku-joo-kyoo o'; ち='cho'; devoiced く; long じょう + long きょう; を='o'",
+          "ご教示いただけますでしょうか → 'go-kyoo-ji i-ta-da-ke-mas-de-shoo-ka'; long きょう; stacked politeness; barely-rising か — requesting info, not interrogating"
+        ]
       },
       {
         "japanese": "ご多忙のところ恐縮ではございますが、何卒ご対応のほどよろしくお願い申し上げます。",
-        "english": "I am sorry to trouble you when busy, but I respectfully ask for your handling of this matter."
+        "english": "I am sorry to trouble you when busy, but I respectfully ask for your handling of this matter.",
+        "pronunciation_focus": [
+          "ご多忙のところ → 'go-ta-boo no to-ko-ro'; ご 美化語; ぼう dài 2 mora",
+          "恐縮ではございますが → 'kyoo-shu-ku de wa go-zai-mas-ga'; きょう dài; く devoiced; ではございます = dạng です trang trọng; が nối không nhấn",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; trạng từ thỉnh cầu trang trọng — rõ, hơi chậm",
+          "ご対応のほどよろしくお願い申し上げます → 'go-tai-oo no ho-do yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; たい='ta-i'; おう dài; 申し上げる kenjougo cao; kết hạ trầm"
+        ],
+        "pronunciation_focus_en": [
+          "ご多忙のところ → 'go-ta-boo no to-ko-ro'; beautifier ご; long ぼう (2 mora)",
+          "恐縮ではございますが → 'kyoo-shu-ku de wa go-zai-mas-ga'; long きょう; devoiced く; ではございます = formal copula; が trails unstressed",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; formal request adverb — clear, slightly slow",
+          "ご対応のほどよろしくお願い申し上げます → 'go-tai-oo no ho-do yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; たい='ta-i'; long おう; 申し上げる high kenjougo; low falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -2693,23 +3075,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "お電話ありがとうございます。グエン・ティ・チャウでございます。",
-        "english": "Thank you for your call. This is Nguyen Thi Chau speaking."
+        "english": "Thank you for your call. This is Nguyen Thi Chau speaking.",
+        "pronunciation_focus": [
+          "お電話 → 'o-den-wa'; お 美化語; ん một mora; điện thoại — mở đầu cuộc gọi, giọng tươi nhưng vẫn lịch sự",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; とう dài 2 mora; ございます lướt 'go-zai-mas'",
+          "グエン・ティ・チャウ → 'gu-en ti chau'; ち='chi' → チャウ 'cha-u'; đọc tên rõ từng âm, hơi chậm để người Nhật bắt được",
+          "でございます → 'de go-zai-mas'; dạng です trang trọng nhất khi xưng tên qua điện thoại — KHÔNG dùng です trống"
+        ],
+        "pronunciation_focus_en": [
+          "お電話 → 'o-den-wa'; beautifier お; moraic ん; call opener — bright but still polite",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; long とう (2 mora); ございます glides to 'go-zai-mas'",
+          "グエン・ティ・チャウ → 'gu-en ti chau'; ち→チャ 'cha'; say the name clearly mora-by-mora, a touch slow so it lands",
+          "でございます → 'de go-zai-mas'; the most formal copula for stating your name on the phone — never a bare です"
+        ]
       },
       {
         "japanese": "お時間を頂戴し、誠にありがとうございます。",
-        "english": "Thank you sincerely for granting me your time."
+        "english": "Thank you sincerely for granting me your time.",
+        "pronunciation_focus": [
+          "お時間を → 'o-ji-kan o'; お 美化語; ん một mora; を='o'",
+          "頂戴し → 'choo-dai-shi'; ちょう dài 2 mora; 頂戴 kenjougo của もらう; し cuối devoiced",
+          "誠に → 'ma-ko-to-ni'; nhấn thành khẩn rất nhẹ, không kịch",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; とう dài; ございます lướt, kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "お時間を → 'o-ji-kan o'; beautifier お; moraic ん; を='o'",
+          "頂戴し → 'choo-dai-shi'; long ちょう (2 mora); 頂戴 humble for もらう; final し devoiced",
+          "誠に → 'ma-ko-to-ni'; very light sincerity stress, not theatrical",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; long とう; ございます glides, formal falling"
+        ]
       },
       {
         "japanese": "恐れ入りますが、お電話の音声が少し聞き取りにくいようでございます。",
-        "english": "I am sorry, but the audio of your call seems slightly hard to hear."
+        "english": "I am sorry, but the audio of your call seems slightly hard to hear.",
+        "pronunciation_focus": [
+          "恐れ入りますが → 'o-so-re-i-ri-mas-ga'; cụm khiêm mở đầu lời khó nói; が nối không nhấn — KHÔNG đổ lỗi cho đường truyền của họ",
+          "お電話の音声が → 'o-den-wa no on-sei ga'; ん hai chỗ mỗi cái một mora; せい dài 'se-e'; が 'g' cứng",
+          "少し → 'su-ko-shi'; す devoiced gần 's-ko-shi'",
+          "聞き取りにくいようでございます → 'ki-ki-to-ri-ni-ku-i yoo de go-zai-mas'; り tapped r; よう dài; 'ようでございます' làm câu mềm, không khẳng định ai sai — đọc hạ giọng"
+        ],
+        "pronunciation_focus_en": [
+          "恐れ入りますが → 'o-so-re-i-ri-mas-ga'; humble lead-in for a hard thing; が unstressed — does NOT blame their line",
+          "お電話の音声が → 'o-den-wa no on-sei ga'; two ん each one mora; long せい ('se-e'); hard が",
+          "少し → 'su-ko-shi'; devoiced す, near 's-ko-shi'",
+          "聞き取りにくいようでございます → 'ki-ki-to-ri-ni-ku-i yoo de go-zai-mas'; tapped り; long よう; 'ようでございます' softens it, assigning no fault — low delivery"
+        ]
       },
       {
         "japanese": "もう一度おっしゃっていただけますでしょうか。",
-        "english": "Could you please say that one more time?"
+        "english": "Could you please say that one more time?",
+        "pronunciation_focus": [
+          "もう一度 → 'moo i-chi-do'; もう nguyên âm dài 2 mora; ち='chi'",
+          "おっしゃって → 'os-shat-te'; おっ sokuon + しゃ; っしゃって có HAI chỗ ngắt — đọc 'os·shat·te'; 仰る là sonkeigo của 言う (hành động của họ)",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; chồng lịch sự; か đi lên rất nhẹ — nhờ lặp lại lịch sự, không sốt ruột"
+        ],
+        "pronunciation_focus_en": [
+          "もう一度 → 'moo i-chi-do'; long もう (2 mora); ち='chi'",
+          "おっしゃって → 'os-shat-te'; sokuon おっ + しゃ; っしゃって has TWO held beats — 'os-shat-te'; 仰る is sonkeigo for 言う (their action)",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; stacked politeness; barely-rising か — a polite repeat request, not impatient"
+        ]
       },
       {
         "japanese": "本日は貴重なお時間をいただき、誠にありがとうございました。",
-        "english": "Thank you sincerely for your valuable time today."
+        "english": "Thank you sincerely for your valuable time today.",
+        "pronunciation_focus": [
+          "本日は → 'hon-jitsu wa'; trang trọng 'honjitsu'; は='wa'; じつ つ='tsu'",
+          "貴重な → 'ki-choo-na'; ちょう dài 2 mora",
+          "お時間をいただき → 'o-ji-kan o i-ta-da-ki'; を='o'; いただく kenjougo của もらう",
+          "誠にありがとうございました → 'ma-ko-to-ni a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました thì quá khứ; した cuối 'shta' — kết cuộc gọi, hạ giọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "本日は → 'hon-jitsu wa'; formal 'honjitsu'; は='wa'; つ in じつ='tsu'",
+          "貴重な → 'ki-choo-na'; long ちょう (2 mora)",
+          "お時間をいただき → 'o-ji-kan o i-ta-da-ki'; を='o'; いただく humble for もらう",
+          "誠にありがとうございました → 'ma-ko-to-ni a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — call close, warm falling"
+        ]
       }
     ],
     "dialogue": [
@@ -2987,23 +3427,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "初めまして。ABC商事のグエン・ティ・チャウと申します。",
-        "english": "Nice to meet you. I am Nguyen Thi Chau from ABC Trading."
+        "english": "Nice to meet you. I am Nguyen Thi Chau from ABC Trading.",
+        "pronunciation_focus": [
+          "初めまして → 'ha-ji-me-ma-shi-te'; sáu mora đều — chào lần đầu, đọc rõ ràng tươi",
+          "ABC商事の → 'ABC shoo-ji no'; しょう dài 2 mora; đọc 'A-B-C' kiểu chữ cái tiếng Anh rồi nối 商事",
+          "グエン・ティ・チャウ → 'gu-en ti chau'; チャ='cha'; tên đọc rõ từng âm, hơi chậm",
+          "と申します → 'to moo-shi-mas'; 申す kenjougo của 言う; もう dài; ます lướt — cách xưng tên chuẩn, KHÔNG です"
+        ],
+        "pronunciation_focus_en": [
+          "初めまして → 'ha-ji-me-ma-shi-te'; six even mora — a first greeting, bright and clear",
+          "ABC商事の → 'ABC shoo-ji no'; long しょう (2 mora); say 'A-B-C' English-letter style then attach 商事",
+          "グエン・ティ・チャウ → 'gu-en ti chau'; チャ='cha'; name clearly mora-by-mora, a touch slow",
+          "と申します → 'to moo-shi-mas'; 申す humble for 言う; long もう; ます glides — the standard self-naming, not です"
+        ]
       },
       {
         "japanese": "本日はこのような場にお招きいただき、ありがとうございます。",
-        "english": "Thank you for inviting me to a venue such as this today."
+        "english": "Thank you for inviting me to a venue such as this today.",
+        "pronunciation_focus": [
+          "本日は → 'hon-jitsu wa'; 'honjitsu'; は='wa'; じつ つ='tsu'",
+          "このような → 'ko-no-yoo-na'; よう nguyên âm dài 2 mora",
+          "場に → 'ba ni'; một mora ngắn dứt khoát, không kéo",
+          "お招きいただき → 'o-ma-ne-ki i-ta-da-ki'; お sonkeigo cho hành động mời của họ; いただく kenjougo cho việc mình được mời",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; とう dài; ございます lướt kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "本日は → 'hon-jitsu wa'; 'honjitsu'; は='wa'; つ in じつ='tsu'",
+          "このような → 'ko-no-yoo-na'; long よう (2 mora)",
+          "場に → 'ba ni'; one short crisp mora, not lengthened",
+          "お招きいただき → 'o-ma-ne-ki i-ta-da-ki'; お sonkeigo for their inviting; いただく humble for being invited",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; long とう; ございます glides, falling close"
+        ]
       },
       {
         "japanese": "ベトナムで品質管理を担当しております。",
-        "english": "I handle quality control in Vietnam."
+        "english": "I handle quality control in Vietnam.",
+        "pronunciation_focus": [
+          "ベトナムで → 'be-to-na-mu de'; bốn mora đều — không đọc kiểu 'Việt Nam'",
+          "品質管理を → 'hin-shitsu-kan-ri o'; しつ つ='tsu' (し devoiced); ん một mora; り tapped r; を='o'",
+          "担当しております → 'tan-too-shi-te-o-ri-mas'; とう dài 2 mora; おります kenjougo của いる; ます lướt — câu ngắn, giọng đều tự tin"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムで → 'be-to-na-mu de'; four even mora — not 'Việt Nam'",
+          "品質管理を → 'hin-shitsu-kan-ri o'; つ in しつ='tsu' (devoiced し); moraic ん; tapped り; を='o'",
+          "担当しております → 'tan-too-shi-te-o-ri-mas'; long とう (2 mora); おります humble for いる; ます glides — short, even confident tone"
+        ]
       },
       {
         "japanese": "もしよろしければ、お名刺を頂戴できますでしょうか。",
-        "english": "If it's all right, may I please receive your business card?"
+        "english": "If it's all right, may I please receive your business card?",
+        "pronunciation_focus": [
+          "もしよろしければ → 'mo-shi yo-ro-shi-ke-re-ba'; ろ tapped r; cụm dò ý lịch sự — đọc hơi nhẹ, ngập ngừng một chút",
+          "お名刺を → 'o-mei-shi o'; お 美化語; めい dài 'me-e' 2 mora; を='o'",
+          "頂戴できますでしょうか → 'choo-dai-de-ki-mas-de-shoo-ka'; ちょう dài; 頂戴 kenjougo của もらう; か đi lên rất nhẹ — xin danh thiếp lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "もしよろしければ → 'mo-shi yo-ro-shi-ke-re-ba'; tapped ろ; polite feeler — light, slightly tentative",
+          "お名刺を → 'o-mei-shi o'; beautifier お; long めい ('me-e', 2 mora); を='o'",
+          "頂戴できますでしょうか → 'choo-dai-de-ki-mas-de-shoo-ka'; long ちょう; 頂戴 humble for もらう; barely-rising か — a courteous card request"
+        ]
       },
       {
         "japanese": "本日は誠にありがとうございました。今後ともよろしくお願い申し上げます。",
-        "english": "Thank you sincerely for today. I respectfully ask for your continued kindness going forward."
+        "english": "Thank you sincerely for today. I respectfully ask for your continued kindness going forward.",
+        "pronunciation_focus": [
+          "本日は → 'hon-jitsu wa'; 'honjitsu'; は='wa'",
+          "誠にありがとうございました → 'ma-ko-to-ni a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta'",
+          "今後とも → 'kon-go to-mo'; ん một mora; cụm cố định 'từ nay về sau'",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う; もう dài; kết câu hạ trầm"
+        ],
+        "pronunciation_focus_en": [
+          "本日は → 'hon-jitsu wa'; 'honjitsu'; は='wa'",
+          "誠にありがとうございました → 'ma-ko-to-ni a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta'",
+          "今後とも → 'kon-go to-mo'; moraic ん; set phrase 'from here on'",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う; long もう; low falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -3261,23 +3759,85 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "この度は、選考結果のご連絡をいただき、誠にありがとうございました。",
-        "english": "Thank you sincerely for the notice of selection result this time."
+        "english": "Thank you sincerely for the notice of selection result this time.",
+        "pronunciation_focus": [
+          "この度は → 'ko-no-ta-bi wa'; は='wa'; cụm mở thư trang trọng 'lần này'",
+          "選考結果の → 'sen-koo-kek-ka no'; こう dài 2 mora; けっか っ sokuon — ngắt một mora trước か ('kek·ka')",
+          "ご連絡をいただき → 'go-ren-ra-ku o i-ta-da-ki'; ら/ر tapped r; を='o'; いただく kenjougo của もらう",
+          "誠にありがとうございました → 'ma-ko-to-ni a-ri-ga-too go-zai-ma-shi-ta'; とう dài; した cuối 'shta' — kết hạ, lịch sự dù là tin xấu"
+        ],
+        "pronunciation_focus_en": [
+          "この度は → 'ko-no-ta-bi wa'; は='wa'; formal letter opener 'on this occasion'",
+          "選考結果の → 'sen-koo-kek-ka no'; long こう (2 mora); sokuon けっか — hold one mora before か ('kek-ka')",
+          "ご連絡をいただき → 'go-ren-ra-ku o i-ta-da-ki'; tapped ら; を='o'; いただく humble for もらう",
+          "誠にありがとうございました → 'ma-ko-to-ni a-ri-ga-too go-zai-ma-shi-ta'; long とう; final した 'shta' — falling, polite despite bad news"
+        ]
       },
       {
         "japanese": "ご縁がなかったとのこと、残念ではございますが、ご縁を結べなかったことを真摯に受け止めております。",
-        "english": "Although it is regrettable that there was no fated connection, I sincerely accept this."
+        "english": "Although it is regrettable that there was no fated connection, I sincerely accept this.",
+        "pronunciation_focus": [
+          "ご縁が → 'go-en ga'; ご 美化語; えん='e-n' ん một mora; が 'g' cứng; 'ご縁' là cách nói uyển ngữ cho 'không trúng tuyển' — đọc nhẹ, không buồn ra mặt",
+          "なかったとのこと → 'na-kat-ta to no ko-to'; かった っ sokuon ngắt một mora",
+          "残念ではございますが → 'zan-nen de wa go-zai-mas-ga'; ん hai chỗ; ではございます trang trọng; が nối không nhấn",
+          "真摯に受け止めております → 'shin-shi ni u-ke-to-me-te-o-ri-mas'; おります kenjougo của いる; ます lướt, giọng điềm tĩnh"
+        ],
+        "pronunciation_focus_en": [
+          "ご縁が → 'go-en ga'; beautifier ご; えん moraic ん; hard が; 'ご縁' is the euphemism for 'not selected' — light, no visible disappointment",
+          "なかったとのこと → 'na-kat-ta to no ko-to'; sokuon かった holds one mora",
+          "残念ではございますが → 'zan-nen de wa go-zai-mas-ga'; two ん; ではございます formal; が unstressed",
+          "真摯に受け止めております → 'shin-shi ni u-ke-to-me-te-o-ri-mas'; おります humble for いる; ます glides, composed tone"
+        ]
       },
       {
         "japanese": "差し支えなければ、今後のために、ご助言を頂戴できますでしょうか。",
-        "english": "If it's not inconvenient, for my future, may I receive your advice?"
+        "english": "If it's not inconvenient, for my future, may I receive your advice?",
+        "pronunciation_focus": [
+          "差し支えなければ → 'sa-shi-tsu-ka-e na-ke-re-ba'; つ='tsu'; れ tapped r; cụm 'nếu không phiền' báo hiệu đây là favor",
+          "今後のために → 'kon-go no ta-me ni'; ん một mora",
+          "ご助言を → 'go-jo-gen o'; ご 美化語; を='o'",
+          "頂戴できますでしょうか → 'choo-dai-de-ki-mas-de-shoo-ka'; ちょう dài; か đi lên rất nhẹ — xin lời khuyên khiêm tốn, KHÔNG đòi feedback"
+        ],
+        "pronunciation_focus_en": [
+          "差し支えなければ → 'sa-shi-tsu-ka-e na-ke-re-ba'; つ='tsu'; tapped れ; 'if not inconvenient' flags a favor",
+          "今後のために → 'kon-go no ta-me ni'; moraic ん",
+          "ご助言を → 'go-jo-gen o'; beautifier ご; を='o'",
+          "頂戴できますでしょうか → 'choo-dai-de-ki-mas-de-shoo-ka'; long ちょう; barely-rising か — a humble ask for advice, NOT demanding feedback"
+        ]
       },
       {
         "japanese": "今回の経験を糧に、引き続き精進してまいります。",
-        "english": "I will use this experience as nourishment and continue to apply myself."
+        "english": "I will use this experience as nourishment and continue to apply myself.",
+        "pronunciation_focus": [
+          "今回の経験を → 'kon-kai no kei-ken o'; ん hai chỗ; けい dài 'ke-e'; を='o'",
+          "糧に → 'ka-te ni'; cụm ẩn dụ 'làm dưỡng chất' — đọc bình thường, không nhấn quá",
+          "引き続き → 'hi-ki-tsu-zu-ki'; つ='tsu', づ='zu'",
+          "精進してまいります → 'shoo-jin-shi-te ma-i-ri-mas'; しょう dài; まいる kenjougo của 行く/来る; ます lướt, giọng quyết tâm"
+        ],
+        "pronunciation_focus_en": [
+          "今回の経験を → 'kon-kai no kei-ken o'; two ん; long けい ('ke-e'); を='o'",
+          "糧に → 'ka-te ni'; metaphor 'as nourishment' — even delivery, no over-stress",
+          "引き続き → 'hi-ki-tsu-zu-ki'; つ='tsu', づ='zu'",
+          "精進してまいります → 'shoo-jin-shi-te ma-i-ri-mas'; long しょう; まいる humble for 行く/来る; ます glides, resolute tone"
+        ]
       },
       {
         "japanese": "末筆ながら、貴社のますますのご発展を心よりお祈り申し上げます。",
-        "english": "In closing, I sincerely pray for your company's ever-greater prosperity."
+        "english": "In closing, I sincerely pray for your company's ever-greater prosperity.",
+        "pronunciation_focus": [
+          "末筆ながら → 'map-pitsu na-ga-ra'; まっ sokuon — ngắt một mora trước ぴ ('map·pitsu'); ぴつ つ='tsu'; ら tapped r; cụm cố định kết thư",
+          "貴社の → 'ki-sha no'; 貴社 = công ty đối phương (VIẾT — khác 御社 khi nói)",
+          "ますますの → 'ma-su-ma-su no'; trạng từ 'ngày càng', đọc đều",
+          "ご発展を → 'go-hat-ten o'; はっ sokuon ngắt một mora trước て; を='o'",
+          "心よりお祈り申し上げます → 'ko-ko-ro yo-ri o-i-no-ri moo-shi-a-ge-mas'; り tapped r; 申し上げる kenjougo cao; もう dài; cụm kết thư hạ trầm chậm"
+        ],
+        "pronunciation_focus_en": [
+          "末筆ながら → 'map-pitsu na-ga-ra'; sokuon まっ — hold one mora before ぴ ('map-pitsu'); つ in ぴつ='tsu'; tapped ら; set letter-closing phrase",
+          "貴社の → 'ki-sha no'; 貴社 = the other company (WRITTEN form — vs spoken 御社)",
+          "ますますの → 'ma-su-ma-su no'; adverb 'ever more', even delivery",
+          "ご発展を → 'go-hat-ten o'; sokuon はっ holds one mora before て; を='o'",
+          "心よりお祈り申し上げます → 'ko-ko-ro yo-ri o-i-no-ri moo-shi-a-ge-mas'; tapped り; 申し上げる high kenjougo; long もう; low slow letter-closing"
+        ]
       }
     ],
     "dialogue": [
@@ -3535,23 +4095,87 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "誠に恐縮ではございますが、推薦状の件で、ご相談させていただきたく存じます。",
-        "english": "I am very sorry to trouble you, but I would humbly like to consult about a letter of recommendation."
+        "english": "I am very sorry to trouble you, but I would humbly like to consult about a letter of recommendation.",
+        "pronunciation_focus": [
+          "誠に恐縮ではございますが → 'ma-ko-to-ni kyoo-shu-ku de wa go-zai-mas-ga'; きょう dài; く devoiced; ではございます trang trọng; が nối không nhấn",
+          "推薦状の件で → 'sui-sen-joo no ken de'; すい='su-i'; じょう dài 2 mora; ん một mora",
+          "ご相談 → 'go-soo-dan'; ご 美化語; そう dài; đọc phẳng",
+          "させていただきたく存じます → 'sa-se-te-i-ta-da-ki-ta-ku zon-ji-mas'; chuỗi kenjougo; ぞ='z'; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "誠に恐縮ではございますが → 'ma-ko-to-ni kyoo-shu-ku de wa go-zai-mas-ga'; long きょう; devoiced く; ではございます formal; が unstressed",
+          "推薦状の件で → 'sui-sen-joo no ken de'; すい='su-i'; long じょう (2 mora); moraic ん",
+          "ご相談 → 'go-soo-dan'; beautifier ご; long そう; flat delivery",
+          "させていただきたく存じます → 'sa-se-te-i-ta-da-ki-ta-ku zon-ji-mas'; kenjougo chain; ぞ='z'; formal falling close"
+        ]
       },
       {
         "japanese": "提出期限は来月二十日でございまして、二週間前までに頂戴できれば幸いでございます。",
-        "english": "The submission deadline is the 20th of next month; I would be grateful to receive it by two weeks before."
+        "english": "The submission deadline is the 20th of next month; I would be grateful to receive it by two weeks before.",
+        "pronunciation_focus": [
+          "提出期限は → 'tei-shutsu-ki-gen wa'; てい dài 'te-e'; しゅつ つ='tsu'; ん một mora; は='wa'",
+          "来月二十日 → 'rai-getsu ha-tsu-ka'; らい='ra-i' tapped r; が→げつ 'g' cứng; 二十日 đọc 'hatsuka' (KHÔNG 'ni-juu-nichi') — つ='tsu'",
+          "でございまして → 'de go-zai-ma-shi-te'; dạng です trang trọng nối câu",
+          "二週間前までに → 'ni-shuu-kan-mae ma-de ni'; しゅう dài 2 mora; ん một mora",
+          "頂戴できれば幸いでございます → 'choo-dai-de-ki-re-ba sai-wai de go-zai-mas'; ちょう dài; さい/わい='sa-i/wa-i'; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "提出期限は → 'tei-shutsu-ki-gen wa'; long てい ('te-e'); つ in しゅつ='tsu'; moraic ん; は='wa'",
+          "来月二十日 → 'rai-getsu ha-tsu-ka'; らい='ra-i' tapped r; hard げつ; 二十日 read 'hatsuka' (NOT 'ni-juu-nichi') — つ='tsu'",
+          "でございまして → 'de go-zai-ma-shi-te'; formal copula continuative",
+          "二週間前までに → 'ni-shuu-kan-mae ma-de ni'; long しゅう (2 mora); moraic ん",
+          "頂戴できれば幸いでございます → 'choo-dai-de-ki-re-ba sai-wai de go-zai-mas'; long ちょう; さい/わい='sa-i/wa-i'; formal falling close"
+        ]
       },
       {
         "japanese": "応募する大学院は、京都大学工学研究科でございます。",
-        "english": "The graduate school I am applying to is the Graduate School of Engineering, Kyoto University."
+        "english": "The graduate school I am applying to is the Graduate School of Engineering, Kyoto University.",
+        "pronunciation_focus": [
+          "応募する → 'oo-bo su-ru'; おう nguyên âm dài 2 mora; る tapped r",
+          "大学院は → 'dai-ga-ku-in wa'; だい='da-i'; が 'g' cứng; いん='i-n' ん một mora; は='wa'",
+          "京都大学 → 'kyoo-to-dai-ga-ku'; きょう dài 2 mora; が 'g' cứng",
+          "工学研究科 → 'koo-ga-ku ken-kyuu-ka'; こう dài; が 'g' cứng; きゅう dài",
+          "でございます → 'de go-zai-mas'; dạng です trang trọng nhất, kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "応募する → 'oo-bo su-ru'; long おう (2 mora); tapped る",
+          "大学院は → 'dai-ga-ku-in wa'; だい='da-i'; hard が; いん moraic ん; は='wa'",
+          "京都大学 → 'kyoo-to-dai-ga-ku'; long きょう (2 mora); hard が",
+          "工学研究科 → 'koo-ga-ku ken-kyuu-ka'; long こう; hard が; long きゅう",
+          "でございます → 'de go-zai-mas'; most formal copula, falling close"
+        ]
       },
       {
         "japanese": "私の研究計画書は、添付のとおりでございます。",
-        "english": "My research plan is as attached."
+        "english": "My research plan is as attached.",
+        "pronunciation_focus": [
+          "私の → 'wa-ta-shi no'",
+          "研究計画書は → 'ken-kyuu-kei-ka-ku-sho wa'; きゅう dài; けい dài 'ke-e'; く devoiced; は='wa'",
+          "添付のとおりで → 'ten-pu no too-ri de'; ん một mora; とおり 'too-ri' nguyên âm dài 2 mora; り tapped r",
+          "ございます → 'go-zai-mas'; lướt 'go-zai-mas', kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "私の → 'wa-ta-shi no'",
+          "研究計画書は → 'ken-kyuu-kei-ka-ku-sho wa'; long きゅう; long けい ('ke-e'); devoiced く; は='wa'",
+          "添付のとおりで → 'ten-pu no too-ri de'; moraic ん; とおり long 'too-ri' (2 mora); tapped り",
+          "ございます → 'go-zai-mas'; glides to 'go-zai-mas', formal falling close"
+        ]
       },
       {
         "japanese": "お忙しい中、誠に申し訳ございませんが、何卒よろしくお願い申し上げます。",
-        "english": "Despite your busyness, I am truly sorry, but I respectfully ask for your kindness."
+        "english": "Despite your busyness, I am truly sorry, but I respectfully ask for your kindness.",
+        "pronunciation_focus": [
+          "お忙しい中 → 'o-i-so-ga-shii na-ka'; しい dài 2 mora; đừng rút 'shi'",
+          "誠に申し訳ございませんが → 'ma-ko-to-ni moo-shi-wa-ke go-zai-ma-sen ga'; 申し訳ございません là dạng xin lỗi kenjougo cao; もう dài; が nối không nhấn",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; trạng từ thỉnh cầu trang trọng nhất — rõ, hơi chậm",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う; もう dài; kết câu hạ trầm chậm"
+        ],
+        "pronunciation_focus_en": [
+          "お忙しい中 → 'o-i-so-ga-shii na-ka'; long しい (2 mora); don't clip to 'shi'",
+          "誠に申し訳ございませんが → 'ma-ko-to-ni moo-shi-wa-ke go-zai-ma-sen ga'; 申し訳ございません is the high-kenjougo apology; long もう; が unstressed",
+          "何卒 → 'na-ni-to-zo'; ぞ='z'; the most formal request adverb — clear, slightly slow",
+          "よろしくお願い申し上げます → 'yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う; long もう; low slow falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -3809,23 +4433,87 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "私の研究関心は、東南アジアにおける水質汚染対策に関するものでございます。",
-        "english": "My research interest concerns countermeasures to water pollution in Southeast Asia."
+        "english": "My research interest concerns countermeasures to water pollution in Southeast Asia.",
+        "pronunciation_focus": [
+          "私の研究関心は → 'wa-ta-shi no ken-kyuu-kan-shin wa'; きゅう dài 2 mora; ん hai chỗ mỗi cái một mora; は='wa'",
+          "東南アジアにおける → 'too-nan-a-ji-a ni-o-ke-ru'; とう dài; ん một mora; る tapped r",
+          "水質汚染対策に → 'sui-shitsu-o-sen-tai-saku ni'; すい='su-i'; しつ つ='tsu' (し devoiced); たい='ta-i'; く cuối devoiced",
+          "関するものでございます → 'kan-su-ru mo-no de go-zai-mas'; る tapped r; でございます dạng です trang trọng, kết hạ phẳng — văn học thuật đọc đều, không nhấn cảm xúc"
+        ],
+        "pronunciation_focus_en": [
+          "私の研究関心は → 'wa-ta-shi no ken-kyuu-kan-shin wa'; long きゅう (2 mora); two ん each one mora; は='wa'",
+          "東南アジアにおける → 'too-nan-a-ji-a ni-o-ke-ru'; long とう; moraic ん; tapped る",
+          "水質汚染対策に → 'sui-shitsu-o-sen-tai-saku ni'; すい='su-i'; つ in しつ='tsu' (devoiced し); たい='ta-i'; final く devoiced",
+          "関するものでございます → 'kan-su-ru mo-no de go-zai-mas'; tapped る; でございます formal copula, flat falling — academic register stays even, no emotive stress"
+        ]
       },
       {
         "japanese": "現在は、逆浸透膜の長期運用における目詰まり現象に注目しております。",
-        "english": "Currently I focus on the fouling phenomenon in long-term reverse-osmosis membrane operation."
+        "english": "Currently I focus on the fouling phenomenon in long-term reverse-osmosis membrane operation.",
+        "pronunciation_focus": [
+          "現在は → 'gen-zai wa'; ん một mora; ざ='z'; は='wa'",
+          "逆浸透膜の → 'gya-ku-shin-too-ma-ku no'; ぎゃ 'gy' (g cứng + ya); とう dài; く cuối devoiced",
+          "長期運用における → 'choo-ki-un-yoo ni-o-ke-ru'; ちょう dài; よう dài; る tapped r",
+          "目詰まり現象に → 'me-zu-ma-ri gen-shoo ni'; づ='zu'; り tapped r; しょう dài 2 mora",
+          "注目しております → 'chuu-mo-ku-shi-te-o-ri-mas'; ちゅう dài; く devoiced; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "現在は → 'gen-zai wa'; moraic ん; ざ='z'; は='wa'",
+          "逆浸透膜の → 'gya-ku-shin-too-ma-ku no'; ぎゃ = 'gy' (hard g + ya); long とう; final く devoiced",
+          "長期運用における → 'choo-ki-un-yoo ni-o-ke-ru'; long ちょう + long よう; tapped る",
+          "目詰まり現象に → 'me-zu-ma-ri gen-shoo ni'; づ='zu'; tapped り; long しょう (2 mora)",
+          "注目しております → 'chuu-mo-ku-shi-te-o-ri-mas'; long ちゅう; devoiced く; おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "先生の二〇二三年の論文を拝読し、深く感銘を受けました。",
-        "english": "I read your 2023 paper and was deeply moved by it."
+        "english": "I read your 2023 paper and was deeply moved by it.",
+        "pronunciation_focus": [
+          "先生の → 'sen-sei no'; ん một mora; せい dài 'se-e' 2 mora",
+          "二〇二三年の → 'ni-sen-ni-juu-san-nen no'; đọc số 'nisen-nijuusan-nen'; じゅう dài; ん rõ từng mora",
+          "論文を → 'ron-bun o'; ん hai chỗ mỗi cái một mora; を='o'",
+          "拝読し → 'hai-do-ku-shi'; はい='ha-i'; 拝読 kenjougo của 読む (đọc của thầy) — KHÔNG 読みました; く/し devoiced",
+          "深く感銘を受けました → 'fu-ka-ku kan-mei o u-ke-ma-shi-ta'; ふ môi nhẹ; めい dài 'me-e'; を='o'; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "先生の → 'sen-sei no'; moraic ん; long せい ('se-e', 2 mora)",
+          "二〇二三年の → 'ni-sen-ni-juu-san-nen no'; read 'nisen-nijuusan-nen'; long じゅう; keep ん distinct",
+          "論文を → 'ron-bun o'; two ん each one mora; を='o'",
+          "拝読し → 'hai-do-ku-shi'; はい='ha-i'; 拝読 humble for 読む (reading the professor's work) — NOT 読みました; devoiced く/し",
+          "深く感銘を受けました → 'fu-ka-ku kan-mei o u-ke-ma-shi-ta'; soft ふ; long めい ('me-e'); を='o'; final した 'shta'"
+        ]
       },
       {
         "japanese": "もしお差し支えなければ、現在進行中のプロジェクトについて、お聞かせいただけますでしょうか。",
-        "english": "If it's not inconvenient, could I please hear about the currently ongoing project?"
+        "english": "If it's not inconvenient, could I please hear about the currently ongoing project?",
+        "pronunciation_focus": [
+          "もしお差し支えなければ → 'mo-shi o-sa-shi-tsu-ka-e na-ke-re-ba'; つ='tsu'; れ tapped r; cụm 'nếu không phiền' — đọc nhẹ, báo hiệu favor",
+          "現在進行中の → 'gen-zai-shin-koo-chuu no'; ざ='z'; こう dài; ちゅう dài",
+          "プロジェクトについて → 'pu-ro-je-ku-to ni-tsu-i-te'; ロ tapped r; く devoiced; つ='tsu'",
+          "お聞かせいただけますでしょうか → 'o-ki-ka-se i-ta-da-ke-mas-de-shoo-ka'; chồng lịch sự; か đi lên RẤT nhẹ — thỉnh cầu được nghe, không tra hỏi nghiên cứu của thầy"
+        ],
+        "pronunciation_focus_en": [
+          "もしお差し支えなければ → 'mo-shi o-sa-shi-tsu-ka-e na-ke-re-ba'; つ='tsu'; tapped れ; 'if not inconvenient' — light, flags a favor",
+          "現在進行中の → 'gen-zai-shin-koo-chuu no'; ざ='z'; long こう + long ちゅう",
+          "プロジェクトについて → 'pu-ro-je-ku-to ni-tsu-i-te'; tapped ロ; devoiced く; つ='tsu'",
+          "お聞かせいただけますでしょうか → 'o-ki-ka-se i-ta-da-ke-mas-de-shoo-ka'; stacked politeness; very slight rise on か — asking to be allowed to hear, not probing the professor's research"
+        ]
       },
       {
         "japanese": "本日のお話を踏まえ、改めて研究計画を練り直したく存じます。",
-        "english": "Based on today's discussion, I would humbly like to revise my research plan."
+        "english": "Based on today's discussion, I would humbly like to revise my research plan.",
+        "pronunciation_focus": [
+          "本日のお話を踏まえ → 'hon-jitsu no o-ha-na-shi o fu-ma-e'; じつ つ='tsu'; を='o'; ふ môi nhẹ",
+          "改めて → 'a-ra-ta-me-te'; ら tapped r; bốn mora đều, ngắt nhẹ trước để nhấn 'một lần nữa'",
+          "研究計画を → 'ken-kyuu-kei-ka-ku o'; きゅう dài; けい dài 'ke-e'; く devoiced; を='o'",
+          "練り直したく存じます → 'ne-ri-na-o-shi-ta-ku zon-ji-mas'; り tapped r; 存じる kenjougo của 思う; ぞ='z'; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "本日のお話を踏まえ → 'hon-jitsu no o-ha-na-shi o fu-ma-e'; つ in じつ='tsu'; を='o'; soft ふ",
+          "改めて → 'a-ra-ta-me-te'; tapped ら; four even mora, slight break before to flag 'once again'",
+          "研究計画を → 'ken-kyuu-kei-ka-ku o'; long きゅう; long けい ('ke-e'); devoiced く; を='o'",
+          "練り直したく存じます → 'ne-ri-na-o-shi-ta-ku zon-ji-mas'; tapped り; 存じる humble for 思う; ぞ='z'; formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -4083,23 +4771,91 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "山田部長、遠路はるばるベトナムまでお越しいただき、誠にありがとうございます。",
-        "english": "Manager Yamada, thank you sincerely for coming all the way to Vietnam from afar."
+        "english": "Manager Yamada, thank you sincerely for coming all the way to Vietnam from afar.",
+        "pronunciation_focus": [
+          "山田部長 → 'ya-ma-da bu-choo'; ちょう dài 2 mora; gọi chức danh + 部長 KHÔNG thêm さん",
+          "遠路はるばる → 'en-ro ha-ru-ba-ru'; えん ん một mora; ろ/る tapped r; thành ngữ 'đường xa lặn lội' — đọc đều, ấm",
+          "ベトナムまで → 'be-to-na-mu ma-de'; bốn mora đều",
+          "お越しいただき → 'o-ko-shi i-ta-da-ki'; お越し sonkeigo của 来る (hành động của sếp); いただく kenjougo cho việc mình được",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; とう dài; ございます lướt kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "山田部長 → 'ya-ma-da bu-choo'; long ちょう (2 mora); title 部長 takes NO さん",
+          "遠路はるばる → 'en-ro ha-ru-ba-ru'; moraic ん; tapped ろ/る; idiom 'all the long way' — even, warm",
+          "ベトナムまで → 'be-to-na-mu ma-de'; four even mora",
+          "お越しいただき → 'o-ko-shi i-ta-da-ki'; お越し sonkeigo for 来る (the boss's action); いただく humble for receiving it",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; long とう; ございます glides, falling close"
+        ]
       },
       {
         "japanese": "長旅でお疲れのことと存じます。お荷物はこちらでお預かりいたします。",
-        "english": "I imagine you must be tired from the long journey. We will take care of your luggage here."
+        "english": "I imagine you must be tired from the long journey. We will take care of your luggage here.",
+        "pronunciation_focus": [
+          "長旅で → 'na-ga-ta-bi de'; が 'g' cứng",
+          "お疲れのことと存じます → 'o-tsu-ka-re no ko-to to zon-ji-mas'; つ='tsu'; 存じる kenjougo của 思う; ぞ='z' — đoán ý người trên lễ độ",
+          "お荷物は → 'o-ni-mo-tsu wa'; つ='tsu'; は='wa'; お 美化語",
+          "こちらで → 'ko-chi-ra de'; ち='chi'; ら tapped r",
+          "お預かりいたします → 'o-a-zu-ka-ri i-ta-shi-mas'; づ→ず 'zu'; り tapped r; いたす kenjougo của する; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "長旅で → 'na-ga-ta-bi de'; hard が",
+          "お疲れのことと存じます → 'o-tsu-ka-re no ko-to to zon-ji-mas'; つ='tsu'; 存じる humble for 思う; ぞ='z' — politely surmising a superior's state",
+          "お荷物は → 'o-ni-mo-tsu wa'; つ='tsu'; は='wa'; beautifier お",
+          "こちらで → 'ko-chi-ra de'; ち='chi'; tapped ら",
+          "お預かりいたします → 'o-a-zu-ka-ri i-ta-shi-mas'; づ='zu'; tapped り; いたす humble for する; ます glides"
+        ]
       },
       {
         "japanese": "本日のスケジュールにつきまして、ホテルでご説明させていただきます。",
-        "english": "Regarding today's schedule, I will explain at the hotel."
+        "english": "Regarding today's schedule, I will explain at the hotel.",
+        "pronunciation_focus": [
+          "本日の → 'hon-jitsu no'; じつ つ='tsu'",
+          "スケジュールに → 'su-ke-juu-ru ni'; ジュー nguyên âm dài 2 mora; る tapped r",
+          "つきまして → 'tsu-ki-ma-shi-te'; つ='tsu' đầu cụm; từ nối trang trọng, ngắt nhẹ sau nó",
+          "ホテルで → 'ho-te-ru de'; る tapped r",
+          "ご説明させていただきます → 'go-se-tsu-mei sa-se-te-i-ta-da-ki-mas'; せつ つ='tsu'; めい dài 'me-e'; chuỗi kenjougo; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "本日の → 'hon-jitsu no'; つ in じつ='tsu'",
+          "スケジュールに → 'su-ke-juu-ru ni'; long ジュー (2 mora); tapped る",
+          "つきまして → 'tsu-ki-ma-shi-te'; つ='tsu' at start; formal connector, slight break after",
+          "ホテルで → 'ho-te-ru de'; tapped る",
+          "ご説明させていただきます → 'go-se-tsu-mei sa-se-te-i-ta-da-ki-mas'; つ in せつ='tsu'; long めい ('me-e'); kenjougo chain; ます glides"
+        ]
       },
       {
         "japanese": "ベトナム滞在中、何か不便がございましたら、いつでもお申し付けください。",
-        "english": "During your stay in Vietnam, if anything is inconvenient, please let me know any time."
+        "english": "During your stay in Vietnam, if anything is inconvenient, please let me know any time.",
+        "pronunciation_focus": [
+          "ベトナム滞在中 → 'be-to-na-mu tai-zai-chuu'; たい/ざい='ta-i/za-i'; ちゅう dài 2 mora",
+          "何か不便が → 'na-ni-ka fu-ben ga'; ふ môi nhẹ; ん một mora; が 'g' cứng",
+          "ございましたら → 'go-zai-ma-shi-ta-ra'; ら tapped r; điều kiện trang trọng",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "お申し付けください → 'o-moo-shi-tsu-ke ku-da-sai'; もう dài; つ='tsu'; sonkeigo 'xin cứ sai bảo'; さい='sa-i'"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナム滞在中 → 'be-to-na-mu tai-zai-chuu'; たい/ざい='ta-i/za-i'; long ちゅう (2 mora)",
+          "何か不便が → 'na-ni-ka fu-ben ga'; soft ふ; moraic ん; hard が",
+          "ございましたら → 'go-zai-ma-shi-ta-ra'; tapped ら; formal conditional",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "お申し付けください → 'o-moo-shi-tsu-ke ku-da-sai'; long もう; つ='tsu'; sonkeigo 'please just command me'; さい='sa-i'"
+        ]
       },
       {
         "japanese": "現地スタッフ一同、心よりお迎え申し上げます。",
-        "english": "All of us local staff sincerely welcome you."
+        "english": "All of us local staff sincerely welcome you.",
+        "pronunciation_focus": [
+          "現地スタッフ → 'gen-chi su-tap-pu'; ち='chi'; タッ sokuon — ngắt một mora trước ぷ ('su-tap·pu')",
+          "一同 → 'i-chi-doo'; ち='chi'; どう dài 2 mora; nghĩa 'tất cả mọi người'",
+          "心より → 'ko-ko-ro yo-ri'; り tapped r; cụm 'tự đáy lòng'",
+          "お迎え申し上げます → 'o-mu-ka-e moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う/する; もう dài; kết câu hạ trầm trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "現地スタッフ → 'gen-chi su-tap-pu'; ち='chi'; sokuon タッ — hold one mora before ぷ ('su-tap-pu')",
+          "一同 → 'i-chi-doo'; ち='chi'; long どう (2 mora); means 'all of us'",
+          "心より → 'ko-ko-ro yo-ri'; tapped り; phrase 'from the heart'",
+          "お迎え申し上げます → 'o-mu-ka-e moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う/する; long もう; low formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -4357,23 +5113,83 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "本日は弊社工場へお越しいただき、誠にありがとうございます。",
-        "english": "Thank you sincerely for coming to our factory today."
+        "english": "Thank you sincerely for coming to our factory today.",
+        "pronunciation_focus": [
+          "本日は → 'hon-jitsu wa'; じつ つ='tsu'; は='wa'",
+          "弊社工場へ → 'hei-sha koo-joo e'; へい dài 'he-e'; 弊社 = công ty CỦA MÌNH (khiêm); こう/じょう dài; へ trợ từ='e' không 'he'",
+          "お越しいただき → 'o-ko-shi i-ta-da-ki'; お越し sonkeigo của 来る (hành động của khách); いただく kenjougo",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; とう dài; ございます lướt kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "本日は → 'hon-jitsu wa'; つ in じつ='tsu'; は='wa'",
+          "弊社工場へ → 'hei-sha koo-joo e'; long へい ('he-e'); 弊社 = YOUR OWN company (humble); long こう/じょう; particle へ='e', not 'he'",
+          "お越しいただき → 'o-ko-shi i-ta-da-ki'; お越し sonkeigo for 来る (the guest's action); いただく humble",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; long とう; ございます glides, falling close"
+        ]
       },
       {
         "japanese": "まずは生産ラインをご案内させていただきます。",
-        "english": "First, I will guide you through the production line."
+        "english": "First, I will guide you through the production line.",
+        "pronunciation_focus": [
+          "まずは → 'ma-zu wa'; ず='zu'; は='wa'; trạng từ 'trước hết'",
+          "生産ラインを → 'sei-san rai-n o'; せい dài 'se-e'; ライン ら tapped r, ン một mora; を='o'",
+          "ご案内させていただきます → 'go-an-nai sa-se-te-i-ta-da-ki-mas'; あんない ん một mora, ない='na-i'; chuỗi kenjougo; ます lướt — câu mời dẫn đi, giọng đều lịch sự"
+        ],
+        "pronunciation_focus_en": [
+          "まずは → 'ma-zu wa'; ず='zu'; は='wa'; adverb 'first of all'",
+          "生産ラインを → 'sei-san rai-n o'; long せい ('se-e'); ライン tapped ら, moraic ン; を='o'",
+          "ご案内させていただきます → 'go-an-nai sa-se-te-i-ta-da-ki-mas'; あんない moraic ん, ない='na-i'; kenjougo chain; ます glides — a guiding offer, even polite tone"
+        ]
       },
       {
         "japanese": "ご質問がございましたら、いつでもお申し付けください。",
-        "english": "If you have any questions, please ask at any time."
+        "english": "If you have any questions, please ask at any time.",
+        "pronunciation_focus": [
+          "ご質問が → 'go-shitsu-mon ga'; しつ つ='tsu' (し devoiced); ん một mora; が 'g' cứng",
+          "ございましたら → 'go-zai-ma-shi-ta-ra'; ら tapped r; điều kiện trang trọng",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "お申し付けください → 'o-moo-shi-tsu-ke ku-da-sai'; もう dài; つ='tsu'; sonkeigo 'xin cứ hỏi'; さい='sa-i'"
+        ],
+        "pronunciation_focus_en": [
+          "ご質問が → 'go-shitsu-mon ga'; つ in しつ='tsu' (devoiced し); moraic ん; hard が",
+          "ございましたら → 'go-zai-ma-shi-ta-ra'; tapped ら; formal conditional",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "お申し付けください → 'o-moo-shi-tsu-ke ku-da-sai'; long もう; つ='tsu'; sonkeigo 'please just ask'; さい='sa-i'"
+        ]
       },
       {
         "japanese": "夕方は懇親会をご用意しております。お時間が許せばご参加いただけますと幸いです。",
-        "english": "We have prepared a social dinner for the evening. We would be grateful if your schedule allows you to join."
+        "english": "We have prepared a social dinner for the evening. We would be grateful if your schedule allows you to join.",
+        "pronunciation_focus": [
+          "夕方は → 'yuu-ga-ta wa'; ゆう dài 2 mora; が 'g' cứng; は='wa'",
+          "懇親会を → 'kon-shin-kai o'; ん hai chỗ mỗi cái một mora; かい='ka-i'; を='o'",
+          "ご用意しております → 'go-yoo-i-shi-te-o-ri-mas'; よう dài; おります kenjougo của いる; ます lướt",
+          "お時間が許せば → 'o-ji-kan ga yu-ru-se-ba'; が 'g' cứng; る tapped r",
+          "ご参加いただけますと幸いです → 'go-san-ka i-ta-da-ke-mas to sai-wai des'; さい/わい='sa-i/wa-i'; です lướt 'des' — lời mời mềm, không ép"
+        ],
+        "pronunciation_focus_en": [
+          "夕方は → 'yuu-ga-ta wa'; long ゆう (2 mora); hard が; は='wa'",
+          "懇親会を → 'kon-shin-kai o'; two ん each one mora; かい='ka-i'; を='o'",
+          "ご用意しております → 'go-yoo-i-shi-te-o-ri-mas'; long よう; おります humble for いる; ます glides",
+          "お時間が許せば → 'o-ji-kan ga yu-ru-se-ba'; hard が; tapped る",
+          "ご参加いただけますと幸いです → 'go-san-ka i-ta-da-ke-mas to sai-wai des'; さい/わい='sa-i/wa-i'; です glides to 'des' — a soft invitation, no pressure"
+        ]
       },
       {
         "japanese": "今後とも変わらぬご贔屓のほど、何卒よろしくお願い申し上げます。",
-        "english": "We respectfully ask for your continued patronage."
+        "english": "We respectfully ask for your continued patronage.",
+        "pronunciation_focus": [
+          "今後とも → 'kon-go to-mo'; ん một mora; cụm cố định 'từ nay về sau'",
+          "変わらぬ → 'ka-wa-ra-nu'; ら tapped r; thể văn chương của 変わらない — đọc trang trọng",
+          "ご贔屓のほど → 'go-hii-ki no ho-do'; ひい nguyên âm dài 2 mora; 'のほど' làm lời nhờ mềm, đọc nhẹ không nhấn",
+          "何卒よろしくお願い申し上げます → 'na-ni-to-zo yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; ぞ='z'; 申し上げる kenjougo cao; もう dài; kết hạ trầm"
+        ],
+        "pronunciation_focus_en": [
+          "今後とも → 'kon-go to-mo'; moraic ん; set phrase 'from here on'",
+          "変わらぬ → 'ka-wa-ra-nu'; tapped ら; literary form of 変わらない — formal delivery",
+          "ご贔屓のほど → 'go-hii-ki no ho-do'; long ひい (2 mora); 'のほど' softens the request, light/unstressed",
+          "何卒よろしくお願い申し上げます → 'na-ni-to-zo yo-ro-shi-ku o-ne-gai moo-shi-a-ge-mas'; ぞ='z'; 申し上げる high kenjougo; long もう; low falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -4631,23 +5447,89 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ベトナムでは、家族で集まることがとても大切なんです。",
-        "english": "In Vietnam, gathering as a family is very important."
+        "english": "In Vietnam, gathering as a family is very important.",
+        "pronunciation_focus": [
+          "ベトナムでは → 'be-to-na-mu de wa'; bốn mora đều; では='de wa' (は='wa')",
+          "家族で → 'ka-zo-ku de'; く cuối devoiced nhẹ",
+          "集まることが → 'a-tsu-ma-ru ko-to ga'; つ='tsu'; る tapped r; が 'g' cứng",
+          "とても大切 → 'to-te-mo tai-se-tsu'; たい='ta-i'; せつ つ='tsu'",
+          "なんです → 'nan des'; ん một mora; なんです giọng GIẢI THÍCH thân thiện (không phải です trống) — đăng ký informal-polite, hạ giọng cuối"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムでは → 'be-to-na-mu de wa'; four even mora; では='de wa' (は='wa')",
+          "家族で → 'ka-zo-ku de'; final く lightly devoiced",
+          "集まることが → 'a-tsu-ma-ru ko-to ga'; つ='tsu'; tapped る; hard が",
+          "とても大切 → 'to-te-mo tai-se-tsu'; たい='ta-i'; つ in せつ='tsu'",
+          "なんです → 'nan des'; moraic ん; なんです = friendly EXPLANATORY tone (not bare です) — informal-polite register, falling close"
+        ]
       },
       {
         "japanese": "コーヒー文化は、フランスの影響で発展しました。",
-        "english": "Coffee culture developed under French influence."
+        "english": "Coffee culture developed under French influence.",
+        "pronunciation_focus": [
+          "コーヒー → 'koo-hii'; コー nguyên âm dài 2 mora + ヒー dài 2 mora; ヒ là 'h' nhẹ — đừng đọc thành 'cà phê'",
+          "文化は → 'bun-ka wa'; ん một mora; は='wa'",
+          "フランスの → 'fu-ran-su no'; フ môi nhẹ; ら tapped r; ん một mora",
+          "影響で → 'ei-kyoo de'; えい dài 'e-e'; きょう dài 2 mora",
+          "発展しました → 'hat-ten-shi-ma-shi-ta'; はっ sokuon ngắt một mora trước て; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "コーヒー → 'koo-hii'; long コー (2 mora) + long ヒー (2 mora); ヒ is soft 'h' — not Vietnamese 'cà phê'",
+          "文化は → 'bun-ka wa'; moraic ん; は='wa'",
+          "フランスの → 'fu-ran-su no'; soft ふ; tapped ら; moraic ん",
+          "影響で → 'ei-kyoo de'; long えい ('e-e'); long きょう (2 mora)",
+          "発展しました → 'hat-ten-shi-ma-shi-ta'; sokuon はっ holds one mora before て; final した 'shta'"
+        ]
       },
       {
         "japanese": "バイクは「足」というより、生活の一部です。",
-        "english": "Motorbikes are less like feet and more part of daily life."
+        "english": "Motorbikes are less like feet and more part of daily life.",
+        "pronunciation_focus": [
+          "バイクは → 'ba-i-ku wa'; ばい='ba-i' 2 mora; く devoiced nhẹ; は='wa'",
+          "「足」というより → 'a-shi to i-u yo-ri'; り tapped r; dấu 「」đọc liền, hơi tách nhẹ để báo trích",
+          "生活の → 'sei-ka-tsu no'; せい dài 'se-e'; つ='tsu'",
+          "一部です → 'i-chi-bu des'; ち='chi'; です lướt 'des' — câu giải thích, giọng đều thân thiện"
+        ],
+        "pronunciation_focus_en": [
+          "バイクは → 'ba-i-ku wa'; ばい='ba-i' (2 mora); lightly devoiced く; は='wa'",
+          "「足」というより → 'a-shi to i-u yo-ri'; tapped り; 「」read bound, a slight break to mark the quote",
+          "生活の → 'sei-ka-tsu no'; long せい ('se-e'); つ='tsu'",
+          "一部です → 'i-chi-bu des'; ち='chi'; です glides to 'des' — explanatory, even friendly tone"
+        ]
       },
       {
         "japanese": "日本の方からよく「忙しそう」と言われますが、実はリラックスしている時間も多いです。",
-        "english": "Japanese people often say we look busy, but actually we have a lot of relaxed time too."
+        "english": "Japanese people often say we look busy, but actually we have a lot of relaxed time too.",
+        "pronunciation_focus": [
+          "日本の方から → 'ni-hon no ka-ta ka-ra'; 方='kata' (người, kính ngữ) KHÔNG 'hoo'; ら tapped r",
+          "「忙しそう」と言われますが → 'i-so-ga-shi-soo to i-wa-re-mas-ga'; そう dài; bị động 言われます; が nối không nhấn",
+          "実は → 'ji-tsu wa'; じつ つ='tsu'; は='wa'; trạng từ 'thật ra' báo đảo ý",
+          "リラックスしている → 'ri-rak-ku-su-shi-te i-ru'; リ/ラ tapped r; ラッ sokuon ngắt một mora trước く",
+          "時間も多いです → 'ji-kan mo oo-i des'; ん một mora; おお dài 2 mora; です lướt 'des'"
+        ],
+        "pronunciation_focus_en": [
+          "日本の方から → 'ni-hon no ka-ta ka-ra'; 方='kata' (honorific 'people'), NOT 'hoo'; tapped ら",
+          "「忙しそう」と言われますが → 'i-so-ga-shi-soo to i-wa-re-mas-ga'; long そう; passive 言われます; が unstressed",
+          "実は → 'ji-tsu wa'; つ in じつ='tsu'; は='wa'; adverb 'actually' flagging a reversal",
+          "リラックスしている → 'ri-rak-ku-su-shi-te i-ru'; tapped リ/ラ; sokuon ラッ holds one mora before く",
+          "時間も多いです → 'ji-kan mo oo-i des'; moraic ん; long おお (2 mora); です glides to 'des'"
+        ]
       },
       {
         "japanese": "もしご興味があれば、今度ローカルの市場へご案内しますよ。",
-        "english": "If you're interested, next time I'll show you a local market."
+        "english": "If you're interested, next time I'll show you a local market.",
+        "pronunciation_focus": [
+          "もしご興味があれば → 'mo-shi go-kyoo-mi ga a-re-ba'; きょう dài 2 mora; が 'g' cứng; れ tapped r — lời rủ nhẹ, ngập ngừng một chút",
+          "今度 → 'kon-do'; ん một mora; nghĩa 'lần tới'",
+          "ローカルの市場へ → 'roo-ka-ru no i-chi-ba e'; ロー dài 2 mora; る/ち tapped/='chi'; へ trợ từ='e'",
+          "ご案内しますよ → 'go-an-nai-shi-mas yo'; ない='na-i'; よ cuối thân thiện — giọng hơi đi lên, ấm, không trang trọng cứng"
+        ],
+        "pronunciation_focus_en": [
+          "もしご興味があれば → 'mo-shi go-kyoo-mi ga a-re-ba'; long きょう (2 mora); hard が; tapped れ — a light invitation, slightly tentative",
+          "今度 → 'kon-do'; moraic ん; means 'next time'",
+          "ローカルの市場へ → 'roo-ka-ru no i-chi-ba e'; long ロー (2 mora); tapped る, ち='chi'; particle へ='e'",
+          "ご案内しますよ → 'go-an-nai-shi-mas yo'; ない='na-i'; friendly final よ — slight rise, warm, not stiffly formal"
+        ]
       }
     ],
     "dialogue": [
@@ -4905,23 +5787,85 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "日本の会社では、上下関係がとても重視されます。",
-        "english": "In Japanese companies, hierarchical relationships are highly valued."
+        "english": "In Japanese companies, hierarchical relationships are highly valued.",
+        "pronunciation_focus": [
+          "日本の会社では → 'ni-hon no kai-sha de wa'; かい='ka-i'; では='de wa' (は='wa')",
+          "上下関係が → 'joo-ge-kan-kei ga'; じょう dài; けい dài 'ke-e'; ん một mora; が 'g' cứng",
+          "とても → 'to-te-mo'; ba mora đều",
+          "重視されます → 'juu-shi-sa-re-mas'; じゅう dài 2 mora; bị động されます; ます lướt 'mas' — câu giải thích văn hóa, giọng đều"
+        ],
+        "pronunciation_focus_en": [
+          "日本の会社では → 'ni-hon no kai-sha de wa'; かい='ka-i'; では='de wa' (は='wa')",
+          "上下関係が → 'joo-ge-kan-kei ga'; long じょう; long けい ('ke-e'); moraic ん; hard が",
+          "とても → 'to-te-mo'; three even mora",
+          "重視されます → 'juu-shi-sa-re-mas'; long じゅう (2 mora); passive されます; ます glides to 'mas' — cultural-explanatory, even tone"
+        ]
       },
       {
         "japanese": "「先輩」というのは、年齢ではなく入社年で決まります。",
-        "english": "Sempai is determined not by age but by year of joining."
+        "english": "Sempai is determined not by age but by year of joining.",
+        "pronunciation_focus": [
+          "「先輩」というのは → 'sen-pai to i-u no wa'; せん ん một mora; ぱい='pa-i'; は='wa'",
+          "年齢ではなく → 'nen-rei de wa na-ku'; ん một mora; れい dài 're-e'; ではなく = 'không phải ~ mà'; く cuối devoiced",
+          "入社年で → 'nyuu-sha-nen de'; にゅう dài 2 mora; ん một mora",
+          "決まります → 'ki-ma-ri-mas'; り tapped r; ます lướt 'mas'"
+        ],
+        "pronunciation_focus_en": [
+          "「先輩」というのは → 'sen-pai to i-u no wa'; moraic せん; ぱい='pa-i'; は='wa'",
+          "年齢ではなく → 'nen-rei de wa na-ku'; moraic ん; long れい ('re-e'); ではなく = 'not ~ but'; final く devoiced",
+          "入社年で → 'nyuu-sha-nen de'; long にゅう (2 mora); moraic ん",
+          "決まります → 'ki-ma-ri-mas'; tapped り; ます glides to 'mas'"
+        ]
       },
       {
         "japanese": "意思決定は、根回しを経てから会議で確認するのが一般的です。",
-        "english": "Decision-making generally goes through nemawashi before being confirmed in meetings."
+        "english": "Decision-making generally goes through nemawashi before being confirmed in meetings.",
+        "pronunciation_focus": [
+          "意思決定は → 'i-shi-ket-tei wa'; けっ sokuon ngắt một mora trước て; てい dài 'te-e'; は='wa'",
+          "根回しを → 'ne-ma-wa-shi o'; thuật ngữ văn hóa 'nemawashi' — đọc rõ bốn mora; を='o'",
+          "経てから → 'he-te ka-ra'; へ ở đây là 経 'he' (KHÔNG trợ từ); ら tapped r",
+          "会議で → 'kai-gi de'; かい='ka-i'; ぎ 'g' cứng",
+          "確認するのが一般的です → 'ka-ku-nin-su-ru no ga ip-pan-te-ki des'; る tapped r; が 'g' cứng; いっ sokuon trước ぱ; です lướt 'des'"
+        ],
+        "pronunciation_focus_en": [
+          "意思決定は → 'i-shi-ket-tei wa'; sokuon けっ holds one mora before て; long てい ('te-e'); は='wa'",
+          "根回しを → 'ne-ma-wa-shi o'; cultural term 'nemawashi' — clear four mora; を='o'",
+          "経てから → 'he-te ka-ra'; here へ is the verb 経 'he' (NOT a particle); tapped ら",
+          "会議で → 'kai-gi de'; かい='ka-i'; hard ぎ",
+          "確認するのが一般的です → 'ka-ku-nin-su-ru no ga ip-pan-te-ki des'; tapped る; hard が; sokuon いっ before ぱ; です glides to 'des'"
+        ]
       },
       {
         "japanese": "ベトナムでは、もう少しフラットなのではないでしょうか。",
-        "english": "In Vietnam, isn't it a bit more flat?"
+        "english": "In Vietnam, isn't it a bit more flat?",
+        "pronunciation_focus": [
+          "ベトナムでは → 'be-to-na-mu de wa'; bốn mora đều; では='de wa'",
+          "もう少し → 'moo su-ko-shi'; もう dài 2 mora; す devoiced gần 's-ko-shi'",
+          "フラットなの → 'fu-rat-to na no'; フ môi nhẹ; ら tapped r; ラッ sokuon ngắt một mora trước と",
+          "ではないでしょうか → 'de wa na-i de-shoo-ka'; しょう dài; cụm 'chẳng phải ~ sao' — か đi lên RẤT nhẹ, là phỏng đoán lễ độ, KHÔNG phải hỏi gắt"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムでは → 'be-to-na-mu de wa'; four even mora; では='de wa'",
+          "もう少し → 'moo su-ko-shi'; long もう (2 mora); devoiced す, near 's-ko-shi'",
+          "フラットなの → 'fu-rat-to na no'; soft ふ; tapped ら; sokuon ラッ holds one mora before と",
+          "ではないでしょうか → 'de wa na-i de-shoo-ka'; long しょう; 'isn't it ~?' — very slight rise on か, a polite conjecture, NOT a sharp question"
+        ]
       },
       {
         "japanese": "和を以て貴しとなすという考えが、日本のチームワークの基盤です。",
-        "english": "The idea of valuing harmony is the foundation of Japanese teamwork."
+        "english": "The idea of valuing harmony is the foundation of Japanese teamwork.",
+        "pronunciation_focus": [
+          "和を以て貴しとなす → 'wa o mot-te too-to-shi to na-su'; を='o'; もって っ sokuon ngắt một mora; とう dài; câu cổ ngữ — đọc CHẬM, theo cụm, trịnh trọng",
+          "という考えが → 'to i-u kan-ga-e ga'; が 'g' cứng",
+          "日本のチームワークの → 'ni-hon no chii-mu-waa-ku no'; チー dài, ワー dài; く devoiced",
+          "基盤です → 'ki-ban des'; ん một mora; です lướt 'des' kết câu giải thích"
+        ],
+        "pronunciation_focus_en": [
+          "和を以て貴しとなす → 'wa o mot-te too-to-shi to na-su'; を='o'; sokuon もって holds one mora; long とう; an archaic maxim — read SLOWLY, chunked, dignified",
+          "という考えが → 'to i-u kan-ga-e ga'; hard が",
+          "日本のチームワークの → 'ni-hon no chii-mu-waa-ku no'; long チー + long ワー; devoiced く",
+          "基盤です → 'ki-ban des'; moraic ん; です glides to 'des', explanatory close"
+        ]
       }
     ],
     "dialogue": [
@@ -5179,23 +6123,85 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "先日の件、私の認識不足により、ご無礼を働いてしまいました。誠に申し訳ございませんでした。",
-        "english": "Regarding the matter the other day, due to my lack of awareness, I committed rudeness. I am truly sorry."
+        "english": "Regarding the matter the other day, due to my lack of awareness, I committed rudeness. I am truly sorry.",
+        "pronunciation_focus": [
+          "先日の件 → 'sen-jitsu no ken'; じつ つ='tsu'; ん rõ từng mora",
+          "私の認識不足により → 'wa-ta-shi no nin-shi-ki-bu-so-ku ni-yo-ri'; ん một mora; く devoiced; り tapped r",
+          "ご無礼を働いてしまいました → 'go-bu-rei o ha-ta-ra-i-te shi-ma-i-ma-shi-ta'; れい dài 're-e'; を='o'; ら tapped r; てしまいました thể hối tiếc; した cuối 'shta'",
+          "誠に申し訳ございませんでした → 'ma-ko-to-ni moo-shi-wa-ke go-zai-ma-sen-de-shi-ta'; 申し訳ございません xin lỗi kenjougo cao; もう dài; cả cụm hạ trầm CHẬM — đỉnh điểm xin lỗi"
+        ],
+        "pronunciation_focus_en": [
+          "先日の件 → 'sen-jitsu no ken'; つ in じつ='tsu'; keep ん distinct",
+          "私の認識不足により → 'wa-ta-shi no nin-shi-ki-bu-so-ku ni-yo-ri'; moraic ん; devoiced く; tapped り",
+          "ご無礼を働いてしまいました → 'go-bu-rei o ha-ta-ra-i-te shi-ma-i-ma-shi-ta'; long れい ('re-e'); を='o'; tapped ら; てしまいました regret aspect; final した 'shta'",
+          "誠に申し訳ございませんでした → 'ma-ko-to-ni moo-shi-wa-ke go-zai-ma-sen-de-shi-ta'; 申し訳ございません high-kenjougo apology; long もう; whole phrase low and SLOW — the apology peak"
+        ]
       },
       {
         "japanese": "弁解の余地もございません。心よりお詫び申し上げます。",
-        "english": "There is no room for excuse. I sincerely apologize from the heart."
+        "english": "There is no room for excuse. I sincerely apologize from the heart.",
+        "pronunciation_focus": [
+          "弁解の余地も → 'ben-kai no yo-chi mo'; ん một mora; かい='ka-i'; ち='chi'",
+          "ございません → 'go-zai-ma-sen'; ん cuối một mora; phủ định trang trọng, giọng hạ dứt khoát",
+          "心より → 'ko-ko-ro yo-ri'; り tapped r; 'tự đáy lòng'",
+          "お詫び申し上げます → 'o-wa-bi moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う; もう dài; hạ trầm chậm"
+        ],
+        "pronunciation_focus_en": [
+          "弁解の余地も → 'ben-kai no yo-chi mo'; moraic ん; かい='ka-i'; ち='chi'",
+          "ございません → 'go-zai-ma-sen'; final ん one mora; formal negation, decisive falling",
+          "心より → 'ko-ko-ro yo-ri'; tapped り; 'from the heart'",
+          "お詫び申し上げます → 'o-wa-bi moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う; long もう; low slow close"
+        ]
       },
       {
         "japanese": "二度とこのようなことがないよう、深く反省しております。",
-        "english": "I am deeply reflecting so that this never happens again."
+        "english": "I am deeply reflecting so that this never happens again.",
+        "pronunciation_focus": [
+          "二度と → 'ni-do to'; cụm 'không bao giờ ~ lần nữa', đọc nhấn nhẹ 二度",
+          "このようなことが → 'ko-no-yoo-na ko-to ga'; よう dài 2 mora; が 'g' cứng",
+          "ないよう → 'na-i yoo'; よう dài 2 mora (mục đích 'sao cho không')",
+          "深く反省しております → 'fu-ka-ku han-sei-shi-te-o-ri-mas'; ふ môi nhẹ; く devoiced; せい dài 'se-e'; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "二度と → 'ni-do to'; 'never ~ again', light stress on 二度",
+          "このようなことが → 'ko-no-yoo-na ko-to ga'; long よう (2 mora); hard が",
+          "ないよう → 'na-i yoo'; long よう (2 mora) (purposive 'so that ~ not')",
+          "深く反省しております → 'fu-ka-ku han-sei-shi-te-o-ri-mas'; soft ふ; devoiced く; long せい ('se-e'); おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "今後は、文化の違いについてさらに学ばせていただきます。",
-        "english": "Going forward, I will study cultural differences further."
+        "english": "Going forward, I will study cultural differences further.",
+        "pronunciation_focus": [
+          "今後は → 'kon-go wa'; ん một mora; は='wa'",
+          "文化の違いについて → 'bun-ka no chi-ga-i ni-tsu-i-te'; ん một mora; ち='chi'; が 'g' cứng; つ='tsu'",
+          "さらに → 'sa-ra-ni'; ら tapped r",
+          "学ばせていただきます → 'ma-na-ba-se-te-i-ta-da-ki-mas'; chuỗi kenjougo (させていただく); ます lướt — cam kết khiêm nhường"
+        ],
+        "pronunciation_focus_en": [
+          "今後は → 'kon-go wa'; moraic ん; は='wa'",
+          "文化の違いについて → 'bun-ka no chi-ga-i ni-tsu-i-te'; moraic ん; ち='chi'; hard が; つ='tsu'",
+          "さらに → 'sa-ra-ni'; tapped ら",
+          "学ばせていただきます → 'ma-na-ba-se-te-i-ta-da-ki-mas'; kenjougo chain (させていただく); ます glides — a humble commitment"
+        ]
       },
       {
         "japanese": "ご寛容なご対応をいただき、重ねて感謝申し上げます。",
-        "english": "Thank you again for your magnanimous response."
+        "english": "Thank you again for your magnanimous response.",
+        "pronunciation_focus": [
+          "ご寛容な → 'go-kan-yoo na'; ご 美化語; ん một mora; よう dài 2 mora",
+          "ご対応を → 'go-tai-oo o'; たい='ta-i'; おう dài 2 mora; を='o'",
+          "いただき → 'i-ta-da-ki'; kenjougo của もらう",
+          "重ねて → 'ka-sa-ne-te'; trạng từ 'một lần nữa', đọc nhấn nhẹ",
+          "感謝申し上げます → 'kan-sha moo-shi-a-ge-mas'; 申し上げる kenjougo cao của する; もう dài; kết hạ trầm trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "ご寛容な → 'go-kan-yoo na'; beautifier ご; moraic ん; long よう (2 mora)",
+          "ご対応を → 'go-tai-oo o'; たい='ta-i'; long おう (2 mora); を='o'",
+          "いただき → 'i-ta-da-ki'; humble for もらう",
+          "重ねて → 'ka-sa-ne-te'; adverb 'once again', light stress",
+          "感謝申し上げます → 'kan-sha moo-shi-a-ge-mas'; 申し上げる high kenjougo for する; long もう; low formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -5448,23 +6454,87 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ベトナム代表団のグエン・ティ・チャウと申します。本日は登壇の機会をいただき、誠にありがとうございます。",
-        "english": "I am Nguyen Thi Chau from the Vietnam delegation. Thank you sincerely for the opportunity to take the stage today."
+        "english": "I am Nguyen Thi Chau from the Vietnam delegation. Thank you sincerely for the opportunity to take the stage today.",
+        "pronunciation_focus": [
+          "ベトナム代表団の → 'be-to-na-mu dai-hyoo-dan no'; だい='da-i'; ひょう dài 2 mora; ん một mora",
+          "グエン・ティ・チャウと申します → 'gu-en ti chau to moo-shi-mas'; チャ='cha'; 申す kenjougo của 言う; もう dài; cách xưng tên chuẩn",
+          "本日は → 'hon-jitsu wa'; じつ つ='tsu'; は='wa'",
+          "登壇の機会を → 'too-dan no ki-kai o'; とう dài; かい='ka-i'; を='o'",
+          "いただき誠にありがとうございます → 'i-ta-da-ki ma-ko-to-ni a-ri-ga-too go-zai-mas'; とう dài; ございます lướt kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナム代表団の → 'be-to-na-mu dai-hyoo-dan no'; だい='da-i'; long ひょう (2 mora); moraic ん",
+          "グエン・ティ・チャウと申します → 'gu-en ti chau to moo-shi-mas'; チャ='cha'; 申す humble for 言う; long もう; standard self-naming",
+          "本日は → 'hon-jitsu wa'; つ in じつ='tsu'; は='wa'",
+          "登壇の機会を → 'too-dan no ki-kai o'; long とう; かい='ka-i'; を='o'",
+          "いただき誠にありがとうございます → 'i-ta-da-ki ma-ko-to-ni a-ri-ga-too go-zai-mas'; long とう; ございます glides, falling close"
+        ]
       },
       {
         "japanese": "本発表では、ベトナムにおける環境工学の最新動向についてご報告いたします。",
-        "english": "In this presentation, I will report on the latest trends in environmental engineering in Vietnam."
+        "english": "In this presentation, I will report on the latest trends in environmental engineering in Vietnam.",
+        "pronunciation_focus": [
+          "本発表では → 'hon-hap-pyoo de wa'; はっ sokuon ngắt một mora trước ぴ; ぴょう dài 2 mora; では='de wa'",
+          "ベトナムにおける → 'be-to-na-mu ni-o-ke-ru'; bốn mora đều; る tapped r",
+          "環境工学の → 'kan-kyoo-koo-ga-ku no'; きょう dài, こう dài (hai nguyên âm dài liền); が 'g' cứng",
+          "最新動向について → 'sai-shin-doo-koo ni-tsu-i-te'; さい='sa-i'; どう/こう dài; つ='tsu'",
+          "ご報告いたします → 'go-hoo-ko-ku i-ta-shi-mas'; ほう dài; く devoiced; いたす kenjougo của する; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "本発表では → 'hon-hap-pyoo de wa'; sokuon はっ holds one mora before ぴ; long ぴょう (2 mora); では='de wa'",
+          "ベトナムにおける → 'be-to-na-mu ni-o-ke-ru'; four even mora; tapped る",
+          "環境工学の → 'kan-kyoo-koo-ga-ku no'; long きょう + long こう (adjacent); hard が",
+          "最新動向について → 'sai-shin-doo-koo ni-tsu-i-te'; さい='sa-i'; long どう/こう; つ='tsu'",
+          "ご報告いたします → 'go-hoo-ko-ku i-ta-shi-mas'; long ほう; devoiced く; いたす humble for する; ます glides"
+        ]
       },
       {
         "japanese": "ご質問がございましたら、後ほど質疑応答の時間にお願いいたします。",
-        "english": "If you have questions, please save them for the Q&A session."
+        "english": "If you have questions, please save them for the Q&A session.",
+        "pronunciation_focus": [
+          "ご質問が → 'go-shitsu-mon ga'; しつ つ='tsu' (し devoiced); ん một mora; が 'g' cứng",
+          "ございましたら → 'go-zai-ma-shi-ta-ra'; ら tapped r; điều kiện trang trọng",
+          "後ほど → 'no-chi-ho-do'; ち='chi'; 'lát nữa' (trang trọng hơn 後で)",
+          "質疑応答の時間に → 'shitsu-gi-oo-too no ji-kan ni'; しつ つ='tsu'; ぎ 'g' cứng; おう/とう dài",
+          "お願いいたします → 'o-ne-gai i-ta-shi-mas'; ねがい='ne-ga-i'; いたす kenjougo của する; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "ご質問が → 'go-shitsu-mon ga'; つ in しつ='tsu' (devoiced し); moraic ん; hard が",
+          "ございましたら → 'go-zai-ma-shi-ta-ra'; tapped ら; formal conditional",
+          "後ほど → 'no-chi-ho-do'; ち='chi'; 'later' (more formal than 後で)",
+          "質疑応答の時間に → 'shitsu-gi-oo-too no ji-kan ni'; つ in しつ='tsu'; hard ぎ; long おう/とう",
+          "お願いいたします → 'o-ne-gai i-ta-shi-mas'; ねがい='ne-ga-i'; いたす humble for する; ます glides"
+        ]
       },
       {
         "japanese": "ご清聴、誠にありがとうございました。",
-        "english": "Thank you sincerely for your kind attention."
+        "english": "Thank you sincerely for your kind attention.",
+        "pronunciation_focus": [
+          "ご清聴 → 'go-sei-choo'; ご 美化語; せい dài 'se-e'; ちょう dài 2 mora; cụm cố định cuối bài thuyết trình",
+          "誠に → 'ma-ko-to-ni'; nhấn thành khẩn rất nhẹ",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — kết bài, hạ giọng dứt khoát ấm"
+        ],
+        "pronunciation_focus_en": [
+          "ご清聴 → 'go-sei-choo'; beautifier ご; long せい ('se-e'); long ちょう (2 mora); set talk-closing phrase",
+          "誠に → 'ma-ko-to-ni'; very light sincerity stress",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — talk close, decisive warm falling"
+        ]
       },
       {
         "japanese": "懇親会で、ぜひ皆様と切磋琢磨できる機会を持ちたく存じます。",
-        "english": "At the social, I humbly wish to have the opportunity to mutually improve with everyone."
+        "english": "At the social, I humbly wish to have the opportunity to mutually improve with everyone.",
+        "pronunciation_focus": [
+          "懇親会で → 'kon-shin-kai de'; ん hai chỗ mỗi cái một mora; かい='ka-i'",
+          "ぜひ皆様と → 'ze-hi mi-na-sa-ma to'; ぜ='z'; さま kính ngữ cao",
+          "切磋琢磨できる → 'set-sa-ta-ku-ma de-ki-ru'; せっ sokuon ngắt một mora trước さ; く devoiced; る tapped r; thành ngữ 'mài giũa lẫn nhau' — đọc theo cụm",
+          "機会を持ちたく存じます → 'ki-kai o mo-chi-ta-ku zon-ji-mas'; かい='ka-i'; を='o'; ち='chi'; 存じる kenjougo của 思う; ぞ='z'"
+        ],
+        "pronunciation_focus_en": [
+          "懇親会で → 'kon-shin-kai de'; two ん each one mora; かい='ka-i'",
+          "ぜひ皆様と → 'ze-hi mi-na-sa-ma to'; ぜ='z'; さま high honorific",
+          "切磋琢磨できる → 'set-sa-ta-ku-ma de-ki-ru'; sokuon せっ holds one mora before さ; devoiced く; tapped る; idiom 'mutual polishing' — chunk it",
+          "機会を持ちたく存じます → 'ki-kai o mo-chi-ta-ku zon-ji-mas'; かい='ka-i'; を='o'; ち='chi'; 存じる humble for 思う; ぞ='z'"
+        ]
       }
     ],
     "dialogue": [
@@ -5707,23 +6777,83 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "お口に合うかどうか分かりませんが、ぜひ召し上がってみてください。",
-        "english": "I'm not sure if it suits your palate, but please try it."
+        "english": "I'm not sure if it suits your palate, but please try it.",
+        "pronunciation_focus": [
+          "お口に合うかどうか → 'o-ku-chi ni a-u ka doo-ka'; ち='chi'; どう dài 2 mora; cụm khiêm 'không biết có hợp khẩu vị không'",
+          "分かりませんが → 'wa-ka-ri-ma-sen ga'; り tapped r; が nối không nhấn",
+          "ぜひ → 'ze-hi'; ぜ='z'; trạng từ mời nhiệt thành",
+          "召し上がってみてください → 'me-shi-a-gat-te mi-te ku-da-sai'; 召し上がる sonkeigo của 食べる (mời khách ăn — KHÔNG 食べてください); がって っ sokuon; さい='sa-i'"
+        ],
+        "pronunciation_focus_en": [
+          "お口に合うかどうか → 'o-ku-chi ni a-u ka doo-ka'; ち='chi'; long どう (2 mora); humble 'not sure it suits your palate'",
+          "分かりませんが → 'wa-ka-ri-ma-sen ga'; tapped り; が unstressed",
+          "ぜひ → 'ze-hi'; ぜ='z'; warm inviting adverb",
+          "召し上がってみてください → 'me-shi-a-gat-te mi-te ku-da-sai'; 召し上がる sonkeigo for 食べる (offering food to a guest — NOT 食べてください); sokuon がって; さい='sa-i'"
+        ]
       },
       {
         "japanese": "ベトナム料理は、ハーブを多く使うのが特徴でございます。",
-        "english": "Vietnamese cuisine is characterized by abundant use of herbs."
+        "english": "Vietnamese cuisine is characterized by abundant use of herbs.",
+        "pronunciation_focus": [
+          "ベトナム料理は → 'be-to-na-mu ryoo-ri wa'; りょう dài 2 mora; り tapped r; は='wa'",
+          "ハーブを → 'haa-bu o'; ハー nguyên âm dài 2 mora; を='o'",
+          "多く使うのが → 'oo-ku tsu-ka-u no ga'; おお dài 2 mora; く devoiced; つ='tsu'; が 'g' cứng",
+          "特徴でございます → 'to-ku-choo de go-zai-mas'; く devoiced; ちょう dài 2 mora; でございます dạng です trang trọng kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナム料理は → 'be-to-na-mu ryoo-ri wa'; long りょう (2 mora); tapped り; は='wa'",
+          "ハーブを → 'haa-bu o'; long ハー (2 mora); を='o'",
+          "多く使うのが → 'oo-ku tsu-ka-u no ga'; long おお (2 mora); devoiced く; つ='tsu'; hard が",
+          "特徴でございます → 'to-ku-choo de go-zai-mas'; devoiced く; long ちょう (2 mora); でございます formal copula, falling close"
+        ]
       },
       {
         "japanese": "辛さは、お好みで調整いただけます。",
-        "english": "Spice level can be adjusted to your preference."
+        "english": "Spice level can be adjusted to your preference.",
+        "pronunciation_focus": [
+          "辛さは → 'ka-ra-sa wa'; ら tapped r; は='wa'",
+          "お好みで → 'o-ko-no-mi de'; お 美化語",
+          "調整 → 'choo-sei'; ちょう dài 2 mora; せい dài 'se-e'",
+          "いただけます → 'i-ta-da-ke-mas'; kenjougo của もらう; ます lướt 'mas' — câu mời nhẹ, giọng đều thân thiện"
+        ],
+        "pronunciation_focus_en": [
+          "辛さは → 'ka-ra-sa wa'; tapped ら; は='wa'",
+          "お好みで → 'o-ko-no-mi de'; beautifier お",
+          "調整 → 'choo-sei'; long ちょう (2 mora); long せい ('se-e')",
+          "いただけます → 'i-ta-da-ke-mas'; humble for もらう; ます glides to 'mas' — soft offer, even friendly tone"
+        ]
       },
       {
         "japanese": "お酒、いかがですか。お注ぎいたします。",
-        "english": "How about a drink? Let me pour for you."
+        "english": "How about a drink? Let me pour for you.",
+        "pronunciation_focus": [
+          "お酒 → 'o-sa-ke'; お 美化語; け cuối rõ, không nuốt",
+          "いかがですか → 'i-ka-ga des ka'; が 'g' cứng; いかが lịch sự của どう; か đi lên nhẹ (lời mời, không phải hỏi cộc)",
+          "お注ぎいたします → 'o-tsu-gi i-ta-shi-mas'; つ='tsu'; ぎ 'g' cứng; いたす kenjougo của する (rót cho khách); ます lướt — chủ động phục vụ, giọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "お酒 → 'o-sa-ke'; beautifier お; final け clear, not swallowed",
+          "いかがですか → 'i-ka-ga des ka'; hard が; いかが = polite どう; gentle rise on か (an offer, not a blunt question)",
+          "お注ぎいたします → 'o-tsu-gi i-ta-shi-mas'; つ='tsu'; hard ぎ; いたす humble for する (pouring for the guest); ます glides — actively serving, warm tone"
+        ]
       },
       {
         "japanese": "同じ釜の飯を食う仲、と申しますが、本日のお食事を通じて、より親しくなれましたら幸いでございます。",
-        "english": "As they say eating from the same pot, I would be glad if today's meal brings us closer."
+        "english": "As they say eating from the same pot, I would be glad if today's meal brings us closer.",
+        "pronunciation_focus": [
+          "同じ釜の飯を食う仲 → 'o-na-ji ka-ma no me-shi o ku-u na-ka'; を='o'; thành ngữ 'cùng ăn một nồi cơm' — đọc CHẬM theo cụm, ấm áp",
+          "と申しますが → 'to moo-shi-mas-ga'; 申す kenjougo của 言う; もう dài; が nối không nhấn",
+          "本日のお食事を通じて → 'hon-jitsu no o-sho-ku-ji o tsuu-ji-te'; じつ つ='tsu'; を='o'; つう dài 2 mora",
+          "より親しくなれましたら → 'yo-ri shi-ta-shi-ku na-re-ma-shi-ta-ra'; り/れ tapped r; く devoiced",
+          "幸いでございます → 'sai-wai de go-zai-mas'; さい/わい='sa-i/wa-i'; でございます kết hạ trang trọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "同じ釜の飯を食う仲 → 'o-na-ji ka-ma no me-shi o ku-u na-ka'; を='o'; idiom 'eating from the same pot' — SLOW, chunked, warm",
+          "と申しますが → 'to moo-shi-mas-ga'; 申す humble for 言う; long もう; が unstressed",
+          "本日のお食事を通じて → 'hon-jitsu no o-sho-ku-ji o tsuu-ji-te'; つ in じつ='tsu'; を='o'; long つう (2 mora)",
+          "より親しくなれましたら → 'yo-ri shi-ta-shi-ku na-re-ma-shi-ta-ra'; tapped り/れ; devoiced く",
+          "幸いでございます → 'sai-wai de go-zai-mas'; さい/わい='sa-i/wa-i'; でございます warm formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -5996,23 +7126,89 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ベトナムのテトは、日本のお正月とお盆を合わせたような大きなお祭りでございます。",
-        "english": "Vietnam's Tet is a major festival like Japan's New Year and Obon combined."
+        "english": "Vietnam's Tet is a major festival like Japan's New Year and Obon combined.",
+        "pronunciation_focus": [
+          "ベトナムのテトは → 'be-to-na-mu no te-to wa'; bốn mora đều; は='wa'; テト đọc rõ hai mora ('Tết' Việt là một âm — đừng rút)",
+          "日本のお正月と → 'ni-hon no o-shoo-ga-tsu to'; しょう dài 2 mora; がつ つ='tsu'",
+          "お盆を合わせたような → 'o-bon o a-wa-se-ta yoo-na'; ぼん ん một mora; を='o'; よう dài 2 mora",
+          "大きなお祭りでございます → 'oo-ki-na o-ma-tsu-ri de go-zai-mas'; おお dài; つ='tsu'; り tapped r; でございます kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムのテトは → 'be-to-na-mu no te-to wa'; four even mora; は='wa'; テト = two clear mora (Vietnamese 'Tết' is one syllable — don't clip)",
+          "日本のお正月と → 'ni-hon no o-shoo-ga-tsu to'; long しょう (2 mora); つ in がつ='tsu'",
+          "お盆を合わせたような → 'o-bon o a-wa-se-ta yoo-na'; moraic ぼん; を='o'; long よう (2 mora)",
+          "大きなお祭りでございます → 'oo-ki-na o-ma-tsu-ri de go-zai-mas'; long おお; つ='tsu'; tapped り; でございます formal falling close"
+        ]
       },
       {
         "japanese": "旧暦に従いますので、毎年一月下旬から二月中旬の間に変わります。",
-        "english": "It follows the lunar calendar, so it shifts annually between late January and mid-February."
+        "english": "It follows the lunar calendar, so it shifts annually between late January and mid-February.",
+        "pronunciation_focus": [
+          "旧暦に従いますので → 'kyuu-re-ki ni shi-ta-ga-i-mas no-de'; きゅう dài 2 mora; が 'g' cứng; ので giải thích lý do",
+          "毎年 → 'mai-to-shi'; まい='ma-i'; đọc 'maitoshi' (KHÔNG 'mainen' ở văn nói thường)",
+          "一月下旬から → 'i-chi-ga-tsu ge-jun ka-ra'; ち='chi'; がつ つ='tsu'; ら tapped r",
+          "二月中旬の間に → 'ni-ga-tsu chuu-jun no a-i-da ni'; がつ つ='tsu'; ちゅう dài 2 mora",
+          "変わります → 'ka-wa-ri-mas'; り tapped r; ます lướt 'mas'"
+        ],
+        "pronunciation_focus_en": [
+          "旧暦に従いますので → 'kyuu-re-ki ni shi-ta-ga-i-mas no-de'; long きゅう (2 mora); hard が; ので gives a reason",
+          "毎年 → 'mai-to-shi'; まい='ma-i'; read 'maitoshi' (not 'mainen' in ordinary speech)",
+          "一月下旬から → 'i-chi-ga-tsu ge-jun ka-ra'; ち='chi'; つ in がつ='tsu'; tapped ら",
+          "二月中旬の間に → 'ni-ga-tsu chuu-jun no a-i-da ni'; つ in がつ='tsu'; long ちゅう (2 mora)",
+          "変わります → 'ka-wa-ri-mas'; tapped り; ます glides to 'mas'"
+        ]
       },
       {
         "japanese": "家族・親戚で集まり、祖先にお供えをするのが中心でございます。",
-        "english": "Gathering with family and relatives and making offerings to ancestors is the core."
+        "english": "Gathering with family and relatives and making offerings to ancestors is the core.",
+        "pronunciation_focus": [
+          "家族・親戚で → 'ka-zo-ku shin-se-ki de'; く devoiced; ん một mora; dấu ・đọc ngắt nhẹ",
+          "集まり → 'a-tsu-ma-ri'; つ='tsu'; り tapped r",
+          "祖先に → 'so-sen ni'; ん một mora",
+          "お供えをするのが → 'o-so-na-e o su-ru no ga'; を='o'; る tapped r; が 'g' cứng",
+          "中心でございます → 'chuu-shin de go-zai-mas'; ちゅう dài 2 mora; ん một mora; でございます kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "家族・親戚で → 'ka-zo-ku shin-se-ki de'; devoiced く; moraic ん; ・read as a light break",
+          "集まり → 'a-tsu-ma-ri'; つ='tsu'; tapped り",
+          "祖先に → 'so-sen ni'; moraic ん",
+          "お供えをするのが → 'o-so-na-e o su-ru no ga'; を='o'; tapped る; hard が",
+          "中心でございます → 'chuu-shin de go-zai-mas'; long ちゅう (2 mora); moraic ん; でございます formal falling close"
+        ]
       },
       {
         "japanese": "「リーシー」と呼ばれるお年玉のような風習もございます。",
-        "english": "There's also a custom like otoshidama called li xi."
+        "english": "There's also a custom like otoshidama called li xi.",
+        "pronunciation_focus": [
+          "「リーシー」と → 'rii-shii to'; リー/シー đều nguyên âm dài 2 mora; リ tapped r; phiên âm 'lì xì' tiếng Việt — đọc theo âm Nhật hóa",
+          "呼ばれる → 'yo-ba-re-ru'; ら/る tapped r; bị động 'được gọi là'",
+          "お年玉のような → 'o-to-shi-da-ma no yoo-na'; よう dài 2 mora",
+          "風習も → 'fuu-shuu mo'; ふう dài, しゅう dài (HAI nguyên âm dài liền — đừng rút)",
+          "ございます → 'go-zai-mas'; lướt 'go-zai-mas' kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "「リーシー」と → 'rii-shii to'; long リー + long シー (2 mora each); tapped リ; Japanized rendering of Vietnamese 'lì xì'",
+          "呼ばれる → 'yo-ba-re-ru'; tapped ら/る; passive 'is called'",
+          "お年玉のような → 'o-to-shi-da-ma no yoo-na'; long よう (2 mora)",
+          "風習も → 'fuu-shuu mo'; long ふう + long しゅう (two long vowels adjacent — don't shorten)",
+          "ございます → 'go-zai-mas'; glides to 'go-zai-mas', formal falling close"
+        ]
       },
       {
         "japanese": "もしご興味があれば、来年のテトに、ベトナム人のご家庭にお招きすることもできますよ。",
-        "english": "If you're interested, next Tet, I could invite you to a Vietnamese household."
+        "english": "If you're interested, next Tet, I could invite you to a Vietnamese household.",
+        "pronunciation_focus": [
+          "もしご興味があれば → 'mo-shi go-kyoo-mi ga a-re-ba'; きょう dài 2 mora; が 'g' cứng; れ tapped r — lời mời nhẹ",
+          "来年のテトに → 'rai-nen no te-to ni'; らい='ra-i' tapped r; テト hai mora rõ",
+          "ベトナム人のご家庭に → 'be-to-na-mu-jin no go-ka-tei ni'; ん một mora; てい dài 'te-e'",
+          "お招きすることもできますよ → 'o-ma-ne-ki su-ru ko-to mo de-ki-mas yo'; お招き kenjougo (mình mời); る tapped r; よ cuối thân thiện, hơi đi lên ấm"
+        ],
+        "pronunciation_focus_en": [
+          "もしご興味があれば → 'mo-shi go-kyoo-mi ga a-re-ba'; long きょう (2 mora); hard が; tapped れ — a light invitation",
+          "来年のテトに → 'rai-nen no te-to ni'; らい='ra-i' tapped r; テト two clear mora",
+          "ベトナム人のご家庭に → 'be-to-na-mu-jin no go-ka-tei ni'; moraic ん; long てい ('te-e')",
+          "お招きすることもできますよ → 'o-ma-ne-ki su-ru ko-to mo de-ki-mas yo'; お招き humble (you doing the inviting); tapped る; friendly final よ, slight warm rise"
+        ]
       }
     ],
     "dialogue": [
@@ -6290,23 +7486,87 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "山田部長、今のお話、私の認識と少し違うように感じました。一旦整理させていただいてもよろしいでしょうか。",
-        "english": "Manager Yamada, the conversation just now feels slightly different from my perception. May I take a moment to organize it?"
+        "english": "Manager Yamada, the conversation just now feels slightly different from my perception. May I take a moment to organize it?",
+        "pronunciation_focus": [
+          "山田部長 → 'ya-ma-da bu-choo'; ちょう dài 2 mora; chức danh KHÔNG thêm さん",
+          "今のお話 → 'i-ma no o-ha-na-shi'; お 美化語",
+          "私の認識と少し違うように感じました → 'wa-ta-shi no nin-shi-ki to su-ko-shi chi-ga-u yoo-ni kan-ji-ma-shi-ta'; ち='chi'; よう dài; ように感じました làm câu MỀM (không khẳng định 'sếp sai'); した cuối 'shta'",
+          "一旦整理させていただいても → 'it-tan sei-ri sa-se-te-i-ta-da-i-te mo'; いっ sokuon ngắt một mora; せい dài 'se-e'; chuỗi kenjougo",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; ろ tapped r; しい dài 2 mora; か đi lên RẤT nhẹ — xin phép lễ độ, không phải thách thức"
+        ],
+        "pronunciation_focus_en": [
+          "山田部長 → 'ya-ma-da bu-choo'; long ちょう (2 mora); a title takes NO さん",
+          "今のお話 → 'i-ma no o-ha-na-shi'; beautifier お",
+          "私の認識と少し違うように感じました → 'wa-ta-shi no nin-shi-ki to su-ko-shi chi-ga-u yoo-ni kan-ji-ma-shi-ta'; ち='chi'; long よう; ように感じました SOFTENS it (doesn't assert 'you're wrong'); final した 'shta'",
+          "一旦整理させていただいても → 'it-tan sei-ri sa-se-te-i-ta-da-i-te mo'; sokuon いっ holds one mora; long せい ('se-e'); kenjougo chain",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; tapped ろ; long しい (2 mora); very slight rise on か — politely asking leave, not challenging"
+        ]
       },
       {
         "japanese": "決して反対する意図ではございません。立場の違いから生じる認識の差かと存じます。",
-        "english": "I have no intention of opposing. I believe it's a perceptual gap arising from different standpoints."
+        "english": "I have no intention of opposing. I believe it's a perceptual gap arising from different standpoints.",
+        "pronunciation_focus": [
+          "決して → 'kes-shi-te'; けっ sokuon ngắt một mora trước し; đi với phủ định 'tuyệt nhiên không'",
+          "反対する意図ではございません → 'han-tai-su-ru i-to de wa go-zai-ma-sen'; たい='ta-i'; る tapped r; ではございません phủ định trang trọng, giọng hạ dứt khoát",
+          "立場の違いから → 'ta-chi-ba no chi-ga-i ka-ra'; ち='chi' (hai chỗ); ら tapped r",
+          "生じる認識の差かと存じます → 'shoo-ji-ru nin-shi-ki no sa ka to zon-ji-mas'; しょう dài; る tapped r; 存じる kenjougo của 思う; ぞ='z' — đệm 'かと存じます' làm nhận định mềm"
+        ],
+        "pronunciation_focus_en": [
+          "決して → 'kes-shi-te'; sokuon けっ holds one mora before し; pairs with a negative 'by no means'",
+          "反対する意図ではございません → 'han-tai-su-ru i-to de wa go-zai-ma-sen'; たい='ta-i'; tapped る; ではございません formal negation, decisive falling",
+          "立場の違いから → 'ta-chi-ba no chi-ga-i ka-ra'; ち='chi' (twice); tapped ら",
+          "生じる認識の差かと存じます → 'shoo-ji-ru nin-shi-ki no sa ka to zon-ji-mas'; long しょう; tapped る; 存じる humble for 思う; ぞ='z' — 'かと存じます' softens the assertion"
+        ]
       },
       {
         "japanese": "建設的にお話を進めるため、それぞれの立場を確認させていただけますでしょうか。",
-        "english": "To move the discussion constructively, may we confirm each side's standpoint?"
+        "english": "To move the discussion constructively, may we confirm each side's standpoint?",
+        "pronunciation_focus": [
+          "建設的に → 'ken-se-tsu-te-ki ni'; ん một mora; せつ つ='tsu'",
+          "お話を進めるため → 'o-ha-na-shi o su-su-me-ru ta-me'; を='o'; る tapped r",
+          "それぞれの → 'so-re-zo-re no'; れ tapped r; ぞ='z'",
+          "立場を確認させていただけますでしょうか → 'ta-chi-ba o ka-ku-nin sa-se-te-i-ta-da-ke-mas-de-shoo-ka'; ち='chi'; を='o'; く devoiced; chuỗi kenjougo; か đi lên RẤT nhẹ — đề nghị lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "建設的に → 'ken-se-tsu-te-ki ni'; moraic ん; つ in せつ='tsu'",
+          "お話を進めるため → 'o-ha-na-shi o su-su-me-ru ta-me'; を='o'; tapped る",
+          "それぞれの → 'so-re-zo-re no'; tapped れ; ぞ='z'",
+          "立場を確認させていただけますでしょうか → 'ta-chi-ba o ka-ku-nin sa-se-te-i-ta-da-ke-mas-de-shoo-ka'; ち='chi'; を='o'; devoiced く; kenjougo chain; very slight rise on か — a courteous proposal"
+        ]
       },
       {
         "japanese": "柔軟にお互いに歩み寄ることで、最善の道が見えてくるかと存じます。",
-        "english": "I believe by flexibly meeting halfway, we will see the best path."
+        "english": "I believe by flexibly meeting halfway, we will see the best path.",
+        "pronunciation_focus": [
+          "柔軟に → 'juu-nan ni'; じゅう dài 2 mora; ん một mora",
+          "お互いに → 'o-ta-ga-i ni'; が 'g' cứng",
+          "歩み寄ることで → 'a-yu-mi-yo-ru ko-to de'; よ/る tapped r; cụm 'cùng nhường nhau một bước'",
+          "最善の道が → 'sai-zen no mi-chi ga'; さい='sa-i'; ち='chi'; が 'g' cứng",
+          "見えてくるかと存じます → 'mi-e-te-ku-ru ka to zon-ji-mas'; る tapped r; 存じる kenjougo của 思う; ぞ='z'; đệm 'かと存じます' làm câu mềm"
+        ],
+        "pronunciation_focus_en": [
+          "柔軟に → 'juu-nan ni'; long じゅう (2 mora); moraic ん",
+          "お互いに → 'o-ta-ga-i ni'; hard が",
+          "歩み寄ることで → 'a-yu-mi-yo-ru ko-to de'; tapped よ/る; phrase 'each taking a step toward the other'",
+          "最善の道が → 'sai-zen no mi-chi ga'; さい='sa-i'; ち='chi'; hard が",
+          "見えてくるかと存じます → 'mi-e-te-ku-ru ka to zon-ji-mas'; tapped る; 存じる humble for 思う; ぞ='z'; 'かと存じます' softens it"
+        ]
       },
       {
         "japanese": "腹を割ってお話しいただいたこと、心より感謝申し上げます。",
-        "english": "I sincerely thank you for speaking openly with me."
+        "english": "I sincerely thank you for speaking openly with me.",
+        "pronunciation_focus": [
+          "腹を割って → 'ha-ra o wat-te'; を='o'; わって っ sokuon ngắt một mora trước て; thành ngữ 'mở lòng nói thẳng'",
+          "お話しいただいたこと → 'o-ha-na-shi i-ta-da-i-ta ko-to'; いただく kenjougo cho việc mình được (họ nói thẳng với mình)",
+          "心より → 'ko-ko-ro yo-ri'; り tapped r; 'tự đáy lòng'",
+          "感謝申し上げます → 'kan-sha moo-shi-a-ge-mas'; 申し上げる kenjougo cao của する; もう dài; kết hạ trầm trang trọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "腹を割って → 'ha-ra o wat-te'; を='o'; sokuon わって holds one mora before て; idiom 'speaking openly'",
+          "お話しいただいたこと → 'o-ha-na-shi i-ta-da-i-ta ko-to'; いただく humble for receiving it (their speaking frankly to you)",
+          "心より → 'ko-ko-ro yo-ri'; tapped り; 'from the heart'",
+          "感謝申し上げます → 'kan-sha moo-shi-a-ge-mas'; 申し上げる high kenjougo for する; long もう; low warm formal close"
+        ]
       }
     ],
     "dialogue": [
@@ -6554,23 +7814,87 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "田中さん、もしよかったら、今度の週末、一緒にコーヒーでもいかがですか。",
-        "english": "Tanaka-san, if you'd like, how about coffee together next weekend?"
+        "english": "Tanaka-san, if you'd like, how about coffee together next weekend?",
+        "pronunciation_focus": [
+          "田中さん → 'ta-na-ka-san'; さん bạn bè/đồng nghiệp (KHÔNG 様 ở ngữ cảnh thân mật này)",
+          "もしよかったら → 'mo-shi yo-kat-ta-ra'; かった っ sokuon ngắt một mora; ら tapped r; dạng rủ thân mật (không phải よろしければ trang trọng)",
+          "今度の週末 → 'kon-do no shuu-ma-tsu'; ん một mora; しゅう dài 2 mora; つ='tsu'",
+          "一緒に → 'is-sho-ni'; いっ sokuon ngắt một mora trước しょ ('is·sho')",
+          "コーヒーでもいかがですか → 'koo-hii de-mo i-ka-ga des ka'; コー/ヒー đều dài 2 mora; が 'g' cứng; か đi lên nhẹ (rủ rê thân thiện, không hỏi cộc)"
+        ],
+        "pronunciation_focus_en": [
+          "田中さん → 'ta-na-ka-san'; さん for a friend/peer (NOT 様 in this casual context)",
+          "もしよかったら → 'mo-shi yo-kat-ta-ra'; sokuon かった holds one mora; tapped ら; casual invite register (not formal よろしければ)",
+          "今度の週末 → 'kon-do no shuu-ma-tsu'; moraic ん; long しゅう (2 mora); つ='tsu'",
+          "一緒に → 'is-sho-ni'; sokuon いっ holds one mora before しょ ('is-sho')",
+          "コーヒーでもいかがですか → 'koo-hii de-mo i-ka-ga des ka'; long コー + long ヒー (2 mora each); hard が; gentle rise on か (friendly invitation, not a blunt question)"
+        ]
       },
       {
         "japanese": "ベトナム生活、もう三ヶ月ですね。少し慣れましたか。",
-        "english": "Three months in Vietnam already, isn't it. Have you settled in a bit?"
+        "english": "Three months in Vietnam already, isn't it. Have you settled in a bit?",
+        "pronunciation_focus": [
+          "ベトナム生活 → 'be-to-na-mu sei-ka-tsu'; bốn mora đều; せい dài 'se-e'; つ='tsu'",
+          "もう三ヶ月ですね → 'moo san-ka-ge-tsu des ne'; もう dài 2 mora; ヶ月 đọc 'kagetsu'; が 'g' cứng; つ='tsu'; ね cuối tìm đồng cảm — giọng đi xuống nhẹ ấm",
+          "少し → 'su-ko-shi'; す devoiced gần 's-ko-shi'",
+          "慣れましたか → 'na-re-ma-shi-ta ka'; れ tapped r; した 'shta'; か đi lên nhẹ (hỏi quan tâm thân mật)"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナム生活 → 'be-to-na-mu sei-ka-tsu'; four even mora; long せい ('se-e'); つ='tsu'",
+          "もう三ヶ月ですね → 'moo san-ka-ge-tsu des ne'; long もう (2 mora); ヶ月='kagetsu'; hard が; つ='tsu'; final ね seeks empathy — soft warm fall",
+          "少し → 'su-ko-shi'; devoiced す, near 's-ko-shi'",
+          "慣れましたか → 'na-re-ma-shi-ta ka'; tapped れ; した 'shta'; gentle rise on か (a caring, casual question)"
+        ]
       },
       {
         "japanese": "気を遣わなくて大丈夫ですよ。普段着でいいですから。",
-        "english": "No need to be on guard. Casual clothes are fine."
+        "english": "No need to be on guard. Casual clothes are fine.",
+        "pronunciation_focus": [
+          "気を遣わなくて → 'ki o tsu-ka-wa-na-ku-te'; を='o'; つ='tsu'; く devoiced; cụm 'không cần giữ kẽ'",
+          "大丈夫ですよ → 'dai-joo-bu des yo'; だい='da-i'; じょう dài 2 mora; です lướt 'des'; よ cuối trấn an, ấm — KHÔNG trang trọng cứng",
+          "普段着で → 'fu-dan-gi de'; ふ môi nhẹ; ん một mora; ぎ 'g' cứng",
+          "いいですから → 'ii des ka-ra'; いい hai mora; です lướt 'des'; から giải thích nhẹ, giọng thân mật"
+        ],
+        "pronunciation_focus_en": [
+          "気を遣わなくて → 'ki o tsu-ka-wa-na-ku-te'; を='o'; つ='tsu'; devoiced く; phrase 'no need to be on guard'",
+          "大丈夫ですよ → 'dai-joo-bu des yo'; だい='da-i'; long じょう (2 mora); です→'des'; reassuring final よ, warm — NOT stiffly formal",
+          "普段着で → 'fu-dan-gi de'; soft ふ; moraic ん; hard ぎ",
+          "いいですから → 'ii des ka-ra'; いい two mora; です→'des'; から gives a light reason, casual tone"
+        ]
       },
       {
         "japanese": "ざっくばらんに、本音でお話しできると嬉しいです。",
-        "english": "I'd be glad if we could speak frankly, with our real feelings."
+        "english": "I'd be glad if we could speak frankly, with our real feelings.",
+        "pronunciation_focus": [
+          "ざっくばらんに → 'zak-ku-ba-ran-ni'; ざ='z'; ざっ sokuon ngắt một mora trước く; ら tapped r; ん một mora; trạng từ 'thẳng thắn cởi mở'",
+          "本音で → 'hon-ne de'; ん hai chỗ mỗi cái một mora; 'lời thật lòng' (đối với 建前)",
+          "お話しできると → 'o-ha-na-shi de-ki-ru to'; お 美化語 nhưng văn cảnh thân mật-lịch sự; る tapped r",
+          "嬉しいです → 'u-re-shii des'; れ tapped r; しい dài 2 mora; です lướt 'des' — bày tỏ tình cảm, giọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "ざっくばらんに → 'zak-ku-ba-ran-ni'; ざ='z'; sokuon ざっ holds one mora before く; tapped ら; moraic ん; adverb 'frankly, openly'",
+          "本音で → 'hon-ne de'; two ん each one mora; 'true feelings' (vs 建前)",
+          "お話しできると → 'o-ha-na-shi de-ki-ru to'; beautifier お but casual-polite context; tapped る",
+          "嬉しいです → 'u-re-shii des'; tapped れ; long しい (2 mora); です→'des' — expressing feeling, warm tone"
+        ]
       },
       {
         "japanese": "雨降って地固まると言いますし、今回の出来事を経て、もっと親しくなれた気がします。",
-        "english": "As they say after rain, the ground hardens — I feel we've grown closer through this."
+        "english": "As they say after rain, the ground hardens — I feel we've grown closer through this.",
+        "pronunciation_focus": [
+          "雨降って地固まる → 'a-me fut-te ji ka-ta-ma-ru'; ふって っ sokuon ngắt một mora; る tapped r; tục ngữ 'sau mưa đất rắn' — đọc CHẬM theo cụm",
+          "と言いますし → 'to i-i-mas shi'; し cuối nối lý do nhẹ",
+          "今回の出来事を経て → 'kon-kai no de-ki-go-to o he-te'; かい='ka-i'; を='o'; へ ở đây là 経 'he' động từ (KHÔNG trợ từ)",
+          "もっと親しくなれた → 'mot-to shi-ta-shi-ku na-re-ta'; もっ sokuon ngắt một mora trước と; く devoiced; れ tapped r",
+          "気がします → 'ki ga shi-mas'; が 'g' cứng; ます lướt 'mas' — câu cảm nhận, giọng thân mật ấm"
+        ],
+        "pronunciation_focus_en": [
+          "雨降って地固まる → 'a-me fut-te ji ka-ta-ma-ru'; sokuon ふって holds one mora; tapped る; proverb 'after rain the ground hardens' — SLOW, chunked",
+          "と言いますし → 'to i-i-mas shi'; final し adds a soft reason",
+          "今回の出来事を経て → 'kon-kai no de-ki-go-to o he-te'; かい='ka-i'; を='o'; here へ is verb 経 'he' (NOT a particle)",
+          "もっと親しくなれた → 'mot-to shi-ta-shi-ku na-re-ta'; sokuon もっ holds one mora before と; devoiced く; tapped れ",
+          "気がします → 'ki ga shi-mas'; hard が; ます glides to 'mas' — a felt impression, warm casual tone"
+        ]
       }
     ],
     "dialogue": [
@@ -6848,23 +8172,73 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ベトナムから観光で参りました。",
-        "english": "I came from Vietnam for tourism."
+        "english": "I came from Vietnam for tourism.",
+        "pronunciation_focus": [
+          "ベトナムから → 'be-to-na-mu ka-ra'; bốn mora đều; ら tapped r",
+          "観光で → 'kan-koo de'; ん một mora; こう dài 2 mora",
+          "参りました → 'ma-i-ri-ma-shi-ta'; まいる kenjougo của 来る; り tapped r; した cuối 'shta' — trả lời cán bộ XNC, ngắn gọn dứt khoát lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムから → 'be-to-na-mu ka-ra'; four even mora; tapped ら",
+          "観光で → 'kan-koo de'; moraic ん; long こう (2 mora)",
+          "参りました → 'ma-i-ri-ma-shi-ta'; まいる humble for 来る; tapped り; final した 'shta' — answering an officer, short, crisp, polite"
+        ]
       },
       {
         "japanese": "滞在期間は二週間でございます。",
-        "english": "My stay duration is two weeks."
+        "english": "My stay duration is two weeks.",
+        "pronunciation_focus": [
+          "滞在期間は → 'tai-zai-ki-kan wa'; たい/ざい='ta-i/za-i'; ん một mora; は='wa'",
+          "二週間 → 'ni-shuu-kan'; しゅう dài 2 mora; ん một mora",
+          "でございます → 'de go-zai-mas'; dạng です trang trọng; trả lời cán bộ — ngắn, rõ, không thừa"
+        ],
+        "pronunciation_focus_en": [
+          "滞在期間は → 'tai-zai-ki-kan wa'; たい/ざい='ta-i/za-i'; moraic ん; は='wa'",
+          "二週間 → 'ni-shuu-kan'; long しゅう (2 mora); moraic ん",
+          "でございます → 'de go-zai-mas'; formal copula; answering an officer — short, clear, no filler"
+        ]
       },
       {
         "japanese": "滞在先は東京の新宿京王プラザホテルでございます。",
-        "english": "My place of stay is the Keio Plaza Hotel in Shinjuku, Tokyo."
+        "english": "My place of stay is the Keio Plaza Hotel in Shinjuku, Tokyo.",
+        "pronunciation_focus": [
+          "滞在先は → 'tai-zai-sa-ki wa'; たい/ざい='ta-i/za-i'; は='wa'",
+          "東京の新宿 → 'too-kyoo no shin-ju-ku'; とう/きょう đều dài 2 mora; じゅ='ju'; く cuối devoiced",
+          "京王プラザホテル → 'kei-oo pu-ra-za ho-te-ru'; けい dài 'ke-e'; おう dài; ら/る tapped r; ざ='z'",
+          "でございます → 'de go-zai-mas'; dạng です trang trọng kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "滞在先は → 'tai-zai-sa-ki wa'; たい/ざい='ta-i/za-i'; は='wa'",
+          "東京の新宿 → 'too-kyoo no shin-ju-ku'; long とう + long きょう (2 mora each); じゅ='ju'; final く devoiced",
+          "京王プラザホテル → 'kei-oo pu-ra-za ho-te-ru'; long けい ('ke-e'); long おう; tapped ら/る; ざ='z'",
+          "でございます → 'de go-zai-mas'; formal copula, falling close"
+        ]
       },
       {
         "japanese": "復路便のチケットも持参しております。",
-        "english": "I also have my return-flight ticket with me."
+        "english": "I also have my return-flight ticket with me.",
+        "pronunciation_focus": [
+          "復路便の → 'fu-ku-ro-bin no'; ふ môi nhẹ; く devoiced; ろ tapped r; ん một mora",
+          "チケットも → 'chi-ket-to mo'; チ='chi'; ケッ sokuon ngắt một mora trước と",
+          "持参しております → 'ji-san-shi-te-o-ri-mas'; ん một mora; おります kenjougo của いる; ます lướt — khẳng định có giấy tờ, giọng chắc lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "復路便の → 'fu-ku-ro-bin no'; soft ふ; devoiced く; tapped ろ; moraic ん",
+          "チケットも → 'chi-ket-to mo'; チ='chi'; sokuon ケッ holds one mora before と",
+          "持参しております → 'ji-san-shi-te-o-ri-mas'; moraic ん; おります humble for いる; ます glides — confirming you have the document, firm polite tone"
+        ]
       },
       {
         "japanese": "ご確認のほど、よろしくお願いいたします。",
-        "english": "I respectfully ask for your verification."
+        "english": "I respectfully ask for your verification.",
+        "pronunciation_focus": [
+          "ご確認のほど → 'go-ka-ku-nin no ho-do'; ご 美化語; く devoiced; ん một mora; 'のほど' làm lời nhờ mềm",
+          "よろしくお願いいたします → 'yo-ro-shi-ku o-ne-gai i-ta-shi-mas'; ろ tapped r; いたす kenjougo của する (KHÔNG 申し上げる — đây là yêu cầu hành chính trung tính); ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "ご確認のほど → 'go-ka-ku-nin no ho-do'; beautifier ご; devoiced く; moraic ん; 'のほど' softens the request",
+          "よろしくお願いいたします → 'yo-ro-shi-ku o-ne-gai i-ta-shi-mas'; tapped ろ; いたす humble for する (NOT 申し上げる — a neutral administrative request); ます glides"
+        ]
       }
     ],
     "dialogue": [
@@ -7117,23 +8491,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "パスポートを紛失してしまいました。再発行をお願いしたく存じます。",
-        "english": "I have lost my passport. I would humbly like to request re-issuance."
+        "english": "I have lost my passport. I would humbly like to request re-issuance.",
+        "pronunciation_focus": [
+          "パスポートを → 'pa-su-poo-to o'; ポー nguyên âm dài 2 mora; を='o'",
+          "紛失してしまいました → 'fun-shitsu-shi-te shi-ma-i-ma-shi-ta'; ふ môi nhẹ; しつ つ='tsu'; てしまいました thể lỡ/tiếc; した cuối 'shta'",
+          "再発行を → 'sai-hak-koo o'; さい='sa-i'; はっ sokuon + こう dài; を='o'",
+          "お願いしたく存じます → 'o-ne-gai-shi-ta-ku zon-ji-mas'; ねがい='ne-ga-i'; 存じる kenjougo của 思う; ぞ='z' — yêu cầu khiêm, giọng hạ"
+        ],
+        "pronunciation_focus_en": [
+          "パスポートを → 'pa-su-poo-to o'; long ポー (2 mora); を='o'",
+          "紛失してしまいました → 'fun-shitsu-shi-te shi-ma-i-ma-shi-ta'; soft ふ; つ in しつ='tsu'; てしまいました mishap/regret; final した 'shta'",
+          "再発行を → 'sai-hak-koo o'; さい='sa-i'; sokuon はっ + long こう; を='o'",
+          "お願いしたく存じます → 'o-ne-gai-shi-ta-ku zon-ji-mas'; ねがい='ne-ga-i'; 存じる humble for 思う; ぞ='z' — humble request, low delivery"
+        ]
       },
       {
         "japanese": "昨日、警察に紛失届を提出してまいりました。",
-        "english": "Yesterday I submitted a lost-item report at the police station."
+        "english": "Yesterday I submitted a lost-item report at the police station.",
+        "pronunciation_focus": [
+          "昨日 → 'ki-noo'; のう dài 2 mora (KHÔNG 'sakujitsu' ở đây)",
+          "警察に → 'kei-sa-tsu ni'; けい dài 'ke-e'; つ='tsu'",
+          "紛失届を → 'fun-shitsu-to-do-ke o'; ふ môi nhẹ; しつ つ='tsu'; を='o'",
+          "提出してまいりました → 'tei-shutsu-shi-te ma-i-ri-ma-shi-ta'; てい dài 'te-e'; しゅつ つ='tsu'; まいる kenjougo của 行く/来る; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "昨日 → 'ki-noo'; long のう (2 mora) (not 'sakujitsu' here)",
+          "警察に → 'kei-sa-tsu ni'; long けい ('ke-e'); つ='tsu'",
+          "紛失届を → 'fun-shitsu-to-do-ke o'; soft ふ; つ in しつ='tsu'; を='o'",
+          "提出してまいりました → 'tei-shutsu-shi-te ma-i-ri-ma-shi-ta'; long てい ('te-e'); つ in しゅつ='tsu'; まいる humble for 行く/来る; final した 'shta'"
+        ]
       },
       {
         "japanese": "緊急で帰国する必要があり、渡航書も必要かと存じます。",
-        "english": "I need to return home urgently, so I believe an emergency travel document is also needed."
+        "english": "I need to return home urgently, so I believe an emergency travel document is also needed.",
+        "pronunciation_focus": [
+          "緊急で → 'kin-kyuu de'; ん một mora; きゅう dài 2 mora",
+          "帰国する → 'ki-ko-ku-su-ru'; く devoiced; る tapped r",
+          "必要があり → 'hi-tsu-yoo ga a-ri'; つ='tsu'; よう dài 2 mora; が 'g' cứng; り tapped r",
+          "渡航書も → 'to-koo-sho mo'; こう dài 2 mora",
+          "必要かと存じます → 'hi-tsu-yoo ka to zon-ji-mas'; つ='tsu'; 存じる kenjougo của 思う; ぞ='z'; 'かと存じます' làm nhận định mềm lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "緊急で → 'kin-kyuu de'; moraic ん; long きゅう (2 mora)",
+          "帰国する → 'ki-ko-ku-su-ru'; devoiced く; tapped る",
+          "必要があり → 'hi-tsu-yoo ga a-ri'; つ='tsu'; long よう (2 mora); hard が; tapped り",
+          "渡航書も → 'to-koo-sho mo'; long こう (2 mora)",
+          "必要かと存じます → 'hi-tsu-yoo ka to zon-ji-mas'; つ='tsu'; 存じる humble for 思う; ぞ='z'; 'かと存じます' softens the assertion politely"
+        ]
       },
       {
         "japanese": "手数料はおいくらでございますでしょうか。",
-        "english": "How much is the processing fee?"
+        "english": "How much is the processing fee?",
+        "pronunciation_focus": [
+          "手数料は → 'te-suu-ryoo wa'; すう dài 2 mora; りょう dài 2 mora; り tapped r; は='wa'",
+          "おいくら → 'o-i-ku-ra'; お 美化語; く devoiced; ら tapped r",
+          "でございますでしょうか → 'de go-zai-mas-de-shoo-ka'; chồng lịch sự (でございます + でしょうか); か đi lên RẤT nhẹ — hỏi giá lễ độ, không sốt ruột"
+        ],
+        "pronunciation_focus_en": [
+          "手数料は → 'te-suu-ryoo wa'; long すう (2 mora); long りょう (2 mora); tapped り; は='wa'",
+          "おいくら → 'o-i-ku-ra'; beautifier お; devoiced く; tapped ら",
+          "でございますでしょうか → 'de go-zai-mas-de-shoo-ka'; stacked politeness (でございます + でしょうか); very slight rise on か — a courteous price question, not impatient"
+        ]
       },
       {
         "japanese": "ご対応いただき、誠にありがとうございます。",
-        "english": "Thank you sincerely for handling this."
+        "english": "Thank you sincerely for handling this.",
+        "pronunciation_focus": [
+          "ご対応 → 'go-tai-oo'; ご 美化語; たい='ta-i'; おう dài 2 mora",
+          "いただき → 'i-ta-da-ki'; kenjougo của もらう",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; とう dài 2 mora; ございます lướt kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "ご対応 → 'go-tai-oo'; beautifier ご; たい='ta-i'; long おう (2 mora)",
+          "いただき → 'i-ta-da-ki'; humble for もらう",
+          "誠にありがとうございます → 'ma-ko-to-ni a-ri-ga-too go-zai-mas'; long とう (2 mora); ございます glides, formal falling close"
+        ]
       }
     ],
     "dialogue": [
@@ -7386,23 +8818,79 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "新幹線の切符を変更したく、お伺いいたしました。",
-        "english": "I came to change a Shinkansen ticket."
+        "english": "I came to change a Shinkansen ticket.",
+        "pronunciation_focus": [
+          "新幹線の → 'shin-kan-sen no'; ん ba chỗ mỗi cái một mora — tách rõ 'shin·kan·sen'",
+          "切符を → 'kip-pu o'; きっ sokuon ngắt một mora trước ぷ ('kip·pu'); を='o'",
+          "変更したく → 'hen-koo-shi-ta-ku'; ん một mora; こう dài 2 mora; く cuối devoiced",
+          "お伺いいたしました → 'o-u-ka-ga-i i-ta-shi-ma-shi-ta'; 伺う kenjougo của 行く/聞く; いたす kenjougo của する; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "新幹線の → 'shin-kan-sen no'; three ん each one mora — keep 'shin·kan·sen' distinct",
+          "切符を → 'kip-pu o'; sokuon きっ holds one mora before ぷ ('kip-pu'); を='o'",
+          "変更したく → 'hen-koo-shi-ta-ku'; moraic ん; long こう (2 mora); final く devoiced",
+          "お伺いいたしました → 'o-u-ka-ga-i i-ta-shi-ma-shi-ta'; 伺う humble for 行く/聞く; いたす humble for する; final した 'shta'"
+        ]
       },
       {
         "japanese": "明日の十時発を、明後日の十四時発に変更できますでしょうか。",
-        "english": "Can I change tomorrow's 10am departure to the day after at 2pm?"
+        "english": "Can I change tomorrow's 10am departure to the day after at 2pm?",
+        "pronunciation_focus": [
+          "明日の十時発を → 'a-shi-ta no juu-ji-ha-tsu o'; じゅう dài 2 mora; つ='tsu'; を='o'",
+          "明後日の → 'a-sat-te no'; あさって っ sokuon ngắt một mora trước て",
+          "十四時発に → 'juu-yo-ji-ha-tsu ni'; じゅう dài; つ='tsu'",
+          "変更できますでしょうか → 'hen-koo de-ki-mas-de-shoo-ka'; こう dài; chồng lịch sự; か đi lên RẤT nhẹ — hỏi khả năng lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "明日の十時発を → 'a-shi-ta no juu-ji-ha-tsu o'; long じゅう (2 mora); つ='tsu'; を='o'",
+          "明後日の → 'a-sat-te no'; sokuon あさって holds one mora before て",
+          "十四時発に → 'juu-yo-ji-ha-tsu ni'; long じゅう; つ='tsu'",
+          "変更できますでしょうか → 'hen-koo de-ki-mas-de-shoo-ka'; long こう; stacked politeness; very slight rise on か — a courteous feasibility question"
+        ]
       },
       {
         "japanese": "変更手数料はおいくらでございますか。",
-        "english": "How much is the change fee?"
+        "english": "How much is the change fee?",
+        "pronunciation_focus": [
+          "変更手数料は → 'hen-koo-te-suu-ryoo wa'; こう dài; すう dài; りょう dài; り tapped r; は='wa'",
+          "おいくら → 'o-i-ku-ra'; お 美化語; く devoiced; ら tapped r",
+          "でございますか → 'de go-zai-mas ka'; か đi lên nhẹ — hỏi giá lễ độ (ở quầy, có thể bỏ でしょう dài hơn)"
+        ],
+        "pronunciation_focus_en": [
+          "変更手数料は → 'hen-koo-te-suu-ryoo wa'; long こう; long すう; long りょう; tapped り; は='wa'",
+          "おいくら → 'o-i-ku-ra'; beautifier お; devoiced く; tapped ら",
+          "でございますか → 'de go-zai-mas ka'; gentle rise on か — a polite price question (at a counter, the shorter form is fine)"
+        ]
       },
       {
         "japanese": "発車前であれば、無料での変更は可能でしょうか。",
-        "english": "If before departure, is free change possible?"
+        "english": "If before departure, is free change possible?",
+        "pronunciation_focus": [
+          "発車前であれば → 'has-sha-mae de a-re-ba'; はっ sokuon ngắt một mora trước しゃ; れ tapped r; điều kiện 'nếu trước khi xe chạy'",
+          "無料での → 'mu-ryoo de no'; りょう dài 2 mora; り tapped r",
+          "変更は → 'hen-koo wa'; ん một mora; こう dài 2 mora; は='wa'",
+          "可能でしょうか → 'ka-noo de-shoo-ka'; のう dài; か đi lên RẤT nhẹ — hỏi lễ độ, không tranh cãi giọng cao"
+        ],
+        "pronunciation_focus_en": [
+          "発車前であれば → 'has-sha-mae de a-re-ba'; sokuon はっ holds one mora before しゃ; tapped れ; conditional 'if before departure'",
+          "無料での → 'mu-ryoo de no'; long りょう (2 mora); tapped り",
+          "変更は → 'hen-koo wa'; moraic ん; long こう (2 mora); は='wa'",
+          "可能でしょうか → 'ka-noo de-shoo-ka'; long のう; very slight rise on か — a polite query, not an argumentative high pitch"
+        ]
       },
       {
         "japanese": "ご対応いただき、ありがとうございました。",
-        "english": "Thank you for handling this."
+        "english": "Thank you for handling this.",
+        "pronunciation_focus": [
+          "ご対応 → 'go-tai-oo'; ご 美化語; たい='ta-i'; おう dài 2 mora",
+          "いただき → 'i-ta-da-ki'; kenjougo của もらう",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — kết, hạ giọng dứt khoát"
+        ],
+        "pronunciation_focus_en": [
+          "ご対応 → 'go-tai-oo'; beautifier ご; たい='ta-i'; long おう (2 mora)",
+          "いただき → 'i-ta-da-ki'; humble for もらう",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — close, decisive fall"
+        ]
       }
     ],
     "dialogue": [
@@ -7655,23 +9143,79 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "昨日から発熱と頭痛がございます。",
-        "english": "I have had fever and headache since yesterday."
+        "english": "I have had fever and headache since yesterday.",
+        "pronunciation_focus": [
+          "昨日から → 'ki-noo ka-ra'; のう dài 2 mora; ら tapped r",
+          "発熱と → 'ha-tsu-ne-tsu to'; つ='tsu' (hai chỗ)",
+          "頭痛が → 'zu-tsuu ga'; づ→ず 'zu'; つう dài 2 mora; が 'g' cứng",
+          "ございます → 'go-zai-mas'; lướt 'go-zai-mas'; khai triệu chứng — rõ ràng, bình tĩnh, lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "昨日から → 'ki-noo ka-ra'; long のう (2 mora); tapped ら",
+          "発熱と → 'ha-tsu-ne-tsu to'; つ='tsu' (twice)",
+          "頭痛が → 'zu-tsuu ga'; づ='zu'; long つう (2 mora); hard が",
+          "ございます → 'go-zai-mas'; glides to 'go-zai-mas'; stating symptoms — clear, calm, polite"
+        ]
       },
       {
         "japanese": "保険証はこちらでございます。",
-        "english": "Here is my insurance card."
+        "english": "Here is my insurance card.",
+        "pronunciation_focus": [
+          "保険証は → 'ho-ken-shoo wa'; ん một mora; しょう dài 2 mora; は='wa'",
+          "こちらで → 'ko-chi-ra de'; ち='chi'; ら tapped r",
+          "ございます → 'go-zai-mas'; lướt 'go-zai-mas' kết hạ — đưa thẻ, ngắn gọn lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "保険証は → 'ho-ken-shoo wa'; moraic ん; long しょう (2 mora); は='wa'",
+          "こちらで → 'ko-chi-ra de'; ち='chi'; tapped ら",
+          "ございます → 'go-zai-mas'; glides to 'go-zai-mas', falling close — handing the card, short and polite"
+        ]
       },
       {
         "japanese": "薬のアレルギーはペニシリンでございます。",
-        "english": "My medicine allergy is penicillin."
+        "english": "My medicine allergy is penicillin.",
+        "pronunciation_focus": [
+          "薬の → 'ku-su-ri no'; す devoiced gần 'ks-ri'; り tapped r",
+          "アレルギーは → 'a-re-ru-gii wa'; レ/ル tapped r; ギー nguyên âm dài 2 mora; は='wa'",
+          "ペニシリンで → 'pe-ni-shi-rin de'; リ tapped r; ん cuối một mora",
+          "ございます → 'go-zai-mas'; lướt 'go-zai-mas' — thông tin y tế quan trọng, đọc CHẬM rõ từng âm"
+        ],
+        "pronunciation_focus_en": [
+          "薬の → 'ku-su-ri no'; devoiced す, near 'ks-ri'; tapped り",
+          "アレルギーは → 'a-re-ru-gii wa'; tapped レ/ル; long ギー (2 mora); は='wa'",
+          "ペニシリンで → 'pe-ni-shi-rin de'; tapped リ; final ん one mora",
+          "ございます → 'go-zai-mas'; glides to 'go-zai-mas' — critical medical info, read SLOWLY and clearly"
+        ]
       },
       {
         "japanese": "処方箋はどちらの薬局でいただけますでしょうか。",
-        "english": "At which pharmacy can I get the prescription filled?"
+        "english": "At which pharmacy can I get the prescription filled?",
+        "pronunciation_focus": [
+          "処方箋は → 'sho-hoo-sen wa'; ほう dài 2 mora; ん một mora; は='wa'",
+          "どちらの → 'do-chi-ra no'; ち='chi'; ら tapped r; どちら lịch sự của どこ",
+          "薬局で → 'yak-kyo-ku de'; やっ sokuon ngắt một mora trước きょ; く cuối devoiced",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; chồng lịch sự; か đi lên RẤT nhẹ — hỏi lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "処方箋は → 'sho-hoo-sen wa'; long ほう (2 mora); moraic ん; は='wa'",
+          "どちらの → 'do-chi-ra no'; ち='chi'; tapped ら; どちら = polite どこ",
+          "薬局で → 'yak-kyo-ku de'; sokuon やっ holds one mora before きょ; final く devoiced",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; stacked politeness; very slight rise on か — a courteous question"
+        ]
       },
       {
         "japanese": "ご診察、誠にありがとうございました。",
-        "english": "Thank you sincerely for the examination."
+        "english": "Thank you sincerely for the examination.",
+        "pronunciation_focus": [
+          "ご診察 → 'go-shin-sa-tsu'; ご 美化語; ん một mora; つ='tsu'",
+          "誠に → 'ma-ko-to-ni'; nhấn thành khẩn rất nhẹ",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — cảm ơn bác sĩ, hạ giọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "ご診察 → 'go-shin-sa-tsu'; beautifier ご; moraic ん; つ='tsu'",
+          "誠に → 'ma-ko-to-ni'; very light sincerity stress",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — thanking the doctor, warm fall"
+        ]
       }
     ],
     "dialogue": [
@@ -7939,23 +9483,75 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "お部屋のエアコンが故障しているようでございます。",
-        "english": "The room's air conditioner seems to be broken."
+        "english": "The room's air conditioner seems to be broken.",
+        "pronunciation_focus": [
+          "お部屋の → 'o-he-ya no'; お 美化語; や rõ, không nuốt",
+          "エアコンが → 'e-a-kon ga'; えあ='e-a' hai mora; ん một mora; が 'g' cứng",
+          "故障している → 'ko-shoo-shi-te i-ru'; しょう dài 2 mora; る tapped r",
+          "ようでございます → 'yoo de go-zai-mas'; よう dài 2 mora; 'ようでございます' làm phàn nàn MỀM, không buộc tội — đọc hạ giọng lịch sự"
+        ],
+        "pronunciation_focus_en": [
+          "お部屋の → 'o-he-ya no'; beautifier お; や clear, not swallowed",
+          "エアコンが → 'e-a-kon ga'; えあ='e-a' (2 mora); moraic ん; hard が",
+          "故障している → 'ko-shoo-shi-te i-ru'; long しょう (2 mora); tapped る",
+          "ようでございます → 'yoo de go-zai-mas'; long よう (2 mora); 'ようでございます' SOFTENS the complaint, no accusation — polite low delivery"
+        ]
       },
       {
         "japanese": "可能でしたら、お部屋の変更をお願いしたく存じます。",
-        "english": "If possible, I would humbly like to request a room change."
+        "english": "If possible, I would humbly like to request a room change.",
+        "pronunciation_focus": [
+          "可能でしたら → 'ka-noo de-shi-ta-ra'; のう dài 2 mora; ら tapped r; 'nếu có thể' báo hiệu yêu cầu nhẹ",
+          "お部屋の変更を → 'o-he-ya no hen-koo o'; ん một mora; こう dài 2 mora; を='o'",
+          "お願いしたく存じます → 'o-ne-gai-shi-ta-ku zon-ji-mas'; ねがい='ne-ga-i'; 存じる kenjougo của 思う; ぞ='z' — yêu cầu khiêm, giọng hạ"
+        ],
+        "pronunciation_focus_en": [
+          "可能でしたら → 'ka-noo de-shi-ta-ra'; long のう (2 mora); tapped ら; 'if possible' flags a soft request",
+          "お部屋の変更を → 'o-he-ya no hen-koo o'; moraic ん; long こう (2 mora); を='o'",
+          "お願いしたく存じます → 'o-ne-gai-shi-ta-ku zon-ji-mas'; ねがい='ne-ga-i'; 存じる humble for 思う; ぞ='z' — humble request, low delivery"
+        ]
       },
       {
         "japanese": "上の階からの騒音で、なかなか眠れません。",
-        "english": "Due to noise from the floor above, I can't sleep well."
+        "english": "Due to noise from the floor above, I can't sleep well.",
+        "pronunciation_focus": [
+          "上の階からの → 'u-e no ka-i ka-ra no'; かい='ka-i'; ら tapped r",
+          "騒音で → 'soo-on de'; そう dài 2 mora; おん='o-n' ん một mora",
+          "なかなか → 'na-ka-na-ka'; bốn mora đều; đi với phủ định 'mãi mà không ~'",
+          "眠れません → 'ne-mu-re-ma-sen'; れ tapped r; ません phủ định lịch sự, giọng hạ — phàn nàn nhưng kiềm chế"
+        ],
+        "pronunciation_focus_en": [
+          "上の階からの → 'u-e no ka-i ka-ra no'; かい='ka-i'; tapped ら",
+          "騒音で → 'soo-on de'; long そう (2 mora); おん moraic ん",
+          "なかなか → 'na-ka-na-ka'; four even mora; pairs with a negative 'just can't ~'",
+          "眠れません → 'ne-mu-re-ma-sen'; tapped れ; ません polite negation, falling — a complaint but restrained"
+        ]
       },
       {
         "japanese": "ご対応いただけますと幸いでございます。",
-        "english": "I would be grateful for your handling."
+        "english": "I would be grateful for your handling.",
+        "pronunciation_focus": [
+          "ご対応 → 'go-tai-oo'; ご 美化語; たい='ta-i'; おう dài 2 mora",
+          "いただけますと → 'i-ta-da-ke-mas to'; kenjougo của もらう; điều kiện mềm 'nếu được ~ thì'",
+          "幸いでございます → 'sai-wai de go-zai-mas'; さい/わい='sa-i/wa-i'; でございます kết hạ trang trọng — yêu cầu mềm, không gắt"
+        ],
+        "pronunciation_focus_en": [
+          "ご対応 → 'go-tai-oo'; beautifier ご; たい='ta-i'; long おう (2 mora)",
+          "いただけますと → 'i-ta-da-ke-mas to'; humble for もらう; soft conditional 'if you would ~'",
+          "幸いでございます → 'sai-wai de go-zai-mas'; さい/わい='sa-i/wa-i'; でございます formal falling — soft request, not sharp"
+        ]
       },
       {
         "japanese": "お忙しいところ、申し訳ございません。",
-        "english": "I apologize for troubling you when you're busy."
+        "english": "I apologize for troubling you when you're busy.",
+        "pronunciation_focus": [
+          "お忙しいところ → 'o-i-so-ga-shii-to-ko-ro'; しい dài 2 mora; đừng rút 'shi'",
+          "申し訳ございません → 'moo-shi-wa-ke go-zai-ma-sen'; もう dài 2 mora; cụm xin lỗi kenjougo cao; giọng hạ trầm, chậm — đệm cuối lời phàn nàn cho nhã"
+        ],
+        "pronunciation_focus_en": [
+          "お忙しいところ → 'o-i-so-ga-shii-to-ko-ro'; long しい (2 mora); don't clip to 'shi'",
+          "申し訳ございません → 'moo-shi-wa-ke go-zai-ma-sen'; long もう (2 mora); high-kenjougo apology; low, slow — softens the end of a complaint"
+        ]
       }
     ],
     "dialogue": [
@@ -8203,23 +9799,79 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "預け荷物が見つからないようでして、こちらに参りました。",
-        "english": "My checked luggage seems missing, so I came here."
+        "english": "My checked luggage seems missing, so I came here.",
+        "pronunciation_focus": [
+          "預け荷物が → 'a-zu-ke-ni-mo-tsu ga'; づ→ず 'zu'; つ='tsu'; が 'g' cứng",
+          "見つからない → 'mi-tsu-ka-ra-na-i'; つ='tsu'; ら tapped r",
+          "ようでして → 'yoo de-shi-te'; よう dài 2 mora; 'ようでして' làm câu MỀM, không khẳng định lỗi của hãng",
+          "こちらに参りました → 'ko-chi-ra ni ma-i-ri-ma-shi-ta'; ち='chi'; ら/り tapped r; まいる kenjougo của 来る; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "預け荷物が → 'a-zu-ke-ni-mo-tsu ga'; づ='zu'; つ='tsu'; hard が",
+          "見つからない → 'mi-tsu-ka-ra-na-i'; つ='tsu'; tapped ら",
+          "ようでして → 'yoo de-shi-te'; long よう (2 mora); 'ようでして' SOFTENS it, no blame on the airline",
+          "こちらに参りました → 'ko-chi-ra ni ma-i-ri-ma-shi-ta'; ち='chi'; tapped ら/り; まいる humble for 来る; final した 'shta'"
+        ]
       },
       {
         "japanese": "便名はANA二〇八便、ハノイ発成田着でございます。",
-        "english": "Flight is ANA 208, Hanoi to Narita."
+        "english": "Flight is ANA 208, Hanoi to Narita.",
+        "pronunciation_focus": [
+          "便名は → 'bin-mei wa'; ん một mora; めい dài 'me-e' 2 mora; は='wa'",
+          "ANA二〇八便 → 'e-e-e-nu ni-ze-ro-ha-chi-bin'; đọc 'A-N-A' chữ cái; ぜ='z'; ろ tapped r; ち='chi'",
+          "ハノイ発 → 'ha-no-i-ha-tsu'; のい='no-i' hai mora; つ='tsu'",
+          "成田着でございます → 'na-ri-ta-cha-ku de go-zai-mas'; り tapped r; ちゃ='cha'; く devoiced; でございます kết hạ"
+        ],
+        "pronunciation_focus_en": [
+          "便名は → 'bin-mei wa'; moraic ん; long めい ('me-e', 2 mora); は='wa'",
+          "ANA二〇八便 → 'e-e-e-nu ni-ze-ro-ha-chi-bin'; spell 'A-N-A'; ぜ='z'; tapped ろ; ち='chi'",
+          "ハノイ発 → 'ha-no-i-ha-tsu'; のい='no-i' (2 mora); つ='tsu'",
+          "成田着でございます → 'na-ri-ta-cha-ku de go-zai-mas'; tapped り; ちゃ='cha'; devoiced く; でございます falling close"
+        ]
       },
       {
         "japanese": "受取証はこちらでございます。",
-        "english": "Here is my luggage tag stub."
+        "english": "Here is my luggage tag stub.",
+        "pronunciation_focus": [
+          "受取証は → 'u-ke-to-ri-shoo wa'; り tapped r; しょう dài 2 mora; は='wa'",
+          "こちらで → 'ko-chi-ra de'; ち='chi'; ら tapped r",
+          "ございます → 'go-zai-mas'; lướt 'go-zai-mas' kết hạ — đưa cuống vé, ngắn lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "受取証は → 'u-ke-to-ri-shoo wa'; tapped り; long しょう (2 mora); は='wa'",
+          "こちらで → 'ko-chi-ra de'; ち='chi'; tapped ら",
+          "ございます → 'go-zai-mas'; glides to 'go-zai-mas', falling close — handing the stub, short and polite"
+        ]
       },
       {
         "japanese": "ホテルへの配送をお願いできますでしょうか。",
-        "english": "Could you arrange delivery to my hotel?"
+        "english": "Could you arrange delivery to my hotel?",
+        "pronunciation_focus": [
+          "ホテルへの → 'ho-te-ru e no'; る tapped r; へ trợ từ='e' không 'he'",
+          "配送を → 'hai-soo o'; はい='ha-i'; そう dài 2 mora; を='o'",
+          "お願いできますでしょうか → 'o-ne-gai de-ki-mas-de-shoo-ka'; ねがい='ne-ga-i'; chồng lịch sự; か đi lên RẤT nhẹ — nhờ lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "ホテルへの → 'ho-te-ru e no'; tapped る; particle へ='e', not 'he'",
+          "配送を → 'hai-soo o'; はい='ha-i'; long そう (2 mora); を='o'",
+          "お願いできますでしょうか → 'o-ne-gai de-ki-mas-de-shoo-ka'; ねがい='ne-ga-i'; stacked politeness; very slight rise on か — a courteous request"
+        ]
       },
       {
         "japanese": "緊急で必要な物の購入費用も、賠償の対象になりますでしょうか。",
-        "english": "Are emergency purchases also covered by compensation?"
+        "english": "Are emergency purchases also covered by compensation?",
+        "pronunciation_focus": [
+          "緊急で必要な → 'kin-kyuu de hi-tsu-yoo na'; きゅう dài; つ='tsu'; よう dài 2 mora",
+          "物の購入費用も → 'mo-no no koo-nyuu-hi-yoo mo'; こう dài; にゅう dài; よう dài",
+          "賠償の対象に → 'bai-shoo no tai-shoo ni'; ばい/たい='ba-i/ta-i'; しょう dài (hai chỗ)",
+          "なりますでしょうか → 'na-ri-mas-de-shoo-ka'; り tapped r; か đi lên RẤT nhẹ — hỏi quyền lợi lễ độ, không gắt"
+        ],
+        "pronunciation_focus_en": [
+          "緊急で必要な → 'kin-kyuu de hi-tsu-yoo na'; long きゅう; つ='tsu'; long よう (2 mora)",
+          "物の購入費用も → 'mo-no no koo-nyuu-hi-yoo mo'; long こう; long にゅう; long よう",
+          "賠償の対象に → 'bai-shoo no tai-shoo ni'; ばい/たい='ba-i/ta-i'; long しょう (twice)",
+          "なりますでしょうか → 'na-ri-mas-de-shoo-ka'; tapped り; very slight rise on か — politely asking about entitlement, not sharp"
+        ]
       }
     ],
     "dialogue": [
@@ -8472,23 +10124,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "財布を盗まれてしまいまして、盗難届を提出したく参りました。",
-        "english": "I had my wallet stolen, so I came to file a theft report."
+        "english": "I had my wallet stolen, so I came to file a theft report.",
+        "pronunciation_focus": [
+          "財布を → 'sai-fu o'; さい='sa-i'; ふ môi nhẹ; を='o'",
+          "盗まれてしまいまして → 'nu-su-ma-re-te shi-ma-i-ma-shi-te'; れ tapped r; てしまいまして thể lỡ/tiếc nối câu",
+          "盗難届を → 'too-nan-to-do-ke o'; とう dài 2 mora; ん một mora; を='o'",
+          "提出したく参りました → 'tei-shutsu-shi-ta-ku ma-i-ri-ma-shi-ta'; てい dài 'te-e'; しゅつ つ='tsu'; まいる kenjougo của 来る; した cuối 'shta'"
+        ],
+        "pronunciation_focus_en": [
+          "財布を → 'sai-fu o'; さい='sa-i'; soft ふ; を='o'",
+          "盗まれてしまいまして → 'nu-su-ma-re-te shi-ma-i-ma-shi-te'; tapped れ; てしまいまして mishap/regret continuative",
+          "盗難届を → 'too-nan-to-do-ke o'; long とう (2 mora); moraic ん; を='o'",
+          "提出したく参りました → 'tei-shutsu-shi-ta-ku ma-i-ri-ma-shi-ta'; long てい ('te-e'); つ in しゅつ='tsu'; まいる humble for 来る; final した 'shta'"
+        ]
       },
       {
         "japanese": "盗難に気づいたのは、本日午後三時頃でございます。",
-        "english": "I noticed the theft around 3pm today."
+        "english": "I noticed the theft around 3pm today.",
+        "pronunciation_focus": [
+          "盗難に → 'too-nan ni'; とう dài 2 mora; ん một mora",
+          "気づいたのは → 'ki-zu-i-ta no wa'; づ→ず 'zu'; は='wa'",
+          "本日午後三時頃 → 'hon-jitsu go-go san-ji-go-ro'; じつ つ='tsu'; ろ tapped r",
+          "でございます → 'de go-zai-mas'; dạng です trang trọng — khai báo thời điểm, rõ ràng dứt khoát"
+        ],
+        "pronunciation_focus_en": [
+          "盗難に → 'too-nan ni'; long とう (2 mora); moraic ん",
+          "気づいたのは → 'ki-zu-i-ta no wa'; づ='zu'; は='wa'",
+          "本日午後三時頃 → 'hon-jitsu go-go san-ji-go-ro'; つ in じつ='tsu'; tapped ろ",
+          "でございます → 'de go-zai-mas'; formal copula — stating the time, clear and decisive"
+        ]
       },
       {
         "japanese": "クレジットカード会社にはすでに連絡し、停止しております。",
-        "english": "I have already contacted the credit card company and frozen the cards."
+        "english": "I have already contacted the credit card company and frozen the cards.",
+        "pronunciation_focus": [
+          "クレジットカード会社には → 'ku-re-jit-to-kaa-do gai-sha ni wa'; レ tapped r; ジッ sokuon ngắt một mora trước と; カー dài 2 mora; がい='ga-i'; には = 'ni wa' (は='wa')",
+          "すでに → 'su-de-ni'; す đầu hơi devoiced",
+          "連絡し → 'ren-ra-ku-shi'; レ/ら tapped r; く/し devoiced",
+          "停止しております → 'tei-shi-shi-te-o-ri-mas'; てい dài 'te-e'; おります kenjougo của いる; ます lướt — báo đã xử lý, giọng chắc"
+        ],
+        "pronunciation_focus_en": [
+          "クレジットカード会社には → 'ku-re-jit-to-kaa-do gai-sha ni wa'; tapped レ; sokuon ジッ holds one mora before と; long カー (2 mora); がい='ga-i'; には='ni wa' (は='wa')",
+          "すでに → 'su-de-ni'; initial す slightly devoiced",
+          "連絡し → 'ren-ra-ku-shi'; tapped レ/ら; devoiced く/し",
+          "停止しております → 'tei-shi-shi-te-o-ri-mas'; long てい ('te-e'); おります humble for いる; ます glides — reporting action taken, firm tone"
+        ]
       },
       {
         "japanese": "受理番号をいただけますでしょうか。保険申請に必要でございます。",
-        "english": "May I receive a case receipt number? It's needed for insurance claim."
+        "english": "May I receive a case receipt number? It's needed for insurance claim.",
+        "pronunciation_focus": [
+          "受理番号を → 'ju-ri-ban-goo o'; じゅ='ju'; り tapped r; ん một mora; ごう dài 2 mora; を='o'",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; chồng lịch sự; か đi lên RẤT nhẹ — xin số hồ sơ lễ độ",
+          "保険申請に → 'ho-ken-shin-sei ni'; ん hai chỗ; せい dài 'se-e'",
+          "必要でございます → 'hi-tsu-yoo de go-zai-mas'; つ='tsu'; よう dài 2 mora; でございます kết hạ — giải thích lý do cần, giọng đều"
+        ],
+        "pronunciation_focus_en": [
+          "受理番号を → 'ju-ri-ban-goo o'; じゅ='ju'; tapped り; moraic ん; long ごう (2 mora); を='o'",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; stacked politeness; very slight rise on か — politely requesting a case number",
+          "保険申請に → 'ho-ken-shin-sei ni'; two ん; long せい ('se-e')",
+          "必要でございます → 'hi-tsu-yoo de go-zai-mas'; つ='tsu'; long よう (2 mora); でございます falling close — stating the reason, even tone"
+        ]
       },
       {
         "japanese": "ご対応、誠にありがとうございました。",
-        "english": "Thank you sincerely for handling this."
+        "english": "Thank you sincerely for handling this.",
+        "pronunciation_focus": [
+          "ご対応 → 'go-tai-oo'; ご 美化語; たい='ta-i'; おう dài 2 mora",
+          "誠に → 'ma-ko-to-ni'; nhấn thành khẩn rất nhẹ",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — cảm ơn cảnh sát, hạ giọng dứt khoát"
+        ],
+        "pronunciation_focus_en": [
+          "ご対応 → 'go-tai-oo'; beautifier ご; たい='ta-i'; long おう (2 mora)",
+          "誠に → 'ma-ko-to-ni'; very light sincerity stress",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — thanking the police, decisive fall"
+        ]
       }
     ],
     "dialogue": [
@@ -8746,23 +10456,75 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "失礼ですが、新宿駅の東口はどちらでしょうか。",
-        "english": "Excuse me, which way is Shinjuku Station's east exit?"
+        "english": "Excuse me, which way is Shinjuku Station's east exit?",
+        "pronunciation_focus": [
+          "失礼ですが → 'shi-tsu-rei des ga'; しつ つ='tsu'; れい dài 're-e'; が nối không nhấn; cụm mở đầu hỏi người lạ lịch sự",
+          "新宿駅の → 'shin-ju-ku-e-ki no'; じゅ='ju'; く devoiced",
+          "東口は → 'hi-ga-shi-gu-chi wa'; が 'g' cứng; ち='chi'; は='wa'",
+          "どちらでしょうか → 'do-chi-ra de-shoo-ka'; ち='chi'; ら tapped r; どちら lịch sự của どっち; か đi lên RẤT nhẹ (hỏi người lạ lễ độ)"
+        ],
+        "pronunciation_focus_en": [
+          "失礼ですが → 'shi-tsu-rei des ga'; つ in しつ='tsu'; long れい ('re-e'); が unstressed; polite opener for asking a stranger",
+          "新宿駅の → 'shin-ju-ku-e-ki no'; じゅ='ju'; devoiced く",
+          "東口は → 'hi-ga-shi-gu-chi wa'; hard が; ち='chi'; は='wa'",
+          "どちらでしょうか → 'do-chi-ra de-shoo-ka'; ち='chi'; tapped ら; どちら = polite どっち; very slight rise on か (a courteous question to a stranger)"
+        ]
       },
       {
         "japanese": "この近くに、コンビニはございますでしょうか。",
-        "english": "Is there a convenience store near here?"
+        "english": "Is there a convenience store near here?",
+        "pronunciation_focus": [
+          "この近くに → 'ko-no chi-ka-ku ni'; ち='chi'; く devoiced nhẹ",
+          "コンビニは → 'kon-bi-ni wa'; ん một mora; は='wa'",
+          "ございますでしょうか → 'go-zai-mas-de-shoo-ka'; chồng lịch sự; か đi lên RẤT nhẹ — hỏi người lạ keigo (so với ある thân mật)"
+        ],
+        "pronunciation_focus_en": [
+          "この近くに → 'ko-no chi-ka-ku ni'; ち='chi'; lightly devoiced く",
+          "コンビニは → 'kon-bi-ni wa'; moraic ん; は='wa'",
+          "ございますでしょうか → 'go-zai-mas-de-shoo-ka'; stacked politeness; very slight rise on か — keigo to a stranger (vs casual ある)"
+        ]
       },
       {
         "japanese": "二つ目の信号を右に曲がってください。",
-        "english": "Please turn right at the second traffic light."
+        "english": "Please turn right at the second traffic light.",
+        "pronunciation_focus": [
+          "二つ目の → 'fu-ta-tsu-me no'; ふ môi nhẹ; つ='tsu'",
+          "信号を → 'shin-goo o'; ん một mora; ごう dài 2 mora; を='o'",
+          "右に → 'mi-gi ni'; ぎ 'g' cứng",
+          "曲がってください → 'ma-gat-te ku-da-sai'; がって っ sokuon ngắt một mora trước て; さい='sa-i'; てください chỉ đường lịch sự bình thường"
+        ],
+        "pronunciation_focus_en": [
+          "二つ目の → 'fu-ta-tsu-me no'; soft ふ; つ='tsu'",
+          "信号を → 'shin-goo o'; moraic ん; long ごう (2 mora); を='o'",
+          "右に → 'mi-gi ni'; hard ぎ",
+          "曲がってください → 'ma-gat-te ku-da-sai'; sokuon がって holds one mora before て; さい='sa-i'; てください ordinary polite directions"
+        ]
       },
       {
         "japanese": "歩いて十分くらいかかります。",
-        "english": "It takes about 10 minutes on foot."
+        "english": "It takes about 10 minutes on foot.",
+        "pronunciation_focus": [
+          "歩いて → 'a-ru-i-te'; る tapped r; あるい='a-ru-i' ba mora",
+          "十分くらい → 'jup-pun ku-ra-i'; じゅっ sokuon ngắt một mora trước ぷ ('jup·pun'); ら tapped r; 十分 ở đây = 'juppun' (10 phút) KHÔNG 'juubun'",
+          "かかります → 'ka-ka-ri-mas'; り tapped r; ます lướt 'mas' — thông tin trung tính, giọng đều"
+        ],
+        "pronunciation_focus_en": [
+          "歩いて → 'a-ru-i-te'; tapped る; あるい='a-ru-i' (3 mora)",
+          "十分くらい → 'jup-pun ku-ra-i'; sokuon じゅっ holds one mora before ぷ ('jup-pun'); tapped ら; 十分 here = 'juppun' (10 min), NOT 'juubun'",
+          "かかります → 'ka-ka-ri-mas'; tapped り; ます glides to 'mas' — neutral info, even tone"
+        ]
       },
       {
         "japanese": "ご親切に、ありがとうございました。",
-        "english": "Thank you for your kindness."
+        "english": "Thank you for your kindness.",
+        "pronunciation_focus": [
+          "ご親切に → 'go-shin-se-tsu ni'; ご 美化語; ん một mora; せつ つ='tsu'",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — cảm ơn người lạ giúp đỡ, ấm dứt khoát"
+        ],
+        "pronunciation_focus_en": [
+          "ご親切に → 'go-shin-se-tsu ni'; beautifier ご; moraic ん; つ in せつ='tsu'",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — thanking a helpful stranger, warm and decisive"
+        ]
       }
     ],
     "dialogue": [
@@ -9010,23 +10772,77 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "失礼ですが、注文した料理と少し違うようでして、ご確認いただけますでしょうか。",
-        "english": "Excuse me, the dish seems slightly different from what I ordered — could you please verify?"
+        "english": "Excuse me, the dish seems slightly different from what I ordered — could you please verify?",
+        "pronunciation_focus": [
+          "失礼ですが → 'shi-tsu-rei des ga'; しつ つ='tsu'; れい dài 're-e'; が nối không nhấn — mở đầu khiếu nại NHẸ, không gắt",
+          "注文した料理と → 'chuu-mon-shi-ta ryoo-ri to'; ちゅう dài; ん một mora; りょう dài; り tapped r",
+          "少し違うようでして → 'su-ko-shi chi-ga-u yoo de-shi-te'; す devoiced; ち='chi'; よう dài; 'ようでして' làm câu MỀM, không buộc tội",
+          "ご確認いただけますでしょうか → 'go-ka-ku-nin i-ta-da-ke-mas-de-shoo-ka'; く devoiced; chồng lịch sự; か đi lên RẤT nhẹ — nhờ kiểm tra lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "失礼ですが → 'shi-tsu-rei des ga'; つ in しつ='tsu'; long れい ('re-e'); が unstressed — a SOFT complaint opener, not sharp",
+          "注文した料理と → 'chuu-mon-shi-ta ryoo-ri to'; long ちゅう; moraic ん; long りょう; tapped り",
+          "少し違うようでして → 'su-ko-shi chi-ga-u yoo de-shi-te'; devoiced す; ち='chi'; long よう; 'ようでして' SOFTENS it, no accusation",
+          "ご確認いただけますでしょうか → 'go-ka-ku-nin i-ta-da-ke-mas-de-shoo-ka'; devoiced く; stacked politeness; very slight rise on か — politely asking for a check"
+        ]
       },
       {
         "japanese": "お会計に間違いがあるかもしれません。再度ご確認をお願いいたします。",
-        "english": "There might be an error on the bill. Please verify again."
+        "english": "There might be an error on the bill. Please verify again.",
+        "pronunciation_focus": [
+          "お会計に → 'o-kai-kei ni'; かい='ka-i'; けい dài 'ke-e'; お 美化語",
+          "間違いが → 'ma-chi-ga-i ga'; ち='chi'; が 'g' cứng",
+          "あるかもしれません → 'a-ru ka-mo-shi-re-ma-sen'; る/れ tapped r; 'có thể ~' làm câu mềm, không khẳng định lỗi",
+          "再度ご確認を → 'sai-do go-ka-ku-nin o'; さい='sa-i'; く devoiced; を='o'",
+          "お願いいたします → 'o-ne-gai i-ta-shi-mas'; ねがい='ne-ga-i'; いたす kenjougo của する; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "お会計に → 'o-kai-kei ni'; かい='ka-i'; long けい ('ke-e'); beautifier お",
+          "間違いが → 'ma-chi-ga-i ga'; ち='chi'; hard が",
+          "あるかもしれません → 'a-ru ka-mo-shi-re-ma-sen'; tapped る/れ; 'might ~' softens it, no firm accusation",
+          "再度ご確認を → 'sai-do go-ka-ku-nin o'; さい='sa-i'; devoiced く; を='o'",
+          "お願いいたします → 'o-ne-gai i-ta-shi-mas'; ねがい='ne-ga-i'; いたす humble for する; ます glides"
+        ]
       },
       {
         "japanese": "メニュー表に書かれていた価格と少し異なるようでございます。",
-        "english": "It seems slightly different from the price on the menu."
+        "english": "It seems slightly different from the price on the menu.",
+        "pronunciation_focus": [
+          "メニュー表に → 'me-nyuu-hyoo ni'; ニュー dài 2 mora; ひょう dài 2 mora",
+          "書かれていた → 'ka-ka-re-te i-ta'; れ tapped r; bị động 'được ghi'",
+          "価格と → 'ka-ka-ku to'; く cuối devoiced nhẹ",
+          "少し異なるようでございます → 'su-ko-shi ko-to-na-ru yoo de go-zai-mas'; す devoiced; る tapped r; よう dài; 'ようでございます' làm phàn nàn MỀM lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "メニュー表に → 'me-nyuu-hyoo ni'; long ニュー (2 mora); long ひょう (2 mora)",
+          "書かれていた → 'ka-ka-re-te i-ta'; tapped れ; passive 'was written'",
+          "価格と → 'ka-ka-ku to'; final く lightly devoiced",
+          "少し異なるようでございます → 'su-ko-shi ko-to-na-ru yoo de go-zai-mas'; devoiced す; tapped る; long よう; 'ようでございます' SOFTENS the complaint, polite"
+        ]
       },
       {
         "japanese": "領収書をいただけますでしょうか。",
-        "english": "May I have a receipt?"
+        "english": "May I have a receipt?",
+        "pronunciation_focus": [
+          "領収書を → 'ryoo-shuu-sho o'; りょう dài, しゅう dài (HAI nguyên âm dài liền — đừng rút); り tapped r; を='o'",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; kenjougo của もらう; chồng lịch sự; か đi lên RẤT nhẹ — xin hóa đơn lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "領収書を → 'ryoo-shuu-sho o'; long りょう + long しゅう (two long vowels adjacent — don't shorten); tapped り; を='o'",
+          "いただけますでしょうか → 'i-ta-da-ke-mas-de-shoo-ka'; humble for もらう; stacked politeness; very slight rise on か — politely requesting a receipt"
+        ]
       },
       {
         "japanese": "ご対応、ありがとうございました。",
-        "english": "Thank you for handling this."
+        "english": "Thank you for handling this.",
+        "pronunciation_focus": [
+          "ご対応 → 'go-tai-oo'; ご 美化語; たい='ta-i'; おう dài 2 mora",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — khép khiếu nại trong hòa khí, hạ giọng ấm"
+        ],
+        "pronunciation_focus_en": [
+          "ご対応 → 'go-tai-oo'; beautifier ご; たい='ta-i'; long おう (2 mora)",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — closing a complaint amicably, warm fall"
+        ]
       }
     ],
     "dialogue": [
@@ -9284,23 +11100,73 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "失礼ですが、この経路は少し遠回りではないでしょうか。",
-        "english": "Excuse me, isn't this route a bit of a detour?"
+        "english": "Excuse me, isn't this route a bit of a detour?",
+        "pronunciation_focus": [
+          "失礼ですが → 'shi-tsu-rei des ga'; しつ つ='tsu'; れい dài 're-e'; が nối không nhấn — mở khiếu nại NHẸ, không gắt giọng",
+          "この経路は → 'ko-no kei-ro wa'; けい dài 'ke-e'; ろ tapped r; は='wa'",
+          "少し遠回り → 'su-ko-shi too-ma-wa-ri'; す devoiced; とお dài 2 mora; り tapped r",
+          "ではないでしょうか → 'de wa na-i de-shoo-ka'; しょう dài; cụm 'chẳng phải ~ sao' — か đi lên RẤT nhẹ, là chất vấn lễ độ KHÔNG phải buộc tội"
+        ],
+        "pronunciation_focus_en": [
+          "失礼ですが → 'shi-tsu-rei des ga'; つ in しつ='tsu'; long れい ('re-e'); が unstressed — a SOFT complaint opener, not a sharp pitch",
+          "この経路は → 'ko-no kei-ro wa'; long けい ('ke-e'); tapped ろ; は='wa'",
+          "少し遠回り → 'su-ko-shi too-ma-wa-ri'; devoiced す; long とお (2 mora); tapped り",
+          "ではないでしょうか → 'de wa na-i de-shoo-ka'; long しょう; 'isn't it ~?' — very slight rise on か, a polite challenge NOT an accusation"
+        ]
       },
       {
         "japanese": "通常の料金とは少し異なるように思いますが、確認させていただけますでしょうか。",
-        "english": "It seems slightly different from the usual fare — could we verify?"
+        "english": "It seems slightly different from the usual fare — could we verify?",
+        "pronunciation_focus": [
+          "通常の料金とは → 'tsuu-joo no ryoo-kin to wa'; つう dài, じょう dài; りょう dài; り tapped r; とは='to wa' (は='wa')",
+          "少し異なるように → 'su-ko-shi ko-to-na-ru yoo-ni'; す devoiced; る tapped r; よう dài 2 mora",
+          "思いますが → 'o-mo-i-mas ga'; が nối không nhấn — KHÔNG dùng 存じます ở tranh chấp taxi (quá trang trọng); đăng ký lịch sự trung tính",
+          "確認させていただけますでしょうか → 'ka-ku-nin sa-se-te-i-ta-da-ke-mas-de-shoo-ka'; く devoiced; chuỗi kenjougo; か đi lên RẤT nhẹ"
+        ],
+        "pronunciation_focus_en": [
+          "通常の料金とは → 'tsuu-joo no ryoo-kin to wa'; long つう + long じょう; long りょう; tapped り; とは='to wa' (は='wa')",
+          "少し異なるように → 'su-ko-shi ko-to-na-ru yoo-ni'; devoiced す; tapped る; long よう (2 mora)",
+          "思いますが → 'o-mo-i-mas ga'; が unstressed — NOT 存じます in a taxi dispute (too formal); neutral polite register",
+          "確認させていただけますでしょうか → 'ka-ku-nin sa-se-te-i-ta-da-ke-mas-de-shoo-ka'; devoiced く; kenjougo chain; very slight rise on か"
+        ]
       },
       {
         "japanese": "領収書をいただきたく存じます。",
-        "english": "I'd humbly like a receipt."
+        "english": "I'd humbly like a receipt.",
+        "pronunciation_focus": [
+          "領収書を → 'ryoo-shuu-sho o'; りょう dài, しゅう dài (hai nguyên âm dài liền — đừng rút); り tapped r; を='o'",
+          "いただきたく存じます → 'i-ta-da-ki-ta-ku zon-ji-mas'; いただく kenjougo của もらう; 存じる kenjougo của 思う; ぞ='z'; kết hạ trang trọng dứt khoát"
+        ],
+        "pronunciation_focus_en": [
+          "領収書を → 'ryoo-shuu-sho o'; long りょう + long しゅう (adjacent — don't shorten); tapped り; を='o'",
+          "いただきたく存じます → 'i-ta-da-ki-ta-ku zon-ji-mas'; いただく humble for もらう; 存じる humble for 思う; ぞ='z'; firm formal falling close"
+        ]
       },
       {
         "japanese": "タクシーセンターに問い合わせをさせていただきます。",
-        "english": "I'll inquire with the taxi center."
+        "english": "I'll inquire with the taxi center.",
+        "pronunciation_focus": [
+          "タクシーセンターに → 'ta-ku-shii-sen-taa ni'; く devoiced; シー dài 2 mora; ん một mora; ター dài 2 mora",
+          "問い合わせを → 'to-i-a-wa-se o'; năm mora đều; を='o'",
+          "させていただきます → 'sa-se-te-i-ta-da-ki-mas'; chuỗi kenjougo (させていただく); ます lướt — tuyên bố hành động của mình lễ độ nhưng cứng rắn"
+        ],
+        "pronunciation_focus_en": [
+          "タクシーセンターに → 'ta-ku-shii-sen-taa ni'; devoiced く; long シー (2 mora); moraic ん; long ター (2 mora)",
+          "問い合わせを → 'to-i-a-wa-se o'; five even mora; を='o'",
+          "させていただきます → 'sa-se-te-i-ta-da-ki-mas'; kenjougo chain (させていただく); ます glides — declaring your own action, polite but firm"
+        ]
       },
       {
         "japanese": "ご対応、よろしくお願いいたします。",
-        "english": "I respectfully ask for your handling."
+        "english": "I respectfully ask for your handling.",
+        "pronunciation_focus": [
+          "ご対応 → 'go-tai-oo'; ご 美化語; たい='ta-i'; おう dài 2 mora",
+          "よろしくお願いいたします → 'yo-ro-shi-ku o-ne-gai i-ta-shi-mas'; ろ tapped r; いたす kenjougo của する (yêu cầu trung tính, KHÔNG 申し上げる); ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "ご対応 → 'go-tai-oo'; beautifier ご; たい='ta-i'; long おう (2 mora)",
+          "よろしくお願いいたします → 'yo-ro-shi-ku o-ne-gai i-ta-shi-mas'; tapped ろ; いたす humble for する (neutral request, NOT 申し上げる); ます glides"
+        ]
       }
     ],
     "dialogue": [
@@ -9543,23 +11409,83 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "私たちの家庭の事情も、少しご理解いただけますと幸いに存じます。",
-        "english": "I'd be grateful if you could understand a little of our household's circumstances."
+        "english": "I'd be grateful if you could understand a little of our household's circumstances.",
+        "pronunciation_focus": [
+          "私たちの → 'wa-ta-shi-ta-chi no'; ち='chi'; たち hậu tố số nhiều",
+          "家庭の事情も → 'ka-tei no ji-joo mo'; てい dài 'te-e'; じょう dài 2 mora",
+          "少しご理解いただけますと → 'su-ko-shi go-ri-kai i-ta-da-ke-mas to'; す devoiced; り tapped r; かい='ka-i'; điều kiện mềm 'nếu được ~ thì'",
+          "幸いに存じます → 'sai-wai ni zon-ji-mas'; さい/わい='sa-i/wa-i'; 存じる kenjougo của 思う; ぞ='z' — câu nhờ thông cảm, giọng hạ ấm"
+        ],
+        "pronunciation_focus_en": [
+          "私たちの → 'wa-ta-shi-ta-chi no'; ち='chi'; たち pluralizer",
+          "家庭の事情も → 'ka-tei no ji-joo mo'; long てい ('te-e'); long じょう (2 mora)",
+          "少しご理解いただけますと → 'su-ko-shi go-ri-kai i-ta-da-ke-mas to'; devoiced す; tapped り; かい='ka-i'; soft conditional 'if you would ~'",
+          "幸いに存じます → 'sai-wai ni zon-ji-mas'; さい/わい='sa-i/wa-i'; 存じる humble for 思う; ぞ='z' — a plea for understanding, low warm delivery"
+        ]
       },
       {
         "japanese": "文化の違いから、誤解が生じることもあるかと存じます。",
-        "english": "Cultural differences may at times give rise to misunderstandings."
+        "english": "Cultural differences may at times give rise to misunderstandings.",
+        "pronunciation_focus": [
+          "文化の違いから → 'bun-ka no chi-ga-i ka-ra'; ん một mora; ち='chi'; が 'g' cứng; ら tapped r",
+          "誤解が → 'go-kai ga'; かい='ka-i'; が 'g' cứng",
+          "生じることも → 'shoo-ji-ru ko-to mo'; しょう dài 2 mora; る tapped r",
+          "あるかと存じます → 'a-ru ka to zon-ji-mas'; る tapped r; 存じる kenjougo của 思う; ぞ='z'; 'かと存じます' làm nhận định mềm lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "文化の違いから → 'bun-ka no chi-ga-i ka-ra'; moraic ん; ち='chi'; hard が; tapped ら",
+          "誤解が → 'go-kai ga'; かい='ka-i'; hard が",
+          "生じることも → 'shoo-ji-ru ko-to mo'; long しょう (2 mora); tapped る",
+          "あるかと存じます → 'a-ru ka to zon-ji-mas'; tapped る; 存じる humble for 思う; ぞ='z'; 'かと存じます' softens the assertion politely"
+        ]
       },
       {
         "japanese": "ベトナムでは少し違う習慣がございまして、ご相談させていただきたく存じます。",
-        "english": "Customs in Vietnam differ slightly — I'd humbly like to consult you."
+        "english": "Customs in Vietnam differ slightly — I'd humbly like to consult you.",
+        "pronunciation_focus": [
+          "ベトナムでは → 'be-to-na-mu de wa'; bốn mora đều; では='de wa'",
+          "少し違う習慣が → 'su-ko-shi chi-ga-u shuu-kan ga'; す devoiced; ち='chi'; しゅう dài 2 mora; が 'g' cứng",
+          "ございまして → 'go-zai-ma-shi-te'; nối câu trang trọng",
+          "ご相談させていただきたく存じます → 'go-soo-dan sa-se-te-i-ta-da-ki-ta-ku zon-ji-mas'; そう dài; chuỗi kenjougo; ぞ='z'; kết hạ trang trọng"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムでは → 'be-to-na-mu de wa'; four even mora; では='de wa'",
+          "少し違う習慣が → 'su-ko-shi chi-ga-u shuu-kan ga'; devoiced す; ち='chi'; long しゅう (2 mora); hard が",
+          "ございまして → 'go-zai-ma-shi-te'; formal continuative",
+          "ご相談させていただきたく存じます → 'go-soo-dan sa-se-te-i-ta-da-ki-ta-ku zon-ji-mas'; long そう; kenjougo chain; ぞ='z'; formal falling close"
+        ]
       },
       {
         "japanese": "ご期待に沿えない部分もございますが、心からお詫び申し上げます。",
-        "english": "There are areas where I cannot meet your expectations — I sincerely apologize."
+        "english": "There are areas where I cannot meet your expectations — I sincerely apologize.",
+        "pronunciation_focus": [
+          "ご期待に → 'go-ki-tai ni'; ご 美化語; たい='ta-i'",
+          "沿えない部分も → 'so-e-na-i bu-bun mo'; ん một mora",
+          "ございますが → 'go-zai-mas ga'; が nối không nhấn",
+          "心からお詫び申し上げます → 'ko-ko-ro-ka-ra o-wa-bi moo-shi-a-ge-mas'; ら tapped r; 申し上げる kenjougo cao của 言う; もう dài; cả cụm hạ trầm CHẬM — đỉnh điểm xin lỗi"
+        ],
+        "pronunciation_focus_en": [
+          "ご期待に → 'go-ki-tai ni'; beautifier ご; たい='ta-i'",
+          "沿えない部分も → 'so-e-na-i bu-bun mo'; moraic ん",
+          "ございますが → 'go-zai-mas ga'; が unstressed",
+          "心からお詫び申し上げます → 'ko-ko-ro-ka-ra o-wa-bi moo-shi-a-ge-mas'; tapped ら; 申し上げる high kenjougo for 言う; long もう; whole phrase low and SLOW — the apology peak"
+        ]
       },
       {
         "japanese": "お互い、少しずつ歩み寄れればと願っております。",
-        "english": "I hope we can gradually meet each other halfway."
+        "english": "I hope we can gradually meet each other halfway.",
+        "pronunciation_focus": [
+          "お互い → 'o-ta-ga-i'; が 'g' cứng",
+          "少しずつ → 'su-ko-shi-zu-tsu'; す devoiced; ず='zu', つ='tsu' (cặp dễ lẫn — ず kêu, つ không kêu)",
+          "歩み寄れれば → 'a-yu-mi-yo-re-re-ba'; よ/れ tapped r; điều kiện 'nếu nhường nhau được'",
+          "願っております → 'ne-gat-te-o-ri-mas'; がって っ sokuon ngắt một mora; おります kenjougo của いる; ます lướt, giọng mong mỏi ấm"
+        ],
+        "pronunciation_focus_en": [
+          "お互い → 'o-ta-ga-i'; hard が",
+          "少しずつ → 'su-ko-shi-zu-tsu'; devoiced す; ず='zu', つ='tsu' (easy to confuse — ず voiced, つ voiceless)",
+          "歩み寄れれば → 'a-yu-mi-yo-re-re-ba'; tapped よ/れ; conditional 'if we can meet halfway'",
+          "願っております → 'ne-gat-te-o-ri-mas'; sokuon がって holds one mora; おります humble for いる; ます glides, warm hopeful tone"
+        ]
       }
     ],
     "dialogue": [
@@ -9817,23 +11743,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "立場は違いますが、お考えは尊重しております。",
-        "english": "Our positions differ, but I respect your way of thinking."
+        "english": "Our positions differ, but I respect your way of thinking.",
+        "pronunciation_focus": [
+          "立場は違いますが → 'ta-chi-ba wa chi-ga-i-mas ga'; ち='chi' (hai chỗ); は='wa'; が nối không nhấn",
+          "お考えは → 'o-kan-ga-e wa'; お sonkeigo (suy nghĩ của bạn ấy); が 'g' cứng; は='wa'",
+          "尊重しております → 'son-choo-shi-te-o-ri-mas'; ん một mora; ちょう dài 2 mora; おります kenjougo của いる; ます lướt — khẳng định tôn trọng, giọng vững ôn hòa"
+        ],
+        "pronunciation_focus_en": [
+          "立場は違いますが → 'ta-chi-ba wa chi-ga-i-mas ga'; ち='chi' (twice); は='wa'; が unstressed",
+          "お考えは → 'o-kan-ga-e wa'; お sonkeigo (their thinking); hard が; は='wa'",
+          "尊重しております → 'son-choo-shi-te-o-ri-mas'; moraic ん; long ちょう (2 mora); おります humble for いる; ます glides — affirming respect, steady calm tone"
+        ]
       },
       {
         "japanese": "私の見方は少し異なるのですが、お話を伺ってもよろしいでしょうか。",
-        "english": "My view differs a little — may I hear yours first?"
+        "english": "My view differs a little — may I hear yours first?",
+        "pronunciation_focus": [
+          "私の見方は → 'wa-ta-shi no mi-ka-ta wa'; は='wa'",
+          "少し異なるのですが → 'su-ko-shi ko-to-na-ru no des ga'; す devoiced; る tapped r; のですが làm câu mềm, báo sẽ nói tiếp; が nối không nhấn",
+          "お話を伺っても → 'o-ha-na-shi o u-ka-gat-te mo'; を='o'; 伺う kenjougo của 聞く; がって っ sokuon ngắt một mora",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; ろ tapped r; しい dài 2 mora; か đi lên RẤT nhẹ — xin phép nghe trước, lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "私の見方は → 'wa-ta-shi no mi-ka-ta wa'; は='wa'",
+          "少し異なるのですが → 'su-ko-shi ko-to-na-ru no des ga'; devoiced す; tapped る; のですが softens it, signals more to come; が unstressed",
+          "お話を伺っても → 'o-ha-na-shi o u-ka-gat-te mo'; を='o'; 伺う humble for 聞く; sokuon がって holds one mora",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; tapped ろ; long しい (2 mora); very slight rise on か — politely asking to hear first"
+        ]
       },
       {
         "japanese": "気を悪くされたら申し訳ないのですが、別の視点もございまして。",
-        "english": "Forgive me if this gives offense — there's another perspective."
+        "english": "Forgive me if this gives offense — there's another perspective.",
+        "pronunciation_focus": [
+          "気を悪くされたら → 'ki o wa-ru-ku sa-re-ta-ra'; を='o'; る/れ/ら tapped r; く devoiced; bị động kính 'nếu (anh) phật ý'",
+          "申し訳ないのですが → 'moo-shi-wa-ke na-i no des ga'; もう dài 2 mora; のですが làm câu mềm; が nối không nhấn",
+          "別の視点も → 'be-tsu no shi-ten mo'; べつ つ='tsu'; ん một mora",
+          "ございまして → 'go-zai-ma-shi-te'; bỏ lửng cuối câu một cách lễ độ — đọc nhỏ dần, không dứt mạnh"
+        ],
+        "pronunciation_focus_en": [
+          "気を悪くされたら → 'ki o wa-ru-ku sa-re-ta-ra'; を='o'; tapped る/れ/ら; devoiced く; honorific passive 'if you take offense'",
+          "申し訳ないのですが → 'moo-shi-wa-ke na-i no des ga'; long もう (2 mora); のですが softens it; が unstressed",
+          "別の視点も → 'be-tsu no shi-ten mo'; つ in べつ='tsu'; moraic ん",
+          "ございまして → 'go-zai-ma-shi-te'; a polite trailing-off — fade it out, no hard stop"
+        ]
       },
       {
         "japanese": "ご意見は理解できますが、私としては賛同いたしかねます。",
-        "english": "I understand your opinion, but I cannot agree with it personally."
+        "english": "I understand your opinion, but I cannot agree with it personally.",
+        "pronunciation_focus": [
+          "ご意見は → 'go-i-ken wa'; ご 美化語; ん một mora; は='wa'",
+          "理解できますが → 'ri-kai de-ki-mas ga'; り tapped r; かい='ka-i'; が nối không nhấn",
+          "私としては → 'wa-ta-shi to-shi-te wa'; としては = 'về phần tôi'; は='wa'",
+          "賛同いたしかねます → 'san-doo i-ta-shi-ka-ne-mas'; ん một mora; どう dài 2 mora; 'いたしかねます' = từ chối CỰC lễ độ (KHÔNG できません thẳng); ます lướt, giọng hạ chắc"
+        ],
+        "pronunciation_focus_en": [
+          "ご意見は → 'go-i-ken wa'; beautifier ご; moraic ん; は='wa'",
+          "理解できますが → 'ri-kai de-ki-mas ga'; tapped り; かい='ka-i'; が unstressed",
+          "私としては → 'wa-ta-shi to-shi-te wa'; としては = 'for my part'; は='wa'",
+          "賛同いたしかねます → 'san-doo i-ta-shi-ka-ne-mas'; moraic ん; long どう (2 mora); 'いたしかねます' = an EXTREMELY polite refusal (NOT a blunt できません); ます glides, low firm tone"
+        ]
       },
       {
         "japanese": "この話題で関係が壊れるのは、私の本意ではございません。",
-        "english": "It's not my intention for our relationship to break over this topic."
+        "english": "It's not my intention for our relationship to break over this topic.",
+        "pronunciation_focus": [
+          "この話題で → 'ko-no wa-dai de'; だい='da-i' 2 mora",
+          "関係が壊れるのは → 'kan-kei ga ko-wa-re-ru no wa'; ん một mora; けい dài 'ke-e'; が 'g' cứng; れ/る tapped r; は='wa'",
+          "私の本意では → 'wa-ta-shi no hon-i de wa'; ほんい='ho-n-i' ん một mora; では='de wa'",
+          "ございません → 'go-zai-ma-sen'; ん cuối một mora; phủ định trang trọng, giọng hạ ấm — giữ quan hệ là ưu tiên"
+        ],
+        "pronunciation_focus_en": [
+          "この話題で → 'ko-no wa-dai de'; だい='da-i' (2 mora)",
+          "関係が壊れるのは → 'kan-kei ga ko-wa-re-ru no wa'; moraic ん; long けい ('ke-e'); hard が; tapped れ/る; は='wa'",
+          "私の本意では → 'wa-ta-shi no hon-i de wa'; ほんい moraic ん; では='de wa'",
+          "ございません → 'go-zai-ma-sen'; final ん one mora; formal negation, low warm delivery — keeping the relationship is the priority"
+        ]
       }
     ],
     "dialogue": [
@@ -10091,23 +12075,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "この度は、心よりお悔やみ申し上げます。",
-        "english": "My deepest condolences at this time."
+        "english": "My deepest condolences at this time.",
+        "pronunciation_focus": [
+          "この度は → 'ko-no-ta-bi wa'; は='wa'; cụm mở lời chia buồn trang trọng",
+          "心より → 'ko-ko-ro yo-ri'; り tapped r; 'tự đáy lòng'",
+          "お悔やみ申し上げます → 'o-ku-ya-mi moo-shi-a-ge-mas'; 申し上げる kenjougo cao của 言う; もう dài 2 mora; cụm chia buồn CỐ ĐỊNH — đọc CHẬM, trầm, nặng, ngừng nhẹ trước và sau, KHÔNG đọc nhanh"
+        ],
+        "pronunciation_focus_en": [
+          "この度は → 'ko-no-ta-bi wa'; は='wa'; formal condolence opener",
+          "心より → 'ko-ko-ro yo-ri'; tapped り; 'from the heart'",
+          "お悔やみ申し上げます → 'o-ku-ya-mi moo-shi-a-ge-mas'; 申し上げる high kenjougo for 言う; long もう (2 mora); the FIXED condolence phrase — SLOW, low, heavy, a small pause before and after; never rushed"
+        ]
       },
       {
         "japanese": "なんとお声をかけていいか、言葉が見つかりません。",
-        "english": "I cannot find the right words to say."
+        "english": "I cannot find the right words to say.",
+        "pronunciation_focus": [
+          "なんと → 'nan-to'; ん một mora",
+          "お声をかけて → 'o-ko-e o ka-ke-te'; お 美化語; を='o'; cụm 'biết nói lời nào'",
+          "いいか → 'ii ka'; いい hai mora; か gián tiếp (không phải hỏi trực tiếp)",
+          "言葉が見つかりません → 'ko-to-ba ga mi-tsu-ka-ri-ma-sen'; が 'g' cứng; つ='tsu'; り tapped r; ません giọng hạ — đọc CHẬM, để khoảng lặng, sự lúng túng là thật"
+        ],
+        "pronunciation_focus_en": [
+          "なんと → 'nan-to'; moraic ん",
+          "お声をかけて → 'o-ko-e o ka-ke-te'; beautifier お; を='o'; phrase 'what to say'",
+          "いいか → 'ii ka'; いい two mora; embedded か (not a direct question)",
+          "言葉が見つかりません → 'ko-to-ba ga mi-tsu-ka-ri-ma-sen'; hard が; つ='tsu'; tapped り; ません falling — read SLOWLY with a pause; the at-a-loss feeling is genuine"
+        ]
       },
       {
         "japanese": "無理せず、ご自分の気持ちを大切になさってください。",
-        "english": "Don't push yourself; please honor your own feelings."
+        "english": "Don't push yourself; please honor your own feelings.",
+        "pronunciation_focus": [
+          "無理せず → 'mu-ri se-zu'; り tapped r; ず='zu' (KHÔNG 'su') — thể văn 'đừng gắng'",
+          "ご自分の → 'go-ji-bun no'; ご 美化語; ん một mora",
+          "気持ちを → 'ki-mo-chi o'; ち='chi'; を='o'",
+          "大切になさってください → 'tai-se-tsu ni na-sat-te ku-da-sai'; たい='ta-i'; せつ つ='tsu'; なさる sonkeigo của する (hành động của bạn ấy); さって っ sokuon; さい='sa-i' — giọng dịu, ấm, chậm"
+        ],
+        "pronunciation_focus_en": [
+          "無理せず → 'mu-ri se-zu'; tapped り; ず='zu' (NOT 'su') — literary 'without forcing'",
+          "ご自分の → 'go-ji-bun no'; beautifier ご; moraic ん",
+          "気持ちを → 'ki-mo-chi o'; ち='chi'; を='o'",
+          "大切になさってください → 'tai-se-tsu ni na-sat-te ku-da-sai'; たい='ta-i'; つ in せつ='tsu'; なさる sonkeigo for する (their action); sokuon さって; さい='sa-i' — gentle, warm, slow"
+        ]
       },
       {
         "japanese": "私で良ければ、いつでもそばにおります。",
-        "english": "If I'm of any help, I'm here for you anytime."
+        "english": "If I'm of any help, I'm here for you anytime.",
+        "pronunciation_focus": [
+          "私で良ければ → 'wa-ta-shi de yo-ke-re-ba'; れ tapped r; cụm khiêm 'nếu tôi giúp được'",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "そばに → 'so-ba ni'; hai mora ngắn rõ",
+          "おります → 'o-ri-mas'; おる kenjougo của いる; り tapped r; ます lướt 'mas' — lời hứa ở bên, giọng ấm chắc, chậm"
+        ],
+        "pronunciation_focus_en": [
+          "私で良ければ → 'wa-ta-shi de yo-ke-re-ba'; tapped れ; humble 'if I can be of help'",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "そばに → 'so-ba ni'; two short clear mora",
+          "おります → 'o-ri-mas'; おる humble for いる; tapped り; ます glides to 'mas' — a promise to stay near, warm firm slow"
+        ]
       },
       {
         "japanese": "今は何もしなくて大丈夫です。ただ、ここにおります。",
-        "english": "Right now you don't have to do anything. I'm just here."
+        "english": "Right now you don't have to do anything. I'm just here.",
+        "pronunciation_focus": [
+          "今は → 'i-ma wa'; は='wa'",
+          "何もしなくて → 'na-ni-mo shi-na-ku-te'; く devoiced",
+          "大丈夫です → 'dai-joo-bu des'; だい='da-i'; じょう dài 2 mora; です lướt 'des' — giọng dịu trấn an",
+          "ただ、ここにおります → 'ta-da, ko-ko ni o-ri-mas'; ngắt sau ただ; おる kenjougo của いる; り tapped r — câu ngắn, đọc CHẬM, để im lặng làm việc của nó"
+        ],
+        "pronunciation_focus_en": [
+          "今は → 'i-ma wa'; は='wa'",
+          "何もしなくて → 'na-ni-mo shi-na-ku-te'; devoiced く",
+          "大丈夫です → 'dai-joo-bu des'; だい='da-i'; long じょう (2 mora); です→'des' — gentle reassuring tone",
+          "ただ、ここにおります → 'ta-da, ko-ko ni o-ri-mas'; pause after ただ; おる humble for いる; tapped り — short, read SLOWLY, let the silence do its work"
+        ]
       }
     ],
     "dialogue": [
@@ -10370,23 +12412,79 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今回の件、本当に申し訳ございませんでした。",
-        "english": "About this matter — I am truly sorry."
+        "english": "About this matter — I am truly sorry.",
+        "pronunciation_focus": [
+          "今回の件 → 'kon-kai no ken'; かい='ka-i'; ん rõ từng mora",
+          "本当に → 'hon-too-ni'; とう dài 2 mora; nhấn thành thật, không kịch",
+          "申し訳ございませんでした → 'moo-shi-wa-ke go-zai-ma-sen-de-shi-ta'; もう dài 2 mora; cụm xin lỗi kenjougo cao + thì quá khứ; cả cụm hạ trầm CHẬM — đỉnh điểm xin lỗi, đọc nhanh là mất chân thành"
+        ],
+        "pronunciation_focus_en": [
+          "今回の件 → 'kon-kai no ken'; かい='ka-i'; keep ん distinct",
+          "本当に → 'hon-too-ni'; long とう (2 mora); sincere stress, not theatrical",
+          "申し訳ございませんでした → 'moo-shi-wa-ke go-zai-ma-sen-de-shi-ta'; long もう (2 mora); high-kenjougo apology + past tense; whole phrase low and SLOW — the apology peak; rushing kills sincerity"
+        ]
       },
       {
         "japanese": "言い訳はいたしません。すべて私の責任です。",
-        "english": "I won't make excuses. The responsibility is entirely mine."
+        "english": "I won't make excuses. The responsibility is entirely mine.",
+        "pronunciation_focus": [
+          "言い訳は → 'i-i-wa-ke wa'; いい hai mora; は='wa'",
+          "いたしません → 'i-ta-shi-ma-sen'; いたす kenjougo của する; phủ định dứt khoát, giọng hạ chắc",
+          "すべて → 'su-be-te'; す đầu hơi devoiced",
+          "私の責任です → 'wa-ta-shi no se-ki-nin des'; ん một mora; です lướt 'des' — nhận trách nhiệm, đọc CHẬM rõ, không lảng tránh"
+        ],
+        "pronunciation_focus_en": [
+          "言い訳は → 'i-i-wa-ke wa'; いい two mora; は='wa'",
+          "いたしません → 'i-ta-shi-ma-sen'; いたす humble for する; decisive negation, low firm tone",
+          "すべて → 'su-be-te'; initial す slightly devoiced",
+          "私の責任です → 'wa-ta-shi no se-ki-nin des'; moraic ん; です→'des' — owning it, read SLOWLY and clearly, no dodging"
+        ]
       },
       {
         "japanese": "どうお詫びしてよいか、言葉が見つかりません。",
-        "english": "I don't know how to apologize — I can't find the words."
+        "english": "I don't know how to apologize — I can't find the words.",
+        "pronunciation_focus": [
+          "どう → 'doo'; nguyên âm dài 2 mora",
+          "お詫びして → 'o-wa-bi shi-te'; お 美化語; cụm khiêm 'biết xin lỗi thế nào'",
+          "よいか → 'yo-i ka'; か gián tiếp, không phải hỏi trực tiếp",
+          "言葉が見つかりません → 'ko-to-ba ga mi-tsu-ka-ri-ma-sen'; が 'g' cứng; つ='tsu'; り tapped r; ません giọng hạ CHẬM — sự bất lực diễn đạt là thật, để khoảng lặng"
+        ],
+        "pronunciation_focus_en": [
+          "どう → 'doo'; long vowel (2 mora)",
+          "お詫びして → 'o-wa-bi shi-te'; beautifier お; humble 'how to apologize'",
+          "よいか → 'yo-i ka'; embedded か, not a direct question",
+          "言葉が見つかりません → 'ko-to-ba ga mi-tsu-ka-ri-ma-sen'; hard が; つ='tsu'; tapped り; ません low and SLOW — the inability to express is genuine; leave a pause"
+        ]
       },
       {
         "japanese": "二度とこのようなことを繰り返さぬよう、深く反省しております。",
-        "english": "I am deeply reflecting so this never happens again."
+        "english": "I am deeply reflecting so this never happens again.",
+        "pronunciation_focus": [
+          "二度と → 'ni-do to'; cụm 'không bao giờ ~ lần nữa'",
+          "このようなことを → 'ko-no-yoo-na ko-to o'; よう dài 2 mora; を='o'",
+          "繰り返さぬよう → 'ku-ri-ka-e-sa-nu yoo'; く devoiced; り tapped r; ぬ thể văn của ない; よう dài (mục đích)",
+          "深く反省しております → 'fu-ka-ku han-sei-shi-te-o-ri-mas'; ふ môi nhẹ; く devoiced; せい dài 'se-e'; おります kenjougo của いる; ます lướt — giọng trầm, chậm, hối lỗi"
+        ],
+        "pronunciation_focus_en": [
+          "二度と → 'ni-do to'; 'never ~ again'",
+          "このようなことを → 'ko-no-yoo-na ko-to o'; long よう (2 mora); を='o'",
+          "繰り返さぬよう → 'ku-ri-ka-e-sa-nu yoo'; devoiced く; tapped り; ぬ literary ない; long よう (purposive)",
+          "深く反省しております → 'fu-ka-ku han-sei-shi-te-o-ri-mas'; soft ふ; devoiced く; long せい ('se-e'); おります humble for いる; ます glides — low, slow, contrite"
+        ]
       },
       {
         "japanese": "信頼を取り戻せるよう、誠意を持って向き合ってまいります。",
-        "english": "I'll face this with sincerity so that I can earn back your trust."
+        "english": "I'll face this with sincerity so that I can earn back your trust.",
+        "pronunciation_focus": [
+          "信頼を取り戻せるよう → 'shin-rai o to-ri-mo-do-se-ru yoo'; ん một mora; らい='ra-i' ら tapped r; を='o'; り/る tapped r; よう dài (mục đích)",
+          "誠意を持って → 'sei-i o mot-te'; せい dài 'se-e'; を='o'; もって っ sokuon ngắt một mora",
+          "向き合ってまいります → 'mu-ki-at-te ma-i-ri-mas'; あって っ sokuon; まいる kenjougo của 行く/来る; ます lướt — cam kết, giọng chắc trầm, chậm"
+        ],
+        "pronunciation_focus_en": [
+          "信頼を取り戻せるよう → 'shin-rai o to-ri-mo-do-se-ru yoo'; moraic ん; らい='ra-i' tapped ら; を='o'; tapped り/る; long よう (purposive)",
+          "誠意を持って → 'sei-i o mot-te'; long せい ('se-e'); を='o'; sokuon もって holds one mora",
+          "向き合ってまいります → 'mu-ki-at-te ma-i-ri-mas'; sokuon あって; まいる humble for 行く/来る; ます glides — a commitment, firm low slow tone"
+        ]
       }
     ],
     "dialogue": [
@@ -10649,23 +12747,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今日まで、本当にありがとうございました。",
-        "english": "Until today — truly thank you."
+        "english": "Until today — truly thank you.",
+        "pronunciation_focus": [
+          "今日まで → 'kyoo ma-de'; きょう nguyên âm dài 2 mora (KHÔNG 'kyo' một mora)",
+          "本当に → 'hon-too-ni'; とう dài 2 mora; nhấn xúc động nhẹ",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; とう dài; ました quá khứ; した cuối 'shta' — lời cảm ơn chia tay, đọc CHẬM, ấm, hơi nghẹn"
+        ],
+        "pronunciation_focus_en": [
+          "今日まで → 'kyoo ma-de'; long きょう (2 mora, NOT one-mora 'kyo')",
+          "本当に → 'hon-too-ni'; long とう (2 mora); light emotive stress",
+          "ありがとうございました → 'a-ri-ga-too go-zai-ma-shi-ta'; long とう; past ました; final した 'shta' — a farewell thanks, SLOW, warm, slightly choked"
+        ]
       },
       {
         "japanese": "離れていても、心の中ではいつもつながっております。",
-        "english": "Even apart, in our hearts we'll always be connected."
+        "english": "Even apart, in our hearts we'll always be connected.",
+        "pronunciation_focus": [
+          "離れていても → 'ha-na-re-te i-te mo'; れ tapped r",
+          "心の中では → 'ko-ko-ro no na-ka de wa'; ろ tapped r; では='de wa'",
+          "いつも → 'i-tsu-mo'; つ='tsu'",
+          "つながっております → 'tsu-na-gat-te-o-ri-mas'; つ='tsu' đầu; がって っ sokuon ngắt một mora; おります kenjougo của いる; ます lướt — giọng ấm, chậm, trìu mến"
+        ],
+        "pronunciation_focus_en": [
+          "離れていても → 'ha-na-re-te i-te mo'; tapped れ",
+          "心の中では → 'ko-ko-ro no na-ka de wa'; tapped ろ; では='de wa'",
+          "いつも → 'i-tsu-mo'; つ='tsu'",
+          "つながっております → 'tsu-na-gat-te-o-ri-mas'; つ='tsu' at start; sokuon がって holds one mora; おります humble for いる; ます glides — warm, slow, tender"
+        ]
       },
       {
         "japanese": "一緒に過ごした日々は、私の宝物でございます。",
-        "english": "The days we spent together are my treasure."
+        "english": "The days we spent together are my treasure.",
+        "pronunciation_focus": [
+          "一緒に過ごした → 'is-sho ni su-go-shi-ta'; いっ sokuon ngắt một mora trước しょ",
+          "日々は → 'hi-bi wa'; HAI mora 'hi-bi' (lặp rendaku); は='wa'",
+          "私の宝物 → 'wa-ta-shi no ta-ka-ra-mo-no'; ら tapped r",
+          "でございます → 'de go-zai-mas'; dạng です trang trọng; kết câu ấm, CHẬM, trân trọng"
+        ],
+        "pronunciation_focus_en": [
+          "一緒に過ごした → 'is-sho ni su-go-shi-ta'; sokuon いっ holds one mora before しょ",
+          "日々は → 'hi-bi wa'; two mora 'hi-bi' (rendaku reduplication); は='wa'",
+          "私の宝物 → 'wa-ta-shi no ta-ka-ra-mo-no'; tapped ら",
+          "でございます → 'de go-zai-mas'; formal copula; warm SLOW reverent close"
+        ]
       },
       {
         "japanese": "新しい門出に、心からエールを送らせていただきます。",
-        "english": "I send my heartfelt cheer for your new departure."
+        "english": "I send my heartfelt cheer for your new departure.",
+        "pronunciation_focus": [
+          "新しい門出に → 'a-ta-ra-shii ka-do-de ni'; ら tapped r; しい dài 2 mora; 門出 = 'kadode' (khởi hành mới)",
+          "心から → 'ko-ko-ro-ka-ra'; ら tapped r; 'tự đáy lòng'",
+          "エールを → 'ee-ru o'; エー dài 2 mora; る tapped r; を='o'",
+          "送らせていただきます → 'o-ku-ra-se-te-i-ta-da-ki-mas'; く devoiced; ら tapped r; chuỗi kenjougo (させていただく); ます lướt — giọng ấm khích lệ"
+        ],
+        "pronunciation_focus_en": [
+          "新しい門出に → 'a-ta-ra-shii ka-do-de ni'; tapped ら; long しい (2 mora); 門出 = 'kadode' (a new departure)",
+          "心から → 'ko-ko-ro-ka-ra'; tapped ら; 'from the heart'",
+          "エールを → 'ee-ru o'; long エー (2 mora); tapped る; を='o'",
+          "送らせていただきます → 'o-ku-ra-se-te-i-ta-da-ki-mas'; devoiced く; tapped ら; kenjougo chain (させていただく); ます glides — warm encouraging tone"
+        ]
       },
       {
         "japanese": "またいつか、どこかでお会いできる日を楽しみにしております。",
-        "english": "I look forward to the day we meet again, somewhere, sometime."
+        "english": "I look forward to the day we meet again, somewhere, sometime.",
+        "pronunciation_focus": [
+          "またいつか → 'ma-ta i-tsu-ka'; つ='tsu'",
+          "どこかで → 'do-ko-ka de'; bốn mora đều",
+          "お会いできる日を → 'o-a-i de-ki-ru hi o'; お 美化語; る tapped r; を='o'",
+          "楽しみにしております → 'ta-no-shi-mi ni shi-te-o-ri-mas'; おります kenjougo của いる; ます lướt — giọng đi LÊN nhẹ ở cuối thể hiện mong đợi ấm áp"
+        ],
+        "pronunciation_focus_en": [
+          "またいつか → 'ma-ta i-tsu-ka'; つ='tsu'",
+          "どこかで → 'do-ko-ka de'; four even mora",
+          "お会いできる日を → 'o-a-i de-ki-ru hi o'; beautifier お; tapped る; を='o'",
+          "楽しみにしております → 'ta-no-shi-mi ni shi-te-o-ri-mas'; おります humble for いる; ます glides — a slight warm rise at the end conveying hopeful anticipation"
+        ]
       }
     ],
     "dialogue": [
@@ -10928,23 +13084,77 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "最近、お疲れのご様子ですが、大丈夫でいらっしゃいますか。",
-        "english": "You seem tired lately — are you all right?"
+        "english": "You seem tired lately — are you all right?",
+        "pronunciation_focus": [
+          "最近 → 'sai-kin'; さい='sa-i'; ん một mora",
+          "お疲れのご様子ですが → 'o-tsu-ka-re no go-yoo-su des ga'; つ='tsu'; よう dài 2 mora; が nối không nhấn — quan sát nhẹ nhàng",
+          "大丈夫で → 'dai-joo-bu de'; だい='da-i'; じょう dài 2 mora",
+          "いらっしゃいますか → 'i-ras-sha-i-mas ka'; いらっしゃる sonkeigo của いる (hỏi về bạn ấy); らっ sokuon ngắt một mora; か đi lên RẤT nhẹ — quan tâm dịu dàng, không tra hỏi"
+        ],
+        "pronunciation_focus_en": [
+          "最近 → 'sai-kin'; さい='sa-i'; moraic ん",
+          "お疲れのご様子ですが → 'o-tsu-ka-re no go-yoo-su des ga'; つ='tsu'; long よう (2 mora); が unstressed — a gentle observation",
+          "大丈夫で → 'dai-joo-bu de'; だい='da-i'; long じょう (2 mora)",
+          "いらっしゃいますか → 'i-ras-sha-i-mas ka'; いらっしゃる sonkeigo for いる (asking about them); sokuon らっ holds one mora; very slight rise on か — tender concern, not interrogation"
+        ]
       },
       {
         "japanese": "話したくなければ、無理に話さなくて大丈夫です。",
-        "english": "If you don't feel like talking, you don't have to force it."
+        "english": "If you don't feel like talking, you don't have to force it.",
+        "pronunciation_focus": [
+          "話したくなければ → 'ha-na-shi-ta-ku na-ke-re-ba'; く devoiced; れ tapped r; điều kiện 'nếu không muốn nói'",
+          "無理に → 'mu-ri ni'; り tapped r",
+          "話さなくて → 'ha-na-sa-na-ku-te'; く devoiced",
+          "大丈夫です → 'dai-joo-bu des'; だい='da-i'; じょう dài 2 mora; です lướt 'des' — giọng dịu, không ép, đăng ký thân mật-ấm"
+        ],
+        "pronunciation_focus_en": [
+          "話したくなければ → 'ha-na-shi-ta-ku na-ke-re-ba'; devoiced く; tapped れ; conditional 'if you don't want to talk'",
+          "無理に → 'mu-ri ni'; tapped り",
+          "話さなくて → 'ha-na-sa-na-ku-te'; devoiced く",
+          "大丈夫です → 'dai-joo-bu des'; だい='da-i'; long じょう (2 mora); です→'des' — gentle, no pressure, warm-casual register"
+        ]
       },
       {
         "japanese": "私で良ければ、いつでも話を聞きます。",
-        "english": "If I'm useful, I'll listen anytime."
+        "english": "If I'm useful, I'll listen anytime.",
+        "pronunciation_focus": [
+          "私で良ければ → 'wa-ta-shi de yo-ke-re-ba'; れ tapped r; cụm khiêm 'nếu tôi giúp được'",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "話を聞きます → 'ha-na-shi o ki-ki-mas'; を='o'; ます lướt 'mas' — lời hứa lắng nghe, giọng ấm vững, không trang trọng cứng"
+        ],
+        "pronunciation_focus_en": [
+          "私で良ければ → 'wa-ta-shi de yo-ke-re-ba'; tapped れ; humble 'if I can be of help'",
+          "いつでも → 'i-tsu-de-mo'; つ='tsu'",
+          "話を聞きます → 'ha-na-shi o ki-ki-mas'; を='o'; ます glides to 'mas' — a promise to listen, warm steady, not stiffly formal"
+        ]
       },
       {
         "japanese": "一人で抱え込まないでくださいね。",
-        "english": "Please don't carry it alone."
+        "english": "Please don't carry it alone.",
+        "pronunciation_focus": [
+          "一人で → 'hi-to-ri de'; り tapped r",
+          "抱え込まないで → 'ka-ka-e-ko-ma-na-i-de'; ない phủ định; cụm 'đừng ôm một mình'",
+          "くださいね → 'ku-da-sai ne'; さい='sa-i'; ね cuối làm lời khuyên DỊU đi — giọng đi xuống nhẹ, ấm, không ra lệnh"
+        ],
+        "pronunciation_focus_en": [
+          "一人で → 'hi-to-ri de'; tapped り",
+          "抱え込まないで → 'ka-ka-e-ko-ma-na-i-de'; negative ない; phrase 'don't bottle it up alone'",
+          "くださいね → 'ku-da-sai ne'; さい='sa-i'; final ね SOFTENS the advice — soft warm fall, not a command"
+        ]
       },
       {
         "japanese": "ゆっくり、無理せず、ご自分のペースで。",
-        "english": "Slowly, without pushing, at your own pace."
+        "english": "Slowly, without pushing, at your own pace.",
+        "pronunciation_focus": [
+          "ゆっくり → 'yuk-ku-ri'; ゆっ sokuon ngắt một mora trước く ('yuk·ku-ri'); り tapped r",
+          "無理せず → 'mu-ri se-zu'; り tapped r; ず='zu' (KHÔNG 'su')",
+          "ご自分のペースで → 'go-ji-bun no pee-su de'; ご 美化語; ん một mora; ペー dài 2 mora — câu cụt ý, đọc CHẬM từng cụm, để mỗi cụm là một lời trấn an"
+        ],
+        "pronunciation_focus_en": [
+          "ゆっくり → 'yuk-ku-ri'; sokuon ゆっ holds one mora before く ('yuk-ku-ri'); tapped り",
+          "無理せず → 'mu-ri se-zu'; tapped り; ず='zu' (NOT 'su')",
+          "ご自分のペースで → 'go-ji-bun no pee-su de'; beautifier ご; moraic ん; long ペー (2 mora) — a clipped phrase, read SLOWLY by chunk, each chunk a small reassurance"
+        ]
       }
     ],
     "dialogue": [
@@ -11207,23 +13417,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "少しお金のことでお話があるのですが、お時間よろしいでしょうか。",
-        "english": "I have something to discuss about money — do you have time?"
+        "english": "I have something to discuss about money — do you have time?",
+        "pronunciation_focus": [
+          "少しお金のことで → 'su-ko-shi o-ka-ne no ko-to de'; す devoiced; お 美化語",
+          "お話があるのですが → 'o-ha-na-shi ga a-ru no des ga'; が 'g' cứng; る tapped r; のですが làm câu mềm, báo chủ đề khó; が nối không nhấn",
+          "お時間 → 'o-ji-kan'; ん một mora; お 美化語",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; ろ tapped r; しい dài 2 mora; か đi lên RẤT nhẹ — xin phép nói chuyện tiền tế nhị, lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "少しお金のことで → 'su-ko-shi o-ka-ne no ko-to de'; devoiced す; beautifier お",
+          "お話があるのですが → 'o-ha-na-shi ga a-ru no des ga'; hard が; tapped る; のですが softens it, flags a hard topic; が unstressed",
+          "お時間 → 'o-ji-kan'; moraic ん; beautifier お",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; tapped ろ; long しい (2 mora); very slight rise on か — delicately asking leave to discuss money"
+        ]
       },
       {
         "japanese": "先月立て替えた分のことなのですが、ご記憶でいらっしゃいますか。",
-        "english": "About what I paid on your behalf last month — do you recall?"
+        "english": "About what I paid on your behalf last month — do you recall?",
+        "pronunciation_focus": [
+          "先月 → 'sen-ge-tsu'; ん một mora; げつ つ='tsu'; が 'g' cứng (げ)",
+          "立て替えた分の → 'ta-te-ka-e-ta bun no'; ん một mora",
+          "ことなのですが → 'ko-to na no des ga'; のですが làm câu mềm; が nối không nhấn",
+          "ご記憶でいらっしゃいますか → 'go-ki-o-ku de i-ras-sha-i-mas ka'; く devoiced; いらっしゃる sonkeigo của いる (về bạn ấy — KHÔNG おる); らっ sokuon; か đi lên RẤT nhẹ — hỏi nhẹ, không truy"
+        ],
+        "pronunciation_focus_en": [
+          "先月 → 'sen-ge-tsu'; moraic ん; つ in げつ='tsu'; hard が (げ)",
+          "立て替えた分の → 'ta-te-ka-e-ta bun no'; moraic ん",
+          "ことなのですが → 'ko-to na no des ga'; のですが softens it; が unstressed",
+          "ご記憶でいらっしゃいますか → 'go-ki-o-ku de i-ras-sha-i-mas ka'; devoiced く; いらっしゃる sonkeigo for いる (about them — NOT おる); sokuon らっ; very slight rise on か — a gentle ask, not pressing"
+        ]
       },
       {
         "japanese": "急ぎませんので、ご都合のよい時にお返しいただければ幸いです。",
-        "english": "There's no rush; if you could repay at your convenience, I'd appreciate it."
+        "english": "There's no rush; if you could repay at your convenience, I'd appreciate it.",
+        "pronunciation_focus": [
+          "急ぎませんので → 'i-so-gi-ma-sen no-de'; ぎ 'g' cứng; ので giải thích lý do (giảm áp lực)",
+          "ご都合のよい時に → 'go-tsu-goo no yo-i to-ki ni'; つ='tsu'; ごう dài 2 mora",
+          "お返しいただければ → 'o-ka-e-shi i-ta-da-ke-re-ba'; れ tapped r; いただく kenjougo của もらう; điều kiện mềm",
+          "幸いです → 'sai-wai des'; さい/わい='sa-i/wa-i'; です lướt 'des' — yêu cầu CỰC mềm, giọng nhẹ, không thúc"
+        ],
+        "pronunciation_focus_en": [
+          "急ぎませんので → 'i-so-gi-ma-sen no-de'; hard ぎ; ので gives a reason (lowers pressure)",
+          "ご都合のよい時に → 'go-tsu-goo no yo-i to-ki ni'; つ='tsu'; long ごう (2 mora)",
+          "お返しいただければ → 'o-ka-e-shi i-ta-da-ke-re-ba'; tapped れ; いただく humble for もらう; soft conditional",
+          "幸いです → 'sai-wai des'; さい/わい='sa-i/wa-i'; です→'des' — an EXTREMELY soft request, light, no nudging"
+        ]
       },
       {
         "japanese": "こちらこそ、こんな話を切り出して、申し訳ございません。",
-        "english": "I'm the one who's sorry to bring up such a topic."
+        "english": "I'm the one who's sorry to bring up such a topic.",
+        "pronunciation_focus": [
+          "こちらこそ → 'ko-chi-ra-ko-so'; ち='chi'; ら tapped r; cụm 'chính tôi mới ~'",
+          "こんな話を切り出して → 'kon-na ha-na-shi o ki-ri-da-shi-te'; ん một mora; を='o'; り tapped r",
+          "申し訳ございません → 'moo-shi-wa-ke go-zai-ma-sen'; もう dài 2 mora; cụm xin lỗi kenjougo cao; giọng hạ trầm CHẬM — xin lỗi vì nêu chuyện tiền"
+        ],
+        "pronunciation_focus_en": [
+          "こちらこそ → 'ko-chi-ra-ko-so'; ち='chi'; tapped ら; phrase 'it's I who ~'",
+          "こんな話を切り出して → 'kon-na ha-na-shi o ki-ri-da-shi-te'; moraic ん; を='o'; tapped り",
+          "申し訳ございません → 'moo-shi-wa-ke go-zai-ma-sen'; long もう (2 mora); high-kenjougo apology; low slow — sorry for raising money"
+        ]
       },
       {
         "japanese": "金銭で関係に響くのは、私の本意ではございません。",
-        "english": "It's not my intention for our relationship to be affected by money."
+        "english": "It's not my intention for our relationship to be affected by money.",
+        "pronunciation_focus": [
+          "金銭で → 'kin-sen de'; ん hai chỗ mỗi cái một mora",
+          "関係に響くのは → 'kan-kei ni hi-bi-ku no wa'; ん một mora; けい dài 'ke-e'; く devoiced; は='wa'",
+          "私の本意では → 'wa-ta-shi no hon-i de wa'; ほんい ん một mora; では='de wa'",
+          "ございません → 'go-zai-ma-sen'; ん cuối một mora; phủ định trang trọng, giọng hạ ấm — quan hệ quan trọng hơn tiền"
+        ],
+        "pronunciation_focus_en": [
+          "金銭で → 'kin-sen de'; two ん each one mora",
+          "関係に響くのは → 'kan-kei ni hi-bi-ku no wa'; moraic ん; long けい ('ke-e'); devoiced く; は='wa'",
+          "私の本意では → 'wa-ta-shi no hon-i de wa'; ほんい moraic ん; では='de wa'",
+          "ございません → 'go-zai-ma-sen'; final ん one mora; formal negation, low warm delivery — the relationship matters more than money"
+        ]
       }
     ],
     "dialogue": [
@@ -11481,23 +13749,81 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "ベトナムでは、家庭で先祖を祀る習慣がございまして。",
-        "english": "In Vietnam we have the custom of honoring ancestors at home."
+        "english": "In Vietnam we have the custom of honoring ancestors at home.",
+        "pronunciation_focus": [
+          "ベトナムでは → 'be-to-na-mu de wa'; bốn mora đều; では='de wa'",
+          "家庭で → 'ka-tei de'; てい dài 'te-e'",
+          "先祖を祀る → 'sen-zo o ma-tsu-ru'; ぞ='z'; を='o'; つ='tsu'; る tapped r; 祀る 'thờ cúng'",
+          "習慣がございまして → 'shuu-kan ga go-zai-ma-shi-te'; しゅう dài 2 mora; が 'g' cứng; ございまして bỏ lửng lễ độ — đọc nhỏ dần, mời người nghe hỏi tiếp"
+        ],
+        "pronunciation_focus_en": [
+          "ベトナムでは → 'be-to-na-mu de wa'; four even mora; では='de wa'",
+          "家庭で → 'ka-tei de'; long てい ('te-e')",
+          "先祖を祀る → 'sen-zo o ma-tsu-ru'; ぞ='z'; を='o'; つ='tsu'; tapped る; 祀る 'to enshrine/honor'",
+          "習慣がございまして → 'shuu-kan ga go-zai-ma-shi-te'; long しゅう (2 mora); hard が; ございまして a polite trailing-off — fade out, inviting them to ask more"
+        ]
       },
       {
         "japanese": "日本の初詣は、お寺と神社、両方に伺うのですか。",
-        "english": "For Japanese hatsumode, do people visit both temples and shrines?"
+        "english": "For Japanese hatsumode, do people visit both temples and shrines?",
+        "pronunciation_focus": [
+          "日本の初詣は → 'ni-hon no ha-tsu-moo-de wa'; つ='tsu'; もう dài 2 mora; は='wa'",
+          "お寺と神社 → 'o-te-ra to jin-ja'; ら tapped r; じゃ='ja'; ん một mora",
+          "両方に → 'ryoo-hoo ni'; りょう dài, ほう dài (HAI nguyên âm dài liền); り tapped r",
+          "伺うのですか → 'u-ka-ga-u no des ka'; 伺う ở đây khiêm cho việc mình hỏi; か đi lên nhẹ — hỏi tò mò lịch sự về văn hóa họ"
+        ],
+        "pronunciation_focus_en": [
+          "日本の初詣は → 'ni-hon no ha-tsu-moo-de wa'; つ='tsu'; long もう (2 mora); は='wa'",
+          "お寺と神社 → 'o-te-ra to jin-ja'; tapped ら; じゃ='ja'; moraic ん",
+          "両方に → 'ryoo-hoo ni'; long りょう + long ほう (two long vowels adjacent); tapped り",
+          "伺うのですか → 'u-ka-ga-u no des ka'; 伺う here humble for your own asking; gentle rise on か — a curious polite question about their culture"
+        ]
       },
       {
         "japanese": "信仰は人それぞれですので、お互いの考えを尊重したく存じます。",
-        "english": "Faith varies person to person; I'd like us to respect each other's thinking."
+        "english": "Faith varies person to person; I'd like us to respect each other's thinking.",
+        "pronunciation_focus": [
+          "信仰は → 'shin-koo wa'; ん một mora; こう dài 2 mora; は='wa'",
+          "人それぞれですので → 'hi-to so-re-zo-re des no-de'; れ tapped r; ぞ='z'; ので giải thích lý do",
+          "お互いの考えを → 'o-ta-ga-i no kan-ga-e o'; が 'g' cứng (hai chỗ); を='o'",
+          "尊重したく存じます → 'son-choo-shi-ta-ku zon-ji-mas'; ちょう dài 2 mora; 存じる kenjougo của 思う; ぞ='z' — bày tỏ tôn trọng, giọng đều ôn hòa"
+        ],
+        "pronunciation_focus_en": [
+          "信仰は → 'shin-koo wa'; moraic ん; long こう (2 mora); は='wa'",
+          "人それぞれですので → 'hi-to so-re-zo-re des no-de'; tapped れ; ぞ='z'; ので gives a reason",
+          "お互いの考えを → 'o-ta-ga-i no kan-ga-e o'; hard が (twice); を='o'",
+          "尊重したく存じます → 'son-choo-shi-ta-ku zon-ji-mas'; long ちょう (2 mora); 存じる humble for 思う; ぞ='z' — expressing respect, even calm tone"
+        ]
       },
       {
         "japanese": "宗派について、深くは存じませんが、興味を持っております。",
-        "english": "I don't know the sects deeply, but I'm interested."
+        "english": "I don't know the sects deeply, but I'm interested.",
+        "pronunciation_focus": [
+          "宗派について → 'shuu-ha ni-tsu-i-te'; しゅう dài 2 mora; つ='tsu'",
+          "深くは → 'fu-ka-ku wa'; ふ môi nhẹ; く devoiced; は='wa'",
+          "存じませんが → 'zon-ji-ma-sen ga'; ぞ='z'; 存じる kenjougo của 知る (khiêm 'không rõ'); が nối không nhấn",
+          "興味を持っております → 'kyoo-mi o mot-te-o-ri-mas'; きょう dài 2 mora; を='o'; もって っ sokuon; おります kenjougo của いる; ます lướt"
+        ],
+        "pronunciation_focus_en": [
+          "宗派について → 'shuu-ha ni-tsu-i-te'; long しゅう (2 mora); つ='tsu'",
+          "深くは → 'fu-ka-ku wa'; soft ふ; devoiced く; は='wa'",
+          "存じませんが → 'zon-ji-ma-sen ga'; ぞ='z'; 存じる humble for 知る (humble 'don't know'); が unstressed",
+          "興味を持っております → 'kyoo-mi o mot-te-o-ri-mas'; long きょう (2 mora); を='o'; sokuon もって; おります humble for いる; ます glides"
+        ]
       },
       {
         "japanese": "お墓参りに、ご一緒させていただいてもよろしいでしょうか。",
-        "english": "May I accompany you to visit the grave?"
+        "english": "May I accompany you to visit the grave?",
+        "pronunciation_focus": [
+          "お墓参りに → 'o-ha-ka-ma-i-ri ni'; お 美化語; り tapped r; 墓参り 'đi viếng mộ'",
+          "ご一緒させていただいても → 'go-is-sho sa-se-te-i-ta-da-i-te mo'; いっ sokuon ngắt một mora trước しょ; chuỗi kenjougo (させていただく)",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; ろ tapped r; しい dài 2 mora; か đi lên RẤT nhẹ — xin phép đi cùng, rất khiêm nhường lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "お墓参りに → 'o-ha-ka-ma-i-ri ni'; beautifier お; tapped り; 墓参り 'visiting a grave'",
+          "ご一緒させていただいても → 'go-is-sho sa-se-te-i-ta-da-i-te mo'; sokuon いっ holds one mora before しょ; kenjougo chain (させていただく)",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; tapped ろ; long しい (2 mora); very slight rise on か — humbly asking leave to come along"
+        ]
       }
     ],
     "dialogue": [
@@ -11755,23 +14081,77 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "話してくださって、ありがとうございます。",
-        "english": "Thank you for telling me."
+        "english": "Thank you for telling me.",
+        "pronunciation_focus": [
+          "話してくださって → 'ha-na-shi-te ku-da-sat-te'; くださる sonkeigo (việc bạn ấy đã kể cho mình); さって っ sokuon ngắt một mora",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; とう dài 2 mora; ございます lướt — câu ngắn, đọc CHẬM, ấm, chân thành"
+        ],
+        "pronunciation_focus_en": [
+          "話してくださって → 'ha-na-shi-te ku-da-sat-te'; くださる sonkeigo (their telling you); sokuon さって holds one mora",
+          "ありがとうございます → 'a-ri-ga-too go-zai-mas'; long とう (2 mora); ございます glides — short, SLOW, warm, sincere"
+        ]
       },
       {
         "japanese": "詳しくお聞きしてもよろしいですか、ご無理であれば、もちろん結構です。",
-        "english": "May I ask more, if it's OK — if it's hard, of course not."
+        "english": "May I ask more, if it's OK — if it's hard, of course not.",
+        "pronunciation_focus": [
+          "詳しく → 'ku-wa-shi-ku'; く cuối devoiced",
+          "お聞きしてもよろしいですか → 'o-ki-ki-shi-te mo yo-ro-shii des ka'; お聞きする kenjougo (việc mình hỏi); ろ tapped r; しい dài 2 mora; か đi lên RẤT nhẹ",
+          "ご無理であれば → 'go-mu-ri de a-re-ba'; ご 美化語; り/れ tapped r; điều kiện 'nếu khó cho anh'",
+          "もちろん結構です → 'mo-chi-ron kek-koo des'; ち='chi'; ろ tapped r; けっ sokuon + こう dài; です lướt 'des' — đọc nhẹ, mở đường rút lui cho người kia"
+        ],
+        "pronunciation_focus_en": [
+          "詳しく → 'ku-wa-shi-ku'; final く devoiced",
+          "お聞きしてもよろしいですか → 'o-ki-ki-shi-te mo yo-ro-shii des ka'; お聞きする kenjougo (your asking); tapped ろ; long しい (2 mora); very slight rise on か",
+          "ご無理であれば → 'go-mu-ri de a-re-ba'; beautifier ご; tapped り/れ; conditional 'if it's hard for you'",
+          "もちろん結構です → 'mo-chi-ron kek-koo des'; ち='chi'; tapped ろ; sokuon けっ + long こう; です→'des' — light delivery, leaving them an exit"
+        ]
       },
       {
         "japanese": "お気持ち、想像することしかできませんが、お聞きしております。",
-        "english": "I can only imagine your feelings, but I'm listening."
+        "english": "I can only imagine your feelings, but I'm listening.",
+        "pronunciation_focus": [
+          "お気持ち → 'o-ki-mo-chi'; お 美化語; ち='chi'",
+          "想像することしか → 'soo-zoo su-ru ko-to shi-ka'; そう/ぞう đều dài 2 mora; ぞ='z'; る tapped r; しか đi với phủ định",
+          "できませんが → 'de-ki-ma-sen ga'; が nối không nhấn",
+          "お聞きしております → 'o-ki-ki-shi-te-o-ri-mas'; お聞きする kenjougo; おります kenjougo của いる; ます lướt — 'tôi đang lắng nghe', giọng dịu, CHẬM"
+        ],
+        "pronunciation_focus_en": [
+          "お気持ち → 'o-ki-mo-chi'; beautifier お; ち='chi'",
+          "想像することしか → 'soo-zoo su-ru ko-to shi-ka'; long そう + long ぞう (2 mora each); ぞ='z'; tapped る; しか pairs with a negative",
+          "できませんが → 'de-ki-ma-sen ga'; が unstressed",
+          "お聞きしております → 'o-ki-ki-shi-te-o-ri-mas'; お聞きする kenjougo; おります humble for いる; ます glides — 'I am listening', gentle, SLOW"
+        ]
       },
       {
         "japanese": "あなたが今ここにいてくださること、それ自体が貴重に感じます。",
-        "english": "Just your being here now — that itself feels precious."
+        "english": "Just your being here now — that itself feels precious.",
+        "pronunciation_focus": [
+          "あなたが → 'a-na-ta ga'; が 'g' cứng",
+          "今ここにいてくださること → 'i-ma ko-ko ni i-te ku-da-sa-ru ko-to'; くださる sonkeigo (việc bạn ấy ở đây vì mình); る tapped r",
+          "それ自体が → 'so-re ji-tai ga'; れ tapped r; たい='ta-i'; が 'g' cứng",
+          "貴重に感じます → 'ki-choo ni kan-ji-mas'; ちょう dài 2 mora; ます lướt 'mas' — câu cảm, đọc CHẬM, ấm, để lắng"
+        ],
+        "pronunciation_focus_en": [
+          "あなたが → 'a-na-ta ga'; hard が",
+          "今ここにいてくださること → 'i-ma ko-ko ni i-te ku-da-sa-ru ko-to'; くださる sonkeigo (their being here for you); tapped る",
+          "それ自体が → 'so-re ji-tai ga'; tapped れ; たい='ta-i'; hard が",
+          "貴重に感じます → 'ki-choo ni kan-ji-mas'; long ちょう (2 mora); ます glides to 'mas' — a felt statement, SLOW, warm, let it settle"
+        ]
       },
       {
         "japanese": "今日伺ったお話は、私の中だけにとどめておきます。",
-        "english": "What I heard today, I'll keep within me."
+        "english": "What I heard today, I'll keep within me.",
+        "pronunciation_focus": [
+          "今日伺ったお話は → 'kyoo u-ka-gat-ta o-ha-na-shi wa'; きょう dài 2 mora; 伺う kenjougo của 聞く; がった っ sokuon; は='wa'",
+          "私の中だけに → 'wa-ta-shi no na-ka da-ke ni'; bốn cụm rõ",
+          "とどめておきます → 'to-do-me-te o-ki-mas'; ておく thể 'giữ lại'; ます lướt 'mas' — lời hứa giữ kín, giọng chắc trầm, CHẬM, tin cậy"
+        ],
+        "pronunciation_focus_en": [
+          "今日伺ったお話は → 'kyoo u-ka-gat-ta o-ha-na-shi wa'; long きょう (2 mora); 伺う humble for 聞く; sokuon がった; は='wa'",
+          "私の中だけに → 'wa-ta-shi no na-ka da-ke ni'; four clear chunks",
+          "とどめておきます → 'to-do-me-te o-ki-mas'; ておく 'keep/leave it'; ます glides to 'mas' — a promise of confidentiality, firm low SLOW, trustworthy"
+        ]
       }
     ],
     "dialogue": [
@@ -12034,23 +14414,79 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今、少し余裕がございませんで、申し訳ございません。",
-        "english": "I don't quite have the capacity right now — I apologize."
+        "english": "I don't quite have the capacity right now — I apologize.",
+        "pronunciation_focus": [
+          "今 → 'i-ma'; hai mora ngắn rõ",
+          "少し余裕がございませんで → 'su-ko-shi yo-yuu ga go-zai-ma-sen-de'; す devoiced; ゆう dài 2 mora; が 'g' cứng; ませんで thể văn bỏ lửng lễ độ",
+          "申し訳ございません → 'moo-shi-wa-ke go-zai-ma-sen'; もう dài 2 mora; cụm xin lỗi kenjougo cao; giọng hạ trầm — đặt giới hạn nhưng vẫn mềm mỏng"
+        ],
+        "pronunciation_focus_en": [
+          "今 → 'i-ma'; two short clear mora",
+          "少し余裕がございませんで → 'su-ko-shi yo-yuu ga go-zai-ma-sen-de'; devoiced す; long ゆう (2 mora); hard が; ませんで a polite literary trailing-off",
+          "申し訳ございません → 'moo-shi-wa-ke go-zai-ma-sen'; long もう (2 mora); high-kenjougo apology; low — setting a boundary but still gentle"
+        ]
       },
       {
         "japanese": "そのお話は、私の中で少し抱えるのが難しいかと存じます。",
-        "english": "That topic is a little hard for me to hold in."
+        "english": "That topic is a little hard for me to hold in.",
+        "pronunciation_focus": [
+          "そのお話は → 'so-no o-ha-na-shi wa'; お 美化語; は='wa'",
+          "私の中で → 'wa-ta-shi no na-ka de'; rõ từng cụm",
+          "少し抱えるのが → 'su-ko-shi ka-ka-e-ru no ga'; す devoiced; る tapped r; が 'g' cứng",
+          "難しいかと存じます → 'mu-zu-ka-shii ka to zon-ji-mas'; づ→ず 'zu'; しい dài 2 mora; 存じる kenjougo của 思う; ぞ='z'; 'かと存じます' làm lời từ chối MỀM lễ độ"
+        ],
+        "pronunciation_focus_en": [
+          "そのお話は → 'so-no o-ha-na-shi wa'; beautifier お; は='wa'",
+          "私の中で → 'wa-ta-shi no na-ka de'; clear chunks",
+          "少し抱えるのが → 'su-ko-shi ka-ka-e-ru no ga'; devoiced す; tapped る; hard が",
+          "難しいかと存じます → 'mu-zu-ka-shii ka to zon-ji-mas'; づ='zu'; long しい (2 mora); 存じる humble for 思う; ぞ='z'; 'かと存じます' SOFTENS the refusal politely"
+        ]
       },
       {
         "japanese": "プライベートに関わる質問は、申し訳ないのですが、お答えしかねます。",
-        "english": "Regarding private matters, I'm sorry but I can't answer."
+        "english": "Regarding private matters, I'm sorry but I can't answer.",
+        "pronunciation_focus": [
+          "プライベートに関わる → 'pu-ra-i-bee-to ni ka-ka-wa-ru'; ラ tapped r; ベー dài 2 mora; る tapped r",
+          "質問は → 'shitsu-mon wa'; しつ つ='tsu' (し devoiced); ん một mora; は='wa'",
+          "申し訳ないのですが → 'moo-shi-wa-ke na-i no des ga'; もう dài 2 mora; のですが làm câu mềm; が nối không nhấn",
+          "お答えしかねます → 'o-ko-ta-e shi-ka-ne-mas'; お答えする kenjougo; 'しかねます' = từ chối CỰC lễ độ (KHÔNG できません thẳng); ます lướt, giọng hạ chắc nhưng mềm"
+        ],
+        "pronunciation_focus_en": [
+          "プライベートに関わる → 'pu-ra-i-bee-to ni ka-ka-wa-ru'; tapped ラ; long ベー (2 mora); tapped る",
+          "質問は → 'shitsu-mon wa'; つ in しつ='tsu' (devoiced し); moraic ん; は='wa'",
+          "申し訳ないのですが → 'moo-shi-wa-ke na-i no des ga'; long もう (2 mora); のですが softens it; が unstressed",
+          "お答えしかねます → 'o-ko-ta-e shi-ka-ne-mas'; お答えする kenjougo; 'しかねます' = an EXTREMELY polite refusal (NOT a blunt できません); ます glides, low firm but soft"
+        ]
       },
       {
         "japanese": "頻度を少し落とさせていただいてもよろしいでしょうか。",
-        "english": "May I reduce the frequency a little?"
+        "english": "May I reduce the frequency a little?",
+        "pronunciation_focus": [
+          "頻度を → 'hin-do o'; ん một mora; を='o'",
+          "少し落とさせて → 'su-ko-shi o-to-sa-se-te'; す devoiced; させて gây khiến khiêm",
+          "いただいても → 'i-ta-da-i-te mo'; いただく kenjougo của もらう",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; ろ tapped r; しい dài 2 mora; か đi lên RẤT nhẹ — xin giảm tần suất gặp, rất lễ độ nhún nhường"
+        ],
+        "pronunciation_focus_en": [
+          "頻度を → 'hin-do o'; moraic ん; を='o'",
+          "少し落とさせて → 'su-ko-shi o-to-sa-se-te'; devoiced す; させて humble causative",
+          "いただいても → 'i-ta-da-i-te mo'; いただく humble for もらう",
+          "よろしいでしょうか → 'yo-ro-shii de-shoo-ka'; tapped ろ; long しい (2 mora); very slight rise on か — humbly asking to reduce contact frequency"
+        ]
       },
       {
         "japanese": "関係を大切にするためにも、距離感を見直したく存じます。",
-        "english": "Precisely because I value the relationship, I'd like to reconsider the closeness."
+        "english": "Precisely because I value the relationship, I'd like to reconsider the closeness.",
+        "pronunciation_focus": [
+          "関係を大切にするためにも → 'kan-kei o tai-se-tsu ni su-ru ta-me ni mo'; ん một mora; けい dài 'ke-e'; を='o'; たい='ta-i'; せつ つ='tsu'; る tapped r",
+          "距離感を → 'kyo-ri-kan o'; り tapped r; ん một mora; を='o'",
+          "見直したく存じます → 'mi-na-o-shi-ta-ku zon-ji-mas'; 存じる kenjougo của 思う; ぞ='z'; kết hạ trang trọng — đóng lời đặt ranh giới một cách trân trọng quan hệ"
+        ],
+        "pronunciation_focus_en": [
+          "関係を大切にするためにも → 'kan-kei o tai-se-tsu ni su-ru ta-me ni mo'; moraic ん; long けい ('ke-e'); を='o'; たい='ta-i'; つ in せつ='tsu'; tapped る",
+          "距離感を → 'kyo-ri-kan o'; tapped り; moraic ん; を='o'",
+          "見直したく存じます → 'mi-na-o-shi-ta-ku zon-ji-mas'; 存じる humble for 思う; ぞ='z'; formal falling close — ending the boundary-setting while honoring the relationship"
+        ]
       }
     ],
     "dialogue": [
