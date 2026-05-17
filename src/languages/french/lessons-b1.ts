@@ -2552,7 +2552,7 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "B",
         "text": "Je travaillerais moins, j'ouvrirais un café.",
-        "en": "I'd work less, open a café.",
+        "en": "I'd work less, open a cafe.",
         "vi": "Mình sẽ làm ít lại, mở một quán cà phê."
       }
     ],
