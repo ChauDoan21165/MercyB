@@ -40,10 +40,7 @@
         "strength",
         "fitness"
       ],
-      "audio": {
-        "en": "wlf_vip3_3_en.mp3",
-        "vi": "wlf_vip3_3_vi.mp3"
-      },
+      "audio": "wlf_vip3_3_en.mp3",
       "essay_ref": "wlf_vip3_3_essay.txt"
     }
   ],

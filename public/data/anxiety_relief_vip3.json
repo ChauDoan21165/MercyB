@@ -39,9 +39,7 @@
         "breathing",
         "anxiety"
       ],
-      "audio": {
-        "en": "anx_vip3_1_en.mp3"
-      },
+      "audio": "anx_vip3_1_en.mp3",
       "essay_ref": "anx_vip3_1_essay.txt"
     }
   ],

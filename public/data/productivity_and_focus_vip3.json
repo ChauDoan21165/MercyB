@@ -39,9 +39,7 @@
         "task",
         "productivity"
       ],
-      "audio": {
-        "en": "paf_vip3_1_en.mp3"
-      }
+      "audio": "paf_vip3_1_en.mp3"
     }
   ],
   "keywords": {

@@ -31,9 +31,7 @@
         "nutrition",
         "meal-planning"
       ],
-      "audio": {
-        "en": "starting_balanced_meal_planning_free.mp3"
-      },
+      "audio": "starting_balanced_meal_planning_free.mp3",
       "keywords_en": [
         "balanced meal",
         "meal planning",
