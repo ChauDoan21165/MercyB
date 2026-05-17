@@ -11,7 +11,11 @@
 
 ## 1. The Mission
 
-**Make MercyBlade the app that Vietnamese English learners publicly credit for their fluency, their IELTS score, their job abroad, their life change.**
+**Make MercyBlade the language-learning app that learners publicly credit for their fluency, their exam score, their job abroad, their life change — across every learning pair it serves.**
+
+MercyBlade is a **matrix product**: a learner picks a native language and a target language, and gets a course tailored to *that pair*, not a generic course translated into their language.
+
+The **Vietnamese → English** pair is the home market and the loudest success metric. When the doc talks about "outcomes," the proof case is still a Vietnamese student who credits MercyBlade for an IELTS score or a job abroad — that is where ~95% of effort goes and where the identity moat lives. But the mission is the matrix: every pair that has content is real product, held to the same standard.
 
 Not most users. Not most revenue. **Most outcomes.** Everything else follows from that.
 
@@ -25,84 +29,69 @@ MercyBlade isn't a startup hobby. It's survival.
 
 The Vietnamese state strategy against dissidents abroad is patient: wait for runway to end, family pressure to mount, depression to set in. Chau's counter-strategy is simple: don't fail. Don't burn out. Don't slow down. Build something that compounds. Every day MercyBlade gets stronger, the patient strategy weakens.
 
-This context matters because it shapes every decision: pace, priorities, what gets cut, what gets shipped. Read more in PRINCIPLES.md.
+This context matters because it shapes every decision: pace, priorities, what gets cut, what gets shipped. It is also why the **Vietnamese → English** pair is the home market and the identity moat — not because the other pairs aren't real product, but because this is the audience Chau can reach and serve like no competitor can. Read more in PRINCIPLES.md.
 
 ---
 
 ## 3. The Positioning
 
-> For Vietnamese learners preparing for IELTS, TOEIC, VSTEP, or real English fluency, MercyBlade is the only app designed specifically for them — with pronunciation coaching for Vietnamese-speaker pain points, grammar targeting Vietnamese transfer errors, and content rooted in Vietnamese cultural context. Unlike Duolingo (generic, translated to Vietnamese) or Cambly (expensive human tutors), MercyBlade combines AI-powered personalized teaching with deep Vietnamese-market specificity at a price Vietnamese learners can afford.
+One platform, audience-specific positioning per pair:
+
+> **For Vietnamese learners** preparing for IELTS, TOEIC, VSTEP, or real English fluency, MercyBlade is the only app designed specifically for them — pronunciation coaching for Vietnamese-speaker pain points, grammar targeting Vietnamese transfer errors, content rooted in Vietnamese cultural context, built by a Vietnamese founder for the Vietnamese diaspora. Unlike Duolingo (generic, translated to Vietnamese) or Cambly (expensive human tutors), MercyBlade combines AI-powered personalized teaching with deep Vietnamese-market specificity at a price Vietnamese learners can afford.
+
+> **For English speakers learning Vietnamese, Japanese, Korean, Chinese, French, German, or Spanish**, MercyBlade is a real, structured A1–C2 course for that pair — deep "rooms"/lesson content, a consistent AI teacher (Mercy), and the same outcomes-first design — not a gamified streak treadmill.
+
+The platform is common. The positioning is per-pair. The depth and marketing investment are not equal across pairs today (see §4) — but every pair with content is positioned honestly as real product, never as a hidden or deprecated surface.
 
 ---
 
-## 4. Two-Audience Strategy
+## 4. The Learning-Pair Matrix
 
-### Primary audience (base — 95% of effort)
+MercyBlade is **not** a single-audience app with a deferred expansion. It is a matrix:
 
-**Vietnamese learners of English.**
+- **Native languages supported:** Vietnamese, English
+- **Target languages supported:** English, Japanese, Korean, Chinese, French, German, Spanish, Vietnamese
+- **Up to 16 learning pairs.** A user picks their native language and their target language via a Duolingo-style onboarding flow (onboarding implementation is a separate future dispatch — see §7).
 
-- 5-6M Vietnamese diaspora globally + ~100M domestic Vietnamese learners
-- Primary user: IELTS/TOEIC/VSTEP aspirant, 18-35, mobile-first
-- Student preparing to study abroad, OR young professional needing English for job promotion, OR immigrant preparing for visa language requirement
-- Has tried Duolingo (quit), tried YouTube (scattered), considered Cambly (too expensive)
-- Pays $100-500/year for test prep already
-- Has MoMo/ZaloPay set up
+Every pair that has content is real product. None is hidden, deprecated, or "off-mission." Built content stays user-discoverable (`LanguageSwitcher`, the `/languages` index, per-language pages). Burying shipped work users could benefit from has no upside and was a mistake the v3.0 reset corrected (see §15).
 
-This is where MercyBlade wins. Vietnamese-first content, cultural framing, pronunciation for Vietnamese pain points, Vietnamese teacher warmth (Mercy character). Identity moat: exiled journalist building for diaspora. Cultural moat: 510+ bilingual rooms tuned for Vietnamese learners.
+### Effort allocation (this is the real prioritization, not an audience hierarchy)
 
-### Secondary audience (expansion — start when base is stable)
+- **Vietnamese-native side — ~95% of effort today.** Home market, deepest content, identity moat, the audience Chau can reach (220K-follower diaspora distribution). New authoring, marketing, and pronunciation/grammar specialization concentrate here. The Vietnamese → English pair is the flagship.
+- **English-native side — the remaining ~5%.** Content already built across the target-language tracks (Korean, Japanese, Chinese, French, German, Spanish, and Vietnamese-for-foreigners — see §6 for verified counts). Maintained and kept discoverable, but **not the focus of new authoring** today. This is an effort decision, not a product-scope decision: these pairs are in scope; they are simply not where the next lesson gets written first.
 
-**English-speaking learners of Vietnamese.**
-
-- Expats in Vietnam (~100K+)
-- Partners of Vietnamese speakers (international relationships)
-- Heritage learners (2nd-generation Vietnamese in Canada, US, Australia, France)
-- Business travelers, retirees moving to Vietnam
-- Underserved market — no dominant Vietnamese learning app for English speakers
-
-Expansion happens when:
-- Vietnamese base hits stable revenue (~$5K MRR or 1,000+ paying users)
-- Core app stability is proven
-- Schema generalization is complete (foundation for multi-audience)
-- Chau has bandwidth to author English-native content without slowing Vietnamese-side improvements
-
-Expansion does NOT happen if:
-- It would slow Vietnamese-side ship velocity
-- It would dilute Vietnamese-first positioning
-- It would force pricing changes that hurt Vietnamese affordability
-
-### Built language tracks (secondary content surfaces — kept discoverable)
-
-KO, JA, ZH, FR, DE, ES tracks already exist in the codebase, authored over prior phases. They are **not** the mission and get **none** of the 95% effort — but they are **not hidden either**. Built content stays user-discoverable (`LanguageSwitcher`, the `/languages` index) for the minority of users who want it. Burying shipped work that users could benefit from has no upside. Effort allocation is unchanged: Vietnamese English learners remain the primary audience and get effectively all new investment; these tracks are maintained passively, surfaced honestly, and not marketed. They are secondary content surfaces, **not** a deferred-and-hidden roadmap item.
+"Vietnamese-first" means: when effort is allocated, Vietnamese-native learners win the tie. It does **not** mean other pairs are second-class product or candidates for un-surfacing.
 
 ### Explicitly NOT serving
 
-- Complete beginners who need A1 basics in many languages (different app category — that's Duolingo)
-- Generic global learners (dilutes Vietnamese focus)
-- Any audience that requires content competing head-on with Duolingo on Duolingo's axis (gamification, generic translation)
+- Complete beginners who want a gamified, bite-sized A1 tour of many languages at once (different app category — that's Duolingo). MercyBlade serves a learner committed to *one* pair with real depth.
+- Generic global learners with no chosen pair (the matrix requires a native + target choice; an undifferentiated "learn languages" audience dilutes every pair).
+- Any audience that requires competing head-on with Duolingo on Duolingo's axis (gamification, streak mechanics, generic translation).
+
+> Note: native English speakers learning Korean/Japanese/Chinese/French/German/Spanish/Vietnamese are **served**, not excluded. The earlier "Explicitly NOT serving" bullet that listed them was the mistranslation v3.0 reverses.
 
 ---
 
 ## 5. The Product Strategy
 
-### What makes MercyBlade win
+### What makes MercyBlade win (applies to whichever pair the user picks)
 
-1. **Test-prep specialization** — IELTS, TOEIC, VSTEP tracks, not "general English"
-2. **Pronunciation scoring** — phoneme-level, targets Vietnamese pain points (th, r, l, final consonants, stress, intonation)
-3. **Grammar for Vietnamese transfer errors** — articles (a/an/the), verb tenses, plurals, question inversion
-4. **Mercy the teacher character** — consistent, warm, memorable, bilingual
-5. **Real content, not bite-sized** — "rooms" with deep material, not 30-second lessons
-6. **Cultural fit** — examples use Vietnamese contexts (phở, Honda Wave, Tết, TCH), not Western defaults
-7. **Identity moat** — exiled journalist + Vietnamese diaspora trust. Cannot be copied.
+1. **Real depth, not bite-sized** — "rooms"/lessons with substantial material across A1–C2, not 30-second streak fillers. True for every pair.
+2. **A consistent AI teacher (Mercy)** — warm, memorable, bilingual to the user's native language. The teacher persona is the through-line across all pairs.
+3. **Pair-specific pronunciation & transfer-error work** — for Vietnamese → English: phoneme-level scoring on Vietnamese pain points (th, r, l, final consonants, stress, intonation) and grammar targeting Vietnamese transfer errors (articles, tenses, plurals, question inversion). The *same class of work* is done pair-by-pair as each track is built (e.g. Spanish ser/estar early, German loanword traps) — pain points are pair-specific, the discipline is universal.
+4. **Test-prep specialization where the pair has a dominant exam** — IELTS/TOEIC/VSTEP for Vietnamese → English. Other pairs get exam tracks if and when a dominant target exam justifies it.
+5. **Cultural fit** — examples use the learner's world, not Western defaults. For Vietnamese → English: phở, Honda Wave, Tết, TCH. Each pair gets context fit appropriate to its audience as it is authored.
+6. **Identity moat (Vietnamese side)** — exiled journalist + Vietnamese diaspora trust. Specific to the Vietnamese audience; see §11.
 
 ### What MercyBlade does NOT do
 
 - ❌ Compete with Duolingo on gamification (lose that game)
 - ❌ Compete with Cambly on live tutors (different price point)
-- ❌ Try to serve all global learners (dilutes Vietnamese focus)
+- ❌ Serve an undifferentiated "all global learners" audience with no chosen pair (dilutes every pair)
 - ❌ Ship features that boost vanity metrics but not outcomes
 - ❌ Add "AI chat" without a specific learning job to do
-- ❌ Copy Western app aesthetics if Vietnamese aesthetics serve users better
+- ❌ Hide or un-surface shipped, working content for any pair
+- ❌ Copy Western app aesthetics if the learner's own context serves them better
 
 ---
 
@@ -112,12 +101,26 @@ KO, JA, ZH, FR, DE, ES tracks already exist in the codebase, authored over prior
 
 ### As of May 17, 2026 (end-of-day re-audit)
 
+- **Verified content inventory** (canonical `*_TOTAL_LESSONS` constants in `src/languages/*/lessons.ts`, plus `public/data/` room files — verified for this v3.0 rewrite per locked #7/#15):
+
+  | Track | Lessons | Pair orientation |
+  |---|---|---|
+  | Vietnamese → English (rooms) | 470+ bilingual room JSON files | Home market / flagship |
+  | Vietnamese-for-foreigners | 536 (`VIETNAMESE_TOTAL_LESSONS`) | English-native → Vietnamese |
+  | Korean | 151 (`KOREAN_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
+  | Japanese | 151 (`JAPANESE_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
+  | French | 151 (`FRENCH_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
+  | German | 151 (`GERMAN_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
+  | Chinese | 149 (`CHINESE_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
+  | Spanish | 109 (`SPANISH_TOTAL_LESSONS`) | English-native → Spanish |
+
+  The six target-language tracks KO/JA/ZH/FR/DE/ES total **862 A1–C2 lessons**, primarily authored with bilingual titles for Vietnamese-native users and re-usable for other native users. These are **real product surfaces**, not "off-mission" content.
+
 - **Roadmap progress:** ~65-70% (`.claude/roadmap.md` figure, last recomputed 25 Apr / Round 9). Today closed no new 5% step; it advanced Step 10's schema foundation (now landed) — not yet re-scored.
-- **Schema generalization:** ✅ Phase 2 seam fully landed today — PR-A1 (#540), PR-A2 (#543), PR-A3 (#550), all behavior-identical. Native-language selection + pedagogy-axis split are in place. This is the foundation for the two-audience expansion (Roadmap Step 10).
-- **CI/CD:** Green and stable. Restored via #536 (Sentry plugin nesting fix); ~17 PRs merged green after it (#537–#553) confirm the pipeline holds.
-- **Doctrine & docs:** CLAUDE.md doctrine fixed (#537). Root markdown consolidated 74→16 with ROOM_GUIDE.md + SECURITY.md added (#549). Canonical STRATEGY.md + PRINCIPLES.md landed (#546). AUDIT_LATENCY §1/§2/§4/§5 marked RESOLVED with measured evidence (#552).
-- **Content correctness:** Lesson-count truth-ups across ZH/ES/KO; JA & ZH C2 id-collision renumbers (#541, #542); raw-chengyu and French/German loanword EN-field cleanups (#545, #547, #530). VI-first sibling content authored for JA A2 16–30 and B1 31–45 (#548, #551).
-- **Strategy (§4):** #553's un-surfacing of the 6 built language tracks (KO/JA/ZH/FR/DE/ES) was **reverted** — built content stays user-discoverable (see §4 "Built language tracks" + v2.2 changelog). VN-for-foreigners (secondary audience) remains a future expansion per §4, unchanged.
+- **Schema generalization:** ✅ Phase 2 seam fully landed today — PR-A1 (#540), PR-A2 (#543), PR-A3 (#550), all behavior-identical. Native-language selection + pedagogy-axis split are in place. This is the foundation for the Duolingo-style pair-selection onboarding (Roadmap Step 10).
+- **CI/CD:** Green and stable. Restored via #536 (Sentry plugin nesting fix); ~17 PRs merged green after it confirm the pipeline holds.
+- **Doctrine & docs:** CLAUDE.md doctrine fixed (#537). Root markdown consolidated 74→16 (#549). Canonical STRATEGY.md + PRINCIPLES.md landed (#546).
+- **Strategy (§4):** The #553 un-surfacing of the 6 built language tracks (KO/JA/ZH/FR/DE/ES) was **reverted in code by PR #582 (merged May 17)**. This v3.0 doc rewrite fixes the upstream cause — the doc framing that produced the mistranslation in the first place. See §15.
 - **App stores:** Apple Build 8 uploaded April 25, status unverified. Google Play Build 4 Live in Closed Testing as of April 25, status unverified. Verification deferred until next active mobile push.
 - **Paying users:** Last documented at 6 on April 24. Current unverified.
 
@@ -136,9 +139,11 @@ KO, JA, ZH, FR, DE, ES tracks already exist in the codebase, authored over prior
 | 7 | 65 | AI Teacher Mercy v2 | ~70% (conversation, memory, writing, interviews) | 2 |
 | 8 | 70 | Scale & Performance | ~80% (SW, Sentry, bundle audit) | 1.5 |
 | 9 | 75 | Monetization Depth | Pending | 1 |
-| 10 | 80 | Audience Expansion (EN-native learners of Vietnamese) | Schema foundation in flight | 2-4 |
+| 10 | 80 | Pair-selection onboarding + deepen lighter pairs | Schema foundation landed; Duolingo-style native+target picker is a separate future dispatch | 2-4 |
 | 11 | 85 | Differentiation Moats | Pending | 3-4 |
 | 12-14 | 90-100 | Growth / #1 in VN / Market Leader | Business operations, not code | Years |
+
+**Step 10 reframed (v3.0):** This is *not* "en→vi as a sequel to vi→en." The matrix is already the product (§4). Step 10 is two concrete pieces of work: (a) ship the Duolingo-style onboarding so a user explicitly picks native + target, and (b) deepen the English-native pairs whose content is lighter today — once the Vietnamese side is stable enough to free the bandwidth. It is a *deepening + UX* step, not a scope-expansion step.
 
 **To 75%:** 4-5 months continuous shipping.
 **To 85% (code ceiling):** ~6-9 months.
@@ -148,7 +153,7 @@ KO, JA, ZH, FR, DE, ES tracks already exist in the codebase, authored over prior
 
 ## 8. The Business Model
 
-### Pricing (Vietnamese market)
+### Pricing (Vietnamese-native users — Vietnamese market)
 
 - **Free:** 50+ rooms, no ads, builds habit
 - **Basic: 99,000 VND/month (~$4)** — all rooms, offline, no ads
@@ -156,11 +161,11 @@ KO, JA, ZH, FR, DE, ES tracks already exist in the codebase, authored over prior
 - **Annual: 1,490,000 VND (~$60)** — 40% discount vs monthly
 - **Lifetime: 2,990,000 VND (~$120)** — captures "no subscriptions" crowd
 
-### Pricing (English-speaking expansion, future)
+### Pricing (English-native users)
 
-- TBD when expansion phase begins
-- Likely USD-priced at higher tier ($9.99-14.99/month) since target audience has higher purchasing power
-- Vietnamese pricing for Vietnamese users persists regardless of expansion
+- Likely USD-priced at a higher tier ($9.99-14.99/month) since this audience has higher purchasing power
+- Vietnamese pricing for Vietnamese-native users persists regardless — the Vietnamese affordability floor is non-negotiable and independent of any other pair's pricing
+- Exact English-native tiers: TODO: Chau decide (not yet finalized — do not invent specifics)
 
 ### Payment
 
@@ -177,24 +182,26 @@ Must support: MoMo, ZaloPay, VNPay, bank transfer, credit card, Apple Pay, Googl
 
 ## 9. Distribution Strategy
 
-### Primary channels (Vietnamese audience — dominate these)
+### Primary channels (Vietnamese-native side — ~95% of distribution effort, dominate these)
 
 1. **TikTok** — short clips, pronunciation tips, "Vietnamese people say ___ wrong"
 2. **Facebook groups** — IELTS study groups, English teacher groups (be helpful, not spammy)
-3. **Chau's existing audience** — 220K Facebook followers in Vietnam (primary asset)
+3. **Chau's existing audience** — 220K Facebook followers in Vietnam (primary asset, Vietnamese-side moat)
 
-### Secondary channels
+### Secondary channels (Vietnamese-native side)
 
 4. **YouTube** — long-form SEO, "IELTS Speaking 7.0 guide for Vietnamese"
 5. **Zalo** — community, announcements, support
 6. **Partnerships** — Vietnamese IELTS prep centers (IDP, British Council, local schools)
 7. **Journalist network** — diaspora outlets (Nguoi Viet, SBTN, VietBF)
 
-### Future channels (English-speaking expansion)
+### English-native side (lighter, ongoing — not gated behind a "phase")
 
-8. **Reddit** — r/learnvietnamese, r/Vietnam expat communities
-9. **TikTok English-side** — content for Vietnamese-curious English speakers
+8. **Reddit** — r/learnvietnamese, r/Vietnam expat communities, target-language learning subs
+9. **TikTok English-side** — content for English speakers learning VI/JA/KO/etc.
 10. **Expat blogs** — guest posts on expat-in-Vietnam communities
+
+These channels are active surfaces for the English-native pairs, run at the ~5% effort level — not a future phase that is currently switched off.
 
 ### Skip (low ROI)
 
@@ -215,7 +222,7 @@ Must support: MoMo, ZaloPay, VNPay, bank transfer, credit card, Apple Pay, Googl
 
 ### The single most important number
 
-**Monthly Active Paying Users** (MAU with an active subscription)
+**Monthly Active Paying Users** (MAU with an active subscription) — Vietnamese → English is the loudest sub-metric.
 
 ### Year 1 targets
 
@@ -239,15 +246,20 @@ Must support: MoMo, ZaloPay, VNPay, bank transfer, credit card, Apple Pay, Googl
 
 ## 11. Competitive Moat
 
-### Things competitors can't copy quickly
+### Vietnamese-side moat (audience-specific — cannot be copied)
 
 1. **Vietnamese founder making product for Vietnamese users** — cultural fit can't be faked
-2. **Exiled journalist identity** — story, trust, network. Unique to Chau.
-3. **510+ bilingual rooms of curated content** — expensive to replicate
-4. **ElevenLabs Mercy + Josh voices** — consistent brand voice
-5. **Vietnamese-specific pronunciation + grammar content** — requires domain expertise
-6. **220K-follower distribution from day 1** — most apps spend $50K+ to get this
-7. **Community of Vietnamese teachers (future)** — platform effects
+2. **Exiled journalist identity** — story, trust, network. Unique to Chau. This is **Vietnamese-audience-specific positioning**, not a global moat — it earns trust with the Vietnamese diaspora, not with an English speaker learning Korean.
+3. **220K-follower diaspora distribution from day 1** — most apps spend $50K+ to get this; specific to the Vietnamese audience
+4. **Vietnamese-specific pronunciation + grammar content** — requires domain expertise
+5. **470+ bilingual Vietnamese → English rooms of curated content** — expensive to replicate
+
+### Platform-wide moat (helps every pair)
+
+6. **Broad multi-target coverage** — 862+ A1–C2 lessons across Korean/Japanese/Chinese/French/German/Spanish plus 536 Vietnamese-for-foreigners lessons; few competitors offer real depth across this many pairs
+7. **AI-powered personalized teaching** — the Mercy teacher persona and per-pair feedback
+8. **ElevenLabs Mercy + Josh voices** — consistent brand voice across pairs
+9. **Real "rooms"/lesson depth format** — structurally different from streak-based competitors
 
 ### Things competitors CAN copy quickly (don't rely on these for moat)
 
@@ -268,8 +280,8 @@ Must support: MoMo, ZaloPay, VNPay, bank transfer, credit card, Apple Pay, Googl
 
 ### Internal
 
-- **Strategy drift via AI advice** → READ THIS FILE FIRST every session, don't pivot on conversation
-- **Feature creep dilutes Vietnamese focus** → Section 5 "What MercyBlade does NOT do" is the defense
+- **Strategy drift via AI advice** → READ THIS FILE FIRST every session, don't pivot on conversation. *(v3.0 exists because an AI session did exactly this — see §15.)*
+- **Effort drift away from the Vietnamese side** → ~95% effort stays Vietnamese-native; the matrix being real product does not mean equal investment
 - **Founder burnout** → AI automation and small team, not growth at all costs
 - **Content quality drift** → periodic audit, kill underperforming rooms
 - **Tech debt accumulates** → refactor sprints every quarter
@@ -280,20 +292,20 @@ Must support: MoMo, ZaloPay, VNPay, bank transfer, credit card, Apple Pay, Googl
 
 When facing any decision — feature request, design choice, business option — ask in order:
 
-1. **Does this help Vietnamese learners succeed?**
+1. **Does this help a learner succeed at their chosen language pair?**
 2. **Does this reinforce the Mercy brand and teacher warmth?**
 3. **Does this work on a 375px phone?**
 4. **Can 1 person build/maintain this with AI help?**
 5. **Is the effort justified by the impact?**
-6. **Does this contradict Section 4 (audience strategy) or Section 5 (product strategy)?**
+6. **Does this contradict Section 4 (the matrix) or Section 5 (product strategy)?**
 
 If any answer is no, reconsider or reject.
 
-For expansion-related decisions (English-speaking audience), additionally ask:
+For effort-allocation decisions across pairs, additionally ask:
 
-7. **Does this slow Vietnamese-side ship velocity?** If yes, defer.
-8. **Does this require pricing changes that hurt Vietnamese affordability?** If yes, separate the pricing.
-9. **Is the Vietnamese base stable (>1K paying users, >25% D30)?** If no, expansion is premature.
+7. **Does this serve the user's chosen learning pair, or does it un-surface / second-class a pair that has content?** Un-surfacing shipped content for any pair is rejected (this is the v3.0 lesson).
+8. **Given ~95% of effort is Vietnamese-native, does this pull new-authoring bandwidth off the Vietnamese side without a clear reason?** If yes, it competes with the home market — justify it explicitly.
+9. **Does this require pricing changes that hurt Vietnamese affordability?** If yes, separate the pricing per §8 — the Vietnamese floor is independent.
 
 ---
 
@@ -313,7 +325,7 @@ This file auto-loads via CLAUDE.md reference. No paste needed.
 
 ### When facing a strategic question
 
-Re-read Sections 4 (audiences), 5 (product), 11 (moat), 13 (decision framework). The answer is usually in there.
+Re-read Sections 4 (the matrix), 5 (product), 11 (moat), 13 (decision framework). The answer is usually in there.
 
 ### When feeling lost or off-track
 
@@ -327,11 +339,25 @@ Strategy that changes constantly isn't strategy. Real change requires:
 - Personal capacity changes (health, family, energy)
 - Time (six months of execution data > any single conversation)
 
-NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy is a long-term commitment.
+NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy is a long-term commitment. **v3.0 of this doc exists because an AI session did the opposite — it rewrote the product definition from a conversation it mistranslated. Do not repeat that.**
 
 ---
 
 ## 15. Changelog
+
+### May 17, 2026 — v3.0: Strategic reset (matrix product, not 1+1)
+
+The v2.0/v2.1 framing of MercyBlade as a Vietnamese-English-learning app with deferred expansion was a mistranslation introduced by an earlier Claude session and not approved by Chau. Reality: MercyBlade is a matrix product — 2 native languages × 8 target languages, up to 16 learning pairs. Vietnamese-native users remain the home market (~95% of effort). PR #582 reverted the code consequence of v2.0/v2.1's mistranslation (re-surfaced the KO/JA/ZH/FR/DE/ES tracks #553 had hidden). This doc rewrite fixes the upstream cause.
+
+- §1 Mission: rewritten — multi-pair language-learning product; Vietnamese → English remains the loudest success metric, but the mission is the matrix.
+- §3 Positioning: rewritten — common platform, per-pair positioning.
+- §4: deleted the "Two-Audience Strategy" framing; replaced with "The Learning-Pair Matrix" (2 native × 8 target, up to 16 pairs, ~95% effort Vietnamese-native, ~5% English-native built-and-maintained). Removed the KO/JA/ZH/FR/DE/ES "Explicitly NOT serving" exclusion.
+- §5: items rewritten to apply to whichever pair the user picks.
+- §6: replaced "off-mission" framing with a verified content-inventory table (counts read from `src/languages/*/lessons.ts` canonical constants per locked #7/#15).
+- §7: Roadmap Step 10 reframed — pair-selection onboarding + deepening lighter pairs, not an en→vi sequel.
+- §8: pricing split clarified; English-native tiers marked TODO: Chau decide.
+- §11: moat split into Vietnamese-audience-specific (exiled-journalist identity, 220K diaspora reach) vs platform-wide (multi-pair coverage, AI teaching). Replaced stale "510+" with verified "470+".
+- §13: decision framework expansion sub-questions rewritten around "serve the user's chosen pair" + the un-surfacing prohibition.
 
 ### May 17, 2026 — v2.2: Reverted §4 un-surfacing decision
 
@@ -358,6 +384,8 @@ NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy 
 - Added Section 13 decision framework questions specific to expansion decisions
 - Captured 220K Facebook follower asset as competitive moat (Section 11)
 - Captured Chau's context (exiled journalist, Article 117) in Section 2
+
+> **v3.0 note on the v2.0 entry:** the "Two-Audience Strategy" added in v2.0 is the framing v3.0 reverses. Kept here for the audit trail, not as current direction.
 
 ### April 20, 2026 — v1.0 to v1.3 (original NORTH_STAR.md)
 
