@@ -33,7 +33,7 @@
         "art",
         "creativity"
       ],
-      "audio": null
+      "audio": "creativity_challenges_v1_picture_challenge.mp3"
     },
     {
       "slug": "what-if-game",
@@ -57,7 +57,7 @@
         "imagination",
         "games"
       ],
-      "audio": null
+      "audio": "creativity_challenges_v1_what_if_game.mp3"
     },
     {
       "slug": "new-game-ideas",
@@ -81,7 +81,7 @@
         "games",
         "creative-thinking"
       ],
-      "audio": null
+      "audio": "creativity_challenges_v1_new_game_ideas.mp3"
     }
   ],
   "domain": "Kids",
