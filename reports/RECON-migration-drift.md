@@ -1,7 +1,24 @@
 # RECON — Supabase Migration Drift
 
-**Agent:** migration-drift-agent · **Branch:** `migration-drift-fix` (off `origin/main` f66eefc5)
-**Date:** 2026-05-17 · **Phase:** 1 (read-only recon) · **Status:** COMPLETE — awaiting Chau approval for Phase 2
+**Agent:** migration-drift-agent · **Branch:** `migration-drift-fix` (based at f66eefc5)
+**Date:** 2026-05-17 · **Phase:** 1 (read-only recon) · **Status:** COMPLETE + RE-VERIFIED — awaiting Chau approval for Phase 2
+
+> **Branch base note:** `origin/main` has since advanced to `c3b554e7` (#552 docs-perf, #553 strategy). Neither touched `supabase/migrations/` — inventory below is unaffected. Rebase `migration-drift-fix` onto `origin/main` before any Phase 2 push (hygiene only, no recon impact).
+
+### Re-verification stamp (2026-05-17, independent re-run)
+
+Every load-bearing claim re-checked live this session:
+
+| Claim | Method | Result |
+|---|---|---|
+| Prior fix `437f1bb2` exists | `git log -1 437f1bb2` | ✅ "fix(migrations): standardize timestamps…" 2026-04-25 |
+| No stuck/remote-only rows; PLAN.md 5 + notebook all `Local=Remote` | live `supabase migration list` | ✅ all 6 versions show `Local=Remote`, zero remote-only |
+| 19 pending tracking rows | live `migration list` + awk count | ✅ exactly 19 (see caveat ↓) |
+| 6 anomaly filenames exist | `ls` each | ✅ all 6 present |
+| 3 CI secrets missing | `gh secret list` | ✅ only ANON/FUNCTIONS_URL/SERVICE_ROLE/VITE_URL present; ACCESS_TOKEN, PROJECT_REF, DB_PASSWORD absent |
+| Count 205 (not ~150) | `ls *.sql \| wc -l` | ✅ 205 |
+
+> **Caveat on "19":** `migration list` keys by *version*, so the 3 colliding version prefixes (`20260509000000`, `20260510000000`, `20260612`) each collapse to one row though **two files** share each. 19 pending **versions** ⇒ **22 pending files**. Repair is per-version (19 `repair --status applied` calls), but Step B must rename the colliding siblings *first* or `db push` aborts on duplicate-version before any repair matters.
 
 ---
 
