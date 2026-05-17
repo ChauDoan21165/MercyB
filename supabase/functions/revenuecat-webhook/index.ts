@@ -7,9 +7,13 @@
  * the existing `me-entitlement` function continues to be the single
  * source of truth the client app reads.
  *
- * Auth: shared bearer token in the Authorization header. Set the same
- * value in RevenueCat Dashboard → Integrations → Webhook and in this
- * function's secrets (`REVENUECAT_WEBHOOK_AUTH_TOKEN`).
+ * Auth: shared token in the Authorization header (RevenueCat sends no
+ * HMAC/signature — this is its only mechanism; see
+ * reports/RECON-revenuecat-hmac.md). Set the same value in RevenueCat
+ * Dashboard → Integrations → Webhook and in this function's secret
+ * `REVENUECAT_WEBHOOK_AUTH_TOKEN`. The check is constant-time and
+ * accepts a comma/newline-separated rotation set ("<new>,<old>") for
+ * zero-downtime token rotation. See ./auth.ts.
  *
  * Handled event types:
  *   INITIAL_PURCHASE, RENEWAL, PRODUCT_CHANGE, NON_RENEWING_PURCHASE →
@@ -34,6 +38,7 @@
  */
 
 import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
+import { isAuthorized, parseTokens } from "./auth.ts";
 
 // ── Constants (MUST mirror src/lib/iap.ts) ──────────────────────────────────
 
@@ -102,18 +107,26 @@ Deno.serve(async (req) => {
   }
 
   // ── Auth ──────────────────────────────────────────────────────────────────
-  const expectedToken = (Deno.env.get("REVENUECAT_WEBHOOK_AUTH_TOKEN") ?? "").trim();
-  if (!expectedToken) {
+  // RevenueCat does NOT sign its webhooks (no HMAC, no signature header —
+  // verified, see reports/RECON-revenuecat-hmac.md). The shared
+  // Authorization-header token is the only mechanism RevenueCat offers.
+  // We compare it constant-time and accept a rotation set
+  // ("<new>,<old>") so the secret can be rotated with zero downtime.
+  // See ./auth.ts. Do not "add HMAC" here — there is nothing to verify.
+  const configuredTokens = parseTokens(
+    Deno.env.get("REVENUECAT_WEBHOOK_AUTH_TOKEN") ?? "",
+  );
+  if (configuredTokens.length === 0) {
     console.error("[revenuecat-webhook] REVENUECAT_WEBHOOK_AUTH_TOKEN not set");
     return json({ error: "Webhook not configured" }, 500);
   }
   const authHeader = (req.headers.get("Authorization") ?? "").trim();
   // RevenueCat lets the operator type either the raw token or a full
   // "Bearer xxx" string into the Authorization field. Accept both forms.
-  const bearerToken = authHeader.startsWith("Bearer ")
+  const presentedToken = authHeader.startsWith("Bearer ")
     ? authHeader.slice("Bearer ".length).trim()
     : authHeader;
-  if (bearerToken !== expectedToken) {
+  if (!isAuthorized(presentedToken, configuredTokens)) {
     console.warn("[revenuecat-webhook] unauthorized");
     return json({ error: "Unauthorized" }, 401);
   }
