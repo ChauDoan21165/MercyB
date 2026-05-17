@@ -26,13 +26,23 @@
 //   idiom   : teal accordion if lesson.idiomGlosses (per-subfield pick)
 //   grammar : violet card if lesson.grammar (Japanese + Spanish)
 //
-// Bilingual content selection: every `*Vi` field has an optional `*En`
-// sibling on NormalizedLesson (see LessonRenderer.types.ts). For each
-// section, the renderer picks the language matching the `uiLanguage`
-// prop and falls back to the other when the preferred one is missing.
-// When a fallback occurs, a small muted badge (e.g. "VI") is shown next
-// to the section heading so the learner knows the displayed text isn't
-// in their selected UI language.
+// Two language axes (Phase 2 / Option C — RECON-schema-generalize.md):
+//   - `uiLanguage`  : the UI-CHROME axis — section headings, count-chip
+//     units, CEFR pill, audio aria-labels, dialogue toggles. Stays tied
+//     to the global UI toggle.
+//   - `nativeLanguage`: the PEDAGOGY axis — "which L1 the learner thinks
+//     in" — drives every `*Vi`/`*En` sibling selection (intro, glosses,
+//     pronunciation focus, cultural notes, tips, register, roleplay,
+//     idioms). Routed through getNativeContent()/isNativeFallback()
+//     (./nativeContent — the single seam the eventual N-native-language
+//     migration changes in one place).
+// `nativeLanguage` defaults to `uiLanguage`, so callers that don't pass
+// it (all of them today) render byte-identically to before this split;
+// the page layer wires the real native axis in a later sub-PR. The lesson
+// title is intentionally left on `uiLanguage` (hybrid surface — open
+// question, see RECON §8). When a pedagogy field falls back to its
+// non-native sibling, a small muted badge (e.g. "VI") is shown next to
+// the heading so the learner knows the text isn't in their native L1.
 
 import { useState } from "react";
 import {
@@ -56,6 +66,7 @@ import type {
   NormalizedAudioKinds,
 } from "./LessonRenderer.types";
 import { cefrPillColors, cefrPillLabel } from "./lessonThemes";
+import { getNativeContent, isNativeFallback } from "./nativeContent";
 import { LessonAudioButton } from "./LessonAudioButton";
 import {
   lessonAudioKey,
@@ -163,6 +174,17 @@ interface LessonRendererProps {
    */
   uiLanguage?: "vi" | "en";
   /**
+   * Native-language (pedagogy L1) axis — see the header note. Drives every
+   * `*Vi`/`*En` sibling selection (intro, glosses, cultural notes, tips,
+   * register, roleplay, idioms). Distinct from `uiLanguage` (chrome).
+   * Defaults to `uiLanguage` so existing callers — none pass this yet —
+   * render byte-identically; the page layer wires the real native source
+   * (and the honest Spanish/Vietnamese-for-foreigners tags) in a later
+   * sub-PR. The lesson title is deliberately NOT keyed on this (it stays
+   * on `uiLanguage` — hybrid surface, RECON §8 open question).
+   */
+  nativeLanguage?: "vi" | "en";
+  /**
    * When true, render BOTH title.vi and title.en (primary + subtitle).
    * This is NOT a bilingual UI duplication: it is for the Vietnamese-
    * for-foreigners page, where title.vi holds the English lesson title
@@ -180,6 +202,9 @@ export function LessonRenderer({
   lesson,
   theme,
   uiLanguage = "vi",
+  // Defaults to uiLanguage (destructuring defaults bind left-to-right, so
+  // uiLanguage is in scope here) — byte-identical until pages pass it.
+  nativeLanguage = uiLanguage,
   dualTitle = false,
 }: LessonRendererProps) {
   const labels = RENDERER_LABELS[uiLanguage];
@@ -283,24 +308,32 @@ export function LessonRenderer({
           className="border-t px-4 py-3 space-y-3"
           style={{ borderColor: `${theme.accent}11`, background: "rgb(248 250 252 / 0.6)" }}
         >
-          {/* intro — Incidental D fix: pick introEn/introVi by
-              uiLanguage with a fallback badge so an English-UI user
-              seeing Vietnamese intro content is told so. Legacy single-
-              language `intro` (pre-bilingual modules) renders with no
-              badge — it is language-agnostic by contract. */}
+          {/* intro — Incidental D fix: pick introEn/introVi by the
+              learner's native language with a fallback badge so a user
+              whose native L1 lacks an authored intro is told so. Legacy
+              single-language `intro` (pre-bilingual modules) renders with
+              no badge — it is language-agnostic by contract. */}
           {(() => {
-            const picked = pick(uiLanguage, lesson.introEn, lesson.introVi);
+            const picked = getNativeContent(
+              { en: lesson.introEn, vi: lesson.introVi },
+              nativeLanguage,
+            );
             const text = picked ?? lesson.intro;
             if (!text) return null;
             const fallback =
               picked !== undefined &&
-              isFallback(uiLanguage, lesson.introEn, lesson.introVi);
+              isNativeFallback(
+                { en: lesson.introEn, vi: lesson.introVi },
+                nativeLanguage,
+              );
             return (
               <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
                 <p className="text-xs leading-relaxed text-amber-900">
                   {text}
                   {fallback && (
-                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                    <FallbackBadge
+                      other={nativeLanguage === "en" ? "vi" : "en"}
+                    />
                   )}
                 </p>
               </div>
@@ -336,13 +369,16 @@ export function LessonRenderer({
                       {s.romanization}
                     </p>
                   )}
-                  {/* Single gloss in the active UI language only. The
-                      other-language gloss is intentionally hidden — the
-                      target sentence (s.native) + romanization above are
-                      the lesson; a second meaning line was UI-language
+                  {/* Single gloss in the learner's native language only.
+                      The other-language gloss is intentionally hidden —
+                      the target sentence (s.native) + romanization above
+                      are the lesson; a second meaning line was language
                       duplication, not a learner aid. */}
                   {(() => {
-                    const gloss = pick(uiLanguage, s.en, s.vi);
+                    const gloss = getNativeContent(
+                      { en: s.en, vi: s.vi },
+                      nativeLanguage,
+                    );
                     return gloss ? (
                       <p className="mt-0.5 text-xs font-medium text-slate-700">
                         {gloss}
@@ -350,16 +386,20 @@ export function LessonRenderer({
                     ) : null;
                   })()}
                   {(() => {
-                    const focus = pick(
-                      uiLanguage,
-                      s.pronunciationFocusEn,
-                      s.pronunciationFocus,
+                    const focus = getNativeContent(
+                      {
+                        en: s.pronunciationFocusEn,
+                        vi: s.pronunciationFocus,
+                      },
+                      nativeLanguage,
                     );
                     if (!focus || focus.length === 0) return null;
-                    const fallback = isFallback(
-                      uiLanguage,
-                      s.pronunciationFocusEn,
-                      s.pronunciationFocus,
+                    const fallback = isNativeFallback(
+                      {
+                        en: s.pronunciationFocusEn,
+                        vi: s.pronunciationFocus,
+                      },
+                      nativeLanguage,
                     );
                     return (
                       <p
@@ -369,7 +409,9 @@ export function LessonRenderer({
                         <Volume2 className="h-3 w-3" />
                         {focus.join(" · ")}
                         {fallback && (
-                          <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                          <FallbackBadge
+                            other={nativeLanguage === "en" ? "vi" : "en"}
+                          />
                         )}
                       </p>
                     );
@@ -413,13 +455,19 @@ export function LessonRenderer({
                         </span>
                       )}
                       {(() => {
-                        const gloss = pick(uiLanguage, v.en, v.vi);
+                        const gloss = getNativeContent(
+                          { en: v.en, vi: v.vi },
+                          nativeLanguage,
+                        );
                         return gloss ? (
                           <span className="text-slate-500 ml-2">{gloss}</span>
                         ) : null;
                       })()}
                       {(() => {
-                        const phonetic = pick(uiLanguage, v.phoneticEn, v.phonetic);
+                        const phonetic = getNativeContent(
+                          { en: v.phoneticEn, vi: v.phonetic },
+                          nativeLanguage,
+                        );
                         return phonetic ? (
                           <span className="block text-[10px] text-slate-400">
                             {phonetic}
@@ -458,7 +506,7 @@ export function LessonRenderer({
                 <DialogueLineRows
                   lines={lesson.dialogue}
                   theme={theme}
-                  uiLanguage={uiLanguage}
+                  nativeLanguage={nativeLanguage}
                   audioAria={labels.dialogueAudioAria}
                   audio={
                     lesson.audioBase
@@ -478,7 +526,7 @@ export function LessonRenderer({
                     <DialogueLineRows
                       lines={lesson.dialogueLong}
                       theme={theme}
-                      uiLanguage={uiLanguage}
+                      nativeLanguage={nativeLanguage}
                       audioAria={labels.dialogueAudioAria}
                       showFallbackBadge
                     />
@@ -500,7 +548,7 @@ export function LessonRenderer({
                       ex={ex}
                       index={ei}
                       labels={labels}
-                      uiLanguage={uiLanguage}
+                      nativeLanguage={nativeLanguage}
                     />
                   </li>
                 ))}
@@ -509,20 +557,22 @@ export function LessonRenderer({
           )}
 
           {(() => {
-            const text = pick(uiLanguage, lesson.culturalNotesEn, lesson.culturalNotesVi);
+            const slots = {
+              en: lesson.culturalNotesEn,
+              vi: lesson.culturalNotesVi,
+            };
+            const text = getNativeContent(slots, nativeLanguage);
             if (!text) return null;
-            const fallback = isFallback(
-              uiLanguage,
-              lesson.culturalNotesEn,
-              lesson.culturalNotesVi,
-            );
+            const fallback = isNativeFallback(slots, nativeLanguage);
             return (
               <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-3">
                 <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
                   <Sparkles className="h-3 w-3" />
                   {labels.cultureHeading}
                   {fallback && (
-                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                    <FallbackBadge
+                      other={nativeLanguage === "en" ? "vi" : "en"}
+                    />
                   )}
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-slate-700">{text}</p>
@@ -531,20 +581,22 @@ export function LessonRenderer({
           })()}
 
           {(() => {
-            const text = pick(uiLanguage, lesson.tipAdviceEn, lesson.tipAdviceVi);
+            const slots = {
+              en: lesson.tipAdviceEn,
+              vi: lesson.tipAdviceVi,
+            };
+            const text = getNativeContent(slots, nativeLanguage);
             if (!text) return null;
-            const fallback = isFallback(
-              uiLanguage,
-              lesson.tipAdviceEn,
-              lesson.tipAdviceVi,
-            );
+            const fallback = isNativeFallback(slots, nativeLanguage);
             return (
               <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
                 <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
                   <Lightbulb className="h-3 w-3" />
                   {labels.tipHeading}
                   {fallback && (
-                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                    <FallbackBadge
+                      other={nativeLanguage === "en" ? "vi" : "en"}
+                    />
                   )}
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-slate-700">{text}</p>
@@ -555,23 +607,21 @@ export function LessonRenderer({
           {/* register_notes — meta-advice, rendered as a small italic
               note under the study-tip card (per #496-locked decision). */}
           {(() => {
-            const text = pick(
-              uiLanguage,
-              lesson.registerNotesEn,
-              lesson.registerNotesVi,
-            );
+            const slots = {
+              en: lesson.registerNotesEn,
+              vi: lesson.registerNotesVi,
+            };
+            const text = getNativeContent(slots, nativeLanguage);
             if (!text) return null;
-            const fallback = isFallback(
-              uiLanguage,
-              lesson.registerNotesEn,
-              lesson.registerNotesVi,
-            );
+            const fallback = isNativeFallback(slots, nativeLanguage);
             return (
               <p className="px-1 text-[11px] italic leading-relaxed text-slate-500">
                 <span className="font-semibold uppercase tracking-wide text-slate-400 not-italic">
                   {labels.registerHeading}
                   {fallback && (
-                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                    <FallbackBadge
+                      other={nativeLanguage === "en" ? "vi" : "en"}
+                    />
                   )}
                 </span>{" "}
                 {text}
@@ -582,24 +632,22 @@ export function LessonRenderer({
           {/* roleplay_prompts — static speaking-practice card in the
               indigo (speaking) family. No interactivity wired yet. */}
           {(() => {
-            const prompts = pick(
-              uiLanguage,
-              lesson.roleplayPromptsEn,
-              lesson.roleplayPromptsVi,
-            );
+            const slots = {
+              en: lesson.roleplayPromptsEn,
+              vi: lesson.roleplayPromptsVi,
+            };
+            const prompts = getNativeContent(slots, nativeLanguage);
             if (!prompts || prompts.length === 0) return null;
-            const fallback = isFallback(
-              uiLanguage,
-              lesson.roleplayPromptsEn,
-              lesson.roleplayPromptsVi,
-            );
+            const fallback = isNativeFallback(slots, nativeLanguage);
             return (
               <div className="rounded-lg border border-indigo-100 bg-indigo-50/60 p-3">
                 <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
                   <MessageCircle className="h-3 w-3" />
                   {labels.roleplayHeading}
                   {fallback && (
-                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                    <FallbackBadge
+                      other={nativeLanguage === "en" ? "vi" : "en"}
+                    />
                   )}
                 </p>
                 <ul className="mt-2 space-y-1.5">
@@ -623,7 +671,7 @@ export function LessonRenderer({
           {lesson.idiomGlosses && lesson.idiomGlosses.length > 0 && (
             <IdiomGlossList
               glosses={lesson.idiomGlosses}
-              uiLanguage={uiLanguage}
+              nativeLanguage={nativeLanguage}
               heading={labels.idiomHeading}
             />
           )}
@@ -657,17 +705,18 @@ function ExerciseRow({
   ex,
   index,
   labels,
-  uiLanguage,
+  nativeLanguage,
 }: {
   ex: NormalizedExercise;
   index: number;
   labels: RendererLabels;
-  uiLanguage: "vi" | "en";
+  // Pedagogy axis only — `labels` (chrome) is passed in separately.
+  nativeLanguage: "vi" | "en";
 }) {
   const labelMap = labels.exerciseLabels;
 
   if (ex.kind === "fill-blank") {
-    const hint = pick(uiLanguage, ex.hintEn, ex.hint);
+    const hint = getNativeContent({ en: ex.hintEn, vi: ex.hint }, nativeLanguage);
     return (
       <>
         <span className="font-semibold">
@@ -685,7 +734,10 @@ function ExerciseRow({
   }
 
   if (ex.kind === "matching") {
-    const instruction = pick(uiLanguage, ex.instructionEn, ex.instruction);
+    const instruction = getNativeContent(
+      { en: ex.instructionEn, vi: ex.instruction },
+      nativeLanguage,
+    );
     return (
       <>
         <span className="font-semibold">
@@ -705,7 +757,7 @@ function ExerciseRow({
   }
 
   // translation
-  const prompt = pick(uiLanguage, ex.en, ex.vi);
+  const prompt = getNativeContent({ en: ex.en, vi: ex.vi }, nativeLanguage);
   return (
     <>
       <span className="font-semibold">
@@ -731,18 +783,19 @@ function ExerciseRow({
 function DialogueLineRows({
   lines,
   theme,
-  uiLanguage,
+  nativeLanguage,
   audioAria,
   audio,
   showFallbackBadge = false,
 }: {
   lines: NormalizedDialogueLine[];
   theme: LessonTheme;
-  uiLanguage: "vi" | "en";
+  // Pedagogy axis only — `audioAria` (chrome) is passed in separately.
+  nativeLanguage: "vi" | "en";
   audioAria: string;
   audio?: { base: string; kinds?: NormalizedAudioKinds };
-  // Badge the gloss when pick() fell back to the non-UI language (the
-  // #499 contract). Enabled ONLY for dialogue_long, whose normalized
+  // Badge the gloss when getNativeContent() fell back to the non-native
+  // language (the #499 contract). Enabled ONLY for dialogue_long, whose normalized
   // en/vi are truthful. Left OFF for short `dialogue`: post-#514 the
   // Korean short-dialogue normalizer maps `vi = text_vi ?? meaning`
   // (korean/normalize.ts) — lines without an authored `text_vi` still
@@ -784,21 +837,27 @@ function DialogueLineRows({
               </span>
             )}
             {(() => {
-              // Pick the gloss in the UI language; badge (dialogue_long
-              // only) when it fell back to the other language — same
-              // #499 contract as the intro / sentence / cultural
-              // surfaces. Under the default uiLanguage="vi" pick()
-              // returns vi with no fallback, so the existing language
-              // pages are unchanged.
-              const gloss = pick(uiLanguage, d.en, d.vi);
+              // Pick the gloss in the learner's native language; badge
+              // (dialogue_long only) when it fell back to the other
+              // language — same #499 contract as the intro / sentence /
+              // cultural surfaces. Under the default nativeLanguage="vi"
+              // getNativeContent() returns vi with no fallback, so the
+              // existing language pages are unchanged.
+              const gloss = getNativeContent(
+                { en: d.en, vi: d.vi },
+                nativeLanguage,
+              );
               if (!gloss) return null;
               const fallback =
-                showFallbackBadge && isFallback(uiLanguage, d.en, d.vi);
+                showFallbackBadge &&
+                isNativeFallback({ en: d.en, vi: d.vi }, nativeLanguage);
               return (
                 <div className="text-slate-500 ml-5">
                   {gloss}
                   {fallback && (
-                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                    <FallbackBadge
+                      other={nativeLanguage === "en" ? "vi" : "en"}
+                    />
                   )}
                 </div>
               );
@@ -812,16 +871,18 @@ function DialogueLineRows({
 
 // Inline expandable idiom list. One row per idiom; the row is the
 // idiom itself, expanding to literal / meaning / example. Each sub-
-// field is picked by uiLanguage with the same fallback-badge contract
-// as the prose pedagogy fields. Tooltips were rejected in #496 §7 as
-// mobile-hostile at 375px — an accordion keeps the lesson scannable.
+// field is picked by the learner's native language with the same
+// fallback-badge contract as the prose pedagogy fields. Tooltips were
+// rejected in #496 §7 as mobile-hostile at 375px — an accordion keeps
+// the lesson scannable.
 function IdiomGlossList({
   glosses,
-  uiLanguage,
+  nativeLanguage,
   heading,
 }: {
   glosses: NormalizedIdiomGloss[];
-  uiLanguage: "vi" | "en";
+  // Pedagogy axis only — `heading` (chrome) is passed in separately.
+  nativeLanguage: "vi" | "en";
   heading: string;
 }) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -834,10 +895,22 @@ function IdiomGlossList({
       <ul className="mt-2 space-y-1">
         {glosses.map((g, gi) => {
           const isOpen = openIdx === gi;
-          const literal = pick(uiLanguage, g.literalEn, g.literal);
-          const meaning = pick(uiLanguage, g.meaningEn, g.meaning);
-          const example = pick(uiLanguage, g.exampleEn, g.example);
-          const fallback = isFallback(uiLanguage, g.meaningEn, g.meaning);
+          const literal = getNativeContent(
+            { en: g.literalEn, vi: g.literal },
+            nativeLanguage,
+          );
+          const meaning = getNativeContent(
+            { en: g.meaningEn, vi: g.meaning },
+            nativeLanguage,
+          );
+          const example = getNativeContent(
+            { en: g.exampleEn, vi: g.example },
+            nativeLanguage,
+          );
+          const fallback = isNativeFallback(
+            { en: g.meaningEn, vi: g.meaning },
+            nativeLanguage,
+          );
           return (
             <li
               key={gi}
@@ -869,7 +942,9 @@ function IdiomGlossList({
                     <p className="text-slate-700">
                       {meaning}
                       {fallback && (
-                        <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                        <FallbackBadge
+                          other={nativeLanguage === "en" ? "vi" : "en"}
+                        />
                       )}
                     </p>
                   )}
