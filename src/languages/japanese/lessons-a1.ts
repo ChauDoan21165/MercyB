@@ -8,6 +8,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 1,
     "title": "Hiragana Introduction",
+    "title_vi": "Giới thiệu Hiragana",
     "level": "A1",
     "vocabulary": [
       {
@@ -89,6 +90,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 2,
     "title": "Katakana Introduction",
+    "title_vi": "Giới thiệu Katakana",
     "level": "A1",
     "vocabulary": [
       {
@@ -176,6 +178,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 3,
     "title": "Basic Greetings",
+    "title_vi": "Lời chào cơ bản",
     "level": "A1",
     "vocabulary": [
       {
@@ -247,6 +250,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 4,
     "title": "Self Introduction",
+    "title_vi": "Tự giới thiệu bản thân",
     "level": "A1",
     "vocabulary": [
       {
@@ -314,6 +318,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 5,
     "title": "Numbers 1–10",
+    "title_vi": "Số đếm từ 1 đến 10",
     "level": "A1",
     "vocabulary": [
       {
@@ -405,6 +410,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 6,
     "title": "Counting Objects",
+    "title_vi": "Đếm đồ vật",
     "level": "A1",
     "vocabulary": [
       {
@@ -476,6 +482,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 7,
     "title": "Days of the Week",
+    "title_vi": "Các ngày trong tuần",
     "level": "A1",
     "vocabulary": [
       {
@@ -555,6 +562,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 8,
     "title": "Months of the Year",
+    "title_vi": "Các tháng trong năm",
     "level": "A1",
     "vocabulary": [
       {
@@ -654,6 +662,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 9,
     "title": "Telling Time",
+    "title_vi": "Nói giờ",
     "level": "A1",
     "vocabulary": [
       {
@@ -721,6 +730,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 10,
     "title": "Asking for Directions",
+    "title_vi": "Hỏi đường",
     "level": "A1",
     "vocabulary": [
       {
@@ -796,6 +806,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 11,
     "title": "Ordering Food",
+    "title_vi": "Gọi món ăn",
     "level": "A1",
     "vocabulary": [
       {
@@ -883,6 +894,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 12,
     "title": "Shopping Phrases",
+    "title_vi": "Mẫu câu mua sắm",
     "level": "A1",
     "vocabulary": [
       {
@@ -954,6 +966,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 13,
     "title": "Family Members",
+    "title_vi": "Các thành viên trong gia đình",
     "level": "A1",
     "vocabulary": [
       {
@@ -1029,6 +1042,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 14,
     "title": "Colors",
+    "title_vi": "Màu sắc",
     "level": "A1",
     "vocabulary": [
       {
@@ -1104,6 +1118,7 @@ export const lessons: JapaneseLesson[] = [
   {
     "id": 15,
     "title": "I-Adjectives (Present Tense)",
+    "title_vi": "Tính từ -i (thì hiện tại)",
     "level": "A1",
     "vocabulary": [
       {
