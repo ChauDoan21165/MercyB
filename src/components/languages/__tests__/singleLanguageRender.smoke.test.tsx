@@ -2,11 +2,18 @@
 //
 // Single-language display guard (uilang-single-language campaign).
 //
-// Requirement: when uiLanguage is set, the lesson card shows ONLY that
-// language's title — the other-language line is hidden. Users who want
-// the other language switch modes via the global toggle. This was
-// previously a simultaneous bilingual render (title.vi + title.en),
-// inconsistent with the toggle's promise.
+// Requirement: the lesson card shows ONLY one language's title — the
+// other-language line is hidden. Users who want the other language switch
+// modes via the global toggle. This was previously a simultaneous
+// bilingual render (title.vi + title.en), inconsistent with the toggle's
+// promise.
+//
+// Post-PR-A3 the title routes on the NATIVE (pedagogy) axis, not chrome
+// (RECON §8 resolved — the title is the lesson's own name in the learner's
+// L1). `nativeLanguage` defaults to `uiLanguage`, so the cases below that
+// pass only `uiLanguage` are unchanged; the explicit-divergence block
+// pins the new behavior so A3b / future native-picker work can't regress
+// it.
 //
 // What MUST be preserved (NOT UI-language duplication):
 //   - title.native     (e.g. Chinese characters) — the target language
@@ -84,6 +91,34 @@ describe("LessonRenderer — single-language title", () => {
     const text = container.textContent ?? "";
     expect(text).toContain(jaLesson.title.en);
     expect(text).not.toContain(jaLesson.title.vi);
+  });
+
+  it("native=en overrides chrome=vi: title follows nativeLanguage", () => {
+    const { container } = render(
+      <LessonRenderer
+        lesson={jaLesson}
+        theme={lessonThemes.japanese}
+        uiLanguage="vi"
+        nativeLanguage="en"
+      />,
+    );
+    const text = container.textContent ?? "";
+    expect(text).toContain(jaLesson.title.en);
+    expect(text).not.toContain(jaLesson.title.vi);
+  });
+
+  it("native=vi overrides chrome=en: title follows nativeLanguage", () => {
+    const { container } = render(
+      <LessonRenderer
+        lesson={jaLesson}
+        theme={lessonThemes.japanese}
+        uiLanguage="en"
+        nativeLanguage="vi"
+      />,
+    );
+    const text = container.textContent ?? "";
+    expect(text).toContain(jaLesson.title.vi);
+    expect(text).not.toContain(jaLesson.title.en);
   });
 
   it("dualTitle: shows BOTH (Vietnamese-for-foreigners guard)", () => {

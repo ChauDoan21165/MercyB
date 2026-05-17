@@ -8,19 +8,20 @@
 // no s.en ?? s.english fallback chains, no isKorean(lang) branching.
 //
 // Sections, in render order (collapsed → expanded):
-//   header  : number badge, title (single language via pick(), or
-//             title.vi + title.en subtitle when dualTitle), optional
+//   header  : number badge, title (single language via the native-
+//             language seam, or title.vi + title.en subtitle when
+//             dualTitle), optional
 //             native title + romanization, CEFR pill, expand chevron
 //   stats   : counts of vocab/sentences/dialogue/exercises (when collapsed)
-//   intro   : amber card; picks introEn/introVi by uiLanguage with a
+//   intro   : amber card; picks introEn/introVi by nativeLanguage with a
 //             fallback badge (legacy single-string `intro` = no badge)
 //   sentences: slate card; native + romanization + single gloss
-//             (pick en/vi by uiLanguage, no badge — #523) + focus chips + note
+//             (pick en/vi by nativeLanguage, no badge — #523) + focus chips + note
 //   vocab   : green 2-col grid if lesson.vocabulary
 //   dialogue: purple card if lesson.dialogue (+ opt-in dialogue_long)
 //   exercises: orange card; type-discriminated render per `kind`
-//   cultural: blue card if lesson.culturalNotesEn / Vi (picks by uiLanguage, falls back)
-//   tip     : amber card if lesson.tipAdviceEn / Vi (picks by uiLanguage, falls back)
+//   cultural: blue card if lesson.culturalNotesEn / Vi (picks by nativeLanguage, falls back)
+//   tip     : amber card if lesson.tipAdviceEn / Vi (picks by nativeLanguage, falls back)
 //   register: italic meta-note if lesson.registerNotesEn / Vi (picks, falls back)
 //   roleplay: indigo card if lesson.roleplayPromptsEn / Vi (picks, falls back)
 //   idiom   : teal accordion if lesson.idiomGlosses (per-subfield pick)
@@ -36,11 +37,15 @@
 //     idioms). Routed through getNativeContent()/isNativeFallback()
 //     (./nativeContent — the single seam the eventual N-native-language
 //     migration changes in one place).
-// `nativeLanguage` defaults to `uiLanguage`, so callers that don't pass
-// it (all of them today) render byte-identically to before this split;
-// the page layer wires the real native axis in a later sub-PR. The lesson
-// title is intentionally left on `uiLanguage` (hybrid surface — open
-// question, see RECON §8). When a pedagogy field falls back to its
+// `nativeLanguage` defaults to `uiLanguage`. SpanishLessonsPage now passes
+// it explicitly (== its uiLanguage="en", so still byte-identical); every
+// other page inherits the default ⇒ the only divergence point so far is
+// the Spanish honest tag, with zero render delta. The lesson TITLE now
+// routes on `nativeLanguage` too (PR-A3 resolved RECON §8: the title is
+// pedagogy-adjacent, not chrome — it follows the L1 the learner thinks in,
+// not the UI toggle). This is also byte-identical today because no caller
+// passes a `nativeLanguage` that diverges from its `uiLanguage` on the
+// non-dualTitle title path. When a pedagogy field falls back to its
 // non-native sibling, a small muted badge (e.g. "VI") is shown next to
 // the heading so the learner knows the text isn't in their native L1.
 
@@ -143,18 +148,6 @@ const RENDERER_LABELS = {
 
 type RendererLabels = typeof RENDERER_LABELS[keyof typeof RENDERER_LABELS];
 
-// Pick the value matching the preferred uiLanguage; fall back to the other
-// when the preferred one is missing. Returns undefined only when both are.
-function pick<T>(uiLang: "vi" | "en", en: T | undefined, vi: T | undefined): T | undefined {
-  return uiLang === "en" ? (en ?? vi) : (vi ?? en);
-}
-
-// True when the displayed value came from the non-preferred language —
-// i.e. the preferred value was missing and we fell back. Drives the badge.
-function isFallback(uiLang: "vi" | "en", en: unknown, vi: unknown): boolean {
-  return uiLang === "en" ? !en && !!vi : !vi && !!en;
-}
-
 function FallbackBadge({ other }: { other: "vi" | "en" }) {
   return (
     <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-400">
@@ -177,11 +170,13 @@ interface LessonRendererProps {
    * Native-language (pedagogy L1) axis — see the header note. Drives every
    * `*Vi`/`*En` sibling selection (intro, glosses, cultural notes, tips,
    * register, roleplay, idioms). Distinct from `uiLanguage` (chrome).
-   * Defaults to `uiLanguage` so existing callers — none pass this yet —
-   * render byte-identically; the page layer wires the real native source
-   * (and the honest Spanish/Vietnamese-for-foreigners tags) in a later
-   * sub-PR. The lesson title is deliberately NOT keyed on this (it stays
-   * on `uiLanguage` — hybrid surface, RECON §8 open question).
+   * Defaults to `uiLanguage`. SpanishLessonsPage now passes it explicitly
+   * (== "en", a no-op); the rest inherit the default ⇒ still byte-identical.
+   * The lesson title routes on this too (PR-A3 resolved RECON §8: the title
+   * is pedagogy-adjacent, so it follows the learner's L1, not the chrome
+   * toggle). The Vietnamese-for-foreigners honest tag + its `*Vi`→`*En`
+   * normalizer fix land in a follow-up (PR-A3b) to avoid a misleading
+   * fallback badge on its English-in-`*Vi` cultural/tip content.
    */
   nativeLanguage?: "vi" | "en";
   /**
@@ -191,9 +186,9 @@ interface LessonRendererProps {
    * and title.en holds an English subtitle/description — both are the
    * learner's language, so collapsing to one would drop the subtitle.
    * Every other caller leaves this false: the title shows only the
-   * active uiLanguage (the global toggle's promise — users who want the
-   * other language switch modes), matching the pick() pattern used for
-   * every other field in this renderer.
+   * learner's native language (the toggle's promise — users who want the
+   * other language switch modes), routed through the same native-language
+   * seam (getNativeContent/isNativeFallback) as every other field here.
    */
   dualTitle?: boolean;
 }
@@ -238,13 +233,28 @@ export function LessonRenderer({
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap">
+            {/* Title routes on the NATIVE (pedagogy) axis, not chrome —
+                it's the lesson's own name in the L1 the learner thinks in
+                (PR-A3, RECON §8 resolved). Byte-identical today: every
+                caller's nativeLanguage == its uiLanguage on this path. The
+                dualTitle branch is the Vietnamese-for-foreigners structural
+                exception (its title.vi is an English title); its honest
+                native tag + normalizer fix are deferred to PR-A3b. */}
             <p className="text-sm font-medium text-slate-900">
               {dualTitle
                 ? lesson.title.vi
-                : pick(uiLanguage, lesson.title.en, lesson.title.vi)}
+                : getNativeContent(
+                    { vi: lesson.title.vi, en: lesson.title.en },
+                    nativeLanguage,
+                  )}
               {!dualTitle &&
-                isFallback(uiLanguage, lesson.title.en, lesson.title.vi) && (
-                  <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                isNativeFallback(
+                  { vi: lesson.title.vi, en: lesson.title.en },
+                  nativeLanguage,
+                ) && (
+                  <FallbackBadge
+                    other={nativeLanguage === "en" ? "vi" : "en"}
+                  />
                 )}
             </p>
             <span
@@ -667,7 +677,8 @@ export function LessonRenderer({
 
           {/* idiom_glosses — inline expandable list, one row per idiom
               (collapsed: idiom; expanded: literal/meaning/example,
-              pick() per sub-field). #496-locked: not tooltips. */}
+              native-seam selection per sub-field). #496-locked: not
+              tooltips. */}
           {lesson.idiomGlosses && lesson.idiomGlosses.length > 0 && (
             <IdiomGlossList
               glosses={lesson.idiomGlosses}

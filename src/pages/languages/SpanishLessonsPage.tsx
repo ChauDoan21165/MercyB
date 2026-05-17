@@ -6,7 +6,11 @@
 //   - English hero copy (no Vietnamese subtitle)
 //   - English CEFR pill labels (overrides cefrPillLabels for this page)
 //   - English category section headers (driven by SpanishCategoryMeta.title)
-//   - <LessonRenderer uiLanguage="en" /> so renderer chrome is English too
+//   - <LessonRenderer uiLanguage="en" nativeLanguage="en" /> — chrome AND
+//     pedagogy are English. nativeLanguage was already "en" implicitly (it
+//     defaults to uiLanguage); passing it explicitly makes the pedagogy
+//     axis honest and decoupled from chrome (Phase 2 / PR-A3). No behavior
+//     change — Spanish pedagogy already resolved through the English slots.
 //
 // Categories filter to the currently selected level — A2 headers don't
 // appear on the A1 view. Empty-state copy is English.
@@ -205,6 +209,7 @@ function CategorySection({
                 lesson={normalized}
                 theme={theme}
                 uiLanguage="en"
+                nativeLanguage="en"
               />
             </li>,
           ];
