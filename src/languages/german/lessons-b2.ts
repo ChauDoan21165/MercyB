@@ -3037,7 +3037,7 @@ export const lessons: GermanLesson[] = [
         "en": "working student position",
         "vi": "vị trí sinh viên làm thêm",
         "pos": "noun (f)",
-        "pronunciation_vi": "VEK-shtu-ден-tản-tê-tích-kait",
+        "pronunciation_vi": "VEK-shtu-den-tản-tê-tích-kait",
         "pronunciation_en": "VAYRK-shtoo-den-ten-tay-tikh-kite — long compound: Werk + Studenten + Tätigkeit"
       },
       {
@@ -3829,7 +3829,7 @@ export const lessons: GermanLesson[] = [
         "en": "phone interview",
         "vi": "phỏng vấn điện thoại",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát tê-lê-FÔN-ин-tờ-vyu",
+        "pronunciation_vi": "đát tê-lê-FÔN-in-tờ-vyu",
         "pronunciation_en": "dahs tay-luh-FOHN-in-ter-vyoo — phone interview",
       },
       {
