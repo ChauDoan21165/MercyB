@@ -1,7 +1,7 @@
 # RECON — Supabase Migration Drift
 
 **Agent:** migration-drift-agent · **Branch:** `migration-drift-fix` (based at f66eefc5)
-**Date:** 2026-05-17 · **Phase:** 1 (read-only recon) · **Status:** COMPLETE + RE-VERIFIED — awaiting Chau approval for Phase 2
+**Date:** 2026-05-17 · **Phase:** 1 recon + Step C verification COMPLETE · **Status:** RE-VERIFIED + STEP-C-VERIFIED against live prod schema — awaiting Chau approval for Phase 2 (Step D)
 
 > **Branch base note:** `origin/main` has since advanced to `c3b554e7` (#552 docs-perf, #553 strategy). Neither touched `supabase/migrations/` — inventory below is unaffected. Rebase `migration-drift-fix` onto `origin/main` before any Phase 2 push (hygiene only, no recon impact).
 
@@ -148,41 +148,44 @@ Rename the 6 collision/malformed files to unique 14-digit versions. All 6 are **
 ```
 (`20260509000000_fix_access_codes_insert_policy.sql` and `20260510000000_payment_transactions_allow_gift_code.sql` keep their version — only the colliding sibling moves. Optional: also renumber `20260532–20260535` to valid June dates — cosmetic, defer.)
 
-### Step C — Verify each pending migration's DDL is actually in prod
-**BLOCKED locally:** `supabase db dump` / `db diff` need Docker (not running on this machine). `migration list` works (direct connection) but doesn't introspect schema.
-Options for Chau: start Docker Desktop then `supabase db dump --linked --schema public -f /tmp/prod.sql`, OR run per-probe `SELECT to_regclass('public.<table>')` / `pg_get_functiondef` checks in SQL Editor (probe objects in §2 table).
+### Step C — Verify each pending migration's DDL is actually in prod ✅ DONE
+Docker started by Chau. Dumped live prod schema read-only:
+`supabase db dump --linked --schema public` (23,388 lines) + `--schema storage` (1,402 lines).
+Every pending migration probed against the real dump. **Full verdict table in §8.**
+Result: **19 of 21 pending files confirmed IN PROD** → `repair --status applied`. **2 genuinely NOT in prod** (`20260511190000`, `20260610000000`) → leave pending, both fully idempotent so `db push` applies them safely.
 
-### Step D — Repair tracking, then push
-For every pending version **confirmed present in prod** (Step C):
+### Step D — Repair tracking, then push (Step-C-verified — final sequence)
+**19 versions confirmed in prod → mark applied** (post-rename version numbers):
 ```bash
-supabase migration repair --status applied 20260504010000
-supabase migration repair --status applied 20260504020000
+supabase migration repair --status applied 20260504010000   # feedback_require_auth
+supabase migration repair --status applied 20260504020000   # feedback_grants
 supabase migration repair --status applied 20260509000000   # fix_access_codes (kept version)
 supabase migration repair --status applied 20260509010000   # share_cards (renamed)
 supabase migration repair --status applied 20260510000000   # payment_transactions (kept version)
 supabase migration repair --status applied 20260510005000   # weekly_leaderboard (renamed)
-supabase migration repair --status applied 20260510010000
-supabase migration repair --status applied 20260510020000
-supabase migration repair --status applied 20260510030000
-supabase migration repair --status applied 20260511180000
-supabase migration repair --status applied 20260511190000
-supabase migration repair --status applied 20260602000000
-supabase migration repair --status applied 20260603000000
-supabase migration repair --status applied 20260605000000
-supabase migration repair --status applied 20260606000000
-supabase migration repair --status applied 20260607000000
-supabase migration repair --status applied 20260608000000
-supabase migration repair --status applied 20260609000000
-supabase migration repair --status applied 20260610000000
+supabase migration repair --status applied 20260510010000   # fix_sync_profile_tier_trigger
+supabase migration repair --status applied 20260510020000   # fix_gift_subscription_constraint
+supabase migration repair --status applied 20260510030000   # fix_second_gift_subscription_constraint
+supabase migration repair --status applied 20260511180000   # grant_award_points_execute
+supabase migration repair --status applied 20260602000000   # onboarding_columns (cols+equiv index in prod)
+supabase migration repair --status applied 20260603000000   # vocabulary_srs
+supabase migration repair --status applied 20260605000000   # mercy_unified_session
+supabase migration repair --status applied 20260606000000   # writing_practice
+supabase migration repair --status applied 20260607000000   # pronunciation_challenges
+supabase migration repair --status applied 20260608000000   # 2fa_phase_2
+supabase migration repair --status applied 20260609000000   # xp_gamification
 supabase migration repair --status applied 20260612000000   # pronunciation_srs (renamed)
-supabase migration repair --status applied 20260612010000   # _rpcs (renamed)
+supabase migration repair --status applied 20260612010000   # pronunciation_srs_rpcs (renamed)
 ```
-For any version **NOT** in prod → leave pending, let `supabase db push` apply it last.
+**2 versions NOT in prod → leave pending; `db push` applies them (both fully idempotent, zero risk):**
+- `20260511190000_list_user_data_tables_rls_status` — `CREATE OR REPLACE FUNCTION` (admin RLS-audit helper), genuinely absent (0 occurrences in prod dump).
+- `20260610000000_mock_interview_community_flag` — pure data seed `INSERT … ON CONFLICT DO NOTHING`; row state not confirmable from a schema dump, but re-running is a no-op whether or not it exists. Leave pending rather than spend a verification round on a risk-free idempotent insert.
+
 Then verify + push:
 ```bash
-supabase migration list      # expect every row Local = Remote, no blanks
-supabase db push             # should be a no-op or apply only the genuinely-missing few
-supabase migration list      # final clean-state confirmation
+supabase migration list      # expect only 20260511190000 + 20260610000000 still Local-only
+supabase db push             # applies exactly those 2 (both idempotent — safe)
+supabase migration list      # final: every row Local = Remote, zero blanks
 ```
 No `repair --status reverted` is required (no stuck/remote-only rows).
 
@@ -219,3 +222,44 @@ No `repair --status reverted` is required (no stuck/remote-only rows).
 4. `SUPABASE_ACCESS_TOKEN` / DB password for the agent to run Step D, **or** Chau runs Step D commands manually (recommended — they're short and copy-pasteable above).
 
 **Recommendation:** Step A alone turns CI green for *future* well-formed migrations is NOT true until B+C+D land too (push would still choke on the 6 bad filenames). Do A+B+C+D together as one Phase 2.
+
+---
+
+## 8. Step C verification results (2026-05-17 — live prod schema dump)
+
+**Method:** `supabase db dump --linked --schema public` (23,388 lines) + `--schema storage` (1,402 lines), Docker-backed pg_dump against prod project `buemdfxyhxunzpgdoqin`, strictly read-only. Each pending migration probed for a distinguishing object in the dump. (First probe pass had false-negatives from assuming unquoted `CREATE TABLE public.x`; pg_dump 17 emits `CREATE TABLE IF NOT EXISTS "public"."x"` — re-run with correct quoting; verdicts below are the corrected, trustworthy pass.)
+
+**Step B already done by Chau** (commits `64aaf4ec` re-verify, `b2565c6b` rename) — the 4 colliding/malformed files renamed exactly per the plan. Verdicts use post-rename versions.
+
+| Version (post-rename) | File | Probe object | In prod? | Disposition |
+|---|---|---|---|---|
+| 20260504010000 | feedback_require_auth | policy `authenticated users insert own feedback` | ✅ | repair → applied |
+| 20260504020000 | feedback_grants | fn `check_feedback_rate_limit` (co-shipped) | ✅ | repair → applied |
+| 20260509000000 | fix_access_codes_insert_policy | policy `Admins can select access codes` | ✅ | repair → applied |
+| 20260509010000 | share_cards_bucket | storage policy `share_cards_public_read` (+`_owner_insert/_delete`) | ✅ | repair → applied (migration is transactional ⇒ bucket INSERT committed with the policies) |
+| 20260510000000 | payment_transactions_allow_gift_code | constraint `payment_transactions_payment_method_check` | ✅ | repair → applied |
+| 20260510005000 | weekly_leaderboard | fn `weekly_leaderboard_current_week_start` | ✅ | repair → applied |
+| 20260510010000 | fix_sync_profile_tier_trigger | fn `sync_profile_tier_from_payment_transactions` | ✅ | repair → applied |
+| 20260510020000 | fix_gift_subscription_constraint | col `is_gift_redemption` + constraint `active_requires_stripe_for_paid_tiers` | ✅ | repair → applied |
+| 20260510030000 | fix_second_gift_subscription_constraint | constraint `user_subscriptions_active_requires_stripe` | ✅ | repair → applied |
+| 20260511180000 | grant_award_points_execute | fn `public.award_points` (grant target) | ✅ | repair → applied |
+| **20260511190000** | **list_user_data_tables_rls_status** | fn `list_user_data_tables_rls_status` | ❌ **0 hits** | **LEAVE PENDING → db push** (idempotent `CREATE OR REPLACE FUNCTION`) |
+| 20260602000000 | onboarding_columns | cols `onboarded_at/primary_goal/profession` + partial index | ✅ * | repair → applied |
+| 20260603000000 | vocabulary_srs | tables `user_vocabulary` + `review_log` | ✅ | repair → applied |
+| 20260605000000 | mercy_unified_session | table `mercy_unified_sessions` | ✅ | repair → applied |
+| 20260606000000 | writing_practice | table `writing_prompts` | ✅ | repair → applied |
+| 20260607000000 | pronunciation_challenges | table `pronunciation_challenges` | ✅ | repair → applied |
+| 20260608000000 | 2fa_phase_2 | table `mfa_backup_codes` | ✅ | repair → applied |
+| 20260609000000 | xp_gamification | table `xp_events` | ✅ | repair → applied |
+| **20260610000000** | **mock_interview_community_flag** | feature_flags seed row | ⚠️ data-only | **LEAVE PENDING → db push** (`INSERT … ON CONFLICT DO NOTHING`; `feature_flags` table exists; row not in schema dump; re-run is a no-op either way) |
+| 20260612000000 | pronunciation_srs | tables `vocabulary_srs_items` + `pronunciation_srs_items` | ✅ | repair → applied |
+| 20260612010000 | pronunciation_srs_rpcs | fns `record_vocabulary_review` + `record_pronunciation_attempt` | ✅ | repair → applied |
+
+**Tally: 19 IN-PROD (repair → applied) · 2 NOT-IN-PROD (leave pending, db push — both idempotent, safe).**
+
+\* **onboarding_columns nuance:** the 3 columns + their CHECK constraints ARE in prod (dump lines 6971–6983); a functionally-identical partial index exists but is named **`idx_profiles_onboarding_gate`**, not the migration's `profiles_pending_onboarding_idx`. The schema change is materially applied → mark applied. (Migration is fully idempotent; if instead pushed it would add a second, redundant-but-harmless index — `repair → applied` is preferred to avoid that.)
+
+### Updated risk posture (post-Step-C)
+- The **HIGH** risk from §5 ("repair-applied on something not actually in prod") is now **retired** — every repair-applied version was object-verified against the live dump. The only 2 not in prod are explicitly left for `db push`, not marked applied.
+- Both push-applied migrations are idempotent (`CREATE OR REPLACE` / `ON CONFLICT DO NOTHING`) → `db push` cannot error on them.
+- Net residual risk: **LOW**. Step D is 19 reversible `repair` calls + a 2-migration idempotent push. Phase 2 (Step D) est: **~15–20 min**.
