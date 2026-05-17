@@ -18,6 +18,11 @@ import {
   handleInvoicePaid,
   handleInvoicePaymentFailed,
 } from "./webhook-events.ts";
+import {
+  claimStripeWebhookEvent,
+  isMissingStripeWebhookEventsTable,
+  releaseStripeWebhookEventClaim,
+} from "./idempotency.ts";
 
 import type {
   BillingEnvironment,
@@ -105,17 +110,6 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-function isMissingStripeWebhookEventsTable(error: unknown): boolean {
-  if (!error || typeof error !== "object") return false;
-
-  const maybe = error as { code?: string; message?: unknown };
-
-  return (
-    maybe.code === "PGRST205" &&
-    String(maybe.message ?? "").includes("public.stripe_webhook_events")
-  );
-}
-
 async function upsertStripeWebhookEventResult(params: {
   supabase: DBClient;
   event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">;
@@ -167,31 +161,6 @@ async function markStripeWebhookEventProcessed(
     processed: true,
     errorMessage: null,
   });
-}
-
-async function hasStripeWebhookEventBeenProcessed(
-  supabase: DBClient,
-  eventId: string,
-): Promise<boolean> {
-  const { data, error } = await supabase
-    .from("stripe_webhook_events")
-    .select("event_id")
-    .eq("event_id", eventId)
-    .maybeSingle();
-
-  if (error) {
-    if (isMissingStripeWebhookEventsTable(error)) {
-      console.warn(
-        "stripe-webhook stripe_webhook_events table missing; skipping replay short-circuit",
-        error,
-      );
-      return false;
-    }
-
-    throw error;
-  }
-
-  return !!data?.event_id;
 }
 
 Deno.serve(async (request: Request) => {
@@ -313,12 +282,19 @@ Deno.serve(async (request: Request) => {
   }
 
   try {
-    const alreadyProcessed = await hasStripeWebhookEventBeenProcessed(
-      supabase,
-      event.id,
-    );
+    // Atomically claim this event_id BEFORE any side-effect. Exactly one
+    // concurrent delivery wins the insert; the rest see the conflict and
+    // no-op. (Was a read-then-much-later-mark race — see RECON-stripe-
+    // idempotency.md, audit N4.) `table-missing` keeps the prior fail-open
+    // behavior: process without the guard rather than drop a real delivery.
+    const claim = await claimStripeWebhookEvent(supabase, event);
 
-    if (alreadyProcessed) {
+    if (claim.status === "duplicate") {
+      logWebhook("info", "stripe event replay skipped (idempotency claim)", {
+        event_id: event.id,
+        event_type: event.type,
+        action: "skip_duplicate_delivery",
+      });
       return json({ ok: true, duplicate: true }, 200);
     }
 
@@ -381,15 +357,14 @@ Deno.serve(async (request: Request) => {
       error: serialized,
     });
 
+    // Option A (locked): release the claim so Stripe's redelivery can
+    // re-claim and reprocess. The 500 below makes Stripe retry; leaving the
+    // claim row in place would block that legitimate retry forever and
+    // silently drop the event. We intentionally do NOT persist an error row
+    // here — persisting it would re-block the retry; the failure is captured
+    // in the logs above.
     try {
-      await upsertStripeWebhookEventResult({
-        supabase,
-        event,
-        processed: false,
-        errorMessage: error instanceof Error
-          ? error.message
-          : String(error ?? "unknown error"),
-      });
+      await releaseStripeWebhookEventClaim(supabase, event.id);
     } catch {
       // best-effort only
     }
