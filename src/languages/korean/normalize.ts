@@ -2,11 +2,14 @@
 //
 // Converts KoreanLesson → NormalizedLesson for the shared <LessonRenderer>.
 //
-// Korean field-name notes:
+// Korean field-name notes (data shape updated by #514):
 //   - sentences carry full {korean, romanized, en, vi, pronunciation_focus?}
-//   - vocab/dialogue use {hangul, meaning} where `meaning` is Vietnamese
-//     glossing (verified by spot-reading lessons 1-20 — meaning values like
-//     "Xin chào", "tên", "phụ âm cuối"); mapped to NormalizedVocab/Dialogue.vi
+//   - vocabulary uses {hangul, meaning} where `meaning` is the Vietnamese
+//     gloss (spot-read lessons 1-20: "Xin chào", "tên", …) → NormalizedVocab.vi
+//   - short dialogue uses {speaker, hangul|text_ko, meaning, text_vi?,
+//     text_en?}: `meaning` is the ENGLISH gloss; `text_vi` (authored ×544
+//     in #514) is the Vietnamese source. Normalizer: vi = text_vi ?? meaning,
+//     en = text_en; renderer shows pick(uiLanguage, d.en, d.vi).
 //   - exercises use a discriminated union keyed by `type`
 
 import type { KoreanLesson, KoreanExercise } from "./lessons";
@@ -66,10 +69,11 @@ export function normalizeKoreanLesson(
     })),
     // KoreanB2DialogueLine carries English in `meaning` and Vietnamese
     // in `vi` (verified against lessons-b2/c1/c2 — `meaning` holds full
-    // English sentences, UNLIKE short-dialogue/vocab `meaning` which is
-    // VI). Surface `meaning` as `en`; `vi` stays VI-only. The previous
-    // `vi: d.vi ?? d.meaning` leaked English into the VI slot whenever a
-    // line lacked `vi` — removed (the English now lives in `en`).
+    // English sentences). Post-#514 short-dialogue `meaning` is ALSO
+    // English (its Vietnamese now lives in `text_vi`); only vocab `meaning`
+    // is still Vietnamese. Surface `meaning` as `en`; `vi` stays VI-only.
+    // The previous `vi: d.vi ?? d.meaning` leaked English into the VI slot
+    // whenever a line lacked `vi` — removed (the English now lives in `en`).
     dialogueLong: lesson.dialogue_long?.map((d) => ({
       speaker: d.speaker,
       native: d.hangul,

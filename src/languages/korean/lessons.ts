@@ -18,9 +18,14 @@ export type KoreanSentence = {
 export type KoreanDialogueLine = {
   speaker: string;
   hangul: string;
+  /** English gloss. Pre-#514 this was wrongly mapped to the VI slot;
+   *  #514 authored `text_vi` siblings as the true Vietnamese source. */
   meaning: string;
   text_ko?: string;
+  /** Vietnamese gloss, authored ×544 in #514 (#509 §10.1 Option C).
+   *  Normalizer: vi = text_vi ?? meaning (legacy fallback). */
   text_vi?: string;
+  /** English sibling. Normalizer: en = text_en. */
   text_en?: string;
 };
 
@@ -63,14 +68,16 @@ export type IdiomGloss = {
 };
 
 // B2+ dialogue line (dialogue_long). Trilingual in source:
-// `hangul` (Korean), `meaning` (English gloss — NOT Vietnamese, unlike
-// short-dialogue `KoreanDialogueLine.meaning`), and `vi` (Vietnamese
+// `hangul` (Korean), `meaning` (English gloss) and `vi` (Vietnamese
 // gloss). The normalizer maps `meaning` → en and `vi` → vi.
+// (Post-#514 short-dialogue `KoreanDialogueLine.meaning` is likewise
+// English — its Vietnamese is `text_vi`; only vocab `meaning` is VI.)
 export type KoreanB2DialogueLine = {
   speaker: string;
   hangul: string;
-  /** English gloss of the line. (Distinct from short-dialogue `meaning`,
-   *  which is Vietnamese.) */
+  /** English gloss of the line. (Post-#514 short-dialogue
+   *  `KoreanDialogueLine.meaning` is also English; its Vietnamese is
+   *  `text_vi`. Only vocab `meaning` remains Vietnamese.) */
   meaning: string;
   /** Vietnamese gloss of the line. */
   vi?: string;
