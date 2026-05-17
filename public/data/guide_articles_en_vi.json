@@ -34,8 +34,8 @@
   "tier": "free",
   "domain": "General",
   "title": {
-    "en": "guide_articles_en_vi",
-    "vi": "guide_articles_en_vi"
+    "en": "MercyBlade Guide",
+    "vi": "Hướng dẫn MercyBlade"
   },
   "domain_image": "/images/domains/general.svg"
 }
