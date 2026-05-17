@@ -298,7 +298,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "nói trúng tâm điểm vấn đề (gehoben/standardsprachlich)",
         "meaning_en": "to hit the nail on the head — pinpoint the heart of the matter (elevated/standard register)",
         "example": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere.",
-        "example_en": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere. ('With that observation you've hit the nail on the head — that's exactly the research gap I'm addressing.')"
+        "example_en": "With that observation you've hit the nail on the head — that's exactly the research gap I'm addressing."
       },
       {
         "idiom": "etwas auf den Punkt bringen",
@@ -307,7 +307,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)",
         "meaning_en": "to bring something to a point — sum it up at its essential core (standard register)",
         "example": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit.",
-        "example_en": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit. ('If I may bring my thesis to a point: linguistic hybridity is a resource, not a deficit.')"
+        "example_en": "If I may bring my thesis to a point: linguistic hybridity is a resource, not a deficit."
       },
       {
         "idiom": "ein zweischneidiges Schwert sein",
@@ -316,7 +316,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "có cả mặt lợi và mặt hại (gehoben)",
         "meaning_en": "to be a double-edged sword — cuts both ways (elevated register)",
         "example": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe.",
-        "example_en": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe. ('The quantitative method is a double-edged sword — it brings representativeness, but at the cost of analytical depth.')"
+        "example_en": "The quantitative method is a double-edged sword — it brings representativeness, but at the cost of analytical depth."
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
@@ -325,7 +325,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "ủng hộ luận điểm của ai đó (gehoben)",
         "meaning_en": "to be water on someone's mill — to support/play into someone's argument (elevated register; closest English equivalent: 'grist to one's mill')",
         "example": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz.",
-        "example_en": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz. ('Pennycook's latest findings are grist to my mill — they confirm my resource-based approach.')"
+        "example_en": "Pennycook's latest findings are grist to my mill — they confirm my resource-based approach."
       }
     ],
     "exercises": [
@@ -693,7 +693,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "kế thừa và xây dựng trên thành tựu của các học giả lớn (gehoben)",
         "meaning_en": "to stand on the shoulders of giants — to build on the achievements of great predecessors (elevated register; the English original from Bernard of Chartres / Newton works equally in German)",
         "example": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet.",
-        "example_en": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet. ('With this investigation I stand on the shoulders of giants — Bourdieu, Habermas, Garfinkel paved the way.')"
+        "example_en": "With this investigation I stand on the shoulders of giants — Bourdieu, Habermas, Garfinkel paved the way."
       },
       {
         "idiom": "den Stein des Anstoßes liefern",
@@ -702,7 +702,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đưa ra điểm gây tranh luận quyết định (gehoben)",
         "meaning_en": "to provide the stone of offence — to deliver the decisive point of contention/disagreement (elevated register)",
         "example": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs.",
-        "example_en": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs. ('Wacquant's critique (2014) provided the catalyst for my modification of the habitus concept.')"
+        "example_en": "Wacquant's critique (2014) provided the catalyst for my modification of the habitus concept."
       },
       {
         "idiom": "ins selbe Horn stoßen",
@@ -711,7 +711,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đồng tình với quan điểm của ai đó (gehoben)",
         "meaning_en": "to blow the same horn (origin: hunting) — to agree with someone's position, to take the same line (elevated register)",
         "example": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart.",
-        "example_en": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart. ('García & Wei (2014) take the same line as Pennycook — both argue for a resource-oriented reading.')"
+        "example_en": "García & Wei (2014) take the same line as Pennycook — both argue for a resource-oriented reading."
       },
       {
         "idiom": "der rote Faden",
@@ -720,7 +720,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "chủ đề xuyên suốt, mạch lập luận trung tâm (standardsprachlich)",
         "meaning_en": "the red thread — the through-line, the central thread of an argument (standard register; closest English equivalent: 'the common thread' or 'through-line')",
         "example": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation.",
-        "example_en": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation. ('Bourdieu's concept of symbolic power forms the through-line of my argument.')"
+        "example_en": "Bourdieu's concept of symbolic power forms the through-line of my argument."
       }
     ],
     "exercises": [
@@ -6666,7 +6666,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đối mặt thẳng vấn đề khó (gehoben/standardsprachlich)",
         "meaning_en": "to take the bull by the horns — confront a difficult problem head-on (elevated/standard register; the English idiom is identical)",
         "example": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation.",
-        "example_en": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation. ('After three failed direct conversations you have to take the bull by the horns — formal mediation.')"
+        "example_en": "After three failed direct conversations you have to take the bull by the horns — formal mediation."
       },
       {
         "idiom": "die Wogen glätten",
@@ -6675,7 +6675,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "làm dịu xung đột (gehoben)",
         "meaning_en": "to smooth the waves — calm a conflict (elevated register; closest English equivalent is 'pour oil on troubled waters')",
         "example": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen.",
-        "example_en": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen. ('A moderated discussion can smooth the waves — if both sides come open-ended.')"
+        "example_en": "A moderated discussion can smooth the waves — if both sides come open-ended."
       },
       {
         "idiom": "vom Hundertsten ins Tausendste kommen",
@@ -6684,7 +6684,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "leo thang từ chuyện nhỏ sang chuyện lớn (standardsprachlich)",
         "meaning_en": "to go from the hundredth to the thousandth — escalate from a small issue to a sprawling one; lose the thread (standard register)",
         "example": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste.",
-        "example_en": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste. ('If you mix the substantive level with the personal level, you quickly drift from the hundredth to the thousandth.')"
+        "example_en": "If you mix the substantive level with the personal level, you quickly drift from the hundredth to the thousandth."
       },
       {
         "idiom": "Brücken bauen",
@@ -6693,7 +6693,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "tạo kết nối, hòa giải (standardsprachlich)",
         "meaning_en": "to build bridges — create connections, mediate (standard register; identical English idiom)",
         "example": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern.",
-        "example_en": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern. ('A successful mediation builds bridges between the conflict parties — without papering over the difference.')"
+        "example_en": "A successful mediation builds bridges between the conflict parties — without papering over the difference."
       }
     ],
     "exercises": [
@@ -7064,7 +7064,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "minh bạch hóa Position (standardsprachlich)",
         "meaning_en": "to put the cards on the table — make one's position transparent (standard register; identical English idiom)",
         "example": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen.",
-        "example_en": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen. ('By announcing the BATNA I put my cards on the table — without showing every detail.')"
+        "example_en": "By announcing the BATNA I put my cards on the table — without showing every detail."
       },
       {
         "idiom": "die Reißleine ziehen",
@@ -7073,7 +7073,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "stop khẩn cấp, walk-away (standardsprachlich)",
         "meaning_en": "to pull the ripcord — make an emergency stop, walk away (standard register; closer to English 'pull the plug')",
         "example": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen.",
-        "example_en": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen. ('After three rounds of negotiation without convergence, it was time to pull the ripcord.')"
+        "example_en": "After three rounds of negotiation without convergence, it was time to pull the ripcord."
       },
       {
         "idiom": "Brücken nicht abreißen",
@@ -7082,7 +7082,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "không cắt đứt quan hệ trong walk-away (standardsprachlich)",
         "meaning_en": "not to tear down the bridges — preserve the relationship even at walk-away (standard register; the English equivalent is 'don't burn bridges')",
         "example": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern.",
-        "example_en": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern. ('Even at walk-away we don't tear down the bridges — the market can change.')"
+        "example_en": "Even at walk-away we don't tear down the bridges — the market can change."
       },
       {
         "idiom": "auf Augenhöhe verhandeln",
@@ -7091,7 +7091,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "đàm phán bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "to negotiate at eye level — negotiate as equals (elevated/standard register; the English idiom is 'on a level playing field')",
         "example": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt.",
-        "example_en": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt. ('A BATNA gives you the power to negotiate at eye level — without one you are structurally disadvantaged.')"
+        "example_en": "A BATNA gives you the power to negotiate at eye level — without one you are structurally disadvantaged."
       }
     ],
     "exercises": [
@@ -7462,7 +7462,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "duy trì option re-engage future (standardsprachlich)",
         "meaning_en": "to keep the door open — preserve the option to re-engage in the future (standard register; identical English idiom)",
         "example": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich.",
-        "example_en": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich. ('Even on rejection we keep the door open — markets change, conditions change.')"
+        "example_en": "Even on rejection we keep the door open — markets change, conditions change."
       },
       {
         "idiom": "auf Augenhöhe",
@@ -7471,7 +7471,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "trên cơ sở bình đẳng (gehoben/standardsprachlich)",
         "meaning_en": "at eye level — on equal footing (elevated/standard register; English equivalent is 'on a level playing field')",
         "example": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal.",
-        "example_en": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal. ('I reject at eye level — factually, with a market reference, without a status signal.')"
+        "example_en": "I reject at eye level — factually, with a market reference, without a status signal."
       },
       {
         "idiom": "den Mantel des Schweigens hüllen",
@@ -7480,7 +7480,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "im lặng về điều khó (gehoben)",
         "meaning_en": "to wrap something in the cloak of silence — stay silent on something difficult (elevated register; closer to English 'draw a veil over')",
         "example": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty.",
-        "example_en": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty. ('I don't wrap my veto in the cloak of silence — direct feedback respects the counterparty.')"
+        "example_en": "I don't wrap my veto in the cloak of silence — direct feedback respects the counterparty."
       },
       {
         "idiom": "es rechnet sich nicht",
@@ -7489,7 +7489,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "không kinh tế khả thi (standardsprachlich)",
         "meaning_en": "it doesn't pay off / it doesn't add up — it's not economically viable (standard register; the most natural German way to put this)",
         "example": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen.",
-        "example_en": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen. ('At fourteen percent below the market average the agreement doesn't pay off for us — I have to say that openly.')"
+        "example_en": "At fourteen percent below the market average the agreement doesn't pay off for us — I have to say that openly."
       }
     ],
     "exercises": [
@@ -7855,7 +7855,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "kiên cường trước phê phán/tấn công (standardsprachlich)",
         "meaning_en": "to have a thick skin / a thick fur — be resilient under criticism or attack (standard register; the English equivalent is 'have thick skin')",
         "example": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen.",
-        "example_en": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen. ('In hostile negotiations you need a thick skin — personal attacks must not get through.')"
+        "example_en": "In hostile negotiations you need a thick skin — personal attacks must not get through."
       },
       {
         "idiom": "Ruhe bewahren",
@@ -7864,7 +7864,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "giữ bình tĩnh dưới áp lực (standardsprachlich)",
         "meaning_en": "to keep one's composure (standard register; literally 'preserve calm')",
         "example": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig.",
-        "example_en": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig. ('Whoever keeps their composure wins in a hostile environment — escalation never pays off long-term.')"
+        "example_en": "Whoever keeps their composure wins in a hostile environment — escalation never pays off long-term."
       },
       {
         "idiom": "den Ball flach halten",
@@ -7873,7 +7873,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
         "meaning_en": "to keep the ball flat / low — keep the tone low, don't escalate (standard register; closer to English 'keep your head down' or 'don't make waves')",
         "example": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren.",
-        "example_en": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren. ('Even when Müller gets loud, I keep the ball low. Escalation would only validate his tactic.')"
+        "example_en": "Even when Müller gets loud, I keep the ball low. Escalation would only validate his tactic."
       },
       {
         "idiom": "ins Schwarze treffen",
@@ -7882,7 +7882,7 @@ export const lessons: GermanLesson[] = [
         "meaning": "trúng đích chính xác (gehoben/standardsprachlich)",
         "meaning_en": "to hit the bullseye — strike the target precisely (elevated/standard register; identical English idiom)",
         "example": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden.",
-        "example_en": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden. ('With the mandate reframe I hit the bullseye — Müller couldn't continue to be personal.')"
+        "example_en": "With the mandate reframe I hit the bullseye — Müller couldn't continue to be personal."
       }
     ],
     "exercises": [
