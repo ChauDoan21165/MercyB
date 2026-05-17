@@ -2,9 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Mission (from NORTH_STAR.md)
+## Mission
 
-Make MercyBlade the #1 English-learning app for Vietnamese learners — the one Vietnamese students publicly credit for their IELTS score, their job abroad, their life change. Outcomes, not engagement. Vietnamese-first in every feature, word, and button. Read `NORTH_STAR.md` in full before any big decision; it is the authoritative context document.
+Make MercyBlade the #1 English-learning app for Vietnamese learners — the one Vietnamese students publicly credit for their IELTS score, their job abroad, their life change. Outcomes, not engagement. Vietnamese-first in every feature, word, and button.
+
+**Read `STRATEGY.md` and `PRINCIPLES.md` first — they are the two canonical living documents** (post-2026-05-17 strategic clarification). `NORTH_STAR.md` and `PLAN.md` are archived historical references in `reports/archive/`; consult them for history, not current direction.
 
 ## The five non-negotiables — a feature that violates any of these is rejected
 
@@ -67,7 +69,7 @@ npx cap open ios             # opens ios/App/App.xcworkspace (always the workspa
 
 # Supabase — project buemdfxyhxunzpgdoqin.supabase.co
 # Some migrations were applied manually via SQL Editor; CLI state drifts.
-# See NORTH_STAR "Fix Supabase migration drift" before `supabase db push`.
+# See archived reports/archive/NORTH_STAR-v1.3-2026-04-20.md "Fix Supabase migration drift" before `supabase db push`.
 ```
 
 ## Architecture — multi-file concepts worth knowing
@@ -109,7 +111,7 @@ Not a vanilla create-react-app boot. Includes:
 
 - One **browser** Supabase client — singleton at `src/lib/supabaseClient.ts` (anon key, the only client that ships to the browser bundle). SSR has a **separate** service-role client at `src/server/host/renderer.ts:39` — intentional, server-only, never bundled. Don't add a third.
 - 9 edge functions for email (`email-broadcast`, `send-email-campaign`, `email-automations`, `send-redeem-email`, `send-feedback-reply`, `send-pending-emails`, `admin-daily-digest`, `test-email`, `mercy-ai-builder-email`). Plus billing, audio generation, admin, etc.
-- `room-audio` Storage bucket is PUBLIC (post-Phase-2). Tier-gating lives in the app layer, not in RLS. Revisit tracked in NORTH_STAR Deferred Tech Debt.
+- `room-audio` Storage bucket is PUBLIC (post-Phase-2). Tier-gating lives in the app layer, not in RLS. Revisit tracked in archived reports/archive/NORTH_STAR-v1.3-2026-04-20.md "Deferred Tech Debt".
 - DNS is on Cloudflare. `admin@mercyblade.com` → forwarded to Chau's personal inbox via Cloudflare Email Routing.
 
 ### Dev server quirks
