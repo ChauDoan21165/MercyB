@@ -68,25 +68,95 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "春になれば、桜が咲きます。",
-        "english": "If spring comes, cherry blossoms bloom."
+        "english": "If spring comes, cherry blossoms bloom.",
+        "pronunciation_focus": [
+          "春 (はる) → 'ha-ru'; pitch HEIBAN (低→高, không tụt) — đừng nhấn は như tiếng Việt",
+          "に → trợ từ, đọc thấp, dính 春に thành một cụm nhịp, không tách",
+          "なれば → 'na-re-ba'; ば-form điều kiện của なる; ば là một mora dứt khoát, không kéo dài",
+          "桜 (さくら) → 'sa-ku-ra'; pitch NAKADAKA (低高低): mora 2 く lên cao rồi tụt — đọc bằng phẳng là sai ngữ điệu",
+          "が → trợ từ chủ ngữ, 'g' cứng (như 'g' trong 'gà'), không phải 'gi'",
+          "咲きます → 'sa-ki-mas'; ます kết câu, hạ giọng trần thuật, nguyên âm cuối lướt"
+        ],
+        "pronunciation_focus_en": [
+          "春 (haru) → 'ha-ru'; heiban pitch (low→high, no drop) — don't stress は",
+          "に → particle, low and bound into 春に as one rhythmic unit",
+          "なれば → 'na-re-ba'; conditional ば-form of なる; ば is one crisp mora, not lengthened",
+          "桜 (sakura) → 'sa-ku-ra'; nakadaka pitch (low-high-low): mora 2 く peaks then drops",
+          "が → subject particle, hard 'g', not 'gi'",
+          "咲きます → 'sa-ki-mas'; ます sentence-final, falling declarative, final vowel devoiced"
+        ]
       },
       {
         "japanese": "東京に行ったら、スカイツリーに登りたい。",
-        "english": "If I go to Tokyo, I want to climb the Sky Tree."
+        "english": "If I go to Tokyo, I want to climb the Sky Tree.",
+        "pronunciation_focus": [
+          "東京 (とうきょう) → 'too-kyoo'; HAI nguyên âm dài (とう, きょう), mỗi cái 2 mora — rút thành 'to-kyo' là sai nhịp",
+          "に行ったら → 'ni it-ta-ra'; っ là âm ngắt (sokuon) — dừng một mora trước た, không lướt qua",
+          "スカイツリー → 'su-ka-i-tsu-rii'; ツ là 'tsu', リー nguyên âm dài 2 mora",
+          "登りたい → 'no-bo-ri-ta-i'; たい (muốn) nhấn nhẹ, giọng đi lên cuối câu thể hiện mong muốn"
+        ],
+        "pronunciation_focus_en": [
+          "東京 (tōkyō) → 'too-kyoo'; two long vowels (とう, きょう), 2 mora each — 'to-kyo' breaks the rhythm",
+          "に行ったら → 'ni it-ta-ra'; っ is a sokuon (held stop) — hold one mora before た",
+          "スカイツリー → 'su-ka-i-tsu-rii'; ツ is 'tsu', リー a 2-mora long vowel",
+          "登りたい → 'no-bo-ri-ta-i'; lightly stressed desiderative たい, rising want-intonation"
+        ]
       },
       {
         "japanese": "勉強するなら、図書館のほうがいいです。",
-        "english": "If you study, the library is better."
+        "english": "If you study, the library is better.",
+        "pronunciation_focus": [
+          "勉強 (べんきょう) → 'ben-kyoo'; ん là một mora riêng (moraic n), きょう nguyên âm dài",
+          "するなら → 'su-ru-na-ra'; なら nối liền; hơi tách nhịp trước nó báo hiệu 'nếu (như bạn nói)'",
+          "図書館 (としょかん) → 'to-sho-kan'; ん một nhịp riêng, bốn mora đều (mang từ A2)",
+          "のほうが → 'no-hoo-ga'; ほう nguyên âm dài, が 'g' cứng, cụm so sánh nhấn ほう",
+          "いいです → 'ii-des'; いい hai mora, です lướt 'des'"
+        ],
+        "pronunciation_focus_en": [
+          "勉強 (benkyō) → 'ben-kyoo'; moraic ん, きょう a long vowel",
+          "するなら → 'su-ru-na-ra'; なら bound; a slight break before it flags 'if (as you say)'",
+          "図書館 (toshokan) → 'to-sho-kan'; moraic ん, four even mora (carried from A2)",
+          "のほうが → 'no-hoo-ga'; long ほう, hard が; the comparative phrase stresses ほう",
+          "いいです → 'ii-des'; いい two mora, です glides to 'des'"
+        ]
       },
       {
         "japanese": "このスイッチを押すと、ドアが開きます。",
-        "english": "If you press this switch, the door opens."
+        "english": "If you press this switch, the door opens.",
+        "pronunciation_focus": [
+          "スイッチ → 'su-i-tchi'; っち là âm ngắt + ち, ngắt một mora trước ち",
+          "押すと → 'o-su-to'; と ở đây là điều kiện 'hễ ~ thì', đọc dính 押すと, KHÔNG ngắt như と 'và'",
+          "ドア → 'do-a'; hai mora rõ, không thành 'doa' một âm",
+          "開きます → 'hi-ra-ki-mas'; ます lướt cuối, giọng trần thuật hạ"
+        ],
+        "pronunciation_focus_en": [
+          "スイッチ → 'su-i-tchi'; っち is sokuon + ち, hold one mora before ち",
+          "押すと → 'o-su-to'; と here is the consequence conditional 'whenever ~', bound to 押すと, NOT the listing と",
+          "ドア → 'do-a'; two clear mora, not a single 'doa'",
+          "開きます → 'hi-ra-ki-mas'; ます glides, falling declarative"
+        ]
       },
       {
         "japanese": "来週時間があったら、映画を見に行きませんか。",
-        "english": "If you have time next week, shall we go see a movie?"
+        "english": "If you have time next week, shall we go see a movie?",
+        "pronunciation_focus": [
+          "来週 (らいしゅう) → 'rai-shuu'; しゅう nguyên âm dài 2 mora, ら là 'r' chạm lưỡi (giữa l/r Việt)",
+          "時間があったら → 'ji-kan ga at-ta-ra'; あった có っ ngắt một mora; が 'g' cứng",
+          "見に行きません → 'mi ni i-ki-ma-sen'; ません giọng tụt nhẹ",
+          "か → trợ từ nghi vấn, giọng đi LÊN cuối câu (lời rủ rê lịch sự, không phải hỏi cộc)"
+        ],
+        "pronunciation_focus_en": [
+          "来週 (raishū) → 'rai-shuu'; しゅう a 2-mora long vowel; ら is a tapped 'r'",
+          "時間があったら → 'ji-kan ga at-ta-ra'; あった has sokuon っ, one held mora; hard が",
+          "見に行きません → 'mi ni i-ki-ma-sen'; ません dips",
+          "か → question particle with RISING final intonation (polite invitation, not a blunt question)"
+        ]
       }
     ],
+    "cultural_notes_vi": "Bốn cách nói 'nếu' trong tiếng Nhật KHÔNG thay thế cho nhau, chọn sai nghe vô duyên hoặc thất lễ nơi công sở. と = hệ quả tự nhiên/quy luật (春になると桜が咲く), không dùng cho ý muốn hay nhờ vả. ば = điều kiện chung/giả định, hạn chế khi vế sau là mệnh lệnh/rủ rê. たら linh hoạt nhất trong hội thoại và an toàn khi nói với cấp trên (資料ができたら、お送りします). なら tiếp nhận thông tin đối phương vừa nêu rồi đưa lời khuyên (東京に行くなら新幹線がいいですよ). Người Việt hay dồn hết về たら và mất sắc thái — ở công ty Nhật, dùng と chỗ đáng lẽ たら nghe như đang phán xét quy luật thay vì xin phép.",
+    "cultural_notes_en": "Japanese has four 'if' constructions that are NOT interchangeable; the wrong one sounds tactless or rude at work. と = a natural / law-like consequence (春になると桜が咲く), never volition or a request. ば = a general or hypothetical condition, weak when the result is a command or invitation. たら is the most flexible in conversation and the safe choice with a superior (資料ができたら、お送りします). なら picks up what the other person just said and offers advice (東京に行くなら新幹線がいいですよ). Vietnamese learners overgeneralise to たら and lose the nuance — at a Japanese company, using と where たら is expected sounds like judging a rule rather than asking permission.",
+    "tip_advice_vi": "Đừng học bốn mẫu điều kiện bằng bảng quy tắc — não sẽ kẹt khi nói thật. Ở B2: shadowing drama/họp công sở Nhật, mỗi lần gặp 'nếu' dừng lại tự hỏi 'sao chỗ này たら chứ không phải と'. Gom 10–15 câu thật vào Anki theo cụm (collocation), không học từ lẻ. Tỉ lệ input/output ~70/30: nghe nhiều để cảm sắc thái trước, rồi ép viết lại cùng một ý bằng cả ba mẫu mỗi ngày và nhờ người Nhật sửa — chính phần output bị sửa mới khắc được khác biệt と/ば/たら/なら.",
+    "tip_advice_en": "Don't drill the four conditionals from a rules table — it freezes in real speech. At B2: shadow Japanese drama and meeting clips; at every 'if', pause and ask 'why たら here, not と'. Bank 10–15 real sentences in Anki as collocations, not isolated words. Keep input/output ~70/30: absorb the nuance first, then force yourself to rewrite one idea daily in all three forms and have a native correct it — the corrected output is what fixes the と/ば/たら/なら distinction.",
     "dialogue": [
       {
         "speaker": "A",
@@ -195,25 +265,107 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "今、猫の手も借りたいほど忙しい。",
-        "english": "I'm so busy I could use a cat's paw."
+        "english": "I'm so busy I could use a cat's paw.",
+        "pronunciation_focus": [
+          "今 (いま) → 'i-ma'; pitch ATAMADAKA (高低): mora 1 い cao rồi tụt — KHÁC 今 trong 'ただいま'",
+          "猫の手も → 'ne-ko no te mo'; đọc liền cụm, も nhấn nhẹ ('đến cả tay mèo')",
+          "借りたい → 'ka-ri-ta-i'; たい mong muốn, không kéo dài い cuối",
+          "ほど → 'ho-do'; chỉ mức độ, đọc bằng, dính vào 借りたいほど",
+          "忙しい → 'i-so-ga-shii'; しい hai mora dài, trọng âm rơi が, kéo cuối nghe than thở"
+        ],
+        "pronunciation_focus_en": [
+          "今 (ima) → 'i-ma'; atamadaka pitch (high-low): い peaks then drops — differs from 今 in ただいま",
+          "猫の手も → 'ne-ko no te mo'; bound phrase, light stress on も ('even a cat's paw')",
+          "借りたい → 'ka-ri-ta-i'; desiderative たい, no lengthened final い",
+          "ほど → 'ho-do'; degree marker, flat, bound to 借りたいほど",
+          "忙しい → 'i-so-ga-shii'; しい a 2-mora long vowel, accent on が, drawn-out ending sounds like a complaint"
+        ]
       },
       {
         "japanese": "彼もあんなミスをするなんて、猿も木から落ちるね。",
-        "english": "Even he makes a mistake like that – even monkeys fall from trees."
+        "english": "Even he makes a mistake like that – even monkeys fall from trees.",
+        "pronunciation_focus": [
+          "彼も → 'ka-re mo'; 彼 heiban, も nghĩa 'cả ~ cũng'",
+          "あんな → 'an-na'; ん một mora + な, KHÔNG nuốt thành 'ana'",
+          "ミス → 'mi-su'; từ mượn, す devoiced gần như 'mis'",
+          "猿 (さる) → 'sa-ru'; pitch HEIBAN, ら/る là 'r' chạm lưỡi",
+          "木から → 'ki ka-ra'; き đứng một mình hơi devoiced 'ki̥'",
+          "ね → trợ từ đồng tình, giọng xuống nhẹ (chia sẻ cảm thán, không hỏi)"
+        ],
+        "pronunciation_focus_en": [
+          "彼も → 'ka-re mo'; 彼 heiban, も = 'even ~ too'",
+          "あんな → 'an-na'; moraic ん + な, don't reduce to 'ana'",
+          "ミス → 'mi-su'; loanword, devoiced す ≈ 'mis'",
+          "猿 (saru) → 'sa-ru'; heiban pitch, tapped r",
+          "木から → 'ki ka-ra'; standalone き slightly devoiced 'ki̥'",
+          "ね → agreement particle, gentle falling (shared remark, not a question)"
+        ]
       },
       {
         "japanese": "値段より味のほうが大事だよ。花より団子だ。",
-        "english": "Taste is more important than price – substance over style."
+        "english": "Taste is more important than price – substance over style.",
+        "pronunciation_focus": [
+          "値段 (ねだん) → 'ne-dan'; ん một mora riêng",
+          "より → 'yo-ri'; trợ từ so sánh 'hơn', đọc liền 値段より",
+          "味 (あじ) → 'a-ji'; じ hữu thanh 'ji'",
+          "大事 (だいじ) → 'da-i-ji'; だい 2 mora, じ 'ji'",
+          "だよ → 'da yo'; よ khẳng định, giọng xuống dứt khoát (thân mật)",
+          "花より団子 → 'ha-na yo-ri dan-go'; nhịp tục ngữ đều, だ kết câu gọn"
+        ],
+        "pronunciation_focus_en": [
+          "値段 (nedan) → 'ne-dan'; moraic ん",
+          "より → 'yo-ri'; comparative particle 'than', bound to 値段より",
+          "味 (aji) → 'a-ji'; voiced じ 'ji'",
+          "大事 (daiji) → 'da-i-ji'; だい 2 mora, じ 'ji'",
+          "だよ → 'da yo'; assertive よ, decisive fall (casual)",
+          "花より団子 → 'ha-na yo-ri dan-go'; even proverb rhythm, crisp final だ"
+        ]
       },
       {
         "japanese": "事故った上に財布をなくした。泣きっ面に蜂だ。",
-        "english": "I had an accident and lost my wallet – adding insult to injury."
+        "english": "I had an accident and lost my wallet – adding insult to injury.",
+        "pronunciation_focus": [
+          "事故った → 'ji-kot-ta'; こっ sokuon ngắt một mora — slang động từ hoá từ 事故",
+          "上に → 'u-e ni'; 'thêm vào đó', đọc liền 上に",
+          "財布 (さいふ) → 'sa-i-fu'; ふ là 'fu' môi nhẹ (không 'hu' cũng không 'f' Anh)",
+          "なくした → 'na-ku-shi-ta'; く devoiced 'na-ku̥-shta'",
+          "泣きっ面 → 'na-ki-tsu-ra'; きっ sokuon ngắt trước つ→づら, cụm tục ngữ",
+          "蜂だ → 'ha-chi da'; ち 'chi', だ kết câu cảm thán"
+        ],
+        "pronunciation_focus_en": [
+          "事故った → 'ji-kot-ta'; sokuon こっ, one held mora — slangy verbing of 事故",
+          "上に → 'u-e ni'; 'on top of that', bound 上に",
+          "財布 (saifu) → 'sa-i-fu'; ふ is bilabial 'fu' (neither 'hu' nor English 'f')",
+          "なくした → 'na-ku-shi-ta'; devoiced く → 'na-ku̥-shta'",
+          "泣きっ面 → 'na-ki-tsu-ra'; きっ sokuon before つ→づら, proverb chunk",
+          "蜂だ → 'ha-chi da'; ち 'chi', exclamatory final だ"
+        ]
       },
       {
         "japanese": "彼はいつも石橋を叩いて渡るタイプだ。",
-        "english": "He's the type to tap the stone bridge before crossing – very cautious."
+        "english": "He's the type to tap the stone bridge before crossing – very cautious.",
+        "pronunciation_focus": [
+          "彼は → 'ka-re wa'; は trợ từ đọc 'wa' (mang từ A1)",
+          "いつも → 'i-tsu-mo'; つ 'tsu', heiban đều",
+          "石橋 (いしばし) → 'i-shi-ba-shi'; bốn mora đều, không nhấn kiểu Việt",
+          "を叩いて → 'o ta-ta-i-te'; たたいて nhịp đều, て nối tiếp diễn",
+          "渡る → 'wa-ta-ru'; わ 'wa'; tục ngữ 'gõ cầu đá rồi mới qua'",
+          "タイプだ → 'ta-i-pu da'; loanword, ぷ devoiced 'taip', だ kết câu"
+        ],
+        "pronunciation_focus_en": [
+          "彼は → 'ka-re wa'; は particle pronounced 'wa' (carried from A1)",
+          "いつも → 'i-tsu-mo'; つ 'tsu', even heiban",
+          "石橋 (ishibashi) → 'i-shi-ba-shi'; four even mora, no Vietnamese-style stress",
+          "を叩いて → 'o ta-ta-i-te'; even rhythm, て links the sequence",
+          "渡る → 'wa-ta-ru'; わ 'wa'; the proverb 'tap the stone bridge before crossing'",
+          "タイプだ → 'ta-i-pu da'; loanword, ぷ devoiced 'taip', final だ"
+        ]
       }
     ],
+    "cultural_notes_vi": "Tục ngữ và 慣用句 không chỉ là 'thành ngữ' — chúng mang cả tầng văn hoá nông nghiệp, Phật giáo và quan sát thiên nhiên của người Nhật. Quy tắc quan trọng nhất nơi công sở: phần lớn ことわざ KHÔNG dùng để khen/chê thẳng người khác trước mặt. 猿も木から落ちる nói VỀ một sai sót (kể cả của cấp trên) một cách nhẹ nhàng, không nói TRƯỚC mặt để chê. 石橋を叩いて渡る dùng trong họp để khen ai đó cẩn trọng — trong văn hoá doanh nghiệp Nhật, 'thận trọng' là lời khen. Dùng đúng một câu tục ngữ đúng lúc khiến người Nhật thấy bạn 'hiểu chuyện'; dùng sai chỗ (quá nhiều, hoặc tục ngữ vùng miền lạ) nghe như đọc sách giáo khoa.",
+    "cultural_notes_en": "Proverbs and 慣用句 are not just 'set phrases' — they carry layers of Japan's agrarian, Buddhist and nature-observing culture. The key workplace rule: most ことわざ are NOT used to praise or criticise someone to their face. 猿も木から落ちる comments lightly ABOUT a slip (even a superior's), never said in front of them as a put-down. 石橋を叩いて渡る is used in a meeting to praise someone's prudence — in Japanese corporate culture, 'cautious' is a compliment. One well-placed proverb makes a Japanese listener feel you 'get it'; the wrong spot (too many, or an unfamiliar regional one) sounds like reciting a textbook.",
+    "tip_advice_vi": "Đừng học 慣用句 qua nghĩa đen — học theo TÌNH HUỐNG và sắc thái (câu nào suồng sã, câu nào dùng được trong keigo). Ở B2: 'thu hoạch' tục ngữ từ phim/tin tức thật, mỗi câu ghi kèm 1 ví dụ có ngữ cảnh vào Anki, đánh dấu register. Quy tắc 5 câu: chỉ chủ động dùng 5 câu bạn đã nghe người Nhật dùng và chắc về sắc thái; còn lại để hiểu thụ động. Lạm dụng tục ngữ khi là người nước ngoài nghe 'cố quá' — ít mà đúng hơn nhiều mà sai.",
+    "tip_advice_en": "Don't learn 慣用句 through literal meaning — learn the SITUATION and register (which are slangy, which survive keigo). At B2: 'harvest' proverbs from real drama and news, banking each with one contextual example in Anki tagged by register. The rule of 5: only actively use the 5 you have heard a native use and whose nuance you are sure of; keep the rest receptive. Overusing proverbs as a foreigner sounds like trying too hard — fewer and correct beats many and wrong.",
     "dialogue": [
       {
         "speaker": "A",
@@ -322,25 +474,85 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "このラーメン、めっちゃ美味しい！",
-        "english": "This ramen is super delicious!"
+        "english": "This ramen is super delicious!",
+        "pronunciation_focus": [
+          "ラーメン → 'raa-men'; ラー nguyên âm dài 2 mora, ん một mora riêng",
+          "めっちゃ → 'met-cha'; っちゃ sokuon + ちゃ, ngắt một mora — slang gốc 関西 lan toàn quốc",
+          "美味しい → 'o-i-shii'; しい dài 2 mora, giọng cảm thán đi lên rồi nhấn mạnh ! (vui)"
+        ],
+        "pronunciation_focus_en": [
+          "ラーメン → 'raa-men'; ラー a 2-mora long vowel, moraic ん",
+          "めっちゃ → 'met-cha'; sokuon + ちゃ, one held mora — Kansai slang gone nationwide",
+          "美味しい → 'o-i-shii'; しい a 2-mora long vowel, excited rising-then-emphatic with !"
+        ]
       },
       {
         "japanese": "マジで？信じられない。",
-        "english": "Seriously? I can't believe it."
+        "english": "Seriously? I can't believe it.",
+        "pronunciation_focus": [
+          "マジで → 'ma-ji de'; じ 'ji' hữu thanh; rút gọn từ 真面目, slang",
+          "？ → giọng đi LÊN mạnh ở で (ngạc nhiên), không phải câu hỏi trung tính",
+          "信じられない → 'shin-ji-ra-re-na-i'; ん một mora, thể khả năng phủ định, giọng tụt cuối (sốc)"
+        ],
+        "pronunciation_focus_en": [
+          "マジで → 'ma-ji de'; voiced じ 'ji'; clipped from 真面目, slang",
+          "？ → sharp RISING pitch on で (surprise), not a neutral question",
+          "信じられない → 'shin-ji-ra-re-na-i'; moraic ん, potential-negative, falling end (disbelief)"
+        ]
       },
       {
         "japanese": "あの映画、やばかったよ。",
-        "english": "That movie was awesome / terrible. (context)"
+        "english": "That movie was awesome / terrible. (context)",
+        "pronunciation_focus": [
+          "あの → 'a-no'; do dự/chỉ định, đọc bằng",
+          "映画 (えいが) → 'e-e-ga'; えい đọc thành 'ee' nguyên âm dài (KHÔNG 'e-i'), が 'g' cứng",
+          "やばかった → 'ya-ba-kat-ta'; かっ sokuon; やばい chia quá khứ tính từ-i — nghĩa TỐT hay XẤU tuỳ ngữ điệu",
+          "よ → khẳng định cho người nghe, giọng xuống chắc"
+        ],
+        "pronunciation_focus_en": [
+          "あの → 'a-no'; hesitation/demonstrative, flat",
+          "映画 (eiga) → 'e-e-ga'; えい becomes long 'ee' (NOT 'e-i'), hard が",
+          "やばかった → 'ya-ba-kat-ta'; sokuon かっ; past i-adjective of やばい — good OR bad by intonation",
+          "よ → assertive-to-listener, firm fall"
+        ]
       },
       {
         "japanese": "宿題が多すぎてだるい。",
-        "english": "Too much homework, so tiresome."
+        "english": "Too much homework, so tiresome.",
+        "pronunciation_focus": [
+          "宿題 (しゅくだい) → 'shu-ku-da-i'; く devoiced 'shu-ku̥-da-i', しゅ là âm chụm",
+          "が → chủ ngữ 'g' cứng",
+          "多すぎて → 'oo-su-gi-te'; おお nguyên âm dài, すぎて 'quá ~', ぎ 'g' cứng",
+          "だるい → 'da-ru-i'; slang 'uể oải/ngán', giọng kéo dài than vãn"
+        ],
+        "pronunciation_focus_en": [
+          "宿題 (shukudai) → 'shu-ku-da-i'; devoiced く 'shu-ku̥-da-i', palatalised しゅ",
+          "が → subject, hard 'g'",
+          "多すぎて → 'oo-su-gi-te'; long おお, すぎて 'too ~', hard ぎ",
+          "だるい → 'da-ru-i'; slang 'sluggish/can't be bothered', drawn-out whiny tone"
+        ]
       },
       {
         "japanese": "今日、学校行ってないの？ – 行ってるよ。",
-        "english": "You didn't go to school today? – I did go."
+        "english": "You didn't go to school today? – I did go.",
+        "pronunciation_focus": [
+          "今日 (きょう) → 'kyoo'; きょう âm chụm + nguyên âm dài, MỘT từ 2 mora (không 'ki-yo-u')",
+          "行ってない → 'it-te-na-i'; いって sokuon; rút gọn của 行っていない (lược い khẩu ngữ)",
+          "の？ → trợ từ の cuối câu hỏi thân mật, giọng đi lên",
+          "行ってる → 'it-te-ru'; rút gọn của 行っている; よ giọng xuống cải chính"
+        ],
+        "pronunciation_focus_en": [
+          "今日 (kyō) → 'kyoo'; palatalised + long vowel, ONE 2-mora word (not 'ki-yo-u')",
+          "行ってない → 'it-te-na-i'; sokuon いって; contraction of 行っていない (colloquial い-drop)",
+          "の？ → sentence-final の, casual question, rising",
+          "行ってる → 'it-te-ru'; contraction of 行っている; よ falling, corrective"
+        ]
       }
     ],
+    "cultural_notes_vi": "Tiếng lóng bị 'khoá' theo register chặt hơn người Việt tưởng: やばい・めっちゃ・マジで thoải mái với bạn bè nhưng có thể huỷ sự nghiệp nếu buột ra trong keigo hay với 上司/khách hàng. Nhiều từ mang dấu thế hệ và vùng miền (めっちゃ gốc 関西, 関東 hay nói 超); やばい đổi nghĩa tốt↔xấu hoàn toàn theo ngữ điệu và ngữ cảnh. Nguy hiểm lớn nhất với người học: lịch sự kiểu sách giáo khoa rồi đột ngột chêm lóng nghe rất 'lệch'. Ở công ty Nhật, TUYỆT ĐỐI không dùng nhóm này với cấp trên/khách — biết chúng là để NGHE hiểu đồng nghiệp lúc thân mật và xem phim, không phải để nói nơi công việc.",
+    "cultural_notes_en": "Slang is register-locked more tightly than Vietnamese learners expect: やばい・めっちゃ・マジで are fine with friends but can wreck a career if they slip out in keigo or with a 上司/client. Many carry generational and regional marks (めっちゃ is Kansai-rooted; Kantō tends to say 超); やばい flips good↔bad entirely by intonation and context. The biggest learner danger: textbook politeness with a sudden slang insert sounds badly 'off'. At a Japanese company, NEVER use this set with a superior or client — knowing it is for LISTENING to colleagues off-hours and watching drama, not for production at work.",
+    "tip_advice_vi": "Ở B2 hãy xây 'ngân hàng lóng tiếp nhận' — hiểu được, không nhất thiết tự nói. Mỗi từ gắn nhãn: register (suồng sã đến đâu), độ tuổi, vùng miền. Học từ chương trình tạp kỹ (バラエティ) và Twitter/X, KHÔNG từ sách giáo khoa. Quy tắc sản sinh: chỉ nói lại đúng những gì bạn của bạn (người Nhật) thực sự nói với bạn, và chỉ trong đúng quan hệ đó. Người nước ngoài lạm dụng lóng nghe như đang 'diễn' — an toàn nhất là hiểu nhiều, nói ít, đúng quan hệ.",
+    "tip_advice_en": "At B2, build a receptive slang bank — understand it, don't necessarily produce it. Tag each item by register (how casual), age and region. Learn from variety shows (バラエティ) and Twitter/X, NOT textbooks. Production rule: only echo back what your Japanese friends actually say to you, and only inside that same relationship. Overusing slang as a foreigner sounds like a performance — the safe play is understand a lot, say little, and match the relationship.",
     "dialogue": [
       {
         "speaker": "A",
@@ -449,25 +661,95 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "第一に、コスト削減の観点から反対します。",
-        "english": "First, I oppose from a cost reduction perspective."
+        "english": "First, I oppose from a cost reduction perspective.",
+        "pronunciation_focus": [
+          "第一に → 'da-i-i-chi ni'; だいいち có nguyên âm い+い liền; cụm mở đầu hùng biện, nhấn rõ",
+          "コスト → 'ko-su-to'; loanword, す devoiced 'kos-to'",
+          "削減 (さくげん) → 'sa-ku-gen'; く devoiced 'sa-ku̥-gen', ん một mora",
+          "観点から → 'kan-ten ka-ra'; ん mỗi cái một mora",
+          "反対します → 'han-tai shi-mas'; たい 2 mora, ます lướt, giọng quả quyết hạ cuối"
+        ],
+        "pronunciation_focus_en": [
+          "第一に → 'da-i-i-chi ni'; だいいち has adjacent い+い; rhetorical opener, clearly stressed",
+          "コスト → 'ko-su-to'; loanword, devoiced す 'kos-to'",
+          "削減 (sakugen) → 'sa-ku-gen'; devoiced く 'sa-ku̥-gen', moraic ん",
+          "観点から → 'kan-ten ka-ra'; each ん one mora",
+          "反対します → 'han-tai shi-mas'; たい 2 mora, ます glides, firm falling close"
+        ]
       },
       {
         "japanese": "その主張にはデータの裏付けがありません。",
-        "english": "That claim has no data support."
+        "english": "That claim has no data support.",
+        "pronunciation_focus": [
+          "主張 (しゅちょう) → 'shu-choo'; しゅ và ちょう đều là âm chụm, ちょう nguyên âm dài",
+          "には → 'ni wa'; は đọc 'wa'; cụm nhấn đối tượng tranh luận",
+          "データ → 'dee-ta'; デー nguyên âm dài 2 mora",
+          "裏付け → 'u-ra-zu-ke'; づ 'zu' hữu thanh",
+          "がありません → 'ga a-ri-ma-sen'; が 'g' cứng, ません phủ định lịch sự giọng xuống nhẹ"
+        ],
+        "pronunciation_focus_en": [
+          "主張 (shuchō) → 'shu-choo'; both しゅ and ちょう palatalised, ちょう long vowel",
+          "には → 'ni wa'; は as 'wa'; phrase foregrounds the claim under attack",
+          "データ → 'dee-ta'; デー a 2-mora long vowel",
+          "裏付け → 'u-ra-zu-ke'; voiced づ 'zu'",
+          "がありません → 'ga a-ri-ma-sen'; hard が, polite negative ません, gentle fall"
+        ]
       },
       {
         "japanese": "感情論ではなく、論理的に話しましょう。",
-        "english": "Let's speak logically, not emotionally."
+        "english": "Let's speak logically, not emotionally.",
+        "pronunciation_focus": [
+          "感情論 → 'kan-joo-ron'; ん×2 mỗi cái một mora, じょう âm chụm + dài",
+          "ではなく → 'de wa na-ku'; は 'wa'; cấu trúc 'không phải A mà ~', ngắt nhịp sau なく",
+          "論理的に → 'ron-ri-te-ki ni'; ん một mora, り 'r' chạm lưỡi",
+          "話しましょう → 'ha-na-shi-ma-shoo'; ましょう 'hãy ~', しょう dài, giọng mời đi lên rồi hạ"
+        ],
+        "pronunciation_focus_en": [
+          "感情論 → 'kan-joo-ron'; two ん each one mora, じょう palatalised + long",
+          "ではなく → 'de wa na-ku'; は 'wa'; 'not A but ~', slight break after なく",
+          "論理的に → 'ron-ri-te-ki ni'; moraic ん, tapped り",
+          "話しましょう → 'ha-na-shi-ma-shoo'; ましょう 'let's ~', long しょう, inviting rise then settle"
+        ]
       },
       {
         "japanese": "多くの反対意見にもかかわらず、この法案は可決されました。",
-        "english": "Despite much opposition, the bill was passed."
+        "english": "Despite much opposition, the bill was passed.",
+        "pronunciation_focus": [
+          "多くの → 'oo-ku no'; おお nguyên âm dài, く devoiced 'oo-ku̥'",
+          "反対意見 → 'han-tai i-ken'; たい 2 mora, いけん ん một mora",
+          "にもかかわらず → 'ni mo ka-ka-wa-ra-zu'; cụm cố định trang trọng 'mặc dù ~', đọc liền không vấp, ず 'zu'",
+          "法案は → 'hoo-an wa'; ほう nguyên âm dài, は 'wa'",
+          "可決されました → 'ka-ke-tsu sa-re-ma-shi-ta'; bị động されました giọng trần thuật hạ"
+        ],
+        "pronunciation_focus_en": [
+          "多くの → 'oo-ku no'; long おお, devoiced く 'oo-ku̥'",
+          "反対意見 → 'han-tai i-ken'; たい 2 mora, moraic ん in いけん",
+          "にもかかわらず → 'ni mo ka-ka-wa-ra-zu'; fixed formal connector 'despite ~', said fluently without stumbling, ず 'zu'",
+          "法案は → 'hoo-an wa'; long ほう, は 'wa'",
+          "可決されました → 'ka-ke-tsu sa-re-ma-shi-ta'; passive されました, falling declarative"
+        ]
       },
       {
         "japanese": "両者の妥協点を探すべきです。",
-        "english": "We should find common ground between both sides."
+        "english": "We should find common ground between both sides.",
+        "pronunciation_focus": [
+          "両者 (りょうしゃ) → 'ryoo-sha'; りょう âm chụm + dài, しゃ âm chụm",
+          "妥協点 → 'da-kyoo-ten'; 妥協 = だきょう 'da-kyoo', 点 てん 'ten' ん một mora",
+          "を探す → 'o sa-ga-su'; が 'g' cứng, す devoiced cuối 'sa-ga-su̥'",
+          "べきです → 'be-ki des'; べき 'nên ~' (nghĩa vụ), です lướt 'des', giọng quả quyết"
+        ],
+        "pronunciation_focus_en": [
+          "両者 (ryōsha) → 'ryoo-sha'; palatalised+long りょう, palatalised しゃ",
+          "妥協点 → 'da-kyoo-ten'; 妥協 = 'da-kyoo', 点 'ten' with moraic ん",
+          "を探す → 'o sa-ga-su'; hard が, devoiced final す 'sa-ga-su̥'",
+          "べきです → 'be-ki des'; べき = obligation 'should', です glides 'des', assertive"
+        ]
       }
     ],
+    "cultural_notes_vi": "Tranh luận kiểu Nhật KHÁC kiểu phương Tây/Việt: ngay cả khi phản đối, người ta vẫn 'bọc đệm' (おっしゃることは分かりますが…) trước khi 反論. Bạn được phép tấn công 主張 (luận điểm), nhưng KHÔNG nhắm vào con người; dữ liệu được coi trọng hơn 感情論 rất nhiều; mục tiêu cuối thường là xây 妥協点 chứ không phải 'thắng'. Trong 会議, phản bác thẳng không có đệm dù đúng logic vẫn làm hỏng quan hệ. Cấu trúc 第一に・第二に và các liên từ trang trọng như ～という理由で, ～にもかかわらず báo hiệu bạn là người nói năng mạch lạc, chuyên nghiệp.",
+    "cultural_notes_en": "Japanese debate differs from the Western/Vietnamese style: even when disagreeing, people 'cushion' (おっしゃることは分かりますが…) before the 反論. You may attack the 主張 (the claim), but NOT the person; data is valued far above 感情論; the end goal is usually building a 妥協点, not 'winning'. In a 会議, a blunt unpadded rebuttal damages the relationship even when logically right. The 第一に・第二に scaffold and formal connectors like ～という理由で and ～にもかかわらず mark you as an articulate, professional speaker.",
+    "tip_advice_vi": "Đây là kỹ năng OUTPUT của B2 — luyện mẫu 'ĐỆM + PHẢN BÁC': công nhận điểm đối phương rồi mới bác. Tự ghi âm, bấm giờ lập luận 60 giây; học các liên từ (～にもかかわらず, ～という理由で) như cụm cố định, không ghép rời. Xem 国会中継 và 討論番組 để cảm register. Bẫy của người Việt: dịch nguyên sự thẳng thắn tiếng Việt sang tiếng Nhật nghe như gây hấn — phải làm mềm một cách có hệ thống, không tuỳ hứng.",
+    "tip_advice_en": "This is a B2 OUTPUT skill — drill the 'CUSHION + COUNTER' template: acknowledge the other side's point first, then rebut. Record yourself and time 60-second arguments; learn the connectors (～にもかかわらず, ～という理由で) as fixed chunks, not pieced together. Watch 国会中継 and 討論番組 for register. The Vietnamese trap: translating Vietnamese directness literally sounds aggressive in Japanese — soften systematically, not by mood.",
     "dialogue": [
       {
         "speaker": "A",
@@ -576,25 +858,101 @@ export const lessons: JapaneseLesson[] = [
     "examples": [
       {
         "japanese": "この一年間、日本語の勉強を続けてきました。",
-        "english": "I have continued studying Japanese this past year."
+        "english": "I have continued studying Japanese this past year.",
+        "pronunciation_focus": [
+          "一年間 → 'i-chi-nen-kan'; いち + ねん + かん, mỗi ん một mora, ba khối đều",
+          "日本語 (にほんご) → 'ni-hon-go'; ん một mora riêng, ご 'g' cứng (mang từ A1)",
+          "勉強を → 'ben-kyoo o'; を đọc 'o', dính 勉強を",
+          "続けてきました → 'tsu-zu-ke-te ki-ma-shi-ta'; つ 'tsu' づ 'zu'; ~てきた diễn đạt quá trình tích luỹ, giọng trần thuật hạ êm"
+        ],
+        "pronunciation_focus_en": [
+          "一年間 → 'i-chi-nen-kan'; いち + ねん + かん, each ん one mora, three even blocks",
+          "日本語 (nihongo) → 'ni-hon-go'; moraic ん, hard ご (carried from A1)",
+          "勉強を → 'ben-kyoo o'; を as 'o', bound 勉強を",
+          "続けてきました → 'tsu-zu-ke-te ki-ma-shi-ta'; つ 'tsu', づ 'zu'; ~てきた = accumulated process, soft falling declarative"
+        ]
       },
       {
         "japanese": "学んだことを実際の会話で使えるようになりました。",
-        "english": "I can now use what I learned in real conversations."
+        "english": "I can now use what I learned in real conversations.",
+        "pronunciation_focus": [
+          "学んだ → 'ma-nan-da'; ん một mora, だ thể quá khứ",
+          "実際の → 'jis-sa-i no'; っさ sokuon ngắt một mora, じ 'ji'",
+          "会話で → 'ka-i-wa de'; わ 'wa', で trợ từ phương tiện",
+          "使えるように → 'tsu-ka-e-ru yoo ni'; ように 'đến mức/trở nên ~', よう nguyên âm dài",
+          "なりました → 'na-ri-ma-shi-ta'; 'đã trở nên', giọng hoàn thành hạ cuối"
+        ],
+        "pronunciation_focus_en": [
+          "学んだ → 'ma-nan-da'; moraic ん, past だ",
+          "実際の → 'jis-sa-i no'; sokuon っさ one held mora, じ 'ji'",
+          "会話で → 'ka-i-wa de'; わ 'wa', で = means particle",
+          "使えるように → 'tsu-ka-e-ru yoo ni'; ように 'to the point of becoming ~', long よう",
+          "なりました → 'na-ri-ma-shi-ta'; 'have come to', completive falling"
+        ]
       },
       {
         "japanese": "今までの復習をして、理解を深めましょう。",
-        "english": "Let's review what we've covered and deepen our understanding."
+        "english": "Let's review what we've covered and deepen our understanding.",
+        "pronunciation_focus": [
+          "今までの → 'i-ma ma-de no'; 今 atamadaka (高低), まで đọc liền",
+          "復習を → 'fu-ku-shuu o'; ふ 'fu' môi nhẹ, く devoiced 'fu-ku̥-shuu', しゅう dài",
+          "して → 'shi-te'; nối tiếp",
+          "理解を → 'ri-ka-i o'; り 'r' chạm lưỡi",
+          "深めましょう → 'fu-ka-me-ma-shoo'; ましょう rủ 'hãy ~', giọng đi lên rồi lắng"
+        ],
+        "pronunciation_focus_en": [
+          "今までの → 'i-ma ma-de no'; 今 atamadaka (high-low), まで bound",
+          "復習を → 'fu-ku-shuu o'; bilabial ふ 'fu', devoiced く 'fu-ku̥-shuu', long しゅう",
+          "して → 'shi-te'; sequential",
+          "理解を → 'ri-ka-i o'; tapped り",
+          "深めましょう → 'fu-ka-me-ma-shoo'; ましょう invitational 'let's ~', rise then settle"
+        ]
       },
       {
         "japanese": "新しい目標を立てて、さらに上を目指しましょう。",
-        "english": "Set new goals and aim even higher."
+        "english": "Set new goals and aim even higher.",
+        "pronunciation_focus": [
+          "新しい → 'a-ta-ra-shii'; しい dài 2 mora, trọng âm rơi ら",
+          "目標を → 'mo-ku-hyoo o'; く devoiced 'mo-ku̥-hyoo', ひょう âm chụm + dài",
+          "立てて → 'ta-te-te'; nhịp đều, て nối",
+          "さらに → 'sa-ra-ni'; 'hơn nữa', heiban",
+          "上を → 'u-e o'; hai mora rõ",
+          "目指しましょう → 'me-za-shi-ma-shoo'; ざ 'za' hữu thanh, ましょう rủ"
+        ],
+        "pronunciation_focus_en": [
+          "新しい → 'a-ta-ra-shii'; しい a 2-mora long vowel, accent on ら",
+          "目標を → 'mo-ku-hyoo o'; devoiced く 'mo-ku̥-hyoo', palatalised+long ひょう",
+          "立てて → 'ta-te-te'; even rhythm, linking て",
+          "さらに → 'sa-ra-ni'; 'furthermore', heiban",
+          "上を → 'u-e o'; two clear mora",
+          "目指しましょう → 'me-za-shi-ma-shoo'; voiced ざ 'za', invitational ましょう"
+        ]
       },
       {
         "japanese": "日本語を学ぶ旅はまだ続きます。頑張りましょう！",
-        "english": "The journey of learning Japanese continues. Let's do our best!"
+        "english": "The journey of learning Japanese continues. Let's do our best!",
+        "pronunciation_focus": [
+          "日本語を → 'ni-hon-go o'; ん một mora, を 'o'",
+          "学ぶ → 'ma-na-bu'; heiban",
+          "旅は → 'ta-bi wa'; は 'wa'; ẩn dụ 'hành trình'",
+          "まだ → 'ma-da'; 'vẫn còn', đọc bằng",
+          "続きます → 'tsu-zu-ki-mas'; つ 'tsu' づ 'zu', ます lướt, trần thuật hạ",
+          "頑張りましょう → 'gan-ba-ri-ma-shoo'; が 'g' cứng, ! giọng hô hào đi lên dứt khoát (cổ vũ)"
+        ],
+        "pronunciation_focus_en": [
+          "日本語を → 'ni-hon-go o'; moraic ん, を 'o'",
+          "学ぶ → 'ma-na-bu'; heiban",
+          "旅は → 'ta-bi wa'; は 'wa'; metaphorical 'journey'",
+          "まだ → 'ma-da'; 'still', flat",
+          "続きます → 'tsu-zu-ki-mas'; つ 'tsu', づ 'zu', ます glides, falling declarative",
+          "頑張りましょう → 'gan-ba-ri-ma-shoo'; hard が, ! decisive rallying rise (encouragement)"
+        ]
       }
     ],
+    "cultural_notes_vi": "振り返り (nhìn lại) là một thực hành có cấu trúc trong văn hoá Nhật — 反省会 sau dự án, dịp cuối năm nhìn lại tại 忘年会. Cấu trúc ～てきた diễn đạt một hành trình tích luỹ, gắn với tinh thần 継続は力なり (kiên trì tạo sức mạnh). Đặt 目標 ra lời tạo cam kết xã hội. Cách nói khiêm tốn (まだまだです dù đã giỏi) mới đúng register Nhật, đừng tự khen quá. Ở công ty, các cụm như ～を振り返って và 継続 báo hiệu tư duy phát triển — điều các tổ chức Nhật rất xem trọng.",
+    "cultural_notes_en": "振り返り (reflection) is a structured practice in Japanese culture — the 反省会 after a project, the year-end look-back at the 忘年会. The ～てきた construction expresses an accumulated journey, tied to the 継続は力なり (perseverance is strength) ethos. Saying a 目標 out loud creates social commitment. Humble framing (まだまだです even when good) is the correct Japanese register — don't over-praise yourself. At work, phrases like ～を振り返って and 継続 signal a growth mindset that Japanese organisations prize highly.",
+    "tip_advice_vi": "Đây là bước chuyển B2→C1: chuyển từ 'học' sang 'đắm mình + sản sinh'. Tái cân bằng input/output từ ~70/30 sang ~50/50; khoanh điểm yếu và luyện có chủ đích; tìm bạn trao đổi ngôn ngữ / partner shadowing. Nguy cơ lớn nhất giai đoạn này là 'chững' (plateau) — phá nó bằng output có giãn cách + người Nhật sửa, không phải học thêm ngữ pháp. 継続は力なり ở đây là phương pháp thật, không phải khẩu hiệu: ít mà đều đặn, có phản hồi.",
+    "tip_advice_en": "This is the B2→C1 transition: shift from 'studying' to 'immersion + production'. Rebalance input/output from ~70/30 toward ~50/50; isolate weak points and drill them deliberately; find a language-exchange or shadowing partner. The biggest risk here is the plateau — break it with spaced output plus native correction, not more grammar study. 継続は力なり is a real method here, not a slogan: small but regular, with feedback.",
     "dialogue": [
       {
         "speaker": "A",
