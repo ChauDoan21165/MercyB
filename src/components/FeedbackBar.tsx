@@ -68,7 +68,7 @@ export function FeedbackBar() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Open feedback"
+        aria-label="Mở khung báo lỗi"
         style={{
           position: "fixed",
           left: 16,
@@ -88,7 +88,7 @@ export function FeedbackBar() {
           whiteSpace: "nowrap",
         }}
       >
-        💬 Feedback / Ý kiến
+        💬 Báo lỗi
       </button>
 
       {/* Modal overlay */}
@@ -118,7 +118,7 @@ export function FeedbackBar() {
             {/* Header */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ fontSize: 15, fontWeight: 800, color: "rgba(0,0,0,0.80)" }}>
-                💬 Feedback / Ý kiến
+                💬 Báo lỗi
               </div>
               <button type="button" onClick={() => setOpen(false)}
                 style={{ width: 30, height: 30, borderRadius: 9999, border: "1px solid rgba(0,0,0,0.08)", background: "white", display: "inline-flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "rgba(0,0,0,0.50)" }}>
@@ -132,7 +132,7 @@ export function FeedbackBar() {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Share your thoughts... / Chia sẻ ý kiến..."
+                placeholder="Mô tả lỗi hoặc chia sẻ ý kiến..."
                 rows={3}
                 maxLength={1000}
                 disabled={sending || sent}
@@ -162,14 +162,14 @@ export function FeedbackBar() {
 
             {sent ? (
               <div style={{ fontSize: 13, fontWeight: 700, color: "rgba(131,24,67,0.84)" }}>
-                🌹 Thank you! / Cảm ơn bạn!
+                🌹 Cảm ơn bạn!
               </div>
             ) : errorMsg ? (
               <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(180,40,40,0.92)" }}>
                 ⚠️ {errorMsg}
               </div>
             ) : (
-              <div style={{ fontSize: 11, color: "rgba(0,0,0,0.36)" }}>Ctrl+Enter to send</div>
+              <div style={{ fontSize: 11, color: "rgba(0,0,0,0.36)" }}>Ctrl+Enter để gửi</div>
             )}
           </div>
         </div>
