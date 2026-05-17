@@ -73,6 +73,12 @@ export const lessons: ChineseLesson[] = [
           "h in hǎo → breathier and further back than English 'h', like softly clearing your throat",
           "ao → 'ow' as in 'cow'",
           "ma → toneless and light here; it's just the question marker, so don't stress it"
+        ],
+        "pronunciation_focus": [
+          "你 → nǐ thanh 3 (xuống rồi lên, như dấu hỏi tiếng Việt)",
+          "好 hǎo → nguyên âm 'ao' đọc như 'ao' trong 'cao'",
+          "h trong hǎo → hơi gió, đẩy từ cổ họng, nhẹ hơn 'h' tiếng Việt một chút",
+          "吗 ma → thanh nhẹ (khinh thanh), chỉ là chữ hỏi, đừng nhấn"
         ]
       },
       {
@@ -84,6 +90,12 @@ export const lessons: ChineseLesson[] = [
           "hěn + hǎo → two 3rd tones collide: the first rises (T3+T3 → T2+T3), so it sounds like 'hén hǎo'",
           "x in xiè → a light 'sh', tongue near the lower front teeth (not the heavy English 'sh')",
           "ie → 'yeh' as in 'yes' without the 's'"
+        ],
+        "pronunciation_focus": [
+          "我 wǒ → thanh 3, 'uô' trầm rồi nhích lên",
+          "很好 → hai thanh 3 gặp nhau: chữ đầu thành thanh 2, nghe như 'hén hǎo'",
+          "谢 xiè → thanh 4, đi xuống dứt khoát (KHÔNG phải đang gắt)",
+          "x trong xiè → âm 'x' nhẹ, lưỡi gần răng dưới, không nặng như 's' tiếng Việt"
         ]
       },
       {
@@ -96,6 +108,13 @@ export const lessons: ChineseLesson[] = [
           "j in jīn → 'j' as in 'jeep', tongue flat and forward",
           "q in qì → 'ch' as in 'cheese' but hissier, tongue near the lower teeth",
           "cuò → 'tswaw'; the 'c' is a hard 'ts' as in 'cats'"
+        ],
+        "pronunciation_focus": [
+          "早 zǎo → 'z' như 'd' đọc nhanh, không bật hơi",
+          "上 shang → 'sh' uốn lưỡi cong ra sau (khác 's' tiếng Việt)",
+          "今 jīn → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "气 qì → thanh 4; 'q' như 'ch' nhưng xát hơi, lưỡi gần răng dưới",
+          "错 cuò → 'c' là 'ts' bật mạnh như cuối chữ 'lóc'"
         ]
       },
       {
@@ -108,6 +127,13 @@ export const lessons: ChineseLesson[] = [
           "j in jiàn → 'j' as in 'jeep'",
           "ian → sounds like 'yen', not 'yahn' — the 'a' is swallowed",
           "ng in míng → 'ng' as in 'sing'; let it ring"
+        ],
+        "pronunciation_focus": [
+          "再 zài → thanh 4; 'z' không bật hơi, 'ai' như 'ai' tiếng Việt",
+          "见 jiàn → 'ian' nghe như 'i-en', KHÔNG phải 'i-an' — chữ 'a' bị nuốt",
+          "j trong jiàn → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "明 míng → thanh 2, đuôi 'ng' ngân như 'inh' kéo dài",
+          "天 tiān → 'iên', âm 'a' lướt nhanh"
         ]
       },
       {
@@ -120,6 +146,13 @@ export const lessons: ChineseLesson[] = [
           "y in yíng → a gliding 'ee', like the start of 'year'",
           "zh in zhōng → 'j' as in 'jaw' with the tongue tip curled back",
           "guó → 'gwaw', one syllable, rising tone"
+        ],
+        "pronunciation_focus": [
+          "欢 huān → 'h' nhẹ từ cổ họng; 'uan' đọc như 'oan'",
+          "迎 yíng → thanh 2, 'i' lướt như đầu chữ 'in'",
+          "中 zhōng → 'zh' uốn lưỡi cong, gần âm 'tr' miền Bắc",
+          "国 guó → thanh 2, 'gu-ô' gộp một âm tiết, đi lên",
+          "来到 lái dào → 'lái' thanh 2 lên, 'dào' thanh 4 xuống — tương phản rõ"
         ]
       }
     ],
@@ -179,7 +212,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "你好 (nǐ hǎo) is the safe, universal 'hello,' but native speakers lean on time-of-day greetings far more than Americans do: 早上好 before about 10 a.m., and a casual 你吃了吗? ('Have you eaten?') often works like 'How's it going?' — it's phatic, not a literal dinner question, so a light 'I have, you?' is the expected reply, not a menu. Mainland China largely skips the American 'How are you?' reflex with strangers; 你好吗? is textbook and sounds slightly stiff between people who already know each other. A handshake is normal in business settings; the American greeting-hug is not, and is best avoided until a relationship is well established. 再见 literally means 'see again' — that same 见 (jiàn, 'see') closes 明天见 ('see you tomorrow') and 回头见 ('see you later'), so it's worth memorizing the 'time-word + 见' pattern as a unit.",
-    "tip_advice_en": "The biggest day-one trap is the third tone. 你 (nǐ) and 好 (hǎo) are both third tone, but two third tones in a row never both fully dip — the first becomes a rising tone, so 你好 actually comes out closer to 'ní hǎo.' Drill this 'T3 + T3 → T2 + T3' shift now; it recurs constantly (你好, 很好, 我也好). Just as important: don't hear tones as English sentence intonation. A falling fourth tone (谢, xiè) is not anger, and a rising second tone is not a question — the pitch is baked into the word's identity, like a vowel is. Say each greeting aloud five times with the pitch exaggerated; you can shrink the movement later once your ear locks in."
+    "cultural_notes_vi": "你好 (nǐ hǎo) là lời chào an toàn, dùng được mọi lúc — nhưng người Trung thường chào theo buổi nhiều hơn người phương Tây: 早上好 trước khoảng 10 giờ sáng. Câu 你吃了吗? (\"Ăn cơm chưa?\") hệt như kiểu hỏi xã giao \"Đi đâu đấy?\" của người Việt — hỏi cho có, không phải hỏi thật, nên chỉ cần đáp nhẹ \"Rồi, còn anh/chị?\". Người Trung Quốc đại lục ít hỏi 你好吗? với người lạ; câu đó nghe sách vở và hơi cứng giữa người đã quen. Trong làm ăn thì bắt tay là bình thường, còn ôm chào kiểu Tây thì nên tránh cho tới khi thật thân. 再见 nghĩa đen là \"gặp lại\" — chữ 见 (jiàn, Hán-Việt: KIẾN, \"gặp/thấy\") cũng nằm trong 明天见, 回头见; nên thuộc luôn cụm \"từ chỉ thời gian + 见\".",
+    "tip_advice_en": "The biggest day-one trap is the third tone. 你 (nǐ) and 好 (hǎo) are both third tone, but two third tones in a row never both fully dip — the first becomes a rising tone, so 你好 actually comes out closer to 'ní hǎo.' Drill this 'T3 + T3 → T2 + T3' shift now; it recurs constantly (你好, 很好, 我也好). Just as important: don't hear tones as English sentence intonation. A falling fourth tone (谢, xiè) is not anger, and a rising second tone is not a question — the pitch is baked into the word's identity, like a vowel is. Say each greeting aloud five times with the pitch exaggerated; you can shrink the movement later once your ear locks in.",
+    "tip_advice_vi": "Cái bẫy lớn nhất ngày đầu là thanh 3. 你 (nǐ) và 好 (hǎo) đều thanh 3, nhưng hai thanh 3 liền nhau không bao giờ trầm cả hai — chữ đầu chuyển thành thanh 2 (đi lên), nên 你好 thật ra nghe gần như \"ní hǎo\". Người Việt vốn quen 6 thanh nên tai bạn nghe được cao độ tốt hơn người nói tiếng Anh — hãy tận dụng, luyện ngay quy tắc \"thanh 3 + thanh 3 → thanh 2 + thanh 3\" (你好, 很好, 我也好). Quan trọng không kém: đừng nghe thanh điệu như ngữ điệu câu. Thanh 4 đi xuống (谢, xiè) không phải đang gắt, thanh 2 đi lên không phải câu hỏi — cao độ gắn chết vào nghĩa của chữ, như dấu thanh tiếng Việt vậy. Đọc to mỗi câu chào 5 lần, phóng đại cao độ."
   },
   {
     "id": 2,
@@ -250,6 +285,13 @@ export const lessons: ChineseLesson[] = [
           "an in sān → 'ahn', not the flat English 'an' in 'can'",
           "gè → a short 'guh'; it's the measure word, keep it light",
           "uo in guǒ → 'waw'"
+        ],
+        "pronunciation_focus": [
+          "我有 wǒ yǒu → hai thanh 3 gặp nhau: chữ đầu thành thanh 2, nghe 'wó yǒu'",
+          "三 sān → 's' như 's' tiếng Việt, lưỡi đưa ra trước, không uốn",
+          "an trong sān → 'an' đọc như 'an' trong 'an toàn', không bẹt",
+          "个 gè → 'gư' ngắn, là lượng từ, đọc nhẹ đừng nhấn",
+          "果 guǒ → 'uô' gộp một âm tiết, đọc như 'qua' chậm lại"
         ]
       },
       {
@@ -262,6 +304,13 @@ export const lessons: ChineseLesson[] = [
           "shì → tongue tip curled back; the 'i' is a buzzed 'rrr'-ish vowel, not 'ee'",
           "yuè → 'yweh'; round the lips for the ü-glide",
           "èr → like 'er' in 'her' with the tongue curled, falling tone"
+        ],
+        "pronunciation_focus": [
+          "今 jīn → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "天 tiān → 'iên', không phải 'ti-an' — chữ 'a' bị nuốt",
+          "是 shì → lưỡi uốn cong; 'i' là âm vo ve, KHÔNG phải 'i' tiếng Việt",
+          "月 yuè → 'uê' tròn môi như chữ 'uy', thanh 4 đi xuống",
+          "二 èr → như 'ơ' uốn lưỡi cong, thanh 4 xuống"
         ]
       },
       {
@@ -274,6 +323,13 @@ export const lessons: ChineseLesson[] = [
           "shao → 'show', light and neutral here",
           "q in qián → 'ch' as in 'cheese' but hissier",
           "kuài → 'kwai' (rhymes with 'why'), sharp falling tone"
+        ],
+        "pronunciation_focus": [
+          "这 zhè → 'zh' uốn lưỡi cong ra sau, gần âm 'tr' miền Bắc",
+          "多 duō → 'đua' gộp lại, thanh 1 cao và phẳng",
+          "少 shao → đọc như 'sao' nhẹ, khinh thanh ở đây",
+          "钱 qián → 'q' như 'ch' nhưng xát hơi, lưỡi gần răng dưới",
+          "块 kuài → 'quai' (vần như 'oai'), thanh 4 xuống gắt"
         ]
       },
       {
@@ -286,6 +342,13 @@ export const lessons: ChineseLesson[] = [
           "x in xué → light 'sh', tongue near the lower teeth",
           "ué in xué → 'yweh' with rounded lips, rising tone",
           "eng in shēng → 'ung' as in 'sung', not 'eng' as in 'length'"
+        ],
+        "pronunciation_focus": [
+          "们 men → khinh thanh, nuốt nhẹ thành 'mân', đừng nhấn",
+          "班/八 bān/bā → 'b' không bật hơi, giữa 'b' và 'p' tiếng Việt",
+          "学 xué → 'x' nhẹ, lưỡi gần răng dưới",
+          "学 ué → 'uê' tròn môi, thanh 2 đi lên",
+          "生 shēng → 'ung' như trong 'sung', không phải 'eng'"
         ]
       },
       {
@@ -298,6 +361,13 @@ export const lessons: ChineseLesson[] = [
           "ei in gěi / bēi → 'ay' as in 'day'",
           "wǔ → 'oo' with a dipping 3rd tone, lips tightly rounded",
           "ui in shuǐ → 'way', not 'wee'"
+        ],
+        "pronunciation_focus": [
+          "请 qǐng → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "请 ing → 'inh' như đuôi 'sinh'",
+          "给/杯 gěi/bēi → 'ây' như trong 'mây'",
+          "五 wǔ → 'u' thanh 3 (xuống rồi lên), môi tròn chặt",
+          "水 shuǐ → 'uây', không phải 'uy'"
         ]
       }
     ],
@@ -357,7 +427,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Numbers carry real cultural weight in China. 八 (bā, eight) sounds like 发 (fā, 'to prosper'), so it's lucky — phone numbers and license plates loaded with 8s genuinely sell at a premium. 四 (sì, four) sounds like 死 (sǐ, 'death'), so it's avoided much the way some American buildings skip the 13th floor; many mainland Chinese elevators omit floor 4 (and 14, 24…). Hand-counting also differs: one hand counts all the way to ten, with distinct shapes for 6–10 — 6 is thumb-plus-pinky (the 'hang loose' sign), not the two-hand method most Americans use, so a vendor flashing that shape means six, not 'relax.' Dates run big-to-small (year, month, day), so 五月二号 is 'May, 2nd day' and a full date is written 2026年5月2号. In speech, prices use 块 (kuài) for the yuan the way Americans say 'bucks' instead of 'dollars'; 元 (yuán) is the written/formal form.",
-    "tip_advice_en": "一 (yī, 'one') is a shape-shifter. Alone it's first tone (yī), but it changes tone with what follows — fourth tone before most syllables (yì běn shū) and second tone before another fourth tone (yí gè). Don't try to master that rule today; just expect that the 'one' you hear won't always match the 'yī' you learned. For the ear, the classic English-speaker trap is 四 (sì) vs. 十 (shí): 'sì' has a tight, buzzy vowel with no real 'ee' and a sharp falling tone, while 'shí' curls the tongue back and rises. Confuse them at a market and you'll pay 10 when you meant 4. Drill 4–10–14–40 aloud until the s/sh contrast is automatic before you ever need it for money."
+    "cultural_notes_vi": "Con số mang sức nặng văn hóa thật ở Trung Quốc — gần với cách người Việt kiêng số 49, 53 hơn người phương Tây. 八 (bā, tám) đọc gần như 发 (fā, \"phát tài\") nên rất may; biển số, số điện thoại nhiều số 8 bán đắt hơn hẳn. 四 (sì, bốn) đọc gần 死 (sǐ, \"chết\") nên bị kiêng — nhiều thang máy bỏ tầng 4, 14, 24, đúng kiểu nhà mình tránh số xấu. Đếm bằng tay cũng khác: một bàn tay đếm tới mười, số 6 là ngón cái cộng ngón út (như ra hiệu \"alô\"), nên người bán giơ tay vậy là sáu, đừng hiểu thành gì khác. Ngày tháng đọc lớn-tới-nhỏ (năm, tháng, ngày), 五月二号 là \"tháng 5, ngày 2\", viết đủ là 2026年5月2号. Nói giá tiền dùng 块 (kuài) cho đồng tệ — y như mình nói \"đồng\" thay vì \"đồng Việt Nam\"; 元 (yuán) là dạng viết trang trọng.",
+    "tip_advice_en": "一 (yī, 'one') is a shape-shifter. Alone it's first tone (yī), but it changes tone with what follows — fourth tone before most syllables (yì běn shū) and second tone before another fourth tone (yí gè). Don't try to master that rule today; just expect that the 'one' you hear won't always match the 'yī' you learned. For the ear, the classic English-speaker trap is 四 (sì) vs. 十 (shí): 'sì' has a tight, buzzy vowel with no real 'ee' and a sharp falling tone, while 'shí' curls the tongue back and rises. Confuse them at a market and you'll pay 10 when you meant 4. Drill 4–10–14–40 aloud until the s/sh contrast is automatic before you ever need it for money.",
+    "tip_advice_vi": "一 (yī, \"một\") hay đổi thanh. Đứng một mình là thanh 1 (yī), nhưng đổi theo chữ sau — thanh 4 trước hầu hết âm tiết (yì běn shū), thanh 2 trước một thanh 4 khác (yí gè). Hôm nay chưa cần thuộc luật đó; chỉ cần biết \"một\" bạn nghe sẽ không luôn khớp \"yī\" đã học. Về tai nghe, bẫy kinh điển là 四 (sì) với 十 (shí): \"sì\" nguyên âm chặt, vo ve, không có \"i\", thanh 4 xuống gắt; còn \"shí\" uốn lưỡi cong và đi lên. Nhầm hai chữ này ở chợ là trả 10 trong khi định trả 4. Lợi thế của bạn: tai người Việt quen 6 thanh nên phân biệt cao độ tốt — luyện đọc to 4–10–14–40 đến khi tách rõ s/sh trước khi cần dùng cho tiền."
   },
   {
     "id": 3,
@@ -428,6 +500,13 @@ export const lessons: ChineseLesson[] = [
           "yī → a high, flat 'ee' (1st tone here)",
           "sh in shēng → curled-back 'sh'",
           "eng in shēng → 'ung' as in 'sung'"
+        ],
+        "pronunciation_focus": [
+          "爸爸 bà ba → thanh 4 xuống rồi khinh thanh: 'BA-bơ'",
+          "是 shì → lưỡi uốn cong; nguyên âm vo ve, không phải 'i'",
+          "医 yī → 'i' cao và phẳng (thanh 1 ở đây)",
+          "生 sh → 'sh' uốn lưỡi cong ra sau",
+          "生 eng → 'ung' như trong 'sung'"
         ]
       },
       {
@@ -440,6 +519,13 @@ export const lessons: ChineseLesson[] = [
           "de → neutral 'duh', the possessive particle, never stressed",
           "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'",
           "ch in chī → 'ch' with the tongue tip curled back; vowel is a buzz, not 'ee'"
+        ],
+        "pronunciation_focus": [
+          "妈妈 mā ma → thanh 1 cao phẳng rồi khinh thanh: 'MA-mơ'",
+          "做 zuò → 'dzua', không bật hơi, thanh 4 xuống",
+          "的 de → khinh thanh 'dơ', chữ sở hữu, không bao giờ nhấn",
+          "很好 hěn hǎo → thanh 3 + thanh 3, chữ đầu lên: 'hén hǎo'",
+          "吃 ch → 'ch' uốn lưỡi cong; nguyên âm vo ve, không phải 'i'"
         ]
       },
       {
@@ -452,6 +538,13 @@ export const lessons: ChineseLesson[] = [
           "hé → 'huh' rising to mid; this is the word for 'and'",
           "ei in mèi → 'ay' as in 'day', falling tone",
           "mèi mei → falling then neutral: 'MAY-may'"
+        ],
+        "pronunciation_focus": [
+          "我有 wǒ yǒu → thanh 3 + thanh 3, chữ đầu lên",
+          "哥哥 gē ge → thanh 1 rồi khinh thanh: 'KƠ-gơ'",
+          "和 hé → 'hơ' lên tầm giữa; đây là chữ 'và'",
+          "妹 ei → 'ây' như trong 'mây', thanh 4 xuống",
+          "妹妹 mèi mei → thanh 4 rồi khinh thanh: 'MÂY-mây'"
         ]
       },
       {
@@ -464,6 +557,13 @@ export const lessons: ChineseLesson[] = [
           "nǎi nai → 3rd tone then neutral",
           "zh in zhù → 'j' as in 'jaw', tongue curled back",
           "jiā → 'jyah', flat high 1st tone"
+        ],
+        "pronunciation_focus": [
+          "爷爷 yé ye → thanh 2 rồi khinh thanh: 'DỀ-dơ'",
+          "奶/在 ai → 'ai' như trong 'ai nấy'",
+          "奶奶 nǎi nai → thanh 3 rồi khinh thanh",
+          "住 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "家 jiā → 'gia', thanh 1 cao và phẳng"
         ]
       },
       {
@@ -476,6 +576,13 @@ export const lessons: ChineseLesson[] = [
           "ian in nián → 'yen', not 'nee-ahn'",
           "suì → 'sway', sharp falling tone; this is the word for years of age",
           "le → neutral 'luh', the change-of-state particle, kept weightless"
+        ],
+        "pronunciation_focus": [
+          "女 nǚ → đọc 'ni', giữ lưỡi nguyên, rồi tròn môi như huýt sáo (âm ü)",
+          "儿 ér → như 'ơ' uốn lưỡi cong, thanh 2 lên",
+          "年 nián → 'i-en', không phải 'ni-an'",
+          "岁 suì → 'suây', thanh 4 xuống gắt; chữ chỉ tuổi",
+          "了 le → khinh thanh 'lơ', chữ báo đổi trạng thái, đọc nhẹ bẫng"
         ]
       }
     ],
@@ -535,7 +642,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Chinese kinship terms are far more specific than English ones, and A1 forces the issue right away: there is no plain word for 'brother' or 'sister' — you must pick by relative age. 哥哥 (older brother) and 弟弟 (younger brother) are different words, as are 姐姐 (older sister) and 妹妹 (younger sister). Birth order is socially load-bearing, not trivia: older siblings are often addressed by their title rather than their name even as adults, and the same age-ranking logic later extends to cousins, aunts, and uncles, including a maternal-vs-paternal split (well beyond A1, but it's coming). 老家 (lǎo jiā, literally 'old home') has no clean English match — it's your ancestral hometown, the place you 'go back to' for Spring Festival even if you never lived there; it's closer to an American's 'where my family's from' than to 'hometown.' Notice the doubled syllables in 妈妈, 爸爸, 哥哥, 弟弟: that reduplication is the warm, intimate register, much like English 'mama' and 'papa.'",
-    "tip_advice_en": "The reduplicated family words (māma, bàba, gēge, dìdi, jiějie, mèimei) carry a full tone on the first syllable and a light, neutral tone on the second — fight the English instinct to stress both equally. Say 'MA-muh,' not 'ma-MA.' The hardest sound here is ü in 女 (nǚ): say 'ee' as in 'see,' freeze the tongue exactly there, then round your lips as if to whistle. It is not 'oo' and not 'noo' — a botched 女儿 (nǚ ér, daughter) tends to land as 牛 (niú, 'cow'), which a native listener will enjoy more than you will. Drill nǚ on its own until it's stable before attempting the whole sentence."
+    "cultural_notes_vi": "Cách gọi họ hàng tiếng Trung chia rất kỹ — điểm này người Việt thấy quen, vì mình cũng phân anh/em, chị/em, cô/dì/bác. Không có từ chung cho \"anh em trai\": 哥哥 (anh trai) khác 弟弟 (em trai), 姐姐 (chị gái) khác 妹妹 (em gái), phải chọn theo tuổi. Thứ bậc trong nhà rất nặng, không phải chuyện vặt: em thường gọi anh chị bằng vai vế chứ không gọi tên, kể cả khi đã lớn — đúng kiểu nhà mình. Lối phân theo tuổi đó sau còn mở rộng ra anh chị em họ, cô dì chú bác, kèm cả phân bên nội bên ngoại (vượt A1, nhưng sẽ tới). 老家 (lǎo jiā, nghĩa đen \"nhà cũ\") chính là quê gốc — nơi \"về\" dịp Tết dù chưa từng sống ở đó, gần đúng chữ \"quê\" của người Việt. Để ý các tiếng lặp 妈妈, 爸爸, 哥哥, 弟弟: lặp âm là giọng thân mật ấm áp, như \"ba ba\", \"má má\" trong nhà mình.",
+    "tip_advice_en": "The reduplicated family words (māma, bàba, gēge, dìdi, jiějie, mèimei) carry a full tone on the first syllable and a light, neutral tone on the second — fight the English instinct to stress both equally. Say 'MA-muh,' not 'ma-MA.' The hardest sound here is ü in 女 (nǚ): say 'ee' as in 'see,' freeze the tongue exactly there, then round your lips as if to whistle. It is not 'oo' and not 'noo' — a botched 女儿 (nǚ ér, daughter) tends to land as 牛 (niú, 'cow'), which a native listener will enjoy more than you will. Drill nǚ on its own until it's stable before attempting the whole sentence.",
+    "tip_advice_vi": "Các từ gia đình lặp âm (māma, bàba, gēge, dìdi, jiějie, mèimei) mang thanh đầy ở tiếng đầu, khinh thanh nhẹ ở tiếng sau — đọc 'MA-mơ', không phải 'ma-MA'. Lợi thế người Việt: bạn có sẵn khinh thanh trong các từ như \"đẹp đẽ, sạch sẽ\", áp ngay vào đây. Âm khó nhất là ü trong 女 (nǚ): đọc 'i' như trong 'si', giữ lưỡi đứng yên, rồi tròn môi như huýt sáo. Không phải 'u', không phải 'nu' — 女儿 (nǚ ér, con gái) đọc hỏng dễ thành 牛 (niú, \"bò\"), người nghe sẽ thấy vui hơn bạn. Luyện riêng nǚ cho chắc rồi mới ghép cả câu."
   },
   {
     "id": 4,
@@ -606,6 +715,13 @@ export const lessons: ChineseLesson[] = [
           "hóng → 'hong' with 'ng' as in 'sing', rising tone",
           "sè → 'suh', falling tone; this is the 'color' syllable on every color word",
           "uā in huā → 'wah', flat high 1st tone"
+        ],
+        "pronunciation_focus": [
+          "喜 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "喜欢 xǐ huān → thanh 3 rồi thanh 1; xǐ vẫn giữ độ trầm",
+          "红 hóng → 'hông' đuôi 'ng' như 'sing', thanh 2 lên",
+          "色 sè → 'sơ', thanh 4 xuống; tiếng \"màu\" có ở mọi từ chỉ màu",
+          "花 huā → 'hoa', thanh 1 cao và phẳng"
         ]
       },
       {
@@ -618,6 +734,13 @@ export const lessons: ChineseLesson[] = [
           "ong in kōng → 'oong'",
           "shì → curled-back tongue; buzzed vowel, not 'ee'",
           "an in lán → 'ahn'"
+        ],
+        "pronunciation_focus": [
+          "天 ian → 'i-en', không phải 'ti-an'",
+          "空 k → bật hơi mạnh, không phải 'c' nhẹ tiếng Việt",
+          "空 ong → 'ung' tròn môi",
+          "是 shì → lưỡi uốn cong; nguyên âm vo ve, không phải 'i'",
+          "蓝 an → 'an' như trong 'an toàn'"
         ]
       },
       {
@@ -630,6 +753,13 @@ export const lessons: ChineseLesson[] = [
           "ai in bái → 'eye'",
           "q in qún → hissy 'ch', tongue near the lower teeth",
           "ún in qún → ü (rounded 'ee') + 'n', not English 'oon'"
+        ],
+        "pronunciation_focus": [
+          "穿 ch → 'ch' uốn lưỡi cong, bật hơi mạnh",
+          "穿 uan → 'oan'",
+          "白 ai → 'ai' như trong 'ai nấy'",
+          "裙 q → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "裙 ún → ü (tròn môi như 'i') + 'n', không phải 'un'"
         ]
       },
       {
@@ -642,6 +772,13 @@ export const lessons: ChineseLesson[] = [
           "ai in wài → 'eye'",
           "ao in tào → 'ow' as in 'cow', falling tone",
           "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'"
+        ],
+        "pronunciation_focus": [
+          "这 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "黑 ei → 'ây' như trong 'mây'",
+          "外 ai → 'ai' như trong 'ai nấy'",
+          "套 ao → 'ao' như trong 'cao', thanh 4 xuống",
+          "很好 hěn hǎo → thanh 3 + thanh 3, chữ đầu lên: 'hén hǎo'"
         ]
       },
       {
@@ -654,6 +791,13 @@ export const lessons: ChineseLesson[] = [
           "lǜ → 'l' + ü: say 'lee' then round the lips tightly; falling tone",
           "zh in zhí → 'j' as in 'jaw', tongue curled; vowel is a buzz",
           "wù → 'oo' with tightly rounded lips, falling tone"
+        ],
+        "pronunciation_focus": [
+          "春 ch → 'ch' uốn lưỡi cong, bật hơi mạnh",
+          "春 un → 'uân', không phải 'un'",
+          "绿 lǜ → 'l' + ü: đọc 'li' rồi tròn môi chặt; thanh 4 xuống",
+          "植 zh → 'zh' uốn lưỡi cong; nguyên âm vo ve",
+          "物 wù → 'u' môi tròn chặt, thanh 4 xuống"
         ]
       }
     ],
@@ -713,7 +857,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Color symbolism in China often runs opposite to American defaults, and missing it is socially visible. 红色 (red) means luck, weddings, and celebration — the cash gift envelope is literally the 红包 ('red packet'), and a traditional bride wears red, not white. 白色 (white), and to a degree 黑色 (black), are mourning/funeral colors, so white at a Chinese wedding can jar an older guest the way black at a wedding might jar an American (modern city weddings increasingly mix in Western white, but the older association is still alive). 黄色 (yellow) was the imperial color, historically reserved for the emperor; in modern slang it can also mean 'pornographic' (黄色电影 = an adult film), so use it plainly for the color but know the second sense exists. Structurally, every color here is root + 色 (sè, 'color') — 红色, 蓝色, 绿色 — and a color modifying a noun normally takes 的: 红色的花 ('red one's flower'). American 'gray' vs. British/Commonwealth 'grey' is just spelling; 灰色 is one word regardless.",
-    "tip_advice_en": "Two things trip English speakers in this set. First, 的 (de) — the linking particle in 红色的花 — is always neutral and nearly swallowed: say 'hóngsè-duh huā,' never a stressed 'DUH.' It shows up in almost every descriptive sentence you'll ever speak, so make it weightless now. Second, 绿 (lǜ, 'green') stacks the two hardest things for English speakers at once: the ü vowel and a sharp falling 4th tone. Say 'ee,' round the lips to a whistle without moving the tongue, then drop the pitch hard. 'loo' is wrong; 'lyoo' is closer. If 绿 (lǜ) and 路 (lù, 'road') sound identical when you say them, your ü hasn't separated from 'oo' yet — drill that minimal pair until it does."
+    "cultural_notes_vi": "Ý nghĩa màu sắc ở Trung Quốc nhiều chỗ trùng với người Việt mình, nên dễ nhớ. 红色 (đỏ) là may mắn, cưới hỏi, lễ lạt — phong bao mừng gọi thẳng là 红包 (\"bao đỏ\"), đúng kiểu bao lì xì của ta; cô dâu truyền thống mặc đỏ chứ không mặc trắng. 白色 (trắng), và phần nào 黑色 (đen), là màu tang — y như tang phục Việt, nên mặc trắng đi đám cưới làm người lớn tuổi khó chịu (đám cưới thành thị nay pha váy trắng kiểu Tây, nhưng nếp cũ vẫn còn). 黄色 (vàng) xưa là màu của vua, dân thường cấm dùng; tiếng lóng nay còn nghĩa \"đồi trụy\" (黄色电影 = phim người lớn) — cứ dùng cho màu bình thường nhưng biết nghĩa thứ hai. Về cấu trúc, mọi màu đều là gốc + 色 (sè, \"màu\") — 红色, 蓝色, 绿色 — và màu bổ nghĩa cho danh từ thường thêm 的: 红色的花 (\"hoa màu đỏ\").",
+    "tip_advice_en": "Two things trip English speakers in this set. First, 的 (de) — the linking particle in 红色的花 — is always neutral and nearly swallowed: say 'hóngsè-duh huā,' never a stressed 'DUH.' It shows up in almost every descriptive sentence you'll ever speak, so make it weightless now. Second, 绿 (lǜ, 'green') stacks the two hardest things for English speakers at once: the ü vowel and a sharp falling 4th tone. Say 'ee,' round the lips to a whistle without moving the tongue, then drop the pitch hard. 'loo' is wrong; 'lyoo' is closer. If 绿 (lǜ) and 路 (lù, 'road') sound identical when you say them, your ü hasn't separated from 'oo' yet — drill that minimal pair until it does.",
+    "tip_advice_vi": "Hai chỗ hay vấp. Một, 的 (de) — chữ nối trong 红色的花 — luôn khinh thanh, gần như nuốt: đọc 'hóngsè-dơ huā', đừng bao giờ nhấn 'ĐƠ'. Nó có mặt trong hầu hết câu miêu tả, nên tập đọc nhẹ bẫng ngay từ giờ. Hai, 绿 (lǜ, \"xanh lá\") gộp hai thứ khó cùng lúc: nguyên âm ü và thanh 4 xuống gắt. Đọc 'i', tròn môi như huýt sáo mà không động lưỡi, rồi hạ cao độ thật mạnh. 'lu' là sai; 'li' tròn môi mới gần đúng. Nếu 绿 (lǜ) và 路 (lù, \"đường\") nghe y hệt nhau, ü của bạn chưa tách khỏi 'u' — luyện cặp tối thiểu đó đến khi tách được."
   },
   {
     "id": 5,
@@ -784,6 +930,13 @@ export const lessons: ChineseLesson[] = [
           "zh in zhōng → 'j' as in 'jaw', tongue curled back",
           "guó → 'gwaw', rising tone",
           "c in cài → hard 'ts' as in 'cats', with a puff of air"
+        ],
+        "pronunciation_focus": [
+          "喜 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "吃 ch → 'ch' uốn lưỡi cong; nguyên âm vo ve, không phải 'i'",
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "国 guó → 'qua', thanh 2 lên",
+          "菜 c → 'ts' bật hơi mạnh như cuối chữ 'lóc'"
         ]
       },
       {
@@ -796,6 +949,13 @@ export const lessons: ChineseLesson[] = [
           "zi → buzzed 'dz' plus the no-'ee' buzz vowel; neutral here",
           "zuì → 'dzway', falling tone",
           "shí → curled-back 'sh', rising tone; vowel is a buzz"
+        ],
+        "pronunciation_focus": [
+          "饺 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "饺 iao → 'i-ao' (lướt 'i' vào 'ao' như 'cao'), thanh 3 xuống-lên",
+          "子 zi → 'dz' vo ve cộng nguyên âm vo ve không 'i'; khinh thanh ở đây",
+          "最 zuì → 'dzuây', thanh 4 xuống",
+          "食 shí → 'sh' uốn lưỡi cong, thanh 2 lên; nguyên âm vo ve"
         ]
       },
       {
@@ -808,6 +968,13 @@ export const lessons: ChineseLesson[] = [
           "wǔ wǒ → two 3rd tones, so the first rises: 'wú wǒ'",
           "ian in miàn → 'yen', not 'mee-ahn'",
           "iao in tiáo → 'yow' with a rising tone"
+        ],
+        "pronunciation_focus": [
+          "今 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "午我 wǔ wǒ → hai thanh 3, chữ đầu lên: 'wú wǒ'",
+          "面 ian → 'i-en', không phải 'mi-an'",
+          "条 iao → 'i-ao', thanh 2 lên"
         ]
       },
       {
@@ -820,6 +987,13 @@ export const lessons: ChineseLesson[] = [
           "c in cài → hard 'ts' as in 'cats', aspirated",
           "duì → 'dway', falling tone; here it means 'for / toward'",
           "tǐ hǎo → T3+T3, so the first rises: 'tí hǎo'"
+        ],
+        "pronunciation_focus": [
+          "多 duō → 'đua', thanh 1 cao và phẳng",
+          "蔬 sh → 'sh' uốn lưỡi cong ra sau",
+          "菜 c → 'ts' bật hơi mạnh như cuối chữ 'lóc'",
+          "对 duì → 'duây', thanh 4 xuống; ở đây nghĩa 'với / đối với'",
+          "体好 tǐ hǎo → thanh 3 + thanh 3, chữ đầu lên: 'tí hǎo'"
         ]
       },
       {
@@ -832,6 +1006,13 @@ export const lessons: ChineseLesson[] = [
           "yú → round-lipped 'yee' (the ü with a y-glide), rising tone; this is 'fish'",
           "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'",
           "ch in chī → curled-back 'ch'; buzzed vowel, not 'ee'"
+        ],
+        "pronunciation_focus": [
+          "妈妈 mā ma → thanh 1 cao phẳng rồi khinh thanh: 'MA-mơ'",
+          "做 zuò → 'dzua', không bật hơi, thanh 4 xuống",
+          "鱼 yú → 'i' tròn môi (ü lướt 'y'), thanh 2 lên; chữ này là 'cá'",
+          "很好 hěn hǎo → thanh 3 + thanh 3, chữ đầu lên: 'hén hǎo'",
+          "吃 ch → 'ch' uốn lưỡi cong; nguyên âm vo ve, không phải 'i'"
         ]
       }
     ],
@@ -891,7 +1072,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Food is arguably the central social currency in China, and the vocabulary carries that weight. 饺子 (jiǎozi, dumplings) are tied to family and the Lunar New Year — folding them together is a group activity, and they're shaped like old gold ingots to signal prosperity; they are not 包子 (bāozi, steamed filled buns) or pan-fried potstickers, even though menus abroad blur all three. 米饭 (mǐ fàn) means cooked rice in a bowl specifically; the uncooked grain and the plant are separate words (米, 稻), a distinction English's single 'rice' hides. The greeting 你吃了吗? ('Have you eaten?') lives here too: it's social glue, not a dinner invitation, much like American 'How's it going?' Hosting norms diverge sharply from the American script: the host usually orders for the whole table and keeps refilling your bowl, politely declining the first offer is expected ritual, and a cleared plate can read as 'still hungry, give me more' rather than 'I'm finished.' Tipping is generally not expected in mainland restaurants and can genuinely confuse staff.",
-    "tip_advice_en": "吃 (chī, 'eat') is the highest-frequency verb here and the perfect drill for the retroflex 'ch': curl the tongue tip back toward the ridge behind your teeth, then release with a strong puff. The vowel after it is not 'ee' — it's a tight buzz with the tongue still curled, the same vowel in 是 (shì) and 知 (zhī). If your 吃 sounds like English 'chee,' the tongue is too far forward. Second watch-point: 鱼 (yú, 'fish') reuses the ü from earlier lessons but with a rising tone — say round-lipped 'ee' and let the pitch climb like the end of a question; a flat or falling 'yu' drifts toward other words, so the rising pitch is doing real work. Build 我喜欢吃鱼 slowly: it chains three of A1's hardest sounds (x, ch, ü) in five syllables."
+    "cultural_notes_vi": "Ăn uống là tâm điểm giao tế ở Trung Quốc, và từ vựng mang đúng sức nặng đó. 饺子 (jiǎozi, sủi cảo) gắn với gia đình và Tết Âm — cả nhà ngồi gói chung như nhà mình gói bánh chưng, nặn hình thỏi vàng cổ để cầu phát tài; nó khác 包子 (bāozi, bánh bao hấp), dù thực đơn ngoài nước hay gộp chung. 米饭 (mǐ fàn) là cơm chín trong bát; còn hạt sống và cây lúa là từ khác (米, 稻) — đúng kiểu tiếng Việt phân rõ gạo / cơm / lúa, điều tiếng Anh gộp làm một. Câu chào 你吃了吗? (\"Ăn cơm chưa?\") cũng nằm ở đây: hỏi cho thân, không phải mời ăn — y hệt câu xã giao của người Việt. Phép chủ nhà khác hẳn kiểu Tây: chủ thường gọi món cho cả bàn và liên tục gắp thêm vào bát bạn, từ chối lần mời đầu là phép lịch sự, ăn sạch bát có thể bị hiểu là \"còn đói, cho thêm\" chứ không phải \"con ăn xong rồi\". Nhà hàng đại lục thường không cần tiền boa, boa còn làm nhân viên bối rối.",
+    "tip_advice_en": "吃 (chī, 'eat') is the highest-frequency verb here and the perfect drill for the retroflex 'ch': curl the tongue tip back toward the ridge behind your teeth, then release with a strong puff. The vowel after it is not 'ee' — it's a tight buzz with the tongue still curled, the same vowel in 是 (shì) and 知 (zhī). If your 吃 sounds like English 'chee,' the tongue is too far forward. Second watch-point: 鱼 (yú, 'fish') reuses the ü from earlier lessons but with a rising tone — say round-lipped 'ee' and let the pitch climb like the end of a question; a flat or falling 'yu' drifts toward other words, so the rising pitch is doing real work. Build 我喜欢吃鱼 slowly: it chains three of A1's hardest sounds (x, ch, ü) in five syllables.",
+    "tip_advice_vi": "吃 (chī, \"ăn\") là động từ tần suất cao nhất ở đây, đúng để luyện 'ch' uốn lưỡi: cong đầu lưỡi lên gờ sau răng rồi bật hơi mạnh. Nguyên âm theo sau không phải 'i' — là âm vo ve chặt, lưỡi vẫn cong, giống nguyên âm trong 是 (shì) và 知 (zhī). Nếu 吃 nghe như 'chi', lưỡi đang quá ra trước. Điểm hai: 鱼 (yú, \"cá\") lại dùng ü như bài trước nhưng thanh 2 — đọc 'i' tròn môi rồi đẩy cao độ lên như cuối câu hỏi; 'yu' phẳng hay xuống sẽ trôi sang chữ khác, nên thanh đi lên là có việc thật. Lợi thế người Việt: tai 6 thanh nghe cao độ tốt. Dựng 我喜欢吃鱼 thật chậm: nó nối ba âm khó nhất A1 (x, ch, ü) trong năm âm tiết."
   },
   {
     "id": 6,
@@ -960,6 +1143,11 @@ export const lessons: ChineseLesson[] = [
           "q in qǐng → hissy 'ch', tongue near the lower teeth",
           "ei in gěi / bēi → 'ay' as in 'day'",
           "ui in shuǐ → 'way', not 'wee'"
+        ],
+        "pronunciation_focus": [
+          "请 q → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "给/杯 ei → 'ây' như trong 'mây'",
+          "水 ui → 'uây', không phải 'uy'"
         ]
       },
       {
@@ -971,6 +1159,12 @@ export const lessons: ChineseLesson[] = [
           "hē → soft-throat 'h' + 'uh', flat high tone; this is the verb 'drink'",
           "lǜ → say 'lee', then round the lips tightly (the ü), falling tone",
           "ch in chá → curled-back 'ch', rising tone"
+        ],
+        "pronunciation_focus": [
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "喝 hē → 'h' cổ họng nhẹ + 'ơ', thanh 1 cao phẳng; động từ 'uống'",
+          "绿 lǜ → đọc 'li' rồi tròn môi chặt (âm ü), thanh 4 xuống",
+          "茶 ch → 'ch' uốn lưỡi cong, thanh 2 lên"
         ]
       },
       {
@@ -982,6 +1176,12 @@ export const lessons: ChineseLesson[] = [
           "zǎo shang → 3rd tone then neutral: 'DZAO-shahng'",
           "k in kā → strong puff of air (aspirated)",
           "ei in fēi → 'ay' as in 'day'"
+        ],
+        "pronunciation_focus": [
+          "每 ei → 'ây' như trong 'mây', thanh 3 xuống-lên",
+          "早上 zǎo shang → thanh 3 rồi khinh thanh: 'DZAO-sang'",
+          "咖 k → bật hơi mạnh (không phải 'c' nhẹ tiếng Việt)",
+          "啡 ei → 'ây' như trong 'mây'"
         ]
       },
       {
@@ -993,6 +1193,12 @@ export const lessons: ChineseLesson[] = [
           "ying in yīng → 'ing' as in 'sing'",
           "niú → 'nyoh', rising tone",
           "ai in nǎi → 'nye' (rhymes with 'eye'), 3rd tone"
+        ],
+        "pronunciation_focus": [
+          "小 iao → 'x' nhẹ + 'i-ao', thanh 3 xuống-lên",
+          "应 ying → 'inh' như đuôi 'sinh'",
+          "牛 niú → 'ni-âu', thanh 2 lên",
+          "奶 ai → 'nai' (vần như 'ai nấy'), thanh 3"
         ]
       },
       {
@@ -1004,6 +1210,12 @@ export const lessons: ChineseLesson[] = [
           "zh in zhī → 'j' as in 'jaw'; vowel is a buzz, not 'ee'",
           "bǐ → 'bee' with a dip; this is the comparison word ('than')",
           "gèng → 'gung' with 'ng' as in 'sing', falling tone"
+        ],
+        "pronunciation_focus": [
+          "果 guǒ → 'qua', thanh 3 xuống-lên",
+          "汁 zh → 'zh' uốn lưỡi cong; nguyên âm vo ve, không phải 'i'",
+          "比 bǐ → 'bi' có độ trầm; chữ so sánh ('hơn')",
+          "更 gèng → 'gâng' đuôi 'ng' như 'sing', thanh 4 xuống"
         ]
       }
     ],
@@ -1063,7 +1275,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "The default drink in China is hot water (热水, rè shuǐ) or warm tea, not the ice water Americans reach for by reflex — restaurants often bring room-temperature or hot water, and asking for ice can draw a puzzled look or a small surcharge. Tea is social infrastructure, not just a beverage: green tea (绿茶) is the everyday standard, and a host refilling your cup is hospitality, not a hint that you've overstayed. 干杯 (gān bēi, 'dry the cup') at a meal is closer to a binding 'bottoms-up' than a casual American 'cheers' — if someone toasts you directly, draining the glass is the expected reply, so pace yourself. 豆浆 (soy milk) here is a hot breakfast drink, not the cold dairy substitute it is in an American café. City coffee culture is real and growing, but tea is still the cultural default the way drip coffee is the American one.",
-    "tip_advice_en": "The verb you'll lean on all lesson is 喝 (hē, 'drink') — a clean, flat first tone with a soft throat 'h,' not the hard English 'h' in 'hat.' Keep it distinct from 和 (hé, 'and,' rising) and 河 (hé, 'river'): same consonant, different pitch, different word. The lesson's real trap is 绿茶 (lǜ chá, green tea): 绿 stacks the ü vowel and a falling fourth tone — say 'lee,' round the lips to a whistle without moving the tongue, then drop the pitch. If 绿 sounds like 'loo,' you've slipped back into an English vowel. Also bank the measure word 杯 (bēi, 'cup/glass'): Chinese never says 'a water' — it's always 一杯水 ('one cup [of] water'), and that 杯 is mandatory, like English 'a glass of' but never optional."
+    "cultural_notes_vi": "Đồ uống mặc định ở Trung Quốc là nước nóng (热水, rè shuǐ) hay trà ấm — khác hẳn thói quen trà đá, nước đá của người Việt. Quán thường mang nước thường hoặc nước nóng; xin đá có thể bị nhìn lạ hoặc tính thêm tiền. Trà là chất kết dính xã hội chứ không chỉ là thức uống: trà xanh (绿茶) là chuẩn hằng ngày, chủ nhà rót thêm là hiếu khách, không phải ý đuổi khéo. 干杯 (gān bēi, \"cạn ly\") trong bữa nặng hơn câu \"dô\" xã giao của mình — ai mời đích danh thì uống cạn là phép đáp lễ, nên liệu sức. 豆浆 (sữa đậu nành) ở đây là đồ uống nóng buổi sáng, không phải sữa lạnh thay thế kiểu phương Tây. Văn hóa cà phê thành thị đang lên thật, nhưng trà vẫn là mặc định văn hóa, đúng như cà phê phin là mặc định của người Việt.",
+    "tip_advice_en": "The verb you'll lean on all lesson is 喝 (hē, 'drink') — a clean, flat first tone with a soft throat 'h,' not the hard English 'h' in 'hat.' Keep it distinct from 和 (hé, 'and,' rising) and 河 (hé, 'river'): same consonant, different pitch, different word. The lesson's real trap is 绿茶 (lǜ chá, green tea): 绿 stacks the ü vowel and a falling fourth tone — say 'lee,' round the lips to a whistle without moving the tongue, then drop the pitch. If 绿 sounds like 'loo,' you've slipped back into an English vowel. Also bank the measure word 杯 (bēi, 'cup/glass'): Chinese never says 'a water' — it's always 一杯水 ('one cup [of] water'), and that 杯 is mandatory, like English 'a glass of' but never optional.",
+    "tip_advice_vi": "Động từ tựa vào cả bài là 喝 (hē, \"uống\") — thanh 1 phẳng gọn với 'h' cổ họng nhẹ, không phải 'h' nặng. Giữ nó tách khỏi 和 (hé, \"và\", thanh 2 lên) và 河 (hé, \"sông\"): cùng phụ âm, khác cao độ, khác chữ. Tai 6 thanh của người Việt phân ba chữ này tốt — tận dụng. Bẫy thật của bài là 绿茶 (lǜ chá, trà xanh): 绿 gộp nguyên âm ü và thanh 4 xuống — đọc 'li', tròn môi như huýt sáo mà không động lưỡi, rồi hạ cao độ. 绿 nghe ra 'lu' là tuột về nguyên âm sai. Cũng nhớ lượng từ 杯 (bēi, \"cốc/ly\"): tiếng Trung không nói \"một nước\" — luôn là 一杯水 (\"một cốc nước\"), 杯 bắt buộc, không bỏ được."
   },
   {
     "id": 7,
@@ -1133,6 +1347,12 @@ export const lessons: ChineseLesson[] = [
           "shì → curled-back tongue; the vowel is a buzz, not 'ee'",
           "x in xīng → light 'sh', tongue near the lower teeth",
           "ing in xīng → 'ing' as in 'sing'"
+        ],
+        "pronunciation_focus": [
+          "今 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "是 shì → lưỡi uốn cong; nguyên âm vo ve, không phải 'i'",
+          "星 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "星 ing → 'inh' như đuôi 'sinh'"
         ]
       },
       {
@@ -1144,6 +1364,12 @@ export const lessons: ChineseLesson[] = [
           "wǔ yǒu → two 3rd tones, so the first rises: 'wú yǒu'",
           "zh in zhōng → 'j' as in 'jaw', tongue curled back",
           "kè → 'kuh', falling tone; this is the word for 'class / lesson'"
+        ],
+        "pronunciation_focus": [
+          "星 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "五有 wǔ yǒu → hai thanh 3, chữ đầu lên: 'wú yǒu'",
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "课 kè → 'khơ', thanh 4 xuống; chữ chỉ 'tiết học / bài'"
         ]
       },
       {
@@ -1155,6 +1381,12 @@ export const lessons: ChineseLesson[] = [
           "mò → 'maw', falling tone",
           "yào → 'yow', falling tone; here 'going to / will'",
           "zuò → 'dzwaw', falling tone; no air puff"
+        ],
+        "pronunciation_focus": [
+          "周 zh → 'zh' uốn lưỡi cong ra sau, thanh 1 cao phẳng",
+          "末 mò → 'mua', thanh 4 xuống",
+          "要 yào → 'i-ao', thanh 4 xuống; ở đây nghĩa 'sẽ / định'",
+          "做 zuò → 'dzua', thanh 4 xuống; không bật hơi"
         ]
       },
       {
@@ -1165,6 +1397,11 @@ export const lessons: ChineseLesson[] = [
           "q in qī → hissy 'ch', flat high tone",
           "s in sān → 's' as in 'sun' + 'ahn'",
           "jiàn → 'jyen', falling tone; the 'see [you]' word from Lesson 1"
+        ],
+        "pronunciation_focus": [
+          "期 q → 'q' như 'ch' xát hơi, thanh 1 cao phẳng",
+          "三 s → 's' như tiếng Việt + 'an'",
+          "见 jiàn → 'gi-en', thanh 4 xuống; chữ 'gặp [bạn]' từ Bài 1 (Hán-Việt: KIẾN)"
         ]
       },
       {
@@ -1176,6 +1413,12 @@ export const lessons: ChineseLesson[] = [
           "hé → 'huh' rising; this is the word for 'and'",
           "dōu → 'doh', flat high tone; means 'both / all'",
           "máng → 'mahng' with 'ng' as in 'sing', rising; means 'busy'"
+        ],
+        "pronunciation_focus": [
+          "四 sì → nguyên âm chặt vo ve, không 'i', thanh 4 xuống; 'bốn/thứ Năm' (đối với shí, 'mười')",
+          "和 hé → 'hơ' thanh 2 lên; chữ 'và'",
+          "都 dōu → 'đâu', thanh 1 cao phẳng; nghĩa 'đều / cả'",
+          "忙 máng → 'mang' đuôi 'ng' như 'sing', thanh 2 lên; nghĩa 'bận'"
         ]
       }
     ],
@@ -1235,7 +1478,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "China's week is built like a numbered list, not a set of names: 星期 (xīng qī, 'week') plus a number. 星期一 is literally 'week-one' = Monday, 星期二 'week-two' = Tuesday, straight through. The single exception is Sunday — 星期天 or 星期日 ('week-sky' / 'week-sun'), never 'week-seven.' This is far easier than English's mythological names (Saturn's day, Woden's day), so lean into the pattern rather than memorizing seven words. The week officially starts on Monday, not Sunday as on a typical American wall calendar, so 'the first day of the week' means Monday to a Chinese speaker. 周末 (zhōu mò, 'weekend') uses the alternate week-word 周 — both 星期 and 周 mean 'week,' with 周 slightly more clipped/written, roughly like 'wk.' shortening 'week' but spoken aloud.",
-    "tip_advice_en": "Highest-leverage move: learn the frame 星期 + [number] once and you get all seven days for free — don't study them as separate vocabulary. The recurring sound trap is 四 (sì, four → Thursday 星期四) vs. 十 (shí, ten): 'sì' is a tight buzz with a sharp falling tone and no real vowel, 'shí' curls the tongue back and rises. Mixing them up turns Thursday into something else. To ask 'what day is it?', the question word 几 (jǐ, 'which/how many') slots straight into the frame: 今天星期几? ('today week-which?') — note Chinese drops 'is' (是) in this set phrase, so don't insert a verb. And 见 (jiàn, 'see') from Lesson 1 returns in 星期三见 ('Wednesday see-[you]') — bank that 'time-word + 见' goodbye pattern as a reusable unit."
+    "cultural_notes_vi": "Tuần của tiếng Trung đánh số như tiếng Việt mình, không đặt tên riêng: 星期 (xīng qī, \"tuần\") cộng một con số. 星期一 nghĩa đen \"tuần-một\" = thứ Hai, 星期二 \"tuần-hai\" = thứ Ba, cứ thế. Lệch một bậc so với ta (Trung \"một\" là thứ Hai, Việt \"Hai\" cũng là thứ Hai — vẫn dễ nhớ). Ngoại lệ duy nhất là Chủ nhật — 星期天 hay 星期日 (\"tuần-trời\" / \"tuần-mặt trời\"), không bao giờ \"tuần-bảy\". Lối này dễ hơn tên thần thoại của tiếng Anh, nên cứ bám quy luật thay vì học thuộc bảy từ. Tuần chính thức bắt đầu từ thứ Hai (giống lịch Việt), nên \"ngày đầu tuần\" với người Trung là thứ Hai. 周末 (zhōu mò, \"cuối tuần\") dùng chữ tuần thay thế 周 — cả 星期 và 周 đều là \"tuần\", 周 gọn hơn, thiên về văn viết.",
+    "tip_advice_en": "Highest-leverage move: learn the frame 星期 + [number] once and you get all seven days for free — don't study them as separate vocabulary. The recurring sound trap is 四 (sì, four → Thursday 星期四) vs. 十 (shí, ten): 'sì' is a tight buzz with a sharp falling tone and no real vowel, 'shí' curls the tongue back and rises. Mixing them up turns Thursday into something else. To ask 'what day is it?', the question word 几 (jǐ, 'which/how many') slots straight into the frame: 今天星期几? ('today week-which?') — note Chinese drops 'is' (是) in this set phrase, so don't insert a verb. And 见 (jiàn, 'see') from Lesson 1 returns in 星期三见 ('Wednesday see-[you]') — bank that 'time-word + 见' goodbye pattern as a reusable unit.",
+    "tip_advice_vi": "Đòn lợi nhất: thuộc khung 星期 + [số] một lần là có cả bảy ngày miễn phí — đừng học rời từng từ. Bẫy âm lặp lại là 四 (sì, bốn → thứ Năm 星期四) với 十 (shí, mười): 'sì' chặt vo ve, thanh 4 xuống gắt, không nguyên âm rõ; 'shí' uốn lưỡi cong và đi lên. Nhầm là thứ Năm hóa ra ngày khác. Tai 6 thanh của người Việt phân hai chữ này tốt — tận dụng. Hỏi \"hôm nay thứ mấy?\", chữ hỏi 几 (jǐ, \"mấy/bao nhiêu\") lắp thẳng vào khung: 今天星期几? (\"hôm nay tuần-mấy?\") — lưu ý tiếng Trung bỏ chữ 'là' (是) trong cụm này, đừng chèn động từ. Và 见 (jiàn, \"gặp\", Hán-Việt: KIẾN) từ Bài 1 trở lại trong 星期三见 (\"thứ Tư gặp [bạn]\") — gói cụm chào tạm biệt \"từ chỉ thời gian + 见\" thành một đơn vị dùng lại."
   },
   {
     "id": 8,
@@ -1305,6 +1550,12 @@ export const lessons: ChineseLesson[] = [
           "sh in shēng → curled-back 'sh'",
           "eng in shēng → 'ung' as in 'sung'",
           "yuè → 'yweh' with a rounded ü-glide, falling tone; this is 'month'"
+        ],
+        "pronunciation_focus": [
+          "的 de → khinh thanh 'dơ', chữ sở hữu, không bao giờ nhấn",
+          "生 sh → 'sh' uốn lưỡi cong ra sau",
+          "生 eng → 'ung' như trong 'sung'",
+          "月 yuè → 'uê' tròn môi lướt ü, thanh 4 xuống; chữ này là 'tháng'"
         ]
       },
       {
@@ -1316,6 +1567,12 @@ export const lessons: ChineseLesson[] = [
           "x in xīn → light 'sh', tongue near the lower teeth",
           "ian in nián → 'yen', not 'nee-ahn'",
           "huò → 'hwaw', falling tone; means 'or'"
+        ],
+        "pronunciation_focus": [
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "新 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "年 ian → 'i-en', không phải 'ni-an'",
+          "或 huò → 'hua', thanh 4 xuống; nghĩa 'hoặc'"
         ]
       },
       {
@@ -1327,6 +1584,12 @@ export const lessons: ChineseLesson[] = [
           "ian in tiān → 'yen', not 'tee-ahn'",
           "q in qì → hissy 'ch', tongue near the lower teeth",
           "rè → buzzy retroflex 'r' (tongue curled, not English 'r'), falling; 'hot'"
+        ],
+        "pronunciation_focus": [
+          "八 bā → không bật hơi, giữa 'b' và 'p', thanh 1 cao phẳng",
+          "天 ian → 'i-en', không phải 'ti-an'",
+          "气 q → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "热 rè → 'r' uốn lưỡi vo ve (lưỡi cong, không phải 'r' tiếng Việt), thanh 4 xuống; 'nóng'"
         ]
       },
       {
@@ -1338,6 +1601,12 @@ export const lessons: ChineseLesson[] = [
           "iao in xiào → 'shyow', falling tone",
           "jiǔ → 'jyoh', dipping 3rd tone; 'nine / September'",
           "kāi → 'kye' (rhymes with 'eye'), strong air puff"
+        ],
+        "pronunciation_focus": [
+          "学 xué → 'x' nhẹ + ü: 'suê', thanh 2 lên",
+          "校 iao → 'x' nhẹ + 'i-ao', thanh 4 xuống",
+          "九 jiǔ → 'gi-âu', thanh 3 xuống-lên; 'chín / tháng Chín'",
+          "开 kāi → 'khai' (vần như 'ai nấy'), bật hơi mạnh"
         ]
       },
       {
@@ -1349,6 +1618,12 @@ export const lessons: ChineseLesson[] = [
           "rì → buzzy retroflex 'r'; the 'i' is not 'ee', falling; means 'day / date'",
           "guó → 'gwaw', rising tone",
           "jié → 'jyeh', rising tone; means 'festival'"
+        ],
+        "pronunciation_focus": [
+          "十 shí → 'sh' uốn lưỡi cong, thanh 2 lên; 'mười / tháng Mười'",
+          "日 rì → 'r' uốn lưỡi vo ve; 'i' không phải 'i', thanh 4 xuống; nghĩa 'ngày'",
+          "国 guó → 'qua', thanh 2 lên",
+          "节 jié → 'gi-ê', thanh 2 lên; nghĩa 'lễ/tết' (Hán-Việt: TIẾT)"
         ]
       }
     ],
@@ -1408,7 +1683,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Months work exactly like days: 月 (yuè, 'moon/month') plus a number — 一月 'moon-one' = January through 十二月 = December. No names to memorize; if you can count to twelve you can say every month. The catch is the lunisolar calendar running alongside the Western one. 春节 (Spring Festival, the 'Chinese New Year') falls in 一月 or 二月 on the Western calendar because it tracks the moon, not January 1 — much like Easter drifting across March/April for an American. 国庆节 (National Day, October 1) anchors a week-long 'Golden Week' when much of the country travels at once — closer in scale to a combined Thanksgiving-plus-Fourth-of-July than to a single day off. 月 by itself also means 'moon,' which is why the Mid-Autumn 'Moon Festival' (中秋节) and the calendar share the character — a memory hook, not a coincidence.",
-    "tip_advice_en": "Same leverage as Lesson 7: master 月 + [number] once and all twelve months come free — never drill them as twelve separate words. The pronunciation watch-point is 月 (yuè) itself: it is not 'you-eh.' Start from the ü vowel (round-lipped 'ee'), glide to 'eh,' and fall the pitch — 'ywEH,' one syllable. Dates run largest-to-smallest: 十月一日 is 'month-ten, day-one' = October 1, the reverse of American 'October 1st' word order but the same logic as ISO/military dates, so think 'big to small.' One register note: 日 (rì) for the date is formal/written; in speech people normally say 号 (hào) — 十月一号 in conversation, 十月一日 on a document."
+    "cultural_notes_vi": "Tháng chạy y như ngày: 月 (yuè, \"trăng/tháng\") cộng một con số — 一月 \"trăng-một\" = tháng Một, tới 十二月 = tháng Mười Hai. Không tên để học; đếm được tới mười hai là nói được mọi tháng. Chỗ hóc là lịch âm-dương song song với lịch dương. 春节 (Tết Xuân, \"Tết Âm\") rơi vào 一月 hay 二月 dương lịch vì theo trăng chứ không phải mùng 1 tháng Một — đúng như Tết Nguyên đán của mình trôi quanh tháng 1–2 dương lịch. 国庆节 (Quốc khánh, 1 tháng Mười) mở \"Tuần lễ Vàng\" cả tuần, cả nước đi chơi cùng lúc — về quy mô gần với cảnh người Việt về quê dịp Tết hơn là một ngày nghỉ lẻ. 月 đứng một mình còn nghĩa \"trăng\", nên Tết Trung thu (中秋节) và lịch dùng chung chữ này — một mẹo nhớ, không phải trùng hợp.",
+    "tip_advice_en": "Same leverage as Lesson 7: master 月 + [number] once and all twelve months come free — never drill them as twelve separate words. The pronunciation watch-point is 月 (yuè) itself: it is not 'you-eh.' Start from the ü vowel (round-lipped 'ee'), glide to 'eh,' and fall the pitch — 'ywEH,' one syllable. Dates run largest-to-smallest: 十月一日 is 'month-ten, day-one' = October 1, the reverse of American 'October 1st' word order but the same logic as ISO/military dates, so think 'big to small.' One register note: 日 (rì) for the date is formal/written; in speech people normally say 号 (hào) — 十月一号 in conversation, 十月一日 on a document.",
+    "tip_advice_vi": "Đòn lợi như Bài 7: thuộc 月 + [số] một lần là có cả mười hai tháng miễn phí — đừng học rời mười hai từ. Điểm cần canh là chính chữ 月 (yuè): không phải 'du-eh'. Bắt từ nguyên âm ü (tròn môi 'i'), lướt sang 'ê', rồi hạ cao độ — 'uÊ', một âm tiết. Ngày chạy lớn-tới-nhỏ: 十月一日 là \"tháng-mười, ngày-một\" = 1 tháng Mười — thật ra trùng cách người Việt viết \"ngày 1 tháng 10\" về thứ tự lớn-nhỏ. Một ghi chú về văn phong: 日 (rì) cho ngày là trang trọng/văn viết; nói chuyện thường dùng 号 (hào) — 十月一号 khi nói, 十月一日 trên giấy tờ."
   },
   {
     "id": 9,
@@ -1478,6 +1755,12 @@ export const lessons: ChineseLesson[] = [
           "ian in tiān → 'yen', not 'tee-ahn'",
           "q in qì → hissy 'ch', tongue near the lower teeth",
           "hěn hǎo → T3+T3, so the first rises: 'hén hǎo'"
+        ],
+        "pronunciation_focus": [
+          "今 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "天 ian → 'i-en', không phải 'ti-an'",
+          "气 q → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "很好 hěn hǎo → thanh 3 + thanh 3, chữ đầu lên: 'hén hǎo'"
         ]
       },
       {
@@ -1489,6 +1772,12 @@ export const lessons: ChineseLesson[] = [
           "kě néng → 'kuh nung'; the 'e' is 'uh', not 'ee'",
           "huì → 'hway', falling tone; the 'will / likely' word",
           "yǔ → round-lipped 'ee' (ü), dipping tone; means 'rain'"
+        ],
+        "pronunciation_focus": [
+          "明 ng → 'ng' như 'sing', thanh 2 lên",
+          "可能 kě néng → 'khơ nâng'; 'e' là 'ơ', không phải 'i'",
+          "会 huì → 'huây', thanh 4 xuống; chữ 'sẽ / có thể'",
+          "雨 yǔ → 'i' tròn môi (ü), thanh 3 xuống-lên; nghĩa 'mưa'"
         ]
       },
       {
@@ -1500,6 +1789,12 @@ export const lessons: ChineseLesson[] = [
           "j in jīng → 'j' as in 'jeep'",
           "dōng → 'doong', flat high tone",
           "lěng → 'lung' with 'ng' as in 'sing', dipping 3rd tone; means 'cold'"
+        ],
+        "pronunciation_focus": [
+          "北 ei → 'ây' như trong 'mây'",
+          "京 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "冬 dōng → 'đung', thanh 1 cao phẳng",
+          "冷 lěng → 'lâng' đuôi 'ng' như 'sing', thanh 3 xuống-lên; nghĩa 'lạnh'"
         ]
       },
       {
@@ -1511,6 +1806,12 @@ export const lessons: ChineseLesson[] = [
           "tài → 'tye' (rhymes with 'eye'), strong air puff; means 'too'",
           "rè → buzzy retroflex 'r' (tongue curled), falling; means 'hot'",
           "bù → 'boo', falling here; the negation 'not'"
+        ],
+        "pronunciation_focus": [
+          "夏 x → 'x' nhẹ, lưỡi gần răng dưới, thanh 4 xuống",
+          "太 tài → 'thai' (vần như 'ai nấy'), bật hơi mạnh; nghĩa 'quá'",
+          "热 rè → 'r' uốn lưỡi vo ve (lưỡi cong), thanh 4 xuống; nghĩa 'nóng'",
+          "不 bù → 'bu', thanh 4 xuống ở đây; chữ phủ định 'không'"
         ]
       },
       {
@@ -1522,6 +1823,12 @@ export const lessons: ChineseLesson[] = [
           "ian in miàn → 'yen', not 'mee-ahn'",
           "wēn dù → 'wun doo'; together 温度 = 'temperature'",
           "duō shao → 'dwaw show'; the question phrase 'how much'"
+        ],
+        "pronunciation_focus": [
+          "外 wài → 'oai' (vần như 'oai'), thanh 4 xuống",
+          "面 ian → 'i-en', không phải 'mi-an'",
+          "温度 wēn dù → 'uân đu'; ghép lại 温度 = 'nhiệt độ'",
+          "多少 duō shao → 'đua sao'; cụm hỏi 'bao nhiêu'"
         ]
       }
     ],
@@ -1581,7 +1888,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Weather small talk works in China much as it does for Americans — a safe, neutral opener — but the script differs in two ways. First, 你吃了吗? ('have you eaten?') competes with weather as the default phatic opener, so weather is one option, not the automatic reflex English speakers reach for. Second, temperature is always Celsius (摄氏度): '十度' (10 degrees) is chilly, not freezing, and '三十度' is hot, not a mild spring afternoon — recalibrate the numbers. China spans climates from Harbin's brutal Siberian winters to tropical Hainan, so 'Chinese weather' is as meaningless as 'American weather'; 北京的冬天 (Beijing's winter) is genuinely harsh and bone-dry. Air quality (空气质量) is a weather-adjacent daily topic in big cities the way pollen counts are in parts of the US — checking it before heading out is routine, not alarmist.",
-    "tip_advice_en": "The highest-leverage grammar here is the modal stack 可能会 (kě néng huì, 'might / will probably') in 明天可能会下雨 — 可能 = 'possibly,' 会 = 'will/likely,' and Chinese cheerfully stacks them. Don't translate word-for-word; treat 可能会 as one 'might' chunk. Weather verbs are bare: 下雨 is literally 'fall-rain,' 下雪 'fall-snow' — there is no dummy 'it' subject the way English forces ('it's raining'); Chinese just says 'rain falls,' and resisting the urge to insert a subject is the A1 habit to build now. Sound trap: 热 (rè, hot) and 冷 (lěng, cold) are your highest-frequency words here — 热 opens with the buzzy retroflex 'r' (tongue curled back, not the English 'r'); flatten the tongue and it drifts toward 'le.' Drill 很热 / 很冷 as a contrasting pair."
+    "cultural_notes_vi": "Tán chuyện thời tiết ở Trung Quốc cũng là câu mở an toàn như nhiều nơi, nhưng khác hai chỗ. Một, 你吃了吗? (\"ăn cơm chưa?\") cạnh tranh với thời tiết làm câu mở xã giao mặc định — nên thời tiết chỉ là một lựa chọn, không phải phản xạ duy nhất; chỗ này người Việt thấy quen vì mình cũng hay mở bằng \"ăn cơm chưa?\". Hai, nhiệt độ luôn tính theo độ C (摄氏度) — giống Việt Nam — nên không phải đổi đơn vị: '十度' (10 độ) là mát se, '三十度' là nóng. Trung Quốc trải khí hậu từ mùa đông Siberia khắc nghiệt ở Cáp Nhĩ Tân tới Hải Nam nhiệt đới, nên \"thời tiết Trung Quốc\" cũng mơ hồ như \"thời tiết Việt Nam\" — Hà Nội rét khác Sài Gòn; 北京的冬天 (mùa đông Bắc Kinh) thực sự khắc nghiệt và hanh khô. Chất lượng không khí (空气质量) là chủ đề thường ngày ở thành phố lớn, kiểm tra trước khi ra đường là bình thường.",
+    "tip_advice_en": "The highest-leverage grammar here is the modal stack 可能会 (kě néng huì, 'might / will probably') in 明天可能会下雨 — 可能 = 'possibly,' 会 = 'will/likely,' and Chinese cheerfully stacks them. Don't translate word-for-word; treat 可能会 as one 'might' chunk. Weather verbs are bare: 下雨 is literally 'fall-rain,' 下雪 'fall-snow' — there is no dummy 'it' subject the way English forces ('it's raining'); Chinese just says 'rain falls,' and resisting the urge to insert a subject is the A1 habit to build now. Sound trap: 热 (rè, hot) and 冷 (lěng, cold) are your highest-frequency words here — 热 opens with the buzzy retroflex 'r' (tongue curled back, not the English 'r'); flatten the tongue and it drifts toward 'le.' Drill 很热 / 很冷 as a contrasting pair.",
+    "tip_advice_vi": "Ngữ pháp lợi nhất ở đây là chồng tình thái 可能会 (kě néng huì, \"có thể / chắc sẽ\") trong 明天可能会下雨 — 可能 = \"có thể\", 会 = \"sẽ/chắc\", tiếng Trung chồng thoải mái. Đừng dịch từng chữ; coi 可能会 như một khối \"có thể\". Động từ thời tiết trơ trụi: 下雨 nghĩa đen \"rơi-mưa\", 下雪 \"rơi-tuyết\" — không có chủ ngữ giả như tiếng Anh ép ('it's raining'); chỗ này hợp tiếng Việt vì mình cũng nói thẳng \"trời mưa\", \"mưa rơi\". Bẫy âm: 热 (rè, nóng) và 冷 (lěng, lạnh) là hai từ tần suất cao nhất — 热 mở bằng 'r' uốn lưỡi vo ve (lưỡi cong, không phải 'r' tiếng Việt); duỗi lưỡi là trôi sang 'le'. Luyện 很热 / 很冷 thành cặp tương phản."
   },
   {
     "id": 10,
@@ -1651,6 +1960,12 @@ export const lessons: ChineseLesson[] = [
           "zh in zhī → 'j' as in 'jaw'; vowel is a buzz, not 'ee'; the animal measure word",
           "iao in xiǎo → 'shyow', dipping 3rd tone",
           "ao in māo → 'ow' as in 'cow', flat high tone; 'cat'"
+        ],
+        "pronunciation_focus": [
+          "我有 wǒ yǒu → thanh 3 + thanh 3, chữ đầu lên: 'wó yǒu'",
+          "只 zh → 'zh' uốn lưỡi cong; nguyên âm vo ve, không 'i'; lượng từ con vật",
+          "小 iao → 'x' nhẹ + 'i-ao', thanh 3 xuống-lên",
+          "猫 ao → 'ao' như trong 'cao', thanh 1 cao phẳng; 'mèo'"
         ]
       },
       {
@@ -1662,6 +1977,12 @@ export const lessons: ChineseLesson[] = [
           "rén → buzzy retroflex 'r' + 'en' as 'un', rising; means 'person / human'",
           "zuì → 'dzway', falling tone; means 'most'",
           "péng yǒu → 'pung yoh'; 'ng' as in 'sing'; means 'friend'"
+        ],
+        "pronunciation_focus": [
+          "狗 gǒu → 'gâu', thanh 3 xuống-lên; 'chó'",
+          "人 rén → 'r' uốn lưỡi vo ve + 'ân', thanh 2 lên; nghĩa 'người'",
+          "最 zuì → 'dzuây', thanh 4 xuống; nghĩa 'nhất'",
+          "朋友 péng yǒu → 'pâng dâu'; 'ng' như 'sing'; nghĩa 'bạn'"
         ]
       },
       {
@@ -1673,6 +1994,12 @@ export const lessons: ChineseLesson[] = [
           "ao in māo → 'ow' as in 'cow' (熊猫 = panda, literally 'bear-cat')",
           "zh in zhōng → 'j' as in 'jaw', tongue curled back",
           "bǎo → 'bow' (as in bow-down), dipping 3rd tone; means 'treasure'"
+        ],
+        "pronunciation_focus": [
+          "熊 xióng → 'x' nhẹ + 'i-ung': 'siung', thanh 2 lên",
+          "猫 ao → 'ao' như trong 'cao' (熊猫 = gấu trúc, nghĩa đen 'gấu-mèo')",
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "宝 bǎo → 'bao' (như trong 'cúi'), thanh 3 xuống-lên; nghĩa 'báu vật'"
         ]
       },
       {
@@ -1684,6 +2011,12 @@ export const lessons: ChineseLesson[] = [
           "pǎo → strong air puff, 'pow', dipping 3rd tone; means 'run'",
           "de → neutral 'duh'; here it links the verb to its description",
           "kuài → 'kwai' (rhymes with 'why'), falling tone; means 'fast'"
+        ],
+        "pronunciation_focus": [
+          "马 mǎ → 'ma' có độ trầm, thanh 3; đối với mā 'mẹ' (phẳng) / mà 'mắng' (xuống)",
+          "跑 pǎo → bật hơi mạnh, 'pao', thanh 3 xuống-lên; nghĩa 'chạy'",
+          "得 de → khinh thanh 'dơ'; ở đây nối động từ với phần miêu tả",
+          "快 kuài → 'quai' (vần như 'oai'), thanh 4 xuống; nghĩa 'nhanh'"
         ]
       },
       {
@@ -1695,6 +2028,12 @@ export const lessons: ChineseLesson[] = [
           "qù → hissy 'ch' + ü: 'chü', falling tone; means 'go'",
           "dòng wù → 'doong woo', both falling; means 'animal'",
           "yuán → 'ywen', rising tone; 园 = garden/park, here 'zoo'"
+        ],
+        "pronunciation_focus": [
+          "喜 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "去 qù → 'q' như 'ch' + ü: 'chü', thanh 4 xuống; nghĩa 'đi'",
+          "动物 dòng wù → 'đung u', cả hai thanh 4 xuống; nghĩa 'động vật'",
+          "园 yuán → 'i-uên', thanh 2 lên; 园 = vườn/công viên, ở đây 'sở thú' (Hán-Việt: VIÊN)"
         ]
       }
     ],
@@ -1754,7 +2093,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Animals carry symbolic weight that can override their literal meaning in China. The 熊猫 (xióng māo, panda — literally 'bear-cat') is a national symbol and diplomatic instrument ('panda diplomacy'), closer to the bald eagle's status for Americans than to a generic zoo animal. The twelve zodiac animals (生肖) are a live social fact, not folklore: people genuinely ask your birth-year animal, and certain years (Dragon especially) drive measurable baby-booms — there is no clean American equivalent, since star signs are casual small talk, not life-planning. 龙 (lóng, dragon) is auspicious and imperial in China — the opposite of the monster-to-be-slain of Western tradition; never assume 'dragon' carries the same connotation. Pets (宠物) are now common in cities, but the older rural frame treated 狗 and 猫 as working animals; the American 'dogs are family' default is recent and urban here, not universal.",
-    "tip_advice_en": "The single most useful thing in this lesson is the measure word 只 (zhī) — Chinese cannot say 'a cat,' only 一只猫 ('one [animal-measure] cat'). 只 covers most animals (一只猫, 一只狗, 一只兔子); large animals like horses take 匹 (一匹马) — beyond strict A1, but be aware measure words vary by noun, like English 'a head of cattle' vs. 'a school of fish,' except mandatory every single time. The headline pronunciation drill is the 妈/麻/马/骂 tone quartet: 马 (mǎ, horse) is third tone (dipping). Said flat it becomes 妈 (mā, mom); rising, 麻 (má, hemp/numb); falling, 骂 (mà, to scold) — same consonant and vowel, four different words by pitch alone. Practice 马 in isolation with an exaggerated dip until your ear tracks the pitch, not the consonant. Also note 熊猫 is transparently 'bear-cat': Chinese animal names often describe, so reading them literally is a legitimate memory aid, not a mistake."
+    "cultural_notes_vi": "Con vật mang sức nặng biểu tượng có thể lấn át nghĩa đen ở Trung Quốc. 熊猫 (xióng māo, gấu trúc — nghĩa đen \"gấu-mèo\") là biểu tượng quốc gia và công cụ ngoại giao (\"ngoại giao gấu trúc\"), gần với vị thế con vật biểu tượng quốc gia hơn là thú vườn thú thường. Mười hai con giáp (生肖) là chuyện xã hội sống động, không phải chuyện cổ tích — và người Việt thấy quen ngay vì mình cũng có Tý Sửu Dần Mão: người ta thật sự hỏi tuổi con gì, vài năm (nhất là năm Rồng) đẻ rộ thấy rõ. 龙 (lóng, rồng) là cát tường và mang khí đế vương — giống quan niệm con rồng của người Việt, ngược hẳn con quái vật phải giết của phương Tây; đừng cho rằng \"dragon\" mang cùng nghĩa. Thú cưng (宠物) nay phổ biến ở thành phố, nhưng nếp quê cũ coi 狗 và 猫 là vật nuôi giúp việc; quan niệm \"chó là người nhà\" ở đây mới và mang tính đô thị, không phổ biến khắp nơi.",
+    "tip_advice_en": "The single most useful thing in this lesson is the measure word 只 (zhī) — Chinese cannot say 'a cat,' only 一只猫 ('one [animal-measure] cat'). 只 covers most animals (一只猫, 一只狗, 一只兔子); large animals like horses take 匹 (一匹马) — beyond strict A1, but be aware measure words vary by noun, like English 'a head of cattle' vs. 'a school of fish,' except mandatory every single time. The headline pronunciation drill is the 妈/麻/马/骂 tone quartet: 马 (mǎ, horse) is third tone (dipping). Said flat it becomes 妈 (mā, mom); rising, 麻 (má, hemp/numb); falling, 骂 (mà, to scold) — same consonant and vowel, four different words by pitch alone. Practice 马 in isolation with an exaggerated dip until your ear tracks the pitch, not the consonant. Also note 熊猫 is transparently 'bear-cat': Chinese animal names often describe, so reading them literally is a legitimate memory aid, not a mistake.",
+    "tip_advice_vi": "Thứ hữu dụng nhất bài này là lượng từ 只 (zhī) — tiếng Trung không nói \"một mèo\", phải là 一只猫 (\"một [lượng từ con vật] mèo\"). Người Việt thấy quen vì mình cũng phải nói \"một con mèo\". 只 dùng cho hầu hết con vật (一只猫, 一只狗, 一只兔子); con lớn như ngựa dùng 匹 (一匹马) — vượt A1, nhưng nên biết lượng từ đổi theo danh từ, đúng kiểu \"một con\" / \"một đàn\" của ta, chỉ khác là bắt buộc mọi lần. Bài luyện đinh là bộ bốn thanh 妈/麻/马/骂: 马 (mǎ, ngựa) thanh 3 (xuống-lên). Đọc phẳng thành 妈 (mā, mẹ); đi lên là 麻 (má, gai/tê); đi xuống là 骂 (mà, mắng) — cùng phụ âm, cùng nguyên âm, bốn chữ chỉ khác cao độ. Lợi thế tai 6 thanh của người Việt giúp bạn đây: luyện 马 riêng, phóng đại độ xuống-lên cho đến khi tai bám cao độ chứ không bám phụ âm. Cũng để ý 熊猫 lộ rõ là \"gấu-mèo\": tên con vật tiếng Trung hay miêu tả, đọc theo nghĩa đen là mẹo nhớ hợp lệ, không phải lỗi."
   },
   {
     "id": 11,
@@ -1824,6 +2165,12 @@ export const lessons: ChineseLesson[] = [
           "yǎn jing → 3rd tone then neutral: 'YEN-jing' (眼睛, 'eyes')",
           "iao in piào → 'pyow', falling tone",
           "liang → neutral and light here: 'lyahng' (漂亮, 'pretty')"
+        ],
+        "pronunciation_focus": [
+          "的 de → khinh thanh 'dơ', chữ sở hữu, không bao giờ nhấn",
+          "眼睛 yǎn jing → thanh 3 rồi khinh thanh: 'DỀN-jing' (眼睛, 'mắt')",
+          "漂 iao → 'p' + 'i-ao', thanh 4 xuống",
+          "亮 liang → khinh thanh nhẹ ở đây: 'li-ang' (漂亮, 'đẹp')"
         ]
       },
       {
@@ -1835,6 +2182,12 @@ export const lessons: ChineseLesson[] = [
           "téng → 'tung' with 'ng' as in 'sing', rising; means 'ache'",
           "iao/iang in xiǎng → light 'sh' + 'yahng', dipping 3rd tone",
           "iu in xiū → 'syoh', flat high tone (休息, 'rest')"
+        ],
+        "pronunciation_focus": [
+          "头 tóu → 'thâu', thanh 2 lên (头, 'đầu')",
+          "疼 téng → 'tâng' đuôi 'ng' như 'sing', thanh 2 lên; nghĩa 'đau'",
+          "想 iang → 'x' nhẹ + 'i-ang', thanh 3 xuống-lên",
+          "休 iu → 'si-âu', thanh 1 cao phẳng (休息, 'nghỉ')"
         ]
       },
       {
@@ -1847,6 +2200,13 @@ export const lessons: ChineseLesson[] = [
           "yòng → 'yong' with 'ng' as in 'sing', falling; means 'use'",
           "kuài → 'kwai' (rhymes with 'why'), falling (筷子, 'chopsticks')",
           "shǒu → 'shoh', dipping 3rd tone (手, 'hand')"
+        ],
+        "pronunciation_focus": [
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "吃 ch → 'ch' uốn lưỡi cong; nguyên âm vo ve, không phải 'i'",
+          "用 yòng → 'i-ung' đuôi 'ng' như 'sing', thanh 4 xuống; nghĩa 'dùng'",
+          "筷 kuài → 'quai' (vần như 'oai'), thanh 4 xuống (筷子, 'đũa')",
+          "手 shǒu → 'sâu', thanh 3 xuống-lên (手, 'tay')"
         ]
       },
       {
@@ -1858,6 +2218,12 @@ export const lessons: ChineseLesson[] = [
           "duì → 'dway', falling tone; here means 'for / toward'",
           "tuǐ → 'tway', dipping 3rd tone (腿, 'leg')",
           "ch in chù → curled-back 'ch', falling (好处, 'benefit')"
+        ],
+        "pronunciation_focus": [
+          "跑 pǎo → bật hơi mạnh, 'pao', thanh 3 xuống-lên (跑步, 'chạy')",
+          "对 duì → 'duây', thanh 4 xuống; ở đây nghĩa 'với / đối với'",
+          "腿 tuǐ → 'thuây', thanh 3 xuống-lên (腿, 'chân')",
+          "处 ch → 'ch' uốn lưỡi cong, thanh 4 xuống (好处, 'lợi ích')"
         ]
       },
       {
@@ -1869,6 +2235,12 @@ export const lessons: ChineseLesson[] = [
           "tīng → 'ting' with 'ng' as in 'sing'; means 'listen / hear'",
           "dǒng → 'doong', dipping 3rd tone; means 'understand'",
           "ěr → 'er' as in 'her' with the tongue curled, dipping (耳朵, 'ear')"
+        ],
+        "pronunciation_focus": [
+          "说 sh → 'sh' uốn lưỡi cong + 'ua'",
+          "听 tīng → 'thing' đuôi 'ng' như 'sing'; nghĩa 'nghe'",
+          "懂 dǒng → 'đung', thanh 3 xuống-lên; nghĩa 'hiểu'",
+          "耳 ěr → như 'ơ' uốn lưỡi cong, thanh 3 xuống-lên (耳朵, 'tai')"
         ]
       }
     ],
@@ -1928,7 +2300,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Talking about the body in China leans medical-traditional in ways that surprise Americans. 'I have a headache' (我头疼) often gets a Traditional Chinese Medicine framing — too much internal 'heat' (上火), needing rest or warm water — alongside or instead of the reach-for-ibuprofen reflex; offering hot water for an ailment is genuine care here, not a brush-off. China is a chopsticks (筷子) culture, not a hands culture: apart from a few specific foods, using your hands for rice or dishes reads as improper, the way eating mashed potatoes with your fingers would at an American dinner table. Pointing at your own nose (鼻子) — not your chest — is the standard gesture for 'me/myself,' which trips up English speakers who thumb their chest. And blunt talk about someone's body (weight especially) is far less taboo than in the US — '你胖了' ('you've put on weight') can be neutral observation among close family, not the insult it would be stateside.",
-    "tip_advice_en": "The pattern to lock in is 'body part + 疼 (téng, ache)': 头疼 (headache), 肚子疼 (stomachache), 牙疼 (toothache) — no 'have a,' no 'my'; Chinese just says '[part] aches.' Build the slot, not the phrases. The pronunciation crux is the syllable-final 'ng' that pervades this lesson (疼 téng, 听 tīng, 懂 dǒng): let it ring through the nose like the end of English 'sing,' never clipped like 'tan.' Watch the neutral-toned second syllables in the body words — 眼睛 (yǎn-jing), 耳朵 (ěr-duo), 鼻子 (bí-zi), 肚子 (dù-zi): full tone on syllable one, weightless on syllable two. Saying 'bí-ZI' instead of 'BÍ-zi' is the single most common A1 stumble here; let the second syllable fall away."
+    "cultural_notes_vi": "Nói về cơ thể ở Trung Quốc thiên về Đông y — chỗ này người Việt thấy rất quen. \"Tôi đau đầu\" (我头疼) thường được hiểu theo y học cổ truyền: \"nóng trong\" (上火), cần nghỉ hay uống nước ấm — song song hoặc thay cho phản xạ uống thuốc giảm đau; đưa nước nóng khi ai ốm là quan tâm thật, đúng kiểu \"uống nhiều nước ấm vào\" của mình, không phải nói cho qua. Trung Quốc là văn hóa đũa (筷子) giống Việt Nam, không phải văn hóa bốc tay: trừ vài món, dùng tay bốc cơm bị coi là bất lịch sự. Chỉ vào mũi mình (鼻子) — không phải ngực — là cử chỉ chuẩn cho \"tôi/chính tôi\", điểm này hợp người Việt vì mình cũng hay chỉ vào mặt/mũi. Và nói thẳng về thân hình người khác (nhất là cân nặng) ít kiêng hơn phương Tây — '你胖了' (\"bạn tăng cân rồi\") trong nhà thân có thể chỉ là nhận xét bình thường, gần với kiểu người Việt hay buột miệng \"dạo này béo ra\", không phải lời xúc phạm.",
+    "tip_advice_en": "The pattern to lock in is 'body part + 疼 (téng, ache)': 头疼 (headache), 肚子疼 (stomachache), 牙疼 (toothache) — no 'have a,' no 'my'; Chinese just says '[part] aches.' Build the slot, not the phrases. The pronunciation crux is the syllable-final 'ng' that pervades this lesson (疼 téng, 听 tīng, 懂 dǒng): let it ring through the nose like the end of English 'sing,' never clipped like 'tan.' Watch the neutral-toned second syllables in the body words — 眼睛 (yǎn-jing), 耳朵 (ěr-duo), 鼻子 (bí-zi), 肚子 (dù-zi): full tone on syllable one, weightless on syllable two. Saying 'bí-ZI' instead of 'BÍ-zi' is the single most common A1 stumble here; let the second syllable fall away.",
+    "tip_advice_vi": "Khuôn cần chốt là \"bộ phận + 疼 (téng, đau)\": 头疼 (đau đầu), 肚子疼 (đau bụng), 牙疼 (đau răng) — không \"có một\", không \"của tôi\"; tiếng Trung chỉ nói \"[bộ phận] đau\", y như tiếng Việt mình. Dựng cái khung, đừng học rời từng cụm. Mấu chốt phát âm là đuôi 'ng' đầy bài (疼 téng, 听 tīng, 懂 dǒng): ngân qua mũi như đuôi 'sinh', đừng cắt cụt như 'tan'. Để ý các tiếng thứ hai khinh thanh trong từ chỉ bộ phận — 眼睛 (yǎn-jing), 耳朵 (ěr-duo), 鼻子 (bí-zi), 肚子 (dù-zi): thanh đầy ở tiếng một, đọc bẫng ở tiếng hai. Đọc 'bí-ZI' thay vì 'BÍ-zi' là lỗi A1 phổ biến nhất ở đây; để tiếng sau rơi nhẹ đi."
   },
   {
     "id": 12,
@@ -1998,6 +2372,12 @@ export const lessons: ChineseLesson[] = [
           "jú → 'jü' (j + rounded ü), rising tone (邮局, 'post office')",
           "háng → 'hahng' with 'ng' as in 'sing'; 银行 'bank' uses háng, not xíng",
           "ian in biān → 'byen', not 'bee-ahn' (边, 'side')"
+        ],
+        "pronunciation_focus": [
+          "邮 yóu → 'dâu', thanh 2 lên",
+          "局 jú → 'jü' (j + ü tròn môi), thanh 2 lên (邮局, 'bưu điện')",
+          "行 háng → 'hang' đuôi 'ng' như 'sing'; 银行 'ngân hàng' đọc háng, không phải xíng",
+          "边 biān → 'bi-en', không phải 'bi-an' (边, 'phía')"
         ]
       },
       {
@@ -2009,6 +2389,12 @@ export const lessons: ChineseLesson[] = [
           "wǎng → 'wahng', dipping 3rd tone; means 'toward'",
           "ian in qián → 'chyen', rising (前, 'front / ahead')",
           "zhuǎn → curled-back 'j' + 'wahn', dipping (转弯, 'turn')"
+        ],
+        "pronunciation_focus": [
+          "直 zhí → 'zh' uốn lưỡi cong, thanh 2 lên; nguyên âm vo ve, không 'i' (一直, 'thẳng')",
+          "往 wǎng → 'oang', thanh 3 xuống-lên; nghĩa 'về phía'",
+          "前 qián → 'chi-en', thanh 2 lên (前, 'phía trước')",
+          "转 zhuǎn → 'zh' uốn lưỡi cong + 'oan', thanh 3 xuống-lên (转弯, 'rẽ')"
         ]
       },
       {
@@ -2020,6 +2406,12 @@ export const lessons: ChineseLesson[] = [
           "chāo → curled-back 'ch' + 'ow', strong air puff (超市, 'supermarket')",
           "sh in shì → curled-back; vowel is a buzz, not 'ee'",
           "páng → 'pahng' with 'ng' as in 'sing', rising (旁边, 'beside')"
+        ],
+        "pronunciation_focus": [
+          "学 xué → 'x' nhẹ + ü: 'suê', thanh 2 lên",
+          "超 chāo → 'ch' uốn lưỡi cong + 'ao', bật hơi mạnh (超市, 'siêu thị')",
+          "市 sh → 'sh' uốn lưỡi cong; nguyên âm vo ve, không 'i'",
+          "旁 páng → 'pang' đuôi 'ng' như 'sing', thanh 2 lên (旁边, 'bên cạnh')"
         ]
       },
       {
@@ -2031,6 +2423,12 @@ export const lessons: ChineseLesson[] = [
           "j in jīng → 'j' as in 'jeep'",
           "hé → 'huh', rising tone (河北, 'Hebei [province]')",
           "ian in biān → 'byen' (北边, 'the north side')"
+        ],
+        "pronunciation_focus": [
+          "北 ei → 'ây' như trong 'mây' (lặp ba lần ở đây)",
+          "京 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "河 hé → 'hơ', thanh 2 lên (河北, 'tỉnh Hà Bắc')",
+          "边 biān → 'bi-en' (北边, 'phía bắc')"
         ]
       },
       {
@@ -2042,6 +2440,12 @@ export const lessons: ChineseLesson[] = [
           "shì → buzzed vowel, falling (市, 'city')",
           "zh in zhōng → 'j' as in 'jaw', tongue curled back",
           "jiān → 'jyen' (中间, 'middle / center')"
+        ],
+        "pronunciation_focus": [
+          "家 jiā → 'gia', thanh 1 cao phẳng (家, 'nhà')",
+          "市 shì → nguyên âm vo ve, thanh 4 xuống (市, 'thành phố')",
+          "中 zh → 'zh' uốn lưỡi cong ra sau, gần 'tr' miền Bắc",
+          "间 jiān → 'gi-en' (中间, 'ở giữa / trung tâm')"
         ]
       }
     ],
@@ -2101,7 +2505,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Chinese directions are anchored to the cardinal compass far more than American ones. Locals — and even taxi-style instructions — say '往南走' (go south) where an American would say 'go left,' and apartments are advertised by which way they face (朝南, 'south-facing,' commands a premium for sunlight). Beijing's grid, laid out on a strict north-south axis, makes this second nature for residents. The compass loop itself differs: Chinese conventionally recites 东南西北 (east-south-west-north), not the American 'north-east-south-west.' Position words attach to a noun with 的 and sit after it: 银行的左边 is literally 'bank's left-side,' the reverse of English 'left of the bank.' One reassurance: addresses are logical, not the American patchwork — 北京市朝阳区… runs city → district → street → number, the same big-to-small logic as dates.",
-    "tip_advice_en": "The structural habit to build is the locative frame: [landmark] + 在 + [reference] + 的 + [position word]. '学校在超市旁边' = 'school is-at supermarket('s) beside.' English puts the position word in the middle ('next to the supermarket'); Chinese puts it last — drill the slot order, not the sentences. The pronunciation pitfall is 边 (biān, 'side'), which closes nearly every direction word (左边, 右边, 旁边): it's 'byen,' a single glide, not 'bee-an' in two beats. Also keep 银行 (yín háng, 'bank') apart from the same character read 行 (xíng, 'to be OK') — 行 is one of Chinese's notorious two-pronunciation characters; here it's háng. To ask the way, the set phrase is '怎么走?' ('how [to] walk?'), using 走 (zǒu, go on foot) — a different verb from 去 (qù, to go generally)."
+    "cultural_notes_vi": "Chỉ đường tiếng Trung bám hướng la bàn nhiều hơn — và người Việt thấy quen vì mình cũng hay nói \"nhà hướng Nam\", \"đi về phía Bắc\". Dân địa phương, kể cả khi chỉ đường cho taxi, nói '往南走' (đi về phía Nam) ở chỗ người phương Tây nói \"rẽ trái\"; căn hộ rao theo hướng cửa (朝南, \"hướng Nam\", được giá hơn vì nhiều nắng) — đúng như nhà mình chuộng hướng Nam. Phố Bắc Kinh kẻ ô theo trục Bắc-Nam nên dân ở đó quen miệng. Vòng la bàn cũng khác: tiếng Trung đọc 东南西北 (đông-nam-tây-bắc). Từ chỉ vị trí gắn vào danh từ bằng 的 và đứng sau: 银行的左边 nghĩa đen \"bên-trái của ngân hàng\". Một điểm yên tâm: địa chỉ rất logic, giống Việt Nam — 北京市朝阳区… chạy thành phố → quận → phố → số nhà, cùng lối lớn-tới-nhỏ như ngày tháng.",
+    "tip_advice_en": "The structural habit to build is the locative frame: [landmark] + 在 + [reference] + 的 + [position word]. '学校在超市旁边' = 'school is-at supermarket('s) beside.' English puts the position word in the middle ('next to the supermarket'); Chinese puts it last — drill the slot order, not the sentences. The pronunciation pitfall is 边 (biān, 'side'), which closes nearly every direction word (左边, 右边, 旁边): it's 'byen,' a single glide, not 'bee-an' in two beats. Also keep 银行 (yín háng, 'bank') apart from the same character read 行 (xíng, 'to be OK') — 行 is one of Chinese's notorious two-pronunciation characters; here it's háng. To ask the way, the set phrase is '怎么走?' ('how [to] walk?'), using 走 (zǒu, go on foot) — a different verb from 去 (qù, to go generally).",
+    "tip_advice_vi": "Thói quen cấu trúc cần dựng là khung định vị: [mốc] + 在 + [tham chiếu] + 的 + [từ vị trí]. '学校在超市旁边' = \"trường ở siêu-thị('s) bên cạnh\". Tiếng Anh đặt từ vị trí ở giữa; tiếng Trung đặt cuối — chỗ này hợp tiếng Việt vì mình cũng nói \"bên cạnh siêu thị\". Luyện thứ tự ô, đừng học rời câu. Bẫy phát âm là 边 (biān, \"phía\"), đóng gần như mọi từ chỉ hướng (左边, 右边, 旁边): đọc 'bi-en' một hơi lướt, không phải 'bi-an' hai nhịp. Cũng giữ 银行 (yín háng, \"ngân hàng\") tách khỏi cùng chữ đọc 行 (xíng, \"được\") — 行 là chữ hai âm trứ danh; ở đây là háng. Hỏi đường, cụm cố định là '怎么走?' (\"đi thế nào?\"), dùng 走 (zǒu, đi bộ) — khác động từ 去 (qù, đi nói chung)."
   },
   {
     "id": 13,
@@ -2171,6 +2577,12 @@ export const lessons: ChineseLesson[] = [
           "zài → 'dzye' (rhymes with 'eye'), falling",
           "diǎn → 'dyen', dipping 3rd tone; means 'o'clock'",
           "le → neutral 'luh', the change-of-state particle, weightless"
+        ],
+        "pronunciation_focus": [
+          "现 xiàn → 'si-en', thanh 4 xuống (现在, 'bây giờ')",
+          "在 zài → 'dzai' (vần như 'ai nấy'), thanh 4 xuống",
+          "点 diǎn → 'di-en', thanh 3 xuống-lên; nghĩa 'giờ' (chỉ giờ đồng hồ)",
+          "了 le → khinh thanh 'lơ', chữ báo đổi trạng thái, đọc bẫng"
         ]
       },
       {
@@ -2182,6 +2594,12 @@ export const lessons: ChineseLesson[] = [
           "x in xià → light 'sh', falling (下午, 'afternoon')",
           "shí → curled-back 'sh', rising; 'ten' (contrast sì, 'four')",
           "fēn → 'fun', flat high tone; means 'minute'"
+        ],
+        "pronunciation_focus": [
+          "是 shì → lưỡi uốn cong; nguyên âm vo ve, không phải 'i'",
+          "下 x → 'x' nhẹ, thanh 4 xuống (下午, 'buổi chiều')",
+          "十 shí → 'sh' uốn lưỡi cong, thanh 2 lên; 'mười' (đối với sì, 'bốn')",
+          "分 fēn → 'phân', thanh 1 cao phẳng; nghĩa 'phút'"
         ]
       },
       {
@@ -2193,6 +2611,12 @@ export const lessons: ChineseLesson[] = [
           "zǎo shang → 3rd tone then neutral: 'DZAO-shahng'",
           "q in qī / qǐ → hissy 'ch', tongue near the lower teeth",
           "chuáng → curled-back 'ch' + 'wahng', rising (起床, 'get up')"
+        ],
+        "pronunciation_focus": [
+          "每 ei → 'ây' như trong 'mây', thanh 3 xuống-lên",
+          "早上 zǎo shang → thanh 3 rồi khinh thanh: 'DZAO-sang'",
+          "七/起 q → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "床 chuáng → 'ch' uốn lưỡi cong + 'oang', thanh 2 lên (起床, 'thức dậy')"
         ]
       },
       {
@@ -2204,6 +2628,12 @@ export const lessons: ChineseLesson[] = [
           "yì → 'ee', falling tone (会议, 'meeting')",
           "kāi → 'kye' (rhymes with 'eye'), strong air puff",
           "shǐ → curled-back 'sh', dipping 3rd tone (开始, 'start')"
+        ],
+        "pronunciation_focus": [
+          "会 huì → 'huây', thanh 4 xuống",
+          "议 yì → 'i', thanh 4 xuống (会议, 'cuộc họp')",
+          "开 kāi → 'khai' (vần như 'ai nấy'), bật hơi mạnh",
+          "始 shǐ → 'sh' uốn lưỡi cong, thanh 3 xuống-lên (开始, 'bắt đầu')"
         ]
       },
       {
@@ -2215,6 +2645,12 @@ export const lessons: ChineseLesson[] = [
           "iao in xiǎo → 'shyow', dipping 3rd tone (小时, 'hour' — not 'small ten')",
           "iu in xiū → 'syoh', flat high tone (休息, 'rest')",
           "jiān → 'jyen' (时间, 'time')"
+        ],
+        "pronunciation_focus": [
+          "们 men → khinh thanh 'mân', không nhấn",
+          "小 iao → 'x' nhẹ + 'i-ao', thanh 3 xuống-lên (小时, 'tiếng đồng hồ' — không phải 'mười nhỏ')",
+          "休 iu → 'si-âu', thanh 1 cao phẳng (休息, 'nghỉ')",
+          "间 jiān → 'gi-en' (时间, 'thời gian')"
         ]
       }
     ],
@@ -2274,7 +2710,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "Telling time is structurally easy in Chinese but the day is cut differently. 点 (diǎn, literally 'dot/point') = o'clock (三点 = 'three points' = 3:00), and 半 (bàn, half) gives the half-hour (两点半 = 2:30). Spoken Chinese front-loads the period word — 下午三点 ('afternoon three o'clock') rather than tacking AM/PM after the number. China runs on a single official time zone (Beijing time) despite spanning roughly five geographic ones, so 'what time is it' has one national answer — unlike the four continental US zones. Watch the clock-vs-duration split English blurs: 点 is a clock position, 小时 is an elapsed hour — 三点 (3 o'clock) and 三个小时 (three hours) are not interchangeable, where English 'three' rides on context. And 2 o'clock is 两点 (liǎng diǎn), using 两, not 二 — a quantity-vs-counting distinction worth flagging early.",
-    "tip_advice_en": "The single highest-leverage item: 2 o'clock is 两点 (liǎng diǎn), never 二点. 二 (èr) is for counting and ordinals; 两 (liǎng) is for quantities before a measure, and 点 behaves like a measure here — this 二/两 split recurs for the rest of your Chinese life, so anchor it now. The change-of-state 了 in '几点了?' is not past tense — it signals 'as of now' ('what time has it become?'); resist mapping 了 to English '-ed.' Pronunciation watch-point: 点 (diǎn) is 'dyen' (a 'd' + glide), not 'dee-an' in two syllables, and it ends almost every time expression you'll say. Also keep the shared character 时 apart: 小时 (xiǎo shí, an hour of duration) vs. 时间 (shí jiān, time in general) — different words, both high-frequency."
+    "cultural_notes_vi": "Xem giờ về cấu trúc rất dễ nhưng cách chia ngày khác. 点 (diǎn, nghĩa đen \"chấm/điểm\") = giờ (三点 = \"ba điểm\" = 3 giờ), 半 (bàn, rưỡi) cho nửa giờ (两点半 = 2 giờ rưỡi). Tiếng Trung nói buổi trước số — 下午三点 (\"chiều ba giờ\"), giống tiếng Việt \"ba giờ chiều\" hơn là gắn AM/PM sau số. Trung Quốc chạy một múi giờ chính thức duy nhất (giờ Bắc Kinh) dù trải khoảng năm múi địa lý — giống Việt Nam một múi giờ cả nước, nên \"mấy giờ\" có một đáp án toàn quốc. Để ý chỗ tiếng Anh nhập nhằng giờ-điểm với giờ-khoảng: 点 là điểm trên đồng hồ, 小时 là một tiếng trôi qua — 三点 (3 giờ) và 三个小时 (ba tiếng) không thay nhau được; chỗ này hợp tiếng Việt vì mình cũng phân \"3 giờ\" với \"3 tiếng\". Và 2 giờ là 两点 (liǎng diǎn), dùng 两, không phải 二.",
+    "tip_advice_en": "The single highest-leverage item: 2 o'clock is 两点 (liǎng diǎn), never 二点. 二 (èr) is for counting and ordinals; 两 (liǎng) is for quantities before a measure, and 点 behaves like a measure here — this 二/两 split recurs for the rest of your Chinese life, so anchor it now. The change-of-state 了 in '几点了?' is not past tense — it signals 'as of now' ('what time has it become?'); resist mapping 了 to English '-ed.' Pronunciation watch-point: 点 (diǎn) is 'dyen' (a 'd' + glide), not 'dee-an' in two syllables, and it ends almost every time expression you'll say. Also keep the shared character 时 apart: 小时 (xiǎo shí, an hour of duration) vs. 时间 (shí jiān, time in general) — different words, both high-frequency.",
+    "tip_advice_vi": "Điểm lợi nhất: 2 giờ là 两点 (liǎng diǎn), không bao giờ 二点. 二 (èr) dùng để đếm và số thứ tự; 两 (liǎng) dùng cho số lượng trước lượng từ, mà 点 ở đây như lượng từ — phân biệt 二/两 này theo bạn suốt đời học tiếng Trung, nên chốt ngay. Chữ 了 đổi trạng thái trong '几点了?' không phải thì quá khứ — nó báo \"tính đến giờ\" (\"đã thành mấy giờ rồi?\"); đừng gán 了 vào kiểu thì quá khứ. Lợi thế người Việt: tiếng mình không chia thì nên không sa vào bẫy này. Điểm phát âm: 点 (diǎn) là 'di-en' ('d' + lướt), không phải 'di-an' hai âm tiết, và nó đóng gần như mọi cách nói giờ. Cũng giữ chữ dùng chung 时 tách ra: 小时 (xiǎo shí, một tiếng đồng hồ) với 时间 (shí jiān, thời gian nói chung) — hai từ khác nhau, đều tần suất cao."
   },
   {
     "id": 14,
@@ -2344,6 +2782,12 @@ export const lessons: ChineseLesson[] = [
           "hào → 'how', falling tone — note 好 here is 4th tone (hào, 'be fond of'), not 3rd hǎo 'good'",
           "sh in shì → curled-back; vowel is a buzz, not 'ee'",
           "sh in shū → curled-back 'sh' (书, 'book')"
+        ],
+        "pronunciation_focus": [
+          "爱 ài → 'ai' như trong 'ai nấy', thanh 4 xuống (Hán-Việt: ÁI)",
+          "好 hào → 'hao', thanh 4 xuống — lưu ý 好 ở đây thanh 4 (hào, 'thích/ưa'), không phải thanh 3 hǎo 'tốt'",
+          "是 sh → 'sh' uốn lưỡi cong; nguyên âm vo ve, không 'i'",
+          "书 sh → 'sh' uốn lưỡi cong (书, 'sách')"
         ]
       },
       {
@@ -2355,6 +2799,12 @@ export const lessons: ChineseLesson[] = [
           "x in xǐ → light 'sh', tongue near the lower teeth",
           "qù → hissy 'ch' + ü: 'chü', falling tone; means 'go'",
           "yóu yǒng → 'yoh yong', rising then dipping (游泳, 'swim')"
+        ],
+        "pronunciation_focus": [
+          "周 zh → 'zh' uốn lưỡi cong ra sau, thanh 1 cao phẳng (周末, 'cuối tuần')",
+          "喜 x → 'x' nhẹ, lưỡi gần răng dưới",
+          "去 qù → 'q' như 'ch' + ü: 'chü', thanh 4 xuống; nghĩa 'đi'",
+          "游泳 yóu yǒng → 'dâu dung', thanh 2 lên rồi thanh 3 xuống-lên (游泳, 'bơi')"
         ]
       },
       {
@@ -2366,6 +2816,12 @@ export const lessons: ChineseLesson[] = [
           "gē → 'guh', flat high tone (歌, 'song')",
           "de → neutral 'duh'; here the 得 complement marker (V + 得 + how-well)",
           "tīng → 'ting' with 'ng' as in 'sing' (好听, 'nice to hear')"
+        ],
+        "pronunciation_focus": [
+          "唱 ch → 'ch' uốn lưỡi cong, bật hơi mạnh, thanh 4 xuống (唱, 'hát')",
+          "歌 gē → 'kơ', thanh 1 cao phẳng (歌, 'bài hát')",
+          "得 de → khinh thanh 'dơ'; ở đây là chữ 得 nối bổ ngữ (V + 得 + mức độ)",
+          "听 tīng → 'thing' đuôi 'ng' như 'sing' (好听, 'hay/dễ nghe')"
         ]
       },
       {
@@ -2377,6 +2833,12 @@ export const lessons: ChineseLesson[] = [
           "jìn → 'jin', falling tone (最近, 'recently')",
           "xué xí → 'shweh shee', light 'sh' both (学习, 'study / learn')",
           "iao in tiào → 'tyow', falling tone (跳舞, 'dance')"
+        ],
+        "pronunciation_focus": [
+          "最 zuì → 'dzuây', thanh 4 xuống",
+          "近 jìn → 'jin', thanh 4 xuống (最近, 'gần đây')",
+          "学习 xué xí → 'suê si', cả hai 'x' nhẹ (学习, 'học')",
+          "跳 iao → 'th' + 'i-ao', thanh 4 xuống (跳舞, 'nhảy múa')"
         ]
       },
       {
@@ -2388,6 +2850,12 @@ export const lessons: ChineseLesson[] = [
           "x in xíng → light 'sh' + 'ing'",
           "huó → 'hwaw', rising tone",
           "dòng → 'doong' with 'ng' as in 'sing', falling (活动, 'activity')"
+        ],
+        "pronunciation_focus": [
+          "旅 lǚ → 'l' + ü: đọc 'li' rồi tròn môi chặt, thanh 3 xuống-lên (旅行, 'du lịch')",
+          "行 x → 'x' nhẹ + 'inh'",
+          "活 huó → 'hua', thanh 2 lên",
+          "动 dòng → 'đung' đuôi 'ng' như 'sing', thanh 4 xuống (活动, 'hoạt động')"
         ]
       }
     ],
@@ -2447,7 +2915,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "How you frame hobbies signals values in China in ways the American 'just for fun' framing misses. 爱好 carries a faint sense of cultivation — calligraphy (书法), tea, an instrument, photography read as self-improvement, not idle time, especially to an older generation; the four classical 'scholar's arts' (琴棋书画 — music, the game of go, calligraphy, painting) still tint what counts as a respectable hobby. Group and outdoor activity is highly visible: at dawn and dusk parks fill with collective tai chi, line-dancing 'square dancing' (广场舞), and badminton — physical leisure skews communal where the American default skews individual. KTV (karaoke) is mainstream adult socializing across all ages, not the slightly ironic activity it can be in the US, so '唱歌' as a stated hobby is unremarkable. Note 好 is a two-tone character: 好 (hǎo, 'good,' 3rd tone) vs. 爱好 (… hào, 'to be fond of,' 4th tone) — the hobby word forces the rarer reading.",
-    "tip_advice_en": "The grammar to internalize: most Chinese hobbies are [verb + object], not single nouns — 看书 (read-books), 唱歌 (sing-songs), 跳舞 (jump-dance), 画画 (paint-paintings). Don't hunt for a one-word noun; say the action. The headline pronunciation item is the tone flip on 好: in 爱好 (ài hào) it is fourth tone (hào, 'to be fond of'), not the third-tone hǎo you learned for 'good' in Lesson 1 — same character, pitch changes the meaning. Second, the 得 in '唱得很好听' is the neutral-toned 'de' linking a verb to how well it's done (V + 得 + result); it sounds identical to possessive 的 but does a different job — don't let the shared sound collapse them. And 旅行 opens with 旅 (lǚ): the ü again — 'lee' with whistle-rounded lips, never 'loo.'"
+    "cultural_notes_vi": "Cách bạn nói về sở thích bộc lộ giá trị ở Trung Quốc — và người Việt thấy quen vì mình cũng trọng \"thú tao nhã\". 爱好 mang chút nghĩa tu dưỡng — thư pháp (书法), trà, một nhạc cụ, nhiếp ảnh được hiểu là rèn mình, không phải chơi không, nhất là với người lớn tuổi; bốn nghệ thuật cổ của nho sĩ (琴棋书画 — đàn, cờ, thư pháp, hội họa) vẫn nhuốm vào cái gì được coi là sở thích đáng nể, gần với chữ \"cầm kỳ thi họa\" của người Việt. Hoạt động nhóm ngoài trời rất phổ biến: sáng sớm và chiều tối công viên đầy người tập thái cực, nhảy dân vũ quảng trường (广场舞), cầu lông — giải trí thiên về tập thể, đúng kiểu công viên Việt Nam buổi sáng. Hát karaoke (KTV) là giao tế người lớn ở mọi lứa tuổi, bình thường như nhà mình, nên khai '唱歌' làm sở thích chẳng có gì lạ. Lưu ý 好 là chữ hai thanh: 好 (hǎo, 'tốt', thanh 3) khác 爱好 (… hào, 'thích', thanh 4) — từ sở thích buộc đọc âm hiếm hơn.",
+    "tip_advice_en": "The grammar to internalize: most Chinese hobbies are [verb + object], not single nouns — 看书 (read-books), 唱歌 (sing-songs), 跳舞 (jump-dance), 画画 (paint-paintings). Don't hunt for a one-word noun; say the action. The headline pronunciation item is the tone flip on 好: in 爱好 (ài hào) it is fourth tone (hào, 'to be fond of'), not the third-tone hǎo you learned for 'good' in Lesson 1 — same character, pitch changes the meaning. Second, the 得 in '唱得很好听' is the neutral-toned 'de' linking a verb to how well it's done (V + 得 + result); it sounds identical to possessive 的 but does a different job — don't let the shared sound collapse them. And 旅行 opens with 旅 (lǚ): the ü again — 'lee' with whistle-rounded lips, never 'loo.'",
+    "tip_advice_vi": "Ngữ pháp cần thấm: phần lớn sở thích tiếng Trung là [động từ + tân ngữ], không phải danh từ một chữ — 看书 (đọc-sách), 唱歌 (hát-bài), 跳舞 (nhảy-múa), 画画 (vẽ-tranh). Chỗ này hợp tiếng Việt vì mình cũng nói \"đọc sách\", \"hát hò\". Đừng tìm danh từ một chữ; nói hành động. Điểm phát âm đinh là đảo thanh ở 好: trong 爱好 (ài hào) là thanh 4 (hào, 'thích'), không phải thanh 3 hǎo bạn học cho 'tốt' ở Bài 1 — cùng chữ, cao độ đổi nghĩa. Hai, chữ 得 trong '唱得很好听' là 'de' khinh thanh nối động từ với mức độ làm tốt (V + 得 + kết quả); nghe y hệt 的 sở hữu nhưng làm việc khác — đừng để âm giống nhau gộp chúng. Và 旅行 mở bằng 旅 (lǚ): lại ü — 'li' tròn môi như huýt sáo, không bao giờ 'lu'."
   },
   {
     "id": 15,
@@ -2517,6 +2987,12 @@ export const lessons: ChineseLesson[] = [
           "j in jīng → 'j' as in 'jeep' (北京, 'Beijing')",
           "dà → 'dah', falling tone (大学, 'university')",
           "xué xí → 'shweh shee'; 学 repeats back-to-back here (学习, 'study')"
+        ],
+        "pronunciation_focus": [
+          "北 ei → 'ây' như trong 'mây'",
+          "京 j → 'j' nhẹ, lưỡi phẳng đưa ra trước (北京, 'Bắc Kinh')",
+          "大 dà → 'đa', thanh 4 xuống (大学, 'đại học')",
+          "学习 xué xí → 'suê si'; 学 lặp liền nhau ở đây (学习, 'học tập')"
         ]
       },
       {
@@ -2528,6 +3004,12 @@ export const lessons: ChineseLesson[] = [
           "lǎo shī → 'lao shrr', 3rd tone then flat; the shī vowel is a buzz (老师, 'teacher')",
           "ian in yán → 'yen', rising tone",
           "gé → 'guh', rising tone (严格, 'strict')"
+        ],
+        "pronunciation_focus": [
+          "们/的 men / de → cả hai khinh thanh, bẫng: 'mân', 'dơ'",
+          "老师 lǎo shī → 'lao sr', thanh 3 rồi phẳng; nguyên âm shī vo ve (老师, 'thầy/cô')",
+          "严 yán → 'i-en', thanh 2 lên",
+          "格 gé → 'kơ', thanh 2 lên (严格, 'nghiêm khắc')"
         ]
       },
       {
@@ -2539,6 +3021,12 @@ export const lessons: ChineseLesson[] = [
           "zuò yè → 'dzwaw yeh', both falling (作业, 'homework')",
           "wán → 'wahn', rising tone; means 'finish'",
           "le ma → both neutral and weightless; the yes/no question tail"
+        ],
+        "pronunciation_focus": [
+          "今 j → 'j' nhẹ, lưỡi phẳng đưa ra trước",
+          "作业 zuò yè → 'dzua dê', cả hai thanh 4 xuống (作业, 'bài tập')",
+          "完 wán → 'oan', thanh 2 lên; nghĩa 'xong'",
+          "了吗 le ma → cả hai khinh thanh, bẫng; đuôi câu hỏi có/không"
         ]
       },
       {
@@ -2550,6 +3038,12 @@ export const lessons: ChineseLesson[] = [
           "x in xīng → light 'sh' + 'ing' as in 'sing'",
           "q in qī → hissy 'ch', tongue near the lower teeth",
           "kǎo shì → 'kow shrr', 3rd then falling (考试, 'exam')"
+        ],
+        "pronunciation_focus": [
+          "下 x → 'x' nhẹ, thanh 4 xuống",
+          "星 x → 'x' nhẹ + 'inh' như 'sing'",
+          "期 q → 'q' như 'ch' xát hơi, lưỡi gần răng dưới",
+          "考试 kǎo shì → 'khao sr', thanh 3 rồi thanh 4 xuống (考试, 'kỳ thi')"
         ]
       },
       {
@@ -2561,6 +3055,12 @@ export const lessons: ChineseLesson[] = [
           "wàng → 'wahng' with 'ng' as in 'sing', falling (希望, 'hope')",
           "ch in chéng → curled-back 'ch', rising tone",
           "jì → 'jee', falling tone (成绩, 'grade / score')"
+        ],
+        "pronunciation_focus": [
+          "希 x → 'x' nhẹ, thanh 1 cao phẳng",
+          "望 wàng → 'oang' đuôi 'ng' như 'sing', thanh 4 xuống (希望, 'hy vọng')",
+          "成 ch → 'ch' uốn lưỡi cong, thanh 2 lên",
+          "绩 jì → 'ji', thanh 4 xuống (成绩, 'điểm/thành tích')"
         ]
       }
     ],
@@ -2620,7 +3120,9 @@ export const lessons: ChineseLesson[] = [
       }
     ],
     "cultural_notes_en": "School carries a cultural weight in China that the casual American 'how's school?' doesn't capture. The 高考 (gāo kǎo, the national college entrance exam) is a single, life-shaping event with no clean American equivalent — imagine the SAT, but it largely determines your university, is taken essentially once, and the whole society pauses around it (traffic rerouted near test sites). 老师 (teacher) is a high-status title used as respectful address even outside school, the way Americans might use 'Doctor' or 'Professor,' and a teacher being 严格 ('strict') is praise here, not a complaint. Grades attach to family 'face' (面子): a child's results reflect on the parents, so the American 'grades are the kid's own business' framing doesn't hold. Naming 北京大学 (Peking University) or 清华 carries the prestige of saying 'Harvard' or 'MIT' — useful cultural shorthand. The school year starts in September with two semesters (学期), like the US, but the long breaks are the hot Jul–Aug summer and the Spring Festival winter break.",
-    "tip_advice_en": "The most reusable structure here is 'V + 完 + 了' for completion: 做完了 ('do-finish-[change]') = 'have finished.' 完 is a result complement glued to the verb, and 了 marks the new state — together closer to English perfect 'have done' than to simple past; build the V+完+了 unit. Pronunciation focus: 学 (xué) appears back-to-back in '大学学习' — it's 'shweh' (light x + ü-glide + rising), and the doubled 学学 is a genuine tongue-twister; slow it deliberately. Don't confuse 老师 (lǎo shī, 'teacher') with 老是 (lǎo shì, 'always'): the difference is the tone on the second syllable plus the sh-buzz vowel — high-frequency words, easy to blur. Finally, 严格 (yán gé) describing a teacher is a compliment in context; don't reach for an apologetic English softener when you translate it back."
+    "cultural_notes_vi": "Việc học mang sức nặng văn hóa mà câu xã giao \"học hành sao rồi?\" không nói hết — và người Việt thấy thấm ngay. 高考 (gāo kǎo, kỳ thi đại học toàn quốc) là một biến cố định mệnh, gần đúng kỳ thi đại học của ta nhưng còn căng hơn: quyết phần lớn vào trường nào, gần như chỉ thi một lần, cả xã hội nín thở quanh nó (chặn đường gần điểm thi). 老师 (thầy/cô) là danh xưng trọng vọng dùng cả ngoài trường, đúng tinh thần \"tôn sư trọng đạo\"; thầy cô 严格 (\"nghiêm khắc\") ở đây là lời khen, không phải lời than. Điểm số gắn với \"thể diện\" (面子) gia đình: kết quả của con phản ánh lên cha mẹ — chỗ này hợp người Việt, không phải kiểu \"điểm là chuyện riêng của đứa trẻ\". Nhắc 北京大学 (Đại học Bắc Kinh) hay 清华 mang uy danh như nói trường top đầu — một cách nói tắt văn hóa hữu dụng. Năm học bắt đầu tháng Chín với hai học kỳ (学期), giống Việt Nam, nhưng kỳ nghỉ dài là hè nóng tháng 7–8 và nghỉ Tết Xuân.",
+    "tip_advice_en": "The most reusable structure here is 'V + 完 + 了' for completion: 做完了 ('do-finish-[change]') = 'have finished.' 完 is a result complement glued to the verb, and 了 marks the new state — together closer to English perfect 'have done' than to simple past; build the V+完+了 unit. Pronunciation focus: 学 (xué) appears back-to-back in '大学学习' — it's 'shweh' (light x + ü-glide + rising), and the doubled 学学 is a genuine tongue-twister; slow it deliberately. Don't confuse 老师 (lǎo shī, 'teacher') with 老是 (lǎo shì, 'always'): the difference is the tone on the second syllable plus the sh-buzz vowel — high-frequency words, easy to blur. Finally, 严格 (yán gé) describing a teacher is a compliment in context; don't reach for an apologetic English softener when you translate it back.",
+    "tip_advice_vi": "Cấu trúc dùng lại nhiều nhất ở đây là \"V + 完 + 了\" cho việc hoàn tất: 做完了 (\"làm-xong-[đổi]\") = \"đã làm xong\". 完 là bổ ngữ kết quả dính vào động từ, 了 báo trạng thái mới — gộp lại gần \"đã ... xong\" hơn là quá khứ đơn; dựng khối V+完+了. Lợi thế người Việt: tiếng mình không chia thì nên không bị thì quá khứ kéo lệch. Điểm phát âm: 学 (xué) lặp liền trong '大学学习' — đọc 'suê' ('x' nhẹ + lướt ü + thanh 2 lên), 学学 nhân đôi là chữ líu lưỡi thật; đọc chậm có chủ ý. Đừng lẫn 老师 (lǎo shī, \"thầy/cô\") với 老是 (lǎo shì, \"luôn luôn\"): khác ở thanh tiếng thứ hai cộng nguyên âm sh vo ve — từ tần suất cao, dễ nhòe. Cuối cùng, 严格 (yán gé) tả thầy cô là lời khen trong ngữ cảnh; đừng dịch lại bằng giọng xin lỗi nhẹ đi."
   }
 ];
 
