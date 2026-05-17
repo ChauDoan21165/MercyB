@@ -457,7 +457,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6_fear_failure": "data/vip6_fear_failure.json",
   "vip6_fear_intimacy": "data/vip6_fear_intimacy.json",
   "vip6_fear_success": "data/vip6_fear_success.json",
-  "vip6_fi_5_mp3": "data/vip6_fi_5_mp3.json",
   "vip6_freeze_response": "data/vip6_freeze_response.json",
   "vip6_guilt_hidden_shame": "data/vip6_guilt_hidden_shame.json",
   "vip6_imposter_wounds": "data/vip6_imposter_wounds.json",

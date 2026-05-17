@@ -1,6 +1,6 @@
 {
   "id": "vip6_inner_fragmentation",
-  "tier": "free",
+  "tier": "vip6",
   "title": {
     "en": "Inner Fragmentation",
     "vi": "Sự Phân Mảnh Nội Tâm"
