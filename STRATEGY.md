@@ -71,11 +71,14 @@ Expansion does NOT happen if:
 - It would dilute Vietnamese-first positioning
 - It would force pricing changes that hurt Vietnamese affordability
 
+### Built language tracks (secondary content surfaces — kept discoverable)
+
+KO, JA, ZH, FR, DE, ES tracks already exist in the codebase, authored over prior phases. They are **not** the mission and get **none** of the 95% effort — but they are **not hidden either**. Built content stays user-discoverable (`LanguageSwitcher`, the `/languages` index) for the minority of users who want it. Burying shipped work that users could benefit from has no upside. Effort allocation is unchanged: Vietnamese English learners remain the primary audience and get effectively all new investment; these tracks are maintained passively, surfaced honestly, and not marketed. They are secondary content surfaces, **not** a deferred-and-hidden roadmap item.
+
 ### Explicitly NOT serving
 
 - Complete beginners who need A1 basics in many languages (different app category — that's Duolingo)
 - Generic global learners (dilutes Vietnamese focus)
-- Native English speakers learning Korean/Japanese/Chinese/French/German/Spanish (not the mission — those tabs exist in code, are deferred or removed from marketing)
 - Any audience that requires content competing head-on with Duolingo on Duolingo's axis (gamification, generic translation)
 
 ---
@@ -114,7 +117,7 @@ Expansion does NOT happen if:
 - **CI/CD:** Green and stable. Restored via #536 (Sentry plugin nesting fix); ~17 PRs merged green after it (#537–#553) confirm the pipeline holds.
 - **Doctrine & docs:** CLAUDE.md doctrine fixed (#537). Root markdown consolidated 74→16 with ROOM_GUIDE.md + SECURITY.md added (#549). Canonical STRATEGY.md + PRINCIPLES.md landed (#546). AUDIT_LATENCY §1/§2/§4/§5 marked RESOLVED with measured evidence (#552).
 - **Content correctness:** Lesson-count truth-ups across ZH/ES/KO; JA & ZH C2 id-collision renumbers (#541, #542); raw-chengyu and French/German loanword EN-field cleanups (#545, #547, #530). VI-first sibling content authored for JA A2 16–30 and B1 31–45 (#548, #551).
-- **Strategy (§4):** 6 off-mission language tracks un-surfaced; VN-for-foreigners deferred (#553).
+- **Strategy (§4):** #553's un-surfacing of the 6 built language tracks (KO/JA/ZH/FR/DE/ES) was **reverted** — built content stays user-discoverable (see §4 "Built language tracks" + v2.2 changelog). VN-for-foreigners (secondary audience) remains a future expansion per §4, unchanged.
 - **App stores:** Apple Build 8 uploaded April 25, status unverified. Google Play Build 4 Live in Closed Testing as of April 25, status unverified. Verification deferred until next active mobile push.
 - **Paying users:** Last documented at 6 on April 24. Current unverified.
 
@@ -329,6 +332,14 @@ NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy 
 ---
 
 ## 15. Changelog
+
+### May 17, 2026 — v2.2: Reverted §4 un-surfacing decision
+
+- Reverted §4 un-surfacing decision. Languages built (KO, JA, ZH, FR, DE, ES) remain user-discoverable. Vietnamese English learners stay primary audience (95% effort), but content already built stays surfaced for the minority who want it.
+- Reverted PR #553 in code (squash commit `c3b554e7`): restored `src/components/LanguageSwitcher.tsx`, the `/languages` index (`LanguagesIndexPage.tsx`), the `AppRouter` route, `Home.tsx`, and the EN-chrome smoke test to their pre-#553 state. Removed `RECON-portfolio-unsurface.md` (it was added by #553).
+- §4: removed the "Native English speakers learning Korean/Japanese/Chinese/French/German/Spanish …" bullet from "Explicitly NOT serving"; added the "Built language tracks (secondary content surfaces — kept discoverable)" subsection so the doc is honest about why these stay surfaced.
+- §6: corrected the Strategy line — the un-surfacing is reverted, not in effect.
+- Trail correction: the v2.1 entry below states "§4 body was edited by [#553]" — that is **inaccurate**. #553 changed only code/router/tests and added a RECON file; STRATEGY §4 prose was never touched by #553 (the NOT-serving bullet was introduced by #546). Logged here for the audit trail; the v2.1 historical entry is left as-written.
 
 ### May 17, 2026 — v2.1 (Same-day §6 re-audit)
 
