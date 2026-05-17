@@ -49,7 +49,7 @@ if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as any).at) {
   }
 }
 
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
@@ -62,17 +62,17 @@ import OfflineIndicator from "@/components/offline/OfflineIndicator";
 // path saves boot bytes without changing user-visible behaviour — Suspense
 // renders nothing while they hydrate, which is exactly what an unpressed
 // keyboard listener looks like anyway.
-const ShortcutHelpOverlay = lazy(() => import("@/components/keyboard/ShortcutHelpOverlay"));
-const GlobalNavigationShortcuts = lazy(() => import("@/components/keyboard/GlobalNavigationShortcuts"));
+const ShortcutHelpOverlay = lazyWithRetry(() => import("@/components/keyboard/ShortcutHelpOverlay"));
+const GlobalNavigationShortcuts = lazyWithRetry(() => import("@/components/keyboard/GlobalNavigationShortcuts"));
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
 // Toasters are passive surfaces that only paint once a toast actually fires.
 // Lazy + fallback={null} keeps them out of first paint; the first useToast
 // caller waits one microtask while the module loads.
-const Toaster = lazy(() =>
+const Toaster = lazyWithRetry(() =>
   import("@/components/ui/toaster").then((m) => ({ default: m.Toaster })),
 );
-const AccessibleToaster = lazy(() =>
+const AccessibleToaster = lazyWithRetry(() =>
   import("@/components/a11y/AccessibleToast").then((m) => ({ default: m.AccessibleToaster })),
 );
 import "@/index.css";
@@ -85,6 +85,7 @@ import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentr
 // from inside an idle-callback below — see `deferNonCriticalBootWork`. Both
 // observe / report; neither is needed for first paint.
 import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { attachPreloadFailureRecovery } from "@/lib/preloadRecovery";
 import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 
@@ -179,11 +180,6 @@ function hasAlreadyAttemptedChunkRecovery(): boolean {
 function markChunkRecoveryAttempted(): void {
   try { sessionStorage.setItem(CHUNK_RELOAD_SESSION_KEY, "1"); }
   catch { window.__MB_CHUNK_RELOAD_ATTEMPTED__ = true; }
-}
-
-function clearChunkRecoveryAttempt(): void {
-  try { sessionStorage.removeItem(CHUNK_RELOAD_SESSION_KEY); }
-  catch { window.__MB_CHUNK_RELOAD_ATTEMPTED__ = false; }
 }
 
 function scheduleOneTimeChunkReload(): boolean {
@@ -503,9 +499,14 @@ function scheduleOneTimeChunkReload(): boolean {
   } catch { /* ignore */ }
 })();
 
-(function clearChunkReloadMarkerAfterHealthyBoot() {
-  window.setTimeout(() => { clearChunkRecoveryAttempt(); }, 8000);
-})();
+// The one-shot chunk-reload mark (CHUNK_RELOAD_SESSION_KEY) is now cleared
+// event-driven on the SUCCESS path of lazyWithRetry's loader — the moment
+// any lazy chunk loads cleanly, proving the recovery worked. That replaces
+// the old wall-clock `clearChunkReloadMarkerAfterHealthyBoot` setTimeout,
+// which mobile webviews (Facebook in-app browser) throttled to a silent
+// no-op whenever the post-reload page was backgrounded, leaving the mark
+// stuck for the rest of the session and crashing the *next* deploy into
+// the ErrorBoundary. See src/lib/lazyWithRetry.ts.
 
 const root = document.getElementById("root");
 if (!root) throw new Error("Root element #root not found");
