@@ -7739,7 +7739,7 @@ export const lessons: JapaneseLesson[] = [
         "idiom": "おもてなし",
         "literal": "Hospitality",
         "literal_en": "omotenashi (hospitality)",
-        "meaning": "Khái niệm hospitality Nhật — proactive guest care. Khi staff handle complaint well, dùng để complement: omotenashi no kokoro ga kanjirаremashita (em cảm nhận được tinh thần omotenashi).",
+        "meaning": "Khái niệm hospitality Nhật — proactive guest care. Khi staff handle complaint well, dùng để complement: omotenashi no kokoro ga kanjiraremashita (em cảm nhận được tinh thần omotenashi).",
         "meaning_en": "The Japanese concept of hospitality — proactive guest care. When staff handle a complaint well, used as a compliment: omotenashi no kokoro ga kanjiraremashita (I felt the spirit of omotenashi).",
         "example": "本日のご対応に、おもてなしの心が感じられました。",
         "example_en": "In today's response, I felt the spirit of omotenashi."
