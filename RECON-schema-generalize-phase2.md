@@ -36,6 +36,10 @@ The recon's two-PR plan (PR-A accessor+plumbing+renderer, PR-B renderer-reconcil
 **Files:** `spanish/normalize.ts`, `vietnamese/normalize.ts`, `SpanishLessonsPage.tsx`, `VietnameseLessonsPage.tsx`, tests. **Auto-sync: zero** (normalizers are not the sync input — raw `lessons-*.ts` is).
 **Dependency:** needs A1 (+A2 for the renderer to honor the tag). Independent of A4.
 
+> **Split (Chau, 2026-05-17) — A3 shipped as two PRs:**
+> - **PR-A3 (shipped):** Spanish honest `nativeLanguage="en"` tag (provable no-op — was implicit via the `nativeLanguage` default) + the title moved onto the native axis in `LessonRenderer` (`pick`/`isFallback` → `getNativeContent`/`isNativeFallback`; helpers deleted). Provably **byte-identical for every caller** — no caller passes a `nativeLanguage` that diverges from its `uiLanguage` on the non-`dualTitle` title path. RECON §8 title-routing question is **resolved** (title = pedagogy-adjacent → native axis). Files: `SpanishLessonsPage.tsx`, `LessonRenderer.tsx`, `singleLanguageRender.smoke.test.tsx`.
+> - **PR-A3b (deferred):** the Vietnamese-for-foreigners flip. Setting `nativeLanguage="en"` there alone surfaces a data lie — `vietnamese/normalize.ts` stuffs the (English) `cultural_note`/`tip`/`title_en` into the `*Vi`/`title.vi` slots, so the flip would add a *misleading* "VI" fallback badge on Culture/Tip with unchanged prose. A3b couples the `*Vi`→`*En` + `title.vi`→`title.en` normalizer honesty (and the `dualTitle`/subtitle restructure it entangles — the title-struct blocker, §8) with the page tag so the audience never sees the bad badge. Files: `vietnamese/normalize.ts`, `VietnameseLessonsPage.tsx`, tests.
+
 ## PR-A4 — Reconcile `LanguageLessonsView` onto the seam (close the 2nd-renderer divergence)
 
 **What:** `mercy-guide/tabs/LanguageLessonsView.tsx`'s inline `uiLang==="en"?…:…` ternaries → `getNativeContent`; it gains fallback-badge parity with `LessonRenderer` (today it silently falls back with no badge — an existing UX inconsistency the recon flagged as risk #2).
