@@ -155,9 +155,26 @@ interface LessonRendererProps {
    * SpanishLessonsPage where the surrounding UI is already English.
    */
   uiLanguage?: "vi" | "en";
+  /**
+   * When true, render BOTH title.vi and title.en (primary + subtitle).
+   * This is NOT a bilingual UI duplication: it is for the Vietnamese-
+   * for-foreigners page, where title.vi holds the English lesson title
+   * and title.en holds an English subtitle/description — both are the
+   * learner's language, so collapsing to one would drop the subtitle.
+   * Every other caller leaves this false: the title shows only the
+   * active uiLanguage (the global toggle's promise — users who want the
+   * other language switch modes), matching the pick() pattern used for
+   * every other field in this renderer.
+   */
+  dualTitle?: boolean;
 }
 
-export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRendererProps) {
+export function LessonRenderer({
+  lesson,
+  theme,
+  uiLanguage = "vi",
+  dualTitle = false,
+}: LessonRendererProps) {
   const labels = RENDERER_LABELS[uiLanguage];
   const [open, setOpen] = useState(false);
   // dialogue_long is opt-in; default (false) keeps the dialogue card
@@ -190,7 +207,13 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <p className="text-sm font-medium text-slate-900">
-              {lesson.title.vi}
+              {dualTitle
+                ? lesson.title.vi
+                : pick(uiLanguage, lesson.title.en, lesson.title.vi)}
+              {!dualTitle &&
+                isFallback(uiLanguage, lesson.title.en, lesson.title.vi) && (
+                  <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                )}
             </p>
             <span
               className={`inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${cefrPillColors[lesson.level] ?? ""}`}
@@ -198,7 +221,12 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
               {cefrPillLabel(lesson.level, uiLanguage)}
             </span>
           </div>
-          <p className="text-xs text-slate-500">{lesson.title.en}</p>
+          {/* Secondary line only for the Vietnamese-for-foreigners page
+              (dualTitle): it carries an English subtitle, not the other
+              UI language. Every other module shows a single language. */}
+          {dualTitle && (
+            <p className="text-xs text-slate-500">{lesson.title.en}</p>
+          )}
           {lesson.title.native && (
             <p className="text-xs italic text-slate-400 mt-0.5">
               {lesson.title.native}
@@ -301,29 +329,19 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                       {s.romanization}
                     </p>
                   )}
-                  {uiLanguage === "en" ? (
-                    <>
-                      {s.en && (
-                        <p className="mt-0.5 text-xs font-medium text-slate-700">
-                          {s.en}
-                        </p>
-                      )}
-                      {s.vi && (
-                        <p className="mt-0.5 text-xs text-slate-500">{s.vi}</p>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      {s.vi && (
-                        <p className="mt-0.5 text-xs font-medium text-slate-700">
-                          {s.vi}
-                        </p>
-                      )}
-                      {s.en && (
-                        <p className="mt-0.5 text-xs text-slate-500">{s.en}</p>
-                      )}
-                    </>
-                  )}
+                  {/* Single gloss in the active UI language only. The
+                      other-language gloss is intentionally hidden — the
+                      target sentence (s.native) + romanization above are
+                      the lesson; a second meaning line was UI-language
+                      duplication, not a learner aid. */}
+                  {(() => {
+                    const gloss = pick(uiLanguage, s.en, s.vi);
+                    return gloss ? (
+                      <p className="mt-0.5 text-xs font-medium text-slate-700">
+                        {gloss}
+                      </p>
+                    ) : null;
+                  })()}
                   {(() => {
                     const focus = pick(
                       uiLanguage,

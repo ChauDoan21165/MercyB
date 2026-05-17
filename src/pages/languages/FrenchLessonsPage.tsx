@@ -94,16 +94,10 @@ export default function FrenchLessonsPage() {
         <h1 className="mt-1 text-2xl font-bold text-slate-900 leading-tight">
           {uiLang === "en" ? HERO_EN : HERO_VI}
         </h1>
-        {/* Secondary line is the *other* language. In VI mode that is
-            the de-narrowed English line (kept, byte-identical). In EN
-            mode it would be the "… cho người Việt" VI line — hidden so
-            EN users are never shown audience-exclusionary text; the
-            de-narrowed EN title above is already a full sentence. */}
-        {uiLang !== "en" && (
-          <p className="mt-1 text-sm font-medium text-slate-600">
-            {HERO_EN}
-          </p>
-        )}
+        {/* Single-language hero: title shows only the active uiLang.
+            The other-language secondary line was UI duplication (and,
+            in EN mode, audience-exclusionary per #518) — removed so the
+            hero honours the global toggle's promise in both modes. */}
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">
           {uiLang === "en"
             ? "Pronunciation written for English speakers. Nasal vowels, silent letters, and liaison — explained the way English speakers actually need."
@@ -196,8 +190,9 @@ function CategorySection({
         <h2 className="text-base font-semibold text-slate-900">
           {uiLanguage === "en" ? category.title_en : category.title_vi}
         </h2>
+        {/* Count only — the other-language category title was UI
+            duplication of the <h2> above (which already picks uiLang). */}
         <span className="text-xs text-slate-500">
-          {uiLanguage === "en" ? category.title_vi : category.title_en} ·{" "}
           {lessons.length}{" "}
           {uiLanguage === "en"
             ? lessons.length === 1
