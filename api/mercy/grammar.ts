@@ -168,7 +168,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (userId) {
         const sb = getSupabaseClient();
         if (sb) {
-          const flagOn = await isFlagEnabledForUser(sb, L1_FLAG_KEY, userId);
+          // `isFlagEnabledForUser` takes a deliberately narrow
+          // `MinimalSupabaseClient` so api/_lib stays decoupled from
+          // @supabase/supabase-js types. The real client satisfies that
+          // contract at runtime, but its generic query-builder chain is
+          // not *structurally* assignable (TS2345) and instantiating it
+          // here trips TS2589 (excessively deep). Cast through `unknown`
+          // to the param's own type — keeps the fix to this call site.
+          const flagOn = await isFlagEnabledForUser(
+            sb as unknown as Parameters<typeof isFlagEnabledForUser>[0],
+            L1_FLAG_KEY,
+            userId,
+          );
           if (flagOn) l1Hint = firstL1HintFromIssues(issues);
         }
       }
