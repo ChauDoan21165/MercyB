@@ -2,7 +2,7 @@ import type { JapaneseLesson } from "./lessons";
 
 export const lessons: JapaneseLesson[] = [
   {
-    "id": 102,
+    "id": 132,
     "title": "Literary criticism — close reading of a passage",
     "title_vi": "Phê bình văn học — Tinh đọc một đoạn văn",
     "title_en": "Literary criticism — close reading of a passage",
@@ -260,7 +260,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 103,
+    "id": 133,
     "title": "Literary criticism — analyzing narrative voice and POV",
     "title_vi": "Phê bình văn học — Phân tích giọng kể và điểm nhìn",
     "title_en": "Literary criticism — analyzing narrative voice and POV",
@@ -513,7 +513,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 104,
+    "id": 134,
     "title": "Literary criticism — symbol and metaphor analysis",
     "title_vi": "Phê bình văn học — Phân tích biểu tượng và ẩn dụ",
     "title_en": "Literary criticism — symbol and metaphor analysis",
@@ -771,7 +771,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 105,
+    "id": 135,
     "title": "Literary criticism — genre conventions and subversion",
     "title_vi": "Phê bình văn học — Quy ước thể loại và sự lật đổ",
     "title_en": "Literary criticism — genre conventions and subversion",
@@ -1024,7 +1024,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 106,
+    "id": 136,
     "title": "Literary criticism — comparing translations",
     "title_vi": "Phê bình văn học — So sánh các bản dịch",
     "title_en": "Literary criticism — comparing translations",
@@ -1277,7 +1277,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 107,
+    "id": 137,
     "title": "Literary criticism — biographical context vs the text",
     "title_vi": "Phê bình văn học — Bối cảnh tiểu sử tác giả đối lại văn bản",
     "title_en": "Literary criticism — biographical context vs the text",
@@ -1520,7 +1520,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 108,
+    "id": 138,
     "title": "Literary criticism — reception history and canon debates",
     "title_vi": "Phê bình văn học — Lịch sử tiếp nhận và tranh luận về kinh điển",
     "title_en": "Literary criticism — reception history and canon debates",
@@ -1768,7 +1768,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 109,
+    "id": 139,
     "title": "Literary criticism — theoretical lenses (formalist, feminist, postcolonial)",
     "title_vi": "Phê bình văn học — Các lăng kính lý thuyết (hình thức, nữ quyền, hậu thuộc địa)",
     "title_en": "Literary criticism — theoretical lenses (formalist, feminist, postcolonial)",
@@ -2016,7 +2016,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 110,
+    "id": 140,
     "title": "Literary criticism — writing a critical essay opening",
     "title_vi": "Phê bình văn học — Viết phần mở đầu một tiểu luận phê bình",
     "title_en": "Literary criticism — writing a critical essay opening",
@@ -2279,7 +2279,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 111,
+    "id": 141,
     "title": "Literary criticism — defending a controversial reading",
     "title_vi": "Phê bình văn học — Bảo vệ một cách đọc gây tranh cãi",
     "title_en": "Literary criticism — defending a controversial reading",
@@ -2542,7 +2542,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   }  ,
   {
-    "id": 112,
+    "id": 142,
     "title": "Cultural criticism — art criticism",
     "title_vi": "Phê bình văn hóa — Phê bình mỹ thuật",
     "title_en": "Cultural criticism — art criticism",
@@ -2613,7 +2613,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 113,
+    "id": 143,
     "title": "Cultural criticism — film criticism",
     "title_vi": "Phê bình văn hóa — Phê bình điện ảnh",
     "title_en": "Cultural criticism — film criticism",
@@ -2676,7 +2676,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   }  ,
   {
-    "id": 114, "level": "C2", "category": "civic_discourse",
+    "id": 144, "level": "C2", "category": "civic_discourse",
     "title": "Civic discourse — analyzing political speech", "title_vi": "Diễn ngôn công dân — Phân tích diễn văn chính trị", "title_en": "Civic discourse — analyzing political speech",
     "vocabulary": [
       {"japanese": "政治演説 (せいじえんぜつ)", "english": "political speech"},
@@ -2726,7 +2726,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 115, "level": "C2", "category": "civic_discourse",
+    "id": 145, "level": "C2", "category": "civic_discourse",
     "title": "Civic discourse — citizen deliberation and public reason", "title_vi": "Diễn ngôn công dân — Thảo luận công dân và lý tính công cộng", "title_en": "Civic discourse — citizen deliberation and public reason",
     "vocabulary": [
       {"japanese": "市民参加 (しみんさんか)", "english": "citizen participation"},
@@ -2775,7 +2775,7 @@ export const lessons: JapaneseLesson[] = [
   }
   ,
   {
-    "id": 116, "level": "C2", "category": "rhetoric_capstone",
+    "id": 146, "level": "C2", "category": "rhetoric_capstone",
     "title": "Rhetoric capstone — writing the critical essay", "title_vi": "Viết tiểu luận phê bình — 評論執筆", "title_en": "Rhetoric capstone — writing the critical essay",
     "vocabulary": [
       {"japanese": "評論 (ひょうろん)", "english": "critical essay / critique"},
@@ -2802,7 +2802,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 117, "level": "C2", "category": "rhetoric_capstone",
+    "id": 147, "level": "C2", "category": "rhetoric_capstone",
     "title": "Rhetoric capstone — oral defense", "title_vi": "Bảo vệ luận văn — 口頭試問", "title_en": "Rhetoric capstone — oral defense",
     "vocabulary": [
       {"japanese": "口頭試問 (こうとうしもん)", "english": "oral examination / defense"},
@@ -2825,7 +2825,7 @@ export const lessons: JapaneseLesson[] = [
   }
   ,
   {
-    "id": 118, "level": "C2", "category": "rhetoric_capstone",
+    "id": 148, "level": "C2", "category": "rhetoric_capstone",
     "title": "Rhetoric capstone — philosophical reasoning and abstract thought",
     "title_vi": "Tư duy triết học và lập luận trừu tượng", "title_en": "Philosophical reasoning and abstract thought",
     "vocabulary": [
@@ -2856,7 +2856,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 119, "level": "C2", "category": "rhetoric_capstone",
+    "id": 149, "level": "C2", "category": "rhetoric_capstone",
     "title": "Rhetoric capstone — persuasion theory and classical rhetoric",
     "title_vi": "Lý thuyết thuyết phục và tu từ học cổ điển", "title_en": "Persuasion theory and classical rhetoric",
     "vocabulary": [
@@ -2884,7 +2884,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 120, "level": "C2", "category": "arts_criticism",
+    "id": 150, "level": "C2", "category": "arts_criticism",
     "title": "Media criticism — journalistic language analysis", "title_vi": "Phê bình truyền thông — phân tích ngôn ngữ báo chí", "title_en": "Media criticism and journalistic language analysis",
     "vocabulary": [
       {"japanese": "メディア批評 (メディアひひょう)", "english": "media criticism"},
@@ -2911,7 +2911,7 @@ export const lessons: JapaneseLesson[] = [
     ]
   },
   {
-    "id": 121, "level": "C2", "category": "civic_discourse",
+    "id": 151, "level": "C2", "category": "civic_discourse",
     "title": "Diplomatic language and international discourse", "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế", "title_en": "Diplomatic language and international discourse",
     "vocabulary": [
       {"japanese": "外交言語 (がいこうげんご)", "english": "diplomatic language"},
