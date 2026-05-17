@@ -6,7 +6,7 @@ import type { ChineseLesson } from "./lessons";
 
 export const lessons: ChineseLesson[] = [
   {
-    "id": 102,
+    "id": 142,
     "level": "C2",
     "category": "literary_criticism",
     "title": "提出文学研究假设",
@@ -350,7 +350,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 103,
+    "id": 143,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学批评的引用规范",
@@ -694,7 +694,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 104,
+    "id": 144,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学辩论与反驳",
@@ -1024,7 +1024,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 105,
+    "id": 145,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学研究中的审慎措辞",
@@ -1375,7 +1375,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 106,
+    "id": 146,
     "level": "C2",
     "category": "literary_criticism",
     "title": "古典文论概念之界定",
@@ -1719,7 +1719,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 107,
+    "id": 147,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学批评方法论之比较",
@@ -2049,7 +2049,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 108,
+    "id": 148,
     "level": "C2",
     "category": "literary_criticism",
     "title": "评议一项文学翻译研究",
@@ -2400,7 +2400,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 109,
+    "id": 149,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学研讨会问答语体",
@@ -2744,7 +2744,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 110,
+    "id": 150,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学论文摘要之撰写",
@@ -3102,7 +3102,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 111,
+    "id": 151,
     "level": "C2",
     "category": "literary_criticism",
     "title": "文学论文同行评审",
@@ -3453,7 +3453,7 @@ export const lessons: ChineseLesson[] = [
     ]
   }  ,
   {
-    "id": 112,
+    "id": 152,
     "level": "C2",
     "category": "arts_criticism",
     "title": "艺术批评方法论",
@@ -3525,7 +3525,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 113,
+    "id": 153,
     "level": "C2",
     "category": "arts_criticism",
     "title": "电影评论写作",
@@ -3589,7 +3589,7 @@ export const lessons: ChineseLesson[] = [
     ]
   }  ,
   {
-    "id": 114, "level": "C2", "category": "civic_discourse",
+    "id": 154, "level": "C2", "category": "civic_discourse",
     "title": "政治演讲分析", "pinyin": "zhèng zhì yǎn jiǎng fēn xī", "topic": "Analyzing political speeches",
     "title_vi": "Phân tích diễn văn chính trị", "title_en": "Analyzing political speeches",
     "vocab": [
@@ -3648,7 +3648,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 115, "level": "C2", "category": "civic_discourse",
+    "id": 155, "level": "C2", "category": "civic_discourse",
     "title": "公民讨论与公共理性", "pinyin": "gōng mín tǎo lùn yǔ gōng gòng lǐ xìng", "topic": "Civic deliberation and public reason",
     "title_vi": "Thảo luận công dân và lý tính công cộng", "title_en": "Civic deliberation and public reason",
     "vocab": [
@@ -3703,7 +3703,7 @@ export const lessons: ChineseLesson[] = [
   }
   ,
   {
-    "id": 116, "level": "C2", "category": "rhetoric_capstone",
+    "id": 156, "level": "C2", "category": "rhetoric_capstone",
     "title": "哲学论文写作", "pinyin": "zhé xué lùn wén xiě zuò", "topic": "Writing the philosophical thesis",
     "title_vi": "Viết luận văn triết học", "title_en": "Writing the philosophical thesis",
     "vocab": [
@@ -3729,7 +3729,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 117, "level": "C2", "category": "rhetoric_capstone",
+    "id": 157, "level": "C2", "category": "rhetoric_capstone",
     "title": "答辩口试", "pinyin": "dá biàn kǒu shì", "topic": "Oral defense",
     "title_vi": "Đáp biện khẩu thí (bảo vệ luận án)", "title_en": "Oral defense",
     "vocab": [
@@ -3752,7 +3752,7 @@ export const lessons: ChineseLesson[] = [
   }
   ,
   {
-    "id": 118, "level": "C2", "category": "rhetoric_capstone",
+    "id": 158, "level": "C2", "category": "rhetoric_capstone",
     "title": "哲学思维与抽象推理", "pinyin": "zhe xue si wei yu chou xiang tui li",
     "topic": "Philosophical thinking and abstract reasoning",
     "title_vi": "Tư duy triết học và lập luận trừu tượng", "title_en": "Philosophical thinking and abstract reasoning",
@@ -3783,7 +3783,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 119, "level": "C2", "category": "rhetoric_capstone",
+    "id": 159, "level": "C2", "category": "rhetoric_capstone",
     "title": "说服理论与修辞策略", "pinyin": "shuo fu li lun yu xiu ci ce lüe",
     "topic": "Persuasion theory and rhetorical strategy",
     "title_vi": "Lý thuyết thuyết phục và chiến lược tu từ", "title_en": "Persuasion theory and rhetorical strategy",
@@ -3814,7 +3814,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 120, "level": "C2", "category": "arts_criticism",
+    "id": 160, "level": "C2", "category": "arts_criticism",
     "title": "媒体批评与新闻话语分析", "pinyin": "méi tǐ pī píng yǔ xīn wén huà yǔ fēn xī",
     "topic": "Media criticism and journalistic discourse analysis",
     "title_vi": "Phê bình truyền thông và phân tích diễn ngôn báo chí", "title_en": "Media criticism and journalistic discourse analysis",
@@ -3843,7 +3843,7 @@ export const lessons: ChineseLesson[] = [
     ]
   },
   {
-    "id": 121, "level": "C2", "category": "civic_discourse",
+    "id": 161, "level": "C2", "category": "civic_discourse",
     "title": "外交语言与国际话语", "pinyin": "wài jiāo yǔ yán yǔ guó jì huà yǔ",
     "topic": "Diplomatic language and international discourse",
     "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế", "title_en": "Diplomatic language and international discourse",
