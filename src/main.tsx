@@ -75,6 +75,12 @@ const AndroidBackButton = lazyWithRetry(() => import("@/components/native/Androi
 // page-scoped listener so callbacks resolving off /login aren't dropped.
 // Composes with AndroidBackButton above — separate App.addListener calls.
 const NativeDeepLinkListener = lazyWithRetry(() => import("@/components/native/NativeDeepLinkListener"));
+// One-shot native UX bootstrap (Cat-4 N4): hide the splash after first
+// commit, set the iOS status-bar style, lock the Android keyboard resize
+// mode. Headless; hard no-op off native. Composes with the two listeners
+// above — its plugin packages are dynamic-imported inside the native
+// branch so they never enter the web bundle.
+const NativeBootstrap = lazyWithRetry(() => import("@/components/native/NativeBootstrap"));
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
 // Toasters are passive surfaces that only paint once a toast actually fires.
@@ -597,6 +603,7 @@ w.__MB_REACT_ROOT__.render(
             <GlobalNavigationShortcuts />
             <AndroidBackButton />
             <NativeDeepLinkListener />
+            <NativeBootstrap />
             <ShortcutHelpOverlay />
             <Toaster />
             <AccessibleToaster />
