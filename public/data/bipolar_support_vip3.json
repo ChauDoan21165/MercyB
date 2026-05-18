@@ -2,6 +2,7 @@
   "name": "Bipolar Support",
   "name_vi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
   "description": "Expert strategies for comprehensive bipolar disorder management and emotional resilience",
+  "description_vi": "Các chiến lược chuyên sâu để kiểm soát toàn diện rối loạn lưỡng cực và xây dựng sức bền cảm xúc.",
   "keywords_en": [
     "bipolar disorder",
     "mood management",
@@ -159,7 +160,7 @@
   },
   "content": {
     "en": "Expert strategies for comprehensive bipolar disorder management and emotional resilience",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để kiểm soát toàn diện rối loạn lưỡng cực và xây dựng sức bền cảm xúc."
   },
   "tier": "vip3",
   "domain": "Mental Health",

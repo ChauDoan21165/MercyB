@@ -2,6 +2,7 @@
   "name": "ADHD Support",
   "name_vi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
   "description": "Expert strategies for comprehensive ADHD management and resilience",
+  "description_vi": "Các chiến lược chuyên sâu để kiểm soát toàn diện rối loạn tăng động giảm chú ý (ADHD) và xây dựng sức bền tinh thần.",
   "keywords_en": [
     "ADHD",
     "time management",
@@ -159,7 +160,7 @@
   },
   "content": {
     "en": "Expert strategies for comprehensive ADHD management and resilience",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để kiểm soát toàn diện rối loạn tăng động giảm chú ý (ADHD) và xây dựng sức bền tinh thần."
   },
   "tier": "vip3",
   "domain": "General",

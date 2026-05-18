@@ -2,6 +2,7 @@
   "name": "OCD Support",
   "name_vi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
   "description": "Expert strategies for comprehensive OCD management and resilience",
+  "description_vi": "Các chiến lược chuyên sâu để kiểm soát toàn diện rối loạn ám ảnh cưỡng chế (OCD) và xây dựng sức bền tinh thần.",
   "keywords_en": [
     "OCD",
     "ERP therapy",
@@ -159,7 +160,7 @@
   },
   "content": {
     "en": "Expert strategies for comprehensive OCD management and resilience",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để kiểm soát toàn diện rối loạn ám ảnh cưỡng chế (OCD) và xây dựng sức bền tinh thần."
   },
   "tier": "vip3",
   "domain": "General",
