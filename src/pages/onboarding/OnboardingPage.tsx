@@ -1,5 +1,22 @@
 // src/pages/onboarding/OnboardingPage.tsx
 //
+// ⚠️ ORPHANED — INTENTIONALLY UNUSED, DO NOT DELETE (as of fix(onboarding)
+// "default new users to (vi, ['en'])", migration 20260616000000).
+//
+// Nothing routes here anymore. The only live caller was the Home gate
+// (src/pages/Home.tsx — redirect when profiles.native_language IS NULL).
+// That gate can no longer fire: native_language now DEFAULTs to 'vi' for
+// every new signup, because vi-native learners studying English are ~95%
+// of signups (the home market) and asking them the picker question is
+// pure friction with zero information gain (STRATEGY v3.0 §4). The
+// native+target picker is now a Settings-only opt-in —
+// src/components/account/LanguagePairSettings.tsx, mounted at /account
+// (PR 3/3). The /onboarding <Route> is kept in src/router/AppRouter.tsx
+// and this component is kept whole so Chau can later decide to remount
+// the flow differently (e.g. a guided tour for users who tap "add a
+// language" in Settings). It is parked, not dead — leave it intact.
+//
+// ── Original PR 2/3 documentation (still accurate if remounted) ───────
 // Duolingo-style pair-selection onboarding at /onboarding (PR 2 of 3).
 //
 // Steps in canonical order (some conditionally skipped — see nextStep):
