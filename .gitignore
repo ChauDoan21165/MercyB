@@ -66,3 +66,6 @@ audio-progress.json
 audit_tmp/
 reports/chau-report-*.md
 node_modules
+
+# Supabase CLI local state (machine-generated, env-specific; matches `supabase init` convention)
+supabase/.temp
