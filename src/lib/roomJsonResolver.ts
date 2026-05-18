@@ -169,41 +169,63 @@ export function resolveRoomJsonPath(roomIdRaw: string): string {
   return `data/${id}.json`;
 }
 
+/**
+ * Offline fallback source: the explicit-download IDB pack written by
+ * A1's downloadRoomPack. Consulted ONLY when the SW-served fetch in
+ * loadRoomJson can't produce the room (genuine offline + the room was
+ * never visited online, so the Workbox `lessons` SWR / 38-room precache
+ * has no entry). Returns null on any miss.
+ */
+async function tryOfflinePack(
+  id: string,
+): Promise<Record<string, unknown> | null> {
+  try {
+    const cached = await getRoom(id);
+    return normalizeOfflineRoom(cached?.json);
+  } catch {
+    // IDB unavailable / blocked
+    return null;
+  }
+}
+
 export async function loadRoomJson(roomIdRaw: string): Promise<any> {
   const id = canonicalizeRoomId(roomIdRaw);
-
-  // Offline branch (Offline Lite v1, A3): when navigator reports offline,
-  // try the IDB pack A1 wrote on download. Hit → return the room JSON
-  // normalized to the same shape RoomRenderer consumes online. Miss →
-  // throw with kind "offline_unavailable" so ChatHub can render
-  // <OfflineUnavailable> instead of the generic error page.
-  if (!isOnline()) {
-    try {
-      const cached = await getRoom(id);
-      const normalized = normalizeOfflineRoom(cached?.json);
-      if (normalized) return normalized;
-    } catch {
-      // IDB unavailable / blocked → fall through to OFFLINE_UNAVAILABLE
-    }
-    const err = new Error("OFFLINE_UNAVAILABLE");
-    (err as any).kind = "offline_unavailable" satisfies RoomJsonResolverErrorKind;
-    throw err;
-  }
 
   const manifestPath = resolveRoomJsonPath(id);
 
   // Always fetch from root ("/data/..."), never relative ("data/...")
   const baseUrl = manifestPath.startsWith("/") ? manifestPath : `/${manifestPath}`;
 
-  // DEV ONLY: cache buster to avoid stale browser/Vite caching while debugging
+  // DEV ONLY: cache buster to avoid stale browser/Vite caching while
+  // debugging. Production MUST stay query-less: the bare /data/<id>.json
+  // URL is what matches the Workbox `lessons` StaleWhileRevalidate rule
+  // (vite.config.ts  /\/(?:lessons|data)\/.*\.json$/), and that SW cache
+  // is what serves a visited-then-offline room.
   const url = import.meta.env.DEV ? `${baseUrl}?t=${Date.now()}` : baseUrl;
 
+  // Fetch-first, even when navigator.onLine is false. The service
+  // worker's `lessons` SWR cache holds /data/<id>.json for every room
+  // the user opened online (plus the ~38-room precache), so when offline
+  // this fetch is answered from the SW cache with no network. Only when
+  // the SW genuinely has nothing does fetch reject — then fall back to
+  // the explicit-download IDB pack, then OFFLINE_UNAVAILABLE.
+  //
+  // Previously this short-circuited to the IDB pack whenever
+  // !isOnline() and never issued the fetch, so the SW `lessons` cache
+  // could never serve a "visited then offline" room — only the ~38
+  // precached or explicitly-downloaded rooms worked offline.
+  // (production-readiness sweep — Area 4 / Top-5 #5.)
   let res: Response;
   try {
     res = await fetch(url, import.meta.env.DEV ? { cache: "no-store" } : undefined);
   } catch {
-    const err = new Error("NETWORK_ERROR");
-    (err as any).kind = "network" satisfies RoomJsonResolverErrorKind;
+    const offlinePack = await tryOfflinePack(id);
+    if (offlinePack) return offlinePack;
+    const online = isOnline();
+    const err = new Error(online ? "NETWORK_ERROR" : "OFFLINE_UNAVAILABLE");
+    (err as any).kind = (online
+      ? "network"
+      : "offline_unavailable") satisfies RoomJsonResolverErrorKind;
     throw err;
   }
 
