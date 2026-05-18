@@ -5,6 +5,7 @@
 
 import React, { Suspense, useEffect, useRef } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
+import { AnonymousOnboardingGate } from "@/router/AnonymousOnboardingGate";
 import {
   Routes,
   Route,
@@ -669,20 +670,26 @@ export default function AppRouter() {
         <Route path="/auth/callback" element={<AuthRedirect />} />
 
         <Route element={<AppHeroShell />}>
-          {/* Onboarding — auth-required goal-capture flow. Unlike Home,
-              this route does NOT pass through the onboarding gate, so
-              new users can complete or skip it without redirect loops. */}
+          {/* Onboarding — the PUBLIC pair-selection picker. Anonymous
+              visitors land here as the entry point (locked #14); a
+              signed-in user whose profile native_language is still NULL
+              is redirected here by Home's own gate. NOT auth-wrapped.
+              Reachable directly; it does not pass through the `/` gate,
+              so it cannot loop (it writes the pair on finish AND skip). */}
           <Route
             path="/onboarding"
-            element={
-              <RequireAuth>
-                <LazyPage><OnboardingPage /></LazyPage>
-              </RequireAuth>
-            }
+            element={<LazyPage><OnboardingPage /></LazyPage>}
           />
 
           {/* Public pages */}
-          <Route path="/"        element={<LazyPage><Home /></LazyPage>} />
+          <Route
+            path="/"
+            element={
+              <AnonymousOnboardingGate>
+                <LazyPage><Home /></LazyPage>
+              </AnonymousOnboardingGate>
+            }
+          />
           <Route path="/privacy" element={<LazyPage><Privacy /></LazyPage>} />
           <Route path="/terms"   element={<LazyPage><Terms /></LazyPage>} />
           {/* App Store / Play Store paperwork prefers /legal/* paths. Same components. */}

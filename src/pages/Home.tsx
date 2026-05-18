@@ -17,6 +17,7 @@ import LanguageTrackHome, {
   TargetSwitcher,
 } from "@/pages/home/LanguageTrackHome";
 import { parseLanguagePair } from "@/lib/languagePair/languagePair";
+import { readAnonymousPair } from "@/lib/languagePair/anonymousPair";
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
@@ -861,11 +862,26 @@ export default function Home() {
   // the 95% audience (locked #14). A multi-target user keeps the
   // canonical home and gains a switcher pinned at the top. Placed
   // after every Home hook (Rules of Hooks — [[feedback_react_hooks_ordering]]).
+  // Signed-in users: the profile row is the source of truth (byte
+  // identical to before — locked #14). Anonymous visitors have no
+  // profile, so fall back to the localStorage pair they picked in the
+  // picker; parseLanguagePair stays the single owner of pair parsing.
+  // Plain sync read (not a hook) — keeps Rules-of-Hooks ordering intact
+  // ([[feedback_react_hooks_ordering]]).
+  const anonPair = onboardingProfile ? null : readAnonymousPair();
+  const pairSource =
+    onboardingProfile ??
+    (anonPair
+      ? {
+          native_language: anonPair.native,
+          target_languages: anonPair.targets,
+        }
+      : null);
   const {
     nativeLanguage: pairNative,
     targets: pairTargets,
     primaryTarget: pairPrimary,
-  } = parseLanguagePair(onboardingProfile);
+  } = parseLanguagePair(pairSource);
   if (pairPrimary && pairPrimary !== "en") {
     return (
       <LanguageTrackHome

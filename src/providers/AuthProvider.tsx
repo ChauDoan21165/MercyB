@@ -27,6 +27,10 @@ import React, {
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
+import {
+  readAnonymousPair,
+  clearAnonymousPair,
+} from "@/lib/languagePair/anonymousPair";
 import { bootstrapAnonymousSession } from "@/lib/auth/anonymousBootstrap";
 import { isNativePlatform } from "@/lib/platform";
 import {
@@ -143,6 +147,87 @@ async function processReferralOnAuth(userId: string | null): Promise<void> {
     await retryReferralRewardOnAuth(userId);
   } catch (err) {
     if (import.meta.env.DEV) console.warn("[auth] retryReferralReward:", err);
+  }
+}
+
+/**
+ * Duolingo-onboarding PR 3/3 — carry the anonymous pick forward into
+ * the new account so a user who chose their (native, target) pair as
+ * an anonymous visitor never has to re-pick after signing up.
+ *
+ * One-time localStorage → profile sync (mirrors migrateLocalStreakOnce
+ * — "one-time localStorage → server migration"). Idempotent and
+ * never destructive:
+ *   - profile.native_language already set ⇒ no-op (a returning user,
+ *     or a pair the user deliberately set in /account Settings — we
+ *     must NEVER overwrite a deliberate choice).
+ *   - native_language IS NULL + a stored anonymous pair exists ⇒ write
+ *     it; that pre-signup pick is the source of truth.
+ *   - native_language IS NULL + NO stored pair (rare — user reached
+ *     /signin directly without passing the `/` picker gate) ⇒ fall
+ *     back to (vi, ['en']) per PR #586's documented home-market
+ *     default. (This is NOT #590's bug: it is app-layer, one-time,
+ *     fires only when the picker was genuinely never used, and never
+ *     overwrites a chosen pair — it does not auto-default the whole
+ *     cohort the way #590's column DEFAULT + handle_new_user would.)
+ *
+ * Fire-and-forget; errors swallowed (dev-warn) so a sync hiccup never
+ * blocks auth UX. If the profiles row does not exist yet (the rare
+ * handle_new_user trigger-fail case backfillProfileRowOnAuth covers)
+ * this is a no-op for the event and re-attempts on the next verified
+ * auth event — same per-event idempotence as the referral/streak tasks.
+ */
+async function syncLanguagePairOnAuth(userId: string | null): Promise<void> {
+  if (!userId) return;
+  try {
+    const { data: existing, error: selectError } = await supabase
+      .from("profiles")
+      .select("id, native_language")
+      .eq("id", userId)
+      .maybeSingle();
+    if (selectError) {
+      if (import.meta.env.DEV) {
+        console.warn(
+          "[auth] language-pair sync check failed:",
+          selectError.message,
+        );
+      }
+      return;
+    }
+    // Row not created yet, or pair already set → nothing to do.
+    if (!existing) return;
+    if (existing.native_language) return;
+
+    const stored = readAnonymousPair();
+    const native = stored?.native ?? "vi";
+    const targets =
+      stored && stored.targets.length > 0 ? stored.targets : ["en"];
+
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({
+        native_language: native,
+        target_languages: targets,
+        onboarded_at: new Date().toISOString(),
+      })
+      .eq("id", userId);
+    if (updateError) {
+      if (import.meta.env.DEV) {
+        console.warn(
+          "[auth] language-pair sync write failed:",
+          updateError.message,
+        );
+      }
+      return;
+    }
+    // Ownership transferred to the profile (now the source of truth —
+    // NativeLanguageContext hydrates from it). Drop the anonymous copy
+    // so it can't shadow a later Settings change.
+    if (stored) clearAnonymousPair();
+  } catch (err) {
+    if (import.meta.env.DEV) {
+      console.warn("[auth] syncLanguagePairOnAuth crashed:", err);
+    }
   }
 }
 
@@ -289,6 +374,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // handle_new_user() trigger silently failed. Idempotent and
             // fire-and-forget. See backfillProfileRowOnAuth above.
             void backfillProfileRowOnAuth(verifiedId, verifiedEmail);
+            // Duolingo-onboarding PR 3: carry the anonymous (native,
+            // target) pick into the new profile so signup never forces
+            // a re-pick. One-time, idempotent, never overwrites a set
+            // pair. See syncLanguagePairOnAuth above.
+            void syncLanguagePairOnAuth(verifiedId);
             // A9 referral: apply pending ?ref= code + retry owner-side
             // reward (Day-3 gated). Both calls are idempotent.
             void processReferralOnAuth(verifiedId);
