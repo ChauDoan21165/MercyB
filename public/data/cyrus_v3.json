@@ -3,8 +3,12 @@
   "tier": "free",
   "domain": "General",
   "description": {
-    "en": "cyrus_v3",
+    "en": "Lessons in statecraft from Cyrus the Great: how he built and sustained an enduring empire on justice, cultural harmony, legitimacy, and institutions that outlast their founder.",
     "vi": "Những bài học về triết lý trị quốc của Cyrus Đại đế: cách ông dựng nên và duy trì một đế chế bền vững dựa trên công lý, sự hòa hợp văn hóa, tính chính danh và những thể chế trường tồn."
+  },
+  "content": {
+    "en": "A leadership room built around Cyrus the Great. Study how justice, tolerance, and durable institutions — not conquest — are what make power last, then carry those questions back into your own work and life.",
+    "vi": "Một phòng học về lãnh đạo, lấy Cyrus Đại đế làm tấm gương. Trong phòng này, em sẽ thấy điều giữ cho quyền lực bền lâu không phải là chinh phạt, mà là công lý, lòng khoan dung và những thiết chế đứng vững — rồi mang chính những câu hỏi ấy về soi vào công việc và cuộc sống của mình."
   },
   "keywords": [
     "authority",
@@ -222,12 +226,12 @@
     }
   ],
   "room_essay": {
-    "en": "",
-    "vi": ""
+    "en": "Cyrus the Great founded the largest empire the ancient world had yet seen, but his lasting achievement was not conquest — it was design. He treated leadership as architecture: justice was the structural core, not a moral ornament. Stable, transparent laws gave ordinary people the confidence to plan their lives, and that predictability is what let commerce and loyalty grow.\n\nRather than erase the peoples he ruled, Cyrus let each community keep its language, customs, and faith while aligning them under one overarching law. This layered settlement turned diversity from a threat into a source of strength. He honored treaties, returned exiled peoples to their homelands, and treated defeated enemies with dignity — not from sentiment, but because a population whose humanity is respected fights harder for the state that protects it.\n\nHe also built for a time he would not see. Clear succession, professional administration, and institutions that did not depend on any single ruler meant the empire could survive the death of its founder. Dynasties that rule by cruelty rarely outlive one generation; institutions built on justice can last for centuries.\n\nThe lesson is universal and it travels well: power that serves an order larger than itself endures, while power that serves only itself decays. Cyrus shows that the most ambitious form of leadership is the patient kind — building something good enough that others choose to carry it forward.",
+    "vi": "Cyrus Đại đế dựng nên đế chế rộng lớn nhất mà thế giới cổ đại từng biết, nhưng di sản bền lâu của ông không nằm ở việc chinh phạt — mà ở cách ông thiết kế. Ông coi việc cầm quyền như một công trình kiến trúc: công lý là cái lõi chịu lực, không phải món trang sức đạo đức. Khi luật pháp ổn định và minh bạch, người dân thường mới đủ an tâm để tính chuyện đời mình, và chính sự lường trước được ấy nuôi lớn cả buôn bán lẫn lòng trung thành.\n\nThay vì xóa bỏ những dân tộc dưới quyền, Cyrus để mỗi cộng đồng giữ lấy tiếng nói, phong tục và tín ngưỡng của mình, rồi quy tất cả về dưới một bộ luật bao trùm. Cách an bài nhiều tầng ấy biến sự khác biệt từ mối đe dọa thành nguồn sức mạnh. Ông giữ lời trong các hiệp ước, cho những dân bị lưu đày được trở về quê cũ, đối đãi kẻ bại trận bằng phẩm giá — không phải vì mềm lòng, mà vì một dân chúng được tôn trọng nhân phẩm sẽ gắng sức hơn cho nhà nước che chở mình. Cái lẽ trọng người, biết tiếp đón và giữ thể diện cho kẻ khác — điều người Việt vốn quen gọi là đạo đối nhân — ở đây trở thành một sách lược trị quốc.\n\nÔng còn xây cho cả những đời ông không kịp thấy. Việc kế vị rõ ràng, bộ máy hành chính chuyên nghiệp, và những thiết chế không phụ thuộc vào một cá nhân nào khiến đế chế sống được qua cái chết của người sáng lập. Những triều đại cai trị bằng tàn bạo hiếm khi vượt nổi một thế hệ; thiết chế dựng trên công lý có thể trụ vững hàng thế kỷ.\n\nBài học ấy mang tính phổ quát: quyền lực phụng sự một trật tự lớn hơn chính nó thì trường tồn, còn quyền lực chỉ phụng sự bản thân thì mục ruỗng. Cyrus cho thấy hình thức lãnh đạo tham vọng nhất lại là hình thức kiên nhẫn nhất — làm ra một thứ đủ tốt để người sau tự nguyện gánh tiếp."
   },
   "title": {
-    "en": "cyrus_v3",
-    "vi": "cyrus_v3"
+    "en": "Cyrus the Great: The Statecraft of an Enduring Empire",
+    "vi": "Cyrus Đại đế: Nghệ thuật trị quốc của một đế chế trường tồn"
   },
   "domain_image": "/images/domains/general.svg"
 }
