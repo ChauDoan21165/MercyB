@@ -92,7 +92,23 @@ export default function Home() {
   // Try-one-word request: bumping the counter forces MercyGuide to open
   // on the requested tab with the requested practice line, even if the
   // user clicks the card a second time with identical values.
-  const [tryOneWordRequestId, setTryOneWordRequestId] = useState(0);
+  //
+  // Seeded to 1 when the marketing landing's "Nói thử ngay" CTA sent
+  // the visitor here with ?trypron=1 — MercyGuide then opens its
+  // pronunciation tab reactively on mount (openRequestId, no DOM-timing
+  // race). Strictly query-param-gated: absent on 100% of normal
+  // traffic, so behavior is byte-identical without the param. jsdom /
+  // SSR safe via the typeof-window guard.
+  const [tryOneWordRequestId, setTryOneWordRequestId] = useState(() => {
+    if (typeof window === "undefined") return 0;
+    try {
+      return new URLSearchParams(window.location.search).has("trypron")
+        ? 1
+        : 0;
+    } catch {
+      return 0;
+    }
+  });
   const TRY_ONE_WORD_LINE = "Hello, how are you?";
 
   // Progressive disclosure: only one secondary card expanded at a time on mobile.

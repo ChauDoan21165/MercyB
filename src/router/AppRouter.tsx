@@ -38,6 +38,7 @@ const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 const ChatHub             = lazyWithRetry(() => import("@/pages/ChatHub"));
 const AllRooms            = lazyWithRetry(() => import("@/pages/AllRooms"));
 const Home                = lazyWithRetry(() => import("@/pages/Home"));
+const MarketingLandingPage = lazyWithRetry(() => import("@/pages/MarketingLandingPage"));
 const Privacy             = lazyWithRetry(() => import("@/pages/Privacy"));
 const Terms                = lazyWithRetry(() => import("@/pages/Terms"));
 const ContentAdvisory      = lazyWithRetry(() => import("@/pages/legal/ContentAdvisory"));
@@ -701,7 +702,11 @@ export default function AppRouter() {
           <Route
             path="/"
             element={
-              <AnonymousOnboardingGate>
+              <AnonymousOnboardingGate
+                firstTimeAnonymous={
+                  <LazyPage><MarketingLandingPage /></LazyPage>
+                }
+              >
                 <LazyPage><Home /></LazyPage>
               </AnonymousOnboardingGate>
             }
