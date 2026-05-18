@@ -10,7 +10,7 @@ import {
   Globe,
   ArrowRight,
 } from "lucide-react";
-import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+import { useLessonUiLang } from "@/components/LessonUiLangToggle";
 
 const HERO_VI = "Practical language learning";
 // De-narrowed: the hub serves every audience at once and has no single

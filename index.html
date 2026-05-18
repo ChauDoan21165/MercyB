@@ -18,6 +18,16 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#0a0a0a" />
 
+    <!-- Warm the Google Fonts connection. The font CSS itself is loaded
+         route-scoped (room + tier-map surfaces only) via
+         src/lib/loadGoogleFont.ts — it is deliberately NOT globally
+         <link>ed here, so the system-font landing path keeps its
+         zero-font-network main paint. These two zero-byte hints just
+         remove the serial DNS + TLS handshake from the font fetch when
+         a font-using route mounts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Block Chrome auto-translate site-wide. Triggers React reconciliation
          crashes on Vietnamese-locale Chrome Mobile users when <font>/<b>
          wrappers desync React's cached DOM positions. App is bilingual VI/EN

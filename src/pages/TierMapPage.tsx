@@ -4,6 +4,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { getRoomList, type RoomMeta as FetcherRoomMeta } from "@/lib/roomFetcher";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { loadGoogleFont } from "@/lib/loadGoogleFont";
+
+// Tier-map display type (Playfair headings + DM Sans body). Loaded once
+// via an idempotent <link> injection instead of a render-time CSS
+// @import inside <style> (request-chained, no preconnect, re-injected
+// every render). `display=swap` → no FOIT. See src/lib/loadGoogleFont.ts.
+const TIERMAP_FONT_HREF =
+  "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap";
 
 type TierId =
   | "level0" | "level1" | "level2" | "level3" | "level4"
@@ -71,6 +79,11 @@ export default function TierMapPage() {
     return () => { cancelled = true; };
   }, []);
 
+  // Inject the tier-map font once on mount (idempotent).
+  useEffect(() => {
+    loadGoogleFont(TIERMAP_FONT_HREF);
+  }, []);
+
   const grouped = useMemo(() => {
     const map: Record<TierId, FetcherRoomMeta[]> = Object.fromEntries(ALL_TIER_IDS.map(id => [id, []])) as any;
     for (const r of rooms) map[normTier((r as any)?.tier)].push(r);
@@ -91,8 +104,6 @@ export default function TierMapPage() {
   return (
     <div className="min-h-screen bg-[#0A0A0F]">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
-
         .tm-root { font-family: 'DM Sans', sans-serif; color: #E8E8F0; }
 
         /* Hero */

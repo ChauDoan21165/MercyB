@@ -30,7 +30,7 @@ import {
   lessonThemes,
   cefrPillLabel,
 } from "@/components/languages/lessonThemes";
-import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+import { useLessonUiLang } from "@/components/LessonUiLangToggle";
 import type { LessonUiLang } from "@/components/mercy-guide/tabs/LanguageLessonsView";
 
 // HERO_VI = Vietnamese-audience line, untouched. HERO_EN = English-

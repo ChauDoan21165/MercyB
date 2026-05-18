@@ -26,7 +26,7 @@ import {
   cefrPillColors,
   cefrPillLabel,
 } from "@/components/languages/lessonThemes";
-import { useLessonUiLang } from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+import { useLessonUiLang } from "@/components/LessonUiLangToggle";
 
 // HERO_VI is the Vietnamese-audience line — left untouched (Vietnamese-
 // first). HERO_EN is the English-facing line: de-narrowed so English

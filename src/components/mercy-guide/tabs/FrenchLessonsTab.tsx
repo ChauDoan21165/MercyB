@@ -13,7 +13,7 @@ import LanguageLessonsView, {
   type LanguageLessonsConfig,
   type SidePanelVocabEntry,
 } from "./LanguageLessonsView";
-import { useLessonUiLang } from "./LessonUiLangToggle";
+import { useLessonUiLang } from "@/components/LessonUiLangToggle";
 import {
   FRENCH_CATEGORIES,
   loadLessonsForLevel,
