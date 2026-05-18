@@ -6,6 +6,7 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { AnonymousOnboardingGate } from "@/router/AnonymousOnboardingGate";
+import { ChangeLanguageLink } from "@/router/ChangeLanguageLink";
 import {
   Routes,
   Route,
@@ -560,6 +561,9 @@ function AppHeroShell() {
                 {/* Global VI/EN gloss-language toggle — one control for
                     the whole app, persisted via UiLanguageProvider. */}
                 <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
+                {/* Anonymous-only re-entry to the picker (self-hides
+                    for signed-in users — they use /account Settings). */}
+                <ChangeLanguageLink />
                 {isLoading ? (
                   <div style={authStatusPill} aria-live="polite">
                     <span style={statusDot} />
