@@ -20,6 +20,7 @@
  */
 
 import React from "react";
+import { useChromeT } from "@/lib/i18n/chromeLanguage";
 
 type Props = {
   onClick: () => void;
@@ -35,7 +36,10 @@ export function AppleSignInButton({
   busy = false,
   label,
 }: Props) {
-  const text = busy ? "Please wait..." : label ?? "Continue with Apple";
+  const t = useChromeT();
+  const text = busy
+    ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+    : label ?? t({ vi: "Tiếp tục với Apple", en: "Continue with Apple" });
 
   const style: React.CSSProperties = {
     width: "100%",

@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ensureSessionOrThrow, humanizeAuthError } from "@/lib/authHelpers";
 import { UI } from "@/components/auth/authUI";
+import { useChromeT } from "@/lib/i18n/chromeLanguage";
 
 export default function PhoneOtp({
   busyParent,
@@ -15,6 +16,7 @@ export default function PhoneOtp({
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
+  const t = useChromeT();
 
   const disabled = busyParent || busy;
 
@@ -96,7 +98,9 @@ export default function PhoneOtp({
       {!sent ? (
         <div style={{ marginTop: 12 }}>
           <button onClick={sendCode} disabled={disabled} style={UI.primaryBtn(disabled)}>
-            {disabled ? "Please wait..." : "Send SMS code"}
+            {disabled
+              ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+              : t({ vi: "Gửi mã SMS", en: "Send SMS code" })}
           </button>
           <div style={{ marginTop: 8, ...UI.small }}>
             Tip: always include country code (+66 / +84 / +1 …).
@@ -119,7 +123,9 @@ export default function PhoneOtp({
               disabled={disabled}
               style={{ ...UI.primaryBtn(disabled), flex: "1 1 auto" }}
             >
-              {disabled ? "Please wait..." : "Verify & sign in"}
+              {disabled
+                ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+                : t({ vi: "Xác minh & đăng nhập", en: "Verify & sign in" })}
             </button>
             <button
               type="button"

@@ -306,6 +306,11 @@ export default function ResultsPage() {
   const displayTitleEn =
     roomInfo?.title?.en || 'Your recommended starting lesson';
   const displayTitleVi = roomInfo?.title?.vi || 'Bài học được gợi ý để bắt đầu';
+  // M4 note: ~28 rooms ship `content.vi = ""` (clinical-content authoring
+  // backlog). This surface is already honest — the render below gates the
+  // VI <p> on `displayDescVi` so an empty VI shows EN-only, NOT English
+  // masquerading as Vietnamese. No fallback fix needed here (unlike the
+  // room welcome line); leaving as-is intentionally.
   const displayDescEn = roomInfo?.content?.en;
   const displayDescVi = roomInfo?.content?.vi;
 

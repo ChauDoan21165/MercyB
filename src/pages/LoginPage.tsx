@@ -20,6 +20,7 @@ import { UI } from "@/components/auth/authUI";
 import { AppleSignInButton } from "@/components/auth/AppleSignInButton";
 import EmailBlock from "@/components/auth/EmailBlock";
 import PhoneOtp from "@/components/auth/PhoneOtp";
+import { useChromeT } from "@/lib/i18n/chromeLanguage";
 import {
   isNativeAuthPlatform,
   registerDeepLinkListener,
@@ -125,6 +126,7 @@ function MarketingPanel() {
 
 export default function LoginPage() {
   const nav = useNavigate();
+  const t = useChromeT();
   const search = window.location.search || "";
 
   const returnToRaw = useMemo(() => safeParseReturnTo(search), [search]);
@@ -536,7 +538,9 @@ export default function LoginPage() {
               disabled={busy}
               style={UI.primaryBtn(busy)}
             >
-              {busy ? "Please wait..." : "Continue with Google"}
+              {busy
+                ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+                : t({ vi: "Tiếp tục với Google", en: "Continue with Google" })}
             </button>
 
             <button
@@ -545,7 +549,9 @@ export default function LoginPage() {
               disabled={busy}
               style={UI.primaryBtn(busy)}
             >
-              {busy ? "Please wait..." : "Continue with Facebook"}
+              {busy
+                ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+                : t({ vi: "Tiếp tục với Facebook", en: "Continue with Facebook" })}
             </button>
           </div>
 
