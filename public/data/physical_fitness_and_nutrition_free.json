@@ -4,7 +4,7 @@
   "name_vi": "An Ủi Nỗi Cô Đơn",
   "description": {
     "en": "Practical guidance for finding comfort in loneliness through connection and compassion.",
-    "vi": "Hướng dẫn thực tế giúp bạn tìm sự an ủi trong nỗi cô đơn thông qua kết nối và lòng trắc ẩn."
+    "vi": "Hướng dẫn thực tế giúp bạn tìm chút an ủi giữa nỗi cô đơn nhờ sự kết nối và lòng bao dung với chính mình."
   },
   "keywords_en": [
     "loneliness",
@@ -33,7 +33,7 @@
       ],
       "copy": {
         "en": "Finding comfort in loneliness starts with building connection. Reach out to a friend or join a group activity to foster empathy. Share your feelings openly to build trust. Small interactions can ease isolation, helping you feel supported and valued.",
-        "vi": "Tìm sự an ủi trong cô đơn bắt đầu từ việc xây dựng kết nối. Hãy liên hệ với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để tạo dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được lắng nghe và trân trọng."
+        "vi": "Việc tìm lại chút an ủi giữa nỗi cô đơn bắt đầu từ những kết nối nhỏ. Hãy nhắn cho một người bạn hoặc tham gia một hoạt động nhóm để gần gũi và đồng cảm với mọi người hơn. Cởi mở chia sẻ cảm xúc của mình để gây dựng lòng tin. Chỉ vài lần trò chuyện nhỏ cũng đủ làm dịu cảm giác lạc lõng, để bạn thấy mình được lắng nghe và trân trọng."
       },
       "tags": [
         "connection",
@@ -55,7 +55,7 @@
       ],
       "copy": {
         "en": "Self-compassion eases loneliness. Be kind to yourself, accepting your feelings without judgment. Practice affirmations like “I am enough” to build self-worth. Journal to process emotions. These steps foster resilience, helping you find comfort within yourself.",
-        "vi": "Lòng tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử dịu dàng với chính mình, chấp nhận cảm xúc mà không tự phán xét. Thực hành các câu khẳng định như “Tôi đủ tốt” để nuôi dưỡng giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này giúp tăng sức bền tinh thần và mang lại sự an ủi từ bên trong."
+        "vi": "Lòng bao dung với chính mình giúp xoa dịu nỗi cô đơn. Hãy dịu dàng với bản thân, đón nhận cảm xúc của mình mà không phán xét. Thử nhắc đi nhắc lại những câu như “Mình đã đủ tốt rồi” để nuôi dưỡng lòng tự trọng. Viết nhật ký để gọi tên và sắp xếp lại cảm xúc. Những điều này giúp bạn vững vàng hơn và tìm thấy sự an ủi từ chính bên trong mình."
       },
       "tags": [
         "self-compassion",
@@ -77,7 +77,7 @@
       ],
       "copy": {
         "en": "Community engagement reduces loneliness. Join a local group or online forum to connect with others. Share your experiences to build empathy. Regular participation fosters a sense of belonging, helping you feel supported and less isolated daily.",
-        "vi": "Tham gia cộng đồng giúp giảm bớt nỗi cô đơn. Hãy tham gia một nhóm địa phương hoặc một diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên tạo cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
+        "vi": "Hòa mình vào một cộng đồng giúp vơi bớt nỗi cô đơn. Hãy tham gia một nhóm gần nơi bạn sống hoặc một diễn đàn trên mạng để gặp gỡ mọi người. Kể lại những điều mình đã trải qua để cùng nhau thấu cảm. Góp mặt đều đặn dần cho bạn cảm giác mình thuộc về một nơi nào đó, được nâng đỡ và bớt lẻ loi hơn mỗi ngày."
       },
       "tags": [
         "community",
@@ -95,7 +95,7 @@
       ],
       "copy": {
         "en": "Finding comfort in loneliness starts with building connection. Reach out to a friend or join a group activity to foster empathy. Share your feelings openly to build trust. Small interactions can ease isolation, helping you feel supported and valued.\n\nSelf-compassion eases loneliness. Be kind to yourself, accepting your feelings without judgment. Practice affirmations like “I am enough” to build self-worth. Journal to process emotions. These steps foster resilience, helping you find comfort within yourself.\n\nCommunity engagement reduces loneliness. Join a local group or online forum to connect with others. Share your experiences to build empathy. Regular participation fosters a sense of belonging, helping you feel supported and less isolated daily.",
-        "vi": "Tìm sự an ủi trong cô đơn bắt đầu từ việc xây dựng kết nối. Hãy liên hệ với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để tạo dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được lắng nghe và trân trọng.\n\nLòng tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử dịu dàng với chính mình, chấp nhận cảm xúc mà không tự phán xét. Thực hành các câu khẳng định như “Tôi đủ tốt” để nuôi dưỡng giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này giúp tăng sức bền tinh thần và mang lại sự an ủi từ bên trong.\n\nTham gia cộng đồng giúp giảm bớt nỗi cô đơn. Hãy tham gia một nhóm địa phương hoặc một diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên tạo cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
+        "vi": "Việc tìm lại chút an ủi giữa nỗi cô đơn bắt đầu từ những kết nối nhỏ. Hãy nhắn cho một người bạn hoặc tham gia một hoạt động nhóm để gần gũi và đồng cảm với mọi người hơn. Cởi mở chia sẻ cảm xúc của mình để gây dựng lòng tin. Chỉ vài lần trò chuyện nhỏ cũng đủ làm dịu cảm giác lạc lõng, để bạn thấy mình được lắng nghe và trân trọng.\n\nLòng bao dung với chính mình giúp xoa dịu nỗi cô đơn. Hãy dịu dàng với bản thân, đón nhận cảm xúc của mình mà không phán xét. Thử nhắc đi nhắc lại những câu như “Mình đã đủ tốt rồi” để nuôi dưỡng lòng tự trọng. Viết nhật ký để gọi tên và sắp xếp lại cảm xúc. Những điều này giúp bạn vững vàng hơn và tìm thấy sự an ủi từ chính bên trong mình.\n\nHòa mình vào một cộng đồng giúp vơi bớt nỗi cô đơn. Hãy tham gia một nhóm gần nơi bạn sống hoặc một diễn đàn trên mạng để gặp gỡ mọi người. Kể lại những điều mình đã trải qua để cùng nhau thấu cảm. Góp mặt đều đặn dần cho bạn cảm giác mình thuộc về một nơi nào đó, được nâng đỡ và bớt lẻ loi hơn mỗi ngày."
       },
       "tags": [
         "all"
@@ -108,7 +108,7 @@
   "domain": "Health",
   "title": {
     "en": "Practical guidance for finding comfort in loneliness through connection and compassion.",
-    "vi": "Hướng dẫn thực tế giúp bạn tìm sự an ủi trong nỗi cô đơn thông qua kết nối và lòng trắc ẩn."
+    "vi": "Hướng dẫn thực tế giúp bạn tìm chút an ủi giữa nỗi cô đơn nhờ sự kết nối và lòng bao dung với chính mình."
   },
   "domain_image": "/images/domains/health.svg"
 }
