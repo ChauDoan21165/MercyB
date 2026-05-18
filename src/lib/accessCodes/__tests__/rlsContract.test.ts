@@ -23,7 +23,7 @@ import { describe, expect, it } from "vitest";
 
 const migrationPath = path.resolve(
   process.cwd(),
-  "supabase/migrations/20260613000000_fix_access_codes_admin_model.sql",
+  "supabase/migrations/20260613010000_fix_access_codes_admin_model.sql",
 );
 
 function readMigration(): string {
