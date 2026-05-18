@@ -380,10 +380,10 @@ const stepTitleStyle: React.CSSProperties = {
 
 /**
  * Step header. `lang` set → render single-language (chrome follows the
- * learner's native choice). `lang` omitted → bilingual VI-primary /
- * EN-secondary; used ONLY on the welcome screen, which fires before the
- * user has picked a native language so both audiences must read it
- * (locked #14).
+ * learner's native choice). `lang` omitted → bilingual PEER treatment
+ * (equal size + weight, VI on top, EN below in the same type); used on
+ * the pre-pick screens (welcome + native picker) where the native
+ * language is not chosen yet so both audiences are present (locked #14).
  */
 function StepHeader({
   title,
@@ -413,42 +413,48 @@ function StepHeader({
       </header>
     );
   }
-  // Welcome only — pre-pick, bilingual (VI primary, EN secondary).
+  // Pre-pick screens (welcome + native picker). The native language is
+  // not chosen yet, so both audiences are present: the two languages
+  // render as PEERS — identical type (size, weight, colour, line-height)
+  // separated by a hairline divider, VI on top. NOT headline +
+  // translation: an English visitor must not perceive "a Vietnamese app
+  // with an English subtitle" and leave (locked #14).
+  const peerBodyStyle: React.CSSProperties = {
+    fontSize: 14,
+    fontWeight: 500,
+    lineHeight: 1.55,
+    color: "rgba(0,0,0,0.74)",
+    margin: 0,
+  };
+  // Explicit hairline separator between the two languages. Equal type +
+  // a divider makes them read as PEERS (two language sections), not as
+  // headline + caption (Chau's spec: "stacked with a visual separator").
+  const PeerDivider = () => (
+    <div
+      aria-hidden
+      style={{
+        height: 1,
+        background: "rgba(0,0,0,0.10)",
+        borderRadius: 1,
+        margin: "10px 0",
+      }}
+    />
+  );
   return (
     <header style={{ marginBottom: 6 }}>
+      {/* VI is the semantic <h1>; EN is a visually-IDENTICAL sibling
+          (same stepTitleStyle: size, weight, colour, line-height) with a
+          divider between them — peers, not heading + translation. Kept
+          as separate, non-nested elements so each language is its own
+          text node for queries/SR. */}
       <h1 style={stepTitleStyle}>{title.vi}</h1>
-      <p
-        style={{
-          margin: "2px 0 0",
-          fontSize: 13,
-          fontWeight: 600,
-          color: "rgba(0,0,0,0.55)",
-        }}
-      >
-        {title.en}
-      </p>
+      <PeerDivider />
+      <div style={stepTitleStyle}>{title.en}</div>
       {body ? (
         <>
-          <p
-            style={{
-              margin: "10px 0 0",
-              fontSize: 14,
-              lineHeight: 1.55,
-              color: "rgba(0,0,0,0.74)",
-            }}
-          >
-            {body.vi}
-          </p>
-          <p
-            style={{
-              margin: "2px 0 0",
-              fontSize: 12,
-              lineHeight: 1.5,
-              color: "rgba(0,0,0,0.45)",
-            }}
-          >
-            {body.en}
-          </p>
+          <p style={{ ...peerBodyStyle, marginTop: 16 }}>{body.vi}</p>
+          <PeerDivider />
+          <p style={peerBodyStyle}>{body.en}</p>
         </>
       ) : null}
     </header>
