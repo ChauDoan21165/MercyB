@@ -2,6 +2,7 @@
   "name": "PTSD Support",
   "name_vi": "Hỗ Trợ Rối Loạn Căng Thẳng Sau Sang Chấn",
   "description": "Practical guidance for managing PTSD with emotional and therapeutic support",
+  "description_vi": "Hướng dẫn thiết thực để kiểm soát rối loạn căng thẳng sau sang chấn (PTSD), với hỗ trợ cảm xúc và trị liệu.",
   "keywords_en": [
     "PTSD",
     "recovery",
@@ -109,7 +110,7 @@
   },
   "content": {
     "en": "Practical guidance for managing PTSD with emotional and therapeutic support",
-    "vi": ""
+    "vi": "Hướng dẫn thiết thực để kiểm soát rối loạn căng thẳng sau sang chấn (PTSD), với hỗ trợ cảm xúc và trị liệu."
   },
   "tier": "free",
   "domain": "General",

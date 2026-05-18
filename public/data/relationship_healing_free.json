@@ -2,6 +2,7 @@
   "name": "Relationship Healing",
   "name_vi": "Hàn Gắn Mối Quan Hệ",
   "description": "Practical guidance for healing relationships through communication and trust",
+  "description_vi": "Hướng dẫn thiết thực để hàn gắn các mối quan hệ thông qua giao tiếp và sự tin tưởng.",
   "keywords_en": [
     "relationship healing",
     "communication",
@@ -109,7 +110,7 @@
   },
   "content": {
     "en": "Practical guidance for healing relationships through communication and trust",
-    "vi": ""
+    "vi": "Hướng dẫn thiết thực để hàn gắn các mối quan hệ thông qua giao tiếp và sự tin tưởng."
   },
   "tier": "free",
   "domain": "General",
