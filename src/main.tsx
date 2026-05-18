@@ -70,6 +70,11 @@ const GlobalNavigationShortcuts = lazyWithRetry(() => import("@/components/keybo
 // hasn't hydrated yet is indistinguishable from the OS default for the
 // sub-paint window before the shell is interactive.
 const AndroidBackButton = lazyWithRetry(() => import("@/components/native/AndroidBackButton"));
+// App-level native deep-link / OAuth-callback listener (Cat-4 M2).
+// Headless; no-op off native. Single owner — replaces LoginPage's
+// page-scoped listener so callbacks resolving off /login aren't dropped.
+// Composes with AndroidBackButton above — separate App.addListener calls.
+const NativeDeepLinkListener = lazyWithRetry(() => import("@/components/native/NativeDeepLinkListener"));
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
 // Toasters are passive surfaces that only paint once a toast actually fires.
@@ -554,6 +559,7 @@ w.__MB_REACT_ROOT__.render(
           <Suspense fallback={null}>
             <GlobalNavigationShortcuts />
             <AndroidBackButton />
+            <NativeDeepLinkListener />
             <ShortcutHelpOverlay />
             <Toaster />
             <AccessibleToaster />
