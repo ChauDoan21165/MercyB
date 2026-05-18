@@ -28,6 +28,25 @@ export function breadcrumbMercyPanel(action: "open" | "close" | "tab_change", da
   });
 }
 
+/**
+ * Mercy answer-feedback downvote. Lets us see thumbs-down frequency +
+ * the structured reason in Sentry's timeline BEFORE anyone queries
+ * mercy_feedback_events. Identifiers + reason key only — never the
+ * answer text or the user's free-text "other" note (PII rule above).
+ */
+export function breadcrumbMercyFeedbackDownvote(data: {
+  surface: string;
+  reason?: string;
+  lang?: string;
+}): void {
+  addBreadcrumb({
+    category: "mercy.feedback",
+    level: "warning",
+    message: "mercy feedback downvote",
+    data: { vote: "down", ...data },
+  });
+}
+
 export function breadcrumbSpeakAttempt(
   phase: "start" | "finish" | "fallback",
   data?: {

@@ -31,6 +31,7 @@ import {
   WritingFeedbackError,
 } from "@/lib/writing/feedbackClient";
 import { recordSubmission } from "@/lib/writing/submissions";
+import { MercyAnswerFeedback } from "@/components/feedback/MercyAnswerFeedback";
 
 const AUTO_SAVE_INTERVAL_MS = 5_000;
 
@@ -298,6 +299,7 @@ export default function WritingPracticeSessionPage() {
           <FeedbackPanel
             feedback={feedback}
             submissionText={text}
+            promptId={promptId}
             onTryAgain={handleTryAgain}
             onNextPrompt={handleNextPrompt}
           />
@@ -312,11 +314,13 @@ export default function WritingPracticeSessionPage() {
 function FeedbackPanel({
   feedback,
   submissionText,
+  promptId,
   onTryAgain,
   onNextPrompt,
 }: {
   feedback: WritingFeedback;
   submissionText: string;
+  promptId: string;
   onTryAgain: () => void;
   onNextPrompt: () => void;
 }) {
@@ -349,6 +353,15 @@ function FeedbackPanel({
         <p className="mt-1 text-[12px] italic leading-5 text-slate-600">
           {feedback.summary_en}
         </p>
+        <MercyAnswerFeedback
+          answerText={feedback.summary_vi}
+          responseId={`writing:${promptId}:${feedback.score}`}
+          msgId={`writing:${promptId}:${feedback.score}`}
+          conversationId={`writing:${promptId}`}
+          surface="writing_feedback"
+          mode="writing_feedback"
+          lang="vi"
+        />
       </div>
 
       {/* Inline corrections — render them as a list with the original

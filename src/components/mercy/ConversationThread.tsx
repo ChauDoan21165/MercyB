@@ -46,6 +46,7 @@ import {
   recordRecommendationShown,
   type Recommendation,
 } from "@/lib/mercy/practiceRecommendations";
+import { MercyAnswerFeedback } from "@/components/feedback/MercyAnswerFeedback";
 
 type ViewLang = "both" | "en" | "vi";
 
@@ -176,9 +177,11 @@ const clearButtonStyle: React.CSSProperties = {
 function MessageBubble({
   message,
   defaultLang,
+  conversationId,
 }: {
   message: MercyMessage;
   defaultLang: ViewLang;
+  conversationId: string | null;
 }) {
   const [lang, setLang] = useState<ViewLang>(defaultLang);
   const showEn = lang !== "vi";
@@ -219,6 +222,17 @@ function MessageBubble({
               VI
             </button>
           </div>
+        ) : null}
+        {message.role === "mercy" && conversationId ? (
+          <MercyAnswerFeedback
+            answerText={message.viTranslation ?? message.content}
+            responseId={message.id}
+            msgId={message.id}
+            conversationId={conversationId}
+            surface="in_room_chat"
+            mode="general_guide"
+            lang="vi"
+          />
         ) : null}
       </div>
     </div>
@@ -545,7 +559,11 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
           const rec = m.role === "mercy" ? recsByMessageId.get(m.id) ?? null : null;
           return (
             <React.Fragment key={m.id}>
-              <MessageBubble message={m} defaultLang="both" />
+              <MessageBubble
+                message={m}
+                defaultLang="both"
+                conversationId={conversationId}
+              />
               {m.role === "mercy" && progressAwareIds.has(m.id) ? (
                 <div style={progressBadgeRowStyle}>
                   <Link
