@@ -4,7 +4,10 @@ import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
+
+import { qk } from "@/lib/queries/keys";
 
 // ── Mocks ────────────────────────────────────────────────────────────
 
@@ -54,13 +57,27 @@ vi.mock("react-router-dom", async () => {
 // Import the page AFTER mocks are registered.
 import OnboardingPage from "../OnboardingPage";
 
+// Spy on the QueryClient the page resolves via useQueryClient(). A fresh
+// client per render keeps cache state isolated between tests; the spy lets
+// us assert the onboarding write invalidates exactly the profile key and
+// nothing broader (a wide invalidate would be a perf regression).
+let invalidateSpy: ReturnType<typeof vi.fn>;
+
 function renderPage() {
+  const qc = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  invalidateSpy = vi.fn(() => Promise.resolve());
+  qc.invalidateQueries =
+    invalidateSpy as unknown as typeof qc.invalidateQueries;
   return render(
-    <MemoryRouter initialEntries={["/onboarding"]}>
-      <Routes>
-        <Route path="/onboarding" element={<OnboardingPage />} />
-      </Routes>
-    </MemoryRouter>,
+    <QueryClientProvider client={qc}>
+      <MemoryRouter initialEntries={["/onboarding"]}>
+        <Routes>
+          <Route path="/onboarding" element={<OnboardingPage />} />
+        </Routes>
+      </MemoryRouter>
+    </QueryClientProvider>,
   );
 }
 
@@ -253,6 +270,14 @@ describe("OnboardingPage — multi-target → start_with → home", () => {
     expect(payload.target_languages).toEqual(["ja", "en"]); // primary first
     expect(payload.primary_goal).toBeUndefined(); // non-en primary: not written
     expect(payload.english_level).toBeUndefined();
+    // M3 Risk 1: the freshly-written pair must invalidate the shared
+    // profile cache so chrome / NativeLanguageContext / AccountPage stop
+    // serving the pre-onboarding language. Exactly one call, the single
+    // targeted key — never a broad invalidate (perf regression).
+    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: qk.profile("user-uuid-1"),
+    });
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),
@@ -274,6 +299,11 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
     // CRITICAL: native_language must be written or the Home gate loops
     expect(payload.native_language).toBe("vi");
     expect(payload.target_languages).toEqual(["en"]);
+    // Skip writes the pair too → same targeted profile invalidation.
+    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: qk.profile("user-uuid-1"),
+    });
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),
@@ -288,6 +318,9 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
       screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
     );
     expect(updateMock).not.toHaveBeenCalled();
+    // No profile write ⇒ nothing to invalidate (anonymous visitor reads
+    // the pair from localStorage, not the profile cache).
+    expect(invalidateSpy).not.toHaveBeenCalled();
     // …but the recommended pair is still persisted locally so the `/`
     // gate cannot loop an anonymous visitor back into the picker.
     expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
