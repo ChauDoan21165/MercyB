@@ -13,8 +13,14 @@
   "entries": [
     {
       "slug": "predict-before-you-listen",
-      "keywords_en": ["predict", "questions"],
-      "keywords_vi": ["dự đoán", "câu hỏi"],
+      "keywords_en": [
+        "predict",
+        "questions"
+      ],
+      "keywords_vi": [
+        "dự đoán",
+        "câu hỏi"
+      ],
       "copy": {
         "en": "Before the audio starts, read the questions and predict the kind of answer each blank needs. Booking a Hạ Long Bay tour, the blanks tell you what to expect: Number of people — a number. Departure — a time. Price — money with a currency. Knowing you need a number or a time before you hear it means you catch it instead of realising too late. Prediction is half the score.",
         "vi": "Trước khi audio chạy, đọc câu hỏi và dự đoán loại đáp án mỗi chỗ trống cần. Đặt một tour vịnh Hạ Long, các chỗ trống cho biết phải chờ gì: Number of people — một con số. Departure — một giờ. Price — tiền kèm đơn vị. Biết trước bạn cần một con số hay một giờ nghĩa là bạn bắt được nó thay vì nhận ra quá muộn. Dự đoán là một nửa số điểm."
@@ -24,8 +30,14 @@
     },
     {
       "slug": "signpost-words",
-      "keywords_en": ["signpost", "transitions"],
-      "keywords_vi": ["dẫn dắt", "chuyển ý"],
+      "keywords_en": [
+        "signpost",
+        "transitions"
+      ],
+      "keywords_vi": [
+        "dẫn dắt",
+        "chuyển ý"
+      ],
       "copy": {
         "en": "Speakers tell you where they are going. Listen for moving on to, firstly, the next thing, finally, as for. When the guide says Now, as for the price, the price answer is coming immediately. These signpost words let you stay with the recording instead of getting lost, and they tell you a question is about to be answered, so you raise your attention at the right moment.",
         "vi": "Người nói báo cho bạn biết họ đang đi đâu. Hãy nghe moving on to, firstly, the next thing, finally, as for. Khi hướng dẫn viên nói Now, as for the price, đáp án về giá sắp tới ngay. Các từ dẫn dắt này giúp bạn bám theo bản ghi thay vì lạc, và chúng báo một câu hỏi sắp được trả lời, nên bạn tăng tập trung đúng lúc."
@@ -35,8 +47,14 @@
     },
     {
       "slug": "the-distractor-trap",
-      "keywords_en": ["distractor", "correction"],
-      "keywords_vi": ["gây nhiễu", "sửa lại"],
+      "keywords_en": [
+        "distractor",
+        "correction"
+      ],
+      "keywords_vi": [
+        "gây nhiễu",
+        "sửa lại"
+      ],
       "copy": {
         "en": "The test deliberately says a wrong answer first, then corrects it — the first number you hear is often a trap. The speaker says: The tour leaves at eight... actually, sorry, make that half past eight. The answer is 8:30, not 8:00. Listen for actually, sorry, no wait, I mean. The information after the correction is the answer. Writing down the first thing you hear is exactly the mistake the distractor is designed to cause.",
         "vi": "Bài thi cố tình nói một đáp án sai trước, rồi sửa lại — con số đầu tiên bạn nghe thường là bẫy. Người nói: The tour leaves at eight... actually, sorry, make that half past eight. Đáp án là 8:30, không phải 8:00. Hãy nghe actually, sorry, no wait, I mean. Thông tin sau khi sửa mới là đáp án. Ghi ngay thứ đầu tiên nghe được chính là lỗi mà bẫy gây nhiễu được thiết kế để tạo ra."
@@ -46,8 +64,14 @@
     },
     {
       "slug": "answers-are-paraphrased",
-      "keywords_en": ["paraphrase", "synonyms"],
-      "keywords_vi": ["diễn đạt lại", "đồng nghĩa"],
+      "keywords_en": [
+        "paraphrase",
+        "synonyms"
+      ],
+      "keywords_vi": [
+        "diễn đạt lại",
+        "đồng nghĩa"
+      ],
       "copy": {
         "en": "You will usually not hear the exact words printed in the question. The question says the rental includes a helmet; the speaker says we provide a safety hat with every xe máy. Same meaning, different words. If you wait to hear helmet you will miss it. Listen for meaning, and prepare likely synonyms during the prediction step — included becomes provided, free, comes with.",
         "vi": "Bạn thường sẽ không nghe đúng từ in trong câu hỏi. Câu hỏi viết the rental includes a helmet; người nói nói we provide a safety hat with every xe máy. Cùng nghĩa, khác từ. Nếu bạn chờ nghe chữ helmet thì sẽ trượt nó. Hãy nghe theo nghĩa, và chuẩn bị sẵn từ đồng nghĩa có thể gặp ở bước dự đoán — included thành provided, free, comes with."
@@ -57,8 +81,14 @@
     },
     {
       "slug": "dont-get-stuck",
-      "keywords_en": ["recover", "move on"],
-      "keywords_vi": ["lấy lại", "đi tiếp"],
+      "keywords_en": [
+        "recover",
+        "move on"
+      ],
+      "keywords_vi": [
+        "lấy lại",
+        "đi tiếp"
+      ],
       "copy": {
         "en": "If you miss one answer, let it go immediately. The recording does not wait, and freezing on question three makes you miss four and five too. Mark the blank, jump to the next question, and stay with the speaker. One lost answer costs one mark; freezing can cost five. The strongest listening habit at B2 is fast recovery, not perfect hearing.",
         "vi": "Nếu trượt một đáp án, hãy buông nó ngay lập tức. Bản ghi không chờ, và đứng hình ở câu ba làm bạn trượt luôn câu bốn và năm. Đánh dấu chỗ trống, nhảy sang câu kế, và bám theo người nói. Một đáp án mất tốn một điểm; đứng hình có thể tốn năm. Thói quen nghe mạnh nhất ở B2 là phục hồi nhanh, không phải nghe hoàn hảo."
@@ -68,8 +98,14 @@
     },
     {
       "slug": "daily-listening-routine",
-      "keywords_en": ["routine", "daily"],
-      "keywords_vi": ["thói quen", "hằng ngày"],
+      "keywords_en": [
+        "routine",
+        "daily"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hằng ngày"
+      ],
       "copy": {
         "en": "Each day, take one short English audio clip — a podcast minute, a video about Vietnam — and before playing it, predict three things you might hear. While listening, note one signpost word and one paraphrase you caught. Five minutes. Training prediction and signpost-spotting daily is what moves Listening from band 5.5 to 6.5, far faster than just listening more.",
         "vi": "Mỗi ngày, lấy một đoạn audio tiếng Anh ngắn — một phút podcast, một video về Việt Nam — và trước khi bật, dự đoán ba điều có thể nghe. Trong khi nghe, ghi một từ dẫn dắt và một chỗ diễn đạt lại bạn bắt được. Năm phút. Luyện dự đoán và bắt từ dẫn dắt mỗi ngày là thứ đưa Listening từ band 5.5 lên 6.5, nhanh hơn nhiều việc chỉ nghe thêm."

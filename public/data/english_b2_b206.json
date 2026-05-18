@@ -13,8 +13,14 @@
   "entries": [
     {
       "slug": "the-four-paragraph-shape",
-      "keywords_en": ["structure", "essay"],
-      "keywords_vi": ["bố cục", "bài luận"],
+      "keywords_en": [
+        "structure",
+        "essay"
+      ],
+      "keywords_vi": [
+        "bố cục",
+        "bài luận"
+      ],
       "copy": {
         "en": "Use one reliable shape for an opinion essay: introduction, body one, body two, conclusion. Each body paragraph defends one reason for your view. For the prompt Many students want to study abroad. Is this a positive development? you might plan body one as better job chances and body two as the risk of brain drain. Decide the shape before you write a single sentence; planning is not wasted time.",
         "vi": "Hãy dùng một khung đáng tin cho bài nêu quan điểm: mở bài, thân một, thân hai, kết bài. Mỗi đoạn thân bảo vệ một lý do cho quan điểm của bạn. Với đề Many students want to study abroad. Is this a positive development? bạn có thể lên kế hoạch thân một là cơ hội việc làm tốt hơn và thân hai là nguy cơ chảy máu chất xám. Quyết định khung trước khi viết câu đầu tiên; lập dàn ý không phải thời gian phí."
@@ -24,8 +30,14 @@
     },
     {
       "slug": "paraphrase-the-question",
-      "keywords_en": ["introduction", "paraphrase"],
-      "keywords_vi": ["mở bài", "diễn đạt lại"],
+      "keywords_en": [
+        "introduction",
+        "paraphrase"
+      ],
+      "keywords_vi": [
+        "mở bài",
+        "diễn đạt lại"
+      ],
       "copy": {
         "en": "The introduction restates the question in your own words, then states your position. Do not copy the prompt — copied words score nothing. Prompt: Studying abroad is increasingly popular among young Vietnamese. Rewrite: More and more young people in Vietnam now choose to pursue their education in other countries. Then add your stance: In my view, this trend brings more benefits than drawbacks. Two sentences, and the essay has a clear direction.",
         "vi": "Mở bài viết lại câu hỏi bằng lời của bạn, rồi nêu lập trường. Đừng chép đề — chữ chép lại không có điểm. Đề: Studying abroad is increasingly popular among young Vietnamese. Viết lại: More and more young people in Vietnam now choose to pursue their education in other countries. Rồi thêm lập trường: In my view, this trend brings more benefits than drawbacks. Hai câu, và bài luận đã có hướng rõ ràng."
@@ -35,8 +47,14 @@
     },
     {
       "slug": "thesis-statement",
-      "keywords_en": ["thesis", "position"],
-      "keywords_vi": ["luận điểm", "lập trường"],
+      "keywords_en": [
+        "thesis",
+        "position"
+      ],
+      "keywords_vi": [
+        "luận điểm",
+        "lập trường"
+      ],
       "copy": {
         "en": "A thesis is one sentence that tells the examiner exactly what you think, with no fence-sitting. Weak: There are good and bad sides to studying abroad. Strong: I believe studying abroad is positive overall, mainly because it improves skills and brings money back home. The strong version already names your two body paragraphs. A clear thesis makes the whole essay easier to read and to write.",
         "vi": "Luận điểm là một câu nói cho giám khảo biết chính xác bạn nghĩ gì, không đứng giữa hàng rào. Yếu: There are good and bad sides to studying abroad. Mạnh: I believe studying abroad is positive overall, mainly because it improves skills and brings money back home. Bản mạnh đã gọi tên sẵn hai đoạn thân. Một luận điểm rõ làm cả bài dễ đọc và dễ viết hơn."
@@ -46,8 +64,14 @@
     },
     {
       "slug": "topic-sentence-then-support",
-      "keywords_en": ["topic sentence", "support"],
-      "keywords_vi": ["câu chủ đề", "lập luận"],
+      "keywords_en": [
+        "topic sentence",
+        "support"
+      ],
+      "keywords_vi": [
+        "câu chủ đề",
+        "lập luận"
+      ],
       "copy": {
         "en": "Every body paragraph opens with a topic sentence — the main idea in one line — then explains and gives an example. Topic sentence: The clearest benefit is access to better job opportunities. Explain: Graduates from foreign universities are often preferred by international companies. Example: A friend who studied in Australia now earns far more at a firm in Ho Chi Minh City than she would have otherwise. Idea, reason, example, every paragraph.",
         "vi": "Mỗi đoạn thân mở bằng một câu chủ đề — ý chính trong một dòng — rồi giải thích và cho ví dụ. Câu chủ đề: The clearest benefit is access to better job opportunities. Giải thích: Graduates from foreign universities are often preferred by international companies. Ví dụ: A friend who studied in Australia now earns far more at a firm in Ho Chi Minh City than she would have otherwise. Ý, lý do, ví dụ, đoạn nào cũng vậy."
@@ -57,8 +81,14 @@
     },
     {
       "slug": "the-conclusion",
-      "keywords_en": ["conclusion", "restate"],
-      "keywords_vi": ["kết bài", "khẳng định lại"],
+      "keywords_en": [
+        "conclusion",
+        "restate"
+      ],
+      "keywords_vi": [
+        "kết bài",
+        "khẳng định lại"
+      ],
       "copy": {
         "en": "The conclusion restates your position; it never adds a new argument. Begin with In conclusion or To sum up, then echo your thesis in fresh words: In conclusion, although studying abroad carries some risk of brain drain, the gains in skills and income make it a positive trend for Vietnam overall. One firm closing sentence is enough. A new idea in the conclusion confuses the reader and lowers coherence.",
         "vi": "Kết bài khẳng định lại lập trường; không bao giờ thêm lập luận mới. Bắt đầu bằng In conclusion hoặc To sum up, rồi nhắc lại luận điểm bằng từ mới: In conclusion, although studying abroad carries some risk of brain drain, the gains in skills and income make it a positive trend for Vietnam overall. Một câu kết chắc chắn là đủ. Một ý mới trong kết bài làm người đọc rối và giảm tính mạch lạc."
@@ -68,8 +98,14 @@
     },
     {
       "slug": "daily-essay-plan-routine",
-      "keywords_en": ["routine", "daily"],
-      "keywords_vi": ["thói quen", "hằng ngày"],
+      "keywords_en": [
+        "routine",
+        "daily"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hằng ngày"
+      ],
       "copy": {
         "en": "You do not need to write a full essay every day. Each day take one prompt about Vietnamese life — should Tết be longer, should cities limit motorbikes, is studying abroad positive — and write only the skeleton: a one-sentence thesis and two topic sentences. Five minutes. Planning fast and clearly is the band-6 skill; the full essay becomes easy once the skeleton is automatic.",
         "vi": "Bạn không cần viết cả bài luận mỗi ngày. Mỗi ngày lấy một đề về đời sống Việt Nam — có nên kéo dài Tết, có nên hạn chế xe máy trong thành phố, du học có tích cực không — và chỉ viết bộ xương: một câu luận điểm và hai câu chủ đề. Năm phút. Lập dàn ý nhanh và rõ là kỹ năng band 6; cả bài sẽ dễ khi bộ xương đã tự động."
