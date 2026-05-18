@@ -68,6 +68,13 @@ function FocusAreasCardInner() {
   }
 
   if (focus.status === "no_placement") {
+    // The empty state's only action is "take the placement test". While
+    // FEATURE_FLAGS.PLACEMENT_TEST_ENABLED is false the test is hidden,
+    // so there is nothing to invite the user to — render nothing rather
+    // than a dead CTA. (This whole card is also gated by
+    // FOCUS_AREAS_CARD_ENABLED today; this keeps it correct if that card
+    // is revived while the placement test stays hidden.)
+    if (!FEATURE_FLAGS.PLACEMENT_TEST_ENABLED) return null;
     return (
       <EmptyCard
         onCta={() => {

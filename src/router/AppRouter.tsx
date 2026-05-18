@@ -5,6 +5,7 @@
 
 import React, { Suspense, useEffect, useRef } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { AnonymousOnboardingGate } from "@/router/AnonymousOnboardingGate";
 import {
   Routes,
@@ -758,33 +759,57 @@ export default function AppRouter() {
           <Route path="/dev/api"
             element={<LazyPage><DeveloperPortalPage /></LazyPage>} />
 
-          {/* Placement test — requires auth (profile writes keyed on user.id) */}
+          {/* Placement test — HIDDEN behind FEATURE_FLAGS.PLACEMENT_TEST_ENABLED
+              (default false; see featureFlags.ts for why + revival). While
+              disabled, every /placement* path redirects to home BEFORE the
+              lazy page is mounted, so the engine never renders and no
+              placement analytics/Sentry events fire — even on a manually
+              typed URL or a stale deep link. The lazy imports stay
+              referenced in the enabled branch so flipping the one flag
+              fully restores routing with no other change. Requires auth
+              when enabled (profile writes are keyed on user.id). */}
           <Route path="/placement"
             element={
-              <RequireAuth>
-                <LazyPage><PlacementWelcomePage /></LazyPage>
-              </RequireAuth>
+              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+                <RequireAuth>
+                  <LazyPage><PlacementWelcomePage /></LazyPage>
+                </RequireAuth>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
           <Route path="/placement/who"
             element={
-              <RequireAuth>
-                <LazyPage><PlacementWhoForPage /></LazyPage>
-              </RequireAuth>
+              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+                <RequireAuth>
+                  <LazyPage><PlacementWhoForPage /></LazyPage>
+                </RequireAuth>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
           <Route path="/placement/test"
             element={
-              <RequireAuth>
-                <LazyPage><PlacementTestPage /></LazyPage>
-              </RequireAuth>
+              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+                <RequireAuth>
+                  <LazyPage><PlacementTestPage /></LazyPage>
+                </RequireAuth>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
           <Route path="/placement/results"
             element={
-              <RequireAuth>
-                <LazyPage><PlacementResultsPage /></LazyPage>
-              </RequireAuth>
+              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+                <RequireAuth>
+                  <LazyPage><PlacementResultsPage /></LazyPage>
+                </RequireAuth>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
 

@@ -10,6 +10,7 @@ import { GiftCodeModal } from "@/components/GiftCodeModal";
 import PowerUserSection from "@/components/account/PowerUserSection";
 import { supabase } from "@/lib/supabaseClient";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import LanguagePairSettings from "@/components/account/LanguagePairSettings";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
@@ -579,7 +580,14 @@ export default function AccountPage() {
               />
             ) : null}
 
-            {placementFlagEnabled ? (
+            {/* Placement retake link — HIDDEN behind
+                FEATURE_FLAGS.PLACEMENT_TEST_ENABLED (default false; see
+                featureFlags.ts). AND-ed with the pre-existing DB flag so
+                reviving the feature still respects its original runtime
+                toggle. Hiding this link also removes the only place the
+                Account page surfaced a placement CEFR level, so no
+                "Level: not assessed" leaks. */}
+            {FEATURE_FLAGS.PLACEMENT_TEST_ENABLED && placementFlagEnabled ? (
               <SecondaryLink
                 en={
                   placementInfo?.completedAt

@@ -30,6 +30,31 @@ export const FEATURE_FLAGS = {
   MERCY_HOST_ENABLED: false, // flip to true when ready
 
   /**
+   * Placement test — HIDDEN from every user-facing surface.
+   *
+   * WHY: the test inflates results for Vietnamese L1 learners — they
+   * test as B1/B2/C1 when their real level is far lower. Root causes
+   * (B1 starting anchor, 43-item bank, no listening, no real adaptive
+   * logic) are documented in /private/tmp/placement-test-diagnostic.md.
+   * PR #656 fixed the viRevealed-reading inflation bug but the
+   * structural problems remain. Chau's call: hide the test rather than
+   * ship a broken one, until a sophisticated version is built.
+   *
+   * This is a HIDE, not a delete. The engine, item bank, persistence,
+   * test pages and unit tests are intentionally preserved intact under
+   * src/lib/placement/** and src/pages/placement/** — nothing there was
+   * touched. Every entry point (the 4 /placement* routes, the Home
+   * "Placement test" card, the Account retake link, the StoryDetail
+   * CTA, the FocusAreas no_placement CTA) is gated on this one constant.
+   *
+   * TO RE-ENABLE: flip this single line to `true`. That restores the
+   * routes and every CTA. Before exposing it to users again, fix bug #1
+   * (the B1 starting anchor) — see the diagnostic. Ref: this dispatch +
+   * PR #656 + placement-test-diagnostic.md.
+   */
+  PLACEMENT_TEST_ENABLED: false,
+
+  /**
    * Home page "Your focus areas" card that surfaces placement-test
    * weakness tags. Off until CC3's placement-test persistence lands
    * and manual QA passes.
