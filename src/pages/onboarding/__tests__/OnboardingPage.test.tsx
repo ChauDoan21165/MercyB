@@ -78,10 +78,16 @@ beforeEach(() => {
   eqMock.mockClear();
   fromMock.mockClear();
   navigateMock.mockClear();
+  window.localStorage.clear();
   mockUseAuth.mockReturnValue({ user: { id: "user-uuid-1" } });
   vi.spyOn(console, "log").mockImplementation(() => {});
   vi.spyOn(console, "warn").mockImplementation(() => {});
 });
+
+function storedPair(): { native: string; targets: string[] } | null {
+  const raw = window.localStorage.getItem("mercyblade.languagePair");
+  return raw ? (JSON.parse(raw) as { native: string; targets: string[] }) : null;
+}
 
 afterEach(() => {
   vi.restoreAllMocks();
@@ -196,6 +202,29 @@ describe("OnboardingPage — single English target preserves the (vi,en) flow", 
       "/professions/healthcare",
       expect.objectContaining({ replace: true }),
     );
+    // Signed-in users also seed the localStorage pair (PR 3 reconciles).
+    expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
+  });
+});
+
+describe("OnboardingPage — anonymous (no auth) persists to localStorage", () => {
+  it("anonymous finish writes the pair locally and does NOT touch Supabase", async () => {
+    mockUseAuth.mockReturnValue({ user: null });
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user); // vi + English pre-checked
+    await user.click(screen.getByRole("checkbox", { name: /Tiếng Nhật/ })); // add ja
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    await user.click(screen.getByRole("radio", { name: /Tiếng Nhật/ })); // ja primary
+    await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
+
+    expect(updateMock).not.toHaveBeenCalled(); // no profile row exists yet
+    expect(storedPair()).toEqual({ native: "vi", targets: ["ja", "en"] });
+    expect(window.localStorage.getItem("mercyblade.nativeLang")).toBe("vi");
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/languages/japanese",
+      expect.objectContaining({ replace: true }),
+    );
   });
 });
 
@@ -256,6 +285,9 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
       screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
     );
     expect(updateMock).not.toHaveBeenCalled();
+    // …but the recommended pair is still persisted locally so the `/`
+    // gate cannot loop an anonymous visitor back into the picker.
+    expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),

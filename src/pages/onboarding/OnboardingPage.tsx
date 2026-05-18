@@ -1,23 +1,27 @@
 // src/pages/onboarding/OnboardingPage.tsx
 //
-// ⚠️ ORPHANED — INTENTIONALLY UNUSED, DO NOT DELETE (as of fix(onboarding)
-// "default new users to (vi, ['en'])", migration 20260616000000).
+// THE ENTRY POINT for anonymous visitors at mercyblade.com (locked #14 —
+// Chau-confirmed doctrine). An anonymous visitor with no stored pair is
+// routed here from `/` by AppRouter's AnonymousOnboardingGate; the
+// picker is the first thing they see, BEFORE signup. The earlier
+// "parked / Settings-only" disposition (the #590 orphan banner) is
+// reversed — #590's DEFAULT 'vi' migration must NOT be applied, as it
+// would re-create the auto-default-before-pick bug this flow exists to
+// fix.
 //
-// Nothing routes here anymore. The only live caller was the Home gate
-// (src/pages/Home.tsx — redirect when profiles.native_language IS NULL).
-// That gate can no longer fire: native_language now DEFAULTs to 'vi' for
-// every new signup, because vi-native learners studying English are ~95%
-// of signups (the home market) and asking them the picker question is
-// pure friction with zero information gain (STRATEGY v3.0 §4). The
-// native+target picker is now a Settings-only opt-in —
-// src/components/account/LanguagePairSettings.tsx, mounted at /account
-// (PR 3/3). The /onboarding <Route> is kept in src/router/AppRouter.tsx
-// and this component is kept whole so Chau can later decide to remount
-// the flow differently (e.g. a guided tour for users who tap "add a
-// language" in Settings). It is parked, not dead — leave it intact.
+// Auth-less by design:
+//   - Anonymous → the pair is written to localStorage
+//     (src/lib/languagePair/anonymousPair.ts). Returning anonymous
+//     visitors skip the picker; Home renders the right surface for the
+//     pair. If they sign up later, PR 3 syncs localStorage → profile.
+//   - Signed-in (e.g. a logged-in user whose profile native_language is
+//     still NULL, redirected here by Home's gate) → ALSO written to
+//     public.profiles, exactly as before. Supabase write stays guarded
+//     by `user?.id`; no user ⇒ localStorage only ("instead of
+//     Supabase" for the anonymous case).
 //
-// ── Original PR 2/3 documentation (still accurate if remounted) ───────
-// Duolingo-style pair-selection onboarding at /onboarding (PR 2 of 3).
+// ── PR 2/3 flow documentation ────────────────────────────────────────
+// Duolingo-style pair-selection onboarding (PR 2 of 3).
 //
 // Steps in canonical order (some conditionally skipped — see nextStep):
 //   1. welcome      — friendly intro from Mercy
@@ -61,6 +65,7 @@ import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
+import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
 import { pickFirstLesson } from "@/lib/onboarding/firstLesson";
 import {
   GOAL_OPTIONS,
@@ -602,6 +607,12 @@ export default function OnboardingPage() {
     setError(null);
     const dest = resolveDestination(draft);
     const primary = primaryTargetOf(draft);
+    // Persist locally FIRST — this is the anonymous source of truth and
+    // must survive a Supabase blip (it also seeds the cache for a
+    // signed-in user; PR 3 reconciles localStorage → profile on signup).
+    if (draft.native_language) {
+      writeAnonymousPair(draft.native_language, draft.target_languages);
+    }
     try {
       if (user?.id) {
         const payload: Record<string, unknown> = {
@@ -668,6 +679,10 @@ export default function OnboardingPage() {
       target_languages: [target],
     };
     const dest = resolveDestination(skipDraft);
+    // Same as finish: persist locally so the gate can't loop an
+    // anonymous visitor back into the picker (skip = a deliberate pick
+    // of the recommended pair).
+    writeAnonymousPair(native, [target]);
     try {
       if (user?.id) {
         const { error: updateError } = await supabase
