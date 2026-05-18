@@ -10,6 +10,7 @@ import { GiftCodeModal } from "@/components/GiftCodeModal";
 import PowerUserSection from "@/components/account/PowerUserSection";
 import { supabase } from "@/lib/supabaseClient";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
+import LanguagePairSettings from "@/components/account/LanguagePairSettings";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
 import { CertificatesAccountEntry } from "@/components/certificates/CertificatesAccountEntry";
@@ -754,6 +755,20 @@ export default function AccountPage() {
             <div style={{ marginTop: 12 }}>
               <ReferralLeaderboardOptInPanel />
             </div>
+          </div>
+        </details>
+
+        {/* ── Learning languages (collapsed by default) ───────────── */}
+        <details style={detailsCard}>
+          <summary style={summaryStyle}>
+            <span>
+              Ngôn ngữ học
+              <span style={summaryVi}>Learning languages</span>
+            </span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+          </summary>
+          <div style={detailsBody}>
+            <LanguagePairSettings />
           </div>
         </details>
 

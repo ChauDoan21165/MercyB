@@ -49,11 +49,17 @@ export interface LanguageMeta {
 export const LANGUAGES: LanguageMeta[] = [
   { id: "french", category: "european", name: "French", nameVi: "Tiếng Pháp", flag: "🇫🇷" },
   { id: "german", category: "european", name: "German", nameVi: "Tiếng Đức", flag: "🇩🇪" },
-  { id: "spanish", category: "european", name: "Spanish", nameVi: "Tiếng Tây Ban Nha", flag: "🇪🇸", totalLessons: 110 },
+  // totalLessons here mirror the canonical *_TOTAL_LESSONS constants
+  // (src/languages/{spanish,vietnamese}/lessons.ts). Hardcoded with a
+  // citation rather than imported so this widely-imported store does
+  // not pull the lesson arrays into its bundle. Both were stale
+  // (spanish 110→109, vietnamese 47→536) — RECON-content-readiness-
+  // matrix.md decision 5.
+  { id: "spanish", category: "european", name: "Spanish", nameVi: "Tiếng Tây Ban Nha", flag: "🇪🇸", totalLessons: 109 },
   { id: "japanese", category: "asian", name: "Japanese", nameVi: "Tiếng Nhật", flag: "🇯🇵" },
   { id: "chinese", category: "asian", name: "Chinese", nameVi: "Tiếng Trung", flag: "🇨🇳" },
   { id: "korean", category: "asian", name: "Korean", nameVi: "Tiếng Hàn", flag: "🇰🇷" },
-  { id: "vietnamese", category: "asian", name: "Vietnamese", nameVi: "For foreigners", flag: "🇻🇳", totalLessons: 47 },
+  { id: "vietnamese", category: "asian", name: "Vietnamese", nameVi: "For foreigners", flag: "🇻🇳", totalLessons: 536 },
 ];
 
 const EUROPEAN = LANGUAGES.filter((l) => l.category === "european");

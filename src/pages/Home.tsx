@@ -13,6 +13,10 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
+import LanguageTrackHome, {
+  TargetSwitcher,
+} from "@/pages/home/LanguageTrackHome";
+import { parseLanguagePair } from "@/lib/languagePair/languagePair";
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
@@ -849,8 +853,38 @@ export default function Home() {
     </button>
   );
 
+  // Pair-aware Home routing (Duolingo onboarding PR 3). Reuses the
+  // profile already fetched for the onboarding gate above — no extra
+  // query. A NON-English primary target gets its own focused track
+  // home (a NEW surface). English / unknown / not-yet-loaded falls
+  // through to the canonical (vi,en) Home below — byte-identical for
+  // the 95% audience (locked #14). A multi-target user keeps the
+  // canonical home and gains a switcher pinned at the top. Placed
+  // after every Home hook (Rules of Hooks — [[feedback_react_hooks_ordering]]).
+  const {
+    nativeLanguage: pairNative,
+    targets: pairTargets,
+    primaryTarget: pairPrimary,
+  } = parseLanguagePair(onboardingProfile);
+  if (pairPrimary && pairPrimary !== "en") {
+    return (
+      <LanguageTrackHome
+        nativeLanguage={pairNative}
+        targets={pairTargets}
+        primaryTarget={pairPrimary}
+      />
+    );
+  }
+
   return (
     <div style={wrap}>
+      {/* Multi-target users keep this canonical (vi,en) home unchanged
+          but gain a switcher at the top. Single-target (the 95%) →
+          condition false → nothing rendered → DOM identical to today
+          (locked #14). */}
+      {pairTargets.length > 1 ? (
+        <TargetSwitcher targets={pairTargets} primaryTarget={pairPrimary} />
+      ) : null}
       {/* Top-right floating streak badge — hidden when streak_current === 0 */}
       <div
         style={{
@@ -874,7 +908,7 @@ export default function Home() {
             <span style={headlineAccent}>Real Progress.</span>
           </h1>
           <div style={subline}>
-            English for real <span style={{ color: "rgba(13,148,136,0.92)" }}>life</span>.
+            Real language. <span style={{ color: "rgba(13,148,136,0.92)" }}>Real progress.</span>
           </div>
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(13), fontWeight: 600, color: isPhone ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
             {isPhone ? "See your pronunciation score in 12 seconds." : "See your pronunciation score in 12 seconds — no signup."}
