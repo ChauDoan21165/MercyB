@@ -40,10 +40,10 @@ describe("<ErrorBoundary />", () => {
       </ErrorBoundary>,
     );
 
-    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
-    expect(screen.getByText("Try Again")).toBeInTheDocument();
+    expect(screen.getByText("Đã xảy ra lỗi")).toBeInTheDocument();
+    expect(screen.getByText("Thử lại")).toBeInTheDocument();
 
-    const goHome = screen.getByText("Go Home");
+    const goHome = screen.getByText("Về trang chủ");
     expect(goHome).toBeInstanceOf(HTMLAnchorElement);
     expect((goHome as HTMLAnchorElement).getAttribute("href")).toBe("/");
   });
@@ -74,7 +74,7 @@ describe("<ErrorBoundary />", () => {
 
     // After the first throw + recovery, children render normally
     expect(screen.getByTestId("survived")).toBeInTheDocument();
-    expect(screen.queryByText("Something went wrong")).not.toBeInTheDocument();
+    expect(screen.queryByText("Đã xảy ra lỗi")).not.toBeInTheDocument();
   });
 
   it("still shows crash screen on non-auth-lock errors", () => {
@@ -88,7 +88,7 @@ describe("<ErrorBoundary />", () => {
       </ErrorBoundary>,
     );
 
-    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
+    expect(screen.getByText("Đã xảy ra lỗi")).toBeInTheDocument();
     // Real bug → dark screen, NOT the calm "updating" screen.
     expect(screen.queryByText("Đang cập nhật Mercy Blade")).not.toBeInTheDocument();
   });
@@ -132,7 +132,7 @@ describe("<ErrorBoundary />", () => {
 
       // Calm, Vietnamese-first screen — no raw stack dump for a learner.
       expect(screen.getByText("Đang cập nhật Mercy Blade")).toBeInTheDocument();
-      expect(screen.queryByText("Something went wrong")).not.toBeInTheDocument();
+      expect(screen.queryByText("Đã xảy ra lỗi")).not.toBeInTheDocument();
       expect(replaceSpy).not.toHaveBeenCalled(); // deferred, not synchronous
 
       // Tier-2 escalation: SW-unregister then cache-bust nav after 600ms.

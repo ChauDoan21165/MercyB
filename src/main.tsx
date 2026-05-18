@@ -162,14 +162,14 @@ function asUserSafeErrorMessage(err: unknown): string {
   // Never expose stack traces or internal paths to users in production
   if (err instanceof Error) return `${err.name}: ${err.message}`;
   if (typeof err === "string") return err.split("\n")[0] ?? err;
-  return "An unexpected error occurred.";
+  return "Đã xảy ra lỗi không mong muốn.";
 }
 
 function getFriendlyChunkErrorMessage(): string {
   return [
-    "A new version of Mercy Blade was deployed.",
-    "Your browser is still holding an older app file, so this page could not load correctly.",
-    "We'll refresh once automatically.",
+    "Mercy Blade vừa có bản mới.",
+    "Trình duyệt vẫn đang giữ tệp ứng dụng cũ nên trang chưa tải đúng.",
+    "Trang sẽ tự làm mới một lần.",
   ].join(" ");
 }
 
@@ -256,7 +256,7 @@ function scheduleOneTimeChunkReload(): boolean {
       });
 
       const title = document.createElement("h1");
-      title.textContent = "Refreshing Mercy Blade";
+      title.textContent = "Đang cập nhật Mercy Blade";
       Object.assign(title.style, { margin: "0", fontSize: "28px", lineHeight: "1.1", fontWeight: "900", color: "#111827" });
 
       const body = document.createElement("p");
@@ -268,7 +268,7 @@ function scheduleOneTimeChunkReload(): boolean {
 
       const reloadBtn = document.createElement("button");
       reloadBtn.type = "button";
-      reloadBtn.textContent = "Refresh now";
+      reloadBtn.textContent = "Tải lại";
       reloadBtn.onclick = () => window.location.reload();
       Object.assign(reloadBtn.style, {
         borderRadius: "14px", minHeight: "46px", padding: "12px 16px",
@@ -308,7 +308,7 @@ function scheduleOneTimeChunkReload(): boolean {
       // In production show only safe message — no stack traces, no internal paths
       const message = import.meta.env.DEV
         ? `${title}\n\n${asErrorMessage(err)}\n\nURL: ${window.location.href}`
-        : `Something went wrong.\n\n${asUserSafeErrorMessage(err)}`;
+        : `Đã xảy ra lỗi.\n\n${asUserSafeErrorMessage(err)}`;
 
       overlayRoot.innerHTML = "";
 
