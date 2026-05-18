@@ -1,7 +1,15 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from "react";
 import { looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import {
+  CHUNK_RELOAD_KEY,
+  cacheBustingReload,
+  clearChunkRecoveryMarks,
+} from "@/lib/chunkReload";
 
-const RELOAD_SESSION_KEY = "__mb_chunk_reload_once__";
+// Value is byte-identical to the historical literal — kept as a local
+// alias so the rest of this file (and its tests, which assert the raw
+// string) stay unchanged.
+const RELOAD_SESSION_KEY = CHUNK_RELOAD_KEY;
 
 function hasAlreadyReloaded(): boolean {
   try {
@@ -22,12 +30,10 @@ function markReloaded(): void {
 }
 
 function clearReloadMark(): void {
-  try {
-    sessionStorage.removeItem(RELOAD_SESSION_KEY);
-  } catch {
-    // Mirror markReloaded()'s best-effort stance — if sessionStorage is
-    // unavailable there was nothing persisted to clear anyway.
-  }
+  // Clears BOTH the Tier-1 (this module) and Tier-2 (ErrorBoundary) marks
+  // so a clean chunk load re-arms the whole recovery ladder for a later
+  // deploy in the same session. Internally best-effort (own try/catch).
+  clearChunkRecoveryMarks();
 }
 
 // Exported for unit tests. Wraps an import() factory so a stale-chunk
@@ -59,7 +65,10 @@ export function createRetryLoader<T extends ComponentType<any>>(
       if (looksLikeChunkLoadFailure(error) && !hasAlreadyReloaded()) {
         markReloaded();
         if (typeof window !== "undefined") {
-          window.location.reload();
+          // Cache-busting nav, NOT a plain reload: embedded webviews
+          // (FB in-app browser, iOS Chrome/WKWebView) re-serve the stale
+          // document on reload(). See src/lib/chunkReload.ts.
+          cacheBustingReload();
         }
         // Halt rendering while the reload is in flight. Suspense keeps
         // showing the fallback; React never sees the error.

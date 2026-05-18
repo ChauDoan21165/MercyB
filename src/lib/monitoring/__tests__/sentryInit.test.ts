@@ -837,3 +837,71 @@ describe("enrichEventTags — featureArea preserved for rls_denied events", () =
     expect(event.tags.featureArea).not.toBe("bogus");
   });
 });
+
+describe("enrichEventTags — stale-deploy chunk-load severity", () => {
+  beforeEach(() => {
+    sessionStorage.clear();
+  });
+  afterEach(() => {
+    sessionStorage.clear();
+  });
+
+  function chunkEvent() {
+    return {
+      exception: {
+        values: [
+          {
+            type: "TypeError",
+            value:
+              "Failed to fetch dynamically imported module: https://mercyblade.com/assets/ChatHub-C7kMnSdL.js",
+          },
+        ],
+      },
+      tags: {} as Record<string, string>,
+    };
+  }
+
+  it("downgrades a recovering chunk-load failure to warning / P3", () => {
+    const event = chunkEvent();
+    enrichEventTags(event as never);
+
+    expect(event.tags.chunkRecovery).toBe("attempted");
+    expect(event.tags.chunkRecoveryAttempts).toBe("1");
+    expect(event.tags.priority).toBe("P3");
+    expect((event as { level?: string }).level).toBe("warning");
+    expect((event as { fingerprint?: string[] }).fingerprint).toEqual([
+      "mercyblade",
+      "chunk-load",
+      "attempted",
+    ]);
+  });
+
+  it("keeps the post-cache-bust residual at error / P1 so the tail stays visible", () => {
+    sessionStorage.setItem("__mb_chunk_eb_reload_once__", "1");
+    const event = chunkEvent();
+    enrichEventTags(event as never);
+
+    expect(event.tags.chunkRecovery).toBe("exhausted");
+    expect(event.tags.chunkRecoveryAttempts).toBe("2");
+    expect(event.tags.priority).toBe("P1");
+    expect((event as { level?: string }).level).toBe("error");
+    expect((event as { fingerprint?: string[] }).fingerprint).toEqual([
+      "mercyblade",
+      "chunk-load",
+      "exhausted",
+    ]);
+  });
+
+  it("does not touch severity for a normal (non-chunk) error", () => {
+    const event = {
+      exception: { values: [{ type: "Error", value: "normal app bug" }] },
+      tags: {} as Record<string, string>,
+    };
+    enrichEventTags(event as never);
+
+    expect(event.tags.chunkRecovery).toBeUndefined();
+    expect((event as { fingerprint?: string[] }).fingerprint?.[1]).not.toBe(
+      "chunk-load",
+    );
+  });
+});
