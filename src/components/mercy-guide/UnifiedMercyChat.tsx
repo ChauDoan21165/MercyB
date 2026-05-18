@@ -369,6 +369,9 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
           </Button>
           <textarea
             data-testid="unified-mercy-input"
+            // Privacy: Mercy chat free text is sensitive — never let
+            // Clarity session replay capture it. See clarity.ts.
+            data-clarity-mask="true"
             value={state.draft}
             onChange={(e) =>
               dispatch({ type: "draftChanged", value: e.target.value })

@@ -617,6 +617,9 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
             disabled={!conversationId || pending}
             style={composerInputStyle}
             data-testid="thread-composer"
+            // Privacy: never record what learners type to Teacher Mercy
+            // (personal/mental-health free text). See clarity.ts.
+            data-clarity-mask="true"
           />
           <button
             type="button"
