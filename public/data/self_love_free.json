@@ -2,6 +2,7 @@
   "name": "Self Love",
   "name_vi": "Yêu Thương Bản Thân",
   "description": "Gentle guidance for cultivating self-love, self-acceptance, and inner resilience",
+  "description_vi": "Hướng dẫn nhẹ nhàng để nuôi dưỡng lòng yêu thương bản thân, sự chấp nhận bản thân và sức bền nội tâm.",
   "keywords_en": [
     "self-love",
     "self-acceptance",
@@ -89,7 +90,7 @@
   },
   "content": {
     "en": "Gentle guidance for cultivating self-love, self-acceptance, and inner resilience",
-    "vi": ""
+    "vi": "Hướng dẫn nhẹ nhàng để nuôi dưỡng lòng yêu thương bản thân, sự chấp nhận bản thân và sức bền nội tâm."
   },
   "tier": "free",
   "domain": "General",
