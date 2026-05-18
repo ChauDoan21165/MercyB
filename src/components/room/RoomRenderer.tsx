@@ -82,7 +82,6 @@ import {
 import { ROOM_CSS } from "@/components/room/roomRendererStyles";
 import { supabase } from "@/lib/supabaseClient";
 
-import { getSignedAudio } from "@/lib/audio/getSignedAudio";
 import { addStudyLogEntry } from "@/services/studyLog";
 import { awardPoints } from "@/services/pointsService";
 import { trackRoomEntry, updateRoomProgress } from "@/services/roomProgress";
@@ -192,22 +191,6 @@ function normalizeTierIdRuntime(x: any): TierIdRuntime {
   return (n || "level0") as TierIdRuntime;
 }
 
-function isHttpUrl(s: string) {
-  return /^https?:\/\//i.test(String(s || ""));
-}
-function isPublicAudioPath(s: string) {
-  const p = String(s || "").trim();
-  if (!p) return false;
-  return p.startsWith("/audio/") || p.startsWith("audio/") || p.startsWith("/music/") || p.startsWith("music/");
-}
-function looksBucketObjectPath(s: string) {
-  const p = String(s || "").trim();
-  if (!p) return false;
-  if (p.startsWith("/")) return false;
-  if (isHttpUrl(p)) return false;
-  if (isPublicAudioPath(p)) return false;
-  return /\.mp3(\?.*)?$/i.test(p);
-}
 
 function isLegacyStubEntry(e: any) {
   const slug = String(e?.slug ?? "").trim();
@@ -752,7 +735,6 @@ export default function RoomRenderer({
   const rootRef = useRef<HTMLDivElement | null>(null);
   const audioAnchorRef = useRef<HTMLDivElement | null>(null);
   const box4Ref = useRef<HTMLElement | null>(null);
-  const signedAudioCacheRef = useRef<Map<string, string>>(new Map());
 
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
   const safeRoom = (room ?? {}) as AnyRoom;
@@ -805,28 +787,6 @@ export default function RoomRenderer({
     el.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  const resolveAudioUrl = useCallback(async (raw: string): Promise<string> => {
-    const s = String(raw || "").trim();
-    if (!s) return "";
-
-    if (isHttpUrl(s)) return s;
-
-    if (isPublicAudioPath(s)) {
-      return s.startsWith("/") ? s : `/${s}`;
-    }
-
-    if (looksBucketObjectPath(s)) {
-      const cached = signedAudioCacheRef.current.get(s);
-      if (cached) return cached;
-
-      const url = await getSignedAudio(s);
-      const safe = String(url || "").trim();
-      if (safe) signedAudioCacheRef.current.set(s, safe);
-      return safe || "";
-    }
-
-    return s;
-  }, []);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -1193,37 +1153,6 @@ export default function RoomRenderer({
     };
   }, [effectiveRoomId, activeKeyword, isLocked]);
 
-  const [activeAudioUrl, setActiveAudioUrl] = useState<string>("");
-
-  useEffect(() => {
-    let alive = true;
-
-    void (async () => {
-      try {
-        if (!activeEntry) {
-          if (alive) setActiveAudioUrl("");
-          return;
-        }
-        const { audio_url } = pickRepeatTargetFromEntry(activeEntry);
-        const raw = String(audio_url || "").trim();
-        if (!raw) {
-          if (alive) setActiveAudioUrl("");
-          return;
-        }
-        const url = await resolveAudioUrl(raw);
-        // DEBUG-PERF (only fires when an entry is active — i.e. user clicked a keyword)
-        console.log("[room-perf]", "t5:audio-signed", performance.now() - ((window as any).__mbRoomPerfT0 || 0)); // DEBUG-PERF
-        if (alive) setActiveAudioUrl(url);
-      } catch {
-        if (alive) setActiveAudioUrl("");
-      }
-    })();
-
-    return () => {
-      alive = false;
-    };
-  }, [activeEntry, resolveAudioUrl]);
-
   useEffect(() => {
     if (!effectiveRoomId) return;
     if (!activeKeyword) return;
@@ -1231,7 +1160,7 @@ export default function RoomRenderer({
     if (isLocked) return;
 
     const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
-    const { text_en, text_vi } = pickRepeatTargetFromEntry(activeEntry);
+    const { text_en, text_vi, audio_url } = pickRepeatTargetFromEntry(activeEntry);
 
     if (!text_en && !text_vi) return;
 
@@ -1246,10 +1175,10 @@ export default function RoomRenderer({
       entryId,
       text_en,
       text_vi,
-      audio_url: String(activeAudioUrl || "").trim(),
+      audio_url: String(audio_url || "").trim(),
       pace: "normal",
     });
-  }, [effectiveRoomId, activeKeyword, activeEntry, isLocked, activeAudioUrl]);
+  }, [effectiveRoomId, activeKeyword, activeEntry, isLocked]);
 
   type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
 
@@ -1714,16 +1643,7 @@ export default function RoomRenderer({
                   <>
                     <div className="mb-3 text-xs uppercase tracking-widest opacity-50">Current focus: {activeKeyword}</div>
                     <ActiveEntry
-                      entry={{
-                        ...activeEntry,
-                        ...(activeAudioUrl
-                          ? {
-                              audio_url: activeAudioUrl,
-                              audio_en: activeAudioUrl,
-                              audio: activeAudioUrl,
-                            }
-                          : null),
-                      }}
+                      entry={activeEntry}
                       index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
                       enKeywords={plainReadingKeywords.en}
                       viKeywords={plainReadingKeywords.vi}
