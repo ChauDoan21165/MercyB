@@ -2,7 +2,7 @@
   "name": "Career Consultant",
   "name_vi": "Chuyên Gia Định Hướng Nghề Nghiệp",
   "description": "A life-changing invitation to discover your true calling — the first step toward VIP4's personalized career mastery.",
-  "description_vi": "Lời mời thay đổi cuộc đời: khám phá tiếng gọi thật sự của bạn — bước đầu tiến vào VIP4 với hành trình định hướng nghề nghiệp cá nhân hóa.",
+  "description_vi": "Một lời mời có thể thay đổi cả cuộc đời bạn: tìm ra con đường thật sự thuộc về mình — bước đầu tiên để đến với VIP4, nơi hành trình định hướng nghề nghiệp được thiết kế riêng cho bạn.",
   "keywords_en": [
     "career choice",
     "self discovery",
@@ -92,7 +92,7 @@
       ],
       "copy": {
         "en": "Choosing a career is not just about earning a living — it is about defining the rhythm of your days, the people you meet, and the legacy you leave behind. Yet most young people are pushed into decisions before they truly know themselves. They chase trends, parental expectations, or survival, and end up wondering why life feels offbeat. CareerSpark's VIP4: Career Consultant is built to stop that quiet drift — to give you the map before you walk.",
-        "vi": "Chọn nghề không chỉ là tìm cách kiếm sống — đó là quyết định nhịp điệu mỗi ngày, những con người bạn gặp, và dấu ấn bạn để lại. Thế nhưng hầu hết người trẻ bị buộc phải chọn trước khi thật sự hiểu mình. Họ chạy theo xu hướng, kỳ vọng gia đình hay nhu cầu tồn tại, rồi tự hỏi vì sao cuộc đời cảm thấy lạc nhịp. CareerSpark VIP4: Chuyên Gia Định Hướng Nghề Nghiệp ra đời để dừng lại sự trôi dạt âm thầm ấy — để trao cho bạn tấm bản đồ trước khi bước đi."
+        "vi": "Chọn nghề không chỉ là chuyện kiếm sống — đó là cách bạn định hình nhịp sống mỗi ngày, những con người bạn sẽ gặp và dấu ấn bạn để lại về sau. Vậy mà phần lớn người trẻ phải đưa ra lựa chọn khi chưa thật sự hiểu chính mình. Họ chạy theo xu hướng, theo kỳ vọng của gia đình hay đơn giản là để mưu sinh, để rồi tự hỏi vì sao cuộc đời mình cứ chông chênh. CareerSpark VIP4: Chuyên Gia Định Hướng Nghề Nghiệp ra đời để bạn không còn trôi dạt âm thầm như thế — để trao cho bạn tấm bản đồ trước khi bạn cất bước."
       },
       "tags": [
         "guidance",
@@ -110,7 +110,7 @@
   },
   "content": {
     "en": "A life-changing invitation to discover your true calling — the first step toward VIP4's personalized career mastery.",
-    "vi": "Lời mời thay đổi cuộc đời: khám phá tiếng gọi thật sự của bạn — bước đầu tiến vào VIP4 với hành trình định hướng nghề nghiệp cá nhân hóa."
+    "vi": "Một lời mời có thể thay đổi cả cuộc đời bạn: tìm ra con đường thật sự thuộc về mình — bước đầu tiên để đến với VIP4, nơi hành trình định hướng nghề nghiệp được thiết kế riêng cho bạn."
   },
   "tier": "free",
   "domain": "General",
