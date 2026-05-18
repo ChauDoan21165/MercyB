@@ -25,6 +25,7 @@ type SentryShape = {
   captureException: (error: unknown, hint?: { extra?: Record<string, unknown> }) => void;
   setUser: (user: { id: string } | null) => void;
   setTag: (key: string, value: string) => void;
+  withScope: (cb: (scope: { setTag: (k: string, v: string) => void }) => void) => void;
   addBreadcrumb: (b: {
     category?: string;
     message?: string;
@@ -52,6 +53,29 @@ export function captureError(
   }
 
   sdk.captureException(error, { extra: safeContext });
+}
+
+/**
+ * Capture a PostgREST RLS denial (HTTP 403 on the /rest/v1/ data plane)
+ * as a tagged Sentry event. `rls_denied=true` + `rls_table` are set as
+ * INDEXED tags on THIS event only — `withScope` isolates them so they
+ * never leak onto later events the way a global setTag would. A Sentry
+ * alert rule keys on `rls_denied:true` to catch a silent
+ * get_admin_level / RLS-predicate regression (#578, #562): supabase-js
+ * returns a 403 as a value, never throws it, so without this it reaches
+ * Sentry nowhere. No-op when Sentry is disabled (tests / SSR / no DSN).
+ */
+export function captureRlsDenied(table: string, method: string): void {
+  if (!isSentryEnabled()) return;
+  const sdk = getSentryModule() as SentryShape | null;
+  if (!sdk || typeof sdk.withScope !== "function") return;
+  sdk.withScope((scope) => {
+    scope.setTag("rls_denied", "true");
+    scope.setTag("rls_table", table || "unknown");
+    sdk.captureException(
+      new Error(`PostgREST 403 (RLS denied): ${table} [${method}]`),
+    );
+  });
 }
 
 export function tagWithUser(userId: string | null | undefined): void {

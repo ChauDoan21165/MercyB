@@ -347,10 +347,10 @@ describe("OnboardingPage — confirmation summary + progress bar", () => {
     expect(screen.queryByText(/· Learning/)).toBeNull();
   });
 
-  it("progress bar exposes aria-valuemax of 8 (full step set)", () => {
+  it("progress bar exposes aria-valuemax of 5 (welcome→native→target→start_with→confirmation; goal/profession/level removed as dead UI)", () => {
     const { container } = renderPage();
     const progress = container.querySelector('[role="progressbar"]')!;
-    expect(progress.getAttribute("aria-valuemax")).toBe("8");
+    expect(progress.getAttribute("aria-valuemax")).toBe("5");
     expect(progress.getAttribute("aria-valuenow")).toBe("1");
   });
 });

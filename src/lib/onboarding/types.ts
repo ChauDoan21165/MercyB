@@ -59,9 +59,6 @@ export type OnboardingStepId =
   | "native"
   | "target"
   | "start_with"
-  | "goal"
-  | "profession"
-  | "level"
   | "confirmation";
 
 export interface OnboardingDraft {
@@ -87,22 +84,18 @@ export interface BilingualCopy extends BilingualLabel {
   vi_sub?: string;
 }
 
-/** All onboarding steps in canonical display order. Some are
- *  conditionally skipped at runtime (see OnboardingPage's nextStep):
- *  - native/target are always shown to new users
- *  - start_with only when >1 target chosen
- *  - goal/profession/level only when the primary target is English
- *    (these capture English-specific exam/career intent; nonsensical
- *    for a vi→ja learner) — preserves the (vi,en) experience unchanged
- *    per locked #14. */
+/** Onboarding steps in canonical display order. start_with is shown
+ *  only when >1 target chosen (see OnboardingPage's nextStep). The
+ *  goal/profession/level steps were removed as unreachable dead UI
+ *  (pair-pick → home since #598). The OnboardingGoal/Profession/Level
+ *  types + the profiles columns they map to are intentionally KEPT —
+ *  still a live data contract (MercyGuide / DailyCoach read
+ *  english_level; columns privilege-frozen per #578). */
 export const ONBOARDING_STEPS: OnboardingStepId[] = [
   "welcome",
   "native",
   "target",
   "start_with",
-  "goal",
-  "profession",
-  "level",
   "confirmation",
 ];
 
@@ -220,128 +213,10 @@ export function targetBadge(item: TargetMenuItem): BilingualLabel | null {
   return item.badge ?? READINESS_BADGE[item.readiness];
 }
 
-/** Goal options shown on step 2. Order is intentional — career first
- *  because the profession-pack content is MercyBlade's strongest
- *  vertical, then exam tracks (largest VN cohort), then general. */
-export const GOAL_OPTIONS: Array<{
-  value: OnboardingGoal;
-  label: BilingualLabel;
-  /** Short emoji or icon hint — purely decorative. */
-  icon: string;
-  description: BilingualLabel;
-}> = [
-  {
-    value: "career",
-    icon: "💼",
-    label: { vi: "Đi làm", en: "Career" },
-    description: {
-      vi: "Tiếng Anh cho công việc — nói chuyện với khách, đồng nghiệp, sếp.",
-      en: "English for your job — customers, colleagues, your boss.",
-    },
-  },
-  {
-    value: "ielts",
-    icon: "🎓",
-    label: { vi: "Luyện IELTS", en: "IELTS prep" },
-    description: {
-      vi: "Học để thi IELTS — du học, định cư, thăng tiến.",
-      en: "Prepare for IELTS — study abroad, migration, promotion.",
-    },
-  },
-  {
-    value: "vstep",
-    icon: "🇻🇳",
-    label: { vi: "Luyện VSTEP", en: "VSTEP prep" },
-    description: {
-      vi: "Kỳ thi tiếng Anh quốc gia — tốt nghiệp, công chức, viên chức.",
-      en: "National English exam — graduation, civil service.",
-    },
-  },
-  {
-    value: "toeic",
-    icon: "🏢",
-    label: { vi: "Luyện TOEIC", en: "TOEIC prep" },
-    description: {
-      vi: "Tiếng Anh công sở — yêu cầu của nhiều công ty Việt Nam.",
-      en: "Workplace English — required by many Vietnamese employers.",
-    },
-  },
-  {
-    value: "travel",
-    icon: "✈️",
-    label: { vi: "Đi du lịch", en: "Travel" },
-    description: {
-      vi: "Nói được khi đi nước ngoài — sân bay, khách sạn, nhà hàng.",
-      en: "Speak when travelling — airport, hotel, restaurant.",
-    },
-  },
-  {
-    value: "general",
-    icon: "🌱",
-    label: { vi: "Học chung", en: "General learning" },
-    description: {
-      vi: "Mình muốn giỏi tiếng Anh hơn — chưa có mục tiêu cụ thể, không sao.",
-      en: "Just want to improve my English — no specific goal, that's fine.",
-    },
-  },
-];
-
-/** Profession options shown on step 3 (only when goal = career). */
-export const PROFESSION_OPTIONS: Array<{
-  value: OnboardingProfession;
-  label: BilingualLabel;
-  icon: string;
-}> = [
-  { value: "restaurant",       icon: "🍜", label: { vi: "Nhà hàng / Quán ăn", en: "Restaurant" } },
-  { value: "nail_tech",        icon: "💅", label: { vi: "Thợ nail",            en: "Nail technician" } },
-  { value: "customer_service", icon: "🎧", label: { vi: "Chăm sóc khách hàng",  en: "Customer service" } },
-  { value: "healthcare",       icon: "🩺", label: { vi: "Y tế / Điều dưỡng",   en: "Healthcare" } },
-  { value: "tech",             icon: "💻", label: { vi: "Công nghệ / IT",      en: "Tech worker" } },
-  { value: "driver",           icon: "🚗", label: { vi: "Tài xế / Vận tải",    en: "Driver / transport" } },
-  { value: "hospitality",      icon: "🏨", label: { vi: "Khách sạn / Du lịch", en: "Hospitality" } },
-  { value: "other",            icon: "✨", label: { vi: "Nghề khác",            en: "Other" } },
-];
-
-/** Level options shown on step 4. NO SHAME LANGUAGE — "mới bắt đầu"
- *  not "trình độ thấp"; "đã giỏi" not "khá cao". */
-export const LEVEL_OPTIONS: Array<{
-  value: OnboardingLevel;
-  label: BilingualLabel;
-  description: BilingualLabel;
-}> = [
-  {
-    value: "beginner",
-    label: { vi: "Mới bắt đầu", en: "Just starting" },
-    description: {
-      vi: "Mình mới học, chưa nói được nhiều câu — không sao, ai cũng bắt đầu từ đây.",
-      en: "I'm just starting and can't say much yet — that's fine, everyone starts here.",
-    },
-  },
-  {
-    value: "elementary",
-    label: { vi: "Đang xây nền", en: "Building basics" },
-    description: {
-      vi: "Mình đã biết một ít — chào hỏi, vài câu đơn giản trong cuộc sống hàng ngày.",
-      en: "I know some basics — greetings, simple daily phrases.",
-    },
-  },
-  {
-    value: "intermediate",
-    label: { vi: "Đang phát triển", en: "Getting fluent" },
-    description: {
-      vi: "Mình nói chuyện được, nhưng còn ngại sai và cần luyện thêm trôi chảy.",
-      en: "I can hold a conversation but still hesitate and want to be smoother.",
-    },
-  },
-  {
-    value: "advanced",
-    label: { vi: "Đã giỏi rồi", en: "Already advanced" },
-    description: {
-      vi: "Mình tự tin rồi — chỉ muốn polish thêm để tự nhiên hơn nữa.",
-      en: "I'm confident — I just want to polish toward natural fluency.",
-    },
-  },
-];
+// GOAL_OPTIONS / PROFESSION_OPTIONS / LEVEL_OPTIONS were removed with
+// the unreachable goal/profession/level picker UI (dead since #598).
+// The OnboardingGoal/Profession/Level *types* + OnboardingDraft fields
+// are kept — they map to live profiles columns (MercyGuide/DailyCoach).
 
 /** Top-level page copy. */
 export const ONBOARDING_COPY = {
@@ -358,9 +233,6 @@ export const ONBOARDING_COPY = {
   summary: {
     native:     { vi: "Tiếng mẹ đẻ", en: "Native language" },
     learning:   { vi: "Học", en: "Learning" },
-    goal:       { vi: "Mục tiêu", en: "Goal" },
-    profession: { vi: "Nghề nghiệp", en: "Profession" },
-    level:      { vi: "Trình độ", en: "Level" },
   },
   /** Inline error shown if the Supabase write blips (still navigates). */
   finishError: {
@@ -405,28 +277,7 @@ export const ONBOARDING_COPY = {
       en: "Mercy will open this one first — the others stay available.",
     },
   },
-  goal: {
-    title: { vi: "Bạn học tiếng Anh để làm gì?", en: "What do you want English for?" },
-    body: {
-      vi: "Chọn cái gần nhất với mình — bạn có thể đổi sau.",
-      en: "Pick the closest one — you can change it later.",
-    },
-  },
-  profession: {
-    title: { vi: "Bạn làm nghề gì?", en: "What's your job?" },
-    body: {
-      vi: "Mercy có bộ bài học riêng cho từng nghề — chọn cái gần nhất.",
-      en: "Mercy has lesson packs for specific jobs — pick the closest one.",
-    },
-  },
-  level: {
-    title: { vi: "Trình độ tiếng Anh hiện tại của bạn?", en: "Your current English level?" },
-    body: {
-      vi: "Không có câu trả lời sai — Mercy chỉ muốn chọn bài phù hợp.",
-      en: "No wrong answer — Mercy just wants to pick the right starting point.",
-    },
-  },
-  confirmation: {
+    confirmation: {
     title: { vi: "Đã sẵn sàng!", en: "All set!" },
     body: {
       vi: "Mercy đã chuẩn bị lộ trình học cho bạn. Bạn có thể đổi bất cứ lúc nào trong phần Cài đặt.",

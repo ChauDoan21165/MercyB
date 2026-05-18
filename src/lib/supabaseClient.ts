@@ -15,6 +15,7 @@
  */
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { captureRlsDenied } from "@/lib/monitoring/captureException";
 
 // ⚠️ IMPORTANT: env values can include trailing whitespace/newlines in deployments.
 // We MUST trim to avoid apikey ending with %0A (newline) → Realtime fails + REST 403.
@@ -187,6 +188,40 @@ function createAuthLock(): <R>(
 
 const customAuthLock = createAuthLock();
 
+// Tag every PostgREST 403 (RLS denial) so a Sentry alert can catch a
+// silent get_admin_level / RLS-predicate regression (#578, #562). A 403
+// is a RETURN value from supabase-js, never a thrown error — without
+// this wrapper it reaches Sentry nowhere. Scoped to the PostgREST data
+// plane (/rest/v1/): Storage and Auth 403s have different meanings and
+// their own handling. captureRlsDenied is a no-op when Sentry is off.
+function instrumentedFetch(
+  input: RequestInfo | URL,
+  init?: RequestInit,
+): Promise<Response> {
+  return fetch(input, init).then((res) => {
+    if (res.status === 403) {
+      const url =
+        typeof input === "string"
+          ? input
+          : input instanceof URL
+            ? input.href
+            : input.url;
+      if (url.includes("/rest/v1/")) {
+        const table = url.split("/rest/v1/")[1]?.split(/[/?]/)[0] || "unknown";
+        captureRlsDenied(table, init?.method ?? "GET");
+      }
+    }
+    return res;
+  });
+}
+
+// Only override supabase-js's fetch when a global fetch exists. In an
+// environment without one, leave supabase-js to resolve its own fetch
+// rather than handing it a wrapper that would throw — defensive, keeps
+// the test/SSR paths unchanged.
+const globalFetchOption =
+  typeof fetch === "function" ? { fetch: instrumentedFetch } : undefined;
+
 export const supabase: SupabaseClient = createClient(
   supabaseUrl,
   supabaseAnonKey,
@@ -200,6 +235,7 @@ export const supabase: SupabaseClient = createClient(
       flowType: "pkce",
       lock: customAuthLock,
     },
+    ...(globalFetchOption ? { global: globalFetchOption } : {}),
   },
 );
 
