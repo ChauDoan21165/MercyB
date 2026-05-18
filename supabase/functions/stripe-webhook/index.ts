@@ -23,6 +23,38 @@ import {
   isMissingStripeWebhookEventsTable,
   releaseStripeWebhookEventClaim,
 } from "./idempotency.ts";
+import { captureEdgeError } from "../_shared/sentry.ts";
+
+// Sentry tag schema for billing-webhook observability (see PR).
+// All values are low-cardinality + indexed so a future ops dashboard can
+// facet by them. `webhook`/`billing` are deliberately provider-stable so
+// the same dashboard works once revenuecat/apple webhooks are wired too.
+const BILLING_WEBHOOK_TAGS = { webhook: "stripe", billing: "true" } as const;
+// No Authorization header on Stripe deliveries (config.toml verify_jwt=false,
+// Stripe sends none) — the paying user is inside the event payload, not a
+// JWT, so we intentionally do not pass userId here.
+async function captureBillingWebhookFailure(
+  error: unknown,
+  tags: { stage: string; severity: "critical" | "high"; event_type?: string },
+): Promise<void> {
+  // Awaited by callers BEFORE they return so the short-lived edge isolate
+  // does not tear down before Sentry's internal flush (a fire-and-forget
+  // capture is routinely lost on Supabase Edge). captureEdgeError never
+  // throws (internally guarded) and is a zero-cost no-op when SENTRY_DSN
+  // is unset, so the worst case is a ≤2s delay on an ALREADY-failing
+  // response that Stripe will retry anyway. Observability only — it does
+  // not alter the response body, status code, or the idempotency flow.
+  await captureEdgeError(error, {
+    functionName: "stripe-webhook",
+    extra: { stage: tags.stage },
+    tags: {
+      ...BILLING_WEBHOOK_TAGS,
+      stage: tags.stage,
+      severity: tags.severity,
+      event_type: tags.event_type ?? "unknown",
+    },
+  });
+}
 
 import type {
   BillingEnvironment,
@@ -177,6 +209,13 @@ Deno.serve(async (request: Request) => {
 
   if (webhookSecrets.length === 0) {
     console.error("stripe-webhook: missing signing secret");
+    // CRITICAL: not a single failed event — the webhook cannot verify
+    // ANY delivery, so every Stripe billing event is being rejected
+    // until the secret env var is set. Must page, not sit in logs.
+    await captureBillingWebhookFailure(
+      new Error("stripe-webhook: missing signing secret (no STRIPE_WEBHOOK_SECRET configured)"),
+      { stage: "config_missing_secret", severity: "critical" },
+    );
     return json({ error: "Webhook secret not configured" }, 500);
   }
 
@@ -227,6 +266,15 @@ Deno.serve(async (request: Request) => {
   } catch (error) {
     const serialized = serializeError(error);
 
+    // The signature ALREADY verified above, so this is a genuine
+    // Stripe-signed delivery whose body we cannot parse — a real billing
+    // event we are dropping (not scanner noise; that is filtered out at
+    // the signature stage, which intentionally does NOT capture).
+    await captureBillingWebhookFailure(error, {
+      stage: "parse_event",
+      severity: "high",
+    });
+
     return json(
       {
         ok: false,
@@ -238,6 +286,16 @@ Deno.serve(async (request: Request) => {
   }
 
   if (!event?.id) {
+    // Signature-verified but unusable (no event id) → same dropped-real-
+    // event class as parse_event.
+    await captureBillingWebhookFailure(
+      new Error("stripe-webhook: signature-verified event missing id"),
+      {
+        stage: "missing_event_id",
+        severity: "high",
+        event_type: typeof event?.type === "string" ? event.type : undefined,
+      },
+    );
     return json({ ok: false, error: "Stripe event missing id" }, 400);
   }
 
@@ -267,6 +325,15 @@ Deno.serve(async (request: Request) => {
       eventType: event.type,
       message: error instanceof Error ? error.message : String(error),
       error: serialized,
+    });
+
+    // CRITICAL: Supabase admin client / env resolution failed — like the
+    // missing-secret case this fails EVERY event, not one, until infra/
+    // config is fixed. Returns 500 so Stripe retries.
+    await captureBillingWebhookFailure(error, {
+      stage: "initialization",
+      severity: "critical",
+      event_type: event.type,
     });
 
     return json(
@@ -355,6 +422,19 @@ Deno.serve(async (request: Request) => {
       eventId: event.id,
       message: error instanceof Error ? error.message : String(error),
       error: serialized,
+    });
+
+    // PRIMARY billing-observability capture: every throw from the event
+    // handlers / billing.ts / idempotency.ts (a genuine DB error during
+    // the claim is rethrown here) bubbles to this single catch with the
+    // event type in scope, so one capture point covers the whole money
+    // path. Returns 500 → Stripe retries; we do NOT capture the
+    // best-effort claim-release failure below (secondary error on an
+    // already-captured incident — would double-alert one failure).
+    await captureBillingWebhookFailure(error, {
+      stage: "processing",
+      severity: "high",
+      event_type: event.type,
     });
 
     // Option A (locked): release the claim so Stripe's redelivery can
