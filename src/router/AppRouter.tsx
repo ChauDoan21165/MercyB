@@ -546,14 +546,30 @@ function AppHeroShell() {
               </div>
 
               <Link to="/" style={brand} title="Mercy Blade" aria-label="Mercy Blade">
-                <img
-                  src="/brand/mercy-blade-header.png"
-                  alt="Mercy Blade"
-                  style={brandImg}
-                  loading="eager"
-                  decoding="async"
-                  draggable={false}
-                />
+                {/* LCP element on the global hero band (incl. /onboarding,
+                    the anon entry route). Was a 126 KB PNG — the single
+                    largest image-delivery LCP cost in the mobile Lighthouse
+                    audit. AVIF (~4 KB) → WebP (~7 KB) → PNG fallback chain;
+                    intrinsic 512×341 kept (no downscale → pixel-identical,
+                    CSS in `brandImg` still controls displayed size).
+                    width/height are the intrinsic dims (CLS insurance — the
+                    style overrides them for layout); fetchPriority high so
+                    the preloader fetches it ahead of non-critical requests. */}
+                <picture>
+                  <source srcSet="/brand/mercy-blade-header.avif" type="image/avif" />
+                  <source srcSet="/brand/mercy-blade-header.webp" type="image/webp" />
+                  <img
+                    src="/brand/mercy-blade-header.png"
+                    alt="Mercy Blade"
+                    width={512}
+                    height={341}
+                    style={brandImg}
+                    fetchPriority="high"
+                    loading="eager"
+                    decoding="async"
+                    draggable={false}
+                  />
+                </picture>
               </Link>
 
               <div style={rightWrap}>
