@@ -1,0 +1,66 @@
+{
+  // tsconfig.functions.json — Phase-2 gate #6 (typecheck:functions).
+  //
+  // WHY THIS EXISTS: tsconfig.json EXCLUDES "supabase", so the mandated
+  // typecheck:ci (bare `tsc --noEmit`) never type-checks edge-function
+  // code. The placement-session engine is the most number/undefined-
+  // sensitive code in the product (IRT math, EAP/MLE). It MUST have a
+  // real compile-time type gate. Chau approved adding this config + the
+  // `typecheck:functions` script as a required Phase-2 gate.
+  //
+  // SCOPE REALITY (documented, not papered over): a Node `tsc` cannot
+  // resolve Deno URL specifiers (`https://deno.land/...`,
+  // `https://esm.sh/...`). Almost every existing edge function reaches
+  // such an import — directly in its `index.ts`, or transitively through
+  // `_shared/*` (e.g. _shared/security.ts imports esm.sh + uses Deno.*).
+  // So "include supabase/functions/**" wholesale is NOT achievable with
+  // Node tsc: it would red-line on pre-existing legacy code unrelated to
+  // this PR. The honest maximum is the URL-free subtree.
+  //
+  // The `placement-session/` engine is deliberately authored URL-free
+  // and dependency-free (the mock-interview core.ts pattern: pure logic,
+  // DI; only the excluded index.ts touches Deno). That subtree IS fully
+  // tsc-resolvable, so it is what this config gates.
+  //
+  // HOW TO EXTEND: add another function's URL-free subtree to `include`
+  // ONLY after verifying `tsc -p tsconfig.functions.json` stays green
+  // for it (i.e. it has no transitive `https://` import). Broadening to
+  // _shared / index.ts needs a Deno-aware checker (`deno check`) or a
+  // refactor of _shared off URL imports — a separate future PR, NOT this
+  // one. _shared is intentionally NOT included today for exactly this
+  // reason (answers Chau's _shared question: "no — because transitive
+  // Deno-URL imports make it tsc-unresolvable").
+  //
+  // REQUIRED for ALL placement-session work going forward (gate #6).
+  // No overlap with tsconfig.json (that one excludes "supabase"), so no
+  // duplicate-emit: this config is noEmit anyway.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022"], // server engine: NO "DOM" — no browser globals
+    "types": [], // no @types/node etc.; pure ES + our own types only
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    // Deno requires explicit `.ts` import extensions (config.ts imports
+    // "./types.ts"). tsc accepts that only with this flag, which in turn
+    // requires noEmit (we are noEmit anyway — this is a pure gate).
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "include": ["supabase/functions/placement-session/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    // Deno HTTP entrypoint — `https://deno.land/std…/server.ts` import is
+    // unresolvable by Node tsc. Logic lives in core.ts (vitest-tested).
+    "supabase/functions/placement-session/index.ts",
+    // vitest owns test files (they import "vitest"); vitest transpiles
+    // them itself. This config gates PRODUCTION engine code.
+    "supabase/functions/placement-session/**/__tests__/**"
+  ]
+}

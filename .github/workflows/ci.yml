@@ -34,6 +34,13 @@ jobs:
       - name: Run TypeScript checks
         run: npx tsc --noEmit
 
+      # Phase-2 gate #6: tsconfig.json excludes supabase/, so the line
+      # above never type-checks edge-function code. This gates the
+      # placement-session engine (IRT/EAP/MLE math). Step added to the
+      # existing job (job name unchanged — branch protection safe).
+      - name: Run edge-function TypeScript checks (placement-session)
+        run: npm run typecheck:functions
+
       - name: Build project
         run: npm run build
 
