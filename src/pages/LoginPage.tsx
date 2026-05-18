@@ -23,7 +23,6 @@ import PhoneOtp from "@/components/auth/PhoneOtp";
 import { useChromeT } from "@/lib/i18n/chromeLanguage";
 import {
   isNativeAuthPlatform,
-  registerDeepLinkListener,
   signInWithNativeOAuth,
 } from "@/lib/nativeOAuth";
 
@@ -216,33 +215,12 @@ export default function LoginPage() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!isNativeAuthPlatform()) return;
-    let unsubscribe: (() => Promise<void>) | null = null;
-    let alive = true;
-
-    void (async () => {
-      try {
-        const off = await registerDeepLinkListener((session) => {
-          if (!alive || !session) return;
-          setHasSession(true);
-          setSessionBooted(true);
-        });
-        if (!alive) {
-          void off();
-          return;
-        }
-        unsubscribe = off;
-      } catch (err) {
-        console.error("[LoginPage] registerDeepLinkListener failed:", err);
-      }
-    })();
-
-    return () => {
-      alive = false;
-      if (unsubscribe) void unsubscribe();
-    };
-  }, []);
+  // Native OAuth-callback deep links are handled app-wide by
+  // <NativeDeepLinkListener> (Cat-4 M2). handleDeepLink() sets the
+  // session globally; the onAuthStateChange subscription above then
+  // flips hasSession and runs routeAfterAuth (preserving ?returnTo),
+  // exactly as the removed page-scoped listener did. A single owner
+  // also prevents the Apple PKCE code being exchanged twice.
 
   const routeAfterAuth = useCallback(async () => {
     if (isSubmitting.current) return;
