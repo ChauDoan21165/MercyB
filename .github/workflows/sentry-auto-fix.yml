@@ -6,7 +6,7 @@ on:
   workflow_dispatch:        # manual trigger
 
 env:
-  SENTRY_ORG: mercy-blade
+  SENTRY_ORG: chau-doan
   SENTRY_PROJECT: mercyblade-web
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
           echo "::add-mask::$SENTRY_TOKEN"
 
           curl -sS -H "Authorization: Bearer $SENTRY_TOKEN" \
-            "https://sentry.io/api/0/projects/$SENTRY_ORG/$SENTRY_PROJECT/issues/?query=is:unresolved&limit=50" \
+            "https://us.sentry.io/api/0/projects/$SENTRY_ORG/$SENTRY_PROJECT/issues/?query=is:unresolved&limit=50" \
             > /tmp/sentry_issues.json
 
           ISSUE_COUNT=$(jq '. | length' /tmp/sentry_issues.json)
@@ -128,7 +128,7 @@ jobs:
           curl -sS -X PUT \
             -H "Authorization: Bearer $SENTRY_TOKEN" \
             -H "Content-Type: application/json" \
-            "https://sentry.io/api/0/issues/$ISSUE_ID/" \
+            "https://us.sentry.io/api/0/issues/$ISSUE_ID/" \
             -d '{"status":"resolved","statusDetails":{"inNextRelease":true}}' \
             -o /dev/null -w "HTTP %{http_code}"
 
