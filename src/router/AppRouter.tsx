@@ -377,7 +377,7 @@ function NotFound() {
   return (
     <div style={{ padding: 32 }}>
       <h2>404</h2>
-      <p>Page not found.</p>
+      <p>Không tìm thấy trang.</p>
     </div>
   );
 }

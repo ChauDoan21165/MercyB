@@ -257,7 +257,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     return (
       <div className="min-h-screen bg-slate-950 text-slate-100 p-6">
         <div className="max-w-5xl mx-auto rounded-2xl border border-slate-700 bg-slate-900/40 p-6 space-y-4">
-          <h1 className="text-3xl font-semibold">Something went wrong</h1>
+          <h1 className="text-3xl font-semibold">Đã xảy ra lỗi</h1>
 
           <div className="rounded-xl bg-black/30 border border-slate-700 p-4 overflow-auto space-y-2">
             <p className="text-sm text-slate-300">
@@ -294,7 +294,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
               className="px-4 py-2 rounded-lg bg-slate-200 text-slate-900"
               onClick={() => window.location.reload()}
             >
-              Try Again
+              Thử lại
             </button>
 
             {/* Plain anchor — ErrorBoundary mounts above BrowserRouter,
@@ -304,7 +304,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
               className="px-4 py-2 rounded-lg border border-slate-500"
               href="/"
             >
-              Go Home
+              Về trang chủ
             </a>
           </div>
 
