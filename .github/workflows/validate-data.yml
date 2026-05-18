@@ -7,12 +7,6 @@ on:
       - 'public/data/**/*.json'
       - 'scripts/validate-data-files.js'
       - '.github/workflows/validate-data.yml'
-  pull_request:
-    branches: ['main', 'develop']
-    paths:
-      - 'public/data/**/*.json'
-      - 'scripts/validate-data-files.js'
-      - '.github/workflows/validate-data.yml'
 
 jobs:
   validate:

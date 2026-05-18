@@ -10,9 +10,6 @@ on:
         description: 'Room JSON filename to validate'
         required: true
         type: string
-  pull_request:
-    paths:
-      - 'public/data/*.json'
 
 jobs:
   validate-room:

@@ -1,15 +1,6 @@
 name: Validate Room Data
 
 on:
-  pull_request:
-    branches:
-      - main
-      - master
-    paths:
-      - 'public/data/**'
-      - 'public/audio/**'
-      - 'src/lib/roomManifest.ts'
-      - 'src/lib/roomDataImports.ts'
   push:
     branches:
       - main

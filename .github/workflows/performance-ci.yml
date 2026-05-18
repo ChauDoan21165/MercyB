@@ -1,49 +1,17 @@
 name: Performance CI
 
+# Performance/size coverage moved OFF pull_request (CI-quota consolidation).
+# The validate/lint/test jobs that used to live here are now in ci.yml
+# (the single PR workflow). This runs nightly + on main + on demand.
+
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
-  # Run checks in parallel
-  validate:
-    name: Validate Rooms
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run validate-rooms
-
-  lint:
-    name: Lint Code
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint
-
-  test:
-    name: Run Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test
-
   bundle-size:
     name: Bundle Size Check
     runs-on: ubuntu-latest
@@ -80,11 +48,6 @@ jobs:
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
-          # Static-dir mode (issue #56 option 2): no live server needed.
-          # Lighthouse spins up an internal static server over `./dist`,
-          # produced by the preceding `npm run build` step. Sidesteps the
-          # deprecated /vip/vip1 URL reference; that route cleanup lands
-          # separately under the VIP-audit issue (#60).
           staticDistDir: ./dist
           uploadArtifacts: false
           temporaryPublicStorage: true
