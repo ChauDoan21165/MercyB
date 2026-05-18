@@ -1,6 +1,13 @@
-// src/components/ErrorBoundary.tsx — v2026-05-01-01
+// src/components/ErrorBoundary.tsx — v2026-05-18-01
 import React from "react";
 import { captureError } from "@/lib/monitoring/captureException";
+import { looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import {
+  cacheBustingReload,
+  hasErrorBoundaryReloaded,
+  markErrorBoundaryReloaded,
+} from "@/lib/chunkReload";
+import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 
 function safeStringify(x: unknown) {
   try {
@@ -72,13 +79,29 @@ type State = {
   hasError: boolean;
   authLockRecovery: number;
   err?: ReturnType<typeof normalizeError>;
+  // True when the caught error is a stale-deploy chunk-load failure. Only
+  // these get the calm "updating" screen; every other render error keeps
+  // the existing dark crash screen so real bugs stay visible.
+  isChunkError?: boolean;
+  // True only once Tier-2 (this boundary's) escalated cache-bust reload
+  // has already been spent this session and the chunk STILL failed — i.e.
+  // genuinely stuck (offline, chunk truly purged, CDN broken). We then
+  // show a friendly manual-retry screen instead of auto-looping.
+  chunkRecoveryStuck?: boolean;
 };
 
 export class ErrorBoundary extends React.Component<Props, State> {
   state: State = { hasError: false, authLockRecovery: 0 };
 
   static getDerivedStateFromError(error: unknown) {
-    return { hasError: true, err: normalizeError(error) };
+    // Detect chunk-ness here (sync, pre-paint) so the calm screen renders
+    // immediately with no flash of the dark crash UI. Pure string check —
+    // no side effects, safe in the render phase.
+    return {
+      hasError: true,
+      err: normalizeError(error),
+      isChunkError: looksLikeChunkLoadFailure(error),
+    };
   }
 
   componentDidCatch(error: unknown, info: unknown) {
@@ -111,6 +134,59 @@ export class ErrorBoundary extends React.Component<Props, State> {
       return;
     }
 
+    // Stale-deploy chunk-load failure that fell THROUGH Tier-1 recovery
+    // (lazyWithRetry's cache-busting reload) and rethrew into here. This
+    // is exactly the Sentry signature MERCYBLADE-WEB-W / -Z: handled:yes
+    // + componentStack Lazy→Suspense. Don't show the dark stack dump to a
+    // learner — escalate one cache-bust reload (with SW unregister, in
+    // case an old cache-first SW is still serving stale HTML) and render
+    // the calm "updating" screen. Loop-protected by a distinct Tier-2
+    // one-shot so a genuinely-gone chunk terminates instead of looping.
+    if (looksLikeChunkLoadFailure(error)) {
+      const exhausted = hasErrorBoundaryReloaded();
+      const componentStack =
+        info && typeof info === "object" && "componentStack" in info
+          ? String((info as { componentStack?: unknown }).componentStack ?? "")
+          : undefined;
+
+      // Report BEFORE marking so the first catch is tagged "attempted"
+      // (→ warning in beforeSend) and the post-cache-bust residual is
+      // tagged "exhausted" (→ stays error so the real tail is visible).
+      captureError(
+        error instanceof Error ? error : new Error(n.message || n.name),
+        {
+          kind: "ChunkLoadRecovered",
+          name: n.name,
+          chunkRecovery: exhausted ? "exhausted" : "attempted",
+          chunkRecoveryAttempts: exhausted ? "2" : "1",
+          componentStack,
+        },
+      );
+
+      if (!exhausted) {
+        markErrorBoundaryReloaded();
+        this.setState({ chunkRecoveryStuck: false });
+        // Defer so the calm screen paints and the Sentry beacon flushes
+        // before we navigate away. Unregister a stale SW first (mirrors
+        // scheduleOneTimeChunkReload) then cache-bust to origin.
+        window.setTimeout(() => {
+          void unregisterAllServiceWorkers()
+            .catch(() => {})
+            .then(() => {
+              try {
+                cacheBustingReload();
+              } catch {
+                /* ignore */
+              }
+            });
+        }, 600);
+      } else {
+        // Tier-2 already spent and it STILL failed → don't auto-loop.
+        this.setState({ chunkRecoveryStuck: true });
+      }
+      return;
+    }
+
     // Log BOTH raw + normalized so we can see what the app really threw.
     console.group("❌ ErrorBoundary (v2025-12-14-01)");
     console.error("RAW thrown value:", error);
@@ -134,12 +210,45 @@ export class ErrorBoundary extends React.Component<Props, State> {
     });
   }
 
+  // Calm, Vietnamese-first stale-deploy screen. Router-free (this
+  // boundary mounts ABOVE BrowserRouter) and light-themed so it reads as
+  // "we're updating", not "the app crashed". Mobile-first at 375px.
+  renderChunkRecoveryScreen() {
+    const stuck = this.state.chunkRecoveryStuck === true;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900 p-6">
+        <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-sm p-6 text-center space-y-4">
+          <h1 className="text-2xl font-extrabold">
+            {stuck ? "Chưa cập nhật được" : "Đang cập nhật Mercy Blade"}
+          </h1>
+          <p className="text-slate-600 leading-relaxed">
+            {stuck
+              ? "Có vẻ mạng đang chập chờn. Kiểm tra kết nối rồi nhấn Tải lại để dùng phiên bản mới nhất."
+              : "Mercy Blade vừa có bản mới. Trình duyệt đang giữ bản cũ — trang sẽ tự làm mới trong giây lát."}
+          </p>
+          <button
+            type="button"
+            className="w-full min-h-[46px] rounded-xl bg-slate-900 text-white font-bold px-4 py-3"
+            onClick={() => cacheBustingReload()}
+          >
+            Tải lại
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     if (!this.state.hasError) return (
       <React.Fragment key={`authLock-${this.state.authLockRecovery}`}>
         {this.props.children}
       </React.Fragment>
     );
+
+    // Stale-deploy chunk failure → calm updating screen. Every OTHER
+    // render error falls through to the dark crash screen below so real
+    // bugs stay loud and visible.
+    if (this.state.isChunkError) return this.renderChunkRecoveryScreen();
 
     const e = this.state.err;
     const msg = e?.message?.trim() ? e?.message : "(empty message)";

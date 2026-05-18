@@ -10,15 +10,24 @@ function makeStaleChunkError(): Error {
 }
 
 describe("createRetryLoader", () => {
-  let reloadSpy: ReturnType<typeof vi.fn>;
+  // Recovery is now a cache-busting navigation (location.replace with a
+  // fresh _cb param), NOT a plain location.reload() — embedded webviews
+  // (FB in-app browser, iOS Chrome) re-serve the stale document on
+  // reload(). See src/lib/chunkReload.ts. The recovery still fires
+  // exactly once per session via the same one-shot sessionStorage guard.
+  let replaceSpy: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
     sessionStorage.clear();
-    reloadSpy = vi.fn();
+    replaceSpy = vi.fn();
     Object.defineProperty(window, "location", {
       configurable: true,
       writable: true,
-      value: { ...window.location, reload: reloadSpy },
+      value: {
+        href: "http://localhost/room/english_foundation_ef11",
+        replace: replaceSpy,
+        reload: vi.fn(),
+      },
     });
   });
 
@@ -32,11 +41,11 @@ describe("createRetryLoader", () => {
     const loader = createRetryLoader(async () => ({ default: fakeComponent }));
 
     await expect(loader()).resolves.toEqual({ default: fakeComponent });
-    expect(reloadSpy).not.toHaveBeenCalled();
+    expect(replaceSpy).not.toHaveBeenCalled();
     expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
   });
 
-  it("reloads once and returns a never-resolving promise on stale-chunk failure", async () => {
+  it("cache-bust navigates once and returns a never-resolving promise on stale-chunk failure", async () => {
     const importer = vi.fn(async () => {
       throw makeStaleChunkError();
     });
@@ -49,11 +58,12 @@ describe("createRetryLoader", () => {
     ]);
 
     expect(settled).toBe("pending");
-    expect(reloadSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSpy.mock.calls[0][0]).toMatch(/[?&]_cb=\d+/);
     expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
   });
 
-  it("does not reload a second time within the same session — rethrows instead", async () => {
+  it("does not recover a second time within the same session — rethrows instead", async () => {
     sessionStorage.setItem(RELOAD_KEY, "1");
     const importer = vi.fn(async () => {
       throw makeStaleChunkError();
@@ -61,17 +71,17 @@ describe("createRetryLoader", () => {
     const loader = createRetryLoader(importer);
 
     await expect(loader()).rejects.toThrow(/Failed to fetch dynamically/i);
-    expect(reloadSpy).not.toHaveBeenCalled();
+    expect(replaceSpy).not.toHaveBeenCalled();
   });
 
-  it("rethrows non-chunk errors without touching reload or sessionStorage", async () => {
+  it("rethrows non-chunk errors without touching recovery or sessionStorage", async () => {
     const importer = vi.fn(async () => {
       throw new Error("Some application bug, not a chunk load");
     });
     const loader = createRetryLoader(importer);
 
     await expect(loader()).rejects.toThrow(/application bug/);
-    expect(reloadSpy).not.toHaveBeenCalled();
+    expect(replaceSpy).not.toHaveBeenCalled();
     expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
   });
 
@@ -85,11 +95,22 @@ describe("createRetryLoader", () => {
     // Clean load proves HTML/chunk hashes are consistent again → reset the
     // one-shot so a later deploy in this session can recover too.
     expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
-    expect(reloadSpy).not.toHaveBeenCalled();
+    expect(replaceSpy).not.toHaveBeenCalled();
   });
 
-  it("re-arms recovery: success-then-stale-chunk reloads again (later deploy in same session)", async () => {
-    // Session already spent its first reload on an earlier deploy.
+  it("also clears the Tier-2 (ErrorBoundary) mark on a successful chunk load", async () => {
+    sessionStorage.setItem(RELOAD_KEY, "1");
+    sessionStorage.setItem("__mb_chunk_eb_reload_once__", "1");
+    const loader = createRetryLoader(async () => ({ default: () => null }));
+
+    await expect(loader()).resolves.toBeTruthy();
+    // A clean load re-arms the WHOLE ladder for a later deploy this session.
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+    expect(sessionStorage.getItem("__mb_chunk_eb_reload_once__")).toBeNull();
+  });
+
+  it("re-arms recovery: success-then-stale-chunk recovers again (later deploy in same session)", async () => {
+    // Session already spent its first recovery on an earlier deploy.
     sessionStorage.setItem(RELOAD_KEY, "1");
 
     // Post-reload boot: a chunk loads cleanly → mark is cleared.
@@ -105,9 +126,9 @@ describe("createRetryLoader", () => {
     await Promise.resolve();
     await Promise.resolve();
 
-    // Recovery is re-armed: it reloads again instead of crashing into the
-    // ErrorBoundary, and re-sets the one-shot for loop protection.
-    expect(reloadSpy).toHaveBeenCalledTimes(1);
+    // Recovery is re-armed: it cache-bust navigates again instead of
+    // crashing into the ErrorBoundary, and re-sets the one-shot.
+    expect(replaceSpy).toHaveBeenCalledTimes(1);
     expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
   });
 
@@ -120,7 +141,7 @@ describe("createRetryLoader", () => {
 
     await expect(loader()).resolves.toEqual({ default: Named });
     expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
-    expect(reloadSpy).not.toHaveBeenCalled();
+    expect(replaceSpy).not.toHaveBeenCalled();
   });
 
   it("matches all chunk-load error message variants Vite/browsers emit", async () => {
@@ -133,7 +154,7 @@ describe("createRetryLoader", () => {
 
     for (const message of variants) {
       sessionStorage.clear();
-      reloadSpy.mockClear();
+      replaceSpy.mockClear();
       const loader = createRetryLoader(async () => {
         throw new Error(message);
       });
@@ -144,7 +165,7 @@ describe("createRetryLoader", () => {
       await Promise.resolve();
       await Promise.resolve();
 
-      expect(reloadSpy, `variant: ${message}`).toHaveBeenCalledTimes(1);
+      expect(replaceSpy, `variant: ${message}`).toHaveBeenCalledTimes(1);
     }
   });
 });

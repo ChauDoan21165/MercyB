@@ -43,6 +43,8 @@
  */
 
 import { stripPII } from "@/lib/security/piiProtection";
+import { looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import { CHUNK_EB_RELOAD_KEY } from "@/lib/chunkReload";
 
 // `unknown` instead of typeof import("@sentry/react") so a static-analysis
 // pass over this file doesn't pull Sentry's types into the build graph.
@@ -701,6 +703,20 @@ function safeUserImpact(event: SentryEventLike): "paid" | "trial" | "anon" | "un
   return event.user?.id ? "unknown" : "anon";
 }
 
+// True once the ErrorBoundary's Tier-2 escalated cache-bust reload has
+// already been spent this session (chunkReload.ts sets CHUNK_EB_RELOAD_KEY
+// just after capturing). Read defensively — sessionStorage throws in
+// private mode / sandboxed iframes. When it's set and a chunk-load failure
+// STILL reaches Sentry, recovery is genuinely exhausted (offline / chunk
+// truly purged / CDN broken) and the event must stay at error severity.
+function chunkRecoveryExhausted(): boolean {
+  try {
+    return sessionStorage.getItem(CHUNK_EB_RELOAD_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export function enrichEventTags(event: SentryEventLike): void {
   event.tags = event.tags ?? {};
   const tags = event.tags;
@@ -765,6 +781,35 @@ export function enrichEventTags(event: SentryEventLike): void {
   // not produced client-side — let Sentry alert rules promote frequent
   // P3 issues server-side.
   event.level = tags.priority === "P1" ? "error" : "warning";
+
+  // Stale-deploy chunk-load failure handling. This is a deploy-timing
+  // artefact, not a code bug — Tier-1 (lazyWithRetry) and Tier-2
+  // (ErrorBoundary) cache-busting recovery in chunkReload.ts refetch the
+  // new build. While recovery is still in play ("attempted") downgrade to
+  // warning / P3 so a routine deploy doesn't masquerade as a P1 crash in
+  // the real-problems dashboard. Once the ErrorBoundary's escalated
+  // cache-bust reload has ALSO been spent and the chunk STILL fails
+  // ("exhausted"), it is a genuine residual — keep it at error / P1 so
+  // the visible tail isn't lost. Separate fingerprint so the small error
+  // tail isn't drowned by recovered-warning volume. Done last so it
+  // overrides the level/priority/fingerprint set above.
+  const chunkHaystack = [
+    event.exception?.values?.[0]?.value ?? "",
+    typeof event.message === "string" ? event.message : "",
+  ].join(" ");
+  if (looksLikeChunkLoadFailure(chunkHaystack)) {
+    const exhausted = chunkRecoveryExhausted();
+    tags.chunkRecovery = exhausted ? "exhausted" : "attempted";
+    tags.chunkRecoveryAttempts = exhausted ? "2" : "1";
+    tags.priority = exhausted ? "P1" : "P3";
+    event.level = exhausted ? "error" : "warning";
+    event.fingerprint = [
+      "mercyblade",
+      "chunk-load",
+      exhausted ? "exhausted" : "attempted",
+    ];
+    return;
+  }
 
   // Fingerprint grouping — namespace everything from MercyBlade under a
   // shared root so our errors form their own grouping tree, then split

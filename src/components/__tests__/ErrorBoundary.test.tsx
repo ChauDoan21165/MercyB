@@ -89,5 +89,72 @@ describe("<ErrorBoundary />", () => {
     );
 
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
+    // Real bug → dark screen, NOT the calm "updating" screen.
+    expect(screen.queryByText("Đang cập nhật Mercy Blade")).not.toBeInTheDocument();
+  });
+
+  describe("stale-deploy chunk-load failure", () => {
+    const EB_KEY = "__mb_chunk_eb_reload_once__";
+    let replaceSpy: ReturnType<typeof vi.fn>;
+
+    const ChunkBomb = (): ReactElement => {
+      throw new TypeError(
+        "Failed to fetch dynamically imported module: https://mercyblade.com/assets/ChatHub-C7kMnSdL.js",
+      );
+    };
+
+    beforeEach(() => {
+      sessionStorage.clear();
+      replaceSpy = vi.fn();
+      Object.defineProperty(window, "location", {
+        configurable: true,
+        writable: true,
+        value: {
+          href: "http://localhost/room/english_foundation_ef11",
+          replace: replaceSpy,
+          reload: vi.fn(),
+        },
+      });
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+      sessionStorage.clear();
+    });
+
+    it("shows the calm VI updating screen (not the dark dump) and escalates one cache-bust reload", async () => {
+      render(
+        <ErrorBoundary>
+          <ChunkBomb />
+        </ErrorBoundary>,
+      );
+
+      // Calm, Vietnamese-first screen — no raw stack dump for a learner.
+      expect(screen.getByText("Đang cập nhật Mercy Blade")).toBeInTheDocument();
+      expect(screen.queryByText("Something went wrong")).not.toBeInTheDocument();
+      expect(replaceSpy).not.toHaveBeenCalled(); // deferred, not synchronous
+
+      // Tier-2 escalation: SW-unregister then cache-bust nav after 600ms.
+      await vi.runAllTimersAsync();
+      expect(replaceSpy).toHaveBeenCalledTimes(1);
+      expect(replaceSpy.mock.calls[0][0]).toMatch(/[?&]_cb=\d+/);
+      expect(sessionStorage.getItem(EB_KEY)).toBe("1");
+    });
+
+    it("does NOT auto-loop once the Tier-2 escalation is already spent", async () => {
+      sessionStorage.setItem(EB_KEY, "1"); // escalation already used this session
+
+      render(
+        <ErrorBoundary>
+          <ChunkBomb />
+        </ErrorBoundary>,
+      );
+
+      // Genuinely stuck → friendly manual-retry screen, no auto navigation.
+      expect(screen.getByText("Chưa cập nhật được")).toBeInTheDocument();
+      await vi.runAllTimersAsync();
+      expect(replaceSpy).not.toHaveBeenCalled();
+    });
   });
 });

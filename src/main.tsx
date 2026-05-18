@@ -89,6 +89,7 @@ import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { attachPreloadFailureRecovery } from "@/lib/preloadRecovery";
 import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
+import { cacheBustingReload, stripChunkCacheBustParam } from "@/lib/chunkReload";
 
 declare global {
   interface Window {
@@ -201,7 +202,11 @@ function scheduleOneTimeChunkReload(): boolean {
     try {
       await unregisterAllServiceWorkers();
     } catch { /* never block reload on unregister failure */ }
-    try { window.location.reload(); } catch { /* ignore */ }
+    // Cache-busting nav, NOT window.location.reload(): embedded webviews
+    // (FB in-app browser, iOS Chrome/WKWebView) re-serve the stale
+    // document on a plain reload even with the SW gone, because they
+    // ignore the `no-cache` header on /index.html. See chunkReload.ts.
+    try { cacheBustingReload(); } catch { /* ignore */ }
   }, 900);
   return true;
 }
@@ -363,6 +368,14 @@ function scheduleOneTimeChunkReload(): boolean {
   attachPreloadFailureRecovery(() => {
     scheduleOneTimeChunkReload();
   });
+})();
+
+(function cleanChunkCacheBustParam() {
+  // The cache-busting recovery nav lands here with `?_cb=<ts>` on the
+  // URL. Strip it before the router mounts so the address bar and any
+  // shared/copied URL stay clean and the param doesn't linger across
+  // client-side navigations. No-op on a normal (non-recovered) load.
+  try { stripChunkCacheBustParam(); } catch { /* ignore */ }
 })();
 
 (function normalizeLegacyPaths() {
