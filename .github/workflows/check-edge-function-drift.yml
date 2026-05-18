@@ -1,0 +1,199 @@
+# Check Edge Function Drift
+#
+# WHY THIS EXISTS
+# ---------------
+# Companion to deploy-edge-functions.yml. For every PR that touches
+# supabase/functions/**, download the CURRENTLY DEPLOYED source of each
+# changed function and diff it against the PR head. Surfaces "prod is
+# ahead of / behind the repo" before merge, so the drift problem cannot
+# silently come back.
+#
+# THIS CHECK NEVER FAILS THE PR.
+# A reconciliation PR (the very PRs born from the drift audit) is
+# EXPECTED to show drift — that drift IS the thing it fixes. We report
+# for visibility, not as a gate. Job is always green; the signal is the
+# PR comment.
+#
+# _shared/ BLIND SPOT (tracked separately)
+# ----------------------------------------
+# `supabase functions download <name>` returns ONLY that function's own
+# files. It does NOT download supabase/functions/_shared/**. So drift
+# inside a shared helper is INVISIBLE to this check even though it
+# affects every consumer. Solving that needs per-function dependency
+# analysis and is deliberately out of scope. Tracking issue:
+# "Detect drift in _shared/ helpers".
+#
+# Notes:
+# - Same-repo branch PRs only. A fork PR has no access to
+#   SUPABASE_ACCESS_TOKEN and gets a read-only token; this check will
+#   post a "skipped (fork / no secret)" comment rather than fail.
+# - The downloaded source is the bundle the platform stored; the diff is
+#   INDICATIVE (file add/remove/modify + snippet), not a byte-exact
+#   guarantee.
+
+name: Check Edge Function Drift
+
+on:
+  pull_request:
+    paths:
+      - "supabase/functions/**"
+
+concurrency:
+  group: edge-drift-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+env:
+  SUPABASE_PROJECT_REF: buemdfxyhxunzpgdoqin
+
+jobs:
+  drift:
+    name: Report deployed-vs-repo drift (non-blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Compute changed functions + drift report
+        id: drift
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # GitHub's default shell is `bash -e -o pipefail`. This job must
+          # stay GREEN regardless of drift or download hiccups, so we
+          # explicitly disable errexit (`set +e`). Every meaningful exit
+          # path ends 0 and the signal is the PR comment, not the status.
+          set +e
+          set -o pipefail
+          FUNCS_DIR="supabase/functions"
+          REPORT="$(mktemp)"
+          echo "<!-- edge-drift-report -->" > "$REPORT"
+          echo "### 🛰️ Edge Function Drift Report" >> "$REPORT"
+          echo "" >> "$REPORT"
+
+          if [ -z "${SUPABASE_ACCESS_TOKEN:-}" ]; then
+            {
+              echo "⚠️ **Skipped** — \`SUPABASE_ACCESS_TOKEN\` is not available"
+              echo "(fork PR, or the secret is not configured). Drift was **not**"
+              echo "checked. This is a visibility gap, not a pass."
+            } >> "$REPORT"
+            echo "report=$REPORT" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          CHANGED="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- "$FUNCS_DIR" || true)"
+
+          if echo "$CHANGED" | grep -qE "^$FUNCS_DIR/(_shared|_billing)/"; then
+            {
+              echo "> ⚠️ This PR touches \`_shared/\` or \`_billing/\`. Drift in"
+              echo "> shared helpers is **not detectable** here (download returns"
+              echo "> only a function's own files). Tracking issue:"
+              echo "> _Detect drift in _shared/ helpers_."
+              echo ""
+            } >> "$REPORT"
+          fi
+
+          FUNCS=""
+          while IFS= read -r p; do
+            [ -z "$p" ] && continue
+            name="$(echo "$p" | sed -E "s#^$FUNCS_DIR/##" | cut -d/ -f1)"
+            case "$name" in ""|_*|__tests__) continue;; esac
+            [ -d "$FUNCS_DIR/$name" ] || continue
+            case " $FUNCS " in *" $name "*) :;; *) FUNCS="$FUNCS $name";; esac
+          done <<< "$CHANGED"
+          FUNCS="$(echo "$FUNCS" | xargs || true)"
+
+          if [ -z "$FUNCS" ]; then
+            echo "No deployable function directories changed in this PR." >> "$REPORT"
+            echo "report=$REPORT" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          DL_ROOT="$(mktemp -d)"
+          ANY_DRIFT=0
+          for fn in $FUNCS; do
+            echo "::group::Drift check $fn"
+            # Download deployed source. --use-api = no Docker. The CLI
+            # writes into supabase/functions/<fn> (overwriting the working
+            # tree), so we capture it then restore the PR head via
+            # `git checkout`.
+            supabase functions download "$fn" \
+              --project-ref "$SUPABASE_PROJECT_REF" --use-api 2>/dev/null || true
+            DEPLOYED="$DL_ROOT/$fn-deployed"
+            if [ -d "$FUNCS_DIR/$fn" ]; then
+              cp -R "$FUNCS_DIR/$fn" "$DEPLOYED"
+            fi
+            git checkout -- "$FUNCS_DIR/$fn" 2>/dev/null || true
+
+            if [ ! -d "$DEPLOYED" ]; then
+              echo "- \`$fn\`: ⚠️ could not download deployed source (function may not be deployed yet — REPO_AHEAD)." >> "$REPORT"
+              echo "::endgroup::"
+              continue
+            fi
+
+            DIFF="$(diff -ruN --exclude='*.map' "$DEPLOYED" "$FUNCS_DIR/$fn" 2>/dev/null || true)"
+            if [ -z "$DIFF" ]; then
+              echo "- \`$fn\`: ✅ in sync." >> "$REPORT"
+            else
+              ANY_DRIFT=1
+              LINES="$(echo "$DIFF" | wc -l | xargs)"
+              {
+                echo "- \`$fn\`: 🔴 **DRIFT** (~$LINES diff lines, deployed → repo):"
+                echo ""
+                echo '<details><summary>diff (truncated to 120 lines)</summary>'
+                echo ""
+                echo '```diff'
+                echo "$DIFF" | head -120
+                echo '```'
+                echo ""
+                echo '</details>'
+              } >> "$REPORT"
+            fi
+            echo "::endgroup::"
+          done
+
+          echo "" >> "$REPORT"
+          if [ "$ANY_DRIFT" = "1" ]; then
+            echo "_Drift found. If this PR is the reconciliation, that is expected — merging + deploy-edge-functions.yml will close the gap._" >> "$REPORT"
+          fi
+          echo "_Non-blocking check. \`_shared/\` drift is not covered (tracked separately)._" >> "$REPORT"
+          echo "report=$REPORT" >> "$GITHUB_OUTPUT"
+
+      - name: Upsert PR comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          BODY_FILE="${{ steps.drift.outputs.report }}"
+          [ -f "$BODY_FILE" ] || { echo "no report file; nothing to post"; exit 0; }
+
+          # Find an existing bot comment carrying our marker and update it
+          # (avoids one new comment per push).
+          CID="$(gh api "repos/${{ github.repository }}/issues/$PR/comments" \
+                   --paginate --jq \
+                   '.[] | select(.body | contains("<!-- edge-drift-report -->")) | .id' \
+                 | head -1 || true)"
+
+          if [ -n "$CID" ]; then
+            gh api -X PATCH \
+              "repos/${{ github.repository }}/issues/comments/$CID" \
+              -F body=@"$BODY_FILE" >/dev/null
+            echo "Updated existing drift comment $CID."
+          else
+            gh pr comment "$PR" --body-file "$BODY_FILE"
+            echo "Posted new drift comment."
+          fi
