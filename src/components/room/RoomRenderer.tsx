@@ -81,6 +81,13 @@ import {
 
 import { ROOM_CSS } from "@/components/room/roomRendererStyles";
 import { supabase } from "@/lib/supabaseClient";
+import { useChromeT } from "@/lib/i18n/chromeLanguage";
+import { captureMessage } from "@/lib/monitoring/captureException";
+import {
+  pickIntroEN,
+  pickIntroVI,
+  isViIntroMissing,
+} from "@/components/room/roomIntroFallback";
 
 import { addStudyLogEntry } from "@/services/studyLog";
 import { awardPoints } from "@/services/pointsService";
@@ -112,25 +119,17 @@ type RoomRendererProps = {
 const pickTitleENRaw = (r: AnyRoom) => r?.title?.en || r?.title_en || r?.name?.en || r?.name_en || "";
 const pickTitleVIRaw = (r: AnyRoom) => r?.title?.vi || r?.title_vi || r?.name?.vi || r?.name_vi || "";
 
-const pickIntroEN = (r: AnyRoom) =>
-  r?.intro?.en ||
-  r?.description?.en ||
-  r?.intro_en ||
-  r?.description_en ||
-  r?.summary?.en ||
-  r?.summary_en ||
-  r?.description ||
-  "";
+// Room-intro field selection + the M4 honest-fallback predicate now live
+// in roomIntroFallback.ts (dep-free, unit-tested there). pickIntroEN /
+// pickIntroVI keep their exact prior behavior; isViIntroMissing is the new
+// "VI learner about to be shown English" gate.
 
-const pickIntroVI = (r: AnyRoom) =>
-  r?.intro?.vi ||
-  r?.description?.vi ||
-  r?.intro_vi ||
-  r?.description_vi ||
-  r?.summary?.vi ||
-  r?.summary_vi ||
-  r?.description ||
-  "";
+// Rooms already reported to Sentry this session — the welcome line renders
+// on every room mount, so without this guard a single VI-gap room would
+// flood Sentry with one event per navigation. Module scope = per browser
+// tab/session, which is the right granularity for an ops "which rooms still
+// need VI" beacon.
+const reportedViIntroGapRooms = new Set<string>();
 
 function pickTier(room: AnyRoom): string {
   return String(room?.tier ?? room?.meta?.tier ?? "").toLowerCase();
@@ -949,6 +948,33 @@ export default function RoomRenderer({
   const introEN = useMemo(() => pickIntroEN(safeRoom), [safeRoom]);
   const introVI = useMemo(() => pickIntroVI(safeRoom), [safeRoom]);
 
+  const chromeT = useChromeT();
+
+  // M4 honest-fallback gate: a VI learner is about to be shown English in
+  // the welcome line because pickIntroVI fell through to the plain-EN
+  // `description`. True only when EN intro content exists AND no genuine VI
+  // copy does — a room with neither just gets the generated bilingual
+  // welcome (no leak, no badge).
+  const viIntroMissing = useMemo(
+    () => isViIntroMissing(safeRoom),
+    [safeRoom],
+  );
+
+  // Ops beacon: warn (not error — the app keeps working) once per room per
+  // session so the clinical-content authoring backlog can be prioritised
+  // from real traffic. roomId is low-cardinality and not PII.
+  useEffect(() => {
+    if (!viIntroMissing) return;
+    const rid = String(effectiveRoomId || "").trim();
+    if (!rid || reportedViIntroGapRooms.has(rid)) return;
+    reportedViIntroGapRooms.add(rid);
+    captureMessage("[i18n] room VI intro missing — served EN to a VI learner", "warning", {
+      roomId: rid,
+      feature: "room_intro",
+      mechanism: "M4_empty_vi_fallback",
+    });
+  }, [viIntroMissing, effectiveRoomId]);
+
   const kwRaw = useMemo(() => resolveKeywords(safeRoom), [safeRoom]);
   const essay = useMemo(() => resolveEssay(safeRoom), [safeRoom]);
 
@@ -1547,9 +1573,25 @@ export default function RoomRenderer({
 
             <section className="mb-card p-3 md:p-6 mb-5" data-room-box="3">
               <div className="mb-welcomeLine">
-                <span>
-                  {welcomeEN} <b>/</b> {welcomeVI}
-                </span>
+                {viIntroMissing ? (
+                  // VI copy genuinely absent — be honest instead of
+                  // duplicating the English as fake Vietnamese. The room
+                  // (clinical-support content) still works; only the badge
+                  // signals the gap. Tracked for ops in the useEffect above.
+                  <span>
+                    {welcomeEN}{" "}
+                    <span className="ml-1 inline-block rounded-full bg-amber-50 px-2 py-0.5 align-middle text-[10px] font-medium text-amber-700">
+                      {chromeT({
+                        vi: "Bản tiếng Việt đang được hoàn thiện",
+                        en: "Vietnamese version in progress",
+                      })}
+                    </span>
+                  </span>
+                ) : (
+                  <span>
+                    {welcomeEN} <b>/</b> {welcomeVI}
+                  </span>
+                )}
               </div>
 
               {showDev ? (

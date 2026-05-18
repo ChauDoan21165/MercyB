@@ -23,6 +23,10 @@ import { stripPII } from "@/lib/security/piiProtection";
 // without a static import that would force the SDK into the bundle.
 type SentryShape = {
   captureException: (error: unknown, hint?: { extra?: Record<string, unknown> }) => void;
+  captureMessage: (
+    message: string,
+    levelOrHint?: "info" | "warning" | "error" | { level?: string; extra?: Record<string, unknown> },
+  ) => void;
   setUser: (user: { id: string } | null) => void;
   setTag: (key: string, value: string) => void;
   withScope: (cb: (scope: { setTag: (k: string, v: string) => void }) => void) => void;
@@ -53,6 +57,36 @@ export function captureError(
   }
 
   sdk.captureException(error, { extra: safeContext });
+}
+
+/**
+ * Capture a non-exceptional ops signal as a `warning` (or chosen level)
+ * Sentry event. Unlike captureError this is NOT a crash — use it for
+ * "the app kept working but something is degraded" beacons that ops
+ * needs visibility into (e.g. a content gap silently served the wrong
+ * language). String values in `context` are PII-stripped, same as
+ * captureError. No-op when Sentry is disabled (tests / SSR / no DSN).
+ *
+ * Callers MUST dedupe high-frequency signals themselves (a render path
+ * that fires every mount would flood Sentry) — this wrapper does not.
+ */
+export function captureMessage(
+  message: string,
+  level: "info" | "warning" | "error" = "warning",
+  context?: Record<string, unknown>,
+): void {
+  if (!isSentryEnabled()) return;
+  const sdk = getSentryModule() as SentryShape | null;
+  if (!sdk || typeof sdk.captureMessage !== "function") return;
+
+  const safeContext: Record<string, unknown> = {};
+  if (context) {
+    for (const [k, v] of Object.entries(context)) {
+      safeContext[k] = typeof v === "string" ? stripPII(v) : v;
+    }
+  }
+
+  sdk.captureMessage(message, { level, extra: safeContext });
 }
 
 /**
