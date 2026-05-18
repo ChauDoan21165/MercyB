@@ -26,7 +26,7 @@ import ChatSupportButton from "@/components/support/ChatSupportButton";
 import { FeedbackBar } from "@/components/FeedbackBar";
 import LessonUiLangToggle, {
   useLessonUiLang,
-} from "@/components/mercy-guide/tabs/LessonUiLangToggle";
+} from "@/components/LessonUiLangToggle";
 // 2FA Phase 1 — route guard that forces aal=2 when the user has a
 // verified MFA factor. Pairs with the RLS gate from migration
 // 20260524 so neither layer is the only line of defense.

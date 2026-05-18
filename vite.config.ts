@@ -377,6 +377,39 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
+          {
+            // Mobile-audit CAT5 G2-a — Google Fonts were not runtime-cached,
+            // so every slow-network / offline-after-first-visit load re-paid
+            // the font fetch with a fallback-font flash. The font CSS is
+            // loaded route-scoped via src/lib/loadGoogleFont.ts (room +
+            // tier-map surfaces); these two rules give it the standard
+            // Workbox Google-Fonts treatment.
+            //
+            // 1) The stylesheet from fonts.googleapis.com — SWR: served
+            //    instantly from cache, refreshed in the background (Google
+            //    periodically rotates the woff2 URLs inside the CSS).
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'google-fonts-stylesheets',
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 7 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // 2) The actual woff2 files from fonts.gstatic.com — CacheFirst
+            //    with a 1-year budget (Google content-hashes them, so they
+            //    are effectively immutable). statuses [0,200] keeps an
+            //    opaque cross-origin response storable, per the audit's
+            //    G2-c forward-safety note.
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-webfonts',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
         ],
       },
       manifest: {

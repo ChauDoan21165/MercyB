@@ -5,9 +5,18 @@
 
 // src/components/room/RoomRendererUI.tsx
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
 import { toAudioKey } from "@/lib/roomAudioResolver";
+import { loadGoogleFont } from "@/lib/loadGoogleFont";
+
+// Room essay typography (Lora body + Be Vietnam Pro VI gloss). Loaded
+// once via an idempotent <link> injection instead of a render-time CSS
+// @import inside a <style> (request-chained, no preconnect, re-injected
+// every render). `display=swap` → the serif/sans fallbacks in the inline
+// styles below paint immediately, no FOIT. See src/lib/loadGoogleFont.ts.
+const ROOM_FONT_HREF =
+  "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap";
 
 export const KW_CLASSES = [
   "mb-kw-0",
@@ -800,6 +809,12 @@ export function ActiveEntry({
   viKeywords: string[];
   audioAnchorRef?: React.RefObject<HTMLDivElement>;
 }) {
+  // Load room typography once. Idempotent — every ActiveEntry instance
+  // calls it but only the first injects the <link> (see loadGoogleFont).
+  useEffect(() => {
+    loadGoogleFont(ROOM_FONT_HREF);
+  }, []);
+
   const rawHeading = pickEntryHeading(entry, index);
   const heading = isUglyHeading(rawHeading) ? "" : rawHeading;
 
@@ -842,10 +857,6 @@ export function ActiveEntry({
 
   return (
     <div>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
-      `}</style>
-
       {heading ? (
         <h3 style={headingStyle}>{heading}</h3>
       ) : null}
