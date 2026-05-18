@@ -18,6 +18,7 @@ import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeFo
 import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLeaderboardOptInPanel";
 import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/ReferralLeaderboardOptInPanel";
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
+import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 
 function formatDate(value: string | null | undefined): string {
   if (!value) return "—";
@@ -36,22 +37,13 @@ function getIsPaidStatus(ent: any): boolean {
   return status === "active" || status === "trialing" || status === "past_due";
 }
 
-// ── Bilingual helpers ─────────────────────────────────────────────────────────
-const viStyle: React.CSSProperties = {
-  display: "block",
-  fontSize: 12,
-  fontWeight: 400,
-  color: "#94a3b8",
-  marginTop: 2,
-  lineHeight: 1.4,
-};
-
+// ── Chrome-language label ─────────────────────────────────────────────────────
+// Was bilingual (EN over a muted VI subtitle). Now single-language: the
+// account chrome follows the learner's native-language choice.
 function BiLabel({ en, vi }: { en: string; vi: string }) {
+  const lang = useChromeLanguage();
   return (
-    <span style={{ display: "block" }}>
-      {en}
-      <span style={viStyle}>{vi}</span>
-    </span>
+    <span style={{ display: "block" }}>{lang === "en" ? en : vi}</span>
   );
 }
 
@@ -80,6 +72,8 @@ async function downloadProgressCsv(
 
 export default function AccountPage() {
   const nav = useNavigate();
+  // Account chrome follows the learner's native-language choice.
+  const lang = useChromeLanguage();
   const { user, isLoading, signOut } = useAuth();
   const { ent, loading: entitlementLoading, refreshEntitlements } = useEntitlements();
   const admin = useAdminAccess();
@@ -261,15 +255,6 @@ export default function AccountPage() {
     color: "rgba(0,0,0,0.86)",
   };
 
-  const h1Vi: React.CSSProperties = {
-    display: "block",
-    fontSize: 14,
-    fontWeight: 400,
-    color: "#94a3b8",
-    marginTop: 4,
-    letterSpacing: 0,
-  };
-
   const emailLine: React.CSSProperties = {
     marginTop: 14,
     fontSize: 13,
@@ -410,13 +395,6 @@ export default function AccountPage() {
     lineHeight: 1.35,
   };
 
-  const statusHeadlineEn: React.CSSProperties = {
-    fontSize: 14,
-    fontWeight: 500,
-    color: "rgba(0,0,0,0.55)",
-    margin: "4px 0 0",
-  };
-
   const statusBody: React.CSSProperties = {
     marginTop: 12,
     fontSize: 13,
@@ -462,14 +440,6 @@ export default function AccountPage() {
     userSelect: "none",
   };
 
-  const summaryVi: React.CSSProperties = {
-    display: "block",
-    fontSize: 11,
-    fontWeight: 400,
-    color: "#94a3b8",
-    marginTop: 2,
-  };
-
   const detailsBody: React.CSSProperties = {
     padding: "0 22px 22px",
   };
@@ -492,13 +462,6 @@ export default function AccountPage() {
     fontSize: 13,
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.55)",
-  };
-
-  const subViStyle: React.CSSProperties = {
-    marginTop: 3,
-    fontSize: 11,
-    lineHeight: 1.5,
-    color: "#94a3b8",
   };
 
   const legalButtonBase: React.CSSProperties = {
@@ -543,10 +506,7 @@ export default function AccountPage() {
 
         {/* ── Header card: title + email + 3 primary buttons + secondary links ── */}
         <div style={card}>
-          <h1 style={h1}>
-            Account
-            <span style={h1Vi}>Tài khoản của bạn</span>
-          </h1>
+          <h1 style={h1}>{lang === "en" ? "Account" : "Tài khoản của bạn"}</h1>
           <p style={emailLine}>{email || "—"}</p>
 
           {/* Three primary actions only — gift code (amber), pricing, sign out. */}
@@ -664,22 +624,36 @@ export default function AccountPage() {
         <div style={isPremium ? statusCardPremium : statusCardFree}>
           {isPremium ? (
             <>
-              <p style={statusHeadlineVi}>⭐ Premium đang hoạt động</p>
-              <p style={statusHeadlineEn}>Premium active</p>
+              <p style={statusHeadlineVi}>
+                {lang === "en"
+                  ? "⭐ Premium active"
+                  : "⭐ Premium đang hoạt động"}
+              </p>
               <p style={statusBody}>
-                {expiryText !== "—"
-                  ? <>Gia hạn vào <b>{expiryText}</b> · Renews on <b>{expiryText}</b></>
-                  : <>Bạn có quyền truy cập đầy đủ. / You have full access.</>}
+                {expiryText !== "—" ? (
+                  lang === "en" ? (
+                    <>Renews on <b>{expiryText}</b></>
+                  ) : (
+                    <>Gia hạn vào <b>{expiryText}</b></>
+                  )
+                ) : lang === "en" ? (
+                  "You have full access."
+                ) : (
+                  "Bạn có quyền truy cập đầy đủ."
+                )}
               </p>
             </>
           ) : (
             <>
-              <p style={statusHeadlineVi}>🔓 Bạn đang dùng bản miễn phí</p>
-              <p style={statusHeadlineEn}>You're on the free plan</p>
+              <p style={statusHeadlineVi}>
+                {lang === "en"
+                  ? "🔓 You're on the free plan"
+                  : "🔓 Bạn đang dùng bản miễn phí"}
+              </p>
               <p style={statusBody}>
-                Mở khóa toàn bộ bài học, luyện thi, và phản hồi phát âm.
-                <br />
-                Unlock every lesson, exam prep set, and pronunciation feedback.
+                {lang === "en"
+                  ? "Unlock every lesson, exam prep set, and pronunciation feedback."
+                  : "Mở khóa toàn bộ bài học, luyện thi, và phản hồi phát âm."}
               </p>
               <button
                 type="button"
@@ -687,7 +661,7 @@ export default function AccountPage() {
                 onClick={() => nav("/pricing")}
                 aria-label="Upgrade to premium"
               >
-                Nâng cấp · Upgrade →
+                {lang === "en" ? "Upgrade →" : "Nâng cấp →"}
               </button>
             </>
           )}
@@ -728,8 +702,7 @@ export default function AccountPage() {
         <details style={detailsCard}>
           <summary style={summaryStyle}>
             <span>
-              Chia sẻ mã giới thiệu
-              <span style={summaryVi}>Share referral code</span>
+              {lang === "en" ? "Share referral code" : "Chia sẻ mã giới thiệu"}
             </span>
             <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
           </summary>
@@ -745,8 +718,9 @@ export default function AccountPage() {
         <details style={detailsCard}>
           <summary style={summaryStyle}>
             <span>
-              Bảng xếp hạng & tùy chọn
-              <span style={summaryVi}>Leaderboard settings</span>
+              {lang === "en"
+                ? "Leaderboard settings"
+                : "Bảng xếp hạng & tùy chọn"}
             </span>
             <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
           </summary>
@@ -762,8 +736,7 @@ export default function AccountPage() {
         <details style={detailsCard}>
           <summary style={summaryStyle}>
             <span>
-              Ngôn ngữ học
-              <span style={summaryVi}>Learning languages</span>
+              {lang === "en" ? "Learning languages" : "Ngôn ngữ học"}
             </span>
             <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
           </summary>
@@ -834,10 +807,9 @@ export default function AccountPage() {
               }}
             >
               <p style={{ ...subStyle, color: "#065f46", margin: 0 }}>
-                Mercy's memory has been reset. She'll start fresh on your next lesson.
-              </p>
-              <p style={{ ...subViStyle, color: "#065f46", margin: "4px 0 0" }}>
-                Bộ nhớ của Mercy đã được xóa. Cô ấy sẽ bắt đầu lại từ buổi học tiếp theo.
+                {lang === "en"
+                  ? "Mercy's memory has been reset. She'll start fresh on your next lesson."
+                  : "Bộ nhớ của Mercy đã được xóa. Cô ấy sẽ bắt đầu lại từ buổi học tiếp theo."}
               </p>
             </div>
           ) : null}
@@ -852,17 +824,17 @@ export default function AccountPage() {
                 background: "#fffbeb",
               }}
             >
-              <p style={{ ...subStyle, color: "#92400e", fontWeight: 700, marginTop: 0 }}>
-                This clears everything Mercy remembers about you — past lessons, strengths, weaknesses, and personality notes. Your account and progress stay.
+              <p style={{ ...subStyle, color: "#92400e", fontWeight: 700, marginTop: 0, marginBottom: 10 }}>
+                {lang === "en"
+                  ? "This clears everything Mercy remembers about you — past lessons, strengths, weaknesses, and personality notes. Your account and progress stay."
+                  : "Thao tác này sẽ xóa mọi thứ Mercy nhớ về bạn — các bài học trước, điểm mạnh, điểm yếu, và ghi chú về tính cách. Tài khoản và tiến độ của bạn được giữ nguyên."}
               </p>
-              <p style={{ ...subViStyle, color: "#92400e", marginBottom: 10 }}>
-                Thao tác này sẽ xóa mọi thứ Mercy nhớ về bạn — các bài học trước, điểm mạnh, điểm yếu, và ghi chú về tính cách. Tài khoản và tiến độ của bạn được giữ nguyên.
-              </p>
-              <p style={{ ...subStyle, margin: "4px 0" }}>
-                Type <strong>RESET</strong> to confirm:
-              </p>
-              <p style={{ ...subViStyle, margin: "2px 0 8px" }}>
-                Nhập <strong>RESET</strong> để xác nhận.
+              <p style={{ ...subStyle, margin: "4px 0 8px" }}>
+                {lang === "en" ? (
+                  <>Type <strong>RESET</strong> to confirm:</>
+                ) : (
+                  <>Nhập <strong>RESET</strong> để xác nhận.</>
+                )}
               </p>
               <input
                 type="text"
@@ -932,19 +904,17 @@ export default function AccountPage() {
                 background: "#fef2f2",
               }}
             >
-              <p style={{ ...subStyle, color: "#991b1b", fontWeight: 700, marginTop: 0 }}>
-                This permanently deletes your account, memory, notebook, and all
-                associated data. This cannot be undone.
+              <p style={{ ...subStyle, color: "#991b1b", fontWeight: 700, marginTop: 0, marginBottom: 10 }}>
+                {lang === "en"
+                  ? "This permanently deletes your account, memory, notebook, and all associated data. This cannot be undone."
+                  : "Thao tác này sẽ xóa vĩnh viễn tài khoản, bộ nhớ, sổ tay và toàn bộ dữ liệu liên quan. Không thể hoàn tác."}
               </p>
-              <p style={{ ...subViStyle, color: "#991b1b", marginBottom: 10 }}>
-                Thao tác này sẽ xóa vĩnh viễn tài khoản, bộ nhớ, sổ tay và toàn
-                bộ dữ liệu liên quan. Không thể hoàn tác.
-              </p>
-              <p style={{ ...subStyle, margin: "4px 0" }}>
-                Type <strong>DELETE</strong> to confirm:
-              </p>
-              <p style={{ ...subViStyle, margin: "2px 0 8px" }}>
-                Nhập <strong>DELETE</strong> để xác nhận.
+              <p style={{ ...subStyle, margin: "4px 0 8px" }}>
+                {lang === "en" ? (
+                  <>Type <strong>DELETE</strong> to confirm:</>
+                ) : (
+                  <>Nhập <strong>DELETE</strong> để xác nhận.</>
+                )}
               </p>
               <input
                 type="text"

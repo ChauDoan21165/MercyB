@@ -145,12 +145,16 @@ describe("OnboardingPage — target step (Screen 2, matrix-filtered)", () => {
     expect(en).toHaveAttribute("aria-checked", "true");
   });
 
-  it("shows honesty badges: Korean limited, Chinese B2–C2-only (locked #7)", async () => {
+  it("shows honesty badges single-language (VI for a vi-native, locked #7)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user);
-    expect(screen.getByText(/only for now/i)).toBeInTheDocument(); // zh skeletal
-    expect(screen.getAllByText(/Limited content/i).length).toBeGreaterThan(0); // ko partial
+    // vi-native → VI badge copy only; the EN side is NOT rendered
+    // (native-respect: chrome follows the native choice, not bilingual).
+    expect(screen.getByText(/Hiện chỉ có B2–C2/)).toBeInTheDocument(); // zh skeletal
+    expect(screen.getAllByText(/Nội dung giới hạn/).length).toBeGreaterThan(0); // ko partial
+    expect(screen.queryByText(/only for now/i)).toBeNull();
+    expect(screen.queryByText(/Limited content/i)).toBeNull();
   });
 
   it("en-native menu includes Spanish (its true pair) + Vietnamese", async () => {
@@ -329,7 +333,7 @@ describe("OnboardingPage — back navigation through new steps", () => {
 });
 
 describe("OnboardingPage — confirmation summary + progress bar", () => {
-  it("confirmation summarizes the chosen pair in VI", async () => {
+  it("confirmation summary is single-language VI for a vi-native (no EN)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user);
@@ -337,9 +341,12 @@ describe("OnboardingPage — confirmation summary + progress bar", () => {
     await user.click(screen.getByRole("radio", { name: /Học chung|General/ }));
     // general goal → level → confirmation
     await user.click(screen.getByRole("radio", { name: /Mới bắt đầu/ }));
-    const native = screen.getByText(/Tiếng mẹ đẻ · Native/);
+    // Single-language: VI labels with NO "· Native" / "· Learning" EN tail.
+    const native = screen.getByText(/Tiếng mẹ đẻ:/);
     const summaryRoot = native.closest("ul")!;
-    expect(within(summaryRoot).getByText(/Học · Learning/)).toBeInTheDocument();
+    expect(within(summaryRoot).getByText(/Học:/)).toBeInTheDocument();
+    expect(screen.queryByText(/· Native/)).toBeNull();
+    expect(screen.queryByText(/· Learning/)).toBeNull();
   });
 
   it("progress bar exposes aria-valuemax of 8 (full step set)", () => {
@@ -347,5 +354,71 @@ describe("OnboardingPage — confirmation summary + progress bar", () => {
     const progress = container.querySelector('[role="progressbar"]')!;
     expect(progress.getAttribute("aria-valuemax")).toBe("8");
     expect(progress.getAttribute("aria-valuenow")).toBe("1");
+  });
+});
+
+describe("OnboardingPage — chrome language follows native choice", () => {
+  it("welcome screen stays bilingual (pre-pick, both audiences present)", () => {
+    renderPage();
+    // VI primary + EN secondary BOTH present before any native pick.
+    expect(screen.getByText(/Chào bạn — mình là Mercy\./)).toBeInTheDocument();
+    expect(screen.getByText(/Hi — I'm Mercy\./)).toBeInTheDocument();
+  });
+
+  it("vi-native: post-pick screens are VI-only (no EN subtitle)", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user); // pick Tiếng Việt
+    expect(
+      screen.getByText(/Bạn muốn học ngôn ngữ nào/),
+    ).toBeInTheDocument();
+    // The EN subtitle that used to sit under the VI title is gone.
+    expect(screen.queryByText(/What do you want to learn/i)).toBeNull();
+  });
+
+  it("en-native: post-pick screens are EN-only (no VI primary)", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await clickStart(user);
+    await user.click(
+      screen.getByRole("radio", { name: /Tiếng Anh|English/ }),
+    );
+    // Target screen now renders in English only.
+    expect(
+      screen.getByText(/What do you want to learn/i),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/Bạn muốn học ngôn ngữ nào/)).toBeNull();
+    // Continue button is single-language English (no "· Tiếp tục").
+    expect(
+      screen.getByRole("button", { name: /Continue/ }),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/· Continue/)).toBeNull();
+  });
+
+  it("native picker shows each option in its OWN language", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await clickStart(user);
+    // Vietnamese option in Vietnamese, English option in English —
+    // self-evident regardless of the default chrome language.
+    expect(
+      screen.getByRole("radio", { name: /Tiếng Việt/ }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("radio", { name: /English/ }),
+    ).toBeInTheDocument();
+  });
+
+  it("native-picker header stays bilingual (pre-pick, like welcome)", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await clickStart(user);
+    // Both audiences present before the pick → VI title + EN subtitle.
+    expect(
+      screen.getByText(/Tiếng mẹ đẻ của bạn là gì/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/What's your native language/i),
+    ).toBeInTheDocument();
   });
 });

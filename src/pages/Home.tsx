@@ -1017,7 +1017,7 @@ export default function Home() {
               marginTop: 4, fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
               textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
             }}>
-              Start here · Bắt đầu từ đây
+              Bắt đầu từ đây
             </div>
           )}
           <ProgressiveDisclosureCard
@@ -1043,7 +1043,7 @@ export default function Home() {
               fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
               textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
             }}>
-              Prepare for exams · Luyện thi
+              Luyện thi
             </div>
           )}
           <ProgressiveDisclosureCard
@@ -1093,7 +1093,7 @@ export default function Home() {
               fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
               textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
             }}>
-              Explore & improve · Khám phá
+              Khám phá
             </div>
           )}
           <ProgressiveDisclosureCard

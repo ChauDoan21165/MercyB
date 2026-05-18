@@ -16,6 +16,7 @@ import { ChevronRight } from "lucide-react";
 
 import {
   TARGET_META,
+  targetLabel,
   type NativeLang,
   type TargetLang,
 } from "@/lib/onboarding/types";
@@ -28,11 +29,16 @@ import { usePairMutation, withPrimary } from "@/lib/languagePair/languagePair";
 export function TargetSwitcher({
   targets,
   primaryTarget,
+  nativeLanguage = "vi",
 }: {
   targets: TargetLang[];
   primaryTarget: TargetLang | null;
+  /** Chrome language for the chip labels. Defaults to "vi" so the
+   *  canonical (vi→en) Home — which reuses this — is unchanged. */
+  nativeLanguage?: NativeLang | null;
 }) {
   const { persist } = usePairMutation();
+  const lang: NativeLang = nativeLanguage ?? "vi";
   if (targets.length < 2) return null;
 
   const onPick = (t: TargetLang) => {
@@ -82,7 +88,7 @@ export function TargetSwitcher({
             }}
           >
             <span aria-hidden>{meta.flag}</span>
-            {meta.labelVi}
+            {targetLabel(t, lang)}
           </button>
         );
       })}
@@ -104,6 +110,9 @@ export default function LanguageTrackHome({
   // stay defensive: fall back Home rather than crash.
   const meta = primaryTarget ? TARGET_META[primaryTarget] : null;
   const slug = meta?.slug ?? null;
+  // Chrome follows the learner's native choice; null → VI home-market
+  // default (matches NativeLanguageContext's default).
+  const lang: NativeLang = nativeLanguage ?? "vi";
 
   return (
     <div
@@ -114,7 +123,11 @@ export default function LanguageTrackHome({
           "radial-gradient(circle at top, rgba(255,240,248,0.55) 0%, rgba(252,249,243,0.96) 40%, rgba(248,247,250,1) 100%)",
       }}
     >
-      <TargetSwitcher targets={targets} primaryTarget={primaryTarget} />
+      <TargetSwitcher
+        targets={targets}
+        primaryTarget={primaryTarget}
+        nativeLanguage={lang}
+      />
 
       <div style={{ maxWidth: 560, margin: "0 auto", padding: "24px 16px 96px" }}>
         <section aria-label="Homepage hero" style={{ textAlign: "center" }}>
@@ -178,7 +191,9 @@ export default function LanguageTrackHome({
                   color: "rgba(15,23,42,0.92)",
                 }}
               >
-                Học {meta?.labelVi}
+                {lang === "en"
+                  ? `Learn ${primaryTarget ? targetLabel(primaryTarget, "en") : ""}`
+                  : `Học ${primaryTarget ? targetLabel(primaryTarget, "vi") : ""}`}
               </span>
               <span
                 style={{
@@ -189,7 +204,9 @@ export default function LanguageTrackHome({
                   color: "rgba(0,0,0,0.5)",
                 }}
               >
-                Learn {meta?.labelEn} — tiếp tục lộ trình của bạn
+                {lang === "en"
+                  ? "Continue your learning path"
+                  : "Tiếp tục lộ trình của bạn"}
               </span>
             </span>
             <ChevronRight size={22} color="rgba(180,60,100,0.75)" />
@@ -212,7 +229,7 @@ export default function LanguageTrackHome({
               cursor: "pointer",
             }}
           >
-            Về trang chính · Go home
+            {lang === "en" ? "Go home" : "Về trang chính"}
           </button>
         )}
 
@@ -226,7 +243,7 @@ export default function LanguageTrackHome({
             lineHeight: 1.5,
           }}
         >
-          {nativeLanguage === "en"
+          {lang === "en"
             ? "Change your languages anytime in Settings."
             : "Bạn có thể đổi ngôn ngữ bất cứ lúc nào trong phần Cài đặt."}
         </p>

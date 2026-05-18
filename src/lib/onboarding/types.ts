@@ -142,6 +142,14 @@ export const TARGET_META: Record<TargetLang, TargetMeta> = {
   vi: { labelVi: "Tiếng Việt",         labelEn: "Vietnamese", flag: "🇻🇳", slug: "vietnamese" },
 };
 
+/** Target-language display name in the chrome language. The chrome
+ *  follows the learner's native choice (vi-native → Vietnamese names,
+ *  en-native → English names) — no more hardcoded `.labelVi`. */
+export function targetLabel(t: TargetLang, lang: NativeLang): string {
+  const m = TARGET_META[t];
+  return lang === "en" ? m.labelEn : m.labelVi;
+}
+
 export interface TargetMenuItem {
   value: TargetLang;
   readiness: ContentReadiness;
@@ -342,6 +350,23 @@ export const ONBOARDING_COPY = {
   back:     { vi: "Quay lại", en: "Back" },
   continue: { vi: "Tiếp tục", en: "Continue" },
   finish:   { vi: "Hoàn tất", en: "Finish" },
+  /** Honesty/recommendation badges on the target grid. Rendered in the
+   *  chrome language (single), not bilingual. */
+  recommended: { vi: "Gợi ý", en: "Recommended" },
+  /** Confirmation-screen field labels. Were hardcoded bilingual
+   *  ("Tiếng mẹ đẻ · Native:"); now picked single by chrome language. */
+  summary: {
+    native:     { vi: "Tiếng mẹ đẻ", en: "Native language" },
+    learning:   { vi: "Học", en: "Learning" },
+    goal:       { vi: "Mục tiêu", en: "Goal" },
+    profession: { vi: "Nghề nghiệp", en: "Profession" },
+    level:      { vi: "Trình độ", en: "Level" },
+  },
+  /** Inline error shown if the Supabase write blips (still navigates). */
+  finishError: {
+    vi: "Đã xảy ra lỗi nhỏ — Mercy vẫn đưa bạn đến bài học.",
+    en: "A small error occurred — Mercy is still taking you to your lesson.",
+  },
   welcome: {
     title: { vi: "Chào bạn — mình là Mercy.", en: "Hi — I'm Mercy." },
     body: {

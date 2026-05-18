@@ -8,6 +8,7 @@ import {
   TOTAL_LESSONS_PER_LANGUAGE,
   type LearningLanguage,
 } from "@/store/languageProgress";
+import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 
 // ── helpers ─────────────────────────────────────────────────────────────────
 
@@ -28,14 +29,19 @@ function categoryColor(category: "european" | "asian"): string {
   return category === "european" ? "#3B82F6" : "#DC2626";
 }
 
-function categoryLabelVi(category: "european" | "asian"): string {
-  return category === "european" ? "Châu Âu" : "Châu Á";
+function categoryLabel(
+  category: "european" | "asian",
+  lang: "vi" | "en",
+): string {
+  if (category === "european") return lang === "en" ? "European" : "Châu Âu";
+  return lang === "en" ? "Asian" : "Châu Á";
 }
 
 // ── LanguageSwitcher ────────────────────────────────────────────────────────
 
 export default function LanguageSwitcher() {
   const nav = useNavigate();
+  const chromeLang = useChromeLanguage();
   const { selectedLanguage, selectLanguage, getCompletedCount, getProgressPercent } =
     useLanguageProgress();
 
@@ -49,7 +55,7 @@ export default function LanguageSwitcher() {
     nav(`/languages/${id}`);
   };
 
-  const renderCategory = (label: string, labelVi: string, languages: typeof EUROPEAN_LANGUAGES) => {
+  const renderCategory = (label: string, languages: typeof EUROPEAN_LANGUAGES) => {
     const cat = languages[0].category;
     return (
       <section aria-label={label} style={{ marginBottom: 10 }}>
@@ -79,15 +85,6 @@ export default function LanguageSwitcher() {
             }}
           >
             {label}
-          </span>
-          <span
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              color: "rgba(0,0,0,0.38)",
-            }}
-          >
-            {labelVi}
           </span>
         </div>
 
@@ -154,17 +151,7 @@ export default function LanguageSwitcher() {
                         lineHeight: 1.2,
                       }}
                     >
-                      {lang.name}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 11,
-                        fontWeight: 600,
-                        color: "rgba(0,0,0,0.42)",
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {lang.nameVi}
+                      {chromeLang === "en" ? lang.name : lang.nameVi}
                     </div>
                   </div>
                 </div>
@@ -187,7 +174,7 @@ export default function LanguageSwitcher() {
                         textTransform: "uppercase",
                       }}
                     >
-                      Lessons
+                      {chromeLang === "en" ? "Lessons" : "Bài học"}
                     </span>
                     <span
                       style={{
@@ -248,7 +235,7 @@ export default function LanguageSwitcher() {
                       cursor: "pointer",
                     }}
                   >
-                    Start learning
+                    {chromeLang === "en" ? "Start learning" : "Bắt đầu học"}
                     <ChevronRight size={14} />
                   </div>
                 )}
@@ -282,21 +269,12 @@ export default function LanguageSwitcher() {
             letterSpacing: -0.3,
           }}
         >
-          Learning languages
-        </span>
-        <span
-          style={{
-            fontSize: 12,
-            fontWeight: 700,
-            color: "rgba(0,0,0,0.40)",
-          }}
-        >
-          Ngôn ngữ đang học
+          {chromeLang === "en" ? "Learning languages" : "Ngôn ngữ đang học"}
         </span>
       </div>
 
-      {renderCategory("European", categoryLabelVi("european"), EUROPEAN_LANGUAGES)}
-      {renderCategory("Asian", categoryLabelVi("asian"), ASIAN_LANGUAGES)}
+      {renderCategory(categoryLabel("european", chromeLang), EUROPEAN_LANGUAGES)}
+      {renderCategory(categoryLabel("asian", chromeLang), ASIAN_LANGUAGES)}
     </div>
   );
 }
