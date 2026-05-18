@@ -110,6 +110,11 @@ html {
 body {
   margin: 0;
   background: var(--mb-bg);
+  /* Bottom safe-area net — relocated from the dead src/styles/theme.css
+     (zero importers, never loaded). Pairs with the top net in #665. env()
+     is 0px on normal web; only insets in standalone PWA / native WebView
+     with a home indicator. */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* optional: slightly richer card background in rainbow mode */
