@@ -171,42 +171,40 @@ describe("OnboardingPage — target step (Screen 2, matrix-filtered)", () => {
   });
 });
 
-describe("OnboardingPage — single English target preserves the (vi,en) flow", () => {
-  it("vi → English (only) → Continue → reaches the English goal step", async () => {
+describe("OnboardingPage — pair pick goes straight to home (no goal gate)", () => {
+  it("vi → English (only) → Continue → confirmation directly (no goal step)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user); // English already pre-checked
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    // No start_with (single target); English primary → goal step shows
+    // Goal gate removed — single target jumps straight to confirmation.
+    expect(screen.getByText(/Đã sẵn sàng/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Bạn học tiếng Anh để làm gì/),
-    ).toBeInTheDocument();
+      screen.queryByText(/Bạn học tiếng Anh để làm gì/),
+    ).toBeNull();
   });
 
-  it("full English path finishes: writes the pair + English fields", async () => {
+  it("vi → English pair finishes → writes pair, lands on home (/)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user);
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    await user.click(screen.getByRole("radio", { name: /Đi làm/ })); // career
-    await user.click(screen.getByRole("radio", { name: /Y tế|Healthcare/ }));
-    await user.click(screen.getByRole("radio", { name: /Đang phát triển/ }));
     await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
 
     expect(fromMock).toHaveBeenCalledWith("profiles");
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(payload.native_language).toBe("vi");
     expect(payload.target_languages).toEqual(["en"]);
-    expect(payload.primary_goal).toBe("career");
-    expect(payload.profession).toBe("healthcare");
-    expect(payload.english_level).toBe("intermediate");
+    // Goal/profession/level are no longer captured at onboarding.
+    expect(payload.primary_goal).toBeNull();
+    expect(payload.profession).toBeNull();
+    expect(payload.english_level).toBeNull();
     expect(typeof payload.onboarded_at).toBe("string");
     expect(eqMock).toHaveBeenCalledWith("id", "user-uuid-1");
     expect(navigateMock).toHaveBeenCalledWith(
-      "/professions/healthcare",
+      "/",
       expect.objectContaining({ replace: true }),
     );
-    // Signed-in users also seed the localStorage pair (PR 3 reconciles).
     expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
   });
 });
@@ -225,15 +223,16 @@ describe("OnboardingPage — anonymous (no auth) persists to localStorage", () =
     expect(updateMock).not.toHaveBeenCalled(); // no profile row exists yet
     expect(storedPair()).toEqual({ native: "vi", targets: ["ja", "en"] });
     expect(window.localStorage.getItem("mercyblade.nativeLang")).toBe("vi");
+    // All pairs land on home (/) — home is pair-aware.
     expect(navigateMock).toHaveBeenCalledWith(
-      "/languages/japanese",
+      "/",
       expect.objectContaining({ replace: true }),
     );
   });
 });
 
-describe("OnboardingPage — multi-target → start_with → non-English track", () => {
-  it("vi → en+ja → start_with(ja) skips English steps, routes to /languages/japanese", async () => {
+describe("OnboardingPage — multi-target → start_with → home", () => {
+  it("vi → en+ja → start_with(ja) → confirmation → finishes to home (/)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user); // English pre-checked
@@ -252,10 +251,10 @@ describe("OnboardingPage — multi-target → start_with → non-English track",
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(payload.native_language).toBe("vi");
     expect(payload.target_languages).toEqual(["ja", "en"]); // primary first
-    expect(payload.primary_goal).toBeUndefined(); // English-only fields not written
+    expect(payload.primary_goal).toBeUndefined(); // non-en primary: not written
     expect(payload.english_level).toBeUndefined();
     expect(navigateMock).toHaveBeenCalledWith(
-      "/languages/japanese",
+      "/",
       expect.objectContaining({ replace: true }),
     );
   });
@@ -309,8 +308,9 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(payload.native_language).toBe("en");
     expect(payload.target_languages).toEqual(["es"]);
+    // Skip also lands on home (/) — home is pair-aware for (en, es).
     expect(navigateMock).toHaveBeenCalledWith(
-      "/languages/spanish",
+      "/",
       expect.objectContaining({ replace: true }),
     );
   });
@@ -338,9 +338,7 @@ describe("OnboardingPage — confirmation summary + progress bar", () => {
     renderPage();
     await toTargetStepVi(user);
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    await user.click(screen.getByRole("radio", { name: /Học chung|General/ }));
-    // general goal → level → confirmation
-    await user.click(screen.getByRole("radio", { name: /Mới bắt đầu/ }));
+    // Single target → confirmation directly (goal/level gate removed).
     // Single-language: VI labels with NO "· Native" / "· Learning" EN tail.
     const native = screen.getByText(/Tiếng mẹ đẻ:/);
     const summaryRoot = native.closest("ul")!;

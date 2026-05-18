@@ -66,7 +66,11 @@ import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
-import { pickFirstLesson } from "@/lib/onboarding/firstLesson";
+// NOTE: pickFirstLesson (@/lib/onboarding/firstLesson) is intentionally
+// no longer imported — onboarding no longer routes to a goal-derived
+// first lesson; it lands on "/" (home) so goal-selection cannot gate
+// first entry. The helper file is kept in the repo for the future
+// in-app "personalize your path" wiring.
 import {
   GOAL_OPTIONS,
   LEVEL_OPTIONS,
@@ -109,12 +113,15 @@ function primaryTargetOf(draft: OnboardingDraft): TargetLang | null {
   return draft.target_languages[0] ?? null;
 }
 
-/** After the primary target is known: English routes through the
- *  existing goal-capture chain (preserves the (vi,en) experience —
- *  locked #14); any other language goes straight to confirmation and
- *  then into its /languages track. */
-function afterPrimaryStep(draft: OnboardingDraft): OnboardingStepId {
-  return primaryTargetOf(draft) === "en" ? "goal" : "confirmation";
+/** After the pair (native + target[s], primary chosen) is picked, go
+ *  straight to the confirmation → home. The goal/profession/level
+ *  chain must NOT gate first entry to the app (it can be offered later
+ *  in-app as optional personalization). Those step components + data
+ *  are intentionally kept in this file (not deleted) for that future
+ *  in-app wiring — they are simply unreachable from this state machine
+ *  now. */
+function afterPrimaryStep(_draft: OnboardingDraft): OnboardingStepId {
+  return "confirmation";
 }
 
 /**
@@ -169,7 +176,8 @@ function previousStep(
     case "level":
       return draft.primary_goal === "career" ? "profession" : "goal";
     case "confirmation":
-      if (primaryTargetOf(draft) === "en") return "level";
+      // goal/level are no longer in the forward flow — Back from
+      // confirmation returns to the last pair step.
       return multiTarget ? "start_with" : "target";
   }
 }
@@ -599,28 +607,11 @@ export default function OnboardingPage() {
     advance(updated);
   };
 
-  /** Route + reason for a finished/skipped flow. English primary →
-   *  existing goal-based routing (unchanged (vi,en) experience). Any
-   *  other primary → its /languages track. */
-  function resolveDestination(d: OnboardingDraft): {
-    route: string;
-    reason: string;
-  } {
-    const primary = primaryTargetOf(d);
-    if (primary && primary !== "en") {
-      const slug = TARGET_META[primary].slug;
-      return {
-        route: slug ? `/languages/${slug}` : "/",
-        reason: "language_track",
-      };
-    }
-    const fl = pickFirstLesson({
-      goal: d.primary_goal,
-      profession: d.profession,
-      level: d.english_level,
-    });
-    return { route: fl.route, reason: fl.reason };
-  }
+  // First entry always lands on "/" (home). Home is pair-aware (PR
+  // #588): it renders the chosen-pair experience for the learner's
+  // (native, target). Goal-based first-lesson routing is removed from
+  // onboarding so nothing gates entry to the app.
+  const HOME_ROUTE = "/";
 
   /**
    * Persist the pair (+ English-only fields when relevant) and
@@ -631,7 +622,6 @@ export default function OnboardingPage() {
     if (submitting) return;
     setSubmitting(true);
     setError(null);
-    const dest = resolveDestination(draft);
     const primary = primaryTargetOf(draft);
     // Persist locally FIRST — this is the anonymous source of truth and
     // must survive a Supabase blip (it also seeds the cache for a
@@ -671,15 +661,15 @@ export default function OnboardingPage() {
         goal: draft.primary_goal,
         profession: draft.profession,
         level: draft.english_level,
-        first_route: dest.route,
-        first_reason: dest.reason,
+        first_route: HOME_ROUTE,
+        first_reason: "onboarding_complete",
       });
-      nav(dest.route, { replace: true });
+      nav(HOME_ROUTE, { replace: true });
     } catch (err) {
       const msg = err instanceof Error ? err.message : "unknown_error";
       console.warn("[onboarding] finish threw; navigating anyway:", msg);
       setError(msg);
-      nav(dest.route, { replace: true });
+      nav(HOME_ROUTE, { replace: true });
     } finally {
       setSubmitting(false);
     }
@@ -699,12 +689,6 @@ export default function OnboardingPage() {
     setError(null);
     const native: NativeLang = draft.native_language ?? "vi";
     const target = RECOMMENDED_TARGET[native];
-    const skipDraft: OnboardingDraft = {
-      ...draft,
-      native_language: native,
-      target_languages: [target],
-    };
-    const dest = resolveDestination(skipDraft);
     // Same as finish: persist locally so the gate can't loop an
     // anonymous visitor back into the picker (skip = a deliberate pick
     // of the recommended pair).
@@ -731,12 +715,12 @@ export default function OnboardingPage() {
         native_language: native,
         target_languages: [target],
       });
-      nav(dest.route, { replace: true });
+      nav(HOME_ROUTE, { replace: true });
     } catch (err) {
       const msg = err instanceof Error ? err.message : "unknown_error";
       console.warn("[onboarding] skip threw; navigating anyway:", msg);
       setError(msg);
-      nav(dest.route, { replace: true });
+      nav(HOME_ROUTE, { replace: true });
     } finally {
       setSubmitting(false);
     }
