@@ -202,6 +202,15 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   if (/(^|[_-])level2($|[_-])/.test(idLower) || /(^|[_-])vip2($|[_-])/.test(idLower)) return "level2";
   if (/(^|[_-])level1($|[_-])/.test(idLower) || /(^|[_-])vip1($|[_-])/.test(idLower)) return "level1";
 
+  // English CEFR spine is free content (every english_* band JSON is .tier:"free").
+  // These ids carry NO vip/level token, so without this rule they fall through to
+  // the corrupted DB rooms.tier column. Classify a1/a2/b1/b2/c1/c2 + foundation as
+  // Level 0 here. CEFR (A1–C2) stays an orthogonal axis (placement test, ?cefr=,
+  // domain badge) — it is NOT the access ladder. This sits AFTER the vipN / level3
+  // -roman checks, so english_specialization_*_vip3_ii still resolves to "level3"
+  // via its vip3 token (parsed earlier) and is intentionally unaffected here.
+  if (/^english_(a1|a2|b1|b2|c1|c2|foundation)(_|$)/.test(idLower)) return "level0";
+
   if (/(^|[_-])level0($|[_-])/.test(idLower) || /(^|[_-])free($|[_-])/.test(idLower)) return "level0";
 
   const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
