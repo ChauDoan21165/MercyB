@@ -2,6 +2,47 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import OpenAI from "https://esm.sh/openai@4.56.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
+import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
+
+// Restored from deployed prod v127 (lost in PR #198). Abuse rate-limit:
+// 20 requests per minute per IP.
+const RATE_LIMIT_CONFIG = {
+  maxRequests: 20,
+  windowMs: 60_000,
+};
+
+// Restored from deployed prod v127 (lost in PR #198). Self-harm / medical
+// crisis interception: if the incoming user text contains any of these,
+// we return SAFE_RESPONSE *before* any LLM call.
+const CRISIS_KEYWORDS = [
+  "suicide",
+  "kill myself",
+  "want to die",
+  "end my life",
+  "self-harm",
+  "hurt myself",
+  "tự tử",
+  "muốn chết",
+  "kết thúc cuộc sống",
+  "tự làm hại",
+  "medication",
+  "diagnosis",
+  "prescribe",
+  "thuốc",
+  "chẩn đoán",
+  "kê đơn",
+];
+
+const SAFE_RESPONSE = {
+  en: "I'm not able to help with medical or emergency situations. Please contact a local doctor, therapist, or emergency service in your area.",
+  vi: "Mình không thể hỗ trợ các tình huống y khoa khẩn cấp. Bạn hãy liên hệ bác sĩ, chuyên gia trị liệu hoặc số khẩn cấp tại nơi bạn sống nhé.",
+};
+
+function containsCrisisKeywords(text: string): boolean {
+  const lower = String(text || "").toLowerCase();
+  return CRISIS_KEYWORDS.some((keyword) => lower.includes(keyword));
+}
 
 type TierDepth = "short" | "medium" | "high";
 
@@ -230,6 +271,19 @@ function tierPolicyForVip(vip: number): { depth: TierDepth; max_items: number } 
 serve(async (req) => {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
+  // Restored prod safety: abuse rate-limit by IP (20 req/min) before any work.
+  const clientIP = getClientIP(req);
+  const rateCheck = checkRateLimit(`guide-assistant:${clientIP}`, RATE_LIMIT_CONFIG);
+  if (!rateCheck.allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return rateLimitResponse(rateCheck.retryAfterSeconds ?? 60, {});
+  }
+
+  // Restored prod safety: global AI kill-switch.
+  if (!(await isAiEnabled())) {
+    return aiDisabledResponse("global", {});
+  }
+
   const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
   const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
   const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -250,6 +304,11 @@ serve(async (req) => {
   const user = userRes?.user;
 
   if (userErr || !user) return json({ error: "Unauthorized" }, 401);
+
+  // Restored prod safety: per-user AI kill-switch.
+  if (!(await isUserAiEnabled(user.id))) {
+    return aiDisabledResponse("user", {});
+  }
 
   // Admin client (for inserts/updates)
   const supabaseAdmin = createClient(SUPABASE_URL, SERVICE_ROLE);
@@ -275,6 +334,17 @@ serve(async (req) => {
 
   if (!userMessage) return json({ error: "Missing userMessage" }, 400);
   if (!room_id) return json({ error: "Missing room_id" }, 400);
+
+  // Restored prod safety: self-harm / medical crisis interception.
+  // Runs BEFORE any LLM call. Wording preserved verbatim from prod v127.
+  if (containsCrisisKeywords(userMessage)) {
+    const language = String(body?.language ?? "").toLowerCase();
+    const answer =
+      language === "vi"
+        ? `${SAFE_RESPONSE.vi}\n\n${SAFE_RESPONSE.en}`
+        : `${SAFE_RESPONSE.en}\n\n${SAFE_RESPONSE.vi}`;
+    return json({ request_id: requestId, response: answer }, 200);
+  }
 
   // Load VIP rank (use your mb_user_effective_rank view/table if it exists)
   let vip_rank = 1;
@@ -391,6 +461,15 @@ ${JSON.stringify(plan, null, 2)}
       request_id: requestId,
     });
 
+    // Restored prod safety: shared AI metering (feeds the kill-switch dashboard).
+    await logAiUsage({
+      userId: user.id,
+      model,
+      tokensInput: first.usage?.prompt_tokens ?? 0,
+      tokensOutput: first.usage?.completion_tokens ?? 0,
+      endpoint: "guide-assistant",
+    });
+
     if (parsed1) {
       const normalized = normalizePronunciationJson(parsed1, tierPolicy.depth);
       const weaknesses = extractWeaknesses(normalized);
@@ -443,6 +522,15 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
       total_tokens: second.usage?.total_tokens ?? 0,
       room_id,
       request_id: requestId,
+    });
+
+    // Restored prod safety: shared AI metering (feeds the kill-switch dashboard).
+    await logAiUsage({
+      userId: user.id,
+      model,
+      tokensInput: second.usage?.prompt_tokens ?? 0,
+      tokensOutput: second.usage?.completion_tokens ?? 0,
+      endpoint: "guide-assistant",
     });
 
     if (parsed2) {
@@ -515,6 +603,15 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
     total_tokens: normal.usage?.total_tokens ?? 0,
     room_id,
     request_id: requestId,
+  });
+
+  // Restored prod safety: shared AI metering (feeds the kill-switch dashboard).
+  await logAiUsage({
+    userId: user.id,
+    model,
+    tokensInput: normal.usage?.prompt_tokens ?? 0,
+    tokensOutput: normal.usage?.completion_tokens ?? 0,
+    endpoint: "guide-assistant",
   });
 
   return json({ request_id: requestId, response: normal.choices?.[0]?.message?.content ?? "" }, 200);
