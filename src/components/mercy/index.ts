@@ -12,9 +12,6 @@ export { MercyAnimation, HaloPulse, WingsShimmer, GuidingSpark, RippleWelcome, C
 // Style selector
 export { MercyStyleSelector } from './MercyStyleSelector';
 
-// Host Core
-export { TeacherMercyCore, TeacherMercyButton } from './TeacherMercyCoreSafe';
-
 // Provider & Hooks
 export { 
   TeacherMercyProvider, 
