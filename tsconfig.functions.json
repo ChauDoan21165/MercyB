@@ -53,6 +53,12 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
+  // TODO(post-Phase-2, extension point): broaden edge-function typecheck
+  // coverage beyond placement-session — add other functions' URL-free
+  // subtrees to THIS array. Blocked today by transitive Deno `https://`
+  // imports (_shared/* → esm.sh, */index.ts → deno.land) that Node tsc
+  // cannot resolve; resolution is a `deno check` gate OR a _shared
+  // refactor off URL imports — a separate concern, Chau's call then.
   "include": ["supabase/functions/placement-session/**/*.ts"],
   "exclude": [
     "node_modules",
