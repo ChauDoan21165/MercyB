@@ -2,6 +2,7 @@
   "name": "Bipolar Support",
   "name_vi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
   "description": "Advanced strategies for managing bipolar disorder with therapy and balance",
+  "description_vi": "Các chiến lược nâng cao để kiểm soát rối loạn lưỡng cực, với trị liệu và sự cân bằng.",
   "keywords_en": [
     "bipolar disorder",
     "mood management",
@@ -135,7 +136,7 @@
   },
   "content": {
     "en": "Advanced strategies for managing bipolar disorder with therapy and balance",
-    "vi": ""
+    "vi": "Các chiến lược nâng cao để kiểm soát rối loạn lưỡng cực, với trị liệu và sự cân bằng."
   },
   "tier": "vip2",
   "domain": "Mental Health",
