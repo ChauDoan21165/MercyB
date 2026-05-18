@@ -908,7 +908,7 @@ export default function Home() {
             <span style={headlineAccent}>Real Progress.</span>
           </h1>
           <div style={subline}>
-            Real language. <span style={{ color: "rgba(13,148,136,0.92)" }}>Real progress.</span>
+            English for real <span style={{ color: "rgba(13,148,136,0.92)" }}>life</span>.
           </div>
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(13), fontWeight: 600, color: isPhone ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
             {isPhone ? "See your pronunciation score in 12 seconds." : "See your pronunciation score in 12 seconds — no signup."}
