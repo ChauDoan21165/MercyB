@@ -139,26 +139,25 @@ export default function Home() {
     }
   }, [access.isAuthenticated, access.loading, access.isTrialExpired]);
 
-  // Onboarding gate (PR feat/onboarding-rebuild). New-cohort users
-  // (created on or after 2026-04-27) who have not completed or
-  // skipped the goal-capture flow get redirected to /onboarding on
-  // first visit. Legacy users — created earlier — are unaffected:
-  // their onboarded_at stays NULL and this date filter lets them
-  // pass through. Reads from the shared profile cache; failures never
-  // block Home.
+  // Onboarding gate (Duolingo pair-selection — PR 2). Single source of
+  // truth: profiles.native_language. NULL ⇒ the user has not completed
+  // pair-selection onboarding → redirect to /onboarding. Existing users
+  // were backfilled to 'vi' by migration 20260615000000 (option (c)),
+  // so they are never redirected — nothing changes for them. Only
+  // genuinely new users (native_language still NULL) enter the flow,
+  // which always writes native_language on finish AND on skip, so the
+  // redirect cannot loop. Reads the shared profile cache; failures
+  // never block Home (undefined row ⇒ no redirect).
   const { data: onboardingProfile } = useProfileQuery(
     access.isAuthenticated && !access.loading ? user?.id ?? null : null,
   );
   useEffect(() => {
     const row = onboardingProfile as
-      | { onboarded_at?: string | null; created_at?: string | null }
+      | { native_language?: string | null }
       | null
       | undefined;
     if (!row) return;
-    const ONBOARDING_COHORT_CUTOFF = "2026-04-27T00:00:00Z";
-    if (row.onboarded_at) return;
-    if (!row.created_at) return;
-    if (row.created_at < ONBOARDING_COHORT_CUTOFF) return;
+    if (row.native_language) return;
     nav("/onboarding", { replace: true });
   }, [onboardingProfile, nav]);
 

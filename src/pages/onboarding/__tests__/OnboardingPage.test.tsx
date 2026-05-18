@@ -64,6 +64,15 @@ function renderPage() {
   );
 }
 
+const clickStart = (user: ReturnType<typeof userEvent.setup>) =>
+  user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
+
+/** welcome → native(vi) → lands on the target step (English pre-checked). */
+async function toTargetStepVi(user: ReturnType<typeof userEvent.setup>) {
+  await clickStart(user);
+  await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
+}
+
 beforeEach(() => {
   updateMock.mockClear();
   eqMock.mockClear();
@@ -78,186 +87,233 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("OnboardingPage — initial render + welcome step", () => {
-  it("renders the welcome step on first mount with VI primary heading", () => {
+describe("OnboardingPage — welcome + native step (Screen 1)", () => {
+  it("renders the welcome step first with VI primary heading", () => {
     renderPage();
-    // VI heading appears (Mercy intro)
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Chào bạn/);
-    // Bắt đầu CTA visible
-    expect(screen.getByRole("button", { name: /Let's start|Bắt đầu/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      /Chào bạn/,
+    );
+    expect(
+      screen.getByRole("button", { name: /Let's start|Bắt đầu/ }),
+    ).toBeInTheDocument();
   });
 
-  it("renders both VI and EN strings (bilingual primary/secondary)", () => {
-    renderPage();
-    // Welcome body — VI present
-    expect(screen.getByText(/60 giây/)).toBeInTheDocument();
-    // EN secondary present
-    expect(screen.getByText(/60 seconds/)).toBeInTheDocument();
-  });
-
-  it("does NOT show a Back button on the first step", () => {
-    renderPage();
-    expect(screen.queryByRole("button", { name: /Back/i })).toBeNull();
-  });
-
-  it("clicking the welcome CTA advances to the goal step", async () => {
+  it("welcome CTA advances to the NATIVE step (not goal)", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Let's start|Bắt đầu/ }));
-    expect(screen.getByText(/Bạn học tiếng Anh để làm gì/)).toBeInTheDocument();
+    await clickStart(user);
+    expect(
+      screen.getByText(/Tiếng mẹ đẻ của bạn là gì/),
+    ).toBeInTheDocument();
+    // goal copy must NOT be on screen yet
+    expect(screen.queryByText(/Bạn học tiếng Anh để làm gì/)).toBeNull();
+  });
+
+  it("native step offers both Tiếng Việt and English (en-native greenlit)", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await clickStart(user);
+    expect(
+      screen.getByRole("radio", { name: /Tiếng Việt/ }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("radio", { name: /Tiếng Anh|English/ }),
+    ).toBeInTheDocument();
   });
 });
 
-describe("OnboardingPage — goal step routing", () => {
-  it("selecting 'career' advances to the profession step", async () => {
+describe("OnboardingPage — target step (Screen 2, matrix-filtered)", () => {
+  it("vi-native menu excludes Spanish (decision 2) and pre-checks English", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    // "Đi làm" / Career card
-    await user.click(screen.getByRole("radio", { name: /Đi làm/ }));
-    expect(screen.getByText(/Bạn làm nghề gì/)).toBeInTheDocument();
+    await toTargetStepVi(user);
+    expect(
+      screen.getByText(/Bạn muốn học ngôn ngữ nào/),
+    ).toBeInTheDocument();
+    // Spanish is intentionally absent for vi-native
+    expect(
+      screen.queryByRole("checkbox", { name: /Tây Ban Nha|Spanish/ }),
+    ).toBeNull();
+    // English present + pre-checked (the 95% path = one Continue tap)
+    const en = screen.getByRole("checkbox", { name: /Tiếng Anh/ });
+    expect(en).toHaveAttribute("aria-checked", "true");
   });
 
-  it("selecting a non-career goal SKIPS the profession step (jumps to level)", async () => {
+  it("shows honesty badges: Korean limited, Chinese B2–C2-only (locked #7)", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    // IELTS card → should skip profession entirely
-    await user.click(screen.getByRole("radio", { name: /Luyện IELTS/ }));
-    expect(screen.getByText(/Trình độ tiếng Anh hiện tại/)).toBeInTheDocument();
-    expect(screen.queryByText(/Bạn làm nghề gì/)).toBeNull();
+    await toTargetStepVi(user);
+    expect(screen.getByText(/only for now/i)).toBeInTheDocument(); // zh skeletal
+    expect(screen.getAllByText(/Limited content/i).length).toBeGreaterThan(0); // ko partial
   });
 
-  it("selecting a profession advances to the level step", async () => {
+  it("en-native menu includes Spanish (its true pair) + Vietnamese", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Đi làm/ }));
-    await user.click(screen.getByRole("radio", { name: /Thợ nail/ }));
-    expect(screen.getByText(/Trình độ tiếng Anh hiện tại/)).toBeInTheDocument();
-  });
-
-  it("selecting a level advances to the confirmation step", async () => {
-    const user = userEvent.setup();
-    renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Luyện VSTEP/ }));
-    await user.click(screen.getByRole("radio", { name: /Đang phát triển/ }));
-    expect(screen.getByText(/Đã sẵn sàng/)).toBeInTheDocument();
-  });
-});
-
-describe("OnboardingPage — back button", () => {
-  it("Back from profession returns to goal", async () => {
-    const user = userEvent.setup();
-    renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Đi làm/ }));
-    expect(screen.getByText(/Bạn làm nghề gì/)).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: /^Back/ }));
-    expect(screen.getByText(/Bạn học tiếng Anh để làm gì/)).toBeInTheDocument();
-  });
-
-  it("Back from level (non-career path) returns to goal, not profession", async () => {
-    const user = userEvent.setup();
-    renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Luyện TOEIC/ }));
-    expect(screen.getByText(/Trình độ tiếng Anh hiện tại/)).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: /^Back/ }));
-    expect(screen.getByText(/Bạn học tiếng Anh để làm gì/)).toBeInTheDocument();
+    await clickStart(user);
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
+    expect(
+      screen.getByRole("checkbox", { name: /Tây Ban Nha|Spanish/ }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("checkbox", { name: /Tiếng Việt|Vietnamese/ }),
+    ).toBeInTheDocument();
   });
 });
 
-describe("OnboardingPage — confirmation + persist", () => {
-  it("Hoàn tất persists all chosen fields to profiles via supabase update", async () => {
+describe("OnboardingPage — single English target preserves the (vi,en) flow", () => {
+  it("vi → English (only) → Continue → reaches the English goal step", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Đi làm/ }));
+    await toTargetStepVi(user); // English already pre-checked
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    // No start_with (single target); English primary → goal step shows
+    expect(
+      screen.getByText(/Bạn học tiếng Anh để làm gì/),
+    ).toBeInTheDocument();
+  });
+
+  it("full English path finishes: writes the pair + English fields", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    await user.click(screen.getByRole("radio", { name: /Đi làm/ })); // career
     await user.click(screen.getByRole("radio", { name: /Y tế|Healthcare/ }));
     await user.click(screen.getByRole("radio", { name: /Đang phát triển/ }));
     await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
 
     expect(fromMock).toHaveBeenCalledWith("profiles");
-    expect(updateMock).toHaveBeenCalledTimes(1);
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
+    expect(payload.native_language).toBe("vi");
+    expect(payload.target_languages).toEqual(["en"]);
     expect(payload.primary_goal).toBe("career");
     expect(payload.profession).toBe("healthcare");
     expect(payload.english_level).toBe("intermediate");
     expect(typeof payload.onboarded_at).toBe("string");
     expect(eqMock).toHaveBeenCalledWith("id", "user-uuid-1");
-  });
-
-  it("Hoàn tất navigates to the picked first-lesson route", async () => {
-    const user = userEvent.setup();
-    renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Luyện IELTS/ }));
-    await user.click(screen.getByRole("radio", { name: /Đã giỏi rồi/ }));
-    await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
     expect(navigateMock).toHaveBeenCalledWith(
-      "/exam-prep/ielts/speaking",
+      "/professions/healthcare",
       expect.objectContaining({ replace: true }),
     );
   });
 });
 
-describe("OnboardingPage — skip flow", () => {
-  it("Skip link sets onboarded_at without other fields and navigates Home", async () => {
+describe("OnboardingPage — multi-target → start_with → non-English track", () => {
+  it("vi → en+ja → start_with(ja) skips English steps, routes to /languages/japanese", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Skip onboarding|^Skip/i }));
+    await toTargetStepVi(user); // English pre-checked
+    await user.click(screen.getByRole("checkbox", { name: /Tiếng Nhật/ })); // add ja
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    // >1 target → start_with step appears
+    expect(
+      screen.getByText(/Bạn muốn bắt đầu với ngôn ngữ nào/),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("radio", { name: /Tiếng Nhật/ }));
+    // ja primary → English goal/level skipped → confirmation
+    expect(screen.getByText(/Đã sẵn sàng/)).toBeInTheDocument();
+    expect(screen.queryByText(/Bạn học tiếng Anh để làm gì/)).toBeNull();
+
+    await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
+    const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
+    expect(payload.native_language).toBe("vi");
+    expect(payload.target_languages).toEqual(["ja", "en"]); // primary first
+    expect(payload.primary_goal).toBeUndefined(); // English-only fields not written
+    expect(payload.english_level).toBeUndefined();
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/languages/japanese",
+      expect.objectContaining({ replace: true }),
+    );
+  });
+});
+
+describe("OnboardingPage — skip flow cannot loop the gate", () => {
+  it("skip writes native_language + recommended target (not just onboarded_at)", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    // Skip straight from welcome — no native chosen yet
+    await user.click(
+      screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
+    );
     expect(updateMock).toHaveBeenCalledTimes(1);
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(typeof payload.onboarded_at).toBe("string");
-    expect(payload.primary_goal).toBeUndefined();
-    expect(payload.profession).toBeUndefined();
-    expect(payload.english_level).toBeUndefined();
+    // CRITICAL: native_language must be written or the Home gate loops
+    expect(payload.native_language).toBe("vi");
+    expect(payload.target_languages).toEqual(["en"]);
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),
     );
   });
 
-  it("Skip flow does not crash when supabase is not called (no user id)", async () => {
+  it("skip with no user id does not call supabase but still navigates", async () => {
     mockUseAuth.mockReturnValue({ user: null });
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Skip onboarding|^Skip/i }));
+    await user.click(
+      screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
+    );
     expect(updateMock).not.toHaveBeenCalled();
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),
     );
   });
-});
 
-describe("OnboardingPage — progress bar accessibility", () => {
-  it("renders a progressbar with aria-valuenow that advances by step", async () => {
-    const user = userEvent.setup();
-    const { container } = renderPage();
-    const findProgress = () => container.querySelector('[role="progressbar"]')!;
-    expect(findProgress().getAttribute("aria-valuenow")).toBe("1");
-    expect(findProgress().getAttribute("aria-valuemax")).toBe("5");
-
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    expect(findProgress().getAttribute("aria-valuenow")).toBe("2");
-    await user.click(screen.getByRole("radio", { name: /Đi du lịch|Travel/ }));
-    expect(findProgress().getAttribute("aria-valuenow")).toBe("4"); // skipped profession → level (index 3 → valuenow 4)
-  });
-
-  it("confirmation step shows summary of all selected fields in VI", async () => {
+  it("skip after choosing English native uses the en recommended pair (es)", async () => {
     const user = userEvent.setup();
     renderPage();
-    await user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-    await user.click(screen.getByRole("radio", { name: /Đi làm/ }));
-    await user.click(screen.getByRole("radio", { name: /Nhà hàng/ }));
+    await clickStart(user);
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
+    await user.click(
+      screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
+    );
+    const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
+    expect(payload.native_language).toBe("en");
+    expect(payload.target_languages).toEqual(["es"]);
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/languages/spanish",
+      expect.objectContaining({ replace: true }),
+    );
+  });
+});
+
+describe("OnboardingPage — back navigation through new steps", () => {
+  it("Back from target returns to native", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+    expect(screen.getByText(/Bạn muốn học ngôn ngữ nào/)).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /^Back/ }));
+    expect(screen.getByText(/Tiếng mẹ đẻ của bạn là gì/)).toBeInTheDocument();
+  });
+
+  it("no Back button on the first (welcome) step", () => {
+    renderPage();
+    expect(screen.queryByRole("button", { name: /Back/i })).toBeNull();
+  });
+});
+
+describe("OnboardingPage — confirmation summary + progress bar", () => {
+  it("confirmation summarizes the chosen pair in VI", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    await user.click(screen.getByRole("radio", { name: /Học chung|General/ }));
+    // general goal → level → confirmation
     await user.click(screen.getByRole("radio", { name: /Mới bắt đầu/ }));
-    const summary = screen.getByText(/Mục tiêu/);
-    expect(summary).toBeInTheDocument();
-    const summaryRoot = summary.closest("ul")!;
-    expect(within(summaryRoot).getByText(/Nhà hàng/)).toBeInTheDocument();
-    expect(within(summaryRoot).getByText(/Mới bắt đầu/)).toBeInTheDocument();
+    const native = screen.getByText(/Tiếng mẹ đẻ · Native/);
+    const summaryRoot = native.closest("ul")!;
+    expect(within(summaryRoot).getByText(/Học · Learning/)).toBeInTheDocument();
+  });
+
+  it("progress bar exposes aria-valuemax of 8 (full step set)", () => {
+    const { container } = renderPage();
+    const progress = container.querySelector('[role="progressbar"]')!;
+    expect(progress.getAttribute("aria-valuemax")).toBe("8");
+    expect(progress.getAttribute("aria-valuenow")).toBe("1");
   });
 });

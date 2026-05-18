@@ -1,30 +1,44 @@
 // src/pages/onboarding/OnboardingPage.tsx
 //
-// 60-second goal-capture onboarding at /onboarding.
+// Duolingo-style pair-selection onboarding at /onboarding (PR 2 of 3).
 //
-// Five steps in display order:
-//   1. welcome      — friendly intro from Mercy, "Bắt đầu" CTA
-//   2. goal         — pick a primary goal (career / ielts / vstep /
-//                     toeic / travel / general)
-//   3. profession   — only when goal === "career"; otherwise skipped
-//   4. level        — beginner / elementary / intermediate / advanced
-//   5. confirmation — summary + "Hoàn tất" → persist + navigate
+// Steps in canonical order (some conditionally skipped — see nextStep):
+//   1. welcome      — friendly intro from Mercy
+//   2. native       — NEW: pick native language (vi | en). Screen 1.
+//   3. target       — NEW: multi-select target language(s), filtered by
+//                     the canonical content-readiness matrix for the
+//                     chosen native. Screen 2.
+//   4. start_with   — NEW: only when >1 target chosen — pick the primary
+//                     (the one Mercy opens first). Screen 3.
+//   5. goal         — only when the primary target is English
+//                     (IELTS/TOEIC/VSTEP/career are English-specific)
+//   6. profession   — only when goal === "career"
+//   7. level         — only when the primary target is English
+//   8. confirmation — summary + "Hoàn tất" → persist + navigate
 //
-// Persistence: on confirmation, the four chosen fields plus
-// onboarded_at are written in one update to public.profiles. The
-// auth session must exist; the page is wrapped in RequireAuth at
-// the router level. On skip, only onboarded_at is written.
+// The (vi → en) path is preserved exactly (locked #14): a vi-native
+// learner who picks English still flows through goal/profession/level
+// → the same pickFirstLesson routing as before. Non-English primaries
+// skip the English-specific steps and route into their /languages
+// track.
 //
-// Telemetry: each step transition emits a console.log line with a
-// structured payload prefixed [onboarding-telemetry]. The original
-// spec asked for an event_log table, but that table does not exist
-// in this schema today; emitting to console keeps the rest of the
-// flow shippable and lets a future analytics PR pick the events up.
+// Persistence: on confirmation, native_language + target_languages
+// (ordered, primary first) + onboarded_at — plus, ONLY when the primary
+// target is English, primary_goal/profession/english_level — are
+// written in one update to public.profiles. On skip, native_language +
+// the recommended target + onboarded_at are written so the
+// `native_language IS NULL` Home gate cannot loop. The new
+// native_language / target_languages columns are user-writable by the
+// `authenticated` role (verified in PR 1: not among the #578 frozen
+// columns).
+//
+// Telemetry: each step transition emits a console.log line prefixed
+// [onboarding-telemetry] (no event_log table in this schema yet).
 //
 // Tone discipline: VI primary, EN secondary in lighter weight. No
 // shame language. Mercy's voice — encouraging, like a kind teacher.
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 
@@ -34,14 +48,21 @@ import { pickFirstLesson } from "@/lib/onboarding/firstLesson";
 import {
   GOAL_OPTIONS,
   LEVEL_OPTIONS,
+  NATIVE_OPTIONS,
   ONBOARDING_COPY,
   ONBOARDING_STEPS,
   PROFESSION_OPTIONS,
+  RECOMMENDED_TARGET,
+  TARGET_MENU,
+  TARGET_META,
+  targetBadge,
+  type NativeLang,
   type OnboardingDraft,
   type OnboardingGoal,
   type OnboardingLevel,
   type OnboardingProfession,
   type OnboardingStepId,
+  type TargetLang,
 } from "@/lib/onboarding/types";
 
 const TELEMETRY_PREFIX = "[onboarding-telemetry]";
@@ -58,11 +79,24 @@ function logTelemetry(
   }
 }
 
+/** Primary target = first element of the ordered target list (set by
+ *  the start_with step, or the single target when only one chosen). */
+function primaryTargetOf(draft: OnboardingDraft): TargetLang | null {
+  return draft.target_languages[0] ?? null;
+}
+
+/** After the primary target is known: English routes through the
+ *  existing goal-capture chain (preserves the (vi,en) experience —
+ *  locked #14); any other language goes straight to confirmation and
+ *  then into its /languages track. */
+function afterPrimaryStep(draft: OnboardingDraft): OnboardingStepId {
+  return primaryTargetOf(draft) === "en" ? "goal" : "confirmation";
+}
+
 /**
- * Step navigation logic. Conditional skip of the profession step
- * happens here so the rest of the component stays a flat finite
- * state machine. Returns the next step id given the current step
- * and the current draft.
+ * Step navigation. Conditional skips (start_with only for multi-target;
+ * goal/profession/level only for an English primary) live here so the
+ * component stays a flat finite state machine.
  */
 function nextStep(
   current: OnboardingStepId,
@@ -70,9 +104,16 @@ function nextStep(
 ): OnboardingStepId {
   switch (current) {
     case "welcome":
-      return "goal";
+      return "native";
+    case "native":
+      return "target";
+    case "target":
+      return draft.target_languages.length > 1
+        ? "start_with"
+        : afterPrimaryStep(draft);
+    case "start_with":
+      return afterPrimaryStep(draft);
     case "goal":
-      // Career path branches to profession; everything else jumps to level.
       return draft.primary_goal === "career" ? "profession" : "level";
     case "profession":
       return "level";
@@ -87,17 +128,25 @@ function previousStep(
   current: OnboardingStepId,
   draft: OnboardingDraft,
 ): OnboardingStepId {
+  const multiTarget = draft.target_languages.length > 1;
   switch (current) {
     case "welcome":
       return "welcome";
-    case "goal":
+    case "native":
       return "welcome";
+    case "target":
+      return "native";
+    case "start_with":
+      return "target";
+    case "goal":
+      return multiTarget ? "start_with" : "target";
     case "profession":
       return "goal";
     case "level":
       return draft.primary_goal === "career" ? "profession" : "goal";
     case "confirmation":
-      return "level";
+      if (primaryTargetOf(draft) === "en") return "level";
+      return multiTarget ? "start_with" : "target";
   }
 }
 
@@ -107,6 +156,22 @@ interface CardChoice<T extends string> {
   description?: { vi: string; en: string };
   icon?: string;
 }
+
+const cardBase = (isSelected: boolean): React.CSSProperties => ({
+  width: "100%",
+  textAlign: "left",
+  borderRadius: 16,
+  border: `1px solid ${isSelected ? "rgba(180,60,100,0.55)" : "rgba(0,0,0,0.10)"}`,
+  background: isSelected
+    ? "linear-gradient(150deg, rgba(255,240,248,0.95) 0%, rgba(255,247,250,0.95) 100%)"
+    : "white",
+  padding: "14px 16px",
+  cursor: "pointer",
+  boxShadow: isSelected
+    ? "0 6px 16px rgba(180,60,100,0.10)"
+    : "0 2px 6px rgba(0,0,0,0.04)",
+  transition: "all 120ms ease",
+});
 
 function ChoiceGrid<T extends string>({
   choices,
@@ -139,21 +204,7 @@ function ChoiceGrid<T extends string>({
             role="radio"
             aria-checked={isSelected}
             onClick={() => onSelect(c.value)}
-            style={{
-              width: "100%",
-              textAlign: "left",
-              borderRadius: 16,
-              border: `1px solid ${isSelected ? "rgba(180,60,100,0.55)" : "rgba(0,0,0,0.10)"}`,
-              background: isSelected
-                ? "linear-gradient(150deg, rgba(255,240,248,0.95) 0%, rgba(255,247,250,0.95) 100%)"
-                : "white",
-              padding: "14px 16px",
-              cursor: "pointer",
-              boxShadow: isSelected
-                ? "0 6px 16px rgba(180,60,100,0.10)"
-                : "0 2px 6px rgba(0,0,0,0.04)",
-              transition: "all 120ms ease",
-            }}
+            style={cardBase(isSelected)}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               {c.icon ? (
@@ -193,6 +244,109 @@ function ChoiceGrid<T extends string>({
                     {c.description.vi}
                   </div>
                 ) : null}
+              </div>
+              {isSelected ? (
+                <Check size={18} color="rgba(180,60,100,0.80)" />
+              ) : null}
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/** Multi-select target grid. Honest "limited content" / "B2–C2 only
+ *  for now" badges per the canonical matrix (locked #7). */
+function TargetGrid({
+  native,
+  selected,
+  onToggle,
+}: {
+  native: NativeLang;
+  selected: TargetLang[];
+  onToggle: (t: TargetLang) => void;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label="Target languages"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gap: 10,
+        marginTop: 16,
+      }}
+    >
+      {TARGET_MENU[native].map((item) => {
+        const meta = TARGET_META[item.value];
+        const isSelected = selected.includes(item.value);
+        const badge = targetBadge(item);
+        return (
+          <button
+            key={item.value}
+            type="button"
+            role="checkbox"
+            aria-checked={isSelected}
+            onClick={() => onToggle(item.value)}
+            style={cardBase(isSelected)}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>
+                {meta.flag}
+              </span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 800,
+                    color: "rgba(15,23,42,0.92)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  {meta.labelVi}
+                  {item.recommended ? (
+                    <span
+                      style={{
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: "rgba(13,148,136,0.95)",
+                        background: "rgba(20,184,166,0.12)",
+                        borderRadius: 999,
+                        padding: "2px 8px",
+                      }}
+                    >
+                      Gợi ý · Recommended
+                    </span>
+                  ) : null}
+                  {badge ? (
+                    <span
+                      style={{
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: "rgba(180,83,9,0.95)",
+                        background: "rgba(217,119,6,0.12)",
+                        borderRadius: 999,
+                        padding: "2px 8px",
+                      }}
+                    >
+                      {badge.vi} · {badge.en}
+                    </span>
+                  ) : null}
+                </div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: "rgba(0,0,0,0.5)",
+                    marginTop: 2,
+                  }}
+                >
+                  {meta.labelEn}
+                </div>
               </div>
               {isSelected ? (
                 <Check size={18} color="rgba(180,60,100,0.80)" />
@@ -268,12 +422,33 @@ function StepHeader({
   );
 }
 
+const primaryButtonStyle = (disabled: boolean): React.CSSProperties => ({
+  marginTop: 22,
+  width: "100%",
+  padding: "12px 18px",
+  borderRadius: 9999,
+  border: "none",
+  background: disabled
+    ? "rgba(0,0,0,0.10)"
+    : "linear-gradient(135deg, #B45309 0%, #D97706 50%, #14B8A6 100%)",
+  color: "white",
+  fontSize: 15,
+  fontWeight: 800,
+  cursor: disabled ? "not-allowed" : "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 6,
+});
+
 export default function OnboardingPage() {
   const nav = useNavigate();
   const { user } = useAuth();
   const [step, setStep] = useState<OnboardingStepId>("welcome");
   const [stepStartedAt, setStepStartedAt] = useState<number>(() => Date.now());
   const [draft, setDraft] = useState<OnboardingDraft>({
+    native_language: null,
+    target_languages: [],
     primary_goal: null,
     profession: null,
     english_level: null,
@@ -290,16 +465,6 @@ export default function OnboardingPage() {
   const currentIndex = ONBOARDING_STEPS.indexOf(step);
   const isLastStep = step === "confirmation";
   const isFirstStep = step === "welcome";
-
-  const firstLesson = useMemo(
-    () =>
-      pickFirstLesson({
-        goal: draft.primary_goal,
-        profession: draft.profession,
-        level: draft.english_level,
-      }),
-    [draft],
-  );
 
   const advance = (overrideDraft?: OnboardingDraft) => {
     const effectiveDraft = overrideDraft ?? draft;
@@ -319,11 +484,55 @@ export default function OnboardingPage() {
     if (prev !== step) setStep(prev);
   };
 
+  const handleNativeSelect = (native: NativeLang) => {
+    // Native drives the target menu, so changing it resets targets and
+    // pre-checks that native's recommended target (the 95% path needs
+    // only a Continue tap).
+    const updated: OnboardingDraft = {
+      ...draft,
+      native_language: native,
+      target_languages: [RECOMMENDED_TARGET[native]],
+    };
+    setDraft(updated);
+    advance(updated);
+  };
+
+  const handleTargetToggle = (t: TargetLang) => {
+    setDraft((d) => {
+      const has = d.target_languages.includes(t);
+      return {
+        ...d,
+        target_languages: has
+          ? d.target_languages.filter((x) => x !== t)
+          : [...d.target_languages, t],
+      };
+    });
+  };
+
+  const handleTargetContinue = () => {
+    if (draft.target_languages.length === 0) return;
+    advance();
+  };
+
+  const handleStartWithSelect = (t: TargetLang) => {
+    // Move the chosen language to index 0 (primary); keep the rest in
+    // their existing relative order.
+    const reordered: TargetLang[] = [
+      t,
+      ...draft.target_languages.filter((x) => x !== t),
+    ];
+    const updated: OnboardingDraft = {
+      ...draft,
+      target_languages: reordered,
+    };
+    setDraft(updated);
+    advance(updated);
+  };
+
   const handleGoalSelect = (goal: OnboardingGoal) => {
     const updated: OnboardingDraft = {
       ...draft,
       primary_goal: goal,
-      // Clear profession if the user changed away from career.
       profession: goal === "career" ? draft.profession : null,
     };
     setDraft(updated);
@@ -342,23 +551,54 @@ export default function OnboardingPage() {
     advance(updated);
   };
 
+  /** Route + reason for a finished/skipped flow. English primary →
+   *  existing goal-based routing (unchanged (vi,en) experience). Any
+   *  other primary → its /languages track. */
+  function resolveDestination(d: OnboardingDraft): {
+    route: string;
+    reason: string;
+  } {
+    const primary = primaryTargetOf(d);
+    if (primary && primary !== "en") {
+      const slug = TARGET_META[primary].slug;
+      return {
+        route: slug ? `/languages/${slug}` : "/",
+        reason: "language_track",
+      };
+    }
+    const fl = pickFirstLesson({
+      goal: d.primary_goal,
+      profession: d.profession,
+      level: d.english_level,
+    });
+    return { route: fl.route, reason: fl.reason };
+  }
+
   /**
-   * Persist the full draft + onboarded_at and navigate to the picked
-   * first-lesson route. On Supabase failure we still navigate — the
-   * user shouldn't be trapped in onboarding because of a network blip.
+   * Persist the pair (+ English-only fields when relevant) and
+   * navigate. On Supabase failure we still navigate — the user must
+   * never be trapped in onboarding by a network blip.
    */
   const handleFinish = async () => {
     if (submitting) return;
     setSubmitting(true);
     setError(null);
+    const dest = resolveDestination(draft);
+    const primary = primaryTargetOf(draft);
     try {
       if (user?.id) {
-        const payload = {
+        const payload: Record<string, unknown> = {
           onboarded_at: new Date().toISOString(),
-          primary_goal: draft.primary_goal,
-          profession: draft.profession,
-          english_level: draft.english_level,
+          native_language: draft.native_language,
+          target_languages: draft.target_languages,
         };
+        // English-specific intent only makes sense for an English
+        // primary target — leave the columns NULL otherwise.
+        if (primary === "en") {
+          payload.primary_goal = draft.primary_goal;
+          payload.profession = draft.profession;
+          payload.english_level = draft.english_level;
+        }
         const { error: updateError } = await supabase
           .from("profiles")
           .update(payload)
@@ -368,41 +608,58 @@ export default function OnboardingPage() {
             "[onboarding] profiles update failed; navigating anyway:",
             updateError.message,
           );
-          // Don't block — telemetry below; we still navigate.
         }
       }
       logTelemetry("onboarding_complete", {
+        native_language: draft.native_language,
+        target_languages: draft.target_languages,
+        primary_target: primary,
         goal: draft.primary_goal,
         profession: draft.profession,
         level: draft.english_level,
-        first_lesson_route: firstLesson.route,
-        first_lesson_reason: firstLesson.reason,
+        first_route: dest.route,
+        first_reason: dest.reason,
       });
-      nav(firstLesson.route, { replace: true });
+      nav(dest.route, { replace: true });
     } catch (err) {
       const msg = err instanceof Error ? err.message : "unknown_error";
       console.warn("[onboarding] finish threw; navigating anyway:", msg);
       setError(msg);
-      nav(firstLesson.route, { replace: true });
+      nav(dest.route, { replace: true });
     } finally {
       setSubmitting(false);
     }
   };
 
   /**
-   * Skip flow: write only onboarded_at = NOW so the gate stops
-   * redirecting the user. Goal/profession/level stay NULL. Navigate
-   * to / (Home) — the picker for missing inputs lands there anyway.
+   * Skip flow: write native_language + the recommended target +
+   * onboarded_at. Writing native_language is REQUIRED — the Home gate
+   * fires on `native_language IS NULL`, so a skip that left it NULL
+   * would loop the user straight back into onboarding. Defaults to the
+   * already-chosen native (or 'vi') and that native's recommended
+   * target (Phase 3 step 3).
    */
   const handleSkip = async () => {
     if (submitting) return;
     setSubmitting(true);
     setError(null);
+    const native: NativeLang = draft.native_language ?? "vi";
+    const target = RECOMMENDED_TARGET[native];
+    const skipDraft: OnboardingDraft = {
+      ...draft,
+      native_language: native,
+      target_languages: [target],
+    };
+    const dest = resolveDestination(skipDraft);
     try {
       if (user?.id) {
         const { error: updateError } = await supabase
           .from("profiles")
-          .update({ onboarded_at: new Date().toISOString() })
+          .update({
+            onboarded_at: new Date().toISOString(),
+            native_language: native,
+            target_languages: [target],
+          })
           .eq("id", user.id);
         if (updateError) {
           console.warn(
@@ -411,13 +668,17 @@ export default function OnboardingPage() {
           );
         }
       }
-      logTelemetry("onboarding_skipped", { from_step: step });
-      nav("/", { replace: true });
+      logTelemetry("onboarding_skipped", {
+        from_step: step,
+        native_language: native,
+        target_languages: [target],
+      });
+      nav(dest.route, { replace: true });
     } catch (err) {
       const msg = err instanceof Error ? err.message : "unknown_error";
       console.warn("[onboarding] skip threw; navigating anyway:", msg);
       setError(msg);
-      nav("/", { replace: true });
+      nav(dest.route, { replace: true });
     } finally {
       setSubmitting(false);
     }
@@ -493,7 +754,9 @@ export default function OnboardingPage() {
           </button>
         </div>
 
-        {/* Progress strip — five segments, fills as the user advances. */}
+        {/* Progress strip — fills as the user advances. Conditional
+            steps mean the path is shorter than the strip for most
+            users; this matches the pre-existing approximation. */}
         <div
           aria-label="Onboarding progress"
           aria-valuemin={0}
@@ -542,23 +805,7 @@ export default function OnboardingPage() {
               <button
                 type="button"
                 onClick={() => advance()}
-                style={{
-                  marginTop: 22,
-                  width: "100%",
-                  padding: "12px 18px",
-                  borderRadius: 9999,
-                  border: "none",
-                  background:
-                    "linear-gradient(135deg, #B45309 0%, #D97706 50%, #14B8A6 100%)",
-                  color: "white",
-                  fontSize: 15,
-                  fontWeight: 800,
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 6,
-                }}
+                style={primaryButtonStyle(false)}
               >
                 {ONBOARDING_COPY.welcome.cta.vi}
                 <span style={{ fontWeight: 600, opacity: 0.85 }}>
@@ -566,6 +813,77 @@ export default function OnboardingPage() {
                 </span>
                 <ChevronRight size={16} />
               </button>
+            </>
+          ) : null}
+
+          {step === "native" ? (
+            <>
+              <StepHeader
+                vi={ONBOARDING_COPY.native.title.vi}
+                en={ONBOARDING_COPY.native.title.en}
+                bodyVi={ONBOARDING_COPY.native.body.vi}
+                bodyEn={ONBOARDING_COPY.native.body.en}
+              />
+              <ChoiceGrid
+                choices={NATIVE_OPTIONS}
+                selected={draft.native_language}
+                onSelect={handleNativeSelect}
+                ariaLabel="Native language"
+              />
+            </>
+          ) : null}
+
+          {step === "target" && draft.native_language ? (
+            <>
+              <StepHeader
+                vi={ONBOARDING_COPY.target.title.vi}
+                en={ONBOARDING_COPY.target.title.en}
+                bodyVi={ONBOARDING_COPY.target.body.vi}
+                bodyEn={ONBOARDING_COPY.target.body.en}
+              />
+              <TargetGrid
+                native={draft.native_language}
+                selected={draft.target_languages}
+                onToggle={handleTargetToggle}
+              />
+              <button
+                type="button"
+                onClick={handleTargetContinue}
+                disabled={draft.target_languages.length === 0}
+                style={primaryButtonStyle(
+                  draft.target_languages.length === 0,
+                )}
+              >
+                {ONBOARDING_COPY.continue.vi}
+                <span style={{ fontWeight: 600, opacity: 0.85 }}>
+                  · {ONBOARDING_COPY.continue.en}
+                </span>
+                <ChevronRight size={16} />
+              </button>
+            </>
+          ) : null}
+
+          {step === "start_with" ? (
+            <>
+              <StepHeader
+                vi={ONBOARDING_COPY.startWith.title.vi}
+                en={ONBOARDING_COPY.startWith.title.en}
+                bodyVi={ONBOARDING_COPY.startWith.body.vi}
+                bodyEn={ONBOARDING_COPY.startWith.body.en}
+              />
+              <ChoiceGrid
+                choices={draft.target_languages.map((t) => ({
+                  value: t,
+                  label: {
+                    vi: TARGET_META[t].labelVi,
+                    en: TARGET_META[t].labelEn,
+                  },
+                  icon: TARGET_META[t].flag,
+                }))}
+                selected={primaryTargetOf(draft)}
+                onSelect={handleStartWithSelect}
+                ariaLabel="Primary language to start with"
+              />
             </>
           ) : null}
 
@@ -637,6 +955,44 @@ export default function OnboardingPage() {
                   gap: 8,
                 }}
               >
+                {draft.native_language ? (
+                  <li
+                    style={{
+                      padding: "10px 12px",
+                      borderRadius: 12,
+                      background: "rgba(20,184,166,0.08)",
+                      fontSize: 13,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    <strong>Tiếng mẹ đẻ · Native:</strong>{" "}
+                    {
+                      NATIVE_OPTIONS.find(
+                        (n) => n.value === draft.native_language,
+                      )?.label.vi
+                    }
+                  </li>
+                ) : null}
+                {draft.target_languages.length > 0 ? (
+                  <li
+                    style={{
+                      padding: "10px 12px",
+                      borderRadius: 12,
+                      background: "rgba(20,184,166,0.08)",
+                      fontSize: 13,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    <strong>Học · Learning:</strong>{" "}
+                    {draft.target_languages
+                      .map((t, i) =>
+                        i === 0
+                          ? `${TARGET_META[t].labelVi} ⭐`
+                          : TARGET_META[t].labelVi,
+                      )
+                      .join(" · ")}
+                  </li>
+                ) : null}
                 {draft.primary_goal ? (
                   <li
                     style={{
@@ -684,20 +1040,7 @@ export default function OnboardingPage() {
                 type="button"
                 onClick={handleFinish}
                 disabled={submitting}
-                style={{
-                  marginTop: 22,
-                  width: "100%",
-                  padding: "12px 18px",
-                  borderRadius: 9999,
-                  border: "none",
-                  background: submitting
-                    ? "rgba(0,0,0,0.10)"
-                    : "linear-gradient(135deg, #B45309 0%, #D97706 50%, #14B8A6 100%)",
-                  color: "white",
-                  fontSize: 15,
-                  fontWeight: 800,
-                  cursor: submitting ? "wait" : "pointer",
-                }}
+                style={primaryButtonStyle(submitting)}
               >
                 {ONBOARDING_COPY.finish.vi}{" "}
                 <span style={{ fontWeight: 600, opacity: 0.85 }}>
