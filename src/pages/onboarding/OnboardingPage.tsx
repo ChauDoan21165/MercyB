@@ -78,6 +78,7 @@ import {
   TARGET_MENU,
   TARGET_META,
   targetBadge,
+  targetLabel,
   type NativeLang,
   type OnboardingDraft,
   type OnboardingGoal,
@@ -86,6 +87,7 @@ import {
   type OnboardingStepId,
   type TargetLang,
 } from "@/lib/onboarding/types";
+import { pickChrome, type ChromeSlots } from "@/lib/i18n/chromeLanguage";
 
 const TELEMETRY_PREFIX = "[onboarding-telemetry]";
 
@@ -200,11 +202,14 @@ function ChoiceGrid<T extends string>({
   selected,
   onSelect,
   ariaLabel,
+  lang,
 }: {
   choices: CardChoice<T>[];
   selected: T | null;
   onSelect: (v: T) => void;
   ariaLabel: string;
+  /** Chrome language — labels/descriptions render single, not bilingual. */
+  lang: NativeLang;
 }) {
   return (
     <div
@@ -242,17 +247,7 @@ function ChoiceGrid<T extends string>({
                     color: "rgba(15,23,42,0.92)",
                   }}
                 >
-                  {c.label.vi}
-                </div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: "rgba(0,0,0,0.5)",
-                    marginTop: 2,
-                  }}
-                >
-                  {c.label.en}
+                  {pickChrome(c.label, lang)}
                 </div>
                 {c.description ? (
                   <div
@@ -263,7 +258,7 @@ function ChoiceGrid<T extends string>({
                       color: "rgba(0,0,0,0.66)",
                     }}
                   >
-                    {c.description.vi}
+                    {pickChrome(c.description, lang)}
                   </div>
                 ) : null}
               </div>
@@ -284,10 +279,13 @@ function TargetGrid({
   native,
   selected,
   onToggle,
+  lang,
 }: {
   native: NativeLang;
   selected: TargetLang[];
   onToggle: (t: TargetLang) => void;
+  /** Chrome language — names/badges render single, not bilingual. */
+  lang: NativeLang;
 }) {
   return (
     <div
@@ -329,7 +327,7 @@ function TargetGrid({
                     flexWrap: "wrap",
                   }}
                 >
-                  {meta.labelVi}
+                  {targetLabel(item.value, lang)}
                   {item.recommended ? (
                     <span
                       style={{
@@ -341,7 +339,7 @@ function TargetGrid({
                         padding: "2px 8px",
                       }}
                     >
-                      Gợi ý · Recommended
+                      {pickChrome(ONBOARDING_COPY.recommended, lang)}
                     </span>
                   ) : null}
                   {badge ? (
@@ -355,19 +353,9 @@ function TargetGrid({
                         padding: "2px 8px",
                       }}
                     >
-                      {badge.vi} · {badge.en}
+                      {pickChrome(badge, lang)}
                     </span>
                   ) : null}
-                </div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: "rgba(0,0,0,0.5)",
-                    marginTop: 2,
-                  }}
-                >
-                  {meta.labelEn}
                 </div>
               </div>
               {isSelected ? (
@@ -381,31 +369,54 @@ function TargetGrid({
   );
 }
 
+const stepTitleStyle: React.CSSProperties = {
+  margin: 0,
+  fontSize: 22,
+  fontWeight: 900,
+  letterSpacing: -0.4,
+  color: "rgba(15,23,42,0.94)",
+  lineHeight: 1.2,
+};
+
+/**
+ * Step header. `lang` set → render single-language (chrome follows the
+ * learner's native choice). `lang` omitted → bilingual VI-primary /
+ * EN-secondary; used ONLY on the welcome screen, which fires before the
+ * user has picked a native language so both audiences must read it
+ * (locked #14).
+ */
 function StepHeader({
-  vi,
-  en,
-  bodyVi,
-  bodyEn,
+  title,
+  body,
+  lang,
 }: {
-  vi: string;
-  en: string;
-  bodyVi?: string;
-  bodyEn?: string;
+  title: ChromeSlots;
+  body?: ChromeSlots;
+  lang?: NativeLang;
 }) {
+  if (lang) {
+    return (
+      <header style={{ marginBottom: 6 }}>
+        <h1 style={stepTitleStyle}>{pickChrome(title, lang)}</h1>
+        {body ? (
+          <p
+            style={{
+              margin: "10px 0 0",
+              fontSize: 14,
+              lineHeight: 1.55,
+              color: "rgba(0,0,0,0.74)",
+            }}
+          >
+            {pickChrome(body, lang)}
+          </p>
+        ) : null}
+      </header>
+    );
+  }
+  // Welcome only — pre-pick, bilingual (VI primary, EN secondary).
   return (
     <header style={{ marginBottom: 6 }}>
-      <h1
-        style={{
-          margin: 0,
-          fontSize: 22,
-          fontWeight: 900,
-          letterSpacing: -0.4,
-          color: "rgba(15,23,42,0.94)",
-          lineHeight: 1.2,
-        }}
-      >
-        {vi}
-      </h1>
+      <h1 style={stepTitleStyle}>{title.vi}</h1>
       <p
         style={{
           margin: "2px 0 0",
@@ -414,31 +425,31 @@ function StepHeader({
           color: "rgba(0,0,0,0.55)",
         }}
       >
-        {en}
+        {title.en}
       </p>
-      {bodyVi ? (
-        <p
-          style={{
-            margin: "10px 0 0",
-            fontSize: 14,
-            lineHeight: 1.55,
-            color: "rgba(0,0,0,0.74)",
-          }}
-        >
-          {bodyVi}
-        </p>
-      ) : null}
-      {bodyEn ? (
-        <p
-          style={{
-            margin: "2px 0 0",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "rgba(0,0,0,0.45)",
-          }}
-        >
-          {bodyEn}
-        </p>
+      {body ? (
+        <>
+          <p
+            style={{
+              margin: "10px 0 0",
+              fontSize: 14,
+              lineHeight: 1.55,
+              color: "rgba(0,0,0,0.74)",
+            }}
+          >
+            {body.vi}
+          </p>
+          <p
+            style={{
+              margin: "2px 0 0",
+              fontSize: 12,
+              lineHeight: 1.5,
+              color: "rgba(0,0,0,0.45)",
+            }}
+          >
+            {body.en}
+          </p>
+        </>
       ) : null}
     </header>
   );
@@ -487,6 +498,15 @@ export default function OnboardingPage() {
   const currentIndex = ONBOARDING_STEPS.indexOf(step);
   const isLastStep = step === "confirmation";
   const isFirstStep = step === "welcome";
+
+  // Chrome language follows the native choice. Welcome fires before the
+  // pick (bilingual, locked #14); every later screen is single-language
+  // — the chosen native, or the VI home-market default on the native
+  // picker itself (no choice yet). Buttons that share the top bar use
+  // `tc`: bilingual on welcome, single thereafter.
+  const chromeLang: NativeLang = draft.native_language ?? "vi";
+  const tc = (slots: ChromeSlots): string =>
+    isFirstStep ? `${slots.vi} · ${slots.en}` : pickChrome(slots, chromeLang);
 
   const advance = (overrideDraft?: OnboardingDraft) => {
     const effectiveDraft = overrideDraft ?? draft;
@@ -756,10 +776,7 @@ export default function OnboardingPage() {
               }}
             >
               <ChevronLeft size={16} />
-              {ONBOARDING_COPY.back.vi}
-              <span style={{ fontWeight: 500, marginLeft: 4, color: "rgba(0,0,0,0.40)" }}>
-                · {ONBOARDING_COPY.back.en}
-              </span>
+              {pickChrome(ONBOARDING_COPY.back, chromeLang)}
             </button>
           ) : (
             <span />
@@ -779,10 +796,7 @@ export default function OnboardingPage() {
               opacity: submitting ? 0.5 : 1,
             }}
           >
-            {ONBOARDING_COPY.skipLink.vi}
-            <span style={{ fontWeight: 500, marginLeft: 4 }}>
-              · {ONBOARDING_COPY.skipLink.en}
-            </span>
+            {tc(ONBOARDING_COPY.skipLink)}
           </button>
         </div>
 
@@ -829,20 +843,15 @@ export default function OnboardingPage() {
           {step === "welcome" ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.welcome.title.vi}
-                en={ONBOARDING_COPY.welcome.title.en}
-                bodyVi={ONBOARDING_COPY.welcome.body.vi}
-                bodyEn={ONBOARDING_COPY.welcome.body.en}
+                title={ONBOARDING_COPY.welcome.title}
+                body={ONBOARDING_COPY.welcome.body}
               />
               <button
                 type="button"
                 onClick={() => advance()}
                 style={primaryButtonStyle(false)}
               >
-                {ONBOARDING_COPY.welcome.cta.vi}
-                <span style={{ fontWeight: 600, opacity: 0.85 }}>
-                  · {ONBOARDING_COPY.welcome.cta.en}
-                </span>
+                {tc(ONBOARDING_COPY.welcome.cta)}
                 <ChevronRight size={16} />
               </button>
             </>
@@ -850,17 +859,29 @@ export default function OnboardingPage() {
 
           {step === "native" ? (
             <>
+              {/* Header is bilingual like welcome: the native pick has
+                  not happened yet, so both audiences are simultaneously
+                  present and must read it (locked #14). Omitting `lang`
+                  selects StepHeader's bilingual VI-primary/EN-secondary
+                  path. */}
               <StepHeader
-                vi={ONBOARDING_COPY.native.title.vi}
-                en={ONBOARDING_COPY.native.title.en}
-                bodyVi={ONBOARDING_COPY.native.body.vi}
-                bodyEn={ONBOARDING_COPY.native.body.en}
+                title={ONBOARDING_COPY.native.title}
+                body={ONBOARDING_COPY.native.body}
               />
+              {/* Native picker: each option shown in its OWN language
+                  ("Tiếng Việt" / "English") so both audiences can
+                  self-identify regardless of the default chrome — the
+                  universal language-picker pattern, not a chrome choice. */}
               <ChoiceGrid
-                choices={NATIVE_OPTIONS}
+                choices={NATIVE_OPTIONS.map((n) => ({
+                  value: n.value,
+                  icon: n.icon,
+                  label: { vi: n.label[n.value], en: n.label[n.value] },
+                }))}
                 selected={draft.native_language}
                 onSelect={handleNativeSelect}
                 ariaLabel="Native language"
+                lang={chromeLang}
               />
             </>
           ) : null}
@@ -868,15 +889,15 @@ export default function OnboardingPage() {
           {step === "target" && draft.native_language ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.target.title.vi}
-                en={ONBOARDING_COPY.target.title.en}
-                bodyVi={ONBOARDING_COPY.target.body.vi}
-                bodyEn={ONBOARDING_COPY.target.body.en}
+                title={ONBOARDING_COPY.target.title}
+                body={ONBOARDING_COPY.target.body}
+                lang={chromeLang}
               />
               <TargetGrid
                 native={draft.native_language}
                 selected={draft.target_languages}
                 onToggle={handleTargetToggle}
+                lang={chromeLang}
               />
               <button
                 type="button"
@@ -886,10 +907,7 @@ export default function OnboardingPage() {
                   draft.target_languages.length === 0,
                 )}
               >
-                {ONBOARDING_COPY.continue.vi}
-                <span style={{ fontWeight: 600, opacity: 0.85 }}>
-                  · {ONBOARDING_COPY.continue.en}
-                </span>
+                {pickChrome(ONBOARDING_COPY.continue, chromeLang)}
                 <ChevronRight size={16} />
               </button>
             </>
@@ -898,10 +916,9 @@ export default function OnboardingPage() {
           {step === "start_with" ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.startWith.title.vi}
-                en={ONBOARDING_COPY.startWith.title.en}
-                bodyVi={ONBOARDING_COPY.startWith.body.vi}
-                bodyEn={ONBOARDING_COPY.startWith.body.en}
+                title={ONBOARDING_COPY.startWith.title}
+                body={ONBOARDING_COPY.startWith.body}
+                lang={chromeLang}
               />
               <ChoiceGrid
                 choices={draft.target_languages.map((t) => ({
@@ -915,6 +932,7 @@ export default function OnboardingPage() {
                 selected={primaryTargetOf(draft)}
                 onSelect={handleStartWithSelect}
                 ariaLabel="Primary language to start with"
+                lang={chromeLang}
               />
             </>
           ) : null}
@@ -922,16 +940,16 @@ export default function OnboardingPage() {
           {step === "goal" ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.goal.title.vi}
-                en={ONBOARDING_COPY.goal.title.en}
-                bodyVi={ONBOARDING_COPY.goal.body.vi}
-                bodyEn={ONBOARDING_COPY.goal.body.en}
+                title={ONBOARDING_COPY.goal.title}
+                body={ONBOARDING_COPY.goal.body}
+                lang={chromeLang}
               />
               <ChoiceGrid
                 choices={GOAL_OPTIONS}
                 selected={draft.primary_goal}
                 onSelect={handleGoalSelect}
                 ariaLabel="Primary learning goal"
+                lang={chromeLang}
               />
             </>
           ) : null}
@@ -939,16 +957,16 @@ export default function OnboardingPage() {
           {step === "profession" ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.profession.title.vi}
-                en={ONBOARDING_COPY.profession.title.en}
-                bodyVi={ONBOARDING_COPY.profession.body.vi}
-                bodyEn={ONBOARDING_COPY.profession.body.en}
+                title={ONBOARDING_COPY.profession.title}
+                body={ONBOARDING_COPY.profession.body}
+                lang={chromeLang}
               />
               <ChoiceGrid
                 choices={PROFESSION_OPTIONS}
                 selected={draft.profession}
                 onSelect={handleProfessionSelect}
                 ariaLabel="Profession"
+                lang={chromeLang}
               />
             </>
           ) : null}
@@ -956,16 +974,16 @@ export default function OnboardingPage() {
           {step === "level" ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.level.title.vi}
-                en={ONBOARDING_COPY.level.title.en}
-                bodyVi={ONBOARDING_COPY.level.body.vi}
-                bodyEn={ONBOARDING_COPY.level.body.en}
+                title={ONBOARDING_COPY.level.title}
+                body={ONBOARDING_COPY.level.body}
+                lang={chromeLang}
               />
               <ChoiceGrid
                 choices={LEVEL_OPTIONS}
                 selected={draft.english_level}
                 onSelect={handleLevelSelect}
                 ariaLabel="Current English level"
+                lang={chromeLang}
               />
             </>
           ) : null}
@@ -973,10 +991,9 @@ export default function OnboardingPage() {
           {step === "confirmation" ? (
             <>
               <StepHeader
-                vi={ONBOARDING_COPY.confirmation.title.vi}
-                en={ONBOARDING_COPY.confirmation.title.en}
-                bodyVi={ONBOARDING_COPY.confirmation.body.vi}
-                bodyEn={ONBOARDING_COPY.confirmation.body.en}
+                title={ONBOARDING_COPY.confirmation.title}
+                body={ONBOARDING_COPY.confirmation.body}
+                lang={chromeLang}
               />
               <ul
                 style={{
@@ -997,12 +1014,15 @@ export default function OnboardingPage() {
                       lineHeight: 1.5,
                     }}
                   >
-                    <strong>Tiếng mẹ đẻ · Native:</strong>{" "}
-                    {
-                      NATIVE_OPTIONS.find(
+                    <strong>
+                      {pickChrome(ONBOARDING_COPY.summary.native, chromeLang)}:
+                    </strong>{" "}
+                    {(() => {
+                      const opt = NATIVE_OPTIONS.find(
                         (n) => n.value === draft.native_language,
-                      )?.label.vi
-                    }
+                      );
+                      return opt ? pickChrome(opt.label, chromeLang) : null;
+                    })()}
                   </li>
                 ) : null}
                 {draft.target_languages.length > 0 ? (
@@ -1015,12 +1035,15 @@ export default function OnboardingPage() {
                       lineHeight: 1.5,
                     }}
                   >
-                    <strong>Học · Learning:</strong>{" "}
+                    <strong>
+                      {pickChrome(ONBOARDING_COPY.summary.learning, chromeLang)}
+                      :
+                    </strong>{" "}
                     {draft.target_languages
                       .map((t, i) =>
                         i === 0
-                          ? `${TARGET_META[t].labelVi} ⭐`
-                          : TARGET_META[t].labelVi,
+                          ? `${targetLabel(t, chromeLang)} ⭐`
+                          : targetLabel(t, chromeLang),
                       )
                       .join(" · ")}
                   </li>
@@ -1035,8 +1058,15 @@ export default function OnboardingPage() {
                       lineHeight: 1.5,
                     }}
                   >
-                    <strong>Mục tiêu · Goal:</strong>{" "}
-                    {GOAL_OPTIONS.find((g) => g.value === draft.primary_goal)?.label.vi}
+                    <strong>
+                      {pickChrome(ONBOARDING_COPY.summary.goal, chromeLang)}:
+                    </strong>{" "}
+                    {(() => {
+                      const g = GOAL_OPTIONS.find(
+                        (x) => x.value === draft.primary_goal,
+                      );
+                      return g ? pickChrome(g.label, chromeLang) : null;
+                    })()}
                   </li>
                 ) : null}
                 {draft.profession ? (
@@ -1049,8 +1079,19 @@ export default function OnboardingPage() {
                       lineHeight: 1.5,
                     }}
                   >
-                    <strong>Nghề nghiệp · Profession:</strong>{" "}
-                    {PROFESSION_OPTIONS.find((p) => p.value === draft.profession)?.label.vi}
+                    <strong>
+                      {pickChrome(
+                        ONBOARDING_COPY.summary.profession,
+                        chromeLang,
+                      )}
+                      :
+                    </strong>{" "}
+                    {(() => {
+                      const p = PROFESSION_OPTIONS.find(
+                        (x) => x.value === draft.profession,
+                      );
+                      return p ? pickChrome(p.label, chromeLang) : null;
+                    })()}
                   </li>
                 ) : null}
                 {draft.english_level ? (
@@ -1063,8 +1104,15 @@ export default function OnboardingPage() {
                       lineHeight: 1.5,
                     }}
                   >
-                    <strong>Trình độ · Level:</strong>{" "}
-                    {LEVEL_OPTIONS.find((l) => l.value === draft.english_level)?.label.vi}
+                    <strong>
+                      {pickChrome(ONBOARDING_COPY.summary.level, chromeLang)}:
+                    </strong>{" "}
+                    {(() => {
+                      const l = LEVEL_OPTIONS.find(
+                        (x) => x.value === draft.english_level,
+                      );
+                      return l ? pickChrome(l.label, chromeLang) : null;
+                    })()}
                   </li>
                 ) : null}
               </ul>
@@ -1074,10 +1122,7 @@ export default function OnboardingPage() {
                 disabled={submitting}
                 style={primaryButtonStyle(submitting)}
               >
-                {ONBOARDING_COPY.finish.vi}{" "}
-                <span style={{ fontWeight: 600, opacity: 0.85 }}>
-                  · {ONBOARDING_COPY.finish.en}
-                </span>
+                {pickChrome(ONBOARDING_COPY.finish, chromeLang)}
               </button>
               {error ? (
                 <p
@@ -1088,7 +1133,8 @@ export default function OnboardingPage() {
                     color: "rgba(180,30,30,0.85)",
                   }}
                 >
-                  Đã xảy ra lỗi nhỏ — Mercy vẫn đưa bạn đến bài học. ({error})
+                  {pickChrome(ONBOARDING_COPY.finishError, chromeLang)} (
+                  {error})
                 </p>
               ) : null}
             </>

@@ -19,6 +19,7 @@ import {
   TARGET_MENU,
   TARGET_META,
   targetBadge,
+  targetLabel,
   type NativeLang,
   type TargetLang,
 } from "@/lib/onboarding/types";
@@ -26,6 +27,7 @@ import {
   parseLanguagePair,
   usePairMutation,
 } from "@/lib/languagePair/languagePair";
+import { pickChrome } from "@/lib/i18n/chromeLanguage";
 
 const chip = (active: boolean): React.CSSProperties => ({
   display: "inline-flex",
@@ -49,7 +51,12 @@ export default function LanguagePairSettings() {
   const { nativeLanguage, targets } = parseLanguagePair(profile);
   const { persist } = usePairMutation();
   const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState<string | null>(null);
+  // `msg` is now single-language (chrome follows native), so the old
+  // `.includes("thất bại")` colour test no longer works — track the
+  // error state explicitly instead.
+  const [msg, setMsg] = useState<{ text: string; error: boolean } | null>(
+    null,
+  );
 
   // Existing users are backfilled to 'vi'; default the display there
   // if somehow unset so the panel is always usable.
@@ -60,7 +67,17 @@ export default function LanguagePairSettings() {
     setBusy(true);
     setMsg(null);
     const r = await persist(patch);
-    setMsg(r.ok ? "Đã lưu · Saved" : "Lưu thất bại · Save failed");
+    setMsg(
+      r.ok
+        ? { text: pickChrome({ vi: "Đã lưu", en: "Saved" }, native), error: false }
+        : {
+            text: pickChrome(
+              { vi: "Lưu thất bại", en: "Save failed" },
+              native,
+            ),
+            error: true,
+          },
+    );
     setBusy(false);
   };
 
@@ -80,7 +97,16 @@ export default function LanguagePairSettings() {
     const has = targets.includes(t);
     const next = has ? targets.filter((x) => x !== t) : [...targets, t];
     if (next.length === 0) {
-      setMsg("Cần ít nhất một ngôn ngữ · Keep at least one language");
+      setMsg({
+        text: pickChrome(
+          {
+            vi: "Cần ít nhất một ngôn ngữ",
+            en: "Keep at least one language",
+          },
+          native,
+        ),
+        error: true,
+      });
       return;
     }
     void save({ target_languages: next });
@@ -90,9 +116,15 @@ export default function LanguagePairSettings() {
     <div>
       {/* Native language */}
       <div style={{ fontSize: 13, fontWeight: 800, color: "rgba(15,23,42,0.85)" }}>
-        Tiếng mẹ đẻ
+        {pickChrome({ vi: "Tiếng mẹ đẻ", en: "Native language" }, native)}
         <span style={{ display: "block", fontSize: 11, fontWeight: 600, color: "rgba(0,0,0,0.45)" }}>
-          Native language — Mercy explains lessons in this language
+          {pickChrome(
+            {
+              vi: "Mercy giải thích bài học bằng ngôn ngữ này",
+              en: "Mercy explains lessons in this language",
+            },
+            native,
+          )}
         </span>
       </div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
@@ -106,7 +138,7 @@ export default function LanguagePairSettings() {
             style={chip(n.value === native)}
           >
             <span aria-hidden>{n.icon}</span>
-            {n.label.vi}
+            {n.label[n.value]}
           </button>
         ))}
       </div>
@@ -118,12 +150,13 @@ export default function LanguagePairSettings() {
           color: "rgba(180,83,9,0.9)",
         }}
       >
-        Đổi tiếng mẹ đẻ sẽ thay đổi ngôn ngữ giải thích bài học. Tiến trình
-        của bạn được giữ nguyên.
-        <span style={{ display: "block", color: "rgba(0,0,0,0.45)" }}>
-          Changing this changes the lesson explanation language — your
-          progress is kept.
-        </span>
+        {pickChrome(
+          {
+            vi: "Đổi tiếng mẹ đẻ sẽ thay đổi ngôn ngữ giải thích bài học. Tiến trình của bạn được giữ nguyên.",
+            en: "Changing this changes the lesson explanation language — your progress is kept.",
+          },
+          native,
+        )}
       </p>
 
       {/* Target languages */}
@@ -135,9 +168,18 @@ export default function LanguagePairSettings() {
           color: "rgba(15,23,42,0.85)",
         }}
       >
-        Ngôn ngữ đang học
+        {pickChrome(
+          { vi: "Ngôn ngữ đang học", en: "Languages you're learning" },
+          native,
+        )}
         <span style={{ display: "block", fontSize: 11, fontWeight: 600, color: "rgba(0,0,0,0.45)" }}>
-          Languages you're learning — add or remove anytime
+          {pickChrome(
+            {
+              vi: "Thêm hoặc bớt bất cứ lúc nào",
+              en: "Add or remove anytime",
+            },
+            native,
+          )}
         </span>
       </div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
@@ -152,14 +194,14 @@ export default function LanguagePairSettings() {
               disabled={busy}
               onClick={() => toggleTarget(item.value)}
               aria-pressed={active}
-              title={badge ? `${badge.vi} · ${badge.en}` : undefined}
+              title={badge ? pickChrome(badge, native) : undefined}
               style={chip(active)}
             >
               <span aria-hidden>{meta.flag}</span>
-              {meta.labelVi}
+              {targetLabel(item.value, native)}
               {badge ? (
                 <span style={{ fontSize: 10, fontWeight: 700, opacity: 0.85 }}>
-                  ({badge.en})
+                  ({pickChrome(badge, native)})
                 </span>
               ) : null}
             </button>
@@ -174,8 +216,13 @@ export default function LanguagePairSettings() {
           color: "rgba(0,0,0,0.45)",
         }}
       >
-        Bỏ một ngôn ngữ chỉ ẩn nó đi — tiến trình của ngôn ngữ đó vẫn được
-        giữ. · Removing a language only hides it; its progress is kept.
+        {pickChrome(
+          {
+            vi: "Bỏ một ngôn ngữ chỉ ẩn nó đi — tiến trình của ngôn ngữ đó vẫn được giữ.",
+            en: "Removing a language only hides it; its progress is kept.",
+          },
+          native,
+        )}
       </p>
 
       {msg ? (
@@ -185,12 +232,12 @@ export default function LanguagePairSettings() {
             marginTop: 10,
             fontSize: 12,
             fontWeight: 700,
-            color: msg.includes("thất bại")
+            color: msg.error
               ? "rgba(180,30,30,0.85)"
               : "rgba(13,148,136,0.95)",
           }}
         >
-          {msg}
+          {msg.text}
         </p>
       ) : null}
     </div>
