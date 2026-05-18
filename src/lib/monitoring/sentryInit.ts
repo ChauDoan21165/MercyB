@@ -539,8 +539,31 @@ export function runsInsideZaloIab(): boolean {
   return ZALO_IAB_UA_RE.test(ua);
 }
 
-export type FeatureArea = "auth" | "billing" | "room" | "mercy" | "audio" | "other";
+export type FeatureArea =
+  | "auth"
+  | "billing"
+  | "room"
+  | "mercy"
+  | "audio"
+  | "admin"
+  | "other";
 export type Priority = "P1" | "P3";
+
+const FEATURE_AREAS: readonly FeatureArea[] = [
+  "auth",
+  "billing",
+  "room",
+  "mercy",
+  "audio",
+  "admin",
+  "other",
+];
+
+function isFeatureArea(v: unknown): v is FeatureArea {
+  return (
+    typeof v === "string" && (FEATURE_AREAS as readonly string[]).includes(v)
+  );
+}
 
 function classifyByPath(pathname: string): FeatureArea | null {
   if (/^\/(signin|signup|signout|login|auth|reset-password|convert|accept-invite|invite)/i.test(pathname)) return "auth";
@@ -559,7 +582,30 @@ function classifyByContent(haystacks: string[]): FeatureArea | null {
   return null;
 }
 
-// P1 = core feature break (auth/billing/room/mercy/audio).
+// Map a PostgREST RLS-denied table (the `rls_table` tag set by
+// captureRlsDenied) to a FeatureArea. ONLY admin/privileged surfaces —
+// the ones guarded by get_admin_level() (#562 access_codes admin RLS;
+// email_campaigns/email_events are admin-gated per CLAUDE.md) and the
+// `admin_*` table convention — get a definitive "admin" area. Everything
+// else returns null so a denial on a learner table still flows through
+// the normal route/content inference (it is NOT an admin problem).
+// Conservative by design: an unrecognised table is never "admin".
+const ADMIN_RLS_TABLES: ReadonlySet<string> = new Set([
+  "access_codes",
+  "email_campaigns",
+  "email_events",
+]);
+
+export function classifyRlsTable(
+  table: string | undefined | null,
+): FeatureArea | null {
+  if (!table) return null;
+  const t = table.toLowerCase();
+  if (t.startsWith("admin_")) return "admin";
+  return ADMIN_RLS_TABLES.has(t) ? "admin" : null;
+}
+
+// P1 = core feature break (auth/billing/room/mercy/audio/admin).
 // P3 = anything else app-internal. P2 (repeat-frequency) can't be
 // computed client-side; let Sentry's server aggregation promote
 // P3 → P2 via alert rules.
@@ -628,6 +674,7 @@ function rootCauseHint(area: FeatureArea, haystacks: string[]): string {
   if (/(\bcache\b|indexeddb|service worker|\bsw\.js\b)/i.test(blob)) {
     return "offline_cache_or_indexeddb";
   }
+  if (area === "admin" && /rls denied/i.test(blob)) return "admin_rls_denied";
   if (area === "auth" && /supabase|jwt|\bsession\b/i.test(blob)) return "auth_session_or_rls";
   if (area === "billing" && /stripe|subscription|checkout/i.test(blob)) return "stripe_or_subscription";
   if (area === "room" && /(\bload\b|\bopen\b|not found)/i.test(blob)) return "room_load_or_registry";
@@ -662,8 +709,18 @@ export function enrichEventTags(event: SentryEventLike): void {
   if (route) tags.route = route;
 
   const haystacks = collectNoiseHaystacks(event);
+  // captureRlsDenied pins `featureArea` (admin/privileged RLS tables
+  // only) inside its withScope block. Honour that pre-set value for
+  // rls_denied events so a low-volume admin RLS denial reliably matches
+  // the `featureArea:admin` alert instead of being reclassified by
+  // route/content here. Non-admin RLS denials don't pin it, so they
+  // still flow through the normal inference below.
+  const preset =
+    tags.rls_denied === "true" && isFeatureArea(tags.featureArea)
+      ? tags.featureArea
+      : null;
   const area: FeatureArea =
-    classifyByPath(route) ?? classifyByContent(haystacks) ?? "other";
+    preset ?? classifyByPath(route) ?? classifyByContent(haystacks) ?? "other";
   tags.featureArea = area;
   tags.priority = priorityFor(area);
   tags.rootCauseHint = rootCauseHint(area, haystacks);

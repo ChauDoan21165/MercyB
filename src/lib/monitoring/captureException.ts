@@ -15,7 +15,7 @@
  *     through stripPII before forwarding to Sentry.
  */
 
-import { isSentryEnabled, getSentryModule } from "./sentryInit";
+import { isSentryEnabled, getSentryModule, classifyRlsTable } from "./sentryInit";
 import { stripPII } from "@/lib/security/piiProtection";
 
 // Narrow shape of the bits of @sentry/react we use. The actual module is
@@ -64,14 +64,22 @@ export function captureError(
  * get_admin_level / RLS-predicate regression (#578, #562): supabase-js
  * returns a 403 as a value, never throws it, so without this it reaches
  * Sentry nowhere. No-op when Sentry is disabled (tests / SSR / no DSN).
+ *
+ * For admin/privileged tables we ALSO pin `featureArea=admin` here so
+ * the low-volume `featureArea:admin` alert is reliable. enrichEventTags
+ * (beforeSend) would otherwise overwrite featureArea by route/content;
+ * it preserves a pinned value for rls_denied events. Non-admin tables
+ * are left unpinned → normal route/content inference still runs.
  */
 export function captureRlsDenied(table: string, method: string): void {
   if (!isSentryEnabled()) return;
   const sdk = getSentryModule() as SentryShape | null;
   if (!sdk || typeof sdk.withScope !== "function") return;
+  const area = classifyRlsTable(table);
   sdk.withScope((scope) => {
     scope.setTag("rls_denied", "true");
     scope.setTag("rls_table", table || "unknown");
+    if (area) scope.setTag("featureArea", area);
     sdk.captureException(
       new Error(`PostgREST 403 (RLS denied): ${table} [${method}]`),
     );
