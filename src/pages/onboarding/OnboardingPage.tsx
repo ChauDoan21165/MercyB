@@ -59,8 +59,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
+import { qk } from "@/lib/queries/keys";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
 // Onboarding no longer routes to a goal-derived first lesson — it lands
 // on "/" (home) so goal selection cannot gate first entry. The old
@@ -466,6 +468,7 @@ const primaryButtonStyle = (disabled: boolean): React.CSSProperties => ({
 export default function OnboardingPage() {
   const nav = useNavigate();
   const { user } = useAuth();
+  const qc = useQueryClient();
   const [step, setStep] = useState<OnboardingStepId>("welcome");
   const [stepStartedAt, setStepStartedAt] = useState<number>(() => Date.now());
   const [draft, setDraft] = useState<OnboardingDraft>({
@@ -605,6 +608,21 @@ export default function OnboardingPage() {
             "[onboarding] profiles update failed; navigating anyway:",
             updateError.message,
           );
+        } else {
+          // The profile row that NativeLanguageContext / AccountPage /
+          // chrome read is cached under qk.profile(userId) with
+          // staleTime 30s + refetchOnMount:false (queries/client.ts),
+          // and that observer lives app-wide so it never remounts on
+          // the nav below. Without this, the just-written
+          // native_language / target_languages stay invisible until
+          // the cache happens to refresh — exactly the
+          // LanguagePairSettings pattern (languagePair.ts:113). Single
+          // targeted key, not a broad cache wipe. Not awaited: we
+          // navigate away immediately and the app-level observer picks
+          // up the in-flight refetch (awaiting would block nav on a
+          // round-trip; LanguagePairSettings awaits only because it
+          // stays on-page).
+          void qc.invalidateQueries({ queryKey: qk.profile(user.id) });
         }
       }
       logTelemetry("onboarding_complete", {
@@ -661,6 +679,12 @@ export default function OnboardingPage() {
             "[onboarding] skip update failed; navigating anyway:",
             updateError.message,
           );
+        } else {
+          // Same stale-cache reason as handleFinish — skip also writes
+          // native_language / target_languages, so the same targeted
+          // invalidation is required or a skipped user lands on a Home
+          // still rendering the pre-skip language.
+          void qc.invalidateQueries({ queryKey: qk.profile(user.id) });
         }
       }
       logTelemetry("onboarding_skipped", {
