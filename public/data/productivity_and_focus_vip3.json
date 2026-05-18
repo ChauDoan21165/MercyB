@@ -2,6 +2,7 @@
   "name": "Productivity & Focus",
   "name_vi": "Năng Suất & Tập Trung",
   "description": "Expert strategies for mastering productivity and focus with science",
+  "description_vi": "Các chiến lược chuyên sâu giúp làm chủ năng suất và sự tập trung dựa trên khoa học",
   "keywords_en": [
     "productivity",
     "focus",
@@ -33,7 +34,7 @@
       ],
       "copy": {
         "en": "The PARA system revolutionizes organization by separating Projects, Areas, Resources, and Archives. Use Notion or Obsidian with bi-directional links to maintain clarity. Review weekly using velocity metrics and track completion rates. Consult a knowledge-management expert for a customized second-brain setup to achieve seamless execution and elite productivity.",
-        "vi": "The PARA system revolutionizes organization by separating Projects, Areas, Resources, and Archives. Use Notion or Obsidian with bi-directional links to maintain clarity. Review weekly using velocity metrics and track completion rates. Consult a knowledge-management expert for a customized second-brain setup to achieve seamless execution and elite productivity."
+        "vi": "Hệ thống PARA tạo ra bước ngoặt trong việc tổ chức bằng cách tách riêng Dự án (Projects), Lĩnh vực (Areas), Tài nguyên (Resources) và Lưu trữ (Archives). Hãy dùng Notion hoặc Obsidian với các liên kết hai chiều để giữ mọi thứ luôn rõ ràng. Mỗi tuần hãy rà soát lại bằng chỉ số tiến độ và theo dõi tỷ lệ hoàn thành. Hãy tham vấn một chuyên gia quản lý tri thức để thiết lập một 'bộ não thứ hai' riêng cho bạn, nhằm đạt tới sự vận hành trơn tru và năng suất đỉnh cao."
       },
       "tags": [
         "task",
@@ -73,7 +74,7 @@
   },
   "content": {
     "en": "Expert strategies for mastering productivity and focus with science",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu giúp làm chủ năng suất và sự tập trung dựa trên khoa học"
   },
   "tier": "vip3",
   "domain": "General",
