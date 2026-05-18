@@ -65,6 +65,11 @@ import OfflineIndicator from "@/components/offline/OfflineIndicator";
 // keyboard listener looks like anyway.
 const ShortcutHelpOverlay = lazyWithRetry(() => import("@/components/keyboard/ShortcutHelpOverlay"));
 const GlobalNavigationShortcuts = lazyWithRetry(() => import("@/components/keyboard/GlobalNavigationShortcuts"));
+// Android hardware-Back handler (Cat-4 M1). Headless; no-op on web/iOS.
+// Lazy for the same reason as the shortcuts above — a back listener that
+// hasn't hydrated yet is indistinguishable from the OS default for the
+// sub-paint window before the shell is interactive.
+const AndroidBackButton = lazyWithRetry(() => import("@/components/native/AndroidBackButton"));
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
 // Toasters are passive surfaces that only paint once a toast actually fires.
@@ -548,6 +553,7 @@ w.__MB_REACT_ROOT__.render(
               and a toaster that hasn't loaded yet has nothing to render. */}
           <Suspense fallback={null}>
             <GlobalNavigationShortcuts />
+            <AndroidBackButton />
             <ShortcutHelpOverlay />
             <Toaster />
             <AccessibleToaster />
