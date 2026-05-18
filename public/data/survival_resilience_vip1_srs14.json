@@ -25,7 +25,7 @@
       ],
       "copy": {
         "en": "Heat exhaustion develops quickly when humidity is high or airflow is poor. Early signs include dizziness, cramps, heavy sweating, and nausea. Move to shade or an indoor area with airflow, drink small sips of water, and loosen clothing. Heatstroke is far more dangerous—symptoms include confusion, vomiting, rapid heartbeat, or loss of consciousness. Cool the person immediately with wet cloths on the neck, armpits, and groin, and call emergency services. Never ignore heat-related symptoms; rapid action saves lives.",
-        "vi": "Say nóng xảy ra nhanh khi độ ẩm cao hoặc không khí lưu thông kém. Dấu hiệu sớm gồm chóng mặt, chuột rút, đổ mồ hôi nhiều và buồn nôn. Hãy chuyển vào nơi mát, uống từng ngụm nước nhỏ và nới lỏng quần áo. Sốc nhiệt nguy hiểm hơn nhiều—triệu chứng gồm lú lẫn, nôn, tim đập nhanh hoặc bất tỉnh. Làm mát ngay bằng khăn ướt đặt lên cổ, nách và bẹn, đồng thời gọi cấp cứu. Không bao giờ xem nhẹ dấu hiệu liên quan đến nóng; hành động nhanh cứu được mạng sống."
+        "vi": "Say nóng xảy ra nhanh khi độ ẩm cao hoặc không khí lưu thông kém. Dấu hiệu sớm gồm chóng mặt, chuột rút, đổ mồ hôi nhiều và buồn nôn. Hãy chuyển vào nơi mát, uống từng ngụm nước nhỏ và nới lỏng quần áo. Sốc nhiệt nguy hiểm hơn nhiều — triệu chứng gồm lú lẫn, nôn, tim đập nhanh hoặc bất tỉnh. Làm mát ngay bằng khăn ướt đặt lên cổ, nách và bẹn, đồng thời gọi cấp cứu. Không bao giờ xem nhẹ dấu hiệu liên quan đến nóng; hành động nhanh cứu được mạng sống."
       },
       "audio": "srs14_01_en.mp3",
       "tags": []
@@ -44,7 +44,7 @@
       ],
       "copy": {
         "en": "Hypothermia occurs when body temperature drops too low, often during storms or cold nights without power. Symptoms include shivering, confusion, slurred speech, and extreme fatigue. Warm the person slowly—never with direct heat. Use blankets, layered clothing, warm (not hot) drinks, and shared body heat if necessary. Keep clothing dry; wet fabric pulls heat from the skin. Children and elders cool down much faster than adults, so check on them frequently. Gradual, steady warmth is the goal.",
-        "vi": "Hạ thân nhiệt xảy ra khi cơ thể quá lạnh, thường vào đêm bão hoặc khi cúp điện. Triệu chứng gồm run rẩy, lú lẫn, nói khó và mệt mỏi cực độ. Hãy làm ấm từ từ—không dùng nhiệt quá mạnh. Dùng chăn, quần áo nhiều lớp, đồ uống ấm (không nóng) và chia sẻ hơi ấm cơ thể nếu cần. Giữ quần áo khô; đồ ướt rút nhiệt rất nhanh. Trẻ nhỏ và người già mất nhiệt nhanh hơn người lớn, nên kiểm tra thường xuyên. Mục tiêu là ấm dần, ổn định."
+        "vi": "Hạ thân nhiệt xảy ra khi cơ thể quá lạnh, thường vào đêm bão hoặc khi cúp điện. Triệu chứng gồm run rẩy, lú lẫn, nói khó và mệt mỏi cực độ. Hãy làm ấm từ từ — không dùng nhiệt quá mạnh. Dùng chăn, quần áo nhiều lớp, đồ uống ấm (không nóng) và chia sẻ hơi ấm cơ thể nếu cần. Giữ quần áo khô; đồ ướt rút nhiệt rất nhanh. Trẻ nhỏ và người già mất nhiệt nhanh hơn người lớn, nên kiểm tra thường xuyên. Mục tiêu là ấm dần, ổn định."
       },
       "audio": "srs14_02_en.mp3",
       "tags": []
@@ -82,7 +82,7 @@
       ],
       "copy": {
         "en": "During cold spells without power, trap heat by closing off one room and keeping everyone inside. Use layered clothing, blankets, sleeping bags, and insulated curtains or towels to reduce heat loss. Candles provide minimal warmth and increase fire risk, so use them cautiously. Hot water bottles or warm stones wrapped in cloth provide safe, local warmth. Eating warm foods and staying dry also help maintain core temperature. Focus on insulation, not open flames.",
-        "vi": "Trong trời lạnh không có điện, hãy giữ ấm bằng cách gom mọi người vào một phòng và che kín khe hở. Dùng quần áo nhiều lớp, chăn, túi ngủ và rèm hoặc khăn dày để giảm thất thoát nhiệt. Nến tạo rất ít nhiệt và dễ cháy nên dùng hạn chế. Chai nước nóng hoặc đá được quấn khăn tạo nguồn ấm an toàn. Ăn đồ ấm và giữ cơ thể khô cũng giúp duy trì thân nhiệt. Hãy ưu tiên cách nhiệt, không dùng lửa trần."
+        "vi": "Trong trời lạnh không có điện, hãy giữ ấm bằng cách gom mọi người vào một phòng và che kín khe hở. Dùng quần áo nhiều lớp, chăn, túi ngủ và rèm hoặc khăn dày để giảm thất thoát nhiệt. Nến tạo rất ít nhiệt và dễ cháy nên dùng hạn chế. Chai nước nóng hoặc viên đá ấm quấn trong khăn tạo nguồn ấm an toàn tại chỗ. Ăn đồ ấm và giữ cơ thể khô cũng giúp duy trì thân nhiệt. Hãy ưu tiên cách nhiệt, không dùng lửa trần."
       },
       "audio": "srs14_04_en.mp3",
       "tags": []
