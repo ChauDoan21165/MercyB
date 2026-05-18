@@ -27,7 +27,11 @@ import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 import { XPBadge } from "@/components/xp/XPBadge";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+// NOTE: LanguageSwitcher (the all-tracks grid) is no longer rendered on
+// the default home — the home now shows only the learner's chosen pair.
+// The component file is intentionally kept in the repo (not deleted) and
+// the /languages index + the "Khám phá ngôn ngữ khác" affordance below
+// keep every built track discoverable (STRATEGY §4 / #582).
 
 const MercyGuide = lazyWithRetry(() => import("@/components/MercyGuide"));
 
@@ -1113,10 +1117,45 @@ export default function Home() {
           {/* Weekly leaderboard — retention card (feature-flagged). */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
 
-          {/* Language switcher — European + Asian language cards.
-              At the very bottom so core learning paths are surfaced
-              before supplementary languages. */}
-          <LanguageSwitcher />
+          {/* The default home renders only the learner's chosen pair
+              (VI→EN here). The other built tracks are NOT un-surfaced
+              (STRATEGY §4 / the #582 v3.0 reversal) — they stay
+              discoverable via this explicit affordance and the
+              /languages index. Diagnosis: /languages had ZERO inbound
+              links before this; this affordance is now the discovery
+              entry point that the old all-tracks grid implicitly was. */}
+          <button
+            type="button"
+            onClick={() => nav("/languages")}
+            aria-label="Explore other languages"
+            style={{
+              marginTop: 4,
+              width: "100%",
+              padding: "14px 16px",
+              borderRadius: 16,
+              border: "1px solid rgba(0,0,0,0.08)",
+              background: "white",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              cursor: "pointer",
+              textAlign: "left",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 12,
+            }}
+          >
+            <span style={{ minWidth: 0 }}>
+              <span style={{ display: "block", fontSize: 15, fontWeight: 800, color: "rgba(0,0,0,0.86)" }}>
+                Khám phá ngôn ngữ khác
+              </span>
+              <span style={{ display: "block", marginTop: 2, fontSize: 12, fontWeight: 600, color: "rgba(0,0,0,0.45)" }}>
+                Hàn · Nhật · Trung · Pháp · Đức · Tây Ban Nha…
+              </span>
+            </span>
+            <span aria-hidden style={{ fontSize: 20, fontWeight: 800, color: "rgba(0,0,0,0.4)" }}>
+              →
+            </span>
+          </button>
         </section>
 
         {/* Floating bubbles */}
