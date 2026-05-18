@@ -1,10 +1,19 @@
 // src/lib/__tests__/roomJsonResolver.offline.test.ts
 //
-// Offline Lite v1 (A3) — verifies the offline branch added to
-// loadRoomJson:
-//   - online → unchanged behavior (delegates to fetch)
-//   - offline + downloaded → returns the unwrapped room JSON
-//   - offline + not downloaded → throws kind: "offline_unavailable"
+// Offline contract for loadRoomJson, CORRECTED (production-readiness
+// sweep Area 4 / Top-5 #5). The resolver no longer short-circuits to the
+// IDB pack on !isOnline(); it is fetch-first so the service worker's
+// `lessons` StaleWhileRevalidate cache (every room visited online) can
+// serve a "visited then offline" room. Resolution order:
+//
+//   1. fetch(/data/<id>.json)  — SW serves it from the `lessons` cache
+//      (or the ~38-room precache) with no network when offline
+//   2. on fetch rejection → the explicit-download IDB pack
+//   3. on both miss → kind "offline_unavailable" (offline) /
+//      "network" (online) so ChatHub renders the right screen
+//
+// The normalize/backfill/keyword cases still exercise normalizeOfflineRoom
+// via path (2): fetch is stubbed to reject so the IDB pack is reached.
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -24,6 +33,30 @@ import { loadRoomJson } from "../roomJsonResolver";
 import * as detector from "@/lib/offline/offlineDetector";
 import * as db from "@/lib/offline/offlineDb";
 
+/** Stub global fetch to reject — simulates "SW cache miss + offline". */
+function stubFetchReject() {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => {
+      throw new TypeError("Failed to fetch");
+    }) as unknown as typeof fetch,
+  );
+}
+
+/** Stub global fetch to resolve with a JSON body — simulates the SW
+ *  `lessons` cache answering a visited-then-offline room. */
+function stubFetchJson(body: unknown) {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => ({
+      ok: true,
+      status: 200,
+      headers: new Headers({ "content-type": "application/json" }),
+      text: async () => JSON.stringify(body),
+    })) as unknown as typeof fetch,
+  );
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
 });
@@ -32,9 +65,23 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-describe("loadRoomJson — offline branch", () => {
-  it("throws kind:offline_unavailable when offline and not downloaded", async () => {
+describe("loadRoomJson — offline contract (fetch-first → IDB → unavailable)", () => {
+  it("offline + SW cache HIT: returns the room from fetch, IDB pack untouched", async () => {
+    // This is THE fix: a room visited online is in the SW `lessons`
+    // cache, so the offline fetch resolves and we never need the pack.
     vi.mocked(detector.isOnline).mockReturnValue(false);
+    const room = { id: "visited-room", entries: [{ slug: "a" }] };
+    stubFetchJson(room);
+
+    const result = await loadRoomJson("visited-room");
+
+    expect(result).toEqual(room);
+    expect(db.getRoom).not.toHaveBeenCalled();
+  });
+
+  it("offline + SW MISS + not downloaded: throws kind:offline_unavailable", async () => {
+    vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
     vi.mocked(db.getRoom).mockResolvedValueOnce(undefined);
 
     let caught: unknown = null;
@@ -47,8 +94,9 @@ describe("loadRoomJson — offline branch", () => {
     expect((caught as { kind?: string }).kind).toBe("offline_unavailable");
   });
 
-  it("returns the unwrapped room JSON when offline and downloaded", async () => {
+  it("offline + SW MISS + downloaded pack: returns the unwrapped room JSON", async () => {
     vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
     const room = {
       id: "demo-room",
       keywords_en: ["alpha"],
@@ -73,6 +121,7 @@ describe("loadRoomJson — offline branch", () => {
 
   it("falls back to the stored value when no .room envelope is present", async () => {
     vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
     const room = { id: "flat", entries: [] };
     vi.mocked(db.getRoom).mockResolvedValueOnce({
       roomId: "flat",
@@ -86,6 +135,7 @@ describe("loadRoomJson — offline branch", () => {
 
   it("backfills room.entries from envelope.entries when inner room lacks them", async () => {
     vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
     const innerRoom = { id: "split-shape" };
     const envEntries = [{ slug: "a", keywords_en: ["x"], keywords_vi: ["x-vi"] }];
     vi.mocked(db.getRoom).mockResolvedValueOnce({
@@ -106,6 +156,7 @@ describe("loadRoomJson — offline branch", () => {
 
   it("synthesizes top-level keywords_en/vi from per-entry arrays when missing", async () => {
     vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
     const room = {
       id: "no-top-keywords",
       entries: [
@@ -127,6 +178,7 @@ describe("loadRoomJson — offline branch", () => {
 
   it("preserves existing top-level keywords_en/vi without overwriting", async () => {
     vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
     const room = {
       id: "has-top",
       keywords_en: ["addiction", "recovery"],
@@ -145,20 +197,41 @@ describe("loadRoomJson — offline branch", () => {
     expect(result.keywords_vi).toEqual(["nghiện", "phục hồi"]);
   });
 
-  it("uses fetch when online (offline branch not taken)", async () => {
+  it("online + SW/CDN serves it: uses fetch, IDB pack untouched", async () => {
     vi.mocked(detector.isOnline).mockReturnValue(true);
     const room = { id: "online-room" };
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () => ({
-        ok: true,
-        status: 200,
-        headers: new Headers({ "content-type": "application/json" }),
-        text: async () => JSON.stringify(room),
-      })) as unknown as typeof fetch,
-    );
+    stubFetchJson(room);
     const result = await loadRoomJson("online-room");
     expect(result).toEqual(room);
     expect(db.getRoom).not.toHaveBeenCalled();
+  });
+
+  it("online + total network failure + downloaded pack: returns the pack (strict improvement)", async () => {
+    vi.mocked(detector.isOnline).mockReturnValue(true);
+    stubFetchReject();
+    const room = { id: "flaky", entries: [] };
+    vi.mocked(db.getRoom).mockResolvedValueOnce({
+      roomId: "flaky",
+      cachedAt: 0,
+      contentVersion: 0,
+      json: room,
+    });
+    const result = await loadRoomJson("flaky");
+    expect(result).toMatchObject({ id: "flaky" });
+  });
+
+  it("online + network failure + no pack: throws kind:network (unchanged)", async () => {
+    vi.mocked(detector.isOnline).mockReturnValue(true);
+    stubFetchReject();
+    vi.mocked(db.getRoom).mockResolvedValueOnce(undefined);
+
+    let caught: unknown = null;
+    try {
+      await loadRoomJson("nope");
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught).toBeInstanceOf(Error);
+    expect((caught as { kind?: string }).kind).toBe("network");
   });
 });
