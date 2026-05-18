@@ -123,6 +123,25 @@ export type RegisterResult =
   | { kind: "registered"; token: string; platform: PushPlatform; reused: boolean }
   | { kind: "error"; message: string };
 
+/**
+ * Read-only probe: is a usable push plugin present on THIS platform?
+ *
+ * Cat-4 M2-adjacent (PR-N3). The @capacitor/push-notifications plugin is
+ * not installed/wired in either native project today, so on device
+ * registerPushNotifications() always resolves to `plugin_unavailable`.
+ * The UI uses this to avoid presenting an enroll CTA that can never
+ * succeed. NO side effects — only dynamic-imports the modules (the same
+ * loaders registerPushNotifications uses); never requests permission,
+ * never registers. Returns false on web (not native) and on a native
+ * build where the plugin is absent.
+ */
+export async function isPushPluginAvailable(): Promise<boolean> {
+  const capacitor = await loadCapacitor();
+  if (!capacitor || !capacitor.isNativePlatform?.()) return false;
+  const plugin = await loadPushPlugin();
+  return plugin !== null;
+}
+
 export async function registerPushNotifications(
   supabase: SupabaseClient,
 ): Promise<RegisterResult> {

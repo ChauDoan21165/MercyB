@@ -22,7 +22,10 @@ import {
   type NotificationType,
   type PushPreferences,
 } from "@/lib/push/types";
-import { registerPushNotifications } from "@/lib/push/pushTokenRegistration";
+import {
+  isPushPluginAvailable,
+  registerPushNotifications,
+} from "@/lib/push/pushTokenRegistration";
 
 const TYPE_TO_PREF_FIELD: Record<NotificationType, keyof PushPreferences> = {
   daily_practice: "daily_practice_enabled",
@@ -40,6 +43,21 @@ export default function PushPreferencesPage() {
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
   const [testMsg, setTestMsg] = useState<string | null>(null);
   const [enrollMsg, setEnrollMsg] = useState<string | null>(null);
+  // null = still probing; false = no usable push plugin on this build
+  // (web, or a native build where the plugin isn't wired — today's
+  // reality). Gates the enroll CTA so we never show a button that can
+  // only ever fail with plugin_unavailable. Cat-4 PR-N3.
+  const [pushAvailable, setPushAvailable] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void isPushPluginAvailable().then((ok) => {
+      if (!cancelled) setPushAvailable(ok);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -195,19 +213,33 @@ export default function PushPreferencesPage() {
             <h2 className="text-sm font-semibold text-black/90 mb-3">
               Đăng ký thiết bị này
             </h2>
-            <p className="text-xs text-black/60 mb-3">
-              Để nhận thông báo đẩy trên iPhone hoặc điện thoại Android, ứng dụng cần xin
-              quyền một lần. Nhấn nút bên dưới — hệ thống sẽ hiện hộp thoại.
-            </p>
-            <button
-              type="button"
-              onClick={enrollDevice}
-              className="px-3.5 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
-            >
-              Đăng ký thiết bị
-            </button>
-            {enrollMsg && (
-              <p className="text-xs text-black/65 mt-2">{enrollMsg}</p>
+            {pushAvailable === null ? (
+              <p className="text-xs text-black/55 italic">Đang kiểm tra…</p>
+            ) : pushAvailable === false ? (
+              // No usable push plugin on this build (web, or a native
+              // build where push isn't wired — today's reality). Show an
+              // honest note instead of a CTA that can only fail.
+              <p className="text-xs text-black/60">
+                Thông báo đẩy chưa khả dụng trên phiên bản này. Tính năng sẽ
+                được bật trong một bản cập nhật ứng dụng sắp tới.
+              </p>
+            ) : (
+              <>
+                <p className="text-xs text-black/60 mb-3">
+                  Để nhận thông báo đẩy trên iPhone hoặc điện thoại Android, ứng dụng cần xin
+                  quyền một lần. Nhấn nút bên dưới — hệ thống sẽ hiện hộp thoại.
+                </p>
+                <button
+                  type="button"
+                  onClick={enrollDevice}
+                  className="px-3.5 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
+                >
+                  Đăng ký thiết bị
+                </button>
+                {enrollMsg && (
+                  <p className="text-xs text-black/65 mt-2">{enrollMsg}</p>
+                )}
+              </>
             )}
           </section>
 
