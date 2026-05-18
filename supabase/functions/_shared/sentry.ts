@@ -108,6 +108,15 @@ export interface CaptureOptions {
   functionName: string;
   userId?: string | null;
   extra?: Record<string, unknown>;
+  /**
+   * Low-cardinality, INDEXED Sentry tags for dashboard faceting. Sentry
+   * indexes tags (filterable/aggregatable) but NOT `extra` — anything an
+   * ops dashboard needs to group by (provider, event type, severity,
+   * pipeline stage) belongs here, not in `extra`. Keep values bounded:
+   * never a raw id, body, or free text. Merged on top of the always-set
+   * `function_name` tag; callers must not override `function_name`.
+   */
+  tags?: Record<string, string>;
 }
 
 /**
@@ -123,8 +132,19 @@ export async function captureEdgeError(error: unknown, options: CaptureOptions):
     if (options.userId) {
       sdk.setUser({ id: options.userId });
     }
+    // function_name is always pinned and wins over caller tags so a
+    // dashboard can always attribute the event to its source function.
+    const mergedTags: Record<string, string> = {
+      ...(options.tags ?? {}),
+      function_name: options.functionName,
+    };
+    // Also setTag each (scope-level) so the tags are present even if a
+    // future SDK version ignores the per-call `tags` hint.
+    for (const [k, v] of Object.entries(mergedTags)) {
+      sdk.setTag(k, v);
+    }
     sdk.captureException(error, {
-      tags: { function_name: options.functionName },
+      tags: mergedTags,
       extra: options.extra,
     });
     // Edge function isolates can be torn down before Sentry's batched
