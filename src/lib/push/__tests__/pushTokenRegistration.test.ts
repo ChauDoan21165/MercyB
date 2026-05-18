@@ -11,6 +11,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
   _internals,
+  isPushPluginAvailable,
   registerPushNotifications,
 } from "../pushTokenRegistration";
 
@@ -83,5 +84,16 @@ describe("registerPushNotifications — web build (no Capacitor)", () => {
     const result = await registerPushNotifications(fakeSupabase);
 
     expect(result.kind).toBe("skipped_not_native");
+  });
+});
+
+describe("isPushPluginAvailable — web build (no Capacitor)", () => {
+  it("is false when Capacitor/plugin cannot be resolved (no false CTA)", async () => {
+    // Same env reasoning as above: @capacitor/core is unresolvable in
+    // vitest, so loadCapacitor() → null and the probe is false. This is
+    // the signal PushPreferences uses to hide the enroll button so it
+    // never offers an action that can only return plugin_unavailable.
+    // (Native true-path is device-only by design — see file header.)
+    await expect(isPushPluginAvailable()).resolves.toBe(false);
   });
 });
