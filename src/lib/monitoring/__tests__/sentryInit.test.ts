@@ -19,6 +19,7 @@ vi.mock("@sentry/capacitor", () => ({
 import * as Sentry from "@sentry/react";
 import {
   initSentry,
+  whenSentryReady,
   scrubEvent,
   scrubBreadcrumb,
   isSentryEnabled,
@@ -70,6 +71,36 @@ describe("initSentry — DSN gating", () => {
     initSentry();
     initSentry();
     expect(sentryInit).not.toHaveBeenCalled();
+  });
+});
+
+describe("whenSentryReady — deferred-boot readiness contract", () => {
+  it("resolves after initSentry() in test mode (terminal: disabled)", async () => {
+    initSentry(); // MODE==='test' → early return, but must still settle
+    await expect(whenSentryReady()).resolves.toBeUndefined();
+    expect(isSentryEnabled()).toBe(false); // buffer must drop, not replay
+  });
+
+  it("resolves even when whenSentryReady() is awaited BEFORE initSentry()", async () => {
+    const ready = whenSentryReady(); // caller races ahead of init
+    initSentry();
+    await expect(ready).resolves.toBeUndefined();
+  });
+
+  it("returns a stable promise and resolves on the idempotent second call", async () => {
+    const a = whenSentryReady();
+    const b = whenSentryReady();
+    expect(a).toBe(b); // same promise instance — buffer can await once
+    initSentry();
+    initSentry(); // idempotent path must also settle readiness
+    await expect(a).resolves.toBeUndefined();
+  });
+
+  it("resolves with Sentry disabled when DSN is empty (drop, not replay)", async () => {
+    vi.stubEnv("VITE_SENTRY_DSN", "");
+    initSentry();
+    await whenSentryReady();
+    expect(isSentryEnabled()).toBe(false);
   });
 });
 

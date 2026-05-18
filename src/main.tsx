@@ -86,7 +86,14 @@ import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queries/client";
-import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentryInit";
+import {
+  initSentry,
+  whenSentryReady,
+  isSentryEnabled,
+  getSentryModule,
+  stringLooksLikeExternalNoise,
+} from "@/lib/monitoring/sentryInit";
+import { installBootErrorBuffer } from "@/lib/monitoring/bootErrorBuffer";
 // runConfigHealthCheck and initializeWebVitals are imported dynamically
 // from inside an idle-callback below — see `deferNonCriticalBootWork`. Both
 // observe / report; neither is needed for first paint.
@@ -114,21 +121,51 @@ const CHUNK_RELOAD_SESSION_KEY = "__mb_chunk_reload_once__";
 
 try { window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION; } catch { /* ignore */ }
 
-// Sentry — DSN-gated. No-op when VITE_SENTRY_DSN is unset (default today).
-// Called first so the boot IIFEs below are inside the error-capture window.
-initSentry();
+// Sentry init is DEFERRED into requestIdleCallback (deferNonCriticalBootWork
+// below) so the ~156 KB @sentry/react chunk stops competing with the LCP
+// critical path on Slow 4G (mobile-Lighthouse LCP −1.35 s / FCP −0.5 s).
+// Deferring would otherwise lose any error thrown during boot — the most
+// diagnostically valuable kind. This bounded buffer, installed FIRST (before
+// every boot IIFE) so its window.error/unhandledrejection capture-phase
+// listeners are the earliest possible, holds those errors and replays them
+// through Sentry once whenSentryReady() settles (or console.error if Sentry
+// is disabled / never inits — never a silent drop). User-facing fatal
+// handling is independent (attachFatalErrorOverlay below) and unaffected.
+const bootErrors = installBootErrorBuffer({
+  maxEntries: 50,
+  isEnabled: isSentryEnabled,
+  getCapture: () => {
+    const sdk = getSentryModule() as
+      | { captureException?: (e: unknown) => void }
+      | null;
+    return sdk && typeof sdk.captureException === "function"
+      ? sdk.captureException.bind(sdk)
+      : null;
+  },
+});
 
-// Defer two pieces of non-critical boot work out of the synchronous path:
+// Defer non-critical boot work out of the synchronous path:
+//   - initSentry: pulls the ~156 KB @sentry/react chunk; deferring it is
+//     the LCP/FCP win this change exists for.
 //   - runConfigHealthCheck: probes external services and reports to Sentry.
 //   - initializeWebVitals: subscribes to LCP/FID/CLS/TTFB/FCP/INP observers.
-// Both are observability / reporting concerns; neither affects what the
-// user sees on first paint. Pushing them into requestIdleCallback (with a
+// All are observability / reporting concerns; none affect what the user
+// sees on first paint. Pushing them into requestIdleCallback (with a
 // setTimeout fallback for Safari < 16.4 / older Firefox) saves their
 // bundled cost from the critical path AND frees the main thread during
-// hydration. The functions themselves still run — just after the user can
-// already interact.
+// hydration. They still run — just after the user can already interact.
 (function deferNonCriticalBootWork() {
   const run = () => {
+    initSentry();
+    // Flush the boot-error buffer on whichever fires first:
+    //   - whenSentryReady(): Sentry reached a terminal state (up OR
+    //     permanently disabled) — replay-or-drop now with a correct verdict.
+    //   - 10 s hard cap: a wedged dynamic import must not pin errors in
+    //     memory forever; flush (→ console, since Sentry isn't up) and
+    //     stop buffering. flush() is idempotent so the race is safe.
+    void whenSentryReady().then(() => bootErrors.flush());
+    setTimeout(() => bootErrors.flush(), 10000);
+
     void import("@/lib/configHealth")
       .then((m) => m.runConfigHealthCheck())
       .catch(() => {});

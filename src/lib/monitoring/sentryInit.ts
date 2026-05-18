@@ -55,6 +55,45 @@ let initialized = false;
 let dsnConfigured = false;
 let disabledReasonLogged = false;
 
+// Readiness contract for the deferred-boot error buffer (main.tsx).
+// initSentry() is fire-and-forget; a caller that defers it needs a
+// deterministic "Sentry has reached a TERMINAL state" signal so a
+// pre-init error buffer knows when to replay-or-drop. This promise
+// resolves once init has settled in ANY terminal state — SDK
+// initialized, no-DSN/disabled, dynamic-import failed, or test-mode
+// skip — NOT only on success. The buffer then checks isSentryEnabled()
+// to decide replay (true) vs console-drop (false). Resolve-only (never
+// rejects) so a `.then(flush)` can't itself throw.
+let sentryReadyPromise: Promise<void> | null = null;
+let resolveSentryReady: (() => void) | null = null;
+
+/**
+ * Resolves when initSentry() has reached a terminal state (ready OR
+ * permanently disabled this session). Safe to call before, during, or
+ * after initSentry(); idempotent; never rejects. Pair with isSentryEnabled()
+ * after it resolves to know whether Sentry actually came up.
+ */
+export function whenSentryReady(): Promise<void> {
+  if (!sentryReadyPromise) {
+    sentryReadyPromise = new Promise<void>((resolve) => {
+      resolveSentryReady = resolve;
+    });
+  }
+  return sentryReadyPromise;
+}
+
+// Resolve the readiness promise exactly once. Lazily creates the promise
+// first (so an early return that runs before any whenSentryReady() caller
+// still leaves a resolved promise for a later caller to await).
+function markSentryReady(): void {
+  whenSentryReady();
+  if (resolveSentryReady) {
+    const resolve = resolveSentryReady;
+    resolveSentryReady = null;
+    resolve();
+  }
+}
+
 export function isSentryEnabled(): boolean {
   return dsnConfigured;
 }
@@ -64,13 +103,23 @@ export function getSentryModule(): unknown {
 }
 
 export function initSentry(): void {
-  if (initialized) return;
+  // Idempotent: a second call must still leave whenSentryReady() resolvable
+  // (the first call owns resolution; if it already settled this is a no-op,
+  // if still in flight the original IIFE's finally will resolve it).
+  if (initialized) {
+    markSentryReady();
+    return;
+  }
   initialized = true;
 
   // Vitest sets MODE='test'. Belt-and-braces guard so tests never wire up
   // the real SDK even if a DSN slips into the test env. Kept BEFORE the
   // async IIFE so test runs never trigger the dynamic SDK import either.
-  if (import.meta.env.MODE === "test") return;
+  // Terminal state → resolve readiness (isSentryEnabled() stays false).
+  if (import.meta.env.MODE === "test") {
+    markSentryReady();
+    return;
+  }
 
   void (async () => {
     try {
@@ -216,6 +265,13 @@ export function initSentry(): void {
         "[sentry] dynamic import failed; monitoring disabled this session",
         err,
       );
+    } finally {
+      // Terminal state reached on EVERY path (init OK, no-DSN early
+      // return, or import/init threw) → release the readiness promise so
+      // the deferred-boot buffer flushes/drops deterministically. Runs
+      // AFTER SentryReact.init() on the success path, so Sentry's own
+      // global handlers are already attached before the buffer replays.
+      markSentryReady();
     }
   })();
 }
@@ -827,4 +883,6 @@ export function __resetForTest(): void {
   dsnConfigured = false;
   disabledReasonLogged = false;
   sentryModule = null;
+  sentryReadyPromise = null;
+  resolveSentryReady = null;
 }
