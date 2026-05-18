@@ -27,6 +27,8 @@ import {
   looksLikeAnonymousStackOverflow,
   runsInsideZaloIab,
   buildSentryOptions,
+  enrichEventTags,
+  classifyRlsTable,
   __resetForTest,
 } from "../sentryInit";
 import {
@@ -788,5 +790,50 @@ describe("buildSentryOptions — Session Replay platform fork", () => {
     expect(opts.replaysSessionSampleRate).toBeUndefined();
     expect(opts.replaysOnErrorSampleRate).toBeUndefined();
     expect(opts.dsn).toBe(SHARED.dsn);
+  });
+});
+
+describe("classifyRlsTable — admin/privileged RLS table → featureArea", () => {
+  it("maps the known admin-gated tables to 'admin'", () => {
+    expect(classifyRlsTable("access_codes")).toBe("admin");
+    expect(classifyRlsTable("email_campaigns")).toBe("admin");
+    expect(classifyRlsTable("email_events")).toBe("admin");
+  });
+
+  it("maps the admin_* prefix convention to 'admin' (case-insensitive)", () => {
+    expect(classifyRlsTable("admin_audit_log")).toBe("admin");
+    expect(classifyRlsTable("ADMIN_Whatever")).toBe("admin");
+  });
+
+  it("returns null for learner tables + empty input (→ normal inference)", () => {
+    expect(classifyRlsTable("rooms")).toBeNull();
+    expect(classifyRlsTable("profiles")).toBeNull();
+    expect(classifyRlsTable("")).toBeNull();
+    expect(classifyRlsTable(undefined)).toBeNull();
+    expect(classifyRlsTable(null)).toBeNull();
+  });
+});
+
+describe("enrichEventTags — featureArea preserved for rls_denied events", () => {
+  it("keeps a pinned admin featureArea instead of reclassifying it", () => {
+    const event = { tags: { rls_denied: "true", featureArea: "admin" } };
+    enrichEventTags(event as never);
+    expect(event.tags.featureArea).toBe("admin");
+    // admin ≠ "other" ⇒ P1 (core break); rootCauseHint recognises the marker
+    expect((event.tags as Record<string, string>).priority).toBe("P1");
+  });
+
+  it("does NOT preserve featureArea when rls_denied is absent", () => {
+    const event = { tags: { featureArea: "admin" } };
+    enrichEventTags(event as never);
+    // No rls_denied marker ⇒ normal route/content inference wins (jsdom
+    // path "/" is unclassified ⇒ "other"), not the stray preset.
+    expect(event.tags.featureArea).not.toBe("admin");
+  });
+
+  it("falls through to inference when the pinned value is not a valid FeatureArea", () => {
+    const event = { tags: { rls_denied: "true", featureArea: "bogus" } };
+    enrichEventTags(event as never);
+    expect(event.tags.featureArea).not.toBe("bogus");
   });
 });
