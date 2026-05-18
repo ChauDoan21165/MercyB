@@ -31,17 +31,13 @@
 //                     chosen native. Screen 2.
 //   4. start_with   — NEW: only when >1 target chosen — pick the primary
 //                     (the one Mercy opens first). Screen 3.
-//   5. goal         — only when the primary target is English
-//                     (IELTS/TOEIC/VSTEP/career are English-specific)
-//   6. profession   — only when goal === "career"
-//   7. level         — only when the primary target is English
-//   8. confirmation — summary + "Hoàn tất" → persist + navigate
+//   5. confirmation — summary + "Hoàn tất" → persist + navigate
 //
-// The (vi → en) path is preserved exactly (locked #14): a vi-native
-// learner who picks English still flows through goal/profession/level
-// → the same pickFirstLesson routing as before. Non-English primaries
-// skip the English-specific steps and route into their /languages
-// track.
+// The goal/profession/level steps were removed as unreachable dead UI
+// (pair-pick lands on home since #598). The profiles columns they used
+// (primary_goal / profession / english_level) are KEPT — still written
+// (NULL on this flow) and read by MercyGuide / DailyCoach; those
+// columns are privilege-frozen per #578.
 //
 // Persistence: on confirmation, native_language + target_languages
 // (ordered, primary first) + onboarded_at — plus, ONLY when the primary
@@ -66,18 +62,15 @@ import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
-// NOTE: pickFirstLesson (@/lib/onboarding/firstLesson) is intentionally
-// no longer imported — onboarding no longer routes to a goal-derived
-// first lesson; it lands on "/" (home) so goal-selection cannot gate
-// first entry. The helper file is kept in the repo for the future
-// in-app "personalize your path" wiring.
+// Onboarding no longer routes to a goal-derived first lesson — it lands
+// on "/" (home) so goal selection cannot gate first entry. The old
+// firstLesson.ts helper + the goal/profession/level picker UI were
+// removed as dead code; the primary_goal/profession/english_level
+// profiles columns are kept (live: MercyGuide / DailyCoach read them).
 import {
-  GOAL_OPTIONS,
-  LEVEL_OPTIONS,
   NATIVE_OPTIONS,
   ONBOARDING_COPY,
   ONBOARDING_STEPS,
-  PROFESSION_OPTIONS,
   RECOMMENDED_TARGET,
   TARGET_MENU,
   TARGET_META,
@@ -85,9 +78,6 @@ import {
   targetLabel,
   type NativeLang,
   type OnboardingDraft,
-  type OnboardingGoal,
-  type OnboardingLevel,
-  type OnboardingProfession,
   type OnboardingStepId,
   type TargetLang,
 } from "@/lib/onboarding/types";
@@ -114,12 +104,10 @@ function primaryTargetOf(draft: OnboardingDraft): TargetLang | null {
 }
 
 /** After the pair (native + target[s], primary chosen) is picked, go
- *  straight to the confirmation → home. The goal/profession/level
- *  chain must NOT gate first entry to the app (it can be offered later
- *  in-app as optional personalization). Those step components + data
- *  are intentionally kept in this file (not deleted) for that future
- *  in-app wiring — they are simply unreachable from this state machine
- *  now. */
+ *  straight to confirmation → home. The goal/profession/level chain
+ *  must NOT gate first entry; it was removed as dead UI (#598). It can
+ *  return later as optional in-app personalization writing the same
+ *  (kept) profiles columns. */
 function afterPrimaryStep(_draft: OnboardingDraft): OnboardingStepId {
   return "confirmation";
 }
@@ -144,12 +132,6 @@ function nextStep(
         : afterPrimaryStep(draft);
     case "start_with":
       return afterPrimaryStep(draft);
-    case "goal":
-      return draft.primary_goal === "career" ? "profession" : "level";
-    case "profession":
-      return "level";
-    case "level":
-      return "confirmation";
     case "confirmation":
       return "confirmation";
   }
@@ -169,15 +151,8 @@ function previousStep(
       return "native";
     case "start_with":
       return "target";
-    case "goal":
-      return multiTarget ? "start_with" : "target";
-    case "profession":
-      return "goal";
-    case "level":
-      return draft.primary_goal === "career" ? "profession" : "goal";
     case "confirmation":
-      // goal/level are no longer in the forward flow — Back from
-      // confirmation returns to the last pair step.
+      // Back from confirmation returns to the last pair step.
       return multiTarget ? "start_with" : "target";
   }
 }
@@ -585,28 +560,6 @@ export default function OnboardingPage() {
     advance(updated);
   };
 
-  const handleGoalSelect = (goal: OnboardingGoal) => {
-    const updated: OnboardingDraft = {
-      ...draft,
-      primary_goal: goal,
-      profession: goal === "career" ? draft.profession : null,
-    };
-    setDraft(updated);
-    advance(updated);
-  };
-
-  const handleProfessionSelect = (profession: OnboardingProfession) => {
-    const updated: OnboardingDraft = { ...draft, profession };
-    setDraft(updated);
-    advance(updated);
-  };
-
-  const handleLevelSelect = (level: OnboardingLevel) => {
-    const updated: OnboardingDraft = { ...draft, english_level: level };
-    setDraft(updated);
-    advance(updated);
-  };
-
   // First entry always lands on "/" (home). Home is pair-aware (PR
   // #588): it renders the chosen-pair experience for the learner's
   // (native, target). Goal-based first-lesson routing is removed from
@@ -927,57 +880,6 @@ export default function OnboardingPage() {
             </>
           ) : null}
 
-          {step === "goal" ? (
-            <>
-              <StepHeader
-                title={ONBOARDING_COPY.goal.title}
-                body={ONBOARDING_COPY.goal.body}
-                lang={chromeLang}
-              />
-              <ChoiceGrid
-                choices={GOAL_OPTIONS}
-                selected={draft.primary_goal}
-                onSelect={handleGoalSelect}
-                ariaLabel="Primary learning goal"
-                lang={chromeLang}
-              />
-            </>
-          ) : null}
-
-          {step === "profession" ? (
-            <>
-              <StepHeader
-                title={ONBOARDING_COPY.profession.title}
-                body={ONBOARDING_COPY.profession.body}
-                lang={chromeLang}
-              />
-              <ChoiceGrid
-                choices={PROFESSION_OPTIONS}
-                selected={draft.profession}
-                onSelect={handleProfessionSelect}
-                ariaLabel="Profession"
-                lang={chromeLang}
-              />
-            </>
-          ) : null}
-
-          {step === "level" ? (
-            <>
-              <StepHeader
-                title={ONBOARDING_COPY.level.title}
-                body={ONBOARDING_COPY.level.body}
-                lang={chromeLang}
-              />
-              <ChoiceGrid
-                choices={LEVEL_OPTIONS}
-                selected={draft.english_level}
-                onSelect={handleLevelSelect}
-                ariaLabel="Current English level"
-                lang={chromeLang}
-              />
-            </>
-          ) : null}
-
           {step === "confirmation" ? (
             <>
               <StepHeader
@@ -1036,73 +938,6 @@ export default function OnboardingPage() {
                           : targetLabel(t, chromeLang),
                       )
                       .join(" · ")}
-                  </li>
-                ) : null}
-                {draft.primary_goal ? (
-                  <li
-                    style={{
-                      padding: "10px 12px",
-                      borderRadius: 12,
-                      background: "rgba(20,184,166,0.08)",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <strong>
-                      {pickChrome(ONBOARDING_COPY.summary.goal, chromeLang)}:
-                    </strong>{" "}
-                    {(() => {
-                      const g = GOAL_OPTIONS.find(
-                        (x) => x.value === draft.primary_goal,
-                      );
-                      return g ? pickChrome(g.label, chromeLang) : null;
-                    })()}
-                  </li>
-                ) : null}
-                {draft.profession ? (
-                  <li
-                    style={{
-                      padding: "10px 12px",
-                      borderRadius: 12,
-                      background: "rgba(20,184,166,0.08)",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <strong>
-                      {pickChrome(
-                        ONBOARDING_COPY.summary.profession,
-                        chromeLang,
-                      )}
-                      :
-                    </strong>{" "}
-                    {(() => {
-                      const p = PROFESSION_OPTIONS.find(
-                        (x) => x.value === draft.profession,
-                      );
-                      return p ? pickChrome(p.label, chromeLang) : null;
-                    })()}
-                  </li>
-                ) : null}
-                {draft.english_level ? (
-                  <li
-                    style={{
-                      padding: "10px 12px",
-                      borderRadius: 12,
-                      background: "rgba(20,184,166,0.08)",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <strong>
-                      {pickChrome(ONBOARDING_COPY.summary.level, chromeLang)}:
-                    </strong>{" "}
-                    {(() => {
-                      const l = LEVEL_OPTIONS.find(
-                        (x) => x.value === draft.english_level,
-                      );
-                      return l ? pickChrome(l.label, chromeLang) : null;
-                    })()}
                   </li>
                 ) : null}
               </ul>
