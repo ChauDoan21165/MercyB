@@ -2,6 +2,7 @@
   "name": "OCD Support",
   "name_vi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
   "description": "In-depth strategies for managing OCD with therapy and support",
+  "description_vi": "Các chiến lược chuyên sâu để kiểm soát rối loạn ám ảnh cưỡng chế (OCD), với trị liệu và sự hỗ trợ.",
   "keywords_en": [
     "OCD",
     "ERP therapy",
@@ -111,7 +112,7 @@
   },
   "content": {
     "en": "In-depth strategies for managing OCD with therapy and support",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để kiểm soát rối loạn ám ảnh cưỡng chế (OCD), với trị liệu và sự hỗ trợ."
   },
   "tier": "vip1",
   "domain": "General",
