@@ -142,24 +142,40 @@ export async function initMarketingTracking(): Promise<{
   utmCaptured: boolean;
   pixelLoaded: boolean;
   ga4Loaded: boolean;
+  clarityLoaded: boolean;
 }> {
   const consent = isMarketingTrackingEnabled();
   if (!consent) {
-    return { consent: false, utmCaptured: false, pixelLoaded: false, ga4Loaded: false };
+    return {
+      consent: false,
+      utmCaptured: false,
+      pixelLoaded: false,
+      ga4Loaded: false,
+      clarityLoaded: false,
+    };
   }
 
   // Lazy-load the tracking modules so the consent-off branch never
   // even pulls in their script-injection code.
-  const [{ captureUtmFromCurrentUrl }, { initPixel, pixelTrackPageView }, { initGa4, gaPageView }] =
-    await Promise.all([
-      import("@/lib/tracking/utm"),
-      import("@/lib/tracking/pixel"),
-      import("@/lib/tracking/ga4"),
-    ]);
+  const [
+    { captureUtmFromCurrentUrl },
+    { initPixel, pixelTrackPageView },
+    { initGa4, gaPageView },
+    { initClarity },
+  ] = await Promise.all([
+    import("@/lib/tracking/utm"),
+    import("@/lib/tracking/pixel"),
+    import("@/lib/tracking/ga4"),
+    import("@/lib/tracking/clarity"),
+  ]);
 
   const utm = captureUtmFromCurrentUrl();
   const pixelLoaded = initPixel();
   const ga4Loaded = initGa4();
+  // Clarity is consent-gated by reaching this branch (same gate as
+  // Pixel/GA4) and env-gated inside initClarity(); session replay +
+  // heatmaps only when VITE_CLARITY_PROJECT_ID is set in prod.
+  const clarityLoaded = initClarity();
 
   if (pixelLoaded) pixelTrackPageView();
   if (ga4Loaded) gaPageView();
@@ -169,6 +185,7 @@ export async function initMarketingTracking(): Promise<{
     utmCaptured: utm !== null,
     pixelLoaded,
     ga4Loaded,
+    clarityLoaded,
   };
 }
 

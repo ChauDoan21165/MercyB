@@ -175,7 +175,10 @@ export default function TestPage() {
   }
 
   return (
-    <div style={pageWrap}>
+    // Privacy: mask the entire placement test in Clarity session
+    // replay — recording questions + which option is chosen would
+    // leak the answer key across sessions. See clarity.ts.
+    <div style={pageWrap} data-clarity-mask="true">
       <ProgressStrip current={progress} total={snapshot.estimatedTotal} />
 
       {snapshot.canFinishEarly ? (

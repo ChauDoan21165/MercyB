@@ -662,6 +662,7 @@ export default function EmailBlock({
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@email.com"
           autoComplete="email"
+          data-clarity-mask="true"
           style={UI.input(disabled)}
           disabled={disabled}
         />
@@ -685,6 +686,10 @@ export default function EmailBlock({
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
+              // Clarity auto-masks type=password, but this field flips
+              // to type=text on "show password" — mask explicitly so it
+              // never leaks in that state.
+              data-clarity-mask="true"
               type={showPw ? "text" : "password"}
               autoComplete="current-password"
               disabled={disabled}
