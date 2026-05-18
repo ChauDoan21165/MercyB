@@ -2,6 +2,7 @@
   "name": "Anxiety Relief",
   "name_vi": "Giảm Lo Âu",
   "description": "Expert strategies for mastering anxiety with comprehensive tools",
+  "description_vi": "Các chiến lược chuyên sâu để làm chủ lo âu bằng những công cụ toàn diện.",
   "keywords_en": [
     "anxiety",
     "calm",
@@ -50,7 +51,7 @@
   },
   "content": {
     "en": "Expert strategies for mastering anxiety with comprehensive tools",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để làm chủ lo âu bằng những công cụ toàn diện."
   },
   "tier": "vip3",
   "domain": "Mental Health",

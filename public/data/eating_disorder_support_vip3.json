@@ -2,6 +2,7 @@
   "name": "Eating Disorder Support",
   "name_vi": "Hỗ Trợ Rối Loạn Ăn Uống",
   "description": "Expert strategies for comprehensive eating disorder recovery and resilience",
+  "description_vi": "Các chiến lược chuyên sâu để phục hồi toàn diện khỏi rối loạn ăn uống và xây dựng sức bền tinh thần.",
   "keywords_en": [
     "eating disorder",
     "recovery",
@@ -159,7 +160,7 @@
   },
   "content": {
     "en": "Expert strategies for comprehensive eating disorder recovery and resilience",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để phục hồi toàn diện khỏi rối loạn ăn uống và xây dựng sức bền tinh thần."
   },
   "tier": "vip3",
   "domain": "General",

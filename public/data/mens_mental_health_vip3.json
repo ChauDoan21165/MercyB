@@ -2,6 +2,7 @@
   "name": "Men’s Mental Health",
   "name_vi": "Sức Khỏe Tinh Thần Nam Giới",
   "description": "Advanced clinical systems for unbreakable male psyche",
+  "description_vi": "Hệ thống lâm sàng nâng cao cho một tâm lý nam giới vững vàng, không thể lay chuyển.",
   "keywords_en": [
     "men",
     "mental",
@@ -49,7 +50,7 @@
   },
   "content": {
     "en": "Advanced clinical systems for unbreakable male psyche",
-    "vi": ""
+    "vi": "Hệ thống lâm sàng nâng cao cho một tâm lý nam giới vững vàng, không thể lay chuyển."
   },
   "tier": "vip3",
   "domain": "General",

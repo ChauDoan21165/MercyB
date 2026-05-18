@@ -2,6 +2,7 @@
   "name": "Addiction Support",
   "name_vi": "Hỗ Trợ Cai Nghiện",
   "description": "Expert strategies for comprehensive addiction recovery and resilience",
+  "description_vi": "Các chiến lược chuyên sâu để phục hồi toàn diện khỏi nghiện và xây dựng sức bền tinh thần.",
   "keywords_en": [
     "addiction",
     "recovery",
@@ -159,7 +160,7 @@
   },
   "content": {
     "en": "Expert strategies for comprehensive addiction recovery and resilience",
-    "vi": ""
+    "vi": "Các chiến lược chuyên sâu để phục hồi toàn diện khỏi nghiện và xây dựng sức bền tinh thần."
   },
   "tier": "vip3",
   "domain": "Mental Health",
