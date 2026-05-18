@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import { useChromeLanguage, pickChrome } from "@/lib/i18n/chromeLanguage";
 
 const DANGEROUS_PROTOCOLS = /^(data|javascript|vbscript|file|about):/i;
 
@@ -224,6 +225,7 @@ const UI = {
 
 export default function ResetPasswordPage() {
   const nav = useNavigate();
+  const lang = useChromeLanguage();
 
   const search = window.location.search || "";
   const hash = window.location.hash || "";
@@ -275,7 +277,13 @@ export default function ResetPasswordPage() {
             setReady(true);
             setStatus({
               tone: "info",
-              message: "Recovery session ready. Set your new password below.",
+              message: pickChrome(
+                {
+                  vi: "Đã sẵn sàng khôi phục. Hãy đặt mật khẩu mới bên dưới.",
+                  en: "Recovery session ready. Set your new password below.",
+                },
+                lang,
+              ),
             });
           }
           return;
@@ -292,7 +300,13 @@ export default function ResetPasswordPage() {
             setReady(true);
             setStatus({
               tone: "info",
-              message: "Recovery session ready. Set your new password below.",
+              message: pickChrome(
+                {
+                  vi: "Đã sẵn sàng khôi phục. Hãy đặt mật khẩu mới bên dưới.",
+                  en: "Recovery session ready. Set your new password below.",
+                },
+                lang,
+              ),
             });
           }
           return;
@@ -306,7 +320,13 @@ export default function ResetPasswordPage() {
             setReady(true);
             setStatus({
               tone: "info",
-              message: "You already have a valid session. Set your new password below.",
+              message: pickChrome(
+                {
+                  vi: "Bạn đang có phiên đăng nhập hợp lệ. Hãy đặt mật khẩu mới bên dưới.",
+                  en: "You already have a valid session. Set your new password below.",
+                },
+                lang,
+              ),
             });
           }
           return;
@@ -341,7 +361,7 @@ export default function ResetPasswordPage() {
       cancelled = true;
       sub?.subscription?.unsubscribe();
     };
-  }, [recoveryCode, accessToken, refreshToken, recoveryType]);
+  }, [recoveryCode, accessToken, refreshToken, recoveryType, lang]);
 
   const updatePassword = useCallback(async () => {
     if (busy || booting || !ready) return;
@@ -354,12 +374,24 @@ export default function ResetPasswordPage() {
       const b = pw2.trim();
 
       if (!a || a.length < 6) {
-        setStatus({ tone: "error", message: "Password must be at least 6 characters." });
+        setStatus({
+          tone: "error",
+          message: pickChrome(
+            { vi: "Mật khẩu phải có ít nhất 6 ký tự.", en: "Password must be at least 6 characters." },
+            lang,
+          ),
+        });
         return;
       }
 
       if (a !== b) {
-        setStatus({ tone: "error", message: "Passwords do not match." });
+        setStatus({
+          tone: "error",
+          message: pickChrome(
+            { vi: "Mật khẩu nhập lại không khớp.", en: "Passwords do not match." },
+            lang,
+          ),
+        });
         return;
       }
 
@@ -368,7 +400,13 @@ export default function ResetPasswordPage() {
       const { error } = await supabase.auth.updateUser({ password: a });
       if (error) throw error;
 
-      setStatus({ tone: "success", message: "✅ Password updated. Redirecting..." });
+      setStatus({
+        tone: "success",
+        message: pickChrome(
+          { vi: "✅ Đã cập nhật mật khẩu. Đang chuyển hướng...", en: "✅ Password updated. Redirecting..." },
+          lang,
+        ),
+      });
       await routeAfterAuth();
       clearRecoveryTokensFromUrl();
     } catch (e: any) {
@@ -376,18 +414,28 @@ export default function ResetPasswordPage() {
     } finally {
       setBusy(false);
     }
-  }, [booting, busy, pw1, pw2, ready, routeAfterAuth]);
+  }, [booting, busy, pw1, pw2, ready, routeAfterAuth, lang]);
 
   return (
     <div style={UI.page}>
       <div style={UI.card}>
-        <h1 style={UI.title}>Set a new password</h1>
+        <h1 style={UI.title}>
+          {pickChrome({ vi: "Đặt mật khẩu mới", en: "Set a new password" }, lang)}
+        </h1>
         <p style={UI.subtitle}>
-          Opened from a password reset email. Choose a new password to finish signing in.
+          {pickChrome(
+            {
+              vi: "Bạn vừa mở liên kết từ email đặt lại mật khẩu. Hãy chọn mật khẩu mới để hoàn tất đăng nhập.",
+              en: "Opened from a password reset email. Choose a new password to finish signing in.",
+            },
+            lang,
+          )}
         </p>
 
         <div style={{ marginTop: 18 }}>
-          <label style={UI.label}>New password</label>
+          <label style={UI.label}>
+            {pickChrome({ vi: "Mật khẩu mới", en: "New password" }, lang)}
+          </label>
           <div
             style={{
               position: "relative",
@@ -420,7 +468,12 @@ export default function ResetPasswordPage() {
               type="button"
               onClick={() => setShowPw((v) => !v)}
               disabled={busy || booting || !ready}
-              aria-label={showPw ? "Hide password" : "Show password"}
+              aria-label={pickChrome(
+                showPw
+                  ? { vi: "Ẩn mật khẩu", en: "Hide password" }
+                  : { vi: "Hiện mật khẩu", en: "Show password" },
+                lang,
+              )}
               style={{
                 position: "absolute",
                 right: 10,
@@ -439,7 +492,9 @@ export default function ResetPasswordPage() {
         </div>
 
         <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>Confirm password</label>
+          <label style={UI.label}>
+            {pickChrome({ vi: "Xác nhận mật khẩu", en: "Confirm password" }, lang)}
+          </label>
           <input
             value={pw2}
             onChange={(e) => setPw2(e.target.value)}
@@ -458,7 +513,11 @@ export default function ResetPasswordPage() {
             disabled={busy || booting || !ready}
             style={{ ...UI.primaryBtn(busy || booting || !ready), flex: "1 1 240px" }}
           >
-            {booting ? "Preparing..." : busy ? "Updating..." : "Update password"}
+            {booting
+              ? pickChrome({ vi: "Đang chuẩn bị...", en: "Preparing..." }, lang)
+              : busy
+                ? pickChrome({ vi: "Đang cập nhật...", en: "Updating..." }, lang)
+                : pickChrome({ vi: "Cập nhật mật khẩu", en: "Update password" }, lang)}
           </button>
 
           <button
@@ -467,7 +526,7 @@ export default function ResetPasswordPage() {
             disabled={busy}
             style={UI.ghostBtn(busy)}
           >
-            Back to sign in
+            {pickChrome({ vi: "Quay lại đăng nhập", en: "Back to sign in" }, lang)}
           </button>
         </div>
 

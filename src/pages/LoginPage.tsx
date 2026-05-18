@@ -426,7 +426,7 @@ export default function LoginPage() {
                 padding: "10px 14px",
               }}
             >
-              ← Back to home
+              {t({ vi: "← Về trang chủ", en: "← Back to home" })}
             </button>
           </div>
 
@@ -448,7 +448,7 @@ export default function LoginPage() {
             {hasSession ? (
               <div>
                 <div style={{ fontWeight: 950, fontSize: 13, marginBottom: 6 }}>
-                  ✅ Signed in.
+                  {t({ vi: "✅ Đã đăng nhập.", en: "✅ Signed in." })}
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button
@@ -457,7 +457,7 @@ export default function LoginPage() {
                     disabled={busy}
                     style={UI.primaryBtn(busy)}
                   >
-                    Continue
+                    {t({ vi: "Tiếp tục", en: "Continue" })}
                   </button>
                   <button
                     type="button"
@@ -467,17 +467,20 @@ export default function LoginPage() {
                     disabled={busy}
                     style={UI.ghostBtn(busy)}
                   >
-                    Sign out
+                    {t({ vi: "Đăng xuất", en: "Sign out" })}
                   </button>
                 </div>
               </div>
             ) : sessionBooted ? (
               <div style={{ fontWeight: 950, fontSize: 13 }}>
-                🔒 Signed out — please sign in.
+                {t({
+                  vi: "🔒 Đã đăng xuất — vui lòng đăng nhập.",
+                  en: "🔒 Signed out — please sign in.",
+                })}
               </div>
             ) : (
               <div style={{ fontWeight: 950, fontSize: 13 }}>
-                Checking session…
+                {t({ vi: "Đang kiểm tra phiên đăng nhập…", en: "Checking session…" })}
               </div>
             )}
           </div>
@@ -511,16 +514,28 @@ export default function LoginPage() {
           )}
 
           <div style={UI.ecosystemBlock}>
-            <p style={UI.ecosystemTitle}>Mercy Account</p>
-            <p style={UI.ecosystemText}>One sign-in for all Mercy apps.</p>
+            <p style={UI.ecosystemTitle}>
+              {t({ vi: "Tài khoản Mercy", en: "Mercy Account" })}
+            </p>
+            <p style={UI.ecosystemText}>
+              {t({
+                vi: "Một lần đăng nhập cho mọi ứng dụng Mercy.",
+                en: "One sign-in for all Mercy apps.",
+              })}
+            </p>
             {fromApp && (
               <p style={UI.ecosystemText}>
-                You’re signing in to continue to <b>{fromApp.label}</b>.
+                {t({
+                  vi: "Bạn đang đăng nhập để tiếp tục tới ",
+                  en: "You’re signing in to continue to ",
+                })}
+                <b>{fromApp.label}</b>.
               </p>
             )}
             {safeReturnPath && (
               <div style={{ marginTop: 8, ...UI.small }}>
-                After sign-in: <code>{safeReturnPath}</code>
+                {t({ vi: "Sau khi đăng nhập: ", en: "After sign-in: " })}
+                <code>{safeReturnPath}</code>
               </div>
             )}
           </div>
@@ -539,7 +554,7 @@ export default function LoginPage() {
               style={UI.primaryBtn(busy)}
             >
               {busy
-                ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+                ? t({ vi: "Vui lòng đợi...", en: "Please wait..." })
                 : t({ vi: "Tiếp tục với Google", en: "Continue with Google" })}
             </button>
 
@@ -550,14 +565,14 @@ export default function LoginPage() {
               style={UI.primaryBtn(busy)}
             >
               {busy
-                ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
+                ? t({ vi: "Vui lòng đợi...", en: "Please wait..." })
                 : t({ vi: "Tiếp tục với Facebook", en: "Continue with Facebook" })}
             </button>
           </div>
 
           <div style={UI.divider}>
             <span style={UI.hr} />
-            OR
+            {t({ vi: "HOẶC", en: "OR" })}
             <span style={UI.hr} />
           </div>
 
@@ -576,7 +591,7 @@ export default function LoginPage() {
               disabled={busy}
               style={UI.segBtn(topMode === "phone", busy)}
             >
-              📱 Phone
+              {t({ vi: "📱 Số điện thoại", en: "📱 Phone" })}
             </button>
           </div>
 
@@ -614,7 +629,7 @@ export default function LoginPage() {
               disabled={busy}
               style={UI.ghostBtn(busy)}
             >
-              ← Back to home
+              {t({ vi: "← Về trang chủ", en: "← Back to home" })}
             </button>
           </div>
         </div>
