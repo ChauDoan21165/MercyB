@@ -3,8 +3,6 @@ name: Vitest Unit & Integration Tests
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   test:

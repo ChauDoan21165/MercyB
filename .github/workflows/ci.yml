@@ -1,5 +1,12 @@
 name: CI Pipeline
 
+# Consolidated PR CI. This is the ONLY workflow that runs on pull_request
+# for required checks. It emits exactly the 3 check-run names required by
+# ruleset 16546337 — "Build and Test", "Lint Code", "Validate Rooms".
+# Do NOT rename these jobs' `name:` values or branch protection breaks.
+# Everything else (perf, visual, mutation, extra validators) moved to
+# schedule / workflow_dispatch / push:main — see chore/consolidate-workflows.
+
 on:
   push:
     branches: ['main', 'develop']
@@ -10,7 +17,7 @@ jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -56,9 +63,9 @@ jobs:
         continue-on-error: false
 
   lint:
-    name: Code Quality
+    name: Lint Code
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -72,9 +79,32 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Lint
+        run: npm run lint
+
       - name: Check for console.logs
         run: |
           if grep -r "console.log" src/ --exclude-dir=node_modules; then
             echo "⚠️ Warning: console.log statements found"
           fi
         continue-on-error: true
+
+  validate:
+    name: Validate Rooms
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Validate rooms
+        run: npm run validate-rooms

@@ -6,10 +6,6 @@ on:
     paths:
       - 'public/data/**/*.json'
       - 'scripts/generate-room-registry.mjs'
-  pull_request:
-    branches: ['main', 'develop']
-    paths:
-      - 'public/data/**/*.json'
   workflow_dispatch:
 
 permissions:

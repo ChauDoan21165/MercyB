@@ -1,11 +1,6 @@
 name: Mutation Testing
 
 on:
-  pull_request:
-    branches: [main, develop]
-    paths:
-      - 'src/lib/**'
-      - 'src/__tests__/**'
   workflow_dispatch:
 
 permissions:
