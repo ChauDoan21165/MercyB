@@ -8,6 +8,8 @@ Make MercyBlade the #1 English-learning app for Vietnamese learners — the one 
 
 **Read `STRATEGY.md` and `PRINCIPLES.md` first — they are the two canonical living documents** (post-2026-05-17 strategic clarification). `NORTH_STAR.md` and `PLAN.md` are archived historical references in `reports/archive/`; consult them for history, not current direction.
 
+**Process & conventions: `docs/agent-briefs/INDEX.md`** is the single map of how development works here — the dispatch disciplines, the A92 failure-class label vocabulary (`silent-failure`, `dead-code`, `stale-audit-note`, `money-path`, …), and the recon-doc / SQL-remediation / PR-body conventions. Consult it before writing or executing a dispatch brief; it tracks which convention docs are live vs in-flight, and per the freshness rule, when a doc and current `origin/main` disagree, `main` wins.
+
 ## The five non-negotiables — a feature that violates any of these is rejected
 
 1. **Vietnamese-first, always.** Never generic English features that happen to be translated. If non-Vietnamese users feel slightly out of place, that's correct.
