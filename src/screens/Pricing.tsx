@@ -1,4 +1,8 @@
 // PATH: src/screens/Pricing.tsx
+//
+// CANONICAL: live pricing page. Wired at /pricing + /upgrade via AppRouter.tsx:63.
+// Do not delete — survivor of src/screens/ scaffold cleanup (R3 #722). Uses
+// formatPrice + MONTHLY_PRICE_VND + YEARLY_PRICE_VND from @/lib/pricing/displayPrices.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
