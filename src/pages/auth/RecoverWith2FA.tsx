@@ -32,6 +32,7 @@ import { ShieldAlert, KeyRound } from "lucide-react";
 
 import { supabase } from "@/lib/supabaseClient";
 import { verifyBackupCode } from "@/lib/security/mfaClient";
+import { AUTH_FOCUS_RING } from "@/components/auth/authUI";
 
 const wrap: React.CSSProperties = {
   width: "100%",
@@ -274,6 +275,7 @@ export default function RecoverWith2FA(): React.ReactElement {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={step === "verifying"}
+                className={AUTH_FOCUS_RING}
                 style={inputStyle}
                 data-testid="recover-email-input"
                 required
@@ -291,6 +293,7 @@ export default function RecoverWith2FA(): React.ReactElement {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={step === "verifying"}
+                className={AUTH_FOCUS_RING}
                 style={inputStyle}
                 data-testid="recover-password-input"
                 required
@@ -311,6 +314,7 @@ export default function RecoverWith2FA(): React.ReactElement {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 disabled={step === "verifying"}
+                className={AUTH_FOCUS_RING}
                 style={codeInputStyle}
                 data-testid="recover-code-input"
                 required

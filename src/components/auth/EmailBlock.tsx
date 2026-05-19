@@ -5,7 +5,7 @@ import {
   humanizeAuthError,
   type EmailMode,
 } from "@/lib/authHelpers";
-import { UI } from "@/components/auth/authUI";
+import { UI, AUTH_FOCUS_RING, AUTH_FOCUS_RING_WITHIN } from "@/components/auth/authUI";
 import {
   challengeFactor,
   findFirstVerifiedTotp,
@@ -397,6 +397,7 @@ export default function EmailBlock({
           placeholder="123456"
           aria-label="6-digit code from your authenticator app"
           data-testid="signin-totp-input"
+          className={AUTH_FOCUS_RING}
           disabled={totpVerifying}
           style={{
             width: "100%",
@@ -536,6 +537,7 @@ export default function EmailBlock({
           placeholder="123456"
           aria-label="6-digit code from your email"
           data-testid="signin-email-otp-input"
+          className={AUTH_FOCUS_RING}
           disabled={otpVerifying || disabled}
           style={{
             width: "100%",
@@ -663,6 +665,7 @@ export default function EmailBlock({
           placeholder="you@email.com"
           autoComplete="email"
           data-clarity-mask="true"
+          className={AUTH_FOCUS_RING}
           style={UI.input(disabled)}
           disabled={disabled}
         />
@@ -672,6 +675,7 @@ export default function EmailBlock({
         <div style={{ marginTop: 12 }}>
           <label style={UI.label}>Mật khẩu · Password</label>
           <div
+            className={AUTH_FOCUS_RING_WITHIN}
             style={{
               position: "relative",
               width: "100%",

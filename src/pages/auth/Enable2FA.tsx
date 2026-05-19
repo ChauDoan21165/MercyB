@@ -31,6 +31,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { supabase } from "@/lib/supabaseClient";
 import { canUseMfa } from "@/lib/security/mfaEligibility";
+import { AUTH_FOCUS_RING } from "@/components/auth/authUI";
 import {
   cancelEnrollment,
   enrollTotp,
@@ -646,6 +647,7 @@ export default function Enable2FA() {
             placeholder="123456"
             aria-label="6-digit code from your authenticator app"
             data-testid="mfa-enroll-code-input"
+            className={AUTH_FOCUS_RING}
             style={{ ...codeInputStyle, marginTop: 12 }}
             disabled={step === "verifying"}
           />
