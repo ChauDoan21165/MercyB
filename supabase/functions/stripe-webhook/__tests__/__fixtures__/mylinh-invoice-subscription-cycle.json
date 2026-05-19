@@ -1,0 +1,28 @@
+{
+  "_provenance": "Anonymized structural snapshot of mylinh.nutrition's subscriptions.raw_payload (Stripe invoice object, webhook event evt_1TV59K) — the discovered case for the B5 class bug (every monthly Stripe renewer was written paid-but-free). Read-only re-derived from prod 2026-05-19. PII STRIPPED: customer, customer_email, customer_name, customer_phone, customer_address, customer_account, customer_shipping, hosted_invoice_url, invoice_pdf, receipt_number, number, and the real invoice/line ids (REDACTED). Period epochs are the REAL prod values and are the crux: top-level period_end=1778307401 (2026-05-09T06:16:41Z) is the JUST-ENDED boundary; lines[0].period.end=1780985801 (2026-06-09T06:16:41Z) is the NEW period. Note the FAITHFUL ABSENCE of top-level current_period_end / current_period_start / items — invoice objects omit them, which is exactly why getCurrentPeriodEnd fell through to the wrong field (raw.period_end) before this fix. amount kept per dispatch.",
+  "id": "in_REDACTED",
+  "object": "invoice",
+  "status": "paid",
+  "billing_reason": "subscription_cycle",
+  "currency": "vnd",
+  "livemode": true,
+  "period_start": 1775715401,
+  "period_end": 1778307401,
+  "amount_paid": 200000,
+  "amount_due": 200000,
+  "lines": {
+    "object": "list",
+    "data": [
+      {
+        "id": "il_REDACTED",
+        "object": "line_item",
+        "amount": 200000,
+        "currency": "vnd",
+        "period": {
+          "start": 1778307401,
+          "end": 1780985801
+        }
+      }
+    ]
+  }
+}

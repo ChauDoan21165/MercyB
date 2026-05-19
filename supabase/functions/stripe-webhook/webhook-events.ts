@@ -11,6 +11,10 @@ import {
   resolveUserForInvoiceEvent,
   upsertSharedSubscriptionMonotonic,
 } from "./billing.ts";
+import {
+  getCurrentPeriodEnd,
+  getCurrentPeriodStart,
+} from "./period-resolution.ts";
 import type {
   BillingEnvironment,
   DBClient,
@@ -226,53 +230,12 @@ function getProductId(raw: Record<string, unknown>): string | null {
   );
 }
 
-function getLinePeriodStart(raw: Record<string, unknown>): string | null {
-  const line = getFirstLine(raw);
-  const period = asRecord(line?.period);
-
-  return toIsoFromUnix(period?.start) ?? null;
-}
-
-function getLinePeriodEnd(raw: Record<string, unknown>): string | null {
-  const line = getFirstLine(raw);
-  const period = asRecord(line?.period);
-
-  return toIsoFromUnix(period?.end) ?? null;
-}
-
-function getItemCurrentPeriodStart(raw: Record<string, unknown>): string | null {
-  const firstItem = getFirstSubscriptionItem(raw);
-
-  return toIsoFromUnix(firstItem?.current_period_start) ?? null;
-}
-
-function getItemCurrentPeriodEnd(raw: Record<string, unknown>): string | null {
-  const firstItem = getFirstSubscriptionItem(raw);
-
-  return toIsoFromUnix(firstItem?.current_period_end) ?? null;
-}
-
-function getCurrentPeriodStart(raw: Record<string, unknown>): string | null {
-  return (
-    toIsoFromUnix(raw.current_period_start) ??
-    toIsoFromUnix(raw.period_start) ??
-    getItemCurrentPeriodStart(raw) ??
-    getLinePeriodStart(raw) ??
-    toIsoFromUnix(raw.start_date) ??
-    null
-  );
-}
-
-function getCurrentPeriodEnd(raw: Record<string, unknown>): string | null {
-  return (
-    toIsoFromUnix(raw.current_period_end) ??
-    toIsoFromUnix(raw.period_end) ??
-    getItemCurrentPeriodEnd(raw) ??
-    getLinePeriodEnd(raw) ??
-    toIsoFromUnix(raw.trial_end) ??
-    null
-  );
-}
+// getCurrentPeriodStart / getCurrentPeriodEnd (+ their item/line helpers)
+// were extracted verbatim into ./period-resolution.ts so the money-path
+// period math is vitest-importable (webhook-events.ts transitively imports
+// Deno-only billing.ts/core.ts and cannot be unit tested). The B5 class-bug
+// field-order fix lives there. See period-resolution.ts and
+// __tests__/periodResolution.test.ts.
 
 function getCanceledAt(raw: Record<string, unknown>): string | null {
   return toIsoFromUnix(raw.canceled_at) ?? null;
