@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# DRAFT — DO NOT RUN. Stub for A7e (PR for the iOS counterpart is #821).
+#
+# WHY THIS IS A DRAFT
+# -------------------
+# This script becomes active only when `minifyEnabled true` is enabled in
+# android/app/build.gradle. Today's release build is NOT minified
+# (`minifyEnabled false`, build.gradle line 39), so no mapping.txt file
+# is ever produced — running this against a non-minified build would
+# either no-op or upload an empty/stale file. The file extension is
+# deliberately `.sh.draft` (NOT `.sh`) so Xcode/CI/Gradle won't pick it
+# up by accident.
+#
+# When `minifyEnabled true` ships (gap #4 of the A7c audit — PR #816 —
+# becomes blocking the moment Play Store minified release builds are on),
+# the dispatch PR will:
+#   1. rename this file to `scripts/upload-android-mapping.sh`
+#   2. chmod +x
+#   3. wire it into android/app/build.gradle as a custom Gradle task OR
+#      add the io.sentry.android.gradle plugin (preferred — auto-uploads)
+#   4. update reports/NATIVE-android-proguard-scope-A7e.md to reflect the
+#      live state
+#
+# Until then this stub is documentation only.
+#
+# Required env (same shape as scripts/upload-ios-dsyms.sh — sourced from
+# the macOS keychain entry `mb-sentry-auth-token` per memory):
+#   SENTRY_AUTH_TOKEN
+#   SENTRY_ORG          chau-doan
+#   SENTRY_PROJECT      mercyblade-web
+#
+# Mapping file path (after a minified ./gradlew bundleRelease):
+#   android/app/build/outputs/mapping/release/mapping.txt
+#
+# sentry-cli command (canonical 2.x form — same binary that scripts/upload-ios-dsyms.sh uses):
+#   sentry-cli debug-files upload \
+#     --org "$SENTRY_ORG" \
+#     --project "$SENTRY_PROJECT" \
+#     --type proguard \
+#     android/app/build/outputs/mapping/release/mapping.txt
+
+set -euo pipefail
+
+echo "error: scripts/upload-android-mapping.sh.draft is a STUB and must not be run." >&2
+echo "  See reports/NATIVE-android-proguard-scope-A7e.md for the activation plan." >&2
+exit 1
