@@ -4,16 +4,39 @@ This guide explains how to set up automated preview deployments for pull request
 
 ## Overview
 
-The preview deployment workflow builds your project and can automatically deploy to hosting platforms like Netlify or Vercel. This allows you to preview changes before merging to production.
+The preview deployment workflow builds your project and Vercel deploys a
+preview for each pull request. This lets you preview changes before merging
+to production.
+
+## Production Deployment (main → prod)
+
+Production is deployed by the **`production-deploy.yml`** GitHub Actions
+workflow — the single owner of production deploys. On every push to `main`
+(and via `workflow_dispatch`) it:
+
+1. Pulls the Vercel production environment (`vercel pull --environment=production`)
+2. Builds the production bundle with the Vercel build pipeline (`vercel build --prod`)
+3. Deploys the prebuilt output (`vercel deploy --prebuilt --prod`)
+
+It **fails loud (red)** if the build or deploy fails — it replaced a former
+no-op stub that reported a false green without ever deploying anything (see
+the workflow's header comment and PR #657). Requires the GitHub Actions
+secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+
+> **Direction (not yet merged as of 2026-05-18):** Vercel's GitHub App also
+> auto-deploys `main`, which double-deploys. A change to disable the GitHub
+> App auto-deploy for `main` — leaving `production-deploy.yml` as the sole
+> prod owner — is in progress on branch `chore/disable-vercel-double-deploy`.
+> Until that merges, both paths may fire on a push to `main`.
 
 ## Important Notes
 
-### Lovable Cloud / Supabase Backend
+### Supabase Backend
 
 - **Preview branches do NOT create separate database instances**
-- All preview deployments share the same Lovable Cloud backend
-- Supabase Branching (separate DB per preview) is not supported in Lovable
-- If you need isolated database environments, you'll need to set this up manually through the Supabase dashboard
+- All preview deployments share the same Supabase backend (the single project)
+- Supabase Branching (a separate DB per preview) is not configured
+- If you need isolated database environments, set this up manually through the Supabase dashboard
 
 ### What Gets Previewed
 
@@ -107,7 +130,8 @@ Preview deployments use the same environment variables as production:
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_PUBLISHABLE_KEY`
 
-These are set automatically by Lovable Cloud.
+These are managed in the Vercel project dashboard (Settings → Environment
+Variables). See `docs/SECURITY_HARDENING_2025.md` for the canonical list.
 
 ## Cost Considerations
 
@@ -150,12 +174,12 @@ These are set automatically by Lovable Cloud.
 
 ## Edge Functions — Verified Deploy Procedure
 
-The `supabase-functions.yml` GitHub Actions workflow deploys only
-`mercy_weekly_cron` and has been failing for 100+ runs (no
-`SUPABASE_ACCESS_TOKEN` repo secret). Until that's fixed, all other
-edge functions deploy **manually** from a developer machine — and
-the safety bar there is to confirm twice that the bundle you want
-is the bundle you shipped.
+PR #669 added a real edge-function deploy + PR drift-gate pipeline,
+replacing the old `supabase-functions.yml` (which only ever deployed a
+non-existent `mercy_weekly_cron` and failed for 100+ runs). When you still
+deploy an edge function **manually** from a developer machine, the safety
+bar is to confirm twice that the bundle you want is the bundle you shipped —
+the procedure below makes a stale deploy impossible.
 
 Two stale-deploy cycles in PRs #257 and #258 (azure-phoneme code
 merged to main but the manual deploy was run from a working tree
@@ -236,12 +260,12 @@ pick a string from the green-prefix lines.
 
 - [Netlify Deploy Documentation](https://docs.netlify.com/site-deploys/overview/)
 - [Vercel Deploy Documentation](https://vercel.com/docs/deployments/overview)
+- [Vercel Git Integration](https://vercel.com/docs/git)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [Lovable GitHub Integration](https://docs.lovable.dev/tips-tricks/github-integration)
 
 ## Support
 
 For issues with:
 - **Workflow configuration**: Check GitHub Actions logs
-- **Lovable Cloud**: See Lovable documentation
-- **Deployment platforms**: Contact Netlify or Vercel support
+- **Supabase backend**: See the Supabase project dashboard and `docs/`
+- **Deployment platform**: See the Vercel project dashboard / Vercel support

@@ -1,153 +1,112 @@
-# Room Analysis Scripts
+# MercyBlade
 
-## Generate Cross-Topic Recommendations
+> **Foreign languages for Vietnamese learners — and Vietnamese for English-speakers.**
+> A bilingual-first language-learning app (PWA, plus iOS/Android shells via Capacitor).
 
-This script analyzes all 62 room files and automatically generates intelligent cross-room keyword mappings.
+**Live:** https://mercyblade.com
 
-### What it does:
-1. **Extracts keywords** from all room JSON files
-2. **Finds overlaps** - discovers which keywords appear across multiple rooms
-3. **Builds relationships** - creates a map showing related rooms for each keyword
-4. **Generates recommendations** - outputs `cross_topic_recommendations.json` with smart room suggestions
+MercyBlade teaches English (and other language modules) to Vietnamese learners —
+Vietnamese-first in every screen — alongside a reverse track teaching Vietnamese
+to English speakers. The product optimizes for learning **outcomes**, not
+engagement metrics.
 
-### How to run:
+`STRATEGY.md` and `PRINCIPLES.md` are the two canonical living documents — read
+them before making product or architecture decisions.
 
-```bash
-# Using tsx (recommended)
-npx tsx scripts/generate-cross-topic-recommendations.ts
+## Tech stack
 
-# Or using node with TypeScript support
-node --loader ts-node/esm scripts/generate-cross-topic-recommendations.ts
-```
+| Layer        | Technology                                                       |
+|--------------|------------------------------------------------------------------|
+| Frontend     | React 18, Vite 6, TypeScript 5                                    |
+| Data / state | TanStack Query 5, React Router 6                                  |
+| Backend      | Supabase (Postgres, Auth, Storage, Edge Functions) — Pro plan    |
+| Hosting      | Vercel — production + preview deploys (Pro)                       |
+| Mobile       | Capacitor 8 (iOS + Android shells)                                |
+| Monitoring   | Sentry (`@sentry/react` 10)                                       |
 
-### Output:
-- File: `src/data/system/cross_topic_recommendations.json`
-- Contains: Keyword → Related Rooms mapping
-- Used by: `keywordResponder.ts` to suggest related rooms to users
+## Getting started
 
-### Example output:
-```json
-{
-  "keyword": "stress",
-  "rooms": [
-    {
-      "roomId": "mental-health",
-      "roomNameEn": "Mental Health",
-      "roomNameVi": "Sức khỏe tâm thần",
-      "relevance": "primary",
-      "matchedTerms": ["stress", "anxiety", "mental_stress"]
-    },
-    {
-      "roomId": "burnout",
-      "roomNameEn": "Burnout",
-      "roomNameVi": "Kiệt sức",
-      "relevance": "primary",
-      "matchedTerms": ["work_stress", "chronic_stress"]
-    }
-  ]
-}
-```
+### Prerequisites
 
-## Validate Room Integrity
+- **Node 22+** — the CI pipeline and the Capacitor 8 toolchain target Node 22.
+  (The Vercel production build runtime is Node 24; local Node 22+ is fine.)
+- **npm** — this repo uses npm; there is no pnpm/yarn lockfile.
+- **Supabase CLI** *(optional)* — only for edge-function / migration work.
+  Invoke via `npx supabase ...` (the repo's scripts already do).
+- **Vercel CLI** *(optional)* — only for manual deploys / env pulls
+  (`npx vercel ...`).
 
-Checks all room files for data quality and completeness.
+### Install & run
 
 ```bash
-npx tsx scripts/validate-room-integrity.ts
+npm install      # also installs the pre-commit room-validation hooks
+                 # (the `prepare` script runs scripts/setup-hooks.sh)
+npm run dev      # Vite on 127.0.0.1:3107 + grammar server on :3001 (strictPort)
 ```
 
-### What it checks:
-- JSON syntax validity
-- Required fields presence
-- Bilingual content (EN/VI)
-- Keyword completeness
-- Entry structure
-- Import/export consistency
+Environment variables are **not** auto-provisioned. They live in the Vercel
+project (build/runtime) and Supabase project settings; see `SETUP.md` and
+`docs/SECURITY_HARDENING_2025.md` for the canonical list. If Supabase is
+unreachable in dev, audio degrades silently to a local `/audio/{key}` path.
 
----
+## Repository structure
 
-## Apple In-App Purchase (iOS)
+```
+src/          App code: components/ pages/ screens/ router/ lib/ hooks/
+              mercy/ languages/ providers/ contexts/
+public/data/  ~476 room JSON files — the learning-content corpus
+supabase/     Edge functions (functions/) and SQL migrations (migrations/)
+ios/          Capacitor iOS shell (open the .xcworkspace)
+android/      Capacitor Android shell
+scripts/      Build / validation / content tooling (see scripts/README.md)
+docs/         Internal design, ops, security, billing, submission docs
+```
 
-iOS builds route subscription purchases through Apple IAP via RevenueCat
-per App Store rule 3.1.1. Web and Android continue to use Stripe. The
-platform switch lives in `src/screens/Pricing.tsx` (`getPlatform() === "ios"`).
+## Common commands
 
-### Environment variables
-
-Full reference with copy-pasteable commands lives in `.env.example`.
-Short version:
-
-| Variable | Scope | Where it lives |
-|---|---|---|
-| `VITE_REVENUECAT_APPLE_API_KEY` | Client (iOS bundle) | `.env.local` for local Xcode builds; production build env (Vercel / CI) for App Store builds |
-| `REVENUECAT_WEBHOOK_AUTH_TOKEN` | Server (Supabase Edge) | Supabase secrets (command below) |
-| `REVENUECAT_WEBHOOK_DISABLED` | Server (Supabase Edge) | Supabase secrets — optional kill switch |
-
-### Setup commands
+Use the **actual** `package.json` script names below — some older docs cite
+aliases (`validate:rooms`, `registry:generate`) that do not exist.
 
 ```bash
-# 1. Client key (iOS only). Not needed on web/Android — web stays on Stripe.
-#    Local: create .env.local at the repo root.
-echo 'VITE_REVENUECAT_APPLE_API_KEY=appl_xxxxxxxxxxxx' >> .env.local
-
-#    Production iOS build: set the same var in whichever env injects into
-#    the Vite build that cap sync copies into ios/App/App/public.
-
-# 2. Webhook shared secret (server only).
-#    Generate a token:
-openssl rand -hex 32
-
-#    Apply it as a Supabase secret:
-npx supabase secrets set REVENUECAT_WEBHOOK_AUTH_TOKEN=<paste-token> \
-  --project-ref buemdfxyhxunzpgdoqin
-
-#    Paste the same token into RevenueCat Dashboard →
-#    Integrations → Webhook → Authorization header field.
-#    (The handler accepts either the raw token or "Bearer <token>".)
-
-# 3. Deploy the webhook edge function:
-npx supabase functions deploy revenuecat-webhook \
-  --project-ref buemdfxyhxunzpgdoqin
-
-# 4. Optional kill switch (freeze writes without redeploying):
-npx supabase secrets set REVENUECAT_WEBHOOK_DISABLED=true \
-  --project-ref buemdfxyhxunzpgdoqin
-
-#    Re-enable:
-npx supabase secrets unset REVENUECAT_WEBHOOK_DISABLED \
-  --project-ref buemdfxyhxunzpgdoqin
+npm run dev            # dev server (Vite + grammar server)
+npm run build          # production build (runs the rooms:check prebuild hook)
+npm run preview        # serve the production build
+npm test               # vitest run
+npm run lint           # eslint
+npm run typecheck      # app typecheck (tsconfig.typecheck.json, src/** only)
+npm run typecheck:ci   # what CI runs: bare `tsc --noEmit`
+npm run validate-rooms # full room-data integrity validation
+npm run rooms:check    # registry regen + core room validation (prebuild hook)
+npx cap sync ios       # copy dist/ into the iOS shell, reinstall pods
 ```
 
-### Key code locations
+## Architecture overview
 
-- `src/lib/platform.ts` — `getPlatform()` / `isNativePlatform()` wrappers
-- `src/lib/iap.ts` — RevenueCat SDK wrapper + product/entitlement constants
-- `src/components/pricing/IapPlanCard.tsx` — iOS subscription card
-- `src/components/iap/RestorePurchasesButton.tsx` — drop-in restore button (Account page)
-- `src/providers/AuthProvider.tsx` — syncs RevenueCat App User ID on sign-in / sign-out
-- `supabase/functions/revenuecat-webhook/index.ts` — server-side entitlement writer
+- **Room content pipeline** — `public/data/*.json` (~476 rooms) →
+  `src/lib/roomLoader*.ts` → normalized in
+  `src/components/room/RoomRenderer.tsx` → rendered by `RoomRendererUI.tsx`.
+  Route: `/room/:roomId`. Audio resolves through
+  `src/lib/roomAudioResolver.ts` to the Supabase `room-audio` bucket
+  (service-worker cached for offline playback after first play).
+- **Teacher Mercy engine** — the in-product teacher character. Live engine in
+  `src/lib/teacher-mercy/*` and `src/config/mercyPersona.ts`, surfaced via
+  `MercyGuidePanel` (Journey / Grammar / Speak / Logic tabs).
+- **Placement engine** — adaptive English-level placement; a server-side 2PL
+  IRT engine under `supabase/functions/placement-session/engine/*` backed by a
+  `placement_items` bank (Placement v2, in progress).
+- **Payments** — web and Android use Stripe; iOS routes subscriptions through
+  Apple IAP via RevenueCat (App Store rule 3.1.1). Platform switch in
+  `src/screens/Pricing.tsx`. Details in `SETUP.md` and `docs/billing/`.
 
-### App Store Connect product IDs
+## Documentation & handoff
 
-The IAP product IDs are hardcoded in `src/lib/iap.ts` and must match App
-Store Connect exactly:
-
-- `mercy.premium.monthly`
-- `mercy.premium.yearly`
-
-The RevenueCat entitlement identifier is `"MercyBlade Pro"`. If renamed
-in the RevenueCat dashboard, update `IAP_ENTITLEMENT_ID` in both
-`src/lib/iap.ts` and the webhook handler.
-
----
-
-## Language Modules
-
-MercyBlade supports the following language modules:
-
-- **English** (existing)
-- **French** (A1-A2)
-- **German** (A1-A2)
-- **Japanese** (JLPT N5)
-- **Chinese** (HSK 1)
-- **Korean** (TOPIK 1)
+| Doc                                              | Purpose                                  |
+|--------------------------------------------------|------------------------------------------|
+| `STRATEGY.md`, `PRINCIPLES.md`                    | Canonical living docs — read first       |
+| `CLAUDE.md`                                       | Architecture invariants, gotchas, traps  |
+| `SETUP.md`                                        | Local dev setup, hooks, IAP env vars     |
+| `ROOM_GUIDE.md`                                   | Canonical room-system reference          |
+| `SECURITY.md`, `docs/SECURITY_HARDENING_2025.md`  | Security monitoring + hardening checklist |
+| `.github/workflows/DEPLOYMENT.md`                 | Deploy runbook (Vercel + edge functions) |
+| `.github/workflows/ROLLBACK.md`                   | Rollback runbook                         |
+| `docs/`                                           | Billing, app-store submission, observability, performance, accessibility |
