@@ -164,12 +164,36 @@ export default function LoginPage() {
   const submitRef = useRef(false);
   const isSubmitting = useRef(false);
   const noticeRef = useRef<HTMLDivElement>(null);
+  const liveTimer = useRef<number | null>(null);
 
   const [topMode, setTopMode] = useState<TopMode>("email");
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<AuthNotice>(null);
   const [hasSession, setHasSession] = useState(false);
   const [sessionBooted, setSessionBooted] = useState(false);
+  const [liveMessage, setLiveMessage] = useState("");
+
+  // A30 — one announcer for the whole auth shell. EmailBlock / PhoneOtp
+  // and non-error notices push status text here; screen readers then hear
+  // "code sent" / "invalid password" / "signed in, redirecting" on every
+  // path (audit A3 — these were previously silent on the primary forms).
+  // Clear-then-set so an identical consecutive message (e.g. two failed
+  // password attempts with the same error) is still re-announced; the
+  // bilingual "VI\nEN" status collapses to one spoken line.
+  const announce = useCallback((raw: string) => {
+    const msg = raw.replace(/\s*\n\s*/g, " — ").trim();
+    if (!msg) return;
+    if (liveTimer.current) window.clearTimeout(liveTimer.current);
+    setLiveMessage("");
+    liveTimer.current = window.setTimeout(() => setLiveMessage(msg), 60);
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (liveTimer.current) window.clearTimeout(liveTimer.current);
+    },
+    [],
+  );
 
   // Layout collapse at <= 980px is handled entirely in CSS (see the <style>
   // block in the returned JSX). No runtime breakpoint state or resize
@@ -276,6 +300,13 @@ export default function LoginPage() {
       noticeRef.current?.focus();
     }
   }, [notice]);
+
+  // Error notices are already moved-to via noticeRef.focus() above; route
+  // the success/info notices (signed out, account created, code sent) —
+  // previously silent (audit A6) — through the single live region.
+  useEffect(() => {
+    if (notice && notice.tone !== "error") announce(notice.message);
+  }, [notice, announce]);
 
   const signInGoogle = useCallback(async () => {
     if (busy || submitRef.current) return;
@@ -391,6 +422,20 @@ export default function LoginPage() {
           .mb-login-marketing { display: none !important; }
         }
       `}</style>
+
+      {/* A30 — single visually-hidden polite live region for the auth
+          shell. Fed by announce() from EmailBlock / PhoneOtp / notices so
+          SR users hear auth status on every path (audit A3 / A6). */}
+      <div
+        className="sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        data-testid="auth-live-region"
+      >
+        {liveMessage}
+      </div>
+
       <div style={UI.left}>
         <div style={UI.card}>
           <div style={{ marginBottom: 12 }}>
@@ -579,6 +624,7 @@ export default function LoginPage() {
               redirectToRecovery={redirectToRecovery}
               busyParent={busy}
               onAuthed={routeAfterAuth}
+              onAnnounce={announce}
               onSignupCreated={(createdEmail, message) =>
                 setNotice({
                   tone: "success",
@@ -589,7 +635,11 @@ export default function LoginPage() {
           )}
 
           {topMode === "phone" && (
-            <PhoneOtp busyParent={busy} onAuthed={routeAfterAuth} />
+            <PhoneOtp
+              busyParent={busy}
+              onAuthed={routeAfterAuth}
+              onAnnounce={announce}
+            />
           )}
 
           <div
