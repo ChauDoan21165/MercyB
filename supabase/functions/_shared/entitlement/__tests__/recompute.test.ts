@@ -52,8 +52,10 @@ import {
 } from "../recompute";
 
 const captureEdgeErrorMock = vi.fn().mockResolvedValue(undefined);
+const addEdgeBreadcrumbMock = vi.fn().mockResolvedValue(undefined);
 vi.mock("../../sentry.ts", () => ({
   captureEdgeError: (...args: unknown[]) => captureEdgeErrorMock(...args),
+  addEdgeBreadcrumb: (...args: unknown[]) => addEdgeBreadcrumbMock(...args),
 }));
 
 const NOW = new Date("2026-05-19T22:30:00.000Z");
@@ -66,6 +68,7 @@ const USER_ID = "00000000-0000-4000-8000-000000000001";
 
 beforeEach(() => {
   captureEdgeErrorMock.mockClear();
+  addEdgeBreadcrumbMock.mockClear();
 });
 
 afterEach(() => {
@@ -87,6 +90,13 @@ type ResolveWith = { data: unknown; error: unknown };
 interface FakeClientOptions {
   subscriptions?: ResolveWith;
   gifts?: ResolveWith;
+  /**
+   * Prior `entitlements` row state for the downgrade-beacon SELECT.
+   * Default (undefined / null data) = no prior row = first-write case =
+   * no beacon possible. Pass `{data: {is_premium: true}, error: null}`
+   * to set up a downgrade test.
+   */
+  priorEntitlement?: ResolveWith;
   rpc?: ResolveWith | ((args: Record<string, unknown>) => ResolveWith);
 }
 
@@ -95,6 +105,7 @@ interface RecordedCalls {
   giftsFilters: Array<[string, unknown]>;
   giftsOrder: Array<[string, unknown]>;
   giftsLimit: number | null;
+  entitlementsFilters: Array<[string, unknown]>;
   rpcCalls: Array<{ fn: string; args: Record<string, unknown> }>;
 }
 
@@ -107,6 +118,7 @@ function makeFakeClient(opts: FakeClientOptions = {}): {
     giftsFilters: [],
     giftsOrder: [],
     giftsLimit: null,
+    entitlementsFilters: [],
     rpcCalls: [],
   };
 
@@ -149,10 +161,28 @@ function makeFakeClient(opts: FakeClientOptions = {}): {
     return chain;
   }
 
+  function buildEntitlementsChain(): Record<string, unknown> {
+    // PR1.5 — prior-state SELECT for downgrade beacon detection.
+    // Chain shape: .select(...).eq(...).eq(...).maybeSingle()
+    // Terminal is `.maybeSingle()` (returns a Promise<ResolveWith>),
+    // NOT a thenable on the chain — recompute.ts awaits the result
+    // of `.maybeSingle()` directly.
+    const chain: Record<string, unknown> = {};
+    chain.select = () => chain;
+    chain.eq = (col: string, val: unknown) => {
+      calls.entitlementsFilters.push([col, val]);
+      return chain;
+    };
+    chain.maybeSingle = () =>
+      Promise.resolve(opts.priorEntitlement ?? { data: null, error: null });
+    return chain;
+  }
+
   const client: SupabaseClientLike = {
     from(table: string) {
       if (table === "subscriptions") return buildSubscriptionsChain();
       if (table === "user_subscriptions") return buildGiftsChain();
+      if (table === "entitlements") return buildEntitlementsChain();
       throw new Error(`fakeClient: unexpected table ${table}`);
     },
     rpc(fn: string, args: Record<string, unknown>) {
@@ -520,6 +550,135 @@ describe("recomputeEntitlement — RPC null-data race (case 7)", () => {
     await expect(
       recomputeEntitlement(client, USER_ID, opts("backfill")),
     ).rejects.toThrow(/RPC returned null/);
+  });
+});
+
+/* ────────────────────────────────────────────────────────────────────
+ * 8. Downgrade beacon — PR1.5 / A18 §7 row 6
+ *
+ * Mandatory observability for the B13 phase-3 rollout: when
+ * `is_premium` flips true → false, emit a Sentry breadcrumb AND a
+ * structured `console.info` log. The function MUST NOT throw on the
+ * beacon path — observability is not correctness.
+ *
+ * Four mandatory cases (per PR1.5 dispatch):
+ *   1. active→inactive: beacon emitted
+ *   2. inactive→inactive: no beacon
+ *   3. active→active: no beacon
+ *   4. no prior row (first write): no beacon
+ * ──────────────────────────────────────────────────────────────────── */
+
+describe("recomputeEntitlement — downgrade beacon (case 8 / PR1.5)", () => {
+  it("active→inactive: emits Sentry breadcrumb + structured console.info log", async () => {
+    const consoleInfoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
+
+    // Empty subscriptions ⇒ derive returns inactive snapshot ⇒ new
+    // is_premium=false. Prior entitlement says is_premium=true ⇒ the
+    // beacon must fire.
+    const { client } = makeFakeClient({
+      priorEntitlement: { data: { is_premium: true }, error: null },
+    });
+
+    const result = await recomputeEntitlement(client, USER_ID, opts("stripe-webhook"));
+
+    expect(result.is_premium).toBe(false);
+    expect(addEdgeBreadcrumbMock).toHaveBeenCalledTimes(1);
+    const [crumb] = addEdgeBreadcrumbMock.mock.calls[0];
+    expect(crumb.category).toBe("billing.downgrade");
+    expect(crumb.message).toBe(`entitlement downgraded: ${USER_ID} (stripe-webhook)`);
+    expect(crumb.level).toBe("warning");
+    expect(crumb.data).toEqual({
+      userId: USER_ID,
+      appId: DEFAULT_APP_ID,
+      reason: "stripe-webhook",
+    });
+
+    // Structured log also fired.
+    expect(consoleInfoSpy).toHaveBeenCalledTimes(1);
+    const logged = JSON.parse(consoleInfoSpy.mock.calls[0][0] as string);
+    expect(logged.event).toBe("downgrade-beacon");
+    expect(logged.userId).toBe(USER_ID);
+    expect(logged.reason).toBe("stripe-webhook");
+    expect(logged.level).toBe("warning");
+    expect(logged.scope).toBe("recomputeEntitlement");
+
+    consoleInfoSpy.mockRestore();
+  });
+
+  it("inactive→inactive: NO beacon (downgrade did not happen)", async () => {
+    const consoleInfoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
+    // No subscriptions, no gifts ⇒ new is_premium=false. Prior also
+    // false ⇒ no flip.
+    const { client } = makeFakeClient({
+      priorEntitlement: { data: { is_premium: false }, error: null },
+    });
+
+    await recomputeEntitlement(client, USER_ID, opts("backfill"));
+
+    expect(addEdgeBreadcrumbMock).not.toHaveBeenCalled();
+    expect(consoleInfoSpy).not.toHaveBeenCalled();
+    consoleInfoSpy.mockRestore();
+  });
+
+  it("active→active: NO beacon (steady-state recompute)", async () => {
+    const consoleInfoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
+    const { client } = makeFakeClient({
+      subscriptions: {
+        data: [{ status: "active", current_period_end: future(30 * ONE_DAY), provider: "stripe", id: "s1" }],
+        error: null,
+      },
+      priorEntitlement: { data: { is_premium: true }, error: null },
+    });
+
+    const result = await recomputeEntitlement(client, USER_ID, opts("stripe-webhook"));
+
+    expect(result.is_premium).toBe(true);
+    expect(addEdgeBreadcrumbMock).not.toHaveBeenCalled();
+    expect(consoleInfoSpy).not.toHaveBeenCalled();
+    consoleInfoSpy.mockRestore();
+  });
+
+  it("no prior row (first write): NO beacon", async () => {
+    const consoleInfoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
+    // priorEntitlement omitted ⇒ default {data: null, error: null} from
+    // the fake client ⇒ this is the first ever recompute for this user
+    // (entitlement row did not yet exist). No prior state means no
+    // possible downgrade — even if the new state is inactive.
+    const { client } = makeFakeClient(); // no priorEntitlement
+
+    await recomputeEntitlement(client, USER_ID, opts("redeem-gift-code"));
+
+    expect(addEdgeBreadcrumbMock).not.toHaveBeenCalled();
+    expect(consoleInfoSpy).not.toHaveBeenCalled();
+    consoleInfoSpy.mockRestore();
+  });
+
+  it("R3 (prior-state read) error: warning captured, recompute proceeds, NO beacon", async () => {
+    // A18 §7 spirit: downgrade beacon is observability, not correctness.
+    // A failed prior-state read MUST NOT throw — the recompute still
+    // returns the new row. The missed observability itself becomes a
+    // captureEdgeError warning with phase='read-prior-entitlement'.
+    const r3err = new Error("R3 boom");
+    const { client } = makeFakeClient({
+      priorEntitlement: { data: null, error: r3err },
+    });
+
+    const result = await recomputeEntitlement(client, USER_ID, opts("admin-manual-fix"));
+
+    // Recompute succeeded — never threw on the prior-state read.
+    expect(result).toBeDefined();
+    expect(result.user_id).toBe(USER_ID);
+
+    // The R3 error was captured as a warning.
+    expect(captureEdgeErrorMock).toHaveBeenCalledTimes(1);
+    const [capturedErr, capturedOpts] = captureEdgeErrorMock.mock.calls[0];
+    expect(capturedErr).toBe(r3err);
+    expect(capturedOpts.tags.phase).toBe("read-prior-entitlement");
+    expect(capturedOpts.tags.reason).toBe("admin-manual-fix");
+
+    // No beacon — we don't know the prior state, so we can't claim a
+    // downgrade.
+    expect(addEdgeBreadcrumbMock).not.toHaveBeenCalled();
   });
 });
 

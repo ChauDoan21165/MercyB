@@ -57,7 +57,7 @@ import {
   type EntitlementSource,
   type EntitlementStatus,
 } from "../entitlement.ts";
-import { captureEdgeError } from "../sentry.ts";
+import { addEdgeBreadcrumb, captureEdgeError } from "../sentry.ts";
 
 export const DEFAULT_APP_ID = "mercy_blade";
 
@@ -232,6 +232,35 @@ export async function recomputeEntitlement(
 
   // --- end gift fallback ---
 
+  /* ── R3: prior entitlement state (for downgrade beacon detection) ─ */
+  // SELECT the existing entitlement is_premium so we can detect a
+  // true→false flip after the RPC returns (A18 §7 row 6). If this
+  // read fails the recompute MUST still proceed — the downgrade beacon
+  // is observability, not correctness ("NOT a failure" in the brief's
+  // failure matrix). We capture a warning so the missed observability
+  // is itself observable. First-write case (no prior row) is normal
+  // and yields priorIsPremium=null → no beacon possible.
+
+  let priorIsPremium: boolean | null = null;
+  const r3 = await supabase
+    .from("entitlements")
+    .select("is_premium")
+    .eq("user_id", userId)
+    .eq("app_id", appId)
+    .maybeSingle();
+
+  if (r3.error) {
+    await captureEdgeError(r3.error, {
+      functionName: "recomputeEntitlement",
+      userId,
+      tags: { phase: "read-prior-entitlement", reason: opts.reason },
+      extra: { appId },
+    });
+    // Do NOT throw — proceed without prior-state knowledge.
+  } else if (r3.data) {
+    priorIsPremium = (r3.data as { is_premium?: unknown }).is_premium === true;
+  }
+
   /* ── derive (single owner = B13 ph3) ────────────────────────────── */
 
   const derived: EntitlementSnapshot = deriveEntitlement(
@@ -278,6 +307,34 @@ export async function recomputeEntitlement(
   }
 
   const row = rpc.data as EntitlementRow;
+
+  /* ── downgrade beacon (A18 §7 row 6) ────────────────────────────── */
+  // Mandatory observability for B13 phase-3's reversible rollout: a
+  // true→false flip on is_premium emits a Sentry breadcrumb (context
+  // for any subsequent event in this isolate) AND a structured
+  // console.info log (standalone observability — does not depend on
+  // a later Sentry event firing). Pure observability path — the
+  // function never throws here (any beacon error is swallowed inside
+  // addEdgeBreadcrumb, by design).
+
+  if (priorIsPremium === true && row.is_premium === false) {
+    await addEdgeBreadcrumb({
+      category: "billing.downgrade",
+      message: `entitlement downgraded: ${userId} (${opts.reason})`,
+      level: "warning",
+      data: { userId, appId, reason: opts.reason },
+    });
+    console.info(
+      JSON.stringify({
+        scope: "recomputeEntitlement",
+        level: "warning",
+        event: "downgrade-beacon",
+        userId,
+        appId,
+        reason: opts.reason,
+      }),
+    );
+  }
 
   return row;
 }
