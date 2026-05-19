@@ -327,6 +327,72 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "v_user_vip_access_active",                action: "skip_view", reason: "view" },
   { table: "v_user_vip_tier",                         action: "skip_view", reason: "view" },
 
+  // ════════════════════════════════════════════════════════════
+  // B1 follow-up to PR #797 — 42 live user-id tables surfaced by
+  // scripts/check-delete-account-coverage.mjs once the CI gate was
+  // wired. Classifications below cite the migration that defines
+  // each table (column + FK cascade behavior); see the PR body for
+  // the per-table rationale.
+  // ════════════════════════════════════════════════════════════
+
+  // ── B1: Personal learning / progress / memory / behavior → DELETE ──
+  { table: "certificates",                    action: "delete",    column: "user_id", reason: "user-earned certificate records" },
+  { table: "corporate_seats",                 action: "delete",    column: "user_id", reason: "seat assignment; user_id is NOT NULL (FK CASCADE from auth.users); seat row goes when user goes" },
+  { table: "daily_challenges",                action: "delete",    column: "user_id", reason: "per-user daily challenge state (UNIQUE (user_id, date))" },
+  { table: "email_sends_log",                 action: "delete",    column: "user_id", reason: "re-engagement email delivery log; user_id is NOT NULL (FK CASCADE)" },
+  { table: "family_plan_members",             action: "delete",    column: "user_id", reason: "family-plan seat; user_id NOT NULL (FK CASCADE); the family_plans row itself is owned separately" },
+  { table: "interview_sessions",              action: "delete",    column: "user_id", reason: "interview-prep session log" },
+  { table: "leaderboard_weekly",              action: "delete",    column: "user_id", reason: "weekly leaderboard rows" },
+  { table: "mercy_conversations",             action: "delete",    column: "user_id", reason: "Mercy chat conversation history" },
+  { table: "mercy_tts_usage",                 action: "delete",    column: "user_id", reason: "per-user TTS usage log (parallel to tts_usage_log)" },
+  { table: "mercy_unified_sessions",          action: "delete",    column: "user_id", reason: "Mercy unified session log" },
+  { table: "mercy_user_facts",                action: "delete",    column: "user_id", reason: "facts Mercy memorized about the user" },
+  { table: "mfa_backup_codes",                action: "delete",    column: "user_id", reason: "user's MFA backup codes" },
+  { table: "mfa_lockouts",                    action: "delete",    column: "user_id", reason: "MFA lockout state; user_id PK (FK CASCADE); short-lived, no audit retention needed" },
+  { table: "mock_interview_sessions",         action: "delete",    column: "user_id", reason: "mock interview session history" },
+  { table: "paywall_experiment_exposures",    action: "delete",    column: "user_id", reason: "A/B exposure log — personal behavior signal, not financial audit" },
+  { table: "pronunciation_srs_items",         action: "delete",    column: "user_id", reason: "pronunciation SRS state" },
+  { table: "push_preferences",                action: "delete",    column: "user_id", reason: "push-notification preferences" },
+  { table: "push_send_log",                   action: "delete",    column: "user_id", reason: "per-user push delivery log" },
+  { table: "push_tokens",                     action: "delete",    column: "user_id", reason: "APNS/FCM device tokens" },
+  { table: "referral_audit_log",              action: "delete",    column: "user_id", reason: "referral audit; user_id NOT NULL (FK CASCADE from profiles)" },
+  { table: "referral_leaderboard_optin",      action: "delete",    column: "user_id", reason: "leaderboard opt-in flag" },
+  { table: "review_log",                      action: "delete",    column: "user_id", reason: "flashcard review log" },
+  { table: "roadmap_item_votes",              action: "delete",    column: "user_id", reason: "user votes on roadmap items" },
+  { table: "speech_analysis_logs",            action: "delete",    column: "user_id", reason: "per-user speech analysis log" },
+  { table: "study_group_members",             action: "delete",    column: "user_id", reason: "study-group membership" },
+  { table: "user_challenge_completion",       action: "delete",    column: "user_id", reason: "challenge-completion records" },
+  { table: "user_interview_prompt_votes",     action: "delete",    column: "user_id", reason: "votes on interview prompts" },
+  { table: "user_listening_progress",         action: "delete",    column: "user_id", reason: "listening-clip progress" },
+  { table: "user_placements",                 action: "delete",    column: "user_id", reason: "placement-test results" },
+  { table: "user_stories",                    action: "delete",    column: "user_id", reason: "user-written stories (testimonials); moderation status preserved on other users' rows" },
+  { table: "user_vocabulary",                 action: "delete",    column: "user_id", reason: "user's vocabulary list" },
+  { table: "user_writing_submissions",        action: "delete",    column: "user_id", reason: "user writing submissions" },
+  { table: "user_xp",                         action: "delete",    column: "user_id", reason: "XP rollup per user" },
+  { table: "vocabulary_srs_items",            action: "delete",    column: "user_id", reason: "vocabulary SRS state" },
+  { table: "weekly_leaderboard",              action: "delete",    column: "user_id", reason: "weekly leaderboard rows" },
+  { table: "xp_events",                       action: "delete",    column: "user_id", reason: "XP-event ledger" },
+
+  // ── B1: Marketing / signup intent → ANONYMIZE (FK is ON DELETE SET NULL → user_id is nullable) ──
+  {
+    table: "lifetime_intent_signups", action: "anonymize", column: "user_id",
+    scrub_columns: { email: null, reason_text: "[deleted]" },
+    reason: "marketing signal — keep aggregate counts/reason_code/country; scrub explicit email + free-text reason. FK is ON DELETE SET NULL (nullable user_id).",
+  },
+
+  // ── B1: Admin audit → ANONYMIZE (admin_user_id is nullable; FK is ON DELETE SET NULL) ──
+  {
+    table: "email_audit", action: "anonymize", column: "admin_user_id",
+    scrub_columns: { recipient_email: "[deleted]", subject: "[deleted]", error_message: "[deleted]", metadata: null },
+    reason: "admin email audit — retain action for accountability; scrub the email recipient/subject + error text + metadata jsonb when the deleted user WAS the admin. user_id-side scrubbing rides on FK SET NULL (admin_user_id nullable).",
+  },
+
+  // ── B1: Views + materialized views → SKIP_VIEW ──
+  { table: "all_time_referral_leaderboard",   action: "skip_view", reason: "MATERIALIZED VIEW — REFRESH rebuilds it from base tables" },
+  { table: "monthly_referral_leaderboard",    action: "skip_view", reason: "MATERIALIZED VIEW — REFRESH rebuilds it from base tables" },
+  { table: "v_analytics_user_cohorts",        action: "skip_view", reason: "view over profiles" },
+  { table: "v_user_pronunciation_stats",      action: "skip_view", reason: "view over speech_attempts" },
+
   // ────────────────────────────────────────────────────────────
   // profiles — handled separately at the END of delete-account
   // (after all FKs clean). Not looped via the manifest.
