@@ -11,6 +11,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
+import {
+  buildFooter,
+  buildListUnsubscribeHeaders,
+} from "../_shared/unsubscribe.ts";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -89,14 +94,8 @@ function buildHtml(params: {
       </td>
     </tr>
 
-    <!-- Footer -->
-    <tr>
-      <td style="padding:20px 32px 28px 32px;border-top:1px solid rgba(0,0,0,0.06);font-size:12px;color:rgba(0,0,0,0.38);line-height:1.6;">
-        Bạn nhận được email này vì đã đăng ký MercyBlade. Nếu không muốn nhận email, bạn có thể <a href="${siteUrl}/account" style="color:rgba(0,0,0,0.38);">hủy đăng ký</a>.
-        <br>
-        You received this email because you signed up for MercyBlade. Reply if you need help.
-      </td>
-    </tr>
+    <!-- Compliant unsubscribe footer is spliced in at send time via
+         buildFooter(token) — see the send loop. -->
   </table>
 </body>
 </html>`;
@@ -144,12 +143,16 @@ Deno.serve(async (req) => {
     //    - streak_last_studied_date = yesterday (meaning they last studied
     //      yesterday — NOT today, so they missed today)
     //    - streak_current >= 1 (has a streak worth protecting)
-    //    - email_unsubscribed_at IS NULL (not opted out)
+    //    - email_unsubscribed_at IS NULL (not globally opted out)
+    //    - email_streak_reminder_enabled = true (per-category opt-in)
     const { data: profiles, error: profErr } = await adminClient
       .from("profiles")
-      .select("id, streak_current, email_unsubscribed_at")
+      .select(
+        "id, streak_current, email_unsubscribed_at, email_streak_reminder_enabled, email_unsubscribe_token",
+      )
       .eq("streak_last_studied_date", yesterday)
       .gte("streak_current", 1)
+      .eq("email_streak_reminder_enabled", true)
       .is("email_unsubscribed_at", null);
 
     if (profErr) {
@@ -190,21 +193,30 @@ Deno.serve(async (req) => {
         continue;
       }
 
+      // Real, non-rotating per-user token (profiles.email_unsubscribe_token,
+      // PR #190). Required for a working one-click unsubscribe — skip the
+      // send entirely if it's missing rather than ship an email with a
+      // dead unsubscribe link (CASL / RFC 8058).
+      const unsubToken =
+        typeof prof.email_unsubscribe_token === "string"
+          ? prof.email_unsubscribe_token
+          : null;
+      if (!unsubToken) {
+        errors.push(`${prof.id}: missing email_unsubscribe_token`);
+        continue;
+      }
+
       const streak = Number(prof.streak_current ?? 0);
 
-      const html = buildHtml({
+      const baseHtml = buildHtml({
         streak,
         siteUrl: EMAIL_CONFIG.siteUrl,
       });
+      const footer = buildFooter(unsubToken);
+      const html = baseHtml.replace("</body>", `${footer.html}</body>`);
 
       const subject =
         "🔥 Đừng để streak bị mất! / Don\u2019t lose your streak!";
-
-      // One-click unsubscribe per RFC 8058. Token is a base64url-style
-      // encoding of the user_id — v1 / functional only; rotate to a
-      // signed HMAC token once /unsubscribe is implemented server-side.
-      const unsubToken = btoa(prof.id).replace(/=/g, "");
-      const unsubUrl = `https://mercyblade.com/unsubscribe?token=${unsubToken}`;
 
       try {
         const { error: sendErr } = await resend.emails.send({
@@ -212,10 +224,7 @@ Deno.serve(async (req) => {
           to: [email],
           subject,
           html,
-          headers: {
-            "List-Unsubscribe": `<${unsubUrl}>`,
-            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-          },
+          headers: buildListUnsubscribeHeaders(unsubToken),
         });
 
         if (sendErr) {
