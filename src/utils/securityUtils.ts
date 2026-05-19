@@ -88,16 +88,18 @@ export const trackLoginAttempt = async (
     const ipAddress = await getUserIP();
     const userAgent = navigator.userAgent;
 
-    const insertRes = await supabase.from("login_attempts").insert({
-      email,
-      ip_address: ipAddress,
-      user_agent: userAgent,
-      success,
-      failure_reason: failureReason,
+    // Goes through the record_login_attempt SECURITY DEFINER RPC (A72) —
+    // a direct anon/authenticated INSERT on login_attempts is now revoked.
+    const insertRes = await supabase.rpc("record_login_attempt", {
+      _email: email,
+      _success: success,
+      _ip_address: ipAddress,
+      _user_agent: userAgent,
+      _failure_reason: failureReason ?? null,
     });
 
     if (insertRes.error)
-      devWarn("[security] insert login_attempts failed (fail-open)", insertRes.error);
+      devWarn("[security] rpc record_login_attempt failed (fail-open)", insertRes.error);
 
     if (!success) {
       const recentFailures = await supabase
