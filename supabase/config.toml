@@ -17,6 +17,13 @@ verify_jwt = false
 [functions.send-pending-emails]
 verify_jwt = false
 
+# RFC 8058 one-click unsubscribe endpoint. Public by design: the opaque
+# per-user profiles.email_unsubscribe_token IS the credential (same
+# trust model as the unsubscribe_by_token RPC's anon grant). Never
+# requires a JWT — mail clients POST it unauthenticated.
+[functions.email-unsubscribe]
+verify_jwt = false
+
 
 # =========================
 # CHAT / AI

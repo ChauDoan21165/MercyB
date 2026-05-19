@@ -84,17 +84,21 @@ describe("getEmailPreferences", () => {
       reEngagementEnabled: true,
       trialExpiryEnabled: true,
       weeklyDigestEnabled: true,
+      streakReminderEnabled: true,
+      weeklyProgressEnabled: true,
       unsubscribedAt: null,
     });
   });
 
-  it("maps DB column names to camelCase", async () => {
+  it("maps DB column names to camelCase (incl. streak + weekly-progress)", async () => {
     rpcMock.mockResolvedValueOnce({
       data: [
         {
           email_re_engagement_enabled: false,
           email_trial_expiry_enabled: true,
           email_weekly_digest_enabled: false,
+          email_streak_reminder_enabled: false,
+          email_weekly_progress_enabled: true,
           email_unsubscribed_at: "2026-04-27T05:00:00Z",
         },
       ],
@@ -104,6 +108,8 @@ describe("getEmailPreferences", () => {
     expect(out.reEngagementEnabled).toBe(false);
     expect(out.trialExpiryEnabled).toBe(true);
     expect(out.weeklyDigestEnabled).toBe(false);
+    expect(out.streakReminderEnabled).toBe(false);
+    expect(out.weeklyProgressEnabled).toBe(true);
     expect(out.unsubscribedAt).toBe("2026-04-27T05:00:00Z");
   });
 });
@@ -134,5 +140,30 @@ describe("updateEmailPreferences", () => {
     const patch = updateMock.mock.calls[0][0];
     expect(patch.email_re_engagement_enabled).toBe(false);
     expect("email_unsubscribed_at" in patch).toBe(false);
+  });
+
+  it("maps the streak + weekly-progress toggles to their columns", async () => {
+    getUserMock.mockResolvedValueOnce({ data: { user: { id: "u1" } } });
+    updateMock.mockResolvedValueOnce({ error: null });
+    rpcMock.mockResolvedValueOnce({ data: [], error: null });
+    await updateEmailPreferences({
+      streakReminderEnabled: false,
+      weeklyProgressEnabled: false,
+    });
+    const patch = updateMock.mock.calls[0][0];
+    expect(patch.email_streak_reminder_enabled).toBe(false);
+    expect(patch.email_weekly_progress_enabled).toBe(false);
+    // Pure opt-out of the new categories must NOT clear the global stamp.
+    expect("email_unsubscribed_at" in patch).toBe(false);
+  });
+
+  it("clears unsubscribed_at when re-enabling a streak/progress toggle", async () => {
+    getUserMock.mockResolvedValueOnce({ data: { user: { id: "u1" } } });
+    updateMock.mockResolvedValueOnce({ error: null });
+    rpcMock.mockResolvedValueOnce({ data: [], error: null });
+    await updateEmailPreferences({ weeklyProgressEnabled: true });
+    const patch = updateMock.mock.calls[0][0];
+    expect(patch.email_weekly_progress_enabled).toBe(true);
+    expect(patch.email_unsubscribed_at).toBeNull();
   });
 });

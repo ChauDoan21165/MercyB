@@ -11,6 +11,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
+import {
+  buildFooter,
+  buildListUnsubscribeHeaders,
+} from "../_shared/unsubscribe.ts";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -121,14 +126,8 @@ function buildHtml(params: {
       </td>
     </tr>
 
-    <!-- Footer -->
-    <tr>
-      <td style="padding:20px 32px 28px 32px;border-top:1px solid rgba(0,0,0,0.06);font-size:12px;color:rgba(0,0,0,0.38);line-height:1.6;">
-        Bạn nhận được email này vì đã đăng ký MercyBlade. Nếu không muốn nhận email, bạn có thể <a href="${siteUrl}/account" style="color:rgba(0,0,0,0.38);">hủy đăng ký</a>.
-        <br>
-        You received this email because you signed up for MercyBlade. Reply if you need help.
-      </td>
-    </tr>
+    <!-- Compliant unsubscribe footer is spliced in at send time via
+         buildFooter(token) — see the send loop. -->
   </table>
 </body>
 </html>`;
@@ -193,10 +192,12 @@ Deno.serve(async (req) => {
       return send({ ok: true, sent: 0, skipped: 0, note: "No active subscribers" });
     }
 
-    // Step B: Get profiles (streak + opt-out) for active users
+    // Step B: Get profiles (streak + opt-out + token) for active users
     const { data: profiles, error: profErr } = await adminClient
       .from("profiles")
-      .select("id, streak_current, email_unsubscribed_at")
+      .select(
+        "id, streak_current, email_unsubscribed_at, email_weekly_progress_enabled, email_unsubscribe_token",
+      )
       .in("id", activeUserIds);
 
     if (profErr) {
@@ -239,8 +240,22 @@ Deno.serve(async (req) => {
     for (const prof of profiles ?? []) {
       const userId = prof.id;
 
-      // Skip if unsubscribed
-      if (prof.email_unsubscribed_at) {
+      // Skip if globally unsubscribed or opted out of this category.
+      if (
+        prof.email_unsubscribed_at ||
+        prof.email_weekly_progress_enabled === false
+      ) {
+        skipped++;
+        continue;
+      }
+
+      // Real, non-rotating per-user token (PR #190). No token → no
+      // working one-click unsubscribe → don't send (CASL / RFC 8058).
+      const unsubToken =
+        typeof prof.email_unsubscribe_token === "string"
+          ? prof.email_unsubscribe_token
+          : null;
+      if (!unsubToken) {
         skipped++;
         continue;
       }
@@ -255,21 +270,17 @@ Deno.serve(async (req) => {
       const streak = Number(prof.streak_current ?? 0);
       const lessonsCompleted = lessonMap.get(userId) ?? 0;
 
-      const html = buildHtml({
+      const baseHtml = buildHtml({
         email,
         streak,
         lessonsCompleted,
         siteUrl: EMAIL_CONFIG.siteUrl,
       });
+      const footer = buildFooter(unsubToken);
+      const html = baseHtml.replace("</body>", `${footer.html}</body>`);
 
       const subject =
         "📚 Tuần này bạn học được gì? / Your weekly MercyBlade progress";
-
-      // One-click unsubscribe per RFC 8058. Token is a base64url-style
-      // encoding of the user_id — v1 / functional only; rotate to a
-      // signed HMAC token once /unsubscribe is implemented server-side.
-      const unsubToken = btoa(userId).replace(/=/g, "");
-      const unsubUrl = `https://mercyblade.com/unsubscribe?token=${unsubToken}`;
 
       try {
         const { error: sendErr } = await resend.emails.send({
@@ -277,10 +288,7 @@ Deno.serve(async (req) => {
           to: [email],
           subject,
           html,
-          headers: {
-            "List-Unsubscribe": `<${unsubUrl}>`,
-            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-          },
+          headers: buildListUnsubscribeHeaders(unsubToken),
         });
 
         if (sendErr) {

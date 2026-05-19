@@ -17,6 +17,8 @@ export type EmailPreferences = {
   reEngagementEnabled: boolean;
   trialExpiryEnabled: boolean;
   weeklyDigestEnabled: boolean;
+  streakReminderEnabled: boolean;
+  weeklyProgressEnabled: boolean;
   unsubscribedAt: string | null;
 };
 
@@ -24,6 +26,8 @@ export type EmailPreferencesUpdate = Partial<{
   reEngagementEnabled: boolean;
   trialExpiryEnabled: boolean;
   weeklyDigestEnabled: boolean;
+  streakReminderEnabled: boolean;
+  weeklyProgressEnabled: boolean;
 }>;
 
 export type UnsubscribeResult =
@@ -34,6 +38,8 @@ const DEFAULT_PREFS: EmailPreferences = {
   reEngagementEnabled: true,
   trialExpiryEnabled: true,
   weeklyDigestEnabled: true,
+  streakReminderEnabled: true,
+  weeklyProgressEnabled: true,
   unsubscribedAt: null,
 };
 
@@ -91,6 +97,8 @@ export async function getEmailPreferences(): Promise<EmailPreferences> {
     reEngagementEnabled: Boolean(r.email_re_engagement_enabled ?? true),
     trialExpiryEnabled: Boolean(r.email_trial_expiry_enabled ?? true),
     weeklyDigestEnabled: Boolean(r.email_weekly_digest_enabled ?? true),
+    streakReminderEnabled: Boolean(r.email_streak_reminder_enabled ?? true),
+    weeklyProgressEnabled: Boolean(r.email_weekly_progress_enabled ?? true),
     unsubscribedAt:
       typeof r.email_unsubscribed_at === "string"
         ? r.email_unsubscribed_at
@@ -118,12 +126,18 @@ export async function updateEmailPreferences(
     patch.email_trial_expiry_enabled = input.trialExpiryEnabled;
   if (input.weeklyDigestEnabled !== undefined)
     patch.email_weekly_digest_enabled = input.weeklyDigestEnabled;
+  if (input.streakReminderEnabled !== undefined)
+    patch.email_streak_reminder_enabled = input.streakReminderEnabled;
+  if (input.weeklyProgressEnabled !== undefined)
+    patch.email_weekly_progress_enabled = input.weeklyProgressEnabled;
 
   // If the user is re-opting-in to anything, clear the global stamp.
   const reEnabling =
     input.reEngagementEnabled === true ||
     input.trialExpiryEnabled === true ||
-    input.weeklyDigestEnabled === true;
+    input.weeklyDigestEnabled === true ||
+    input.streakReminderEnabled === true ||
+    input.weeklyProgressEnabled === true;
   if (reEnabling) patch.email_unsubscribed_at = null;
 
   const { error } = await supabase

@@ -19,9 +19,32 @@
 export const SITE_ORIGIN = "https://mercyblade.com";
 export const UNSUBSCRIBE_MAILTO_DOMAIN = "mercyblade.com";
 
-/** URL the user lands on for one-click full opt-out. */
+// The email-unsubscribe Edge Function. The List-Unsubscribe header must
+// point at a server endpoint that processes an unauthenticated POST
+// WITHOUT running JS — Gmail / Apple Mail send the one-click POST
+// directly and never execute the SPA. mercyblade.com/unsubscribe is a
+// client-rendered React route (vercel.json rewrites everything to
+// index.html), so it returns 200 but never redeems the token for the
+// bot. Pointing the machine header at this function is what actually
+// makes RFC 8058 one-click work.
+export const FUNCTIONS_ORIGIN =
+  "https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1";
+
+/**
+ * Human-facing landing page for one-click full opt-out. Used in the
+ * visible email footer link — a person clicks it, the SPA runs and
+ * confirms + offers per-category management.
+ */
 export function buildUnsubscribeUrl(token: string): string {
   return `${SITE_ORIGIN}/unsubscribe?token=${encodeURIComponent(token)}`;
+}
+
+/**
+ * Machine endpoint for the List-Unsubscribe header. Same token, but a
+ * real server route (Edge Function) that redeems on POST without JS.
+ */
+export function buildUnsubscribeEndpoint(token: string): string {
+  return `${FUNCTIONS_ORIGIN}/email-unsubscribe?token=${encodeURIComponent(token)}`;
 }
 
 /** URL to manage preferences per category (auth-required). */
@@ -93,7 +116,9 @@ export function buildListUnsubscribeHeaders(
   token: string,
 ): Record<string, string> {
   return {
-    "List-Unsubscribe": `<${buildUnsubscribeUrl(token)}>, <${buildUnsubscribeMailto(token)}>`,
+    // URL form points at the Edge Function (processes the POST without
+    // JS); mailto is the RFC 2369 fallback for clients that prefer it.
+    "List-Unsubscribe": `<${buildUnsubscribeEndpoint(token)}>, <${buildUnsubscribeMailto(token)}>`,
     "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
   };
 }

@@ -10,10 +10,12 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  FUNCTIONS_ORIGIN,
   SITE_ORIGIN,
   buildFooter,
   buildListUnsubscribeHeaders,
   buildPreferencesUrl,
+  buildUnsubscribeEndpoint,
   buildUnsubscribeMailto,
   buildUnsubscribeUrl,
   withFooter,
@@ -39,6 +41,18 @@ describe("URL builders", () => {
   it("buildUnsubscribeMailto carries the token in the local part", () => {
     expect(buildUnsubscribeMailto("xyz")).toBe(
       "mailto:unsubscribe+xyz@mercyblade.com",
+    );
+  });
+
+  it("buildUnsubscribeEndpoint points at the email-unsubscribe Edge Function", () => {
+    expect(buildUnsubscribeEndpoint("abc123")).toBe(
+      `${FUNCTIONS_ORIGIN}/email-unsubscribe?token=abc123`,
+    );
+  });
+
+  it("buildUnsubscribeEndpoint URL-encodes the token", () => {
+    expect(buildUnsubscribeEndpoint("ab/cd?e&f")).toBe(
+      `${FUNCTIONS_ORIGIN}/email-unsubscribe?token=ab%2Fcd%3Fe%26f`,
     );
   });
 });
@@ -70,10 +84,18 @@ describe("buildListUnsubscribeHeaders", () => {
     expect(headers["List-Unsubscribe-Post"]).toBe("List-Unsubscribe=One-Click");
   });
 
-  it("List-Unsubscribe carries both URL and mailto in <>", () => {
+  it("List-Unsubscribe points the URL at the Edge Function (true one-click), keeps the mailto fallback", () => {
     expect(headers["List-Unsubscribe"]).toBe(
-      "<https://mercyblade.com/unsubscribe?token=token123>, " +
+      `<${FUNCTIONS_ORIGIN}/email-unsubscribe?token=token123>, ` +
         "<mailto:unsubscribe+token123@mercyblade.com>",
+    );
+  });
+
+  it("does NOT point one-click at the client-rendered SPA page", () => {
+    // Regression guard: the SPA route can't process the bot POST without
+    // JS — pointing the machine header there is what was broken.
+    expect(headers["List-Unsubscribe"]).not.toContain(
+      `${SITE_ORIGIN}/unsubscribe?token=`,
     );
   });
 });

@@ -66,7 +66,12 @@ const breadcrumbLink: React.CSSProperties = {
   textDecoration: "none",
 };
 
-type ToggleKey = "reEngagementEnabled" | "trialExpiryEnabled" | "weeklyDigestEnabled";
+type ToggleKey =
+  | "reEngagementEnabled"
+  | "trialExpiryEnabled"
+  | "weeklyDigestEnabled"
+  | "streakReminderEnabled"
+  | "weeklyProgressEnabled";
 
 type ToggleConfig = {
   key: ToggleKey;
@@ -108,6 +113,28 @@ const TOGGLES: ToggleConfig[] = [
     descEn:
       "Your weekly summary: what you practiced, score changes, tips for the next week.",
     whenVi: "Mỗi sáng thứ Hai",
+    whenEn: "Every Monday morning",
+  },
+  {
+    key: "streakReminderEnabled",
+    titleVi: "Nhắc giữ streak",
+    titleEn: "Streak reminders",
+    descVi:
+      "Email nhắc vào học để không mất streak khi hôm đó bạn chưa học.",
+    descEn:
+      "A nudge to study so you don't lose your streak on a day you haven't practiced yet.",
+    whenVi: "Buổi tối nếu hôm đó bạn chưa học",
+    whenEn: "In the evening if you haven't studied that day",
+  },
+  {
+    key: "weeklyProgressEnabled",
+    titleVi: "Tổng kết tiến độ tuần",
+    titleEn: "Weekly progress summary",
+    descVi:
+      "Tổng kết cá nhân mỗi tuần: streak, số bài đã học và lời động viên.",
+    descEn:
+      "Your personal weekly recap: streak, lessons completed, and encouragement.",
+    whenVi: "Sáng thứ Hai hàng tuần",
     whenEn: "Every Monday morning",
   },
 ];
