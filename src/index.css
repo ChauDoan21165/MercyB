@@ -110,6 +110,14 @@ html {
 body {
   margin: 0;
   background: var(--mb-bg);
+  /* Global safe-area TOP net (Cat-4 N7a). env() resolves to 0px on
+     normal web; only insets in standalone PWA / native WebView with a
+     notch / Dynamic Island (index.html sets viewport-fit=cover). Fixed
+     / absolute surfaces anchor to the viewport and are unaffected, so
+     this only pushes normal-flow top content clear of the notch. The
+     prior net lived in src/styles/theme.css, which has zero importers
+     (dead) — index.css is the only stylesheet main.tsx actually loads. */
+  padding-top: env(safe-area-inset-top, 0px);
   /* Bottom safe-area net — relocated from the dead src/styles/theme.css
      (zero importers, never loaded). Pairs with the top net in #665. env()
      is 0px on normal web; only insets in standalone PWA / native WebView
@@ -123,6 +131,21 @@ body {
 }
 :root[data-mb-mode="bw"] .bg-card {
   background-color: rgba(255, 255, 255, 1);
+}
+
+/* ===============================
+   Safe-area TOP — consumable primitive (Cat-4 N7a)
+   =============================== */
+
+/* `body` carries the global top net above. Surfaces taken OUT of normal
+   flow (position:fixed / sticky headers, bottom-sheet tops) don't inherit
+   that padding — they opt in explicitly via this variable or class. */
+:root {
+  --mb-safe-area-top: env(safe-area-inset-top, 0px);
+}
+
+.mb-safe-pt {
+  padding-top: var(--mb-safe-area-top);
 }
 
 /* ===============================
