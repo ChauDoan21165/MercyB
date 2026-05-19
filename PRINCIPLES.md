@@ -191,10 +191,49 @@ When a dispatch explicitly authorizes "push + PR open" upfront, agents do NOT st
 
 This is principle 12 (never repeat instructions) applied to dispatch authorization. If the dispatch already said it, the agent doesn't need to ask again.
 
+---
+
+## 17. SILENT FAILURE IS A NAMED CLASS — CLASSIFY IT, DON'T TRUST THE FALLBACK
+
+A result that returns OK / green / a fallback value is **not** evidence the real effect succeeded. Operations that can emit success-shaped output while their actual effect failed are the `silent-failure` class (A92 label: "Returns OK/green while actually failing — wrong-but-passing behavior that hides damage").
+
+When auditing or debugging one, the bucket criteria are all three of:
+
+1. The surface says success — HTTP 200, no thrown error, a default/fallback return, or a green test.
+2. The real effect — row written, payment captured, audio served, entitlement granted — was never independently verified.
+3. A degradation path exists that converts a failure into a success-shaped value.
+
+If all three hold, classify it `silent-failure`, label it, and verify the real effect directly — do not treat the fallback as proof. Canonical worked instance: the audio resolver's `/audio/{key}` fallback that hides Supabase signing failures (`CLAUDE.md` → "Traps this codebase hit recently"). Money-path silent failures (Stripe / entitlement / billing) are the same class with revenue blast radius — see the `money-path` label.
+
+---
+
+## 18. BATCHED CLEANUP PRS BEAT DEFERRED CLEANUP
+
+Principle 1 says clean dead code in the PR that found it. Principle 3 says keep PRs narrow. These do not conflict: a **pure-cleanup PR may batch multiple independent removals** when they share one verification surface (the same typecheck / build / test gate) and carry no behavior change. That is one logical concern — "remove what nothing consumes" — not many.
+
+This is NOT a license to bundle cleanup with a feature or bug fix (still forbidden by #3), nor to defer cleanup to a "future sweep" (still forbidden by #1). It only settles the middle case: N independent dead-code deletions surfaced by one audit ship as one cleanup PR — not N micro-PRs, and not zero.
+
+Worked instance: PR #767 removed 3 unconsumed `_shared` modules as a single B3-audit follow-up.
+
+---
+
+## 19. ONE AGENT → ONE CONSOLIDATED REPORT
+
+A dispatched agent produces exactly one final report, in the dispatch's stated report format, then terminates. It does not stream partial updates as separate replies, self-continue past the brief's scope, or fragment one task into a series of messages.
+
+The failure mode this prevents: an agent emitting five partial "progress" replies forces Chau to reconstruct one answer from five; a self-continuing agent drifts past the locked scope and violates #11's "do not touch X" boundary. One dispatch, one deliverable, one report. If the task genuinely cannot be completed in one pass, the single report says so explicitly and stops — it does not silently keep going.
+
+---
+
+## Convention library
+
+The dispatch disciplines, failure-class vocabulary, and recon / SQL-remediation / PR-body conventions these principles assume are indexed in **`docs/agent-briefs/INDEX.md`** — the single entry point for "how MercyBlade development actually works." When a process question isn't answered here, that index routes it (recon-doc convention, SQL-remediation convention, PR-body template, preflight checklist, the A92 label set). It tracks which sibling docs are live vs in-flight; trust its freshness tags over memory.
+
+---
 
 ## Last updated
 
-2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-19 — Added principles 17 (silent-failure named class), 18 (batched cleanup PRs), 19 (one agent → one consolidated report), and the "Convention library" pointer to `docs/agent-briefs/INDEX.md` (session-end principles refresh; existing principles 1–16 unchanged). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
