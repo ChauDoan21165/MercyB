@@ -147,7 +147,9 @@ export const UI = {
     display: "flex",
     alignItems: "center",
     gap: 12,
-    color: "#888",
+    // #6b7280 on white ≈ 4.83:1 — clears WCAG AA 4.5:1 for 13px text.
+    // (#888 was 3.54:1 — A51 audit.)
+    color: "#6b7280",
     fontSize: 13,
   } as React.CSSProperties,
 

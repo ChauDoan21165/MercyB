@@ -97,6 +97,7 @@ export default function PhoneOtp({
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="+84 901234567"
+          aria-label={t({ vi: "Số điện thoại", en: "Phone" })}
           autoComplete="tel"
           className={AUTH_FOCUS_RING}
           style={UI.input(disabled)}
@@ -106,7 +107,7 @@ export default function PhoneOtp({
 
       {!sent ? (
         <div style={{ marginTop: 12 }}>
-          <button onClick={sendCode} disabled={disabled} style={UI.primaryBtn(disabled)}>
+          <button type="button" onClick={sendCode} disabled={disabled} style={UI.primaryBtn(disabled)}>
             {disabled
               ? t({ vi: "Vui lòng đợi…", en: "Please wait..." })
               : t({ vi: "Gửi mã SMS", en: "Send SMS code" })}
@@ -122,6 +123,7 @@ export default function PhoneOtp({
             value={token}
             onChange={(e) => setToken(e.target.value)}
             placeholder="123456"
+            aria-label={t({ vi: "Mã SMS", en: "SMS code" })}
             autoComplete="one-time-code"
             className={AUTH_FOCUS_RING}
             style={UI.input(disabled)}
@@ -129,6 +131,7 @@ export default function PhoneOtp({
           />
           <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button
+              type="button"
               onClick={verifyCode}
               disabled={disabled}
               style={{ ...UI.primaryBtn(disabled), flex: "1 1 auto" }}

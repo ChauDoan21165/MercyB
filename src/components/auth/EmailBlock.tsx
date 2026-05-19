@@ -678,6 +678,7 @@ export default function EmailBlock({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@email.com"
+          aria-label="Email"
           autoComplete="email"
           data-clarity-mask="true"
           className={AUTH_FOCUS_RING}
@@ -705,6 +706,7 @@ export default function EmailBlock({
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
+              aria-label="Mật khẩu · Password"
               // Clarity auto-masks type=password, but this field flips
               // to type=text on "show password" — mask explicitly so it
               // never leaks in that state.

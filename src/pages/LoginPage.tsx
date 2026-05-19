@@ -448,7 +448,7 @@ export default function LoginPage() {
         {liveMessage}
       </div>
 
-      <div style={UI.left}>
+      <main style={UI.left}>
         <div style={UI.card}>
           <div style={{ marginBottom: 12 }}>
             <button
@@ -673,11 +673,15 @@ export default function LoginPage() {
             </button>
           </div>
         </div>
-      </div>
+      </main>
 
-      <div className="mb-login-marketing" style={{ display: "contents" }}>
+      <aside
+        className="mb-login-marketing"
+        aria-label="Mercy Blade"
+        style={{ display: "contents" }}
+      >
         <MarketingPanel />
-      </div>
+      </aside>
     </div>
   );
 }
