@@ -177,11 +177,11 @@ export default function TierDetail() {
         setRooms(res.rooms || []);
         setSource(res.source);
         setDebug(res.debug);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!alive) return;
         setRooms([]);
         setSource("none");
-        setDebug(`TierDetail loadRoomsForTiers failed: ${String(e?.message || e)}`);
+        setDebug(`TierDetail loadRoomsForTiers failed: ${String(e instanceof Error ? e.message : e)}`);
       }
     })();
     return () => {
@@ -213,17 +213,17 @@ export default function TierDetail() {
         return rooms.filter((r) => {
           if (r.tier !== "level0") return false;
           if (isExplicitLifeRoom(r)) return false;
-          const a = String((r as any).area || "").toLowerCase();
+          const a = String(r.area || "").toLowerCase();
           if (a === "english" || a === "kids" || a === "life") return false;
           return true;
         });
       }
       // forced english/kids views
-      return rooms.filter((r) => r.tier === "level0" && String((r as any).area || "").toLowerCase() === areaToShow);
+      return rooms.filter((r) => r.tier === "level0" && String(r.area || "").toLowerCase() === areaToShow);
     }
 
     // non-level0 tiers: normal filter
-    return rooms.filter((r) => r.tier === tier && String((r as any).area || "").toLowerCase() === areaToShow);
+    return rooms.filter((r) => r.tier === tier && String(r.area || "").toLowerCase() === areaToShow);
   }, [rooms, tier, areaToShow]);
 
   const tierAreaCounts = useMemo<TierAreaCounts>(() => {
@@ -237,7 +237,7 @@ export default function TierDetail() {
         if (r.tier !== "level0") continue;
         if (isExplicitLifeRoom(r)) out.life += 1;
         else {
-          const a = String((r as any).area || "").toLowerCase();
+          const a = String(r.area || "").toLowerCase();
           // keep spine-core clean: don't count english/kids/life inside "core"
           if (a !== "english" && a !== "kids" && a !== "life") out.core += 1;
         }
@@ -246,7 +246,7 @@ export default function TierDetail() {
       // Diagnostic-only: what DB thinks is english/kids for level0
       for (const r of rooms) {
         if (r.tier !== "level0") continue;
-        const a = String((r as any).area || "").toLowerCase();
+        const a = String(r.area || "").toLowerCase();
         if (a === "english") out.english += 1;
         if (a === "kids") out.kids += 1;
       }
@@ -256,7 +256,7 @@ export default function TierDetail() {
 
     for (const r of rooms) {
       if (r.tier !== tier) continue;
-      const a = String((r as any).area || "").toLowerCase();
+      const a = String(r.area || "").toLowerCase();
       if (a === "core") out.core += 1;
       else if (a === "kids") out.kids += 1;
       else if (a === "english") out.english += 1;
@@ -533,7 +533,7 @@ export default function TierDetail() {
               }}
               aria-label={`Open room ${r.id}`}
             >
-              <img src={getDomainImage((r as any).domain, r.id)} alt="" aria-hidden="true" style={{ width: 44, height: 44, borderRadius: 8, flexShrink: 0, opacity: 0.95 }} loading="lazy" />
+              <img src={getDomainImage(r.domain, r.id)} alt="" aria-hidden="true" style={{ width: 44, height: 44, borderRadius: 8, flexShrink: 0, opacity: 0.95 }} loading="lazy" />
               <p style={cardTitle}>{pickTitle({ id: r.id, title_en: r.title_en, title_vi: r.title_vi })}</p>
               <svg style={{ flexShrink: 0, opacity: 0.35 }} width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
             </Link>

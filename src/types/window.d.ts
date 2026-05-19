@@ -19,6 +19,12 @@ declare global {
     __MB_SESSION?: unknown;
     __MB_LOGGER?: unknown;
     __MB_RESTORE_CONSOLE?: unknown;
+    /** TierIndex debug snapshot of the loaded tier-room list. */
+    __MB_ALL_ROOMS__?: import("@/lib/tierRoomSource").TierRoom[];
+    /** TierIndex debug snapshot of the hidden-room diagnostic report (write-only). */
+    __MB_TIER_REPORT__?: unknown;
+    /** Room-perf timing anchor (ms, set in ChatHub, read in RoomRenderer). */
+    __mbRoomPerfT0?: number;
 
     /* ===============================
      * Runtime / observability hooks

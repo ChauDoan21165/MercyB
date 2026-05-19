@@ -70,10 +70,10 @@ export default function Tiers() {
         if (!alive) return;
         setRooms(all);
         setLoadError(null);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!alive) return;
         setRooms([]);
-        setLoadError(e?.message ? String(e.message) : "Failed to load rooms");
+        setLoadError(e instanceof Error && e.message ? String(e.message) : "Failed to load rooms");
       }
     })();
 
@@ -106,7 +106,7 @@ export default function Tiers() {
     };
 
     for (const r of rooms) {
-      const rawTier = (r as any)?.tier;
+      const rawTier = r?.tier;
 
       if (rawTier === "unknown") {
         counts.unknown++;
@@ -116,7 +116,7 @@ export default function Tiers() {
       const tierId = normalizeTierOrUndefined(rawTier);
 
       // keep level3 hidden (your original rule)
-      if (tierId === ("level3" as any)) {
+      if (tierId === "level3") {
         counts.unknown++;
         continue;
       }
