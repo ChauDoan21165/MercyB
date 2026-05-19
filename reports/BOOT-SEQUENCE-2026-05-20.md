@@ -64,22 +64,28 @@ gh pr view 814 --json state,mergedAt,body | jq -r .body | less
 gh pr view 813 --json state,mergedAt,body | jq -r .body | less
 
 # ============================================================================
-# STEP 3 — sanity-check the merge state of the 6 "carry-over" critical PRs
+# STEP 3 — sanity-check the merge state of the 7 "carry-over" critical PRs
 #          before dispatching anything in the billing / customer-remediation
-#          / app-store tracks.
+#          / app-store tracks. (#826 merged earlier this session — replaced
+#          here with the two follow-ups it spawned: #832 RPC + #843 A18 PR1.)
 # ============================================================================
-for pr in 789 796 799 801 803 805 826; do
+for pr in 789 796 799 801 803 805 832 843; do
   printf "%5s  " "#${pr}"
   gh pr view "${pr}" --json state,title \
     | jq -r '"\(.state)\t\(.title)"'
 done
-# 789 — entitlements table migration (gates A18)
+# 789 — entitlements table migration (gates A18 PR2)
 # 796 — native tracker guard (gates App Store)
 # 799 — gift-victim apply package (SQL hand-apply)
 # 801 — mylinh apply package (SQL hand-apply)
 # 803 — gift-victim outreach ops (POST-#799 SQL only)
 # 805 — mylinh Stripe pre-flight (PRE-#801)
-# 826 — B13ph3 PR-B atomic repoint (the money-path PR)
+# 832 — recompute_entitlement_tx RPC migration (the A8d-surfaced gap that
+#       #789 did NOT include; A18 PR2 needs BOTH #789 + #832 applied to prod)
+# 843 — A18 PR1: recomputeEntitlement single writer (additive, zero call
+#       sites; logic-only, no migrations; PR2 wires call sites)
+# (#826 MERGED earlier this session — R1-R4 atomic repoint via PR-B,
+#  6715/6715 tests green. If you see it OPEN here, your fetch is stale.)
 
 # ============================================================================
 # STEP 4 — list any in-flight worktrees, both shared and your fresh /tmp ones
