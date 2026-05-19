@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
+import { buildEntitlementSnapshot } from "./core.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -47,10 +48,16 @@ Deno.serve(async (req) => {
       throw profileError;
     }
 
-    const premiumStatus = profile?.premium_status ?? "inactive";
-    const premiumExpiresAt = profile?.premium_expires_at ?? null;
-    const premiumSource = profile?.premium_source ?? null;
-    const isPremium = premiumStatus === "active";
+    // B13 Phase 3 PR-B: route the entitlement decision through the
+    // shared expiry-aware derive (`core.ts:buildEntitlementSnapshot`).
+    // Pre-PR-B, `isPremium = premiumStatus === "active"` ignored
+    // `premium_expires_at` and granted premium to expired-but-active
+    // rows. R2 of the four-reader repoint.
+    const entitlement = buildEntitlementSnapshot(profile, new Date());
+    const premiumStatus = entitlement.status;
+    const premiumExpiresAt = entitlement.expires_at;
+    const premiumSource = entitlement.source;
+    const isPremium = entitlement.is_premium;
 
     const { data: adminRole } = await supabase
       .from("user_roles")
