@@ -76,11 +76,16 @@ export function computeYearlyPerMonth(yearlyAmount: number): number {
 /**
  * Format an amount in the user-facing currency.
  *
- *   formatPrice(200000, "VND") → "200,000 VND"   (en-US grouping; matches
- *                                                  existing "200 000 VND"
- *                                                  callers via the
- *                                                  formatPriceCompact helper)
+ *   formatPrice(200000, "VND") → "200 000 VND"   (NBSP-separated; the
+ *                                                  thousands separator AND
+ *                                                  the space before "VND"
+ *                                                  are U+00A0 so the price
+ *                                                  never wraps mid-token)
  *   formatPrice(7.99, "USD")    → "$7.99"
+ *
+ * The single canonical VND surface — every price the user sees flows
+ * through here. Do not hand-format VND amounts in components; pass the
+ * numeric value + "VND" so grouping/spacing stays consistent.
  */
 export function formatPrice(amount: number, currency: Currency): string {
   if (!isFinite(amount)) return "";
@@ -92,13 +97,15 @@ export function formatPrice(amount: number, currency: Currency): string {
       maximumFractionDigits: 2,
     }).format(amount);
   }
-  // VND: spaces as thousand separators (matches existing "200 000 VND"
-  // copy in Pricing.tsx) for visual consistency, plus a trailing " VND".
+  // Canonical VND format: U+00A0 NBSP as the thousands separator so a
+  // price never breaks mid-number, and NBSP before "VND" so the unit
+  // can't orphan onto its own line. "200 000 VND" is one atomic token.
+  const NBSP = "\u00A0";
   const formatted = new Intl.NumberFormat("vi-VN", {
     maximumFractionDigits: 0,
   })
     .format(Math.round(amount))
-    // vi-VN locale uses "." — swap for spaces to match prior copy.
-    .replace(/\./g, " ");
-  return `${formatted} VND`;
+    // vi-VN locale groups with "." — swap for NBSP.
+    .replace(/\./g, NBSP);
+  return `${formatted}${NBSP}VND`;
 }

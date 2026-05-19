@@ -7,9 +7,12 @@
 // Hypothesis: price-sensitive visitors respond to a concrete dollar
 // savings number more than to feature lists.
 
+import { formatPrice } from "@/lib/pricing/displayPrices";
+
 import {
   SHARED_GUARANTEE_VI,
   SHARED_PLANS,
+  SHARED_SAVINGS_VND,
 } from "./sharedTierData";
 import {
   CARD,
@@ -19,7 +22,7 @@ import {
   SECONDARY_CTA,
 } from "./variantStyles";
 
-const SAVINGS_AMOUNT_VI = "400.000 VND";
+const SAVINGS_AMOUNT_VI = formatPrice(SHARED_SAVINGS_VND, "VND");
 const SAVINGS_PERCENT = "17%";
 const SAVINGS_MONTHS_FREE = "gần 2 tháng miễn phí";
 

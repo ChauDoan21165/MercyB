@@ -11,7 +11,20 @@
 // VN-first per project policy: bilingual copy, VN as the primary
 // emotional surface, EN as the support text.
 
+import {
+  formatPrice,
+  MONTHLY_PRICE_VND,
+  YEARLY_PRICE_VND,
+} from "@/lib/pricing/displayPrices";
+
 export type SharedPlanKey = "month" | "year";
+
+/**
+ * Absolute VND saved by paying yearly instead of 12× monthly.
+ * Single source for the "save X" copy across every variant — derived
+ * from the canonical price constants so it can never drift from them.
+ */
+export const SHARED_SAVINGS_VND = MONTHLY_PRICE_VND * 12 - YEARLY_PRICE_VND;
 
 export type SharedPlan = {
   key: SharedPlanKey;
@@ -30,7 +43,7 @@ export const SHARED_PLANS: readonly SharedPlan[] = Object.freeze([
     key: "month",
     title_en: "Monthly",
     title_vi: "Hàng tháng",
-    price_label: "200 000 VND",
+    price_label: formatPrice(MONTHLY_PRICE_VND, "VND"),
     price_subtitle_vi: "mỗi tháng — hủy bất cứ lúc nào",
     cta_en: "Start monthly",
     cta_vi: "Bắt đầu theo tháng",
@@ -49,17 +62,17 @@ export const SHARED_PLANS: readonly SharedPlan[] = Object.freeze([
     key: "year",
     title_en: "Yearly",
     title_vi: "Hàng năm",
-    price_label: "2 000 000 VND",
+    price_label: formatPrice(YEARLY_PRICE_VND, "VND"),
     price_subtitle_vi: "mỗi năm — tiết kiệm 17% (gần 2 tháng miễn phí)",
     cta_en: "Save with yearly",
     cta_vi: "Tiết kiệm với gói năm",
     bullets_vi: [
-      "Tiết kiệm hơn 400.000 VND so với gói tháng",
+      `Tiết kiệm hơn ${formatPrice(SHARED_SAVINGS_VND, "VND")} so với gói tháng`,
       "Toàn quyền truy cập suốt năm — không gián đoạn",
       "Ít rắc rối thanh toán — yên tâm học",
     ],
     bullets_en: [
-      "Save 400,000 VND vs monthly billing",
+      `Save ${formatPrice(SHARED_SAVINGS_VND, "VND")} vs monthly billing`,
       "Full access all year — no interruptions",
       "Less billing friction — focus on learning",
     ],
