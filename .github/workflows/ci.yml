@@ -41,6 +41,22 @@ jobs:
       - name: Run edge-function TypeScript checks (placement-session)
         run: npm run typecheck:functions
 
+      # Edge-function CI gate. The Node tsc gate above structurally CANNOT
+      # resolve Deno URL / npm: / jsr: specifiers, so index.ts + _shared of
+      # every edge function ship untyped. `deno check` IS Deno-aware and
+      # closes that gap for the curated money-path allowlist in
+      # scripts/deno-check-edge-functions.sh (green on main today; the
+      # script documents the pre-existing debt it is built to widen into).
+      # Step added to the existing job (job name unchanged — branch
+      # protection safe, same precedent as the tsc step above).
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x   # repo deno.lock is v5 → needs Deno >= 2.2
+
+      - name: Run edge-function Deno type-check (deno check)
+        run: npm run deno:check:functions
+
       - name: Build project
         run: npm run build
 
