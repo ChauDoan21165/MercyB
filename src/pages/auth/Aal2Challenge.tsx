@@ -24,6 +24,7 @@ import { ShieldAlert } from "lucide-react";
 
 import { useAuth } from "@/providers/AuthProvider";
 import { supabase } from "@/lib/supabaseClient";
+import { AUTH_FOCUS_RING } from "@/components/auth/authUI";
 import {
   challengeFactor,
   checkMfaLockout,
@@ -362,6 +363,7 @@ export default function Aal2Challenge() {
             data-testid="aal2-challenge-input"
             disabled={busy || Boolean(lockoutUntil)}
             autoFocus
+            className={AUTH_FOCUS_RING}
             style={{ ...codeInputStyle, marginTop: 16 }}
           />
 

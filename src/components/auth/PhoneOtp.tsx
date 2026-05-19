@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ensureSessionOrThrow, humanizeAuthError } from "@/lib/authHelpers";
-import { UI } from "@/components/auth/authUI";
+import { UI, AUTH_FOCUS_RING } from "@/components/auth/authUI";
 import { useChromeT } from "@/lib/i18n/chromeLanguage";
 
 export default function PhoneOtp({
@@ -90,6 +90,7 @@ export default function PhoneOtp({
           onChange={(e) => setPhone(e.target.value)}
           placeholder="+84 901234567"
           autoComplete="tel"
+          className={AUTH_FOCUS_RING}
           style={UI.input(disabled)}
           disabled={disabled}
         />
@@ -114,6 +115,7 @@ export default function PhoneOtp({
             onChange={(e) => setToken(e.target.value)}
             placeholder="123456"
             autoComplete="one-time-code"
+            className={AUTH_FOCUS_RING}
             style={UI.input(disabled)}
             disabled={disabled}
           />

@@ -1,5 +1,30 @@
 import React from "react";
 
+/**
+ * Keyboard focus indicator for auth inputs (WCAG 2.4.7 / 2.4.11).
+ *
+ * Auth inputs set `outline: "none"` inline for visual design. That alone
+ * left keyboard users with NO visible focus state. We can't express
+ * `:focus-visible` in an inline style object, so we add this Tailwind
+ * ring (box-shadow based — inline `outline:none` does not suppress it).
+ *
+ * Explicit `#2563eb` is intentional: the codebase's `animations.focusRing`
+ * uses `ring-primary`, but `--primary` was removed with theme.css (#667),
+ * so `ring-primary` renders invisible. An arbitrary value can't regress.
+ * #2563eb on white ≈ 4:1 contrast — exceeds the 3:1 non-text minimum.
+ */
+export const AUTH_FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 focus-visible:ring-offset-white";
+
+/**
+ * Same indicator for a composite field where the visible border lives on
+ * a wrapper and the real `<input>` is a borderless child (e.g. the
+ * password field with a show/hide toggle). The wrapper can't match
+ * `:focus-visible`, so it reacts to child focus via `:focus-within`.
+ */
+export const AUTH_FOCUS_RING_WITHIN =
+  "focus-within:ring-2 focus-within:ring-[#2563eb] focus-within:ring-offset-2 focus-within:ring-offset-white";
+
 export const UI = {
   page: {
     display: "grid",
