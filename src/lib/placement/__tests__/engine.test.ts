@@ -13,7 +13,7 @@ import {
   mapEstimateToCefr,
   type ResultCEFR,
 } from '../engine';
-import { PLACEMENT_QUESTIONS } from '../questions';
+import { PLACEMENT_QUESTIONS, type PlacementQuestion } from '../questions';
 
 describe('mapEstimateToCefr — band boundaries', () => {
   it.each([
@@ -445,5 +445,134 @@ describe('placement engine — weaknessFlags', () => {
     expect(state.isDone).toBe(true);
     // tag_alpha and tag_beta should both appear. tag_alpha dedupes.
     expect(state.weaknessFlags).toEqual(['tag_alpha', 'tag_beta']);
+  });
+});
+
+describe('placement engine — viRevealed reading discount (Option A)', () => {
+  // A pool of difficulty-3 (B1) reading items. With initialEstimate 3 the
+  // engine draws from this pool only.
+  function readingPool(n: number): PlacementQuestion[] {
+    return Array.from({ length: n }, (_, i) => ({
+      id: `r_${i + 1}`,
+      type: 'reading_comprehension' as const,
+      cefr: 'B1' as const,
+      difficulty: 3,
+      skill: 'reading' as const,
+      cefrDescriptor: 'test reading',
+      passage: { en: 'A short English passage.', vi: 'Một đoạn văn ngắn.' },
+      prompt: { en: 'What is it?', vi: 'Nó là gì?' },
+      options: [
+        { id: 'a' as const, text: { en: 'A passage', vi: 'A passage' } },
+        { id: 'b' as const, text: { en: 'A song', vi: 'A song' } },
+        { id: 'c' as const, text: { en: 'A film', vi: 'A film' } },
+        { id: 'd' as const, text: { en: 'A game', vi: 'A game' } },
+      ],
+      correctOptionId: 'a' as const,
+    }));
+  }
+
+  function runReading(viRevealed: boolean) {
+    const engine = createPlacementEngine({
+      pool: readingPool(4),
+      minQuestions: 2,
+      maxQuestions: 4,
+      targetQuestions: 4,
+    });
+    let state = engine.getState();
+    let safety = 20;
+    while (!state.isDone && state.currentQuestion && safety-- > 0) {
+      engine.submit({
+        selectedOptionId: state.currentQuestion.correctOptionId,
+        viRevealed,
+      });
+      state = engine.getState();
+    }
+    expect(state.isDone).toBe(true);
+    return state;
+  }
+
+  it('a correct reading answer with viRevealed=true does NOT raise the estimate', () => {
+    const state = runReading(true);
+    // Started at 3.0 (B1). Revealing VI on every correct reading answer
+    // must drive the estimate DOWN (evidence the learner is below the
+    // item), never up to the item's B1 difficulty.
+    expect(state.estimate).toBeLessThan(3);
+    expect(['pre_a1', 'A1', 'A2']).toContain(state.finalCefr);
+  });
+
+  it('preserves correct:true in the response log (no false weakness, SRS intact)', () => {
+    const state = runReading(true);
+    expect(state.responses.length).toBeGreaterThan(0);
+    for (const r of state.responses) {
+      expect(r.correct).toBe(true); // they did pick the right English word
+      expect(r.viRevealed).toBe(true);
+    }
+  });
+
+  it('honest reading (viRevealed=false) still raises the estimate — no regression', () => {
+    const state = runReading(false);
+    expect(state.estimate).toBeGreaterThan(3);
+    expect(['B2', 'C1', 'C2']).toContain(state.finalCefr);
+  });
+
+  // Synthetic "VI-reading pattern matcher" on the REAL pool: a pidgin
+  // learner who reveals the Vietnamese on every reading item and matches
+  // the English option, but fails every grammar/vocab MCQ.
+  function runPatternMatcher(revealOnReading: boolean) {
+    const readingIds = new Set(
+      PLACEMENT_QUESTIONS.filter(
+        (q) => q.type === 'reading_comprehension',
+      ).map((q) => q.id),
+    );
+    const engine = createPlacementEngine();
+    let state = engine.getState();
+    let safety = 100;
+    while (!state.isDone && state.currentQuestion && safety-- > 0) {
+      const q = state.currentQuestion;
+      const isReading = readingIds.has(q.id);
+      if (isReading) {
+        engine.submit({
+          selectedOptionId: q.correctOptionId, // matched via VI
+          viRevealed: revealOnReading,
+        });
+      } else {
+        const wrong = q.options.find((o) => o.id !== q.correctOptionId)!.id;
+        engine.submit({ selectedOptionId: wrong }); // pidgin fails grammar
+      }
+      state = engine.getState();
+    }
+    expect(state.isDone).toBe(true);
+    return state;
+  }
+
+  it('floor-anchors a VI-reading pattern matcher (was reaching B2/C1 before)', () => {
+    const crutch = runPatternMatcher(true);
+    expect(['pre_a1', 'A1']).toContain(crutch.finalCefr);
+  });
+
+  it('flips the sign of the estimate step: same correct reading, viRevealed toggled', () => {
+    // Clamp-free, single-question proof of the exact Option-A contract in
+    // this fixed-step ladder. First step from 3.0 is 1.0, so neither
+    // branch hits the [0.5, 6.5] clamp — the delta is observed cleanly.
+    const reveal = createPlacementEngine({ pool: readingPool(4) });
+    reveal.submit({
+      selectedOptionId: reveal.getState().currentQuestion!.correctOptionId,
+      viRevealed: true,
+    });
+    const revealEst = reveal.getState().estimate;
+
+    const noReveal = createPlacementEngine({ pool: readingPool(4) });
+    noReveal.submit({
+      selectedOptionId: noReveal.getState().currentQuestion!.correctOptionId,
+      viRevealed: false,
+    });
+    const noRevealEst = noReveal.getState().estimate;
+
+    // Identical correct answer on an identical B1 reading item. With the
+    // VI crutch the estimate moves DOWN; without it, UP — same magnitude,
+    // opposite sign (the discount = a downward step, per Option A).
+    expect(revealEst).toBeLessThan(3);
+    expect(noRevealEst).toBeGreaterThan(3);
+    expect(3 - revealEst).toBeCloseTo(noRevealEst - 3, 10);
   });
 });

@@ -20,6 +20,19 @@
 // - No per-question right/wrong feedback surfaced (UI never reads the
 //   `correct` field during the test; it only appears on the results
 //   screen and in the persistence payload)
+// - viRevealed reading discount (Option A): a correct answer on a
+//   reading-comprehension item where the learner revealed the parallel
+//   Vietnamese translation is NOT evidence of English ability at the
+//   item's difficulty — needing the L1 crutch is evidence the learner
+//   is BELOW it. The response log still records `correct: true` (they
+//   did pick the right English option, so weakness/SRS signal is
+//   preserved and no false weakness is flagged); only the level
+//   estimate is discounted. In this fixed-step ladder the faithful
+//   analog of "credit at a lower level than the item targets" is a
+//   downward step, identical in magnitude to a wrong answer. MC items
+//   are unaffected (their options are English-only, vi === en — there
+//   is no translation to lean on), so the discount is gated on
+//   type === 'reading_comprehension'.
 
 import { PLACEMENT_QUESTIONS, type CEFR, type PlacementQuestion } from './questions';
 
@@ -264,8 +277,20 @@ export function createPlacementEngine(
       );
       const step = DEFAULT_STEP_SCHEDULE[scheduleIndex];
 
+      // viRevealed reading discount (Option A — see header). A correct
+      // reading answer obtained after revealing the Vietnamese passage is
+      // scored DOWN (evidence the learner is below this item), not up.
+      // `correct` stays true in the pushed response above, so the audit
+      // log, weaknessFlags, and Wave-2 SRS are untouched; only the
+      // level-estimate delta below is affected.
+      const viReadingCrutch =
+        correct &&
+        viRevealed &&
+        answered.type === 'reading_comprehension';
+      const countsUp = correct && !viReadingCrutch;
+
       const previousEstimate = estimate;
-      const delta = correct ? step : -step;
+      const delta = countsUp ? step : -step;
       estimate = clamp(estimate + delta, MIN_ESTIMATE, MAX_ESTIMATE);
       recentDeltas.push(estimate - previousEstimate);
 
