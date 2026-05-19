@@ -48,8 +48,11 @@ revert the phase locally if Sentry has an outage without a code change).
 2. Click the **`+` (top-left of the phases list) → New Run Script Phase**.
 3. Rename the new phase to **`Upload dSYMs to Sentry`** so it's
    recognisable in the phase list.
-4. **Reorder** it to run **after** `Embed Frameworks` and after `[CP]
-   Embed Pods Frameworks` — the dSYMs need to be on disk first.
+4. **Reorder** it to run **at the end of the buildPhases list**, after
+   `[CP] Embed Pods Frameworks` — the dSYMs need to be on disk first.
+   (This Capacitor project does not have a separate `Embed Frameworks`
+   phase; the CocoaPods-managed `[CP] Embed Pods Frameworks` is the only
+   embed step.)
 5. Paste this into the script body:
 
    ```sh
@@ -66,10 +69,11 @@ revert the phase locally if Sentry has an outage without a code change).
    fi
    ```
 
-   Path note: `${PROJECT_DIR}` inside an Xcode Run Script for this app
-   resolves to `<repo>/ios/App/App`, so `../../scripts/...` lands at
-   `<repo>/scripts/upload-ios-dsyms.sh`. If you move the script, update
-   the path here.
+   Path note: `${PROJECT_DIR}` inside an Xcode Run Script resolves to
+   `<repo>/ios/App/` (the directory holding `App.xcodeproj`, not the
+   `App/` source group inside it). So `${PROJECT_DIR}/../..` is the repo
+   root and `${PROJECT_DIR}/../../scripts/upload-ios-dsyms.sh` is the
+   committed script. If you move the script, update the path here.
 
 6. **Uncheck** _"Based on dependency analysis"_ — Xcode tries to track
    inputs/outputs by file globs and dSYMs aren't in its graph; the warn
