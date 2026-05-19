@@ -23,6 +23,7 @@ import type {
   SharedSubscriptionStatus,
   UpsertSharedSubscriptionMonotonicResult,
 } from "./types.ts";
+import { mapStripeSubscription } from "./subscription-insert.ts";
 
 /* ============================================================================
  * Config
@@ -283,58 +284,11 @@ function resolveAppId(params: {
  * Subscription persistence helpers
  * ========================================================================== */
 
-function mapStripeSubscription(params: {
-  userId: string;
-  appId: string;
-  providerCustomerId: string;
-  providerSubscriptionId: string;
-  providerTransactionId?: string | null;
-  providerOriginalTransactionId?: string | null;
-  productId?: string | null;
-  providerProductId?: string | null;
-  providerPriceId?: string | null;
-  environment: BillingEnvironment;
-  status?: SharedSubscriptionStatus | null;
-  currentPeriodStart?: string | null;
-  currentPeriodEnd?: string | null;
-  cancelAtPeriodEnd?: boolean | null;
-  canceledAt?: string | null;
-  endedAt?: string | null;
-  metadata?: unknown;
-  rawPayload: unknown;
-}): import("./types.ts").Database["public"]["Tables"]["subscriptions"]["Insert"] {
-  return {
-    user_id: params.userId,
-    app_id: params.appId,
-    provider: STRIPE_PROVIDER,
-
-    customer_id: params.providerCustomerId,
-    subscription_id: params.providerSubscriptionId,
-
-    provider_customer_id: params.providerCustomerId,
-    provider_subscription_id: params.providerSubscriptionId,
-    provider_transaction_id: params.providerTransactionId ?? null,
-    provider_original_transaction_id:
-      params.providerOriginalTransactionId ?? null,
-    product_id: params.productId ?? null,
-    provider_product_id: params.providerProductId ?? params.productId ?? null,
-    provider_price_id: params.providerPriceId ?? null,
-    environment: params.environment,
-    status: params.status ?? "revoked",
-    current_period_start: params.currentPeriodStart ?? null,
-    current_period_end: params.currentPeriodEnd ?? null,
-    cancel_at_period_end:
-      typeof params.cancelAtPeriodEnd === "boolean"
-        ? params.cancelAtPeriodEnd
-        : false,
-    canceled_at: params.canceledAt ?? null,
-    ended_at: params.endedAt ?? null,
-    metadata: (params.metadata ?? null) as Json | null,
-    provider_metadata: (params.metadata ?? null) as Json | null,
-    raw_payload: (params.rawPayload ?? null) as Json | null,
-    updated_at: isoNow(),
-  };
-}
+// mapStripeSubscription lives in ./subscription-insert.ts now — a pure,
+// dependency-free, deno-check-gated + vitest-unit-tested module (it used
+// to be untestable here because billing.ts transitively imports Deno-only
+// code). The clock is injected (nowIso) to keep that module pure; the one
+// caller below passes isoNow().
 
 function doesExistingSubscriptionDifferFromWrite(
   existing: ExistingSubscriptionRow,
@@ -701,6 +655,7 @@ export async function upsertSharedSubscriptionMonotonic(params: {
     });
 
     const write = mapStripeSubscription({
+      nowIso: isoNow(),
       userId: params.userId,
       appId: resolvedAppId,
       providerCustomerId: resolvedProviderCustomerId,

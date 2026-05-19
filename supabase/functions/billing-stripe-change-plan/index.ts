@@ -405,7 +405,11 @@ async function validateTargetPrice(params: {
   try {
     const price = await params.stripe.prices.retrieve(params.priceId);
 
-    if (!price || price.deleted) {
+    // `prices.retrieve` never returns a DeletedPrice (the Stripe SDK
+    // throws on 404), so `Stripe.Price.deleted` is typed `void` — the
+    // old `|| price.deleted` was dead code and tripped TS1345
+    // ("expression of type 'void' cannot be tested for truthiness").
+    if (!price) {
       return {
         ok: false,
         response: json(

@@ -66,6 +66,19 @@ ALLOWLIST=(
   # over the Node tsc gate).
   "supabase/functions/create-billing-portal-session/core.ts"
   "supabase/functions/create-billing-portal-session/index.ts"
+
+  # Widened by the stripe-webhook type-drift fix PR. These index.ts
+  # entrypoints pull the WHOLE function graph (webhook-events.ts,
+  # billing.ts, subscription-insert.ts, core.ts, _shared/*), so the
+  # entire Stripe money path — webhook ingestion + plan change — is now
+  # Deno-type-gated. Previously RED on main with 11 errors (9× TS2339
+  # over-narrowed metadata, 1× TS2353 stale `subscriptions` type missing
+  # app_id/customer_id/subscription_id, 1× TS1345 dead `price.deleted`).
+  "supabase/functions/stripe-webhook/index.ts"
+  "supabase/functions/billing-stripe-change-plan/index.ts"
+  # Pure, vitest-unit-tested Stripe→subscriptions row mapping (extracted
+  # from billing.ts so it is testable + independently gated).
+  "supabase/functions/stripe-webhook/subscription-insert.ts"
 )
 
 echo "→ deno check (Deno $(deno --version | head -1 | awk '{print $2}')) over ${#ALLOWLIST[@]} edge module(s):"
