@@ -92,7 +92,12 @@ function isAdminFromProfile(profile: ProfileAdminRow | null): boolean {
 async function fetchAdminRoleByRpc(
   userId: string,
 ): Promise<{ hasRole: boolean; level: number | null }> {
-  const typedSupabase = supabase as any;
+  const typedSupabase = supabase as unknown as {
+    rpc: (
+      fn: string,
+      args: Record<string, unknown>
+    ) => Promise<{ data: unknown; error: { message?: string } | null }>;
+  };
 
   let hasRole = false;
   let level: number | null = null;
@@ -190,14 +195,14 @@ export function useAdminAccess() {
           level: rpc.level,
           error: null,
         });
-      } catch (err: any) {
+      } catch (err) {
         if (cancelled) return;
         console.error("[useAdminAccess] rpc fallback error:", err);
         setRpcState({
           loading: false,
           hasRole: false,
           level: null,
-          error: err?.message || "Admin RPC failed",
+          error: (err instanceof Error ? err.message : null) || "Admin RPC failed",
         });
       }
     })();

@@ -74,7 +74,7 @@ export function useRoomHealth(options: UseRoomHealthOptions = {}): UseRoomHealth
     setError(null);
 
     try {
-      const payload: any = {};
+      const payload: { tier?: string } = {};
       if (tier && tier !== "all") {
         payload.tier = tier;
       }
@@ -95,9 +95,9 @@ export function useRoomHealth(options: UseRoomHealthOptions = {}): UseRoomHealth
       }
 
       setData(result as RoomHealthSummary);
-    } catch (err: any) {
+    } catch (err) {
       console.error("[useRoomHealth] Error:", err);
-      setError(err.message || "Unknown error occurred");
+      setError((err instanceof Error ? err.message : null) || "Unknown error occurred");
       setData(null);
     } finally {
       setLoading(false);

@@ -2,7 +2,11 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mockInsert = vi.fn();
 
-const chain: any = {
+type MockChain = {
+  insert: (...args: unknown[]) => unknown;
+};
+
+const chain: MockChain = {
   insert: (...args: unknown[]) => mockInsert(...args),
 };
 

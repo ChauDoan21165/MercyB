@@ -25,7 +25,15 @@ export function useNetworkStatus() {
 
     // Detect slow connection hints (optional, experimental)
     if ('connection' in navigator) {
-      const connection = (navigator as any).connection;
+      const connection = (
+        navigator as Navigator & {
+          connection?: {
+            effectiveType?: string;
+            addEventListener(type: "change", listener: () => void): void;
+            removeEventListener(type: "change", listener: () => void): void;
+          };
+        }
+      ).connection;
       
       const checkConnection = () => {
         const effectiveType = connection?.effectiveType;

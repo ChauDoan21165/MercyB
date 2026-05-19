@@ -213,7 +213,7 @@ export function usePerformanceAudit() {
     });
 
     // 24. Layout shift
-    const cls = (window as any).webVitals?.getCLS?.() || 0;
+    const cls = (window as Window & { webVitals?: { getCLS?: () => number } }).webVitals?.getCLS?.() || 0;
     addResult({
       id: 'perf-layout-shift',
       name: 'Layout shift',

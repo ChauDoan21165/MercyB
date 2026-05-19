@@ -59,10 +59,10 @@ function setStoredIntroState(roomId: string, state: RoomIntroState) {
 }
 
 type PlayerLike = {
-  requestPlay?: (...a: any[]) => any;
-  notifyStop?: () => any;
-  stop?: () => any;
-  pause?: () => any;
+  requestPlay?: (...a: unknown[]) => unknown;
+  notifyStop?: () => unknown;
+  stop?: () => unknown;
+  pause?: () => unknown;
 };
 
 function tryStopPlayer(player: PlayerLike | null | undefined) {
@@ -92,7 +92,7 @@ export function useMercyRoomIntro({
   introVi = "",
   userName = "friend",
 }: UseMercyRoomIntroProps) {
-  const player = (null as any) as PlayerLike;
+  const player = null as PlayerLike | null;
   const { user } = useAuth();
   const userId = user?.id ?? null;
 
@@ -128,7 +128,7 @@ export function useMercyRoomIntro({
   );
 
   const logEvent = useCallback(
-    async (eventType: string, metadata?: Record<string, any>) => {
+    async (eventType: string, metadata?: Record<string, unknown>) => {
       try {
         if (!userId) return;
         await supabase.from("companion_events").insert({
@@ -398,7 +398,20 @@ export function useMercyRoomIntro({
 /**
  * Helper to extract room intro content from room data
  */
-export function getRoomIntro(room: any): { introEn: string; introVi: string } {
+export function getRoomIntro(
+  room:
+    | {
+        intro_en?: string;
+        intro_vi?: string;
+        room_essay_en?: string;
+        room_essay_vi?: string;
+        description_en?: string;
+        description_vi?: string;
+        content?: { en?: string; vi?: string };
+      }
+    | null
+    | undefined
+): { introEn: string; introVi: string } {
   if (room?.intro_en || room?.intro_vi) {
     return {
       introEn: room.intro_en || room.content?.en || "",

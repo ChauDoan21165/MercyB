@@ -8,9 +8,19 @@ import { useUserAccess } from "../useUserAccess";
 import { normalizeTier } from "@/lib/constants/tiers";
 import type { UserAccess } from "../useUserAccess";
 
+// Shared mock shapes. Profile rows and entitlement payloads are
+// intentionally loose here — several tests feed deliberately corrupted
+// data to exercise the hook's defensive parsing.
+type MockUser = { email?: string } | null;
+type MockProfileResult = {
+  data: Record<string, unknown> | null;
+  error: { message: string } | null;
+};
+type MockEntitlement = Record<string, unknown> | null;
+
 // ---- AuthProvider mock ----
 vi.mock("@/providers/AuthProvider", () => {
-  let state: { user: any; isLoading: boolean } = {
+  let state: { user: MockUser; isLoading: boolean } = {
     user: null,
     isLoading: false,
   };
@@ -35,9 +45,9 @@ vi.mock("@/providers/AuthProvider", () => {
 
 // ---- Supabase mock (profiles-only) ----
 vi.mock("@/lib/supabaseClient", () => {
-  let nextProfileResult: { data: any; error: any } = { data: null, error: null };
+  let nextProfileResult: MockProfileResult = { data: null, error: null };
 
-  const __setProfilesResult = (r: { data: any; error: any }) => {
+  const __setProfilesResult = (r: MockProfileResult) => {
     nextProfileResult = r;
   };
 
@@ -68,15 +78,15 @@ vi.mock("@/lib/supabaseClient", () => {
 
 // ---- authService mock (tier comes from entitlement now) ----
 vi.mock("@/lib/authService", () => {
-  let entitlement: any = null;
+  let entitlement: MockEntitlement = null;
 
-  const __setEntitlement = (next: any) => {
+  const __setEntitlement = (next: MockEntitlement) => {
     entitlement = next;
   };
 
   return {
     fetchCurrentEntitlement: vi.fn(async () => entitlement),
-    resolveEntitlementTier: vi.fn((ent: any) => {
+    resolveEntitlementTier: vi.fn((ent: MockEntitlement) => {
       const raw = ent?.tier ?? "level0";
 
       if (raw === "premium_month") return "premium_month";
@@ -89,19 +99,34 @@ vi.mock("@/lib/authService", () => {
 
 // Pull the mock helpers back out AFTER mocks are registered.
 import * as AuthMod from "@/providers/AuthProvider";
-const { __setAuth } = ((AuthMod as any).__mock ?? {}) as {
-  __setAuth: (next: { user?: any; isLoading?: boolean }) => void;
+const { __setAuth } = ((
+  AuthMod as unknown as {
+    __mock?: { __setAuth: (next: { user?: MockUser; isLoading?: boolean }) => void };
+  }
+).__mock ?? {}) as {
+  __setAuth: (next: { user?: MockUser; isLoading?: boolean }) => void;
 };
 
 import * as SupaMod from "@/lib/supabaseClient";
-const { mockFrom, __setProfilesResult } = ((SupaMod as any).__mock ?? {}) as {
+const { mockFrom, __setProfilesResult } = ((
+  SupaMod as unknown as {
+    __mock?: {
+      mockFrom: ReturnType<typeof vi.fn>;
+      __setProfilesResult: (r: MockProfileResult) => void;
+    };
+  }
+).__mock ?? {}) as {
   mockFrom: ReturnType<typeof vi.fn>;
-  __setProfilesResult: (r: { data: any; error: any }) => void;
+  __setProfilesResult: (r: MockProfileResult) => void;
 };
 
 import * as AuthServiceMod from "@/lib/authService";
-const { __setEntitlement } = ((AuthServiceMod as any).__mock ?? {}) as {
-  __setEntitlement: (next: any) => void;
+const { __setEntitlement } = ((
+  AuthServiceMod as unknown as {
+    __mock?: { __setEntitlement: (next: MockEntitlement) => void };
+  }
+).__mock ?? {}) as {
+  __setEntitlement: (next: MockEntitlement) => void;
 };
 
 // Snapshot only stable, serializable fields.

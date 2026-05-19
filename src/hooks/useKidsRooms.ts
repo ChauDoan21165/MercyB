@@ -6,7 +6,7 @@ import type { Database } from "@/integrations/supabase/types";
 import { KIDS_TABLE, type KidsLevelId } from "@/lib/constants";
 
 // Temporary unblocking type until DB schema is updated
-export type KidsRoom = any;
+export type KidsRoom = Record<string, unknown>;
 
 export interface UseKidsRoomsResult {
   rooms: KidsRoom[];

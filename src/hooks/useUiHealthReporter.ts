@@ -13,7 +13,7 @@ interface UiIssue {
   path: string;
   issue_type: string;
   severity: 'error' | 'warning' | 'info';
-  details: any;
+  details: Record<string, unknown>;
 }
 
 // WCAG contrast ratio calculator

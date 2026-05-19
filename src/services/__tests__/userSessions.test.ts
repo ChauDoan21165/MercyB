@@ -4,7 +4,13 @@ const mockUpsert = vi.fn();
 const mockUpdate = vi.fn();
 const mockEq = vi.fn();
 
-const chain: any = {
+type MockChain = {
+  upsert: (...args: unknown[]) => unknown;
+  update: (...args: unknown[]) => MockChain;
+  eq: (...args: unknown[]) => MockChain;
+};
+
+const chain: MockChain = {
   upsert: (...args: unknown[]) => mockUpsert(...args),
   update: (...args: unknown[]) => {
     mockUpdate(...args);
@@ -108,9 +114,7 @@ describe("userSessions.heartbeatSession", () => {
   it("updates last_activity when flag is ON", async () => {
     mockIsTrackingEnabled.mockResolvedValueOnce(true);
     // Final eq returns the promise with no error
-    mockEq.mockImplementation(function (this: any) {
-      return chain;
-    });
+    mockEq.mockImplementation(() => chain);
     // Emulate: chain.update(...).eq(...).eq(...) then `await` resolves.
     // The simplest mock: make eq return a Promise for the final call.
     let eqCallCount = 0;

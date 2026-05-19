@@ -22,7 +22,7 @@ export function useJsonStructureAudit() {
     };
 
     // Fetch all JSON files for validation
-    let jsonFiles: { id: string; data: any }[] = [];
+    let jsonFiles: { id: string; data: unknown }[] = [];
     try {
       const response = await fetch('/data/registry.json');
       if (response.ok) {

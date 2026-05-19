@@ -4,7 +4,13 @@ const mockMaybeSingle = vi.fn();
 const mockEq = vi.fn();
 const mockSelect = vi.fn();
 
-const chain: any = {
+type MockChain = {
+  select: (...args: unknown[]) => MockChain;
+  eq: (...args: unknown[]) => MockChain;
+  maybeSingle: () => unknown;
+};
+
+const chain: MockChain = {
   select: (...args: unknown[]) => {
     mockSelect(...args);
     return chain;
