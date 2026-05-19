@@ -18,6 +18,10 @@ import {
   getAnonymizeEntries,
   getDeleteEntries,
 } from "./user-data-manifest.ts";
+import {
+  evaluateDeleteAccountAal,
+  readAalFromJwt,
+} from "./aal-gate.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -75,6 +79,40 @@ Deno.serve(async (req) => {
     const admin = createClient(supabaseUrl, supabaseServiceRoleKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
+
+    // ── aal=2 gate (issue #233) ─────────────────────────────────
+    // Account deletion is irreversible AND runs under service-role,
+    // which bypasses the `require_aal2_when_factor_present` RLS rule.
+    // Re-assert it here as defense in depth: a user who has a verified
+    // second factor must be at aal=2 (i.e. have re-entered their TOTP)
+    // before we wipe anything. Users with no MFA factor are unaffected
+    // (they have no way to reach aal=2 — see aal-gate.ts).
+    const bearer = authorization.replace(/^Bearer\s+/i, "").trim();
+    const aal = readAalFromJwt(bearer);
+
+    let hasVerifiedFactor = false;
+    let factorLookupFailed = false;
+    try {
+      const { data: factorData, error: factorError } =
+        await admin.auth.admin.mfa.listFactors({ userId });
+      if (factorError) throw factorError;
+      hasVerifiedFactor = Boolean(
+        factorData?.factors?.some(
+          (f) => f.status === "verified" && f.factor_type === "totp",
+        ),
+      );
+    } catch {
+      // Fail CLOSED for an irreversible operation: if we cannot
+      // confirm whether the user has a second factor, do not proceed.
+      factorLookupFailed = true;
+    }
+
+    const denial = evaluateDeleteAccountAal({
+      aal,
+      hasVerifiedFactor,
+      factorLookupFailed,
+    });
+    if (denial) return json(denial.payload, denial.status);
 
     const report: WipeReport = { deleted: [], anonymized: [], errors: [] };
 
