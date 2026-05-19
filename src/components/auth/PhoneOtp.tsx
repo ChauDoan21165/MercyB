@@ -36,7 +36,12 @@ export default function PhoneOtp({
     try {
       const p = phone.trim();
       if (!p || p.length < 8) {
-        setMsg("Enter phone with country code (example: +84...).");
+        setMsg(
+          t({
+            vi: "Vui lòng nhập số điện thoại kèm mã quốc gia (ví dụ: +84...).",
+            en: "Enter phone with country code (example: +84...).",
+          }),
+        );
         return;
       }
 
@@ -44,7 +49,12 @@ export default function PhoneOtp({
       if (error) throw error;
 
       setSent(true);
-      setMsg("✅ Code sent. Enter the SMS code to sign in.");
+      setMsg(
+        t({
+          vi: "✅ Đã gửi mã. Nhập mã SMS để đăng nhập.",
+          en: "✅ Code sent. Enter the SMS code to sign in.",
+        }),
+      );
     } catch (e) {
       setMsg(humanizeAuthError(e, "password_signin"));
     } finally {
@@ -59,26 +69,41 @@ export default function PhoneOtp({
 
     try {
       const p = phone.trim();
-      const t = token.trim();
+      const tok = token.trim();
 
       if (!p || p.length < 8) {
-        setMsg("Enter phone with country code.");
+        setMsg(
+          t({
+            vi: "Vui lòng nhập số điện thoại kèm mã quốc gia.",
+            en: "Enter phone with country code.",
+          }),
+        );
         return;
       }
-      if (!t || t.length < 4) {
-        setMsg("Enter the code you received.");
+      if (!tok || tok.length < 4) {
+        setMsg(
+          t({
+            vi: "Nhập mã bạn vừa nhận được.",
+            en: "Enter the code you received.",
+          }),
+        );
         return;
       }
 
       const { error } = await supabase.auth.verifyOtp({
         phone: p,
-        token: t,
+        token: tok,
         type: "sms",
       });
       if (error) throw error;
 
       await ensureSessionOrThrow();
-      setMsg("✅ Signed in. Redirecting...");
+      setMsg(
+        t({
+          vi: "✅ Đã đăng nhập. Đang chuyển trang...",
+          en: "✅ Signed in. Redirecting...",
+        }),
+      );
       await onAuthed();
     } catch (e) {
       setMsg(humanizeAuthError(e, "password_signin"));
@@ -89,10 +114,15 @@ export default function PhoneOtp({
 
   return (
     <div style={UI.block}>
-      <div style={UI.small}>We’ll send you a one-time code (OTP).</div>
+      <div style={UI.small}>
+        {t({
+          vi: "Chúng tôi sẽ gửi cho bạn một mã dùng một lần (OTP).",
+          en: "We’ll send you a one-time code (OTP).",
+        })}
+      </div>
 
       <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>Phone</label>
+        <label style={UI.label}>{t({ vi: "Số điện thoại", en: "Phone" })}</label>
         <input
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
@@ -113,12 +143,15 @@ export default function PhoneOtp({
               : t({ vi: "Gửi mã SMS", en: "Send SMS code" })}
           </button>
           <div style={{ marginTop: 8, ...UI.small }}>
-            Tip: always include country code (+66 / +84 / +1 …).
+            {t({
+              vi: "Mẹo: luôn kèm mã quốc gia (+66 / +84 / +1 …).",
+              en: "Tip: always include country code (+66 / +84 / +1 …).",
+            })}
           </div>
         </div>
       ) : (
         <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>SMS code</label>
+          <label style={UI.label}>{t({ vi: "Mã SMS", en: "SMS code" })}</label>
           <input
             value={token}
             onChange={(e) => setToken(e.target.value)}
@@ -150,7 +183,7 @@ export default function PhoneOtp({
               disabled={disabled}
               style={UI.ghostBtn(disabled)}
             >
-              Change phone
+              {t({ vi: "Đổi số điện thoại", en: "Change phone" })}
             </button>
           </div>
         </div>

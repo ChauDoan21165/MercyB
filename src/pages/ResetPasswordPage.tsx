@@ -1,6 +1,6 @@
 // src/pages/ResetPasswordPage.tsx
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 import { useChromeLanguage, pickChrome } from "@/lib/i18n/chromeLanguage";
@@ -253,6 +253,29 @@ export default function ResetPasswordPage() {
   const [showPw, setShowPw] = useState(false);
   const [status, setStatus] = useState<Status>(null);
 
+  // A51 — mirror LoginPage's A30 announcer: a single visually-hidden
+  // polite live region so SR users hear "passwords don't match" /
+  // success / error on this page (it had no live semantics at all).
+  // Clear-then-set so an identical consecutive message is re-announced.
+  const liveTimer = useRef<number | null>(null);
+  const [liveMessage, setLiveMessage] = useState("");
+  const announce = useCallback((raw: string) => {
+    const m = raw.replace(/\s*\n\s*/g, " — ").trim();
+    if (!m) return;
+    if (liveTimer.current) window.clearTimeout(liveTimer.current);
+    setLiveMessage("");
+    liveTimer.current = window.setTimeout(() => setLiveMessage(m), 60);
+  }, []);
+  useEffect(
+    () => () => {
+      if (liveTimer.current) window.clearTimeout(liveTimer.current);
+    },
+    [],
+  );
+  useEffect(() => {
+    if (status?.message) announce(status.message);
+  }, [status, announce]);
+
   const routeAfterAuth = useCallback(async () => {
     const session = await ensureSessionOrThrow();
     const { isAdmin } = await fetchAdminFlagsSafe(session.user.id);
@@ -418,6 +441,15 @@ export default function ResetPasswordPage() {
 
   return (
     <div style={UI.page}>
+      <div
+        className="sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        data-testid="reset-live-region"
+      >
+        {liveMessage}
+      </div>
       <main style={UI.card}>
         <h1 style={UI.title}>
           {pickChrome({ vi: "Đặt mật khẩu mới", en: "Set a new password" }, lang)}
