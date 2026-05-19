@@ -122,8 +122,16 @@ export default function PhonemePlayButton({
       aria-label={label}
       title={title ?? label}
       disabled={state === "playing"}
-      className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-indigo-200 bg-white text-indigo-600 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 disabled:cursor-wait ${className}`}
+      className={`relative inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-indigo-200 bg-white text-indigo-600 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 disabled:cursor-wait ${className}`}
     >
+      {/* Invisible ≥44px hit area (Apple HIG / WCAG 2.5.5) — keeps the
+          dense per-phoneme circle visually 28px without shrinking the tap
+          zone. Child of the button so the click bubbles; aria-hidden so
+          it adds nothing for screen readers. */}
+      <span
+        aria-hidden
+        className="absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2"
+      />
       {state === "playing" ? (
         <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
       ) : (

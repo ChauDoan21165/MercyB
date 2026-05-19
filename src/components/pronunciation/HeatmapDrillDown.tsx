@@ -88,6 +88,19 @@ export function HeatmapDrillDown({
             style={closeBtnStyle}
             data-testid="heatmap-drill-close"
           >
+            {/* Invisible ≥44px hit area (Apple HIG / WCAG 2.5.5);
+                visual stays compact. */}
+            <span
+              aria-hidden
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: 44,
+                height: 44,
+                transform: "translate(-50%, -50%)",
+              }}
+            />
             ✕
           </button>
         ) : null}
@@ -236,6 +249,7 @@ const titleEnStyle: React.CSSProperties = {
 };
 
 const closeBtnStyle: React.CSSProperties = {
+  position: "relative",
   background: "transparent",
   border: "1px solid rgba(0,0,0,0.12)",
   borderRadius: 9999,
