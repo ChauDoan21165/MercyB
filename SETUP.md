@@ -4,21 +4,33 @@
 
 After cloning this repository, follow these steps to set up your development environment:
 
+### Prerequisites
+
+- **Node 22+** — CI and the Capacitor 8 toolchain target Node 22. (The Vercel
+  production build runtime is Node 24; a local Node 22+ is fine.)
+- **npm** — this repo uses npm; there is no pnpm/yarn lockfile.
+- **Supabase CLI** *(optional)* — only for edge-function / migration work.
+  Invoke via `npx supabase ...` (no global install required).
+- **Vercel CLI** *(optional)* — only for manual deploys / env pulls
+  (`npx vercel ...`).
+- **Capacitor 8** *(iOS/Android only)* — Xcode (iOS) / Android Studio. Sync
+  with `npx cap sync ios` / `npx cap sync android` after a build.
+- **Sentry** — error monitoring is wired via `@sentry/react`; the DSN is an
+  environment variable (see *Configure Environment* below), not committed.
+
 ### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Setup Git Hooks (Required)
+### 2. Git Hooks
 
-**IMPORTANT:** All developers must run this command after cloning:
+The pre-commit hooks install **automatically** during `npm install` — the
+`prepare` script runs `scripts/setup-hooks.sh` for you. No separate command is
+required.
 
-```bash
-npm run setup:hooks
-```
-
-Or directly:
+To (re)install them manually, run the script directly:
 
 ```bash
 bash scripts/setup-hooks.sh
@@ -32,7 +44,12 @@ This installs pre-commit hooks that:
 
 ### 3. Configure Environment
 
-The project uses Lovable Cloud (Supabase) for backend. Environment variables are automatically configured.
+Environment variables are **not** auto-configured. They are managed in the
+Vercel project dashboard (build + runtime env) and in Supabase project
+settings; see `docs/SECURITY_HARDENING_2025.md` for the canonical list. For
+local development, create a `.env.local` at the repo root (gitignored) with
+the variables you need. If Supabase is unreachable, audio degrades silently
+to a local `/audio/{key}` path.
 
 ### 4. Start Development
 
@@ -55,14 +72,18 @@ If validation fails, the commit is blocked. Fix the issues and try again.
 ### Manual Commands
 
 ```bash
-# Validate all kids rooms
-npm run validate:rooms
+# Validate all rooms (full integrity check)
+npm run validate-rooms
 
-# Generate room registry manually
-npm run registry:generate
+# Generate the room registry manually
+npm run generate:room-registry
 
-# Check for missing audio files
-npm run registry:missing-audio
+# Registry regen + core room validation (the prebuild hook)
+npm run rooms:check
+
+# Other room checks
+npm run check:empty-rooms
+npm run check:kw-coverage
 ```
 
 ## Adding Kids Room Content
@@ -160,6 +181,7 @@ This ensures validation runs even if developers bypass local hooks.
 
 ## Questions?
 
-- Check `ROOM_MANAGEMENT.md` for detailed room management documentation
+- Check `ROOM_GUIDE.md` for the canonical room-system documentation
+  (it supersedes the old `ROOM_MANAGEMENT.md`)
 - Review `scripts/validate-kids-rooms.js` for validation logic
 - See `.husky/pre-commit` for hook implementation

@@ -49,34 +49,27 @@ ENDPOINTS=(
 
 ## Manual Rollback Options
 
-### Option 1: Using Lovable History (Recommended for Lovable Hosting)
+### Option 1: Vercel Deployment Rollback (Recommended)
 
-If your app is hosted on Lovable:
+Production is hosted on Vercel. To roll back the frontend to a known-good
+deployment without a code change:
 
-1. **Via Chat History**:
-   - Open your Lovable project
-   - Scroll through chat history
-   - Find the edit you want to restore
-   - Click the "Restore" button
-
-2. **Via History Tab**:
-   - Click the "History" button at the top of chat
-   - Browse through versions
-   - Click "Restore" on the desired version
+1. Open the Vercel project → **Deployments** tab
+2. Find the last good production deployment
+3. Open its **⋯** menu → **Promote to Production** (or **Instant Rollback**)
 
 **Advantages**:
 - ✅ No code changes needed
-- ✅ Instant rollback
-- ✅ Works for all changes (frontend & backend)
-- ✅ Visual preview of each version
+- ✅ Near-instant (promotes an already-built deployment)
+- ✅ Visual list of every prior deployment with commit SHA
 
-<lov-actions>
-  <lov-open-history>View History</lov-open-history>
-</lov-actions>
+> ⚠️ This rolls back the **frontend bundle only**. Edge functions, database
+> migrations, and Storage are deployed separately and are **not** reverted by
+> a Vercel promote — see *If Database Rollback Needed* below and *Option 3*.
 
 ### Option 2: Using GitHub Actions (For CI/CD Pipelines)
 
-If using external hosting (Netlify, Vercel, etc.):
+If using GitHub-Actions-driven deploys (the `production-deploy.yml` workflow):
 
 1. **Trigger Manual Rollback**:
    ```bash
@@ -117,9 +110,9 @@ git push origin main
 
 | Method | Speed | Scope | Best For |
 |--------|-------|-------|----------|
-| **Lovable History** | Instant | All changes | Lovable-hosted apps |
-| **GitHub Actions** | 2-5 min | Frontend only* | External hosting |
-| **Git Revert** | Varies | Code only | Emergency fixes |
+| **Vercel Promote** | Near-instant | Frontend only* | Bad frontend deploy |
+| **GitHub Actions** | 2-5 min | Frontend only* | Re-deploy a specific commit |
+| **Git Revert** | Varies | Code only | Emergency code fixes |
 
 *Backend changes (edge functions, DB) deploy immediately and may need separate rollback.
 
@@ -153,7 +146,7 @@ When automated rollback triggers:
 
 1. Check the GitHub issue created automatically
 2. Review workflow logs for specific failures
-3. Check console logs in Lovable
+3. Check Vercel deployment + function logs, and Sentry for runtime errors
 4. Review recent code changes
 5. Test the failing commit locally
 
@@ -188,7 +181,7 @@ When automated rollback triggers:
 ### If Automated Rollback Fails
 
 1. **Manual intervention required**
-2. Use Lovable History to restore immediately
+2. Use the Vercel Deployments tab to promote the last good deploy immediately
 3. Check backend status separately
 4. Review edge function logs
 5. Verify database state
@@ -205,13 +198,13 @@ For database rollback:
 
 ## Support Resources
 
-- [Lovable History Documentation](https://docs.lovable.dev/tips-tricks/troubleshooting)
+- [Vercel Instant Rollback](https://vercel.com/docs/deployments/instant-rollback)
 - [GitHub Actions Workflow Syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
-- [Deployment Best Practices](https://docs.lovable.dev/user-guides/deployment)
+- [Vercel Deployments](https://vercel.com/docs/deployments/overview)
 
 ## Questions?
 
 For issues with:
-- **Lovable-hosted rollbacks**: Use History feature or contact Lovable support
+- **Frontend rollbacks**: Use the Vercel Deployments tab (promote a prior deploy)
 - **GitHub Actions**: Check workflow logs and GitHub documentation
-- **External hosting**: Check your hosting provider's rollback features
+- **Backend (Supabase)**: Revert the migration / redeploy the edge function manually
