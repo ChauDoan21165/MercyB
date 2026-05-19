@@ -123,6 +123,11 @@ export const GUIDE_ASSISTANT_TIMEOUT_MS = 12000;
 export const TROUBLE_WORDS_STORAGE_KEY = 'mb_trouble_words_v1';
 export const MERCY_HOST_IMAGE_SRC = '/brand/teacher-mercy.png';
 export const MERCY_HOST_IMAGE_FALLBACK = '/brand/teacher-mercy.png';
+// Optimized variants of the same 640×640 portrait, generated from the PNG
+// above (avif ~9.7 KB / webp ~16 KB vs 390 KB PNG). Served via <picture> on
+// the high-traffic room/guide surface; PNG remains the universal fallback.
+export const MERCY_HOST_IMAGE_AVIF = '/brand/teacher-mercy.avif';
+export const MERCY_HOST_IMAGE_WEBP = '/brand/teacher-mercy.webp';
 
 function asRecord(value: unknown): LooseRecord {
   return value && typeof value === 'object' ? (value as LooseRecord) : EMPTY_RECORD;
