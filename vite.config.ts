@@ -488,6 +488,7 @@ export default defineConfig({
       resolveDependencies(_filename, deps) {
         return deps.filter(
           (dep) =>
+            !dep.includes('mercy-guide-panel') &&
             !dep.includes('mercy-speak-tab') &&
             !dep.includes('mercy-teacher-tab') &&
             !dep.includes('mercy-grammar-tab') &&
@@ -643,7 +644,19 @@ export default defineConfig({
             return 'mercy-german-tab';
           }
 
-          // MercyGuide shell + shared utilities — keep in the original chunk.
+          // The guide panel is React.lazy-loaded inside MercyGuide.tsx and
+          // only mounts when the bubble is opened (isOpen, default false).
+          // Name it explicitly BEFORE the catch-all so that rule can't
+          // re-merge it back into the eager 'mercy-guide' bubble chunk —
+          // same pattern as the per-tab rules above. See
+          // src/components/MercyGuide.tsx (Suspense boundary) and
+          // reports/RECON-bundle-audit-A25.md (Lever 1).
+          if (s.includes('/mercy-guide/MercyGuidePanel')) {
+            return 'mercy-guide-panel';
+          }
+
+          // MercyGuide bubble shell + shared utilities — eager (the bubble
+          // is always visible). Keep in the original chunk.
           if (s.includes('/mercy-guide/') || s.includes('/MercyGuide')) return 'mercy-guide';
 
           return undefined;
