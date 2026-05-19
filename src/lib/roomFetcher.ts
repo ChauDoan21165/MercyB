@@ -174,6 +174,10 @@ export type RoomMeta = {
   intro_en?: string;
   intro_vi?: string;
   path?: string;
+  // Search-index fields. Optional: the room registry must still work if
+  // the DB projection can't supply them (see fetchRoomSummaryRowsFromDb).
+  keywords?: string[] | null;
+  tags?: string[] | null;
 };
 
 export type RoomSummary = RoomMeta;
@@ -201,6 +205,8 @@ type RoomSummaryRow = {
   tier: string | null;
   title_en: string | null;
   title_vi: string | null;
+  keywords: string[] | null;
+  tags: string[] | null;
 };
 
 export type RoomAccessErrorCode =
@@ -237,6 +243,14 @@ function isValidRoomAccessErrorCode(value: unknown): value is RoomAccessErrorCod
   );
 }
 
+function toStringArray(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null;
+  const cleaned = value
+    .map((v) => (typeof v === "string" ? v.trim() : ""))
+    .filter((v): v is string => v.length > 0);
+  return cleaned.length ? cleaned : null;
+}
+
 function normalizeRoomSummaryRow(row: unknown): RoomSummaryRow | null {
   if (!isObject(row)) return null;
 
@@ -248,6 +262,8 @@ function normalizeRoomSummaryRow(row: unknown): RoomSummaryRow | null {
     tier: toOptionalText(row.tier) ?? null,
     title_en: toOptionalText(row.title_en) ?? null,
     title_vi: toOptionalText(row.title_vi) ?? null,
+    keywords: toStringArray(row.keywords),
+    tags: toStringArray(row.tags),
   };
 }
 
@@ -257,6 +273,8 @@ function normalizeRoomSummary(row: RoomSummaryRow): RoomSummary {
     tier: row.tier || undefined,
     title_en: row.title_en || undefined,
     title_vi: row.title_vi || undefined,
+    keywords: row.keywords ?? undefined,
+    tags: row.tags ?? undefined,
   };
 }
 
@@ -424,12 +442,35 @@ export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | n
 }
 
 async function fetchRoomSummaryRowsFromDb(): Promise<RoomSummaryRow[]> {
-  const { data, error } = await supabase
+  // Enriched projection: keywords + tags feed the room-search index so a
+  // query that only matches a keyword/tag is still recalled. The original
+  // 4-column projection silently dropped them, leaving every registry
+  // room with empty keywords/tags and the keyword/tag scoring branches
+  // dead at runtime. Sibling code already reads these columns from the
+  // same table (services/suggestions.ts, performance/supabase-optimizer).
+  // If the enriched select fails for any reason, fall back to the minimal
+  // projection — the room registry is a core path and must not break just
+  // because the search-enhancement columns are unavailable.
+  let data: unknown;
+  const enriched = await supabase
     .from(ROOMS_TABLE)
-    .select("id, tier, title_en, title_vi")
+    .select("id, tier, title_en, title_vi, keywords, tags")
     .returns<RoomSummaryRow[]>();
 
-  if (error) throw error;
+  if (enriched.error) {
+    console.warn(
+      `${LOG_PREFIX} summary enriched select failed; falling back to minimal projection (search keyword/tag recall degraded)`,
+      enriched.error,
+    );
+    const minimal = await supabase
+      .from(ROOMS_TABLE)
+      .select("id, tier, title_en, title_vi")
+      .returns<RoomSummaryRow[]>();
+    if (minimal.error) throw minimal.error;
+    data = minimal.data;
+  } else {
+    data = enriched.data;
+  }
 
   const seen = new Set<string>();
 

@@ -8,6 +8,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import {
   getAllRooms,
+  getAllRoomsAsync,
   getRoomById,
   getRoomsByTier,
   getRoomsByDomain,
@@ -38,14 +39,29 @@ export function useAllRooms(): UseRoomsResult {
   const [rooms, setRooms] = useState<RoomMeta[]>([]);
 
   useEffect(() => {
-    try {
-      const allRooms = getAllRooms();
-      setRooms(allRooms);
-      setLoading(false);
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to load rooms'));
-      setLoading(false);
-    }
+    let mounted = true;
+
+    // The registry hydrates asynchronously (roomFetcher). The sync
+    // getAllRooms() returns [] on a cold start and only kicks the load
+    // off in the background, which left `loading` flipping to false with
+    // an empty list — the first search after a fresh load silently found
+    // nothing. Await the async path so we stay in the loading state until
+    // the registry is actually populated, then re-render with real rooms.
+    getAllRoomsAsync()
+      .then((allRooms) => {
+        if (!mounted) return;
+        setRooms(allRooms);
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (!mounted) return;
+        setError(err instanceof Error ? err : new Error('Failed to load rooms'));
+        setLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return { rooms, loading, error };

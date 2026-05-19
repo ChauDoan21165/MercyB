@@ -17,6 +17,18 @@ const MOCK_ROOMS = [
   { id: "depression_support_vip3", tier: "level3", title_en: "Depression Support", title_vi: "Hỗ trợ Trầm Cảm" },
   { id: "english_speaking_level1", tier: "level1", title_en: "English Speaking", title_vi: "Luyện Nói Tiếng Anh" },
   { id: "writing_mastery_level2", tier: "level2", title_en: "Writing Mastery", title_vi: "Làm Chủ Viết" },
+  // Recall fixture mirroring the real `rooms` table columns: `keywords`
+  // (flat array) + `tags`. None of these tokens appear in any room title
+  // or id, so a hit proves keyword/tag recall specifically — and that the
+  // enriched DB projection actually carries them into the registry.
+  {
+    id: "mindfulness_basics_free",
+    tier: "level0",
+    title_en: "Mindfulness Basics",
+    title_vi: "Chánh Niệm Cơ Bản",
+    keywords: ["meditation", "thiền"],
+    tags: ["wellness-foundations"],
+  },
 ];
 vi.mock("@/lib/supabaseClient", () => {
   const chain = {
@@ -49,6 +61,7 @@ const KNOWN_IDS = {
   anxietyFree: "anxiety_relief_free",
   anxietyVip3: "anxiety_relief_vip3",
   depressionVip3: "depression_support_vip3",
+  mindfulnessFree: "mindfulness_basics_free",
 } as const;
 
 describe("roomRegistry (mocked roomFetcher)", () => {
@@ -154,6 +167,24 @@ describe("searchRooms (mocked dataset)", () => {
     const b = searchRooms("ADHD").map((r) => r.id);
     expect(new Set(a)).toEqual(new Set(b));
   });
+
+  // Regression: the room registry used to be built from a 4-column DB
+  // projection that dropped `keywords`/`tags`, so a keyword/tag-only
+  // query could not out-rank the flat hasData floor. With the enriched
+  // projection the keyword/tag match must rank #1 for these queries.
+  it("should rank a keyword-only match as the top result", () => {
+    expect(searchRooms("meditation")[0]?.id).toBe(KNOWN_IDS.mindfulnessFree);
+  });
+
+  it("should recall a Vietnamese keyword diacritic-insensitively", () => {
+    expect(searchRooms("thien")[0]?.id).toBe(KNOWN_IDS.mindfulnessFree);
+  });
+
+  it("should rank a tag-only match as the top result", () => {
+    expect(searchRooms("wellness-foundations")[0]?.id).toBe(
+      KNOWN_IDS.mindfulnessFree
+    );
+  });
 });
 
 describe("getSearchSuggestions (mocked dataset)", () => {
@@ -207,5 +238,14 @@ describe("hasSearchResults (mocked dataset)", () => {
 
   it("should return false for non-matching query", () => {
     expect(hasSearchResults("__xyz__this_should_not_match_any_room__")).toBe(false);
+  });
+
+  // Regression: hasSearchResults() used to check only title/id and so
+  // disagreed with searchRooms() on keyword/tag-only queries.
+  it("should recall keyword/tag-only queries in parity with searchRooms", () => {
+    for (const q of ["meditation", "thien", "wellness-foundations"]) {
+      expect(hasSearchResults(q)).toBe(true);
+      expect(searchRooms(q)[0]?.id).toBe(KNOWN_IDS.mindfulnessFree);
+    }
   });
 });
