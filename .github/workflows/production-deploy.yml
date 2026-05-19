@@ -28,6 +28,19 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      # Sentry sourcemap upload. vite.config.ts only activates
+      # @sentry/vite-plugin when ALL THREE of these are present, so the
+      # `npm run build` invoked by `vercel build` (which inherits this
+      # runner env) can de-mangle prod stack traces in Sentry. ORG and
+      # PROJECT are NOT secret — hardcoded to the canonical values so the
+      # only manual step is adding the SENTRY_AUTH_TOKEN GitHub secret
+      # (Settings → Secrets and variables → Actions). If the token is
+      # absent the plugin is a silent no-op and the deploy still ships —
+      # sourcemap upload is optional and prod deploy must never depend
+      # on it (CLAUDE.md: core path survives optional failures).
+      SENTRY_ORG: chau-doan
+      SENTRY_PROJECT: mercyblade-web
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -53,6 +66,24 @@ jobs:
           fi
           echo "::add-mask::$VERCEL_TOKEN"
           echo "All three Vercel secrets present."
+
+      - name: Sentry sourcemap upload status (non-blocking)
+        # Make the skip VISIBLE instead of silent: the brief requires
+        # "fail gracefully if token wrong, not silently skip". A wrong
+        # token fails the build loud (the @sentry/vite-plugin throws on
+        # auth error during `vercel build`). A *missing* token is the
+        # legitimate opt-out path — we surface it as a CI warning here
+        # but never `exit 1`, because blocking prod deploys on an
+        # optional observability feature violates "core path survives
+        # optional failures".
+        run: |
+          set -euo pipefail
+          if [ -n "${SENTRY_AUTH_TOKEN:-}" ]; then
+            echo "::add-mask::$SENTRY_AUTH_TOKEN"
+            echo "SENTRY_AUTH_TOKEN present — sourcemaps will upload to ${SENTRY_ORG}/${SENTRY_PROJECT}."
+          else
+            echo "::warning::SENTRY_AUTH_TOKEN is not set. Production sourcemaps will NOT upload to Sentry; minified stack traces will not be de-mangled. Add the SENTRY_AUTH_TOKEN secret under Settings → Secrets and variables → Actions to enable it."
+          fi
 
       - name: Pull Vercel production environment
         # Fetches the project's settings + production env vars so the
