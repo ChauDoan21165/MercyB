@@ -83,6 +83,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 import { qk } from "@/lib/queries/keys";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
+import { trackEvent, type AnalyticsEventName } from "@/lib/analytics";
 // Onboarding no longer routes to a goal-derived first lesson — it lands
 // on "/" (home) so goal selection cannot gate first entry. The old
 // firstLesson.ts helper + the goal/profession/level picker UI were
@@ -106,13 +107,25 @@ import { pickChrome, type ChromeSlots } from "@/lib/i18n/chromeLanguage";
 
 const TELEMETRY_PREFIX = "[onboarding-telemetry]";
 
+// Onboarding funnel telemetry. Dev: human-readable console line (as
+// before, for local debugging). All envs: fan out to the shared
+// analytics dispatcher, which routes to GA4 (window.gtag) + Microsoft
+// Clarity (window.clarity) + dataLayer/plausible. trackEvent no-ops
+// when a provider global is absent (dev / pre-consent), so this is
+// safe to call unconditionally and never blocks UX.
 function logTelemetry(
-  event: string,
+  event: `onboarding_${string}`,
   payload: Record<string, unknown>,
 ): void {
   try {
-    // eslint-disable-next-line no-console
-    console.log(TELEMETRY_PREFIX, event, payload);
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.log(TELEMETRY_PREFIX, event, payload);
+    }
+    // `onboarding_${string}` is a member of the AnalyticsEventName
+    // union; pass through with no cast.
+    const eventName: AnalyticsEventName = event;
+    trackEvent(eventName, payload);
   } catch {
     // ignore — telemetry must never block UX
   }

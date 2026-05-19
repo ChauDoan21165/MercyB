@@ -8,7 +8,12 @@ export type AnalyticsEventName =
   | "l1_hint_learn_more_clicked"
   | "room_pronunciation_practice_opened"
   | "room_pronunciation_practice_closed"
-  | `paywall_shown_${string}`;
+  | `paywall_shown_${string}`
+  // Onboarding funnel — `onboarding_step_complete`,
+  // `onboarding_complete`, `onboarding_skipped`. Template-literal
+  // scoped (same pattern as `paywall_shown_*`) so the funnel can grow
+  // without re-touching this union.
+  | `onboarding_${string}`;
 
 export type AnalyticsPayload = Record<string, unknown>;
 
@@ -104,6 +109,19 @@ export function trackEvent(
   try {
     if (typeof window.gtag === "function") {
       window.gtag("event", eventName, safePayload);
+    }
+  } catch {
+    // no-op
+  }
+
+  // Microsoft Clarity custom event. Clarity's `("event", name)` API
+  // takes only the event name (payload is surfaced via `("set", k, v)`
+  // tags, out of scope here). `window.clarity` is the queue shim seeded
+  // by `src/lib/tracking/clarity.ts`; absent in dev / pre-consent →
+  // skipped. Globally typed by clarity.ts (declaration merging).
+  try {
+    if (typeof window.clarity === "function") {
+      window.clarity("event", eventName);
     }
   } catch {
     // no-op
