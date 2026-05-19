@@ -215,4 +215,39 @@ export default [
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+
+  /* ===============================
+   * NO-EXPLICIT-ANY FORWARD-LOCK (A22)
+   * ===============================
+   * Directories empirically verified to contain ZERO
+   * @typescript-eslint/no-explicit-any violations (incl. their tests)
+   * as of origin/main e16bce4c (A45 type-safety audit, re-verified
+   * with the live rule 2026-05-18). Promote the rule from the global
+   * "off" (set in the REACT APP block above) to "error" here so new
+   * `any` cannot be introduced into the payment/auth and other clean
+   * surfaces. This is a forward-lock only — no existing source is
+   * changed. Placed LAST so it wins precedence for matching files.
+   *
+   * Excluded (have live violations — do NOT add without a source fix):
+   *   src/billing            (subscriptionRepository.ts:62)
+   *   src/components/auth    (__tests__/EmailBlock.codeFlow.test.tsx)
+   *   src/core               (engine/trainingFlow.ts:56)
+   */
+  {
+    files: [
+      "src/lib/auth/**/*.{ts,tsx}",
+      "src/components/payment/**/*.{ts,tsx}",
+      "src/components/billing/**/*.{ts,tsx}",
+      "src/pages/auth/**/*.{ts,tsx}",
+      "src/store/**/*.{ts,tsx}",
+      "src/security/**/*.{ts,tsx}",
+      "src/middleware/**/*.{ts,tsx}",
+      "src/mercy/**/*.{ts,tsx}",
+      "src/integrations/**/*.{ts,tsx}",
+      "src/contexts/**/*.{ts,tsx}",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "error",
+    },
+  },
 ];
