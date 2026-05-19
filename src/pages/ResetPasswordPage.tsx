@@ -418,7 +418,7 @@ export default function ResetPasswordPage() {
 
   return (
     <div style={UI.page}>
-      <div style={UI.card}>
+      <main style={UI.card}>
         <h1 style={UI.title}>
           {pickChrome({ vi: "Đặt mật khẩu mới", en: "Set a new password" }, lang)}
         </h1>
@@ -451,6 +451,7 @@ export default function ResetPasswordPage() {
               value={pw1}
               onChange={(e) => setPw1(e.target.value)}
               placeholder="••••••••"
+              aria-label={pickChrome({ vi: "Mật khẩu mới", en: "New password" }, lang)}
               type={showPw ? "text" : "password"}
               autoComplete="new-password"
               disabled={busy || booting || !ready}
@@ -499,6 +500,7 @@ export default function ResetPasswordPage() {
             value={pw2}
             onChange={(e) => setPw2(e.target.value)}
             placeholder="••••••••"
+            aria-label={pickChrome({ vi: "Xác nhận mật khẩu", en: "Confirm password" }, lang)}
             type={showPw ? "text" : "password"}
             autoComplete="new-password"
             disabled={busy || booting || !ready}
@@ -531,7 +533,7 @@ export default function ResetPasswordPage() {
         </div>
 
         {status && <div style={UI.status(status.tone)}>{status.message}</div>}
-      </div>
+      </main>
     </div>
   );
 }
