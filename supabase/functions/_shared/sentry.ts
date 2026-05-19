@@ -37,6 +37,14 @@ type SentryShape = {
   setUser: (user: { id: string } | null) => void;
   setTag: (key: string, value: string) => void;
   flush: (timeoutMs?: number) => Promise<boolean>;
+  addBreadcrumb: (breadcrumb: {
+    category?: string;
+    message?: string;
+    level?: "fatal" | "error" | "warning" | "info" | "debug";
+    data?: Record<string, unknown>;
+    type?: string;
+    timestamp?: number;
+  }) => void;
 };
 
 let sentryModule: SentryShape | null = null;
@@ -153,6 +161,39 @@ export async function captureEdgeError(error: unknown, options: CaptureOptions):
     await sdk.flush(2000);
   } catch (err) {
     console.warn('[sentry-edge] capture failed', err);
+  }
+}
+
+export interface BreadcrumbOptions {
+  category: string;
+  message: string;
+  level?: "fatal" | "error" | "warning" | "info" | "debug";
+  data?: Record<string, unknown>;
+}
+
+/**
+ * Emit a Sentry breadcrumb. Used by the A18 downgrade beacon (and
+ * future structured-event needs). Safe to call when SENTRY_DSN is
+ * unset — returns without throwing.
+ *
+ * Breadcrumbs are batched on the Sentry scope and attached to the
+ * next captured event. Until that event fires the breadcrumb is held
+ * in-isolate; for downgrades that the caller wants observable
+ * independently of any error, pair this with structured logging.
+ */
+export async function addEdgeBreadcrumb(options: BreadcrumbOptions): Promise<void> {
+  const sdk = await ensureInit();
+  if (!sdk) return;
+
+  try {
+    sdk.addBreadcrumb({
+      category: options.category,
+      message: options.message,
+      level: options.level ?? "info",
+      data: options.data,
+    });
+  } catch (err) {
+    console.warn('[sentry-edge] breadcrumb failed', err);
   }
 }
 
