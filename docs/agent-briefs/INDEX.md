@@ -29,7 +29,8 @@ that rule has its own label (`stale-audit-note`) for a reason.
 | `docs/mercy-ai-company-lessons-log.md` | The full operating-discipline source. CLAUDE.md's "Operating discipline" section is the condensed form of this. | Live, canonical |
 | `docs/For_Chau_Study.md` | 9 numbered lessons (newest first): the mistakes and disciplines this session learned the hard way. Human-facing "why". | Live (PR #753 on main) |
 | `docs/agent-briefs/preflight-checklist.md` | How a dispatch-writer verifies every load-bearing claim in a brief in <60s before sending it. The operational "how" beneath For-Chau Lesson 4. | **In-flight — PR #764** |
-| `docs/agent-briefs/recon-doc-convention.md` | How diagnostic dispatches make their findings survive worktree pruning: `reports/RECON-<topic>-<agent>.md`, commit-don't-PR, required sections. | **In-flight — PR #768** |
+| `docs/agent-briefs/recon-doc-convention.md` | How diagnostic dispatches make their findings survive worktree pruning: `reports/RECON-<topic>-<agent>.md`, commit-don't-PR, required sections. | Live (PR #768 on main) |
+| `docs/agent-briefs/pr-body-template.md` | The PR-body skeleton for dispatch-driven PRs: required-vs-optional sections by failure class, the B8-claim↔section map, mandatory `stale-audit-note` landing for the stale 30%. The output side of the preflight checklist. | **In-flight — PR (B31)** |
 | GitHub labels (A92 set) | The named failure-class vocabulary: `silent-failure`, `dead-code`, `fake-green-test`, `coverage-gap`, `restore-before-redesign`, `stale-audit-note`, `money-path`, plus process labels (`follow-up`, `infra`, `testing`, `pre-launch`, `needs-authoring`, `legal`, `i18n`). | Live (`gh label list`) |
 
 ### Reference — authoring and setup (consult when the task touches them)
@@ -61,7 +62,8 @@ that rule has its own label (`stale-audit-note`) for a reason.
 |---|---|
 | "What should we build / not build, and why?" | `STRATEGY.md`, then `PRINCIPLES.md` |
 | "How do I write a dispatch brief that won't send an agent down a stale path?" | `docs/agent-briefs/preflight-checklist.md` (PR #764) |
-| "I ran a diagnostic — where do the findings go so they survive?" | `docs/agent-briefs/recon-doc-convention.md` (PR #768) |
+| "I ran a diagnostic — where do the findings go so they survive?" | `docs/agent-briefs/recon-doc-convention.md` (#768, on main) |
+| "How do I write a PR body so next-session Claude can trace why this shipped?" | `docs/agent-briefs/pr-body-template.md` (PR B31) |
 | "What failure classes do we name / label?" | The A92 label set (§1) — definitions are in each label's description |
 | "What mistakes have we learned from?" | `docs/For_Chau_Study.md` (the principle) → `docs/mercy-ai-company-lessons-log.md` (the discipline) |
 | "What are the hard rules for this codebase (invariants, traps, git)?" | `CLAUDE.md` |
@@ -77,9 +79,10 @@ that rule has its own label (`stale-audit-note`) for a reason.
 2. **`STRATEGY.md` + `PRINCIPLES.md`** — what success looks like and the principles every decision is checked against.
 3. **`docs/For_Chau_Study.md`** — the 9 lessons (newest first). This is the cheapest way to not re-make tonight's mistakes.
 4. **`docs/agent-briefs/preflight-checklist.md`** (PR #764) — if you write or receive briefs. The single highest-leverage habit: ~1 in 3 briefs carries a stale load-bearing claim; this is the 60-second insurance.
-5. **`docs/agent-briefs/recon-doc-convention.md`** (PR #768) — if your dispatch is diagnostic. The commit is the deliverable, not the file.
-6. **The A92 label set** (`gh label list`) — the shared vocabulary for triage. Apply the failure-class label when you find the class.
-7. Skim **`docs/mercy-ai-company-lessons-log.md`** for the long-form reasoning behind CLAUDE.md's discipline section, and **`PROJECT_NOTES.md`** for current outstanding work.
+5. **`docs/agent-briefs/recon-doc-convention.md`** (#768, on main) — if your dispatch is diagnostic. The commit is the deliverable, not the file.
+6. **`docs/agent-briefs/pr-body-template.md`** (PR B31) — if your dispatch ends in a PR (most do). The skeleton that makes a body traceable next session; the output-side counterpart of step 4.
+7. **The A92 label set** (`gh label list`) — the shared vocabulary for triage. Apply the failure-class label when you find the class.
+8. Skim **`docs/mercy-ai-company-lessons-log.md`** for the long-form reasoning behind CLAUDE.md's discipline section, and **`PROJECT_NOTES.md`** for current outstanding work.
 
 Stop point: if anything above contradicts current `origin/main`, current `main` is the truth and the doc is the `stale-audit-note`. Report the divergence; don't silently follow either.
 
@@ -87,15 +90,19 @@ Stop point: if anything above contradicts current `origin/main`, current `main` 
 
 ## 4. In-flight coordination (as of 2026-05-19)
 
-The two `docs/agent-briefs/` siblings are not yet on `main`:
+Status as of this edit (verified against `origin/main`):
 
-- **B8 — PR #764** `docs/agent-briefs/preflight-checklist.md` (OPEN)
-- **B16 — PR #768** `docs/agent-briefs/recon-doc-convention.md` (OPEN)
+- **B16 — PR #768** `recon-doc-convention.md` — **landed on `main`** (commit
+  `1ba58216c`). Status row + read-order updated to "on main".
+- **B8 — PR #764** `preflight-checklist.md` — still **OPEN**. Row stays
+  in-flight until it lands.
+- **B31** `pr-body-template.md` (this file's sibling) — **in-flight**, the
+  PR you are reading. Adds a fourth file to this directory; conflicts with
+  neither #764 nor anything on `main` (distinct filename; this INDEX edit is
+  the only shared touch and is additive).
 
-This INDEX adds a third file to the same directory and conflicts with neither
-(distinct filenames, no shared lines). Whichever order they merge, this index
-is correct; the only volatility is the "in-flight" tags above — drop them to
-"Live" once #764/#768 land.
+Drop a row's "in-flight" tag to "Live" when its PR lands — that re-sync is
+itself the `stale-audit-note` discipline this index preaches.
 
 Forward reference to be aware of: `recon-doc-convention.md` cites
 "`docs/For_Chau_Study.md` Lesson 10". `For_Chau_Study.md` on `main` currently
