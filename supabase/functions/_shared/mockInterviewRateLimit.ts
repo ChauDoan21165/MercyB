@@ -26,10 +26,22 @@ export type Tier = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | number;
 /** What the gate needs to know about the caller. */
 export interface MockInterviewGateContext {
   userId: string;
-  /** Numeric tier from `profiles.tier`. 0 = free, 1 = trial, ≥2 = paid. */
+  /**
+   * Legacy numeric `profiles.tier` mirror. DEAD in production: that
+   * column is TEXT, so it always arrived as 0 and `tier >= 2` never
+   * fired (B5/B17). Kept as a defensive secondary only; `isPaid` is the
+   * real paid signal now.
+   */
   tier: Tier;
   /** Trial state — when true the user is in their 3-day trial window. */
   isTrialing: boolean;
+  /**
+   * Entitled paid user per `profiles.premium_status` /
+   * `premium_expires_at` (incl. the past_due/grace_period dunning
+   * window — B13 caveat #3). This, not `tier`, unlocks unlimited.
+   * See _shared/premiumEntitlement.ts.
+   */
+  isPaid: boolean;
   /** Admin level from `get_admin_level`. ≥ 9 bypasses. */
   adminLevel: number;
 }
@@ -105,7 +117,11 @@ export async function checkMockInterviewRateLimit(
       resets_at: nextWeekStart.toISOString(),
     };
   }
-  if (ctx.tier >= 2) {
+  // Paid → unlimited. `isPaid` (premium_status-derived) is the real
+  // gate; `ctx.tier >= 2` is kept only as a defensive fallback for the
+  // dead legacy numeric path so a premium_status read blip can't drop a
+  // paying user to the free weekly limit.
+  if (ctx.isPaid || ctx.tier >= 2) {
     return {
       allowed: true,
       reason: "paid",

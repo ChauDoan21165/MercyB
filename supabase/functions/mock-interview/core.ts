@@ -44,10 +44,20 @@ function json(body: unknown, status = 200): Response {
 }
 
 export interface UserProfile {
-  /** From `profiles.tier`. */
+  /**
+   * From `profiles.tier`. DEAD as a paid signal — that column is TEXT
+   * so it always resolves to 0 here (B5/B17). Carried only for the
+   * gate's defensive fallback; `isPaid` is the real paid signal.
+   */
   tier: number;
   /** True when the user is in the free trial window. */
   isTrialing: boolean;
+  /**
+   * Entitled paid user per `profiles.premium_status` /
+   * `premium_expires_at` (incl. past_due / grace_period dunning).
+   * See _shared/premiumEntitlement.ts.
+   */
+  isPaid: boolean;
 }
 
 export interface MockInterviewSessionRow {
@@ -147,6 +157,7 @@ async function handleStart(
     userId,
     tier: profile?.tier ?? 0,
     isTrialing: profile?.isTrialing ?? false,
+    isPaid: profile?.isPaid ?? false,
     adminLevel,
   };
 

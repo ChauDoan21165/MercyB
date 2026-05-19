@@ -87,6 +87,8 @@ function activeTrialProfile() {
     trial_expires_at: oneHourFromNow,
     trial_ends_at: null,
     trial_end: null,
+    premium_status: null,
+    premium_expires_at: null,
     tier: 0,
   };
 }
@@ -473,6 +475,8 @@ describe("handleRequest — trial gating", () => {
         trial_expires_at: oneHourAgo,
         trial_ends_at: null,
         trial_end: null,
+        premium_status: null,
+        premium_expires_at: null,
         tier: 0,
       }),
       // Azure fetch should NOT be called when trial is expired.
@@ -513,14 +517,22 @@ describe("handleRequest — trial gating", () => {
     expect(deps.fetch).toHaveBeenCalledOnce();
   });
 
-  it("paid user (tier >= 1) → cloud succeeds even when all trial dates are in the past", async () => {
+  // B17 money-path: paid AFTER the trial lapsed (the normal upgrade
+  // path — discovered case: "Mylinh"). tier is the useless TEXT '0' it
+  // always is in prod; premium_status='active' is what must grant
+  // access. Before the fix the dead `tier >= 1` numeric read returned
+  // the trial_expired sentinel and the user got no cloud scoring.
+  it("paid user (premium_status='active') → cloud succeeds even when all trial dates are in the past", async () => {
     const longExpired = new Date("2020-01-01T00:00:00Z").toISOString();
+    const future = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
     const deps = makeDeps({
       fetchUserProfile: vi.fn().mockResolvedValue({
         trial_expires_at: longExpired,
         trial_ends_at: longExpired,
         trial_end: longExpired,
-        tier: 2, // premium subscriber
+        premium_status: "active",
+        premium_expires_at: future,
+        tier: "0", // TEXT column — never written by billing (B5)
       }),
       fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
     });
@@ -531,7 +543,82 @@ describe("handleRequest — trial gating", () => {
     const body = (await res.json()) as { ok: boolean; provider: string };
     expect(body.ok).toBe(true);
     expect(body.provider).toBe("azure");
-    // The trial-expired sentinel was NOT returned despite expired dates.
+    expect(deps.fetch).toHaveBeenCalledOnce();
+  });
+
+  // B13 caveat #3: past_due is the Stripe dunning window — the card
+  // just failed and is being retried. The user is still paying and
+  // must NOT be downgraded mid-dunning, even with an expired
+  // premium_expires_at.
+  it("past_due user with expired premium_expires_at → still allowed (dunning window)", async () => {
+    const longExpired = new Date("2020-01-01T00:00:00Z").toISOString();
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue({
+        trial_expires_at: longExpired,
+        trial_ends_at: longExpired,
+        trial_end: longExpired,
+        premium_status: "past_due",
+        premium_expires_at: longExpired,
+        tier: "0",
+      }),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean };
+    expect(body.ok).toBe(true);
+    expect(deps.fetch).toHaveBeenCalledOnce();
+  });
+
+  it("defensive: legacy tier '2' string with no premium_status → still allowed", async () => {
+    const longExpired = new Date("2020-01-01T00:00:00Z").toISOString();
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue({
+        trial_expires_at: longExpired,
+        trial_ends_at: longExpired,
+        trial_end: longExpired,
+        premium_status: null,
+        premium_expires_at: null,
+        tier: "2",
+      }),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean };
+    expect(body.ok).toBe(true);
+  });
+
+  // The fix must NOT over-grant: a genuinely free user (inactive
+  // status, tier '0') whose trial lapsed still gets the trial_expired
+  // sentinel — premium_status being read does not weaken the gate.
+  it("truly free user (premium_status='inactive', tier '0', expired trial) → trial_expired sentinel", async () => {
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue({
+        trial_expires_at: oneHourAgo,
+        trial_ends_at: null,
+        trial_end: null,
+        premium_status: "inactive",
+        premium_expires_at: null,
+        tier: "0",
+      }),
+      fetch: vi.fn(),
+    });
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      use_local: boolean;
+      reason: string;
+    };
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("trial_expired");
+    expect(deps.fetch).not.toHaveBeenCalled();
   });
 
   it("user profile fetch fails → cloud still allowed (don't block on infra error)", async () => {
@@ -578,6 +665,8 @@ describe("handleRequest — trial gating", () => {
         trial_expires_at: null,
         trial_ends_at: null,
         trial_end: null,
+        premium_status: null,
+        premium_expires_at: null,
         tier: 0,
       }),
       fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),

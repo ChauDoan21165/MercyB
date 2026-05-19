@@ -30,6 +30,7 @@ const baseCtx = {
   userId: "u-1",
   tier: 0,
   isTrialing: false,
+  isPaid: false,
   adminLevel: 0,
 };
 
@@ -104,7 +105,7 @@ describe("checkMockInterviewRateLimit — tier bypasses", () => {
     expect(count).not.toHaveBeenCalled();
   });
 
-  it("paid (tier ≥ 2) user gets unlimited without a count query", async () => {
+  it("paid (legacy tier ≥ 2 defensive fallback) gets unlimited without a count query", async () => {
     const count = vi.fn();
     const result = await checkMockInterviewRateLimit(
       { ...baseCtx, tier: 2 },
@@ -112,6 +113,31 @@ describe("checkMockInterviewRateLimit — tier bypasses", () => {
     );
     expect(result.reason).toBe("paid");
     expect(count).not.toHaveBeenCalled();
+  });
+
+  // B17 money-path: the real paid signal is `isPaid` (premium_status-
+  // derived), NOT the dead numeric `tier`. A premium user who paid
+  // after their trial lapsed arrives as tier 0 / isTrialing false /
+  // isPaid true and MUST still be unlimited.
+  it("isPaid user with tier 0 (the Mylinh case) gets unlimited without a count query", async () => {
+    const count = vi.fn();
+    const result = await checkMockInterviewRateLimit(
+      { ...baseCtx, tier: 0, isTrialing: false, isPaid: true },
+      { countSessionsThisWeek: count, now: () => WED_ICT_10AM_UTC },
+    );
+    expect(result.allowed).toBe(true);
+    expect(result.reason).toBe("paid");
+    expect(result.limit).toBe(Number.POSITIVE_INFINITY);
+    expect(count).not.toHaveBeenCalled();
+  });
+
+  it("isPaid=false + tier 0 (truly free) is NOT unlimited — falls through to the weekly cap", async () => {
+    const result = await checkMockInterviewRateLimit(
+      { ...baseCtx, isPaid: false },
+      { countSessionsThisWeek: async () => 1, now: () => WED_ICT_10AM_UTC },
+    );
+    expect(result.allowed).toBe(false);
+    expect(result.reason).toBe("free_weekly_limit_reached");
   });
 });
 
