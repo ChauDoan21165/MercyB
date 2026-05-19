@@ -183,6 +183,7 @@ execute function public.prevent_admin_self_or_last_delete();
 -- 2) Audit log for role changes
 --------------------------------------------------------------------------------
 
+-- DEAD: superseded by profiles.is_admin / get_admin_level() and user_role_audit (out-of-band). Not applied to prod. Kept for migration history continuity only.
 create table if not exists public.role_audit_log (
   id uuid primary key default gen_random_uuid(),
   action text not null check (action in ('grant', 'revoke', 'update')),
@@ -411,6 +412,7 @@ grant select on public.daily_feedback_summary to authenticated;
 -- 5) Admin bootstrap allowlist + auto-grant on signup
 --------------------------------------------------------------------------------
 
+-- DEAD: superseded by profiles.is_admin / get_admin_level() and user_role_audit (out-of-band). Not applied to prod. Kept for migration history continuity only.
 create table if not exists public.admin_allowlist (
   email citext primary key,
   created_at timestamptz not null default now(),
