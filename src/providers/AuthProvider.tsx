@@ -32,6 +32,7 @@ import {
   clearAnonymousPair,
 } from "@/lib/languagePair/anonymousPair";
 import { bootstrapAnonymousSession } from "@/lib/auth/anonymousBootstrap";
+import { activateSentry } from "@/lib/monitoring/sentryActivation";
 import { isNativePlatform } from "@/lib/platform";
 import {
   migrateLocalStreakOnce,
@@ -281,7 +282,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const applySession = useCallback(
     (next: Session | null) => {
-      safeSetSession(getVerifiedSession(next));
+      const verified = getVerifiedSession(next);
+      // Route-gate trigger (2): an authenticated, email-verified session
+      // is the cohort whose errors we most need. applySession is the
+      // single funnel for it (initial getSession AND every
+      // onAuthStateChange route through here), so pulling Sentry init
+      // here covers a logged-in user landing on a static page too.
+      // Idempotent + dependency-free; safe to call on every auth event.
+      if (verified) activateSentry("auth");
+      safeSetSession(verified);
     },
     [safeSetSession],
   );

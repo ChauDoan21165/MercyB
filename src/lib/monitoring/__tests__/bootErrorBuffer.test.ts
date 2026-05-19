@@ -139,3 +139,63 @@ describe("bootErrorBuffer — deferred-Sentry observability", () => {
     expect(() => handle.flush()).not.toThrow();
   });
 });
+
+describe("bootErrorBuffer — route-gate triggers (1) and (3)", () => {
+  it("onFirstCapture fires ONCE on the first window error, even over-cap", () => {
+    const onFirstCapture = vi.fn();
+    const handle = installBootErrorBuffer({
+      maxEntries: 1,
+      isEnabled: () => true,
+      getCapture: () => () => {},
+      onFirstCapture,
+    });
+    throwDuringDeferWindow("e1"); // stored
+    throwDuringDeferWindow("e2"); // over-cap (not stored) — error still happened
+    window.dispatchEvent(
+      Object.assign(new Event("unhandledrejection"), { reason: new Error("r") }),
+    );
+    expect(onFirstCapture).toHaveBeenCalledTimes(1); // pull init exactly once
+    expect(handle.size()).toBe(1); // bound still enforced
+  });
+
+  it("onFirstCapture does NOT fire on a clean run (static page → no SDK)", () => {
+    const onFirstCapture = vi.fn();
+    installBootErrorBuffer({
+      isEnabled: () => true,
+      getCapture: () => () => {},
+      onFirstCapture,
+    });
+    // No error/rejection dispatched — models an error-free static visit.
+    expect(onFirstCapture).not.toHaveBeenCalled();
+  });
+
+  it("capture() enqueues an explicit error WITHOUT firing onFirstCapture", () => {
+    const onFirstCapture = vi.fn();
+    const captured: unknown[] = [];
+    const handle = installBootErrorBuffer({
+      isEnabled: () => true,
+      getCapture: () => (e) => captured.push(e),
+      onFirstCapture,
+    });
+    handle.capture(new Error("explicit"));
+    expect(onFirstCapture).not.toHaveBeenCalled(); // queueExplicitCapture owns activation
+    expect(handle.size()).toBe(1);
+    handle.flush();
+    expect((captured[0] as Error).message).toBe("explicit");
+  });
+
+  it("capture() is bounded and post-flush-inert like the listener path", () => {
+    const handle = installBootErrorBuffer({
+      maxEntries: 2,
+      isEnabled: () => true,
+      getCapture: () => () => {},
+    });
+    handle.capture("a");
+    handle.capture("b");
+    handle.capture("c"); // over cap
+    expect(handle.size()).toBe(2);
+    handle.flush();
+    handle.capture("post-flush"); // inert after handoff
+    expect(handle.size()).toBe(0);
+  });
+});

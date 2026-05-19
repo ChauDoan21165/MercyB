@@ -2,12 +2,16 @@
 //
 // Bounded pre-init error buffer for the deferred-Sentry boot path.
 //
-// WHY: initSentry() is deferred into requestIdleCallback (main.tsx) so the
-// ~156 KB @sentry/react chunk stops competing with the LCP critical path
-// on Slow 4G. That opens a window — from first script execution until
-// Sentry's own global handlers attach — where a thrown error would never
-// reach Sentry. Boot-window errors are the ones we MOST need (they explain
-// white-screen crashes), so the JS-cost win must not cost that telemetry.
+// WHY: Sentry init is ROUTE-GATED (main.tsx + sentryActivation.ts) so the
+// ~156 KB @sentry/react chunk is NOT fetched on a static legal/marketing
+// visit. It loads only when a trigger proves monitoring is needed — one
+// of which is "an error actually happened". This buffer is that trigger:
+// it owns the earliest possible window 'error'/'unhandledrejection'
+// listeners, so from first script execution until Sentry's own global
+// handlers attach, a thrown error is (a) used to PULL Sentry init via
+// onFirstCapture and (b) held here and replayed once init settles.
+// Boot-window errors are the ones we MOST need (they explain white-screen
+// crashes), so the JS-cost win must not cost that telemetry.
 //
 // Contracts (perf/defer-sentry-init):
 //  - addEventListener with capture:true — NOT `window.onerror =`. Other
@@ -37,6 +41,16 @@ export interface BootErrorBufferOptions {
   isEnabled: () => boolean;
   /** The Sentry captureException to replay through, or null if unavailable. */
   getCapture: () => ((error: unknown) => void) | null;
+  /**
+   * Route-gate trigger (1): fired AT MOST ONCE, on the first window
+   * 'error' / 'unhandledrejection' this buffer observes. main.tsx wires
+   * this to activateSentry() so the ~156 KB SDK chunk loads only when an
+   * error actually happens. Fires on the event itself (even over-cap) —
+   * an error occurred, Sentry is needed regardless of whether the value
+   * fit in the bounded buffer. NOT fired by the manual capture() path
+   * (queueExplicitCapture owns that activation directly).
+   */
+  onFirstCapture?: () => void;
 }
 
 export interface BootErrorBufferHandle {
@@ -44,6 +58,14 @@ export interface BootErrorBufferHandle {
   flush: () => void;
   /** Current buffered count (test/diagnostic aid). */
   size: () => number;
+  /**
+   * Route-gate trigger (3): enqueue an EXPLICIT pre-init captureError()
+   * into the same bounded buffer so it is replayed through real Sentry
+   * once init settles. Bounded + post-flush-inert exactly like the
+   * window-listener path; does NOT fire onFirstCapture (the caller —
+   * queueExplicitCapture — pulls activation itself).
+   */
+  capture: (error: unknown) => void;
 }
 
 export function installBootErrorBuffer(
@@ -53,13 +75,32 @@ export function installBootErrorBuffer(
   const buffer: unknown[] = [];
   let active = true;
   let flushed = false;
+  let firstCaptureFired = false;
 
   const push = (value: unknown): void => {
     if (!active || buffer.length >= max) return;
     buffer.push(value);
   };
-  const onError = (e: ErrorEvent): void => push(e.error ?? e.message);
-  const onRejection = (e: PromiseRejectionEvent): void => push(e.reason);
+  // Pull Sentry init the first time a real error/rejection is seen, even
+  // if it lands over-cap (the error still happened → Sentry is needed).
+  // Guarded so it can fire at most once and never breaks the listener.
+  const fireFirstCapture = (): void => {
+    if (firstCaptureFired || !active) return;
+    firstCaptureFired = true;
+    try {
+      opts.onFirstCapture?.();
+    } catch {
+      /* a trigger callback must never break the error listener */
+    }
+  };
+  const onError = (e: ErrorEvent): void => {
+    fireFirstCapture();
+    push(e.error ?? e.message);
+  };
+  const onRejection = (e: PromiseRejectionEvent): void => {
+    fireFirstCapture();
+    push(e.reason);
+  };
 
   try {
     window.addEventListener("error", onError, true);
@@ -103,5 +144,12 @@ export function installBootErrorBuffer(
     buffer.length = 0;
   };
 
-  return { flush, size: () => buffer.length };
+  // Trigger (3): explicit pre-init captureError() handoff. Same bounded
+  // buffer + post-flush-inert semantics as the listener path (push()
+  // already enforces both). Deliberately does NOT fire onFirstCapture —
+  // queueExplicitCapture pulls activation itself, and conflating the two
+  // would mislabel an explicit capture as a window error.
+  const capture = (error: unknown): void => push(error);
+
+  return { flush, size: () => buffer.length, capture };
 }
