@@ -192,9 +192,17 @@ When a dispatch explicitly authorizes "push + PR open" upfront, agents do NOT st
 This is principle 12 (never repeat instructions) applied to dispatch authorization. If the dispatch already said it, the agent doesn't need to ask again.
 
 
+## 17. FREE AGENT = IMMEDIATE NEXT DISPATCH
+
+When an agent reports completion, assign its next task in the same response —
+do not wait for all agents to report before redistributing work. A free agent
+sitting idle while work exists is wasted capacity. Planner-Claude's responsibility:
+the moment a report arrives, the next brief ships in the same message.
+
+
 ## Last updated
 
-2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-19 — Added principle 17 (free agent = immediate next dispatch). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
