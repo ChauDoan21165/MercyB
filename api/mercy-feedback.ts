@@ -48,7 +48,12 @@ type FeedbackRequestBody = {
   items?: FeedbackItem[];
 };
 
-const supabaseUrl = process.env.SUPABASE_URL;
+// SUPABASE_URL is the canonical server-side name; fall back to VITE_SUPABASE_URL
+// so this function matches api/mercy-ai.ts + api/mercy/grammar.ts and works when
+// only the (browser-safe) VITE_ URL is set in the Vercel project. There is
+// deliberately no VITE_ fallback for the service-role key — it must never ship
+// to the browser bundle, so it has to be set explicitly as a server secret.
+const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const supabase =
@@ -78,7 +83,8 @@ export default async function handler(
       ok: false,
       acceptedCount: 0,
       error: "supabase_not_configured",
-      details: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY",
+      details:
+        "Missing SUPABASE_URL/VITE_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY",
     });
   }
 
