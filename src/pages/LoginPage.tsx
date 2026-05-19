@@ -64,22 +64,34 @@ function MercyRightBrandOverlayInline() {
           justifyContent: "center",
         }}
       >
-        <img
-          src="/brand/mercy-blade-header.png"
-          alt="Mercy"
-          decoding="async"
-          loading="eager"
-          style={{
-            display: "block",
-            height: 46,
-            width: "auto",
-            maxWidth: "min(520px, 80vw)",
-            objectFit: "contain",
-          }}
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
-        />
+        {/* Same brand asset + delivery chain as the global hero band
+            (AppRouter.tsx:558). AVIF (~4 KB) → WebP (~7 KB) → PNG (128 KB)
+            fallback so login no longer pays the full PNG every pageview.
+            Intrinsic 512×341 = CLS insurance; the style overrides display
+            size (height 46). onError keeps the existing "hide on failure"
+            resilience for the login surface. */}
+        <picture>
+          <source srcSet="/brand/mercy-blade-header.avif" type="image/avif" />
+          <source srcSet="/brand/mercy-blade-header.webp" type="image/webp" />
+          <img
+            src="/brand/mercy-blade-header.png"
+            alt="Mercy"
+            width={512}
+            height={341}
+            decoding="async"
+            loading="eager"
+            style={{
+              display: "block",
+              height: 46,
+              width: "auto",
+              maxWidth: "min(520px, 80vw)",
+              objectFit: "contain",
+            }}
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        </picture>
       </div>
     </div>
   );
