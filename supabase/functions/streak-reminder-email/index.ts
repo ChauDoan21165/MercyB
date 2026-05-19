@@ -120,6 +120,24 @@ Deno.serve(async (req) => {
       return send({ ok: false, error: "Unauthorized" });
     }
 
+    // Test hook: a caller already past the CRON_SECRET gate above may
+    // pass {"testUserId":"<uuid>"} to send exactly one real email to
+    // that user, bypassing the cohort-eligibility filters (last-studied
+    // date / streak >= 1 / per-category flag) for a deterministic
+    // end-to-end check. The global unsubscribe filter and the
+    // unsubscribe-token requirement are STILL enforced — a self-test
+    // never bypasses a hard opt-out. The daily cron sends no body, so
+    // req.json() throws and we fall through to the normal cohort path.
+    let testUserId: string | null = null;
+    try {
+      const body = (await req.json()) as { testUserId?: unknown };
+      if (body && typeof body.testUserId === "string" && body.testUserId) {
+        testUserId = body.testUserId;
+      }
+    } catch {
+      // No / empty / non-JSON body — normal cron path.
+    }
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
     const resendApiKey = Deno.env.get("RESEND_API_KEY") ?? "";
@@ -145,15 +163,25 @@ Deno.serve(async (req) => {
     //    - streak_current >= 1 (has a streak worth protecting)
     //    - email_unsubscribed_at IS NULL (not globally opted out)
     //    - email_streak_reminder_enabled = true (per-category opt-in)
-    const { data: profiles, error: profErr } = await adminClient
+    let profilesQuery = adminClient
       .from("profiles")
       .select(
         "id, streak_current, email_unsubscribed_at, email_streak_reminder_enabled, email_unsubscribe_token",
       )
-      .eq("streak_last_studied_date", yesterday)
-      .gte("streak_current", 1)
-      .eq("email_streak_reminder_enabled", true)
+      // Global opt-out is sacred — enforced in BOTH the cron and the
+      // single-user test path.
       .is("email_unsubscribed_at", null);
+
+    if (testUserId) {
+      profilesQuery = profilesQuery.eq("id", testUserId);
+    } else {
+      profilesQuery = profilesQuery
+        .eq("streak_last_studied_date", yesterday)
+        .gte("streak_current", 1)
+        .eq("email_streak_reminder_enabled", true);
+    }
+
+    const { data: profiles, error: profErr } = await profilesQuery;
 
     if (profErr) {
       console.error("[streak-reminder-email] profiles query error:", profErr);
@@ -165,7 +193,10 @@ Deno.serve(async (req) => {
         ok: true,
         sent: 0,
         total_eligible: 0,
-        note: `No users with streak >= 1 who last studied on ${yesterday}`,
+        test_mode: testUserId != null,
+        note: testUserId
+          ? `Test user ${testUserId} not found, globally unsubscribed, or missing`
+          : `No users with streak >= 1 who last studied on ${yesterday}`,
       });
     }
 
@@ -253,6 +284,7 @@ Deno.serve(async (req) => {
       ok: true,
       sent,
       total_eligible: profiles.length,
+      test_mode: testUserId != null,
       yesterday,
       errors: errors.slice(0, 10),
     });

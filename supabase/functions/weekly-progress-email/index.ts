@@ -154,6 +154,23 @@ Deno.serve(async (req) => {
       return send({ ok: false, error: "Unauthorized" });
     }
 
+    // Test hook: a caller already past the CRON_SECRET gate above may
+    // pass {"testUserId":"<uuid>"} to send exactly one real email to
+    // that user, bypassing the active-subscription gate and the
+    // per-category opt-out for a deterministic end-to-end check. The
+    // global unsubscribe flag and the unsubscribe-token requirement are
+    // STILL enforced. The weekly cron sends no body, so req.json()
+    // throws and we fall through to the normal cohort path.
+    let testUserId: string | null = null;
+    try {
+      const body = (await req.json()) as { testUserId?: unknown };
+      if (body && typeof body.testUserId === "string" && body.testUserId) {
+        testUserId = body.testUserId;
+      }
+    } catch {
+      // No / empty / non-JSON body — normal cron path.
+    }
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
     const resendApiKey = Deno.env.get("RESEND_API_KEY") ?? "";
@@ -176,20 +193,27 @@ Deno.serve(async (req) => {
     // We fetch from auth.users (source of truth for email) joined via
     // profiles for streak data and filtered by active subscriptions.
 
-    // Step A: Get user IDs with active subscriptions
-    const { data: subs, error: subsErr } = await adminClient
-      .from("user_subscriptions")
-      .select("user_id")
-      .eq("status", "active");
+    // Step A: Get user IDs with active subscriptions (or, in test mode,
+    // target exactly the one requested user so the end-to-end check is
+    // deterministic even for a free-tier account with no subscription).
+    let activeUserIds: string[];
+    if (testUserId) {
+      activeUserIds = [testUserId];
+    } else {
+      const { data: subs, error: subsErr } = await adminClient
+        .from("user_subscriptions")
+        .select("user_id")
+        .eq("status", "active");
 
-    if (subsErr) {
-      console.error("[weekly-progress-email] subs query error:", subsErr);
-      return send({ ok: false, error: "Failed to query subscriptions" });
-    }
+      if (subsErr) {
+        console.error("[weekly-progress-email] subs query error:", subsErr);
+        return send({ ok: false, error: "Failed to query subscriptions" });
+      }
 
-    const activeUserIds = [...new Set((subs ?? []).map((s) => s.user_id))];
-    if (activeUserIds.length === 0) {
-      return send({ ok: true, sent: 0, skipped: 0, note: "No active subscribers" });
+      activeUserIds = [...new Set((subs ?? []).map((s) => s.user_id))];
+      if (activeUserIds.length === 0) {
+        return send({ ok: true, sent: 0, skipped: 0, note: "No active subscribers" });
+      }
     }
 
     // Step B: Get profiles (streak + opt-out + token) for active users
@@ -240,10 +264,13 @@ Deno.serve(async (req) => {
     for (const prof of profiles ?? []) {
       const userId = prof.id;
 
-      // Skip if globally unsubscribed or opted out of this category.
+      // Global unsubscribe is always honored. The per-category opt-out
+      // is bypassed only for an explicit single-user test send (already
+      // past the CRON_SECRET gate) so the end-to-end check stays
+      // deterministic regardless of the test account's preferences.
       if (
         prof.email_unsubscribed_at ||
-        prof.email_weekly_progress_enabled === false
+        (!testUserId && prof.email_weekly_progress_enabled === false)
       ) {
         skipped++;
         continue;
@@ -311,6 +338,7 @@ Deno.serve(async (req) => {
       ok: true,
       week_start: weekStart,
       total_active: activeUserIds.length,
+      test_mode: testUserId != null,
       sent,
       skipped,
       errors: errors.slice(0, 10), // cap at 10 to avoid huge responses
