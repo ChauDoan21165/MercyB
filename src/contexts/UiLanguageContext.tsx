@@ -71,6 +71,20 @@ export function UiLanguageProvider({
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
+  // Keep `<html lang>` in sync with the active UI language. index.html
+  // ships a static `lang="en"` (correct pre-hydration default for
+  // crawlers); without this, that "en" survives even when the chrome is
+  // Vietnamese, so screen readers pronounce every VI string with an
+  // English voice. This provider wraps the router (see main.tsx) and is
+  // the single reactive owner of uiLang, so this is the one place that
+  // owns the document-level lang attribute for the interactive app.
+  // (The 8 static SEO landing pages set their own lang via SeoMeta and
+  // restore the prior value on unmount — left untouched.)
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = uiLang;
+  }, [uiLang]);
+
   const api = useMemo<UiLanguageApi>(
     () => ({
       uiLang,
