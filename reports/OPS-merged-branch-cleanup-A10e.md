@@ -165,3 +165,59 @@ $ comm -12 <(deleted-candidates) <(post-delete-origin) | wc -l
 ## Conclusion
 
 68 merged-but-lingering branches pruned from origin. No PR closed, no open PR touched, no worktree-checked-out branch deleted. Cleanup is purely on the remote — local worktrees and local branches untouched. The 17 worktree-blocked entries are eligible for a future sweep once their worktrees are pruned.
+
+---
+
+## A10f follow-up — worktree-blocked branch cleanup (same session)
+
+**Date:** 2026-05-19 (later same evening)
+**Premise:** all 17 worktree-blocked branches from the A10e skip list have since had their PRs merged. The worktrees still hold local checkouts, but the remote ref is safe to delete — the worktree's local copy continues to exist independently.
+
+### Pre-flight check
+
+For each of the 17 branches: confirmed via `gh pr view <PR> --json state` that state == `MERGED`, and `git ls-remote origin refs/heads/<branch>` returned a SHA (branch still on origin).
+
+**All 17 confirmed MERGED + present on origin** → all 17 cleared for deletion.
+
+### Deletions (17)
+
+Executed in a single `git push origin --delete` invocation:
+
+| PR | Branch | Pre-state | Result |
+|---|---|---|---|
+| #745 | `a68/mercy-feedback-config-diagnostics` | MERGED | `[deleted]` |
+| #787 | `fix/b22-redeem-gift-honest-errors` | MERGED | `[deleted]` |
+| #791 | `cleanup/agent-id-tierc-archive` | MERGED | `[deleted]` |
+| #793 | `fix/webhook-monotonic-object-quality` | MERGED | `[deleted]` |
+| #794 | `perf/lazy-mercyguide-panel` | MERGED | `[deleted]` |
+| #802 | `feat/b13ph3-pr-a` | MERGED | `[deleted]` |
+| #809 | `ci/bundle-size-budget` | MERGED | `[deleted]` |
+| #810 | `docs/principles-immediate-dispatch` | MERGED | `[deleted]` |
+| #812 | `docs/strategy-drift-audit` | MERGED | `[deleted]` |
+| #813 | `docs/pr-review-backlog-sequencing` | MERGED | `[deleted]` |
+| #814 | `docs/pending-actions-consolidation` | MERGED | `[deleted]` |
+| #815 | `docs/a18-recompute-impl-prep` | MERGED | `[deleted]` |
+| #816 | `docs/native-sentry-init-audit` | MERGED | `[deleted]` |
+| #817 | `docs/strategy-v31` | MERGED | `[deleted]` |
+| #820 | `docs/789-migration-verify` | MERGED | `[deleted]` |
+| #823 | `docs/principles-audit` | MERGED | `[deleted]` |
+| #825 | `docs/red-branch-pr-candidates` | MERGED | `[deleted]` |
+
+### Worktree HEAD health check
+
+After deletion, iterated every worktree from `git worktree list --porcelain` and resolved `HEAD` on each. **0 worktrees show a broken HEAD.** The deleted branches were *remote* refs only — each worktree retains its local branch ref and the commit objects (the local branch still tracks the now-deleted origin/<br>, but `HEAD` resolves cleanly because the local ref points at a valid commit). The worktrees can continue to exist or be pruned later without urgency.
+
+### Origin headcount
+
+| Stage | Origin refs |
+|---|---|
+| Post-A10e | 515 |
+| Post-A10f delete | 505 |
+
+Net change: −10 (17 deletes minus 7 new branches pushed by other agents — `feat/b13ph3-pr-b`, `docs/b1-anonymize-path-audit`, etc. — in the interval between A10e and A10f).
+
+### Outcome
+
+The full A10e + A10f sweep removed 85 lingering merged-branch refs from origin (68 + 17). Open PRs untouched. Main + primer branches untouched. No worktree-content modification. No worktree HEAD broken.
+
+Remaining hygiene work (out of scope tonight): the worktree directories themselves can be pruned via `git worktree remove /private/tmp/<dir>` whenever Chau wants — each worktree's local branch will linger until removed, but it's local-only noise.
