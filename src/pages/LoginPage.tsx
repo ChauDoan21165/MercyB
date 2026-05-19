@@ -65,7 +65,7 @@ function MercyRightBrandOverlayInline() {
         }}
       >
         <img
-          src="/brand/mercy_wordmark.png"
+          src="/brand/mercy-blade-header.png"
           alt="Mercy"
           decoding="async"
           loading="eager"
