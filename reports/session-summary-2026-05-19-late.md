@@ -2,7 +2,9 @@
 
 **Window:** 2026-05-19T18:00:00Z onward (the "late" wave; the earlier wave that day is summarized by the A46 primer).
 **Author:** A10 (operations agent — push-durability + summary tracks).
-**Read this alongside:** the A46 next-session primer + STRATEGY v3.1 (#817, pending merge) + PRINCIPLES P17 (#810, pending merge).
+**Read this alongside:** the A46 next-session primer (branch `a46/primer-refresh-may19-late`, `reports/NEXT-SESSION-PRIMER-2026-05-20.md`) + STRATEGY v3.1 (#817, pending merge) + PRINCIPLES P17 (#810, pending merge).
+
+**Refresh log:** initial draft posted as #822; updated in place 2026-05-19 (post-22:00 UTC) to reflect second-wave PR openings (#819–#829) and agent reports — see §2/§6/§7/§8.
 
 ## §0 Lessons (reinforced or newly learned this wave)
 
@@ -28,7 +30,9 @@ These join the §0 carry-over block from the A46 primer. Future agents must read
 
 ## §2 Open PRs from this wave (queued for review/merge)
 
-PRs created in this session and awaiting Chau's merge sequencing (consult #813 for the recommended risk-matrix order):
+**Count at refresh (post-22:00 UTC):** 41 open PRs created ≥18:00 UTC this session, out of 50 open repo-wide. The other 9 open belong to the earlier wave (#775–#783) and are covered by the A46 primer.
+
+PRs awaiting Chau's merge sequencing (consult #813 for the recommended risk-matrix order):
 
 | # | Title | Agent | Notes |
 |---|---|---|---|
@@ -62,8 +66,19 @@ PRs created in this session and awaiting Chau's merge sequencing (consult #813 f
 | #816 | `docs(native): Sentry init audit — current state + gap list` | A7c | Sentry gap audit |
 | #817 | `docs(strategy): STRATEGY.md v3.1 — §6 + §7 freshness pass` | A3d | **locked: §6 expiry flip** |
 | #818 | `docs(privacy): B1 — 42-table classification for delete-account manifest` | A6d | classification for #811 |
+| #819 | `docs(privacy): B1 anonymize-path audit — email_audit + lifetime_intent_signups` | A4c | anonymize gap audit |
+| #820 | `docs(billing): #789 migration pre-apply verify` | A8d | pre-apply discipline for #789 |
+| #821 | `feat(native): iOS dSYM upload script + Xcode Run Script docs` | A7d | Sentry sourcemap gap #1 |
+| **#822** | `docs(session): session summary 2026-05-19 late wave` | A10d | **this PR** (being updated) |
+| #823 | `docs(principles): P1–P17 consistency audit post-2026-05-19` | A3e | principles consistency |
+| #824 | `ci: tighten bundle budget to post-#794+#795 baseline (~250 KB + 5%)` | A5c | locks the perf wins |
+| #825 | `docs(ops): red-branch PR-candidate audit (A10b follow-up)` | A9e | A10b §"3 zero-salvage" follow-up |
+| **#826** | `feat(billing): B13ph3 PR-B — atomic R1–R4 repoint + parity tests (money-path)` | A1c | **B13ph3 PR-B shipped** (unblocked by #802) |
+| #827 | `docs(privacy): B1 manifest crosscheck — A4 #811 vs A6d classification` | A6e | crosschecks #811 vs #818 |
+| #828 | `docs(principles): P4 sub-clause — coherence-preserving micro-edits` | (principles) | P4 refinement |
+| #829 | `docs(principles): P16 sub-clause — harness-policy seam handling` | (principles) | P16 refinement |
 
-A10's two ops PRs (push-durability + audit; this summary) ship on `a10/ops-local-worktree-reports` and `docs/session-summary-2026-05-19-late` — both no-PR-or-trivial.
+A10's ops PRs (push-durability + this summary) ship on `a10/ops-local-worktree-reports` (no PR) and `docs/session-summary-2026-05-19-late` (#822).
 
 ## §3 Decisions locked this wave (do not re-litigate)
 
@@ -96,23 +111,37 @@ Ordered by reversibility cost (apply destructive/customer-facing ones first whil
 
 The full PENDING-CHAU-ACTIONS index lives in #814 — these 5 are the highest-leverage subset.
 
-## §6 Agents still in flight at session close
+## §6 Agents — second-wave status (post-22:00 UTC update)
 
-Based on `/private/tmp/A*` worktree presence + PR open/closed state:
+Since the initial draft of this summary (#822 at 21:54 UTC), most in-flight agents have reported. Updated state:
 
-| Agent | Track | Status hint |
+### Reported / PR opened (was in flight at initial draft)
+
+| Agent | Track | Outcome |
 |---|---|---|
-| A1c | B13ph3 PR-B (consumer wiring) | worktree `A1c-b13ph3-prb`, no PR yet, gated on #789 |
-| A2d | CI re-run after mylinh checklist landed | implied next-step, no worktree yet |
-| A3d | STRATEGY v3.1 | **PR #817 OPEN** — ready for review |
-| A4c | Anonymize audit | worktree `A4c-anonymize-audit`, no PR yet |
-| A5c | Bundle budget tighten | worktree `A5c-bundle-budget-tighten`, polling/threshold work |
-| A6d | B1 classify (42-table) | **PR #818 OPEN** — partners with #811 |
-| A7d | iOS dSYM upload | worktree `A7d-ios-dsym-upload`, Sentry sourcemap follow-up |
-| A8d | #789 migration verify | worktree `A8d-789-migration-verify`, waits for Chau to apply |
-| A9d | A94 closure paperwork | worktree `A9d-a94-closure`, paired with #806 |
+| A1c | B13ph3 PR-B (consumer wiring) | **#826 OPEN** — atomic R1–R4 repoint + parity tests, shipped |
+| A2d | CI re-run after mylinh checklist landed | reported (no standalone PR — incorporated into pending-actions sequencing #813/#814) |
+| A3d | STRATEGY v3.1 | **#817 OPEN** — ready for review |
+| A4c | B1 anonymize-path audit | **#819 OPEN** — email_audit + lifetime_intent_signups |
+| A5c | Bundle budget tighten | **#824 OPEN** — locks #794 + #795 baseline (~250 KB + 5%) |
+| A6d | B1 42-table classify | **#818 OPEN** — partners with #811 |
+| A7d | iOS dSYM upload | **#821 OPEN** — Sentry sourcemap gap #1 fix |
+| A8d | #789 migration pre-apply verify | **#820 OPEN** — paste-ready verify script |
+| A9d | A94 closure paperwork | folded into #806 (phantom-row apply runbook + A94 loss formalization) |
+| A9e | Red-branch PR-candidate audit (A10b follow-up) | **#825 OPEN** — reviews A10b's 3 zero-salvage flag |
 
-Per P17 (#810): when each of these reports done, the moderator should immediately dispatch their next item from #813's sequencing matrix.
+### New agents dispatched post-A10d (continuation of the late wave)
+
+| Agent | Track | PR |
+|---|---|---|
+| A3e | P1–P17 consistency audit | **#823 OPEN** |
+| A6e | B1 manifest crosscheck (#811 vs #818) | **#827 OPEN** |
+| (principles) | P4 coherence sub-clause | **#828 OPEN** |
+| (principles) | P16 harness sub-clause | **#829 OPEN** |
+
+### Still in flight at this refresh
+
+None known. All previously-listed agents have either opened a PR or had their work folded into a sibling PR. Per P17 (#810), the moderator should now dispatch the next queue item from #813's sequencing matrix to any agent reporting done.
 
 ## §7 Don't-redo list (additions from this wave)
 
@@ -157,12 +186,26 @@ Future sessions: do NOT re-dispatch these. The work is shipped or in-PR; redoing
 | Native Sentry init audit | `docs/native-sentry-init-audit` / #816 | OPEN |
 | Northstar reference cleanup | `cleanup/northstar-strategy-naming` / #790 | OPEN |
 | A10 push-durability sweep + audit | `a10/ops-local-worktree-reports` | PUSHED, no PR |
+| B1 anonymize-path audit (A4c) | `docs/b1-anonymize-path-audit` / #819 | OPEN |
+| #789 migration pre-apply verify (A8d) | `docs/789-migration-verify` / #820 | OPEN |
+| iOS dSYM upload script (A7d) | `feat/ios-dsym-upload` / #821 | OPEN |
+| Session summary 2026-05-19 late (A10d) | `docs/session-summary-2026-05-19-late` / #822 | OPEN — this PR |
+| P1–P17 consistency audit (A3e) | `docs/principles-audit` / #823 | OPEN |
+| Bundle budget tighten to baseline (A5c) | `ci/bundle-budget-tighten` / #824 | OPEN |
+| Red-branch PR-candidate audit (A9e) | `docs/red-branch-pr-candidates` / #825 | OPEN |
+| **B13ph3 PR-B — R1–R4 repoint + parity tests (A1c)** | `feat/b13ph3-pr-b` / #826 | OPEN — critical money-path |
+| B1 manifest crosscheck #811 vs #818 (A6e) | `docs/b1-manifest-crosscheck` / #827 | OPEN |
+| P4 coherence sub-clause | `docs/principles-p4-coherence` / #828 | OPEN |
+| P16 harness sub-clause | `docs/principles-p16-harness` / #829 | OPEN |
 
 ## §8 Boot sequence for the next agent reading this
 
-1. Read the A46 primer first (covers earlier wave, §0 carry-over).
+1. **Read the A46 primer first.** Authoritative source for the earlier wave + §0 carry-over:
+   - Branch: `a46/primer-refresh-may19-late` (pushed to origin, SHA `706983a93`)
+   - File: `reports/NEXT-SESSION-PRIMER-2026-05-20.md`
 2. Read this summary §0 lessons.
 3. Read STRATEGY v3.1 (#817) before any architectural reasoning.
-4. Read PRINCIPLES P17 (#810) before dispatch logic.
+4. Read PRINCIPLES P17 (#810) before dispatch logic; PRINCIPLES P1–P17 consistency audit (#823) for nuance.
 5. Check #813 for the merge sequencing; check #814 for Chau's pending-action list.
 6. Before any dispatch: confirm the topic isn't on §7's don't-redo list above.
+7. **Watch for the critical-path PR #826 (B13ph3 PR-B).** Once #802 + #789 are both merged + the table applied, #826 is the next domino — it atomically repoints the money-path entitlement reads.
