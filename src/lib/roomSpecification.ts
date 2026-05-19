@@ -65,6 +65,102 @@ const DEFAULT_ROOM_SPEC: RoomSpec = {
   feedback_mode: "thin",
 };
 
+/* ────────────────────────────────────────────────────────────────────────
+ * In-memory result cache (A27)
+ *
+ * WHY: ~99% of getEffectiveRoomSpec calls resolve to DEFAULT_ROOM_SPEC after
+ * up to 4 Supabase round-trips (3 assignment lookups + 1 spec fetch). The
+ * effective spec for a (room, tier) pair is admin-stable — it only changes
+ * when an admin applies a new assignment. Cache the resolved spec for a short
+ * TTL so first navigation pays the round-trip but repeats do not.
+ *
+ * INVARIANTS:
+ * - Only *legitimate* resolutions are cached (no-assignment → DEFAULT, missing
+ *   spec → DEFAULT, fully resolved spec). Fail-open error returns are NEVER
+ *   cached — caching a transient Supabase failure would mask recovery and
+ *   contradict the "silent fallback can hide real failures" rule.
+ * - Stored values are treated as immutable; callers get a shallow copy so a
+ *   mutated spec object can't poison the cache.
+ * - Invalidated wholesale on admin apply (tier/app-scope assignments fan out
+ *   across many rooms, so per-room invalidation is unsafe).
+ * ──────────────────────────────────────────────────────────────────────── */
+
+const ROOM_SPEC_CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
+type CacheEntry = { value: RoomSpec; expiresAt: number };
+
+const roomSpecCache = new Map<string, CacheEntry>();
+const roomSpecCacheStats = { hits: 0, misses: 0 };
+
+function cacheKey(rid: string, tier: string | null): string {
+  return `${rid}::${tier ?? ""}`;
+}
+
+/**
+ * Read a fresh (non-expired) cached spec. Returns a shallow copy so callers
+ * cannot mutate the stored value. Bumps hit/miss counters.
+ */
+function readCache(key: string): RoomSpec | null {
+  const entry = roomSpecCache.get(key);
+  if (entry && entry.expiresAt > Date.now()) {
+    roomSpecCacheStats.hits += 1;
+    return { ...entry.value };
+  }
+  if (entry) roomSpecCache.delete(key); // expired — drop it
+  roomSpecCacheStats.misses += 1;
+  return null;
+}
+
+/** Store a resolved spec and return a fresh copy (the value the caller sees). */
+function writeCache(key: string, value: RoomSpec): RoomSpec {
+  roomSpecCache.set(key, {
+    value: { ...value },
+    expiresAt: Date.now() + ROOM_SPEC_CACHE_TTL_MS,
+  });
+  return { ...value };
+}
+
+/**
+ * Invalidate cached specs. Call after any admin change to room specification
+ * assignments. With no argument clears the whole cache (tier/app-scope
+ * assignments affect many rooms). With a roomId, drops every tier variant for
+ * that room only.
+ */
+export function invalidateRoomSpecCache(roomId?: string): void {
+  if (!roomId) {
+    roomSpecCache.clear();
+    return;
+  }
+  const rid = String(roomId).trim();
+  const prefix = `${rid}::`;
+  for (const key of roomSpecCache.keys()) {
+    if (key.startsWith(prefix)) roomSpecCache.delete(key);
+  }
+}
+
+/**
+ * Cache observability for hit-rate measurement. `hits / (hits + misses)` is
+ * the live cache hit rate; `size` is the number of cached (room, tier) pairs.
+ */
+export function getRoomSpecCacheStats(): {
+  hits: number;
+  misses: number;
+  size: number;
+} {
+  return {
+    hits: roomSpecCacheStats.hits,
+    misses: roomSpecCacheStats.misses,
+    size: roomSpecCache.size,
+  };
+}
+
+/** Test-only: clear cache + reset counters between cases. */
+export function __resetRoomSpecCacheForTests(): void {
+  roomSpecCache.clear();
+  roomSpecCacheStats.hits = 0;
+  roomSpecCacheStats.misses = 0;
+}
+
 function pickBool(row: any, keys: string[], fallback = false): boolean {
   for (const k of keys) {
     if (row && typeof row[k] === "boolean") return row[k];
@@ -129,8 +225,13 @@ export async function getEffectiveRoomSpec(
   const rid = String(roomId || "").trim();
   const t = normalizeTier(tier);
 
-  // If roomId is missing, still return defaults (app-wide behavior)
+  // If roomId is missing, still return defaults (app-wide behavior).
+  // Not cached: no stable key, and it's a trivial constant return anyway.
   if (!rid) return { ...DEFAULT_ROOM_SPEC };
+
+  const key = cacheKey(rid, t);
+  const cached = readCache(key);
+  if (cached) return cached;
 
   // Fetch assignments with three parallel filtered queries (room > tier > app).
   // Server-side filtering on (scope, target_id) avoids pulling the whole table.
@@ -172,7 +273,9 @@ export async function getEffectiveRoomSpec(
     appRes.data?.specification_id ??
     null;
 
-  if (!specId) return { ...DEFAULT_ROOM_SPEC };
+  // Legitimate "no assignment for this room/tier/app" → cache the DEFAULT.
+  // This is the ~99% hot path.
+  if (!specId) return writeCache(key, DEFAULT_ROOM_SPEC);
 
   // Fetch spec record
   const { data: specRow, error: sErr } = await supabase
@@ -186,7 +289,9 @@ export async function getEffectiveRoomSpec(
     return { ...DEFAULT_ROOM_SPEC };
   }
 
-  if (!specRow) return { ...DEFAULT_ROOM_SPEC };
+  // Assignment points at a spec row that no longer exists → stable result,
+  // safe to cache as DEFAULT.
+  if (!specRow) return writeCache(key, DEFAULT_ROOM_SPEC);
 
   const use_color_theme = pickBool(specRow, [
     "use_color_theme",
@@ -219,11 +324,11 @@ export async function getEffectiveRoomSpec(
     DEFAULT_ROOM_SPEC.feedback_mode
   );
 
-  return {
+  return writeCache(key, {
     id: String(specRow.id ?? specId),
     use_color_theme,
     nav_mode,
     title_align,
     feedback_mode,
-  };
+  });
 }

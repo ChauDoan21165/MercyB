@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabaseClient';
+import { invalidateRoomSpecCache } from '@/lib/roomSpecification';
 import { Loader2, Palette, CheckCircle2 } from 'lucide-react';
 import {
   Select,
@@ -122,6 +123,10 @@ export function RoomSpecificationManager() {
       });
 
       if (error) throw error;
+
+      // Assignment changed → drop the resolver's cached effective specs.
+      // Clear wholesale: tier/app-scope assignments fan out across many rooms.
+      invalidateRoomSpecCache();
 
       toast.success(`Specification applied to ${applyScope}${applyScope !== 'app' ? `: ${targetId}` : ''}`);
       setTargetId('');
