@@ -48,6 +48,8 @@ Before any of the following, the agent or Claude must pause and get explicit con
 - Schema migrations on production data
 - Anything that would be hard or impossible to revert
 
+**Coherence-required micro-edits inside an authorized scope** (e.g. bumping a "Last updated" header when the body update lands a new changelog entry; updating a ToC after adding a section that was explicitly authorized) are NOT a new irreversible action; they are part of landing the authorized scope cleanly. The rule: make the minimum coherence-preserving edit, and call it out explicitly in the commit message + PR body so the maintainer can revert just that line if they'd rather. Do not silently widen scope; do not silently leave the doc self-contradicting.
+
 ---
 
 ## 5. DIAGNOSE BEFORE PATCHING
@@ -202,7 +204,7 @@ the moment a report arrives, the next brief ships in the same message.
 
 ## Last updated
 
-2026-05-19 — Added principle 17 (free agent = immediate next dispatch). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
