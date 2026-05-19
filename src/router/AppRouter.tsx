@@ -77,10 +77,13 @@ const BulkInvitePage      = lazyWithRetry(() => import("@/pages/referral/BulkInv
 const UnsubscribePage             = lazyWithRetry(() => import("@/pages/Unsubscribe"));
 const NotificationPreferencesPage = lazyWithRetry(() => import("@/pages/account/NotificationPreferences"));
 
-const PlacementWelcomePage = lazyWithRetry(() => import("@/pages/placement/WelcomePage"));
-const PlacementWhoForPage  = lazyWithRetry(() => import("@/pages/placement/WhoForPage"));
-const PlacementTestPage    = lazyWithRetry(() => import("@/pages/placement/TestPage"));
-const PlacementResultsPage = lazyWithRetry(() => import("@/pages/placement/ResultsPage"));
+// Placement v2 (PR 11, final of the 11-PR series): one self-contained
+// adaptive page (hook → flow → edge fn → engine). The v1 page files
+// (WelcomePage/WhoForPage/TestPage/ResultsPage) are left byte-for-byte
+// intact on disk (#658 "HIDE not delete") but are no longer routed —
+// the v2 session is a single server-driven loop, not the v1 4-page
+// wizard (reconstruction flag F1; wireframes doc ephemeral).
+const PlacementV2Page = lazyWithRetry(() => import("@/pages/placement/v2/PlacementV2Page"));
 
 const SpeechDrillPage      = lazyWithRetry(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazyWithRetry(() => import("@/pages/practice/PhonemeDrillPage"));
@@ -764,20 +767,24 @@ export default function AppRouter() {
           <Route path="/dev/api"
             element={<LazyPage><DeveloperPortalPage /></LazyPage>} />
 
-          {/* Placement test — HIDDEN behind FEATURE_FLAGS.PLACEMENT_TEST_ENABLED
-              (default false; see featureFlags.ts for why + revival). While
-              disabled, every /placement* path redirects to home BEFORE the
-              lazy page is mounted, so the engine never renders and no
-              placement analytics/Sentry events fire — even on a manually
-              typed URL or a stale deep link. The lazy imports stay
-              referenced in the enabled branch so flipping the one flag
-              fully restores routing with no other change. Requires auth
-              when enabled (profile writes are keyed on user.id). */}
+          {/* Placement test v2 — STILL HIDDEN behind
+              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED (default false; see
+              featureFlags.ts). PR 11 only WIRES v2 behind the flag — it
+              does NOT flip it (reconstruction flag F2: flipping is the
+              launch decision, the documented one-line call in
+              featureFlags.ts; "wired behind the flag" ≠ "launched").
+              Flag OFF → every /placement* path still redirects to home
+              BEFORE any lazy mount (engine never renders, no placement
+              analytics/Sentry) — #658 behavior 100% preserved. Flag ON →
+              users get the NEW v2 adaptive page (the fix), never the
+              broken v1; the single-page v2 session funnels the legacy
+              sub-paths into /placement. Requires auth when enabled
+              (profile writes are keyed on user.id). */}
           <Route path="/placement"
             element={
               FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
                 <RequireAuth>
-                  <LazyPage><PlacementWelcomePage /></LazyPage>
+                  <LazyPage><PlacementV2Page /></LazyPage>
                 </RequireAuth>
               ) : (
                 <Navigate to="/" replace />
@@ -787,9 +794,7 @@ export default function AppRouter() {
           <Route path="/placement/who"
             element={
               FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
-                <RequireAuth>
-                  <LazyPage><PlacementWhoForPage /></LazyPage>
-                </RequireAuth>
+                <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
               )
@@ -798,9 +803,7 @@ export default function AppRouter() {
           <Route path="/placement/test"
             element={
               FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
-                <RequireAuth>
-                  <LazyPage><PlacementTestPage /></LazyPage>
-                </RequireAuth>
+                <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
               )
@@ -809,9 +812,7 @@ export default function AppRouter() {
           <Route path="/placement/results"
             element={
               FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
-                <RequireAuth>
-                  <LazyPage><PlacementResultsPage /></LazyPage>
-                </RequireAuth>
+                <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
               )
