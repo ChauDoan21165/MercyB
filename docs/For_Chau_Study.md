@@ -14,11 +14,71 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+6. [Fake-green tests are a failure class](#6-fake-green-tests-are-a-failure-class)
+7. [Schema-as-written beats schema-as-assumed](#7-schema-as-written-beats-schema-as-assumed)
+8. [Post-merge verification is not optional for critical changes](#8-post-merge-verification-is-not-optional-for-critical-changes)
+9. [Agent ground-truth beats brief narrative](#9-agent-ground-truth-beats-brief-narrative)
 1. [End-to-end critical-path test inventory (30 tests every serious app needs)](#1-end-to-end-critical-path-test-inventory)
 2. [The "1 PR per concern" discipline](#2-the-1-pr-per-concern-discipline)
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 6. Fake-green tests are a failure class
+
+**What it is.** A test that passes without asserting the thing it appears to cover. The suite is green and the coverage number looks healthy, but nothing is actually locked. Counting tests is not counting coverage.
+
+**Why it matters.** A green suite that proves nothing is worse than no suite — it buys false confidence. You stop looking at the area it "covers" because the dashboard says it's safe, and a regression walks straight through.
+
+**MercyBlade examples tonight:**
+- **No-op assertions** (A74, PR #752): four `expect(true).toBe(true)` assertions sat in the navigation tests. They passed on every run and proved nothing about navigation.
+- **Shape tests masquerading as behavior locks** (A80): `mercyPersona.test.ts` had 32 passing tests. Classifying them showed only 2 actually locked register/identity. The other 30 were array-shape and pure-function checks that would have stayed green through the exact #690-class persona drift that PR #736 had to revert.
+
+**Action.** When you review test coverage, classify by what each test actually asserts, not by the count. A 32-test file is worth its number of real behavioral locks — here, 2. The `fake-green-test` label (created A92) exists to triage this class; apply it whenever you find a test that cannot fail for the reason it claims to exist.
+
+---
+
+## 7. Schema-as-written beats schema-as-assumed
+
+**What it is.** A brief sketched from memory or a stale audit note will get the database shape wrong. The only authority is the current migration files.
+
+**Why it matters.** Designing a fix around an imagined column means the fix is wrong before the first line is written — and if it ships, it silently breaks the columns that actually exist.
+
+**MercyBlade examples tonight:**
+- **system_logs** (A72, SECDEF wrappers): the brief sketched `log_system_event(category, level, message, metadata)`. The real table has no `category` column — scope lives in `metadata->>'scope'` — while `route` and `user_id` are first-class columns admins query. A72 reconciled against the real schema and preserved `route` + `user_id`, avoiding exactly the telemetry regression A59 had flagged on PR #744.
+- **stripe_webhook_events** (A77): the task assumed `status='canceled'`/`'incomplete'`. The real enum is `active` / `trialing` / `expired` / `revoked`, with cancellation expressed as `canceled_at`.
+
+**Action.** A dispatched agent must read the current migration files before accepting any schema shape the brief asserts. If the brief and the migration disagree, the migration wins — and the divergence goes in the report.
+
+---
+
+## 8. Post-merge verification is not optional for critical changes
+
+**What it is.** The GitHub "Merged" badge is not proof the change reached `origin/main`. A squash commit can fail to land even while the UI reports success.
+
+**Why it matters.** You believe a critical fix is live, the next deploy is built from a main that never received it, and the gap stays invisible until it costs you in production.
+
+**MercyBlade example.** PR #714 (A33's first Sentry sourcemap CI wiring) showed MERGED on GitHub, but the squash commit never reached `origin/main` — `production-deploy.yml` had zero Sentry references after the "merge." It was re-landed via PR #723 only because A33 verified with `git log origin/main -- <file>` instead of trusting the badge. Stacked-PR chains share this failure mode: squash-merging the base orphans the children even when GitHub shows them merged.
+
+**Action.** For any PR touching CI, env, a money path, security, or a migration, run `git log origin/main -- <changed-file>` immediately after clicking merge. Confirm the change is on main before assuming the deploy will carry it.
+
+---
+
+## 9. Agent ground-truth beats brief narrative
+
+**What it is.** Briefs are written from notes that may be stale. The dispatched agent reads the actual current main. When the two disagree, the agent's read is the one that's true.
+
+**Why it matters.** Forcing an agent to execute a brief it has already proven wrong ships the brief's mistake. The whole point of dispatching someone who verifies first is lost if divergence is punished instead of trusted.
+
+**MercyBlade examples tonight:**
+- **A31 (PR #717):** the brief asked for a new `email_unsubscribe_tokens` table; A31 found PR #190 had already shipped a permanent token column on `profiles` with 3 wired functions. A new table would have orphaned the existing wiring.
+- **A80 register tests:** the brief said the tests already covered the persona drift; A80's classification showed only 2 of 32 actually locked register/identity.
+- **A77 webhook attribution:** the brief asked for `[object Object]` orphan-user detection, but the table strips the payload. A77 had to invent an attribution method — Stripe period-end timing against `public.subscriptions` — that the brief could not have specified.
+- **A96 webhook forensics:** the brief framed the problem as "the table is too thin." A96 corrected it: the table is deliberately thin on the error path, because persisting on the primary key blocks Stripe's legitimate retry (the N4 idempotency bug). The fix had to be a separate append-only table, not a column added to the existing one.
+
+**Action.** When an agent reports the brief was wrong and explains why, default to trusting them. Reward the correction; don't punish divergence that arrives with evidence.
 
 ---
 
@@ -172,4 +232,4 @@ Not worth adding:
 
 ---
 
-*Last updated: May 19, 2026 — initial creation with 5 lessons from tonight's session.*
+*Last updated: May 19, 2026 — 9 lessons total; 6–9 added from the May 19 hardening wave, 1–5 from initial creation.*
