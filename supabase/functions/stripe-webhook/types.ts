@@ -62,7 +62,15 @@ export type Database = {
       subscriptions: {
         Row: {
           user_id: string;
+          // app_id, customer_id, subscription_id are real columns (see the
+          // authoritative .select() list in billing.ts and `.eq("app_id")`)
+          // that this hand-trimmed generated type had drifted out of sync —
+          // their absence is what tripped the TS2353 on mapStripeSubscription.
+          app_id: string;
           provider: BillingProvider;
+
+          customer_id: string | null;
+          subscription_id: string | null;
 
           provider_customer_id: string | null;
           provider_subscription_id: string | null;
@@ -88,7 +96,11 @@ export type Database = {
         };
         Insert: {
           user_id: string;
+          app_id?: string;
           provider: BillingProvider;
+
+          customer_id?: string | null;
+          subscription_id?: string | null;
 
           provider_customer_id?: string | null;
           provider_subscription_id?: string | null;

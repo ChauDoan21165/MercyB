@@ -416,7 +416,13 @@ async function processSubscriptionLikeEvent(params: {
     plan: asNonEmptyStringOrNull(rawMetadata.plan),
     priceId,
   });
-  const metadata = {
+  // Stripe metadata is an arbitrary string→value map at runtime
+  // (getMetadata returns Record<string, unknown>). Without this explicit
+  // annotation TS object-spread collapses the type to just the two
+  // conditional-spread keys ({ price_id?; plan? }) and drops the index
+  // signature, so every other real key read (email / supabase_user_id /
+  // user_id / product_id) fails TS2339. Type-only; no behavior change.
+  const metadata: Record<string, unknown> = {
     ...rawMetadata,
     ...(plan ? { plan } : {}),
     ...(priceId ? { price_id: priceId } : {}),
@@ -707,7 +713,9 @@ export async function handleInvoicePaid({
     priceId,
   });
 
-  const metadata = {
+  // See the rawMetadata site above: explicit Record<string, unknown> keeps
+  // the open Stripe-metadata shape so product_id et al. stay readable.
+  const metadata: Record<string, unknown> = {
     ...mergedMetadata,
     ...(plan ? { plan } : {}),
     ...(priceId ? { price_id: priceId } : {}),
@@ -836,7 +844,9 @@ export async function handleInvoicePaymentFailed({
     priceId,
   });
 
-  const metadata = {
+  // See the rawMetadata site above: explicit Record<string, unknown> keeps
+  // the open Stripe-metadata shape so product_id et al. stay readable.
+  const metadata: Record<string, unknown> = {
     ...mergedMetadata,
     ...(plan ? { plan } : {}),
     ...(priceId ? { price_id: priceId } : {}),
