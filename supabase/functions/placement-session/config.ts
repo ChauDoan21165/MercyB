@@ -133,3 +133,64 @@ export const RETEST_COOLDOWN_DAYS = 90 as const;
 /** A started-but-not-completed session older than this with no activity is
  *  treated as `abandoned`; a fresh `start` begins a new one (design §4). */
 export const SESSION_ABANDON_TTL_MIN = 60 as const;
+
+/**
+ * θ→CEFR band → recommended starting room id — the SERVER mirror of the
+ * browser `src/lib/placement/cefrToRoom.ts` `CEFR_TO_ROOM` map.
+ *
+ * WHY A MIRROR (reconstruction flag #1, PR 9 — same transparency as
+ * PR 8's L1-severity bands / #712 randomesqueK / #718 terminator
+ * precedence):
+ *  • `result.ts` requires `ResultDeps.recommendedRoomFor` injected, and
+ *    `ResultPayload.recommendedRoomId` is contractually "via existing
+ *    cefrToRoom.ts (unchanged contract)" (types.ts:194).
+ *  • The single source of truth is the BROWSER module
+ *    `src/lib/placement/cefrToRoom.ts` — but it `import`s `./engine`
+ *    (browser code) and is validated against `public/data/*.json`. The
+ *    URL-free server engine subtree (tsconfig.functions.json, gate #6)
+ *    CANNOT import it without breaking both the server/browser split and
+ *    the Node-tsc-resolvable scope (result.ts's header is explicit on
+ *    this deliberate boundary).
+ *  • So the edge fn's `recommendedRoomFor` needs a server-reachable
+ *    CEFR→room table. The only options were (a) duplicate the 7-entry
+ *    map server-side, or (b) violate the engine boundary. (a), here,
+ *    with a hard anti-drift guard: `__tests__/cefrToRoomServer.test.ts`
+ *    asserts this constant deep-equals the browser `CEFR_TO_ROOM`, so
+ *    any divergence fails CI loudly — exactly the discipline the browser
+ *    `cefrToRoom.test.ts` already applies against `public/data/*.json`.
+ *    "Single source of truth" is preserved in EFFECT: two copies, but a
+ *    golden makes silent drift impossible.
+ *  • Lives in config.ts (not core.ts) so it stays inside the
+ *    tsc-gated + vitest-covered URL-free subtree and obeys design §2.7
+ *    "no magic values scattered in logic". Pure constant, zero import
+ *    added — config.ts's contract is intact.
+ *
+ * KEEP VERBATIM-EQUAL to `CEFR_TO_ROOM` in src/lib/placement/cefrToRoom.ts.
+ */
+export const CEFR_TO_ROOM_SERVER: Readonly<Record<CefrBand, string>> = {
+  pre_a1: "english_foundation_ef01",
+  A1: "english_a1_a101",
+  A2: "english_a2_a201",
+  B1: "english_b1_b101",
+  // No B2-prefixed rooms exist — ship B2 the most advanced B1 room
+  // (upper-intermediate) before the C1 jump. Mirrors cefrToRoom.ts.
+  B2: "english_b1_b114",
+  C1: "english_c1_c101",
+  // No free C2 content — most advanced free C1 room so the primary CTA
+  // never paywalls. Mirrors cefrToRoom.ts.
+  C2: "english_c1_c114",
+};
+
+/** Optional ops override for the active item-bank version (reconstruction
+ *  flag #2, PR 9). D4 (CONFIRMED, placement_items migration) is per-row
+ *  `bank_version` + `active` with NO meta table; it fixes the read as
+ *  "edge fn loads where active and bank_version = <current>" but defines
+ *  no `<current>` selector and no constant. PR 9's `pickBankVersion`
+ *  (core.ts, pure + unit-tested) resolves it WITHOUT inventing a knob:
+ *  this env var wins if set; else the single distinct active version;
+ *  else "" → empty bank → engine `bank_exhausted` (the D2 "ship EMPTY"
+ *  end-to-end path, deliberately supported); else (>1 active version =
+ *  an authoring error) the lexicographically-max one + a telemetried
+ *  warning — never crash a live session ("core path survives optional
+ *  failures"). Documented here only; the env name is read in index.ts. */
+export const PLACEMENT_BANK_VERSION_ENV = "PLACEMENT_BANK_VERSION" as const;
