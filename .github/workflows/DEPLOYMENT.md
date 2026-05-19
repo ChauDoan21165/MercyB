@@ -1,12 +1,23 @@
 # Deployment Configuration Guide
 
-This guide explains how to set up automated preview deployments for pull requests.
+This guide explains how MercyBlade deploys. The project deploys
+**exclusively via Vercel** — production through a GitHub Actions
+workflow, PR previews through Vercel's native GitHub integration.
+There is no other deploy target and no preview-deploy job to
+"enable": previews are automatic.
 
 ## Overview
 
-The preview deployment workflow builds your project and Vercel deploys a
-preview for each pull request. This lets you preview changes before merging
-to production.
+- **Production (`main` → prod):** the `production-deploy.yml` GitHub
+  Actions workflow is the single owner. See below.
+- **PR previews:** Vercel's native GitHub integration builds and
+  deploys a preview for every pull request automatically. The preview
+  URL appears as the **Vercel** check on the PR. No secrets or
+  workflow changes are required for this — it is configured on the
+  Vercel project, not in this repo.
+- **`preview-deployment.yml`** does **not** deploy. It validates JSON,
+  type-checks, builds, uploads a build artifact, and comments build
+  status on the PR. It is a CI gate, not a deployer.
 
 ## Production Deployment (main → prod)
 
@@ -23,11 +34,15 @@ no-op stub that reported a false green without ever deploying anything (see
 the workflow's header comment and PR #657). Requires the GitHub Actions
 secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
 
-> **Direction (not yet merged as of 2026-05-18):** Vercel's GitHub App also
-> auto-deploys `main`, which double-deploys. A change to disable the GitHub
-> App auto-deploy for `main` — leaving `production-deploy.yml` as the sole
-> prod owner — is in progress on branch `chore/disable-vercel-double-deploy`.
-> Until that merges, both paths may fire on a push to `main`.
+> **No double-deploy (PR #681, merged 2026-05-19).** Vercel's GitHub
+> App used to also auto-deploy `main`, double-deploying production.
+> Root `vercel.json` now sets `{"git":{"deploymentEnabled":{"main":
+> false}}}`, so the GitHub App no longer deploys `main` —
+> `production-deploy.yml` is the **sole** prod owner. The GitHub App
+> still auto-deploys **PR-branch previews** (only the production
+> branch is gated; this is intentional — do not "fix" it). Revert
+> path if Actions ever proves flaky: delete the `git` block from
+> `vercel.json`.
 
 ## Important Notes
 
@@ -52,60 +67,20 @@ secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
 - Storage buckets
 - Auth configuration
 
-## Deployment Options
+## How Preview Deploys Work
 
-### Option 1: Netlify (Recommended for Static Sites)
+Previews require **no configuration in this repo**. The Vercel project
+is connected to GitHub via Vercel's native integration; opening or
+updating a PR triggers a preview build on Vercel directly. The result
+surfaces as the **Vercel** status check on the PR, with the preview
+URL.
 
-1. **Create Netlify account** at https://netlify.com
+If you ever need a build artifact without Vercel (e.g. to deploy a
+one-off to another host), `preview-deployment.yml` already uploads the
+`dist/` folder as a downloadable artifact on every PR run — download
+it from the workflow run and deploy it wherever you like.
 
-2. **Get your Site ID and Auth Token:**
-   ```bash
-   # Install Netlify CLI
-   npm install -g netlify-cli
-   
-   # Login and get site ID
-   netlify login
-   netlify sites:list
-   ```
-
-3. **Add GitHub Secrets:**
-   - Go to your repository → Settings → Secrets and variables → Actions
-   - Add these secrets:
-     - `NETLIFY_AUTH_TOKEN`: Your Netlify personal access token
-     - `NETLIFY_SITE_ID`: Your Netlify site ID
-
-4. **Enable the workflow:**
-   - Open `.github/workflows/preview-deployment.yml`
-   - Uncomment the `deploy-netlify` job (lines 44-62)
-   - Commit and push
-
-### Option 2: Vercel (Recommended for Full-Stack Apps)
-
-1. **Create Vercel account** at https://vercel.com
-
-2. **Get your tokens:**
-   - Go to Vercel → Settings → Tokens → Create new token
-   - Get your Org ID and Project ID from your project settings
-
-3. **Add GitHub Secrets:**
-   - `VERCEL_TOKEN`: Your Vercel authentication token
-   - `VERCEL_ORG_ID`: Your organization ID
-   - `VERCEL_PROJECT_ID`: Your project ID
-
-4. **Enable the workflow:**
-   - Open `.github/workflows/preview-deployment.yml`
-   - Uncomment the `deploy-vercel` job (lines 64-77)
-   - Update `alias-domains` with your domain
-   - Commit and push
-
-### Option 3: Manual Preview (No Configuration Required)
-
-The workflow already builds your project and uploads artifacts. You can:
-- Download build artifacts from the workflow run
-- Manually deploy to any hosting platform
-- Test locally by downloading the `dist` folder
-
-## Workflow Behavior
+## Workflow Behavior (`preview-deployment.yml`)
 
 ### When Triggered
 - On pull request creation
@@ -116,9 +91,11 @@ The workflow already builds your project and uploads artifacts. You can:
 1. ✅ Validates all JSON data files
 2. ✅ Runs TypeScript type checking
 3. ✅ Builds the production bundle
-4. ✅ Uploads build artifacts
-5. 💬 Comments on PR with build status
-6. 🚀 (Optional) Deploys to preview platform
+4. ✅ Uploads build artifacts (`dist/`)
+5. 💬 Comments build status on the PR
+
+It does **not** deploy — Vercel's native integration handles the
+preview deploy independently.
 
 ### Concurrency
 - Only one preview build runs per PR at a time
@@ -126,7 +103,7 @@ The workflow already builds your project and uploads artifacts. You can:
 
 ## Environment Variables
 
-Preview deployments use the same environment variables as production:
+Preview and production deployments use the same environment variables:
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_PUBLISHABLE_KEY`
 
@@ -135,13 +112,9 @@ Variables). See `docs/SECURITY_HARDENING_2025.md` for the canonical list.
 
 ## Cost Considerations
 
-### Netlify
-- Free tier: 100GB bandwidth/month
-- Preview deployments count toward bandwidth
-
 ### Vercel
-- Free tier: 100GB bandwidth/month
 - Preview deployments are free on all plans
+- The project is on Vercel Pro (no Hobby deployment rate limit)
 
 ### GitHub Actions
 - Free tier: 2,000 minutes/month for private repos
@@ -154,15 +127,19 @@ Variables). See `docs/SECURITY_HARDENING_2025.md` for the canonical list.
 2. Ensure all dependencies are in `package.json`
 3. Verify data validation passes locally
 
-### Deployment Fails
-1. Verify secrets are configured correctly
-2. Check token permissions
-3. Ensure site/project IDs are correct
+### Production Deploy Fails
+1. Check the `production-deploy.yml` run logs in GitHub Actions
+2. Verify the `VERCEL_TOKEN` / `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID`
+   secrets are set and the token is not expired
+3. The workflow fails loud (red) on a real failure — never assume a
+   green badge means shipped without checking the run
 
-### Preview Shows Outdated Data
-- Remember: All previews share the same database
-- Database changes affect all preview deployments immediately
-- Consider using feature flags for gradual rollouts
+### Preview Missing or Stale
+1. Check the **Vercel** status check on the PR for the preview URL and
+   build log (the preview is built by Vercel, not by GitHub Actions)
+2. Remember: all previews share the same database — DB changes affect
+   every preview immediately
+3. Consider feature flags for gradual rollouts
 
 ## Best Practices
 
@@ -258,7 +235,6 @@ pick a string from the green-prefix lines.
 
 ## Additional Resources
 
-- [Netlify Deploy Documentation](https://docs.netlify.com/site-deploys/overview/)
 - [Vercel Deploy Documentation](https://vercel.com/docs/deployments/overview)
 - [Vercel Git Integration](https://vercel.com/docs/git)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
