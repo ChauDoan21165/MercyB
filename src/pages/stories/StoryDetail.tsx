@@ -15,6 +15,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import type { UserStoryRow } from "@/lib/stories/types";
 
 const META_DESCRIPTION_FALLBACK =
@@ -217,21 +218,26 @@ export default function StoryDetail(): React.ReactElement {
           )}
         </div>
 
-        {/* CTA */}
-        <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-center">
-          <p className="text-base font-bold text-amber-900">
-            Bắt đầu hành trình giống {row.display_name}
-          </p>
-          <p className="mt-1 text-xs text-amber-700">
-            Start a journey like {row.display_name}.
-          </p>
-          <Link
-            to="/placement"
-            className="mt-3 inline-block rounded-full bg-amber-600 px-5 py-2 text-sm font-bold text-white"
-          >
-            Làm bài kiểm tra trình độ
-          </Link>
-        </div>
+        {/* CTA — this whole block points only at the placement test, so
+            it is HIDDEN behind FEATURE_FLAGS.PLACEMENT_TEST_ENABLED
+            (default false; see featureFlags.ts). Flip the one flag to
+            bring the "start a journey like <name>" CTA back. */}
+        {FEATURE_FLAGS.PLACEMENT_TEST_ENABLED && (
+          <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-center">
+            <p className="text-base font-bold text-amber-900">
+              Bắt đầu hành trình giống {row.display_name}
+            </p>
+            <p className="mt-1 text-xs text-amber-700">
+              Start a journey like {row.display_name}.
+            </p>
+            <Link
+              to="/placement"
+              className="mt-3 inline-block rounded-full bg-amber-600 px-5 py-2 text-sm font-bold text-white"
+            >
+              Làm bài kiểm tra trình độ
+            </Link>
+          </div>
+        )}
 
         {/* Owner takedown */}
         {isOwner && (

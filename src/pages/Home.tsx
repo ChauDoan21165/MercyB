@@ -12,6 +12,7 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import LanguageTrackHome, {
   TargetSwitcher,
@@ -1038,26 +1039,35 @@ export default function Home() {
               Placement lives right after Teacher Mercy so new visitors
               have two clear guided paths: chat (Mercy) or assess
               (Placement). One is relational, one is diagnostic. */}
-          {isPhone && (
-            <div style={{
-              marginTop: 4, fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
-              textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
-            }}>
-              Bắt đầu từ đây
-            </div>
+          {/* Placement test card — HIDDEN behind
+              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED (default false; see
+              featureFlags.ts). The card + its "Bắt đầu từ đây" header are
+              not rendered while disabled, so new users never see a way in.
+              Flip the one flag to bring this back. */}
+          {FEATURE_FLAGS.PLACEMENT_TEST_ENABLED && (
+            <>
+              {isPhone && (
+                <div style={{
+                  marginTop: 4, fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
+                  textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
+                }}>
+                  Bắt đầu từ đây
+                </div>
+              )}
+              <ProgressiveDisclosureCard
+                cardId="placement"
+                title="Placement test"
+                shortLine={isPhone ? "Biết chính xác trình độ — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
+                accentColor="#0EA5E9"
+                iconBg="rgba(236,246,255,0.96)"
+                iconEl={<Compass size={isPhone ? 20 : 24} color="white" />}
+                onStart={() => nav("/placement")}
+                startLabel="Start placement test →"
+              >
+                {placementCard}
+              </ProgressiveDisclosureCard>
+            </>
           )}
-          <ProgressiveDisclosureCard
-            cardId="placement"
-            title="Placement test"
-            shortLine={isPhone ? "Biết chính xác trình độ — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
-            accentColor="#0EA5E9"
-            iconBg="rgba(236,246,255,0.96)"
-            iconEl={<Compass size={isPhone ? 20 : 24} color="white" />}
-            onStart={() => nav("/placement")}
-            startLabel="Start placement test →"
-          >
-            {placementCard}
-          </ProgressiveDisclosureCard>
 
           {/* ── Intent group: "Prepare for exams" ─────────────────────
               Goal-oriented learners scan for their exam. Grouped so the
