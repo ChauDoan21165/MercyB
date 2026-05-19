@@ -87,17 +87,22 @@ class Logger {
       }
     }
 
-    // Persist to database only in production and only for error/warn
+    // Persist to database only in production and only for error/warn.
+    // Goes through the log_system_event SECURITY DEFINER RPC (A72) — a
+    // direct anon/authenticated INSERT on system_logs is now revoked.
     if (this.isProd && (level === "error" || level === "warn")) {
       try {
-        await supabase.from("system_logs").insert({
-          level,
-          message,
-          route,
-          user_id: userId,
-          metadata: context || {},
-          created_at: timestamp,
+        const { error: rpcError } = await supabase.rpc("log_system_event", {
+          _level: level,
+          _message: message,
+          _route: route,
+          _user_id: userId ?? null,
+          _metadata: context || {},
         });
+        if (rpcError) {
+          // Don't throw - logging should never break the app
+          console.error("Failed to persist log to database:", rpcError);
+        }
       } catch (dbError) {
         // Don't throw - logging should never break the app
         console.error("Failed to persist log to database:", dbError);
