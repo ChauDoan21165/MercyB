@@ -228,6 +228,13 @@ export default [
    * surfaces. This is a forward-lock only — no existing source is
    * changed. Placed LAST so it wins precedence for matching files.
    *
+   * src/pages added 2026-05-19 (A45): all 83 no-explicit-any
+   * violations across 14 page files were given proper types — room
+   * arrays typed via TierRoom/RoomMeta, error catches narrowed to
+   * `unknown`, window debug globals declared in src/types/window.d.ts.
+   * The broad src/pages/** glob supersedes the earlier
+   * src/pages/auth/** entry. Zero @ts-ignore / @ts-expect-error.
+   *
    * Excluded (have live violations — do NOT add without a source fix):
    *   src/billing            (subscriptionRepository.ts:62)
    *   src/components/auth    (__tests__/EmailBlock.codeFlow.test.tsx)
@@ -238,7 +245,7 @@ export default [
       "src/lib/auth/**/*.{ts,tsx}",
       "src/components/payment/**/*.{ts,tsx}",
       "src/components/billing/**/*.{ts,tsx}",
-      "src/pages/auth/**/*.{ts,tsx}",
+      "src/pages/**/*.{ts,tsx}",
       "src/store/**/*.{ts,tsx}",
       "src/security/**/*.{ts,tsx}",
       "src/middleware/**/*.{ts,tsx}",

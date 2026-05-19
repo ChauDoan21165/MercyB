@@ -103,9 +103,9 @@ export default function AdminAccessCodes() {
 
       if (error) throw error;
       setCodes((data ?? []) as AccessCode[]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error fetching codes:", error);
-      toast.error(error?.message || "Failed to fetch access codes");
+      toast.error(error instanceof Error ? error.message : "Failed to fetch access codes");
       setCodes([]);
     } finally {
       setLoading(false);
@@ -125,8 +125,8 @@ export default function AdminAccessCodes() {
         .maybeSingle();
 
       if (error) throw error;
-      setDefaultTierId((data as any)?.id ?? "");
-    } catch (error: any) {
+      setDefaultTierId((data as { id?: string | null } | null)?.id ?? "");
+    } catch (error: unknown) {
       console.error("Error fetching default tier:", error);
       setDefaultTierId("");
     }
@@ -157,7 +157,7 @@ export default function AdminAccessCodes() {
       const code = generateCodeString();
 
       const days = Number.isFinite(newCode.days) ? newCode.days : 30;
-      const payload: any = {
+      const payload = {
         code,
         tier_id: defaultTierId,
         days,
@@ -183,9 +183,9 @@ export default function AdminAccessCodes() {
       setCreateDialogOpen(false);
       setNewCode({ days: 30, maxUses: 1, notes: "" });
       await fetchCodes();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error creating code:", error);
-      toast.error(error?.message || "Failed to create access code");
+      toast.error(error instanceof Error ? error.message : "Failed to create access code");
     } finally {
       setCreating(false);
     }
@@ -202,9 +202,9 @@ export default function AdminAccessCodes() {
 
       toast.success(`Code ${currentStatus ? "deactivated" : "activated"}`);
       await fetchCodes();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error toggling code status:", error);
-      toast.error(error?.message || "Failed to update code status");
+      toast.error(error instanceof Error ? error.message : "Failed to update code status");
     }
   }
 
@@ -225,9 +225,9 @@ export default function AdminAccessCodes() {
       setDeleteDialogOpen(false);
       setPendingDelete(null);
       await fetchCodes();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error deleting code:", error);
-      toast.error(error?.message || "Failed to delete code");
+      toast.error(error instanceof Error ? error.message : "Failed to delete code");
     } finally {
       setDeleting(false);
     }
