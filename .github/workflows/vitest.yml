@@ -20,7 +20,7 @@ jobs:
           # See supabase/functions/azure-phoneme/__tests__/index.test.ts header.
           # Other workflows (test.yml, mutation-testing.yml, audio-auto-repair.yml)
           # already use 20 — this brings vitest.yml in line.
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       
       - name: Install dependencies
