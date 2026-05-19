@@ -69,6 +69,16 @@ jobs:
       - name: Validate kids rooms
         run: node scripts/validate-kids-rooms.js
 
+      # App-store blocker B2: every user-identifying live table must be
+      # classified in supabase/functions/delete-account/user-data-manifest.ts.
+      # Script exits 0 (skip) if Supabase env vars are absent, so forked-PR
+      # runs don't break — but trusted PRs and push:main fail loud on drift.
+      - name: Check delete-account coverage
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/check-delete-account-coverage.mjs
+
       - name: Generate and verify room registry
         run: |
           echo "🔄 Generating room registry..."
