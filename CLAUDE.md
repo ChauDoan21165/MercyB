@@ -104,7 +104,6 @@ Not a vanilla create-react-app boot. Includes:
 - Full-screen fatal error overlay (user-safe in prod, stack traces in dev)
 - Legacy path normalization (`/upgrade` → `/pricing`)
 - Session-storage deep-link restore for auth redirects
-- `window.__mbResolveAudioSrc` seam (older code path; modern path is `useAudioUrl`)
 - **PWA service worker IS registered in production.** `registerPwaServiceWorker` IIFE in `src/main.tsx` calls `navigator.serviceWorker.register("/sw.js")` on `window load`. Disabled only in dev (so HMR + the grammar-server proxy aren't intercepted). The SW config uses `skipWaiting:true / clientsClaim:true` so new deploys take over as soon as they install; `main.tsx` posts `SKIP_WAITING` on `updatefound` and reloads exactly once on `controllerchange` so the open tab gets the new bundle without a manual refresh. HTML is network-first (runtime `pages` cache) so the precached shell can never serve stale `index.html`; `index.html` is excluded from the precache for the same reason. `scheduleOneTimeChunkReload` in `main.tsx` still calls `unregisterAllServiceWorkers()` from `@/lib/swRecovery` before the recovery reload as a safety net. See `reports/sw-stale-html-diagnosis-2026-05-14.md`.
 
 ### Supabase
