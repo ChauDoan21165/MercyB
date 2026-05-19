@@ -124,19 +124,27 @@ async function checkAiBudget(
 }
 
 /**
- * Fetch the trial / tier columns from `profiles` for the calling user.
- * Returns null on miss / error so `checkTrialAccess` can fail-open.
+ * Fetch the trial + entitlement columns from `profiles` for the calling
+ * user. Returns null on miss / error so `checkTrialAccess` can fail-open.
  *
  * Trial column name set is historical noise — the schema accumulated
  * three names (trial_end, trial_ends_at, trial_expires_at). Reading
  * all three lets the trial check walk them in priority order without
  * forcing a column rename migration.
+ *
+ * `premium_status` / `premium_expires_at` are the billing-written paid
+ * signal that drives the paid bypass (the old `tier` numeric read was
+ * dead — `profiles.tier` is TEXT; see _shared/premiumEntitlement.ts).
+ * `tier` is still selected but only as the defensive secondary signal,
+ * read as a string — never coerced to a number here.
  */
 async function fetchUserProfile(userId: string): Promise<UserProfileRow | null> {
   try {
     const { data, error } = await supabase
       .from("profiles")
-      .select("trial_expires_at, trial_ends_at, trial_end, tier")
+      .select(
+        "trial_expires_at, trial_ends_at, trial_end, premium_status, premium_expires_at, tier",
+      )
       .eq("id", userId)
       .maybeSingle();
     if (error) {
@@ -149,7 +157,13 @@ async function fetchUserProfile(userId: string): Promise<UserProfileRow | null> 
       trial_expires_at: toIsoOrNull(row.trial_expires_at),
       trial_ends_at: toIsoOrNull(row.trial_ends_at),
       trial_end: toIsoOrNull(row.trial_end),
-      tier: typeof row.tier === "number" ? row.tier : null,
+      premium_status:
+        typeof row.premium_status === "string" ? row.premium_status : null,
+      premium_expires_at: toIsoOrNull(row.premium_expires_at),
+      tier:
+        typeof row.tier === "string" || typeof row.tier === "number"
+          ? row.tier
+          : null,
     };
   } catch (err) {
     console.error("fetchUserProfile threw", err);

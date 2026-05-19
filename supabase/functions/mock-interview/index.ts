@@ -12,6 +12,7 @@ import {
   getUserFromAuthHeader,
 } from "../_shared/security.ts";
 import { wrapHandler } from "../_shared/sentry.ts";
+import { isPremiumEntitled } from "../_shared/premiumEntitlement.ts";
 
 import { handleRequest, type Deps, type UserProfile } from "./core.ts";
 
@@ -22,28 +23,43 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 // ── Real-deps implementations ──────────────────────────────────────────
 
 /**
- * Tier + trial detection. Mirrors the existing client logic in
- * MockInterviewRoom.tsx (is_premium && status === 'trialing'). The
- * `tier` column drives free/paid; the trial state is read off the
- * subscriptions / entitlements snapshot in `profiles`.
+ * Tier + trial + paid detection.
+ *
+ * `isPaid` is the real paid signal: `profiles.premium_status` /
+ * `premium_expires_at` via the shared `isPremiumEntitled` helper
+ * (active/trialing within expiry, or past_due/grace_period dunning
+ * regardless of expiry — B13 caveat #3). The old `tier` numeric read
+ * is DEAD — `profiles.tier` is TEXT, so `typeof tier === "number"`
+ * was always false → the gate's `tier >= 2` paid branch never fired
+ * and a premium user who paid AFTER trial (status 'active', not
+ * 'trialing') was dropped to the free 1/week limit (B5/B17).
+ *
+ * `isTrialing` is kept distinct so the gate can label the allow
+ * reason 'trialing' (different UX copy) vs 'paid'.
  */
 async function fetchUserProfile(userId: string): Promise<UserProfile | null> {
   try {
     const { data, error } = await supabase
       .from("profiles")
-      .select("tier, is_premium, premium_status")
+      .select("tier, is_premium, premium_status, premium_expires_at")
       .eq("id", userId)
       .maybeSingle();
     if (error || !data) return null;
     const row = data as {
-      tier?: number | null;
+      tier?: string | number | null;
       is_premium?: boolean | null;
       premium_status?: string | null;
+      premium_expires_at?: string | null;
     };
     return {
       tier: typeof row.tier === "number" ? row.tier : 0,
       isTrialing:
         row.is_premium === true && row.premium_status === "trialing",
+      isPaid: isPremiumEntitled({
+        premium_status: row.premium_status ?? null,
+        premium_expires_at: row.premium_expires_at ?? null,
+        tier: row.tier ?? null,
+      }),
     };
   } catch (err) {
     console.warn("[mock-interview] fetchUserProfile threw:", err);

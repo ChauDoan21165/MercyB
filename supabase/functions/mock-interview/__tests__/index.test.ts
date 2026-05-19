@@ -15,7 +15,7 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
     getUserFromAuthHeader: vi.fn().mockResolvedValue({ id: "user-1" }),
     fetchUserProfile: vi
       .fn()
-      .mockResolvedValue({ tier: 0, isTrialing: false }),
+      .mockResolvedValue({ tier: 0, isTrialing: false, isPaid: false }),
     resolveAdminLevel: vi.fn().mockResolvedValue(0),
     countSessionsThisWeek: vi.fn().mockResolvedValue(0),
     insertSession: vi.fn().mockResolvedValue("sess-uuid-1"),
@@ -98,7 +98,7 @@ describe("handleRequest — /start dispatch", () => {
 describe("handleRequest — /start tier scenarios", () => {
   it("free tier with 0 sessions → 200, session inserted, count = 1", async () => {
     const deps = makeDeps({
-      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false }),
+      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false, isPaid: false }),
       countSessionsThisWeek: vi.fn().mockResolvedValue(0),
     });
     const res = await handleRequest(startReq(), deps);
@@ -115,7 +115,7 @@ describe("handleRequest — /start tier scenarios", () => {
   it("free tier with 1 session → 429 with bilingual error", async () => {
     const insertSession = vi.fn();
     const deps = makeDeps({
-      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false }),
+      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false, isPaid: false }),
       countSessionsThisWeek: vi.fn().mockResolvedValue(1),
       insertSession,
     });
@@ -134,7 +134,9 @@ describe("handleRequest — /start tier scenarios", () => {
   it("trial tier (isTrialing=true) → 200 even with 5 prior sessions", async () => {
     const count = vi.fn().mockResolvedValue(5);
     const deps = makeDeps({
-      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 1, isTrialing: true }),
+      fetchUserProfile: vi
+        .fn()
+        .mockResolvedValue({ tier: 1, isTrialing: true, isPaid: true }),
       countSessionsThisWeek: count,
     });
     const res = await handleRequest(startReq(), deps);
@@ -145,9 +147,31 @@ describe("handleRequest — /start tier scenarios", () => {
     expect(count).not.toHaveBeenCalled();
   });
 
-  it("paid tier (tier 2) → 200 unlimited", async () => {
+  // B17 money-path: a premium user who paid AFTER their trial lapsed
+  // arrives as tier 0 (TEXT column, never written), isTrialing false,
+  // isPaid true. Before the fix the dead `tier >= 2` branch dropped
+  // them to the free 1/week limit. The discovered case: "Mylinh".
+  it("paid via isPaid (tier 0, isTrialing false — the Mylinh case) → 200 unlimited", async () => {
     const deps = makeDeps({
-      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 2, isTrialing: false }),
+      fetchUserProfile: vi
+        .fn()
+        .mockResolvedValue({ tier: 0, isTrialing: false, isPaid: true }),
+      countSessionsThisWeek: vi.fn().mockResolvedValue(9),
+    });
+    const res = await handleRequest(startReq(), deps);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.allow_reason).toBe("paid");
+    expect(body.limit).toBeNull();
+    // Unlimited path never consults the weekly counter.
+    expect(deps.countSessionsThisWeek).not.toHaveBeenCalled();
+  });
+
+  it("legacy paid tier 2 (defensive fallback) still → 200 unlimited", async () => {
+    const deps = makeDeps({
+      fetchUserProfile: vi
+        .fn()
+        .mockResolvedValue({ tier: 2, isTrialing: false, isPaid: false }),
     });
     const res = await handleRequest(startReq(), deps);
     expect(res.status).toBe(200);
@@ -156,9 +180,25 @@ describe("handleRequest — /start tier scenarios", () => {
     expect(body.limit).toBeNull();
   });
 
+  it("truly free (tier 0, isPaid false) with 1 prior session → 429 (not wrongly unlimited)", async () => {
+    const insertSession = vi.fn();
+    const deps = makeDeps({
+      fetchUserProfile: vi
+        .fn()
+        .mockResolvedValue({ tier: 0, isTrialing: false, isPaid: false }),
+      countSessionsThisWeek: vi.fn().mockResolvedValue(1),
+      insertSession,
+    });
+    const res = await handleRequest(startReq(), deps);
+    expect(res.status).toBe(429);
+    const body = await res.json();
+    expect(body.error_code).toBe("MOCK_INTERVIEW_FREE_LIMIT_REACHED");
+    expect(insertSession).not.toHaveBeenCalled();
+  });
+
   it("admin level 10 with tier 0 → bypass, 200", async () => {
     const deps = makeDeps({
-      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false }),
+      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false, isPaid: false }),
       resolveAdminLevel: vi.fn().mockResolvedValue(10),
       countSessionsThisWeek: vi.fn().mockResolvedValue(99),
     });
@@ -214,7 +254,7 @@ describe("handleRequest — fail-open on infra blip", () => {
   it("when the gate throws, allows the session through (transition safety)", async () => {
     const deps = makeDeps({
       countSessionsThisWeek: vi.fn().mockRejectedValue(new Error("PG hiccup")),
-      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false }),
+      fetchUserProfile: vi.fn().mockResolvedValue({ tier: 0, isTrialing: false, isPaid: false }),
     });
     const res = await handleRequest(startReq(), deps);
     expect(res.status).toBe(200);
