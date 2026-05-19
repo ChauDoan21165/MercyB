@@ -24,7 +24,11 @@ create table if not exists public.billing_price_map (
     unique (provider, price_id)
 );
 
--- Remove placeholder seed rows from earlier setup
+-- Remove placeholder seed rows from earlier (pre-billing) setup so they are
+-- never present in a fresh env / db push. (Live prod still carried these with
+-- is_active=true due to migration drift; a one-shot SQL Editor patch was run
+-- by hand to clear them + reconcile the yearly id on the live database — see
+-- the feat/stripe-yearly-price-reconciliation PR.)
 delete from public.billing_price_map
 where price_id in ('price_replace_monthly', 'price_replace_yearly');
 
@@ -56,7 +60,7 @@ values
   ),
   (
     'stripe',
-    'price_1TCW5p2NqcfRsoh4SghDrMQv',
+    'price_1TCKSF2K1tPxy04uNeKcQWp5',
     'VIP Yearly',
     'year',
     1,
@@ -64,7 +68,7 @@ values
     2000000.00,
     'VND',
     true,
-    'Live Stripe yearly price id normalized to monthly MRR'
+    'Live Stripe yearly price id (reconciled A1: matches Pricing.tsx + all active yearly subscriptions; yearly_amount normalized to monthly MRR via monthly_amount)'
   )
 on conflict (provider, price_id) do update
 set
