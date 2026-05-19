@@ -542,6 +542,7 @@ export async function resolveUserByStripeLinkage(params: {
 async function recomputeAndPersistEntitlement(
   supabase: DBClient,
   userId: string,
+  now: Date | number = new Date(),
 ): Promise<import("./types.ts").EntitlementSnapshot> {
   const { data, error } = await supabase
     .from("subscriptions")
@@ -551,6 +552,9 @@ async function recomputeAndPersistEntitlement(
 
   if (error) throw error;
 
+  // B13 Phase 3 PR-B: `now` is threaded into the shared derive. An
+  // entitling row with a past `current_period_end` no longer projects
+  // to `profiles.premium_status = 'active'` — the bug closes here.
   const entitlement = deriveEntitlementFromSubscriptions(
     (data ?? []) as Array<
       Pick<
@@ -558,6 +562,7 @@ async function recomputeAndPersistEntitlement(
         "status" | "current_period_end" | "provider"
       >
     >,
+    now,
   );
 
   const { error: profileError } = await supabase
