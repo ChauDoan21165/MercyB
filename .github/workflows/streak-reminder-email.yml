@@ -9,9 +9,14 @@
 name: Streak Reminder Email
 
 on:
-  schedule:
-    - cron: "0 12 * * *" # daily 12:00 UTC = 19:00 Vietnam
-  workflow_dispatch: # manual trigger for testing
+  # DISABLED_REASON: 2026-05-18 (A9) — broken unsubscribe. This cron emails
+  # users but the message has no working List-Unsubscribe / one-click
+  # unsubscribe (CASL + Gmail RFC 8058 violation). Disabled per Chau's call
+  # (disable-for-48h while unsubscribe is rewritten). Re-enable ONLY after
+  # the unsubscribe-fix tracking issue #694 is resolved & verified.
+  # schedule:
+  #   - cron: "0 12 * * *" # daily 12:00 UTC = 19:00 Vietnam
+  workflow_dispatch: # manual trigger only — auto-schedule disabled (see above)
 
 jobs:
   send-streak-emails:

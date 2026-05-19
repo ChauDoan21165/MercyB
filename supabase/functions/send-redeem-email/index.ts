@@ -29,6 +29,34 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // ---------------------------------------------------------------------------
+  // SECURITY GATE — open-relay fix (A9, 2026-05-18)
+  // DISABLED_REASON context: config.toml sets verify_jwt=false for this
+  // function, so it previously accepted ANY caller with ANY { email, tier }
+  // body and sent mail to an arbitrary recipient — an open relay / spam vector
+  // (CASL + Gmail RFC 8058 abuse). Per Chau's call we GATE (do not delete) it.
+  //
+  // Sender allowlist: only internal server-side callers presenting the
+  // SUPABASE_SERVICE_ROLE_KEY (a secret that is never shipped to the browser
+  // bundle) may invoke this. The public anon key no longer authorizes a send.
+  // Legit callers updated to present this credential: redeem-gift-code,
+  // bank-transfer-orders. Tracking: unsubscribe-fix issue #694.
+  // ---------------------------------------------------------------------------
+  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  const presentedToken = (req.headers.get("Authorization") ?? "")
+    .replace(/^Bearer\s+/i, "")
+    .trim();
+  if (!serviceRoleKey || presentedToken !== serviceRoleKey) {
+    console.warn(
+      "[send-redeem-email] BLOCKED: caller not on sender allowlist " +
+        "(missing/invalid service-role credential)",
+    );
+    return new Response(
+      JSON.stringify({ ok: false, error: "Forbidden: sender not allowlisted" }),
+      { headers: corsHeaders, status: 403 },
+    );
+  }
+
   try {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (!resendApiKey) {

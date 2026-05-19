@@ -221,7 +221,9 @@ Deno.serve(async (req) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${Deno.env.get("SUPABASE_ANON_KEY")}`,
+            // send-redeem-email enforces a sender allowlist on the
+            // service-role credential (open-relay fix, A9 2026-05-18).
+            "Authorization": `Bearer ${Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")}`,
           },
           body: JSON.stringify(emailPayload),
         }
