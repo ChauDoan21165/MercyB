@@ -91,7 +91,7 @@ For **each** of the three, the credentialed pass must:
 ## Cross-track boundaries (do not duplicate)
 
 - **R1 — anon-readable view REVOKE:** separately owned (`fix/revoke-anon-on-internal-views`,
-  landed as `20260618000000_revoke_anon_on_internal_views.sql`). Not in scope here.
+  landed as `20260622000000_revoke_anon_on_internal_views.sql`). Not in scope here.
 - **R2 — `user_entitlements_raw` / `user_entitlements_raw_20260301_181303`:** raw-dump
   quarantine, A25's scope. This track tracks the **live** `user_entitlements`,
   a distinct object.
