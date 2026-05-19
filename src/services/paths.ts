@@ -83,7 +83,7 @@ export async function getUserProgress(userId: string, pathId: string): Promise<U
   }
 
   // Parse completed_days from JSONB
-  const progress = data as any;
+  const progress = data as Record<string, unknown>;
   return {
     ...progress,
     completed_days: Array.isArray(progress.completed_days) ? progress.completed_days : [],
@@ -102,7 +102,7 @@ export async function getAllUserProgress(userId: string): Promise<UserPathProgre
     throw error;
   }
 
-  return (data || []).map((p: any) => ({
+  return (data || []).map((p: Record<string, unknown>) => ({
     ...p,
     completed_days: Array.isArray(p.completed_days) ? p.completed_days : [],
   })) as UserPathProgress[];
@@ -129,7 +129,7 @@ export async function startPath(userId: string, pathId: string): Promise<UserPat
     throw error;
   }
 
-  const progress = data as any;
+  const progress = data as Record<string, unknown>;
   return {
     ...progress,
     completed_days: Array.isArray(progress.completed_days) ? progress.completed_days : [],
@@ -174,7 +174,7 @@ export async function completeDay(
     throw error;
   }
 
-  const progress = data as any;
+  const progress = data as Record<string, unknown>;
   return {
     ...progress,
     completed_days: Array.isArray(progress.completed_days) ? progress.completed_days : [],

@@ -124,7 +124,13 @@ async function syncToSupabase(totalPoints: number, event: PointEventType, points
     if (!user) return;
 
     // Use existing award_points RPC
-    const { error } = await (supabase as any).rpc('award_points', {
+    const rpcClient = supabase as unknown as {
+      rpc: (
+        fn: string,
+        args: Record<string, unknown>
+      ) => Promise<{ error: { message?: string; code?: string } | null }>;
+    };
+    const { error } = await rpcClient.rpc('award_points', {
       _user_id: user.id,
       _points: points,
       _transaction_type: event,
@@ -222,7 +228,7 @@ export async function loadPointsFromSupabase(): Promise<number | null> {
       .eq('user_id', user.id)
       .maybeSingle();
 
-    const serverPoints = (data as any)?.total_points;
+    const serverPoints = (data as { total_points?: number } | null)?.total_points;
     if (typeof serverPoints === 'number' && serverPoints > getLocalPoints()) {
       setLocalPoints(serverPoints);
       return serverPoints;

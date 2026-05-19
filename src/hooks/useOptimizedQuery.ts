@@ -3,7 +3,7 @@
  * SWR/caching pattern for room data and Supabase queries
  */
 
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions, QueryClient } from '@tanstack/react-query';
 
 /**
  * Optimized room data fetching with caching
@@ -43,7 +43,7 @@ export function useOptimizedListQuery<T>(
 /**
  * Prefetch utility for route preloading
  */
-export async function prefetchRoom(queryClient: any, roomId: string, fetchFn: () => Promise<any>) {
+export async function prefetchRoom(queryClient: QueryClient, roomId: string, fetchFn: () => Promise<unknown>) {
   return queryClient.prefetchQuery({
     queryKey: ['room', roomId],
     queryFn: fetchFn,

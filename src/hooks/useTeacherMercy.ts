@@ -59,7 +59,7 @@ export function useTeacherMercy(config: TeacherMercyConfig): TeacherMercyEngine 
   const [greetingText, setGreetingText] = useState<{ en: string; vi: string } | null>(null);
   const [currentVoiceLine, setCurrentVoiceLine] = useState<VoiceLine | null>(null);
   const [currentVoiceFile, setCurrentVoiceFile] = useState<string | null>(null);
-  const [currentAnimation, setCurrentAnimation] = useState<'halo' | 'ripple' | 'glow' | null>('halo');
+  const [currentAnimation, setCurrentAnimation] = useState<'halo' | 'shimmer' | 'ripple' | 'glow' | null>('halo');
 
   const { mode } = useMbTheme();
 
@@ -230,7 +230,7 @@ export function useTeacherMercy(config: TeacherMercyConfig): TeacherMercyEngine 
         break;
       case 'entry_click':
         if (enableAnimations) {
-          setCurrentAnimation('shimmer' as any);
+          setCurrentAnimation('shimmer');
           setTimeout(() => setCurrentAnimation('halo'), 500);
         }
         break;

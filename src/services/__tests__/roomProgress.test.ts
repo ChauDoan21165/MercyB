@@ -11,7 +11,16 @@ const mockUpdate = vi.fn();
 const mockEq = vi.fn();
 const mockSelect = vi.fn();
 
-const chain: any = {
+type MockChain = {
+  select: (...args: unknown[]) => MockChain;
+  insert: (...args: unknown[]) => unknown;
+  update: (...args: unknown[]) => MockChain;
+  eq: (...args: unknown[]) => unknown;
+  maybeSingle: () => unknown;
+  _updatePayload?: Record<string, unknown>;
+};
+
+const chain: MockChain = {
   select: (...args: unknown[]) => {
     mockSelect(...args);
     return chain;
@@ -92,7 +101,7 @@ describe("roomProgress.trackRoomEntry", () => {
       error: null,
     });
     mockUpdate.mockImplementationOnce((payload: Record<string, unknown>) => {
-      (chain as any)._updatePayload = payload;
+      chain._updatePayload = payload;
       return chain;
     });
     // final eq() returns the resolved promise-like response
@@ -106,7 +115,7 @@ describe("roomProgress.trackRoomEntry", () => {
 
     expect(result.ok).toBe(true);
     if (result.ok) expect(result.action).toBe("updated");
-    const patch = (chain as any)._updatePayload;
+    const patch = chain._updatePayload as Record<string, unknown>;
     expect(patch.repeat_count).toBe(3); // 2 + 1
     expect(typeof patch.last_seen_at).toBe("string");
   });
@@ -118,7 +127,7 @@ describe("roomProgress.trackRoomEntry", () => {
       error: null,
     });
     mockUpdate.mockImplementationOnce((payload: Record<string, unknown>) => {
-      (chain as any)._updatePayload = payload;
+      chain._updatePayload = payload;
       return chain;
     });
     mockEq.mockImplementation(() => {
@@ -131,7 +140,7 @@ describe("roomProgress.trackRoomEntry", () => {
 
     expect(result.ok).toBe(true);
     if (result.ok) expect(result.action).toBe("throttled");
-    const patch = (chain as any)._updatePayload;
+    const patch = chain._updatePayload as Record<string, unknown>;
     expect(patch.repeat_count).toBeUndefined(); // not bumped
     expect(typeof patch.last_seen_at).toBe("string");
   });
@@ -170,7 +179,7 @@ describe("roomProgress.updateRoomProgress", () => {
       error: null,
     });
     mockUpdate.mockImplementationOnce((payload: Record<string, unknown>) => {
-      (chain as any)._updatePayload = payload;
+      chain._updatePayload = payload;
       return chain;
     });
     mockEq.mockImplementation(() => {
@@ -181,7 +190,7 @@ describe("roomProgress.updateRoomProgress", () => {
 
     const result = await updateRoomProgress(USER, ROOM, { progressPct: 20 });
     expect(result.ok).toBe(true);
-    const patch = (chain as any)._updatePayload;
+    const patch = chain._updatePayload as Record<string, unknown>;
     expect(patch.progress_pct).toBe(75); // kept high, not lowered to 20
   });
 
@@ -191,7 +200,7 @@ describe("roomProgress.updateRoomProgress", () => {
       error: null,
     });
     mockUpdate.mockImplementationOnce((payload: Record<string, unknown>) => {
-      (chain as any)._updatePayload = payload;
+      chain._updatePayload = payload;
       return chain;
     });
     mockEq.mockImplementation(() => {
@@ -201,7 +210,7 @@ describe("roomProgress.updateRoomProgress", () => {
     });
 
     await updateRoomProgress(USER, ROOM, { progressPct: 80 });
-    const patch = (chain as any)._updatePayload;
+    const patch = chain._updatePayload as Record<string, unknown>;
     expect(patch.progress_pct).toBe(80);
   });
 
@@ -211,7 +220,7 @@ describe("roomProgress.updateRoomProgress", () => {
       error: null,
     });
     mockUpdate.mockImplementationOnce((payload: Record<string, unknown>) => {
-      (chain as any)._updatePayload = payload;
+      chain._updatePayload = payload;
       return chain;
     });
     mockEq.mockImplementation(() => {
@@ -221,7 +230,7 @@ describe("roomProgress.updateRoomProgress", () => {
     });
 
     await updateRoomProgress(USER, ROOM, { progressPct: 250 });
-    expect((chain as any)._updatePayload.progress_pct).toBe(100);
+    expect((chain._updatePayload as Record<string, unknown>).progress_pct).toBe(100);
   });
 
   it("lazy-INSERTs when row is missing", async () => {

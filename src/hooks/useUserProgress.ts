@@ -13,7 +13,7 @@ export type UserProgressRow = {
   progress_pct: number | null;
   repeat_count: number | null;
   current_day: number | null;
-  completed_days: any | null;
+  completed_days: number[] | null;
   last_study_at: string | null;
   minutes_7d: number;
   minutes_30d: number;

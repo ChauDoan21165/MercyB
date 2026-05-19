@@ -86,7 +86,7 @@ export function useStabilityAudit() {
     });
 
     // 7. Check slow network degrade
-    const connection = (navigator as any).connection;
+    const connection = (navigator as Navigator & { connection?: { effectiveType?: string } }).connection;
     const effectiveType = connection?.effectiveType || 'unknown';
     issues.push({
       id: 'slow-network',
@@ -106,7 +106,7 @@ export function useStabilityAudit() {
     });
 
     // 9. Check 50 rooms open (memory check)
-    const memoryInfo = (performance as any).memory;
+    const memoryInfo = (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory;
     const usedMB = memoryInfo ? (memoryInfo.usedJSHeapSize / 1048576).toFixed(1) : 'N/A';
     issues.push({
       id: 'memory-stress',
@@ -121,7 +121,7 @@ export function useStabilityAudit() {
       id: 'memory-leak',
       check: 'Memory leak detection',
       severity: memoryInfo && memoryInfo.usedJSHeapSize > 100 * 1048576 ? 'warning' : 'pass',
-      message: `Heap size: ${usedMB}MB ${memoryInfo?.usedJSHeapSize > 100 * 1048576 ? '(high)' : '(normal)'}`,
+      message: `Heap size: ${usedMB}MB ${(memoryInfo?.usedJSHeapSize ?? 0) > 100 * 1048576 ? '(high)' : '(normal)'}`,
       category: 'performance',
     });
 
@@ -185,7 +185,8 @@ export function useStabilityAudit() {
     });
 
     // 16. Check routing race conditions
-    const routerState = (window as any).__REACT_ROUTER__;
+    const routerState = (window as Window & { __REACT_ROUTER__?: unknown }).__REACT_ROUTER__;
+    void routerState;
     issues.push({
       id: 'routing-race',
       check: 'Routing race conditions',
@@ -296,7 +297,7 @@ export function useStabilityAudit() {
     });
 
     // 27. Check missing env vars
-    const hasSupabaseUrl = !!(import.meta as any).env?.VITE_SUPABASE_URL;
+    const hasSupabaseUrl = !!(import.meta.env as Record<string, string | undefined>)?.VITE_SUPABASE_URL;
     issues.push({
       id: 'missing-env-vars',
       check: 'Missing env vars',
@@ -326,7 +327,7 @@ export function useStabilityAudit() {
     });
 
     // 30. Check version mismatch
-    const reactVersion = (window as any).React?.version || 'unknown';
+    const reactVersion = (window as Window & { React?: { version?: string } }).React?.version || 'unknown';
     issues.push({
       id: 'version-mismatch',
       check: 'Version mismatch',

@@ -11,7 +11,7 @@ import { logger } from "@/lib/logger";
  */
 
 interface PerformanceContext {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export function usePerformanceMonitor(

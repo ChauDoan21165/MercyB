@@ -245,6 +245,11 @@ export default [
       "src/mercy/**/*.{ts,tsx}",
       "src/integrations/**/*.{ts,tsx}",
       "src/contexts/**/*.{ts,tsx}",
+      // A64 type-safety wave 2 (2026-05-19): every `any` in
+      // src/hooks (45) and src/services (23) was replaced with
+      // proper types — generics / structural casts / unknown.
+      "src/hooks/**/*.{ts,tsx}",
+      "src/services/**/*.{ts,tsx}",
     ],
     rules: {
       "@typescript-eslint/no-explicit-any": "error",

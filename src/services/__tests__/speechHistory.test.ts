@@ -7,7 +7,18 @@ const mockOrder = vi.fn();
 const mockRange = vi.fn();
 const mockMaybeSingle = vi.fn();
 
-const chain: any = {
+type MockChain = {
+  select: (...args: unknown[]) => MockChain;
+  order: (...args: unknown[]) => MockChain;
+  range: (...args: unknown[]) => Promise<{ data: unknown; error: unknown }>;
+  maybeSingle: () => Promise<{ data: unknown; error: unknown }>;
+  _mockRangeResult?: unknown;
+  _mockRangeError?: unknown;
+  _mockSingleResult?: unknown;
+  _mockSingleError?: unknown;
+};
+
+const chain: MockChain = {
   select: (...args: unknown[]) => {
     mockSelect(...args);
     return chain;
