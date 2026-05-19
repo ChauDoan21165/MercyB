@@ -54,12 +54,14 @@ export type OnboardingLevel =
   | "intermediate"
   | "advanced";
 
-export type OnboardingStepId =
-  | "welcome"
-  | "native"
-  | "target"
-  | "start_with"
-  | "confirmation";
+// The picker is now a flat 3-step FSM. The `welcome` interstitial and
+// `confirmation` echo screen were removed as guaranteed dead clicks
+// (A32 audit 2026-05-18 — they collected nothing and only added taps
+// between the landing CTA and the actual app). Mercy's greeting is now
+// inlined into the entry step header (ONBOARDING_COPY.greeting); finish
+// happens straight off the last pick (single-target Continue / the
+// start_with tap) — no separate confirmation screen.
+export type OnboardingStepId = "native" | "target" | "start_with";
 
 export interface OnboardingDraft {
   /** L1 the lesson pedagogy is authored for. Persisted to
@@ -85,18 +87,18 @@ export interface BilingualCopy extends BilingualLabel {
 }
 
 /** Onboarding steps in canonical display order. start_with is shown
- *  only when >1 target chosen (see OnboardingPage's nextStep). The
- *  goal/profession/level steps were removed as unreachable dead UI
- *  (pair-pick → home since #598). The OnboardingGoal/Profession/Level
+ *  only when >1 target chosen (see OnboardingPage's nextStep); a
+ *  single-target pick finishes straight off `target`. `welcome` and
+ *  `confirmation` were removed as dead clicks (A32 audit). The
+ *  goal/profession/level steps were already removed as unreachable dead
+ *  UI (pair-pick → home since #598). The OnboardingGoal/Profession/Level
  *  types + the profiles columns they map to are intentionally KEPT —
  *  still a live data contract (MercyGuide / DailyCoach read
  *  english_level; columns privilege-frozen per #578). */
 export const ONBOARDING_STEPS: OnboardingStepId[] = [
-  "welcome",
   "native",
   "target",
   "start_with",
-  "confirmation",
 ];
 
 /** Native-language options (Screen 1). Both shown — en-native is
@@ -202,8 +204,11 @@ export const READINESS_BADGE: Record<
   BilingualLabel | null
 > = {
   full: null,
-  partial: { vi: "Nội dung giới hạn", en: "Limited content" },
-  skeletal: { vi: "Nội dung giới hạn", en: "Limited content" },
+  // "Nội dung còn hạn chế" reads as natural Northern VI; the literal
+  // "Nội dung giới hạn" (← "Limited content") was mild translationese
+  // (A32 audit §2). EN side unchanged.
+  partial: { vi: "Nội dung còn hạn chế", en: "Limited content" },
+  skeletal: { vi: "Nội dung còn hạn chế", en: "Limited content" },
 };
 
 /** Resolve the badge to show for a menu item: explicit override first,
@@ -224,28 +229,23 @@ export const ONBOARDING_COPY = {
   skipLink: { vi: "Bỏ qua", en: "Skip" },
   back:     { vi: "Quay lại", en: "Back" },
   continue: { vi: "Tiếp tục", en: "Continue" },
-  finish:   { vi: "Hoàn tất", en: "Finish" },
   /** Honesty/recommendation badges on the target grid. Rendered in the
    *  chrome language (single), not bilingual. */
   recommended: { vi: "Gợi ý", en: "Recommended" },
-  /** Confirmation-screen field labels. Were hardcoded bilingual
-   *  ("Tiếng mẹ đẻ · Native:"); now picked single by chrome language. */
-  summary: {
-    native:     { vi: "Tiếng mẹ đẻ", en: "Native language" },
-    learning:   { vi: "Học", en: "Learning" },
-  },
   /** Inline error shown if the Supabase write blips (still navigates). */
   finishError: {
     vi: "Đã xảy ra lỗi nhỏ — Mercy vẫn đưa bạn đến bài học.",
     en: "A small error occurred — Mercy is still taking you to your lesson.",
   },
-  welcome: {
-    title: { vi: "Chào bạn — mình là Mercy.", en: "Hi — I'm Mercy." },
-    body: {
-      vi: "Trong 60 giây, mình muốn hiểu bạn một chút để chọn lộ trình học cho phù hợp. Bạn có thể bỏ qua bất kỳ bước nào — không sao cả.",
-      en: "In 60 seconds, I'd like to understand you a little so I can set up a learning path that fits. You can skip any step — that's totally fine.",
-    },
-    cta: { vi: "Bắt đầu", en: "Let's start" },
+  /** One short warm line inlined into the ENTRY step header (replaces
+   *  the old standalone `welcome` interstitial — A32 audit). Drops the
+   *  stale "60 giây / hiểu bạn" personalization promise (#598 removed
+   *  the goal/profession/level survey it referred to); keeps only the
+   *  true, warm part so Mercy's persona handoff survives without a
+   *  dead click. */
+  greeting: {
+    vi: "Chào bạn — mình là Mercy 👋",
+    en: "Hi — I'm Mercy 👋",
   },
   native: {
     title: {
@@ -273,15 +273,11 @@ export const ONBOARDING_COPY = {
       en: "Which would you like to start with?",
     },
     body: {
-      vi: "Mercy sẽ mở ngôn ngữ này trước — những ngôn ngữ kia vẫn luôn ở đó.",
+      // "vẫn luôn sẵn sàng" reads as natural VI; the literal "vẫn luôn
+      // ở đó" (← "still always there") was mild translationese (A32
+      // audit §2). EN side unchanged.
+      vi: "Mercy sẽ mở ngôn ngữ này trước — những ngôn ngữ khác vẫn luôn sẵn sàng.",
       en: "Mercy will open this one first — the others stay available.",
-    },
-  },
-    confirmation: {
-    title: { vi: "Đã sẵn sàng!", en: "All set!" },
-    body: {
-      vi: "Mercy đã chuẩn bị lộ trình học cho bạn. Bạn có thể đổi bất cứ lúc nào trong phần Cài đặt.",
-      en: "Mercy has set up your learning path. You can change anything anytime in Settings.",
     },
   },
 } as const;

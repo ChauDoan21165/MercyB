@@ -20,18 +20,37 @@
 //     by `user?.id`; no user ⇒ localStorage only ("instead of
 //     Supabase" for the anonymous case).
 //
-// ── PR 2/3 flow documentation ────────────────────────────────────────
-// Duolingo-style pair-selection onboarding (PR 2 of 3).
+// ── Flow documentation ───────────────────────────────────────────────
+// Duolingo-style pair-selection onboarding. A flat 3-step FSM:
 //
-// Steps in canonical order (some conditionally skipped — see nextStep):
-//   1. welcome      — friendly intro from Mercy
-//   2. native       — NEW: pick native language (vi | en). Screen 1.
-//   3. target       — NEW: multi-select target language(s), filtered by
-//                     the canonical content-readiness matrix for the
-//                     chosen native. Screen 2.
-//   4. start_with   — NEW: only when >1 target chosen — pick the primary
-//                     (the one Mercy opens first). Screen 3.
-//   5. confirmation — summary + "Hoàn tất" → persist + navigate
+//   1. native     — pick native language (vi | en). Mercy's one-line
+//                   greeting is inlined into this step's header (the
+//                   old standalone `welcome` interstitial was a
+//                   guaranteed dead click — A32 audit — removed).
+//   2. target     — multi-select target language(s), filtered by the
+//                   canonical content-readiness matrix for the chosen
+//                   native. A single-target Continue FINISHES here.
+//   3. start_with — only when >1 target chosen — pick the primary (the
+//                   one Mercy opens first). The pick FINISHES directly.
+//
+// There is no longer a `confirmation` echo screen — it read back
+// nothing the survey didn't already imply (post-#598 the survey
+// collects only the pair) and was the second guaranteed dead click
+// (A32 audit). Finish happens straight off the last pick.
+//
+// ── ?direction=vn (en→vi) entry contract ─────────────────────────────
+// The bilingual marketing landing (PR #675) has two CTAs:
+//   • "Tôi học ngoại ngữ"        → /onboarding              (default)
+//   • "I'm learning Vietnamese"  → /onboarding?direction=vn
+// `direction=vn` means an English speaker who wants to LEARN
+// Vietnamese. We honour it by SEEDING the draft { native_language:
+// "en", target_languages: ["vi"] } and entering at `target` (native is
+// already implied by the CTA — re-asking would be a dead click). Chrome
+// then follows native_language → English-primary UI for the survey.
+// Skip preserves this seed, so a direction=vn visitor can never be
+// silently enrolled as the INVERSE (vi-native learning English) — the
+// exact trap A32 found. Absent / `direction=vi` ⇒ unchanged vi-first
+// default (the ~95% home market): start at `native`, nothing seeded.
 //
 // The goal/profession/level steps were removed as unreachable dead UI
 // (pair-pick lands on home since #598). The profiles columns they used
@@ -55,8 +74,8 @@
 // Tone discipline: VI primary, EN secondary in lighter weight. No
 // shame language. Mercy's voice — encouraging, like a kind teacher.
 
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 
 import { useQueryClient } from "@tanstack/react-query";
@@ -105,57 +124,40 @@ function primaryTargetOf(draft: OnboardingDraft): TargetLang | null {
   return draft.target_languages[0] ?? null;
 }
 
-/** After the pair (native + target[s], primary chosen) is picked, go
- *  straight to confirmation → home. The goal/profession/level chain
- *  must NOT gate first entry; it was removed as dead UI (#598). It can
- *  return later as optional in-app personalization writing the same
- *  (kept) profiles columns. */
-function afterPrimaryStep(_draft: OnboardingDraft): OnboardingStepId {
-  return "confirmation";
-}
-
 /**
- * Step navigation. Conditional skips (start_with only for multi-target;
- * goal/profession/level only for an English primary) live here so the
- * component stays a flat finite state machine.
+ * Forward step navigation for the flat 3-step FSM. Only governs the
+ * `native → target → start_with` transitions; FINISH is an action, not
+ * a step (handleTargetContinue / handleStartWithSelect call
+ * handleFinish directly — there is no `confirmation` screen, A32
+ * audit). `target → start_with` is reached only for >1 target; a
+ * single-target Continue finishes off `target`, so this is never
+ * called for the single-target path.
  */
 function nextStep(
   current: OnboardingStepId,
   draft: OnboardingDraft,
 ): OnboardingStepId {
   switch (current) {
-    case "welcome":
-      return "native";
     case "native":
       return "target";
     case "target":
-      return draft.target_languages.length > 1
-        ? "start_with"
-        : afterPrimaryStep(draft);
+      return draft.target_languages.length > 1 ? "start_with" : "target";
     case "start_with":
-      return afterPrimaryStep(draft);
-    case "confirmation":
-      return "confirmation";
+      return "start_with"; // terminal — the tap finishes directly
   }
 }
 
-function previousStep(
-  current: OnboardingStepId,
-  draft: OnboardingDraft,
-): OnboardingStepId {
-  const multiTarget = draft.target_languages.length > 1;
+function previousStep(current: OnboardingStepId): OnboardingStepId {
   switch (current) {
-    case "welcome":
-      return "welcome";
     case "native":
-      return "welcome";
+      return "native";
     case "target":
+      // For a direction=vn entrant this lets them fall back to the
+      // native picker if they really want vi-native — a real escape
+      // hatch, not a dead click (Back is hidden on the ENTRY step).
       return "native";
     case "start_with":
       return "target";
-    case "confirmation":
-      // Back from confirmation returns to the last pair step.
-      return multiTarget ? "start_with" : "target";
   }
 }
 
@@ -469,15 +471,45 @@ export default function OnboardingPage() {
   const nav = useNavigate();
   const { user } = useAuth();
   const qc = useQueryClient();
-  const [step, setStep] = useState<OnboardingStepId>("welcome");
+  const [searchParams] = useSearchParams();
+
+  // ── Landing → picker direction contract (PR #675) ─────────────────
+  // `?direction=vn` = an English speaker who came to LEARN Vietnamese
+  // ("I'm learning Vietnamese" CTA). Seed the inverse-safe pair and
+  // enter at `target` (native is implied by the CTA — re-asking is a
+  // dead click). Captured once: query-param identity is fixed for the
+  // life of this mount, and useState/useRef initialisers run once.
+  // Anything other than "vn" (incl. absent / "vi") is the unchanged
+  // vi-first default — the ~95% home market.
+  const directionVn = searchParams.get("direction") === "vn";
+
+  const [step, setStep] = useState<OnboardingStepId>(
+    directionVn ? "target" : "native",
+  );
+  // The step the user ENTERS on (never changes for this mount). Back is
+  // hidden here so a direction=vn entrant can't dead-click backward
+  // into a native picker they intentionally bypassed.
+  const entryStepRef = useRef<OnboardingStepId>(
+    directionVn ? "target" : "native",
+  );
   const [stepStartedAt, setStepStartedAt] = useState<number>(() => Date.now());
-  const [draft, setDraft] = useState<OnboardingDraft>({
-    native_language: null,
-    target_languages: [],
-    primary_goal: null,
-    profession: null,
-    english_level: null,
-  });
+  const [draft, setDraft] = useState<OnboardingDraft>(
+    directionVn
+      ? {
+          native_language: "en",
+          target_languages: ["vi"],
+          primary_goal: null,
+          profession: null,
+          english_level: null,
+        }
+      : {
+          native_language: null,
+          target_languages: [],
+          primary_goal: null,
+          profession: null,
+          english_level: null,
+        },
+  );
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -488,17 +520,22 @@ export default function OnboardingPage() {
   }, [step]);
 
   const currentIndex = ONBOARDING_STEPS.indexOf(step);
-  const isLastStep = step === "confirmation";
-  const isFirstStep = step === "welcome";
+  const isEntryStep = step === entryStepRef.current;
+  // The native picker BEFORE a native is chosen is the one screen where
+  // both audiences are simultaneously present (locked #14): render it
+  // bilingual PEER, not single-language. Once native is picked — or for
+  // a direction=vn entrant (native already seeded "en") — chrome is
+  // single-language and follows the native choice.
+  const isPrePick = step === "native" && draft.native_language == null;
 
-  // Chrome language follows the native choice. Welcome fires before the
-  // pick (bilingual, locked #14); every later screen is single-language
-  // — the chosen native, or the VI home-market default on the native
-  // picker itself (no choice yet). Buttons that share the top bar use
-  // `tc`: bilingual on welcome, single thereafter.
+  // Chrome language follows the native choice. The pre-pick native
+  // screen is bilingual (locked #14); every other screen is
+  // single-language — the chosen native, or the VI home-market default
+  // before any pick. Shared top-bar text uses `tc`: bilingual only on
+  // the pre-pick screen, single thereafter.
   const chromeLang: NativeLang = draft.native_language ?? "vi";
   const tc = (slots: ChromeSlots): string =>
-    isFirstStep ? `${slots.vi} · ${slots.en}` : pickChrome(slots, chromeLang);
+    isPrePick ? `${slots.vi} · ${slots.en}` : pickChrome(slots, chromeLang);
 
   const advance = (overrideDraft?: OnboardingDraft) => {
     const effectiveDraft = overrideDraft ?? draft;
@@ -514,7 +551,7 @@ export default function OnboardingPage() {
   };
 
   const goBack = () => {
-    const prev = previousStep(step, draft);
+    const prev = previousStep(step);
     if (prev !== step) setStep(prev);
   };
 
@@ -545,7 +582,15 @@ export default function OnboardingPage() {
 
   const handleTargetContinue = () => {
     if (draft.target_languages.length === 0) return;
-    advance();
+    if (draft.target_languages.length === 1) {
+      // Single target → no primary to pick, nothing to confirm: FINISH
+      // straight off this screen (the old `confirmation` echo screen
+      // was a dead click — A32 audit). Draft is already settled here
+      // (toggles ran on prior renders), so no override needed.
+      void handleFinish();
+      return;
+    }
+    advance(); // >1 target → start_with to pick the primary
   };
 
   const handleStartWithSelect = (t: TargetLang) => {
@@ -560,7 +605,10 @@ export default function OnboardingPage() {
       target_languages: reordered,
     };
     setDraft(updated);
-    advance(updated);
+    // Picking the primary is the last action — FINISH directly (no
+    // confirmation screen). Pass `updated` because the setDraft above
+    // has not flushed yet (same reason `advance` took an override).
+    void handleFinish(updated);
   };
 
   // First entry always lands on "/" (home). Home is pair-aware (PR
@@ -574,30 +622,35 @@ export default function OnboardingPage() {
    * navigate. On Supabase failure we still navigate — the user must
    * never be trapped in onboarding by a network blip.
    */
-  const handleFinish = async () => {
+  const handleFinish = async (overrideDraft?: OnboardingDraft) => {
     if (submitting) return;
     setSubmitting(true);
     setError(null);
-    const primary = primaryTargetOf(draft);
+    // The single-target Continue and the start_with tap both finish
+    // directly now (no confirmation screen). start_with reorders the
+    // draft and the setDraft has not flushed yet, so it passes the
+    // freshly-built draft explicitly — read that, not stale state.
+    const d = overrideDraft ?? draft;
+    const primary = primaryTargetOf(d);
     // Persist locally FIRST — this is the anonymous source of truth and
     // must survive a Supabase blip (it also seeds the cache for a
     // signed-in user; PR 3 reconciles localStorage → profile on signup).
-    if (draft.native_language) {
-      writeAnonymousPair(draft.native_language, draft.target_languages);
+    if (d.native_language) {
+      writeAnonymousPair(d.native_language, d.target_languages);
     }
     try {
       if (user?.id) {
         const payload: Record<string, unknown> = {
           onboarded_at: new Date().toISOString(),
-          native_language: draft.native_language,
-          target_languages: draft.target_languages,
+          native_language: d.native_language,
+          target_languages: d.target_languages,
         };
         // English-specific intent only makes sense for an English
         // primary target — leave the columns NULL otherwise.
         if (primary === "en") {
-          payload.primary_goal = draft.primary_goal;
-          payload.profession = draft.profession;
-          payload.english_level = draft.english_level;
+          payload.primary_goal = d.primary_goal;
+          payload.profession = d.profession;
+          payload.english_level = d.english_level;
         }
         const { error: updateError } = await supabase
           .from("profiles")
@@ -626,12 +679,16 @@ export default function OnboardingPage() {
         }
       }
       logTelemetry("onboarding_complete", {
-        native_language: draft.native_language,
-        target_languages: draft.target_languages,
+        native_language: d.native_language,
+        target_languages: d.target_languages,
         primary_target: primary,
-        goal: draft.primary_goal,
-        profession: draft.profession,
-        level: draft.english_level,
+        goal: d.primary_goal,
+        profession: d.profession,
+        level: d.english_level,
+        // Enrichment only — never removes an event (A32 §3.8: drop-off
+        // is currently unmeasurable; `direction` lets a later analytics
+        // sink answer "did the en→vi fix convert").
+        direction: directionVn ? "vn" : "default",
         first_route: HOME_ROUTE,
         first_reason: "onboarding_complete",
       });
@@ -647,19 +704,27 @@ export default function OnboardingPage() {
   };
 
   /**
-   * Skip flow: write native_language + the recommended target +
-   * onboarded_at. Writing native_language is REQUIRED — the Home gate
-   * fires on `native_language IS NULL`, so a skip that left it NULL
-   * would loop the user straight back into onboarding. Defaults to the
-   * already-chosen native (or 'vi') and that native's recommended
-   * target (Phase 3 step 3).
+   * Skip flow: write native_language + a target + onboarded_at.
+   * Writing native_language is REQUIRED — the Home gate fires on
+   * `native_language IS NULL`, so a skip that left it NULL would loop
+   * the user straight back into onboarding.
+   *
+   * The target is the user's CURRENT draft pick if they made one, else
+   * the chosen native's recommended target. This is what makes Skip
+   * direction-safe: a direction=vn entrant has the draft SEEDED to
+   * { native:"en", targets:["vi"] }, so Skip writes en→[vi] — never
+   * the INVERSE vi→[en] (the A32 trap) and never the unrelated en→[es]
+   * recommended default. No `direction` special-casing needed: the
+   * seeded draft already encodes intent; this just stops Skip from
+   * discarding it.
    */
   const handleSkip = async () => {
     if (submitting) return;
     setSubmitting(true);
     setError(null);
     const native: NativeLang = draft.native_language ?? "vi";
-    const target = RECOMMENDED_TARGET[native];
+    const target: TargetLang =
+      draft.target_languages[0] ?? RECOMMENDED_TARGET[native];
     // Same as finish: persist locally so the gate can't loop an
     // anonymous visitor back into the picker (skip = a deliberate pick
     // of the recommended pair).
@@ -691,6 +756,7 @@ export default function OnboardingPage() {
         from_step: step,
         native_language: native,
         target_languages: [target],
+        direction: directionVn ? "vn" : "default",
       });
       nav(HOME_ROUTE, { replace: true });
     } catch (err) {
@@ -725,7 +791,7 @@ export default function OnboardingPage() {
             marginBottom: 12,
           }}
         >
-          {!isFirstStep ? (
+          {!isEntryStep ? (
             <button
               type="button"
               onClick={goBack}
@@ -807,21 +873,22 @@ export default function OnboardingPage() {
             padding: 22,
           }}
         >
-          {step === "welcome" ? (
-            <>
-              <StepHeader
-                title={ONBOARDING_COPY.welcome.title}
-                body={ONBOARDING_COPY.welcome.body}
-              />
-              <button
-                type="button"
-                onClick={() => advance()}
-                style={primaryButtonStyle(false)}
-              >
-                {tc(ONBOARDING_COPY.welcome.cta)}
-                <ChevronRight size={16} />
-              </button>
-            </>
+          {/* Mercy's greeting, inlined into the ENTRY step header (the
+              standalone `welcome` interstitial was a guaranteed dead
+              click — A32 audit). One short warm line, no extra tap.
+              Bilingual on the pre-pick native screen (locked #14);
+              single-language English for a direction=vn entrant. */}
+          {isEntryStep ? (
+            <p
+              style={{
+                margin: "0 0 14px",
+                fontSize: 14,
+                fontWeight: 600,
+                color: "rgba(0,0,0,0.62)",
+              }}
+            >
+              {tc(ONBOARDING_COPY.greeting)}
+            </p>
           ) : null}
 
           {step === "native" ? (
@@ -866,6 +933,8 @@ export default function OnboardingPage() {
                 onToggle={handleTargetToggle}
                 lang={chromeLang}
               />
+              {/* Single target → this Continue FINISHES (no confirmation
+                  screen, A32 audit). >1 target → start_with first. */}
               <button
                 type="button"
                 onClick={handleTargetContinue}
@@ -877,6 +946,23 @@ export default function OnboardingPage() {
                 {pickChrome(ONBOARDING_COPY.continue, chromeLang)}
                 <ChevronRight size={16} />
               </button>
+              {/* Soft-fail surface: a Supabase blip on finish still
+                  navigates (handleFinish), but if it sets `error`
+                  before nav this is where the single-target path shows
+                  it — confirmation used to own this. */}
+              {error ? (
+                <p
+                  role="alert"
+                  style={{
+                    marginTop: 10,
+                    fontSize: 12,
+                    color: "rgba(180,30,30,0.85)",
+                  }}
+                >
+                  {pickChrome(ONBOARDING_COPY.finishError, chromeLang)} (
+                  {error})
+                </p>
+              ) : null}
             </>
           ) : null}
 
@@ -904,92 +990,6 @@ export default function OnboardingPage() {
             </>
           ) : null}
 
-          {step === "confirmation" ? (
-            <>
-              <StepHeader
-                title={ONBOARDING_COPY.confirmation.title}
-                body={ONBOARDING_COPY.confirmation.body}
-                lang={chromeLang}
-              />
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                  margin: "16px 0 0",
-                  display: "grid",
-                  gap: 8,
-                }}
-              >
-                {draft.native_language ? (
-                  <li
-                    style={{
-                      padding: "10px 12px",
-                      borderRadius: 12,
-                      background: "rgba(20,184,166,0.08)",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <strong>
-                      {pickChrome(ONBOARDING_COPY.summary.native, chromeLang)}:
-                    </strong>{" "}
-                    {(() => {
-                      const opt = NATIVE_OPTIONS.find(
-                        (n) => n.value === draft.native_language,
-                      );
-                      return opt ? pickChrome(opt.label, chromeLang) : null;
-                    })()}
-                  </li>
-                ) : null}
-                {draft.target_languages.length > 0 ? (
-                  <li
-                    style={{
-                      padding: "10px 12px",
-                      borderRadius: 12,
-                      background: "rgba(20,184,166,0.08)",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <strong>
-                      {pickChrome(ONBOARDING_COPY.summary.learning, chromeLang)}
-                      :
-                    </strong>{" "}
-                    {draft.target_languages
-                      .map((t, i) =>
-                        i === 0
-                          ? `${targetLabel(t, chromeLang)} ⭐`
-                          : targetLabel(t, chromeLang),
-                      )
-                      .join(" · ")}
-                  </li>
-                ) : null}
-              </ul>
-              <button
-                type="button"
-                onClick={handleFinish}
-                disabled={submitting}
-                style={primaryButtonStyle(submitting)}
-              >
-                {pickChrome(ONBOARDING_COPY.finish, chromeLang)}
-              </button>
-              {error ? (
-                <p
-                  role="alert"
-                  style={{
-                    marginTop: 10,
-                    fontSize: 12,
-                    color: "rgba(180,30,30,0.85)",
-                  }}
-                >
-                  {pickChrome(ONBOARDING_COPY.finishError, chromeLang)} (
-                  {error})
-                </p>
-              ) : null}
-            </>
-          ) : null}
-
-          {!isLastStep ? null : null}
         </main>
       </div>
     </div>

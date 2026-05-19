@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -43,6 +43,9 @@ vi.mock("@/providers/AuthProvider", () => ({
   useAuth: () => mockUseAuth(),
 }));
 
+// Only useNavigate is mocked — useSearchParams / MemoryRouter stay real
+// so the `?direction=vn` contract is exercised end-to-end (the param is
+// parsed by the real react-router from initialEntries).
 const navigateMock = vi.fn();
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual<typeof import("react-router-dom")>(
@@ -63,7 +66,15 @@ import OnboardingPage from "../OnboardingPage";
 // nothing broader (a wide invalidate would be a perf regression).
 let invalidateSpy: ReturnType<typeof vi.fn>;
 
-function renderPage() {
+/**
+ * Render the picker. `direction: "vn"` enters via the landing page's
+ * "I'm learning Vietnamese" CTA contract (/onboarding?direction=vn);
+ * omit it for the default vi-first home-market flow.
+ */
+function renderPage(opts: { direction?: "vn" } = {}) {
+  const entry = opts.direction
+    ? `/onboarding?direction=${opts.direction}`
+    : "/onboarding";
   const qc = new QueryClient({
     defaultOptions: { queries: { retry: false } },
   });
@@ -72,7 +83,7 @@ function renderPage() {
     invalidateSpy as unknown as typeof qc.invalidateQueries;
   return render(
     <QueryClientProvider client={qc}>
-      <MemoryRouter initialEntries={["/onboarding"]}>
+      <MemoryRouter initialEntries={[entry]}>
         <Routes>
           <Route path="/onboarding" element={<OnboardingPage />} />
         </Routes>
@@ -81,12 +92,10 @@ function renderPage() {
   );
 }
 
-const clickStart = (user: ReturnType<typeof userEvent.setup>) =>
-  user.click(screen.getByRole("button", { name: /Bắt đầu|Let's start/ }));
-
-/** welcome → native(vi) → lands on the target step (English pre-checked). */
+/** Default flow: welcome is gone — the picker opens straight on the
+ *  native step. Pick Tiếng Việt → auto-advances to the target step
+ *  (English pre-checked). */
 async function toTargetStepVi(user: ReturnType<typeof userEvent.setup>) {
-  await clickStart(user);
   await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
 }
 
@@ -110,38 +119,39 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("OnboardingPage — welcome + native step (Screen 1)", () => {
-  it("renders the welcome step first with VI primary heading", () => {
+describe("OnboardingPage — entry step (welcome interstitial removed)", () => {
+  it("opens straight on the native step (no welcome dead click)", () => {
     renderPage();
+    // The native question is the H1 — there is no welcome screen and no
+    // "Bắt đầu / Let's start" interstitial button anymore.
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      /Chào bạn/,
+      /Tiếng mẹ đẻ của bạn là gì/,
     );
     expect(
-      screen.getByRole("button", { name: /Let's start|Bắt đầu/ }),
-    ).toBeInTheDocument();
+      screen.queryByRole("button", { name: /Let's start|Bắt đầu/ }),
+    ).toBeNull();
   });
 
-  it("welcome CTA advances to the NATIVE step (not goal)", async () => {
-    const user = userEvent.setup();
+  it("inlines Mercy's greeting on the native entry step, bilingual (locked #14)", () => {
     renderPage();
-    await clickStart(user);
-    expect(
-      screen.getByText(/Tiếng mẹ đẻ của bạn là gì/),
-    ).toBeInTheDocument();
-    // goal copy must NOT be on screen yet
-    expect(screen.queryByText(/Bạn học tiếng Anh để làm gì/)).toBeNull();
+    // One short warm line carrying BOTH languages (peer, pre-pick).
+    const greeting = screen.getByText(/Chào bạn — mình là Mercy/);
+    expect(greeting).toHaveTextContent(/Hi — I'm Mercy/);
   });
 
-  it("native step offers both Tiếng Việt and English (en-native greenlit)", async () => {
-    const user = userEvent.setup();
+  it("native step offers both Tiếng Việt and English (en-native greenlit)", () => {
     renderPage();
-    await clickStart(user);
     expect(
       screen.getByRole("radio", { name: /Tiếng Việt/ }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("radio", { name: /Tiếng Anh|English/ }),
     ).toBeInTheDocument();
+  });
+
+  it("no Back button on the entry (native) step", () => {
+    renderPage();
+    expect(screen.queryByRole("button", { name: /^Back/ })).toBeNull();
   });
 });
 
@@ -153,31 +163,29 @@ describe("OnboardingPage — target step (Screen 2, matrix-filtered)", () => {
     expect(
       screen.getByText(/Bạn muốn học ngôn ngữ nào/),
     ).toBeInTheDocument();
-    // Spanish is intentionally absent for vi-native
     expect(
       screen.queryByRole("checkbox", { name: /Tây Ban Nha|Spanish/ }),
     ).toBeNull();
-    // English present + pre-checked (the 95% path = one Continue tap)
     const en = screen.getByRole("checkbox", { name: /Tiếng Anh/ });
     expect(en).toHaveAttribute("aria-checked", "true");
   });
 
-  it("shows honesty badges single-language (VI for a vi-native, locked #7)", async () => {
+  it("shows honesty badges single-language VI, natural wording (A32 §2)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user);
-    // vi-native → VI badge copy only; the EN side is NOT rendered
-    // (native-respect: chrome follows the native choice, not bilingual).
     expect(screen.getByText(/Hiện chỉ có B2–C2/)).toBeInTheDocument(); // zh skeletal
-    expect(screen.getAllByText(/Nội dung giới hạn/).length).toBeGreaterThan(0); // ko partial
-    expect(screen.queryByText(/only for now/i)).toBeNull();
-    expect(screen.queryByText(/Limited content/i)).toBeNull();
+    // "Nội dung còn hạn chế" (was the translationese "Nội dung giới hạn").
+    expect(
+      screen.getAllByText(/Nội dung còn hạn chế/).length,
+    ).toBeGreaterThan(0); // ko partial
+    expect(screen.queryByText(/Nội dung giới hạn/)).toBeNull(); // old string gone
+    expect(screen.queryByText(/Limited content/i)).toBeNull(); // EN not shown for vi
   });
 
   it("en-native menu includes Spanish (its true pair) + Vietnamese", async () => {
     const user = userEvent.setup();
     renderPage();
-    await clickStart(user);
     await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
     expect(
       screen.getByRole("checkbox", { name: /Tây Ban Nha|Spanish/ }),
@@ -188,17 +196,18 @@ describe("OnboardingPage — target step (Screen 2, matrix-filtered)", () => {
   });
 });
 
-describe("OnboardingPage — pair pick goes straight to home (no goal gate)", () => {
-  it("vi → English (only) → Continue → confirmation directly (no goal step)", async () => {
+describe("OnboardingPage — single-target Continue finishes (no confirmation)", () => {
+  it("vi → English (only) → Continue lands on home, no confirmation screen", async () => {
     const user = userEvent.setup();
     renderPage();
-    await toTargetStepVi(user); // English already pre-checked
+    await toTargetStepVi(user); // English pre-checked
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    // Goal gate removed — single target jumps straight to confirmation.
-    expect(screen.getByText(/Đã sẵn sàng/)).toBeInTheDocument();
-    expect(
-      screen.queryByText(/Bạn học tiếng Anh để làm gì/),
-    ).toBeNull();
+    // The confirmation echo screen is gone — finish is immediate.
+    expect(screen.queryByText(/Đã sẵn sàng|All set/)).toBeNull();
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/",
+      expect.objectContaining({ replace: true }),
+    );
   });
 
   it("vi → English pair finishes → writes pair, lands on home (/)", async () => {
@@ -206,7 +215,6 @@ describe("OnboardingPage — pair pick goes straight to home (no goal gate)", ()
     renderPage();
     await toTargetStepVi(user);
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
 
     expect(fromMock).toHaveBeenCalledWith("profiles");
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
@@ -223,24 +231,28 @@ describe("OnboardingPage — pair pick goes straight to home (no goal gate)", ()
       expect.objectContaining({ replace: true }),
     );
     expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
+    // Freshly-written pair must invalidate exactly the profile key.
+    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: qk.profile("user-uuid-1"),
+    });
   });
 });
 
 describe("OnboardingPage — anonymous (no auth) persists to localStorage", () => {
-  it("anonymous finish writes the pair locally and does NOT touch Supabase", async () => {
+  it("anonymous multi-target finish writes the pair locally, skips Supabase", async () => {
     mockUseAuth.mockReturnValue({ user: null });
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user); // vi + English pre-checked
     await user.click(screen.getByRole("checkbox", { name: /Tiếng Nhật/ })); // add ja
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    // >1 target → start_with; picking the primary FINISHES directly.
     await user.click(screen.getByRole("radio", { name: /Tiếng Nhật/ })); // ja primary
-    await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
 
     expect(updateMock).not.toHaveBeenCalled(); // no profile row exists yet
     expect(storedPair()).toEqual({ native: "vi", targets: ["ja", "en"] });
     expect(window.localStorage.getItem("mercyblade.nativeLang")).toBe("vi");
-    // All pairs land on home (/) — home is pair-aware.
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),
@@ -248,32 +260,25 @@ describe("OnboardingPage — anonymous (no auth) persists to localStorage", () =
   });
 });
 
-describe("OnboardingPage — multi-target → start_with → home", () => {
-  it("vi → en+ja → start_with(ja) → confirmation → finishes to home (/)", async () => {
+describe("OnboardingPage — multi-target → start_with finishes (no confirmation)", () => {
+  it("vi → en+ja → start_with(ja) finishes to home (/), pair primary-first", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user); // English pre-checked
     await user.click(screen.getByRole("checkbox", { name: /Tiếng Nhật/ })); // add ja
     await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    // >1 target → start_with step appears
     expect(
       screen.getByText(/Bạn muốn bắt đầu với ngôn ngữ nào/),
     ).toBeInTheDocument();
     await user.click(screen.getByRole("radio", { name: /Tiếng Nhật/ }));
-    // ja primary → English goal/level skipped → confirmation
-    expect(screen.getByText(/Đã sẵn sàng/)).toBeInTheDocument();
-    expect(screen.queryByText(/Bạn học tiếng Anh để làm gì/)).toBeNull();
+    // No confirmation screen — the start_with tap finishes.
+    expect(screen.queryByText(/Đã sẵn sàng|All set/)).toBeNull();
 
-    await user.click(screen.getByRole("button", { name: /Hoàn tất|Finish/ }));
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(payload.native_language).toBe("vi");
     expect(payload.target_languages).toEqual(["ja", "en"]); // primary first
     expect(payload.primary_goal).toBeUndefined(); // non-en primary: not written
     expect(payload.english_level).toBeUndefined();
-    // M3 Risk 1: the freshly-written pair must invalidate the shared
-    // profile cache so chrome / NativeLanguageContext / AccountPage stop
-    // serving the pre-onboarding language. Exactly one call, the single
-    // targeted key — never a broad invalidate (perf regression).
     expect(invalidateSpy).toHaveBeenCalledTimes(1);
     expect(invalidateSpy).toHaveBeenCalledWith({
       queryKey: qk.profile("user-uuid-1"),
@@ -283,23 +288,30 @@ describe("OnboardingPage — multi-target → start_with → home", () => {
       expect.objectContaining({ replace: true }),
     );
   });
+
+  it("startWith body uses natural VI ('vẫn luôn sẵn sàng', not 'ở đó')", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+    await user.click(screen.getByRole("checkbox", { name: /Tiếng Nhật/ }));
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+    expect(screen.getByText(/vẫn luôn sẵn sàng/)).toBeInTheDocument();
+    expect(screen.queryByText(/vẫn luôn ở đó/)).toBeNull();
+  });
 });
 
 describe("OnboardingPage — skip flow cannot loop the gate", () => {
-  it("skip writes native_language + recommended target (not just onboarded_at)", async () => {
+  it("skip from the native entry writes vi → [en] (Home gate cannot loop)", async () => {
     const user = userEvent.setup();
     renderPage();
-    // Skip straight from welcome — no native chosen yet
     await user.click(
       screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
     );
     expect(updateMock).toHaveBeenCalledTimes(1);
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(typeof payload.onboarded_at).toBe("string");
-    // CRITICAL: native_language must be written or the Home gate loops
     expect(payload.native_language).toBe("vi");
     expect(payload.target_languages).toEqual(["en"]);
-    // Skip writes the pair too → same targeted profile invalidation.
     expect(invalidateSpy).toHaveBeenCalledTimes(1);
     expect(invalidateSpy).toHaveBeenCalledWith({
       queryKey: qk.profile("user-uuid-1"),
@@ -318,11 +330,7 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
       screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
     );
     expect(updateMock).not.toHaveBeenCalled();
-    // No profile write ⇒ nothing to invalidate (anonymous visitor reads
-    // the pair from localStorage, not the profile cache).
     expect(invalidateSpy).not.toHaveBeenCalled();
-    // …but the recommended pair is still persisted locally so the `/`
-    // gate cannot loop an anonymous visitor back into the picker.
     expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
@@ -333,7 +341,6 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
   it("skip after choosing English native uses the en recommended pair (es)", async () => {
     const user = userEvent.setup();
     renderPage();
-    await clickStart(user);
     await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
     await user.click(
       screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
@@ -341,7 +348,6 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
     const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
     expect(payload.native_language).toBe("en");
     expect(payload.target_languages).toEqual(["es"]);
-    // Skip also lands on home (/) — home is pair-aware for (en, es).
     expect(navigateMock).toHaveBeenCalledWith(
       "/",
       expect.objectContaining({ replace: true }),
@@ -349,8 +355,8 @@ describe("OnboardingPage — skip flow cannot loop the gate", () => {
   });
 });
 
-describe("OnboardingPage — back navigation through new steps", () => {
-  it("Back from target returns to native", async () => {
+describe("OnboardingPage — back navigation", () => {
+  it("Back from target returns to native (default flow)", async () => {
     const user = userEvent.setup();
     renderPage();
     await toTargetStepVi(user);
@@ -358,44 +364,18 @@ describe("OnboardingPage — back navigation through new steps", () => {
     await user.click(screen.getByRole("button", { name: /^Back/ }));
     expect(screen.getByText(/Tiếng mẹ đẻ của bạn là gì/)).toBeInTheDocument();
   });
-
-  it("no Back button on the first (welcome) step", () => {
-    renderPage();
-    expect(screen.queryByRole("button", { name: /Back/i })).toBeNull();
-  });
 });
 
-describe("OnboardingPage — confirmation summary + progress bar", () => {
-  it("confirmation summary is single-language VI for a vi-native (no EN)", async () => {
-    const user = userEvent.setup();
-    renderPage();
-    await toTargetStepVi(user);
-    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
-    // Single target → confirmation directly (goal/level gate removed).
-    // Single-language: VI labels with NO "· Native" / "· Learning" EN tail.
-    const native = screen.getByText(/Tiếng mẹ đẻ:/);
-    const summaryRoot = native.closest("ul")!;
-    expect(within(summaryRoot).getByText(/Học:/)).toBeInTheDocument();
-    expect(screen.queryByText(/· Native/)).toBeNull();
-    expect(screen.queryByText(/· Learning/)).toBeNull();
-  });
-
-  it("progress bar exposes aria-valuemax of 5 (welcome→native→target→start_with→confirmation; goal/profession/level removed as dead UI)", () => {
+describe("OnboardingPage — progress bar", () => {
+  it("exposes aria-valuemax of 3 (native→target→start_with; welcome+confirmation removed)", () => {
     const { container } = renderPage();
     const progress = container.querySelector('[role="progressbar"]')!;
-    expect(progress.getAttribute("aria-valuemax")).toBe("5");
-    expect(progress.getAttribute("aria-valuenow")).toBe("1");
+    expect(progress.getAttribute("aria-valuemax")).toBe("3");
+    expect(progress.getAttribute("aria-valuenow")).toBe("1"); // native = step 1
   });
 });
 
 describe("OnboardingPage — chrome language follows native choice", () => {
-  it("welcome screen stays bilingual (pre-pick, both audiences present)", () => {
-    renderPage();
-    // VI primary + EN secondary BOTH present before any native pick.
-    expect(screen.getByText(/Chào bạn — mình là Mercy\./)).toBeInTheDocument();
-    expect(screen.getByText(/Hi — I'm Mercy\./)).toBeInTheDocument();
-  });
-
   it("vi-native: post-pick screens are VI-only (no EN subtitle)", async () => {
     const user = userEvent.setup();
     renderPage();
@@ -403,35 +383,25 @@ describe("OnboardingPage — chrome language follows native choice", () => {
     expect(
       screen.getByText(/Bạn muốn học ngôn ngữ nào/),
     ).toBeInTheDocument();
-    // The EN subtitle that used to sit under the VI title is gone.
     expect(screen.queryByText(/What do you want to learn/i)).toBeNull();
   });
 
   it("en-native: post-pick screens are EN-only (no VI primary)", async () => {
     const user = userEvent.setup();
     renderPage();
-    await clickStart(user);
-    await user.click(
-      screen.getByRole("radio", { name: /Tiếng Anh|English/ }),
-    );
-    // Target screen now renders in English only.
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
     expect(
       screen.getByText(/What do you want to learn/i),
     ).toBeInTheDocument();
     expect(screen.queryByText(/Bạn muốn học ngôn ngữ nào/)).toBeNull();
-    // Continue button is single-language English (no "· Tiếp tục").
     expect(
       screen.getByRole("button", { name: /Continue/ }),
     ).toBeInTheDocument();
     expect(screen.queryByText(/· Continue/)).toBeNull();
   });
 
-  it("native picker shows each option in its OWN language", async () => {
-    const user = userEvent.setup();
+  it("native picker shows each option in its OWN language", () => {
     renderPage();
-    await clickStart(user);
-    // Vietnamese option in Vietnamese, English option in English —
-    // self-evident regardless of the default chrome language.
     expect(
       screen.getByRole("radio", { name: /Tiếng Việt/ }),
     ).toBeInTheDocument();
@@ -440,16 +410,108 @@ describe("OnboardingPage — chrome language follows native choice", () => {
     ).toBeInTheDocument();
   });
 
-  it("native-picker header stays bilingual (pre-pick, like welcome)", async () => {
-    const user = userEvent.setup();
+  it("native-picker header stays bilingual (pre-pick, locked #14)", () => {
     renderPage();
-    await clickStart(user);
-    // Both audiences present before the pick → VI title + EN subtitle.
     expect(
       screen.getByText(/Tiếng mẹ đẻ của bạn là gì/),
     ).toBeInTheDocument();
     expect(
       screen.getByText(/What's your native language/i),
     ).toBeInTheDocument();
+  });
+});
+
+// ── ?direction=vn — the landing "I'm learning Vietnamese" contract ───
+//
+// The bilingual marketing landing (PR #675) sends English speakers who
+// want to LEARN Vietnamese to /onboarding?direction=vn. Before this
+// fix the param was dead: they got a VI-first survey with Spanish
+// pre-checked and Skip silently enrolled them as the INVERSE pair.
+describe("OnboardingPage — ?direction=vn (en→vi) handler", () => {
+  it("enters straight on the target step, English-primary, NO native screen", () => {
+    renderPage({ direction: "vn" });
+    // English-primary chrome (native seeded "en"): the target question
+    // renders in English, not Vietnamese.
+    expect(
+      screen.getByText(/What do you want to learn/i),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/Bạn muốn học ngôn ngữ nào/)).toBeNull();
+    // The native picker is NOT shown first (intent declared by the CTA).
+    expect(
+      screen.queryByText(/What's your native language|Tiếng mẹ đẻ của bạn/),
+    ).toBeNull();
+  });
+
+  it("greeting is English-only for a direction=vn entrant (not bilingual)", () => {
+    renderPage({ direction: "vn" });
+    expect(screen.getByText(/Hi — I'm Mercy/)).toBeInTheDocument();
+    expect(screen.queryByText(/Chào bạn — mình là Mercy/)).toBeNull();
+  });
+
+  it("pre-selects Vietnamese as the target; Spanish is NOT pre-checked", () => {
+    renderPage({ direction: "vn" });
+    const vi = screen.getByRole("checkbox", { name: /Vietnamese|Tiếng Việt/ });
+    expect(vi).toHaveAttribute("aria-checked", "true");
+    const es = screen.getByRole("checkbox", { name: /Spanish|Tây Ban Nha/ });
+    expect(es).toHaveAttribute("aria-checked", "false");
+  });
+
+  it("no Back button on the direction=vn entry (target) step", () => {
+    renderPage({ direction: "vn" });
+    expect(screen.queryByRole("button", { name: /^Back/ })).toBeNull();
+  });
+
+  it("Continue finishes → writes the en → [vi] pair and lands on home", async () => {
+    const user = userEvent.setup();
+    renderPage({ direction: "vn" });
+    await user.click(screen.getByRole("button", { name: /Continue|Tiếp tục/ }));
+    const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
+    expect(payload.native_language).toBe("en");
+    expect(payload.target_languages).toEqual(["vi"]);
+    expect(storedPair()).toEqual({ native: "en", targets: ["vi"] });
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/",
+      expect.objectContaining({ replace: true }),
+    );
+  });
+});
+
+describe("OnboardingPage — ?direction=vn Skip preserves intent (A32 trap)", () => {
+  it("Skip writes en → [vi] (NOT the inverse vi → [en], NOT en → [es])", async () => {
+    const user = userEvent.setup();
+    renderPage({ direction: "vn" });
+    await user.click(
+      screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
+    );
+    const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
+    expect(payload.native_language).toBe("en"); // English speaker
+    expect(payload.target_languages).toEqual(["vi"]); // learning Vietnamese
+    // The exact A32 trap: Skip must NOT enroll the inverse pair…
+    expect(payload.native_language).not.toBe("vi");
+    expect(payload.target_languages).not.toEqual(["en"]);
+    // …and must NOT fall back to the unrelated en recommended (es).
+    expect(payload.target_languages).not.toEqual(["es"]);
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/",
+      expect.objectContaining({ replace: true }),
+    );
+  });
+
+  it("anonymous direction=vn Skip persists en → [vi] locally (gate cannot flip it)", async () => {
+    mockUseAuth.mockReturnValue({ user: null });
+    const user = userEvent.setup();
+    renderPage({ direction: "vn" });
+    await user.click(
+      screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
+    );
+    expect(updateMock).not.toHaveBeenCalled();
+    // Persisted pair must be the declared direction, never the inverse.
+    expect(storedPair()).toEqual({ native: "en", targets: ["vi"] });
+    expect(storedPair()).not.toEqual({ native: "vi", targets: ["en"] });
+    expect(window.localStorage.getItem("mercyblade.nativeLang")).toBe("en");
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/",
+      expect.objectContaining({ replace: true }),
+    );
   });
 });
