@@ -104,6 +104,28 @@ export const CEFR_CUTS: ReadonlyArray<{ band: CefrBand; maxTheta: number }> = [
  *  this. */
 export const CEFR_CUTS_ARE_PROVISIONAL = true as const;
 
+/**
+ * L1-transfer weakness severity bands for the result payload
+ * (`ResultPayload.L1WeaknessEntry.severity`, types.ts §2.3). The typed
+ * `"low" | "moderate" | "high"` contract REQUIRES a threshold, and the
+ * design doc fixes none — so, EXACTLY like `MIN_ITEMS_PER_SUBSCORE`
+ * above, config owns these by design intent: PROVISIONAL, tunable knobs,
+ * NOT design-doc-derived constants (refined post-pilot, Phase 4). Kept
+ * here so result.ts has zero scattered magic numbers (design §2.7).
+ *
+ * Read as: a tag seen `>= L1_WEAKNESS_MIN_SEEN` times with error rate
+ * `>= HIGH` is "high"; `>= MODERATE` is "moderate"; else "low". The
+ * min-seen floor stops a single wrong answer from screaming "high".
+ *
+ * RECONSTRUCTION FLAG (PR + Chau): this is the ONE new knob group PR 8
+ * introduces. Justified — a typed result field with no covering constant,
+ * following the in-repo `MIN_ITEMS_PER_SUBSCORE` precedent verbatim
+ * (config-owned, provisional, single block). No design-decision clash.
+ */
+export const L1_WEAKNESS_MIN_SEEN = 2 as const;
+export const L1_SEVERITY_HIGH_ERROR_RATE = 0.5 as const;
+export const L1_SEVERITY_MODERATE_ERROR_RATE = 0.25 as const;
+
 /** Retest cooldown (brief + design §2.6 "not in user's last 2 sessions /
  *  90d"). */
 export const RETEST_COOLDOWN_DAYS = 90 as const;
