@@ -1,8 +1,14 @@
 // @vitest-environment jsdom
 //
-// Guards the locked #14 invariant: the picker fires for a first-time
-// anonymous visitor, but must NEVER bounce a signed-in user or a
-// returning anonymous visitor (who already picked) into it.
+// Two contracts:
+//  1. Legacy fallback (no `firstTimeAnonymous` prop): a first-time
+//     anonymous visitor still redirects to the picker; a signed-in or
+//     returning anonymous visitor must NEVER be bounced there.
+//  2. Marketing-landing contract (Chau-directed 2026-05-18): when
+//     `firstTimeAnonymous` is supplied (the `/` route), a first-time
+//     anonymous visitor sees THAT (the landing) instead of the
+//     /onboarding redirect — while signed-in / returning visitors are
+//     still routed to Home, unchanged.
 
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -77,5 +83,53 @@ describe("AnonymousOnboardingGate", () => {
     renderGate();
     expect(screen.getByText("HOME")).toBeInTheDocument();
     expect(screen.queryByText("PICKER")).toBeNull();
+  });
+});
+
+function renderGateWithLanding() {
+  return render(
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <AnonymousOnboardingGate
+              firstTimeAnonymous={<div>LANDING</div>}
+            >
+              <div>HOME</div>
+            </AnonymousOnboardingGate>
+          }
+        />
+        <Route path="/onboarding" element={<div>PICKER</div>} />
+      </Routes>
+    </MemoryRouter>,
+  );
+}
+
+describe("AnonymousOnboardingGate — marketing landing contract", () => {
+  it("first-time anonymous → landing, NOT the /onboarding redirect", () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateWithLanding();
+    expect(screen.getByText("LANDING")).toBeInTheDocument();
+    expect(screen.queryByText("PICKER")).toBeNull();
+    expect(screen.queryByText("HOME")).toBeNull();
+  });
+
+  it("returning anonymous (stored pair) → Home, never the landing", () => {
+    window.localStorage.setItem(
+      "mercyblade.languagePair",
+      JSON.stringify({ native: "vi", targets: ["en"] }),
+    );
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateWithLanding();
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
+  });
+
+  it("signed-in user → Home, never the landing", () => {
+    mockUseAuth.mockReturnValue({ user: { id: "u1" }, isLoading: false });
+    renderGateWithLanding();
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
   });
 });

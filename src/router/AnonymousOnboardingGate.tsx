@@ -1,8 +1,16 @@
 // src/router/AnonymousOnboardingGate.tsx
 //
-// Anonymous entry gate for `/` ONLY (locked #14 — Chau-confirmed
-// doctrine: the Duolingo-style picker fires for anonymous visitors as
-// the entry point, BEFORE signup).
+// Anonymous entry gate for `/` ONLY.
+//
+// DOCTRINE UPDATE (Chau-directed 2026-05-18, marketing landing audit
+// strategic ask #1 — answered "yes, build the landing page"). This
+// SUPERSEDES the earlier reading of locked #14 that "the picker IS the
+// anonymous entry point". The picker is unchanged and still owns
+// learning setup; it is now reached via the landing page's CTA and is
+// still directly addressable at /onboarding. A first-time anonymous
+// visitor now sees the marketing landing (the `firstTimeAnonymous`
+// element) instead of being bounced straight into the survey — do not
+// "restore" the old /onboarding redirect; this is the intended design.
 //
 // Scoped deliberately to the root route. Kids mode, deep links
 // (/room/:id, /kids), /pricing, /auth callbacks, blog and SEO pages are
@@ -18,9 +26,12 @@
 //   - anonymous + stored pair (return)→ render Home. Home reads the
 //                                       localStorage pair for pair-aware
 //                                       rendering.
-//   - anonymous + no stored pair      → redirect to the picker. The
-//                                       picker writes the pair on finish
-//                                       AND skip, so it cannot loop.
+//   - anonymous + no stored pair      → render `firstTimeAnonymous`
+//                                       (the marketing landing). Falls
+//                                       back to the legacy /onboarding
+//                                       redirect when the prop is not
+//                                       supplied, so any non-root reuse
+//                                       keeps the old contract.
 //
 // Uses the same resolved-auth cache as RequireAuth (src/router/
 // AppRouter.tsx) so a token-refresh isLoading flip — which fires on tab
@@ -34,8 +45,13 @@ import { hasAnonymousPair } from "@/lib/languagePair/anonymousPair";
 
 export function AnonymousOnboardingGate({
   children,
+  firstTimeAnonymous,
 }: {
   children: React.ReactNode;
+  /** What a first-time anonymous visitor (no user, no stored pair)
+   *  sees. The `/` route passes the marketing landing. When omitted,
+   *  the gate keeps its legacy behavior and redirects to /onboarding. */
+  firstTimeAnonymous?: React.ReactNode;
 }) {
   const { user, isLoading } = useAuth();
 
@@ -54,7 +70,11 @@ export function AnonymousOnboardingGate({
     hasResolvedRef.current && isLoading ? lastUserRef.current : user;
 
   if (hasResolvedRef.current && !effectiveUser && !hasAnonymousPair()) {
-    return <Navigate to="/onboarding" replace />;
+    return firstTimeAnonymous !== undefined ? (
+      <>{firstTimeAnonymous}</>
+    ) : (
+      <Navigate to="/onboarding" replace />
+    );
   }
 
   return <>{children}</>;
