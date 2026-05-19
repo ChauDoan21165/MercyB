@@ -15,6 +15,7 @@ import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
 import { CertificatesAccountEntry } from "@/components/certificates/CertificatesAccountEntry";
 import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeForm";
+import { TrackingConsentPanel } from "@/components/account/TrackingConsentPanel";
 import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLeaderboardOptInPanel";
 import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/ReferralLeaderboardOptInPanel";
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
@@ -742,6 +743,19 @@ export default function AccountPage() {
           </summary>
           <div style={detailsBody}>
             <LanguagePairSettings />
+          </div>
+        </details>
+
+        {/* ── Privacy: advertising + analytics tracking (collapsed) ── */}
+        <details style={detailsCard}>
+          <summary style={summaryStyle}>
+            <span>
+              {lang === "en" ? "Privacy" : "Quyền riêng tư"}
+            </span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+          </summary>
+          <div style={detailsBody}>
+            <TrackingConsentPanel />
           </div>
         </details>
 
