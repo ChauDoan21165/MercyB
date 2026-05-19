@@ -65,7 +65,7 @@ All four: NOT NULL + CASCADE. Anonymize is structurally impossible.
 
 ### Target state (enables anonymize)
 
-A4e's migration (PR TBD at A6f authoring time — fill in number when opened) is expected to:
+A4e's migration ([PR #837](https://github.com/ChauDoan21165/MercyB/pull/837), `feat/audit-tables-nullable-user-id`) is expected to:
 
 1. **Drop NOT NULL on `user_id`** for the four tables.
 2. **Change FK from `ON DELETE CASCADE` to `ON DELETE SET NULL`**, so the FK does not pre-empt the manifest's anonymize step.
@@ -204,7 +204,7 @@ For all four: **the row, once anonymized, is no longer personal data**, so the d
 - **B1 manifest sweep:** PR #811 (`fix/b1-manifest-42-tables`) — defaulted these four to `delete` due to current schema
 - **A6d classification:** PR #818 (`docs/b1-manifest-table-classification`) — recommended `anonymize` for seven tables; four of those gated on this schema work
 - **A6e crosscheck:** PR #827 (`docs/b1-manifest-crosscheck`) — surfaced the NOT-NULL constraint catch that prompted this decision record
-- **A4e schema migration:** PR TBD — fill in once opened; expected to drop NOT NULL + relax CASCADE on the four tables
+- **A4e schema migration:** PR #837 (`feat/audit-tables-nullable-user-id`) — drops NOT NULL + relaxes CASCADE on the four tables
 - **CI gate:** PR #797 (`fix/b2-wire-delete-coverage-ci`) — the script that originally surfaced the 42 missing tables
 - **Manifest file:** `supabase/functions/delete-account/user-data-manifest.ts`
 - **Coverage script:** `scripts/check-delete-account-coverage.mjs`
