@@ -13,6 +13,62 @@ Diagnostic only. No code/migration change. Labels: silent-failure, dead-code, st
 > is B27's; only this header, the Verdict line, and the closing disposition
 > are B36's.
 
+> **B63 BINDING VERIFICATION (2026-05-19) — additive annotation, no §1–§5
+> content altered.** Resolves the B27 ↔ `RECON-tier-trigger.md` discrepancy
+> on T2's event binding (B45-flagged): §1 T2 row line 49 records timing as
+> **"AFTER INSERT"**; `RECON-tier-trigger.md` §2 records
+> **"AFTER INSERT OR UPDATE OF status"**.
+>
+> **Definitive binding (`RECON-tier-trigger.md` is correct):**
+> ```sql
+> CREATE OR REPLACE TRIGGER "trg_sync_profile_tier_from_payment"
+>   AFTER INSERT OR UPDATE OF "status" ON "public"."payment_transactions"
+>   FOR EACH ROW EXECUTE FUNCTION
+>   "public"."sync_profile_tier_from_payment_transactions"();
+> ```
+> The trigger fires on **INSERT *and* UPDATE OF status** — not INSERT-only.
+> Provenance: empirically verified by `RECON-tier-trigger.md` via a live
+> `supabase db dump --linked --schema public` on 2026-05-17 (prod
+> `buemdfxyhxunzpgdoqin`, dump line 17693). `pg_dump` emits this DDL straight
+> from `pg_catalog`, so it is catalog-derived — equivalent to the §4
+> `pg_trigger` query's answer.
+>
+> **Why B27 under-specified (not a contradiction):** B27 line 49 derived
+> "AFTER INSERT" "per fix-migration header" and line 54 explicitly flagged
+> the binding "catalog-only — unverifiable by an agent". The
+> `20260510010000_fix_sync_profile_tier_trigger.sql` header (lines 9, 19)
+> says "fires AFTER INSERT" because it describes only the gift-redemption
+> INSERT path it was patching — it never asserts INSERT-only and contains
+> **no `CREATE/DROP/ALTER TRIGGER`** (binding is pure SQL-Editor drift).
+> B27's cell is an incomplete inference, not a competing observation;
+> INSERT is a subset of the real binding.
+>
+> **Changed since the 2026-05-17 audit? No.** No tracked migration ever
+> created/altered this trigger (the lone reference,
+> `20260510010000`, is `CREATE OR REPLACE FUNCTION` only); no migration
+> dated ≥ 20260517 touches it; no T2-retirement migration has been authored
+> on `b27/profile-trigger-audit` (§5 remains a proposal); and there is no
+> unattended agent SQL path to mutate SQL-Editor drift (memory
+> `project_db_schema_drift_audit`). Unchanged **by absence of any change
+> vector** — *not* a fresh catalog read.
+>
+> **Honesty caveat:** the §4 `pg_trigger` query could not be re-run live
+> this session. Authorized creds are the `mb-supabase-service-role` JWT
+> only, which authenticates PostgREST (no `pg_catalog`/`pg_trigger`
+> exposure); no `SUPABASE_ACCESS_TOKEN` for the CLI dump path; Docker down.
+> This is the documented constraint (`project_pg_indexes_preflight`,
+> `project_db_schema_drift_audit`; B27 §4 "agents have no catalog path").
+> Resolution rests on `RECON-tier-trigger.md`'s 2026-05-17 live pg_dump +
+> the no-change-vector analysis above.
+>
+> **Impact for B61 (out-of-band schema audit):** the out-of-band trigger
+> fires on **INSERT and UPDATE OF status**. B27 §2/§3's "only the gift
+> INSERT path fires T2" framing is therefore narrower than reality — a
+> `pending → completed` *status UPDATE* on `payment_transactions` also
+> fires the profiles-tier sync. The dormant-trigger surface is wider than
+> §3 states; the table-mismatch dormancy verdict (Stripe/RevenueCat never
+> write `payment_transactions` at all) is unaffected.
+
 ## Verdict
 
 `sync_profile_tier_from_payment_transactions` (T2) is **dormant by
