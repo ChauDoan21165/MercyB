@@ -36,7 +36,7 @@ import { normalizeTierOrUndefined } from "@/lib/constants/tiers";
 import RoomRenderer from "@/components/room/RoomRenderer";
 import { DownloadRoomButton } from "@/components/room/DownloadRoomButton";
 import OfflineUnavailable from "@/components/offline/OfflineUnavailable";
-import { getEffectiveRoomSpec, type RoomSpec } from "@/lib/roomSpecification";
+import { getEffectiveRoomSpec, getRoomSpecCacheStats, type RoomSpec } from "@/lib/roomSpecification";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
@@ -343,6 +343,8 @@ export default function ChatHub() {
 
       // DEBUG-PERF
       console.log("[room-perf]", "t1:promise.all-resolved", performance.now() - (window as any).__mbRoomPerfT0); // DEBUG-PERF
+      // DEBUG-PERF — room-spec cache hit rate = hits / (hits + misses)
+      console.log("[room-spec-cache]", getRoomSpecCacheStats()); // DEBUG-PERF
 
       if (cancelled) return;
 
