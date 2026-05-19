@@ -664,6 +664,15 @@ export default function AppRouter() {
       <Routes>
         {/* Public auth routes */}
         <Route path="/signin" element={<LazyPage><LoginPage /></LazyPage>} />
+        {/* /signup is the most-guessed account URL. ALIAS (render LoginPage
+            directly, keep /signup in the URL bar) rather than redirect to
+            /signin: LoginPage is a combined sign-in / create-account page
+            ("Đăng nhập hoặc tạo tài khoản"), so /signup is not a
+            misdirection — it lands exactly where the user intended. /login
+            stays a redirect because it's a pure synonym for the same
+            (sign-in) intent. No hyphenated /sign-up: the existing /login
+            alias has no /log-in counterpart — match the pattern (A79 D1). */}
+        <Route path="/signup" element={<LazyPage><LoginPage /></LazyPage>} />
         <Route path="/login"  element={<LoginRedirect />} />
 
         <Route path="/reset-password"
