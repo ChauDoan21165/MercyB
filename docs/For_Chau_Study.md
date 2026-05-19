@@ -18,6 +18,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 7. [Schema-as-written beats schema-as-assumed](#7-schema-as-written-beats-schema-as-assumed)
 8. [Post-merge verification is not optional for critical changes](#8-post-merge-verification-is-not-optional-for-critical-changes)
 9. [Agent ground-truth beats brief narrative](#9-agent-ground-truth-beats-brief-narrative)
+10. [A recon doc is the commit, not the file](#10-a-recon-doc-is-the-commit-not-the-file)
 1. [End-to-end critical-path test inventory (30 tests every serious app needs)](#1-end-to-end-critical-path-test-inventory)
 2. [The "1 PR per concern" discipline](#2-the-1-pr-per-concern-discipline)
 3. [Restore before redesign](#3-restore-before-redesign)
@@ -79,6 +80,22 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 - **A96 webhook forensics:** the brief framed the problem as "the table is too thin." A96 corrected it: the table is deliberately thin on the error path, because persisting on the primary key blocks Stripe's legitimate retry (the N4 idempotency bug). The fix had to be a separate append-only table, not a column added to the existing one.
 
 **Action.** When an agent reports the brief was wrong and explains why, default to trusting them. Reward the correction; don't punish divergence that arrives with evidence.
+
+---
+
+## 10. A recon doc is the commit, not the file
+
+**What it is.** A diagnostic dispatch produces a verdict. That verdict only becomes durable evidence when it is written to a uniquely-named file *and committed to the branch*. Writing the file is not enough — an uncommitted file dies with the worktree exactly like a raw JSON dump.
+
+**Why it matters.** When the verdict is lost, the next agent sent to the same question re-runs the entire investigation from scratch. The diagnostic cost is paid twice, and the second agent may reach a different conclusion with no record of why the first one disagreed. Recon is the most reusable work an agent does and the easiest to throw away.
+
+**MercyBlade examples tonight:**
+- **A77 (webhook attribution):** left only two raw JSON data dumps and probe scripts in its `/private/tmp` worktree, no markdown. The worktree was pruned; **A94 had to redo half the webhook-attribution work** to recover what A77 already knew.
+- **B5 (`mylinh paid-but-free`):** ran a full diagnostic entirely in the terminal. Nothing on disk, nothing committed — when the worktree is pruned the whole investigation is gone.
+- **A91 / B7 (the subtle trap):** *did* write well-named docs (`RECON-monotonic-concurrent-modification-A91.md`, `reports/SCOPING-money-path-…md`). Both were still **uncommitted working files** (`git status` → `??`). A good filename with no commit is exactly as ephemeral as A77's JSON.
+- **A91 / A96 done right:** suffixed, in-`reports/`, structured (Verdict → Evidence → Root cause → Impact → Fix → Worktree disposition) — the pattern the convention now codifies.
+
+**Action.** Every diagnostic dispatch writes `reports/RECON-<topic-slug>-<agent-id>.md` with the six required sections and **commits it to the agent's branch** (no PR — recon is exploration, not production; draft PR only if the recon is the spec for a follow-up build). The dispatch report states the path *and the commit SHA*. Full convention: `docs/agent-briefs/recon-doc-convention.md`.
 
 ---
 
@@ -232,4 +249,4 @@ Not worth adding:
 
 ---
 
-*Last updated: May 19, 2026 — 9 lessons total; 6–9 added from the May 19 hardening wave, 1–5 from initial creation.*
+*Last updated: May 19, 2026 — 10 lessons total; 6–10 added from the May 19 hardening wave, 1–5 from initial creation.*
