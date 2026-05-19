@@ -741,7 +741,7 @@ export default function RoomRenderer({
   const coreRoomId = useMemo(() => coreRoomIdFromEffective(effectiveRoomId), [effectiveRoomId]);
 
   const access = useUserAccess();
-  const accessLoading = Boolean((access as any).loading ?? (access as any).isLoading);
+  const accessLoading = Boolean(access.loading ?? access.isLoading);
   const authUser = useAuthUser(supabase);
   const authUserId = useMemo(() => String((authUser as any)?.id ?? "").trim() || null, [authUser]);
 
@@ -844,12 +844,15 @@ export default function RoomRenderer({
   }, [metaTierId, inferredTierId]);
 
   const userTierId = useMemo<TierIdRuntime>(() => {
-    const raw =
-      (access as any)?.tier ??
-      (access as any)?.userTier ??
-      (access as any)?.profile?.tier ??
-      (access as any)?.profileTier ??
-      "level0";
+    // Paywall gate input. `access` is a typed `UserAccess` (useUserAccess);
+    // read its declared fields directly so the gate stays type-enforced — a
+    // future `UserAccess` refactor must fail `tsc`, not silently open access.
+    // `tier` is the raw entitlement tier and is always defined; `userTier`
+    // is kept as a defensive fallback. Order preserved from prior behavior
+    // (tier-first fails closed). The old `as any` only existed to read
+    // `access.profile?.tier` / `access.profileTier`, which are not part of
+    // the `UserAccess` contract and were unreachable dead branches.
+    const raw: TierId = access.tier ?? access.userTier ?? "level0";
 
     return normalizeTierIdRuntime(raw);
   }, [access]);
