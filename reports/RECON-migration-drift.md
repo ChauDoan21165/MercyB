@@ -1,3 +1,8 @@
+> **SUPERSEDED 2026-05-18** by A21's drift audit (memory
+> `project_db_schema_drift_audit`; 179 PROD_AHEAD relations) and A31's
+> reconciliation (memory `project_repo_ahead_reconciliation`; latency migration
+> `20260518000000` applied to prod — DO NOT re-apply). Keep for audit trail.
+
 # RECON — Supabase Migration Drift
 
 **Agent:** migration-drift-agent · **Branch:** `migration-drift-fix` (based at f66eefc5)

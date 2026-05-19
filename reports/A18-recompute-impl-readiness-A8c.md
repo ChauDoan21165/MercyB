@@ -1,3 +1,5 @@
+> **See also:** `reports/SQL-789-migration-verify-A8d.md` (PR #820) for the #789 migration verify-side companion.
+
 # A18 Recompute Impl — Readiness Audit Post-2026-05-19 Wave (A8c)
 
 **Agent:** A8c (brief-refresh only) · **Branch:** `docs/a18-recompute-impl-prep`

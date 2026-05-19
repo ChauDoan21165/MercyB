@@ -5,6 +5,8 @@ date: 2026-04-26
 sources: reports/elsa-competitive-teardown-2026-04-26.md (Section 1)
 ---
 
+> **Perf numbers here are the PRE-#675 mobile baseline** per memory `project_lighthouse_perf_baseline`; do not treat as current.
+
 # Onboarding 60-second audit — time-to-first-pronunciation-score
 
 ## Headline

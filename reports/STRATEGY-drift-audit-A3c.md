@@ -1,3 +1,7 @@
+> **SUPERSEDED 2026-05-19/20 by STRATEGY.md v3.1 (PR #817).** A3c was the drift
+> audit; #817 was the edit pass. Reading A3c without knowing #817 happened could
+> re-apply already-applied fixes. Keep for audit trail.
+
 # STRATEGY drift audit — post-2026-05-19 wave (A3c)
 
 > Agent: A3c · Branch: `docs/strategy-drift-audit` · Date: 2026-05-19
