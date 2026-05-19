@@ -84,10 +84,14 @@ describe("computeYearlyPerMonth", () => {
 });
 
 describe("formatPrice", () => {
-  it("formats VND with space separators + suffix (matches prior copy style)", () => {
-    expect(formatPrice(200_000, "VND")).toBe("200 000 VND");
-    expect(formatPrice(2_000_000, "VND")).toBe("2 000 000 VND");
-    expect(formatPrice(166_667, "VND")).toBe("166 667 VND");
+  it("formats VND with NBSP separators + suffix (canonical atomic price token)", () => {
+    // U+00A0 NBSP both as the thousands separator AND before "VND" so a
+    // price never wraps mid-token. These expectations use the
+    // escape on purpose — a regular space here would mask a regression.
+    const N = "\u00A0";
+    expect(formatPrice(200_000, "VND")).toBe(`200${N}000${N}VND`);
+    expect(formatPrice(2_000_000, "VND")).toBe(`2${N}000${N}000${N}VND`);
+    expect(formatPrice(166_667, "VND")).toBe(`166${N}667${N}VND`);
   });
 
   it("formats USD as $X.XX", () => {

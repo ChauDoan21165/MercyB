@@ -65,6 +65,7 @@ export default function UrgencyVariant({
   const showCountdown = remainingMs !== null && remainingMs > 0;
 
   const yearly = SHARED_PLANS.find((p) => p.key === "year")!;
+  const monthly = SHARED_PLANS.find((p) => p.key === "month")!;
 
   return (
     <div className={PAGE_WRAP}>
@@ -121,7 +122,7 @@ export default function UrgencyVariant({
         onClick={() => onSelectPlan("month")}
         className="block w-full text-center text-sm text-black/65 hover:text-black/85 underline"
       >
-        Hoặc chọn gói tháng — 200.000 VND / tháng
+        Hoặc chọn gói tháng — {monthly.price_label} / tháng
       </button>
 
       <p className="text-xs text-black/50 mt-6 text-center">

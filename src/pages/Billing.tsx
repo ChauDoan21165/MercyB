@@ -12,6 +12,11 @@ import {
 } from "@/lib/billing";
 import { getPlatform } from "@/lib/platform";
 import { APPLE_MANAGE_SUBSCRIPTIONS_URL } from "@/lib/iap";
+import {
+  formatPrice,
+  MONTHLY_PRICE_VND,
+  YEARLY_PRICE_VND,
+} from "@/lib/pricing/displayPrices";
 
 type PlanKey = "month" | "year";
 
@@ -603,7 +608,7 @@ export default function Billing() {
               <span style={VIETNAMESE_SUB_STYLE}>Hàng tháng</span>
             </div>
 
-            <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>200 000 VND</div>
+            <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>{formatPrice(MONTHLY_PRICE_VND, "VND")}</div>
 
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
               Flexible recurring access with monthly billing.
@@ -631,7 +636,7 @@ export default function Billing() {
               <span style={VIETNAMESE_SUB_STYLE}>Hàng năm</span>
             </div>
 
-            <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>2 000 000 VND</div>
+            <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>{formatPrice(YEARLY_PRICE_VND, "VND")}</div>
 
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
               Best long-term value with full premium access all year.
