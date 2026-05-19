@@ -6,7 +6,7 @@ export default function Privacy() {
       <h1>Privacy Policy</h1>
 
       <p>
-        <strong>Last updated:</strong> May 13, 2026
+        <strong>Last updated:</strong> May 18, 2026
       </p>
 
       <p>
@@ -171,57 +171,126 @@ export default function Privacy() {
         phát âm.
       </p>
 
-      <h2>4b. Web Session Replay (Sentry)</h2>
+      <h2>4b. Giám sát lỗi và ghi lại phiên khi có lỗi (Sentry)</h2>
       <p>
-        When you use the web version of Mercy Blade, a small fraction of
-        sessions — approximately 10% of all sessions, plus 100% of
-        sessions in which an error occurs — are recorded as
-        &ldquo;session replays&rdquo; and sent to{" "}
-        <strong>Sentry</strong>, our error monitoring provider, so we
-        can see what happened in the moments before a crash. We use
-        these recordings only to diagnose and fix bugs.
+        <strong>Sentry</strong> là nhà cung cấp giám sát lỗi (bên thứ
+        ba) của chúng tôi. Khi ứng dụng gặp lỗi hoặc sự cố, Sentry
+        nhận thông tin kỹ thuật về lỗi đó: loại lỗi, trang/route đang
+        mở, phiên bản ứng dụng, và một mã người dùng không định danh.
+        Chúng tôi loại bỏ email, địa chỉ IP và nội dung bạn gõ trước
+        khi dữ liệu rời thiết bị. Chúng tôi dùng thông tin này chỉ để
+        chẩn đoán và sửa lỗi.
       </p>
-      <p>These recordings:</p>
-      <ul>
-        <li>
-          <strong>Do not capture text you type.</strong> All text
-          content is masked in your browser before any data leaves your
-          device.
-        </li>
-        <li>
-          <strong>Do not capture images, video, or files</strong> —
-          only clicks, scrolls, and navigation are recorded.
-        </li>
-        <li>
-          <strong>Have no audio and no camera.</strong>
-        </li>
-        <li>
-          Are retained by Sentry for approximately 30 days under our
-          current plan, then deleted automatically.
-        </li>
-      </ul>
       <p>
-        Session replay runs only on the web version of Mercy Blade —
-        the iOS and Android apps do not record session replays.
-        Masking is enabled by default; no action is required on your
-        part.
+        Trên phiên bản web, một phần nhỏ phiên truy cập — khoảng 10%,
+        cộng 100% các phiên có lỗi xảy ra — được ghi lại dưới dạng
+        &ldquo;session replay&rdquo; và gửi tới Sentry. Bản ghi của
+        Sentry: <strong>che ẩn toàn bộ chữ bạn nhập</strong> ngay trên
+        trình duyệt trước khi rời thiết bị; không lưu hình ảnh, video
+        hay file; không có âm thanh, không có camera; chỉ ghi lại thao
+        tác bấm, cuộn và điều hướng; được Sentry tự động xoá sau
+        khoảng 30 ngày theo gói dịch vụ hiện tại. Tính năng này chỉ
+        chạy trên web — ứng dụng iOS và Android không ghi lại phiên.
+      </p>
+      <p>
+        <strong>Lưu ý:</strong> Sentry không phải công cụ ghi phiên
+        duy nhất. Xem Mục 4c (Microsoft Clarity) — công cụ đó phục vụ
+        phân tích sản phẩm và che ẩn ít hơn Sentry (chỉ che một số
+        trường nhất định, không che toàn bộ chữ).
       </p>
       <p style={{ fontStyle: "italic", color: "#475569" }}>
-        <strong>Tiếng Việt — Ghi lại phiên truy cập web (Sentry):</strong>{" "}
-        Khi bạn dùng phiên bản web của Mercy Blade, một phần nhỏ phiên
-        truy cập (khoảng 10%, và 100% các phiên có lỗi xảy ra) sẽ được
-        ghi lại dưới dạng &ldquo;session replay&rdquo; và gửi tới{" "}
-        <strong>Sentry</strong> — đối tác giám sát lỗi của chúng tôi —
-        để chúng tôi xem được điều gì đã xảy ra trước khi gặp sự cố.
-        Bản ghi này: không lưu chữ bạn nhập (toàn bộ nội dung văn bản
-        đều được che ẩn ngay trên trình duyệt của bạn trước khi rời
-        khỏi máy); không lưu hình ảnh, video, file (chỉ ghi lại các
-        thao tác bấm/cuộn/điều hướng); không có âm thanh, không có
-        camera; và được Sentry tự động xoá sau khoảng 30 ngày theo
-        gói dịch vụ hiện tại. Tính năng này chỉ chạy trên phiên bản
-        web — ứng dụng iOS và Android không ghi lại phiên truy cập.
-        Chúng tôi dùng dữ liệu này chỉ để khắc phục lỗi. Bạn không
-        cần làm gì để được bảo vệ — việc che ẩn được bật mặc định.
+        <strong>English — Error monitoring &amp; error-session replay
+        (Sentry):</strong> Sentry is our third-party error-monitoring
+        provider. When the app hits an error or crash, Sentry receives
+        technical details about it — the error type, the page/route,
+        the app version, and a non-identifying user id. We strip your
+        email, IP address, and any text you typed before data leaves
+        your device, and we use this only to diagnose and fix bugs. On
+        the web, approximately 10% of sessions plus 100% of sessions
+        with an error are recorded as &ldquo;session replays&rdquo;
+        sent to Sentry; these mask <strong>all</strong> typed text in
+        your browser before anything leaves your device, capture no
+        images/video/files, have no audio or camera, record only
+        clicks/scrolls/navigation, and are auto-deleted by Sentry
+        after roughly 30 days. Replay runs only on the web — the iOS
+        and Android apps do not record sessions. Note: Sentry is not
+        the only session-recording tool — see Section 4c (Microsoft
+        Clarity), which is for product analytics and masks less than
+        Sentry (only certain fields, not all text).
+      </p>
+
+      <h2>4c. Phân tích sản phẩm — Microsoft Clarity</h2>
+      <p>
+        Trên phiên bản web, chúng tôi dùng <strong>Microsoft
+        Clarity</strong> — công cụ phân tích sản phẩm của bên thứ ba
+        (Microsoft) — để hiểu cách sản phẩm được sử dụng nhằm cải
+        thiện nó. Clarity tạo <strong>session replay</strong> (ghi lại
+        phiên), <strong>heatmap</strong> (bản đồ nhiệt) và{" "}
+        <strong>click map</strong> (bản đồ lượt bấm): ghi lại các thao
+        tác như bấm, cuộn, di chuyển chuột và điều hướng.
+      </p>
+      <p>
+        Khác với Sentry, <strong>Clarity không che ẩn toàn bộ
+        chữ</strong>. Clarity chỉ che ẩn một số trường nhạy cảm nhất
+        định (ô nhập chat với Teacher Mercy, bài kiểm tra xếp loại, ô
+        email và mật khẩu); các nội dung văn bản khác trên màn hình có
+        thể được ghi lại. Dữ liệu được Microsoft xử lý trên hạ tầng
+        của họ, ở ngoài Việt Nam. Clarity chỉ chạy trên web — ứng
+        dụng iOS và Android không dùng Clarity. Hiện chưa có nút tắt
+        ngay trong ứng dụng; một tuỳ chọn từ chối phân tích đang được
+        phát triển và chúng tôi sẽ cập nhật chính sách này khi hoàn
+        tất.
+      </p>
+      <p style={{ fontStyle: "italic", color: "#475569" }}>
+        <strong>English — Product analytics (Microsoft
+        Clarity):</strong> On the web we use Microsoft Clarity, a
+        third-party product-analytics tool (Microsoft), to understand
+        how the product is used so we can improve it. Clarity produces
+        session replays, heatmaps, and click maps — it records
+        interactions such as clicks, scrolls, mouse movement, and
+        navigation. Unlike Sentry,{" "}
+        <strong>Clarity does not mask all text</strong>; it masks only
+        certain sensitive fields (the Teacher Mercy chat input, the
+        placement test, and email/password fields), and other on-screen
+        text may be recorded. Data is processed by Microsoft on their
+        infrastructure outside Vietnam. Clarity runs only on the web —
+        the iOS and Android apps do not use Clarity. There is currently
+        no in-app off switch; an opt-out control for product analytics
+        is in development and we will update this policy when it ships.
+      </p>
+
+      <h2>4d. Đo lường tiếp thị và phân tích (Google Analytics, Meta Pixel)</h2>
+      <p>
+        Khi được kích hoạt, chúng tôi có thể dùng <strong>Google
+        Analytics 4</strong> để đo lượt xem trang và các sự kiện chính
+        (đăng ký, bắt đầu dùng thử, mua gói). Google Analytics do
+        Google (bên thứ ba) vận hành; địa chỉ IP của bạn được ẩn
+        danh và công cụ này đặt cookie trên thiết bị của bạn.
+      </p>
+      <p>
+        Chúng tôi cũng đã chuẩn bị tích hợp <strong>Meta (Facebook)
+        Pixel</strong> để đo hiệu quả tiếp thị (xem trang, đăng ký,
+        bắt đầu dùng thử, mua gói). <strong>Hiện tại Meta Pixel chưa
+        được bật.</strong> Nếu sau này được bật, các sự kiện đó sẽ
+        được gửi tới Meta Platforms, Inc. và chúng tôi sẽ cập nhật
+        chính sách này trước khi kích hoạt. Chúng tôi không gửi bài
+        học, tin nhắn chat với Teacher Mercy hay dữ liệu phát âm của
+        bạn cho Google hoặc Meta.
+      </p>
+      <p style={{ fontStyle: "italic", color: "#475569" }}>
+        <strong>English — Marketing measurement &amp; analytics (Google
+        Analytics, Meta Pixel):</strong> When enabled, we may use
+        Google Analytics 4 to measure page views and key events
+        (sign-up, trial start, purchase). Google Analytics is operated
+        by Google (a third party); your IP address is anonymized and it
+        sets cookies on your device. We have also prepared a Meta
+        (Facebook) Pixel integration to measure marketing effectiveness
+        (page view, registration, trial start, purchase).{" "}
+        <strong>The Meta Pixel is currently not enabled.</strong> If it
+        is enabled later, those events would be sent to Meta Platforms,
+        Inc., and we will update this policy before activating it. We do
+        not send your lessons, Teacher Mercy chat messages, or
+        pronunciation data to Google or Meta.
       </p>
 
       <h2>5. Data Retention</h2>
@@ -258,6 +327,26 @@ export default function Privacy() {
       <p>
         Mercy Blade is not intended for children under 13, and we do not
         knowingly collect personal information from children under 13.
+      </p>
+      <p>
+        <strong>Về chế độ Trẻ em:</strong> Mercy Blade có một chế độ
+        Trẻ em. Hiện tại, hoạt động trong chế độ Trẻ em được ghi nhận
+        và phân tích <strong>giống như người dùng thường</strong> — các
+        công cụ phân tích nêu ở Mục 4b–4d <strong>không loại trừ</strong>
+        {" "}chế độ Trẻ em. Chúng tôi nói rõ điều này một cách trung
+        thực thay vì tuyên bố là có sự khác biệt. Chúng tôi đang xây
+        dựng cơ chế loại trừ theo dõi (tracking carve-out) cho chế độ
+        Trẻ em và sẽ cập nhật chính sách này khi hoàn tất.
+      </p>
+      <p style={{ fontStyle: "italic", color: "#475569" }}>
+        <strong>English — Kids mode:</strong> Mercy Blade has a Kids
+        mode. At this time, activity in Kids mode is recorded and
+        analyzed <strong>the same way as for adult users</strong> — the
+        analytics tools described in Sections 4b–4d{" "}
+        <strong>do not exclude</strong> Kids mode. We state this
+        honestly rather than claiming a difference that does not yet
+        exist. We are building a tracking carve-out for Kids mode and
+        will update this policy when it is in place.
       </p>
 
       <h2>8. Security</h2>
