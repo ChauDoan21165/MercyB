@@ -5,6 +5,25 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 import Stripe from "npm:stripe@12.18.0";
 import type { Database } from "../_shared/database.types.ts";
+import {
+  asBooleanOrNull,
+  asNonEmptyStringOrNull,
+  asRecordOrNull,
+  buildDefaultUrls,
+  getBearerToken,
+  getExistingRecurringItem,
+  getRequestOrigin,
+  getStringField,
+  getSubscriptionLifecycleSnapshot,
+  inferChangeType,
+  isFreeTier,
+  isStripeCustomerId,
+  isStripePriceId,
+  isStripeSubscriptionUpdatable,
+  isValidHttpUrl,
+  normalize,
+  shouldForceCheckoutForLifecycle,
+} from "./logic.ts";
 
 const APP_ID = "mercy_blade";
 const PROVIDER = "stripe";
@@ -115,47 +134,6 @@ function createTypedClient(supabaseUrl: string, key: string) {
   });
 }
 
-function asRecordOrNull(value: unknown): Record<string, unknown> | null {
-  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
-  return value as Record<string, unknown>;
-}
-
-function asNonEmptyStringOrNull(value: unknown): string | null {
-  if (typeof value !== "string") return null;
-  const trimmed = value.trim();
-  return trimmed.length > 0 ? trimmed : null;
-}
-
-function asBooleanOrNull(value: unknown): boolean | null {
-  return typeof value === "boolean" ? value : null;
-}
-
-function normalize(value: unknown): string {
-  return String(value ?? "").toLowerCase().replace(/\s+/g, " ").trim();
-}
-
-function isFreeTier(tier: { name?: string | null }): boolean {
-  return normalize(tier.name) === "level0";
-}
-
-function isStripePriceId(value: string | null): value is string {
-  return !!value && /^price_[A-Za-z0-9]+$/.test(value);
-}
-
-function isStripeCustomerId(value: string | null): value is string {
-  return !!value && /^cus_[A-Za-z0-9]+$/.test(value);
-}
-
-function isValidHttpUrl(value: string | null): value is string {
-  if (!value) return false;
-  try {
-    const url = new URL(value);
-    return url.protocol === "http:" || url.protocol === "https:";
-  } catch {
-    return false;
-  }
-}
-
 function errToObj(error: unknown): Record<string, unknown> {
   const record = asRecordOrNull(error);
 
@@ -187,13 +165,6 @@ function errToObj(error: unknown): Record<string, unknown> {
   };
 }
 
-function getBearerToken(req: Request): string {
-  const authHeader = req.headers.get("authorization") || "";
-  return authHeader.toLowerCase().startsWith("bearer ")
-    ? authHeader.slice(7).trim()
-    : "";
-}
-
 function logInfo(message: string, data?: Record<string, unknown>) {
   console.log(
     JSON.stringify({
@@ -213,87 +184,6 @@ function logError(message: string, data?: Record<string, unknown>) {
       message,
       ...(data ?? {}),
     }),
-  );
-}
-
-function getStringField(
-  body: Record<string, unknown>,
-  keys: string[],
-): string | null {
-  for (const key of keys) {
-    const value = asNonEmptyStringOrNull(body[key]);
-    if (value) return value;
-  }
-  return null;
-}
-
-function getRequestOrigin(req: Request): string | null {
-  const origin = asNonEmptyStringOrNull(req.headers.get("origin"));
-  if (origin) return origin.replace(/\/+$/, "");
-
-  const referer = asNonEmptyStringOrNull(req.headers.get("referer"));
-  if (referer) {
-    try {
-      return new URL(referer).origin.replace(/\/+$/, "");
-    } catch {
-      return null;
-    }
-  }
-
-  return null;
-}
-
-function buildDefaultUrls(req: Request) {
-  const origin = getRequestOrigin(req) ?? "http://127.0.0.1:3107";
-  return {
-    successUrl: `${origin}/billing/success`,
-    cancelUrl: `${origin}/pricing`,
-  };
-}
-
-function isStripeSubscriptionUpdatable(
-  subscription: Stripe.Subscription,
-): boolean {
-  return ["active", "trialing", "past_due", "unpaid"].includes(subscription.status);
-}
-
-function shouldForceCheckoutForLifecycle(
-  subscription: Stripe.Subscription,
-): boolean {
-  return (
-    subscription.status === "canceled" ||
-    subscription.status === "incomplete_expired" ||
-    subscription.canceled_at != null ||
-    subscription.ended_at != null
-  );
-}
-
-function getSubscriptionLifecycleSnapshot(subscription: Stripe.Subscription) {
-  return {
-    id: subscription.id,
-    status: subscription.status,
-    cancel_at_period_end: subscription.cancel_at_period_end ?? false,
-    cancel_at: subscription.cancel_at ?? null,
-    canceled_at: subscription.canceled_at ?? null,
-    ended_at: subscription.ended_at ?? null,
-    current_period_end: subscription.current_period_end ?? null,
-    current_period_start: subscription.current_period_start ?? null,
-    collection_method: subscription.collection_method ?? null,
-    default_payment_method:
-      typeof subscription.default_payment_method === "string"
-        ? subscription.default_payment_method
-        : subscription.default_payment_method?.id ?? null,
-  };
-}
-
-function getExistingRecurringItem(
-  subscription: Stripe.Subscription,
-): Stripe.SubscriptionItem | null {
-  return (
-    subscription.items.data.find((entry) => {
-      const price = entry.price;
-      return !!entry.id && !!price && !price.deleted && !!price.recurring;
-    }) ?? null
   );
 }
 
@@ -567,18 +457,6 @@ async function validateTargetPrice(params: {
       ),
     };
   }
-}
-
-function inferChangeType(params: {
-  currentPrice: Stripe.Price;
-  targetPrice: Stripe.Price;
-}): "upgrade" | "downgrade" | "lateral" {
-  const currentAmount = params.currentPrice.unit_amount ?? 0;
-  const targetAmount = params.targetPrice.unit_amount ?? 0;
-
-  if (targetAmount > currentAmount) return "upgrade";
-  if (targetAmount < currentAmount) return "downgrade";
-  return "lateral";
 }
 
 async function loadProfileByUserId(params: {
