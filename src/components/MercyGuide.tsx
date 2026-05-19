@@ -35,7 +35,12 @@ import {
   getPanelHeightPolicy,
   getPanelWidthPolicy,
 } from './mercy-guide/mercyGuide.utils';
-import { MERCY_HOST_IMAGE_FALLBACK, MERCY_HOST_IMAGE_SRC } from './mercy-guide/shared';
+import {
+  MERCY_HOST_IMAGE_AVIF,
+  MERCY_HOST_IMAGE_FALLBACK,
+  MERCY_HOST_IMAGE_SRC,
+  MERCY_HOST_IMAGE_WEBP,
+} from './mercy-guide/shared';
 import { analyzeGrammarWithApi } from './mercy-guide/tabs/grammar-writing/api';
 import { breadcrumbMercyPanel } from '@/lib/monitoring/breadcrumbs';
 import useMercyMemory from './mercy-guide/hooks/useMercyMemory';
@@ -1196,15 +1201,22 @@ export function MercyGuide({
               showBubbleLabel ? 'h-20 w-20' : 'h-16 w-16',
             )}
           >
-            <img
-              src={MERCY_HOST_IMAGE_SRC}
-              alt="Teacher Mercy"
-              onError={(event) => {
-                fallbackAvatar(event);
-                handleAvatarError();
-              }}
-              className="h-full w-full rounded-full object-cover object-[50%_32%] scale-110"
-            />
+            <picture>
+              <source srcSet={MERCY_HOST_IMAGE_AVIF} type="image/avif" />
+              <source srcSet={MERCY_HOST_IMAGE_WEBP} type="image/webp" />
+              <img
+                src={MERCY_HOST_IMAGE_SRC}
+                alt="Teacher Mercy"
+                width={640}
+                height={640}
+                decoding="async"
+                onError={(event) => {
+                  fallbackAvatar(event);
+                  handleAvatarError();
+                }}
+                className="h-full w-full rounded-full object-cover object-[50%_32%] scale-110"
+              />
+            </picture>
           </div>
 
           {showBubbleLabel && (

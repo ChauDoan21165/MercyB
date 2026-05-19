@@ -23,7 +23,12 @@ import {
 
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { lazyWithRetry } from '@/lib/lazyWithRetry';
-import { MERCY_HOST_IMAGE_FALLBACK, MERCY_HOST_IMAGE_SRC } from './shared';
+import {
+  MERCY_HOST_IMAGE_AVIF,
+  MERCY_HOST_IMAGE_FALLBACK,
+  MERCY_HOST_IMAGE_SRC,
+  MERCY_HOST_IMAGE_WEBP,
+} from './shared';
 
 // Lazy-load each heavy tab so the mercy-guide initial chunk stays small.
 // First-time activation of a tab loads its own async chunk; subsequent
@@ -1399,15 +1404,22 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       >
         <div className="relative shrink-0">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] via-[#FFE6DC] to-[#DCC8FF] blur-sm opacity-80" />
-          <img
-            src={MERCY_HOST_IMAGE_SRC}
-            alt={headerTitle}
-            className="relative h-10 w-10 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
-            onError={(event) => {
-              fallbackAvatar(event);
-              onAvatarError?.(event);
-            }}
-          />
+          <picture>
+            <source srcSet={MERCY_HOST_IMAGE_AVIF} type="image/avif" />
+            <source srcSet={MERCY_HOST_IMAGE_WEBP} type="image/webp" />
+            <img
+              src={MERCY_HOST_IMAGE_SRC}
+              alt={headerTitle}
+              width={640}
+              height={640}
+              decoding="async"
+              className="relative h-10 w-10 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
+              onError={(event) => {
+                fallbackAvatar(event);
+                onAvatarError?.(event);
+              }}
+            />
+          </picture>
           <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
         </div>
 
