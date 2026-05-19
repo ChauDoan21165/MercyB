@@ -266,6 +266,7 @@ export default function PushPreferencesPage() {
               </h2>
               <input
                 type="time"
+                aria-label="Giờ nhắc hằng ngày"
                 value={prefs.daily_practice_local_time}
                 onChange={(e) =>
                   updatePref({ daily_practice_local_time: e.target.value })
@@ -289,6 +290,7 @@ export default function PushPreferencesPage() {
             <div className="flex items-center gap-2 text-sm">
               <input
                 type="time"
+                aria-label="Bắt đầu giờ yên tĩnh"
                 value={prefs.quiet_hours_start}
                 onChange={(e) =>
                   updatePref({ quiet_hours_start: e.target.value })
@@ -298,6 +300,7 @@ export default function PushPreferencesPage() {
               <span className="text-black/55">đến</span>
               <input
                 type="time"
+                aria-label="Kết thúc giờ yên tĩnh"
                 value={prefs.quiet_hours_end}
                 onChange={(e) =>
                   updatePref({ quiet_hours_end: e.target.value })
