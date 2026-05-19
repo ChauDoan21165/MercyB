@@ -20,6 +20,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
+import SeoMeta from "@/components/seo/SeoMeta";
 
 function ValueCol({
   titleVi,
@@ -89,6 +90,11 @@ export default function MarketingLandingPage() {
 
   return (
     <main className="mb-ml">
+      <SeoMeta
+        title="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới nói tiếng Anh"
+        description="Học tiếng Anh cho người Việt: sửa lỗi phát âm, luyện giao tiếp và luyện thi cùng Cô Mercy. Dùng thử miễn phí 7 ngày, không cần thẻ."
+        canonical="https://mercyblade.com/"
+      />
       <style>{CSS}</style>
 
       {/* 1 — HERO */}

@@ -82,6 +82,19 @@ function buildTags({
     tags.push(
       { selector: 'link[rel="canonical"]', attrs: { rel: "canonical", href: canonical } },
       { selector: 'meta[property="og:url"]', attrs: { property: "og:url", content: canonical } },
+      // Self-referencing hreflang. MercyBlade is a single-URL Vietnamese-first
+      // SPA (no /vi /en routing), so every indexable page IS the vi version and
+      // is its own x-default. Emitting vi + x-default → the page's own canonical
+      // satisfies Google's hreflang reciprocity rule without per-locale URLs.
+      // See reports brief url-i18n-strategy-2026-05-19 (A63).
+      {
+        selector: 'link[rel="alternate"][hreflang="vi"]',
+        attrs: { rel: "alternate", hreflang: "vi", href: canonical },
+      },
+      {
+        selector: 'link[rel="alternate"][hreflang="x-default"]',
+        attrs: { rel: "alternate", hreflang: "x-default", href: canonical },
+      },
     );
   }
   if (ogImage) {

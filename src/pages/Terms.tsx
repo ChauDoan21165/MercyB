@@ -1,8 +1,15 @@
 // File: src/pages/Terms.tsx
 
+import SeoMeta from "@/components/seo/SeoMeta";
+
 export default function Terms() {
   return (
     <div style={{ padding: 24, maxWidth: 860, margin: "0 auto", lineHeight: 1.6 }}>
+      <SeoMeta
+        title="Điều khoản sử dụng — MercyBlade"
+        description="Điều khoản sử dụng (EULA) của MercyBlade — quyền và trách nhiệm khi dùng ứng dụng học ngoại ngữ cho người Việt."
+        canonical="https://mercyblade.com/terms"
+      />
       <h1>Terms of Use (EULA)</h1>
 
       <p>
