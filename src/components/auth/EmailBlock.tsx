@@ -21,12 +21,14 @@ export default function EmailBlock({
   redirectToRecovery,
   busyParent,
   onAuthed,
+  onAnnounce,
   onSignupCreated,
 }: {
   emailRedirectTo: string;
   redirectToRecovery: string;
   busyParent: boolean;
   onAuthed: () => Promise<void>;
+  onAnnounce?: (message: string) => void;
   onSignupCreated: (email: string, message: string) => void;
 }) {
   const [mode, setMode] = useState<EmailMode>("code_email");
@@ -65,6 +67,19 @@ export default function EmailBlock({
     if (!status) return;
     statusRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [status]);
+
+  // A30 — announce status through the auth shell's single live region.
+  // The code-entry and TOTP steps already render their status inside a
+  // role="alert" container (announced natively); only skip those so we
+  // don't double-speak. The primary form's status (line ~788) has no
+  // live semantics of its own — this is the path audit A3 flagged.
+  useEffect(() => {
+    if (!status || !onAnnounce) return;
+    const innerHasAlert =
+      Boolean(totpStep) || (mode === "code_email" && codeStep === "code");
+    if (innerHasAlert) return;
+    onAnnounce(status);
+  }, [status, totpStep, mode, codeStep, onAnnounce]);
 
   // After any successful primary auth (password or verifyOtp), check
   // whether the user has a verified TOTP factor and gate the redirect

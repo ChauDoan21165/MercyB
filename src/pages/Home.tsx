@@ -449,18 +449,30 @@ export default function Home() {
 
   // ── Teacher Mercy hero card ────────────────────────────────────────────────
   const teacherCard = (
-    <button type="button" onClick={handleTeacherMercy} aria-label="Open Teacher Mercy"
-      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "center" }}>
+    // A30 / audit H1: this card used to be ONE big <button> with an
+    // interactive <span role="link"> nested inside it (invalid HTML —
+    // AT may never expose the inner control). It is now a plain
+    // container holding TWO sibling native <button>s: the card body
+    // (Open Teacher Mercy) and the "Try pronunciation" chip. textAlign
+    // moves onto the card div so the centered layout is preserved now
+    // that the outer wrapper is no longer the button that provided it.
+    <div style={{ width: "100%" }}>
       <div style={{
         borderRadius: 26, padding: isPhone ? "22px 16px 26px" : "32px 24px 36px",
         background: "linear-gradient(150deg, rgba(250,232,255,0.96) 0%, rgba(255,240,248,0.96) 40%, rgba(253,240,230,0.94) 100%)",
         border: "1px solid rgba(190,100,140,0.14)",
         boxShadow: "0 20px 48px rgba(160,60,100,0.10)",
-        position: "relative", overflow: "hidden",
+        position: "relative", overflow: "hidden", textAlign: "center",
       }}>
         {/* Soft glow */}
         <div style={{ position: "absolute", top: -40, left: "50%", transform: "translateX(-50%)", width: 260, height: 140, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(220,100,160,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
 
+        <button
+          type="button"
+          onClick={handleTeacherMercy}
+          aria-label="Open Teacher Mercy"
+          style={{ display: "block", width: "100%", background: "none", border: "none", padding: 0, margin: 0, cursor: "pointer", textAlign: "center", font: "inherit", color: "inherit" }}
+        >
         {/* Avatar */}
         <div style={{ width: isPhone ? 100 : 120, height: isPhone ? 100 : 120, borderRadius: 9999, margin: "0 auto", overflow: "hidden", border: "3px solid rgba(255,255,255,0.95)", boxShadow: "0 12px 32px rgba(160,60,100,0.18)" }}>
           {/* LCP image. AVIF + WebP variants are 480×480 (covers up to @4
@@ -514,19 +526,12 @@ export default function Home() {
             Đăng nhập để học cùng Teacher Mercy →
           </div>
         )}
+        </button>
         {!access.isAuthenticated && (
-          <span
-            role="link"
-            tabIndex={0}
+          <button
+            type="button"
             aria-label="Try pronunciation now — no signup needed"
-            onClick={(e) => { e.stopPropagation(); handleTryOneWord(); }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                e.stopPropagation();
-                handleTryOneWord();
-              }
-            }}
+            onClick={handleTryOneWord}
             style={{
               display: "inline-block",
               marginTop: 12,
@@ -538,6 +543,7 @@ export default function Home() {
               fontSize: z(12),
               fontWeight: 800,
               lineHeight: 1.4,
+              fontFamily: "inherit",
               cursor: "pointer",
               textAlign: "center",
             }}
@@ -547,10 +553,10 @@ export default function Home() {
             <span style={{ fontWeight: 600, color: "rgba(8,75,90,0.65)" }}>
               Try pronunciation now — no signup
             </span>
-          </span>
+          </button>
         )}
       </div>
-    </button>
+    </div>
   );
 
   // ── Try one word — no signup (anon-friendly secondary card) ───────────────

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ensureSessionOrThrow, humanizeAuthError } from "@/lib/authHelpers";
 import { UI, AUTH_FOCUS_RING } from "@/components/auth/authUI";
@@ -7,9 +7,11 @@ import { useChromeT } from "@/lib/i18n/chromeLanguage";
 export default function PhoneOtp({
   busyParent,
   onAuthed,
+  onAnnounce,
 }: {
   busyParent: boolean;
   onAuthed: () => Promise<void>;
+  onAnnounce?: (message: string) => void;
 }) {
   const [phone, setPhone] = useState("");
   const [token, setToken] = useState("");
@@ -19,6 +21,12 @@ export default function PhoneOtp({
   const t = useChromeT();
 
   const disabled = busyParent || busy;
+
+  // A30 — PhoneOtp's status (line ~148) has no live semantics; route it
+  // through the auth shell's single polite live region (audit A3).
+  useEffect(() => {
+    if (msg && onAnnounce) onAnnounce(msg);
+  }, [msg, onAnnounce]);
 
   const sendCode = useCallback(async () => {
     if (disabled) return;
