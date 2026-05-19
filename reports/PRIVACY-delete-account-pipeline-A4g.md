@@ -2,7 +2,8 @@
 
 **Author:** A4
 **Date:** 2026-05-19
-**Snapshot:** post #811 (`fix/b1-manifest-42-tables`) + post #842 (`fix/email-audit-recipient-scrub`) — both **OPEN** at time of writing. #837 (`feat/audit-tables-nullable-user-id`) is also OPEN and **unapplied** in prod.
+**Snapshot:** #811 (`fix/b1-manifest-42-tables`) **MERGED** at 2026-05-19T22:28:29Z (dafa9b540 on main) — its 196-entry manifest is now live. #842 (`fix/email-audit-recipient-scrub`) and #837 (`feat/audit-tables-nullable-user-id`) are still **OPEN**; #837 is also **unapplied** in prod. Line refs for Pass 2b–4 below come from the #842 branch — on current main (Pass 2b absent) Pass 3 is at index.ts:163 and Pass 4 at index.ts:176; they slide back to 191/204 once #842 merges.
+**Verified-against-main:** 2026-05-19 post-merge wave (#789 #792 #793 #796 #808 #811 #821 #832 all merged; manifest counts confirmed unchanged: 196 entries / 193 unique tables / 106 delete / 36 anonymize / 53 skip_view / 1 skip_admin).
 **Purpose:** a single map for any future agent who has to touch `supabase/functions/delete-account/*`. After tonight's wave the function has 4½ passes, 193 manifest tables, two PRs in flight, and one schema-blocking constraint. This doc captures what each pass does, what data is available when, and what's still pending.
 
 ---
@@ -98,7 +99,7 @@ if (authDeleteError) return 500 + report;
 
 ## 2. Manifest summary (post-#811)
 
-`user-data-manifest.ts` on `fix/b1-manifest-42-tables` (will be `main` once #811 merges):
+`user-data-manifest.ts` on current `main` (post-#811 merge, dafa9b540):
 
 | Action | Entries | Notes |
 |---|---|---|
@@ -155,7 +156,7 @@ Two load-bearing facts:
 
 | Gap | Status | Tracking |
 |---|---|---|
-| **#811 not merged** — without it, manifest is missing 42 user-id tables surfaced by the #797 CI gate. Pipeline degrades to "best-effort with CASCADE fallback" for those tables. | OPEN — CI green, awaiting merge | [PR #811](https://github.com/ChauDoan21165/MercyB/pull/811) |
+| **#811 manifest** — 42 user-id tables + 6 anonymize re-classifications + 4 schema-blocked group. | ✅ **MERGED** 2026-05-19T22:28:29Z (dafa9b540) | [PR #811](https://github.com/ChauDoan21165/MercyB/pull/811) |
 | **#837 not applied in prod** — without it, 4 audit tables (`email_sends_log`, `push_send_log`, `referral_audit_log`, `speech_analysis_logs`) are forced to `delete`. A6d's anti-abuse retention argument for `referral_audit_log` is currently unhonored. | PR open; awaits Chau-run SQL Editor apply | [PR #837](https://github.com/ChauDoan21165/MercyB/pull/837) |
 | **#842 not merged** — without it, GAP A (`email_audit.recipient_email` survives deletion when the deleted user was the recipient) is live. GDPR Art. 17 + Apple 5.1.1(v) defect. | OPEN — CI green, awaiting merge | [PR #842](https://github.com/ChauDoan21165/MercyB/pull/842) |
 | **Follow-up manifest flip PR** — once #837 applies, the 4 schema-blocked tables can be re-classified to `anonymize`. The unit test asserts coverage by table name, so the flip is a 4-line manifest change + 4 reason updates. | Not yet authored | (no PR yet) |
