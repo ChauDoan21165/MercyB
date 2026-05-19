@@ -93,7 +93,7 @@ export default [
       "react-hooks/static-components": "off",
 
       /* TypeScript reality */
-      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-require-imports": "off",
@@ -161,7 +161,7 @@ export default [
       "no-useless-escape": "off",
       "prefer-const": "off",
 
-      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
     },
@@ -178,7 +178,7 @@ export default [
       globals: { ...globals.node },
     },
     rules: {
-      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
