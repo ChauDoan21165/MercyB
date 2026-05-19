@@ -9,7 +9,7 @@
 -- `anon` SELECT grant makes the result readable by anyone holding the public
 -- anon key (it ships in the browser bundle).
 --
--- #676 (20260618000000_revoke_anon_on_internal_views.sql, merged) locked the
+-- #676 (20260622000000_revoke_anon_on_internal_views.sql, merged) locked the
 -- billing / admin / analytics views it had evidence for. This migration
 -- finishes the sweep over every remaining `public` view so that anon is
 -- revoked *by default*, and adds a dynamic catch-all so prod-ahead drift views

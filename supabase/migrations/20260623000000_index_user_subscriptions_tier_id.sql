@@ -1,4 +1,4 @@
--- 20260618000000_index_user_subscriptions_tier_id.sql
+-- 20260623000000_index_user_subscriptions_tier_id.sql
 --
 -- Add the missing index on public.user_subscriptions (tier_id).
 --
