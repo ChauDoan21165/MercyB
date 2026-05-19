@@ -171,8 +171,8 @@ export default function MarketingLandingPage() {
       {/* 4 — FOUNDER (no unverified metrics; see PR notes) */}
       <section className="mb-ml-founder" aria-label="Người tạo MercyBlade">
         <p lang="vi" className="mb-ml-founder-line">
-          Được tạo bởi <strong>Chau Doan</strong> — kỹ sư phần mềm người
-          Việt.
+          Được tạo bởi <strong>Chau Doan</strong> — kỹ sư phần mềm tại
+          Canada, sáng lập viên MercyBlade.
         </p>
       </section>
 
