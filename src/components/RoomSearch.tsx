@@ -6,6 +6,29 @@ import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { searchRooms, type RoomSearchResult } from "@/lib/search/roomSearch";
 import { useAllRooms } from "@/hooks/useRooms";
+import { getAllRoomsAsync } from "@/lib/rooms/roomRegistry";
+
+// Pre-warm the room registry during browser idle time so the first
+// keystroke searches a populated index instead of paying the cold-start
+// fetch. getAllRoomsAsync() is idempotent (cache + in-flight-promise
+// guarded), so this is safe alongside the useAllRooms() load below.
+function prewarmRoomRegistry(): () => void {
+  const idle =
+    typeof window !== "undefined" &&
+    typeof window.requestIdleCallback === "function";
+
+  if (idle) {
+    const handle = window.requestIdleCallback(() => {
+      void getAllRoomsAsync().catch(() => {});
+    });
+    return () => window.cancelIdleCallback?.(handle);
+  }
+
+  const timer = setTimeout(() => {
+    void getAllRoomsAsync().catch(() => {});
+  }, 200);
+  return () => clearTimeout(timer);
+}
 
 // Tier badge colors
 const TIER_COLORS: Record<string, string> = {
@@ -45,6 +68,9 @@ export const RoomSearch = () => {
 
   // Pre-load rooms registry
   const { loading: roomsLoading } = useAllRooms();
+
+  // Idle prefetch so the index is warm before the first keystroke.
+  useEffect(() => prewarmRoomRegistry(), []);
 
   // Debounced search
   const performSearch = useCallback((searchQuery: string) => {

@@ -225,11 +225,19 @@ export function hasSearchResults(query: string): boolean {
     const titleEnNorm = normalizeText(room.title_en);
     const titleViNorm = normalizeText(room.title_vi);
     const idNorm = normalizeText(room.id);
-    
+
+    // Match surface must mirror calculateScore(): a query that only hits
+    // a keyword/tag/domain still scores > 0 in searchRooms(), so omitting
+    // them here made this "fast check" silently disagree with the real
+    // search (keyword/tag-only queries reported "no results").
     return (
       titleEnNorm.includes(normalizedQuery) ||
       titleViNorm.includes(normalizedQuery) ||
-      idNorm.includes(normalizedQuery)
+      idNorm.includes(normalizedQuery) ||
+      room.keywords_en.some(k => normalizeText(k).includes(normalizedQuery)) ||
+      room.keywords_vi.some(k => normalizeText(k).includes(normalizedQuery)) ||
+      room.tags.some(t => normalizeText(t).includes(normalizedQuery)) ||
+      normalizeText(room.domain).includes(normalizedQuery)
     );
   });
 }
