@@ -60,6 +60,15 @@ jobs:
       - name: Build project
         run: npm run build
 
+      # Eager first-paint bundle-size budget. Sums gzipped bytes of
+      # every chunk in dist/index.html's modulepreload set + entry
+      # script and fails if the total exceeds the budget in the
+      # script. Step added to the existing job (job name unchanged —
+      # branch protection safe). See scripts/check-bundle-budget.mjs
+      # for the threshold + how to widen it intentionally.
+      - name: Check eager bundle gzip budget
+        run: node scripts/check-bundle-budget.mjs
+
       - name: Validate data files
         run: node scripts/validate-data-files.js
 
