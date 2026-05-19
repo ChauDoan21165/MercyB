@@ -45,6 +45,38 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 import { isAuthorized, parseTokens } from "./auth.ts";
 import { handleEvent } from "./projection.ts";
 import type { RcEvent } from "./types.ts";
+import { captureEdgeError } from "../_shared/sentry.ts";
+
+// Sentry tag schema for billing-webhook observability — mirrors the
+// stripe-webhook capture wiring (PR #645) so one ops dashboard facets
+// all three billing providers. All values are low-cardinality + indexed.
+const BILLING_WEBHOOK_TAGS = { webhook: "revenuecat", billing: "true" } as const;
+
+// Awaited by callers BEFORE they return so the short-lived edge isolate
+// does not tear down before Sentry's internal flush (a fire-and-forget
+// capture is routinely lost on Supabase Edge). captureEdgeError never
+// throws (internally guarded) and is a zero-cost no-op when SENTRY_DSN
+// is unset, so the worst case is a ≤2s delay on an ALREADY-failing
+// response RevenueCat will retry anyway. Observability only — it does
+// NOT alter the response body, status code, or the skip/dispatch flow.
+// RevenueCat sends no JWT (token-in-Authorization auth, no `sub` claim);
+// the Supabase user id lives in the parsed event, not a verifiable
+// claim — so, like stripe-webhook, we intentionally do not pass userId.
+async function captureBillingWebhookFailure(
+  err: unknown,
+  tags: { stage: string; severity: "critical" | "high"; event_type?: string },
+): Promise<void> {
+  await captureEdgeError(err, {
+    functionName: "revenuecat-webhook",
+    extra: { stage: tags.stage },
+    tags: {
+      ...BILLING_WEBHOOK_TAGS,
+      stage: tags.stage,
+      severity: tags.severity,
+      event_type: tags.event_type ?? "unknown",
+    },
+  });
+}
 
 // ── HTTP plumbing ───────────────────────────────────────────────────────────
 
@@ -89,6 +121,15 @@ Deno.serve(async (req) => {
   );
   if (configuredTokens.length === 0) {
     console.error("[revenuecat-webhook] REVENUECAT_WEBHOOK_AUTH_TOKEN not set");
+    // CRITICAL: not one failed event — the webhook cannot authorize ANY
+    // delivery, so every RevenueCat billing event is rejected until the
+    // secret is set. Must page, not sit in logs.
+    await captureBillingWebhookFailure(
+      new Error(
+        "revenuecat-webhook: REVENUECAT_WEBHOOK_AUTH_TOKEN not set (no token configured)",
+      ),
+      { stage: "config_missing_token", severity: "critical" },
+    );
     return json({ error: "Webhook not configured" }, 500);
   }
   const authHeader = (req.headers.get("Authorization") ?? "").trim();
@@ -106,11 +147,25 @@ Deno.serve(async (req) => {
   let payload: { event?: RcEvent; api_version?: string };
   try {
     payload = await req.json();
-  } catch {
+  } catch (parseErr) {
+    // Auth ALREADY passed above → a genuine RevenueCat-authorized
+    // delivery whose body we cannot parse: a real billing event we are
+    // dropping. (Unauthorized scanner traffic is rejected at the 401
+    // above, which intentionally does NOT capture — scanner noise.)
+    await captureBillingWebhookFailure(parseErr, {
+      stage: "parse_event",
+      severity: "high",
+    });
     return json({ error: "Invalid JSON body" }, 400);
   }
   const event = payload?.event;
   if (!event || typeof event.type !== "string") {
+    // Authorized + parsed but unusable (no event / no type string) →
+    // same dropped-real-event class as parse_event.
+    await captureBillingWebhookFailure(
+      new Error("revenuecat-webhook: authorized delivery missing event payload"),
+      { stage: "missing_event_payload", severity: "high" },
+    );
     return json({ error: "Missing event payload" }, 400);
   }
 
@@ -133,6 +188,14 @@ Deno.serve(async (req) => {
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if (!supabaseUrl || !serviceKey) {
     console.error("[revenuecat-webhook] SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY not set");
+    // CRITICAL: env/infra failure — fails EVERY event, not one, until
+    // config is fixed. Returns 500 so RevenueCat retries.
+    await captureBillingWebhookFailure(
+      new Error(
+        "revenuecat-webhook: SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY not set",
+      ),
+      { stage: "initialization", severity: "critical", event_type: event.type },
+    );
     return json({ error: "Server misconfigured" }, 500);
   }
   const admin = createClient(supabaseUrl, serviceKey, {
@@ -148,6 +211,14 @@ Deno.serve(async (req) => {
     .maybeSingle();
   if (profileError) {
     console.error("[revenuecat-webhook] profile lookup failed:", profileError.message);
+    // Genuine DB failure on an authorized real subscription event — a
+    // dropped revenue signal (returns 500 so RevenueCat retries).
+    await captureBillingWebhookFailure(
+      new Error(
+        `revenuecat-webhook: profile lookup failed: ${profileError.message}`,
+      ),
+      { stage: "profile_lookup", severity: "high", event_type: event.type },
+    );
     return json({ error: "Profile lookup failed" }, 500);
   }
   if (!profile) {
@@ -162,6 +233,15 @@ Deno.serve(async (req) => {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("[revenuecat-webhook] handler crashed:", message);
+    // PRIMARY billing-observability capture: every throw from
+    // projection.ts / the subscription + profile writes bubbles to this
+    // single catch with the event type in scope (returns 500 →
+    // RevenueCat retries) — one capture point covers the whole money path.
+    await captureBillingWebhookFailure(err, {
+      stage: "processing",
+      severity: "high",
+      event_type: event.type,
+    });
     return json({ error: message }, 500);
   }
 });
