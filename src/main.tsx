@@ -193,10 +193,12 @@ armSentryActivation({
 //   - initializeWebVitals: subscribes to LCP/FID/CLS/TTFB/FCP/INP observers.
 // initSentry() is NO LONGER here — it is route-gated above (loads only on
 // a real trigger, not on every idle tick). configHealth still runs every
-// session: it reports degradation via captureMessage(), which itself
-// pulls Sentry activation if a config problem is detected (see
-// captureException.ts), so config alerting is preserved without the SDK
-// cost on a healthy static-page visit. Both remaining tasks are
+// session: it reports degradation through the gated captureMessage()
+// wrapper (see captureException.ts), which is a no-op unless Sentry has
+// ALREADY been route-gated on this session. It never pulls the SDK
+// itself — so a config gap on a static legal/marketing page costs zero
+// Sentry bytes, while alerting still fires on sessions where Sentry is
+// active (auth / error / explicit-capture triggers). Both remaining tasks are
 // observability concerns; neither affects first paint. requestIdleCallback
 // (setTimeout fallback for Safari < 16.4 / older Firefox) keeps their
 // bundled cost off the critical path and frees the main thread during

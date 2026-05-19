@@ -1,12 +1,17 @@
 // src/lib/configHealth.ts
 //
-// Runs once on app startup (called from main.tsx after Sentry init).
+// Runs once on app startup (deferred boot work in main.tsx).
 // Checks that external service configuration is present and not a
 // placeholder value. Missing config is logged to console.warn in dev
-// and sent to Sentry as a warning event in production so the admin
-// dashboard's CRITICAL alert catches it.
+// and, in production, forwarded through the gated captureMessage()
+// wrapper so the admin dashboard's CRITICAL alert catches it. The
+// wrapper is a no-op unless Sentry has already been route-gated on
+// this session (see report() below) — so a config gap on a static
+// legal/marketing page never itself pulls the @sentry/react SDK.
 
 import { isVoiceConfigured } from "@/config/mercyVoices";
+import { isSentryEnabled } from "@/lib/monitoring/sentryInit";
+import { captureMessage } from "@/lib/monitoring/captureException";
 
 interface ConfigCheck {
   name: string;
@@ -17,8 +22,9 @@ interface ConfigCheck {
 let didRun = false;
 
 /**
- * Call ONCE after Sentry is initialized. Uses dynamic import to avoid
- * bundling Sentry's captureMessage in code paths where it isn't needed.
+ * Call ONCE during deferred boot. Reporting routes through the gated
+ * captureMessage() wrapper, which only emits when Sentry is already
+ * active for this session — it never imports the SDK itself.
  */
 export async function runConfigHealthCheck(): Promise<ConfigCheck[]> {
   if (didRun) return [];
@@ -57,20 +63,19 @@ export async function runConfigHealthCheck(): Promise<ConfigCheck[]> {
   return checks;
 }
 
-async function report(message: string, isDev: boolean) {
+function report(message: string, isDev: boolean) {
   if (isDev) {
     console.warn(`[configHealth] ${message}`);
     return;
   }
 
-  try {
-    // Dynamic import so @sentry/react doesn't bundle eagerly when
-    // DSN is unset (the Sentry init already handles this, but this
-    // double-guards the import path).
-    const Sentry = await import("@sentry/react");
-    Sentry.captureMessage(`[config] ${message}`, "warning");
-  } catch {
-    // Sentry not available — not a problem, the startup Sentry init
-    // may have failed silently. console.warn still fires above in dev.
-  }
+  // isSentryEnabled() guard is load-bearing. A raw `import("@sentry/react")`
+  // here (the old implementation) pulled the ~470 KB SDK chunk on EVERY
+  // production session that hit a config gap — including anonymous visits
+  // to static legal/marketing pages that PR #720 deliberately keeps
+  // Sentry-free. captureMessage() is the gated wrapper: it reads the
+  // already-loaded module via getSentryModule() and is a no-op when Sentry
+  // isn't active, so it never re-imports the SDK. Checking isSentryEnabled()
+  // first keeps the intent explicit and the no-op path branch-cheap.
+  if (isSentryEnabled()) captureMessage(`[config] ${message}`, "warning");
 }
