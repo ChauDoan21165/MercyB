@@ -48,9 +48,9 @@ export type SavePlacementResult = {
 };
 
 const WEAKNESS_CATEGORY = 'vietnamese_l1_interference';
-// mb_user_weakness_profile.mastery_level is numeric. Existing writers in
-// server/host/renderer.ts don't set this field, but our placement detector
-// wants to surface "struggling" signal. 0 = no mastery, 1 = full mastery;
+// mb_user_weakness_profile.mastery_level is numeric. The live writer
+// (supabase/functions/guide-assistant) doesn't set this field, but our
+// placement detector wants to surface "struggling" signal. 0 = no mastery, 1 = full mastery;
 // 0.2 = struggling (detected gap, no practice yet).
 const INITIAL_MASTERY_STRUGGLING = 0.2;
 const INITIAL_SEVERITY = 1.0;
@@ -120,7 +120,7 @@ export async function savePlacementResult(
   }
 
   // 3. Weakness profile — one row per flag, UPSERT by (user_id, category, key_pattern)
-  // Matches the pattern already used by server/host/renderer.ts.
+  // Matches the UPSERT pattern used by the guide-assistant edge function.
   const nowIso = new Date().toISOString();
   for (const tag of input.weaknessFlags) {
     try {

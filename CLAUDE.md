@@ -109,7 +109,7 @@ Not a vanilla create-react-app boot. Includes:
 
 ### Supabase
 
-- One **browser** Supabase client — singleton at `src/lib/supabaseClient.ts` (anon key, the only client that ships to the browser bundle). SSR has a **separate** service-role client at `src/server/host/renderer.ts:39` — intentional, server-only, never bundled. Don't add a third.
+- One **browser** Supabase client — singleton at `src/lib/supabaseClient.ts` (anon key, the only client that ships to the browser bundle). Server-side service-role clients live in the Vercel functions under `api/*` and the Supabase edge functions under `supabase/functions/*` — server-only, never bundled. (There is **no HTML SSR** in this app: `vercel.json` rewrites everything to a static `index.html` and `npm run build` is a plain `vite build` SPA. The old `src/server/host/*` "SSR renderer" was dead scaffold superseded by the `guide-assistant` edge function and was deleted in `chore/delete-ssr-host-dead-code`.)
 - 9 edge functions for email (`email-broadcast`, `send-email-campaign`, `email-automations`, `send-redeem-email`, `send-feedback-reply`, `send-pending-emails`, `admin-daily-digest`, `test-email`, `mercy-ai-builder-email`). Plus billing, audio generation, admin, etc.
 - `room-audio` Storage bucket is PUBLIC (post-Phase-2). Tier-gating lives in the app layer, not in RLS. Revisit tracked in archived reports/archive/NORTH_STAR-v1.3-2026-04-20.md "Deferred Tech Debt".
 - DNS is on Cloudflare. `admin@mercyblade.com` → forwarded to Chau's personal inbox via Cloudflare Email Routing.
