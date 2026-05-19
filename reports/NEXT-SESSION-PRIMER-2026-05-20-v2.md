@@ -17,8 +17,9 @@ A46 was written at the start of the late wave (around the time #774/#787 had mer
 - **Customer remediation fully packaged.** Gift-victim repair (#799 + #803 outreach ops). Mylinh apply (#801 + #805 Stripe pre-flight). All four are paste-ready operator runbooks — SQL Editor only, no `db push`.
 - **STRATEGY.md v3.1 ready to land** (#812 audit + #817 apply). §6 + §7 + §15 freshness pass; no §1-5/§8-14 change.
 - **PRINCIPLES.md hardened.** P17 (free agent → immediate dispatch) → #810. A3e P1-P17 consistency audit → #823. Two sub-clauses landed: #828 (P4 coherence-required micro-edits) + #829 (P16 harness-policy seam).
-- **B13 phase-3 PR-B is in flight.** A1c's `feat/b13ph3-pr-b` shipped as **#826** — atomic R1-R4 repoint + parity tests. Money-path PR. Open, not merged.
-- **#789 pre-apply verify done** (A8d → #820). Migration PASSes as-scoped, **but `recompute_entitlement_tx` RPC is NOT in #789** — needs a separate follow-up migration before A18 PR1 can dispatch. **HARD GATE for A18.**
+- **B13 phase-3 PR-B MERGED** (#826). A1c's `feat/b13ph3-pr-b` — atomic R1-R4 repoint + parity tests, **6715/6715 tests green**, all checks green. Money-path PR shipped. R1-R4 (gift-fetch, tier-gate, webhook-core, billing-readonly) now read from `_shared/entitlement.ts`.
+- **A18 PR1 in flight.** A2 resuming on `/private/tmp/A1d-a18-pr1` → `feat/a18-recompute-entitlement-writer`. Logic-only writer (no migrations needed per A12 §2); zero call sites in this PR. Reports in when ready.
+- **#789 pre-apply verify done** (A8d → #820). Migration PASSes as-scoped, **but `recompute_entitlement_tx` RPC is NOT in #789** — that RPC is **#832 (OPEN)**, separate migration. Both #789 + #832 must be applied to prod before A18 PR2 wires call sites. **HARD GATE for A18 PR2.**
 - **B1 manifest fix in flight.** A4 #811 (42 tables added) + A6d #818 (classification doc) + A4c #819 (anonymize audit, found `email_audit` GAP A) + A6e #827 (manifest cross-check).
 - **CI/perf gates packaged.** A5b bundle budget gate (#809) + A5c tightened threshold (#824); A7b sourcemap smoke (#808); A7d iOS dSYM (#821); A7e Android ProGuard scope (#830); A7c native Sentry init audit (#816).
 - **Ops surfaces:** A9c PENDING-CHAU-ACTIONS consolidation (#814 — **56 line items, the single read for what Chau owes**); A2c PR-review backlog risk matrix (#813); A9b phantom-row apply runbook + A94 formal closure (#806); A9e red-branch audit (#825 — found 1 PR-READY: `b53/price-data-quality-diagnostic`); A10d session summary (#822).
@@ -27,8 +28,8 @@ A46 was written at the start of the late wave (around the time #774/#787 had mer
 
 ## a. State of play (3 bullets)
 
-- **Accomplished (this session, end state):** Billing/entitlement consolidation **design phase CLOSED** (B48 / A5 / B68 / A8-D4 / A11 / A12) AND **PR-A executed** (`_shared/entitlement.ts` additive #802 merged) AND **PR-B authored** (#826, in flight). Customer-incident remediation fully packaged (#799/#801/#803/#805). Bundle perf ≈45 KB gz off (#794+#795 merged). STRATEGY v3.1 (#812/#817) + PRINCIPLES audit + sub-clauses (#823/#828/#829) all landed or queued.
-- **Still parked (needs Chau, not design):** ~39 PR merges, 8 SQL hand-applies, 2 email outreach campaigns, 2 real-device verifies, 2 paperwork redos (per #814). Critical path: #789 + RPC migration → #826 → A18 dispatch chain.
+- **Accomplished (this session, end state):** Billing/entitlement consolidation **design phase CLOSED** (B48 / A5 / B68 / A8-D4 / A11 / A12) AND **PR-A executed** (`_shared/entitlement.ts` additive #802 merged) AND **PR-B MERGED** (#826 — R1-R4 atomic repoint, 6715/6715 tests green). A18 PR1 in flight. Customer-incident remediation fully packaged (#799/#801/#803/#805). Bundle perf ≈45 KB gz off (#794+#795 merged). STRATEGY v3.1 (#812/#817) + PRINCIPLES audit + sub-clauses (#823/#828/#829) all landed or queued.
+- **Still parked (needs Chau, not design):** ~39 PR merges, 8 SQL hand-applies, 2 email outreach campaigns, 2 real-device verifies, 2 paperwork redos (per #814). Critical path: #789 merge + apply → #832 RPC migration merge + apply → A18 PR1 review → A18 PR2 dispatch (wires call sites, gated on both prod-applies).
 - **Now DECIDED:** D1 = table EXECUTED (#802 + #789). §6 expiry-flip accepted (no grace fudge — STRATEGY v3.1 codifies). A94 formally closed (superseded by B21 — #806). P17 locked (#810). P4 + P16 sub-clauses pending (#828/#829).
 
 ---
@@ -59,7 +60,7 @@ Also under "money-path" but not a customer incident: **#806 phantom-row apply ru
 
 ---
 
-## d. Execution sequence (post-#802 merged)
+## d. Execution sequence (post-#826 merged)
 
 ```
 ┌─ HARD GATES (cleared) ─────────────────────────────────────────────────────┐
@@ -67,23 +68,27 @@ Also under "money-path" but not a customer incident: **#806 phantom-row apply ru
 │  (2) PR #802 MERGED          ✅ cff975a54   _shared/entitlement.ts additive │
 │  (3) D1 = table              ✅ executed by #802 + #789-pending             │
 │  (4) §6 expiry-flip          ✅ accepted (STRATEGY v3.1 #817)               │
+│  (5) PR #826 MERGED          ✅ R1-R4 atomic repoint, 6715/6715 tests green │
 └────────────────────────────────────────────────────────────────────────────┘
 
-┌─ HARD GATES (still open) ──────────────────────────────────────────────────┐
-│  (5) #789 merge + SQL Editor apply       ⬅ Chau owes                       │
-│  (6) recompute_entitlement_tx RPC migration  ⬅ NOT in #789; separate PR    │
-│      needed before A18 PR1 dispatches (A8d #820 §6 surface).               │
-│  (7) #826 (PR-B) merge                   ⬅ in review                       │
+┌─ HARD GATES (still open — gate A18 PR2, not PR1) ──────────────────────────┐
+│  (6) #789 merge + SQL Editor apply         ⬅ Chau owes                     │
+│  (7) #832 recompute_entitlement_tx RPC      ⬅ OPEN; separate migration from│
+│      merge + SQL Editor apply                #789 (per A8d #820 §6/§10).   │
 └────────────────────────────────────────────────────────────────────────────┘
         │
-B13 phase-3 PR-B (#826) ─── atomic R1-R4 repoint + parity tests + post-merge
-        │                    recompute. Money-path PR. Real-device gate.
+A18 PR1 (logic-only writer)  ── IN FLIGHT (A2 on /private/tmp/A1d-a18-pr1
+        │                       → feat/a18-recompute-entitlement-writer).
+        │                       Additive `recomputeAndPersistEntitlement` +
+        │                       exhaustive unit suite, ZERO call sites.
+        │                       Authorable now (no migrations needed per
+        │                       A12 §2). A8c readiness audit = #815.
         ▼
-recompute_entitlement_tx RPC migration  ── separate from #789 (A8d gap).
-        │                    Chau-applied via SQL Editor.
+[ #789 applied to prod ] AND [ #832 applied to prod ]   ⬅ Chau, SQL Editor
         ▼
-A18 recomputeEntitlement single writer  ── needs #789 table live + RPC live
-        │                    + #826 merged. A8c readiness audit = #815.
+A18 PR2 (wire call sites)  ── HARD-GATED on the two prod-applies above.
+        │                       Imports from #832's RPC; wires R1-R4
+        │                       through `recomputeAndPersistEntitlement`.
         ▼
 A11 T2 retirement   ── #792 OPEN. Apply AFTER #774 (✅). Tombstone via SQL Editor.
         │
@@ -175,8 +180,8 @@ Merged or in-PR. Re-dispatching duplicates work.
 
 ## f. Highest-leverage next dispatches — top 5 (next session, in order)
 
-1. **Merge #826 (B13ph3 PR-B) when it lands review.** Money-path PR; atomic R1-R4 repoint + parity tests; A1c authored. Real-device gate (A12 §8). This is the next architectural step after #802 — defers A18 until it's in.
-2. **Chau: merge #789 → apply migration via SQL Editor → AUTHOR + apply `recompute_entitlement_tx` RPC migration → unblock A18 dispatches.** A8d #820 is the pre-apply checklist; §6/§10 of #820 outlines the RPC gap. A18 PR1 is HARD-GATED on both the table AND the RPC existing in prod. (A18 brief lives at `a18/recompute-impl-brief` worktree, still LOCAL.)
+1. **A18 PR1 in flight (A2 on `/private/tmp/A1d-a18-pr1`); merge when it reports, then dispatch A18 PR2 after #789 + #832 applied to prod.** PR1 is the additive single-writer + unit suite (zero call sites, no migrations); PR2 wires R1-R4 to it and is the one that requires both prod-applies. (#826 already shipped R1-R4 repoint to the `_shared/entitlement.ts` reader — PR-B merged earlier this session.)
+2. **Chau: merge #789 + #832 → apply each via SQL Editor → unblock A18 PR2.** A8d #820 is the #789 pre-apply checklist; #832 is the separate RPC migration that A8d §6/§10 surfaced as missing from #789. Both must be physically applied to prod before A18 PR2 dispatches.
 3. **Chau: apply customer-remediation SQL — mylinh (#805 pre-flight → #801 package) + gift-victims (#799 audit → repair → #803 outreach).** Two real students, paid money, no entitlement today. Order is fixed: pre-flight before SQL, SQL before outreach.
 4. **Merge #796 → device-verify per #807 → privacy paperwork redo.** Last code gate before App Store paperwork. Tracker guard must be verified on real iOS *and* Android (per #807 STOP gates: any tracker network call on any screen = FAIL).
 5. **Merge #809 + #824 bundle-budget CI gate.** Locks the #794+#795 ≈45 KB gz wins in CI so they can't silently regress. Trivial diff; high durability value.
