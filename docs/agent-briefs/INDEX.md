@@ -30,6 +30,7 @@ that rule has its own label (`stale-audit-note`) for a reason.
 | `docs/For_Chau_Study.md` | 9 numbered lessons (newest first): the mistakes and disciplines this session learned the hard way. Human-facing "why". | Live (PR #753 on main) |
 | `docs/agent-briefs/preflight-checklist.md` | How a dispatch-writer verifies every load-bearing claim in a brief in <60s before sending it. The operational "how" beneath For-Chau Lesson 4. | **In-flight — PR #764** |
 | `docs/agent-briefs/recon-doc-convention.md` | How diagnostic dispatches make their findings survive worktree pruning: `reports/RECON-<topic>-<agent>.md`, commit-don't-PR, required sections. | **In-flight — PR #768** |
+| `docs/agent-briefs/pr-title-convention.md` | The `type(scope): summary (agent-id)` title grammar — the one-line sibling of B31's body template (PR #777). | **In-flight — PR #781** |
 | GitHub labels (A92 set) | The named failure-class vocabulary: `silent-failure`, `dead-code`, `fake-green-test`, `coverage-gap`, `restore-before-redesign`, `stale-audit-note`, `money-path`, plus process labels (`follow-up`, `infra`, `testing`, `pre-launch`, `needs-authoring`, `legal`, `i18n`). | Live (`gh label list`) |
 
 ### Reference — authoring and setup (consult when the task touches them)
@@ -62,6 +63,7 @@ that rule has its own label (`stale-audit-note`) for a reason.
 | "What should we build / not build, and why?" | `STRATEGY.md`, then `PRINCIPLES.md` |
 | "How do I write a dispatch brief that won't send an agent down a stale path?" | `docs/agent-briefs/preflight-checklist.md` (PR #764) |
 | "I ran a diagnostic — where do the findings go so they survive?" | `docs/agent-briefs/recon-doc-convention.md` (PR #768) |
+| "How should I title a dispatch-driven PR?" | `docs/agent-briefs/pr-title-convention.md` (PR #781) |
 | "What failure classes do we name / label?" | The A92 label set (§1) — definitions are in each label's description |
 | "What mistakes have we learned from?" | `docs/For_Chau_Study.md` (the principle) → `docs/mercy-ai-company-lessons-log.md` (the discipline) |
 | "What are the hard rules for this codebase (invariants, traps, git)?" | `CLAUDE.md` |
@@ -91,6 +93,10 @@ The two `docs/agent-briefs/` siblings are not yet on `main`:
 
 - **B8 — PR #764** `docs/agent-briefs/preflight-checklist.md` (OPEN)
 - **B16 — PR #768** `docs/agent-briefs/recon-doc-convention.md` (OPEN)
+- **B31 — PR #777** `docs/agent-briefs/pr-body-template.md` (OPEN; B31 owns its
+  own §1/§2 INDEX rows — not added here, to avoid a parallel-PR table conflict)
+- **B50 — PR #781** `docs/agent-briefs/pr-title-convention.md` (OPEN;
+  this PR — the one-line sibling of B31's body template)
 
 This INDEX adds a third file to the same directory and conflicts with neither
 (distinct filenames, no shared lines). Whichever order they merge, this index
