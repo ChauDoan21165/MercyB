@@ -6,6 +6,12 @@ PODS:
   - CapacitorBrowser (8.0.3):
     - Capacitor
   - CapacitorCordova (8.3.1)
+  - CapacitorKeyboard (8.0.3):
+    - Capacitor
+  - CapacitorSplashScreen (8.0.1):
+    - Capacitor
+  - CapacitorStatusBar (8.0.2):
+    - Capacitor
   - PurchasesHybridCommon (18.1.0):
     - RevenueCat (= 5.68.0)
   - RevenueCat (5.68.0)
@@ -24,6 +30,9 @@ DEPENDENCIES:
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
   - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
+  - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - "RevenuecatPurchasesCapacitor (from `../../node_modules/@revenuecat/purchases-capacitor`)"
   - "SentryCapacitor (from `../../node_modules/@sentry/capacitor`)"
 
@@ -42,6 +51,12 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/browser"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
+  CapacitorKeyboard:
+    :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorSplashScreen:
+    :path: "../../node_modules/@capacitor/splash-screen"
+  CapacitorStatusBar:
+    :path: "../../node_modules/@capacitor/status-bar"
   RevenuecatPurchasesCapacitor:
     :path: "../../node_modules/@revenuecat/purchases-capacitor"
   SentryCapacitor:
@@ -52,12 +67,15 @@ SPEC CHECKSUMS:
   CapacitorApp: 449ffe26375e96f8aaaee625ac6e01e5c57c8650
   CapacitorBrowser: c987c73d09d8bd3b5ec13f06338b1e14d5d2be69
   CapacitorCordova: 9010447fe25e869705fcf525e5f490facde87608
+  CapacitorKeyboard: 31c8285d92c9d1410071d52449f16d2c6673b6f4
+  CapacitorSplashScreen: 4b46c72298db552b3c57ce021ef028b6dc7f1fa7
+  CapacitorStatusBar: 01d5763b4ed720de5ce2edbc938de6a98f4c8f32
   PurchasesHybridCommon: 32902b8fad349cf549f096183926ee33af00e36a
   RevenueCat: c535d3739d51163f6d9d5dbd01c7b5d93b718ff5
   RevenuecatPurchasesCapacitor: d2951545ee37dd35adbcc94acc3a9b83a3a2cca8
   Sentry: 88746bf877eff714bc45315a39ad1d1efea2cdda
   SentryCapacitor: 1d620200b850ef6f4e7056f5e20d7860e7c04572
 
-PODFILE CHECKSUM: 0ce7708117ab59e343956b92155ec2526d2aaaa2
+PODFILE CHECKSUM: b73ba6b5ad0dcee45fb4ffee5efdb8691a518636
 
 COCOAPODS: 1.16.2
