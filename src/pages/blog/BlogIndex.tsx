@@ -8,6 +8,7 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tag, ChevronRight } from "lucide-react";
+import SeoMeta from "@/components/seo/SeoMeta";
 
 import { getAllPosts } from "@/lib/blog/blogManifest";
 
@@ -34,6 +35,11 @@ export default function BlogIndex() {
         padding: "20px 16px 80px",
       }}
     >
+      <SeoMeta
+        title="Blog MercyBlade — Mẹo học tiếng Anh cho người Việt"
+        description="Bài viết và mẹo học tiếng Anh dành cho người Việt: phát âm, ngữ pháp, luyện thi và giao tiếp thực tế."
+        canonical="https://mercyblade.com/blog"
+      />
       <header style={{ textAlign: "center", marginTop: 8, marginBottom: 24 }}>
         <h1
           style={{

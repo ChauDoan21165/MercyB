@@ -53,6 +53,12 @@ const STATIC_URLS: SitemapUrl[] = [
   { loc: `${SITE_ORIGIN}/exam-prep/toeic`, changefreq: "monthly", priority: "0.85" },
   { loc: `${SITE_ORIGIN}/exam/ielts/writing`, changefreq: "monthly", priority: "0.85" },
   { loc: `${SITE_ORIGIN}/pricing`, changefreq: "monthly", priority: "0.7" },
+  // Public marketing / legal pages that previously had no sitemap entry
+  // (A61 gap). Single-URL vi pages; SeoMeta on each emits the matching
+  // self-referencing canonical + hreflang.
+  { loc: `${SITE_ORIGIN}/blog`, changefreq: "weekly", priority: "0.7" },
+  { loc: `${SITE_ORIGIN}/privacy`, changefreq: "monthly", priority: "0.3" },
+  { loc: `${SITE_ORIGIN}/terms`, changefreq: "monthly", priority: "0.3" },
 ];
 
 export function buildSitemapUrls(): SitemapUrl[] {

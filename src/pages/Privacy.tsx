@@ -1,8 +1,15 @@
 // File: src/pages/Privacy.tsx
 
+import SeoMeta from "@/components/seo/SeoMeta";
+
 export default function Privacy() {
   return (
     <div style={{ padding: 24, maxWidth: 860, margin: "0 auto", lineHeight: 1.6 }}>
+      <SeoMeta
+        title="Chính sách quyền riêng tư — MercyBlade"
+        description="Chính sách quyền riêng tư của MercyBlade: dữ liệu chúng tôi thu thập, cách sử dụng và quyền của người dùng Việt Nam."
+        canonical="https://mercyblade.com/privacy"
+      />
       <h1>Privacy Policy</h1>
 
       <p>

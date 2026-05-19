@@ -27,6 +27,7 @@ import {
   YEARLY_PRICE_VND,
 } from "@/lib/pricing/displayPrices";
 import PaywallExperiment from "@/components/pricing/PaywallExperiment";
+import SeoMeta from "@/components/seo/SeoMeta";
 import { useAuth } from "@/providers/AuthProvider";
 
 type PlanKey = "level0" | "month" | "year";
@@ -905,14 +906,23 @@ export default function Pricing() {
     </div>
   );
 
-  if (!useExperiment) return defaultPricingMarkup;
-
   return (
-    <PaywallExperiment
-      userId={user?.id ?? null}
-      trialExpiresAt={entitlement?.expires_at ?? null}
-      onSelectPlan={(key) => void handlePaidPlan(key)}
-      controlFallback={defaultPricingMarkup}
-    />
+    <>
+      <SeoMeta
+        title="Bảng giá MercyBlade — Học tiếng Anh cho người Việt"
+        description="Các gói học tiếng Anh MercyBlade dành cho người Việt. Dùng thử miễn phí 7 ngày, hủy bất cứ lúc nào."
+        canonical="https://mercyblade.com/pricing"
+      />
+      {useExperiment ? (
+        <PaywallExperiment
+          userId={user?.id ?? null}
+          trialExpiresAt={entitlement?.expires_at ?? null}
+          onSelectPlan={(key) => void handlePaidPlan(key)}
+          controlFallback={defaultPricingMarkup}
+        />
+      ) : (
+        defaultPricingMarkup
+      )}
+    </>
   );
 }
