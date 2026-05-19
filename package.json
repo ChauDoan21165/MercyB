@@ -5,7 +5,7 @@
     "date": "2026-01-15 (+0700)",
     "note": "Add check:kw-coverage script. Keep _meta. Vitest config must not import @vitejs/plugin-react-swc unless installed."
   },
-  "name": "vite_react_shadcn_ts",
+  "name": "mercyblade",
   "private": true,
   "version": "0.0.0",
   "type": "module",
