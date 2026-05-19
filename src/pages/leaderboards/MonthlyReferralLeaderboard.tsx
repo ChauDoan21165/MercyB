@@ -139,7 +139,7 @@ export default function MonthlyReferralLeaderboard() {
         {!user && (
           <p className="mt-3 text-xs text-slate-700">
             <Link
-              to="/auth/signup"
+              to="/signin"
               className="font-medium text-indigo-700 underline"
             >
               {REFERRAL_LB_COPY.signupCta.vi}
