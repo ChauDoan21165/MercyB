@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Make MercyBlade the #1 English-learning app for Vietnamese learners — the one Vietnamese students publicly credit for their IELTS score, their job abroad, their life change. Outcomes, not engagement. Vietnamese-first in every feature, word, and button.
 
-**Read `STRATEGY.md` and `PRINCIPLES.md` first — they are the two canonical living documents** (post-2026-05-17 strategic clarification). `NORTH_STAR.md` and `PLAN.md` are archived historical references in `reports/archive/`; consult them for history, not current direction.
+**Read `STRATEGY.md` and `PRINCIPLES.md` first — they are the two canonical living documents** (post-2026-05-17 strategic clarification). The pre-2026-05-17 strategy docs are archived as `reports/archive/NORTH_STAR-v1.3-2026-04-20.md` and `reports/archive/PLAN-v1-2026-05-10.md` (no root `NORTH_STAR.md`/`PLAN.md` exists anymore); consult them for history, not current direction.
 
 ## The five non-negotiables — a feature that violates any of these is rejected
 

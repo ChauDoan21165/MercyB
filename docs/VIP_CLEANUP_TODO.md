@@ -217,4 +217,4 @@ they're not runtime code.
 - `CLAUDE.md` § "The five non-negotiables" #5 — "No VIP tier" rule.
 - `CLAUDE.md` § "Email system" — already flags items #1 and #2 as the known
   disagreement between `send-email-campaign` and `email-broadcast`.
-- `NORTH_STAR.md` — authoritative brand / tier positioning.
+- `STRATEGY.md` — authoritative brand / tier positioning.
