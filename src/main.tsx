@@ -8,8 +8,8 @@
 // - ✅ Keep AuthProvider wrap.
 // - ✅ Keep React.StrictMode OFF.
 // - ✅ Service worker is now registered (Offline Lite v2). Manual
-//      registration of /sw.js, prod-only, gentle update mode
-//      (skipWaiting:false, clientsClaim:false). See registerPwaServiceWorker
+//      registration of /sw.js, prod-only, immediate-takeover mode
+//      (skipWaiting:true, clientsClaim:true). See registerPwaServiceWorker
 //      below and vite.config.ts workbox block.
 
 // ── Polyfills for older browsers (Chrome 79, iOS 12) ──────────────────────
