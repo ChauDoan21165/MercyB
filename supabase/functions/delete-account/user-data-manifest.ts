@@ -367,14 +367,16 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "weekly_leaderboard",              action: "delete",    column: "user_id", reason: "weekly leaderboard rows" },
   { table: "xp_events",                       action: "delete",    column: "user_id", reason: "XP-event ledger" },
 
-  // ── B1: SCHEMA-BLOCKED → DELETE (target = anonymize per A6d, blocked by FK NOT NULL) ──
-  // schema-blocked: user_id NOT NULL + ON DELETE CASCADE — anonymize requires
-  // feat/audit-tables-nullable-user-id migration first (A4e).
-  // A6d rationale sound; blocked by FK constraint today.
-  { table: "email_sends_log",                 action: "delete",    column: "user_id", reason: "re-engagement email delivery log; A6d target = anonymize for deliverability audit (RFC 8058) but user_id NOT NULL today — see A4e migration" },
-  { table: "push_send_log",                   action: "delete",    column: "user_id", reason: "per-user push delivery log; A6d target = anonymize for delivery diagnostics but user_id NOT NULL today — see A4e migration" },
-  { table: "referral_audit_log",              action: "delete",    column: "user_id", reason: "referral audit; A6d target = anonymize for ANTI-ABUSE / fraud-detection retention but user_id NOT NULL (FK CASCADE from profiles) today — see A4e migration" },
-  { table: "speech_analysis_logs",            action: "delete",    column: "user_id", reason: "per-user speech analysis log; A6d target = anonymize for OpenAI cost analytics but user_id NOT NULL today — see A4e migration" },
+  // ── B1: Audit / deliverability / fraud-detection → ANONYMIZE (unblocked by #837 nullable migration, A6d retention policy) ──
+  // user_id is nullable post-#837 (FK softened CASCADE → SET NULL). Each
+  // row survives account deletion with user_id NULL — the audit / cost /
+  // anti-abuse signal is retained, the linkage to the deleted user is
+  // gone. DO NOT MERGE THIS PR until #837 is applied in prod — until
+  // then these UPDATEs runtime-error on NOT NULL.
+  { table: "email_sends_log",                 action: "anonymize", column: "user_id", reason: "re-engagement email delivery log; retain for deliverability audit (RFC 8058 list-hygiene patterns), strip linkage. user_id nullable post-#837 migration (A6d / A4j decision record)." },
+  { table: "push_send_log",                   action: "anonymize", column: "user_id", reason: "per-user push delivery diagnostics; retain for ops/SLO traceability, strip linkage. user_id nullable post-#837 migration (A6d / A4j decision record)." },
+  { table: "referral_audit_log",              action: "anonymize", column: "user_id", reason: "referral ANTI-ABUSE / fraud-detection memory — A6d's highest-priority retention case (deleting fraud evidence on user-erasure request is a policy risk). FK to profiles, ON DELETE SET NULL post-#837 (A4j decision record)." },
+  { table: "speech_analysis_logs",            action: "anonymize", column: "user_id", reason: "per-attempt OpenAI cost-tracking; retain for cost analytics, strip linkage. user_id nullable post-#837 migration (A6d / A4j decision record)." },
 
   // ── B1: Cost-tracking / experiment integrity → ANONYMIZE (FK SET NULL — nullable today) ──
   { table: "mercy_tts_usage",                 action: "anonymize", column: "user_id", reason: "per-user TTS cost-tracking; retain for cost analytics, strip linkage. FK is ON DELETE SET NULL (nullable user_id); no PII column to scrub beyond user_id." },
