@@ -29,7 +29,8 @@ that rule has its own label (`stale-audit-note`) for a reason.
 | `docs/mercy-ai-company-lessons-log.md` | The full operating-discipline source. CLAUDE.md's "Operating discipline" section is the condensed form of this. | Live, canonical |
 | `docs/For_Chau_Study.md` | 9 numbered lessons (newest first): the mistakes and disciplines this session learned the hard way. Human-facing "why". | Live (PR #753 on main) |
 | `docs/agent-briefs/preflight-checklist.md` | How a dispatch-writer verifies every load-bearing claim in a brief in <60s before sending it. The operational "how" beneath For-Chau Lesson 4. | **In-flight — PR #764** |
-| `docs/agent-briefs/recon-doc-convention.md` | How diagnostic dispatches make their findings survive worktree pruning: `reports/RECON-<topic>-<agent>.md`, commit-don't-PR, required sections. | **In-flight — PR #768** |
+| `docs/agent-briefs/recon-doc-convention.md` | How diagnostic dispatches make their findings survive worktree pruning: `reports/RECON-<topic>-<agent>.md`, commit-don't-PR, required sections. | Live (PR #768 on main) |
+| `docs/agent-briefs/sql-remediation-convention.md` | How a prod-write SQL block is shaped so its scope/gift-safety/idempotency is verifiable in one read and it survives its worktree: `reports/REMEDIATION-<topic>-<agent>.sql`, 7 mandatory parts, commit-don't-PR, SQL-Editor-apply-once. | **In-flight — PR #776** |
 | GitHub labels (A92 set) | The named failure-class vocabulary: `silent-failure`, `dead-code`, `fake-green-test`, `coverage-gap`, `restore-before-redesign`, `stale-audit-note`, `money-path`, plus process labels (`follow-up`, `infra`, `testing`, `pre-launch`, `needs-authoring`, `legal`, `i18n`). | Live (`gh label list`) |
 
 ### Reference — authoring and setup (consult when the task touches them)
@@ -61,7 +62,8 @@ that rule has its own label (`stale-audit-note`) for a reason.
 |---|---|
 | "What should we build / not build, and why?" | `STRATEGY.md`, then `PRINCIPLES.md` |
 | "How do I write a dispatch brief that won't send an agent down a stale path?" | `docs/agent-briefs/preflight-checklist.md` (PR #764) |
-| "I ran a diagnostic — where do the findings go so they survive?" | `docs/agent-briefs/recon-doc-convention.md` (PR #768) |
+| "I ran a diagnostic — where do the findings go so they survive?" | `docs/agent-briefs/recon-doc-convention.md` (on main) |
+| "I need to apply a prod-write fix — how do I shape the SQL so Chau can verify it in one read?" | `docs/agent-briefs/sql-remediation-convention.md` (PR #776) |
 | "What failure classes do we name / label?" | The A92 label set (§1) — definitions are in each label's description |
 | "What mistakes have we learned from?" | `docs/For_Chau_Study.md` (the principle) → `docs/mercy-ai-company-lessons-log.md` (the discipline) |
 | "What are the hard rules for this codebase (invariants, traps, git)?" | `CLAUDE.md` |
@@ -77,9 +79,10 @@ that rule has its own label (`stale-audit-note`) for a reason.
 2. **`STRATEGY.md` + `PRINCIPLES.md`** — what success looks like and the principles every decision is checked against.
 3. **`docs/For_Chau_Study.md`** — the 9 lessons (newest first). This is the cheapest way to not re-make tonight's mistakes.
 4. **`docs/agent-briefs/preflight-checklist.md`** (PR #764) — if you write or receive briefs. The single highest-leverage habit: ~1 in 3 briefs carries a stale load-bearing claim; this is the 60-second insurance.
-5. **`docs/agent-briefs/recon-doc-convention.md`** (PR #768) — if your dispatch is diagnostic. The commit is the deliverable, not the file.
-6. **The A92 label set** (`gh label list`) — the shared vocabulary for triage. Apply the failure-class label when you find the class.
-7. Skim **`docs/mercy-ai-company-lessons-log.md`** for the long-form reasoning behind CLAUDE.md's discipline section, and **`PROJECT_NOTES.md`** for current outstanding work.
+5. **`docs/agent-briefs/recon-doc-convention.md`** (on main) — if your dispatch is diagnostic. The commit is the deliverable, not the file.
+6. **`docs/agent-briefs/sql-remediation-convention.md`** (PR #776) — if your dispatch produces a prod write. Seven fixed parts; PK-targeted not predicate-targeted; commit-don't-PR; applied only by Chau via SQL Editor, once.
+7. **The A92 label set** (`gh label list`) — the shared vocabulary for triage. Apply the failure-class label when you find the class.
+8. Skim **`docs/mercy-ai-company-lessons-log.md`** for the long-form reasoning behind CLAUDE.md's discipline section, and **`PROJECT_NOTES.md`** for current outstanding work.
 
 Stop point: if anything above contradicts current `origin/main`, current `main` is the truth and the doc is the `stale-audit-note`. Report the divergence; don't silently follow either.
 
@@ -87,15 +90,22 @@ Stop point: if anything above contradicts current `origin/main`, current `main` 
 
 ## 4. In-flight coordination (as of 2026-05-19)
 
-The two `docs/agent-briefs/` siblings are not yet on `main`:
+Landed since this INDEX was authored:
 
-- **B8 — PR #764** `docs/agent-briefs/preflight-checklist.md` (OPEN)
-- **B16 — PR #768** `docs/agent-briefs/recon-doc-convention.md` (OPEN)
+- **B16 — PR #768** `docs/agent-briefs/recon-doc-convention.md` — **on main**
+  (verified: present in `origin/main` tree). Its §1/§2/§3 tags are now "Live".
 
-This INDEX adds a third file to the same directory and conflicts with neither
-(distinct filenames, no shared lines). Whichever order they merge, this index
-is correct; the only volatility is the "in-flight" tags above — drop them to
-"Live" once #764/#768 land.
+Still not on `main`:
+
+- **B8 — PR #764** `docs/agent-briefs/preflight-checklist.md` (OPEN —
+  absent from the `origin/main` `docs/agent-briefs/` tree).
+- **B29 — PR #776** `docs/agent-briefs/sql-remediation-convention.md`
+  (OPEN — this addition; sibling of the recon convention).
+
+These add distinct files to the same directory and conflict with neither
+each other nor #764 (distinct filenames, no shared lines). Whichever order
+they merge, this index stays correct; the only volatility is the remaining
+"in-flight" tags — drop them to "Live" once #764/#776 land, per §5.
 
 Forward reference to be aware of: `recon-doc-convention.md` cites
 "`docs/For_Chau_Study.md` Lesson 10". `For_Chau_Study.md` on `main` currently
