@@ -2,10 +2,25 @@
  * Sentry capture wrappers — gated by isSentryEnabled() so callers don't
  * have to check the activation state themselves.
  *
- * All three functions are no-ops when Sentry isn't initialized (DSN empty,
- * test mode, dynamic import not yet resolved, or initSentry hasn't been
- * called yet). That makes them safe to call eagerly from feature code
- * without worrying about boot-order races.
+ * Route-gate trigger (3): Sentry is no longer auto-initialized at boot
+ * (sentryActivation.ts). So an explicit pre-init call is itself a signal
+ * that monitoring is needed this session:
+ *   - captureError(): the value is enqueued into the bounded boot buffer
+ *     AND Sentry init is pulled, so the exception is replayed (beforeSend
+ *     scrub + dedupe still apply) once init settles — never lost.
+ *   - captureMessage() / captureRlsDenied(): pull Sentry init so this and
+ *     every subsequent ops/RLS signal lands. The FIRST pre-init call's
+ *     payload is not replayed (these aren't exceptions; the boot buffer
+ *     only round-trips through captureException, and captureRlsDenied's
+ *     rls_* tags can't survive a bare-exception replay). This keeps the
+ *     security RLS alert (#578/#562) live for an anonymous user — it
+ *     keys on SUSTAINED denials, which a regression always produces —
+ *     while a one-off pre-init signal is the acceptable cost of the
+ *     route-gate. A documented, deliberate trade-off.
+ * The remaining scope-mutation wrappers (tagWithUser/setTag/addBreadcrumb)
+ * stay pure no-ops pre-init: they carry no event, only scope state that
+ * is meaningless until an event exists, so queuing them would be noise.
+ * All wrappers remain safe to call eagerly without boot-order races.
  *
  * Privacy:
  *   - tagWithUser ONLY accepts a userId. Never wire email / username /
@@ -16,6 +31,10 @@
  */
 
 import { isSentryEnabled, getSentryModule, classifyRlsTable } from "./sentryInit";
+import {
+  queueExplicitCapture,
+  activateSentry,
+} from "./sentryActivation";
 import { stripPII } from "@/lib/security/piiProtection";
 
 // Narrow shape of the bits of @sentry/react we use. The actual module is
@@ -45,7 +64,14 @@ export function captureError(
   error: unknown,
   context?: Record<string, unknown>,
 ): void {
-  if (!isSentryEnabled()) return;
+  if (!isSentryEnabled()) {
+    // Trigger (3): queue into the boot buffer + pull Sentry init so the
+    // exception is replayed once the SDK is up. `context` is dropped on
+    // the pre-init path (the buffer round-trips bare exceptions only);
+    // accepted cost — the exception itself is the signal that matters.
+    queueExplicitCapture(error);
+    return;
+  }
   const sdk = getSentryModule() as SentryShape | null;
   if (!sdk) return;
 
@@ -75,7 +101,12 @@ export function captureMessage(
   level: "info" | "warning" | "error" = "warning",
   context?: Record<string, unknown>,
 ): void {
-  if (!isSentryEnabled()) return;
+  if (!isSentryEnabled()) {
+    // Pull Sentry init so this and every later ops signal lands. This
+    // first message isn't replayed (non-exception; see file header).
+    activateSentry("explicit-message");
+    return;
+  }
   const sdk = getSentryModule() as SentryShape | null;
   if (!sdk || typeof sdk.captureMessage !== "function") return;
 
@@ -106,7 +137,14 @@ export function captureMessage(
  * are left unpinned → normal route/content inference still runs.
  */
 export function captureRlsDenied(table: string, method: string): void {
-  if (!isSentryEnabled()) return;
+  if (!isSentryEnabled()) {
+    // Pull Sentry init so a SUSTAINED RLS regression still reaches the
+    // #578/#562 alert for an anonymous user. The first denial's rls_*
+    // tags can't survive a bare-exception buffer replay, so it is not
+    // queued — documented trade-off (see file header).
+    activateSentry("explicit-rls");
+    return;
+  }
   const sdk = getSentryModule() as SentryShape | null;
   if (!sdk || typeof sdk.withScope !== "function") return;
   const area = classifyRlsTable(table);

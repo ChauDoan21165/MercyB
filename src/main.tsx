@@ -105,6 +105,7 @@ import {
   stringLooksLikeExternalNoise,
 } from "@/lib/monitoring/sentryInit";
 import { installBootErrorBuffer } from "@/lib/monitoring/bootErrorBuffer";
+import { armSentryActivation, activateSentry } from "@/lib/monitoring/sentryActivation";
 // runConfigHealthCheck and initializeWebVitals are imported dynamically
 // from inside an idle-callback below — see `deferNonCriticalBootWork`. Both
 // observe / report; neither is needed for first paint.
@@ -132,16 +133,27 @@ const CHUNK_RELOAD_SESSION_KEY = "__mb_chunk_reload_once__";
 
 try { window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION; } catch { /* ignore */ }
 
-// Sentry init is DEFERRED into requestIdleCallback (deferNonCriticalBootWork
-// below) so the ~156 KB @sentry/react chunk stops competing with the LCP
-// critical path on Slow 4G (mobile-Lighthouse LCP −1.35 s / FCP −0.5 s).
-// Deferring would otherwise lose any error thrown during boot — the most
-// diagnostically valuable kind. This bounded buffer, installed FIRST (before
-// every boot IIFE) so its window.error/unhandledrejection capture-phase
-// listeners are the earliest possible, holds those errors and replays them
-// through Sentry once whenSentryReady() settles (or console.error if Sentry
-// is disabled / never inits — never a silent drop). User-facing fatal
-// handling is independent (attachFatalErrorOverlay below) and unaffected.
+// Sentry init is ROUTE-GATED (sentryActivation.ts). PR #655 deferred it
+// into requestIdleCallback but it STILL ran on every page, so a static
+// legal/marketing visit (/privacy, /terms, landing) still fetched the
+// ~156 KB @sentry/react chunk a moment after idle. Now the SDK loads ONLY
+// when one of three triggers proves monitoring is needed this session:
+//   (1) a window 'error'/'unhandledrejection' lands in THIS buffer
+//       (onFirstCapture → activateSentry, below)
+//   (2) auth transitions to an authenticated, email-verified session
+//       (AuthProvider.applySession → activateSentry)
+//   (3) feature code makes an explicit captureError()/captureMessage()/…
+//       call before Sentry is up (captureException.ts → queueExplicitCapture)
+// An anonymous, error-free static-page visit fires none → Sentry is never
+// fetched there (the Lighthouse-LCP win this change exists for).
+//
+// This bounded buffer is installed FIRST (before every boot IIFE) so its
+// window.error/unhandledrejection capture-phase listeners are the earliest
+// possible. It both (a) PULLS Sentry init via onFirstCapture when an error
+// happens and (b) holds pre-init errors and replays them through Sentry
+// once whenSentryReady() settles after the first trigger (console.error if
+// Sentry is disabled / never inits — never a silent drop). User-facing
+// fatal handling is independent (attachFatalErrorOverlay) and unaffected.
 const bootErrors = installBootErrorBuffer({
   maxEntries: 50,
   isEnabled: isSentryEnabled,
@@ -153,30 +165,44 @@ const bootErrors = installBootErrorBuffer({
       ? sdk.captureException.bind(sdk)
       : null;
   },
+  // Trigger (1): first window error/rejection → pull Sentry init.
+  onFirstCapture: () => activateSentry("boot-error"),
+});
+
+// Register what "init Sentry now" concretely does, and how an explicit
+// pre-init captureError() enqueues into THIS buffer. Done synchronously
+// here — immediately after the buffer, before every boot IIFE and before
+// React mounts — so no trigger can out-race arming. The activate closure
+// runs ONLY when a trigger fires (never at boot for a static page): it
+// pulls initSentry(), then flushes the buffer on whichever comes first —
+// whenSentryReady() (terminal: up OR permanently disabled, correct
+// replay-or-drop verdict) or a 10 s hard cap (a wedged dynamic import
+// must not pin errors in memory forever). flush() is idempotent so the
+// race is safe.
+armSentryActivation({
+  activate: () => {
+    initSentry();
+    void whenSentryReady().then(() => bootErrors.flush());
+    setTimeout(() => bootErrors.flush(), 10000);
+  },
+  enqueue: bootErrors.capture,
 });
 
 // Defer non-critical boot work out of the synchronous path:
-//   - initSentry: pulls the ~156 KB @sentry/react chunk; deferring it is
-//     the LCP/FCP win this change exists for.
 //   - runConfigHealthCheck: probes external services and reports to Sentry.
 //   - initializeWebVitals: subscribes to LCP/FID/CLS/TTFB/FCP/INP observers.
-// All are observability / reporting concerns; none affect what the user
-// sees on first paint. Pushing them into requestIdleCallback (with a
-// setTimeout fallback for Safari < 16.4 / older Firefox) saves their
-// bundled cost from the critical path AND frees the main thread during
+// initSentry() is NO LONGER here — it is route-gated above (loads only on
+// a real trigger, not on every idle tick). configHealth still runs every
+// session: it reports degradation via captureMessage(), which itself
+// pulls Sentry activation if a config problem is detected (see
+// captureException.ts), so config alerting is preserved without the SDK
+// cost on a healthy static-page visit. Both remaining tasks are
+// observability concerns; neither affects first paint. requestIdleCallback
+// (setTimeout fallback for Safari < 16.4 / older Firefox) keeps their
+// bundled cost off the critical path and frees the main thread during
 // hydration. They still run — just after the user can already interact.
 (function deferNonCriticalBootWork() {
   const run = () => {
-    initSentry();
-    // Flush the boot-error buffer on whichever fires first:
-    //   - whenSentryReady(): Sentry reached a terminal state (up OR
-    //     permanently disabled) — replay-or-drop now with a correct verdict.
-    //   - 10 s hard cap: a wedged dynamic import must not pin errors in
-    //     memory forever; flush (→ console, since Sentry isn't up) and
-    //     stop buffering. flush() is idempotent so the race is safe.
-    void whenSentryReady().then(() => bootErrors.flush());
-    setTimeout(() => bootErrors.flush(), 10000);
-
     void import("@/lib/configHealth")
       .then((m) => m.runConfigHealthCheck())
       .catch(() => {});
