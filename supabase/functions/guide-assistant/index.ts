@@ -4,6 +4,7 @@ import OpenAI from "https://esm.sh/openai@4.56.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
 import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
+import { SAFE_RESPONSE } from "../_shared/crisisResponse.ts";
 
 // Restored from deployed prod v127 (lost in PR #198). Abuse rate-limit:
 // 20 requests per minute per IP.
@@ -34,10 +35,11 @@ const CRISIS_KEYWORDS = [
   "kê đơn",
 ];
 
-const SAFE_RESPONSE = {
-  en: "I'm not able to help with medical or emergency situations. Please contact a local doctor, therapist, or emergency service in your area.",
-  vi: "Mình không thể hỗ trợ các tình huống y khoa khẩn cấp. Bạn hãy liên hệ bác sĩ, chuyên gia trị liệu hoặc số khẩn cấp tại nơi bạn sống nhé.",
-};
+// SAFE_RESPONSE copy now lives in ../_shared/crisisResponse.ts (single
+// source of truth, shared with guide-english-helper). The safety LOGIC
+// below (containsCrisisKeywords + the pre-LLM gate) is unchanged — only
+// the user-facing wording moved, and the VI is now native (not a
+// translation) in Mercy's canonical informal register.
 
 function containsCrisisKeywords(text: string): boolean {
   const lower = String(text || "").toLowerCase();
@@ -97,26 +99,31 @@ Rules:
 - Never include code fences.
 `;
 
-// WS1 — Vietnamese teacher voice contract (default text mode).
-// The student is a Vietnamese L1 learner. The teacher's commentary must
-// be authored DIRECTLY in Vietnamese (not translated from English), in
-// the formal teacher register (thầy↔em), natural Northern speech. This
-// instruction is what flips the model from "compose English, append a
-// Vietnamese translation" (the diagnosed translationese root cause) to
-// "think and write in Vietnamese first". Wording lives here, not WS2's
-// full exemplar corpus.
+// WS1 — Mercy's Vietnamese voice contract (default text mode).
+// The student is a Vietnamese L1 learner. Mercy's commentary must be
+// authored DIRECTLY in Vietnamese (not translated from English), in
+// MERCY's canonical register: informal-friendly, female teacher, self
+// "mình", learner "bạn" (src/config/mercyPersona.ts). The strict
+// "thầy↔em" form is reverted — Mercy is female ("thầy" is the male
+// term) and that register contradicted every other live Mercy surface
+// (greetings.ts / tierScripts.ts). The anti-translationese guidance is
+// kept: this instruction still flips the model from "compose English,
+// append a Vietnamese translation" (the diagnosed translationese root
+// cause) to "think and write in Vietnamese first". Wording lives here,
+// not WS2's full exemplar corpus.
 const VI_TEACHER_CONTRACT = `
 NGÔN NGỮ & GIỌNG VĂN (BẮT BUỘC):
-- Bạn là thầy giáo người Việt, dạy tiếng Anh cho người Việt. Trong lời nhận xét, xưng "thầy" và gọi học viên là "em".
-- Viết tiếng Việt tự nhiên như người Việt nói — giọng miền Bắc/Hà Nội chuẩn mực, ấm áp mà nghiêm khắc.
+- Bạn là Mercy — cô giáo dạy tiếng Anh cho người Việt (nhân vật nữ). Giọng ấm áp, thân thiện, đồng hành như một người bạn lớn — KHÔNG trịnh trọng, KHÔNG xa cách.
+- Tự xưng "mình", gọi học viên bằng tên hoặc "bạn". TUYỆT ĐỐI không xưng "thầy"/"cô", không gọi học viên là "em", không dùng "tôi".
+- Viết tiếng Việt tự nhiên như người Việt nói — giọng miền Bắc/Hà Nội chuẩn mực, nhẹ nhàng mà rõ ràng.
 - Soạn lời nhận xét TRỰC TIẾP bằng tiếng Việt. Nghĩ bằng tiếng Việt trước. TUYỆT ĐỐI không viết bằng tiếng Anh rồi dịch sang tiếng Việt.
 - Tiếng Việt lược bỏ chủ ngữ khi đã rõ ngữ cảnh. Không lặp "bạn / của bạn" ở mỗi câu.
 - Hạn chế "Tuy nhiên / Hơn nữa / Ngoài ra" — tiếng Anh cần, tiếng Việt thường bỏ. Câu ngắn; tách câu dài.
 - Tránh văn dịch máy:
-  ❌ "Bạn đã làm tốt với câu này."                          ✅ "Câu này em viết tốt rồi."
-  ❌ "Hãy chắc chắn rằng bạn sử dụng thì quá khứ."           ✅ "Chỗ này em nhớ dùng thì quá khứ nhé."
+  ❌ "Bạn đã làm tốt với câu này."                          ✅ "Câu này bạn viết tốt rồi."
+  ❌ "Hãy chắc chắn rằng bạn sử dụng thì quá khứ."           ✅ "Chỗ này nhớ dùng thì quá khứ nhé."
   ❌ "Tuy nhiên, có một vài lỗi ngữ pháp trong bài của bạn."  ✅ "Bài còn vài lỗi ngữ pháp nhỏ."
-- Chỉ dùng tiếng Anh khi trích đúng nội dung tiếng Anh đang dạy (câu mẫu, từ vựng). Lời thầy giảng/nhận xét luôn bằng tiếng Việt.
+- Chỉ dùng tiếng Anh khi trích đúng nội dung tiếng Anh đang dạy (câu mẫu, từ vựng). Lời Mercy giảng/nhận xét luôn bằng tiếng Việt.
 `;
 
 // WS1 — structured output contract for default text mode. The model
@@ -127,7 +134,7 @@ const DEFAULT_OUTPUT_CONTRACT = `
 Trả về DUY NHẤT một JSON object. Không markdown, không chú thích ngoài JSON, không code fence:
 
 {
-  "vi": string,   // Lời thầy bằng tiếng Việt tự nhiên (giọng thầy↔em). Đây là NỘI DUNG CHÍNH, soạn trực tiếp bằng tiếng Việt.
+  "vi": string,   // Lời Mercy bằng tiếng Việt tự nhiên (giọng mình↔bạn, thân thiện). Đây là NỘI DUNG CHÍNH, soạn trực tiếp bằng tiếng Việt.
   "en": string    // Cùng ý đó diễn đạt gọn bằng tiếng Anh tự nhiên, để học viên đối chiếu khi cần. KHÔNG dịch từng chữ từ "vi".
 }
 
@@ -457,7 +464,7 @@ serve(async (req) => {
 
   // Minimal system prompt (Edge). Your Next.js route can use the full systemPromptBase.
   const systemPromptParts: string[] = [
-    "You are Mercy Host, a strict, kind teacher.",
+    "You are Mercy, a warm, encouraging English teacher for Vietnamese learners (a female teacher; never strict or distant).",
     "Always do what the user asked.",
     "If plan.type is pronunciation: return JSON ONLY following the required contract.",
     "",
@@ -478,7 +485,7 @@ serve(async (req) => {
       "- Only mention progress when the user expresses doubt, frustration, a win, or asks for a practice recommendation.",
       "- Reference the data naturally inside a normal sentence — do not read it as a report.",
       "- Never lecture or use empty motivation phrases. Cite the concrete number.",
-      "- Anchor to the user's recent feeling. Bad: 'Hãy tiếp tục practice nhé.' Good: '/θ/ của bạn lên 25 điểm tuần này — chứng tỏ bạn đang luyện đúng cách.'",
+      "- Anchor to the user's recent feeling. Bad: 'Hãy tiếp tục practice nhé.' Good: 'Âm /θ/ tuần này lên 25 điểm — bạn đang luyện đúng hướng rồi đấy.'",
       "",
       progressBlock,
     );

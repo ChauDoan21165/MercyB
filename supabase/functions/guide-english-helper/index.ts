@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
 import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
+import { SAFE_RESPONSE, SAFE_ENCOURAGEMENT } from "../_shared/crisisResponse.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -18,10 +19,11 @@ const CRISIS_KEYWORDS = [
   'medication', 'diagnosis', 'prescribe', 'thuốc', 'chẩn đoán', 'kê đơn'
 ];
 
-const SAFE_RESPONSE = {
-  en: "I'm here to help you use the app and learn language, but I can't safely support medical or emergency situations. Please reach out to a local doctor, therapist, trusted person, or emergency service in your area. You deserve real, human support with this.",
-  vi: "Mình ở đây để giúp bạn dùng ứng dụng và học ngôn ngữ, nhưng mình không thể hỗ trợ an toàn cho các tình huống y khoa hoặc khẩn cấp. Bạn hãy tìm tới bác sĩ, chuyên gia trị liệu, người mà bạn tin tưởng, hoặc số khẩn cấp tại nơi bạn sống. Bạn xứng đáng nhận được sự hỗ trợ trực tiếp, thật sự."
-};
+// SAFE_RESPONSE + SAFE_ENCOURAGEMENT now live in
+// ../_shared/crisisResponse.ts (single source of truth, shared with
+// guide-assistant). The crisis-keyword detection + gate below are
+// unchanged; only the wording moved, and the VI is now native (not a
+// translation) in Mercy's canonical informal register.
 
 const SYSTEM_PROMPT = `You are Mercy Guide, an in-app English helper for Mercy Blade.
 The user is reading emotional, healing content and wants to learn simple English from it.
@@ -119,8 +121,8 @@ serve(async (req) => {
         intro_en: SAFE_RESPONSE.en,
         intro_vi: SAFE_RESPONSE.vi,
         items: [],
-        encouragement_en: "Please take care of yourself.",
-        encouragement_vi: "Hãy chăm sóc bản thân bạn nhé."
+        encouragement_en: SAFE_ENCOURAGEMENT.en,
+        encouragement_vi: SAFE_ENCOURAGEMENT.vi
       });
       return new Response(
         JSON.stringify({ ok: true, answer }),
