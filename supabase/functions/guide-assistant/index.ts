@@ -97,6 +97,46 @@ Rules:
 - Never include code fences.
 `;
 
+// WS1 — Vietnamese teacher voice contract (default text mode).
+// The student is a Vietnamese L1 learner. The teacher's commentary must
+// be authored DIRECTLY in Vietnamese (not translated from English), in
+// the formal teacher register (thầy↔em), natural Northern speech. This
+// instruction is what flips the model from "compose English, append a
+// Vietnamese translation" (the diagnosed translationese root cause) to
+// "think and write in Vietnamese first". Wording lives here, not WS2's
+// full exemplar corpus.
+const VI_TEACHER_CONTRACT = `
+NGÔN NGỮ & GIỌNG VĂN (BẮT BUỘC):
+- Bạn là thầy giáo người Việt, dạy tiếng Anh cho người Việt. Trong lời nhận xét, xưng "thầy" và gọi học viên là "em".
+- Viết tiếng Việt tự nhiên như người Việt nói — giọng miền Bắc/Hà Nội chuẩn mực, ấm áp mà nghiêm khắc.
+- Soạn lời nhận xét TRỰC TIẾP bằng tiếng Việt. Nghĩ bằng tiếng Việt trước. TUYỆT ĐỐI không viết bằng tiếng Anh rồi dịch sang tiếng Việt.
+- Tiếng Việt lược bỏ chủ ngữ khi đã rõ ngữ cảnh. Không lặp "bạn / của bạn" ở mỗi câu.
+- Hạn chế "Tuy nhiên / Hơn nữa / Ngoài ra" — tiếng Anh cần, tiếng Việt thường bỏ. Câu ngắn; tách câu dài.
+- Tránh văn dịch máy:
+  ❌ "Bạn đã làm tốt với câu này."                          ✅ "Câu này em viết tốt rồi."
+  ❌ "Hãy chắc chắn rằng bạn sử dụng thì quá khứ."           ✅ "Chỗ này em nhớ dùng thì quá khứ nhé."
+  ❌ "Tuy nhiên, có một vài lỗi ngữ pháp trong bài của bạn."  ✅ "Bài còn vài lỗi ngữ pháp nhỏ."
+- Chỉ dùng tiếng Anh khi trích đúng nội dung tiếng Anh đang dạy (câu mẫu, từ vựng). Lời thầy giảng/nhận xét luôn bằng tiếng Việt.
+`;
+
+// WS1 — structured output contract for default text mode. The model
+// returns a JSON object so the VI/EN boundary is SERVER-controlled,
+// replacing the client-side first-Vietnamese-char heuristic guess.
+const DEFAULT_OUTPUT_CONTRACT = `
+ĐỊNH DẠNG ĐẦU RA (BẮT BUỘC):
+Trả về DUY NHẤT một JSON object. Không markdown, không chú thích ngoài JSON, không code fence:
+
+{
+  "vi": string,   // Lời thầy bằng tiếng Việt tự nhiên (giọng thầy↔em). Đây là NỘI DUNG CHÍNH, soạn trực tiếp bằng tiếng Việt.
+  "en": string    // Cùng ý đó diễn đạt gọn bằng tiếng Anh tự nhiên, để học viên đối chiếu khi cần. KHÔNG dịch từng chữ từ "vi".
+}
+
+Quy tắc:
+- "vi" được soạn trực tiếp bằng tiếng Việt — KHÔNG phải bản dịch của "en".
+- "en" ngắn gọn, tự nhiên — KHÔNG phải bản dịch từng chữ của "vi".
+- Luôn có đủ cả hai khoá "vi" và "en". JSON hợp lệ, không bọc trong code fence.
+`;
+
 function json(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -186,6 +226,26 @@ function normalizePronunciationJson(parsed: any, tierDepth: TierDepth): Pronunci
     drills: Array.isArray(obj.drills) ? obj.drills.map((x: any) => scrub(x ?? "") ?? "").filter(Boolean) : [],
     next_action: scrub(obj.next_action ?? "") ?? "",
   };
+}
+
+function cleanupText(v: any): string {
+  if (v === null || v === undefined) return "";
+  return String(v).replace(/```/g, "").trim();
+}
+
+// WS1 — normalize default-mode model output into { vi, en }. If the
+// model ignored the JSON contract and returned prose, treat the whole
+// thing as Vietnamese (the contract is VI-primary) so the surface
+// degrades softly instead of throwing. Core path survives optional
+// model misbehaviour (CLAUDE.md operating discipline).
+function normalizeBilingual(parsed: any, rawFallback: string): { vi: string; en: string } {
+  if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+    const vi = cleanupText(parsed.vi);
+    const en = cleanupText(parsed.en);
+    if (vi || en) return { vi: vi || en, en };
+  }
+  const raw = cleanupText(rawFallback);
+  return { vi: raw, en: "" };
 }
 
 // Weakness extraction (simple, grows over time)
@@ -320,10 +380,20 @@ serve(async (req) => {
     return json({ error: "Invalid JSON body" }, 400);
   }
 
-  const userMessage = String(body?.userMessage ?? "").trim();
-  const room_id = String(body?.room_id ?? "").trim();
+  // WS1 envelope reconciliation: the live client (askMercyApi) sends
+  // `question`/`roomId`; older/edge callers send `userMessage`/`room_id`.
+  // Read BOTH so the surface works regardless of which envelope arrives
+  // (resolves the design-doc §0 client/edge field-name mismatch).
+  const userMessage = String(body?.userMessage ?? body?.question ?? "").trim();
+  const room_id = String(body?.room_id ?? body?.roomId ?? "").trim();
   const conversationHistory = Array.isArray(body?.conversationHistory) ? body.conversationHistory : [];
   const requestId = String(body?.request_id ?? "") || makeRequestId();
+
+  // WS1 response-mode contract: default is bilingual (the client sends
+  // 'bilingual_en_vi'); 'vi_only' omits the English reference. Vietnamese
+  // is always the primary, natively-authored field either way.
+  const responseMode = String(body?.responseMode ?? "").toLowerCase();
+  const wantEnglish = responseMode !== "vi_only";
 
   // Optional progress snapshot from src/lib/mercy/progressContext.
   // Sent by the chat layer only when the trigger + cooldown allow.
@@ -343,7 +413,21 @@ serve(async (req) => {
       language === "vi"
         ? `${SAFE_RESPONSE.vi}\n\n${SAFE_RESPONSE.en}`
         : `${SAFE_RESPONSE.en}\n\n${SAFE_RESPONSE.vi}`;
-    return json({ request_id: requestId, response: answer }, 200);
+    // Safety logic + wording above are byte-identical to #664. Only the
+    // RESPONSE ENVELOPE is widened with the WS1 mirror keys so the
+    // un-migrated client actually renders the safe message instead of
+    // throwing on its `!data?.ok || !data?.answer` gate — i.e. the guard
+    // is preserved AND made deliverable, not weakened.
+    return json(
+      {
+        request_id: requestId,
+        response: { vi: SAFE_RESPONSE.vi, en: SAFE_RESPONSE.en },
+        ok: true,
+        answer,
+        answerVi: SAFE_RESPONSE.vi,
+      },
+      200,
+    );
   }
 
   // Load VIP rank (use your mb_user_effective_rank view/table if it exists)
@@ -582,14 +666,20 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
     return json({ request_id: requestId, response: fallback }, 200);
   }
 
-  // Default mode (text)
+  // Default mode (text) — WS1 Vietnamese-first teacher contract.
+  // The model authors natural Vietnamese DIRECTLY (thầy↔em register)
+  // and returns a structured { vi, en } JSON, so the bilingual boundary
+  // is server-controlled instead of guessed by the client heuristic.
   const normal = await openai.chat.completions.create({
     model,
     temperature: 0.5,
+    response_format: { type: "json_object" } as any,
     messages: [
       { role: "system", content: systemPrompt },
+      { role: "system", content: VI_TEACHER_CONTRACT },
       ...conversationHistory,
       { role: "system", content: planningInstruction },
+      { role: "system", content: DEFAULT_OUTPUT_CONTRACT },
     ],
   });
 
@@ -614,7 +704,33 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
     endpoint: "guide-assistant",
   });
 
-  return json({ request_id: requestId, response: normal.choices?.[0]?.message?.content ?? "" }, 200);
+  const rawContent = normal.choices?.[0]?.message?.content ?? "";
+  const { vi, en } = normalizeBilingual(safeJsonParse(rawContent), rawContent);
+
+  // Canonical structured payload (WS1). `response.vi` is the
+  // server-authored Vietnamese (always present); `en` only when an
+  // English reference is wanted (responseMode !== 'vi_only').
+  const structured: { vi: string; en?: string } =
+    wantEnglish && en ? { vi, en } : { vi };
+
+  // Transition mirror keys for the un-migrated client. ConversationThread
+  // gates on data.ok/data.answer and getAssistantVietnamese reads
+  // data.answerVi. The blob is built EN-first so the client's
+  // splitBilingualAnswer heuristic slices on a server-controlled
+  // boundary; answerVi hands it clean VI with no heuristic at all.
+  // (splitBilingualAnswer client code is untouched — separate WS.)
+  const answer = wantEnglish && en ? `${en}\n\n${vi}` : vi;
+
+  return json(
+    {
+      request_id: requestId,
+      response: structured,
+      ok: true,
+      answer,
+      answerVi: vi,
+    },
+    200,
+  );
 });
 
 // ── Progress-context helpers ──────────────────────────────────────────────
