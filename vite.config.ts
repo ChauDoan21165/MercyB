@@ -579,6 +579,9 @@ export default defineConfig({
             return 'ui';
           }
 
+          if (s.includes('/node_modules/zod/')) return 'vendor-zod';
+          if (s.includes('/node_modules/sonner/')) return 'vendor-sonner';
+          if (s.includes('/node_modules/date-fns/')) return 'vendor-datefns';
           if (s.includes('/node_modules/')) return 'vendor';
 
           // Kids data files — split into separate chunk
