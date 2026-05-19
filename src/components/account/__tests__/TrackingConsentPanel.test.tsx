@@ -16,7 +16,7 @@ import {
 
 // Control the chrome language without standing up the native-language
 // provider — the panel only reads useChromeLanguage().
-const langMock = vi.fn<[], "vi" | "en">(() => "vi");
+const langMock = vi.fn<() => "vi" | "en">(() => "vi");
 vi.mock("@/lib/i18n/chromeLanguage", () => ({
   useChromeLanguage: () => langMock(),
 }));
