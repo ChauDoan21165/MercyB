@@ -218,12 +218,42 @@ export function deriveEntitlementFromSubscriptions(
  * Email helpers
  * ========================================================================== */
 
+// Stripe zero-decimal currencies: `unit_amount` is already the full amount,
+// NOT minor units, so it must NOT be divided by 100. Dividing here produced a
+// 100× understatement (e.g. a 2,000,000 VND charge rendered as "20000.00 VND").
+// Source: https://docs.stripe.com/currencies#zero-decimal
+const ZERO_DECIMAL_CURRENCIES = new Set<string>([
+  "BIF",
+  "CLP",
+  "DJF",
+  "GNF",
+  "JPY",
+  "KMF",
+  "KRW",
+  "MGA",
+  "PYG",
+  "RWF",
+  "UGX",
+  "VND",
+  "VUV",
+  "XAF",
+  "XOF",
+  "XPF",
+]);
+
 export function formatMoney(amountMinor: number, currency?: string | null): string {
   const code = typeof currency === "string" ? currency.toUpperCase() : "";
-  const minor = Number.isFinite(amountMinor) ? amountMinor : 0;
-  const major = minor / 100;
+  const amount = Number.isFinite(amountMinor) ? amountMinor : 0;
+  const zeroDecimal = code !== "" && ZERO_DECIMAL_CURRENCIES.has(code);
 
-  return code ? `${major.toFixed(2)} ${code}` : `${major.toFixed(2)}`;
+  const fractionDigits = zeroDecimal ? 0 : 2;
+  const major = zeroDecimal ? amount : amount / 100;
+  const formatted = major.toLocaleString("en-US", {
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  });
+
+  return code ? `${formatted} ${code}` : `${formatted}`;
 }
 
 export function resolveEmailRoute(originalTo: string | null): EmailRoute | null {
