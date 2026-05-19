@@ -23,7 +23,11 @@ import type {
   SharedSubscriptionStatus,
   UpsertSharedSubscriptionMonotonicResult,
 } from "./types.ts";
-import { mapStripeSubscription } from "./subscription-insert.ts";
+import {
+  mapStripeSubscription,
+  resolveMonotonicRawPayload,
+} from "./subscription-insert.ts";
+import { captureEdgeError } from "../_shared/sentry.ts";
 
 /* ============================================================================
  * Config
@@ -256,6 +260,60 @@ function attachStripeFreshnessToRawPayload(
     __stripe_payload: rawPayload,
     __stripe_freshness: freshness,
   };
+}
+
+/**
+ * Observability beacon for the A14 raw_payload object-quality guard.
+ *
+ * Fired only when a preserved (higher-quality) body is actually committed,
+ * so a Sentry issue's event count == the live rate the guard is firing at.
+ * This is NOT a failure: the guard working is the correct outcome. It is
+ * tagged so a billing dashboard can facet it and so it never pollutes the
+ * real error surface. Awaited (so the short edge isolate does not tear down
+ * before Sentry flushes) but `captureEdgeError` is internally guarded —
+ * it never throws and is a zero-cost no-op when SENTRY_DSN is unset, so
+ * this cannot affect the webhook response or the idempotency flow.
+ */
+async function reportRawPayloadPreservation(params: {
+  event: StripeWebhookEvent;
+  providerSubscriptionId: string;
+  existingKind: string;
+  incomingKind: string;
+}): Promise<void> {
+  console.warn(
+    "stripe-webhook raw_payload object-quality guard fired — kept persisted body",
+    {
+      eventId: params.event.id,
+      eventType: params.event.type,
+      providerSubscriptionId: params.providerSubscriptionId,
+      existingKind: params.existingKind,
+      incomingKind: params.incomingKind,
+    },
+  );
+
+  await captureEdgeError(
+    new Error(
+      "stripe-webhook raw_payload object-quality preservation " +
+        `(${params.incomingKind} would have clobbered ${params.existingKind})`,
+    ),
+    {
+      functionName: "stripe-webhook",
+      extra: {
+        stage: "raw_payload_object_quality_preserved",
+        event_id: params.event.id,
+        provider_subscription_id: params.providerSubscriptionId,
+      },
+      tags: {
+        webhook: "stripe",
+        billing: "true",
+        kind: "observability",
+        stage: "raw_payload_object_quality_preserved",
+        existing_object: params.existingKind,
+        incoming_object: params.incomingKind,
+        event_type: asNonEmptyStringOrNull(params.event.type) ?? "unknown",
+      },
+    },
+  );
 }
 
 /* ============================================================================
@@ -654,6 +712,20 @@ export async function upsertSharedSubscriptionMonotonic(params: {
         null,
     });
 
+    // A14 fix: raw_payload is monotonic on object quality, not just time.
+    // A lower-quality incoming body (e.g. an `invoice` from `invoice.paid`)
+    // must not overwrite a persisted higher-quality `subscription` body.
+    // The status/period/price columns below still come from this event's
+    // params (accurate even from an invoice); only the persisted body is
+    // preserved, with the freshness marker advanced so column ordering is
+    // unchanged. See reports/RECON-webhook-payload-type-bug-A14.md.
+    const resolvedRawPayload = resolveMonotonicRawPayload({
+      incomingRawPayloadWithFreshness: rawPayloadWithFreshness,
+      incomingRawPayload: params.rawPayload,
+      existingRawPayload: existing?.raw_payload ?? null,
+      incomingFreshness,
+    });
+
     const write = mapStripeSubscription({
       nowIso: isoNow(),
       userId: params.userId,
@@ -690,7 +762,7 @@ export async function upsertSharedSubscriptionMonotonic(params: {
       canceledAt: params.canceledAt ?? existing?.canceled_at ?? null,
       endedAt: params.endedAt ?? existing?.ended_at ?? null,
       metadata: params.metadata ?? existing?.metadata ?? null,
-      rawPayload: rawPayloadWithFreshness,
+      rawPayload: resolvedRawPayload.rawPayload,
     });
 
     if (existing) {
@@ -869,6 +941,15 @@ export async function upsertSharedSubscriptionMonotonic(params: {
       (data as { provider_subscription_id?: string | null } | null)
         ?.provider_subscription_id
     ) {
+      if (resolvedRawPayload.preserved) {
+        await reportRawPayloadPreservation({
+          event: params.event,
+          providerSubscriptionId: params.providerSubscriptionId,
+          existingKind: resolvedRawPayload.existingKind,
+          incomingKind: resolvedRawPayload.incomingKind,
+        });
+      }
+
       return {
         stateChanged: true,
         shouldRecomputeBeforeFinalMark: true,
