@@ -79,12 +79,25 @@ export default async function handler(
   }
 
   if (!supabase) {
+    // Name the *exact* missing var. The old combined message
+    // ("Missing …URL… or SUPABASE_SERVICE_ROLE_KEY") could not say which
+    // half was unset, so this failure stayed undiagnosed across cycles:
+    // the URL fallback (#691) was fine all along — only the server-only
+    // SUPABASE_SERVICE_ROLE_KEY was never set on the deployment. Splitting
+    // the check + logging it turns a blind park into a 30-second read.
+    const missing = [
+      supabaseUrl ? null : "SUPABASE_URL/VITE_SUPABASE_URL",
+      supabaseServiceRoleKey ? null : "SUPABASE_SERVICE_ROLE_KEY",
+    ].filter(Boolean);
+    console.error(
+      "[mercy-feedback] supabase_not_configured — missing env:",
+      missing.join(", "),
+    );
     return res.status(500).json({
       ok: false,
       acceptedCount: 0,
       error: "supabase_not_configured",
-      details:
-        "Missing SUPABASE_URL/VITE_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY",
+      details: `Missing ${missing.join(" and ")}`,
     });
   }
 
