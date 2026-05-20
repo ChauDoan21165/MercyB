@@ -1,0 +1,1123 @@
+{
+  "generatedAt": "2026-05-20T18:48:49.225Z",
+  "agent": "A46",
+  "name": "GovernanceRecoveryOps",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "governanceOnly": true,
+  "evidenceOnly": true,
+  "reconciles": "multi-stream permanent denial-retention archives into global blocked-safe convergence matrix",
+  "referencedA42Commit": "15b052e14",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "globalPosture": "DO_NOT_ENABLE",
+  "doNotEnableContinuity": true,
+  "unsupportedReadinessSuppression": {
+    "active": true,
+    "global": true,
+    "weakened": false,
+    "coversStreams": [
+      "A39",
+      "A42",
+      "A44",
+      "A45",
+      "A47",
+      "A48",
+      "A49",
+      "A50"
+    ],
+    "coversA42PermanentIntakeArtifacts": true,
+    "unsupportedReadinessClaimsAllowed": false
+  },
+  "regenerationSafeArchivalContinuity": {
+    "preserved": true,
+    "generatedArtifacts": [
+      "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json",
+      "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.md",
+      "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+      "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.md"
+    ],
+    "deterministicInputs": [
+      "docs/placement-v3/capacity/a39-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a39-permanent-denial-retention-archive.json",
+      "docs/placement-v3/reliability/a42-permanent-intake-archive-summary.json",
+      "docs/placement-v3/reliability/a42-permanent-reliability-denial-rules.json",
+      "docs/placement-v3/reliability/a42-permanent-reliability-prerequisite-index.json",
+      "docs/placement-v3/reliability/a42-permanent-reliability-sequencing.json",
+      "docs/placement-v3/reliability/a42-final-archival-governance-retention-summary.json",
+      "docs/placement-v3/reliability/a42-long-term-governance-retention-summary.json",
+      "docs/placement-v3/human-review/a44-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a44-permanent-denial-retention-archive.json",
+      "docs/placement-v3/provider-validation/a45-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a45-permanent-denial-retention-archive.json",
+      "docs/placement-v3/observability/a47-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a47-permanent-denial-retention-archive.json",
+      "docs/placement-v3/release/a48-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a48-permanent-denial-retention-archive.json",
+      "docs/placement-v3/replay/a49-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a49-permanent-denial-retention-archive.json",
+      "docs/placement-v3/supervision/a50-permanent-denial-retention-archive.json",
+      "docs/placement-v3/governance/a50-permanent-denial-retention-archive.json"
+    ],
+    "missingInputsRemainUnresolved": true
+  },
+  "strictModeConvergenceGovernance": {
+    "preserved": true,
+    "a42StrictModeFailureExpected": true,
+    "a46StrictModeRequiresBlockedSafeInvariants": true,
+    "failOnResolvedUnverifiedDependencies": true,
+    "failOnReadinessPromotion": true,
+    "failOnCertificationImplication": true,
+    "failOnDoNotEnableRemoval": true
+  },
+  "streamMatrix": [
+    {
+      "agent": "A39",
+      "name": "CapacityPlanningOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/capacity/a39-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a39-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "A33 capacity evidence",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "provider calibration",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "provider drift",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A42",
+      "name": "ReliabilityForecastOps",
+      "archiveStatus": "indexed",
+      "archives": [
+        {
+          "path": "docs/placement-v3/reliability/a42-permanent-intake-archive-summary.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": false,
+          "schema_completeness": false,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/reliability/a42-permanent-reliability-denial-rules.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": false,
+          "schema_completeness": null,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/reliability/a42-permanent-reliability-prerequisite-index.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": false,
+          "schema_completeness": null,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/reliability/a42-permanent-reliability-sequencing.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": false,
+          "schema_completeness": null,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/reliability/a42-final-archival-governance-retention-summary.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": null,
+          "schema_completeness": false,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/reliability/a42-long-term-governance-retention-summary.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": null,
+          "schema_completeness": false,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/reliability/a42-reliability-reactivation-denial-rules.json",
+          "present": true,
+          "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+          "ready": false,
+          "complete": false,
+          "schema_completeness": null,
+          "production_safe": false,
+          "production_readiness": null,
+          "placement_v3_enabled": false,
+          "placement_v3_enablement": null,
+          "live_validation_complete": false,
+          "live_provider_validated": false,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": "SUPERVISED_ONLY",
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "A33 endurance evidence",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "replay reproducibility",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "provider calibration",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "audit continuity",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A44",
+      "name": "HumanReviewExecutionOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/human-review/a44-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a44-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "human review backlog",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "fairness/bias evidence",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A45",
+      "name": "ProviderValidationOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/provider-validation/a45-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a45-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "provider calibration",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "provider drift",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "CEFR stability evidence",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A47",
+      "name": "ObservabilityEvidenceOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/observability/a47-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a47-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "audit continuity",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "A2 drift evidence",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "persistence validation",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A48",
+      "name": "ReleaseHistoryOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/release/a48-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a48-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "persistence validation",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "supervised execution restrictions",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A49",
+      "name": "ReplayEvidenceOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/replay/a49-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a49-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "replay reproducibility",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "audit continuity",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "CEFR stability evidence",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    },
+    {
+      "agent": "A50",
+      "name": "SupervisedExecutionOps",
+      "archiveStatus": "missing_external_evidence",
+      "archives": [
+        {
+          "path": "docs/placement-v3/supervision/a50-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        },
+        {
+          "path": "docs/placement-v3/governance/a50-permanent-denial-retention-archive.json",
+          "present": false,
+          "riskClassification": null,
+          "ready": null,
+          "complete": null,
+          "schema_completeness": null,
+          "production_safe": null,
+          "production_readiness": null,
+          "placement_v3_enabled": null,
+          "placement_v3_enablement": null,
+          "live_validation_complete": null,
+          "live_provider_validated": null,
+          "provider_drift_measured": null,
+          "production_persistence_validated": null,
+          "writes_production_data": null,
+          "autonomous_execution": null,
+          "safetyViolations": []
+        }
+      ],
+      "unresolvedDependencies": [
+        {
+          "dependency": "supervised execution restrictions",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        },
+        {
+          "dependency": "human review backlog",
+          "resolved": false,
+          "status": "unresolved",
+          "reason": "A46 preserves permanent denial-retention lineage and does not resolve dependencies without committed source evidence."
+        }
+      ],
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "regenerationSafeArchivalContinuity": true,
+      "strictModeExpectation": "blocked_safe_denial_preserved",
+      "marksReadinessComplete": false,
+      "certificationImplied": false,
+      "safetyViolations": []
+    }
+  ],
+  "committedPermanentDenialRetentionArchives": [
+    {
+      "path": "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "schema_completeness": false,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+      "present": true,
+      "riskClassification": null,
+      "ready": null,
+      "complete": null,
+      "schema_completeness": null,
+      "production_safe": false,
+      "production_readiness": false,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": "BLOCKED",
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": false,
+      "production_persistence_validated": false,
+      "writes_production_data": false,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-final-archival-governance-retention-summary.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": null,
+      "schema_completeness": false,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-long-term-governance-retention-summary.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": null,
+      "schema_completeness": false,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-permanent-intake-archive-summary.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "schema_completeness": false,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-permanent-reliability-denial-rules.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "schema_completeness": null,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-permanent-reliability-prerequisite-index.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "schema_completeness": null,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-permanent-reliability-sequencing.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "schema_completeness": null,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/a42-reliability-reactivation-denial-rules.json",
+      "present": true,
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "schema_completeness": null,
+      "production_safe": false,
+      "production_readiness": null,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": null,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/recovery-retention-enforcement-summary.json",
+      "present": true,
+      "riskClassification": null,
+      "ready": null,
+      "complete": null,
+      "schema_completeness": null,
+      "production_safe": null,
+      "production_readiness": null,
+      "placement_v3_enabled": null,
+      "placement_v3_enablement": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": null,
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/retention-enforcement-summary.json",
+      "present": true,
+      "riskClassification": null,
+      "ready": null,
+      "complete": null,
+      "schema_completeness": null,
+      "production_safe": null,
+      "production_readiness": null,
+      "placement_v3_enabled": null,
+      "placement_v3_enablement": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": null,
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/reliability/retention-rotation-plan.json",
+      "present": true,
+      "riskClassification": null,
+      "ready": null,
+      "complete": null,
+      "schema_completeness": null,
+      "production_safe": null,
+      "production_readiness": null,
+      "placement_v3_enabled": null,
+      "placement_v3_enablement": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "provider_drift_measured": null,
+      "production_persistence_validated": null,
+      "writes_production_data": null,
+      "autonomous_execution": null,
+      "safetyViolations": []
+    }
+  ],
+  "unresolvedDependencyMatrix": [
+    {
+      "dependency": "A2 drift evidence",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A47"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "A33 endurance evidence",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A42"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "A33 capacity evidence",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A39"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "replay reproducibility",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A42",
+        "A49"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "provider calibration",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A39",
+        "A42",
+        "A45"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "provider drift",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A39",
+        "A45"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "fairness/bias evidence",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A44"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "CEFR stability evidence",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A45",
+        "A49"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "persistence validation",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A47",
+        "A48"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "audit continuity",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A42",
+        "A47",
+        "A49"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "human review backlog",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A44",
+        "A50"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    },
+    {
+      "dependency": "supervised execution restrictions",
+      "resolved": false,
+      "status": "unresolved",
+      "linkedStreams": [
+        "A48",
+        "A50"
+      ],
+      "reason": "Dependency remains unresolved until real cross-stream validation evidence is committed and accepted."
+    }
+  ],
+  "blockedSafeInvariants": {
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "live_validation_complete": false,
+    "live_provider_validated": false,
+    "provider_drift_measured": false,
+    "production_persistence_validated": false,
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "globalPosture": "DO_NOT_ENABLE"
+  },
+  "certificationImplications": {
+    "replay": false,
+    "provider": false,
+    "release": false,
+    "observability": false,
+    "persistence": false
+  },
+  "forbiddenActionsPreserved": {
+    "runtimeMutation": false,
+    "enablementPromotion": false,
+    "fabricatedEvidence": false,
+    "replayProviderReleaseObservabilityCertificationClaims": false,
+    "persistenceValidationClaims": false,
+    "governanceBypass": false,
+    "unrelatedWorktreeCleanup": false
+  },
+  "convergenceConclusion": "All present permanent denial-retention archives are indexed, absent stream archives remain missing external evidence, every required dependency remains unresolved, and global DO_NOT_ENABLE continuity is preserved."
+}
