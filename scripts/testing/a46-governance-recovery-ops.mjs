@@ -10,6 +10,7 @@ const OUT_DIR = "docs/placement-v3/governance";
 const REPORT_BASENAME = "a46-a42-permanent-intake-convergence-reconciliation";
 const GLOBAL_MATRIX_BASENAME = "a46-global-permanent-denial-retention-convergence-matrix";
 const DRIFT_DETECTION_BASENAME = "a46-convergence-integrity-drift-detection";
+const CONVERGENCE_SEAL_BASENAME = "a46-permanent-convergence-governance-seal";
 const command = process.argv[2] ?? "auto";
 const strict = process.argv.includes("--strict");
 
@@ -124,7 +125,8 @@ function main() {
     command !== "auto" &&
     command !== "validate" &&
     command !== "global-denial-retention-matrix" &&
-    command !== "detect-convergence-drift"
+    command !== "detect-convergence-drift" &&
+    command !== "permanent-convergence-seal"
   ) {
     throw new Error(`Unknown A46 GovernanceRecoveryOps command: ${command}`);
   }
@@ -136,10 +138,12 @@ function main() {
     const report = generateReconciliation();
     const matrix = generateGlobalDenialRetentionMatrix();
     const drift = generateConvergenceIntegrityDriftDetection(matrix);
+    const seal = generatePermanentConvergenceGovernanceSeal(matrix, drift);
     if (strict) {
       enforceStrict(report);
       enforceGlobalMatrixStrict(matrix);
       enforceDriftDetectionStrict(drift);
+      enforceConvergenceSealStrict(seal);
     }
     scanUnsupportedClaims();
     return;
@@ -162,18 +166,36 @@ function main() {
     return;
   }
 
+  if (command === "permanent-convergence-seal") {
+    const matrix = existsSync(path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`))
+      ? readGlobalMatrix()
+      : generateGlobalDenialRetentionMatrix();
+    const drift = existsSync(path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`))
+      ? readDriftDetection()
+      : generateConvergenceIntegrityDriftDetection(matrix);
+    const seal = generatePermanentConvergenceGovernanceSeal(matrix, drift);
+    if (strict) enforceConvergenceSealStrict(seal);
+    scanUnsupportedClaims();
+    return;
+  }
+
   const report = readReport();
   const matrix = readGlobalMatrix();
   const drift = existsSync(path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`))
     ? readDriftDetection()
     : generateConvergenceIntegrityDriftDetection(matrix);
+  const seal = existsSync(path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`))
+    ? readConvergenceSeal()
+    : generatePermanentConvergenceGovernanceSeal(matrix, drift);
   enforceStrict(report);
   enforceGlobalMatrixStrict(matrix);
   enforceDriftDetectionStrict(drift);
+  enforceConvergenceSealStrict(seal);
   scanUnsupportedClaims();
   console.log(`[a46] governance validation passed: ${path.join(OUT_DIR, `${REPORT_BASENAME}.json`)}`);
   console.log(`[a46] global denial-retention matrix validation passed: ${path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`)}`);
   console.log(`[a46] convergence-integrity drift validation passed: ${path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`)}`);
+  console.log(`[a46] permanent convergence governance seal validation passed: ${path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`)}`);
 }
 
 function generateReconciliation() {
@@ -365,6 +387,8 @@ function generateGlobalDenialRetentionMatrix() {
         path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.md`),
         path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`),
         path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.md`),
+        path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`),
+        path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.md`),
       ],
       deterministicInputs: STREAMS.flatMap((stream) => stream.archiveHints),
       missingInputsRemainUnresolved: true,
@@ -503,6 +527,149 @@ function generateConvergenceIntegrityDriftDetection(matrix = readGlobalMatrix())
   return report;
 }
 
+function generatePermanentConvergenceGovernanceSeal(matrix = readGlobalMatrix(), drift = readDriftDetection()) {
+  const sealedStreams = STREAMS.map((stream) => {
+    const matrixStream = (matrix.streamMatrix ?? []).find((entry) => entry.agent === stream.agent);
+    return {
+      agent: stream.agent,
+      name: stream.name,
+      sealed: Boolean(matrixStream),
+      archiveStatus: matrixStream?.archiveStatus ?? "missing_from_matrix",
+      denialLineagePreserved: matrixStream?.denialLineagePreserved === true,
+      unsupportedReadinessSuppressionActive: matrixStream?.unsupportedReadinessSuppressionActive === true,
+      regenerationSafeArchivalContinuity: matrixStream?.regenerationSafeArchivalContinuity === true,
+      marksReadinessComplete: matrixStream?.marksReadinessComplete === true,
+      certificationImplied: matrixStream?.certificationImplied === true,
+      unresolvedDependencies: (matrixStream?.unresolvedDependencies ?? []).map((dependency) => ({
+        dependency: dependency.dependency,
+        sealedState: dependency.status,
+        resolved: dependency.resolved,
+      })),
+    };
+  });
+
+  const sealedUnresolvedDependencies = REQUIRED_UNRESOLVED_DEPENDENCIES.map((dependency) => {
+    const matrixDependency = (matrix.unresolvedDependencyMatrix ?? []).find((entry) => entry.dependency === dependency);
+    return {
+      dependency,
+      sealedState: matrixDependency?.status ?? "missing",
+      resolved: matrixDependency?.resolved ?? null,
+      immutable: matrixDependency?.status === "unresolved" && matrixDependency?.resolved === false,
+      linkedStreams: matrixDependency?.linkedStreams ?? [],
+    };
+  });
+
+  const report = {
+    generatedAt: new Date().toISOString(),
+    agent: "A46",
+    name: "GovernanceRecoveryOps",
+    branch: EXPECTED_BRANCH,
+    governanceOnly: true,
+    evidenceOnly: true,
+    seal: "permanent convergence governance seal",
+    sourceArtifacts: {
+      a42Reconciliation: path.join(OUT_DIR, `${REPORT_BASENAME}.json`),
+      globalMatrix: path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
+      driftDetection: path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`),
+    },
+    production_safe: false,
+    production_readiness: false,
+    placement_v3_enabled: false,
+    placement_v3_enablement: "BLOCKED",
+    live_validation_complete: false,
+    live_provider_validated: false,
+    provider_drift_measured: false,
+    production_persistence_validated: false,
+    writes_production_data: false,
+    autonomous_execution: "SUPERVISED_ONLY",
+    globalPosture: "DO_NOT_ENABLE",
+    doNotEnableContinuity: true,
+    sealedStreams,
+    sealedUnresolvedDependencies,
+    unresolvedDependencyTaxonomyImmutable: sealedUnresolvedDependencies.every(
+      (dependency) => dependency.immutable === true,
+    ),
+    convergenceIntegrityDriftEnforcement: {
+      preserved: drift.driftDetected === false,
+      sourceDriftDetected: drift.driftDetected,
+      checksPassed: (drift.checks ?? []).every((check) => check.status === "pass"),
+      checkCount: drift.checks?.length ?? 0,
+    },
+    unsupportedReadinessSuppression: {
+      permanent: true,
+      active: matrix.unsupportedReadinessSuppression?.active === true,
+      global: matrix.unsupportedReadinessSuppression?.global === true,
+      weakened: matrix.unsupportedReadinessSuppression?.weakened === true,
+      unsupportedReadinessClaimsAllowed: false,
+      sealedAcrossStreams: sealedStreams.every((stream) => stream.unsupportedReadinessSuppressionActive === true),
+    },
+    strictModeGovernanceSemantics: {
+      preserved: matrix.strictModeConvergenceGovernance?.preserved === true,
+      failOnResolvedUnverifiedDependencies:
+        matrix.strictModeConvergenceGovernance?.failOnResolvedUnverifiedDependencies === true,
+      failOnReadinessPromotion: matrix.strictModeConvergenceGovernance?.failOnReadinessPromotion === true,
+      failOnCertificationImplication: matrix.strictModeConvergenceGovernance?.failOnCertificationImplication === true,
+      failOnDoNotEnableRemoval: matrix.strictModeConvergenceGovernance?.failOnDoNotEnableRemoval === true,
+    },
+    regenerationSafeArchivalContinuity: {
+      preserved: matrix.regenerationSafeArchivalContinuity?.preserved === true,
+      missingInputsRemainUnresolved: matrix.regenerationSafeArchivalContinuity?.missingInputsRemainUnresolved === true,
+      generatedArtifacts: [
+        ...(matrix.regenerationSafeArchivalContinuity?.generatedArtifacts ?? []),
+        path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`),
+        path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.md`),
+      ],
+    },
+    convergenceMatrixContinuity: {
+      preserved: true,
+      sourceMatrix: path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
+      requiredStreamsPresent: sealedStreams.every((stream) => stream.sealed === true),
+      streamCount: sealedStreams.length,
+    },
+    supervisedExecutionDenialContinuity: {
+      preserved: matrix.autonomous_execution === "SUPERVISED_ONLY",
+      autonomous_execution: "SUPERVISED_ONLY",
+    },
+    doNotEnableContinuity: true,
+    blockedSafeInvariants: {
+      production_safe: false,
+      production_readiness: false,
+      placement_v3_enabled: false,
+      placement_v3_enablement: "BLOCKED",
+      live_validation_complete: false,
+      live_provider_validated: false,
+      provider_drift_measured: false,
+      production_persistence_validated: false,
+      writes_production_data: false,
+      autonomous_execution: "SUPERVISED_ONLY",
+      globalPosture: "DO_NOT_ENABLE",
+    },
+    certificationImplications: {
+      replay: false,
+      provider: false,
+      release: false,
+      observability: false,
+      persistence: false,
+    },
+    forbiddenActionsPreserved: {
+      runtimeMutation: false,
+      enablementPromotion: false,
+      fabricatedEvidence: false,
+      replayProviderReleaseObservabilityCertificationClaims: false,
+      persistenceValidationClaims: false,
+      governanceBypass: false,
+      unrelatedWorktreeCleanup: false,
+    },
+    conclusion:
+      "A46 permanently seals convergence governance across reconciled denial-retention archives while preserving unresolved dependencies, blocked-safe invariants, strict-mode guards, supervised-only execution, and DO_NOT_ENABLE continuity.",
+  };
+
+  writeConvergenceSealJsonAndMarkdown(report);
+  console.log(`[a46] wrote ${path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`)}`);
+  console.log(`[a46] wrote ${path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.md`)}`);
+  return report;
+}
+
 function enforceStrict(report) {
   const failures = strictFailures(report);
   if (failures.length > 0) {
@@ -525,6 +692,14 @@ function enforceDriftDetectionStrict(report) {
     throw new Error(`A46 convergence-integrity drift detection strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
   }
   console.log("[a46] convergence-integrity drift detection strict mode passed: no governance drift detected");
+}
+
+function enforceConvergenceSealStrict(report) {
+  const failures = convergenceSealStrictFailures(report);
+  if (failures.length > 0) {
+    throw new Error(`A46 permanent convergence governance seal strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
+  }
+  console.log("[a46] permanent convergence governance seal strict mode passed: sealed blocked-safe governance preserved");
 }
 
 function strictFailures(report) {
@@ -618,6 +793,83 @@ function driftDetectionStrictFailures(report) {
   if (report.autonomous_execution !== "SUPERVISED_ONLY") failures.push("autonomous_execution changed from SUPERVISED_ONLY");
   if (report.globalPosture !== "DO_NOT_ENABLE" || !report.doNotEnableContinuity) {
     failures.push("DO_NOT_ENABLE continuity was removed");
+  }
+  return failures;
+}
+
+function convergenceSealStrictFailures(report) {
+  const failures = [];
+  if (!report.unresolvedDependencyTaxonomyImmutable) {
+    failures.push("sealed unresolved dependency taxonomy changed state");
+  }
+  for (const dependency of report.sealedUnresolvedDependencies ?? []) {
+    if (dependency.sealedState !== "unresolved" || dependency.resolved !== false || dependency.immutable !== true) {
+      failures.push(`${dependency.dependency} sealed state changed`);
+    }
+  }
+  if (report.production_safe !== false) failures.push("production_safe became true or non-false");
+  if (report.production_readiness !== false) failures.push("production_readiness became true or non-false");
+  if (report.placement_v3_enabled !== false) failures.push("placement_v3_enabled became true or non-false");
+  if (report.placement_v3_enablement !== "BLOCKED") failures.push("placement_v3_enablement changed from BLOCKED");
+  if (report.live_validation_complete !== false) failures.push("live_validation_complete became true or non-false");
+  if (report.live_provider_validated !== false) failures.push("live_provider_validated became true or non-false");
+  if (report.provider_drift_measured !== false) failures.push("provider_drift_measured became true or non-false");
+  if (report.production_persistence_validated !== false) {
+    failures.push("production_persistence_validated became true or non-false");
+  }
+  if (report.writes_production_data !== false) failures.push("writes_production_data became true or non-false");
+  if (report.autonomous_execution !== "SUPERVISED_ONLY") failures.push("autonomous_execution changed from SUPERVISED_ONLY");
+  if (report.globalPosture !== "DO_NOT_ENABLE" || !report.doNotEnableContinuity) {
+    failures.push("DO_NOT_ENABLE continuity was removed");
+  }
+  if (
+    !report.convergenceIntegrityDriftEnforcement?.preserved ||
+    report.convergenceIntegrityDriftEnforcement?.sourceDriftDetected !== false ||
+    report.convergenceIntegrityDriftEnforcement?.checksPassed !== true
+  ) {
+    failures.push("convergence drift detection is bypassed or failing");
+  }
+  if (
+    report.unsupportedReadinessSuppression?.permanent !== true ||
+    report.unsupportedReadinessSuppression?.active !== true ||
+    report.unsupportedReadinessSuppression?.global !== true ||
+    report.unsupportedReadinessSuppression?.weakened === true ||
+    report.unsupportedReadinessSuppression?.unsupportedReadinessClaimsAllowed !== false
+  ) {
+    failures.push("unsupported-readiness suppression is weakened");
+  }
+  if (!Object.values(report.strictModeGovernanceSemantics ?? {}).every((value) => value === true)) {
+    failures.push("strict-mode governance semantics are not preserved");
+  }
+  if (
+    report.regenerationSafeArchivalContinuity?.preserved !== true ||
+    report.regenerationSafeArchivalContinuity?.missingInputsRemainUnresolved !== true
+  ) {
+    failures.push("regeneration-safe governance continuity is not preserved");
+  }
+  if (
+    report.convergenceMatrixContinuity?.preserved !== true ||
+    report.convergenceMatrixContinuity?.requiredStreamsPresent !== true
+  ) {
+    failures.push("convergence matrix continuity is not preserved");
+  }
+  if (report.supervisedExecutionDenialContinuity?.preserved !== true) {
+    failures.push("supervised-execution denial continuity is not preserved");
+  }
+  for (const stream of report.sealedStreams ?? []) {
+    if (!stream.sealed) failures.push(`${stream.agent} is not sealed`);
+    if (!stream.denialLineagePreserved) failures.push(`${stream.agent} denial lineage is not preserved in seal`);
+    if (!stream.unsupportedReadinessSuppressionActive) {
+      failures.push(`${stream.agent} unsupported-readiness suppression is not active in seal`);
+    }
+    if (!stream.regenerationSafeArchivalContinuity) {
+      failures.push(`${stream.agent} regeneration-safe archival continuity is not sealed`);
+    }
+    if (stream.marksReadinessComplete) failures.push(`${stream.agent} marks readiness complete in seal`);
+    if (stream.certificationImplied) failures.push(`${stream.agent} implies certification in seal`);
+  }
+  if (Object.values(report.certificationImplications ?? {}).some((value) => value !== false)) {
+    failures.push("replay/provider/release/observability certification is implied");
   }
   return failures;
 }
@@ -987,6 +1239,61 @@ function writeDriftDetectionJsonAndMarkdown(report) {
   );
 }
 
+function writeConvergenceSealJsonAndMarkdown(report) {
+  writeFileSync(path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`), `${JSON.stringify(report, null, 2)}\n`);
+  writeFileSync(
+    path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.md`),
+    [
+      "# A46 Permanent Convergence Governance Seal",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- production_safe: ${report.production_safe}`,
+      `- production_readiness: ${report.production_readiness}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- placement_v3_enablement: ${report.placement_v3_enablement}`,
+      `- live_validation_complete: ${report.live_validation_complete}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      `- provider_drift_measured: ${report.provider_drift_measured}`,
+      `- production_persistence_validated: ${report.production_persistence_validated}`,
+      `- writes_production_data: ${report.writes_production_data}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      `- Global posture: ${report.globalPosture}`,
+      `- DO_NOT_ENABLE continuity: ${report.doNotEnableContinuity}`,
+      "",
+      "## Sealed Streams",
+      "",
+      ...report.sealedStreams.map(
+        (stream) =>
+          `- ${stream.agent} ${stream.name}: sealed=${stream.sealed}, archiveStatus=${stream.archiveStatus}, denialLineagePreserved=${stream.denialLineagePreserved}, unsupportedReadinessSuppressionActive=${stream.unsupportedReadinessSuppressionActive}`,
+      ),
+      "",
+      "## Sealed Unresolved Dependencies",
+      "",
+      ...report.sealedUnresolvedDependencies.map(
+        (dependency) =>
+          `- ${dependency.dependency}: sealedState=${dependency.sealedState}, resolved=${dependency.resolved}, immutable=${dependency.immutable}, linkedStreams=${dependency.linkedStreams.join(", ") || "none"}`,
+      ),
+      "",
+      "## Seal Enforcement",
+      "",
+      `- Unresolved dependency taxonomy immutable: ${report.unresolvedDependencyTaxonomyImmutable}`,
+      `- Convergence-integrity drift enforcement preserved: ${report.convergenceIntegrityDriftEnforcement.preserved}`,
+      `- Unsupported-readiness suppression permanent: ${report.unsupportedReadinessSuppression.permanent}`,
+      `- Strict-mode governance semantics preserved: ${report.strictModeGovernanceSemantics.preserved}`,
+      `- Regeneration-safe archival continuity preserved: ${report.regenerationSafeArchivalContinuity.preserved}`,
+      `- Convergence matrix continuity preserved: ${report.convergenceMatrixContinuity.preserved}`,
+      `- Supervised-execution denial continuity preserved: ${report.supervisedExecutionDenialContinuity.preserved}`,
+      "",
+      "## Conclusion",
+      "",
+      report.conclusion,
+      "",
+      "A46 seal enforcement remains governance-only and evidence-only. It does not mutate runtime behavior, promote enablement, fabricate evidence, assert certification, claim persistence validation, bypass governance, or clean unrelated worktree files.",
+    ].join("\n") + "\n",
+  );
+}
+
 function readReport() {
   return readJson(path.join(OUT_DIR, `${REPORT_BASENAME}.json`));
 }
@@ -997,6 +1304,10 @@ function readGlobalMatrix() {
 
 function readDriftDetection() {
   return readJson(path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`));
+}
+
+function readConvergenceSeal() {
+  return readJson(path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`));
 }
 
 function readJson(file) {
@@ -1077,6 +1388,8 @@ function convergenceArtifactFiles() {
     path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.md`),
     path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`),
     path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.md`),
+    path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`),
+    path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.md`),
   ];
 }
 

@@ -1,6 +1,6 @@
 # A46 Global Permanent Denial-Retention Convergence Matrix
 
-Generated: 2026-05-20T18:59:09.859Z
+Generated: 2026-05-20T20:08:09.977Z
 
 - Referenced A42 commit: 15b052e14
 - production_safe: false
@@ -45,6 +45,7 @@ Generated: 2026-05-20T18:59:09.859Z
 
 - docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json: present=true, risk=BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS, ready=false, complete=false
 - docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json: present=true, risk=null, ready=null, complete=null
+- docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json: present=true, risk=null, ready=null, complete=null
 - docs/placement-v3/reliability/a42-final-archival-governance-retention-summary.json: present=true, risk=BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS, ready=false, complete=null
 - docs/placement-v3/reliability/a42-long-term-governance-retention-summary.json: present=true, risk=BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS, ready=false, complete=null
 - docs/placement-v3/reliability/a42-permanent-intake-archive-summary.json: present=true, risk=BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS, ready=false, complete=false

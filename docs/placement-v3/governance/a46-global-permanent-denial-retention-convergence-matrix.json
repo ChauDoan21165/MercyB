@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T18:59:09.859Z",
+  "generatedAt": "2026-05-20T20:08:09.977Z",
   "agent": "A46",
   "name": "GovernanceRecoveryOps",
   "branch": "feat/a42-reliability-forecast-ops",
@@ -46,7 +46,9 @@
       "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
       "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.md",
       "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json",
-      "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.md"
+      "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.md",
+      "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.md"
     ],
     "deterministicInputs": [
       "docs/placement-v3/capacity/a39-permanent-denial-retention-archive.json",
@@ -764,6 +766,25 @@
     },
     {
       "path": "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+      "present": true,
+      "riskClassification": null,
+      "ready": null,
+      "complete": null,
+      "schema_completeness": null,
+      "production_safe": false,
+      "production_readiness": false,
+      "placement_v3_enabled": false,
+      "placement_v3_enablement": "BLOCKED",
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "provider_drift_measured": false,
+      "production_persistence_validated": false,
+      "writes_production_data": false,
+      "autonomous_execution": "SUPERVISED_ONLY",
+      "safetyViolations": []
+    },
+    {
+      "path": "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
       "present": true,
       "riskClassification": null,
       "ready": null,
