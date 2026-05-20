@@ -1,6 +1,6 @@
 # A42 Reliability Safety Margin Policy
 
-Generated: 2026-05-20T16:51:44.156Z
+Generated: 2026-05-20T16:55:33.890Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false
