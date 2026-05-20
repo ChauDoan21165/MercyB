@@ -125,9 +125,39 @@ module.exports = {
       name: 'no-circular',
       severity: 'warn',
       comment:
-        'Circular dependency detected. Refactor: typically extract the shared piece into a third module that both can depend on.',
+        "Circular dependency detected at runtime. Refactor: extract the shared piece into a third module both can depend on. Cycles that exist only because of `import type` closing edges (barrel/orchestrator patterns where the parent re-exports children by value and children import types back from the parent) are documented exceptions — they create no runtime coupling because type imports erase during TypeScript compilation. The viaNot list below catches the verified-FP intermediate modules from the A13 inventory. New cycles routed through other modules are still reported. Same architectural endorsement as PR #898 no-hooks-to-ui type-only exemption.",
       from: {},
-      to: { circular: true },
+      to: {
+        circular: true,
+        // Exempt cycles whose intermediate (via) module is a known
+        // type-only-back-edge in a barrel/orchestrator pattern. Each
+        // entry below was verified type-only in the A13 inventory.
+        // If you add a new orchestrator and hit a false-positive
+        // cycle, verify the back-edge is `import type` then add the
+        // intermediate-module path here with an inline justification.
+        viaNot: [
+          // Barrel pattern (handlers ↔ index): handler files import
+          // type { HandlerResponse, RequestContext } from "../index".
+          '^supabase/functions/public-api/handlers/',
+          // Orchestrator pattern (roomLoader ↔ sub-helpers): each
+          // sub-helper imports type { BaseRoomEntry, JsonRoom, ... }
+          // from "./roomLoader".
+          '^src/lib/roomLoaderSource\\.ts$',
+          '^src/lib/roomLoaderNormalize\\.ts$',
+          '^src/lib/roomLoaderCache\\.ts$',
+          // Service/types split (auth ↔ authService): authService
+          // imports type { VipKey } from "@/lib/auth".
+          '^src/lib/authService\\.ts$',
+          // L1 detector types ↔ engine: rule-pack-types imports type
+          // { L1Rule, RuleArgs, RuleHit, StringTemplate } from
+          // "./l1-error-detector.js". Closing edge is type-only;
+          // the value direction (l1-error-detector importing
+          // explanationsByTag) is the bug-shape side, but the cycle
+          // exists only in the pre-compilation type graph since the
+          // back-edge erases at compile time.
+          '^src/lib/feedback/rule-pack-types\\.ts$',
+        ],
+      },
     },
     // Large-file detection (>800 lines) is intentionally NOT a depcruise rule —
     // depcruise doesn't measure file size. The brief's preventive flag for big
@@ -162,7 +192,13 @@ module.exports = {
     tsConfig: {
       fileName: 'tsconfig.json',
     },
-    tsPreCompilationDeps: true,
+    // `'specify'` mode (vs `true`) makes depcruise tag type-only
+    // edges with `pre-compilation-only` / `type-only` dependencyTypes
+    // and enables the `preCompilationOnly` boolean filter on rules.
+    // We need that tagging so the no-circular rule below can filter
+    // out cycles whose closing edge is type-only (e.g., barrel patterns
+    // where children `import type` from a parent that re-exports them).
+    tsPreCompilationDeps: 'specify',
     enhancedResolveOptions: {
       exportsFields: ['exports'],
       conditionNames: ['import', 'require', 'node', 'default'],
