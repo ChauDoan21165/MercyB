@@ -107,6 +107,27 @@ export default defineConfig({
             // still goes through. No data leaves the build host except
             // the sourcemaps.
             telemetry: false,
+            // Pin the upload release tag to the same SHA the runtime
+            // `Sentry.init({ release })` reads (sentryInit.ts:151 — also
+            // VERCEL_GIT_COMMIT_SHA, inlined via the `define` block
+            // below at L447). Without an explicit `release.name` the
+            // plugin auto-detects from the CI environment; in practice
+            // Vercel's `vercel build` injects VERCEL_GIT_COMMIT_SHA so
+            // both sides land on the same SHA — but that's coincidence,
+            // not contract. Pinning explicitly here removes the
+            // coincidence, so uploaded sourcemaps are guaranteed to be
+            // associated with the runtime release tag in Sentry.
+            // GITHUB_SHA is a fallback for non-Vercel CI runs (e.g.
+            // future workflow_dispatch builds that bypass vercel build).
+            // Undefined → plugin falls back to its own auto-detect,
+            // which preserves the prior behavior on laptop builds.
+            // A14b-fix-1 (audit: PR #892).
+            release: {
+              name:
+                process.env.VERCEL_GIT_COMMIT_SHA ||
+                process.env.GITHUB_SHA ||
+                undefined,
+            },
             // Per @sentry/vite-plugin v4.x API, sourcemap-related
             // options nest under `sourcemaps:`. A bare top-level
             // `filesToDeleteAfterUpload` was the v2.x shape, removed in

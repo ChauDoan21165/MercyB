@@ -41,6 +41,18 @@ jobs:
       SENTRY_ORG: chau-doan
       SENTRY_PROJECT: mercyblade-web
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      # Explicit release-tag pin (A14b-fix-1). Vercel's `vercel build`
+      # detects git context and sets VERCEL_GIT_COMMIT_SHA on its own
+      # in practice, but exporting it here as the GitHub Actions
+      # commit SHA makes the runtime release tag and the
+      # @sentry/vite-plugin upload release tag share a contract, not
+      # a default-coincidence. vite.config.ts reads
+      # process.env.VERCEL_GIT_COMMIT_SHA for both: the `define` block
+      # that inlines it as VITE_VERCEL_GIT_COMMIT_SHA for the runtime
+      # Sentry init, and the sentryVitePlugin's `release.name` for
+      # the upload. With this var explicitly set, both sides are
+      # guaranteed to use ${{ github.sha }}.
+      VERCEL_GIT_COMMIT_SHA: ${{ github.sha }}
 
     steps:
       - name: Checkout code
@@ -93,6 +105,44 @@ jobs:
 
       - name: Build production bundle (Vercel build pipeline)
         run: npx --yes vercel@latest build --prod --token="$VERCEL_TOKEN"
+
+      - name: Verify release SHA was inlined into the bundle (A14b-fix-1)
+        # Post-build drift check: vite.config.ts inlines
+        # process.env.VERCEL_GIT_COMMIT_SHA into the client bundle via the
+        # `define` block so the runtime Sentry init can tag events with a
+        # release that matches the sourcemap-upload's release tag. If the
+        # SHA never makes it into the built JS — because Vercel's `vercel
+        # build` ever stops exporting the var, or vite's define resolution
+        # changes — Sentry events from this deploy would carry release=""
+        # while the uploaded maps live under release=${{ github.sha }},
+        # producing minified stack traces in production. Catch that drift
+        # here, BEFORE the deploy ships. Non-Sentry deploys (token absent)
+        # skip the check — they don't upload maps either, so the
+        # invariant doesn't apply.
+        run: |
+          set -euo pipefail
+          if [ -z "${SENTRY_AUTH_TOKEN:-}" ]; then
+            echo "SENTRY_AUTH_TOKEN absent — skipping release-SHA inline check (sourcemap upload also skipped)."
+            exit 0
+          fi
+          if [ -z "${VERCEL_GIT_COMMIT_SHA:-}" ]; then
+            echo "::error::VERCEL_GIT_COMMIT_SHA is empty in this build environment. The release-tag pin requires it. Check the env block of this workflow."
+            exit 1
+          fi
+          ASSETS_DIR=""
+          for d in .vercel/output/static/assets dist/assets; do
+            if [ -d "$d" ]; then ASSETS_DIR="$d"; break; fi
+          done
+          if [ -z "$ASSETS_DIR" ]; then
+            echo "::error::Neither .vercel/output/static/assets nor dist/assets exists; cannot verify release SHA inline. Did the build step succeed?"
+            exit 1
+          fi
+          if grep -rq "$VERCEL_GIT_COMMIT_SHA" "$ASSETS_DIR" 2>/dev/null; then
+            echo "✅ Release SHA $VERCEL_GIT_COMMIT_SHA found in $ASSETS_DIR — runtime Sentry release tag will match uploaded sourcemaps."
+          else
+            echo "::error::Release SHA $VERCEL_GIT_COMMIT_SHA NOT found in $ASSETS_DIR. The runtime release tag is not being inlined by vite.config.ts; Sentry events from this deploy will be tagged release='' while uploaded sourcemaps live under release=$VERCEL_GIT_COMMIT_SHA → minified stack traces in production. Fix vite.config.ts's define block or the workflow env block before merging."
+            exit 1
+          fi
 
       - name: Deploy prebuilt output to Vercel production
         id: deploy
