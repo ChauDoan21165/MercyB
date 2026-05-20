@@ -17,8 +17,8 @@
 | Tagline | English for Vietnamese diaspora | `src/config/product.ts:35` |
 | iOS bundle ID | `com.chaudoan.mercyblade` | `ios/App/App.xcodeproj/project.pbxproj` |
 | Android applicationId | `com.mercyapps.mercyblade` | `android/app/build.gradle` |
-| iOS marketing version | `1.0` (build 10) | `project.pbxproj` |
-| Android version | `1.0.1` (versionCode 3) | `build.gradle` |
+| iOS marketing version | `1.0.6` (build 16) | `project.pbxproj` |
+| Android version | `1.0.6` (versionCode 16) | `build.gradle` |
 
 **🚩 Flag for Chau:** iOS uses `com.chaudoan.mercyblade`, Android uses `com.mercyapps.mercyblade`. Bundle IDs **cannot be changed after first submission** to either store. Decide *now* whether to align them (recommended: pick one and update the other) or accept the divergence permanently. Either choice is fine, but pick deliberately. Memory entry `project_android_urls.md` already reflects the Android side.
 
@@ -302,7 +302,7 @@ Five concrete risks for MercyBlade v1, ranked by likelihood:
 - **Action:** Capture screenshot 6 above; mention path in reviewer notes (§5).
 
 ### Risk 4 — Children's privacy / kids mode framing
-- **Status:** ⚠ Mixed message risk. NORTH_STAR explicitly says "kids mode is sacred" and CLAUDE.md says "non-negotiable #2". Privacy.tsx §7 says NOT for under-13.
+- **Status:** ⚠ Mixed message risk. STRATEGY.md/PRINCIPLES.md explicitly say "kids mode is sacred" and CLAUDE.md says "non-negotiable #2". Privacy.tsx §7 says NOT for under-13.
 - **Action:** When asked "Is your app primarily directed at children?" answer **No**. Kids mode is a sub-feature parents use, not the audience. If you answer Yes, Apple imposes COPPA constraints (no third-party SDKs, no analytics on kids, etc.) that the app's Sentry + RevenueCat + Azure pipeline does not currently meet.
 
 ### Risk 5 — Server-side localization of subscriptions / restore purchases

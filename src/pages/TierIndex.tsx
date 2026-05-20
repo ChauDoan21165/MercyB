@@ -113,9 +113,25 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
   { id: "level0", label: "Level 0", hint: "Ground / basics" },
 ];
 
-function norm(v: any): string {
+function norm(v: unknown): string {
   return String(v ?? "").toLowerCase().trim();
 }
+
+/**
+ * Rank-ish fields some room rows carry from older DB projections that are
+ * not part of the canonical TierRoom shape. Read defensively as `unknown`.
+ */
+type RankExtras = {
+  required_rank?: unknown;
+  requiredRank?: unknown;
+  required_vip_rank?: unknown;
+  requiredVipRank?: unknown;
+  min_rank?: unknown;
+  minRank?: unknown;
+  vip_rank?: unknown;
+  vipRank?: unknown;
+  rank?: unknown;
+};
 
 function blankCounts(): CountsState {
   const bySpineTier = Object.fromEntries(SPINE_TOP_TO_BOTTOM.map((t) => [t.id, 0])) as Record<
@@ -133,7 +149,7 @@ function blankCounts(): CountsState {
   };
 }
 
-function inferSpineTierFromId(idRaw: any): SpineTierId | null {
+function inferSpineTierFromId(idRaw: unknown): SpineTierId | null {
   const id = norm(idRaw);
   if (!id) return null;
 
@@ -174,7 +190,7 @@ function inferSpineTierFromId(idRaw: any): SpineTierId | null {
 }
 
 function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
-  const anyR: any = r as any;
+  const anyR = r as TierRoom & RankExtras;
 
   const candidates = [
     anyR.required_rank,
@@ -209,20 +225,20 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
 }
 
 function inferSpineTierForCounting(r: TierRoom, spineSet: Set<string>): SpineTierId | null {
-  const t = norm((r as any).tier);
+  const t = norm(r.tier);
   if (t && spineSet.has(t)) return t as SpineTierId;
 
   const byRank = inferSpineTierFromRank(r);
   if (byRank && spineSet.has(byRank)) return byRank;
 
-  const byId = inferSpineTierFromId((r as any).id);
+  const byId = inferSpineTierFromId(r.id);
   if (byId && spineSet.has(byId)) return byId;
 
   return null;
 }
 
 function isExplicitLifeRoom(r: TierRoom): boolean {
-  const id = String((r as any)?.id || "").toLowerCase();
+  const id = String(r.id || "").toLowerCase();
 
   if (id.startsWith("survival-") || id.startsWith("survival_")) return true;
   if (id.includes("-survival-") || id.includes("_survival_")) return true;
@@ -708,7 +724,7 @@ export default function TierIndex() {
       setAllRooms(rooms);
 
       try {
-        (window as any).__MB_ALL_ROOMS__ = rooms;
+        window.__MB_ALL_ROOMS__ = rooms;
       } catch {
         // no-op
       }
@@ -718,7 +734,7 @@ export default function TierIndex() {
         SPINE_TOP_TO_BOTTOM.map((t) => [t.id, 0])
       ) as Record<SpineTierId, number>;
 
-      const coreRooms = rooms.filter((r) => norm((r as any).area) === "core");
+      const coreRooms = rooms.filter((r) => norm(r.area) === "core");
       let unknownCoreTier = 0;
 
       for (const r of coreRooms) {
@@ -745,24 +761,24 @@ export default function TierIndex() {
   }, []);
 
   const freeLifeCount = useMemo(
-    () => allRooms.filter((r) => (r as any).tier === "level0" && isExplicitLifeRoom(r)).length,
+    () => allRooms.filter((r) => r.tier === "level0" && isExplicitLifeRoom(r)).length,
     [allRooms]
   );
 
   const freeLifeIds = useMemo(
     () =>
       allRooms
-        .filter((r) => (r as any).tier === "level0" && isExplicitLifeRoom(r))
-        .map((r) => String((r as any).id || ""))
+        .filter((r) => r.tier === "level0" && isExplicitLifeRoom(r))
+        .map((r) => String(r.id || ""))
         .sort(),
     [allRooms]
   );
 
   const freeCoreCount = useMemo(() => {
     return allRooms.filter((r) => {
-      if ((r as any).tier !== "level0") return false;
+      if (r.tier !== "level0") return false;
       if (isExplicitLifeRoom(r)) return false;
-      const a = String((r as any).area || "").toLowerCase();
+      const a = String(r.area || "").toLowerCase();
       if (a === "english" || a === "kids" || a === "life") return false;
       return true;
     }).length;
@@ -771,13 +787,13 @@ export default function TierIndex() {
   const freeCoreIds = useMemo(() => {
     return allRooms
       .filter((r) => {
-        if ((r as any).tier !== "level0") return false;
+        if (r.tier !== "level0") return false;
         if (isExplicitLifeRoom(r)) return false;
-        const a = String((r as any).area || "").toLowerCase();
+        const a = String(r.area || "").toLowerCase();
         if (a === "english" || a === "kids" || a === "life") return false;
         return true;
       })
-      .map((r) => String((r as any).id || ""))
+      .map((r) => String(r.id || ""))
       .sort();
   }, [allRooms]);
 
@@ -793,7 +809,7 @@ export default function TierIndex() {
   }, [countsForDisplay.totalAll, countsForDisplay.totalCore]);
 
   const hiddenReport = useMemo(() => {
-    const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
+    const spineSet = new Set<string>(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
 
     const byArea: Record<string, TierRoom[]> = {};
     const byTier: Record<string, TierRoom[]> = {};
@@ -803,8 +819,8 @@ export default function TierIndex() {
     const nonSpineTier: TierRoom[] = [];
 
     for (const r of allRooms) {
-      const area = norm((r as any).area) || "unknown";
-      const tierRaw = (r as any).tier;
+      const area = norm(r.area) || "unknown";
+      const tierRaw: unknown = r.tier;
       const tier = norm(tierRaw) || "unknown";
       const key = `${tier}__${area}`;
 
@@ -819,7 +835,7 @@ export default function TierIndex() {
         tier === "unknown";
 
       if (isMissing) strictUntiered.push(r);
-      if (isMissing || !spineSet.has(tier as any)) nonSpineTier.push(r);
+      if (isMissing || !spineSet.has(tier)) nonSpineTier.push(r);
     }
 
     const unknownAreaRooms = byArea["unknown"] || [];
@@ -829,21 +845,21 @@ export default function TierIndex() {
     const lifeAreaButNotExplicit = lifeAreaRooms.filter((r) => !isExplicitLifeRoom(r));
 
     const kidsById = allRooms.filter((r) => {
-      const id = norm((r as any).id);
+      const id = norm(r.id);
       return id.includes("_kids_l1") || id.includes("_kids_l2") || id.includes("_kids_l3");
     });
-    const kidsByIdNotEnglish = kidsById.filter((r) => norm((r as any).area) !== "english");
-    const kidsByIdTierUnknown = kidsById.filter((r) => norm((r as any).tier) === "unknown");
+    const kidsByIdNotEnglish = kidsById.filter((r) => norm(r.area) !== "english");
+    const kidsByIdTierUnknown = kidsById.filter((r) => norm(r.tier) === "unknown");
 
     const survivalById = allRooms.filter((r) => {
-      const id = norm((r as any).id);
+      const id = norm(r.id);
       return id.includes("survival") || id.includes("resilience");
     });
-    const survivalNotLife = survivalById.filter((r) => norm((r as any).area) !== "life");
+    const survivalNotLife = survivalById.filter((r) => norm(r.area) !== "life");
 
     const pickIds = (rooms: TierRoom[], n = 500) =>
       rooms
-        .map((r) => String((r as any).id || ""))
+        .map((r) => String(r.id || ""))
         .filter(Boolean)
         .sort()
         .slice(0, n);
@@ -884,7 +900,7 @@ export default function TierIndex() {
 
   useEffect(() => {
     try {
-      (window as any).__MB_TIER_REPORT__ = hiddenReport;
+      window.__MB_TIER_REPORT__ = hiddenReport;
     } catch {
       // no-op
     }
@@ -909,15 +925,18 @@ export default function TierIndex() {
         if (import.meta.env.DEV) console.log("tier-debug level0 explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
         const coreRooms =
-          (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
+          window.__MB_ALL_ROOMS__?.filter((r) => norm(r.area) === "core") || [];
         const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
-        const sample = coreRooms.slice(0, 30).map((r: any) => ({
-          id: r.id,
-          tier: r.tier,
-          required_rank:
-            r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
-          inferred: inferSpineTierForCounting(r, spineSet),
-        }));
+        const sample = coreRooms.slice(0, 30).map((r) => {
+          const rx = r as TierRoom & RankExtras;
+          return {
+            id: rx.id,
+            tier: rx.tier,
+            required_rank:
+              rx.required_rank ?? rx.required_vip_rank ?? rx.min_rank ?? rx.vip_rank ?? rx.rank,
+            inferred: inferSpineTierForCounting(rx, spineSet),
+          };
+        });
 
         if (import.meta.env.DEV) console.log("tier-debug core sample (first 30):", sample);
       }

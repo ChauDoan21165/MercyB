@@ -167,7 +167,7 @@ git clone --depth 1 https://github.com/ChauDoan21165/MercyB.git /home/claude/Mer
 
 Then read STRATEGY.md and PRINCIPLES.md (this file) BEFORE responding to any strategic question.
 
-Without the repo, advice is generic. Claude has confidently given strategy advice based on conversation alone that directly contradicted Chau's documented NORTH_STAR. This is the highest-leverage protective principle: read the strategy doc before opining on strategy.
+Without the repo, advice is generic. Claude has confidently given strategy advice based on conversation alone that directly contradicted Chau's documented strategy (STRATEGY.md). This is the highest-leverage protective principle: read the strategy doc before opining on strategy.
 
 Claude's role is tactical execution and honest technical input. Strategy is Chau's. Claude surfaces tradeoffs and conflicts; Claude does not lead pivots.
 

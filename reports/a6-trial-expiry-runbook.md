@@ -1,3 +1,8 @@
+> ⚠️ **ARCHIVE-CLASS (April 2026)** — historical runbook/recon kept in
+> place due to live cross-references outside `reports/`. Do not act on
+> this document without verifying current state. See
+> `reports/archive/agent-runs-2026-04/README.md` for context.
+
 # A6 — Trial-expiry email funnel runbook
 
 **Step 9 (Monetization).** A 3-stage email funnel for users approaching

@@ -1,3 +1,5 @@
+> **SUPERSEDED 2026-05-17 or later:** Phase 1 recon's recommendation was acted on; all 14 proposed rooms (`english_b2_b201.json … english_b2_b214.json`) now live on `main` (verified by A9j 2026-05-19). Keep for audit trail of the original gap analysis + topic design.
+
 # RECON — English B2 rooms (the missing band)
 
 **Agent:** english-b2-content-agent

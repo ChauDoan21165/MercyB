@@ -11,8 +11,8 @@ Status legend: ✅ complete · 🟡 pending (needs Chau action) · 🔴 blocked 
 | Item | Value | Status | Notes |
 |---|---|---|---|
 | Application ID | `com.mercyapps.mercyblade` | ✅ | `android/app/build.gradle`. Locked at first publish. |
-| Version name | `1.0.1` | ✅ | bump per release |
-| Version code | `3` | ✅ | bump per release |
+| Version name | `1.0.6` | ✅ | bump per release |
+| Version code | `16` | ✅ | bump per release |
 | Bundle ID alignment with iOS (`com.chaudoan.mercyblade`) | divergent | 🟡 | A6 §0 — decide before first publish. |
 | App title (≤50, EN) | `MercyBlade — IELTS & English for Vietnamese` `[44/50]` | ✅ | A6 §2.1 |
 | App title (≤50, VI) | `MercyBlade — Học tiếng Anh cho người Việt` `[42/50]` | ✅ | A6 §2.1 |

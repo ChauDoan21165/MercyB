@@ -15,8 +15,19 @@ psql "$SUPABASE_DB_URL" -f scripts/verify_billing_foundation.sql
 ## 2) Regenerate DB types
 
 ```bash
-PROJECT_REF=YOUR_PROJECT_REF OUTPUT_PATH=src/lib/database.types.ts ./scripts/regenerate-db-types.sh
+./scripts/regenerate-db-types.sh             # regenerate both canonical files
+./scripts/regenerate-db-types.sh --dry-run   # preview, no writes
 ```
+
+The script reads `project_id` from `supabase/config.toml` and writes
+both canonical generated-types files in lock-step:
+
+- `src/integrations/supabase/types.ts` (browser/SPA)
+- `supabase/functions/_shared/database.types.ts` (Deno edge functions)
+
+It enforces the byte-identical invariant between the two and exits
+non-zero if drift is detected. Operator runbook with prereqs and
+verification: `reports/OPS-database-types-regen-runbook-A8g.md`.
 
 Repository rule:
 

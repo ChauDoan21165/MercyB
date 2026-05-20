@@ -109,9 +109,9 @@ export default function AdminFeedbackPage() {
         });
 
         setHasMore(batch.length === pageSize);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (cancelled) return;
-        setErr(String(e?.message || e || "DB error"));
+        setErr(e instanceof Error ? e.message : String(e || "DB error"));
       } finally {
         if (!cancelled) setLoading(false);
       }

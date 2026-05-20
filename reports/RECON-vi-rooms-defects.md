@@ -1,3 +1,5 @@
+> **SUPERSEDED by PR #557** (`fix(rooms): VI-rooms concrete defect cleanup — audio, garble, dupe, doc drift`). The 5-of-6 non-gated fixes shipped; the 6th (Spanish/English audio gen) tracked separately. Keep for audit trail of the defect inventory.
+
 # RECON — Vietnamese Rooms Defect Cleanup
 
 **Agent:** vi-rooms-defects-agent · **Branch:** `vi-rooms-defect-cleanup` (off fresh `origin/main` @ `68855a29`)
