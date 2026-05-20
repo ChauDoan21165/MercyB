@@ -601,11 +601,31 @@ async function handleAnswer(
     servedItemIds,
   };
 
-  const adv = advance(sessionDepsFrom(deps), anchored, response, bank);
+  // ── SERVER-SIDE GRADING (PR 11 series-functional fix) ───────────────
+  // The answer key (`Item.correctOptionId`) is SERVER-ONLY — PublicItem
+  // strips it (locked Q1/Q2), so the browser physically cannot compute
+  // `correct`. But `scoring.ts:scoreResponse` reads `resp.correct`
+  // (correct && !l1Revealed → u=1; else u=0; null → excluded). So the
+  // EDGE FN must be the grader: the client only ever reports its
+  // `selectedOptionId` + timing + the L1-crutch flag; whatever `correct`
+  // it sent is IGNORED here (a client cannot self-grade a test whose key
+  // it must never see). writing_sample / no-key items stay `null`
+  // (scoreResponse excludes them — decision #3). Surfaced now because
+  // PR 11 is the first browser caller; the secure contract always
+  // implied server grading (CLAUDE.md "permissions are product logic —
+  // the feature isn't working if it renders but doesn't score").
+  const serverGradable =
+    answered.type !== "writing_sample" &&
+    typeof answered.correctOptionId === "string";
+  const gradedResponse = serverGradable
+    ? { ...response, correct: response.selectedOptionId === answered.correctOptionId }
+    : response;
+
+  const adv = advance(sessionDepsFrom(deps), anchored, gradedResponse, bank);
 
   await deps.appendResponse({
     session: adv.session,
-    response,
+    response: gradedResponse,
     seq,
     itemType: answered.type,
     itemCefr: answered.cefr,
