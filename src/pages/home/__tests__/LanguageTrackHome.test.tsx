@@ -7,12 +7,13 @@ import { MemoryRouter } from "react-router-dom";
 import React from "react";
 
 const persistMock = vi.fn(async () => ({ ok: true }));
-vi.mock("@/lib/languagePair/languagePair", async () => {
-  const actual = await vi.importActual<
-    typeof import("@/lib/languagePair/languagePair")
-  >("@/lib/languagePair/languagePair");
-  return { ...actual, usePairMutation: () => ({ persist: persistMock }) };
-});
+// A13-circle-8: usePairMutation moved to its own module to break a
+// 3-hop cycle through AuthProvider. Mock the new path; leave the
+// pure `languagePair` module alone (the test no longer depends on
+// mocking anything in it).
+vi.mock("@/lib/languagePair/usePairMutation", () => ({
+  usePairMutation: () => ({ persist: persistMock }),
+}));
 
 const navigateMock = vi.fn();
 vi.mock("react-router-dom", async () => {

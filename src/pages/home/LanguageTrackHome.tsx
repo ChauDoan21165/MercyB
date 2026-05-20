@@ -20,7 +20,8 @@ import {
   type NativeLang,
   type TargetLang,
 } from "@/lib/onboarding/types";
-import { usePairMutation, withPrimary } from "@/lib/languagePair/languagePair";
+import { withPrimary } from "@/lib/languagePair/languagePair";
+import { usePairMutation } from "@/lib/languagePair/usePairMutation";
 
 /** Compact horizontal switcher over the user's OWN chosen targets only
  *  (not the all-8 portfolio). Clicking a non-primary makes it primary
