@@ -1,6 +1,6 @@
 # A42 Failover Stability Forecast
 
-Generated: 2026-05-20T16:19:55.835Z
+Generated: 2026-05-20T16:24:00.190Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

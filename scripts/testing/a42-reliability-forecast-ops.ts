@@ -129,6 +129,18 @@ function main() {
     case "failover-stability":
       generateFailoverStabilityForecast();
       break;
+    case "threshold-policy":
+      generateReliabilityThresholdPolicy();
+      break;
+    case "timeout-simulation":
+      generateTimeoutIncidentSimulation();
+      break;
+    case "retry-budget":
+      generateProviderRetryBudgetPolicy();
+      break;
+    case "session-sla":
+      generateAssessmentSessionSlaPlan();
+      break;
     case "auto":
       runAuto();
       break;
@@ -152,9 +164,25 @@ function runAuto() {
   const adaptiveSessionReliability = generateAdaptiveSessionReliability(sources);
   const replayDurability = generateReplayDurabilityForecast(sources);
   const failoverStability = generateFailoverStabilityForecast(sources);
+  const thresholdPolicy = generateReliabilityThresholdPolicy(sources);
+  const timeoutSimulation = generateTimeoutIncidentSimulation(sources);
+  const retryBudget = generateProviderRetryBudgetPolicy(sources);
+  const sessionSla = generateAssessmentSessionSlaPlan(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
-    enforceStrictMode(sources, readiness, forecast, providerLatencyRisk, adaptiveSessionReliability, replayDurability, failoverStability);
+    enforceStrictMode(
+      sources,
+      readiness,
+      forecast,
+      providerLatencyRisk,
+      adaptiveSessionReliability,
+      replayDurability,
+      failoverStability,
+      thresholdPolicy,
+      timeoutSimulation,
+      retryBudget,
+      sessionSla,
+    );
   }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
   console.log(`[a42] reliability reports: ${RELIABILITY_OUT_DIR}`);
@@ -166,6 +194,10 @@ function runAuto() {
   console.log(`[a42] adaptive session reliability: ${path.join(RELIABILITY_OUT_DIR, "a42-adaptive-session-reliability.json")}`);
   console.log(`[a42] replay durability forecast: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-forecast.json")}`);
   console.log(`[a42] failover stability forecast: ${path.join(RELIABILITY_OUT_DIR, "a42-failover-stability-forecast.json")}`);
+  console.log(`[a42] reliability threshold policy: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-threshold-policy.json")}`);
+  console.log(`[a42] timeout incident simulation: ${path.join(RELIABILITY_OUT_DIR, "a42-timeout-incident-simulation.json")}`);
+  console.log(`[a42] provider retry budget policy: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-retry-budget-policy.json")}`);
+  console.log(`[a42] assessment session SLA plan: ${path.join(RELIABILITY_OUT_DIR, "a42-assessment-session-sla-plan.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -725,6 +757,135 @@ function generateFailoverStabilityForecast(existingSources?: SourceStatus[]) {
   return report;
 }
 
+function generateReliabilityThresholdPolicy(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const checks = [
+    thresholdCheck(timeoutForecast, "max_acceptable_provider_latency", ["maxAcceptableProviderLatency", "max_acceptable_provider_latency"]),
+    thresholdCheck(timeoutForecast, "max_adaptive_session_duration", ["maxAdaptiveSessionDuration", "max_adaptive_session_duration"]),
+    thresholdCheck(timeoutForecast, "speaking_scoring_timeout_threshold", ["speakingScoringTimeoutThreshold", "speaking_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "writing_scoring_timeout_threshold", ["writingScoringTimeoutThreshold", "writing_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "azure_phoneme_timeout_threshold", ["azurePhonemeTimeoutThreshold", "azure_phoneme_timeout_threshold"]),
+    thresholdCheck(enduranceHealth, "replay_durability_threshold", ["replayDurabilityThreshold", "replay_durability_threshold"]),
+    thresholdCheck(timeoutForecast, "human_review_handoff_sla", ["humanReviewHandoffSla", "human_review_handoff_sla"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("reliability threshold policy", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-reliability-threshold-policy",
+    report,
+    [
+      "# A42 Reliability Threshold Policy",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Threshold policy remains blocked-safe until A33 evidence defines explicit latency, timeout, replay, and handoff thresholds.",
+    ],
+  );
+  return report;
+}
+
+function generateTimeoutIncidentSimulation(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    readinessCheck("timeout_incident_risk", lowRiskEvidence(timeoutForecast, ["timeoutIncidentRisk", "timeout_incident_risk"])),
+    readinessCheck("adaptive_session_timeout_risk", lowRiskEvidence(timeoutForecast, ["adaptiveSessionTimeoutRisk", "adaptive_session_timeout_risk"])),
+    readinessCheck("assessment_session_timeout_risk", lowRiskEvidence(timeoutForecast, ["assessmentSessionTimeoutRisk", "assessment_session_timeout_risk"])),
+    readinessCheck("provider_timeout_unknowns", boolEvidence(timeoutForecast, ["providerTimeoutsResolved", "provider_timeouts_resolved"])),
+    readinessCheck("failover_timeout_risk", lowRiskEvidence(timeoutForecast, ["failoverTimeoutRisk", "failover_timeout_risk"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("timeout incident simulation", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-timeout-incident-simulation",
+    report,
+    [
+      "# A42 Timeout Incident Simulation",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Timeout incident simulation is planning-only and remains blocked until timeout behavior is evidenced by A33 artifacts.",
+    ],
+  );
+  return report;
+}
+
+function generateProviderRetryBudgetPolicy(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    thresholdCheck(timeoutForecast, "retry_budget_ceiling", ["retryBudgetCeiling", "retry_budget_ceiling"]),
+    thresholdCheck(timeoutForecast, "failover_retry_limit", ["failoverRetryLimit", "failover_retry_limit"]),
+    readinessCheck("provider_retry_stability", boolEvidence(enduranceHealth, ["providerRetryStable", "provider_retry_stability"])),
+    readinessCheck("failover_retry_stability", boolEvidence(enduranceHealth, ["failoverRetryStable", "failover_retry_stability"])),
+    readinessCheck("provider_timeout_unknowns", boolEvidence(timeoutForecast, ["providerTimeoutsResolved", "provider_timeouts_resolved"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("provider retry budget policy", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-provider-retry-budget-policy",
+    report,
+    [
+      "# A42 Provider Retry Budget Policy",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Provider retry budget policy remains blocked-safe until retry ceilings, failover limits, and provider timeout behavior are evidenced.",
+    ],
+  );
+  return report;
+}
+
+function generateAssessmentSessionSlaPlan(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    thresholdCheck(timeoutForecast, "max_adaptive_session_duration", ["maxAdaptiveSessionDuration", "max_adaptive_session_duration"]),
+    thresholdCheck(timeoutForecast, "speaking_scoring_timeout_threshold", ["speakingScoringTimeoutThreshold", "speaking_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "writing_scoring_timeout_threshold", ["writingScoringTimeoutThreshold", "writing_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "azure_phoneme_timeout_threshold", ["azurePhonemeTimeoutThreshold", "azure_phoneme_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "human_review_handoff_sla", ["humanReviewHandoffSla", "human_review_handoff_sla"]),
+    readinessCheck("assessment_session_timeout_risk", lowRiskEvidence(timeoutForecast, ["assessmentSessionTimeoutRisk", "assessment_session_timeout_risk"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("assessment session SLA plan", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-assessment-session-sla-plan",
+    report,
+    [
+      "# A42 Assessment Session SLA Plan",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Assessment-session SLA planning remains blocked-safe until session duration, scoring timeout, and handoff thresholds are evidenced.",
+    ],
+  );
+  return report;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -918,6 +1079,17 @@ function latencyVarianceCheck(data: Record<string, unknown> | null, name: string
   };
 }
 
+function thresholdCheck(data: Record<string, unknown> | null, name: string, keys: string[]) {
+  const value = data ? keys.map((key) => nestedValue(data, key)).find((item) => item !== undefined) : undefined;
+  const hasThreshold = value !== undefined && value !== null && value !== "";
+  return {
+    name,
+    status: hasThreshold ? "PASS" : "BLOCKED",
+    value: hasThreshold ? value : null,
+    reason: hasThreshold ? "threshold_defined_by_source_evidence" : "missing_threshold_policy_evidence",
+  };
+}
+
 function sourceData(sources: SourceStatus[], key: string) {
   return sources.find((source) => source.key === key)?.data ?? null;
 }
@@ -1052,6 +1224,10 @@ function enforceStrictMode(
   adaptiveSessionReliability: ReturnType<typeof generateAdaptiveSessionReliability>,
   replayDurability: ReturnType<typeof generateReplayDurabilityForecast>,
   failoverStability: ReturnType<typeof generateFailoverStabilityForecast>,
+  thresholdPolicy: ReturnType<typeof generateReliabilityThresholdPolicy>,
+  timeoutSimulation: ReturnType<typeof generateTimeoutIncidentSimulation>,
+  retryBudget: ReturnType<typeof generateProviderRetryBudgetPolicy>,
+  sessionSla: ReturnType<typeof generateAssessmentSessionSlaPlan>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -1066,11 +1242,19 @@ function enforceStrictMode(
   }
   if (replayDurability.riskClassification !== "RELIABILITY_READY") failures.push(`replay durability blocked: ${replayDurability.riskClassification}`);
   if (failoverStability.riskClassification !== "RELIABILITY_READY") failures.push(`failover stability blocked: ${failoverStability.riskClassification}`);
+  if (thresholdPolicy.riskClassification !== "RELIABILITY_READY") failures.push(`reliability threshold policy blocked: ${thresholdPolicy.riskClassification}`);
+  if (timeoutSimulation.riskClassification !== "RELIABILITY_READY") failures.push(`timeout incident simulation blocked: ${timeoutSimulation.riskClassification}`);
+  if (retryBudget.riskClassification !== "RELIABILITY_READY") failures.push(`provider retry budget blocked: ${retryBudget.riskClassification}`);
+  if (sessionSla.riskClassification !== "RELIABILITY_READY") failures.push(`assessment session SLA blocked: ${sessionSla.riskClassification}`);
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
   if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
   if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
   if (replayDurability.checks.some((item) => item.status !== "PASS")) failures.push("replay durability evidence unknown");
   if (failoverStability.checks.some((item) => item.status !== "PASS")) failures.push("failover stability evidence unknown");
+  if (thresholdPolicy.checks.some((item) => item.status !== "PASS")) failures.push("reliability thresholds undefined");
+  if (timeoutSimulation.checks.some((item) => item.status !== "PASS")) failures.push("timeout incident simulation missing");
+  if (retryBudget.checks.some((item) => item.status !== "PASS")) failures.push("provider retry budget missing");
+  if (sessionSla.checks.some((item) => item.status !== "PASS")) failures.push("assessment session SLA missing");
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
     throw new Error(`A42 strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
@@ -1165,6 +1349,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-forecast.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-failover-stability-forecast.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-failover-stability-forecast.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-threshold-policy.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-threshold-policy.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-timeout-incident-simulation.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-timeout-incident-simulation.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-retry-budget-policy.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-retry-budget-policy.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-assessment-session-sla-plan.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-assessment-session-sla-plan.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

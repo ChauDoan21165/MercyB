@@ -1,0 +1,15 @@
+# A42 Assessment Session SLA Plan
+
+Generated: 2026-05-20T16:24:07.572Z
+
+- Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
+- Ready: false
+
+- max_adaptive_session_duration: BLOCKED (missing_threshold_policy_evidence)
+- speaking_scoring_timeout_threshold: BLOCKED (missing_threshold_policy_evidence)
+- writing_scoring_timeout_threshold: BLOCKED (missing_threshold_policy_evidence)
+- azure_phoneme_timeout_threshold: BLOCKED (missing_threshold_policy_evidence)
+- human_review_handoff_sla: BLOCKED (missing_threshold_policy_evidence)
+- assessment_session_timeout_risk: BLOCKED (missing_or_insufficient_evidence)
+
+Assessment-session SLA planning remains blocked-safe until session duration, scoring timeout, and handoff thresholds are evidenced.

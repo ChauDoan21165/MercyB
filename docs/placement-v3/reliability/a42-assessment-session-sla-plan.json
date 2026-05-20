@@ -1,23 +1,38 @@
 {
-  "generatedAt": "2026-05-20T16:24:00.190Z",
+  "generatedAt": "2026-05-20T16:24:07.572Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "forecast": "adaptive session reliability",
+  "forecast": "assessment session SLA plan",
   "checks": [
     {
-      "name": "adaptive_session_timeout_risk",
+      "name": "max_adaptive_session_duration",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "long_session_degradation_risk",
+      "name": "speaking_scoring_timeout_threshold",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "ci_runtime_stability",
+      "name": "writing_scoring_timeout_threshold",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
+    },
+    {
+      "name": "azure_phoneme_timeout_threshold",
+      "status": "BLOCKED",
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
+    },
+    {
+      "name": "human_review_handoff_sla",
+      "status": "BLOCKED",
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
     },
     {
       "name": "assessment_session_timeout_risk",
@@ -26,9 +41,11 @@
     }
   ],
   "blockedChecks": [
-    "adaptive_session_timeout_risk",
-    "long_session_degradation_risk",
-    "ci_runtime_stability",
+    "max_adaptive_session_duration",
+    "speaking_scoring_timeout_threshold",
+    "writing_scoring_timeout_threshold",
+    "azure_phoneme_timeout_threshold",
+    "human_review_handoff_sla",
     "assessment_session_timeout_risk"
   ],
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",

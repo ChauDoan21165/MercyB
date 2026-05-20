@@ -1,35 +1,43 @@
 {
-  "generatedAt": "2026-05-20T16:24:00.190Z",
+  "generatedAt": "2026-05-20T16:24:07.501Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "forecast": "adaptive session reliability",
+  "forecast": "provider retry budget policy",
   "checks": [
     {
-      "name": "adaptive_session_timeout_risk",
+      "name": "retry_budget_ceiling",
+      "status": "BLOCKED",
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
+    },
+    {
+      "name": "failover_retry_limit",
+      "status": "BLOCKED",
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
+    },
+    {
+      "name": "provider_retry_stability",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     },
     {
-      "name": "long_session_degradation_risk",
+      "name": "failover_retry_stability",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     },
     {
-      "name": "ci_runtime_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "assessment_session_timeout_risk",
+      "name": "provider_timeout_unknowns",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     }
   ],
   "blockedChecks": [
-    "adaptive_session_timeout_risk",
-    "long_session_degradation_risk",
-    "ci_runtime_stability",
-    "assessment_session_timeout_risk"
+    "retry_budget_ceiling",
+    "failover_retry_limit",
+    "provider_retry_stability",
+    "failover_retry_stability",
+    "provider_timeout_unknowns"
   ],
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
