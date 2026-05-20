@@ -1,4 +1,4 @@
-import type { CEFRAssessment } from "@/types/placement-v3";
+import type { CEFRAssessment } from "../../../types/placement-v3";
 import { LESSON_INDEX } from "./lessonIndex";
 import { CEFR_LEVELS, type CefrLevel, type IndexedLesson, type Recommendation, type RecommendationContext } from "./recommenderTypes";
 

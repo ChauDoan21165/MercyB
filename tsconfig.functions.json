@@ -51,7 +51,12 @@
     // "./types.ts"). tsc accepts that only with this flag, which in turn
     // requires noEmit (we are noEmit anyway — this is a pure gate).
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["vite/client"]
   },
   // TODO(post-Phase-2, extension point): broaden edge-function typecheck
   // coverage beyond placement-session — add other functions' URL-free

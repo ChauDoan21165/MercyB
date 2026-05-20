@@ -1,4 +1,5 @@
 import {
+  CEFR_ORDER,
   type LanguagePair,
   type OrchestratorDeps,
   type PersistSessionInput,
@@ -6,8 +7,8 @@ import {
   type PlacementV3Response,
   type PlacementV3Session,
   type PromptTask,
+  type Recommendation,
 } from "./types.ts";
-import { recommendLessonsStub } from "./scoring.ts";
 
 type QueryBuilder = {
   select: (columns?: string, options?: unknown) => QueryBuilder;
@@ -126,9 +127,80 @@ export function createPersistence(
 }
 
 export async function recommendLessons(profile: PlacementV3Profile) {
-  // Temporary A26 stub. Replace with src/lib/placement/v3/recommender.ts
-  // when that PR lands and is importable from edge-function code.
-  return recommendLessonsStub(profile);
+  const imported = await tryAppRecommender(profile);
+  if (imported.length) return imported;
+  return recommendLessonsFromProfile(profile);
+}
+
+type RecommenderModule = {
+  recommendLessons?: (ctx: { assessment: Record<string, unknown> }) => Array<{
+    lessonId: string;
+    reason: string;
+    priority: number;
+  }>;
+};
+
+async function tryAppRecommender(profile: PlacementV3Profile): Promise<Recommendation[]> {
+  try {
+    const importer = Function("path", "return import(path)") as (
+      path: string,
+    ) => Promise<RecommenderModule>;
+    const mod = await importer("../../../src/lib/placement/v3/recommender.ts");
+    if (typeof mod.recommendLessons !== "function") return [];
+    return mod.recommendLessons({ assessment: profileToRecommenderAssessment(profile) })
+      .slice(0, 6)
+      .map((lesson) => ({
+        lessonId: lesson.lessonId,
+        reason: lesson.reason,
+        priority: Math.max(0, Math.min(1, lesson.priority)),
+      }));
+  } catch {
+    return [];
+  }
+}
+
+function profileToRecommenderAssessment(profile: PlacementV3Profile): Record<string, unknown> {
+  return {
+    overallLevel: profile.cefr_overall,
+    confidence: profile.cefr_overall_confidence,
+    skillLevels: Object.fromEntries(
+      Object.entries(profile.cefr_per_skill).map(([skill, value]) => [
+        skill,
+        value.level,
+      ]),
+    ),
+    strengths: profile.strengths,
+    gaps: profile.gaps,
+    l1InterferenceFlags: profile.l1_interference_flags,
+  };
+}
+
+function recommendLessonsFromProfile(profile: PlacementV3Profile): Recommendation[] {
+  const weakest = Object.entries(profile.cefr_per_skill)
+    .sort(([, a], [, b]) => CEFR_ORDER.indexOf(a.level) - CEFR_ORDER.indexOf(b.level))[0];
+  const weakestSkill = weakest?.[0] ?? "grammar";
+  const level = (weakest?.[1].level ?? profile.cefr_overall).toLowerCase();
+  const firstGap = profile.gaps[0] ?? `${weakestSkill} control`;
+  const topFlag = profile.l1_interference_flags[0]?.patternId;
+  return [
+    {
+      lessonId: `placement-v3:${level}:${weakestSkill}-foundation`,
+      reason: `Addresses ${firstGap} at ${profile.cefr_overall}.`,
+      priority: 1,
+    },
+    {
+      lessonId: `placement-v3:${level}:vietnamese-transfer`,
+      reason: topFlag
+        ? `Targets Vietnamese L1 pattern ${topFlag}.`
+        : "Targets common Vietnamese L1 transfer patterns found in placement.",
+      priority: 0.86,
+    },
+    {
+      lessonId: `placement-v3:${level}:conversation-loop`,
+      reason: "Builds active recall across speaking, listening, writing, and Mercy conversation.",
+      priority: 0.72,
+    },
+  ];
 }
 
 function sessionInsertRow(input: PersistSessionInput) {
@@ -221,4 +293,3 @@ export function makeSession(input: {
     updated_at: input.now,
   };
 }
-

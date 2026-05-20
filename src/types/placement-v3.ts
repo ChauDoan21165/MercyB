@@ -92,6 +92,40 @@ export interface PlacementV3CEFRAssessment {
   metadata?: Record<string, unknown>;
 }
 
+export type PlacementSkill =
+  | "overall"
+  | "grammar"
+  | "vocabulary"
+  | "pronunciation"
+  | "listening"
+  | "speaking"
+  | "reading"
+  | "writing";
+
+export type L1InterferenceFlag =
+  | string
+  | {
+      id?: string;
+      patternId?: string;
+      tag?: string;
+      severity?: "low" | "medium" | "high" | "severe" | number;
+    };
+
+export type CEFRAssessment = {
+  overallLevel?: CEFRLevel;
+  confidence?: number;
+  overallCefr?: CEFRLevel;
+  overallCEFR?: CEFRLevel;
+  cefrLevel?: CEFRLevel;
+  level?: CEFRLevel;
+  skillCefr?: Partial<Record<PlacementSkill, CEFRLevel>>;
+  skillCEFR?: Partial<Record<PlacementSkill, CEFRLevel>>;
+  skillLevels?: Partial<Record<PlacementSkill, CEFRLevel>>;
+  strengths?: string[];
+  gaps?: string[];
+  l1InterferenceFlags?: L1InterferenceFlag[];
+};
+
 export interface PlacementV3SessionRow {
   /** Primary key for the placement session. */
   id: string;
