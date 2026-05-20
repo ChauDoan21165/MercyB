@@ -1,0 +1,50 @@
+name: A42 Reliability Forecast
+
+on:
+  schedule:
+    - cron: "30 8 * * *"
+  workflow_dispatch:
+
+jobs:
+  reliability-forecast:
+    name: A42 reliability forecast
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: A42 branch guard
+        run: |
+          current_branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          if [ "$current_branch" != "feat/a42-reliability-forecast-ops" ]; then
+            echo "A42 reliability forecast automation must run on feat/a42-reliability-forecast-ops; current branch is $current_branch"
+            exit 1
+          fi
+
+      - name: A42 forecast automation
+        run: npm run placement:a42:auto
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload A42 reliability forecast artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a42-reliability-forecast
+          path: docs/placement-v3/reliability-forecast/
+          if-no-files-found: warn

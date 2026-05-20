@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-05-20T15:51:32.383Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "classifications": [
+    "LOW",
+    "MODERATE",
+    "ELEVATED",
+    "HIGH",
+    "CRITICAL",
+    "BLOCKED_BY_MISSING_EVIDENCE"
+  ],
+  "riskSignals": {
+    "ciDegradationRisk": "HIGH",
+    "recoveryRisk": "RECOVERY_RISK",
+    "resilienceState": "HIGH",
+    "anomalyState": "ANOMALY",
+    "enduranceTimeoutRisk": "missing"
+  },
+  "missingInputs": [
+    "a33_endurance_health",
+    "a33_timeout_risk_forecast"
+  ],
+  "stale": true,
+  "evidenceFreshness": {
+    "thresholdHours": 72,
+    "oldestAgeHours": 0.27850722222222224,
+    "missingCount": 2,
+    "staleCount": 2,
+    "label": "blocked_missing_inputs"
+  },
+  "forecastClassification": "BLOCKED_BY_MISSING_EVIDENCE",
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "live_provider_validated": false,
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_validated": false,
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  }
+}

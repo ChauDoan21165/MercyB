@@ -1,0 +1,34 @@
+{
+  "agent": "A42",
+  "name": "ReliabilityForecastOps",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "domain": "reliability forecasting and CI resilience operations",
+  "depends_on": [
+    "B1 reliability outputs",
+    "A33 endurance outputs"
+  ],
+  "mode": "active",
+  "owns": [
+    "reliability forecasting",
+    "resilience trend intelligence",
+    "recovery-risk aggregation",
+    "CI degradation forecasting",
+    "reliability handoff summaries",
+    "reliability evidence freshness checks"
+  ],
+  "does_not_own": [
+    "B1 reliability guardrail implementation",
+    "product test fixes",
+    "Placement V3 enablement",
+    "release governance",
+    "LauncherOps orchestration",
+    "Sentinel governance",
+    "A33 endurance execution",
+    "A36 replay",
+    "A3 data-quality",
+    "A2 observability"
+  ],
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "live_provider_validated": false
+}
