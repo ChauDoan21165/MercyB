@@ -2,106 +2,122 @@
   "generatedAt": "2026-05-20T16:51:44.157Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "governance": "provider failover stability model",
+  "governance": "replay durability continuity map",
   "dependencyLineage": [
     {
-      "agent": "A45",
-      "input": "provider calibration dependencies",
-      "output": "failover lineage and degradation thresholds",
-      "status": "missing_source_evidence"
-    },
-    {
-      "agent": "A33",
-      "input": "timeout risk forecast",
-      "output": "timeout escalation dependencies",
+      "agent": "A49",
+      "input": "replay reproducibility contradiction auditing",
+      "output": "replay durability continuity",
       "status": "missing_source_evidence"
     },
     {
       "agent": "A47",
-      "input": "provider drift telemetry",
-      "output": "failover observability correlation",
+      "input": "observability audit continuity",
+      "output": "trace-retained replay continuity",
+      "status": "missing_source_evidence"
+    },
+    {
+      "agent": "A46",
+      "input": "governance contradiction audits",
+      "output": "unsupported replay readiness detection",
+      "status": "missing_source_evidence"
+    },
+    {
+      "agent": "A44",
+      "input": "human-review approval denial",
+      "output": "human-review-gated replay continuity",
       "status": "missing_source_evidence"
     },
     {
       "agent": "A50",
-      "input": "supervised execution constraints",
-      "output": "supervised failover gating",
+      "input": "supervised execution denial",
+      "output": "supervised-only replay continuity",
       "status": "missing_source_evidence"
     }
   ],
   "checks": [
     {
-      "name": "failover_lineage",
+      "name": "replay_durability_continuity",
       "status": "BLOCKED",
       "requiredFields": [
-        "failoverLineage",
-        "providerCalibrationVersion"
+        "replayDurabilityContinuity",
+        "replayContinuityWindow",
+        "unresolvedReplayContradictions"
       ],
       "missingFields": [
-        "failoverLineage",
-        "providerCalibrationVersion"
+        "replayDurabilityContinuity",
+        "replayContinuityWindow",
+        "unresolvedReplayContradictions"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "provider_degradation_thresholds",
+      "name": "observability_audit_continuity_for_replay",
       "status": "BLOCKED",
       "requiredFields": [
-        "providerDegradationThresholds",
-        "providerCalibrationBounds"
+        "auditContinuityEvidence",
+        "retentionContinuity",
+        "traceRetentionPolicy"
       ],
       "missingFields": [
-        "providerDegradationThresholds",
-        "providerCalibrationBounds"
+        "auditContinuityEvidence",
+        "retentionContinuity",
+        "traceRetentionPolicy"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "timeout_escalation_dependencies",
+      "name": "replay_governance_contradiction_closure",
       "status": "BLOCKED",
       "requiredFields": [
-        "failoverTimeoutRisk",
-        "providerTimeoutsResolved"
+        "contradictionAuditComplete",
+        "unsupportedReadinessClaims",
+        "unresolvedContradictions"
       ],
       "missingFields": [
-        "failoverTimeoutRisk",
-        "providerTimeoutsResolved"
+        "contradictionAuditComplete",
+        "unsupportedReadinessClaims",
+        "unresolvedContradictions"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "failover_observability_retention",
+      "name": "human_review_replay_approval_denial",
       "status": "BLOCKED",
       "requiredFields": [
-        "retentionWindowHours",
-        "providerDriftTelemetry"
+        "approvalDenied",
+        "humanReviewBacklogState",
+        "reviewContinuityEvidence"
       ],
       "missingFields": [
-        "retentionWindowHours",
-        "providerDriftTelemetry"
+        "approvalDenied",
+        "humanReviewBacklogState",
+        "reviewContinuityEvidence"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "supervised_failover_constraints",
+      "name": "supervised_replay_continuity_constraints",
       "status": "BLOCKED",
       "requiredFields": [
         "supervisedOnly",
+        "executionDenied",
         "operatorApprovalRequired"
       ],
       "missingFields": [
         "supervisedOnly",
+        "executionDenied",
         "operatorApprovalRequired"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     }
   ],
   "incompleteChecks": [
-    "failover_lineage",
-    "provider_degradation_thresholds",
-    "timeout_escalation_dependencies",
-    "failover_observability_retention",
-    "supervised_failover_constraints"
+    "replay_durability_continuity",
+    "observability_audit_continuity_for_replay",
+    "replay_governance_contradiction_closure",
+    "human_review_replay_approval_denial",
+    "supervised_replay_continuity_constraints"
   ],
   "complete": false,
   "schema_completeness": false,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:45:04.790Z",
+  "generatedAt": "2026-05-20T16:51:44.157Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "governance": "observability reliability correlation",
@@ -104,6 +104,7 @@
     "replay_signal_correlation"
   ],
   "complete": false,
+  "schema_completeness": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
   "production_safe": false,

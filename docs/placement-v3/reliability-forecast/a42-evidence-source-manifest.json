@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:45:04.785Z",
+  "generatedAt": "2026-05-20T16:51:44.152Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "resolutionOrder": [
@@ -19,7 +19,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.1674375,
+      "ageHours": 1.2783727777777778,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:35:02.009Z",
       "safetyFields": {
@@ -49,7 +49,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.170841388888889,
+      "ageHours": 1.2817766666666666,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.756Z",
       "safetyFields": {
@@ -79,7 +79,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.1691969444444446,
+      "ageHours": 1.2801322222222222,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.676Z",
       "safetyFields": {
@@ -109,7 +109,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.1691930555555556,
+      "ageHours": 1.2801283333333333,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.690Z",
       "safetyFields": {
@@ -139,7 +139,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.170838611111111,
+      "ageHours": 1.281773888888889,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.766Z",
       "safetyFields": {
@@ -258,12 +258,140 @@
       }
     },
     {
+      "key": "a39_capacity_denial_provider_burst_governance",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/capacity/a39-capacity-denial-provider-burst-governance.json",
+      "canonicalPath": "docs/placement-v3/capacity/a39-capacity-denial-provider-burst-governance.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a44_human_review_backlog_approval_denial",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/human-review/a44-human-review-backlog-approval-denial.json",
+      "canonicalPath": "docs/placement-v3/human-review/a44-human-review-backlog-approval-denial.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
       "key": "a45_provider_calibration_dependencies",
       "present": false,
       "rejected": false,
       "rejectionReasons": [],
       "sourcePath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
       "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a45_provider_validation_drift_denial",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/provider-calibration/a45-provider-validation-drift-denial.json",
+      "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-validation-drift-denial.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a46_governance_contradiction_audits",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/governance/a46-governance-contradiction-audits.json",
+      "canonicalPath": "docs/placement-v3/governance/a46-governance-contradiction-audits.json",
       "sourceTier": "missing",
       "fresh": false,
       "stale": true,
@@ -322,6 +450,70 @@
       }
     },
     {
+      "key": "a47_observability_reconciliation_audit_continuity",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/observability/a47-observability-reconciliation-audit-continuity.json",
+      "canonicalPath": "docs/placement-v3/observability/a47-observability-reconciliation-audit-continuity.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a48_release_canary_denial_governance",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/release/a48-release-canary-denial-governance.json",
+      "canonicalPath": "docs/placement-v3/release/a48-release-canary-denial-governance.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
       "key": "a49_replay_reproducibility_thresholds",
       "present": false,
       "rejected": false,
@@ -354,12 +546,76 @@
       }
     },
     {
+      "key": "a49_replay_reproducibility_contradiction_auditing",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/replay/a49-replay-reproducibility-contradiction-auditing.json",
+      "canonicalPath": "docs/placement-v3/replay/a49-replay-reproducibility-contradiction-auditing.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
       "key": "a50_supervised_execution_constraints",
       "present": false,
       "rejected": false,
       "rejectionReasons": [],
       "sourcePath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
       "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a50_supervised_execution_denial_governance",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/supervision/a50-supervised-execution-denial-governance.json",
+      "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-denial-governance.json",
       "sourceTier": "missing",
       "fresh": false,
       "stale": true,
@@ -437,9 +693,33 @@
       "sourceTier": "missing"
     },
     {
+      "key": "a39_capacity_denial_provider_burst_governance",
+      "selectedPath": "docs/placement-v3/capacity/a39-capacity-denial-provider-burst-governance.json",
+      "canonicalPath": "docs/placement-v3/capacity/a39-capacity-denial-provider-burst-governance.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a44_human_review_backlog_approval_denial",
+      "selectedPath": "docs/placement-v3/human-review/a44-human-review-backlog-approval-denial.json",
+      "canonicalPath": "docs/placement-v3/human-review/a44-human-review-backlog-approval-denial.json",
+      "sourceTier": "missing"
+    },
+    {
       "key": "a45_provider_calibration_dependencies",
       "selectedPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
       "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a45_provider_validation_drift_denial",
+      "selectedPath": "docs/placement-v3/provider-calibration/a45-provider-validation-drift-denial.json",
+      "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-validation-drift-denial.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a46_governance_contradiction_audits",
+      "selectedPath": "docs/placement-v3/governance/a46-governance-contradiction-audits.json",
+      "canonicalPath": "docs/placement-v3/governance/a46-governance-contradiction-audits.json",
       "sourceTier": "missing"
     },
     {
@@ -449,9 +729,27 @@
       "sourceTier": "missing"
     },
     {
+      "key": "a47_observability_reconciliation_audit_continuity",
+      "selectedPath": "docs/placement-v3/observability/a47-observability-reconciliation-audit-continuity.json",
+      "canonicalPath": "docs/placement-v3/observability/a47-observability-reconciliation-audit-continuity.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a48_release_canary_denial_governance",
+      "selectedPath": "docs/placement-v3/release/a48-release-canary-denial-governance.json",
+      "canonicalPath": "docs/placement-v3/release/a48-release-canary-denial-governance.json",
+      "sourceTier": "missing"
+    },
+    {
       "key": "a49_replay_reproducibility_thresholds",
       "selectedPath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
       "canonicalPath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a49_replay_reproducibility_contradiction_auditing",
+      "selectedPath": "docs/placement-v3/replay/a49-replay-reproducibility-contradiction-auditing.json",
+      "canonicalPath": "docs/placement-v3/replay/a49-replay-reproducibility-contradiction-auditing.json",
       "sourceTier": "missing"
     },
     {
@@ -459,13 +757,19 @@
       "selectedPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
       "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
       "sourceTier": "missing"
+    },
+    {
+      "key": "a50_supervised_execution_denial_governance",
+      "selectedPath": "docs/placement-v3/supervision/a50-supervised-execution-denial-governance.json",
+      "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-denial-governance.json",
+      "sourceTier": "missing"
     }
   ],
   "freshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 1.170841388888889,
-    "missingCount": 7,
-    "staleCount": 7,
+    "oldestAgeHours": 1.2817766666666666,
+    "missingCount": 15,
+    "staleCount": 15,
     "label": "blocked_missing_inputs"
   },
   "safetyFields": [
@@ -620,7 +924,87 @@
       "unsafeProductionClaim": false
     },
     {
+      "key": "a39_capacity_denial_provider_burst_governance",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a44_human_review_backlog_approval_denial",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
       "key": "a45_provider_calibration_dependencies",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a45_provider_validation_drift_denial",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a46_governance_contradiction_audits",
       "production_safe": null,
       "placement_v3_enabled": null,
       "placement_test_enabled": null,
@@ -660,6 +1044,46 @@
       "unsafeProductionClaim": false
     },
     {
+      "key": "a47_observability_reconciliation_audit_continuity",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a48_release_canary_denial_governance",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
       "key": "a49_replay_reproducibility_thresholds",
       "production_safe": null,
       "placement_v3_enabled": null,
@@ -680,7 +1104,47 @@
       "unsafeProductionClaim": false
     },
     {
+      "key": "a49_replay_reproducibility_contradiction_auditing",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
       "key": "a50_supervised_execution_constraints",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a50_supervised_execution_denial_governance",
       "production_safe": null,
       "placement_v3_enabled": null,
       "placement_test_enabled": null,

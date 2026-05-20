@@ -1,6 +1,6 @@
 # A42 Reliability Evidence Lineage
 
-Generated: 2026-05-20T16:45:04.787Z
+Generated: 2026-05-20T16:51:44.153Z
 
 - reliability_health: accepted, canonical, agent=B1, branch=feat/b1-test-stability-burndown, commit=missing, checksum=c06c334855c02cdf664a3a4282171f22e45b8b89fa88b8537372d015032a892d, safety=MISSING_SAFETY_FIELDS
 - ci_degradation_forecast: accepted, canonical, agent=B1, branch=feat/b1-test-stability-burndown, commit=missing, checksum=31c9ef6ce2b86cf73fe53e7e2b6861409a70b319bc48e0de5bfac7ccc453bc68, safety=MISSING_SAFETY_FIELDS
@@ -10,9 +10,17 @@ Generated: 2026-05-20T16:45:04.787Z
 - a33_endurance_health: missing, missing, agent=A33, branch=missing, commit=missing, checksum=missing, safety=MISSING
 - a33_timeout_risk_forecast: missing, missing, agent=A33, branch=missing, commit=missing, checksum=missing, safety=MISSING
 - a39_capacity_projections: missing, missing, agent=A39, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a39_capacity_denial_provider_burst_governance: missing, missing, agent=A39, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a44_human_review_backlog_approval_denial: missing, missing, agent=A44, branch=missing, commit=missing, checksum=missing, safety=MISSING
 - a45_provider_calibration_dependencies: missing, missing, agent=A45, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a45_provider_validation_drift_denial: missing, missing, agent=A45, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a46_governance_contradiction_audits: missing, missing, agent=A46, branch=missing, commit=missing, checksum=missing, safety=MISSING
 - a47_observability_retention_drift_telemetry: missing, missing, agent=A47, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a47_observability_reconciliation_audit_continuity: missing, missing, agent=A47, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a48_release_canary_denial_governance: missing, missing, agent=A48, branch=missing, commit=missing, checksum=missing, safety=MISSING
 - a49_replay_reproducibility_thresholds: missing, missing, agent=A49, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a49_replay_reproducibility_contradiction_auditing: missing, missing, agent=A49, branch=missing, commit=missing, checksum=missing, safety=MISSING
 - a50_supervised_execution_constraints: missing, missing, agent=A50, branch=missing, commit=missing, checksum=missing, safety=MISSING
+- a50_supervised_execution_denial_governance: missing, missing, agent=A50, branch=missing, commit=missing, checksum=missing, safety=MISSING
 
 A42 lineage records evidence provenance only. It does not mutate B1/A33 execution or enable Placement V3.

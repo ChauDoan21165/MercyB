@@ -88,8 +88,28 @@ const SOURCES = [
     required: false,
   },
   {
+    key: "a39_capacity_denial_provider_burst_governance",
+    path: "docs/placement-v3/capacity/a39-capacity-denial-provider-burst-governance.json",
+    required: false,
+  },
+  {
+    key: "a44_human_review_backlog_approval_denial",
+    path: "docs/placement-v3/human-review/a44-human-review-backlog-approval-denial.json",
+    required: false,
+  },
+  {
     key: "a45_provider_calibration_dependencies",
     path: "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+    required: false,
+  },
+  {
+    key: "a45_provider_validation_drift_denial",
+    path: "docs/placement-v3/provider-calibration/a45-provider-validation-drift-denial.json",
+    required: false,
+  },
+  {
+    key: "a46_governance_contradiction_audits",
+    path: "docs/placement-v3/governance/a46-governance-contradiction-audits.json",
     required: false,
   },
   {
@@ -98,13 +118,33 @@ const SOURCES = [
     required: false,
   },
   {
+    key: "a47_observability_reconciliation_audit_continuity",
+    path: "docs/placement-v3/observability/a47-observability-reconciliation-audit-continuity.json",
+    required: false,
+  },
+  {
+    key: "a48_release_canary_denial_governance",
+    path: "docs/placement-v3/release/a48-release-canary-denial-governance.json",
+    required: false,
+  },
+  {
     key: "a49_replay_reproducibility_thresholds",
     path: "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
     required: false,
   },
   {
+    key: "a49_replay_reproducibility_contradiction_auditing",
+    path: "docs/placement-v3/replay/a49-replay-reproducibility-contradiction-auditing.json",
+    required: false,
+  },
+  {
     key: "a50_supervised_execution_constraints",
     path: "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+    required: false,
+  },
+  {
+    key: "a50_supervised_execution_denial_governance",
+    path: "docs/placement-v3/supervision/a50-supervised-execution-denial-governance.json",
     required: false,
   },
 ] as const;
@@ -161,6 +201,18 @@ function main() {
       break;
     case "observability-correlation":
       generateObservabilityReliabilityCorrelation();
+      break;
+    case "reconciliation":
+      generateReliabilityGovernanceReconciliationLedger();
+      break;
+    case "contradiction-detector":
+      generateFailoverContradictionDetector();
+      break;
+    case "durability-continuity":
+      generateReplayDurabilityContinuityMap();
+      break;
+    case "blocked-safe-certification":
+      generateBlockedSafeReliabilityCertification();
       break;
     case "threshold-policy":
       generateReliabilityThresholdPolicy();
@@ -237,6 +289,10 @@ function runAuto() {
   const replayGovernance = generateReplayDurabilityGovernance(sources);
   const failoverModel = generateProviderFailoverStabilityModel(sources);
   const observabilityCorrelation = generateObservabilityReliabilityCorrelation(sources);
+  const reconciliationLedger = generateReliabilityGovernanceReconciliationLedger(sources);
+  const contradictionDetector = generateFailoverContradictionDetector(sources);
+  const durabilityContinuity = generateReplayDurabilityContinuityMap(sources);
+  const blockedSafeCertification = generateBlockedSafeReliabilityCertification(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -263,6 +319,10 @@ function runAuto() {
       replayGovernance,
       failoverModel,
       observabilityCorrelation,
+      reconciliationLedger,
+      contradictionDetector,
+      durabilityContinuity,
+      blockedSafeCertification,
     );
   }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
@@ -291,6 +351,10 @@ function runAuto() {
   console.log(`[a42] replay durability governance: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-governance.json")}`);
   console.log(`[a42] provider failover stability model: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-failover-stability-model.json")}`);
   console.log(`[a42] observability reliability correlation: ${path.join(RELIABILITY_OUT_DIR, "a42-observability-reliability-correlation.json")}`);
+  console.log(`[a42] reliability governance reconciliation ledger: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-governance-reconciliation-ledger.json")}`);
+  console.log(`[a42] failover contradiction detector: ${path.join(RELIABILITY_OUT_DIR, "a42-failover-contradiction-detector.json")}`);
+  console.log(`[a42] replay durability continuity map: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-continuity-map.json")}`);
+  console.log(`[a42] blocked-safe reliability certification: ${path.join(RELIABILITY_OUT_DIR, "a42-blocked-safe-reliability-certification.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -1471,6 +1535,303 @@ function generateObservabilityReliabilityCorrelation(existingSources?: SourceSta
   return report;
 }
 
+function generateReliabilityGovernanceReconciliationLedger(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a39CapacityDenial = sourceData(sources, "a39_capacity_denial_provider_burst_governance");
+  const a44HumanReview = sourceData(sources, "a44_human_review_backlog_approval_denial");
+  const a45DriftDenial = sourceData(sources, "a45_provider_validation_drift_denial");
+  const a46Contradictions = sourceData(sources, "a46_governance_contradiction_audits");
+  const a47Continuity = sourceData(sources, "a47_observability_reconciliation_audit_continuity");
+  const a48ReleaseDenial = sourceData(sources, "a48_release_canary_denial_governance");
+  const a49ReplayContradictions = sourceData(sources, "a49_replay_reproducibility_contradiction_auditing");
+  const a50SupervisionDenial = sourceData(sources, "a50_supervised_execution_denial_governance");
+  const checks = [
+    evidenceSchemaCheck(a39CapacityDenial, "capacity_denial_and_provider_burst_governance", [
+      "capacityDenied",
+      "providerBurstDenied",
+      "burstGovernanceReason",
+    ]),
+    evidenceSchemaCheck(a44HumanReview, "human_review_backlog_and_approval_denial", [
+      "humanReviewBacklogState",
+      "approvalDenied",
+      "approvalDenialReason",
+    ]),
+    evidenceSchemaCheck(a45DriftDenial, "provider_validation_and_drift_denial", [
+      "providerValidationDenied",
+      "driftDenied",
+      "providerDegradationLineage",
+    ]),
+    evidenceSchemaCheck(a46Contradictions, "governance_contradiction_audit", [
+      "contradictionAuditComplete",
+      "unresolvedContradictions",
+      "unsupportedReadinessClaims",
+    ]),
+    evidenceSchemaCheck(a47Continuity, "observability_reconciliation_and_audit_continuity", [
+      "auditContinuityEvidence",
+      "observabilityDependencies",
+      "retentionContinuity",
+    ]),
+    evidenceSchemaCheck(a48ReleaseDenial, "release_and_canary_denial_governance", [
+      "releaseDenied",
+      "canaryDenied",
+      "denialAuthority",
+    ]),
+    evidenceSchemaCheck(a49ReplayContradictions, "replay_reproducibility_contradiction_auditing", [
+      "replayContradictionAuditComplete",
+      "replayDurabilityContinuity",
+      "unresolvedReplayContradictions",
+    ]),
+    evidenceSchemaCheck(a50SupervisionDenial, "supervised_execution_denial_governance", [
+      "autonomous_execution",
+      "supervisedOnly",
+      "executionDenied",
+    ]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("reliability governance reconciliation ledger", checks, riskClassification, [
+    dependencyRow("A39", "capacity denial and provider burst governance", "capacity-gated reliability reconciliation", !!a39CapacityDenial),
+    dependencyRow("A44", "human-review backlog and approval denial", "review-gated reliability reconciliation", !!a44HumanReview),
+    dependencyRow("A45", "provider validation and drift denial", "provider-gated reliability reconciliation", !!a45DriftDenial),
+    dependencyRow("A46", "governance contradiction audits", "unsupported readiness reconciliation", !!a46Contradictions),
+    dependencyRow("A47", "observability reconciliation and audit continuity", "audit-continuity-backed reconciliation", !!a47Continuity),
+    dependencyRow("A48", "release/canary denial governance", "release-denial-aware reliability reconciliation", !!a48ReleaseDenial),
+    dependencyRow("A49", "replay contradiction auditing", "replay-continuity-aware reconciliation", !!a49ReplayContradictions),
+    dependencyRow("A50", "supervised execution denial governance", "supervised-only reliability gating", !!a50SupervisionDenial),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-reliability-governance-reconciliation-ledger",
+    report,
+    [
+      "# A42 Reliability Governance Reconciliation Ledger",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- schema_completeness: ${report.schema_completeness}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "A42 reconciles denial and contradiction evidence only. Missing upstream governance evidence preserves blocked-safe reliability posture.",
+    ],
+  );
+  return report;
+}
+
+function generateFailoverContradictionDetector(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a39CapacityDenial = sourceData(sources, "a39_capacity_denial_provider_burst_governance");
+  const a45DriftDenial = sourceData(sources, "a45_provider_validation_drift_denial");
+  const a46Contradictions = sourceData(sources, "a46_governance_contradiction_audits");
+  const a47Continuity = sourceData(sources, "a47_observability_reconciliation_audit_continuity");
+  const a49ReplayContradictions = sourceData(sources, "a49_replay_reproducibility_contradiction_auditing");
+  const a50SupervisionDenial = sourceData(sources, "a50_supervised_execution_denial_governance");
+  const checks = [
+    evidenceSchemaCheck(a39CapacityDenial, "provider_burst_denial_lineage", ["providerBurstDenied", "burstGovernanceReason"]),
+    evidenceSchemaCheck(a45DriftDenial, "provider_degradation_lineage", [
+      "providerDegradationLineage",
+      "providerValidationDenied",
+      "driftDenied",
+    ]),
+    evidenceSchemaCheck(a46Contradictions, "failover_contradictions_unresolved", [
+      "failoverContradictionAuditComplete",
+      "unresolvedFailoverContradictions",
+    ]),
+    evidenceSchemaCheck(a47Continuity, "observability_dependencies_for_failover", [
+      "observabilityDependencies",
+      "providerDriftTelemetry",
+      "auditContinuityEvidence",
+    ]),
+    evidenceSchemaCheck(a49ReplayContradictions, "replay_failover_contradiction_trace", [
+      "replayFailoverContradictions",
+      "replayDurabilityContinuity",
+    ]),
+    evidenceSchemaCheck(a50SupervisionDenial, "supervised_execution_dependencies_for_failover", [
+      "supervisedOnly",
+      "executionDenied",
+      "operatorApprovalRequired",
+    ]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("failover contradiction detector", checks, riskClassification, [
+    dependencyRow("A39", "provider burst denial governance", "burst/failover contradiction detection", !!a39CapacityDenial),
+    dependencyRow("A45", "provider validation and drift denial", "provider degradation contradiction detection", !!a45DriftDenial),
+    dependencyRow("A46", "governance contradiction audits", "failover contradiction closure", !!a46Contradictions),
+    dependencyRow("A47", "observability audit continuity", "failover evidence continuity", !!a47Continuity),
+    dependencyRow("A49", "replay contradiction auditing", "replay/failover contradiction traceability", !!a49ReplayContradictions),
+    dependencyRow("A50", "supervised execution denial", "supervised-only failover gating", !!a50SupervisionDenial),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-failover-contradiction-detector",
+    report,
+    [
+      "# A42 Failover Contradiction Detector",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- schema_completeness: ${report.schema_completeness}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Failover contradictions remain unresolved until provider, capacity, observability, replay, and supervision evidence is complete.",
+    ],
+  );
+  return report;
+}
+
+function generateReplayDurabilityContinuityMap(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a44HumanReview = sourceData(sources, "a44_human_review_backlog_approval_denial");
+  const a46Contradictions = sourceData(sources, "a46_governance_contradiction_audits");
+  const a47Continuity = sourceData(sources, "a47_observability_reconciliation_audit_continuity");
+  const a49ReplayContradictions = sourceData(sources, "a49_replay_reproducibility_contradiction_auditing");
+  const a50SupervisionDenial = sourceData(sources, "a50_supervised_execution_denial_governance");
+  const checks = [
+    evidenceSchemaCheck(a49ReplayContradictions, "replay_durability_continuity", [
+      "replayDurabilityContinuity",
+      "replayContinuityWindow",
+      "unresolvedReplayContradictions",
+    ]),
+    evidenceSchemaCheck(a47Continuity, "observability_audit_continuity_for_replay", [
+      "auditContinuityEvidence",
+      "retentionContinuity",
+      "traceRetentionPolicy",
+    ]),
+    evidenceSchemaCheck(a46Contradictions, "replay_governance_contradiction_closure", [
+      "contradictionAuditComplete",
+      "unsupportedReadinessClaims",
+      "unresolvedContradictions",
+    ]),
+    evidenceSchemaCheck(a44HumanReview, "human_review_replay_approval_denial", [
+      "approvalDenied",
+      "humanReviewBacklogState",
+      "reviewContinuityEvidence",
+    ]),
+    evidenceSchemaCheck(a50SupervisionDenial, "supervised_replay_continuity_constraints", [
+      "supervisedOnly",
+      "executionDenied",
+      "operatorApprovalRequired",
+    ]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("replay durability continuity map", checks, riskClassification, [
+    dependencyRow("A49", "replay reproducibility contradiction auditing", "replay durability continuity", !!a49ReplayContradictions),
+    dependencyRow("A47", "observability audit continuity", "trace-retained replay continuity", !!a47Continuity),
+    dependencyRow("A46", "governance contradiction audits", "unsupported replay readiness detection", !!a46Contradictions),
+    dependencyRow("A44", "human-review approval denial", "human-review-gated replay continuity", !!a44HumanReview),
+    dependencyRow("A50", "supervised execution denial", "supervised-only replay continuity", !!a50SupervisionDenial),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-replay-durability-continuity-map",
+    report,
+    [
+      "# A42 Replay Durability Continuity Map",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- schema_completeness: ${report.schema_completeness}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Replay durability continuity is documented as blocked-safe incomplete until upstream continuity and contradiction evidence is present.",
+    ],
+  );
+  return report;
+}
+
+function generateBlockedSafeReliabilityCertification(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a33Endurance = sourceData(sources, "a33_endurance_health");
+  const a39CapacityDenial = sourceData(sources, "a39_capacity_denial_provider_burst_governance");
+  const a44HumanReview = sourceData(sources, "a44_human_review_backlog_approval_denial");
+  const a45DriftDenial = sourceData(sources, "a45_provider_validation_drift_denial");
+  const a46Contradictions = sourceData(sources, "a46_governance_contradiction_audits");
+  const a47Continuity = sourceData(sources, "a47_observability_reconciliation_audit_continuity");
+  const a48ReleaseDenial = sourceData(sources, "a48_release_canary_denial_governance");
+  const a49ReplayContradictions = sourceData(sources, "a49_replay_reproducibility_contradiction_auditing");
+  const a50SupervisionDenial = sourceData(sources, "a50_supervised_execution_denial_governance");
+  const checks = [
+    evidenceSchemaCheck(a33Endurance, "endurance_validation_supporting_evidence", ["longSessionStable", "replayDurable"]),
+    evidenceSchemaCheck(a39CapacityDenial, "capacity_denial_supporting_evidence", ["capacityDenied", "providerBurstDenied"]),
+    evidenceSchemaCheck(a44HumanReview, "human_review_denial_supporting_evidence", ["approvalDenied", "humanReviewBacklogState"]),
+    evidenceSchemaCheck(a45DriftDenial, "provider_drift_denial_supporting_evidence", [
+      "providerValidationDenied",
+      "providerDegradationLineage",
+    ]),
+    evidenceSchemaCheck(a46Contradictions, "unsupported_readiness_claim_detection", [
+      "unsupportedReadinessClaims",
+      "contradictionAuditComplete",
+    ]),
+    evidenceSchemaCheck(a47Continuity, "observability_dependency_supporting_evidence", [
+      "observabilityDependencies",
+      "auditContinuityEvidence",
+    ]),
+    evidenceSchemaCheck(a48ReleaseDenial, "release_canary_denial_supporting_evidence", ["releaseDenied", "canaryDenied"]),
+    evidenceSchemaCheck(a49ReplayContradictions, "replay_continuity_supporting_evidence", [
+      "replayDurabilityContinuity",
+      "unresolvedReplayContradictions",
+    ]),
+    evidenceSchemaCheck(a50SupervisionDenial, "supervised_execution_denial_supporting_evidence", [
+      "autonomous_execution",
+      "supervisedOnly",
+      "executionDenied",
+    ]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("blocked-safe reliability certification", checks, riskClassification, [
+    dependencyRow("A33", "endurance validation", "blocked-safe reliability certificate support", !!a33Endurance),
+    dependencyRow("A39", "capacity denial and provider burst governance", "blocked-safe capacity support", !!a39CapacityDenial),
+    dependencyRow("A44", "human-review denial evidence", "blocked-safe approval support", !!a44HumanReview),
+    dependencyRow("A45", "provider drift denial evidence", "blocked-safe provider support", !!a45DriftDenial),
+    dependencyRow("A46", "contradiction audits", "unsupported readiness detection support", !!a46Contradictions),
+    dependencyRow("A47", "observability audit continuity", "blocked-safe observability support", !!a47Continuity),
+    dependencyRow("A48", "release/canary denial governance", "blocked-safe release support", !!a48ReleaseDenial),
+    dependencyRow("A49", "replay contradiction auditing", "blocked-safe replay support", !!a49ReplayContradictions),
+    dependencyRow("A50", "supervised execution denial governance", "blocked-safe supervision support", !!a50SupervisionDenial),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-blocked-safe-reliability-certification",
+    report,
+    [
+      "# A42 Blocked-Safe Reliability Certification",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- schema_completeness: ${report.schema_completeness}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      `- production_safe: ${report.production_safe}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "This artifact certifies only that A42 remains blocked-safe under missing evidence. It is not production, provider, replay, release, or enablement approval.",
+    ],
+  );
+  return report;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -1760,6 +2121,7 @@ function crossStreamReport(
     checks,
     incompleteChecks: checks.filter((check) => check.status !== "PASS").map((check) => check.name),
     complete: checks.every((check) => check.status === "PASS"),
+    schema_completeness: checks.every((check) => check.status === "PASS"),
     riskClassification,
     ready: riskClassification === "RELIABILITY_READY",
     production_safe: false,
@@ -1909,6 +2271,10 @@ function enforceStrictMode(
   replayGovernance: ReturnType<typeof generateReplayDurabilityGovernance>,
   failoverModel: ReturnType<typeof generateProviderFailoverStabilityModel>,
   observabilityCorrelation: ReturnType<typeof generateObservabilityReliabilityCorrelation>,
+  reconciliationLedger: ReturnType<typeof generateReliabilityGovernanceReconciliationLedger>,
+  contradictionDetector: ReturnType<typeof generateFailoverContradictionDetector>,
+  durabilityContinuity: ReturnType<typeof generateReplayDurabilityContinuityMap>,
+  blockedSafeCertification: ReturnType<typeof generateBlockedSafeReliabilityCertification>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -1943,6 +2309,18 @@ function enforceStrictMode(
   if (observabilityCorrelation.riskClassification !== "RELIABILITY_READY") {
     failures.push(`observability reliability correlation blocked: ${observabilityCorrelation.riskClassification}`);
   }
+  if (reconciliationLedger.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`reliability governance reconciliation ledger blocked: ${reconciliationLedger.riskClassification}`);
+  }
+  if (contradictionDetector.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`failover contradiction detector blocked: ${contradictionDetector.riskClassification}`);
+  }
+  if (durabilityContinuity.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`replay durability continuity map blocked: ${durabilityContinuity.riskClassification}`);
+  }
+  if (blockedSafeCertification.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`blocked-safe reliability certification blocked: ${blockedSafeCertification.riskClassification}`);
+  }
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
   if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
   if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
@@ -1964,6 +2342,10 @@ function enforceStrictMode(
   if (!replayGovernance.complete) failures.push("replay durability assumptions missing");
   if (!failoverModel.complete) failures.push("failover lineage incomplete or provider degradation thresholds undefined");
   if (!observabilityCorrelation.complete) failures.push("observability retention assumptions absent");
+  if (!reconciliationLedger.complete) failures.push("reliability-governance reconciliation incomplete");
+  if (!contradictionDetector.complete) failures.push("failover contradictions unresolved");
+  if (!durabilityContinuity.complete) failures.push("replay durability continuity undefined");
+  if (!blockedSafeCertification.complete) failures.push("blocked-safe certification lacks supporting evidence");
   if (crossStream.checks.some((item) => item.name === "a33_timeout_to_escalation_readiness" && item.status !== "PASS")) {
     failures.push("timeout escalation dependencies undocumented");
   }
@@ -1972,6 +2354,18 @@ function enforceStrictMode(
   }
   if (crossStream.checks.some((item) => item.name === "supervised_execution_dependencies" && item.status !== "PASS")) {
     failures.push("supervised execution dependencies missing");
+  }
+  if (reconciliationLedger.checks.some((item) => item.name === "governance_contradiction_audit" && item.status !== "PASS")) {
+    failures.push("unsupported readiness claims unresolved");
+  }
+  if (contradictionDetector.checks.some((item) => item.name === "provider_degradation_lineage" && item.status !== "PASS")) {
+    failures.push("provider degradation lineage incomplete");
+  }
+  if (contradictionDetector.checks.some((item) => item.name === "observability_dependencies_for_failover" && item.status !== "PASS")) {
+    failures.push("observability dependencies missing");
+  }
+  if (durabilityContinuity.checks.some((item) => item.name === "supervised_replay_continuity_constraints" && item.status !== "PASS")) {
+    failures.push("supervised execution dependencies incomplete");
   }
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
@@ -2099,6 +2493,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-provider-failover-stability-model.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-observability-reliability-correlation.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-observability-reliability-correlation.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-governance-reconciliation-ledger.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-governance-reconciliation-ledger.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-failover-contradiction-detector.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-failover-contradiction-detector.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-continuity-map.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-continuity-map.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-blocked-safe-reliability-certification.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-blocked-safe-reliability-certification.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

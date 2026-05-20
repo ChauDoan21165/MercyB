@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:45:04.789Z",
+  "generatedAt": "2026-05-20T16:51:44.156Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "governance": "cross-stream reliability dependencies",
@@ -152,6 +152,7 @@
     "supervised_execution_dependencies"
   ],
   "complete": false,
+  "schema_completeness": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
   "production_safe": false,
