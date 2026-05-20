@@ -78,6 +78,26 @@
       content="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới."
     />
 
+    <!-- Structured data — site-wide Organization schema. Static and
+         route-invariant (true for every URL) so it is safe in the SPA
+         shell; non-JS crawlers (Google rich results, Zalo, Facebook)
+         read it directly. Per-route Article/Product/Breadcrumb schema +
+         canonical are handled client-side by src/components/seo/SeoMeta.tsx
+         on pages that opt in — do NOT add a static canonical or per-route
+         schema here, the shell cannot know the route and a blanket
+         canonical would point every page at "/". -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MercyBlade",
+        "alternateName": "Mercy Blade",
+        "url": "https://mercyblade.com/",
+        "logo": "https://mercyblade.com/icons/icon-512.png",
+        "description": "Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới nói tiếng Anh. MercyBlade sửa lỗi tiếng Anh của người Việt, giải thích bằng tiếng Việt — AI thầy giáo hiểu cách người Việt học."
+      }
+    </script>
+
     <!-- Theme Loader - Prevents flicker during hydration -->
     <script src="/theme-loader.js"></script>
 
