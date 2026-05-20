@@ -74,7 +74,7 @@ After:
 
 ## Unresolved Instead Of Changed
 
-No linguistic corpus content was normalized because the requested Placement V3 calibration/taxonomy/prompt-library files are missing on `origin/main`. Rewriting or inventing those files would violate the A3 anti-fabrication rule.
+No linguistic corpus content was normalized in the first A3 pass because the requested runtime Placement V3 corpus was not yet present on `origin/main`. Rewriting or inventing those files would have violated the A3 anti-fabrication rule.
 
 ## 2026-05-20T13:08:00-06:00
 
@@ -97,3 +97,35 @@ Before:
 After:
 
 - Superseded inaccurate raw JSON files were removed. Corrected final raw runs show only verified blockers and available-surface findings.
+
+## 2026-05-20T13:22:00-06:00
+
+File changed:
+
+- `scripts/placement-v3/dataQualityAuditCore.ts`
+- `tests/integration/placement-v3-data-quality/data-quality-audits.test.ts`
+- `docs/placement-v3/data-quality/a3-*.md`
+- `docs/placement-v3/data-quality/PR_BODY.md`
+
+Issue fixed:
+
+- After #942 merged, A3 needed to audit the real runtime V3 corpus instead of continuing to report missing-surface blockers.
+
+Rationale:
+
+- The follow-up task explicitly required rebasing #951 onto latest main, rerunning audits against actual merged V3 files, and replacing the old caveat.
+
+Before:
+
+- Required surfaces pointed at absent docs paths and old orchestrator names.
+- Prompt parsing could confuse nested reading/listening question objects with top-level prompt objects.
+- Duplicate-prompt checks compared only generic instruction text.
+
+After:
+
+- Required surfaces point at real runtime V3 prompt, calibration, recommender, rubric, grading, session, and migration files.
+- V3 prompt parsing reads full top-level prompt objects and embedded questions correctly.
+- Duplicate-prompt checks include reading passages and listening scripts.
+- Post-#942 raw runs report 0 corpus-integrity issues, 106 taxonomy findings, 1 recommendation warning, and 11 prompt/rubric warnings.
+
+No linguistic meaning was rewritten.

@@ -1,30 +1,26 @@
 # A3 Prompt/Rubric Gaps
 
-Available prompt/rubric-like source:
+Status after rebase onto post-#942 `origin/main`: V3 prompt files, calibration files, and shared CEFR rubric files are present and audited.
 
-- `src/lib/placement/questions.ts` question prompts and `cefrDescriptor` fields.
-- `supabase/functions/placement-session/types.ts` item contract.
-- `supabase/functions/placement-session/engine/itemBank.ts` item validation contract.
+## Sources Audited
 
-Missing requested source:
+- `src/data/placement/v3/prompts/*.ts`
+- `src/data/placement/v3/calibration/*.ts`
+- `supabase/functions/_shared/cefr/rubric.ts`
+- `supabase/functions/_shared/cefr/types.ts`
+- `supabase/functions/placement-v3-grade-writing/`
+- `supabase/functions/placement-v3-session/`
+- `src/lib/placement/questions.ts`
 
-- `docs/placement-v3/prompt-library/`
-- `supabase/functions/placement-v3-grade-writing/index.ts`
+The docs-only directory `docs/placement-v3/prompt-library/` remains absent, so this audit covers runtime prompt/rubric files.
 
-Automated checks added:
+## Post-#942 Findings
 
-- prompt modality mismatch
-- rubric category mismatch
-- missing scoring dimensions
-- prompt level mismatch
-- impossible rubric expectations
+- V3 reading and listening prompts include embedded questions: 0 missing-question errors after the parser was fixed to read full top-level prompt objects.
+- V3 calibration modality mismatches: 0.
+- V3 calibration expected levels outside prompt acceptable levels: 0.
+- V3 calibration subskill dimensions outside rubric dimensions: 0.
+- Conversation prompts without calibration entries: 6 warnings.
+- Deterministic Vietnamese-L1 placement prompt descriptor warnings: 5 warnings across 3 question records.
 
-These checks are limited to deterministic placement questions until true Placement V3 prompt/rubric files are present.
-
-## Final Corrected Findings
-
-- The three Vietnamese-L1 interference placement questions use descriptors prefixed with `Vietnamese L1 interference:` instead of normal `A1/A2/B1 grammar:` wording.
-- Two of those descriptors do not explicitly include the CEFR label.
-- Three of those descriptors do not include the literal skill label `grammar`.
-
-These are prompt/rubric alignment warnings, not content rewrites. A3 did not change their linguistic meaning.
+The conversation calibration gap is documented rather than fixed because adding calibration samples would create linguistic corpus content. A3 did not rewrite prompt or rubric meaning.

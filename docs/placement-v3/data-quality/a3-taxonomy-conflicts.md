@@ -1,26 +1,23 @@
 # A3 Taxonomy Conflicts
 
-The available taxonomy source on `origin/main` is `src/lib/weakness/weakness-catalog.ts`.
+Status after rebase onto post-#942 `origin/main`: V3 prompt taxonomy IDs are present in `src/data/placement/v3/prompts/index.ts` and were audited against prompt and calibration references.
 
-The dedicated Placement V3 taxonomy directory requested by A3 is missing:
+## Sources Audited
 
-- `docs/placement-v3/taxonomy/`
+- `src/data/placement/v3/prompts/index.ts`
+- `src/data/placement/v3/prompts/*.ts`
+- `src/data/placement/v3/calibration/*.ts`
+- `src/lib/weakness/weakness-catalog.ts`
 
-Automated checks added:
+The docs-only directory `docs/placement-v3/taxonomy/` remains absent, so this audit covers runtime taxonomy data, not a separate documentation taxonomy.
 
-- duplicate taxonomy IDs
-- catalog key vs `entry.tag` mismatch
-- missing descriptions/examples
-- tags not referenced by the deterministic placement question bank
-- missing or broken remediation links
+## Post-#942 Findings
 
-Any conflicts reported in raw runs are limited to this available weakness taxonomy source.
+- Duplicate V3 L1 interference IDs: 0.
+- Undefined V3 L1 IDs referenced by prompts or calibration entries: 0.
+- V3 L1 IDs unused by prompts or calibration entries: 1, `negation-no-not-placement`.
+- Duplicate legacy weakness taxonomy IDs: 0.
+- Missing legacy remediation links: 48 `vi_l1_*` weakness tags have `linkedRoomId: null`.
+- Legacy weakness tags unused by the deterministic placement question bank: 57.
 
-## Final Corrected Findings
-
-- Duplicate taxonomy IDs: 0.
-- Undefined referenced categories from placement questions: 0.
-- Missing remediation links: 48 weakness taxonomy tags have `linkedRoomId: null`.
-- Unused taxonomy categories: 57 weakness taxonomy tags are not referenced by the deterministic placement question bank.
-
-The unused-category count does not mean the tags are invalid; many are detector-only categories. A3 records them because Placement V3 needs an explicit taxonomy-reference policy before production claims.
+The unused-category counts do not prove the taxonomy entries are invalid. They identify categories that need an explicit policy: detector-only, future calibration target, or remediation-backed production category.

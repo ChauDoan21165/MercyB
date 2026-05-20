@@ -76,4 +76,19 @@ Known modality/type names found:
 
 ## Initial Conclusion
 
-The requested A3 scope is blocked for true Placement V3 corpus validation because the named corpus directories and V3 grading/orchestrator files are not present on `origin/main`. A3 can still add integrity tooling, persistence schema, dashboard scaffold, and audits for the available placement/session/taxonomy/recommendation surfaces. All missing Placement V3 surfaces must be reported as blockers, not replaced with invented evidence.
+At the first A3 pass, the requested runtime V3 corpus was not yet present on `origin/main`, so A3 reported missing-surface blockers and added infrastructure without fabricating corpus evidence.
+
+## Post-#942 Rebase Update
+
+After rebasing onto post-#942 `origin/main`, the runtime Placement V3 surfaces are present and audited:
+
+- `src/data/placement/v3/prompts/`
+- `src/data/placement/v3/calibration/`
+- `src/lib/placement/v3/recommender.ts`
+- `src/lib/placement/v3/lessonIndex.ts`
+- `supabase/functions/_shared/cefr/rubric.ts`
+- `supabase/functions/_shared/cefr/types.ts`
+- `supabase/functions/placement-v3-grade-writing/`
+- `supabase/functions/placement-v3-session/`
+
+Updated findings are in the post-#942 report docs and raw runs. The original missing-corpus conclusion is retained here only as historical context for the first audit pass.

@@ -6,34 +6,43 @@ import {
   auditRecommendationGraph,
   auditTaxonomyConsistency,
   buildRun,
+  collectAuditedFiles,
   countIssues,
+  loadKnownV3L1Ids,
+  loadV3CalibrationEntries,
+  loadV3Prompts,
   missingRequiredSurfaceIssues,
 } from "../../../scripts/placement-v3/dataQualityAuditCore";
 
 describe("Placement V3 data-quality audit infrastructure", () => {
-  it("reports missing required Placement V3 corpus surfaces honestly", () => {
+  it("sees the merged Placement V3 corpus surfaces after the #942 rebase", () => {
     const issues = missingRequiredSurfaceIssues("corpus_integrity");
-    expect(issues.length).toBeGreaterThanOrEqual(4);
-    expect(issues.every((issue) => issue.category === "missing_required_surface")).toBe(true);
-    expect(issues.every((issue) => issue.severity === "blocker")).toBe(true);
+    expect(issues).toEqual([]);
+    expect(collectAuditedFiles()).toEqual(
+      expect.arrayContaining([
+        "src/data/placement/v3/prompts/index.ts",
+        "src/data/placement/v3/calibration/index.ts",
+        "src/lib/placement/v3/recommender.ts",
+        "supabase/functions/_shared/cefr/rubric.ts",
+      ]),
+    );
+  });
+
+  it("loads real Placement V3 prompts and calibration entries", () => {
+    expect(loadV3Prompts().length).toBeGreaterThanOrEqual(30);
+    expect(loadV3CalibrationEntries().length).toBeGreaterThanOrEqual(20);
+    expect(loadKnownV3L1Ids().length).toBeGreaterThanOrEqual(20);
   });
 
   it("runs the corpus integrity audit", () => {
     const issues = auditCorpusIntegrity();
-    expect(issues.length).toBeGreaterThan(0);
-    expect(issues.some((issue) => issue.auditKind === "corpus_integrity")).toBe(true);
+    expect(Array.isArray(issues)).toBe(true);
+    expect(issues.every((issue) => issue.auditKind === "corpus_integrity")).toBe(true);
   });
 
-  it("detects unavailable calibration corpus as a blocker", () => {
+  it("does not report the old missing-calibration blocker after #942", () => {
     const issues = auditCorpusIntegrity();
-    expect(issues).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          file: "docs/placement-v3/calibration",
-          severity: "blocker",
-        }),
-      ]),
-    );
+    expect(issues.some((issue) => issue.file === "docs/placement-v3/calibration")).toBe(false);
   });
 
   it("covers duplicate prompt category even when none are present", () => {
@@ -99,10 +108,10 @@ describe("Placement V3 data-quality audit infrastructure", () => {
     const run = buildRun(["corpus_integrity"], auditCorpusIntegrity(), "test command");
     expect(run.runId).toMatch(/^a3-/);
     expect(run.counts.total).toBe(run.issues.length);
-    expect(run.missingRequiredSurfaces).toContain("docs/placement-v3/calibration");
+    expect(run.missingRequiredSurfaces).toEqual([]);
   });
 
-  it("combines all audit categories without fabricating V3 corpus data", () => {
+  it("combines all audit categories against real merged V3 data", () => {
     const issues = [
       ...auditCorpusIntegrity(),
       ...auditTaxonomyConsistency(),
@@ -110,7 +119,8 @@ describe("Placement V3 data-quality audit infrastructure", () => {
       ...auditPromptRubricAlignment(),
     ];
     const counts = countIssues(issues);
-    expect(counts.blockers).toBeGreaterThan(0);
-    expect(issues.some((issue) => issue.file === "docs/placement-v3/prompt-library")).toBe(true);
+    expect(counts.blockers).toBe(0);
+    expect(issues.some((issue) => issue.file === "docs/placement-v3/prompt-library")).toBe(false);
+    expect(counts.total).toBeGreaterThan(0);
   });
 });
