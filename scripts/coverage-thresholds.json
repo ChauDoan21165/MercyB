@@ -1,0 +1,27 @@
+{
+  "_comment": [
+    "Coverage thresholds enforced by scripts/check-coverage-threshold.mjs.",
+    "Per PRINCIPLES.md P19 (coverage ratchet): values in this file ONLY MOVE UP.",
+    "PRs that lower a threshold need explicit justification in the PR body.",
+    "Set 2026-05-20 by A12 to current baseline minus ~2pt buffer (proxy",
+    "between v8 coverage 'lines.pct' and the istanbul-style statements counter",
+    "I measured from). Re-baselined after a few runs once we trust the metric."
+  ],
+  "global": {
+    "lines": 26
+  },
+  "folders": {
+    "src/billing": {
+      "lines": 60
+    },
+    "src/components/room": {
+      "lines": 19
+    },
+    "src/lib/teacher-mercy": {
+      "lines": 58
+    },
+    "supabase/functions/_billing": {
+      "lines": 35
+    }
+  }
+}

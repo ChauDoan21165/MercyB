@@ -202,9 +202,31 @@ sitting idle while work exists is wasted capacity. Planner-Claude's responsibili
 the moment a report arrives, the next brief ships in the same message.
 
 
+## 19. COVERAGE RATCHET — THRESHOLDS ONLY MOVE UP
+
+Coverage thresholds in `scripts/coverage-thresholds.json` only move UP. A PR
+that lowers a threshold needs an **explicit justification in the PR body** (e.g.
+"deleting `src/foo/dead.ts` removes 90 well-tested lines and drops the folder
+percentage even though the change is correct"). Lowering without justification
+is a regression; the gate exists to catch silent coverage erosion.
+
+The enforcement gate is `scripts/check-coverage-threshold.mjs`, run in CI as
+the "Coverage threshold ratchet" step inside the "Build and Test" job (NOT a
+new required check until the ratchet has been stable for a week — see #876
+for the related "boxed-headline" P18 add).
+
+How to ratchet up: run `npm run test:coverage` locally; if the new actual
+percentage is higher than the threshold for a folder, raise the threshold in
+`scripts/coverage-thresholds.json` toward (but not above) the new actual.
+Update in the same PR as the test additions that moved the number.
+
+Numbering note: P18 (#876, in flight) is reserved for "boxed-headline required
+on every report". This entry is P19 by adoption order.
+
+
 ## Last updated
 
-2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-20 — Added P19 (coverage ratchet — thresholds only move UP, per A12 PR). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
