@@ -1,0 +1,38 @@
+PR #936
+branch=origin/pr/936
+merge_base=a360783cafb35941efad68ad5fe548da30633293
+origin_main=de6d31c2825df2c70bf0669e251007e55129710b
+head=942a495ba9ae572c5afd3629c2cba96ef6aee0cf
+--- git merge-tree output ---
+added in both
+  our    100644 7604ecec0d292d07b64fbf325dbc00e7156a5fe1 src/lib/placement/v3/recommender.ts
+  their  100644 3191658495db2ad0ae2708def66f3e546ec16d28 src/lib/placement/v3/recommender.ts
+@@ -1,4 +1,8 @@
++<<<<<<< .our
+ import type { CEFRAssessment } from "../../../types/placement-v3";
++=======
++import type { CEFRAssessment } from "@/types/placement-v3";
++>>>>>>> .their
+ import { LESSON_INDEX } from "./lessonIndex";
+ import { CEFR_LEVELS, type CefrLevel, type IndexedLesson, type Recommendation, type RecommendationContext } from "./recommenderTypes";
+ 
+added in both
+  our    100644 d6feba87771923d90824d8d53140b3693a40861f src/lib/placement/v3/recommenderTypes.ts
+  their  100644 b85fcebf1c01ddddde1e934a50ea4cb0f0144e6b src/lib/placement/v3/recommenderTypes.ts
+@@ -1,4 +1,8 @@
++<<<<<<< .our
+ import type { CEFRAssessment } from "../../../types/placement-v3";
++=======
++import type { CEFRAssessment } from "@/types/placement-v3";
++>>>>>>> .their
+ 
+ export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
+ 
+@@ -49,3 +53,7 @@
+     avoidExamPrep?: boolean;
+   };
+ };
++<<<<<<< .our
++=======
++
++>>>>>>> .their

@@ -1,0 +1,47 @@
+PR #940 merge simulation
+Preparing worktree (detached HEAD 1f6833a03)
+Updating files:  52% (3832/7284)Updating files:  53% (3861/7284)Updating files:  54% (3934/7284)Updating files:  55% (4007/7284)Updating files:  56% (4080/7284)Updating files:  57% (4152/7284)Updating files:  58% (4225/7284)Updating files:  59% (4298/7284)Updating files:  60% (4371/7284)Updating files:  61% (4444/7284)Updating files:  62% (4517/7284)Updating files:  62% (4536/7284)Updating files:  63% (4589/7284)Updating files:  64% (4662/7284)Updating files:  65% (4735/7284)Updating files:  66% (4808/7284)Updating files:  67% (4881/7284)Updating files:  68% (4954/7284)Updating files:  69% (5026/7284)Updating files:  70% (5099/7284)Updating files:  71% (5172/7284)Updating files:  72% (5245/7284)Updating files:  73% (5318/7284)Updating files:  74% (5391/7284)Updating files:  75% (5463/7284)Updating files:  76% (5536/7284)Updating files:  77% (5609/7284)Updating files:  77% (5666/7284)Updating files:  78% (5682/7284)Updating files:  79% (5755/7284)Updating files:  80% (5828/7284)Updating files:  81% (5901/7284)Updating files:  82% (5973/7284)Updating files:  83% (6046/7284)Updating files:  84% (6119/7284)Updating files:  85% (6192/7284)Updating files:  86% (6265/7284)Updating files:  87% (6338/7284)Updating files:  88% (6410/7284)Updating files:  89% (6483/7284)Updating files:  90% (6556/7284)Updating files:  91% (6629/7284)Updating files:  92% (6702/7284)Updating files:  93% (6775/7284)Updating files:  94% (6847/7284)Updating files:  95% (6920/7284)Updating files:  96% (6993/7284)Updating files:  97% (7066/7284)Updating files:  98% (7139/7284)Updating files:  99% (7212/7284)Updating files: 100% (7284/7284)Updating files: 100% (7284/7284), done.
+HEAD is now at 1f6833a03 feat(placement-v3): add Android mic permission audit (#941)
+Automatic merge went well; stopped before committing as requested
+merge_exit=0
+## HEAD (no branch)
+A  docs/placement-v3-ui-design-decisions.md
+A  docs/placement-v3-ui-polish-iterations.md
+A  src/components/placement/v3/AbandonConfirmModal.tsx
+A  src/components/placement/v3/BackButton.tsx
+A  src/components/placement/v3/BilingualLabel.tsx
+A  src/components/placement/v3/ConversationTaskCard.tsx
+A  src/components/placement/v3/GapAnalysisSection.tsx
+A  src/components/placement/v3/GenericTaskCard.tsx
+A  src/components/placement/v3/L1FlagsDisplay.tsx
+A  src/components/placement/v3/ListeningTaskCard.tsx
+A  src/components/placement/v3/LoadingPlaceholder.tsx
+A  src/components/placement/v3/ProgressStrip.tsx
+A  src/components/placement/v3/ReadingTaskCard.tsx
+A  src/components/placement/v3/RecommendedLessonsList.tsx
+A  src/components/placement/v3/ResultsProfile.tsx
+A  src/components/placement/v3/SessionExpiredModal.tsx
+A  src/components/placement/v3/SkipForNowModal.tsx
+A  src/components/placement/v3/SpeakingTaskCard.tsx
+A  src/components/placement/v3/WritingTaskCard.tsx
+A  src/components/placement/v3/__tests__/taskCards.test.tsx
+A  src/components/placement/v3/index.ts
+A  src/hooks/placement/v3/__tests__/usePlacementProgress.test.ts
+A  src/hooks/placement/v3/index.ts
+A  src/hooks/placement/v3/usePlacementAudioCapture.ts
+A  src/hooks/placement/v3/usePlacementProgress.ts
+A  src/hooks/placement/v3/usePlacementResume.ts
+A  src/hooks/placement/v3/usePlacementSessionV3.ts
+A  src/hooks/placement/v3/usePlacementSubmit.ts
+M  src/lib/featureFlags.ts
+A  src/lib/placement/v3/clientStub.ts
+A  src/lib/placement/v3/types.ts
+A  src/pages/placement/v3/ResultsPage.tsx
+A  src/pages/placement/v3/ResumePage.tsx
+A  src/pages/placement/v3/SkipConfirmPage.tsx
+A  src/pages/placement/v3/TestPage.tsx
+A  src/pages/placement/v3/WelcomePage.tsx
+A  src/pages/placement/v3/WhoForPage.tsx
+A  src/pages/placement/v3/index.ts
+M  src/router/AppRouter.tsx
+A  tests/e2e/placement-v3.spec.ts

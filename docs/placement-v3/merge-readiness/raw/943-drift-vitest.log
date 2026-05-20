@@ -1,0 +1,11 @@
+
+ RUN  v3.2.4 /private/tmp/a1-pr943
+
+ ✓ tests/integration/placement-v3-drift-detection/drift-detection.test.ts (12 tests) 3ms
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  06:59:15
+   Duration  1.26s (transform 66ms, setup 80ms, collect 44ms, tests 3ms, environment 541ms, prepare 60ms)
+
+exit=0

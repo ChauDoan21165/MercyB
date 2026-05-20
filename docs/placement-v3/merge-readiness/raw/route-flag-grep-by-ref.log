@@ -1,0 +1,104 @@
+--- origin/pr/942 flags/routes
+18:function readEnvBool(key: string, defaultValue: boolean): boolean {
+21:      key === "VITE_PLACEMENT_TEST_ENABLED"
+22:        ? import.meta.env.VITE_PLACEMENT_TEST_ENABLED
+23:        : key === "VITE_PLACEMENT_V3_UI_ENABLED"
+24:          ? import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED
+60:  PLACEMENT_TEST_ENABLED: readEnvBool("VITE_PLACEMENT_TEST_ENABLED", false),
+67:  PLACEMENT_V3_UI_ENABLED: readEnvBool("VITE_PLACEMENT_V3_UI_ENABLED", false),
+83:  SERVER_STREAKS_ENABLED: readEnvBool("VITE_SERVER_STREAKS_ENABLED", false),
+93:  SPEECH_PERSISTENCE_ENABLED: readEnvBool("VITE_SPEECH_PERSISTENCE_ENABLED", false),
+86:const PlacementV2Page = lazyWithRetry(() => import("@/pages/placement/v2/PlacementV2Page"));
+87:const PlacementV3WelcomePage = lazyWithRetry(() => import("@/pages/placement/v3/WelcomePage"));
+88:const PlacementV3WhoForPage  = lazyWithRetry(() => import("@/pages/placement/v3/WhoForPage"));
+89:const PlacementV3TestPage    = lazyWithRetry(() => import("@/pages/placement/v3/TestPage"));
+90:const PlacementV3ResultsPage = lazyWithRetry(() => import("@/pages/placement/v3/ResultsPage"));
+91:const PlacementV3ResumePage  = lazyWithRetry(() => import("@/pages/placement/v3/ResumePage"));
+92:const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement/v3/SkipConfirmPage"));
+444:function PlacementV3Gate({ children }: { children: React.ReactNode }) {
+803:              Flag OFF → every /placement* path still redirects to home
+808:              sub-paths into /placement. Requires auth when enabled
+810:          <Route path="/placement"
+813:                <PlacementV3Gate>
+815:                </PlacementV3Gate>
+825:          <Route path="/placement/who"
+828:                <PlacementV3Gate>
+830:                </PlacementV3Gate>
+832:                <Navigate to="/placement" replace />
+838:          <Route path="/placement/test"
+841:                <Navigate to="/placement" replace />
+847:          <Route path="/placement/results"
+850:                <Navigate to="/placement" replace />
+856:          <Route path="/placement/test/:sessionId"
+858:              <PlacementV3Gate>
+860:              </PlacementV3Gate>
+863:          <Route path="/placement/results/:sessionId"
+865:              <PlacementV3Gate>
+867:              </PlacementV3Gate>
+870:          <Route path="/placement/resume"
+872:              <PlacementV3Gate>
+874:              </PlacementV3Gate>
+877:          <Route path="/placement/skip"
+879:              <PlacementV3Gate>
+881:              </PlacementV3Gate>
+--- origin/pr/943 flags/routes
+18:function readEnvBool(key: string, defaultValue: boolean): boolean {
+21:      key === "VITE_PLACEMENT_TEST_ENABLED"
+22:        ? import.meta.env.VITE_PLACEMENT_TEST_ENABLED
+23:        : key === "VITE_PLACEMENT_V3_UI_ENABLED"
+24:          ? import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED
+60:  PLACEMENT_TEST_ENABLED: readEnvBool("VITE_PLACEMENT_TEST_ENABLED", false),
+67:  PLACEMENT_V3_UI_ENABLED: readEnvBool("VITE_PLACEMENT_V3_UI_ENABLED", false),
+83:  SERVER_STREAKS_ENABLED: readEnvBool("VITE_SERVER_STREAKS_ENABLED", false),
+93:  SPEECH_PERSISTENCE_ENABLED: readEnvBool("VITE_SPEECH_PERSISTENCE_ENABLED", false),
+86:const PlacementV2Page = lazyWithRetry(() => import("@/pages/placement/v2/PlacementV2Page"));
+87:const PlacementV3WelcomePage = lazyWithRetry(() => import("@/pages/placement/v3/WelcomePage"));
+88:const PlacementV3WhoForPage  = lazyWithRetry(() => import("@/pages/placement/v3/WhoForPage"));
+89:const PlacementV3TestPage    = lazyWithRetry(() => import("@/pages/placement/v3/TestPage"));
+90:const PlacementV3ResultsPage = lazyWithRetry(() => import("@/pages/placement/v3/ResultsPage"));
+91:const PlacementV3ResumePage  = lazyWithRetry(() => import("@/pages/placement/v3/ResumePage"));
+92:const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement/v3/SkipConfirmPage"));
+285:const PlacementDriftDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementDriftDashboard"));
+445:function PlacementV3Gate({ children }: { children: React.ReactNode }) {
+804:              Flag OFF → every /placement* path still redirects to home
+809:              sub-paths into /placement. Requires auth when enabled
+811:          <Route path="/placement"
+814:                <PlacementV3Gate>
+816:                </PlacementV3Gate>
+826:          <Route path="/placement/who"
+829:                <PlacementV3Gate>
+831:                </PlacementV3Gate>
+833:                <Navigate to="/placement" replace />
+839:          <Route path="/placement/test"
+842:                <Navigate to="/placement" replace />
+848:          <Route path="/placement/results"
+851:                <Navigate to="/placement" replace />
+857:          <Route path="/placement/test/:sessionId"
+859:              <PlacementV3Gate>
+861:              </PlacementV3Gate>
+864:          <Route path="/placement/results/:sessionId"
+866:              <PlacementV3Gate>
+868:              </PlacementV3Gate>
+871:          <Route path="/placement/resume"
+873:              <PlacementV3Gate>
+875:              </PlacementV3Gate>
+878:          <Route path="/placement/skip"
+880:              <PlacementV3Gate>
+882:              </PlacementV3Gate>
+1677:              <Route path="placement-drift"      element={<LazyPage><PlacementDriftDashboard /></LazyPage>} />
+--- origin/pr/944 flags/routes
+18:function readEnvBool(key: string, defaultValue: boolean): boolean {
+55:  PLACEMENT_TEST_ENABLED: false,
+71:  SERVER_STREAKS_ENABLED: readEnvBool("VITE_SERVER_STREAKS_ENABLED", false),
+81:  SPEECH_PERSISTENCE_ENABLED: readEnvBool("VITE_SPEECH_PERSISTENCE_ENABLED", false),
+80:const PlacementWelcomePage = lazyWithRetry(() => import("@/pages/placement/WelcomePage"));
+81:const PlacementWhoForPage  = lazyWithRetry(() => import("@/pages/placement/WhoForPage"));
+82:const PlacementTestPage    = lazyWithRetry(() => import("@/pages/placement/TestPage"));
+83:const PlacementResultsPage = lazyWithRetry(() => import("@/pages/placement/ResultsPage"));
+276:const PlacementBenchmarkDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementBenchmarkDashboard"));
+770:              disabled, every /placement* path redirects to home BEFORE the
+777:          <Route path="/placement"
+788:          <Route path="/placement/who"
+799:          <Route path="/placement/test"
+810:          <Route path="/placement/results"
+1613:              <Route path="placement-benchmarks"  element={<LazyPage><PlacementBenchmarkDashboard /></LazyPage>} />

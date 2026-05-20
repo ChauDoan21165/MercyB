@@ -1,0 +1,225 @@
+PR #938
+branch=origin/pr/938
+merge_base=d30bad2a934641f1c0db8b1ed768165d9553330b
+origin_main=de6d31c2825df2c70bf0669e251007e55129710b
+head=6ee0120350530fcd5bac351818acf0f840c5753b
+--- git merge-tree output ---
+added in both
+  our    100644 3642599b2e0327c1a01eda886ddae6a96cc17917 supabase/functions/placement-v3-session/graderClient.ts
+  their  100644 b3a463f37d1448c5c714e7b4bff7a302b3c4319c supabase/functions/placement-v3-session/graderClient.ts
+@@ -8,7 +8,10 @@
+ 
+ export interface WritingGraderClient {
+   gradeWriting(input: GraderInput): Promise<GraderResult>;
++<<<<<<< .our
+   gradeConversation?: (input: GraderInput) => Promise<GraderResult>;
++=======
++>>>>>>> .their
+ }
+ 
+ /**
+@@ -103,6 +106,7 @@
+         clearTimeout(timeout);
+       }
+     },
++<<<<<<< .our
+     async gradeConversation(input) {
+       const controller = new AbortController();
+       const timeout = setTimeout(
+@@ -163,6 +167,8 @@
+         clearTimeout(timeout);
+       }
+     },
++=======
++>>>>>>> .their
+   };
+ }
+ 
+@@ -173,9 +179,12 @@
+   if (input.modality === "writing" && writingClient) {
+     return writingClient.gradeWriting(input);
+   }
++<<<<<<< .our
+   if (input.modality === "conversation" && writingClient?.gradeConversation) {
+     return writingClient.gradeConversation(input);
+   }
++=======
++>>>>>>> .their
+   return stubGrade(input);
+ }
+ 
+@@ -211,6 +220,7 @@
+   const words = text ? text.split(/\s+/).length : 0;
+   const level = words < 8 ? "A1" : words < 25 ? "A2" : words < 60 ? "B1" : words < 120 ? "B2" : "C1";
+   const hasVietnamese = /[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(text);
++<<<<<<< .our
+   const promptText = input.prompt.promptText.toLowerCase();
+   const responseText = text.toLowerCase();
+   const copiedPrompt = text.length > 20 &&
+@@ -218,6 +228,9 @@
+       responseText.includes(promptText) ||
+       looksLikeInstructionEcho(responseText) ||
+       lexicalOverlap(promptText, responseText) >= 0.75);
++=======
++  const copiedPrompt = text.length > 20 && input.prompt.promptText.toLowerCase().includes(text.toLowerCase());
++>>>>>>> .their
+   return {
+     overallLevel: copiedPrompt ? "A1" : level,
+     confidence: copiedPrompt ? 0.3 : Math.min(0.78, 0.45 + words / 180),
+@@ -234,6 +247,7 @@
+   };
+ }
+ 
++<<<<<<< .our
+ function looksLikeInstructionEcho(text: string): boolean {
+   return /\bwrite in english\b/.test(text) &&
+     (/\b(a1|a2|b1|b2|c1|c2)\b/.test(text) || /\bdaily routine\b/.test(text));
+@@ -250,6 +264,8 @@
+   return shared / Math.min(left.size, right.size);
+ }
+ 
++=======
++>>>>>>> .their
+ function normalizeAssessment(raw: unknown): CEFRAssessment | null {
+   if (!raw || typeof raw !== "object") return null;
+   const obj = raw as Partial<CEFRAssessment> & {
+@@ -300,6 +316,7 @@
+   };
+ }
+ 
++<<<<<<< .our
+ function normalizeConversationAssessment(raw: unknown): CEFRAssessment | null {
+   if (!raw || typeof raw !== "object") return null;
+   const obj = raw as {
+@@ -357,6 +374,8 @@
+   };
+ }
+ 
++=======
++>>>>>>> .their
+ function normalizeSubskills(
+   subskills: Record<string, { level?: unknown; confidence?: unknown; notes?: unknown }> | undefined,
+ ): CEFRAssessment["criteria"] {
+added in both
+  our    100644 4de5db9b13618adcfb9abc57dd0ff39e8cd285a2 supabase/functions/placement-v3-session/modality.ts
+  their  100644 f79c5c40d0d73d225c6fbb791cedeb8c5b101f2f supabase/functions/placement-v3-session/modality.ts
+@@ -10,13 +10,17 @@
+   type PromptTask,
+   type SessionMetadata,
+ } from "./types.ts";
++<<<<<<< .our
+ import { PLACEMENT_V3_PROMPTS } from "../../../src/data/placement/v3/prompts/index.ts";
++=======
++>>>>>>> .their
+ 
+ export const MIN_TASKS_PER_MODALITY = 1;
+ export const MAX_TASKS_PER_MODALITY = 3;
+ export const CONFIDENCE_STOP_THRESHOLD = 0.72;
+ export const MAX_TOTAL_TASKS = 11;
+ 
++<<<<<<< .our
+ export const PROMPTS: PromptTask[] = PLACEMENT_V3_PROMPTS.map((prompt) => ({
+   id: prompt.id,
+   modality: prompt.modality,
+@@ -40,6 +44,43 @@
+     questions: "questions" in prompt ? prompt.questions : undefined,
+   },
+ }));
++=======
++// Temporary A25 stub. The real prompt library will live under
++// src/data/placement/v3/prompts/ once that PR lands. Keep ids stable so
++// persisted response rows remain debuggable.
++export const PROMPTS: PromptTask[] = MODALITY_ORDER.flatMap((modality) =>
++  CEFR_ORDER.flatMap((cefr) =>
++    [1, 2, 3].map((n) => ({
++      id: `stub_${modality}_${cefr}_${n}`,
++      modality,
++      cefr,
++      expectedResponse: modality === "speaking" ? "audio" : "text",
++      promptText: promptTextFor(modality, cefr, n),
++      metadata: { source: "placement-v3-session-stub" },
++    } satisfies PromptTask)),
++  )
++);
++
++function promptTextFor(
++  modality: PlacementV3Modality,
++  cefr: CEFRLevel,
++  n: number,
++): string {
++  const stem: Record<PlacementV3Modality, string> = {
++    writing: "Write in English",
++    speaking: "Speak in English",
++    reading: "Read the short situation and answer in English",
++    listening: "Listen to the short situation and answer in English",
++    conversation: "Reply naturally in English",
++  };
++  const topics = [
++    "about your daily routine and one small problem you solved.",
++    "about studying English as a Vietnamese learner.",
++    "about a work or school decision and the reason behind it.",
++  ];
++  return `${stem[modality]} at ${cefr}: ${topics[(n - 1) % topics.length]}`;
++}
++>>>>>>> .their
+ 
+ export function cefrToNumber(level: CEFRLevel): number {
+   return Math.max(0, CEFR_ORDER.indexOf(level));
+added in both
+  our    100644 dec55038c2c3c2ceb421057a24515dd561cafa42 supabase/functions/placement-v3-session/persistence.ts
+  their  100644 7557cc9a2a6bce924b83e4d7b535a0fe619db982 supabase/functions/placement-v3-session/persistence.ts
+@@ -1,5 +1,8 @@
+ import {
++<<<<<<< .our
+   CEFR_ORDER,
++=======
++>>>>>>> .their
+   type LanguagePair,
+   type OrchestratorDeps,
+   type PersistSessionInput,
+@@ -7,8 +10,13 @@
+   type PlacementV3Response,
+   type PlacementV3Session,
+   type PromptTask,
++<<<<<<< .our
+   type Recommendation,
+ } from "./types.ts";
++=======
++} from "./types.ts";
++import { recommendLessonsStub } from "./scoring.ts";
++>>>>>>> .their
+ 
+ type QueryBuilder = {
+   select: (columns?: string, options?: unknown) => QueryBuilder;
+@@ -127,6 +135,7 @@
+ }
+ 
+ export async function recommendLessons(profile: PlacementV3Profile) {
++<<<<<<< .our
+   const imported = await tryAppRecommender(profile);
+   if (imported.length) return imported;
+   return recommendLessonsFromProfile(profile);
+@@ -201,6 +210,11 @@
+       priority: 0.72,
+     },
+   ];
++=======
++  // Temporary A26 stub. Replace with src/lib/placement/v3/recommender.ts
++  // when that PR lands and is importable from edge-function code.
++  return recommendLessonsStub(profile);
++>>>>>>> .their
+ }
+ 
+ function sessionInsertRow(input: PersistSessionInput) {
+@@ -293,3 +307,7 @@
+     updated_at: input.now,
+   };
+ }
++<<<<<<< .our
++=======
++
++>>>>>>> .their
+changed in both
+  base   100644 a2239f5534035e1ad95ef4dc1fcc961825df0fbd tsconfig.functions.json
+  our    100644 fb28360b9f677a82573effd5ffe3e13c2dae62c2 tsconfig.functions.json
+  their  100644 b86b745d1e988df4dd7d9d9f5e166d27d39ba5e6 tsconfig.functions.json

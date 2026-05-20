@@ -1,0 +1,81 @@
+Preparing worktree (detached HEAD 7fd5f4cbb)
+Updating files:  61% (4530/7419)Updating files:  62% (4600/7419)Updating files:  63% (4674/7419)Updating files:  64% (4749/7419)Updating files:  65% (4823/7419)Updating files:  66% (4897/7419)Updating files:  67% (4971/7419)Updating files:  68% (5045/7419)Updating files:  69% (5120/7419)Updating files:  70% (5194/7419)Updating files:  71% (5268/7419)Updating files:  72% (5342/7419)Updating files:  73% (5416/7419)Updating files:  74% (5491/7419)Updating files:  75% (5565/7419)Updating files:  76% (5639/7419)Updating files:  77% (5713/7419)Updating files:  78% (5787/7419)Updating files:  79% (5862/7419)Updating files:  80% (5936/7419)Updating files:  81% (6010/7419)Updating files:  82% (6084/7419)Updating files:  83% (6158/7419)Updating files:  84% (6232/7419)Updating files:  85% (6307/7419)Updating files:  86% (6381/7419)Updating files:  87% (6455/7419)Updating files:  88% (6529/7419)Updating files:  89% (6603/7419)Updating files:  90% (6678/7419)Updating files:  91% (6752/7419)Updating files:  92% (6826/7419)Updating files:  93% (6900/7419)Updating files:  94% (6974/7419)Updating files:  95% (7049/7419)Updating files:  96% (7123/7419)Updating files:  97% (7197/7419)Updating files:  98% (7271/7419)Updating files:  99% (7345/7419)Updating files: 100% (7419/7419)Updating files: 100% (7419/7419), done.
+HEAD is now at 7fd5f4cbb fix(ci): sync package lock for placement integration
+Automatic merge went well; stopped before committing as requested
+merge_exit=0
+## HEAD (no branch)
+A  docs/placement-v3/adaptive-generation/PR_BODY.md
+A  docs/placement-v3/adaptive-generation/a35-blockers.md
+A  docs/placement-v3/adaptive-generation/a35-initial-findings.md
+A  docs/placement-v3/adaptive-generation/methodology.md
+A  docs/placement-v3/adaptive-generation/production-readiness-report.md
+A  docs/placement-v3/adaptive-generation/raw-runs/.gitkeep
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-01.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-02.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-03.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-04.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-05.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-06.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-07.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-08.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-09.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-10.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-11.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-12.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-13.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-14.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-15.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-16.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-17.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-18.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-19.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-20.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-21.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-22.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-23.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-24.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-25.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-26.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-27.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-28.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-29.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-cycle1-30.json
+A  docs/placement-v3/adaptive-generation/raw-runs/baseline-01-summary.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-01.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-02.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-03.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-04.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-05.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-06.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-07.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-08.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-09.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-10.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-11.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-12.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-13.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-14.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-15.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-16.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-17.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-18.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-19.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-20.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-21.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-22.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-23.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-24.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-25.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-26.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-27.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-28.json
+A  docs/placement-v3/adaptive-generation/raw-runs/tuned-01-cycle1-29.json
+A  docs/placement-v3/adaptive-generation/rejection-analysis.md
+A  scripts/placement-v3/run-adaptive-item-gauntlet.ts
+A  src/types/placementAdaptiveItems.ts
+A  supabase/functions/_shared/placementAdaptivePrompts.ts
+A  supabase/functions/placement-v3-generate-item/index.ts
+A  supabase/functions/placement-v3-validate-item/index.ts
+A  supabase/migrations/20260520112524_placement_v3_adaptive_items.sql
+A  tests/integration/placement-v3-adaptive-items.test.ts
+A  tests/unit/placementAdaptiveItems.test.ts

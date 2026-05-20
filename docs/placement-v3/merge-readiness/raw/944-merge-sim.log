@@ -1,0 +1,47 @@
+PR #944 merge simulation
+Preparing worktree (detached HEAD de6d31c28)
+Updating files:  59% (4428/7419)Updating files:  60% (4452/7419)Updating files:  61% (4526/7419)Updating files:  62% (4600/7419)Updating files:  63% (4674/7419)Updating files:  64% (4749/7419)Updating files:  64% (4798/7419)Updating files:  65% (4823/7419)Updating files:  66% (4897/7419)Updating files:  67% (4971/7419)Updating files:  68% (5045/7419)Updating files:  69% (5120/7419)Updating files:  70% (5194/7419)Updating files:  71% (5268/7419)Updating files:  72% (5342/7419)Updating files:  73% (5416/7419)Updating files:  74% (5491/7419)Updating files:  75% (5565/7419)Updating files:  76% (5639/7419)Updating files:  77% (5713/7419)Updating files:  78% (5787/7419)Updating files:  79% (5862/7419)Updating files:  80% (5936/7419)Updating files:  81% (6010/7419)Updating files:  82% (6084/7419)Updating files:  83% (6158/7419)Updating files:  84% (6232/7419)Updating files:  85% (6307/7419)Updating files:  86% (6381/7419)Updating files:  87% (6455/7419)Updating files:  88% (6529/7419)Updating files:  89% (6603/7419)Updating files:  90% (6678/7419)Updating files:  91% (6752/7419)Updating files:  92% (6826/7419)Updating files:  93% (6900/7419)Updating files:  94% (6974/7419)Updating files:  95% (7049/7419)Updating files:  96% (7123/7419)Updating files:  97% (7197/7419)Updating files:  98% (7271/7419)Updating files:  99% (7345/7419)Updating files: 100% (7419/7419)Updating files: 100% (7419/7419), done.
+HEAD is now at de6d31c28 feat(placement-v3): end-to-end integration + vertical E2E (A33) (#942)
+Auto-merging src/router/AppRouter.tsx
+Auto-merging supabase/functions/placement-v3-session/graderClient.ts
+CONFLICT (add/add): Merge conflict in supabase/functions/placement-v3-session/graderClient.ts
+Auto-merging supabase/functions/placement-v3-session/modality.ts
+CONFLICT (add/add): Merge conflict in supabase/functions/placement-v3-session/modality.ts
+Auto-merging supabase/functions/placement-v3-session/persistence.ts
+CONFLICT (add/add): Merge conflict in supabase/functions/placement-v3-session/persistence.ts
+Auto-merging tsconfig.functions.json
+Automatic merge failed; fix conflicts and then commit the result.
+merge_exit=1
+## HEAD (no branch)
+A  docs/placement-v3/benchmarking/a33-initial-findings.md
+A  docs/placement-v3/benchmarking/methodology.md
+A  docs/placement-v3/benchmarking/optimization-log.md
+A  docs/placement-v3/benchmarking/pr-body-draft.md
+A  docs/placement-v3/benchmarking/production-readiness-report.md
+A  docs/placement-v3/benchmarking/raw-runs/README.md
+A  docs/placement-v3/benchmarking/screenshots/README.md
+A  scripts/placement-v3/run-benchmarks.ts
+A  scripts/placement-v3/scenarios/advanced-c1.ts
+A  scripts/placement-v3/scenarios/beginner-a1.ts
+A  scripts/placement-v3/scenarios/index.ts
+A  scripts/placement-v3/scenarios/intermediate-b1.ts
+A  scripts/placement-v3/scenarios/mercy-conversational.ts
+A  scripts/placement-v3/scenarios/provider-failover.ts
+A  scripts/placement-v3/scenarios/speaking-heavy.ts
+A  scripts/placement-v3/scenarios/types.ts
+A  src/lib/placementBenchmark/aggregateMetrics.ts
+A  src/lib/placementBenchmark/costEstimator.ts
+A  src/lib/placementBenchmark/latencyAnalyzer.ts
+A  src/lib/placementBenchmark/providerAnalysis.ts
+A  src/lib/placementBenchmark/regressionDetector.ts
+A  src/lib/placementBenchmark/types.ts
+M  src/pages/admin/AdminDashboard.tsx
+A  src/pages/admin/PlacementBenchmarkDashboard.tsx
+M  src/router/AppRouter.tsx
+A  supabase/functions/placement-v3-benchmark-report/index.ts
+AA supabase/functions/placement-v3-session/graderClient.ts
+AA supabase/functions/placement-v3-session/modality.ts
+AA supabase/functions/placement-v3-session/persistence.ts
+A  supabase/migrations/20260520111844_placement_v3_benchmarks.sql
+A  tests/e2e/placement-benchmark-dashboard.spec.ts
+A  tests/integration/placement-v3-benchmarking/benchmarking.test.ts
