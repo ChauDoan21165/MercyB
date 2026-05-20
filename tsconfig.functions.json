@@ -38,7 +38,7 @@
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": ["ES2022"], // server engine: NO "DOM" — no browser globals
+    "lib": ["ES2022", "DOM"], // edge functions use Fetch/Request/Response globals
     "types": [], // no @types/node etc.; pure ES + our own types only
     "strict": true,
     "noUnusedLocals": true,
@@ -59,27 +59,28 @@
   // imports (_shared/* → esm.sh, */index.ts → deno.land) that Node tsc
   // cannot resolve; resolution is a `deno check` gate OR a _shared
   // refactor off URL imports — a separate concern, Chau's call then.
-  "include": ["supabase/functions/placement-session/**/*.ts"],
+  "include": [
+    "supabase/functions/placement-session/**/*.ts",
+    "supabase/functions/placement-v3-session/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     // Deno HTTP entrypoint — `https://deno.land/std…/server.ts` import is
     // unresolvable by Node tsc. Wiring lives in core.ts (vitest-tested).
     "supabase/functions/placement-session/index.ts",
-    // core.ts (PR 9) is the HTTP-glue orchestrator: it reaches Fetch web
-    // globals (`Request`/`Response`/`URL`/`req.json()`), which this
-    // config's deliberately DOM-FREE `lib: ["ES2022"]` (the guard that
-    // keeps the pure engine off browser globals) structurally cannot
-    // type under Node tsc — same class of unresolvable as index.ts's
-    // Deno-URL import. Its gate is vitest goldens (the tsconfig header's
-    // "logic lives in core.ts (vitest-tested)" contract) + the Deno-
-    // aware `deno check` allowlist (the create-billing-portal-session
-    // core.ts precedent), NOT this Node-tsc gate. The PURE,
+    // core.ts (PR 9) is the HTTP-glue orchestrator. Its gate is vitest
+    // goldens (the tsconfig header's "logic lives in core.ts
+    // (vitest-tested)" contract) + the Deno-aware `deno check` allowlist
+    // (the create-billing-portal-session core.ts precedent), NOT this
+    // Node-tsc gate. The PURE,
     // number-sensitive subtree this config exists for — engine/*.ts,
     // types.ts, config.ts (incl. PR 9's CEFR_TO_ROOM_SERVER, itself
     // anti-drift-tested) — stays fully gated, unchanged.
     "supabase/functions/placement-session/core.ts",
+    "supabase/functions/placement-v3-session/index.ts",
     // vitest owns test files (they import "vitest"); vitest transpiles
     // them itself. This config gates PRODUCTION engine code.
-    "supabase/functions/placement-session/**/__tests__/**"
+    "supabase/functions/placement-session/**/__tests__/**",
+    "supabase/functions/placement-v3-session/**/__tests__/**"
   ]
 }
