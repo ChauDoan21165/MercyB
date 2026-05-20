@@ -1,0 +1,199 @@
+{
+  "generatedAt": "2026-05-20T17:50:23.639Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "summary": "A42 permanent reliability intake archive summary",
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "ready": false,
+  "complete": false,
+  "schema_completeness": false,
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "governanceOnly": true,
+  "evidenceOnly": true,
+  "permanentArtifacts": [
+    {
+      "name": "future reliability evidence intake contract",
+      "jsonPath": "docs/placement-v3/reliability/a42-future-reliability-evidence-intake-contract.json",
+      "markdownPath": "docs/placement-v3/reliability/a42-future-reliability-evidence-intake-contract.md",
+      "jsonPresent": true,
+      "markdownPresent": true
+    },
+    {
+      "name": "permanent reliability prerequisite index",
+      "jsonPath": "docs/placement-v3/reliability/a42-permanent-reliability-prerequisite-index.json",
+      "markdownPath": "docs/placement-v3/reliability/a42-permanent-reliability-prerequisite-index.md",
+      "jsonPresent": true,
+      "markdownPresent": true
+    },
+    {
+      "name": "permanent reliability denial rules",
+      "jsonPath": "docs/placement-v3/reliability/a42-permanent-reliability-denial-rules.json",
+      "markdownPath": "docs/placement-v3/reliability/a42-permanent-reliability-denial-rules.md",
+      "jsonPresent": true,
+      "markdownPresent": true
+    },
+    {
+      "name": "permanent reliability sequencing",
+      "jsonPath": "docs/placement-v3/reliability/a42-permanent-reliability-sequencing.json",
+      "markdownPath": "docs/placement-v3/reliability/a42-permanent-reliability-sequencing.md",
+      "jsonPresent": true,
+      "markdownPresent": true
+    }
+  ],
+  "autoIncludesPermanentArtifacts": true,
+  "strictModeDenialPreserved": true,
+  "unsupportedReadinessSuppression": {
+    "active": true,
+    "claimScanCoversArchiveArtifacts": true,
+    "unsupportedReadinessClaimsAllowed": false,
+    "reason": "A42 claim scanning covers permanent intake archive outputs and denies unsupported readiness language."
+  },
+  "replayDurabilityContinuity": {
+    "state": "blocked_safe_incomplete",
+    "ready": false,
+    "complete": false,
+    "incompleteChecks": [
+      "replay_durability_continuity",
+      "observability_audit_continuity_for_replay",
+      "replay_governance_contradiction_closure",
+      "human_review_replay_approval_denial",
+      "supervised_replay_continuity_constraints"
+    ],
+    "reason": "Replay durability continuity remains incomplete while upstream endurance, replay, observability, human-review, and supervision evidence is missing."
+  },
+  "failoverContradictionLineage": {
+    "traceable": true,
+    "resolved": false,
+    "unresolvedOnlyBecauseUpstreamEvidenceIncomplete": true,
+    "ready": false,
+    "complete": false,
+    "incompleteChecks": [
+      "provider_burst_denial_lineage",
+      "provider_degradation_lineage",
+      "failover_contradictions_unresolved",
+      "observability_dependencies_for_failover",
+      "replay_failover_contradiction_trace",
+      "supervised_execution_dependencies_for_failover"
+    ],
+    "reason": "Failover contradiction lineage remains traceable and unresolved only because upstream provider, capacity, observability, replay, and supervision evidence is incomplete."
+  },
+  "permanentIntakeGateState": {
+    "futureEvidenceIntake": {
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "incompleteChecks": [
+        "endurance_validation_evidence",
+        "replay_durability_validation_evidence",
+        "failover_validation_evidence",
+        "provider_degradation_validation_evidence",
+        "latency_timeout_validation_evidence",
+        "observability_continuity_evidence",
+        "replay_reproducibility_evidence",
+        "supervised_execution_governance_approval",
+        "unsupported_readiness_claim_detection",
+        "autonomous_execution_implications",
+        "governance_approved_readiness_sequencing"
+      ],
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "autonomous_execution": "SUPERVISED_ONLY"
+    },
+    "permanentPrerequisites": {
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "incompleteChecks": [
+        "endurance_validation_evidence",
+        "replay_durability_validation_evidence",
+        "failover_validation_evidence",
+        "provider_degradation_validation_evidence",
+        "latency_timeout_validation_evidence",
+        "observability_continuity_evidence",
+        "replay_reproducibility_evidence",
+        "supervised_execution_governance_approval",
+        "unsupported_readiness_claim_detection",
+        "autonomous_execution_implications",
+        "governance_approved_readiness_sequencing"
+      ],
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "autonomous_execution": "SUPERVISED_ONLY"
+    },
+    "permanentDenialRules": {
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "incompleteChecks": [
+        "endurance_validation_evidence",
+        "replay_durability_validation_evidence",
+        "failover_validation_evidence",
+        "provider_degradation_validation_evidence",
+        "latency_timeout_validation_evidence",
+        "observability_continuity_evidence",
+        "replay_reproducibility_evidence",
+        "supervised_execution_governance_approval",
+        "unsupported_readiness_claim_detection",
+        "autonomous_execution_implications",
+        "governance_approved_readiness_sequencing"
+      ],
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "autonomous_execution": "SUPERVISED_ONLY"
+    },
+    "permanentValidationSequencing": {
+      "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+      "ready": false,
+      "complete": false,
+      "incompleteChecks": [
+        "endurance_validation_evidence",
+        "replay_durability_validation_evidence",
+        "failover_validation_evidence",
+        "provider_degradation_validation_evidence",
+        "latency_timeout_validation_evidence",
+        "observability_continuity_evidence",
+        "replay_reproducibility_evidence",
+        "supervised_execution_governance_approval",
+        "unsupported_readiness_claim_detection",
+        "autonomous_execution_implications",
+        "governance_approved_readiness_sequencing"
+      ],
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_validation_complete": false,
+      "live_provider_validated": false,
+      "autonomous_execution": "SUPERVISED_ONLY"
+    }
+  },
+  "missingEnduranceEvidence": [
+    "a33_endurance_health",
+    "a33_timeout_risk_forecast"
+  ],
+  "archivedCommit": "84fa67a71",
+  "archivalResult": {
+    "permanentReliabilityIntakeArchiveSummaryGenerated": true,
+    "permanentIntakeGatesEnforceable": true,
+    "strictModeDenialBehaviorPreserved": true,
+    "blockedSafeArchivalPosturePreserved": true,
+    "productionReadinessPromoted": false,
+    "placementV3EnablementPromoted": false,
+    "providerExecutionChanged": false,
+    "liveValidationPerformed": false,
+    "replayCertificationClaimed": false,
+    "scoringOrCefrMutated": false,
+    "fabricatedEvidence": false,
+    "safetyGatesReduced": false
+  }
+}

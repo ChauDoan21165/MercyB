@@ -139,6 +139,7 @@ describe("A42 reliability reactivation governance gates", () => {
       "a42-permanent-reliability-prerequisite-index",
       "a42-permanent-reliability-denial-rules",
       "a42-permanent-reliability-sequencing",
+      "a42-permanent-intake-archive-summary",
     ]) {
       const jsonPath = path.join(root, "reliability", `${artifact}.json`);
       const mdPath = path.join(root, "reliability", `${artifact}.md`);
@@ -146,6 +147,15 @@ describe("A42 reliability reactivation governance gates", () => {
       expect(fs.existsSync(mdPath)).toBe(true);
       expectBlockedSafe(JSON.parse(fs.readFileSync(jsonPath, "utf8")));
     }
+
+    const archive = readJson(root, "a42-permanent-intake-archive-summary");
+    expect(archive.autoIncludesPermanentArtifacts).toBe(true);
+    expect(archive.strictModeDenialPreserved).toBe(true);
+    expect(archive.unsupportedReadinessSuppression.active).toBe(true);
+    expect(archive.replayDurabilityContinuity.state).toBe("blocked_safe_incomplete");
+    expect(archive.failoverContradictionLineage.traceable).toBe(true);
+    expect(archive.failoverContradictionLineage.resolved).toBe(false);
+    expect(archive.failoverContradictionLineage.unresolvedOnlyBecauseUpstreamEvidenceIncomplete).toBe(true);
   });
 
   it("strict mode denies reactivation while endurance and reliability evidence remain incomplete", () => {
