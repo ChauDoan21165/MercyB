@@ -1,0 +1,22 @@
+# Governance Global Denial Lineage Map
+
+generated_at=2026-05-20T17:13:29.542Z
+production_safe=false
+production_readiness=false
+placement_v3_enablement=BLOCKED
+autonomous_execution=SUPERVISED_ONLY
+DO_NOT_ENABLE
+global_denial_lineage_fully_traceable=false
+denial_lineage_incomplete_count=9
+
+## Lineage
+
+- A39: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,capacity_denial,cohort_ceiling
+- A42: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,reliability_denial,failover_denial
+- A44: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,human_review_denial,approval_readiness
+- A45: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,provider_validation_denial,live_provider_block
+- A46: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,contradiction_audit,governance_signoff_denial
+- A47: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,audit_continuity
+- A48: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,release_denial,canary_block
+- A49: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,replay_certification_denial
+- A50: DENIAL_LINEAGE_INCOMPLETE escalation=ESCALATION_REQUIRED missing=denial_lineage,observability_dependency,replay_dependency,supervised_execution_denial

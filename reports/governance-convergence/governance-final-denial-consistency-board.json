@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-20T17:13:29.542Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "final_denial_consistency_preserved": true,
+  "denial_lineage_incomplete_count": 9,
+  "denial_board_conflict_count": 0,
+  "denials": [
+    {
+      "agent": "A39",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A42",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A44",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A45",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A46",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A47",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A48",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A49",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    },
+    {
+      "agent": "A50",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_consistent_with_blocked_safe": true,
+      "denial_conflicts_with_stream": false,
+      "status": "DENIAL_INCOMPLETE_OR_UNVERIFIED"
+    }
+  ]
+}

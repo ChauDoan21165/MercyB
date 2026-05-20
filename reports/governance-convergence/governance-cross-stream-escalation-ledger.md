@@ -1,0 +1,22 @@
+# Governance Cross-Stream Escalation Ledger
+
+generated_at=2026-05-20T17:13:29.542Z
+production_safe=false
+production_readiness=false
+placement_v3_enablement=BLOCKED
+autonomous_execution=SUPERVISED_ONLY
+DO_NOT_ENABLE
+contradiction_escalation_lineage_complete=false
+strict_mode_gate_consistency_verified=true
+
+## Escalations
+
+- A39: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A42: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A44: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A45: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A46: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A47: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A48: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A49: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing
+- A50: ESCALATION_REQUIRED reasons=missing_required_evidence,replay_or_observability_dependency_missing

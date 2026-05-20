@@ -1,0 +1,33 @@
+# Governance Global Blocked-Safe Certification
+
+generated_at=2026-05-20T17:13:29.531Z
+production_safe=false
+production_readiness=false
+placement_v3_enabled=false
+placement_test_enabled=false
+placement_v3_ui_enabled=false
+placement_v3_enablement=BLOCKED
+live_validation_complete=false
+live_provider_validated=false
+live_replay_validated=false
+provider_drift_measured=false
+production_persistence_validated=false
+supervised_execution_allowed=false
+writes_production_data=false
+autonomous_execution=SUPERVISED_ONLY
+DO_NOT_ENABLE
+global_blocked_safe_continuity_certified=false
+denial_boards_reconciled=false
+strict_mode_gates_denial_preserving=true
+
+## Stream Certifications
+
+- A39: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A42: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A44: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A45: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A46: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A47: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A48: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A49: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED
+- A50: CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE do_not_enable=PRESERVED

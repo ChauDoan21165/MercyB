@@ -1,0 +1,197 @@
+{
+  "generated_at": "2026-05-20T17:13:29.531Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "governance_fabric_state": "BLOCKED_SAFE_INCOMPLETE",
+  "stream_count": 9,
+  "streams_reconciled": 0,
+  "streams_blocked_by_missing_evidence": 9,
+  "streams_with_blocked_safe_contradictions": 0,
+  "unsupported_claim_findings": 0,
+  "streams": [
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "capacity_denial",
+        "cohort_ceiling"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "reliability_denial",
+        "failover_denial"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "human_review_denial",
+        "approval_readiness"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "provider_validation_denial",
+        "live_provider_block"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "contradiction_audit",
+        "governance_signoff_denial"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A47",
+      "domain": "observability/audit continuity evidence",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "audit_continuity"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": true,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "release_denial",
+        "canary_block"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A49",
+      "domain": "replay certification denial evidence",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "replay_certification_denial"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": true,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "evidence_files": [],
+      "markdown_evidence_files": [],
+      "evidence_present": false,
+      "missing_required_evidence": [
+        "denial_lineage",
+        "observability_dependency",
+        "replay_dependency",
+        "supervised_execution_denial"
+      ],
+      "blocked_safe_contradictions": [],
+      "denial_lineage_present": false,
+      "replay_dependency_present": false,
+      "observability_dependency_present": false,
+      "readiness_without_lineage": false,
+      "do_not_enable_posture": "PRESERVED",
+      "status": "BLOCKED_BY_MISSING_EVIDENCE"
+    }
+  ]
+}

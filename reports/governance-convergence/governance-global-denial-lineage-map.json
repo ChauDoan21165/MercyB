@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-05-20T17:13:29.542Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "global_denial_lineage_fully_traceable": false,
+  "denial_lineage_incomplete_count": 9,
+  "denial_board_conflict_count": 0,
+  "lineage": [
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "capacity_denial",
+        "cohort_ceiling"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "reliability_denial",
+        "failover_denial"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "human_review_denial",
+        "approval_readiness"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "provider_validation_denial",
+        "live_provider_block"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "contradiction_audit",
+        "governance_signoff_denial"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A47",
+      "domain": "observability/audit continuity evidence",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "audit_continuity"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "release_denial",
+        "canary_block"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A49",
+      "domain": "replay certification denial evidence",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "replay_certification_denial"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "denial_required": true,
+      "denial_lineage_present": false,
+      "denial_status": "DENIAL_INCOMPLETE_OR_UNVERIFIED",
+      "escalation_state": "ESCALATION_REQUIRED",
+      "missing_required_evidence": [
+        "denial_lineage",
+        "observability_dependency",
+        "replay_dependency",
+        "supervised_execution_denial"
+      ],
+      "globally_traceable": false,
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE"
+    }
+  ]
+}
