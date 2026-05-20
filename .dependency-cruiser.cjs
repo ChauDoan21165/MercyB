@@ -70,15 +70,13 @@ module.exports = {
         'src/hooks/** must NOT import src/components/** at runtime — hooks are state primitives, not UI consumers. Type-only imports are exempt (see dependencyTypesNot below) since they compile away to zero runtime bytes; the shadcn pattern (a hook in src/hooks/ type-coupled to its own UI primitive in src/components/ui/) is intentional and architecturally sound.',
       from: {
         path: '^src/hooks/',
-        // Grandfathered exception — pre-existing tech debt that this PR
-        // narrowing did NOT resolve. useTeacherMercy.ts uses VALUE imports
-        // of MercyAvatar / MercyAnimation (it returns React elements from
-        // useMemo + createElement), so the dependencyTypesNot exemption
-        // below does not cover it. Resolved separately by A13-cleanup-2
-        // which deletes the orphan file entirely.
-        pathNot: [
-          '^src/hooks/useTeacherMercy\\.ts$',
-        ],
+        // No grandfather exceptions needed after the A13 cleanup cascade:
+        //   - `use-toast.ts` (shadcn type-only pattern) is covered by
+        //     `to.dependencyTypesNot: ['type-only']` below (#898 / A13-cleanup-1).
+        //   - `useTeacherMercy.ts` no longer exists (#899 / A13-cleanup-2
+        //     deletes the orphan file).
+        // If future regressions surface, add a TODO-tagged entry here
+        // citing the cleanup PR number rather than demoting severity.
       },
       to: {
         path: '^src/components',
