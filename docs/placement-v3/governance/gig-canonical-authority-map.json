@@ -1,0 +1,92 @@
+{
+  "canonical_authority_nodes": [
+    {
+      "id": "canonical-authority:a46",
+      "type": "canonical_authority",
+      "attributes": {
+        "label": "A46 convergence governance",
+        "state": "canonical"
+      }
+    },
+    {
+      "id": "event:b1ab139a8613d57c",
+      "type": "canonical_authority",
+      "attributes": {
+        "label": "canonical authority changed",
+        "actor": "A46",
+        "scope": "canonical-authority",
+        "ordinal": 110,
+        "summary": "Canonical authority settled on A46 convergence governance while upstream evidence remained incomplete."
+      }
+    }
+  ],
+  "branch_domain_nodes": [
+    {
+      "id": "branch-domain:feat-a42-reliability-forecast-ops",
+      "type": "branch_domain",
+      "attributes": {
+        "label": "feat/a42-reliability-forecast-ops",
+        "authority": "canonical_branch_domain"
+      }
+    }
+  ],
+  "stale_authority_rejection": [
+    {
+      "id": "08bc37d8a36cfc0e",
+      "from": "replay:4b56ccd188c036cd",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "1258c2ea9adb7e23",
+      "from": "canonical-authority:a46",
+      "to": "decision:blocked-safe",
+      "type": "supersedes"
+    },
+    {
+      "id": "522637f5c1e47480",
+      "from": "replay:75d890f3049e476f",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "566bb7630f94dbf8",
+      "from": "replay:f9864ac3eab33f7a",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "5bbcfc72e1803d38",
+      "from": "stale-artifact:replayed-governance-snapshot",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "61ef62cd9b12ed5b",
+      "from": "replay:ef8d1ee43f7bbcba",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "df86a9610ad52471",
+      "from": "replay:17c02030d41ad709",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "ebb1e44fd56af607",
+      "from": "replay:1e6afc411b41db94",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "fe2c1f868343f824",
+      "from": "replay:c9f2a6e961e1ef99",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    }
+  ],
+  "canonical_owner": "A46 convergence governance",
+  "branch_domain_isolation": "preserved",
+  "forked_identity_policy": "reject_without_current_A46_lineage"
+}

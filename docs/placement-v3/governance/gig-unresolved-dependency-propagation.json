@@ -1,0 +1,765 @@
+{
+  "dependencies": [
+    {
+      "id": "dependency:a2-drift-evidence",
+      "label": "A2 drift evidence",
+      "state": "unresolved",
+      "propagation_depth": 4,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 13,
+      "minimal_unblock_evidence": "real evidence required for A2 drift evidence"
+    },
+    {
+      "id": "dependency:a33-capacity-evidence",
+      "label": "A33 capacity evidence",
+      "state": "unresolved",
+      "propagation_depth": 4,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 13,
+      "minimal_unblock_evidence": "real evidence required for A33 capacity evidence"
+    },
+    {
+      "id": "dependency:a33-endurance-evidence",
+      "label": "A33 endurance evidence",
+      "state": "unresolved",
+      "propagation_depth": 9,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 18,
+      "minimal_unblock_evidence": "real evidence required for A33 endurance evidence"
+    },
+    {
+      "id": "dependency:audit-continuity",
+      "label": "audit continuity",
+      "state": "unresolved",
+      "propagation_depth": 11,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 20,
+      "minimal_unblock_evidence": "real evidence required for audit continuity"
+    },
+    {
+      "id": "dependency:cefr-stability-evidence",
+      "label": "CEFR stability evidence",
+      "state": "unresolved",
+      "propagation_depth": 4,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 13,
+      "minimal_unblock_evidence": "real evidence required for CEFR stability evidence"
+    },
+    {
+      "id": "dependency:fairness-bias-evidence",
+      "label": "fairness/bias evidence",
+      "state": "unresolved",
+      "propagation_depth": 4,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 13,
+      "minimal_unblock_evidence": "real evidence required for fairness/bias evidence"
+    },
+    {
+      "id": "dependency:human-review-backlog",
+      "label": "human review backlog",
+      "state": "unresolved",
+      "propagation_depth": 4,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 13,
+      "minimal_unblock_evidence": "real evidence required for human review backlog"
+    },
+    {
+      "id": "dependency:persistence-validation",
+      "label": "persistence validation",
+      "state": "unresolved",
+      "propagation_depth": 5,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 14,
+      "minimal_unblock_evidence": "real evidence required for persistence validation"
+    },
+    {
+      "id": "dependency:provider-calibration",
+      "label": "provider calibration",
+      "state": "unresolved",
+      "propagation_depth": 5,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 14,
+      "minimal_unblock_evidence": "real evidence required for provider calibration"
+    },
+    {
+      "id": "dependency:provider-drift",
+      "label": "provider drift",
+      "state": "unresolved",
+      "propagation_depth": 5,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 14,
+      "minimal_unblock_evidence": "real evidence required for provider drift"
+    },
+    {
+      "id": "dependency:replay-reproducibility",
+      "label": "replay reproducibility",
+      "state": "unresolved",
+      "propagation_depth": 11,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 20,
+      "minimal_unblock_evidence": "real evidence required for replay reproducibility"
+    },
+    {
+      "id": "dependency:supervised-execution-restrictions",
+      "label": "supervised execution restrictions",
+      "state": "unresolved",
+      "propagation_depth": 8,
+      "blast_radius": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "bottleneck_score": 17,
+      "minimal_unblock_evidence": "real evidence required for supervised execution restrictions"
+    }
+  ],
+  "highest_impact_dependencies": [
+    {
+      "id": "dependency:audit-continuity",
+      "label": "audit continuity",
+      "impact": 19
+    },
+    {
+      "id": "dependency:replay-reproducibility",
+      "label": "replay reproducibility",
+      "impact": 19
+    },
+    {
+      "id": "dependency:a33-endurance-evidence",
+      "label": "A33 endurance evidence",
+      "impact": 17
+    },
+    {
+      "id": "dependency:supervised-execution-restrictions",
+      "label": "supervised execution restrictions",
+      "impact": 16
+    },
+    {
+      "id": "dependency:persistence-validation",
+      "label": "persistence validation",
+      "impact": 13
+    }
+  ],
+  "transitive_blockers": [
+    {
+      "id": "0a1fc86eb97a0ae4",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "0ea181335e4f63c4",
+      "from": "dependency:persistence-validation",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "1183514e4be5c081",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "14e2c7d72bac25f0",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "193d39954ae618dc",
+      "from": "dependency:audit-continuity",
+      "to": "event:17c02030d41ad709",
+      "type": "propagates"
+    },
+    {
+      "id": "1998cb7d4ce58c1b",
+      "from": "dependency:audit-continuity",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "21ceb602459fc889",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "230d4dc4bf0027f0",
+      "from": "dependency:provider-drift",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "2559e0943fc07a8d",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "2774fea2b92158dd",
+      "from": "dependency:provider-calibration",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "27a50b377aeb95aa",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:17c02030d41ad709",
+      "type": "propagates"
+    },
+    {
+      "id": "280448c63aab112d",
+      "from": "dependency:human-review-backlog",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "2cce17bb935bd0ca",
+      "from": "dependency:audit-continuity",
+      "to": "event:0cf5235e3e481bab",
+      "type": "propagates"
+    },
+    {
+      "id": "328f94615134634d",
+      "from": "dependency:audit-continuity",
+      "to": "event:b1ab139a8613d57c",
+      "type": "propagates"
+    },
+    {
+      "id": "350e9047a820b9bf",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "3a48ea399fcc4f8a",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "3b5efbfd3d3c049b",
+      "from": "dependency:audit-continuity",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "propagates"
+    },
+    {
+      "id": "3c20b37498010dfd",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:ef8d1ee43f7bbcba",
+      "type": "propagates"
+    },
+    {
+      "id": "48b3c7f579387b0d",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "48e456f5223549d6",
+      "from": "dependency:human-review-backlog",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "4e7895aadb8a5de9",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "573e963669beb004",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:f9864ac3eab33f7a",
+      "type": "propagates"
+    },
+    {
+      "id": "58d7e32fe8880d1f",
+      "from": "dependency:provider-calibration",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "597859ebbcdca6c6",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "5a214ac2be37207b",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "5a63fe720f56761e",
+      "from": "dependency:provider-calibration",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "5f435cbe119a2ffc",
+      "from": "dependency:persistence-validation",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "5f677c4b508f1ac9",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "61cbb7e8915e7758",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "63c276b829a33e4d",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "64be018e6cab40ef",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "68167ee3949bfa7d",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:9b271c6bd1d9d6fb",
+      "type": "propagates"
+    },
+    {
+      "id": "696560fac084762f",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "69a8ef706d916207",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:75d890f3049e476f",
+      "type": "propagates"
+    },
+    {
+      "id": "6d756529960b9db6",
+      "from": "dependency:audit-continuity",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "6db821d9c8940ceb",
+      "from": "dependency:provider-drift",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "701c5eac7b70b5b6",
+      "from": "dependency:audit-continuity",
+      "to": "event:75d890f3049e476f",
+      "type": "propagates"
+    },
+    {
+      "id": "7e9a9cb90c6fde3d",
+      "from": "dependency:persistence-validation",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "800eb5d787ec5825",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:2b75fa8fbe976f67",
+      "type": "propagates"
+    },
+    {
+      "id": "8136b19585aad64f",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "835d2d4ffcea953a",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:b1ab139a8613d57c",
+      "type": "propagates"
+    },
+    {
+      "id": "87c527c468a70614",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "888ec2f8919289dd",
+      "from": "dependency:persistence-validation",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "90d86f873d92985e",
+      "from": "dependency:provider-drift",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "918206f37a563488",
+      "from": "dependency:human-review-backlog",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "93d3ae2b14716d8b",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:0cf5235e3e481bab",
+      "type": "propagates"
+    },
+    {
+      "id": "945f09ce8dafe425",
+      "from": "dependency:human-review-backlog",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "9d8e9511d81630c7",
+      "from": "dependency:provider-calibration",
+      "to": "event:f9b784f4231df39b",
+      "type": "propagates"
+    },
+    {
+      "id": "9dddb8f916e11395",
+      "from": "dependency:a2-drift-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "9e72ee95577fcb88",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "9f91e832c003888d",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:1e6afc411b41db94",
+      "type": "propagates"
+    },
+    {
+      "id": "a02fcebd0a894388",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "a1a609b39a6dbd30",
+      "from": "dependency:audit-continuity",
+      "to": "event:ef8d1ee43f7bbcba",
+      "type": "propagates"
+    },
+    {
+      "id": "a25cc69ded9af6fd",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "a4d39fc6df361fb9",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "a7520646b3d4dbf4",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:b1ab139a8613d57c",
+      "type": "propagates"
+    },
+    {
+      "id": "abdf3240d8214291",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "ac5d98a01b132210",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:9b271c6bd1d9d6fb",
+      "type": "propagates"
+    },
+    {
+      "id": "b0acaf92d3f54a04",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "b11c24a2703dc752",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "propagates"
+    },
+    {
+      "id": "b734f7dd173835e5",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "b932a7fdb02f9490",
+      "from": "dependency:provider-calibration",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "b989f91cb484eee0",
+      "from": "dependency:provider-calibration",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "c4e441539e70b24f",
+      "from": "dependency:human-review-backlog",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "c5495b7a1f1cd9bd",
+      "from": "dependency:audit-continuity",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "c797fc30aef6f793",
+      "from": "dependency:provider-drift",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "c8173984a91f7cdf",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "cde6c70d9dd624f4",
+      "from": "dependency:audit-continuity",
+      "to": "event:f9864ac3eab33f7a",
+      "type": "propagates"
+    },
+    {
+      "id": "cf206e9fe9c1363f",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:f9b784f4231df39b",
+      "type": "propagates"
+    },
+    {
+      "id": "d3e3cc9715b5ed51",
+      "from": "dependency:persistence-validation",
+      "to": "event:1e6afc411b41db94",
+      "type": "propagates"
+    },
+    {
+      "id": "d452d680c20794ba",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:f9b784f4231df39b",
+      "type": "propagates"
+    },
+    {
+      "id": "d48d6b4d0da8411b",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "d736536bb6b07b45",
+      "from": "dependency:provider-drift",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "d737f20c8a50b3f4",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "d77fdf08b7cab430",
+      "from": "dependency:provider-drift",
+      "to": "event:1e6afc411b41db94",
+      "type": "propagates"
+    },
+    {
+      "id": "db5cfc80ba872f2c",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "dbac5b231f1121d1",
+      "from": "dependency:replay-reproducibility",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "df93be5713a32918",
+      "from": "dependency:persistence-validation",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "e1c8d9746f75c69d",
+      "from": "dependency:audit-continuity",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "e627296209d793ae",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "ea9927d3e4426417",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "edd1a9bbb7ff7af6",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:2b75fa8fbe976f67",
+      "type": "propagates"
+    },
+    {
+      "id": "f1913e738ebe80bd",
+      "from": "dependency:audit-continuity",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "f4adfe5956425bae",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "fb188a74f9a90020",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "fcdd32d7037713b8",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "propagates"
+    }
+  ]
+}

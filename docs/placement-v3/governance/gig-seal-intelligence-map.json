@@ -1,0 +1,219 @@
+{
+  "seal_nodes": [
+    {
+      "id": "event:9b271c6bd1d9d6fb",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal degraded",
+        "actor": "A46",
+        "scope": "seal",
+        "ordinal": 50,
+        "summary": "Recursive simulator modeled seal fracture and canonical overwrite attempts as degraded inputs."
+      }
+    },
+    {
+      "id": "seal:0cf5235e3e481bab",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "branch contamination rejected",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:2b75fa8fbe976f67",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal restored",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:4b56ccd188c036cd",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:6a5a801d8c118108",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "governance recovery executed",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:9b271c6bd1d9d6fb",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal degraded",
+        "seal_state": "degraded_input_rejected",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:d729e6bae6e60079",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "deterministic regeneration verified",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    }
+  ],
+  "degraded_seals": [
+    {
+      "id": "event:9b271c6bd1d9d6fb",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal degraded",
+        "actor": "A46",
+        "scope": "seal",
+        "ordinal": 50,
+        "summary": "Recursive simulator modeled seal fracture and canonical overwrite attempts as degraded inputs."
+      }
+    },
+    {
+      "id": "seal:9b271c6bd1d9d6fb",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal degraded",
+        "seal_state": "degraded_input_rejected",
+        "connected_to_recovery": true
+      }
+    }
+  ],
+  "restored_seals": [
+    {
+      "id": "seal:0cf5235e3e481bab",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "branch contamination rejected",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:2b75fa8fbe976f67",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal restored",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:4b56ccd188c036cd",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:6a5a801d8c118108",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "governance recovery executed",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:d729e6bae6e60079",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "deterministic regeneration verified",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    }
+  ],
+  "seal_edges": [
+    {
+      "id": "2083972638d02892",
+      "from": "seal:d729e6bae6e60079",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "279f046876d76ad7",
+      "from": "seal:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "2f9a60100bda4fac",
+      "from": "recovery:9b271c6bd1d9d6fb",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "58a7566eb65ebee0",
+      "from": "recovery:1e6afc411b41db94",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "59652d40330edc15",
+      "from": "seal:6a5a801d8c118108",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "6eee810aa766cbd1",
+      "from": "recovery:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "8947e7fd401905dc",
+      "from": "recovery:6a5a801d8c118108",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "9df8180ca4506861",
+      "from": "seal:0cf5235e3e481bab",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "be8e79d284905ea1",
+      "from": "recovery:0cf5235e3e481bab",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "cc29e1f422bc5747",
+      "from": "recovery:2b75fa8fbe976f67",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "ce3eb5f753ae9945",
+      "from": "seal:2b75fa8fbe976f67",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "e0c87f53e9b2f8b0",
+      "from": "seal:9b271c6bd1d9d6fb",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "efd7ba716f634350",
+      "from": "recovery:d729e6bae6e60079",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    }
+  ],
+  "seal_continuity": "blocked_safe_preserved"
+}

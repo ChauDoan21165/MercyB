@@ -1,0 +1,51 @@
+{
+  "current_governance_state": {
+    "graph_queryable": true,
+    "temporal_reasoning_integrated": true,
+    "replay_chronology_explorable": true,
+    "unresolved_dependency_propagation_computable": true,
+    "governance_causality_machine_readable": true,
+    "canonical_authority_explainable": true,
+    "blocked_safe_introspectable": true,
+    "readiness_allowed": false,
+    "release_allowed": false,
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "do_not_enable_continuity": true
+  },
+  "blocked_reason": "unresolved_dependency_taxonomy_preserved",
+  "highest_impact_dependencies": [
+    {
+      "id": "dependency:audit-continuity",
+      "label": "audit continuity",
+      "impact": 19
+    },
+    {
+      "id": "dependency:replay-reproducibility",
+      "label": "replay reproducibility",
+      "impact": 19
+    },
+    {
+      "id": "dependency:a33-endurance-evidence",
+      "label": "A33 endurance evidence",
+      "impact": 17
+    },
+    {
+      "id": "dependency:supervised-execution-restrictions",
+      "label": "supervised execution restrictions",
+      "impact": 16
+    },
+    {
+      "id": "dependency:persistence-validation",
+      "label": "persistence validation",
+      "impact": 13
+    }
+  ],
+  "canonical_replay_lineage": "rejected_non_canonical",
+  "canonical_authority": "A46 convergence governance",
+  "deterministic_decisions": true
+}

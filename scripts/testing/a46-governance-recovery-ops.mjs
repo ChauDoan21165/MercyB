@@ -15,6 +15,7 @@ const SEAL_ATTESTATION_BASENAME = "a46-governance-seal-integrity-attestation";
 const RECURSIVE_COLLAPSE_BASENAME = "a46-recursive-governance-collapse-simulator";
 const RECURSIVE_COLLAPSE_SCRIPT = "scripts/governance/a46-recursive-governance-collapse-simulator.mjs";
 const TGHEE_SCRIPT = "scripts/governance/tghee-runtime.mjs";
+const GIG_SCRIPT = "scripts/governance/gig-runtime.mjs";
 const TGHEE_ARTIFACTS = [
   "tghee-governance-timeline",
   "tghee-lineage-evolution-map",
@@ -25,6 +26,17 @@ const TGHEE_ARTIFACTS = [
   "tghee-seal-evolution-history",
   "tghee-recovery-history",
   "tghee-canonical-authority-history",
+];
+const GIG_ARTIFACTS = [
+  "gig-governance-intelligence-graph",
+  "gig-canonical-authority-map",
+  "gig-unresolved-dependency-propagation",
+  "gig-governance-chronology",
+  "gig-replay-intelligence-map",
+  "gig-governance-causality-map",
+  "gig-seal-intelligence-map",
+  "gig-governance-decision-index",
+  "gig-branch-domain-authority-map",
 ];
 const command = process.argv[2] ?? "auto";
 const strict = process.argv.includes("--strict");
@@ -158,6 +170,7 @@ function main() {
     const attestation = generateGovernanceSealIntegrityAttestation(report, matrix, drift, seal);
     runRecursiveCollapseSimulator(strict);
     runTgheeRuntime("all", strict);
+    runGigRuntime("runtime", strict);
     if (strict) {
       enforceStrict(report);
       enforceGlobalMatrixStrict(matrix);
@@ -236,6 +249,7 @@ function main() {
   enforceSealAttestationStrict(attestation);
   runRecursiveCollapseSimulator(true);
   runTgheeRuntime("all", true);
+  runGigRuntime("runtime", true);
   scanUnsupportedClaims();
   console.log(`[a46] governance validation passed: ${path.join(OUT_DIR, `${REPORT_BASENAME}.json`)}`);
   console.log(`[a46] global denial-retention matrix validation passed: ${path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`)}`);
@@ -244,6 +258,7 @@ function main() {
   console.log(`[a46] governance seal integrity attestation validation passed: ${path.join(OUT_DIR, `${SEAL_ATTESTATION_BASENAME}.json`)}`);
   console.log(`[a46] recursive governance collapse simulator validation passed: ${path.join(OUT_DIR, `${RECURSIVE_COLLAPSE_BASENAME}.json`)}`);
   console.log(`[a46] temporal governance history validation passed: ${path.join(OUT_DIR, "tghee-governance-timeline.json")}`);
+  console.log(`[a46] governance intelligence graph validation passed: ${path.join(OUT_DIR, "gig-governance-intelligence-graph.json")}`);
 }
 
 function generateReconciliation() {
@@ -1762,6 +1777,9 @@ function convergenceArtifactFiles() {
     path.join(OUT_DIR, `${RECURSIVE_COLLAPSE_BASENAME}.md`),
     path.join(OUT_DIR, "tghee-governance-history.md"),
     ...TGHEE_ARTIFACTS.map((basename) => path.join(OUT_DIR, `${basename}.json`)),
+    path.join(OUT_DIR, "gig-governance-topology.md"),
+    path.join(OUT_DIR, "gig-blocked-safe-governance-intelligence.md"),
+    ...GIG_ARTIFACTS.map((basename) => path.join(OUT_DIR, `${basename}.json`)),
   ];
 }
 
@@ -1774,6 +1792,13 @@ function runRecursiveCollapseSimulator(useStrict) {
 
 function runTgheeRuntime(subcommand, useStrict) {
   const args = [TGHEE_SCRIPT, subcommand];
+  if (useStrict) args.push("--strict");
+  const output = execFileSync("node", args, { encoding: "utf8" });
+  process.stdout.write(output);
+}
+
+function runGigRuntime(subcommand, useStrict) {
+  const args = [GIG_SCRIPT, subcommand];
   if (useStrict) args.push("--strict");
   const output = execFileSync("node", args, { encoding: "utf8" });
   process.stdout.write(output);

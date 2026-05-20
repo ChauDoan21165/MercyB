@@ -1,0 +1,301 @@
+{
+  "causality_edges": [
+    {
+      "id": "0062290c634f3243",
+      "from": "replay:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "04b4e85f61c8f330",
+      "from": "event:6a5a801d8c118108",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "0b42dde675a8b16c",
+      "from": "strict-mode:denial-preserving",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "10eda35700b41d38",
+      "from": "event:75d890f3049e476f",
+      "to": "event:9b271c6bd1d9d6fb",
+      "type": "originates_from"
+    },
+    {
+      "id": "11abde78fcbc3a5a",
+      "from": "event:c9f2a6e961e1ef99",
+      "to": "event:75d890f3049e476f",
+      "type": "originates_from"
+    },
+    {
+      "id": "162146d748afc1f4",
+      "from": "event:f9b784f4231df39b",
+      "to": "event:a4ae8a78735b0325",
+      "type": "originates_from"
+    },
+    {
+      "id": "287022153e65e025",
+      "from": "replay:c9f2a6e961e1ef99",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "2a39549958a3ae10",
+      "from": "event:1e6afc411b41db94",
+      "to": "event:6a5a801d8c118108",
+      "type": "originates_from"
+    },
+    {
+      "id": "2c5043f16d78360f",
+      "from": "replay:17c02030d41ad709",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "3071e02149302dd1",
+      "from": "event:f9864ac3eab33f7a",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "31a45ce9c648933d",
+      "from": "event:a4ae8a78735b0325",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "398370f729ff8570",
+      "from": "replay:f9864ac3eab33f7a",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "3d3a300d4b1634d3",
+      "from": "event:a4ae8a78735b0325",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "originates_from"
+    },
+    {
+      "id": "3d9a5713b00e5752",
+      "from": "event:6a5a801d8c118108",
+      "to": "event:b1ab139a8613d57c",
+      "type": "originates_from"
+    },
+    {
+      "id": "49fa6f81108a1798",
+      "from": "event:17c02030d41ad709",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "51dbdd54ba509637",
+      "from": "event:b1ab139a8613d57c",
+      "to": "event:f9864ac3eab33f7a",
+      "type": "originates_from"
+    },
+    {
+      "id": "54e0f2c8a009f49e",
+      "from": "replay:1e6afc411b41db94",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "605a9b7f15a2ad4c",
+      "from": "event:ef8d1ee43f7bbcba",
+      "to": "event:4b56ccd188c036cd",
+      "type": "originates_from"
+    },
+    {
+      "id": "6439afc50bcde107",
+      "from": "event:2b75fa8fbe976f67",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "666ecdc2903e596e",
+      "from": "event:b1ab139a8613d57c",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "6703dcb2a2abaf12",
+      "from": "event:1e6afc411b41db94",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "680c3f9643a4786a",
+      "from": "event:f9b784f4231df39b",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "68dfa875adfd7a3a",
+      "from": "event:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "812d370b99d96567",
+      "from": "event:0cf5235e3e481bab",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "9131020a23ee3996",
+      "from": "event:9b271c6bd1d9d6fb",
+      "to": "event:2b75fa8fbe976f67",
+      "type": "originates_from"
+    },
+    {
+      "id": "9b9b5de56f0aa80d",
+      "from": "replay:75d890f3049e476f",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "9eace32b61bb9e6b",
+      "from": "event:c9f2a6e961e1ef99",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "a7c2a346478e5fcf",
+      "from": "event:75d890f3049e476f",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "ae5779ae8a53a498",
+      "from": "event:4b56ccd188c036cd",
+      "to": "event:d729e6bae6e60079",
+      "type": "originates_from"
+    },
+    {
+      "id": "aecd2470bcb2cbac",
+      "from": "event:9b271c6bd1d9d6fb",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "c106cca2c223d9ea",
+      "from": "event:2b75fa8fbe976f67",
+      "to": "event:0cf5235e3e481bab",
+      "type": "originates_from"
+    },
+    {
+      "id": "c780d5f788374a5f",
+      "from": "event:d729e6bae6e60079",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "c9daa6e3d3440eb6",
+      "from": "event:f9864ac3eab33f7a",
+      "to": "event:ef8d1ee43f7bbcba",
+      "type": "originates_from"
+    },
+    {
+      "id": "d15817da9fc5152e",
+      "from": "event:0cf5235e3e481bab",
+      "to": "event:17c02030d41ad709",
+      "type": "originates_from"
+    },
+    {
+      "id": "ea8ef2f9f9db75ef",
+      "from": "event:ef8d1ee43f7bbcba",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "f3e7e3307cb3844e",
+      "from": "event:17c02030d41ad709",
+      "to": "event:1e6afc411b41db94",
+      "type": "originates_from"
+    },
+    {
+      "id": "f40f1ed26eb1f7fd",
+      "from": "replay:ef8d1ee43f7bbcba",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    }
+  ],
+  "current_denial_causes": [
+    {
+      "id": "event:1e6afc411b41db94",
+      "label": "strict-mode failure triggered",
+      "summary": "Strict mode remained denial-preserving for readiness, provider, replay, persistence, release, and autonomous escalation attempts."
+    },
+    {
+      "id": "event:2b75fa8fbe976f67",
+      "label": "seal restored",
+      "summary": "Permanent convergence seal rejected degraded inputs and restored blocked-safe seal continuity."
+    },
+    {
+      "id": "event:4b56ccd188c036cd",
+      "label": "adversarial fixture rejected",
+      "summary": "Recursive collapse fixtures were rejected without promoting readiness or certification."
+    },
+    {
+      "id": "event:6a5a801d8c118108",
+      "label": "governance recovery executed",
+      "summary": "Recursive collapse pressure regenerated deterministic blocked-safe governance artifacts."
+    },
+    {
+      "id": "event:a4ae8a78735b0325",
+      "label": "unresolved dependency added",
+      "summary": "Global unresolved dependency taxonomy normalized across permanent denial-retention streams."
+    },
+    {
+      "id": "event:c9f2a6e961e1ef99",
+      "label": "lineage superseded",
+      "summary": "A46 convergence matrix superseded branch-local denial fragments without resolving evidence gaps."
+    },
+    {
+      "id": "event:d729e6bae6e60079",
+      "label": "deterministic regeneration verified",
+      "summary": "Regenerated governance history preserved event IDs, causality ordering, canonical authority, and blocked-safe posture."
+    },
+    {
+      "id": "event:f9b784f4231df39b",
+      "label": "denial introduced",
+      "summary": "Reliability archive preserved BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS."
+    },
+    {
+      "id": "recovery:0cf5235e3e481bab",
+      "label": "branch contamination rejected"
+    },
+    {
+      "id": "recovery:1e6afc411b41db94",
+      "label": "strict-mode failure triggered"
+    },
+    {
+      "id": "recovery:2b75fa8fbe976f67",
+      "label": "seal restored"
+    },
+    {
+      "id": "recovery:4b56ccd188c036cd",
+      "label": "adversarial fixture rejected"
+    },
+    {
+      "id": "recovery:6a5a801d8c118108",
+      "label": "governance recovery executed"
+    },
+    {
+      "id": "recovery:9b271c6bd1d9d6fb",
+      "label": "seal degraded"
+    },
+    {
+      "id": "recovery:d729e6bae6e60079",
+      "label": "deterministic regeneration verified"
+    },
+    {
+      "id": "strict-mode:denial-preserving",
+      "label": "denial-preserving strict mode"
+    }
+  ],
+  "machine_readable": true
+}

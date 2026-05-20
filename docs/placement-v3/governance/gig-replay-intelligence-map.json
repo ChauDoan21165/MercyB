@@ -1,0 +1,264 @@
+{
+  "replay_lineage_nodes": [
+    {
+      "id": "event:17c02030d41ad709",
+      "type": "replay_event",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "actor": "A46",
+        "scope": "replay",
+        "ordinal": 80,
+        "summary": "Recursive replay storms were rejected before they could rewrite unresolved dependency lineage."
+      }
+    },
+    {
+      "id": "event:75d890f3049e476f",
+      "type": "replay_event",
+      "attributes": {
+        "label": "stale replay rejected",
+        "actor": "A49",
+        "scope": "replay",
+        "ordinal": 40,
+        "summary": "Replay snapshots remained non-canonical without reproducibility and audit continuity evidence."
+      }
+    },
+    {
+      "id": "event:ef8d1ee43f7bbcba",
+      "type": "replay_event",
+      "attributes": {
+        "label": "replay storm detected",
+        "actor": "A46",
+        "scope": "replay",
+        "ordinal": 130,
+        "summary": "Recursive replay storm chronology preserved stale replay rejection ordering."
+      }
+    },
+    {
+      "id": "replay:17c02030d41ad709",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 80
+      }
+    },
+    {
+      "id": "replay:1e6afc411b41db94",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "strict-mode failure triggered",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 90
+      }
+    },
+    {
+      "id": "replay:4b56ccd188c036cd",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 140
+      }
+    },
+    {
+      "id": "replay:75d890f3049e476f",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "stale replay rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 40
+      }
+    },
+    {
+      "id": "replay:c9f2a6e961e1ef99",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "lineage superseded",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 30
+      }
+    },
+    {
+      "id": "replay:ef8d1ee43f7bbcba",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay storm detected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 130
+      }
+    },
+    {
+      "id": "replay:f9864ac3eab33f7a",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "governance fragment orphaned",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 120
+      }
+    }
+  ],
+  "replay_storms": [
+    {
+      "id": "event:17c02030d41ad709",
+      "type": "replay_event",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "actor": "A46",
+        "scope": "replay",
+        "ordinal": 80,
+        "summary": "Recursive replay storms were rejected before they could rewrite unresolved dependency lineage."
+      }
+    },
+    {
+      "id": "event:ef8d1ee43f7bbcba",
+      "type": "replay_event",
+      "attributes": {
+        "label": "replay storm detected",
+        "actor": "A46",
+        "scope": "replay",
+        "ordinal": 130,
+        "summary": "Recursive replay storm chronology preserved stale replay rejection ordering."
+      }
+    },
+    {
+      "id": "replay:17c02030d41ad709",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 80
+      }
+    },
+    {
+      "id": "replay:ef8d1ee43f7bbcba",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay storm detected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 130
+      }
+    }
+  ],
+  "stale_replay_lineage": [
+    {
+      "id": "replay:17c02030d41ad709",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 80
+      }
+    },
+    {
+      "id": "replay:1e6afc411b41db94",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "strict-mode failure triggered",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 90
+      }
+    },
+    {
+      "id": "replay:4b56ccd188c036cd",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 140
+      }
+    },
+    {
+      "id": "replay:75d890f3049e476f",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "stale replay rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 40
+      }
+    },
+    {
+      "id": "replay:c9f2a6e961e1ef99",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "lineage superseded",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 30
+      }
+    },
+    {
+      "id": "replay:ef8d1ee43f7bbcba",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay storm detected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 130
+      }
+    },
+    {
+      "id": "replay:f9864ac3eab33f7a",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "governance fragment orphaned",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 120
+      }
+    }
+  ],
+  "replay_rejection_edges": [
+    {
+      "id": "08bc37d8a36cfc0e",
+      "from": "replay:4b56ccd188c036cd",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "522637f5c1e47480",
+      "from": "replay:75d890f3049e476f",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "566bb7630f94dbf8",
+      "from": "replay:f9864ac3eab33f7a",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "5bbcfc72e1803d38",
+      "from": "stale-artifact:replayed-governance-snapshot",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "61ef62cd9b12ed5b",
+      "from": "replay:ef8d1ee43f7bbcba",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "96fdc310fb8ecfa3",
+      "from": "identity:deterministic-governance",
+      "to": "decision:blocked-safe",
+      "type": "replays"
+    },
+    {
+      "id": "df86a9610ad52471",
+      "from": "replay:17c02030d41ad709",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "ebb1e44fd56af607",
+      "from": "replay:1e6afc411b41db94",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "fe2c1f868343f824",
+      "from": "replay:c9f2a6e961e1ef99",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    }
+  ],
+  "replay_canonical_state": "rejected_non_canonical"
+}

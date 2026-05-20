@@ -1,0 +1,110 @@
+{
+  "events": [
+    {
+      "id": "event:f9b784f4231df39b",
+      "ordinal": 10,
+      "label": "denial introduced",
+      "actor": "A42",
+      "scope": "reliability"
+    },
+    {
+      "id": "event:a4ae8a78735b0325",
+      "ordinal": 20,
+      "label": "unresolved dependency added",
+      "actor": "A46",
+      "scope": "convergence"
+    },
+    {
+      "id": "event:c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "label": "lineage superseded",
+      "actor": "A46",
+      "scope": "lineage"
+    },
+    {
+      "id": "event:75d890f3049e476f",
+      "ordinal": 40,
+      "label": "stale replay rejected",
+      "actor": "A49",
+      "scope": "replay"
+    },
+    {
+      "id": "event:9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "label": "seal degraded",
+      "actor": "A46",
+      "scope": "seal"
+    },
+    {
+      "id": "event:2b75fa8fbe976f67",
+      "ordinal": 60,
+      "label": "seal restored",
+      "actor": "A46",
+      "scope": "seal"
+    },
+    {
+      "id": "event:0cf5235e3e481bab",
+      "ordinal": 70,
+      "label": "branch contamination rejected",
+      "actor": "A46",
+      "scope": "branch-domain"
+    },
+    {
+      "id": "event:17c02030d41ad709",
+      "ordinal": 80,
+      "label": "replay poisoning rejected",
+      "actor": "A46",
+      "scope": "replay"
+    },
+    {
+      "id": "event:1e6afc411b41db94",
+      "ordinal": 90,
+      "label": "strict-mode failure triggered",
+      "actor": "A46",
+      "scope": "strict-mode"
+    },
+    {
+      "id": "event:6a5a801d8c118108",
+      "ordinal": 100,
+      "label": "governance recovery executed",
+      "actor": "A46",
+      "scope": "recovery"
+    },
+    {
+      "id": "event:b1ab139a8613d57c",
+      "ordinal": 110,
+      "label": "canonical authority changed",
+      "actor": "A46",
+      "scope": "canonical-authority"
+    },
+    {
+      "id": "event:f9864ac3eab33f7a",
+      "ordinal": 120,
+      "label": "governance fragment orphaned",
+      "actor": "A46",
+      "scope": "lineage"
+    },
+    {
+      "id": "event:ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "label": "replay storm detected",
+      "actor": "A46",
+      "scope": "replay"
+    },
+    {
+      "id": "event:4b56ccd188c036cd",
+      "ordinal": 140,
+      "label": "adversarial fixture rejected",
+      "actor": "A46",
+      "scope": "adversarial-governance"
+    },
+    {
+      "id": "event:d729e6bae6e60079",
+      "ordinal": 150,
+      "label": "deterministic regeneration verified",
+      "actor": "A46",
+      "scope": "determinism"
+    }
+  ],
+  "deterministic_ordering": true
+}

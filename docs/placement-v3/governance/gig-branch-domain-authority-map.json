@@ -1,0 +1,14 @@
+{
+  "branch_domain_nodes": [
+    {
+      "id": "branch-domain:feat-a42-reliability-forecast-ops",
+      "type": "branch_domain",
+      "attributes": {
+        "label": "feat/a42-reliability-forecast-ops",
+        "authority": "canonical_branch_domain"
+      }
+    }
+  ],
+  "branch_domain_isolation": "preserved",
+  "forked_identity_policy": "reject_without_current_A46_lineage"
+}

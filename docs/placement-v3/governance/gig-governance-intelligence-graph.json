@@ -1,0 +1,2150 @@
+{
+  "graph_id": "99069f9ad723843e",
+  "governance_mode": "blocked_safe_governance_intelligence_graph",
+  "source_artifacts": {
+    "timeline": true,
+    "dependencies": true,
+    "replay": true,
+    "causality": true,
+    "seal": true,
+    "recovery": true,
+    "canonical": true,
+    "collapse": true
+  },
+  "node_types": [
+    "unresolved_dependency",
+    "governance_decision",
+    "replay_lineage",
+    "denial_lineage",
+    "governance_seal",
+    "strict_mode_rule",
+    "branch_domain",
+    "canonical_authority",
+    "adversarial_fixture",
+    "governance_event",
+    "replay_event",
+    "recovery_event",
+    "contamination_event",
+    "stale_artifact",
+    "poisoned_lineage",
+    "deterministic_identity"
+  ],
+  "edge_types": [
+    "blocks",
+    "propagates",
+    "supersedes",
+    "canonicalizes",
+    "invalidates",
+    "contaminates",
+    "fragments",
+    "replays",
+    "restores",
+    "seals",
+    "rejects",
+    "explains",
+    "depends_on",
+    "originates_from"
+  ],
+  "nodes": [
+    {
+      "id": "branch-domain:feat-a42-reliability-forecast-ops",
+      "type": "branch_domain",
+      "attributes": {
+        "label": "feat/a42-reliability-forecast-ops",
+        "authority": "canonical_branch_domain"
+      }
+    },
+    {
+      "id": "canonical-authority:a46",
+      "type": "canonical_authority",
+      "attributes": {
+        "label": "A46 convergence governance",
+        "state": "canonical"
+      }
+    },
+    {
+      "id": "decision:blocked-safe",
+      "type": "governance_decision",
+      "attributes": {
+        "label": "blocked-safe governance decision",
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true,
+        "readiness_allowed": false,
+        "release_allowed": false
+      }
+    },
+    {
+      "id": "dependency:a2-drift-evidence",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "A2 drift evidence",
+        "state": "unresolved",
+        "propagation_count": 4,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:a33-capacity-evidence",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "A33 capacity evidence",
+        "state": "unresolved",
+        "propagation_count": 4,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:a33-endurance-evidence",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "A33 endurance evidence",
+        "state": "unresolved",
+        "propagation_count": 9,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:audit-continuity",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "audit continuity",
+        "state": "unresolved",
+        "propagation_count": 11,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:cefr-stability-evidence",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "CEFR stability evidence",
+        "state": "unresolved",
+        "propagation_count": 4,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:fairness-bias-evidence",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "fairness/bias evidence",
+        "state": "unresolved",
+        "propagation_count": 4,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:human-review-backlog",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "human review backlog",
+        "state": "unresolved",
+        "propagation_count": 4,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:persistence-validation",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "persistence validation",
+        "state": "unresolved",
+        "propagation_count": 5,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:provider-calibration",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "provider calibration",
+        "state": "unresolved",
+        "propagation_count": 5,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:provider-drift",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "provider drift",
+        "state": "unresolved",
+        "propagation_count": 5,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:replay-reproducibility",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "replay reproducibility",
+        "state": "unresolved",
+        "propagation_count": 11,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "dependency:supervised-execution-restrictions",
+      "type": "unresolved_dependency",
+      "attributes": {
+        "label": "supervised execution restrictions",
+        "state": "unresolved",
+        "propagation_count": 8,
+        "blocked_streams": [
+          "A39",
+          "A42",
+          "A44",
+          "A45",
+          "A47",
+          "A48",
+          "A49",
+          "A50"
+        ]
+      }
+    },
+    {
+      "id": "event:0cf5235e3e481bab",
+      "type": "contamination_event",
+      "attributes": {
+        "label": "branch contamination rejected",
+        "actor": "A46",
+        "scope": "branch-domain",
+        "ordinal": 70,
+        "summary": "Cross-branch copied seals and forked canonical identities remained non-canonical."
+      }
+    },
+    {
+      "id": "event:17c02030d41ad709",
+      "type": "replay_event",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "actor": "A46",
+        "scope": "replay",
+        "ordinal": 80,
+        "summary": "Recursive replay storms were rejected before they could rewrite unresolved dependency lineage."
+      }
+    },
+    {
+      "id": "event:1e6afc411b41db94",
+      "type": "strict_mode_rule",
+      "attributes": {
+        "label": "strict-mode failure triggered",
+        "actor": "A46",
+        "scope": "strict-mode",
+        "ordinal": 90,
+        "summary": "Strict mode remained denial-preserving for readiness, provider, replay, persistence, release, and autonomous escalation attempts."
+      }
+    },
+    {
+      "id": "event:2b75fa8fbe976f67",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "seal restored",
+        "actor": "A46",
+        "scope": "seal",
+        "ordinal": 60,
+        "summary": "Permanent convergence seal rejected degraded inputs and restored blocked-safe seal continuity."
+      }
+    },
+    {
+      "id": "event:4b56ccd188c036cd",
+      "type": "governance_event",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "actor": "A46",
+        "scope": "adversarial-governance",
+        "ordinal": 140,
+        "summary": "Recursive collapse fixtures were rejected without promoting readiness or certification."
+      }
+    },
+    {
+      "id": "event:6a5a801d8c118108",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "governance recovery executed",
+        "actor": "A46",
+        "scope": "recovery",
+        "ordinal": 100,
+        "summary": "Recursive collapse pressure regenerated deterministic blocked-safe governance artifacts."
+      }
+    },
+    {
+      "id": "event:75d890f3049e476f",
+      "type": "replay_event",
+      "attributes": {
+        "label": "stale replay rejected",
+        "actor": "A49",
+        "scope": "replay",
+        "ordinal": 40,
+        "summary": "Replay snapshots remained non-canonical without reproducibility and audit continuity evidence."
+      }
+    },
+    {
+      "id": "event:9b271c6bd1d9d6fb",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal degraded",
+        "actor": "A46",
+        "scope": "seal",
+        "ordinal": 50,
+        "summary": "Recursive simulator modeled seal fracture and canonical overwrite attempts as degraded inputs."
+      }
+    },
+    {
+      "id": "event:a4ae8a78735b0325",
+      "type": "governance_event",
+      "attributes": {
+        "label": "unresolved dependency added",
+        "actor": "A46",
+        "scope": "convergence",
+        "ordinal": 20,
+        "summary": "Global unresolved dependency taxonomy normalized across permanent denial-retention streams."
+      }
+    },
+    {
+      "id": "event:b1ab139a8613d57c",
+      "type": "canonical_authority",
+      "attributes": {
+        "label": "canonical authority changed",
+        "actor": "A46",
+        "scope": "canonical-authority",
+        "ordinal": 110,
+        "summary": "Canonical authority settled on A46 convergence governance while upstream evidence remained incomplete."
+      }
+    },
+    {
+      "id": "event:c9f2a6e961e1ef99",
+      "type": "denial_lineage",
+      "attributes": {
+        "label": "lineage superseded",
+        "actor": "A46",
+        "scope": "lineage",
+        "ordinal": 30,
+        "summary": "A46 convergence matrix superseded branch-local denial fragments without resolving evidence gaps."
+      }
+    },
+    {
+      "id": "event:d729e6bae6e60079",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "deterministic regeneration verified",
+        "actor": "A46",
+        "scope": "determinism",
+        "ordinal": 150,
+        "summary": "Regenerated governance history preserved event IDs, causality ordering, canonical authority, and blocked-safe posture."
+      }
+    },
+    {
+      "id": "event:ef8d1ee43f7bbcba",
+      "type": "replay_event",
+      "attributes": {
+        "label": "replay storm detected",
+        "actor": "A46",
+        "scope": "replay",
+        "ordinal": 130,
+        "summary": "Recursive replay storm chronology preserved stale replay rejection ordering."
+      }
+    },
+    {
+      "id": "event:f9864ac3eab33f7a",
+      "type": "poisoned_lineage",
+      "attributes": {
+        "label": "governance fragment orphaned",
+        "actor": "A46",
+        "scope": "lineage",
+        "ordinal": 120,
+        "summary": "Orphaned reconciliation fragments stayed rejected without canonical ancestry and source evidence."
+      }
+    },
+    {
+      "id": "event:f9b784f4231df39b",
+      "type": "denial_lineage",
+      "attributes": {
+        "label": "denial introduced",
+        "actor": "A42",
+        "scope": "reliability",
+        "ordinal": 10,
+        "summary": "Reliability archive preserved BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS."
+      }
+    },
+    {
+      "id": "fixture:erased-a2-lineage-recursion",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "erased-a2-lineage-recursion",
+        "group": "recursive unresolved dependency corruption",
+        "attack_type": "lineage_integrity",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:erased-a33-lineage-recursion",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "erased-a33-lineage-recursion",
+        "group": "recursive unresolved dependency corruption",
+        "attack_type": "lineage_integrity",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:erased-a47-lineage-recursion",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "erased-a47-lineage-recursion",
+        "group": "recursive unresolved dependency corruption",
+        "attack_type": "lineage_integrity",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:erased-a49-lineage-recursion",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "erased-a49-lineage-recursion",
+        "group": "recursive unresolved dependency corruption",
+        "attack_type": "lineage_integrity",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:recursive-autonomous-execution-escalation",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-autonomous-execution-escalation",
+        "group": "recursive forged readiness attacks",
+        "attack_type": "readiness",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-branch-domain-conflict",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-branch-domain-conflict",
+        "group": "recursive branch-domain poisoning",
+        "attack_type": "branch_domain",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:recursive-canonical-identity-fork",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-canonical-identity-fork",
+        "group": "recursive branch-domain poisoning",
+        "attack_type": "branch_domain",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-cross-branch-seal-copy",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-cross-branch-seal-copy",
+        "group": "recursive branch-domain poisoning",
+        "attack_type": "branch_domain",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:recursive-distributed-worktree-conflict",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-distributed-worktree-conflict",
+        "group": "recursive branch-domain poisoning",
+        "attack_type": "branch_domain",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-orphaned-reconciliation",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-orphaned-reconciliation",
+        "group": "recursive branch-domain poisoning",
+        "attack_type": "branch_domain",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-persistence-validation",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-persistence-validation",
+        "group": "recursive forged readiness attacks",
+        "attack_type": "readiness",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-placement-enablement",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-placement-enablement",
+        "group": "recursive forged readiness attacks",
+        "attack_type": "readiness",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-provider-certification",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-provider-certification",
+        "group": "recursive forged readiness attacks",
+        "attack_type": "readiness",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-release-approval",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-release-approval",
+        "group": "recursive forged readiness attacks",
+        "attack_type": "readiness",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-replay-certification",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-replay-certification",
+        "group": "recursive forged readiness attacks",
+        "attack_type": "readiness",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-seal-canonical-overwrite",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-seal-canonical-overwrite",
+        "group": "recursive seal corruption",
+        "attack_type": "seal_integrity",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-seal-fracture-level-1",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-seal-fracture-level-1",
+        "group": "recursive seal corruption",
+        "attack_type": "seal_integrity",
+        "recursion_depth": 1
+      }
+    },
+    {
+      "id": "fixture:recursive-seal-fracture-level-2",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-seal-fracture-level-2",
+        "group": "recursive seal corruption",
+        "attack_type": "seal_integrity",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:recursive-seal-fracture-level-3",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-seal-fracture-level-3",
+        "group": "recursive seal corruption",
+        "attack_type": "seal_integrity",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-seal-self-reference-loop",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-seal-self-reference-loop",
+        "group": "recursive seal corruption",
+        "attack_type": "seal_integrity",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:recursive-taxonomy-collapse",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "recursive-taxonomy-collapse",
+        "group": "recursive unresolved dependency corruption",
+        "attack_type": "lineage_integrity",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:replayed-governance-snapshot-wave-1",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "replayed-governance-snapshot-wave-1",
+        "group": "recursive stale replay storms",
+        "attack_type": "replay",
+        "recursion_depth": 1
+      }
+    },
+    {
+      "id": "fixture:replayed-governance-snapshot-wave-2",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "replayed-governance-snapshot-wave-2",
+        "group": "recursive stale replay storms",
+        "attack_type": "replay",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:replayed-governance-snapshot-wave-3",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "replayed-governance-snapshot-wave-3",
+        "group": "recursive stale replay storms",
+        "attack_type": "replay",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:stale-convergence-matrix-recursion",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "stale-convergence-matrix-recursion",
+        "group": "recursive stale replay storms",
+        "attack_type": "replay",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:stale-idempotency-recursion",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "stale-idempotency-recursion",
+        "group": "recursive stale replay storms",
+        "attack_type": "replay",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:suppression-inversion-attack",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "suppression-inversion-attack",
+        "group": "recursive unsupported-readiness suppression attacks",
+        "attack_type": "suppression",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "fixture:suppression-removal-wave-1",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "suppression-removal-wave-1",
+        "group": "recursive unsupported-readiness suppression attacks",
+        "attack_type": "suppression",
+        "recursion_depth": 1
+      }
+    },
+    {
+      "id": "fixture:suppression-removal-wave-2",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "suppression-removal-wave-2",
+        "group": "recursive unsupported-readiness suppression attacks",
+        "attack_type": "suppression",
+        "recursion_depth": 2
+      }
+    },
+    {
+      "id": "fixture:suppression-removal-wave-3",
+      "type": "adversarial_fixture",
+      "attributes": {
+        "label": "suppression-removal-wave-3",
+        "group": "recursive unsupported-readiness suppression attacks",
+        "attack_type": "suppression",
+        "recursion_depth": 3
+      }
+    },
+    {
+      "id": "identity:deterministic-governance",
+      "type": "deterministic_identity",
+      "attributes": {
+        "label": "deterministic governance identity",
+        "state": "preserved"
+      }
+    },
+    {
+      "id": "recovery:0cf5235e3e481bab",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "branch contamination rejected",
+        "recovery_action": "preserve_blocked_safe_recovery",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "recovery:1e6afc411b41db94",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "strict-mode failure triggered",
+        "recovery_action": "trigger_strict_denial",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "recovery:2b75fa8fbe976f67",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "seal restored",
+        "recovery_action": "restore_seal",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "recovery:4b56ccd188c036cd",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "recovery_action": "preserve_blocked_safe_recovery",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "recovery:6a5a801d8c118108",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "governance recovery executed",
+        "recovery_action": "preserve_blocked_safe_recovery",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "recovery:9b271c6bd1d9d6fb",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "seal degraded",
+        "recovery_action": "detect_degradation",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "recovery:d729e6bae6e60079",
+      "type": "recovery_event",
+      "attributes": {
+        "label": "deterministic regeneration verified",
+        "recovery_action": "verify_deterministic_regeneration",
+        "blocked_safe_restored": true
+      }
+    },
+    {
+      "id": "replay:17c02030d41ad709",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay poisoning rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 80
+      }
+    },
+    {
+      "id": "replay:1e6afc411b41db94",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "strict-mode failure triggered",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 90
+      }
+    },
+    {
+      "id": "replay:4b56ccd188c036cd",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 140
+      }
+    },
+    {
+      "id": "replay:75d890f3049e476f",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "stale replay rejected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 40
+      }
+    },
+    {
+      "id": "replay:c9f2a6e961e1ef99",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "lineage superseded",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 30
+      }
+    },
+    {
+      "id": "replay:ef8d1ee43f7bbcba",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "replay storm detected",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 130
+      }
+    },
+    {
+      "id": "replay:f9864ac3eab33f7a",
+      "type": "replay_lineage",
+      "attributes": {
+        "label": "governance fragment orphaned",
+        "replay_state": "rejected_non_canonical",
+        "ordinal": 120
+      }
+    },
+    {
+      "id": "seal:0cf5235e3e481bab",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "branch contamination rejected",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:2b75fa8fbe976f67",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal restored",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:4b56ccd188c036cd",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "adversarial fixture rejected",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:6a5a801d8c118108",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "governance recovery executed",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:9b271c6bd1d9d6fb",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "seal degraded",
+        "seal_state": "degraded_input_rejected",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "seal:d729e6bae6e60079",
+      "type": "governance_seal",
+      "attributes": {
+        "label": "deterministic regeneration verified",
+        "seal_state": "blocked_safe_continuity_preserved",
+        "connected_to_recovery": true
+      }
+    },
+    {
+      "id": "stale-artifact:replayed-governance-snapshot",
+      "type": "stale_artifact",
+      "attributes": {
+        "label": "replayed governance snapshot",
+        "state": "rejected_non_canonical"
+      }
+    },
+    {
+      "id": "strict-mode:denial-preserving",
+      "type": "strict_mode_rule",
+      "attributes": {
+        "label": "denial-preserving strict mode",
+        "state": "active"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "0062290c634f3243",
+      "from": "replay:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "04b4e85f61c8f330",
+      "from": "event:6a5a801d8c118108",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "08bc37d8a36cfc0e",
+      "from": "replay:4b56ccd188c036cd",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "0a1fc86eb97a0ae4",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "0b42dde675a8b16c",
+      "from": "strict-mode:denial-preserving",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "0de6ede7cdec404d",
+      "from": "fixture:recursive-distributed-worktree-conflict",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "0ea181335e4f63c4",
+      "from": "dependency:persistence-validation",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "10eda35700b41d38",
+      "from": "event:75d890f3049e476f",
+      "to": "event:9b271c6bd1d9d6fb",
+      "type": "originates_from"
+    },
+    {
+      "id": "1183514e4be5c081",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "11abde78fcbc3a5a",
+      "from": "event:c9f2a6e961e1ef99",
+      "to": "event:75d890f3049e476f",
+      "type": "originates_from"
+    },
+    {
+      "id": "1258c2ea9adb7e23",
+      "from": "canonical-authority:a46",
+      "to": "decision:blocked-safe",
+      "type": "supersedes"
+    },
+    {
+      "id": "14e2c7d72bac25f0",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "162146d748afc1f4",
+      "from": "event:f9b784f4231df39b",
+      "to": "event:a4ae8a78735b0325",
+      "type": "originates_from"
+    },
+    {
+      "id": "193d39954ae618dc",
+      "from": "dependency:audit-continuity",
+      "to": "event:17c02030d41ad709",
+      "type": "propagates"
+    },
+    {
+      "id": "1998cb7d4ce58c1b",
+      "from": "dependency:audit-continuity",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "1a0b8ed84d1850db",
+      "from": "fixture:suppression-inversion-attack",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "2083972638d02892",
+      "from": "seal:d729e6bae6e60079",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "210379966416cf72",
+      "from": "fixture:recursive-seal-canonical-overwrite",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "21ceb602459fc889",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "230d4dc4bf0027f0",
+      "from": "dependency:provider-drift",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "2559e0943fc07a8d",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "25b988510dde7dcc",
+      "from": "fixture:replayed-governance-snapshot-wave-1",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "26d2a6abb22f6412",
+      "from": "fixture:recursive-orphaned-reconciliation",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "2774fea2b92158dd",
+      "from": "dependency:provider-calibration",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "279f046876d76ad7",
+      "from": "seal:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "27a50b377aeb95aa",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:17c02030d41ad709",
+      "type": "propagates"
+    },
+    {
+      "id": "280448c63aab112d",
+      "from": "dependency:human-review-backlog",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "287022153e65e025",
+      "from": "replay:c9f2a6e961e1ef99",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "2a39549958a3ae10",
+      "from": "event:1e6afc411b41db94",
+      "to": "event:6a5a801d8c118108",
+      "type": "originates_from"
+    },
+    {
+      "id": "2c5043f16d78360f",
+      "from": "replay:17c02030d41ad709",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "2cce17bb935bd0ca",
+      "from": "dependency:audit-continuity",
+      "to": "event:0cf5235e3e481bab",
+      "type": "propagates"
+    },
+    {
+      "id": "2f9a60100bda4fac",
+      "from": "recovery:9b271c6bd1d9d6fb",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "3071e02149302dd1",
+      "from": "event:f9864ac3eab33f7a",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "31a45ce9c648933d",
+      "from": "event:a4ae8a78735b0325",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "328f94615134634d",
+      "from": "dependency:audit-continuity",
+      "to": "event:b1ab139a8613d57c",
+      "type": "propagates"
+    },
+    {
+      "id": "33f82afaeadbad30",
+      "from": "fixture:replayed-governance-snapshot-wave-2",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "34b1717acc72b0a1",
+      "from": "fixture:recursive-cross-branch-seal-copy",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "350e9047a820b9bf",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "398370f729ff8570",
+      "from": "replay:f9864ac3eab33f7a",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "3a48ea399fcc4f8a",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "3b5efbfd3d3c049b",
+      "from": "dependency:audit-continuity",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "propagates"
+    },
+    {
+      "id": "3c20b37498010dfd",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:ef8d1ee43f7bbcba",
+      "type": "propagates"
+    },
+    {
+      "id": "3d3a300d4b1634d3",
+      "from": "event:a4ae8a78735b0325",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "originates_from"
+    },
+    {
+      "id": "3d9a5713b00e5752",
+      "from": "event:6a5a801d8c118108",
+      "to": "event:b1ab139a8613d57c",
+      "type": "originates_from"
+    },
+    {
+      "id": "48b3c7f579387b0d",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "48e456f5223549d6",
+      "from": "dependency:human-review-backlog",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "49fa6f81108a1798",
+      "from": "event:17c02030d41ad709",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "4b1f1b72ae993f1b",
+      "from": "fixture:recursive-taxonomy-collapse",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "4c1ccc6a2537c263",
+      "from": "fixture:replayed-governance-snapshot-wave-3",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "4dff4cadb818a406",
+      "from": "fixture:stale-convergence-matrix-recursion",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "4e7895aadb8a5de9",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "51dbdd54ba509637",
+      "from": "event:b1ab139a8613d57c",
+      "to": "event:f9864ac3eab33f7a",
+      "type": "originates_from"
+    },
+    {
+      "id": "522637f5c1e47480",
+      "from": "replay:75d890f3049e476f",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "54e0f2c8a009f49e",
+      "from": "replay:1e6afc411b41db94",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "566bb7630f94dbf8",
+      "from": "replay:f9864ac3eab33f7a",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "573e963669beb004",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:f9864ac3eab33f7a",
+      "type": "propagates"
+    },
+    {
+      "id": "58a7566eb65ebee0",
+      "from": "recovery:1e6afc411b41db94",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "58d7e32fe8880d1f",
+      "from": "dependency:provider-calibration",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "59652d40330edc15",
+      "from": "seal:6a5a801d8c118108",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "597859ebbcdca6c6",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "5a214ac2be37207b",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "5a63fe720f56761e",
+      "from": "dependency:provider-calibration",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "5bbcfc72e1803d38",
+      "from": "stale-artifact:replayed-governance-snapshot",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "5e7eaf809a58971e",
+      "from": "branch-domain:feat-a42-reliability-forecast-ops",
+      "to": "decision:blocked-safe",
+      "type": "fragments"
+    },
+    {
+      "id": "5f435cbe119a2ffc",
+      "from": "dependency:persistence-validation",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "5f677c4b508f1ac9",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "602720c3a14eff3d",
+      "from": "fixture:recursive-provider-certification",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "605a9b7f15a2ad4c",
+      "from": "event:ef8d1ee43f7bbcba",
+      "to": "event:4b56ccd188c036cd",
+      "type": "originates_from"
+    },
+    {
+      "id": "61cbb7e8915e7758",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "61ef62cd9b12ed5b",
+      "from": "replay:ef8d1ee43f7bbcba",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "63c276b829a33e4d",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "6439afc50bcde107",
+      "from": "event:2b75fa8fbe976f67",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "64be018e6cab40ef",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "666ecdc2903e596e",
+      "from": "event:b1ab139a8613d57c",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "6703dcb2a2abaf12",
+      "from": "event:1e6afc411b41db94",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "680c3f9643a4786a",
+      "from": "event:f9b784f4231df39b",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "68167ee3949bfa7d",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:9b271c6bd1d9d6fb",
+      "type": "propagates"
+    },
+    {
+      "id": "68dfa875adfd7a3a",
+      "from": "event:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "696560fac084762f",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "69a8ef706d916207",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:75d890f3049e476f",
+      "type": "propagates"
+    },
+    {
+      "id": "6d756529960b9db6",
+      "from": "dependency:audit-continuity",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "6db821d9c8940ceb",
+      "from": "dependency:provider-drift",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "6eee810aa766cbd1",
+      "from": "recovery:4b56ccd188c036cd",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "701c5eac7b70b5b6",
+      "from": "dependency:audit-continuity",
+      "to": "event:75d890f3049e476f",
+      "type": "propagates"
+    },
+    {
+      "id": "72c1002721fd921a",
+      "from": "fixture:stale-idempotency-recursion",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "74509ac8e3418d40",
+      "from": "fixture:erased-a49-lineage-recursion",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "78a3f6f1c6c5004c",
+      "from": "fixture:recursive-branch-domain-conflict",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "78ea5a1664a8fbde",
+      "from": "fixture:recursive-seal-fracture-level-1",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "7e9a9cb90c6fde3d",
+      "from": "dependency:persistence-validation",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "800eb5d787ec5825",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:2b75fa8fbe976f67",
+      "type": "propagates"
+    },
+    {
+      "id": "812d370b99d96567",
+      "from": "event:0cf5235e3e481bab",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "8136b19585aad64f",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "820cedba6dae4fa2",
+      "from": "branch-domain:feat-a42-reliability-forecast-ops",
+      "to": "canonical-authority:a46",
+      "type": "contaminates"
+    },
+    {
+      "id": "835d2d4ffcea953a",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:b1ab139a8613d57c",
+      "type": "propagates"
+    },
+    {
+      "id": "86ad128b8dd7a753",
+      "from": "branch-domain:feat-a42-reliability-forecast-ops",
+      "to": "canonical-authority:a46",
+      "type": "canonicalizes"
+    },
+    {
+      "id": "87c527c468a70614",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "888ec2f8919289dd",
+      "from": "dependency:persistence-validation",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "8947e7fd401905dc",
+      "from": "recovery:6a5a801d8c118108",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "90d86f873d92985e",
+      "from": "dependency:provider-drift",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "9131020a23ee3996",
+      "from": "event:9b271c6bd1d9d6fb",
+      "to": "event:2b75fa8fbe976f67",
+      "type": "originates_from"
+    },
+    {
+      "id": "918206f37a563488",
+      "from": "dependency:human-review-backlog",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "93d3ae2b14716d8b",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:0cf5235e3e481bab",
+      "type": "propagates"
+    },
+    {
+      "id": "945f09ce8dafe425",
+      "from": "dependency:human-review-backlog",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "96fdc310fb8ecfa3",
+      "from": "identity:deterministic-governance",
+      "to": "decision:blocked-safe",
+      "type": "replays"
+    },
+    {
+      "id": "974a51b37510adfa",
+      "from": "fixture:recursive-seal-fracture-level-3",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "9846fe432489a845",
+      "from": "fixture:suppression-removal-wave-1",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "98e92c5a8cff8788",
+      "from": "fixture:recursive-seal-fracture-level-2",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "9b1551e05e22436f",
+      "from": "fixture:erased-a2-lineage-recursion",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "9b9b5de56f0aa80d",
+      "from": "replay:75d890f3049e476f",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "9c099e275ca21826",
+      "from": "fixture:erased-a47-lineage-recursion",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "9cd86dc9eb42ee7c",
+      "from": "fixture:recursive-replay-certification",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "9d8e9511d81630c7",
+      "from": "dependency:provider-calibration",
+      "to": "event:f9b784f4231df39b",
+      "type": "propagates"
+    },
+    {
+      "id": "9dddb8f916e11395",
+      "from": "dependency:a2-drift-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "9df8180ca4506861",
+      "from": "seal:0cf5235e3e481bab",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "9e72ee95577fcb88",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "9eace32b61bb9e6b",
+      "from": "event:c9f2a6e961e1ef99",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "9f91e832c003888d",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:1e6afc411b41db94",
+      "type": "propagates"
+    },
+    {
+      "id": "a02fcebd0a894388",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "a1a609b39a6dbd30",
+      "from": "dependency:audit-continuity",
+      "to": "event:ef8d1ee43f7bbcba",
+      "type": "propagates"
+    },
+    {
+      "id": "a25cc69ded9af6fd",
+      "from": "dependency:cefr-stability-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "a4d39fc6df361fb9",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "a6c74b97ea18d672",
+      "from": "fixture:recursive-autonomous-execution-escalation",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "a7520646b3d4dbf4",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:b1ab139a8613d57c",
+      "type": "propagates"
+    },
+    {
+      "id": "a7c2a346478e5fcf",
+      "from": "event:75d890f3049e476f",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "a8bd74b7c6ce2fa1",
+      "from": "fixture:recursive-release-approval",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "abdf3240d8214291",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "ac5d98a01b132210",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:9b271c6bd1d9d6fb",
+      "type": "propagates"
+    },
+    {
+      "id": "ae5779ae8a53a498",
+      "from": "event:4b56ccd188c036cd",
+      "to": "event:d729e6bae6e60079",
+      "type": "originates_from"
+    },
+    {
+      "id": "aecd2470bcb2cbac",
+      "from": "event:9b271c6bd1d9d6fb",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "b0acaf92d3f54a04",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "b11c24a2703dc752",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "propagates"
+    },
+    {
+      "id": "b5f67d50e285abff",
+      "from": "fixture:recursive-canonical-identity-fork",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "b734f7dd173835e5",
+      "from": "dependency:a33-capacity-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "b89a3fa2f7816b5a",
+      "from": "fixture:suppression-removal-wave-2",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "b932a7fdb02f9490",
+      "from": "dependency:provider-calibration",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "b989f91cb484eee0",
+      "from": "dependency:provider-calibration",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "bc027f65a2889975",
+      "from": "fixture:suppression-removal-wave-3",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "be8e79d284905ea1",
+      "from": "recovery:0cf5235e3e481bab",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "c106cca2c223d9ea",
+      "from": "event:2b75fa8fbe976f67",
+      "to": "event:0cf5235e3e481bab",
+      "type": "originates_from"
+    },
+    {
+      "id": "c4e441539e70b24f",
+      "from": "dependency:human-review-backlog",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "c5073ce956290b04",
+      "from": "fixture:recursive-placement-enablement",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "c5495b7a1f1cd9bd",
+      "from": "dependency:audit-continuity",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "c780d5f788374a5f",
+      "from": "event:d729e6bae6e60079",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "c797fc30aef6f793",
+      "from": "dependency:provider-drift",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "c8173984a91f7cdf",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "c9daa6e3d3440eb6",
+      "from": "event:f9864ac3eab33f7a",
+      "to": "event:ef8d1ee43f7bbcba",
+      "type": "originates_from"
+    },
+    {
+      "id": "cc29e1f422bc5747",
+      "from": "recovery:2b75fa8fbe976f67",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "cd86195ff162c634",
+      "from": "fixture:erased-a33-lineage-recursion",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "cde6c70d9dd624f4",
+      "from": "dependency:audit-continuity",
+      "to": "event:f9864ac3eab33f7a",
+      "type": "propagates"
+    },
+    {
+      "id": "ce3eb5f753ae9945",
+      "from": "seal:2b75fa8fbe976f67",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "cf206e9fe9c1363f",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:f9b784f4231df39b",
+      "type": "propagates"
+    },
+    {
+      "id": "d15817da9fc5152e",
+      "from": "event:0cf5235e3e481bab",
+      "to": "event:17c02030d41ad709",
+      "type": "originates_from"
+    },
+    {
+      "id": "d3e3cc9715b5ed51",
+      "from": "dependency:persistence-validation",
+      "to": "event:1e6afc411b41db94",
+      "type": "propagates"
+    },
+    {
+      "id": "d452d680c20794ba",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:f9b784f4231df39b",
+      "type": "propagates"
+    },
+    {
+      "id": "d48d6b4d0da8411b",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "d736536bb6b07b45",
+      "from": "dependency:provider-drift",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "d737f20c8a50b3f4",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "d77fdf08b7cab430",
+      "from": "dependency:provider-drift",
+      "to": "event:1e6afc411b41db94",
+      "type": "propagates"
+    },
+    {
+      "id": "db5cfc80ba872f2c",
+      "from": "dependency:a2-drift-evidence",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "dbac5b231f1121d1",
+      "from": "dependency:replay-reproducibility",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "ddc08b6d54285406",
+      "from": "fixture:recursive-seal-self-reference-loop",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "df86a9610ad52471",
+      "from": "replay:17c02030d41ad709",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "df93be5713a32918",
+      "from": "dependency:persistence-validation",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "e0c87f53e9b2f8b0",
+      "from": "seal:9b271c6bd1d9d6fb",
+      "to": "decision:blocked-safe",
+      "type": "seals"
+    },
+    {
+      "id": "e1c8d9746f75c69d",
+      "from": "dependency:audit-continuity",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "e627296209d793ae",
+      "from": "dependency:replay-reproducibility",
+      "to": "event:a4ae8a78735b0325",
+      "type": "propagates"
+    },
+    {
+      "id": "e629cfc4cc026391",
+      "from": "identity:deterministic-governance",
+      "to": "canonical-authority:a46",
+      "type": "depends_on"
+    },
+    {
+      "id": "ea8ef2f9f9db75ef",
+      "from": "event:ef8d1ee43f7bbcba",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "ea9927d3e4426417",
+      "from": "dependency:fairness-bias-evidence",
+      "to": "event:6a5a801d8c118108",
+      "type": "propagates"
+    },
+    {
+      "id": "ebb1e44fd56af607",
+      "from": "replay:1e6afc411b41db94",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
+      "id": "edd1a9bbb7ff7af6",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:2b75fa8fbe976f67",
+      "type": "propagates"
+    },
+    {
+      "id": "eeafb0c296614428",
+      "from": "fixture:recursive-persistence-validation",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
+    },
+    {
+      "id": "efd7ba716f634350",
+      "from": "recovery:d729e6bae6e60079",
+      "to": "decision:blocked-safe",
+      "type": "restores"
+    },
+    {
+      "id": "f1913e738ebe80bd",
+      "from": "dependency:audit-continuity",
+      "to": "event:4b56ccd188c036cd",
+      "type": "propagates"
+    },
+    {
+      "id": "f3e7e3307cb3844e",
+      "from": "event:17c02030d41ad709",
+      "to": "event:1e6afc411b41db94",
+      "type": "originates_from"
+    },
+    {
+      "id": "f40f1ed26eb1f7fd",
+      "from": "replay:ef8d1ee43f7bbcba",
+      "to": "decision:blocked-safe",
+      "type": "explains"
+    },
+    {
+      "id": "f4adfe5956425bae",
+      "from": "dependency:supervised-execution-restrictions",
+      "to": "event:d729e6bae6e60079",
+      "type": "propagates"
+    },
+    {
+      "id": "fb188a74f9a90020",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "decision:blocked-safe",
+      "type": "blocks"
+    },
+    {
+      "id": "fcdd32d7037713b8",
+      "from": "dependency:a33-endurance-evidence",
+      "to": "event:c9f2a6e961e1ef99",
+      "type": "propagates"
+    },
+    {
+      "id": "fe2c1f868343f824",
+      "from": "replay:c9f2a6e961e1ef99",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    }
+  ],
+  "blocked_safe_posture": {
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "do_not_enable_continuity": true
+  },
+  "final_graph_decision": {
+    "graph_queryable": true,
+    "temporal_reasoning_integrated": true,
+    "replay_chronology_explorable": true,
+    "unresolved_dependency_propagation_computable": true,
+    "governance_causality_machine_readable": true,
+    "canonical_authority_explainable": true,
+    "blocked_safe_introspectable": true,
+    "readiness_allowed": false,
+    "release_allowed": false,
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "do_not_enable_continuity": true
+  },
+  "fixture_history_groups": [
+    {
+      "group": "adversarial-governance-history",
+      "path": "tests/governance/fixtures/gig/adversarial-governance-history/history.json",
+      "graph_node_type": "adversarial_fixture"
+    },
+    {
+      "group": "branch-domain-conflict-history",
+      "path": "tests/governance/fixtures/gig/branch-domain-conflict-history/history.json",
+      "graph_node_type": "branch_domain"
+    },
+    {
+      "group": "canonical-identity-fork-history",
+      "path": "tests/governance/fixtures/gig/canonical-identity-fork-history/history.json",
+      "graph_node_type": "deterministic_identity"
+    },
+    {
+      "group": "governance-recovery-history",
+      "path": "tests/governance/fixtures/gig/governance-recovery-history/history.json",
+      "graph_node_type": "recovery_event"
+    },
+    {
+      "group": "orphaned-lineage-history",
+      "path": "tests/governance/fixtures/gig/orphaned-lineage-history/history.json",
+      "graph_node_type": "denial_lineage"
+    },
+    {
+      "group": "poisoned-lineage-history",
+      "path": "tests/governance/fixtures/gig/poisoned-lineage-history/history.json",
+      "graph_node_type": "poisoned_lineage"
+    },
+    {
+      "group": "recursive-collapse-history",
+      "path": "tests/governance/fixtures/gig/recursive-collapse-history/history.json",
+      "graph_node_type": "adversarial_fixture"
+    },
+    {
+      "group": "replay-storm-history",
+      "path": "tests/governance/fixtures/gig/replay-storm-history/history.json",
+      "graph_node_type": "replay_lineage"
+    },
+    {
+      "group": "seal-degradation-history",
+      "path": "tests/governance/fixtures/gig/seal-degradation-history/history.json",
+      "graph_node_type": "governance_seal"
+    },
+    {
+      "group": "stale-authority-history",
+      "path": "tests/governance/fixtures/gig/stale-authority-history/history.json",
+      "graph_node_type": "canonical_authority"
+    },
+    {
+      "group": "strict-mode-evolution-history",
+      "path": "tests/governance/fixtures/gig/strict-mode-evolution-history/history.json",
+      "graph_node_type": "strict_mode_rule"
+    },
+    {
+      "group": "unresolved-propagation-history",
+      "path": "tests/governance/fixtures/gig/unresolved-propagation-history/history.json",
+      "graph_node_type": "unresolved_dependency"
+    }
+  ]
+}
