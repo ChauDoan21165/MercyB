@@ -16,59 +16,19 @@ import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 import { qk } from "@/lib/queries/keys";
-import {
-  TARGET_META,
-  type NativeLang,
-  type TargetLang,
-} from "@/lib/onboarding/types";
+import { type NativeLang, type TargetLang } from "@/lib/onboarding/types";
 
-const NATIVE_VALUES: NativeLang[] = ["vi", "en"];
-const TARGET_VALUES = Object.keys(TARGET_META) as TargetLang[];
-
-function isNativeLang(v: unknown): v is NativeLang {
-  return typeof v === "string" && (NATIVE_VALUES as string[]).includes(v);
-}
-
-function isTargetLang(v: unknown): v is TargetLang {
-  return typeof v === "string" && (TARGET_VALUES as string[]).includes(v);
-}
-
-export interface LanguagePair {
-  /** null until pair-selection onboarding completes. */
-  nativeLanguage: NativeLang | null;
-  /** Ordered; deduped; only valid codes. May be empty. */
-  targets: TargetLang[];
-  /** First target = the one Home routes into. null when none. */
-  primaryTarget: TargetLang | null;
-}
-
-/**
- * Parse the pair off a raw profiles row (the shape useProfileQuery
- * returns). Defensive: tolerates NULLs, non-arrays, and unknown codes
- * (forward-compatible if the column ever holds a code this build
- * doesn't know yet — it is simply ignored, never crashes Home).
- */
-export function parseLanguagePair(row: unknown): LanguagePair {
-  const r = (row ?? {}) as {
-    native_language?: unknown;
-    target_languages?: unknown;
-  };
-  const nativeLanguage = isNativeLang(r.native_language)
-    ? r.native_language
-    : null;
-  const rawTargets = Array.isArray(r.target_languages)
-    ? r.target_languages
-    : [];
-  const targets: TargetLang[] = [];
-  for (const t of rawTargets) {
-    if (isTargetLang(t) && !targets.includes(t)) targets.push(t);
-  }
-  return {
-    nativeLanguage,
-    targets,
-    primaryTarget: targets[0] ?? null,
-  };
-}
+// `parseLanguagePair` + the `LanguagePair` interface live in
+// ./parseLanguagePair so they can be imported by `anonymousPair.ts`
+// without dragging in the React/auth dependencies this module has
+// (A13 cycle #8: broke the anonymousPair → languagePair → AuthProvider
+// → anonymousPair 3-hop cycle). Re-exported here for backward-compat
+// with existing callers (Home, LanguagePairSettings, tests) so their
+// import paths stay byte-identical.
+export {
+  parseLanguagePair,
+  type LanguagePair,
+} from "./parseLanguagePair";
 
 /** Move `target` to index 0 (primary), preserving the rest of the
  *  order. No-op if it isn't in the list. */

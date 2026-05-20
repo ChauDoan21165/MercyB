@@ -21,7 +21,7 @@
 // hydrates for anonymous users with no extra wiring — same defensive
 // try/catch + SSR guards that context uses.
 
-import { parseLanguagePair } from "@/lib/languagePair/languagePair";
+import { parseLanguagePair } from "@/lib/languagePair/parseLanguagePair";
 import type { NativeLang, TargetLang } from "@/lib/onboarding/types";
 
 /** JSON blob: {"native":"vi","targets":["en","ja"]}. */
