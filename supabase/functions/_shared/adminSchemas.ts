@@ -136,3 +136,39 @@ export const adminManagementRequestSchema = z.discriminatedUnion("action", [
   adminManagementDeleteSchema,
 ]);
 export type AdminManagementRequest = z.infer<typeof adminManagementRequestSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * admin-list-users — paginated user list with optional search/tier
+ * filter. Every field optional with handler-side defaults
+ * (page=1, limit=50). Bounds chosen to match listUsers' Supabase-side
+ * cap (1000) for limit and reasonable search/tier ceilings.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const adminListUsersRequestSchema = z.object({
+  page: z.number().int().positive().optional(),
+  limit: z.number().int().positive().max(1000).optional(),
+  search: z.string().max(200).optional(),
+  tier: z.string().max(50).optional(),
+}).passthrough();
+export type AdminListUsersRequest = z.infer<typeof adminListUsersRequestSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * admin-list-registered-users — paginated raw-auth-users list. Uses
+ * `perPage` (not `limit`) intentionally, mirroring Supabase Auth
+ * admin.listUsers' parameter name. Existing handler clamps perPage
+ * to 1-500 downstream; the schema accepts the wider Auth-API range
+ * so values in [501, 1000] get clamped (preserving existing behavior)
+ * rather than rejected.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const adminListRegisteredUsersRequestSchema = z.object({
+  page: z.number().int().positive().optional(),
+  perPage: z.number().int().positive().max(1000).optional(),
+}).passthrough();
+export type AdminListRegisteredUsersRequest = z.infer<
+  typeof adminListRegisteredUsersRequestSchema
+>;
+
+// Note: admin-list-rooms has NO request payload (no req.json() call —
+// pure GET-style listing). No schema needed; auth gate is sufficient.
+// Confirmed by grep — file does not invoke req.json/text/body at all.
