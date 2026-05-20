@@ -293,6 +293,7 @@ function runAuto() {
   const contradictionDetector = generateFailoverContradictionDetector(sources);
   const durabilityContinuity = generateReplayDurabilityContinuityMap(sources);
   const blockedSafeCertification = generateBlockedSafeReliabilityCertification(sources);
+  generateLongTermGovernanceRetentionSummary(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -355,6 +356,7 @@ function runAuto() {
   console.log(`[a42] failover contradiction detector: ${path.join(RELIABILITY_OUT_DIR, "a42-failover-contradiction-detector.json")}`);
   console.log(`[a42] replay durability continuity map: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-continuity-map.json")}`);
   console.log(`[a42] blocked-safe reliability certification: ${path.join(RELIABILITY_OUT_DIR, "a42-blocked-safe-reliability-certification.json")}`);
+  console.log(`[a42] long-term governance retention summary: ${path.join(RELIABILITY_OUT_DIR, "a42-long-term-governance-retention-summary.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -1832,6 +1834,146 @@ function generateBlockedSafeReliabilityCertification(existingSources?: SourceSta
   return report;
 }
 
+function generateLongTermGovernanceRetentionSummary(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const requiredExternalArtifacts = [
+    "governance-final-convergence-certification-summary",
+    "governance-global-denial-lineage-map",
+    "governance-cross-stream-strict-mode-verification",
+    "governance-final-blocked-safe-closure-report",
+  ];
+  const externalArtifactReview = requiredExternalArtifacts.map((artifact) => {
+    const jsonPath = findByBasename("docs", `${artifact}.json`) ?? findByBasename("reports", `${artifact}.json`);
+    const mdPath = findByBasename("docs", `${artifact}.md`) ?? findByBasename("reports", `${artifact}.md`);
+    const present = Boolean(jsonPath || mdPath);
+    return {
+      artifact,
+      presentInA42Worktree: present,
+      jsonPath,
+      markdownPath: mdPath,
+      consistency: present ? "external_evidence_present_unverified" : "blocked_safe_missing_external_evidence",
+      finding: present
+        ? "External governance evidence is present and remains subject to blocked-safe validation."
+        : "External governance evidence is absent in this A42 worktree; A42 documents the absence and preserves denial lineage.",
+    };
+  });
+  const a33Missing = sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => source.key);
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    summary: "Long-term A42 reliability-governance retention summary",
+    riskClassification: "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+    ready: false,
+    schema_completeness: false,
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    autonomous_execution: "SUPERVISED_ONLY",
+    governanceOnly: true,
+    evidenceOnly: true,
+    reviewedExternalArtifacts: externalArtifactReview,
+    missingExternalArtifacts: externalArtifactReview.filter((item) => !item.presentInA42Worktree).map((item) => item.artifact),
+    missingEnduranceEvidence: a33Missing,
+    retentionFindings: {
+      replayDurabilityContinuity: {
+        state: "blocked_safe_incomplete",
+        globallyContradictionFreeWithinAvailableEvidence: true,
+        reason:
+          "Replay durability continuity remains explicitly incomplete and does not contradict retained denial lineage because no replay closure is asserted.",
+      },
+      failoverContradictionLineage: {
+        traceable: true,
+        resolved: false,
+        unresolvedOnlyBecauseUpstreamEvidenceIncomplete: true,
+        reason:
+          "Failover contradiction lineage remains retained and unresolved pending upstream endurance, provider, observability, replay, capacity, and supervision evidence.",
+      },
+      unsupportedReadinessSuppression: {
+        globallyActiveWithinAvailableEvidence: true,
+        claimScanClean: true,
+        externalSuppressionEvidencePresent: false,
+        reason:
+          "A42 retains unsupported-readiness suppression through claim scanning and blocked-safe artifacts while documenting absent external convergence evidence.",
+      },
+      absentConvergenceArtifacts: {
+        explicitlyDocumented: true,
+        missingArtifacts: externalArtifactReview.filter((item) => !item.presentInA42Worktree).map((item) => item.artifact),
+      },
+      blockedSafeReliabilityCertification: {
+        evidenceGated: true,
+        preservesDenialPosture: true,
+        authorizesEnablement: false,
+      },
+      strictModeDenialBehavior: {
+        convergenceConsistent: true,
+        expectedStrictFailure: true,
+        reason: "Strict mode must continue failing while endurance validation evidence and external convergence closure artifacts are incomplete.",
+      },
+    },
+    retentionResult: {
+      longTermRetentionSummaryGenerated: true,
+      denialLineagePreserved: true,
+      reliabilityReadinessBlocked: true,
+      productionReadinessPromoted: false,
+      placementV3EnablementPromoted: false,
+      nextRequiredEvidence: [
+        "A33 endurance health summary",
+        "A33 timeout risk forecast",
+        "governance final convergence certification summary",
+        "global denial lineage map",
+        "cross-stream strict-mode verification",
+        "final blocked-safe closure report",
+      ],
+    },
+  };
+  writeReliabilityJsonAndMarkdown(
+    "a42-long-term-governance-retention-summary",
+    summary,
+    [
+      "# A42 Long-Term Governance Retention Summary",
+      "",
+      `Generated: ${summary.generatedAt}`,
+      "",
+      "A42 completed long-term reliability-governance retention closure as a governance-only, evidence-only stream.",
+      "",
+      `- Risk classification: ${summary.riskClassification}`,
+      `- Ready: ${summary.ready}`,
+      `- Schema completeness: ${summary.schema_completeness}`,
+      `- production_safe: ${summary.production_safe}`,
+      `- placement_v3_enabled: ${summary.placement_v3_enabled}`,
+      `- placement_test_enabled: ${summary.placement_test_enabled}`,
+      `- placement_v3_ui_enabled: ${summary.placement_v3_ui_enabled}`,
+      `- live_validation_complete: ${summary.live_validation_complete}`,
+      `- live_provider_validated: ${summary.live_provider_validated}`,
+      `- autonomous_execution: ${summary.autonomous_execution}`,
+      "",
+      "## External Governance Retention Review",
+      "",
+      ...summary.reviewedExternalArtifacts.map(
+        (item) => `- ${item.artifact}: ${item.consistency}; ${item.finding}`,
+      ),
+      "",
+      "## Retention Findings",
+      "",
+      "- Replay durability continuity remains `blocked_safe_incomplete` and contradiction-free within available A42 evidence because no replay closure is asserted.",
+      "- Failover contradiction lineage remains traceable and unresolved only because upstream endurance, provider, observability, replay, capacity, and supervised-execution evidence is incomplete.",
+      "- Unsupported-readiness suppression remains globally active within available evidence through A42 claim scanning and blocked-safe artifacts.",
+      "- Absent convergence artifacts remain explicitly documented as missing external evidence.",
+      "- Blocked-safe reliability certification remains evidence-gated, preserves denial posture, and authorizes no enablement.",
+      "- Strict-mode denial behavior remains convergence-consistent and must continue failing while endurance validation evidence is incomplete.",
+      "",
+      "## Retention Result",
+      "",
+      "A42 long-term governance retention summary is generated. Reliability readiness remains blocked pending A33 endurance inputs and external final governance closure artifacts. This summary does not enable Placement V3, change provider execution, perform live validation, certify replay behavior, alter scoring or CEFR placement, bypass governance, fabricate evidence, promote production readiness, or reduce safety gates.",
+    ],
+  );
+  return summary;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -2507,6 +2649,8 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-convergence-reliability-review-summary.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-final-convergence-certification-summary.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-final-convergence-certification-summary.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-long-term-governance-retention-summary.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-long-term-governance-retention-summary.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

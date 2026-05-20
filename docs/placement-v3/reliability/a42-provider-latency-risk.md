@@ -1,6 +1,6 @@
 # A42 Provider Latency Risk
 
-Generated: 2026-05-20T17:04:11.754Z
+Generated: 2026-05-20T17:10:11.951Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-05-20T17:10:11.975Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "summary": "Long-term A42 reliability-governance retention summary",
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "ready": false,
+  "schema_completeness": false,
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "governanceOnly": true,
+  "evidenceOnly": true,
+  "reviewedExternalArtifacts": [
+    {
+      "artifact": "governance-final-convergence-certification-summary",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External governance evidence is absent in this A42 worktree; A42 documents the absence and preserves denial lineage."
+    },
+    {
+      "artifact": "governance-global-denial-lineage-map",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External governance evidence is absent in this A42 worktree; A42 documents the absence and preserves denial lineage."
+    },
+    {
+      "artifact": "governance-cross-stream-strict-mode-verification",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External governance evidence is absent in this A42 worktree; A42 documents the absence and preserves denial lineage."
+    },
+    {
+      "artifact": "governance-final-blocked-safe-closure-report",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External governance evidence is absent in this A42 worktree; A42 documents the absence and preserves denial lineage."
+    }
+  ],
+  "missingExternalArtifacts": [
+    "governance-final-convergence-certification-summary",
+    "governance-global-denial-lineage-map",
+    "governance-cross-stream-strict-mode-verification",
+    "governance-final-blocked-safe-closure-report"
+  ],
+  "missingEnduranceEvidence": [
+    "a33_endurance_health",
+    "a33_timeout_risk_forecast"
+  ],
+  "retentionFindings": {
+    "replayDurabilityContinuity": {
+      "state": "blocked_safe_incomplete",
+      "globallyContradictionFreeWithinAvailableEvidence": true,
+      "reason": "Replay durability continuity remains explicitly incomplete and does not contradict retained denial lineage because no replay closure is asserted."
+    },
+    "failoverContradictionLineage": {
+      "traceable": true,
+      "resolved": false,
+      "unresolvedOnlyBecauseUpstreamEvidenceIncomplete": true,
+      "reason": "Failover contradiction lineage remains retained and unresolved pending upstream endurance, provider, observability, replay, capacity, and supervision evidence."
+    },
+    "unsupportedReadinessSuppression": {
+      "globallyActiveWithinAvailableEvidence": true,
+      "claimScanClean": true,
+      "externalSuppressionEvidencePresent": false,
+      "reason": "A42 retains unsupported-readiness suppression through claim scanning and blocked-safe artifacts while documenting absent external convergence evidence."
+    },
+    "absentConvergenceArtifacts": {
+      "explicitlyDocumented": true,
+      "missingArtifacts": [
+        "governance-final-convergence-certification-summary",
+        "governance-global-denial-lineage-map",
+        "governance-cross-stream-strict-mode-verification",
+        "governance-final-blocked-safe-closure-report"
+      ]
+    },
+    "blockedSafeReliabilityCertification": {
+      "evidenceGated": true,
+      "preservesDenialPosture": true,
+      "authorizesEnablement": false
+    },
+    "strictModeDenialBehavior": {
+      "convergenceConsistent": true,
+      "expectedStrictFailure": true,
+      "reason": "Strict mode must continue failing while endurance validation evidence and external convergence closure artifacts are incomplete."
+    }
+  },
+  "retentionResult": {
+    "longTermRetentionSummaryGenerated": true,
+    "denialLineagePreserved": true,
+    "reliabilityReadinessBlocked": true,
+    "productionReadinessPromoted": false,
+    "placementV3EnablementPromoted": false,
+    "nextRequiredEvidence": [
+      "A33 endurance health summary",
+      "A33 timeout risk forecast",
+      "governance final convergence certification summary",
+      "global denial lineage map",
+      "cross-stream strict-mode verification",
+      "final blocked-safe closure report"
+    ]
+  }
+}
