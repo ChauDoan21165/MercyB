@@ -681,6 +681,7 @@ export default function AdminDashboard() {
     { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
     { title: "Analytics", desc: "DAU, feature usage, funnel, and room popularity (Level 9+).", href: "/admin/analytics", badge: "READY" },
     { title: "Costs / Chi phí", desc: "Daily spend across OpenAI, ElevenLabs, Resend, Azure (Level 9+).", href: "/admin/cost-monitoring", badge: "READY" },
+    { title: "Placement Benchmarks", desc: "Placement V3 latency, token, cost, and failover evidence.", href: "/admin/placement-benchmarks", badge: "A33" },
   ];
 
   function go(href?: string) {
