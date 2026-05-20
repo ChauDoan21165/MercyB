@@ -200,9 +200,25 @@ sitting idle while work exists is wasted capacity. Planner-Claude's responsibili
 the moment a report arrives, the next brief ships in the same message.
 
 
+## 18. EVERY REPORT MUST HAVE A CLEARLY VISIBLE BOXED HEADLINE
+
+Every agent report starts with:
+1. "Chau Report from A<N>" as the first line
+2. A ╔══╗ box immediately after containing the task name and status
+
+Example:
+  Chau Report from A<N>
+  ╔══════════════════════════════════════╗
+  ║ 📋 A<N> — <task name> — DONE        ║
+  ╚══════════════════════════════════════╝
+
+No report body before the box. The box lets Chau scan quickly
+across many terminal tabs.
+
+
 ## Last updated
 
-2026-05-19 — Added principle 17 (free agent = immediate next dispatch). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-20 — Added principle 18 (boxed headline required on every report). 2026-05-19 — Added principle 17 (free agent = immediate next dispatch). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
