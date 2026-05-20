@@ -1,0 +1,312 @@
+{
+  "generatedAt": "2026-05-20T20:15:05.497Z",
+  "agent": "A46",
+  "name": "GovernanceRecoveryOps",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "governanceOnly": true,
+  "evidenceOnly": true,
+  "attestation": "governance seal integrity attestation",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "globalPosture": "DO_NOT_ENABLE",
+  "doNotEnableContinuity": true,
+  "sourceArtifacts": {
+    "reconciliation": "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json",
+    "globalMatrix": "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+    "driftDetection": "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json",
+    "permanentConvergenceSeal": "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json"
+  },
+  "artifactPresence": {
+    "permanentConvergenceGovernanceSeal": {
+      "path": "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "present": true
+    },
+    "convergenceDriftDetector": {
+      "path": "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json",
+      "present": true
+    },
+    "strictModeRegressionSentinel": {
+      "path": "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "present": true
+    },
+    "globalDenialRetentionMatrix": {
+      "path": "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+      "present": true
+    },
+    "unresolvedDependencyNormalization": {
+      "path": "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+      "present": true
+    },
+    "denialRetentionReconciliationLedgers": {
+      "path": "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json",
+      "present": true
+    },
+    "unsupportedReadinessSuppressionContinuity": {
+      "path": "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "present": true
+    },
+    "supervisedExecutionDenialContinuity": {
+      "path": "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "present": true
+    }
+  },
+  "streamAttestation": [
+    {
+      "agent": "A39",
+      "name": "CapacityPlanningOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A42",
+      "name": "ReliabilityForecastOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A44",
+      "name": "HumanReviewExecutionOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A45",
+      "name": "ProviderValidationOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A47",
+      "name": "ObservabilityEvidenceOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A48",
+      "name": "ReleaseHistoryOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A49",
+      "name": "ReplayEvidenceOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    },
+    {
+      "agent": "A50",
+      "name": "SupervisedExecutionOps",
+      "presentInMatrix": true,
+      "sealed": true,
+      "denialLineagePreserved": true,
+      "unsupportedReadinessSuppressionActive": true,
+      "supervisedExecutionDenied": true,
+      "unresolvedDependenciesAttested": true
+    }
+  ],
+  "invariantAttestation": {
+    "production_safe": true,
+    "production_readiness": true,
+    "placement_v3_enabled": true,
+    "placement_v3_enablement": true,
+    "live_validation_complete": true,
+    "live_provider_validated": true,
+    "provider_drift_measured": true,
+    "production_persistence_validated": true,
+    "writes_production_data": true,
+    "autonomous_execution": true,
+    "doNotEnableContinuity": true
+  },
+  "unresolvedDependencyAttestation": [
+    {
+      "dependency": "A2 drift evidence",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "A33 endurance evidence",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "A33 capacity evidence",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "replay reproducibility",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "provider calibration",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "provider drift",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "fairness/bias evidence",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "CEFR stability evidence",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "persistence validation",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "audit continuity",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "human review backlog",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    },
+    {
+      "dependency": "supervised execution restrictions",
+      "present": true,
+      "normalized": true,
+      "resolved": false,
+      "immutable": true
+    }
+  ],
+  "strictModeRegressionSentinel": {
+    "present": true,
+    "preserved": true,
+    "failOnResolvedUnverifiedDependencies": true,
+    "failOnReadinessPromotion": true,
+    "failOnCertificationImplication": true,
+    "failOnDoNotEnableRemoval": true
+  },
+  "convergenceDriftDetection": {
+    "present": true,
+    "enforced": true,
+    "bypassed": false,
+    "sourceDriftDetected": false,
+    "checksPassed": true
+  },
+  "unsupportedReadinessSuppressionContinuity": {
+    "present": true,
+    "permanent": true,
+    "weakened": false,
+    "unsupportedReadinessClaimsAllowed": false,
+    "sealedAcrossStreams": true
+  },
+  "supervisedExecutionDenialContinuity": {
+    "present": true,
+    "autonomous_execution": "SUPERVISED_ONLY"
+  },
+  "regenerationSafeAttestationContinuity": {
+    "preserved": true,
+    "sealContinuityPreserved": true,
+    "matrixContinuityPreserved": true,
+    "missingInputsRemainUnresolved": true,
+    "generatedArtifacts": [
+      "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json",
+      "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.md",
+      "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
+      "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.md",
+      "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json",
+      "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.md",
+      "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.md",
+      "docs/placement-v3/governance/a46-governance-seal-integrity-attestation.json",
+      "docs/placement-v3/governance/a46-governance-seal-integrity-attestation.md",
+      "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json",
+      "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.md",
+      "docs/placement-v3/governance/a46-governance-seal-integrity-attestation.json",
+      "docs/placement-v3/governance/a46-governance-seal-integrity-attestation.md"
+    ]
+  },
+  "denialLineageImmutability": {
+    "preserved": true,
+    "matrixDenialLineagePreserved": true,
+    "sealDenialLineagePreserved": true
+  },
+  "certificationImplications": {
+    "replay": false,
+    "provider": false,
+    "release": false,
+    "observability": false,
+    "persistence": false
+  },
+  "forbiddenActionsPreserved": {
+    "runtimeMutation": false,
+    "enablementPromotion": false,
+    "fabricatedEvidence": false,
+    "certificationClaims": false,
+    "persistenceValidationClaims": false,
+    "governanceBypass": false,
+    "unrelatedWorktreeCleanup": false
+  },
+  "conclusion": "A46 attests sealed convergence-governance artifact integrity while preserving unresolved dependencies, blocked-safe invariants, strict-mode guards, supervised-only execution, and DO_NOT_ENABLE continuity."
+}

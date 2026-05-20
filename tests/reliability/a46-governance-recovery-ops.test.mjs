@@ -9,6 +9,7 @@ const globalMatrixArtifact =
   "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json";
 const driftDetectionArtifact = "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json";
 const convergenceSealArtifact = "docs/placement-v3/governance/a46-permanent-convergence-governance-seal.json";
+const sealAttestationArtifact = "docs/placement-v3/governance/a46-governance-seal-integrity-attestation.json";
 
 function runNpm(script, args = []) {
   return spawnSync("npm", ["run", script, "--", ...args], {
@@ -31,6 +32,10 @@ function readDriftDetectionArtifact() {
 
 function readConvergenceSealArtifact() {
   return JSON.parse(fs.readFileSync(path.join(repoRoot, convergenceSealArtifact), "utf8"));
+}
+
+function readSealAttestationArtifact() {
+  return JSON.parse(fs.readFileSync(path.join(repoRoot, sealAttestationArtifact), "utf8"));
 }
 
 function expectBlockedSafe(report) {
@@ -299,6 +304,60 @@ describe("A46 GovernanceRecoveryOps A42 convergence reconciliation", () => {
     expect(validateResult.status, validateResult.stderr || validateResult.stdout).toBe(0);
     expect(`${validateResult.stdout}\n${validateResult.stderr}`).toContain(
       "permanent convergence governance seal validation passed",
+    );
+  });
+
+  it("generates governance seal integrity attestation across sealed artifacts", () => {
+    const result = runNpm("governance:a46:seal-integrity-attestation");
+    expect(result.status, result.stderr || result.stdout).toBe(0);
+    expect(fs.existsSync(path.join(repoRoot, sealAttestationArtifact))).toBe(true);
+    expect(fs.existsSync(path.join(repoRoot, sealAttestationArtifact.replace(".json", ".md")))).toBe(true);
+
+    const attestation = readSealAttestationArtifact();
+    expectGlobalBlockedSafe(attestation);
+    expect(Object.values(attestation.artifactPresence).every((artifact) => artifact.present === true)).toBe(true);
+    expect(attestation.streamAttestation.map((stream) => stream.agent)).toEqual([
+      "A39",
+      "A42",
+      "A44",
+      "A45",
+      "A47",
+      "A48",
+      "A49",
+      "A50",
+    ]);
+    expect(attestation.streamAttestation.every((stream) => stream.presentInMatrix === true)).toBe(true);
+    expect(attestation.streamAttestation.every((stream) => stream.sealed === true)).toBe(true);
+    expect(Object.values(attestation.invariantAttestation).every((value) => value === true)).toBe(true);
+    expect(attestation.unresolvedDependencyAttestation.every((dependency) => dependency.normalized === true)).toBe(
+      true,
+    );
+    expect(attestation.unresolvedDependencyAttestation.every((dependency) => dependency.resolved === false)).toBe(
+      true,
+    );
+    expect(attestation.strictModeRegressionSentinel.preserved).toBe(true);
+    expect(attestation.convergenceDriftDetection.enforced).toBe(true);
+    expect(attestation.unsupportedReadinessSuppressionContinuity.permanent).toBe(true);
+    expect(attestation.supervisedExecutionDenialContinuity.present).toBe(true);
+    expect(attestation.regenerationSafeAttestationContinuity.preserved).toBe(true);
+    expect(attestation.denialLineageImmutability.preserved).toBe(true);
+  });
+
+  it("includes governance seal integrity attestation in governance auto and validation", () => {
+    const autoResult = runNpm("governance:a46:auto");
+    expect(autoResult.status, autoResult.stderr || autoResult.stdout).toBe(0);
+    expect(fs.existsSync(path.join(repoRoot, sealAttestationArtifact))).toBe(true);
+
+    const strictResult = runNpm("placement:a46:auto", ["--strict"]);
+    expect(strictResult.status, strictResult.stderr || strictResult.stdout).toBe(0);
+    expect(`${strictResult.stdout}\n${strictResult.stderr}`).toContain(
+      "governance seal integrity attestation strict mode passed",
+    );
+
+    const validateResult = runNpm("governance:validate");
+    expect(validateResult.status, validateResult.stderr || validateResult.stdout).toBe(0);
+    expect(`${validateResult.stdout}\n${validateResult.stderr}`).toContain(
+      "governance seal integrity attestation validation passed",
     );
   });
 });
