@@ -36,6 +36,14 @@ Local simulated burn-in `a2-burnin-02` executed all 10 required scenarios before
 - Confirm the admin dashboard reads persisted forensic rows, not fixture data.
 - Keep this PR draft until live provider calls and live Supabase inserts are validated or explicitly deferred by Chau.
 
+# Forensic production acceptance criteria added
+
+- Added `docs/placement-v3/observability/production-acceptance-checklist.md` with measurable owner, evidence, pass/fail, and missing-severity criteria.
+- Added `docs/placement-v3/observability/evidence-requirements.md` to distinguish simulated, local-only, live-provider, and production evidence.
+- Added `docs/placement-v3/observability/rollback-runbook.md`, `incident-severity-matrix.md`, `retention-policy.md`, `launch-gates.md`, and `validation-matrix.md`.
+- Added operator templates under `docs/placement-v3/observability/templates/`.
+- These documents define what must be proven later; they do not claim production acceptance has been achieved.
+
 # Runtime Evidence
 
 - `docs/placement-v3/observability/raw-runs/a2-burnin-02-command.log`
