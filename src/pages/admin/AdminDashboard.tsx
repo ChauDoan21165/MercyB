@@ -681,6 +681,7 @@ export default function AdminDashboard() {
     { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
     { title: "Analytics", desc: "DAU, feature usage, funnel, and room popularity (Level 9+).", href: "/admin/analytics", badge: "READY" },
     { title: "Costs / Chi phí", desc: "Daily spend across OpenAI, ElevenLabs, Resend, Azure (Level 9+).", href: "/admin/cost-monitoring", badge: "READY" },
+    { title: "Placement Drift", desc: "Replay grading samples and inspect CEFR drift, provider variance, and taxonomy instability.", href: "/admin/placement-drift", badge: "A36" },
   ];
 
   function go(href?: string) {
