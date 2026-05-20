@@ -10,47 +10,36 @@ import {
   type PromptTask,
   type SessionMetadata,
 } from "./types.ts";
+import { PLACEMENT_V3_PROMPTS } from "../../../src/data/placement/v3/prompts/index.ts";
 
 export const MIN_TASKS_PER_MODALITY = 1;
 export const MAX_TASKS_PER_MODALITY = 3;
 export const CONFIDENCE_STOP_THRESHOLD = 0.72;
 export const MAX_TOTAL_TASKS = 11;
 
-// Temporary A25 stub. The real prompt library will live under
-// src/data/placement/v3/prompts/ once that PR lands. Keep ids stable so
-// persisted response rows remain debuggable.
-export const PROMPTS: PromptTask[] = MODALITY_ORDER.flatMap((modality) =>
-  CEFR_ORDER.flatMap((cefr) =>
-    [1, 2, 3].map((n) => ({
-      id: `stub_${modality}_${cefr}_${n}`,
-      modality,
-      cefr,
-      expectedResponse: modality === "speaking" ? "audio" : "text",
-      promptText: promptTextFor(modality, cefr, n),
-      metadata: { source: "placement-v3-session-stub" },
-    } satisfies PromptTask)),
-  )
-);
-
-function promptTextFor(
-  modality: PlacementV3Modality,
-  cefr: CEFRLevel,
-  n: number,
-): string {
-  const stem: Record<PlacementV3Modality, string> = {
-    writing: "Write in English",
-    speaking: "Speak in English",
-    reading: "Read the short situation and answer in English",
-    listening: "Listen to the short situation and answer in English",
-    conversation: "Reply naturally in English",
-  };
-  const topics = [
-    "about your daily routine and one small problem you solved.",
-    "about studying English as a Vietnamese learner.",
-    "about a work or school decision and the reason behind it.",
-  ];
-  return `${stem[modality]} at ${cefr}: ${topics[(n - 1) % topics.length]}`;
-}
+export const PROMPTS: PromptTask[] = PLACEMENT_V3_PROMPTS.map((prompt) => ({
+  id: prompt.id,
+  modality: prompt.modality,
+  cefr: prompt.targetLevel,
+  expectedResponse: prompt.modality === "speaking" ? "audio" : "text",
+  promptText: prompt.promptText,
+  metadata: {
+    source: "placement-v3-prompt-catalog",
+    promptTextVi: prompt.promptTextVi,
+    context: "context" in prompt ? prompt.context : undefined,
+    expectedDurationSec: prompt.expectedDurationSec,
+    minResponseLength: prompt.minResponseLength,
+    rubricFocus: prompt.rubricFocus,
+    l1InterferenceTriggers: prompt.l1InterferenceTriggers,
+    title: "title" in prompt ? prompt.title : undefined,
+    titleVi: "titleVi" in prompt ? prompt.titleVi : undefined,
+    passageText: "passageText" in prompt ? prompt.passageText : undefined,
+    passageTextVi: "passageTextVi" in prompt ? prompt.passageTextVi : undefined,
+    audioScript: "audioScript" in prompt ? prompt.audioScript : undefined,
+    audioScriptVi: "audioScriptVi" in prompt ? prompt.audioScriptVi : undefined,
+    questions: "questions" in prompt ? prompt.questions : undefined,
+  },
+}));
 
 export function cefrToNumber(level: CEFRLevel): number {
   return Math.max(0, CEFR_ORDER.indexOf(level));
