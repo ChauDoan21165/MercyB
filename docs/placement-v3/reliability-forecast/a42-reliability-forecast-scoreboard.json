@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T17:00:13.924Z",
+  "generatedAt": "2026-05-20T17:04:11.753Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "classifications": [
@@ -38,7 +38,7 @@
   "stale": true,
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 1.4233797222222222,
+    "oldestAgeHours": 1.4894427777777777,
     "missingCount": 15,
     "staleCount": 15,
     "label": "blocked_missing_inputs"

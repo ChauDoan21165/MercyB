@@ -1,6 +1,6 @@
 # A42 Timeout Threshold Schema
 
-Generated: 2026-05-20T17:00:13.927Z
+Generated: 2026-05-20T17:04:11.759Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

@@ -2505,6 +2505,8 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-convergence-governance-handoff-summary.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-convergence-reliability-review-summary.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-convergence-reliability-review-summary.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-final-convergence-certification-summary.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-final-convergence-certification-summary.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {
