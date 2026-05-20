@@ -16,11 +16,12 @@
  */
 
 import type { HandlerResponse, RequestContext } from "../index.ts";
+import { captureEdgeError } from "../../_shared/sentry.ts";
+import { l1DetectRequestSchema } from "../../_shared/publicApiSchemas.ts";
 
-type DetectBody = {
-  text?: unknown;
-  l1_code?: unknown;
-};
+// DetectBody type now sourced from the zod schema in
+// _shared/publicApiSchemas.ts (A11c). Local `unknown`-fields shape
+// removed.
 
 type RuleHit = {
   rule: string;
@@ -102,13 +103,55 @@ export async function handleL1Detect(
     return { status: 405, body: { error: "method_not_allowed" } };
   }
 
-  let body: DetectBody;
+  // ── A11c: structural zod validation (THIRD gate after auth + rate-limit) ──
+  // The existing application-layer checks below (missing_field /
+  // text_too_long / unsupported_l1_code) still drive the public
+  // contract — they are documented error codes consumers may branch
+  // on. Zod runs first as a structural gate that catches wrong-type
+  // / null / array bodies (which the existing defensive type-checks
+  // would silently coerce). On structural failure: generic 400
+  // (no schema info leaks) + Sentry beacon (PII-scrubbed: ONLY
+  // {path, code} per issue + top-level keys; the `message` field
+  // is intentionally dropped per A11c's tightened public-api PII
+  // contract — zod auto-messages can echo user-supplied content).
+  let parsedJson: unknown;
   try {
-    body = (await ctx.request.json()) as DetectBody;
+    parsedJson = await ctx.request.json();
   } catch {
     return { status: 400, body: { error: "invalid_json" } };
   }
 
+  const parse = l1DetectRequestSchema.safeParse(parsedJson);
+  if (!parse.success) {
+    const topLevelKeys =
+      parsedJson && typeof parsedJson === "object" && !Array.isArray(parsedJson)
+        ? Object.keys(parsedJson as Record<string, unknown>)
+        : [];
+    await captureEdgeError(
+      new Error("public-api/l1-detect request failed zod validation"),
+      {
+        functionName: "public-api/l1-detect",
+        extra: {
+          stage: "request-zod",
+          // PII-scrubbed: path + code ONLY — no message echoes.
+          zodIssues: parse.error.issues.map((iss) => ({
+            path: iss.path.join("."),
+            code: iss.code,
+          })),
+          topLevelKeys,
+        },
+        tags: {
+          surface: "public-api",
+          endpoint: "l1-detect",
+          stage: "request-zod",
+        },
+      },
+    );
+    // Generic 400 — no schema info leaks via the response body.
+    return { status: 400, body: { error: "invalid_payload" } };
+  }
+
+  const body = parse.data;
   const text = typeof body.text === "string" ? body.text.trim() : "";
   const l1Code = typeof body.l1_code === "string" ? body.l1_code : "";
 
