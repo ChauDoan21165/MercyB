@@ -1,6 +1,6 @@
 # A3 Final Report
 
-Status after remaining-finding triage: audit infrastructure is complete, the merged Placement V3 runtime corpus has been audited, safe mechanical fixes reduced findings, and the remaining findings are classified into operational buckets. A3 still does not declare data quality production-safe because unresolved taxonomy remediation and conversation calibration gaps remain.
+Status after governance follow-up: audit infrastructure is complete, the merged Placement V3 runtime corpus has been audited, safe mechanical fixes reduced findings, remaining findings are classified into operational buckets, and expert-review items now have remediation workflows. A3 still does not declare data quality production-safe because unresolved taxonomy remediation and conversation calibration gaps remain.
 
 ## Corpus Audited
 
@@ -42,6 +42,37 @@ Detailed queues:
 - `docs/placement-v3/data-quality/a3-expert-review-queue.md`
 - `docs/placement-v3/data-quality/a3-release-blocker-assessment.md`
 
+## Governance Workflow Status
+
+Added governance and remediation planning docs:
+
+- `docs/placement-v3/data-quality/a3-remediation-workflows.md`
+- `docs/placement-v3/data-quality/templates/expert-review-template.md`
+- `docs/placement-v3/data-quality/a3-unresolved-risk-matrix.md`
+- `docs/placement-v3/data-quality/a3-remediation-priority-queue.md`
+- `docs/placement-v3/data-quality/a3-launch-impact.md`
+- `docs/placement-v3/data-quality/a3-taxonomy-governance.md`
+
+Unresolved-risk ownership:
+
+- Chau: final approval for learner-facing remediation and launch claims.
+- Placement V3 content owner: remediation room ownership and taxonomy disposition.
+- Placement V3 assessment owner: CEFR uncertainty and conversation calibration.
+- A3: audit tooling, evidence capture, and reporting only.
+
+Launch-stage impact:
+
+- Internal-only and staff-only pilot: acceptable with warnings visible and no production-safe claim.
+- Invite-only pilot: acceptable only if unsupported remediation paths are hidden or manually reviewed.
+- Soft launch: requires remediation disposition for learner-facing IDs and a decision on conversation calibration scope.
+- Public launch: requires remediation ownership, conversation calibration or explicit exclusion, unused taxonomy dispositions, and a fresh audit run.
+
+Expert-review dependency:
+
+- Missing remediation links require expert review before learner-facing automation.
+- Conversation prompts require calibration review before scored conversation placement.
+- Unused taxonomy categories require disposition before full taxonomy coverage claims.
+
 ## Safe Fixes Applied
 
 - Counted V3 lesson-index coverage IDs and recommender alias targets as taxonomy usage in `scripts/placement-v3/dataQualityAuditCore.ts`.
@@ -72,7 +103,7 @@ No. A3 reduced safe mechanical findings, but unresolved remediation and calibrat
 
 ## Recommended Next Action
 
-Keep PR #951 draft unless Chau explicitly accepts it as infrastructure-only. The next useful work is expert review of remediation-room ownership and conversation calibration, not further mechanical count reduction.
+Keep PR #951 draft unless Chau explicitly accepts it as infrastructure-only. The next useful work is to run the expert-review workflow, starting with learner-facing remediation links and conversation calibration scope.
 
 ## Verification
 

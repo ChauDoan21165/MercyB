@@ -69,10 +69,32 @@ No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, or
 - Remaining findings triage: `docs/placement-v3/data-quality/a3-remaining-findings-triage.md`
 - Expert review queue: `docs/placement-v3/data-quality/a3-expert-review-queue.md`
 - Release blocker assessment: `docs/placement-v3/data-quality/a3-release-blocker-assessment.md`
+- Remediation workflows: `docs/placement-v3/data-quality/a3-remediation-workflows.md`
+- Expert review template: `docs/placement-v3/data-quality/templates/expert-review-template.md`
+- Unresolved-risk matrix: `docs/placement-v3/data-quality/a3-unresolved-risk-matrix.md`
+- Remediation priority queue: `docs/placement-v3/data-quality/a3-remediation-priority-queue.md`
+- Launch impact mapping: `docs/placement-v3/data-quality/a3-launch-impact.md`
+- Taxonomy governance: `docs/placement-v3/data-quality/a3-taxonomy-governance.md`
 - Before JSON run artifacts: `docs/placement-v3/data-quality/raw-runs/a3-20260520T132558-*.json`
 - After JSON run artifacts: `docs/placement-v3/data-quality/raw-runs/a3-20260520T133236-taxonomy-consistency.json`, `a3-20260520T133158-recommendation-graph.json`, `a3-20260520T133158-prompt-rubric-alignment.json`, `a3-20260520T133158-corpus-integrity.json`
 - After logs: `docs/placement-v3/data-quality/raw-runs/a3-*-after-mechanical-fixes.log`
 - Final report: `docs/placement-v3/data-quality/a3-final-report.md`
+
+## Governance Workflow Status
+
+- Missing remediation links now have an explicit review workflow, evidence requirements, approval criteria, and rollback criteria.
+- Conversation calibration gaps now have an expert-review and calibration workflow.
+- Taxonomy ambiguity, CEFR uncertainty, orphaned descriptors, and unresolved expert-review items now have documented ownership and approval paths.
+- Expert-review intake is standardized in `docs/placement-v3/data-quality/templates/expert-review-template.md`.
+- A3 remains responsible for audit tooling and evidence, not linguistic approvals.
+
+## Launch-Stage Impact
+
+- Internal-only launch: allowed for tooling/dashboard with unresolved findings visible.
+- Staff-only pilot: allowed with manual review; blocks automatic learner-facing remediation for missing links.
+- Invite-only pilot: allowed only if unsupported remediation paths are hidden or reviewed.
+- Soft launch: blocked until learner-facing remediation links have disposition and conversation calibration scope is decided.
+- Public launch: blocked until remediation ownership, conversation calibration or exclusion, unused taxonomy dispositions, and a fresh audit are complete.
 
 ## Verification
 
@@ -91,4 +113,4 @@ Not production-safe yet. Safe mechanical issues were reduced and remaining findi
 
 ## Recommended Next Action
 
-Keep this PR draft unless Chau accepts it as infrastructure-only. The next useful work is expert review of remediation-room ownership and conversation calibration, not further mechanical count reduction.
+Keep this PR draft unless Chau accepts it as infrastructure-only. The next useful work is to run the expert-review workflow, starting with learner-facing remediation links and conversation calibration scope.
