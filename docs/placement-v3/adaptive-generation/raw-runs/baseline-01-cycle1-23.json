@@ -1,0 +1,171 @@
+{
+  "isoTimestamp": "2026-05-20T11:34:23.735Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 22,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8020,
+    "tokensInput": 732,
+    "tokensOutput": 354,
+    "estimatedCostUsd": 0.000322,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Nuanced Opinions\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail recall\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Listen to the speaker's opinion about the impact of technology on education and summarize their main argument.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"In today's world, technology plays a pivotal role in education. While some argue that it enhances learning by providing access to resources, others believe it creates distractions. The key is finding a balance. Technology should be a tool, not a crutch. When used effectively, it can foster collaboration and critical thinking among students, preparing them for a rapidly changing job market. However, we must remain cautious of over-reliance on digital devices, as they can detract from traditional learning methods that encourage deep understanding.\",\n  \"questionText\": \"What is the speaker's main argument regarding the use of technology in education?\",\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The speaker argues that technology should be a tool to enhance learning, but warns against over-reliance on it, emphasizing the need for balance with traditional methods.\",\n  \"rubricDimensions\": [\"detail recall\", \"nuanced understanding\", \"implicit meaning\"],\n  \"vietnameseL1Targets\": [\"nuanced register\", \"implicit meaning\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "5212c8e0-f03b-40c2-8cbd-ae37e9d531a3",
+      "title": "Understanding Nuanced Opinions",
+      "modality": "listening",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail recall",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Listen to the speaker's opinion about the impact of technology on education and summarize their main argument.",
+      "passageText": null,
+      "audioTranscript": "In today's world, technology plays a pivotal role in education. While some argue that it enhances learning by providing access to resources, others believe it creates distractions. The key is finding a balance. Technology should be a tool, not a crutch. When used effectively, it can foster collaboration and critical thinking among students, preparing them for a rapidly changing job market. However, we must remain cautious of over-reliance on digital devices, as they can detract from traditional learning methods that encourage deep understanding.",
+      "questionText": "What is the speaker's main argument regarding the use of technology in education?",
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The speaker argues that technology should be a tool to enhance learning, but warns against over-reliance on it, emphasizing the need for balance with traditional methods.",
+      "rubricDimensions": [
+        "detail recall",
+        "nuanced understanding",
+        "implicit meaning"
+      ],
+      "vietnameseL1Targets": [
+        "nuanced register",
+        "implicit meaning",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:16.029Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8020,
+        "tokensInput": 732,
+        "tokensOutput": 354,
+        "estimatedCostUsd": 0.000322
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7706,
+    "tokensInput": 1524,
+    "tokensOutput": 459,
+    "estimatedCostUsd": 0.000504,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is appropriate for the target.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"No cultural assumptions present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"nuanced register\", \"implicit meaning\"], \"notes\": \"The item does not effectively target useful Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity in structure and content.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"detail recall\", \"nuanced understanding\", \"implicit meaning\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is mobile-readable.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"Lacks effective Vietnamese L1 transfer relevance.\", \"evidence\": \"The item does not effectively target useful Vietnamese L1 transfer patterns.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to existing item.\", \"evidence\": \"Duplicate risk is high due to similarity in structure and content.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "47416fbc-0d16-4c04-962d-7f786884c1d1",
+      "generatedItemId": "5212c8e0-f03b-40c2-8cbd-ae37e9d531a3",
+      "validatedAt": "2026-05-20T11:34:23.735Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "nuanced register",
+          "implicit meaning"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in structure and content.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail recall",
+          "nuanced understanding",
+          "implicit meaning"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Lacks effective Vietnamese L1 transfer relevance.",
+          "evidence": "The item does not effectively target useful Vietnamese L1 transfer patterns."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Duplicate risk is high due to similarity in structure and content."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:23.735Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7706,
+        "tokensInput": 1524,
+        "tokensOutput": 459,
+        "estimatedCostUsd": 0.000504
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "Lacks effective Vietnamese L1 transfer relevance.",
+      "evidence": "The item does not effectively target useful Vietnamese L1 transfer patterns."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to existing item.",
+      "evidence": "Duplicate risk is high due to similarity in structure and content."
+    }
+  ]
+}

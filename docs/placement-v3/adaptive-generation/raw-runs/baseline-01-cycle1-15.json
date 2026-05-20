@@ -1,0 +1,169 @@
+{
+  "isoTimestamp": "2026-05-20T11:32:29.339Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 14,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4264,
+    "tokensInput": 731,
+    "tokensOutput": 223,
+    "estimatedCostUsd": 0.000243,
+    "rawGeneratedItem": "{\n  \"title\": \"Speaker Attitude in Everyday Conversation\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"speaker attitude\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Listen to the conversation and describe how the speaker feels.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"Hi! I'm so happy to see you today. I love this weather! It's perfect for a picnic.\",\n  \"questionText\": \"How does the speaker feel?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"happy\",\n  \"rubricDimensions\": [\"listening comprehension\", \"speaker attitude identification\"],\n  \"vietnameseL1Targets\": [\"intonation\", \"literal meaning\", \"copula be\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "290674c0-28cd-4fad-86e3-9b8d770ad52e",
+      "title": "Speaker Attitude in Everyday Conversation",
+      "modality": "listening",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "speaker attitude",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Listen to the conversation and describe how the speaker feels.",
+      "passageText": null,
+      "audioTranscript": "Hi! I'm so happy to see you today. I love this weather! It's perfect for a picnic.",
+      "questionText": "How does the speaker feel?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "happy",
+      "rubricDimensions": [
+        "listening comprehension",
+        "speaker attitude identification"
+      ],
+      "vietnameseL1Targets": [
+        "intonation",
+        "literal meaning",
+        "copula be"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:21.772Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4264,
+        "tokensInput": 731,
+        "tokensOutput": 223,
+        "estimatedCostUsd": 0.000243
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7567,
+    "tokensInput": 1389,
+    "tokensOutput": 445,
+    "estimatedCostUsd": 0.000475,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits A1 level but lacks complexity for effective assessment.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": false, \"matchedPatterns\": [\"intonation\", \"copula be\"], \"notes\": \"Limited relevance to Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.4, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity in task structure.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"listening comprehension\", \"speaker attitude identification\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"Item is too similar to an existing item.\", \"evidence\": \"Similar task structure to existing item.\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"low\", \"message\": \"Limited connection to useful Vietnamese L1 transfer evidence.\", \"evidence\": \"Only two relevant patterns identified.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "279af183-c824-4d3b-9bf2-e41c9054d885",
+      "generatedItemId": "290674c0-28cd-4fad-86e3-9b8d770ad52e",
+      "validatedAt": "2026-05-20T11:32:29.339Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but lacks complexity for effective assessment.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": false,
+        "notes": "Limited relevance to Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "intonation",
+          "copula be"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.4,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in task structure.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude identification"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Item is too similar to an existing item.",
+          "evidence": "Similar task structure to existing item."
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "low",
+          "message": "Limited connection to useful Vietnamese L1 transfer evidence.",
+          "evidence": "Only two relevant patterns identified."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:29.339Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7567,
+        "tokensInput": 1389,
+        "tokensOutput": 445,
+        "estimatedCostUsd": 0.000475
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "Item is too similar to an existing item.",
+      "evidence": "Similar task structure to existing item."
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "low",
+      "message": "Limited connection to useful Vietnamese L1 transfer evidence.",
+      "evidence": "Only two relevant patterns identified."
+    }
+  ]
+}

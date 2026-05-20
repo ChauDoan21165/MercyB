@@ -1,0 +1,2593 @@
+{
+  "report": {
+    "batchId": "baseline-01",
+    "startedAt": "2026-05-20T11:28:52.979Z",
+    "completedAt": "2026-05-20T11:36:00.516Z",
+    "cyclesCompleted": 1,
+    "generatedCount": 30,
+    "validatedCount": 30,
+    "acceptedCount": 1,
+    "rejectedCount": 29,
+    "acceptanceRate": 0.0333,
+    "estimatedCostUsd": 0.015375,
+    "costPerAcceptedItem": 0.015375,
+    "averageGenerationLatencyMs": 6331,
+    "rejectionCounts": {
+      "too_easy": 10,
+      "duplicate": 29,
+      "age_inappropriate": 3,
+      "poor_vietnamese_l1_relevance": 14,
+      "too_hard": 6,
+      "culturally_awkward": 1
+    }
+  },
+  "validations": [
+    {
+      "id": "eb9bb106-6157-4a15-941e-0b9637a9cae1",
+      "generatedItemId": "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40",
+      "validatedAt": "2026-05-20T11:29:06.252Z",
+      "finalDecision": "accepted",
+      "cefrFit": {
+        "score": 1,
+        "pass": true,
+        "notes": "The passage and question are appropriate for A1 level.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is safe and non-harmful."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Targets relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": true,
+        "notes": "No duplicate risk as there are no existing items.",
+        "nearestItemIds": []
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with the rubric dimensions.",
+        "supportedDimensions": [
+          "main idea understanding",
+          "literal comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is easily usable on mobile devices."
+      },
+      "rejectionReasons": [],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:06.252Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6941,
+        "tokensInput": 1371,
+        "tokensOutput": 338,
+        "estimatedCostUsd": 0.000408
+      }
+    },
+    {
+      "id": "639448aa-b7fb-4b19-b5e1-eceae1b0970c",
+      "generatedItemId": "2fdc4a5c-8222-4c67-9655-237d3ecf3843",
+      "validatedAt": "2026-05-20T11:29:21.610Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple present tense"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.8,
+        "pass": false,
+        "notes": "High similarity risk with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "content",
+          "organization",
+          "language use"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1, which is below the target."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Nearest item ID is 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:21.610Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9324,
+        "tokensInput": 1395,
+        "tokensOutput": 472,
+        "estimatedCostUsd": 0.000492
+      }
+    },
+    {
+      "id": "7358f2ba-2ed1-49c1-a2d8-c6c5d2f7cab5",
+      "generatedItemId": "9141e000-8a52-4bd2-9809-58d99872f3fe",
+      "validatedAt": "2026-05-20T11:29:35.300Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "intonation",
+          "literal meaning",
+          "copula be"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.9,
+        "pass": false,
+        "notes": "High similarity to existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude recognition"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1, which is below the target."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Nearest item ID is 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:35.300Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9005,
+        "tokensInput": 1396,
+        "tokensOutput": 473,
+        "estimatedCostUsd": 0.000493
+      }
+    },
+    {
+      "id": "4b20ff15-e1a8-4f90-a300-000f6cfbabd6",
+      "generatedItemId": "77859375-337b-4e37-bf0d-92c911688ac3",
+      "validatedAt": "2026-05-20T11:29:47.427Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The prompt is too simplistic for 13+ learners."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.4,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1."
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "The prompt is too simplistic for 13+ learners.",
+          "evidence": "Prompt asks for very basic descriptions."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar to 'Daily Routine' item."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:47.427Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7357,
+        "tokensInput": 1380,
+        "tokensOutput": 487,
+        "estimatedCostUsd": 0.000499
+      }
+    },
+    {
+      "id": "252cba9b-bd6b-4f94-8b77-a8c5347e9d05",
+      "generatedItemId": "c02d7266-a6cc-4a75-851f-9032f06a1c0d",
+      "validatedAt": "2026-05-20T11:30:00.273Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The passage and question align with B1 level expectations.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is safe and non-harmful."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there is a relevant target, it is not strongly testable in this context.",
+        "matchedPatterns": [
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Content is similar to an existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Content is materially similar to an existing item.",
+          "evidence": "Similar prompt structure and question type."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:00.273Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7757,
+        "tokensInput": 1439,
+        "tokensOutput": 401,
+        "estimatedCostUsd": 0.000456
+      }
+    },
+    {
+      "id": "945c1b12-8f77-4620-a553-67c9a0e55f91",
+      "generatedItemId": "bdee9dff-4098-4532-a3fd-8c8d13d563d0",
+      "validatedAt": "2026-05-20T11:30:14.067Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is appropriately targeted at B1 level.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "coherence"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, increasing the risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "task achievement",
+          "coherence and cohesion",
+          "grammar and vocabulary"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+          "evidence": "vietnameseL1Targets field lacks depth."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "duplicateRisk score is 0.5."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:14.067Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9536,
+        "tokensInput": 1409,
+        "tokensOutput": 488,
+        "estimatedCostUsd": 0.000504
+      }
+    },
+    {
+      "id": "44c35c1a-756f-4945-afb7-e6ece9a6570a",
+      "generatedItemId": "269f9aa8-6804-4b95-ab64-c55a7edb5bb3",
+      "validatedAt": "2026-05-20T11:30:27.639Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is too easy for the target B1 level.",
+        "predictedCefr": "A2"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the item does not effectively test them.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "prepositions",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "comprehension of gist",
+          "ability to infer meaning"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target level.",
+          "evidence": "predictedCefr is A2"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:27.639Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8153,
+        "tokensInput": 1467,
+        "tokensOutput": 454,
+        "estimatedCostUsd": 0.000492
+      }
+    },
+    {
+      "id": "ebf90b1f-c752-4600-9718-7bf4480f2637",
+      "generatedItemId": "0774f63f-b43c-4e9a-8844-9f3580f679dd",
+      "validatedAt": "2026-05-20T11:30:42.732Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is appropriately targeted at B1 level.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not address useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "tense marking",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not connect to useful Vietnamese L1 transfer evidence.",
+          "evidence": "vietnameseL1Targets field lacks relevant patterns."
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:42.732Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10067,
+        "tokensInput": 1422,
+        "tokensOutput": 489,
+        "estimatedCostUsd": 0.000507
+      }
+    },
+    {
+      "id": "7d2838b6-1905-4c7b-b79f-b3086c073f28",
+      "generatedItemId": "94617042-1d3b-4ef9-8b0c-4fdb64ae2d53",
+      "validatedAt": "2026-05-20T11:30:58.913Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner's capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer issues.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item is too similar to an existing item, indicating a high duplicate risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "inference",
+          "nuanced understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is mobile-readable and usable for learners."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar structure and task to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The complexity may not effectively target Vietnamese L1 transfer issues.",
+          "evidence": "The task requires nuanced understanding that may not connect to common Vietnamese L1 transfer patterns."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:58.913Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10186,
+        "tokensInput": 1486,
+        "tokensOutput": 534,
+        "estimatedCostUsd": 0.000543
+      }
+    },
+    {
+      "id": "2d423ea0-1f5e-4d9e-bd2f-fbb3d5e63ad7",
+      "generatedItemId": "6534ce62-22d1-4f6e-8655-1667b321558a",
+      "validatedAt": "2026-05-20T11:31:14.566Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful or inappropriate content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases or assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant targets, the complexity of the task may not effectively assess these patterns.",
+        "matchedPatterns": [
+          "article usage",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item has a high similarity risk with existing items.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "coherence",
+          "grammar",
+          "vocabulary",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The task is mobile-readable and user-friendly."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "medium",
+          "message": "The complexity of the task may exceed the expected learner capabilities.",
+          "evidence": "targetCefr: C1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item has a high similarity risk with existing items.",
+          "evidence": "duplicateRisk.score: 0.5"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The complexity of the task may not effectively assess relevant Vietnamese L1 transfer patterns.",
+          "evidence": "vietnameseL1Targets present but not effectively testable."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:14.566Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 11119,
+        "tokensInput": 1426,
+        "tokensOutput": 540,
+        "estimatedCostUsd": 0.000538
+      }
+    },
+    {
+      "id": "ba0bc2b3-d162-487d-9d87-a6d479513760",
+      "generatedItemId": "fa41fc09-5b19-49e6-8d3e-4e3971175c91",
+      "validatedAt": "2026-05-20T11:31:35.298Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is too high for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is safe and appropriate."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail recall",
+          "nuanced understanding",
+          "implicit meaning"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is usable on mobile."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The predicted CEFR level is too high for the target audience.",
+          "evidence": "predictedCefr: 'C1'"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+          "evidence": "matchedPatterns: ['implicit meaning', 'nuanced register']"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:35.298Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 12795,
+        "tokensInput": 1510,
+        "tokensOutput": 536,
+        "estimatedCostUsd": 0.000548
+      }
+    },
+    {
+      "id": "9031a143-c04e-4e3b-93f5-038ddf4c2515",
+      "generatedItemId": "06fc5961-c8b2-49f7-947c-a3c3de821427",
+      "validatedAt": "2026-05-20T11:31:51.378Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is too high for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural stereotypes present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While some patterns are matched, the complexity may not provide useful transfer evidence for Vietnamese learners.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The predicted CEFR level is too high for the target audience.",
+          "evidence": "predictedCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The complexity may not provide useful transfer evidence for Vietnamese learners.",
+          "evidence": "matchedPatterns: ['implicit meaning', 'nuanced register']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:51.378Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 11016,
+        "tokensInput": 1398,
+        "tokensOutput": 547,
+        "estimatedCostUsd": 0.000538
+      }
+    },
+    {
+      "id": "779f00ba-e542-4b19-8559-d000277275f9",
+      "generatedItemId": "bb9d6b9c-f2b1-43e6-809a-35c6e8093bd4",
+      "validatedAt": "2026-05-20T11:32:05.168Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "final consonants",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.1,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "main idea comprehension",
+          "literal understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr is A1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:05.168Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7918,
+        "tokensInput": 1410,
+        "tokensOutput": 446,
+        "estimatedCostUsd": 0.000479
+      }
+    },
+    {
+      "id": "9b37c57b-93ed-4947-8d40-5d64d2ef6651",
+      "generatedItemId": "5aef9829-e83d-4566-b649-dbc8fa70f6a8",
+      "validatedAt": "2026-05-20T11:32:17.508Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple present tense"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.8,
+        "pass": false,
+        "notes": "High similarity risk with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "task achievement",
+          "coherence",
+          "grammar"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr is A1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:17.508Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7873,
+        "tokensInput": 1378,
+        "tokensOutput": 445,
+        "estimatedCostUsd": 0.000474
+      }
+    },
+    {
+      "id": "279af183-c824-4d3b-9bf2-e41c9054d885",
+      "generatedItemId": "290674c0-28cd-4fad-86e3-9b8d770ad52e",
+      "validatedAt": "2026-05-20T11:32:29.339Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but lacks complexity for effective assessment.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": false,
+        "notes": "Limited relevance to Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "intonation",
+          "copula be"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.4,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in task structure.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude identification"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Item is too similar to an existing item.",
+          "evidence": "Similar task structure to existing item."
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "low",
+          "message": "Limited connection to useful Vietnamese L1 transfer evidence.",
+          "evidence": "Only two relevant patterns identified."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:29.339Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7567,
+        "tokensInput": 1389,
+        "tokensOutput": 445,
+        "estimatedCostUsd": 0.000475
+      }
+    },
+    {
+      "id": "81c1cdcf-0262-43cd-8d38-9b310beb4676",
+      "generatedItemId": "fc38a1d8-659f-42fb-b940-729092b65c0b",
+      "validatedAt": "2026-05-20T11:32:42.319Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level as it requires very simple sentences.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is appropriate for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item targets relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants",
+          "simple sentence structure"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplicate risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "similarity to 'Daily Routine Read the passage and answer the question.'"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:42.319Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8485,
+        "tokensInput": 1397,
+        "tokensOutput": 437,
+        "estimatedCostUsd": 0.000472
+      }
+    },
+    {
+      "id": "f584dde3-c86a-4437-9009-21a3f467da33",
+      "generatedItemId": "c0c7fe2e-1ba7-4b6a-b752-f841c96c29f6",
+      "validatedAt": "2026-05-20T11:32:55.988Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The passage and question align with B1 level expectations.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and appropriate."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there is a relevant target, it is not genuinely testable in this context.",
+        "matchedPatterns": [
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, increasing the risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The format is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "L1 target is not genuinely testable.",
+          "evidence": "subject-verb agreement"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Item is materially similar to an existing item.",
+          "evidence": "similarity to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:55.988Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8056,
+        "tokensInput": 1434,
+        "tokensOutput": 483,
+        "estimatedCostUsd": 0.000505
+      }
+    },
+    {
+      "id": "6ccc1911-4c7b-43e6-a886-fd09a9d2e70f",
+      "generatedItemId": "1c81f32b-6271-4079-94aa-02adc7c928cb",
+      "validatedAt": "2026-05-20T11:33:09.925Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is appropriately targeted at B1 level.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt does not assume specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The prompt does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "cohesion"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, increasing the risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "content relevance",
+          "coherence",
+          "grammar accuracy",
+          "vocabulary use"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The prompt does not effectively target useful Vietnamese L1 transfer patterns.",
+          "evidence": "vietnameseL1Targets field lacks strong relevance."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "duplicateRisk score is 0.5."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:33:09.925Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9175,
+        "tokensInput": 1402,
+        "tokensOutput": 491,
+        "estimatedCostUsd": 0.000505
+      }
+    },
+    {
+      "id": "5cdffef2-6355-4196-92c9-99ee88573df5",
+      "generatedItemId": "b2d4f3e5-0930-4c81-8256-832d2a22c231",
+      "validatedAt": "2026-05-20T11:33:23.037Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item fits the B1 level as it involves connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the item does not effectively test them.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants",
+          "intonation"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplication risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "gist understanding",
+          "basic inference"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively test Vietnamese-L1 transfer patterns.",
+          "evidence": "The expected answer does not provide a stable test of the identified patterns."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar structure and content to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:33:23.037Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8305,
+        "tokensInput": 1448,
+        "tokensOutput": 523,
+        "estimatedCostUsd": 0.000531
+      }
+    },
+    {
+      "id": "8aa2e468-6387-4c58-9deb-cb63edd00a3e",
+      "generatedItemId": "d9b7b655-33d0-4c95-a4f4-9b8e24a2d8e4",
+      "validatedAt": "2026-05-20T11:33:38.576Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level as it requires connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While it targets relevant patterns, the prompt may not effectively elicit responses that demonstrate these patterns.",
+        "matchedPatterns": [
+          "tense marking",
+          "subject-verb agreement",
+          "cohesion"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item about daily routines, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The prompt may not effectively elicit responses that demonstrate the targeted Vietnamese L1 transfer patterns.",
+          "evidence": "The expected answer does not guarantee the demonstration of tense marking or subject-verb agreement."
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar to 'Daily Routine Read the passage and answer the question.'"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:33:38.576Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10855,
+        "tokensInput": 1408,
+        "tokensOutput": 527,
+        "estimatedCostUsd": 0.000527
+      }
+    },
+    {
+      "id": "c61a95e5-a4f7-4512-9cc8-8bc2c469fa00",
+      "generatedItemId": "f41d9448-ab39-4474-8301-53afa90af10c",
+      "validatedAt": "2026-05-20T11:33:55.351Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in task structure.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "inference",
+          "nuance",
+          "register"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is mobile-readable and usable for learners."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "medium",
+          "message": "The complexity of the task may exceed learner capabilities.",
+          "evidence": "C1 level complexity"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar task structure to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Complexity may not effectively target Vietnamese L1 transfer.",
+          "evidence": "Implicit meaning and nuanced register may not be testable."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:33:55.351Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9609,
+        "tokensInput": 1492,
+        "tokensOutput": 547,
+        "estimatedCostUsd": 0.000552
+      }
+    },
+    {
+      "id": "1e93dd56-9240-4717-a399-50b2f1c4bdfc",
+      "generatedItemId": "de539bf4-8361-4ba5-bc40-806a1627c872",
+      "validatedAt": "2026-05-20T11:34:08.008Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is too high for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": true,
+        "notes": "Relevant Vietnamese-L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "article usage",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in task structure.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "coherence",
+          "grammar",
+          "vocabulary",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The predicted CEFR level is too high for the target audience.",
+          "evidence": "targetCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Content is similar to existing items.",
+          "evidence": "duplicateRisk.score: 0.5"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:08.008Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8003,
+        "tokensInput": 1412,
+        "tokensOutput": 449,
+        "estimatedCostUsd": 0.000481
+      }
+    },
+    {
+      "id": "47416fbc-0d16-4c04-962d-7f786884c1d1",
+      "generatedItemId": "5212c8e0-f03b-40c2-8cbd-ae37e9d531a3",
+      "validatedAt": "2026-05-20T11:34:23.735Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "nuanced register",
+          "implicit meaning"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in structure and content.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail recall",
+          "nuanced understanding",
+          "implicit meaning"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Lacks effective Vietnamese L1 transfer relevance.",
+          "evidence": "The item does not effectively target useful Vietnamese L1 transfer patterns."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Duplicate risk is high due to similarity in structure and content."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:23.735Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7706,
+        "tokensInput": 1524,
+        "tokensOutput": 459,
+        "estimatedCostUsd": 0.000504
+      }
+    },
+    {
+      "id": "c9a4b2f1-de48-450c-8015-6e8e144014f4",
+      "generatedItemId": "2aa222be-d74e-4655-a2d8-e3662134fe8f",
+      "validatedAt": "2026-05-20T11:34:38.118Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is at the C1 level, which is too hard for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is appropriate for ages 13 and up."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item connects to useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "copula be",
+          "subject-verb agreement",
+          "tense marking",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The item is too difficult for the target audience.",
+          "evidence": "predictedCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:38.118Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8807,
+        "tokensInput": 1407,
+        "tokensOutput": 519,
+        "estimatedCostUsd": 0.000522
+      }
+    },
+    {
+      "id": "b5ba0910-3fea-4b95-9d78-628b3c85e596",
+      "generatedItemId": "f2ed1860-c936-44cb-8878-e0e9919c1733",
+      "validatedAt": "2026-05-20T11:34:50.743Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The content is too simplistic for 13+ learners."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple present tense"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "main idea understanding",
+          "literal comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr: A1"
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "Content is too simplistic for 13+ learners.",
+          "evidence": "promptText: 'Read the passage and find the main idea.'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:50.743Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8074,
+        "tokensInput": 1401,
+        "tokensOutput": 521,
+        "estimatedCostUsd": 0.000523
+      }
+    },
+    {
+      "id": "ca267d64-c26a-4d52-8bcd-b938be9c1f1a",
+      "generatedItemId": "06e5e1ac-6d43-404f-a94b-5f53f9072a60",
+      "validatedAt": "2026-05-20T11:35:04.388Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple sentence structure"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.8,
+        "pass": false,
+        "notes": "High similarity risk with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "coherence",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1, which is below the target."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Nearest item ID is 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:04.388Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8491,
+        "tokensInput": 1388,
+        "tokensOutput": 471,
+        "estimatedCostUsd": 0.000491
+      }
+    },
+    {
+      "id": "bbd0b84a-17e2-468b-9ca1-2b1c366f9aba",
+      "generatedItemId": "f1786aa1-48fa-479e-8d45-0123f510e0e9",
+      "validatedAt": "2026-05-20T11:35:18.482Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The content is simplistic and may not engage learners aged 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "intonation",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.1,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1."
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "Content is simplistic and may not engage learners aged 13+.",
+          "evidence": "The prompt is very basic."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar to item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:18.482Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9633,
+        "tokensInput": 1406,
+        "tokensOutput": 518,
+        "estimatedCostUsd": 0.000522
+      }
+    },
+    {
+      "id": "7f3c05f7-c040-4d6a-bf99-710e65c2ecbf",
+      "generatedItemId": "ace47d9f-08ef-43fc-87ba-e58143e11fb2",
+      "validatedAt": "2026-05-20T11:35:31.525Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item connects to useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "copula be",
+          "subject-verb agreement",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.4,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplicate risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr: A1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds: [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"]"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:31.525Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9389,
+        "tokensInput": 1385,
+        "tokensOutput": 504,
+        "estimatedCostUsd": 0.00051
+      }
+    },
+    {
+      "id": "aae5e7ac-5c69-4b02-8201-3bb85c8f0c6d",
+      "generatedItemId": "27150733-1941-47eb-ae6c-f65eb93ff67b",
+      "validatedAt": "2026-05-20T11:35:46.884Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The passage and question align with B1 level expectations.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is safe and appropriate."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": false,
+        "notes": "The passage assumes knowledge of Vietnamese culture, which may not be familiar to all learners."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item connects to relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "literal Vietnamese calques",
+          "subject-verb agreement",
+          "prepositions"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item about daily routines.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension",
+          "cohesion"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The format is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "culturally_awkward",
+          "severity": "medium",
+          "message": "Cultural assumptions may not be universally understood.",
+          "evidence": "The passage discusses a specific Vietnamese festival."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar structure and question type to existing item."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:46.884Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9128,
+        "tokensInput": 1443,
+        "tokensOutput": 477,
+        "estimatedCostUsd": 0.000503
+      }
+    },
+    {
+      "id": "bf74238d-06d2-447a-a731-8ed78879aa70",
+      "generatedItemId": "221135dd-2bf2-4d2c-933b-ce1b54a7b76a",
+      "validatedAt": "2026-05-20T11:36:00.516Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level as it requires connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While it targets relevant patterns, the connection to Vietnamese L1 transfer is not strongly emphasized.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item about daily routines, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns well with the rubric dimensions.",
+        "supportedDimensions": [
+          "content",
+          "organization",
+          "language use",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Insufficient connection to Vietnamese L1 transfer patterns.",
+          "evidence": "The relevance to Vietnamese L1 transfer is not strongly emphasized."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to an existing item.",
+          "evidence": "Similar to item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:36:00.516Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9433,
+        "tokensInput": 1427,
+        "tokensOutput": 527,
+        "estimatedCostUsd": 0.00053
+      }
+    }
+  ]
+}

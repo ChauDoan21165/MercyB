@@ -1,0 +1,175 @@
+{
+  "isoTimestamp": "2026-05-20T11:34:38.118Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 23,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5575,
+    "tokensInput": 730,
+    "tokensOutput": 241,
+    "estimatedCostUsd": 0.000254,
+    "rawGeneratedItem": "{\n  \"title\": \"Nuanced Opinions on Technology\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"range\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\"],\n  \"promptText\": \"Discuss your views on the impact of technology on communication. Consider both positive and negative aspects, and provide examples to support your opinion.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A well-structured response that presents a balanced view, includes specific examples, and demonstrates a range of vocabulary and complex sentence structures.\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"],\n  \"vietnameseL1Targets\": [\"copula be\", \"subject-verb agreement\", \"tense marking\", \"nuanced register\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "2aa222be-d74e-4655-a2d8-e3662134fe8f",
+      "title": "Nuanced Opinions on Technology",
+      "modality": "speaking",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "range",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register"
+      ],
+      "promptText": "Discuss your views on the impact of technology on communication. Consider both positive and negative aspects, and provide examples to support your opinion.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A well-structured response that presents a balanced view, includes specific examples, and demonstrates a range of vocabulary and complex sentence structures.",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "range",
+        "interaction"
+      ],
+      "vietnameseL1Targets": [
+        "copula be",
+        "subject-verb agreement",
+        "tense marking",
+        "nuanced register"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:29.311Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5575,
+        "tokensInput": 730,
+        "tokensOutput": 241,
+        "estimatedCostUsd": 0.000254
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8807,
+    "tokensInput": 1407,
+    "tokensOutput": 519,
+    "estimatedCostUsd": 0.000522,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The item is at the C1 level, which is too hard for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is appropriate for ages 13 and up.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"copula be\", \"subject-verb agreement\", \"tense marking\", \"nuanced register\"], \"notes\": \"The item connects to useful Vietnamese L1 transfer evidence.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item, indicating a higher risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"high\", \"message\": \"The item is too difficult for the target audience.\", \"evidence\": \"predictedCefr: 'C1'\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "c9a4b2f1-de48-450c-8015-6e8e144014f4",
+      "generatedItemId": "2aa222be-d74e-4655-a2d8-e3662134fe8f",
+      "validatedAt": "2026-05-20T11:34:38.118Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is at the C1 level, which is too hard for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is appropriate for ages 13 and up."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item connects to useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "copula be",
+          "subject-verb agreement",
+          "tense marking",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The item is too difficult for the target audience.",
+          "evidence": "predictedCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:38.118Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8807,
+        "tokensInput": 1407,
+        "tokensOutput": 519,
+        "estimatedCostUsd": 0.000522
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "high",
+      "message": "The item is too difficult for the target audience.",
+      "evidence": "predictedCefr: 'C1'"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+    }
+  ]
+}

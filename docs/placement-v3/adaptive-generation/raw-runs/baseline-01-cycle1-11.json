@@ -1,0 +1,183 @@
+{
+  "isoTimestamp": "2026-05-20T11:31:35.298Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 10,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7936,
+    "tokensInput": 732,
+    "tokensOutput": 341,
+    "estimatedCostUsd": 0.000314,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Nuanced Opinions\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail recall\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Listen to the speaker's opinion about the importance of cultural heritage in modern society and summarize the main points.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"In today's rapidly changing world, the importance of cultural heritage cannot be overstated. While some may argue that modernization leads to a loss of traditions, I believe that it can also serve as a platform for cultural evolution. For instance, integrating traditional practices into contemporary life can enrich our experiences and foster a deeper understanding of our roots. However, we must navigate this integration carefully to avoid cultural dilution. It's crucial to strike a balance that honors our past while embracing the future.\",\n  \"questionText\": \"What are the main points the speaker makes about cultural heritage?\",\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The speaker emphasizes the importance of cultural heritage, suggests that modernization can enhance cultural evolution, and stresses the need for careful integration to avoid cultural dilution.\",\n  \"rubricDimensions\": [\"detail recall\", \"nuanced understanding\", \"implicit meaning\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"cohesion\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "fa41fc09-5b19-49e6-8d3e-4e3971175c91",
+      "title": "Understanding Nuanced Opinions",
+      "modality": "listening",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail recall",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Listen to the speaker's opinion about the importance of cultural heritage in modern society and summarize the main points.",
+      "passageText": null,
+      "audioTranscript": "In today's rapidly changing world, the importance of cultural heritage cannot be overstated. While some may argue that modernization leads to a loss of traditions, I believe that it can also serve as a platform for cultural evolution. For instance, integrating traditional practices into contemporary life can enrich our experiences and foster a deeper understanding of our roots. However, we must navigate this integration carefully to avoid cultural dilution. It's crucial to strike a balance that honors our past while embracing the future.",
+      "questionText": "What are the main points the speaker makes about cultural heritage?",
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The speaker emphasizes the importance of cultural heritage, suggests that modernization can enhance cultural evolution, and stresses the need for careful integration to avoid cultural dilution.",
+      "rubricDimensions": [
+        "detail recall",
+        "nuanced understanding",
+        "implicit meaning"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "cohesion"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:22.503Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7936,
+        "tokensInput": 732,
+        "tokensOutput": 341,
+        "estimatedCostUsd": 0.000314
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 12795,
+    "tokensInput": 1510,
+    "tokensOutput": 536,
+    "estimatedCostUsd": 0.000548,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is too high for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is safe and appropriate.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is culturally neutral.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"The item does not effectively target useful Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"detail recall\", \"nuanced understanding\", \"implicit meaning\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is usable on mobile.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"high\", \"message\": \"The predicted CEFR level is too high for the target audience.\", \"evidence\": \"predictedCefr: 'C1'\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The item does not effectively target useful Vietnamese L1 transfer patterns.\", \"evidence\": \"matchedPatterns: ['implicit meaning', 'nuanced register']\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is similar to an existing item.\", \"evidence\": \"nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "ba0bc2b3-d162-487d-9d87-a6d479513760",
+      "generatedItemId": "fa41fc09-5b19-49e6-8d3e-4e3971175c91",
+      "validatedAt": "2026-05-20T11:31:35.298Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is too high for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is safe and appropriate."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail recall",
+          "nuanced understanding",
+          "implicit meaning"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is usable on mobile."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The predicted CEFR level is too high for the target audience.",
+          "evidence": "predictedCefr: 'C1'"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+          "evidence": "matchedPatterns: ['implicit meaning', 'nuanced register']"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:35.298Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 12795,
+        "tokensInput": 1510,
+        "tokensOutput": 536,
+        "estimatedCostUsd": 0.000548
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "high",
+      "message": "The predicted CEFR level is too high for the target audience.",
+      "evidence": "predictedCefr: 'C1'"
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+      "evidence": "matchedPatterns: ['implicit meaning', 'nuanced register']"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is similar to an existing item.",
+      "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+    }
+  ]
+}

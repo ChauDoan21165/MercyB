@@ -1,0 +1,156 @@
+{
+  "isoTimestamp": "2026-05-20T11:39:09.333Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 12,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4504,
+    "tokensInput": 724,
+    "tokensOutput": 245,
+    "estimatedCostUsd": 0.000256,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"main idea\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Every day, Anna wakes up at 7 AM. She eats breakfast and goes to school at 8 AM. After school, she plays with her friends. In the evening, she does her homework and goes to bed at 10 PM.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What does Anna do after school?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"She plays with her friends.\",\n  \"rubricDimensions\": [\"main idea comprehension\", \"literal understanding\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"simple present tense\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "5a646ca4-3adf-45c4-b466-903f19593da6",
+      "title": "Daily Routine",
+      "modality": "reading",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "main idea",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Every day, Anna wakes up at 7 AM. She eats breakfast and goes to school at 8 AM. After school, she plays with her friends. In the evening, she does her homework and goes to bed at 10 PM.",
+      "audioTranscript": null,
+      "questionText": "What does Anna do after school?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "She plays with her friends.",
+      "rubricDimensions": [
+        "main idea comprehension",
+        "literal understanding"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "simple present tense"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:59.605Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4504,
+        "tokensInput": 724,
+        "tokensOutput": 245,
+        "estimatedCostUsd": 0.000256
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9728,
+    "tokensInput": 1407,
+    "tokensOutput": 403,
+    "estimatedCostUsd": 0.000453,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No safety concerns identified.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is culturally neutral.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"simple present tense\"], \"notes\": \"Relevant Vietnamese-L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.9, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"main idea comprehension\", \"literal understanding\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"Item is materially similar to an existing item.\", \"evidence\": \"Duplicate risk is high due to similarity with existing item.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "077e0869-8a88-4fb2-8bc8-67a01d83346e",
+      "generatedItemId": "5a646ca4-3adf-45c4-b466-903f19593da6",
+      "validatedAt": "2026-05-20T11:39:09.333Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese-L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple present tense"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.9,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "main idea comprehension",
+          "literal understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Item is materially similar to an existing item.",
+          "evidence": "Duplicate risk is high due to similarity with existing item."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:39:09.333Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9728,
+        "tokensInput": 1407,
+        "tokensOutput": 403,
+        "estimatedCostUsd": 0.000453
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "Item is materially similar to an existing item.",
+      "evidence": "Duplicate risk is high due to similarity with existing item."
+    }
+  ]
+}

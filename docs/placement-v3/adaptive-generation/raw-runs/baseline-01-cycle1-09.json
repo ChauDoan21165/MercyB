@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:30:58.913Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 8,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5995,
+    "tokensInput": 724,
+    "tokensOutput": 316,
+    "estimatedCostUsd": 0.000298,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Nuanced Perspectives\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"inference\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Read the passage and infer the author's underlying perspective.\",\n  \"passageText\": \"In recent discussions about climate change, many voices have emerged, each presenting a unique perspective. While some advocate for immediate and drastic measures, others suggest a more gradual approach, emphasizing the importance of economic stability. The tension between these viewpoints highlights a fundamental dilemma: how to balance urgent environmental needs with the realities of societal pressures. This ongoing debate not only reflects differing priorities but also illustrates the complexities of human decision-making in the face of global challenges.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What is the author's implied stance on the balance between environmental needs and economic stability?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"The author implies that balancing urgent environmental needs with economic stability is a complex dilemma.\",\n  \"rubricDimensions\": [\"inference\", \"nuanced understanding\", \"cohesion\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"cohesion\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "94617042-1d3b-4ef9-8b0c-4fdb64ae2d53",
+      "title": "Understanding Nuanced Perspectives",
+      "modality": "reading",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "inference",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Read the passage and infer the author's underlying perspective.",
+      "passageText": "In recent discussions about climate change, many voices have emerged, each presenting a unique perspective. While some advocate for immediate and drastic measures, others suggest a more gradual approach, emphasizing the importance of economic stability. The tension between these viewpoints highlights a fundamental dilemma: how to balance urgent environmental needs with the realities of societal pressures. This ongoing debate not only reflects differing priorities but also illustrates the complexities of human decision-making in the face of global challenges.",
+      "audioTranscript": null,
+      "questionText": "What is the author's implied stance on the balance between environmental needs and economic stability?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "The author implies that balancing urgent environmental needs with economic stability is a complex dilemma.",
+      "rubricDimensions": [
+        "inference",
+        "nuanced understanding",
+        "cohesion"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "cohesion"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:48.727Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5995,
+        "tokensInput": 724,
+        "tokensOutput": 316,
+        "estimatedCostUsd": 0.000298
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 10186,
+    "tokensInput": 1486,
+    "tokensOutput": 534,
+    "estimatedCostUsd": 0.000543,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner's capabilities.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful themes.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer issues.\" },\n  \"duplicateRisk\": { \"score\": 1.0, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is too similar to an existing item, indicating a high duplicate risk.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"inference\", \"nuanced understanding\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The item is mobile-readable and usable for learners.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"Similar structure and task to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40.\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The complexity may not effectively target Vietnamese L1 transfer issues.\", \"evidence\": \"The task requires nuanced understanding that may not connect to common Vietnamese L1 transfer patterns.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "7d2838b6-1905-4c7b-b79f-b3086c073f28",
+      "generatedItemId": "94617042-1d3b-4ef9-8b0c-4fdb64ae2d53",
+      "validatedAt": "2026-05-20T11:30:58.913Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner's capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer issues.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item is too similar to an existing item, indicating a high duplicate risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "inference",
+          "nuanced understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is mobile-readable and usable for learners."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar structure and task to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The complexity may not effectively target Vietnamese L1 transfer issues.",
+          "evidence": "The task requires nuanced understanding that may not connect to common Vietnamese L1 transfer patterns."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:58.913Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10186,
+        "tokensInput": 1486,
+        "tokensOutput": 534,
+        "estimatedCostUsd": 0.000543
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "Similar structure and task to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The complexity may not effectively target Vietnamese L1 transfer issues.",
+      "evidence": "The task requires nuanced understanding that may not connect to common Vietnamese L1 transfer patterns."
+    }
+  ]
+}

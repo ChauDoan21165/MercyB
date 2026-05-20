@@ -1,0 +1,180 @@
+{
+  "isoTimestamp": "2026-05-20T11:34:50.743Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 24,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4550,
+    "tokensInput": 724,
+    "tokensOutput": 238,
+    "estimatedCostUsd": 0.000251,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"main idea\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Read the passage and find the main idea.\",\n  \"passageText\": \"Every day, I wake up at 7 AM. I eat breakfast and go to school. After school, I do my homework. In the evening, I watch TV and go to bed at 10 PM.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What does the person do after school?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"do homework\",\n  \"rubricDimensions\": [\"main idea understanding\", \"literal comprehension\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"simple present tense\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "f2ed1860-c936-44cb-8878-e0e9919c1733",
+      "title": "Daily Routine",
+      "modality": "reading",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "main idea",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Read the passage and find the main idea.",
+      "passageText": "Every day, I wake up at 7 AM. I eat breakfast and go to school. After school, I do my homework. In the evening, I watch TV and go to bed at 10 PM.",
+      "audioTranscript": null,
+      "questionText": "What does the person do after school?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "do homework",
+      "rubricDimensions": [
+        "main idea understanding",
+        "literal comprehension"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "simple present tense"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:42.669Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4550,
+        "tokensInput": 724,
+        "tokensOutput": 238,
+        "estimatedCostUsd": 0.000251
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8074,
+    "tokensInput": 1401,
+    "tokensOutput": 521,
+    "estimatedCostUsd": 0.000523,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No safety concerns identified.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": false, \"notes\": \"The content is too simplistic for 13+ learners.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is culturally neutral.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"simple present tense\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.0, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"main idea understanding\", \"literal comprehension\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"predictedCefr: A1\" },\n    { \"code\": \"age_inappropriate\", \"severity\": \"medium\", \"message\": \"Content is too simplistic for 13+ learners.\", \"evidence\": \"promptText: 'Read the passage and find the main idea.'\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to existing item.\", \"evidence\": \"nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "b5ba0910-3fea-4b95-9d78-628b3c85e596",
+      "generatedItemId": "f2ed1860-c936-44cb-8878-e0e9919c1733",
+      "validatedAt": "2026-05-20T11:34:50.743Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The content is too simplistic for 13+ learners."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple present tense"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "main idea understanding",
+          "literal comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr: A1"
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "Content is too simplistic for 13+ learners.",
+          "evidence": "promptText: 'Read the passage and find the main idea.'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:50.743Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8074,
+        "tokensInput": 1401,
+        "tokensOutput": 521,
+        "estimatedCostUsd": 0.000523
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "predictedCefr: A1"
+    },
+    {
+      "code": "age_inappropriate",
+      "severity": "medium",
+      "message": "Content is too simplistic for 13+ learners.",
+      "evidence": "promptText: 'Read the passage and find the main idea.'"
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to existing item.",
+      "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+    }
+  ]
+}

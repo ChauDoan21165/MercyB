@@ -1,0 +1,168 @@
+{
+  "isoTimestamp": "2026-05-20T11:42:22.462Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 24,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4716,
+    "tokensInput": 724,
+    "tokensOutput": 260,
+    "estimatedCostUsd": 0.000265,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"main idea\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Read the passage and find the main idea.\",\n  \"passageText\": \"Every day, I wake up at 7 AM. I eat breakfast at 7:30 AM. I go to school at 8 AM. I study and play with my friends. I come home at 4 PM. I have dinner at 6 PM and go to bed at 10 PM.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What is the main idea of the passage?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"The person's daily routine.\",\n  \"rubricDimensions\": [\"main idea understanding\", \"literal comprehension\"],\n  \"vietnameseL1Targets\": [\"final consonants\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "15caef63-1d48-460c-9210-43c840277a8b",
+      "title": "Daily Routine",
+      "modality": "reading",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "main idea",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Read the passage and find the main idea.",
+      "passageText": "Every day, I wake up at 7 AM. I eat breakfast at 7:30 AM. I go to school at 8 AM. I study and play with my friends. I come home at 4 PM. I have dinner at 6 PM and go to bed at 10 PM.",
+      "audioTranscript": null,
+      "questionText": "What is the main idea of the passage?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "The person's daily routine.",
+      "rubricDimensions": [
+        "main idea understanding",
+        "literal comprehension"
+      ],
+      "vietnameseL1Targets": [
+        "final consonants",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:42:13.458Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4716,
+        "tokensInput": 724,
+        "tokensOutput": 260,
+        "estimatedCostUsd": 0.000265
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9004,
+    "tokensInput": 1482,
+    "tokensOutput": 476,
+    "estimatedCostUsd": 0.000508,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level as it uses very familiar words and simple tasks.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"final consonants\", \"subject-verb agreement\"], \"notes\": \"The item does not effectively target useful Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is materially similar to an existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"main idea understanding\", \"literal comprehension\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The item does not connect to useful Vietnamese L1 transfer evidence.\", \"evidence\": \"vietnameseL1Targets field\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"duplicateRisk score\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "a07c96ee-3a2e-47eb-b4ad-9114d63235b4",
+      "generatedItemId": "15caef63-1d48-460c-9210-43c840277a8b",
+      "validatedAt": "2026-05-20T11:42:22.462Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level as it uses very familiar words and simple tasks.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively target useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "final consonants",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is materially similar to an existing item.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "main idea understanding",
+          "literal comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not connect to useful Vietnamese L1 transfer evidence.",
+          "evidence": "vietnameseL1Targets field"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "duplicateRisk score"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:42:22.462Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9004,
+        "tokensInput": 1482,
+        "tokensOutput": 476,
+        "estimatedCostUsd": 0.000508
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The item does not connect to useful Vietnamese L1 transfer evidence.",
+      "evidence": "vietnameseL1Targets field"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "duplicateRisk score"
+    }
+  ]
+}

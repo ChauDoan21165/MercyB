@@ -1,0 +1,169 @@
+{
+  "isoTimestamp": "2026-05-20T11:32:17.508Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 13,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4467,
+    "tokensInput": 727,
+    "tokensOutput": 214,
+    "estimatedCostUsd": 0.000237,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Activities\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"coherence\",\n  \"difficultyConstraints\": [\"very short; literal meaning only; everyday topic\"],\n  \"promptText\": \"Write 3 sentences about what you do in the morning. Use simple words.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The learner should provide 3 clear sentences about their morning routine, demonstrating basic coherence.\",\n  \"rubricDimensions\": [\"task achievement\", \"coherence\", \"grammar\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"simple present tense\", \"basic sentence structure\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "5aef9829-e83d-4566-b649-dbc8fa70f6a8",
+      "title": "Daily Activities",
+      "modality": "writing",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "coherence",
+      "difficultyConstraints": [
+        "very short; literal meaning only; everyday topic"
+      ],
+      "promptText": "Write 3 sentences about what you do in the morning. Use simple words.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The learner should provide 3 clear sentences about their morning routine, demonstrating basic coherence.",
+      "rubricDimensions": [
+        "task achievement",
+        "coherence",
+        "grammar"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "simple present tense",
+        "basic sentence structure"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:09.635Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4467,
+        "tokensInput": 727,
+        "tokensOutput": 214,
+        "estimatedCostUsd": 0.000237
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7873,
+    "tokensInput": 1378,
+    "tokensOutput": 445,
+    "estimatedCostUsd": 0.000474,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No safety concerns identified.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"simple present tense\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.8, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"High similarity risk with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"task achievement\", \"coherence\", \"grammar\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"predictedCefr is A1\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"nearestItemIds includes an existing item\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "9b37c57b-93ed-4947-8d40-5d64d2ef6651",
+      "generatedItemId": "5aef9829-e83d-4566-b649-dbc8fa70f6a8",
+      "validatedAt": "2026-05-20T11:32:17.508Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple present tense"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.8,
+        "pass": false,
+        "notes": "High similarity risk with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "task achievement",
+          "coherence",
+          "grammar"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr is A1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:17.508Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7873,
+        "tokensInput": 1378,
+        "tokensOutput": 445,
+        "estimatedCostUsd": 0.000474
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "predictedCefr is A1"
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "nearestItemIds includes an existing item"
+    }
+  ]
+}

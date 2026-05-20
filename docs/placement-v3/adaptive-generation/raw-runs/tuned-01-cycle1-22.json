@@ -1,0 +1,157 @@
+{
+  "isoTimestamp": "2026-05-20T11:41:36.892Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 21,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 10953,
+    "tokensInput": 731,
+    "tokensOutput": 256,
+    "estimatedCostUsd": 0.000263,
+    "rawGeneratedItem": "{\n  \"title\": \"C1 Writing Task on Articles and Tense\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"articles and tense\",\n  \"difficultyConstraints\": [\"implicit stance; nuanced register; dense but mobile-readable\"],\n  \"promptText\": \"Write a short paragraph discussing the impact of technology on modern communication. Use at least three different articles (a, an, the) and demonstrate varied tense usage. Consider how your perspective might differ from someone of another age group.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A well-structured paragraph that uses articles correctly and demonstrates varied tense usage, reflecting a nuanced perspective.\",\n  \"rubricDimensions\": [\"coherence\", \"grammar\", \"vocabulary\", \"task achievement\"],\n  \"vietnameseL1Targets\": [\"article usage\", \"tense marking\", \"coherence\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "93f0cf1d-1e62-4b8d-b641-15f7955142a6",
+      "title": "C1 Writing Task on Articles and Tense",
+      "modality": "writing",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "articles and tense",
+      "difficultyConstraints": [
+        "implicit stance; nuanced register; dense but mobile-readable"
+      ],
+      "promptText": "Write a short paragraph discussing the impact of technology on modern communication. Use at least three different articles (a, an, the) and demonstrate varied tense usage. Consider how your perspective might differ from someone of another age group.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A well-structured paragraph that uses articles correctly and demonstrates varied tense usage, reflecting a nuanced perspective.",
+      "rubricDimensions": [
+        "coherence",
+        "grammar",
+        "vocabulary",
+        "task achievement"
+      ],
+      "vietnameseL1Targets": [
+        "article usage",
+        "tense marking",
+        "coherence"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:41:24.398Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10953,
+        "tokensInput": 731,
+        "tokensOutput": 256,
+        "estimatedCostUsd": 0.000263
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 12494,
+    "tokensInput": 1482,
+    "tokensOutput": 418,
+    "estimatedCostUsd": 0.000473,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The task is appropriate for C1 level, but the complexity may not be suitable for all learners.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The task is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The prompt does not assume specific cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"article usage\", \"tense marking\"], \"notes\": \"While it targets article usage and tense marking, the complexity may not yield clear evidence of Vietnamese L1 transfer.\" },\n  \"duplicateRisk\": { \"score\": 0.0, \"pass\": true, \"nearestItemIds\": [], \"notes\": \"No duplicate items found.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"coherence\", \"grammar\", \"vocabulary\", \"task achievement\"], \"notes\": \"The task aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The task is mobile-readable and user-friendly.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"not_gradable\", \"severity\": \"medium\", \"message\": \"The complexity of the task may not yield stable expected answers.\", \"evidence\": \"The prompt requires nuanced perspectives which may vary widely.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "3388da81-b0f6-431a-bd23-866df42fb57f",
+      "generatedItemId": "93f0cf1d-1e62-4b8d-b641-15f7955142a6",
+      "validatedAt": "2026-05-20T11:41:36.892Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The task is appropriate for C1 level, but the complexity may not be suitable for all learners.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The task is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt does not assume specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While it targets article usage and tense marking, the complexity may not yield clear evidence of Vietnamese L1 transfer.",
+        "matchedPatterns": [
+          "article usage",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": true,
+        "notes": "No duplicate items found.",
+        "nearestItemIds": []
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The task aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "coherence",
+          "grammar",
+          "vocabulary",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The task is mobile-readable and user-friendly."
+      },
+      "rejectionReasons": [
+        {
+          "code": "not_gradable",
+          "severity": "medium",
+          "message": "The complexity of the task may not yield stable expected answers.",
+          "evidence": "The prompt requires nuanced perspectives which may vary widely."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:41:36.892Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 12494,
+        "tokensInput": 1482,
+        "tokensOutput": 418,
+        "estimatedCostUsd": 0.000473
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "not_gradable",
+      "severity": "medium",
+      "message": "The complexity of the task may not yield stable expected answers.",
+      "evidence": "The prompt requires nuanced perspectives which may vary widely."
+    }
+  ]
+}

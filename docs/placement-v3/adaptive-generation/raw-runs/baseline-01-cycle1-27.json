@@ -1,0 +1,180 @@
+{
+  "isoTimestamp": "2026-05-20T11:35:18.482Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 26,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4461,
+    "tokensInput": 731,
+    "tokensOutput": 240,
+    "estimatedCostUsd": 0.000254,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"speaker attitude\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Listen to the speaker talk about their daily routine.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"I wake up at 7 AM. I feel happy in the morning. I eat breakfast at 7:30. I like toast and eggs. Then, I go to school. I enjoy learning new things.\",\n  \"questionText\": \"How does the speaker feel in the morning?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"happy\",\n  \"rubricDimensions\": [\"listening comprehension\", \"speaker attitude understanding\"],\n  \"vietnameseL1Targets\": [\"intonation\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "f1786aa1-48fa-479e-8d45-0123f510e0e9",
+      "title": "Daily Routine",
+      "modality": "listening",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "speaker attitude",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Listen to the speaker talk about their daily routine.",
+      "passageText": null,
+      "audioTranscript": "I wake up at 7 AM. I feel happy in the morning. I eat breakfast at 7:30. I like toast and eggs. Then, I go to school. I enjoy learning new things.",
+      "questionText": "How does the speaker feel in the morning?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "happy",
+      "rubricDimensions": [
+        "listening comprehension",
+        "speaker attitude understanding"
+      ],
+      "vietnameseL1Targets": [
+        "intonation",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:08.849Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4461,
+        "tokensInput": 731,
+        "tokensOutput": 240,
+        "estimatedCostUsd": 0.000254
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9633,
+    "tokensInput": 1406,
+    "tokensOutput": 518,
+    "estimatedCostUsd": 0.000522,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": false, \"notes\": \"The content is simplistic and may not engage learners aged 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is culturally neutral.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"intonation\", \"subject-verb agreement\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.1, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"listening comprehension\", \"speaker attitude understanding\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"Predicted CEFR is A1.\" },\n    { \"code\": \"age_inappropriate\", \"severity\": \"medium\", \"message\": \"Content is simplistic and may not engage learners aged 13+.\", \"evidence\": \"The prompt is very basic.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to existing item.\", \"evidence\": \"Similar to item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "bbd0b84a-17e2-468b-9ca1-2b1c366f9aba",
+      "generatedItemId": "f1786aa1-48fa-479e-8d45-0123f510e0e9",
+      "validatedAt": "2026-05-20T11:35:18.482Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The content is simplistic and may not engage learners aged 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "intonation",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.1,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1."
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "Content is simplistic and may not engage learners aged 13+.",
+          "evidence": "The prompt is very basic."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar to item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:18.482Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9633,
+        "tokensInput": 1406,
+        "tokensOutput": 518,
+        "estimatedCostUsd": 0.000522
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "Predicted CEFR is A1."
+    },
+    {
+      "code": "age_inappropriate",
+      "severity": "medium",
+      "message": "Content is simplistic and may not engage learners aged 13+.",
+      "evidence": "The prompt is very basic."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to existing item.",
+      "evidence": "Similar to item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+    }
+  ]
+}

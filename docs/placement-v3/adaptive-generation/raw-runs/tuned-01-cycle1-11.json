@@ -1,0 +1,171 @@
+{
+  "isoTimestamp": "2026-05-20T11:38:41.685Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 10,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 3434,
+    "tokensInput": 732,
+    "tokensOutput": 308,
+    "estimatedCostUsd": 0.000295,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Implicit Meanings\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail recall\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Listen to the following conversation and recall the details about the speaker's opinion on the new policy.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"I think the new policy is a step in the right direction, but it lacks the necessary support for those who will be most affected. While some may argue that it's beneficial, I believe that without additional resources, it could lead to more challenges than solutions. It's crucial to consider the long-term implications rather than just the immediate benefits.\",\n  \"questionText\": \"What is the speaker's main concern regarding the new policy?\",\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The speaker's main concern is that the new policy lacks the necessary support for those who will be most affected.\",\n  \"rubricDimensions\": [\"detail recall\", \"nuance understanding\", \"implicit meaning detection\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "0ea6adab-26d8-42d1-84a8-e3c2230ee172",
+      "title": "Understanding Implicit Meanings",
+      "modality": "listening",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail recall",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Listen to the following conversation and recall the details about the speaker's opinion on the new policy.",
+      "passageText": null,
+      "audioTranscript": "I think the new policy is a step in the right direction, but it lacks the necessary support for those who will be most affected. While some may argue that it's beneficial, I believe that without additional resources, it could lead to more challenges than solutions. It's crucial to consider the long-term implications rather than just the immediate benefits.",
+      "questionText": "What is the speaker's main concern regarding the new policy?",
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The speaker's main concern is that the new policy lacks the necessary support for those who will be most affected.",
+      "rubricDimensions": [
+        "detail recall",
+        "nuance understanding",
+        "implicit meaning detection"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:33.154Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 3434,
+        "tokensInput": 732,
+        "tokensOutput": 308,
+        "estimatedCostUsd": 0.000295
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8531,
+    "tokensInput": 1474,
+    "tokensOutput": 448,
+    "estimatedCostUsd": 0.00049,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The item is at the C1 level, which is too hard for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"Relevant Vietnamese-L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"Duplicate risk is high due to similarity in structure.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"detail recall\", \"nuance understanding\", \"implicit meaning detection\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is mobile-readable.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"high\", \"message\": \"The item is too difficult for the target audience.\", \"evidence\": \"Predicted CEFR is C1.\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is similar to an existing item.\", \"evidence\": \"Duplicate risk score is 0.5.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "f72b99f3-f31c-49a7-aba2-89e32431d4fd",
+      "generatedItemId": "0ea6adab-26d8-42d1-84a8-e3c2230ee172",
+      "validatedAt": "2026-05-20T11:38:41.685Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is at the C1 level, which is too hard for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese-L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in structure.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail recall",
+          "nuance understanding",
+          "implicit meaning detection"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The item is too difficult for the target audience.",
+          "evidence": "Predicted CEFR is C1."
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "Duplicate risk score is 0.5."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:41.685Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8531,
+        "tokensInput": 1474,
+        "tokensOutput": 448,
+        "estimatedCostUsd": 0.00049
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "high",
+      "message": "The item is too difficult for the target audience.",
+      "evidence": "Predicted CEFR is C1."
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is similar to an existing item.",
+      "evidence": "Duplicate risk score is 0.5."
+    }
+  ]
+}

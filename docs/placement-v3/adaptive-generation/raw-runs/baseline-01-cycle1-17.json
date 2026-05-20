@@ -1,0 +1,167 @@
+{
+  "isoTimestamp": "2026-05-20T11:32:55.988Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 16,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5613,
+    "tokensInput": 726,
+    "tokensOutput": 266,
+    "estimatedCostUsd": 0.000268,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding a School Event\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail extraction\",\n  \"difficultyConstraints\": [\"connected familiar topic\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Last week, our school organized a sports day. Students participated in various activities like running, jumping, and playing football. Everyone had fun, and many parents came to watch. At the end of the day, the winners received medals. Many students were excited about the event and hope to have another sports day soon.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What did the winners receive at the end of the sports day?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"medals\",\n  \"rubricDimensions\": [\"detail extraction\", \"comprehension\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"literal Vietnamese calques\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "c0c7fe2e-1ba7-4b6a-b752-f841c96c29f6",
+      "title": "Understanding a School Event",
+      "modality": "reading",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail extraction",
+      "difficultyConstraints": [
+        "connected familiar topic",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Last week, our school organized a sports day. Students participated in various activities like running, jumping, and playing football. Everyone had fun, and many parents came to watch. At the end of the day, the winners received medals. Many students were excited about the event and hope to have another sports day soon.",
+      "audioTranscript": null,
+      "questionText": "What did the winners receive at the end of the sports day?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "medals",
+      "rubricDimensions": [
+        "detail extraction",
+        "comprehension"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "literal Vietnamese calques"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:47.932Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5613,
+        "tokensInput": 726,
+        "tokensOutput": 266,
+        "estimatedCostUsd": 0.000268
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8056,
+    "tokensInput": 1434,
+    "tokensOutput": 483,
+    "estimatedCostUsd": 0.000505,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The passage and question align with B1 level expectations.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and appropriate.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"No cultural assumptions present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\"], \"notes\": \"While there is a relevant target, it is not genuinely testable in this context.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item, increasing the risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"detail extraction\", \"comprehension\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The format is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"L1 target is not genuinely testable.\", \"evidence\": \"subject-verb agreement\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Item is materially similar to an existing item.\", \"evidence\": \"similarity to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "f584dde3-c86a-4437-9009-21a3f467da33",
+      "generatedItemId": "c0c7fe2e-1ba7-4b6a-b752-f841c96c29f6",
+      "validatedAt": "2026-05-20T11:32:55.988Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The passage and question align with B1 level expectations.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and appropriate."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there is a relevant target, it is not genuinely testable in this context.",
+        "matchedPatterns": [
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, increasing the risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The format is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "L1 target is not genuinely testable.",
+          "evidence": "subject-verb agreement"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Item is materially similar to an existing item.",
+          "evidence": "similarity to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:55.988Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8056,
+        "tokensInput": 1434,
+        "tokensOutput": 483,
+        "estimatedCostUsd": 0.000505
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "L1 target is not genuinely testable.",
+      "evidence": "subject-verb agreement"
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Item is materially similar to an existing item.",
+      "evidence": "similarity to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+    }
+  ]
+}

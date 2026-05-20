@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:30:27.639Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 6,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5419,
+    "tokensInput": 731,
+    "tokensOutput": 301,
+    "estimatedCostUsd": 0.00029,
+    "rawGeneratedItem": "{\n  \"title\": \"Weekend Plans\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"gist\",\n  \"difficultyConstraints\": [\"connected familiar topics\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Listen to a conversation about weekend plans and answer the question.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"A: Hey, what are you doing this weekend? B: I’m thinking of going to the beach. A: That sounds fun! Are you going with anyone? B: Yes, my friends are joining me. What about you? A: I might just stay home and watch movies. B: That’s nice too! Do you have any movies in mind? A: I want to see the new action film that just came out.\",\n  \"questionText\": \"What are B's plans for the weekend?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"Going to the beach with friends.\",\n  \"rubricDimensions\": [\"comprehension of gist\", \"ability to infer meaning\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"prepositions\", \"final consonants\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "269f9aa8-6804-4b95-ab64-c55a7edb5bb3",
+      "title": "Weekend Plans",
+      "modality": "listening",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "gist",
+      "difficultyConstraints": [
+        "connected familiar topics",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Listen to a conversation about weekend plans and answer the question.",
+      "passageText": null,
+      "audioTranscript": "A: Hey, what are you doing this weekend? B: I’m thinking of going to the beach. A: That sounds fun! Are you going with anyone? B: Yes, my friends are joining me. What about you? A: I might just stay home and watch movies. B: That’s nice too! Do you have any movies in mind? A: I want to see the new action film that just came out.",
+      "questionText": "What are B's plans for the weekend?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "Going to the beach with friends.",
+      "rubricDimensions": [
+        "comprehension of gist",
+        "ability to infer meaning"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "prepositions",
+        "final consonants"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:19.486Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5419,
+        "tokensInput": 731,
+        "tokensOutput": 301,
+        "estimatedCostUsd": 0.00029
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8153,
+    "tokensInput": 1467,
+    "tokensOutput": 454,
+    "estimatedCostUsd": 0.000492,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"A2\", \"notes\": \"The item is too easy for the target B1 level.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\", \"prepositions\", \"final consonants\"], \"notes\": \"While there are relevant patterns, the item does not effectively test them.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"comprehension of gist\", \"ability to infer meaning\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target level.\", \"evidence\": \"predictedCefr is A2\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is similar to an existing item.\", \"evidence\": \"nearestItemIds includes an existing item\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "44c35c1a-756f-4945-afb7-e6ece9a6570a",
+      "generatedItemId": "269f9aa8-6804-4b95-ab64-c55a7edb5bb3",
+      "validatedAt": "2026-05-20T11:30:27.639Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is too easy for the target B1 level.",
+        "predictedCefr": "A2"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the item does not effectively test them.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "prepositions",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "comprehension of gist",
+          "ability to infer meaning"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target level.",
+          "evidence": "predictedCefr is A2"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:27.639Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8153,
+        "tokensInput": 1467,
+        "tokensOutput": 454,
+        "estimatedCostUsd": 0.000492
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target level.",
+      "evidence": "predictedCefr is A2"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is similar to an existing item.",
+      "evidence": "nearestItemIds includes an existing item"
+    }
+  ]
+}

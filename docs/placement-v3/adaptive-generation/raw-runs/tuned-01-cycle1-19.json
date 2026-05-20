@@ -1,0 +1,167 @@
+{
+  "isoTimestamp": "2026-05-20T11:40:38.833Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 18,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7476,
+    "tokensInput": 731,
+    "tokensOutput": 280,
+    "estimatedCostUsd": 0.000278,
+    "rawGeneratedItem": "{\n  \"title\": \"Weekend Plans\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"gist\",\n  \"difficultyConstraints\": [\"connected familiar topics\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Listen to the conversation about weekend plans and then answer the question.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"A: Hey, do you have any plans for the weekend? B: Yeah, I’m thinking about going to the beach with some friends. A: That sounds fun! I might join you. B: Sure! We could have a picnic there. A: Great idea! What time are you going? B: We’ll leave around 10 in the morning.\",\n  \"questionText\": \"What are B's plans for the weekend?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"Going to the beach with friends.\",\n  \"rubricDimensions\": [\"listening comprehension\", \"gist understanding\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"literal Vietnamese calques\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "22a1d860-7515-4ed3-b95f-19d4420a6df5",
+      "title": "Weekend Plans",
+      "modality": "listening",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "gist",
+      "difficultyConstraints": [
+        "connected familiar topics",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Listen to the conversation about weekend plans and then answer the question.",
+      "passageText": null,
+      "audioTranscript": "A: Hey, do you have any plans for the weekend? B: Yeah, I’m thinking about going to the beach with some friends. A: That sounds fun! I might join you. B: Sure! We could have a picnic there. A: Great idea! What time are you going? B: We’ll leave around 10 in the morning.",
+      "questionText": "What are B's plans for the weekend?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "Going to the beach with friends.",
+      "rubricDimensions": [
+        "listening comprehension",
+        "gist understanding"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "literal Vietnamese calques"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:40:26.238Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7476,
+        "tokensInput": 731,
+        "tokensOutput": 280,
+        "estimatedCostUsd": 0.000278
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 12594,
+    "tokensInput": 1444,
+    "tokensOutput": 505,
+    "estimatedCostUsd": 0.00052,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The item fits the B1 level with connected familiar topics and basic inference.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful themes.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\"], \"notes\": \"While it targets subject-verb agreement, it lacks a strong connection to other useful Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, indicating a higher risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"listening comprehension\", \"gist understanding\"], \"notes\": \"The item aligns well with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"Insufficient connection to useful Vietnamese L1 transfer evidence.\", \"evidence\": \"Only targets subject-verb agreement.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to an existing item.\", \"evidence\": \"Similar to item ID f342d941-37e5-46f5-8311-4b86db7f6cad.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "2762790a-9006-40be-b74b-b75d24d9d6b0",
+      "generatedItemId": "22a1d860-7515-4ed3-b95f-19d4420a6df5",
+      "validatedAt": "2026-05-20T11:40:38.833Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level with connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While it targets subject-verb agreement, it lacks a strong connection to other useful Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns well with the rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "gist understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Insufficient connection to useful Vietnamese L1 transfer evidence.",
+          "evidence": "Only targets subject-verb agreement."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to an existing item.",
+          "evidence": "Similar to item ID f342d941-37e5-46f5-8311-4b86db7f6cad."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:40:38.833Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 12594,
+        "tokensInput": 1444,
+        "tokensOutput": 505,
+        "estimatedCostUsd": 0.00052
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "Insufficient connection to useful Vietnamese L1 transfer evidence.",
+      "evidence": "Only targets subject-verb agreement."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to an existing item.",
+      "evidence": "Similar to item ID f342d941-37e5-46f5-8311-4b86db7f6cad."
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "isoTimestamp": "2026-05-20T11:40:18.761Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 17,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5581,
+    "tokensInput": 730,
+    "tokensOutput": 240,
+    "estimatedCostUsd": 0.000253,
+    "rawGeneratedItem": "{\n  \"title\": \"Describe Your Favorite Hobby\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"task achievement\",\n  \"difficultyConstraints\": [\"connected familiar topic\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Write a short paragraph about your favorite hobby. Explain why you like it and how often you do it.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A clear paragraph that includes the hobby, reasons for liking it, and frequency of doing it, demonstrating coherence and appropriate use of grammar.\",\n  \"rubricDimensions\": [\"task achievement\", \"coherence and cohesion\", \"grammar and vocabulary\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"cohesion\", \"literal Vietnamese calques\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "0ad59b2e-e77d-40dd-8da5-3a01d301e5f5",
+      "title": "Describe Your Favorite Hobby",
+      "modality": "writing",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "task achievement",
+      "difficultyConstraints": [
+        "connected familiar topic",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Write a short paragraph about your favorite hobby. Explain why you like it and how often you do it.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A clear paragraph that includes the hobby, reasons for liking it, and frequency of doing it, demonstrating coherence and appropriate use of grammar.",
+      "rubricDimensions": [
+        "task achievement",
+        "coherence and cohesion",
+        "grammar and vocabulary"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "cohesion",
+        "literal Vietnamese calques"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:40:09.765Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5581,
+        "tokensInput": 730,
+        "tokensOutput": 240,
+        "estimatedCostUsd": 0.000253
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8996,
+    "tokensInput": 1408,
+    "tokensOutput": 518,
+    "estimatedCostUsd": 0.000522,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The item fits the B1 level as it requires connected familiar topics and basic inference.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The item is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The prompt does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\", \"cohesion\"], \"notes\": \"While it targets relevant patterns, the connection to Vietnamese L1 transfer evidence is weak.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, increasing the risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"task achievement\", \"coherence and cohesion\", \"grammar and vocabulary\"], \"notes\": \"The item aligns well with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The prompt is clear and usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"Weak connection to Vietnamese L1 transfer evidence.\", \"evidence\": \"The relevance to Vietnamese L1 targets is not strongly testable.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to an existing item.\", \"evidence\": \"Similar to item ID f342d941-37e5-46f5-8311-4b86db7f6cad.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "a0edc786-447d-4107-a8fd-48bc46dbbf01",
+      "generatedItemId": "0ad59b2e-e77d-40dd-8da5-3a01d301e5f5",
+      "validatedAt": "2026-05-20T11:40:18.761Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level as it requires connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While it targets relevant patterns, the connection to Vietnamese L1 transfer evidence is weak.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "cohesion"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, increasing the risk of duplication.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns well with the rubric dimensions.",
+        "supportedDimensions": [
+          "task achievement",
+          "coherence and cohesion",
+          "grammar and vocabulary"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Weak connection to Vietnamese L1 transfer evidence.",
+          "evidence": "The relevance to Vietnamese L1 targets is not strongly testable."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to an existing item.",
+          "evidence": "Similar to item ID f342d941-37e5-46f5-8311-4b86db7f6cad."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:40:18.761Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8996,
+        "tokensInput": 1408,
+        "tokensOutput": 518,
+        "estimatedCostUsd": 0.000522
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "Weak connection to Vietnamese L1 transfer evidence.",
+      "evidence": "The relevance to Vietnamese L1 targets is not strongly testable."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to an existing item.",
+      "evidence": "Similar to item ID f342d941-37e5-46f5-8311-4b86db7f6cad."
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "isoTimestamp": "2026-05-20T11:35:31.525Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 27,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 3653,
+    "tokensInput": 731,
+    "tokensOutput": 220,
+    "estimatedCostUsd": 0.000242,
+    "rawGeneratedItem": "{\n  \"title\": \"Describe Your Favorite Food\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"fluency\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Please describe your favorite food. What is it? Why do you like it?\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A simple description of a favorite food, including its name and one reason for liking it.\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"range\"],\n  \"vietnameseL1Targets\": [\"copula be\", \"subject-verb agreement\", \"final consonants\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "ace47d9f-08ef-43fc-87ba-e58143e11fb2",
+      "title": "Describe Your Favorite Food",
+      "modality": "speaking",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "fluency",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Please describe your favorite food. What is it? Why do you like it?",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A simple description of a favorite food, including its name and one reason for liking it.",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "range"
+      ],
+      "vietnameseL1Targets": [
+        "copula be",
+        "subject-verb agreement",
+        "final consonants"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:22.136Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 3653,
+        "tokensInput": 731,
+        "tokensOutput": 220,
+        "estimatedCostUsd": 0.000242
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9389,
+    "tokensInput": 1385,
+    "tokensOutput": 504,
+    "estimatedCostUsd": 0.00051,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"copula be\", \"subject-verb agreement\", \"final consonants\"], \"notes\": \"The item connects to useful Vietnamese L1 transfer evidence.\" },\n  \"duplicateRisk\": { \"score\": 0.4, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item, posing a duplicate risk.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"range\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"predictedCefr: A1\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"nearestItemIds: [\\\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\\\"]\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "7f3c05f7-c040-4d6a-bf99-710e65c2ecbf",
+      "generatedItemId": "ace47d9f-08ef-43fc-87ba-e58143e11fb2",
+      "validatedAt": "2026-05-20T11:35:31.525Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item connects to useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "copula be",
+          "subject-verb agreement",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.4,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplicate risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr: A1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds: [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"]"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:31.525Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9389,
+        "tokensInput": 1385,
+        "tokensOutput": 504,
+        "estimatedCostUsd": 0.00051
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "predictedCefr: A1"
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "nearestItemIds: [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"]"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "isoTimestamp": "2026-05-20T11:32:42.319Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 15,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4494,
+    "tokensInput": 731,
+    "tokensOutput": 233,
+    "estimatedCostUsd": 0.000249,
+    "rawGeneratedItem": "{\n  \"title\": \"Describe Your Day\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"fluency\",\n  \"difficultyConstraints\": [\"very short; literal meaning only; everyday topic\"],\n  \"promptText\": \"Please tell me about your day. What did you do today? Use simple sentences.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The learner should mention 2-3 simple activities they did today, such as 'I eat breakfast,' 'I go to school,' or 'I play soccer.'\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"range\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"final consonants\", \"simple sentence structure\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "fc38a1d8-659f-42fb-b940-729092b65c0b",
+      "title": "Describe Your Day",
+      "modality": "speaking",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "fluency",
+      "difficultyConstraints": [
+        "very short; literal meaning only; everyday topic"
+      ],
+      "promptText": "Please tell me about your day. What did you do today? Use simple sentences.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The learner should mention 2-3 simple activities they did today, such as 'I eat breakfast,' 'I go to school,' or 'I play soccer.'",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "range"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "final consonants",
+        "simple sentence structure"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:33.834Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4494,
+        "tokensInput": 731,
+        "tokensOutput": 233,
+        "estimatedCostUsd": 0.000249
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8485,
+    "tokensInput": 1397,
+    "tokensOutput": 437,
+    "estimatedCostUsd": 0.000472,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level as it requires very simple sentences.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is appropriate for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt does not assume specific cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"final consonants\", \"simple sentence structure\"], \"notes\": \"The item targets relevant Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item, posing a duplicate risk.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"range\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"similarity to 'Daily Routine Read the passage and answer the question.'\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "81c1cdcf-0262-43cd-8d38-9b310beb4676",
+      "generatedItemId": "fc38a1d8-659f-42fb-b940-729092b65c0b",
+      "validatedAt": "2026-05-20T11:32:42.319Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level as it requires very simple sentences.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is appropriate for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item targets relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants",
+          "simple sentence structure"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplicate risk.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "similarity to 'Daily Routine Read the passage and answer the question.'"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:42.319Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8485,
+        "tokensInput": 1397,
+        "tokensOutput": 437,
+        "estimatedCostUsd": 0.000472
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "similarity to 'Daily Routine Read the passage and answer the question.'"
+    }
+  ]
+}
