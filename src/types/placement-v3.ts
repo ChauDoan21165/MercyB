@@ -102,6 +102,8 @@ export type PlacementSkill =
   | "reading"
   | "writing";
 
+export type PlacementCefrLevel = "pre_a1" | CEFRLevel;
+
 export type L1InterferenceFlag =
   | string
   | {
@@ -112,15 +114,15 @@ export type L1InterferenceFlag =
     };
 
 export type CEFRAssessment = {
-  overallLevel?: CEFRLevel;
+  overallLevel?: PlacementCefrLevel;
   confidence?: number;
-  overallCefr?: CEFRLevel;
-  overallCEFR?: CEFRLevel;
-  cefrLevel?: CEFRLevel;
-  level?: CEFRLevel;
-  skillCefr?: Partial<Record<PlacementSkill, CEFRLevel>>;
-  skillCEFR?: Partial<Record<PlacementSkill, CEFRLevel>>;
-  skillLevels?: Partial<Record<PlacementSkill, CEFRLevel>>;
+  overallCefr?: PlacementCefrLevel;
+  overallCEFR?: PlacementCefrLevel;
+  cefrLevel?: PlacementCefrLevel;
+  level?: PlacementCefrLevel;
+  skillCefr?: Partial<Record<PlacementSkill, PlacementCefrLevel>>;
+  skillCEFR?: Partial<Record<PlacementSkill, PlacementCefrLevel>>;
+  skillLevels?: Partial<Record<PlacementSkill, PlacementCefrLevel>>;
   strengths?: string[];
   gaps?: string[];
   l1InterferenceFlags?: L1InterferenceFlag[];
