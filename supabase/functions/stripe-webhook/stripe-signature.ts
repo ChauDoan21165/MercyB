@@ -1,6 +1,6 @@
 // supabase/functions/stripe-webhook/stripe-signature.ts
 
-import { env } from "./core.ts";
+import { env } from "./stripe-env.ts";
 
 function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
   if (a.length !== b.length) return false;

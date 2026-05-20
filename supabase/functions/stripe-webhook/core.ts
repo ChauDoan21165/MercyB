@@ -2,6 +2,7 @@
 
 import { deriveEntitlement as sharedDeriveEntitlement } from "../_shared/entitlement.ts";
 import { sendEmail } from "../_shared/sendEmail.ts";
+import { env, envRaw } from "./stripe-env.ts";
 import { parseWebhookSecrets } from "./stripe-signature.ts";
 import type {
   BillingEnvironment,
@@ -77,13 +78,11 @@ export function json(payload: unknown, status = 200) {
  * Environment / primitive helpers
  * ========================================================================== */
 
-export function env(key: string): string {
-  return (Deno.env.get(key) ?? "").trim();
-}
-
-export function envRaw(key: string): string {
-  return Deno.env.get(key) ?? "";
-}
+// `env` + `envRaw` moved to ./stripe-env.ts to break the core ↔ signature
+// cycle (A13 cycle #1). Re-exported here for any callers still importing
+// from "./core.ts" via the historical path — this keeps the change
+// non-breaking for downstream importers while the cycle dies.
+export { env, envRaw };
 
 export function getSupabaseUrl(): string {
   const configured = env("PROJECT_SUPABASE_URL") ||
