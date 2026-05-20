@@ -10,6 +10,18 @@ Base: `origin/main` at `de6d31c28` (#942)
 
 Placement V3 is now integrated behind default-off flags, but it is not production-ready for users today. The safe state is merged code dark-launched behind flags. The unsafe state is enabling either public or broad internal user access before live benchmark, drift replay, native speaking, and A29 modality evidence exists.
 
+## Canonical Decision Records
+
+This report is now the current founder-facing decision snapshot. The ongoing release decision package is:
+
+- `reports/placement-v3-release-gates.md` — master checklist for every gate required before enablement.
+- `reports/placement-v3-known-risks.md` — durable risk register grouped by technical, operational, AI grading, calibration, privacy, cost, runtime, and release-management risk.
+- `reports/placement-v3-launch-scenarios.md` — staff-only, internal-only, invite-only, soft-launch, and public-launch gate definitions.
+- `reports/placement-v3-evidence-index.md` — evidence quality and merge-status index for #941, #942, #943, #944, #946, #947, #949, #950, #951, #952, and #953.
+- `reports/placement-v3-open-questions.md` — unresolved release questions for grading accuracy, CEFR calibration, speaking reliability, native runtime behavior, provider failover, replay drift, cost envelope, and scaling risk.
+
+Use these files as the canonical place to update status as blockers clear. Do not infer launch readiness from green CI or scaffold PRs; only close gates with linked runtime evidence.
+
 ## What Merged
 
 - #941 `feat(placement-v3): harden native mobile speaking capture`
@@ -96,6 +108,8 @@ Evidence folder: `reports/placement-v3-readiness-evidence/`
 | Final rerun: `npm run build` | Passed | `final-build.log` |
 | Follow-up rerun after E2E analysis: `npm run typecheck` | Passed | `followup-typecheck.log` |
 | Follow-up rerun after E2E analysis: `npm run build` | Passed | `followup-build.log` |
+| Canonical release package verification: `npm run typecheck` | Passed | `canonical-typecheck.log` |
+| Canonical release package verification: `npm run build` | Passed | `canonical-build.log` |
 
 Vertical E2E failure details:
 
