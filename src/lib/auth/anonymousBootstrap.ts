@@ -51,8 +51,11 @@ const FLAG_KEY = "anonymous_auth_enabled";
  */
 async function isFlagEnabled(): Promise<boolean> {
   try {
+    // A15b-fix-1: route through feature_flags_public view. This runs before
+    // any session exists (anon path) — the view is anon-readable; the base
+    // table no longer is.
     const { data, error } = await supabase
-      .from("feature_flags")
+      .from("feature_flags_public")
       .select("is_enabled")
       .eq("flag_key", FLAG_KEY)
       .maybeSingle();

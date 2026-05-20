@@ -39,6 +39,15 @@ export type ProfileLookupResult = {
   display_name: string | null;
 };
 
+// A15b-fix-1: This module is the admin Feature-Flags UI — INSERT/UPDATE/full-
+// row SELECT including enabled_user_ids. It intentionally stays on the BASE
+// table, not feature_flags_public, because:
+//   - listFeatureFlags needs the unmasked enabled_user_ids for the admin UI
+//     to render the cohort editor.
+//   - updateFeatureFlag is an UPDATE, which is not writable through the view.
+// Admin RLS gates (get_admin_level >= 9 via the *_admin_insert / *_admin_update
+// policies in 20260425010000_admin_feature_flags_rls.sql) are the enforcement
+// boundary here, not the view.
 export async function listFeatureFlags(): Promise<FeatureFlagRow[]> {
   const { data, error } = await supabase
     .from("feature_flags")

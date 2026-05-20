@@ -64,8 +64,9 @@ export async function isTrackingEnabled(
   }
 
   try {
+    // A15b-fix-1: route through feature_flags_public view (anon-safe).
     const { data, error } = await supabase
-      .from("feature_flags")
+      .from("feature_flags_public")
       .select("is_enabled, enabled_user_ids")
       .eq("flag_key", FLAG_KEY)
       .maybeSingle();
