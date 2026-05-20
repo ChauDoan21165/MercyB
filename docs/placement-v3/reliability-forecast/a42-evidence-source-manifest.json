@@ -1,0 +1,340 @@
+{
+  "generatedAt": "2026-05-20T16:01:07.479Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "resolutionOrder": [
+    "canonical repo paths",
+    "docs/placement-v3/reliability-forecast/evidence-dropbox",
+    "reports/agent-runs",
+    "blocked-safe missing input state"
+  ],
+  "foundInputs": [
+    {
+      "key": "reliability_health",
+      "present": true,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/reliability/reliability-health-summary.json",
+      "canonicalPath": "docs/placement-v3/reliability/reliability-health-summary.json",
+      "sourceTier": "canonical",
+      "fresh": true,
+      "stale": false,
+      "ageHours": 0.4348525,
+      "branch": "feat/b1-test-stability-burndown",
+      "generatedAt": "2026-05-20T15:35:02.009Z",
+      "safetyFields": {
+        "production_safe": false,
+        "placement_v3_enabled": false,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "ci_degradation_forecast",
+      "present": true,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/reliability/ci-degradation-forecast.json",
+      "canonicalPath": "docs/placement-v3/reliability/ci-degradation-forecast.json",
+      "sourceTier": "canonical",
+      "fresh": true,
+      "stale": false,
+      "ageHours": 0.4382561111111111,
+      "branch": "feat/b1-test-stability-burndown",
+      "generatedAt": "2026-05-20T15:34:49.756Z",
+      "safetyFields": {
+        "production_safe": false,
+        "placement_v3_enabled": false,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "reliability_recovery_forecast",
+      "present": true,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/reliability/reliability-recovery-forecast.json",
+      "canonicalPath": "docs/placement-v3/reliability/reliability-recovery-forecast.json",
+      "sourceTier": "canonical",
+      "fresh": true,
+      "stale": false,
+      "ageHours": 0.4366116666666667,
+      "branch": "feat/b1-test-stability-burndown",
+      "generatedAt": "2026-05-20T15:34:55.676Z",
+      "safetyFields": {
+        "production_safe": false,
+        "placement_v3_enabled": false,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "ci_resilience_summary",
+      "present": true,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/reliability/ci-resilience-summary.json",
+      "canonicalPath": "docs/placement-v3/reliability/ci-resilience-summary.json",
+      "sourceTier": "canonical",
+      "fresh": true,
+      "stale": false,
+      "ageHours": 0.43660777777777776,
+      "branch": "feat/b1-test-stability-burndown",
+      "generatedAt": "2026-05-20T15:34:55.690Z",
+      "safetyFields": {
+        "production_safe": false,
+        "placement_v3_enabled": false,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "reliability_anomaly_summary",
+      "present": true,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/reliability/reliability-anomaly-summary.json",
+      "canonicalPath": "docs/placement-v3/reliability/reliability-anomaly-summary.json",
+      "sourceTier": "canonical",
+      "fresh": true,
+      "stale": false,
+      "ageHours": 0.4382536111111111,
+      "branch": "feat/b1-test-stability-burndown",
+      "generatedAt": "2026-05-20T15:34:49.766Z",
+      "safetyFields": {
+        "production_safe": false,
+        "placement_v3_enabled": false,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    }
+  ],
+  "missingInputs": [
+    {
+      "key": "a33_endurance_health",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/endurance/endurance-health-summary.json",
+      "canonicalPath": "docs/placement-v3/endurance/endurance-health-summary.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a33_timeout_risk_forecast",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/endurance/timeout-risk-forecast.json",
+      "canonicalPath": "docs/placement-v3/endurance/timeout-risk-forecast.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    }
+  ],
+  "rejectedInputs": [],
+  "sourcePaths": [
+    {
+      "key": "reliability_health",
+      "selectedPath": "docs/placement-v3/reliability/reliability-health-summary.json",
+      "canonicalPath": "docs/placement-v3/reliability/reliability-health-summary.json",
+      "sourceTier": "canonical"
+    },
+    {
+      "key": "ci_degradation_forecast",
+      "selectedPath": "docs/placement-v3/reliability/ci-degradation-forecast.json",
+      "canonicalPath": "docs/placement-v3/reliability/ci-degradation-forecast.json",
+      "sourceTier": "canonical"
+    },
+    {
+      "key": "reliability_recovery_forecast",
+      "selectedPath": "docs/placement-v3/reliability/reliability-recovery-forecast.json",
+      "canonicalPath": "docs/placement-v3/reliability/reliability-recovery-forecast.json",
+      "sourceTier": "canonical"
+    },
+    {
+      "key": "ci_resilience_summary",
+      "selectedPath": "docs/placement-v3/reliability/ci-resilience-summary.json",
+      "canonicalPath": "docs/placement-v3/reliability/ci-resilience-summary.json",
+      "sourceTier": "canonical"
+    },
+    {
+      "key": "reliability_anomaly_summary",
+      "selectedPath": "docs/placement-v3/reliability/reliability-anomaly-summary.json",
+      "canonicalPath": "docs/placement-v3/reliability/reliability-anomaly-summary.json",
+      "sourceTier": "canonical"
+    },
+    {
+      "key": "a33_endurance_health",
+      "selectedPath": "docs/placement-v3/endurance/endurance-health-summary.json",
+      "canonicalPath": "docs/placement-v3/endurance/endurance-health-summary.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a33_timeout_risk_forecast",
+      "selectedPath": "docs/placement-v3/endurance/timeout-risk-forecast.json",
+      "canonicalPath": "docs/placement-v3/endurance/timeout-risk-forecast.json",
+      "sourceTier": "missing"
+    }
+  ],
+  "freshness": {
+    "thresholdHours": 72,
+    "oldestAgeHours": 0.4382561111111111,
+    "missingCount": 2,
+    "staleCount": 2,
+    "label": "blocked_missing_inputs"
+  },
+  "safetyFields": [
+    {
+      "key": "reliability_health",
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "ci_degradation_forecast",
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "reliability_recovery_forecast",
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "ci_resilience_summary",
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "reliability_anomaly_summary",
+      "production_safe": false,
+      "placement_v3_enabled": false,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a33_endurance_health",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a33_timeout_risk_forecast",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    }
+  ],
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "live_provider_validated": false,
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_validated": false,
+    "real_user_validated": false,
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  }
+}

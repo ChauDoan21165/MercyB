@@ -1,6 +1,6 @@
 # A42 Reliability Handoff Report
 
-Generated: 2026-05-20T15:51:32.383Z
+Generated: 2026-05-20T16:01:07.480Z
 
 ## What B1 Already Proved
 
@@ -10,6 +10,21 @@ Generated: 2026-05-20T15:51:32.383Z
 ## What A33 Adds As Supporting Evidence
 
 - A33 endurance context is missing in this branch; A42 therefore keeps the forecast blocked-safe.
+
+## Missing A33 Files
+
+- a33_endurance_health: docs/placement-v3/endurance/endurance-health-summary.json
+  - Place a copied artifact at canonical path: docs/placement-v3/endurance/endurance-health-summary.json
+  - Or place it in A42 dropbox as: docs/placement-v3/reliability-forecast/evidence-dropbox/endurance-health-summary.json
+  - Or preserve it under reports/agent-runs/ with the same basename: endurance-health-summary.json
+- a33_timeout_risk_forecast: docs/placement-v3/endurance/timeout-risk-forecast.json
+  - Place a copied artifact at canonical path: docs/placement-v3/endurance/timeout-risk-forecast.json
+  - Or place it in A42 dropbox as: docs/placement-v3/reliability-forecast/evidence-dropbox/timeout-risk-forecast.json
+  - Or preserve it under reports/agent-runs/ with the same basename: timeout-risk-forecast.json
+
+## Rejected Evidence
+
+- None.
 
 ## What Remains Unknown
 
@@ -36,6 +51,7 @@ Generated: 2026-05-20T15:51:32.383Z
 
 - Forecast classification: BLOCKED_BY_MISSING_EVIDENCE
 - Missing inputs: a33_endurance_health, a33_timeout_risk_forecast
+- Rejected inputs: none
 - production_safe: false
 - placement_v3_enabled: false
 - live_provider_validated: false

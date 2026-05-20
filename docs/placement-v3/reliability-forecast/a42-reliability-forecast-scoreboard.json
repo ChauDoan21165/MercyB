@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T15:51:32.383Z",
+  "generatedAt": "2026-05-20T16:01:07.480Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "classifications": [
@@ -21,10 +21,11 @@
     "a33_endurance_health",
     "a33_timeout_risk_forecast"
   ],
+  "rejectedInputs": [],
   "stale": true,
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 0.27850722222222224,
+    "oldestAgeHours": 0.4382561111111111,
     "missingCount": 2,
     "staleCount": 2,
     "label": "blocked_missing_inputs"
@@ -37,6 +38,7 @@
     "production_safe": false,
     "placement_v3_enabled": false,
     "live_provider_validated": false,
+    "real_user_validated": false,
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }

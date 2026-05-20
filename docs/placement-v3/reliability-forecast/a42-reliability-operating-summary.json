@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T15:51:32.382Z",
+  "generatedAt": "2026-05-20T16:01:07.480Z",
   "agent": "A42",
   "name": "ReliabilityForecastOps",
   "branch": "feat/a42-reliability-forecast-ops",
@@ -12,7 +12,7 @@
   "reliability_health": {
     "present": true,
     "stale": false,
-    "ageHours": 0.2751036111111111,
+    "ageHours": 0.4348525,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:35:02.009Z",
     "data": {
@@ -58,7 +58,7 @@
   "ciDegradationRisk": {
     "present": true,
     "stale": false,
-    "ageHours": 0.27850722222222224,
+    "ageHours": 0.4382561111111111,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:49.756Z",
     "data": {
@@ -107,7 +107,7 @@
   "recoveryRisk": {
     "present": true,
     "stale": false,
-    "ageHours": 0.2768627777777778,
+    "ageHours": 0.4366116666666667,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:55.676Z",
     "data": {
@@ -155,7 +155,7 @@
   "resilienceState": {
     "present": true,
     "stale": false,
-    "ageHours": 0.2768588888888889,
+    "ageHours": 0.43660777777777776,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:55.690Z",
     "data": {
@@ -214,7 +214,7 @@
   "anomalyState": {
     "present": true,
     "stale": false,
-    "ageHours": 0.27850444444444444,
+    "ageHours": 0.4382536111111111,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:49.766Z",
     "data": {
@@ -305,6 +305,7 @@
     "a33_endurance_health",
     "a33_timeout_risk_forecast"
   ],
+  "rejectedInputs": [],
   "stalenessDetection": {
     "thresholdHours": 72,
     "staleInputs": [
@@ -314,17 +315,56 @@
     "missingBranchMetadata": [],
     "missingSafetyFields": [
       {
+        "key": "reliability_health",
+        "fields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "ci_degradation_forecast",
+        "fields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "reliability_recovery_forecast",
+        "fields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "ci_resilience_summary",
+        "fields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "reliability_anomaly_summary",
+        "fields": [
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
         "key": "a33_endurance_health",
         "fields": [
           "production_safe",
-          "placement_v3_enabled"
+          "placement_v3_enabled",
+          "live_provider_validated",
+          "real_user_validated"
         ]
       },
       {
         "key": "a33_timeout_risk_forecast",
         "fields": [
           "production_safe",
-          "placement_v3_enabled"
+          "placement_v3_enabled",
+          "live_provider_validated",
+          "real_user_validated"
         ]
       }
     ],
@@ -333,7 +373,7 @@
   },
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 0.27850722222222224,
+    "oldestAgeHours": 0.4382561111111111,
     "missingCount": 2,
     "staleCount": 2,
     "label": "blocked_missing_inputs"
@@ -346,6 +386,7 @@
     "production_safe": false,
     "placement_v3_enabled": false,
     "live_provider_validated": false,
+    "real_user_validated": false,
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }
