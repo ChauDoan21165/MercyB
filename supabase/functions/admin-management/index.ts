@@ -6,8 +6,8 @@ const corsHeaders = {
   'Content-Type': 'application/json',
 };
 
-function send(data: object) {
-  return new Response(JSON.stringify(data), { headers: corsHeaders, status: 200 });
+export function send(data: object, status = 200) {
+  return new Response(JSON.stringify(data), { headers: corsHeaders, status });
 }
 
 Deno.serve(async (req) => {
@@ -24,7 +24,7 @@ Deno.serve(async (req) => {
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
       console.log('[admin-management] No auth header');
-      return send({ ok: false, error: 'Not authenticated' });
+      return send({ ok: false, error: 'Not authenticated' }, 401);
     }
 
     const token = authHeader.replace('Bearer ', '');
@@ -35,7 +35,7 @@ Deno.serve(async (req) => {
     const { data: userData, error: authError } = await supabaseAuth.auth.getUser(token);
     if (authError || !userData?.user) {
       console.log('[admin-management] Auth failed:', authError?.message);
-      return send({ ok: false, error: 'Not authenticated' });
+      return send({ ok: false, error: 'Not authenticated' }, 401);
     }
 
     const user = userData.user;
@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
 
     if (adminError || !requestorAdmin) {
       console.log('[admin-management] Not an admin');
-      return send({ ok: false, error: 'Not an admin' });
+      return send({ ok: false, error: 'Not an admin' }, 403);
     }
 
     console.log(`[admin-management] Admin level: ${requestorAdmin.level}`);
@@ -77,7 +77,7 @@ Deno.serve(async (req) => {
           .order('level', { ascending: false });
 
         if (error) {
-          return send({ ok: false, error: error.message });
+          return send({ ok: false, error: error.message }, 500);
         }
 
         // Filter to show admins at lower levels + self
@@ -111,24 +111,24 @@ Deno.serve(async (req) => {
         const level = (body.level as number) || 1;
 
         if (!email) {
-          return send({ ok: false, error: 'Email is required' });
+          return send({ ok: false, error: 'Email is required' }, 400);
         }
 
         console.log(`[admin-management] Creating admin: ${email} at level ${level}`);
 
         // Only level 9+ can create admins
         if (requestorAdmin.level < 9) {
-          return send({ ok: false, error: 'Only Level 9+ can create admins' });
+          return send({ ok: false, error: 'Only Level 9+ can create admins' }, 403);
         }
 
         // Cannot create at or above own level
         if (level >= requestorAdmin.level) {
-          return send({ ok: false, error: 'Cannot create admin at or above your level' });
+          return send({ ok: false, error: 'Cannot create admin at or above your level' }, 403);
         }
 
         // Only Admin Master can create level 9
         if (level === 9 && requestorAdmin.level !== 10) {
-          return send({ ok: false, error: 'Only Admin Master can create Level 9 admins' });
+          return send({ ok: false, error: 'Only Admin Master can create Level 9 admins' }, 403);
         }
 
         // Check if already an admin
@@ -139,7 +139,7 @@ Deno.serve(async (req) => {
           .single();
 
         if (existing) {
-          return send({ ok: false, error: 'User is already an admin' });
+          return send({ ok: false, error: 'User is already an admin' }, 409);
         }
 
         // Find user by email using auth.admin.listUsers
@@ -147,7 +147,7 @@ Deno.serve(async (req) => {
         const targetUser = authUsers?.users?.find(u => u.email === email);
 
         if (!targetUser) {
-          return send({ ok: false, error: 'User not found. They must sign up first.' });
+          return send({ ok: false, error: 'User not found. They must sign up first.' }, 404);
         }
 
         // Create the admin
@@ -164,7 +164,7 @@ Deno.serve(async (req) => {
 
         if (createError) {
           console.log('[admin-management] Create error:', createError.message);
-          return send({ ok: false, error: createError.message });
+          return send({ ok: false, error: createError.message }, 500);
         }
 
         // Also add to user_roles for has_role() compatibility
@@ -190,7 +190,7 @@ Deno.serve(async (req) => {
         const new_level = body.new_level as number;
 
         if (!admin_id || new_level === undefined) {
-          return send({ ok: false, error: 'admin_id and new_level are required' });
+          return send({ ok: false, error: 'admin_id and new_level are required' }, 400);
         }
 
         console.log(`[admin-management] Updating admin ${admin_id} to level ${new_level}`);
@@ -203,27 +203,27 @@ Deno.serve(async (req) => {
           .single();
 
         if (targetError || !targetAdmin) {
-          return send({ ok: false, error: 'Admin not found' });
+          return send({ ok: false, error: 'Admin not found' }, 404);
         }
 
         // Cannot modify Admin Master
         if (targetAdmin.level === 10) {
-          return send({ ok: false, error: 'Cannot modify Admin Master' });
+          return send({ ok: false, error: 'Cannot modify Admin Master' }, 403);
         }
 
         // Must be higher level than target
         if (requestorAdmin.level <= targetAdmin.level) {
-          return send({ ok: false, error: 'Cannot modify admin at or above your level' });
+          return send({ ok: false, error: 'Cannot modify admin at or above your level' }, 403);
         }
 
         // Cannot set to or above own level
         if (new_level >= requestorAdmin.level) {
-          return send({ ok: false, error: 'Cannot set level at or above your own' });
+          return send({ ok: false, error: 'Cannot set level at or above your own' }, 403);
         }
 
         // Only Admin Master can set to level 9
         if (new_level === 9 && requestorAdmin.level !== 10) {
-          return send({ ok: false, error: 'Only Admin Master can set Level 9' });
+          return send({ ok: false, error: 'Only Admin Master can set Level 9' }, 403);
         }
 
         const oldLevel = targetAdmin.level;
@@ -235,7 +235,7 @@ Deno.serve(async (req) => {
           .eq('id', admin_id);
 
         if (updateError) {
-          return send({ ok: false, error: updateError.message });
+          return send({ ok: false, error: updateError.message }, 500);
         }
 
         // Log the action
@@ -255,7 +255,7 @@ Deno.serve(async (req) => {
         const admin_id = body.admin_id as string;
 
         if (!admin_id) {
-          return send({ ok: false, error: 'admin_id is required' });
+          return send({ ok: false, error: 'admin_id is required' }, 400);
         }
 
         console.log(`[admin-management] Deleting admin ${admin_id}`);
@@ -268,17 +268,17 @@ Deno.serve(async (req) => {
           .single();
 
         if (targetError || !targetAdmin) {
-          return send({ ok: false, error: 'Admin not found' });
+          return send({ ok: false, error: 'Admin not found' }, 404);
         }
 
         // Cannot delete Admin Master
         if (targetAdmin.level === 10) {
-          return send({ ok: false, error: 'Cannot delete Admin Master' });
+          return send({ ok: false, error: 'Cannot delete Admin Master' }, 403);
         }
 
         // Must be higher level than target
         if (requestorAdmin.level <= targetAdmin.level) {
-          return send({ ok: false, error: 'Cannot delete admin at or above your level' });
+          return send({ ok: false, error: 'Cannot delete admin at or above your level' }, 403);
         }
 
         // Delete the admin
@@ -288,7 +288,7 @@ Deno.serve(async (req) => {
           .eq('id', admin_id);
 
         if (deleteError) {
-          return send({ ok: false, error: deleteError.message });
+          return send({ ok: false, error: deleteError.message }, 500);
         }
 
         // Also remove from user_roles
@@ -312,11 +312,11 @@ Deno.serve(async (req) => {
       }
 
       default:
-        return send({ ok: false, error: `Unknown action: ${action}` });
+        return send({ ok: false, error: `Unknown action: ${action}` }, 400);
     }
   } catch (error: unknown) {
     console.error('[admin-management] Error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
-    return send({ ok: false, error: message });
+    return send({ ok: false, error: message }, 500);
   }
 });
