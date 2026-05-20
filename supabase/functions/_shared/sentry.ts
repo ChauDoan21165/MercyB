@@ -37,6 +37,13 @@ type SentryShape = {
   setUser: (user: { id: string } | null) => void;
   setTag: (key: string, value: string) => void;
   flush: (timeoutMs?: number) => Promise<boolean>;
+  addBreadcrumb: (crumb: {
+    category?: string;
+    message?: string;
+    level?: 'fatal' | 'error' | 'warning' | 'info' | 'debug';
+    data?: Record<string, unknown>;
+    type?: string;
+  }) => void;
 };
 
 let sentryModule: SentryShape | null = null;
@@ -153,6 +160,35 @@ export async function captureEdgeError(error: unknown, options: CaptureOptions):
     await sdk.flush(2000);
   } catch (err) {
     console.warn('[sentry-edge] capture failed', err);
+  }
+}
+
+export interface BreadcrumbOptions {
+  category: string;
+  message: string;
+  level?: 'fatal' | 'error' | 'warning' | 'info' | 'debug';
+  data?: Record<string, unknown>;
+}
+
+/**
+ * Add a Sentry breadcrumb to the current scope. Breadcrumbs are attached
+ * to any subsequent captured event in the same isolate; on their own they
+ * are not events. Pair with a structured `console.info` log if the caller
+ * also wants standalone observability (the downgrade beacon does — see
+ * `recompute.ts`). Safe to call when SENTRY_DSN is unset (no-op).
+ */
+export async function addEdgeBreadcrumb(crumb: BreadcrumbOptions): Promise<void> {
+  const sdk = await ensureInit();
+  if (!sdk) return;
+  try {
+    sdk.addBreadcrumb({
+      category: crumb.category,
+      message: crumb.message,
+      level: crumb.level ?? 'info',
+      data: crumb.data,
+    });
+  } catch (err) {
+    console.warn('[sentry-edge] breadcrumb failed', err);
   }
 }
 
