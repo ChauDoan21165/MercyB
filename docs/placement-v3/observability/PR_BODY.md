@@ -44,6 +44,13 @@ Local simulated burn-in `a2-burnin-02` executed all 10 required scenarios before
 - Added operator templates under `docs/placement-v3/observability/templates/`.
 - These documents define what must be proven later; they do not claim production acceptance has been achieved.
 
+# Executable staging-validation framework added
+
+- Added `scripts/placement-v3/run-forensics-staging-validation.ts` to verify staging prerequisites, create timestamped evidence folders, check local migration presence, and test Supabase connectivity without faking provider responses.
+- Extended `scripts/placement-v3/verify-forensics-env.ts --dry-run-report` to print missing env vars, evidence that would be collected, and blockers without calling providers or Supabase.
+- Added staging evidence conventions, checklist, DB verification guide, provider outage simulation guide, dashboard validation guide, and machine-readable evidence manifest schema.
+- This framework prepares staging validation; it does not claim live provider calls, live Supabase inserts, dashboard persisted-row validation, or rollback validation have passed.
+
 # Runtime Evidence
 
 - `docs/placement-v3/observability/raw-runs/a2-burnin-02-command.log`
