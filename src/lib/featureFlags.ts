@@ -17,7 +17,12 @@
 
 function readEnvBool(key: string, defaultValue: boolean): boolean {
   try {
-    const raw = (import.meta as any)?.env?.[key];
+    const raw =
+      key === "VITE_PLACEMENT_TEST_ENABLED"
+        ? import.meta.env.VITE_PLACEMENT_TEST_ENABLED
+        : key === "VITE_PLACEMENT_V3_UI_ENABLED"
+          ? import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED
+          : (import.meta as any)?.env?.[key];
     if (raw === undefined || raw === null || raw === "") return defaultValue;
     const s = String(raw).toLowerCase().trim();
     return s === "true" || s === "1" || s === "yes" || s === "on";
@@ -52,7 +57,14 @@ export const FEATURE_FLAGS = {
    * (the B1 starting anchor) — see the diagnostic. Ref: this dispatch +
    * PR #656 + placement-test-diagnostic.md.
    */
-  PLACEMENT_TEST_ENABLED: false,
+  PLACEMENT_TEST_ENABLED: readEnvBool("VITE_PLACEMENT_TEST_ENABLED", false),
+
+  /**
+   * Placement v3 multimodal UI. Kept separate from the legacy placement gate
+   * so the new surface can be reviewed without exposing it when the broader
+   * placement system remains disabled.
+   */
+  PLACEMENT_V3_UI_ENABLED: readEnvBool("VITE_PLACEMENT_V3_UI_ENABLED", false),
 
   /**
    * Home page "Your focus areas" card that surfaces placement-test
