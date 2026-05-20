@@ -10,10 +10,12 @@ Adds Placement V3 grading drift infrastructure:
 - 40 replay fixtures across reading, listening, and speaking
 - methodology, replay history, initial findings, blocker report, and production risk docs
 - merge-readiness recommendation for infrastructure/simulation scope
+- live replay operational execution package
 
 This PR is finalized as **replay infrastructure complete; live replay blocked**.
 It now also supports **deterministic local replay simulation** for pipeline validation without provider or Supabase secrets.
 Replay determinism is now guarded by CI-runnable checks so future fixture/order/serialization drift cannot silently change simulated replay output.
+Live replay operational execution package added.
 
 Unrelated untracked A35/benchmark/adaptive-generation files were intentionally excluded from this A36 commit.
 
@@ -91,6 +93,25 @@ Current recommendation is documented in:
 
 Summary: safe to merge as drift replay infrastructure plus deterministic local simulation guardrails if the accepted scope is simulation/infrastructure. Not ready to claim live replay or provider drift metrics until Supabase credentials are configured and a live replay run is reviewed.
 
+# Live Replay Operations Package
+
+Added operator-facing execution docs and preflight tooling:
+
+- `docs/placement-v3/drift-detection/live-replay-runbook.md`
+- `docs/placement-v3/drift-detection/live-replay-evidence-checklist.md`
+- `docs/placement-v3/drift-detection/persistence-verification.md`
+- `docs/placement-v3/drift-detection/replay-rollback-guide.md`
+- `docs/placement-v3/drift-detection/replay-launch-gates.md`
+- `docs/placement-v3/drift-detection/replay-validation-matrix.md`
+- `docs/placement-v3/drift-detection/live-replay-evidence/README.md`
+- `scripts/placement-v3/verify-live-replay-env.ts`
+
+The env verifier does not call providers or Supabase. Current saved output is:
+
+- `docs/placement-v3/drift-detection/live-replay-evidence/env-check.log`
+
+It correctly reports live replay as not ready in this shell because Supabase URL and anon key are missing.
+
 # Risks
 
 - Live replay remains unverified until credentials are present.
@@ -119,6 +140,18 @@ npm run check:placement-replay-fixtures
 npm run check:placement-replay-determinism -- --runs 5
 npm run build
 ```
+
+Passing verification for the operational package exactly as run:
+
+```bash
+npm run typecheck
+npm run build
+npm run check:placement-replay-fixtures
+npm run check:placement-replay-determinism -- --runs 5
+node scripts/placement-v3/verify-live-replay-env.ts
+```
+
+The env check command currently exits non-zero by design because live Supabase env vars are absent. Its output is saved in `docs/placement-v3/drift-detection/live-replay-evidence/env-check.log`.
 
 Repeated evidence generated:
 
