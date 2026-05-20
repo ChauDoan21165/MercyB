@@ -19,11 +19,7 @@ describe('Mercy Host Engine', () => {
       state = updater(state);
     });
     getState = () => state;
-    
-    // Mock localStorage
-    vi.spyOn(Storage.prototype, 'getItem').mockReturnValue(null);
-    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {});
-    vi.spyOn(Storage.prototype, 'removeItem').mockImplementation(() => {});
+    localStorage.clear();
   });
   
   describe('createMercyEngine', () => {
