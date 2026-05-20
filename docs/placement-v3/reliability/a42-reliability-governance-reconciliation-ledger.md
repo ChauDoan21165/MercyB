@@ -1,6 +1,6 @@
 # A42 Reliability Governance Reconciliation Ledger
 
-Generated: 2026-05-20T16:55:33.891Z
+Generated: 2026-05-20T17:00:13.929Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false
