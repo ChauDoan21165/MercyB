@@ -57,7 +57,7 @@ export interface EntitlementSnapshot {
   source: SubscriptionRow["provider"] | null;
 }
 
-type SupabaseLike = {
+export type SupabaseLike = {
   from: (table: string) => {
     select: (columns: string) => any;
     insert: (
@@ -140,10 +140,23 @@ export function deriveEntitlementFromSubscriptions(
   };
 }
 
+/**
+ * Load subscriptions for a user.
+ *
+ * @param client Optional injected Supabase-like client. Defaults to the
+ *   real browser singleton via `getSupabase()` — existing callers pass
+ *   only `userId` and are unaffected (zero behavior change). The param
+ *   exists purely as a test seam (same pattern as
+ *   `recomputeAndPersistEntitlement.ts` line 30-45): the default path
+ *   goes through `Function("path","return import(path)")(...)`, a
+ *   runtime-constructed import that vitest's `vi.mock` cannot intercept,
+ *   so injecting the client is the only way to unit-test the read path.
+ */
 export async function getSubscriptionsByUserId(
   userId: string,
+  client?: SupabaseLike,
 ): Promise<SubscriptionRow[]> {
-  const supabase = await getSupabase();
+  const supabase = client ?? (await getSupabase());
 
   const { data, error } = await supabase
     .from("subscriptions")
@@ -159,11 +172,18 @@ export async function getSubscriptionsByUserId(
   return (data ?? []) as SubscriptionRow[];
 }
 
+/**
+ * Idempotency check: has this provider+event_id already been recorded?
+ *
+ * @param client Optional injected Supabase-like client (test seam — see
+ *   `getSubscriptionsByUserId` for the full rationale; same pattern).
+ */
 export async function hasProcessedEvent(
   provider: BillingProvider,
   eventId: string,
+  client?: SupabaseLike,
 ): Promise<boolean> {
-  const supabase = await getSupabase();
+  const supabase = client ?? (await getSupabase());
 
   const { data, error } = await supabase
     .from("entitlement_events")
@@ -179,10 +199,17 @@ export async function hasProcessedEvent(
   return !!data;
 }
 
+/**
+ * Record an entitlement event (idempotency-paired with hasProcessedEvent).
+ *
+ * @param client Optional injected Supabase-like client (test seam — see
+ *   `getSubscriptionsByUserId` for the full rationale; same pattern).
+ */
 export async function insertEntitlementEvent(
   input: EntitlementEventInput,
+  client?: SupabaseLike,
 ): Promise<void> {
-  const supabase = await getSupabase();
+  const supabase = client ?? (await getSupabase());
 
   const { error } = await supabase.from("entitlement_events").insert({
     provider: input.provider,
@@ -197,10 +224,19 @@ export async function insertEntitlementEvent(
   }
 }
 
+/**
+ * Upsert a subscription row. Conflict resolution uses
+ * `provider,provider_subscription_id` when subscription id is present;
+ * otherwise falls back to `provider,provider_transaction_id`.
+ *
+ * @param client Optional injected Supabase-like client (test seam — see
+ *   `getSubscriptionsByUserId` for the full rationale; same pattern).
+ */
 export async function upsertSubscription(
   input: UpsertSubscriptionInput,
+  client?: SupabaseLike,
 ): Promise<void> {
-  const supabase = await getSupabase();
+  const supabase = client ?? (await getSupabase());
 
   const row = {
     user_id: input.user_id,
