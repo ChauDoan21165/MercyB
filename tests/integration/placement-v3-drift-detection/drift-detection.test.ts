@@ -1,4 +1,8 @@
 import { describe, expect, it } from "vitest";
+import { execFileSync } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
 import { calculateDrift } from "../../../src/lib/placementDrift/calculateDrift";
 import { detectOutliers } from "../../../src/lib/placementDrift/detectOutliers";
@@ -89,6 +93,42 @@ describe("Placement V3 drift detection integration", () => {
   it("12 documents absence of drift when scores match baseline", () => {
     const deltas = analyzeScoreDeltas({ baseline, current: baseline });
     expect(meanAbsoluteDelta(deltas)).toBe(0);
+  });
+
+  it("13 runs deterministic local replay simulation without provider secrets", () => {
+    const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "placement-drift-sim-"));
+    execFileSync(
+      path.join("node_modules", ".bin", "tsx"),
+      [
+        "scripts/placement-v3/run-grading-replay.ts",
+        "--simulate",
+        "--batch",
+        "vitest-sim",
+        "--limit",
+        "6",
+        "--outDir",
+        outDir,
+        "--resume=false",
+      ],
+      { cwd: process.cwd(), stdio: "pipe" },
+    );
+    const files = fs.readdirSync(outDir);
+    const runFile = files.find((file) => file.endsWith(".json") && !file.includes(".summary.") && !file.includes(".drift-diff.") && !file.includes(".local-persistence.") && !file.includes(".dashboard-payload.") && !file.includes(".pipeline-integrity."));
+    expect(runFile).toBeTruthy();
+    const raw = JSON.parse(fs.readFileSync(path.join(outDir, runFile!), "utf8")) as {
+      simulated: boolean;
+      scores: ReplayScore[];
+      evidence: Array<{ simulated?: boolean; rawGraderOutput?: { simulated?: boolean } }>;
+    };
+    const dashboardFile = files.find((file) => file.endsWith(".dashboard-payload.json"));
+    const integrityFile = files.find((file) => file.endsWith(".pipeline-integrity.json"));
+    const diffFile = files.find((file) => file.endsWith(".drift-diff.json"));
+    expect(raw.simulated).toBe(true);
+    expect(raw.scores).toHaveLength(6);
+    expect(raw.evidence.every((entry) => entry.simulated === true && entry.rawGraderOutput?.simulated === true)).toBe(true);
+    expect(JSON.parse(fs.readFileSync(path.join(outDir, dashboardFile!), "utf8")).simulated).toBe(true);
+    expect(JSON.parse(fs.readFileSync(path.join(outDir, integrityFile!), "utf8")).dashboardPayloadRenderable).toBe(true);
+    expect(JSON.parse(fs.readFileSync(path.join(outDir, diffFile!), "utf8")).simulated).toBe(true);
   });
 });
 

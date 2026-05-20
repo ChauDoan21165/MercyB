@@ -1,0 +1,3487 @@
+{
+  "simulated": true,
+  "generatedAt": "2026-05-20T13:19:01.964Z",
+  "run": {
+    "id": "simulated-02-2026-05-20T13-19-01-938Z",
+    "batchId": "simulated-02",
+    "startedAt": "2026-05-20T13:19:01.939Z",
+    "completedAt": "2026-05-20T13:19:01.964Z",
+    "simulated": true,
+    "status": "success",
+    "sampleCount": 40,
+    "successCount": 37,
+    "malformedCount": 3,
+    "p95LatencyMs": 1490,
+    "providerSet": [
+      "none"
+    ],
+    "report": {
+      "generatedAt": "2026-05-20T13:19:01.965Z",
+      "replay": {
+        "baselineScores": 40,
+        "currentScores": 40,
+        "successRate": 0.925,
+        "malformedRate": 0.075,
+        "p95LatencyMs": 1490
+      },
+      "scoreDelta": {
+        "meanAbsoluteDelta": 0.1892,
+        "catastrophicCount": 0,
+        "topUnstableSamples": [
+          {
+            "sampleId": "sp-b1-articles-05",
+            "modality": "speaking",
+            "expectedCefr": "B1",
+            "baselineCefr": "B1",
+            "currentCefr": "A2",
+            "deltaBands": -1,
+            "provider": "none",
+            "taxonomyTags": [
+              "missing-articles",
+              "plural-s-omission"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "rd-b1-inference-15",
+            "modality": "reading",
+            "expectedCefr": "B1",
+            "baselineCefr": "B1",
+            "currentCefr": "B2",
+            "deltaBands": 1,
+            "provider": "none",
+            "taxonomyTags": [
+              "inference-ability"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "rd-b1-borderline-16",
+            "modality": "reading",
+            "expectedCefr": "B1",
+            "baselineCefr": "B1",
+            "currentCefr": "B2",
+            "deltaBands": 1,
+            "provider": "none",
+            "taxonomyTags": [
+              "borderline",
+              "detail-extraction"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "rd-b2-mcq-18",
+            "modality": "reading",
+            "expectedCefr": "B2",
+            "baselineCefr": "B2",
+            "currentCefr": "C1",
+            "deltaBands": 1,
+            "provider": "none",
+            "taxonomyTags": [
+              "distractor-resistance"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "rd-c2-adversarial-20",
+            "modality": "reading",
+            "expectedCefr": "C2",
+            "baselineCefr": "C2",
+            "currentCefr": "C1",
+            "deltaBands": -1,
+            "provider": "none",
+            "taxonomyTags": [
+              "adversarial",
+              "irony"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "ls-b2-nuance-28",
+            "modality": "listening",
+            "expectedCefr": "B2",
+            "baselineCefr": "B2",
+            "currentCefr": "C1",
+            "deltaBands": 1,
+            "provider": "none",
+            "taxonomyTags": [
+              "inference",
+              "borderline"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "sp-c1-relative-31",
+            "modality": "speaking",
+            "expectedCefr": "C1",
+            "baselineCefr": "C1",
+            "currentCefr": "C2",
+            "deltaBands": 1,
+            "provider": "none",
+            "taxonomyTags": [
+              "relative-clause-transfer"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "sp-a1-final-s-01",
+            "modality": "speaking",
+            "expectedCefr": "A1",
+            "baselineCefr": "A1",
+            "currentCefr": "A1",
+            "deltaBands": 0,
+            "provider": "none",
+            "taxonomyTags": [
+              "inflectional-s-ed-inaudible",
+              "missing-subject-verb-agreement"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "sp-a1-copula-02",
+            "modality": "speaking",
+            "expectedCefr": "A1",
+            "baselineCefr": "A1",
+            "currentCefr": "A1",
+            "deltaBands": 0,
+            "provider": "none",
+            "taxonomyTags": [
+              "copula-be-omission"
+            ],
+            "status": "success"
+          },
+          {
+            "sampleId": "sp-a2-past-03",
+            "modality": "speaking",
+            "expectedCefr": "A2",
+            "baselineCefr": "A2",
+            "currentCefr": null,
+            "deltaBands": null,
+            "provider": "none",
+            "taxonomyTags": [
+              "past-tense-unmarked",
+              "final-consonant-cluster-reduction"
+            ],
+            "status": "malformed"
+          }
+        ]
+      },
+      "providerVariance": [
+        {
+          "provider": "none",
+          "sampleCount": 40,
+          "successRate": 0.925,
+          "malformedRate": 0.075,
+          "averageExpectedDelta": 0.1892,
+          "p95LatencyMs": 1490
+        }
+      ],
+      "taxonomyVariance": [
+        {
+          "taxonomyTag": "adversarial",
+          "sampleCount": 5,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.2,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "borderline",
+          "sampleCount": 5,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.4,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "code-switch",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "copula-be-omission",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "detail-extraction",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.5,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "detail-recall",
+          "sampleCount": 3,
+          "malformedRate": 0.3333,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "distractor-resistance",
+          "sampleCount": 3,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.3333,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "final-consonant-cluster-reduction",
+          "sampleCount": 1,
+          "malformedRate": 1,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "flat-english-intonation",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "gist-identification",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "hedging",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "idiomatic-command",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "implicit-meaning",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "inference",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.5,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "inference-ability",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.5,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "inflectional-s-ed-inaudible",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "irony",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.5,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "literal-translation",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "main-idea-grasp",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "malformed-risk",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "missing-articles",
+          "sampleCount": 4,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.25,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "missing-subject-verb-agreement",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "negation-no-not-placement",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "overlong-answer",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "past-tense-unmarked",
+          "sampleCount": 1,
+          "malformedRate": 1,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "plural-s-omission",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0.5,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "pragmatic-transfer",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "question-word-order-transfer",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "register-control",
+          "sampleCount": 2,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "relative-clause-transfer",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 1,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "requests",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "tense-aspect-confusion",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "there-is-co-transfer",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "topic-comment-fronting",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "vietnamese-calque",
+          "sampleCount": 1,
+          "malformedRate": 0,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        },
+        {
+          "taxonomyTag": "vocab-in-context",
+          "sampleCount": 1,
+          "malformedRate": 1,
+          "averageExpectedDelta": 0,
+          "unstableSampleIds": []
+        }
+      ],
+      "alerts": [
+        {
+          "scope": "parser",
+          "severity": "critical",
+          "metric": "malformed_rate",
+          "value": 0.075,
+          "threshold": 0.03,
+          "sampleIds": [
+            "sp-a2-past-03",
+            "rd-b2-nuance-17",
+            "ls-b2-detail-27"
+          ],
+          "message": "Malformed grader output rate 7.5% exceeds threshold."
+        }
+      ]
+    }
+  },
+  "scores": [
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-a1-final-s-01",
+      "modality": "speaking",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "inflectional-s-ed-inaudible",
+        "missing-subject-verb-agreement"
+      ],
+      "latencyMs": 1242,
+      "tokensInput": 290,
+      "tokensOutput": 192,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.945Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-a1-copula-02",
+      "modality": "speaking",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "copula-be-omission"
+      ],
+      "latencyMs": 1173,
+      "tokensInput": 466,
+      "tokensOutput": 103,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.946Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-a2-past-03",
+      "modality": "speaking",
+      "expectedCefr": "A2",
+      "parsedCefr": null,
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "past-tense-unmarked",
+        "final-consonant-cluster-reduction"
+      ],
+      "latencyMs": 1025,
+      "tokensInput": 306,
+      "tokensOutput": 195,
+      "status": "malformed",
+      "malformed": true,
+      "createdAt": "2026-05-20T13:19:01.947Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-a2-question-04",
+      "modality": "speaking",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "question-word-order-transfer"
+      ],
+      "latencyMs": 1252,
+      "tokensInput": 279,
+      "tokensOutput": 142,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.948Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-b1-articles-05",
+      "modality": "speaking",
+      "expectedCefr": "B1",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "missing-articles",
+        "plural-s-omission"
+      ],
+      "latencyMs": 1056,
+      "tokensInput": 366,
+      "tokensOutput": 126,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.948Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-b1-literal-06",
+      "modality": "speaking",
+      "expectedCefr": "B1",
+      "parsedCefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "literal-translation",
+        "vietnamese-calque"
+      ],
+      "latencyMs": 1483,
+      "tokensInput": 330,
+      "tokensOutput": 233,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.949Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-b2-borderline-07",
+      "modality": "speaking",
+      "expectedCefr": "B2",
+      "parsedCefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "missing-articles",
+        "tense-aspect-confusion"
+      ],
+      "latencyMs": 1490,
+      "tokensInput": 434,
+      "tokensOutput": 200,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.949Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-b2-intonation-08",
+      "modality": "speaking",
+      "expectedCefr": "B2",
+      "parsedCefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "flat-english-intonation"
+      ],
+      "latencyMs": 1044,
+      "tokensInput": 396,
+      "tokensOutput": 254,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.950Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-c1-pragmatic-09",
+      "modality": "speaking",
+      "expectedCefr": "C1",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "pragmatic-transfer",
+        "requests"
+      ],
+      "latencyMs": 1396,
+      "tokensInput": 377,
+      "tokensOutput": 126,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.950Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-c2-weird-10",
+      "modality": "speaking",
+      "expectedCefr": "C2",
+      "parsedCefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "adversarial",
+        "register-control"
+      ],
+      "latencyMs": 1074,
+      "tokensInput": 396,
+      "tokensOutput": 104,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.951Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-a1-literal-11",
+      "modality": "reading",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "detail-extraction"
+      ],
+      "latencyMs": 1383,
+      "tokensInput": 321,
+      "tokensOutput": 153,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.951Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-a1-wrong-12",
+      "modality": "reading",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "distractor-resistance"
+      ],
+      "latencyMs": 1044,
+      "tokensInput": 311,
+      "tokensOutput": 214,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.951Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-a2-mcq-13",
+      "modality": "reading",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "main-idea-grasp"
+      ],
+      "latencyMs": 722,
+      "tokensInput": 406,
+      "tokensOutput": 252,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.952Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-a2-article-14",
+      "modality": "reading",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "missing-articles"
+      ],
+      "latencyMs": 296,
+      "tokensInput": 359,
+      "tokensOutput": 206,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.952Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-b1-inference-15",
+      "modality": "reading",
+      "expectedCefr": "B1",
+      "parsedCefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "inference-ability"
+      ],
+      "latencyMs": 1146,
+      "tokensInput": 442,
+      "tokensOutput": 156,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.952Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-b1-borderline-16",
+      "modality": "reading",
+      "expectedCefr": "B1",
+      "parsedCefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "borderline",
+        "detail-extraction"
+      ],
+      "latencyMs": 194,
+      "tokensInput": 301,
+      "tokensOutput": 184,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.953Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-b2-nuance-17",
+      "modality": "reading",
+      "expectedCefr": "B2",
+      "parsedCefr": null,
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "vocab-in-context"
+      ],
+      "latencyMs": 1038,
+      "tokensInput": 270,
+      "tokensOutput": 228,
+      "status": "malformed",
+      "malformed": true,
+      "createdAt": "2026-05-20T13:19:01.953Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-b2-mcq-18",
+      "modality": "reading",
+      "expectedCefr": "B2",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "distractor-resistance"
+      ],
+      "latencyMs": 1062,
+      "tokensInput": 474,
+      "tokensOutput": 172,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.953Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-c1-hedging-19",
+      "modality": "reading",
+      "expectedCefr": "C1",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "hedging",
+        "inference-ability"
+      ],
+      "latencyMs": 1070,
+      "tokensInput": 374,
+      "tokensOutput": 220,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.953Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-c2-adversarial-20",
+      "modality": "reading",
+      "expectedCefr": "C2",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "adversarial",
+        "irony"
+      ],
+      "latencyMs": 313,
+      "tokensInput": 277,
+      "tokensOutput": 143,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.953Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-a1-detail-21",
+      "modality": "listening",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "detail-recall"
+      ],
+      "latencyMs": 601,
+      "tokensInput": 308,
+      "tokensOutput": 211,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.954Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-a1-wrong-22",
+      "modality": "listening",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "detail-recall",
+        "borderline"
+      ],
+      "latencyMs": 940,
+      "tokensInput": 300,
+      "tokensOutput": 170,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.954Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-a2-gist-23",
+      "modality": "listening",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "gist-identification"
+      ],
+      "latencyMs": 364,
+      "tokensInput": 404,
+      "tokensOutput": 194,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.955Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-a2-mcq-24",
+      "modality": "listening",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "distractor-resistance"
+      ],
+      "latencyMs": 1575,
+      "tokensInput": 320,
+      "tokensOutput": 145,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.955Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-b1-inference-25",
+      "modality": "listening",
+      "expectedCefr": "B1",
+      "parsedCefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "inference"
+      ],
+      "latencyMs": 662,
+      "tokensInput": 262,
+      "tokensOutput": 92,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.956Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-b1-final-s-26",
+      "modality": "listening",
+      "expectedCefr": "B1",
+      "parsedCefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "plural-s-omission"
+      ],
+      "latencyMs": 258,
+      "tokensInput": 413,
+      "tokensOutput": 228,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.956Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-b2-detail-27",
+      "modality": "listening",
+      "expectedCefr": "B2",
+      "parsedCefr": null,
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "detail-recall"
+      ],
+      "latencyMs": 637,
+      "tokensInput": 299,
+      "tokensOutput": 107,
+      "status": "malformed",
+      "malformed": true,
+      "createdAt": "2026-05-20T13:19:01.957Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-b2-nuance-28",
+      "modality": "listening",
+      "expectedCefr": "B2",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "inference",
+        "borderline"
+      ],
+      "latencyMs": 257,
+      "tokensInput": 266,
+      "tokensOutput": 247,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.958Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-c1-implicit-29",
+      "modality": "listening",
+      "expectedCefr": "C1",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "implicit-meaning"
+      ],
+      "latencyMs": 1213,
+      "tokensInput": 463,
+      "tokensOutput": 263,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.958Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-c2-irony-30",
+      "modality": "listening",
+      "expectedCefr": "C2",
+      "parsedCefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "irony",
+        "adversarial"
+      ],
+      "latencyMs": 894,
+      "tokensInput": 269,
+      "tokensOutput": 244,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.959Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-c1-relative-31",
+      "modality": "speaking",
+      "expectedCefr": "C1",
+      "parsedCefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "relative-clause-transfer"
+      ],
+      "latencyMs": 747,
+      "tokensInput": 383,
+      "tokensOutput": 157,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.960Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-a2-there-is-32",
+      "modality": "reading",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "there-is-co-transfer"
+      ],
+      "latencyMs": 1521,
+      "tokensInput": 347,
+      "tokensOutput": 151,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.960Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-b1-negation-33",
+      "modality": "listening",
+      "expectedCefr": "B1",
+      "parsedCefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "negation-no-not-placement"
+      ],
+      "latencyMs": 255,
+      "tokensInput": 420,
+      "tokensOutput": 125,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.961Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-b2-topic-34",
+      "modality": "speaking",
+      "expectedCefr": "B2",
+      "parsedCefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "topic-comment-fronting"
+      ],
+      "latencyMs": 489,
+      "tokensInput": 390,
+      "tokensOutput": 219,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.962Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-c1-register-35",
+      "modality": "reading",
+      "expectedCefr": "C1",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "register-control"
+      ],
+      "latencyMs": 1483,
+      "tokensInput": 297,
+      "tokensOutput": 213,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.962Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-a2-adversarial-emptyish-36",
+      "modality": "listening",
+      "expectedCefr": "A2",
+      "parsedCefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "adversarial",
+        "malformed-risk"
+      ],
+      "latencyMs": 869,
+      "tokensInput": 324,
+      "tokensOutput": 159,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.963Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-a1-code-switch-37",
+      "modality": "speaking",
+      "expectedCefr": "A1",
+      "parsedCefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "code-switch",
+        "missing-articles"
+      ],
+      "latencyMs": 1143,
+      "tokensInput": 459,
+      "tokensOutput": 173,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.963Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "rd-b2-overanswer-38",
+      "modality": "reading",
+      "expectedCefr": "B2",
+      "parsedCefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "adversarial",
+        "overlong-answer"
+      ],
+      "latencyMs": 1023,
+      "tokensInput": 271,
+      "tokensOutput": 153,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.963Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "ls-c1-borderline-39",
+      "modality": "listening",
+      "expectedCefr": "C1",
+      "parsedCefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "borderline",
+        "hedging"
+      ],
+      "latencyMs": 1385,
+      "tokensInput": 303,
+      "tokensOutput": 155,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.964Z"
+    },
+    {
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "batchId": "simulated-02",
+      "sampleId": "sp-c2-borderline-40",
+      "modality": "speaking",
+      "expectedCefr": "C2",
+      "parsedCefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retryPath": [
+        "none"
+      ],
+      "taxonomyTags": [
+        "borderline",
+        "idiomatic-command"
+      ],
+      "latencyMs": 1142,
+      "tokensInput": 420,
+      "tokensOutput": 192,
+      "status": "success",
+      "malformed": false,
+      "createdAt": "2026-05-20T13:19:01.964Z"
+    }
+  ],
+  "evidence": [
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.945Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-a1-final-s-01",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1242,
+      "tokenCount": {
+        "input": 290,
+        "output": 192
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.8
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 290,
+          "tokensOutput": 192,
+          "latencyMs": 1242,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "inflectional-s-ed-inaudible",
+            "missing-subject-verb-agreement"
+          ],
+          "deterministicSeed": 2253116262,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "sp-a1-final-s-01",
+        "taskText": "Introduce your daily routine in 30 seconds.",
+        "targetLanguage": "en",
+        "durationSeconds": 32,
+        "transcript": "I wake up six. My mother cook breakfast. I go school by motorbike. My friend play football after class."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.946Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-a1-copula-02",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1173,
+      "tokenCount": {
+        "input": 466,
+        "output": 103
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.69
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 466,
+          "tokensOutput": 103,
+          "latencyMs": 1173,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "copula-be-omission"
+          ],
+          "deterministicSeed": 37009993,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "sp-a1-copula-02",
+        "taskText": "Describe your home.",
+        "targetLanguage": "en",
+        "durationSeconds": 24,
+        "transcript": "My house near market. It small but clean. My room very hot in summer. I happy there."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.947Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-a2-past-03",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1025,
+      "tokenCount": {
+        "input": 306,
+        "output": 195
+      },
+      "rawGraderOutput": {
+        "ok": false,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": null,
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 306,
+          "tokensOutput": 195,
+          "latencyMs": 1025,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "past-tense-unmarked",
+            "final-consonant-cluster-reduction"
+          ],
+          "deterministicSeed": 1758627645,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": null,
+      "request": {
+        "promptId": "sp-a2-past-03",
+        "taskText": "Tell me about a trip you took last month.",
+        "targetLanguage": "en",
+        "durationSeconds": 43,
+        "transcript": "Last month I go to Da Nang with my cousin. We visit beach and eat seafood. I feel tired but very happy because weather good."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.948Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-a2-question-04",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1252,
+      "tokenCount": {
+        "input": 279,
+        "output": 142
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.79
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 279,
+          "tokensOutput": 142,
+          "latencyMs": 1252,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "question-word-order-transfer"
+          ],
+          "deterministicSeed": 3108664672,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "sp-a2-question-04",
+        "taskText": "Ask a tourist three questions about their visit.",
+        "targetLanguage": "en",
+        "durationSeconds": 25,
+        "transcript": "You from where? You like Vietnamese food? Tomorrow you go to museum or you stay hotel?"
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.948Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-b1-articles-05",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1056,
+      "tokenCount": {
+        "input": 366,
+        "output": 126
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.87
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 366,
+          "tokensOutput": 126,
+          "latencyMs": 1056,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "missing-articles",
+            "plural-s-omission"
+          ],
+          "deterministicSeed": 3690230076,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "sp-b1-articles-05",
+        "taskText": "Explain why learning English is useful for your job.",
+        "targetLanguage": "en",
+        "durationSeconds": 68,
+        "transcript": "English is useful because I can talk with customer from other country. In my company, many document are in English and sometimes boss asks me to write email to supplier."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.949Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-b1-literal-06",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1483,
+      "tokenCount": {
+        "input": 330,
+        "output": 233
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B1",
+            "confidence": 0.69
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 330,
+          "tokensOutput": 233,
+          "latencyMs": 1483,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "literal-translation",
+            "vietnamese-calque"
+          ],
+          "deterministicSeed": 448778303,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B1",
+      "request": {
+        "promptId": "sp-b1-literal-06",
+        "taskText": "Describe a difficult decision.",
+        "targetLanguage": "en",
+        "durationSeconds": 58,
+        "transcript": "When I chose university, my head was very tired because family say one way and my heart say another way. Finally I follow the road that make me less regret."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.949Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-b2-borderline-07",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1490,
+      "tokenCount": {
+        "input": 434,
+        "output": 200
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B2",
+            "confidence": 0.77
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 434,
+          "tokensOutput": 200,
+          "latencyMs": 1490,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "missing-articles",
+            "tense-aspect-confusion"
+          ],
+          "deterministicSeed": 604389710,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B2",
+      "request": {
+        "promptId": "sp-b2-borderline-07",
+        "taskText": "Discuss whether remote work is good for young employees.",
+        "targetLanguage": "en",
+        "durationSeconds": 91,
+        "transcript": "Remote work gives young employees flexibility and saves commuting time, but it can also reduce mentoring. In Vietnam many juniors learn by watching senior colleagues, so company should combine office days with focused remote tasks."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.950Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-b2-intonation-08",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1044,
+      "tokenCount": {
+        "input": 396,
+        "output": 254
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B2",
+            "confidence": 0.87
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 396,
+          "tokensOutput": 254,
+          "latencyMs": 1044,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "flat-english-intonation"
+          ],
+          "deterministicSeed": 3763576064,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B2",
+      "request": {
+        "promptId": "sp-b2-intonation-08",
+        "taskText": "Give advice to a friend preparing for IELTS Speaking.",
+        "targetLanguage": "en",
+        "durationSeconds": 82,
+        "transcript": "I would tell my friend to record answers, notice where the voice becomes flat, and practice stressing the important words. Grammar matters, but clear rhythm helps the examiner follow the argument."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.950Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-c1-pragmatic-09",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1396,
+      "tokenCount": {
+        "input": 377,
+        "output": 126
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.66
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 377,
+          "tokensOutput": 126,
+          "latencyMs": 1396,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C1",
+          "taxonomyTags": [
+            "pragmatic-transfer",
+            "requests"
+          ],
+          "deterministicSeed": 3250622016,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "sp-c1-pragmatic-09",
+        "taskText": "Politely challenge a manager's decision.",
+        "targetLanguage": "en",
+        "durationSeconds": 76,
+        "transcript": "I understand why the deadline feels urgent, but I am concerned that releasing on Friday may create support problems over the weekend. Could we review the risk list once more before we commit?"
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.951Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-c2-weird-10",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1074,
+      "tokenCount": {
+        "input": 396,
+        "output": 104
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C2",
+            "confidence": 0.8
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 396,
+          "tokensOutput": 104,
+          "latencyMs": 1074,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C2",
+          "taxonomyTags": [
+            "adversarial",
+            "register-control"
+          ],
+          "deterministicSeed": 2847707294,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C2",
+      "request": {
+        "promptId": "sp-c2-weird-10",
+        "taskText": "Respond to an absurd proposal in a professional meeting.",
+        "targetLanguage": "en",
+        "durationSeconds": 66,
+        "transcript": "I appreciate the ambition, but replacing customer support with a magic spreadsheet is not a strategy. It is a metaphor wearing a necktie. We need a pilot, a rollback path, and one accountable owner."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.951Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-a1-literal-11",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1383,
+      "tokenCount": {
+        "input": 321,
+        "output": 153
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.87
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 321,
+          "tokensOutput": 153,
+          "latencyMs": 1383,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "detail-extraction"
+          ],
+          "deterministicSeed": 3860334603,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "rd-a1-literal-11",
+        "passageText": "Lan is twelve. She lives in Hue. She has one brother. On Sundays, Lan visits her grandmother.",
+        "questionText": "Where does Lan live?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Hue",
+        "targetCefr": "A1",
+        "userResponse": "She live Hue."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.951Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-a1-wrong-12",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1044,
+      "tokenCount": {
+        "input": 311,
+        "output": 214
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.83
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 311,
+          "tokensOutput": 214,
+          "latencyMs": 1044,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "distractor-resistance"
+          ],
+          "deterministicSeed": 2511137464,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "rd-a1-wrong-12",
+        "passageText": "Minh works in a cafe. He starts work at seven in the morning.",
+        "questionText": "What time does Minh start work?",
+        "questionType": "short_answer",
+        "expectedAnswer": "seven in the morning",
+        "targetCefr": "A1",
+        "userResponse": "At night."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.952Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-a2-mcq-13",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 722,
+      "tokenCount": {
+        "input": 406,
+        "output": 252
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.75
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 406,
+          "tokensOutput": 252,
+          "latencyMs": 722,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "main-idea-grasp"
+          ],
+          "deterministicSeed": 1048831542,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "rd-a2-mcq-13",
+        "passageText": "The school library is closed this week because workers are repairing the roof. Students can borrow books again next Monday.",
+        "questionText": "Why is the library closed? A. It has no books B. The roof is being repaired C. Students are on holiday",
+        "questionType": "mcq",
+        "expectedAnswer": "B",
+        "targetCefr": "A2",
+        "userResponse": "B"
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.952Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-a2-article-14",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 296,
+      "tokenCount": {
+        "input": 359,
+        "output": 206
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.71
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 359,
+          "tokensOutput": 206,
+          "latencyMs": 296,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "missing-articles"
+          ],
+          "deterministicSeed": 475839116,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "rd-a2-article-14",
+        "passageText": "Anna bought a ticket online, but she forgot to print it. The driver accepted the ticket on her phone.",
+        "questionText": "How did Anna show her ticket?",
+        "questionType": "short_answer",
+        "expectedAnswer": "on her phone",
+        "targetCefr": "A2",
+        "userResponse": "She show ticket in phone."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.952Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-b1-inference-15",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1146,
+      "tokenCount": {
+        "input": 442,
+        "output": 156
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B2",
+            "confidence": 0.83
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 442,
+          "tokensOutput": 156,
+          "latencyMs": 1146,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "inference-ability"
+          ],
+          "deterministicSeed": 2611842366,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B2",
+      "request": {
+        "promptId": "rd-b1-inference-15",
+        "passageText": "Tuan checked the dark clouds before leaving home, but he still left his umbrella on the table. Ten minutes later, he ran into a shop doorway and waited there.",
+        "questionText": "What probably happened?",
+        "questionType": "short_answer",
+        "expectedAnswer": "It started raining.",
+        "targetCefr": "B1",
+        "userResponse": "It started to rain and he did not have umbrella."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.953Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-b1-borderline-16",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 194,
+      "tokenCount": {
+        "input": 301,
+        "output": 184
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B2",
+            "confidence": 0.68
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 301,
+          "tokensOutput": 184,
+          "latencyMs": 194,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "borderline",
+            "detail-extraction"
+          ],
+          "deterministicSeed": 1223444614,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B2",
+      "request": {
+        "promptId": "rd-b1-borderline-16",
+        "passageText": "The manager approved the proposal only after the team removed the expensive advertising plan and added a cheaper referral campaign.",
+        "questionText": "What change helped the proposal get approved?",
+        "questionType": "short_answer",
+        "expectedAnswer": "They replaced/removed the expensive advertising plan and added a cheaper referral campaign.",
+        "targetCefr": "B1",
+        "userResponse": "They make marketing cheaper by referral, not expensive ads."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.953Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-b2-nuance-17",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1038,
+      "tokenCount": {
+        "input": 270,
+        "output": 228
+      },
+      "rawGraderOutput": {
+        "ok": false,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": null,
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 270,
+          "tokensOutput": 228,
+          "latencyMs": 1038,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "vocab-in-context"
+          ],
+          "deterministicSeed": 960725658,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": null,
+      "request": {
+        "promptId": "rd-b2-nuance-17",
+        "passageText": "Although the policy was presented as temporary, its vague end date made employees suspect it would become permanent by default.",
+        "questionText": "What does 'by default' imply here?",
+        "questionType": "short_answer",
+        "expectedAnswer": "It would become permanent without an explicit decision.",
+        "targetCefr": "B2",
+        "userResponse": "It means nobody may officially choose it, but if nothing changes, it stays forever."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.953Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-b2-mcq-18",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1062,
+      "tokenCount": {
+        "input": 474,
+        "output": 172
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.85
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 474,
+          "tokensOutput": 172,
+          "latencyMs": 1062,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "distractor-resistance"
+          ],
+          "deterministicSeed": 1499302882,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "rd-b2-mcq-18",
+        "passageText": "The study did not prove that sleep causes better vocabulary retention; it only showed that students who slept more tended to remember more words.",
+        "questionText": "Which claim is supported? A. Sleep definitely causes better memory B. There is an observed association C. Vocabulary cannot be learned without sleep",
+        "questionType": "mcq",
+        "expectedAnswer": "B",
+        "targetCefr": "B2",
+        "userResponse": "B"
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.953Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-c1-hedging-19",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1070,
+      "tokenCount": {
+        "input": 374,
+        "output": 220
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.75
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 374,
+          "tokensOutput": 220,
+          "latencyMs": 1070,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C1",
+          "taxonomyTags": [
+            "hedging",
+            "inference-ability"
+          ],
+          "deterministicSeed": 1122120490,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "rd-c1-hedging-19",
+        "passageText": "The author's praise for the reform is qualified: she welcomes the intention, but doubts whether underfunded schools can implement the policy without widening existing inequalities.",
+        "questionText": "What is the author's position?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Cautious/qualified support with concern about implementation and inequality.",
+        "targetCefr": "C1",
+        "userResponse": "She supports the aim, but only cautiously, because poor implementation could make unequal schools even more unequal."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.953Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-c2-adversarial-20",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 313,
+      "tokenCount": {
+        "input": 277,
+        "output": 143
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.74
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 277,
+          "tokensOutput": 143,
+          "latencyMs": 313,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C2",
+          "taxonomyTags": [
+            "adversarial",
+            "irony"
+          ],
+          "deterministicSeed": 3712933133,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "rd-c2-adversarial-20",
+        "passageText": "The memo called the layoffs an 'opportunity for organizational breathing room,' a phrase so delicate it nearly apologized to itself.",
+        "questionText": "What attitude does the sentence convey toward the memo's wording?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Sarcastic criticism of euphemistic language.",
+        "targetCefr": "C2",
+        "userResponse": "It mocks the euphemism as absurdly soft and self-protective."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.954Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-a1-detail-21",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 601,
+      "tokenCount": {
+        "input": 308,
+        "output": 211
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.78
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 308,
+          "tokensOutput": 211,
+          "latencyMs": 601,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "detail-recall"
+          ],
+          "deterministicSeed": 3054017821,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "ls-a1-detail-21",
+        "transcriptOfHeardContent": "The train leaves at five thirty from platform two.",
+        "questionText": "What time does the train leave?",
+        "questionType": "short_answer",
+        "expectedAnswer": "five thirty",
+        "targetCefr": "A1",
+        "userResponse": "Five thirty."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.954Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-a1-wrong-22",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 940,
+      "tokenCount": {
+        "input": 300,
+        "output": 170
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.72
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 300,
+          "tokensOutput": 170,
+          "latencyMs": 940,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "detail-recall",
+            "borderline"
+          ],
+          "deterministicSeed": 4081970960,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "ls-a1-wrong-22",
+        "transcriptOfHeardContent": "Please bring a blue pen and your student card.",
+        "questionText": "What color pen should students bring?",
+        "questionType": "short_answer",
+        "expectedAnswer": "blue",
+        "targetCefr": "A1",
+        "userResponse": "Black pen."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.955Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-a2-gist-23",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 364,
+      "tokenCount": {
+        "input": 404,
+        "output": 194
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.69
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 404,
+          "tokensOutput": 194,
+          "latencyMs": 364,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "gist-identification"
+          ],
+          "deterministicSeed": 3095835584,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "ls-a2-gist-23",
+        "transcriptOfHeardContent": "Hi Mai, I can't come to the cinema tonight because my little sister is sick. Can we go tomorrow instead?",
+        "questionText": "Why can't the speaker go tonight?",
+        "questionType": "short_answer",
+        "expectedAnswer": "His/her little sister is sick.",
+        "targetCefr": "A2",
+        "userResponse": "Because sister sick so go tomorrow."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.955Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-a2-mcq-24",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1575,
+      "tokenCount": {
+        "input": 320,
+        "output": 145
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.88
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 320,
+          "tokensOutput": 145,
+          "latencyMs": 1575,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "distractor-resistance"
+          ],
+          "deterministicSeed": 1781870995,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "ls-a2-mcq-24",
+        "transcriptOfHeardContent": "The museum is open from Tuesday to Sunday. It is closed every Monday.",
+        "questionText": "When is the museum closed? A. Monday B. Sunday C. Tuesday",
+        "questionType": "mcq",
+        "expectedAnswer": "A",
+        "targetCefr": "A2",
+        "userResponse": "A"
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.956Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-b1-inference-25",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 662,
+      "tokenCount": {
+        "input": 262,
+        "output": 92
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B1",
+            "confidence": 0.76
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 262,
+          "tokensOutput": 92,
+          "latencyMs": 662,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "inference"
+          ],
+          "deterministicSeed": 2099252882,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B1",
+      "request": {
+        "promptId": "ls-b1-inference-25",
+        "transcriptOfHeardContent": "I thought the apartment would be quiet, but the restaurant downstairs plays music until midnight. I'm already looking for another place.",
+        "questionText": "How does the speaker feel about the apartment?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Unhappy/disappointed because it is noisy.",
+        "targetCefr": "B1",
+        "userResponse": "The speaker is unhappy because it is noisy at night."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.956Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-b1-final-s-26",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 258,
+      "tokenCount": {
+        "input": 413,
+        "output": 228
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B1",
+            "confidence": 0.81
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 413,
+          "tokensOutput": 228,
+          "latencyMs": 258,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "plural-s-omission"
+          ],
+          "deterministicSeed": 3100599678,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B1",
+      "request": {
+        "promptId": "ls-b1-final-s-26",
+        "transcriptOfHeardContent": "The guide said visitors must keep their tickets because staff check them again at the exit.",
+        "questionText": "Why should visitors keep their tickets?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Staff check them again at the exit.",
+        "targetCefr": "B1",
+        "userResponse": "Because staff check ticket again when exit."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.957Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-b2-detail-27",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 637,
+      "tokenCount": {
+        "input": 299,
+        "output": 107
+      },
+      "rawGraderOutput": {
+        "ok": false,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": null,
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 299,
+          "tokensOutput": 107,
+          "latencyMs": 637,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "detail-recall"
+          ],
+          "deterministicSeed": 2175947657,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": null,
+      "request": {
+        "promptId": "ls-b2-detail-27",
+        "transcriptOfHeardContent": "The speaker recommends saving receipts for three months, not because returns usually take that long, but because warranty disputes often require proof of purchase.",
+        "questionText": "Why keep receipts for three months?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Warranty disputes may require proof of purchase.",
+        "targetCefr": "B2",
+        "userResponse": "For warranty disputes, because you may need proof that you bought it."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.958Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-b2-nuance-28",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 257,
+      "tokenCount": {
+        "input": 266,
+        "output": 247
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.75
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 266,
+          "tokensOutput": 247,
+          "latencyMs": 257,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "inference",
+            "borderline"
+          ],
+          "deterministicSeed": 3923977477,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "ls-b2-nuance-28",
+        "transcriptOfHeardContent": "I wouldn't say the new policy is a disaster, but calling it simple is optimistic. Most staff will need training before it saves any time.",
+        "questionText": "What is the speaker's opinion?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Cautious/skeptical; not a disaster but not simple yet.",
+        "targetCefr": "B2",
+        "userResponse": "He is skeptical. It may work, but people need training first."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.958Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-c1-implicit-29",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1213,
+      "tokenCount": {
+        "input": 463,
+        "output": 263
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.74
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 463,
+          "tokensOutput": 263,
+          "latencyMs": 1213,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C1",
+          "taxonomyTags": [
+            "implicit-meaning"
+          ],
+          "deterministicSeed": 3245810033,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "ls-c1-implicit-29",
+        "transcriptOfHeardContent": "When asked whether the launch date was realistic, the engineer paused and said, 'It is certainly a date on the calendar.'",
+        "questionText": "What does the engineer imply?",
+        "questionType": "short_answer",
+        "expectedAnswer": "The launch date is probably unrealistic.",
+        "targetCefr": "C1",
+        "userResponse": "The engineer politely implies the date exists but is not realistic."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.959Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-c2-irony-30",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 894,
+      "tokenCount": {
+        "input": 269,
+        "output": 244
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C2",
+            "confidence": 0.68
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 269,
+          "tokensOutput": 244,
+          "latencyMs": 894,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C2",
+          "taxonomyTags": [
+            "irony",
+            "adversarial"
+          ],
+          "deterministicSeed": 1974944314,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C2",
+      "request": {
+        "promptId": "ls-c2-irony-30",
+        "transcriptOfHeardContent": "The consultant described the broken signup form as a 'conversion meditation experience,' which was one way to avoid saying nobody could register.",
+        "questionText": "What is the speaker doing?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Mocking euphemistic consultant language.",
+        "targetCefr": "C2",
+        "userResponse": "The speaker is satirizing the consultant's euphemism for a serious failure."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.960Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-c1-relative-31",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 747,
+      "tokenCount": {
+        "input": 383,
+        "output": 157
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C2",
+            "confidence": 0.82
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 383,
+          "tokensOutput": 157,
+          "latencyMs": 747,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C1",
+          "taxonomyTags": [
+            "relative-clause-transfer"
+          ],
+          "deterministicSeed": 552798967,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C2",
+      "request": {
+        "promptId": "sp-c1-relative-31",
+        "taskText": "Explain a product improvement you would prioritize.",
+        "targetLanguage": "en",
+        "durationSeconds": 88,
+        "transcript": "The feature I would prioritize is the one that helps learners understand why they made an error, not just whether the answer is wrong. Without that explanation, practice becomes guessing."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.960Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-a2-there-is-32",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1521,
+      "tokenCount": {
+        "input": 347,
+        "output": 151
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.83
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 347,
+          "tokensOutput": 151,
+          "latencyMs": 1521,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "there-is-co-transfer"
+          ],
+          "deterministicSeed": 3984607141,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "rd-a2-there-is-32",
+        "passageText": "There are three clinics in the district, but only one is open after 8 p.m.",
+        "questionText": "How many clinics are open after 8 p.m.?",
+        "questionType": "short_answer",
+        "expectedAnswer": "one",
+        "targetCefr": "A2",
+        "userResponse": "There has one clinic open after 8 p.m."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.961Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-b1-negation-33",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 255,
+      "tokenCount": {
+        "input": 420,
+        "output": 125
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B1",
+            "confidence": 0.73
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 420,
+          "tokensOutput": 125,
+          "latencyMs": 255,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B1",
+          "taxonomyTags": [
+            "negation-no-not-placement"
+          ],
+          "deterministicSeed": 3648570875,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B1",
+      "request": {
+        "promptId": "ls-b1-negation-33",
+        "transcriptOfHeardContent": "The speaker says she does not recommend the cheaper phone because its battery fails after a few hours.",
+        "questionText": "Does she recommend the cheaper phone? Why?",
+        "questionType": "short_answer",
+        "expectedAnswer": "No, because the battery is poor.",
+        "targetCefr": "B1",
+        "userResponse": "No recommend because battery very bad."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.962Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-b2-topic-34",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 489,
+      "tokenCount": {
+        "input": 390,
+        "output": 219
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B2",
+            "confidence": 0.86
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 390,
+          "tokensOutput": 219,
+          "latencyMs": 489,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "topic-comment-fronting"
+          ],
+          "deterministicSeed": 982245909,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B2",
+      "request": {
+        "promptId": "sp-b2-topic-34",
+        "taskText": "Describe a city problem and a solution.",
+        "targetLanguage": "en",
+        "durationSeconds": 84,
+        "transcript": "Traffic in Ho Chi Minh City, it affects everyone, especially students and workers. A realistic solution is not only more roads but better buses, safer sidewalks, and parking rules that people actually respect."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.962Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-c1-register-35",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1483,
+      "tokenCount": {
+        "input": 297,
+        "output": 213
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.75
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 297,
+          "tokensOutput": 213,
+          "latencyMs": 1483,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C1",
+          "taxonomyTags": [
+            "register-control"
+          ],
+          "deterministicSeed": 2742993303,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "rd-c1-register-35",
+        "passageText": "The applicant's email was courteous but firm, acknowledging the committee's workload while requesting a clearer explanation of the rejection criteria.",
+        "questionText": "How would you characterize the applicant's tone?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Polite/courteous but firm.",
+        "targetCefr": "C1",
+        "userResponse": "The tone is diplomatic: respectful of the committee but still asking directly for more transparency."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.963Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-a2-adversarial-emptyish-36",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 869,
+      "tokenCount": {
+        "input": 324,
+        "output": 159
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A2",
+            "confidence": 0.85
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 324,
+          "tokensOutput": 159,
+          "latencyMs": 869,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A2",
+          "taxonomyTags": [
+            "adversarial",
+            "malformed-risk"
+          ],
+          "deterministicSeed": 3027896889,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A2",
+      "request": {
+        "promptId": "ls-a2-adversarial-emptyish-36",
+        "transcriptOfHeardContent": "The appointment is on Thursday, not Tuesday.",
+        "questionText": "Which day is the appointment?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Thursday",
+        "targetCefr": "A2",
+        "userResponse": "Tuesday no Thursday maybe"
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.963Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-a1-code-switch-37",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1143,
+      "tokenCount": {
+        "input": 459,
+        "output": 173
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "A1",
+            "confidence": 0.68
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 459,
+          "tokensOutput": 173,
+          "latencyMs": 1143,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "A1",
+          "taxonomyTags": [
+            "code-switch",
+            "missing-articles"
+          ],
+          "deterministicSeed": 3127981763,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "A1",
+      "request": {
+        "promptId": "sp-a1-code-switch-37",
+        "taskText": "Say what food you like.",
+        "targetLanguage": "en",
+        "durationSeconds": 18,
+        "transcript": "I like pho because it hot and ngon. I eat with my family in morning."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.963Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "rd-b2-overanswer-38",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1023,
+      "tokenCount": {
+        "input": 271,
+        "output": 153
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "B2",
+            "confidence": 0.76
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 271,
+          "tokensOutput": 153,
+          "latencyMs": 1023,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "B2",
+          "taxonomyTags": [
+            "adversarial",
+            "overlong-answer"
+          ],
+          "deterministicSeed": 2743722243,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "B2",
+      "request": {
+        "promptId": "rd-b2-overanswer-38",
+        "passageText": "The notice says refunds are available within fourteen days if the package is unopened.",
+        "questionText": "When can customers get a refund?",
+        "questionType": "short_answer",
+        "expectedAnswer": "Within fourteen days if unopened.",
+        "targetCefr": "B2",
+        "userResponse": "Customers can get a refund within fourteen days, but only if the package remains unopened; if they use it, the refund condition is not satisfied."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.964Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "ls-c1-borderline-39",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1385,
+      "tokenCount": {
+        "input": 303,
+        "output": 155
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C1",
+            "confidence": 0.78
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 303,
+          "tokensOutput": 155,
+          "latencyMs": 1385,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C1",
+          "taxonomyTags": [
+            "borderline",
+            "hedging"
+          ],
+          "deterministicSeed": 1721862605,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C1",
+      "request": {
+        "promptId": "ls-c1-borderline-39",
+        "transcriptOfHeardContent": "The lecturer concedes that the evidence is preliminary, yet argues it is strong enough to justify a small-scale trial rather than a full rollout.",
+        "questionText": "What action does the lecturer support?",
+        "questionType": "short_answer",
+        "expectedAnswer": "A small-scale trial, not a full rollout.",
+        "targetCefr": "C1",
+        "userResponse": "A limited pilot, because the evidence is promising but not mature enough for a full rollout."
+      },
+      "simulated": true
+    },
+    {
+      "isoTimestamp": "2026-05-20T13:19:01.964Z",
+      "replayBatchId": "simulated-02",
+      "runId": "simulated-02-2026-05-20T13-19-01-938Z",
+      "sampleId": "sp-c2-borderline-40",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "latencyMs": 1142,
+      "tokenCount": {
+        "input": 420,
+        "output": 192
+      },
+      "rawGraderOutput": {
+        "ok": true,
+        "simulated": true,
+        "simulationMode": "deterministic-local-replay",
+        "assessment": {
+          "overall": {
+            "level": "C2",
+            "confidence": 0.83
+          }
+        },
+        "modelTrace": {
+          "provider": "none",
+          "model": "local-drift-simulator-v1",
+          "attempts": [
+            "none"
+          ],
+          "tokensInput": 420,
+          "tokensOutput": 192,
+          "latencyMs": 1142,
+          "simulated": true
+        },
+        "diagnostic": {
+          "expectedCefr": "C2",
+          "taxonomyTags": [
+            "borderline",
+            "idiomatic-command"
+          ],
+          "deterministicSeed": 3919632762,
+          "note": "Local deterministic simulation. Not provider output and not production drift evidence."
+        }
+      },
+      "parsedCefrResult": "C2",
+      "request": {
+        "promptId": "sp-c2-borderline-40",
+        "taskText": "Summarize the tradeoff between speed and quality in software releases.",
+        "targetLanguage": "en",
+        "durationSeconds": 94,
+        "transcript": "Shipping quickly is valuable when the blast radius is understood. The danger is confusing motion with progress: a fast release that damages trust creates work you cannot measure in the original estimate."
+      },
+      "simulated": true
+    }
+  ]
+}

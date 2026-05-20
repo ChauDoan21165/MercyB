@@ -5,6 +5,7 @@
 - Added 40 replay fixtures across reading, listening, and speaking.
 - Added replay runner with resumable partial output and database persistence.
 - Added drift analysis library, Supabase tables, edge report function, and admin dashboard.
+- Added deterministic local simulation mode and three committed simulated replay runs under `simulated-runs/`. These artifacts are explicitly marked `simulated: true` and are not live provider metrics.
 - Attempted live replay command is documented in `a36-blockers.md` if credentials are unavailable.
 
 ## Required Future Entries

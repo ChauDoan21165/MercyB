@@ -14,6 +14,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 interface ReportResponse {
   ok: boolean;
+  simulated?: boolean;
   error?: string;
   runs?: DbRun[];
   scores?: DbScore[];
@@ -50,6 +51,11 @@ interface DbRun {
   success_count: number;
   malformed_count: number;
   p95_latency_ms: number;
+  metadata?: {
+    simulated?: boolean;
+    mode?: string;
+    source?: string;
+  } | null;
 }
 
 interface DbScore {
@@ -124,6 +130,21 @@ const value: React.CSSProperties = {
   fontWeight: 900,
   marginTop: 4,
 };
+const simulatedBadge: React.CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  width: "fit-content",
+  marginTop: 10,
+  padding: "6px 10px",
+  borderRadius: 6,
+  border: "1px solid #f59e0b",
+  background: "#fffbeb",
+  color: "#92400e",
+  fontSize: 12,
+  fontWeight: 900,
+  letterSpacing: 0,
+  textTransform: "uppercase",
+};
 
 export default function PlacementDriftDashboard() {
   const admin = useAdminAccess();
@@ -172,6 +193,9 @@ export default function PlacementDriftDashboard() {
   const alerts = report?.alerts ?? [];
   const scores = report?.scores ?? [];
   const providerVariance = report?.providerVariance ?? [];
+  const hasSimulatedData =
+    report?.simulated === true ||
+    latestRuns.some((run) => run.metadata?.simulated === true);
 
   const modalityChart = useMemo(
     () => bucketChart(summary?.byModality ?? {}, "modality"),
@@ -202,6 +226,11 @@ export default function PlacementDriftDashboard() {
           <p style={{ margin: "6px 0 0", color: "#475569" }}>
             Replay stability, CEFR drift, provider variance, retry paths, and Vietnamese-L1 taxonomy risk.
           </p>
+          {hasSimulatedData ? (
+            <div style={simulatedBadge} data-testid="drift-simulated-data-badge">
+              SIMULATED DATA
+            </div>
+          ) : null}
         </header>
 
         {error ? <div style={{ ...card, borderColor: "#ef4444" }}>{error}</div> : null}

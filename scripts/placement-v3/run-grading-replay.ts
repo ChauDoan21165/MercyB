@@ -5,6 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import "dotenv/config";
 
 import { analyzeProviderVariance } from "../../src/lib/placementDrift/providerVariance.js";
+import { analyzeScoreDeltas } from "../../src/lib/placementDrift/scoreDeltaAnalysis.js";
 import { buildStabilityReport } from "../../src/lib/placementDrift/stabilityReport.js";
 import type {
   CefrLevel,
@@ -33,6 +34,7 @@ interface ReplayConfig {
   persist: boolean;
   limit: number | null;
   resume: boolean;
+  simulate: boolean;
 }
 
 interface RawEvidence {
@@ -47,11 +49,14 @@ interface RawEvidence {
   rawGraderOutput: unknown;
   parsedCefrResult: CefrLevel | null;
   request: Record<string, unknown>;
+  simulated?: boolean;
 }
 
 const DEFAULT_FIXTURE =
   "docs/placement-v3/drift-detection/replay-fixtures/placement-v3-replay-samples.json";
 const DEFAULT_OUT_DIR = "docs/placement-v3/drift-detection/raw-runs";
+const DEFAULT_SIMULATED_OUT_DIR = "docs/placement-v3/drift-detection/simulated-runs";
+const SIMULATED_MODEL = "local-drift-simulator-v1";
 
 async function main() {
   const config = readConfig();
@@ -59,7 +64,7 @@ async function main() {
   const startedAt = new Date().toISOString();
   await fs.mkdir(config.outDir, { recursive: true });
 
-  if (!config.supabaseUrl || !config.anonKey) {
+  if (!config.simulate && (!config.supabaseUrl || !config.anonKey)) {
     await writeBlocker({
       command: process.argv.join(" "),
       error: "Missing SUPABASE_URL/PLACEMENT_REPLAY_SUPABASE_URL or SUPABASE_ANON_KEY/PLACEMENT_REPLAY_ANON_KEY.",
@@ -85,7 +90,9 @@ async function main() {
   const partialPath = path.join(config.outDir, `${config.batchId}.partial.json`);
   const completed = config.resume ? await readCompletedSamples(partialPath) : new Set<string>();
 
-  console.log(`[placement-drift] run=${runId} batch=${config.batchId} samples=${fixtures.length}`);
+  console.log(
+    `[placement-drift] run=${runId} batch=${config.batchId} samples=${fixtures.length} simulated=${config.simulate}`,
+  );
   for (const fixture of fixtures) {
     if (completed.has(fixture.id)) {
       console.log(`[placement-drift] skip completed sample=${fixture.id}`);
@@ -94,19 +101,22 @@ async function main() {
     const result = await replaySample({ config, runId, batchId: config.batchId, fixture });
     scores.push(result.score);
     evidence.push(result.evidence);
-    await writePartial(partialPath, { runId, batchId: config.batchId, startedAt, scores, evidence });
+    await writePartial(partialPath, { simulated: config.simulate, runId, batchId: config.batchId, startedAt, scores, evidence });
     console.log(
       `[placement-drift] sample=${fixture.id} modality=${fixture.modality} status=${result.score.status} provider=${result.score.provider} cefr=${result.score.parsedCefr ?? "null"} latencyMs=${result.score.latencyMs}`,
     );
   }
 
   const completedAt = new Date().toISOString();
-  const report = buildStabilityReport({ baseline: [], current: scores });
+  const baseline = config.simulate ? buildSimulatedBaselineScores(runId, config.batchId, fixtures, startedAt) : [];
+  const report = buildStabilityReport({ baseline, current: scores });
+  const deltas = analyzeScoreDeltas({ baseline, current: scores });
   const run = {
     id: runId,
     batchId: config.batchId,
     startedAt,
     completedAt,
+    simulated: config.simulate,
     status: scores.some((score) => score.status === "error" || score.status === "timeout") ? "error" : "success",
     sampleCount: scores.length,
     successCount: scores.filter((score) => score.status === "success").length,
@@ -117,14 +127,44 @@ async function main() {
   };
 
   const rawPath = path.join(config.outDir, `${runId}.json`);
-  await fs.writeFile(rawPath, `${JSON.stringify({ run, scores, evidence }, null, 2)}\n`);
+  await fs.writeFile(
+    rawPath,
+    `${JSON.stringify({ simulated: config.simulate, generatedAt: completedAt, run, scores, evidence }, null, 2)}\n`,
+  );
   await fs.writeFile(
     path.join(config.outDir, `${runId}.summary.json`),
-    `${JSON.stringify(report, null, 2)}\n`,
+    `${JSON.stringify({ simulated: config.simulate, generatedAt: completedAt, report }, null, 2)}\n`,
+  );
+  await fs.writeFile(
+    path.join(config.outDir, `${runId}.drift-diff.json`),
+    `${JSON.stringify({ simulated: config.simulate, generatedAt: completedAt, runId, deltas }, null, 2)}\n`,
+  );
+  await fs.writeFile(
+    path.join(config.outDir, `${runId}.replay.log`),
+    [
+      `simulated=${config.simulate}`,
+      `runId=${runId}`,
+      `batchId=${config.batchId}`,
+      `startedAt=${startedAt}`,
+      `completedAt=${completedAt}`,
+      `samples=${scores.length}`,
+      `success=${run.successCount}`,
+      `malformed=${run.malformedCount}`,
+      `p95LatencyMs=${run.p95LatencyMs}`,
+      "",
+    ].join("\n"),
   );
 
   if (config.persist) {
-    await persistReplay(config, run, scores);
+    if (config.simulate) {
+      await persistSimulatedReplay(config, run, scores, evidence, report, deltas);
+    } else {
+      await persistReplay(config, run, scores);
+    }
+  }
+
+  if (config.simulate) {
+    await persistSimulatedReplay(config, run, scores, evidence, report, deltas);
   }
 
   console.log(`[placement-drift] wrote ${rawPath}`);
@@ -144,15 +184,18 @@ async function replaySample(args: {
   let errorMessage: string | null = null;
 
   try {
-    raw = await callGrader(args.config, args.fixture);
+    raw = args.config.simulate
+      ? simulateGraderOutput(args.fixture)
+      : await callGrader(args.config, args.fixture);
   } catch (err) {
     status = err instanceof Error && err.name === "AbortError" ? "timeout" : "error";
     errorCode = status;
     errorMessage = err instanceof Error ? err.message : String(err);
   }
 
-  const latencyMs = Date.now() - started;
+  const measuredLatencyMs = Date.now() - started;
   const trace = extractTrace(raw);
+  const latencyMs = args.config.simulate && trace.latencyMs > 0 ? trace.latencyMs : measuredLatencyMs;
   const parsedCefr = trace.parsedCefr;
   const malformed = status === "success" && (!parsedCefr || !isRecord(raw) || raw.ok === false);
   if (malformed) status = "malformed";
@@ -188,9 +231,90 @@ async function replaySample(args: {
     rawGraderOutput: raw ?? { ok: false, errorCode, errorMessage },
     parsedCefrResult: parsedCefr,
     request: args.fixture.payload,
+    simulated: args.config.simulate,
   };
 
   return { score, evidence };
+}
+
+function simulateGraderOutput(fixture: ReplayFixture): unknown {
+  const hash = stableHash(fixture.id);
+  const parsedLevel = simulatedCefr(fixture.expectedCefr, hash);
+  const malformed = hash % 17 === 0;
+  const latencyMs = 180 + (hash % 1_400);
+  const tokensInput = 260 + (JSON.stringify(fixture.payload).length % 220);
+  const tokensOutput = 90 + (hash % 180);
+  return {
+    ok: !malformed,
+    simulated: true,
+    simulationMode: "deterministic-local-replay",
+    assessment: malformed
+      ? null
+      : {
+          overall: {
+            level: parsedLevel,
+            confidence: Number((0.66 + (hash % 23) / 100).toFixed(2)),
+          },
+        },
+    modelTrace: {
+      provider: "none",
+      model: SIMULATED_MODEL,
+      attempts: ["none"],
+      tokensInput,
+      tokensOutput,
+      latencyMs,
+      simulated: true,
+    },
+    diagnostic: {
+      expectedCefr: fixture.expectedCefr,
+      taxonomyTags: fixture.taxonomyTags,
+      deterministicSeed: hash,
+      note: "Local deterministic simulation. Not provider output and not production drift evidence.",
+    },
+  };
+}
+
+function simulatedCefr(expected: CefrLevel, hash: number): CefrLevel {
+  const levels: CefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const index = levels.indexOf(expected);
+  if (hash % 13 === 0) return levels[Math.max(0, index - 1)];
+  if (hash % 7 === 0) return levels[Math.min(levels.length - 1, index + 1)];
+  return expected;
+}
+
+function stableHash(input: string): number {
+  let hash = 2_166_136_261;
+  for (const char of input) {
+    hash ^= char.charCodeAt(0);
+    hash = Math.imul(hash, 16_777_619);
+  }
+  return hash >>> 0;
+}
+
+function buildSimulatedBaselineScores(
+  runId: string,
+  batchId: string,
+  fixtures: ReplayFixture[],
+  createdAt: string,
+): ReplayScore[] {
+  return fixtures.map((fixture) => ({
+    runId: `${runId}:expected-baseline`,
+    batchId: `${batchId}:expected-baseline`,
+    sampleId: fixture.id,
+    modality: fixture.modality,
+    expectedCefr: fixture.expectedCefr,
+    parsedCefr: fixture.expectedCefr,
+    provider: "none",
+    model: SIMULATED_MODEL,
+    retryPath: ["none"],
+    taxonomyTags: fixture.taxonomyTags,
+    latencyMs: 0,
+    tokensInput: 0,
+    tokensOutput: 0,
+    status: "success",
+    malformed: false,
+    createdAt,
+  }));
 }
 
 async function callGrader(config: ReplayConfig, fixture: ReplayFixture): Promise<unknown> {
@@ -247,6 +371,7 @@ function extractTrace(body: unknown): {
   retryPath: string[];
   tokensInput: number;
   tokensOutput: number;
+  latencyMs: number;
   parsedCefr: CefrLevel | null;
 } {
   const record = isRecord(body) ? body : {};
@@ -265,6 +390,7 @@ function extractTrace(body: unknown): {
     retryPath,
     tokensInput: Number(trace.tokensInput ?? 0),
     tokensOutput: Number(trace.tokensOutput ?? 0),
+    latencyMs: Number(trace.latencyMs ?? 0),
     parsedCefr: normalizeCefr(overall.level ?? assessment.overall_cefr),
   };
 }
@@ -276,6 +402,7 @@ async function persistReplay(
     batchId: string;
     startedAt: string;
     completedAt: string;
+    simulated: boolean;
     status: string;
     sampleCount: number;
     successCount: number;
@@ -304,7 +431,7 @@ async function persistReplay(
     malformed_count: run.malformedCount,
     p95_latency_ms: run.p95LatencyMs,
     provider_set: run.providerSet,
-    metadata: { source: "scripts/placement-v3/run-grading-replay.ts" },
+    metadata: { source: "scripts/placement-v3/run-grading-replay.ts", simulated: run.simulated },
   });
   if (runError) throw new Error(`replay run persist failed: ${runError.message}`);
 
@@ -369,6 +496,168 @@ async function persistReplay(
   }
 }
 
+async function persistSimulatedReplay(
+  config: ReplayConfig,
+  run: {
+    id: string;
+    batchId: string;
+    startedAt: string;
+    completedAt: string;
+    simulated: boolean;
+    status: string;
+    sampleCount: number;
+    successCount: number;
+    malformedCount: number;
+    p95LatencyMs: number;
+    providerSet: DriftProvider[];
+    report: ReturnType<typeof buildStabilityReport>;
+  },
+  scores: ReplayScore[],
+  evidence: RawEvidence[],
+  report: ReturnType<typeof buildStabilityReport>,
+  deltas: ReturnType<typeof analyzeScoreDeltas>,
+) {
+  const dbRun = {
+    id: run.id,
+    batch_id: run.batchId,
+    fixture_version: "simulation-v1",
+    started_at: run.startedAt,
+    completed_at: run.completedAt,
+    status: run.status,
+    sample_count: run.sampleCount,
+    success_count: run.successCount,
+    malformed_count: run.malformedCount,
+    p95_latency_ms: run.p95LatencyMs,
+    provider_set: run.providerSet,
+    metadata: {
+      simulated: true,
+      source: "scripts/placement-v3/run-grading-replay.ts",
+      mode: "deterministic-local-replay",
+    },
+  };
+  const dbScores = scores.map((score) => ({
+    id: `${score.runId}:${score.sampleId}`,
+    run_id: score.runId,
+    batch_id: score.batchId,
+    sample_id: score.sampleId,
+    modality: score.modality,
+    expected_cefr: score.expectedCefr,
+    parsed_cefr: score.parsedCefr,
+    provider: score.provider,
+    model: score.model,
+    retry_path: score.retryPath,
+    taxonomy_tags: score.taxonomyTags,
+    latency_ms: score.latencyMs,
+    tokens_input: score.tokensInput,
+    tokens_output: score.tokensOutput,
+    status: score.status,
+    malformed: score.malformed,
+    raw_request: {},
+    raw_response: { simulated: true },
+    created_at: score.createdAt,
+  }));
+  const dashboardPayload = {
+    simulated: true,
+    ok: true,
+    generatedAt: run.completedAt,
+    runs: [dbRun],
+    scores: dbScores,
+    alerts: report.alerts.map((alert, index) => ({
+      id: index + 1,
+      severity: alert.severity,
+      scope: alert.scope,
+      metric: alert.metric,
+      value: alert.value,
+      threshold: alert.threshold,
+      sample_ids: alert.sampleIds,
+      message: alert.message,
+      created_at: run.completedAt,
+    })),
+    providerVariance: analyzeProviderVariance(scores).map((row) => ({
+      provider: row.provider,
+      sample_count: row.sampleCount,
+      success_rate: row.successRate,
+      malformed_rate: row.malformedRate,
+      average_expected_delta: row.averageExpectedDelta,
+      p95_latency_ms: row.p95LatencyMs,
+    })),
+    summary: {
+      scoreCount: scores.length,
+      replaySuccessRate: report.replay.successRate,
+      malformedRate: report.replay.malformedRate,
+      p95GradingLatencyMs: report.replay.p95LatencyMs,
+      criticalAlertCount: report.alerts.filter((alert) => alert.severity === "critical").length,
+      byModality: bucketScores(scores, "modality"),
+      byCefr: bucketScores(scores, "expectedCefr"),
+      byProvider: bucketScores(scores, "provider"),
+      retryVariance: scores.reduce<Record<string, number>>((out, score) => {
+        const key = score.retryPath.join(">") || "none";
+        out[key] = (out[key] ?? 0) + 1;
+        return out;
+      }, {}),
+      taxonomy: scores.reduce<Record<string, { count: number; malformedRate: number }>>((out, score) => {
+        for (const tag of score.taxonomyTags) {
+          const row = out[tag] ?? { count: 0, malformedRate: 0 };
+          row.count += 1;
+          out[tag] = row;
+        }
+        return out;
+      }, {}),
+    },
+  };
+
+  for (const [tag, row] of Object.entries(dashboardPayload.summary.taxonomy)) {
+    const subset = scores.filter((score) => score.taxonomyTags.includes(tag));
+    row.malformedRate = ratio(subset.filter((score) => score.malformed).length, subset.length);
+  }
+
+  await fs.writeFile(
+    path.join(config.outDir, `${run.id}.local-persistence.json`),
+    `${JSON.stringify({ simulated: true, generatedAt: run.completedAt, run: dbRun, scores: dbScores, evidence }, null, 2)}\n`,
+  );
+  await fs.writeFile(
+    path.join(config.outDir, `${run.id}.dashboard-payload.json`),
+    `${JSON.stringify(dashboardPayload, null, 2)}\n`,
+  );
+  await fs.writeFile(
+    path.join(config.outDir, `${run.id}.pipeline-integrity.json`),
+    `${JSON.stringify({
+      simulated: true,
+      generatedAt: run.completedAt,
+      fixtureCount: scores.length,
+      persistedScoreCount: dbScores.length,
+      evidenceCount: evidence.length,
+      diffCount: deltas.length,
+      dashboardPayloadRenderable: Boolean(dashboardPayload.ok && dashboardPayload.summary.scoreCount === scores.length),
+      allArtifactsStampedSimulated: true,
+    }, null, 2)}\n`,
+  );
+}
+
+function bucketScores(scores: ReplayScore[], key: "modality" | "expectedCefr" | "provider") {
+  const out: Record<string, { count: number; successRate: number; malformedRate: number; p95LatencyMs: number }> = {};
+  for (const value of new Set(scores.map((score) => String(score[key])))) {
+    const subset = scores.filter((score) => String(score[key]) === value);
+    out[value] = {
+      count: subset.length,
+      successRate: ratio(subset.filter((score) => score.status === "success").length, subset.length),
+      malformedRate: ratio(subset.filter((score) => score.malformed).length, subset.length),
+      p95LatencyMs: percentile(subset.map((score) => score.latencyMs), 0.95),
+    };
+  }
+  return out;
+}
+
+function percentile(values: number[], p: number): number {
+  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
+  if (!sorted.length) return 0;
+  return Math.round(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * p) - 1)]);
+}
+
+function ratio(count: number, total: number): number {
+  return total ? Number((count / total).toFixed(4)) : 0;
+}
+
 async function loadFixtures(fixturePath: string): Promise<ReplayFixture[]> {
   const raw = await fs.readFile(fixturePath, "utf8");
   const parsed = JSON.parse(raw) as ReplayFixture[];
@@ -431,10 +720,11 @@ ${args.unavailableMetrics.map((metric) => `- ${metric}`).join("\n")}
 function readConfig(): ReplayConfig {
   const args = readArgs();
   const batchId = args.get("batch") ?? args.get("batchId") ?? "baseline-01";
+  const simulate = args.get("simulate") === "true" || args.get("mode") === "simulate" || process.env.PLACEMENT_REPLAY_SIMULATE === "1";
   return {
     batchId,
     fixturePath: args.get("fixtures") ?? DEFAULT_FIXTURE,
-    outDir: args.get("outDir") ?? DEFAULT_OUT_DIR,
+    outDir: args.get("outDir") ?? (simulate ? DEFAULT_SIMULATED_OUT_DIR : DEFAULT_OUT_DIR),
     supabaseUrl: process.env.PLACEMENT_REPLAY_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "",
     anonKey: process.env.PLACEMENT_REPLAY_ANON_KEY ?? process.env.SUPABASE_ANON_KEY ?? "",
     serviceRoleKey: process.env.PLACEMENT_REPLAY_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY ?? "",
@@ -442,6 +732,7 @@ function readConfig(): ReplayConfig {
     persist: args.get("persist") === "true" || process.env.PLACEMENT_REPLAY_PERSIST === "1",
     limit: args.has("limit") ? Number(args.get("limit")) : null,
     resume: args.get("resume") !== "false",
+    simulate,
   };
 }
 

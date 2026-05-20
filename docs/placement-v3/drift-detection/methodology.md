@@ -45,3 +45,9 @@ The runner refuses to fabricate live outputs if Supabase credentials are missing
 ## Current Scope
 
 #942 has merged Placement V3 writing grader infrastructure. A36 adds drift replay infrastructure around available grader endpoints and does not claim live replay metrics; live replay remains blocked unless Supabase/env vars are configured.
+
+## Local Simulation Mode
+
+`run-grading-replay.ts --simulate` is a deterministic local-only mode. It runs fixture loading, replay scoring, drift diffing, local persistence-shaped artifact generation, and dashboard-payload generation without provider secrets. Every JSON artifact includes `simulated: true`.
+
+Simulation mode is not live replay. It uses `provider: "none"` and `model: "local-drift-simulator-v1"`, so it cannot prove provider drift, model quality, real latency, token cost, or production Supabase persistence.
