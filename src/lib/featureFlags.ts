@@ -17,7 +17,12 @@
 
 function readEnvBool(key: string, defaultValue: boolean): boolean {
   try {
-    const raw = (import.meta as any)?.env?.[key];
+    const raw =
+      key === "VITE_PLACEMENT_TEST_ENABLED"
+        ? import.meta.env.VITE_PLACEMENT_TEST_ENABLED
+        : key === "VITE_PLACEMENT_V3_UI_ENABLED"
+          ? import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED
+          : (import.meta as any)?.env?.[key];
     if (raw === undefined || raw === null || raw === "") return defaultValue;
     const s = String(raw).toLowerCase().trim();
     return s === "true" || s === "1" || s === "yes" || s === "on";

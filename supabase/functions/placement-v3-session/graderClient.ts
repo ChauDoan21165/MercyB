@@ -211,7 +211,13 @@ function heuristicAssessment(input: GraderInput): CEFRAssessment {
   const words = text ? text.split(/\s+/).length : 0;
   const level = words < 8 ? "A1" : words < 25 ? "A2" : words < 60 ? "B1" : words < 120 ? "B2" : "C1";
   const hasVietnamese = /[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(text);
-  const copiedPrompt = text.length > 20 && input.prompt.promptText.toLowerCase().includes(text.toLowerCase());
+  const promptText = input.prompt.promptText.toLowerCase();
+  const responseText = text.toLowerCase();
+  const copiedPrompt = text.length > 20 &&
+    (promptText.includes(responseText) ||
+      responseText.includes(promptText) ||
+      looksLikeInstructionEcho(responseText) ||
+      lexicalOverlap(promptText, responseText) >= 0.75);
   return {
     overallLevel: copiedPrompt ? "A1" : level,
     confidence: copiedPrompt ? 0.3 : Math.min(0.78, 0.45 + words / 180),
@@ -226,6 +232,22 @@ function heuristicAssessment(input: GraderInput): CEFRAssessment {
       : [],
     metadata: { stub: input.modality !== "writing", words },
   };
+}
+
+function looksLikeInstructionEcho(text: string): boolean {
+  return /\bwrite in english\b/.test(text) &&
+    (/\b(a1|a2|b1|b2|c1|c2)\b/.test(text) || /\bdaily routine\b/.test(text));
+}
+
+function lexicalOverlap(a: string, b: string): number {
+  const left = new Set(a.split(/[^a-z0-9']+/).filter((word) => word.length > 2));
+  const right = new Set(b.split(/[^a-z0-9']+/).filter((word) => word.length > 2));
+  if (left.size === 0 || right.size === 0) return 0;
+  let shared = 0;
+  for (const word of right) {
+    if (left.has(word)) shared += 1;
+  }
+  return shared / Math.min(left.size, right.size);
 }
 
 function normalizeAssessment(raw: unknown): CEFRAssessment | null {
