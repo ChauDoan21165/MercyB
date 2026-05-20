@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:29:33.870Z",
+  "generatedAt": "2026-05-20T16:34:54.912Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "inputs": [
@@ -17,7 +17,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:35:02.009Z",
-      "ageHours": 0.9088497222222223,
+      "ageHours": 0.9980277777777777,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -41,7 +41,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:49.756Z",
-      "ageHours": 0.9122533333333334,
+      "ageHours": 1.0014313888888888,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -65,7 +65,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:55.676Z",
-      "ageHours": 0.9106088888888889,
+      "ageHours": 0.9997869444444445,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -89,7 +89,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:55.690Z",
-      "ageHours": 0.910605,
+      "ageHours": 0.9997830555555556,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -113,7 +113,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:49.766Z",
-      "ageHours": 0.9122505555555556,
+      "ageHours": 1.001428611111111,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",

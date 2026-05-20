@@ -1,85 +1,87 @@
 {
-  "generatedAt": "2026-05-20T16:35:07.834Z",
+  "generatedAt": "2026-05-20T16:35:08.570Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "schema": "provider latency evidence schema",
+  "schema": "reliability incident response plan",
   "checks": [
     {
-      "name": "openai_latency_evidence",
+      "name": "timeout_incident_triage",
       "status": "BLOCKED",
       "requiredFields": [
-        "openaiLatencyVariance",
-        "maxAcceptableProviderLatency"
+        "timeoutIncidentRisk",
+        "timeoutEscalationOwner",
+        "timeoutEscalationWindow"
       ],
       "missingFields": [
-        "openaiLatencyVariance",
-        "maxAcceptableProviderLatency"
+        "timeoutIncidentRisk",
+        "timeoutEscalationOwner",
+        "timeoutEscalationWindow"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "gemini_failover_latency_evidence",
-      "status": "BLOCKED",
-      "requiredFields": [
-        "geminiFailoverLatencyVariance",
-        "openaiGeminiFailoverLatency"
-      ],
-      "missingFields": [
-        "geminiFailoverLatencyVariance",
-        "openaiGeminiFailoverLatency"
-      ],
-      "reason": "missing_schema_fields_or_source_evidence"
-    },
-    {
-      "name": "azure_phoneme_latency_evidence",
-      "status": "BLOCKED",
-      "requiredFields": [
-        "azurePhonemeScoringLatencyVariance",
-        "azurePhonemeTimeoutThreshold"
-      ],
-      "missingFields": [
-        "azurePhonemeScoringLatencyVariance",
-        "azurePhonemeTimeoutThreshold"
-      ],
-      "reason": "missing_schema_fields_or_source_evidence"
-    },
-    {
-      "name": "provider_timeout_evidence",
+      "name": "provider_latency_incident_triage",
       "status": "BLOCKED",
       "requiredFields": [
         "providerTimeoutsResolved",
-        "providerTimeoutUnknowns"
+        "maxAcceptableProviderLatency"
       ],
       "missingFields": [
         "providerTimeoutsResolved",
-        "providerTimeoutUnknowns"
+        "maxAcceptableProviderLatency"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "human_review_handoff_latency_evidence",
+      "name": "replay_incident_triage",
       "status": "BLOCKED",
       "requiredFields": [
-        "humanReviewHandoffLatency",
+        "replayDurable",
+        "replayEvidenceComplete"
+      ],
+      "missingFields": [
+        "replayDurable",
+        "replayEvidenceComplete"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "retry_budget_incident_triage",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "retryBudgetCeiling",
+        "failoverRetryLimit"
+      ],
+      "missingFields": [
+        "retryBudgetCeiling",
+        "failoverRetryLimit"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "session_sla_incident_triage",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "maxAdaptiveSessionDuration",
         "humanReviewHandoffSla"
       ],
       "missingFields": [
-        "humanReviewHandoffLatency",
+        "maxAdaptiveSessionDuration",
         "humanReviewHandoffSla"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     }
   ],
   "contractNotes": [
-    "Provider latency schema requires bounded OpenAI, Gemini failover, Azure phoneme, timeout, and handoff evidence.",
-    "A42 does not infer latency from absent artifacts."
+    "Incident response planning requires explicit timeout, provider, replay, retry, and session-SLA triage evidence.",
+    "A42 stores response-plan requirements only and does not claim incident readiness while evidence is missing."
   ],
   "incompleteChecks": [
-    "openai_latency_evidence",
-    "gemini_failover_latency_evidence",
-    "azure_phoneme_latency_evidence",
-    "provider_timeout_evidence",
-    "human_review_handoff_latency_evidence"
+    "timeout_incident_triage",
+    "provider_latency_incident_triage",
+    "replay_incident_triage",
+    "retry_budget_incident_triage",
+    "session_sla_incident_triage"
   ],
   "complete": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",

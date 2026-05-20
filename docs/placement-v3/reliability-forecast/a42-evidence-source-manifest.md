@@ -1,6 +1,6 @@
 # A42 Evidence Source Manifest
 
-Generated: 2026-05-20T16:29:33.868Z
+Generated: 2026-05-20T16:35:03.437Z
 
 - Found inputs: reliability_health, ci_degradation_forecast, reliability_recovery_forecast, ci_resilience_summary, reliability_anomaly_summary
 - Missing inputs: a33_endurance_health, a33_timeout_risk_forecast

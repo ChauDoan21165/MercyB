@@ -1,6 +1,6 @@
 # A42 Endurance Readiness Matrix
 
-Generated: 2026-05-20T16:29:33.870Z
+Generated: 2026-05-20T16:34:54.912Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

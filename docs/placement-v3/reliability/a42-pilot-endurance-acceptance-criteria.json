@@ -1,43 +1,50 @@
 {
-  "generatedAt": "2026-05-20T16:35:07.111Z",
+  "generatedAt": "2026-05-20T16:35:08.197Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "schema": "pilot endurance test plan",
+  "schema": "pilot endurance acceptance criteria",
   "checks": [
     {
-      "name": "pilot_endurance_test_requirements",
+      "name": "pilot_run_count_acceptance",
       "status": "BLOCKED",
       "requiredFields": [
         "pilotRunCount",
-        "pilotDurationMinutes",
-        "longSessionStable"
+        "minimumPassingPilotRuns"
       ],
       "missingFields": [
         "pilotRunCount",
-        "pilotDurationMinutes",
-        "longSessionStable"
+        "minimumPassingPilotRuns"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "pilot_timeout_threshold_requirements",
+      "name": "long_session_acceptance",
       "status": "BLOCKED",
       "requiredFields": [
-        "assessmentSessionTimeoutRisk",
-        "speakingScoringTimeoutThreshold",
-        "writingScoringTimeoutThreshold",
-        "azurePhonemeTimeoutThreshold"
+        "longSessionStable",
+        "longSessionDegradationRisk"
       ],
       "missingFields": [
-        "assessmentSessionTimeoutRisk",
-        "speakingScoringTimeoutThreshold",
-        "writingScoringTimeoutThreshold",
-        "azurePhonemeTimeoutThreshold"
+        "longSessionStable",
+        "longSessionDegradationRisk"
       ],
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "pilot_replay_durability_requirements",
+      "name": "timeout_acceptance",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "assessmentSessionTimeoutRisk",
+        "timeoutIncidentRisk"
+      ],
+      "missingFields": [
+        "assessmentSessionTimeoutRisk",
+        "timeoutIncidentRisk"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "replay_acceptance",
       "status": "BLOCKED",
       "requiredFields": [
         "replayDurable",
@@ -50,7 +57,7 @@
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "pilot_provider_latency_requirements",
+      "name": "provider_latency_acceptance",
       "status": "BLOCKED",
       "requiredFields": [
         "openaiLatencyVariance",
@@ -65,7 +72,7 @@
       "reason": "missing_schema_fields_or_source_evidence"
     },
     {
-      "name": "pilot_retry_budget_requirements",
+      "name": "retry_budget_acceptance",
       "status": "BLOCKED",
       "requiredFields": [
         "retryBudgetCeiling",
@@ -79,15 +86,16 @@
     }
   ],
   "contractNotes": [
-    "Pilot endurance must include repeated adaptive-session runs, provider-latency capture, replay checks, and timeout-threshold validation.",
-    "Pilot evidence must remain artifact-backed and safety-flagged before A42 can classify readiness differently."
+    "Acceptance criteria require artifact-backed run counts, long-session stability, timeout risk, replay durability, provider latency, and retry budget evidence.",
+    "A42 cannot accept pilot endurance readiness from missing or implied evidence."
   ],
   "incompleteChecks": [
-    "pilot_endurance_test_requirements",
-    "pilot_timeout_threshold_requirements",
-    "pilot_replay_durability_requirements",
-    "pilot_provider_latency_requirements",
-    "pilot_retry_budget_requirements"
+    "pilot_run_count_acceptance",
+    "long_session_acceptance",
+    "timeout_acceptance",
+    "replay_acceptance",
+    "provider_latency_acceptance",
+    "retry_budget_acceptance"
   ],
   "complete": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",

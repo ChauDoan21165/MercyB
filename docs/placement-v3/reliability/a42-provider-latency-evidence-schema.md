@@ -1,6 +1,6 @@
 # A42 Provider Latency Evidence Schema
 
-Generated: 2026-05-20T16:29:41.125Z
+Generated: 2026-05-20T16:35:07.834Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

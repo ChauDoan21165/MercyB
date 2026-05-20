@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:29:33.869Z",
+  "generatedAt": "2026-05-20T16:35:03.024Z",
   "agent": "A42",
   "name": "ReliabilityForecastOps",
   "branch": "feat/a42-reliability-forecast-ops",
@@ -12,7 +12,7 @@
   "reliability_health": {
     "present": true,
     "stale": false,
-    "ageHours": 0.9088497222222223,
+    "ageHours": 1.0002819444444444,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:35:02.009Z",
     "data": {
@@ -58,7 +58,7 @@
   "ciDegradationRisk": {
     "present": true,
     "stale": false,
-    "ageHours": 0.9122533333333334,
+    "ageHours": 1.0036855555555555,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:49.756Z",
     "data": {
@@ -107,7 +107,7 @@
   "recoveryRisk": {
     "present": true,
     "stale": false,
-    "ageHours": 0.9106088888888889,
+    "ageHours": 1.0020411111111112,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:55.676Z",
     "data": {
@@ -155,7 +155,7 @@
   "resilienceState": {
     "present": true,
     "stale": false,
-    "ageHours": 0.910605,
+    "ageHours": 1.0020372222222222,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:55.690Z",
     "data": {
@@ -214,7 +214,7 @@
   "anomalyState": {
     "present": true,
     "stale": false,
-    "ageHours": 0.9122505555555556,
+    "ageHours": 1.0036827777777777,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:49.766Z",
     "data": {
@@ -394,7 +394,7 @@
   },
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 0.9122533333333334,
+    "oldestAgeHours": 1.0036855555555555,
     "missingCount": 2,
     "staleCount": 2,
     "label": "blocked_missing_inputs"

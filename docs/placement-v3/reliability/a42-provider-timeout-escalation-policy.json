@@ -1,11 +1,23 @@
 {
-  "generatedAt": "2026-05-20T16:35:06.396Z",
+  "generatedAt": "2026-05-20T16:35:08.963Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "forecast": "assessment session SLA plan",
+  "schema": "provider timeout escalation policy",
   "checks": [
     {
-      "name": "max_adaptive_session_duration",
+      "name": "provider_timeout_escalation_window",
+      "status": "BLOCKED",
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
+    },
+    {
+      "name": "failover_timeout_escalation_window",
+      "status": "BLOCKED",
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
+    },
+    {
+      "name": "provider_timeout_incident_threshold",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
@@ -17,37 +29,30 @@
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "writing_scoring_timeout_threshold",
-      "status": "BLOCKED",
-      "value": null,
-      "reason": "missing_threshold_policy_evidence"
-    },
-    {
       "name": "azure_phoneme_timeout_threshold",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "human_review_handoff_sla",
-      "status": "BLOCKED",
-      "value": null,
-      "reason": "missing_threshold_policy_evidence"
-    },
-    {
-      "name": "assessment_session_timeout_risk",
+      "name": "provider_timeout_unknowns",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     }
   ],
-  "blockedChecks": [
-    "max_adaptive_session_duration",
-    "speaking_scoring_timeout_threshold",
-    "writing_scoring_timeout_threshold",
-    "azure_phoneme_timeout_threshold",
-    "human_review_handoff_sla",
-    "assessment_session_timeout_risk"
+  "contractNotes": [
+    "Timeout escalation requires explicit escalation windows, incident thresholds, scoring thresholds, and provider-timeout resolution evidence.",
+    "Escalation planning does not invoke providers or alter runtime behavior."
   ],
+  "incompleteChecks": [
+    "provider_timeout_escalation_window",
+    "failover_timeout_escalation_window",
+    "provider_timeout_incident_threshold",
+    "speaking_scoring_timeout_threshold",
+    "azure_phoneme_timeout_threshold",
+    "provider_timeout_unknowns"
+  ],
+  "complete": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
   "production_safe": false,

@@ -153,6 +153,18 @@ function main() {
     case "latency-schema":
       generateProviderLatencyEvidenceSchema();
       break;
+    case "endurance-criteria":
+      generatePilotEnduranceAcceptanceCriteria();
+      break;
+    case "incident-response":
+      generateReliabilityIncidentResponsePlan();
+      break;
+    case "timeout-escalation":
+      generateProviderTimeoutEscalationPolicy();
+      break;
+    case "safety-margin":
+      generateReliabilitySafetyMarginPolicy();
+      break;
     case "auto":
       runAuto();
       break;
@@ -184,6 +196,10 @@ function runAuto() {
   const pilotEndurance = generatePilotEnduranceTestPlan(sources);
   const timeoutSchema = generateTimeoutThresholdSchema(sources);
   const latencySchema = generateProviderLatencyEvidenceSchema(sources);
+  const enduranceCriteria = generatePilotEnduranceAcceptanceCriteria(sources);
+  const incidentResponse = generateReliabilityIncidentResponsePlan(sources);
+  const timeoutEscalation = generateProviderTimeoutEscalationPolicy(sources);
+  const safetyMargin = generateReliabilitySafetyMarginPolicy(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -202,6 +218,10 @@ function runAuto() {
       pilotEndurance,
       timeoutSchema,
       latencySchema,
+      enduranceCriteria,
+      incidentResponse,
+      timeoutEscalation,
+      safetyMargin,
     );
   }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
@@ -222,6 +242,10 @@ function runAuto() {
   console.log(`[a42] pilot endurance test plan: ${path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-test-plan.json")}`);
   console.log(`[a42] timeout threshold schema: ${path.join(RELIABILITY_OUT_DIR, "a42-timeout-threshold-schema.json")}`);
   console.log(`[a42] provider latency evidence schema: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-evidence-schema.json")}`);
+  console.log(`[a42] pilot endurance acceptance criteria: ${path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-acceptance-criteria.json")}`);
+  console.log(`[a42] reliability incident response plan: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-incident-response-plan.json")}`);
+  console.log(`[a42] provider timeout escalation policy: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-timeout-escalation-policy.json")}`);
+  console.log(`[a42] reliability safety margin policy: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-safety-margin-policy.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -1072,6 +1096,156 @@ function generateProviderLatencyEvidenceSchema(existingSources?: SourceStatus[])
   return report;
 }
 
+function generatePilotEnduranceAcceptanceCriteria(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    evidenceSchemaCheck(enduranceHealth, "pilot_run_count_acceptance", ["pilotRunCount", "minimumPassingPilotRuns"]),
+    evidenceSchemaCheck(enduranceHealth, "long_session_acceptance", ["longSessionStable", "longSessionDegradationRisk"]),
+    evidenceSchemaCheck(timeoutForecast, "timeout_acceptance", ["assessmentSessionTimeoutRisk", "timeoutIncidentRisk"]),
+    evidenceSchemaCheck(enduranceHealth, "replay_acceptance", ["replayDurable", "replayEvidenceComplete"]),
+    evidenceSchemaCheck(timeoutForecast, "provider_latency_acceptance", [
+      "openaiLatencyVariance",
+      "geminiFailoverLatencyVariance",
+      "azurePhonemeScoringLatencyVariance",
+    ]),
+    evidenceSchemaCheck(timeoutForecast, "retry_budget_acceptance", ["retryBudgetCeiling", "failoverRetryLimit"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("pilot endurance acceptance criteria", checks, riskClassification, [
+    "Acceptance criteria require artifact-backed run counts, long-session stability, timeout risk, replay durability, provider latency, and retry budget evidence.",
+    "A42 cannot accept pilot endurance readiness from missing or implied evidence.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-pilot-endurance-acceptance-criteria",
+    report,
+    [
+      "# A42 Pilot Endurance Acceptance Criteria",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Pilot endurance acceptance criteria remain blocked-safe until A33 evidence satisfies every required field.",
+    ],
+  );
+  return report;
+}
+
+function generateReliabilityIncidentResponsePlan(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    evidenceSchemaCheck(timeoutForecast, "timeout_incident_triage", ["timeoutIncidentRisk", "timeoutEscalationOwner", "timeoutEscalationWindow"]),
+    evidenceSchemaCheck(timeoutForecast, "provider_latency_incident_triage", ["providerTimeoutsResolved", "maxAcceptableProviderLatency"]),
+    evidenceSchemaCheck(enduranceHealth, "replay_incident_triage", ["replayDurable", "replayEvidenceComplete"]),
+    evidenceSchemaCheck(timeoutForecast, "retry_budget_incident_triage", ["retryBudgetCeiling", "failoverRetryLimit"]),
+    evidenceSchemaCheck(timeoutForecast, "session_sla_incident_triage", ["maxAdaptiveSessionDuration", "humanReviewHandoffSla"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("reliability incident response plan", checks, riskClassification, [
+    "Incident response planning requires explicit timeout, provider, replay, retry, and session-SLA triage evidence.",
+    "A42 stores response-plan requirements only and does not claim incident readiness while evidence is missing.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-reliability-incident-response-plan",
+    report,
+    [
+      "# A42 Reliability Incident Response Plan",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Incident response planning remains blocked-safe until source evidence defines the required triage and escalation fields.",
+    ],
+  );
+  return report;
+}
+
+function generateProviderTimeoutEscalationPolicy(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    thresholdCheck(timeoutForecast, "provider_timeout_escalation_window", ["providerTimeoutEscalationWindow", "provider_timeout_escalation_window"]),
+    thresholdCheck(timeoutForecast, "failover_timeout_escalation_window", ["failoverTimeoutEscalationWindow", "failover_timeout_escalation_window"]),
+    thresholdCheck(timeoutForecast, "provider_timeout_incident_threshold", ["providerTimeoutIncidentThreshold", "provider_timeout_incident_threshold"]),
+    thresholdCheck(timeoutForecast, "speaking_scoring_timeout_threshold", ["speakingScoringTimeoutThreshold", "speaking_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "azure_phoneme_timeout_threshold", ["azurePhonemeTimeoutThreshold", "azure_phoneme_timeout_threshold"]),
+    readinessCheck("provider_timeout_unknowns", boolEvidence(timeoutForecast, ["providerTimeoutsResolved", "provider_timeouts_resolved"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("provider timeout escalation policy", checks, riskClassification, [
+    "Timeout escalation requires explicit escalation windows, incident thresholds, scoring thresholds, and provider-timeout resolution evidence.",
+    "Escalation planning does not invoke providers or alter runtime behavior.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-provider-timeout-escalation-policy",
+    report,
+    [
+      "# A42 Provider Timeout Escalation Policy",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Provider timeout escalation remains blocked-safe until timeout escalation evidence is present.",
+    ],
+  );
+  return report;
+}
+
+function generateReliabilitySafetyMarginPolicy(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    thresholdCheck(timeoutForecast, "provider_latency_safety_margin", ["providerLatencySafetyMargin", "provider_latency_safety_margin"]),
+    thresholdCheck(timeoutForecast, "adaptive_session_duration_safety_margin", ["adaptiveSessionDurationSafetyMargin", "adaptive_session_duration_safety_margin"]),
+    thresholdCheck(timeoutForecast, "scoring_timeout_safety_margin", ["scoringTimeoutSafetyMargin", "scoring_timeout_safety_margin"]),
+    thresholdCheck(timeoutForecast, "human_review_handoff_safety_margin", ["humanReviewHandoffSafetyMargin", "human_review_handoff_safety_margin"]),
+    thresholdCheck(enduranceHealth, "replay_durability_safety_margin", ["replayDurabilitySafetyMargin", "replay_durability_safety_margin"]),
+    readinessCheck("long_session_degradation_risk", lowRiskEvidence(enduranceHealth, ["longSessionDegradationRisk", "long_session_degradation_risk"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("reliability safety margin policy", checks, riskClassification, [
+    "Safety margins require explicit buffers for provider latency, adaptive sessions, scoring timeouts, handoff latency, and replay durability.",
+    "A42 keeps safety-margin policy incomplete when margins are not backed by A33 evidence.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-reliability-safety-margin-policy",
+    report,
+    [
+      "# A42 Reliability Safety Margin Policy",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Reliability safety margins remain blocked-safe until all margin evidence is present and bounded.",
+    ],
+  );
+  return report;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -1456,6 +1630,10 @@ function enforceStrictMode(
   pilotEndurance: ReturnType<typeof generatePilotEnduranceTestPlan>,
   timeoutSchema: ReturnType<typeof generateTimeoutThresholdSchema>,
   latencySchema: ReturnType<typeof generateProviderLatencyEvidenceSchema>,
+  enduranceCriteria: ReturnType<typeof generatePilotEnduranceAcceptanceCriteria>,
+  incidentResponse: ReturnType<typeof generateReliabilityIncidentResponsePlan>,
+  timeoutEscalation: ReturnType<typeof generateProviderTimeoutEscalationPolicy>,
+  safetyMargin: ReturnType<typeof generateReliabilitySafetyMarginPolicy>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -1478,6 +1656,12 @@ function enforceStrictMode(
   if (pilotEndurance.riskClassification !== "RELIABILITY_READY") failures.push(`pilot endurance test plan blocked: ${pilotEndurance.riskClassification}`);
   if (timeoutSchema.riskClassification !== "RELIABILITY_READY") failures.push(`timeout threshold schema blocked: ${timeoutSchema.riskClassification}`);
   if (latencySchema.riskClassification !== "RELIABILITY_READY") failures.push(`provider latency evidence schema blocked: ${latencySchema.riskClassification}`);
+  if (enduranceCriteria.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`pilot endurance acceptance criteria blocked: ${enduranceCriteria.riskClassification}`);
+  }
+  if (incidentResponse.riskClassification !== "RELIABILITY_READY") failures.push(`reliability incident response plan blocked: ${incidentResponse.riskClassification}`);
+  if (timeoutEscalation.riskClassification !== "RELIABILITY_READY") failures.push(`provider timeout escalation policy blocked: ${timeoutEscalation.riskClassification}`);
+  if (safetyMargin.riskClassification !== "RELIABILITY_READY") failures.push(`reliability safety margin policy blocked: ${safetyMargin.riskClassification}`);
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
   if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
   if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
@@ -1491,6 +1675,10 @@ function enforceStrictMode(
   if (!pilotEndurance.complete) failures.push("pilot endurance test plan incomplete");
   if (!timeoutSchema.complete) failures.push("timeout schema missing");
   if (!latencySchema.complete) failures.push("provider latency schema missing");
+  if (!enduranceCriteria.complete) failures.push("pilot endurance acceptance criteria incomplete");
+  if (!incidentResponse.complete) failures.push("reliability incident response planning incomplete");
+  if (!timeoutEscalation.complete) failures.push("provider timeout escalation incomplete");
+  if (!safetyMargin.complete) failures.push("reliability safety margins incomplete");
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
     throw new Error(`A42 strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
@@ -1601,6 +1789,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-timeout-threshold-schema.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-evidence-schema.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-evidence-schema.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-acceptance-criteria.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-acceptance-criteria.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-incident-response-plan.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-incident-response-plan.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-timeout-escalation-policy.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-timeout-escalation-policy.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-safety-margin-policy.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-safety-margin-policy.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

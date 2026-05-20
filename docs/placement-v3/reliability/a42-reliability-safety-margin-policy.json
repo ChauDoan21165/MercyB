@@ -1,53 +1,58 @@
 {
-  "generatedAt": "2026-05-20T16:35:06.396Z",
+  "generatedAt": "2026-05-20T16:35:09.355Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "forecast": "assessment session SLA plan",
+  "schema": "reliability safety margin policy",
   "checks": [
     {
-      "name": "max_adaptive_session_duration",
+      "name": "provider_latency_safety_margin",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "speaking_scoring_timeout_threshold",
+      "name": "adaptive_session_duration_safety_margin",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "writing_scoring_timeout_threshold",
+      "name": "scoring_timeout_safety_margin",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "azure_phoneme_timeout_threshold",
+      "name": "human_review_handoff_safety_margin",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "human_review_handoff_sla",
+      "name": "replay_durability_safety_margin",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "assessment_session_timeout_risk",
+      "name": "long_session_degradation_risk",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     }
   ],
-  "blockedChecks": [
-    "max_adaptive_session_duration",
-    "speaking_scoring_timeout_threshold",
-    "writing_scoring_timeout_threshold",
-    "azure_phoneme_timeout_threshold",
-    "human_review_handoff_sla",
-    "assessment_session_timeout_risk"
+  "contractNotes": [
+    "Safety margins require explicit buffers for provider latency, adaptive sessions, scoring timeouts, handoff latency, and replay durability.",
+    "A42 keeps safety-margin policy incomplete when margins are not backed by A33 evidence."
   ],
+  "incompleteChecks": [
+    "provider_latency_safety_margin",
+    "adaptive_session_duration_safety_margin",
+    "scoring_timeout_safety_margin",
+    "human_review_handoff_safety_margin",
+    "replay_durability_safety_margin",
+    "long_session_degradation_risk"
+  ],
+  "complete": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
   "production_safe": false,
