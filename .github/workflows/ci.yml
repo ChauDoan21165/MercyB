@@ -104,6 +104,19 @@ jobs:
         run: npm test
         continue-on-error: false
 
+      # A12 coverage ratchet — runs Vitest with --coverage (emits
+      # coverage/coverage-summary.json) and enforces scripts/coverage-
+      # thresholds.json. Per PRINCIPLES.md P19, thresholds only move UP;
+      # a PR that lowers any threshold needs explicit justification in
+      # its PR body. Step is NON-REQUIRED for now (NOT renamed; runs as
+      # a sub-step of the existing "Build and Test" job so it doesn't
+      # add a new required check until ratchet stability is proven).
+      - name: Coverage threshold ratchet
+        run: |
+          npm run test:coverage
+          npm run test:coverage:check
+        continue-on-error: false
+
   lint:
     name: Lint Code
     runs-on: ubuntu-latest

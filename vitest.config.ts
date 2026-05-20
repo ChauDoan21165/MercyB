@@ -48,12 +48,19 @@ export default defineConfig({
 
     coverage: {
       provider: "v8",
-      reporter: ["text", "json", "html"],
+      // json-summary is what scripts/check-coverage-threshold.mjs reads
+      // (the CI ratchet gate); text-summary keeps a human-readable summary
+      // at the bottom of `npm run test:coverage`; html for local browsing.
+      reporter: ["text", "text-summary", "json", "json-summary", "html"],
       exclude: [
         "**/node_modules/**",
         "**/dist/**",
+        "scripts/**",
+        "public/**",
+        "**/*.test.*",
+        "**/__tests__/**",
+        "**/*.config.{ts,js,mjs,cjs}",
         "src/integrations/supabase/types.ts",
-        "**/*.config.{ts,js}",
       ],
     },
   },
