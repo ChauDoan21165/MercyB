@@ -35,6 +35,7 @@ Agents do NOT do:
 - Keep PRs narrow. Bug fixes don't get bundled with features. Refactors don't get bundled with bug fixes.
 - After merge: git checkout main && git pull && confirm clean.
 - Real-device testing is Chau's job. No agent (and no Claude) ships code without Chau verifying it on actual hardware where it matters (browser, iOS, Android).
+- **Required CI gates are blocking.** Branch-protection ruleset `16546337` enforces 4 required status checks: `Build and Test`, `Lint Code`, `Validate Rooms`, **`Module Boundaries`** (promoted post-A13). Module boundary violations from `.dependency-cruiser.cjs` block merges. Modify the rule config only with explicit narrowing justification in the PR body (same review bar as A13-cleanup-1 / A13-circle-FP). Don't rename a required-check job name — once a name is in the ruleset, the name is load-bearing; renaming breaks branch protection silently. (See `reports/MODULE-BOUNDARIES-PROMOTION-A13.md`.)
 
 ---
 
