@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T14:33:23.775Z",
+  "command": "tsx scripts/placement-v3/run-failure-injection.ts --run-id a2-auto-20260520T143323Z",
+  "scenario": "feature-flag-mismatch",
+  "runLabel": "after",
+  "runId": "a2-auto-20260520T143323Z",
+  "providerValidation": "simulated-local; Placement V3 Edge Functions absent on origin/main",
+  "events": [
+    {
+      "id": "feature-flag-mismatch-after-1",
+      "sessionId": "session-feature-flag-mismatch",
+      "correlationId": "corr-feature-flag-mismatch-after",
+      "occurredAt": "2026-05-20T18:00:01.000Z",
+      "sequence": 1,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "feature-flag-mismatch"
+        }
+      },
+      "type": "session_event",
+      "step": "session.start",
+      "message": "Placement session started.",
+      "sessionState": "in_progress"
+    },
+    {
+      "id": "feature-flag-mismatch-after-2",
+      "sessionId": "session-feature-flag-mismatch",
+      "correlationId": "corr-feature-flag-mismatch-after",
+      "occurredAt": "2026-05-20T18:00:02.000Z",
+      "sequence": 2,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "feature-flag-mismatch"
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.snapshot",
+      "message": "Feature flags captured."
+    },
+    {
+      "id": "feature-flag-mismatch-after-3",
+      "sessionId": "session-feature-flag-mismatch",
+      "correlationId": "corr-feature-flag-mismatch-after",
+      "occurredAt": "2026-05-20T18:00:03.000Z",
+      "sequence": 3,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "feature-flag-mismatch"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.next",
+      "message": "Moved from start to grading.",
+      "fromState": "started",
+      "toState": "grading",
+      "action": "respond"
+    },
+    {
+      "id": "feature-flag-mismatch-after-4",
+      "sessionId": "session-feature-flag-mismatch",
+      "correlationId": "corr-feature-flag-mismatch-after",
+      "occurredAt": "2026-05-20T18:00:04.000Z",
+      "sequence": 4,
+      "severity": "warn",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "client_placement_v3": true,
+          "server_placement_v3": false,
+          "placement_v3_forensics": true
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.validate",
+      "message": "Client and server placement flags mismatch."
+    },
+    {
+      "id": "feature-flag-mismatch-after-5",
+      "sessionId": "session-feature-flag-mismatch",
+      "correlationId": "corr-feature-flag-mismatch-after",
+      "occurredAt": "2026-05-20T18:00:05.000Z",
+      "sequence": 5,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "feature-flag-mismatch"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "session.safe-result",
+      "message": "Session ended with safe degraded or normal result.",
+      "fromState": "grading",
+      "toState": "completed",
+      "action": "complete"
+    }
+  ],
+  "reconstruction": {
+    "sessionId": "session-feature-flag-mismatch",
+    "correlationId": "corr-feature-flag-mismatch-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:05.000Z",
+    "eventCount": 5,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.validate",
+        "message": "Client and server placement flags mismatch.",
+        "severity": "warn"
+      },
+      {
+        "sequence": 5,
+        "occurredAt": "2026-05-20T18:00:05.000Z",
+        "type": "orchestration_transition",
+        "step": "session.safe-result",
+        "message": "Session ended with safe degraded or normal result.",
+        "severity": "info"
+      }
+    ]
+  }
+}

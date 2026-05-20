@@ -1,0 +1,173 @@
+{
+  "isoTimestamp": "2026-05-20T14:33:23.775Z",
+  "command": "tsx scripts/placement-v3/run-failure-injection.ts --run-id a2-auto-20260520T143323Z",
+  "scenario": "taxonomy-parse-failure",
+  "runLabel": "after",
+  "runId": "a2-auto-20260520T143323Z",
+  "providerValidation": "simulated-local; Placement V3 Edge Functions absent on origin/main",
+  "events": [
+    {
+      "id": "taxonomy-parse-failure-after-1",
+      "sessionId": "session-taxonomy-parse-failure",
+      "correlationId": "corr-taxonomy-parse-failure-after",
+      "occurredAt": "2026-05-20T18:00:01.000Z",
+      "sequence": 1,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "taxonomy-parse-failure"
+        }
+      },
+      "type": "session_event",
+      "step": "session.start",
+      "message": "Placement session started.",
+      "sessionState": "in_progress"
+    },
+    {
+      "id": "taxonomy-parse-failure-after-2",
+      "sessionId": "session-taxonomy-parse-failure",
+      "correlationId": "corr-taxonomy-parse-failure-after",
+      "occurredAt": "2026-05-20T18:00:02.000Z",
+      "sequence": 2,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "taxonomy-parse-failure"
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.snapshot",
+      "message": "Feature flags captured."
+    },
+    {
+      "id": "taxonomy-parse-failure-after-3",
+      "sessionId": "session-taxonomy-parse-failure",
+      "correlationId": "corr-taxonomy-parse-failure-after",
+      "occurredAt": "2026-05-20T18:00:03.000Z",
+      "sequence": 3,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "taxonomy-parse-failure"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.next",
+      "message": "Moved from start to grading.",
+      "fromState": "started",
+      "toState": "grading",
+      "action": "respond"
+    },
+    {
+      "id": "taxonomy-parse-failure-after-4",
+      "sessionId": "session-taxonomy-parse-failure",
+      "correlationId": "corr-taxonomy-parse-failure-after",
+      "occurredAt": "2026-05-20T18:00:04.000Z",
+      "sequence": 4,
+      "severity": "error",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "taxonomy-parse-failure"
+        }
+      },
+      "type": "taxonomy_trigger",
+      "step": "l1.taxonomy",
+      "message": "Vietnamese L1 taxonomy parse failed.",
+      "taxonomy": "vn-l1-interference",
+      "triggerId": "article-omission",
+      "status": "parse_failed"
+    },
+    {
+      "id": "taxonomy-parse-failure-after-5",
+      "sessionId": "session-taxonomy-parse-failure",
+      "correlationId": "corr-taxonomy-parse-failure-after",
+      "occurredAt": "2026-05-20T18:00:05.000Z",
+      "sequence": 5,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "taxonomy-parse-failure"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "session.safe-result",
+      "message": "Session ended with safe degraded or normal result.",
+      "fromState": "grading",
+      "toState": "completed",
+      "action": "complete"
+    }
+  ],
+  "reconstruction": {
+    "sessionId": "session-taxonomy-parse-failure",
+    "correlationId": "corr-taxonomy-parse-failure-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:05.000Z",
+    "eventCount": 5,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "taxonomy_trigger",
+        "step": "l1.taxonomy",
+        "message": "Vietnamese L1 taxonomy parse failed.",
+        "severity": "error"
+      },
+      {
+        "sequence": 5,
+        "occurredAt": "2026-05-20T18:00:05.000Z",
+        "type": "orchestration_transition",
+        "step": "session.safe-result",
+        "message": "Session ended with safe degraded or normal result.",
+        "severity": "info"
+      }
+    ]
+  }
+}

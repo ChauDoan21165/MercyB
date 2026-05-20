@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-05-20T14:33:26.602Z",
+  "branch": "feat/a2-placement-v3-observability",
+  "simulated": true,
+  "live_provider_validated": false,
+  "supabase_persistence_validated": false,
+  "placement_v3_enabled": false,
+  "production_safe": false,
+  "live_validation_complete": false,
+  "commands_run": [
+    "npm run placement:a2:validate",
+    "npm run placement:a2:evidence",
+    "npm run placement:a2:retention -- reports/placement-v3/a2-observability/latest",
+    "npm run placement:a2:rollback -- reports/placement-v3/a2-observability/latest"
+  ],
+  "verification_passed": true
+}

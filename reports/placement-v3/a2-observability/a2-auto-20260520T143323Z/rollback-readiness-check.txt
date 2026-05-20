@@ -1,0 +1,4 @@
+rollback_readiness=passed_for_manual_drill_preconditions
+simulated=true
+placement_v3_enabled=false
+artifact=reports/placement-v3/a2-observability/a2-auto-20260520T143323Z/rollback-readiness-check.json

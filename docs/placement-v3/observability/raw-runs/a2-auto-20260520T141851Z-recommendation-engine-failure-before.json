@@ -1,0 +1,145 @@
+{
+  "isoTimestamp": "2026-05-20T14:18:52.051Z",
+  "command": "tsx scripts/placement-v3/run-failure-injection.ts --run-id a2-auto-20260520T141851Z",
+  "scenario": "recommendation-engine-failure",
+  "runLabel": "before",
+  "runId": "a2-auto-20260520T141851Z",
+  "providerValidation": "simulated-local; Placement V3 Edge Functions absent on origin/main",
+  "events": [
+    {
+      "id": "recommendation-engine-failure-before-1",
+      "sessionId": "session-recommendation-engine-failure",
+      "correlationId": "corr-recommendation-engine-failure-before",
+      "occurredAt": "2026-05-20T18:00:01.000Z",
+      "sequence": 1,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "recommendation-engine-failure"
+        }
+      },
+      "type": "session_event",
+      "step": "session.start",
+      "message": "Placement session started.",
+      "sessionState": "in_progress"
+    },
+    {
+      "id": "recommendation-engine-failure-before-2",
+      "sessionId": "session-recommendation-engine-failure",
+      "correlationId": "corr-recommendation-engine-failure-before",
+      "occurredAt": "2026-05-20T18:00:02.000Z",
+      "sequence": 2,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "recommendation-engine-failure"
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.snapshot",
+      "message": "Feature flags captured."
+    },
+    {
+      "id": "recommendation-engine-failure-before-3",
+      "sessionId": "session-recommendation-engine-failure",
+      "correlationId": "corr-recommendation-engine-failure-before",
+      "occurredAt": "2026-05-20T18:00:03.000Z",
+      "sequence": 3,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "recommendation-engine-failure"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.next",
+      "message": "Moved from start to grading.",
+      "fromState": "started",
+      "toState": "grading",
+      "action": "respond"
+    },
+    {
+      "id": "recommendation-engine-failure-before-4",
+      "sessionId": "session-recommendation-engine-failure",
+      "correlationId": "corr-recommendation-engine-failure-before",
+      "occurredAt": "2026-05-20T18:00:04.000Z",
+      "sequence": 4,
+      "severity": "error",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "recommendation-engine-failure"
+        }
+      },
+      "type": "recommendation_event",
+      "step": "recommendations",
+      "message": "Recommendation engine failed.",
+      "status": "failed",
+      "recommendationCount": 0,
+      "reason": "lesson lookup error"
+    }
+  ],
+  "reconstruction": {
+    "sessionId": "session-recommendation-engine-failure",
+    "correlationId": "corr-recommendation-engine-failure-before",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:04.000Z",
+    "eventCount": 4,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [
+      "no terminal transition after orchestrator.next at sequence 3"
+    ],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "recommendation_event",
+        "step": "recommendations",
+        "message": "Recommendation engine failed.",
+        "severity": "error"
+      }
+    ]
+  }
+}

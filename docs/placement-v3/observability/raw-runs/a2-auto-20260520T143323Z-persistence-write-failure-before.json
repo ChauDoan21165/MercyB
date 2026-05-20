@@ -1,0 +1,151 @@
+{
+  "isoTimestamp": "2026-05-20T14:33:23.775Z",
+  "command": "tsx scripts/placement-v3/run-failure-injection.ts --run-id a2-auto-20260520T143323Z",
+  "scenario": "persistence-write-failure",
+  "runLabel": "before",
+  "runId": "a2-auto-20260520T143323Z",
+  "providerValidation": "simulated-local; Placement V3 Edge Functions absent on origin/main",
+  "events": [
+    {
+      "id": "persistence-write-failure-before-1",
+      "sessionId": "session-persistence-write-failure",
+      "correlationId": "corr-persistence-write-failure-before",
+      "occurredAt": "2026-05-20T18:00:01.000Z",
+      "sequence": 1,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "persistence-write-failure"
+        }
+      },
+      "type": "session_event",
+      "step": "session.start",
+      "message": "Placement session started.",
+      "sessionState": "in_progress"
+    },
+    {
+      "id": "persistence-write-failure-before-2",
+      "sessionId": "session-persistence-write-failure",
+      "correlationId": "corr-persistence-write-failure-before",
+      "occurredAt": "2026-05-20T18:00:02.000Z",
+      "sequence": 2,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "persistence-write-failure"
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.snapshot",
+      "message": "Feature flags captured."
+    },
+    {
+      "id": "persistence-write-failure-before-3",
+      "sessionId": "session-persistence-write-failure",
+      "correlationId": "corr-persistence-write-failure-before",
+      "occurredAt": "2026-05-20T18:00:03.000Z",
+      "sequence": 3,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "persistence-write-failure"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.next",
+      "message": "Moved from start to grading.",
+      "fromState": "started",
+      "toState": "grading",
+      "action": "respond"
+    },
+    {
+      "id": "persistence-write-failure-before-4",
+      "sessionId": "session-persistence-write-failure",
+      "correlationId": "corr-persistence-write-failure-before",
+      "occurredAt": "2026-05-20T18:00:04.000Z",
+      "sequence": 4,
+      "severity": "fatal",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": false,
+          "scenario": "persistence-write-failure"
+        }
+      },
+      "type": "recoverability_state",
+      "step": "persistence.write",
+      "message": "Response write failed.",
+      "state": "unknown",
+      "reason": "write failed before advancing session",
+      "failureSnapshot": {
+        "errorCode": "persistence_write_failed",
+        "errorMessage": "insert returned error",
+        "deterministic": "unknown",
+        "recoverable": "unrecoverable",
+        "safeUserOutcome": "blocked"
+      }
+    }
+  ],
+  "reconstruction": {
+    "sessionId": "session-persistence-write-failure",
+    "correlationId": "corr-persistence-write-failure-before",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:04.000Z",
+    "eventCount": 4,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [
+      "no terminal transition after orchestrator.next at sequence 3"
+    ],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "recoverability_state",
+        "step": "persistence.write",
+        "message": "Response write failed.",
+        "severity": "fatal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "isoTimestamp": "2026-05-20T14:33:23.772Z",
+  "scenario": "provider-timeout",
+  "runLabel": "before",
+  "reconstruction": {
+    "sessionId": "session-provider-timeout",
+    "correlationId": "corr-provider-timeout-before",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:05.000Z",
+    "eventCount": 5,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [
+      "no terminal transition after orchestrator.next at sequence 3"
+    ],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "provider_event",
+        "step": "grader.provider",
+        "message": "OpenAI timed out.",
+        "severity": "warn"
+      },
+      {
+        "sequence": 5,
+        "occurredAt": "2026-05-20T18:00:05.000Z",
+        "type": "latency_event",
+        "step": "grader.provider",
+        "message": "Provider exceeded latency budget.",
+        "severity": "warn"
+      }
+    ]
+  }
+}
