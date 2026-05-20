@@ -1,0 +1,545 @@
+{
+  "simulated": true,
+  "generatedAt": "2026-05-20T13:19:03.583Z",
+  "runId": "simulated-03-2026-05-20T13-19-03-569Z",
+  "deltas": [
+    {
+      "sampleId": "sp-a1-final-s-01",
+      "modality": "speaking",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "inflectional-s-ed-inaudible",
+        "missing-subject-verb-agreement"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-a1-copula-02",
+      "modality": "speaking",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "copula-be-omission"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-a2-past-03",
+      "modality": "speaking",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": null,
+      "deltaBands": null,
+      "provider": "none",
+      "taxonomyTags": [
+        "past-tense-unmarked",
+        "final-consonant-cluster-reduction"
+      ],
+      "status": "malformed"
+    },
+    {
+      "sampleId": "sp-a2-question-04",
+      "modality": "speaking",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "question-word-order-transfer"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-b1-articles-05",
+      "modality": "speaking",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "A2",
+      "deltaBands": -1,
+      "provider": "none",
+      "taxonomyTags": [
+        "missing-articles",
+        "plural-s-omission"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-b1-literal-06",
+      "modality": "speaking",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "B1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "literal-translation",
+        "vietnamese-calque"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-b2-borderline-07",
+      "modality": "speaking",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": "B2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "missing-articles",
+        "tense-aspect-confusion"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-b2-intonation-08",
+      "modality": "speaking",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": "B2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "flat-english-intonation"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-c1-pragmatic-09",
+      "modality": "speaking",
+      "expectedCefr": "C1",
+      "baselineCefr": "C1",
+      "currentCefr": "C1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "pragmatic-transfer",
+        "requests"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-c2-weird-10",
+      "modality": "speaking",
+      "expectedCefr": "C2",
+      "baselineCefr": "C2",
+      "currentCefr": "C2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "adversarial",
+        "register-control"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-a1-literal-11",
+      "modality": "reading",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "detail-extraction"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-a1-wrong-12",
+      "modality": "reading",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "distractor-resistance"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-a2-mcq-13",
+      "modality": "reading",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "main-idea-grasp"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-a2-article-14",
+      "modality": "reading",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "missing-articles"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-b1-inference-15",
+      "modality": "reading",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "B2",
+      "deltaBands": 1,
+      "provider": "none",
+      "taxonomyTags": [
+        "inference-ability"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-b1-borderline-16",
+      "modality": "reading",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "B2",
+      "deltaBands": 1,
+      "provider": "none",
+      "taxonomyTags": [
+        "borderline",
+        "detail-extraction"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-b2-nuance-17",
+      "modality": "reading",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": null,
+      "deltaBands": null,
+      "provider": "none",
+      "taxonomyTags": [
+        "vocab-in-context"
+      ],
+      "status": "malformed"
+    },
+    {
+      "sampleId": "rd-b2-mcq-18",
+      "modality": "reading",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": "C1",
+      "deltaBands": 1,
+      "provider": "none",
+      "taxonomyTags": [
+        "distractor-resistance"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-c1-hedging-19",
+      "modality": "reading",
+      "expectedCefr": "C1",
+      "baselineCefr": "C1",
+      "currentCefr": "C1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "hedging",
+        "inference-ability"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-c2-adversarial-20",
+      "modality": "reading",
+      "expectedCefr": "C2",
+      "baselineCefr": "C2",
+      "currentCefr": "C1",
+      "deltaBands": -1,
+      "provider": "none",
+      "taxonomyTags": [
+        "adversarial",
+        "irony"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-a1-detail-21",
+      "modality": "listening",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "detail-recall"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-a1-wrong-22",
+      "modality": "listening",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "detail-recall",
+        "borderline"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-a2-gist-23",
+      "modality": "listening",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "gist-identification"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-a2-mcq-24",
+      "modality": "listening",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "distractor-resistance"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-b1-inference-25",
+      "modality": "listening",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "B1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "inference"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-b1-final-s-26",
+      "modality": "listening",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "B1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "plural-s-omission"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-b2-detail-27",
+      "modality": "listening",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": null,
+      "deltaBands": null,
+      "provider": "none",
+      "taxonomyTags": [
+        "detail-recall"
+      ],
+      "status": "malformed"
+    },
+    {
+      "sampleId": "ls-b2-nuance-28",
+      "modality": "listening",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": "C1",
+      "deltaBands": 1,
+      "provider": "none",
+      "taxonomyTags": [
+        "inference",
+        "borderline"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-c1-implicit-29",
+      "modality": "listening",
+      "expectedCefr": "C1",
+      "baselineCefr": "C1",
+      "currentCefr": "C1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "implicit-meaning"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-c2-irony-30",
+      "modality": "listening",
+      "expectedCefr": "C2",
+      "baselineCefr": "C2",
+      "currentCefr": "C2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "irony",
+        "adversarial"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-c1-relative-31",
+      "modality": "speaking",
+      "expectedCefr": "C1",
+      "baselineCefr": "C1",
+      "currentCefr": "C2",
+      "deltaBands": 1,
+      "provider": "none",
+      "taxonomyTags": [
+        "relative-clause-transfer"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-a2-there-is-32",
+      "modality": "reading",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "there-is-co-transfer"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-b1-negation-33",
+      "modality": "listening",
+      "expectedCefr": "B1",
+      "baselineCefr": "B1",
+      "currentCefr": "B1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "negation-no-not-placement"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-b2-topic-34",
+      "modality": "speaking",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": "B2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "topic-comment-fronting"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-c1-register-35",
+      "modality": "reading",
+      "expectedCefr": "C1",
+      "baselineCefr": "C1",
+      "currentCefr": "C1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "register-control"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-a2-adversarial-emptyish-36",
+      "modality": "listening",
+      "expectedCefr": "A2",
+      "baselineCefr": "A2",
+      "currentCefr": "A2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "adversarial",
+        "malformed-risk"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-a1-code-switch-37",
+      "modality": "speaking",
+      "expectedCefr": "A1",
+      "baselineCefr": "A1",
+      "currentCefr": "A1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "code-switch",
+        "missing-articles"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "rd-b2-overanswer-38",
+      "modality": "reading",
+      "expectedCefr": "B2",
+      "baselineCefr": "B2",
+      "currentCefr": "B2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "adversarial",
+        "overlong-answer"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "ls-c1-borderline-39",
+      "modality": "listening",
+      "expectedCefr": "C1",
+      "baselineCefr": "C1",
+      "currentCefr": "C1",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "borderline",
+        "hedging"
+      ],
+      "status": "success"
+    },
+    {
+      "sampleId": "sp-c2-borderline-40",
+      "modality": "speaking",
+      "expectedCefr": "C2",
+      "baselineCefr": "C2",
+      "currentCefr": "C2",
+      "deltaBands": 0,
+      "provider": "none",
+      "taxonomyTags": [
+        "borderline",
+        "idiomatic-command"
+      ],
+      "status": "success"
+    }
+  ]
+}

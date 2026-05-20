@@ -1,0 +1,435 @@
+{
+  "simulated": true,
+  "generatedAt": "2026-05-20T13:19:00.426Z",
+  "report": {
+    "generatedAt": "2026-05-20T13:19:00.427Z",
+    "replay": {
+      "baselineScores": 40,
+      "currentScores": 40,
+      "successRate": 0.925,
+      "malformedRate": 0.075,
+      "p95LatencyMs": 1490
+    },
+    "scoreDelta": {
+      "meanAbsoluteDelta": 0.1892,
+      "catastrophicCount": 0,
+      "topUnstableSamples": [
+        {
+          "sampleId": "sp-b1-articles-05",
+          "modality": "speaking",
+          "expectedCefr": "B1",
+          "baselineCefr": "B1",
+          "currentCefr": "A2",
+          "deltaBands": -1,
+          "provider": "none",
+          "taxonomyTags": [
+            "missing-articles",
+            "plural-s-omission"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "rd-b1-inference-15",
+          "modality": "reading",
+          "expectedCefr": "B1",
+          "baselineCefr": "B1",
+          "currentCefr": "B2",
+          "deltaBands": 1,
+          "provider": "none",
+          "taxonomyTags": [
+            "inference-ability"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "rd-b1-borderline-16",
+          "modality": "reading",
+          "expectedCefr": "B1",
+          "baselineCefr": "B1",
+          "currentCefr": "B2",
+          "deltaBands": 1,
+          "provider": "none",
+          "taxonomyTags": [
+            "borderline",
+            "detail-extraction"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "rd-b2-mcq-18",
+          "modality": "reading",
+          "expectedCefr": "B2",
+          "baselineCefr": "B2",
+          "currentCefr": "C1",
+          "deltaBands": 1,
+          "provider": "none",
+          "taxonomyTags": [
+            "distractor-resistance"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "rd-c2-adversarial-20",
+          "modality": "reading",
+          "expectedCefr": "C2",
+          "baselineCefr": "C2",
+          "currentCefr": "C1",
+          "deltaBands": -1,
+          "provider": "none",
+          "taxonomyTags": [
+            "adversarial",
+            "irony"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "ls-b2-nuance-28",
+          "modality": "listening",
+          "expectedCefr": "B2",
+          "baselineCefr": "B2",
+          "currentCefr": "C1",
+          "deltaBands": 1,
+          "provider": "none",
+          "taxonomyTags": [
+            "inference",
+            "borderline"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "sp-c1-relative-31",
+          "modality": "speaking",
+          "expectedCefr": "C1",
+          "baselineCefr": "C1",
+          "currentCefr": "C2",
+          "deltaBands": 1,
+          "provider": "none",
+          "taxonomyTags": [
+            "relative-clause-transfer"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "sp-a1-final-s-01",
+          "modality": "speaking",
+          "expectedCefr": "A1",
+          "baselineCefr": "A1",
+          "currentCefr": "A1",
+          "deltaBands": 0,
+          "provider": "none",
+          "taxonomyTags": [
+            "inflectional-s-ed-inaudible",
+            "missing-subject-verb-agreement"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "sp-a1-copula-02",
+          "modality": "speaking",
+          "expectedCefr": "A1",
+          "baselineCefr": "A1",
+          "currentCefr": "A1",
+          "deltaBands": 0,
+          "provider": "none",
+          "taxonomyTags": [
+            "copula-be-omission"
+          ],
+          "status": "success"
+        },
+        {
+          "sampleId": "sp-a2-past-03",
+          "modality": "speaking",
+          "expectedCefr": "A2",
+          "baselineCefr": "A2",
+          "currentCefr": null,
+          "deltaBands": null,
+          "provider": "none",
+          "taxonomyTags": [
+            "past-tense-unmarked",
+            "final-consonant-cluster-reduction"
+          ],
+          "status": "malformed"
+        }
+      ]
+    },
+    "providerVariance": [
+      {
+        "provider": "none",
+        "sampleCount": 40,
+        "successRate": 0.925,
+        "malformedRate": 0.075,
+        "averageExpectedDelta": 0.1892,
+        "p95LatencyMs": 1490
+      }
+    ],
+    "taxonomyVariance": [
+      {
+        "taxonomyTag": "adversarial",
+        "sampleCount": 5,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.2,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "borderline",
+        "sampleCount": 5,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.4,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "code-switch",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "copula-be-omission",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "detail-extraction",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.5,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "detail-recall",
+        "sampleCount": 3,
+        "malformedRate": 0.3333,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "distractor-resistance",
+        "sampleCount": 3,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.3333,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "final-consonant-cluster-reduction",
+        "sampleCount": 1,
+        "malformedRate": 1,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "flat-english-intonation",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "gist-identification",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "hedging",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "idiomatic-command",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "implicit-meaning",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "inference",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.5,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "inference-ability",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.5,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "inflectional-s-ed-inaudible",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "irony",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.5,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "literal-translation",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "main-idea-grasp",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "malformed-risk",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "missing-articles",
+        "sampleCount": 4,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.25,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "missing-subject-verb-agreement",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "negation-no-not-placement",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "overlong-answer",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "past-tense-unmarked",
+        "sampleCount": 1,
+        "malformedRate": 1,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "plural-s-omission",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0.5,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "pragmatic-transfer",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "question-word-order-transfer",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "register-control",
+        "sampleCount": 2,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "relative-clause-transfer",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 1,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "requests",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "tense-aspect-confusion",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "there-is-co-transfer",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "topic-comment-fronting",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "vietnamese-calque",
+        "sampleCount": 1,
+        "malformedRate": 0,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      },
+      {
+        "taxonomyTag": "vocab-in-context",
+        "sampleCount": 1,
+        "malformedRate": 1,
+        "averageExpectedDelta": 0,
+        "unstableSampleIds": []
+      }
+    ],
+    "alerts": [
+      {
+        "scope": "parser",
+        "severity": "critical",
+        "metric": "malformed_rate",
+        "value": 0.075,
+        "threshold": 0.03,
+        "sampleIds": [
+          "sp-a2-past-03",
+          "rd-b2-nuance-17",
+          "ls-b2-detail-27"
+        ],
+        "message": "Malformed grader output rate 7.5% exceeds threshold."
+      }
+    ]
+  }
+}

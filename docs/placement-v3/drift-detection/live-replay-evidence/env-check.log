@@ -1,0 +1,33 @@
+[placement-drift] live replay env readiness
+{
+  "checkedAt": "2026-05-20T13:59:35.669Z",
+  "callsProviders": false,
+  "callsSupabase": false,
+  "readyForLiveDryRun": false,
+  "readyForLivePersistence": false,
+  "fixtureCount": 40,
+  "env": {
+    "supabaseUrl": false,
+    "anonKey": false,
+    "serviceRoleKey": false,
+    "jwt": false
+  },
+  "missing": [
+    "PLACEMENT_REPLAY_SUPABASE_URL or SUPABASE_URL",
+    "PLACEMENT_REPLAY_ANON_KEY or SUPABASE_ANON_KEY"
+  ],
+  "warnings": [
+    "PLACEMENT_REPLAY_SERVICE_ROLE_KEY/SUPABASE_SERVICE_ROLE_KEY missing: live replay can run, but --persist=true is not ready.",
+    "PLACEMENT_REPLAY_JWT missing: replay will rely on anon key or service-role bearer behavior.",
+    "local function folder not present: placement-v3-grade-reading; verify it is available in deployed Supabase before live replay.",
+    "local function folder not present: placement-v3-grade-listening; verify it is available in deployed Supabase before live replay.",
+    "local function folder not present: placement-v3-grade-speaking; verify it is available in deployed Supabase before live replay."
+  ],
+  "nextCommands": [
+    "npm run check:placement-replay-fixtures",
+    "npm run check:placement-replay-determinism -- --runs 5",
+    "npx tsx scripts/placement-v3/run-grading-replay.ts --batch baseline-01 --outDir docs/placement-v3/drift-detection/raw-runs --resume=false",
+    "npx tsx scripts/placement-v3/run-grading-replay.ts --batch baseline-01 --outDir docs/placement-v3/drift-detection/raw-runs --persist=true --resume=false"
+  ]
+}
+[placement-drift] live replay env check failed: missing required prerequisites

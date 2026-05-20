@@ -1,0 +1,1376 @@
+{
+  "simulated": true,
+  "ok": true,
+  "generatedAt": "2026-05-20T13:19:03.583Z",
+  "runs": [
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "fixture_version": "simulation-v1",
+      "started_at": "2026-05-20T13:19:03.569Z",
+      "completed_at": "2026-05-20T13:19:03.583Z",
+      "status": "success",
+      "sample_count": 40,
+      "success_count": 37,
+      "malformed_count": 3,
+      "p95_latency_ms": 1490,
+      "provider_set": [
+        "none"
+      ],
+      "metadata": {
+        "simulated": true,
+        "source": "scripts/placement-v3/run-grading-replay.ts",
+        "mode": "deterministic-local-replay"
+      }
+    }
+  ],
+  "scores": [
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-a1-final-s-01",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-a1-final-s-01",
+      "modality": "speaking",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "inflectional-s-ed-inaudible",
+        "missing-subject-verb-agreement"
+      ],
+      "latency_ms": 1242,
+      "tokens_input": 290,
+      "tokens_output": 192,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.572Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-a1-copula-02",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-a1-copula-02",
+      "modality": "speaking",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "copula-be-omission"
+      ],
+      "latency_ms": 1173,
+      "tokens_input": 466,
+      "tokens_output": 103,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.574Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-a2-past-03",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-a2-past-03",
+      "modality": "speaking",
+      "expected_cefr": "A2",
+      "parsed_cefr": null,
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "past-tense-unmarked",
+        "final-consonant-cluster-reduction"
+      ],
+      "latency_ms": 1025,
+      "tokens_input": 306,
+      "tokens_output": 195,
+      "status": "malformed",
+      "malformed": true,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.574Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-a2-question-04",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-a2-question-04",
+      "modality": "speaking",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "question-word-order-transfer"
+      ],
+      "latency_ms": 1252,
+      "tokens_input": 279,
+      "tokens_output": 142,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.575Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-b1-articles-05",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-b1-articles-05",
+      "modality": "speaking",
+      "expected_cefr": "B1",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "missing-articles",
+        "plural-s-omission"
+      ],
+      "latency_ms": 1056,
+      "tokens_input": 366,
+      "tokens_output": 126,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.575Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-b1-literal-06",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-b1-literal-06",
+      "modality": "speaking",
+      "expected_cefr": "B1",
+      "parsed_cefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "literal-translation",
+        "vietnamese-calque"
+      ],
+      "latency_ms": 1483,
+      "tokens_input": 330,
+      "tokens_output": 233,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.575Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-b2-borderline-07",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-b2-borderline-07",
+      "modality": "speaking",
+      "expected_cefr": "B2",
+      "parsed_cefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "missing-articles",
+        "tense-aspect-confusion"
+      ],
+      "latency_ms": 1490,
+      "tokens_input": 434,
+      "tokens_output": 200,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.576Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-b2-intonation-08",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-b2-intonation-08",
+      "modality": "speaking",
+      "expected_cefr": "B2",
+      "parsed_cefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "flat-english-intonation"
+      ],
+      "latency_ms": 1044,
+      "tokens_input": 396,
+      "tokens_output": 254,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.576Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-c1-pragmatic-09",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-c1-pragmatic-09",
+      "modality": "speaking",
+      "expected_cefr": "C1",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "pragmatic-transfer",
+        "requests"
+      ],
+      "latency_ms": 1396,
+      "tokens_input": 377,
+      "tokens_output": 126,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.576Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-c2-weird-10",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-c2-weird-10",
+      "modality": "speaking",
+      "expected_cefr": "C2",
+      "parsed_cefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "adversarial",
+        "register-control"
+      ],
+      "latency_ms": 1074,
+      "tokens_input": 396,
+      "tokens_output": 104,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.576Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-a1-literal-11",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-a1-literal-11",
+      "modality": "reading",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "detail-extraction"
+      ],
+      "latency_ms": 1383,
+      "tokens_input": 321,
+      "tokens_output": 153,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.577Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-a1-wrong-12",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-a1-wrong-12",
+      "modality": "reading",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "distractor-resistance"
+      ],
+      "latency_ms": 1044,
+      "tokens_input": 311,
+      "tokens_output": 214,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.577Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-a2-mcq-13",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-a2-mcq-13",
+      "modality": "reading",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "main-idea-grasp"
+      ],
+      "latency_ms": 722,
+      "tokens_input": 406,
+      "tokens_output": 252,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.577Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-a2-article-14",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-a2-article-14",
+      "modality": "reading",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "missing-articles"
+      ],
+      "latency_ms": 296,
+      "tokens_input": 359,
+      "tokens_output": 206,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.577Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-b1-inference-15",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-b1-inference-15",
+      "modality": "reading",
+      "expected_cefr": "B1",
+      "parsed_cefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "inference-ability"
+      ],
+      "latency_ms": 1146,
+      "tokens_input": 442,
+      "tokens_output": 156,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.577Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-b1-borderline-16",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-b1-borderline-16",
+      "modality": "reading",
+      "expected_cefr": "B1",
+      "parsed_cefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "borderline",
+        "detail-extraction"
+      ],
+      "latency_ms": 194,
+      "tokens_input": 301,
+      "tokens_output": 184,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.577Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-b2-nuance-17",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-b2-nuance-17",
+      "modality": "reading",
+      "expected_cefr": "B2",
+      "parsed_cefr": null,
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "vocab-in-context"
+      ],
+      "latency_ms": 1038,
+      "tokens_input": 270,
+      "tokens_output": 228,
+      "status": "malformed",
+      "malformed": true,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-b2-mcq-18",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-b2-mcq-18",
+      "modality": "reading",
+      "expected_cefr": "B2",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "distractor-resistance"
+      ],
+      "latency_ms": 1062,
+      "tokens_input": 474,
+      "tokens_output": 172,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-c1-hedging-19",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-c1-hedging-19",
+      "modality": "reading",
+      "expected_cefr": "C1",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "hedging",
+        "inference-ability"
+      ],
+      "latency_ms": 1070,
+      "tokens_input": 374,
+      "tokens_output": 220,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-c2-adversarial-20",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-c2-adversarial-20",
+      "modality": "reading",
+      "expected_cefr": "C2",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "adversarial",
+        "irony"
+      ],
+      "latency_ms": 313,
+      "tokens_input": 277,
+      "tokens_output": 143,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-a1-detail-21",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-a1-detail-21",
+      "modality": "listening",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "detail-recall"
+      ],
+      "latency_ms": 601,
+      "tokens_input": 308,
+      "tokens_output": 211,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-a1-wrong-22",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-a1-wrong-22",
+      "modality": "listening",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "detail-recall",
+        "borderline"
+      ],
+      "latency_ms": 940,
+      "tokens_input": 300,
+      "tokens_output": 170,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-a2-gist-23",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-a2-gist-23",
+      "modality": "listening",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "gist-identification"
+      ],
+      "latency_ms": 364,
+      "tokens_input": 404,
+      "tokens_output": 194,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.578Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-a2-mcq-24",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-a2-mcq-24",
+      "modality": "listening",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "distractor-resistance"
+      ],
+      "latency_ms": 1575,
+      "tokens_input": 320,
+      "tokens_output": 145,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.579Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-b1-inference-25",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-b1-inference-25",
+      "modality": "listening",
+      "expected_cefr": "B1",
+      "parsed_cefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "inference"
+      ],
+      "latency_ms": 662,
+      "tokens_input": 262,
+      "tokens_output": 92,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.579Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-b1-final-s-26",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-b1-final-s-26",
+      "modality": "listening",
+      "expected_cefr": "B1",
+      "parsed_cefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "plural-s-omission"
+      ],
+      "latency_ms": 258,
+      "tokens_input": 413,
+      "tokens_output": 228,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.579Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-b2-detail-27",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-b2-detail-27",
+      "modality": "listening",
+      "expected_cefr": "B2",
+      "parsed_cefr": null,
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "detail-recall"
+      ],
+      "latency_ms": 637,
+      "tokens_input": 299,
+      "tokens_output": 107,
+      "status": "malformed",
+      "malformed": true,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.579Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-b2-nuance-28",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-b2-nuance-28",
+      "modality": "listening",
+      "expected_cefr": "B2",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "inference",
+        "borderline"
+      ],
+      "latency_ms": 257,
+      "tokens_input": 266,
+      "tokens_output": 247,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.579Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-c1-implicit-29",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-c1-implicit-29",
+      "modality": "listening",
+      "expected_cefr": "C1",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "implicit-meaning"
+      ],
+      "latency_ms": 1213,
+      "tokens_input": 463,
+      "tokens_output": 263,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.580Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-c2-irony-30",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-c2-irony-30",
+      "modality": "listening",
+      "expected_cefr": "C2",
+      "parsed_cefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "irony",
+        "adversarial"
+      ],
+      "latency_ms": 894,
+      "tokens_input": 269,
+      "tokens_output": 244,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.580Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-c1-relative-31",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-c1-relative-31",
+      "modality": "speaking",
+      "expected_cefr": "C1",
+      "parsed_cefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "relative-clause-transfer"
+      ],
+      "latency_ms": 747,
+      "tokens_input": 383,
+      "tokens_output": 157,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.580Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-a2-there-is-32",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-a2-there-is-32",
+      "modality": "reading",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "there-is-co-transfer"
+      ],
+      "latency_ms": 1521,
+      "tokens_input": 347,
+      "tokens_output": 151,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.580Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-b1-negation-33",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-b1-negation-33",
+      "modality": "listening",
+      "expected_cefr": "B1",
+      "parsed_cefr": "B1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "negation-no-not-placement"
+      ],
+      "latency_ms": 255,
+      "tokens_input": 420,
+      "tokens_output": 125,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.580Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-b2-topic-34",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-b2-topic-34",
+      "modality": "speaking",
+      "expected_cefr": "B2",
+      "parsed_cefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "topic-comment-fronting"
+      ],
+      "latency_ms": 489,
+      "tokens_input": 390,
+      "tokens_output": 219,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.581Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-c1-register-35",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-c1-register-35",
+      "modality": "reading",
+      "expected_cefr": "C1",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "register-control"
+      ],
+      "latency_ms": 1483,
+      "tokens_input": 297,
+      "tokens_output": 213,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.581Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-a2-adversarial-emptyish-36",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-a2-adversarial-emptyish-36",
+      "modality": "listening",
+      "expected_cefr": "A2",
+      "parsed_cefr": "A2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "adversarial",
+        "malformed-risk"
+      ],
+      "latency_ms": 869,
+      "tokens_input": 324,
+      "tokens_output": 159,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.582Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-a1-code-switch-37",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-a1-code-switch-37",
+      "modality": "speaking",
+      "expected_cefr": "A1",
+      "parsed_cefr": "A1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "code-switch",
+        "missing-articles"
+      ],
+      "latency_ms": 1143,
+      "tokens_input": 459,
+      "tokens_output": 173,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.582Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:rd-b2-overanswer-38",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "rd-b2-overanswer-38",
+      "modality": "reading",
+      "expected_cefr": "B2",
+      "parsed_cefr": "B2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "adversarial",
+        "overlong-answer"
+      ],
+      "latency_ms": 1023,
+      "tokens_input": 271,
+      "tokens_output": 153,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.582Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:ls-c1-borderline-39",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "ls-c1-borderline-39",
+      "modality": "listening",
+      "expected_cefr": "C1",
+      "parsed_cefr": "C1",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "borderline",
+        "hedging"
+      ],
+      "latency_ms": 1385,
+      "tokens_input": 303,
+      "tokens_output": 155,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.582Z"
+    },
+    {
+      "id": "simulated-03-2026-05-20T13-19-03-569Z:sp-c2-borderline-40",
+      "run_id": "simulated-03-2026-05-20T13-19-03-569Z",
+      "batch_id": "simulated-03",
+      "sample_id": "sp-c2-borderline-40",
+      "modality": "speaking",
+      "expected_cefr": "C2",
+      "parsed_cefr": "C2",
+      "provider": "none",
+      "model": "local-drift-simulator-v1",
+      "retry_path": [
+        "none"
+      ],
+      "taxonomy_tags": [
+        "borderline",
+        "idiomatic-command"
+      ],
+      "latency_ms": 1142,
+      "tokens_input": 420,
+      "tokens_output": 192,
+      "status": "success",
+      "malformed": false,
+      "raw_request": {},
+      "raw_response": {
+        "simulated": true
+      },
+      "created_at": "2026-05-20T13:19:03.583Z"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "severity": "critical",
+      "scope": "parser",
+      "metric": "malformed_rate",
+      "value": 0.075,
+      "threshold": 0.03,
+      "sample_ids": [
+        "sp-a2-past-03",
+        "rd-b2-nuance-17",
+        "ls-b2-detail-27"
+      ],
+      "message": "Malformed grader output rate 7.5% exceeds threshold.",
+      "created_at": "2026-05-20T13:19:03.583Z"
+    }
+  ],
+  "providerVariance": [
+    {
+      "provider": "none",
+      "sample_count": 40,
+      "success_rate": 0.925,
+      "malformed_rate": 0.075,
+      "average_expected_delta": 0.1892,
+      "p95_latency_ms": 1490
+    }
+  ],
+  "summary": {
+    "scoreCount": 40,
+    "replaySuccessRate": 0.925,
+    "malformedRate": 0.075,
+    "p95GradingLatencyMs": 1490,
+    "criticalAlertCount": 1,
+    "byModality": {
+      "speaking": {
+        "count": 14,
+        "successRate": 0.9286,
+        "malformedRate": 0.0714,
+        "p95LatencyMs": 1490
+      },
+      "reading": {
+        "count": 13,
+        "successRate": 0.9231,
+        "malformedRate": 0.0769,
+        "p95LatencyMs": 1521
+      },
+      "listening": {
+        "count": 13,
+        "successRate": 0.9231,
+        "malformedRate": 0.0769,
+        "p95LatencyMs": 1575
+      }
+    },
+    "byCefr": {
+      "A1": {
+        "count": 7,
+        "successRate": 1,
+        "malformedRate": 0,
+        "p95LatencyMs": 1383
+      },
+      "A2": {
+        "count": 8,
+        "successRate": 0.875,
+        "malformedRate": 0.125,
+        "p95LatencyMs": 1575
+      },
+      "B1": {
+        "count": 7,
+        "successRate": 1,
+        "malformedRate": 0,
+        "p95LatencyMs": 1483
+      },
+      "B2": {
+        "count": 8,
+        "successRate": 0.75,
+        "malformedRate": 0.25,
+        "p95LatencyMs": 1490
+      },
+      "C1": {
+        "count": 6,
+        "successRate": 1,
+        "malformedRate": 0,
+        "p95LatencyMs": 1483
+      },
+      "C2": {
+        "count": 4,
+        "successRate": 1,
+        "malformedRate": 0,
+        "p95LatencyMs": 1142
+      }
+    },
+    "byProvider": {
+      "none": {
+        "count": 40,
+        "successRate": 0.925,
+        "malformedRate": 0.075,
+        "p95LatencyMs": 1490
+      }
+    },
+    "retryVariance": {
+      "none": 40
+    },
+    "taxonomy": {
+      "inflectional-s-ed-inaudible": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "missing-subject-verb-agreement": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "copula-be-omission": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "past-tense-unmarked": {
+        "count": 1,
+        "malformedRate": 1
+      },
+      "final-consonant-cluster-reduction": {
+        "count": 1,
+        "malformedRate": 1
+      },
+      "question-word-order-transfer": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "missing-articles": {
+        "count": 4,
+        "malformedRate": 0
+      },
+      "plural-s-omission": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "literal-translation": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "vietnamese-calque": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "tense-aspect-confusion": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "flat-english-intonation": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "pragmatic-transfer": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "requests": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "adversarial": {
+        "count": 5,
+        "malformedRate": 0
+      },
+      "register-control": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "detail-extraction": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "distractor-resistance": {
+        "count": 3,
+        "malformedRate": 0
+      },
+      "main-idea-grasp": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "inference-ability": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "borderline": {
+        "count": 5,
+        "malformedRate": 0
+      },
+      "vocab-in-context": {
+        "count": 1,
+        "malformedRate": 1
+      },
+      "hedging": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "irony": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "detail-recall": {
+        "count": 3,
+        "malformedRate": 0.3333
+      },
+      "gist-identification": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "inference": {
+        "count": 2,
+        "malformedRate": 0
+      },
+      "implicit-meaning": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "relative-clause-transfer": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "there-is-co-transfer": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "negation-no-not-placement": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "topic-comment-fronting": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "malformed-risk": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "code-switch": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "overlong-answer": {
+        "count": 1,
+        "malformedRate": 0
+      },
+      "idiomatic-command": {
+        "count": 1,
+        "malformedRate": 0
+      }
+    }
+  }
+}

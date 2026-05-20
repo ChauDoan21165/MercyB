@@ -1,0 +1,9 @@
+simulated=true
+runId=simulated-02-2026-05-20T13-19-01-938Z
+batchId=simulated-02
+startedAt=2026-05-20T13:19:01.939Z
+completedAt=2026-05-20T13:19:01.964Z
+samples=40
+success=37
+malformed=3
+p95LatencyMs=1490
