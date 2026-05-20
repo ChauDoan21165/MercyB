@@ -1,3 +1,5 @@
+> **See also:** the scoping decision has shipped via #512 (deferred fields) → #555 (Group A 46–50 VI siblings) → #567 (Group B 51–91 roleplay `pronunciation_focus _vi+_en`). The "awaiting scope decision" status here is closed.
+
 # RECON — JA B2 VI sibling content (ja-b2-content)
 
 Branch: `ja-b2-content` off `origin/main` @ f66eefc5 (#551). Worktree: `/private/tmp/MercyB-ja-b2-content`.

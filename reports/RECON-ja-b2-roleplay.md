@@ -1,3 +1,5 @@
+> **SUPERSEDED by PR #567** (`feat(japanese): pronunciation_focus _vi+_en for JA B2 roleplay lessons 51–91 (#555 follow-up)`). Phase 2 authoring shipped; the "awaiting approval" status is closed. Keep for audit trail of the recon-stage scoping.
+
 # RECON — JA B2 roleplay pronunciation_focus (lessons 51–91)
 
 **Agent:** ja-b2-roleplay-agent
