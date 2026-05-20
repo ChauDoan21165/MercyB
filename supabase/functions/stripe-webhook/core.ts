@@ -2,6 +2,9 @@
 
 import { deriveEntitlement as sharedDeriveEntitlement } from "../_shared/entitlement.ts";
 import { sendEmail } from "../_shared/sendEmail.ts";
+// A13-circle-1: `env`/`envRaw` moved here from this file to break the
+// core.ts ↔ stripe-signature.ts cycle. See stripe-env.ts header.
+import { env, envRaw } from "./stripe-env.ts";
 import { parseWebhookSecrets } from "./stripe-signature.ts";
 import type {
   BillingEnvironment,
@@ -76,14 +79,11 @@ export function json(payload: unknown, status = 200) {
 /* ============================================================================
  * Environment / primitive helpers
  * ========================================================================== */
-
-export function env(key: string): string {
-  return (Deno.env.get(key) ?? "").trim();
-}
-
-export function envRaw(key: string): string {
-  return Deno.env.get(key) ?? "";
-}
+// A13-circle-1: `env` / `envRaw` definitions live in `./stripe-env.ts`
+// (imported at the top of this file). Re-exported here so any external
+// caller reading `env`/`envRaw` from `./core.ts` continues to work
+// unchanged after this PR.
+export { env, envRaw };
 
 export function getSupabaseUrl(): string {
   const configured = env("PROJECT_SUPABASE_URL") ||
