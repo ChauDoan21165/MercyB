@@ -65,3 +65,14 @@ export const adminPublishRoomRequestSchema = z.object({
   room_id: z.string().trim().min(1).max(200),
 }).passthrough();
 export type AdminPublishRoomRequest = z.infer<typeof adminPublishRoomRequestSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * admin-hide-room — flip a room's is_demo flag to true (hide from
+ * non-admin users). Mirror of admin-publish-room; same input shape,
+ * same id-format flexibility.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const adminHideRoomRequestSchema = z.object({
+  room_id: z.string().trim().min(1).max(200),
+}).passthrough();
+export type AdminHideRoomRequest = z.infer<typeof adminHideRoomRequestSchema>;
