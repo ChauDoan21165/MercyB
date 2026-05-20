@@ -91,6 +91,22 @@ jobs:
         if: always()
         run: npm run placement:b1:contention
 
+      - name: Anomaly detection
+        if: always()
+        run: npm run placement:b1:anomalies
+
+      - name: CI degradation forecast
+        if: always()
+        run: npm run placement:b1:forecast
+
+      - name: Failure-pattern memory
+        if: always()
+        run: npm run placement:b1:failure-history
+
+      - name: Escalation recalculation
+        if: always()
+        run: npm run placement:b1:health
+
       - name: Retention dry-run
         if: always()
         run: npm run placement:b1:retention -- --dry-run

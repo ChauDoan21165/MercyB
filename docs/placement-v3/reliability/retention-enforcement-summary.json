@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-05-20T15:10:21.913Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "preserveAnomalyEvidence": true,
+  "preserveTimeoutIncidents": true,
+  "preserveFlakyPatternSignatures": true,
+  "preserveDegradedTrendEvidence": true,
+  "preserveCiDegradationEvidence": true,
+  "protectedPatterns": [
+    "anomaly evidence",
+    "timeout near-miss logs",
+    "flaky-pattern signatures",
+    "degraded trend evidence",
+    "CI degradation forecast evidence",
+    "detector false-positive classifications"
+  ],
+  "currentAnomalyClassification": "ANOMALY",
+  "currentForecastClassification": "HIGH",
+  "rotationMode": "dry-run-first",
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

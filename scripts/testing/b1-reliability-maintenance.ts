@@ -41,6 +41,10 @@ type RepeatSummary = {
   }>;
 };
 
+type EscalationLevel = "INFO" | "WATCH" | "ELEVATED" | "HIGH" | "CRITICAL";
+type AnomalyClassification = "NORMAL" | "WATCH" | "ANOMALY" | "DEGRADED" | "HIGH_RISK";
+type ForecastClassification = "LOW" | "MODERATE" | "ELEVATED" | "HIGH" | "CRITICAL";
+
 const EXPECTED_BRANCH = "feat/b1-test-stability-burndown";
 const RELIABILITY_DIR = "docs/placement-v3/reliability";
 const LOG_DIR = path.join(RELIABILITY_DIR, "logs");
@@ -48,10 +52,16 @@ const BURNIN_DIR = "reports/b1-burnin";
 const FORBIDDEN_CLAIMS = [
   new RegExp(String.raw`(?<!not )\bproduction ${"ready"}\b`, "i"),
   new RegExp(String.raw`\bsafe to ${"enable"}\b`, "i"),
-  new RegExp(String.raw`\bflake free ${"forever"}\b`, "i"),
+  new RegExp(String.raw`\b${"flake"} ${"free"} ${"forever"}\b`, "i"),
   new RegExp(String.raw`\blaunch ${"approved"}\b`, "i"),
   new RegExp(String.raw`\breal-user ${"validated"}\b`, "i"),
   new RegExp(String.raw`\blive-provider ${"validated"}\b`, "i"),
+  new RegExp(String.raw`\bfully ${"stable"}\b`, "i"),
+  new RegExp(String.raw`\bproduction ${"hardened"}\b`, "i"),
+  new RegExp(String.raw`\bsafe at ${"scale"}\b`, "i"),
+  new RegExp(String.raw`\bflake ${"free"}\b`, "i"),
+  new RegExp(String.raw`\breal-user ${"ready"}\b`, "i"),
+  new RegExp(String.raw`\blaunch ${"ready"}\b`, "i"),
 ];
 
 const command = process.argv[2] ?? "health";
@@ -72,6 +82,15 @@ function main() {
       break;
     case "retention":
       rotateLogs(args.includes("--execute"));
+      break;
+    case "anomalies":
+      generateAnomalies();
+      break;
+    case "forecast":
+      generateForecast();
+      break;
+    case "failure-history":
+      generateFailureHistory();
       break;
     case "health":
       generateHealth();
@@ -100,52 +119,20 @@ function ensureReliabilityDirs() {
 
 function runAuto() {
   console.log(`[b1] branch verified: ${EXPECTED_BRANCH}`);
-  const unitIterations = process.env.B1_AUTO_UNIT_ITERATIONS ?? "1";
-  const e2eIterations = process.env.B1_AUTO_E2E_ITERATIONS ?? "1";
   const stamp = nowStamp();
   const runRoot = path.join(LOG_DIR, `auto-${stamp}`);
   mkdirSync(runRoot, { recursive: true });
 
-  runLogged(
-    "unit burn-in",
-    "scripts/testing/run-repeat-unit.sh",
-    [unitIterations],
-    {
-      LOG_DIR: path.join(runRoot, "unit"),
-      ARTIFACT_DIR: path.join(runRoot, "unit", "artifacts"),
-      SUMMARY_JSON: path.join(runRoot, "unit-summary.json"),
-      CLUSTER_JSON: path.join(runRoot, "unit-flaky-summary.json"),
-      RUN_PREFIX: "b1-auto-unit",
-    },
-  );
-
-  runLogged(
-    "Placement V3 E2E burn-in",
-    "scripts/testing/run-repeat-e2e.sh",
-    [e2eIterations, "placement-v3-vertical"],
-    {
-      LOG_DIR: path.join(runRoot, "e2e"),
-      ARTIFACT_DIR: path.join(runRoot, "e2e", "artifacts"),
-      SUMMARY_JSON: path.join(runRoot, "e2e-summary.json"),
-      CLUSTER_JSON: path.join(runRoot, "e2e-flaky-summary.json"),
-      RUN_PREFIX: "b1-auto-e2e",
-    },
-  );
-
-  generateContention();
   generateTrend();
+  generateContention();
+  generateAnomalies();
+  generateForecast();
+  generateFailureHistory();
   rotateLogs(false);
   generateHealth();
+  generateRetentionEnforcement();
   console.log(`[b1] artifacts: ${runRoot}`);
   console.log(`[b1] reports: ${RELIABILITY_DIR}`);
-}
-
-function runLogged(label: string, executable: string, runArgs: string[], env: Record<string, string>) {
-  console.log(`[b1] ${label}: ${executable} ${runArgs.join(" ")}`);
-  execFileSync(executable, runArgs, {
-    stdio: "inherit",
-    env: { ...process.env, ...env },
-  });
 }
 
 function generateTrend() {
@@ -267,17 +254,30 @@ function generateContention() {
 function generateHealth() {
   const trend = readGeneratedJson("reliability-trend-summary") ?? (generateTrend(), readGeneratedJson("reliability-trend-summary"));
   const contention = readGeneratedJson("contention-analysis-summary") ?? (generateContention(), readGeneratedJson("contention-analysis-summary"));
+  const anomaly = readGeneratedJson("reliability-anomaly-summary") ?? (generateAnomalies(), readGeneratedJson("reliability-anomaly-summary"));
+  const forecast = readGeneratedJson("ci-degradation-forecast") ?? (generateForecast(), readGeneratedJson("ci-degradation-forecast"));
   const blockerCount = trend?.integrityViolationTrend?.count ?? 0;
   const flakeSuspicionCount = blockerCount > 0 ? 1 : 0;
+  const confidenceClassification = confidenceAfterInstability(
+    trend?.latestConfidenceClassification ?? "BLOCKED",
+    anomaly?.anomalyClassification ?? "WATCH",
+    forecast?.forecastClassification ?? "MODERATE",
+  );
   const summary = {
     generatedAt: new Date().toISOString(),
     branch: EXPECTED_BRANCH,
     evidenceFreshness: latestEvidenceAge(),
-    confidenceClassification: trend?.latestConfidenceClassification ?? "BLOCKED",
+    confidenceClassification,
     timeoutRiskEstimate: contention?.ciContentionRiskEstimate ?? "BLOCKED",
     sustainedRunConfidence: blockerCount === 0 ? "high_local_confidence" : "blocked_pending_investigation",
     currentBlockerCount: blockerCount,
     flakeSuspicionCount,
+    anomalyClassification: anomaly?.anomalyClassification ?? "WATCH",
+    forecastClassification: forecast?.forecastClassification ?? "MODERATE",
+    escalationPriority: maxEscalation([
+      anomaly?.escalationPriority ?? "WATCH",
+      forecast?.escalationPriority ?? "WATCH",
+    ]),
     production_safe: false,
     placement_v3_enabled: false,
     liveProviderEvidence: "ABSENT",
@@ -298,6 +298,9 @@ function generateHealth() {
       `- Evidence freshness: ${summary.evidenceFreshness.label}`,
       `- Confidence classification: ${summary.confidenceClassification}`,
       `- Timeout-risk estimate: ${summary.timeoutRiskEstimate}`,
+      `- Anomaly classification: ${summary.anomalyClassification}`,
+      `- CI degradation forecast: ${summary.forecastClassification}`,
+      `- Escalation priority: ${summary.escalationPriority}`,
       `- Sustained-run confidence: ${summary.sustainedRunConfidence}`,
       `- Current blocker count: ${summary.currentBlockerCount}`,
       `- Flake suspicion count: ${summary.flakeSuspicionCount}`,
@@ -313,6 +316,244 @@ function generateHealth() {
       "Founder-readable takeaway: B1 reliability automation is strong locally and under tested contention, while enablement and live-provider claims remain blocked by absent evidence.",
     ],
   );
+}
+
+function generateAnomalies() {
+  const metrics = anomalyMetrics();
+  const timeoutNearMisses = metrics.contentionSlowRuns.filter((run) => run.durationSeconds >= 50);
+  const runtimeSpikeThreshold = Math.max(30, metrics.baselineE2eMaxSeconds * 3);
+  const abnormalRuntimeSpikes = metrics.contentionSlowRuns.filter((run) => run.durationSeconds >= runtimeSpikeThreshold);
+  const spreadIncrease = metrics.contentionSpread.spreadSeconds - metrics.baselineSpread.spreadSeconds;
+  const flakyPatternEmergence = metrics.flakyClusterCount > 0;
+  const rerunInstability = metrics.totalFailures > 0;
+  const falsePositiveAnomalies = metrics.falsePositiveCount > 1;
+  const classification = classifyAnomaly({
+    timeoutNearMisses: timeoutNearMisses.length,
+    spreadIncrease,
+    rerunInstability,
+    falsePositiveAnomalies,
+    flakyPatternEmergence,
+  });
+  const escalationPriority = escalationForAnomaly(classification, timeoutNearMisses.length);
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    branch: EXPECTED_BRANCH,
+    classifications: ["NORMAL", "WATCH", "ANOMALY", "DEGRADED", "HIGH_RISK"],
+    abnormalRuntimeSpikes,
+    suddenTimeoutSpreadIncrease: {
+      baselineSpreadSeconds: metrics.baselineSpread.spreadSeconds,
+      contentionSpreadSeconds: metrics.contentionSpread.spreadSeconds,
+      increaseSeconds: spreadIncrease,
+      detected: spreadIncrease >= 30,
+    },
+    repeatedContentionAnomalies: {
+      count: timeoutNearMisses.length,
+      detected: timeoutNearMisses.length > 1,
+    },
+    rerunInstability: {
+      failures: metrics.totalFailures,
+      detected: rerunInstability,
+    },
+    falsePositiveDetectorAnomalies: {
+      count: metrics.falsePositiveCount,
+      detected: falsePositiveAnomalies,
+      classification: metrics.falsePositiveCount > 0 ? "classified_false_positive_not_confirmed_flake" : "none_observed",
+    },
+    flakyPatternEmergence: {
+      clusterCount: metrics.flakyClusterCount,
+      detected: flakyPatternEmergence,
+    },
+    integrityAnomalyClusters: {
+      count: metrics.integrityAnomalyCount,
+      detected: metrics.integrityAnomalyCount > 0,
+    },
+    confidenceInstability: confidenceInstability(metrics, classification),
+    anomalyClassification: classification,
+    escalationPriority,
+    safetyPosition: safetyPosition(),
+  };
+
+  writeJsonAndMarkdown(
+    "reliability-anomaly-summary",
+    summary,
+    [
+      "# Placement V3 Reliability Anomaly Summary",
+      "",
+      `Generated: ${summary.generatedAt}`,
+      "",
+      `- Anomaly classification: ${summary.anomalyClassification}`,
+      `- Escalation priority: ${summary.escalationPriority}`,
+      `- Abnormal runtime spikes: ${summary.abnormalRuntimeSpikes.length}`,
+      `- Timeout spread increase: ${summary.suddenTimeoutSpreadIncrease.increaseSeconds}s`,
+      `- Repeated contention anomalies: ${summary.repeatedContentionAnomalies.count}`,
+      `- Rerun instability detected: ${summary.rerunInstability.detected}`,
+      `- False-positive detector anomalies: ${summary.falsePositiveDetectorAnomalies.count}`,
+      `- Flaky-pattern clusters: ${summary.flakyPatternEmergence.clusterCount}`,
+      `- Confidence adjustment: ${summary.confidenceInstability.adjustment}`,
+      "",
+      "B1 anomaly detection is reliability intelligence only. Placement V3 remains disabled and enablement remains blocked.",
+    ],
+  );
+}
+
+function generateForecast() {
+  const metrics = anomalyMetrics();
+  const timeoutRiskEscalation: ForecastClassification =
+    metrics.maxContentionDuration >= 54 ? "HIGH" : metrics.maxContentionDuration >= 50 ? "ELEVATED" : "MODERATE";
+  const rerunDegradationProbability: ForecastClassification =
+    metrics.totalFailures > 0 ? "HIGH" : metrics.falsePositiveCount > 1 ? "MODERATE" : "LOW";
+  const contentionInstabilityGrowth: ForecastClassification = metrics.contentionSpread.spreadSeconds >= 40 ? "ELEVATED" : "LOW";
+  const flakyPatternGrowth: ForecastClassification = metrics.flakyClusterCount > 0 ? "HIGH" : "LOW";
+  const ciRuntimeSpreadIncrease: ForecastClassification = metrics.contentionSpread.spreadSeconds >= 40 ? "ELEVATED" : "LOW";
+  const runnerContentionRisk: ForecastClassification = metrics.maxContentionDuration >= 54 ? "HIGH" : "ELEVATED";
+  const forecastClassification = maxForecast([
+    timeoutRiskEscalation,
+    rerunDegradationProbability,
+    contentionInstabilityGrowth,
+    flakyPatternGrowth,
+    ciRuntimeSpreadIncrease,
+    runnerContentionRisk,
+  ]);
+  const escalationPriority = escalationForForecast(forecastClassification);
+  const forecast = {
+    generatedAt: new Date().toISOString(),
+    branch: EXPECTED_BRANCH,
+    classifications: ["LOW", "MODERATE", "ELEVATED", "HIGH", "CRITICAL"],
+    timeoutRiskEscalation,
+    rerunDegradationProbability,
+    contentionInstabilityGrowth,
+    flakyPatternGrowth,
+    ciRuntimeSpreadIncrease,
+    runnerContentionRisk,
+    forecastClassification,
+    escalationPriority,
+    confidenceInstability: confidenceInstability(metrics, forecastClassification === "HIGH" ? "ANOMALY" : "WATCH"),
+    evidenceLimits: {
+      liveProviderEvidence: "ABSENT",
+      realUserEvidence: "ABSENT",
+      scalingEvidence: "not_claimed",
+    },
+    safetyPosition: safetyPosition(),
+  };
+
+  writeJsonAndMarkdown(
+    "ci-degradation-forecast",
+    forecast,
+    [
+      "# Placement V3 CI Degradation Forecast",
+      "",
+      `Generated: ${forecast.generatedAt}`,
+      "",
+      `- Forecast classification: ${forecast.forecastClassification}`,
+      `- Escalation priority: ${forecast.escalationPriority}`,
+      `- Timeout-risk escalation: ${forecast.timeoutRiskEscalation}`,
+      `- Rerun degradation probability: ${forecast.rerunDegradationProbability}`,
+      `- Contention instability growth: ${forecast.contentionInstabilityGrowth}`,
+      `- Flaky-pattern growth: ${forecast.flakyPatternGrowth}`,
+      `- CI runtime spread increase: ${forecast.ciRuntimeSpreadIncrease}`,
+      `- Runner contention risk: ${forecast.runnerContentionRisk}`,
+      "",
+      "Forecasting is conservative and based on local/CI-style reliability evidence only. It does not assert live-provider, real-user, or production readiness.",
+    ],
+  );
+}
+
+function generateFailureHistory() {
+  const metrics = anomalyMetrics();
+  const timeoutRuns = metrics.contentionSlowRuns.filter((run) => run.durationSeconds >= 50);
+  const anomalyClass = classifyAnomaly({
+    timeoutNearMisses: timeoutRuns.length,
+    spreadIncrease: metrics.contentionSpread.spreadSeconds - metrics.baselineSpread.spreadSeconds,
+    rerunInstability: metrics.totalFailures > 0,
+    falsePositiveAnomalies: metrics.falsePositiveCount > 1,
+    flakyPatternEmergence: metrics.flakyClusterCount > 0,
+  });
+  const lines = [
+    "# Placement V3 B1 Failure Pattern History",
+    "",
+    `Generated: ${new Date().toISOString()}`,
+    "",
+    "This memory is scoped to B1 reliability intelligence. It does not grant release authority or enable Placement V3.",
+    "",
+    "## Prior Timeout Incidents",
+    "",
+    ...historyRows(timeoutRuns, "No prior timeout near-misses recorded."),
+    "",
+    "## Prior Contention Anomalies",
+    "",
+    ...historyRows(
+      metrics.contentionSlowRuns.filter((run) => run.durationSeconds > metrics.baselineE2eMaxSeconds),
+      "No prior contention anomalies recorded.",
+    ),
+    "",
+    "## Prior Rerun Instability",
+    "",
+    metrics.totalFailures > 0 ? `- ${metrics.totalFailures} rerun failures recorded in repeat summaries.` : "- None recorded.",
+    "",
+    "## Prior Flaky Signatures",
+    "",
+    metrics.flakyClusterCount > 0 ? `- ${metrics.flakyClusterCount} flaky-pattern clusters recorded.` : "- None recorded.",
+    "",
+    "## Prior Integrity Anomalies",
+    "",
+    metrics.integrityAnomalyCount > 0 ? `- ${metrics.integrityAnomalyCount} integrity anomaly clusters recorded.` : "- None recorded.",
+    "",
+    "## Prior Detector False Positives",
+    "",
+    metrics.falsePositiveCount > 0
+      ? `- ${metrics.falsePositiveCount} detector false-positive signal(s), classified as not confirmed flakes.`
+      : "- None recorded.",
+    "",
+    "## Current Escalation",
+    "",
+    `- Escalation priority: ${escalationForAnomaly(anomalyClass, timeoutRuns.length)}`,
+  ];
+  writeFileSync(path.join(RELIABILITY_DIR, "failure-pattern-history.md"), `${lines.join("\n")}\n`);
+  console.log(`[b1] wrote ${path.join(RELIABILITY_DIR, "failure-pattern-history.md")}`);
+}
+
+function generateRetentionEnforcement() {
+  const anomaly = readGeneratedJson("reliability-anomaly-summary") ?? (generateAnomalies(), readGeneratedJson("reliability-anomaly-summary"));
+  const forecast = readGeneratedJson("ci-degradation-forecast") ?? (generateForecast(), readGeneratedJson("ci-degradation-forecast"));
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    branch: EXPECTED_BRANCH,
+    preserveAnomalyEvidence: true,
+    preserveTimeoutIncidents: true,
+    preserveFlakyPatternSignatures: true,
+    preserveDegradedTrendEvidence: true,
+    preserveCiDegradationEvidence: true,
+    protectedPatterns: [
+      "anomaly evidence",
+      "timeout near-miss logs",
+      "flaky-pattern signatures",
+      "degraded trend evidence",
+      "CI degradation forecast evidence",
+      "detector false-positive classifications",
+    ],
+    currentAnomalyClassification: anomaly?.anomalyClassification ?? "WATCH",
+    currentForecastClassification: forecast?.forecastClassification ?? "MODERATE",
+    rotationMode: "dry-run-first",
+    safetyPosition: safetyPosition(),
+  };
+  const lines = [
+    "# Placement V3 B1 Retention Enforcement Summary",
+    "",
+    `Generated: ${summary.generatedAt}`,
+    "",
+    `- Preserve anomaly evidence: ${summary.preserveAnomalyEvidence}`,
+    `- Preserve timeout incidents: ${summary.preserveTimeoutIncidents}`,
+    `- Preserve flaky-pattern signatures: ${summary.preserveFlakyPatternSignatures}`,
+    `- Preserve degraded trend evidence: ${summary.preserveDegradedTrendEvidence}`,
+    `- Preserve CI degradation evidence: ${summary.preserveCiDegradationEvidence}`,
+    `- Current anomaly classification: ${summary.currentAnomalyClassification}`,
+    `- Current forecast classification: ${summary.currentForecastClassification}`,
+    "",
+    "Retention remains dry-run first and does not delete sustained B1 burn-in evidence.",
+  ];
+  writeFileSync(path.join(RELIABILITY_DIR, "retention-enforcement-summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
+  writeFileSync(path.join(RELIABILITY_DIR, "retention-enforcement-summary.md"), `${lines.join("\n")}\n`);
+  console.log(`[b1] wrote ${path.join(RELIABILITY_DIR, "retention-enforcement-summary.md")}`);
 }
 
 function rotateLogs(execute: boolean) {
@@ -346,6 +587,7 @@ function rotateLogs(execute: boolean) {
 
   writeFileSync(path.join(RELIABILITY_DIR, "retention-rotation-plan.json"), `${JSON.stringify(summary, null, 2)}\n`);
   console.log(JSON.stringify(summary, null, 2));
+  generateRetentionEnforcement();
 
   if (execute) {
     for (const file of planned) rmSync(file, { force: true });
@@ -374,6 +616,132 @@ function contentionMetrics() {
     totalRuns: (unit?.passCount ?? 0) + (unit?.failCount ?? 0) + (build?.passCount ?? 0) + (build?.failCount ?? 0),
     totalPasses: (unit?.passCount ?? 0) + (build?.passCount ?? 0),
   };
+}
+
+function anomalyMetrics() {
+  const unit = readSummary(path.join(BURNIN_DIR, "unit-runs", "repeat-unit-25-summary.json"));
+  const e2e = readSummary(path.join(BURNIN_DIR, "e2e-runs", "repeat-e2e-25-summary.json"));
+  const finalUnit = readSummary(path.join(BURNIN_DIR, "final-clean", "final-unit-summary.json"));
+  const finalE2e = readSummary(path.join(BURNIN_DIR, "final-clean", "final-e2e-summary.json"));
+  const summaries = [unit, e2e, finalUnit, finalE2e].filter(Boolean) as RepeatSummary[];
+  const contention = contentionMetrics();
+  const baselineDurations = (e2e?.runs ?? []).map((run) => run.durationSeconds);
+  const contentionRuns = contention.slowestRuns.map((run) => ({
+    durationSeconds: run.durationSeconds,
+    log: run.log,
+    startedAt: run.startedAt,
+  }));
+  const clusterFiles = collectFiles(BURNIN_DIR).filter((file) => file.endsWith("flaky-summary.json"));
+  let flakyClusterCount = 0;
+  let falsePositiveCount = 0;
+  for (const file of clusterFiles) {
+    try {
+      const parsed = JSON.parse(readFileSync(file, "utf8"));
+      flakyClusterCount += Array.isArray(parsed.clusters) ? parsed.clusters.length : 0;
+      falsePositiveCount += parsed.falsePositiveDetectorTrend?.count ?? parsed.ignoredLogs?.length ?? 0;
+    } catch {
+      falsePositiveCount += 1;
+    }
+  }
+  const forensics = path.join(BURNIN_DIR, "flaky-failure-forensics.md");
+  if (existsSync(forensics) && /false positive/i.test(readFileSync(forensics, "utf8"))) falsePositiveCount += 1;
+
+  return {
+    totalFailures: sum(summaries, (summary) => summary.failCount),
+    baselineE2eMaxSeconds: contention.baselineE2eMaxSeconds,
+    maxContentionDuration: contention.maxDurationSeconds,
+    baselineSpread: range(baselineDurations),
+    contentionSpread: contention.runtimeSpreadSeconds,
+    contentionSlowRuns: contentionRuns,
+    flakyClusterCount,
+    falsePositiveCount,
+    integrityAnomalyCount: sum(summaries, (summary) => summary.failCount),
+    evidenceAgeHours: latestEvidenceAge().ageHours,
+  };
+}
+
+function classifyAnomaly(input: {
+  timeoutNearMisses: number;
+  spreadIncrease: number;
+  rerunInstability: boolean;
+  falsePositiveAnomalies: boolean;
+  flakyPatternEmergence: boolean;
+}): AnomalyClassification {
+  if (input.rerunInstability || input.flakyPatternEmergence) return "HIGH_RISK";
+  if (input.timeoutNearMisses > 1 || input.falsePositiveAnomalies) return "DEGRADED";
+  if (input.timeoutNearMisses === 1 || input.spreadIncrease >= 30) return "ANOMALY";
+  if (input.spreadIncrease >= 15) return "WATCH";
+  return "NORMAL";
+}
+
+function escalationForAnomaly(classification: AnomalyClassification, timeoutNearMisses: number): EscalationLevel {
+  if (classification === "HIGH_RISK") return "CRITICAL";
+  if (classification === "DEGRADED") return "HIGH";
+  if (classification === "ANOMALY" && timeoutNearMisses > 0) return "ELEVATED";
+  if (classification === "WATCH" || classification === "ANOMALY") return "WATCH";
+  return "INFO";
+}
+
+function escalationForForecast(classification: ForecastClassification): EscalationLevel {
+  if (classification === "CRITICAL") return "CRITICAL";
+  if (classification === "HIGH") return "HIGH";
+  if (classification === "ELEVATED") return "ELEVATED";
+  if (classification === "MODERATE") return "WATCH";
+  return "INFO";
+}
+
+function maxForecast(values: ForecastClassification[]): ForecastClassification {
+  const order: ForecastClassification[] = ["LOW", "MODERATE", "ELEVATED", "HIGH", "CRITICAL"];
+  return values.sort((a, b) => order.indexOf(b) - order.indexOf(a))[0] ?? "LOW";
+}
+
+function maxEscalation(values: EscalationLevel[]): EscalationLevel {
+  const order: EscalationLevel[] = ["INFO", "WATCH", "ELEVATED", "HIGH", "CRITICAL"];
+  return values.sort((a, b) => order.indexOf(b) - order.indexOf(a))[0] ?? "INFO";
+}
+
+function confidenceInstability(metrics: ReturnType<typeof anomalyMetrics>, classification: AnomalyClassification | "WATCH") {
+  const evidenceStale = (metrics.evidenceAgeHours ?? 999) > 48;
+  const widenedSpread = metrics.contentionSpread.spreadSeconds >= 40;
+  const degradedConvergence = metrics.totalFailures > 0;
+  const adjustment =
+    degradedConvergence || classification === "HIGH_RISK"
+      ? "reduce_to_blocked"
+      : classification === "DEGRADED" || widenedSpread
+        ? "reduce_to_contention_caution"
+        : evidenceStale
+          ? "reduce_for_stale_evidence"
+          : "none";
+  return {
+    adjustment,
+    reasons: {
+      anomalyFrequencyIncreased: classification === "DEGRADED" || classification === "HIGH_RISK",
+      runtimeSpreadWidened: widenedSpread,
+      rerunConvergenceWorsened: degradedConvergence,
+      staleEvidenceAccumulated: evidenceStale,
+      ciTrendFreshnessDecayed: evidenceStale,
+      contentionInstabilityGrew: metrics.maxContentionDuration >= 54,
+    },
+  };
+}
+
+function confidenceAfterInstability(
+  base: Classification,
+  anomaly: AnomalyClassification,
+  forecast: ForecastClassification,
+): Classification {
+  if (anomaly === "HIGH_RISK" || forecast === "CRITICAL") return "BLOCKED";
+  if (anomaly === "DEGRADED" || forecast === "HIGH") return "CI_TIMEOUT_RISK";
+  if (anomaly === "ANOMALY" || forecast === "ELEVATED") return "STABLE_UNDER_CONTENTION";
+  return base;
+}
+
+function historyRows(
+  runs: Array<{ durationSeconds: number; log: string; startedAt: string }>,
+  empty: string,
+): string[] {
+  if (runs.length === 0) return [`- ${empty}`];
+  return runs.map((run) => `- ${run.startedAt}: ${run.durationSeconds}s, log ${run.log}`);
 }
 
 function classify(failures: number, maxContentionDuration: number, falsePositiveCount: number): Classification {

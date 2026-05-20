@@ -1,16 +1,19 @@
 {
-  "generatedAt": "2026-05-20T14:55:00.531Z",
+  "generatedAt": "2026-05-20T15:10:22.559Z",
   "branch": "feat/b1-test-stability-burndown",
   "evidenceFreshness": {
     "latestMtimeMs": 1779287714456.17,
-    "ageHours": 0.3294660639105903,
+    "ageHours": 0.5855849527994792,
     "label": "fresh"
   },
-  "confidenceClassification": "STABLE_UNDER_CONTENTION",
+  "confidenceClassification": "CI_TIMEOUT_RISK",
   "timeoutRiskEstimate": "CI_TIMEOUT_RISK",
   "sustainedRunConfidence": "high_local_confidence",
   "currentBlockerCount": 0,
   "flakeSuspicionCount": 0,
+  "anomalyClassification": "ANOMALY",
+  "forecastClassification": "HIGH",
+  "escalationPriority": "HIGH",
   "production_safe": false,
   "placement_v3_enabled": false,
   "liveProviderEvidence": "ABSENT",

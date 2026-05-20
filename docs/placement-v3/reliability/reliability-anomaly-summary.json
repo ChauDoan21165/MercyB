@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-05-20T15:10:20.090Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "classifications": [
+    "NORMAL",
+    "WATCH",
+    "ANOMALY",
+    "DEGRADED",
+    "HIGH_RISK"
+  ],
+  "abnormalRuntimeSpikes": [
+    {
+      "durationSeconds": 54,
+      "log": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142127-run-1.log",
+      "startedAt": "2026-05-20T14:21:27Z"
+    }
+  ],
+  "suddenTimeoutSpreadIncrease": {
+    "baselineSpreadSeconds": 3,
+    "contentionSpreadSeconds": 46,
+    "increaseSeconds": 43,
+    "detected": true
+  },
+  "repeatedContentionAnomalies": {
+    "count": 1,
+    "detected": false
+  },
+  "rerunInstability": {
+    "failures": 0,
+    "detected": false
+  },
+  "falsePositiveDetectorAnomalies": {
+    "count": 1,
+    "detected": false,
+    "classification": "classified_false_positive_not_confirmed_flake"
+  },
+  "flakyPatternEmergence": {
+    "clusterCount": 0,
+    "detected": false
+  },
+  "integrityAnomalyClusters": {
+    "count": 0,
+    "detected": false
+  },
+  "confidenceInstability": {
+    "adjustment": "reduce_to_contention_caution",
+    "reasons": {
+      "anomalyFrequencyIncreased": false,
+      "runtimeSpreadWidened": true,
+      "rerunConvergenceWorsened": false,
+      "staleEvidenceAccumulated": false,
+      "ciTrendFreshnessDecayed": false,
+      "contentionInstabilityGrew": true
+    }
+  },
+  "anomalyClassification": "ANOMALY",
+  "escalationPriority": "ELEVATED",
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}
