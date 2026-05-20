@@ -233,6 +233,7 @@ export function RoomPronunciationPractice({
                 onClick={handleClose}
                 aria-label="Close"
                 style={{
+                  position: "relative",
                   width: 32,
                   height: 32,
                   borderRadius: 999,
@@ -243,6 +244,19 @@ export function RoomPronunciationPractice({
                   lineHeight: 1,
                 }}
               >
+                {/* Invisible ≥44px hit area (Apple HIG / WCAG 2.5.5);
+                    visual stays 32px. */}
+                <span
+                  aria-hidden
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    width: 44,
+                    height: 44,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                />
                 ×
               </button>
             </div>

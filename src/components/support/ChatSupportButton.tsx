@@ -90,12 +90,26 @@ export default function ChatSupportButton() {
               onClick={() => setOpen(false)}
               aria-label="Đóng / Close"
               style={{
+                position: "relative",
                 width: 28, height: 28, borderRadius: 9999,
                 border: "none", background: "rgba(0,0,0,0.06)",
                 color: "rgba(0,0,0,0.55)", cursor: "pointer",
                 display: "grid", placeItems: "center",
               }}
             >
+              {/* Invisible ≥44px hit area (Apple HIG / WCAG 2.5.5);
+                  visual stays 28px. */}
+              <span
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  width: 44,
+                  height: 44,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
               <X size={14} aria-hidden />
             </button>
           </div>
