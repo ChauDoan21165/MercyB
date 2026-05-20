@@ -1,0 +1,15 @@
+[2m[WebServer] [22m(node:43681) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+  -  1 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:9:3 › Placement data-quality dashboard › renders the dashboard shell
+  -  2 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:14:3 › Placement data-quality dashboard › shows issue count cards
+  -  3 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:20:3 › Placement data-quality dashboard › shows taxonomy conflict bucket
+  -  4 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:25:3 › Placement data-quality dashboard › shows orphan recommendation bucket
+  -  5 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:30:3 › Placement data-quality dashboard › shows duplicate prompt bucket
+  -  6 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:35:3 › Placement data-quality dashboard › shows CEFR inconsistency bucket
+  -  7 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:40:3 › Placement data-quality dashboard › shows unresolved issue table
+  -  8 [chromium] › tests/e2e/placement-data-quality-dashboard.spec.ts:45:3 › Placement data-quality dashboard › refresh action remains available
+
+  8 skipped
