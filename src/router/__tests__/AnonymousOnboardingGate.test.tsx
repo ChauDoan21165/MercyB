@@ -133,3 +133,64 @@ describe("AnonymousOnboardingGate — marketing landing contract", () => {
     expect(screen.queryByText("LANDING")).toBeNull();
   });
 });
+
+// A14e-fix-1 — CTA escape-hatch contract. The "Nói thử ngay" CTA on
+// MarketingLandingPage navigates to /?trypron=1 after writing the pair
+// to localStorage. The gate must respect that URL signal even when
+// hasAnonymousPair() returns false (storage shim, private-mode quirk,
+// race against the next render, etc.) — otherwise the visitor stays
+// stuck on the landing despite explicitly asking to try the product.
+describe("AnonymousOnboardingGate — CTA URL-param escape hatch (A14e-fix-1)", () => {
+  function renderGateAt(initialPath: string) {
+    return render(
+      <MemoryRouter initialEntries={[initialPath]}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AnonymousOnboardingGate
+                firstTimeAnonymous={<div>LANDING</div>}
+              >
+                <div>HOME</div>
+              </AnonymousOnboardingGate>
+            }
+          />
+          <Route path="/onboarding" element={<div>PICKER</div>} />
+        </Routes>
+      </MemoryRouter>,
+    );
+  }
+
+  it("anonymous + no stored pair + ?trypron=1 → Home (escape hatch fires)", () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateAt("/?trypron=1");
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
+    expect(screen.queryByText("PICKER")).toBeNull();
+  });
+
+  it("anonymous + no stored pair + no CTA param → still landing", () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateAt("/");
+    expect(screen.getByText("LANDING")).toBeInTheDocument();
+    expect(screen.queryByText("HOME")).toBeNull();
+  });
+
+  it("anonymous + no stored pair + unrelated query param → still landing", () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateAt("/?utm_source=fb");
+    expect(screen.getByText("LANDING")).toBeInTheDocument();
+    expect(screen.queryByText("HOME")).toBeNull();
+  });
+
+  it("anonymous + stored pair + ?trypron=1 → Home (both signals agree)", () => {
+    window.localStorage.setItem(
+      "mercyblade.languagePair",
+      JSON.stringify({ native: "vi", targets: ["en"] }),
+    );
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateAt("/?trypron=1");
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
+  });
+});
