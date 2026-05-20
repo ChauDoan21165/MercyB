@@ -39,8 +39,8 @@ type SourceStatus = {
 };
 
 const EXPECTED_BRANCH = "feat/a42-reliability-forecast-ops";
-const OUT_DIR = "docs/placement-v3/reliability-forecast";
-const RELIABILITY_OUT_DIR = "docs/placement-v3/reliability";
+const OUT_DIR = process.env.A42_OUT_DIR ?? "docs/placement-v3/reliability-forecast";
+const RELIABILITY_OUT_DIR = process.env.A42_RELIABILITY_OUT_DIR ?? "docs/placement-v3/reliability";
 const DROPBOX_DIR = path.join(OUT_DIR, "evidence-dropbox");
 const AGENT_RUNS_DIR = "reports/agent-runs";
 const STALENESS_THRESHOLD_HOURS = Number(process.env.A42_STALENESS_THRESHOLD_HOURS ?? 72);
