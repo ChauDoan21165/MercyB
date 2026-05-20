@@ -32,7 +32,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 // ── Supabase mock ───────────────────────────────────────────────────────────
 //
 // One mock module replaces the singleton client for every hook in the file.
-// Per-table `maybeSingle` counters let us assert which table was hit how
+// Per-relation `maybeSingle` counters let us assert which read path was hit how
 // many times in the cross-cutting smoke test.
 const mockGetUser = vi.fn();
 const mockFeatureFlagsMaybeSingle = vi.fn();
@@ -42,8 +42,12 @@ vi.mock("@/lib/supabaseClient", () => ({
   supabase: {
     auth: { getUser: () => mockGetUser() },
     from: (table: string) => {
+      // A15b-fix-1 moved client feature flag reads from the base table to
+      // feature_flags_public so anon callers never receive raw cohort UUIDs.
+      // Keep this spy on the view path; the dedupe invariant is still one
+      // underlying flag read for 10 hook consumers.
       const maybeSingle =
-        table === "feature_flags"
+        table === "feature_flags_public"
           ? mockFeatureFlagsMaybeSingle
           : mockProfilesMaybeSingle;
       return {

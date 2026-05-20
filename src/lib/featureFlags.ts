@@ -125,8 +125,11 @@ export async function isFlagEnabledForUser(
   userId: string | null | undefined,
 ): Promise<boolean> {
   try {
+    // A15b-fix-1: route through feature_flags_public view (anon-safe).
+    // service_role still hits the view fine; the view masks enabled_user_ids
+    // to [auth.uid()] when the caller is in the cohort, [] otherwise.
     const { data, error } = await client
-      .from("feature_flags")
+      .from("feature_flags_public")
       .select("is_enabled, enabled_user_ids")
       .eq("flag_key", flagKey)
       .maybeSingle();

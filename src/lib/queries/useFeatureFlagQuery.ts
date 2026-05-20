@@ -33,8 +33,13 @@ export function useFeatureFlagQuery(
   const flagQuery = useQuery({
     queryKey: qk.featureFlag(key, userId),
     queryFn: async (): Promise<{ row: FeatureFlagRow | null }> => {
+      // A15b-fix-1: route through feature_flags_public view so anon callers
+      // never see other users' UUIDs in enabled_user_ids. Authenticated
+      // callers in their own cohort see [auth.uid()] (truthy for the
+      // includes-check below); everyone else sees []. See migration
+      // supabase/migrations/20260626000000_feature_flags_public_view.sql.
       const { data, error } = await supabase
-        .from("feature_flags")
+        .from("feature_flags_public")
         .select("is_enabled, enabled_user_ids")
         .eq("flag_key", key)
         .maybeSingle();

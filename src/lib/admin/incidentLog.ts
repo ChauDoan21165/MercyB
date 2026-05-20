@@ -158,6 +158,13 @@ export interface SloPauseStatus {
   active: boolean;
 }
 
+// A15b-fix-1: SloDashboard is admin-only (SECURITY DEFINER tier >= 9). These
+// two helpers intentionally stay on the BASE table, not feature_flags_public:
+//   - setSloPauseFlag does an UPDATE; views are not writable here.
+//   - readSloPauseFlag pairs with setSloPauseFlag in the admin UI; keeping
+//     them on the same target avoids cache-coherence surprises.
+// Admins are authenticated + have base-table SELECT/UPDATE per RLS; no PII
+// leak path is opened by this.
 export async function readSloPauseFlag(): Promise<SloPauseStatus> {
   const { data } = await supabase
     .from("feature_flags")
