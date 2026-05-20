@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T17:14:16.533Z",
+  "generatedAt": "2026-05-20T17:26:17.936Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "resolutionOrder": [
@@ -19,7 +19,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.6540341666666667,
+      "ageHours": 1.854421388888889,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:35:02.009Z",
       "safetyFields": {
@@ -49,7 +49,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.6574377777777778,
+      "ageHours": 1.8578258333333333,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.756Z",
       "safetyFields": {
@@ -79,7 +79,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.6557933333333332,
+      "ageHours": 1.8561816666666666,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.676Z",
       "safetyFields": {
@@ -109,7 +109,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.6557894444444445,
+      "ageHours": 1.8561783333333333,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.690Z",
       "safetyFields": {
@@ -139,7 +139,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.657435,
+      "ageHours": 1.857823888888889,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.766Z",
       "safetyFields": {
@@ -767,7 +767,7 @@
   ],
   "freshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 1.6574377777777778,
+    "oldestAgeHours": 1.8578258333333333,
     "missingCount": 15,
     "staleCount": 15,
     "label": "blocked_missing_inputs"

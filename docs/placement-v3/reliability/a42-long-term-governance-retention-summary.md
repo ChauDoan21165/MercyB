@@ -1,6 +1,6 @@
 # A42 Long-Term Governance Retention Summary
 
-Generated: 2026-05-20T17:14:16.558Z
+Generated: 2026-05-20T17:26:17.990Z
 
 A42 completed long-term reliability-governance retention closure as a governance-only, evidence-only stream.
 
