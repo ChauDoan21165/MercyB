@@ -1,0 +1,373 @@
+# MercyB Disk Audit
+Timestamp: 2026-05-20T07:28:27-06:00
+Repo root: /private/tmp/mercyb-disk-cleanup-audit
+Log file: /private/tmp/mercyb-disk-cleanup-audit/reports/disk-cleanup-evidence/disk-audit-20260520-072827.log
+Stale worktree threshold: 7 days
+
+## Disk Filesystems
+Filesystem        Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk2s3s1   228Gi    12Gi    30Gi    28%    455k  317M    0%   /
+devfs            216Ki   216Ki     0Bi   100%     746     0  100%   /dev
+/dev/disk2s6     228Gi   2.0Gi    30Gi     7%       2  317M    0%   /System/Volumes/VM
+/dev/disk2s4     228Gi   8.2Gi    30Gi    22%    1.4k  317M    0%   /System/Volumes/Preboot
+/dev/disk2s2     228Gi    45Mi    30Gi     1%     134  317M    0%   /System/Volumes/Update
+/dev/disk1s2     500Mi   6.0Mi   482Mi     2%       1  4.9M    0%   /System/Volumes/xarts
+/dev/disk1s1     500Mi   6.0Mi   482Mi     2%      33  4.9M    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3     500Mi   1.1Mi   482Mi     1%      90  4.9M    0%   /System/Volumes/Hardware
+/dev/disk2s1     228Gi   175Gi    30Gi    86%    3.5M  317M    1%   /System/Volumes/Data
+map auto_home      0Bi     0Bi     0Bi   100%       0     0     -   /System/Volumes/Data/home
+/dev/disk5s1      17Gi    16Gi   444Mi    98%    626k  4.5M   12%   /Library/Developer/CoreSimulator/Volumes/iOS_23E254a
+/dev/disk7s1      17Gi    16Gi   447Mi    98%    626k  4.6M   12%   /Library/Developer/CoreSimulator/Volumes/iOS_23E244
+/dev/disk9s1     958Mi   854Mi   101Mi    90%    1.9k  1.0M    0%   /Volumes/Codex Installer
+
+## Top Home Directories
+  0B	/Users/admin/Public
+  0B	/Users/admin/oc-test
+  0B	/Users/admin/tmp-worktrees
+4.0K	/Users/admin/MercyB-keystore
+4.0K	/Users/admin/audit-worktrees.sh
+4.0K	/Users/admin/gen-keystore.sh
+4.0K	/Users/admin/mercy-blade-key.json
+4.0K	/Users/admin/mercyb-cleaner.log
+4.0K	/Users/admin/package-lock.json
+4.0K	/Users/admin/scripts
+8.0K	/Users/admin/oc-watchdog
+8.0K	/Users/admin/oc_watchdog.py
+ 12K	/Users/admin/Movies
+ 68K	/Users/admin/Applications
+120K	/Users/admin/mercy-backup-apr16
+380K	/Users/admin/Music
+444K	/Users/admin/lessons-c2-chunk1-backup-1528.ts
+840K	/Users/admin/lessons-c1-backup-1047.ts
+840K	/Users/admin/lessons-c1-backup-1048.ts
+848K	/Users/admin/lessons-c1-backup-NOW.ts
+3.3M	/Users/admin/MercyB-archive
+6.0M	/Users/admin/Documents
+9.9M	/Users/admin/Pictures
+ 21M	/Users/admin/Desktop
+125M	/Users/admin/tools
+523M	/Users/admin/MercyB-icons
+586M	/Users/admin/projects
+994M	/Users/admin/Downloads
+1.2G	/Users/admin/mercy-ai-builder
+7.8G	/Users/admin/MercyB
+ 30G	/Users/admin/Library
+
+## Top Private Temp Directories
+313M	/private/tmp/B45-billing-architecture-map
+313M	/private/tmp/B47-billing-history
+313M	/private/tmp/B48-billing-target-state
+313M	/private/tmp/B5-mylinh-paid-but-free
+313M	/private/tmp/B52-price-map-autoupsert
+313M	/private/tmp/B53-price-data-quality
+313M	/private/tmp/B55-recon-durability
+313M	/private/tmp/B57-mylinh-sql-salvage
+313M	/private/tmp/B58-gift-write-or-fallback
+313M	/private/tmp/B60-merge-queue
+313M	/private/tmp/B61-out-of-band-schema
+313M	/private/tmp/B62-pr-ci-status
+313M	/private/tmp/B64-price-map-sql
+313M	/private/tmp/B66-session-closeout
+313M	/private/tmp/a1-pr944
+314M	/private/tmp/A6h-843-review
+314M	/private/tmp/A79-newuser-smoke
+314M	/private/tmp/A7h2-dsym-doc-fix
+314M	/private/tmp/A8h-fix-regen-script
+314M	/private/tmp/A9k-banners-and-archive
+314M	/private/tmp/A9l-archive-banners
+364M	/private/tmp/A1f-a18-pr15
+365M	/private/tmp/A13-cleanup
+365M	/private/tmp/A13c-widget-cleanup
+365M	/private/tmp/A13d-pr1-stripe-env
+365M	/private/tmp/A13f-cycle8
+365M	/private/tmp/A14b-release-pin
+365M	/private/tmp/A1j-a18-pr2
+365M	/private/tmp/A25-placement-v3-prompts
+365M	/private/tmp/A32-placement-mercy-conversation
+365M	/private/tmp/mercyb-a26-recommender
+365M	/private/tmp/placement-v3-storage
+366M	/private/tmp/a1-pr942
+367M	/private/tmp/a36-grading-drift-detection-pr943
+367M	/private/tmp/a37-readiness-main
+369M	/private/tmp/b1-test-stability-push.VtLu79
+374M	/private/tmp/a33-placement-v3-endurance-burnin
+380M	/private/tmp/mercyb-placement-v3-report
+393M	/private/tmp/B44-dispatch-template-update
+421M	/private/tmp/A1-b13ph3-pra
+421M	/private/tmp/A1c-b13ph3-prb
+421M	/private/tmp/A1d-a18-pr1
+421M	/private/tmp/A29-webhook-payload-fix
+421M	/private/tmp/A30-mercyguide-lazy
+421M	/private/tmp/A34-tierc-archive
+421M	/private/tmp/A4-b17-pr3-sign-audio
+421M	/private/tmp/A5b-bundle-budget
+421M	/private/tmp/B49-premise-correction
+421M	/private/tmp/B50-pr-title-convention
+421M	/private/tmp/B56-principles-update
+422M	/private/tmp/A61-seo-audit
+422M	/private/tmp/A68-feedback-livetest
+423M	/private/tmp/A25-bundle-audit
+423M	/private/tmp/A37-vendor-split-measure
+429M	/private/tmp/A46-a11y-next
+435M	/private/tmp/A12-coverage
+443M	/private/tmp/A12-billing-client
+443M	/private/tmp/A12-billing-tests
+1.3G	/private/tmp/a3-placement-v3-data-quality
+1.3G	/private/tmp/a37-report-followup
+
+## Worktree Usage
+285M	clean	docs/next-session-primer-may20-v3	/private/tmp/A9m-primer-v3	08331e15f docs(primer): v3 update — #789+#832 merged, A18 PR1 in review (#843), reports rail shipped (A9m)
+285M	clean	review/837-nullable-audit-a6	/private/tmp/A6i-837-review	b3975b15e docs(review): A6i concurs with A4i on #837 — APPROVE (independent spot-check)
+285M	clean	review/842-billing-verify	/private/tmp/A6j-842-billing-verify	522e1b16e docs(review): A6j concur with A6g on #842 — billing-angle adds no new findings
+285M	clean	review/843-a18-pr1-a8	/private/tmp/A8i-843-review	c8c415a8b docs(billing): review PR #843 — A18 PR1 billing-logic angle (A8i)
+285M	clean	review/864-downgrade-beacon	/private/tmp/A8j-864-review	2227b1d33 docs(billing): review PR #864 — A18 PR1.5 downgrade beacon (A8j)
+285M	clean	review/864-downgrade-beacon-a6	/private/tmp/A6k-864-review	03cb4cad3 docs(review): APPROVE #864 — A18 PR1.5 downgrade beacon (A6k structural)
+285M	clean	review/864-self-review-a1	/private/tmp/A1h-864-self-review	eca64060d docs(review): PR #864 A18 PR1.5 downgrade beacon — A1 self-review
+286M	clean	a16/pr-template-verification-gate	/private/tmp/A16b-pr-template	25b0fb0e4 docs(pr-template): codify real-device verification gate from PRINCIPLES §3
+286M	clean	b6/cas-backoff-jitter	/private/tmp/A3k-766-rebase	76aad553e fix(billing): exponential backoff + jitter on monotonic CAS retry (A91 fix A)
+286M	clean	chore/A16-pr-template-soft-enforce	/private/tmp/A16c-pr-template-observe	e39ebc0e8 chore(process): PR template soft-enforcement + weekly compliance observability (A16-soft)
+286M	clean	chore/db-types-regen-post-789-832	/private/tmp/A6-db-types-g3	3864d71c6 chore(types): regenerate database.types.ts post #789+#832 apply
+286M	clean	ci/A13-circle-FP	/private/tmp/A13e-fp	fa56a2ad2 chore(boundaries): narrow no-circular to ignore type-only edges (A13-circle-FP)
+286M	clean	ci/A13-promote-module-boundaries	/private/tmp/A20-morning-cleanup	a039d4900 ci: re-trigger after morning cascade (2026-05-20T09:22:42Z)
+286M	clean	ci/playwright-concurrency	/private/tmp/A9-playwright-concurrency	611e26a5b ci(playwright): add concurrency group to prevent runner exhaustion
+286M	clean	db-types-regen-post-789-832	/private/tmp/A6-db-types-regen	8afecfde4 fix(a11y): label confirm/time inputs + AA contrast on /account (A46) (#727)
+286M	clean	design/A22-placement-v3	/private/tmp/A22-placement-v3	fff693202 docs(placement): design v3 assessment
+286M	clean	detached	/private/tmp/A18-track-a-executor	10f0b1533 fix(billing): exponential backoff + jitter on monotonic CAS retry (A91 fix A) (#766)
+286M	clean	detached	/private/tmp/A19-track-a-executor	ebcf86c0a fix(account-deletion): classify entitlements table in user-data-manifest (unblock CI) (#925)
+286M	clean	detached	/private/tmp/A21-908-fix	460c90adb chore(lock): rebase #908 on main + regenerate lock
+286M	clean	docs/A14-native-sentry-audit	/private/tmp/A14-native-sentry	d4e25b19d docs(audit): native Sentry init follow-up — track CLOSED for code work (A14-audit)
+286M	clean	docs/A14b-sentry-release-audit	/private/tmp/A14b-sentry-release	38fb23286 docs(audit): Sentry release + sourcemap pipeline audit (A14b-audit)
+286M	clean	docs/A14c-production-error-triage	/private/tmp/A14c-prod-triage	ab74bdfa5 docs(observability): production error pattern triage (A14c-audit)
+286M	clean	docs/A14d-chunk-recovery-audit	/private/tmp/A14d-chunk-instrumentation	f91ddf438 docs(observability): chunk recovery instrumentation audit (A14d-audit)
+286M	clean	docs/A15-rls-canonical-reference	/private/tmp/A15-rls-docs	b579a3b21 docs(security): canonical RLS reference + inline policy documentation (A15)
+286M	clean	docs/A15b-anon-tables-investigation	/private/tmp/A15b-anon-investigation	19ec7a142 docs(security): anon-readable tables investigation (A15b)
+286M	clean	docs/A16-agent-dispatch-skill	/private/tmp/A16d-skill	aa6235299 docs(skills): formalize agent dispatch discipline (A16-skill)
+286M	clean	docs/A16d-http-status-audit	/private/tmp/A16e-http-status-audit	6f5307b5a docs(audit): HTTP-200-on-failure pattern sweep across edge functions (A16d)
+286M	clean	docs/a18-pr2-scope	/private/tmp/A1i-a18-pr2-scope	b53c2c01a docs(billing): A18 PR2 scope — R1–R4 call-site wiring plan (post #789+#832 apply)
+286M	clean	docs/edge-fn-security-audit-a10	/private/tmp/A10-edge-audit	ae3112fdf docs(security): edge function security + validation audit (A10) — 1 CRITICAL, 9 HIGH
+286M	clean	docs/principles-p18-report-headline	/private/tmp/A6n-p18	6a1c827ad docs(principles): P18 — boxed headline required on every report
+286M	clean	feat/A11-zod-revenuecat-webhook	/private/tmp/A11-zod-webhooks	883bbb5a0 feat(webhook): zod runtime validation for RevenueCat payloads (A11-revenuecat)
+286M	clean	feat/A11b-zod-admin-list-trio	/private/tmp/A11b-admin-validation	53ac230eb feat(admin-validation): zod schemas for admin-list-* trio (A11b-list-trio)
+286M	clean	feat/A11c-zod-public-api	/private/tmp/A11c-public-api	d277af57b docs(security): anonymous edge-function audit (A11c Phase 2)
+286M	clean	feat/A14-supabase-slow-query	/private/tmp/A14-slow-query	b4da1082f feat(observability): slow-query instrumentation for Supabase calls (A14)
+286M	clean	feat/A14c-widen-domnoise-regex	/private/tmp/A14c-fix1	c31d8cb75 feat(sentry): widen DOM-mutation noise filter to include insertBefore (A14c-fix-1)
+286M	clean	feat/a34-native-speaking-audio	/private/tmp/a34-native-speaking-audio	c82341e5a feat(placement-v3): add Android mic permission audit
+286M	clean	feat/a37-shadow-session-replay	/private/tmp/a37-shadow-session-replay	fb0feef36 docs(placement-v3): document A37 runtime blockers
+286M	clean	fix/A14e-landing-cta-anon-pair-key	/private/tmp/A14f-landing-fix	d9ee46f29 fix(landing): use ?trypron=1 URL param as anon-pair gate fallback (A14e-fix-1)
+286M	clean	fix/A16f-http-status-admin-management	/private/tmp/A16f-admin-management	ad652d4e7 fix(http-status): return proper status codes from admin-management (A16f-admin-management)
+286M	clean	fix/A16f-http-status-email-broadcast	/private/tmp/A16f-email-broadcast	5af25f94c fix(http-status): return proper status codes from email-broadcast (A16f-email-broadcast)
+286M	clean	fix/A16f-http-status-teacher-notifications	/private/tmp/A16f-teacher-notifications	f9e38c11f fix(http-status): return proper status codes from teacher-notifications (A16f-teacher-notifications)
+286M	clean	fix/account-deletion-manifest-entitlements	/private/tmp/A15b-manifest-fix	c0c65fef8 fix(account-deletion): classify entitlements table in user-data-manifest (unblock CI)
+286M	clean	investigate/A14e-landing-cta	/private/tmp/A14e-landing-cta-broken	5246508fd docs(investigate): "Nói thử ngay" CTA does nothing — diagnosis report (A14e)
+286M	clean	p16-rebase	/private/tmp/A3l-p16-rebase	aadf74a0c chore(principles): consolidate P4 + P16 Last-updated entry
+286M	clean	retrigger-921	/private/tmp/A13i-retrigger	c5e1c2f19 ci: re-trigger after #925 manifest fix landed on main
+286M	clean	test/formatmoney-eur-coverage	/private/tmp/A5-pr786-fix	a184b5883 test(billing): pin EUR formatting under formatMoney's decimal path (A5)
+287M	clean	detached	/private/tmp/a1-pr943	06334d0d1 feat(placement-v3): add grading drift replay harness
+287M	clean	detached	/private/tmp/a1-pr946	fc692e860 feat(placement-v3): add adaptive item generation gauntlet
+287M	dirty	reports/disk-cleanup-audit	/private/tmp/mercyb-disk-cleanup-audit	de6d31c28 feat(placement-v3): end-to-end integration + vertical E2E (A33) (#942)
+289M	clean	chore/a1-placement-v3-merge-readiness	/private/tmp/a1-placement-v3-merge-readiness	9ca6cff29 chore(placement-v3): add merge-readiness audit for PR stack
+313M	clean	a10/remaining-recon-push	/private/tmp/A10-remaining-recon	604674936 docs(meta): A10 inventory + push block for 21 remaining recon branches
+313M	clean	a13/gift-redemption-victims	/private/tmp/A13-gift-victims	e91396f44 audit(money-path): gift-code silent-failure victim query + outreach draft (A13)
+313M	clean	a14/webhook-payload-type-audit	/private/tmp/A14-webhook-payload-audit	ffa205899 docs(recon): webhook persists invoice object into subscriptions.raw_payload (A14)
+313M	clean	a15/raw-payload-backfill-sql	/private/tmp/A15-raw-payload-backfill	ea51abc1c ops(billing): raw_payload backfill SQL for 2 subscriptions rows (A15)
+313M	clean	a16/expiry-flip-baseline	/private/tmp/A16-expiry-flip-count	d3b12d6e5 docs(billing): extract A12 B13-phase3 expiry-flip baseline SQL + decision matrix (A16)
+313M	clean	a21/revenuecat-mrr-projection-scope	/private/tmp/A21-revenuecat-mrr-scope	1f3853ef8 docs(money-path): scope RevenueCat MRR projection.ts fix — D4-gated (A21)
+313M	clean	a22/safe-prune-script	/private/tmp/A22-prune-script	9d758b815 chore(worktree): A22 safe-prune runbook — live predicate, dry-run default
+313M	clean	a23/agent-id-naming-collision	/private/tmp/A23-naming-collision	4ad193903 docs(recon): agent-ID namespace collision in reports/ (A23)
+313M	clean	a26/mylinh-apply-runbook	/private/tmp/A26-mylinh-apply-runbook	7c0ab0aed docs(runbook): one-sitting apply runbook for mylinh paid-but-free SQL (A26)
+313M	clean	a27/next-session-primer-may20	/private/tmp/A27-next-session-primer	f3026f4ad docs(primer): freshened next-session primer for 2026-05-20 (A27)
+313M	clean	a28/gift-victim-repair-sql	/private/tmp/A28-gift-victim-repair	4d5e75112 ops(billing): gift-code victim entitlement re-grant SQL (A28)
+313M	clean	a32/currency-interval-fix-scope	/private/tmp/A32-currency-interval-fix-scope	168c4782b docs(money-path): scope currency_code/billing_interval data-quality fix (A32)
+313M	clean	a38/native-sentry-audit	/private/tmp/A38-native-sentry-audit	492943cb7 docs(recon): native Sentry init audit — route-gate has no native carve-out (A38)
+313M	clean	a39/support-inbox-gift-audit	/private/tmp/A39-support-inbox-audit	9ba49d2c7 docs(money-path): support-inbox gift-code complaint search + reply templates (A39)
+313M	clean	a40/account-deletion-reaudit	/private/tmp/A40-account-deletion-reaudit	117ee98af docs(audit): re-audit account deletion flow vs current main (A40)
+313M	clean	a41/appstore-reaudit-may19	/private/tmp/A41-appstore-reaudit	11a55f657 docs(app-store): A41 readiness re-audit vs current main (1 new 🔴 blocker)
+313M	clean	a42/subscription-amount-schema	/private/tmp/A42-subscription-amount-schema	75fd10e12 docs(money-path): subscription-amount column scheme design recon (A42)
+313M	clean	a43/stripe-env-verification	/private/tmp/A43-stripe-env-check	b795fa456 docs(recon): Stripe live/test env code-side triage (A43)
+313M	clean	a46/primer-refresh-may19-late	/private/tmp/A46-primer-refresh	706983a93 docs(primer): A46 refresh of A27's next-session primer (late May 19)
+313M	clean	a9/worktree-prune-audit	/private/tmp/A9-worktree-prune-audit	c3655ddd2 audit(worktree): A9 prune-safety verification — cross-ref BLOCKED (no paste), full current-state inventory
+313M	clean	b21/failed-deletion-events	/private/tmp/B21-failed-deletions	a84ace451 docs(recon): B21 diagnostic — 2 still-phantom deletion rows, zero paying impact
+313M	clean	b27/profile-trigger-audit	/private/tmp/B27-profile-triggers	2ad771084 docs(recon): B63 verify T2 binding — AFTER INSERT OR UPDATE OF status (resolves B27↔RECON-tier-trigger discrepancy)
+313M	clean	b41/next-session-primer	/private/tmp/B41-next-session-primer	6d03e2c4e docs(recon): B59 freshen B41 primer — fold B45/B48/B36, fix B5/B25 framings (META, no code)
+313M	clean	b42/price-map-missing-row	/private/tmp/B42-price-map-fix	202bfffa5 docs(billing): RUNBOOK for missing billing_price_map yearly row (B42)
+313M	clean	b45/billing-architecture-map	/private/tmp/B45-billing-architecture-map	ffa38722b docs(recon): B45 — billing/entitlement architecture as-built map
+313M	clean	b47/billing-architecture-history	/private/tmp/B47-billing-history	9cfb4a184 docs(recon): billing/entitlement chronology — dead twin born w/ engine, ghost trigger, unmerged tier fix (B47)
+313M	clean	b48/billing-target-state	/private/tmp/B48-billing-target-state	d46238be0 docs(recon): B48 billing/entitlement target state — single source/read/write + roadmap
+313M	clean	b5/mylinh-sql-regen	/private/tmp/A2-mylinh-regen	d70cd6d27 docs(remediation): regenerate mylinh paid-but-free roll-forward SQL (A2, B5/B66)
+313M	clean	b52/price-map-autoupsert-scoping	/private/tmp/B52-price-map-autoupsert	20e80c1e9 docs(billing): B52 — billing_price_map auto-upsert design (3-option, recommend A fill-gap)
+313M	clean	b53/price-data-quality-diagnostic	/private/tmp/B53-price-data-quality	35ef2ea1c docs(billing): B53 price data-quality diagnostic — recon + placeholder remediation
+313M	clean	b55/recon-durability-tradeoff	/private/tmp/B55-recon-durability	272b5ee2d docs(meta): recon-doc durability tradeoff — recommend Option B (B55)
+313M	clean	b57/mylinh-sql-salvage	/private/tmp/B57-mylinh-sql-salvage	7e06fb59f docs(remediation): salvage B5 mylinh paid-but-free SQL into durable skeleton
+313M	clean	b58/gift-write-or-fallback	/private/tmp/B58-gift-write-or-fallback	0dc77e81a docs(billing): B58 — gift→canonical write vs read-fallback design answer
+313M	clean	b60/merge-queue-priority	/private/tmp/B60-merge-queue	d392cca31 docs(meta): B60 session-end merge queue priority (29 PRs, tiered)
+313M	clean	b61/out-of-band-schema-audit	/private/tmp/B61-out-of-band-schema	b51eac418 docs(recon): B61 out-of-band schema audit — 3 patch-over-ghost trigger bindings + class gap in A21's drift CI
+313M	clean	b62/pr-ci-status	/private/tmp/B62-pr-ci-status	bca42770a docs(recon): open-PR CI + merge-gate status snapshot (B62)
+313M	clean	b64/price-map-repair-sql	/private/tmp/B64-price-map-sql	8472883a7 docs(money-path): B64 — paste-ready SQL for billing_price_map yearly-row repair
+313M	clean	b66/session-closeout	/private/tmp/B66-session-closeout	d5d1b79c9 docs(closeout): single session-end action sweep (B66)
+313M	clean	b67/entitlements-schema-spec	/private/tmp/A5-entitlements-schema	0aaec34f4 docs(money-path): entitlements table schema spec — D1 design recon (A5)
+313M	clean	b68/recompute-entitlement-design	/private/tmp/A6-recompute-design	8bbc27f4f docs(money-path): recomputeEntitlement single-writer design spec (B68)
+313M	clean	b69/d4-mrr-source-strategic	/private/tmp/A8-d4-mrr-source	499967d23 docs(money-path): D4 strategic recon — retire billing_price_map, MRR from amount-on-row (A8)
+313M	clean	b70/t2-retirement-design	/private/tmp/A11-t2-retire-plan	f38dc530f docs(money-path): T2 retirement migration design spec (A11)
+313M	clean	b71/b13-phase3-brief	/private/tmp/A12-b13ph3-brief	7cc351b64 docs(billing): B13 phase 3 dispatch spec — single deriveEntitlement foundation (A12)
+313M	clean	chore/gift-outreach-ops	/private/tmp/A3b-gift-outreach-ops	779bc1922 docs(customer): gift-victim outreach send-side ops (A3b)
+313M	clean	chore/mylinh-apply-package	/private/tmp/A2-mylinh-package	2e1ba1cf2 docs(customer): mylinh apply-ready package (combined diagnosis + repair SQL + verify)
+313M	clean	cleanup/delete-b25-numeric-tier-bypass	/private/tmp/A19-b25-bypass-delete	f35b69253 docs(recon): map B25 numeric tier>=N bypass — A19 no-op (gated on #774)
+313M	clean	cleanup/northstar-strategy-naming	/private/tmp/A24-northstar-strategy	e469a90e4 docs: remove stale NORTH_STAR.md references (retired v2.0)
+313M	clean	detached	/private/tmp/a1-pr944	c8ce5fdbd feat(placement-v3): add benchmarking infrastructure scaffold
+313M	clean	docs/789-migration-verify	/private/tmp/A8d-789-migration-verify	406e83183 docs(billing): #789 migration pre-apply verify (A8d)
+313M	clean	docs/796-device-verify	/private/tmp/A6b-796-device-verify	03a88bbe6 docs(native): real-device tracker-verify checklist for #796 (A6b)
+313M	clean	docs/a18-recompute-impl-prep	/private/tmp/A8c-a18-recompute-prep	75fdb2f2b docs(billing): A18 recompute impl readiness audit post-2026-05-19 (A8c)
+313M	clean	docs/a94-formal-closure	/private/tmp/A9d-a94-closure	cff975a54 feat(billing): B13ph3 PR-A — _shared/entitlement.ts (additive, zero importers) (#802)
+313M	clean	docs/b1-manifest-crosscheck	/private/tmp/A6e-manifest-crosscheck	ad3e6d115 docs(privacy): B1 manifest crosscheck — A4 #811 vs A6d classification (A6e)
+313M	clean	docs/b1-manifest-table-classification	/private/tmp/A6d-b1-table-classify	aba3d6fba docs(privacy): B1 — 42-table classification for delete-account manifest (A6d)
+313M	clean	docs/b53-placeholder-delete-package	/private/tmp/A9f-b53-package	a7d915454 docs(billing): B53 placeholder-row DELETE package — billing_price_map (companion to #798)
+313M	clean	docs/database-types-regen-runbook	/private/tmp/A8g-types-regen-runbook	78f1af6c3 docs(billing): database.types.ts regen runbook — post #789+#832 apply (A8g)
+313M	clean	docs/pending-actions-b53-addendum	/private/tmp/A9g-pending-actions-b53	9a8a684e9 docs(ops): add B53 sibling to PENDING-CHAU-ACTIONS §B.2a (A9g)
+313M	clean	docs/pending-actions-consolidation	/private/tmp/A9c-pending-actions-consolidation	68420ba99 docs(ops): PENDING-CHAU-ACTIONS consolidation post-2026-05-19 wave (A9c)
+313M	clean	docs/phantom-row-apply-runbook	/private/tmp/A9b-phantom-verify	337ffabda docs(security): phantom-row apply runbook + A94 loss formalization (A9b)
+313M	clean	docs/pr-review-backlog-sequencing	/private/tmp/A2c-pr-review-backlog	224dcf07d docs(ops): PR review backlog — sequencing + risk matrix (A2c)
+313M	clean	docs/principles-immediate-dispatch	/private/tmp/A6c-principles-update	05f5d56cd docs(principles): P17 — free agent gets immediate next dispatch
+313M	clean	docs/privacy-decision-record-audit-retention	/private/tmp/A6f-privacy-decision-record	7573f1cc1 docs(privacy): backfill A4e migration PR number (#837) into audit-retention record
+313M	clean	docs/raw-payload-feasibility-result	/private/tmp/A8b-raw-payload-query	4e8a17cd7 docs(billing): D4 raw_payload feasibility — result template + decision tree (A8b)
+313M	clean	docs/red-branch-pr-candidates	/private/tmp/A9e-red-branch-audit	66c2e5a2d docs(ops): red-branch PR-candidate audit (A10b follow-up, A9e)
+313M	clean	docs/reports-superseded-audit	/private/tmp/A9h-reports-audit	b58800105 docs(ops): reports/ superseded-doc audit (A9h)
+313M	clean	docs/rpc-type-verify-a8f	/private/tmp/A8f-rpc-type-verify	07a8224be docs(billing): RPC ↔ TS type alignment verify — recompute_entitlement_tx vs _shared/entitlement.ts (A8f)
+313M	clean	docs/strategy-drift-audit	/private/tmp/A3c-strategy-drift-audit	1f744d7f9 docs(strategy): STRATEGY drift audit post-2026-05-19 wave (A3c)
+313M	clean	docs/unknown-reports-classify	/private/tmp/A9j-unknown-reports-classify	e284fedf3 docs(ops): classify 11 UNKNOWN reports from A9h (A9j)
+313M	clean	feat/a18-recompute-downgrade-beacon	/private/tmp/A1e-a18-pr15	051232979 feat(billing): A18 PR1.5 — downgrade beacon for recomputeEntitlement (A18 §7 row 6)
+313M	clean	feat/b7-q1-q4-monitoring	/private/tmp/A3-b7-monitoring	60fca5cef docs(money-path): B7 Q1+Q4 SQL Editor monitoring runbook (A3)
+313M	clean	feat/entitlements-table-migration	/private/tmp/A17-entitlements-migration	49d6f866e feat(db): entitlements table per A5 spec (D1=table)
+313M	clean	feat/recompute-entitlement-tx-rpc	/private/tmp/A8e-rpc-migration	eeaa4a08e feat(billing): recompute_entitlement_tx RPC migration (A18 unblock, A8d gap #2f)
+313M	clean	feat/t2-retirement-migration	/private/tmp/A33-t2-retirement-migration	5cd269a95 feat(db): retire dormant T2 trigger + dead RPC (per A11 spec)
+313M	clean	fix/b22-redeem-gift-honest-errors	/private/tmp/A7-b22-narrow	45c600310 fix(billing): redeem-gift-code returns honest errors instead of ok:true silent loss (B22 narrow)
+313M	clean	review/842-email-audit-gap-a	/private/tmp/A6g-842-review	c28e55383 docs(review): APPROVE #842 — email_audit GAP A recipient-scrub (A6g)
+313M	clean	review/cleanup-prs-readonly	/private/tmp/A6-review-cleanup-prs	6b8c39df8 docs(review): A6 batch 3 — APPROVE #791 + #796 (cleanup/native set)
+313M	clean	review/db-prs-readonly	/private/tmp/A4-review-db-prs	b7cb12f0e docs(review): A4 read-only review of PRs #789 + #792 + #793 (DB/migration batch)
+313M	clean	review/perf-prs-readonly	/private/tmp/A5-review-perf-prs	5454d7d3e docs(review): A5 verdict on PRs #794 + #795 (perf/bundle batch 2)
+313M	dirty	a18/recompute-impl-brief	/private/tmp/A18-recompute-impl-brief	c56663e7d docs(money-path): recomputeEntitlement implementation brief (A18)
+313M	dirty	a36/mylinh-postapply-verify	/private/tmp/A36-mylinh-postapply-verify	5ddcccdea docs(money-path): post-apply verification for mylinh paid-but-free fix (A36)
+313M	dirty	a91/monotonic-diagnostic	/private/tmp/A91-monotonic-concurrent	530810784 feat(privacy): advertising/analytics tracking opt-out toggle (Account → Privacy) (#687)
+313M	dirty	a94/stale-sub-rows-cleanup	/private/tmp/A94-stale-sub-cleanup	629a26cb9 fix(a11y+i18n): PhoneOtp Vietnamese localization + ResetPassword live region (#737)
+313M	dirty	b5/mylinh-paid-but-free-diagnostic	/private/tmp/B5-mylinh-paid-but-free	245d8ec6d docs(recon): B5 diagnostic — mylinh paid-but-free from stale period_end
+314M	clean	docs/archive-class-banners	/private/tmp/A9l-archive-banners	0961b7d64 docs(ops): add ARCHIVE-CLASS banners to 9 cross-referenced April 2026 reports (A9l)
+314M	clean	docs/reports-banners-and-archive	/private/tmp/A9k-banners-and-archive	68d11388b docs(ops): apply A9j banners + archive April 2026 agent-run reports (A9k)
+314M	clean	fix/ios-dsym-doc-corrections-a7g	/private/tmp/A7h2-dsym-doc-fix	2b5d93d24 docs: correct PROJECT_DIR + Embed Frameworks references (A7g findings)
+314M	clean	fix/regenerate-db-types-output-paths	/private/tmp/A8h-fix-regen-script	51dbb5a14 fix(scripts): regenerate-db-types.sh — correct output paths + dual-file invariant
+314M	clean	review/843-a18-pr1	/private/tmp/A6h-843-review	913d9995a docs(review): APPROVE #843 — A18 PR1 recomputeEntitlement single writer (A6h)
+314M	dirty	a79/newuser-smoke	/private/tmp/A79-newuser-smoke	b27001edf chore(assets): remove 6 unreferenced static files (690 KB) (A69) (#749)
+317M	clean	fix/guide-assistant-restore-safety-guards	/Users/admin/MercyB/.claude/worktrees/agent-a2668270651dadf8e	018619a07 fix(guide-assistant): restore prod crisis-safety + rate-limit + AI kill-switch lost in #198
+364M	clean	feat/a18-downgrade-beacon	/private/tmp/A1f-a18-pr15	a1bd11bf8 feat(billing): A18 PR1.5 — downgrade beacon (A18 §7 row 6, pre-PR2)
+365M	clean	chore/a13-delete-useteachermercy-orphan	/private/tmp/A13-cleanup	98652250e chore(dead-code): delete src/hooks/useTeacherMercy.ts (303 LOC, zero importers)
+365M	clean	chore/a13c-delete-dead-teacher-mercy-widget	/private/tmp/A13c-widget-cleanup	511cbf8b1 chore(dead-code): delete dead Teacher-Mercy widget subsystem (A13c, post-#672)
+365M	clean	ci/A13-circle-1-stripe-env	/private/tmp/A13d-pr1-stripe-env	b7fbce385 refactor(stripe-webhook): break core↔signature cycle via env extraction (A13-circle-1)
+365M	clean	feat/A14b-pin-release-name	/private/tmp/A14b-release-pin	2df9aac5b feat(sentry): pin plugin + runtime release.name explicitly (A14b-fix-1)
+365M	clean	feat/a18-pr2-stripe-webhook-repoint	/private/tmp/A1j-a18-pr2	1a82aa6ef feat(billing): A18 PR2 — stripe-webhook repoint to recomputeEntitlement + dead writer deletion
+365M	clean	feat/placement-v3-mercy-conversation	/private/tmp/A32-placement-mercy-conversation	e4692305d feat(placement-v3): add Mercy conversation assessment
+365M	clean	feat/placement-v3-prompts-and-calibration	/private/tmp/A25-placement-v3-prompts	86ef89f4e feat(placement-v3): add prompts and calibration corpus
+365M	clean	feat/placement-v3-recommender	/private/tmp/mercyb-a26-recommender	942a495ba feat(placement-v3): add recommendation engine
+365M	clean	feat/placement-v3-storage	/private/tmp/placement-v3-storage	5ff6191eb feat(placement-v3): add storage schema
+365M	clean	refactor/A13-cycle8-languagePair-split	/private/tmp/A13f-cycle8	85301b946 refactor(languagePair): split hook from pure module to break 3-hop AuthProvider cycle (A13-circle-8)
+366M	clean	detached	/private/tmp/a1-pr942	7fd5f4cbb fix(ci): sync package lock for placement integration
+367M	clean	feat/a36-grading-drift-detection	/private/tmp/a36-grading-drift-detection-pr943	a51a112bc docs(placement-v3): update drift simulation evidence
+367M	dirty	detached	/private/tmp/a37-readiness-main	de6d31c28 feat(placement-v3): end-to-end integration + vertical E2E (A33) (#942)
+369M	clean	feat/b1-test-stability-burndown	/private/tmp/b1-test-stability-push.VtLu79	d006bef01 test: add Placement V3 reliability guardrails
+374M	dirty	feat/a33-placement-v3-endurance-burnin	/private/tmp/a33-placement-v3-endurance-burnin	de6d31c28 feat(placement-v3): end-to-end integration + vertical E2E (A33) (#942)
+380M	clean	reports/placement-v3-post-merge-readiness	/private/tmp/mercyb-placement-v3-report	ba27fd28b docs(placement-v3): preserve vertical e2e trace artifact
+393M	clean	b44/dispatch-template-enforce-recon	/private/tmp/B44-dispatch-template-update	1a6966ca2 docs(agent-briefs): dispatch-brief template enforces recon + SQL conventions
+421M	clean	b50/pr-title-convention	/private/tmp/B50-pr-title-convention	e135fff54 docs(agent-briefs): PR title convention for dispatch-driven PRs (B50)
+421M	clean	b56/principles-session-update	/private/tmp/B56-principles-update	11b11f6c9 docs: session-end principles refresh (May 19 patterns)
+421M	clean	ci/bundle-size-budget	/private/tmp/A5b-bundle-budget	3886d7de3 ci(perf): gzipped bundle-size budget gate (locks in #794+#795 wins)
+421M	clean	cleanup/agent-id-tierc-archive	/private/tmp/A34-tierc-archive	d8dbd2bf5 cleanup(reports): archive 7 zero-reference legacy a<N>-* files (Tier-C per A23)
+421M	clean	cleanup/b17-pr3-sign-audio-dead	/private/tmp/A4-b17-pr3-sign-audio	c2783118d cleanup(b17-pr3): remove dead sign-audio resolver path
+421M	clean	feat/a18-recompute-entitlement-writer	/private/tmp/A1d-a18-pr1	f01abbbe8 feat(billing): A18 PR1 — recomputeEntitlement single writer (additive, zero call sites)
+421M	clean	feat/b13ph3-pr-a	/private/tmp/A1-b13ph3-pra	8a2e68b21 feat(billing): B13ph3 PR-A — _shared/entitlement.ts (additive, zero importers)
+421M	clean	feat/b13ph3-pr-b	/private/tmp/A1c-b13ph3-prb	4fd140f6c feat(billing): B13ph3 PR-B — atomic R1–R4 repoint + parity tests (money-path)
+421M	clean	fix/webhook-monotonic-object-quality	/private/tmp/A29-webhook-payload-fix	353cedc97 fix(webhook): monotonic raw_payload on object quality (per A14)
+421M	clean	perf/lazy-mercyguide-panel	/private/tmp/A30-mercyguide-lazy	0b71189ce perf(bundle): lazy-load MercyGuidePanel — 14.3 KB gz off first paint (A25 Lever 1)
+421M	dirty	b49/premise-correction-section	/private/tmp/B49-premise-correction	3e99abec1 docs(agent-briefs): premise correction protocol added to preflight checklist
+422M	dirty	a61/seo-jsonld	/private/tmp/A61-seo-audit	32b92fb71 feat(seo): static Organization JSON-LD in SPA shell (A61)
+422M	dirty	a68/mercy-feedback-config-diagnostics	/private/tmp/A68-feedback-livetest	654f0dad3 fix(api): mercy-feedback names the exact missing supabase env var (A68)
+423M	clean	a25/bundle-audit-fresh	/private/tmp/A25-bundle-audit	c6f0f352b docs(perf): A25 bundle audit — speak-tab split lever is stale; MercyGuidePanel eager-import is the real win
+423M	clean	a37/vendor-split-measure	/private/tmp/A37-vendor-split-measure	4a55690ac docs(recon): vendor-split evidence — zod/sonner/date-fns are lazy-only, ship 3-way split (~31.4 KB gz, A37)
+429M	dirty	a46/account-a11y	/private/tmp/A46-a11y-next	cb4db2f66 fix(a11y): label confirm/time inputs + AA contrast on /account (A46)
+435M	clean	ci/A12-coverage-gate	/private/tmp/A12-coverage	3f56ab623 ci(coverage): add Vitest coverage gate with per-folder ratchet (A12)
+443M	dirty	test/A12-billing-client-coverage-ratchet	/private/tmp/A12-billing-client	ac3417deb test(billing): raise src/billing coverage 62.32% -> 85.71% via subscriptionRepository seam tests (A12-ratchet-2b-tests)
+443M	dirty	test/A12-billing-coverage-ratchet	/private/tmp/A12-billing-tests	9036d1d25 test(billing): raise _billing coverage 37.07% -> 75.37% (A12-coverage-ratchet-1)
+1.3G	clean	feat/a3-placement-v3-data-quality	/private/tmp/a3-placement-v3-data-quality	62c3afe32 fix(placement-v3): audit merged v3 corpus data
+1.3G	clean	reports/a37-shadow-replay-readiness	/private/tmp/a37-report-followup	3d48a9962 docs(placement-v3): add A37 blocker setup runbooks
+7.8G	dirty	feat/a2-placement-v3-observability	/Users/admin/MercyB	92431ac9a docs(placement-v3): add forensics live-validation readiness package
+
+## Node Modules Usage
+  0B	/Users/admin/Library/Caches/deno/npm/registry.npmjs.org/resolve/1.22.11/test/resolver/symlinked/_/node_modules
+  0B	/Users/admin/Library/Caches/deno/npm/registry.npmjs.org/resolve/1.22.11/test/shadowed_core/node_modules
+  0B	/Users/admin/Library/Caches/deno/npm/registry.npmjs.org/resolve/1.22.12/test/resolver/symlinked/_/node_modules
+  0B	/Users/admin/Library/Caches/deno/npm/registry.npmjs.org/resolve/1.22.12/test/shadowed_core/node_modules
+8.0K	/Users/admin/.vscode/extensions/ms-azuretools.vscode-containers-2.4.4/dist/node_modules
+ 24K	/Users/admin/.npm/_npx/1d6e82a4126006c4/node_modules
+ 32K	/Users/admin/.npm/_npx/0d92fdd791cc1044/node_modules
+180K	/Users/admin/Library/Caches/com.microsoft.VSCode.ShipIt/update.ELvx2d5/Visual Studio Code.app/Contents/Resources/app/extensions/git/node_modules
+488K	/Users/admin/Library/Caches/com.apple.python/Users/admin/.local/share/fnm/node-versions/v22.22.1/installation/lib/node_modules
+488K	/Users/admin/Library/Caches/com.apple.python/opt/homebrew/lib/node_modules
+644K	/Users/admin/.npm/_npx/bd03aaf280724e38/node_modules
+1.2M	/Users/admin/MercyB/.vercel/output/functions/api/mercy-feedback.func/node_modules
+1.2M	/Users/admin/MercyB/.vercel/output/functions/api/mercy/grammar.func/node_modules
+1.7M	/Users/admin/.npm/_npx/ac0ed6aa23b37c1e/node_modules
+2.0M	/Users/admin/.npm/_npx/46837484aeb1919d/node_modules
+2.5M	/Users/admin/MercyB/.vercel/output/functions/api/mercy-ai.func/node_modules
+4.0M	/Users/admin/.lmstudio/extensions/plugins/lmstudio/js-code-sandbox/node_modules
+4.0M	/Users/admin/.lmstudio/extensions/plugins/lmstudio/rag-v1/node_modules
+6.9M	/Users/admin/.npm/_npx/af6812591d51716d/node_modules
+ 11M	/Users/admin/.npm/_npx/fd45a72a545557e9/node_modules
+ 12M	/Users/admin/.npm/_npx/515228b7c8d004a2/node_modules
+ 15M	/Users/admin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/schemaui-0.12.0/web/ui/node_modules
+ 15M	/Users/admin/.local/share/fnm/node-versions/v20.20.0/installation/lib/node_modules
+ 17M	/Users/admin/Library/Caches/com.microsoft.VSCode.ShipIt/update.ELvx2d5/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules
+ 20M	/Users/admin/.vscode/extensions/github.copilot-chat-0.45.1/node_modules
+ 20M	/Users/admin/.vscode/extensions/github.copilot-chat-0.48.1/node_modules
+ 24M	/Users/admin/Library/Caches/com.microsoft.VSCode.ShipIt/update.ELvx2d5/Visual Studio Code.app/Contents/Resources/app/extensions/copilot/node_modules
+ 25M	/Users/admin/.npm/_npx/3645287bf668eab3/node_modules
+ 30M	/Users/admin/.npm/_npx/8d873e0e769cf1b4/node_modules
+ 35M	/Users/admin/.npm/_npx/69c381f8ad94b576/node_modules
+ 40M	/Users/admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/artifact_tool_v2/bin/node_modules
+ 40M	/Users/admin/tools/clawcodex/node_modules
+101M	/Users/admin/.npm/_npx/bdbf2deecdd22bc5/node_modules
+136M	/Users/admin/Library/Caches/com.microsoft.VSCode.ShipIt/update.ELvx2d5/Visual Studio Code.app/Contents/Resources/app/node_modules
+144M	/Users/admin/.npm/_npx/69f9afb961c37556/node_modules
+150M	/Users/admin/.npm/_npx/aa8e5c70f9d8d161/node_modules
+170M	/Users/admin/.npm/_npx/67eb4586ca667318/node_modules
+178M	/Users/admin/.npm/_npx/8003d8991b0d346b/node_modules
+183M	/Users/admin/.npm/_npx/0f94ee7615faf582/node_modules
+183M	/Users/admin/.npm/_npx/ffe2131771d88588/node_modules
+263M	/Users/admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules
+380M	/Users/admin/MercyB-icons/node_modules
+417M	/Users/admin/projects/mercy-signal/node_modules
+946M	/private/tmp/a37-report-followup/node_modules
+969M	/private/tmp/a3-placement-v3-data-quality/node_modules
+991M	/Users/admin/MercyB/node_modules
+999M	/Users/admin/mercy-ai-builder/node_modules
+1.2G	/Users/admin/.local/share/fnm/node-versions/v22.22.1/installation/lib/node_modules
+
+## Cache Usage
+1.4G	/Users/admin/.npm
+  0B	/Users/admin/Library/pnpm/store
+528M	/Users/admin/Library/Caches/ms-playwright
+  0B	/Users/admin/Library/Developer/Xcode/DerivedData
+2.8G	/Users/admin/Library/Caches
+6.5G	/Users/admin/Library/Application Support/Google
+
+## Files Over 500MB
+648M	/Users/admin/Library/Developer/CoreSimulator/Devices/C1E473C3-2DCF-4382-A852-2C67A130E413/data/private/var/MobileAsset/AssetsV2/com_apple_MobileAsset_UAF_Siri_Understanding/purpose_auto/c079bfa6b8856202dc8cb2135fef3b06229ced6e.asset/AssetData/Restore/UC_SIRI_ASR_ASSISTANT_EN_US_EN_US_H18P_Cryptex.dmg
+689M	/Users/admin/Library/Application Support/Google/GoogleUpdater/crx_cache/25a7f27441de8c2446fb8cf1b4c0596a2a8a846f9d74aa52c03ced2f0606cc29
+785M	/Users/admin/MercyB/.git/objects/pack/pack-4c7175afe2b5fe23fbb0d215947f62c912297f94.pack
+1.3G	/Users/admin/.openclaw/logs/node.err.log
+3.9G	/Users/admin/MercyB/.git/objects/pack/pack-a75277d88f6846387b191c4338bd182adb5dd9fb.pack
+4.0G	/Users/admin/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/2025.8.8.1141/weights.bin
+6.6G	/Users/admin/Library/Containers/com.docker.docker/Data/vms/0/data/Docker.raw
+
+## Repo Count
+5
+WARN: section command exited nonzero: repo_count
+
+## Stale Clean Worktrees
+
+Audit complete: /private/tmp/mercyb-disk-cleanup-audit/reports/disk-cleanup-evidence/disk-audit-20260520-072827.log
