@@ -1,0 +1,79 @@
+name: Reliability Burn-in
+
+on:
+  workflow_dispatch:
+    inputs:
+      unit_iterations:
+        description: "Repeated npm test runs"
+        required: true
+        default: "5"
+      e2e_iterations:
+        description: "Repeated Placement V3 E2E runs"
+        required: true
+        default: "5"
+      e2e_pattern:
+        description: "Playwright test pattern"
+        required: true
+        default: "placement-v3-vertical"
+
+jobs:
+  reliability-burnin:
+    name: Reliability burn-in
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      LOG_DIR: reports/b1-e2e-diagnostics/burnin
+      ARTIFACT_DIR: reports/b1-e2e-diagnostics/burnin/artifacts
+      VITE_PLACEMENT_TEST_ENABLED: "true"
+      VITE_PLACEMENT_V3_UI_ENABLED: "true"
+      VITE_SUPABASE_URL: "https://placeholder.invalid.supabase.co"
+      VITE_SUPABASE_ANON_KEY: "placeholder-anon-key-not-real"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Repeated unit burn-in
+        env:
+          SUMMARY_JSON: reports/b1-e2e-diagnostics/burnin/repeat-unit-summary.json
+          CLUSTER_JSON: reports/b1-e2e-diagnostics/burnin/repeat-unit-flaky-summary.json
+          RUN_PREFIX: burnin-unit
+        run: scripts/testing/run-repeat-unit.sh "${{ inputs.unit_iterations }}"
+
+      - name: Repeated Placement V3 E2E burn-in
+        env:
+          SUMMARY_JSON: reports/b1-e2e-diagnostics/burnin/repeat-e2e-summary.json
+          CLUSTER_JSON: reports/b1-e2e-diagnostics/burnin/repeat-e2e-flaky-summary.json
+          RUN_PREFIX: burnin-e2e
+        run: scripts/testing/run-repeat-e2e.sh "${{ inputs.e2e_iterations }}" "${{ inputs.e2e_pattern }}"
+
+      - name: Flaky-pattern summary
+        if: always()
+        run: |
+          npx tsx scripts/testing/detect-flaky-patterns.ts reports/b1-e2e-diagnostics/burnin --json reports/b1-e2e-diagnostics/burnin/flaky-pattern-summary.json --pretty || true
+          if [ -f reports/b1-e2e-diagnostics/burnin/flaky-pattern-summary.json ]; then
+            cat reports/b1-e2e-diagnostics/burnin/flaky-pattern-summary.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload reliability artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reliability-burnin-artifacts
+          path: |
+            reports/b1-e2e-diagnostics/
+            test-results/
+            playwright-smoke-report/
+          if-no-files-found: warn

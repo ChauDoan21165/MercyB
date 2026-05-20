@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-05-20T13:40:07.234Z",
+  "testTitle": [
+    "placement-v3-vertical.spec.ts",
+    "placement v3 end-to-end vertical",
+    "runs UI client, session orchestrator, graders, recommender, results, and persistence"
+  ],
+  "status": "passed",
+  "expectedStatus": "passed",
+  "retry": 0,
+  "traceLocation": "/private/tmp/b1-test-stability-push.VtLu79/test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium",
+  "screenshotPath": "/private/tmp/b1-test-stability-push.VtLu79/reports/b1-e2e-diagnostics/2026-05-20T13-40-07-218Z-placement-v3-vertical.spec.ts__placement-v3-end-to-end-vertical__runs-UI-client-session-orchestrator-graders-recommender-results-and-persist.png",
+  "pendingRequests": [],
+  "snapshot": {
+    "currentUrl": "http://127.0.0.1:3107/placement",
+    "currentTaskId": null,
+    "activeControl": null,
+    "submitDisabled": null,
+    "submitText": null,
+    "visibleValidationErrors": [],
+    "featureFlags": {
+      "placementRouteVisible": true,
+      "placementV3CopyVisible": false
+    }
+  }
+}
