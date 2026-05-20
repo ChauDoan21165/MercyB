@@ -1,6 +1,11 @@
 // supabase/functions/stripe-webhook/stripe-signature.ts
 
-import { env } from "./core.ts";
+// A13-circle-1: previously `import { env } from "./core.ts"`, which
+// formed a cycle with core.ts's `import { parseWebhookSecrets } from
+// "./stripe-signature.ts"`. `env` now lives in the cycle-free leaf
+// `./stripe-env.ts`; core.ts re-exports it for back-compat with
+// any external caller of the old path.
+import { env } from "./stripe-env.ts";
 
 function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
   if (a.length !== b.length) return false;
