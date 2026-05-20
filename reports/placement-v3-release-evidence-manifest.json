@@ -106,6 +106,15 @@
       "evidenceQuality": "draft observability tooling",
       "runtimeValidated": false,
       "productionSafeToEnable": false
+    },
+    {
+      "number": 954,
+      "title": "feat(placement-v3): add endurance + regression burn-in tooling",
+      "status": "open draft / clean at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-954.json",
+      "evidenceQuality": "draft endurance tooling; burn-in artifacts still required",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
     }
   ],
   "reports": [
@@ -121,7 +130,12 @@
     "reports/placement-v3-rollback-matrix.md",
     "reports/placement-v3-founder-decision-template.md",
     "reports/placement-v3-operational-cadence.md",
-    "reports/placement-v3-launch-criteria-history.md"
+    "reports/placement-v3-launch-criteria-history.md",
+    "reports/placement-v3-launch-control-board.md",
+    "reports/placement-v3-next-agent-queue.md",
+    "reports/placement-v3-merge-decision-table.md",
+    "reports/placement-v3-unblock-command-sheet.md",
+    "reports/placement-v3-do-not-do.md"
   ],
   "logs": [
     "reports/placement-v3-readiness-evidence/typecheck.log",

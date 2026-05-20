@@ -27,6 +27,11 @@ This report is now the current founder-facing decision snapshot. The ongoing rel
 - `reports/placement-v3-founder-decision-template.md` — future launch/no-launch signoff template.
 - `reports/placement-v3-operational-cadence.md` — daily/weekly review and rerun cadence.
 - `reports/placement-v3-launch-criteria-history.md` — changelog for launch requirements, blocker status, and evidence-triggered decisions.
+- `reports/placement-v3-launch-control-board.md` — founder-usable active PR board with owner agents, evidence gaps, merge recommendations, and next prompts.
+- `reports/placement-v3-next-agent-queue.md` — next-task queue for A2, A3, A33, A36, A37, B1, Sentinel, and Cleaner.
+- `reports/placement-v3-merge-decision-table.md` — merge/hold table with required commands, rollback concerns, and production risk.
+- `reports/placement-v3-unblock-command-sheet.md` — copy/paste commands for PR checks, rebases, verification, audits, and evidence refresh.
+- `reports/placement-v3-do-not-do.md` — hard constraints for flags, overclaims, branch discipline, dirty worktrees, and simulated-vs-live evidence.
 
 Use these files as the canonical place to update status as blockers clear. Do not infer launch readiness from green CI or scaffold PRs; only close gates with linked runtime evidence.
 

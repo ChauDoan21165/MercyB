@@ -5,6 +5,14 @@ Canonical release checklist for Placement V3. Update this file as evidence chang
 Status values: `met`, `partial`, `blocked`, `not started`.
 Severity values: `critical`, `high`, `medium`, `low`.
 
+## Daily Control Links
+
+- `reports/placement-v3-launch-control-board.md`
+- `reports/placement-v3-next-agent-queue.md`
+- `reports/placement-v3-merge-decision-table.md`
+- `reports/placement-v3-unblock-command-sheet.md`
+- `reports/placement-v3-do-not-do.md`
+
 ## Merged Prerequisites
 
 | Gate | Status | Evidence source | Blocking severity | Owner | Next action |
@@ -24,7 +32,7 @@ Severity values: `critical`, `high`, `medium`, `low`.
 | Lint exits 0 | met | `lint.log` | medium | Engineering | Keep existing warnings from growing. |
 | Placement V3 vertical E2E default-off gate verified | met | `e2e-failure-analysis.md`; `e2e-reruns/run-1-normal/output-after-browser-install.log` | high | Test infrastructure owner | Keep default-off routing covered. |
 | Placement V3 mocked vertical path passes with explicit flags | met | `e2e-failure-analysis.md`; `e2e-reruns/run-2-explicit-flags/output.log`; `e2e-reruns/run-3-explicit-flags-trace-on/output.log` | high | Test infrastructure owner | Make the harness fail fast on stale port 3107 / unknown Vite env. |
-| New test stability work is mergeable | blocked | PR #950 Build and Test failure; `reports/placement-v3-readiness-evidence/pr-950.json` | high | Test infrastructure owner | Fix #950 CI before using it as a launch prerequisite. |
+| New test stability work is mergeable | met | PR #950 clean/green at latest capture; `reports/placement-v3-readiness-evidence/pr-950.json` | high | Test infrastructure owner | Review PR body for no production-readiness overclaim, then merge if scoped. |
 
 ## Runtime Validation Prerequisites
 
