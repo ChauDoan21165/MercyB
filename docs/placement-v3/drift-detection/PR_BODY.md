@@ -12,6 +12,7 @@ Adds Placement V3 grading drift infrastructure:
 
 This PR is finalized as **replay infrastructure complete; live replay blocked**.
 It now also supports **deterministic local replay simulation** for pipeline validation without provider or Supabase secrets.
+Replay determinism is now guarded by CI-runnable checks so future fixture/order/serialization drift cannot silently change simulated replay output.
 
 Unrelated untracked A35/benchmark/adaptive-generation files were intentionally excluded from this A36 commit.
 
@@ -23,6 +24,7 @@ Unrelated untracked A35/benchmark/adaptive-generation files were intentionally e
 - Providers intended: live grader routing via current Supabase edge functions
 - Live replay status: blocked before grader calls
 - Simulation status: runnable locally with `--simulate`; all simulated artifacts are marked `simulated: true`
+- Determinism status: guarded by `npm run check:placement-replay-fixtures`, `npm run check:placement-replay-determinism`, and `replayDeterminism.test.ts`
 
 # Drift Findings
 
@@ -64,6 +66,22 @@ Simulation artifacts are committed under:
 
 Simulation proves replay pipeline integrity only. It is not live provider evidence.
 
+# Determinism Guardrails
+
+Added deterministic replay regression coverage:
+
+- artifact schema validator: `src/lib/placementDrift/validateReplayArtifact.ts`
+- fixture integrity checker: `scripts/placement-v3/check-replay-fixtures.ts`
+- repeated-run determinism checker: `scripts/placement-v3/check-replay-determinism.ts`
+- regression test: `tests/integration/placement-v3-drift-detection/replayDeterminism.test.ts`
+- guardrail docs: `docs/placement-v3/drift-detection/determinism-guardrails.md`
+
+Repeated-run logs are committed under:
+
+- `docs/placement-v3/drift-detection/determinism-runs/`
+
+This evidence remains simulated-only. It does not claim live replay metrics or provider drift metrics.
+
 # Risks
 
 - Live replay remains unverified until credentials are present.
@@ -82,6 +100,28 @@ npm run typecheck
 npx vitest run tests/integration/placement-v3-drift-detection/drift-detection.test.ts
 npm run build
 ```
+
+Passing verification for the determinism guardrail follow-up exactly as run:
+
+```bash
+npm run typecheck
+npx vitest run tests/integration/placement-v3-drift-detection/drift-detection.test.ts tests/integration/placement-v3-drift-detection/replayDeterminism.test.ts
+npm run check:placement-replay-fixtures
+npm run check:placement-replay-determinism -- --runs 5
+npm run build
+```
+
+Repeated evidence generated:
+
+```bash
+# 5 simulation run logs under docs/placement-v3/drift-detection/determinism-runs/
+npx tsx scripts/placement-v3/run-grading-replay.ts --simulate --batch determinism-sim-01 --outDir docs/placement-v3/drift-detection/determinism-runs/determinism-sim-01 --resume=false
+
+# 5 determinism checker logs under docs/placement-v3/drift-detection/determinism-runs/
+npx tsx scripts/placement-v3/check-replay-determinism.ts --runs 3 --outDir docs/placement-v3/drift-detection/determinism-runs/determinism-check-01
+```
+
+The generated JSON artifacts were checked for top-level `simulated: true`; only the replay/checker logs are committed in `determinism-runs/` to keep evidence reviewable.
 
 The simulated artifact check also passed:
 

@@ -6,6 +6,8 @@
 - Added replay runner with resumable partial output and database persistence.
 - Added drift analysis library, Supabase tables, edge report function, and admin dashboard.
 - Added deterministic local simulation mode and three committed simulated replay runs under `simulated-runs/`. These artifacts are explicitly marked `simulated: true` and are not live provider metrics.
+- Added deterministic replay guardrails: fixture integrity check, schema validation, repeated-run determinism checker, and `replayDeterminism.test.ts`.
+- Ran five additional simulated replay runs and five determinism checker runs under `determinism-runs/`. These are simulated-only pipeline evidence, not live provider drift evidence.
 - Attempted live replay command is documented in `a36-blockers.md` if credentials are unavailable.
 
 ## Required Future Entries

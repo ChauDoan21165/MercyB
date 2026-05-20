@@ -1,0 +1,2 @@
+A36 determinism check 5 2026-05-20T13:33:39Z
+[placement-drift] replay determinism check passed runs=3 samples=40 outDir=docs/placement-v3/drift-detection/determinism-runs/determinism-check-05 simulated=true

@@ -23,6 +23,8 @@
     "check:empty-rooms": "node scripts/check-empty-rooms.cjs",
     "check:kw-coverage": "node scripts/check-rooms-keyword-coverage.mjs",
     "check:mercy-grammar": "rg -n \"localGrammarFallback|tabs/GrammarWritingTab|grammar-writing/fallback\" src && exit 1 || exit 0",
+    "check:placement-replay-determinism": "tsx scripts/placement-v3/check-replay-determinism.ts",
+    "check:placement-replay-fixtures": "tsx scripts/placement-v3/check-replay-fixtures.ts",
     "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
     "prebuild": "npm run rooms:check",
     "build": "node scripts/generate-version.js && npm run generate:audio-manifest && npm run generate:sitemap && vite build",
