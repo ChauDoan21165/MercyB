@@ -162,3 +162,47 @@ export const stripeWebhookEventSchema = z.object({
   }).passthrough(),
 }).passthrough();
 export type StripeWebhookEventParsed = z.infer<typeof stripeWebhookEventSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * RevenueCat — Webhook v2 event
+ *
+ * Reference: https://www.revenuecat.com/docs/integrations/webhooks/event-flows-and-objects
+ *
+ * RevenueCat wraps every event in `{ event: {...}, api_version: string }`.
+ * The inner event always has a `type` string (INITIAL_PURCHASE,
+ * RENEWAL, CANCELLATION, etc.). All other fields vary by event type;
+ * the existing handler reads them defensively. The schema mirrors that
+ * defensive shape — `type` required, everything else optional +
+ * `.passthrough()` so RevenueCat-added fields do not reject real events.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const revenuecatWebhookEnvelopeSchema = z.object({
+  api_version: z.string().optional(),
+  event: z.object({
+    // The handler hard-requires a string `type` (line 162 of pre-A11
+    // index.ts). Schema-level requirement matches the runtime guard.
+    type: z.string().min(1),
+    id: z.string().optional(),
+    app_user_id: z.string().optional(),
+    original_app_user_id: z.string().optional(),
+    aliases: z.array(z.string()).optional(),
+    product_id: z.string().optional(),
+    transaction_id: z.string().optional(),
+    original_transaction_id: z.string().optional(),
+    entitlement_id: z.string().nullable().optional(),
+    entitlement_ids: z.array(z.string()).optional(),
+    expiration_at_ms: z.number().nullable().optional(),
+    purchased_at_ms: z.number().nullable().optional(),
+    event_timestamp_ms: z.number().optional(),
+    environment: z.enum(["PRODUCTION", "SANDBOX"]).optional(),
+    price: z.number().nullable().optional(),
+    price_in_purchased_currency: z.number().nullable().optional(),
+    currency: z.string().nullable().optional(),
+    store: z.string().optional(),
+    period_type: z.string().optional(),
+    presented_offering_id: z.string().nullable().optional(),
+    cancel_reason: z.string().nullable().optional(),
+    new_product_id: z.string().nullable().optional(),
+  }).passthrough(),
+}).passthrough();
+export type RevenuecatWebhookEnvelope = z.infer<typeof revenuecatWebhookEnvelopeSchema>;
