@@ -1,0 +1,67 @@
+{
+  "replayedAt": "2026-05-20T13:02:53.433Z",
+  "input": "docs/placement-v3/observability/raw-runs/a2-burnin-02-malformed-json-grader-output-before.json",
+  "scenario": "malformed-json-grader-output",
+  "runLabel": "before",
+  "reconstruction": {
+    "sessionId": "session-malformed-json-grader-output",
+    "correlationId": "corr-malformed-json-grader-output-before",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:04.000Z",
+    "eventCount": 4,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": true,
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [
+      "no terminal transition after orchestrator.next at sequence 3"
+    ],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "provider_event",
+        "step": "grader.parse",
+        "message": "Provider returned malformed JSON.",
+        "severity": "error"
+      }
+    ]
+  },
+  "diagnostics": {
+    "missingEvents": 0,
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [
+      "no terminal transition after orchestrator.next at sequence 3"
+    ],
+    "providerSwitches": 0,
+    "fallbacks": 0
+  }
+}

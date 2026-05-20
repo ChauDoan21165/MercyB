@@ -278,6 +278,7 @@ const AdminAnalyticsPage      = lazyWithRetry(() => import("@/pages/admin/AdminA
 const LatencyMonitoring       = lazyWithRetry(() => import("@/pages/admin/LatencyMonitoring"));
 const SloDashboard            = lazyWithRetry(() => import("@/pages/admin/SloDashboard"));
 const SloDetail               = lazyWithRetry(() => import("@/pages/admin/SloDetail"));
+const PlacementForensicsDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementForensicsDashboard"));
 const CostMonitoring          = lazyWithRetry(() => import("@/pages/admin/CostMonitoring"));
 const FrontendPerformance     = lazyWithRetry(() => import("@/pages/admin/FrontendPerformance"));
 const RetentionDashboard      = lazyWithRetry(() => import("@/pages/admin/RetentionDashboard"));
@@ -1667,6 +1668,7 @@ export default function AppRouter() {
               <Route path="feedback-triage"      element={<LazyPage><FeedbackTriagePage /></LazyPage>} />
               <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
               <Route path="latency"              element={<LazyPage><LatencyMonitoring /></LazyPage>} />
+              <Route path="placement-forensics"  element={<LazyPage><PlacementForensicsDashboard /></LazyPage>} />
               <Route path="slo"                  element={<LazyPage><SloDashboard /></LazyPage>} />
               <Route path="slo/:sloId"           element={<LazyPage><SloDetail /></LazyPage>} />
               <Route path="cost-monitoring"      element={<LazyPage><CostMonitoring /></LazyPage>} />

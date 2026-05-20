@@ -1,0 +1,17 @@
+
+Running 8 tests using 1 worker
+
+(node:47243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:52:3 › Placement forensics dashboard operator flows › operator can see the forensic dashboard shell (167ms)
+  ✓  2 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:57:3 › Placement forensics dashboard operator flows › operator can identify failed and degraded session counts (161ms)
+  ✓  3 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:62:3 › Placement forensics dashboard operator flows › operator can identify retry and provider-switch pressure (170ms)
+  ✓  4 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:67:3 › Placement forensics dashboard operator flows › operator can identify latency spikes and orchestration dead ends (156ms)
+  ✓  5 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:72:3 › Placement forensics dashboard operator flows › operator can inspect runtime alerts (127ms)
+  ✓  6 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:77:3 › Placement forensics dashboard operator flows › operator can distinguish recoverable degraded and unrecoverable sessions (105ms)
+  ✓  7 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:82:3 › Placement forensics dashboard operator flows › operator can spot missing event sequence evidence (122ms)
+  ✓  8 [chromium] › tests/e2e/placement-forensics-dashboard.spec.ts:86:3 › Placement forensics dashboard operator flows › operator can spot taxonomy-trigger anomalies (117ms)
+
+  8 passed (1.6s)

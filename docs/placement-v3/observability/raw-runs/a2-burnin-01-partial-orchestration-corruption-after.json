@@ -1,0 +1,143 @@
+{
+  "isoTimestamp": "2026-05-20T13:02:26.446Z",
+  "command": "tsx scripts/placement-v3/run-failure-injection.ts --run-id a2-burnin-01",
+  "scenario": "partial-orchestration-corruption",
+  "runLabel": "after",
+  "runId": "a2-burnin-01",
+  "providerValidation": "simulated-local; Placement V3 Edge Functions absent on origin/main",
+  "events": [
+    {
+      "id": "partial-orchestration-corruption-after-1",
+      "sessionId": "session-partial-orchestration-corruption",
+      "correlationId": "corr-partial-orchestration-corruption-after",
+      "occurredAt": "2026-05-20T18:00:01.000Z",
+      "sequence": 1,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "partial-orchestration-corruption"
+        }
+      },
+      "type": "session_event",
+      "step": "session.start",
+      "message": "Placement session started.",
+      "sessionState": "in_progress"
+    },
+    {
+      "id": "partial-orchestration-corruption-after-2",
+      "sessionId": "session-partial-orchestration-corruption",
+      "correlationId": "corr-partial-orchestration-corruption-after",
+      "occurredAt": "2026-05-20T18:00:02.000Z",
+      "sequence": 2,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "partial-orchestration-corruption"
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.snapshot",
+      "message": "Feature flags captured."
+    },
+    {
+      "id": "partial-orchestration-corruption-after-3",
+      "sessionId": "session-partial-orchestration-corruption",
+      "correlationId": "corr-partial-orchestration-corruption-after",
+      "occurredAt": "2026-05-20T18:00:03.000Z",
+      "sequence": 3,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "partial-orchestration-corruption"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.next",
+      "message": "Moved from start to grading.",
+      "fromState": "started",
+      "toState": "grading",
+      "action": "respond"
+    },
+    {
+      "id": "partial-orchestration-corruption-after-4",
+      "sessionId": "session-partial-orchestration-corruption",
+      "correlationId": "corr-partial-orchestration-corruption-after",
+      "occurredAt": "2026-05-20T18:00:04.000Z",
+      "sequence": 4,
+      "severity": "error",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "partial-orchestration-corruption"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.corruption",
+      "message": "Current modality and task index diverged.",
+      "fromState": "grading",
+      "toState": "failed",
+      "action": "detect_corruption"
+    }
+  ],
+  "reconstruction": {
+    "sessionId": "session-partial-orchestration-corruption",
+    "correlationId": "corr-partial-orchestration-corruption-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:04.000Z",
+    "eventCount": 4,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.corruption",
+        "message": "Current modality and task index diverged.",
+        "severity": "error"
+      }
+    ]
+  }
+}

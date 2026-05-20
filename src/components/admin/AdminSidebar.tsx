@@ -36,6 +36,7 @@ import {
   Flag,
   BarChart3,
   TrendingDown,
+  Activity,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -80,6 +81,7 @@ const billingItems: AdminNavItem[] = [
 const toolsItems: AdminNavItem[] = [
   { title: "Audio Coverage", url: "/admin/audio-coverage", icon: Volume2 },
   { title: "Room Load Diagnostics", url: "/admin/room-load-diagnostics", icon: Search },
+  { title: "Placement Forensics", url: "/admin/placement-forensics", icon: Activity },
   { title: "Feature Flags", url: "/admin/feature-flags", icon: Flag },
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
 ];
