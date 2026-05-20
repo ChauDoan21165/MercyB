@@ -1,0 +1,15 @@
+{
+  "type": "e2e-repeat",
+  "startedAt": "2026-05-20T14:23:43Z",
+  "endedAt": "2026-05-20T14:24:47Z",
+  "iterations": 5,
+  "pattern": "placement-v3-vertical",
+  "baseUrl": "http://127.0.0.1:5133",
+  "passCount": 5,
+  "failCount": 0,
+  "totalDurationSeconds": 64,
+  "measuredTestDurationSeconds": 63,
+  "logDir": "reports/b1-burnin/contention/build-contention",
+  "artifactDir": "reports/b1-burnin/contention/build-contention/artifacts",
+  "runs": [{"run":1,"status":0,"startedAt":"2026-05-20T14:23:43Z","endedAt":"2026-05-20T14:23:55Z","durationSeconds":12,"log":"reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142343-run-1.log"},{"run":2,"status":0,"startedAt":"2026-05-20T14:23:55Z","endedAt":"2026-05-20T14:24:07Z","durationSeconds":12,"log":"reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142355-run-2.log"},{"run":3,"status":0,"startedAt":"2026-05-20T14:24:07Z","endedAt":"2026-05-20T14:24:19Z","durationSeconds":11,"log":"reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142407-run-3.log"},{"run":4,"status":0,"startedAt":"2026-05-20T14:24:19Z","endedAt":"2026-05-20T14:24:31Z","durationSeconds":12,"log":"reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142419-run-4.log"},{"run":5,"status":0,"startedAt":"2026-05-20T14:24:31Z","endedAt":"2026-05-20T14:24:47Z","durationSeconds":16,"log":"reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142431-run-5.log"}]
+}

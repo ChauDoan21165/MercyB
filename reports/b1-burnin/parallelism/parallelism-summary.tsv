@@ -1,0 +1,5 @@
+scenario	status	duration_seconds	started_at	log
+serial_e2e	0	12	2026-05-20T14:25:26Z	reports/b1-burnin/parallelism/serial_e2e.log
+parallel_e2e	0	17	2026-05-20T14:25:38Z	reports/b1-burnin/parallelism/parallel_e2e.log
+isolated_browser_invocations	0	46	2026-05-20T14:25:55Z	reports/b1-burnin/parallelism/isolated_browser_invocations.log
+reused_worker_repeat_each	0	36	2026-05-20T14:26:41Z	reports/b1-burnin/parallelism/reused_worker_repeat_each.log

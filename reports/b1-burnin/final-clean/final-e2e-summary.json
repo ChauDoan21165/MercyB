@@ -1,0 +1,15 @@
+{
+  "type": "e2e-repeat",
+  "startedAt": "2026-05-20T14:32:32Z",
+  "endedAt": "2026-05-20T14:33:20Z",
+  "iterations": 5,
+  "pattern": "placement-v3-vertical",
+  "baseUrl": "http://127.0.0.1:4071",
+  "passCount": 5,
+  "failCount": 0,
+  "totalDurationSeconds": 48,
+  "measuredTestDurationSeconds": 48,
+  "logDir": "reports/b1-burnin/final-clean/e2e",
+  "artifactDir": "reports/b1-burnin/final-clean/e2e/artifacts",
+  "runs": [{"run":1,"status":0,"startedAt":"2026-05-20T14:32:32Z","endedAt":"2026-05-20T14:32:41Z","durationSeconds":9,"log":"reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143232-run-1.log"},{"run":2,"status":0,"startedAt":"2026-05-20T14:32:41Z","endedAt":"2026-05-20T14:32:50Z","durationSeconds":9,"log":"reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143241-run-2.log"},{"run":3,"status":0,"startedAt":"2026-05-20T14:32:50Z","endedAt":"2026-05-20T14:33:00Z","durationSeconds":10,"log":"reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143250-run-3.log"},{"run":4,"status":0,"startedAt":"2026-05-20T14:33:00Z","endedAt":"2026-05-20T14:33:11Z","durationSeconds":11,"log":"reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143300-run-4.log"},{"run":5,"status":0,"startedAt":"2026-05-20T14:33:11Z","endedAt":"2026-05-20T14:33:20Z","durationSeconds":9,"log":"reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143311-run-5.log"}]
+}

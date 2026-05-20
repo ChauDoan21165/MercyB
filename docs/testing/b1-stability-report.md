@@ -108,6 +108,25 @@ Anti-flake policy block: 2026-05-20T13:30:00Z to 2026-05-20T13:42:48Z.
 - Port-conflict or stale-server evidence in Playwright web server logs.
 - Network failures against mocked Supabase/auth/function routes.
 
+## Sustained Burn-In Addendum
+
+On 2026-05-20, B1 ran a sustained burn-in investigation under `reports/b1-burnin/`:
+
+- 25/25 long-run `npm test` executions passed.
+- 25/25 long-run Placement V3 E2E executions passed.
+- 10 typecheck/build cycles passed, covering 30 successful commands.
+- 5/5 Placement V3 E2E executions passed while `npm test` ran simultaneously.
+- 5/5 Placement V3 E2E executions passed while `npm run build` ran simultaneously.
+- Serial, parallel, isolated-browser, and reused-worker E2E variation all passed.
+- Final verification passed: `npm run typecheck`, `npm run typecheck:ci`, `npm run build`, 5/5 clean `npm test`, and 5/5 clean Placement V3 E2E.
+
+No Placement V3 product nondeterminism emerged. The main operational finding is timeout headroom: the first E2E run under simultaneous unit-test startup slowed to 54 seconds but still passed. Full analysis is in:
+
+- `reports/b1-burnin/flaky-failure-forensics.md`
+- `reports/b1-burnin/long-run-metrics.md`
+- `reports/b1-burnin/ci-stress-audit.md`
+- `reports/b1-burnin/final-burnin-report.md`
+
 ## Files Changed
 
 - `docs/testing/b1-initial-test-harness-audit.md`

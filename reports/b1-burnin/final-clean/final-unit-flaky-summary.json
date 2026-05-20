@@ -1,0 +1,175 @@
+{
+  "generatedAt": "2026-05-20T14:32:21.432Z",
+  "logDir": "reports/b1-burnin/final-clean/unit",
+  "runs": [
+    {
+      "file": "reports/b1-burnin/final-clean/unit/final-unit-20260520-142911-run-1.log",
+      "status": "pass",
+      "durationSeconds": 31.45,
+      "route": "https://placeholder.invalid.supabase.co",
+      "selectors": [],
+      "failureSignatures": [
+        "Error: network down",
+        "Error: boom",
+        "error: 42703 column st.key does not exist",
+        "error: 23514 new row violates check constraint \"payment_transactions_payment_method_check\"",
+        "error: 23514 constraint violation",
+        "Error: Resend is down",
+        "Error: PG hiccup",
+        "Error: Unexpected token 'i', \"invalid json{\" is not valid JSON",
+        "error: 'Room not found in database or JSON',",
+        "Error: no native",
+        "Error: network timeout",
+        "Error: net",
+        "error: boom",
+        "error: denied",
+        "Error: upstream down",
+        "error:decodeAudioData failed"
+      ],
+      "kinds": [
+        "timeout",
+        "network failure",
+        "missing element",
+        "route",
+        "selector"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/unit/final-unit-20260520-142943-run-2.log",
+      "status": "pass",
+      "durationSeconds": 34.12,
+      "route": "https://placeholder.invalid.supabase.co",
+      "selectors": [],
+      "failureSignatures": [
+        "Error: network down",
+        "Error: boom",
+        "Error: PG hiccup",
+        "error: 42703 column st.key does not exist",
+        "error: 23514 new row violates check constraint \"payment_transactions_payment_method_check\"",
+        "error: 23514 constraint violation",
+        "Error: Resend is down",
+        "Error: no native",
+        "error: 'Room not found in database or JSON',",
+        "Error: Unexpected token 'i', \"invalid json{\" is not valid JSON",
+        "Error: net",
+        "error: boom",
+        "error: denied",
+        "Error: network timeout",
+        "Error: upstream down",
+        "error:decodeAudioData failed"
+      ],
+      "kinds": [
+        "timeout",
+        "network failure",
+        "missing element",
+        "route",
+        "selector"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/unit/final-unit-20260520-143018-run-3.log",
+      "status": "pass",
+      "durationSeconds": 37.76,
+      "route": "https://placeholder.invalid.supabase.co",
+      "selectors": [],
+      "failureSignatures": [
+        "Error: boom",
+        "Error: network down",
+        "Error: no native",
+        "Error: PG hiccup",
+        "error: 42703 column st.key does not exist",
+        "error: 23514 new row violates check constraint \"payment_transactions_payment_method_check\"",
+        "error: 23514 constraint violation",
+        "Error: Resend is down",
+        "Error: network timeout",
+        "error: 'Room not found in database or JSON',",
+        "Error: Unexpected token 'i', \"invalid json{\" is not valid JSON",
+        "Error: net",
+        "error: boom",
+        "error: denied",
+        "Error: upstream down",
+        "error:decodeAudioData failed"
+      ],
+      "kinds": [
+        "timeout",
+        "network failure",
+        "missing element",
+        "route",
+        "selector"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/unit/final-unit-20260520-143056-run-4.log",
+      "status": "pass",
+      "durationSeconds": 41.54,
+      "route": "https://reactrouter.com/v6/upgrading/future#v7_starttransition.",
+      "selectors": [],
+      "failureSignatures": [
+        "Error: boom",
+        "Error: network down",
+        "Error: no native",
+        "Error: PG hiccup",
+        "error: 42703 column st.key does not exist",
+        "error: 23514 new row violates check constraint \"payment_transactions_payment_method_check\"",
+        "error: 23514 constraint violation",
+        "Error: Resend is down",
+        "Error: Unexpected token 'i', \"invalid json{\" is not valid JSON",
+        "Error: net",
+        "Error: network timeout",
+        "error: 'Room not found in database or JSON',",
+        "error: boom",
+        "error: denied",
+        "Error: upstream down",
+        "error:decodeAudioData failed"
+      ],
+      "kinds": [
+        "timeout",
+        "network failure",
+        "missing element",
+        "route",
+        "selector"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/unit/final-unit-20260520-143138-run-5.log",
+      "status": "pass",
+      "durationSeconds": 41.48,
+      "route": "https://placeholder.invalid.supabase.co",
+      "selectors": [],
+      "failureSignatures": [
+        "Error: network down",
+        "Error: boom",
+        "Error: PG hiccup",
+        "error: 42703 column st.key does not exist",
+        "error: 23514 new row violates check constraint \"payment_transactions_payment_method_check\"",
+        "error: 23514 constraint violation",
+        "Error: Resend is down",
+        "Error: no native",
+        "error: 'Room not found in database or JSON',",
+        "Error: Unexpected token 'i', \"invalid json{\" is not valid JSON",
+        "error: boom",
+        "error: denied",
+        "Error: network timeout",
+        "Error: net",
+        "Error: upstream down",
+        "error:decodeAudioData failed"
+      ],
+      "kinds": [
+        "timeout",
+        "network failure",
+        "missing element",
+        "route",
+        "selector"
+      ]
+    }
+  ],
+  "totals": {
+    "pass": 5,
+    "fail": 0,
+    "unknown": 0,
+    "durationSeconds": 186.34999999999997
+  },
+  "unstable": false,
+  "intermittentFailure": false,
+  "clusters": []
+}

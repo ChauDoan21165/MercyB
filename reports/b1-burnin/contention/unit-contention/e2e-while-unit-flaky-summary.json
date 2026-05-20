@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-05-20T14:23:31.739Z",
+  "logDir": "reports/b1-burnin/contention/unit-contention",
+  "runs": [
+    {
+      "file": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142127-run-1.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142221-run-2.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142231-run-3.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142239-run-4.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142248-run-5.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-wrapper.log",
+      "status": "pass",
+      "durationSeconds": 54,
+      "route": "http://127.0.0.1:4806",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    }
+  ],
+  "totals": {
+    "pass": 6,
+    "fail": 0,
+    "unknown": 0,
+    "durationSeconds": 54
+  },
+  "unstable": false,
+  "intermittentFailure": false,
+  "clusters": []
+}

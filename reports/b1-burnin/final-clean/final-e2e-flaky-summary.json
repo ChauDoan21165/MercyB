@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-05-20T14:33:21.197Z",
+  "logDir": "reports/b1-burnin/final-clean/e2e",
+  "runs": [
+    {
+      "file": "reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143232-run-1.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143241-run-2.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143250-run-3.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143300-run-4.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/final-clean/e2e/final-e2e-20260520-143311-run-5.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    }
+  ],
+  "totals": {
+    "pass": 5,
+    "fail": 0,
+    "unknown": 0,
+    "durationSeconds": 0
+  },
+  "unstable": false,
+  "intermittentFailure": false,
+  "clusters": []
+}
