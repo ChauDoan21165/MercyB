@@ -3,7 +3,6 @@
 import {
   STRIPE_PROVIDER,
   asNonEmptyStringOrNull,
-  deriveEntitlementFromSubscriptions,
   isoNow,
   isUuid,
   resolveUserIdByProfileEmail,
@@ -12,7 +11,6 @@ import {
 } from "./core.ts";
 import type {
   BillingEnvironment,
-  CanonicalSubscriptionRow,
   DBClient,
   ExistingSubscriptionRow,
   FilterableQuery,
@@ -28,6 +26,13 @@ import {
   resolveMonotonicRawPayload,
 } from "./subscription-insert.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
+// A18 PR2: stripe-webhook's local recomputeAndPersistEntitlement (the
+// seed) was replaced by the single-writer `recomputeEntitlement`
+// shipped in #864. This is the only call site on main today; the
+// other live money-path writers (revenuecat-webhook, redeem-*,
+// admin) are rewired in PR3+ (see reports/BILLING-a18-pr2-scope-A1i.md
+// §1 W-table for the follow-up enumeration).
+import { recomputeEntitlement } from "../_shared/entitlement/recompute.ts";
 
 /* ============================================================================
  * Config
@@ -597,46 +602,6 @@ export async function resolveUserByStripeLinkage(params: {
   return null;
 }
 
-async function recomputeAndPersistEntitlement(
-  supabase: DBClient,
-  userId: string,
-  now: Date | number = new Date(),
-): Promise<import("./types.ts").EntitlementSnapshot> {
-  const { data, error } = await supabase
-    .from("subscriptions")
-    .select("status,current_period_end,provider")
-    .eq("user_id", userId)
-    .eq("app_id", DEFAULT_APP_ID);
-
-  if (error) throw error;
-
-  // B13 Phase 3 PR-B: `now` is threaded into the shared derive. An
-  // entitling row with a past `current_period_end` no longer projects
-  // to `profiles.premium_status = 'active'` — the bug closes here.
-  const entitlement = deriveEntitlementFromSubscriptions(
-    (data ?? []) as Array<
-      Pick<
-        CanonicalSubscriptionRow,
-        "status" | "current_period_end" | "provider"
-      >
-    >,
-    now,
-  );
-
-  const { error: profileError } = await supabase
-    .from("profiles")
-    .update({
-      premium_status: entitlement.status,
-      premium_expires_at: entitlement.expires_at,
-      premium_source: entitlement.source,
-    })
-    .eq("id", userId);
-
-  if (profileError) throw profileError;
-
-  return entitlement;
-}
-
 export async function finalizeSubscriptionProcessing(params: {
   supabase: DBClient;
   userId: string;
@@ -644,11 +609,16 @@ export async function finalizeSubscriptionProcessing(params: {
   shouldRecomputeBeforeFinalMark: boolean;
 }): Promise<boolean> {
   if (params.shouldRecomputeBeforeFinalMark) {
-    try {
-      await recomputeAndPersistEntitlement(params.supabase, params.userId);
-    } catch (error) {
-      console.warn("stripe-webhook entitlement recompute skipped", error);
-    }
+    // A18 PR2: the prior body wrapped recompute in `try/catch` and
+    // swallowed errors via `console.warn` — A18 §7 names that the
+    // exact silent-failure class the recompute redesign closes. No
+    // catch here. `recomputeEntitlement` throws on any read or write
+    // failure; the throw propagates to the webhook handler, which
+    // returns 5xx, and Stripe retries (its built-in webhook retry is
+    // the correct recovery path for an entitlement write failure).
+    await recomputeEntitlement(params.supabase, params.userId, {
+      reason: "stripe-webhook",
+    });
   }
 
   return await markEntitlementEventProcessed({
