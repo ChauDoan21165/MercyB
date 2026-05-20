@@ -1,12 +1,14 @@
 /**
  * Email Broadcast Edge Function
  * Allows admins (level >= 9) to send batch emails to users by tier or manual list.
- * 
+ *
  * Actions:
  * - preview: Returns recipient count and sample emails without sending
  * - send: Creates campaign, sends emails via Resend, logs events
- * 
- * Always returns HTTP 200 with { ok: boolean, ... } pattern
+ *
+ * Response shape: { ok: boolean, ... }. Status codes per A16f remediation:
+ * 401 on auth fail, 403 on insufficient admin level, 400 on validation,
+ * 500 on DB / Resend / unexpected error.
  */
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
@@ -25,10 +27,10 @@ const EMAIL_CONFIG = {
   siteUrl: "https://mercyblade.com",
 };
 
-// Helper to always return HTTP 200 with JSON
-function send(data: Record<string, unknown>) {
+// Helper to return JSON with the given status (default 200 for success).
+export function send(data: Record<string, unknown>, status = 200) {
   return new Response(JSON.stringify(data), {
-    status: 200,
+    status,
     headers: corsHeaders,
   });
 }
@@ -51,7 +53,7 @@ Deno.serve(async (req) => {
     // --- Auth: Manual JWT validation ---
     const authHeader = req.headers.get("Authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return send({ ok: false, error: "Missing or invalid Authorization header" });
+      return send({ ok: false, error: "Missing or invalid Authorization header" }, 401);
     }
     const token = authHeader.replace("Bearer ", "");
 
@@ -65,7 +67,7 @@ Deno.serve(async (req) => {
     
     if (userError || !userData?.user) {
       console.error("Auth error:", userError);
-      return send({ ok: false, error: "Invalid or expired session" });
+      return send({ ok: false, error: "Invalid or expired session" }, 401);
     }
 
     const userId = userData.user.id;
@@ -84,7 +86,7 @@ Deno.serve(async (req) => {
 
     if (adminError || !adminData || adminData.level < 9) {
       console.error("Admin check failed:", adminError, adminData);
-      return send({ ok: false, error: "Insufficient permissions. Admin level 9+ required." });
+      return send({ ok: false, error: "Insufficient permissions. Admin level 9+ required." }, 403);
     }
 
     console.log(`[email-broadcast] Admin level verified: ${adminData.level}`);
@@ -94,7 +96,7 @@ Deno.serve(async (req) => {
     const { action, subject, body_html, audience_type, manual_emails } = body;
 
     if (!action || !subject || !body_html || !audience_type) {
-      return send({ ok: false, error: "Missing required fields: action, subject, body_html, audience_type" });
+      return send({ ok: false, error: "Missing required fields: action, subject, body_html, audience_type" }, 400);
     }
 
     // --- Get target emails based on audience ---
@@ -103,7 +105,7 @@ Deno.serve(async (req) => {
     if (audience_type === "manual") {
       // Use provided emails
       if (!manual_emails || manual_emails.length === 0) {
-        return send({ ok: false, error: "Manual emails list is required for audience_type='manual'" });
+        return send({ ok: false, error: "Manual emails list is required for audience_type='manual'" }, 400);
       }
       targetEmails = manual_emails.filter(e => e && e.includes("@"));
     } else {
@@ -124,13 +126,13 @@ Deno.serve(async (req) => {
 
       if (tiersError) {
         console.error("Tiers query error:", tiersError);
-        return send({ ok: false, error: "Failed to query tiers" });
+        return send({ ok: false, error: "Failed to query tiers" }, 500);
       }
 
       const tierIds = tiers?.map(t => t.id) || [];
 
       if (tierIds.length === 0) {
-        return send({ ok: false, error: "No matching tiers found" });
+        return send({ ok: false, error: "No matching tiers found" }, 400);
       }
 
       // Get active subscriptions for these tiers
@@ -142,7 +144,7 @@ Deno.serve(async (req) => {
 
       if (subsError) {
         console.error("Subscriptions query error:", subsError);
-        return send({ ok: false, error: "Failed to query subscriptions" });
+        return send({ ok: false, error: "Failed to query subscriptions" }, 500);
       }
 
       const userIds = subs?.map(s => s.user_id) || [];
@@ -159,7 +161,7 @@ Deno.serve(async (req) => {
 
       if (profilesError) {
         console.error("Profiles query error:", profilesError);
-        return send({ ok: false, error: "Failed to query user profiles" });
+        return send({ ok: false, error: "Failed to query user profiles" }, 500);
       }
 
       targetEmails = profiles?.filter(p => p.email).map(p => p.email!) || [];
@@ -181,7 +183,7 @@ Deno.serve(async (req) => {
 
     // --- Send action ---
     if (targetEmails.length === 0) {
-      return send({ ok: false, error: "No recipients to send to" });
+      return send({ ok: false, error: "No recipients to send to" }, 400);
     }
 
     // Create campaign record
@@ -201,7 +203,7 @@ Deno.serve(async (req) => {
 
     if (campaignError || !campaign) {
       console.error("Campaign creation error:", campaignError);
-      return send({ ok: false, error: "Failed to create campaign record" });
+      return send({ ok: false, error: "Failed to create campaign record" }, 500);
     }
 
     console.log(`[email-broadcast] Campaign created: ${campaign.id}`);
@@ -213,7 +215,7 @@ Deno.serve(async (req) => {
         .from("email_campaigns")
         .update({ status: "failed", error_message: "RESEND_API_KEY not configured" })
         .eq("id", campaign.id);
-      return send({ ok: false, error: "Email service not configured" });
+      return send({ ok: false, error: "Email service not configured" }, 500);
     }
 
     const resend = new Resend(resendApiKey);
@@ -300,6 +302,6 @@ Deno.serve(async (req) => {
 
   } catch (err) {
     console.error("[email-broadcast] Unexpected error:", err);
-    return send({ ok: false, error: err instanceof Error ? err.message : "Internal server error" });
+    return send({ ok: false, error: err instanceof Error ? err.message : "Internal server error" }, 500);
   }
 });
