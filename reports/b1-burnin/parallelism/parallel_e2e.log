@@ -1,0 +1,26 @@
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical --workers=2 --repeat-each=3
+
+[2m[WebServer] [22m(node:81224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 2 workers
+
+(node:81232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:81233) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:81232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:81233) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (10.1s)
+  ✓  2 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (10.1s)
+(node:81530) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:81530) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (3.9s)
+
+  3 passed (16.6s)

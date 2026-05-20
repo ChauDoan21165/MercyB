@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-05-20T15:35:02.010Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "preserveAnomalyEvidence": true,
+  "preserveTimeoutIncidents": true,
+  "preserveFlakyPatternSignatures": true,
+  "preserveDegradedTrendEvidence": true,
+  "preserveCiDegradationEvidence": true,
+  "preserveRecoveryFailureEvidence": true,
+  "preserveProlongedDegradationEvidence": true,
+  "preserveEscalationRecurrenceEvidence": true,
+  "preserveResilienceTrendHistory": true,
+  "preserveCiRecoveryAnomalies": true,
+  "protectedPatterns": [
+    "anomaly evidence",
+    "timeout near-miss logs",
+    "flaky-pattern signatures",
+    "degraded trend evidence",
+    "CI degradation forecast evidence",
+    "detector false-positive classifications",
+    "recovery failure evidence",
+    "prolonged degradation evidence",
+    "escalation recurrence evidence",
+    "resilience trend history",
+    "CI recovery anomalies"
+  ],
+  "currentAnomalyClassification": "ANOMALY",
+  "currentForecastClassification": "HIGH",
+  "currentRecoveryClassification": "RECOVERY_RISK",
+  "currentResilienceClassification": "HIGH",
+  "rotationMode": "dry-run-first",
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

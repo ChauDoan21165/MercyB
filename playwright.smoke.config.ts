@@ -9,6 +9,9 @@
 
 import { defineConfig, devices } from "@playwright/test";
 
+const smokePort = process.env.TEST_PORT ?? "3107";
+const smokeBaseUrl = process.env.TEST_BASE_URL ?? `http://127.0.0.1:${smokePort}`;
+
 export default defineConfig({
   testDir: "./tests/e2e",
   testMatch: /.*\.spec\.ts$/,
@@ -27,7 +30,7 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: process.env.TEST_BASE_URL ?? "http://127.0.0.1:3107",
+    baseURL: smokeBaseUrl,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
@@ -43,11 +46,11 @@ export default defineConfig({
     },
   ],
 
-  // The dev server owns port 3107 via `strictPort`. If it's already up
-  // (another terminal), reuse it; otherwise start it.
+  // Default smoke runs use port 3107. Repeat/burn-in runs can set TEST_PORT
+  // and TEST_BASE_URL to avoid stale local servers on the default port.
   webServer: {
-    command: "npm run dev:frontend",
-    url: process.env.TEST_BASE_URL ?? "http://127.0.0.1:3107",
+    command: `vite --host 127.0.0.1 --port ${smokePort} --strictPort`,
+    url: smokeBaseUrl,
     reuseExistingServer: !process.env.CI,
     timeout: 180 * 1000,
     stdout: "ignore",

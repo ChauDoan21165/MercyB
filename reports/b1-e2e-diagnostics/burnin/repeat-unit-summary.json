@@ -1,0 +1,13 @@
+{
+  "type": "unit-repeat",
+  "startedAt": "2026-05-20T13:34:30Z",
+  "endedAt": "2026-05-20T13:39:44Z",
+  "iterations": 5,
+  "passCount": 5,
+  "failCount": 0,
+  "totalDurationSeconds": 314,
+  "measuredTestDurationSeconds": 314,
+  "logDir": "reports/b1-e2e-diagnostics/burnin",
+  "artifactDir": "reports/b1-e2e-diagnostics/burnin/artifacts",
+  "runs": [{"run":1,"status":0,"startedAt":"2026-05-20T13:34:30Z","endedAt":"2026-05-20T13:36:02Z","durationSeconds":92,"log":"reports/b1-e2e-diagnostics/burnin/burnin-unit-20260520-133430-run-1.log"},{"run":2,"status":0,"startedAt":"2026-05-20T13:36:02Z","endedAt":"2026-05-20T13:37:08Z","durationSeconds":66,"log":"reports/b1-e2e-diagnostics/burnin/burnin-unit-20260520-133602-run-2.log"},{"run":3,"status":0,"startedAt":"2026-05-20T13:37:08Z","endedAt":"2026-05-20T13:38:03Z","durationSeconds":55,"log":"reports/b1-e2e-diagnostics/burnin/burnin-unit-20260520-133708-run-3.log"},{"run":4,"status":0,"startedAt":"2026-05-20T13:38:03Z","endedAt":"2026-05-20T13:38:49Z","durationSeconds":46,"log":"reports/b1-e2e-diagnostics/burnin/burnin-unit-20260520-133803-run-4.log"},{"run":5,"status":0,"startedAt":"2026-05-20T13:38:49Z","endedAt":"2026-05-20T13:39:44Z","durationSeconds":55,"log":"reports/b1-e2e-diagnostics/burnin/burnin-unit-20260520-133849-run-5.log"}]
+}

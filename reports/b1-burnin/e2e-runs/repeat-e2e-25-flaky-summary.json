@@ -1,0 +1,301 @@
+{
+  "generatedAt": "2026-05-20T14:13:30.930Z",
+  "logDir": "reports/b1-burnin/e2e-runs",
+  "runs": [
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-140928-run-1.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-140938-run-2.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-140948-run-3.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-140957-run-4.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141007-run-5.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141016-run-6.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141026-run-7.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141035-run-8.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141044-run-9.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141054-run-10.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141104-run-11.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141114-run-12.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141123-run-13.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141132-run-14.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141141-run-15.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141150-run-16.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141200-run-17.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141210-run-18.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141220-run-19.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141230-run-20.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141239-run-21.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141250-run-22.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141259-run-23.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141311-run-24.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/long-e2e-20260520-141321-run-25.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/e2e-runs/repeat-e2e-25-wrapper.log",
+      "status": "pass",
+      "durationSeconds": 10,
+      "route": "http://127.0.0.1:3911",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    }
+  ],
+  "totals": {
+    "pass": 26,
+    "fail": 0,
+    "unknown": 0,
+    "durationSeconds": 10
+  },
+  "unstable": false,
+  "intermittentFailure": false,
+  "clusters": []
+}

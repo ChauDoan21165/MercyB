@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-05-20T15:34:49.708Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "slowestRuns": [
+    {
+      "durationSeconds": 54,
+      "log": "reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142127-run-1.log",
+      "startedAt": "2026-05-20T14:21:27Z"
+    },
+    {
+      "durationSeconds": 16,
+      "log": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142431-run-5.log",
+      "startedAt": "2026-05-20T14:24:31Z"
+    },
+    {
+      "durationSeconds": 12,
+      "log": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142343-run-1.log",
+      "startedAt": "2026-05-20T14:23:43Z"
+    },
+    {
+      "durationSeconds": 12,
+      "log": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142355-run-2.log",
+      "startedAt": "2026-05-20T14:23:55Z"
+    },
+    {
+      "durationSeconds": 12,
+      "log": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142419-run-4.log",
+      "startedAt": "2026-05-20T14:24:19Z"
+    }
+  ],
+  "concurrentWorkloadImpact": {
+    "unitContentionSeconds": [
+      54,
+      10,
+      8,
+      9,
+      10
+    ],
+    "buildContentionSeconds": [
+      12,
+      12,
+      11,
+      12,
+      16
+    ],
+    "maxDurationSeconds": 54,
+    "baselineE2eMaxSeconds": 12
+  },
+  "runtimeSpread": {
+    "minSeconds": 8,
+    "maxSeconds": 54,
+    "spreadSeconds": 46
+  },
+  "timeoutHeadroomEstimate": {
+    "smokeTimeoutSeconds": 60,
+    "slowestRunSeconds": 54,
+    "remainingHeadroomSeconds": 6,
+    "risk": "high_on_shared_runners"
+  },
+  "deterministicPassRate": 1,
+  "suspectedEnvironmentalNoise": [
+    "shared CPU/I/O contention during unit-test startup"
+  ],
+  "ciContentionRiskEstimate": "CI_TIMEOUT_RISK",
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

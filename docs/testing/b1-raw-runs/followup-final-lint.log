@@ -1,0 +1,932 @@
+
+> mercyblade@0.0.0 lint
+> eslint .
+
+
+/private/tmp/b1-test-stability-push.VtLu79/api/_lib/__tests__/l1HintAdapter.test.ts
+  59:78  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/api/mercy-ai.ts
+  134:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  208:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/api/mercy-guide.ts
+  95:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/keywordResponder.ts
+   13:28   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   22:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   44:27   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   59:55   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   63:14   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:33   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  105:29   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  114:94   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  114:117  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  114:123  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  125:22   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  158:50   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  162:35   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  175:43   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:27   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:67   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  226:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  301:26   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  303:49   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  304:49   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  338:24   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  340:47   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  341:47   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/__tests__/mercy-emotion-model.test.ts
+  264:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  281:74  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  282:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  282:73  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  292:74  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  293:63  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  293:76  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/__tests__/mercy-integration.test.ts
+  228:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/__tests__/navigation.integration.test.tsx
+   16:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   96:77  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:64  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  119:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  127:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  129:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  133:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  136:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  151:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  166:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/__tests__/roomRegistryCoverage.test.ts
+   91:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  131:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  254:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/billing/subscriptionRepository.ts
+  62:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/AudioBar.tsx
+  10:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/CreditLimitModal.tsx
+  41:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  84:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/ErrorBoundary.tsx
+  35:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  44:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/MercyGuide.tsx
+  111:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  391:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/ProtectedContent.tsx
+  58:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  59:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  63:63  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  64:71  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/RoomDisclaimer.tsx
+  26:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  32:8   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  33:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  33:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  40:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  41:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  68:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  69:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  70:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  90:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/RoomErrorState.tsx
+  66:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/RoomHeader.tsx
+  12:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/RoomSearch.tsx
+  162:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  163:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/SmoothScrollContainer.tsx
+  53:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/StrictProtectedContent.tsx
+  48:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  49:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  53:63  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  54:71  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/AdminAuditLog.tsx
+  17:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/AdminEntryTools.tsx
+  7:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/AdminRoomDebugDots.tsx
+  8:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/AudioCoveragePanel.tsx
+  32:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/AuditSafeShield.tsx
+   80:17   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  190:31   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  319:128  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/CostSummaryWidget.tsx
+  51:63  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/NotificationPreferences.tsx
+   51:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  156:65  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/RoomAdminTools.tsx
+  5:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/RoomSpecificationManager.tsx
+   61:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   95:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  133:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/TestPurchasePanel.tsx
+  126:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/UiHealthPanel.tsx
+  10:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/admin/widgets/AdminStatsStrip.tsx
+   88:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/analytics/PriorityDistributionChart.tsx
+  53:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  65:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/audio/BottomMusicBar.tsx
+  64:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/audio/TalkingFacePlayButton.tsx
+  106:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:72  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  118:88  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/auth/__tests__/EmailBlock.codeFlow.test.tsx
+  27:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  48:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/community/RoomCommunityChat.tsx
+   72:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  108:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/companion/CompanionProvider.tsx
+  38:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/dev/DevObservabilityPanel.tsx
+  37:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  38:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  41:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/kids/KidsRoomCard.tsx
+  25:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/mercy-guide/MercySpeakTab.tsx
+  1014:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1544:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/mercy-guide/MercyTeacherTab.tsx
+  701:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  702:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  704:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/mercy/MercyDebugPanel.tsx
+   87:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  332:81  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  333:75  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  334:71  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/motion/MotionSafe.tsx
+  29:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/CommunityChatBox.tsx
+   31:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   91:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  161:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/RoomRenderer.tsx
+   109:16   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   156:53   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   164:58   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   179:27   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   186:36   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   194:31   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   199:31   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   206:32   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   210:31   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   223:40   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   225:12   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   238:26   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   273:49   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   277:27   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   277:39   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   302:10   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   348:43   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   746:56   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   748:79   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   767:95   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   842:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   842:84   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   878:40   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   923:100  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   999:49   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   999:79   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1000:95   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1009:63   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1011:43   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1018:11   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1035:21   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1198:22   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1199:18   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1212:24   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1275:86   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1277:19   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1297:17   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1303:37   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1304:50   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1314:92   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1365:33   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1369:50   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1380:17   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1404:29   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1405:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1548:72   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1548:100  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1549:74   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1695:57   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1837:44   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1839:82   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  1843:69   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/RoomRendererUI.tsx
+  375:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  514:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  537:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  558:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  597:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  621:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  622:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  641:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  644:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  715:71  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  806:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  874:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/hooks/useAuthUser.ts
+   4:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  12:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  21:68  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  21:82  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/hooks/useRoomFeedback.ts
+   3:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   3:74  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  37:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/roomEntriesDb.ts
+    3:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    7:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   27:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   27:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   79:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   79:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   91:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   95:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  136:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  155:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/roomIntroFallback.ts
+  23:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/roomJsonExtract.ts
+    1:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    3:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    7:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    7:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   15:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   31:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   31:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   34:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   52:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   52:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   86:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   93:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  164:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  169:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  188:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  188:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  189:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  191:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  209:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  245:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/roomRenderer/helpers.ts
+   10:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   69:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   86:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   93:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  121:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  124:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  144:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  178:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/roomRenderer/keywordsBilingual.ts
+   13:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   44:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   95:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  160:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/room/roomRenderer/useCommunityChatInline.ts
+    9:7   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  124:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  130:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  131:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  190:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  194:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  212:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  216:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  222:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/ui/Screen.tsx
+  9:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/ui/Typo.tsx
+   8:64  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:64  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  24:64  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  32:81  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  46:82  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/ui/chart.tsx
+   14:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  103:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  103:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  115:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  115:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  217:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  329:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  368:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  368:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/components/ui/resizable.tsx
+  5:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/core/engine/trainingFlow.ts
+  56:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/languages/french/lessons.ts
+  111:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/languages/french/normalize.ts
+   93:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  133:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/__tests__/authService.test.ts
+   8:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  18:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/__tests__/roomLoader.corruption.test.ts
+    8:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   40:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   46:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  104:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  105:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/__tests__/roomLoader.snapshot.test.ts
+    8:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   40:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   73:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   74:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  166:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  167:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  168:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  169:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  238:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  239:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  240:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  241:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/__tests__/roomLoader.test.ts
+    8:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   40:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   46:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/__tests__/streakMigration.test.ts
+  12:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  27:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/__tests__/useEntitlements.giftRedemption.test.ts
+  22:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  28:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/accessibility.ts
+  98:75  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/admin/performance.ts
+  55:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/ai-meter.ts
+  43:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  79:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  90:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/ai/contextManager.ts
+  51:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/apiFailureAlert.ts
+   32:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   95:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/audio/filenameValidator.ts
+  94:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/authHelpers.ts
+   17:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  147:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  148:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/authService.ts
+  103:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  116:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/billing.ts
+  116:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/cache/globalCache.ts
+   17:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   89:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   96:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/configHealth.ts
+  50:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/console-replacer.ts
+  28:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  32:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  40:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  58:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  59:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/constants/uiText.ts
+  181:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/errors.ts
+  18:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/family/__tests__/familyPlanClient.test.ts
+    4:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   10:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   28:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  142:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/featureFlags.ts
+  25:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/groups/__tests__/studyGroupClient.test.ts
+  12:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  18:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/guardedCall.ts
+  66:81  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  67:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  99:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/health/audioCoverage.ts
+  39:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  70:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  77:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  84:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/lazyWithRetry.ts
+  56:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  83:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/leaderboard/__tests__/leaderboardClient.test.ts
+   10:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  207:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/leaderboard/__tests__/weeklyLeaderboardClient.test.ts
+  10:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/log.ts
+  10:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  25:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  29:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/logger.ts
+  27:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/mercy/__tests__/conversationClient.test.ts
+  36:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/mercy/__tests__/userFacts.test.ts
+    7:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   16:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   35:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  280:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/observability/metrics.ts
+  90:69  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/battery-optimization.ts
+   23:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   25:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  104:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/bundle-optimization.ts
+  102:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:67  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:80  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/memoization-helpers.tsx
+  44:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  44:65  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/memory-optimization.ts
+  11:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  18:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  48:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  57:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  57:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  75:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  75:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/monitor.ts
+   22:69  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   87:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  152:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  153:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/profiler.tsx
+  37:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  38:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/retry-with-backoff.ts
+  12:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  31:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/supabase-logger.ts
+  14:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  26:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  61:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/supabase-query-cache.ts
+  13:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  85:70  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/performance/worker-utils.ts
+   98:75  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:93  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/pronunciation/__tests__/recognizer.test.ts
+  14:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  15:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/pronunciation/recognizer.ts
+   95:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   96:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/queries/__tests__/useEntitlementQuery.test.ts
+  16:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/referral/__tests__/pendingReferral.test.ts
+  17:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  23:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/referral/__tests__/referralClient.test.ts
+   10:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   16:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  255:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  276:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  292:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/referral/__tests__/referralReward.test.ts
+    9:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   15:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  197:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  214:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  230:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/retry.ts
+  11:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  12:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  38:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roadmap/__tests__/roadmapClient.test.ts
+  4:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roomData.ts
+    1:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    2:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   73:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   84:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  149:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  149:68  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roomJsonResolver.ts
+  191:64  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  226:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  234:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  240:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  251:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  259:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roomLoaderHelpers.ts
+   53:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   93:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  132:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  132:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  158:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  182:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  198:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  278:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  282:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roomMaster/roomMasterLoader.ts
+  16:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roomMaster/roomMasterTypes.ts
+  55:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/roomSpecification.ts
+  164:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  174:8   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  198:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/rooms/roomRegistry.ts
+   61:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   71:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  112:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  144:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  145:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  160:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  178:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  179:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  209:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/runtimeAssert.ts
+  5:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/security/auditLogger.ts
+   27:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  104:84  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/security/inputValidator.ts
+  159:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/security/integrity.ts
+  43:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  52:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  81:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/security/storageEncryption.ts
+  19:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  44:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  68:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/session-manager.ts
+  90:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/speech/sendSpeechForAnalysis.ts
+  65:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  66:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/speech/transcribeAudio.ts
+  87:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/teacher-mercy/__tests__/responsePlanner.test.ts
+    9:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   26:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   43:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   57:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   72:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   88:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  139:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  156:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  171:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  184:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  198:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  214:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  230:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  245:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  260:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/teacher-mercy/engine.ts
+  268:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  268:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  286:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  286:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  404:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  406:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  408:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  410:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  411:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  412:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  891:63  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  906:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  918:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  929:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  936:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/teacher-mercy/memorySchema.ts
+  245:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  246:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  248:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  249:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  251:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  252:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/teacher-mercy/teacherEmotionModel.test.ts
+   12:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   31:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   48:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   65:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   80:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   94:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  103:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/tierRoomSource.ts
+   60:29   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   78:24   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  386:49   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  386:64   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  387:23   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  408:73   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  415:43   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  417:14   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  434:114  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  435:104  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  436:57   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  437:74   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  438:45   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  507:14   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  507:44   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  511:23   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  544:64   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  563:41   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  574:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/validation/roomDataHygiene.ts
+  38:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  72:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/validation/roomJsonValidation.ts
+  103:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/vocabulary/__tests__/autoAdd.test.ts
+   23:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   23:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   24:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   24:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   26:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  143:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  144:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/xp/__tests__/awardXPEvent.test.ts
+  11:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  17:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/xp/__tests__/dailyChallenge.test.ts
+   10:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   16:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   94:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  112:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  185:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  193:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/lib/xp/__tests__/xpClient.test.ts
+   9:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  15:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/main.tsx
+  35:68  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  48:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/simulator/AudioStressTester.ts
+   30:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   49:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   68:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  211:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/simulator/LaunchSimulatorCore.ts
+  71:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/simulator/device/DeviceSimulationManager.ts
+  70:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  96:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/simulator/perf/WebVitalsCollector.ts
+  83:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/simulator/scenarios/Scenario_CorruptedJSONBoot.ts
+   32:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   35:64  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   35:96  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   39:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   41:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   41:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   41:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   41:72  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   59:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   82:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/simulator/scenarios/Scenario_LoadAllRooms.ts
+   56:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  119:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/types/react-native.d.ts
+   4:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   5:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   6:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   7:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   8:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   9:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/src/utils/securityUtils.ts
+   23:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   26:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   53:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  137:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  140:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  222:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/private/tmp/b1-test-stability-push.VtLu79/upabase/functions/stripe-webhook.ts
+  302:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 627 problems (0 errors, 627 warnings)
+

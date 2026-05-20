@@ -1,0 +1,95 @@
+repeat-e2e start 2026-05-20T14:21:27Z
+iterations=5 pattern=placement-v3-vertical log_dir=reports/b1-burnin/contention/unit-contention artifact_dir=reports/b1-burnin/contention/unit-contention/artifacts summary_json=reports/b1-burnin/contention/unit-contention/e2e-while-unit-summary.json cluster_json=reports/b1-burnin/contention/unit-contention/e2e-while-unit-flaky-summary.json base_url=http://127.0.0.1:4806
+E2E REPEAT RUN 1/5 2026-05-20T14:21:27Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:72599) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:72816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:72816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (28.9s)
+
+  1 passed (52.7s)
+E2E REPEAT RUN 1 PASS duration=54s log=reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142127-run-1.log
+E2E REPEAT RUN 2/5 2026-05-20T14:22:21Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:74672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:74684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (8.1s)
+
+  1 passed (8.9s)
+E2E REPEAT RUN 2 PASS duration=10s log=reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142221-run-2.log
+E2E REPEAT RUN 3/5 2026-05-20T14:22:31Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:74912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:74915) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74915) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (7.8s)
+
+  1 passed (8.5s)
+E2E REPEAT RUN 3 PASS duration=8s log=reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142231-run-3.log
+E2E REPEAT RUN 4/5 2026-05-20T14:22:39Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:75064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:75067) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:75067) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (7.8s)
+
+  1 passed (8.5s)
+E2E REPEAT RUN 4 PASS duration=9s log=reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142239-run-4.log
+E2E REPEAT RUN 5/5 2026-05-20T14:22:48Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:75234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:75257) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:75257) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (8.4s)
+
+  1 passed (9.2s)
+E2E REPEAT RUN 5 PASS duration=10s log=reports/b1-burnin/contention/unit-contention/e2e-while-unit-20260520-142248-run-5.log
+repeat-e2e complete 2026-05-20T14:22:58Z
+repeat-e2e summary pass=5 fail=0 total_duration=91s measured_test_duration=91s summary_json=reports/b1-burnin/contention/unit-contention/e2e-while-unit-summary.json cluster_json=reports/b1-burnin/contention/unit-contention/e2e-while-unit-flaky-summary.json artifact_dir=reports/b1-burnin/contention/unit-contention/artifacts
+repeat-e2e instability detected by flaky-pattern detector

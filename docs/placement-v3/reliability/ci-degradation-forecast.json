@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-05-20T15:34:49.756Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "classifications": [
+    "LOW",
+    "MODERATE",
+    "ELEVATED",
+    "HIGH",
+    "CRITICAL"
+  ],
+  "timeoutRiskEscalation": "HIGH",
+  "rerunDegradationProbability": "LOW",
+  "contentionInstabilityGrowth": "ELEVATED",
+  "flakyPatternGrowth": "LOW",
+  "ciRuntimeSpreadIncrease": "ELEVATED",
+  "runnerContentionRisk": "HIGH",
+  "forecastClassification": "HIGH",
+  "escalationPriority": "HIGH",
+  "confidenceInstability": {
+    "adjustment": "reduce_to_contention_caution",
+    "reasons": {
+      "anomalyFrequencyIncreased": false,
+      "runtimeSpreadWidened": true,
+      "rerunConvergenceWorsened": false,
+      "staleEvidenceAccumulated": false,
+      "ciTrendFreshnessDecayed": false,
+      "contentionInstabilityGrew": true
+    }
+  },
+  "evidenceLimits": {
+    "liveProviderEvidence": "ABSENT",
+    "realUserEvidence": "ABSENT",
+    "scalingEvidence": "not_claimed"
+  },
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-20T13:42:48Z",
+  "owner": "B1",
+  "description": "Index for Placement V3 E2E reliability artifacts. Passing burn-in runs may have no screenshots or traces; failure runs should add concrete artifact entries.",
+  "artifactRoots": [
+    "reports/b1-e2e-diagnostics/",
+    "reports/b1-e2e-diagnostics/burnin/",
+    "docs/testing/b1-raw-runs/"
+  ],
+  "artifacts": [
+    {
+      "timestamp": "2026-05-20T13:40:07Z",
+      "status": "failed",
+      "phase": "pre-fix port-conflict burn-in",
+      "clusterKind": "route",
+      "failingRoute": "/placement",
+      "failingSelectors": [
+        "getByText(/Let's find where you should start|Hãy tìm điểm bắt đầu|Resume your placement test/i)"
+      ],
+      "log": "reports/b1-e2e-diagnostics/burnin/pre-fix-port-conflict/burnin-e2e-20260520-133951-run-1.log",
+      "screenshot": "reports/b1-e2e-diagnostics/2026-05-20T13-40-07-218Z-placement-v3-vertical.spec.ts__placement-v3-end-to-end-vertical__runs-UI-client-session-orchestrator-graders-recommender-results-and-persist.png",
+      "diagnostics": "reports/b1-e2e-diagnostics/2026-05-20T13-40-07-218Z-placement-v3-vertical.spec.ts__placement-v3-end-to-end-vertical__runs-UI-client-session-orchestrator-graders-recommender-results-and-persist.json",
+      "trace": "reports/b1-e2e-diagnostics/burnin/artifacts/test-results-20260520-133951-run-1/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/trace.zip"
+    },
+    {
+      "timestamp": "2026-05-20T13:34:30Z",
+      "status": "passed",
+      "phase": "unit burn-in",
+      "clusterKind": null,
+      "failingRoute": null,
+      "failingSelectors": [],
+      "log": "reports/b1-e2e-diagnostics/burnin/repeat-unit-wrapper.log",
+      "summary": "reports/b1-e2e-diagnostics/burnin/repeat-unit-summary.json",
+      "flakySummary": "reports/b1-e2e-diagnostics/burnin/repeat-unit-flaky-summary.json"
+    },
+    {
+      "timestamp": "2026-05-20T13:40:55Z",
+      "status": "passed",
+      "phase": "Placement V3 E2E burn-in",
+      "clusterKind": null,
+      "failingRoute": null,
+      "failingSelectors": [],
+      "log": "reports/b1-e2e-diagnostics/burnin/repeat-e2e-wrapper.log",
+      "summary": "reports/b1-e2e-diagnostics/burnin/repeat-e2e-summary.json",
+      "flakySummary": "reports/b1-e2e-diagnostics/burnin/repeat-e2e-flaky-summary.json"
+    }
+  ],
+  "expectedFailureFields": [
+    "timestamp",
+    "log",
+    "screenshot",
+    "trace",
+    "failingRoute",
+    "failingSelectors",
+    "clusterKind"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "e2e-repeat",
+  "startedAt": "2026-05-20T14:53:41Z",
+  "endedAt": "2026-05-20T14:53:51Z",
+  "iterations": 1,
+  "pattern": "placement-v3-vertical",
+  "baseUrl": "http://127.0.0.1:4403",
+  "passCount": 1,
+  "failCount": 0,
+  "totalDurationSeconds": 10,
+  "measuredTestDurationSeconds": 10,
+  "logDir": "docs/placement-v3/reliability/logs/auto-20260520T145306Z/e2e",
+  "artifactDir": "docs/placement-v3/reliability/logs/auto-20260520T145306Z/e2e/artifacts",
+  "runs": [{"run":1,"status":0,"startedAt":"2026-05-20T14:53:41Z","endedAt":"2026-05-20T14:53:51Z","durationSeconds":10,"log":"docs/placement-v3/reliability/logs/auto-20260520T145306Z/e2e/b1-auto-e2e-20260520-145341-run-1.log"}]
+}

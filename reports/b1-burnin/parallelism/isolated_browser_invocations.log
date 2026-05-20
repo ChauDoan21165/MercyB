@@ -1,0 +1,58 @@
+repeat-e2e start 2026-05-20T14:25:55Z
+iterations=3 pattern=placement-v3-vertical log_dir=reports/b1-burnin/parallelism/isolated artifact_dir=reports/b1-burnin/parallelism/isolated/artifacts summary_json=reports/b1-burnin/parallelism/isolated/summary.json cluster_json=reports/b1-burnin/parallelism/isolated/flaky-summary.json base_url=http://127.0.0.1:3263
+E2E REPEAT RUN 1/3 2026-05-20T14:25:55Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:81701) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:81708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:81708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (13.6s)
+
+  1 passed (15.4s)
+E2E REPEAT RUN 1 PASS duration=16s log=reports/b1-burnin/parallelism/isolated/isolated-e2e-20260520-142555-run-1.log
+E2E REPEAT RUN 2/3 2026-05-20T14:26:11Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:82021) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:82039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:82039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (12.0s)
+
+  1 passed (13.6s)
+E2E REPEAT RUN 2 PASS duration=15s log=reports/b1-burnin/parallelism/isolated/isolated-e2e-20260520-142611-run-2.log
+E2E REPEAT RUN 3/3 2026-05-20T14:26:26Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:82440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:82457) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:82457) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (12.8s)
+
+  1 passed (14.0s)
+E2E REPEAT RUN 3 PASS duration=14s log=reports/b1-burnin/parallelism/isolated/isolated-e2e-20260520-142626-run-3.log
+repeat-e2e complete 2026-05-20T14:26:40Z
+repeat-e2e summary pass=3 fail=0 total_duration=45s measured_test_duration=45s summary_json=reports/b1-burnin/parallelism/isolated/summary.json cluster_json=reports/b1-burnin/parallelism/isolated/flaky-summary.json artifact_dir=reports/b1-burnin/parallelism/isolated/artifacts

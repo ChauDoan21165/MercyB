@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-05-20T15:35:02.009Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "evidenceFreshness": {
+    "latestMtimeMs": 1779287714456.17,
+    "ageHours": 0.9965430083550347,
+    "label": "fresh"
+  },
+  "confidenceClassification": "BLOCKED",
+  "timeoutRiskEstimate": "CI_TIMEOUT_RISK",
+  "sustainedRunConfidence": "high_local_confidence",
+  "currentBlockerCount": 0,
+  "flakeSuspicionCount": 0,
+  "anomalyClassification": "ANOMALY",
+  "forecastClassification": "HIGH",
+  "recoveryClassification": "RECOVERY_RISK",
+  "resilienceClassification": "HIGH",
+  "escalationPriority": "RECOVERY_BLOCKED",
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "liveProviderEvidence": "ABSENT",
+  "productionReadiness": "NO",
+  "placementV3Enablement": "BLOCKED",
+  "currentTarget": {
+    "reliabilityAutomation": "STRONG",
+    "antiFlakeGovernance": "STRONG",
+    "contentionVisibility": "STRONG",
+    "liveProviderEvidence": "ABSENT",
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  },
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

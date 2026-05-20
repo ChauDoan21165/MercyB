@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-05-20T15:34:55.676Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "classifications": [
+    "LOW",
+    "MODERATE",
+    "ELEVATED",
+    "HIGH",
+    "CRITICAL",
+    "RECOVERY_RISK"
+  ],
+  "expectedRecoveryFromDegradedStates": "RECOVERY_RISK",
+  "rerunStabilizationProbability": "HIGH",
+  "anomalyPersistenceProbability": "ELEVATED",
+  "ciRecoveryConfidence": "MODERATE",
+  "contentionRecoveryLikelihood": "ELEVATED",
+  "flakyPatternRecurrenceProbability": "LOW",
+  "recoveryTimeWorsens": true,
+  "unresolvedDegradation": true,
+  "recoveryClassification": "RECOVERY_RISK",
+  "escalationPriority": "RECOVERY_BLOCKED",
+  "confidenceDecay": {
+    "decayed": true,
+    "adjustment": "reduce_for_recovery_resilience_risk",
+    "reasons": {
+      "recoveryTimeWorsens": true,
+      "anomalyRecurrenceIncreases": false,
+      "ciDegradationPersists": true,
+      "contentionInstabilityWidens": true,
+      "staleEvidenceAccumulated": false,
+      "escalationRecurrenceIncreases": true
+    }
+  },
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

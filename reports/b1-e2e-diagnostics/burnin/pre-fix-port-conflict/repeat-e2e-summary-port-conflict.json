@@ -1,0 +1,14 @@
+{
+  "type": "e2e-repeat",
+  "startedAt": "2026-05-20T13:39:51Z",
+  "endedAt": "2026-05-20T13:40:07Z",
+  "iterations": 5,
+  "pattern": "placement-v3-vertical",
+  "passCount": 0,
+  "failCount": 1,
+  "totalDurationSeconds": 16,
+  "measuredTestDurationSeconds": 16,
+  "logDir": "reports/b1-e2e-diagnostics/burnin",
+  "artifactDir": "reports/b1-e2e-diagnostics/burnin/artifacts",
+  "runs": [{"run":1,"status":1,"startedAt":"2026-05-20T13:39:51Z","endedAt":"2026-05-20T13:40:07Z","durationSeconds":16,"log":"reports/b1-e2e-diagnostics/burnin/burnin-e2e-20260520-133951-run-1.log"}]
+}

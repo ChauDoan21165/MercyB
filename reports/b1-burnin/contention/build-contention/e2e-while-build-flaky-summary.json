@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-05-20T14:24:48.640Z",
+  "logDir": "reports/b1-burnin/contention/build-contention",
+  "runs": [
+    {
+      "file": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142343-run-1.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142355-run-2.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142407-run-3.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142419-run-4.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/build-contention/e2e-while-build-20260520-142431-run-5.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    },
+    {
+      "file": "reports/b1-burnin/contention/build-contention/e2e-while-build-wrapper.log",
+      "status": "pass",
+      "durationSeconds": 12,
+      "route": "http://127.0.0.1:5133",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    }
+  ],
+  "totals": {
+    "pass": 6,
+    "fail": 0,
+    "unknown": 0,
+    "durationSeconds": 12
+  },
+  "unstable": false,
+  "intermittentFailure": false,
+  "clusters": []
+}

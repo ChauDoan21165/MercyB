@@ -1,0 +1,13 @@
+{
+  "type": "unit-repeat",
+  "startedAt": "2026-05-20T14:53:06Z",
+  "endedAt": "2026-05-20T14:53:40Z",
+  "iterations": 1,
+  "passCount": 1,
+  "failCount": 0,
+  "totalDurationSeconds": 34,
+  "measuredTestDurationSeconds": 34,
+  "logDir": "docs/placement-v3/reliability/logs/auto-20260520T145306Z/unit",
+  "artifactDir": "docs/placement-v3/reliability/logs/auto-20260520T145306Z/unit/artifacts",
+  "runs": [{"run":1,"status":0,"startedAt":"2026-05-20T14:53:06Z","endedAt":"2026-05-20T14:53:40Z","durationSeconds":34,"log":"docs/placement-v3/reliability/logs/auto-20260520T145306Z/unit/b1-auto-unit-20260520-145306-run-1.log"}]
+}

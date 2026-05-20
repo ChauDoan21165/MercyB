@@ -1,0 +1,85 @@
+repeat-e2e start 2026-05-20T13:39:51Z
+iterations=5 pattern=placement-v3-vertical log_dir=reports/b1-e2e-diagnostics/burnin artifact_dir=reports/b1-e2e-diagnostics/burnin/artifacts summary_json=reports/b1-e2e-diagnostics/burnin/repeat-e2e-summary.json cluster_json=reports/b1-e2e-diagnostics/burnin/repeat-e2e-flaky-summary.json
+E2E REPEAT RUN 1/5 2026-05-20T13:39:51Z
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+[2m[WebServer] [22m(node:99279) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22merror when starting dev server:
+[2m[WebServer] [22mError: Port 3107 is already in use
+[2m[WebServer] [22m    at Server.onError (file:///Users/admin/MercyB/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:25023:18)
+[2m[WebServer] [22m    at Server.emit (node:events:508:20)
+[2m[WebServer] [22m    at emitErrorNT (node:net:2044:8)
+[2m[WebServer] [22m    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+
+Running 1 test using 1 worker
+
+(node:99282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:99282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (13.5s)
+
+
+  1) [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/Let's find where you should start|Hãy tìm điểm bắt đầu|Resume your placement test/i).first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText(/Let's find where you should start|Hãy tìm điểm bắt đầu|Resume your placement test/i).first()[22m
+
+
+       at utils/stability.ts:60
+
+      58 |   await expect(
+      59 |     page.getByText(/Let's find where you should start|Hãy tìm điểm bắt đầu|Resume your placement test/i).first(),
+    > 60 |   ).toBeVisible();
+         |     ^
+      61 | }
+      62 |
+      63 | export async function retryWithTrace<T>(
+        at assertPlacementV3RouteEnabled (/private/tmp/b1-test-stability-push.VtLu79/tests/e2e/utils/stability.ts:60:5)
+        at /private/tmp/b1-test-stability-push.VtLu79/tests/e2e/placement-v3-vertical.spec.ts:54:7
+
+    attachment #1: b1-placement-v3-retry-log (text/plain) ──────────────────────────────────────────
+    No retry log entries.
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: b1-placement-v3-diagnostics (application/json) ──────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/attachments/b1-placement-v3-diagnostics-905596fd67a2f2c6b5bbcd4d7809f47207b61914.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: b1-placement-v3-screenshot (image/png) ──────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/attachments/b1-placement-v3-screenshot-bdd0a617c952a1131ed14e22d850ad3112bfde61.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/error-context.md
+
+    attachment #7: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/e2e/placement-v3-vertical.spec.ts:44:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence 
+E2E REPEAT RUN 1 FAIL status=1 duration=16s log=reports/b1-e2e-diagnostics/burnin/burnin-e2e-20260520-133951-run-1.log
+repeat-e2e summary pass=0 fail=1 summary_json=reports/b1-e2e-diagnostics/burnin/repeat-e2e-summary.json cluster_json=reports/b1-e2e-diagnostics/burnin/repeat-e2e-flaky-summary.json artifact_dir=reports/b1-e2e-diagnostics/burnin/artifacts
