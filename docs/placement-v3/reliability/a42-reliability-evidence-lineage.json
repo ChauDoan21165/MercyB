@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:34:54.912Z",
+  "generatedAt": "2026-05-20T16:45:04.787Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "inputs": [
@@ -17,7 +17,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:35:02.009Z",
-      "ageHours": 0.9980277777777777,
+      "ageHours": 1.1674375,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -41,7 +41,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:49.756Z",
-      "ageHours": 1.0014313888888888,
+      "ageHours": 1.170841388888889,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -65,7 +65,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:55.676Z",
-      "ageHours": 0.9997869444444445,
+      "ageHours": 1.1691969444444446,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -89,7 +89,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:55.690Z",
-      "ageHours": 0.9997830555555556,
+      "ageHours": 1.1691930555555556,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -113,7 +113,7 @@
       "stale": false,
       "fresh": true,
       "generatedAt": "2026-05-20T15:34:49.766Z",
-      "ageHours": 1.001428611111111,
+      "ageHours": 1.170838611111111,
       "safetyClassification": "MISSING_SAFETY_FIELDS",
       "missingSafetyFields": [
         "placement_test_enabled",
@@ -174,6 +174,136 @@
         "live_provider_validated",
         "real_user_validated"
       ]
+    },
+    {
+      "key": "a39_capacity_projections",
+      "sourcePath": "docs/placement-v3/capacity/a39-capacity-projections.json",
+      "canonicalPath": "docs/placement-v3/capacity/a39-capacity-projections.json",
+      "sourceTier": "missing",
+      "sourceAgent": "A39",
+      "sourceBranch": null,
+      "sourceCommit": null,
+      "checksum": null,
+      "ingestionStatus": "missing",
+      "rejectionReasons": [],
+      "stale": true,
+      "fresh": false,
+      "generatedAt": null,
+      "ageHours": null,
+      "safetyClassification": "MISSING",
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ]
+    },
+    {
+      "key": "a45_provider_calibration_dependencies",
+      "sourcePath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "sourceTier": "missing",
+      "sourceAgent": "A45",
+      "sourceBranch": null,
+      "sourceCommit": null,
+      "checksum": null,
+      "ingestionStatus": "missing",
+      "rejectionReasons": [],
+      "stale": true,
+      "fresh": false,
+      "generatedAt": null,
+      "ageHours": null,
+      "safetyClassification": "MISSING",
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ]
+    },
+    {
+      "key": "a47_observability_retention_drift_telemetry",
+      "sourcePath": "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+      "canonicalPath": "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+      "sourceTier": "missing",
+      "sourceAgent": "A47",
+      "sourceBranch": null,
+      "sourceCommit": null,
+      "checksum": null,
+      "ingestionStatus": "missing",
+      "rejectionReasons": [],
+      "stale": true,
+      "fresh": false,
+      "generatedAt": null,
+      "ageHours": null,
+      "safetyClassification": "MISSING",
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ]
+    },
+    {
+      "key": "a49_replay_reproducibility_thresholds",
+      "sourcePath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "canonicalPath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "sourceTier": "missing",
+      "sourceAgent": "A49",
+      "sourceBranch": null,
+      "sourceCommit": null,
+      "checksum": null,
+      "ingestionStatus": "missing",
+      "rejectionReasons": [],
+      "stale": true,
+      "fresh": false,
+      "generatedAt": null,
+      "ageHours": null,
+      "safetyClassification": "MISSING",
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ]
+    },
+    {
+      "key": "a50_supervised_execution_constraints",
+      "sourcePath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "sourceTier": "missing",
+      "sourceAgent": "A50",
+      "sourceBranch": null,
+      "sourceCommit": null,
+      "checksum": null,
+      "ingestionStatus": "missing",
+      "rejectionReasons": [],
+      "stale": true,
+      "fresh": false,
+      "generatedAt": null,
+      "ageHours": null,
+      "safetyClassification": "MISSING",
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ]
     }
   ],
   "production_safe": false,
@@ -190,6 +320,7 @@
     "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }

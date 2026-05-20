@@ -1,6 +1,6 @@
 # A42 Reliability Threshold Policy
 
-Generated: 2026-05-20T16:35:05.366Z
+Generated: 2026-05-20T16:45:04.788Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

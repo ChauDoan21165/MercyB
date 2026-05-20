@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:35:03.024Z",
+  "generatedAt": "2026-05-20T16:45:04.786Z",
   "agent": "A42",
   "name": "ReliabilityForecastOps",
   "branch": "feat/a42-reliability-forecast-ops",
@@ -12,7 +12,7 @@
   "reliability_health": {
     "present": true,
     "stale": false,
-    "ageHours": 1.0002819444444444,
+    "ageHours": 1.1674375,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:35:02.009Z",
     "data": {
@@ -58,7 +58,7 @@
   "ciDegradationRisk": {
     "present": true,
     "stale": false,
-    "ageHours": 1.0036855555555555,
+    "ageHours": 1.170841388888889,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:49.756Z",
     "data": {
@@ -107,7 +107,7 @@
   "recoveryRisk": {
     "present": true,
     "stale": false,
-    "ageHours": 1.0020411111111112,
+    "ageHours": 1.1691969444444446,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:55.676Z",
     "data": {
@@ -155,7 +155,7 @@
   "resilienceState": {
     "present": true,
     "stale": false,
-    "ageHours": 1.0020372222222222,
+    "ageHours": 1.1691930555555556,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:55.690Z",
     "data": {
@@ -214,7 +214,7 @@
   "anomalyState": {
     "present": true,
     "stale": false,
-    "ageHours": 1.0036827777777777,
+    "ageHours": 1.170838611111111,
     "branch": "feat/b1-test-stability-burndown",
     "generatedAt": "2026-05-20T15:34:49.766Z",
     "data": {
@@ -303,14 +303,24 @@
   },
   "missingInputs": [
     "a33_endurance_health",
-    "a33_timeout_risk_forecast"
+    "a33_timeout_risk_forecast",
+    "a39_capacity_projections",
+    "a45_provider_calibration_dependencies",
+    "a47_observability_retention_drift_telemetry",
+    "a49_replay_reproducibility_thresholds",
+    "a50_supervised_execution_constraints"
   ],
   "rejectedInputs": [],
   "stalenessDetection": {
     "thresholdHours": 72,
     "staleInputs": [
       "a33_endurance_health",
-      "a33_timeout_risk_forecast"
+      "a33_timeout_risk_forecast",
+      "a39_capacity_projections",
+      "a45_provider_calibration_dependencies",
+      "a47_observability_retention_drift_telemetry",
+      "a49_replay_reproducibility_thresholds",
+      "a50_supervised_execution_constraints"
     ],
     "missingBranchMetadata": [],
     "missingSafetyFields": [
@@ -387,6 +397,66 @@
           "live_provider_validated",
           "real_user_validated"
         ]
+      },
+      {
+        "key": "a39_capacity_projections",
+        "fields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "a45_provider_calibration_dependencies",
+        "fields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "a47_observability_retention_drift_telemetry",
+        "fields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "a49_replay_reproducibility_thresholds",
+        "fields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      },
+      {
+        "key": "a50_supervised_execution_constraints",
+        "fields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
       }
     ],
     "unsafeProductionClaims": [],
@@ -394,9 +464,9 @@
   },
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 1.0036855555555555,
-    "missingCount": 2,
-    "staleCount": 2,
+    "oldestAgeHours": 1.170841388888889,
+    "missingCount": 7,
+    "staleCount": 7,
     "label": "blocked_missing_inputs"
   },
   "classification": "BLOCKED_BY_MISSING_EVIDENCE",
@@ -414,6 +484,7 @@
     "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }

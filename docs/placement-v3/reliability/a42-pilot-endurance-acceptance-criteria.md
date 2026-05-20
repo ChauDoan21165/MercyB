@@ -1,6 +1,6 @@
 # A42 Pilot Endurance Acceptance Criteria
 
-Generated: 2026-05-20T16:35:08.197Z
+Generated: 2026-05-20T16:45:04.789Z
 
 - Reliability risk classification: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS
 - Ready: false

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:35:03.437Z",
+  "generatedAt": "2026-05-20T16:45:04.785Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "resolutionOrder": [
@@ -19,7 +19,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.000396388888889,
+      "ageHours": 1.1674375,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:35:02.009Z",
       "safetyFields": {
@@ -49,7 +49,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.0038002777777777,
+      "ageHours": 1.170841388888889,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.756Z",
       "safetyFields": {
@@ -79,7 +79,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.0021558333333334,
+      "ageHours": 1.1691969444444446,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.676Z",
       "safetyFields": {
@@ -109,7 +109,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.0021519444444444,
+      "ageHours": 1.1691930555555556,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.690Z",
       "safetyFields": {
@@ -139,7 +139,7 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 1.0037975,
+      "ageHours": 1.170838611111111,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.766Z",
       "safetyFields": {
@@ -224,6 +224,166 @@
           "real_user_validated"
         ]
       }
+    },
+    {
+      "key": "a39_capacity_projections",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/capacity/a39-capacity-projections.json",
+      "canonicalPath": "docs/placement-v3/capacity/a39-capacity-projections.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a45_provider_calibration_dependencies",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a47_observability_retention_drift_telemetry",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+      "canonicalPath": "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a49_replay_reproducibility_thresholds",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "canonicalPath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
+    },
+    {
+      "key": "a50_supervised_execution_constraints",
+      "present": false,
+      "rejected": false,
+      "rejectionReasons": [],
+      "sourcePath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "sourceTier": "missing",
+      "fresh": false,
+      "stale": true,
+      "ageHours": null,
+      "branch": null,
+      "generatedAt": null,
+      "safetyFields": {
+        "production_safe": null,
+        "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
+        "live_provider_validated": null,
+        "real_user_validated": null,
+        "missingSafetyFields": [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated"
+        ]
+      }
     }
   ],
   "rejectedInputs": [],
@@ -269,13 +429,43 @@
       "selectedPath": "docs/placement-v3/endurance/timeout-risk-forecast.json",
       "canonicalPath": "docs/placement-v3/endurance/timeout-risk-forecast.json",
       "sourceTier": "missing"
+    },
+    {
+      "key": "a39_capacity_projections",
+      "selectedPath": "docs/placement-v3/capacity/a39-capacity-projections.json",
+      "canonicalPath": "docs/placement-v3/capacity/a39-capacity-projections.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a45_provider_calibration_dependencies",
+      "selectedPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "canonicalPath": "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a47_observability_retention_drift_telemetry",
+      "selectedPath": "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+      "canonicalPath": "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a49_replay_reproducibility_thresholds",
+      "selectedPath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "canonicalPath": "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+      "sourceTier": "missing"
+    },
+    {
+      "key": "a50_supervised_execution_constraints",
+      "selectedPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "canonicalPath": "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+      "sourceTier": "missing"
     }
   ],
   "freshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 1.0038002777777777,
-    "missingCount": 2,
-    "staleCount": 2,
+    "oldestAgeHours": 1.170841388888889,
+    "missingCount": 7,
+    "staleCount": 7,
     "label": "blocked_missing_inputs"
   },
   "safetyFields": [
@@ -408,6 +598,106 @@
         "real_user_validated"
       ],
       "unsafeProductionClaim": false
+    },
+    {
+      "key": "a39_capacity_projections",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a45_provider_calibration_dependencies",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a47_observability_retention_drift_telemetry",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a49_replay_reproducibility_thresholds",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
+    },
+    {
+      "key": "a50_supervised_execution_constraints",
+      "production_safe": null,
+      "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
+      "live_provider_validated": null,
+      "real_user_validated": null,
+      "missingSafetyFields": [
+        "production_safe",
+        "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
+        "live_provider_validated",
+        "real_user_validated"
+      ],
+      "unsafeProductionClaim": false
     }
   ],
   "production_safe": false,
@@ -424,6 +714,7 @@
     "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }

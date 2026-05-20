@@ -1,0 +1,128 @@
+{
+  "generatedAt": "2026-05-20T16:45:04.790Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "governance": "provider failover stability model",
+  "dependencyLineage": [
+    {
+      "agent": "A45",
+      "input": "provider calibration dependencies",
+      "output": "failover lineage and degradation thresholds",
+      "status": "missing_source_evidence"
+    },
+    {
+      "agent": "A33",
+      "input": "timeout risk forecast",
+      "output": "timeout escalation dependencies",
+      "status": "missing_source_evidence"
+    },
+    {
+      "agent": "A47",
+      "input": "provider drift telemetry",
+      "output": "failover observability correlation",
+      "status": "missing_source_evidence"
+    },
+    {
+      "agent": "A50",
+      "input": "supervised execution constraints",
+      "output": "supervised failover gating",
+      "status": "missing_source_evidence"
+    }
+  ],
+  "checks": [
+    {
+      "name": "failover_lineage",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "failoverLineage",
+        "providerCalibrationVersion"
+      ],
+      "missingFields": [
+        "failoverLineage",
+        "providerCalibrationVersion"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "provider_degradation_thresholds",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "providerDegradationThresholds",
+        "providerCalibrationBounds"
+      ],
+      "missingFields": [
+        "providerDegradationThresholds",
+        "providerCalibrationBounds"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "timeout_escalation_dependencies",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "failoverTimeoutRisk",
+        "providerTimeoutsResolved"
+      ],
+      "missingFields": [
+        "failoverTimeoutRisk",
+        "providerTimeoutsResolved"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "failover_observability_retention",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "retentionWindowHours",
+        "providerDriftTelemetry"
+      ],
+      "missingFields": [
+        "retentionWindowHours",
+        "providerDriftTelemetry"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "supervised_failover_constraints",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "supervisedOnly",
+        "operatorApprovalRequired"
+      ],
+      "missingFields": [
+        "supervisedOnly",
+        "operatorApprovalRequired"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    }
+  ],
+  "incompleteChecks": [
+    "failover_lineage",
+    "provider_degradation_thresholds",
+    "timeout_escalation_dependencies",
+    "failover_observability_retention",
+    "supervised_failover_constraints"
+  ],
+  "complete": false,
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "ready": false,
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "placement_test_enabled": false,
+    "placement_v3_ui_enabled": false,
+    "live_validation_complete": false,
+    "live_provider_validated": false,
+    "real_user_validated": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  }
+}

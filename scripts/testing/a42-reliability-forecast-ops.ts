@@ -82,6 +82,31 @@ const SOURCES = [
     path: "docs/placement-v3/endurance/timeout-risk-forecast.json",
     required: false,
   },
+  {
+    key: "a39_capacity_projections",
+    path: "docs/placement-v3/capacity/a39-capacity-projections.json",
+    required: false,
+  },
+  {
+    key: "a45_provider_calibration_dependencies",
+    path: "docs/placement-v3/provider-calibration/a45-provider-calibration-dependencies.json",
+    required: false,
+  },
+  {
+    key: "a47_observability_retention_drift_telemetry",
+    path: "docs/placement-v3/observability/a47-observability-retention-drift-telemetry.json",
+    required: false,
+  },
+  {
+    key: "a49_replay_reproducibility_thresholds",
+    path: "docs/placement-v3/replay/a49-replay-reproducibility-thresholds.json",
+    required: false,
+  },
+  {
+    key: "a50_supervised_execution_constraints",
+    path: "docs/placement-v3/supervision/a50-supervised-execution-constraints.json",
+    required: false,
+  },
 ] as const;
 
 const FORBIDDEN_CLAIMS = [
@@ -123,11 +148,19 @@ function main() {
     case "adaptive-reliability":
       generateAdaptiveSessionReliability();
       break;
+    case "cross-stream":
+      generateCrossStreamReliabilityDependencies();
+      break;
     case "replay-durability":
       generateReplayDurabilityForecast();
+      generateReplayDurabilityGovernance();
       break;
     case "failover-stability":
       generateFailoverStabilityForecast();
+      generateProviderFailoverStabilityModel();
+      break;
+    case "observability-correlation":
+      generateObservabilityReliabilityCorrelation();
       break;
     case "threshold-policy":
       generateReliabilityThresholdPolicy();
@@ -200,6 +233,10 @@ function runAuto() {
   const incidentResponse = generateReliabilityIncidentResponsePlan(sources);
   const timeoutEscalation = generateProviderTimeoutEscalationPolicy(sources);
   const safetyMargin = generateReliabilitySafetyMarginPolicy(sources);
+  const crossStream = generateCrossStreamReliabilityDependencies(sources);
+  const replayGovernance = generateReplayDurabilityGovernance(sources);
+  const failoverModel = generateProviderFailoverStabilityModel(sources);
+  const observabilityCorrelation = generateObservabilityReliabilityCorrelation(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -222,6 +259,10 @@ function runAuto() {
       incidentResponse,
       timeoutEscalation,
       safetyMargin,
+      crossStream,
+      replayGovernance,
+      failoverModel,
+      observabilityCorrelation,
     );
   }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
@@ -246,6 +287,10 @@ function runAuto() {
   console.log(`[a42] reliability incident response plan: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-incident-response-plan.json")}`);
   console.log(`[a42] provider timeout escalation policy: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-timeout-escalation-policy.json")}`);
   console.log(`[a42] reliability safety margin policy: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-safety-margin-policy.json")}`);
+  console.log(`[a42] cross-stream reliability dependencies: ${path.join(RELIABILITY_OUT_DIR, "a42-cross-stream-reliability-dependencies.json")}`);
+  console.log(`[a42] replay durability governance: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-governance.json")}`);
+  console.log(`[a42] provider failover stability model: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-failover-stability-model.json")}`);
+  console.log(`[a42] observability reliability correlation: ${path.join(RELIABILITY_OUT_DIR, "a42-observability-reliability-correlation.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -1246,6 +1291,186 @@ function generateReliabilitySafetyMarginPolicy(existingSources?: SourceStatus[])
   return report;
 }
 
+function generateCrossStreamReliabilityDependencies(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a33Endurance = sourceData(sources, "a33_endurance_health");
+  const a33Timeout = sourceData(sources, "a33_timeout_risk_forecast");
+  const a39Capacity = sourceData(sources, "a39_capacity_projections");
+  const a45Provider = sourceData(sources, "a45_provider_calibration_dependencies");
+  const a47Observability = sourceData(sources, "a47_observability_retention_drift_telemetry");
+  const a49Replay = sourceData(sources, "a49_replay_reproducibility_thresholds");
+  const a50Supervision = sourceData(sources, "a50_supervised_execution_constraints");
+  const checks = [
+    evidenceSchemaCheck(a33Endurance, "a33_endurance_to_adaptive_session_forecast", ["longSessionStable", "longSessionDegradationRisk"]),
+    evidenceSchemaCheck(a33Timeout, "a33_timeout_to_escalation_readiness", ["timeoutIncidentRisk", "assessmentSessionTimeoutRisk"]),
+    evidenceSchemaCheck(a39Capacity, "endurance_to_capacity_coupling", ["capacityProjection", "adaptiveSessionCapacityHeadroom"]),
+    evidenceSchemaCheck(a45Provider, "provider_degradation_thresholds", ["providerDegradationThresholds", "failoverLineage"]),
+    evidenceSchemaCheck(a47Observability, "observability_retention_assumptions", ["retentionWindowHours", "driftTelemetryAvailable"]),
+    evidenceSchemaCheck(a49Replay, "replay_durability_assumptions", ["replayReproducibilityThreshold", "replayDurabilityConfidence"]),
+    evidenceSchemaCheck(a50Supervision, "supervised_execution_dependencies", ["autonomous_execution", "supervisedOnly", "operatorApprovalRequired"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("cross-stream reliability dependencies", checks, riskClassification, [
+    dependencyRow("A33", "endurance inputs", "adaptive-session endurance forecasting", !!a33Endurance),
+    dependencyRow("A33", "timeout risk forecast", "timeout escalation readiness", !!a33Timeout),
+    dependencyRow("A39", "capacity projections", "endurance-to-capacity coupling", !!a39Capacity),
+    dependencyRow("A45", "provider calibration dependencies", "provider degradation and failover thresholds", !!a45Provider),
+    dependencyRow("A47", "observability retention/drift telemetry", "drift-aware reliability correlation", !!a47Observability),
+    dependencyRow("A49", "replay reproducibility thresholds", "replay durability confidence", !!a49Replay),
+    dependencyRow("A50", "supervised execution constraints", "pilot reliability gating", !!a50Supervision),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-cross-stream-reliability-dependencies",
+    report,
+    [
+      "# A42 Cross-Stream Reliability Dependencies",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "A42 records cross-stream dependency lineage only. Missing upstream evidence keeps pilot reliability gating blocked-safe.",
+    ],
+  );
+  return report;
+}
+
+function generateReplayDurabilityGovernance(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a33Endurance = sourceData(sources, "a33_endurance_health");
+  const a49Replay = sourceData(sources, "a49_replay_reproducibility_thresholds");
+  const a47Observability = sourceData(sources, "a47_observability_retention_drift_telemetry");
+  const a50Supervision = sourceData(sources, "a50_supervised_execution_constraints");
+  const checks = [
+    evidenceSchemaCheck(a33Endurance, "a33_replay_durability_inputs", ["replayDurable", "replayEvidenceComplete"]),
+    evidenceSchemaCheck(a49Replay, "replay_durability_assumptions", ["replayReproducibilityThreshold", "replayDurabilityConfidence"]),
+    evidenceSchemaCheck(a49Replay, "replay_reproducibility_thresholds", ["deterministicReplayRate", "replayMismatchThreshold"]),
+    evidenceSchemaCheck(a47Observability, "observability_retention_for_replay", ["retentionWindowHours", "traceRetentionPolicy"]),
+    evidenceSchemaCheck(a50Supervision, "supervised_replay_execution_constraints", ["supervisedOnly", "operatorApprovalRequired"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("replay durability governance", checks, riskClassification, [
+    dependencyRow("A33", "replay durability evidence", "replay durability confidence", !!a33Endurance),
+    dependencyRow("A49", "replay reproducibility thresholds", "replay governance thresholds", !!a49Replay),
+    dependencyRow("A47", "trace and retention telemetry", "replay evidence preservation", !!a47Observability),
+    dependencyRow("A50", "supervised execution constraints", "supervised replay gating", !!a50Supervision),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-replay-durability-governance",
+    report,
+    [
+      "# A42 Replay Durability Governance",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Replay durability governance remains blocked-safe and does not certify replay behavior without A49/A33/A47/A50 evidence.",
+    ],
+  );
+  return report;
+}
+
+function generateProviderFailoverStabilityModel(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a33Timeout = sourceData(sources, "a33_timeout_risk_forecast");
+  const a45Provider = sourceData(sources, "a45_provider_calibration_dependencies");
+  const a47Observability = sourceData(sources, "a47_observability_retention_drift_telemetry");
+  const a50Supervision = sourceData(sources, "a50_supervised_execution_constraints");
+  const checks = [
+    evidenceSchemaCheck(a45Provider, "failover_lineage", ["failoverLineage", "providerCalibrationVersion"]),
+    evidenceSchemaCheck(a45Provider, "provider_degradation_thresholds", ["providerDegradationThresholds", "providerCalibrationBounds"]),
+    evidenceSchemaCheck(a33Timeout, "timeout_escalation_dependencies", ["failoverTimeoutRisk", "providerTimeoutsResolved"]),
+    evidenceSchemaCheck(a47Observability, "failover_observability_retention", ["retentionWindowHours", "providerDriftTelemetry"]),
+    evidenceSchemaCheck(a50Supervision, "supervised_failover_constraints", ["supervisedOnly", "operatorApprovalRequired"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("provider failover stability model", checks, riskClassification, [
+    dependencyRow("A45", "provider calibration dependencies", "failover lineage and degradation thresholds", !!a45Provider),
+    dependencyRow("A33", "timeout risk forecast", "timeout escalation dependencies", !!a33Timeout),
+    dependencyRow("A47", "provider drift telemetry", "failover observability correlation", !!a47Observability),
+    dependencyRow("A50", "supervised execution constraints", "supervised failover gating", !!a50Supervision),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-provider-failover-stability-model",
+    report,
+    [
+      "# A42 Provider Failover Stability Model",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Provider failover stability modeling is evidence-only and does not change provider execution.",
+    ],
+  );
+  return report;
+}
+
+function generateObservabilityReliabilityCorrelation(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const a33Endurance = sourceData(sources, "a33_endurance_health");
+  const a39Capacity = sourceData(sources, "a39_capacity_projections");
+  const a47Observability = sourceData(sources, "a47_observability_retention_drift_telemetry");
+  const a49Replay = sourceData(sources, "a49_replay_reproducibility_thresholds");
+  const checks = [
+    evidenceSchemaCheck(a47Observability, "observability_retention_assumptions", ["retentionWindowHours", "traceRetentionPolicy"]),
+    evidenceSchemaCheck(a47Observability, "drift_telemetry_correlation", ["driftTelemetryAvailable", "reliabilityCorrelationSignals"]),
+    evidenceSchemaCheck(a33Endurance, "endurance_signal_correlation", ["longSessionStable", "longSessionDegradationRisk"]),
+    evidenceSchemaCheck(a39Capacity, "capacity_signal_correlation", ["capacityProjection", "adaptiveSessionCapacityHeadroom"]),
+    evidenceSchemaCheck(a49Replay, "replay_signal_correlation", ["replayReproducibilityThreshold", "replayMismatchThreshold"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = crossStreamReport("observability reliability correlation", checks, riskClassification, [
+    dependencyRow("A47", "observability retention/drift telemetry", "reliability correlation visibility", !!a47Observability),
+    dependencyRow("A33", "endurance inputs", "endurance signal correlation", !!a33Endurance),
+    dependencyRow("A39", "capacity projections", "capacity reliability correlation", !!a39Capacity),
+    dependencyRow("A49", "replay reproducibility thresholds", "replay signal correlation", !!a49Replay),
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-observability-reliability-correlation",
+    report,
+    [
+      "# A42 Observability Reliability Correlation",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      ...report.dependencyLineage.map((item) => `- ${item.agent}: ${item.input} -> ${item.output} (${item.status})`),
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Observability correlation remains blocked-safe until retention, drift, endurance, capacity, and replay evidence are present.",
+    ],
+  );
+  return report;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -1274,7 +1499,7 @@ function ingestSources(): SourceStatus[] {
         ],
         unsafeProductionClaim: false,
         checksum: null,
-        sourceAgent: source.key.startsWith("a33_") ? "A33" : "B1",
+        sourceAgent: sourceAgentForKey(source.key),
         sourceCommit: null,
         safetyClassification: "MISSING",
         data: null,
@@ -1303,7 +1528,7 @@ function ingestSources(): SourceStatus[] {
       missingSafetyFields: safetyFieldGaps(data),
       unsafeProductionClaim: rejectionReasons.length > 0,
       checksum: checksum(raw),
-      sourceAgent: source.key.startsWith("a33_") ? "A33" : "B1",
+      sourceAgent: sourceAgentForKey(source.key),
       sourceCommit: sourceCommit(data),
       safetyClassification: safetyClassification(data, rejectionReasons),
       data,
@@ -1465,6 +1690,12 @@ function sourceData(sources: SourceStatus[], key: string) {
   return sources.find((source) => source.key === key)?.data ?? null;
 }
 
+function sourceAgentForKey(key: string) {
+  const match = key.match(/^a(\d+)_/i);
+  if (match) return `A${match[1]}`;
+  return "B1";
+}
+
 function reliabilityForecastReport(name: string, checks: Array<{ name: string; status: string; reason: string; value?: unknown }>, riskClassification: ReliabilityRiskClassification) {
   return {
     generatedAt: new Date().toISOString(),
@@ -1481,6 +1712,7 @@ function reliabilityForecastReport(name: string, checks: Array<{ name: string; s
     placement_v3_ui_enabled: false,
     live_validation_complete: false,
     live_provider_validated: false,
+    autonomous_execution: "SUPERVISED_ONLY",
     safetyPosition: safetyPosition(),
   };
 }
@@ -1508,7 +1740,45 @@ function schemaReport(
     placement_v3_ui_enabled: false,
     live_validation_complete: false,
     live_provider_validated: false,
+    autonomous_execution: "SUPERVISED_ONLY",
     safetyPosition: safetyPosition(),
+  };
+}
+
+function crossStreamReport(
+  name: string,
+  checks: Array<{ name: string; status: string; reason: string; requiredFields?: string[]; missingFields?: string[]; value?: unknown }>,
+  riskClassification: ReliabilityRiskClassification,
+  dependencyLineage: Array<{ agent: string; input: string; output: string; status: string }>,
+) {
+  return {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    governance: name,
+    dependencyLineage,
+    checks,
+    incompleteChecks: checks.filter((check) => check.status !== "PASS").map((check) => check.name),
+    complete: checks.every((check) => check.status === "PASS"),
+    riskClassification,
+    ready: riskClassification === "RELIABILITY_READY",
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    autonomous_execution: "SUPERVISED_ONLY",
+    safetyPosition: safetyPosition(),
+  };
+}
+
+function dependencyRow(agent: string, input: string, output: string, present: boolean) {
+  return {
+    agent,
+    input,
+    output,
+    status: present ? "source_present_unverified" : "missing_source_evidence",
   };
 }
 
@@ -1590,6 +1860,7 @@ function safetyPosition() {
     live_validation_complete: false,
     live_provider_validated: false,
     real_user_validated: false,
+    autonomous_execution: "SUPERVISED_ONLY",
     productionReadiness: "NO",
     placementV3Enablement: "BLOCKED",
   };
@@ -1634,6 +1905,10 @@ function enforceStrictMode(
   incidentResponse: ReturnType<typeof generateReliabilityIncidentResponsePlan>,
   timeoutEscalation: ReturnType<typeof generateProviderTimeoutEscalationPolicy>,
   safetyMargin: ReturnType<typeof generateReliabilitySafetyMarginPolicy>,
+  crossStream: ReturnType<typeof generateCrossStreamReliabilityDependencies>,
+  replayGovernance: ReturnType<typeof generateReplayDurabilityGovernance>,
+  failoverModel: ReturnType<typeof generateProviderFailoverStabilityModel>,
+  observabilityCorrelation: ReturnType<typeof generateObservabilityReliabilityCorrelation>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -1662,6 +1937,12 @@ function enforceStrictMode(
   if (incidentResponse.riskClassification !== "RELIABILITY_READY") failures.push(`reliability incident response plan blocked: ${incidentResponse.riskClassification}`);
   if (timeoutEscalation.riskClassification !== "RELIABILITY_READY") failures.push(`provider timeout escalation policy blocked: ${timeoutEscalation.riskClassification}`);
   if (safetyMargin.riskClassification !== "RELIABILITY_READY") failures.push(`reliability safety margin policy blocked: ${safetyMargin.riskClassification}`);
+  if (crossStream.riskClassification !== "RELIABILITY_READY") failures.push(`cross-stream reliability dependencies blocked: ${crossStream.riskClassification}`);
+  if (replayGovernance.riskClassification !== "RELIABILITY_READY") failures.push(`replay durability governance blocked: ${replayGovernance.riskClassification}`);
+  if (failoverModel.riskClassification !== "RELIABILITY_READY") failures.push(`provider failover stability model blocked: ${failoverModel.riskClassification}`);
+  if (observabilityCorrelation.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`observability reliability correlation blocked: ${observabilityCorrelation.riskClassification}`);
+  }
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
   if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
   if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
@@ -1679,6 +1960,19 @@ function enforceStrictMode(
   if (!incidentResponse.complete) failures.push("reliability incident response planning incomplete");
   if (!timeoutEscalation.complete) failures.push("provider timeout escalation incomplete");
   if (!safetyMargin.complete) failures.push("reliability safety margins incomplete");
+  if (!crossStream.complete) failures.push("cross-stream dependency lineage incomplete");
+  if (!replayGovernance.complete) failures.push("replay durability assumptions missing");
+  if (!failoverModel.complete) failures.push("failover lineage incomplete or provider degradation thresholds undefined");
+  if (!observabilityCorrelation.complete) failures.push("observability retention assumptions absent");
+  if (crossStream.checks.some((item) => item.name === "a33_timeout_to_escalation_readiness" && item.status !== "PASS")) {
+    failures.push("timeout escalation dependencies undocumented");
+  }
+  if (crossStream.checks.some((item) => item.name === "endurance_to_capacity_coupling" && item.status !== "PASS")) {
+    failures.push("endurance-to-capacity coupling undefined");
+  }
+  if (crossStream.checks.some((item) => item.name === "supervised_execution_dependencies" && item.status !== "PASS")) {
+    failures.push("supervised execution dependencies missing");
+  }
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
     throw new Error(`A42 strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
@@ -1797,6 +2091,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-provider-timeout-escalation-policy.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-reliability-safety-margin-policy.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-reliability-safety-margin-policy.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-cross-stream-reliability-dependencies.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-cross-stream-reliability-dependencies.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-governance.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-governance.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-failover-stability-model.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-failover-stability-model.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-observability-reliability-correlation.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-observability-reliability-correlation.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

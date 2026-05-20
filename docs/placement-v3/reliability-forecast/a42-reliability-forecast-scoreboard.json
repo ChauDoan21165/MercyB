@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:35:03.026Z",
+  "generatedAt": "2026-05-20T16:45:04.786Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "classifications": [
@@ -19,15 +19,20 @@
   },
   "missingInputs": [
     "a33_endurance_health",
-    "a33_timeout_risk_forecast"
+    "a33_timeout_risk_forecast",
+    "a39_capacity_projections",
+    "a45_provider_calibration_dependencies",
+    "a47_observability_retention_drift_telemetry",
+    "a49_replay_reproducibility_thresholds",
+    "a50_supervised_execution_constraints"
   ],
   "rejectedInputs": [],
   "stale": true,
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 1.0036855555555555,
-    "missingCount": 2,
-    "staleCount": 2,
+    "oldestAgeHours": 1.170841388888889,
+    "missingCount": 7,
+    "staleCount": 7,
     "label": "blocked_missing_inputs"
   },
   "forecastClassification": "BLOCKED_BY_MISSING_EVIDENCE",
@@ -45,6 +50,7 @@
     "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }

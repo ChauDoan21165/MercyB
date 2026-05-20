@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:35:07.454Z",
+  "generatedAt": "2026-05-20T16:45:04.789Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "schema": "timeout threshold schema",
@@ -55,6 +55,7 @@
   "placement_v3_ui_enabled": false,
   "live_validation_complete": false,
   "live_provider_validated": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
   "safetyPosition": {
     "production_safe": false,
     "placement_v3_enabled": false,
@@ -63,6 +64,7 @@
     "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
     "productionReadiness": "NO",
     "placementV3Enablement": "BLOCKED"
   }
