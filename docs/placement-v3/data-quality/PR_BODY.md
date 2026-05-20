@@ -46,6 +46,15 @@ This remains a draft PR. It does not claim Placement V3 data quality is producti
 
 No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, orphan CEFR room paths, malformed calibration entries, invalid modality mappings, or missing CEFR labels were found in the merged runtime V3 corpus.
 
+## Remaining Finding Classification
+
+- Safe / informational: 47 unused legacy taxonomy IDs. These are defined but not referenced by audited placement or V3 recommendation surfaces.
+- Needs expert linguistic review: 48 missing remediation links, 6 conversation prompts without calibration entries, and unused V3 ID `negation-no-not-placement`.
+- Release blocker for A3 tooling merge: none found.
+- Release blocker for a production-safe data-quality claim: unresolved remediation ownership, conversation calibration gaps, and unused taxonomy ownership.
+- Audit false positives remaining: none in the current raw output.
+- Intentional design: `linkedRoomId: null` is allowed by the catalog, but flagged because remediation automation needs an owned target.
+
 ## Unresolved Expert-Review Items
 
 - 6 conversation prompts have no calibration entries.
@@ -57,6 +66,9 @@ No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, or
 ## Integrity Evidence
 
 - Triage: `docs/placement-v3/data-quality/a3-taxonomy-finding-triage.md`
+- Remaining findings triage: `docs/placement-v3/data-quality/a3-remaining-findings-triage.md`
+- Expert review queue: `docs/placement-v3/data-quality/a3-expert-review-queue.md`
+- Release blocker assessment: `docs/placement-v3/data-quality/a3-release-blocker-assessment.md`
 - Before JSON run artifacts: `docs/placement-v3/data-quality/raw-runs/a3-20260520T132558-*.json`
 - After JSON run artifacts: `docs/placement-v3/data-quality/raw-runs/a3-20260520T133236-taxonomy-consistency.json`, `a3-20260520T133158-recommendation-graph.json`, `a3-20260520T133158-prompt-rubric-alignment.json`, `a3-20260520T133158-corpus-integrity.json`
 - After logs: `docs/placement-v3/data-quality/raw-runs/a3-*-after-mechanical-fixes.log`
@@ -75,4 +87,8 @@ No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, or
 
 ## Production Readiness Assessment
 
-Not production-safe yet. Safe mechanical issues were reduced, but unresolved remediation and calibration gaps remain.
+Not production-safe yet. Safe mechanical issues were reduced and remaining findings are classified, but unresolved remediation and calibration gaps remain.
+
+## Recommended Next Action
+
+Keep this PR draft unless Chau accepts it as infrastructure-only. The next useful work is expert review of remediation-room ownership and conversation calibration, not further mechanical count reduction.

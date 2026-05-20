@@ -1,6 +1,6 @@
 # A3 Final Report
 
-Status after mechanical follow-up: audit infrastructure is complete, the merged Placement V3 runtime corpus has been audited, and safe mechanical fixes reduced findings. A3 still does not declare data quality production-safe because unresolved taxonomy remediation and conversation calibration gaps remain.
+Status after remaining-finding triage: audit infrastructure is complete, the merged Placement V3 runtime corpus has been audited, safe mechanical fixes reduced findings, and the remaining findings are classified into operational buckets. A3 still does not declare data quality production-safe because unresolved taxonomy remediation and conversation calibration gaps remain.
 
 ## Corpus Audited
 
@@ -26,6 +26,21 @@ After mechanical fixes:
 - Prompt/rubric alignment: 6.
 
 Total tracked findings dropped from 118 to 102.
+
+## Remaining Finding Classification
+
+- Safe / informational: 47 unused legacy taxonomy IDs. These are not invalid references; they are defined categories not currently used by audited placement or V3 recommendation surfaces.
+- Needs expert linguistic review: 48 missing remediation links, 6 conversation prompts without calibration entries, and the unused V3 ID `negation-no-not-placement`.
+- Release blocker for A3 tooling merge: none.
+- Release blocker for production-safe data-quality claim: missing remediation ownership, conversation calibration gaps, and unresolved unused taxonomy ownership.
+- Audit false positives remaining: none in the current raw output.
+- Intentional design: `linkedRoomId: null` is allowed by the catalog, but still flagged because automated remediation needs an owned target.
+
+Detailed queues:
+
+- `docs/placement-v3/data-quality/a3-remaining-findings-triage.md`
+- `docs/placement-v3/data-quality/a3-expert-review-queue.md`
+- `docs/placement-v3/data-quality/a3-release-blocker-assessment.md`
 
 ## Safe Fixes Applied
 
@@ -54,6 +69,10 @@ CEFR-to-room, non-null remediation links, V3 recommender aliases, and V3 lesson-
 ## Production-Safe?
 
 No. A3 reduced safe mechanical findings, but unresolved remediation and calibration gaps remain and require review.
+
+## Recommended Next Action
+
+Keep PR #951 draft unless Chau explicitly accepts it as infrastructure-only. The next useful work is expert review of remediation-room ownership and conversation calibration, not further mechanical count reduction.
 
 ## Verification
 
