@@ -88,6 +88,16 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: node scripts/check-delete-account-coverage.mjs
 
+      # A15: RLS policy documentation coverage. Verifies every policy in
+      # reports/RLS-current-state-A15.json has a documentation source — either
+      # an explicit COMMENT ON POLICY line in a migration, or pattern coverage
+      # in supabase/migrations/20260625000000_rls_policy_documentation.sql.
+      # Runs in stub-mode until Chau pastes the full pg_policies dump into
+      # the snapshot file. Step added to the existing job (job name unchanged
+      # — branch protection safe).
+      - name: Check RLS documentation coverage
+        run: node scripts/check-rls-doc-coverage.mjs
+
       - name: Generate and verify room registry
         run: |
           echo "🔄 Generating room registry..."
