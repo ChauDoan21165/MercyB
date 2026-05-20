@@ -1,0 +1,98 @@
+import type { CalibrationEntry } from "./index";
+
+export const READING_CALIBRATION_CORPUS = [
+  {
+    id: "cal-r-a1-library-1",
+    promptId: "a1-r-library-card",
+    modality: "reading",
+    expectedLevel: "A1",
+    expectedSubskills: { vocabulary: "A1", coherence: "A1", taskAchievement: "A1" },
+    expectedL1Flags: [],
+    userResponse: "Q1 student ID and photo. Q2 Monday to Friday.",
+    expertNotes: "Both literal details are correct with minimal language production required.",
+    difficulty: "clear",
+  },
+  {
+    id: "cal-r-a1-cafe-1",
+    promptId: "a1-r-cafe-menu",
+    modality: "reading",
+    expectedLevel: "A1",
+    expectedSubskills: { vocabulary: "A1", coherence: "A1", taskAchievement: "A1" },
+    expectedL1Flags: ["classifier-transfer"],
+    userResponse: "Student set have coffee. Cheap is morning set.",
+    expertNotes:
+      "Answers are correct but response language shows A1 grammar. Reading comprehension is adequate for A1.",
+    difficulty: "tricky",
+  },
+  {
+    id: "cal-r-a2-zalo-1",
+    promptId: "a2-r-zalo-class-message",
+    modality: "reading",
+    expectedLevel: "A2",
+    expectedSubskills: { vocabulary: "A2", coherence: "A2", taskAchievement: "A2" },
+    expectedL1Flags: ["preposition-transfer"],
+    userResponse: "The club starts 6:30 p.m. They meet in B204 because B101 is cleaning.",
+    expertNotes: "Correct extraction with one passive-form error typical of A2/B1 boundary.",
+    difficulty: "borderline",
+  },
+  {
+    id: "cal-r-a2-homestay-1",
+    promptId: "a2-r-homestay-note",
+    modality: "reading",
+    expectedLevel: "A2",
+    expectedSubskills: { vocabulary: "A2", coherence: "A2", taskAchievement: "A2" },
+    expectedL1Flags: ["missing-articles"],
+    userResponse: "Breakfast is in kitchen. For laundry put clothes in blue basket before noon.",
+    expertNotes: "Comprehension is correct, with article omissions in the produced answer.",
+    difficulty: "clear",
+  },
+  {
+    id: "cal-r-b1-internship-1",
+    promptId: "b1-r-internship-email",
+    modality: "reading",
+    expectedLevel: "B1",
+    expectedSubskills: { vocabulary: "B1", coherence: "B1", taskAchievement: "B1" },
+    expectedL1Flags: ["word-family-confusion"],
+    userResponse:
+      "Minh has to choose a time for the online interview before 5 p.m. today. If selected, he gets travel allowance, not salary.",
+    expertNotes: "Finds deadline and contrast accurately; concise B1 response.",
+    difficulty: "clear",
+  },
+  {
+    id: "cal-r-b1-festival-1",
+    promptId: "b1-r-festival-volunteer",
+    modality: "reading",
+    expectedLevel: "B1",
+    expectedSubskills: { vocabulary: "B1", coherence: "A2", taskAchievement: "B1" },
+    expectedL1Flags: ["modal-verb-inflection"],
+    userResponse:
+      "They guide visitor and translate easy questions. Experience is good but no need, because training will have before festival.",
+    expertNotes:
+      "Content is mostly correct but produced grammar is uneven. Reading accuracy supports B1 with A2 expression.",
+    difficulty: "borderline",
+  },
+  {
+    id: "cal-r-b2-shadow-1",
+    promptId: "b2-r-shadow-education",
+    modality: "reading",
+    expectedLevel: "B2",
+    expectedSubskills: { vocabulary: "B2", coherence: "B2", taskAchievement: "B2" },
+    expectedL1Flags: ["calque-from-vietnamese"],
+    userResponse:
+      "Critics worry that private tutoring increases inequality because richer families can buy more support. The author's point is that school support should be strong enough so tutoring is optional, not something families must pay for.",
+    expertNotes: "Captures the argument and implied policy position, not just surface details.",
+    difficulty: "clear",
+  },
+  {
+    id: "cal-r-b2-remote-1",
+    promptId: "b2-r-remote-work-vietnam",
+    modality: "reading",
+    expectedLevel: "B2",
+    expectedSubskills: { vocabulary: "B2", coherence: "B2", taskAchievement: "B2" },
+    expectedL1Flags: ["conditional-simplification", "collocation-transfer"],
+    userResponse:
+      "Technology and design workers benefit most. Remote work is not equal automatically because smaller cities need good internet, transport and professional networks, otherwise people move there but opportunity still thin.",
+    expertNotes: "Understands the qualification and cause-effect logic. Final phrase has L1-influenced collocation but B2 comprehension is clear.",
+    difficulty: "tricky",
+  },
+] satisfies CalibrationEntry[];
