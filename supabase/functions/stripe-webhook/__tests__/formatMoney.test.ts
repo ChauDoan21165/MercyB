@@ -37,6 +37,15 @@ describe("formatMoney — decimal currencies keep ÷100 behavior", () => {
     expect(formatMoney(2000, "usd")).toBe("20.00 USD");
   });
 
+  it("formats EUR minor units like USD (2 fraction digits, ÷100)", () => {
+    // EUR is two-decimal per Stripe. Same code path as USD but pinned
+    // explicitly so a future regression that special-cases EUR (or
+    // accidentally adds EUR to ZERO_DECIMAL_CURRENCIES) fails loudly.
+    expect(formatMoney(2999, "EUR")).toBe("29.99 EUR");
+    expect(formatMoney(2999, "eur")).toBe("29.99 EUR");
+    expect(formatMoney(199_999, "EUR")).toBe("1,999.99 EUR");
+  });
+
   it("groups large decimal-currency amounts", () => {
     expect(formatMoney(199_900, "USD")).toBe("1,999.00 USD");
   });
