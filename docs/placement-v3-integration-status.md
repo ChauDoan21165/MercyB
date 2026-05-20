@@ -41,6 +41,39 @@ npx playwright test tests/e2e/placement-v3-vertical.spec.ts --config=playwright.
 # 1 passed (7.9s)
 ```
 
+```bash
+npm run typecheck
+# passed
+
+npm run typecheck:ci
+# passed
+
+npm run typecheck:functions
+# passed
+
+npm run lint
+# passed with existing warnings
+
+npm run build
+# passed; rooms:check passed with 30 non-fatal placeholder-title warnings
+```
+
+Not passing in this worktree:
+
+```bash
+npm test
+# 30 failed | 377 passed test files
+# 266 failed | 6804 passed tests
+```
+
+The failures cluster around the shared Vitest/localStorage environment:
+`localStorage.clear is not a function`, `storage.getItem is not a function`,
+and `--localstorage-file was provided without a valid path`. The failing files
+are broad pre-existing localStorage/Supabase-auth consumers such as pronunciation
+drill graduation, home drill recommendation, Mercy practice recommendations, and
+onboarding tests; the placement v3 vertical E2E and placement v3 session unit
+tests pass.
+
 Earlier failed runs found:
 
 - route gate ignored env flags until `featureFlags.ts` used direct placement env reads;
