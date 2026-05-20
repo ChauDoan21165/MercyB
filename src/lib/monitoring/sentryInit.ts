@@ -484,25 +484,35 @@ export function stringLooksLikeExternalNoise(s: string): boolean {
 
 // DOM-mutation extension noise. Google Translate, Grammarly, the Chrome
 // translator, and a handful of accessibility extensions rewrite the DOM
-// out-of-band; React then tries to remove a node it still believes it
-// owns and the host browser throws `NotFoundError` / "The object can
-// not be found" / `removeChild` errors that originate inside our React
-// bundle. The bug is in the third-party extension, not our code — we
-// can't fix it from inside our page and it's pure noise in Sentry.
+// out-of-band; React then tries to remove OR insert a node into a
+// parent the extension has already mutated, and the host browser
+// throws `NotFoundError` / "The object can not be found" /
+// `removeChild` / `insertBefore` errors that originate inside our
+// React bundle. The bug is in the third-party extension, not our code —
+// we can't fix it from inside our page and it's pure noise in Sentry.
 //
 // The drop is AND-gated to keep the surface tight:
 //   1. The TOP frame (most recent call — the last entry in Sentry's
 //      oldest→newest frame ordering) sits inside our react-*.js chunk,
 //      AND
-//   2. The error message matches one of the three known DOM-mutation
-//      tells: removeChild, "The object can not be found", NotFoundError.
+//   2. The error message matches one of the known DOM-mutation tells:
+//      removeChild, insertBefore, "The object can not be found",
+//      NotFoundError.
 //
 // Two conditions together mean we don't accidentally swallow a real
 // React render bug whose message happens to contain "NotFoundError",
 // nor a third-party extension crash whose frame is in our bundle for
 // unrelated reasons.
+//
+// `insertBefore` added by A14c-fix-1 (audit: PR #904). The
+// browser-emitted message for that sibling failure is "Failed to
+// execute 'insertBefore' on 'Node': The node before which the new node
+// is to be inserted is not a child of this node." — the literal word
+// `NotFoundError` does NOT appear in that message even though the
+// underlying Error.name IS `NotFoundError`, so `/NotFoundError/i` did
+// not catch it on its own.
 const DOM_MUTATION_NOISE_MESSAGE_RE =
-  /removeChild|The object can not be found|NotFoundError/i;
+  /removeChild|insertBefore|The object can not be found|NotFoundError/i;
 const REACT_BUNDLE_RE = /\breact-[^/\\]+\.js\b/i;
 
 export function looksLikeDomMutationExtensionNoise(

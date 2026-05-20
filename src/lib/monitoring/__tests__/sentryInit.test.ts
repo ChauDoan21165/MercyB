@@ -461,6 +461,35 @@ describe("looksLikeDomMutationExtensionNoise — extension DOM-mutation drop", (
     ).toBe(true);
   });
 
+  it("drops insertBefore error when top frame is in react-*.js (A14c-fix-1)", () => {
+    // The browser-emitted message for the insertBefore family. The
+    // literal word `NotFoundError` is NOT in the message (the Error.name
+    // is NotFoundError but Sentry's event.exception.values[0].value is
+    // the message only), so the prior alternation /NotFoundError/i could
+    // not catch it on its own. The `insertBefore` alternative does.
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/react-k4FrTbjO.js",
+          "Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.",
+        ),
+      ),
+    ).toBe(true);
+  });
+
+  it("does NOT drop insertBefore when the top frame is NOT in react-*.js (A14c-fix-1)", () => {
+    // AND-gate preserved: an insertBefore error with the top frame in
+    // app code could be a real bug — pass it through.
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/RoomRenderer-AbCd.js",
+          "Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.",
+        ),
+      ),
+    ).toBe(false);
+  });
+
   it("does NOT drop the same message when the top frame is NOT in react-*.js", () => {
     // Same message, but the top frame is in our own app code — this could
     // be a real bug we want to see.
