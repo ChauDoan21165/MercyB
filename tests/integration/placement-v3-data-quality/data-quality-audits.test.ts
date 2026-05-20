@@ -10,7 +10,9 @@ import {
   countIssues,
   loadKnownV3L1Ids,
   loadV3CalibrationEntries,
+  loadV3LessonIndexL1Ids,
   loadV3Prompts,
+  loadV3RecommenderL1AliasTargets,
   missingRequiredSurfaceIssues,
 } from "../../../scripts/placement-v3/dataQualityAuditCore";
 
@@ -78,8 +80,20 @@ describe("Placement V3 data-quality audit infrastructure", () => {
 
   it("runs the recommendation graph audit", () => {
     const issues = auditRecommendationGraph();
-    expect(issues.length).toBeGreaterThan(0);
-    expect(issues.some((issue) => issue.auditKind === "recommendation_graph")).toBe(true);
+    expect(Array.isArray(issues)).toBe(true);
+    expect(issues.every((issue) => issue.auditKind === "recommendation_graph")).toBe(true);
+  });
+
+  it("treats V3 lesson-index L1 coverage IDs as valid recommendation targets", () => {
+    expect(loadV3LessonIndexL1Ids()).toContain("vi_l1_final_consonants");
+    expect(loadV3RecommenderL1AliasTargets()).toContain("vi_l1_final_consonants");
+    expect(
+      auditRecommendationGraph().some(
+        (issue) =>
+          issue.category === "orphan_recommendation_path" &&
+          issue.reference === "vi_l1_final_consonants",
+      ),
+    ).toBe(false);
   });
 
   it("checks orphan recommendation paths", () => {

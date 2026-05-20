@@ -451,6 +451,24 @@ export function loadWeaknessCatalog(): Record<string, LocalWeaknessEntry> {
   return out;
 }
 
+export function loadV3LessonIndexL1Ids(): string[] {
+  const rel = "src/lib/placement/v3/lessonIndex.ts";
+  if (!exists(rel)) return [];
+  const source = readSource(rel);
+  const synonymBlock = /const L1_RULE_SYNONYMS[\s\S]*?=\s*\{([\s\S]*?)\};/.exec(source)?.[1] ?? "";
+  const synonymKeys = extractQuotedValues(synonymBlock, /^\s*(vi_l1_[A-Za-z0-9_]+):/gm);
+  const explicitCoverage = extractQuotedValues(source, /["'](vi_l1_[A-Za-z0-9_]+)["']/g);
+  return unique([...synonymKeys, ...explicitCoverage]);
+}
+
+export function loadV3RecommenderL1AliasTargets(): string[] {
+  const rel = "src/lib/placement/v3/recommender.ts";
+  if (!exists(rel)) return [];
+  const source = readSource(rel);
+  const aliasBlock = /const L1_ALIASES[\s\S]*?=\s*\{([\s\S]*?)\};/.exec(source)?.[1] ?? "";
+  return unique(extractQuotedValues(aliasBlock, /:\s*["']([^"']+)["']/g));
+}
+
 export function countIssues(
   issues: PlacementDataQualityIssue[],
 ): PlacementDataQualityIssueCounts {
@@ -826,6 +844,8 @@ export function auditTaxonomyConsistency(): PlacementDataQualityIssue[] {
   const v3Prompts = loadV3Prompts();
   const calibrationEntries = loadV3CalibrationEntries();
   const knownV3L1Ids = loadKnownV3L1Ids();
+  const v3LessonIndexL1Ids = loadV3LessonIndexL1Ids();
+  const v3RecommenderAliasTargets = loadV3RecommenderL1AliasTargets();
   const tags = Object.keys(weaknessCatalog);
   const v3Used = new Set([
     ...v3Prompts.flatMap((prompt) => prompt.l1InterferenceTriggers),
@@ -952,7 +972,11 @@ export function auditTaxonomyConsistency(): PlacementDataQualityIssue[] {
   }
 
   const usedByPlacement = new Set(
-    placementQuestions.map((q) => q.weaknessTag).filter(Boolean) as string[],
+    [
+      ...(placementQuestions.map((q) => q.weaknessTag).filter(Boolean) as string[]),
+      ...v3LessonIndexL1Ids,
+      ...v3RecommenderAliasTargets.filter((target) => target.startsWith("vi_l1_")),
+    ],
   );
   for (const tag of tags) {
     if (!usedByPlacement.has(tag)) {
@@ -962,7 +986,7 @@ export function auditTaxonomyConsistency(): PlacementDataQualityIssue[] {
           "unused_taxonomy_category",
           "info",
           "src/lib/weakness/weakness-catalog.ts",
-          `Taxonomy tag ${tag} is not referenced by the deterministic placement question bank`,
+          `Taxonomy tag ${tag} is not referenced by audited placement or V3 recommendation surfaces`,
           { tag },
         ),
       );
@@ -977,6 +1001,7 @@ export function auditRecommendationGraph(): PlacementDataQualityIssue[] {
   const cefrToRoom = loadCefrToRoom();
   const weaknessCatalog = loadWeaknessCatalog();
   const knownV3L1Ids = loadKnownV3L1Ids();
+  const v3LessonIndexL1Ids = loadV3LessonIndexL1Ids();
   for (const [cefr, roomId] of Object.entries(cefrToRoom)) {
     if (!VALID_CEFR.includes(cefr as never)) {
       issues.push(
@@ -1040,7 +1065,8 @@ export function auditRecommendationGraph(): PlacementDataQualityIssue[] {
   for (const target of aliasTargets) {
     const knownInLegacy = target.startsWith("vi_l1_") && Object.prototype.hasOwnProperty.call(weaknessCatalog, target);
     const knownInV3 = knownV3L1Ids.includes(target);
-    if (!knownInLegacy && !knownInV3) {
+    const knownInLessonIndex = v3LessonIndexL1Ids.includes(target);
+    if (!knownInLegacy && !knownInV3 && !knownInLessonIndex) {
       issues.push(
         issue(
           "recommendation_graph",

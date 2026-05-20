@@ -261,7 +261,7 @@ const A1: PlacementQuestion[] = [
     difficulty: 1,
     skill: 'grammar',
     cefrDescriptor:
-      'Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s',
+      'A1 grammar — Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s',
     weaknessTag: 'vi_l1_plural_s',
     prompt: {
       en: 'I have three ___ on my desk.',
@@ -449,7 +449,7 @@ const A2: PlacementQuestion[] = [
     difficulty: 2,
     skill: 'grammar',
     cefrDescriptor:
-      'Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so "walked" is often heard/written as "walk"',
+      'A2 grammar — Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so "walked" is often heard/written as "walk"',
     weaknessTag: 'vi_l1_past_ed',
     prompt: {
       en: 'Yesterday I ___ to the market with my mother.',
@@ -642,7 +642,7 @@ const B1: PlacementQuestion[] = [
     difficulty: 3,
     skill: 'grammar',
     cefrDescriptor:
-      'Vietnamese L1 interference: third-person singular -s in present simple. This is the most chronic Vietnamese-learner error and often persists into B1 / B2 — placing it at B1 catches learners whose level is otherwise B1 but who still miss this feature.',
+      'B1 grammar — Vietnamese L1 interference: third-person singular -s in present simple. This is the most chronic Vietnamese-learner error and often persists into B1 / B2 — placing it at B1 catches learners whose level is otherwise B1 but who still miss this feature.',
     weaknessTag: 'vi_l1_3rd_person_s',
     prompt: {
       en: 'She ___ English every day.',

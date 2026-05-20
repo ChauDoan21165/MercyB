@@ -129,3 +129,48 @@ After:
 - Post-#942 raw runs report 0 corpus-integrity issues, 106 taxonomy findings, 1 recommendation warning, and 11 prompt/rubric warnings.
 
 No linguistic meaning was rewritten.
+
+## 2026-05-20T13:32:00-06:00
+
+File changed:
+
+- `scripts/placement-v3/dataQualityAuditCore.ts`
+- `src/lib/placement/questions.ts`
+- `tests/integration/placement-v3-data-quality/data-quality-audits.test.ts`
+- `docs/placement-v3/data-quality/a3-taxonomy-finding-triage.md`
+- `docs/placement-v3/data-quality/a3-taxonomy-conflicts.md`
+- `docs/placement-v3/data-quality/a3-recommendation-gaps.md`
+- `docs/placement-v3/data-quality/a3-prompt-rubric-gaps.md`
+- `docs/placement-v3/data-quality/a3-final-report.md`
+- `docs/placement-v3/data-quality/PR_BODY.md`
+
+Issue fixed:
+
+- The post-#942 audit counted V3 lesson-index L1 coverage IDs as unused taxonomy categories and treated `vi_l1_final_consonants` as an orphan recommendation target even though the runtime recommender intentionally routes to that lesson-index coverage ID.
+- Three placement descriptors carried structured CEFR/skill metadata but lacked literal descriptor text tokens used by the prompt/rubric alignment audit.
+
+Rationale:
+
+- These were mechanical audit-surface and metadata-label fixes. They did not rewrite learner prompts, answers, taxonomy definitions, rubric scoring semantics, recommendation behavior, or Vietnamese-L1 linguistic meaning.
+
+Before:
+
+- Corpus integrity: 0 issues.
+- Taxonomy consistency: 106 findings.
+- Recommendation graph: 1 warning.
+- Prompt/rubric alignment: 11 warnings.
+
+After:
+
+- Corpus integrity: 0 issues.
+- Taxonomy consistency: 96 findings.
+- Recommendation graph: 0 warnings.
+- Prompt/rubric alignment: 6 warnings.
+
+Unresolved:
+
+- 48 taxonomy rows still have intentionally empty `linkedRoomId` values and need remediation ownership review.
+- 48 legacy taxonomy categories remain unreferenced by audited runtime surfaces and need expert disposition.
+- 6 conversation calibration prompts remain without matching runtime prompt/rubric coverage.
+
+No production-safe claim is made.

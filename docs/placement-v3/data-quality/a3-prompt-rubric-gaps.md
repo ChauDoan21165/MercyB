@@ -1,6 +1,6 @@
 # A3 Prompt/Rubric Gaps
 
-Status after rebase onto post-#942 `origin/main`: V3 prompt files, calibration files, and shared CEFR rubric files are present and audited.
+Status after mechanical follow-up: prompt/rubric findings dropped from 11 to 6.
 
 ## Sources Audited
 
@@ -12,15 +12,24 @@ Status after rebase onto post-#942 `origin/main`: V3 prompt files, calibration f
 - `supabase/functions/placement-v3-session/`
 - `src/lib/placement/questions.ts`
 
-The docs-only directory `docs/placement-v3/prompt-library/` remains absent, so this audit covers runtime prompt/rubric files.
+## Before / After
 
-## Post-#942 Findings
+- Before: 11 warnings.
+- After: 6 warnings.
+- Resolved: 5 descriptor metadata warnings on `q_a1_009`, `q_a2_009`, and `q_b1_009`.
 
-- V3 reading and listening prompts include embedded questions: 0 missing-question errors after the parser was fixed to read full top-level prompt objects.
-- V3 calibration modality mismatches: 0.
-- V3 calibration expected levels outside prompt acceptable levels: 0.
-- V3 calibration subskill dimensions outside rubric dimensions: 0.
-- Conversation prompts without calibration entries: 6 warnings.
-- Deterministic Vietnamese-L1 placement prompt descriptor warnings: 5 warnings across 3 question records.
+## Safe Fix Applied
 
-The conversation calibration gap is documented rather than fixed because adding calibration samples would create linguistic corpus content. A3 did not rewrite prompt or rubric meaning.
+The three deterministic Vietnamese-L1 placement descriptors already had structured `cefr` and `skill: "grammar"` fields. A3 copied those existing metadata labels into the descriptor strings. Prompt text, options, answer keys, CEFR levels, skills, and taxonomy tags were not changed.
+
+## Remaining Findings
+
+- 6 conversation prompts have no calibration entries:
+  - `a1-c-mercy-greeting`
+  - `a2-c-weekend-chat`
+  - `b1-c-study-plan`
+  - `b2-c-opinion-followup`
+  - `c1-c-polished-disagreement`
+  - `c2-c-identity-debate`
+
+Creating calibration entries would be new linguistic corpus content, so A3 documented this as unresolved.

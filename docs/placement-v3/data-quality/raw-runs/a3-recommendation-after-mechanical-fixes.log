@@ -1,0 +1,62 @@
+{
+  "runId": "a3-20260520T133158",
+  "timestamp": "2026-05-20T13:31:58.611Z",
+  "command": "pnpm tsx scripts/placement-v3/run-recommendation-graph-audit.ts",
+  "auditKinds": [
+    "recommendation_graph"
+  ],
+  "issues": [],
+  "counts": {
+    "total": 0,
+    "blockers": 0,
+    "errors": 0,
+    "warnings": 0,
+    "info": 0,
+    "byCategory": {}
+  },
+  "changedFilesSincePreviousRun": [
+    "scripts/placement-v3/dataQualityAuditCore.ts",
+    "src/lib/placement/questions.ts",
+    "/private/tmp/a3-placement-v3-data-quality/docs/placement-v3/data-quality/raw-runs/a3-20260520T133158-recommendation-graph.json"
+  ],
+  "auditedFiles": [
+    "docs/placement-v3/native-audio/native-permission-audit.md",
+    "src/data/placement/v3/prompts/index.ts",
+    "src/data/placement/v3/prompts/writing.ts",
+    "src/data/placement/v3/prompts/speaking.ts",
+    "src/data/placement/v3/prompts/reading.ts",
+    "src/data/placement/v3/prompts/listening.ts",
+    "src/data/placement/v3/prompts/conversation.ts",
+    "src/data/placement/v3/calibration/index.ts",
+    "src/data/placement/v3/calibration/writing-corpus.ts",
+    "src/data/placement/v3/calibration/speaking-corpus.ts",
+    "src/data/placement/v3/calibration/reading-corpus.ts",
+    "src/data/placement/v3/calibration/listening-corpus.ts",
+    "src/lib/placement/v3/recommender.ts",
+    "src/lib/placement/v3/lessonIndex.ts",
+    "src/lib/placement/v3/recommenderTypes.ts",
+    "src/lib/placement/questions.ts",
+    "src/lib/placement/cefrToRoom.ts",
+    "src/lib/weakness/weakness-catalog.ts",
+    "src/lib/weakness/recommendationEngine.ts",
+    "src/lib/weakness/micro-lessons.ts",
+    "supabase/functions/placement-session/types.ts",
+    "supabase/functions/placement-session/config.ts",
+    "supabase/functions/placement-session/engine/itemBank.ts",
+    "supabase/functions/_shared/cefr/rubric.ts",
+    "supabase/functions/_shared/cefr/types.ts",
+    "supabase/functions/placement-v3-grade-writing/types.ts",
+    "supabase/functions/placement-v3-grade-writing/core.ts",
+    "supabase/functions/placement-v3-grade-writing/__tests__/fixtures/prompts.json",
+    "supabase/functions/placement-v3-session/types.ts",
+    "supabase/functions/placement-v3-session/modality.ts",
+    "supabase/functions/placement-v3-session/core.ts",
+    "supabase/migrations/20260618000000_placement_items.sql",
+    "supabase/migrations/20260619000000_placement_sessions.sql",
+    "supabase/migrations/20260627000000_placement_v3_sessions.sql",
+    "supabase/migrations/20260627000001_placement_v3_responses.sql",
+    "supabase/migrations/20260627000002_placement_v3_profiles.sql",
+    "supabase/migrations/20260627000003_placement_v3_rls.sql"
+  ],
+  "missingRequiredSurfaces": []
+}

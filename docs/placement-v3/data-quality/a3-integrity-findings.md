@@ -28,11 +28,11 @@ The docs-only folders `docs/placement-v3/calibration/`, `docs/placement-v3/taxon
 - missing remediation mappings
 - inconsistent modality metadata
 
-## Post-#942 Issue Counts
+## Post-Mechanical-Fix Issue Counts
 
 - Corpus integrity: 0 issues.
-- Taxonomy consistency: 106 findings: 48 missing remediation links and 58 unused taxonomy-category findings.
-- Recommendation graph: 1 warning for `vi_l1_final_consonants` alias target not defined in legacy or V3 taxonomy catalogs.
-- Prompt/rubric alignment: 11 warnings: 6 conversation prompts without calibration entries, 2 CEFR descriptor gaps, and 3 descriptor/category gaps on Vietnamese-L1 deterministic placement prompts.
+- Taxonomy consistency: 96 findings: 48 missing remediation links and 48 unused taxonomy-category findings.
+- Recommendation graph: 0 warnings.
+- Prompt/rubric alignment: 6 warnings: 6 conversation prompts without calibration entries.
 
 No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, orphan CEFR room paths, malformed calibration entries, invalid modality mappings, or missing CEFR labels were found in the merged runtime V3 corpus.
