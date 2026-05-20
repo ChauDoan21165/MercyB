@@ -1,13 +1,14 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { captureEdgeError } from "../_shared/sentry.ts";
+import { adminPublishRoomRequestSchema } from "../_shared/adminSchemas.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-interface PublishRoomRequest {
-  room_id: string;
-}
+// PublishRoomRequest type now sourced from the zod schema in
+// _shared/adminSchemas.ts (A11b). Kept in the import block above.
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -49,7 +50,57 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { room_id }: PublishRoomRequest = await req.json();
+    // ── A11b: request-payload runtime validation ────────────────────────
+    // Auth + admin role ALREADY passed above. Validate the request body
+    // shape; on parse failure return 400 + Sentry beacon with PII-
+    // scrubbed details (zod issues + top-level keys only — NEVER the
+    // raw body, which carries the target room_id).
+    let parsedJson: unknown;
+    try {
+      parsedJson = await req.json();
+    } catch (parseErr) {
+      await captureEdgeError(parseErr, {
+        functionName: "admin-publish-room",
+        userId: user.id,
+        extra: { stage: "request-parse-json" },
+        tags: { admin: "true", stage: "request-parse-json" },
+      });
+      return new Response(
+        JSON.stringify({ error: 'Invalid JSON body' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+      );
+    }
+
+    const bodyParse = adminPublishRoomRequestSchema.safeParse(parsedJson);
+    if (!bodyParse.success) {
+      const topLevelKeys =
+        parsedJson && typeof parsedJson === "object" && !Array.isArray(parsedJson)
+          ? Object.keys(parsedJson as Record<string, unknown>)
+          : [];
+      await captureEdgeError(
+        new Error("admin-publish-room request failed zod validation"),
+        {
+          functionName: "admin-publish-room",
+          userId: user.id,
+          extra: {
+            stage: "request-zod",
+            zodIssues: bodyParse.error.issues.map((iss) => ({
+              path: iss.path.join("."),
+              code: iss.code,
+              message: iss.message,
+            })),
+            topLevelKeys,
+          },
+          tags: { admin: "true", stage: "request-zod" },
+        },
+      );
+      return new Response(
+        JSON.stringify({ error: 'Request body failed validation' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+      );
+    }
+
+    const { room_id } = bodyParse.data;
     console.log(`Admin publishing room: ${room_id}`);
 
     // Update room to mark as published (remove is_demo flag or add published field)

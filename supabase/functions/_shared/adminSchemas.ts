@@ -50,3 +50,18 @@ export const adminSetTierRequestSchema = z.object({
   days: z.number().int().positive().max(365),
 }).passthrough();
 export type AdminSetTierRequest = z.infer<typeof adminSetTierRequestSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * admin-publish-room — flip a room's is_demo flag to false (publish)
+ *
+ * Risk class: content-visibility surface. Wrong room id here means
+ * "the wrong room becomes visible to all users" (or the operation
+ * silently no-ops if the id doesn't exist). DB id format is the
+ * file-based room slug (e.g. "english_basics_1") or a UUID — we
+ * accept either string shape with a max-length sanity bound.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const adminPublishRoomRequestSchema = z.object({
+  room_id: z.string().trim().min(1).max(200),
+}).passthrough();
+export type AdminPublishRoomRequest = z.infer<typeof adminPublishRoomRequestSchema>;
