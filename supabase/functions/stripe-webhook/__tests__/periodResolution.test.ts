@@ -32,6 +32,10 @@ import mylinhInvoice from "./__fixtures__/mylinh-invoice-subscription-cycle.json
 const NEW_PERIOD_END_ISO = "2026-06-09T06:16:41.000Z"; // lines[0].period.end 1780985801
 const JUST_ENDED_BOUNDARY_ISO = "2026-05-09T06:16:41.000Z"; // top-level period_end 1778307401
 const OLD_PERIOD_START_ISO = "2026-04-09T06:16:41.000Z"; // top-level period_start 1775715401
+// lines[0].period.start 1778307401 — the LIVE period start. By Stripe's
+// renewal contiguity it is the same epoch as the just-ended period_end
+// boundary (the new period begins exactly when the previous one ended).
+const NEW_PERIOD_START_ISO = "2026-05-09T06:16:41.000Z";
 
 const invoiceRaw = mylinhInvoice as unknown as Record<string, unknown>;
 
@@ -110,18 +114,43 @@ describe("getCurrentPeriodEnd — regression-guard the guard (subscription-objec
   });
 });
 
-describe("getCurrentPeriodStart — deliberately UNCHANGED (B5 fix scoped to period END only)", () => {
-  it("still reads top-level period_start for the same invoice; documents the scoped-out symmetric case", () => {
-    // The dispatch scopes the fix to getCurrentPeriodEnd because the
-    // money-path symptom is the END landing in the past. getCurrentPeriodStart
-    // has the analogous top-level-vs-line shape (here top-level period_start
-    // 2026-04-09 vs lines[0].period.start 2026-05-09) but is intentionally
-    // NOT changed in this PR — a start-side fix is a separate, consciously
-    // reviewed change. This asserts the divergence is real and known, not
-    // an accidental bug-lock.
-    expect(getCurrentPeriodStart(invoiceRaw)).toBe(OLD_PERIOD_START_ISO);
-    expect(getCurrentPeriodStart(invoiceRaw)).not.toBe(
-      JUST_ENDED_BOUNDARY_ISO, // == lines[0].period.start (the "new" start)
+describe("getCurrentPeriodStart — B5 class bug, symmetric fix (B11 follow-up, B26)", () => {
+  it("returns the NEW period start (lines[0].period.start), NOT the just-ended top-level period_start", () => {
+    // The symmetric half of the B5 bug. B11's PR (#770) fixed the END side
+    // and deliberately scoped this OUT, documenting it as a "separate,
+    // consciously-reviewed change" — this PR (b26/period-start-fix) is that
+    // change. Before this fix getCurrentPeriodStart read top-level
+    // `raw.period_start` (2026-04-09, the JUST-ENDED period's start) BEFORE
+    // the invoice line, mirroring the end-side defect: every monthly renewal
+    // wrote the previous period's start. The live period start on a
+    // subscription_cycle renewal invoice is lines[0].period.start
+    // (2026-05-09, contiguous with the just-ended boundary).
+    expect(getCurrentPeriodStart(invoiceRaw)).toBe(NEW_PERIOD_START_ISO);
+    expect(getCurrentPeriodStart(invoiceRaw)).not.toBe(OLD_PERIOD_START_ISO);
+  });
+
+  it("subscription object still resolves to its canonical top-level current_period_start (clause 1 wins) — precedence UNCHANGED", () => {
+    // Regression-guard the guard: the fix demotes top-level `period_start`,
+    // it must NOT demote the canonical `current_period_start`. A subscription
+    // object carries `items` (never `lines`); give the item a DIFFERENT,
+    // stale value to prove the top-level canonical field still short-circuits
+    // at clause 1 exactly as before.
+    const sub: Record<string, unknown> = {
+      object: "subscription",
+      status: "active",
+      current_period_start: 1778307401,
+      current_period_end: 1780985801,
+      items: { data: [{ current_period_start: 1 }] },
+    };
+    expect(getCurrentPeriodStart(sub)).toBe(NEW_PERIOD_START_ISO);
+  });
+
+  it("raw.period_start is still honored as a last-resort fallback when there is no line/item period (demoted, not deleted)", () => {
+    // Mirrors the end-side "raw.period_end still honored" guard: an object
+    // that only has top-level period_start (no lines, no items, no
+    // current_period_start) must still resolve.
+    expect(getCurrentPeriodStart({ period_start: 1778307401 })).toBe(
+      NEW_PERIOD_START_ISO,
     );
   });
 });

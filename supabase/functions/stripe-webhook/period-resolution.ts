@@ -15,9 +15,11 @@
 // identical; webhook-events.ts keeps its own copies for its other call
 // sites and now imports getCurrentPeriodStart/getCurrentPeriodEnd from here.
 //
-// The ONLY behavioural change vs the pre-extraction code is the documented
-// field-order fix inside getCurrentPeriodEnd (B5 class bug — see
-// PR b11/period-end-field-order).
+// The behavioural changes vs the pre-extraction code are the documented,
+// symmetric field-order fixes inside getCurrentPeriodEnd (B5 class bug — see
+// PR b11/period-end-field-order) and getCurrentPeriodStart (the B11
+// follow-up that B11 explicitly scoped out as a "separate, consciously-
+// reviewed change" — see PR b26/period-start-fix).
 
 function asRecord(value: unknown): Record<string, unknown> | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
@@ -79,16 +81,37 @@ function getItemCurrentPeriodEnd(raw: Record<string, unknown>): string | null {
 export function getCurrentPeriodStart(
   raw: Record<string, unknown>,
 ): string | null {
-  // Deliberately UNCHANGED by the B5 fix. The fix is scoped to the period
-  // END (that is the money-path symptom: the END lands in the past so the
-  // entitlement reads as expired). getCurrentPeriodStart has the analogous
-  // top-level-vs-line shape, but a start-side change is a separate,
-  // consciously-reviewed PR — not folded into this surgical fix.
+  // FIELD-ORDER FIX — B5 class bug, symmetric to getCurrentPeriodEnd.
+  // PR b26/period-start-fix (the start-side follow-up B11 deliberately
+  // scoped out of PR b11/period-end-field-order as a "separate,
+  // consciously-reviewed change"). Same discovered case: mylinh.nutrition's
+  // "paid but free" subscription (event evt_1TV59K).
+  //
+  // Stripe gotcha (mirror image of the period-END defect): on a
+  // `billing_reason: "subscription_cycle"` RENEWAL invoice, the top-level
+  // `period_start` is the start of the period that JUST ENDED — NOT the new
+  // period. The new period start lives in `lines.data[0].period.start`.
+  // (Invoice objects also carry NO top-level `current_period_start` and NO
+  // `items` — only `lines`.)
+  //
+  // The pre-fix order read `toIsoFromUnix(raw.period_start)` BEFORE
+  // `getLinePeriodStart(raw)`, so every monthly renewal wrote the
+  // just-ended period's start. Same silent failure class as the end side:
+  // the freshness marker (billing.ts:deriveObjectTimeMs reads lines)
+  // advanced while the persisted period start lagged a full cycle behind.
+  //
+  // This precedence now MIRRORS getCurrentPeriodEnd (and deriveObjectTimeMs):
+  // [top-level current_period_*] → [items current_period_*] →
+  // [lines period.*] → top-level `period_start` kept ONLY as a last-resort
+  // fallback below the line period (still correct on objects that lack
+  // lines). Subscription objects carry a top-level `current_period_start`,
+  // so they short-circuit at the first clause exactly as before — behaviour
+  // for subscription objects is unchanged.
   return (
     toIsoFromUnix(raw.current_period_start) ??
-    toIsoFromUnix(raw.period_start) ??
     getItemCurrentPeriodStart(raw) ??
     getLinePeriodStart(raw) ??
+    toIsoFromUnix(raw.period_start) ??
     toIsoFromUnix(raw.start_date) ??
     null
   );
