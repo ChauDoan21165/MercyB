@@ -1,6 +1,16 @@
 import { expect, type Page } from "@playwright/test";
 import { test } from "./fixtures/test";
 import { BASE_URL } from "./fixtures/env";
+import {
+  assertPlacementV3RouteEnabled,
+  capturePlacementV3Diagnostics,
+  placementTaskReady,
+  retryWithTrace,
+  routeSettled,
+  stableInputFill,
+  trackPendingNetworkRequests,
+  waitForEnabledSubmit,
+} from "./utils/stability";
 import { handleAction, type CoreDeps } from "../../supabase/functions/placement-v3-session/core.ts";
 import { createHttpWritingGrader } from "../../supabase/functions/placement-v3-session/graderClient.ts";
 import { makeSession, recommendLessons } from "../../supabase/functions/placement-v3-session/persistence.ts";
@@ -31,43 +41,64 @@ type Stored = {
 };
 
 test.describe("placement v3 end-to-end vertical", () => {
-  test("runs UI client, session orchestrator, graders, recommender, results, and persistence", async ({ page }) => {
+  test("runs UI client, session orchestrator, graders, recommender, results, and persistence", async ({ page }, testInfo) => {
+    const networkTracker = trackPendingNetworkRequests(page);
     const stored = createStored();
-    await seedAuthenticatedSession(page);
-    await installAuthRoutes(page);
-    await installOrchestratorRoute(page, stored);
+    const retryLog: string[] = [];
+    try {
+      await seedAuthenticatedSession(page);
+      await installAuthRoutes(page);
+      await installOrchestratorRoute(page, stored);
 
-    await page.goto(`${BASE_URL}/placement`);
-    await expect(page.getByText(/Let's find where you should start/i)).toBeVisible();
-    await page.getByRole("button", { name: /Start placement test/i }).click();
-    await page.getByRole("button", { name: /adult learner/i }).click();
-    await page.waitForURL(/\/placement\/test\//);
-    await expect(page.getByLabel(/Writing answer/i)).toBeVisible();
+      await page.goto(`${BASE_URL}/placement`);
+      await assertPlacementV3RouteEnabled(page);
+      await expect(page.getByText(/Let's find where you should start/i)).toBeVisible();
+      await page.getByRole("button", { name: /Start placement test/i }).click();
+      await page.getByRole("button", { name: /adult learner/i }).click();
+      await routeSettled(page, /\/placement\/test\//);
+      await placementTaskReady(page);
+      await expect(page.getByLabel(/Writing answer/i)).toBeVisible();
 
-    for (let i = 0; i < 11; i += 1) {
-      if (await page.getByText(/Overall level/i).isVisible().catch(() => false)) break;
-      await answerCurrentTask(page);
-      const submit = page.getByRole("button", { name: /Submit answer/i });
-      await expect(submit).toBeEnabled();
-      await submit.click();
-      await page.waitForTimeout(350);
+      for (let i = 0; i < 11; i += 1) {
+        if (await page.getByText(/Overall level/i).isVisible().catch(() => false)) break;
+        await answerCurrentTask(page);
+        const submit = await waitForEnabledSubmit(page);
+        await retryWithTrace(
+          `placement-v3-submit-${i + 1}`,
+          2,
+          async () => {
+            await submit.click();
+            await page.waitForTimeout(350);
+          },
+          (message) => retryLog.push(message),
+        );
+      }
+
+      await expect(page.getByText(/Overall level/i)).toBeVisible();
+      await expect(page.getByText(/^Writing$/i).first()).toBeVisible();
+      await expect(page.getByText(/^Speaking$/i).first()).toBeVisible();
+      await expect(page.getByText(/^Reading$/i).first()).toBeVisible();
+      await expect(page.getByText(/^Listening$/i).first()).toBeVisible();
+      await expect(page.getByText(/^Conversation$/i).first()).toBeVisible();
+      await expect(page.getByRole("button", { name: /Start this lesson/i }).first()).toBeVisible();
+
+      const [session] = [...stored.sessions.values()];
+      expect(session.flow_state).toBe("completed");
+      expect(stored.responses.get(session.id)?.length).toBeGreaterThanOrEqual(5);
+      expect(stored.profiles.get(session.id)?.recommended_lessons.length).toBeGreaterThan(0);
+      expect(stored.graderCalls).toContain("placement-v3-grade-writing");
+      expect(stored.graderCalls).toContain("placement-v3-mercy-conversation");
+      expect(stored.recommenderCalls).toBeGreaterThan(0);
+    } catch (error) {
+      await testInfo.attach("b1-placement-v3-retry-log", {
+        body: retryLog.join("\n") || "No retry log entries.",
+        contentType: "text/plain",
+      });
+      await capturePlacementV3Diagnostics(page, testInfo, networkTracker.pendingRequests());
+      throw error;
+    } finally {
+      networkTracker.dispose();
     }
-
-    await expect(page.getByText(/Overall level/i)).toBeVisible();
-    await expect(page.getByText(/^Writing$/i).first()).toBeVisible();
-    await expect(page.getByText(/^Speaking$/i).first()).toBeVisible();
-    await expect(page.getByText(/^Reading$/i).first()).toBeVisible();
-    await expect(page.getByText(/^Listening$/i).first()).toBeVisible();
-    await expect(page.getByText(/^Conversation$/i).first()).toBeVisible();
-    await expect(page.getByRole("button", { name: /Start this lesson/i }).first()).toBeVisible();
-
-    const [session] = [...stored.sessions.values()];
-    expect(session.flow_state).toBe("completed");
-    expect(stored.responses.get(session.id)?.length).toBeGreaterThanOrEqual(5);
-    expect(stored.profiles.get(session.id)?.recommended_lessons.length).toBeGreaterThan(0);
-    expect(stored.graderCalls).toContain("placement-v3-grade-writing");
-    expect(stored.graderCalls).toContain("placement-v3-mercy-conversation");
-    expect(stored.recommenderCalls).toBeGreaterThan(0);
   });
 });
 
@@ -250,7 +281,7 @@ function createDeps(stored: Stored): CoreDeps {
 
 async function answerCurrentTask(page: Page) {
   await page.waitForTimeout(100);
-  await page.locator("textarea, input[placeholder*='Short answer'], [role='textbox'], [role='radio']").first().waitFor({ state: "visible" });
+  await placementTaskReady(page);
   const submit = page.getByRole("button", { name: /Submit answer/i });
 
   const activeTextField = page
@@ -259,7 +290,7 @@ async function answerCurrentTask(page: Page) {
     .last();
 
   if (await activeTextField.isVisible().catch(() => false)) {
-    await activeTextField.fill(LONG_PLACEMENT_ANSWER);
+    await stableInputFill(activeTextField, LONG_PLACEMENT_ANSWER);
     if (await submit.isEnabled().catch(() => false)) {
       return;
     }
