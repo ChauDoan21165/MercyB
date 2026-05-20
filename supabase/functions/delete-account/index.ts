@@ -22,6 +22,7 @@ import {
   evaluateDeleteAccountAal,
   readAalFromJwt,
 } from "./aal-gate.ts";
+import { scrubEmailAuditByRecipient } from "./email-audit-recipient-scrub.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -157,6 +158,33 @@ Deno.serve(async (req) => {
         });
       } else {
         report.anonymized.push({ table, column });
+      }
+    }
+
+    // ── Pass 2b: scrub email_audit where the deleted user was the RECIPIENT ──
+    // GAP A close (reports/PRIVACY-b1-anonymize-audit-A4c.md / #819): the
+    // manifest's anonymize entry on email_audit filters with
+    // .eq("admin_user_id", userId) — it only catches rows where the deleted
+    // user was the admin SENDER. For rows where they were a RECIPIENT (any
+    // feedback reply / 2FA email), recipient_email + subject must be
+    // scrubbed by EMAIL match, not user_id. Captures user.email NOW while
+    // the auth.users row is still readable — by Pass 4 the lookup is gone.
+    // Non-fatal: failures land in report.errors and the core deletion
+    // continues (audit rows are secondary to user-data erasure).
+    {
+      const scrubResult = await scrubEmailAuditByRecipient(admin, user.email);
+      if (scrubResult.kind === "error") {
+        report.errors.push({
+          table: "email_audit",
+          column: "recipient_email",
+          action: "anonymize_recipient",
+          message: scrubResult.message,
+        });
+      } else if (scrubResult.kind === "scrubbed") {
+        report.anonymized.push({
+          table: "email_audit",
+          column: "recipient_email",
+        });
       }
     }
 
