@@ -251,28 +251,41 @@ function createDeps(stored: Stored): CoreDeps {
 async function answerCurrentTask(page: Page) {
   await page.waitForTimeout(100);
   await page.locator("textarea, input[placeholder*='Short answer'], [role='textbox'], [role='radio']").first().waitFor({ state: "visible" });
-  const filled = await page.evaluate((answer) => {
-    const fields = [...document.querySelectorAll("main textarea, main input[placeholder*='Short answer']")]
-      .filter((node) => {
-        const el = node as HTMLElement;
-        const box = el.getBoundingClientRect();
-        return box.width > 0 && box.height > 0;
-      });
-    const el = fields.at(-1) as HTMLInputElement | HTMLTextAreaElement | null;
-    if (!el) return false;
-    const proto = el instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
-    const setter = Object.getOwnPropertyDescriptor(proto, "value")?.set;
-    setter?.call(el, answer);
-    el.dispatchEvent(new Event("input", { bubbles: true }));
-    el.dispatchEvent(new Event("change", { bubbles: true }));
-    return true;
-  }, LONG_PLACEMENT_ANSWER);
-  if (filled) {
+  const submit = page.getByRole("button", { name: /Submit answer/i });
+
+  const activeTextField = page
+    .locator("main textarea, main input[placeholder*='Short answer'], main [role='textbox']")
+    .filter({ visible: true })
+    .last();
+
+  if (await activeTextField.isVisible().catch(() => false)) {
+    await activeTextField.fill(LONG_PLACEMENT_ANSWER);
+    if (await submit.isEnabled().catch(() => false)) {
+      return;
+    }
+  }
+
+  const visibleRadio = page.getByRole("radio").filter({ visible: true }).first();
+  if (await visibleRadio.isVisible().catch(() => false)) {
+    await visibleRadio.click();
+    if (await submit.isEnabled().catch(() => false)) {
+      return;
+    }
+  }
+
+  if (await activeTextField.isVisible().catch(() => false)) {
+    await activeTextField.evaluate((node, answer) => {
+      const el = node as HTMLInputElement | HTMLTextAreaElement;
+      const proto = el instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+      const setter = Object.getOwnPropertyDescriptor(proto, "value")?.set;
+      setter?.call(el, answer);
+      el.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertText", data: answer }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+    }, LONG_PLACEMENT_ANSWER);
     return;
   }
 
-  const firstRadio = page.getByRole("radio").first();
-  await firstRadio.click();
+  await visibleRadio.click();
 }
 
 function publicResult(result: OrchestratorResponse): unknown {
