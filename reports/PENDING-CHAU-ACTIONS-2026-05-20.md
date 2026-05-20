@@ -141,6 +141,12 @@ review at convenience; non-blocking for §B/§C/§D/§E):
     0 = GO D4 backfill; 1–100 = conditional GO; >100 = NO-GO (B52 Option A
     stop-gap stays).
 
+### B.2a B53 placeholder-row DELETE (🟡 hygiene; companion to §B.2)
+
+- **Package:** `reports/SQL-p0-price-map-placeholders-B53.md` (PR #831).
+- **Apply order:** #798 INSERT first, then B53 DELETE. Disjoint PKs, two
+  separate transactions, can run back-to-back in one SQL Editor session.
+
 ### B.3 Anon-view RLS revoke (🔴 real data exposure)
 
 - **Package:** `reports/SQL-p0-rls-phantom-A9.md` (PR #800) §Section 1.
