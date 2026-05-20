@@ -1,0 +1,1234 @@
+{
+  "timeline_id": "88d24301b91f8c2c",
+  "governance_mode": "blocked_safe_temporal_governance_history",
+  "deterministic_regeneration": true,
+  "event_count": 15,
+  "fixture_history_groups": [
+    {
+      "group": "adversarial-rejection-history",
+      "path": "tests/governance/fixtures/tghee/adversarial-rejection-history/history.json",
+      "event_type": "adversarial fixture rejected",
+      "historical_state": "adversarial_governance_rejected"
+    },
+    {
+      "group": "branch-domain-history",
+      "path": "tests/governance/fixtures/tghee/branch-domain-history/history.json",
+      "event_type": "branch contamination rejected",
+      "historical_state": "branch_domain_isolation_preserved"
+    },
+    {
+      "group": "canonical-authority-history",
+      "path": "tests/governance/fixtures/tghee/canonical-authority-history/history.json",
+      "event_type": "canonical authority changed",
+      "historical_state": "a46_convergence_governance_canonical"
+    },
+    {
+      "group": "governance-recovery-history",
+      "path": "tests/governance/fixtures/tghee/governance-recovery-history/history.json",
+      "event_type": "seal restored",
+      "historical_state": "blocked_safe_recovery_causal"
+    },
+    {
+      "group": "orphaned-lineage-history",
+      "path": "tests/governance/fixtures/tghee/orphaned-lineage-history/history.json",
+      "event_type": "governance fragment orphaned",
+      "historical_state": "orphaned_fragment_rejected"
+    },
+    {
+      "group": "recursive-collapse-history",
+      "path": "tests/governance/fixtures/tghee/recursive-collapse-history/history.json",
+      "event_type": "governance recovery executed",
+      "historical_state": "recursive_collapse_recovered"
+    },
+    {
+      "group": "replay-poisoning-history",
+      "path": "tests/governance/fixtures/tghee/replay-poisoning-history/history.json",
+      "event_type": "replay poisoning rejected",
+      "historical_state": "poisoned_replay_rejected"
+    },
+    {
+      "group": "replay-storm-history",
+      "path": "tests/governance/fixtures/tghee/replay-storm-history/history.json",
+      "event_type": "replay storm detected",
+      "historical_state": "rejected_non_canonical"
+    },
+    {
+      "group": "seal-degradation-history",
+      "path": "tests/governance/fixtures/tghee/seal-degradation-history/history.json",
+      "event_type": "seal degraded",
+      "historical_state": "degraded_input_rejected_then_restored"
+    },
+    {
+      "group": "stale-lineage-history",
+      "path": "tests/governance/fixtures/tghee/stale-lineage-history/history.json",
+      "event_type": "stale replay rejected",
+      "historical_state": "superseded_by_current_a46_seal"
+    },
+    {
+      "group": "strict-mode-evolution-history",
+      "path": "tests/governance/fixtures/tghee/strict-mode-evolution-history/history.json",
+      "event_type": "strict-mode failure triggered",
+      "historical_state": "strict_mode_denial_traceable"
+    },
+    {
+      "group": "unresolved-propagation-history",
+      "path": "tests/governance/fixtures/tghee/unresolved-propagation-history/history.json",
+      "event_type": "unresolved dependency added",
+      "historical_state": "dependency_propagation_preserved"
+    }
+  ],
+  "streams": [
+    "A39",
+    "A42",
+    "A44",
+    "A45",
+    "A47",
+    "A48",
+    "A49",
+    "A50",
+    "A46"
+  ],
+  "unresolved_dependency_taxonomy": [
+    "A2 drift evidence",
+    "A33 endurance evidence",
+    "A33 capacity evidence",
+    "replay reproducibility",
+    "provider calibration",
+    "provider drift",
+    "fairness/bias evidence",
+    "CEFR stability evidence",
+    "persistence validation",
+    "audit continuity",
+    "human review backlog",
+    "supervised execution restrictions"
+  ],
+  "events": [
+    {
+      "event_id": "f9b784f4231df39b",
+      "ordinal": 10,
+      "type": "denial introduced",
+      "actor": "A42",
+      "scope": "reliability",
+      "summary": "Reliability archive preserved BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility",
+        "provider calibration"
+      ],
+      "caused_by": [],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "a4ae8a78735b0325",
+      "ordinal": 20,
+      "type": "unresolved dependency added",
+      "actor": "A46",
+      "scope": "convergence",
+      "summary": "Global unresolved dependency taxonomy normalized across permanent denial-retention streams.",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "denial introduced"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "actor": "A46",
+      "scope": "lineage",
+      "summary": "A46 convergence matrix superseded branch-local denial fragments without resolving evidence gaps.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "audit continuity",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "unresolved dependency added"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "ordinal": 40,
+      "type": "stale replay rejected",
+      "actor": "A49",
+      "scope": "replay",
+      "summary": "Replay snapshots remained non-canonical without reproducibility and audit continuity evidence.",
+      "dependencies": [
+        "replay reproducibility",
+        "audit continuity"
+      ],
+      "caused_by": [
+        "lineage superseded"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "actor": "A46",
+      "scope": "seal",
+      "summary": "Recursive simulator modeled seal fracture and canonical overwrite attempts as degraded inputs.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility"
+      ],
+      "caused_by": [
+        "stale replay rejected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "actor": "A46",
+      "scope": "seal",
+      "summary": "Permanent convergence seal rejected degraded inputs and restored blocked-safe seal continuity.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility"
+      ],
+      "caused_by": [
+        "seal degraded"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "actor": "A46",
+      "scope": "branch-domain",
+      "summary": "Cross-branch copied seals and forked canonical identities remained non-canonical.",
+      "dependencies": [
+        "audit continuity",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "seal restored"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "ordinal": 80,
+      "type": "replay poisoning rejected",
+      "actor": "A46",
+      "scope": "replay",
+      "summary": "Recursive replay storms were rejected before they could rewrite unresolved dependency lineage.",
+      "dependencies": [
+        "replay reproducibility",
+        "audit continuity"
+      ],
+      "caused_by": [
+        "branch contamination rejected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "actor": "A46",
+      "scope": "strict-mode",
+      "summary": "Strict mode remained denial-preserving for readiness, provider, replay, persistence, release, and autonomous escalation attempts.",
+      "dependencies": [
+        "provider drift",
+        "persistence validation",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "replay poisoning rejected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "ordinal": 100,
+      "type": "governance recovery executed",
+      "actor": "A46",
+      "scope": "recovery",
+      "summary": "Recursive collapse pressure regenerated deterministic blocked-safe governance artifacts.",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "strict-mode failure triggered"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "b1ab139a8613d57c",
+      "ordinal": 110,
+      "type": "canonical authority changed",
+      "actor": "A46",
+      "scope": "canonical-authority",
+      "summary": "Canonical authority settled on A46 convergence governance while upstream evidence remained incomplete.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "audit continuity",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "governance recovery executed"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "A46 convergence governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "ordinal": 120,
+      "type": "governance fragment orphaned",
+      "actor": "A46",
+      "scope": "lineage",
+      "summary": "Orphaned reconciliation fragments stayed rejected without canonical ancestry and source evidence.",
+      "dependencies": [
+        "audit continuity",
+        "replay reproducibility"
+      ],
+      "caused_by": [
+        "canonical authority changed"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "A46 convergence governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "type": "replay storm detected",
+      "actor": "A46",
+      "scope": "replay",
+      "summary": "Recursive replay storm chronology preserved stale replay rejection ordering.",
+      "dependencies": [
+        "replay reproducibility",
+        "audit continuity"
+      ],
+      "caused_by": [
+        "governance fragment orphaned"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "A46 convergence governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "actor": "A46",
+      "scope": "adversarial-governance",
+      "summary": "Recursive collapse fixtures were rejected without promoting readiness or certification.",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "replay storm detected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "A46 convergence governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "actor": "A46",
+      "scope": "determinism",
+      "summary": "Regenerated governance history preserved event IDs, causality ordering, canonical authority, and blocked-safe posture.",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "adversarial fixture rejected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "A46 convergence governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    }
+  ],
+  "supersession_chains": [
+    {
+      "from": "A39",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A42",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A44",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A45",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A47",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A48",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A49",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A50",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    }
+  ],
+  "replay_chains": [
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "unresolved dependency added"
+      ],
+      "ancestry": [
+        "A33 endurance evidence",
+        "audit continuity",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "ordinal": 40,
+      "type": "stale replay rejected",
+      "actor": "A49",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "lineage superseded"
+      ],
+      "ancestry": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "ordinal": 80,
+      "type": "replay poisoning rejected",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "branch contamination rejected"
+      ],
+      "ancestry": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "replay poisoning rejected"
+      ],
+      "ancestry": [
+        "provider drift",
+        "persistence validation",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "ordinal": 120,
+      "type": "governance fragment orphaned",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "canonical authority changed"
+      ],
+      "ancestry": [
+        "audit continuity",
+        "replay reproducibility"
+      ]
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "type": "replay storm detected",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "governance fragment orphaned"
+      ],
+      "ancestry": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "replay storm detected"
+      ],
+      "ancestry": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ]
+    }
+  ],
+  "branch_divergence_timeline": [
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "b1ab139a8613d57c",
+      "ordinal": 110,
+      "type": "canonical authority changed",
+      "authority_before": "A46 convergence governance",
+      "authority_after": "A46 convergence governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    }
+  ],
+  "unresolved_dependency_propagation_waves": [
+    {
+      "wave": "initial_denial",
+      "event_types": [
+        "denial introduced",
+        "unresolved dependency added"
+      ],
+      "effect": "blocked reliability readiness without resolving upstream evidence gaps"
+    },
+    {
+      "wave": "convergence_normalization",
+      "event_types": [
+        "lineage superseded",
+        "canonical authority changed"
+      ],
+      "effect": "centralized dependency lineage under A46 without promoting readiness"
+    },
+    {
+      "wave": "recursive_reinforcement",
+      "event_types": [
+        "replay poisoning rejected",
+        "adversarial fixture rejected",
+        "deterministic regeneration verified"
+      ],
+      "effect": "reinforced unresolved dependencies under adversarial replay pressure"
+    }
+  ],
+  "seal_evolution_events": [
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "actor": "A46",
+      "scope": "seal",
+      "summary": "Recursive simulator modeled seal fracture and canonical overwrite attempts as degraded inputs.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility"
+      ],
+      "caused_by": [
+        "stale replay rejected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "actor": "A46",
+      "scope": "seal",
+      "summary": "Permanent convergence seal rejected degraded inputs and restored blocked-safe seal continuity.",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility"
+      ],
+      "caused_by": [
+        "seal degraded"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    }
+  ],
+  "strict_mode_evolution_events": [
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "actor": "A46",
+      "scope": "strict-mode",
+      "summary": "Strict mode remained denial-preserving for readiness, provider, replay, persistence, release, and autonomous escalation attempts.",
+      "dependencies": [
+        "provider drift",
+        "persistence validation",
+        "supervised execution restrictions"
+      ],
+      "caused_by": [
+        "replay poisoning rejected"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      },
+      "canonical_authority_after_event": "branch-local denied governance",
+      "readiness_allowed_after_event": false,
+      "release_allowed_after_event": false
+    }
+  ],
+  "recovery_history_events": [
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "recovery_action": "detect_degradation",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": false
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "recovery_action": "restore_seal",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "recovery_action": "preserve_blocked_safe_recovery",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "recovery_action": "trigger_strict_denial",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "ordinal": 100,
+      "type": "governance recovery executed",
+      "recovery_action": "preserve_blocked_safe_recovery",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "recovery_action": "preserve_blocked_safe_recovery",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "recovery_action": "verify_deterministic_regeneration",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    }
+  ],
+  "causality_chain": [
+    {
+      "event_id": "f9b784f4231df39b",
+      "ordinal": 10,
+      "type": "denial introduced",
+      "caused_by": [],
+      "caused_next": [
+        "a4ae8a78735b0325"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "a4ae8a78735b0325",
+      "ordinal": 20,
+      "type": "unresolved dependency added",
+      "caused_by": [
+        "denial introduced"
+      ],
+      "caused_next": [
+        "c9f2a6e961e1ef99"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "caused_by": [
+        "unresolved dependency added"
+      ],
+      "caused_next": [
+        "75d890f3049e476f"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "ordinal": 40,
+      "type": "stale replay rejected",
+      "caused_by": [
+        "lineage superseded"
+      ],
+      "caused_next": [
+        "9b271c6bd1d9d6fb"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "caused_by": [
+        "stale replay rejected"
+      ],
+      "caused_next": [
+        "2b75fa8fbe976f67"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "caused_by": [
+        "seal degraded"
+      ],
+      "caused_next": [
+        "0cf5235e3e481bab"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "caused_by": [
+        "seal restored"
+      ],
+      "caused_next": [
+        "17c02030d41ad709"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "ordinal": 80,
+      "type": "replay poisoning rejected",
+      "caused_by": [
+        "branch contamination rejected"
+      ],
+      "caused_next": [
+        "1e6afc411b41db94"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "caused_by": [
+        "replay poisoning rejected"
+      ],
+      "caused_next": [
+        "6a5a801d8c118108"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "ordinal": 100,
+      "type": "governance recovery executed",
+      "caused_by": [
+        "strict-mode failure triggered"
+      ],
+      "caused_next": [
+        "b1ab139a8613d57c"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "b1ab139a8613d57c",
+      "ordinal": 110,
+      "type": "canonical authority changed",
+      "caused_by": [
+        "governance recovery executed"
+      ],
+      "caused_next": [
+        "f9864ac3eab33f7a"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "ordinal": 120,
+      "type": "governance fragment orphaned",
+      "caused_by": [
+        "canonical authority changed"
+      ],
+      "caused_next": [
+        "ef8d1ee43f7bbcba"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "type": "replay storm detected",
+      "caused_by": [
+        "governance fragment orphaned"
+      ],
+      "caused_next": [
+        "4b56ccd188c036cd"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "caused_by": [
+        "replay storm detected"
+      ],
+      "caused_next": [
+        "d729e6bae6e60079"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "caused_by": [
+        "adversarial fixture rejected"
+      ],
+      "caused_next": [],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    }
+  ],
+  "blocked_safe_history": {
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "do_not_enable_continuity": true,
+    "historical_blocked_safe_continuity": true,
+    "unsupported_readiness_suppression": true,
+    "supervised_execution_restrictions": "preserved"
+  },
+  "final_temporal_decision": {
+    "temporal_history_reconstructed": true,
+    "governance_history_deterministic": true,
+    "stale_replay_canonical_historically": false,
+    "branch_contamination_ambiguous": false,
+    "recovery_history_causal": true,
+    "seal_degradation_connected": true,
+    "strict_mode_traceable": true,
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "do_not_enable_continuity": true
+  }
+}

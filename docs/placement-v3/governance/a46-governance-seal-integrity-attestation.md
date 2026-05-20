@@ -1,6 +1,6 @@
 # A46 Governance Seal Integrity Attestation
 
-Generated: 2026-05-20T20:24:44.305Z
+Generated: 2026-05-20T20:36:52.618Z
 
 - production_safe: false
 - production_readiness: false

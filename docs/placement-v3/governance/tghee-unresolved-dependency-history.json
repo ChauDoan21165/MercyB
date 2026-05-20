@@ -1,0 +1,401 @@
+{
+  "history_id": "a80b875bbed1d568",
+  "dependencies": [
+    {
+      "dependency": "A2 drift evidence",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "A33 endurance evidence",
+      "originated_at_event_id": "f9b784f4231df39b",
+      "propagated_event_ids": [
+        "f9b784f4231df39b",
+        "a4ae8a78735b0325",
+        "c9f2a6e961e1ef99",
+        "9b271c6bd1d9d6fb",
+        "2b75fa8fbe976f67",
+        "6a5a801d8c118108",
+        "b1ab139a8613d57c",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "f9b784f4231df39b",
+        "a4ae8a78735b0325",
+        "c9f2a6e961e1ef99",
+        "2b75fa8fbe976f67",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "A33 capacity evidence",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "replay reproducibility",
+      "originated_at_event_id": "f9b784f4231df39b",
+      "propagated_event_ids": [
+        "f9b784f4231df39b",
+        "a4ae8a78735b0325",
+        "75d890f3049e476f",
+        "9b271c6bd1d9d6fb",
+        "2b75fa8fbe976f67",
+        "17c02030d41ad709",
+        "6a5a801d8c118108",
+        "f9864ac3eab33f7a",
+        "ef8d1ee43f7bbcba",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "f9b784f4231df39b",
+        "a4ae8a78735b0325",
+        "75d890f3049e476f",
+        "2b75fa8fbe976f67",
+        "17c02030d41ad709",
+        "f9864ac3eab33f7a",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "provider calibration",
+      "originated_at_event_id": "f9b784f4231df39b",
+      "propagated_event_ids": [
+        "f9b784f4231df39b",
+        "a4ae8a78735b0325",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "f9b784f4231df39b",
+        "a4ae8a78735b0325",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "provider drift",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "1e6afc411b41db94",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "1e6afc411b41db94",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "fairness/bias evidence",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "CEFR stability evidence",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "persistence validation",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "1e6afc411b41db94",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "1e6afc411b41db94",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "audit continuity",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "c9f2a6e961e1ef99",
+        "75d890f3049e476f",
+        "0cf5235e3e481bab",
+        "17c02030d41ad709",
+        "6a5a801d8c118108",
+        "b1ab139a8613d57c",
+        "f9864ac3eab33f7a",
+        "ef8d1ee43f7bbcba",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "c9f2a6e961e1ef99",
+        "75d890f3049e476f",
+        "0cf5235e3e481bab",
+        "17c02030d41ad709",
+        "f9864ac3eab33f7a",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "human review backlog",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "6a5a801d8c118108",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    },
+    {
+      "dependency": "supervised execution restrictions",
+      "originated_at_event_id": "a4ae8a78735b0325",
+      "propagated_event_ids": [
+        "a4ae8a78735b0325",
+        "c9f2a6e961e1ef99",
+        "0cf5235e3e481bab",
+        "1e6afc411b41db94",
+        "6a5a801d8c118108",
+        "b1ab139a8613d57c",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "blocked_streams": [
+        "A39",
+        "A42",
+        "A44",
+        "A45",
+        "A47",
+        "A48",
+        "A49",
+        "A50"
+      ],
+      "unresolved_duration_state": "unresolved_since_introduction",
+      "reinforced_by_denial_events": [
+        "a4ae8a78735b0325",
+        "c9f2a6e961e1ef99",
+        "0cf5235e3e481bab",
+        "1e6afc411b41db94",
+        "4b56ccd188c036cd",
+        "d729e6bae6e60079"
+      ],
+      "current_state": "unresolved"
+    }
+  ],
+  "propagation_waves": [
+    {
+      "wave": "initial_denial",
+      "event_types": [
+        "denial introduced",
+        "unresolved dependency added"
+      ],
+      "effect": "blocked reliability readiness without resolving upstream evidence gaps"
+    },
+    {
+      "wave": "convergence_normalization",
+      "event_types": [
+        "lineage superseded",
+        "canonical authority changed"
+      ],
+      "effect": "centralized dependency lineage under A46 without promoting readiness"
+    },
+    {
+      "wave": "recursive_reinforcement",
+      "event_types": [
+        "replay poisoning rejected",
+        "adversarial fixture rejected",
+        "deterministic regeneration verified"
+      ],
+      "effect": "reinforced unresolved dependencies under adversarial replay pressure"
+    }
+  ]
+}

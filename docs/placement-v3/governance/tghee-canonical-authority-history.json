@@ -1,0 +1,109 @@
+{
+  "canonical_history_id": "9094e4b6675fba5a",
+  "canonical_authority": "A46 convergence governance",
+  "authority_transitions": [
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "ordinal": 40,
+      "type": "stale replay rejected",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "ordinal": 80,
+      "type": "replay poisoning rejected",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "authority_before": "branch-local denied governance",
+      "authority_after": "branch-local denied governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "b1ab139a8613d57c",
+      "ordinal": 110,
+      "type": "canonical authority changed",
+      "authority_before": "A46 convergence governance",
+      "authority_after": "A46 convergence governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "ordinal": 120,
+      "type": "governance fragment orphaned",
+      "authority_before": "A46 convergence governance",
+      "authority_after": "A46 convergence governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "type": "replay storm detected",
+      "authority_before": "A46 convergence governance",
+      "authority_after": "A46 convergence governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "authority_before": "A46 convergence governance",
+      "authority_after": "A46 convergence governance",
+      "stale_lineage_authority": "rejected",
+      "branch_contamination_authority": "rejected"
+    }
+  ],
+  "branch_domain_history": {
+    "canonical_branch": "feat/a42-reliability-forecast-ops",
+    "branch_domain_isolation": "preserved",
+    "cross_branch_contamination": "rejected",
+    "forked_canonical_identity": "rejected"
+  },
+  "invalidation_reasons": [
+    "missing source evidence",
+    "stale seal identity",
+    "unresolved dependency continuity gap",
+    "unsupported readiness implication",
+    "branch-domain mismatch"
+  ]
+}

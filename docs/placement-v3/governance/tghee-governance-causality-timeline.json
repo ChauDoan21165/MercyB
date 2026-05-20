@@ -1,0 +1,312 @@
+{
+  "timeline_id": "323dfb11e6755f67",
+  "causality_chain": [
+    {
+      "event_id": "f9b784f4231df39b",
+      "ordinal": 10,
+      "type": "denial introduced",
+      "caused_by": [],
+      "caused_next": [
+        "a4ae8a78735b0325"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "a4ae8a78735b0325",
+      "ordinal": 20,
+      "type": "unresolved dependency added",
+      "caused_by": [
+        "denial introduced"
+      ],
+      "caused_next": [
+        "c9f2a6e961e1ef99"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "caused_by": [
+        "unresolved dependency added"
+      ],
+      "caused_next": [
+        "75d890f3049e476f"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "ordinal": 40,
+      "type": "stale replay rejected",
+      "caused_by": [
+        "lineage superseded"
+      ],
+      "caused_next": [
+        "9b271c6bd1d9d6fb"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "caused_by": [
+        "stale replay rejected"
+      ],
+      "caused_next": [
+        "2b75fa8fbe976f67"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "caused_by": [
+        "seal degraded"
+      ],
+      "caused_next": [
+        "0cf5235e3e481bab"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "caused_by": [
+        "seal restored"
+      ],
+      "caused_next": [
+        "17c02030d41ad709"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "ordinal": 80,
+      "type": "replay poisoning rejected",
+      "caused_by": [
+        "branch contamination rejected"
+      ],
+      "caused_next": [
+        "1e6afc411b41db94"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "caused_by": [
+        "replay poisoning rejected"
+      ],
+      "caused_next": [
+        "6a5a801d8c118108"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "ordinal": 100,
+      "type": "governance recovery executed",
+      "caused_by": [
+        "strict-mode failure triggered"
+      ],
+      "caused_next": [
+        "b1ab139a8613d57c"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "b1ab139a8613d57c",
+      "ordinal": 110,
+      "type": "canonical authority changed",
+      "caused_by": [
+        "governance recovery executed"
+      ],
+      "caused_next": [
+        "f9864ac3eab33f7a"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "ordinal": 120,
+      "type": "governance fragment orphaned",
+      "caused_by": [
+        "canonical authority changed"
+      ],
+      "caused_next": [
+        "ef8d1ee43f7bbcba"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "type": "replay storm detected",
+      "caused_by": [
+        "governance fragment orphaned"
+      ],
+      "caused_next": [
+        "4b56ccd188c036cd"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "caused_by": [
+        "replay storm detected"
+      ],
+      "caused_next": [
+        "d729e6bae6e60079"
+      ],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "caused_by": [
+        "adversarial fixture rejected"
+      ],
+      "caused_next": [],
+      "blocked_safe_after_event": {
+        "production_safe": false,
+        "production_readiness": false,
+        "placement_v3_enabled": false,
+        "placement_v3_enablement": "BLOCKED",
+        "writes_production_data": false,
+        "autonomous_execution": "SUPERVISED_ONLY",
+        "do_not_enable_continuity": true
+      }
+    }
+  ],
+  "current_blocked_safe_cause": "d729e6bae6e60079",
+  "root_denial_cause": "f9b784f4231df39b",
+  "current_blocked_safe_posture": {
+    "production_safe": false,
+    "production_readiness": false,
+    "placement_v3_enabled": false,
+    "placement_v3_enablement": "BLOCKED",
+    "writes_production_data": false,
+    "autonomous_execution": "SUPERVISED_ONLY",
+    "do_not_enable_continuity": true
+  }
+}

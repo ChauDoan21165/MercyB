@@ -1,0 +1,299 @@
+{
+  "map_id": "4687bab00b040b6e",
+  "streams": [
+    {
+      "stream": "A39",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A42",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A44",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A45",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A47",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A48",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A49",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A50",
+      "canonical_status": "denial_lineage_source",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": "A46 convergence governance"
+    },
+    {
+      "stream": "A46",
+      "canonical_status": "canonical_convergence_authority",
+      "lineage_state": "blocked_safe_unresolved",
+      "superseded_by": null
+    }
+  ],
+  "lineage_edges": [
+    {
+      "from": "A39",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A42",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A44",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A45",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A47",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A48",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A49",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    },
+    {
+      "from": "A50",
+      "to": "A46",
+      "relation": "denial_lineage_preserved_without_readiness_promotion"
+    }
+  ],
+  "orphaned_lineage_policy": "reject_without_canonical_ancestry_and_source_evidence",
+  "stale_lineage_policy": "reject_without_current_seal_and_unresolved_dependency_continuity",
+  "duplicated_lineage_policy": "deduplicate_without_resolving_dependencies",
+  "unresolved_dependencies_preserved": [
+    "A2 drift evidence",
+    "A33 endurance evidence",
+    "A33 capacity evidence",
+    "replay reproducibility",
+    "provider calibration",
+    "provider drift",
+    "fairness/bias evidence",
+    "CEFR stability evidence",
+    "persistence validation",
+    "audit continuity",
+    "human review backlog",
+    "supervised execution restrictions"
+  ],
+  "event_ancestry": [
+    {
+      "event_id": "f9b784f4231df39b",
+      "type": "denial introduced",
+      "actor": "A42",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility",
+        "provider calibration"
+      ]
+    },
+    {
+      "event_id": "a4ae8a78735b0325",
+      "type": "unresolved dependency added",
+      "actor": "A46",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "type": "lineage superseded",
+      "actor": "A46",
+      "dependencies": [
+        "A33 endurance evidence",
+        "audit continuity",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "type": "stale replay rejected",
+      "actor": "A49",
+      "dependencies": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "type": "seal degraded",
+      "actor": "A46",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility"
+      ]
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "type": "seal restored",
+      "actor": "A46",
+      "dependencies": [
+        "A33 endurance evidence",
+        "replay reproducibility"
+      ]
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "type": "branch contamination rejected",
+      "actor": "A46",
+      "dependencies": [
+        "audit continuity",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "type": "replay poisoning rejected",
+      "actor": "A46",
+      "dependencies": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "type": "strict-mode failure triggered",
+      "actor": "A46",
+      "dependencies": [
+        "provider drift",
+        "persistence validation",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "type": "governance recovery executed",
+      "actor": "A46",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "b1ab139a8613d57c",
+      "type": "canonical authority changed",
+      "actor": "A46",
+      "dependencies": [
+        "A33 endurance evidence",
+        "audit continuity",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "type": "governance fragment orphaned",
+      "actor": "A46",
+      "dependencies": [
+        "audit continuity",
+        "replay reproducibility"
+      ]
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "type": "replay storm detected",
+      "actor": "A46",
+      "dependencies": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "type": "adversarial fixture rejected",
+      "actor": "A46",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "type": "deterministic regeneration verified",
+      "actor": "A46",
+      "dependencies": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ]
+    }
+  ]
+}

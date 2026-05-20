@@ -1,0 +1,129 @@
+{
+  "chronology_id": "b93252d7503d80b6",
+  "replay_events": [
+    {
+      "event_id": "c9f2a6e961e1ef99",
+      "ordinal": 30,
+      "type": "lineage superseded",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "unresolved dependency added"
+      ],
+      "ancestry": [
+        "A33 endurance evidence",
+        "audit continuity",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "75d890f3049e476f",
+      "ordinal": 40,
+      "type": "stale replay rejected",
+      "actor": "A49",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "lineage superseded"
+      ],
+      "ancestry": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "17c02030d41ad709",
+      "ordinal": 80,
+      "type": "replay poisoning rejected",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "branch contamination rejected"
+      ],
+      "ancestry": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "replay poisoning rejected"
+      ],
+      "ancestry": [
+        "provider drift",
+        "persistence validation",
+        "supervised execution restrictions"
+      ]
+    },
+    {
+      "event_id": "f9864ac3eab33f7a",
+      "ordinal": 120,
+      "type": "governance fragment orphaned",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "canonical authority changed"
+      ],
+      "ancestry": [
+        "audit continuity",
+        "replay reproducibility"
+      ]
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "ordinal": 130,
+      "type": "replay storm detected",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "governance fragment orphaned"
+      ],
+      "ancestry": [
+        "replay reproducibility",
+        "audit continuity"
+      ]
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "actor": "A46",
+      "replay_state": "rejected_non_canonical",
+      "causality": [
+        "replay storm detected"
+      ],
+      "ancestry": [
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions"
+      ]
+    }
+  ],
+  "replay_storms": [
+    {
+      "event_id": "17c02030d41ad709",
+      "storm_state": "detected_and_rejected",
+      "stale_replay_became_canonical": false
+    },
+    {
+      "event_id": "ef8d1ee43f7bbcba",
+      "storm_state": "detected_and_rejected",
+      "stale_replay_became_canonical": false
+    }
+  ],
+  "stale_replay_supersession_policy": "current sealed A46 convergence artifacts supersede stale replay snapshots",
+  "replay_poisoning_policy": "reject before unresolved dependency lineage can be rewritten"
+}

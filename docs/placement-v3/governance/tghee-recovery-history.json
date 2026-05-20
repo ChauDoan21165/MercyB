@@ -1,0 +1,74 @@
+{
+  "recovery_history_id": "f413c3ef5e2f33fd",
+  "catastrophic_states": [
+    "recursive seal corruption",
+    "poisoned replay storm",
+    "branch-domain fragmentation",
+    "forged readiness propagation",
+    "unresolved dependency erasure"
+  ],
+  "recovery_events": [
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "recovery_action": "detect_degradation",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": false
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "recovery_action": "restore_seal",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "recovery_action": "preserve_blocked_safe_recovery",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "1e6afc411b41db94",
+      "ordinal": 90,
+      "type": "strict-mode failure triggered",
+      "recovery_action": "trigger_strict_denial",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "ordinal": 100,
+      "type": "governance recovery executed",
+      "recovery_action": "preserve_blocked_safe_recovery",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "recovery_action": "preserve_blocked_safe_recovery",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "recovery_action": "verify_deterministic_regeneration",
+      "blocked_safe_restored": true,
+      "seal_continuity_restored": true
+    }
+  ],
+  "restoration_summary": {
+    "blocked_safe_posture_restored": true,
+    "recursive_collapse_attempts_rejected": true,
+    "seal_restoration_chronology_present": true,
+    "recovery_causality_present": true
+  }
+}

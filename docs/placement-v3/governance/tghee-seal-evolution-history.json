@@ -1,0 +1,50 @@
+{
+  "seal_history_id": "ccee2ac809998c47",
+  "seal_events": [
+    {
+      "event_id": "9b271c6bd1d9d6fb",
+      "ordinal": 50,
+      "type": "seal degraded",
+      "seal_state": "degraded_input_rejected",
+      "connected_to_recovery": true
+    },
+    {
+      "event_id": "2b75fa8fbe976f67",
+      "ordinal": 60,
+      "type": "seal restored",
+      "seal_state": "blocked_safe_continuity_preserved",
+      "connected_to_recovery": true
+    },
+    {
+      "event_id": "0cf5235e3e481bab",
+      "ordinal": 70,
+      "type": "branch contamination rejected",
+      "seal_state": "blocked_safe_continuity_preserved",
+      "connected_to_recovery": true
+    },
+    {
+      "event_id": "6a5a801d8c118108",
+      "ordinal": 100,
+      "type": "governance recovery executed",
+      "seal_state": "blocked_safe_continuity_preserved",
+      "connected_to_recovery": true
+    },
+    {
+      "event_id": "4b56ccd188c036cd",
+      "ordinal": 140,
+      "type": "adversarial fixture rejected",
+      "seal_state": "blocked_safe_continuity_preserved",
+      "connected_to_recovery": true
+    },
+    {
+      "event_id": "d729e6bae6e60079",
+      "ordinal": 150,
+      "type": "deterministic regeneration verified",
+      "seal_state": "blocked_safe_continuity_preserved",
+      "connected_to_recovery": true
+    }
+  ],
+  "deterministic_seal_identity": "1a963e2a87bc79c0",
+  "seal_degradation_history_connected": true,
+  "seal_restoration_history_connected": true
+}

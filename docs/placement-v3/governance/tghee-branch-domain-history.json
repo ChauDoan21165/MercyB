@@ -1,0 +1,6 @@
+{
+  "canonical_branch": "feat/a42-reliability-forecast-ops",
+  "branch_domain_isolation": "preserved",
+  "cross_branch_contamination": "rejected",
+  "forked_canonical_identity": "rejected"
+}
