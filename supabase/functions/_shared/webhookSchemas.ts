@@ -57,3 +57,68 @@ export const appleNotificationV2Schema = z.object({
   }).passthrough().optional(),
 }).passthrough();
 export type AppleNotificationV2 = z.infer<typeof appleNotificationV2Schema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * Google — Real-time Developer Notifications (RTDN) via Cloud Pub/Sub
+ *
+ * Reference: https://developer.android.com/google/play/billing/rtdn-reference
+ *            https://cloud.google.com/pubsub/docs/push#receive_push
+ *
+ * Two layers:
+ *   1. Pub/Sub push envelope — `{ message: { data: base64-json, ... }, subscription }`
+ *   2. The decoded `message.data` JSON — one of subscriptionNotification /
+ *      voidedPurchaseNotification / oneTimeProductNotification /
+ *      testNotification per Google's RTDN spec.
+ *
+ * Both layers are `.passthrough()` for vendor schema drift; the inner
+ * notification's four event-shape fields are all optional because a
+ * single message contains exactly one of them, and the validation
+ * layer must not reject the other three "absent" fields.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const googlePubSubEnvelopeSchema = z.object({
+  message: z.object({
+    // data is a base64-encoded JSON string. May be absent on Google's
+    // bootstrap "test publish" (rare). messageId is the de-dup key.
+    data: z.string().optional(),
+    messageId: z.string().optional(),
+    message_id: z.string().optional(), // historic Pub/Sub snake_case field
+    publishTime: z.string().optional(),
+    publish_time: z.string().optional(),
+    attributes: z.record(z.string()).optional(),
+  }).passthrough(),
+  subscription: z.string().optional(),
+}).passthrough();
+export type GooglePubSubEnvelope = z.infer<typeof googlePubSubEnvelopeSchema>;
+
+export const googleRtdnNotificationSchema = z.object({
+  // Common fields on every RTDN notification.
+  version: z.string().optional(),
+  packageName: z.string().optional(),
+  eventTimeMillis: z.string().optional(),
+  // Exactly ONE of the next four is set per Google's spec. We mark all
+  // four optional and `.passthrough()` so the handler can branch on
+  // which is present without us pre-rejecting valid notifications.
+  subscriptionNotification: z.object({
+    version: z.string().optional(),
+    notificationType: z.number().int().optional(),
+    purchaseToken: z.string().optional(),
+    subscriptionId: z.string().optional(),
+  }).passthrough().optional(),
+  oneTimeProductNotification: z.object({
+    version: z.string().optional(),
+    notificationType: z.number().int().optional(),
+    purchaseToken: z.string().optional(),
+    sku: z.string().optional(),
+  }).passthrough().optional(),
+  voidedPurchaseNotification: z.object({
+    purchaseToken: z.string().optional(),
+    orderId: z.string().optional(),
+    productType: z.number().int().optional(),
+    refundType: z.number().int().optional(),
+  }).passthrough().optional(),
+  testNotification: z.object({
+    version: z.string().optional(),
+  }).passthrough().optional(),
+}).passthrough();
+export type GoogleRtdnNotification = z.infer<typeof googleRtdnNotificationSchema>;
