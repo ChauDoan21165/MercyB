@@ -1,3 +1,9 @@
+> **SUPERSEDED 2026-05-19/20:** see (a) tonight's primer §k blockers (#807
+> device-verify checklist for #796 marketing-tracker guard, A40
+> account-deletion re-audit), and (b)
+> `reports/PENDING-CHAU-ACTIONS-2026-05-20.md` §D + §E for the live verify +
+> paperwork-redo procedure. Keep for audit trail.
+
 # MercyBlade — App Store / Play Store readiness audit
 
 **Date:** 2026-04-27

@@ -1,3 +1,5 @@
+> **Latency migration `20260518000000` APPLIED to prod** per memory `project_repo_ahead_reconciliation`; do not re-apply.
+
 # RECON — AUDIT_LATENCY backlog (findings #1, #3, #5)
 
 **Agent:** audit-latency-agent

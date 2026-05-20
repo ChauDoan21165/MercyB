@@ -1,3 +1,5 @@
+> **§5 update:** b53 PR-READY classification now landed via PR #831; the other 10 rows stand.
+
 # OPS — Red-branch PR-candidate audit (A10b follow-up, A9e)
 
 > A10b pushed 11 LOCAL-only branches for durability with no PR. This doc

@@ -1,3 +1,5 @@
+> **See also:** PR #792 (T2 retire migration) for the live T2-retirement decision.
+
 # RECON — `profiles.tier` sync trigger on `payment_transactions`
 
 **Agent:** tier-trigger-recon-agent

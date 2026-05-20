@@ -1,3 +1,7 @@
+> **SUPERSEDED 2026-05-19/20:** the wave has drained. For current PR state run
+> `gh pr list --state open`. This doc is the mid-wave snapshot — keep for audit
+> trail, do not act on the sequence.
+
 # PR review backlog — sequencing + risk matrix (A2c)
 
 > **For Chau, single-person reviewer, ~15 min budget.** Live `gh pr view`

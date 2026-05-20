@@ -1,3 +1,5 @@
+> **See also:** webhook `raw_payload`-on-object-quality monotonicity (#793) is a separate axis, not covered here.
+
 # RECON — Stripe webhook idempotency race (check-then-insert)
 
 **Agent:** stripe-idempotency-agent

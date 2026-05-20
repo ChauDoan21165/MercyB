@@ -5,6 +5,8 @@ date: 2026-04-26
 branch: feat/sentry-monitoring-complete-recovered
 ---
 
+> **See also:** Sentry initialization is now route-gated per PR #720 (memory `project_sentry_route_gate`); the load-order described pre-PR may not reflect current behavior.
+
 # Sentry setup guide
 
 The code wiring is shipped. This doc is the **post-merge runbook** so you can flip Sentry on without writing any more code.
