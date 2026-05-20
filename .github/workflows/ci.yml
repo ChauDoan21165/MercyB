@@ -150,3 +150,37 @@ jobs:
 
       - name: Validate rooms
         run: npm run validate-rooms
+
+  boundaries:
+    # ── Module Boundaries (A13) ─────────────────────────────────────
+    # Lock architectural module boundaries via dependency-cruiser. Errors
+    # are real violations (UI→edge, business-logic→UI, etc.); warnings
+    # are circulars and cross-feature imports (informational).
+    #
+    # NOT in the branch-protection required-checks ruleset yet — per the
+    # A13 dispatch, that promotion happens after ~1 week of stability so
+    # false positives can be addressed without blocking merges. Once
+    # promoted, add this job's name "Module Boundaries" to the ruleset
+    # (memory: project_ci_workflow_consolidation — never rename it after).
+    name: Module Boundaries
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: depcruise --validate (errors only)
+        run: npm run depcruise:validate
+
+      - name: depcruise metrics (informational, never fails)
+        if: always()
+        run: npm run depcruise:metrics || true
