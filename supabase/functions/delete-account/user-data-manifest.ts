@@ -191,6 +191,7 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "user_entitlements",               action: "anonymize", column: "user_id", reason: "tier_name + vip_rank + date only — no PII after user_id nulled" },
   { table: "user_entitlements_raw",           action: "anonymize", column: "user_id", scrub_columns: { features: null }, reason: "entitlement audit; features jsonb can hold arbitrary flags — null for safety" },
   { table: "user_entitlements_raw_20260301_181303", action: "anonymize", column: "user_id", scrub_columns: { features: null }, reason: "entitlement snapshot backup; null features jsonb" },
+  { table: "entitlements",                    action: "anonymize", column: "user_id", reason: "live entitlement state; anonymize on delete (parity with user_entitlements/raw)" },
   { table: "user_promo_redemptions",          action: "anonymize", column: "user_id", reason: "promo_code_id + counters only — no PII after user_id nulled" },
   {
     table: "user_subscription_state", action: "anonymize", column: "user_id",
