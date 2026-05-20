@@ -28,6 +28,14 @@ Local simulated burn-in `a2-burnin-02` executed all 10 required scenarios before
 - Live Supabase forensic inserts were not validated in this workspace.
 - Dashboard E2E is fixture-based and does not prove real admin access with persisted rows.
 
+# Live validation still required before merge/enablement
+
+- Run `docs/placement-v3/observability/live-validation-runbook.md` in an environment with real Supabase and provider credentials.
+- Use `scripts/placement-v3/verify-forensics-env.ts` to check required env vars without calling providers.
+- Confirm forensic rows are inserted by the real `placement-v3-session` Edge Function.
+- Confirm the admin dashboard reads persisted forensic rows, not fixture data.
+- Keep this PR draft until live provider calls and live Supabase inserts are validated or explicitly deferred by Chau.
+
 # Runtime Evidence
 
 - `docs/placement-v3/observability/raw-runs/a2-burnin-02-command.log`
