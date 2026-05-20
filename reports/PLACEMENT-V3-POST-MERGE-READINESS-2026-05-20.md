@@ -1,7 +1,7 @@
 # Placement V3 Post-Merge Readiness Report
 
 Date: 2026-05-20
-Branch: `reports/placement-v3-post-merge-readiness`
+Branch: reports/placement-v3-post-merge-readiness
 Base: `origin/main` at `de6d31c28` (#942)
 
 ## Executive Decision
@@ -19,6 +19,14 @@ This report is now the current founder-facing decision snapshot. The ongoing rel
 - `reports/placement-v3-launch-scenarios.md` — staff-only, internal-only, invite-only, soft-launch, and public-launch gate definitions.
 - `reports/placement-v3-evidence-index.md` — evidence quality and merge-status index for #941, #942, #943, #944, #946, #947, #949, #950, #951, #952, and #953.
 - `reports/placement-v3-open-questions.md` — unresolved release questions for grading accuracy, CEFR calibration, speaking reliability, native runtime behavior, provider failover, replay drift, cost envelope, and scaling risk.
+- `reports/placement-v3-launch-progression.md` — stage-by-stage progression tracker from blocked through public launch.
+- `reports/placement-v3-blocker-ownership.md` — blocker owner matrix for #943, #944, #946, #952, and #953.
+- `reports/placement-v3-runtime-validation-scoreboard.md` — simulated/local/live/production validation scoreboard.
+- `reports/placement-v3-rollback-matrix.md` — rollback triggers and actions for provider, grading, drift, privacy, cost, native, recommendation, forensic, and benchmark failures.
+- `reports/placement-v3-release-evidence-manifest.json` — machine-readable manifest of PRs, reports, logs, simulations, runtime evidence, CI evidence, replay evidence, benchmark evidence, and unresolved blockers.
+- `reports/placement-v3-founder-decision-template.md` — future launch/no-launch signoff template.
+- `reports/placement-v3-operational-cadence.md` — daily/weekly review and rerun cadence.
+- `reports/placement-v3-launch-criteria-history.md` — changelog for launch requirements, blocker status, and evidence-triggered decisions.
 
 Use these files as the canonical place to update status as blockers clear. Do not infer launch readiness from green CI or scaffold PRs; only close gates with linked runtime evidence.
 
