@@ -16,6 +16,7 @@
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { captureRlsDenied } from "@/lib/monitoring/captureException";
+import { instrumentSupabase } from "@/lib/monitoring/instrumentSupabase";
 
 // ⚠️ IMPORTANT: env values can include trailing whitespace/newlines in deployments.
 // We MUST trim to avoid apikey ending with %0A (newline) → Realtime fails + REST 403.
@@ -222,10 +223,12 @@ function instrumentedFetch(
 const globalFetchOption =
   typeof fetch === "function" ? { fetch: instrumentedFetch } : undefined;
 
-export const supabase: SupabaseClient = createClient(
-  supabaseUrl,
-  supabaseAnonKey,
-  {
+// instrumentSupabase mutates the client in place to wrap `.from()` and
+// `.rpc()` with slow-query timing → Sentry. A no-op when the feature flag
+// is off (test mode, or VITE_SUPABASE_QUERY_INSTRUMENTATION_ENABLED=false).
+// See src/lib/monitoring/instrumentSupabase.ts.
+export const supabase: SupabaseClient = instrumentSupabase(
+  createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: true,
       autoRefreshToken: true,
@@ -236,7 +239,7 @@ export const supabase: SupabaseClient = createClient(
       lock: customAuthLock,
     },
     ...(globalFetchOption ? { global: globalFetchOption } : {}),
-  },
+  }),
 );
 
 function getEnvSnapshot(): EnvSnapshot {
