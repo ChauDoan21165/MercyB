@@ -1,6 +1,6 @@
 # A42 Reliability Handoff Report
 
-Generated: 2026-05-20T16:01:07.480Z
+Generated: 2026-05-20T16:11:10.430Z
 
 ## What B1 Already Proved
 
@@ -50,6 +50,8 @@ Generated: 2026-05-20T16:01:07.480Z
 ## Current A42 Forecast
 
 - Forecast classification: BLOCKED_BY_MISSING_EVIDENCE
+- Endurance health summary missing: true
+- Timeout risk forecast missing: true
 - Missing inputs: a33_endurance_health, a33_timeout_risk_forecast
 - Rejected inputs: none
 - production_safe: false

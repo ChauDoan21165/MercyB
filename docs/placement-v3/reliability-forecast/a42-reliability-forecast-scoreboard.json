@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:01:07.480Z",
+  "generatedAt": "2026-05-20T16:11:10.434Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "classifications": [
@@ -25,7 +25,7 @@
   "stale": true,
   "evidenceFreshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 0.4382561111111111,
+    "oldestAgeHours": 0.6057436111111111,
     "missingCount": 2,
     "staleCount": 2,
     "label": "blocked_missing_inputs"
@@ -33,10 +33,16 @@
   "forecastClassification": "BLOCKED_BY_MISSING_EVIDENCE",
   "production_safe": false,
   "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
   "live_provider_validated": false,
   "safetyPosition": {
     "production_safe": false,
     "placement_v3_enabled": false,
+    "placement_test_enabled": false,
+    "placement_v3_ui_enabled": false,
+    "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
     "productionReadiness": "NO",

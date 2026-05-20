@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-05-20T16:11:01.751Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "standard": "Duolingo-standard placement reliability forecast",
+  "categories": [
+    {
+      "name": "adaptive_session_duration",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "speaking_item_processing_latency",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "writing_item_processing_latency",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "translation_item_latency",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "azure_phoneme_scoring_latency",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "openai_gemini_failover_latency",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "replay_validation_runtime",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    },
+    {
+      "name": "human_review_handoff_latency",
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "missing_latency_forecast_evidence"
+    }
+  ],
+  "unknownCount": 8,
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "placement_test_enabled": false,
+    "placement_v3_ui_enabled": false,
+    "live_validation_complete": false,
+    "live_provider_validated": false,
+    "real_user_validated": false,
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  }
+}

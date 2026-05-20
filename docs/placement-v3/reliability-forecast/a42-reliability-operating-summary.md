@@ -1,6 +1,6 @@
 # A42 Reliability Operating Summary
 
-Generated: 2026-05-20T16:01:07.480Z
+Generated: 2026-05-20T16:11:10.433Z
 
 - Reliability health: BLOCKED
 - CI degradation risk: HIGH
@@ -14,6 +14,9 @@ Generated: 2026-05-20T16:01:07.480Z
 - Forecast classification: BLOCKED_BY_MISSING_EVIDENCE
 - production_safe: false
 - placement_v3_enabled: false
+- placement_test_enabled: false
+- placement_v3_ui_enabled: false
+- live_validation_complete: false
 - live_provider_validated: false
 
 A42 reads B1/A33 evidence and produces forecast intelligence only. It does not enable Placement V3 or claim live-provider, real-user, or production readiness.

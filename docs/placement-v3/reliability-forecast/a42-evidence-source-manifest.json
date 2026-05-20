@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:01:07.479Z",
+  "generatedAt": "2026-05-20T16:11:10.397Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
   "resolutionOrder": [
@@ -19,15 +19,21 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 0.4348525,
+      "ageHours": 0.6023297222222223,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:35:02.009Z",
       "safetyFields": {
         "production_safe": false,
         "placement_v3_enabled": false,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -43,15 +49,21 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 0.4382561111111111,
+      "ageHours": 0.6057333333333333,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.756Z",
       "safetyFields": {
         "production_safe": false,
         "placement_v3_enabled": false,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -67,15 +79,21 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 0.4366116666666667,
+      "ageHours": 0.6040888888888889,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.676Z",
       "safetyFields": {
         "production_safe": false,
         "placement_v3_enabled": false,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -91,15 +109,21 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 0.43660777777777776,
+      "ageHours": 0.604085,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:55.690Z",
       "safetyFields": {
         "production_safe": false,
         "placement_v3_enabled": false,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -115,15 +139,21 @@
       "sourceTier": "canonical",
       "fresh": true,
       "stale": false,
-      "ageHours": 0.4382536111111111,
+      "ageHours": 0.6057305555555555,
       "branch": "feat/b1-test-stability-burndown",
       "generatedAt": "2026-05-20T15:34:49.766Z",
       "safetyFields": {
         "production_safe": false,
         "placement_v3_enabled": false,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -147,11 +177,17 @@
       "safetyFields": {
         "production_safe": null,
         "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
           "production_safe",
           "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -173,11 +209,17 @@
       "safetyFields": {
         "production_safe": null,
         "placement_v3_enabled": null,
+        "placement_test_enabled": null,
+        "placement_v3_ui_enabled": null,
+        "live_validation_complete": null,
         "live_provider_validated": null,
         "real_user_validated": null,
         "missingSafetyFields": [
           "production_safe",
           "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
           "live_provider_validated",
           "real_user_validated"
         ]
@@ -231,7 +273,7 @@
   ],
   "freshness": {
     "thresholdHours": 72,
-    "oldestAgeHours": 0.4382561111111111,
+    "oldestAgeHours": 0.6057333333333333,
     "missingCount": 2,
     "staleCount": 2,
     "label": "blocked_missing_inputs"
@@ -241,9 +283,15 @@
       "key": "reliability_health",
       "production_safe": false,
       "placement_v3_enabled": false,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -253,9 +301,15 @@
       "key": "ci_degradation_forecast",
       "production_safe": false,
       "placement_v3_enabled": false,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -265,9 +319,15 @@
       "key": "reliability_recovery_forecast",
       "production_safe": false,
       "placement_v3_enabled": false,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -277,9 +337,15 @@
       "key": "ci_resilience_summary",
       "production_safe": false,
       "placement_v3_enabled": false,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -289,9 +355,15 @@
       "key": "reliability_anomaly_summary",
       "production_safe": false,
       "placement_v3_enabled": false,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -301,11 +373,17 @@
       "key": "a33_endurance_health",
       "production_safe": null,
       "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
         "production_safe",
         "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -315,11 +393,17 @@
       "key": "a33_timeout_risk_forecast",
       "production_safe": null,
       "placement_v3_enabled": null,
+      "placement_test_enabled": null,
+      "placement_v3_ui_enabled": null,
+      "live_validation_complete": null,
       "live_provider_validated": null,
       "real_user_validated": null,
       "missingSafetyFields": [
         "production_safe",
         "placement_v3_enabled",
+        "placement_test_enabled",
+        "placement_v3_ui_enabled",
+        "live_validation_complete",
         "live_provider_validated",
         "real_user_validated"
       ],
@@ -328,10 +412,16 @@
   ],
   "production_safe": false,
   "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
   "live_provider_validated": false,
   "safetyPosition": {
     "production_safe": false,
     "placement_v3_enabled": false,
+    "placement_test_enabled": false,
+    "placement_v3_ui_enabled": false,
+    "live_validation_complete": false,
     "live_provider_validated": false,
     "real_user_validated": false,
     "productionReadiness": "NO",

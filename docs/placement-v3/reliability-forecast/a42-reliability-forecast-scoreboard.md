@@ -1,6 +1,6 @@
 # A42 Reliability Forecast Scoreboard
 
-Generated: 2026-05-20T16:01:07.480Z
+Generated: 2026-05-20T16:11:10.434Z
 
 - Forecast classification: BLOCKED_BY_MISSING_EVIDENCE
 - CI degradation risk: HIGH

@@ -1,10 +1,19 @@
 #!/usr/bin/env tsx
 
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 type RiskClassification = "LOW" | "MODERATE" | "ELEVATED" | "HIGH" | "CRITICAL" | "BLOCKED_BY_MISSING_EVIDENCE";
+type ReliabilityRiskClassification =
+  | "RELIABILITY_READY"
+  | "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS"
+  | "BLOCKED_BY_TIMEOUT_RISK"
+  | "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN"
+  | "BLOCKED_BY_REPLAY_DURABILITY_UNKNOWN"
+  | "BLOCKED_BY_FAILOVER_LATENCY_UNKNOWN"
+  | "BLOCKED_BY_GOVERNANCE";
 
 type SourceStatus = {
   key: string;
@@ -21,14 +30,20 @@ type SourceStatus = {
   generatedAt: string | null;
   missingSafetyFields: string[];
   unsafeProductionClaim: boolean;
+  checksum: string | null;
+  sourceAgent: string;
+  sourceCommit: string | null;
+  safetyClassification: "SAFE_FALSE_FLAGS" | "UNSAFE_TRUE_FLAGS" | "MISSING_SAFETY_FIELDS" | "MISSING";
   data: Record<string, unknown> | null;
 };
 
 const EXPECTED_BRANCH = "feat/a42-reliability-forecast-ops";
 const OUT_DIR = "docs/placement-v3/reliability-forecast";
+const RELIABILITY_OUT_DIR = "docs/placement-v3/reliability";
 const DROPBOX_DIR = path.join(OUT_DIR, "evidence-dropbox");
 const AGENT_RUNS_DIR = "reports/agent-runs";
 const STALENESS_THRESHOLD_HOURS = Number(process.env.A42_STALENESS_THRESHOLD_HOURS ?? 72);
+const args = process.argv.slice(3);
 
 const SOURCES = [
   {
@@ -86,6 +101,7 @@ main();
 function main() {
   ensureBranch();
   mkdirSync(OUT_DIR, { recursive: true });
+  mkdirSync(RELIABILITY_OUT_DIR, { recursive: true });
 
   switch (command) {
     case "summary":
@@ -116,9 +132,17 @@ function runAuto() {
   generateSourceManifest(sources);
   const summary = generateOperatingSummary(sources);
   const scoreboard = generateScoreboard(summary);
+  const lineage = generateLineageMap(sources);
+  const readiness = generateEnduranceReadinessMatrix(sources);
+  const forecast = generatePlacementReliabilityForecast(sources, readiness);
   generateHandoffReport(summary, scoreboard, sources);
+  if (args.includes("--strict")) enforceStrictMode(sources, readiness, forecast);
   console.log(`[a42] artifacts: ${OUT_DIR}`);
+  console.log(`[a42] reliability reports: ${RELIABILITY_OUT_DIR}`);
   console.log(`[a42] evidence manifest: ${path.join(OUT_DIR, "a42-evidence-source-manifest.json")}`);
+  console.log(`[a42] lineage map: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-lineage.json")}`);
+  console.log(`[a42] endurance readiness matrix: ${path.join(RELIABILITY_OUT_DIR, "a42-endurance-readiness-matrix.json")}`);
+  console.log(`[a42] placement reliability forecast: ${path.join(RELIABILITY_OUT_DIR, "a42-placement-reliability-forecast.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -166,6 +190,9 @@ function generateOperatingSummary(existingSources?: SourceStatus[]) {
     classification: blocked ? "BLOCKED_BY_MISSING_EVIDENCE" : aggregateRisk(sources),
     production_safe: false,
     placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
     live_provider_validated: false,
     safetyPosition: safetyPosition(),
   };
@@ -190,6 +217,9 @@ function generateOperatingSummary(existingSources?: SourceStatus[]) {
       `- Forecast classification: ${summary.classification}`,
       `- production_safe: ${summary.production_safe}`,
       `- placement_v3_enabled: ${summary.placement_v3_enabled}`,
+      `- placement_test_enabled: ${summary.placement_test_enabled}`,
+      `- placement_v3_ui_enabled: ${summary.placement_v3_ui_enabled}`,
+      `- live_validation_complete: ${summary.live_validation_complete}`,
       `- live_provider_validated: ${summary.live_provider_validated}`,
       "",
       "A42 reads B1/A33 evidence and produces forecast intelligence only. It does not enable Placement V3 or claim live-provider, real-user, or production readiness.",
@@ -220,6 +250,9 @@ function generateScoreboard(summary = generateOperatingSummary()) {
     forecastClassification: summary.classification,
     production_safe: false,
     placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
     live_provider_validated: false,
     safetyPosition: safetyPosition(),
   };
@@ -309,6 +342,8 @@ function generateHandoffReport(summary = generateOperatingSummary(), scoreboard 
     "## Current A42 Forecast",
     "",
     `- Forecast classification: ${scoreboard.forecastClassification}`,
+    `- Endurance health summary missing: ${missingA33.some((source) => source.key === "a33_endurance_health")}`,
+    `- Timeout risk forecast missing: ${missingA33.some((source) => source.key === "a33_timeout_risk_forecast")}`,
     `- Missing inputs: ${summary.missingInputs.join(", ") || "none"}`,
     `- Rejected inputs: ${summary.rejectedInputs.join(", ") || "none"}`,
     `- production_safe: ${summary.production_safe}`,
@@ -344,6 +379,9 @@ function generateSourceManifest(existingSources?: SourceStatus[]) {
       key: source.key,
       production_safe: source.data ? safetyBoolean(source.data, "production_safe") : null,
       placement_v3_enabled: source.data ? safetyBoolean(source.data, "placement_v3_enabled") : null,
+      placement_test_enabled: source.data ? safetyBoolean(source.data, "placement_test_enabled") : null,
+      placement_v3_ui_enabled: source.data ? safetyBoolean(source.data, "placement_v3_ui_enabled") : null,
+      live_validation_complete: source.data ? safetyBoolean(source.data, "live_validation_complete") : null,
       live_provider_validated: source.data ? safetyBoolean(source.data, "live_provider_validated") : null,
       real_user_validated: source.data ? safetyBoolean(source.data, "real_user_validated") : null,
       missingSafetyFields: source.missingSafetyFields,
@@ -351,6 +389,9 @@ function generateSourceManifest(existingSources?: SourceStatus[]) {
     })),
     production_safe: false,
     placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
     live_provider_validated: false,
     safetyPosition: safetyPosition(),
   };
@@ -383,6 +424,158 @@ function generateSourceManifest(existingSources?: SourceStatus[]) {
   return manifest;
 }
 
+function generateLineageMap(sources: SourceStatus[]) {
+  const lineage = {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    inputs: sources.map((source) => ({
+      key: source.key,
+      sourcePath: source.path,
+      canonicalPath: source.canonicalPath,
+      sourceTier: source.sourceTier,
+      sourceAgent: source.sourceAgent,
+      sourceBranch: source.branch,
+      sourceCommit: source.sourceCommit,
+      checksum: source.checksum,
+      ingestionStatus: source.rejected ? "rejected" : source.present ? "accepted" : "missing",
+      rejectionReasons: source.rejectionReasons,
+      stale: source.stale,
+      fresh: source.present && !source.stale,
+      generatedAt: source.generatedAt,
+      ageHours: source.ageHours,
+      safetyClassification: source.safetyClassification,
+      missingSafetyFields: source.missingSafetyFields,
+    })),
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    safetyPosition: safetyPosition(),
+  };
+  writeReliabilityJsonAndMarkdown(
+    "a42-reliability-evidence-lineage",
+    lineage,
+    [
+      "# A42 Reliability Evidence Lineage",
+      "",
+      `Generated: ${lineage.generatedAt}`,
+      "",
+      ...lineage.inputs.map(
+        (source) =>
+          `- ${source.key}: ${source.ingestionStatus}, ${source.sourceTier}, agent=${source.sourceAgent}, branch=${source.sourceBranch ?? "missing"}, commit=${source.sourceCommit ?? "missing"}, checksum=${source.checksum ?? "missing"}, safety=${source.safetyClassification}`,
+      ),
+      "",
+      "A42 lineage records evidence provenance only. It does not mutate B1/A33 execution or enable Placement V3.",
+    ],
+  );
+  return lineage;
+}
+
+function generateEnduranceReadinessMatrix(sources: SourceStatus[]) {
+  const enduranceHealth = sources.find((source) => source.key === "a33_endurance_health");
+  const timeoutForecast = sources.find((source) => source.key === "a33_timeout_risk_forecast");
+  const checks = [
+    readinessCheck("endurance_health_summary_presence", !!enduranceHealth?.present && !enduranceHealth.rejected),
+    readinessCheck("timeout_risk_forecast_presence", !!timeoutForecast?.present && !timeoutForecast.rejected),
+    readinessCheck("long_session_stability", boolEvidence(enduranceHealth?.data, ["longSessionStable", "long_session_stability"])),
+    readinessCheck("provider_retry_stability", boolEvidence(enduranceHealth?.data, ["providerRetryStable", "provider_retry_stability"])),
+    readinessCheck("replay_durability", boolEvidence(enduranceHealth?.data, ["replayDurable", "replay_durability"])),
+    readinessCheck("ci_runtime_stability", boolEvidence(timeoutForecast?.data, ["ciRuntimeStable", "ci_runtime_stability"])),
+    readinessCheck("assessment_session_timeout_risk", lowRiskEvidence(timeoutForecast?.data, ["assessmentSessionTimeoutRisk", "assessment_session_timeout_risk"])),
+    readinessCheck("failover_timeout_risk", lowRiskEvidence(timeoutForecast?.data, ["failoverTimeoutRisk", "failover_timeout_risk"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const matrix = {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    checks,
+    riskClassification,
+    ready: riskClassification === "RELIABILITY_READY",
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    safetyPosition: safetyPosition(),
+  };
+  writeReliabilityJsonAndMarkdown(
+    "a42-endurance-readiness-matrix",
+    matrix,
+    [
+      "# A42 Endurance Readiness Matrix",
+      "",
+      `Generated: ${matrix.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${matrix.riskClassification}`,
+      `- Ready: ${matrix.ready}`,
+      "",
+      ...matrix.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "All readiness checks remain evidence-gated. Missing A33 endurance inputs keep A42 blocked-safe.",
+    ],
+  );
+  return matrix;
+}
+
+function generatePlacementReliabilityForecast(sources: SourceStatus[], readiness: ReturnType<typeof generateEnduranceReadinessMatrix>) {
+  const timeoutForecast = sources.find((source) => source.key === "a33_timeout_risk_forecast")?.data ?? null;
+  const categories = [
+    latencyForecast(timeoutForecast, "adaptive_session_duration", ["adaptiveSessionDuration", "adaptive_session_duration"]),
+    latencyForecast(timeoutForecast, "speaking_item_processing_latency", ["speakingItemProcessingLatency", "speaking_item_processing_latency"]),
+    latencyForecast(timeoutForecast, "writing_item_processing_latency", ["writingItemProcessingLatency", "writing_item_processing_latency"]),
+    latencyForecast(timeoutForecast, "translation_item_latency", ["translationItemLatency", "translation_item_latency"]),
+    latencyForecast(timeoutForecast, "azure_phoneme_scoring_latency", ["azurePhonemeScoringLatency", "azure_phoneme_scoring_latency"]),
+    latencyForecast(timeoutForecast, "openai_gemini_failover_latency", ["openaiGeminiFailoverLatency", "openai_gemini_failover_latency"]),
+    latencyForecast(timeoutForecast, "replay_validation_runtime", ["replayValidationRuntime", "replay_validation_runtime"]),
+    latencyForecast(timeoutForecast, "human_review_handoff_latency", ["humanReviewHandoffLatency", "human_review_handoff_latency"]),
+  ];
+  const unknownCount = categories.filter((item) => item.status === "UNKNOWN").length;
+  const riskClassification =
+    readiness.riskClassification !== "RELIABILITY_READY"
+      ? readiness.riskClassification
+      : unknownCount > 0
+        ? "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN"
+        : "RELIABILITY_READY";
+  const forecast = {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    standard: "Duolingo-standard placement reliability forecast",
+    categories,
+    unknownCount,
+    riskClassification,
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    safetyPosition: safetyPosition(),
+  };
+  writeReliabilityJsonAndMarkdown(
+    "a42-placement-reliability-forecast",
+    forecast,
+    [
+      "# A42 Placement Reliability Forecast",
+      "",
+      `Generated: ${forecast.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${forecast.riskClassification}`,
+      `- Unknown latency categories: ${forecast.unknownCount}`,
+      "",
+      ...forecast.categories.map((item) => `- ${item.name}: ${item.status} (${item.reason})`),
+      "",
+      "This forecast is non-production, evidence-gated, and does not make live-provider calls.",
+    ],
+  );
+  return forecast;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -400,12 +593,25 @@ function ingestSources(): SourceStatus[] {
         ageHours: null,
         branch: null,
         generatedAt: null,
-        missingSafetyFields: ["production_safe", "placement_v3_enabled", "live_provider_validated", "real_user_validated"],
+        missingSafetyFields: [
+          "production_safe",
+          "placement_v3_enabled",
+          "placement_test_enabled",
+          "placement_v3_ui_enabled",
+          "live_validation_complete",
+          "live_provider_validated",
+          "real_user_validated",
+        ],
         unsafeProductionClaim: false,
+        checksum: null,
+        sourceAgent: source.key.startsWith("a33_") ? "A33" : "B1",
+        sourceCommit: null,
+        safetyClassification: "MISSING",
         data: null,
       };
     }
-    const data = JSON.parse(readFileSync(resolved.path, "utf8")) as Record<string, unknown>;
+    const raw = readFileSync(resolved.path, "utf8");
+    const data = JSON.parse(raw) as Record<string, unknown>;
     const generatedAt = typeof data.generatedAt === "string" ? data.generatedAt : null;
     const ageHours = generatedAt ? (Date.now() - Date.parse(generatedAt)) / (60 * 60 * 1000) : null;
     const stale = ageHours === null || ageHours > STALENESS_THRESHOLD_HOURS;
@@ -426,6 +632,10 @@ function ingestSources(): SourceStatus[] {
       generatedAt,
       missingSafetyFields: safetyFieldGaps(data),
       unsafeProductionClaim: rejectionReasons.length > 0,
+      checksum: checksum(raw),
+      sourceAgent: source.key.startsWith("a33_") ? "A33" : "B1",
+      sourceCommit: sourceCommit(data),
+      safetyClassification: safetyClassification(data, rejectionReasons),
       data,
     };
   });
@@ -446,7 +656,15 @@ function resolveSource(canonicalPath: string): { path: string; tier: SourceStatu
 
 function importedEvidenceRejectionReasons(data: Record<string, unknown>) {
   const reasons: string[] = [];
-  for (const key of ["production_safe", "placement_v3_enabled", "live_provider_validated", "real_user_validated"]) {
+  for (const key of [
+    "production_safe",
+    "placement_v3_enabled",
+    "placement_test_enabled",
+    "placement_v3_ui_enabled",
+    "live_validation_complete",
+    "live_provider_validated",
+    "real_user_validated",
+  ]) {
     if (safetyBoolean(data, key) === true && !hasExplicitVerifiedEvidence(data, key)) {
       reasons.push(`${key}=true_without_explicit_verified_evidence`);
     }
@@ -486,6 +704,69 @@ function aggregateRisk(sources: SourceStatus[]): RiskClassification {
   return maxRisk(values);
 }
 
+function classifyReliabilityRisk(sources: SourceStatus[], checks: Array<{ name: string; status: string }>): ReliabilityRiskClassification {
+  if (sources.some((source) => source.rejected)) return "BLOCKED_BY_GOVERNANCE";
+  if (sources.some((source) => source.key.startsWith("a33_") && !source.present)) return "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS";
+  if (checks.some((check) => check.name.includes("timeout") && check.status !== "PASS")) return "BLOCKED_BY_TIMEOUT_RISK";
+  if (checks.some((check) => check.name === "provider_retry_stability" && check.status !== "PASS")) return "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN";
+  if (checks.some((check) => check.name === "replay_durability" && check.status !== "PASS")) return "BLOCKED_BY_REPLAY_DURABILITY_UNKNOWN";
+  if (checks.some((check) => check.name === "failover_timeout_risk" && check.status !== "PASS")) return "BLOCKED_BY_FAILOVER_LATENCY_UNKNOWN";
+  if (sources.some((source) => source.missingSafetyFields.length > 0 || source.stale)) return "BLOCKED_BY_GOVERNANCE";
+  return "RELIABILITY_READY";
+}
+
+function readinessCheck(name: string, passed: boolean | null) {
+  return {
+    name,
+    status: passed === true ? "PASS" : "BLOCKED",
+    reason: passed === true ? "evidence_present" : "missing_or_insufficient_evidence",
+  };
+}
+
+function boolEvidence(data: Record<string, unknown> | null | undefined, keys: string[]) {
+  if (!data) return null;
+  for (const key of keys) {
+    const value = nestedValue(data, key);
+    if (typeof value === "boolean") return value;
+    if (typeof value === "string") return ["pass", "passed", "stable", "low"].includes(value.toLowerCase());
+  }
+  return null;
+}
+
+function lowRiskEvidence(data: Record<string, unknown> | null | undefined, keys: string[]) {
+  if (!data) return null;
+  for (const key of keys) {
+    const value = nestedValue(data, key);
+    if (typeof value === "boolean") return value;
+    if (typeof value === "string") return ["low", "pass", "passed", "stable", "none"].includes(value.toLowerCase());
+  }
+  return null;
+}
+
+function latencyForecast(data: Record<string, unknown> | null, name: string, keys: string[]) {
+  const value = data ? keys.map((key) => nestedValue(data, key)).find((item) => item !== undefined) : undefined;
+  const status = value === undefined ? "UNKNOWN" : "EVIDENCE_PRESENT";
+  return {
+    name,
+    status,
+    value: value ?? null,
+    reason: status === "UNKNOWN" ? "missing_latency_forecast_evidence" : "source_forecast_present",
+  };
+}
+
+function nestedValue(data: Record<string, unknown>, key: string): unknown {
+  if (key in data) return data[key];
+  const reliability = data.reliability;
+  if (reliability && typeof reliability === "object" && !Array.isArray(reliability) && key in reliability) {
+    return (reliability as Record<string, unknown>)[key];
+  }
+  const metrics = data.metrics;
+  if (metrics && typeof metrics === "object" && !Array.isArray(metrics) && key in metrics) {
+    return (metrics as Record<string, unknown>)[key];
+  }
+  return undefined;
+}
+
 function riskFromValue(value: unknown): RiskClassification {
   if (value === "CRITICAL" || value === "BLOCKED" || value === "HIGH_RISK" || value === "RECOVERY_RISK") return "CRITICAL";
   if (value === "HIGH" || value === "CI_TIMEOUT_RISK" || value === "DEGRADED") return "HIGH";
@@ -518,6 +799,9 @@ function safetyFieldGaps(data: Record<string, unknown>) {
   const gaps: string[] = [];
   if (typeof safetyBoolean(data, "production_safe") !== "boolean") gaps.push("production_safe");
   if (typeof safetyBoolean(data, "placement_v3_enabled") !== "boolean") gaps.push("placement_v3_enabled");
+  if (typeof safetyBoolean(data, "placement_test_enabled") !== "boolean") gaps.push("placement_test_enabled");
+  if (typeof safetyBoolean(data, "placement_v3_ui_enabled") !== "boolean") gaps.push("placement_v3_ui_enabled");
+  if (typeof safetyBoolean(data, "live_validation_complete") !== "boolean") gaps.push("live_validation_complete");
   if (typeof safetyBoolean(data, "live_provider_validated") !== "boolean") gaps.push("live_provider_validated");
   if (typeof safetyBoolean(data, "real_user_validated") !== "boolean") gaps.push("real_user_validated");
   return gaps;
@@ -543,11 +827,52 @@ function safetyPosition() {
   return {
     production_safe: false,
     placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
     live_provider_validated: false,
     real_user_validated: false,
     productionReadiness: "NO",
     placementV3Enablement: "BLOCKED",
   };
+}
+
+function sourceCommit(data: Record<string, unknown>) {
+  for (const key of ["commit", "sourceCommit", "gitCommit", "commitSha", "sha"]) {
+    const value = data[key];
+    if (typeof value === "string" && value.length > 0) return value;
+  }
+  return null;
+}
+
+function safetyClassification(data: Record<string, unknown>, rejectionReasons: string[]) {
+  if (rejectionReasons.length > 0) return "UNSAFE_TRUE_FLAGS";
+  const gaps = safetyFieldGaps(data);
+  if (gaps.length > 0) return "MISSING_SAFETY_FIELDS";
+  return "SAFE_FALSE_FLAGS";
+}
+
+function checksum(raw: string) {
+  return createHash("sha256").update(raw).digest("hex");
+}
+
+function enforceStrictMode(
+  sources: SourceStatus[],
+  readiness: ReturnType<typeof generateEnduranceReadinessMatrix>,
+  forecast: ReturnType<typeof generatePlacementReliabilityForecast>,
+) {
+  const failures = [
+    ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
+    ...sources.filter((source) => source.rejected).map((source) => `rejected evidence: ${source.key}`),
+    ...sources.filter((source) => source.missingSafetyFields.length > 0).map((source) => `missing safety fields: ${source.key}`),
+  ];
+  if (readiness.riskClassification !== "RELIABILITY_READY") failures.push(`endurance readiness blocked: ${readiness.riskClassification}`);
+  if (forecast.riskClassification !== "RELIABILITY_READY") failures.push(`placement reliability forecast blocked: ${forecast.riskClassification}`);
+  if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
+  failures.push("live provider validation incomplete");
+  if (failures.length > 0) {
+    throw new Error(`A42 strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
+  }
 }
 
 function sourceManifestRow(source: SourceStatus) {
@@ -567,6 +892,9 @@ function sourceManifestRow(source: SourceStatus) {
     safetyFields: {
       production_safe: source.data ? safetyBoolean(source.data, "production_safe") : null,
       placement_v3_enabled: source.data ? safetyBoolean(source.data, "placement_v3_enabled") : null,
+      placement_test_enabled: source.data ? safetyBoolean(source.data, "placement_test_enabled") : null,
+      placement_v3_ui_enabled: source.data ? safetyBoolean(source.data, "placement_v3_ui_enabled") : null,
+      live_validation_complete: source.data ? safetyBoolean(source.data, "live_validation_complete") : null,
       live_provider_validated: source.data ? safetyBoolean(source.data, "live_provider_validated") : null,
       real_user_validated: source.data ? safetyBoolean(source.data, "real_user_validated") : null,
       missingSafetyFields: source.missingSafetyFields,
@@ -604,6 +932,13 @@ function writeJsonAndMarkdown(name: string, json: unknown, markdownLines: string
   console.log(`[a42] wrote ${path.join(OUT_DIR, `${name}.md`)}`);
 }
 
+function writeReliabilityJsonAndMarkdown(name: string, json: unknown, markdownLines: string[]) {
+  writeFileSync(path.join(RELIABILITY_OUT_DIR, `${name}.json`), `${JSON.stringify(json, null, 2)}\n`);
+  writeFileSync(path.join(RELIABILITY_OUT_DIR, `${name}.md`), `${markdownLines.join("\n")}\n`);
+  console.log(`[a42] wrote ${path.join(RELIABILITY_OUT_DIR, `${name}.json`)}`);
+  console.log(`[a42] wrote ${path.join(RELIABILITY_OUT_DIR, `${name}.md`)}`);
+}
+
 function scanClaims() {
   const files = [
     path.join(OUT_DIR, "a42-reliability-operating-summary.md"),
@@ -614,6 +949,12 @@ function scanClaims() {
     path.join(OUT_DIR, "a42-evidence-source-manifest.md"),
     path.join(OUT_DIR, "a42-evidence-source-manifest.json"),
     path.join(OUT_DIR, "a42-evidence-import-guide.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-lineage.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-lineage.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-endurance-readiness-matrix.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-endurance-readiness-matrix.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-placement-reliability-forecast.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-placement-reliability-forecast.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {
