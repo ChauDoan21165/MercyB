@@ -67,24 +67,31 @@ module.exports = {
       name: 'no-hooks-to-ui',
       severity: 'error',
       comment:
-        'src/hooks/** must NOT import src/components/** — hooks are state primitives, not UI consumers. (UI imports hooks, not the other way around.)',
+        'src/hooks/** must NOT import src/components/** at runtime — hooks are state primitives, not UI consumers. Type-only imports are exempt (see dependencyTypesNot below) since they compile away to zero runtime bytes; the shadcn pattern (a hook in src/hooks/ type-coupled to its own UI primitive in src/components/ui/) is intentional and architecturally sound.',
       from: {
         path: '^src/hooks/',
-        // Grandfathered exceptions — pre-existing tech debt as of A13
-        // baseline (2026-05-19). Tracked for cleanup separately; the
-        // gate still catches any NEW hook→ui imports going forward.
-        // TODO(A13-followup): refactor use-toast to import toast types
-        //   from src/components/ui/toast types-only, or move the type
-        //   to src/lib/ui-types.ts.
-        // TODO(A13-followup): refactor useTeacherMercy to read avatar/
-        //   animation types from src/lib/teacher-mercy/* (already exists)
-        //   instead of from src/components/mercy/*.
+        // Grandfathered exception — pre-existing tech debt that this PR
+        // narrowing did NOT resolve. useTeacherMercy.ts uses VALUE imports
+        // of MercyAvatar / MercyAnimation (it returns React elements from
+        // useMemo + createElement), so the dependencyTypesNot exemption
+        // below does not cover it. Resolved separately by A13-cleanup-2
+        // which deletes the orphan file entirely.
         pathNot: [
-          '^src/hooks/use-toast\\.ts$',
           '^src/hooks/useTeacherMercy\\.ts$',
         ],
       },
-      to: { path: '^src/components' },
+      to: {
+        path: '^src/components',
+        // Type-only imports compile away — they create no runtime
+        // architectural coupling. The shadcn pattern (e.g. use-toast.ts
+        // doing `import type { ToastActionElement, ToastProps } from
+        // '@/components/ui/toast'`) is endorsed by the design system and
+        // by 6502 GitHub stars of shadcn convention. Without this
+        // exemption, depcruise's `tsPreCompilationDeps: true` follows
+        // type-only edges and flags shadcn hooks as violations. With it,
+        // a hook's *value* import of a UI component is still an error.
+        dependencyTypesNot: ['type-only'],
+      },
     },
     {
       name: 'no-src-to-scripts',
