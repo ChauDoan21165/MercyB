@@ -75,16 +75,30 @@ Simulation proves replay pipeline integrity only. It is not live provider eviden
 
 # Evidence
 
-Passing verification exactly as run:
+Passing verification for the simulation follow-up exactly as run:
 
 ```bash
-pnpm vitest run tests/integration/placement-v3-drift-detection/drift-detection.test.ts
-pnpm playwright test -c playwright.smoke.config.ts placement-drift-dashboard.spec.ts
-pnpm tsc -p tsconfig.typecheck.json --noEmit
-pnpm tsc --noEmit
-pnpm vite build
-pnpm tsc -p tsconfig.functions.json --noEmit
+npm run typecheck
+npx vitest run tests/integration/placement-v3-drift-detection/drift-detection.test.ts
+npm run build
 ```
+
+The simulated artifact check also passed:
+
+```bash
+node - <<'NODE'
+const fs = require('fs');
+const dir = 'docs/placement-v3/drift-detection/simulated-runs';
+const files = fs.readdirSync(dir).filter((file) => file.endsWith('.json'));
+for (const file of files) {
+  const json = JSON.parse(fs.readFileSync(`${dir}/${file}`, 'utf8'));
+  if (json.simulated !== true) process.exit(1);
+}
+console.log(`all json artifacts simulated=true: ${files.length}`);
+NODE
+```
+
+Returned `all json artifacts simulated=true: 21`.
 
 Additional check:
 
