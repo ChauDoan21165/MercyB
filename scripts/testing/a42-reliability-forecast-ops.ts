@@ -13,6 +13,7 @@ type ReliabilityRiskClassification =
   | "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN"
   | "BLOCKED_BY_REPLAY_DURABILITY_UNKNOWN"
   | "BLOCKED_BY_FAILOVER_LATENCY_UNKNOWN"
+  | "BLOCKED_BY_ADAPTIVE_SESSION_RISK"
   | "BLOCKED_BY_GOVERNANCE";
 
 type SourceStatus = {
@@ -116,6 +117,18 @@ function main() {
     case "manifest":
       generateSourceManifest();
       break;
+    case "latency-risk":
+      generateProviderLatencyRisk();
+      break;
+    case "adaptive-reliability":
+      generateAdaptiveSessionReliability();
+      break;
+    case "replay-durability":
+      generateReplayDurabilityForecast();
+      break;
+    case "failover-stability":
+      generateFailoverStabilityForecast();
+      break;
     case "auto":
       runAuto();
       break;
@@ -135,14 +148,24 @@ function runAuto() {
   const lineage = generateLineageMap(sources);
   const readiness = generateEnduranceReadinessMatrix(sources);
   const forecast = generatePlacementReliabilityForecast(sources, readiness);
+  const providerLatencyRisk = generateProviderLatencyRisk(sources);
+  const adaptiveSessionReliability = generateAdaptiveSessionReliability(sources);
+  const replayDurability = generateReplayDurabilityForecast(sources);
+  const failoverStability = generateFailoverStabilityForecast(sources);
   generateHandoffReport(summary, scoreboard, sources);
-  if (args.includes("--strict")) enforceStrictMode(sources, readiness, forecast);
+  if (args.includes("--strict")) {
+    enforceStrictMode(sources, readiness, forecast, providerLatencyRisk, adaptiveSessionReliability, replayDurability, failoverStability);
+  }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
   console.log(`[a42] reliability reports: ${RELIABILITY_OUT_DIR}`);
   console.log(`[a42] evidence manifest: ${path.join(OUT_DIR, "a42-evidence-source-manifest.json")}`);
   console.log(`[a42] lineage map: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-lineage.json")}`);
   console.log(`[a42] endurance readiness matrix: ${path.join(RELIABILITY_OUT_DIR, "a42-endurance-readiness-matrix.json")}`);
   console.log(`[a42] placement reliability forecast: ${path.join(RELIABILITY_OUT_DIR, "a42-placement-reliability-forecast.json")}`);
+  console.log(`[a42] provider latency risk: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-risk.json")}`);
+  console.log(`[a42] adaptive session reliability: ${path.join(RELIABILITY_OUT_DIR, "a42-adaptive-session-reliability.json")}`);
+  console.log(`[a42] replay durability forecast: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-forecast.json")}`);
+  console.log(`[a42] failover stability forecast: ${path.join(RELIABILITY_OUT_DIR, "a42-failover-stability-forecast.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -576,6 +599,132 @@ function generatePlacementReliabilityForecast(sources: SourceStatus[], readiness
   return forecast;
 }
 
+function generateProviderLatencyRisk(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    latencyVarianceCheck(timeoutForecast, "openai_latency_variance", ["openaiLatencyVariance", "openai_latency_variance"]),
+    latencyVarianceCheck(timeoutForecast, "gemini_failover_latency_variance", ["geminiFailoverLatencyVariance", "gemini_failover_latency_variance"]),
+    latencyVarianceCheck(timeoutForecast, "azure_phoneme_scoring_latency_variance", [
+      "azurePhonemeScoringLatencyVariance",
+      "azure_phoneme_scoring_latency_variance",
+    ]),
+    latencyVarianceCheck(timeoutForecast, "human_review_handoff_latency", ["humanReviewHandoffLatency", "human_review_handoff_latency"]),
+    latencyVarianceCheck(timeoutForecast, "provider_timeout_unknowns", ["providerTimeoutUnknowns", "provider_timeout_unknowns"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("provider latency risk", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-provider-latency-risk",
+    report,
+    [
+      "# A42 Provider Latency Risk",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Provider latency risk remains blocked-safe until A33 endurance and timeout evidence provide bounded latency variance.",
+    ],
+  );
+  return report;
+}
+
+function generateAdaptiveSessionReliability(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    readinessCheck("adaptive_session_timeout_risk", lowRiskEvidence(timeoutForecast, ["adaptiveSessionTimeoutRisk", "adaptive_session_timeout_risk"])),
+    readinessCheck("long_session_degradation_risk", lowRiskEvidence(enduranceHealth, ["longSessionDegradationRisk", "long_session_degradation_risk"])),
+    readinessCheck("ci_runtime_stability", boolEvidence(timeoutForecast, ["ciRuntimeStable", "ci_runtime_stability"])),
+    readinessCheck("assessment_session_timeout_risk", lowRiskEvidence(timeoutForecast, ["assessmentSessionTimeoutRisk", "assessment_session_timeout_risk"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("adaptive session reliability", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-adaptive-session-reliability",
+    report,
+    [
+      "# A42 Adaptive Session Reliability",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Adaptive-session reliability remains blocked-safe until long-session and timeout evidence are present and fresh.",
+    ],
+  );
+  return report;
+}
+
+function generateReplayDurabilityForecast(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    readinessCheck("replay_durability_uncertainty", boolEvidence(enduranceHealth, ["replayDurable", "replay_durability"])),
+    latencyVarianceCheck(timeoutForecast, "replay_validation_runtime", ["replayValidationRuntime", "replay_validation_runtime"]),
+    readinessCheck("replay_evidence_unknowns", boolEvidence(enduranceHealth, ["replayEvidenceComplete", "replay_evidence_complete"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("replay durability forecast", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-replay-durability-forecast",
+    report,
+    [
+      "# A42 Replay Durability Forecast",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Replay durability remains blocked-safe until replay evidence is present, fresh, and explicitly durable.",
+    ],
+  );
+  return report;
+}
+
+function generateFailoverStabilityForecast(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    readinessCheck("failover_retry_stability", boolEvidence(enduranceHealth, ["failoverRetryStable", "failover_retry_stability"])),
+    readinessCheck("provider_retry_stability", boolEvidence(enduranceHealth, ["providerRetryStable", "provider_retry_stability"])),
+    latencyVarianceCheck(timeoutForecast, "openai_gemini_failover_latency", ["openaiGeminiFailoverLatency", "openai_gemini_failover_latency"]),
+    readinessCheck("failover_timeout_risk", lowRiskEvidence(timeoutForecast, ["failoverTimeoutRisk", "failover_timeout_risk"])),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = reliabilityForecastReport("failover stability forecast", checks, riskClassification);
+  writeReliabilityJsonAndMarkdown(
+    "a42-failover-stability-forecast",
+    report,
+    [
+      "# A42 Failover Stability Forecast",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Failover stability remains blocked-safe until retry stability and failover latency evidence are bounded.",
+    ],
+  );
+  return report;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -707,10 +856,15 @@ function aggregateRisk(sources: SourceStatus[]): RiskClassification {
 function classifyReliabilityRisk(sources: SourceStatus[], checks: Array<{ name: string; status: string }>): ReliabilityRiskClassification {
   if (sources.some((source) => source.rejected)) return "BLOCKED_BY_GOVERNANCE";
   if (sources.some((source) => source.key.startsWith("a33_") && !source.present)) return "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS";
-  if (checks.some((check) => check.name.includes("timeout") && check.status !== "PASS")) return "BLOCKED_BY_TIMEOUT_RISK";
+  if (checks.some((check) => check.name.includes("adaptive_session") && check.status !== "PASS")) return "BLOCKED_BY_ADAPTIVE_SESSION_RISK";
   if (checks.some((check) => check.name === "provider_retry_stability" && check.status !== "PASS")) return "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN";
   if (checks.some((check) => check.name === "replay_durability" && check.status !== "PASS")) return "BLOCKED_BY_REPLAY_DURABILITY_UNKNOWN";
+  if (checks.some((check) => check.name.includes("replay") && check.status !== "PASS")) return "BLOCKED_BY_REPLAY_DURABILITY_UNKNOWN";
   if (checks.some((check) => check.name === "failover_timeout_risk" && check.status !== "PASS")) return "BLOCKED_BY_FAILOVER_LATENCY_UNKNOWN";
+  if (checks.some((check) => check.name.includes("failover") && check.status !== "PASS")) return "BLOCKED_BY_FAILOVER_LATENCY_UNKNOWN";
+  if (checks.some((check) => check.name.includes("provider") && check.status !== "PASS")) return "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN";
+  if (checks.some((check) => check.name.includes("latency") && check.status !== "PASS")) return "BLOCKED_BY_PROVIDER_LATENCY_UNKNOWN";
+  if (checks.some((check) => check.name.includes("timeout") && check.status !== "PASS")) return "BLOCKED_BY_TIMEOUT_RISK";
   if (sources.some((source) => source.missingSafetyFields.length > 0 || source.stale)) return "BLOCKED_BY_GOVERNANCE";
   return "RELIABILITY_READY";
 }
@@ -751,6 +905,40 @@ function latencyForecast(data: Record<string, unknown> | null, name: string, key
     status,
     value: value ?? null,
     reason: status === "UNKNOWN" ? "missing_latency_forecast_evidence" : "source_forecast_present",
+  };
+}
+
+function latencyVarianceCheck(data: Record<string, unknown> | null, name: string, keys: string[]) {
+  const forecast = latencyForecast(data, name, keys);
+  return {
+    name: forecast.name,
+    status: forecast.status === "EVIDENCE_PRESENT" ? "PASS" : "BLOCKED",
+    value: forecast.value,
+    reason: forecast.status === "EVIDENCE_PRESENT" ? "bounded_forecast_evidence_present" : "missing_latency_or_timeout_evidence",
+  };
+}
+
+function sourceData(sources: SourceStatus[], key: string) {
+  return sources.find((source) => source.key === key)?.data ?? null;
+}
+
+function reliabilityForecastReport(name: string, checks: Array<{ name: string; status: string; reason: string; value?: unknown }>, riskClassification: ReliabilityRiskClassification) {
+  return {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    forecast: name,
+    checks,
+    blockedChecks: checks.filter((check) => check.status !== "PASS").map((check) => check.name),
+    riskClassification,
+    ready: riskClassification === "RELIABILITY_READY",
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    safetyPosition: safetyPosition(),
   };
 }
 
@@ -860,6 +1048,10 @@ function enforceStrictMode(
   sources: SourceStatus[],
   readiness: ReturnType<typeof generateEnduranceReadinessMatrix>,
   forecast: ReturnType<typeof generatePlacementReliabilityForecast>,
+  providerLatencyRisk: ReturnType<typeof generateProviderLatencyRisk>,
+  adaptiveSessionReliability: ReturnType<typeof generateAdaptiveSessionReliability>,
+  replayDurability: ReturnType<typeof generateReplayDurabilityForecast>,
+  failoverStability: ReturnType<typeof generateFailoverStabilityForecast>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -868,7 +1060,17 @@ function enforceStrictMode(
   ];
   if (readiness.riskClassification !== "RELIABILITY_READY") failures.push(`endurance readiness blocked: ${readiness.riskClassification}`);
   if (forecast.riskClassification !== "RELIABILITY_READY") failures.push(`placement reliability forecast blocked: ${forecast.riskClassification}`);
+  if (providerLatencyRisk.riskClassification !== "RELIABILITY_READY") failures.push(`provider latency risk blocked: ${providerLatencyRisk.riskClassification}`);
+  if (adaptiveSessionReliability.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`adaptive-session reliability blocked: ${adaptiveSessionReliability.riskClassification}`);
+  }
+  if (replayDurability.riskClassification !== "RELIABILITY_READY") failures.push(`replay durability blocked: ${replayDurability.riskClassification}`);
+  if (failoverStability.riskClassification !== "RELIABILITY_READY") failures.push(`failover stability blocked: ${failoverStability.riskClassification}`);
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
+  if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
+  if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
+  if (replayDurability.checks.some((item) => item.status !== "PASS")) failures.push("replay durability evidence unknown");
+  if (failoverStability.checks.some((item) => item.status !== "PASS")) failures.push("failover stability evidence unknown");
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
     throw new Error(`A42 strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
@@ -955,6 +1157,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-endurance-readiness-matrix.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-placement-reliability-forecast.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-placement-reliability-forecast.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-risk.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-risk.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-adaptive-session-reliability.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-adaptive-session-reliability.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-forecast.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-forecast.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-failover-stability-forecast.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-failover-stability-forecast.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

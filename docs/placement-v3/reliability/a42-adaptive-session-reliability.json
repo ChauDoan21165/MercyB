@@ -1,30 +1,16 @@
 {
-  "generatedAt": "2026-05-20T16:19:33.008Z",
+  "generatedAt": "2026-05-20T16:19:55.840Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
+  "forecast": "adaptive session reliability",
   "checks": [
     {
-      "name": "endurance_health_summary_presence",
+      "name": "adaptive_session_timeout_risk",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     },
     {
-      "name": "timeout_risk_forecast_presence",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "long_session_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "provider_retry_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "replay_durability",
+      "name": "long_session_degradation_risk",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     },
@@ -37,12 +23,13 @@
       "name": "assessment_session_timeout_risk",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "failover_timeout_risk",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
     }
+  ],
+  "blockedChecks": [
+    "adaptive_session_timeout_risk",
+    "long_session_degradation_risk",
+    "ci_runtime_stability",
+    "assessment_session_timeout_risk"
   ],
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,

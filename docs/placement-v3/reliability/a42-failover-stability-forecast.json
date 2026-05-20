@@ -1,20 +1,11 @@
 {
-  "generatedAt": "2026-05-20T16:19:33.008Z",
+  "generatedAt": "2026-05-20T16:19:55.835Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
+  "forecast": "failover stability forecast",
   "checks": [
     {
-      "name": "endurance_health_summary_presence",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "timeout_risk_forecast_presence",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "long_session_stability",
+      "name": "failover_retry_stability",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     },
@@ -24,25 +15,22 @@
       "reason": "missing_or_insufficient_evidence"
     },
     {
-      "name": "replay_durability",
+      "name": "openai_gemini_failover_latency",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "ci_runtime_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "assessment_session_timeout_risk",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     },
     {
       "name": "failover_timeout_risk",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     }
+  ],
+  "blockedChecks": [
+    "failover_retry_stability",
+    "provider_retry_stability",
+    "openai_gemini_failover_latency",
+    "failover_timeout_risk"
   ],
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,

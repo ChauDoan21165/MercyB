@@ -1,48 +1,46 @@
 {
-  "generatedAt": "2026-05-20T16:19:33.008Z",
+  "generatedAt": "2026-05-20T16:19:55.826Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
+  "forecast": "provider latency risk",
   "checks": [
     {
-      "name": "endurance_health_summary_presence",
+      "name": "openai_latency_variance",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     },
     {
-      "name": "timeout_risk_forecast_presence",
+      "name": "gemini_failover_latency_variance",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     },
     {
-      "name": "long_session_stability",
+      "name": "azure_phoneme_scoring_latency_variance",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     },
     {
-      "name": "provider_retry_stability",
+      "name": "human_review_handoff_latency",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     },
     {
-      "name": "replay_durability",
+      "name": "provider_timeout_unknowns",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "ci_runtime_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "assessment_session_timeout_risk",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "failover_timeout_risk",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     }
+  ],
+  "blockedChecks": [
+    "openai_latency_variance",
+    "gemini_failover_latency_variance",
+    "azure_phoneme_scoring_latency_variance",
+    "human_review_handoff_latency",
+    "provider_timeout_unknowns"
   ],
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,

@@ -1,48 +1,30 @@
 {
-  "generatedAt": "2026-05-20T16:19:33.008Z",
+  "generatedAt": "2026-05-20T16:19:55.856Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
+  "forecast": "replay durability forecast",
   "checks": [
     {
-      "name": "endurance_health_summary_presence",
+      "name": "replay_durability_uncertainty",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     },
     {
-      "name": "timeout_risk_forecast_presence",
+      "name": "replay_validation_runtime",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_latency_or_timeout_evidence"
     },
     {
-      "name": "long_session_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "provider_retry_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "replay_durability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "ci_runtime_stability",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "assessment_session_timeout_risk",
-      "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
-    },
-    {
-      "name": "failover_timeout_risk",
+      "name": "replay_evidence_unknowns",
       "status": "BLOCKED",
       "reason": "missing_or_insufficient_evidence"
     }
+  ],
+  "blockedChecks": [
+    "replay_durability_uncertainty",
+    "replay_validation_runtime",
+    "replay_evidence_unknowns"
   ],
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
