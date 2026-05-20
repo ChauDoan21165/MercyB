@@ -122,3 +122,43 @@ export const googleRtdnNotificationSchema = z.object({
   }).passthrough().optional(),
 }).passthrough();
 export type GoogleRtdnNotification = z.infer<typeof googleRtdnNotificationSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * Stripe — Webhook Event (https://stripe.com/docs/api/events/object)
+ *
+ * Stripe sends events in dozens of shapes (one per event.type). Rather
+ * than building a `discriminatedUnion` across the full event-type
+ * enum — which would lock us into Stripe's current type list and
+ * force a schema update for every new event type — we validate the
+ * Event ENVELOPE (id/type/created/livemode/data.object) and leave
+ * data.object as an untyped passthrough. The downstream event-type
+ * dispatcher (`handleCheckoutSessionCompleted`, etc.) already
+ * narrows by type-string and reads only the fields it expects.
+ *
+ * Cryptographic HMAC verification is done by `verifyStripeSignature
+ * OrThrow` upstream; this schema adds shape-level defense AFTER
+ * signature has passed.
+ * ──────────────────────────────────────────────────────────────────── */
+
+export const stripeWebhookEventSchema = z.object({
+  id: z.string().min(1),
+  type: z.string().min(1),
+  object: z.literal("event").optional(),
+  api_version: z.string().nullable().optional(),
+  created: z.number().int().optional(),
+  livemode: z.boolean().optional(),
+  pending_webhooks: z.number().int().optional(),
+  request: z.object({
+    id: z.string().nullable().optional(),
+    idempotency_key: z.string().nullable().optional(),
+  }).passthrough().nullable().optional(),
+  data: z.object({
+    // `object` is the changed Stripe resource (Subscription, Invoice,
+    // CheckoutSession, etc.) — shape varies wildly by event.type and
+    // is narrowed downstream. We require it to be an object so the
+    // handler's `event.data.object` access is safe.
+    object: z.record(z.unknown()),
+    previous_attributes: z.record(z.unknown()).optional(),
+  }).passthrough(),
+}).passthrough();
+export type StripeWebhookEventParsed = z.infer<typeof stripeWebhookEventSchema>;
