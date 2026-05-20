@@ -1,4 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { captureEdgeError } from "../_shared/sentry.ts";
+import { adminManagementRequestSchema } from "../_shared/adminSchemas.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -58,15 +60,71 @@ Deno.serve(async (req) => {
 
     console.log(`[admin-management] Admin level: ${requestorAdmin.level}`);
 
-    // Parse body
-    let body: Record<string, unknown> = {};
+    // ── A11b: request-payload runtime validation ────────────────────────
+    // Auth + admin role ALREADY passed above. Validate the request body
+    // against the discriminated-union by `action`. Behavioral note:
+    // pre-A11b, missing body OR missing `action` field defaulted to
+    // 'list' — we preserve that exact behavior here by defaulting
+    // BEFORE the zod parse (a strict discriminatedUnion would reject
+    // missing action, which would change valid-payload behavior).
+    //
+    // On parse failure (malformed JSON or fails-schema action shape):
+    // returns 400 + Sentry beacon (PII-scrubbed: zod issues + top-
+    // level key list only — never the raw body, which carries admin
+    // emails / admin_ids / level numbers).
+    let rawBody: unknown = {};
     try {
-      body = await req.json();
+      rawBody = await req.json();
     } catch {
-      // Empty body OK for list
+      // Empty body OK — pre-A11b behavior: defaults to list. Don't
+      // route this through Sentry; an empty admin-management call is
+      // a documented happy-path for the admin UI's initial mount.
+      rawBody = {};
     }
 
-    const action = body.action as string || 'list';
+    // Preserve "missing action → list" backward-compat. Only apply when
+    // body is a real object missing the action key (not when it's a
+    // primitive or array, which the schema will reject loudly below).
+    if (
+      rawBody && typeof rawBody === "object" && !Array.isArray(rawBody) &&
+      (rawBody as Record<string, unknown>).action === undefined
+    ) {
+      rawBody = { ...rawBody, action: "list" };
+    }
+
+    const bodyParse = adminManagementRequestSchema.safeParse(rawBody);
+    if (!bodyParse.success) {
+      const topLevelKeys =
+        rawBody && typeof rawBody === "object" && !Array.isArray(rawBody)
+          ? Object.keys(rawBody as Record<string, unknown>)
+          : [];
+      await captureEdgeError(
+        new Error("admin-management request failed zod validation"),
+        {
+          functionName: "admin-management",
+          userId: user.id,
+          extra: {
+            stage: "request-zod",
+            zodIssues: bodyParse.error.issues.map((iss) => ({
+              path: iss.path.join("."),
+              code: iss.code,
+              message: iss.message,
+            })),
+            topLevelKeys,
+          },
+          tags: { admin: "true", stage: "request-zod" },
+        },
+      );
+      return new Response(
+        JSON.stringify({ ok: false, error: "Request body failed validation" }),
+        { status: 400, headers: corsHeaders },
+      );
+    }
+
+    // Re-derive `body` and `action` from the zod-validated payload so
+    // the existing switch statement below still works untouched.
+    const body = bodyParse.data as Record<string, unknown>;
+    const action = bodyParse.data.action;
     console.log(`[admin-management] Action: ${action}`);
 
     switch (action) {

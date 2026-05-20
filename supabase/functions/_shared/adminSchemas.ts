@@ -76,3 +76,63 @@ export const adminHideRoomRequestSchema = z.object({
   room_id: z.string().trim().min(1).max(200),
 }).passthrough();
 export type AdminHideRoomRequest = z.infer<typeof adminHideRoomRequestSchema>;
+
+/* ────────────────────────────────────────────────────────────────────
+ * admin-management — discriminated-union over action
+ *
+ * Five action shapes (existing handler-side surface, all preserved):
+ *   list           — no payload fields (default when body / action absent)
+ *   my-role        — no payload fields
+ *   create         — { email: non-empty string, level?: 1-10 } — creates
+ *                    a new admin row. Handler enforces level constraints
+ *                    against requestor.level downstream.
+ *   update_level   — { admin_id: non-empty string, new_level: 1-10 }
+ *   delete         — { admin_id: non-empty string }
+ *
+ * Constraints chosen to MATCH existing handler defensive checks
+ * (`if (!email)`, `if (!admin_id)`, `if (level === undefined)`).
+ * Tighter validation (e.g. z.string().uuid() on admin_id or
+ * z.string().email() on email) would CHANGE existing valid-payload
+ * behavior — the dispatch forbids that. Field-level format checks
+ * stay where they live today (downstream).
+ *
+ * Note for callers: this schema is intentionally permissive on
+ * .passthrough() (admin app may send tracking/UI fields). The
+ * handler's downstream business logic — including all admin-level
+ * privilege gates (requestorAdmin.level >= 9, target.level === 10,
+ * etc.) — runs UNCHANGED on a zod-validated body.
+ * ──────────────────────────────────────────────────────────────────── */
+
+const adminManagementListSchema = z.object({
+  action: z.literal("list"),
+}).passthrough();
+
+const adminManagementMyRoleSchema = z.object({
+  action: z.literal("my-role"),
+}).passthrough();
+
+const adminManagementCreateSchema = z.object({
+  action: z.literal("create"),
+  email: z.string().trim().min(1),
+  level: z.number().int().min(1).max(10).optional(),
+}).passthrough();
+
+const adminManagementUpdateLevelSchema = z.object({
+  action: z.literal("update_level"),
+  admin_id: z.string().min(1),
+  new_level: z.number().int().min(1).max(10),
+}).passthrough();
+
+const adminManagementDeleteSchema = z.object({
+  action: z.literal("delete"),
+  admin_id: z.string().min(1),
+}).passthrough();
+
+export const adminManagementRequestSchema = z.discriminatedUnion("action", [
+  adminManagementListSchema,
+  adminManagementMyRoleSchema,
+  adminManagementCreateSchema,
+  adminManagementUpdateLevelSchema,
+  adminManagementDeleteSchema,
+]);
+export type AdminManagementRequest = z.infer<typeof adminManagementRequestSchema>;
