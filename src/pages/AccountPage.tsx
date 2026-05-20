@@ -371,7 +371,10 @@ export default function AccountPage() {
   const secondaryLink: React.CSSProperties = {
     background: "transparent",
     border: "none",
-    color: "#6b7280",
+    // #475569 (slate-600) ≈ 6.4:1 on white. The previous #6b7280 passed AA
+    // by a thin margin (~4.8:1); darkened defensively so the secondary row
+    // keeps comfortable headroom alongside the now-fixed VI sub-label below.
+    color: "#475569",
     fontWeight: 600,
     fontSize: 13,
     padding: "2px 0",
@@ -387,7 +390,10 @@ export default function AccountPage() {
     display: "block",
     fontSize: 11,
     fontWeight: 400,
-    color: "#94a3b8",
+    // #64748b (slate-500) ≈ 4.8:1 on white — passes WCAG 1.4.3 AA for the
+    // 11px sub-label. The previous #94a3b8 sat at ~2.7:1 and failed. Still
+    // lighter than the EN line above it so the visual hierarchy holds.
+    color: "#64748b",
     marginTop: 1,
     textDecoration: "none",
   };
@@ -896,7 +902,7 @@ export default function AccountPage() {
                   ? "This clears everything Mercy remembers about you — past lessons, strengths, weaknesses, and personality notes. Your account and progress stay."
                   : "Thao tác này sẽ xóa mọi thứ Mercy nhớ về bạn — các bài học trước, điểm mạnh, điểm yếu, và ghi chú về tính cách. Tài khoản và tiến độ của bạn được giữ nguyên."}
               </p>
-              <p style={{ ...subStyle, margin: "4px 0 8px" }}>
+              <p id="a46-reset-confirm-label" style={{ ...subStyle, margin: "4px 0 8px" }}>
                 {lang === "en" ? (
                   <>Type <strong>RESET</strong> to confirm:</>
                 ) : (
@@ -906,6 +912,7 @@ export default function AccountPage() {
               <input
                 type="text"
                 autoComplete="off"
+                aria-labelledby="a46-reset-confirm-label"
                 value={resetMemoryConfirmText}
                 onChange={(e) => setResetMemoryConfirmText(e.target.value)}
                 placeholder="RESET"
@@ -976,7 +983,7 @@ export default function AccountPage() {
                   ? "This permanently deletes your account, memory, notebook, and all associated data. This cannot be undone."
                   : "Thao tác này sẽ xóa vĩnh viễn tài khoản, bộ nhớ, sổ tay và toàn bộ dữ liệu liên quan. Không thể hoàn tác."}
               </p>
-              <p style={{ ...subStyle, margin: "4px 0 8px" }}>
+              <p id="a46-delete-confirm-label" style={{ ...subStyle, margin: "4px 0 8px" }}>
                 {lang === "en" ? (
                   <>Type <strong>DELETE</strong> to confirm:</>
                 ) : (
@@ -986,6 +993,7 @@ export default function AccountPage() {
               <input
                 type="text"
                 autoComplete="off"
+                aria-labelledby="a46-delete-confirm-label"
                 value={deleteConfirmText}
                 onChange={(e) => setDeleteConfirmText(e.target.value)}
                 placeholder="DELETE"
