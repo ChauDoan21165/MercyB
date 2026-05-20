@@ -1,3 +1,5 @@
+> ⚠️ **PARTIAL** — G2 RED→GREEN (#802 merged), G4 RED→GREEN (#774 merged), G1 still RED (#789 open). See A8d (#820), A8e (#832), A8f for current state. R1–R4 repointed by #826.
+
 # A18 Recompute Impl — Readiness Audit Post-2026-05-19 Wave (A8c)
 
 **Agent:** A8c (brief-refresh only) · **Branch:** `docs/a18-recompute-impl-prep`
