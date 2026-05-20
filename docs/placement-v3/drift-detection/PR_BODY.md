@@ -9,6 +9,7 @@ Adds Placement V3 grading drift infrastructure:
 - admin dashboard route for operator visibility
 - 40 replay fixtures across reading, listening, and speaking
 - methodology, replay history, initial findings, blocker report, and production risk docs
+- merge-readiness recommendation for infrastructure/simulation scope
 
 This PR is finalized as **replay infrastructure complete; live replay blocked**.
 It now also supports **deterministic local replay simulation** for pipeline validation without provider or Supabase secrets.
@@ -81,6 +82,14 @@ Repeated-run logs are committed under:
 - `docs/placement-v3/drift-detection/determinism-runs/`
 
 This evidence remains simulated-only. It does not claim live replay metrics or provider drift metrics.
+
+# Merge Readiness
+
+Current recommendation is documented in:
+
+- `docs/placement-v3/drift-detection/merge-readiness.md`
+
+Summary: safe to merge as drift replay infrastructure plus deterministic local simulation guardrails if the accepted scope is simulation/infrastructure. Not ready to claim live replay or provider drift metrics until Supabase credentials are configured and a live replay run is reviewed.
 
 # Risks
 
