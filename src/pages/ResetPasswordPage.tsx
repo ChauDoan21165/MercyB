@@ -101,10 +101,11 @@ async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }
 
     if (error) return { isAdmin: false };
 
-    const rawAdminLevel = Number((data as any)?.admin_level ?? 0);
+    const profile = data as { is_admin?: boolean | null; admin_level?: number | null } | null;
+    const rawAdminLevel = Number(profile?.admin_level ?? 0);
     const adminLevel = Number.isFinite(rawAdminLevel) ? rawAdminLevel : 0;
 
-    const isAdmin = Boolean((data as any)?.is_admin) || adminLevel >= 1;
+    const isAdmin = Boolean(profile?.is_admin) || adminLevel >= 1;
 
     return { isAdmin };
   } catch {
@@ -112,8 +113,14 @@ async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }
   }
 }
 
-function humanizeError(e: any) {
-  const raw = String(e?.message || "").trim();
+function humanizeError(e: unknown) {
+  const raw = String(
+    e instanceof Error
+      ? e.message
+      : typeof e === "object" && e !== null && "message" in e
+        ? (e as { message?: unknown }).message ?? ""
+        : "",
+  ).trim();
   if (!raw) return "Something went wrong. Please try the reset link again.";
 
   const msg = raw.toLowerCase();
@@ -356,7 +363,7 @@ export default function ResetPasswordPage() {
         }
 
         throw new Error("Missing or invalid recovery link.");
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!cancelled) {
           setReady(false);
           setStatus({ tone: "error", message: humanizeError(e) });
@@ -432,7 +439,7 @@ export default function ResetPasswordPage() {
       });
       await routeAfterAuth();
       clearRecoveryTokensFromUrl();
-    } catch (e: any) {
+    } catch (e: unknown) {
       setStatus({ tone: "error", message: humanizeError(e) });
     } finally {
       setBusy(false);

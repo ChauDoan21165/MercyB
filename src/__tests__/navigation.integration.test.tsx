@@ -246,10 +246,10 @@ describe("Navigation Integration Tests", () => {
       const chatHubPath: string = "@/pages/ChatHub";
       const ChatHub = await importMaybeDefault(chatHubPath);
 
-      if (!ChatHub) {
-        expect(true).toBe(true);
-        return;
-      }
+      // Was a soft-pass guard that silently green-lit this test if the
+      // ChatHub module failed to import. Assert truthy so an import
+      // regression fails loudly instead of being masked. (A74 audit)
+      expect(ChatHub).toBeTruthy();
 
       renderWithRouter(<ChatHub />);
 
@@ -272,10 +272,10 @@ describe("Navigation Integration Tests", () => {
       const chatHubPath: string = "@/pages/ChatHub";
       const ChatHub = await importMaybeDefault(chatHubPath);
 
-      if (!ChatHub) {
-        expect(true).toBe(true);
-        return;
-      }
+      // Was a soft-pass guard that silently green-lit this test if the
+      // ChatHub module failed to import. Assert truthy so an import
+      // regression fails loudly instead of being masked. (A74 audit)
+      expect(ChatHub).toBeTruthy();
 
       renderWithRouter(<ChatHub />);
 
@@ -366,22 +366,9 @@ describe("Navigation Integration Tests", () => {
   });
 
   describe("Sexuality Culture Room Integration", () => {
-    it("should handle navigation from sexuality culture parent to sub-rooms (if page exists)", async () => {
-      const sexualityPagePath: string = "@/pages/SexualityCultureRoom";
-      const SexualityCultureRoom = await importMaybeDefault(sexualityPagePath);
-
-      if (!SexualityCultureRoom) {
-        expect(true).toBe(true);
-        return;
-      }
-
-      renderWithRouter(<SexualityCultureRoom />);
-
-      await waitFor(() => {
-        expect(screen.queryByText(/Sexuality|Tính Dục/i)).toBeInTheDocument();
-      });
-    });
-
+    // Removed an inert test for @/pages/SexualityCultureRoom — that page
+    // does not exist, so importMaybeDefault always returned null and the
+    // test soft-passed without asserting anything. (A74 audit)
     it("should verify all 6 sexuality sub-rooms route correctly", async () => {
       for (let i = 1; i <= 6; i++) {
         const roomId = `sexuality-curiosity-level3-sub${i}`;

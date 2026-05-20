@@ -14,6 +14,11 @@
 // → 402, Azure happy → 200 with unified shape, Azure timeout → 200
 // sentinel.
 
+// Deno-free pure module (mirrors the mock-interview/core.ts →
+// _shared/mockInterviewRateLimit.ts precedent), so this import keeps
+// core.ts vitest-importable under Node.
+import { isPremiumEntitled } from "../_shared/premiumEntitlement.ts";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -148,7 +153,16 @@ export type UserProfileRow = {
   trial_expires_at: string | null;
   trial_ends_at: string | null;
   trial_end: string | null;
-  tier: number | null;
+  /** `profiles.premium_status` — the billing-written paid signal
+   *  (stripe-webhook → recomputeAndPersistEntitlement). This, not
+   *  `tier`, is the real paid gate. See _shared/premiumEntitlement.ts. */
+  premium_status: string | null;
+  /** `profiles.premium_expires_at` — billing-written ISO end. */
+  premium_expires_at: string | null;
+  /** `profiles.tier` is TEXT in the DB. Kept only as the defensive
+   *  SECONDARY signal inside isPremiumEntitled — never read as a number
+   *  here (that numeric read was the dead B17 bypass). */
+  tier: string | number | null;
 };
 
 export type TrialAccessResult =
@@ -392,9 +406,11 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       );
     }
 
-    // 3. Trial gating. Cloud is allowed when the user is paid (tier >= 1)
-    //    OR their trial has not yet expired. Otherwise fall back to the
-    //    local scorer via the use_local sentinel — never a 4xx, since
+    // 3. Trial gating. Cloud is allowed when the user is an entitled
+    //    premium user (premium_status active/trialing/past_due/
+    //    grace_period — see isPremiumEntitled) OR their trial has not
+    //    yet expired. Otherwise fall back to the local scorer via the
+    //    use_local sentinel — never a 4xx, since
     //    "scoring still works, just locally" is the user-visible reality.
     //    Profile fetch errors fail-open: rate limit + budget still
     //    protect us; blocking legitimate users on a Postgres blip is the
@@ -844,8 +860,17 @@ function truncate(s: string, max: number): string {
  * Decide whether the calling user is allowed to use cloud scoring.
  *
  * Allow when EITHER:
- *   - they're paid (`tier >= 1`), OR
+ *   - they're an entitled premium user (`isPremiumEntitled` —
+ *     premium_status active/trialing within expiry, or past_due/
+ *     grace_period dunning regardless of expiry), OR
  *   - their trial has not yet expired
+ *
+ * The paid signal is `profiles.premium_status` / `premium_expires_at`,
+ * NOT the legacy numeric `tier` read this used to do — `profiles.tier`
+ * is a TEXT column so `typeof tier === "number"` was always false and
+ * the `tier >= 1` bypass was unreachable dead code (B5/B17). A user
+ * who paid AFTER their trial lapsed (the normal upgrade path) was
+ * silently denied scoring.
  *
  * "Trial expired" = `now > <first non-null of trial_expires_at,
  * trial_ends_at, trial_end>`. All three columns null = treat as not
@@ -899,8 +924,8 @@ export async function checkTrialAccess(
     return { allowed: true };
   }
 
-  const tier = typeof profile.tier === "number" ? profile.tier : 0;
-  if (tier >= 1) return { allowed: true };
+  // Paid bypass: real entitlement, not the dead numeric tier read.
+  if (isPremiumEntitled(profile)) return { allowed: true };
 
   const trialIso =
     profile.trial_expires_at ??

@@ -143,7 +143,12 @@ Deno.serve(async (req) => {
       // fail open: missing profile → grandfathered
     }
 
-    let entitlement = normalizeEntitlement(subscriptions ?? []);
+    // B13 Phase 3 PR-B: thread `now` explicitly so the expiry-aware
+    // derive is testable and consistent with the recompute side. An
+    // entitling row whose `current_period_end` has passed no longer
+    // grants premium (the bug this PR closes).
+    const now = new Date();
+    let entitlement = normalizeEntitlement(subscriptions ?? [], now);
 
     // Fallback: gift-code redemptions don't write to `subscriptions`,
     // they live in `user_subscriptions`. If the unified table doesn't

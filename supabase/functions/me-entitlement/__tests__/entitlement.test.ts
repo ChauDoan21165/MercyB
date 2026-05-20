@@ -220,6 +220,89 @@ describe("statusRank / isPremiumStatus", () => {
   });
 });
 
+// B13 Phase 3 PR-B: R1's expiry-regression integration suite. Locks the
+// behavioral delta (active+past_expiry stops granting premium) at the
+// `normalizeEntitlement` surface — the exact function `index.ts:146`
+// calls. Parity assertions for non-expired inputs prove the refactor
+// changed only the expiry rule, nothing else.
+describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
+  it("active + past expiry ⇒ is_premium=false (the bug PR-B closes)", () => {
+    const e = normalizeEntitlement(
+      [{ status: "active", current_period_end: past(ONE_DAY), provider: "stripe" }],
+    );
+    expect(e.is_premium).toBe(false);
+    expect(e.expires_at).toBe(past(ONE_DAY));
+  });
+
+  it("active + future expiry ⇒ is_premium=true (regression lock)", () => {
+    const e = normalizeEntitlement(
+      [{ status: "active", current_period_end: future(ONE_DAY), provider: "stripe" }],
+    );
+    expect(e.is_premium).toBe(true);
+    expect(e.source).toBe("stripe");
+    expect(e.expires_at).toBe(future(ONE_DAY));
+  });
+
+  it("active + null expiry ⇒ is_premium=true (lifetime/gift, no new lockout)", () => {
+    const e = normalizeEntitlement([{ status: "active", provider: "stripe" }]);
+    expect(e.is_premium).toBe(true);
+    expect(e.expires_at).toBeNull();
+  });
+
+  it("trialing/grace_period/past_due + past expiry ⇒ is_premium=false", () => {
+    for (const s of ["trialing", "grace_period", "past_due"] as const) {
+      expect(
+        normalizeEntitlement(
+          [{ status: s, current_period_end: past(ONE_DAY) }],
+        ).is_premium,
+      ).toBe(false);
+    }
+  });
+
+  it("non-entitling status (paused/expired/revoked/inactive) ⇒ never premium, regardless of expiry", () => {
+    for (const s of ["paused", "expired", "revoked", "inactive"] as const) {
+      for (const expiry of [null, past(ONE_DAY), future(ONE_DAY)]) {
+        const row: Record<string, unknown> = { status: s };
+        if (expiry) row.current_period_end = expiry;
+        expect(normalizeEntitlement([row]).is_premium).toBe(false);
+      }
+    }
+  });
+
+  it("parity: status string for non-expired inputs is unchanged from main", () => {
+    // Captured from the pre-PR-B implementation. Each row is non-expired
+    // (or has no expiry), so the only candidate behavioral change is
+    // is_premium; the status string must match exactly.
+    const cases: Array<[Record<string, unknown>, CanonicalStatus]> = [
+      [{ status: "active", provider: "stripe" }, "active"],
+      [{ status: "trialing", provider: "apple" }, "trialing"],
+      [{ status: "grace_period", provider: "google" }, "grace_period"],
+      [{ status: "past_due", provider: "stripe" }, "past_due"],
+      [{ status: "paused", provider: "stripe" }, "paused"],
+      [
+        { status: "canceled", current_period_end: future(ONE_DAY), provider: "stripe" },
+        "active",
+      ],
+    ];
+    for (const [row, expected] of cases) {
+      expect(normalizeEntitlement([row]).status).toBe(expected);
+    }
+  });
+
+  it("multi-row winner: prefers higher status rank over later expiry (consolidation)", () => {
+    // Pre-PR-B me-entitlement's compareRows already used statusRank-first,
+    // so this is unchanged for R1. The same multi-row rule now applies to
+    // stripe-webhook's writer (R3) as well — see the PR description's
+    // §parity-with-main note about that consolidation.
+    const e = normalizeEntitlement([
+      { status: "trialing", current_period_end: future(30 * ONE_DAY), provider: "apple" },
+      { status: "active", current_period_end: future(ONE_DAY), provider: "stripe" },
+    ]);
+    expect(e.status).toBe("active");
+    expect(e.source).toBe("stripe");
+  });
+});
+
 describe("compareRows / normalizeEntitlement", () => {
   it("returns the non-premium default for an empty subscription set", () => {
     expect(normalizeEntitlement([])).toEqual({

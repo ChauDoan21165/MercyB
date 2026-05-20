@@ -27,7 +27,16 @@
  * neither GDPR (EU) nor LGPD (Brazil) hard-applies. If we open EU
  * traffic, swap the default to OFF and gate behind a banner — see
  * the runbook (`reports/a4-tracking-runbook.md`).
+ *
+ * Native gate: marketing tracking is WEB-ONLY. `initMarketingTracking`
+ * short-circuits on iOS/Android (Capacitor native shell) before any
+ * consent read, tracker import, or script injection. The shipped
+ * privacy policy promises this verbatim ("the iOS and Android apps do
+ * not use Clarity"); the early-return is what makes that true in code
+ * and keeps the App Store / Play store privacy declarations honest.
+ * See `reports/AUDIT-appstore-readiness-2026-05-19-A41.md` Blocker 1.
  */
+import { isNativePlatform } from "@/lib/platform";
 import { supabase } from "@/lib/supabaseClient";
 
 const FLAG_KEY = "behaviorTrackingEnabled";
@@ -136,6 +145,12 @@ export function setMarketingConsent(consent: boolean): void {
  *
  * Returns a small status object that the runbook documents — useful
  * when debugging "did Pixel actually load on production?"
+ *
+ * WEB-ONLY: returns the all-false status immediately on a Capacitor
+ * native platform (iOS/Android) — no consent read, no tracker import,
+ * no script. This is the single chokepoint; `initPixel`/`initGa4`/
+ * `initClarity` have no other callers, so this one guard kills all
+ * three (+ UTM) on native and satisfies the privacy-policy promise.
  */
 export async function initMarketingTracking(): Promise<{
   consent: boolean;
@@ -144,6 +159,20 @@ export async function initMarketingTracking(): Promise<{
   ga4Loaded: boolean;
   clarityLoaded: boolean;
 }> {
+  // App Store / Play compliance (A41 Blocker 1): marketing trackers
+  // (Meta Pixel / GA4 / Microsoft Clarity) must never run inside the
+  // native WebView. Short-circuit before the consent check so a native
+  // build neither touches localStorage consent nor imports a tracker.
+  if (isNativePlatform()) {
+    return {
+      consent: false,
+      utmCaptured: false,
+      pixelLoaded: false,
+      ga4Loaded: false,
+      clarityLoaded: false,
+    };
+  }
+
   const consent = isMarketingTrackingEnabled();
   if (!consent) {
     return {

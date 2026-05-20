@@ -42,8 +42,8 @@ export default function AdminLogin() {
 
       setMsg("✅ Logged in. Redirecting to /admin ...");
       setTimeout(() => nav("/admin"), 300);
-    } catch (e: any) {
-      setMsg(e?.message || "Unknown error");
+    } catch (e: unknown) {
+      setMsg(e instanceof Error ? e.message : "Unknown error");
     } finally {
       setLoading(false);
     }

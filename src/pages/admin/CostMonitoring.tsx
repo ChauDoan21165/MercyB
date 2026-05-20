@@ -184,8 +184,8 @@ interface FetchResult {
 async function fetchAll(usdVndRate: number): Promise<FetchResult> {
   const now = new Date();
   const [{ daily, topUsers, forecast_monthly_vnd }, monthlyRevenueVnd] = await Promise.all([
-    getTotalDailyCost(supabase as any, 30, { now, usdVndRate, topN: 10 }),
-    getMonthlyRecognizedRevenueVnd(supabase as any).catch(() => 0),
+    getTotalDailyCost(supabase, 30, { now, usdVndRate, topN: 10 }),
+    getMonthlyRecognizedRevenueVnd(supabase).catch(() => 0),
   ]);
   return {
     daily30: daily,

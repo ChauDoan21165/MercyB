@@ -1,5 +1,6 @@
 // supabase/functions/stripe-webhook/core.ts
 
+import { deriveEntitlement as sharedDeriveEntitlement } from "../_shared/entitlement.ts";
 import { sendEmail } from "../_shared/sendEmail.ts";
 import { parseWebhookSecrets } from "./stripe-signature.ts";
 import type {
@@ -164,42 +165,41 @@ export function toMillis(value: string | null | undefined): number {
   return Number.isFinite(time) ? time : Number.NEGATIVE_INFINITY;
 }
 
+/**
+ * B13 Phase 3 PR-B: entitling status check delegates to the shared
+ * expiry-aware derive. An "active" row whose `current_period_end` has
+ * passed is no longer entitling — that is the bug this PR closes for
+ * the write path. The function signature is preserved as a thin shim
+ * for any external caller; new code should use `deriveEntitlement`
+ * directly with a full row.
+ */
 export function isEntitlingSubscription(
   subscription: Pick<CanonicalSubscriptionRow, "status" | "current_period_end">,
+  now: Date | number = new Date(),
 ): boolean {
-  return (
-    subscription.status === "active" ||
-    subscription.status === "trialing" ||
-    subscription.status === "grace_period" ||
-    subscription.status === "past_due"
-  );
+  return sharedDeriveEntitlement([subscription], now).is_premium;
 }
 
+/**
+ * Reduce N subscription rows to the persisted-projection shape this
+ * function has always returned (`status: "active" | "inactive"` plus
+ * `expires_at` and `source`). The internal computation is now the
+ * single shared `deriveEntitlement` so the read path (R1, R2, R4) and
+ * the write path agree row-by-row on entitlement.
+ *
+ * `now` is INJECTED. `billing.ts:recomputeAndPersistEntitlement`
+ * threads `new Date()` from the webhook entrypoint; tests pass a
+ * fixed clock so the expiry-boundary branches are deterministic.
+ */
 export function deriveEntitlementFromSubscriptions(
   subscriptions: Array<
     Pick<CanonicalSubscriptionRow, "status" | "current_period_end" | "provider">
   >,
+  now: Date | number = new Date(),
 ): EntitlementSnapshot {
-  let winner:
-    | Pick<
-      CanonicalSubscriptionRow,
-      "status" | "current_period_end" | "provider"
-    >
-    | null = null;
+  const snapshot = sharedDeriveEntitlement(subscriptions, now);
 
-  for (const subscription of subscriptions) {
-    if (!isEntitlingSubscription(subscription)) continue;
-
-    if (
-      !winner ||
-      toMillis(subscription.current_period_end ?? null) >
-        toMillis(winner.current_period_end ?? null)
-    ) {
-      winner = subscription;
-    }
-  }
-
-  if (!winner) {
+  if (!snapshot.is_premium) {
     return {
       status: "inactive",
       expires_at: null,
@@ -207,10 +207,19 @@ export function deriveEntitlementFromSubscriptions(
     };
   }
 
+  // `EntitlementSnapshot` here narrows `source` to `BillingProvider | null`
+  // — only stripe/apple/google ever reach the write surface. A gift-code
+  // entitlement (R2 in me-entitlement) is read-only and doesn't flow
+  // through the webhook recompute path.
+  const winnerSource = snapshot.source === "stripe" ||
+      snapshot.source === "apple" || snapshot.source === "google"
+    ? snapshot.source
+    : null;
+
   return {
     status: "active",
-    expires_at: winner.current_period_end ?? null,
-    source: winner.provider,
+    expires_at: snapshot.expires_at,
+    source: winnerSource,
   };
 }
 

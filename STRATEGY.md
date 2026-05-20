@@ -3,7 +3,7 @@
 > **One of two living docs.** This is the strategy. PRINCIPLES.md is the rules.
 > Everything else in the repo is implementation, history, or scratch.
 >
-> **Last updated:** May 17, 2026
+> **Last updated:** May 19, 2026
 > **Owner:** Chau Doan (founder, solo)
 > **Read order:** This document first, then PRINCIPLES.md, then code.
 
@@ -99,13 +99,15 @@ Every pair that has content is real product. None is hidden, deprecated, or "off
 
 > Update this section every 1-2 weeks. Reality drift = strategy drift.
 
-### As of May 17, 2026 (end-of-day re-audit)
+### As of May 19, 2026 (post-money-path wave re-audit)
 
-- **Verified content inventory** (canonical `*_TOTAL_LESSONS` constants in `src/languages/*/lessons.ts`, plus `public/data/` room files — verified for this v3.0 rewrite per locked #7/#15):
+- **Verified content inventory** (canonical `*_TOTAL_LESSONS` constants in
+  `src/languages/*/lessons.ts`, plus `public/data/` room files — re-verified
+  for this v3.1 sweep on 2026-05-19; unchanged since v3.0):
 
   | Track | Lessons | Pair orientation |
   |---|---|---|
-  | Vietnamese → English (rooms) | 470+ bilingual room JSON files | Home market / flagship |
+  | Vietnamese → English (rooms) | 486 bilingual room JSON files | Home market / flagship |
   | Vietnamese-for-foreigners | 536 (`VIETNAMESE_TOTAL_LESSONS`) | English-native → Vietnamese |
   | Korean | 151 (`KOREAN_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
   | Japanese | 151 (`JAPANESE_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
@@ -114,15 +116,50 @@ Every pair that has content is real product. None is hidden, deprecated, or "off
   | Chinese | 149 (`CHINESE_TOTAL_LESSONS`) | Bilingual (title_vi + title_en) |
   | Spanish | 109 (`SPANISH_TOTAL_LESSONS`) | English-native → Spanish |
 
-  The six target-language tracks KO/JA/ZH/FR/DE/ES total **862 A1–C2 lessons**, primarily authored with bilingual titles for Vietnamese-native users and re-usable for other native users. These are **real product surfaces**, not "off-mission" content.
+  The six target-language tracks KO/JA/ZH/FR/DE/ES still total **862 A1–C2
+  lessons**. No new authoring landed in the 2026-05-17 → 2026-05-19 window;
+  the wave was hardening + remediation, not content.
 
-- **Roadmap progress:** ~65-70% (`.claude/roadmap.md` figure, last recomputed 25 Apr / Round 9). Today closed no new 5% step; it advanced Step 10's schema foundation (now landed) — not yet re-scored.
-- **Schema generalization:** ✅ Phase 2 seam fully landed today — PR-A1 (#540), PR-A2 (#543), PR-A3 (#550), all behavior-identical. Native-language selection + pedagogy-axis split are in place. This is the foundation for the Duolingo-style pair-selection onboarding (Roadmap Step 10).
-- **CI/CD:** Green and stable. Restored via #536 (Sentry plugin nesting fix); ~17 PRs merged green after it confirm the pipeline holds.
-- **Doctrine & docs:** CLAUDE.md doctrine fixed (#537). Root markdown consolidated 74→16 (#549). Canonical STRATEGY.md + PRINCIPLES.md landed (#546).
-- **Strategy (§4):** The #553 un-surfacing of the 6 built language tracks (KO/JA/ZH/FR/DE/ES) was **reverted in code by PR #582 (merged May 17)**. This v3.0 doc rewrite fixes the upstream cause — the doc framing that produced the mistranslation in the first place. See §15.
-- **App stores:** Apple Build 8 uploaded April 25, status unverified. Google Play Build 4 Live in Closed Testing as of April 25, status unverified. Verification deferred until next active mobile push.
-- **Paying users:** Last documented at 6 on April 24. Current unverified.
+- **Roadmap progress:** still in the ~65-70% band (`.claude/roadmap.md`,
+  last formally recomputed 25 Apr / Round 9). Past two days advanced Steps
+  8 and 9 materially (see §7) without closing a formal +5% gate.
+- **Schema generalization — language-pedagogy layer:** ✅ Phase 2 seam
+  landed on 2026-05-17 — PR-A1 (#540), PR-A2 (#543), PR-A3 (#550). This is
+  the foundation for the Duolingo-style pair-selection onboarding
+  (Roadmap Step 10).
+- **Schema generalization — billing/entitlement layer (new):** ✅ Phase A
+  landed 2026-05-19 — `_shared/entitlement.ts` additive module (#802,
+  B13ph3 PR-A, zero importers); paired with #774 (premium gates read
+  entitlement, not stale `profiles.tier`). Phase B in flight: entitlements
+  table per A5 spec (#789), retire dormant T2 trigger (#792), monotonic
+  raw_payload (#793). Same "schema generalization" English word; different
+  layer from the language-pedagogy one above — don't conflate.
+- **CI/CD:** Green and stable, and materially hardened in the audit window.
+  Sentry SDK wiring re-landed in `production-deploy.yml` (#714, #723) and
+  route-gated so static legal/marketing pages no longer fetch the SDK
+  (#720 / #740); Deno type-check gate added for edge functions (#725 /
+  #726). Pipeline is more robust than v3.0 described, not just "still
+  holding".
+- **Doctrine & docs:** Doctrine fixed (#537). Root markdown consolidated
+  74→16 (#549). Canonical STRATEGY.md + PRINCIPLES.md landed (#546).
+  Session-end principles refresh in flight (#783).
+- **Strategy (§4):** No fresh §4-shaped event in the audit window. The
+  #553 un-surfacing → #582 revert history is closed; the v3.0 doc rewrite
+  fixed the upstream cause. The matrix is intact.
+- **Customer remediation in flight (money-path, not §4):** Gift-victim
+  silent-failure cohort (forward fix #787 merged; historical-victim
+  package PR #799 + outreach ops PR #803). Mylinh paid-but-free case
+  (apply package PR #801 + Stripe Dashboard pre-flight PR #805). Both
+  are operator runbooks — no automated SQL path, Chau executes via SQL
+  Editor. No new lessons; just doing right by users we already had.
+- **App stores:** No fresh upload since Apple Build 8 (April 25) / Google
+  Play Build 4 (April 25). Native-side hardening continued without a
+  store-side push: SW + safe-area net (#665), marketing-tracker native
+  guard in flight (#796). Memory `project_distribution`: web-only at
+  mercyblade.com as the live distribution surface today.
+- **Paying users:** Last documented at 6 on April 24. Cohort still
+  unverified (no agent dashboard access; Chau-only verification). Two
+  remediation cases above are subsets of that cohort, not net-new users.
 
 ---
 
@@ -137,8 +174,8 @@ Every pair that has content is real product. None is hidden, deprecated, or "off
 | 5 | 55 | Marketing Infrastructure | ~70% (SEO, blog, referral, tracking) | 1 |
 | 6 | 60 | Social + Community | ~65% (profiles, study groups, UGC) | 1.5 |
 | 7 | 65 | AI Teacher Mercy v2 | ~70% (conversation, memory, writing, interviews) | 2 |
-| 8 | 70 | Scale & Performance | ~80% (SW, Sentry, bundle audit) | 1.5 |
-| 9 | 75 | Monetization Depth | Pending | 1 |
+| 8 | 70 | Scale & Performance | ~90% web / ~70% native (Sentry route-gated #720/#740, placement v2 PR7-10 #721/#724/#728/#732, dead-code sweep R3 #722; native: SW+safe-area #665, tracker-guard #796 in flight) | 1.5 |
+| 9 | 75 | Monetization Depth | Phase A merged 2026-05-19 (#774 entitlement gates, #802 _shared/entitlement.ts, #787 honest gift errors, #770 invoice period_end); Phase B in flight (#789 entitlements table, #792 T2 retirement, #793 monotonic payload, #786 currency unit fix) | 1 |
 | 10 | 80 | Pair-selection onboarding + deepen lighter pairs | Schema foundation landed; Duolingo-style native+target picker is a separate future dispatch | 2-4 |
 | 11 | 85 | Differentiation Moats | Pending | 3-4 |
 | 12-14 | 90-100 | Growth / #1 in VN / Market Leader | Business operations, not code | Years |
@@ -344,6 +381,27 @@ NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy 
 ---
 
 ## 15. Changelog
+
+### May 19, 2026 — v3.1: §6 + §7 freshness pass (no strategic change)
+
+Per PRINCIPLES §9 (status docs drift), §6 and §7 refreshed against 2 days
+of post-v3.0 shipped reality. No §4 / §5 / §11 / §13 change — the matrix,
+product strategy, moat, and decision framework all held against the
+2026-05-17 → 2026-05-19 wave.
+
+- §6: date moved to 2026-05-19; lesson counts re-verified (unchanged);
+  added a "billing/entitlement schema generalization" paragraph distinct
+  from the existing "language-pedagogy schema generalization" so the two
+  layers don't get conflated; CI hardening evidence expanded (#714, #720,
+  #723, #725, #726, #740); customer-remediation in-flight subsection added
+  (gift victims PR #799/#803, mylinh PR #801/#805) framed as "doing right
+  by users we already had", not new lessons; app-store + paying-user lines
+  kept as "unverified" with date language tightened.
+- §7 Step 8: cell expanded — ~90% web / ~70% native, with PR cites for the
+  delta since v3.0.
+- §7 Step 9: status flipped from "Pending" to "Phase A merged / Phase B in
+  flight" with PR cites; % column left at 75 pending a formal recompute.
+- Source-of-truth audit doc: `reports/STRATEGY-drift-audit-A3c.md` (PR #812).
 
 ### May 17, 2026 — v3.0: Strategic reset (matrix product, not 1+1)
 

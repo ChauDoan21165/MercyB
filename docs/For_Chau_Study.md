@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+11. [Stacked Silent Failures Compound, They Don't Combine Linearly](#11-stacked-silent-failures-compound-they-dont-combine-linearly)
 6. [Fake-green tests are a failure class](#6-fake-green-tests-are-a-failure-class)
 7. [Schema-as-written beats schema-as-assumed](#7-schema-as-written-beats-schema-as-assumed)
 8. [Post-merge verification is not optional for critical changes](#8-post-merge-verification-is-not-optional-for-critical-changes)
@@ -24,6 +25,21 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 11. Stacked Silent Failures Compound, They Don't Combine Linearly
+
+**What it is.** Two independent bugs in the same code path don't add — they multiply. Each one masks the other's signature, so the surface symptom looks like one small fault while the real failure is the product of both. Fixing the bug you found leaves the system still broken, and the remaining bug now has *no* visible signature at all, because the act of removing its partner deleted the only evidence it existed.
+
+**Why it matters.** The single-bug mental model is the default, and it is wrong precisely in the code paths that have no test coverage — money paths, edge functions, redemption flows. You fix the obvious bug, the loud symptom disappears, you close the ticket believing it's done. The stacked bug keeps running silently for months. The compounding is the danger: two "harmless" bugs that each pass review can, together, deny paid features to paying users through a path that looks like it works on every read.
+
+**MercyBlade examples tonight:**
+- **Period-end field-order + frozen freshness marker** (B5/B11 found the field-order bug; B12 variant B found the stacked one). The period-end field-order bug and a freshness marker frozen at the *same* subscription-period boundary share one root cause but produce two different visible signatures. The second signature would have been missed entirely if B12 had run only my dispatch's narrower query — the broader query is what separated the two faults from one symptom.
+- **`profiles.tier` never written + edge functions read it numerically** (B5 found the unwritten column; B17 found the type mismatch). Billing never writes `profiles.tier`, and the edge functions read `tier` as a number off what is actually a text column. *Neither bug alone causes user-visible harm* — an unwritten column is just a default, a type coercion on a never-populated field is a no-op. Stacked, they deny paid features to paying users via a dead-code path that reads green on every probe.
+- **`redeem-gift-code`: dropped flag + CHECK rejection + swallowed error** (B22). Three layers stacked: the redeem path drops `is_gift_redemption` from the input (silent input bug), the CHECK constraint then rejects the row (schema rejection), and the function still returns `ok:true` (error swallowing). Any one layer alone is recoverable; all three together make a failed redemption indistinguishable from a successful one for both the user and the logs.
+
+**Action.** When diagnosing a known bug, *assume a second bug is stacked behind it.* In code paths with no test coverage, the single-bug hypothesis is wrong more often than right. Two practical consequences: (1) never narrow the diagnostic query to just the reported symptom — widen it enough to surface a second, independent signature; (2) re-verify the path end-to-end *after* the first fix lands, because removing bug A frequently erases the only evidence of bug B.
 
 ---
 
@@ -249,4 +265,4 @@ Not worth adding:
 
 ---
 
-*Last updated: May 19, 2026 — 10 lessons total; 6–10 added from the May 19 hardening wave, 1–5 from initial creation.*
+*Last updated: May 19, 2026 — 11 lessons total; 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*

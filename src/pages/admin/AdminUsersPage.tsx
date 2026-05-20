@@ -711,12 +711,10 @@ export default function AdminUsersPage() {
     setErr(null);
 
     try {
-      const typedSupabase = supabase as any;
-
       const [{ data: rowsData, error: rowsError }, { data: kpiData, error: kpiError }] =
         await Promise.all([
-          typedSupabase.from(VIEW_NAME).select("*").order("created_at", { ascending: false }),
-          typedSupabase.rpc(KPI_RPC_NAME),
+          supabase.from(VIEW_NAME).select("*").order("created_at", { ascending: false }),
+          supabase.rpc(KPI_RPC_NAME),
         ]);
 
       if (rowsError) throw rowsError;
@@ -736,13 +734,16 @@ export default function AdminUsersPage() {
       setRefreshedAt(new Date().toISOString());
 
       // Also load ALL profiles (free + paid)
-      const { data: profilesData } = await (supabase as any)
+      const { data: profilesData } = await supabase
         .from('profiles')
         .select('id, email, tier, created_at')
         .order('created_at', { ascending: false })
         .limit(2000);
       if (profilesData) {
-        setAllProfiles((profilesData as any[]).map((p: any) => ({
+        const profileRows = profilesData as Array<{
+          id?: unknown; email?: unknown; tier?: unknown; created_at?: unknown;
+        }>;
+        setAllProfiles(profileRows.map((p) => ({
           id: safeText(p.id), email: safeText(p.email, 'unknown'),
           tier: safeText(p.tier, 'free'), created_at: safeText(p.created_at) || null,
         })));
