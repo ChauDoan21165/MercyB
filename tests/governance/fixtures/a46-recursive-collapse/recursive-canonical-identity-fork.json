@@ -1,0 +1,1 @@
+{"id":"recursive-canonical-identity-fork","group":"recursive branch-domain poisoning","attack_type":"branch_domain","recursion_depth":3,"mutation":{"canonical_owner":"A50","branch":"feat/a50-supervised-execution"},"expected_rejection":true}

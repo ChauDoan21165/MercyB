@@ -1,0 +1,1 @@
+{"id":"replayed-governance-snapshot-wave-1","group":"recursive stale replay storms","attack_type":"replay","recursion_depth":1,"mutation":{"stale_replay":true},"expected_rejection":true}

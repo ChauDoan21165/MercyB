@@ -1,0 +1,1 @@
+{"id":"suppression-removal-wave-2","group":"recursive unsupported-readiness suppression attacks","attack_type":"suppression","recursion_depth":2,"mutation":{"unsupported_readiness_suppression":false,"strict_mode":false},"expected_rejection":true}

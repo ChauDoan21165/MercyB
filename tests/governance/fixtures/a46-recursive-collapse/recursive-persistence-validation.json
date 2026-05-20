@@ -1,0 +1,1 @@
+{"id":"recursive-persistence-validation","group":"recursive forged readiness attacks","attack_type":"readiness","recursion_depth":3,"mutation":{"production_persistence_validated":true,"writes_production_data":true,"readiness_claims":["persistence_validation"]},"expected_rejection":true}

@@ -93,6 +93,7 @@
     "governance:a46:detect-convergence-drift": "node scripts/testing/a46-governance-recovery-ops.mjs detect-convergence-drift",
     "governance:a46:permanent-convergence-seal": "node scripts/testing/a46-governance-recovery-ops.mjs permanent-convergence-seal",
     "governance:a46:seal-integrity-attestation": "node scripts/testing/a46-governance-recovery-ops.mjs seal-integrity-attestation",
+    "governance:a46:recursive-collapse-simulator": "node scripts/governance/a46-recursive-governance-collapse-simulator.mjs",
     "governance:validate": "node scripts/testing/a46-governance-recovery-ops.mjs validate",
     "deno:check:functions": "bash scripts/deno-check-edge-functions.sh",
     "depcruise": "depcruise --config .dependency-cruiser.cjs src supabase/functions server",

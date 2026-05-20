@@ -1,0 +1,1 @@
+{"id":"recursive-distributed-worktree-conflict","group":"recursive branch-domain poisoning","attack_type":"branch_domain","recursion_depth":3,"mutation":{"cross_branch_copy":true,"branch":"worktree/conflict"},"expected_rejection":true}

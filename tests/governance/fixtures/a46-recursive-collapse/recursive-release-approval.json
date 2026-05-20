@@ -1,0 +1,1 @@
+{"id":"recursive-release-approval","group":"recursive forged readiness attacks","attack_type":"readiness","recursion_depth":3,"mutation":{"production_readiness":true,"readiness_claims":["release_approval"]},"expected_rejection":true}

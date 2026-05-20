@@ -1,0 +1,1 @@
+{"id":"recursive-orphaned-reconciliation","group":"recursive branch-domain poisoning","attack_type":"branch_domain","recursion_depth":3,"mutation":{"orphaned_reconciliation":true,"canonical_owner":"UNKNOWN"},"expected_rejection":true}

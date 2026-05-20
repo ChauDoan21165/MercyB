@@ -12,6 +12,8 @@ const GLOBAL_MATRIX_BASENAME = "a46-global-permanent-denial-retention-convergenc
 const DRIFT_DETECTION_BASENAME = "a46-convergence-integrity-drift-detection";
 const CONVERGENCE_SEAL_BASENAME = "a46-permanent-convergence-governance-seal";
 const SEAL_ATTESTATION_BASENAME = "a46-governance-seal-integrity-attestation";
+const RECURSIVE_COLLAPSE_BASENAME = "a46-recursive-governance-collapse-simulator";
+const RECURSIVE_COLLAPSE_SCRIPT = "scripts/governance/a46-recursive-governance-collapse-simulator.mjs";
 const command = process.argv[2] ?? "auto";
 const strict = process.argv.includes("--strict");
 
@@ -142,6 +144,7 @@ function main() {
     const drift = generateConvergenceIntegrityDriftDetection(matrix);
     const seal = generatePermanentConvergenceGovernanceSeal(matrix, drift);
     const attestation = generateGovernanceSealIntegrityAttestation(report, matrix, drift, seal);
+    runRecursiveCollapseSimulator(strict);
     if (strict) {
       enforceStrict(report);
       enforceGlobalMatrixStrict(matrix);
@@ -218,12 +221,14 @@ function main() {
   enforceDriftDetectionStrict(drift);
   enforceConvergenceSealStrict(seal);
   enforceSealAttestationStrict(attestation);
+  runRecursiveCollapseSimulator(true);
   scanUnsupportedClaims();
   console.log(`[a46] governance validation passed: ${path.join(OUT_DIR, `${REPORT_BASENAME}.json`)}`);
   console.log(`[a46] global denial-retention matrix validation passed: ${path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`)}`);
   console.log(`[a46] convergence-integrity drift validation passed: ${path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`)}`);
   console.log(`[a46] permanent convergence governance seal validation passed: ${path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.json`)}`);
   console.log(`[a46] governance seal integrity attestation validation passed: ${path.join(OUT_DIR, `${SEAL_ATTESTATION_BASENAME}.json`)}`);
+  console.log(`[a46] recursive governance collapse simulator validation passed: ${path.join(OUT_DIR, `${RECURSIVE_COLLAPSE_BASENAME}.json`)}`);
 }
 
 function generateReconciliation() {
@@ -1738,7 +1743,16 @@ function convergenceArtifactFiles() {
     path.join(OUT_DIR, `${CONVERGENCE_SEAL_BASENAME}.md`),
     path.join(OUT_DIR, `${SEAL_ATTESTATION_BASENAME}.json`),
     path.join(OUT_DIR, `${SEAL_ATTESTATION_BASENAME}.md`),
+    path.join(OUT_DIR, `${RECURSIVE_COLLAPSE_BASENAME}.json`),
+    path.join(OUT_DIR, `${RECURSIVE_COLLAPSE_BASENAME}.md`),
   ];
+}
+
+function runRecursiveCollapseSimulator(useStrict) {
+  const args = [RECURSIVE_COLLAPSE_SCRIPT];
+  if (useStrict) args.push("--strict");
+  const output = execFileSync("node", args, { encoding: "utf8" });
+  process.stdout.write(output);
 }
 
 function scanFilesForPatterns(files, patterns) {

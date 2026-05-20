@@ -1,0 +1,1 @@
+{"id":"stale-convergence-matrix-recursion","group":"recursive stale replay storms","attack_type":"replay","recursion_depth":3,"mutation":{"stale_replay":true,"unresolved_dependencies":["stale dependency"]},"expected_rejection":true}

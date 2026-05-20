@@ -1,0 +1,1 @@
+{"id":"recursive-cross-branch-seal-copy","group":"recursive branch-domain poisoning","attack_type":"branch_domain","recursion_depth":2,"mutation":{"cross_branch_copy":true,"branch":"main"},"expected_rejection":true}

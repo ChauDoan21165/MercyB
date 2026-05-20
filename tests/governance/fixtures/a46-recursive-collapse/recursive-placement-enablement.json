@@ -1,0 +1,1 @@
+{"id":"recursive-placement-enablement","group":"recursive forged readiness attacks","attack_type":"readiness","recursion_depth":3,"mutation":{"placement_v3_enabled":true,"placement_v3_enablement":"ENABLED","production_safe":true,"readiness_claims":["placement_enablement"]},"expected_rejection":true}

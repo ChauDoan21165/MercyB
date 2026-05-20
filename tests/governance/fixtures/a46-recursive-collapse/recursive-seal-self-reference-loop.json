@@ -1,0 +1,1 @@
+{"id":"recursive-seal-self-reference-loop","group":"recursive seal corruption","attack_type":"seal_integrity","recursion_depth":3,"mutation":{"self_reference_loop":true},"expected_rejection":true}

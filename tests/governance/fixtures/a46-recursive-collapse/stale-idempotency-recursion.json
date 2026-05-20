@@ -1,0 +1,1 @@
+{"id":"stale-idempotency-recursion","group":"recursive stale replay storms","attack_type":"replay","recursion_depth":3,"mutation":{"stale_replay":true,"strict_mode":false},"expected_rejection":true}

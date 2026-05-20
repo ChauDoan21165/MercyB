@@ -1,0 +1,1 @@
+{"id":"recursive-replay-certification","group":"recursive forged readiness attacks","attack_type":"readiness","recursion_depth":3,"mutation":{"readiness_claims":["replay_certification"]},"expected_rejection":true}

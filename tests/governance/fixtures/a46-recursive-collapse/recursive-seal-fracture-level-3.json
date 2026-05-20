@@ -1,0 +1,1 @@
+{"id":"recursive-seal-fracture-level-3","group":"recursive seal corruption","attack_type":"seal_integrity","recursion_depth":3,"mutation":{"seal_fracture":true,"do_not_enable_continuity":false},"expected_rejection":true}

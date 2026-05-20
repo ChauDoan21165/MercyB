@@ -1,0 +1,1 @@
+{"id":"suppression-inversion-attack","group":"recursive unsupported-readiness suppression attacks","attack_type":"suppression","recursion_depth":3,"mutation":{"unsupported_readiness_suppression":"INVERTED","readiness_claims":["suppression_inversion"]},"expected_rejection":true}

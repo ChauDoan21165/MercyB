@@ -1,0 +1,1 @@
+{"id":"recursive-autonomous-execution-escalation","group":"recursive forged readiness attacks","attack_type":"readiness","recursion_depth":3,"mutation":{"autonomous_execution":"AUTONOMOUS_ALLOWED","readiness_claims":["autonomous_execution_escalation"]},"expected_rejection":true}

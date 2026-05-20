@@ -1,0 +1,1 @@
+{"id":"recursive-provider-certification","group":"recursive forged readiness attacks","attack_type":"readiness","recursion_depth":3,"mutation":{"live_provider_validated":true,"provider_drift_measured":true,"readiness_claims":["provider_certification"]},"expected_rejection":true}

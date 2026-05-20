@@ -1,0 +1,1 @@
+{"id":"recursive-seal-canonical-overwrite","group":"recursive seal corruption","attack_type":"seal_integrity","recursion_depth":3,"mutation":{"canonical_overwrite":true,"canonical_owner":"A42"},"expected_rejection":true}

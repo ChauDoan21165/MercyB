@@ -1,0 +1,1 @@
+{"id":"recursive-taxonomy-collapse","group":"recursive unresolved dependency corruption","attack_type":"lineage_integrity","recursion_depth":3,"mutation":{"erased_dependencies":["provider calibration","provider drift","fairness/bias evidence","CEFR stability evidence","persistence validation","human review backlog","supervised execution restrictions"]},"expected_rejection":true}

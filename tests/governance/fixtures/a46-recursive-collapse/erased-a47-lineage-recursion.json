@@ -1,0 +1,1 @@
+{"id":"erased-a47-lineage-recursion","group":"recursive unresolved dependency corruption","attack_type":"lineage_integrity","recursion_depth":2,"mutation":{"erased_dependencies":["audit continuity"]},"expected_rejection":true}
