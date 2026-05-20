@@ -1,13 +1,15 @@
 # Placement V3 Reliability Health Summary
 
-Generated: 2026-05-20T15:10:22.559Z
+Generated: 2026-05-20T15:35:02.009Z
 
 - Evidence freshness: fresh
-- Confidence classification: CI_TIMEOUT_RISK
+- Confidence classification: BLOCKED
 - Timeout-risk estimate: CI_TIMEOUT_RISK
 - Anomaly classification: ANOMALY
 - CI degradation forecast: HIGH
-- Escalation priority: HIGH
+- Recovery forecast: RECOVERY_RISK
+- CI resilience classification: HIGH
+- Escalation priority: RECOVERY_BLOCKED
 - Sustained-run confidence: high_local_confidence
 - Current blocker count: 0
 - Flake suspicion count: 0

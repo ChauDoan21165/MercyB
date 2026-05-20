@@ -99,15 +99,27 @@ jobs:
         if: always()
         run: npm run placement:b1:forecast
 
+      - name: Reliability recovery forecast
+        if: always()
+        run: npm run placement:b1:recovery
+
+      - name: CI resilience summary
+        if: always()
+        run: npm run placement:b1:resilience
+
       - name: Failure-pattern memory
         if: always()
         run: npm run placement:b1:failure-history
+
+      - name: Reliability state history
+        if: always()
+        run: npm run placement:b1:state-history
 
       - name: Escalation recalculation
         if: always()
         run: npm run placement:b1:health
 
-      - name: Retention dry-run
+      - name: Retention enforcement dry-run
         if: always()
         run: npm run placement:b1:retention -- --dry-run
 

@@ -1,6 +1,6 @@
 # Placement V3 CI Degradation Forecast
 
-Generated: 2026-05-20T15:10:20.700Z
+Generated: 2026-05-20T15:34:49.756Z
 
 - Forecast classification: HIGH
 - Escalation priority: HIGH

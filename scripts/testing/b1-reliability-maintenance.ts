@@ -44,6 +44,8 @@ type RepeatSummary = {
 type EscalationLevel = "INFO" | "WATCH" | "ELEVATED" | "HIGH" | "CRITICAL";
 type AnomalyClassification = "NORMAL" | "WATCH" | "ANOMALY" | "DEGRADED" | "HIGH_RISK";
 type ForecastClassification = "LOW" | "MODERATE" | "ELEVATED" | "HIGH" | "CRITICAL";
+type RecoveryClassification = ForecastClassification | "RECOVERY_RISK";
+type RecoveryEscalationLevel = EscalationLevel | "RECOVERY_BLOCKED";
 
 const EXPECTED_BRANCH = "feat/b1-test-stability-burndown";
 const RELIABILITY_DIR = "docs/placement-v3/reliability";
@@ -62,6 +64,10 @@ const FORBIDDEN_CLAIMS = [
   new RegExp(String.raw`\bflake ${"free"}\b`, "i"),
   new RegExp(String.raw`\breal-user ${"ready"}\b`, "i"),
   new RegExp(String.raw`\blaunch ${"ready"}\b`, "i"),
+  new RegExp(String.raw`\bfully ${"resilient"}\b`, "i"),
+  new RegExp(String.raw`\bself-${"healing"}\b`, "i"),
+  new RegExp(String.raw`\bCI guaranteed ${"stable"}\b`, "i"),
+  new RegExp(String.raw`\bsafe for ${"rollout"}\b`, "i"),
 ];
 
 const command = process.argv[2] ?? "health";
@@ -91,6 +97,15 @@ function main() {
       break;
     case "failure-history":
       generateFailureHistory();
+      break;
+    case "recovery":
+      generateRecoveryForecast();
+      break;
+    case "resilience":
+      generateResilienceSummary();
+      break;
+    case "state-history":
+      generateStateHistory();
       break;
     case "health":
       generateHealth();
@@ -127,10 +142,14 @@ function runAuto() {
   generateContention();
   generateAnomalies();
   generateForecast();
+  generateRecoveryForecast();
+  generateResilienceSummary();
   generateFailureHistory();
-  rotateLogs(false);
+  generateStateHistory();
   generateHealth();
+  rotateLogs(false);
   generateRetentionEnforcement();
+  generateRecoveryRetentionEnforcement();
   console.log(`[b1] artifacts: ${runRoot}`);
   console.log(`[b1] reports: ${RELIABILITY_DIR}`);
 }
@@ -256,12 +275,18 @@ function generateHealth() {
   const contention = readGeneratedJson("contention-analysis-summary") ?? (generateContention(), readGeneratedJson("contention-analysis-summary"));
   const anomaly = readGeneratedJson("reliability-anomaly-summary") ?? (generateAnomalies(), readGeneratedJson("reliability-anomaly-summary"));
   const forecast = readGeneratedJson("ci-degradation-forecast") ?? (generateForecast(), readGeneratedJson("ci-degradation-forecast"));
+  const recovery =
+    readGeneratedJson("reliability-recovery-forecast") ?? (generateRecoveryForecast(), readGeneratedJson("reliability-recovery-forecast"));
+  const resilience =
+    readGeneratedJson("ci-resilience-summary") ?? (generateResilienceSummary(), readGeneratedJson("ci-resilience-summary"));
   const blockerCount = trend?.integrityViolationTrend?.count ?? 0;
   const flakeSuspicionCount = blockerCount > 0 ? 1 : 0;
   const confidenceClassification = confidenceAfterInstability(
     trend?.latestConfidenceClassification ?? "BLOCKED",
     anomaly?.anomalyClassification ?? "WATCH",
     forecast?.forecastClassification ?? "MODERATE",
+    recovery?.recoveryClassification ?? "MODERATE",
+    resilience?.confidenceDecay?.decayed ?? false,
   );
   const summary = {
     generatedAt: new Date().toISOString(),
@@ -274,9 +299,13 @@ function generateHealth() {
     flakeSuspicionCount,
     anomalyClassification: anomaly?.anomalyClassification ?? "WATCH",
     forecastClassification: forecast?.forecastClassification ?? "MODERATE",
-    escalationPriority: maxEscalation([
+    recoveryClassification: recovery?.recoveryClassification ?? "MODERATE",
+    resilienceClassification: resilience?.resilienceClassification ?? "MODERATE",
+    escalationPriority: maxRecoveryEscalation([
       anomaly?.escalationPriority ?? "WATCH",
       forecast?.escalationPriority ?? "WATCH",
+      recovery?.escalationPriority ?? "WATCH",
+      resilience?.escalationPriority ?? "WATCH",
     ]),
     production_safe: false,
     placement_v3_enabled: false,
@@ -300,6 +329,8 @@ function generateHealth() {
       `- Timeout-risk estimate: ${summary.timeoutRiskEstimate}`,
       `- Anomaly classification: ${summary.anomalyClassification}`,
       `- CI degradation forecast: ${summary.forecastClassification}`,
+      `- Recovery forecast: ${summary.recoveryClassification}`,
+      `- CI resilience classification: ${summary.resilienceClassification}`,
       `- Escalation priority: ${summary.escalationPriority}`,
       `- Sustained-run confidence: ${summary.sustainedRunConfidence}`,
       `- Current blocker count: ${summary.currentBlockerCount}`,
@@ -316,6 +347,199 @@ function generateHealth() {
       "Founder-readable takeaway: B1 reliability automation is strong locally and under tested contention, while enablement and live-provider claims remain blocked by absent evidence.",
     ],
   );
+}
+
+function generateRecoveryForecast() {
+  const metrics = anomalyMetrics();
+  const anomaly = readGeneratedJson("reliability-anomaly-summary");
+  const forecast = readGeneratedJson("ci-degradation-forecast");
+  const timeoutNearMisses = metrics.contentionSlowRuns.filter((run) => run.durationSeconds >= 50).length;
+  const spreadWidened = metrics.contentionSpread.spreadSeconds >= 40;
+  const recoveryTimeWorsens = spreadWidened || metrics.maxContentionDuration >= 54;
+  const staleEvidence = (metrics.evidenceAgeHours ?? 999) > 48;
+  const unresolvedDegradation =
+    anomaly?.anomalyClassification === "DEGRADED" ||
+    anomaly?.anomalyClassification === "HIGH_RISK" ||
+    forecast?.forecastClassification === "HIGH" ||
+    forecast?.forecastClassification === "CRITICAL";
+  const expectedRecoveryFromDegradedStates: RecoveryClassification = unresolvedDegradation
+    ? "RECOVERY_RISK"
+    : timeoutNearMisses > 0
+      ? "ELEVATED"
+      : "LOW";
+  const rerunStabilizationProbability: RecoveryClassification = metrics.totalFailures > 0 ? "LOW" : staleEvidence ? "MODERATE" : "HIGH";
+  const anomalyPersistenceProbability: RecoveryClassification =
+    timeoutNearMisses > 1 ? "HIGH" : timeoutNearMisses === 1 ? "ELEVATED" : "LOW";
+  const ciRecoveryConfidence: RecoveryClassification = metrics.maxContentionDuration >= 54 ? "MODERATE" : "HIGH";
+  const contentionRecoveryLikelihood: RecoveryClassification = spreadWidened ? "ELEVATED" : "LOW";
+  const flakyPatternRecurrenceProbability: RecoveryClassification = metrics.flakyClusterCount > 0 ? "HIGH" : "LOW";
+  const recoveryClassification = maxRecovery([
+    expectedRecoveryFromDegradedStates,
+    anomalyPersistenceProbability,
+    contentionRecoveryLikelihood,
+    flakyPatternRecurrenceProbability,
+    staleEvidence ? "ELEVATED" : "LOW",
+  ]);
+  const confidenceDecay = resilienceConfidenceDecay(metrics, recoveryClassification, timeoutNearMisses);
+  const escalationPriority = escalationForRecovery(recoveryClassification, confidenceDecay.decayed);
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    branch: EXPECTED_BRANCH,
+    classifications: ["LOW", "MODERATE", "ELEVATED", "HIGH", "CRITICAL", "RECOVERY_RISK"],
+    expectedRecoveryFromDegradedStates,
+    rerunStabilizationProbability,
+    anomalyPersistenceProbability,
+    ciRecoveryConfidence,
+    contentionRecoveryLikelihood,
+    flakyPatternRecurrenceProbability,
+    recoveryTimeWorsens,
+    unresolvedDegradation,
+    recoveryClassification,
+    escalationPriority,
+    confidenceDecay,
+    safetyPosition: safetyPosition(),
+  };
+
+  writeJsonAndMarkdown(
+    "reliability-recovery-forecast",
+    summary,
+    [
+      "# Placement V3 Reliability Recovery Forecast",
+      "",
+      `Generated: ${summary.generatedAt}`,
+      "",
+      `- Recovery classification: ${summary.recoveryClassification}`,
+      `- Escalation priority: ${summary.escalationPriority}`,
+      `- Expected recovery from degraded states: ${summary.expectedRecoveryFromDegradedStates}`,
+      `- Rerun stabilization probability: ${summary.rerunStabilizationProbability}`,
+      `- Anomaly persistence probability: ${summary.anomalyPersistenceProbability}`,
+      `- CI recovery confidence: ${summary.ciRecoveryConfidence}`,
+      `- Contention recovery likelihood: ${summary.contentionRecoveryLikelihood}`,
+      `- Flaky-pattern recurrence probability: ${summary.flakyPatternRecurrenceProbability}`,
+      `- Confidence decay applied: ${summary.confidenceDecay.decayed}`,
+      "",
+      "Recovery forecasting is conservative reliability intelligence only. Placement V3 remains disabled and live-provider evidence remains absent.",
+    ],
+  );
+}
+
+function generateResilienceSummary() {
+  const metrics = anomalyMetrics();
+  const timeoutNearMisses = metrics.contentionSlowRuns.filter((run) => run.durationSeconds >= 50).length;
+  const allRuns = metrics.totalRuns;
+  const passRate = allRuns > 0 ? (allRuns - metrics.totalFailures) / allRuns : 0;
+  const timeoutHeadroomSeconds = 60 - metrics.maxContentionDuration;
+  const confidenceDecay = resilienceConfidenceDecay(
+    metrics,
+    timeoutNearMisses > 1 ? "HIGH" : timeoutNearMisses === 1 ? "ELEVATED" : "LOW",
+    timeoutNearMisses,
+  );
+  const resilienceClassification: ForecastClassification =
+    metrics.totalFailures > 0
+      ? "CRITICAL"
+      : timeoutHeadroomSeconds <= 6
+        ? "HIGH"
+        : confidenceDecay.decayed
+          ? "ELEVATED"
+          : "LOW";
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    branch: EXPECTED_BRANCH,
+    rerunResilience: {
+      passRate,
+      failures: metrics.totalFailures,
+      classification: metrics.totalFailures > 0 ? "CRITICAL" : "LOW",
+    },
+    timeoutResilience: {
+      slowestContentionSeconds: metrics.maxContentionDuration,
+      timeoutHeadroomSeconds,
+      classification: timeoutHeadroomSeconds <= 6 ? "HIGH" : "LOW",
+    },
+    contentionResilience: {
+      runtimeSpreadSeconds: metrics.contentionSpread.spreadSeconds,
+      classification: metrics.contentionSpread.spreadSeconds >= 40 ? "ELEVATED" : "LOW",
+    },
+    anomalyRecoverySpeed: {
+      classification: timeoutNearMisses > 1 ? "HIGH" : timeoutNearMisses === 1 ? "ELEVATED" : "LOW",
+      observedTimeoutNearMisses: timeoutNearMisses,
+    },
+    stabilityRecoverySpeed: {
+      classification: metrics.totalFailures > 0 ? "CRITICAL" : "LOW",
+      basis: metrics.totalFailures > 0 ? "rerun failures require isolation" : "repeated runs remain converged",
+    },
+    falsePositiveRecoveryConfidence: {
+      count: metrics.falsePositiveCount,
+      classification: metrics.falsePositiveCount > 1 ? "MODERATE" : "LOW",
+      handling: metrics.falsePositiveCount > 0 ? "explicitly_classified_not_confirmed_flake" : "none_observed",
+    },
+    resilienceClassification,
+    escalationPriority: escalationForForecast(resilienceClassification),
+    confidenceDecay,
+    safetyPosition: safetyPosition(),
+  };
+
+  writeJsonAndMarkdown(
+    "ci-resilience-summary",
+    summary,
+    [
+      "# Placement V3 CI Resilience Summary",
+      "",
+      `Generated: ${summary.generatedAt}`,
+      "",
+      `- CI resilience classification: ${summary.resilienceClassification}`,
+      `- Escalation priority: ${summary.escalationPriority}`,
+      `- Rerun resilience pass rate: ${(summary.rerunResilience.passRate * 100).toFixed(2)}%`,
+      `- Timeout headroom: ${summary.timeoutResilience.timeoutHeadroomSeconds}s`,
+      `- Contention spread: ${summary.contentionResilience.runtimeSpreadSeconds}s`,
+      `- Anomaly recovery speed: ${summary.anomalyRecoverySpeed.classification}`,
+      `- Stability recovery speed: ${summary.stabilityRecoverySpeed.classification}`,
+      `- False-positive recovery confidence: ${summary.falsePositiveRecoveryConfidence.classification}`,
+      `- Confidence decay applied: ${summary.confidenceDecay.decayed}`,
+      "",
+      "Resilience visibility is scoped to B1 reliability evidence. It does not change feature flags or product behavior.",
+    ],
+  );
+}
+
+function generateStateHistory() {
+  const anomaly = readGeneratedJson("reliability-anomaly-summary") ?? (generateAnomalies(), readGeneratedJson("reliability-anomaly-summary"));
+  const forecast = readGeneratedJson("ci-degradation-forecast") ?? (generateForecast(), readGeneratedJson("ci-degradation-forecast"));
+  const recovery =
+    readGeneratedJson("reliability-recovery-forecast") ?? (generateRecoveryForecast(), readGeneratedJson("reliability-recovery-forecast"));
+  const resilience =
+    readGeneratedJson("ci-resilience-summary") ?? (generateResilienceSummary(), readGeneratedJson("ci-resilience-summary"));
+  const metrics = anomalyMetrics();
+  const lines = [
+    "# Placement V3 B1 Reliability State History",
+    "",
+    `Generated: ${new Date().toISOString()}`,
+    "",
+    "This history persists reliability state transitions only. It does not grant release authority or change Placement V3 enablement.",
+    "",
+    "## Current Transitions",
+    "",
+    `- Anomaly state transition: ${anomaly?.anomalyClassification ?? "UNKNOWN"}`,
+    `- Degradation transition: ${forecast?.forecastClassification ?? "UNKNOWN"}`,
+    `- Escalation transition: ${maxRecoveryEscalation([
+      anomaly?.escalationPriority ?? "WATCH",
+      forecast?.escalationPriority ?? "WATCH",
+      recovery?.escalationPriority ?? "WATCH",
+      resilience?.escalationPriority ?? "WATCH",
+    ])}`,
+    `- Recovery transition: ${recovery?.recoveryClassification ?? "UNKNOWN"}`,
+    `- Timeout-risk transition: ${metrics.maxContentionDuration >= 54 ? "near_timeout_window" : "within_headroom"}`,
+    `- Contention instability transition: ${metrics.contentionSpread.spreadSeconds >= 40 ? "widened" : "bounded"}`,
+    "",
+    "## Transition Evidence",
+    "",
+    `- Total rerun failures: ${metrics.totalFailures}`,
+    `- Slowest contention duration: ${metrics.maxContentionDuration}s`,
+    `- Contention spread: ${metrics.contentionSpread.spreadSeconds}s`,
+    `- Detector false-positive count: ${metrics.falsePositiveCount}`,
+    `- Flaky-pattern cluster count: ${metrics.flakyClusterCount}`,
+  ];
+  writeFileSync(path.join(RELIABILITY_DIR, "reliability-state-history.md"), `${lines.join("\n")}\n`);
+  console.log(`[b1] wrote ${path.join(RELIABILITY_DIR, "reliability-state-history.md")}`);
 }
 
 function generateAnomalies() {
@@ -515,6 +739,10 @@ function generateFailureHistory() {
 function generateRetentionEnforcement() {
   const anomaly = readGeneratedJson("reliability-anomaly-summary") ?? (generateAnomalies(), readGeneratedJson("reliability-anomaly-summary"));
   const forecast = readGeneratedJson("ci-degradation-forecast") ?? (generateForecast(), readGeneratedJson("ci-degradation-forecast"));
+  const recovery =
+    readGeneratedJson("reliability-recovery-forecast") ?? (generateRecoveryForecast(), readGeneratedJson("reliability-recovery-forecast"));
+  const resilience =
+    readGeneratedJson("ci-resilience-summary") ?? (generateResilienceSummary(), readGeneratedJson("ci-resilience-summary"));
   const summary = {
     generatedAt: new Date().toISOString(),
     branch: EXPECTED_BRANCH,
@@ -523,6 +751,11 @@ function generateRetentionEnforcement() {
     preserveFlakyPatternSignatures: true,
     preserveDegradedTrendEvidence: true,
     preserveCiDegradationEvidence: true,
+    preserveRecoveryFailureEvidence: true,
+    preserveProlongedDegradationEvidence: true,
+    preserveEscalationRecurrenceEvidence: true,
+    preserveResilienceTrendHistory: true,
+    preserveCiRecoveryAnomalies: true,
     protectedPatterns: [
       "anomaly evidence",
       "timeout near-miss logs",
@@ -530,9 +763,16 @@ function generateRetentionEnforcement() {
       "degraded trend evidence",
       "CI degradation forecast evidence",
       "detector false-positive classifications",
+      "recovery failure evidence",
+      "prolonged degradation evidence",
+      "escalation recurrence evidence",
+      "resilience trend history",
+      "CI recovery anomalies",
     ],
     currentAnomalyClassification: anomaly?.anomalyClassification ?? "WATCH",
     currentForecastClassification: forecast?.forecastClassification ?? "MODERATE",
+    currentRecoveryClassification: recovery?.recoveryClassification ?? "MODERATE",
+    currentResilienceClassification: resilience?.resilienceClassification ?? "MODERATE",
     rotationMode: "dry-run-first",
     safetyPosition: safetyPosition(),
   };
@@ -546,14 +786,71 @@ function generateRetentionEnforcement() {
     `- Preserve flaky-pattern signatures: ${summary.preserveFlakyPatternSignatures}`,
     `- Preserve degraded trend evidence: ${summary.preserveDegradedTrendEvidence}`,
     `- Preserve CI degradation evidence: ${summary.preserveCiDegradationEvidence}`,
+    `- Preserve recovery failure evidence: ${summary.preserveRecoveryFailureEvidence}`,
+    `- Preserve prolonged degradation evidence: ${summary.preserveProlongedDegradationEvidence}`,
+    `- Preserve escalation recurrence evidence: ${summary.preserveEscalationRecurrenceEvidence}`,
+    `- Preserve resilience trend history: ${summary.preserveResilienceTrendHistory}`,
+    `- Preserve CI recovery anomalies: ${summary.preserveCiRecoveryAnomalies}`,
     `- Current anomaly classification: ${summary.currentAnomalyClassification}`,
     `- Current forecast classification: ${summary.currentForecastClassification}`,
+    `- Current recovery classification: ${summary.currentRecoveryClassification}`,
+    `- Current resilience classification: ${summary.currentResilienceClassification}`,
     "",
     "Retention remains dry-run first and does not delete sustained B1 burn-in evidence.",
   ];
   writeFileSync(path.join(RELIABILITY_DIR, "retention-enforcement-summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
   writeFileSync(path.join(RELIABILITY_DIR, "retention-enforcement-summary.md"), `${lines.join("\n")}\n`);
   console.log(`[b1] wrote ${path.join(RELIABILITY_DIR, "retention-enforcement-summary.md")}`);
+}
+
+function generateRecoveryRetentionEnforcement() {
+  const recovery =
+    readGeneratedJson("reliability-recovery-forecast") ?? (generateRecoveryForecast(), readGeneratedJson("reliability-recovery-forecast"));
+  const resilience =
+    readGeneratedJson("ci-resilience-summary") ?? (generateResilienceSummary(), readGeneratedJson("ci-resilience-summary"));
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    branch: EXPECTED_BRANCH,
+    preserveRecoveryFailureEvidence: true,
+    preserveProlongedDegradationEvidence: true,
+    preserveEscalationRecurrenceEvidence: true,
+    preserveResilienceTrendHistory: true,
+    preserveCiRecoveryAnomalies: true,
+    currentRecoveryClassification: recovery?.recoveryClassification ?? "MODERATE",
+    currentResilienceClassification: resilience?.resilienceClassification ?? "MODERATE",
+    currentEscalationPriority: maxRecoveryEscalation([
+      recovery?.escalationPriority ?? "WATCH",
+      resilience?.escalationPriority ?? "WATCH",
+    ]),
+    protectedEvidenceClasses: [
+      "recovery failure evidence",
+      "prolonged degradation evidence",
+      "escalation recurrence evidence",
+      "resilience trend history",
+      "CI recovery anomalies",
+    ],
+    rotationMode: "dry-run-first",
+    safetyPosition: safetyPosition(),
+  };
+  const lines = [
+    "# Placement V3 B1 Recovery Retention Enforcement Summary",
+    "",
+    `Generated: ${summary.generatedAt}`,
+    "",
+    `- Preserve recovery failure evidence: ${summary.preserveRecoveryFailureEvidence}`,
+    `- Preserve prolonged degradation evidence: ${summary.preserveProlongedDegradationEvidence}`,
+    `- Preserve escalation recurrence evidence: ${summary.preserveEscalationRecurrenceEvidence}`,
+    `- Preserve resilience trend history: ${summary.preserveResilienceTrendHistory}`,
+    `- Preserve CI recovery anomalies: ${summary.preserveCiRecoveryAnomalies}`,
+    `- Current recovery classification: ${summary.currentRecoveryClassification}`,
+    `- Current resilience classification: ${summary.currentResilienceClassification}`,
+    `- Current escalation priority: ${summary.currentEscalationPriority}`,
+    "",
+    "Recovery retention stays dry-run first and preserves sustained-run evidence.",
+  ];
+  writeFileSync(path.join(RELIABILITY_DIR, "recovery-retention-enforcement-summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
+  writeFileSync(path.join(RELIABILITY_DIR, "recovery-retention-enforcement-summary.md"), `${lines.join("\n")}\n`);
+  console.log(`[b1] wrote ${path.join(RELIABILITY_DIR, "recovery-retention-enforcement-summary.md")}`);
 }
 
 function rotateLogs(execute: boolean) {
@@ -588,6 +885,7 @@ function rotateLogs(execute: boolean) {
   writeFileSync(path.join(RELIABILITY_DIR, "retention-rotation-plan.json"), `${JSON.stringify(summary, null, 2)}\n`);
   console.log(JSON.stringify(summary, null, 2));
   generateRetentionEnforcement();
+  generateRecoveryRetentionEnforcement();
 
   if (execute) {
     for (const file of planned) rmSync(file, { force: true });
@@ -647,6 +945,7 @@ function anomalyMetrics() {
   if (existsSync(forensics) && /false positive/i.test(readFileSync(forensics, "utf8"))) falsePositiveCount += 1;
 
   return {
+    totalRuns: sum(summaries, (summary) => summary.passCount) + sum(summaries, (summary) => summary.failCount),
     totalFailures: sum(summaries, (summary) => summary.failCount),
     baselineE2eMaxSeconds: contention.baselineE2eMaxSeconds,
     maxContentionDuration: contention.maxDurationSeconds,
@@ -695,9 +994,28 @@ function maxForecast(values: ForecastClassification[]): ForecastClassification {
   return values.sort((a, b) => order.indexOf(b) - order.indexOf(a))[0] ?? "LOW";
 }
 
+function maxRecovery(values: RecoveryClassification[]): RecoveryClassification {
+  const order: RecoveryClassification[] = ["LOW", "MODERATE", "ELEVATED", "HIGH", "CRITICAL", "RECOVERY_RISK"];
+  return values.sort((a, b) => order.indexOf(b) - order.indexOf(a))[0] ?? "LOW";
+}
+
 function maxEscalation(values: EscalationLevel[]): EscalationLevel {
   const order: EscalationLevel[] = ["INFO", "WATCH", "ELEVATED", "HIGH", "CRITICAL"];
   return values.sort((a, b) => order.indexOf(b) - order.indexOf(a))[0] ?? "INFO";
+}
+
+function maxRecoveryEscalation(values: RecoveryEscalationLevel[]): RecoveryEscalationLevel {
+  const order: RecoveryEscalationLevel[] = ["INFO", "WATCH", "ELEVATED", "HIGH", "CRITICAL", "RECOVERY_BLOCKED"];
+  return values.sort((a, b) => order.indexOf(b) - order.indexOf(a))[0] ?? "INFO";
+}
+
+function escalationForRecovery(classification: RecoveryClassification, confidenceDecayed: boolean): RecoveryEscalationLevel {
+  if (classification === "RECOVERY_RISK") return "RECOVERY_BLOCKED";
+  if (classification === "CRITICAL") return "CRITICAL";
+  if (classification === "HIGH") return "HIGH";
+  if (classification === "ELEVATED" || confidenceDecayed) return "ELEVATED";
+  if (classification === "MODERATE") return "WATCH";
+  return "INFO";
 }
 
 function confidenceInstability(metrics: ReturnType<typeof anomalyMetrics>, classification: AnomalyClassification | "WATCH") {
@@ -725,14 +1043,48 @@ function confidenceInstability(metrics: ReturnType<typeof anomalyMetrics>, class
   };
 }
 
+function resilienceConfidenceDecay(
+  metrics: ReturnType<typeof anomalyMetrics>,
+  recoveryClassification: RecoveryClassification,
+  timeoutNearMisses: number,
+) {
+  const evidenceStale = (metrics.evidenceAgeHours ?? 999) > 48;
+  const recoveryTimeWorsens = metrics.contentionSpread.spreadSeconds >= 40 || metrics.maxContentionDuration >= 54;
+  const anomalyRecurrenceIncreases = timeoutNearMisses > 1 || metrics.flakyClusterCount > 0;
+  const ciDegradationPersists = recoveryClassification === "RECOVERY_RISK" || recoveryClassification === "HIGH";
+  const contentionInstabilityWidens = metrics.contentionSpread.spreadSeconds >= 40;
+  const escalationRecurrenceIncreases = metrics.maxContentionDuration >= 54 || metrics.totalFailures > 0;
+  const decayed =
+    recoveryTimeWorsens ||
+    anomalyRecurrenceIncreases ||
+    ciDegradationPersists ||
+    contentionInstabilityWidens ||
+    evidenceStale ||
+    escalationRecurrenceIncreases;
+  return {
+    decayed,
+    adjustment: decayed ? "reduce_for_recovery_resilience_risk" : "none",
+    reasons: {
+      recoveryTimeWorsens,
+      anomalyRecurrenceIncreases,
+      ciDegradationPersists,
+      contentionInstabilityWidens,
+      staleEvidenceAccumulated: evidenceStale,
+      escalationRecurrenceIncreases,
+    },
+  };
+}
+
 function confidenceAfterInstability(
   base: Classification,
   anomaly: AnomalyClassification,
   forecast: ForecastClassification,
+  recovery: RecoveryClassification = "LOW",
+  resilienceDecayed = false,
 ): Classification {
-  if (anomaly === "HIGH_RISK" || forecast === "CRITICAL") return "BLOCKED";
-  if (anomaly === "DEGRADED" || forecast === "HIGH") return "CI_TIMEOUT_RISK";
-  if (anomaly === "ANOMALY" || forecast === "ELEVATED") return "STABLE_UNDER_CONTENTION";
+  if (anomaly === "HIGH_RISK" || forecast === "CRITICAL" || recovery === "RECOVERY_RISK") return "BLOCKED";
+  if (anomaly === "DEGRADED" || forecast === "HIGH" || recovery === "HIGH" || resilienceDecayed) return "CI_TIMEOUT_RISK";
+  if (anomaly === "ANOMALY" || forecast === "ELEVATED" || recovery === "ELEVATED") return "STABLE_UNDER_CONTENTION";
   return base;
 }
 

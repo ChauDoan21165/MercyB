@@ -1,6 +1,6 @@
 # Placement V3 Reliability Anomaly Summary
 
-Generated: 2026-05-20T15:10:20.090Z
+Generated: 2026-05-20T15:34:49.766Z
 
 - Anomaly classification: ANOMALY
 - Escalation priority: ELEVATED
