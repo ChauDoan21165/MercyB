@@ -70,11 +70,14 @@ No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, or
 - Expert review queue: `docs/placement-v3/data-quality/a3-expert-review-queue.md`
 - Release blocker assessment: `docs/placement-v3/data-quality/a3-release-blocker-assessment.md`
 - Remediation workflows: `docs/placement-v3/data-quality/a3-remediation-workflows.md`
+- Automation runbook: `docs/placement-v3/data-quality/a3-automation-runbook.md`
 - Expert review template: `docs/placement-v3/data-quality/templates/expert-review-template.md`
 - Unresolved-risk matrix: `docs/placement-v3/data-quality/a3-unresolved-risk-matrix.md`
 - Remediation priority queue: `docs/placement-v3/data-quality/a3-remediation-priority-queue.md`
 - Launch impact mapping: `docs/placement-v3/data-quality/a3-launch-impact.md`
 - Taxonomy governance: `docs/placement-v3/data-quality/a3-taxonomy-governance.md`
+- Automated review queue: `docs/placement-v3/data-quality/review-queue/review-queue.md`
+- Review status: `docs/placement-v3/data-quality/a3-review-status.md`
 - Before JSON run artifacts: `docs/placement-v3/data-quality/raw-runs/a3-20260520T132558-*.json`
 - After JSON run artifacts: `docs/placement-v3/data-quality/raw-runs/a3-20260520T133236-taxonomy-consistency.json`, `a3-20260520T133158-recommendation-graph.json`, `a3-20260520T133158-prompt-rubric-alignment.json`, `a3-20260520T133158-corpus-integrity.json`
 - After logs: `docs/placement-v3/data-quality/raw-runs/a3-*-after-mechanical-fixes.log`
@@ -87,6 +90,19 @@ No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, or
 - Taxonomy ambiguity, CEFR uncertainty, orphaned descriptors, and unresolved expert-review items now have documented ownership and approval paths.
 - Expert-review intake is standardized in `docs/placement-v3/data-quality/templates/expert-review-template.md`.
 - A3 remains responsible for audit tooling and evidence, not linguistic approvals.
+
+## Automated Review Queue
+
+- Added `scripts/placement-v3/run-data-quality-review-queue.ts`.
+- Added `npm run placement:data-quality-review`.
+- Generated `docs/placement-v3/data-quality/review-queue/review-queue.json` and human-readable queue files.
+- Generated `docs/placement-v3/data-quality/a3-review-status.md`.
+- Added `docs/placement-v3/data-quality/a3-automation-runbook.md`.
+- Queue count: 102 packets: 48 missing remediation links, 6 conversation calibration gaps, 48 unused taxonomy dispositions.
+- Priority split: 54 P1, 1 P2, 47 informational.
+- Status split: 54 need linguist review, 1 needs Chau review, 47 pending.
+
+No expert approvals were created by automation.
 
 ## Launch-Stage Impact
 
@@ -101,6 +117,7 @@ No duplicate prompts, near-duplicate prompts, invalid V3 taxonomy references, or
 - `npm run typecheck` passed.
 - `npm run typecheck:ci` passed.
 - `npm run build` passed with existing non-fatal Vite warnings.
+- `npm run placement:data-quality-review` passed.
 - `npx vitest run tests/integration/placement-v3-data-quality/data-quality-audits.test.ts` passed.
 - `npx tsx scripts/placement-v3/run-taxonomy-consistency.ts` passed.
 - `npx tsx scripts/placement-v3/run-recommendation-graph-audit.ts` passed.

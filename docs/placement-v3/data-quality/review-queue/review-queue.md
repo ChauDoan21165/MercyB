@@ -1,0 +1,126 @@
+# A3 Data-Quality Review Queue
+
+Generated: 2026-05-20T14:12:53.038Z
+
+Sources:
+
+- docs/placement-v3/data-quality/raw-runs/a3-20260520T133236-taxonomy-consistency.json
+- docs/placement-v3/data-quality/raw-runs/a3-20260520T133158-prompt-rubric-alignment.json
+
+## Counts
+
+- Total review packets: 102
+- By priority: {"P1":54,"P2":1,"informational":47}
+- By status: {"needs linguist review":54,"needs Chau review":1,"pending":47}
+- By category: {"conversation_calibration_gap":6,"missing_remediation_link":48,"unused_taxonomy_disposition":48}
+
+## Queue
+
+| Packet ID | Priority | Status | Owner | Item | Next action |
+| --- | --- | --- | --- | --- | --- |
+| `conversation-calibration:a1-c-mercy-greeting` | P1 | needs linguist review | Placement V3 assessment owner | `a1-c-mercy-greeting` | Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries. |
+| `conversation-calibration:a2-c-weekend-chat` | P1 | needs linguist review | Placement V3 assessment owner | `a2-c-weekend-chat` | Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries. |
+| `conversation-calibration:b1-c-study-plan` | P1 | needs linguist review | Placement V3 assessment owner | `b1-c-study-plan` | Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries. |
+| `conversation-calibration:b2-c-opinion-followup` | P1 | needs linguist review | Placement V3 assessment owner | `b2-c-opinion-followup` | Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries. |
+| `conversation-calibration:c1-c-polished-disagreement` | P1 | needs linguist review | Placement V3 assessment owner | `c1-c-polished-disagreement` | Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries. |
+| `conversation-calibration:c2-c-identity-debate` | P1 | needs linguist review | Placement V3 assessment owner | `c2-c-identity-debate` | Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries. |
+| `remediation:vi_l1_a_vs_an_vowel` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_a_vs_an_vowel` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_adverb_before_subject` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_adverb_before_subject` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_another_vs_other` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_another_vs_other` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_been_vs_gone` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_been_vs_gone` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_by_vs_with` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_by_vs_with` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_comparative_double` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_comparative_double` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_comparative_more_long` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_comparative_more_long` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_conditional_mix` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_conditional_mix` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_countable` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_countable` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_countable_much` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_countable_much` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_do_support_3ps` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_do_support_3ps` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_double_negative` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_double_negative` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_each_singular` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_each_singular` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_embedded_question_order` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_embedded_question_order` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_generic_plural` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_generic_plural` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_geographical_article` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_geographical_article` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_gerund_after_verb` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_gerund_after_verb` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_if_will` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_if_will` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_look_vs_see_vs_watch` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_look_vs_see_vs_watch` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_make_let_bare` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_make_let_bare` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_make_vs_do` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_make_vs_do` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_many_with_uncount` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_many_with_uncount` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_missing_article` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_missing_article` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_modal_perfect` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_modal_perfect` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_negative_inversion` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_negative_inversion` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_no_article_generic` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_no_article_generic` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_one_of_the_singular` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_one_of_the_singular` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_passive_missing_be` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_passive_missing_be` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_past_perfect_missing` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_past_perfect_missing` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_phrasal_pronoun_order` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_phrasal_pronoun_order` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_possessive_s_missing` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_possessive_s_missing` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_preposition_transfer` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_preposition_transfer` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_present_perfect_vs_past` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_present_perfect_vs_past` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_reflexive_missing` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_reflexive_missing` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_relative_pronoun` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_relative_pronoun` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_reported_speech` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_reported_speech` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_since_vs_for` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_since_vs_for` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_some_vs_any` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_some_vs_any` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_subject_relative_omit` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_subject_relative_omit` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_subjunctive_were` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_subjunctive_were` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_superlative_the` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_superlative_the` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_tag_polarity` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_tag_polarity` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_tag_question` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_tag_question` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_time_expressions` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_time_expressions` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_to_infinitive_after_ing` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_to_infinitive_after_ing` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_too_vs_very` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_too_vs_very` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_used_to_vs_be_used_to` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_used_to_vs_be_used_to` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `remediation:vi_l1_very_much_placement` | P1 | needs linguist review | Placement V3 content owner; Chau final approval for learner-facing paths | `vi_l1_very_much_placement` | Choose approved-room, detector-only, needs-new-room, or reject-link. |
+| `taxonomy-disposition:negation-no-not-placement` | P2 | needs Chau review | Placement V3 taxonomy owner | `negation-no-not-placement` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_adjective_order` | informational | pending | Placement V3 taxonomy owner | `vi_l1_adjective_order` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_adverb_before_subject` | informational | pending | Placement V3 taxonomy owner | `vi_l1_adverb_before_subject` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_another_vs_other` | informational | pending | Placement V3 taxonomy owner | `vi_l1_another_vs_other` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_been_vs_gone` | informational | pending | Placement V3 taxonomy owner | `vi_l1_been_vs_gone` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_by_vs_with` | informational | pending | Placement V3 taxonomy owner | `vi_l1_by_vs_with` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_can_no_infinitive` | informational | pending | Placement V3 taxonomy owner | `vi_l1_can_no_infinitive` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_comparative_double` | informational | pending | Placement V3 taxonomy owner | `vi_l1_comparative_double` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_comparative_more_long` | informational | pending | Placement V3 taxonomy owner | `vi_l1_comparative_more_long` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_countable` | informational | pending | Placement V3 taxonomy owner | `vi_l1_countable` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_countable_much` | informational | pending | Placement V3 taxonomy owner | `vi_l1_countable_much` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_do_support_3ps` | informational | pending | Placement V3 taxonomy owner | `vi_l1_do_support_3ps` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_double_negative` | informational | pending | Placement V3 taxonomy owner | `vi_l1_double_negative` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_double_past` | informational | pending | Placement V3 taxonomy owner | `vi_l1_double_past` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_each_singular` | informational | pending | Placement V3 taxonomy owner | `vi_l1_each_singular` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_embedded_question_order` | informational | pending | Placement V3 taxonomy owner | `vi_l1_embedded_question_order` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_everyone_plural` | informational | pending | Placement V3 taxonomy owner | `vi_l1_everyone_plural` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_generic_plural` | informational | pending | Placement V3 taxonomy owner | `vi_l1_generic_plural` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_gerund_after_verb` | informational | pending | Placement V3 taxonomy owner | `vi_l1_gerund_after_verb` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_if_will` | informational | pending | Placement V3 taxonomy owner | `vi_l1_if_will` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_look_vs_see_vs_watch` | informational | pending | Placement V3 taxonomy owner | `vi_l1_look_vs_see_vs_watch` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_make_let_bare` | informational | pending | Placement V3 taxonomy owner | `vi_l1_make_let_bare` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_make_vs_do` | informational | pending | Placement V3 taxonomy owner | `vi_l1_make_vs_do` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_many_with_uncount` | informational | pending | Placement V3 taxonomy owner | `vi_l1_many_with_uncount` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_modal_perfect` | informational | pending | Placement V3 taxonomy owner | `vi_l1_modal_perfect` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_negative_inversion` | informational | pending | Placement V3 taxonomy owner | `vi_l1_negative_inversion` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_one_of_the_singular` | informational | pending | Placement V3 taxonomy owner | `vi_l1_one_of_the_singular` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_past_perfect_missing` | informational | pending | Placement V3 taxonomy owner | `vi_l1_past_perfect_missing` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_phrasal_pronoun_order` | informational | pending | Placement V3 taxonomy owner | `vi_l1_phrasal_pronoun_order` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_possessive_gender` | informational | pending | Placement V3 taxonomy owner | `vi_l1_possessive_gender` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_possessive_s_missing` | informational | pending | Placement V3 taxonomy owner | `vi_l1_possessive_s_missing` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_present_perfect_vs_past` | informational | pending | Placement V3 taxonomy owner | `vi_l1_present_perfect_vs_past` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_reflexive_missing` | informational | pending | Placement V3 taxonomy owner | `vi_l1_reflexive_missing` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_relative_pronoun` | informational | pending | Placement V3 taxonomy owner | `vi_l1_relative_pronoun` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_reported_speech` | informational | pending | Placement V3 taxonomy owner | `vi_l1_reported_speech` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_since_vs_for` | informational | pending | Placement V3 taxonomy owner | `vi_l1_since_vs_for` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_some_vs_any` | informational | pending | Placement V3 taxonomy owner | `vi_l1_some_vs_any` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_subject_relative_omit` | informational | pending | Placement V3 taxonomy owner | `vi_l1_subject_relative_omit` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_superlative_the` | informational | pending | Placement V3 taxonomy owner | `vi_l1_superlative_the` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_tag_polarity` | informational | pending | Placement V3 taxonomy owner | `vi_l1_tag_polarity` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_tag_question` | informational | pending | Placement V3 taxonomy owner | `vi_l1_tag_question` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_there_are_singular` | informational | pending | Placement V3 taxonomy owner | `vi_l1_there_are_singular` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_time_expressions` | informational | pending | Placement V3 taxonomy owner | `vi_l1_time_expressions` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_to_infinitive_after_ing` | informational | pending | Placement V3 taxonomy owner | `vi_l1_to_infinitive_after_ing` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_to_verb_confusion` | informational | pending | Placement V3 taxonomy owner | `vi_l1_to_verb_confusion` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_too_vs_very` | informational | pending | Placement V3 taxonomy owner | `vi_l1_too_vs_very` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_used_to_vs_be_used_to` | informational | pending | Placement V3 taxonomy owner | `vi_l1_used_to_vs_be_used_to` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+| `taxonomy-disposition:vi_l1_very_much_placement` | informational | pending | Placement V3 taxonomy owner | `vi_l1_very_much_placement` | Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate. |
+
+## Guardrail
+
+No packet is approved by automation. Approval requires expert review evidence.
