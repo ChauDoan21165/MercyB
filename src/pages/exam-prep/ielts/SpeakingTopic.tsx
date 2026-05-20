@@ -13,6 +13,7 @@ import {
   getTopicById,
   type IELTSBandLevel,
 } from "@/data/exam-prep/ielts/speaking-topics";
+import { buildLessonPracticePath } from "@/lib/speech/lessonPractice";
 
 const BAND_BADGE: Record<IELTSBandLevel, string> = {
   5: "bg-rose-100 text-rose-800",
@@ -44,16 +45,11 @@ export default function SpeakingTopic() {
   }
 
   function startPracticeWithMercy() {
-    // The MercyGuide bubble accepts a `?practice=` query param to seed
-    // the Speak tab. We send the first sample question (Part 1/3) or
-    // the cue card prompt (Part 2). The user can edit before recording.
     if (!topic) return;
-    const seed =
-      topic.part === 2 && topic.sample_questions.length > 0
-        ? topic.sample_questions[0]
-        : topic.sample_questions[0] ?? topic.topic_title_en;
-    const url = `/?practice=${encodeURIComponent(seed)}#mercy-speak`;
-    navigate(url);
+    navigate(buildLessonPracticePath({
+      source: "ielts-speaking",
+      lessonId: topic.id,
+    }));
   }
 
   return (
