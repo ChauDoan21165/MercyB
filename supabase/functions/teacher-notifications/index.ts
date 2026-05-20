@@ -44,7 +44,7 @@ interface Payload {
   decision?: string;
 }
 
-function send(data: Record<string, unknown>, status = 200): Response {
+export function send(data: Record<string, unknown>, status = 200): Response {
   return new Response(JSON.stringify(data), { status, headers: corsHeaders });
 }
 
@@ -135,7 +135,7 @@ Deno.serve(async (req) => {
   try {
     const authHeader = req.headers.get("Authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return send({ ok: false, error: "Missing Authorization header" });
+      return send({ ok: false, error: "Missing Authorization header" }, 401);
     }
     const token = authHeader.replace("Bearer ", "");
 
@@ -147,7 +147,7 @@ Deno.serve(async (req) => {
     const anonClient = createClient(supabaseUrl, supabaseAnonKey);
     const { data: userData, error: userError } = await anonClient.auth.getUser(token);
     if (userError || !userData?.user) {
-      return send({ ok: false, error: "Invalid session" });
+      return send({ ok: false, error: "Invalid session" }, 401);
     }
 
     const adminClient = createClient(supabaseUrl, supabaseServiceKey);
@@ -159,12 +159,12 @@ Deno.serve(async (req) => {
       .eq("user_id", userData.user.id)
       .maybeSingle<{ level: number | null }>();
     if (!callerLevel || (callerLevel.level ?? 0) < 5) {
-      return send({ ok: false, error: "Admin level 5+ required" });
+      return send({ ok: false, error: "Admin level 5+ required" }, 403);
     }
 
     const payload = (await req.json()) as Payload;
     if (!payload?.action || !payload?.content_id || !payload?.content_type) {
-      return send({ ok: false, error: "action, content_id, and content_type are required" });
+      return send({ ok: false, error: "action, content_id, and content_type are required" }, 400);
     }
 
     let recipients: Array<{ email: string; user_id: string | null }> = [];
@@ -179,7 +179,7 @@ Deno.serve(async (req) => {
           .select("user_id, email, level")
           .gte("level", 9);
         if (adminsError) {
-          return send({ ok: false, error: `admin lookup: ${adminsError.message}` });
+          return send({ ok: false, error: `admin lookup: ${adminsError.message}` }, 500);
         }
         recipients = (admins ?? [])
           .filter((a: { email: string | null }) => Boolean(a.email))
@@ -193,7 +193,7 @@ Deno.serve(async (req) => {
       }
       case "revision_requested": {
         if (!payload.reviewer_id) {
-          return send({ ok: false, error: "reviewer_id required for revision_requested" });
+          return send({ ok: false, error: "reviewer_id required for revision_requested" }, 400);
         }
         const { data: reviewer } = await adminClient
           .from("profiles")
@@ -209,7 +209,7 @@ Deno.serve(async (req) => {
       }
       case "content_updated": {
         if (!payload.reviewer_id) {
-          return send({ ok: false, error: "reviewer_id required for content_updated" });
+          return send({ ok: false, error: "reviewer_id required for content_updated" }, 400);
         }
         const { data: reviewer } = await adminClient
           .from("profiles")
@@ -224,7 +224,7 @@ Deno.serve(async (req) => {
         break;
       }
       default:
-        return send({ ok: false, error: `Unknown action: ${(payload as Payload).action}` });
+        return send({ ok: false, error: `Unknown action: ${(payload as Payload).action}` }, 400);
     }
 
     if (recipients.length === 0) {
@@ -288,6 +288,6 @@ Deno.serve(async (req) => {
     return send({
       ok: false,
       error: err instanceof Error ? err.message : "Internal error",
-    });
+    }, 500);
   }
 });
