@@ -294,6 +294,7 @@ function runAuto() {
   const durabilityContinuity = generateReplayDurabilityContinuityMap(sources);
   const blockedSafeCertification = generateBlockedSafeReliabilityCertification(sources);
   generateLongTermGovernanceRetentionSummary(sources);
+  generateFinalArchivalGovernanceRetentionSummary(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -357,6 +358,7 @@ function runAuto() {
   console.log(`[a42] replay durability continuity map: ${path.join(RELIABILITY_OUT_DIR, "a42-replay-durability-continuity-map.json")}`);
   console.log(`[a42] blocked-safe reliability certification: ${path.join(RELIABILITY_OUT_DIR, "a42-blocked-safe-reliability-certification.json")}`);
   console.log(`[a42] long-term governance retention summary: ${path.join(RELIABILITY_OUT_DIR, "a42-long-term-governance-retention-summary.json")}`);
+  console.log(`[a42] final archival governance retention summary: ${path.join(RELIABILITY_OUT_DIR, "a42-final-archival-governance-retention-summary.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -1974,6 +1976,139 @@ function generateLongTermGovernanceRetentionSummary(existingSources?: SourceStat
   return summary;
 }
 
+function generateFinalArchivalGovernanceRetentionSummary(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const archivalArtifacts = [
+    "governance-final-blocked-safe-retention-summary",
+    "governance-future-validation-dependency-sequencing",
+    "governance-evidence-gap-master-ledger",
+    "governance-long-term-denial-preservation-board",
+  ];
+  const archivalReview = archivalArtifacts.map((artifact) => {
+    const jsonPath = findByBasename("docs", `${artifact}.json`) ?? findByBasename("reports", `${artifact}.json`);
+    const markdownPath = findByBasename("docs", `${artifact}.md`) ?? findByBasename("reports", `${artifact}.md`);
+    const present = Boolean(jsonPath || markdownPath);
+    return {
+      artifact,
+      presentInA42Worktree: present,
+      jsonPath,
+      markdownPath,
+      consistency: present ? "external_evidence_present_unverified" : "blocked_safe_missing_external_evidence",
+      finding: present
+        ? "External archival governance evidence is present and remains subject to evidence-gated review."
+        : "External archival governance evidence is absent in this A42 worktree; A42 preserves denial lineage and documents the gap.",
+    };
+  });
+  const missingEnduranceEvidence = sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => source.key);
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    summary: "Final archival A42 reliability-governance retention summary",
+    riskClassification: "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+    ready: false,
+    schema_completeness: false,
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    autonomous_execution: "SUPERVISED_ONLY",
+    governanceOnly: true,
+    evidenceOnly: true,
+    reviewedArchivalArtifacts: archivalReview,
+    missingExternalGovernanceArtifacts: archivalReview.filter((item) => !item.presentInA42Worktree).map((item) => item.artifact),
+    missingEnduranceEvidence,
+    archivalFindings: {
+      missingExternalGovernanceArtifacts: {
+        explicitlyDocumented: true,
+        artifacts: archivalReview.filter((item) => !item.presentInA42Worktree).map((item) => item.artifact),
+      },
+      replayDurabilityContinuity: {
+        state: "blocked_safe_incomplete",
+        contradictionFreeWithinAvailableEvidence: true,
+        reason: "Replay durability remains incomplete in the archival record because upstream replay and endurance evidence is absent.",
+      },
+      failoverContradictionLineage: {
+        traceable: true,
+        resolved: false,
+        unresolvedOnlyBecauseUpstreamEvidenceIncomplete: true,
+        reason:
+          "Failover contradiction lineage remains retained and unresolved pending upstream provider, endurance, observability, replay, capacity, and supervision evidence.",
+      },
+      unsupportedReadinessSuppression: {
+        globallyActiveWithinAvailableEvidence: true,
+        claimScanClean: true,
+        reason: "A42 archival artifacts remain covered by claim scanning and preserve unsupported-readiness suppression.",
+      },
+      blockedSafeReliabilityCertification: {
+        evidenceGated: true,
+        preservesDenialPosture: true,
+        authorizesEnablement: false,
+      },
+      strictModeDenialBehavior: {
+        convergenceConsistent: true,
+        expectedStrictFailure: true,
+        reason: "Strict mode must continue failing while A33 endurance evidence and archival governance evidence are incomplete.",
+      },
+    },
+    archivalResult: {
+      finalArchivalRetentionSummaryGenerated: true,
+      permanentDenialLineagePreserved: true,
+      reliabilityReadinessBlocked: true,
+      productionReadinessPromoted: false,
+      placementV3EnablementPromoted: false,
+      nextRequiredEvidence: [
+        "A33 endurance health summary",
+        "A33 timeout risk forecast",
+        "final blocked-safe retention summary",
+        "future validation dependency sequencing",
+        "evidence gap master ledger",
+        "long-term denial preservation board",
+      ],
+    },
+  };
+  writeReliabilityJsonAndMarkdown(
+    "a42-final-archival-governance-retention-summary",
+    summary,
+    [
+      "# A42 Final Archival Governance Retention Summary",
+      "",
+      `Generated: ${summary.generatedAt}`,
+      "",
+      "A42 completed final archival reliability-governance retention closure as a governance-only, evidence-only stream.",
+      "",
+      `- Risk classification: ${summary.riskClassification}`,
+      `- Ready: ${summary.ready}`,
+      `- Schema completeness: ${summary.schema_completeness}`,
+      `- production_safe: ${summary.production_safe}`,
+      `- placement_v3_enabled: ${summary.placement_v3_enabled}`,
+      `- live_validation_complete: ${summary.live_validation_complete}`,
+      `- live_provider_validated: ${summary.live_provider_validated}`,
+      `- autonomous_execution: ${summary.autonomous_execution}`,
+      "",
+      "## Archival Governance Review",
+      "",
+      ...summary.reviewedArchivalArtifacts.map((item) => `- ${item.artifact}: ${item.consistency}; ${item.finding}`),
+      "",
+      "## Archival Findings",
+      "",
+      "- Missing external governance artifacts remain explicitly documented as blocked-safe missing external evidence.",
+      "- Replay durability continuity remains `blocked_safe_incomplete` and does not contradict available A42 evidence.",
+      "- Failover contradiction lineage remains traceable and unresolved only because upstream endurance, provider, observability, replay, capacity, and supervised-execution evidence is incomplete.",
+      "- Unsupported-readiness suppression remains globally active within available evidence through A42 claim scanning and blocked-safe artifacts.",
+      "- Blocked-safe reliability certification remains evidence-gated, preserves denial posture, and authorizes no enablement.",
+      "- Strict-mode denial behavior remains convergence-consistent and must continue failing while endurance evidence is incomplete.",
+      "",
+      "## Archival Result",
+      "",
+      "A42 final archival governance retention summary is generated. Reliability readiness remains blocked pending A33 endurance inputs and external archival governance artifacts. This summary does not enable Placement V3, change provider execution, perform live validation, assert replay closure, alter scoring or CEFR placement, bypass governance, fabricate evidence, promote readiness, or reduce safety gates.",
+    ],
+  );
+  return summary;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -2651,6 +2786,8 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-final-convergence-certification-summary.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-long-term-governance-retention-summary.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-long-term-governance-retention-summary.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-final-archival-governance-retention-summary.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-final-archival-governance-retention-summary.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

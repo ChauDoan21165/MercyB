@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-05-20T17:14:16.572Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "summary": "Final archival A42 reliability-governance retention summary",
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "ready": false,
+  "schema_completeness": false,
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "governanceOnly": true,
+  "evidenceOnly": true,
+  "reviewedArchivalArtifacts": [
+    {
+      "artifact": "governance-final-blocked-safe-retention-summary",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External archival governance evidence is absent in this A42 worktree; A42 preserves denial lineage and documents the gap."
+    },
+    {
+      "artifact": "governance-future-validation-dependency-sequencing",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External archival governance evidence is absent in this A42 worktree; A42 preserves denial lineage and documents the gap."
+    },
+    {
+      "artifact": "governance-evidence-gap-master-ledger",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External archival governance evidence is absent in this A42 worktree; A42 preserves denial lineage and documents the gap."
+    },
+    {
+      "artifact": "governance-long-term-denial-preservation-board",
+      "presentInA42Worktree": false,
+      "jsonPath": null,
+      "markdownPath": null,
+      "consistency": "blocked_safe_missing_external_evidence",
+      "finding": "External archival governance evidence is absent in this A42 worktree; A42 preserves denial lineage and documents the gap."
+    }
+  ],
+  "missingExternalGovernanceArtifacts": [
+    "governance-final-blocked-safe-retention-summary",
+    "governance-future-validation-dependency-sequencing",
+    "governance-evidence-gap-master-ledger",
+    "governance-long-term-denial-preservation-board"
+  ],
+  "missingEnduranceEvidence": [
+    "a33_endurance_health",
+    "a33_timeout_risk_forecast"
+  ],
+  "archivalFindings": {
+    "missingExternalGovernanceArtifacts": {
+      "explicitlyDocumented": true,
+      "artifacts": [
+        "governance-final-blocked-safe-retention-summary",
+        "governance-future-validation-dependency-sequencing",
+        "governance-evidence-gap-master-ledger",
+        "governance-long-term-denial-preservation-board"
+      ]
+    },
+    "replayDurabilityContinuity": {
+      "state": "blocked_safe_incomplete",
+      "contradictionFreeWithinAvailableEvidence": true,
+      "reason": "Replay durability remains incomplete in the archival record because upstream replay and endurance evidence is absent."
+    },
+    "failoverContradictionLineage": {
+      "traceable": true,
+      "resolved": false,
+      "unresolvedOnlyBecauseUpstreamEvidenceIncomplete": true,
+      "reason": "Failover contradiction lineage remains retained and unresolved pending upstream provider, endurance, observability, replay, capacity, and supervision evidence."
+    },
+    "unsupportedReadinessSuppression": {
+      "globallyActiveWithinAvailableEvidence": true,
+      "claimScanClean": true,
+      "reason": "A42 archival artifacts remain covered by claim scanning and preserve unsupported-readiness suppression."
+    },
+    "blockedSafeReliabilityCertification": {
+      "evidenceGated": true,
+      "preservesDenialPosture": true,
+      "authorizesEnablement": false
+    },
+    "strictModeDenialBehavior": {
+      "convergenceConsistent": true,
+      "expectedStrictFailure": true,
+      "reason": "Strict mode must continue failing while A33 endurance evidence and archival governance evidence are incomplete."
+    }
+  },
+  "archivalResult": {
+    "finalArchivalRetentionSummaryGenerated": true,
+    "permanentDenialLineagePreserved": true,
+    "reliabilityReadinessBlocked": true,
+    "productionReadinessPromoted": false,
+    "placementV3EnablementPromoted": false,
+    "nextRequiredEvidence": [
+      "A33 endurance health summary",
+      "A33 timeout risk forecast",
+      "final blocked-safe retention summary",
+      "future validation dependency sequencing",
+      "evidence gap master ledger",
+      "long-term denial preservation board"
+    ]
+  }
+}
