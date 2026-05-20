@@ -120,6 +120,47 @@ Minimum architecture requires:
 - Approve RLS/admin access model for shadow tables.
 - Run the first implementation in a test environment with Placement V3 flags isolated from production users.
 
+## Operational Setup Status
+
+Follow-up runbooks now exist under `reports/a37-shadow-replay-readiness/`:
+
+- Provider setup: `provider-setup/openai-setup.md`, `provider-setup/gemini-setup.md`, `provider-setup/azure-speech-setup.md`, `provider-setup/supabase-setup.md`
+- Runtime validation: `runtime-validation/validate-openai.md`, `runtime-validation/validate-gemini.md`, `runtime-validation/validate-azure-speech.md`, `runtime-validation/validate-supabase.md`, `runtime-validation/validate-placement-v3-stack.md`
+- Operations gates: `privacy-operations-checklist.md`, `replay-readiness-matrix.md`, `local-simulation-guide.md`, `production-rollout-gates.md`
+
+These are operational preparation only. They do not prove runtime provider access, Supabase persistence, real shadow capture, or replay drift.
+
+## What Chau Can Do Immediately
+
+1. Complete the provider setup runbooks for OpenAI, Gemini, Azure Speech, and Supabase.
+2. Run each runtime validation command and save the generated logs.
+3. Review the privacy operations checklist and decide whether raw writing/audio are ever allowed.
+4. Fill the replay readiness matrix with real owner/status updates.
+5. Keep A37 implementation parked until runtime validation logs exist.
+
+## What Still Requires Engineering
+
+- Shadow capture schema and RLS.
+- Capture middleware that fails softly.
+- Replay engine and diff generation.
+- Sanitization audit tooling.
+- Replay dashboard.
+- Kill switch and observability.
+- Real-session replay evidence.
+
+## Exact Sequence To Unblock A37 Safely
+
+1. Export provider and Supabase credentials in a local/test runtime, never in git.
+2. Run `runtime-validation/validate-openai.md`.
+3. Run `runtime-validation/validate-gemini.md`.
+4. Run `runtime-validation/validate-azure-speech.md`.
+5. Run `runtime-validation/validate-supabase.md`.
+6. Run `runtime-validation/validate-placement-v3-stack.md`.
+7. Complete privacy review using `privacy-operations-checklist.md`.
+8. Approve the minimum schema/RLS design.
+9. Assign A37 implementation only for a test environment.
+10. Capture one real Placement V3 session and stop to review evidence before scaling to 10+ sessions.
+
 ## Recommended Next Step
 
 Prepare a credentialed Supabase/provider test runtime and run a one-session real Placement V3 smoke test before assigning A37 implementation.
