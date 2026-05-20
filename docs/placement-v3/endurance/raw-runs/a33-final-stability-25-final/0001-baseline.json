@@ -1,0 +1,26 @@
+{
+  "runId": "a33-final-stability-25-final",
+  "iteration": 1,
+  "scenario": "baseline",
+  "timestamp": "2026-05-20T13:22:47.566Z",
+  "durationMs": 44,
+  "pass": true,
+  "memory": {
+    "rss": 93929472,
+    "heapTotal": 21118976,
+    "heapUsed": 14047624,
+    "external": 3826362,
+    "arrayBuffers": 44781
+  },
+  "retries": 0,
+  "fallbacks": 0,
+  "timeouts": 0,
+  "duplicateSubmissions": 0,
+  "persistenceErrors": 0,
+  "recommendationErrors": 0,
+  "cefrOutcome": "B1",
+  "completionState": "completed",
+  "sessionId": "a33-1-1000",
+  "responses": 11,
+  "failures": []
+}

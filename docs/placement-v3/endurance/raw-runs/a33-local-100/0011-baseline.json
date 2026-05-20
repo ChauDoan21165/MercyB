@@ -1,0 +1,26 @@
+{
+  "runId": "a33-local-100",
+  "iteration": 11,
+  "scenario": "baseline",
+  "timestamp": "2026-05-20T13:04:51.275Z",
+  "durationMs": 1,
+  "pass": true,
+  "memory": {
+    "rss": 98353152,
+    "heapTotal": 24526848,
+    "heapUsed": 19167328,
+    "external": 3855580,
+    "arrayBuffers": 73999
+  },
+  "retries": 0,
+  "fallbacks": 0,
+  "timeouts": 0,
+  "duplicateSubmissions": 0,
+  "persistenceErrors": 0,
+  "recommendationErrors": 0,
+  "cefrOutcome": "B1",
+  "completionState": "completed",
+  "sessionId": "a33-11-11000",
+  "responses": 11,
+  "failures": []
+}

@@ -1,0 +1,31 @@
+{
+  "runId": "a33-local-100-final",
+  "startedAt": "2026-05-20T13:22:46.424Z",
+  "completedAt": "2026-05-20T13:22:46.844Z",
+  "total": 100,
+  "passed": 100,
+  "failed": 0,
+  "durationMs": 408,
+  "p50Ms": 1,
+  "p95Ms": 1,
+  "heapStartMb": 13.24,
+  "heapEndMb": 13.71,
+  "retries": 8,
+  "fallbacks": 9,
+  "timeouts": 3,
+  "failures": [],
+  "scenarios": {
+    "baseline": 53,
+    "resume": 5,
+    "browser_refresh": 4,
+    "abandon": 2,
+    "duplicate_submission": 2,
+    "retry_storm": 2,
+    "interrupted_persistence": 2,
+    "delayed_grading": 2,
+    "fallback_grading": 1,
+    "partial_recommendation_failure": 1,
+    "timeout_recovery": 1,
+    "final_stability": 25
+  }
+}
