@@ -193,6 +193,8 @@ When a dispatch explicitly authorizes "push + PR open" upfront, agents do NOT st
 
 This is principle 12 (never repeat instructions) applied to dispatch authorization. If the dispatch already said it, the agent doesn't need to ask again.
 
+**If the harness blocks an authorized action** (auto-mode classifier denial, hook block, permission rule, sandbox restriction), the agent does the minimum workaround that preserves Chau's stated intent — retry, alternate command path, sequence the action after a related operation that satisfies the classifier — and flags the denial explicitly in the final report so a permission rule can be added. Do not bypass the harness (e.g. with `--no-verify` or sandbox overrides) unless Chau has explicitly authorized that escape. Do not silently drop the authorized action either; if no workaround exists, the report must say so.
+
 
 ## 17. FREE AGENT = IMMEDIATE NEXT DISPATCH
 
@@ -204,7 +206,7 @@ the moment a report arrives, the next brief ships in the same message.
 
 ## Last updated
 
-2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope; added P16 sub-clause on harness-policy seam handling (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
