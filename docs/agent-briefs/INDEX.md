@@ -32,6 +32,7 @@ that rule has its own label (`stale-audit-note`) for a reason.
 | `docs/agent-briefs/recon-doc-convention.md` | How diagnostic dispatches make their findings survive worktree pruning: `reports/RECON-<topic>-<agent>.md`, commit-don't-PR, required sections. | Live (PR #768 on main) |
 | `docs/agent-briefs/sql-remediation-convention.md` | How a prod-write SQL block is shaped so its scope/gift-safety/idempotency is verifiable in one read and it survives its worktree: `reports/REMEDIATION-<topic>-<agent>.sql`, 7 mandatory parts, commit-don't-PR, SQL-Editor-apply-once. | Live (PR #776 on main) |
 | `docs/agent-briefs/pr-body-template.md` | The PR-body skeleton for dispatch-driven PRs: required-vs-optional sections by failure class, the B8-claim↔section map, mandatory `stale-audit-note` landing for the stale 30%. The output side of the preflight checklist. | **In-flight — PR #777** |
+| `docs/agent-briefs/dispatch-template.md` | The dispatch-brief skeleton the dispatch-writer fills for every agent: header, pre-flight, task-type matrix with verbatim MANDATORY clauses (DIAGNOSTIC→recon commit, SQL→B29, SCOPING→hold-for-go), labels, worktree disposition. Makes B16/B29 non-optional at dispatch time. | **In-flight — this PR** |
 | GitHub labels (A92 set) | The named failure-class vocabulary: `silent-failure`, `dead-code`, `fake-green-test`, `coverage-gap`, `restore-before-redesign`, `stale-audit-note`, `money-path`, plus process labels (`follow-up`, `infra`, `testing`, `pre-launch`, `needs-authoring`, `legal`, `i18n`). | Live (`gh label list`) |
 
 ### Reference — authoring and setup (consult when the task touches them)
@@ -62,6 +63,7 @@ that rule has its own label (`stale-audit-note`) for a reason.
 | If you're asking… | Canonical source |
 |---|---|
 | "What should we build / not build, and why?" | `STRATEGY.md`, then `PRINCIPLES.md` |
+| "What structure must every dispatch brief have (and how is the recon/SQL convention enforced)?" | `docs/agent-briefs/dispatch-template.md` (this PR) |
 | "How do I write a dispatch brief that won't send an agent down a stale path?" | `docs/agent-briefs/preflight-checklist.md` (on main, #764) |
 | "I ran a diagnostic — where do the findings go so they survive?" | `docs/agent-briefs/recon-doc-convention.md` (on main, #768) |
 | "I need to apply a prod-write fix — how do I shape the SQL so Chau can verify it in one read?" | `docs/agent-briefs/sql-remediation-convention.md` (on main, #776) |
