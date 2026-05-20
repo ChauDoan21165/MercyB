@@ -13,6 +13,7 @@ Adds Placement V3 endurance and regression burn-in tooling:
 
 ## Runtime Evidence
 
+- Endurance merge-readiness evidence added.
 - Final 100-run campaign: 100/100 passed
 - Final 25-run stability batch: 25/25 passed
 - Browser endurance E2E: 10/10 passed

@@ -1,0 +1,21 @@
+[2m[WebServer] [22m(node:69869) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:69986) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:69986) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: baseline (25.7s)
+  ✓   2 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: resume (2.6s)
+  ✓   3 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: abandon (1.5s)
+  ✓   4 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: duplicate (2.3s)
+  ✓   5 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: retry (2.2s)
+  ✓   6 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: refresh (3.1s)
+  ✓   7 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: delayed (2.9s)
+  ✓   8 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: fallback (2.2s)
+  ✓   9 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: recommendation (2.4s)
+  ✓  10 [chromium] › tests/e2e/placement-v3-endurance.spec.ts:41:5 › placement v3 endurance browser flows › endurance flow: timeout (2.2s)
+
+  10 passed (52.1s)
