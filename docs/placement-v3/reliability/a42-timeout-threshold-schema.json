@@ -1,44 +1,52 @@
 {
-  "generatedAt": "2026-05-20T16:29:33.871Z",
+  "generatedAt": "2026-05-20T16:29:41.131Z",
   "agent": "A42",
   "branch": "feat/a42-reliability-forecast-ops",
-  "forecast": "provider retry budget policy",
+  "schema": "timeout threshold schema",
   "checks": [
     {
-      "name": "retry_budget_ceiling",
+      "name": "speaking_scoring_timeout_threshold",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "failover_retry_limit",
+      "name": "writing_scoring_timeout_threshold",
       "status": "BLOCKED",
       "value": null,
       "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "provider_retry_stability",
+      "name": "azure_phoneme_timeout_threshold",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "failover_retry_stability",
+      "name": "assessment_session_timeout_risk",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
     },
     {
-      "name": "provider_timeout_unknowns",
+      "name": "failover_timeout_risk",
       "status": "BLOCKED",
-      "reason": "missing_or_insufficient_evidence"
+      "value": null,
+      "reason": "missing_threshold_policy_evidence"
     }
   ],
-  "blockedChecks": [
-    "retry_budget_ceiling",
-    "failover_retry_limit",
-    "provider_retry_stability",
-    "failover_retry_stability",
-    "provider_timeout_unknowns"
+  "contractNotes": [
+    "Timeout schema requires explicit scoring thresholds for speaking, writing, and Azure phoneme scoring.",
+    "Assessment-session and failover timeout risk must be present in A33 timeout evidence."
   ],
+  "incompleteChecks": [
+    "speaking_scoring_timeout_threshold",
+    "writing_scoring_timeout_threshold",
+    "azure_phoneme_timeout_threshold",
+    "assessment_session_timeout_risk",
+    "failover_timeout_risk"
+  ],
+  "complete": false,
   "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
   "ready": false,
   "production_safe": false,

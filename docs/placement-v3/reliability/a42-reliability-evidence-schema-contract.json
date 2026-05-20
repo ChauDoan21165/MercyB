@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-05-20T16:29:41.084Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "schema": "reliability evidence schema contract",
+  "checks": [
+    {
+      "name": "a33_endurance_evidence_schema",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "longSessionStable",
+        "providerRetryStable",
+        "replayDurable"
+      ],
+      "missingFields": [
+        "longSessionStable",
+        "providerRetryStable",
+        "replayDurable"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "timeout_risk_evidence_schema",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "assessmentSessionTimeoutRisk",
+        "failoverTimeoutRisk",
+        "timeoutIncidentRisk"
+      ],
+      "missingFields": [
+        "assessmentSessionTimeoutRisk",
+        "failoverTimeoutRisk",
+        "timeoutIncidentRisk"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "provider_latency_evidence_schema",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "openaiLatencyVariance",
+        "geminiFailoverLatencyVariance",
+        "azurePhonemeScoringLatencyVariance"
+      ],
+      "missingFields": [
+        "openaiLatencyVariance",
+        "geminiFailoverLatencyVariance",
+        "azurePhonemeScoringLatencyVariance"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "replay_durability_evidence_schema",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "replayDurable",
+        "replayEvidenceComplete",
+        "replayDurabilityThreshold"
+      ],
+      "missingFields": [
+        "replayDurable",
+        "replayEvidenceComplete",
+        "replayDurabilityThreshold"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "retry_budget_evidence_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "retryBudgetCeiling",
+        "failoverRetryLimit",
+        "providerTimeoutsResolved"
+      ],
+      "missingFields": [
+        "retryBudgetCeiling",
+        "failoverRetryLimit",
+        "providerTimeoutsResolved"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "assessment_session_sla_evidence_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "maxAdaptiveSessionDuration",
+        "speakingScoringTimeoutThreshold",
+        "writingScoringTimeoutThreshold",
+        "humanReviewHandoffSla"
+      ],
+      "missingFields": [
+        "maxAdaptiveSessionDuration",
+        "speakingScoringTimeoutThreshold",
+        "writingScoringTimeoutThreshold",
+        "humanReviewHandoffSla"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    }
+  ],
+  "contractNotes": [
+    "A33 endurance summaries must expose long-session, retry, replay, and threshold evidence.",
+    "A33 timeout forecasts must expose timeout risk, provider latency, retry budget, and SLA evidence.",
+    "A42 treats absent source fields as blocked evidence, not as passing defaults."
+  ],
+  "incompleteChecks": [
+    "a33_endurance_evidence_schema",
+    "timeout_risk_evidence_schema",
+    "provider_latency_evidence_schema",
+    "replay_durability_evidence_schema",
+    "retry_budget_evidence_requirements",
+    "assessment_session_sla_evidence_requirements"
+  ],
+  "complete": false,
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "ready": false,
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "placement_test_enabled": false,
+    "placement_v3_ui_enabled": false,
+    "live_validation_complete": false,
+    "live_provider_validated": false,
+    "real_user_validated": false,
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  }
+}

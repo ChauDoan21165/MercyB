@@ -141,6 +141,18 @@ function main() {
     case "session-sla":
       generateAssessmentSessionSlaPlan();
       break;
+    case "evidence-schema":
+      generateReliabilityEvidenceSchemaContract();
+      break;
+    case "pilot-endurance":
+      generatePilotEnduranceTestPlan();
+      break;
+    case "timeout-schema":
+      generateTimeoutThresholdSchema();
+      break;
+    case "latency-schema":
+      generateProviderLatencyEvidenceSchema();
+      break;
     case "auto":
       runAuto();
       break;
@@ -168,6 +180,10 @@ function runAuto() {
   const timeoutSimulation = generateTimeoutIncidentSimulation(sources);
   const retryBudget = generateProviderRetryBudgetPolicy(sources);
   const sessionSla = generateAssessmentSessionSlaPlan(sources);
+  const evidenceSchema = generateReliabilityEvidenceSchemaContract(sources);
+  const pilotEndurance = generatePilotEnduranceTestPlan(sources);
+  const timeoutSchema = generateTimeoutThresholdSchema(sources);
+  const latencySchema = generateProviderLatencyEvidenceSchema(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -182,6 +198,10 @@ function runAuto() {
       timeoutSimulation,
       retryBudget,
       sessionSla,
+      evidenceSchema,
+      pilotEndurance,
+      timeoutSchema,
+      latencySchema,
     );
   }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
@@ -198,6 +218,10 @@ function runAuto() {
   console.log(`[a42] timeout incident simulation: ${path.join(RELIABILITY_OUT_DIR, "a42-timeout-incident-simulation.json")}`);
   console.log(`[a42] provider retry budget policy: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-retry-budget-policy.json")}`);
   console.log(`[a42] assessment session SLA plan: ${path.join(RELIABILITY_OUT_DIR, "a42-assessment-session-sla-plan.json")}`);
+  console.log(`[a42] reliability evidence schema contract: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-schema-contract.json")}`);
+  console.log(`[a42] pilot endurance test plan: ${path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-test-plan.json")}`);
+  console.log(`[a42] timeout threshold schema: ${path.join(RELIABILITY_OUT_DIR, "a42-timeout-threshold-schema.json")}`);
+  console.log(`[a42] provider latency evidence schema: ${path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-evidence-schema.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -886,6 +910,168 @@ function generateAssessmentSessionSlaPlan(existingSources?: SourceStatus[]) {
   return report;
 }
 
+function generateReliabilityEvidenceSchemaContract(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    evidenceSchemaCheck(enduranceHealth, "a33_endurance_evidence_schema", ["longSessionStable", "providerRetryStable", "replayDurable"]),
+    evidenceSchemaCheck(timeoutForecast, "timeout_risk_evidence_schema", ["assessmentSessionTimeoutRisk", "failoverTimeoutRisk", "timeoutIncidentRisk"]),
+    evidenceSchemaCheck(timeoutForecast, "provider_latency_evidence_schema", [
+      "openaiLatencyVariance",
+      "geminiFailoverLatencyVariance",
+      "azurePhonemeScoringLatencyVariance",
+    ]),
+    evidenceSchemaCheck(enduranceHealth, "replay_durability_evidence_schema", ["replayDurable", "replayEvidenceComplete", "replayDurabilityThreshold"]),
+    evidenceSchemaCheck(timeoutForecast, "retry_budget_evidence_requirements", ["retryBudgetCeiling", "failoverRetryLimit", "providerTimeoutsResolved"]),
+    evidenceSchemaCheck(timeoutForecast, "assessment_session_sla_evidence_requirements", [
+      "maxAdaptiveSessionDuration",
+      "speakingScoringTimeoutThreshold",
+      "writingScoringTimeoutThreshold",
+      "humanReviewHandoffSla",
+    ]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("reliability evidence schema contract", checks, riskClassification, [
+    "A33 endurance summaries must expose long-session, retry, replay, and threshold evidence.",
+    "A33 timeout forecasts must expose timeout risk, provider latency, retry budget, and SLA evidence.",
+    "A42 treats absent source fields as blocked evidence, not as passing defaults.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-reliability-evidence-schema-contract",
+    report,
+    [
+      "# A42 Reliability Evidence Schema Contract",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "This contract describes required evidence shapes only. It does not fabricate missing A33 evidence or enable Placement V3.",
+    ],
+  );
+  return report;
+}
+
+function generatePilotEnduranceTestPlan(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const enduranceHealth = sourceData(sources, "a33_endurance_health");
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    evidenceSchemaCheck(enduranceHealth, "pilot_endurance_test_requirements", ["pilotRunCount", "pilotDurationMinutes", "longSessionStable"]),
+    evidenceSchemaCheck(timeoutForecast, "pilot_timeout_threshold_requirements", [
+      "assessmentSessionTimeoutRisk",
+      "speakingScoringTimeoutThreshold",
+      "writingScoringTimeoutThreshold",
+      "azurePhonemeTimeoutThreshold",
+    ]),
+    evidenceSchemaCheck(enduranceHealth, "pilot_replay_durability_requirements", ["replayDurable", "replayEvidenceComplete"]),
+    evidenceSchemaCheck(timeoutForecast, "pilot_provider_latency_requirements", [
+      "openaiLatencyVariance",
+      "geminiFailoverLatencyVariance",
+      "azurePhonemeScoringLatencyVariance",
+    ]),
+    evidenceSchemaCheck(timeoutForecast, "pilot_retry_budget_requirements", ["retryBudgetCeiling", "failoverRetryLimit"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("pilot endurance test plan", checks, riskClassification, [
+    "Pilot endurance must include repeated adaptive-session runs, provider-latency capture, replay checks, and timeout-threshold validation.",
+    "Pilot evidence must remain artifact-backed and safety-flagged before A42 can classify readiness differently.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-pilot-endurance-test-plan",
+    report,
+    [
+      "# A42 Pilot Endurance Test Plan",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "The pilot plan is blocked-safe planning only. A42 does not run endurance tests or mutate A33 execution.",
+    ],
+  );
+  return report;
+}
+
+function generateTimeoutThresholdSchema(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    thresholdCheck(timeoutForecast, "speaking_scoring_timeout_threshold", ["speakingScoringTimeoutThreshold", "speaking_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "writing_scoring_timeout_threshold", ["writingScoringTimeoutThreshold", "writing_scoring_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "azure_phoneme_timeout_threshold", ["azurePhonemeTimeoutThreshold", "azure_phoneme_timeout_threshold"]),
+    thresholdCheck(timeoutForecast, "assessment_session_timeout_risk", ["assessmentSessionTimeoutRisk", "assessment_session_timeout_risk"]),
+    thresholdCheck(timeoutForecast, "failover_timeout_risk", ["failoverTimeoutRisk", "failover_timeout_risk"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("timeout threshold schema", checks, riskClassification, [
+    "Timeout schema requires explicit scoring thresholds for speaking, writing, and Azure phoneme scoring.",
+    "Assessment-session and failover timeout risk must be present in A33 timeout evidence.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-timeout-threshold-schema",
+    report,
+    [
+      "# A42 Timeout Threshold Schema",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Timeout schema validation remains blocked until timeout thresholds are provided by source evidence.",
+    ],
+  );
+  return report;
+}
+
+function generateProviderLatencyEvidenceSchema(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const timeoutForecast = sourceData(sources, "a33_timeout_risk_forecast");
+  const checks = [
+    evidenceSchemaCheck(timeoutForecast, "openai_latency_evidence", ["openaiLatencyVariance", "maxAcceptableProviderLatency"]),
+    evidenceSchemaCheck(timeoutForecast, "gemini_failover_latency_evidence", ["geminiFailoverLatencyVariance", "openaiGeminiFailoverLatency"]),
+    evidenceSchemaCheck(timeoutForecast, "azure_phoneme_latency_evidence", ["azurePhonemeScoringLatencyVariance", "azurePhonemeTimeoutThreshold"]),
+    evidenceSchemaCheck(timeoutForecast, "provider_timeout_evidence", ["providerTimeoutsResolved", "providerTimeoutUnknowns"]),
+    evidenceSchemaCheck(timeoutForecast, "human_review_handoff_latency_evidence", ["humanReviewHandoffLatency", "humanReviewHandoffSla"]),
+  ];
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("provider latency evidence schema", checks, riskClassification, [
+    "Provider latency schema requires bounded OpenAI, Gemini failover, Azure phoneme, timeout, and handoff evidence.",
+    "A42 does not infer latency from absent artifacts.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-provider-latency-evidence-schema",
+    report,
+    [
+      "# A42 Provider Latency Evidence Schema",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Provider latency schema validation remains blocked until source evidence provides bounded provider metrics.",
+    ],
+  );
+  return report;
+}
+
 function ingestSources(): SourceStatus[] {
   return SOURCES.map((source) => {
     const resolved = resolveSource(source.path);
@@ -1090,6 +1276,17 @@ function thresholdCheck(data: Record<string, unknown> | null, name: string, keys
   };
 }
 
+function evidenceSchemaCheck(data: Record<string, unknown> | null, name: string, requiredKeys: string[]) {
+  const missingFields = data ? requiredKeys.filter((key) => nestedValue(data, key) === undefined) : requiredKeys;
+  return {
+    name,
+    status: missingFields.length === 0 ? "PASS" : "BLOCKED",
+    requiredFields: requiredKeys,
+    missingFields,
+    reason: missingFields.length === 0 ? "schema_fields_present_in_source_evidence" : "missing_schema_fields_or_source_evidence",
+  };
+}
+
 function sourceData(sources: SourceStatus[], key: string) {
   return sources.find((source) => source.key === key)?.data ?? null;
 }
@@ -1102,6 +1299,33 @@ function reliabilityForecastReport(name: string, checks: Array<{ name: string; s
     forecast: name,
     checks,
     blockedChecks: checks.filter((check) => check.status !== "PASS").map((check) => check.name),
+    riskClassification,
+    ready: riskClassification === "RELIABILITY_READY",
+    production_safe: false,
+    placement_v3_enabled: false,
+    placement_test_enabled: false,
+    placement_v3_ui_enabled: false,
+    live_validation_complete: false,
+    live_provider_validated: false,
+    safetyPosition: safetyPosition(),
+  };
+}
+
+function schemaReport(
+  name: string,
+  checks: Array<{ name: string; status: string; reason: string; requiredFields?: string[]; missingFields?: string[]; value?: unknown }>,
+  riskClassification: ReliabilityRiskClassification,
+  contractNotes: string[],
+) {
+  return {
+    generatedAt: new Date().toISOString(),
+    agent: "A42",
+    branch: EXPECTED_BRANCH,
+    schema: name,
+    checks,
+    contractNotes,
+    incompleteChecks: checks.filter((check) => check.status !== "PASS").map((check) => check.name),
+    complete: checks.every((check) => check.status === "PASS"),
     riskClassification,
     ready: riskClassification === "RELIABILITY_READY",
     production_safe: false,
@@ -1228,6 +1452,10 @@ function enforceStrictMode(
   timeoutSimulation: ReturnType<typeof generateTimeoutIncidentSimulation>,
   retryBudget: ReturnType<typeof generateProviderRetryBudgetPolicy>,
   sessionSla: ReturnType<typeof generateAssessmentSessionSlaPlan>,
+  evidenceSchema: ReturnType<typeof generateReliabilityEvidenceSchemaContract>,
+  pilotEndurance: ReturnType<typeof generatePilotEnduranceTestPlan>,
+  timeoutSchema: ReturnType<typeof generateTimeoutThresholdSchema>,
+  latencySchema: ReturnType<typeof generateProviderLatencyEvidenceSchema>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -1246,6 +1474,10 @@ function enforceStrictMode(
   if (timeoutSimulation.riskClassification !== "RELIABILITY_READY") failures.push(`timeout incident simulation blocked: ${timeoutSimulation.riskClassification}`);
   if (retryBudget.riskClassification !== "RELIABILITY_READY") failures.push(`provider retry budget blocked: ${retryBudget.riskClassification}`);
   if (sessionSla.riskClassification !== "RELIABILITY_READY") failures.push(`assessment session SLA blocked: ${sessionSla.riskClassification}`);
+  if (evidenceSchema.riskClassification !== "RELIABILITY_READY") failures.push(`reliability evidence schema blocked: ${evidenceSchema.riskClassification}`);
+  if (pilotEndurance.riskClassification !== "RELIABILITY_READY") failures.push(`pilot endurance test plan blocked: ${pilotEndurance.riskClassification}`);
+  if (timeoutSchema.riskClassification !== "RELIABILITY_READY") failures.push(`timeout threshold schema blocked: ${timeoutSchema.riskClassification}`);
+  if (latencySchema.riskClassification !== "RELIABILITY_READY") failures.push(`provider latency evidence schema blocked: ${latencySchema.riskClassification}`);
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
   if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
   if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
@@ -1255,6 +1487,10 @@ function enforceStrictMode(
   if (timeoutSimulation.checks.some((item) => item.status !== "PASS")) failures.push("timeout incident simulation missing");
   if (retryBudget.checks.some((item) => item.status !== "PASS")) failures.push("provider retry budget missing");
   if (sessionSla.checks.some((item) => item.status !== "PASS")) failures.push("assessment session SLA missing");
+  if (!evidenceSchema.complete) failures.push("reliability evidence schema incomplete");
+  if (!pilotEndurance.complete) failures.push("pilot endurance test plan incomplete");
+  if (!timeoutSchema.complete) failures.push("timeout schema missing");
+  if (!latencySchema.complete) failures.push("provider latency schema missing");
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
     throw new Error(`A42 strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
@@ -1357,6 +1593,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-provider-retry-budget-policy.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-assessment-session-sla-plan.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-assessment-session-sla-plan.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-schema-contract.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-reliability-evidence-schema-contract.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-test-plan.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-pilot-endurance-test-plan.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-timeout-threshold-schema.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-timeout-threshold-schema.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-evidence-schema.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-provider-latency-evidence-schema.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

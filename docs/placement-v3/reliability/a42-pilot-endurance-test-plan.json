@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-05-20T16:29:41.065Z",
+  "agent": "A42",
+  "branch": "feat/a42-reliability-forecast-ops",
+  "schema": "pilot endurance test plan",
+  "checks": [
+    {
+      "name": "pilot_endurance_test_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "pilotRunCount",
+        "pilotDurationMinutes",
+        "longSessionStable"
+      ],
+      "missingFields": [
+        "pilotRunCount",
+        "pilotDurationMinutes",
+        "longSessionStable"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "pilot_timeout_threshold_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "assessmentSessionTimeoutRisk",
+        "speakingScoringTimeoutThreshold",
+        "writingScoringTimeoutThreshold",
+        "azurePhonemeTimeoutThreshold"
+      ],
+      "missingFields": [
+        "assessmentSessionTimeoutRisk",
+        "speakingScoringTimeoutThreshold",
+        "writingScoringTimeoutThreshold",
+        "azurePhonemeTimeoutThreshold"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "pilot_replay_durability_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "replayDurable",
+        "replayEvidenceComplete"
+      ],
+      "missingFields": [
+        "replayDurable",
+        "replayEvidenceComplete"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "pilot_provider_latency_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "openaiLatencyVariance",
+        "geminiFailoverLatencyVariance",
+        "azurePhonemeScoringLatencyVariance"
+      ],
+      "missingFields": [
+        "openaiLatencyVariance",
+        "geminiFailoverLatencyVariance",
+        "azurePhonemeScoringLatencyVariance"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    },
+    {
+      "name": "pilot_retry_budget_requirements",
+      "status": "BLOCKED",
+      "requiredFields": [
+        "retryBudgetCeiling",
+        "failoverRetryLimit"
+      ],
+      "missingFields": [
+        "retryBudgetCeiling",
+        "failoverRetryLimit"
+      ],
+      "reason": "missing_schema_fields_or_source_evidence"
+    }
+  ],
+  "contractNotes": [
+    "Pilot endurance must include repeated adaptive-session runs, provider-latency capture, replay checks, and timeout-threshold validation.",
+    "Pilot evidence must remain artifact-backed and safety-flagged before A42 can classify readiness differently."
+  ],
+  "incompleteChecks": [
+    "pilot_endurance_test_requirements",
+    "pilot_timeout_threshold_requirements",
+    "pilot_replay_durability_requirements",
+    "pilot_provider_latency_requirements",
+    "pilot_retry_budget_requirements"
+  ],
+  "complete": false,
+  "riskClassification": "BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS",
+  "ready": false,
+  "production_safe": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "placement_test_enabled": false,
+    "placement_v3_ui_enabled": false,
+    "live_validation_complete": false,
+    "live_provider_validated": false,
+    "real_user_validated": false,
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  }
+}
