@@ -49,6 +49,8 @@ speaking/reading/listening graders are still orchestrator fallbacks.
 - `src/lib/featureFlags.ts`, `vite.config.ts`, `src/router/AppRouter.tsx`,
   `playwright.smoke.config.ts`: placement smoke-test flags and E2E auth bypass.
 - `src/types/placement-v3.ts`: shared placement v3 assessment/recommender types.
+- `src/test/setup.ts`: repairs the shared Vitest localStorage/sessionStorage
+  environment for Node 25 so repo tests and Supabase auth storage can run.
 
 ## Bugs Found and Fixed
 
@@ -59,6 +61,10 @@ See `docs/placement-v3-integration-bugs.md`. Highlights:
 - Orchestrator prompt ids were generated stubs instead of #937 catalog ids.
 - Final recommendations were synthetic stubs instead of #936 adapter output.
 - A32 conversation assessments did not match the orchestrator assessment shape.
+- Shared Vitest storage was broken under Node 25, causing
+  `localStorage.clear/getItem is not a function` and Supabase auth
+  `storage.getItem is not a function` failures. This was a pre-existing test
+  harness gap, not Placement v3 business logic.
 
 ## Test Results
 
@@ -69,6 +75,7 @@ npm run typecheck
 npm run typecheck:ci
 npm run typecheck:functions
 npm run lint
+npm test
 npm run build
 VITE_PLACEMENT_TEST_ENABLED=true VITE_PLACEMENT_V3_UI_ENABLED=true \
 VITE_SUPABASE_URL=https://placeholder.invalid.supabase.co \
@@ -77,18 +84,7 @@ npx playwright test tests/e2e/placement-v3-vertical.spec.ts --config=playwright.
 # 1 passed (7.9s)
 ```
 
-Not passing:
-
-```bash
-npm test
-# 30 failed | 377 passed test files
-# 266 failed | 6804 passed tests
-```
-
-The Vitest failures cluster around the shared localStorage/Supabase auth test
-environment (`localStorage.clear/getItem is not a function`,
-`--localstorage-file was provided without a valid path`) and are not placement
-v3-specific.
+`npm test` passed: 407 test files, 7070 tests.
 
 ## Known Issues
 

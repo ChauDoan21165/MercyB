@@ -37,6 +37,12 @@ Date: 2026-05-20
    - Symptom: component tests imported `placementV3StubInternals.tasks`, but the real client replacement left that array empty and loaded Supabase at module import time.
    - Fix: keep fixture-only task/result builders under `placementV3StubInternals` and lazy-import the browser Supabase client only when making a real placement request.
 
+9. Shared Vitest storage was broken under Node 25.
+   - Symptom: full `npm test` failed with `localStorage.clear is not a function`, `localStorage.getItem is not a function`, Supabase auth `storage.getItem is not a function`, and `--localstorage-file was provided without a valid path`.
+   - Cause: unqualified `localStorage` resolved to Node's experimental global storage object, which exists under Node 25 but does not expose Web Storage methods without a configured storage file. The shared Vitest setup had no explicit storage polyfill.
+   - Fix: `src/test/setup.ts` now installs in-memory Web Storage-compatible `localStorage` and `sessionStorage` on both `globalThis` and `window`.
+   - Status: pre-existing shared test-environment gap, not introduced by Placement v3 business logic. The integrated branch had not changed `src/test/setup.ts` before this fix.
+
 ## Follow-Up Bugs Not Fixed Here
 
 - #936 recommender is still app/Vite-oriented (`lessonIndex` uses app data and Vite globals). The edge adapter attempts the app recommender and falls back to profile-derived recommendations if the import is unavailable; Supabase deployment packaging should be reviewed before production deploy.

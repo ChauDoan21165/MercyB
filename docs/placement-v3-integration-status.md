@@ -58,26 +58,28 @@ npm run build
 # passed; rooms:check passed with 30 non-fatal placeholder-title warnings
 ```
 
-Not passing in this worktree:
-
 ```bash
 npm test
-# 30 failed | 377 passed test files
-# 266 failed | 6804 passed tests
+# 407 passed test files
+# 7070 passed tests
 ```
 
-The failures cluster around the shared Vitest/localStorage environment:
-`localStorage.clear is not a function`, `storage.getItem is not a function`,
-and `--localstorage-file was provided without a valid path`. The failing files
-are broad pre-existing localStorage/Supabase-auth consumers such as pronunciation
-drill graduation, home drill recommendation, Mercy practice recommendations, and
-onboarding tests; the placement v3 vertical E2E and placement v3 session unit
-tests pass.
+The earlier `npm test` failure was in the shared Vitest storage harness, not
+Placement v3 business logic. Under Node 25, unqualified `localStorage` resolved
+to Node's experimental global storage object, which existed but lacked Web
+Storage methods without a valid `--localstorage-file`. `src/test/setup.ts` now
+installs an in-memory Web Storage-compatible `localStorage` and `sessionStorage`
+on both `globalThis` and `window`, which also removed the Supabase auth
+`storage.getItem is not a function` warnings. This was a pre-existing test
+environment gap exposed by running the integrated branch under Node 25; the
+branch had not touched the shared Vitest setup before this fix.
 
 Earlier failed runs found:
 
 - route gate ignored env flags until `featureFlags.ts` used direct placement env reads;
-- submit race on first task transition until the spec waited for `/placement/test/:sessionId`.
+- submit race on first task transition until the spec waited for `/placement/test/:sessionId`;
+- shared Vitest storage harness used no explicit localStorage/sessionStorage
+  polyfill, so Node 25's experimental global storage leaked into tests.
 
 ## Observed Performance
 
