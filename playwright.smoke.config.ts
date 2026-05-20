@@ -31,6 +31,7 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
+    serviceWorkers: "block",
   },
 
   projects: [
@@ -46,7 +47,7 @@ export default defineConfig({
   // The dev server owns port 3107 via `strictPort`. If it's already up
   // (another terminal), reuse it; otherwise start it.
   webServer: {
-    command: "npm run dev:frontend",
+    command: "VITE_PLACEMENT_TEST_ENABLED=true VITE_PLACEMENT_V3_UI_ENABLED=true VITE_E2E_AUTH_BYPASS=true npm run dev:frontend",
     url: process.env.TEST_BASE_URL ?? "http://127.0.0.1:3107",
     reuseExistingServer: !process.env.CI,
     timeout: 180 * 1000,

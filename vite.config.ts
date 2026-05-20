@@ -452,6 +452,15 @@ export default defineConfig({
     'import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA': JSON.stringify(
       process.env.VERCEL_GIT_COMMIT_SHA ?? '',
     ),
+    'import.meta.env.VITE_PLACEMENT_TEST_ENABLED': JSON.stringify(
+      process.env.VITE_PLACEMENT_TEST_ENABLED ?? '',
+    ),
+    'import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED': JSON.stringify(
+      process.env.VITE_PLACEMENT_V3_UI_ENABLED ?? '',
+    ),
+    'import.meta.env.VITE_E2E_AUTH_BYPASS': JSON.stringify(
+      process.env.VITE_E2E_AUTH_BYPASS ?? '',
+    ),
   },
 
   resolve: {

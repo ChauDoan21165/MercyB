@@ -1,0 +1,26 @@
+{
+  "runId": "smoke-a33",
+  "iteration": 6,
+  "scenario": "baseline",
+  "timestamp": "2026-05-20T13:04:38.762Z",
+  "durationMs": 1,
+  "pass": true,
+  "memory": {
+    "rss": 105988096,
+    "heapTotal": 21905408,
+    "heapUsed": 16615016,
+    "external": 3829022,
+    "arrayBuffers": 47441
+  },
+  "retries": 0,
+  "fallbacks": 0,
+  "timeouts": 0,
+  "duplicateSubmissions": 0,
+  "persistenceErrors": 0,
+  "recommendationErrors": 0,
+  "cefrOutcome": "B1",
+  "completionState": "completed",
+  "sessionId": "a33-6-6000",
+  "responses": 11,
+  "failures": []
+}

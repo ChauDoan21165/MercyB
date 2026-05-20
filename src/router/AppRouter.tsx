@@ -278,6 +278,7 @@ const AdminAnalyticsPage      = lazyWithRetry(() => import("@/pages/admin/AdminA
 const LatencyMonitoring       = lazyWithRetry(() => import("@/pages/admin/LatencyMonitoring"));
 const SloDashboard            = lazyWithRetry(() => import("@/pages/admin/SloDashboard"));
 const SloDetail               = lazyWithRetry(() => import("@/pages/admin/SloDetail"));
+const PlacementEnduranceDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementEnduranceDashboard"));
 const CostMonitoring          = lazyWithRetry(() => import("@/pages/admin/CostMonitoring"));
 const FrontendPerformance     = lazyWithRetry(() => import("@/pages/admin/FrontendPerformance"));
 const RetentionDashboard      = lazyWithRetry(() => import("@/pages/admin/RetentionDashboard"));
@@ -313,6 +314,7 @@ declare global {
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
   const location = useLocation();
+  if (import.meta.env.VITE_E2E_AUTH_BYPASS === "true") return <>{children}</>;
 
   // Cache the last RESOLVED auth state. Without this, a brief
   // isLoading flip during a Supabase token refresh (which fires on tab
@@ -445,6 +447,7 @@ function PlacementV3Gate({ children }: { children: React.ReactNode }) {
   if (!FEATURE_FLAGS.PLACEMENT_TEST_ENABLED || !FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED) {
     return <Navigate to="/" replace />;
   }
+  if (import.meta.env.VITE_E2E_AUTH_BYPASS === "true") return <>{children}</>;
   return <RequireAuth>{children}</RequireAuth>;
 }
 
@@ -1669,6 +1672,7 @@ export default function AppRouter() {
               <Route path="latency"              element={<LazyPage><LatencyMonitoring /></LazyPage>} />
               <Route path="slo"                  element={<LazyPage><SloDashboard /></LazyPage>} />
               <Route path="slo/:sloId"           element={<LazyPage><SloDetail /></LazyPage>} />
+              <Route path="placement-endurance"  element={<LazyPage><PlacementEnduranceDashboard /></LazyPage>} />
               <Route path="cost-monitoring"      element={<LazyPage><CostMonitoring /></LazyPage>} />
               <Route path="frontend-perf"        element={<LazyPage><FrontendPerformance /></LazyPage>} />
               <Route path="retention"            element={<LazyPage><RetentionDashboard /></LazyPage>} />

@@ -1,0 +1,21 @@
+{
+  "runId": "a33-final-stability-25-final",
+  "startedAt": "2026-05-20T13:22:47.566Z",
+  "completedAt": "2026-05-20T13:22:47.630Z",
+  "total": 25,
+  "passed": 25,
+  "failed": 0,
+  "durationMs": 65,
+  "p50Ms": 1,
+  "p95Ms": 2,
+  "heapStartMb": 13.4,
+  "heapEndMb": 17.11,
+  "retries": 0,
+  "fallbacks": 0,
+  "timeouts": 0,
+  "failures": [],
+  "scenarios": {
+    "baseline": 23,
+    "resume": 2
+  }
+}

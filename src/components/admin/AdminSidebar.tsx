@@ -36,6 +36,7 @@ import {
   Flag,
   BarChart3,
   TrendingDown,
+  Gauge,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -82,6 +83,7 @@ const toolsItems: AdminNavItem[] = [
   { title: "Room Load Diagnostics", url: "/admin/room-load-diagnostics", icon: Search },
   { title: "Feature Flags", url: "/admin/feature-flags", icon: Flag },
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
+  { title: "Placement Endurance", url: "/admin/placement-endurance", icon: Gauge },
 ];
 
 export function AdminSidebar() {
