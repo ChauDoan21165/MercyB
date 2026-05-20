@@ -262,6 +262,18 @@ function main() {
     case "validation-sequencing":
       generateReliabilityValidationSequencing();
       break;
+    case "future-evidence-intake":
+      generateFutureReliabilityEvidenceIntakeContract();
+      break;
+    case "permanent-prerequisites":
+      generatePermanentReliabilityPrerequisiteIndex();
+      break;
+    case "permanent-denial-rules":
+      generatePermanentReliabilityDenialRules();
+      break;
+    case "permanent-validation-sequencing":
+      generatePermanentReliabilitySequencing();
+      break;
     case "auto":
       runAuto();
       break;
@@ -311,6 +323,10 @@ function runAuto() {
   const requiredEvidence = generateRequiredReliabilityEvidenceIndex(sources);
   const denialRules = generateReliabilityReactivationDenialRules(sources);
   const validationSequencing = generateReliabilityValidationSequencing(sources);
+  const futureEvidenceIntake = generateFutureReliabilityEvidenceIntakeContract(sources);
+  const permanentPrerequisites = generatePermanentReliabilityPrerequisiteIndex(sources);
+  const permanentDenialRules = generatePermanentReliabilityDenialRules(sources);
+  const permanentValidationSequencing = generatePermanentReliabilitySequencing(sources);
   generateHandoffReport(summary, scoreboard, sources);
   if (args.includes("--strict")) {
     enforceStrictMode(
@@ -345,6 +361,10 @@ function runAuto() {
       requiredEvidence,
       denialRules,
       validationSequencing,
+      futureEvidenceIntake,
+      permanentPrerequisites,
+      permanentDenialRules,
+      permanentValidationSequencing,
     );
   }
   console.log(`[a42] artifacts: ${OUT_DIR}`);
@@ -383,6 +403,10 @@ function runAuto() {
   console.log(`[a42] required reliability evidence index: ${path.join(RELIABILITY_OUT_DIR, "a42-required-reliability-evidence-index.json")}`);
   console.log(`[a42] reactivation denial rules: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-reactivation-denial-rules.json")}`);
   console.log(`[a42] reliability validation sequencing: ${path.join(RELIABILITY_OUT_DIR, "a42-reliability-validation-sequencing.json")}`);
+  console.log(`[a42] future reliability evidence intake contract: ${path.join(RELIABILITY_OUT_DIR, "a42-future-reliability-evidence-intake-contract.json")}`);
+  console.log(`[a42] permanent reliability prerequisite index: ${path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-prerequisite-index.json")}`);
+  console.log(`[a42] permanent reliability denial rules: ${path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-denial-rules.json")}`);
+  console.log(`[a42] permanent reliability sequencing: ${path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-sequencing.json")}`);
   console.log(`[a42] operating summary: ${path.join(OUT_DIR, "a42-reliability-operating-summary.json")}`);
   console.log(`[a42] forecast scoreboard: ${path.join(OUT_DIR, "a42-reliability-forecast-scoreboard.json")}`);
   console.log(`[a42] handoff report: ${path.join(OUT_DIR, "a42-reliability-handoff-report.md")}`);
@@ -2291,6 +2315,162 @@ function generateReliabilityValidationSequencing(existingSources?: SourceStatus[
   return report;
 }
 
+function generateFutureReliabilityEvidenceIntakeContract(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const checks = permanentReliabilityEvidenceChecks(sources);
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("A42 future reliability evidence intake contract", checks, riskClassification, [
+    "Permanent intake requires real source artifacts before A42 may leave blocked-safe archival status.",
+    "Every imported artifact must include source lineage, safety fields, freshness metadata, and explicit denial or validation status.",
+    "A42 rejects inferred, copied-without-lineage, unsafe, or readiness-claiming evidence as incomplete governance evidence.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-future-reliability-evidence-intake-contract",
+    report,
+    [
+      "# A42 Future Reliability Evidence Intake Contract",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- production_safe: ${report.production_safe}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- live_validation_complete: ${report.live_validation_complete}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      "## Permanent Intake Requirements",
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status}; required fields: ${check.requiredFields?.join(", ") ?? "n/a"}`),
+      "",
+      "Future reliability reactivation remains denied until every intake requirement is satisfied by real evidence. This contract is governance-only and evidence-only.",
+    ],
+  );
+  return report;
+}
+
+function generatePermanentReliabilityPrerequisiteIndex(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const checks = permanentReliabilityEvidenceChecks(sources);
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("A42 permanent reliability prerequisite index", checks, riskClassification, [
+    "Index A33 endurance, timeout, replay, provider, observability, supervision, and governance sequencing prerequisites.",
+    "Keep prerequisites blocked until source evidence explicitly satisfies each required field.",
+    "Do not treat archival summaries as validation evidence unless the source artifact is present and safety-flagged.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-permanent-reliability-prerequisite-index",
+    report,
+    [
+      "# A42 Permanent Reliability Prerequisite Index",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- production_safe: ${report.production_safe}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- live_validation_complete: ${report.live_validation_complete}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      "## Permanent Prerequisites",
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "The prerequisite index preserves blocked-safe archival posture until real validation evidence exists.",
+    ],
+  );
+  return report;
+}
+
+function generatePermanentReliabilityDenialRules(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const checks = permanentReliabilityEvidenceChecks(sources);
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("A42 permanent reliability denial rules", checks, riskClassification, [
+    "Deny reliability reactivation when endurance evidence is missing.",
+    "Deny reliability reactivation when replay durability, replay reproducibility, failover validation, provider degradation, latency, timeout, or observability evidence is missing.",
+    "Deny reliability reactivation when unsupported readiness claims appear, autonomous execution implications are unresolved, or governance-approved sequencing is incomplete.",
+    "Deny reliability reactivation when safety fields are unsafe, absent, stale, or lack source lineage.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-permanent-reliability-denial-rules",
+    report,
+    [
+      "# A42 Permanent Reliability Denial Rules",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- production_safe: ${report.production_safe}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- live_validation_complete: ${report.live_validation_complete}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      "## Denial Rules",
+      "",
+      ...report.contractNotes.map((note) => `- ${note}`),
+      "",
+      "## Current Denial Evaluation",
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "All blocked checks preserve A42 archival denial. This artifact does not authorize reactivation, enablement, provider execution, or readiness claims.",
+    ],
+  );
+  return report;
+}
+
+function generatePermanentReliabilitySequencing(existingSources?: SourceStatus[]) {
+  const sources = existingSources ?? ingestSources();
+  const checks = permanentReliabilityEvidenceChecks(sources);
+  const riskClassification = classifyReliabilityRisk(sources, checks);
+  const report = schemaReport("A42 permanent reliability sequencing", checks, riskClassification, [
+    "1. Intake fresh A33 endurance health and timeout validation evidence.",
+    "2. Intake replay durability and replay reproducibility validation evidence.",
+    "3. Intake provider failover, provider degradation, latency, and timeout validation evidence.",
+    "4. Intake observability continuity evidence with retention and audit continuity lineage.",
+    "5. Intake supervised execution governance approval while preserving supervised-only constraints.",
+    "6. Run strict mode and advance only through governance-approved readiness sequencing if every gate passes.",
+  ]);
+  writeReliabilityJsonAndMarkdown(
+    "a42-permanent-reliability-sequencing",
+    report,
+    [
+      "# A42 Permanent Reliability Sequencing",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Reliability risk classification: ${report.riskClassification}`,
+      `- Ready: ${report.ready}`,
+      `- Complete: ${report.complete}`,
+      `- production_safe: ${report.production_safe}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- live_validation_complete: ${report.live_validation_complete}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      "",
+      "## Required Permanent Sequence",
+      "",
+      ...report.contractNotes.map((note) => `- ${note}`),
+      "",
+      "## Sequencing Blockers",
+      "",
+      ...report.checks.map((check) => `- ${check.name}: ${check.status} (${check.reason})`),
+      "",
+      "Permanent validation sequencing is incomplete while any required real evidence is missing. A42 remains blocked-safe.",
+    ],
+  );
+  return report;
+}
+
 function reactivationEvidenceChecks(sources: SourceStatus[]) {
   const a33Endurance = sourceData(sources, "a33_endurance_health");
   const a33Timeout = sourceData(sources, "a33_timeout_risk_forecast");
@@ -2343,6 +2523,76 @@ function reactivationEvidenceChecks(sources: SourceStatus[]) {
     evidenceSchemaCheck(a46Contradictions, "governance_approved_readiness_sequencing", [
       "governanceApprovedReadinessSequencing",
       "contradictionAuditComplete",
+    ]),
+  ];
+}
+
+function permanentReliabilityEvidenceChecks(sources: SourceStatus[]) {
+  const a33Endurance = sourceData(sources, "a33_endurance_health");
+  const a33Timeout = sourceData(sources, "a33_timeout_risk_forecast");
+  const a45Drift = sourceData(sources, "a45_provider_validation_drift_denial");
+  const a47Continuity = sourceData(sources, "a47_observability_reconciliation_audit_continuity");
+  const a49ReplayThresholds = sourceData(sources, "a49_replay_reproducibility_thresholds");
+  const a49ReplayContradictions = sourceData(sources, "a49_replay_reproducibility_contradiction_auditing");
+  const a50Supervision = sourceData(sources, "a50_supervised_execution_denial_governance");
+  const a46Contradictions = sourceData(sources, "a46_governance_contradiction_audits");
+  return [
+    evidenceSchemaCheck(a33Endurance, "endurance_validation_evidence", [
+      "longSessionStable",
+      "pilotRunCount",
+      "replayDurable",
+      "providerRetryStable",
+    ]),
+    evidenceSchemaCheck(a49ReplayContradictions, "replay_durability_validation_evidence", [
+      "replayDurabilityContinuity",
+      "replayEvidenceComplete",
+      "unresolvedReplayContradictions",
+    ]),
+    evidenceSchemaCheck(a45Drift, "failover_validation_evidence", [
+      "failoverValidationEvidence",
+      "providerValidationDenied",
+      "providerDegradationLineage",
+    ]),
+    evidenceSchemaCheck(a45Drift, "provider_degradation_validation_evidence", [
+      "providerDegradationLineage",
+      "providerDegradationThresholds",
+      "driftDenied",
+    ]),
+    evidenceSchemaCheck(a33Timeout, "latency_timeout_validation_evidence", [
+      "timeoutRisk",
+      "assessmentSessionTimeoutRisk",
+      "maxAcceptableProviderLatency",
+      "providerTimeoutsResolved",
+    ]),
+    evidenceSchemaCheck(a47Continuity, "observability_continuity_evidence", [
+      "observabilityDependencies",
+      "auditContinuityEvidence",
+      "retentionContinuity",
+      "traceRetentionPolicy",
+    ]),
+    evidenceSchemaCheck(a49ReplayThresholds, "replay_reproducibility_evidence", [
+      "replayReproducibilityThresholds",
+      "deterministicReplayRate",
+      "replayValidationRuntime",
+    ]),
+    evidenceSchemaCheck(a50Supervision, "supervised_execution_governance_approval", [
+      "supervisedOnly",
+      "executionDenied",
+      "operatorApprovalRequired",
+    ]),
+    evidenceSchemaCheck(a46Contradictions, "unsupported_readiness_claim_detection", [
+      "unsupportedReadinessClaims",
+      "contradictionAuditComplete",
+    ]),
+    evidenceSchemaCheck(a50Supervision, "autonomous_execution_implications", [
+      "autonomous_execution",
+      "supervisedOnly",
+      "operatorApprovalRequired",
+    ]),
+    evidenceSchemaCheck(a46Contradictions, "governance_approved_readiness_sequencing", [
+      "governanceApprovedReadinessSequencing",
+      "contradictionAuditComplete",
+      "readinessSequencingApproved",
     ]),
   ];
 }
@@ -2794,6 +3044,10 @@ function enforceStrictMode(
   requiredEvidence: ReturnType<typeof generateRequiredReliabilityEvidenceIndex>,
   denialRules: ReturnType<typeof generateReliabilityReactivationDenialRules>,
   validationSequencing: ReturnType<typeof generateReliabilityValidationSequencing>,
+  futureEvidenceIntake: ReturnType<typeof generateFutureReliabilityEvidenceIntakeContract>,
+  permanentPrerequisites: ReturnType<typeof generatePermanentReliabilityPrerequisiteIndex>,
+  permanentDenialRules: ReturnType<typeof generatePermanentReliabilityDenialRules>,
+  permanentValidationSequencing: ReturnType<typeof generatePermanentReliabilitySequencing>,
 ) {
   const failures = [
     ...sources.filter((source) => source.key.startsWith("a33_") && !source.present).map((source) => `missing required A33 input: ${source.key}`),
@@ -2852,6 +3106,18 @@ function enforceStrictMode(
   if (validationSequencing.riskClassification !== "RELIABILITY_READY") {
     failures.push(`reliability validation sequencing blocked: ${validationSequencing.riskClassification}`);
   }
+  if (futureEvidenceIntake.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`future reliability evidence intake blocked: ${futureEvidenceIntake.riskClassification}`);
+  }
+  if (permanentPrerequisites.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`permanent reliability prerequisites blocked: ${permanentPrerequisites.riskClassification}`);
+  }
+  if (permanentDenialRules.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`permanent reliability denial rules blocked: ${permanentDenialRules.riskClassification}`);
+  }
+  if (permanentValidationSequencing.riskClassification !== "RELIABILITY_READY") {
+    failures.push(`permanent reliability validation sequencing blocked: ${permanentValidationSequencing.riskClassification}`);
+  }
   if (forecast.categories.some((item) => item.status === "UNKNOWN")) failures.push("provider or replay latency evidence unknown");
   if (providerLatencyRisk.checks.some((item) => item.status !== "PASS")) failures.push("provider latency evidence unknown");
   if (adaptiveSessionReliability.checks.some((item) => item.status !== "PASS")) failures.push("adaptive-session reliability evidence unknown");
@@ -2881,6 +3147,10 @@ function enforceStrictMode(
   if (!requiredEvidence.complete) failures.push("required reliability evidence incomplete");
   if (!denialRules.complete) failures.push("reactivation denial rules preserve denial");
   if (!validationSequencing.complete) failures.push("reliability reactivation sequencing incomplete");
+  if (!futureEvidenceIntake.complete) failures.push("future reliability evidence intake contract incomplete");
+  if (!permanentPrerequisites.complete) failures.push("permanent reliability prerequisites incomplete");
+  if (!permanentDenialRules.complete) failures.push("permanent reliability denial rules preserve denial");
+  if (!permanentValidationSequencing.complete) failures.push("permanent validation sequencing incomplete");
   if (crossStream.checks.some((item) => item.name === "a33_timeout_to_escalation_readiness" && item.status !== "PASS")) {
     failures.push("timeout escalation dependencies undocumented");
   }
@@ -2922,6 +3192,30 @@ function enforceStrictMode(
   }
   if (reactivationGate.checks.some((item) => item.name === "autonomous_execution_implications" && item.status !== "PASS")) {
     failures.push("autonomous execution implications unresolved");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "endurance_validation_evidence" && item.status !== "PASS")) {
+    failures.push("permanent endurance evidence missing");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "replay_durability_validation_evidence" && item.status !== "PASS")) {
+    failures.push("permanent replay durability evidence missing");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "failover_validation_evidence" && item.status !== "PASS")) {
+    failures.push("permanent failover validation evidence missing");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "provider_degradation_validation_evidence" && item.status !== "PASS")) {
+    failures.push("permanent provider degradation lineage incomplete");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "observability_continuity_evidence" && item.status !== "PASS")) {
+    failures.push("permanent observability continuity undefined");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "unsupported_readiness_claim_detection" && item.status !== "PASS")) {
+    failures.push("permanent unsupported readiness claims appear or are unresolved");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "autonomous_execution_implications" && item.status !== "PASS")) {
+    failures.push("permanent autonomous execution implications unresolved");
+  }
+  if (futureEvidenceIntake.checks.some((item) => item.name === "governance_approved_readiness_sequencing" && item.status !== "PASS")) {
+    failures.push("permanent validation sequencing incomplete");
   }
   failures.push("live provider validation incomplete");
   if (failures.length > 0) {
@@ -3075,6 +3369,14 @@ function scanClaims() {
     path.join(RELIABILITY_OUT_DIR, "a42-reliability-reactivation-denial-rules.json"),
     path.join(RELIABILITY_OUT_DIR, "a42-reliability-validation-sequencing.md"),
     path.join(RELIABILITY_OUT_DIR, "a42-reliability-validation-sequencing.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-future-reliability-evidence-intake-contract.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-future-reliability-evidence-intake-contract.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-prerequisite-index.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-prerequisite-index.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-denial-rules.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-denial-rules.json"),
+    path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-sequencing.md"),
+    path.join(RELIABILITY_OUT_DIR, "a42-permanent-reliability-sequencing.json"),
   ].filter((file) => existsSync(file));
   const violations: string[] = [];
   for (const file of files) {

@@ -59,6 +59,10 @@ describe("A42 reliability reactivation governance gates", () => {
     ["placement:a42:required-evidence", "a42-required-reliability-evidence-index"],
     ["placement:a42:denial-rules", "a42-reliability-reactivation-denial-rules"],
     ["placement:a42:validation-sequencing", "a42-reliability-validation-sequencing"],
+    ["placement:a42:future-evidence-intake", "a42-future-reliability-evidence-intake-contract"],
+    ["placement:a42:permanent-prerequisites", "a42-permanent-reliability-prerequisite-index"],
+    ["placement:a42:permanent-denial-rules", "a42-permanent-reliability-denial-rules"],
+    ["placement:a42:permanent-validation-sequencing", "a42-permanent-reliability-sequencing"],
   ])("generates %s with blocked-safe posture", (script, artifact) => {
     const { root, env } = makeOutputEnv();
     const result = runNpm(script, [], env);
@@ -95,7 +99,33 @@ describe("A42 reliability reactivation governance gates", () => {
     expect(checks.has("unsupported_readiness_claim_detection")).toBe(true);
   });
 
-  it("auto generation includes all reactivation artifacts", () => {
+  it("keeps permanent intake blocked without required real evidence", () => {
+    const { root, env } = makeOutputEnv();
+    const result = runNpm("placement:a42:future-evidence-intake", [], env);
+    expect(result.status, result.stderr || result.stdout).toBe(0);
+
+    const report = readJson(root, "a42-future-reliability-evidence-intake-contract");
+    expectBlockedSafe(report);
+    expect(report.incompleteChecks).toEqual(
+      expect.arrayContaining([
+        "endurance_validation_evidence",
+        "replay_durability_validation_evidence",
+        "failover_validation_evidence",
+        "provider_degradation_validation_evidence",
+        "latency_timeout_validation_evidence",
+        "observability_continuity_evidence",
+        "replay_reproducibility_evidence",
+        "supervised_execution_governance_approval",
+        "governance_approved_readiness_sequencing",
+      ]),
+    );
+
+    const checks = checkNames(report);
+    expect(checks.has("unsupported_readiness_claim_detection")).toBe(true);
+    expect(checks.has("autonomous_execution_implications")).toBe(true);
+  });
+
+  it("auto generation includes all reactivation and permanent intake artifacts", () => {
     const { root, env } = makeOutputEnv();
     const result = runNpm("placement:a42:auto", [], env);
     expect(result.status, result.stderr || result.stdout).toBe(0);
@@ -105,6 +135,10 @@ describe("A42 reliability reactivation governance gates", () => {
       "a42-required-reliability-evidence-index",
       "a42-reliability-reactivation-denial-rules",
       "a42-reliability-validation-sequencing",
+      "a42-future-reliability-evidence-intake-contract",
+      "a42-permanent-reliability-prerequisite-index",
+      "a42-permanent-reliability-denial-rules",
+      "a42-permanent-reliability-sequencing",
     ]) {
       const jsonPath = path.join(root, "reliability", `${artifact}.json`);
       const mdPath = path.join(root, "reliability", `${artifact}.md`);
@@ -130,5 +164,16 @@ describe("A42 reliability reactivation governance gates", () => {
     expect(output).toContain("observability continuity undefined");
     expect(output).toContain("autonomous execution implications unresolved");
     expect(output).toContain("reliability reactivation sequencing incomplete");
+    expect(output).toContain("future reliability evidence intake blocked: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS");
+    expect(output).toContain("permanent reliability prerequisites blocked: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS");
+    expect(output).toContain("permanent reliability denial rules blocked: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS");
+    expect(output).toContain("permanent reliability validation sequencing blocked: BLOCKED_BY_MISSING_A33_ENDURANCE_INPUTS");
+    expect(output).toContain("permanent endurance evidence missing");
+    expect(output).toContain("permanent replay durability evidence missing");
+    expect(output).toContain("permanent failover validation evidence missing");
+    expect(output).toContain("permanent provider degradation lineage incomplete");
+    expect(output).toContain("permanent observability continuity undefined");
+    expect(output).toContain("permanent autonomous execution implications unresolved");
+    expect(output).toContain("permanent validation sequencing incomplete");
   });
 });
