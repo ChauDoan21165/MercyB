@@ -108,7 +108,7 @@ Rule: never write "[screenshot of app here]" vaguely. Always be specific about w
 
 Verified against source on 2026-04-21. Sources cited inline. Do not speculate beyond these facts — if a new fact is needed, re-read the source file.
 
-### Pricing (source: NORTH_STAR.md §Business Model, lines 189-197)
+### Pricing (source: STRATEGY.md §8 The Business Model)
 - **Free** — 50+ rooms, no ads, builds habit
 - **Basic — 99,000 VND/month** (~$4) — all rooms, offline, no ads
 - **Premium — 199,000 VND/month** (~$8) — Basic + AI feedback + pronunciation scoring + test prep
@@ -117,7 +117,7 @@ Verified against source on 2026-04-21. Sources cited inline. Do not speculate be
 
 Rule: never translate US prices to VND. Always use the VND amounts above in user-facing copy.
 
-### Payment methods (source: NORTH_STAR.md line 197)
+### Payment methods (source: STRATEGY.md §8 The Business Model)
 Must support: MoMo, ZaloPay, VNPay, bank transfer, credit card, Apple Pay, Google Pay.
 
 ### Mercy Guide tabs (source: src/components/mercy-guide/MercyGuidePanel.tsx, lines 1016-1046)
@@ -131,9 +131,9 @@ Four peer tabs at the top of MercyGuidePanel. No sub-tabs. No tab labeled "Teach
 | logic | Logic | (hidden in kids mode) |
 
 ### Room count (source: `ls public/data/*.json \| wc -l`)
-**476 room JSON files** as of 2026-04-21. NORTH_STAR.md marketing copy (line 262) says "510+ bilingual rooms"; the actual file count does not match that number. In user-facing emails, either say "hundreds of rooms" (safe), or cite the exact 476 — do not repeat the "510+" marketing line without confirming with Chau.
+**476 room JSON files** as of 2026-04-21. Older marketing copy says "510+ bilingual rooms"; the actual file count does not match that number. In user-facing emails, either say "hundreds of rooms" (safe), or cite the exact 476 — do not repeat the "510+" marketing line without confirming with Chau.
 
-### Positioning / target audience (source: NORTH_STAR.md §Target Market, lines 88-109)
+### Positioning / target audience (source: STRATEGY.md §3 The Positioning + §4 The Learning-Pair Matrix)
 Primary: **Vietnamese IELTS/TOEIC/VSTEP aspirants, 18-35, mobile-first.** Typical profile:
 - Student preparing to study abroad, OR
 - Young professional needing English for job promotion, OR
@@ -146,7 +146,7 @@ Secondary: Vietnamese parents buying for kids (kids mode), Vietnamese workers at
 
 Explicitly NOT serving: complete beginners needing A1 basics, native English speakers learning Vietnamese, non-Vietnamese learners globally.
 
-### Core features (source: NORTH_STAR.md §Product Strategy, lines 67-85)
+### Core features (source: STRATEGY.md §5 The Product Strategy)
 1. Test-prep specialization — IELTS, TOEIC, VSTEP tracks (not "general English")
 2. Pronunciation scoring — phoneme-level, targets Vietnamese pain points (th, r, l, final consonants, stress, intonation)
 3. Grammar for Vietnamese transfer errors — articles (a/an/the), verb tenses, plurals, question inversion
@@ -155,7 +155,7 @@ Explicitly NOT serving: complete beginners needing A1 basics, native English spe
 6. Cultural fit — examples use Vietnamese contexts (phở, Honda Wave, Tết, TCH)
 7. Kids mode — offline-first, age-appropriate, zero monetization CTAs (sacred)
 
-### Non-negotiable principles that shape email copy (source: NORTH_STAR.md §Non-Negotiable Principles, lines 24-65)
+### Non-negotiable principles that shape email copy (source: CLAUDE.md "five non-negotiables" + PRINCIPLES.md)
 - Vietnamese-first, always — never generic-English-translated
 - Outcomes > engagement — no dark gamification, no streak-shaming, no manipulation
 - Vietnamese teacher warmth — Mercy is warm, patient, never punishes mistakes
@@ -163,4 +163,4 @@ Explicitly NOT serving: complete beginners needing A1 basics, native English spe
 - Price for Vietnamese purchasing power — never translate US prices
 
 ### Distribution status (as of 2026-04-21)
-Web-only at mercyblade.com. iOS app NOT YET submitted (blocked on bundle size reduction per NORTH_STAR §Phase 1). CTAs must say "mercyblade.com" — never "App Store" or "Google Play" until those ship.
+Web-only at mercyblade.com. iOS app NOT YET submitted (blocked on bundle size reduction per STRATEGY.md §9 Distribution Strategy). CTAs must say "mercyblade.com" — never "App Store" or "Google Play" until those ship.

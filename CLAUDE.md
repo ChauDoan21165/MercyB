@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Make MercyBlade the #1 English-learning app for Vietnamese learners — the one Vietnamese students publicly credit for their IELTS score, their job abroad, their life change. Outcomes, not engagement. Vietnamese-first in every feature, word, and button.
 
-**Read `STRATEGY.md` and `PRINCIPLES.md` first — they are the two canonical living documents** (post-2026-05-17 strategic clarification). `NORTH_STAR.md` and `PLAN.md` are archived historical references in `reports/archive/`; consult them for history, not current direction.
+**Read `STRATEGY.md` and `PRINCIPLES.md` first — they are the two canonical living documents** (post-2026-05-17 strategic clarification). The pre-2026-05-17 strategy docs are archived as `reports/archive/NORTH_STAR-v1.3-2026-04-20.md` and `reports/archive/PLAN-v1-2026-05-10.md` (no root `NORTH_STAR.md`/`PLAN.md` exists anymore); consult them for history, not current direction.
 
 ## The five non-negotiables — a feature that violates any of these is rejected
 
@@ -104,7 +104,6 @@ Not a vanilla create-react-app boot. Includes:
 - Full-screen fatal error overlay (user-safe in prod, stack traces in dev)
 - Legacy path normalization (`/upgrade` → `/pricing`)
 - Session-storage deep-link restore for auth redirects
-- `window.__mbResolveAudioSrc` seam (older code path; modern path is `useAudioUrl`)
 - **PWA service worker IS registered in production.** `registerPwaServiceWorker` IIFE in `src/main.tsx` calls `navigator.serviceWorker.register("/sw.js")` on `window load`. Disabled only in dev (so HMR + the grammar-server proxy aren't intercepted). The SW config uses `skipWaiting:true / clientsClaim:true` so new deploys take over as soon as they install; `main.tsx` posts `SKIP_WAITING` on `updatefound` and reloads exactly once on `controllerchange` so the open tab gets the new bundle without a manual refresh. HTML is network-first (runtime `pages` cache) so the precached shell can never serve stale `index.html`; `index.html` is excluded from the precache for the same reason. `scheduleOneTimeChunkReload` in `main.tsx` still calls `unregisterAllServiceWorkers()` from `@/lib/swRecovery` before the recovery reload as a safety net. See `reports/sw-stale-html-diagnosis-2026-05-14.md`.
 
 ### Supabase

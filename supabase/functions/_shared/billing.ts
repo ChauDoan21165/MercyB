@@ -1,24 +1,26 @@
 // deno-lint-ignore-file no-import-prefix
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
+import {
+  type BillingProvider,
+  type EntitlementResponse,
+  type EntitlementSource,
+  type EntitlementStatus,
+  normalizeEntitlementStatus,
+  toEntitlementResponse,
+} from "./entitlementResponse.ts";
 
-export type BillingProvider = "stripe" | "apple" | "google";
-export type EntitlementSource = BillingProvider | null;
-export type EntitlementStatus =
-  | "active"
-  | "trialing"
-  | "grace_period"
-  | "past_due"
-  | "paused"
-  | "expired"
-  | "revoked"
-  | "inactive";
-
-export type EntitlementResponse = {
-  is_premium: boolean;
-  source: EntitlementSource;
-  status: EntitlementStatus;
-  expires_at: string | null;
+// B13 Phase 3 PR-B: the pure projection helpers + their types live in
+// `entitlementResponse.ts` (esm.sh-free, vitest-importable). Re-exported
+// here so existing callers — `_shared/billing.ts` import sites in
+// other edge functions — keep working without a path change.
+export {
+  type BillingProvider,
+  type EntitlementResponse,
+  type EntitlementSource,
+  type EntitlementStatus,
+  normalizeEntitlementStatus,
+  toEntitlementResponse,
 };
 
 export type AuthenticatedUser = {
@@ -60,59 +62,16 @@ export function asNonEmptyStringOrNull(value: unknown): string | null {
   return trimmed.length > 0 ? trimmed : null;
 }
 
-export function normalizeEntitlementStatus(value: unknown): EntitlementStatus {
-  const normalized = asNonEmptyStringOrNull(value)?.toLowerCase() ?? "inactive";
-
-  switch (normalized) {
-    case "active":
-    case "trialing":
-    case "grace_period":
-    case "past_due":
-    case "paused":
-    case "expired":
-    case "revoked":
-    case "inactive":
-      return normalized;
-    default:
-      return "inactive";
-  }
-}
-
-export function toEntitlementResponse(row: {
-  source?: unknown;
-  status?: unknown;
-  expires_at?: unknown;
-} | null): EntitlementResponse {
-  const sourceRaw = asNonEmptyStringOrNull(row?.source);
-  const source: EntitlementSource =
-    sourceRaw === "stripe" || sourceRaw === "apple" || sourceRaw === "google"
-      ? sourceRaw
-      : null;
-
-  const status = normalizeEntitlementStatus(row?.status);
-  const expires_at = asNonEmptyStringOrNull(row?.expires_at);
-
-  const is_premium =
-    status === "active" ||
-    status === "trialing" ||
-    status === "grace_period" ||
-    status === "past_due";
-
-  return {
-    is_premium,
-    source,
-    status,
-    expires_at,
-  };
-}
-
-function adaptEntitlementRow(row: Record<string, unknown>): EntitlementResponse {
+function adaptEntitlementRow(
+  row: Record<string, unknown>,
+  now: Date | number = new Date(),
+): EntitlementResponse {
   return toEntitlementResponse({
     source: row.source ?? row.provider ?? row.premium_source ?? null,
     status: row.status ?? row.premium_status ?? null,
     expires_at: row.expires_at ?? row.current_period_end ??
       row.premium_expires_at ?? null,
-  });
+  }, now);
 }
 
 function createClientForAuth(authHeader: string) {

@@ -38,20 +38,34 @@ function normTier(t: unknown): TierId {
   return "level0";
 }
 
-function titleOf(r: any) {
+/**
+ * RoomMeta plus the legacy/DB-projection extras some rows still carry
+ * (`title`, `keywords_en`, `keywords_vi`) that are not on the canonical
+ * RoomMeta type. Kept structural so a plain FetcherRoomMeta is assignable.
+ */
+type TierMapRoom = FetcherRoomMeta & {
+  title?: string | null;
+  keywords_en?: unknown;
+  keywords_vi?: unknown;
+};
+
+function titleOf(r: TierMapRoom): string {
   return r?.title_en || r?.title_vi || r?.title || r?.id || "Untitled";
 }
 
 function matchRoom(r: FetcherRoomMeta, qRaw: string) {
   const q = String(qRaw || "").trim().toLowerCase();
   if (!q) return true;
+  const rx = r as TierMapRoom;
+  const kwEn = rx.keywords_en;
+  const kwVi = rx.keywords_vi;
   const hay = [
-    String((r as any)?.id || ""),
-    String(titleOf(r)),
-    String((r as any)?.title_en || ""),
-    String((r as any)?.title_vi || ""),
-    Array.isArray((r as any)?.keywords_en) ? (r as any).keywords_en.join(" ") : "",
-    Array.isArray((r as any)?.keywords_vi) ? (r as any).keywords_vi.join(" ") : "",
+    String(rx.id || ""),
+    String(titleOf(rx)),
+    String(rx.title_en || ""),
+    String(rx.title_vi || ""),
+    Array.isArray(kwEn) ? kwEn.join(" ") : "",
+    Array.isArray(kwVi) ? kwVi.join(" ") : "",
   ].join(" ").toLowerCase();
   return hay.includes(q);
 }
@@ -85,14 +99,14 @@ export default function TierMapPage() {
   }, []);
 
   const grouped = useMemo(() => {
-    const map: Record<TierId, FetcherRoomMeta[]> = Object.fromEntries(ALL_TIER_IDS.map(id => [id, []])) as any;
-    for (const r of rooms) map[normTier((r as any)?.tier)].push(r);
+    const map: Record<TierId, FetcherRoomMeta[]> = Object.fromEntries(ALL_TIER_IDS.map(id => [id, []])) as unknown as Record<TierId, FetcherRoomMeta[]>;
+    for (const r of rooms) map[normTier(r?.tier)].push(r);
     for (const k of ALL_TIER_IDS) map[k].sort((a, b) => String(titleOf(a)).localeCompare(String(titleOf(b))));
     return map;
   }, [rooms]);
 
   const filteredGrouped = useMemo(() => {
-    const out: Record<TierId, FetcherRoomMeta[]> = Object.fromEntries(ALL_TIER_IDS.map(id => [id, []])) as any;
+    const out: Record<TierId, FetcherRoomMeta[]> = Object.fromEntries(ALL_TIER_IDS.map(id => [id, []])) as unknown as Record<TierId, FetcherRoomMeta[]>;
     for (const t of TIERS) out[t.id] = grouped[t.id].filter(r => matchRoom(r, query));
     return out;
   }, [grouped, query]);
@@ -390,10 +404,10 @@ export default function TierMapPage() {
                   placeholder="Search rooms by title, id, keywords…"
                 />
               </div>
-              <button className="tm-btn" onClick={() => setExpanded(Object.fromEntries(ALL_TIER_IDS.map(id => [id, true])) as any)}>
+              <button className="tm-btn" onClick={() => setExpanded(Object.fromEntries(ALL_TIER_IDS.map(id => [id, true])) as Record<TierId, boolean>)}>
                 Expand all
               </button>
-              <button className="tm-btn" onClick={() => setExpanded(Object.fromEntries(ALL_TIER_IDS.map(id => [id, false])) as any)}>
+              <button className="tm-btn" onClick={() => setExpanded(Object.fromEntries(ALL_TIER_IDS.map(id => [id, false])) as Record<TierId, boolean>)}>
                 Collapse all
               </button>
             </div>
@@ -443,7 +457,7 @@ export default function TierMapPage() {
                     ) : (
                       <div className="tm-rooms">
                         {list.map(r => {
-                          const id = String((r as any)?.id || "");
+                          const id = String(r?.id || "");
                           const title = String(titleOf(r));
                           return (
                             <Link key={id || title} to={id ? `/room/${id}` : "#"} className="tm-room">

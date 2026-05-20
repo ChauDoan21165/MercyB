@@ -12,7 +12,6 @@ import { useMercyGuide } from '@/hooks/useMercyGuide';
 import type { CompanionProfile } from '@/services/companion';
 import type { SuggestedItem } from '@/services/suggestions';
 import type { StudyLogEntry } from '@/services/studyLog';
-import { MercyGuidePanel } from './mercy-guide/MercyGuidePanel';
 import {
   BUBBLE_POSITION_STORAGE_KEY,
   BUBBLE_SAFE_MARGIN,
@@ -100,7 +99,16 @@ type TeacherUiPreset = {
   preferTapAndRepeat: boolean;
 };
 
-const MercyGuidePanelResolved = MercyGuidePanel as React.ComponentType<any>;
+// Lazy-load the heavy guide panel so its ~39 KB gz chunk is not eagerly
+// modulepreloaded on every first paint (homepage included). The panel only
+// renders behind `isOpen` (default false), so the Suspense boundary at the
+// `{isOpen && …}` block below fires only on the first open of the guide.
+// See reports/RECON-bundle-audit-A25.md (Lever 1).
+const MercyGuidePanel = React.lazy(
+  () => import('./mercy-guide/MercyGuidePanel'),
+);
+const MercyGuidePanelResolved =
+  MercyGuidePanel as unknown as React.ComponentType<any>;
 const KIDS_CONTEXT_PATTERN =
   /\bkids?\b|children|child|toddler|preschool|kindergarten|kids[_-]?l?[123]|kidslevel[123]/i;
 const FULLSCREEN_OVERLAY_Z_INDEX = 1000000;
@@ -1233,6 +1241,7 @@ export function MercyGuide({
       )}
 
       {isOpen && (
+        <React.Suspense fallback={null}>
         <div
           ref={panelRef}
           className={cn(
@@ -1382,6 +1391,7 @@ export function MercyGuide({
             </>
           )}
         </div>
+        </React.Suspense>
       )}
     </>
   );

@@ -53,8 +53,8 @@ export default function Reset() {
           url.hash = "";
           window.history.replaceState({}, "", url.toString());
         } catch {}
-      } catch (e: any) {
-        setErr(e?.message || "Failed to start reset session.");
+      } catch (e: unknown) {
+        setErr(e instanceof Error ? e.message : "Failed to start reset session.");
         setReady(false);
       } finally {
         setLoading(false);
@@ -77,8 +77,8 @@ export default function Reset() {
 
       // Done — go to auth or home
       navigate("/auth?reset=1", { replace: true });
-    } catch (e: any) {
-      setErr(e?.message || "Failed to update password.");
+    } catch (e: unknown) {
+      setErr(e instanceof Error ? e.message : "Failed to update password.");
     } finally {
       setLoading(false);
     }

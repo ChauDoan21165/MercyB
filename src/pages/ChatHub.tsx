@@ -293,7 +293,7 @@ export default function ChatHub() {
 
     async function run() {
       // DEBUG-PERF: stash t0 on window so RoomRenderer effects share the same origin.
-      (window as any).__mbRoomPerfT0 = performance.now(); // DEBUG-PERF
+      window.__mbRoomPerfT0 = performance.now(); // DEBUG-PERF
       console.log("[room-perf]", "t0:effect-start", 0, "roomId=", roomId); // DEBUG-PERF
 
       if (!roomId) {
@@ -342,7 +342,7 @@ export default function ChatHub() {
       ]);
 
       // DEBUG-PERF
-      console.log("[room-perf]", "t1:promise.all-resolved", performance.now() - (window as any).__mbRoomPerfT0); // DEBUG-PERF
+      console.log("[room-perf]", "t1:promise.all-resolved", performance.now() - (window.__mbRoomPerfT0 ?? 0)); // DEBUG-PERF
       // DEBUG-PERF — room-spec cache hit rate = hits / (hits + misses)
       console.log("[room-spec-cache]", getRoomSpecCacheStats()); // DEBUG-PERF
 
@@ -359,7 +359,7 @@ export default function ChatHub() {
       setRoomSpec(effectiveSpec);
       setState("ready");
       // DEBUG-PERF
-      console.log("[room-perf]", "t2:setState-ready", performance.now() - (window as any).__mbRoomPerfT0); // DEBUG-PERF
+      console.log("[room-perf]", "t2:setState-ready", performance.now() - (window.__mbRoomPerfT0 ?? 0)); // DEBUG-PERF
 
       try {
         const persistedId =

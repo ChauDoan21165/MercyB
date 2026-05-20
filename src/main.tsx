@@ -118,7 +118,6 @@ import { cacheBustingReload, stripChunkCacheBustParam } from "@/lib/chunkReload"
 declare global {
   interface Window {
     supabase?: typeof supabase;
-    __mbResolveAudioSrc?: (srcKey: string) => Promise<string | null> | string | null;
     __MB_REACT_ROOT__?: ReactDOM.Root;
     __MB_REACT_ROOT_EL__?: HTMLElement;
     __MB_FATAL_OVERLAY_EL__?: HTMLDivElement;
@@ -561,14 +560,6 @@ function scheduleOneTimeChunkReload(): boolean {
     window.supabase = supabase;
     devLog("[MB DEV] window.supabase attached");
   } catch { /* ignore */ }
-})();
-
-(function installPrivateAudioSeam() {
-  try {
-    void import("@/lib/privateAudioResolver")
-      .then((mod) => { mod.installDefaultPrivateAudioResolver(); })
-      .catch(() => { /* never block boot */ });
-  } catch { /* never block boot */ }
 })();
 
 (function initIapOnNative() {

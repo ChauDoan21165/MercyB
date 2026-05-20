@@ -21,6 +21,20 @@ import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLead
 import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/ReferralLeaderboardOptInPanel";
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
 import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
+import type { BackendEntitlement } from "@/lib/authService";
+
+/**
+ * Loosely-shaped entitlement as consumed by this page: a partial of the
+ * canonical backend shape plus a couple of legacy date aliases that some
+ * older rows still carry. Kept structural so it accepts the hook's `ent`.
+ */
+type EntitlementLike =
+  | (Partial<BackendEntitlement> & {
+      expiry_at?: string | null;
+      period_end?: string | null;
+    })
+  | null
+  | undefined;
 
 function formatDate(value: string | null | undefined): string {
   if (!value) return "—";
@@ -29,12 +43,12 @@ function formatDate(value: string | null | undefined): string {
   return d.toLocaleDateString();
 }
 
-function getExpiryValue(ent: any): string | null {
+function getExpiryValue(ent: EntitlementLike): string | null {
   if (!ent) return null;
   return ent.current_period_end || ent.expires_at || ent.expiry_at || ent.period_end || null;
 }
 
-function getIsPaidStatus(ent: any): boolean {
+function getIsPaidStatus(ent: EntitlementLike): boolean {
   const status = String(ent?.status ?? "").trim().toLowerCase();
   return status === "active" || status === "trialing" || status === "past_due";
 }

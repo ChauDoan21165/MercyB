@@ -46,7 +46,7 @@ const VIETNAMESE_SUB_STYLE: React.CSSProperties = {
 };
 
 function env(name: string): string {
-  return String((import.meta as any).env?.[name] ?? "").trim();
+  return String((import.meta.env as Record<string, string | undefined>)?.[name] ?? "").trim();
 }
 
 function pickEnv(...names: string[]): string {
