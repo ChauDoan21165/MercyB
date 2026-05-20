@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-05-20T14:53:58.456Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "classifications": [
+    "STRONG_LOCAL",
+    "STABLE_UNDER_CONTENTION",
+    "DEGRADED",
+    "CI_TIMEOUT_RISK",
+    "FLAKE_SUSPECTED",
+    "BLOCKED"
+  ],
+  "totalBurnInRuns": 60,
+  "totalE2eRuns": 30,
+  "rerunStabilityRate": 1,
+  "runtimeDriftTrend": {
+    "unitRangeSeconds": {
+      "minSeconds": 32,
+      "maxSeconds": 75,
+      "spreadSeconds": 43
+    },
+    "e2eRangeSeconds": {
+      "minSeconds": 9,
+      "maxSeconds": 12,
+      "spreadSeconds": 3
+    },
+    "contentionRangeSeconds": {
+      "minSeconds": 8,
+      "maxSeconds": 54,
+      "spreadSeconds": 46
+    },
+    "trend": "contention_sensitive"
+  },
+  "timeoutRiskTrend": "elevated_under_contention",
+  "integrityViolationTrend": {
+    "count": 0,
+    "trend": "none_observed"
+  },
+  "falsePositiveDetectorTrend": {
+    "count": 1,
+    "trend": "classified_not_confirmed_flake"
+  },
+  "latestConfidenceClassification": "STABLE_UNDER_CONTENTION",
+  "currentTarget": {
+    "reliabilityAutomation": "STRONG",
+    "antiFlakeGovernance": "STRONG",
+    "contentionVisibility": "STRONG",
+    "liveProviderEvidence": "ABSENT",
+    "productionReadiness": "NO",
+    "placementV3Enablement": "BLOCKED"
+  },
+  "safetyPosition": {
+    "production_safe": false,
+    "placement_v3_enabled": false,
+    "live_provider_evidence": "ABSENT",
+    "real_user_evidence": "ABSENT",
+    "production_readiness": "NO"
+  }
+}

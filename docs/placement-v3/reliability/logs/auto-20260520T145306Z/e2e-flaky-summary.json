@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-05-20T14:53:52.058Z",
+  "logDir": "docs/placement-v3/reliability/logs/auto-20260520T145306Z/e2e",
+  "runs": [
+    {
+      "file": "docs/placement-v3/reliability/logs/auto-20260520T145306Z/e2e/b1-auto-e2e-20260520-145341-run-1.log",
+      "status": "pass",
+      "durationSeconds": null,
+      "route": "/placement-v3-vertical.spec.ts:44:3",
+      "selectors": [],
+      "failureSignatures": [],
+      "kinds": [
+        "route"
+      ]
+    }
+  ],
+  "ignoredLogs": [],
+  "falsePositiveDetectorTrend": {
+    "count": 0,
+    "reasons": {},
+    "policy": "Ignored logs are classified as false-positive risk and excluded from confirmed flake totals; they are never silently discarded."
+  },
+  "totals": {
+    "pass": 1,
+    "fail": 0,
+    "unknown": 0,
+    "durationSeconds": 0
+  },
+  "unstable": false,
+  "intermittentFailure": false,
+  "clusters": []
+}

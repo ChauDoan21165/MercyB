@@ -22,6 +22,17 @@ type LogRun = {
   kinds: ClusterKind[];
 };
 
+type IgnoredLog = {
+  file: string;
+  reason:
+    | "background-output"
+    | "detector-output"
+    | "pid-log"
+    | "wrapper-log"
+    | "non-run-log";
+  classification: "false-positive-risk";
+};
+
 type Cluster = {
   key: string;
   kind: ClusterKind;
@@ -34,6 +45,12 @@ type Summary = {
   generatedAt: string;
   logDir: string;
   runs: LogRun[];
+  ignoredLogs: IgnoredLog[];
+  falsePositiveDetectorTrend: {
+    count: number;
+    reasons: Record<string, number>;
+    policy: string;
+  };
   totals: {
     pass: number;
     fail: number;
@@ -51,9 +68,13 @@ const jsonArgIndex = args.indexOf("--json");
 const jsonPath = jsonArgIndex >= 0 ? args[jsonArgIndex + 1] : null;
 const pretty = args.includes("--pretty");
 
-const logs = collectLogs(logDir);
-const runs = logs.map(parseLog);
+const collected = collectLogs(logDir);
+const runs = collected.runLogs.map(parseLog);
 const clusters = clusterRuns(runs);
+const ignoredReasons = collected.ignoredLogs.reduce<Record<string, number>>((acc, log) => {
+  acc[log.reason] = (acc[log.reason] ?? 0) + 1;
+  return acc;
+}, {});
 const totals = runs.reduce(
   (acc, run) => {
     acc[run.status] += 1;
@@ -67,6 +88,13 @@ const summary: Summary = {
   generatedAt: new Date().toISOString(),
   logDir,
   runs,
+  ignoredLogs: collected.ignoredLogs,
+  falsePositiveDetectorTrend: {
+    count: collected.ignoredLogs.length,
+    reasons: ignoredReasons,
+    policy:
+      "Ignored logs are classified as false-positive risk and excluded from confirmed flake totals; they are never silently discarded.",
+  },
   totals,
   unstable: totals.fail > 0 || totals.unknown > 0,
   intermittentFailure: totals.fail > 0 && totals.pass > 0,
@@ -80,13 +108,37 @@ if (jsonPath) {
 console.log(output);
 process.exit(summary.unstable ? 1 : 0);
 
-function collectLogs(dir: string): string[] {
-  return readdirSync(dir)
+function collectLogs(dir: string): { runLogs: string[]; ignoredLogs: IgnoredLog[] } {
+  const runLogs: string[] = [];
+  const ignoredLogs: IgnoredLog[] = [];
+
+  for (const file of readdirSync(dir)
     .filter((file) => file.endsWith(".log"))
-    .filter((file) => !/^flaky-pattern-summary\.log$/.test(file))
     .map((file) => path.join(dir, file))
     .filter((file) => statSync(file).isFile())
-    .sort();
+    .sort()) {
+    const base = path.basename(file);
+    const parent = path.basename(path.dirname(file));
+    const reason = classifyLogFile(base, parent);
+    if (reason) {
+      ignoredLogs.push({ file, reason, classification: "false-positive-risk" });
+    } else {
+      runLogs.push(file);
+    }
+  }
+
+  return { runLogs, ignoredLogs };
+}
+
+function classifyLogFile(base: string, parent: string): IgnoredLog["reason"] | null {
+  if (/\.pid\.log$/i.test(base)) return "pid-log";
+  if (/flaky-pattern|detector/i.test(base)) return "detector-output";
+  if (/wrapper\.log$/i.test(base)) return "wrapper-log";
+  if (/background/i.test(base) || /background/i.test(parent)) return "background-output";
+  if (/-run-\d+\.log$/i.test(base)) return null;
+  if (/^(?:cycle-\d+-(?:typecheck|typecheck_ci|build)|final-(?:typecheck|typecheck_ci|build))\.log$/i.test(base)) return null;
+  if (/^(?:serial_e2e|parallel_e2e|isolated_browser_invocations|reused_worker_repeat_each)\.log$/i.test(base)) return null;
+  return "non-run-log";
 }
 
 function parseLog(file: string): LogRun {

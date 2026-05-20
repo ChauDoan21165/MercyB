@@ -1,6 +1,8 @@
 name: Reliability Burn-in
 
 on:
+  schedule:
+    - cron: "0 8 * * *"
   workflow_dispatch:
     inputs:
       unit_iterations:
@@ -45,19 +47,57 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
+      - name: B1 branch guard
+        run: |
+          current_branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          if [ "$current_branch" != "feat/b1-test-stability-burndown" ]; then
+            echo "B1 reliability automation must run on feat/b1-test-stability-burndown; current branch is $current_branch"
+            exit 1
+          fi
+
       - name: Repeated unit burn-in
         env:
           SUMMARY_JSON: reports/b1-e2e-diagnostics/burnin/repeat-unit-summary.json
           CLUSTER_JSON: reports/b1-e2e-diagnostics/burnin/repeat-unit-flaky-summary.json
           RUN_PREFIX: burnin-unit
-        run: scripts/testing/run-repeat-unit.sh "${{ inputs.unit_iterations }}"
+        run: scripts/testing/run-repeat-unit.sh "${{ github.event.inputs.unit_iterations || '5' }}"
 
       - name: Repeated Placement V3 E2E burn-in
         env:
           SUMMARY_JSON: reports/b1-e2e-diagnostics/burnin/repeat-e2e-summary.json
           CLUSTER_JSON: reports/b1-e2e-diagnostics/burnin/repeat-e2e-flaky-summary.json
           RUN_PREFIX: burnin-e2e
-        run: scripts/testing/run-repeat-e2e.sh "${{ inputs.e2e_iterations }}" "${{ inputs.e2e_pattern }}"
+        run: scripts/testing/run-repeat-e2e.sh "${{ github.event.inputs.e2e_iterations || '5' }}" "${{ github.event.inputs.e2e_pattern || 'placement-v3-vertical' }}"
+
+      - name: Contention-mode Placement V3 E2E
+        env:
+          LOG_DIR: reports/b1-e2e-diagnostics/nightly-contention
+          ARTIFACT_DIR: reports/b1-e2e-diagnostics/nightly-contention/artifacts
+          SUMMARY_JSON: reports/b1-e2e-diagnostics/nightly-contention/e2e-while-unit-summary.json
+          CLUSTER_JSON: reports/b1-e2e-diagnostics/nightly-contention/e2e-while-unit-flaky-summary.json
+          RUN_PREFIX: nightly-contention-e2e
+        run: |
+          mkdir -p reports/b1-e2e-diagnostics/nightly-contention/background
+          npm test > reports/b1-e2e-diagnostics/nightly-contention/background/npm-test.log 2>&1 &
+          unit_pid=$!
+          scripts/testing/run-repeat-e2e.sh 2 "${{ github.event.inputs.e2e_pattern || 'placement-v3-vertical' }}"
+          wait "$unit_pid"
+
+      - name: Trend summary
+        if: always()
+        run: npm run placement:b1:trend
+
+      - name: Contention summary
+        if: always()
+        run: npm run placement:b1:contention
+
+      - name: Retention dry-run
+        if: always()
+        run: npm run placement:b1:retention -- --dry-run
+
+      - name: Timeout-risk health summary
+        if: always()
+        run: npm run placement:b1:health
 
       - name: Flaky-pattern summary
         if: always()
@@ -73,7 +113,9 @@ jobs:
         with:
           name: reliability-burnin-artifacts
           path: |
+            docs/placement-v3/reliability/
             reports/b1-e2e-diagnostics/
+            reports/b1-burnin/
             test-results/
             playwright-smoke-report/
           if-no-files-found: warn

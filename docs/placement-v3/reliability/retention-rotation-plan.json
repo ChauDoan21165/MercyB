@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-05-20T14:55:00.168Z",
+  "branch": "feat/b1-test-stability-burndown",
+  "mode": "dry-run",
+  "logDir": "docs/placement-v3/reliability/logs",
+  "archivalWindowDays": 14,
+  "protectedEvidence": [
+    "reports/b1-burnin/unit-runs/repeat-unit-25-wrapper.log",
+    "reports/b1-burnin/e2e-runs/repeat-e2e-25-wrapper.log",
+    "reports/b1-burnin/final-clean/final-unit-wrapper.log",
+    "reports/b1-burnin/final-clean/final-e2e-wrapper.log"
+  ],
+  "plannedDeleteCount": 0,
+  "plannedDeletes": [],
+  "deletionSafeguards": [
+    "dry-run by default",
+    "requires --execute for deletion",
+    "does not target reports/b1-burnin sustained evidence",
+    "does not delete merge-readiness logs"
+  ]
+}
