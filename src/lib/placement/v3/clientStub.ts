@@ -1,4 +1,6 @@
+import { supabase } from "@/lib/supabaseClient";
 import type {
+  PlacementV3Cefr,
   PlacementV3L1Flag,
   PlacementV3Modality,
   PlacementV3Recommendation,
@@ -8,32 +10,64 @@ import type {
   PlacementV3SkillProfile,
   PlacementV3SubmitResult,
   PlacementV3Task,
+  PlacementV3TaskType,
 } from "./types";
 
-/**
- * Placement v3 orchestrator contract for A28.
- *
- * The UI expects the production client to expose the same async functions
- * below. Functions must be safe for retries, return bilingual copy, and never
- * expose per-task correctness before results. `submitResponse` accepts text
- * for every modality; speaking may additionally include an `audioBlob`.
- *
- * Expected backend behavior:
- * - startSession(): create an in_progress session and return the first task.
- * - submitResponse(payload): persist one response, update adaptive state, and
- *   return the next task or completed results.
- * - getResults(sessionId): return completed multi-skill profile.
- * - abandonSession(sessionId): mark abandoned without writing a level.
- * - resumeSession(): return the most recent in_progress session, or null.
- *
- * This stub intentionally delays 200-800ms so loading and retry states are
- * visible during local UI work. It stores mock sessions in localStorage only.
- */
+type BilingualText = { en: string; vi: string };
 
-const STORAGE_KEY = "mb.placement.v3.stub.session";
-const RESULT_KEY = "mb.placement.v3.stub.results.";
-const DELAY_MIN = 200;
-const DELAY_MAX = 800;
+type OrchestratorPrompt = {
+  id: string;
+  modality: PlacementV3Modality;
+  cefr?: PlacementV3Cefr;
+  promptText?: string;
+  expectedResponse?: "text" | "audio" | "choice";
+  metadata?: Record<string, unknown>;
+};
+
+type OrchestratorProgress = {
+  current?: number;
+  total?: number;
+  state?: string;
+};
+
+type OrchestratorProfile = {
+  session_id?: string;
+  computed_at?: string;
+  cefr_overall?: PlacementV3Cefr;
+  cefr_overall_confidence?: number;
+  cefr_per_skill?: Partial<Record<PlacementV3Modality, { level?: PlacementV3Cefr; confidence?: number }>>;
+  l1_interference_flags?: Array<{ patternId?: string; id?: string; severity?: string; evidence?: string }>;
+  recommended_lessons?: Array<{
+    lessonId?: string;
+    lessonTitle?: string;
+    reason?: string;
+    priority?: number;
+    category?: string;
+    cefrLevel?: string;
+  }>;
+  strengths?: string[];
+  gaps?: string[];
+};
+
+type OrchestratorEnvelope = {
+  sessionId?: string;
+  currentTask?: OrchestratorPrompt | null;
+  totalTasks?: number;
+  progress?: OrchestratorProgress;
+  resumed?: boolean;
+  type?: "next_task" | "modality_complete" | "session_complete" | "expired" | "no_session" | "resumed";
+  nextModality?: PlacementV3Modality;
+  profile?: OrchestratorProfile | null;
+  recommendations?: OrchestratorProfile["recommended_lessons"];
+  sessionState?: string;
+  currentModality?: PlacementV3Modality;
+  status?: string;
+  error?: string;
+  message?: string;
+};
+
+const SESSION_CACHE_KEY = "mb.placement.v3.session";
+const RESULT_KEY = "mb.placement.v3.results.";
 
 const modalities: PlacementV3Modality[] = [
   "writing",
@@ -43,101 +77,28 @@ const modalities: PlacementV3Modality[] = [
   "conversation",
 ];
 
-const tasks: PlacementV3Task[] = [
-  {
-    id: "write-daily-routine",
-    modality: "writing",
-    type: "writing",
-    minWords: 25,
-    instruction: {
-      en: "Write 4-6 sentences. Accuracy matters more than length.",
-      vi: "Viết 4-6 câu. Độ chính xác quan trọng hơn độ dài.",
-    },
-    prompt: {
-      en: "Describe your usual weekday and one thing you want to improve this month.",
-      vi: "Hãy mô tả một ngày thường trong tuần của bạn và một điều bạn muốn cải thiện trong tháng này.",
-    },
+const modalityInstruction: Record<PlacementV3Modality, BilingualText> = {
+  writing: {
+    en: "Write in English. Accuracy matters more than length.",
+    vi: "Viết bằng tiếng Anh. Độ chính xác quan trọng hơn độ dài.",
   },
-  {
-    id: "speak-introduction",
-    modality: "speaking",
-    type: "speaking",
-    estimatedSeconds: 35,
-    instruction: {
-      en: "Speak naturally for 30-45 seconds. You can type instead if the microphone is unavailable.",
-      vi: "Nói tự nhiên trong 30-45 giây. Nếu không dùng được micro, bạn có thể gõ câu trả lời.",
-    },
-    prompt: {
-      en: "Introduce yourself and explain why you are learning English.",
-      vi: "Hãy giới thiệu bản thân và giải thích vì sao bạn học tiếng Anh.",
-    },
+  speaking: {
+    en: "Speak naturally, or type your answer if the microphone is unavailable.",
+    vi: "Nói tự nhiên, hoặc gõ câu trả lời nếu không dùng được micro.",
   },
-  {
-    id: "read-work-email",
-    modality: "reading",
-    type: "reading_mcq",
-    instruction: {
-      en: "Read the passage, then choose the best answer.",
-      vi: "Đọc đoạn văn, sau đó chọn đáp án phù hợp nhất.",
-    },
-    passage: {
-      en: "Linh received an email from her manager. The meeting has moved from Tuesday morning to Thursday afternoon because two clients cannot attend earlier. Linh needs to prepare three slides about customer feedback and send them before noon on Wednesday.",
-      vi: "Linh nhận được email từ quản lý. Cuộc họp được dời từ sáng thứ Ba sang chiều thứ Năm vì hai khách hàng không thể tham dự sớm hơn. Linh cần chuẩn bị ba slide về phản hồi khách hàng và gửi trước trưa thứ Tư.",
-    },
-    prompt: {
-      en: "What does Linh need to do before Wednesday noon?",
-      vi: "Linh cần làm gì trước trưa thứ Tư?",
-    },
-    options: [
-      { id: "a", label: { en: "Call both clients", vi: "Gọi cho cả hai khách hàng" } },
-      { id: "b", label: { en: "Send three feedback slides", vi: "Gửi ba slide về phản hồi" } },
-      { id: "c", label: { en: "Move the meeting again", vi: "Dời cuộc họp lần nữa" } },
-      { id: "d", label: { en: "Attend on Tuesday morning", vi: "Tham dự vào sáng thứ Ba" } },
-    ],
+  reading: {
+    en: "Read the prompt and answer in English.",
+    vi: "Đọc đề và trả lời bằng tiếng Anh.",
   },
-  {
-    id: "listen-announcement",
-    modality: "listening",
-    type: "listening_mcq",
-    audioUrl: "/audio/placement/listening-sample.mp3",
-    instruction: {
-      en: "Listen once or twice, then answer.",
-      vi: "Nghe một hoặc hai lần, sau đó trả lời.",
-    },
-    prompt: {
-      en: "The recording says the class will start later because...",
-      vi: "Đoạn nghe nói lớp học bắt đầu muộn hơn vì...",
-    },
-    options: [
-      { id: "a", label: { en: "the teacher is sick", vi: "giáo viên bị ốm" } },
-      { id: "b", label: { en: "the room is being cleaned", vi: "phòng học đang được dọn" } },
-      { id: "c", label: { en: "the bus is delayed", vi: "xe buýt bị trễ" } },
-      { id: "d", label: { en: "there is a test today", vi: "hôm nay có bài kiểm tra" } },
-    ],
+  listening: {
+    en: "Listen, then answer in English.",
+    vi: "Nghe rồi trả lời bằng tiếng Anh.",
   },
-  {
-    id: "conversation-mercy",
-    modality: "conversation",
-    type: "conversation",
-    instruction: {
-      en: "Reply to Mercy as if this were a real short conversation.",
-      vi: "Trả lời Mercy như trong một đoạn hội thoại ngắn thật.",
-    },
-    mercyTurn: {
-      en: "You said you want a better job. What kind of job are you aiming for, and what English do you need there?",
-      vi: "Bạn nói muốn có công việc tốt hơn. Bạn đang hướng tới công việc nào, và cần tiếng Anh kiểu gì trong công việc đó?",
-    },
-    prompt: {
-      en: "Write your reply.",
-      vi: "Viết câu trả lời của bạn.",
-    },
+  conversation: {
+    en: "Reply to Mercy naturally in English.",
+    vi: "Trả lời Mercy tự nhiên bằng tiếng Anh.",
   },
-];
-
-function delay(): Promise<void> {
-  const ms = DELAY_MIN + Math.floor(Math.random() * (DELAY_MAX - DELAY_MIN));
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+};
 
 function nowIso() {
   return new Date().toISOString();
@@ -147,256 +108,296 @@ function expiresIso() {
   return new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString();
 }
 
-function readStoredSession(): PlacementV3Session | null {
+function readCachedSession(): PlacementV3Session | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const raw = window.localStorage.getItem(SESSION_CACHE_KEY);
     return raw ? (JSON.parse(raw) as PlacementV3Session) : null;
   } catch {
     return null;
   }
 }
 
-function writeSession(session: PlacementV3Session | null) {
+function writeCachedSession(session: PlacementV3Session | null) {
   if (typeof window === "undefined") return;
   if (!session) {
-    window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(SESSION_CACHE_KEY);
     return;
   }
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+  window.localStorage.setItem(SESSION_CACHE_KEY, JSON.stringify(session));
 }
 
-function buildSession(answeredCount = 0): PlacementV3Session {
-  const currentTask = tasks[answeredCount] ?? null;
-  const modalityIndex = currentTask
-    ? modalities.indexOf(currentTask.modality)
-    : modalities.length - 1;
+function bilingual(en: string, vi?: string): BilingualText {
+  return { en, vi: vi ?? en };
+}
+
+function taskTypeFor(prompt: OrchestratorPrompt): PlacementV3TaskType {
+  if (prompt.modality === "reading") return "reading_short";
+  if (prompt.modality === "listening") return "listening_short";
+  return prompt.modality;
+}
+
+function toTask(prompt: OrchestratorPrompt | null | undefined): PlacementV3Task | null {
+  if (!prompt) return null;
+  const text = prompt.promptText || String(prompt.metadata?.promptText ?? "Answer in English.");
+  const task: PlacementV3Task = {
+    id: prompt.id,
+    modality: prompt.modality,
+    type: taskTypeFor(prompt),
+    instruction: modalityInstruction[prompt.modality],
+    prompt: bilingual(text),
+  };
+  if (prompt.modality === "conversation") {
+    task.mercyTurn = bilingual(text);
+    task.prompt = bilingual("Write your reply to Mercy.", "Viết câu trả lời cho Mercy.");
+  }
+  if (prompt.modality === "listening") {
+    task.audioUrl = typeof prompt.metadata?.audioUrl === "string" ? prompt.metadata.audioUrl : undefined;
+  }
+  return task;
+}
+
+function sessionFromEnvelope(
+  envelope: OrchestratorEnvelope,
+  previous?: PlacementV3Session | null,
+): PlacementV3Session {
+  const currentTask = toTask(envelope.currentTask);
+  const progress = envelope.progress ?? {};
+  const sessionId = envelope.sessionId ?? previous?.sessionId ?? envelope.profile?.session_id ?? "";
+  const status =
+    envelope.type === "expired"
+      ? "expired"
+      : envelope.type === "session_complete" || envelope.sessionState === "completed"
+        ? "completed"
+        : envelope.status === "abandoned"
+          ? "abandoned"
+          : "in_progress";
+  const answeredCount = Math.max(0, Number(progress.current ?? previous?.answeredCount ?? 0));
+  const estimatedTotal = Math.max(1, Number(progress.total ?? envelope.totalTasks ?? previous?.estimatedTotal ?? 5));
+  const modality = currentTask?.modality ?? envelope.currentModality ?? previous?.currentTask?.modality ?? "writing";
+
   return {
-    sessionId: `stub_${Date.now().toString(36)}`,
-    status: currentTask ? "in_progress" : "completed",
+    sessionId,
+    status,
     currentTask,
     answeredCount,
-    estimatedTotal: tasks.length,
-    modalityIndex: Math.max(0, modalityIndex),
+    estimatedTotal,
+    modalityIndex: Math.max(0, modalities.indexOf(modality)),
     modalities,
-    startedAt: nowIso(),
-    expiresAt: expiresIso(),
+    startedAt: previous?.startedAt ?? nowIso(),
+    expiresAt: previous?.expiresAt ?? expiresIso(),
   };
 }
 
-const skills: PlacementV3SkillProfile[] = [
-  {
-    modality: "writing",
-    cefr: "A2",
-    confidence: 0.78,
-    summary: {
-      en: "Clear everyday ideas, with tense control still developing.",
-      vi: "Diễn đạt ý hằng ngày khá rõ, nhưng kiểm soát thì vẫn cần luyện thêm.",
-    },
-  },
-  {
-    modality: "speaking",
-    cefr: "A2",
-    confidence: 0.7,
-    summary: {
-      en: "Understandable short answers; final consonants need attention.",
-      vi: "Câu trả lời ngắn dễ hiểu; cần chú ý âm cuối.",
-    },
-  },
-  {
-    modality: "reading",
-    cefr: "B1",
-    confidence: 0.82,
-    summary: {
-      en: "Good grasp of workplace messages and time details.",
-      vi: "Nắm khá tốt thông báo công việc và chi tiết thời gian.",
-    },
-  },
-  {
-    modality: "listening",
-    cefr: "A2",
-    confidence: 0.66,
-    summary: {
-      en: "Main ideas are present; fast details are less stable.",
-      vi: "Bắt được ý chính; chi tiết nói nhanh chưa ổn định.",
-    },
-  },
-];
+function asCefr(value: unknown): PlacementV3Cefr {
+  return value === "pre_a1" || value === "A1" || value === "A2" || value === "B1" || value === "B2" || value === "C1" || value === "C2"
+    ? value
+    : "A1";
+}
 
-const l1Flags: PlacementV3L1Flag[] = [
-  {
-    id: "final-consonants",
-    severity: "high",
-    label: { en: "Final consonants", vi: "Âm cuối" },
-    evidence: {
-      en: "Likely dropping /t/, /d/, or /s/ endings in speech and grammar.",
-      vi: "Có dấu hiệu bỏ /t/, /d/ hoặc /s/ ở cuối từ khi nói và viết.",
-    },
-  },
-  {
-    id: "article-choice",
-    severity: "medium",
-    label: { en: "Articles: a, an, the", vi: "Mạo từ: a, an, the" },
-    evidence: {
-      en: "Uses nouns clearly, but article choice is inconsistent.",
-      vi: "Dùng danh từ rõ nghĩa, nhưng chọn mạo từ chưa đều.",
-    },
-  },
-];
+function textSummary(text: string): BilingualText {
+  return { en: text, vi: text };
+}
 
-const recommendations: PlacementV3Recommendation[] = [
-  {
-    roomId: "present_perfect_experiences_l1",
-    cefr: "A2",
-    title: {
-      en: "Present Perfect — Experiences",
-      vi: "Thì hiện tại hoàn thành — trải nghiệm",
-    },
-    description: {
-      en: "Say what you have done and where you have been with have/has + past participle.",
-      vi: "Nói những gì bạn đã làm và nơi bạn đã từng đến với have/has + phân từ II.",
-    },
-    reason: {
-      en: "Best next step for tense range after your writing answer.",
-      vi: "Bước tiếp theo phù hợp để mở rộng cách dùng thì sau phần viết.",
-    },
-  },
-  {
-    roomId: "final_consonants_vietnamese_speakers_l1",
-    cefr: "A2",
-    title: { en: "Final Consonants for Vietnamese Speakers", vi: "Âm cuối cho người Việt" },
-    description: {
-      en: "Practice the endings that change meaning in work and exam English.",
-      vi: "Luyện các âm cuối làm thay đổi nghĩa trong tiếng Anh công việc và bài thi.",
-    },
-    reason: {
-      en: "Targets the strongest Vietnamese L1 flag from this session.",
-      vi: "Đánh thẳng vào dấu hiệu ảnh hưởng tiếng Việt rõ nhất trong bài này.",
-    },
-  },
-  {
-    roomId: "work_email_time_changes_l1",
-    cefr: "B1",
-    title: { en: "Work Emails — Schedule Changes", vi: "Email công việc — đổi lịch" },
-    description: {
-      en: "Read and write short messages about meetings, deadlines, and changes.",
-      vi: "Đọc và viết tin nhắn ngắn về cuộc họp, hạn chót và thay đổi.",
-    },
-    reason: {
-      en: "Builds on your reading strength with useful workplace English.",
-      vi: "Tận dụng điểm mạnh đọc hiểu của bạn bằng tiếng Anh công việc thực tế.",
-    },
-  },
-];
+function resultsFromProfile(profile: OrchestratorProfile): PlacementV3Results {
+  const skills: PlacementV3SkillProfile[] = Object.entries(profile.cefr_per_skill ?? {}).map(([modality, skill]) => ({
+    modality: modality as PlacementV3Modality,
+    cefr: asCefr(skill?.level),
+    confidence: Number(skill?.confidence ?? 0.5),
+    summary: textSummary(`${modality} estimate: ${asCefr(skill?.level)}.`),
+  }));
 
-function buildResults(sessionId: string): PlacementV3Results {
+  const l1Flags: PlacementV3L1Flag[] = (profile.l1_interference_flags ?? []).map((flag) => {
+    const id = String(flag.patternId ?? flag.id ?? "unknown");
+    const severity = flag.severity === "high" || flag.severity === "medium" || flag.severity === "low"
+      ? flag.severity
+      : "low";
+    return {
+      id,
+      severity,
+      label: textSummary(id.replace(/[_-]/g, " ")),
+      evidence: textSummary(flag.evidence ?? "Detected during placement."),
+    };
+  });
+
+  const recommendations: PlacementV3Recommendation[] = (profile.recommended_lessons ?? []).map((lesson) => ({
+    roomId: String(lesson.lessonId ?? "rooms"),
+    title: textSummary(String(lesson.lessonTitle ?? lesson.lessonId ?? "Recommended lesson")),
+    description: textSummary(String(lesson.category ?? "Placement recommendation")),
+    cefr: asCefr(lesson.cefrLevel),
+    reason: textSummary(String(lesson.reason ?? "Matches your placement profile.")),
+  }));
+
   return {
-    sessionId,
-    completedAt: nowIso(),
-    overallCefr: "A2",
-    overallConfidence: 0.76,
-    overallSummary: {
-      en: "You can handle everyday English and short workplace messages. Your next gains will come from verb range, final sounds, and listening details.",
-      vi: "Bạn xử lý được tiếng Anh hằng ngày và thông báo công việc ngắn. Tiến bộ tiếp theo sẽ đến từ mở rộng thì, luyện âm cuối và nghe chi tiết.",
-    },
+    sessionId: String(profile.session_id ?? ""),
+    completedAt: profile.computed_at ?? nowIso(),
+    overallCefr: asCefr(profile.cefr_overall),
+    overallConfidence: Number(profile.cefr_overall_confidence ?? 0.5),
+    overallSummary: textSummary("This profile is based on your placement responses."),
     skills,
     l1Flags,
     recommendations,
-    strengths: [
-      {
-        en: "You understood the main point of practical reading tasks.",
-        vi: "Bạn hiểu được ý chính trong bài đọc thực tế.",
-      },
-      {
-        en: "Your writing communicates personal goals clearly.",
-        vi: "Phần viết diễn đạt mục tiêu cá nhân khá rõ.",
-      },
-    ],
-    gaps: [
-      {
-        en: "Tense range is still narrow when explaining experience.",
-        vi: "Cách dùng thì còn hẹp khi kể về trải nghiệm.",
-      },
-      {
-        en: "Listening details need slower, repeated practice before exam speed.",
-        vi: "Chi tiết nghe cần luyện chậm và lặp lại trước khi lên tốc độ bài thi.",
-      },
-    ],
-    questionCount: tasks.length,
+    strengths: (profile.strengths ?? []).map(textSummary),
+    gaps: (profile.gaps ?? []).map(textSummary),
+    questionCount: skills.length || 1,
   };
 }
 
+async function callSession(action: string, body: Record<string, unknown> = {}): Promise<OrchestratorEnvelope> {
+  const { data } = await supabase.auth.getSession();
+  const token = data.session?.access_token;
+  const res = await fetch("/functions/v1/placement-v3-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify({ action, ...body }),
+  });
+  const json = (await res.json().catch(() => ({}))) as OrchestratorEnvelope;
+  if (!res.ok || json.error) {
+    throw new Error(json.message || json.error || `Placement request failed (${res.status})`);
+  }
+  return json;
+}
+
 export async function startSession(): Promise<PlacementV3Session> {
-  await delay();
-  const session = buildSession(0);
-  writeSession(session);
+  const envelope = await callSession("start", {
+    languagePair: { native: "vi", target: "en" },
+    initialLevel: "A2",
+  });
+  const session = sessionFromEnvelope(envelope);
+  writeCachedSession(session);
   return session;
 }
 
 export async function submitResponse(
   payload: PlacementV3ResponsePayload,
 ): Promise<PlacementV3SubmitResult> {
-  await delay();
-  if (payload.value.toLowerCase().includes("__network_fail_once__")) {
-    throw new Error("Simulated placement network failure");
-  }
-  const existing = readStoredSession() ?? buildSession(0);
-  if (new Date(existing.expiresAt).getTime() < Date.now()) {
-    const expired = { ...existing, status: "expired" as const };
-    writeSession(expired);
-    return { session: expired, completed: false };
-  }
-  const nextAnswered = Math.min(tasks.length, existing.answeredCount + 1);
-  const session = {
-    ...existing,
-    answeredCount: nextAnswered,
-    currentTask: tasks[nextAnswered] ?? null,
-    modalityIndex: tasks[nextAnswered]
-      ? modalities.indexOf(tasks[nextAnswered].modality)
-      : modalities.length - 1,
-    status: nextAnswered >= tasks.length ? "completed" as const : "in_progress" as const,
-  };
-  writeSession(session);
-  if (session.status === "completed") {
-    const results = buildResults(session.sessionId);
-    window.localStorage.setItem(`${RESULT_KEY}${session.sessionId}`, JSON.stringify(results));
+  const previous = readCachedSession();
+  const envelope = await callSession("respond", {
+    response: {
+      sessionId: payload.sessionId,
+      taskIndex: previous?.answeredCount ?? 0,
+      promptId: payload.taskId,
+      responseText: payload.value,
+      responseDurationMs: payload.elapsedMs,
+    },
+  });
+  const session = sessionFromEnvelope(envelope, previous);
+  writeCachedSession(session);
+  if (envelope.type === "session_complete" && envelope.profile) {
+    const results = resultsFromProfile({
+      ...envelope.profile,
+      recommended_lessons: envelope.profile.recommended_lessons ?? envelope.recommendations,
+    });
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(`${RESULT_KEY}${session.sessionId}`, JSON.stringify(results));
+    }
     return { session, completed: true, results };
   }
-  return { session, completed: false };
+  return { session, completed: session.status === "completed" };
 }
 
 export async function getResults(sessionId: string): Promise<PlacementV3Results> {
-  await delay();
   if (typeof window !== "undefined") {
     const raw = window.localStorage.getItem(`${RESULT_KEY}${sessionId}`);
     if (raw) return JSON.parse(raw) as PlacementV3Results;
   }
-  return buildResults(sessionId);
+  const envelope = await callSession("status", { sessionId });
+  if (!envelope.profile) throw new Error("Placement results are not ready yet.");
+  return resultsFromProfile(envelope.profile);
 }
 
 export async function abandonSession(sessionId: string): Promise<{ ok: true }> {
-  await delay();
-  const existing = readStoredSession();
-  if (existing?.sessionId === sessionId) {
-    writeSession({ ...existing, status: "abandoned" });
-  }
+  await callSession("abandon", { sessionId });
+  const existing = readCachedSession();
+  if (existing?.sessionId === sessionId) writeCachedSession({ ...existing, status: "abandoned" });
   return { ok: true };
 }
 
 export async function resumeSession(): Promise<PlacementV3Session | null> {
-  await delay();
-  const existing = readStoredSession();
-  if (!existing || existing.status !== "in_progress") return null;
-  if (new Date(existing.expiresAt).getTime() < Date.now()) {
-    const expired = { ...existing, status: "expired" as const };
-    writeSession(expired);
-    return expired;
+  const envelope = await callSession("resume");
+  if (envelope.type === "no_session") {
+    writeCachedSession(null);
+    return null;
   }
-  return existing;
+  const session = sessionFromEnvelope(envelope, readCachedSession());
+  writeCachedSession(session);
+  return session.status === "in_progress" || session.status === "expired" ? session : null;
+}
+
+const sampleTasks: PlacementV3Task[] = [
+  {
+    id: "sample-writing",
+    modality: "writing",
+    type: "writing",
+    minWords: 25,
+    instruction: modalityInstruction.writing,
+    prompt: bilingual("Describe your usual weekday and one thing you want to improve this month."),
+  },
+  {
+    id: "sample-speaking",
+    modality: "speaking",
+    type: "speaking",
+    instruction: modalityInstruction.speaking,
+    prompt: bilingual("Introduce yourself and explain why you are learning English."),
+  },
+  {
+    id: "sample-reading",
+    modality: "reading",
+    type: "reading_short",
+    instruction: modalityInstruction.reading,
+    prompt: bilingual("What does Linh need to do before Wednesday noon?"),
+  },
+  {
+    id: "sample-listening",
+    modality: "listening",
+    type: "listening_short",
+    instruction: modalityInstruction.listening,
+    prompt: bilingual("Why will the class start later?"),
+  },
+  {
+    id: "sample-conversation",
+    modality: "conversation",
+    type: "conversation",
+    instruction: modalityInstruction.conversation,
+    mercyTurn: bilingual("What kind of job are you aiming for, and what English do you need there?"),
+    prompt: bilingual("Write your reply."),
+  },
+];
+
+function buildSampleResults(sessionId: string): PlacementV3Results {
+  return resultsFromProfile({
+    session_id: sessionId,
+    computed_at: nowIso(),
+    cefr_overall: "A2",
+    cefr_overall_confidence: 0.76,
+    cefr_per_skill: {
+      writing: { level: "A2", confidence: 0.78 },
+      speaking: { level: "A2", confidence: 0.7 },
+      reading: { level: "B1", confidence: 0.82 },
+      listening: { level: "A2", confidence: 0.66 },
+    },
+    l1_interference_flags: [
+      { patternId: "final-consonants", severity: "high", evidence: "Likely dropping final sounds." },
+    ],
+    recommended_lessons: [
+      {
+        lessonId: "final_consonants_vietnamese_speakers_l1",
+        lessonTitle: "Final Consonants for Vietnamese Speakers",
+        cefrLevel: "A2",
+        category: "pronunciation",
+        reason: "Targets the strongest Vietnamese L1 flag from this session.",
+      },
+    ],
+    strengths: ["You communicate personal goals clearly."],
+    gaps: ["Final sounds and tense range need focused practice."],
+  });
 }
 
 export const placementV3StubInternals = {
-  tasks,
-  buildResults,
-  storageKey: STORAGE_KEY,
+  tasks: sampleTasks,
+  buildResults: buildSampleResults,
+  storageKey: SESSION_CACHE_KEY,
 };
