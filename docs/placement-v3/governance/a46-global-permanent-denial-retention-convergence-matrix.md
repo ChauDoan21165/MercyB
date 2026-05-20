@@ -1,6 +1,6 @@
 # A46 Global Permanent Denial-Retention Convergence Matrix
 
-Generated: 2026-05-20T18:48:49.225Z
+Generated: 2026-05-20T18:59:09.859Z
 
 - Referenced A42 commit: 15b052e14
 - production_safe: false

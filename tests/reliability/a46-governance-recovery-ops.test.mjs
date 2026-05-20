@@ -7,6 +7,7 @@ const repoRoot = process.cwd();
 const artifact = "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json";
 const globalMatrixArtifact =
   "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json";
+const driftDetectionArtifact = "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json";
 
 function runNpm(script, args = []) {
   return spawnSync("npm", ["run", script, "--", ...args], {
@@ -21,6 +22,10 @@ function readArtifact() {
 
 function readGlobalMatrixArtifact() {
   return JSON.parse(fs.readFileSync(path.join(repoRoot, globalMatrixArtifact), "utf8"));
+}
+
+function readDriftDetectionArtifact() {
+  return JSON.parse(fs.readFileSync(path.join(repoRoot, driftDetectionArtifact), "utf8"));
 }
 
 function expectBlockedSafe(report) {
@@ -177,6 +182,68 @@ describe("A46 GovernanceRecoveryOps A42 convergence reconciliation", () => {
     expect(validateResult.status, validateResult.stderr || validateResult.stdout).toBe(0);
     expect(`${validateResult.stdout}\n${validateResult.stderr}`).toContain(
       "global denial-retention matrix validation passed",
+    );
+  });
+
+  it("generates convergence-integrity drift detection from the global matrix", () => {
+    const result = runNpm("governance:a46:detect-convergence-drift");
+    expect(result.status, result.stderr || result.stdout).toBe(0);
+    expect(fs.existsSync(path.join(repoRoot, driftDetectionArtifact))).toBe(true);
+    expect(fs.existsSync(path.join(repoRoot, driftDetectionArtifact.replace(".json", ".md")))).toBe(true);
+
+    const drift = readDriftDetectionArtifact();
+    expectGlobalBlockedSafe(drift);
+    expect(drift.driftDetected).toBe(false);
+    expect(drift.requiredStreams).toEqual(["A39", "A42", "A44", "A45", "A47", "A48", "A49", "A50"]);
+    expect(drift.requiredUnresolvedDependencies).toEqual(
+      expect.arrayContaining([
+        "A2 drift evidence",
+        "A33 endurance evidence",
+        "A33 capacity evidence",
+        "replay reproducibility",
+        "provider calibration",
+        "provider drift",
+        "fairness/bias evidence",
+        "CEFR stability evidence",
+        "persistence validation",
+        "audit continuity",
+        "human review backlog",
+        "supervised execution restrictions",
+      ]),
+    );
+    expect(drift.checks.map((check) => check.id)).toEqual(
+      expect.arrayContaining([
+        "unresolved_dependency_removal",
+        "denial_lineage_weakening",
+        "unsupported_readiness_suppression_regression",
+        "strict_mode_enforcement_regression",
+        "blocked_safe_invariant_drift",
+        "reconciliation_coverage_gaps",
+        "stream_omission_from_convergence_matrix",
+        "unauthorized_readiness_terminology",
+        "enablement_language_insertion",
+        "supervised_execution_posture_drift",
+        "regeneration_safe_convergence_continuity",
+      ]),
+    );
+    expect(drift.checks.every((check) => check.status === "pass")).toBe(true);
+  });
+
+  it("includes convergence drift detection in governance auto and validation", () => {
+    const autoResult = runNpm("governance:a46:auto");
+    expect(autoResult.status, autoResult.stderr || autoResult.stdout).toBe(0);
+    expect(fs.existsSync(path.join(repoRoot, driftDetectionArtifact))).toBe(true);
+
+    const strictResult = runNpm("placement:a46:auto", ["--strict"]);
+    expect(strictResult.status, strictResult.stderr || strictResult.stdout).toBe(0);
+    expect(`${strictResult.stdout}\n${strictResult.stderr}`).toContain(
+      "convergence-integrity drift detection strict mode passed",
+    );
+
+    const validateResult = runNpm("governance:validate");
+    expect(validateResult.status, validateResult.stderr || validateResult.stdout).toBe(0);
+    expect(`${validateResult.stdout}\n${validateResult.stderr}`).toContain(
+      "convergence-integrity drift validation passed",
     );
   });
 });

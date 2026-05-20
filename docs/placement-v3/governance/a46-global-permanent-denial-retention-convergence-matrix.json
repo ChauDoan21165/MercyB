@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T18:48:49.225Z",
+  "generatedAt": "2026-05-20T18:59:09.859Z",
   "agent": "A46",
   "name": "GovernanceRecoveryOps",
   "branch": "feat/a42-reliability-forecast-ops",
@@ -44,7 +44,9 @@
       "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.json",
       "docs/placement-v3/governance/a46-a42-permanent-intake-convergence-reconciliation.md",
       "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json",
-      "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.md"
+      "docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.md",
+      "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.json",
+      "docs/placement-v3/governance/a46-convergence-integrity-drift-detection.md"
     ],
     "deterministicInputs": [
       "docs/placement-v3/capacity/a39-permanent-denial-retention-archive.json",

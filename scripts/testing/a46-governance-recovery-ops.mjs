@@ -9,6 +9,7 @@ const A42_ARCHIVE_COMMIT = "15b052e14";
 const OUT_DIR = "docs/placement-v3/governance";
 const REPORT_BASENAME = "a46-a42-permanent-intake-convergence-reconciliation";
 const GLOBAL_MATRIX_BASENAME = "a46-global-permanent-denial-retention-convergence-matrix";
+const DRIFT_DETECTION_BASENAME = "a46-convergence-integrity-drift-detection";
 const command = process.argv[2] ?? "auto";
 const strict = process.argv.includes("--strict");
 
@@ -119,7 +120,12 @@ const REQUIRED_UNRESOLVED_DEPENDENCIES = [
 main();
 
 function main() {
-  if (command !== "auto" && command !== "validate" && command !== "global-denial-retention-matrix") {
+  if (
+    command !== "auto" &&
+    command !== "validate" &&
+    command !== "global-denial-retention-matrix" &&
+    command !== "detect-convergence-drift"
+  ) {
     throw new Error(`Unknown A46 GovernanceRecoveryOps command: ${command}`);
   }
 
@@ -129,9 +135,11 @@ function main() {
   if (command === "auto") {
     const report = generateReconciliation();
     const matrix = generateGlobalDenialRetentionMatrix();
+    const drift = generateConvergenceIntegrityDriftDetection(matrix);
     if (strict) {
       enforceStrict(report);
       enforceGlobalMatrixStrict(matrix);
+      enforceDriftDetectionStrict(drift);
     }
     scanUnsupportedClaims();
     return;
@@ -144,13 +152,28 @@ function main() {
     return;
   }
 
+  if (command === "detect-convergence-drift") {
+    const matrix = existsSync(path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`))
+      ? readGlobalMatrix()
+      : generateGlobalDenialRetentionMatrix();
+    const drift = generateConvergenceIntegrityDriftDetection(matrix);
+    if (strict) enforceDriftDetectionStrict(drift);
+    scanUnsupportedClaims();
+    return;
+  }
+
   const report = readReport();
   const matrix = readGlobalMatrix();
+  const drift = existsSync(path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`))
+    ? readDriftDetection()
+    : generateConvergenceIntegrityDriftDetection(matrix);
   enforceStrict(report);
   enforceGlobalMatrixStrict(matrix);
+  enforceDriftDetectionStrict(drift);
   scanUnsupportedClaims();
   console.log(`[a46] governance validation passed: ${path.join(OUT_DIR, `${REPORT_BASENAME}.json`)}`);
   console.log(`[a46] global denial-retention matrix validation passed: ${path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`)}`);
+  console.log(`[a46] convergence-integrity drift validation passed: ${path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`)}`);
 }
 
 function generateReconciliation() {
@@ -340,6 +363,8 @@ function generateGlobalDenialRetentionMatrix() {
         path.join(OUT_DIR, `${REPORT_BASENAME}.md`),
         path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
         path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.md`),
+        path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`),
+        path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.md`),
       ],
       deterministicInputs: STREAMS.flatMap((stream) => stream.archiveHints),
       missingInputsRemainUnresolved: true,
@@ -395,6 +420,89 @@ function generateGlobalDenialRetentionMatrix() {
   return report;
 }
 
+function generateConvergenceIntegrityDriftDetection(matrix = readGlobalMatrix()) {
+  const checks = [
+    checkUnresolvedDependencyRemoval(matrix),
+    checkDenialLineageWeakening(matrix),
+    checkUnsupportedReadinessSuppressionRegression(matrix),
+    checkStrictModeEnforcementRegression(matrix),
+    checkBlockedSafeInvariantDrift(matrix),
+    checkReconciliationCoverageGaps(matrix),
+    checkStreamOmissionFromMatrix(matrix),
+    checkUnauthorizedReadinessTerminology(),
+    checkEnablementLanguageInsertion(),
+    checkSupervisedExecutionPostureDrift(matrix),
+    checkRegenerationSafeConvergenceContinuity(matrix),
+  ];
+
+  const driftFindings = checks.filter((check) => check.status !== "pass");
+  const report = {
+    generatedAt: new Date().toISOString(),
+    agent: "A46",
+    name: "GovernanceRecoveryOps",
+    branch: EXPECTED_BRANCH,
+    governanceOnly: true,
+    evidenceOnly: true,
+    sourceMatrix: path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
+    production_safe: false,
+    production_readiness: false,
+    placement_v3_enabled: false,
+    placement_v3_enablement: "BLOCKED",
+    live_validation_complete: false,
+    live_provider_validated: false,
+    provider_drift_measured: false,
+    production_persistence_validated: false,
+    writes_production_data: false,
+    autonomous_execution: "SUPERVISED_ONLY",
+    globalPosture: "DO_NOT_ENABLE",
+    doNotEnableContinuity: true,
+    requiredStreams: STREAMS.map((stream) => stream.agent),
+    requiredUnresolvedDependencies: REQUIRED_UNRESOLVED_DEPENDENCIES,
+    driftDetectionRequirements: [
+      "unresolved dependency removal",
+      "denial-lineage weakening",
+      "unsupported-readiness suppression regression",
+      "strict-mode enforcement regression",
+      "blocked-safe invariant drift",
+      "reconciliation coverage gaps",
+      "stream omission from convergence matrix",
+      "unauthorized readiness terminology",
+      "enablement-language insertion",
+      "supervised-execution posture drift",
+      "regeneration-safe convergence continuity",
+    ],
+    checks,
+    driftDetected: driftFindings.length > 0,
+    driftFindings,
+    strictModeExpectation: {
+      failIfUnresolvedDependenciesDisappear: true,
+      failIfDenialLineageWeakens: true,
+      failIfUnsupportedReadinessSuppressionWeakens: true,
+      failIfBlockedSafeInvariantsDrift: true,
+      failIfReadinessOrCertificationLanguageAppears: true,
+      failIfPlacementV3EnablementChangesFromBlocked: true,
+      failIfWritesProductionDataBecomesTrue: true,
+      failIfAutonomousExecutionChangesFromSupervisedOnly: true,
+      failIfDoNotEnableContinuityRemoved: true,
+    },
+    regenerationSafeConvergenceContinuity: {
+      preserved: true,
+      sourceMatrixGenerated: existsSync(path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`)),
+      driftArtifactGenerated: true,
+      missingInputsRemainUnresolved: matrix.regenerationSafeArchivalContinuity?.missingInputsRemainUnresolved === true,
+    },
+    conclusion:
+      driftFindings.length === 0
+        ? "No convergence-governance drift detected; all unresolved dependency, blocked-safe invariant, denial lineage, and supervised-execution restrictions remain preserved."
+        : "Convergence-governance drift detected; strict mode must block until all findings are resolved.",
+  };
+
+  writeDriftDetectionJsonAndMarkdown(report);
+  console.log(`[a46] wrote ${path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`)}`);
+  console.log(`[a46] wrote ${path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.md`)}`);
+  return report;
+}
+
 function enforceStrict(report) {
   const failures = strictFailures(report);
   if (failures.length > 0) {
@@ -409,6 +517,14 @@ function enforceGlobalMatrixStrict(report) {
     throw new Error(`A46 global denial-retention matrix strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
   }
   console.log("[a46] global denial-retention matrix strict mode passed: blocked-safe convergence posture preserved");
+}
+
+function enforceDriftDetectionStrict(report) {
+  const failures = driftDetectionStrictFailures(report);
+  if (failures.length > 0) {
+    throw new Error(`A46 convergence-integrity drift detection strict mode blocked:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
+  }
+  console.log("[a46] convergence-integrity drift detection strict mode passed: no governance drift detected");
 }
 
 function strictFailures(report) {
@@ -485,6 +601,233 @@ function globalMatrixStrictFailures(report) {
     failures.push("replay/provider/release/observability certification is implied");
   }
   return failures;
+}
+
+function driftDetectionStrictFailures(report) {
+  const failures = [];
+  if (report.driftDetected) {
+    for (const finding of report.driftFindings ?? []) {
+      failures.push(`${finding.id}: ${finding.message}`);
+    }
+  }
+  if (report.production_safe !== false) failures.push("production_safe became true or non-false");
+  if (report.production_readiness !== false) failures.push("production_readiness became true or non-false");
+  if (report.placement_v3_enabled !== false) failures.push("placement_v3_enabled became true or non-false");
+  if (report.placement_v3_enablement !== "BLOCKED") failures.push("placement_v3_enablement changed from BLOCKED");
+  if (report.writes_production_data !== false) failures.push("writes_production_data became true or non-false");
+  if (report.autonomous_execution !== "SUPERVISED_ONLY") failures.push("autonomous_execution changed from SUPERVISED_ONLY");
+  if (report.globalPosture !== "DO_NOT_ENABLE" || !report.doNotEnableContinuity) {
+    failures.push("DO_NOT_ENABLE continuity was removed");
+  }
+  return failures;
+}
+
+function checkUnresolvedDependencyRemoval(matrix) {
+  const present = new Set((matrix.unresolvedDependencyMatrix ?? []).map((entry) => entry.dependency));
+  const missing = REQUIRED_UNRESOLVED_DEPENDENCIES.filter((dependency) => !present.has(dependency));
+  const resolved = (matrix.unresolvedDependencyMatrix ?? [])
+    .filter((entry) => entry.resolved !== false || entry.status !== "unresolved")
+    .map((entry) => entry.dependency);
+  return driftCheck(
+    "unresolved_dependency_removal",
+    missing.length === 0 && resolved.length === 0,
+    "Unresolved dependency taxonomy is preserved.",
+    `Unresolved dependency taxonomy drifted. missing=${missing.join(", ") || "none"} resolved=${resolved.join(", ") || "none"}`,
+    { missing, resolved },
+  );
+}
+
+function checkDenialLineageWeakening(matrix) {
+  const weakened = (matrix.streamMatrix ?? [])
+    .filter((stream) => stream.denialLineagePreserved !== true || stream.marksReadinessComplete || stream.certificationImplied)
+    .map((stream) => stream.agent);
+  return driftCheck(
+    "denial_lineage_weakening",
+    weakened.length === 0,
+    "Denial lineage remains preserved across all streams.",
+    `Denial lineage weakened for streams: ${weakened.join(", ")}`,
+    { weakened },
+  );
+}
+
+function checkUnsupportedReadinessSuppressionRegression(matrix) {
+  const streamRegressions = (matrix.streamMatrix ?? [])
+    .filter((stream) => stream.unsupportedReadinessSuppressionActive !== true)
+    .map((stream) => stream.agent);
+  const globalRegression =
+    matrix.unsupportedReadinessSuppression?.active !== true ||
+    matrix.unsupportedReadinessSuppression?.global !== true ||
+    matrix.unsupportedReadinessSuppression?.weakened === true ||
+    matrix.unsupportedReadinessSuppression?.unsupportedReadinessClaimsAllowed !== false;
+  return driftCheck(
+    "unsupported_readiness_suppression_regression",
+    !globalRegression && streamRegressions.length === 0,
+    "Unsupported-readiness suppression remains active globally and per stream.",
+    `Unsupported-readiness suppression regressed. global=${globalRegression} streams=${streamRegressions.join(", ") || "none"}`,
+    { globalRegression, streamRegressions },
+  );
+}
+
+function checkStrictModeEnforcementRegression(matrix) {
+  const strict = matrix.strictModeConvergenceGovernance ?? {};
+  const failed = [
+    ["preserved", strict.preserved === true],
+    ["failOnResolvedUnverifiedDependencies", strict.failOnResolvedUnverifiedDependencies === true],
+    ["failOnReadinessPromotion", strict.failOnReadinessPromotion === true],
+    ["failOnCertificationImplication", strict.failOnCertificationImplication === true],
+    ["failOnDoNotEnableRemoval", strict.failOnDoNotEnableRemoval === true],
+  ]
+    .filter(([, ok]) => !ok)
+    .map(([name]) => name);
+  return driftCheck(
+    "strict_mode_enforcement_regression",
+    failed.length === 0,
+    "Strict-mode convergence governance remains enforced.",
+    `Strict-mode convergence governance regressed: ${failed.join(", ")}`,
+    { failed },
+  );
+}
+
+function checkBlockedSafeInvariantDrift(matrix) {
+  const expected = {
+    production_safe: false,
+    production_readiness: false,
+    placement_v3_enabled: false,
+    placement_v3_enablement: "BLOCKED",
+    live_validation_complete: false,
+    live_provider_validated: false,
+    provider_drift_measured: false,
+    production_persistence_validated: false,
+    writes_production_data: false,
+    autonomous_execution: "SUPERVISED_ONLY",
+    globalPosture: "DO_NOT_ENABLE",
+  };
+  const drifted = Object.entries(expected)
+    .filter(([key, value]) => matrix[key] !== value)
+    .map(([key, value]) => ({ key, expected: value, actual: matrix[key] }));
+  if (!matrix.doNotEnableContinuity) {
+    drifted.push({ key: "doNotEnableContinuity", expected: true, actual: matrix.doNotEnableContinuity });
+  }
+  return driftCheck(
+    "blocked_safe_invariant_drift",
+    drifted.length === 0,
+    "Blocked-safe invariants remain unchanged.",
+    `Blocked-safe invariants drifted: ${drifted.map((entry) => entry.key).join(", ")}`,
+    { drifted },
+  );
+}
+
+function checkReconciliationCoverageGaps(matrix) {
+  const coverageGaps = (matrix.streamMatrix ?? [])
+    .filter(
+      (stream) =>
+        !Array.isArray(stream.archives) ||
+        stream.archives.length === 0 ||
+        !Array.isArray(stream.unresolvedDependencies) ||
+        stream.unresolvedDependencies.length === 0,
+    )
+    .map((stream) => stream.agent);
+  return driftCheck(
+    "reconciliation_coverage_gaps",
+    coverageGaps.length === 0,
+    "Each stream retains archive indexing and unresolved dependency coverage.",
+    `Reconciliation coverage gaps detected for streams: ${coverageGaps.join(", ")}`,
+    { coverageGaps },
+  );
+}
+
+function checkStreamOmissionFromMatrix(matrix) {
+  const present = new Set((matrix.streamMatrix ?? []).map((stream) => stream.agent));
+  const missing = STREAMS.map((stream) => stream.agent).filter((agent) => !present.has(agent));
+  return driftCheck(
+    "stream_omission_from_convergence_matrix",
+    missing.length === 0,
+    "All required streams remain present in the convergence matrix.",
+    `Streams omitted from convergence matrix: ${missing.join(", ")}`,
+    { missing },
+  );
+}
+
+function checkUnauthorizedReadinessTerminology() {
+  const files = convergenceArtifactFiles().filter((file) => existsSync(file));
+  const forbidden = [
+    /\bproduction\s+ready\b/i,
+    /\bproduction\s+readiness\s*[:=]\s*true\b/i,
+    /\breplay\s+certified\b/i,
+    /\bprovider\s+certified\b/i,
+    /\brelease\s+certified\b/i,
+    /\bobservability\s+certified\b/i,
+    /\bready\s+for\s+launch\b/i,
+    /\bfully\s+ready\b/i,
+  ];
+  const violations = scanFilesForPatterns(files, forbidden);
+  return driftCheck(
+    "unauthorized_readiness_terminology",
+    violations.length === 0,
+    "No unauthorized readiness or certification terminology was detected.",
+    `Unauthorized readiness or certification terminology detected: ${violations.join("; ")}`,
+    { violations },
+  );
+}
+
+function checkEnablementLanguageInsertion() {
+  const files = convergenceArtifactFiles().filter((file) => existsSync(file));
+  const forbidden = [
+    /\bsafe\s+to\s+enable\b/i,
+    /\benablement\s+approved\b/i,
+    /\bplacement_v3_enabled\s*[:=]\s*true\b/i,
+    /\bplacement_v3_enablement\s*[:=]\s*(?!BLOCKED\b)[A-Z_]+\b/i,
+    /\bDO_NOT_ENABLE\s+removed\b/i,
+  ];
+  const violations = scanFilesForPatterns(files, forbidden);
+  return driftCheck(
+    "enablement_language_insertion",
+    violations.length === 0,
+    "No unauthorized enablement language was inserted.",
+    `Unauthorized enablement language detected: ${violations.join("; ")}`,
+    { violations },
+  );
+}
+
+function checkSupervisedExecutionPostureDrift(matrix) {
+  const streamDrift = (matrix.streamMatrix ?? [])
+    .flatMap((stream) => stream.archives ?? [])
+    .filter((archive) => archive.autonomous_execution && archive.autonomous_execution !== "SUPERVISED_ONLY")
+    .map((archive) => archive.path);
+  return driftCheck(
+    "supervised_execution_posture_drift",
+    matrix.autonomous_execution === "SUPERVISED_ONLY" && streamDrift.length === 0,
+    "Supervised execution posture remains SUPERVISED_ONLY.",
+    `Supervised execution posture drift detected: matrix=${matrix.autonomous_execution}, archives=${streamDrift.join(", ") || "none"}`,
+    { streamDrift },
+  );
+}
+
+function checkRegenerationSafeConvergenceContinuity(matrix) {
+  const continuity = matrix.regenerationSafeArchivalContinuity ?? {};
+  const generatedArtifacts = continuity.generatedArtifacts ?? [];
+  const requiredArtifacts = [
+    path.join(OUT_DIR, `${REPORT_BASENAME}.json`),
+    path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
+    path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`),
+  ];
+  const missing = requiredArtifacts.filter((artifact) => !generatedArtifacts.includes(artifact) && !existsSync(artifact));
+  return driftCheck(
+    "regeneration_safe_convergence_continuity",
+    continuity.preserved === true && continuity.missingInputsRemainUnresolved === true && missing.length === 0,
+    "Regeneration-safe convergence continuity remains preserved.",
+    `Regeneration-safe convergence continuity drifted. missingArtifacts=${missing.join(", ") || "none"}`,
+    { missing },
+  );
+}
+
+function driftCheck(id, ok, passMessage, failMessage, details = {}) {
+  return {
+    id,
+    status: ok ? "pass" : "drift_detected",
+    message: ok ? passMessage : failMessage,
+    details,
+  };
 }
 
 function writeJsonAndMarkdown(report) {
@@ -596,12 +939,64 @@ function writeGlobalMatrixJsonAndMarkdown(report) {
   );
 }
 
+function writeDriftDetectionJsonAndMarkdown(report) {
+  writeFileSync(path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`), `${JSON.stringify(report, null, 2)}\n`);
+  writeFileSync(
+    path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.md`),
+    [
+      "# A46 Convergence Integrity Drift Detection",
+      "",
+      `Generated: ${report.generatedAt}`,
+      "",
+      `- Source matrix: ${report.sourceMatrix}`,
+      `- production_safe: ${report.production_safe}`,
+      `- production_readiness: ${report.production_readiness}`,
+      `- placement_v3_enabled: ${report.placement_v3_enabled}`,
+      `- placement_v3_enablement: ${report.placement_v3_enablement}`,
+      `- live_validation_complete: ${report.live_validation_complete}`,
+      `- live_provider_validated: ${report.live_provider_validated}`,
+      `- provider_drift_measured: ${report.provider_drift_measured}`,
+      `- production_persistence_validated: ${report.production_persistence_validated}`,
+      `- writes_production_data: ${report.writes_production_data}`,
+      `- autonomous_execution: ${report.autonomous_execution}`,
+      `- Global posture: ${report.globalPosture}`,
+      `- Drift detected: ${report.driftDetected}`,
+      "",
+      "## Required Streams",
+      "",
+      ...report.requiredStreams.map((stream) => `- ${stream}`),
+      "",
+      "## Required Unresolved Dependencies",
+      "",
+      ...report.requiredUnresolvedDependencies.map((dependency) => `- ${dependency}`),
+      "",
+      "## Drift Checks",
+      "",
+      ...report.checks.map((check) => `- ${check.id}: ${check.status} - ${check.message}`),
+      "",
+      "## Strict-Mode Expectations",
+      "",
+      ...Object.entries(report.strictModeExpectation).map(([key, value]) => `- ${key}: ${value}`),
+      "",
+      "## Conclusion",
+      "",
+      report.conclusion,
+      "",
+      "A46 drift detection preserves governance-only, evidence-only convergence continuity. It does not mutate runtime behavior, promote enablement, fabricate evidence, assert certification, claim persistence validation, bypass governance, or clean unrelated worktree files.",
+    ].join("\n") + "\n",
+  );
+}
+
 function readReport() {
   return readJson(path.join(OUT_DIR, `${REPORT_BASENAME}.json`));
 }
 
 function readGlobalMatrix() {
   return readJson(path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`));
+}
+
+function readDriftDetection() {
+  return readJson(path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`));
 }
 
 function readJson(file) {
@@ -674,6 +1069,28 @@ function walkFiles(dir) {
   });
 }
 
+function convergenceArtifactFiles() {
+  return [
+    path.join(OUT_DIR, `${REPORT_BASENAME}.json`),
+    path.join(OUT_DIR, `${REPORT_BASENAME}.md`),
+    path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
+    path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.md`),
+    path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.json`),
+    path.join(OUT_DIR, `${DRIFT_DETECTION_BASENAME}.md`),
+  ];
+}
+
+function scanFilesForPatterns(files, patterns) {
+  const violations = [];
+  for (const file of files) {
+    const text = readFileSync(file, "utf8");
+    for (const pattern of patterns) {
+      if (pattern.test(text)) violations.push(`${file}: ${pattern}`);
+    }
+  }
+  return violations;
+}
+
 function ensureBranch() {
   const branch = execFileSync("git", ["rev-parse", "--abbrev-ref", "HEAD"], { encoding: "utf8" }).trim();
   if (branch !== EXPECTED_BRANCH) {
@@ -682,12 +1099,7 @@ function ensureBranch() {
 }
 
 function scanUnsupportedClaims() {
-  const files = [
-    path.join(OUT_DIR, `${REPORT_BASENAME}.json`),
-    path.join(OUT_DIR, `${REPORT_BASENAME}.md`),
-    path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.json`),
-    path.join(OUT_DIR, `${GLOBAL_MATRIX_BASENAME}.md`),
-  ];
+  const files = convergenceArtifactFiles();
   const forbidden = [
     /\bproduction ready\b/i,
     /\breplay certified\b/i,
