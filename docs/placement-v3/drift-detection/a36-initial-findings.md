@@ -6,7 +6,7 @@ Generated: 2026-05-20T11:25:00-06:00
 
 - `STRATEGY.md` and `PRINCIPLES.md`: A36 supports outcome accuracy, Vietnamese-first diagnostics, and evidence-before-patching discipline.
 - `docs/placement-v3/README.md`: not present in this branch. Placement V3 context currently lives in `docs/placement-v3-calibration/*`, `docs/placement-v3/adaptive-generation/*`, and function docs under `supabase/functions/placement-v3-session/`.
-- `supabase/functions/placement-v3-grade-writing/index.ts`: not present in this branch. Existing live graders are reading, listening, and speaking; benchmark scaffolding references writing but no writing grader is currently available.
+- `supabase/functions/placement-v3-grade-writing/index.ts`: present after the #942 integration rebase. #942 has merged Placement V3 writing grader infrastructure; A36 adds drift replay infrastructure and does not claim live replay metrics.
 - `supabase/functions/_shared/aiProvider.ts`: OpenAI-primary with Gemini failover. JSON parse errors do not fail over; timeouts, thrown network failures, HTTP 429, and HTTP 5xx can fail over.
 - `supabase/functions/_shared/aiLogger.ts`: writes AI usage entries to `ai_usage`, but current Placement V3 CEFR graders expose per-call trace data directly from grader responses instead of using this logger.
 - `docs/placement-v3/calibration/`: not present under that exact path. Current calibration reports are under `docs/placement-v3-calibration/`.
@@ -33,7 +33,7 @@ All three share:
 
 1. Provider attempts are not included in CEFR `modelTrace`, so retry-path variance cannot be fully measured from current grader responses.
 2. The benchmark runner’s `extractTrace` expects `assessment.overall_cefr`, but current graders return `assessment.overall.level`; existing benchmark CEFR extraction will miss real scores.
-3. Writing is referenced by benchmark infrastructure but the writing grader is absent in this branch, so A36 replay must treat writing as unavailable rather than fabricate output.
+3. Writing grader infrastructure is present from #942, but A36 live replay still requires Supabase/env configuration before any writing replay metrics can be claimed.
 4. Taxonomy labels in prompt output are free-form pattern names; drift detection needs normalization because docs use kebab-case taxonomy IDs while prompts include underscore examples.
 5. Gemini failover is observable only when OpenAI fails under current shared provider routing; forced cross-provider replay is not supported by the deployed grader contract yet.
 

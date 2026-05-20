@@ -8,7 +8,7 @@ Infrastructure is implemented, but production grading stability is not verified 
 
 ## Known Risks
 
-- Writing replay is blocked because `placement-v3-grade-writing` is absent in this branch.
+- #942 has merged Placement V3 writing grader infrastructure. A36 adds drift replay infrastructure, but live replay remains blocked unless Supabase/env vars are configured.
 - Provider retry-path variance is partially observable because current grader `modelTrace` does not expose failover attempts.
 - Gemini comparison requires actual failover or a future provider-forcing contract; current shared provider only fails over on OpenAI timeout/rate-limit/upstream failure.
 - Taxonomy output uses free-form grader flags, so dashboard grouping depends on fixture taxonomy tags unless raw grader tags are normalized later.

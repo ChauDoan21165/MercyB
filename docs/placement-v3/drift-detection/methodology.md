@@ -44,4 +44,4 @@ The runner refuses to fabricate live outputs if Supabase credentials are missing
 
 ## Current Scope
 
-This branch has live reading, listening, and speaking graders. The writing grader path is referenced by older benchmark scaffolding but the actual function is absent in this worktree, so writing replay is intentionally excluded until that grader exists.
+#942 has merged Placement V3 writing grader infrastructure. A36 adds drift replay infrastructure around available grader endpoints and does not claim live replay metrics; live replay remains blocked unless Supabase/env vars are configured.

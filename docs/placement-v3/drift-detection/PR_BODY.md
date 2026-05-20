@@ -18,7 +18,7 @@ Unrelated untracked A35/benchmark/adaptive-generation files were intentionally e
 
 - Fixtures: 40
 - Modalities covered: reading, listening, speaking
-- Writing: not included because `placement-v3-grade-writing` is absent in this branch
+- Writing: #942 has merged Placement V3 writing grader infrastructure; A36 adds drift replay infrastructure around available grader endpoints.
 - Providers intended: live grader routing via current Supabase edge functions
 - Live replay status: blocked before grader calls
 
@@ -50,7 +50,7 @@ No prompt/config tuning iterations were performed because live replay was blocke
 - Live replay remains unverified until credentials are present.
 - Database persistence remains unverified against production until `--persist=true` is run with a service-role key.
 - Provider variance is limited by current grader trace data; current CEFR graders do not expose full failover attempt paths.
-- Writing replay is blocked until the writing grader exists.
+- Writing replay can use the #942 writing grader infrastructure, but live replay remains blocked unless Supabase/env vars are configured.
 - `pnpm tsc -p tsconfig.scripts.json --noEmit` still fails only because of existing unrelated script errors, not this PR.
 
 # Evidence
