@@ -28,6 +28,7 @@ import {
   resolveMonotonicRawPayload,
 } from "./subscription-insert.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
+import { monotonicBackoffDelayMs, sleep } from "./monotonic-backoff.ts";
 
 /* ============================================================================
  * Config
@@ -690,6 +691,18 @@ export async function upsertSharedSubscriptionMonotonic(params: {
   );
 
   for (let attempt = 0; attempt < MAX_MONOTONIC_RETRIES; attempt++) {
+    // A91 fix A: full-jitter exponential backoff between CAS attempts so a
+    // concurrent Stripe multi-event burst for this subscription can commit
+    // before we re-read, giving the next attempt a clean read→write gap.
+    // Placed at the top of the loop body so it covers BOTH retry paths
+    // uniformly: the `continue` when the row vanished, and the fall-through
+    // when our write is freshness-superior. attempt 0 (the happy path) never
+    // sleeps. Purely additive — does not change MAX_MONOTONIC_RETRIES, the
+    // CAS WHERE clause, the exhaustion throw, or the #561 claim/release flow.
+    if (attempt > 0) {
+      await sleep(monotonicBackoffDelayMs(attempt - 1));
+    }
+
     const existing = await getSharedSubscriptionForUpsert({
       supabase: params.supabase,
       providerSubscriptionId: params.providerSubscriptionId,
