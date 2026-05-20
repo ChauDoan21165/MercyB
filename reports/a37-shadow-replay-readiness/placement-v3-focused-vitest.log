@@ -1,0 +1,25 @@
+
+ RUN  v3.2.4 /private/tmp/a37-readiness-main
+
+ ✓ supabase/functions/placement-v3-grade-writing/__tests__/core.test.ts (13 tests) 18ms
+ ✓ src/data/placement/v3/__tests__/calibration.test.ts (7 tests) 19ms
+ ✓ src/data/placement/v3/__tests__/prompts.test.ts (6 tests) 21ms
+ ✓ supabase/functions/placement-v3-session/__tests__/scoring.test.ts (6 tests) 4ms
+ ✓ supabase/functions/placement-v3-session/__tests__/persistence.test.ts (5 tests) 10ms
+ ✓ supabase/functions/placement-v3-session/__tests__/graderClient.test.ts (7 tests) 16ms
+ ✓ supabase/functions/placement-v3-session/__tests__/edgeCases.test.ts (14 tests) 17ms
+ ✓ supabase/functions/placement-v3-session/__tests__/integration.test.ts (10 tests) 23ms
+ ✓ supabase/functions/placement-v3-session/__tests__/core.test.ts (8 tests) 6ms
+ ✓ supabase/functions/placement-v3-session/__tests__/state.test.ts (8 tests) 2ms
+ ✓ supabase/functions/placement-v3-session/__tests__/modality.test.ts (9 tests) 4ms
+ ✓ supabase/functions/placement-v3-session/__tests__/errorRecovery.test.ts (7 tests) 5ms
+ ✓ supabase/functions/placement-v3-session/__tests__/resumePolicy.test.ts (6 tests) 7ms
+ ✓ supabase/functions/placement-v3-session/__tests__/adversarial.test.ts (5 tests) 8ms
+ ✓ src/lib/placement/v3/__tests__/recommender.test.ts (8 tests) 1021ms
+ ✓ src/lib/placement/v3/__tests__/lessonIndex.test.ts (5 tests) 55ms
+
+ Test Files  16 passed (16)
+      Tests  124 passed (124)
+   Start at  07:13:26
+   Duration  7.29s (transform 1.51s, setup 1.74s, collect 10.23s, tests 1.24s, environment 8.10s, prepare 1.22s)
+
