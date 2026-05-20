@@ -1,5 +1,5 @@
 {
-  "graph_id": "99069f9ad723843e",
+  "graph_id": "769ca6776a17be3e",
   "governance_mode": "blocked_safe_governance_intelligence_graph",
   "source_artifacts": {
     "timeline": true,
@@ -60,6 +60,14 @@
       "attributes": {
         "label": "A46 convergence governance",
         "state": "canonical"
+      }
+    },
+    {
+      "id": "contamination:cross-branch-rejected",
+      "type": "contamination_event",
+      "attributes": {
+        "label": "cross-branch contamination attempt",
+        "state": "rejected"
       }
     },
     {
@@ -780,6 +788,14 @@
       }
     },
     {
+      "id": "poisoned-lineage:canonical-identity-fork",
+      "type": "poisoned_lineage",
+      "attributes": {
+        "label": "canonical identity fork attempt",
+        "state": "rejected"
+      }
+    },
+    {
       "id": "recovery:0cf5235e3e481bab",
       "type": "recovery_event",
       "attributes": {
@@ -1296,6 +1312,12 @@
       "type": "invalidates"
     },
     {
+      "id": "52d60b4480efe741",
+      "from": "contamination:cross-branch-rejected",
+      "to": "branch-domain:feat-a42-reliability-forecast-ops",
+      "type": "contaminates"
+    },
+    {
       "id": "54e0f2c8a009f49e",
       "from": "replay:1e6afc411b41db94",
       "to": "decision:blocked-safe",
@@ -1384,6 +1406,12 @@
       "from": "event:ef8d1ee43f7bbcba",
       "to": "event:4b56ccd188c036cd",
       "type": "originates_from"
+    },
+    {
+      "id": "615789546fe3fd20",
+      "from": "contamination:cross-branch-rejected",
+      "to": "decision:blocked-safe",
+      "type": "rejects"
     },
     {
       "id": "61cbb7e8915e7758",
@@ -1530,12 +1558,6 @@
       "type": "propagates"
     },
     {
-      "id": "820cedba6dae4fa2",
-      "from": "branch-domain:feat-a42-reliability-forecast-ops",
-      "to": "canonical-authority:a46",
-      "type": "contaminates"
-    },
-    {
       "id": "835d2d4ffcea953a",
       "from": "dependency:supervised-execution-restrictions",
       "to": "event:b1ab139a8613d57c",
@@ -1600,6 +1622,12 @@
       "from": "identity:deterministic-governance",
       "to": "decision:blocked-safe",
       "type": "replays"
+    },
+    {
+      "id": "971b0348af26fdbc",
+      "from": "poisoned-lineage:canonical-identity-fork",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
     },
     {
       "id": "974a51b37510adfa",
@@ -1942,6 +1970,12 @@
       "from": "fixture:recursive-seal-self-reference-loop",
       "to": "decision:blocked-safe",
       "type": "rejects"
+    },
+    {
+      "id": "deda7dac08226276",
+      "from": "poisoned-lineage:canonical-identity-fork",
+      "to": "branch-domain:feat-a42-reliability-forecast-ops",
+      "type": "fragments"
     },
     {
       "id": "df86a9610ad52471",

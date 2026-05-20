@@ -1,6 +1,6 @@
 # A46 Convergence Integrity Drift Detection
 
-Generated: 2026-05-20T20:44:52.605Z
+Generated: 2026-05-20T20:50:49.286Z
 
 - Source matrix: docs/placement-v3/governance/a46-global-permanent-denial-retention-convergence-matrix.json
 - production_safe: false

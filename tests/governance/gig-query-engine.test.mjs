@@ -12,4 +12,11 @@ describe("GIG query engine", () => {
     expect(queries.dependency_intelligence.highest_impact_dependencies.length).toBeGreaterThan(0);
     expect(queries.explainability.why_blocked).toContain("Unresolved dependencies");
   });
+
+  it("keeps strict-mode denial ancestry queryable", () => {
+    const graph = buildGovernanceGraph();
+    const queries = buildGraphQueries(graph);
+    expect(queries.causality.current_denial_causes.some((cause) => /strict-mode failure triggered/i.test(cause.label))).toBe(true);
+    expect(queries.explainability.why_strict_mode_failed).toContain("Strict mode rejects");
+  });
 });

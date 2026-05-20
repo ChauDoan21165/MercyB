@@ -9,4 +9,10 @@ describe("GIG replay intelligence", () => {
     expect(replay.replay_lineage_nodes.length).toBeGreaterThan(0);
     expect(replay.stale_replay_lineage.length).toBeGreaterThan(0);
   });
+
+  it("surfaces replay contradiction as rejected non-canonical lineage", () => {
+    const replay = buildReplayIntelligence(buildGovernanceGraph());
+    expect(replay.replay_rejection_edges.length).toBeGreaterThan(0);
+    expect(replay.replay_lineage_nodes.every((node) => node.attributes.replay_state !== "canonical")).toBe(true);
+  });
 });

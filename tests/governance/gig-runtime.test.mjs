@@ -29,4 +29,14 @@ describe("GIG runtime", () => {
     const groups = graph.fixture_history_groups.map((fixture) => fixture.group);
     expect(groups).toEqual(expect.arrayContaining(["replay-storm-history", "stale-authority-history", "canonical-identity-fork-history"]));
   });
+
+  it("regenerates deterministic graph identity across repeated runs", () => {
+    run("governance:gig:runtime");
+    const first = JSON.parse(fs.readFileSync(graphPath, "utf8"));
+    run("governance:gig:runtime");
+    const second = JSON.parse(fs.readFileSync(graphPath, "utf8"));
+    expect(second.graph_id).toBe(first.graph_id);
+    expect(second.nodes.map((node) => node.id)).toEqual(first.nodes.map((node) => node.id));
+    expect(second.edges.map((edge) => edge.id)).toEqual(first.edges.map((edge) => edge.id));
+  });
 });

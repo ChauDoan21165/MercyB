@@ -6,9 +6,9 @@ Unify A46 convergence governance, TGHEE temporal history, replay chronology, dep
 
 ## Graph Summary
 
-- Graph ID: 99069f9ad723843e
-- Nodes: 83
-- Edges: 180
+- Graph ID: 769ca6776a17be3e
+- Nodes: 85
+- Edges: 183
 - Governance mode: blocked_safe_governance_intelligence_graph
 
 ## Node Types

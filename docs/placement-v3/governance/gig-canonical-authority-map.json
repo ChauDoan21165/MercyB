@@ -68,6 +68,12 @@
       "type": "invalidates"
     },
     {
+      "id": "971b0348af26fdbc",
+      "from": "poisoned-lineage:canonical-identity-fork",
+      "to": "canonical-authority:a46",
+      "type": "invalidates"
+    },
+    {
       "id": "df86a9610ad52471",
       "from": "replay:17c02030d41ad709",
       "to": "canonical-authority:a46",

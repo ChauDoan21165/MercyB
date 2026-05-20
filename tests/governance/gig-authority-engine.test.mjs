@@ -9,4 +9,10 @@ describe("GIG authority engine", () => {
     expect(authority.branch_domain_isolation).toBe("preserved");
     expect(authority.forked_identity_policy).toContain("reject");
   });
+
+  it("keeps stale authority and branch-domain conflicts rejected", () => {
+    const authority = buildAuthorityIntelligence(buildGovernanceGraph());
+    expect(authority.stale_authority_rejection.length).toBeGreaterThan(0);
+    expect(authority.branch_domain_nodes.every((node) => node.attributes.authority !== "cross_branch_canonical")).toBe(true);
+  });
 });

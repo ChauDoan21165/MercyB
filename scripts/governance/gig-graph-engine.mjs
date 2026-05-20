@@ -71,7 +71,18 @@ export function buildGovernanceGraph() {
   addEdge(edges, "branch-domain:feat-a42-reliability-forecast-ops", "canonical-authority:a46", "canonicalizes");
   addEdge(edges, "canonical-authority:a46", "decision:blocked-safe", "supersedes");
   addEdge(edges, "branch-domain:feat-a42-reliability-forecast-ops", "decision:blocked-safe", "fragments");
-  addEdge(edges, "branch-domain:feat-a42-reliability-forecast-ops", "canonical-authority:a46", "contaminates");
+  addNode(nodes, "contamination:cross-branch-rejected", "contamination_event", {
+    label: "cross-branch contamination attempt",
+    state: "rejected",
+  });
+  addNode(nodes, "poisoned-lineage:canonical-identity-fork", "poisoned_lineage", {
+    label: "canonical identity fork attempt",
+    state: "rejected",
+  });
+  addEdge(edges, "contamination:cross-branch-rejected", "branch-domain:feat-a42-reliability-forecast-ops", "contaminates");
+  addEdge(edges, "contamination:cross-branch-rejected", "decision:blocked-safe", "rejects");
+  addEdge(edges, "poisoned-lineage:canonical-identity-fork", "canonical-authority:a46", "invalidates");
+  addEdge(edges, "poisoned-lineage:canonical-identity-fork", "branch-domain:feat-a42-reliability-forecast-ops", "fragments");
 
   for (const dependency of dependencies) {
     const id = `dependency:${slug(dependency.dependency)}`;
@@ -196,8 +207,25 @@ export function buildGovernanceGraph() {
 
 export function enforceGraphStrict(graph) {
   const failures = [];
+  const nodeIds = new Set(graph.nodes.map((node) => node.id));
+  if (nodeIds.size !== graph.nodes.length) failures.push("duplicate graph node identity detected");
+  if (new Set(graph.edges.map((edge) => edge.id)).size !== graph.edges.length) failures.push("duplicate graph edge identity detected");
   for (const type of GIG_NODE_TYPES) if (!graph.nodes.some((node) => node.type === type)) failures.push(`missing node type: ${type}`);
   for (const type of GIG_EDGE_TYPES) if (!graph.edges.some((edge) => edge.type === type)) failures.push(`missing edge type: ${type}`);
+  for (const edge of graph.edges) {
+    if (!nodeIds.has(edge.from)) failures.push(`dangling edge source: ${edge.id}:${edge.from}`);
+    if (!nodeIds.has(edge.to)) failures.push(`dangling edge target: ${edge.id}:${edge.to}`);
+    if (!GIG_EDGE_TYPES.includes(edge.type)) failures.push(`unknown edge type: ${edge.type}`);
+  }
+  for (const node of graph.nodes) {
+    if (!GIG_NODE_TYPES.includes(node.type)) failures.push(`unknown node type: ${node.type}`);
+    const connected = graph.edges.some((edge) => edge.from === node.id || edge.to === node.id);
+    if (!connected) failures.push(`orphan graph node: ${node.id}`);
+    if (hasUnsafeEnablementMarker(node.attributes)) failures.push(`unsafe marker on node: ${node.id}`);
+  }
+  for (const edge of graph.edges.filter((item) => item.type === "contaminates")) {
+    if (!edge.from.startsWith("contamination:")) failures.push(`contamination edge does not originate from rejected contamination event: ${edge.id}`);
+  }
   for (const [key, expected] of Object.entries(GIG_BLOCKED_SAFE)) {
     if (graph.final_graph_decision[key] !== expected) failures.push(`${key} changed from ${expected}`);
   }
@@ -256,4 +284,18 @@ function slug(value) {
 
 function stableHash(...parts) {
   return createHash("sha256").update(parts.join("|")).digest("hex").slice(0, 16);
+}
+
+function hasUnsafeEnablementMarker(value) {
+  if (!value || typeof value !== "object") return false;
+  return Object.entries(value).some(([key, item]) => {
+    if (key === "production_safe" && item === true) return true;
+    if (key === "production_readiness" && item === true) return true;
+    if (key === "placement_v3_enabled" && item === true) return true;
+    if (key === "placement_v3_enablement" && item !== "BLOCKED") return true;
+    if (key === "writes_production_data" && item === true) return true;
+    if (key === "autonomous_execution" && item !== "SUPERVISED_ONLY") return true;
+    if (key === "do_not_enable_continuity" && item === false) return true;
+    return typeof item === "object" && hasUnsafeEnablementMarker(item);
+  });
 }
