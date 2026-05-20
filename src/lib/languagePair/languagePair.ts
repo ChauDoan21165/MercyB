@@ -11,16 +11,18 @@
 // columns the #578 freeze trigger reverts, and the table-level grant
 // already covers them.
 
-import { useCallback } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { supabase } from "@/lib/supabaseClient";
-import { useAuth } from "@/providers/AuthProvider";
-import { qk } from "@/lib/queries/keys";
 import {
   TARGET_META,
   type NativeLang,
   type TargetLang,
 } from "@/lib/onboarding/types";
+
+// A13-circle-8: this module is now the pure language-pair surface
+// (types + parseLanguagePair + withPrimary). The previous `usePairMutation`
+// React hook lived here and brought in `useAuth` from AuthProvider,
+// which closed a 3-hop cycle with anonymousPair.ts. The hook moved
+// to ./usePairMutation.ts; that file imports from here, and the cycle
+// is broken because this module no longer imports AuthProvider.
 
 const NATIVE_VALUES: NativeLang[] = ["vi", "en"];
 const TARGET_VALUES = Object.keys(TARGET_META) as TargetLang[];
@@ -85,38 +87,8 @@ export interface PairPatch {
   target_languages?: TargetLang[];
 }
 
-/**
- * Persist a partial pair update to the current user's profile and
- * refresh the shared profile cache so every reader (Home gate, Home
- * rendering, switcher, settings) re-renders consistently. Failures are
- * surfaced via the boolean result (callers show inline feedback) and
- * dev-warned — they never throw, so a network blip can't break
- * Settings or trap the user.
- */
-export function usePairMutation() {
-  const { user } = useAuth();
-  const qc = useQueryClient();
-
-  const persist = useCallback(
-    async (patch: PairPatch): Promise<{ ok: boolean }> => {
-      if (!user?.id) return { ok: false };
-      const { error } = await supabase
-        .from("profiles")
-        .update(patch)
-        .eq("id", user.id);
-      if (error) {
-        if (import.meta.env.DEV) {
-          console.warn("[languagePair] update failed:", error.message);
-        }
-        return { ok: false };
-      }
-      await qc.invalidateQueries({ queryKey: qk.profile(user.id) });
-      return { ok: true };
-    },
-    // Whole `user` (not user?.id) — React Compiler infers the object
-    // as the dep; a narrower member expression breaks memo preservation.
-    [user, qc],
-  );
-
-  return { persist };
-}
+// `usePairMutation` lives in ./usePairMutation.ts (A13-circle-8).
+// It's a React hook consuming `useAuth` + `supabase` + `useQueryClient`;
+// keeping it out of this pure module is what allows anonymousPair.ts
+// to safely import from here without closing the 3-hop cycle through
+// AuthProvider.

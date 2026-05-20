@@ -23,10 +23,8 @@ import {
   type NativeLang,
   type TargetLang,
 } from "@/lib/onboarding/types";
-import {
-  parseLanguagePair,
-  usePairMutation,
-} from "@/lib/languagePair/languagePair";
+import { parseLanguagePair } from "@/lib/languagePair/languagePair";
+import { usePairMutation } from "@/lib/languagePair/usePairMutation";
 import { pickChrome } from "@/lib/i18n/chromeLanguage";
 
 const chip = (active: boolean): React.CSSProperties => ({
