@@ -55,6 +55,13 @@ export const FEATURE_FLAGS = {
   PLACEMENT_TEST_ENABLED: false,
 
   /**
+   * Placement v3 multimodal UI. Kept separate from the legacy placement gate
+   * so the new surface can be reviewed without exposing it when the broader
+   * placement system remains disabled.
+   */
+  PLACEMENT_V3_UI_ENABLED: false,
+
+  /**
    * Home page "Your focus areas" card that surfaces placement-test
    * weakness tags. Off until CC3's placement-test persistence lands
    * and manual QA passes.

@@ -84,6 +84,12 @@ const NotificationPreferencesPage = lazyWithRetry(() => import("@/pages/account/
 // the v2 session is a single server-driven loop, not the v1 4-page
 // wizard (reconstruction flag F1; wireframes doc ephemeral).
 const PlacementV2Page = lazyWithRetry(() => import("@/pages/placement/v2/PlacementV2Page"));
+const PlacementV3WelcomePage = lazyWithRetry(() => import("@/pages/placement/v3/WelcomePage"));
+const PlacementV3WhoForPage  = lazyWithRetry(() => import("@/pages/placement/v3/WhoForPage"));
+const PlacementV3TestPage    = lazyWithRetry(() => import("@/pages/placement/v3/TestPage"));
+const PlacementV3ResultsPage = lazyWithRetry(() => import("@/pages/placement/v3/ResultsPage"));
+const PlacementV3ResumePage  = lazyWithRetry(() => import("@/pages/placement/v3/ResumePage"));
+const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement/v3/SkipConfirmPage"));
 
 const SpeechDrillPage      = lazyWithRetry(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazyWithRetry(() => import("@/pages/practice/PhonemeDrillPage"));
@@ -433,6 +439,13 @@ function AuthRedirect() {
   const location = useLocation();
   const target = `/signin${location.search || ""}${location.hash || ""}`;
   return <Navigate to={target} replace />;
+}
+
+function PlacementV3Gate({ children }: { children: React.ReactNode }) {
+  if (!FEATURE_FLAGS.PLACEMENT_TEST_ENABLED || !FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED) {
+    return <Navigate to="/" replace />;
+  }
+  return <RequireAuth>{children}</RequireAuth>;
 }
 
 // ── Shell ─────────────────────────────────────────────────────────────────────
@@ -796,7 +809,11 @@ export default function AppRouter() {
               (profile writes are keyed on user.id). */}
           <Route path="/placement"
             element={
-              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+              FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED ? (
+                <PlacementV3Gate>
+                  <LazyPage><PlacementV3WelcomePage /></LazyPage>
+                </PlacementV3Gate>
+              ) : FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
                 <RequireAuth>
                   <LazyPage><PlacementV2Page /></LazyPage>
                 </RequireAuth>
@@ -807,7 +824,11 @@ export default function AppRouter() {
           />
           <Route path="/placement/who"
             element={
-              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+              FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED ? (
+                <PlacementV3Gate>
+                  <LazyPage><PlacementV3WhoForPage /></LazyPage>
+                </PlacementV3Gate>
+              ) : FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
                 <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
@@ -830,6 +851,34 @@ export default function AppRouter() {
               ) : (
                 <Navigate to="/" replace />
               )
+            }
+          />
+          <Route path="/placement/test/:sessionId"
+            element={
+              <PlacementV3Gate>
+                <LazyPage><PlacementV3TestPage /></LazyPage>
+              </PlacementV3Gate>
+            }
+          />
+          <Route path="/placement/results/:sessionId"
+            element={
+              <PlacementV3Gate>
+                <LazyPage><PlacementV3ResultsPage /></LazyPage>
+              </PlacementV3Gate>
+            }
+          />
+          <Route path="/placement/resume"
+            element={
+              <PlacementV3Gate>
+                <LazyPage><PlacementV3ResumePage /></LazyPage>
+              </PlacementV3Gate>
+            }
+          />
+          <Route path="/placement/skip"
+            element={
+              <PlacementV3Gate>
+                <LazyPage><PlacementV3SkipConfirmPage /></LazyPage>
+              </PlacementV3Gate>
             }
           />
 
