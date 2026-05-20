@@ -1,4 +1,24 @@
 // File: src/pages/Privacy.tsx
+//
+// TRACKED ISSUE — Vietnamese legal-text gaps still OPEN (do not close on this PR).
+// This PR (A58) fixed PDPD Decree 13/2023/ND-CP gaps in the ENGLISH text only:
+//   1. Added §6a "Withdrawing Consent" (PDPD Art. 12 right to withdraw consent).
+//   2. §6 rights are now an unconditional grant (was GDPR-style "depending on
+//      your location", which legally understated VN data-subject rights).
+//   3. §4a Azure voice legal basis changed legitimate-interest -> consent
+//      (PDPD treats voice as sensitive personal data; legitimate interest is
+//      not a standalone PDPD lawful basis).
+// STILL OPEN — needs a legal-quality Vietnamese translator (NOT this PR):
+//   - The Vietnamese prose blocks in THIS file are now out of sync with the
+//     corrected English: §6 VI still says "Tùy theo nơi bạn sinh sống ..."
+//     (the understated conditional framing) and §4a VI still states the legal
+//     basis as "lợi ích chính đáng" (legitimate interest). There is no
+//     Vietnamese §6a (right to withdraw consent) at all.
+//   - src/pages/Terms.tsx has no reviewed Vietnamese version.
+//   - A full, legally reviewed Vietnamese translation of this Privacy Policy
+//     and of Terms.tsx is required for PDPD compliance for Vietnamese users.
+// These VI items are intentionally deferred to a professional-translator
+// workflow by scope; this PR does not touch any Vietnamese prose.
 
 import SeoMeta from "@/components/seo/SeoMeta";
 
@@ -153,8 +173,20 @@ export default function Privacy() {
         You can also opt out at any time by emailing{" "}
         <strong>admin@mercyblade.com</strong>; we will disable cloud scoring
         for your account and you will continue to receive local-only scoring.
-        Our legal basis for processing this audio is our legitimate interest
-        in providing accurate, useful pronunciation feedback to learners.
+      </p>
+      <p>
+        Voice recordings are sensitive personal data. Our legal basis for
+        sending them to Azure is <strong>your consent</strong>. You give
+        this consent specifically when you grant microphone permission to
+        use pronunciation practice — we do not transmit any audio to Azure
+        unless you have granted that permission. You can withdraw this
+        consent at any time and at no cost: revoke microphone permission in
+        your browser or device settings, or email{" "}
+        <strong>admin@mercyblade.com</strong> to disable cloud scoring for
+        your account. After withdrawal, pronunciation is scored locally in
+        your browser instead. Withdrawing consent does not affect the
+        lawfulness of any processing carried out before withdrawal. See
+        Section 6a (Withdrawing Consent).
       </p>
 
       <p style={{ fontStyle: "italic", color: "#475569" }}>
@@ -309,9 +341,14 @@ export default function Privacy() {
 
       <h2>6. Your Rights</h2>
       <p>
-        Depending on your location, you may have rights to access, correct,
-        delete, or request a copy of certain personal information. You may also
-        have rights to object to or restrict certain processing.
+        You have the right to access your personal data, correct it, delete
+        it, and obtain a copy of it, and to object to or restrict our
+        processing of it. We grant these rights to <strong>all users
+        unconditionally</strong> — regardless of where you live and without
+        requiring you to justify your request — subject only to limited
+        exceptions required by law (for example, retaining certain financial
+        and security records). Vietnamese users hold these rights under
+        Decree 13/2023/ND-CP on Personal Data Protection (PDPD).
       </p>
       <p>
         You can delete your account at any time from{" "}
@@ -328,6 +365,35 @@ export default function Privacy() {
         <strong>Tài khoản → Xóa tài khoản của tôi</strong>. Việc xóa diễn
         ra ngay lập tức và không thể hoàn tác — hồ sơ tài chính và an ninh
         sẽ được ẩn danh thay vì xóa, theo yêu cầu của pháp luật.
+      </p>
+
+      <h2>6a. Withdrawing Consent</h2>
+      <p>
+        Where we process your personal data based on your consent —
+        including the voice recordings sent to Azure for pronunciation
+        scoring (Section 4a) and any other processing we have asked you to
+        consent to — you have the right to withdraw that consent at any
+        time.
+      </p>
+      <p>
+        You can withdraw consent in two ways: (1) in the app, from{" "}
+        <strong>Account → Delete my account</strong> (which removes your
+        account and associated personal data immediately), or by turning off
+        the relevant permission — for example, revoking microphone access in
+        your browser or device settings; or (2) by emailing{" "}
+        <strong>admin@mercyblade.com</strong> and telling us what you want
+        to withdraw consent for.
+      </p>
+      <p>
+        Withdrawing consent is <strong>free of charge and reversible</strong>
+        {" "}— you may grant consent again later, for example by re-enabling
+        microphone permission. When you withdraw consent we stop the
+        relevant processing without undue delay, and we delete or anonymize
+        the associated personal data within a reasonable timeframe, except
+        where we are required by law to retain certain records (for example,
+        financial and security records, which are anonymized rather than
+        deleted). Withdrawing consent does not affect the lawfulness of any
+        processing we carried out before you withdrew it.
       </p>
 
       <h2>7. Children’s Privacy</h2>
