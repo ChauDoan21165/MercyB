@@ -72,7 +72,7 @@ Placement V3 is now integrated behind default-off flags, but it is not productio
 - No shadow-session replay evidence.
 - Adaptive generation hard gates failed.
 - No production Supabase migrated-session run was verified here.
-- Local vertical E2E did not pass in this report run.
+- Local vertical E2E only proves the mocked internal path when explicit Placement V3 flags are enabled; it does not prove production readiness.
 
 ## Test Evidence
 
@@ -88,18 +88,25 @@ Evidence folder: `reports/placement-v3-readiness-evidence/`
 | `npm run typecheck:ci` | Passed | `typecheck-ci.log` |
 | `npm run build` | Passed | `build.log` |
 | `npm run lint` | Passed with existing warnings | `lint.log` |
-| `VITE_PLACEMENT_TEST_ENABLED=true VITE_PLACEMENT_V3_UI_ENABLED=true VITE_SUPABASE_URL=https://placeholder.invalid.supabase.co VITE_SUPABASE_ANON_KEY=placeholder-anon-key-not-real npm run test:e2e -- placement-v3-vertical` | Failed | `placement-v3-vertical-e2e.log` |
+| Original flagged vertical E2E report run | Failed | `placement-v3-vertical-e2e.log`, `placement-v3-vertical-failure-artifacts/` |
+| `npm run test:e2e -- placement-v3-vertical` with default flags | Failed as expected | `e2e-reruns/run-1-normal/output-after-browser-install.log` |
+| Explicit flags vertical E2E rerun | Passed | `e2e-reruns/run-2-explicit-flags/output.log` |
+| Explicit flags vertical E2E rerun with trace forced on | Passed | `e2e-reruns/run-3-explicit-flags-trace-on/output.log`, trace artifact |
 | Final rerun: `npm run typecheck` | Passed | `final-typecheck.log` |
 | Final rerun: `npm run build` | Passed | `final-build.log` |
+| Follow-up rerun after E2E analysis: `npm run typecheck` | Passed | `followup-typecheck.log` |
+| Follow-up rerun after E2E analysis: `npm run build` | Passed | `followup-build.log` |
 
 Vertical E2E failure details:
 
 - Test: `tests/e2e/placement-v3-vertical.spec.ts`
-- Failure: timed out after 60 seconds waiting for the next visible answer control.
+- Original failure: timed out after 60 seconds waiting for the next visible answer control.
 - Error: `locator('textarea, input[placeholder*=\\'Short answer\\'], [role=\\'textbox\\'], [role=\\'radio\\']').first()` never became visible.
 - Artifacts copied to `reports/placement-v3-readiness-evidence/placement-v3-vertical-failure-artifacts/`.
+- Root-cause evidence: the original trace shows the app loaded, flags were enabled, auth was seeded, and the mocked `placement-v3-session` endpoint returned HTTP 200. The local Vite server then disconnected, the browser failed to fetch `http://127.0.0.1:3107/src/pages/placement/v3/ResultsPage.tsx`, and the frame became `chrome-error://chromewebdata/`.
+- Follow-up reruns: after installing the missing Playwright Chromium binary and starting from a clean port-3107 server state, the default-off gate failed as expected, then the internal mocked vertical path passed twice with explicit flags.
 
-This failure does not prove product breakage by itself, but it removes the strongest local runtime proof for enabling Placement V3 today.
+Conclusion: the original failure is local E2E environment/harness instability, not confirmed Placement V3 product breakage. The reruns verify the mocked internal path with explicit flags only; they do not prove live Supabase, live graders, cost/latency, provider failover, drift, native audio, or production readiness. Full analysis: `e2e-failure-analysis.md`.
 
 ## Production Risks
 
@@ -112,7 +119,7 @@ This failure does not prove product breakage by itself, but it removes the stron
 - Adaptive item generation is not launch-ready because #946 hard gates failed.
 - Feature flags must stay off.
 - The session edge function imports app-side recommender code; #942 notes deployment packaging still needs review.
-- The merged vertical E2E claim is not reproduced by this report run.
+- The mocked vertical E2E path is reproduced only with explicit test flags and local route mocks; it is not production runtime evidence.
 
 ## Recommended Next Merge Order
 
@@ -130,7 +137,8 @@ This failure does not prove product breakage by itself, but it removes the stron
 - [x] Static typecheck passed.
 - [x] Production build passed.
 - [x] Lint exited 0.
-- [ ] Local Placement V3 vertical E2E passed in this report run.
+- [x] Default-off Placement V3 route gate verified.
+- [x] Local mocked Placement V3 vertical E2E passed with explicit test flags.
 - [ ] 25+ live benchmark sessions completed.
 - [ ] 3 benchmark optimization cycles completed.
 - [ ] p95 session latency measured.
@@ -149,7 +157,7 @@ This failure does not prove product breakage by itself, but it removes the stron
 - Set the replay env vars and run #943 live drift replay after A38 merges.
 - Test native speaking on a real iOS/Android phone with Azure and Supabase env vars present.
 - Verify A29 grader availability, or explicitly accept speaking/reading/listening fallback limitation for internal-only testing.
-- Re-run the vertical E2E and treat failure as a blocker until reproduced green.
+- Keep future vertical E2E runs on a clean dev-server state, or make the harness fail fast when port 3107 is already occupied by a server with unknown Vite env.
 
 ## Unsupported Claims
 
@@ -168,4 +176,4 @@ Do not claim:
 
 ## Final Recommendation
 
-Do not enable Placement V3 for users today. The merged state is useful and safe as a dark-launched integration milestone, but production evidence is still missing and the local vertical E2E did not pass during this report run. Keep both flags off, merge A38 next, then collect live benchmark, drift, native audio, and modality-grader evidence before reconsidering an internal-only enablement.
+Do not enable Placement V3 for users today. The merged state is useful and safe as a dark-launched integration milestone, and the mocked internal vertical path now passes with explicit flags after correcting local harness state. Production evidence is still missing. Keep both flags off, merge A38 next, then collect live benchmark, drift, native audio, and modality-grader evidence before reconsidering an internal-only enablement.
