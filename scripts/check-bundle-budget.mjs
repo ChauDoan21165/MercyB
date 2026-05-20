@@ -33,21 +33,22 @@ const REPO_ROOT = resolve(__dirname, '..');
 const DIST_DIR = join(REPO_ROOT, 'dist');
 const INDEX_HTML = join(DIST_DIR, 'index.html');
 
-// Threshold in gzipped bytes. Baseline on origin/main (this PR's
-// merge base) measured 295,580 B gz across the 6 eager chunks:
+// Threshold in gzipped bytes. Baseline on origin/main with #794
+// (lazy MercyGuidePanel) and #795 (vendor-split zod/sonner/date-fns)
+// applied measured 249,757 B gz across the 6 eager chunks:
 // index / mercy-guide / react / supabase / ui / vendor.
-// Threshold = baseline + ~5% slack = 310,000 B (≈ 4.88% headroom).
+// Threshold = baseline + ~5% slack rounded up to the nearest 1,000
+// = 263,000 B (≈ 5.30% headroom; 13,243 B over today's main).
 //
-// Once PRs #794 (lazy MercyGuidePanel) and #795 (vendor-split
-// zod/sonner/date-fns) merge, the eager baseline drops by ~45 KB
-// gz to ~250 KB. A follow-up PR should tighten this constant to the
-// new baseline + 5% so the gate keeps catching regressions instead
-// of becoming dead weight.
+// History: this constant started at 310_000 B on PR #809 against the
+// pre-#794+#795 baseline of 295,580 B gz. After those two PRs
+// merged (commits d4cf1e382 + 9b26bac80), the eager baseline dropped
+// by ~45 KB gz and the gate was tightened to lock the win in.
 //
 // To widen legitimately (new always-on feature, framework upgrade,
 // new eager vendor): raise this number in the same PR that adds the
 // bytes and explain why in the PR description.
-const BUDGET_GZIP_BYTES = Number(process.env.BUNDLE_BUDGET_GZIP_BYTES) || 310_000;
+const BUDGET_GZIP_BYTES = Number(process.env.BUNDLE_BUDGET_GZIP_BYTES) || 263_000;
 
 function fail(msg) {
   console.error(`❌ ${msg}`);
