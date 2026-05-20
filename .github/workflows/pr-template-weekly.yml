@@ -1,0 +1,67 @@
+name: PR Template Compliance — Weekly Report
+
+# WHY THIS EXISTS — Companion to pr-template-observe.yml. The per-PR
+# observer posts comments live; this workflow rolls them up weekly so
+# the rollout-to-hard-gate decision (see PR-TEMPLATE-OBSERVABILITY-
+# baseline-A16.md) is data-driven, not gut-driven.
+#
+# Cadence: Monday 09:00 UTC = Monday 16:00 ICT — close to a sensible
+# review slot. Also manually triggerable.
+#
+# Delivery: the report (reports/PR-TEMPLATE-compliance-weekly.md) is
+# proposed via a pull request, NOT pushed directly to main. This:
+#   1. Respects PRINCIPLES §3 (no agent ships to main without review)
+#   2. Eats our own dogfood — the PR template gate sees this PR too
+#   3. Keeps the workflow's `contents: write` blast radius limited
+#      to a branch namespace it owns (chore/weekly-pr-template-*)
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # every Monday 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-template-weekly
+  cancel-in-progress: false
+
+jobs:
+  report:
+    name: Generate weekly PR-template compliance report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/pr-template-weekly-report.mjs
+      - name: Open PR if report changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain reports/PR-TEMPLATE-compliance-weekly.md)" ]; then
+            echo "No change in compliance report — skipping PR."
+            exit 0
+          fi
+          DATE=$(date -u +%Y-%m-%d)
+          BRANCH="chore/weekly-pr-template-compliance-${DATE}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${BRANCH}"
+          git add reports/PR-TEMPLATE-compliance-weekly.md
+          git commit -m "chore(reports): weekly PR-template compliance — ${DATE}"
+          git push origin "${BRANCH}"
+          gh pr create \
+            --base main \
+            --head "${BRANCH}" \
+            --title "chore(reports): weekly PR-template compliance — ${DATE}" \
+            --body "Automated weekly rollup of PR-template gate compliance over the last 7 days. Surface: Docs / reports only. Verified by Chau: N/A — non-runtime change. See \`reports/PR-TEMPLATE-compliance-weekly.md\` for the latest section."
