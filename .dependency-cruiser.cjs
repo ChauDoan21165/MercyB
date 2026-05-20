@@ -125,9 +125,22 @@ module.exports = {
       name: 'no-circular',
       severity: 'warn',
       comment:
-        'Circular dependency detected. Refactor: typically extract the shared piece into a third module that both can depend on.',
+        'Circular dependency detected. Refactor: typically extract the shared piece into a third module that both can depend on. ' +
+        'Note: cycles whose members contain any type-only edge (`import type { X } from ...`) are excluded — those edges compile to zero runtime bytes and cannot form a real cycle at execution time. ' +
+        'This is the same pattern #898 applies to no-hooks-to-ui for the shadcn type-only coupling.',
       from: {},
-      to: { circular: true },
+      to: {
+        circular: true,
+        // `viaOnly` matches cycles only when EVERY edge in the cycle
+        // satisfies the criterion. `dependencyTypesNot: ['type-only']`
+        // means "no edge in the cycle is a type-only import" — so a
+        // cycle that closes via even one `import type ...` is excluded.
+        // `tsPreCompilationDeps: true` (set on this config) follows
+        // type-only edges for cross-layer type-name leak detection,
+        // which is useful but produces no-circular false positives
+        // because such edges disappear at compile time.
+        viaOnly: { dependencyTypesNot: ['type-only'] },
+      },
     },
     // Large-file detection (>800 lines) is intentionally NOT a depcruise rule —
     // depcruise doesn't measure file size. The brief's preventive flag for big
