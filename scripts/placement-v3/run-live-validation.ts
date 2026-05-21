@@ -19,6 +19,7 @@ type GraderResult = { ok: boolean; version: string; assessment: Record<string, a
 export type FailureMode =
   | "transient-db-error"
   | "duplicate-submit"
+  | "replayed-iteration"
   | "delayed-result"
   | "interrupted-cleanup"
   | "partial-results"
@@ -40,6 +41,7 @@ export type LiveValidationResult = {
   mockedProviderVersions?: string[];
   stateFile?: string;
   metrics?: OperationalMetrics;
+  replayAudit?: ReplayAudit;
 };
 
 export type TargetClassification = {
@@ -85,6 +87,11 @@ export type RunnerConfig = {
   stateFile: string | null;
   resumeFrom: string | null;
   injectFailures: FailureMode[];
+  journal: string | null;
+  replay: string | null;
+  auditReplay: boolean;
+  auditDivergence: boolean;
+  reconstructState: boolean;
 };
 
 export type IterationStatus = "pending" | "running" | "completed" | "failed" | "recovered" | "cleanup_pending" | "cleanup_complete";
@@ -141,6 +148,34 @@ export type LiveValidationState = {
   metrics: OperationalMetrics;
 };
 
+export type JournalEvent = {
+  sequence: number;
+  type: "iteration_started" | "iteration_completed" | "iteration_failed" | "retry_scheduled" | "cleanup_verified" | "state_repaired";
+  iterationIndex?: number;
+  learnerEmail?: string;
+  sessionId?: string;
+  attempt?: number;
+  retryState?: IterationState["retryState"];
+  cleanupStatus?: IterationState["cleanupStatus"];
+  reconciliation?: ReconciliationResult;
+  failure?: string;
+};
+
+export type ReplayAudit = {
+  ok: boolean;
+  replayedIterations: number;
+  replayedDuplicateIterations: number;
+  recoveredRetries: number;
+  orphanedSessions: number;
+  repairedStaleState: number;
+  duplicateSuppressions: number;
+  cleanupLineageRepairs: number;
+  reconciliationMismatches: number;
+  divergenceClassifications: string[];
+  replayFailures: string[];
+  reconstructedState?: LiveValidationState;
+};
+
 export function parseArgs(args: string[]): RunnerConfig {
   return {
     dryRun: hasFlag(args, "dry-run"),
@@ -152,6 +187,11 @@ export function parseArgs(args: string[]): RunnerConfig {
     stateFile: valueFor(args, "state-file") ?? null,
     resumeFrom: valueFor(args, "resume-from") ?? null,
     injectFailures: valuesFor(args, "inject-failure") as FailureMode[],
+    journal: valueFor(args, "journal") ?? null,
+    replay: valueFor(args, "replay") ?? null,
+    auditReplay: hasFlag(args, "audit-replay"),
+    auditDivergence: hasFlag(args, "audit-divergence"),
+    reconstructState: hasFlag(args, "reconstruct-state"),
   };
 }
 
@@ -247,6 +287,11 @@ export function buildDryRunPlan(env: Env, learnerEmail: string, config: RunnerCo
     stateFile: config.stateFile,
     resumeFrom: config.resumeFrom,
     cleanup: config.cleanup,
+    journal: config.journal,
+    replay: config.replay,
+    auditReplay: config.auditReplay,
+    auditDivergence: config.auditDivergence,
+    reconstructState: config.reconstructState,
     steps: [
       "resolve_or_create_namespaced_test_learner",
       "create_or_resume_placement_v3_session",
@@ -254,6 +299,8 @@ export function buildDryRunPlan(env: Env, learnerEmail: string, config: RunnerCo
       "verify_session_response_and_profile_persistence",
       "reconcile_local_state_with_persistence",
       "verify_cleanup_integrity_when_requested",
+      "append_replay_safe_journal_entries",
+      "audit_replay_divergence_when_requested",
       "print_compact_test_only_result",
     ],
     cleanupOrOverwriteBehavior: "Only placement-v3-test-<uuid>@mercyblade.test users are allowed; cleanup is scoped to completed validation-owned iterations and never targets real learner emails.",
@@ -275,6 +322,16 @@ export async function runPlacementV3LiveValidation(options: {
   const target = assertEnvironmentSafe({ env, dryRun: config.dryRun, learnerEmail });
   const out = options.out;
 
+  if (config.replay || config.auditReplay || config.auditDivergence || config.reconstructState) {
+    const replayPath = config.replay ?? config.journal;
+    if (!replayPath) throw new Error("Replay audit requires --replay=<journal> or --journal=<path>.");
+    const audit = auditReplayJournal(options.stateIO ?? fs, replayPath);
+    if (!audit.ok) throw new Error(`Placement V3 replay audit failed: ${audit.divergenceClassifications.join(", ")}`);
+    const result: LiveValidationResult = { ok: true, dryRun: config.dryRun, target, learnerEmail, replayAudit: audit };
+    out?.log(config.json ? stableJson(result) : JSON.stringify(result, null, 2));
+    return result;
+  }
+
   if (config.dryRun) {
     const plan = buildDryRunPlan(env, learnerEmail, config);
     out?.log(JSON.stringify(plan, null, 2));
@@ -285,11 +342,17 @@ export async function runPlacementV3LiveValidation(options: {
   const stateIO = options.stateIO ?? fs;
   const state = loadOrCreateState(stateIO, statePath, config, target, learnerEmail);
   const runtime = options.runtime ?? createSupabaseRuntime(env);
-  await runStatefulValidation({ state, statePath, stateIO, runtime, config });
+  const journalPath = config.journal;
+  await runStatefulValidation({ state, statePath, stateIO, runtime, config, journalPath });
 
   if (config.cleanup) {
     await verifyCleanup(state, runtime);
     saveState(stateIO, statePath, state);
+    if (journalPath) appendJournal(stateIO, journalPath, {
+      sequence: nextJournalSequence(stateIO, journalPath),
+      type: "cleanup_verified",
+      cleanupStatus: "complete",
+    });
   }
 
   const result: LiveValidationResult = {
@@ -365,13 +428,14 @@ async function runStatefulValidation(args: {
   stateIO: Pick<typeof fs, "writeFileSync">;
   runtime: LiveRuntime;
   config: RunnerConfig;
+  journalPath: string | null;
 }) {
-  const { state, statePath, stateIO, runtime, config } = args;
+  const { state, statePath, stateIO, runtime, config, journalPath } = args;
   const pending = state.iterations.filter((iteration) => iteration.status !== "completed" && iteration.status !== "cleanup_complete");
   for (let i = 0; i < pending.length; i += config.concurrency) {
     const batch = pending.slice(i, i + config.concurrency);
     if (batch.length > 1) state.metrics.concurrencyCollisionsPrevented += assertNoNamespaceCollision(batch);
-    await Promise.all(batch.map((iteration) => runIterationWithRetries({ iteration, state, statePath, stateIO, runtime, config })));
+    await Promise.all(batch.map((iteration) => runIterationWithRetries({ iteration, state, statePath, stateIO, runtime, config, journalPath })));
     saveState(stateIO, statePath, recalculateMetrics(touch(state)));
   }
   const failures = state.iterations.filter((iteration) => iteration.status === "failed");
@@ -385,11 +449,12 @@ async function runIterationWithRetries(args: {
   stateIO: Pick<typeof fs, "writeFileSync">;
   runtime: LiveRuntime;
   config: RunnerConfig;
+  journalPath: string | null;
 }) {
-  const { iteration, state, statePath, stateIO, runtime, config } = args;
+  const { iteration, state, statePath, stateIO, runtime, config, journalPath } = args;
   for (;;) {
     try {
-      await runOneIteration(iteration, runtime, config);
+      await runOneIteration(iteration, runtime, config, stateIO, journalPath);
       saveState(stateIO, statePath, recalculateMetrics(touch(state)));
       return;
     } catch (err) {
@@ -397,6 +462,7 @@ async function runIterationWithRetries(args: {
       if (iteration.attempts <= config.maxRetries && isRecoverableFailure(iteration.failure)) {
         iteration.retryState = "scheduled";
         state.metrics.retryRecoveries += 1;
+        if (journalPath) appendJournal(stateIO, journalPath, journalEvent(stateIO, journalPath, "retry_scheduled", iteration));
         saveState(stateIO, statePath, recalculateMetrics(touch(state)));
         continue;
       }
@@ -408,13 +474,20 @@ async function runIterationWithRetries(args: {
   }
 }
 
-async function runOneIteration(iteration: IterationState, runtime: LiveRuntime, config: RunnerConfig) {
+async function runOneIteration(
+  iteration: IterationState,
+  runtime: LiveRuntime,
+  config: RunnerConfig,
+  stateIO: Pick<typeof fs, "existsSync" | "readFileSync" | "writeFileSync">,
+  journalPath: string | null,
+) {
   iteration.status = "running";
   iteration.startedAt ??= new Date().toISOString();
   iteration.attempts += 1;
   const startedAt = performance.now();
   const learner = await runtime.resolveTestLearner(iteration.learnerEmail);
   iteration.learnerUserId = learner.id;
+  if (journalPath) appendJournal(stateIO, journalPath, journalEvent(stateIO, journalPath, "iteration_started", iteration));
   const deps = await runtime.createDeps(learner.id);
   const run = (request: PlacementV3Request) => maybeInject(config, iteration, "transient-db-error", () => runtime.run(learner.id, request, deps));
 
@@ -447,10 +520,14 @@ async function runOneIteration(iteration: IterationState, runtime: LiveRuntime, 
   iteration.profileCurrent = reconciliation.profileCurrent;
   iteration.persistenceVerified = reconciliation.ok;
   if (!reconciliation.ok) throw new Error("persistence reconciliation failed");
+  if (config.injectFailures.includes("replayed-iteration")) {
+    if (journalPath) appendJournal(stateIO, journalPath, journalEvent(stateIO, journalPath, "iteration_completed", iteration));
+  }
   iteration.status = "completed";
   iteration.completedAt = new Date().toISOString();
   iteration.durationMs = Math.round(performance.now() - startedAt);
   iteration.retryState = iteration.retryState === "scheduled" ? "recovered" : iteration.retryState;
+  if (journalPath) appendJournal(stateIO, journalPath, journalEvent(stateIO, journalPath, "iteration_completed", iteration));
 }
 
 async function reconcileIteration(args: {
@@ -525,6 +602,125 @@ function assertNoNamespaceCollision(iterations: IterationState[]): number {
 
 function saveState(stateIO: Pick<typeof fs, "writeFileSync">, statePath: string, state: LiveValidationState) {
   stateIO.writeFileSync(statePath, `${stableJson(state)}\n`);
+}
+
+function appendJournal(
+  stateIO: Pick<typeof fs, "existsSync" | "readFileSync" | "writeFileSync">,
+  journalPath: string,
+  event: JournalEvent,
+) {
+  const events = readJournal(stateIO, journalPath);
+  events.push(event);
+  stateIO.writeFileSync(journalPath, `${stableJson(events)}\n`);
+}
+
+function readJournal(
+  stateIO: Pick<typeof fs, "existsSync" | "readFileSync">,
+  journalPath: string,
+): JournalEvent[] {
+  if (!stateIO.existsSync(journalPath)) return [];
+  const parsed = JSON.parse(String(stateIO.readFileSync(journalPath)));
+  if (!Array.isArray(parsed)) throw new Error("Placement V3 replay journal is malformed.");
+  return parsed as JournalEvent[];
+}
+
+function nextJournalSequence(stateIO: Pick<typeof fs, "existsSync" | "readFileSync">, journalPath: string): number {
+  return readJournal(stateIO, journalPath).length + 1;
+}
+
+function journalEvent(
+  stateIO: Pick<typeof fs, "existsSync" | "readFileSync">,
+  journalPath: string,
+  type: JournalEvent["type"],
+  iteration: IterationState,
+): JournalEvent {
+  return {
+    sequence: nextJournalSequence(stateIO, journalPath),
+    type,
+    iterationIndex: iteration.index,
+    learnerEmail: iteration.learnerEmail,
+    sessionId: iteration.sessionId,
+    attempt: iteration.attempts,
+    retryState: iteration.retryState,
+    cleanupStatus: iteration.cleanupStatus,
+    reconciliation: iteration.reconciliation,
+    failure: iteration.failure,
+  };
+}
+
+export function auditReplayJournal(
+  stateIO: Pick<typeof fs, "existsSync" | "readFileSync">,
+  journalPath: string,
+): ReplayAudit {
+  const events = readJournal(stateIO, journalPath).sort((a, b) => a.sequence - b.sequence);
+  const classifications: string[] = [];
+  const failures: string[] = [];
+  const completed = events.filter((event) => event.type === "iteration_completed");
+  const completedKeys = completed.map((event) => `${event.iterationIndex}:${event.sessionId}`);
+  const duplicateCompleted = completedKeys.length - new Set(completedKeys).size;
+  const outOfOrder = events.some((event, index) => event.sequence !== index + 1);
+  const invalidNamespace = events.some((event) => event.learnerEmail && !TEST_EMAIL_RE.test(event.learnerEmail));
+  const missingPersistence = completed.filter((event) => !event.reconciliation?.ok).length;
+  const cleanupBeforeVerification = events.findIndex((event) => event.type === "cleanup_verified");
+  const firstCompletion = events.findIndex((event) => event.type === "iteration_completed");
+  const cleanupOrderBad = cleanupBeforeVerification >= 0 && firstCompletion >= 0 && cleanupBeforeVerification < firstCompletion;
+  if (duplicateCompleted) classifications.push("replayed_duplicate_iteration");
+  if (outOfOrder) classifications.push("replay_order_corruption");
+  if (invalidNamespace) classifications.push("invalid_namespace_reuse");
+  if (missingPersistence) classifications.push("missing_persistence_artifacts");
+  if (cleanupOrderBad) classifications.push("cleanup_before_verification");
+  failures.push(...events.filter((event) => event.type === "iteration_failed").map((event) => event.failure ?? "unknown replay failure"));
+  return {
+    ok: classifications.length === 0 && failures.length === 0,
+    replayedIterations: completed.length,
+    replayedDuplicateIterations: duplicateCompleted,
+    recoveredRetries: events.filter((event) => event.type === "retry_scheduled").length,
+    orphanedSessions: completed.reduce((sum, event) => sum + (event.reconciliation?.orphanedSessions ?? 0), 0),
+    repairedStaleState: events.filter((event) => event.type === "state_repaired").length,
+    duplicateSuppressions: completed.reduce((sum, event) => sum + (event.reconciliation?.duplicateResponseRows ?? 0), 0),
+    cleanupLineageRepairs: events.filter((event) => event.type === "cleanup_verified" && event.cleanupStatus === "complete").length,
+    reconciliationMismatches: completed.filter((event) => event.reconciliation && !event.reconciliation.ok).length,
+    divergenceClassifications: classifications,
+    replayFailures: failures,
+    reconstructedState: reconstructStateFromJournal(events),
+  };
+}
+
+function reconstructStateFromJournal(events: JournalEvent[]): LiveValidationState {
+  const now = "replayed";
+  const byIndex = new Map<number, IterationState>();
+  for (const event of events) {
+    if (event.iterationIndex === undefined || !event.learnerEmail) continue;
+    const existing = byIndex.get(event.iterationIndex) ?? {
+      index: event.iterationIndex,
+      learnerEmail: event.learnerEmail,
+      attempts: 0,
+      status: "pending" as IterationStatus,
+      retryState: "none" as const,
+      persistenceVerified: false,
+      cleanupStatus: "not_requested" as const,
+      azureLiveCheckStatus: "not_run_mocked_grading_only" as const,
+    };
+    existing.sessionId = event.sessionId ?? existing.sessionId;
+    existing.attempts = Math.max(existing.attempts, event.attempt ?? 0);
+    existing.retryState = event.retryState ?? existing.retryState;
+    existing.cleanupStatus = event.cleanupStatus ?? existing.cleanupStatus;
+    existing.reconciliation = event.reconciliation ?? existing.reconciliation;
+    existing.persistenceVerified = Boolean(existing.reconciliation?.ok);
+    existing.status = event.type === "iteration_completed" ? "completed" : event.type === "iteration_failed" ? "failed" : existing.status;
+    byIndex.set(event.iterationIndex, existing);
+  }
+  return recalculateMetrics({
+    version: STATE_VERSION,
+    runId: "replayed",
+    learnerNamespace: "replayed",
+    target: { url: null, class: "missing", reason: "Reconstructed from journal." },
+    createdAt: now,
+    updatedAt: now,
+    cleanupRequested: events.some((event) => event.type === "cleanup_verified"),
+    iterations: [...byIndex.values()].sort((a, b) => a.index - b.index),
+    metrics: emptyMetrics(),
+  });
 }
 
 function touch(state: LiveValidationState): LiveValidationState {

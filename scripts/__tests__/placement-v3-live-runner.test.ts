@@ -73,7 +73,7 @@ describe("Placement V3 live validation runner safety", () => {
   });
 
   it("describes the exact dry-run validation plan", () => {
-    const plan = buildDryRunPlan(safeEnv, TEST_EMAIL, parseArgs(["--dry-run", "--iterations=3", "--concurrency=2", "--cleanup"]));
+    const plan = buildDryRunPlan(safeEnv, TEST_EMAIL, parseArgs(["--dry-run", "--iterations=3", "--concurrency=2", "--cleanup", "--journal=journal.json"]));
 
     expect(plan).toMatchObject({
       mode: "dry-run",
@@ -82,9 +82,11 @@ describe("Placement V3 live validation runner safety", () => {
       iterations: 3,
       concurrency: 2,
       cleanup: true,
+      journal: "journal.json",
     });
     expect(plan.steps).toContain("verify_session_response_and_profile_persistence");
     expect(plan.steps).toContain("reconcile_local_state_with_persistence");
+    expect(plan.steps).toContain("append_replay_safe_journal_entries");
   });
 });
 
@@ -240,6 +242,106 @@ describe("Placement V3 live validation runner persistence path", () => {
       runtime,
       stateIO: memoryStateIO(),
     })).rejects.toThrow(/persistence reconciliation failed/);
+  });
+
+  it("reconstructs replay lineage from a prior journal without mutating runtime", async () => {
+    const stateIO = memoryStateIO();
+    const runtime = createFakeRuntime();
+
+    await runPlacementV3LiveValidation({
+      args: ["--iterations=3", "--concurrency=2", "--journal=journal.json", "--json"],
+      env: safeEnv,
+      uuid: TEST_UUID,
+      runtime,
+      stateIO,
+    });
+    const result = await runPlacementV3LiveValidation({
+      args: ["--dry-run", "--replay=journal.json", "--audit-replay", "--reconstruct-state", "--json"],
+      env: { NODE_ENV: "test", SUPABASE_URL: safeEnv.SUPABASE_URL },
+      uuid: TEST_UUID,
+      runtime: {
+        resolveTestLearner: vi.fn(async () => {
+          throw new Error("replay should not resolve learners");
+        }),
+        createDeps: vi.fn(),
+        run: vi.fn(),
+      } as unknown as LiveRuntime,
+      stateIO,
+    });
+
+    expect(result.replayAudit?.ok).toBe(true);
+    expect(result.replayAudit?.replayedIterations).toBe(3);
+    expect(result.replayAudit?.reconstructedState?.metrics.iterationsCompleted).toBe(3);
+  });
+
+  it("fails closed on replayed duplicate iteration divergence", async () => {
+    const event = {
+      sequence: 1,
+      type: "iteration_completed",
+      iterationIndex: 0,
+      learnerEmail: TEST_EMAIL,
+      sessionId: "session-1",
+      attempt: 1,
+      retryState: "none",
+      cleanupStatus: "not_requested",
+      reconciliation: {
+        ok: true,
+        responseCount: 5,
+        profileCurrent: true,
+        duplicateResponseRows: 0,
+        orphanedSessions: 0,
+        missingResultRows: 0,
+        staleRetryState: false,
+        persistenceDivergence: false,
+        providerMetadataValid: true,
+        versions: ["mock"],
+      },
+    };
+    const stateIO = memoryStateIO({
+      "journal.json": JSON.stringify([event, { ...event, sequence: 2 }]),
+    });
+
+    await expect(runPlacementV3LiveValidation({
+      args: ["--dry-run", "--replay=journal.json", "--audit-divergence"],
+      env: { NODE_ENV: "test", SUPABASE_URL: safeEnv.SUPABASE_URL },
+      uuid: TEST_UUID,
+      runtime: createFakeRuntime(),
+      stateIO,
+    })).rejects.toThrow(/replayed_duplicate_iteration/);
+  });
+
+  it("fails closed on malformed replay journals", async () => {
+    await expect(runPlacementV3LiveValidation({
+      args: ["--dry-run", "--replay=journal.json", "--audit-replay"],
+      env: { NODE_ENV: "test", SUPABASE_URL: safeEnv.SUPABASE_URL },
+      uuid: TEST_UUID,
+      runtime: createFakeRuntime(),
+      stateIO: memoryStateIO({ "journal.json": "{ nope" }),
+    })).rejects.toThrow();
+  });
+
+  it("audits cleanup lineage deterministically during replay", async () => {
+    const stateIO = memoryStateIO();
+    const runtime = createFakeRuntime();
+    runtime.cleanupValidationState = vi.fn(async () => ({ removedRows: 2, recovered: true, activeDeletionPrevented: true }));
+
+    await runPlacementV3LiveValidation({
+      args: ["--iterations=2", "--cleanup", "--journal=journal.json"],
+      env: safeEnv,
+      uuid: TEST_UUID,
+      runtime,
+      stateIO,
+    });
+    const result = await runPlacementV3LiveValidation({
+      args: ["--dry-run", "--replay=journal.json", "--audit-replay", "--json"],
+      env: { NODE_ENV: "test", SUPABASE_URL: safeEnv.SUPABASE_URL },
+      uuid: TEST_UUID,
+      runtime: createFakeRuntime(),
+      stateIO,
+    });
+
+    expect(result.replayAudit?.cleanupLineageRepairs).toBe(1);
+    expect(result.replayAudit?.divergenceClassifications).toEqual([]);
   });
 });
 
