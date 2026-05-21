@@ -202,9 +202,20 @@ sitting idle while work exists is wasted capacity. Planner-Claude's responsibili
 the moment a report arrives, the next brief ships in the same message.
 
 
+## 18. SINGLE-AGENT HANDOFF — NO CROSS-AGENT SWITCHING
+
+When an agent reports completion:
+- Do not comment unless Chau needs to do something.
+- Give the longest possible next job for that same agent.
+- Do not jump to advising another agent unless Chau explicitly asks.
+- Avoid confusing Chau with cross-agent switching.
+- Keep the handoff focused on what the reporting agent should do next.
+
+Chau should receive one clear continuation path from the same agent, not a scattered set of options across agents. Planner-Claude's responsibility: when a report arrives, the handoff stays with the reporting agent unless Chau explicitly redirects.
+
 ## Last updated
 
-2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-21 — Added principle 18 (single-agent handoff). 2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
 
