@@ -90,3 +90,127 @@ export {
   longestContiguousRun,
   utcDayOrdinal,
 } from "./time";
+
+// ---------------------------------------------------------------------------
+// Adapter layer — structural integration surfaces for upstream V4 agents
+// ---------------------------------------------------------------------------
+
+export type {
+  AdaptiveSignalBundle,
+  BilingualString,
+  BurnoutRisk,
+  ChurnRisk,
+  CurriculumSignalKind,
+  CurriculumSignalLike,
+  DiagnosticKind,
+  ForecastDeviation,
+  ForecastDeviationCode,
+  ForecastDeviationReport,
+  ForecastLike,
+  ForecastSkillTargetLike,
+  IneffectiveClusterFlag,
+  InterventionEvidence,
+  InterventionKind,
+  InterventionPlan,
+  InterventionPriority,
+  InterventionRecommendation,
+  L1PersistencePattern,
+  LearnerDiagnostic,
+  LearnerMemoryEventLike,
+  LearnerMemorySummaryLike,
+  ProgressionSnapshotLike,
+  RecalibrationSuggestion,
+  RecalibrationSuggestionKind,
+  ReviewOverload,
+  RiskLevel,
+  Skill,
+  SkillProgressLike,
+  SpeakingAvoidance,
+  StagnationAssessment,
+  StudyPlanDayLike,
+  StudyPlanIntensity,
+  StudyPlanLessonLike,
+  StudyPlanLike,
+} from "./adaptiveTelemetryTypes";
+
+export { CEFR_RANK as ADAPTIVE_CEFR_RANK } from "./adaptiveTelemetryTypes";
+
+export {
+  ingestAdaptiveRecalculation,
+  ingestBurnoutIndicator,
+  ingestHesitationLoop,
+  ingestLessonCompletion,
+  ingestLessonRetry,
+  ingestLessonSkip,
+  ingestLessonStart,
+  ingestProgressionCheckpoint,
+  ingestProgressionSnapshot,
+  ingestReviewDebtAccumulation,
+  ingestSpeakingRetry,
+  ingestStudyPlanGenerated,
+} from "./studyPlanTelemetry";
+export type {
+  BatchIngestionInput,
+  BurnoutIndicatorInput,
+  HesitationLoopInput,
+  IngestionContext,
+  LessonCompletionInput,
+  LessonRetryInput,
+  LessonSkipInput,
+  LessonSkipReason,
+  LessonStartInput,
+  ProgressionCheckpointInput,
+  RecalculationInput,
+  RecalculationReasonCode,
+  ReviewDebtInput,
+  SpeakingRetryInput,
+} from "./studyPlanTelemetry";
+
+export {
+  DEFAULT_THRESHOLDS,
+  composeInterventionPlan,
+  computeAdaptiveSignals,
+  recommendInterventions,
+} from "./interventionEngine";
+export type {
+  ComposePlanInput,
+  ComputeSignalsInput,
+  InterventionThresholds,
+} from "./interventionEngine";
+
+export {
+  analyzeForecastVsActual,
+  summarizeForecastForLearner,
+} from "./forecastAnalysis";
+export type { ForecastAnalysisOptions } from "./forecastAnalysis";
+
+export {
+  analyzeInterventionEffectiveness,
+  burnoutByCefrBand,
+  churnByWeakSkill,
+  comparePlanVersions,
+  l1ClusterEffectiveness,
+  speakingConfidenceRetention,
+} from "./cohortAdaptive";
+export type {
+  AdaptiveCohortOptions,
+  BurnoutByCefrRow,
+  CefrBandAssignment,
+  ChurnByWeakSkillRow,
+  InterventionEffectivenessRow,
+  InterventionOutcome,
+  L1ClusterAssignment,
+  L1ClusterEffectivenessRow,
+  PlanVersionAssignment,
+  PlanVersionComparisonReport,
+  PlanVersionRow,
+  SpeakingRetentionAssignment,
+  SpeakingRetentionRow,
+  WeakSkillProfile,
+} from "./cohortAdaptive";
+
+export { buildLearnerDiagnostics } from "./diagnostics";
+export type { BuildDiagnosticsInput } from "./diagnostics";
+
+export { evaluateAdaptiveLoop } from "./adaptiveLoop";
+export type { AdaptiveLoopInput, AdaptiveLoopResult } from "./adaptiveLoop";
