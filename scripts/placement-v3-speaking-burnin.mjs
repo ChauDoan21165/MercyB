@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   DEFAULT_FIXTURE,
@@ -7,6 +10,7 @@ import {
 } from "./placement-v3-speaking-live-check.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
+const repoRoot = path.resolve(path.dirname(__filename), "..");
 
 const FAILURE_CLASSIFICATION_ORDER = [
   "timeout",
@@ -29,6 +33,9 @@ export function parseBurninArgs(argv) {
     simulateMalformedRate: 0,
     dryRun: false,
     json: false,
+    ciStress: false,
+    emitDebugArtifacts: false,
+    debugDir: ".tmp/placement-v3-speaking-burnin",
     fixture: DEFAULT_FIXTURE,
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -42,6 +49,9 @@ export function parseBurninArgs(argv) {
     else if (key === "simulate-malformed-rate") options.simulateMalformedRate = clampRate(Number(value));
     else if (key === "dry-run") options.dryRun = true;
     else if (key === "json") options.json = true;
+    else if (key === "ci-stress") options.ciStress = true;
+    else if (key === "emit-debug-artifacts") options.emitDebugArtifacts = true;
+    else if (key === "debug-dir") options.debugDir = value || options.debugDir;
     else if (key === "fixture") options.fixture = value || DEFAULT_FIXTURE;
   }
   return options;
@@ -64,6 +74,18 @@ function orderedCountMap(keys, entries) {
     if (Object.hasOwn(counts, entry)) counts[entry] += 1;
   }
   return counts;
+}
+
+function stableStringify(value) {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function stableHash(value) {
+  return crypto.createHash("sha256").update(stableStringify(value)).digest("hex");
 }
 
 function scenarioForIteration(index, options) {
@@ -173,7 +195,7 @@ function validateRunResult(result, seenRunIds) {
   return failures;
 }
 
-export function aggregateBurninResults(results, skippedValidations = []) {
+export function aggregateBurninResults(results, skippedValidations = [], debugTrace = []) {
   const seenRunIds = new Set();
   const accepted = [];
   const blockingFailures = [];
@@ -242,11 +264,33 @@ export function aggregateBurninResults(results, skippedValidations = []) {
       result.ok ? result.persistedProviderMetadata?.fallback === false : result.persistedProviderMetadata?.fallback === true
     ),
     duplicateExecutionSuppressionStable: duplicateSuppressionCount >= 0,
+    deterministicSummaryHash: stableHash({
+      acceptedRunIds: accepted.map((result) => result.runId),
+      counts: {
+        iterationsAttempted: results.length,
+        iterationsAccepted: accepted.length,
+        iterationsSucceeded: accepted.filter((result) => result.ok).length,
+        timeoutCount,
+        fallbackCount,
+        malformedPayloadCount,
+        retryRecoveryCount,
+        duplicateSuppressionCount,
+      },
+      failureClassificationCounts,
+      latencies,
+      skippedValidations,
+    }),
   };
+  if (debugTrace.length) {
+    summary.debugArtifactPreview = {
+      traceEntries: debugTrace.length,
+      traceHash: stableHash(debugTrace),
+    };
+  }
   return summary;
 }
 
-async function runWorker(queue, options, output) {
+async function runWorker(queue, options, output, debugTrace, workerId) {
   while (queue.length) {
     const index = queue.shift();
     const scenario = scenarioForIteration(index, options);
@@ -267,18 +311,32 @@ async function runWorker(queue, options, output) {
       scenario,
       mode: options.dryRun ? "dry_run" : simulated ? "simulated_failure_injection" : "live",
     };
+    debugTrace[index] = {
+      index,
+      workerId,
+      runId,
+      scenario,
+      mode: output[index].mode,
+      ok: output[index].ok,
+      fallback: output[index].fallback,
+      errorCode: output[index].errorCode ?? null,
+      latencyMs: output[index].latencyMs,
+    };
   }
 }
 
-export async function runBurnin(options) {
+async function runBurninOnce(options) {
   const skippedValidations = [];
   if (!options.dryRun) {
     const guard = validateLiveCheckEnvironment();
     if (!guard.ok) {
       return {
-        refused: true,
-        exitCode: 2,
-        errors: guard.errors,
+        summary: {
+          refused: true,
+          exitCode: 2,
+          errors: guard.errors,
+        },
+        debugTrace: [],
       };
     }
   } else {
@@ -288,12 +346,88 @@ export async function runBurnin(options) {
 
   const queue = Array.from({ length: options.iterations }, (_, index) => index);
   const output = new Array(options.iterations);
+  const debugTrace = new Array(options.iterations);
   const workers = Array.from(
     { length: Math.min(options.concurrency, options.iterations) },
-    () => runWorker(queue, options, output),
+    (_, workerId) => runWorker(queue, options, output, debugTrace, workerId),
   );
   await Promise.all(workers);
-  return aggregateBurninResults(output, skippedValidations);
+  return {
+    summary: aggregateBurninResults(output, skippedValidations, debugTrace),
+    debugTrace,
+  };
+}
+
+function writeDebugArtifacts(options, payload) {
+  const debugDir = path.resolve(repoRoot, options.debugDir);
+  fs.mkdirSync(debugDir, { recursive: true });
+  const artifact = {
+    artifactType: "placement-v3-speaking-burnin-debug",
+    sanitized: true,
+    liveProviderEvidence: false,
+    options: {
+      iterations: options.iterations,
+      concurrency: options.concurrency,
+      dryRun: options.dryRun,
+      ciStress: options.ciStress,
+      simulateTimeoutRate: options.simulateTimeoutRate,
+      simulateMalformedRate: options.simulateMalformedRate,
+    },
+    ...payload,
+  };
+  const target = path.join(debugDir, "latest.json");
+  fs.writeFileSync(target, `${JSON.stringify(artifact, null, 2)}\n`);
+  return path.relative(repoRoot, target);
+}
+
+export async function runBurnin(options) {
+  if (options.ciStress) {
+    const stressOptions = { ...options, ciStress: false };
+    const runs = [];
+    for (let replay = 0; replay < 3; replay += 1) {
+      const run = await runBurninOnce(stressOptions);
+      runs.push({
+        replay,
+        summary: run.summary,
+        debugTrace: run.debugTrace,
+        replayHash: stableHash({ summary: run.summary, debugTrace: run.debugTrace }),
+      });
+    }
+    const [first, ...rest] = runs;
+    const stable = rest.every((run) => run.replayHash === first.replayHash);
+    const summary = {
+      ...first.summary,
+      ciStress: {
+        enabled: true,
+        replayCount: runs.length,
+        stable,
+        replayHashes: runs.map((run) => run.replayHash),
+        deterministicReplayHash: stableHash(runs.map((run) => run.replayHash)),
+      },
+      blockingFailures: [
+        ...first.summary.blockingFailures,
+        ...(stable ? [] : [{ runId: "ci-stress", failure: "aggregation_drift" }]),
+      ],
+    };
+    if (options.emitDebugArtifacts) {
+      summary.debugArtifact = writeDebugArtifacts(options, {
+        ciStress: summary.ciStress,
+        replaySummaries: runs.map((run) => run.summary),
+        debugTrace: first.debugTrace,
+      });
+    }
+    return summary;
+  }
+
+  const run = await runBurninOnce(options);
+  if (run.summary.refused) return run.summary;
+  if (options.emitDebugArtifacts) {
+    run.summary.debugArtifact = writeDebugArtifacts(options, {
+      summary: run.summary,
+      debugTrace: run.debugTrace,
+    });
+  }
+  return run.summary;
 }
 
 function printHuman(summary) {
@@ -305,6 +439,8 @@ function printHuman(summary) {
   console.log(`retry recovery count: ${summary.retryRecoveryCount}`);
   console.log(`duplicate suppression count: ${summary.duplicateSuppressionCount}`);
   console.log(`failure classifications: ${JSON.stringify(summary.failureClassificationCounts)}`);
+  if (summary.ciStress) console.log(`ci stress stable: ${summary.ciStress.stable}`);
+  if (summary.debugArtifact) console.log(`debug artifact: ${summary.debugArtifact}`);
   console.log(`p50 latency ms: ${summary.p50LatencyMs}`);
   console.log(`p95 latency ms: ${summary.p95LatencyMs}`);
   console.log(`skipped validations: ${summary.skippedValidations.join(", ") || "none"}`);

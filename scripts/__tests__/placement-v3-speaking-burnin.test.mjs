@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
@@ -20,6 +21,8 @@ describe("placement-v3 speaking burn-in", () => {
       "--simulate-malformed-rate=0.4",
       "--dry-run",
       "--json",
+      "--ci-stress",
+      "--emit-debug-artifacts",
     ])).toMatchObject({
       iterations: 7,
       concurrency: 3,
@@ -27,6 +30,8 @@ describe("placement-v3 speaking burn-in", () => {
       simulateMalformedRate: 0.4,
       dryRun: true,
       json: true,
+      ciStress: true,
+      emitDebugArtifacts: true,
     });
   });
 
@@ -179,6 +184,62 @@ describe("placement-v3 speaking burn-in", () => {
       duplicateExecutionSuppressionStable: true,
       blockingFailures: [],
     });
+    expect(summaries[0].deterministicSummaryHash).toMatch(/^[a-f0-9]{64}$/);
+  });
+
+  it("ci-stress mode replays concurrent dry-runs with stable hashes", async () => {
+    const summary = await runBurnin(parseBurninArgs([
+      "--dry-run",
+      "--iterations=25",
+      "--concurrency=5",
+      "--ci-stress",
+    ]));
+
+    expect(summary.ciStress).toMatchObject({
+      enabled: true,
+      replayCount: 3,
+      stable: true,
+    });
+    expect(new Set(summary.ciStress.replayHashes).size).toBe(1);
+    expect(summary.blockingFailures).toEqual([]);
+  });
+
+  it("emits deterministic sanitized debug artifacts for local forensics", async () => {
+    const debugDir = ".tmp/test-placement-v3-speaking-burnin";
+    fs.rmSync(path.resolve(repoRoot, debugDir), { recursive: true, force: true });
+
+    const first = await runBurnin(parseBurninArgs([
+      "--dry-run",
+      "--iterations=6",
+      "--concurrency=2",
+      "--ci-stress",
+      "--emit-debug-artifacts",
+      `--debug-dir=${debugDir}`,
+    ]));
+    const firstArtifact = fs.readFileSync(path.resolve(repoRoot, first.debugArtifact), "utf8");
+    const second = await runBurnin(parseBurninArgs([
+      "--dry-run",
+      "--iterations=6",
+      "--concurrency=2",
+      "--ci-stress",
+      "--emit-debug-artifacts",
+      `--debug-dir=${debugDir}`,
+    ]));
+    const secondArtifact = fs.readFileSync(path.resolve(repoRoot, second.debugArtifact), "utf8");
+
+    expect(first.debugArtifact).toBe(`${debugDir}/latest.json`);
+    expect(firstArtifact).toBe(secondArtifact);
+    const parsed = JSON.parse(firstArtifact);
+    expect(parsed).toMatchObject({
+      artifactType: "placement-v3-speaking-burnin-debug",
+      sanitized: true,
+      liveProviderEvidence: false,
+      options: {
+        dryRun: true,
+        ciStress: true,
+      },
+    });
+    expect(parsed.debugTrace).toHaveLength(6);
   });
 
   it("fails closed on impossible aggregation states", () => {
