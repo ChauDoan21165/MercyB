@@ -246,8 +246,15 @@ If the spreadsheet hasn't been shared with Claude this session, Claude asks for 
 This principle exists because chat-derived state of agent assignments has produced: dispatches to the wrong agent's lane, work that re-did already-finished tasks, and recommendations that contradicted what Chau or the other planner had just done.
 
 
+## 20. OPERATOR COMMANDS MUST NEVER FALSE-GREEN
+
+Operator-facing commands (ops:morning, pr:ready, audit:local-artifacts, doctor, verify:mobile-audio, verify:v3-placement, mb:status) must never report PASS or READY when a required sub-check is missing or unvalidated. UNKNOWN is honest; SKIPPED requires deliberate choice; MISSING means absent; PASS means executed and succeeded.
+
+Evidence: across 9 PRs (post-#975 through #986), validate:tests remained MISSING. Every operator command reported it honestly — mb:status as OPTIONAL_MISSING, ops:morning as SKIPPED/UNKNOWN, audit:local-artifacts as UNSAFE (exit 1). No command promoted the gap to PASS.
+
+
 ## Last updated
 
-2026-05-25 — Added principle 19 (agent-management spreadsheet is source of truth; proactive 5-minute re-read). 2026-05-21 — Added principle 18 (agent specialty tags). 2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-26 — Added principle 20 (operator commands must never false-green). 2026-05-25 — Added principle 19 (agent-management spreadsheet is source of truth; proactive 5-minute re-read). 2026-05-21 — Added principle 18 (agent specialty tags). 2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
