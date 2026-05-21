@@ -384,6 +384,137 @@ describe("handleRequest — Azure timeout", () => {
   });
 });
 
+describe("handleRequest — Azure provider auth", () => {
+  it.each([401, 403])("returns use_local sentinel when Azure rejects provider credentials with HTTP %i", async (status) => {
+    const deps = makeDeps({
+      azureKey: "super-secret-azure-key",
+      fetch: vi.fn().mockResolvedValue(
+        new Response("invalid subscription key", { status }),
+      ),
+    });
+
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      use_local: boolean;
+      reason: string;
+    };
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("azure_auth_failed");
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+    expect(JSON.stringify(body)).not.toContain("super-secret-azure-key");
+    expect(deps.audit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: "whisper_error",
+        errorMsg: expect.stringContaining(`azure_${status}`),
+      }),
+    );
+  });
+
+  it("keeps Azure auth flapping observable without duplicate persistence", async () => {
+    const fetch = vi.fn()
+      .mockResolvedValueOnce(new Response("invalid subscription key", { status: 401 }))
+      .mockResolvedValueOnce(azureSuccessResponse());
+    const deps = makeDeps({ fetch });
+
+    const first = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const firstBody = (await first.json()) as { ok: boolean; use_local: boolean; reason: string };
+    expect(firstBody).toEqual({
+      ok: false,
+      use_local: true,
+      reason: "azure_auth_failed",
+    });
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+
+    const second = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const secondBody = (await second.json()) as { ok: boolean; provider: string };
+    expect(secondBody.ok).toBe(true);
+    expect(secondBody.provider).toBe("azure");
+    expect(deps.logAttempt).toHaveBeenCalledOnce();
+    expect(deps.audit).toHaveBeenCalledWith(
+      expect.objectContaining({ errorMsg: expect.stringContaining("azure_401") }),
+    );
+    expect(deps.audit).toHaveBeenCalledWith(
+      expect.objectContaining({ status: "ok" }),
+    );
+  });
+
+  it("does not persist attempts on partial provider outage or network failure", async () => {
+    const deps = makeDeps({
+      fetch: vi.fn().mockRejectedValue(new Error("getaddrinfo ENOTFOUND speech.azure.test")),
+    });
+
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const body = (await res.json()) as { ok: boolean; use_local: boolean; reason: string };
+
+    expect(res.status).toBe(200);
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("azure_network_failed");
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+    expect(deps.audit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: "whisper_error",
+        errorMsg: expect.stringContaining("azure_throw"),
+      }),
+    );
+  });
+
+  it("keeps alternating 401/timeout/403 failures rejected and non-persistent", async () => {
+    const fetch = vi.fn()
+      .mockResolvedValueOnce(new Response("invalid subscription key", { status: 401 }))
+      .mockImplementationOnce((_url, init) =>
+        new Promise((_resolve, reject) => {
+          const signal = (init as RequestInit).signal as AbortSignal | null;
+          signal?.addEventListener("abort", () => {
+            reject(Object.assign(new Error("aborted"), { name: "AbortError" }));
+          });
+        })
+      )
+      .mockResolvedValueOnce(new Response("forbidden subscription", { status: 403 }));
+    const deps = makeDeps({ fetch });
+
+    const first = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const second = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const third = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const bodies = await Promise.all([first.json(), second.json(), third.json()]) as Array<{ reason: string; use_local: boolean }>;
+
+    expect(bodies.map((body) => body.reason)).toEqual([
+      "azure_auth_failed",
+      "azure_timeout",
+      "azure_auth_failed",
+    ]);
+    expect(bodies.every((body) => body.use_local === true)).toBe(true);
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+    expect(deps.audit).toHaveBeenCalledWith(expect.objectContaining({ errorMsg: expect.stringContaining("azure_401") }));
+    expect(deps.audit).toHaveBeenCalledWith(expect.objectContaining({ errorMsg: "azure_timeout" }));
+    expect(deps.audit).toHaveBeenCalledWith(expect.objectContaining({ errorMsg: expect.stringContaining("azure_403") }));
+  });
+
+  it("does not promote partial provider responses into persisted attempts", async () => {
+    const deps = makeDeps({
+      fetch: vi.fn().mockResolvedValue(
+        new Response(JSON.stringify({ RecognitionStatus: "Success", NBest: [] }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    });
+
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+    const body = (await res.json()) as { ok: boolean; use_local: boolean; reason: string };
+
+    expect(res.status).toBe(200);
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("azure_no_match");
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+  });
+});
+
 // ── Pure-helper tests ─────────────────────────────────────────────────────
 
 describe("parseWavHeader", () => {

@@ -84,4 +84,46 @@ describe("placement v3 auth and session ownership boundary", () => {
     expect(learnerBStatusForAId.ok).toBe(false);
     expect(!learnerBStatusForAId.ok && learnerBStatusForAId.error).toBe("session_not_found");
   });
+
+  it("keeps learner session replacement during submit from writing cross-user state", async () => {
+    const h = createHarness({ insertResponseDelayMs: 10 });
+    const learnerAStart = await h.run({ action: "start" }, "learner-a");
+    if (!learnerAStart.ok || !learnerAStart.prompt) throw new Error("learner A start failed");
+
+    const payload = {
+      action: "respond" as const,
+      response: {
+        sessionId: learnerAStart.session.id,
+        taskIndex: learnerAStart.session.current_task_index,
+        promptId: learnerAStart.prompt.id,
+        responseText: USER_RESPONSES.medium,
+      },
+    };
+
+    const [learnerAResult, learnerBResult] = await Promise.all([
+      h.run(payload, "learner-a"),
+      h.run(payload, "learner-b"),
+    ]);
+
+    expect(learnerAResult.ok).toBe(true);
+    expect(learnerBResult.ok).toBe(false);
+    expect(!learnerBResult.ok && learnerBResult.error).toBe("session_not_found");
+    expect(h.responses.get(learnerAStart.session.id)).toHaveLength(1);
+    expect([...h.sessions.values()].filter((session) => session.user_id === "learner-b")).toHaveLength(0);
+  });
+
+  it("does not collapse learner identity casing during stale session reuse", async () => {
+    const h = createHarness();
+    const lowerStart = await h.run({ action: "start" }, "learner-a");
+    if (!lowerStart.ok) throw new Error("lower learner start failed");
+
+    const upperResume = await h.run({
+      action: "resume",
+      sessionId: lowerStart.session.id,
+    }, "Learner-A");
+
+    expect(upperResume.ok).toBe(false);
+    expect(!upperResume.ok && upperResume.error).toBe("session_not_found");
+    expect(h.responses.get(lowerStart.session.id)).toHaveLength(0);
+  });
 });
