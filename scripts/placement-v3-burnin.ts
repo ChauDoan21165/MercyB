@@ -1,5 +1,6 @@
 #!/usr/bin/env tsx
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
 
 import {
@@ -31,6 +32,12 @@ export type BurnInOptions = {
   skipSpeaking: boolean;
   dryRun: boolean;
   injectFailure: FailureInjectionMode | null;
+  injectFailures?: FailureInjectionMode[];
+  journal?: string | null;
+  replay?: string | null;
+  auditReconciliation?: boolean;
+  auditDrift?: boolean;
+  reconstructLineage?: boolean;
 };
 
 export type BurnInIteration = {
@@ -55,6 +62,40 @@ export type BurnInIteration = {
   blocking_failures: string[];
   injected_failure: FailureInjectionMode | null;
   recovered_from_injection: boolean;
+};
+
+export type BurnInLineageNode = {
+  id: string;
+  type:
+    | "iteration"
+    | "retry"
+    | "duplicate_suppression"
+    | "cleanup"
+    | "stale_session"
+    | "reconciliation"
+    | "partial_result"
+    | "delayed_result"
+    | "replay";
+  iteration_index: number;
+  parent_ids: string[];
+  status: "verified" | "skipped" | "replayed" | "drift";
+  injected_failure: FailureInjectionMode | null;
+};
+
+export type ReplayAudit = {
+  mode: "live" | "replay";
+  journal_schema: "placement-v3-burnin-journal-v1";
+  replayed_iterations: number;
+  recovered_retries: number;
+  orphaned_sessions: number;
+  reconciliation_mismatches: number;
+  duplicate_suppressions: number;
+  cleanup_repairs: number;
+  replay_drift_events: number;
+  unresolved_corruption: number;
+  deterministic_replay_hash: string;
+  lineage_hash: string;
+  drift_events: string[];
 };
 
 export type BurnInSummary = {
@@ -82,8 +123,17 @@ export type BurnInSummary = {
     reconciliation_failures: number;
   };
   iterations: BurnInIteration[];
+  lineage: BurnInLineageNode[];
+  replay_audit: ReplayAudit;
   skipped_validations: string[];
   blocking_failures: string[];
+};
+
+export type BurnInJournal = {
+  schema: "placement-v3-burnin-journal-v1";
+  summary: BurnInSummary;
+  summary_hash: string;
+  lineage_hash: string;
 };
 
 const FAILURE_MODES = new Set<FailureInjectionMode>([
@@ -109,9 +159,8 @@ export function parseBurnInArgs(argv: string[]): BurnInOptions {
     return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : fallback;
   };
   const rawInject = argv.find((arg) => arg.startsWith("--inject-failure="))?.slice("--inject-failure=".length);
-  const injectFailure = rawInject && FAILURE_MODES.has(rawInject as FailureInjectionMode)
-    ? rawInject as FailureInjectionMode
-    : null;
+  const injectFailures = parseFailureList(rawInject);
+  const valueFor = (prefix: string) => argv.find((arg) => arg.startsWith(prefix))?.slice(prefix.length) ?? null;
   return {
     iterations: getNumber("--iterations=", 3),
     concurrency: getNumber("--concurrency=", 1),
@@ -119,7 +168,13 @@ export function parseBurnInArgs(argv: string[]): BurnInOptions {
     json: argv.includes("--json"),
     skipSpeaking: argv.includes("--skip-speaking"),
     dryRun: argv.includes("--dry-run"),
-    injectFailure,
+    injectFailure: injectFailures[0] ?? null,
+    injectFailures,
+    journal: valueFor("--journal="),
+    replay: valueFor("--replay="),
+    auditReconciliation: argv.includes("--audit-reconciliation"),
+    auditDrift: argv.includes("--audit-drift"),
+    reconstructLineage: argv.includes("--reconstruct-lineage"),
   };
 }
 
@@ -127,6 +182,7 @@ export async function runPlacementV3BurnIn(
   options: BurnInOptions,
   env: Env = process.env,
 ): Promise<BurnInSummary> {
+  if (options.replay) return replayBurnInJournal(options);
   const concurrency = Math.max(1, Math.min(options.concurrency, options.iterations));
   const effectiveOptions = { ...options, concurrency };
   const results: BurnInIteration[] = [];
@@ -142,7 +198,9 @@ export async function runPlacementV3BurnIn(
   }
 
   await Promise.all(Array.from({ length: concurrency }, () => worker()));
-  return aggregateBurnIn(effectiveOptions, results);
+  const summary = aggregateBurnIn(effectiveOptions, results);
+  if (effectiveOptions.journal) await writeBurnInJournal(effectiveOptions.journal, summary);
+  return summary;
 }
 
 async function runIteration(index: number, options: BurnInOptions, env: Env): Promise<BurnInIteration> {
@@ -150,7 +208,7 @@ async function runIteration(index: number, options: BurnInOptions, env: Env): Pr
     ? deterministicLearnerEmail(index)
     : `placement-v3-test-${randomUUID()}@mercyblade.test`;
   const started = performance.now();
-  const injected = options.injectFailure;
+  const injected = failureForIteration(options, index);
   if (injected === "delayed-persistence-write" || isDelayedResultInjection(injected)) {
     await delay(5);
   }
@@ -263,10 +321,12 @@ export function aggregateBurnIn(options: BurnInOptions, iterations: BurnInIterat
   const partialResultRecoveries = sorted.filter((iteration) =>
     isPartialResultInjection(iteration.injected_failure) && iteration.recovered_from_injection
   ).length;
+  const lineage = buildLineage(sorted);
   const blockingFailures = [
     ...failures,
     ...detectStructuralFailures(sorted, options),
     ...detectConsistencyFailures(sorted, options),
+    ...detectReplayLineageFailures(lineage),
   ];
   const reconciliationFailures = blockingFailures.filter((failure) =>
     failure.includes("reconciliation") || failure.includes("impossible") || failure.includes("malformed")
@@ -297,9 +357,27 @@ export function aggregateBurnIn(options: BurnInOptions, iterations: BurnInIterat
       reconciliation_failures: reconciliationFailures,
     },
     iterations: sorted,
+    lineage,
+    replay_audit: buildReplayAudit("live", sorted, lineage, blockingFailures),
     skipped_validations: [...new Set(skipped)].sort(),
     blocking_failures: [...new Set(blockingFailures)].sort(),
   };
+}
+
+function parseFailureList(raw: string | null | undefined): FailureInjectionMode[] {
+  if (!raw) return [];
+  return raw
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .filter((value): value is FailureInjectionMode => FAILURE_MODES.has(value as FailureInjectionMode));
+}
+
+function failureForIteration(options: BurnInOptions, index: number): FailureInjectionMode | null {
+  const failures = options.injectFailures ?? [];
+  return failures.length > 0
+    ? failures[index % failures.length]
+    : options.injectFailure;
 }
 
 function isPartialResultInjection(mode: FailureInjectionMode | null): boolean {
@@ -317,6 +395,83 @@ function isDelayedResultInjection(mode: FailureInjectionMode | null): boolean {
 function deterministicLearnerEmail(index: number): string {
   const suffix = String(index).padStart(12, "0");
   return `placement-v3-test-00000000-0000-4000-8000-${suffix}@mercyblade.test`;
+}
+
+function buildLineage(iterations: BurnInIteration[]): BurnInLineageNode[] {
+  const nodes: BurnInLineageNode[] = [];
+  for (const iteration of iterations) {
+    const root = `iteration:${iteration.index}`;
+    nodes.push({ id: root, type: "iteration", iteration_index: iteration.index, parent_ids: [], status: iteration.ok ? "verified" : "drift", injected_failure: iteration.injected_failure });
+    if (iteration.retry_reconciled) nodes.push({ id: `retry:${iteration.index}`, type: "retry", iteration_index: iteration.index, parent_ids: [root], status: "verified", injected_failure: iteration.injected_failure });
+    if (iteration.duplicate_suppressed) nodes.push({ id: `duplicate:${iteration.index}`, type: "duplicate_suppression", iteration_index: iteration.index, parent_ids: [`retry:${iteration.index}`], status: "verified", injected_failure: iteration.injected_failure });
+    if (iteration.cleanup_requested) nodes.push({ id: `cleanup:${iteration.index}`, type: "cleanup", iteration_index: iteration.index, parent_ids: [root], status: iteration.cleanup_verified ? "verified" : "drift", injected_failure: iteration.injected_failure });
+    if (iteration.injected_failure === "stale-cached-session-state") nodes.push({ id: `stale-session:${iteration.index}`, type: "stale_session", iteration_index: iteration.index, parent_ids: [root], status: iteration.recovered_from_injection ? "verified" : "drift", injected_failure: iteration.injected_failure });
+    if (isPartialResultInjection(iteration.injected_failure)) nodes.push({ id: `partial-result:${iteration.index}`, type: "partial_result", iteration_index: iteration.index, parent_ids: [root], status: iteration.partial_result_reconciled ? "verified" : "drift", injected_failure: iteration.injected_failure });
+    if (isDelayedResultInjection(iteration.injected_failure)) nodes.push({ id: `delayed-result:${iteration.index}`, type: "delayed_result", iteration_index: iteration.index, parent_ids: [root], status: iteration.result_retrieval || iteration.persistence_mode === "dry_run" ? "verified" : "drift", injected_failure: iteration.injected_failure });
+    nodes.push({ id: `reconciliation:${iteration.index}`, type: "reconciliation", iteration_index: iteration.index, parent_ids: [root], status: iteration.retry_reconciled && iteration.partial_result_reconciled ? "verified" : "drift", injected_failure: iteration.injected_failure });
+  }
+  return nodes.sort((a, b) => a.iteration_index - b.iteration_index || a.id.localeCompare(b.id));
+}
+
+function detectReplayLineageFailures(lineage: BurnInLineageNode[]): string[] {
+  const failures: string[] = [];
+  const ids = new Set<string>();
+  for (const node of lineage) {
+    if (ids.has(node.id)) failures.push(`replay_lineage:duplicate_node:${node.id}`);
+    ids.add(node.id);
+  }
+  for (const node of lineage) {
+    for (const parent of node.parent_ids) {
+      if (!ids.has(parent)) failures.push(`replay_lineage:missing_parent:${node.id}:${parent}`);
+    }
+    if (node.status === "drift") failures.push(`replay_lineage:drift:${node.id}`);
+  }
+  return failures;
+}
+
+function buildReplayAudit(mode: ReplayAudit["mode"], iterations: BurnInIteration[], lineage: BurnInLineageNode[], failures: string[]): ReplayAudit {
+  const driftEvents = failures.filter((failure) =>
+    failure.includes("replay") || failure.includes("drift") || failure.includes("reconciliation")
+  ).sort();
+  return {
+    mode,
+    journal_schema: "placement-v3-burnin-journal-v1",
+    replayed_iterations: mode === "replay" ? iterations.length : 0,
+    recovered_retries: iterations.filter((iteration) => iteration.retry_reconciled).length,
+    orphaned_sessions: iterations.filter((iteration) => iteration.session_id && !iteration.session_persisted).length,
+    reconciliation_mismatches: failures.filter((failure) => failure.includes("reconciliation")).length,
+    duplicate_suppressions: iterations.filter((iteration) => iteration.duplicate_suppressed).length,
+    cleanup_repairs: iterations.filter((iteration) => iteration.cleanup_verified).length,
+    replay_drift_events: driftEvents.length,
+    unresolved_corruption: failures.length,
+    deterministic_replay_hash: stableHash({ iterations, metrics: minimalReplayMetrics(iterations) }),
+    lineage_hash: stableHash(lineage),
+    drift_events: driftEvents,
+  };
+}
+
+function minimalReplayMetrics(iterations: BurnInIteration[]) {
+  return {
+    iterations: iterations.length,
+    retries: iterations.filter((iteration) => iteration.retry_reconciled).length,
+    duplicate_suppressions: iterations.filter((iteration) => iteration.duplicate_suppressed).length,
+    cleanup: iterations.filter((iteration) => iteration.cleanup_verified).length,
+    partial_results: iterations.filter((iteration) => iteration.partial_result_reconciled).length,
+  };
+}
+
+function stableHash(value: unknown): string {
+  return createHash("sha256").update(stableStringify(value)).digest("hex");
+}
+
+function stableStringify(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map((item) => stableStringify(item)).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value as Record<string, unknown>).sort().map((key) =>
+      `${JSON.stringify(key)}:${stableStringify((value as Record<string, unknown>)[key])}`
+    ).join(",")}}`;
+  }
+  return JSON.stringify(value);
 }
 
 function detectStructuralFailures(iterations: BurnInIteration[], options: BurnInOptions): string[] {
@@ -359,7 +514,7 @@ function detectStructuralFailures(iterations: BurnInIteration[], options: BurnIn
     if (!["skipped", "passed", "failed"].includes(iteration.azure_status)) {
       failures.push(`malformed_iteration:${iteration.index}:azure_status`);
     }
-    if (iteration.injected_failure !== options.injectFailure) {
+    if (iteration.injected_failure !== failureForIteration(options, iteration.index)) {
       failures.push(`reconciliation_mismatch:injected_failure_${iteration.index}`);
     }
   }
@@ -399,11 +554,108 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function writeBurnInJournal(path: string, summary: BurnInSummary): Promise<void> {
+  const journal: BurnInJournal = {
+    schema: "placement-v3-burnin-journal-v1",
+    summary,
+    summary_hash: stableHash(summaryWithoutReplayHashes(summary)),
+    lineage_hash: stableHash(summary.lineage),
+  };
+  await writeFile(path, `${JSON.stringify(journal, null, 2)}\n`);
+}
+
+async function replayBurnInJournal(options: BurnInOptions): Promise<BurnInSummary> {
+  let journal: BurnInJournal;
+  try {
+    journal = JSON.parse(await readFile(options.replay!, "utf8")) as BurnInJournal;
+  } catch (err) {
+    const reason = err instanceof Error ? err.message : String(err);
+    return corruptReplaySummary(options, [`replay_journal:malformed:${reason}`]);
+  }
+  if (journal.schema !== "placement-v3-burnin-journal-v1" || !journal.summary) {
+    return corruptReplaySummary(options, ["replay_journal:malformed_schema"]);
+  }
+  const reconstructed = aggregateBurnIn(journal.summary.options, journal.summary.iterations);
+  const drift = [
+    ...(options.auditDrift && stableHash(summaryWithoutReplayHashes(reconstructed)) !== journal.summary_hash
+      ? ["replay_drift:summary_hash_mismatch"]
+      : []),
+    ...(options.auditDrift && stableHash(reconstructed.lineage) !== journal.lineage_hash
+      ? ["replay_drift:lineage_hash_mismatch"]
+      : []),
+    ...(options.auditReconciliation && !reconstructed.ok
+      ? ["replay_audit:reconstructed_reconciliation_failed"]
+      : []),
+  ];
+  const replayLineage = [
+    ...reconstructed.lineage,
+    ...(options.reconstructLineage
+      ? reconstructed.iterations.map((iteration): BurnInLineageNode => ({
+          id: `replay:${iteration.index}`,
+          type: "replay",
+          iteration_index: iteration.index,
+          parent_ids: [`iteration:${iteration.index}`],
+          status: "replayed",
+          injected_failure: iteration.injected_failure,
+        }))
+      : []),
+  ].sort((a, b) => a.iteration_index - b.iteration_index || a.id.localeCompare(b.id));
+  const failures = [...reconstructed.blocking_failures, ...drift, ...detectReplayLineageFailures(replayLineage)];
+  return {
+    ...reconstructed,
+    ok: reconstructed.ok && failures.length === 0,
+    options: { ...options, iterations: reconstructed.options.iterations, concurrency: reconstructed.options.concurrency },
+    lineage: replayLineage,
+    replay_audit: buildReplayAudit("replay", reconstructed.iterations, replayLineage, failures),
+    blocking_failures: [...new Set(failures)].sort(),
+  };
+}
+
+function summaryWithoutReplayHashes(summary: BurnInSummary) {
+  const { deterministic_replay_hash: _a, lineage_hash: _b, ...audit } = summary.replay_audit;
+  return { ...summary, replay_audit: audit };
+}
+
+function corruptReplaySummary(options: BurnInOptions, failures: string[]): BurnInSummary {
+  const lineage: BurnInLineageNode[] = [];
+  return {
+    ok: false,
+    dry_run: true,
+    options,
+    metrics: {
+      iterations_attempted: 0,
+      iterations_succeeded: 0,
+      retries_triggered: 0,
+      duplicate_submits_suppressed: 0,
+      persistence_failures_recovered: 0,
+      stale_cache_recoveries: 0,
+      partial_result_recoveries: 0,
+      timeout_fallback_count: 0,
+      p50_persistence_latency_ms: 0,
+      p95_persistence_latency_ms: 0,
+      azure_attempted: 0,
+      azure_passed: 0,
+      azure_failed: 0,
+      azure_skipped: 0,
+      cleanup_verified: 0,
+      retry_reconciliations: 0,
+      partial_result_reconciliations: 0,
+      reconciliation_failures: failures.length,
+    },
+    iterations: [],
+    lineage,
+    replay_audit: buildReplayAudit("replay", [], lineage, failures),
+    skipped_validations: [],
+    blocking_failures: failures,
+  };
+}
+
 function formatSummary(summary: BurnInSummary): string {
   return JSON.stringify({
     ok: summary.ok,
     dry_run: summary.dry_run,
     metrics: summary.metrics,
+    replay_audit: summary.replay_audit,
     skipped_validations: summary.skipped_validations,
     blocking_failures: summary.blocking_failures,
   }, null, 2);

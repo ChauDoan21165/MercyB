@@ -1,4 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 
 import {
   aggregateBurnIn,
@@ -49,6 +52,10 @@ describe("placement v3 burn-in runner", () => {
       "--skip-speaking",
       "--dry-run",
       "--inject-failure=duplicate-submit-delivery",
+      "--journal=.burnin.json",
+      "--audit-reconciliation",
+      "--audit-drift",
+      "--reconstruct-lineage",
     ])).toEqual({
       iterations: 7,
       concurrency: 3,
@@ -57,6 +64,12 @@ describe("placement v3 burn-in runner", () => {
       skipSpeaking: true,
       dryRun: true,
       injectFailure: "duplicate-submit-delivery",
+      injectFailures: ["duplicate-submit-delivery"],
+      journal: ".burnin.json",
+      replay: null,
+      auditReconciliation: true,
+      auditDrift: true,
+      reconstructLineage: true,
     });
   });
 
@@ -309,5 +322,106 @@ describe("placement v3 burn-in runner", () => {
     expect(summary.metrics.retry_reconciliations).toBe(2);
     expect(summary.metrics.persistence_failures_recovered).toBe(2);
     expect(summary.iterations.every((row) => row.cleanup_requested && row.cleanup_verified)).toBe(true);
+  });
+
+  it("journals and replays deterministic lineage without mutating runtime state", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "placement-v3-burnin-"));
+    const journal = join(dir, "journal.json");
+    const options = {
+      iterations: 6,
+      concurrency: 3,
+      cleanup: false,
+      json: true,
+      skipSpeaking: false,
+      dryRun: true,
+      injectFailure: "partial-result" as const,
+      injectFailures: ["partial-result", "retry-loop", "delayed-result"] as const,
+      journal,
+      replay: null,
+      auditReconciliation: false,
+      auditDrift: false,
+      reconstructLineage: false,
+    };
+
+    const written = await runPlacementV3BurnIn(options, safeEnv);
+    const replayed = await runPlacementV3BurnIn({
+      ...options,
+      journal: null,
+      replay: journal,
+      auditReconciliation: true,
+      auditDrift: true,
+      reconstructLineage: true,
+    }, safeEnv);
+
+    expect(written.ok).toBe(true);
+    expect(replayed.ok).toBe(true);
+    expect(replayed.replay_audit.mode).toBe("replay");
+    expect(replayed.replay_audit.replayed_iterations).toBe(6);
+    expect(replayed.replay_audit.replay_drift_events).toBe(0);
+    expect(replayed.lineage.some((node) => node.type === "replay")).toBe(true);
+    expect(replayed.metrics.partial_result_recoveries).toBe(2);
+    expect(replayed.metrics.persistence_failures_recovered).toBe(6);
+  });
+
+  it("fails closed when replay journal reconciliation drifts", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "placement-v3-burnin-drift-"));
+    const journal = join(dir, "journal.json");
+    const written = await runPlacementV3BurnIn({
+      iterations: 2,
+      concurrency: 1,
+      cleanup: false,
+      json: true,
+      skipSpeaking: false,
+      dryRun: true,
+      injectFailure: "partial-result",
+      injectFailures: ["partial-result"],
+      journal,
+      replay: null,
+      auditReconciliation: false,
+      auditDrift: false,
+      reconstructLineage: false,
+    }, safeEnv);
+    const raw = JSON.parse(await readFile(journal, "utf8"));
+    raw.summary.iterations[1].retry_reconciled = false;
+    await writeFile(journal, `${JSON.stringify(raw, null, 2)}\n`);
+
+    const replayed = await runPlacementV3BurnIn({
+      ...written.options,
+      journal: null,
+      replay: journal,
+      auditReconciliation: true,
+      auditDrift: true,
+      reconstructLineage: true,
+    }, safeEnv);
+
+    expect(replayed.ok).toBe(false);
+    expect(replayed.blocking_failures).toContain("replay_drift:summary_hash_mismatch");
+    expect(replayed.blocking_failures).toContain("replay_drift:lineage_hash_mismatch");
+    expect(replayed.metrics.reconciliation_failures).toBeGreaterThan(0);
+  });
+
+  it("fails closed on malformed replay journal", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "placement-v3-burnin-bad-"));
+    const journal = join(dir, "bad.json");
+    await writeFile(journal, "{not-json");
+
+    const replayed = await runPlacementV3BurnIn({
+      iterations: 1,
+      concurrency: 1,
+      cleanup: false,
+      json: true,
+      skipSpeaking: false,
+      dryRun: true,
+      injectFailure: null,
+      injectFailures: [],
+      journal: null,
+      replay: journal,
+      auditReconciliation: true,
+      auditDrift: true,
+      reconstructLineage: true,
+    }, safeEnv);
+
+    expect(replayed.ok).toBe(false);
+    expect(replayed.blocking_failures[0]).toContain("replay_journal:malformed");
   });
 });
