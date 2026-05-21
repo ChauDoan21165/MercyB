@@ -121,4 +121,153 @@ describe("placement v3 core actions", () => {
     expect(grade).toHaveBeenCalledTimes(1);
     expect(h.responses.get(start.session.id)).toHaveLength(1);
   });
+
+  it("suppresses fresh partially claimed duplicate deliveries without regrading", async () => {
+    const grade = vi.fn(async () => ({
+      ok: true,
+      assessment: assessment("B1", 0.9),
+      version: "mock",
+    }));
+    const h = createHarness({ grade });
+    const start = await h.run({ action: "start" });
+    if (!start.ok || !start.prompt) throw new Error("start failed");
+    h.responses.set(start.session.id, [{
+      id: "partial-1",
+      session_id: start.session.id,
+      task_index: start.session.current_task_index,
+      modality: start.prompt.modality,
+      prompt_id: start.prompt.id,
+      prompt_text: start.prompt.promptText,
+      user_response_text: USER_RESPONSES.medium,
+      audio_storage_path: null,
+      response_duration_ms: null,
+      ai_assessment: null,
+      ai_assessment_version: null,
+      graded_at: null,
+      created_at: "2026-05-20T12:00:00.000Z",
+    }]);
+
+    const res = await h.run({
+      action: "respond",
+      response: {
+        sessionId: start.session.id,
+        taskIndex: start.session.current_task_index,
+        promptId: start.prompt.id,
+        responseText: USER_RESPONSES.medium,
+      },
+    });
+
+    expect(res.ok).toBe(true);
+    expect(grade).not.toHaveBeenCalled();
+    expect(h.responses.get(start.session.id)).toHaveLength(1);
+    expect(h.deps.log).toHaveBeenCalledWith(
+      "placement_v3.response_duplicate_suppressed",
+      expect.objectContaining({ graded: false }),
+    );
+  });
+
+  it("recovers a stale partially persisted response row instead of poisoning the slot", async () => {
+    const grade = vi.fn(async () => ({
+      ok: true,
+      assessment: assessment("B1", 0.9),
+      version: "mock",
+    }));
+    const h = createHarness({ grade });
+    const start = await h.run({ action: "start" });
+    if (!start.ok || !start.prompt) throw new Error("start failed");
+    h.responses.set(start.session.id, [{
+      id: "partial-1",
+      session_id: start.session.id,
+      task_index: start.session.current_task_index,
+      modality: start.prompt.modality,
+      prompt_id: start.prompt.id,
+      prompt_text: start.prompt.promptText,
+      user_response_text: USER_RESPONSES.medium,
+      audio_storage_path: null,
+      response_duration_ms: null,
+      ai_assessment: null,
+      ai_assessment_version: null,
+      graded_at: null,
+      created_at: "2026-05-20T11:59:00.000Z",
+    }]);
+
+    const res = await h.run({
+      action: "respond",
+      response: {
+        sessionId: start.session.id,
+        taskIndex: start.session.current_task_index,
+        promptId: start.prompt.id,
+        responseText: USER_RESPONSES.medium,
+      },
+    });
+
+    expect(res.ok).toBe(true);
+    expect(grade).toHaveBeenCalledTimes(1);
+    const rows = h.responses.get(start.session.id) ?? [];
+    expect(rows).toHaveLength(1);
+    expect(rows[0].ai_assessment_version).toBe("mock");
+    expect(rows[0].graded_at).toBe("2026-05-20T12:00:00.000Z");
+    expect(h.deps.log).toHaveBeenCalledWith(
+      "placement_v3.response_slot_recovered",
+      expect.objectContaining({ taskIndex: 0 }),
+    );
+  });
+
+  it("repeated duplicate deliveries after grading converge without duplicate rows", async () => {
+    const grade = vi.fn(async () => ({
+      ok: true,
+      assessment: assessment("B1", 0.9),
+      version: "mock",
+    }));
+    const h = createHarness({ grade });
+    const start = await h.run({ action: "start" });
+    if (!start.ok || !start.prompt) throw new Error("start failed");
+    const request = {
+      action: "respond" as const,
+      response: {
+        sessionId: start.session.id,
+        taskIndex: start.session.current_task_index,
+        promptId: start.prompt.id,
+        responseText: USER_RESPONSES.medium,
+      },
+    };
+
+    const first = await h.run(request);
+    const duplicates = await Promise.all([
+      h.run(request),
+      h.run(request),
+      h.run(request),
+    ]);
+
+    expect(first.ok).toBe(true);
+    expect(duplicates.every((res) => res.ok)).toBe(true);
+    expect(grade).toHaveBeenCalledTimes(1);
+    expect(h.responses.get(start.session.id)).toHaveLength(1);
+  });
+
+  it("duplicate submit after auth transition cannot claim another user's slot", async () => {
+    const grade = vi.fn(async () => ({
+      ok: true,
+      assessment: assessment("B1", 0.9),
+      version: "mock",
+    }));
+    const h = createHarness({ grade });
+    const start = await h.run({ action: "start" }, "user-1");
+    if (!start.ok || !start.prompt) throw new Error("start failed");
+
+    const res = await h.run({
+      action: "respond",
+      response: {
+        sessionId: start.session.id,
+        taskIndex: start.session.current_task_index,
+        promptId: start.prompt.id,
+        responseText: USER_RESPONSES.medium,
+      },
+    }, "user-2");
+
+    expect(res.ok).toBe(false);
+    expect(!res.ok && res.error).toBe("session_not_found");
+    expect(grade).not.toHaveBeenCalled();
+    expect(h.responses.get(start.session.id)).toHaveLength(0);
+  });
 });

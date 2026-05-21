@@ -26,6 +26,7 @@ import {
 } from "./types.ts";
 
 const DEFAULT_PAIR = { native: "vi", target: "en" };
+const STALE_UNGRADED_RESPONSE_MS = 30_000;
 
 export interface CoreDeps extends OrchestratorDeps {
   writingGrader?: WritingGraderClient;
@@ -133,7 +134,12 @@ async function respond(
   }
   const responses = await deps.loadResponses(session.id);
   const duplicate = responses.find((r) => r.task_index === input.taskIndex);
-  if (duplicate) {
+  if (duplicate && !isRecoverableUngradedResponse(duplicate, now)) {
+    deps.log?.("placement_v3.response_duplicate_suppressed", {
+      sessionId: session.id,
+      taskIndex: input.taskIndex,
+      graded: isResponseGraded(duplicate),
+    });
     return duplicateResponse(session, userId, deps);
   }
   const prompt = currentPrompt(session);
@@ -155,9 +161,28 @@ async function respond(
     graded_at: null,
     created_at: now,
   };
-  const claim = await deps.insertResponse(response);
-  if (!claim.inserted) {
+  const claim = duplicate
+    ? { response: duplicate, inserted: false }
+    : await deps.insertResponse(response);
+  deps.log?.("placement_v3.response_slot_claim", {
+    sessionId: session.id,
+    taskIndex: input.taskIndex,
+    inserted: claim.inserted,
+    staleUngraded: !claim.inserted && isRecoverableUngradedResponse(claim.response, now),
+  });
+  if (!claim.inserted && !isRecoverableUngradedResponse(claim.response, now)) {
+    deps.log?.("placement_v3.response_duplicate_suppressed", {
+      sessionId: session.id,
+      taskIndex: input.taskIndex,
+      graded: isResponseGraded(claim.response),
+    });
     return duplicateResponse(session, userId, deps);
+  }
+  if (!claim.inserted) {
+    deps.log?.("placement_v3.response_slot_recovered", {
+      sessionId: session.id,
+      taskIndex: input.taskIndex,
+    });
   }
 
   const graderInput = {
@@ -197,7 +222,7 @@ async function respond(
     ai_assessment_version: grade.version,
     graded_at: now,
   });
-  const allResponses = [...responses, savedResponse];
+  const allResponses = mergeResponseByTaskIndex(responses, savedResponse);
   const next = nextPromptAfterAssessment({
     session: working,
     responses: allResponses,
@@ -353,6 +378,34 @@ async function duplicateResponse(
     profile: null,
     resumed: true,
   };
+}
+
+function mergeResponseByTaskIndex(
+  responses: PlacementV3Response[],
+  savedResponse: PlacementV3Response,
+): PlacementV3Response[] {
+  const replaced = responses.some((row) => row.task_index === savedResponse.task_index);
+  const merged = replaced
+    ? responses.map((row) =>
+      row.task_index === savedResponse.task_index ? savedResponse : row
+    )
+    : [...responses, savedResponse];
+  return merged.sort((a, b) => a.task_index - b.task_index);
+}
+
+function isResponseGraded(response: PlacementV3Response): boolean {
+  return response.graded_at !== null || response.ai_assessment !== null;
+}
+
+function isRecoverableUngradedResponse(
+  response: PlacementV3Response,
+  nowIso: string,
+): boolean {
+  if (isResponseGraded(response)) return false;
+  const createdAt = Date.parse(response.created_at);
+  const now = Date.parse(nowIso);
+  if (!Number.isFinite(createdAt) || !Number.isFinite(now)) return false;
+  return now - createdAt >= STALE_UNGRADED_RESPONSE_MS;
 }
 
 
