@@ -74,6 +74,13 @@ function expectBoundedSafeJson(text: string, truncated?: boolean) {
   return parsed;
 }
 
+function copiedClipboardText(writeText: ReturnType<typeof vi.fn>): string {
+  const firstCall = writeText.mock.calls[0] as unknown[] | undefined;
+  const text = firstCall?.[0];
+  expect(typeof text).toBe('string');
+  return text as string;
+}
+
 function throwingStorage(overrides: Partial<Storage> = {}): Storage {
   return {
     length: 0,
@@ -287,7 +294,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    const copiedText = writeText.mock.calls[0][0];
+    const copiedText = copiedClipboardText(writeText);
     expect(new TextEncoder().encode(copiedText).length).toBeLessThanOrEqual(8 * 1024);
     expectBoundedSafeJson(copiedText, false);
   });
@@ -312,7 +319,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    const copiedText = writeText.mock.calls[0][0];
+    const copiedText = copiedClipboardText(writeText);
     const copied = expectBoundedSafeJson(copiedText, true);
     expect(copied.truncated).toBe(true);
     expect(copied.events).toHaveLength(1);
@@ -337,7 +344,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     expect(result.ok).toBe(true);
     expect(writeText).toHaveBeenCalledTimes(1);
-    const copied = JSON.parse(writeText.mock.calls[0][0]);
+    const copied = JSON.parse(copiedClipboardText(writeText));
     expect(copied.schemaVersion).toBe('mb-diagnostics-v1');
     expect(copied.events[0]).toMatchObject({
       code: 'PLAYBACK_BLOCKED',
@@ -368,7 +375,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    expect(Object.keys(JSON.parse(writeText.mock.calls[0][0]))).toEqual(TOP_LEVEL_KEYS);
+    expect(Object.keys(JSON.parse(copiedClipboardText(writeText)))).toEqual(TOP_LEVEL_KEYS);
   });
 
   it('locks copied event key order exactly with no additional keys', async () => {
@@ -384,7 +391,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    expect(Object.keys(JSON.parse(writeText.mock.calls[0][0]).events[0])).toEqual(EVENT_KEYS);
+    expect(Object.keys(JSON.parse(copiedClipboardText(writeText)).events[0])).toEqual(EVENT_KEYS);
   });
 
   it('exports byte-identically for same diagnostics after normalizing createdAt', () => {
@@ -495,7 +502,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    const copied = expectBoundedSafeJson(writeText.mock.calls[0][0], true);
+    const copied = expectBoundedSafeJson(copiedClipboardText(writeText), true);
     expect(copied.events).toEqual([]);
   });
 
@@ -506,7 +513,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    expectBoundedSafeJson(writeText.mock.calls[0][0], true);
+    expectBoundedSafeJson(copiedClipboardText(writeText), true);
   });
 
   it('keeps oversized summary-affecting stored inputs under 8 KB and safe', async () => {
@@ -516,7 +523,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    expectBoundedSafeJson(writeText.mock.calls[0][0], true);
+    expectBoundedSafeJson(copiedClipboardText(writeText), true);
   });
 
   it('keeps many events with oversized strings under 8 KB and safe', async () => {
@@ -526,7 +533,7 @@ describe('mobileSafariSpeakingRuntime', () => {
 
     await copyMobileAudioDiagnosticsToClipboard();
 
-    const copied = expectBoundedSafeJson(writeText.mock.calls[0][0], true);
+    const copied = expectBoundedSafeJson(copiedClipboardText(writeText), true);
     expect(copied.events.length).toBeLessThanOrEqual(5);
   });
 });
