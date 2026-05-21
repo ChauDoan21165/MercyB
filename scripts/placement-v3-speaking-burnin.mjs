@@ -8,6 +8,19 @@ import {
 
 const __filename = fileURLToPath(import.meta.url);
 
+const FAILURE_CLASSIFICATION_ORDER = [
+  "timeout",
+  "malformed_payload",
+  "transient_network",
+  "partial_metadata",
+  "duplicate_delivery",
+  "skipped_azure_validation",
+  "concurrency_corruption",
+  "retry_reconciliation_failure",
+  "aggregation_drift",
+  "duplicate_suppression_mismatch",
+];
+
 export function parseBurninArgs(argv) {
   const options = {
     iterations: 5,
@@ -45,8 +58,22 @@ function percentile(values, p) {
   return sorted[index];
 }
 
+function orderedCountMap(keys, entries) {
+  const counts = Object.fromEntries(keys.map((key) => [key, 0]));
+  for (const entry of entries) {
+    if (Object.hasOwn(counts, entry)) counts[entry] += 1;
+  }
+  return counts;
+}
+
 function scenarioForIteration(index, options) {
   if (options.dryRun) {
+    if (options.simulateTimeoutRate > 0 || options.simulateMalformedRate > 0) {
+      const bucket = ((index * 37) % 100) / 100;
+      if (bucket < options.simulateTimeoutRate) return "timeout";
+      if (bucket < options.simulateTimeoutRate + options.simulateMalformedRate) return "malformed";
+      return "success";
+    }
     const dryRunScenarios = ["success", "timeout", "malformed", "network", "duplicate", "partial_metadata"];
     return dryRunScenarios[index % dryRunScenarios.length];
   }
@@ -100,11 +127,42 @@ export function createSimulatedProvider(scenario) {
   return async () => new Response(JSON.stringify(successfulAzureBody(false)), { status: 200 });
 }
 
+function deterministicDryRunLatency(index, scenario) {
+  const base = {
+    success: 34,
+    timeout: 5,
+    malformed: 17,
+    network: 11,
+    duplicate: 9,
+    partial_metadata: 23,
+    live: 31,
+  }[scenario] ?? 13;
+  return base + (index % 7);
+}
+
+function classifyResultFailure(result) {
+  if (result.scenario === "duplicate") return "duplicate_delivery";
+  if (result.errorCode === "timeout") return "timeout";
+  if (String(result.errorCode ?? "").includes("malformed")) return "malformed_payload";
+  if (result.errorCode === "network_error") return "transient_network";
+  if (result.scenario === "partial_metadata") return "partial_metadata";
+  return null;
+}
+
 function validateRunResult(result, seenRunIds) {
   const failures = [];
-  if (typeof result.latencyMs !== "number") failures.push("latency_missing");
+  if (typeof result.latencyMs !== "number" || !Number.isFinite(result.latencyMs) || result.latencyMs < 0) {
+    failures.push("latency_invalid");
+  }
   if (!result.persistedProviderMetadata || typeof result.persistedProviderMetadata !== "object") {
     failures.push("provider_metadata_missing");
+  }
+  if (result.persistedProviderMetadata && typeof result.persistedProviderMetadata === "object") {
+    if (result.persistedProviderMetadata.provider !== "azure") failures.push("provider_metadata_provider_mismatch");
+    if (result.persistedProviderMetadata.providerPath !== "placement-v3-speaking") {
+      failures.push("provider_metadata_path_mismatch");
+    }
+    if (result.persistedProviderMetadata.fallback !== result.fallback) failures.push("provider_metadata_fallback_mismatch");
   }
   if (result.runId && seenRunIds.has(result.runId)) failures.push("duplicate_not_suppressed");
   if (result.fallback && result.errorCode === "timeout") {
@@ -119,13 +177,22 @@ export function aggregateBurninResults(results, skippedValidations = []) {
   const seenRunIds = new Set();
   const accepted = [];
   const blockingFailures = [];
+  const failureClassifications = [];
   let duplicateSuppressionCount = 0;
-  for (const result of results) {
+  for (const [index, result] of results.entries()) {
+    if (!result) {
+      blockingFailures.push({ runId: `missing-${index}`, failure: "concurrency_corruption" });
+      failureClassifications.push("concurrency_corruption");
+      continue;
+    }
     const failures = validateRunResult(result, seenRunIds);
     if (result.runId && seenRunIds.has(result.runId)) {
       duplicateSuppressionCount += 1;
+      failureClassifications.push("duplicate_delivery");
       continue;
     }
+    const classification = classifyResultFailure(result);
+    if (classification) failureClassifications.push(classification);
     if (result.runId) seenRunIds.add(result.runId);
     accepted.push(result);
     blockingFailures.push(...failures.map((failure) => ({ runId: result.runId, failure })));
@@ -135,7 +202,24 @@ export function aggregateBurninResults(results, skippedValidations = []) {
   const fallbackCount = accepted.filter((result) => result.fallback === true).length;
   const malformedPayloadCount = accepted.filter((result) => String(result.errorCode ?? "").includes("malformed")).length;
   const retryRecoveryCount = accepted.filter((result) => result.fallback && result.retryable && result.recoverable).length;
-  return {
+  const failureClassificationCounts = orderedCountMap(FAILURE_CLASSIFICATION_ORDER, [
+    ...failureClassifications,
+    ...skippedValidations.map((validation) =>
+      validation === "live_provider_call" ? "skipped_azure_validation" : null
+    ).filter(Boolean),
+  ]);
+  const integrityFailures = [];
+  if (accepted.length + duplicateSuppressionCount !== results.length) integrityFailures.push("mismatched_iteration_totals");
+  if (timeoutCount < 0 || fallbackCount < 0 || retryRecoveryCount < 0) integrityFailures.push("negative_counter");
+  if (retryRecoveryCount > fallbackCount) integrityFailures.push("retry_count_exceeds_fallback_count");
+  if (malformedPayloadCount > fallbackCount) integrityFailures.push("malformed_count_exceeds_fallback_count");
+  if (latencies.length !== accepted.length) integrityFailures.push("latency_distribution_incomplete");
+  if (duplicateSuppressionCount !== failureClassificationCounts.duplicate_delivery) {
+    integrityFailures.push("duplicate_suppression_mismatch");
+    failureClassificationCounts.duplicate_suppression_mismatch += 1;
+  }
+  blockingFailures.push(...integrityFailures.map((failure) => ({ runId: "aggregate", failure })));
+  const summary = {
     mode: accepted.some((result) => result.mode === "dry_run") ? "dry_run" : "live_or_simulated",
     iterationsAttempted: results.length,
     iterationsAccepted: accepted.length,
@@ -145,6 +229,7 @@ export function aggregateBurninResults(results, skippedValidations = []) {
     malformedPayloadCount,
     retryRecoveryCount,
     duplicateSuppressionCount,
+    failureClassificationCounts,
     p50LatencyMs: percentile(latencies, 50),
     p95LatencyMs: percentile(latencies, 95),
     skippedValidations,
@@ -158,6 +243,7 @@ export function aggregateBurninResults(results, skippedValidations = []) {
     ),
     duplicateExecutionSuppressionStable: duplicateSuppressionCount >= 0,
   };
+  return summary;
 }
 
 async function runWorker(queue, options, output) {
@@ -177,6 +263,7 @@ async function runWorker(queue, options, output) {
     );
     output[index] = {
       ...result,
+      latencyMs: options.dryRun ? deterministicDryRunLatency(index, scenario) : result.latencyMs,
       scenario,
       mode: options.dryRun ? "dry_run" : simulated ? "simulated_failure_injection" : "live",
     };
@@ -217,6 +304,7 @@ function printHuman(summary) {
   console.log(`malformed payload count: ${summary.malformedPayloadCount}`);
   console.log(`retry recovery count: ${summary.retryRecoveryCount}`);
   console.log(`duplicate suppression count: ${summary.duplicateSuppressionCount}`);
+  console.log(`failure classifications: ${JSON.stringify(summary.failureClassificationCounts)}`);
   console.log(`p50 latency ms: ${summary.p50LatencyMs}`);
   console.log(`p95 latency ms: ${summary.p95LatencyMs}`);
   console.log(`skipped validations: ${summary.skippedValidations.join(", ") || "none"}`);

@@ -91,6 +91,12 @@ describe("placement-v3 speaking burn-in", () => {
     expect(summary.malformedPayloadCount).toBe(1);
     expect(summary.retryRecoveryCount).toBe(2);
     expect(summary.duplicateSuppressionCount).toBe(1);
+    expect(summary.failureClassificationCounts).toMatchObject({
+      timeout: 1,
+      malformed_payload: 1,
+      duplicate_delivery: 1,
+      duplicate_suppression_mismatch: 0,
+    });
     expect(summary.p50LatencyMs).toBe(40);
     expect(summary.p95LatencyMs).toBe(60);
     expect(summary.blockingFailures).toEqual([]);
@@ -108,7 +114,99 @@ describe("placement-v3 speaking burn-in", () => {
     expect(summary.skippedValidations).toContain("real_supabase_persistence");
     expect(summary.providerMetadataShapeStable).toBe(true);
     expect(summary.retryStateClean).toBe(true);
+    expect(summary.failureClassificationCounts).toMatchObject({
+      timeout: 1,
+      malformed_payload: 1,
+      transient_network: 1,
+      partial_metadata: 1,
+      duplicate_delivery: 1,
+      skipped_azure_validation: 1,
+    });
     expect(summary.blockingFailures).toEqual([]);
+  });
+
+  it("honors targeted dry-run timeout and malformed simulation rates without Azure credentials", async () => {
+    const timeoutSummary = await runBurnin(parseBurninArgs([
+      "--dry-run",
+      "--iterations=10",
+      "--concurrency=3",
+      "--simulate-timeout-rate=1",
+    ]));
+    const malformedSummary = await runBurnin(parseBurninArgs([
+      "--dry-run",
+      "--iterations=10",
+      "--concurrency=3",
+      "--simulate-malformed-rate=1",
+    ]));
+
+    expect(timeoutSummary).toMatchObject({
+      iterationsAttempted: 10,
+      timeoutCount: 10,
+      malformedPayloadCount: 0,
+      duplicateSuppressionCount: 0,
+      blockingFailures: [],
+    });
+    expect(malformedSummary).toMatchObject({
+      iterationsAttempted: 10,
+      timeoutCount: 0,
+      malformedPayloadCount: 10,
+      duplicateSuppressionCount: 0,
+      blockingFailures: [],
+    });
+  });
+
+  it("produces deterministic repeated JSON summaries under concurrent dry-run pressure", async () => {
+    const options = parseBurninArgs(["--dry-run", "--iterations=25", "--concurrency=5", "--json"]);
+
+    const summaries = await Promise.all([
+      runBurnin(options),
+      runBurnin(options),
+      runBurnin(options),
+    ]);
+
+    expect(summaries[0]).toEqual(summaries[1]);
+    expect(summaries[1]).toEqual(summaries[2]);
+    expect(summaries[0]).toMatchObject({
+      iterationsAttempted: 25,
+      iterationsAccepted: 21,
+      timeoutCount: 4,
+      malformedPayloadCount: 4,
+      duplicateSuppressionCount: 4,
+      p50LatencyMs: 19,
+      p95LatencyMs: 39,
+      providerMetadataShapeStable: true,
+      retryStateClean: true,
+      duplicateExecutionSuppressionStable: true,
+      blockingFailures: [],
+    });
+  });
+
+  it("fails closed on impossible aggregation states", () => {
+    const summary = aggregateBurninResults([
+      {
+        runId: "bad-latency",
+        ok: false,
+        latencyMs: -1,
+        fallback: true,
+        errorCode: "timeout",
+        providerTimeout: false,
+        retryable: false,
+        recoverable: false,
+        persistedProviderMetadata: {
+          provider: "azure",
+          providerPath: "placement-v3-speaking",
+          fallback: false,
+        },
+      },
+    ]);
+
+    expect(summary.blockingFailures.map((item) => item.failure)).toEqual(expect.arrayContaining([
+      "latency_invalid",
+      "provider_metadata_fallback_mismatch",
+      "timeout_provider_marker_missing",
+      "timeout_retryable_missing",
+      "timeout_recoverable_missing",
+    ]));
   });
 
   it("refuses non-dry-run burn-in without live validation env", async () => {
@@ -130,6 +228,18 @@ describe("placement-v3 speaking burn-in", () => {
     const json = JSON.parse(result.stdout);
     expect(json).toMatchObject({
       iterationsAttempted: 3,
+      failureClassificationCounts: {
+        timeout: 1,
+        malformed_payload: 1,
+        transient_network: 0,
+        partial_metadata: 0,
+        duplicate_delivery: 0,
+        skipped_azure_validation: 1,
+        concurrency_corruption: 0,
+        retry_reconciliation_failure: 0,
+        aggregation_drift: 0,
+        duplicate_suppression_mismatch: 0,
+      },
       skippedValidations: ["live_provider_call", "real_supabase_persistence"],
       providerMetadataShapeStable: true,
       duplicateExecutionSuppressionStable: true,
