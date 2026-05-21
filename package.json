@@ -86,7 +86,8 @@
     "deno:check:functions": "bash scripts/deno-check-edge-functions.sh",
     "depcruise": "depcruise --config .dependency-cruiser.cjs src supabase/functions server",
     "depcruise:validate": "depcruise --config .dependency-cruiser.cjs --output-type err src supabase/functions server",
-    "depcruise:metrics": "depcruise --config .dependency-cruiser.cjs --output-type metrics src"
+    "depcruise:metrics": "depcruise --config .dependency-cruiser.cjs --output-type metrics src",
+    "doctor": "node scripts/doctor.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.3.0",
