@@ -77,6 +77,7 @@
     "test:mobile-audio": "vitest run src/lib/speech/__tests__/mobileSafariSpeakingRuntime.test.ts src/components/mercy-guide/__tests__/MercySpeakTab.mobileAudio.test.tsx",
     "verify:mobile-audio": "node scripts/verify-mobile-audio.mjs",
     "test:ci": "vitest run --reporter=verbose",
+    "test:pattern": "node scripts/check-test-pattern.mjs",
     "test:e2e": "playwright test -c playwright.smoke.config.ts",
     "test:e2e:ui": "playwright test -c playwright.smoke.config.ts --ui",
     "deno:check:functions": "bash scripts/deno-check-edge-functions.sh",
