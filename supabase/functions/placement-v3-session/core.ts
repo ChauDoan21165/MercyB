@@ -37,6 +37,9 @@ export async function handleAction(args: {
   deps: CoreDeps;
 }): Promise<OrchestratorResponse> {
   const { userId, request, deps } = args;
+  if (!userId.trim()) {
+    return error("auth_required", "Sign in to start placement.", 401);
+  }
   deps.log?.("placement_v3.request", { action: request.action, userId });
   switch (request.action) {
     case "start":
