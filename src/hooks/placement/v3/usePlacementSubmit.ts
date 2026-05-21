@@ -38,6 +38,7 @@ export function usePlacementSubmit() {
     persistLastPayload(payload);
     const request = submitResponse(payload)
       .then((result) => {
+        setLastPayload(null);
         persistLastPayload(null);
         return result;
       })

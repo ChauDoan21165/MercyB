@@ -62,6 +62,20 @@ class FakeQuery {
 
   async single() {
     if (this.insertValue) {
+      if (
+        this.rows.some((row) =>
+          row.session_id === this.insertValue?.session_id &&
+          row.task_index === this.insertValue?.task_index
+        )
+      ) {
+        return {
+          data: null,
+          error: {
+            message:
+              'duplicate key value violates unique constraint "uniq_responses_session_task"',
+          },
+        };
+      }
       this.rows.push(this.insertValue);
       return { data: this.insertValue, error: null };
     }
@@ -171,6 +185,36 @@ describe("placement v3 persistence", () => {
       graded_at: null,
       created_at: "2026-05-20T12:00:00.000Z",
     });
+    expect(f.tables.placement_v3_responses).toHaveLength(1);
+  });
+
+  it("returns the existing response on a session/task uniqueness conflict", async () => {
+    const existing = {
+      id: "response-1",
+      session_id: "session-1",
+      task_index: 0,
+      modality: "writing",
+      prompt_id: "p1",
+      prompt_text: "Prompt",
+      user_response_text: "First answer",
+      audio_storage_path: null,
+      response_duration_ms: 100,
+      ai_assessment: null,
+      ai_assessment_version: null,
+      graded_at: null,
+      created_at: "2026-05-20T12:00:00.000Z",
+    };
+    const f = fakeDb({ placement_v3_responses: [existing] });
+    const p = createPersistence(f.db, { now: () => "", newId: () => "" });
+
+    const result = await p.insertResponse({
+      ...existing,
+      id: "response-duplicate",
+      user_response_text: "Duplicate answer",
+    });
+
+    expect(result.inserted).toBe(false);
+    expect(result.response).toMatchObject(existing);
     expect(f.tables.placement_v3_responses).toHaveLength(1);
   });
 

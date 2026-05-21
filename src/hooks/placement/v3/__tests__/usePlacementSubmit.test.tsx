@@ -47,8 +47,12 @@ describe("usePlacementSubmit", () => {
     const { result } = renderHook(() => usePlacementSubmit());
     const body = payload();
 
-    const first = result.current.submit(body);
-    const second = result.current.submit(body);
+    let first!: Promise<PlacementV3SubmitResult | null>;
+    let second!: Promise<PlacementV3SubmitResult | null>;
+    act(() => {
+      first = result.current.submit(body);
+      second = result.current.submit(body);
+    });
 
     expect(mockedSubmitResponse).toHaveBeenCalledTimes(1);
     gate.resolve({
@@ -143,6 +147,47 @@ describe("usePlacementSubmit", () => {
     expect(mockedSubmitResponse).toHaveBeenCalledTimes(2);
     expect(mockedSubmitResponse.mock.calls[0][0]).toMatchObject(body);
     expect(mockedSubmitResponse.mock.calls[1][0]).toMatchObject(body);
+  });
+
+  it("clears stale retry payload after completed grading succeeds", async () => {
+    const body = payload({ value: "Completed answer." });
+    mockedSubmitResponse.mockResolvedValueOnce({
+      session: {
+        sessionId: "session-1",
+        status: "completed",
+        currentTask: null,
+        answeredCount: 11,
+        estimatedTotal: 11,
+        modalityIndex: 4,
+        modalities: ["writing", "speaking", "reading", "listening", "conversation"],
+        startedAt: "2026-05-20T12:00:00.000Z",
+        expiresAt: "2026-05-21T12:00:00.000Z",
+      },
+      completed: true,
+      results: {
+        sessionId: "session-1",
+        overallCefr: "B1",
+        overallConfidence: 0.82,
+        overallSummary: { en: "Ready for B1 practice.", vi: "San sang luyen tap B1." },
+        skills: [],
+        l1Flags: [],
+        recommendations: [],
+        strengths: [],
+        gaps: [],
+        questionCount: 11,
+        completedAt: "2026-05-20T12:03:00.000Z",
+      },
+    });
+
+    const first = renderHook(() => usePlacementSubmit());
+    await act(async () => {
+      await first.result.current.submit(body);
+    });
+    expect(first.result.current.canRetry).toBe(false);
+    first.unmount();
+
+    const second = renderHook(() => usePlacementSubmit());
+    expect(second.result.current.canRetry).toBe(false);
   });
 
   it("restores a pending payload after refresh during an in-flight submit", async () => {
