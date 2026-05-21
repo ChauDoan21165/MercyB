@@ -116,6 +116,8 @@ type RoomRendererProps = {
   onBack?: () => void;
 };
 
+const PLACEMENT_V3_ACTIVE_LESSON_KEY = "mb.placement.v3.activeLesson";
+
 const pickTitleENRaw = (r: AnyRoom) => r?.title?.en || r?.title_en || r?.name?.en || r?.name_en || "";
 const pickTitleVIRaw = (r: AnyRoom) => r?.title?.vi || r?.title_vi || r?.name?.vi || r?.name_vi || "";
 
@@ -167,6 +169,34 @@ function dispatchHostRepeatTarget(detail: Record<string, any>) {
     window.dispatchEvent(new CustomEvent("mb:host-repeat-target", { detail }));
   } catch {
     // ignore
+  }
+}
+
+function markPlacementV3RoomCompleted(roomId: string) {
+  if (!roomId || typeof window === "undefined") return;
+  const raw = window.localStorage.getItem(PLACEMENT_V3_ACTIVE_LESSON_KEY);
+  if (!raw) return;
+  try {
+    const parsed = JSON.parse(raw) as {
+      completedRoomIds?: unknown;
+      completionCount?: unknown;
+      roomId?: unknown;
+      sessionId?: unknown;
+    };
+    const completedRoomIds = Array.isArray(parsed.completedRoomIds)
+      ? parsed.completedRoomIds.filter((value): value is string => typeof value === "string")
+      : [];
+    const unique = Array.from(new Set([...completedRoomIds, roomId]));
+    window.localStorage.setItem(
+      PLACEMENT_V3_ACTIVE_LESSON_KEY,
+      JSON.stringify({
+        ...parsed,
+        completedRoomIds: unique,
+        completionCount: unique.length,
+      }),
+    );
+  } catch {
+    window.localStorage.removeItem(PLACEMENT_V3_ACTIVE_LESSON_KEY);
   }
 }
 
@@ -1470,6 +1500,7 @@ export default function RoomRenderer({
         }),
       );
       window.localStorage.setItem("mb.lastRoomId", effectiveRoomId);
+      markPlacementV3RoomCompleted(effectiveRoomId);
       setCompletionStatus("saved");
       return true;
     } catch {
