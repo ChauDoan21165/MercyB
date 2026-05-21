@@ -34,6 +34,14 @@ export interface SpeakingGraderClient {
   gradeSpeaking(input: GraderInput): Promise<GraderResult>;
 }
 
+export interface AzureSpeakingGraderConfig {
+  azureKey: string;
+  azureRegion?: string;
+  fetchImpl?: typeof fetch;
+  timeoutMs?: number;
+  loadAudio: (audioStoragePath: string) => Promise<ArrayBuffer>;
+}
+
 export interface GraderFetchConfig {
   functionBaseUrl: string;
   serviceRoleKey: string;
@@ -166,12 +174,91 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
   };
 }
 
+export function createAzureSpeakingGrader(config: AzureSpeakingGraderConfig): SpeakingGraderClient {
+  const fetchImpl = config.fetchImpl ?? fetch;
+  const region = config.azureRegion ?? "canadacentral";
+  return {
+    async gradeSpeaking(input) {
+      if (input.modality !== "speaking") {
+        return fallbackAssessment(input, "invalid_modality", "Azure speaking grader only accepts speaking input");
+      }
+      if (!config.azureKey) {
+        return fallbackAssessment(input, "azure_key_missing", "Azure Speech key is not configured");
+      }
+      if (!input.audioStoragePath) {
+        return fallbackAssessment(input, "audio_missing", "Speaking audio is required for Azure grading");
+      }
+
+      const startedAt = Date.now();
+      const controller = new AbortController();
+      const timeout = setTimeout(
+        () => controller.abort(),
+        config.timeoutMs ?? GRADER_TIMEOUT_MS,
+      );
+
+      try {
+        const audio = await config.loadAudio(input.audioStoragePath);
+        const referenceText = input.responseText.trim() || input.prompt.promptText.trim();
+        const response = await fetchImpl(
+          `https://${region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed`,
+          {
+            method: "POST",
+            headers: {
+              "Ocp-Apim-Subscription-Key": config.azureKey,
+              "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
+              "Pronunciation-Assessment": btoa(JSON.stringify({
+                ReferenceText: referenceText.replace(/[\s.?!,;:]+$/, ""),
+                GradingSystem: "HundredMark",
+                Granularity: "Phoneme",
+                EnableMiscue: true,
+              })),
+              Accept: "application/json",
+              "Accept-Language": "en-US",
+            },
+            body: audio,
+            signal: controller.signal,
+          },
+        );
+        if (!response.ok) {
+          return fallbackAssessment(
+            input,
+            response.status === 401 || response.status === 403 ? "azure_auth_failed" : "azure_http_error",
+            `Azure speaking grader HTTP ${response.status}`,
+          );
+        }
+        const json = await response.json().catch(() => null);
+        const assessment = normalizeAzureSpeakingAssessment(json, Date.now() - startedAt, input);
+        if (!assessment) {
+          return fallbackAssessment(input, "malformed_json", "Azure speaking grader returned invalid JSON");
+        }
+        return { ok: true, assessment, version: "azure-speaking-pronunciation-assessment" };
+      } catch (err) {
+        const isTimeout =
+          typeof err === "object" &&
+          err !== null &&
+          "name" in err &&
+          String((err as { name?: unknown }).name) === "AbortError";
+        return fallbackAssessment(
+          input,
+          isTimeout ? "timeout" : "network_error",
+          isTimeout ? "Azure speaking grader timed out" : "Azure speaking grader call failed",
+        );
+      } finally {
+        clearTimeout(timeout);
+      }
+    },
+  };
+}
+
 export async function gradeWithClient(
   input: GraderInput,
-  writingClient?: WritingGraderClient,
+  writingClient?: WritingGraderClient & Partial<SpeakingGraderClient>,
 ): Promise<GraderResult> {
   if (input.modality === "writing" && writingClient) {
     return writingClient.gradeWriting(input);
+  }
+  if (input.modality === "speaking" && writingClient?.gradeSpeaking) {
+    return writingClient.gradeSpeaking(input);
   }
   if (input.modality === "conversation" && writingClient?.gradeConversation) {
     return writingClient.gradeConversation(input);
@@ -198,7 +285,18 @@ export function fallbackAssessment(
       ...heuristicAssessment(input),
       confidence: 0.35,
       gaps: ["Needs a retry or human review because grading confidence was low."],
-      metadata: { errorCode, errorMessage, fallback: true },
+      metadata: {
+        errorCode,
+        errorMessage,
+        fallback: true,
+        ...(errorCode === "timeout"
+          ? {
+              providerTimeout: true,
+              retryable: true,
+              recoverable: true,
+            }
+          : {}),
+      },
     },
     version: `fallback-${input.modality}-grader-v1`,
     errorCode,
@@ -248,6 +346,81 @@ function lexicalOverlap(a: string, b: string): number {
     if (left.has(word)) shared += 1;
   }
   return shared / Math.min(left.size, right.size);
+}
+
+function normalizeAzureSpeakingAssessment(
+  raw: unknown,
+  latencyMs: number,
+  input: GraderInput,
+): CEFRAssessment | null {
+  if (!raw || typeof raw !== "object") return null;
+  const obj = raw as {
+    RecognitionStatus?: unknown;
+    DisplayText?: unknown;
+    NBest?: Array<{
+      AccuracyScore?: unknown;
+      FluencyScore?: unknown;
+      CompletenessScore?: unknown;
+      PronScore?: unknown;
+      Words?: Array<{
+        Word?: unknown;
+        AccuracyScore?: unknown;
+        Phonemes?: Array<{ Phoneme?: unknown; AccuracyScore?: unknown }>;
+      }>;
+    }>;
+  };
+  if (obj.RecognitionStatus !== "Success") return null;
+  const best = obj.NBest?.[0];
+  const pronScore = clampHundred(best?.PronScore ?? best?.AccuracyScore);
+  const base = heuristicAssessment(input);
+  const weakPhonemes = (best?.Words ?? []).flatMap((word) =>
+    (word.Phonemes ?? [])
+      .filter((phoneme) => clampHundred(phoneme.AccuracyScore) < 70)
+      .map((phoneme) => ({
+        phoneme: String(phoneme.Phoneme ?? "").trim(),
+        score: clampHundred(phoneme.AccuracyScore),
+        word: String(word.Word ?? "").trim(),
+      })),
+  ).filter((phoneme) => phoneme.phoneme).slice(0, 8);
+
+  return {
+    ...base,
+    confidence: Math.max(base.confidence, Math.min(0.92, pronScore / 100)),
+    strengths: [
+      ...(base.strengths ?? []),
+      ...(pronScore >= 80 ? ["Pronunciation sample was clear enough for Azure scoring."] : []),
+    ],
+    l1InterferenceFlags: [
+      ...(base.l1InterferenceFlags ?? []),
+      ...(weakPhonemes.length
+        ? [{
+            patternId: "azure_low_phoneme_accuracy",
+            severity: pronScore < 60 ? "high" : "medium",
+            evidence: weakPhonemes.map((item) => `${item.word}/${item.phoneme}:${item.score}`).join("; "),
+          } satisfies NonNullable<CEFRAssessment["l1InterferenceFlags"]>[number]]
+        : []),
+    ],
+    metadata: {
+      ...(base.metadata ?? {}),
+      provider: "azure",
+      providerPath: "placement-v3-speaking",
+      latencyMs,
+      displayText: typeof obj.DisplayText === "string" ? obj.DisplayText : "",
+      pronunciationScore: pronScore,
+      accuracyScore: clampHundred(best?.AccuracyScore),
+      fluencyScore: clampHundred(best?.FluencyScore),
+      completenessScore: clampHundred(best?.CompletenessScore),
+      weakPhonemes,
+      fallback: false,
+      retryable: false,
+      recoverable: false,
+    },
+  };
+}
+
+function clampHundred(value: unknown): number {
+  const n = typeof value === "number" && Number.isFinite(value) ? value : Number(value);
+  return Number.isFinite(n) ? Math.max(0, Math.min(100, n)) : 0;
 }
 
 function normalizeAssessment(raw: unknown): CEFRAssessment | null {
