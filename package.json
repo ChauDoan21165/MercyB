@@ -70,6 +70,7 @@
     "test:ci": "vitest run --reporter=verbose",
     "test:e2e": "playwright test -c playwright.smoke.config.ts",
     "test:e2e:ui": "playwright test -c playwright.smoke.config.ts --ui",
+    "placement:v3:grade-speaking:e2e": "tsx scripts/placement-v3/grade-speaking-e2e.ts",
     "deno:check:functions": "bash scripts/deno-check-edge-functions.sh",
     "depcruise": "depcruise --config .dependency-cruiser.cjs src supabase/functions server",
     "depcruise:validate": "depcruise --config .dependency-cruiser.cjs --output-type err src supabase/functions server",
