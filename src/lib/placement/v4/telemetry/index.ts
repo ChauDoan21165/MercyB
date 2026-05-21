@@ -214,3 +214,75 @@ export type { BuildDiagnosticsInput } from "./diagnostics";
 
 export { evaluateAdaptiveLoop } from "./adaptiveLoop";
 export type { AdaptiveLoopInput, AdaptiveLoopResult } from "./adaptiveLoop";
+
+// ---------------------------------------------------------------------------
+// Orchestration activation layer (PR3) — wires events into evaluateAdaptiveLoop
+// ---------------------------------------------------------------------------
+
+export {
+  ORCHESTRATOR_SCHEMA_VERSION,
+  applyOrchestrationEvent,
+  applyOrchestrationEvents,
+  initOrchestratorState,
+  runAdaptiveCycle,
+} from "./adaptiveOrchestrator";
+export type {
+  ForecastHistoryEntry,
+  InterventionLifecycleEntry,
+  OrchestrationEvent,
+  OrchestratorState,
+  PlanVersionEntry,
+  RecoveryStateEntry,
+  RecoveryKind,
+  RunAdaptiveCycleInput,
+  RunAdaptiveCycleResult,
+} from "./adaptiveOrchestrator";
+
+export {
+  ORCHESTRATION_SNAPSHOT_VERSION,
+  buildOrchestrationSnapshotFull,
+  compactOrchestrationSnapshot,
+  isSnapshotHashValid,
+  rebuildFullFromCompact,
+  reflowSnapshotForReplay,
+  snapshotContentHash,
+} from "./orchestrationSnapshot";
+export type {
+  BuildSnapshotInput,
+  OrchestrationSnapshot,
+  OrchestrationSnapshotCompact,
+  OrchestrationSnapshotFull,
+  RebuildFromCompactInput,
+} from "./orchestrationSnapshot";
+
+export {
+  convergenceHash,
+  detectCorruption,
+  isConvergent,
+  mergeDeviceSnapshots,
+} from "./crossDeviceMerge";
+export type {
+  CorruptionReason,
+  CorruptionReport,
+  DeviceSnapshot,
+  MergeOptions,
+  MergeResult,
+  VectorClock,
+} from "./crossDeviceMerge";
+
+export {
+  createSpeakingQueue,
+  drainSpeakingQueue,
+  enqueueSpeakingEvent,
+  flushSpeakingQueue,
+  translateSpeakingRuntimeEvent,
+} from "./speakingRuntimeAdapter";
+export type {
+  DrainResult,
+  FlushResult,
+  SpeakingFlushSink,
+  SpeakingQueue,
+  SpeakingQueueOptions,
+  SpeakingRuntimeEvent,
+  SpeakingTranslateOptions,
+} from "./speakingRuntimeAdapter";
