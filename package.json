@@ -67,6 +67,7 @@
     "typecheck:functions": "tsc -p tsconfig.functions.json --noEmit",
     "typecheck:scripts": "node -e \"const fs=require('fs'); if(!fs.existsSync('tsconfig.scripts.json')) { console.log('[skip] tsconfig.scripts.json not found'); process.exit(0);} process.exit(0);\" && tsc -p tsconfig.scripts.json --noEmit",
     "test": "vitest run",
+    "audit:local-artifacts": "node scripts/audit-local-artifacts.mjs",
     "mb:status": "node scripts/morning-status.mjs",
     "pr:ready": "node scripts/pr-ready.mjs",
     "ops:morning": "node scripts/ops-morning.mjs",
