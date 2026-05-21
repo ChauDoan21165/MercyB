@@ -97,24 +97,26 @@ export async function gradeWritingSample(
   });
 
   if (!aiResult.ok || aiResult.provider === "none") {
-    return errorBody("CEFR grading is temporarily unavailable.", "ai_unavailable");
+    return errorBody(
+      "CEFR grading is temporarily unavailable.",
+      "ai_unavailable",
+      buildModelTrace(aiResult, prompts, "ai_unavailable"),
+    );
   }
 
   const assessmentResult = projectAssessment(aiResult.json);
   if (!assessmentResult.ok) {
-    return errorBody(assessmentResult.error, "invalid_ai_response");
+    return errorBody(
+      assessmentResult.error,
+      "invalid_ai_response",
+      buildModelTrace(aiResult, prompts, "invalid_ai_response"),
+    );
   }
 
   return {
     ok: true,
     assessment: assessmentResult.assessment,
-    modelTrace: {
-      provider: aiResult.provider,
-      model: aiResult.model || DEFAULT_MODEL,
-      latencyMs: Math.max(0, Math.round(aiResult.latencyMs)),
-      tokensInput: estimateTokens(`${prompts.systemPrompt}\n${prompts.userMessage}`),
-      tokensOutput: estimateTokens(aiResult.raw || JSON.stringify(aiResult.json)),
-    },
+    modelTrace: buildModelTrace(aiResult, prompts),
   };
 }
 
@@ -273,8 +275,32 @@ function fieldError(error: string, errorCode: string): ValidationResult {
   return { ok: false, status: 400, error, errorCode };
 }
 
-function errorBody(error: string, errorCode: string): GradeWritingResponse {
-  return { ok: false, error, errorCode };
+function buildModelTrace(
+  aiResult: AiCallResult,
+  prompts: { systemPrompt: string; userMessage: string },
+  errorCode?: string,
+): ModelTrace {
+  return {
+    provider: aiResult.provider,
+    model: clean(aiResult.model) || DEFAULT_MODEL,
+    latencyMs: Math.max(0, Math.round(aiResult.latencyMs)),
+    tokensInput: estimateTokens(`${prompts.systemPrompt}\n${prompts.userMessage}`),
+    tokensOutput: estimateTokens(aiResult.raw || JSON.stringify(aiResult.json)),
+    ...(errorCode ? { fallback: true, errorCode } : {}),
+  };
+}
+
+function errorBody(
+  error: string,
+  errorCode: string,
+  modelTrace?: ModelTrace,
+): GradeWritingResponse {
+  return {
+    ok: false,
+    error,
+    errorCode,
+    ...(modelTrace ? { modelTrace } : {}),
+  };
 }
 
 function json(data: GradeWritingResponse | { ok?: true }, status = 200): Response {
@@ -302,4 +328,3 @@ export const PLACEMENT_V3_WRITING_LIMITS = {
 } as const;
 
 export type { ModelTrace };
-

@@ -174,6 +174,119 @@ describe("placement v3 persistence", () => {
     expect(f.tables.placement_v3_responses).toHaveLength(1);
   });
 
+  it("preserves provider metadata inside persisted assessment JSON", async () => {
+    const f = fakeDb();
+    const p = createPersistence(f.db, { now: () => "", newId: () => "" });
+    await p.insertResponse({
+      session_id: "session-1",
+      task_index: 0,
+      modality: "writing",
+      prompt_id: "p1",
+      prompt_text: "Prompt",
+      user_response_text: "Answer",
+      audio_storage_path: null,
+      response_duration_ms: 100,
+      ai_assessment: {
+        overallLevel: "B1",
+        confidence: 0.82,
+        metadata: {
+          gradingPath: "placement-v3-grade-writing",
+          provider: "openai",
+          model: "gpt-live-validation-fixture",
+          latencyMs: 321,
+          tokensInput: 123,
+          tokensOutput: 45,
+          fallback: false,
+        },
+      },
+      ai_assessment_version: "openai:gpt-live-validation-fixture",
+      graded_at: "2026-05-20T12:00:00.000Z",
+      created_at: "2026-05-20T12:00:00.000Z",
+    });
+
+    expect(f.tables.placement_v3_responses[0].ai_assessment).toMatchObject({
+      metadata: {
+        gradingPath: "placement-v3-grade-writing",
+        provider: "openai",
+        model: "gpt-live-validation-fixture",
+        latencyMs: 321,
+        tokensInput: 123,
+        tokensOutput: 45,
+        fallback: false,
+      },
+    });
+  });
+
+  it.each([
+    {
+      modality: "speaking" as const,
+      version: "openai:gpt-speaking:azure-phoneme",
+      metadata: {
+        gradingPath: "placement-v3-grade-speaking",
+        provider: "openai",
+        model: "gpt-speaking",
+        latencyMs: 222,
+        tokensInput: 17,
+        tokensOutput: 9,
+        fallback: false,
+        pronunciation: { provider: "azure", score: 58 },
+        authToken: "Bearer learner-secret-token",
+        apiKey: "super-secret",
+      },
+    },
+    {
+      modality: "conversation" as const,
+      version: "placement-v3-mercy-conversation",
+      metadata: {
+        gradingPath: "placement-v3-mercy-conversation",
+        provider: "unknown",
+        model: "unknown",
+        latencyMs: 18,
+        tokensInput: null,
+        tokensOutput: null,
+        fallback: true,
+        errorCode: "malformed_json",
+        errorMessage: "Conversation grader returned invalid JSON",
+        serviceRoleKey: "super-secret-service-role-key",
+      },
+    },
+  ])("sanitizes secret-shaped metadata while preserving %s trace context", async ({ modality, version, metadata }) => {
+    const f = fakeDb();
+    const p = createPersistence(f.db, { now: () => "", newId: () => "" });
+    await p.insertResponse({
+      session_id: "session-1",
+      task_index: 0,
+      modality,
+      prompt_id: "p1",
+      prompt_text: "Prompt",
+      user_response_text: "Answer",
+      audio_storage_path: null,
+      response_duration_ms: 100,
+      ai_assessment: {
+        overallLevel: "B1",
+        confidence: 0.82,
+        metadata,
+      },
+      ai_assessment_version: version,
+      graded_at: "2026-05-20T12:00:00.000Z",
+      created_at: "2026-05-20T12:00:00.000Z",
+    });
+
+    const row = f.tables.placement_v3_responses[0];
+    expect(row.ai_assessment?.metadata).toMatchObject({
+      gradingPath: metadata.gradingPath,
+      provider: metadata.provider,
+      model: metadata.model,
+      latencyMs: metadata.latencyMs,
+      tokensInput: metadata.tokensInput,
+      tokensOutput: metadata.tokensOutput,
+      fallback: metadata.fallback,
+    });
+    expect(JSON.stringify(row.ai_assessment)).not.toContain("learner-secret-token");
+    expect(JSON.stringify(row.ai_assessment)).not.toContain("super-secret-service-role-key");
+    expect(JSON.stringify(row.ai_assessment)).not.toContain("super-secret");
+  });
+
   it("upserts current profile and marks old profiles inactive", async () => {
     const f = fakeDb({
       placement_v3_profiles: [{ user_id: "user-1", session_id: "old", is_current: true }],

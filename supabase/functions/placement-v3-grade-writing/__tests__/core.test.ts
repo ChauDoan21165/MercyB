@@ -255,6 +255,88 @@ describe("handleRequest", () => {
     expect(body.assessment.overall.level).toBe("B1");
     expect(body.modelTrace.model).toBe("gpt-4o-mini");
   });
+
+  it("normalizes missing model metadata without changing the assessment", async () => {
+    const request = fixtureRequest(promptRows[2]);
+    const deps: Deps = {
+      callAi: vi.fn().mockResolvedValue({
+        ok: true,
+        json: mockAssessment("B1", request.userResponse),
+        raw: JSON.stringify(mockAssessment("B1", request.userResponse)),
+        provider: "openai",
+        model: "",
+        latencyMs: -5,
+      }),
+    };
+
+    const result = await gradeWritingSample(request, deps);
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) throw new Error(result.error);
+    expect(result.assessment.overall.level).toBe("B1");
+    expect(result.modelTrace).toMatchObject({
+      provider: "openai",
+      model: "gpt-4o-mini",
+      latencyMs: 0,
+      tokensInput: expect.any(Number),
+      tokensOutput: expect.any(Number),
+    });
+  });
+
+  it("returns sanitized modelTrace metadata when AI output is malformed", async () => {
+    const request = fixtureRequest(promptRows[2]);
+    const deps: Deps = {
+      callAi: vi.fn().mockResolvedValue({
+        ok: true,
+        json: { overall: { level: "B1" } },
+        raw: '{"overall":{"level":"B1"}}',
+        provider: "gemini",
+        model: "gemini-test",
+        latencyMs: 47,
+      }),
+    };
+
+    const result = await gradeWritingSample(request, deps);
+
+    expect(result.ok).toBe(false);
+    if (result.ok) throw new Error("expected invalid AI response");
+    expect(result.errorCode).toBe("invalid_ai_response");
+    expect(result.modelTrace).toMatchObject({
+      provider: "gemini",
+      model: "gemini-test",
+      latencyMs: 47,
+      fallback: true,
+      errorCode: "invalid_ai_response",
+    });
+    expect(JSON.stringify(result)).not.toContain("Bearer");
+  });
+
+  it("returns fallback metadata when the AI provider is unavailable", async () => {
+    const request = fixtureRequest(promptRows[1]);
+    const deps: Deps = {
+      callAi: vi.fn().mockResolvedValue({
+        ok: false,
+        json: {},
+        raw: "",
+        provider: "none",
+        model: "",
+        latencyMs: 12,
+      }),
+    };
+
+    const result = await gradeWritingSample(request, deps);
+
+    expect(result.ok).toBe(false);
+    if (result.ok) throw new Error("expected unavailable AI response");
+    expect(result.errorCode).toBe("ai_unavailable");
+    expect(result.modelTrace).toMatchObject({
+      provider: "none",
+      model: "gpt-4o-mini",
+      latencyMs: 12,
+      fallback: true,
+      errorCode: "ai_unavailable",
+    });
+  });
 });
 
 describe("validateRequest", () => {

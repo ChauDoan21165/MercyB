@@ -33,10 +33,11 @@ export interface CoreDeps extends OrchestratorDeps {
 
 export async function handleAction(args: {
   userId: string;
+  authToken?: string;
   request: PlacementV3Request;
   deps: CoreDeps;
 }): Promise<OrchestratorResponse> {
-  const { userId, request, deps } = args;
+  const { userId, authToken, request, deps } = args;
   if (!userId.trim()) {
     return error("auth_required", "Sign in to start placement.", 401);
   }
@@ -45,7 +46,7 @@ export async function handleAction(args: {
     case "start":
       return startSession(userId, request, deps);
     case "respond":
-      return respond(userId, request.response, deps);
+      return respond(userId, request.response, deps, authToken);
     case "abandon":
       return abandon(userId, request.sessionId, deps);
     case "resume":
@@ -105,6 +106,7 @@ async function respond(
   userId: string,
   input: RespondInput,
   deps: CoreDeps,
+  authToken?: string,
 ): Promise<OrchestratorResponse> {
   const now = deps.now();
   const session = await deps.loadSession(input.sessionId, userId);
@@ -163,6 +165,7 @@ async function respond(
   const graderInput = {
     userId,
     sessionId: session.id,
+    authToken,
     modality: prompt.modality,
     prompt,
     responseText: normalizeResponseText(input.responseText ?? ""),
@@ -178,6 +181,14 @@ async function respond(
     ok: grade.ok,
     version: grade.version,
     errorCode: grade.errorCode,
+    gradingPath: grade.providerTrace?.gradingPath,
+    provider: grade.providerTrace?.provider,
+    model: grade.providerTrace?.model,
+    latencyMs: grade.providerTrace?.latencyMs,
+    tokensInput: grade.providerTrace?.tokensInput,
+    tokensOutput: grade.providerTrace?.tokensOutput,
+    fallback: grade.providerTrace?.fallback,
+    httpStatus: grade.providerTrace?.httpStatus,
   });
 
   let working = session;
@@ -354,7 +365,6 @@ async function duplicateResponse(
     resumed: true,
   };
 }
-
 
 function validateResponse(
   input: RespondInput,
