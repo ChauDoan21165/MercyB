@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createHarness } from "./testHarness.ts";
 import { USER_RESPONSES } from "./fixtures/mock-user-responses.ts";
+import { assessment } from "./fixtures/mock-grader-responses.ts";
 
 describe("placement v3 core actions", () => {
   it("start creates a session and returns first prompt", async () => {
@@ -95,5 +96,29 @@ describe("placement v3 core actions", () => {
     const res = await h.run({ action: "status", sessionId: start.session.id });
     expect(res.ok && res.session.current_task_index).toBe(0);
   });
-});
 
+  it("duplicate request reaching the function boundary only grades once", async () => {
+    const grade = vi.fn(async () => ({
+      ok: true,
+      assessment: assessment("B1", 0.9),
+      version: "mock",
+    }));
+    const h = createHarness({ grade, insertResponseDelayMs: 20 });
+    const start = await h.run({ action: "start" });
+    if (!start.ok || !start.prompt) throw new Error("start failed");
+    const request = {
+      action: "respond" as const,
+      response: {
+        sessionId: start.session.id,
+        taskIndex: start.session.current_task_index,
+        promptId: start.prompt.id,
+        responseText: USER_RESPONSES.medium,
+      },
+    };
+    const [first, second] = await Promise.all([h.run(request), h.run(request)]);
+    expect(first.ok).toBe(true);
+    expect(second.ok).toBe(true);
+    expect(grade).toHaveBeenCalledTimes(1);
+    expect(h.responses.get(start.session.id)).toHaveLength(1);
+  });
+});

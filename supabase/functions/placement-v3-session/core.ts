@@ -134,19 +134,31 @@ async function respond(
   const responses = await deps.loadResponses(session.id);
   const duplicate = responses.find((r) => r.task_index === input.taskIndex);
   if (duplicate) {
-    return {
-      ok: true,
-      action: "respond",
-      session,
-      prompt: currentPrompt(session),
-      profile: null,
-      resumed: true,
-    };
+    return duplicateResponse(session, userId, deps);
   }
   const prompt = currentPrompt(session);
   if (!prompt) return error("prompt_missing", "Session has no active prompt.", 409);
   const validation = validateResponse(input, prompt);
   if (validation) return validation;
+
+  const response: PlacementV3Response = {
+    session_id: session.id,
+    task_index: input.taskIndex,
+    modality: prompt.modality,
+    prompt_id: prompt.id,
+    prompt_text: prompt.promptText,
+    user_response_text: normalizeResponseText(input.responseText ?? ""),
+    audio_storage_path: input.audioStoragePath ?? null,
+    response_duration_ms: input.responseDurationMs ?? null,
+    ai_assessment: null,
+    ai_assessment_version: null,
+    graded_at: null,
+    created_at: now,
+  };
+  const claim = await deps.insertResponse(response);
+  if (!claim.inserted) {
+    return duplicateResponse(session, userId, deps);
+  }
 
   const graderInput = {
     userId,
@@ -179,21 +191,12 @@ async function respond(
   }
   if (working.flow_state === "error") working = recoverFromError(working, now);
 
-  const response: PlacementV3Response = {
-    session_id: session.id,
-    task_index: input.taskIndex,
-    modality: prompt.modality,
-    prompt_id: prompt.id,
-    prompt_text: prompt.promptText,
-    user_response_text: normalizeResponseText(input.responseText ?? ""),
-    audio_storage_path: input.audioStoragePath ?? null,
-    response_duration_ms: input.responseDurationMs ?? null,
+  const savedResponse = await deps.updateResponse({
+    ...claim.response,
     ai_assessment: grade.assessment,
     ai_assessment_version: grade.version,
     graded_at: now,
-    created_at: now,
-  };
-  const savedResponse = await deps.insertResponse(response);
+  });
   const allResponses = [...responses, savedResponse];
   const next = nextPromptAfterAssessment({
     session: working,
@@ -331,6 +334,27 @@ async function completedResponse(
     profile: await deps.loadCurrentProfile(session.id, userId),
   };
 }
+
+async function duplicateResponse(
+  session: PlacementV3Session,
+  userId: string,
+  deps: CoreDeps,
+): Promise<OrchestratorResponse> {
+  const latest = await deps.loadSession(session.id, userId);
+  if (!latest) return error("session_not_found", "Placement session was not found.", 404);
+  if (latest.flow_state === "completed") {
+    return completedResponse(latest, deps, userId);
+  }
+  return {
+    ok: true,
+    action: "respond",
+    session: latest,
+    prompt: currentPrompt(latest),
+    profile: null,
+    resumed: true,
+  };
+}
+
 
 function validateResponse(
   input: RespondInput,

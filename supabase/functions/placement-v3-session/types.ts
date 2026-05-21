@@ -142,6 +142,11 @@ export interface PlacementV3Response {
   created_at: string;
 }
 
+export interface PlacementV3ResponseWriteResult {
+  response: PlacementV3Response;
+  inserted: boolean;
+}
+
 export interface RespondInput {
   sessionId: string;
   taskIndex: number;
@@ -184,6 +189,7 @@ export type OrchestratorResponse = SessionStateResponse | ErrorResponse;
 export interface GraderInput {
   userId: string;
   sessionId: string;
+  authToken?: string;
   modality: PlacementV3Modality;
   prompt: PromptTask;
   responseText: string;
@@ -195,8 +201,21 @@ export interface GraderResult {
   ok: boolean;
   assessment: CEFRAssessment;
   version: string;
+  providerTrace?: GraderProviderTrace;
   errorCode?: string;
   errorMessage?: string;
+}
+
+export interface GraderProviderTrace {
+  gradingPath: string;
+  provider: string;
+  model: string;
+  latencyMs: number | null;
+  tokensInput: number | null;
+  tokensOutput: number | null;
+  fallback: boolean;
+  errorCode?: string;
+  httpStatus?: number;
 }
 
 export interface PersistSessionInput {
@@ -226,6 +245,9 @@ export interface OrchestratorDeps {
   ) => Promise<PlacementV3Session>;
   updateSession: (session: PlacementV3Session) => Promise<PlacementV3Session>;
   insertResponse: (
+    response: PlacementV3Response,
+  ) => Promise<PlacementV3ResponseWriteResult>;
+  updateResponse: (
     response: PlacementV3Response,
   ) => Promise<PlacementV3Response>;
   markProfilesNotCurrent: (userId: string) => Promise<void>;

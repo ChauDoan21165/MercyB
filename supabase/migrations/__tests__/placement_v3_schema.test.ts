@@ -102,6 +102,7 @@ describe("placement v3 migrations", () => {
       "idx_sessions_started_at",
       "idx_responses_session_id",
       "idx_responses_session_task",
+      "uniq_responses_session_task",
       "idx_profiles_user_current",
       "uniq_profiles_user_session",
     ]) {
