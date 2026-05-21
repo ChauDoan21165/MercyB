@@ -295,11 +295,6 @@ const DevAudioTest = import.meta.env.DEV
   ? lazyWithRetry(() => import("@/pages/DevAudioTest"))
   : null;
 
-// Temporary scaffold (A7b) — Sentry sourcemap upload smoke test. Inert
-// until VITE_SENTRY_SMOKE_TEST_ENABLED=true AND ?confirm=throw. Removed
-// in a follow-up cleanup PR after symbolicated stack trace is verified.
-const SentrySmokeTest = lazyWithRetry(() => import("@/pages/SentrySmokeTest"));
-
 declare global {
   interface Window { MB_ROUTER_VERSION?: string; }
 }
@@ -1687,10 +1682,6 @@ export default function AppRouter() {
           {import.meta.env.DEV && DevAudioTest ? (
             <Route path="/dev/audio-test" element={<LazyPage><DevAudioTest /></LazyPage>} />
           ) : null}
-
-          {/* A7b sourcemap smoke test — page itself enforces the env-flag
-              + query-param gate so it is inert by default in every env. */}
-          <Route path="/__sentry-smoke-test" element={<LazyPage><SentrySmokeTest /></LazyPage>} />
 
           <Route path="*" element={<NotFound />} />
       </Route>
