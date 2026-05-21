@@ -9,7 +9,10 @@ import {
   type PlacementV3Session,
   type PromptTask,
   type Recommendation,
+  type SessionMetadata,
 } from "./types.ts";
+
+const MAX_METADATA_SANITIZE_DEPTH = 50;
 
 type QueryBuilder = {
   select: (columns?: string, options?: unknown) => QueryBuilder;
@@ -219,11 +222,11 @@ function sessionInsertRow(input: PersistSessionInput) {
     total_tasks: input.totalTasks,
     language_pair: input.languagePair,
     flow_state: "in_progress",
-    metadata: {
+    metadata: sanitizeSessionMetadata({
       lastPrompt: input.firstPrompt,
       targetLevel: input.firstPrompt.cefr,
       version: "placement-v3-session-v1",
-    },
+    }),
     created_at: input.now,
     updated_at: input.now,
   };
@@ -237,7 +240,7 @@ function sessionUpdateRow(session: PlacementV3Session) {
     current_task_index: session.current_task_index,
     total_tasks: session.total_tasks,
     flow_state: session.flow_state,
-    metadata: session.metadata,
+    metadata: sanitizeSessionMetadata(session.metadata),
     updated_at: session.updated_at,
   };
 }
@@ -247,8 +250,115 @@ function rowToSession(row: unknown): PlacementV3Session {
   return {
     ...r,
     language_pair: normalizePair(r.language_pair),
-    metadata: typeof r.metadata === "object" && r.metadata ? r.metadata : {},
+    metadata: sanitizeSessionMetadata(r.metadata),
   };
+}
+
+function sanitizeSessionMetadata(metadata: unknown): SessionMetadata {
+  if (!metadata || typeof metadata !== "object") return {};
+  return sanitizeMetadataValue(metadata, new WeakSet(), 0) as SessionMetadata;
+}
+
+function sanitizeMetadataValue(
+  value: unknown,
+  seen: WeakSet<object>,
+  depth: number,
+): unknown {
+  if (value === null || value === undefined) return value;
+  if (typeof value === "string") return redactMetadataString(value);
+  if (typeof value === "number") return Number.isFinite(value) ? value : `[${String(value)}]`;
+  if (typeof value === "boolean") return value;
+  if (typeof value === "bigint") return `${String(value)}n`;
+  if (typeof value === "function") return "[function]";
+  if (typeof value !== "object") return String(value);
+  if (depth >= MAX_METADATA_SANITIZE_DEPTH) return "[max-depth]";
+
+  if (value instanceof Date) {
+    return {
+      $type: "Date",
+      value: Number.isNaN(value.getTime()) ? "[invalid-date]" : value.toISOString(),
+    };
+  }
+  if (value instanceof URL) {
+    return { $type: "URL", value: redactMetadataString(value.toString()) };
+  }
+  if (value instanceof RegExp) {
+    return { $type: "RegExp", value: value.toString() };
+  }
+
+  if (seen.has(value)) return "[circular]";
+  seen.add(value);
+
+  if (Array.isArray(value)) {
+    const output = Array.from({ length: value.length }, (_, index) =>
+      Object.prototype.hasOwnProperty.call(value, index)
+        ? value[index] === undefined
+          ? "[undefined]"
+          : sanitizeMetadataValue(value[index], seen, depth + 1)
+        : "[sparse]"
+    );
+    seen.delete(value);
+    return output;
+  }
+
+  if (value instanceof Map) {
+    const entries = [...value.entries()]
+      .map(([key, item]) => [
+        sanitizeMetadataValue(key, seen, depth + 1),
+        sanitizeMetadataValue(item, seen, depth + 1),
+      ])
+      .sort(([a], [b]) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+    seen.delete(value);
+    return { $type: "Map", entries };
+  }
+
+  if (value instanceof Set) {
+    const values = [...value.values()]
+      .map((item) => sanitizeMetadataValue(item, seen, depth + 1))
+      .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+    seen.delete(value);
+    return { $type: "Set", values };
+  }
+
+  const record = value as Record<string, unknown>;
+  const output: Record<string, unknown> = Object.create(null);
+  for (const key of Object.keys(record).sort()) {
+    const item = record[key];
+    output[key] = isSensitiveMetadataKey(key)
+      ? "[redacted]"
+      : item === undefined
+        ? "[undefined]"
+        : sanitizeMetadataValue(item, seen, depth + 1);
+  }
+  seen.delete(value);
+  return output;
+}
+
+function isSensitiveMetadataKey(key: string): boolean {
+  const normalized = key.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return [
+    "authorization",
+    "apikey",
+    "token",
+    "accesstoken",
+    "refreshtoken",
+    "password",
+    "secret",
+    "servicerole",
+    "servicerolekey",
+    "supabaseservicerolekey",
+    "openaiapikey",
+    "geminiapikey",
+  ].some((sensitive) => normalized.includes(sensitive));
+}
+
+function redactMetadataString(value: string): string {
+  return value
+    .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, "Bearer [redacted]")
+    .replace(/sk-[A-Za-z0-9_-]{12,}/g, "sk-[redacted]")
+    .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, "[jwt-redacted]")
+    .replace(/https?:\/\/[^\s"']*(?:token|signature|expires|X-Amz-Signature|access_token)[^\s"']*/gi, "[url-redacted]")
+    .replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, "[email-redacted]");
 }
 
 function rowToResponse(row: unknown): PlacementV3Response {

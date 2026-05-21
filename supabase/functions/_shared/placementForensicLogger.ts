@@ -40,16 +40,20 @@ const DEFAULT_REDACT_KEYS = [
   "authorization",
   "apikey",
   "api_key",
+  "apiKey",
   "token",
   "access_token",
   "refresh_token",
   "password",
   "secret",
   "service_role",
+  "serviceRoleKey",
   "supabase_service_role_key",
   "openai_api_key",
   "gemini_api_key",
 ];
+
+const MAX_SANITIZE_DEPTH = 50;
 
 export function createPlacementForensicLogger(
   client: SupabaseClient | null,
@@ -138,43 +142,102 @@ export function replaySafeSerialize<T>(
   value: T,
   redactKeys: Set<string> = new Set(DEFAULT_REDACT_KEYS),
 ): T {
-  return sanitize(value, redactKeys, new WeakSet()) as T;
+  return sanitize(value, redactKeys, new WeakSet(), 0) as T;
 }
 
 function sanitize(
   value: unknown,
   redactKeys: Set<string>,
   seen: WeakSet<object>,
+  depth: number,
 ): unknown {
   if (value === null || value === undefined) return value;
   if (typeof value === "string") return redactString(value);
-  if (typeof value === "number" || typeof value === "boolean") return value;
-  if (typeof value === "bigint") return value.toString();
+  if (typeof value === "number") return Number.isFinite(value) ? value : `[${String(value)}]`;
+  if (typeof value === "boolean") return value;
+  if (typeof value === "bigint") return `${String(value)}n`;
   if (typeof value === "function") return "[function]";
   if (typeof value !== "object") return String(value);
+  if (depth >= MAX_SANITIZE_DEPTH) return "[max-depth]";
+
+  if (value instanceof Date) {
+    return {
+      $type: "Date",
+      value: Number.isNaN(value.getTime()) ? "[invalid-date]" : value.toISOString(),
+    };
+  }
+  if (value instanceof URL) {
+    return { $type: "URL", value: redactString(value.toString()) };
+  }
+  if (value instanceof RegExp) {
+    return { $type: "RegExp", value: value.toString() };
+  }
 
   if (seen.has(value)) return "[circular]";
   seen.add(value);
 
   if (Array.isArray(value)) {
-    return value.map((item) => sanitize(item, redactKeys, seen));
+    const output = Array.from({ length: value.length }, (_, index) =>
+      Object.prototype.hasOwnProperty.call(value, index)
+        ? value[index] === undefined
+          ? "[undefined]"
+          : sanitize(value[index], redactKeys, seen, depth + 1)
+        : "[sparse]"
+    );
+    seen.delete(value);
+    return output;
+  }
+
+  if (value instanceof Map) {
+    const entries = [...value.entries()]
+      .map(([key, item]) => [
+        sanitize(key, redactKeys, seen, depth + 1),
+        sanitize(item, redactKeys, seen, depth + 1),
+      ])
+      .sort(([a], [b]) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+    seen.delete(value);
+    return { $type: "Map", entries };
+  }
+
+  if (value instanceof Set) {
+    const values = [...value.values()]
+      .map((item) => sanitize(item, redactKeys, seen, depth + 1))
+      .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+    seen.delete(value);
+    return { $type: "Set", values };
   }
 
   const record = value as Record<string, unknown>;
-  const output: Record<string, unknown> = {};
-  for (const [key, item] of Object.entries(record)) {
-    if (redactKeys.has(key.toLowerCase())) {
+  const output: Record<string, unknown> = Object.create(null);
+  for (const key of Object.keys(record).sort()) {
+    const item = record[key];
+    if (shouldRedactKey(key, redactKeys)) {
       output[key] = "[redacted]";
     } else {
-      output[key] = sanitize(item, redactKeys, seen);
+      output[key] = item === undefined
+        ? "[undefined]"
+        : sanitize(item, redactKeys, seen, depth + 1);
     }
   }
+  seen.delete(value);
   return output;
+}
+
+function shouldRedactKey(key: string, redactKeys: Set<string>): boolean {
+  const normalized = normalizeKey(key);
+  if (redactKeys.has(key.toLowerCase()) || redactKeys.has(normalized)) return true;
+  return [...redactKeys].some((redactKey) => normalized.includes(normalizeKey(redactKey)));
+}
+
+function normalizeKey(key: string): string {
+  return key.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 function redactString(value: string): string {
   return value
     .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, "Bearer [redacted]")
     .replace(/sk-[A-Za-z0-9_-]{12,}/g, "sk-[redacted]")
+    .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, "[jwt-redacted]")
+    .replace(/https?:\/\/[^\s"']*(?:token|signature|expires|X-Amz-Signature|access_token)[^\s"']*/gi, "[url-redacted]")
     .replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, "[email-redacted]");
 }

@@ -185,7 +185,10 @@ serve(
       message: `Placement V3 ${body.action} request received.`,
       sessionState: "in_progress",
       featureFlags,
-      metadata: { action: body.action, userId: user.id },
+      // Direct user IDs are unnecessary in forensic metadata because
+      // sessionId + correlationId provide the join keys needed for incident
+      // reconstruction without widening learner identifier exposure.
+      metadata: { action: body.action, userRef: "authenticated" },
     });
     await forensicLogger.logEvent({
       sessionId: requestSessionId,
