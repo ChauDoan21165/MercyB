@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-05-20T17:13:29.542Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "unsupported_readiness_propagation_detected": false,
+  "readiness_lineage_incomplete_count": 9,
+  "unsupported_claim_findings": [],
+  "readiness_findings": [
+    {
+      "agent": "A39",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "capacity_denial",
+        "cohort_ceiling"
+      ]
+    },
+    {
+      "agent": "A42",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "reliability_denial",
+        "failover_denial"
+      ]
+    },
+    {
+      "agent": "A44",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "human_review_denial",
+        "approval_readiness"
+      ]
+    },
+    {
+      "agent": "A45",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "provider_validation_denial",
+        "live_provider_block"
+      ]
+    },
+    {
+      "agent": "A46",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "contradiction_audit",
+        "governance_signoff_denial"
+      ]
+    },
+    {
+      "agent": "A47",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "audit_continuity"
+      ]
+    },
+    {
+      "agent": "A48",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "release_denial",
+        "canary_block"
+      ]
+    },
+    {
+      "agent": "A49",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "replay_certification_denial"
+      ]
+    },
+    {
+      "agent": "A50",
+      "readiness_state_lacks_evidence_lineage": true,
+      "unsupported_readiness_propagation_detected": false,
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "observability_dependency",
+        "replay_dependency",
+        "supervised_execution_denial"
+      ]
+    }
+  ]
+}

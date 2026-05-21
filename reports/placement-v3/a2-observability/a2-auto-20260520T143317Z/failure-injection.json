@@ -1,0 +1,1325 @@
+{
+  "runId": "a2-auto-20260520T143317Z",
+  "count": 20,
+  "outputs": [
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-timeout-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-timeout-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-provider-timeout",
+        "correlationId": "corr-provider-timeout-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:05.000Z",
+        "eventCount": 5,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "provider_event",
+            "step": "grader.provider",
+            "message": "OpenAI timed out.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "latency_event",
+            "step": "grader.provider",
+            "message": "Provider exceeded latency budget.",
+            "severity": "warn"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-timeout-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-timeout-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-provider-timeout",
+        "correlationId": "corr-provider-timeout-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:07.000Z",
+        "eventCount": 7,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "recoverable",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "provider_event",
+            "step": "grader.provider",
+            "message": "OpenAI timed out.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "latency_event",
+            "step": "grader.provider",
+            "message": "Provider exceeded latency budget.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 6,
+            "occurredAt": "2026-05-20T18:00:06.000Z",
+            "type": "recoverability_state",
+            "step": "grader.recoverability",
+            "message": "Timeout can recover by fallback provider.",
+            "severity": "info"
+          },
+          {
+            "sequence": 7,
+            "occurredAt": "2026-05-20T18:00:07.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-malformed-json-grader-output-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-malformed-json-grader-output-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-malformed-json-grader-output",
+        "correlationId": "corr-malformed-json-grader-output-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": true,
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "provider_event",
+            "step": "grader.parse",
+            "message": "Provider returned malformed JSON.",
+            "severity": "error"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-malformed-json-grader-output-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-malformed-json-grader-output-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-malformed-json-grader-output",
+        "correlationId": "corr-malformed-json-grader-output-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:06.000Z",
+        "eventCount": 6,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "degraded_safe",
+        "degraded": true,
+        "deterministic": true,
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "provider_event",
+            "step": "grader.parse",
+            "message": "Provider returned malformed JSON.",
+            "severity": "error"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "degraded_result",
+            "step": "grader.fallback",
+            "message": "Heuristic low-confidence grade returned.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 6,
+            "occurredAt": "2026-05-20T18:00:06.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-fallback-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-fallback-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-provider-fallback",
+        "correlationId": "corr-provider-fallback-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:06.000Z",
+        "eventCount": 6,
+        "missingSequences": [],
+        "providerSwitches": [
+          {
+            "atSequence": 6,
+            "from": "openai",
+            "to": "gemini",
+            "reason": "success"
+          }
+        ],
+        "retries": [],
+        "fallbacks": [
+          {
+            "atSequence": 5,
+            "from": "openai",
+            "to": "gemini",
+            "reason": "upstream_error"
+          }
+        ],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "provider_event",
+            "step": "provider.openai",
+            "message": "OpenAI upstream failed.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "fallback_event",
+            "step": "provider.failover",
+            "message": "Failing over from OpenAI to Gemini.",
+            "severity": "info"
+          },
+          {
+            "sequence": 6,
+            "occurredAt": "2026-05-20T18:00:06.000Z",
+            "type": "provider_event",
+            "step": "provider.gemini",
+            "message": "Gemini returned grade.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-fallback-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-fallback-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-provider-fallback",
+        "correlationId": "corr-provider-fallback-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:07.000Z",
+        "eventCount": 7,
+        "missingSequences": [],
+        "providerSwitches": [
+          {
+            "atSequence": 6,
+            "from": "openai",
+            "to": "gemini",
+            "reason": "success"
+          }
+        ],
+        "retries": [],
+        "fallbacks": [
+          {
+            "atSequence": 5,
+            "from": "openai",
+            "to": "gemini",
+            "reason": "upstream_error"
+          }
+        ],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "provider_event",
+            "step": "provider.openai",
+            "message": "OpenAI upstream failed.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "fallback_event",
+            "step": "provider.failover",
+            "message": "Failing over from OpenAI to Gemini.",
+            "severity": "info"
+          },
+          {
+            "sequence": 6,
+            "occurredAt": "2026-05-20T18:00:06.000Z",
+            "type": "provider_event",
+            "step": "provider.gemini",
+            "message": "Gemini returned grade.",
+            "severity": "info"
+          },
+          {
+            "sequence": 7,
+            "occurredAt": "2026-05-20T18:00:07.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-retry-exhaustion-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-retry-exhaustion-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-retry-exhaustion",
+        "correlationId": "corr-retry-exhaustion-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:05.000Z",
+        "eventCount": 5,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [
+          {
+            "atSequence": 4,
+            "attempt": 1,
+            "maxAttempts": 2,
+            "reason": "transient_db_error"
+          },
+          {
+            "atSequence": 5,
+            "attempt": 3,
+            "maxAttempts": 2,
+            "reason": "transient_db_error"
+          }
+        ],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [
+          "persistence.retry: attempt 3 exceeds max 2"
+        ],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "retry_event",
+            "step": "persistence.retry",
+            "message": "Retrying persistence write.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "retry_event",
+            "step": "persistence.retry",
+            "message": "Retry exhausted.",
+            "severity": "error"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-retry-exhaustion-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-retry-exhaustion-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-retry-exhaustion",
+        "correlationId": "corr-retry-exhaustion-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:06.000Z",
+        "eventCount": 6,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [
+          {
+            "atSequence": 4,
+            "attempt": 1,
+            "maxAttempts": 2,
+            "reason": "transient_db_error"
+          },
+          {
+            "atSequence": 5,
+            "attempt": 2,
+            "maxAttempts": 2,
+            "reason": "transient_db_error"
+          }
+        ],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "retry_event",
+            "step": "persistence.retry",
+            "message": "Retrying persistence write.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "retry_event",
+            "step": "persistence.retry",
+            "message": "Retry exhausted.",
+            "severity": "error"
+          },
+          {
+            "sequence": 6,
+            "occurredAt": "2026-05-20T18:00:06.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-recommendation-engine-failure-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-recommendation-engine-failure-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-recommendation-engine-failure",
+        "correlationId": "corr-recommendation-engine-failure-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "recommendation_event",
+            "step": "recommendations",
+            "message": "Recommendation engine failed.",
+            "severity": "error"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-recommendation-engine-failure-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-recommendation-engine-failure-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-recommendation-engine-failure",
+        "correlationId": "corr-recommendation-engine-failure-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:05.000Z",
+        "eventCount": 5,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "recommendation_event",
+            "step": "recommendations",
+            "message": "Recommendation engine failed.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-taxonomy-parse-failure-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-taxonomy-parse-failure-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-taxonomy-parse-failure",
+        "correlationId": "corr-taxonomy-parse-failure-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "taxonomy_trigger",
+            "step": "l1.taxonomy",
+            "message": "Vietnamese L1 taxonomy parse failed.",
+            "severity": "error"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-taxonomy-parse-failure-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-taxonomy-parse-failure-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-taxonomy-parse-failure",
+        "correlationId": "corr-taxonomy-parse-failure-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:05.000Z",
+        "eventCount": 5,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "taxonomy_trigger",
+            "step": "l1.taxonomy",
+            "message": "Vietnamese L1 taxonomy parse failed.",
+            "severity": "error"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-persistence-write-failure-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-persistence-write-failure-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-persistence-write-failure",
+        "correlationId": "corr-persistence-write-failure-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "recoverability_state",
+            "step": "persistence.write",
+            "message": "Response write failed.",
+            "severity": "fatal"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-persistence-write-failure-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-persistence-write-failure-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-persistence-write-failure",
+        "correlationId": "corr-persistence-write-failure-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unrecoverable",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "recoverability_state",
+            "step": "persistence.write",
+            "message": "Response write failed.",
+            "severity": "fatal"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-feature-flag-mismatch-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-feature-flag-mismatch-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-feature-flag-mismatch",
+        "correlationId": "corr-feature-flag-mismatch-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.validate",
+            "message": "Client and server placement flags mismatch.",
+            "severity": "warn"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-feature-flag-mismatch-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-feature-flag-mismatch-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-feature-flag-mismatch",
+        "correlationId": "corr-feature-flag-mismatch-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:05.000Z",
+        "eventCount": 5,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.validate",
+            "message": "Client and server placement flags mismatch.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-interrupted-session-recovery-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-interrupted-session-recovery-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-interrupted-session-recovery",
+        "correlationId": "corr-interrupted-session-recovery-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:05.000Z",
+        "eventCount": 5,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "no terminal transition after orchestrator.next at sequence 3"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "session_event",
+            "step": "session.resume",
+            "message": "Resume requested after interruption.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "recoverability_state",
+            "step": "session.recovery",
+            "message": "Recovery state unclear.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-interrupted-session-recovery-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-interrupted-session-recovery-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-interrupted-session-recovery",
+        "correlationId": "corr-interrupted-session-recovery-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:06.000Z",
+        "eventCount": 6,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "recovered",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "session_event",
+            "step": "session.resume",
+            "message": "Resume requested after interruption.",
+            "severity": "warn"
+          },
+          {
+            "sequence": 5,
+            "occurredAt": "2026-05-20T18:00:05.000Z",
+            "type": "recoverability_state",
+            "step": "session.recovery",
+            "message": "Last prompt restored.",
+            "severity": "info"
+          },
+          {
+            "sequence": 6,
+            "occurredAt": "2026-05-20T18:00:06.000Z",
+            "type": "orchestration_transition",
+            "step": "session.safe-result",
+            "message": "Session ended with safe degraded or normal result.",
+            "severity": "info"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-partial-orchestration-corruption-before.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-partial-orchestration-corruption-before-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-partial-orchestration-corruption",
+        "correlationId": "corr-partial-orchestration-corruption-before",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [
+          "detect_corruption: remained in grading at sequence 4",
+          "no terminal transition after orchestrator.corruption at sequence 4"
+        ],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.corruption",
+            "message": "Current modality and task index diverged.",
+            "severity": "error"
+          }
+        ]
+      }
+    },
+    {
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-partial-orchestration-corruption-after.json",
+      "reconstructionPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-partial-orchestration-corruption-after-reconstruction.json",
+      "reconstruction": {
+        "sessionId": "session-partial-orchestration-corruption",
+        "correlationId": "corr-partial-orchestration-corruption-after",
+        "startedAt": "2026-05-20T18:00:01.000Z",
+        "endedAt": "2026-05-20T18:00:04.000Z",
+        "eventCount": 4,
+        "missingSequences": [],
+        "providerSwitches": [],
+        "retries": [],
+        "fallbacks": [],
+        "recoverability": "unknown",
+        "degraded": false,
+        "deterministic": "unknown",
+        "inconsistentRetries": [],
+        "orchestrationDeadEnds": [],
+        "steps": [
+          {
+            "sequence": 1,
+            "occurredAt": "2026-05-20T18:00:01.000Z",
+            "type": "session_event",
+            "step": "session.start",
+            "message": "Placement session started.",
+            "severity": "info"
+          },
+          {
+            "sequence": 2,
+            "occurredAt": "2026-05-20T18:00:02.000Z",
+            "type": "feature_flag_snapshot",
+            "step": "flags.snapshot",
+            "message": "Feature flags captured.",
+            "severity": "info"
+          },
+          {
+            "sequence": 3,
+            "occurredAt": "2026-05-20T18:00:03.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.next",
+            "message": "Moved from start to grading.",
+            "severity": "info"
+          },
+          {
+            "sequence": 4,
+            "occurredAt": "2026-05-20T18:00:04.000Z",
+            "type": "orchestration_transition",
+            "step": "orchestrator.corruption",
+            "message": "Current modality and task index diverged.",
+            "severity": "error"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+name: A2 Observability Simulation
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    env:
+      PLACEMENT_TEST_ENABLED: "false"
+      PLACEMENT_V3_UI_ENABLED: "false"
+      VITE_PLACEMENT_TEST_ENABLED: "false"
+      VITE_PLACEMENT_V3_UI_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/a2-placement-v3-observability
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run placement:a2:auto
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: a2-observability-simulation
+          path: reports/placement-v3/a2-observability/

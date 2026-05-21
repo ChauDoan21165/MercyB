@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-20T17:13:29.526Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "future_validation_prerequisites_documented": true,
+  "future_validation_prerequisites_satisfied": false,
+  "permanent_validation_state": "EVIDENCE_GATED_DO_NOT_ENABLE",
+  "prerequisites": [
+    {
+      "order": 1,
+      "prerequisite": "A39 capacity and cohort ceiling denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 3,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 2,
+      "prerequisite": "A42 reliability/failover denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 3,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 3,
+      "prerequisite": "A44 human-review approval denial lineage",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 3,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 4,
+      "prerequisite": "A45 provider validation denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 3,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 5,
+      "prerequisite": "A46 governance contradiction audit",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 3,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 6,
+      "prerequisite": "A47 observability and audit continuity evidence",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 2,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 7,
+      "prerequisite": "A48 release denial and canary-block lineage",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 3,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 8,
+      "prerequisite": "A49 replay certification denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 2,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    },
+    {
+      "order": 9,
+      "prerequisite": "A50 supervised execution governance evidence",
+      "required": true,
+      "evidence_present": false,
+      "archived_gap_count": 4,
+      "validation_state": "BLOCKED_PENDING_REAL_VALIDATION_EVIDENCE"
+    }
+  ]
+}

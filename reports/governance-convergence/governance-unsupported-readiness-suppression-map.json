@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-20T17:13:29.541Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "unsupported_readiness_propagation_suppressible": true,
+  "unsupported_readiness_propagation_unresolved": true,
+  "unsupported_claim_findings": [],
+  "suppressions": [
+    {
+      "agent": "A39",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A42",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A44",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A45",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A46",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A47",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A48",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A49",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    },
+    {
+      "agent": "A50",
+      "unsupported_readiness_detected": false,
+      "readiness_lineage_incomplete": true,
+      "suppression_required": true,
+      "suppression_policy": "DENY_READINESS_PROPAGATION_UNTIL_DENIAL_LINEAGE_AND_EVIDENCE_EXIST",
+      "suppression_state": "SUPPRESSED_PENDING_EVIDENCE"
+    }
+  ]
+}

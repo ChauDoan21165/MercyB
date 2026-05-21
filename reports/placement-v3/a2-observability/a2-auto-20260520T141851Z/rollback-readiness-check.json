@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-05-20T14:18:55Z",
+  "simulated": true,
+  "rollback_readiness": "passed_for_manual_drill_preconditions",
+  "runbook": "docs/placement-v3/observability/rollback-runbook.md",
+  "live_rollback_drill_validated": false,
+  "placement_v3_enabled": false
+}

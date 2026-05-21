@@ -1,0 +1,71 @@
+{
+  "replayedAt": "2026-05-20T14:19:13.395Z",
+  "input": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T141911Z-feature-flag-mismatch-after.json",
+  "scenario": "feature-flag-mismatch",
+  "runLabel": "after",
+  "reconstruction": {
+    "sessionId": "session-feature-flag-mismatch",
+    "correlationId": "corr-feature-flag-mismatch-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:05.000Z",
+    "eventCount": 5,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.validate",
+        "message": "Client and server placement flags mismatch.",
+        "severity": "warn"
+      },
+      {
+        "sequence": 5,
+        "occurredAt": "2026-05-20T18:00:05.000Z",
+        "type": "orchestration_transition",
+        "step": "session.safe-result",
+        "message": "Session ended with safe degraded or normal result.",
+        "severity": "info"
+      }
+    ]
+  },
+  "diagnostics": {
+    "missingEvents": 0,
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "providerSwitches": 0,
+    "fallbacks": 0
+  }
+}

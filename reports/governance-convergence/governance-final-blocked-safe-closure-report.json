@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-05-20T17:13:29.532Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "closure_report_generated": true,
+  "governance_closure_approved": false,
+  "placement_v3_governance_closed": false,
+  "closure_blocked_reason": "A39-A49 evidence and denial lineage remain incomplete or unverified",
+  "final_summary_artifact": "reports/governance-convergence/governance-final-convergence-certification-summary.json",
+  "denial_lineage_artifact": "reports/governance-convergence/governance-global-denial-lineage-map.json",
+  "strict_verification_artifact": "reports/governance-convergence/governance-cross-stream-strict-mode-verification.json",
+  "handoff_artifact": "reports/governance-convergence/governance-final-convergence-handoff-board.json",
+  "closure_checks": [
+    {
+      "id": "blocked_safe_posture",
+      "passed": true
+    },
+    {
+      "id": "denial_lineage_fully_traceable",
+      "passed": false
+    },
+    {
+      "id": "strict_mode_denial_preserving",
+      "passed": true
+    },
+    {
+      "id": "unsupported_readiness_suppression_complete",
+      "passed": false
+    },
+    {
+      "id": "handoff_prepared",
+      "passed": true
+    },
+    {
+      "id": "closure_ready",
+      "passed": false
+    }
+  ]
+}

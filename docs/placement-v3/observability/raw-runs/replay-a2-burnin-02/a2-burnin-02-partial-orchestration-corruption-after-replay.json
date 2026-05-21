@@ -1,0 +1,63 @@
+{
+  "replayedAt": "2026-05-20T13:02:54.185Z",
+  "input": "docs/placement-v3/observability/raw-runs/a2-burnin-02-partial-orchestration-corruption-after.json",
+  "scenario": "partial-orchestration-corruption",
+  "runLabel": "after",
+  "reconstruction": {
+    "sessionId": "session-partial-orchestration-corruption",
+    "correlationId": "corr-partial-orchestration-corruption-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:04.000Z",
+    "eventCount": 4,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "unknown",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.corruption",
+        "message": "Current modality and task index diverged.",
+        "severity": "error"
+      }
+    ]
+  },
+  "diagnostics": {
+    "missingEvents": 0,
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "providerSwitches": 0,
+    "fallbacks": 0
+  }
+}

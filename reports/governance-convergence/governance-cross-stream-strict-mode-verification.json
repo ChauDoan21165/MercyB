@@ -1,0 +1,160 @@
+{
+  "generated_at": "2026-05-20T17:13:29.541Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "strict_mode_denial_behavior_verified_globally": true,
+  "strict_mode_enforcement_consistent_between_streams": true,
+  "unsupported_readiness_suppression_complete": false,
+  "autonomous_execution_implications_unresolved": false,
+  "production_readiness_denial_inconsistent": false,
+  "denial_board_conflict_count": 0,
+  "readiness_lineage_incomplete_count": 9,
+  "gates": [
+    {
+      "agent": "A39",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "capacity_denial",
+        "cohort_ceiling",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A42",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "reliability_denial",
+        "failover_denial",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A44",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "human_review_denial",
+        "approval_readiness",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A45",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "provider_validation_denial",
+        "live_provider_block",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A46",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "contradiction_audit",
+        "governance_signoff_denial",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A47",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "audit_continuity",
+        "replay_dependency"
+      ]
+    },
+    {
+      "agent": "A48",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "release_denial",
+        "canary_block",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A49",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "replay_certification_denial",
+        "observability_dependency"
+      ]
+    },
+    {
+      "agent": "A50",
+      "strict_gate_present": true,
+      "strict_gate_denial_preserving": true,
+      "strict_gate_consistent": true,
+      "production_readiness_denial_consistent": true,
+      "autonomous_execution_denial_consistent": true,
+      "unresolved_inputs": [
+        "denial_lineage",
+        "observability_dependency",
+        "replay_dependency",
+        "supervised_execution_denial",
+        "replay_dependency",
+        "observability_dependency"
+      ]
+    }
+  ]
+}

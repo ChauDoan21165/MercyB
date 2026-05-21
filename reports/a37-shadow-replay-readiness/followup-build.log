@@ -1,0 +1,370 @@
+
+> mercyblade@0.0.0 prebuild
+> npm run rooms:check
+
+
+> mercyblade@0.0.0 rooms:check
+> npm run generate:room-registry && npm run validate-rooms:core
+
+
+> mercyblade@0.0.0 generate:room-registry
+> node scripts/generate-room-registry.mjs
+
+Total JSON files: 485
+Warnings (non-fatal): 0
+
+Registry generated successfully
+
+> mercyblade@0.0.0 validate-rooms:core
+> MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.mjs
+
+Total ROOM JSON files (public/data/*.json): 485
+Mode: CORE_ONLY
+Warnings (non-fatal): 30
+Errors: 0
+
+Warning breakdown (non-fatal — backlog, not gate):
+- PLACEHOLDER_EN_TITLE: 30
+✅ validate-rooms: PASS
+
+> mercyblade@0.0.0 build
+> node scripts/generate-version.js && npm run generate:audio-manifest && npm run generate:sitemap && vite build
+
+[version] Generated version.json: v2026-05-20-07 (bdf9c1005)
+
+> mercyblade@0.0.0 generate:audio-manifest
+> node scripts/generate-audio-manifest.mjs
+
+Scanning public/audio for .mp3 files...
+✅ Audio manifest generated
+   Total .mp3 files: 0
+
+> mercyblade@0.0.0 generate:sitemap
+> tsx scripts/generate-sitemap.ts
+
+[sitemap] wrote 83 URLs to /Users/admin/MercyB/public/sitemap.xml
+vite v6.4.2 building for production...
+transforming...
+[plugin vite:dynamic-import-vars] src/components/mercy-guide/kidsDataLoader.ts: invalid import "./kids/kidPage${pageNumber}Data". A file extension must be included in the static part of the import. For example: import(`./foo/${bar}.js`).
+✓ 3945 modules transformed.
+Circular chunk: mercy-grammar-tab -> mercy-guide -> mercy-grammar-tab. Please adjust the manual chunk logic for these chunks.
+Circular chunk: mercy-grammar-tab -> mercy-speak-tab -> mercy-grammar-tab. Please adjust the manual chunk logic for these chunks.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /Users/admin/MercyB/src/config/slos.ts is dynamically imported by /Users/admin/MercyB/src/lib/admin/errorBudget.ts but also statically imported by /Users/admin/MercyB/src/lib/admin/errorBudget.ts, /Users/admin/MercyB/src/lib/admin/incidentLog.ts, /Users/admin/MercyB/src/pages/admin/SloDashboard.tsx, /Users/admin/MercyB/src/pages/admin/SloDetail.tsx, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/manifest.webmanifest                                 0.47 kB
+dist/index.html                                           6.87 kB │ gzip:   2.36 kB
+dist/assets/index-bCwIq8Td.css                          186.51 kB │ gzip:  26.59 kB
+dist/assets/awardXPEventBus-BMZcGmrB.js                   0.04 kB │ gzip:   0.06 kB
+dist/assets/PremiumGate-D0_oHLyH.js                       0.12 kB │ gzip:   0.12 kB
+dist/assets/nativeContent-B2HrFNpS.js                     0.14 kB │ gzip:   0.11 kB
+dist/assets/eventBus-CV2aPw6-.js                          0.14 kB │ gzip:   0.14 kB
+dist/assets/AllRooms-BLuMbYK3.js                          0.16 kB │ gzip:   0.16 kB
+dist/assets/chromeLanguage-3eNpE94d.js                    0.22 kB │ gzip:   0.17 kB
+dist/assets/mfaEligibility-DTlR_2ck.js                    0.31 kB │ gzip:   0.18 kB
+dist/assets/BilingualLabel-DAnbIzIm.js                    0.34 kB │ gzip:   0.24 kB
+dist/assets/usePlacementResume-Dh4rq55B.js                0.42 kB │ gzip:   0.30 kB
+dist/assets/GlobalNavigationShortcuts-D6VuIrJf.js         0.42 kB │ gzip:   0.29 kB
+dist/assets/MercyUnifiedPage-CWi0rxjR.js                  0.46 kB │ gzip:   0.32 kB
+dist/assets/usePlacementSessionV3-CgANjvkV.js             0.46 kB │ gzip:   0.32 kB
+dist/assets/NativeDeepLinkListener-DEu73UQb.js            0.55 kB │ gzip:   0.38 kB
+dist/assets/types-CNSnfwnr.js                             0.56 kB │ gzip:   0.39 kB
+dist/assets/AccessibleToast-MLWyHq8I.js                   0.58 kB │ gzip:   0.37 kB
+dist/assets/levels-C_c6gItW.js                            0.58 kB │ gzip:   0.35 kB
+dist/assets/telemetry-C1iJM5ry.js                         0.63 kB │ gzip:   0.33 kB
+dist/assets/LoadingPlaceholder-BcVQw6tf.js                0.68 kB │ gzip:   0.47 kB
+dist/assets/badge-DdS-3CLm.js                             0.78 kB │ gzip:   0.41 kB
+dist/assets/authGuard-E4PSEXgo.js                         0.84 kB │ gzip:   0.48 kB
+dist/assets/configHealth-BlBlYxBC.js                      0.85 kB │ gzip:   0.60 kB
+dist/assets/SentrySmokeTest-B5VJ2h9N.js                   0.88 kB │ gzip:   0.52 kB
+dist/assets/types-DegwkW2O.js                             0.89 kB │ gzip:   0.54 kB
+dist/assets/clarity-M0M8d1nw.js                           0.97 kB │ gzip:   0.56 kB
+dist/assets/perfBudget-ms5FPM2Q.js                        1.00 kB │ gzip:   0.56 kB
+dist/assets/card-C3YAV6yp.js                              1.03 kB │ gzip:   0.40 kB
+dist/assets/AndroidBackButton-ZxNEnhhn.js                 1.05 kB │ gzip:   0.67 kB
+dist/assets/NativeBootstrap-CoRPr1Lp.js                   1.07 kB │ gzip:   0.55 kB
+dist/assets/useAudioUrl-BJtq707H.js                       1.10 kB │ gzip:   0.50 kB
+dist/assets/types-DmPqmEQh.js                             1.11 kB │ gzip:   0.65 kB
+dist/assets/tierFromRoomId-DhrhdCs3.js                    1.12 kB │ gzip:   0.37 kB
+dist/assets/rpc-D12WnVme.js                               1.26 kB │ gzip:   0.53 kB
+dist/assets/TOEFLCopy-CscZyHry.js                         1.30 kB │ gzip:   0.66 kB
+dist/assets/ga4-8gCQrEqG.js                               1.37 kB │ gzip:   0.74 kB
+dist/assets/utm-C0N-EelT.js                               1.37 kB │ gzip:   0.63 kB
+dist/assets/logs-BAd2BtUm.js                              1.43 kB │ gzip:   0.75 kB
+dist/assets/SeoLayout-Bdo6zzRi.js                         1.44 kB │ gzip:   0.66 kB
+dist/assets/pixel-CsmkCB6n.js                             1.46 kB │ gzip:   0.76 kB
+dist/assets/SkipConfirmPage-LTRoysHP.js                   1.49 kB │ gzip:   0.82 kB
+dist/assets/table-Knvum5hM.js                             1.53 kB │ gzip:   0.54 kB
+dist/assets/nativeOAuth-Dqf8MygV.js                       1.59 kB │ gzip:   0.81 kB
+dist/assets/TeacherRoute-DnxIZeyx.js                      1.64 kB │ gzip:   0.86 kB
+dist/assets/VstepTopicPage-B899BVD6.js                    1.64 kB │ gzip:   0.89 kB
+dist/assets/IeltsTopicPage-3lYVufgJ.js                    1.68 kB │ gzip:   0.86 kB
+dist/assets/webVitalsTracking-DO2HLzc_.js                 1.69 kB │ gzip:   0.93 kB
+dist/assets/LevelUpModal-BKwFBsxE.js                      1.70 kB │ gzip:   0.93 kB
+dist/assets/InterviewIndex-C6cggZAC.js                    1.72 kB │ gzip:   0.93 kB
+dist/assets/drillGraduation-DJpImZ4z.js                   1.85 kB │ gzip:   0.70 kB
+dist/assets/CertificateToast-C7zCOIul.js                  2.02 kB │ gzip:   1.10 kB
+dist/assets/ToeicTopicPage-CZxnuB-l.js                    2.05 kB │ gzip:   1.14 kB
+dist/assets/TOEFLWritingPage-B0AtTOvS.js                  2.06 kB │ gzip:   0.95 kB
+dist/assets/familyInviteCopy-CaTzqY6t.js                  2.07 kB │ gzip:   0.98 kB
+dist/assets/tiers-BBl1jcWq.js                             2.11 kB │ gzip:   0.65 kB
+dist/assets/speechAttempts-CcyPN9qZ.js                    2.13 kB │ gzip:   1.00 kB
+dist/assets/emailPreferences-B-N9P3Kl.js                  2.14 kB │ gzip:   0.80 kB
+dist/assets/routeHelper-CPEn9poY.js                       2.22 kB │ gzip:   0.96 kB
+dist/assets/SeoMeta-DWpg4T0Z.js                           2.26 kB │ gzip:   0.82 kB
+dist/assets/Writing-BkyIqanf.js                           2.27 kB │ gzip:   1.03 kB
+dist/assets/Writing-DGID31RD.js                           2.35 kB │ gzip:   1.05 kB
+dist/assets/HocTiengAnhMienPhiPage-BrkBDY9q.js            2.37 kB │ gzip:   1.13 kB
+dist/assets/LoiTiengAnhNguoiVietHaySaiPage-Dmxt-r6H.js    2.37 kB │ gzip:   1.20 kB
+dist/assets/SuaPhatAmTiengAnhPage-CGdod-4r.js             2.37 kB │ gzip:   1.22 kB
+dist/assets/ResumePage-CQ5km4w0.js                        2.42 kB │ gzip:   1.27 kB
+dist/assets/HocTiengAnhChoNguoiVietPage-BUM6w420.js       2.51 kB │ gzip:   1.21 kB
+dist/assets/band-descriptors-BUj5-KbU.js                  2.52 kB │ gzip:   1.08 kB
+dist/assets/PhongVanTiengAnhPage-C09bmUC1.js              2.55 kB │ gzip:   1.25 kB
+dist/assets/repository-ByVG7DWu.js                        2.57 kB │ gzip:   0.97 kB
+dist/assets/globalShortcuts-B0fCd8H7.js                   2.57 kB │ gzip:   1.19 kB
+dist/assets/TOEFLSpeakingPage-DP-tNP_h.js                 2.61 kB │ gzip:   1.15 kB
+dist/assets/eligibility-_a_Ri8Hc.js                       2.64 kB │ gzip:   1.25 kB
+dist/assets/VNCulturalIndexPage-CHsiKoSy.js               2.66 kB │ gzip:   1.24 kB
+dist/assets/sample-questions-LaUfjR4R.js                  2.73 kB │ gzip:   1.47 kB
+dist/assets/JoinCorporatePage-j2kbJCsX.js                 2.75 kB │ gzip:   1.48 kB
+dist/assets/Speaking-DkdpO1vg.js                          2.80 kB │ gzip:   1.25 kB
+dist/assets/authUI-C3mSqW7q.js                            2.87 kB │ gzip:   1.07 kB
+dist/assets/MySubmissionsPage-BevSEjjF.js                 2.97 kB │ gzip:   1.32 kB
+dist/assets/studyGroupClient-CDp7ojdD.js                  3.00 kB │ gzip:   1.01 kB
+dist/assets/catalog-FOmoL3mz.js                           3.07 kB │ gzip:   1.09 kB
+dist/assets/CreateGroupPage-4lftae9g.js                   3.08 kB │ gzip:   1.38 kB
+dist/assets/streakCopy-IY3PqG7l.js                        3.10 kB │ gzip:   1.58 kB
+dist/assets/WhoForPage-BsGfXXhh.js                        3.12 kB │ gzip:   1.42 kB
+dist/assets/IELTSListeningPage-C8WVdihD.js                3.18 kB │ gzip:   1.29 kB
+dist/assets/TOEICIndexPage-Dl0007jN.js                    3.21 kB │ gzip:   1.39 kB
+dist/assets/TOEFLListeningPage-B9gF0eS0.js                3.22 kB │ gzip:   1.29 kB
+dist/assets/Referral-gLpxAAcK.js                          3.28 kB │ gzip:   1.44 kB
+dist/assets/IELTSEstimatorPage-B7kdW0iT.js                3.31 kB │ gzip:   1.24 kB
+dist/assets/toaster-8FpE6H4d.js                           3.33 kB │ gzip:   1.26 kB
+dist/assets/MyGiftsPage-Cs10Z0Yb.js                       3.34 kB │ gzip:   1.44 kB
+dist/assets/MilestoneObserver-Bk-pBcuz.js                 3.37 kB │ gzip:   1.25 kB
+dist/assets/GroupsIndex-Cn7Oezzv.js                       3.40 kB │ gzip:   1.47 kB
+dist/assets/giftSubscriptionClient-DVZ9oyrH.js            3.43 kB │ gzip:   1.30 kB
+dist/assets/IELTSIndexPage-Bc6XnHgn.js                    3.43 kB │ gzip:   1.40 kB
+dist/assets/TOEFLIndexPage-Ddo8ZaBU.js                    3.44 kB │ gzip:   1.42 kB
+dist/assets/AdminPaymentsPage-B8vdtuKc.js                 3.50 kB │ gzip:   1.42 kB
+dist/assets/ReviewQueue-7lA1gJmC.js                       3.51 kB │ gzip:   1.60 kB
+dist/assets/WritingTopic-Af07bgjU.js                      3.51 kB │ gzip:   1.18 kB
+dist/assets/Listening-D2G6Z1LH.js                         3.55 kB │ gzip:   1.41 kB
+dist/assets/Listening-B7v3MbWe.js                         3.56 kB │ gzip:   1.44 kB
+dist/assets/ShortcutHelpOverlay-BJvf_fQk.js               3.65 kB │ gzip:   1.71 kB
+dist/assets/sentenceSubmission-CxaIl9wW.js                3.68 kB │ gzip:   1.37 kB
+dist/assets/PendingSentencesPage-DJyZ2fY9.js              3.70 kB │ gzip:   1.63 kB
+dist/assets/displayPrices-BZVufR7g.js                     3.75 kB │ gzip:   1.65 kB
+dist/assets/VSTEPIndexPage-DR6yU6wG.js                    3.75 kB │ gzip:   1.62 kB
+dist/assets/roomJsonResolver-BuJe3BjA.js                  3.76 kB │ gzip:   1.64 kB
+dist/assets/Speaking-DWLAxOQv.js                          3.86 kB │ gzip:   1.71 kB
+dist/assets/AcceptInvite-BdG2L-Qc.js                      3.87 kB │ gzip:   1.63 kB
+dist/assets/IELTSReadingPage-BNDn_jfE.js                  3.88 kB │ gzip:   1.52 kB
+dist/assets/FrenchLessonsPage-OXirJT4L.js                 3.89 kB │ gzip:   1.85 kB
+dist/assets/corporateClient-ZnJPWr9x.js                   3.89 kB │ gzip:   1.47 kB
+dist/assets/curriculumTracker-Cu19fKrw.js                 3.90 kB │ gzip:   1.50 kB
+dist/assets/VietnameseLessonsPage-CUfnxhBz.js             3.92 kB │ gzip:   1.72 kB
+dist/assets/LeaderboardPage-CrHA8kEH.js                   3.96 kB │ gzip:   1.49 kB
+dist/assets/TOEFLReadingPage-BOWiCJzE.js                  3.97 kB │ gzip:   1.40 kB
+dist/assets/useEntitlements-6Awut3S9.js                   3.98 kB │ gzip:   1.61 kB
+dist/assets/ReadingPassage-6gnYTFb6.js                    4.02 kB │ gzip:   1.55 kB
+dist/assets/ReadingPassage-BV6H23JR.js                    4.05 kB │ gzip:   1.56 kB
+dist/assets/MockInterviewIndex-CkTLKMp0.js                4.12 kB │ gzip:   1.73 kB
+dist/assets/WelcomePage-BdKOEDpt.js                       4.22 kB │ gzip:   2.00 kB
+dist/assets/Reading-OKB309uC.js                           4.22 kB │ gzip:   1.65 kB
+dist/assets/Reading-D_bgEF7S.js                           4.27 kB │ gzip:   1.66 kB
+dist/assets/Terms-C9Vjvb9i.js                             4.31 kB │ gzip:   1.83 kB
+dist/assets/BlogIndex-BDNCVXOX.js                         4.31 kB │ gzip:   1.87 kB
+dist/assets/VNCulturalPackPage-DWX68WQt.js                4.38 kB │ gzip:   1.44 kB
+dist/assets/WritingTopic-R5Y-mpbV.js                      4.42 kB │ gzip:   1.38 kB
+dist/assets/MercyAnswerFeedback-DJIqcH5C.js               4.58 kB │ gzip:   2.09 kB
+dist/assets/referralLeaderboardCopy-BICMrZOC.js           4.69 kB │ gzip:   2.07 kB
+dist/assets/SpeakingTopic-D6qkXRjl.js                     4.70 kB │ gzip:   1.37 kB
+dist/assets/RedeemGiftPage-ou1qCnZh.js                    4.71 kB │ gzip:   1.95 kB
+dist/assets/weeklyLeaderboardCopy-DiLPvjs2.js             4.72 kB │ gzip:   2.16 kB
+dist/assets/iap-CpcaU8Vi.js                               4.77 kB │ gzip:   1.80 kB
+dist/assets/KoreanLessonsPage-CTWGDXor.js                 4.81 kB │ gzip:   2.18 kB
+dist/assets/FeedbackTriagePage-3ImOhViq.js                4.81 kB │ gzip:   1.98 kB
+dist/assets/ChineseLessonsPage-DqTNORdC.js                4.88 kB │ gzip:   2.14 kB
+dist/assets/ProfessionsIndexPage-DEHLd4D7.js              4.97 kB │ gzip:   2.04 kB
+dist/assets/TOEICPaywallGate-ChkZGxGo.js                  5.01 kB │ gzip:   2.11 kB
+dist/assets/costMonitoring-CKC3j7Rl.js                    5.12 kB │ gzip:   1.93 kB
+dist/assets/JapaneseLessonsPage-D8Hn5cKd.js               5.14 kB │ gzip:   2.31 kB
+dist/assets/PremiumGate-Hv2pn-3z.js                       5.16 kB │ gzip:   2.20 kB
+dist/assets/GermanLessonsPage-CbtTjwXd.js                 5.16 kB │ gzip:   2.20 kB
+dist/assets/incidentLog-CUk68ZxD.js                       5.21 kB │ gzip:   2.10 kB
+dist/assets/MonthlyReferralLeaderboard-C6Ujk2L_.js        5.24 kB │ gzip:   1.89 kB
+dist/assets/Library-BbRM9lPZ.js                           5.27 kB │ gzip:   2.29 kB
+dist/assets/IELTSWritingPage-B79kjIuk.js                  5.31 kB │ gzip:   2.09 kB
+dist/assets/ChallengeHistoryPage-CQVZ-sL0.js              5.33 kB │ gzip:   2.09 kB
+dist/assets/PurchaseGiftPage-Op7yZOL2.js                  5.35 kB │ gzip:   2.27 kB
+dist/assets/PublicProfilePage-OcQyC43A.js                 5.36 kB │ gzip:   2.14 kB
+dist/assets/InterviewSessionPage-CfXSHlX0.js              5.38 kB │ gzip:   2.03 kB
+dist/assets/GroupPage-BYv-6J2e.js                         5.43 kB │ gzip:   2.26 kB
+dist/assets/BillingSuccessPage-ByC6vApl.js                5.43 kB │ gzip:   2.24 kB
+dist/assets/WritingPracticePage-BPrwC6cC.js               5.51 kB │ gzip:   2.01 kB
+dist/assets/StoryModeration-Cp3Z0vSu.js                   5.57 kB │ gzip:   2.02 kB
+dist/assets/ContentAdvisory--1VkEYru.js                   5.57 kB │ gzip:   2.47 kB
+dist/assets/BehavioralAnalytics-Bevfh2X6.js               5.70 kB │ gzip:   2.39 kB
+dist/assets/Unsubscribe-C1VZrMKl.js                       5.73 kB │ gzip:   2.18 kB
+dist/assets/LanguagesIndexPage-DCXFDLJn.js                5.75 kB │ gzip:   2.12 kB
+dist/assets/WeeklyDigest-CvJGJV0r.js                      5.75 kB │ gzip:   2.14 kB
+dist/assets/SpeakingTopic--YPgHVDI.js                     5.81 kB │ gzip:   1.86 kB
+dist/assets/AdminFeedbackPage-Bwu5FyN7.js                 5.82 kB │ gzip:   2.00 kB
+dist/assets/Stories-ByIhwnM3.js                           5.97 kB │ gzip:   2.28 kB
+dist/assets/DeveloperPortalPage-YGb-tCjq.js               6.01 kB │ gzip:   2.47 kB
+dist/assets/CreateCorporatePage-C9Rezlah.js               6.01 kB │ gzip:   2.19 kB
+dist/assets/StoryDetail-DFC5X5Yo.js                       6.04 kB │ gzip:   2.48 kB
+dist/assets/ContributeSentencePage-DgAtEfC6.js            6.07 kB │ gzip:   2.26 kB
+dist/assets/PublicRoadmapPage-DIZNHcyP.js                 6.07 kB │ gzip:   2.45 kB
+dist/assets/XPHistoryPage-DYP_k31V.js                     6.08 kB │ gzip:   2.38 kB
+dist/assets/InterviewPromptsModeration-C3SIdJ8K.js        6.16 kB │ gzip:   2.14 kB
+dist/assets/DailyChallengePage-BcmiCsiw.js                6.32 kB │ gzip:   2.58 kB
+dist/assets/Library-C8LVV16Q.js                           6.39 kB │ gzip:   2.49 kB
+dist/assets/ApplyReferralCodeForm-BdYk_g7a.js             6.46 kB │ gzip:   2.57 kB
+dist/assets/practiceRecommendations-wkh57DPa.js           6.55 kB │ gzip:   2.81 kB
+dist/assets/ReviewItem-Ds5qufnf.js                        6.58 kB │ gzip:   2.69 kB
+dist/assets/TOEICEstimatorPage-CmlhFwrz.js                6.60 kB │ gzip:   2.85 kB
+dist/assets/heatmapInsights-C-6HSRVS.js                   6.64 kB │ gzip:   2.54 kB
+dist/assets/speechProgress-B9cLSujM.js                    6.71 kB │ gzip:   2.44 kB
+dist/assets/CommunityPrompts-Cus1DZvn.js                  6.77 kB │ gzip:   2.54 kB
+dist/assets/interviewSession-g1JGj05h.js                  6.78 kB │ gzip:   2.82 kB
+dist/assets/NotificationPreferences--Ntpkv_V.js           6.90 kB │ gzip:   3.08 kB
+dist/assets/scoreEssay-C4ZXJR2w.js                        6.90 kB │ gzip:   3.13 kB
+dist/assets/ShareProgressPage-C5ZY1XTm.js                 6.99 kB │ gzip:   2.73 kB
+dist/assets/Aal2Challenge-Df4PMCn6.js                     7.36 kB │ gzip:   3.04 kB
+dist/assets/BlogPost-DDRoachr.js                          7.40 kB │ gzip:   2.72 kB
+dist/assets/TeacherFeedbackTriage-DgYsKPqu.js             7.46 kB │ gzip:   2.60 kB
+dist/assets/SloDetail-CMSPOPUU.js                         7.46 kB │ gzip:   2.80 kB
+dist/assets/RecoverWith2FA-CitRf5BB.js                    7.48 kB │ gzip:   2.95 kB
+dist/assets/IELTSSpeakingPage-CV1s_DfK.js                 7.54 kB │ gzip:   2.35 kB
+dist/assets/VSTEPSpeakingPage-Cy5FIYrW.js                 7.54 kB │ gzip:   2.55 kB
+dist/assets/CorporateDashboardPage-TbNBhFpb.js            7.55 kB │ gzip:   2.72 kB
+dist/assets/InterviewSummaryPage-BapeEQR3.js              7.57 kB │ gzip:   2.70 kB
+dist/assets/CertificatesGalleryPage-D0mfCdA3.js           7.73 kB │ gzip:   2.94 kB
+dist/assets/ListeningItem-_tCsPeON.js                     7.80 kB │ gzip:   2.57 kB
+dist/assets/SeoTopicPage-DoI5vqwo.js                      8.29 kB │ gzip:   2.69 kB
+dist/assets/NailTechnicianPage-CZdIUgyI.js                8.35 kB │ gzip:   2.67 kB
+dist/assets/FrontendPerformance-DfoAz5Py.js               8.47 kB │ gzip:   3.19 kB
+dist/assets/ReviewSession-CcicMaRW.js                     8.49 kB │ gzip:   3.17 kB
+dist/assets/ConvertAccount-BGPv_0o9.js                    8.55 kB │ gzip:   3.04 kB
+dist/assets/ResultsPage-DFxdrxNL.js                       8.56 kB │ gzip:   2.64 kB
+dist/assets/ListeningItem-ILP6TYbM.js                     8.68 kB │ gzip:   2.99 kB
+dist/assets/SloDashboard-Dp3lEyNO.js                      8.71 kB │ gzip:   3.01 kB
+dist/assets/memory-OZ9ufvuv.js                            8.84 kB │ gzip:   2.68 kB
+dist/assets/AudioCoveragePage-DEBeJwkL.js                 8.85 kB │ gzip:   2.85 kB
+dist/assets/clientStub-ClFgqlVz.js                        9.12 kB │ gzip:   3.99 kB
+dist/assets/RetentionDashboard-BUNrFIvZ.js                9.34 kB │ gzip:   3.79 kB
+dist/assets/Submit-DDxXhh9w.js                            9.70 kB │ gzip:   3.26 kB
+dist/assets/ResetPasswordPage-s76XZHaC.js                 9.73 kB │ gzip:   3.85 kB
+dist/assets/MarketingLandingPage-DCE7Yr6l.js              9.82 kB │ gzip:   3.44 kB
+dist/assets/tierRoomSource-Bnemx7--.js                    9.86 kB │ gzip:   2.91 kB
+dist/assets/FeatureFlagsAdmin-BUKrRqzx.js                 9.90 kB │ gzip:   3.40 kB
+dist/assets/OnboardingPage-DmPzkvnr.js                   10.20 kB │ gzip:   3.48 kB
+dist/assets/TOEFLEstimatorPage-DCQDIwpy.js               10.29 kB │ gzip:   3.40 kB
+dist/assets/ClipPlayer-BNA65ytv.js                       10.39 kB │ gzip:   3.70 kB
+dist/assets/CostMonitoring-olpdDNtH.js                   10.51 kB │ gzip:   3.94 kB
+dist/assets/TierDetail-DWvI_NPf.js                       11.09 kB │ gzip:   3.75 kB
+dist/assets/LatencyMonitoring-DKZ9x3fU.js                11.21 kB │ gzip:   3.83 kB
+dist/assets/PushPreferences-BQGQmkha.js                  11.41 kB │ gzip:   4.03 kB
+dist/assets/ShareStory-DaE-26yY.js                       11.58 kB │ gzip:   3.64 kB
+dist/assets/SpeechHistoryPage-C-inuYLl.js                11.66 kB │ gzip:   4.31 kB
+dist/assets/Support-Bz1FP8Ot.js                          11.67 kB │ gzip:   4.24 kB
+dist/assets/Enable2FA-C1itpfNl.js                        11.69 kB │ gzip:   4.32 kB
+dist/assets/AdminAccessCodes-CjxpMFlG.js                 11.72 kB │ gzip:   4.07 kB
+dist/assets/TalkingFacePlayButton-CQ45FSl6.js            11.81 kB │ gzip:   3.63 kB
+dist/assets/mercy-german-tab-yaI1qSHF.js                 11.85 kB │ gzip:   4.26 kB
+dist/assets/SecuritySettings-EiucIIwG.js                 11.99 kB │ gzip:   4.34 kB
+dist/assets/BulkInvite-DzzAdFcN.js                       12.08 kB │ gzip:   4.35 kB
+dist/assets/PlacementV2Page-BbuU9Mek.js                  12.17 kB │ gzip:   4.40 kB
+dist/assets/PhonemeDrillPage-JTTphFJm.js                 12.35 kB │ gzip:   4.47 kB
+dist/assets/SpanishLessonsPage-D6TDW1Ci.js               12.91 kB │ gzip:   5.17 kB
+dist/assets/Practice-JEinpdXs.js                         13.17 kB │ gzip:   4.42 kB
+dist/assets/BottomMusicBar-CSctDMTu.js                   14.37 kB │ gzip:   4.49 kB
+dist/assets/AdminSubscriptions-HEZBj69p.js               14.77 kB │ gzip:   4.40 kB
+dist/assets/mercy-french-tab-DpuJryLx.js                 14.83 kB │ gzip:   5.37 kB
+dist/assets/Billing-qVOVxQ9Z.js                          14.93 kB │ gzip:   5.23 kB
+dist/assets/TOEICPracticePage-HULERSPB.js                15.89 kB │ gzip:   6.36 kB
+dist/assets/WritingPracticeSessionPage-CoVrcfsH.js       16.03 kB │ gzip:   5.53 kB
+dist/assets/PronunciationSRSSessionPage-B7O4hAlB.js      16.47 kB │ gzip:   5.39 kB
+dist/assets/FamilyPlanPage-Cpn716VY.js                   16.49 kB │ gzip:   4.95 kB
+dist/assets/SpeechDrill-FT4llOIW.js                      16.77 kB │ gzip:   5.94 kB
+dist/assets/RoomLoadDiagnostics-BlJAOtfQ.js              16.82 kB │ gzip:   4.58 kB
+dist/assets/dailyChallenge-Dot87mcJ.js                   17.21 kB │ gzip:   5.07 kB
+dist/assets/blogManifest-ck92OIa_.js                     17.62 kB │ gzip:   7.10 kB
+dist/assets/TestPage-B0608XiL.js                         18.07 kB │ gzip:   5.68 kB
+dist/assets/LessonRenderer-CWcXSkrs.js                   18.84 kB │ gzip:   5.19 kB
+dist/assets/MercyThreadPage-BJ0S-4iW.js                  19.14 kB │ gzip:   6.71 kB
+dist/assets/AdminDashboard-CHEbClgI.js                   20.13 kB │ gzip:   6.63 kB
+dist/assets/vendor-datefns-CBpsKyOP.js                   20.37 kB │ gzip:   5.76 kB
+dist/assets/CertVerifyPage-gmYzHpFg.js                   20.43 kB │ gzip:   6.37 kB
+dist/assets/AdminAnalyticsPage-B9f8xSVB.js               21.35 kB │ gzip:   6.88 kB
+dist/assets/Privacy-GTUQVzxH.js                          22.28 kB │ gzip:   7.72 kB
+dist/assets/MockInterviewRoom-B9FmR1Pe.js                22.63 kB │ gzip:   6.76 kB
+dist/assets/TierIndex-mW6B2cRy.js                        23.04 kB │ gzip:   6.56 kB
+dist/assets/writing-topics-SNqyTAmi.js                   23.60 kB │ gzip:   8.04 kB
+dist/assets/prompts-CotVj7nW.js                          24.14 kB │ gzip:   8.51 kB
+dist/assets/index-BkWw5-xZ.js                            25.92 kB │ gzip:   9.10 kB
+dist/assets/Progress-qZwpKhpN.js                         27.16 kB │ gzip:   8.34 kB
+dist/assets/VSTEPListeningPage-BSWqw8w8.js               29.96 kB │ gzip:  10.75 kB
+dist/assets/roomManifest-Bd9v2IoV.js                     30.54 kB │ gzip:   5.13 kB
+dist/assets/LoginPage-B-V5Pdl9.js                        32.51 kB │ gzip:  10.02 kB
+dist/assets/VSTEPWritingPage-CUJ9H5nB.js                 33.04 kB │ gzip:  12.28 kB
+dist/assets/mercy-guide-panel-DjBbHWo5.js                33.33 kB │ gzip:  10.48 kB
+dist/assets/vendor-sonner-Ce-psCVG.js                    33.83 kB │ gzip:   9.57 kB
+dist/assets/scenarios-BXd4sg9r.js                        34.57 kB │ gzip:  12.94 kB
+dist/assets/VSTEPReadingPage-B8VSwWe_.js                 36.65 kB │ gzip:  13.31 kB
+dist/assets/AdminUsersPage-DWODdngx.js                   37.59 kB │ gzip:   9.28 kB
+dist/assets/reading-passages-BswYlfrN.js                 40.39 kB │ gzip:  13.98 kB
+dist/assets/writing-topics-DudPD1Cp.js                   40.66 kB │ gzip:  14.49 kB
+dist/assets/mercy-logic-tab-IxG7LgXE.js                  43.68 kB │ gzip:  11.56 kB
+dist/assets/Pricing-CYUQodeK.js                          46.35 kB │ gzip:  14.07 kB
+dist/assets/index-eN4_V1R2.js                            46.46 kB │ gzip:  13.36 kB
+dist/assets/AccountPage-C7tUok3I.js                      48.64 kB │ gzip:  14.99 kB
+dist/assets/micro-lessons-Cp77RWuJ.js                    53.17 kB │ gzip:  15.60 kB
+dist/assets/NailTechLessonsPage-ZPQXqrlD.js              53.59 kB │ gzip:  17.08 kB
+dist/assets/listeningProgress-CVT5_lT_.js                58.16 kB │ gzip:  18.67 kB
+dist/assets/RestaurantLessonsPage-Ho0aNjms.js            60.29 kB │ gzip:  19.35 kB
+dist/assets/vendor-zod-C8aw77wn.js                       60.65 kB │ gzip:  16.48 kB
+dist/assets/speaking-topics-Cn93kJRg.js                  60.99 kB │ gzip:  20.27 kB
+dist/assets/mercy-teacher-tab-Bj8VRSkn.js                61.53 kB │ gzip:  19.39 kB
+dist/assets/speaking-topics-RRxh1PQl.js                  65.47 kB │ gzip:  19.01 kB
+dist/assets/CustomerServiceLessonsPage-YCWvXzRT.js       65.73 kB │ gzip:  20.65 kB
+dist/assets/HospitalityLessonsPage-BK0dLlPu.js           66.12 kB │ gzip:  22.32 kB
+dist/assets/Home-CjH5Nsy_.js                             66.52 kB │ gzip:  18.77 kB
+dist/assets/HealthcareLessonsPage-CGmy54bh.js            67.82 kB │ gzip:  21.77 kB
+dist/assets/DriversLessonsPage-Y1PGFG4R.js               67.83 kB │ gzip:  22.48 kB
+dist/assets/practice-items-CT8gNmWC.js                   71.27 kB │ gzip:  23.36 kB
+dist/assets/TechWorkerLessonsPage-BajO0dGw.js            72.06 kB │ gzip:  24.31 kB
+dist/assets/listening-items-qrBAhMXK.js                  72.99 kB │ gzip:  24.47 kB
+dist/assets/mercy-guide-Q-wXG82n.js                      74.88 kB │ gzip:  25.01 kB
+dist/assets/RoleplayPage-Bp-roGCZ.js                     82.18 kB │ gzip:  29.29 kB
+dist/assets/mercy-grammar-tab-DI8j72y3.js                83.32 kB │ gzip:  26.22 kB
+dist/assets/WritingFeedbackPage-CaQpQCWL.js              84.73 kB │ gzip:  26.97 kB
+dist/assets/culturalPackSchema-CfcU5nD1.js               85.64 kB │ gzip:  30.29 kB
+dist/assets/ChatHub-BHG3qrR9.js                          92.41 kB │ gzip:  26.12 kB
+dist/assets/speaking-topics-CrgjvUuK.js                  94.76 kB │ gzip:  30.96 kB
+dist/assets/SpeechDrillPage-DrI_E0bk.js                  99.92 kB │ gzip:  25.76 kB
+dist/assets/mercy-speak-tab-CYamEzxo.js                 108.74 kB │ gzip:  34.34 kB
+dist/assets/listening-items-CJGjpifD.js                 108.99 kB │ gzip:  35.00 kB
+dist/assets/index-DnkdP8N-.js                           109.82 kB │ gzip:  32.03 kB
+dist/assets/reading-passages-C_pSuFzd.js                113.99 kB │ gzip:  35.17 kB
+dist/assets/professional-scenarios-C4BkpGGT.js          120.88 kB │ gzip:  38.33 kB
+dist/assets/react-B-m70iF_.js                           145.73 kB │ gzip:  46.77 kB
+dist/assets/ui-YdBeF9xI.js                              154.85 kB │ gzip:  43.08 kB
+dist/assets/vendor-BlTkC1e9.js                          167.48 kB │ gzip:  53.91 kB
+dist/assets/supabase-o8zm2xNm.js                        191.56 kB │ gzip:  50.54 kB
+dist/assets/charts-CiAEQKdC.js                          362.06 kB │ gzip: 104.79 kB
+dist/assets/sentry-BpDC98XP.js                          472.94 kB │ gzip: 155.84 kB
+✓ built in 49.31s
+
+PWA v1.2.0
+mode      generateSW
+precache  55 entries (1213.91 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-9ef91e99.js

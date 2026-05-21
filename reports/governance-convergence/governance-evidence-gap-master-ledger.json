@@ -1,0 +1,259 @@
+{
+  "generated_at": "2026-05-20T17:13:29.542Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "evidence_gap_lineage_complete": false,
+  "open_gap_count": 26,
+  "validation_dependencies_documented": true,
+  "denial_lineage_incomplete_count": 9,
+  "gaps": [
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "gap": "capacity_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "gap": "cohort_ceiling",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "gap": "reliability_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "gap": "failover_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "gap": "human_review_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "gap": "approval_readiness",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "gap": "provider_validation_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "gap": "live_provider_block",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "gap": "contradiction_audit",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "gap": "governance_signoff_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A47",
+      "domain": "observability/audit continuity evidence",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A47",
+      "domain": "observability/audit continuity evidence",
+      "gap": "audit_continuity",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "gap": "release_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "gap": "canary_block",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A49",
+      "domain": "replay certification denial evidence",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A49",
+      "domain": "replay certification denial evidence",
+      "gap": "replay_certification_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "gap": "denial_lineage",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "gap": "observability_dependency",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "gap": "replay_dependency",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "gap": "supervised_execution_denial",
+      "evidence_required": true,
+      "lineage_required": true,
+      "closure_impact": "BLOCKS_VALIDATION_SEQUENCING",
+      "status": "OPEN"
+    }
+  ]
+}

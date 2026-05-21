@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-05-20T17:13:29.542Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "future_validation_dependencies_documented": true,
+  "future_validation_dependencies_satisfied": false,
+  "validation_sequence_state": "EVIDENCE_GATED_BLOCKED_SAFE",
+  "sequence": [
+    {
+      "order": 1,
+      "gate": "A39 capacity and cohort ceiling denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 2,
+      "gate": "A42 reliability/failover denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 3,
+      "gate": "A44 human-review approval denial lineage",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 4,
+      "gate": "A45 provider validation denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 5,
+      "gate": "A46 governance contradiction audit",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 6,
+      "gate": "A47 observability and audit continuity evidence",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 7,
+      "gate": "A48 release denial and canary-block lineage",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 8,
+      "gate": "A49 replay certification denial evidence",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    },
+    {
+      "order": 9,
+      "gate": "A50 supervised execution governance evidence",
+      "required": true,
+      "evidence_present": false,
+      "sequencing_state": "BLOCKED_PENDING_EVIDENCE"
+    }
+  ]
+}

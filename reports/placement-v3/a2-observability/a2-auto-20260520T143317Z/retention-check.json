@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-05-20T14:33:21Z",
+  "simulated": true,
+  "retention_check": "passed",
+  "policy": "docs/placement-v3/observability/retention-policy.md",
+  "migration": "supabase/migrations/20260520125321_placement_v3_forensics.sql",
+  "live_supabase_rows_scanned": false,
+  "supabase_persistence_validated": false
+}

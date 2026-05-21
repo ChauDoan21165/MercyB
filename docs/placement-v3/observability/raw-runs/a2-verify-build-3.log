@@ -1,0 +1,44 @@
+
+> mercyblade@0.0.0 prebuild
+> npm run rooms:check
+
+
+> mercyblade@0.0.0 rooms:check
+> npm run generate:room-registry && npm run validate-rooms:core
+
+
+> mercyblade@0.0.0 generate:room-registry
+> node scripts/generate-room-registry.mjs
+
+Total JSON files: 485
+Warnings (non-fatal): 0
+
+Registry generated successfully
+
+> mercyblade@0.0.0 validate-rooms:core
+> MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.mjs
+
+Total ROOM JSON files (public/data/*.json): 485
+Mode: CORE_ONLY
+Warnings (non-fatal): 30
+Errors: 0
+
+Warning breakdown (non-fatal — backlog, not gate):
+- PLACEHOLDER_EN_TITLE: 30
+✅ validate-rooms: PASS
+
+> mercyblade@0.0.0 build
+> node scripts/generate-version.js && npm run generate:audio-manifest && npm run generate:sitemap && vite build
+
+[version] Generated version.json: v2026-05-20-07 (de6d31c28)
+
+> mercyblade@0.0.0 generate:audio-manifest
+> node scripts/generate-audio-manifest.mjs
+
+Scanning public/audio for .mp3 files...
+✅ Audio manifest generated
+   Total .mp3 files: 0
+
+> mercyblade@0.0.0 generate:sitemap
+> tsx scripts/generate-sitemap.ts
+

@@ -23,11 +23,22 @@ import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { SpeechDrill } from '@/components/speech/SpeechDrill';
 import { recordSpeechAttempt } from '@/services/speechAttempts';
 import {
+  ROOM_PROGRESS_APP_ID,
+  trackRoomEntry,
+  updateRoomProgress,
+} from '@/services/roomProgress';
+import { supabase } from '@/lib/supabaseClient';
+import {
   SENTENCE_CEFR_LEVELS,
   parseCefrParam,
   sentencesForCefr,
   type SentenceCefr,
 } from '@/data/speechSentencesSchema';
+import {
+  resolveLessonPracticeSession,
+  resolveStandalonePracticeText,
+  type LessonPracticeSession,
+} from '@/lib/speech/lessonPractice';
 
 const PAGE_MAX = 680;
 
@@ -128,6 +139,28 @@ const cefrBadgeStyle: React.CSSProperties = {
   letterSpacing: 0.6,
 };
 
+const lessonCard: React.CSSProperties = {
+  border: '1px solid rgba(16,185,129,0.22)',
+  borderRadius: 16,
+  padding: '14px 16px',
+  background: '#ecfdf5',
+  color: '#064e3b',
+};
+
+const lessonTitleStyle: React.CSSProperties = {
+  margin: 0,
+  fontSize: 15,
+  fontWeight: 900,
+  lineHeight: 1.35,
+};
+
+const lessonSubStyle: React.CSSProperties = {
+  marginTop: 4,
+  fontSize: 13,
+  color: '#047857',
+  lineHeight: 1.45,
+};
+
 const finishCard: React.CSSProperties = {
   border: '1px solid rgba(0,0,0,0.10)',
   borderRadius: 22,
@@ -170,13 +203,42 @@ function contextLabel(context: string): string {
     .join(' ');
 }
 
+async function getCurrentUserId(): Promise<string | null> {
+  try {
+    const { data } = await supabase.auth.getUser();
+    return data.user?.id ?? null;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchStoredLessonProgress(userId: string, roomId: string): Promise<number | null> {
+  try {
+    const { data, error } = await supabase
+      .from("user_room_progress")
+      .select("progress_pct")
+      .eq("user_id", userId)
+      .eq("app_id", ROOM_PROGRESS_APP_ID)
+      .eq("room_id", roomId)
+      .maybeSingle();
+    if (error) return null;
+    const pct = (data as { progress_pct?: number | null } | null)?.progress_pct;
+    return typeof pct === "number" && Number.isFinite(pct) ? pct : null;
+  } catch {
+    return null;
+  }
+}
+
 export default function SpeechDrillPage() {
   const { enabled, loading } = useFeatureFlag('pronunciationScoringEnabled', false);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const searchKey = searchParams.toString();
 
   const urlLevel: LevelSelection = parseCefrParam(searchParams.get('cefr'));
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lessonProgressPct, setLessonProgressPct] = useState<number | null>(null);
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   /**
    * When the user taps a "Try this word" button inside the phoneme
@@ -186,16 +248,63 @@ export default function SpeechDrillPage() {
    */
   const [practiceOverride, setPracticeOverride] = useState<string | null>(null);
 
-  // Reset position + clear override whenever the level changes.
+  const lessonSession = useMemo(
+    () => resolveLessonPracticeSession(new URLSearchParams(searchKey)),
+    [searchKey],
+  );
+  const standalonePracticeSentences = useMemo(
+    () => resolveStandalonePracticeText(new URLSearchParams(searchKey)),
+    [searchKey],
+  );
+  const isLessonPractice = Boolean(lessonSession);
+  const isCustomPractice = isLessonPractice || Boolean(standalonePracticeSentences);
+
+  // Reset position + clear override whenever the level or custom lesson changes.
   useEffect(() => {
     setCurrentIndex(0);
     setPracticeOverride(null);
-  }, [urlLevel]);
+    setLessonProgressPct(null);
+  }, [urlLevel, lessonSession?.roomId, standalonePracticeSentences?.[0]?.target_en]);
 
-  const activeSentences = useMemo(
-    () => sentencesForCefr(urlLevel),
-    [urlLevel],
-  );
+  useEffect(() => {
+    let alive = true;
+    if (!lessonSession) {
+      setCurrentUserId(null);
+      return;
+    }
+
+    void (async () => {
+      const userId = await getCurrentUserId();
+      if (!alive) return;
+      setCurrentUserId(userId);
+      if (!userId) return;
+
+      void trackRoomEntry(userId, lessonSession.roomId, {
+        keywordEn: lessonSession.title,
+        entryId: lessonSession.lessonId,
+      });
+
+      const storedPct = await fetchStoredLessonProgress(userId, lessonSession.roomId);
+      if (!alive || storedPct === null) return;
+
+      setLessonProgressPct(Math.max(0, Math.min(100, Math.round(storedPct))));
+      const restoredIndex = Math.min(
+        lessonSession.sentences.length,
+        Math.floor((storedPct / 100) * lessonSession.sentences.length),
+      );
+      setCurrentIndex(restoredIndex);
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [lessonSession]);
+
+  const activeSentences = useMemo(() => {
+    if (lessonSession) return lessonSession.sentences;
+    if (standalonePracticeSentences) return standalonePracticeSentences;
+    return sentencesForCefr(urlLevel);
+  }, [lessonSession, standalonePracticeSentences, urlLevel]);
 
   const total = activeSentences.length;
   const current = activeSentences[currentIndex];
@@ -203,8 +312,21 @@ export default function SpeechDrillPage() {
 
   const progressPct = useMemo(() => {
     if (total === 0) return 0;
-    return Math.min(100, Math.round((currentIndex / total) * 100));
-  }, [currentIndex, total]);
+    const computed = Math.min(100, Math.round((currentIndex / total) * 100));
+    if (lessonProgressPct === null) return computed;
+    return Math.max(computed, lessonProgressPct);
+  }, [currentIndex, lessonProgressPct, total]);
+
+  const recordLessonProgress = async (session: LessonPracticeSession, completedCount: number) => {
+    const nextPct = total === 0 ? 0 : Math.min(100, Math.round((completedCount / total) * 100));
+    setLessonProgressPct((previous) => Math.max(previous ?? 0, nextPct));
+    if (!currentUserId) return;
+    await updateRoomProgress(currentUserId, session.roomId, {
+      progressPct: nextPct,
+      keywordEn: session.title,
+      entryId: session.lessonId,
+    });
+  };
 
   const handleLevelChange = (next: LevelSelection) => {
     if (next === 'ALL') {
@@ -250,7 +372,7 @@ export default function SpeechDrillPage() {
     return (
       <div style={wrap}>
         <div style={column}>
-          {levelSelector}
+          {!isCustomPractice ? levelSelector : null}
           <section style={finishCard}>
             <div style={{ fontSize: 48 }} aria-hidden>✨</div>
             <h1
@@ -294,7 +416,21 @@ export default function SpeechDrillPage() {
   return (
     <div style={wrap}>
       <div style={column}>
-        {levelSelector}
+        {!isCustomPractice ? levelSelector : null}
+
+        {lessonSession ? (
+          <section style={lessonCard} aria-label="Lesson practice context" data-testid="lesson-practice-context">
+            <p style={lessonTitleStyle}>
+              {lessonSession.title}
+            </p>
+            <div style={lessonSubStyle}>
+              {lessonSession.titleVi} · Mercy loaded this lesson for guided speaking practice.
+              <span style={{ display: 'block', marginTop: 2 }}>
+                Mercy đã tải bài này để luyện nghe, đọc và chấm phát âm.
+              </span>
+            </div>
+          </section>
+        ) : null}
 
         <section aria-label="Progress">
           <div style={progressBarTrack}>
@@ -313,8 +449,10 @@ export default function SpeechDrillPage() {
             />
           </div>
           <div style={progressLabel}>
-            Sentence {ordinal} of {total}
-            <span style={progressLabelVi}>Câu {ordinal} / {total}</span>
+            {lessonSession ? `${progressPct}% complete` : `Sentence ${ordinal} of ${total}`}
+            <span style={progressLabelVi}>
+              {lessonSession ? `Hoàn thành ${progressPct}%` : `Câu ${ordinal} / ${total}`}
+            </span>
           </div>
         </section>
 
@@ -381,18 +519,27 @@ export default function SpeechDrillPage() {
             // Fire-and-forget. The service is feature-flag gated and
             // never throws — it's safe to ignore the returned promise
             // from the React event handler.
-            void recordSpeechAttempt({
-              target: event.target,
-              recognized: event.recognized,
-              score: event.score,
-              elapsedMs: event.elapsedMs,
-              context: {
-                extra: {
-                  source: 'speech_drill_page',
-                  mode: practiceOverride ? 'phoneme_practice' : 'sentence',
+            void (async () => {
+              await recordSpeechAttempt({
+                target: event.target,
+                recognized: event.recognized,
+                score: event.score,
+                elapsedMs: event.elapsedMs,
+                context: {
+                  room_id: lessonSession?.roomId ?? null,
+                  line_id: !practiceOverride ? current.id : null,
+                  extra: {
+                    source: lessonSession ? 'lesson_practice_speak_route' : 'speech_drill_page',
+                    lesson_source: lessonSession?.source,
+                    lesson_id: lessonSession?.lessonId,
+                    mode: practiceOverride ? 'phoneme_practice' : 'sentence',
+                  },
                 },
-              },
-            });
+              });
+              if (lessonSession && !practiceOverride) {
+                await recordLessonProgress(lessonSession, currentIndex + 1);
+              }
+            })();
           }}
           onViewHistory={() => navigate('/speech/history')}
         />
