@@ -5,21 +5,37 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import SpeechDrillPage from "../SpeechDrillPage";
 
-const recordSpeechAttempt = vi.fn(async () => ({ ok: true, skipped: false, id: "attempt-1" }));
-const trackRoomEntry = vi.fn(async () => ({ ok: true, action: "inserted" }));
-const updateRoomProgress = vi.fn(async () => ({ ok: true, action: "updated" }));
+const recordSpeechAttempt = vi.fn(async (_payload?: unknown) => ({
+  ok: true,
+  skipped: false,
+  id: "attempt-1",
+}));
+const trackRoomEntry = vi.fn(
+  async (_userId?: unknown, _roomId?: unknown, _appId?: unknown) => ({
+    ok: true,
+    action: "inserted",
+  }),
+);
+const updateRoomProgress = vi.fn(
+  async (_userId?: unknown, _roomId?: unknown, _payload?: unknown) => ({
+    ok: true,
+    action: "updated",
+  }),
+);
 
 vi.mock("@/hooks/useFeatureFlag", () => ({
   useFeatureFlag: () => ({ enabled: true, loading: false }),
 }));
 
 vi.mock("@/services/speechAttempts", () => ({
-  recordSpeechAttempt: (...args: unknown[]) => recordSpeechAttempt(...args),
+  recordSpeechAttempt: (payload: unknown) => recordSpeechAttempt(payload),
 }));
 
 vi.mock("@/services/roomProgress", () => ({
-  trackRoomEntry: (...args: unknown[]) => trackRoomEntry(...args),
-  updateRoomProgress: (...args: unknown[]) => updateRoomProgress(...args),
+  trackRoomEntry: (userId: unknown, roomId: unknown, appId?: unknown) =>
+    trackRoomEntry(userId, roomId, appId),
+  updateRoomProgress: (userId: unknown, roomId: unknown, payload: unknown) =>
+    updateRoomProgress(userId, roomId, payload),
 }));
 
 vi.mock("@/lib/supabaseClient", () => ({
