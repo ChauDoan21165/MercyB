@@ -201,10 +201,31 @@ do not wait for all agents to report before redistributing work. A free agent
 sitting idle while work exists is wasted capacity. Planner-Claude's responsibility:
 the moment a report arrives, the next brief ships in the same message.
 
+## 18. AGENT SPECIALTY TAGS
+
+Use these tags when assigning future work to renamed agents:
+
+- **A1 — Audit Sentinel**
+  Specialty: repo safety audits, package diff hygiene, non-executing inspection, fail-closed reports.
+
+- **A2 — Ops Restorer**
+  Specialty: missing operational scripts, package wiring, base-command restoration, prerequisite unblock work.
+
+- **A3 — Clean Extractor**
+  Specialty: clean extraction from dirty/stale branches, scoped PRs, ops command implementation.
+
+- **A4 — Release Gatekeeper**
+  Specialty: release gates, verifier guard updates, package-shape conflicts, tricky release/verifier PR repair.
+
+- **A5 — Merge Watcher**
+  Specialty: CI watch, merge readiness, GitHub PR state, post-merge validation, exact blocker reporting.
+
+- **A6 — Mobile Diagnostics**
+  Specialty: mobile/audio diagnostics, TypeScript CI fixes, privacy-safe telemetry/export checks, product-adjacent verifier work.
+
 
 ## Last updated
 
-2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
+2026-05-21 — Added principle 18 (agent specialty tags). 2026-05-19 — Added principle 17 (free agent = immediate next dispatch); added P4 sub-clause on coherence-preserving micro-edits inside authorized scope (per A3e audit PR #823). 2026-05-17 — Added principles 14 (read repo first), 15 (verify memory file claims), 16 (push without re-confirmation). 2026-05-04 — Added principle 13 (worktree isolation). Earlier additions: 12 (never repeat commands), 11 (parallelize agents), 10 (never manage Chau's workflow). Initial version written after a session where principle 1 was learned through ~4 hours of accumulated rework.
 
 ---
-
