@@ -36,17 +36,7 @@ describe("Mercy Integration Tests", () => {
     });
     getState = () => state;
 
-    // Mock localStorage (per-test isolated store)
-    const storage: Record<string, string> = {};
-    vi.spyOn(Storage.prototype, "getItem").mockImplementation(
-      (key) => storage[key] || null,
-    );
-    vi.spyOn(Storage.prototype, "setItem").mockImplementation((key, value) => {
-      storage[key] = String(value);
-    });
-    vi.spyOn(Storage.prototype, "removeItem").mockImplementation((key) => {
-      delete storage[key];
-    });
+    localStorage.clear();
 
     // Ensure memory starts clean per test (prevents cross-test bleed)
     resetMemory();

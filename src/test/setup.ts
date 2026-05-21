@@ -1,9 +1,24 @@
 // PATH: src/test/setup.ts
 
 import "@testing-library/jest-dom/vitest";
+import { afterEach, beforeEach } from "vitest";
 import path from "node:path";
 import fs from "node:fs";
 import Module from "node:module";
+import {
+  installCanonicalStorageMock,
+  resetCanonicalStorageMock,
+} from "./storageMock";
+
+installCanonicalStorageMock();
+
+beforeEach(() => {
+  resetCanonicalStorageMock();
+});
+
+afterEach(() => {
+  resetCanonicalStorageMock();
+});
 
 /**
  * Vitest runs tests through Vite's resolver for ESM `import`,

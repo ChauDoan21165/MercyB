@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { resetCanonicalStorageMock } from "@/test/storageMock";
 
 // Mock supabase first so the migration module picks it up on import.
 const mockRpc = vi.fn();
@@ -58,23 +59,8 @@ import {
 } from "../streakMigration";
 import { __resetStreakCacheForTests, getCachedStreak } from "../streakCache";
 
-const store: Record<string, string> = {};
-const localStorageMock = {
-  getItem: (k: string) => (k in store ? store[k] : null),
-  setItem: (k: string, v: string) => {
-    store[k] = v;
-  },
-  removeItem: (k: string) => {
-    delete store[k];
-  },
-  clear: () => {
-    for (const k of Object.keys(store)) delete store[k];
-  },
-};
-
 beforeEach(() => {
-  localStorageMock.clear();
-  vi.stubGlobal("localStorage", localStorageMock);
+  resetCanonicalStorageMock();
   mockRpc.mockReset();
   mockGetUser.mockReset();
   mockInsert.mockReset();

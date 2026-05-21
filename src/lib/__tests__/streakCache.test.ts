@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
+import { resetCanonicalStorageMock } from "@/test/storageMock";
 
 vi.mock("@/lib/featureFlags", () => ({
   FEATURE_FLAGS: {
@@ -15,24 +16,8 @@ import {
 
 import { getStreakDays } from "@/services/pointsService";
 
-// Stub localStorage so pointsService's fallback path can read a value.
-const store: Record<string, string> = {};
-const localStorageMock = {
-  getItem: (k: string) => (k in store ? store[k] : null),
-  setItem: (k: string, v: string) => {
-    store[k] = v;
-  },
-  removeItem: (k: string) => {
-    delete store[k];
-  },
-  clear: () => {
-    for (const k of Object.keys(store)) delete store[k];
-  },
-};
-
 beforeEach(() => {
-  localStorageMock.clear();
-  vi.stubGlobal("localStorage", localStorageMock);
+  resetCanonicalStorageMock();
   __resetStreakCacheForTests();
 });
 

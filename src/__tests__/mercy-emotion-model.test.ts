@@ -16,31 +16,11 @@ import {
   validateCrisisScript,
 } from "../lib/teacher-mercy/safetyRails";
 
-// Mock localStorage
-const localStorageMock = (() => {
-  let store: Record<string, string> = {};
-  return {
-    getItem: (key: string) => store[key] || null,
-    setItem: (key: string, value: string) => {
-      store[key] = value;
-    },
-    removeItem: (key: string) => {
-      delete store[key];
-    },
-    clear: () => {
-      store = {};
-    },
-  };
-})();
-
-// Use globalThis for TS compatibility across environments
-Object.defineProperty(globalThis, "localStorage", { value: localStorageMock });
-
 describe("EmotionEngine", () => {
   let engine: EmotionEngine;
 
   beforeEach(() => {
-    localStorageMock.clear();
+    localStorage.clear();
     engine = new EmotionEngine();
   });
 
@@ -123,7 +103,7 @@ describe("EmotionEngine", () => {
 
 describe("inferEmotion", () => {
   beforeEach(() => {
-    localStorageMock.clear();
+    localStorage.clear();
   });
 
   it("should return a valid emotion state", () => {

@@ -95,10 +95,43 @@ function deriveProjectId(urlRaw: string): string {
 const projectId = deriveProjectId(supabaseUrl);
 const storageKey = `mb-supabase-auth-${projectId}`;
 
-const storage =
-  typeof window !== "undefined" && typeof window.localStorage !== "undefined"
-    ? window.localStorage
-    : undefined;
+type AuthStorage = {
+  getItem: (key: string) => string | null;
+  setItem: (key: string, value: string) => void;
+  removeItem: (key: string) => void;
+};
+
+function getBrowserLocalStorage(): Storage | undefined {
+  if (typeof window === "undefined" || typeof window.localStorage === "undefined") {
+    return undefined;
+  }
+
+  const candidate = window.localStorage;
+  if (
+    typeof candidate.getItem !== "function" ||
+    typeof candidate.setItem !== "function" ||
+    typeof candidate.removeItem !== "function"
+  ) {
+    return undefined;
+  }
+
+  return candidate;
+}
+
+const storage: AuthStorage | undefined =
+  typeof window === "undefined"
+    ? undefined
+    : {
+        getItem(key) {
+          return getBrowserLocalStorage()?.getItem(key) ?? null;
+        },
+        setItem(key, value) {
+          getBrowserLocalStorage()?.setItem(key, value);
+        },
+        removeItem(key) {
+          getBrowserLocalStorage()?.removeItem(key);
+        },
+      };
 
 if (!rawSupabaseUrl || !rawSupabaseAnonKey) {
   // Warn loudly so a misconfigured prod deploy is obvious in logs,
@@ -228,7 +261,7 @@ export const supabase: SupabaseClient = createClient(
   {
     auth: {
       persistSession: true,
-      autoRefreshToken: true,
+      autoRefreshToken: import.meta.env.MODE !== "test",
       detectSessionInUrl: true,
       storageKey,
       storage,

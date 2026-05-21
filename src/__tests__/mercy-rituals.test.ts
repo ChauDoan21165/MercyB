@@ -16,22 +16,9 @@ import {
   executeTierCeremony
 } from '../lib/teacher-mercy/tierCeremonies';
 
-// Mock localStorage
-const localStorageMock = (() => {
-  let store: Record<string, string> = {};
-  return {
-    getItem: (key: string) => store[key] || null,
-    setItem: (key: string, value: string) => { store[key] = value; },
-    removeItem: (key: string) => { delete store[key]; },
-    clear: () => { store = {}; }
-  };
-})();
-
-Object.defineProperty(global, 'localStorage', { value: localStorageMock });
-
 describe('Rituals System', () => {
   beforeEach(() => {
-    localStorageMock.clear();
+    localStorage.clear();
   });
 
   describe('getRitualForEvent', () => {
@@ -250,7 +237,7 @@ describe('Rituals System', () => {
 
 describe('Premium Ceremonies', () => {
   beforeEach(() => {
-    localStorageMock.clear();
+    localStorage.clear();
   });
 
   describe('getTierCeremony', () => {
