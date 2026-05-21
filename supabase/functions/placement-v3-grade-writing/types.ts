@@ -15,11 +15,13 @@ export type GradeWritingRequest = {
 };
 
 export type ModelTrace = {
-  provider: AiTraceProvider;
+  provider: AiTraceProvider | "none";
   model: string;
   latencyMs: number;
   tokensInput: number;
   tokensOutput: number;
+  fallback?: boolean;
+  errorCode?: string;
 };
 
 export type GradeWritingSuccess = {
@@ -32,6 +34,7 @@ export type GradeWritingError = {
   ok: false;
   error: string;
   errorCode: string;
+  modelTrace?: ModelTrace;
 };
 
 export type GradeWritingResponse = GradeWritingSuccess | GradeWritingError;
@@ -41,4 +44,3 @@ export type FixturePromptMeta = {
   taskText: string;
   expectedLevel: CEFRLevel;
 };
-

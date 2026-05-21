@@ -1,6 +1,7 @@
 import {
   type CEFRAssessment,
   type GraderInput,
+  type GraderProviderTrace,
   type GraderResult,
 } from "./types.ts";
 
@@ -8,11 +9,12 @@ export const GRADER_TIMEOUT_MS = 12_000;
 
 export interface WritingGraderClient {
   gradeWriting(input: GraderInput): Promise<GraderResult>;
+  gradeSpeaking?: (input: GraderInput) => Promise<GraderResult>;
   gradeConversation?: (input: GraderInput) => Promise<GraderResult>;
 }
 
 /**
- * Contract for the future speaking grader.
+ * Contract for the Placement V3 speaking grader.
  *
  * Input:
  * - modality: "speaking"
@@ -28,7 +30,7 @@ export interface WritingGraderClient {
  *   fluency rate, and final-consonant/stress findings when the grader supports it
  *
  * Replacement rule: keep this return shape stable so scoring.ts and
- * persistence.ts do not need to change when the real speaking grader ships.
+ * persistence.ts do not need to change as pronunciation evidence improves.
  */
 export interface SpeakingGraderClient {
   gradeSpeaking(input: GraderInput): Promise<GraderResult>;
@@ -46,6 +48,7 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
   return {
     async gradeWriting(input) {
       const controller = new AbortController();
+      const startedAt = Date.now();
       const timeout = setTimeout(
         () => controller.abort(),
         config.timeoutMs ?? GRADER_TIMEOUT_MS,
@@ -71,23 +74,45 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
           },
         );
         if (res.status === 429) {
-          return fallbackAssessment(input, "rate_limited", "Writing grader rate-limited");
+          return fallbackAssessment(input, "rate_limited", "Writing grader rate-limited", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
         }
         if (!res.ok) {
-          return fallbackAssessment(input, "http_error", `Writing grader HTTP ${res.status}`);
+          return fallbackAssessment(input, "http_error", `Writing grader HTTP ${res.status}`, {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
         }
-        const json = await res.json();
+        const json = await readJson(res);
+        if (!json) {
+          return fallbackAssessment(input, "malformed_json", "Writing grader returned invalid JSON", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
+        }
         const assessment = normalizeAssessment(json?.assessment ?? json);
         if (!assessment) {
-          return fallbackAssessment(input, "malformed_json", "Writing grader returned invalid JSON");
+          return fallbackAssessment(input, "malformed_json", "Writing grader returned invalid JSON", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
         }
-        const modelTrace = json?.modelTrace && typeof json.modelTrace === "object"
-          ? json.modelTrace as { provider?: unknown; model?: unknown }
-          : null;
-        const version = modelTrace
-          ? `${String(modelTrace.provider ?? "ai")}:${String(modelTrace.model ?? "unknown")}`
+        const providerTrace = normalizeProviderTrace(
+          input,
+          json?.modelTrace,
+          { fallback: false, latencyMs: elapsedMs(startedAt) },
+        );
+        const version = providerTrace.provider !== "unknown" || providerTrace.model !== "unknown"
+          ? `${providerTrace.provider}:${providerTrace.model}`
           : String(json?.version ?? "placement-v3-grade-writing");
-        return { ok: true, assessment, version };
+        return {
+          ok: true,
+          assessment: withProviderTraceMetadata(assessment, providerTrace),
+          version,
+          providerTrace,
+        };
       } catch (err) {
         const isTimeout =
           typeof err === "object" &&
@@ -98,6 +123,102 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
           input,
           isTimeout ? "timeout" : "network_error",
           isTimeout ? "Writing grader timed out" : "Writing grader call failed",
+          { latencyMs: elapsedMs(startedAt) },
+        );
+      } finally {
+        clearTimeout(timeout);
+      }
+    },
+    async gradeSpeaking(input) {
+      if (!input.authToken) {
+        return fallbackAssessment(
+          input,
+          "missing_learner_jwt",
+          "Speaking grader requires a learner JWT for pronunciation scoring",
+        );
+      }
+      const controller = new AbortController();
+      const startedAt = Date.now();
+      const timeout = setTimeout(
+        () => controller.abort(),
+        config.timeoutMs ?? GRADER_TIMEOUT_MS,
+      );
+      try {
+        const res = await fetchImpl(
+          `${config.functionBaseUrl.replace(/\/$/, "")}/placement-v3-grade-speaking`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${input.authToken}`,
+              apikey: config.serviceRoleKey,
+            },
+            body: JSON.stringify({
+              promptId: input.prompt.id,
+              taskText: input.prompt.promptText,
+              userResponse: input.responseText,
+              audioStoragePath: input.audioStoragePath,
+              responseDurationMs: input.responseDurationMs,
+              targetLanguage: "en",
+              userId: input.userId,
+              accent: "us",
+            }),
+            signal: controller.signal,
+          },
+        );
+        if (res.status === 429) {
+          return fallbackAssessment(input, "rate_limited", "Speaking grader rate-limited", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
+        }
+        if (!res.ok) {
+          return fallbackAssessment(input, "http_error", `Speaking grader HTTP ${res.status}`, {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
+        }
+        const json = await readJson(res);
+        if (!json) {
+          return fallbackAssessment(input, "malformed_json", "Speaking grader returned invalid JSON", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
+        }
+        const assessment = normalizeAssessment(json?.assessment ?? json);
+        if (!assessment) {
+          return fallbackAssessment(input, "malformed_json", "Speaking grader returned invalid JSON", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
+        }
+        const providerTrace = normalizeProviderTrace(
+          input,
+          json?.modelTrace,
+          { fallback: false, latencyMs: elapsedMs(startedAt) },
+        );
+        return {
+          ok: true,
+          assessment: withProviderTraceMetadata(assessment, {
+            ...providerTrace,
+            pronunciation: json?.pronunciation,
+          } as GraderProviderTrace & { pronunciation?: unknown }),
+          providerTrace,
+          version: providerTrace.provider !== "unknown" || providerTrace.model !== "unknown"
+            ? `${providerTrace.provider}:${providerTrace.model}:azure-phoneme`
+            : "placement-v3-grade-speaking:azure-phoneme",
+        };
+      } catch (err) {
+        const isTimeout =
+          typeof err === "object" &&
+          err !== null &&
+          "name" in err &&
+          String((err as { name?: unknown }).name) === "AbortError";
+        return fallbackAssessment(
+          input,
+          isTimeout ? "timeout" : "network_error",
+          isTimeout ? "Speaking grader timed out" : "Speaking grader call failed",
+          { latencyMs: elapsedMs(startedAt) },
         );
       } finally {
         clearTimeout(timeout);
@@ -105,6 +226,7 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
     },
     async gradeConversation(input) {
       const controller = new AbortController();
+      const startedAt = Date.now();
       const timeout = setTimeout(
         () => controller.abort(),
         config.timeoutMs ?? GRADER_TIMEOUT_MS,
@@ -140,14 +262,36 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
           },
         );
         if (!res.ok) {
-          return fallbackAssessment(input, "http_error", `Conversation grader HTTP ${res.status}`);
+          return fallbackAssessment(input, "http_error", `Conversation grader HTTP ${res.status}`, {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
         }
-        const json = await res.json();
+        const json = await readJson(res);
+        if (!json) {
+          return fallbackAssessment(input, "malformed_json", "Conversation grader returned invalid JSON", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
+        }
         const assessment = normalizeConversationAssessment(json?.assessment ?? json);
         if (!assessment) {
-          return fallbackAssessment(input, "malformed_json", "Conversation grader returned invalid JSON");
+          return fallbackAssessment(input, "malformed_json", "Conversation grader returned invalid JSON", {
+            httpStatus: res.status,
+            latencyMs: elapsedMs(startedAt),
+          });
         }
-        return { ok: true, assessment, version: "placement-v3-mercy-conversation" };
+        const providerTrace = normalizeProviderTrace(
+          input,
+          json?.modelTrace,
+          { fallback: false, latencyMs: elapsedMs(startedAt) },
+        );
+        return {
+          ok: true,
+          assessment: withProviderTraceMetadata(assessment, providerTrace),
+          version: "placement-v3-mercy-conversation",
+          providerTrace,
+        };
       } catch (err) {
         const isTimeout =
           typeof err === "object" &&
@@ -158,6 +302,7 @@ export function createHttpWritingGrader(config: GraderFetchConfig): WritingGrade
           input,
           isTimeout ? "timeout" : "network_error",
           isTimeout ? "Conversation grader timed out" : "Conversation grader call failed",
+          { latencyMs: elapsedMs(startedAt) },
         );
       } finally {
         clearTimeout(timeout);
@@ -172,6 +317,9 @@ export async function gradeWithClient(
 ): Promise<GraderResult> {
   if (input.modality === "writing" && writingClient) {
     return writingClient.gradeWriting(input);
+  }
+  if (input.modality === "speaking" && writingClient?.gradeSpeaking) {
+    return writingClient.gradeSpeaking(input);
   }
   if (input.modality === "conversation" && writingClient?.gradeConversation) {
     return writingClient.gradeConversation(input);
@@ -191,19 +339,118 @@ export function fallbackAssessment(
   input: GraderInput,
   errorCode: string,
   errorMessage: string,
+  traceOverrides: Partial<GraderProviderTrace> = {},
 ): GraderResult {
+  const gradingPath = input.modality === "writing"
+    ? "placement-v3-grade-writing"
+    : input.modality === "speaking"
+      ? "placement-v3-grade-speaking"
+      : input.modality === "conversation"
+        ? "placement-v3-mercy-conversation"
+        : `stub-${input.modality}-grader`;
+  const providerTrace: GraderProviderTrace = {
+    gradingPath,
+    provider: cleanTraceString(traceOverrides.provider, "none"),
+    model: cleanTraceString(traceOverrides.model, "unknown"),
+    latencyMs: normalizeTraceNumber(traceOverrides.latencyMs),
+    tokensInput: normalizeTraceNumber(traceOverrides.tokensInput),
+    tokensOutput: normalizeTraceNumber(traceOverrides.tokensOutput),
+    fallback: true,
+    errorCode,
+    httpStatus: typeof traceOverrides.httpStatus === "number"
+      ? traceOverrides.httpStatus
+      : undefined,
+  };
   return {
     ok: false,
     assessment: {
       ...heuristicAssessment(input),
       confidence: 0.35,
       gaps: ["Needs a retry or human review because grading confidence was low."],
-      metadata: { errorCode, errorMessage, fallback: true },
+      metadata: {
+        ...heuristicAssessment(input).metadata,
+        ...providerTrace,
+        errorMessage: sanitizeErrorMessage(errorMessage),
+      },
     },
     version: `fallback-${input.modality}-grader-v1`,
+    providerTrace,
     errorCode,
-    errorMessage,
+    errorMessage: sanitizeErrorMessage(errorMessage),
   };
+}
+
+function withProviderTraceMetadata(
+  assessment: CEFRAssessment,
+  providerTrace: GraderProviderTrace & { pronunciation?: unknown },
+): CEFRAssessment {
+  return {
+    ...assessment,
+    metadata: {
+      ...(assessment.metadata ?? {}),
+      ...providerTrace,
+    },
+  };
+}
+
+function normalizeProviderTrace(
+  input: GraderInput,
+  rawTrace: unknown,
+  options: { fallback: boolean; latencyMs?: number | null },
+): GraderProviderTrace {
+  const trace = rawTrace && typeof rawTrace === "object" && !Array.isArray(rawTrace)
+    ? rawTrace as Record<string, unknown>
+    : {};
+  const tokens = trace.tokens && typeof trace.tokens === "object" && !Array.isArray(trace.tokens)
+    ? trace.tokens as Record<string, unknown>
+    : {};
+  return {
+    gradingPath: gradingPathFor(input),
+    provider: cleanTraceString(trace.provider, "unknown"),
+    model: cleanTraceString(trace.model, "unknown"),
+    latencyMs: normalizeTraceNumber(trace.latencyMs) ?? normalizeTraceNumber(options.latencyMs),
+    tokensInput: normalizeTraceNumber(trace.tokensInput) ?? normalizeTraceNumber(tokens.input),
+    tokensOutput: normalizeTraceNumber(trace.tokensOutput) ?? normalizeTraceNumber(tokens.output),
+    fallback: options.fallback,
+  };
+}
+
+function gradingPathFor(input: GraderInput): string {
+  if (input.modality === "writing") return "placement-v3-grade-writing";
+  if (input.modality === "speaking") return "placement-v3-grade-speaking";
+  if (input.modality === "conversation") return "placement-v3-mercy-conversation";
+  return `stub-${input.modality}-grader`;
+}
+
+function elapsedMs(startedAt: number): number {
+  return Math.max(0, Date.now() - startedAt);
+}
+
+function normalizeTraceNumber(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0
+    ? Math.round(value)
+    : null;
+}
+
+function cleanTraceString(value: unknown, fallback: string): string {
+  const text = String(value ?? "").trim();
+  return text || fallback;
+}
+
+function sanitizeErrorMessage(message: string): string {
+  return message.replace(/Bearer\s+[A-Za-z0-9._~+/=-]+/gi, "Bearer [redacted]")
+    .replace(/apikey[=:]\s*[A-Za-z0-9._~+/=-]+/gi, "apikey=[redacted]");
+}
+
+async function readJson(res: Response): Promise<Record<string, unknown> | null> {
+  try {
+    const json = await res.json();
+    return json && typeof json === "object" && !Array.isArray(json)
+      ? json as Record<string, unknown>
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 function heuristicAssessment(input: GraderInput): CEFRAssessment {

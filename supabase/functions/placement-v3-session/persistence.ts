@@ -68,7 +68,7 @@ export function createPersistence(
     async updateResponse(response) {
       const { data, error } = await db
         .from("placement_v3_responses")
-        .update(response)
+        .update(sanitizePlacementResponseRow(response))
         .eq("session_id", response.session_id)
         .eq("task_index", response.task_index)
         .select("*")
@@ -255,6 +255,144 @@ function rowToResponse(row: unknown): PlacementV3Response {
   return row as PlacementV3Response;
 }
 
+export function sanitizePlacementResponseRow(response: PlacementV3Response): PlacementV3Response {
+  return {
+    ...response,
+    ai_assessment: response.ai_assessment
+      ? sanitizePlacementAssessment(response.ai_assessment)
+      : response.ai_assessment,
+  };
+}
+
+export function sanitizePlacementAssessment<T extends { metadata?: Record<string, unknown> | undefined }>(
+  assessment: T,
+): T {
+  const metadata = assessment.metadata
+    ? sanitizeJsonValue(assessment.metadata) as Record<string, unknown>
+    : assessment.metadata;
+  return {
+    ...assessment,
+    ...(metadata ? { metadata } : {}),
+  };
+}
+
+type SanitizeState = {
+  seen: WeakSet<object>;
+  nodesVisited: number;
+  truncated: boolean;
+};
+
+const MAX_SANITIZE_DEPTH = 8;
+const MAX_OBJECT_KEYS = 64;
+const MAX_ARRAY_ITEMS = 64;
+const MAX_STRING_LENGTH = 512;
+const MAX_VISITED_NODES = 768;
+const TRUNCATION_SUFFIX = "…[truncated]";
+
+function sanitizeJsonValue(
+  value: unknown,
+  key?: string,
+  state: SanitizeState = createSanitizeState(),
+  depth = 0,
+): unknown {
+  if (key && isSensitiveKey(key)) {
+    state.truncated = true;
+    return "[redacted]";
+  }
+  if (state.nodesVisited >= MAX_VISITED_NODES) {
+    state.truncated = true;
+    return TRUNCATION_SUFFIX;
+  }
+  state.nodesVisited += 1;
+  if (typeof value === "string") return sanitizeString(value);
+  if (typeof value === "number" || typeof value === "boolean" || value === null) return value;
+  if (typeof value === "bigint") return value.toString();
+  if (typeof value === "undefined") return null;
+  if (typeof value === "function" || typeof value === "symbol") {
+    state.truncated = true;
+    return TRUNCATION_SUFFIX;
+  }
+  if (!value || typeof value !== "object") return value;
+  if (state.seen.has(value)) {
+    state.truncated = true;
+    return "[circular]";
+  }
+  if (depth >= MAX_SANITIZE_DEPTH) {
+    state.truncated = true;
+    return TRUNCATION_SUFFIX;
+  }
+
+  state.seen.add(value);
+  try {
+    if (Array.isArray(value)) {
+      const out: unknown[] = [];
+      const limit = Math.min(value.length, MAX_ARRAY_ITEMS);
+      for (let i = 0; i < limit; i += 1) {
+        out.push(sanitizeJsonValue(value[i], undefined, state, depth + 1));
+      }
+      if (value.length > MAX_ARRAY_ITEMS) {
+        state.truncated = true;
+        out.push(TRUNCATION_SUFFIX);
+      }
+      return out;
+    }
+
+    const entries = Object.entries(value as Record<string, unknown>).sort(([left], [right]) =>
+      left.localeCompare(right),
+    );
+    const out: Record<string, unknown> = {};
+    const limit = Math.min(entries.length, MAX_OBJECT_KEYS);
+    for (let i = 0; i < limit; i += 1) {
+      const [childKey, childValue] = entries[i];
+      out[childKey] = sanitizeJsonValue(childValue, childKey, state, depth + 1);
+    }
+    if (entries.length > MAX_OBJECT_KEYS) {
+      state.truncated = true;
+      out.__truncated = true;
+    }
+    return out;
+  } finally {
+    state.seen.delete(value);
+  }
+}
+
+function sanitizeString(value: string): string {
+  if (isSensitiveString(value)) return "[redacted]";
+  if (value.length <= MAX_STRING_LENGTH) return value;
+  if (value.endsWith(TRUNCATION_SUFFIX)) return value;
+  return `${value.slice(0, MAX_STRING_LENGTH)}${TRUNCATION_SUFFIX}`;
+}
+
+function createSanitizeState(): SanitizeState {
+  return {
+    seen: new WeakSet<object>(),
+    nodesVisited: 0,
+    truncated: false,
+  };
+}
+
+function isSensitiveKey(key: string): boolean {
+  const normalized = key.replace(/[^a-z0-9]/gi, "").toLowerCase();
+  return [
+    "authtoken",
+    "accesstoken",
+    "refreshtoken",
+    "apikey",
+    "servicerolekey",
+    "secret",
+    "password",
+  ].includes(normalized);
+}
+
+function isSensitiveString(value: string): boolean {
+  const trimmed = value.trim();
+  return /^Bearer\s+[A-Za-z0-9._~+/=-]+$/i.test(trimmed) ||
+    /^eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9._-]+\.[A-Za-z0-9._-]+$/.test(trimmed) ||
+    /^sk-[A-Za-z0-9]{16,}$/.test(trimmed) ||
+    /^AIza[0-9A-Za-z_-]{20,}$/.test(trimmed) ||
+    /(?:secret|token|password|apikey|service-role-key)/i.test(trimmed);
+}
+
 function rowToProfile(row: unknown): PlacementV3Profile {
   return row as PlacementV3Profile;
 }
@@ -280,7 +418,7 @@ async function insertResponseWithConflictHandling(
 ): Promise<PlacementV3ResponseWriteResult> {
   const { data, error } = await db
     .from("placement_v3_responses")
-    .insert(response)
+    .insert(sanitizePlacementResponseRow(response))
     .select("*")
     .single();
   if (!error) {

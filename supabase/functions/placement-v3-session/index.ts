@@ -223,8 +223,12 @@ serve(
 
     let result: OrchestratorResponse;
     try {
+      const authToken = (req.headers.get("Authorization") ?? "")
+        .replace(/^Bearer\s+/i, "")
+        .trim();
       result = await handleAction({
         userId: user.id,
+        authToken,
         request: body,
         deps: {
           ...persistence,

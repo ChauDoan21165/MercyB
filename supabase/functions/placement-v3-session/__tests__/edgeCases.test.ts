@@ -208,6 +208,36 @@ describe("placement v3 orchestration edge cases", () => {
     expect(row?.ai_assessment?.metadata?.errorCode).toBe("malformed_json");
   });
 
+  it("persists provider trace metadata on response assessment rows", async () => {
+    const h = createHarness({
+      grade: async () => ({
+        ok: true,
+        assessment: {
+          overallLevel: "B1",
+          confidence: 0.82,
+          metadata: {
+            gradingPath: "placement-v3-grade-writing",
+            provider: "openai",
+            model: "gpt-live-validation-fixture",
+            fallback: false,
+          },
+        },
+        version: "openai:gpt-live-validation-fixture",
+      }),
+    });
+    const start = await started(h);
+    const next = await answer(h, start);
+    const row = h.responses.get(start.session.id)?.[0];
+    expect(next.ok).toBe(true);
+    expect(row?.ai_assessment_version).toBe("openai:gpt-live-validation-fixture");
+    expect(row?.ai_assessment?.metadata).toMatchObject({
+      gradingPath: "placement-v3-grade-writing",
+      provider: "openai",
+      model: "gpt-live-validation-fixture",
+      fallback: false,
+    });
+  });
+
   it("English with a small Vietnamese transfer note is accepted", async () => {
     const h = createHarness();
     const start = await started(h);
@@ -219,4 +249,3 @@ describe("placement v3 orchestration edge cases", () => {
     expect(res.ok).toBe(true);
   });
 });
-
