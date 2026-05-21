@@ -115,10 +115,14 @@ export function helpText() {
     "",
     "Examples",
     "  npm run verify:v3-placement",
-    "  npm run verify:v3-placement -- --json",
+    "  npm run --silent verify:v3-placement -- --json",
     "  npm run verify:v3-placement -- --skip-build",
     "  npm run verify:v3-placement -- --base origin/main",
     "  npm run verify:v3-placement -- --min-resume-tests 42",
+    "",
+    "JSON mode",
+    "  Use npm run --silent verify:v3-placement -- --json for raw JSON through npm.",
+    "  Direct node invocation also emits raw JSON: node scripts/verify-v3-placement.mjs --json",
   ].join("\n");
 }
 
@@ -505,8 +509,11 @@ export function checkBranchSafety({ baseRef, repoRoot, runner }) {
   const staged = runner("git", ["diff", "--cached", "--name-only"], { repoRoot });
   const untracked = runner("git", ["ls-files", "--others", "--exclude-standard"], { repoRoot });
   const counts = parseStatusCounts(status.stdout);
+  const branchFiles = uniqueLines(changed.stdout);
+  const dirtyFiles = uniqueLines(`${unstaged.stdout}\n${staged.stdout}\n${untracked.stdout}`);
   const files = uniqueLines(`${changed.stdout}\n${unstaged.stdout}\n${staged.stdout}\n${untracked.stdout}`);
-  const disallowed = files.filter((file) => file && !ALLOWED_CHANGED_PATHS.has(file));
+  const disallowedBranchFiles = branchFiles.filter((file) => file && !ALLOWED_CHANGED_PATHS.has(file));
+  const disallowedDirtyFiles = dirtyFiles.filter((file) => file && !branchFiles.includes(file) && !ALLOWED_CHANGED_PATHS.has(file));
   const dirtyState = counts.staged + counts.unstaged + counts.untracked === 0 ? "clean" : "dirty";
   const details = [
     `base ref: ${baseRef}`,
@@ -517,8 +524,12 @@ export function checkBranchSafety({ baseRef, repoRoot, runner }) {
     `unstaged: ${counts.unstaged}`,
     `untracked: ${counts.untracked}`,
     `changed files: ${files.length}`,
+    `branch files: ${branchFiles.length}`,
+    `dirty files: ${dirtyFiles.length}`,
   ].join("; ");
-  if (disallowed.length > 0) {
+  if (disallowedBranchFiles.length > 0 || disallowedDirtyFiles.length > 0) {
+    const branchDetail = disallowedBranchFiles.length ? `unrelated branch files: ${disallowedBranchFiles.join(", ")}` : "";
+    const dirtyDetail = disallowedDirtyFiles.length ? `worktree dirty outside branch diff: ${disallowedDirtyFiles.join(", ")}` : "";
     return makeCheck({
       name: "branch safety",
       command: `git diff --name-only ${baseRef}...HEAD`,
@@ -526,7 +537,7 @@ export function checkBranchSafety({ baseRef, repoRoot, runner }) {
       status: "FAIL",
       exitCode: changed.exitCode,
       durationMs: status.durationMs + changed.durationMs + unstaged.durationMs + staged.durationMs + untracked.durationMs,
-      details: `${details}; unrelated files: ${disallowed.join(", ")}`,
+      details: [details, branchDetail, dirtyDetail].filter(Boolean).join("; "),
       action: "Remove unrelated files from this PR or split them into a separate PR.",
     });
   }
@@ -702,7 +713,7 @@ export function buildStatusModel(input = {}) {
 
   const requiredCommands = [
     ["resume reliability", ["npm", ["run", "test:resume"]], true, options.minResumeTests],
-    ["resume filter", ["npm", ["run", "test", "--", "ResultsPage.resumeSmoke"]], true, options.minResumeTests],
+    ["resume filter", ["npm", ["run", "test", "--", "resumeSmoke"]], true, options.minResumeTests],
     ["typecheck:app", ["npm", ["run", "typecheck:app"]], false, null],
   ];
   for (const [name, [cmd, args], isTest, minTests] of requiredCommands) {
@@ -767,7 +778,7 @@ export function buildStatusModel(input = {}) {
     optionalChecks.push(skippedCheck("validate tests impossible pattern", "npm run validate:tests -- --pattern definitelyNoSuchMercyPattern", false));
     optionalChecks.push(skippedCheck("mb status", "npm run mb:status", false));
     optionalChecks.push(skippedCheck("mobile audio", "npm run test:mobile-audio", false));
-    optionalChecks.push(skippedCheck("placement session", "npm run test -- placement-v3-session", false));
+    optionalChecks.push(skippedCheck("placement session", `npm run test -- ${PLACEMENT_SESSION_FILE}`, false));
   } else if (packageJson) {
     if (hasScript(packageJson, "validate:tests")) {
       optionalChecks.push(classifyValidateTestsResult(runner("npm", ["run", "validate:tests", "--", "--pattern", "definitelyNoSuchMercyPattern"], { repoRoot })));
@@ -787,14 +798,14 @@ export function buildStatusModel(input = {}) {
     if (fs.existsSync(path.join(repoRoot, PLACEMENT_SESSION_FILE))) {
       optionalChecks.push(classifyCommandResult({
         name: "placement session",
-        command: "npm run test -- placement-v3-session",
+        command: `npm run test -- ${PLACEMENT_SESSION_FILE}`,
         required: false,
-        result: runner("npm", ["run", "test", "--", "placement-v3-session"], { repoRoot }),
+        result: runner("npm", ["run", "test", "--", PLACEMENT_SESSION_FILE], { repoRoot }),
         isTest: true,
         minTests: 1,
       }));
     } else {
-      optionalChecks.push(missingOptional("placement session", "npm run test -- placement-v3-session"));
+      optionalChecks.push(missingOptional("placement session", `npm run test -- ${PLACEMENT_SESSION_FILE}`));
     }
   }
 
@@ -960,7 +971,7 @@ function mockedReadyModel(options) {
     pass("resume script", "vitest run " + REQUIRED_RESUME_FILE, true),
     pass("resume suite structure", REQUIRED_RESUME_FILE, true),
     pass("resume reliability", "npm run test:resume", true, options.minResumeTests),
-    pass("resume filter", "npm run test -- ResultsPage.resumeSmoke", true, options.minResumeTests),
+    pass("resume filter", "npm run test -- resumeSmoke", true, options.minResumeTests),
     pass("typecheck:app", "npm run typecheck:app", true),
     options.skipBuild ? skippedCheck("build", "npm run build", true) : pass("build", "npm run build", true),
     pass("git diff check", "git diff --check", true),
@@ -974,9 +985,9 @@ function mockedReadyModel(options) {
       skippedCheck("validate tests impossible pattern", "npm run validate:tests -- --pattern definitelyNoSuchMercyPattern", false),
       skippedCheck("mb status", "npm run mb:status", false),
       skippedCheck("mobile audio", "npm run test:mobile-audio", false),
-      skippedCheck("placement session", "npm run test -- placement-v3-session", false),
+      skippedCheck("placement session", `npm run test -- ${PLACEMENT_SESSION_FILE}`, false),
     ]
-    : [pass("placement session", "npm run test -- placement-v3-session", false, 1)];
+    : [pass("placement session", `npm run test -- ${PLACEMENT_SESSION_FILE}`, false, 1)];
   const checks = [...requiredChecks, ...optionalChecks];
   const topBlockers = extractBlockers(checks);
   const decision = decideExit(checks);

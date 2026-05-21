@@ -27,6 +27,7 @@ import {
 
 const SCRIPT = path.resolve("scripts/verify-v3-placement.mjs");
 const RESUME = "src/pages/placement/v3/__tests__/ResultsPage.resumeSmoke.test.tsx";
+const PLACEMENT_SESSION = "supabase/functions/placement-v3-session/__tests__/resumePolicy.test.ts";
 
 let repo;
 
@@ -88,10 +89,10 @@ function mockRunner(overrides = {}) {
     if (key.startsWith("git diff origin/main...HEAD")) return result(0, "");
     if (key === "git diff --check") return result(0, "");
     if (key === "npm run test:resume") return result(0, "Tests 42 passed (42)\n");
-    if (key === "npm run test -- ResultsPage.resumeSmoke") return result(0, "Tests 42 passed (42)\n");
+    if (key === "npm run test -- resumeSmoke") return result(0, "Tests 42 passed (42)\n");
     if (key === "npm run typecheck:app") return result(0, "");
     if (key === "npm run build") return result(0, "");
-    if (key === "npm run test -- placement-v3-session") return result(0, "Tests 2 passed (2)\n");
+    if (key === `npm run test -- ${PLACEMENT_SESSION}`) return result(0, "Tests 6 passed (6)\n");
     return result(0, "");
   };
 }
@@ -118,6 +119,18 @@ describe("verify-v3-placement args and help", () => {
 
   it("help includes Examples", () => {
     expect(helpText()).toContain("Examples");
+  });
+
+  it("help recommends npm run --silent for JSON", () => {
+    expect(helpText()).toContain("npm run --silent verify:v3-placement -- --json");
+  });
+
+  it("help does not present plain npm JSON as raw JSON", () => {
+    expect(helpText()).not.toContain("npm run verify:v3-placement -- --json");
+  });
+
+  it("help documents direct node JSON", () => {
+    expect(helpText()).toContain("node scripts/verify-v3-placement.mjs --json");
   });
 
   it("invalid arg exits 4", () => {
@@ -165,6 +178,19 @@ describe("verify-v3-placement args and help", () => {
     });
     expect(run.status).toBe(0);
     expect(JSON.parse(run.stdout).schemaVersion).toBe("v3-placement-verification/v1");
+  });
+
+  it("direct node JSON emits JSON only", () => {
+    const run = spawnSync("node", [SCRIPT, "--json"], {
+      encoding: "utf8",
+      env: { ...process.env, VERIFY_V3_PLACEMENT_MOCK: "ready" },
+    });
+    expect(run.stdout.trim().startsWith("{")).toBe(true);
+    expect(run.stdout).not.toContain("> mercyblade");
+  });
+
+  it("npm silent JSON guidance is the supported npm contract", () => {
+    expect(helpText()).toContain("Use npm run --silent verify:v3-placement -- --json");
   });
 });
 
@@ -402,14 +428,29 @@ describe("verify-v3-placement optional checks", () => {
     expect(model.optionalChecks.find((check) => check.name === "placement session").status).toBe("PASS");
   });
 
+  it("placement session optional check reports test count", () => {
+    write("supabase/functions/placement-v3-session/__tests__/resumePolicy.test.ts", "it('x',()=>{})");
+    const model = buildStatusModel({ repoRoot: repo, runner: mockRunner() });
+    expect(model.optionalChecks.find((check) => check.name === "placement session").testCount).toBe(6);
+  });
+
   it("placement session file missing reports MISSING", () => {
     const model = buildStatusModel({ repoRoot: repo, runner: mockRunner() });
     expect(model.optionalChecks.find((check) => check.name === "placement session").status).toBe("MISSING");
   });
 
+  it("placement session missing remains MISSING not PASS", () => {
+    const model = buildStatusModel({ repoRoot: repo, runner: mockRunner() });
+    expect(model.optionalChecks.find((check) => check.name === "placement session").status).not.toBe("PASS");
+  });
+
+  it("all required checks pass and only optional checks missing exits READY", () => {
+    expect(buildStatusModel({ repoRoot: repo, runner: mockRunner() }).exitCode).toBe(0);
+  });
+
   it("optional placement zero matched returns NOT_VALIDATED", () => {
     write("supabase/functions/placement-v3-session/__tests__/resumePolicy.test.ts", "it('x',()=>{})");
-    const model = buildStatusModel({ repoRoot: repo, runner: mockRunner({ "npm run test -- placement-v3-session": result(0, "0 tests") }) });
+    const model = buildStatusModel({ repoRoot: repo, runner: mockRunner({ [`npm run test -- ${PLACEMENT_SESSION}`]: result(0, "0 tests") }) });
     expect(model.optionalChecks.find((check) => check.name === "placement session").status).toBe("NOT_VALIDATED");
   });
 });
@@ -433,6 +474,53 @@ describe("verify-v3-placement branch safety", () => {
   it("allowed changed path passes branch safety", () => {
     const check = checkBranchSafety({ baseRef: "origin/main", repoRoot: repo, runner: mockRunner({ "git diff --name-only origin/main...HEAD": result(0, "package.json\n") }) });
     expect(check.status).toBe("PASS");
+  });
+
+  it("clean branch with only verifier files passes branch safety", () => {
+    const files = [
+      "package.json",
+      "scripts/verify-v3-placement.mjs",
+      "scripts/__tests__/verify-v3-placement.test.mjs",
+    ].join("\n");
+    const check = checkBranchSafety({ baseRef: "origin/main", repoRoot: repo, runner: mockRunner({ "git diff --name-only origin/main...HEAD": result(0, `${files}\n`) }) });
+    expect(check.status).toBe("PASS");
+  });
+
+  it("clean branch with verifier plus PR 972 files passes branch safety", () => {
+    const files = [
+      "package.json",
+      "scripts/verify-v3-placement.mjs",
+      "scripts/__tests__/verify-v3-placement.test.mjs",
+      "src/components/room/RoomRenderer.tsx",
+      "src/pages/placement/v3/ResultsPage.tsx",
+      "src/pages/placement/v3/__tests__/ResultsPage.resumeSmoke.test.tsx",
+    ].join("\n");
+    const check = checkBranchSafety({ baseRef: "origin/main", repoRoot: repo, runner: mockRunner({ "git diff --name-only origin/main...HEAD": result(0, `${files}\n`) }) });
+    expect(check.status).toBe("PASS");
+  });
+
+  it("dirty worktree outside branch diff is reported separately", () => {
+    const check = checkBranchSafety({
+      baseRef: "origin/main",
+      repoRoot: repo,
+      runner: mockRunner({
+        "git status --porcelain": result(0, " M README.md\n"),
+        "git diff --name-only origin/main...HEAD": result(0, "package.json\n"),
+        "git diff --name-only": result(0, "README.md\n"),
+      }),
+    });
+    expect(check.details).toContain("worktree dirty outside branch diff");
+  });
+
+  it("unrelated committed file still fails", () => {
+    const check = checkBranchSafety({
+      baseRef: "origin/main",
+      repoRoot: repo,
+      runner: mockRunner({
+        "git diff --name-only origin/main...HEAD": result(0, "docs/unrelated.md\n"),
+      }),
+    });
+    expect(check.status).toBe("FAIL");
   });
 
   it("package diff with only verify script passes", () => {
@@ -523,6 +611,31 @@ describe("verify-v3-placement blockers and exits", () => {
 
   it("exit 4 USAGE_ERROR path", () => {
     expect(parseArgs(["--what"]).error).toBeTruthy();
+  });
+
+  it("verifier exits 1 for branch contamination", () => {
+    const model = buildStatusModel({
+      repoRoot: repo,
+      runner: mockRunner({ "git diff --name-only origin/main...HEAD": result(0, "docs/unrelated.md\n") }),
+    });
+    expect(model.exitCode).toBe(1);
+  });
+
+  it("verifier exits 2 for resume under-threshold", () => {
+    const model = buildStatusModel({
+      repoRoot: repo,
+      runner: mockRunner({ "npm run test:resume": result(0, "Tests 41 passed (41)") }),
+    });
+    expect(model.exitCode).toBe(2);
+  });
+
+  it("verifier exits 3 for broad test resume script", () => {
+    write("package.json", JSON.stringify(packageJson({ "test:resume": "vitest run resume" })));
+    expect(buildStatusModel({ repoRoot: repo, runner: mockRunner() }).exitCode).toBe(3);
+  });
+
+  it("verifier exits 4 for invalid CLI args", () => {
+    expect(parseArgs(["--invalid"]).error).toContain("Unknown");
   });
 
   it("final model rejects unknown status", () => {
