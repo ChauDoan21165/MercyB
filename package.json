@@ -68,6 +68,7 @@
     "typecheck:scripts": "node -e \"const fs=require('fs'); if(!fs.existsSync('tsconfig.scripts.json')) { console.log('[skip] tsconfig.scripts.json not found'); process.exit(0);} process.exit(0);\" && tsc -p tsconfig.scripts.json --noEmit",
     "test": "vitest run",
     "mb:status": "node scripts/morning-status.mjs",
+    "pr:ready": "node scripts/pr-ready.mjs",
     "test:resume": "vitest run src/pages/placement/v3/__tests__/ResultsPage.resumeSmoke.test.tsx",
     "verify:v3-placement": "node scripts/verify-v3-placement.mjs",
     "test:ci": "vitest run --reporter=verbose",
