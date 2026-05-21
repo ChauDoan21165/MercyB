@@ -533,6 +533,26 @@ describe("verify-v3-placement branch safety", () => {
     expect(checkPackageDiff({ baseRef: "origin/main", repoRoot: repo, runner: mockRunner({ "git diff origin/main...HEAD -- package.json": result(0, diff) }) }).status).toBe("PASS");
   });
 
+  it("package diff with release script passes", () => {
+    const diff = '+  "release:v3-placement": "node scripts/release-v3-placement.mjs",\n';
+    expect(checkPackageDiff({ baseRef: "origin/main", repoRoot: repo, runner: mockRunner({ "git diff origin/main...HEAD -- package.json": result(0, diff) }) }).status).toBe("PASS");
+  });
+
+  it("branch safety with release files passes", () => {
+    const files = [
+      "package.json",
+      "scripts/verify-v3-placement.mjs",
+      "scripts/__tests__/verify-v3-placement.test.mjs",
+      "scripts/release-v3-placement.mjs",
+      "scripts/__tests__/release-v3-placement.test.mjs",
+    ].join("\n");
+    expect(checkBranchSafety({
+      baseRef: "origin/main",
+      repoRoot: repo,
+      runner: mockRunner({ "git diff --name-only origin/main...HEAD": result(0, `${files}\n`) }),
+    }).status).toBe("PASS");
+  });
+
   it("unrelated package script rejected", () => {
     const diff = '+  "new:thing": "node x",\n';
     expect(checkPackageDiff({ baseRef: "origin/main", repoRoot: repo, runner: mockRunner({ "git diff origin/main...HEAD -- package.json": result(0, diff) }) }).status).toBe("FAIL");
