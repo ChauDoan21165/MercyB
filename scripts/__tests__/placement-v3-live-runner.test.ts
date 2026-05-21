@@ -4,6 +4,7 @@ import path from "node:path";
 import {
   assertEnvironmentSafe,
   assertTestLearnerEmail,
+  blockingFailure,
   buildDryRunPlan,
   classifySupabaseTarget,
   isAllowedNonDryRunTarget,
@@ -61,6 +62,14 @@ describe("Placement V3 live validation runner safety", () => {
     })).toThrow(/NODE_ENV=production/);
   });
 
+  it("refuses VERCEL_ENV=production", () => {
+    expect(() => assertEnvironmentSafe({
+      env: { ...safeEnv, VERCEL_ENV: "production" },
+      dryRun: false,
+      learnerEmail: TEST_EMAIL,
+    })).toThrow(/VERCEL_ENV=production/);
+  });
+
   it("refuses production-like Supabase URLs", () => {
     expect(classifySupabaseTarget("https://mercyblade.supabase.co").class).toBe("production_like");
     expect(() => assertEnvironmentSafe({
@@ -91,8 +100,25 @@ describe("Placement V3 live validation runner safety", () => {
     })).toThrow(/PLACEMENT_V3_LIVE_VALIDATION=1/);
   });
 
+  it("refuses non-dry-run execution without a service-role key", () => {
+    const { SUPABASE_SERVICE_ROLE_KEY: _key, ...env } = safeEnv;
+    expect(() => assertEnvironmentSafe({
+      env,
+      dryRun: false,
+      learnerEmail: TEST_EMAIL,
+    })).toThrow(/missing Supabase service-role key/);
+  });
+
   it("refuses non-namespaced learner emails", () => {
     expect(() => assertTestLearnerEmail("chau@mercyblade.com")).toThrow(/placement-v3-test/);
+  });
+
+  it("fails closed for conflicting speaking mode flags", async () => {
+    await expect(runPlacementV3LiveValidation({
+      args: ["--dry-run", "--speaking-only", "--skip-speaking"],
+      env: safeEnv,
+      uuid: TEST_UUID,
+    })).rejects.toThrow(/cannot be used together/);
   });
 
   it("describes the exact dry-run validation plan", () => {
@@ -106,6 +132,60 @@ describe("Placement V3 live validation runner safety", () => {
     });
     expect(plan.steps).toContain("verify_session_response_and_profile_persistence");
     expect(plan).toHaveProperty("idempotencyBoundary");
+  });
+
+  it("keeps dry-run output deterministic when no learner email override is supplied", async () => {
+    const first = await runPlacementV3LiveValidation({
+      args: ["--dry-run", "--json"],
+      env: { NODE_ENV: "test", SUPABASE_URL: "https://placement-validation.supabase.co" },
+    });
+    const second = await runPlacementV3LiveValidation({
+      args: ["--dry-run", "--json"],
+      env: { NODE_ENV: "test", SUPABASE_URL: "https://placement-validation.supabase.co" },
+    });
+
+    expect(first.learnerEmail).toBe("placement-v3-test-00000000-0000-4000-8000-000000000000@mercyblade.test");
+    expect(second).toEqual(first);
+  });
+
+  it("stabilizes the dry-run JSON automation contract", () => {
+    const plan = buildDryRunPlan(safeEnv, TEST_EMAIL, ["--json"]);
+
+    expect(Object.keys(plan).sort()).toEqual([
+      "cleanupOrOverwriteBehavior",
+      "idempotencyBoundary",
+      "live_provider_validated",
+      "mode",
+      "placement_v3_enabled",
+      "production_safe",
+      "steps",
+      "supabaseTarget",
+      "validationLearnerNamespace",
+      "validationMode",
+    ]);
+    expect(plan).toMatchObject({
+      mode: "dry-run",
+      validationMode: "full",
+      supabaseTarget: {
+        class: "validation",
+      },
+      validationLearnerNamespace: TEST_EMAIL,
+      idempotencyBoundary: "uses existing placement_v3_responses session_id/task_index claim-before-grade seam",
+    });
+  });
+
+  it("returns structured blocking failures for --json automation", () => {
+    expect(blockingFailure(new Error("Refusing Placement V3 live validation: test failure"))).toMatchObject({
+      ok: false,
+      blockingFailure: {
+        reason: "Refusing Placement V3 live validation: test failure",
+        failClosed: true,
+        production_safe: false,
+        placement_v3_enabled: false,
+        placement_v3_enablement: "BLOCKED",
+        live_provider_validated: false,
+      },
+    });
   });
 
   it("keeps --speaking-only and --skip-speaking dry-run plans coherent", () => {

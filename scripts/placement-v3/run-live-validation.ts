@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 
 const TEST_EMAIL_RE = /^placement-v3-test-[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}@mercyblade\.test$/i;
+const DRY_RUN_UUID = "00000000-0000-4000-8000-000000000000";
 
 type Env = Record<string, string | undefined>;
 type CoreDeps = Record<string, any>;
@@ -140,6 +141,9 @@ export function assertEnvironmentSafe(args: {
   if (env.NODE_ENV === "production") {
     throw new Error("Refusing Placement V3 live validation: NODE_ENV=production.");
   }
+  if (env.VERCEL_ENV === "production") {
+    throw new Error("Refusing Placement V3 live validation: VERCEL_ENV=production.");
+  }
   const target = classifySupabaseTarget(getEnv(env, "SUPABASE_URL", "TEST_SUPABASE_URL", "VITE_SUPABASE_URL"));
   if (target.class === "production_like") {
     throw new Error(`Refusing Placement V3 live validation: ${target.reason}`);
@@ -197,7 +201,7 @@ export async function runPlacementV3LiveValidation(options: {
   const env = options.env ?? process.env;
   const dryRun = hasFlag(args, "dry-run");
   const mode = validationMode(args);
-  const learnerEmail = validationEmail(env, options.uuid);
+  const learnerEmail = validationEmail(env, options.uuid ?? (dryRun ? DRY_RUN_UUID : randomUUID()));
   const target = assertEnvironmentSafe({ env, dryRun, learnerEmail });
 
   if (dryRun) {
@@ -367,9 +371,28 @@ function testOnlyId(id: string): string {
   return id.startsWith("placement-v3-") ? `${id} (test-only)` : `${id.slice(0, 8)}... (test-only)`;
 }
 
+export function blockingFailure(error: unknown): Record<string, unknown> {
+  return {
+    ok: false,
+    dryRun: hasFlag(process.argv.slice(2), "dry-run"),
+    blockingFailure: {
+      reason: error instanceof Error ? error.message : String(error),
+      failClosed: true,
+      production_safe: false,
+      placement_v3_enabled: false,
+      placement_v3_enablement: "BLOCKED",
+      live_provider_validated: false,
+    },
+  };
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   runPlacementV3LiveValidation({ out: console }).catch((err) => {
-    console.error(err instanceof Error ? err.message : err);
+    if (hasFlag(process.argv.slice(2), "json")) {
+      console.error(JSON.stringify(blockingFailure(err), null, 2));
+    } else {
+      console.error(err instanceof Error ? err.message : err);
+    }
     process.exit(1);
   });
 }
