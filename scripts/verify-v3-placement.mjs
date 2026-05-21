@@ -33,6 +33,8 @@ const ALLOWED_CHANGED_PATHS = new Set([
   "package.json",
   "scripts/verify-v3-placement.mjs",
   "scripts/__tests__/verify-v3-placement.test.mjs",
+  "scripts/release-v3-placement.mjs",
+  "scripts/__tests__/release-v3-placement.test.mjs",
   "src/pages/placement/v3/ResultsPage.tsx",
   REQUIRED_RESUME_FILE,
   ALT_RESUME_FILE,
@@ -602,7 +604,7 @@ export function checkPackageDiff({ baseRef, repoRoot, runner }) {
     const match = line.match(/^\+\s*"([^"]+)":\s*"[^"]+"/);
     if (match) addedScripts.push(match[1]);
   }
-  const unrelated = addedScripts.filter((name) => !["test:resume", "verify:v3-placement"].includes(name));
+  const unrelated = addedScripts.filter((name) => !["test:resume", "verify:v3-placement", "release:v3-placement"].includes(name));
   if (unrelated.length > 0) {
     return makeCheck({
       name: "package diff",
@@ -622,7 +624,7 @@ export function checkPackageDiff({ baseRef, repoRoot, runner }) {
     status: "PASS",
     exitCode: diff.exitCode,
     durationMs: diff.durationMs,
-    details: "Only test:resume and verify:v3-placement script additions are present.",
+    details: "Only test:resume, verify:v3-placement, and release:v3-placement script additions are present.",
   });
 }
 
