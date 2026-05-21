@@ -1,0 +1,53 @@
+
+> mercyblade@0.0.0 test:e2e
+> playwright test -c playwright.smoke.config.ts placement-v3-vertical
+
+
+Running 1 test using 1 worker
+
+(node:29730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › tests/e2e/placement-v3-vertical.spec.ts:34:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence (1.1m)
+
+
+  1) [chromium] › tests/e2e/placement-v3-vertical.spec.ts:34:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.waitFor: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('textarea, input[placeholder*=\'Short answer\'], [role=\'textbox\'], [role=\'radio\']').first() to be visible[22m
+
+
+      251 | async function answerCurrentTask(page: Page) {
+      252 |   await page.waitForTimeout(100);
+    > 253 |   await page.locator("textarea, input[placeholder*='Short answer'], [role='textbox'], [role='radio']").first().waitFor({ state: "visible" });
+          |                                                                                                                ^
+      254 |   const filled = await page.evaluate((answer) => {
+      255 |     const fields = [...document.querySelectorAll("main textarea, main input[placeholder*='Short answer']")]
+      256 |       .filter((node) => {
+        at answerCurrentTask (/private/tmp/mercyb-placement-v3-report/tests/e2e/placement-v3-vertical.spec.ts:253:112)
+        at /private/tmp/mercyb-placement-v3-report/tests/e2e/placement-v3-vertical.spec.ts:49:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/placement-v3-vertical-plac-3e540-der-results-and-persistence-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/e2e/placement-v3-vertical.spec.ts:34:3 › placement v3 end-to-end vertical › runs UI client, session orchestrator, graders, recommender, results, and persistence 

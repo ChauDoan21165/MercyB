@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-05-20",
+  "decision": {
+    "currentRecommendation": "DO_NOT_ENABLE",
+    "featureFlagsRemainOff": true,
+    "productionReadinessClaimSupported": false,
+    "reason": "Critical runtime evidence is missing: live benchmark p95/cost/failover, drift replay, native audio, provider failover, production-like Supabase runtime, observability, and real non-writing modality grader evidence."
+  },
+  "prs": [
+    {
+      "number": 941,
+      "title": "feat(placement-v3): harden native mobile speaking capture",
+      "status": "merged",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-941.json",
+      "evidenceQuality": "static/config audit",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 942,
+      "title": "feat(placement-v3): end-to-end integration + vertical E2E (A33)",
+      "status": "merged",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-942.json",
+      "evidenceQuality": "integration behind default-off flags",
+      "runtimeValidated": "local mocked path only",
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 943,
+      "title": "feat(placement-v3): add grading drift replay harness",
+      "status": "open draft",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-943.json",
+      "evidenceQuality": "infrastructure scaffold",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 944,
+      "title": "feat(placement-v3): add benchmarking infrastructure scaffold",
+      "status": "open draft",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-944.json",
+      "evidenceQuality": "infrastructure scaffold; live benchmark blocked",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 946,
+      "title": "feat(placement-v3): add adaptive item generation gauntlet scaffold",
+      "status": "open draft / unstable",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-946.json",
+      "evidenceQuality": "partial run with failed hard gates",
+      "runtimeValidated": "partial candidate run only",
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 947,
+      "title": "test: stabilize Vitest web storage harness",
+      "status": "open / green at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-947.json",
+      "evidenceQuality": "test infrastructure evidence",
+      "runtimeValidated": "test harness only",
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 949,
+      "title": "docs(placement-v3): add post-merge readiness report",
+      "status": "open / green at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-949.json",
+      "evidenceQuality": "release decision record",
+      "runtimeValidated": "local verification only",
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 950,
+      "title": "test: stabilize Placement V3 test harness and E2E reliability",
+      "status": "open / blocked at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-950.json",
+      "evidenceQuality": "not accepted while CI is failing",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 951,
+      "title": "feat(placement-v3): add data-quality audit + integrity tooling",
+      "status": "open draft / blocked at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-951.json",
+      "evidenceQuality": "draft data-quality tooling",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 952,
+      "title": "docs(placement-v3): add A37 shadow replay readiness report",
+      "status": "open / green at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-952.json",
+      "evidenceQuality": "readiness documentation, not replay execution",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 953,
+      "title": "feat(placement-v3): add runtime observability and forensic tooling",
+      "status": "open draft / blocked at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-953.json",
+      "evidenceQuality": "draft observability tooling",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    },
+    {
+      "number": 954,
+      "title": "feat(placement-v3): add endurance + regression burn-in tooling",
+      "status": "open draft / clean at capture time",
+      "evidenceFile": "reports/placement-v3-readiness-evidence/pr-954.json",
+      "evidenceQuality": "draft endurance tooling; burn-in artifacts still required",
+      "runtimeValidated": false,
+      "productionSafeToEnable": false
+    }
+  ],
+  "reports": [
+    "reports/PLACEMENT-V3-POST-MERGE-READINESS-2026-05-20.md",
+    "reports/placement-v3-release-gates.md",
+    "reports/placement-v3-known-risks.md",
+    "reports/placement-v3-launch-scenarios.md",
+    "reports/placement-v3-evidence-index.md",
+    "reports/placement-v3-open-questions.md",
+    "reports/placement-v3-launch-progression.md",
+    "reports/placement-v3-blocker-ownership.md",
+    "reports/placement-v3-runtime-validation-scoreboard.md",
+    "reports/placement-v3-rollback-matrix.md",
+    "reports/placement-v3-founder-decision-template.md",
+    "reports/placement-v3-operational-cadence.md",
+    "reports/placement-v3-launch-criteria-history.md",
+    "reports/placement-v3-launch-control-board.md",
+    "reports/placement-v3-next-agent-queue.md",
+    "reports/placement-v3-merge-decision-table.md",
+    "reports/placement-v3-unblock-command-sheet.md",
+    "reports/placement-v3-do-not-do.md"
+  ],
+  "logs": [
+    "reports/placement-v3-readiness-evidence/typecheck.log",
+    "reports/placement-v3-readiness-evidence/typecheck-ci.log",
+    "reports/placement-v3-readiness-evidence/build.log",
+    "reports/placement-v3-readiness-evidence/lint.log",
+    "reports/placement-v3-readiness-evidence/final-typecheck.log",
+    "reports/placement-v3-readiness-evidence/final-build.log",
+    "reports/placement-v3-readiness-evidence/followup-typecheck.log",
+    "reports/placement-v3-readiness-evidence/followup-build.log",
+    "reports/placement-v3-readiness-evidence/canonical-typecheck.log",
+    "reports/placement-v3-readiness-evidence/canonical-build.log",
+    "reports/placement-v3-readiness-evidence/command-center-typecheck.log",
+    "reports/placement-v3-readiness-evidence/command-center-build.log",
+    "reports/placement-v3-readiness-evidence/command-center-reference-check.log",
+    "reports/placement-v3-readiness-evidence/command-center-unsupported-claims-scan.log"
+  ],
+  "simulations": [
+    {
+      "name": "Placement V3 mocked vertical E2E with explicit flags",
+      "status": "passed",
+      "evidence": [
+        "reports/placement-v3-readiness-evidence/e2e-failure-analysis.md",
+        "reports/placement-v3-readiness-evidence/e2e-reruns/run-2-explicit-flags/output.log",
+        "reports/placement-v3-readiness-evidence/e2e-reruns/run-3-explicit-flags-trace-on/output.log"
+      ],
+      "productionReadinessEvidence": false
+    },
+    {
+      "name": "Placement V3 default-off route gate",
+      "status": "passed by expected failure",
+      "evidence": [
+        "reports/placement-v3-readiness-evidence/e2e-reruns/run-1-normal/output-after-browser-install.log"
+      ],
+      "productionReadinessEvidence": false
+    }
+  ],
+  "runtimeEvidence": {
+    "liveSupabaseSession": {
+      "exists": false,
+      "blocker": "No production-like start/respond/status run saved."
+    },
+    "nativeAudio": {
+      "exists": false,
+      "blocker": "No real iOS/Android microphone capture or Azure scoring evidence."
+    },
+    "writingGrader": {
+      "exists": false,
+      "blocker": "Wired and locally simulated only; no live grader artifact in #949."
+    },
+    "providerFailover": {
+      "exists": false,
+      "blocker": "No live provider failure/recovery scenario run."
+    },
+    "forensicLogging": {
+      "exists": false,
+      "blocker": "No live session/grader/provider/cost events proven queryable."
+    }
+  },
+  "ciEvidence": {
+    "localTypecheck": "passed",
+    "localBuild": "passed",
+    "pr949CiAtLastCheck": "green before this operational-command-center update; GitHub CI must be rechecked after each push",
+    "evidenceFiles": [
+      "reports/placement-v3-readiness-evidence/canonical-typecheck.log",
+      "reports/placement-v3-readiness-evidence/canonical-build.log",
+      "reports/placement-v3-readiness-evidence/command-center-typecheck.log",
+      "reports/placement-v3-readiness-evidence/command-center-build.log"
+    ]
+  },
+  "replayEvidence": {
+    "exists": false,
+    "source": "PR #943 scaffold only; PR #952 readiness docs only",
+    "blocker": "No live replay corpus output or drift metrics."
+  },
+  "benchmarkEvidence": {
+    "exists": false,
+    "source": "PR #944 scaffold only",
+    "blockers": [
+      "0/25 live sessions",
+      "0/3 optimization cycles",
+      "no p95 latency metrics",
+      "no cost/session metrics",
+      "no provider failover metrics"
+    ]
+  },
+  "unresolvedBlockers": [
+    "No live benchmark p95/cost/failover metrics.",
+    "No live drift replay metrics.",
+    "No native speaking real-device validation.",
+    "No shadow replay execution evidence.",
+    "Real speaking/reading/listening graders are not proven.",
+    "No production-like Supabase session start/respond/status evidence.",
+    "No live forensic/provider/token/cost observability evidence.",
+    "No launch DRI, rollback runbook, or data cleanup policy.",
+    "Adaptive generation hard gates failed."
+  ]
+}
