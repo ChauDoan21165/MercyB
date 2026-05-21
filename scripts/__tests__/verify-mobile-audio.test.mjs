@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import {
+  EXPECTED_FILES,
   buildStatusModel,
   checkChangedFiles,
   checkPackageDiff,
@@ -136,6 +137,7 @@ function makeRunner(options = {}) {
     if (command === 'npm' && args.join(' ') === 'run test:mobile-audio') return fail.has('test:mobile-audio') ? result(1, '', 'fail') : result(0, `Tests ${total} passed (${total} tests)`);
     if (command === 'npm' && args.join(' ') === 'run test -- mobileSafariSpeakingRuntime') return fail.has('runtime') ? result(1, '', 'fail') : result(0, `Tests ${runtime} passed (${runtime} tests)`);
     if (command === 'npm' && args.join(' ') === 'run test -- MercySpeakTab') return fail.has('ui') ? result(1, '', 'fail') : result(0, `Tests ${ui} passed (${ui} tests)`);
+    if (command === 'npm' && args.join(' ') === 'run test -- scripts/__tests__/verify-mobile-audio.test.mjs') return fail.has('verifier') ? result(1, '', 'verifier fail') : result(0, `Tests 25 passed (25 tests)`);
     if (command === 'npm' && args.join(' ') === 'run typecheck:app') return fail.has('typecheck') ? result(1, '', 'type fail') : result(0, 'type ok');
     if (command === 'npm' && args.join(' ') === 'run build') return fail.has('build') ? result(1, '', 'build fail') : result(0, 'build ok');
     if (command === 'git' && args.join(' ') === 'diff --check') return fail.has('diffcheck') ? result(1, '', 'ws error') : result(0, '');
@@ -440,5 +442,43 @@ describe('manual sanity and extra guard cases', () => {
   it('formatJson validates before output', async () => {
     const model = await buildStatusModel(baseConfig(), { repoRoot: makeTempRepo(), runner: makeRunner() });
     expect(formatJson(model)).toContain('"schemaVersion"');
+  });
+});
+
+describe('verifier self-test hardening', () => {
+  it('EXPECTED_FILES includes verify-mobile-audio.mjs', () => {
+    expect(EXPECTED_FILES).toContain('scripts/verify-mobile-audio.mjs');
+  });
+  it('EXPECTED_FILES includes verify-mobile-audio.test.mjs', () => {
+    expect(EXPECTED_FILES).toContain('scripts/__tests__/verify-mobile-audio.test.mjs');
+  });
+  it('verifier test suite command in required checks', async () => {
+    const model = await buildStatusModel(baseConfig(), { repoRoot: makeTempRepo(), runner: makeRunner() });
+    const check = model.requiredChecks.find((c) => c.name === 'verifier tests');
+    expect(check).toBeTruthy();
+    expect(check.command).toBeTruthy();
+    expect(check.required).toBe(true);
+  });
+  it('verifier test failure blocks READY', async () => {
+    const model = await buildStatusModel(baseConfig(), { repoRoot: makeTempRepo(), runner: makeRunner({ fail: new Set(['verifier']) }) });
+    expect(model.topBlockers.some((b) => b.check === 'verifier tests')).toBe(true);
+    expect(model.exitCode).not.toBe(0);
+  });
+  it('verifier tests not skipped by --skip-build', async () => {
+    const model = await buildStatusModel(baseConfig({ skipBuild: true }), { repoRoot: makeTempRepo(), runner: makeRunner() });
+    const check = model.requiredChecks.find((c) => c.name === 'verifier tests');
+    expect(check.status).not.toBe('SKIPPED');
+  });
+  it('--json output valid with verifier tests passing', async () => {
+    const model = await buildStatusModel(baseConfig(), { repoRoot: makeTempRepo(), runner: makeRunner() });
+    const json = formatJson(model);
+    expect(() => JSON.parse(json)).not.toThrow();
+    const parsed = JSON.parse(json);
+    expect(parsed.requiredChecks.some((c) => c.name === 'verifier tests')).toBe(true);
+  });
+  it('terminal output does not expose secrets or learner data', async () => {
+    const model = await buildStatusModel(baseConfig(), { repoRoot: makeTempRepo(), runner: makeRunner() });
+    const text = formatTerminal(model);
+    expect(text).not.toMatch(/token|secret|authorization|learnerId|userId|deviceId/i);
   });
 });

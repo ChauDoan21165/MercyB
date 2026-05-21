@@ -57,12 +57,14 @@ const CHECK_FIELDS = [
   'details',
   'action',
 ];
-const EXPECTED_FILES = [
+export const EXPECTED_FILES = [
   'package.json',
   'src/lib/speech/mobileSafariSpeakingRuntime.ts',
   'src/components/mercy-guide/MercySpeakTab.tsx',
   'src/lib/speech/__tests__/mobileSafariSpeakingRuntime.test.ts',
   'src/components/mercy-guide/__tests__/MercySpeakTab.mobileAudio.test.tsx',
+  'scripts/verify-mobile-audio.mjs',
+  'scripts/__tests__/verify-mobile-audio.test.mjs',
 ];
 const ALLOWED_CHANGED_FILES = new Set([
   'package.json',
@@ -385,6 +387,7 @@ async function requiredCommandChecks(repoRoot, config, runner) {
     ['build', ['run', 'build'], null],
     ['git diff check', ['diff', '--check'], null, 'git'],
     ['docs absence', ['-e', "require('node:process').exit(require('node:fs').existsSync('docs/mobile-audio-diagnostics-retest.md') ? 1 : 0)"], null, 'node'],
+    ['verifier tests', ['run', 'test', '--', 'scripts/__tests__/verify-mobile-audio.test.mjs'], null],
   ];
   const checks = [];
   for (const [name, args, minTests, command = 'npm'] of specs) {
