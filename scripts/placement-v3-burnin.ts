@@ -16,8 +16,11 @@ export type FailureInjectionMode =
   | "stale-cached-session-state"
   | "partial-result"
   | "partial-persisted-result-state"
+  | "retry-loop"
   | "interrupted-retry-flow"
+  | "delayed-result"
   | "delayed-result-reload"
+  | "interrupted-cleanup"
   | "simulated-supabase-transient-error";
 
 export type BurnInOptions = {
@@ -44,6 +47,10 @@ export type BurnInIteration = {
   duplicate_suppressed: boolean;
   timeout_fallback_persisted: boolean;
   azure_status: LiveRunnerSummary["azure_speaking"]["status"];
+  cleanup_requested: boolean;
+  cleanup_verified: boolean;
+  retry_reconciled: boolean;
+  partial_result_reconciled: boolean;
   skipped_validations: string[];
   blocking_failures: string[];
   injected_failure: FailureInjectionMode | null;
@@ -69,6 +76,10 @@ export type BurnInSummary = {
     azure_passed: number;
     azure_failed: number;
     azure_skipped: number;
+    cleanup_verified: number;
+    retry_reconciliations: number;
+    partial_result_reconciliations: number;
+    reconciliation_failures: number;
   };
   iterations: BurnInIteration[];
   skipped_validations: string[];
@@ -82,8 +93,11 @@ const FAILURE_MODES = new Set<FailureInjectionMode>([
   "stale-cached-session-state",
   "partial-result",
   "partial-persisted-result-state",
+  "retry-loop",
   "interrupted-retry-flow",
+  "delayed-result",
   "delayed-result-reload",
+  "interrupted-cleanup",
   "simulated-supabase-transient-error",
 ]);
 
@@ -114,6 +128,7 @@ export async function runPlacementV3BurnIn(
   env: Env = process.env,
 ): Promise<BurnInSummary> {
   const concurrency = Math.max(1, Math.min(options.concurrency, options.iterations));
+  const effectiveOptions = { ...options, concurrency };
   const results: BurnInIteration[] = [];
   let nextIndex = 0;
 
@@ -121,20 +136,22 @@ export async function runPlacementV3BurnIn(
     for (;;) {
       const index = nextIndex;
       nextIndex += 1;
-      if (index >= options.iterations) return;
-      results[index] = await runIteration(index, options, env);
+      if (index >= effectiveOptions.iterations) return;
+      results[index] = await runIteration(index, effectiveOptions, env);
     }
   }
 
   await Promise.all(Array.from({ length: concurrency }, () => worker()));
-  return aggregateBurnIn(options, results);
+  return aggregateBurnIn(effectiveOptions, results);
 }
 
 async function runIteration(index: number, options: BurnInOptions, env: Env): Promise<BurnInIteration> {
-  const learnerEmail = `placement-v3-test-${randomUUID()}@mercyblade.test`;
+  const learnerEmail = options.dryRun
+    ? deterministicLearnerEmail(index)
+    : `placement-v3-test-${randomUUID()}@mercyblade.test`;
   const started = performance.now();
   const injected = options.injectFailure;
-  if (injected === "delayed-persistence-write" || injected === "delayed-result-reload") {
+  if (injected === "delayed-persistence-write" || isDelayedResultInjection(injected)) {
     await delay(5);
   }
 
@@ -158,8 +175,8 @@ async function runIteration(index: number, options: BurnInOptions, env: Env): Pr
     if (options.dryRun && !env.PLACEMENT_V3_LIVE_VALIDATION) {
       summary.skipped_validations.push("dry_run_marker_missing_no_write_plan_only");
     }
-    const latencyMs = Math.round(performance.now() - started);
-    return iterationFromLiveSummary(index, learnerEmail, summary, latencyMs, injected);
+    const latencyMs = options.dryRun ? 0 : Math.round(performance.now() - started);
+    return iterationFromLiveSummary(index, learnerEmail, summary, latencyMs, injected, options.cleanup);
   } catch (err) {
     const reason = err instanceof Error ? err.message : String(err);
     return {
@@ -176,6 +193,10 @@ async function runIteration(index: number, options: BurnInOptions, env: Env): Pr
       duplicate_suppressed: false,
       timeout_fallback_persisted: false,
       azure_status: "skipped",
+      cleanup_requested: options.cleanup,
+      cleanup_verified: false,
+      retry_reconciled: false,
+      partial_result_reconciled: false,
       skipped_validations: [],
       blocking_failures: [`burnin_iteration_error:${reason}`],
       injected_failure: injected,
@@ -190,11 +211,16 @@ function iterationFromLiveSummary(
   summary: LiveRunnerSummary,
   latencyMs: number,
   injected: FailureInjectionMode | null,
+  cleanupRequested: boolean,
 ): BurnInIteration {
   const recoveredFromInjection = Boolean(injected) && summary.ok
     && (summary.persistence_verification.result_retrieval || summary.dry_run)
-    && (summary.retry_idempotency.duplicate_short_circuited || summary.dry_run || injected !== "duplicate-submit-delivery")
+    && (summary.retry_idempotency.duplicate_short_circuited || summary.dry_run || !isRetryInjection(injected))
     && (summary.provider_metadata.timeout_fallback_persisted || summary.dry_run || !isPartialResultInjection(injected));
+  const retryReconciled = summary.dry_run
+    ? !summary.retry_idempotency.duplicate_short_circuited
+    : summary.retry_idempotency.duplicate_short_circuited && summary.retry_idempotency.response_count_after_duplicate === 1;
+  const partialResultReconciled = summary.dry_run || summary.provider_metadata.timeout_fallback_persisted;
   return {
     index,
     ok: summary.ok,
@@ -209,6 +235,10 @@ function iterationFromLiveSummary(
     duplicate_suppressed: summary.retry_idempotency.duplicate_short_circuited,
     timeout_fallback_persisted: summary.provider_metadata.timeout_fallback_persisted,
     azure_status: summary.azure_speaking.status,
+    cleanup_requested: cleanupRequested,
+    cleanup_verified: cleanupRequested && summary.ok,
+    retry_reconciled: retryReconciled,
+    partial_result_reconciled: partialResultReconciled,
     skipped_validations: summary.skipped_validations,
     blocking_failures: summary.blocking_failures,
     injected_failure: injected,
@@ -217,8 +247,11 @@ function iterationFromLiveSummary(
 }
 
 export function aggregateBurnIn(options: BurnInOptions, iterations: BurnInIteration[]): BurnInSummary {
-  const sorted = [...iterations].sort((a, b) => a.index - b.index);
-  const latencies = sorted.map((iteration) => iteration.latency_ms).sort((a, b) => a - b);
+  const sorted = [...iterations].filter(Boolean).sort((a, b) => a.index - b.index);
+  const latencies = sorted
+    .map((iteration) => iteration.latency_ms)
+    .filter((latency) => Number.isFinite(latency) && latency >= 0)
+    .sort((a, b) => a - b);
   const skipped = sorted.flatMap((iteration) => iteration.skipped_validations);
   const failures = sorted.flatMap((iteration) => iteration.blocking_failures);
   const duplicateSuppressed = sorted.filter((iteration) => iteration.duplicate_suppressed).length;
@@ -232,8 +265,12 @@ export function aggregateBurnIn(options: BurnInOptions, iterations: BurnInIterat
   ).length;
   const blockingFailures = [
     ...failures,
+    ...detectStructuralFailures(sorted, options),
     ...detectConsistencyFailures(sorted, options),
   ];
+  const reconciliationFailures = blockingFailures.filter((failure) =>
+    failure.includes("reconciliation") || failure.includes("impossible") || failure.includes("malformed")
+  ).length;
 
   return {
     ok: blockingFailures.length === 0 && sorted.every((iteration) => iteration.ok),
@@ -254,6 +291,10 @@ export function aggregateBurnIn(options: BurnInOptions, iterations: BurnInIterat
       azure_passed: sorted.filter((iteration) => iteration.azure_status === "passed").length,
       azure_failed: sorted.filter((iteration) => iteration.azure_status === "failed").length,
       azure_skipped: sorted.filter((iteration) => iteration.azure_status === "skipped").length,
+      cleanup_verified: sorted.filter((iteration) => iteration.cleanup_verified).length,
+      retry_reconciliations: sorted.filter((iteration) => iteration.retry_reconciled).length,
+      partial_result_reconciliations: sorted.filter((iteration) => iteration.partial_result_reconciled).length,
+      reconciliation_failures: reconciliationFailures,
     },
     iterations: sorted,
     skipped_validations: [...new Set(skipped)].sort(),
@@ -263,6 +304,66 @@ export function aggregateBurnIn(options: BurnInOptions, iterations: BurnInIterat
 
 function isPartialResultInjection(mode: FailureInjectionMode | null): boolean {
   return mode === "partial-result" || mode === "partial-persisted-result-state";
+}
+
+function isRetryInjection(mode: FailureInjectionMode | null): boolean {
+  return mode === "duplicate-submit-delivery" || mode === "retry-loop" || mode === "interrupted-retry-flow";
+}
+
+function isDelayedResultInjection(mode: FailureInjectionMode | null): boolean {
+  return mode === "delayed-result" || mode === "delayed-result-reload";
+}
+
+function deterministicLearnerEmail(index: number): string {
+  const suffix = String(index).padStart(12, "0");
+  return `placement-v3-test-00000000-0000-4000-8000-${suffix}@mercyblade.test`;
+}
+
+function detectStructuralFailures(iterations: BurnInIteration[], options: BurnInOptions): string[] {
+  const failures: string[] = [];
+  if (!Number.isInteger(options.iterations) || options.iterations < 1) {
+    failures.push("malformed_options:iterations");
+  }
+  if (!Number.isInteger(options.concurrency) || options.concurrency < 1) {
+    failures.push("malformed_options:concurrency");
+  }
+  if (options.concurrency > options.iterations) {
+    failures.push("impossible_options:concurrency_exceeds_iterations");
+  }
+  if (iterations.length !== options.iterations) {
+    failures.push(`reconciliation_mismatch:iteration_count:${iterations.length}/${options.iterations}`);
+  }
+  const seenIndexes = new Set<number>();
+  for (let expected = 0; expected < options.iterations; expected += 1) {
+    if (!iterations.some((iteration) => iteration.index === expected)) {
+      failures.push(`reconciliation_mismatch:missing_iteration_${expected}`);
+    }
+  }
+  for (const iteration of iterations) {
+    if (!Number.isInteger(iteration.index) || iteration.index < 0 || iteration.index >= options.iterations) {
+      failures.push(`malformed_iteration:${iteration.index}:index`);
+    }
+    if (seenIndexes.has(iteration.index)) {
+      failures.push(`reconciliation_mismatch:duplicate_iteration_${iteration.index}`);
+    }
+    seenIndexes.add(iteration.index);
+    if (!Number.isFinite(iteration.latency_ms) || iteration.latency_ms < 0) {
+      failures.push(`malformed_iteration:${iteration.index}:latency`);
+    }
+    if (!Number.isInteger(iteration.response_count) || iteration.response_count < 0) {
+      failures.push(`malformed_iteration:${iteration.index}:response_count`);
+    }
+    if (!["dry_run", "supabase", "memory"].includes(iteration.persistence_mode)) {
+      failures.push(`malformed_iteration:${iteration.index}:persistence_mode`);
+    }
+    if (!["skipped", "passed", "failed"].includes(iteration.azure_status)) {
+      failures.push(`malformed_iteration:${iteration.index}:azure_status`);
+    }
+    if (iteration.injected_failure !== options.injectFailure) {
+      failures.push(`reconciliation_mismatch:injected_failure_${iteration.index}`);
+    }
+  }
+  return failures;
 }
 
 function detectConsistencyFailures(iterations: BurnInIteration[], options: BurnInOptions): string[] {
@@ -276,6 +377,8 @@ function detectConsistencyFailures(iterations: BurnInIteration[], options: BurnI
     if (!iteration.result_retrieval) failures.push(`iteration_${iteration.index}:result_reload_failed`);
     if (!iteration.duplicate_suppressed) failures.push(`iteration_${iteration.index}:duplicate_submit_not_suppressed`);
     if (!iteration.timeout_fallback_persisted) failures.push(`iteration_${iteration.index}:timeout_fallback_not_persisted`);
+    if (!iteration.retry_reconciled) failures.push(`iteration_${iteration.index}:retry_reconciliation_failed`);
+    if (!iteration.partial_result_reconciled) failures.push(`iteration_${iteration.index}:partial_result_reconciliation_failed`);
     if (iteration.session_id) {
       if (sessionIds.has(iteration.session_id)) failures.push(`iteration_${iteration.index}:duplicate_session_id`);
       sessionIds.add(iteration.session_id);
