@@ -100,7 +100,12 @@ function printUsage() {
       `  --vitest-bin <bin>    binary to invoke vitest with (default: npx)\n` +
       `  --json                emit machine-readable JSON to stdout\n` +
       `  -h, --help            show this help\n\n` +
-      `Exit codes: 0=PASS, 1=FAIL, 2=NOT_VALIDATED, 3=INVALID_INPUT, 4=USAGE_ERROR\n`,
+      `Exit codes:\n` +
+      `  0 PASS\n` +
+      `  1 FAIL\n` +
+      `  2 NOT_VALIDATED\n` +
+      `  3 INVALID_INPUT\n` +
+      `  4 USAGE_ERROR\n`,
   );
 }
 
