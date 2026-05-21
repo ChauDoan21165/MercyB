@@ -43,6 +43,15 @@ import {
 } from '@/lib/pronunciation/phonemeHints';
 import PhonemePlayButton from '@/components/speech/PhonemePlayButton';
 import { supabase } from '@/lib/supabaseClient';
+import {
+  buildMobileAudioRetestChecklist,
+  copyMobileAudioDiagnosticsToClipboard,
+  formatMobileAudioFailure,
+  getMobileAudioSupportSnapshot,
+  recordMobileAudioDiagnostic,
+  selectMobileSafariRecordingMimeType,
+  type MobileAudioDiagnosticInput,
+} from '@/lib/speech/mobileSafariSpeakingRuntime';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -564,6 +573,9 @@ export function MercySpeakTab({
   const mediaRecorderRef  = useRef<MediaRecorder | null>(null);
   const mediaChunksRef    = useRef<BlobPart[]>([]);
   const activeStreamRef   = useRef<MediaStream | null>(null);
+  const mobileRetestRecorderRef = useRef<MediaRecorder | null>(null);
+  const mobileRetestStreamRef = useRef<MediaStream | null>(null);
+  const mobileRetestChunksRef = useRef<BlobPart[]>([]);
   const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
   // Day 2 phoneme scoring: keep the raw recorded blob so we can post it
   // to the azure-phoneme edge function when the feature flag is on.
@@ -609,6 +621,18 @@ export function MercySpeakTab({
   const supportsSpeechSynthesis = typeof window !== 'undefined' && typeof window.speechSynthesis !== 'undefined';
   const mercyVoice = useMercyVoice();
   const supportsMediaRecording  = typeof window !== 'undefined' && typeof navigator !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia) && typeof MediaRecorder !== 'undefined';
+  const showMobileAudioRetest = useMemo(() => {
+    if (!import.meta.env.DEV || typeof window === 'undefined') return false;
+    return new URLSearchParams(window.location.search).has('mobileAudioRetest');
+  }, []);
+  const [mobileRetestLog, setMobileRetestLog] = useState<string[]>([]);
+  const [mobileRetestAudioUrl, setMobileRetestAudioUrl] = useState('');
+  const [mobileDiagnosticsCopyStatus, setMobileDiagnosticsCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
+
+  function appendMobileRetestLog(message: string, diagnostic?: MobileAudioDiagnosticInput) {
+    setMobileRetestLog((current) => [...current.slice(-7), message]);
+    if (diagnostic) recordMobileAudioDiagnostic(diagnostic);
+  }
 
   useEffect(() => { setCustomText(defaultPracticeText); setVariant(initialVariant); }, [defaultPracticeText, initialVariant]);
 
@@ -621,13 +645,15 @@ export function MercySpeakTab({
       mediaRecorderRef.current = null;
       if (recordedAudioRef.current) { try { recordedAudioRef.current.pause(); recordedAudioRef.current.currentTime = 0; } catch { /* ignore */ } }
       if (recordedAudioUrl) URL.revokeObjectURL(recordedAudioUrl);
+      if (mobileRetestAudioUrl) URL.revokeObjectURL(mobileRetestAudioUrl);
       if (kidsAudioRef.current) {
         try { kidsAudioRef.current.pause(); } catch { /* ignore */ }
         kidsAudioRef.current = null;
       }
       if (activeStreamRef.current) { activeStreamRef.current.getTracks().forEach((track) => track.stop()); activeStreamRef.current = null; }
+      if (mobileRetestStreamRef.current) { mobileRetestStreamRef.current.getTracks().forEach((track) => track.stop()); mobileRetestStreamRef.current = null; }
     };
-  }, [recordedAudioUrl]);
+  }, [mobileRetestAudioUrl, recordedAudioUrl]);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !copySuccess) return;
@@ -1312,21 +1338,7 @@ export function MercySpeakTab({
           })
           .catch(() => undefined);
       }
-      // Pick a mime type the browser actually supports. iOS Safari wants mp4/aac,
-      // Chrome/Firefox want webm/opus. Let the browser pick from this ordered list.
-      const preferredTypes = [
-        'audio/mp4;codecs=mp4a.40.2',
-        'audio/mp4',
-        'audio/aac',
-        'audio/webm;codecs=opus',
-        'audio/webm',
-        'audio/ogg;codecs=opus',
-      ];
-      const supportedType = preferredTypes.find((t) =>
-        typeof MediaRecorder !== 'undefined' && typeof MediaRecorder.isTypeSupported === 'function'
-          ? MediaRecorder.isTypeSupported(t)
-          : false
-      ) || '';
+      const supportedType = selectMobileSafariRecordingMimeType(MediaRecorder);
       const recorder = supportedType
         ? new MediaRecorder(stream, { mimeType: supportedType })
         : new MediaRecorder(stream);
@@ -1340,7 +1352,7 @@ export function MercySpeakTab({
       };
       recorder.onstop = () => {
         setIsRecording(false);
-        if (!mediaChunksRef.current.length) { setRecordingError('No recording was captured. Please try again.'); stopActiveStream(); return; }
+        if (!mediaChunksRef.current.length) { setRecordingError(formatMobileAudioFailure('NO_AUDIO_CAPTURED')); stopActiveStream(); return; }
         // Use the recorder's actual mime type so the Blob matches what was encoded.
         // V9 fix (audit-user-journey-v9 Path 3 R1): on iOS Safari WebView,
         // recorder.mimeType is sometimes an empty string. Defaulting to
@@ -1356,7 +1368,7 @@ export function MercySpeakTab({
       mediaRecorderRef.current = recorder;
       recorder.start(250);
       setIsRecording(true);
-    } catch { setRecordingError('Microphone access was blocked or unavailable.'); setIsRecording(false); stopActiveStream(); }
+    } catch { setRecordingError(formatMobileAudioFailure('MIC_PERMISSION_BLOCKED')); setIsRecording(false); stopActiveStream(); }
   }
 
   function stopRecording() {
@@ -1364,7 +1376,184 @@ export function MercySpeakTab({
     // hook is disabled or never started — it's a no-op in those cases.
     try { streamingPronunciation.stop(); } catch { /* ignore */ }
     try { if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') mediaRecorderRef.current.stop(); }
-    catch { setRecordingError('Recording could not be stopped cleanly. Please try again.'); setIsRecording(false); stopActiveStream(); }
+    catch { setRecordingError(formatMobileAudioFailure('RECORDING_STOP_FAILED')); setIsRecording(false); stopActiveStream(); }
+  }
+
+  async function requestMobileRetestMic() {
+    appendMobileRetestLog('MIC_PERMISSION_REQUESTED', {
+      failureCode: null,
+      playbackPathUsed: 'not_attempted',
+      retryCount: mobileRetestLog.filter((line) => line.includes('[')).length,
+      recordingSucceeded: false,
+      playbackSucceeded: false,
+    });
+    try {
+      if (!navigator.mediaDevices?.getUserMedia) {
+        appendMobileRetestLog(formatMobileAudioFailure('MIC_PERMISSION_BLOCKED'), {
+          failureCode: 'MIC_PERMISSION_BLOCKED',
+          playbackPathUsed: 'not_attempted',
+          retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+          recordingSucceeded: false,
+          playbackSucceeded: false,
+        });
+        return;
+      }
+      mobileRetestStreamRef.current?.getTracks().forEach((track) => track.stop());
+      mobileRetestStreamRef.current = await navigator.mediaDevices.getUserMedia({ audio: true });
+      appendMobileRetestLog('MIC_PERMISSION_GRANTED', {
+        failureCode: null,
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+    } catch {
+      appendMobileRetestLog(formatMobileAudioFailure('MIC_PERMISSION_BLOCKED'), {
+        failureCode: 'MIC_PERMISSION_BLOCKED',
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+    }
+  }
+
+  async function startMobileRetestRecording() {
+    if (typeof MediaRecorder === 'undefined') {
+      appendMobileRetestLog(formatMobileAudioFailure('MEDIARECORDER_UNSUPPORTED'), {
+        failureCode: 'MEDIARECORDER_UNSUPPORTED',
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+      return;
+    }
+    try {
+      if (!mobileRetestStreamRef.current) await requestMobileRetestMic();
+      const stream = mobileRetestStreamRef.current;
+      if (!stream) return;
+      if (mobileRetestAudioUrl) {
+        URL.revokeObjectURL(mobileRetestAudioUrl);
+        setMobileRetestAudioUrl('');
+      }
+      const mimeType = selectMobileSafariRecordingMimeType(MediaRecorder);
+      appendMobileRetestLog(`MIME_SELECTED:${mimeType || 'browser-default'}`);
+      const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+      mobileRetestChunksRef.current = [];
+      recorder.ondataavailable = (event) => {
+        if (event.data.size > 0) mobileRetestChunksRef.current.push(event.data);
+      };
+      recorder.onerror = () => appendMobileRetestLog(formatMobileAudioFailure('RECORDING_START_FAILED'), {
+        failureCode: 'RECORDING_START_FAILED',
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+      recorder.onstop = () => {
+        if (!mobileRetestChunksRef.current.length) {
+          appendMobileRetestLog(formatMobileAudioFailure('NO_AUDIO_CAPTURED'), {
+            failureCode: 'NO_AUDIO_CAPTURED',
+            playbackPathUsed: 'not_attempted',
+            retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+            recordingSucceeded: false,
+            playbackSucceeded: false,
+          });
+          return;
+        }
+        const blob = new Blob(mobileRetestChunksRef.current, {
+          type: recorder.mimeType || mimeType || 'audio/mp4',
+        });
+        setMobileRetestAudioUrl(URL.createObjectURL(blob));
+        appendMobileRetestLog('RECORDING_STOPPED', {
+          failureCode: null,
+          playbackPathUsed: 'not_attempted',
+          retryCount: mobileRetestLog.filter((line) => line.includes('[')).length,
+          recordingSucceeded: true,
+          playbackSucceeded: false,
+        });
+      };
+      mobileRetestRecorderRef.current = recorder;
+      recorder.start(250);
+      appendMobileRetestLog('RECORDING_STARTED', {
+        failureCode: null,
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+    } catch {
+      appendMobileRetestLog(formatMobileAudioFailure('RECORDING_START_FAILED'), {
+        failureCode: 'RECORDING_START_FAILED',
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+    }
+  }
+
+  function stopMobileRetestRecording() {
+    try {
+      if (mobileRetestRecorderRef.current && mobileRetestRecorderRef.current.state !== 'inactive') {
+        mobileRetestRecorderRef.current.stop();
+        return;
+      }
+      appendMobileRetestLog(formatMobileAudioFailure('NO_AUDIO_CAPTURED'), {
+        failureCode: 'NO_AUDIO_CAPTURED',
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+    } catch {
+      appendMobileRetestLog(formatMobileAudioFailure('RECORDING_STOP_FAILED'), {
+        failureCode: 'RECORDING_STOP_FAILED',
+        playbackPathUsed: 'not_attempted',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: false,
+        playbackSucceeded: false,
+      });
+    }
+  }
+
+  function playMobileRetestBrowserTts() {
+    if (!supportsSpeechSynthesis || typeof window === 'undefined') {
+      appendMobileRetestLog(formatMobileAudioFailure('BROWSER_TTS_UNAVAILABLE'), {
+        failureCode: 'BROWSER_TTS_UNAVAILABLE',
+        playbackPathUsed: 'browser_tts',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: Boolean(mobileRetestAudioUrl),
+        playbackSucceeded: false,
+      });
+      return;
+    }
+    try {
+      speakViaTTS('Teacher Mercy mobile audio retest is audible.');
+      appendMobileRetestLog('BROWSER_TTS_STARTED', {
+        failureCode: null,
+        playbackPathUsed: 'browser_tts',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length,
+        recordingSucceeded: Boolean(mobileRetestAudioUrl),
+        playbackSucceeded: true,
+      });
+      appendMobileRetestLog('CLOUD_TTS_NOT_REQUIRED');
+    } catch {
+      appendMobileRetestLog(formatMobileAudioFailure('PLAYBACK_BLOCKED'), {
+        failureCode: 'PLAYBACK_BLOCKED',
+        playbackPathUsed: 'browser_tts',
+        retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+        recordingSucceeded: Boolean(mobileRetestAudioUrl),
+        playbackSucceeded: false,
+      });
+    }
+  }
+
+  async function handleCopyMobileDiagnostics() {
+    const result = await copyMobileAudioDiagnosticsToClipboard();
+    setMobileDiagnosticsCopyStatus(result.ok ? 'copied' : 'failed');
+    appendMobileRetestLog(result.ok ? 'DIAGNOSTICS_COPIED' : 'DIAGNOSTICS_COPY_FAILED');
   }
 
   function handleResetAttempt() {
@@ -1527,6 +1716,101 @@ export function MercySpeakTab({
             )}
           </div>
         ) : null}
+      </div>
+    );
+  };
+
+  const renderMobileAudioRetestPanel = () => {
+    if (!showMobileAudioRetest) return null;
+    const support = getMobileAudioSupportSnapshot({
+      hasGetUserMedia: Boolean(navigator.mediaDevices?.getUserMedia),
+      mediaRecorderCtor: typeof MediaRecorder !== 'undefined' ? MediaRecorder : undefined,
+      hasSpeechSynthesis: supportsSpeechSynthesis,
+    });
+    const checklist = buildMobileAudioRetestChecklist();
+    return (
+      <div className="rounded-[20px] border border-sky-200 bg-sky-50 p-3 text-sm text-slate-800 shadow-sm" data-testid="mobile-audio-retest-panel">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="font-semibold text-slate-950">Mobile audio retest · Kiểm tra âm thanh mobile</p>
+            <p className="mt-1 text-xs leading-5 text-slate-600">
+              Dev-only panel. Use on iPhone Safari/Capacitor; first audible output uses browser TTS, not cloud TTS.
+            </p>
+          </div>
+          <span className="rounded-full bg-white px-2 py-1 text-[11px] font-semibold text-sky-800">
+            {support.selectedMimeType}
+          </span>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-5">
+          <Button type="button" variant="outline" onClick={() => void requestMobileRetestMic()} className="h-10 rounded-xl bg-white text-xs">
+            Request mic
+          </Button>
+          <Button type="button" variant="outline" onClick={() => void startMobileRetestRecording()} className="h-10 rounded-xl bg-white text-xs">
+            Start record
+          </Button>
+          <Button type="button" variant="outline" onClick={stopMobileRetestRecording} className="h-10 rounded-xl bg-white text-xs">
+            Stop
+          </Button>
+          <Button type="button" variant="outline" onClick={() => {
+            const audio = mobileRetestAudioUrl ? new Audio(mobileRetestAudioUrl) : null;
+            if (!audio) appendMobileRetestLog(formatMobileAudioFailure('NO_AUDIO_CAPTURED'), {
+              failureCode: 'NO_AUDIO_CAPTURED',
+              playbackPathUsed: 'recording_playback',
+              retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+              recordingSucceeded: false,
+              playbackSucceeded: false,
+            });
+            else void audio.play()
+              .then(() => appendMobileRetestLog('RECORDING_PLAYBACK_STARTED', {
+                failureCode: null,
+                playbackPathUsed: 'recording_playback',
+                retryCount: mobileRetestLog.filter((line) => line.includes('[')).length,
+                recordingSucceeded: true,
+                playbackSucceeded: true,
+              }))
+              .catch(() => appendMobileRetestLog(formatMobileAudioFailure('PLAYBACK_BLOCKED'), {
+                failureCode: 'PLAYBACK_BLOCKED',
+                playbackPathUsed: 'recording_playback',
+                retryCount: mobileRetestLog.filter((line) => line.includes('[')).length + 1,
+                recordingSucceeded: true,
+                playbackSucceeded: false,
+              }));
+          }} className="h-10 rounded-xl bg-white text-xs">
+            Play recording
+          </Button>
+          <Button type="button" variant="outline" onClick={playMobileRetestBrowserTts} className="h-10 rounded-xl bg-white text-xs">
+            Teacher Mercy
+          </Button>
+        </div>
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <Button type="button" variant="outline" onClick={() => void handleCopyMobileDiagnostics()} className="h-10 rounded-xl bg-white text-xs" data-testid="copy-mobile-audio-diagnostics">
+            Copy diagnostics
+          </Button>
+          <span className="text-xs text-slate-600" aria-live="polite">
+            {mobileDiagnosticsCopyStatus === 'copied'
+              ? 'Copied anonymized diagnostics · Đã sao chép chẩn đoán ẩn danh'
+              : mobileDiagnosticsCopyStatus === 'failed'
+                ? 'Diagnostics copy failed. Please try again. · Không sao chép được chẩn đoán. Hãy thử lại.'
+                : 'Anonymized, last 5 events only · Ẩn danh, chỉ 5 sự kiện gần nhất'}
+          </span>
+        </div>
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
+          <ol className="list-decimal space-y-1 pl-5 text-xs leading-5 text-slate-700">
+            {checklist.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+          <div className="rounded-xl bg-white p-2 text-xs leading-5">
+            <p className="font-semibold text-slate-900">Runtime status</p>
+            <p>Mic: {support.micPermissionRequestAvailable ? 'available' : 'missing'}</p>
+            <p>Recorder: {support.mediaRecorderSupported ? 'available' : 'missing'}</p>
+            <p>Browser TTS: {support.browserTtsFallbackAvailable ? 'available' : 'missing'}</p>
+            <p>Cloud TTS before audible output: {support.cloudTtsRequiredForFirstAudibleOutput ? 'required' : 'not required'}</p>
+            <div className="mt-2 rounded-lg bg-slate-950 p-2 font-mono text-[11px] text-sky-100">
+              {(mobileRetestLog.length ? mobileRetestLog : ['Awaiting retest tap.']).map((line, index) => (
+                <div key={`${line}-${index}`}>{line}</div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
@@ -1772,6 +2056,7 @@ export function MercySpeakTab({
           {!supportsMediaRecording ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>This browser does not support in-page voice recording here.</p></div></div> : null}
           {recognitionError ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recognitionError}</p></div></div> : null}
           {recordingError   ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recordingError}</p></div></div>   : null}
+          {renderMobileAudioRetestPanel()}
 
           <div className={`rounded-[20px] md:rounded-[24px] border p-3 md:p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
             <div className="flex items-start justify-between gap-3">

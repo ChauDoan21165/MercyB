@@ -71,6 +71,8 @@
     "pr:ready": "node scripts/pr-ready.mjs",
     "test:resume": "vitest run src/pages/placement/v3/__tests__/ResultsPage.resumeSmoke.test.tsx",
     "verify:v3-placement": "node scripts/verify-v3-placement.mjs",
+    "test:mobile-audio": "vitest run src/lib/speech/__tests__/mobileSafariSpeakingRuntime.test.ts src/components/mercy-guide/__tests__/MercySpeakTab.mobileAudio.test.tsx",
+    "verify:mobile-audio": "node scripts/verify-mobile-audio.mjs",
     "test:ci": "vitest run --reporter=verbose",
     "test:e2e": "playwright test -c playwright.smoke.config.ts",
     "test:e2e:ui": "playwright test -c playwright.smoke.config.ts --ui",
