@@ -32,3 +32,6 @@ create index if not exists idx_responses_session_id
 
 create index if not exists idx_responses_session_task
   on public.placement_v3_responses (session_id, task_index);
+
+create unique index if not exists uniq_responses_session_task
+  on public.placement_v3_responses (session_id, task_index);

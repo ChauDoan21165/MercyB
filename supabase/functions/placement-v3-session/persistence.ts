@@ -5,6 +5,7 @@ import {
   type PersistSessionInput,
   type PlacementV3Profile,
   type PlacementV3Response,
+  type PlacementV3ResponseWriteResult,
   type PlacementV3Session,
   type PromptTask,
   type Recommendation,
@@ -30,10 +31,7 @@ export interface SupabaseLike {
 export function createPersistence(
   db: SupabaseLike,
   base: Pick<OrchestratorDeps, "now" | "newId" | "log">,
-): Omit<
-  OrchestratorDeps,
-  "grade" | "recommendLessons"
-> {
+): Omit<OrchestratorDeps, "grade" | "recommendLessons"> {
   return {
     ...base,
     async loadLatestInProgress(userId) {
@@ -67,6 +65,17 @@ export function createPersistence(
       if (error) throw new Error(`loadResponses: ${error.message}`);
       return Array.isArray(data) ? data.map(rowToResponse) : [];
     },
+    async updateResponse(response) {
+      const { data, error } = await db
+        .from("placement_v3_responses")
+        .update(response)
+        .eq("session_id", response.session_id)
+        .eq("task_index", response.task_index)
+        .select("*")
+        .single();
+      if (error) throw new Error(`updateResponse: ${error.message}`);
+      return rowToResponse(data);
+    },
     async loadCurrentProfile(sessionId, userId) {
       const { data, error } = await db
         .from("placement_v3_profiles")
@@ -98,14 +107,9 @@ export function createPersistence(
       if (error) throw new Error(`updateSession: ${error.message}`);
       return rowToSession(data);
     },
-    async insertResponse(response) {
-      const { data, error } = await db
-        .from("placement_v3_responses")
-        .insert(response)
-        .select("*")
-        .single();
-      if (error) throw new Error(`insertResponse: ${error.message}`);
-      return rowToResponse(data);
+    async insertResponse(response): Promise<PlacementV3ResponseWriteResult> {
+      const claimed = await insertResponseWithConflictHandling(db, response);
+      return claimed;
     },
     async markProfilesNotCurrent(userId) {
       const { error } = await db
@@ -264,6 +268,36 @@ function normalizePair(pair: unknown): LanguagePair {
     };
   }
   return { native: "vi", target: "en" };
+}
+
+function isUniqueResponseConflict(message?: string) {
+  return /unique|duplicate/i.test(String(message ?? ""));
+}
+
+async function insertResponseWithConflictHandling(
+  db: SupabaseLike,
+  response: PlacementV3Response,
+): Promise<PlacementV3ResponseWriteResult> {
+  const { data, error } = await db
+    .from("placement_v3_responses")
+    .insert(response)
+    .select("*")
+    .single();
+  if (!error) {
+    return { response: rowToResponse(data), inserted: true };
+  }
+  if (!isUniqueResponseConflict(error.message)) {
+    throw new Error(`insertResponse: ${error.message}`);
+  }
+  const { data: existing, error: loadError } = await db
+    .from("placement_v3_responses")
+    .select("*")
+    .eq("session_id", response.session_id)
+    .eq("task_index", response.task_index)
+    .maybeSingle();
+  if (loadError) throw new Error(`insertResponse: ${loadError.message}`);
+  if (!existing) throw new Error("insertResponse: duplicate response missing after conflict");
+  return { response: rowToResponse(existing), inserted: false };
 }
 
 export function makeSession(input: {
