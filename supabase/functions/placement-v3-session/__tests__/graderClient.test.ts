@@ -1,7 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 import {
+  createAzureSpeakingGrader,
   createHttpWritingGrader,
   fallbackAssessment,
+  gradeWithClient,
   stubGrade,
 } from "../graderClient.ts";
 import type { GraderInput } from "../types.ts";
@@ -133,6 +135,109 @@ describe("placement v3 grader client", () => {
     }));
     expect(result.ok).toBe(true);
     expect(result.version).toBe("stub-speaking-grader-v1");
+  });
+
+  it("routes speaking input through the Azure speaking grader when supplied", async () => {
+    const result = await gradeWithClient(input({
+      modality: "speaking",
+      audioStoragePath: "validation.wav",
+    }), {
+      async gradeWriting() {
+        throw new Error("writing path should not run");
+      },
+      async gradeSpeaking() {
+        return {
+          ok: true,
+          assessment: {
+            overallLevel: "B1",
+            confidence: 0.8,
+            metadata: { provider: "azure" },
+          },
+          version: "azure-speaking-pronunciation-assessment",
+        };
+      },
+    });
+
+    expect(result.ok).toBe(true);
+    expect(result.version).toBe("azure-speaking-pronunciation-assessment");
+    expect(result.assessment.metadata?.provider).toBe("azure");
+  });
+
+  it("normalizes successful Azure speaking pronunciation responses", async () => {
+    const fetchImpl = vi.fn(async () =>
+      new Response(JSON.stringify({
+        RecognitionStatus: "Success",
+        DisplayText: "I want to improve my pronunciation.",
+        NBest: [
+          {
+            PronScore: 78,
+            AccuracyScore: 80,
+            FluencyScore: 72,
+            CompletenessScore: 90,
+            Words: [
+              {
+                Word: "pronunciation",
+                AccuracyScore: 62,
+                Phonemes: [{ Phoneme: "n", AccuracyScore: 55 }],
+              },
+            ],
+          },
+        ],
+      }), { status: 200 })
+    );
+    const client = createAzureSpeakingGrader({
+      azureKey: "key",
+      fetchImpl,
+      loadAudio: async () => new ArrayBuffer(44),
+    });
+
+    const result = await client.gradeSpeaking(input({
+      modality: "speaking",
+      audioStoragePath: "validation.wav",
+      responseText: "I want to improve my pronunciation.",
+    }));
+
+    expect(result.ok).toBe(true);
+    expect(result.version).toBe("azure-speaking-pronunciation-assessment");
+    expect(result.assessment.overallLevel).toBe("A1");
+    expect(result.assessment.metadata).toMatchObject({
+      provider: "azure",
+      providerPath: "placement-v3-speaking",
+      fallback: false,
+      pronunciationScore: 78,
+    });
+    expect(fetchImpl).toHaveBeenCalledOnce();
+  });
+
+  it("marks Azure speaking timeouts with retryable recovery metadata", async () => {
+    const fetchImpl = vi.fn((_url, init) =>
+      new Promise<Response>((_resolve, reject) => {
+        init?.signal?.addEventListener("abort", () => {
+          reject(new DOMException("aborted", "AbortError"));
+        });
+      })
+    );
+    const client = createAzureSpeakingGrader({
+      azureKey: "key",
+      fetchImpl,
+      timeoutMs: 1,
+      loadAudio: async () => new ArrayBuffer(44),
+    });
+
+    const result = await client.gradeSpeaking(input({
+      modality: "speaking",
+      audioStoragePath: "validation.wav",
+    }));
+
+    expect(result.ok).toBe(false);
+    expect(result.errorCode).toBe("timeout");
+    expect(result.assessment.metadata).toMatchObject({
+      fallback: true,
+      errorCode: "timeout",
+      providerTimeout: true,
+      retryable: true,
+      recoverable: true,
+    });
   });
 
   it("fallback assessment marks low confidence", () => {
