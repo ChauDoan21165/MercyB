@@ -4,8 +4,9 @@
  * V5 is additive to V4. All V5 exports are gated behind V5_ENABLED.
  * Import from this module rather than submodules directly.
  *
- * Current state (V5-002): feature flag + evaluation harness skeleton only.
- * No personalization, forecast, or provider-runtime implementation yet.
+ * Current state (V5-004): feature flag + evaluation harness skeleton +
+ * persistence layer. No personalization, forecast, or provider-runtime
+ * implementation yet.
  */
 
 // Feature flag (always available — determines whether V5 is active)
@@ -40,3 +41,18 @@ export {
   type V5HarnessState,
   type V5ProgressReport,
 } from "./v5Harness";
+
+// Persistence layer (V5-004) — typed Supabase helpers, feature-gated
+export * as V5Persistence from "./persistence";
+export type {
+  V5LearnerMemoryRow,
+  V5TelemetryEventRow,
+  V5OrchestrationSnapshotRow,
+  V5ProviderDecisionRow,
+  V5CurriculumPlanRow,
+  V5SnapshotType,
+  V5AdminLearnerMemorySummary,
+  V5AdminTelemetryDaily,
+  V5AdminProviderDecisionSummary,
+  V5AdminCurriculumPlanSummary,
+} from "./persistenceTypes";
