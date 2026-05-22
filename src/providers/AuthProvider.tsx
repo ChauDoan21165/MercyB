@@ -26,19 +26,7 @@ import React, {
   useState,
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-// supabase is loaded lazily via getSupabase() to defer the ~52 kB
-// Supabase chunk from the initial bundle (Lighthouse PR 2).
-
-// ─── Lazy cached Supabase client ────────────────────────────────────
-
-let _supabase: typeof import("@/lib/supabaseClient").supabase | null = null;
-
-async function getSupabase() {
-  if (!_supabase) {
-    _supabase = (await import("@/lib/supabaseClient")).supabase;
-  }
-  return _supabase;
-}
+import { supabase } from "@/lib/supabaseClient";
 import {
   readAnonymousPair,
   clearAnonymousPair,
@@ -103,7 +91,7 @@ async function backfillProfileRowOnAuth(
 ): Promise<void> {
   if (!userId) return;
   try {
-    const { data: existing, error: selectError } = await (await getSupabase())
+    const { data: existing, error: selectError } = await supabase
       .from("profiles")
       .select("id")
       .eq("id", userId)
@@ -115,7 +103,7 @@ async function backfillProfileRowOnAuth(
       return;
     }
     if (existing) return;
-    const { error: upsertError } = await (await getSupabase())
+    const { error: upsertError } = await supabase
       .from("profiles")
       .upsert(
         { id: userId, email: email ?? null },
@@ -193,7 +181,7 @@ async function processReferralOnAuth(userId: string | null): Promise<void> {
 async function syncLanguagePairOnAuth(userId: string | null): Promise<void> {
   if (!userId) return;
   try {
-    const { data: existing, error: selectError } = await (await getSupabase())
+    const { data: existing, error: selectError } = await supabase
       .from("profiles")
       .select("id, native_language")
       .eq("id", userId)
@@ -216,7 +204,7 @@ async function syncLanguagePairOnAuth(userId: string | null): Promise<void> {
     const targets =
       stored && stored.targets.length > 0 ? stored.targets : ["en"];
 
-    const { error: updateError } = await (await getSupabase())
+    const { error: updateError } = await supabase
       .from("profiles")
       .update({
         native_language: native,
@@ -313,7 +301,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     safeSetLoading(true);
 
     try {
-      const { data, error } = await (await getSupabase()).auth.getSession();
+      const { data, error } = await supabase.auth.getSession();
 
       if (requestId !== refreshRequestIdRef.current) return;
 
@@ -345,7 +333,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     safeSetLoading(true);
 
     try {
-      const { error } = await (await getSupabase()).auth.signOut();
+      const { error } = await supabase.auth.signOut();
 
       if (error && import.meta.env.DEV) {
         console.warn("[auth] signOut failed:", error.message);
@@ -380,7 +368,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         if (!mountedRef.current) return;
 
-        const { data: authListener } = (await getSupabase()).auth.onAuthStateChange(
+        const { data: authListener } = supabase.auth.onAuthStateChange(
           (_event, nextSession) => {
             applySession(nextSession ?? null);
             safeSetLoading(false);
@@ -430,7 +418,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await bootstrapAnonymousSession();
         if (!mountedRef.current) return;
 
-        const { data, error } = await (await getSupabase()).auth.getSession();
+        const { data, error } = await supabase.auth.getSession();
         if (!mountedRef.current) return;
 
         if (error && import.meta.env.DEV) {
