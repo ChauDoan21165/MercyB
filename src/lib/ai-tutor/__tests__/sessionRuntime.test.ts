@@ -39,6 +39,8 @@ const FIXED_NOW = 1_711_929_600_000; // 2024-04-01T00:00:00.000Z
 
 const EMPTY_PAYLOAD: Record<string, unknown> = Object.create(null) as Record<string, unknown>;
 
+type TestEventWithPayload = { type: string; payload: Record<string, unknown> } & Record<string, unknown>;
+
 function makeSession(overrides: Partial<TutorSession> = {}): TutorSession {
   const base = createTutorSession({
     sessionId: `test-${Math.random().toString(36).slice(2, 8)}`,
@@ -161,7 +163,11 @@ describe("T1 — State Transition Exhaustion", () => {
       if (!eventDef) continue;
 
       // Build session in target state
-      const session = makeSessionInState(from, { ...eventDef, payload: (eventDef as Record<string, unknown>).payload ?? EMPTY_PAYLOAD });
+      const eventWithPayload: TestEventWithPayload = {
+        ...eventDef,
+        payload: ((eventDef as Record<string, unknown>).payload ?? EMPTY_PAYLOAD) as Record<string, unknown>,
+      };
+      const session = makeSessionInState(from, eventWithPayload);
 
       const result = dispatchTutorEvent(session, eventDef as never);
       if (!result.ok) {
@@ -179,7 +185,11 @@ describe("T1 — State Transition Exhaustion", () => {
         const key = `${state}:${ev.type}`;
         if (validTransitions[key]) continue; // skip valid ones
 
-        const session = makeSessionInState(state, { ...ev, payload: (ev as Record<string, unknown>).payload ?? EMPTY_PAYLOAD });
+        const eventWithPayload2: TestEventWithPayload = {
+          ...ev,
+          payload: ((ev as Record<string, unknown>).payload ?? EMPTY_PAYLOAD) as Record<string, unknown>,
+        };
+        const session = makeSessionInState(state, eventWithPayload2);
         const result = dispatchTutorEvent(session, ev as never);
         if (!result.ok) rejected++;
       }
