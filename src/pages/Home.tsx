@@ -132,6 +132,22 @@ export default function Home() {
     return () => { window.removeEventListener("storage", onStorage); obs.disconnect(); };
   }, []);
 
+  // Remove the static hero shell that index.html injected for instant LCP.
+  // The shell provides a 0.5–1.0s LCP; React replaces it with the real component.
+  useEffect(() => {
+    const el = document.getElementById('mb-static-hero');
+    if (!el) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      el.remove();
+    } else {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 150ms ease-out';
+      const id = setTimeout(() => el.remove(), 150);
+      return () => clearTimeout(id);
+    }
+  }, []);
+
   useEffect(() => {
     if (typeof document === "undefined") return undefined;
     const sync = () => setIsTeacherMercyOpen(hasOpenTeacherMercyPanel());
