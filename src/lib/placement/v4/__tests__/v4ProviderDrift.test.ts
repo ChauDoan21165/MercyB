@@ -92,6 +92,10 @@ describe("V4 provider drift — health state transitions", () => {
       status: "healthy",
       errorRate: 0,
       consecutiveFailures: 0,
+      // observedAtMs must be current, otherwise the stale-health check
+      // (maxHealthAgeMs=60s for speaking) rejects the provider even though
+      // the quarantine has expired.
+      observedAtMs: nowMs,
     };
 
     const result = selectPlacementV4Provider(
@@ -147,8 +151,8 @@ describe("V4 provider drift — health state transitions", () => {
     expect(q1).toBe(nowMs + 60_000);
     // 3 failures → 180s quarantine
     expect(q3).toBe(nowMs + 180_000);
-    // 10 failures → capped at 15 minutes
-    expect(q10).toBe(nowMs + 15 * 60_000);
+    // 10 failures → 10 min quarantine (10 * 60s = 600s; cap at 15 min not hit)
+    expect(q10).toBe(nowMs + 10 * 60_000);
   });
 });
 
