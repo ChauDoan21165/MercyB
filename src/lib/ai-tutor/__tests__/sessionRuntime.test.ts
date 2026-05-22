@@ -159,7 +159,7 @@ describe("T1 — State Transition Exhaustion", () => {
       if (!eventDef) continue;
 
       // Build session in target state
-      const session = makeSessionInState(from, eventDef);
+      const session = makeSessionInState(from, { ...eventDef, payload: (eventDef as Record<string, unknown>).payload ?? {} });
 
       const result = dispatchTutorEvent(session, eventDef as never);
       if (!result.ok) {
@@ -177,7 +177,7 @@ describe("T1 — State Transition Exhaustion", () => {
         const key = `${state}:${ev.type}`;
         if (validTransitions[key]) continue; // skip valid ones
 
-        const session = makeSessionInState(state, ev);
+        const session = makeSessionInState(state, { ...ev, payload: (ev as Record<string, unknown>).payload ?? {} });
         const result = dispatchTutorEvent(session, ev as never);
         if (!result.ok) rejected++;
       }
@@ -572,7 +572,7 @@ describe("No-I/O Invariants", () => {
     const a = createTutorSession({ sessionId: "s1", userId: "u1", tier: "free", entryPoint: "ask", nowMs: FIXED_NOW });
     const b = createTutorSession({ sessionId: "s1", userId: "u1", tier: "free", entryPoint: "ask", nowMs: FIXED_NOW });
     expect(a.sessionId).toBe(b.sessionId);
-    expect(a.tier).toBe(b.tier);
+    expect(a.context.tier).toBe(b.context.tier);
     expect(a.turnsRemaining).toBe(b.turnsRemaining);
   });
 });
