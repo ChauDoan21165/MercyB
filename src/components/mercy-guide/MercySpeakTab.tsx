@@ -1178,13 +1178,17 @@ export function MercySpeakTab({
     // Adult guard: don't let Mercy read raw user-typed custom text aloud,
     // because TTS can model bad grammar. Word-chip taps (textOverride set)
     // and corrected / enhanced text are still allowed; recording is unaffected.
+    // Only block when correctedText or enhancedText actually exists AND differs
+    // from the cleaned custom text — empty correction/enhancement means the
+    // API hasn't responded yet and should not block safe text.
+    const cleanedCustomText = cleanText(customText);
     const isUnsafeCustom =
       !isKidsMode &&
       !textOverride &&
       variant === 'custom' &&
       customText.trim().length > 0 &&
-      cleanText(customText) !== correctedText &&
-      cleanText(customText) !== enhancedText;
+      ((correctedText && cleanedCustomText !== correctedText) ||
+        (enhancedText && cleanedCustomText !== enhancedText));
     if (isUnsafeCustom) {
       const trimmed = customText.trim();
       const suggestion = /\bbuy\b/i.test(trimmed)
