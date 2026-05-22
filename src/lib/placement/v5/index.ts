@@ -56,3 +56,7 @@ export type {
   V5AdminProviderDecisionSummary,
   V5AdminCurriculumPlanSummary,
 } from "./persistenceTypes";
+
+// Lifecycle wiring (V5-005) — orchestration wrapper over V4 core
+export * as V5Lifecycle from "./v5Lifecycle";
+export type { V5LifecycleState, V5LifecyclePhase } from "./v5Lifecycle";
