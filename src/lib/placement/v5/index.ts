@@ -16,6 +16,7 @@ export {
   V5_FORECAST_ENABLED,
   V5_PROVIDER_RUNTIME_ENABLED,
   V5_EVALUATION_HARNESS_ENABLED,
+  V5_ADMIN_OBSERVABILITY_ENABLED,
   isV5CapabilityEnabled,
   enabledV5Capabilities,
   requireV5Enabled,
@@ -60,3 +61,15 @@ export type {
 // Lifecycle wiring (V5-005) — orchestration wrapper over V4 core
 export * as V5Lifecycle from "./v5Lifecycle";
 export type { V5LifecycleState, V5LifecyclePhase } from "./v5Lifecycle";
+
+// Admin observability (V5-006) — read-only dashboards, feature-gated
+export * as V5AdminObservability from "./adminObservability";
+export type {
+  V5AdminDashboardHeader,
+  V5ProviderHealthDashboard,
+  V5LearnerMemoryDashboard,
+  V5TelemetryDashboard,
+  V5CurriculumPlanDashboard,
+  V5AdminFullSnapshot,
+  V5AdminQueryOptions,
+} from "./adminObservabilityTypes";
