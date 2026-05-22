@@ -510,7 +510,6 @@ export default function Home() {
               height={1024}
               fetchPriority="high"
               loading="eager"
-              decoding="async"
               onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 20%" }}
             />
