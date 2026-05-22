@@ -159,7 +159,7 @@ describe("T1 — State Transition Exhaustion", () => {
       if (!eventDef) continue;
 
       // Build session in target state
-      const session = makeSessionInState(from, { ...eventDef, payload: (eventDef as Record<string, unknown>).payload ?? {} });
+      const session = makeSessionInState(from, { ...eventDef, payload: (eventDef as Record<string, unknown>).payload ?? ({} as Record<string, unknown>) });
 
       const result = dispatchTutorEvent(session, eventDef as never);
       if (!result.ok) {
@@ -177,7 +177,7 @@ describe("T1 — State Transition Exhaustion", () => {
         const key = `${state}:${ev.type}`;
         if (validTransitions[key]) continue; // skip valid ones
 
-        const session = makeSessionInState(state, { ...ev, payload: (ev as Record<string, unknown>).payload ?? {} });
+        const session = makeSessionInState(state, { ...ev, payload: (ev as Record<string, unknown>).payload ?? ({} as Record<string, unknown>) });
         const result = dispatchTutorEvent(session, ev as never);
         if (!result.ok) rejected++;
       }
