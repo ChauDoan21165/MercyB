@@ -123,6 +123,29 @@ export default defineConfig({
         ]
       : []),
 
+    // Preload the Home chunk so the landing-page LCP (Home hero H1)
+    // doesn't wait for the lazyWithRetry() waterfall. The plugin
+    // reads the generated Home-*.js filename from the build bundle so
+    // the injected <link> always points at the correct hashed asset.
+    // Lighthouse PR 5.
+    {
+      name: 'preload-home-chunk',
+      apply: 'build',
+      transformIndexHtml: {
+        order: 'post',
+        handler(html, ctx) {
+          // ctx.bundle is available in post-order during Vite build
+          if (!ctx.bundle) return html;
+          const homeFile = Object.keys(ctx.bundle).find(
+            (f) => f.startsWith('assets/Home-') && f.endsWith('.js'),
+          );
+          if (!homeFile) return html;
+          const preloadTag = `<link rel="modulepreload" crossorigin href="/${homeFile}" />`;
+          return html.replace('</head>', `  ${preloadTag}\n  </head>`);
+        },
+      },
+    },
+
     VitePWA({
       // Returning users were stuck on the prior deploy because the SW
       // ran with skipWaiting:false / clientsClaim:false AND served the
