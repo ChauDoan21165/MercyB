@@ -10,14 +10,15 @@
 
 import type {
   LearnerMemory,
-  OrchestrationSnapshot,
-  OrchestrationSnapshotFull,
-  OrchestrationSnapshotCompact,
   PlacementV4ProviderDecisionRecord,
   PlacementV4ProviderCapability,
   PlacementV4FailoverReason,
   PlacementV4BoundaryMode,
 } from "@/lib/placement/v4";
+import type {
+  OrchestrationSnapshotFull,
+  OrchestrationSnapshotCompact,
+} from "@/lib/placement/v4/telemetry";
 
 // ─── Learner Memory ───────────────────────────────────────────────────
 
