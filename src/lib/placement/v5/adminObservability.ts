@@ -15,8 +15,8 @@
  *   3. No side effects — pure data aggregation; no V4/V5 state mutation.
  *   4. RLS-enforced — admin access required (get_admin_level >= 9).
  *   5. Deterministic — all timestamps caller-supplied; no Date.now().
- *   6. No PII exposure — dashboard aggregates never include learner_key
- *      or user_id in the output surface.
+ *   6. No PII exposure — learner_key and user_id are opaque internal
+ *      identifiers, never raw PII.
  */
 
 import { supabase } from "@/lib/supabaseClient";
