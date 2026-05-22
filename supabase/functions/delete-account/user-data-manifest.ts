@@ -412,6 +412,19 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "v_user_pronunciation_stats",      action: "skip_view", reason: "view over speech_attempts" },
 
   // ────────────────────────────────────────────────────────────
+  // V5 placement data → DELETE (V5-004 persistence schema)
+  // ────────────────────────────────────────────────────────────
+  { table: "v4_learner_memory",               action: "delete",    column: "user_id", reason: "V5 learner memory (append-only event log + projections)" },
+  { table: "v4_telemetry_events",             action: "delete",    column: "user_id", reason: "V5 telemetry event log" },
+  { table: "v4_orchestration_snapshots",      action: "delete",    column: "user_id", reason: "V5 orchestration snapshot history" },
+  { table: "v4_provider_decisions",           action: "delete",    column: "user_id", reason: "V5 provider selection decision audit" },
+  { table: "v4_curriculum_plans",             action: "delete",    column: "user_id", reason: "V5 curriculum plan history" },
+  { table: "v4_admin_learner_memory_summary",     action: "skip_view", reason: "V5 admin view over v4_learner_memory" },
+  { table: "v4_admin_telemetry_daily",            action: "skip_view", reason: "V5 admin view over v4_telemetry_events" },
+  { table: "v4_admin_provider_decisions_summary", action: "skip_view", reason: "V5 admin view over v4_provider_decisions" },
+  { table: "v4_admin_curriculum_plans_summary",   action: "skip_view", reason: "V5 admin view over v4_curriculum_plans" },
+
+  // ────────────────────────────────────────────────────────────
   // profiles — handled separately at the END of delete-account
   // (after all FKs clean). Not looped via the manifest.
   // ────────────────────────────────────────────────────────────
