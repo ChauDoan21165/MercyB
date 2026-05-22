@@ -33,19 +33,24 @@ export const V5_PROVIDER_RUNTIME_ENABLED: boolean = false;
 /** V5 evaluation harness (benchmarks, quality metrics, journey simulations). */
 export const V5_EVALUATION_HARNESS_ENABLED: boolean = false;
 
+/** V5 admin observability (read-only dashboards, no provider I/O). */
+export const V5_ADMIN_OBSERVABILITY_ENABLED: boolean = false;
+
 // ─── Capability check helpers ─────────────────────────────────────────
 
 export type V5Capability =
   | "personalization"
   | "forecast"
   | "provider_runtime"
-  | "evaluation_harness";
+  | "evaluation_harness"
+  | "admin_observability";
 
 const CAPABILITY_MAP: Record<V5Capability, boolean> = {
   personalization: V5_PERSONALIZATION_ENABLED,
   forecast: V5_FORECAST_ENABLED,
   provider_runtime: V5_PROVIDER_RUNTIME_ENABLED,
   evaluation_harness: V5_EVALUATION_HARNESS_ENABLED,
+  admin_observability: V5_ADMIN_OBSERVABILITY_ENABLED,
 };
 
 /**
