@@ -488,7 +488,7 @@ export default defineConfig({
       resolveDependencies(_filename, deps) {
         return deps.filter(
           (dep) =>
-            !dep.includes('mercy-guide-panel') &&
+            !dep.includes('mercy-guide-') &&
             !dep.includes('mercy-speak-tab') &&
             !dep.includes('mercy-teacher-tab') &&
             !dep.includes('mercy-grammar-tab') &&
