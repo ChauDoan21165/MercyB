@@ -93,7 +93,7 @@ const AccessibleToaster = lazyWithRetry(() =>
   import("@/components/a11y/AccessibleToast").then((m) => ({ default: m.AccessibleToaster })),
 );
 import "@/index.css";
-// supabase is loaded dynamically in the DEV debug block below (Lighthouse PR 2)
+import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queries/client";
@@ -117,7 +117,7 @@ import { cacheBustingReload, stripChunkCacheBustParam } from "@/lib/chunkReload"
 
 declare global {
   interface Window {
-    supabase?: unknown;
+    supabase?: typeof supabase;
     __MB_REACT_ROOT__?: ReactDOM.Root;
     __MB_REACT_ROOT_EL__?: HTMLElement;
     __MB_FATAL_OVERLAY_EL__?: HTMLDivElement;
@@ -557,10 +557,8 @@ function scheduleOneTimeChunkReload(): boolean {
 (function exposeSupabaseForDebug() {
   try {
     if (!import.meta.env.DEV) return;
-    void import("@/lib/supabaseClient").then((m) => {
-      window.supabase = m.supabase;
-      devLog("[MB DEV] window.supabase attached");
-    });
+    window.supabase = supabase;
+    devLog("[MB DEV] window.supabase attached");
   } catch { /* ignore */ }
 })();
 
