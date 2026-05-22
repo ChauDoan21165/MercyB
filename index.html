@@ -28,6 +28,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <!-- Preload the Home hero LCP image so the browser discovers and
+         downloads it immediately from the HTML shell instead of waiting
+         for the SPA render. fetchpriority="high" signals this is the
+         LCP candidate. Lighthouse PR 3. -->
+    <link rel="preload" as="image" href="/teacher-mercy.avif" type="image/avif" fetchpriority="high" />
+
     <!-- Block Chrome auto-translate site-wide. Triggers React reconciliation
          crashes on Vietnamese-locale Chrome Mobile users when <font>/<b>
          wrappers desync React's cached DOM positions. App is bilingual VI/EN
