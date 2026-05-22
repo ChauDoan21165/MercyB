@@ -42,7 +42,8 @@ import {
   getPhonemeHint,
 } from '@/lib/pronunciation/phonemeHints';
 import PhonemePlayButton from '@/components/speech/PhonemePlayButton';
-import { supabase } from '@/lib/supabaseClient';
+// supabase is loaded dynamically at call sites (lines ~732, ~1333) to
+// defer the ~52 kB Supabase chunk from the initial bundle (Lighthouse PR 1).
 import {
   buildMobileAudioRetestChecklist,
   copyMobileAudioDiagnosticsToClipboard,
@@ -729,6 +730,7 @@ export function MercySpeakTab({
     });
     void (async () => {
       try {
+        const { supabase } = await import('@/lib/supabaseClient');
         const { data: sessionData } = await supabase.auth.getSession();
         const jwt = sessionData?.session?.access_token;
         if (!jwt) return;
@@ -1330,8 +1332,8 @@ export function MercySpeakTab({
       // doesn't see the live preview; the post-recording batch path is
       // the source of truth and runs unchanged.
       if (pronunciationStreamingEnabled && practiceText) {
-        void supabase.auth
-          .getSession()
+        void import('@/lib/supabaseClient')
+          .then(({ supabase }) => supabase.auth.getSession())
           .then(({ data }) => {
             const jwt = data?.session?.access_token;
             if (!jwt) return;
