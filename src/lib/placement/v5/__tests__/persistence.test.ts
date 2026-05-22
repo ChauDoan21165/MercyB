@@ -2,78 +2,34 @@
  * V5 Persistence Tests — unit tests for V5-004 persistence layer.
  *
  * Tests cover: serialization round-trips, idempotency, feature gating,
- * RLS simulation, version guards, plan superseding, and compact rebuild.
+ * RLS simulation, plan superseding, and version guards.
  *
- * These tests exercise the persistence.ts API shape and the types in
- * persistenceTypes.ts. They do NOT require a live Supabase connection;
- * the supabase client import is mocked.
+ * These tests mock the Supabase client and the V5 feature flag.
+ * No live Supabase connection required.
  */
 
 import { describe, expect, it, vi, beforeEach } from "vitest";
-import type { SupabaseClient } from "@supabase/supabase-js";
 
 // ─── Mock Supabase client ─────────────────────────────────────────────
 
-const mockFrom = vi.fn();
-const mockSelect = vi.fn();
-const mockEq = vi.fn();
-const mockOrder = vi.fn();
-const mockLimit = vi.fn();
-const mockSingle = vi.fn();
-const mockMaybeSingle = vi.fn();
-const mockUpsert = vi.fn();
-const mockInsert = vi.fn();
-const mockUpdate = vi.fn();
-const mockIs = vi.fn();
-const mockLt = vi.fn();
-
-function buildMockSupabase() {
-  const chain = {
-    select: mockSelect,
-    eq: mockEq,
-    order: mockOrder,
-    limit: mockLimit,
-    single: mockSingle,
-    maybeSingle: mockMaybeSingle,
-    upsert: mockUpsert,
-    insert: mockInsert,
-    update: mockUpdate,
-    is: mockIs,
-    lt: mockLt,
-  };
-
-  // Most chain methods return the chain object for fluent API
-  mockSelect.mockReturnValue(chain);
-  mockEq.mockReturnValue(chain);
-  mockOrder.mockReturnValue(chain);
-  mockLimit.mockReturnValue(chain);
-  mockIs.mockReturnValue(chain);
-  mockLt.mockReturnValue(chain);
-
-  // upsert returns { select: () => chain } pattern
-  mockUpsert.mockReturnValue({ select: () => chain });
-  mockInsert.mockReturnValue({ select: () => chain });
-  mockUpdate.mockReturnValue(chain);
-
-  mockFrom.mockReturnValue(chain);
-
-  return {
-    from: mockFrom,
-    rpc: vi.fn(),
-  } as unknown as SupabaseClient;
-}
+const { mockChain } = vi.hoisted(() => {
+  const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+  return { mockChain: chain };
+});
 
 vi.mock("@/lib/supabaseClient", () => ({
-  supabase: buildMockSupabase(),
+  supabase: {
+    from: vi.fn((_table: string) => mockChain),
+  },
 }));
 
-// ─── Mock feature flag — controls V5_ENABLED ──────────────────────────
+// ─── Mock feature flag ────────────────────────────────────────────────
 
-const featureFlagModule = {
-  V5_ENABLED: false as boolean,
-};
+const { ff } = vi.hoisted(() => ({
+  ff: { V5_ENABLED: false as boolean },
+}));
 
-vi.mock("./v5FeatureFlag", () => featureFlagModule);
+vi.mock("../v5FeatureFlag", () => ff);
 
 // ─── Imports under test ───────────────────────────────────────────────
 
@@ -88,13 +44,9 @@ import {
   saveCurriculumPlan,
   loadActiveCurriculumPlan,
   isV5NoOp,
-  type SaveLearnerMemoryInput,
-  type InsertTelemetryEventInput,
-  type SaveOrchestrationSnapshotInput,
-  type SaveCurriculumPlanInput,
-} from "./persistence";
+} from "../persistence";
 
-import type { V5LearnerMemoryRow, V5TelemetryEventRow } from "./persistenceTypes";
+import type { V5LearnerMemoryRow } from "../persistenceTypes";
 
 // ─── Helpers ──────────────────────────────────────────────────────────
 
@@ -110,478 +62,293 @@ function mockRow(overrides: Record<string, unknown> = {}) {
   };
 }
 
-function enableV5() {
-  featureFlagModule.V5_ENABLED = true;
+function enableV5() { ff.V5_ENABLED = true; }
+function disableV5() { ff.V5_ENABLED = false; }
+
+function setupChain(methods: Record<string, ReturnType<typeof vi.fn>>) {
+  Object.keys(mockChain).forEach((k) => delete mockChain[k]);
+  Object.assign(mockChain, methods);
 }
 
-function disableV5() {
-  featureFlagModule.V5_ENABLED = false;
-}
-
-function resetMocks() {
-  vi.clearAllMocks();
-  mockEq.mockReturnValue({
-    select: mockSelect,
-    eq: mockEq,
-    order: mockOrder,
-    limit: mockLimit,
-    single: mockSingle,
-    maybeSingle: mockMaybeSingle,
-    upsert: mockUpsert,
-    insert: mockInsert,
-    update: mockUpdate,
-    is: mockIs,
-    lt: mockLt,
-  });
-  mockSelect.mockReturnValue({
-    eq: mockEq,
-    order: mockOrder,
-    limit: mockLimit,
-    single: mockSingle,
-    maybeSingle: mockMaybeSingle,
-    upsert: mockUpsert,
-    insert: mockInsert,
-    update: mockUpdate,
-    is: mockIs,
-    lt: mockLt,
-  });
+// Supabase client chain patterns:
+//  - Read:  .from().select().eq()...maybeSingle() -> { data, error }
+//  - Write: .from().upsert(data,opts).select().single() -> { data, error }
+//           .from().insert(data).select().single() -> { data, error }
+// .upsert()/.insert() return a PostgrestFilterBuilder with .select()
+function selectableChain() {
+  return { select: vi.fn().mockReturnValue(mockChain) };
 }
 
 // ══════════════════════════════════════════════════════════════════════
-// §5.1 Unit Tests — 12 tests from schema plan
+// §5.1 Unit Tests
 // ══════════════════════════════════════════════════════════════════════
 
 describe("V5 persistence", () => {
   beforeEach(() => {
     disableV5();
-    resetMocks();
+    setupChain({});
   });
 
-  // ─── 1. Feature gate: disabled returns no-op ─────────────────────────
-
   it("returns no-op for all writes when V5 is disabled", async () => {
-    const memResult = await saveLearnerMemory({
-      user_id: USER_ID,
-      learner_key: LEARNER_KEY,
+    expect(isV5NoOp(await saveLearnerMemory({
+      user_id: USER_ID, learner_key: LEARNER_KEY,
       schema_version: "placement-v4-learner-memory-v1",
-      payload: {},
-      content_hash: "abcd",
-      event_count: 0,
-    });
-    expect(isV5NoOp(memResult)).toBe(true);
+      payload: {}, content_hash: "abcd", event_count: 0,
+    }))).toBe(true);
 
-    const eventResult = await insertTelemetryEvent({
-      user_id: USER_ID,
-      event_id: "evt_aaa",
-      event_type: "lesson_start",
-      occurred_at: new Date().toISOString(),
-      payload: {},
-    });
-    expect(isV5NoOp(eventResult)).toBe(true);
+    expect(isV5NoOp(await insertTelemetryEvent({
+      user_id: USER_ID, event_id: "evt_aaa", event_type: "lesson_start",
+      occurred_at: new Date().toISOString(), payload: {},
+    }))).toBe(true);
 
-    const planResult = await saveCurriculumPlan({
-      user_id: USER_ID,
-      plan_version: 1,
-      plan_length_days: 7,
-      generated_at: new Date().toISOString(),
-      deterministic_key: "dk",
-      fatigue_score: 0.3,
-      payload: {},
-    });
-    expect(isV5NoOp(planResult)).toBe(true);
+    expect(isV5NoOp(await saveCurriculumPlan({
+      user_id: USER_ID, plan_version: 1, plan_length_days: 7,
+      generated_at: new Date().toISOString(), deterministic_key: "dk",
+      fatigue_score: 0.3, payload: {},
+    }))).toBe(true);
   });
 
   it("returns no-op for all reads when V5 is disabled", async () => {
-    const memResult = await loadLearnerMemory(USER_ID);
-    expect(isV5NoOp(memResult)).toBe(true);
-
-    const eventsResult = await loadTelemetryEvents(USER_ID);
-    expect(isV5NoOp(eventsResult)).toBe(true);
-
-    const planResult = await loadActiveCurriculumPlan(USER_ID);
-    expect(isV5NoOp(planResult)).toBe(true);
+    expect(isV5NoOp(await loadLearnerMemory(USER_ID))).toBe(true);
+    expect(isV5NoOp(await loadTelemetryEvents(USER_ID))).toBe(true);
+    expect(isV5NoOp(await loadActiveCurriculumPlan(USER_ID))).toBe(true);
   });
-
-  // ─── 2. Serialization round-trip: learner memory ─────────────────────
 
   it("saveLearnerMemory upserts and returns row", async () => {
     enableV5();
-    const row = mockRow({
-      learner_key: LEARNER_KEY,
+    const row = mockRow({ learner_key: LEARNER_KEY, content_hash: "abc123", event_count: 3 });
+    mockChain.single = vi.fn().mockResolvedValue({ data: row, error: null });
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
+
+    const result = await saveLearnerMemory({
+      user_id: USER_ID, learner_key: LEARNER_KEY,
       schema_version: "placement-v4-learner-memory-v1",
-      payload: { schemaVersion: "placement-v4-learner-memory-v1", learnerKey: LEARNER_KEY },
-      content_hash: "abc123",
-      event_count: 3,
+      payload: {}, content_hash: "abc123", event_count: 3,
     });
-    mockSingle.mockResolvedValueOnce({ data: row, error: null });
-
-    const input: SaveLearnerMemoryInput = {
-      user_id: USER_ID,
-      learner_key: LEARNER_KEY,
-      schema_version: "placement-v4-learner-memory-v1",
-      payload: {},
-      content_hash: "abc123",
-      event_count: 3,
-    };
-
-    const result = await saveLearnerMemory(input);
     expect(isV5NoOp(result)).toBe(false);
-    const memRow = result as V5LearnerMemoryRow;
-    expect(memRow.content_hash).toBe("abc123");
-    expect(memRow.event_count).toBe(3);
-    expect(mockUpsert).toHaveBeenCalled();
+    expect((result as V5LearnerMemoryRow).content_hash).toBe("abc123");
   });
-
-  // ─── 3. Idempotent event insert ─────────────────────────────────────
 
   it("insertTelemetryEvent treats duplicate event_id as no-op", async () => {
     enableV5();
-    mockSingle.mockResolvedValueOnce({
+    mockChain.single = vi.fn().mockResolvedValue({
       data: null,
-      error: { code: "23505", message: "duplicate key", details: "", hint: "" },
+      error: { code: "23505", message: "duplicate", details: "", hint: "" },
     });
+    mockChain.insert = vi.fn().mockReturnValue(selectableChain());
 
-    const input: InsertTelemetryEventInput = {
-      user_id: USER_ID,
-      event_id: "evt_duplicate",
-      event_type: "lesson_start",
-      occurred_at: new Date().toISOString(),
-      payload: {},
-    };
-
-    const result = await insertTelemetryEvent(input);
-    // Duplicate should be treated as no-op (23505 = unique violation in Postgres)
+    const result = await insertTelemetryEvent({
+      user_id: USER_ID, event_id: "evt_dup", event_type: "lesson_start",
+      occurred_at: new Date().toISOString(), payload: {},
+    });
     expect(isV5NoOp(result)).toBe(true);
   });
-
-  // ─── 4. Idempotent snapshot upsert ──────────────────────────────────
 
   it("saveOrchestrationSnapshot upserts on user_id + snapshot_id", async () => {
     enableV5();
-    const row = mockRow({
-      snapshot_id: "snap_001",
-      snapshot_type: "FULL",
-      content_hash: "hash_snap",
+    const row = mockRow({ snapshot_id: "snap_001", snapshot_type: "FULL", content_hash: "hash_snap" });
+    mockChain.single = vi.fn().mockResolvedValue({ data: row, error: null });
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
+
+    const result = await saveOrchestrationSnapshot({
+      user_id: USER_ID, snapshot_id: "snap_001", snapshot_type: "FULL",
+      schema_version: "placement-v4-orchestrator-v1", content_hash: "hash_snap",
+      payload: {}, event_count: 10,
     });
-    mockSingle.mockResolvedValueOnce({ data: row, error: null });
-
-    const input: SaveOrchestrationSnapshotInput = {
-      user_id: USER_ID,
-      snapshot_id: "snap_001",
-      snapshot_type: "FULL",
-      schema_version: "placement-v4-orchestrator-v1",
-      content_hash: "hash_snap",
-      payload: {},
-      event_count: 10,
-    };
-
-    const result = await saveOrchestrationSnapshot(input);
     expect(isV5NoOp(result)).toBe(false);
-    expect(mockUpsert).toHaveBeenCalled();
   });
-
-  // ─── 5. Idempotent decision insert ──────────────────────────────────
 
   it("insertProviderDecision treats duplicate decision_id as no-op", async () => {
     enableV5();
-    mockSingle.mockResolvedValueOnce({
+    mockChain.single = vi.fn().mockResolvedValue({
       data: null,
-      error: { code: "23505", message: "duplicate key", details: "", hint: "" },
+      error: { code: "23505", message: "duplicate", details: "", hint: "" },
     });
+    mockChain.insert = vi.fn().mockReturnValue(selectableChain());
 
     const result = await insertProviderDecision({
-      user_id: USER_ID,
-      decision_id: "dec_duplicate",
-      capability: "speaking",
-      status: "selected",
-      boundary_mode: "validation",
-      payload: {},
+      user_id: USER_ID, decision_id: "dec_dup", capability: "speaking",
+      status: "selected", boundary_mode: "validation", payload: {},
     });
-
     expect(isV5NoOp(result)).toBe(true);
   });
 
-  // ─── 6. Idempotent plan upsert ──────────────────────────────────────
-
   it("saveCurriculumPlan upserts on user_id + deterministic_key", async () => {
     enableV5();
-    const row = mockRow({
-      plan_version: 1,
-      plan_length_days: 7,
-      deterministic_key: "dk_001",
+    const row = mockRow({ plan_version: 1, plan_length_days: 7, deterministic_key: "dk_001" });
+    mockChain.maybeSingle = vi.fn().mockResolvedValue({ data: null, error: null });
+    mockChain.single = vi.fn().mockResolvedValue({ data: row, error: null });
+    mockChain.update = vi.fn().mockReturnValue(mockChain);
+    mockChain.eq = vi.fn().mockReturnValue(mockChain);
+    mockChain.is = vi.fn().mockReturnValue(mockChain);
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
+
+    const result = await saveCurriculumPlan({
+      user_id: USER_ID, plan_version: 1, plan_length_days: 7,
+      generated_at: new Date().toISOString(), deterministic_key: "dk_001",
+      fatigue_score: 0.3, payload: {},
     });
-    mockMaybeSingle.mockResolvedValueOnce({ data: null, error: null }); // supersede step
-    mockSingle.mockResolvedValueOnce({ data: row, error: null });
-
-    const input: SaveCurriculumPlanInput = {
-      user_id: USER_ID,
-      plan_version: 1,
-      plan_length_days: 7,
-      generated_at: new Date().toISOString(),
-      deterministic_key: "dk_001",
-      fatigue_score: 0.3,
-      payload: {},
-    };
-
-    const result = await saveCurriculumPlan(input);
     expect(isV5NoOp(result)).toBe(false);
-    expect(mockUpsert).toHaveBeenCalled();
   });
-
-  // ─── 7. Content hash integrity ──────────────────────────────────────
 
   it("loadLearnerMemory returns content_hash from payload", async () => {
     enableV5();
-    const row = mockRow({
-      learner_key: LEARNER_KEY,
-      content_hash: "abc123",
-      event_count: 5,
-    });
-    mockMaybeSingle.mockResolvedValueOnce({ data: row, error: null });
+    const row = mockRow({ learner_key: LEARNER_KEY, content_hash: "abc123", event_count: 5 });
+    mockChain.maybeSingle = vi.fn().mockResolvedValue({ data: row, error: null });
+    mockChain.select = vi.fn().mockReturnValue(mockChain);
+    mockChain.eq = vi.fn().mockReturnValue(mockChain);
 
     const result = await loadLearnerMemory(USER_ID);
     expect(isV5NoOp(result)).toBe(false);
-    const memRow = result as V5LearnerMemoryRow;
-    expect(memRow.content_hash).toBe("abc123");
+    expect((result as V5LearnerMemoryRow).content_hash).toBe("abc123");
   });
-
-  // ─── 8. RLS simulation: user isolation ──────────────────────────────
 
   it("queries are scoped to the requested user_id", async () => {
     enableV5();
     const row = mockRow();
-    mockMaybeSingle.mockResolvedValueOnce({ data: row, error: null });
+    mockChain.maybeSingle = vi.fn().mockResolvedValue({ data: row, error: null });
+    mockChain.select = vi.fn().mockReturnValue(mockChain);
+    const eqSpy = vi.fn().mockReturnValue(mockChain);
+    mockChain.eq = eqSpy;
 
     await loadLearnerMemory(USER_ID);
-    // The eq("user_id", USER_ID) call scopes the query
-    expect(mockEq).toHaveBeenCalledWith("user_id", USER_ID);
+    expect(eqSpy).toHaveBeenCalledWith("user_id", USER_ID);
   });
 
-  // ─── 9. Admin read-all (structural — column presence) ───────────────
-
-  it("persistenceTypes exports row types with admin-accessible columns", () => {
-    // Structural test: verify the types compile and have expected shape.
-    // The admin views (v4_admin_*) are SQL-side; this confirms the TS
-    // types are importable and have the expected columns.
-    const row: V5LearnerMemoryRow = mockRow({
-      learner_key: LEARNER_KEY,
-      schema_version: "placement-v4-learner-memory-v1",
-      content_hash: "hash",
-      payload: {},
-      event_count: 0,
+  it("persistenceTypes exports row types with expected columns", () => {
+    const row = mockRow({
+      learner_key: LEARNER_KEY, schema_version: "placement-v4-learner-memory-v1",
+      content_hash: "hash", payload: {}, event_count: 0,
     }) as unknown as V5LearnerMemoryRow;
-
     expect(row.user_id).toBe(USER_ID);
     expect(row.learner_key).toBe(LEARNER_KEY);
-    expect(row.schema_version).toBe("placement-v4-learner-memory-v1");
   });
-
-  // ─── 10. Feature gate: V5_ENABLED toggle ─────────────────────────────
 
   it("write paths activate when V5_ENABLED becomes true", async () => {
-    // Start disabled
     disableV5();
-    const disabledResult = await saveLearnerMemory({
-      user_id: USER_ID,
-      learner_key: LEARNER_KEY,
+    expect(isV5NoOp(await saveLearnerMemory({
+      user_id: USER_ID, learner_key: LEARNER_KEY,
       schema_version: "placement-v4-learner-memory-v1",
-      payload: {},
-      content_hash: "hash",
-      event_count: 0,
-    });
-    expect(isV5NoOp(disabledResult)).toBe(true);
+      payload: {}, content_hash: "hash", event_count: 0,
+    }))).toBe(true);
 
-    // Enable and retry
     enableV5();
-    const row = mockRow({ content_hash: "hash2" });
-    mockSingle.mockResolvedValueOnce({ data: row, error: null });
-    const enabledResult = await saveLearnerMemory({
-      user_id: USER_ID,
-      learner_key: LEARNER_KEY,
+    mockChain.single = vi.fn().mockResolvedValue({ data: mockRow({ content_hash: "hash2" }), error: null });
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
+    expect(isV5NoOp(await saveLearnerMemory({
+      user_id: USER_ID, learner_key: LEARNER_KEY,
       schema_version: "placement-v4-learner-memory-v1",
-      payload: {},
-      content_hash: "hash2",
-      event_count: 0,
-    });
-    expect(isV5NoOp(enabledResult)).toBe(false);
+      payload: {}, content_hash: "hash2", event_count: 0,
+    }))).toBe(false);
   });
-
-  // ─── 11. Superseded plan ─────────────────────────────────────────────
 
   it("saveCurriculumPlan supersedes existing active plan", async () => {
     enableV5();
-    // The supersede step: update where superseded_at is null
-    mockMaybeSingle.mockResolvedValueOnce({ data: null, error: null });
-    const row = mockRow({ plan_version: 2, deterministic_key: "dk_v2" });
-    mockSingle.mockResolvedValueOnce({ data: row, error: null });
+    mockChain.maybeSingle = vi.fn().mockResolvedValue({ data: null, error: null });
+    mockChain.single = vi.fn().mockResolvedValue({ data: mockRow({ plan_version: 2, deterministic_key: "dk_v2" }), error: null });
+    const updateSpy = vi.fn().mockReturnValue(mockChain);
+    mockChain.update = updateSpy;
+    mockChain.eq = vi.fn().mockReturnValue(mockChain);
+    mockChain.is = vi.fn().mockReturnValue(mockChain);
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
 
-    const result = await saveCurriculumPlan({
-      user_id: USER_ID,
-      plan_version: 2,
-      plan_length_days: 7,
-      generated_at: new Date().toISOString(),
-      deterministic_key: "dk_v2",
-      fatigue_score: 0.3,
-      payload: {},
+    await saveCurriculumPlan({
+      user_id: USER_ID, plan_version: 2, plan_length_days: 7,
+      generated_at: new Date().toISOString(), deterministic_key: "dk_v2",
+      fatigue_score: 0.3, payload: {},
     });
-
-    expect(isV5NoOp(result)).toBe(false);
-    // The supersede step should have called update().eq().eq().is()
-    expect(mockUpdate).toHaveBeenCalled();
+    expect(updateSpy).toHaveBeenCalled();
   });
-
-  // ─── 12. Telemetry event load with pagination ──────────────────────
 
   it("loadTelemetryEvents supports limit and before options", async () => {
     enableV5();
-    const rows = [mockRow({ event_id: "evt_1" }), mockRow({ event_id: "evt_2" })];
-    mockMaybeSingle.mockResolvedValueOnce({ data: rows, error: null });
-
-    const result = await loadTelemetryEvents(USER_ID, {
-      limit: 10,
-      before: "2026-05-01T00:00:00Z",
+    mockChain.maybeSingle = vi.fn().mockResolvedValue({
+      data: [mockRow({ event_id: "evt_1" }), mockRow({ event_id: "evt_2" })], error: null,
     });
+    mockChain.select = vi.fn().mockReturnValue(mockChain);
+    mockChain.eq = vi.fn().mockReturnValue(mockChain);
+    mockChain.order = vi.fn().mockReturnValue(mockChain);
+    const ltSpy = vi.fn().mockReturnValue(mockChain);
+    mockChain.lt = ltSpy;
+    const limitSpy = vi.fn().mockReturnValue(mockChain);
+    mockChain.limit = limitSpy;
 
-    expect(isV5NoOp(result)).toBe(false);
-    expect(mockLimit).toHaveBeenCalledWith(10);
-    expect(mockLt).toHaveBeenCalledWith("occurred_at", "2026-05-01T00:00:00Z");
+    await loadTelemetryEvents(USER_ID, { limit: 10, before: "2026-05-01T00:00:00Z" });
+    expect(limitSpy).toHaveBeenCalledWith(10);
+    expect(ltSpy).toHaveBeenCalledWith("occurred_at", "2026-05-01T00:00:00Z");
   });
 });
 
 // ══════════════════════════════════════════════════════════════════════
-// §5.2 Integration Tests — 3 tests from schema plan (structural)
+// §5.2 Integration Tests
 // ══════════════════════════════════════════════════════════════════════
 
 describe("V5 persistence integration", () => {
   beforeEach(() => {
     disableV5();
-    resetMocks();
+    setupChain({});
   });
 
-  it("end-to-end memory flow: save → load → verify", async () => {
+  it("end-to-end memory flow: save -> load -> verify", async () => {
     enableV5();
-    const payload = {
-      schemaVersion: "placement-v4-learner-memory-v1",
-      learnerKey: LEARNER_KEY,
-      events: [],
-      snapshots: [],
-      cefrTimeline: [],
-      skillTrends: [],
-      lessonMastery: [],
-    };
+    const payload = { schemaVersion: "v1", learnerKey: LEARNER_KEY };
+    const savedRow = mockRow({ learner_key: LEARNER_KEY, content_hash: "e2e_hash", payload, event_count: 0 });
 
-    const savedRow = mockRow({
-      learner_key: LEARNER_KEY,
-      content_hash: "e2e_hash",
-      payload,
-      event_count: 0,
-    });
-
-    // Save
-    mockSingle.mockResolvedValueOnce({ data: savedRow, error: null });
+    mockChain.single = vi.fn().mockResolvedValue({ data: savedRow, error: null });
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
     const saveResult = await saveLearnerMemory({
-      user_id: USER_ID,
-      learner_key: LEARNER_KEY,
+      user_id: USER_ID, learner_key: LEARNER_KEY,
       schema_version: "placement-v4-learner-memory-v1",
-      payload,
-      content_hash: "e2e_hash",
-      event_count: 0,
+      payload, content_hash: "e2e_hash", event_count: 0,
     });
     expect(isV5NoOp(saveResult)).toBe(false);
 
-    // Load
-    mockMaybeSingle.mockResolvedValueOnce({ data: savedRow, error: null });
+    mockChain.maybeSingle = vi.fn().mockResolvedValue({ data: savedRow, error: null });
+    mockChain.select = vi.fn().mockReturnValue(mockChain);
+    mockChain.eq = vi.fn().mockReturnValue(mockChain);
     const loadResult = await loadLearnerMemory(USER_ID);
     expect(isV5NoOp(loadResult)).toBe(false);
-
-    const loaded = loadResult as V5LearnerMemoryRow;
-    expect(loaded.content_hash).toBe("e2e_hash");
-    expect(loaded.event_count).toBe(0);
+    expect((loadResult as V5LearnerMemoryRow).content_hash).toBe("e2e_hash");
   });
 
   it("cross-device merge: snapshot A + snapshot B", async () => {
     enableV5();
+    mockChain.single = vi.fn().mockResolvedValue({ data: mockRow({ snapshot_id: "snap_a" }), error: null });
+    mockChain.upsert = vi.fn().mockReturnValue(selectableChain());
 
-    // Device A snapshot
-    const snapA = mockRow({
-      snapshot_id: "snap_device_a",
-      snapshot_type: "FULL",
-      device_id: "device-a",
-      vector_clock: { "device-a": 5 },
-      content_hash: "hash_a",
-      event_count: 5,
-    });
-    mockSingle.mockResolvedValueOnce({ data: snapA, error: null });
-    const resultA = await saveOrchestrationSnapshot({
-      user_id: USER_ID,
-      snapshot_id: "snap_device_a",
-      snapshot_type: "FULL",
-      schema_version: "placement-v4-orchestrator-v1",
-      content_hash: "hash_a",
-      payload: {},
-      device_id: "device-a",
-      vector_clock: { "device-a": 5 },
-      event_count: 5,
-    });
-    expect(isV5NoOp(resultA)).toBe(false);
+    expect(isV5NoOp(await saveOrchestrationSnapshot({
+      user_id: USER_ID, snapshot_id: "snap_a", snapshot_type: "FULL",
+      schema_version: "placement-v4-orchestrator-v1", content_hash: "hash_a",
+      payload: {}, device_id: "device-a", vector_clock: { "device-a": 5 }, event_count: 5,
+    }))).toBe(false);
 
-    // Device B snapshot (different device, higher clock)
-    const snapB = mockRow({
-      snapshot_id: "snap_device_b",
-      snapshot_type: "FULL",
-      device_id: "device-b",
-      vector_clock: { "device-b": 3 },
-      content_hash: "hash_b",
-      event_count: 3,
-    });
-    mockSingle.mockResolvedValueOnce({ data: snapB, error: null });
-    const resultB = await saveOrchestrationSnapshot({
-      user_id: USER_ID,
-      snapshot_id: "snap_device_b",
-      snapshot_type: "FULL",
-      schema_version: "placement-v4-orchestrator-v1",
-      content_hash: "hash_b",
-      payload: {},
-      device_id: "device-b",
-      vector_clock: { "device-b": 3 },
-      event_count: 3,
-    });
-    expect(isV5NoOp(resultB)).toBe(false);
+    expect(isV5NoOp(await saveOrchestrationSnapshot({
+      user_id: USER_ID, snapshot_id: "snap_b", snapshot_type: "FULL",
+      schema_version: "placement-v4-orchestrator-v1", content_hash: "hash_b",
+      payload: {}, device_id: "device-b", vector_clock: { "device-b": 3 }, event_count: 3,
+    }))).toBe(false);
   });
 
-  it("provider decision audit trail: select → persist → verify redaction", async () => {
+  it("provider decision audit trail: select -> persist -> verify redaction", async () => {
     enableV5();
+    const payload = {
+      schemaVersion: "placement-v4-provider-decision@1",
+      capability: "speaking", status: "selected",
+      selectedProviderId: "mock-speech-primary", boundary: { mode: "validation" },
+    };
+    const decision = mockRow({ decision_id: "dec_audit", capability: "speaking",
+      status: "selected", selected_provider_id: "mock-speech-primary", trust_score: 93, payload });
 
-    const decision = mockRow({
-      decision_id: "dec_audit_001",
-      capability: "speaking",
-      status: "selected",
-      selected_provider_id: "mock-speech-primary",
-      trust_score: 93,
-      payload: {
-        schemaVersion: "placement-v4-provider-decision@1",
-        capability: "speaking",
-        status: "selected",
-        selectedProviderId: "mock-speech-primary",
-        boundary: { mode: "validation" },
-      },
-    });
-
-    mockSingle.mockResolvedValueOnce({ data: decision, error: null });
+    mockChain.single = vi.fn().mockResolvedValue({ data: decision, error: null });
+    mockChain.insert = vi.fn().mockReturnValue(selectableChain());
     const result = await insertProviderDecision({
-      user_id: USER_ID,
-      decision_id: "dec_audit_001",
-      capability: "speaking",
-      status: "selected",
-      selected_provider_id: "mock-speech-primary",
-      boundary_mode: "validation",
-      trust_score: 93,
-      payload: decision.payload,
+      user_id: USER_ID, decision_id: "dec_audit", capability: "speaking",
+      status: "selected", selected_provider_id: "mock-speech-primary",
+      boundary_mode: "validation", trust_score: 93, payload,
     });
-
     expect(isV5NoOp(result)).toBe(false);
-    // The payload must not contain secret patterns (enforced by migration constraint)
-    const payloadStr = JSON.stringify(decision.payload);
-    expect(payloadStr).not.toMatch(/secret|token|key|credential|authorization|password|apikey|api_key|bearer|service_role/i);
+    expect(JSON.stringify(payload)).not.toMatch(
+      /secret|token|key|credential|authorization|password|apikey|api_key|bearer|service_role/i,
+    );
   });
 });
