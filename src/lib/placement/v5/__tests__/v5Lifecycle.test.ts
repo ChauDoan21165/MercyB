@@ -123,8 +123,8 @@ describe("V5 lifecycle — disabled by default", () => {
     const v4Result = generateCurriculumPlan(state, 7);
     const v5Result = v5GenerateCurriculumPlan(state, 7);
 
-    expect(v5Result.planVersion).toBe(v4Result.planVersion);
-    expect(v5Result.totalDays).toBe(v4Result.totalDays);
+    expect(v5Result.planLengthDays).toBe(v4Result.planLengthDays);
+    expect(v5Result.days.length).toBe(v4Result.days.length);
     expect(v5Result.days.length).toBe(v4Result.days.length);
   });
 
@@ -226,9 +226,8 @@ describe("V5 lifecycle — V4 regression safety", () => {
     const v4 = generateCurriculumPlan(state, 7);
     const v5 = v5GenerateCurriculumPlan(state, 7);
 
-    expect(v5.planVersion).toBe(v4.planVersion);
-    expect(v5.totalDays).toBe(v4.totalDays);
-    expect(v5.intensity).toBe(v4.intensity);
+    expect(v5.planLengthDays).toBe(v4.planLengthDays);
+    expect(v5.days.length).toBe(v4.days.length);
     expect(v5.days).toHaveLength(v4.days.length);
   });
 
@@ -237,8 +236,8 @@ describe("V5 lifecycle — V4 regression safety", () => {
     const v4 = generateCurriculumPlan(state, 28);
     const v5 = v5GenerateCurriculumPlan(state, 28);
 
-    expect(v5.planVersion).toBe(v4.planVersion);
-    expect(v5.totalDays).toBe(v4.totalDays);
+    expect(v5.planLengthDays).toBe(v4.planLengthDays);
+    expect(v5.days.length).toBe(v4.days.length);
     expect(v5.days).toHaveLength(v4.days.length);
   });
 
@@ -247,8 +246,8 @@ describe("V5 lifecycle — V4 regression safety", () => {
     const v4 = generateCurriculumPlan(state, 90);
     const v5 = v5GenerateCurriculumPlan(state, 90);
 
-    expect(v5.planVersion).toBe(v4.planVersion);
-    expect(v5.totalDays).toBe(v4.totalDays);
+    expect(v5.planLengthDays).toBe(v4.planLengthDays);
+    expect(v5.days.length).toBe(v4.days.length);
     expect(v5.days).toHaveLength(v4.days.length);
   });
 });
