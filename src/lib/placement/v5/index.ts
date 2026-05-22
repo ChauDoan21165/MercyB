@@ -5,10 +5,9 @@
  * Import from this module rather than submodules directly.
  *
  * Current state (V5-002): feature flag + evaluation harness skeleton only.
- * No personalization, forecast, or provider-runtime implementation yet.
  */
 
-// Feature flag (always available — determines whether V5 is active)
+// Feature flag
 export {
   V5_ENABLED,
   V5_PERSONALIZATION_ENABLED,
@@ -21,7 +20,7 @@ export {
   type V5Capability,
 } from "./v5FeatureFlag";
 
-// Evaluation harness (skeleton — returns inert defaults when V5 is disabled)
+// Evaluation harness
 export {
   V5_HARNESS_VERSION,
   V5_LEARNER_A,
