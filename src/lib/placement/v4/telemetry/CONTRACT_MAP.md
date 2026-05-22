@@ -140,12 +140,16 @@ These modules must satisfy the `…Like` structural contracts in `adaptiveTeleme
 
 **B5 — learnerMemory.ts → telemetry boundary:**
 - `LearnerMemory` → produce `LearnerMemorySummaryLike` (extract `recent` events, collect `sessionIds`)
-- `LearnerMemoryEventLike.kind` accepts: `"lesson_completed" | "lesson_skipped" | "speaking_struggle" | "review_overdue" | "checkpoint"`
+- `LearnerMemoryEvent` → convert to `LearnerMemoryEventLike`:
+  - Map `occurredAt` (ISO string) → `timestampMs` (integer ms via `Date.parse`)
+  - Map `kind`: `placement_snapshot`→`checkpoint`, `lesson_mastery`→`lesson_completed`, `memory_pruned`→drop
+  - Map `payload.snapshot.snapshotId` or `payload.record.roomId` → `reference`
 - `LearnerProgressionSnapshot` provides CEFR data to fill `ProgressionSnapshotLike.cefr`
 
 **B3 — curriculumSequencer.ts → telemetry boundary:**
 - `CurriculumPlan` → produce `StudyPlanLike` (add `planVersion`, `totalDays`, `intensity`, `generatedAtMs`)
 - `CurriculumActivity` → needs `estimatedMinutes` field (not currently on `CurriculumActivity`)
+- `SkillProgress.lastPracticedDay` → rename to `SkillProgressLike.lastPracticedDayOrdinal` (UTC ordinal, or convert if different semantics)
 - `CurriculumActivity.targetSkill` → `StudyPlanLessonLike.skill` (structurally compatible)
 - Call `ingestStudyPlanGenerated()` with `IngestionContext` when plan is generated
 - Call `ingestAdaptiveRecalculation()` when plan is regenerated
@@ -166,7 +170,7 @@ These modules must satisfy the `…Like` structural contracts in `adaptiveTeleme
 |---|---|---|
 | `Skill` | `adaptiveTelemetryTypes.ts` | `curriculumSequencer.ts` (use `CurriculumSkill`), `learnerMemory.ts` |
 | `CEFR_RANK` / `ADAPTIVE_CEFR_RANK` | `adaptiveTelemetryTypes.ts` (0-based) | `curriculumSequencer.ts` (has 1-based — keep, do not unify) |
-| `SkillProgressLike` | `adaptiveTelemetryTypes.ts` | upstream modules (your `SkillProgress` already satisfies it) |
+| `SkillProgressLike` | `adaptiveTelemetryTypes.ts` | `curriculumSequencer.ts` (`SkillProgress.lastPracticedDay` ≠ `SkillProgressLike.lastPracticedDayOrdinal` — rename/convert field) |
 | `BilingualString` | `adaptiveTelemetryTypes.ts` | any other file (single source of truth) |
 | `InterventionRecommendation` | `adaptiveTelemetryTypes.ts` | any core module |
 | `LearnerDiagnostic` | `adaptiveTelemetryTypes.ts` | any other file |
