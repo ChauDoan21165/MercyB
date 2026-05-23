@@ -47,6 +47,114 @@ function corsResponse(status: number, body: unknown): Response {
   });
 }
 
+// ─── Auth ─────────────────────────────────────────────────────────────
+
+/** Read a Deno environment variable. Returns undefined outside Deno. */
+function readEnvVar(key: string): string | undefined {
+  if (typeof Deno !== "undefined" && typeof (Deno as unknown as Record<string, unknown>).env === "object") {
+    const env = (Deno as unknown as { env: { get(k: string): string | undefined } }).env;
+    if (typeof env.get === "function") return env.get(key);
+  }
+  return undefined;
+}
+
+/**
+ * Deny-by-default role allowlist.
+ * Empty array = no roles authorized. Add roles to enable access.
+ *
+ * Valid role values match Supabase JWT claims:
+ *   - "authenticated" — any authenticated user
+ *   - "service_role"  — admin/service role
+ *   - custom roles from app_metadata / user_metadata
+ *
+ * Do NOT add "authenticated" until A1 + A4 + A7 approve learner access.
+ */
+/** Mutable for test injection. Do NOT mutate in production code. */
+let ALLOWED_ROLES: string[] = [];
+
+/** Exported for test setup only. */
+export function setAllowedRolesForTest(roles: string[]): void {
+  ALLOWED_ROLES = roles;
+}
+
+type AuthResult =
+  | { ok: true; userId: string; role: string }
+  | { ok: false; reason: string };
+
+/**
+ * Verify the Authorization: Bearer <token> header.
+ *
+ * Decodes the JWT payload (no signature verification — Supabase gateway
+ * already validates JWT before the request reaches the edge function).
+ *
+ * Checks:
+ *   - Header present and well-formed
+ *   - JWT has 3 dot-separated parts
+ *   - Payload is valid JSON
+ *   - exp claim is in the future (if present)
+ *   - sub claim is present (user identity)
+ *   - caller role is in ALLOWED_ROLES (deny-by-default)
+ *
+ * Returns ok:true with userId/role, or ok:false with a safe reason string.
+ * Never returns raw token or provider error details.
+ */
+function verifyAuth(req: Request): AuthResult {
+  const authHeader = req.headers.get("Authorization");
+
+  if (!authHeader || !authHeader.toLowerCase().startsWith("bearer ")) {
+    return { ok: false, reason: "missing Authorization header" };
+  }
+
+  const token = authHeader.slice("bearer ".length).trim();
+  if (!token) {
+    return { ok: false, reason: "empty token" };
+  }
+
+  let payload: Record<string, unknown>;
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 3) {
+      return { ok: false, reason: "malformed token" };
+    }
+
+    // Decode base64url payload
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const json = atob(base64);
+    payload = JSON.parse(json);
+
+    if (!payload || typeof payload !== "object") {
+      return { ok: false, reason: "invalid token payload" };
+    }
+  } catch {
+    return { ok: false, reason: "invalid token" };
+  }
+
+  // Check expiration
+  if (typeof payload.exp === "number" && Date.now() >= payload.exp * 1000) {
+    return { ok: false, reason: "token expired" };
+  }
+
+  // Check subject (user identity)
+  const userId = payload.sub;
+  if (typeof userId !== "string" || !userId.trim()) {
+    return { ok: false, reason: "missing user identity" };
+  }
+
+  // Determine role
+  const role = typeof payload.role === "string"
+    ? payload.role
+    : typeof payload.user_role === "string"
+      ? payload.user_role
+      : "authenticated";
+
+  // Deny-by-default — check allowlist
+  if (!ALLOWED_ROLES.includes(role)) {
+    return { ok: false, reason: "role not authorized" };
+  }
+
+  return { ok: true, userId, role };
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────
 
 function makeRequestId(): string {
@@ -127,6 +235,32 @@ export async function handleRequest(req: Request): Promise<Response> {
       errorKind: "method_not_allowed",
       requestId,
     });
+  }
+
+  // ── Stage 2: Verify caller authorization ─────────────────────────
+  // Operator smoke path: valid x-tutor-smoke-token bypasses JWT.
+  // All other callers must present a valid JWT.
+  const smokeToken = req.headers.get("x-tutor-smoke-token")?.trim();
+  const expectedSmokeToken = readEnvVar("TUTOR_SMOKE_TOKEN");
+  const isSmokeBypass = Boolean(smokeToken && expectedSmokeToken && smokeToken === expectedSmokeToken);
+
+  if (!isSmokeBypass) {
+    const auth = verifyAuth(req);
+    if (!auth.ok) {
+      console.log(JSON.stringify({
+        ns: "[ai-tutor]",
+        event: "auth_failed",
+        requestId,
+        reason: auth.reason,
+      }));
+      return corsResponse(401, {
+        ok: false,
+        errorKind: "unauthorized",
+        detail: "Valid Authorization header required",
+        requestId,
+      });
+    }
+    // auth.userId and auth.role available for future tier/role checks
   }
 
   // Parse JSON body
