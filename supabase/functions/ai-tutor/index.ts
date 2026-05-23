@@ -209,6 +209,48 @@ function validateBody(body: Record<string, unknown>): ValidationError[] {
   return errors;
 }
 
+// ─── Stage 3C: Learner-Data Safety Gate ──────────────────────────────
+
+/** Patterns that must never reach the AI provider. */
+const BLOCKED_PROMPT_PATTERNS: Array<{ pattern: RegExp; label: string }> = [
+  // Email addresses
+  { pattern: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/, label: "email" },
+  // Vietnam phone numbers
+  { pattern: /(?:\+84|0)[0-9]{9,10}/, label: "phone" },
+  // International phone patterns
+  { pattern: /\b[0-9]{3}[-. ][0-9]{3}[-. ][0-9]{4}\b/, label: "phone" },
+  // JWT / Supabase tokens
+  { pattern: /eyJ[a-zA-Z0-9_-]{8,}/, label: "token" },
+  // Bearer tokens in prompt text
+  { pattern: /bearer\s+[a-zA-Z0-9._\-+/=]{8,}/i, label: "token" },
+  // API keys (sk-*, sb-*, k-*)
+  { pattern: /\b(?:sk|sb|k)-[a-zA-Z0-9_-]{8,}/, label: "api_key" },
+  // IP addresses
+  { pattern: /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/, label: "ip_address" },
+  // Payment/billing markers
+  { pattern: /\b(?:credit.card|card.number|cvv|expiry|iban|swift|routing.number|account.number)\b/i, label: "payment" },
+  // Health/medical markers
+  { pattern: /\b(?:diagnosis|prescription|patient|medical.record|lab.result|blood.test|mri|ct.scan)\b/i, label: "health" },
+  // Minor age/school markers
+  { pattern: /\b(?:age\s*(?::|is|=)\s*\d{1,2}|years.old|grade\s*\d|school\s*name|homeroom)\b/i, label: "minor_info" },
+  // Credential/secret markers in prompt
+  { pattern: /\b(?:password|secret|credential|private.key|api.secret)\b/i, label: "credential" },
+];
+
+type SafetyResult = { safe: true } | { safe: false; reason: string };
+
+function validateTutorPromptSafety(text: string): SafetyResult {
+  if (!text || typeof text !== "string") return { safe: false, reason: "empty prompt" };
+
+  for (const { pattern, label } of BLOCKED_PROMPT_PATTERNS) {
+    if (pattern.test(text)) {
+      return { safe: false, reason: `blocked: ${label}` };
+    }
+  }
+
+  return { safe: true };
+}
+
 // ─── Main Handler ─────────────────────────────────────────────────────
 
 /**
@@ -298,6 +340,25 @@ export async function handleRequest(req: Request): Promise<Response> {
       ok: false,
       errorKind: "invalid_request",
       detail: errors.map((e) => `${e.field}: ${e.reason}`).join("; "),
+      requestId,
+    });
+  }
+
+  // ── Stage 3C: Safety gate on user prompt ────────────────────────
+  const userPrompt = body.userPrompt as string;
+  const safety = validateTutorPromptSafety(userPrompt);
+  if (!safety.safe) {
+    console.log(JSON.stringify({
+      ns: "[ai-tutor]",
+      event: "safety_blocked",
+      requestId,
+      reason: safety.reason,
+      promptChars: userPrompt.length,
+    }));
+    return corsResponse(400, {
+      ok: false,
+      errorKind: "safety_blocked",
+      detail: "Prompt contains blocked content",
       requestId,
     });
   }

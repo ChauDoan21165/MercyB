@@ -78,3 +78,23 @@ test("D2-T14c: valid JWT with empty allowlist → 401, executeProviderCall never
   expect(providerCallSpy).not.toHaveBeenCalled();
   setAllowedRolesForTest(["operator", "admin"]);
 });
+
+test("D2-T16: safety-blocked prompt never reaches executeProviderCall", async () => {
+  setAllowedRolesForTest(["operator"]);
+  const jwt = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" })).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "")
+    + "." + btoa(JSON.stringify({ sub: "u", role: "operator", exp: Date.now() / 1000 + 3600 })).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "")
+    + ".sig";
+  const req = new Request("https://ai-tutor.edge/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${jwt}` },
+    body: JSON.stringify({
+      sessionId: "test", systemPrompt: "t",
+      userPrompt: "Email me at bad@example.com",
+      mode: "general_chat",
+    }),
+  });
+  const res = await handleRequest(req);
+  expect(res.status).toBe(400);
+  expect(providerCallSpy).not.toHaveBeenCalled();
+  setAllowedRolesForTest(["operator", "admin"]);
+});
