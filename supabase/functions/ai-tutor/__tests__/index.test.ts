@@ -7,24 +7,35 @@
  * Uses vitest globals (test, expect) — vitest.config.ts has globals: true.
  */
 
-import { handleRequest } from "../index.ts";
+import { handleRequest, setAllowedRolesForTest } from "../index.ts";
 
 // ─── Helpers ─────────────────────────────────────────────────────────
 
+function makeTestJwt(payload: Record<string, unknown> = {}): string {
+  const header = { alg: "HS256", typ: "JWT" };
+  const body = {
+    sub: "test-user-abc", role: "authenticated",
+    iat: Math.floor(Date.now() / 1000),
+    exp: Math.floor(Date.now() / 1000) + 3600,
+    ...payload,
+  };
+  const enc = (obj: Record<string, unknown>) =>
+    btoa(JSON.stringify(obj)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  return `${enc(header)}.${enc(body)}.fake-signature`;
+}
+
+const VALID_JWT = makeTestJwt();
+
 function buildRequest(method: string, body?: unknown, extraHeaders?: Record<string, string>): Request {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
-  if (extraHeaders) {
-    Object.assign(headers, extraHeaders);
-  }
-  const init: RequestInit = {
-    method,
-    headers,
-  };
-  if (body !== undefined) {
-    init.body = JSON.stringify(body);
-  }
+  if (method === "POST") headers["Authorization"] = `Bearer ${VALID_JWT}`;
+  if (extraHeaders) Object.assign(headers, extraHeaders);
+  const init: RequestInit = { method, headers };
+  if (body !== undefined) init.body = JSON.stringify(body);
   return new Request("https://ai-tutor.edge/", init);
 }
+
+beforeAll(() => { setAllowedRolesForTest(["authenticated"]); });
 
 function validBody(): Record<string, unknown> {
   return {
@@ -158,7 +169,7 @@ test("D2-T3f: invalid mode returns 400", async () => {
 test("D2-T3g: non-JSON body returns 400", async () => {
   const req = new Request("https://ai-tutor.edge/", {
     method: "POST",
-    headers: { "Content-Type": "text/plain" },
+    headers: { "Content-Type": "text/plain", "Authorization": `Bearer ${VALID_JWT}` },
     body: "not json",
   });
   const res = await handleRequest(req);
@@ -581,4 +592,154 @@ describe("D2-T11: provider_not_configured handler mapping", () => {
     const data = await readBody(res);
     expect(data.errorKind).toBe("provider_not_configured");
   });
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// D2-T12: JWT auth rejection (deny-by-default)
+// ═══════════════════════════════════════════════════════════════════════
+
+describe("D2-T12: JWT auth rejection", () => {
+  test("D2-T12a: no Authorization header → 401 unauthorized", async () => {
+    const body = validBody();
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+    const data = await readBody(res);
+    expect(data.errorKind).toBe("unauthorized");
+  });
+
+  test("D2-T12b: malformed token → 401", async () => {
+    const body = validBody();
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer not.a.jwt" },
+      body: JSON.stringify(body),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+    expect((await readBody(res)).errorKind).toBe("unauthorized");
+  });
+
+  test("D2-T12c: expired token → 401", async () => {
+    const expiredJwt = makeTestJwt({ exp: Math.floor(Date.now() / 1000) - 60 });
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${expiredJwt}` },
+      body: JSON.stringify(validBody()),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+  });
+
+  test("D2-T12d: valid token with empty allowlist → 401", async () => {
+    setAllowedRolesForTest([]);
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${VALID_JWT}` },
+      body: JSON.stringify(validBody()),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+    setAllowedRolesForTest(["authenticated"]);
+  });
+
+  test("D2-T12e: missing sub claim → 401", async () => {
+    const noSubJwt = makeTestJwt({ sub: "" });
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${noSubJwt}` },
+      body: JSON.stringify(validBody()),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+  });
+
+  test("D2-T12f: OPTIONS bypasses auth (204)", async () => {
+    const res = await handleRequest(new Request("https://ai-tutor.edge/", { method: "OPTIONS" }));
+    expect(res.status).toBe(204);
+  });
+
+  test("D2-T12g: GET bypasses auth (405)", async () => {
+    const res = await handleRequest(new Request("https://ai-tutor.edge/", {
+      method: "GET", headers: { "Content-Type": "application/json" },
+    }));
+    expect(res.status).toBe(405);
+  });
+
+  test("D2-T12h: auth failure includes requestId", async () => {
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validBody()),
+    });
+    const data = await readBody(await handleRequest(req));
+    expect(typeof data.requestId).toBe("string");
+  });
+
+  test("D2-T12i: valid auth reaches provider_disabled (503)", async () => {
+    setAllowedRolesForTest(["authenticated"]);
+    const res = await handleRequest(buildRequest("POST", validBody()));
+    expect(res.status).toBe(503);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// D2-T13: Smoke token bypasses JWT (operator smoke path)
+// ═══════════════════════════════════════════════════════════════════════
+
+const SMOKE_SECRET = "smoke-bypass-test-token";
+
+describe("D2-T13: smoke token bypasses JWT", () => {
+  beforeAll(() => {
+    vi.stubGlobal("Deno", {
+      env: { get: vi.fn((k: string) => {
+        if (k === "REAL_PROVIDER_ENABLED") return "true";
+        if (k === "TUTOR_SMOKE_TOKEN") return SMOKE_SECRET;
+        return undefined;
+      })},
+    });
+    setAllowedRolesForTest(["authenticated"]);
+  });
+  afterAll(() => { vi.unstubAllGlobals(); });
+
+  test("D2-T13a: valid smoke token bypasses JWT, reaches provider gates", async () => {
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-tutor-smoke-token": SMOKE_SECRET },
+      body: JSON.stringify(body),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(400); // Gate 6: DEEPSEEK_API_KEY absent
+    expect((await readBody(res)).errorKind).toBe("provider_not_configured");
+  });
+
+  test("D2-T13b: invalid smoke token → 401 (JWT required)", async () => {
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-tutor-smoke-token": "wrong" },
+      body: JSON.stringify({ ...validBody(), mode: "sentence_correction" }),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+  });
+
+  test("D2-T13c: valid JWT without smoke token → smoke gate (503)", async () => {
+    const req = buildRequest("POST", { ...validBody(), mode: "sentence_correction" });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(503); // Gate 5b fires
+  });
+});
+
+// D2-T13d: after describe, Deno unstubbed — smoke bypass unavailable
+test("D2-T13d: smoke bypass without TUTOR_SMOKE_TOKEN env → 401", async () => {
+  const req = new Request("https://ai-tutor.edge/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-tutor-smoke-token": SMOKE_SECRET },
+    body: JSON.stringify({ ...validBody(), mode: "sentence_correction" }),
+  });
+  const res = await handleRequest(req);
+  expect(res.status).toBe(401);
 });
