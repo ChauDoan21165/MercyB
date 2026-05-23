@@ -660,6 +660,58 @@ export function buildProviderErrorResponse(
   };
 }
 
+// ═══════════════════════════════════════════════════════════════════════
+// Phase D1 — Disabled Execution Adapter
+// executeProviderCall is the SINGLE entry point for provider execution.
+// Always returns disabled — no real execution path exists.
+// ═══════════════════════════════════════════════════════════════════════
+
+/**
+ * Execute a provider call.
+ *
+ * This is the SINGLE entry point for all provider execution.
+ * Currently ALWAYS returns disabled — no real provider calls.
+ *
+ * When Phase D2 authorizes live execution, this function will
+ * conditionally call the real provider API. Until then, all
+ * valid requests return service_disabled.
+ */
+export function executeProviderCall(
+  request: ProviderExecutionRequest,
+): ProviderExecutionResult {
+  // Validate the request shape
+  const validationError = validateProviderExecutionRequest(request);
+  if (validationError) {
+    return {
+      ok: false,
+      code: validationError,
+      messageVi: "Yêu cầu không hợp lệ. Vui lòng kiểm tra lại.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        requestId: request?.requestId ?? "unknown",
+        errorClass: mapProviderError(validationError),
+      },
+    };
+  }
+
+  // Provider execution is disabled — return disabled result
+  return {
+    ok: false,
+    code: "provider_disabled",
+    messageVi: "Tính năng AI Tutor hiện chưa khả dụng. Vui lòng thử lại sau.",
+    retryable: false,
+    retryAfterMs: null,
+    metadata: {
+      provider: PROVIDER_DESCRIPTOR.provider,
+      model: PROVIDER_DESCRIPTOR.model,
+      requestId: request.requestId,
+      elapsedMs: 0,
+      errorClass: "unknown",
+    },
+  };
+}
+
 // ─── Public API ───────────────────────────────────────────────────────
 
 export { PROVIDER_DESCRIPTOR, MODEL, DEEPSEEK_BASE_URL };
