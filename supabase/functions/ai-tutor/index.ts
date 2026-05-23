@@ -363,6 +363,23 @@ export async function handleRequest(req: Request): Promise<Response> {
     });
   }
 
+  // ── Stage 3D: Input-length guard (additive to provider Gate 3) ──
+  const MAX_PROMPT_CHARS = 500;
+  if (userPrompt.length > MAX_PROMPT_CHARS) {
+    console.log(JSON.stringify({
+      ns: "[ai-tutor]",
+      event: "input_too_long",
+      requestId,
+      promptChars: userPrompt.length,
+    }));
+    return corsResponse(400, {
+      ok: false,
+      errorKind: "input_too_long",
+      detail: "Prompt exceeds maximum length",
+      requestId,
+    });
+  }
+
   // ── Phase D2: Build provider execution request from validated body ──
 
   const providerRequest = buildProviderRequest({
