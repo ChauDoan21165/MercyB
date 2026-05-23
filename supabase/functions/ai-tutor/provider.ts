@@ -619,18 +619,19 @@ export function redactProviderExecutionLog(
 
 /**
  * Check if provider execution is enabled.
- * ALWAYS returns false — no real provider execution in Phase D0.
+ * Reads REAL_PROVIDER_ENABLED from env (consistent with executeProviderCall gate 4).
+ * Returns false outside Deno or when env is absent/false.
  */
 export function isProviderExecutionEnabled(): boolean {
-  return false;
+  return readEnvVar("REAL_PROVIDER_ENABLED") === "true";
 }
 
 /**
  * Check if provider execution is disabled.
- * Inverse of isProviderExecutionEnabled — ALWAYS returns true.
+ * Inverse of isProviderExecutionEnabled.
  */
 export function isProviderExecutionDisabled(): boolean {
-  return true;
+  return !isProviderExecutionEnabled();
 }
 
 /**

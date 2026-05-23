@@ -1,14 +1,25 @@
 /**
- * AI Tutor Edge Function Shell — deployable skeleton.
+ * AI Tutor Edge Function Shell — deployable edge handler.
  *
  * Phase C — returns 503 service_disabled for all valid requests.
  * Phase D2 — wired to the D1 disabled provider execution adapter.
+ * Phase PR-REAL-1 — gated real provider execution for sentence_correction.
  *
- * No real provider calls. No API keys. No Supabase persistence.
+ * ═══ OPERATOR NOTE ═══════════════════════════════════════════════════
+ * After setting or changing these Supabase Edge Function secrets, you
+ * MUST redeploy the ai-tutor function for the new values to take effect:
+ *   - REAL_PROVIDER_ENABLED
+ *   - TUTOR_SMOKE_TOKEN
+ *   - DEEPSEEK_API_KEY
+ * Secrets are injected at deploy time; runtime Deno.env.get() reads
+ * the deployed values. A secret change without redeploy has no effect.
+ * ═══════════════════════════════════════════════════════════════════════
  *
- * When the AI tutor goes live, this shell becomes the real handler.
- * Until then, it validates requests and returns a consistent
- * disabled-service envelope via executeProviderCall.
+ * Smoke token: read from x-tutor-smoke-token header (canonical source).
+ * Body.smokeToken is NOT accepted.
+ *
+ * No real provider calls without all gates passing.
+ * No API keys exposed. No Supabase persistence.
  */
 
 import {
@@ -22,7 +33,7 @@ import type { ProviderExecutionRequest } from "./provider.ts";
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, x-tutor-smoke-token, apikey",
   "Access-Control-Max-Age": "86400",
 };
 
@@ -169,7 +180,9 @@ export async function handleRequest(req: Request): Promise<Response> {
     providerRequest,
     mode: body.mode as string,
     requestId,
-    smokeToken: typeof body.smokeToken === "string" ? body.smokeToken : undefined,
+    // Smoke token: canonical source is x-tutor-smoke-token header only.
+    // Body.smokeToken is NOT accepted — header is the single entry point.
+    smokeToken: req.headers.get("x-tutor-smoke-token")?.trim() || undefined,
   };
 
   // Execute via provider adapter (D1 disabled or PR-REAL-1 gated real)
