@@ -493,3 +493,92 @@ test("D2-T9h: body.smokeToken is NOT accepted — only header is canonical", asy
   }
   expect(threw).toBe(false);
 });
+
+// ═══════════════════════════════════════════════════════════════════════
+// D2-T10: smoke_token_required mapping (requires env stubs)
+// ═══════════════════════════════════════════════════════════════════════
+
+describe("D2-T10: smoke_token_required handler mapping", () => {
+  beforeAll(() => {
+    vi.stubGlobal("Deno", {
+      env: {
+        get: vi.fn((key: string) => {
+          if (key === "REAL_PROVIDER_ENABLED") return "true";
+          // TUTOR_SMOKE_TOKEN and DEEPSEEK_API_KEY absent
+          return undefined;
+        }),
+      },
+    });
+  });
+
+  afterAll(() => {
+    vi.unstubAllGlobals();
+  });
+
+  test("D2-T10a: smoke_token_required maps to HTTP 503", async () => {
+    // With REAL_PROVIDER_ENABLED=true but no TUTOR_SMOKE_TOKEN,
+    // Gate 5a triggers → smoke_token_required → 503
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const req = buildRequest("POST", body, { "x-tutor-smoke-token": "any-token" });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(503);
+  });
+
+  test("D2-T10b: smoke_token_required maps to errorKind service_disabled", async () => {
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const req = buildRequest("POST", body, { "x-tutor-smoke-token": "any-token" });
+    const res = await handleRequest(req);
+    const data = await readBody(res);
+    expect(data.ok).toBe(false);
+    expect(data.errorKind).toBe("service_disabled");
+  });
+
+  test("D2-T10c: smoke_token_required response includes message and requestId", async () => {
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const req = buildRequest("POST", body, { "x-tutor-smoke-token": "any-token" });
+    const res = await handleRequest(req);
+    const data = await readBody(res);
+    expect(typeof data.message).toBe("string");
+    expect(typeof data.requestId).toBe("string");
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// D2-T11: provider_not_configured handler mapping (requires env stubs)
+// ═══════════════════════════════════════════════════════════════════════
+
+describe("D2-T11: provider_not_configured handler mapping", () => {
+  beforeAll(() => {
+    vi.stubGlobal("Deno", {
+      env: {
+        get: vi.fn((key: string) => {
+          if (key === "REAL_PROVIDER_ENABLED") return "true";
+          if (key === "TUTOR_SMOKE_TOKEN") return "smoke-secret";
+          // DEEPSEEK_API_KEY absent → Gate 6 triggers provider_not_configured
+          return undefined;
+        }),
+      },
+    });
+  });
+
+  afterAll(() => {
+    vi.unstubAllGlobals();
+  });
+
+  test("D2-T11a: provider_not_configured maps to HTTP 400", async () => {
+    // With REAL_PROVIDER_ENABLED=true, TUTOR_SMOKE_TOKEN=valid,
+    // but no DEEPSEEK_API_KEY, Gate 6 triggers → provider_not_configured → 400
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const req = buildRequest("POST", body, { "x-tutor-smoke-token": "smoke-secret" });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(400);
+  });
+
+  test("D2-T11b: provider_not_configured passes code as errorKind", async () => {
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const req = buildRequest("POST", body, { "x-tutor-smoke-token": "smoke-secret" });
+    const res = await handleRequest(req);
+    const data = await readBody(res);
+    expect(data.errorKind).toBe("provider_not_configured");
+  });
+});

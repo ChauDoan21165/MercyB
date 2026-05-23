@@ -211,7 +211,8 @@ export async function handleRequest(req: Request): Promise<Response> {
   // Log the event (character counts only — no prompt content)
   console.log(JSON.stringify({
     ns: "[ai-tutor]",
-    event: result.code === "provider_disabled" ? "service_disabled" : "provider_error",
+    event: result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"
+      ? "service_disabled" : "provider_error",
     requestId,
     mode: body.mode,
     errorCode: result.code,
@@ -221,11 +222,11 @@ export async function handleRequest(req: Request): Promise<Response> {
   }));
 
   // Map adapter result to response
-  const statusCode = result.code === "provider_disabled" || result.code === "mode_blocked"
+  const statusCode = result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"
     ? 503 : 400;
   return corsResponse(statusCode, {
     ok: false,
-    errorKind: result.code === "provider_disabled" || result.code === "mode_blocked"
+    errorKind: result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"
       ? "service_disabled" : result.code,
     message: result.messageVi,
     requestId,

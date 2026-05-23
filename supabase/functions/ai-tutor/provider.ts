@@ -399,6 +399,7 @@ export type ProviderExecutionErrorCode =
   | "api_key_missing"
   | "provider_not_configured"
   | "mode_blocked"
+  | "smoke_token_required"
   | "input_too_long"
   | "rate_limited"
   | "server_error"
@@ -566,6 +567,7 @@ export function mapProviderError(
     case "api_key_missing":
     case "provider_not_configured":
     case "mode_blocked":
+    case "smoke_token_required":
     case "input_too_long":
     case "provider_invalid_response":
     case "invalid_request":
@@ -808,7 +810,17 @@ export async function executeProviderCall(
 
   // ── Gate 2: Block non-sentence_correction modes (M1) ─────────────
   if (request.mode !== "sentence_correction") {
-    return buildProviderDisabledResult(request.requestId);
+    return {
+      ok: false,
+      code: "mode_blocked",
+      messageVi: "Chế độ này hiện chưa được hỗ trợ. Vui lòng thử lại sau.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        requestId: request.requestId,
+        errorClass: "unknown",
+      },
+    };
   }
 
   // ── Gate 3: Reject input over MAX_INPUT_CHARS (M1) ───────────────
@@ -836,10 +848,30 @@ export async function executeProviderCall(
   // ── Gate 5: TUTOR_SMOKE_TOKEN (M5) ───────────────────────────────
   const expectedSmokeToken = readEnvVar("TUTOR_SMOKE_TOKEN");
   if (!expectedSmokeToken) {
-    return buildProviderDisabledResult(request.requestId);
+    return {
+      ok: false,
+      code: "smoke_token_required",
+      messageVi: "Tính năng AI Tutor yêu cầu mã xác thực. Vui lòng thử lại sau.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        requestId: request.requestId,
+        errorClass: "unknown",
+      },
+    };
   }
   if (!request.smokeToken || request.smokeToken !== expectedSmokeToken) {
-    return buildProviderDisabledResult(request.requestId);
+    return {
+      ok: false,
+      code: "smoke_token_required",
+      messageVi: "Tính năng AI Tutor yêu cầu mã xác thực. Vui lòng thử lại sau.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        requestId: request.requestId,
+        errorClass: "unknown",
+      },
+    };
   }
 
   // ── Gate 6: DEEPSEEK_API_KEY ─────────────────────────────────────
