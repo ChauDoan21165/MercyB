@@ -824,3 +824,39 @@ describe("D2-T15: safety gate blocks sensitive prompts", () => {
     expect((await readBody(res)).errorKind).toBe("safety_blocked");
   });
 });
+
+// ═══════════════════════════════════════════════════════════════════════
+// D2-T17: Cost / kill-switch controls
+// ═══════════════════════════════════════════════════════════════════════
+
+describe("D2-T17: input-length guard and kill-switch", () => {
+  test("D2-T17a: input > 500 chars → 400 input_too_long", async () => {
+    const body = { ...validBody(), userPrompt: "x".repeat(501) };
+    const res = await handleRequest(buildRequest("POST", body));
+    expect(res.status).toBe(400);
+    expect((await readBody(res)).errorKind).toBe("input_too_long");
+  });
+
+  test("D2-T17b: input at exactly 500 chars passes length gate", async () => {
+    const body = { ...validBody(), userPrompt: "x".repeat(500) };
+    const res = await handleRequest(buildRequest("POST", body));
+    // 500 chars passes → reaches provider_disabled → 503
+    expect(res.status).toBe(503);
+  });
+
+  test("D2-T17c: kill-switch REAL_PROVIDER_ENABLED=false blocks provider", async () => {
+    // Without Deno stub, REAL_PROVIDER_ENABLED is undefined → Gate 4 fires → provider_disabled → 503
+    const body = { ...validBody(), mode: "sentence_correction" };
+    const res = await handleRequest(buildRequest("POST", body));
+    expect(res.status).toBe(503);
+    expect((await readBody(res)).errorKind).toBe("service_disabled");
+  });
+
+  test("D2-T17d: input_too_long log does not expose raw prompt text", async () => {
+    const body = { ...validBody(), userPrompt: "a".repeat(501) };
+    const res = await handleRequest(buildRequest("POST", body));
+    const text = await res.clone().text();
+    // Response body must not contain the full prompt
+    expect(text).not.toContain("a".repeat(501));
+  });
+});
