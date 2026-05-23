@@ -62,7 +62,20 @@ export function createRetryLoader<T extends ComponentType<any>>(
       clearReloadMark();
       return mod;
     } catch (error) {
-      if (looksLikeChunkLoadFailure(error) && !hasAlreadyReloaded()) {
+      if (!looksLikeChunkLoadFailure(error)) {
+        throw error;
+      }
+
+      try {
+        const mod = await componentImport();
+        clearReloadMark();
+        return mod;
+      } catch (retryError) {
+        if (!looksLikeChunkLoadFailure(retryError)) {
+          throw retryError;
+        }
+
+        if (!hasAlreadyReloaded()) {
         markReloaded();
         if (typeof window !== "undefined") {
           // Cache-busting nav, NOT a plain reload: embedded webviews
@@ -74,7 +87,8 @@ export function createRetryLoader<T extends ComponentType<any>>(
         // showing the fallback; React never sees the error.
         return new Promise<{ default: T }>(() => {});
       }
-      throw error;
+        throw retryError;
+      }
     }
   };
 }
