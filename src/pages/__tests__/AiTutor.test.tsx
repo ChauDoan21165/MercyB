@@ -1,7 +1,7 @@
 // src/pages/__tests__/AiTutor.test.tsx
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import AiTutorPage from "../AiTutor";
 
 describe("AiTutor mock UI", () => {
@@ -42,43 +42,89 @@ describe("AiTutor mock UI", () => {
     });
   });
 
-  it("shows explanation section", async () => {
+  it("shows practice section after correction", async () => {
     render(<AiTutorPage />);
     await userEvent.type(screen.getByRole("textbox"), "test");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => {
-      expect(screen.getByText(/Giải thích/)).toBeInTheDocument();
+      expect(screen.getByText(/Luyện tập/)).toBeInTheDocument();
     });
   });
 
-  it("shows grammar tip section", async () => {
+  it("practice section has an answer textarea", async () => {
     render(<AiTutorPage />);
     await userEvent.type(screen.getByRole("textbox"), "test");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => {
-      expect(screen.getByText(/Mẹo ngữ pháp/)).toBeInTheDocument();
+      const textareas = screen.getAllByRole("textbox");
+      expect(textareas.length).toBe(2);
     });
   });
 
-  it("cycles through mock results", async () => {
+  it("submit practice shows mock feedback", async () => {
     render(<AiTutorPage />);
-    // First submit
-    await userEvent.type(screen.getByRole("textbox"), "first");
+    await userEvent.type(screen.getByRole("textbox"), "test");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
     await waitFor(() => {
-      expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
+      expect(screen.getByText(/Luyện tập/)).toBeInTheDocument();
     });
 
-    // Clear + second submit
-    await userEvent.click(screen.getByRole("button", { name: /Sửa câu khác/ }));
-    await userEvent.type(screen.getByRole("textbox"), "second");
-    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    const textareas = screen.getAllByRole("textbox");
+    await userEvent.type(textareas[1], "my practice answer");
+    await userEvent.click(screen.getByRole("button", { name: /Gửi câu trả lời/ }));
+
     await waitFor(() => {
-      expect(screen.getByText("I have been learning English for two years.")).toBeInTheDocument();
+      expect(screen.getByText(/Nhận xét/)).toBeInTheDocument();
     });
   });
 
-  it("capped at 500 characters", async () => {
+  it("practice feedback includes encouragement, tip, and next step", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/Luyện tập/)).toBeInTheDocument();
+    });
+
+    const textareas = screen.getAllByRole("textbox");
+    await userEvent.type(textareas[1], "my practice answer");
+    await userEvent.click(screen.getByRole("button", { name: /Gửi câu trả lời/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/Nhận xét/)).toBeInTheDocument();
+      expect(screen.getByText("Mẹo · Tip")).toBeInTheDocument();
+      expect(screen.getByText("Bước tiếp theo · Next Step")).toBeInTheDocument();
+    });
+  });
+
+  it("reset clears correction and practice state", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/Luyện tập/)).toBeInTheDocument();
+    });
+
+    await userEvent.click(screen.getByRole("button", { name: /Làm mới/ }));
+    expect(screen.getByText(/AI sẵn sàng sửa câu của bạn/)).toBeInTheDocument();
+  });
+
+  it("no fetch call is made", async () => {
+    const spy = vi.spyOn(globalThis, "fetch");
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText(/Luyện tập/)).toBeInTheDocument();
+    });
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
+  });
+
+  it("caps input at 500 characters", async () => {
     render(<AiTutorPage />);
     const long = "a".repeat(600);
     await userEvent.type(screen.getByRole("textbox"), long);

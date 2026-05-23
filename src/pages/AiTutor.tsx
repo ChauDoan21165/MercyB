@@ -7,15 +7,28 @@ type CorrectionResult = {
   corrected: string;
   explanation: string;
   grammarTip: string;
+  practicePrompt: string;
 };
 
-const MOCK_RESULTS: CorrectionResult[] = [
+type PracticeFeedback = {
+  encouragement: string;
+  tip: string;
+  nextStep: string;
+};
+
+const MOCK_RESULTS: Array<CorrectionResult & { feedback: PracticeFeedback }> = [
   {
     corrected: "She goes to school every day.",
     explanation:
       "Third-person singular subjects (she / he / it) need the verb with -s or -es in the present simple.",
     grammarTip:
       "Quy tắc: Chủ ngữ ngôi thứ ba số ít → động từ thêm -s/-es.",
+    practicePrompt: "Viết một câu về thói quen hằng ngày của bạn dùng thì hiện tại đơn.",
+    feedback: {
+      encouragement: "Tốt lắm! Bạn đã thực hành thì hiện tại đơn. 🎯",
+      tip: "Nhớ thêm -s/-es cho động từ khi chủ ngữ là she / he / it nhé.",
+      nextStep: "Thử viết thêm một câu khác về người thân của bạn.",
+    },
   },
   {
     corrected: "I have been learning English for two years.",
@@ -23,6 +36,12 @@ const MOCK_RESULTS: CorrectionResult[] = [
       "Use the present perfect continuous (have been + -ing) for actions that started in the past and continue now.",
     grammarTip:
       "Dùng have been + V-ing khi hành động bắt đầu trong quá khứ và vẫn đang tiếp diễn.",
+    practicePrompt: "Bạn đã làm gì từ sáng đến giờ? Viết một câu dùng thì hiện tại hoàn thành tiếp diễn.",
+    feedback: {
+      encouragement: "Rất đúng! Bạn đã dùng đúng cấu trúc have been + V-ing. ⭐",
+      tip: "Dùng 'since' cho mốc thời gian cụ thể, 'for' cho khoảng thời gian.",
+      nextStep: "Thử đặt câu với 'for' thay vì 'since'.",
+    },
   },
   {
     corrected: "If I were you, I would practice every day.",
@@ -30,10 +49,16 @@ const MOCK_RESULTS: CorrectionResult[] = [
       "The second conditional uses 'if + past simple' and 'would + base verb' for hypothetical situations.",
     grammarTip:
       "Câu điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu.",
+    practicePrompt: "Nếu bạn có nhiều thời gian hơn, bạn sẽ làm gì? Viết một câu điều kiện loại 2.",
+    feedback: {
+      encouragement: "Chính xác! Câu điều kiện của bạn rất tự nhiên. 👏",
+      tip: "Nhớ: mệnh đề If dùng quá khứ đơn, mệnh đề chính dùng would + V.",
+      nextStep: "Thử đảo hai mệnh đề: 'I would... if I...'",
+    },
   },
 ];
 
-const MOCK_DELAY_MS = 800;
+const MOCK_DELAY_MS = 600;
 
 export default function AiTutorPage() {
   const [input, setInput] = useState("");
@@ -42,6 +67,11 @@ export default function AiTutorPage() {
   const [error, setError] = useState<string | null>(null);
   const [useCount, setUseCount] = useState(0);
 
+  // Practice flow
+  const [practiceAnswer, setPracticeAnswer] = useState("");
+  const [practiceFeedback, setPracticeFeedback] = useState<PracticeFeedback | null>(null);
+  const [practiceLoading, setPracticeLoading] = useState(false);
+
   const handleSubmit = async () => {
     const trimmed = input.trim();
     if (!trimmed) return;
@@ -49,21 +79,40 @@ export default function AiTutorPage() {
     setError(null);
     setLoading(true);
     setResult(null);
+    setPracticeAnswer("");
+    setPracticeFeedback(null);
 
-    // Mock loading delay
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
-    // Cycle through mock results
     const next = MOCK_RESULTS[useCount % MOCK_RESULTS.length];
-    setResult(next);
+    setResult({
+      corrected: next.corrected,
+      explanation: next.explanation,
+      grammarTip: next.grammarTip,
+      practicePrompt: next.practicePrompt,
+    });
     setUseCount((n) => n + 1);
     setLoading(false);
+  };
+
+  const handlePracticeSubmit = async () => {
+    if (!practiceAnswer.trim()) return;
+    setPracticeLoading(true);
+    setPracticeFeedback(null);
+
+    await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
+
+    const mock = MOCK_RESULTS[(useCount - 1 + MOCK_RESULTS.length) % MOCK_RESULTS.length];
+    setPracticeFeedback(mock.feedback);
+    setPracticeLoading(false);
   };
 
   const handleClear = () => {
     setInput("");
     setResult(null);
     setError(null);
+    setPracticeAnswer("");
+    setPracticeFeedback(null);
   };
 
   const charCount = input.length;
@@ -82,10 +131,10 @@ export default function AiTutorPage() {
           </span>
         </div>
         <p className="mt-2 text-sm font-medium text-slate-500">
-          Viết một câu tiếng Anh — AI sẽ sửa lỗi và giải thích.
+          Viết một câu tiếng Anh — AI sẽ sửa lỗi, giải thích, và cho bạn luyện tập thêm.
         </p>
         <p className="mt-1 text-xs text-slate-400">
-          Write a sentence — AI corrects it and explains why.
+          Write a sentence — AI corrects it, explains, and gives you follow-up practice.
         </p>
       </section>
 
@@ -138,7 +187,7 @@ export default function AiTutorPage() {
               onClick={handleClear}
               className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
             >
-              Clear
+              Làm mới
             </button>
           )}
         </div>
@@ -152,7 +201,7 @@ export default function AiTutorPage() {
         </section>
       )}
 
-      {/* Empty state — before first submit */}
+      {/* Empty state */}
       {!result && !loading && !error && (
         <section className="mt-5 rounded-[18px] border border-dashed border-slate-200 bg-slate-50/50 p-6 text-center">
           <div className="text-3xl">✨</div>
@@ -181,7 +230,7 @@ export default function AiTutorPage() {
       {/* Result */}
       {result && !loading && (
         <section className="mt-5 grid gap-4">
-          {/* Corrected sentence */}
+          {/* Corrected */}
           <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
             <div className="mb-2 text-xs font-black uppercase text-emerald-600">
               Câu đã sửa · Corrected
@@ -211,14 +260,80 @@ export default function AiTutorPage() {
             </p>
           </div>
 
-          {/* CTA */}
-          <button
-            type="button"
-            onClick={handleClear}
-            className="rounded-full border border-slate-200 bg-white py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
-          >
-            Sửa câu khác · Try another sentence
-          </button>
+          {/* Practice section */}
+          {!practiceFeedback && (
+            <div className="rounded-[18px] border border-violet-200 bg-violet-50/50 p-5">
+              <div className="mb-2 text-xs font-black uppercase text-violet-600">
+                Luyện tập · Practice
+              </div>
+              <p className="text-sm font-semibold leading-6 text-slate-700">
+                {result.practicePrompt}
+              </p>
+
+              <textarea
+                value={practiceAnswer}
+                onChange={(e) => setPracticeAnswer(e.target.value)}
+                placeholder="Viết câu trả lời của bạn ở đây..."
+                rows={3}
+                className="mt-3 w-full resize-none rounded-[12px] border border-violet-200 bg-white p-3 text-[14px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-violet-400 focus:outline-none"
+              />
+
+              <button
+                type="button"
+                onClick={handlePracticeSubmit}
+                disabled={!practiceAnswer.trim() || practiceLoading}
+                className="mt-3 w-full rounded-full bg-violet-700 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-violet-200 disabled:text-violet-400"
+              >
+                {practiceLoading ? (
+                  <span className="inline-flex items-center gap-2">
+                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                    Đang kiểm tra...
+                  </span>
+                ) : (
+                  "Gửi câu trả lời · Submit answer"
+                )}
+              </button>
+            </div>
+          )}
+
+          {/* Practice feedback */}
+          {practiceFeedback && (
+            <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
+              <div className="mb-2 text-xs font-black uppercase text-emerald-600">
+                Nhận xét · Feedback
+              </div>
+              <p className="text-sm font-bold leading-6 text-emerald-800">
+                {practiceFeedback.encouragement}
+              </p>
+              <div className="mt-3 rounded-[12px] bg-white/70 p-3">
+                <div className="text-xs font-black uppercase text-slate-500">Mẹo · Tip</div>
+                <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.tip}</p>
+              </div>
+              <div className="mt-3 rounded-[12px] bg-white/70 p-3">
+                <div className="text-xs font-black uppercase text-slate-500">Bước tiếp theo · Next Step</div>
+                <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.nextStep}</p>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleClear}
+                className="mt-4 w-full rounded-full border border-emerald-300 bg-white py-3 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50"
+              >
+                Sửa câu khác · Try another sentence
+              </button>
+            </div>
+          )}
+
+          {/* Try another (when practice not yet submitted) */}
+          {!practiceFeedback && (
+            <button
+              type="button"
+              onClick={handleClear}
+              className="rounded-full border border-slate-200 bg-white py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
+            >
+              Sửa câu khác · Try another sentence
+            </button>
+          )}
         </section>
       )}
 
