@@ -169,26 +169,51 @@ export async function handleRequest(req: Request): Promise<Response> {
     providerRequest,
     mode: body.mode as string,
     requestId,
+    smokeToken: typeof body.smokeToken === "string" ? body.smokeToken : undefined,
   };
 
-  // Execute via the D1 disabled adapter — always returns disabled
-  const result = executeProviderCall(execRequest);
+  // Execute via provider adapter (D1 disabled or PR-REAL-1 gated real)
+  const result = await executeProviderCall(execRequest);
+
+  if (result.ok) {
+    // Real provider execution succeeded (PR-REAL-1)
+    console.log(JSON.stringify({
+      ns: "[ai-tutor]",
+      event: "provider_call_success",
+      requestId,
+      mode: body.mode,
+      elapsedMs: result.metadata.elapsedMs,
+      promptTokens: result.metadata.tokenUsage?.prompt,
+      completionTokens: result.metadata.tokenUsage?.completion,
+    }));
+
+    return corsResponse(200, {
+      ok: true,
+      content: result.response.choices[0]?.message?.content ?? "",
+      usage: result.response.usage,
+      requestId,
+    });
+  }
 
   // Log the event (character counts only — no prompt content)
   console.log(JSON.stringify({
     ns: "[ai-tutor]",
-    event: "service_disabled",
+    event: result.code === "provider_disabled" ? "service_disabled" : "provider_error",
     requestId,
     mode: body.mode,
+    errorCode: result.code,
     // Character counts only — no prompt content
     systemPromptChars: (body.systemPrompt as string).length,
     userPromptChars: (body.userPrompt as string).length,
   }));
 
-  // Map adapter result to current response shape
-  return corsResponse(503, {
+  // Map adapter result to response
+  const statusCode = result.code === "provider_disabled" || result.code === "mode_blocked"
+    ? 503 : 400;
+  return corsResponse(statusCode, {
     ok: false,
-    errorKind: "service_disabled",
+    errorKind: result.code === "provider_disabled" || result.code === "mode_blocked"
+      ? "service_disabled" : result.code,
     message: result.messageVi,
     requestId,
   });

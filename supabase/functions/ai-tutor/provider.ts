@@ -1,12 +1,14 @@
 /**
  * AI Tutor Provider Adapter — DeepSeek-V3 request/response transforms.
  *
- * Phase C — pure data-transform functions only. No live provider execution.
- * No fetch, no network, no API keys, no Deno.env, no process.env.
- * No serve(), no createClient, no Supabase persistence.
+ * Phase C — data-transform functions for request/response shapes.
+ * Phase D1 — disabled execution adapter (always returns provider_disabled).
+ * Phase PR-REAL-1 — gated real provider execution for sentence_correction
+ *   mode only, via fetch() to DeepSeek-V3, protected by three-layer gate
+ *   (REAL_PROVIDER_ENABLED, TUTOR_SMOKE_TOKEN, DEEPSEEK_API_KEY).
  *
- * Builds and parses provider-agnostic shapes that the caller
- * (a future edge function handler) uses to execute real calls.
+ * No SDK imports. No streaming. No persistence. No retries.
+ * No learner data. No production traffic.
  */
 
 // ─── Static Provider Metadata ────────────────────────────────────────
@@ -354,6 +356,8 @@ export type ProviderExecutionRequest = {
   mode: string;
   /** Unique request ID for correlation. */
   requestId: string;
+  /** PR-REAL-1: Operator smoke token for gated real execution. */
+  smokeToken?: string;
 };
 
 /**
@@ -393,9 +397,15 @@ export type ProviderExecutionErrorCode =
   | "provider_disabled"
   | "invalid_request"
   | "api_key_missing"
+  | "provider_not_configured"
+  | "mode_blocked"
+  | "input_too_long"
   | "rate_limited"
   | "server_error"
   | "timeout"
+  | "provider_timeout"
+  | "provider_unavailable"
+  | "provider_invalid_response"
   | "budget_exceeded"
   | "safety_blocked"
   | "empty_response"
@@ -541,6 +551,7 @@ export function mapProviderError(
     case "server_error":
       return "server_error";
     case "timeout":
+    case "provider_timeout":
       return "timeout";
     case "budget_exceeded":
       return "budget_exceeded";
@@ -549,9 +560,14 @@ export function mapProviderError(
     case "empty_response":
       return "empty_response";
     case "network_error":
+    case "provider_unavailable":
       return "network";
     case "provider_disabled":
     case "api_key_missing":
+    case "provider_not_configured":
+    case "mode_blocked":
+    case "input_too_long":
+    case "provider_invalid_response":
     case "invalid_request":
     case "parse_failed":
     case "unknown":
@@ -662,24 +678,118 @@ export function buildProviderErrorResponse(
 
 // ═══════════════════════════════════════════════════════════════════════
 // Phase D1 — Disabled Execution Adapter
+// Phase PR-REAL-1 — Gated real provider execution (sentence_correction only)
 // executeProviderCall is the SINGLE entry point for provider execution.
-// Always returns disabled — no real execution path exists.
 // ═══════════════════════════════════════════════════════════════════════
+
+// ─── PR-REAL-1 Helpers ────────────────────────────────────────────────
+
+/** Maximum input characters for PR-REAL-1 smoke execution. */
+const MAX_INPUT_CHARS = 500;
+
+/** Provider call timeout in ms. */
+const PROVIDER_TIMEOUT_MS = 15_000;
+
+/** Maximum output tokens for PR-REAL-1. */
+const MAX_OUTPUT_TOKENS = 300;
+
+/** Read a Deno environment variable. Returns undefined outside Deno. */
+function readEnvVar(key: string): string | undefined {
+  if (typeof Deno !== "undefined" && typeof (Deno as unknown as Record<string, unknown>).env === "object") {
+    const env = (Deno as unknown as { env: { get(k: string): string | undefined } }).env;
+    if (typeof env.get === "function") {
+      return env.get(key);
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Extract the last user message content from a provider request.
+ * Returns empty string if no user message found.
+ */
+function getLastUserMessage(pr: ProviderRequest): string {
+  for (let i = pr.messages.length - 1; i >= 0; i--) {
+    if (pr.messages[i].role === "user") {
+      return pr.messages[i].content;
+    }
+  }
+  return "";
+}
+
+// ─── M6: moderateProviderOutput ───────────────────────────────────────
+
+/**
+ * Safety-check raw provider output before parsing/returning.
+ * Returns { safe: true } if output passes moderation, or
+ * { safe: false, reason } if blocked.
+ *
+ * Checks for: PII patterns (email, phone, API key, IP, JWT),
+ * harmful content indicators. Never returns raw text to caller.
+ */
+export function moderateProviderOutput(text: string): { safe: boolean; reason?: string } {
+  if (!text || typeof text !== "string") {
+    return { safe: false, reason: "empty output" };
+  }
+
+  // PII redaction patterns (mirrors REDACTION_RULES)
+  const piiPatterns: Array<{ pattern: RegExp; label: string }> = [
+    { pattern: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label: "email" },
+    { pattern: /(?:\+84|0)[0-9]{9,10}/g, label: "phone_vn" },
+    { pattern: /\b[0-9]{3}[-. ][0-9]{3}[-. ][0-9]{4}\b/g, label: "phone_intl" },
+    { pattern: /sk-[a-zA-Z0-9_-]{8,}/g, label: "api_key" },
+    { pattern: /eyJ[a-zA-Z0-9_-]{8,}/g, label: "jwt" },
+    { pattern: /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g, label: "ip" },
+  ];
+
+  for (const { pattern, label } of piiPatterns) {
+    if (pattern.test(text)) {
+      return { safe: false, reason: `output contains ${label}` };
+    }
+  }
+
+  // Harmful content indicators (basic smoke-level check)
+  const blockedTerms = [
+    "DAN mode", "ignore previous", "bypass safety",
+    "jailbreak", "developer mode", "system override",
+  ];
+  const lower = text.toLowerCase();
+  for (const term of blockedTerms) {
+    if (lower.includes(term.toLowerCase())) {
+      return { safe: false, reason: "output contains blocked content" };
+    }
+  }
+
+  return { safe: true };
+}
+
+// ─── PR-REAL-1: executeProviderCall ───────────────────────────────────
 
 /**
  * Execute a provider call.
  *
  * This is the SINGLE entry point for all provider execution.
- * Currently ALWAYS returns disabled — no real provider calls.
  *
- * When Phase D2 authorizes live execution, this function will
- * conditionally call the real provider API. Until then, all
- * valid requests return service_disabled.
+ * Gate order (server-side, layers 2-3):
+ *   1. Validate request shape (D1)
+ *   2. Block non-sentence_correction modes (M1)
+ *   3. Reject input over MAX_INPUT_CHARS (M1)
+ *   4. Check REAL_PROVIDER_ENABLED === "true" (M7)
+ *   5. Validate TUTOR_SMOKE_TOKEN against request.smokeToken (M5)
+ *   6. Require DEEPSEEK_API_KEY
+ *   7. Execute fetch() to DeepSeek-V3 (no retries — M4)
+ *   8. Moderate output (M6)
+ *   9. Parse and return
+ *
+ * Any gate failure returns a safe disabled/config error.
+ * No ok:true is returned unless ALL gates pass and provider succeeds.
  */
-export function executeProviderCall(
+export async function executeProviderCall(
   request: ProviderExecutionRequest,
-): ProviderExecutionResult {
-  // Validate the request shape
+): Promise<ProviderExecutionResult> {
+  const startTime = Date.now();
+
+  // ── Gate 1: Validate request shape (D1) ──────────────────────────
   const validationError = validateProviderExecutionRequest(request);
   if (validationError) {
     return {
@@ -695,19 +805,260 @@ export function executeProviderCall(
     };
   }
 
-  // Provider execution is disabled — return disabled result
+  // ── Gate 2: Block non-sentence_correction modes (M1) ─────────────
+  if (request.mode !== "sentence_correction") {
+    return buildProviderDisabledResult(request.requestId);
+  }
+
+  // ── Gate 3: Reject input over MAX_INPUT_CHARS (M1) ───────────────
+  const userContent = getLastUserMessage(request.providerRequest);
+  if (userContent.length > MAX_INPUT_CHARS) {
+    return {
+      ok: false,
+      code: "input_too_long",
+      messageVi: "Văn bản đầu vào vượt quá giới hạn cho phép.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        requestId: request.requestId,
+        errorClass: "unknown",
+      },
+    };
+  }
+
+  // ── Gate 4: REAL_PROVIDER_ENABLED (M7) ───────────────────────────
+  const realEnabled = readEnvVar("REAL_PROVIDER_ENABLED");
+  if (realEnabled !== "true") {
+    return buildProviderDisabledResult(request.requestId);
+  }
+
+  // ── Gate 5: TUTOR_SMOKE_TOKEN (M5) ───────────────────────────────
+  const expectedSmokeToken = readEnvVar("TUTOR_SMOKE_TOKEN");
+  if (!expectedSmokeToken) {
+    return buildProviderDisabledResult(request.requestId);
+  }
+  if (!request.smokeToken || request.smokeToken !== expectedSmokeToken) {
+    return buildProviderDisabledResult(request.requestId);
+  }
+
+  // ── Gate 6: DEEPSEEK_API_KEY ─────────────────────────────────────
+  const apiKey = readEnvVar("DEEPSEEK_API_KEY");
+  if (!apiKey) {
+    return {
+      ok: false,
+      code: "provider_not_configured",
+      messageVi: "Cấu hình AI Tutor chưa hoàn tất. Vui lòng thử lại sau.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs: Date.now() - startTime,
+        errorClass: "unknown",
+      },
+    };
+  }
+
+  // ── Gate 7: Execute real provider call (M4: zero retries) ────────
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS);
+
+  let response: Response;
+  try {
+    response = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        ...request.providerRequest,
+        max_tokens: MAX_OUTPUT_TOKENS,
+        response_format: { type: "json_object" },
+      }),
+      signal: controller.signal,
+    });
+  } catch (err: unknown) {
+    clearTimeout(timeoutId);
+    const isTimeout = (err as Error)?.name === "AbortError" ||
+      (err as Error)?.name === "TimeoutError";
+    if (isTimeout) {
+      return {
+        ok: false,
+        code: "provider_timeout",
+        messageVi: "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại sau.",
+        retryable: false,
+        retryAfterMs: null,
+        metadata: {
+          provider: PROVIDER_DESCRIPTOR.provider,
+          model: PROVIDER_DESCRIPTOR.model,
+          requestId: request.requestId,
+          elapsedMs: Date.now() - startTime,
+          errorClass: "timeout",
+        },
+      };
+    }
+    return {
+      ok: false,
+      code: "provider_unavailable",
+      messageVi: "Không thể kết nối đến máy chủ AI. Vui lòng thử lại sau.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs: Date.now() - startTime,
+        errorClass: "network",
+      },
+    };
+  }
+  clearTimeout(timeoutId);
+
+  const elapsedMs = Date.now() - startTime;
+
+  // ── Gate 8: Moderate raw provider response (M6) ──────────────────
+  let rawText: string;
+  try {
+    rawText = await response.text();
+  } catch {
+    return {
+      ok: false,
+      code: "provider_invalid_response",
+      messageVi: "Phản hồi từ máy chủ AI không hợp lệ.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs,
+        errorClass: "empty_response",
+      },
+    };
+  }
+
+  // Check HTTP status
+  if (!response.ok) {
+    const errorClass = classifyProviderError({ status: response.status, message: rawText });
+    return {
+      ok: false,
+      code: errorClass === "rate_limit" ? "rate_limited"
+        : errorClass === "server_error" ? "server_error"
+        : errorClass === "safety_blocked" ? "safety_blocked"
+        : errorClass === "budget_exceeded" ? "budget_exceeded"
+        : "provider_unavailable",
+      messageVi: "Máy chủ AI tạm thời không khả dụng. Vui lòng thử lại sau.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs,
+        errorClass,
+      },
+    };
+  }
+
+  // M6: Moderate raw output before parsing
+  const moderation = moderateProviderOutput(rawText);
+  if (!moderation.safe) {
+    return {
+      ok: false,
+      code: "safety_blocked",
+      messageVi: "Phản hồi từ AI không đạt yêu cầu an toàn.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs,
+        errorClass: "safety_blocked",
+      },
+    };
+  }
+
+  // ── Gate 9: Parse and validate response ──────────────────────────
+  let parsedJson: unknown;
+  try {
+    parsedJson = JSON.parse(rawText);
+  } catch {
+    return {
+      ok: false,
+      code: "provider_invalid_response",
+      messageVi: "Phản hồi từ AI không đúng định dạng.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs,
+        errorClass: "unknown",
+      },
+    };
+  }
+
+  const parsed = parseProviderResponse(parsedJson);
+  if (!parsed) {
+    return {
+      ok: false,
+      code: "provider_invalid_response",
+      messageVi: "Phản hồi từ AI không hợp lệ.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs,
+        errorClass: "empty_response",
+      },
+    };
+  }
+
+  // M6 (re-check): Also moderate parsed content
+  const assistantContent = parsed.choices[0]?.message?.content ?? "";
+  const contentModeration = moderateProviderOutput(assistantContent);
+  if (!contentModeration.safe) {
+    return {
+      ok: false,
+      code: "safety_blocked",
+      messageVi: "Phản hồi từ AI không đạt yêu cầu an toàn.",
+      retryable: false,
+      retryAfterMs: null,
+      metadata: {
+        provider: PROVIDER_DESCRIPTOR.provider,
+        model: PROVIDER_DESCRIPTOR.model,
+        requestId: request.requestId,
+        elapsedMs,
+        errorClass: "safety_blocked",
+      },
+    };
+  }
+
+  // ── Success — all gates passed ───────────────────────────────────
   return {
-    ok: false,
-    code: "provider_disabled",
-    messageVi: "Tính năng AI Tutor hiện chưa khả dụng. Vui lòng thử lại sau.",
-    retryable: false,
-    retryAfterMs: null,
+    ok: true,
+    response: parsed,
     metadata: {
       provider: PROVIDER_DESCRIPTOR.provider,
       model: PROVIDER_DESCRIPTOR.model,
       requestId: request.requestId,
-      elapsedMs: 0,
-      errorClass: "unknown",
+      elapsedMs,
+      tokenUsage: {
+        prompt: parsed.usage.prompt_tokens,
+        completion: parsed.usage.completion_tokens,
+        total: parsed.usage.total_tokens,
+      },
+      costUsd: estimateProviderCost(
+        parsed.usage.prompt_tokens,
+        parsed.usage.completion_tokens,
+      ),
+      errorClass: null,
     },
   };
 }
