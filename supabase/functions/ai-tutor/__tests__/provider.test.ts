@@ -4,6 +4,9 @@
  * Validates executeProviderCall and disabled-state invariants.
  * All tests run without real provider execution, without env reads,
  * without network calls, without Supabase persistence.
+ *
+ * Uses vitest globals (test, expect) — the repository-standard
+ * test runner. vitest.config.ts has globals: true.
  */
 
 import {
@@ -22,9 +25,7 @@ import type {
   ProviderExecutionRequest,
   ProviderExecutionResult,
   ProviderExecutionSuccess,
-  ProviderExecutionFailure,
 } from "../provider.ts";
-import { assertEquals, assertNotEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
 
 // ─── Helpers ───────────────────────────────────────────────────────────
 
@@ -44,104 +45,104 @@ function validRequest(): ProviderExecutionRequest {
 
 // ─── Test 1: Valid request returns service_disabled failure ──────────
 
-Deno.test("D1-T1: valid request returns provider_disabled", () => {
+test("D1-T1: valid request returns provider_disabled", () => {
   const result = executeProviderCall(validRequest());
-  assertEquals(result.ok, false);
+  expect(result.ok).toBe(false);
   if (!result.ok) {
-    assertEquals(result.code, "provider_disabled");
-    assertEquals(result.retryable, false);
-    assertEquals(result.retryAfterMs, null);
+    expect(result.code).toBe("provider_disabled");
+    expect(result.retryable).toBe(false);
+    expect(result.retryAfterMs).toBeNull();
   }
 });
 
 // ─── Test 2: Invalid request returns safe invalid_request failure ────
 
-Deno.test("D1-T2a: missing sessionId returns invalid_request", () => {
+test("D1-T2a: missing sessionId returns invalid_request", () => {
   const req = validRequest();
   (req as Record<string, unknown>).sessionId = "";
   const result = executeProviderCall(req);
-  assertEquals(result.ok, false);
+  expect(result.ok).toBe(false);
   if (!result.ok) {
-    assertEquals(result.code, "invalid_request");
+    expect(result.code).toBe("invalid_request");
   }
 });
 
-Deno.test("D1-T2b: missing providerRequest returns invalid_request", () => {
+test("D1-T2b: missing providerRequest returns invalid_request", () => {
   const req = validRequest();
   (req as Record<string, unknown>).providerRequest = null;
   const result = executeProviderCall(req);
-  assertEquals(result.ok, false);
+  expect(result.ok).toBe(false);
   if (!result.ok) {
-    assertEquals(result.code, "invalid_request");
+    expect(result.code).toBe("invalid_request");
   }
 });
 
-Deno.test("D1-T2c: missing mode returns invalid_request", () => {
+test("D1-T2c: missing mode returns invalid_request", () => {
   const req = validRequest();
   (req as Record<string, unknown>).mode = "";
   const result = executeProviderCall(req);
-  assertEquals(result.ok, false);
+  expect(result.ok).toBe(false);
   if (!result.ok) {
-    assertEquals(result.code, "invalid_request");
+    expect(result.code).toBe("invalid_request");
   }
 });
 
-Deno.test("D1-T2d: missing requestId returns invalid_request", () => {
+test("D1-T2d: missing requestId returns invalid_request", () => {
   const req = validRequest();
   (req as Record<string, unknown>).requestId = "";
   const result = executeProviderCall(req);
-  assertEquals(result.ok, false);
+  expect(result.ok).toBe(false);
   if (!result.ok) {
-    assertEquals(result.code, "invalid_request");
+    expect(result.code).toBe("invalid_request");
   }
 });
 
 // ─── Test 3: executeProviderCall does not throw ──────────────────────
 
-Deno.test("D1-T3: executeProviderCall does not throw on null input", () => {
+test("D1-T3: executeProviderCall does not throw on null input", () => {
   let threw = false;
   try {
     executeProviderCall(null as unknown as ProviderExecutionRequest);
   } catch {
     threw = true;
   }
-  assertEquals(threw, false);
+  expect(threw).toBe(false);
 });
 
-Deno.test("D1-T3b: executeProviderCall does not throw on undefined input", () => {
+test("D1-T3b: executeProviderCall does not throw on undefined input", () => {
   let threw = false;
   try {
     executeProviderCall(undefined as unknown as ProviderExecutionRequest);
   } catch {
     threw = true;
   }
-  assertEquals(threw, false);
+  expect(threw).toBe(false);
 });
 
 // ─── Test 4: Determinism ────────────────────────────────────────────
 
-Deno.test("D1-T4: executeProviderCall is deterministic", () => {
+test("D1-T4: executeProviderCall is deterministic", () => {
   const req = validRequest();
   const r1 = executeProviderCall(req);
   const r2 = executeProviderCall(req);
-  assertEquals(r1, r2);
+  expect(r1).toEqual(r2);
 });
 
 // ─── Test 5: isProviderExecutionEnabled remains false ───────────────
 
-Deno.test("D1-T5: isProviderExecutionEnabled returns false", () => {
-  assertEquals(isProviderExecutionEnabled(), false);
+test("D1-T5: isProviderExecutionEnabled returns false", () => {
+  expect(isProviderExecutionEnabled()).toBe(false);
 });
 
 // ─── Test 6: isProviderExecutionDisabled remains true ────────────────
 
-Deno.test("D1-T6: isProviderExecutionDisabled returns true", () => {
-  assertEquals(isProviderExecutionDisabled(), true);
+test("D1-T6: isProviderExecutionDisabled returns true", () => {
+  expect(isProviderExecutionDisabled()).toBe(true);
 });
 
 // ─── Test 7: Redaction/log helper does not expose raw text ───────────
 
-Deno.test("D1-T7: redactProviderExecutionLog excludes raw prompt text", () => {
+test("D1-T7: redactProviderExecutionLog excludes raw prompt text", () => {
   const logEntry = redactProviderExecutionLog({
     requestId: "req-test",
     event: "provider_call",
@@ -153,13 +154,13 @@ Deno.test("D1-T7: redactProviderExecutionLog excludes raw prompt text", () => {
   });
 
   // Log entry must NOT contain raw prompt text
-  assertEquals(typeof logEntry.provider, "string");
-  assertEquals(typeof logEntry.model, "string");
+  expect(typeof logEntry.provider).toBe("string");
+  expect(typeof logEntry.model).toBe("string");
   // No raw text in the log entry
-  assertEquals(logEntry.requestId, "req-test");
+  expect(logEntry.requestId).toBe("req-test");
 });
 
-Deno.test("D1-T7b: log entry contains only safe metadata", () => {
+test("D1-T7b: log entry contains only safe metadata", () => {
   const logEntry = redactProviderExecutionLog({
     requestId: "req-test",
     event: "provider_call",
@@ -170,40 +171,40 @@ Deno.test("D1-T7b: log entry contains only safe metadata", () => {
     errorCode: null,
   });
 
-  assertEquals(logEntry.requestTokens, 100);
-  assertEquals(logEntry.responseTokens, 50);
-  assertEquals(logEntry.costUsd > 0, true); // cost should be calculated
-  assertEquals(logEntry.errorClass, null);
+  expect(logEntry.requestTokens).toBe(100);
+  expect(logEntry.responseTokens).toBe(50);
+  expect(logEntry.costUsd).toBeGreaterThan(0); // cost should be calculated
+  expect(logEntry.errorClass).toBeNull();
 });
 
 // ─── Test 8: Provider capabilities remain disabled ───────────────────
 
-Deno.test("D1-T8: getProviderCapabilities supportsStreaming is false", () => {
+test("D1-T8: getProviderCapabilities supportsStreaming is false", () => {
   const caps = getProviderCapabilities();
-  assertEquals(caps.supportsStreaming, false);
-  assertEquals(caps.supportsJsonMode, true);
-  assertEquals(caps.maxInputTokens, 32000);
-  assertEquals(caps.maxOutputTokens, 4096);
-  assertEquals(caps.pricing.inputPer1M, 0.14);
-  assertEquals(caps.pricing.outputPer1M, 0.28);
+  expect(caps.supportsStreaming).toBe(false);
+  expect(caps.supportsJsonMode).toBe(true);
+  expect(caps.maxInputTokens).toBe(32000);
+  expect(caps.maxOutputTokens).toBe(4096);
+  expect(caps.pricing.inputPer1M).toBe(0.14);
+  expect(caps.pricing.outputPer1M).toBe(0.28);
 });
 
 // ─── Test 9: No real provider execution path exists ──────────────────
 
-Deno.test("D1-T9: executeProviderCall never returns ok:true", () => {
+test("D1-T9: executeProviderCall never returns ok:true", () => {
   const req = validRequest();
   const result = executeProviderCall(req);
-  assertEquals(result.ok, false);
+  expect(result.ok).toBe(false);
 });
 
 // ─── Test 10: D0 validators still behave safely ──────────────────────
 
-Deno.test("D1-T10a: validateProviderExecutionRequest passes valid request", () => {
+test("D1-T10a: validateProviderExecutionRequest passes valid request", () => {
   const error = validateProviderExecutionRequest(validRequest());
-  assertEquals(error, null);
+  expect(error).toBeNull();
 });
 
-Deno.test("D1-T10b: validateProviderExecutionResult accepts success shape", () => {
+test("D1-T10b: validateProviderExecutionResult accepts success shape", () => {
   const success: ProviderExecutionSuccess = {
     ok: true,
     response: {
@@ -222,29 +223,29 @@ Deno.test("D1-T10b: validateProviderExecutionResult accepts success shape", () =
       errorClass: null,
     },
   };
-  assertEquals(validateProviderExecutionResult(success), true);
+  expect(validateProviderExecutionResult(success)).toBe(true);
 });
 
-Deno.test("D1-T10c: validateProviderExecutionResult rejects invalid shape", () => {
-  assertEquals(validateProviderExecutionResult(null), false);
-  assertEquals(validateProviderExecutionResult({}), false);
-  assertEquals(validateProviderExecutionResult({ ok: "maybe" }), false);
+test("D1-T10c: validateProviderExecutionResult rejects invalid shape", () => {
+  expect(validateProviderExecutionResult(null)).toBe(false);
+  expect(validateProviderExecutionResult({})).toBe(false);
+  expect(validateProviderExecutionResult({ ok: "maybe" })).toBe(false);
 });
 
-Deno.test("D1-T10d: buildProviderErrorResponse has required fields", () => {
+test("D1-T10d: buildProviderErrorResponse has required fields", () => {
   const failure = buildProviderDisabledResult("req-err");
   const errorResp = buildProviderErrorResponse(failure);
-  assertEquals(errorResp.ok, false);
-  assertEquals(errorResp.errorKind, "provider_disabled");
-  assertEquals(typeof errorResp.messageVi, "string");
-  assertEquals(errorResp.retryable, false);
-  assertEquals(errorResp.retryAfterMs, null);
-  assertEquals(errorResp.requestId, "req-err");
+  expect(errorResp.ok).toBe(false);
+  expect(errorResp.errorKind).toBe("provider_disabled");
+  expect(typeof errorResp.messageVi).toBe("string");
+  expect(errorResp.retryable).toBe(false);
+  expect(errorResp.retryAfterMs).toBeNull();
+  expect(errorResp.requestId).toBe("req-err");
 });
 
 // ─── Forbidden assertions: no real execution ────────────────────────
 
-Deno.test("D1-T11: no throw path reaches real execution", () => {
+test("D1-T11: no throw path reaches real execution", () => {
   // Every code path in executeProviderCall returns { ok: false }
   const paths = [
     validRequest(),
