@@ -299,6 +299,7 @@ const DevAudioTest = import.meta.env.DEV
 // until VITE_SENTRY_SMOKE_TEST_ENABLED=true AND ?confirm=throw. Removed
 // in a follow-up cleanup PR after symbolicated stack trace is verified.
 const SentrySmokeTest = lazyWithRetry(() => import("@/pages/SentrySmokeTest"));
+const AiTutorPage = lazyWithRetry(() => import("@/pages/AiTutor"));
 
 declare global {
   interface Window { MB_ROUTER_VERSION?: string; }
@@ -1048,11 +1049,23 @@ export default function AppRouter() {
             }
           />
 
-          {/* Mercy unified chat — single-pane chat replacement for the
-              multi-tab drawer (default for new users). */}
+          {/* Mercy unified chat — single-pane chat that replaces the multi-tab
+              drawer for users on the new default ('unified'). Legacy MercyGuide
+              drawer is preserved on Home for the 'classic' opt-out. */}
           <Route path="/mercy/chat"
             element={<LazyPage><MercyUnifiedPage /></LazyPage>}
           />
+
+          {/* AI Tutor mock UI — feature-flagged, mock responses only, no real provider calls. */}
+          {FEATURE_FLAGS.AI_TUTOR_UI_ENABLED ? (
+            <Route path="/ai-tutor"
+              element={
+                <RequireAuth>
+                  <LazyPage><AiTutorPage /></LazyPage>
+                </RequireAuth>
+              }
+            />
+          ) : null}
 
           {/* Writing feedback (Step 7 / AI Teacher v2 — rule-based MVP) */}
           <Route path="/writing-feedback"
