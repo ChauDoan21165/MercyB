@@ -42,6 +42,16 @@ describe("AiTutor mock UI", () => {
     });
   });
 
+  it("uses the expanded result layout after a correction", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-layout")).toHaveClass("lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]");
+    });
+  });
+
   it("shows practice section after correction", async () => {
     render(<AiTutorPage />);
     await userEvent.type(screen.getByRole("textbox"), "test");
