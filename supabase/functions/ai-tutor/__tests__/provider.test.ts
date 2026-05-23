@@ -61,11 +61,11 @@ function sentenceCorrectionRequest(smokeToken?: string): ProviderExecutionReques
 
 // ─── Test 1: Valid request returns disabled failure ──────────────────
 
-test("D1-T1: valid request returns provider_disabled", async () => {
+test("D1-T1: valid request returns mode_blocked (general_chat blocked at Gate 2)", async () => {
   const result = await executeProviderCall(validRequest());
   expect(result.ok).toBe(false);
   if (!result.ok) {
-    expect(result.code).toBe("provider_disabled");
+    expect(result.code).toBe("mode_blocked");
     expect(result.retryable).toBe(false);
     expect(result.retryAfterMs).toBeNull();
   }
@@ -335,11 +335,11 @@ test("PR-REAL-1-G1: sentence_correction without env returns provider_disabled", 
   }
 });
 
-test("PR-REAL-1-G2: non-sentence_correction blocked before env check", async () => {
+test("PR-REAL-1-G2: non-sentence_correction returns mode_blocked at Gate 2", async () => {
   const result = await executeProviderCall(validRequest("general_chat"));
   expect(result.ok).toBe(false);
   if (!result.ok) {
-    expect(result.code).toBe("provider_disabled");
+    expect(result.code).toBe("mode_blocked");
   }
 });
 
@@ -499,26 +499,62 @@ describe("PR-REAL-1 Real Execution Path (mocked env)", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
+  // ── Gate: TUTOR_SMOKE_TOKEN not configured (Gate 5a) ────────────
+
+  test("PR-REAL-1-E3b: missing TUTOR_SMOKE_TOKEN env returns smoke_token_required", async () => {
+    // Stub Deno without TUTOR_SMOKE_TOKEN
+    const prevDeno = (globalThis as Record<string, unknown>).Deno;
+    vi.stubGlobal("Deno", {
+      env: {
+        get: vi.fn((key: string) => {
+          if (key === "REAL_PROVIDER_ENABLED") return "true";
+          if (key === "DEEPSEEK_API_KEY") return "sk-test-key-123";
+          return undefined; // TUTOR_SMOKE_TOKEN absent
+        }),
+      },
+    });
+    const freshMod = await import("../provider.ts");
+
+    const req = {
+      sessionId: "test-session",
+      providerRequest: freshMod.buildProviderRequest({
+        systemPrompt: "You are a helpful English tutor.",
+        messages: [{ role: "user", content: "I goed to the store." }],
+      }),
+      mode: "sentence_correction" as const,
+      requestId: "req-smoke-missing-env",
+      smokeToken: "any-token",
+    };
+    const result = await freshMod.executeProviderCall(req);
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.code).toBe("smoke_token_required");
+    }
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    vi.stubGlobal("Deno", prevDeno);
+  });
+
   // ── Gate: Missing/invalid smoke token ──────────────────────────────
 
-  test("PR-REAL-1-E4: missing smokeToken returns provider_disabled", async () => {
+  test("PR-REAL-1-E4: missing smokeToken returns smoke_token_required", async () => {
     const req = makeReq();
     req.smokeToken = undefined;
     const result = await mod.executeProviderCall(req);
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.code).toBe("provider_disabled");
+      expect(result.code).toBe("smoke_token_required");
     }
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  test("PR-REAL-1-E5: invalid smokeToken returns provider_disabled", async () => {
+  test("PR-REAL-1-E5: invalid smokeToken returns smoke_token_required", async () => {
     const req = makeReq();
     req.smokeToken = "wrong-token";
     const result = await mod.executeProviderCall(req);
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.code).toBe("provider_disabled");
+      expect(result.code).toBe("smoke_token_required");
     }
     expect(fetchMock).not.toHaveBeenCalled();
   });
@@ -619,13 +655,13 @@ describe("PR-REAL-1 Real Execution Path (mocked env)", () => {
 
   // ── Non-sentence_correction blocked even with env ──────────────────
 
-  test("PR-REAL-1-E11: general_chat blocked even when gates would pass", async () => {
+  test("PR-REAL-1-E11: general_chat returns mode_blocked even when env gates would pass", async () => {
     const req = makeReq();
     (req as Record<string, unknown>).mode = "general_chat";
     const result = await mod.executeProviderCall(req);
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.code).toBe("provider_disabled");
+      expect(result.code).toBe("mode_blocked");
     }
     expect(fetchMock).not.toHaveBeenCalled();
   });
