@@ -58,9 +58,24 @@ describe("createRetryLoader", () => {
     ]);
 
     expect(settled).toBe("pending");
+    expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).toHaveBeenCalledTimes(1);
     expect(replaceSpy.mock.calls[0][0]).toMatch(/[?&]_cb=\d+/);
     expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
+  });
+
+  it("retries a stale-chunk import once before triggering recovery", async () => {
+    const fakeComponent = () => null;
+    const importer = vi
+      .fn()
+      .mockRejectedValueOnce(makeStaleChunkError())
+      .mockResolvedValueOnce({ default: fakeComponent });
+    const loader = createRetryLoader(importer);
+
+    await expect(loader()).resolves.toEqual({ default: fakeComponent });
+    expect(importer).toHaveBeenCalledTimes(2);
+    expect(replaceSpy).not.toHaveBeenCalled();
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
   });
 
   it("does not recover a second time within the same session — rethrows instead", async () => {
@@ -71,6 +86,7 @@ describe("createRetryLoader", () => {
     const loader = createRetryLoader(importer);
 
     await expect(loader()).rejects.toThrow(/Failed to fetch dynamically/i);
+    expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).not.toHaveBeenCalled();
   });
 
@@ -160,8 +176,10 @@ describe("createRetryLoader", () => {
       });
 
       // Don't await — the loader returns a never-resolving promise on a
-      // recognised chunk error. Yield once so the catch branch runs.
+      // recognised chunk error. Yield so both the retry and recovery
+      // branches run.
       void loader();
+      await Promise.resolve();
       await Promise.resolve();
       await Promise.resolve();
 

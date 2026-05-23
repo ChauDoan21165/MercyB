@@ -344,7 +344,7 @@ function scheduleOneTimeChunkReload(): boolean {
       const reloadBtn = document.createElement("button");
       reloadBtn.type = "button";
       reloadBtn.textContent = "Tải lại";
-      reloadBtn.onclick = () => window.location.reload();
+      reloadBtn.onclick = () => cacheBustingReload();
       Object.assign(reloadBtn.style, {
         borderRadius: "14px", minHeight: "46px", padding: "12px 16px",
         border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a",
