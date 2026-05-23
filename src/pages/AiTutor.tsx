@@ -1,114 +1,231 @@
 // src/pages/AiTutor.tsx
-// AI Tutor mock UI shell — static responses only, no real provider calls.
+// AI Tutor mock UI — static responses, no real provider calls.
 
 import { useState } from "react";
 
-const MOCK_RESPONSE = {
-  corrected: "She goes to school every day.",
-  explanation: "Third-person singular 'she' requires 'goes' (not 'go').",
+type CorrectionResult = {
+  corrected: string;
+  explanation: string;
+  grammarTip: string;
 };
+
+const MOCK_RESULTS: CorrectionResult[] = [
+  {
+    corrected: "She goes to school every day.",
+    explanation:
+      "Third-person singular subjects (she / he / it) need the verb with -s or -es in the present simple.",
+    grammarTip:
+      "Quy tắc: Chủ ngữ ngôi thứ ba số ít → động từ thêm -s/-es.",
+  },
+  {
+    corrected: "I have been learning English for two years.",
+    explanation:
+      "Use the present perfect continuous (have been + -ing) for actions that started in the past and continue now.",
+    grammarTip:
+      "Dùng have been + V-ing khi hành động bắt đầu trong quá khứ và vẫn đang tiếp diễn.",
+  },
+  {
+    corrected: "If I were you, I would practice every day.",
+    explanation:
+      "The second conditional uses 'if + past simple' and 'would + base verb' for hypothetical situations.",
+    grammarTip:
+      "Câu điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu.",
+  },
+];
+
+const MOCK_DELAY_MS = 800;
 
 export default function AiTutorPage() {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState<typeof MOCK_RESPONSE | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<CorrectionResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [useCount, setUseCount] = useState(0);
 
-  const handleSubmit = () => {
-    if (!input.trim()) return;
-    setResult(MOCK_RESPONSE);
-    setSubmitted(true);
+  const handleSubmit = async () => {
+    const trimmed = input.trim();
+    if (!trimmed) return;
+
+    setError(null);
+    setLoading(true);
+    setResult(null);
+
+    // Mock loading delay
+    await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
+
+    // Cycle through mock results
+    const next = MOCK_RESULTS[useCount % MOCK_RESULTS.length];
+    setResult(next);
+    setUseCount((n) => n + 1);
+    setLoading(false);
   };
 
+  const handleClear = () => {
+    setInput("");
+    setResult(null);
+    setError(null);
+  };
+
+  const charCount = input.length;
+  const isEmpty = !input.trim();
+
   return (
-    <main style={{ maxWidth: 600, margin: "40px auto", padding: "0 16px" }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          marginBottom: 24,
-        }}
-      >
-        <h1 style={{ fontSize: 22, fontWeight: 900, margin: 0 }}>
-          AI Tutor
-        </h1>
-        <span
-          style={{
-            fontSize: 11,
-            fontWeight: 700,
-            background: "#FEF3C7",
-            color: "#92400E",
-            padding: "2px 10px",
-            borderRadius: 9999,
-            textTransform: "uppercase",
-          }}
-        >
-          Mock — Provider Disabled
-        </span>
-      </div>
-
-      <p style={{ fontSize: 14, color: "#64748B", marginBottom: 20 }}>
-        Type a sentence and get a correction. Responses are static mocks.
-        No real AI provider calls are made.
-      </p>
-
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder='e.g. "She go to school every day."'
-        rows={3}
-        style={{
-          width: "100%",
-          padding: 12,
-          fontSize: 15,
-          borderRadius: 12,
-          border: "1px solid #E2E8F0",
-          resize: "vertical",
-          fontFamily: "inherit",
-        }}
-      />
-
-      <button
-        type="button"
-        onClick={handleSubmit}
-        disabled={!input.trim()}
-        style={{
-          marginTop: 12,
-          width: "100%",
-          padding: "12px 0",
-          fontSize: 16,
-          fontWeight: 800,
-          borderRadius: 9999,
-          border: "none",
-          background: input.trim() ? "#0F172A" : "#CBD5E1",
-          color: input.trim() ? "#fff" : "#94A3B8",
-          cursor: input.trim() ? "pointer" : "not-allowed",
-        }}
-      >
-        Correct my sentence
-      </button>
-
-      {submitted && result && (
-        <div
-          style={{
-            marginTop: 20,
-            padding: 20,
-            borderRadius: 14,
-            background: "#F0FDF4",
-            border: "1px solid #BBF7D0",
-          }}
-        >
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#166534", marginBottom: 8 }}>
-            Corrected
-          </div>
-          <div style={{ fontSize: 18, fontWeight: 800, color: "#14532D" }}>
-            {result.corrected}
-          </div>
-          <div style={{ fontSize: 13, color: "#64748B", marginTop: 8 }}>
-            {result.explanation}
-          </div>
+    <main className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-[640px] px-4 py-6">
+      {/* Header */}
+      <section className="mb-6 text-center">
+        <div className="flex items-center justify-center gap-3">
+          <h1 className="text-2xl font-black text-slate-950 sm:text-3xl">
+            AI Tutor
+          </h1>
+          <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-[11px] font-black uppercase text-amber-700">
+            Mock
+          </span>
         </div>
+        <p className="mt-2 text-sm font-medium text-slate-500">
+          Viết một câu tiếng Anh — AI sẽ sửa lỗi và giải thích.
+        </p>
+        <p className="mt-1 text-xs text-slate-400">
+          Write a sentence — AI corrects it and explains why.
+        </p>
+      </section>
+
+      {/* Input area */}
+      <section className="rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="flex items-center justify-between mb-2">
+          <label className="text-xs font-black uppercase text-slate-500">
+            Your sentence
+          </label>
+          <span className="text-[11px] font-medium text-slate-400">
+            {charCount} / 500
+          </span>
+        </div>
+
+        <textarea
+          value={input}
+          onChange={(e) => {
+            if (e.target.value.length <= 500) setInput(e.target.value);
+          }}
+          placeholder='gõ câu của bạn ở đây, ví dụ: "She go to school every day"'
+          rows={4}
+          className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+              handleSubmit();
+            }
+          }}
+        />
+
+        <div className="mt-3 flex gap-3">
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={isEmpty || loading}
+            className="flex-1 rounded-full bg-slate-900 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+          >
+            {loading ? (
+              <span className="inline-flex items-center gap-2">
+                <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                Đang sửa...
+              </span>
+            ) : (
+              "Sửa câu này · Correct my sentence"
+            )}
+          </button>
+
+          {result && !loading && (
+            <button
+              type="button"
+              onClick={handleClear}
+              className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+      </section>
+
+      {/* Error state */}
+      {error && (
+        <section className="mt-4 rounded-[16px] border border-rose-200 bg-rose-50 p-5">
+          <div className="text-sm font-black text-rose-700">Lỗi · Error</div>
+          <p className="mt-1 text-sm font-medium text-rose-600">{error}</p>
+        </section>
       )}
+
+      {/* Empty state — before first submit */}
+      {!result && !loading && !error && (
+        <section className="mt-5 rounded-[18px] border border-dashed border-slate-200 bg-slate-50/50 p-6 text-center">
+          <div className="text-3xl">✨</div>
+          <div className="mt-2 text-sm font-black text-slate-600">
+            AI sẵn sàng sửa câu của bạn
+          </div>
+          <div className="mt-1 text-xs font-medium text-slate-400">
+            Gõ một câu tiếng Anh bên trên và nhấn Sửa câu này.
+          </div>
+        </section>
+      )}
+
+      {/* Loading state */}
+      {loading && (
+        <section className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-6 text-center">
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-[3px] border-indigo-200 border-t-indigo-500" />
+          <div className="mt-3 text-sm font-black text-indigo-700">
+            AI đang phân tích câu của bạn...
+          </div>
+          <div className="mt-1 text-xs font-medium text-indigo-400">
+            Analyzing your sentence...
+          </div>
+        </section>
+      )}
+
+      {/* Result */}
+      {result && !loading && (
+        <section className="mt-5 grid gap-4">
+          {/* Corrected sentence */}
+          <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
+            <div className="mb-2 text-xs font-black uppercase text-emerald-600">
+              Câu đã sửa · Corrected
+            </div>
+            <div className="text-xl font-black leading-snug text-emerald-900">
+              {result.corrected}
+            </div>
+          </div>
+
+          {/* Explanation */}
+          <div className="rounded-[16px] border border-slate-200 bg-white p-5">
+            <div className="mb-2 text-xs font-black uppercase text-slate-500">
+              Giải thích · Explanation
+            </div>
+            <p className="text-sm font-semibold leading-6 text-slate-700">
+              {result.explanation}
+            </p>
+          </div>
+
+          {/* Grammar tip */}
+          <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/50 p-5">
+            <div className="mb-2 text-xs font-black uppercase text-indigo-500">
+              Mẹo ngữ pháp · Grammar Tip
+            </div>
+            <p className="text-sm font-semibold leading-6 text-indigo-800">
+              {result.grammarTip}
+            </p>
+          </div>
+
+          {/* CTA */}
+          <button
+            type="button"
+            onClick={handleClear}
+            className="rounded-full border border-slate-200 bg-white py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
+          >
+            Sửa câu khác · Try another sentence
+          </button>
+        </section>
+      )}
+
+      {/* Footer */}
+      <footer className="mt-8 text-center text-[11px] font-medium text-slate-300">
+        Mock UI — no real AI provider calls are made.
+      </footer>
     </main>
   );
 }
