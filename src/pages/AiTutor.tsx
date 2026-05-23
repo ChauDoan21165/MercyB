@@ -120,10 +120,34 @@ export default function AiTutorPage() {
   const hasResult = Boolean(result && !loading);
 
   return (
-    <main className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
+    <main className="ai-tutor-shell mx-auto min-h-[calc(100vh-72px)] w-full max-w-full px-4 py-6 sm:px-6 lg:px-8">
+      <style>{`
+        .ai-tutor-shell {
+          container-type: inline-size;
+        }
+        .ai-tutor-result-layout {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 1.25rem;
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+        @container (min-width: 920px) {
+          .ai-tutor-result-layout[data-expanded="true"] {
+            grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+            align-items: start;
+          }
+        }
+        .ai-tutor-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+      `}</style>
       {/* Header */}
-      <section className="mx-auto mb-6 max-w-3xl text-center">
-        <div className="flex items-center justify-center gap-3">
+      <section className="mx-auto mb-6 w-full max-w-3xl text-center">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <h1 className="text-2xl font-black text-slate-950 sm:text-3xl">
             AI Tutor
           </h1>
@@ -141,11 +165,8 @@ export default function AiTutorPage() {
 
       <div
         data-testid="ai-tutor-layout"
-        className={
-          hasResult
-            ? "grid w-full gap-5 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-start"
-            : "mx-auto w-full max-w-[720px]"
-        }
+        data-expanded={hasResult ? "true" : "false"}
+        className={`ai-tutor-result-layout ${hasResult ? "" : "mx-auto max-w-[720px]"}`}
       >
         <div className="min-w-0">
           {/* Input area */}
@@ -174,12 +195,12 @@ export default function AiTutorPage() {
               }}
             />
 
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+            <div className="ai-tutor-actions mt-3">
               <button
                 type="button"
                 onClick={handleSubmit}
                 disabled={isEmpty || loading}
-                className="min-h-[48px] flex-1 rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+                className="min-h-[48px] w-full flex-1 rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
               >
                 {loading ? (
                   <span className="inline-flex items-center justify-center gap-2">
@@ -195,7 +216,7 @@ export default function AiTutorPage() {
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="min-h-[48px] rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
+                  className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
                 >
                   Làm mới
                 </button>

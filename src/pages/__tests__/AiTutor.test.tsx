@@ -42,13 +42,15 @@ describe("AiTutor mock UI", () => {
     });
   });
 
-  it("uses the expanded result layout after a correction", async () => {
+  it("marks the result layout expanded without viewport breakpoint classes", async () => {
     render(<AiTutorPage />);
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
 
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-layout")).toHaveClass("lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]");
+      const layout = screen.getByTestId("ai-tutor-layout");
+      expect(layout).toHaveAttribute("data-expanded", "true");
+      expect(layout.className).not.toContain("lg:grid-cols");
     });
   });
 
