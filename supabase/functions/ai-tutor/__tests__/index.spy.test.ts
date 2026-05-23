@@ -76,5 +76,5 @@ test("D2-T14c: valid JWT with empty allowlist → 401, executeProviderCall never
   const res = await handleRequest(req);
   expect(res.status).toBe(401);
   expect(providerCallSpy).not.toHaveBeenCalled();
-  setAllowedRolesForTest(["authenticated"]);
+  setAllowedRolesForTest(["operator"]);
 });

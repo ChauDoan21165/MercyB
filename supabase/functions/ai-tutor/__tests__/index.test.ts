@@ -14,7 +14,7 @@ import { handleRequest, setAllowedRolesForTest } from "../index.ts";
 function makeTestJwt(payload: Record<string, unknown> = {}): string {
   const header = { alg: "HS256", typ: "JWT" };
   const body = {
-    sub: "test-user-abc", role: "authenticated",
+    sub: "test-user-abc", role: "operator",
     iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 3600,
     ...payload,
@@ -26,6 +26,10 @@ function makeTestJwt(payload: Record<string, unknown> = {}): string {
 
 const VALID_JWT = makeTestJwt();
 
+function makeAuthJwt(role: string): string {
+  return makeTestJwt({ role });
+}
+
 function buildRequest(method: string, body?: unknown, extraHeaders?: Record<string, string>): Request {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (method === "POST") headers["Authorization"] = `Bearer ${VALID_JWT}`;
@@ -35,7 +39,7 @@ function buildRequest(method: string, body?: unknown, extraHeaders?: Record<stri
   return new Request("https://ai-tutor.edge/", init);
 }
 
-beforeAll(() => { setAllowedRolesForTest(["authenticated"]); });
+beforeAll(() => { setAllowedRolesForTest(["operator"]); });
 
 function validBody(): Record<string, unknown> {
   return {
@@ -643,7 +647,7 @@ describe("D2-T12: JWT auth rejection", () => {
     });
     const res = await handleRequest(req);
     expect(res.status).toBe(401);
-    setAllowedRolesForTest(["authenticated"]);
+    setAllowedRolesForTest(["operator"]);
   });
 
   test("D2-T12e: missing sub claim → 401", async () => {
@@ -657,31 +661,46 @@ describe("D2-T12: JWT auth rejection", () => {
     expect(res.status).toBe(401);
   });
 
-  test("D2-T12f: OPTIONS bypasses auth (204)", async () => {
+  test("D2-T12f: authenticated role denied, operator required", async () => {
+    setAllowedRolesForTest(["operator"]);
+    const authJwt = makeAuthJwt("authenticated");
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${authJwt}` },
+      body: JSON.stringify(validBody()),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(401);
+    expect((await readBody(res)).errorKind).toBe("unauthorized");
+  });
+
+  test("D2-T12g: operator role passes auth, reaches provider gates", async () => {
+    setAllowedRolesForTest(["operator"]);
+    const res = await handleRequest(buildRequest("POST", validBody()));
+    // Without Deno env, provider returns disabled → 503
+    expect(res.status).toBe(503);
+    expect((await readBody(res)).errorKind).toBe("service_disabled");
+  });
+
+  test("D2-T12h: OPTIONS bypasses auth (204)", async () => {
     const res = await handleRequest(new Request("https://ai-tutor.edge/", { method: "OPTIONS" }));
     expect(res.status).toBe(204);
   });
 
-  test("D2-T12g: GET bypasses auth (405)", async () => {
+  test("D2-T12i: GET bypasses auth (405)", async () => {
     const res = await handleRequest(new Request("https://ai-tutor.edge/", {
       method: "GET", headers: { "Content-Type": "application/json" },
     }));
     expect(res.status).toBe(405);
   });
 
-  test("D2-T12h: auth failure includes requestId", async () => {
+  test("D2-T12j: auth failure includes requestId", async () => {
     const req = new Request("https://ai-tutor.edge/", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify(validBody()),
     });
     const data = await readBody(await handleRequest(req));
     expect(typeof data.requestId).toBe("string");
-  });
-
-  test("D2-T12i: valid auth reaches provider_disabled (503)", async () => {
-    setAllowedRolesForTest(["authenticated"]);
-    const res = await handleRequest(buildRequest("POST", validBody()));
-    expect(res.status).toBe(503);
   });
 });
 
@@ -700,7 +719,7 @@ describe("D2-T13: smoke token bypasses JWT", () => {
         return undefined;
       })},
     });
-    setAllowedRolesForTest(["authenticated"]);
+    setAllowedRolesForTest(["operator"]);
   });
   afterAll(() => { vi.unstubAllGlobals(); });
 
