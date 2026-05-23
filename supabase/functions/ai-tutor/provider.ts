@@ -336,6 +336,330 @@ export function redactProviderLog(params: {
   void redacted;
 }
 
+// ═══════════════════════════════════════════════════════════════════════
+// Phase D0 — Provider Execution Interface (additive only)
+// Pure types + pure functions. No I/O. No real execution.
+// All 14 existing exports preserved unchanged.
+// ═══════════════════════════════════════════════════════════════════════
+
+// ─── D0 Types ─────────────────────────────────────────────────────────
+
+/** The request shape passed to the provider executor. */
+export type ProviderExecutionRequest = {
+  /** Session identifier for traceability. */
+  sessionId: string;
+  /** The assembled provider request body. */
+  providerRequest: ProviderRequest;
+  /** Conversation mode (for logging). */
+  mode: string;
+  /** Unique request ID for correlation. */
+  requestId: string;
+};
+
+/**
+ * Discriminated union: success | failure.
+ * Callers narrow on the `ok` discriminant.
+ */
+export type ProviderExecutionResult =
+  | ProviderExecutionSuccess
+  | ProviderExecutionFailure;
+
+/** Successful provider execution result. */
+export type ProviderExecutionSuccess = {
+  ok: true;
+  /** The parsed provider response. */
+  response: ProviderResponse;
+  /** Execution metadata (timing, tokens, cost). */
+  metadata: ProviderExecutionMetadata;
+};
+
+/** Failed provider execution result. */
+export type ProviderExecutionFailure = {
+  ok: false;
+  /** Machine-readable error code. */
+  code: ProviderExecutionErrorCode;
+  /** Human-readable error message (Vietnamese). */
+  messageVi: string;
+  /** Whether the caller should retry. */
+  retryable: boolean;
+  /** Suggested retry delay in ms, if retryable. */
+  retryAfterMs: number | null;
+  /** Execution metadata (partial — valid fields populated). */
+  metadata: Partial<ProviderExecutionMetadata>;
+};
+
+/** Canonical provider execution error codes. */
+export type ProviderExecutionErrorCode =
+  | "provider_disabled"
+  | "invalid_request"
+  | "api_key_missing"
+  | "rate_limited"
+  | "server_error"
+  | "timeout"
+  | "budget_exceeded"
+  | "safety_blocked"
+  | "empty_response"
+  | "parse_failed"
+  | "network_error"
+  | "unknown";
+
+/** Execution metadata — safe for logging. No raw prompt/response text. */
+export type ProviderExecutionMetadata = {
+  /** Provider identifier. */
+  provider: string;
+  /** Model identifier. */
+  model: string;
+  /** Request ID for correlation. */
+  requestId: string;
+  /** Total elapsed ms for the provider call. */
+  elapsedMs: number;
+  /** Token usage from the provider response. */
+  tokenUsage: ProviderTokenUsage;
+  /** Estimated cost in USD. */
+  costUsd: number;
+  /** Error class, if the call failed. */
+  errorClass: ProviderErrorClass | null;
+};
+
+/** Token usage from provider response. */
+export type ProviderTokenUsage = {
+  prompt: number;
+  completion: number;
+  total: number;
+};
+
+/** Represents the disabled state of the provider. */
+export type ProviderDisabledState = {
+  enabled: false;
+  reason: ProviderDisabledReason;
+  since: string; // ISO timestamp
+  messageVi: string;
+};
+
+/** Reasons the provider may be disabled. */
+export type ProviderDisabledReason =
+  | "feature_flag_off"
+  | "api_key_not_configured"
+  | "operator_disabled"
+  | "maintenance";
+
+/** Static descriptor of provider capabilities. */
+export type ProviderCapabilityDescriptor = {
+  provider: string;
+  model: string;
+  supportsStreaming: false;
+  supportsJsonMode: boolean;
+  maxInputTokens: number;
+  maxOutputTokens: number;
+  pricing: {
+    inputPer1M: number;
+    outputPer1M: number;
+  };
+};
+
+/** Input payload for the execution log redaction function. */
+export type ProviderRedactedLogPayload = {
+  requestId: string;
+  event: string;
+  mode: string;
+  statusCode: number;
+  elapsedMs: number;
+  tokenUsage: ProviderTokenUsage;
+  errorCode: ProviderExecutionErrorCode | null;
+};
+
+// ─── D0 Functions ─────────────────────────────────────────────────────
+
+/**
+ * Validate a provider execution request shape.
+ * Returns null if valid, or an error code string if invalid.
+ */
+export function validateProviderExecutionRequest(
+  req: unknown,
+): ProviderExecutionErrorCode | null {
+  if (!req || typeof req !== "object") return "invalid_request";
+
+  const r = req as Record<string, unknown>;
+
+  if (typeof r.sessionId !== "string" || !r.sessionId.trim()) {
+    return "invalid_request";
+  }
+  if (!r.providerRequest || typeof r.providerRequest !== "object") {
+    return "invalid_request";
+  }
+  if (typeof r.mode !== "string" || !r.mode.trim()) {
+    return "invalid_request";
+  }
+  if (typeof r.requestId !== "string" || !r.requestId.trim()) {
+    return "invalid_request";
+  }
+
+  return null; // valid
+}
+
+/**
+ * Validate a provider execution result shape.
+ * Returns true if the result has the expected discriminated union shape.
+ */
+export function validateProviderExecutionResult(
+  result: unknown,
+): result is ProviderExecutionResult {
+  if (!result || typeof result !== "object") return false;
+
+  const r = result as Record<string, unknown>;
+
+  if (r.ok === true) {
+    return (
+      typeof r.response === "object" &&
+      r.response !== null &&
+      typeof r.metadata === "object" &&
+      r.metadata !== null
+    );
+  }
+
+  if (r.ok === false) {
+    return (
+      typeof r.code === "string" &&
+      typeof r.messageVi === "string" &&
+      typeof r.retryable === "boolean"
+    );
+  }
+
+  return false;
+}
+
+/**
+ * Map a ProviderExecutionErrorCode to a ProviderErrorClass.
+ * Bridges D0 error codes to the existing Phase C classification.
+ */
+export function mapProviderError(
+  code: ProviderExecutionErrorCode,
+): ProviderErrorClass {
+  switch (code) {
+    case "rate_limited":
+      return "rate_limit";
+    case "server_error":
+      return "server_error";
+    case "timeout":
+      return "timeout";
+    case "budget_exceeded":
+      return "budget_exceeded";
+    case "safety_blocked":
+      return "safety_blocked";
+    case "empty_response":
+      return "empty_response";
+    case "network_error":
+      return "network";
+    case "provider_disabled":
+    case "api_key_missing":
+    case "invalid_request":
+    case "parse_failed":
+    case "unknown":
+    default:
+      return "unknown";
+  }
+}
+
+/**
+ * Build a disabled-result response when provider execution is not enabled.
+ * Returns a ProviderExecutionFailure with code "provider_disabled".
+ */
+export function buildProviderDisabledResult(
+  requestId: string,
+): ProviderExecutionFailure {
+  return {
+    ok: false,
+    code: "provider_disabled",
+    messageVi: "Tính năng AI Tutor hiện chưa khả dụng. Vui lòng thử lại sau.",
+    retryable: false,
+    retryAfterMs: null,
+    metadata: {
+      provider: PROVIDER_DESCRIPTOR.provider,
+      model: PROVIDER_DESCRIPTOR.model,
+      requestId,
+      elapsedMs: 0,
+      errorClass: "unknown",
+    },
+  };
+}
+
+/**
+ * Redact a provider execution log entry.
+ * Returns safe metadata only — no raw prompt or response text.
+ */
+export function redactProviderExecutionLog(
+  payload: ProviderRedactedLogPayload,
+): RedactedLogEntry {
+  return redactProviderLog({
+    requestId: payload.requestId,
+    rawText: `event=${payload.event} mode=${payload.mode} status=${payload.statusCode}`,
+    inputTokens: payload.tokenUsage.prompt,
+    outputTokens: payload.tokenUsage.completion,
+    errorClass: payload.errorCode
+      ? mapProviderError(payload.errorCode)
+      : null,
+  });
+}
+
+/**
+ * Check if provider execution is enabled.
+ * ALWAYS returns false — no real provider execution in Phase D0.
+ */
+export function isProviderExecutionEnabled(): boolean {
+  return false;
+}
+
+/**
+ * Check if provider execution is disabled.
+ * Inverse of isProviderExecutionEnabled — ALWAYS returns true.
+ */
+export function isProviderExecutionDisabled(): boolean {
+  return true;
+}
+
+/**
+ * Return a static descriptor of the provider's capabilities.
+ * Pure function — no I/O, no env reads.
+ */
+export function getProviderCapabilities(): ProviderCapabilityDescriptor {
+  return {
+    provider: PROVIDER_DESCRIPTOR.provider,
+    model: PROVIDER_DESCRIPTOR.model,
+    supportsStreaming: false,
+    supportsJsonMode: true,
+    maxInputTokens: 32000,
+    maxOutputTokens: 4096,
+    pricing: {
+      inputPer1M: PROVIDER_DESCRIPTOR.inputPricePer1M,
+      outputPer1M: PROVIDER_DESCRIPTOR.outputPricePer1M,
+    },
+  };
+}
+
+/**
+ * Build a stand-alone error response from a ProviderExecutionFailure.
+ * Returns a provider-agnostic error shape for the edge function to return.
+ */
+export function buildProviderErrorResponse(
+  failure: ProviderExecutionFailure,
+): {
+  ok: false;
+  errorKind: string;
+  messageVi: string;
+  retryable: boolean;
+  retryAfterMs: number | null;
+  requestId: string;
+} {
+  return {
+    ok: false,
+    errorKind: failure.code,
+    messageVi: failure.messageVi,
+    retryable: failure.retryable,
+    retryAfterMs: failure.retryAfterMs,
+    requestId: failure.metadata.requestId ?? "unknown",
+  };
+}
+
 // ─── Public API ───────────────────────────────────────────────────────
 
 export { PROVIDER_DESCRIPTOR, MODEL, DEEPSEEK_BASE_URL };
