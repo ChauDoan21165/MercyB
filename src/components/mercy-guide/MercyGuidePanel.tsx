@@ -23,6 +23,7 @@ import {
 
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { lazyWithRetry } from '@/lib/lazyWithRetry';
+import { AI_TUTOR_ENABLED } from '@/lib/ai-tutor/types';
 import {
   MERCY_HOST_IMAGE_AVIF,
   MERCY_HOST_IMAGE_FALLBACK,
@@ -46,6 +47,7 @@ const FrenchLessonsTab = lazyWithRetry(
 const GermanLessonsTab = lazyWithRetry(
   () => import('./tabs/GermanLessonsTab'),
 );
+const AITutorTab = lazyWithRetry(() => import('./tabs/AITutorTab'));
 
 function TabLoadingFallback() {
   return (
@@ -70,7 +72,7 @@ import type {
   LearningSupportMode,
 } from './types';
 
-type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic' | 'french' | 'german';
+type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic' | 'french' | 'german' | 'tutor';
 type TeacherMode = 'adult' | 'kids';
 type KidsPageId =
   | 'page1'
@@ -312,6 +314,7 @@ function normalizeTab(value: string | undefined): MercyTabType {
     case 'logic':
     case 'french':
     case 'german':
+    case 'tutor':
       return value;
     case 'english':
       return 'logic';
@@ -622,6 +625,12 @@ function getTabAccent(tabId: MercyTabType) {
         active:
           'border-[#FECACA] bg-gradient-to-r from-[#FEF2F2] to-[#FFF7ED] text-[#DC2626] shadow-[0_10px_22px_rgba(220,38,38,0.12)]',
         icon: 'text-[#EF4444]',
+      };
+    case 'tutor':
+      return {
+        active:
+          'border-[#DDD6FE] bg-gradient-to-r from-[#F5F3FF] to-[#FAF8FF] text-[#7C3AED] shadow-[0_10px_22px_rgba(139,92,246,0.14)]',
+        icon: 'text-[#8B5CF6]',
       };
     default:
       return {
@@ -1115,6 +1124,13 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         label: 'German',
         icon: Globe,
         enabled: !kidsModeActive,
+      },
+      {
+        id: 'tutor',
+        label: 'Tutor',
+        icon: Brain,
+        enabled: AI_TUTOR_ENABLED && !kidsModeActive,
+        teaser: false,
       },
     ];
 
@@ -1764,6 +1780,15 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           {activeTab === 'german' && !kidsModeActive ? (
             <Suspense fallback={<TabLoadingFallback />}>
               <GermanLessonsTab />
+            </Suspense>
+          ) : null}
+
+          {activeTab === 'tutor' && AI_TUTOR_ENABLED && !kidsModeActive ? (
+            <Suspense fallback={<TabLoadingFallback />}>
+              <AITutorTab
+                userId={(profile as { id?: string } | null)?.id ?? null}
+                tier="free"
+              />
             </Suspense>
           ) : null}
         </div>
