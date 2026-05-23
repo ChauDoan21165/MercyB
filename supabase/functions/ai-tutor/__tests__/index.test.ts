@@ -775,3 +775,52 @@ test("D2-T13d: smoke bypass without TUTOR_SMOKE_TOKEN env → 401", async () => 
   const res = await handleRequest(req);
   expect(res.status).toBe(401);
 });
+
+// ═══════════════════════════════════════════════════════════════════════
+// D2-T15: Learner-data safety gate on userPrompt
+// ═══════════════════════════════════════════════════════════════════════
+
+describe("D2-T15: safety gate blocks sensitive prompts", () => {
+  test("D2-T15a: email in prompt → 400 safety_blocked", async () => {
+    const body = { ...validBody(), userPrompt: "Email me at test@example.com please" };
+    const res = await handleRequest(buildRequest("POST", body));
+    expect(res.status).toBe(400);
+    expect((await readBody(res)).errorKind).toBe("safety_blocked");
+  });
+
+  test("D2-T15b: Vietnam phone in prompt → 400 safety_blocked", async () => {
+    const body = { ...validBody(), userPrompt: "Call me at 0901234567 thanks" };
+    const res = await handleRequest(buildRequest("POST", body));
+    expect(res.status).toBe(400);
+    expect((await readBody(res)).errorKind).toBe("safety_blocked");
+  });
+
+  test("D2-T15c: API key pattern in prompt → 400 safety_blocked", async () => {
+    const body = { ...validBody(), userPrompt: "My key is sk-abc123def456" };
+    const res = await handleRequest(buildRequest("POST", body));
+    expect(res.status).toBe(400);
+    expect((await readBody(res)).errorKind).toBe("safety_blocked");
+  });
+
+  test("D2-T15d: clean prompt passes safety gate, reaches provider", async () => {
+    const body = { ...validBody(), userPrompt: "How do I improve my pronunciation?" };
+    const res = await handleRequest(buildRequest("POST", body));
+    // Without Deno env, reaches provider_disabled → 503
+    expect(res.status).toBe(503);
+  });
+
+  test("D2-T15e: blocked response does not expose raw prompt", async () => {
+    const body = { ...validBody(), userPrompt: "Email test@example.com" };
+    const res = await handleRequest(buildRequest("POST", body));
+    const text = await res.clone().text();
+    expect(text).not.toContain("test@example.com");
+    expect(text).not.toContain("Email");
+  });
+
+  test("D2-T15f: bearer token in prompt → 400 safety_blocked", async () => {
+    const body = { ...validBody(), userPrompt: "Use bearer abcdefghijklmnop" };
+    const res = await handleRequest(buildRequest("POST", body));
+    expect(res.status).toBe(400);
+    expect((await readBody(res)).errorKind).toBe("safety_blocked");
+  });
+});
