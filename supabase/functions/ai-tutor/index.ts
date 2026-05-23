@@ -70,7 +70,7 @@ function readEnvVar(key: string): string | undefined {
  * Do NOT add "authenticated" until A1 + A4 + A7 approve learner access.
  */
 /** Mutable for test injection. Do NOT mutate in production code. */
-let ALLOWED_ROLES: string[] = ["operator"];
+let ALLOWED_ROLES: string[] = ["operator", "admin"];
 
 /** Exported for test setup only. */
 export function setAllowedRolesForTest(roles: string[]): void {

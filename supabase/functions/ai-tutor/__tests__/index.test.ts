@@ -39,7 +39,7 @@ function buildRequest(method: string, body?: unknown, extraHeaders?: Record<stri
   return new Request("https://ai-tutor.edge/", init);
 }
 
-beforeAll(() => { setAllowedRolesForTest(["operator"]); });
+beforeAll(() => { setAllowedRolesForTest(["operator", "admin"]); });
 
 function validBody(): Record<string, unknown> {
   return {
@@ -682,6 +682,19 @@ describe("D2-T12: JWT auth rejection", () => {
     expect((await readBody(res)).errorKind).toBe("service_disabled");
   });
 
+  test("D2-T12g2: admin role passes auth, reaches provider gates", async () => {
+    setAllowedRolesForTest(["admin"]);
+    const adminJwt = makeAuthJwt("admin");
+    const req = new Request("https://ai-tutor.edge/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${adminJwt}` },
+      body: JSON.stringify(validBody()),
+    });
+    const res = await handleRequest(req);
+    expect(res.status).toBe(503);
+    expect((await readBody(res)).errorKind).toBe("service_disabled");
+  });
+
   test("D2-T12h: OPTIONS bypasses auth (204)", async () => {
     const res = await handleRequest(new Request("https://ai-tutor.edge/", { method: "OPTIONS" }));
     expect(res.status).toBe(204);
@@ -719,7 +732,7 @@ describe("D2-T13: smoke token bypasses JWT", () => {
         return undefined;
       })},
     });
-    setAllowedRolesForTest(["operator"]);
+    setAllowedRolesForTest(["operator", "admin"]);
   });
   afterAll(() => { vi.unstubAllGlobals(); });
 
