@@ -336,7 +336,7 @@ export default function AiTutorPage() {
     const text = conversationSpeakText(message);
     if (!text) return;
     setSpeakingMessageId(message.id);
-    tts.speak(text, speechLang);
+    void tts.speak(text, speechLang, target);
   };
 
   const handleClear = () => {
@@ -392,6 +392,8 @@ export default function AiTutorPage() {
           micListening={stt.listening}
           ttsSupported={tts.supported}
           ttsSpeaking={tts.speaking}
+          ttsPreparing={tts.preparing}
+          ttsBrowserFallback={tts.usingBrowserFallback}
           speechLang={speechLang}
           onSubmit={handleSubmit}
           onMicToggle={handleMicToggle}
@@ -401,7 +403,7 @@ export default function AiTutorPage() {
             if (tts.speaking) {
               tts.stop();
             } else {
-              tts.speak(corrected, speechLang);
+              void tts.speak(corrected, speechLang, target);
             }
           }}
           onPracticeSubmit={handlePracticeSubmit}
@@ -419,6 +421,8 @@ export default function AiTutorPage() {
           micListening={stt.listening}
           ttsSupported={tts.supported}
           ttsSpeaking={tts.speaking}
+          ttsPreparing={tts.preparing}
+          ttsBrowserFallback={tts.usingBrowserFallback}
           speakingMessageId={speakingMessageId}
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}

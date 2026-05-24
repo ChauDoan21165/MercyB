@@ -51,6 +51,8 @@ export type UiCopy = {
   loadingBody: string;
   correctedLabel: string;
   ttsUnavailable: string;
+  ttsPreparing: string;
+  ttsBrowserFallback: string;
   ttsPlay: string;
   ttsStop: string;
   ttsAriaPlay: string;
@@ -191,9 +193,11 @@ export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     loadingBody: "Mercy sẽ sửa đúng ngôn ngữ bạn chọn.",
     correctedLabel: "Câu đã sửa",
     ttsUnavailable: "Giọng đọc trình duyệt chưa khả dụng trên thiết bị này.",
+    ttsPreparing: "Đang chuẩn bị giọng Mercy...",
+    ttsBrowserFallback: "Giọng Mercy chưa khả dụng. Đang dùng giọng thiết bị.",
     ttsPlay: "Mercy đọc",
     ttsStop: "Dừng",
-    ttsAriaPlay: "Mercy đọc câu đã sửa bằng giọng trình duyệt",
+    ttsAriaPlay: "Mercy đọc câu đã sửa bằng giọng AI",
     ttsAriaStop: "Dừng đọc",
     explanationLabel: "Giải thích",
     grammarTipLabel: "Mẹo ngữ pháp",
@@ -229,9 +233,11 @@ export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     loadingBody: "Mercy will correct the language you selected.",
     correctedLabel: "Corrected",
     ttsUnavailable: "Browser voice playback is not supported on this device.",
+    ttsPreparing: "Preparing Mercy voice...",
+    ttsBrowserFallback: "Mercy voice is unavailable. Using device voice.",
     ttsPlay: "Mercy reads",
     ttsStop: "Stop",
-    ttsAriaPlay: "Read corrected sentence with browser voice",
+    ttsAriaPlay: "Read corrected sentence with Mercy AI voice",
     ttsAriaStop: "Stop reading",
     explanationLabel: "Explanation",
     grammarTipLabel: "Grammar Tip",
