@@ -71,6 +71,24 @@ function buildSpeakableText(parts: Array<string | undefined>): string {
   return parts.map(normalizeText).filter(Boolean).join(" ");
 }
 
+function isTutorTurnShape(value: unknown): value is TutorTurn {
+  if (!value || typeof value !== "object") return false;
+  const turn = value as Record<string, unknown>;
+  return (
+    typeof turn.id === "string" &&
+    typeof turn.mode === "string" &&
+    typeof turn.targetLanguage === "string" &&
+    typeof turn.explainLanguage === "string" &&
+    typeof turn.userText === "string" &&
+    typeof turn.correctedText === "string" &&
+    typeof turn.explanation === "string" &&
+    typeof turn.naturalReply === "string" &&
+    typeof turn.nextQuestion === "string" &&
+    typeof turn.shouldReadAloudText === "string" &&
+    typeof turn.createdAt === "string"
+  );
+}
+
 export function buildCorrectionTurn(input: CorrectionTurnInput): TutorCorrectionResult {
   const correctedText = normalizeText(input.correctedText);
   const turn: TutorTurn = {
@@ -81,6 +99,8 @@ export function buildCorrectionTurn(input: CorrectionTurnInput): TutorCorrection
     userText: normalizeText(input.userText),
     correctedText,
     explanation: shortenExplanation(input.explanation),
+    naturalReply: "",
+    nextQuestion: "",
     shouldReadAloudText: correctedText,
     createdAt: createIsoDate(input.createdAt),
   };
@@ -100,8 +120,8 @@ export function buildConversationTurn(input: ConversationTurnInput): TutorConver
     userText: normalizeText(input.userText),
     correctedText,
     explanation: shortenExplanation(input.explanation),
-    naturalReply: naturalReply || undefined,
-    nextQuestion: nextQuestion || undefined,
+    naturalReply,
+    nextQuestion,
     shouldReadAloudText: buildSpeakableText([correctedText, naturalReply, nextQuestion]),
     createdAt: createIsoDate(input.createdAt),
   };
@@ -109,8 +129,8 @@ export function buildConversationTurn(input: ConversationTurnInput): TutorConver
   return { turn };
 }
 
-export function validateTutorTurn(turn: TutorTurn): boolean {
-  if (!turn || typeof turn !== "object") return false;
+export function validateTutorTurn(turn: unknown): turn is TutorTurn {
+  if (!isTutorTurnShape(turn)) return false;
   if (!turn.id || !turn.mode || !turn.targetLanguage || !turn.explainLanguage || !turn.createdAt) {
     return false;
   }
@@ -145,7 +165,7 @@ export function validateTutorTurn(turn: TutorTurn): boolean {
   return true;
 }
 
-export function getSpeakableText(turn: TutorTurn): string {
+export function getSpeakableText(turn: unknown): string {
   if (!validateTutorTurn(turn)) return "";
   return normalizeText(turn.shouldReadAloudText);
 }

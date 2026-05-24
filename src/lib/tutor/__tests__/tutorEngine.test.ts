@@ -20,6 +20,8 @@ describe("tutorEngine", () => {
     });
 
     expect(validateTutorTurn(turn)).toBe(true);
+    expect(turn.naturalReply).toBe("");
+    expect(turn.nextQuestion).toBe("");
     expect(getSpeakableText(turn)).toBe("I bought a hat yesterday.");
     expect(getSpeakableText(turn)).not.toBe("I buy a hat yesterday.");
   });
@@ -61,7 +63,7 @@ describe("tutorEngine", () => {
   });
 
   it("malformed turns fail safe instead of reading raw user input", () => {
-    const malformed: TutorTurn = {
+    const malformed: Partial<TutorTurn> = {
       id: "bad-turn",
       mode: "correction",
       targetLanguage: "en",
@@ -75,6 +77,25 @@ describe("tutorEngine", () => {
 
     expect(validateTutorTurn(malformed)).toBe(false);
     expect(getSpeakableText(malformed)).toBe("");
+  });
+
+  it("does not read user text when corrected text is empty", () => {
+    const turn: TutorTurn = {
+      id: "empty-correction",
+      mode: "correction",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "I buy a hat yesterday.",
+      correctedText: "",
+      explanation: "Short explanation.",
+      naturalReply: "",
+      nextQuestion: "",
+      shouldReadAloudText: "I buy a hat yesterday.",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    };
+
+    expect(validateTutorTurn(turn)).toBe(false);
+    expect(getSpeakableText(turn)).toBe("");
   });
 
   it("rejects unchanged wrong correction text", () => {

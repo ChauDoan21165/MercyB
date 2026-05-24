@@ -5,13 +5,13 @@ export type TutorMode = "correction" | "conversation";
 export type TutorTurn = {
   id: string;
   mode: TutorMode;
-  targetLanguage: string;
-  explainLanguage: string;
+  targetLanguage: TutorTargetLanguage;
+  explainLanguage: TutorExplainLanguage;
   userText: string;
   correctedText: string;
   explanation: string;
-  naturalReply?: string;
-  nextQuestion?: string;
+  naturalReply: string;
+  nextQuestion: string;
   shouldReadAloudText: string;
   createdAt: string;
 };

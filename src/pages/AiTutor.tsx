@@ -443,7 +443,7 @@ export default function AiTutorPage() {
             if (tts.speaking) {
               tts.stop();
             } else {
-              void tts.speak(text, ttsLang, target, { rawUserInput: input });
+              void tts.speak(text, ttsLang, target);
             }
           }}
           onPracticeSubmit={handlePracticeSubmit}
