@@ -326,48 +326,7 @@ export default function Home() {
   };
 
   const handleTeacherMercy = () => {
-    if (typeof window === "undefined" || typeof document === "undefined") return;
-
-    // Signed-out users: route to sign-in instead of trying to open the
-    // Mercy bubble (which never renders for them).
-    if (!access.isAuthenticated) {
-      nav("/signin");
-      return;
-    }
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // Find the floating Mercy bubble.
-    // Earlier (commit b0d0153a) this code dispatched a synthetic
-    // PointerEvent("pointerdown") to force-open the bubble — but
-    // synthesized PointerEvents have no active pointer, so the
-    // bubble's onPointerDown handler crashed when calling
-    // setPointerCapture(event.pointerId) → NotFoundError caught by
-    // the page-level error boundary. Removing the synthetic dispatch:
-    // focus + Enter keydown alone reliably opens the bubble (matches
-    // the bubble's onKeyDown handler) and never touches pointer state.
-    const bubble =
-      document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
-      document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
-
-    if (bubble) {
-      bubble.focus();
-      bubble.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          bubbles: true,
-          cancelable: true,
-          key: "Enter",
-        })
-      );
-    } else {
-      console.warn(
-        "[Home] Teacher Mercy bubble not found; cannot open panel. " +
-        "User may be unauthenticated or trial expired."
-      );
-    }
-
-    // Backwards-compat custom event (no current listener; kept for future).
-    window.dispatchEvent(new CustomEvent("mercy-guide:focus"));
+    nav("/ai-tutor");
   };
 
   // ── Progressive disclosure wrapper for secondary cards ──────────────────
@@ -540,22 +499,20 @@ export default function Home() {
         </div>
 
         <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: "min(340px, 100%)", margin: "14px auto 0" }}>
-          Hỏi — Mercy trả lời. Sửa lỗi — Mercy giải thích. Tiến bộ mỗi ngày.
+          Mở AI Tutor để luyện câu với Mercy. Mercy sẽ nhớ tiến bộ học của bạn.
         </div>
         {!isPhone && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-            Ask. Get corrected. Understand why. Improve daily.
+            Practice sentences with Mercy. Correction, memory, and review in one place.
           </div>
         )}
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
-          {!access.isAuthenticated
-            ? "Sign in to chat with Teacher Mercy →"
-            : "Open Teacher Mercy →"}
+          Mở AI Tutor →
         </div>
         {!access.isAuthenticated && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-            Đăng nhập để học cùng Teacher Mercy →
+            Vào AI Tutor mới để luyện câu với Mercy →
           </div>
         )}
         </button>
