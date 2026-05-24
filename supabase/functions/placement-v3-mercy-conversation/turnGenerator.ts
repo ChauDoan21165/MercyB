@@ -1,8 +1,8 @@
-import { decideNextAction } from "./adaptiveLogic";
-import { countTurnPairs } from "./conversationState";
-import { buildPersonaSystemPrompt, comfortQuestion, enforcePersona, fallbackQuestion, openingTurn, repairQuestion, wrapTurn } from "./mercyPersona";
-import { summarizeSignals } from "./signalExtractor";
-import type { AiJsonCallInput, AiJsonCallResult, MercyTurn, SignalSummary, Subskill, TurnGenerationInput } from "./types";
+import { decideNextAction } from "./adaptiveLogic.ts";
+import { countTurnPairs } from "./conversationState.ts";
+import { buildPersonaSystemPrompt, comfortQuestion, enforcePersona, fallbackQuestion, openingTurn, repairQuestion, wrapTurn } from "./mercyPersona.ts";
+import { summarizeSignals } from "./signalExtractor.ts";
+import type { AiJsonCallInput, AiJsonCallResult, MercyTurn, SignalSummary, Subskill, TurnGenerationInput } from "./types.ts";
 
 const QUESTION_BY_SUBSKILL: Record<Subskill, string> = {
   grammar: "Tell me about something you wanted to do last year but could not. What would you have done differently?",

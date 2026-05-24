@@ -1,5 +1,5 @@
-import { CEFR_ORDER, type CefrLevel, type L1InterferenceFlag, type SignalSummary, type Subskill, type SubskillSignal, type TranscriptTurn, type TurnSignal } from "./types";
-import { detectLanguageMarker } from "./conversationState";
+import { CEFR_ORDER, type CefrLevel, type L1InterferenceFlag, type SignalSummary, type Subskill, type SubskillSignal, type TranscriptTurn, type TurnSignal } from "./types.ts";
+import { detectLanguageMarker } from "./conversationState.ts";
 
 const SUBSKILLS: Subskill[] = ["grammar", "vocab", "fluency", "comprehension"];
 const LEVEL_NUM: Record<CefrLevel, number> = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6 };

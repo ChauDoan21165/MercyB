@@ -1,4 +1,4 @@
-import type { ListeningPlacementPrompt } from "./index";
+import type { ListeningPlacementPrompt } from "./index.ts";
 
 export const LISTENING_PLACEMENT_PROMPTS = [
   {

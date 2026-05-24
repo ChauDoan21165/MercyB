@@ -102,17 +102,17 @@ export const KNOWN_L1_INTERFERENCE_IDS = [
 
 export type KnownL1InterferenceId = (typeof KNOWN_L1_INTERFERENCE_IDS)[number];
 
-export { WRITING_PLACEMENT_PROMPTS } from "./writing";
-export { SPEAKING_PLACEMENT_PROMPTS } from "./speaking";
-export { READING_PLACEMENT_PROMPTS } from "./reading";
-export { LISTENING_PLACEMENT_PROMPTS } from "./listening";
-export { CONVERSATION_PLACEMENT_PROMPTS } from "./conversation";
+export { WRITING_PLACEMENT_PROMPTS } from "./writing.ts";
+export { SPEAKING_PLACEMENT_PROMPTS } from "./speaking.ts";
+export { READING_PLACEMENT_PROMPTS } from "./reading.ts";
+export { LISTENING_PLACEMENT_PROMPTS } from "./listening.ts";
+export { CONVERSATION_PLACEMENT_PROMPTS } from "./conversation.ts";
 
-import { CONVERSATION_PLACEMENT_PROMPTS } from "./conversation";
-import { LISTENING_PLACEMENT_PROMPTS } from "./listening";
-import { READING_PLACEMENT_PROMPTS } from "./reading";
-import { SPEAKING_PLACEMENT_PROMPTS } from "./speaking";
-import { WRITING_PLACEMENT_PROMPTS } from "./writing";
+import { CONVERSATION_PLACEMENT_PROMPTS } from "./conversation.ts";
+import { LISTENING_PLACEMENT_PROMPTS } from "./listening.ts";
+import { READING_PLACEMENT_PROMPTS } from "./reading.ts";
+import { SPEAKING_PLACEMENT_PROMPTS } from "./speaking.ts";
+import { WRITING_PLACEMENT_PROMPTS } from "./writing.ts";
 
 export const PLACEMENT_V3_PROMPTS = [
   ...WRITING_PLACEMENT_PROMPTS,

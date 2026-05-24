@@ -1,4 +1,4 @@
-import type { CefrLevel, ConversationPhase, MercyTurn } from "./types";
+import type { CefrLevel, ConversationPhase, MercyTurn } from "./types.ts";
 
 export const MERCY_PERSONA_SUMMARY = [
   "Mercy is a warm, professional English teacher for Vietnamese learners.",

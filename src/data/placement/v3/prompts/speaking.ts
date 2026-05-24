@@ -1,4 +1,4 @@
-import type { PlacementPrompt } from "./index";
+import type { PlacementPrompt } from "./index.ts";
 
 export const SPEAKING_PLACEMENT_PROMPTS = [
   {
