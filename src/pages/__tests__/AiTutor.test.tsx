@@ -105,6 +105,9 @@ describe("AiTutor mock UI", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = vi.fn();
     render(<AiTutorPage />);
     expect(screen.getByRole("button", { name: /Nói câu của bạn/ })).toBeInTheDocument();
+    expect(
+      screen.getByText("Mercy sẽ chuyển giọng nói của bạn thành câu để sửa."),
+    ).toBeInTheDocument();
   });
 
   it("labels listening state as user voice input, not playback", async () => {
@@ -147,7 +150,7 @@ describe("AiTutor mock UI", () => {
     ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
     ["ko", /Gia sư tiếng Hàn/, /Viết một câu tiếng Hàn/, /gõ câu tiếng Hàn/],
     ["es", /Gia sư tiếng Tây Ban Nha/, /Viết một câu tiếng Tây Ban Nha/, /type your Spanish sentence/],
-    ["vi", /Gia sư tiếng Việt/, /Viết một câu tiếng Việt/, /type your Vietnamese sentence/],
+    ["vi", /Gia sư tiếng Việt/, /Viết một câu tiếng Việt/, /gõ câu tiếng Việt/],
   ])("keeps %s target copy after hydration", async (target, heading, helper, placeholder) => {
     window.history.pushState({}, "", `/ai-tutor?target=${target}`);
     render(<AiTutorPage />);
@@ -190,7 +193,7 @@ describe("AiTutor mock UI", () => {
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => {
-      expect(screen.getByText("She goes to school every morning.")).toBeInTheDocument();
+      expect(screen.getByText("She goes to school.")).toBeInTheDocument();
     });
   });
 
@@ -207,6 +210,30 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByText("Câu đã sửa")).toBeInTheDocument();
     expect(screen.getByText("Giải thích")).toBeInTheDocument();
     expect(screen.getByText(/Câu vẫn giữ ý gốc bằng tiếng Pháp/)).toBeInTheDocument();
+  });
+
+  it("corrects Vietnamese target based on the submitted meaning", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=vi");
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "Tôi buồn vì mất cái mũ đẹp.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(
+        screen.getByText("Tôi buồn vì đã làm mất chiếc mũ đẹp của mình."),
+      ).toBeInTheDocument();
+    });
+    expect(screen.queryByText("Hôm qua tôi đi chợ.")).not.toBeInTheDocument();
+  });
+
+  it("does not return unrelated Japanese placeholder corrections", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=ja");
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "今日は雨です");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText("今日は雨です。")).toBeInTheDocument();
+    });
+    expect(screen.queryByText("私は昨日店に行きました。")).not.toBeInTheDocument();
   });
 
   it("corrects Chinese target in Chinese and explains in Vietnamese", async () => {

@@ -22,7 +22,6 @@ type CorrectionResult = {
 };
 
 type MockCorrection = {
-  corrected: string;
   explanation: Record<ExplainLanguage, string>;
   grammarTip: Record<ExplainLanguage, string>;
   practicePrompt: Record<ExplainLanguage, string>;
@@ -58,6 +57,7 @@ type UiCopy = {
   inputLabel: (targetCopy: TutorTargetCopy) => string;
   micInput: string;
   micListening: string;
+  micHelper: string;
   micUnavailable: string;
   micAriaStart: string;
   micAriaStop: string;
@@ -95,7 +95,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a sentence — AI corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu của bạn ở đây, ví dụ: "She go to school every day"',
     label: "English correction",
-    voiceLabel: "Speak sentence",
+    voiceLabel: "Voice input",
     voiceFallback: "Microphone unavailable in this browser",
     nameEn: "English",
     nameVi: "tiếng Anh",
@@ -107,7 +107,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a French sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
     label: "French practice",
-    voiceLabel: "Speak French",
+    voiceLabel: "French voice input",
     voiceFallback: "Microphone unavailable for French practice",
     nameEn: "French",
     nameVi: "tiếng Pháp",
@@ -119,7 +119,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a Chinese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
     label: "Chinese practice",
-    voiceLabel: "Speak Chinese",
+    voiceLabel: "Chinese voice input",
     voiceFallback: "Microphone unavailable for Chinese practice",
     nameEn: "Chinese",
     nameVi: "tiếng Trung",
@@ -131,7 +131,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a German sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Đức của bạn ở đây, ví dụ: "Ich gehe gestern zum Markt"',
     label: "German practice",
-    voiceLabel: "Speak German",
+    voiceLabel: "German voice input",
     voiceFallback: "Microphone unavailable for German practice",
     nameEn: "German",
     nameVi: "tiếng Đức",
@@ -143,7 +143,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a Japanese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Nhật của bạn ở đây, ví dụ: "私は昨日店に行く"',
     label: "Japanese practice",
-    voiceLabel: "Speak Japanese",
+    voiceLabel: "Japanese voice input",
     voiceFallback: "Microphone unavailable for Japanese practice",
     nameEn: "Japanese",
     nameVi: "tiếng Nhật",
@@ -155,7 +155,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a Korean sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Hàn của bạn ở đây, ví dụ: "저는 어제 시장에 가요"',
     label: "Korean practice",
-    voiceLabel: "Speak Korean",
+    voiceLabel: "Korean voice input",
     voiceFallback: "Microphone unavailable for Korean practice",
     nameEn: "Korean",
     nameVi: "tiếng Hàn",
@@ -167,7 +167,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     helper: "Write a Spanish sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'type your Spanish sentence here, for example: "Yo fui al mercado ayer"',
     label: "Spanish practice",
-    voiceLabel: "Speak Spanish",
+    voiceLabel: "Spanish voice input",
     voiceFallback: "Microphone unavailable for Spanish practice",
     nameEn: "Spanish",
     nameVi: "tiếng Tây Ban Nha",
@@ -177,9 +177,9 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     title: "Teacher Mercy · Vietnamese Tutor",
     subtitle: "Practice Vietnamese with Mercy: correction, explanation, memory, and review.",
     helper: "Write a Vietnamese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'type your Vietnamese sentence here, for example: "Hôm qua tôi đi chợ"',
+    placeholder: 'gõ câu tiếng Việt của bạn ở đây, ví dụ: "Tôi buồn vì mất cái mũ đẹp."',
     label: "Vietnamese practice",
-    voiceLabel: "Speak Vietnamese",
+    voiceLabel: "Vietnamese voice input",
     voiceFallback: "Microphone unavailable for Vietnamese practice",
     nameEn: "Vietnamese",
     nameVi: "tiếng Việt",
@@ -197,6 +197,7 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     inputLabel: (targetCopy) => `Câu ${targetCopy.nameVi} của bạn`,
     micInput: "Nói câu của bạn",
     micListening: "Đang nghe giọng của bạn...",
+    micHelper: "Mercy sẽ chuyển giọng nói của bạn thành câu để sửa.",
     micUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
     micAriaStart: "Nói câu của bạn để nhập bằng giọng nói",
     micAriaStop: "Dừng nghe",
@@ -234,6 +235,7 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     inputLabel: (targetCopy) => `Your ${targetCopy.nameEn} sentence`,
     micInput: "Speak your sentence",
     micListening: "Listening to your voice...",
+    micHelper: "Mercy turns your voice into text for correction.",
     micUnavailable: "Microphone unavailable in this browser. You can still type your sentence.",
     micAriaStart: "Speak your sentence for voice input",
     micAriaStop: "Stop listening",
@@ -266,7 +268,6 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
 
 const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
   en: {
-    corrected: "She goes to school every morning.",
     explanation: {
       vi: "Với chủ ngữ ngôi thứ ba số ít như she/he/it, động từ ở hiện tại đơn cần thêm -s hoặc -es.",
       en: "Third-person singular subjects such as she/he/it need -s or -es in the present simple.",
@@ -286,8 +287,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   fr: {
-    corrected:
-      "Toute lecture nouvelle d'un texte canonique paraît d'abord hérétique ; c'est la rançon de l'innovation interprétative.",
     explanation: {
       vi: "Câu vẫn giữ ý gốc bằng tiếng Pháp. Mercy sửa 'neuve' thành 'nouvelle' cho tự nhiên hơn và thay dấu gạch ngang bằng dấu chấm phẩy để câu học thuật mạch lạc hơn.",
       en: "The sentence stays in French. Mercy changed 'neuve' to the more natural 'nouvelle' and used a semicolon for a smoother academic sentence.",
@@ -307,7 +306,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   zh: {
-    corrected: "我昨天去了商店。",
     explanation: {
       vi: "Câu tiếng Trung cần thêm '了' sau động từ để đánh dấu hành động đã xảy ra trong quá khứ.",
       en: "The Chinese sentence needs '了' after the verb to mark a completed past action.",
@@ -327,7 +325,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   de: {
-    corrected: "Ich bin gestern zum Markt gegangen.",
     explanation: {
       vi: "Câu tiếng Đức cần dùng Perfekt cho hành động đã xảy ra: 'bin ... gegangen'.",
       en: "The German sentence needs Perfekt for a completed past action: 'bin ... gegangen'.",
@@ -347,7 +344,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   ja: {
-    corrected: "私は昨日店に行きました。",
     explanation: {
       vi: "Câu tiếng Nhật cần dùng dạng quá khứ lịch sự '行きました' khi nói về việc đã đi hôm qua.",
       en: "The Japanese sentence needs the polite past form '行きました' for something you did yesterday.",
@@ -367,7 +363,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   ko: {
-    corrected: "저는 어제 시장에 갔어요.",
     explanation: {
       vi: "Câu tiếng Hàn cần dùng dạng quá khứ '갔어요' khi nói về việc đã đi hôm qua.",
       en: "The Korean sentence needs the past form '갔어요' for something that happened yesterday.",
@@ -387,7 +382,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   es: {
-    corrected: "Fui al mercado ayer.",
     explanation: {
       vi: "Câu tiếng Tây Ban Nha dùng pretérito 'fui' để nói về hành động đã hoàn thành trong quá khứ.",
       en: "The Spanish sentence uses the preterite 'fui' for a completed past action.",
@@ -407,7 +401,6 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
     },
   },
   vi: {
-    corrected: "Hôm qua tôi đi chợ.",
     explanation: {
       vi: "Câu tiếng Việt đã tự nhiên. Mercy giữ cấu trúc gọn và đúng ngữ cảnh.",
       en: "The Vietnamese sentence is natural. Mercy keeps the concise structure and correct context.",
@@ -430,6 +423,82 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
 
 const MOCK_DELAY_MS = 600;
 const TEACHER_MERCY_AVATAR_SRC = "/teacher-mercy.webp";
+
+function ensureTerminalPunctuation(value: string, target: TutorTarget): string {
+  const trimmed = value.trim();
+  if (!trimmed) return trimmed;
+  if (/[.!?。！？]$/.test(trimmed)) return trimmed;
+  return target === "zh" || target === "ja" ? `${trimmed}。` : `${trimmed}.`;
+}
+
+function capitalizeFirst(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return trimmed;
+  return `${trimmed.charAt(0).toUpperCase()}${trimmed.slice(1)}`;
+}
+
+function buildInputAwareCorrection(input: string, target: TutorTarget): string {
+  const trimmed = input.replace(/\s+/g, " ").trim();
+  if (!trimmed) return trimmed;
+
+  switch (target) {
+    case "vi": {
+      const corrected = trimmed
+        .replace(/\bvì mất cái mũ đẹp\b/i, "vì đã làm mất chiếc mũ đẹp của mình")
+        .replace(/\bcái mũ\b/gi, "chiếc mũ")
+        .replace(/\bvì mất\b/gi, "vì đã làm mất");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "fr": {
+      const corrected = trimmed
+        .replace(/\blecture neuve\b/gi, "lecture nouvelle")
+        .replace(/\bneuve\b/gi, "nouvelle")
+        .replace(/\bparait\b/gi, "paraît")
+        .replace(/\s+—\s+/g, " ; ")
+        .replace(/\bparaît hérétique\b/gi, "paraît d'abord hérétique");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "zh": {
+      const corrected = trimmed
+        .replace(/我昨天去商店/g, "我昨天去了商店")
+        .replace(/昨天去商店/g, "昨天去了商店");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "ja": {
+      const corrected = trimmed
+        .replace(/昨日店に行く/g, "昨日店に行きました")
+        .replace(/昨日お店に行く/g, "昨日お店に行きました")
+        .replace(/行く。?$/g, "行きました");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "ko": {
+      const corrected = trimmed
+        .replace(/시장에 가요/g, "시장에 갔어요")
+        .replace(/어제 시장에 가/g, "어제 시장에 갔");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "de": {
+      const corrected = capitalizeFirst(trimmed)
+        .replace(/\bIch gehe gestern zum Markt\b/i, "Ich bin gestern zum Markt gegangen")
+        .replace(/\bich gehe gestern zum markt\b/i, "Ich bin gestern zum Markt gegangen");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "es": {
+      const corrected = capitalizeFirst(trimmed)
+        .replace(/\bYo fui al mercado ayer\b/i, "Fui al mercado ayer")
+        .replace(/\byo fui\b/i, "Fui");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "en":
+    default: {
+      const corrected = capitalizeFirst(trimmed)
+        .replace(/\b[Ss]he go\b/g, "She goes")
+        .replace(/\b[Hh]e go\b/g, "He goes")
+        .replace(/\b[Ii] goes\b/g, "I go");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+  }
+}
 
 function getTutorTargetFromSearch(search: string): TutorTarget {
   const value = new URLSearchParams(search).get("target")?.toLowerCase();
@@ -602,8 +671,9 @@ export default function AiTutorPage() {
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
     const next = MOCK_RESULTS_BY_TARGET[target];
+    const corrected = buildInputAwareCorrection(trimmed, target);
     setResult({
-      corrected: next.corrected,
+      corrected,
       explanation: next.explanation[explainLanguage],
       grammarTip: next.grammarTip[explainLanguage],
       practicePrompt: next.practicePrompt[explainLanguage],
@@ -616,7 +686,7 @@ export default function AiTutorPage() {
     putCorrection({
       id,
       original: trimmed,
-      corrected: next.corrected,
+      corrected,
       topic: next.grammarTip[explainLanguage].slice(0, 60),
       cefr: "B1",
       createdAt: Date.now(),
@@ -888,6 +958,9 @@ export default function AiTutorPage() {
                   </span>
                 </div>
               )}
+              <p className="w-full text-xs font-medium leading-5 text-slate-500">
+                {uiCopy.micHelper}
+              </p>
               <button
                 type="button"
                 onClick={handleSubmit}

@@ -61,6 +61,50 @@ function TabLoadingFallback() {
   );
 }
 
+function AdultTeacherLauncher() {
+  return (
+    <div className="m-0 flex h-full min-h-0 flex-1 overflow-y-auto bg-slate-50 p-4">
+      <section className="mx-auto flex w-full max-w-[680px] flex-col items-center justify-center rounded-3xl border border-rose-100 bg-white p-5 text-center shadow-[0_12px_32px_rgba(244,114,182,0.10)]">
+        <div className="h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-lg">
+          <picture>
+            <source srcSet={MERCY_HOST_IMAGE_AVIF} type="image/avif" />
+            <source srcSet={MERCY_HOST_IMAGE_WEBP} type="image/webp" />
+            <img
+              src={MERCY_HOST_IMAGE_SRC}
+              alt="Teacher Mercy"
+              width={640}
+              height={640}
+              decoding="async"
+              onError={fallbackAvatar}
+              className="h-full w-full object-cover object-[50%_32%] scale-110"
+            />
+          </picture>
+        </div>
+
+        <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-rose-500">
+          Teacher Mercy
+        </p>
+        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+          Mở AI Tutor
+        </h2>
+        <p className="mt-3 max-w-[460px] text-sm font-semibold leading-6 text-slate-600">
+          Luyện câu với Mercy. Mercy sẽ sửa câu, đọc câu đã sửa, và nhớ tiến bộ học của bạn.
+        </p>
+
+        <a
+          href="/ai-tutor"
+          className="mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:bg-slate-800"
+        >
+          Mở AI Tutor
+        </a>
+        <p className="mt-3 text-xs font-medium leading-5 text-slate-400">
+          AI Tutor là Teacher Mercy nâng cao; hộp cũ chỉ còn là lối vào.
+        </p>
+      </section>
+    </div>
+  );
+}
+
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -1584,7 +1628,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'teacher' ? (
+          {activeTab === 'teacher' && !kidsModeActive ? (
+            <AdultTeacherLauncher />
+          ) : null}
+
+          {activeTab === 'teacher' && kidsModeActive ? (
             <Suspense fallback={<TabLoadingFallback />}>
               <MercyTeacherTab
                 latestTeacherWritingState={latestTeacherWritingState}
