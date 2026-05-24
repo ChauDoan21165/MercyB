@@ -17,6 +17,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
+import { useLessonUiLang } from "@/components/LessonUiLangToggle";
 
 import {
   SPANISH_CATEGORIES,
@@ -53,6 +55,7 @@ const CEFR_PILL_LABELS_EN: Record<SpanishCefrLevel, string> = {
 };
 
 export default function SpanishLessonsPage() {
+  const [uiLang] = useLessonUiLang();
   const theme = lessonThemes.spanish;
   const [level, setLevel] = useState<SpanishCefrLevel>("A1");
   const [lessons, setLessons] = useState<SpanishLesson[] | null>(null);
@@ -117,6 +120,8 @@ export default function SpanishLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <nav aria-label="Choose a level" className="mb-4 flex flex-wrap gap-2">
