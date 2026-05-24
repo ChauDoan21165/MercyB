@@ -15,6 +15,7 @@ export interface SpeechRecognitionResultLike {
 
 export interface SpeechRecognitionEventLike extends Event {
   results: ArrayLike<SpeechRecognitionResultLike>;
+  resultIndex?: number;
 }
 
 export interface SpeechRecognitionErrorEventLike extends Event {

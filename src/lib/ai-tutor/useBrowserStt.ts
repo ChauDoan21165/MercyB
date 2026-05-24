@@ -35,6 +35,7 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
   const [error, setError] = useState<string | null>(null);
   const recRef = useRef<SpeechRecognitionLike | null>(null);
   const finalRef = useRef("");
+  const finalSegmentsRef = useRef<string[]>([]);
 
   const start = useCallback(() => {
     const rec = createRecognizer(lang);
@@ -45,19 +46,26 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     setError(null);
     setTranscript("");
     finalRef.current = "";
+    finalSegmentsRef.current = [];
 
     rec.onstart = () => setListening(true);
     rec.onresult = (event) => {
       let interim = "";
-      for (let i = event.results.length - 1; i >= 0; i--) {
+      const startIndex = Math.max(0, event.resultIndex ?? 0);
+      for (let i = startIndex; i < event.results.length; i++) {
         const r = event.results[i];
-        const text = (r[0]?.transcript ?? "");
+        const text = (r[0]?.transcript ?? "").replace(/\s+/g, " ").trim();
+        if (!text) continue;
         if (r.isFinal) {
-          finalRef.current += (finalRef.current ? " " : "") + text;
+          finalSegmentsRef.current[i] = text;
         } else {
           interim = text;
         }
       }
+      const uniqueFinalSegments = finalSegmentsRef.current
+        .filter(Boolean)
+        .filter((text, index, segments) => index === 0 || text !== segments[index - 1]);
+      finalRef.current = uniqueFinalSegments.join(" ");
       setTranscript(finalRef.current + (interim ? ` ${interim}` : ""));
     };
     rec.onerror = (event) => {
