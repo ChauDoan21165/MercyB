@@ -2,6 +2,7 @@
 // AI Tutor mock UI — static responses, no real provider calls.
 // M3: Safe aggregate reminder card using IndexedDB getMemorySummary.
 
+import { Mic, MicOff } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/providers/AuthProvider";
 import {
@@ -22,6 +23,56 @@ type PracticeFeedback = {
   encouragement: string;
   tip: string;
   nextStep: string;
+};
+
+type TutorTarget = "en" | "fr" | "zh";
+
+type TutorTargetCopy = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  helper: string;
+  placeholder: string;
+  label: string;
+  voiceLabel: string;
+  voiceFallback: string;
+  inputLabel: string;
+};
+
+const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
+  en: {
+    eyebrow: "New AI Tutor",
+    title: "Teacher Mercy AI Tutor",
+    subtitle: "Sửa câu tiếng Anh bằng AI thật, ghi nhớ lỗi hay gặp, rồi luyện lại với Mercy.",
+    helper: "Write a sentence — AI corrects it, explains it, and gives follow-up practice.",
+    placeholder: 'gõ câu của bạn ở đây, ví dụ: "She go to school every day"',
+    label: "English correction",
+    voiceLabel: "Speak sentence",
+    voiceFallback: "Microphone unavailable in this browser",
+    inputLabel: "Your sentence",
+  },
+  fr: {
+    eyebrow: "AI Tutor tiếng Pháp",
+    title: "Teacher Mercy · French Tutor",
+    subtitle: "Luyện tiếng Pháp với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
+    helper: "Pratique le français avec Mercy — correction, explication, et révision.",
+    placeholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
+    label: "French practice",
+    voiceLabel: "Speak French",
+    voiceFallback: "Microphone unavailable for French practice",
+    inputLabel: "Your French sentence",
+  },
+  zh: {
+    eyebrow: "AI Tutor tiếng Trung",
+    title: "Teacher Mercy · Chinese Tutor",
+    subtitle: "Luyện tiếng Trung với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
+    helper: "练习中文 — Mercy helps correct, explain, and review your sentence.",
+    placeholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
+    label: "Chinese practice",
+    voiceLabel: "Speak Chinese",
+    voiceFallback: "Microphone unavailable for Chinese practice",
+    inputLabel: "Your Chinese sentence",
+  },
 };
 
 const MOCK_RESULTS: Array<CorrectionResult & { feedback: PracticeFeedback }> = [
@@ -67,6 +118,19 @@ const MOCK_RESULTS: Array<CorrectionResult & { feedback: PracticeFeedback }> = [
 ];
 
 const MOCK_DELAY_MS = 600;
+const TEACHER_MERCY_AVATAR_SRC = "/teacher-mercy.webp";
+
+function getTutorTargetFromSearch(search: string): TutorTarget {
+  const value = new URLSearchParams(search).get("target")?.toLowerCase();
+  if (value === "fr" || value === "french") return "fr";
+  if (value === "zh" || value === "chinese" || value === "cn") return "zh";
+  return "en";
+}
+
+function hasSpeechRecognitionSupport() {
+  if (typeof window === "undefined") return false;
+  return Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
+}
 
 export default function AiTutorPage() {
   const shellRef = useRef<HTMLElement | null>(null);
@@ -93,6 +157,12 @@ export default function AiTutorPage() {
   const [memory, setMemory] = useState<MemorySummary | null>(null);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
+  const [target, setTarget] = useState<TutorTarget>(() =>
+    typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search),
+  );
+  const [speechSupported, setSpeechSupported] = useState(hasSpeechRecognitionSupport);
+
+  const targetCopy = TARGET_COPY[target];
 
   const loadMemory = async () => {
     try {
@@ -104,6 +174,17 @@ export default function AiTutorPage() {
   };
 
   useEffect(() => { loadMemory(); }, []);
+
+  useEffect(() => {
+    const syncTarget = () => setTarget(getTutorTargetFromSearch(window.location.search));
+    syncTarget();
+    window.addEventListener("popstate", syncTarget);
+    return () => window.removeEventListener("popstate", syncTarget);
+  }, []);
+
+  useEffect(() => {
+    setSpeechSupported(hasSpeechRecognitionSupport());
+  }, []);
 
   useEffect(() => {
     const shell = shellRef.current;
@@ -284,7 +365,15 @@ export default function AiTutorPage() {
         }
       `}</style>
       {/* Header */}
-      <section className="mx-auto mb-6 w-full max-w-3xl text-center">
+      <section className="mx-auto mb-6 w-full max-w-3xl text-center" data-testid="ai-tutor-header">
+        <div className="mx-auto mb-4 flex h-28 w-28 items-center justify-center rounded-full border border-indigo-100 bg-white p-1 shadow-sm sm:h-32 sm:w-32">
+          <img
+            src={TEACHER_MERCY_AVATAR_SRC}
+            alt="Teacher Mercy"
+            className="h-full w-full rounded-full object-cover"
+            data-testid="ai-tutor-mercy-avatar"
+          />
+        </div>
         {/* Greeting — uses nickname, never email */}
         <div className="mb-3 text-sm font-bold text-slate-600" data-testid="ai-tutor-greeting">
           {greetingName ? (
@@ -299,17 +388,20 @@ export default function AiTutorPage() {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <h1 className="ai-tutor-shell-title text-2xl font-black text-slate-950 sm:text-3xl">
-            AI Tutor
+            {targetCopy.title}
           </h1>
+          <span className="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-[11px] font-black uppercase text-indigo-700">
+            {targetCopy.eyebrow}
+          </span>
           <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-[11px] font-black uppercase text-amber-700">
             Mock
           </span>
         </div>
         <p className="ai-tutor-copy ai-tutor-shell-copy mt-2 text-sm font-medium text-slate-500">
-          Viết một câu tiếng Anh — AI sẽ sửa lỗi, giải thích, và cho bạn luyện tập thêm.
+          {targetCopy.subtitle}
         </p>
         <p className="ai-tutor-copy mt-1 text-xs text-slate-400">
-          Write a sentence — AI corrects it, explains, and gives you follow-up practice.
+          {targetCopy.helper}
         </p>
       </section>
 
@@ -377,7 +469,7 @@ export default function AiTutorPage() {
           <section className="rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
             <div className="mb-2 flex items-center justify-between gap-3">
               <label className="text-xs font-black uppercase text-slate-500">
-                Your sentence
+                {targetCopy.inputLabel}
               </label>
               <span className="shrink-0 text-[11px] font-medium text-slate-400">
                 {charCount} / 500
@@ -389,7 +481,7 @@ export default function AiTutorPage() {
               onChange={(e) => {
                 if (e.target.value.length <= 500) setInput(e.target.value);
               }}
-              placeholder='gõ câu của bạn ở đây, ví dụ: "She go to school every day"'
+              placeholder={targetCopy.placeholder}
               rows={4}
               className="w-full min-w-0 resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
               onKeyDown={(e) => {
@@ -400,6 +492,29 @@ export default function AiTutorPage() {
             />
 
             <div className="ai-tutor-actions mt-3">
+              {speechSupported ? (
+                <button
+                  type="button"
+                  className="min-h-[44px] w-full rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-black text-indigo-700 transition hover:bg-indigo-100"
+                  aria-label={targetCopy.voiceLabel}
+                >
+                  <span className="inline-flex items-center justify-center gap-2">
+                    <Mic className="h-4 w-4" aria-hidden />
+                    {targetCopy.voiceLabel}
+                  </span>
+                </button>
+              ) : (
+                <div
+                  role="status"
+                  className="min-h-[44px] w-full rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-center text-xs font-bold text-slate-500"
+                  data-testid="ai-tutor-mic-fallback"
+                >
+                  <span className="inline-flex items-center justify-center gap-2">
+                    <MicOff className="h-4 w-4" aria-hidden />
+                    {targetCopy.voiceFallback}
+                  </span>
+                </div>
+              )}
               <button
                 type="button"
                 onClick={handleSubmit}

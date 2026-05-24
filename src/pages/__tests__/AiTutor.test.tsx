@@ -33,6 +33,9 @@ vi.mock("@/lib/ai-tutor/learningMemory", () => ({
 
 beforeEach(() => {
   vi.clearAllMocks();
+  window.history.pushState({}, "", "/ai-tutor");
+  (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
+  (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
 });
 
@@ -40,6 +43,42 @@ describe("AiTutor mock UI", () => {
   it("renders the mock badge", () => {
     render(<AiTutorPage />);
     expect(screen.getByText("Mock")).toBeInTheDocument();
+  });
+
+  it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
+    render(<AiTutorPage />);
+    expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+    expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+  });
+
+  it("shows microphone fallback when browser speech recognition is unavailable", () => {
+    render(<AiTutorPage />);
+    expect(screen.getByTestId("ai-tutor-mic-fallback")).toHaveTextContent(/Microphone unavailable/);
+  });
+
+  it("shows microphone control when browser speech recognition is supported", () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = vi.fn();
+    render(<AiTutorPage />);
+    expect(screen.getByRole("button", { name: /Speak sentence/ })).toBeInTheDocument();
+  });
+
+  it("keeps French target copy after hydration", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+    expect(screen.getByRole("heading", { name: /French Tutor/ })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+    expect(screen.getByText(/Pratique le français/)).toBeInTheDocument();
+  });
+
+  it("keeps Chinese target copy after hydration", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=zh");
+    render(<AiTutorPage />);
+    expect(screen.getByRole("heading", { name: /Chinese Tutor/ })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+    expect(screen.getByText(/练习中文/)).toBeInTheDocument();
   });
 
   it("defaults to floating-safe layout until the container is measured wide", () => {
