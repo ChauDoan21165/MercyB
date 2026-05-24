@@ -63,11 +63,19 @@ class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike
   }
 
   emitFinalTranscript(text: string) {
+    this.emitTranscript(text, true);
+  }
+
+  emitInterimTranscript(text: string) {
+    this.emitTranscript(text, false);
+  }
+
+  emitTranscript(text: string, isFinal: boolean) {
     this.onresult?.({
       resultIndex: 0,
       results: [
         {
-          isFinal: true,
+          isFinal,
           length: 1,
           0: { transcript: text },
         },
@@ -169,6 +177,40 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => {
       expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
     });
+  });
+
+  it("previews repeated STT interim transcripts without multiplying textarea text", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    act(() => {
+      MockSpeechRecognition.last?.emitInterimTranscript("tôi buồn vì mất cái xe đạp");
+      MockSpeechRecognition.last?.emitInterimTranscript("tôi buồn vì mất cái xe đạp tôi buồn vì mất cái xe đạp");
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
+    });
+    expect((screen.getByRole("textbox") as HTMLTextAreaElement).value.length).toBeLessThan(500);
+  });
+
+  it("collapses noisy repeated Vietnamese STT into one clean utterance", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    act(() => {
+      MockSpeechRecognition.last?.emitFinalTranscript(
+        "tôi buồn vì mất cái xe đạp tôi buồn vì mất cái xe đạp ok ok chương trình nó chạy xong",
+      );
+      MockSpeechRecognition.last?.stop();
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
+    });
+    expect((screen.getByRole("textbox") as HTMLTextAreaElement).value.length).toBeLessThan(500);
   });
 
   it("keeps Vietnamese UI with French target copy after hydration", async () => {
@@ -280,6 +322,20 @@ describe("AiTutor mock UI", () => {
     });
     expect(screen.queryByText("Hôm qua tôi đi chợ.")).not.toBeInTheDocument();
     expect(screen.getByText(/Tôi buồn vì đã làm mất chiếc xe đạp/)).toBeInTheDocument();
+  });
+
+  it("corrects noisy repeated Vietnamese input to the intended main sentence", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=vi");
+    render(<AiTutorPage />);
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "Tôi buồn vì mất cái chiếc xe đạp Tôi buồn vì đã làm mất cái chiếc xe đạp chương trình nó chạy xong Ok Ok",
+    );
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText("Tôi buồn vì đã làm mất chiếc xe đạp.")).toBeInTheDocument();
+    });
+    expect(screen.queryByText("Hôm qua tôi đi chợ.")).not.toBeInTheDocument();
   });
 
   it("does not return unrelated Japanese placeholder corrections", async () => {

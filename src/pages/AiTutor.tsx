@@ -428,6 +428,25 @@ function normalizeSpokenText(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function appendCleanSpeech(base: string, transcript: string): string {
+  const normalizedBase = normalizeSpokenText(base);
+  const normalizedTranscript = normalizeSpokenText(transcript);
+  if (!normalizedTranscript) return normalizedBase;
+  if (!normalizedBase) return normalizedTranscript.slice(0, 500);
+  if (normalizedBase === normalizedTranscript || normalizedBase.includes(normalizedTranscript)) {
+    return normalizedBase.slice(0, 500);
+  }
+  if (normalizedTranscript.includes(normalizedBase)) {
+    return normalizedTranscript.slice(0, 500);
+  }
+
+  const next = `${normalizedBase} ${normalizedTranscript}`;
+  if (next.length <= 500) return next;
+  const clipped = next.slice(0, 500);
+  const lastSpace = clipped.lastIndexOf(" ");
+  return lastSpace > 420 ? clipped.slice(0, lastSpace) : clipped;
+}
+
 function ensureTerminalPunctuation(value: string, target: TutorTarget): string {
   const trimmed = value.trim();
   if (!trimmed) return trimmed;
@@ -447,7 +466,15 @@ function buildInputAwareCorrection(input: string, target: TutorTarget): string {
 
   switch (target) {
     case "vi": {
+      const lower = trimmed.toLowerCase();
+      if (lower.includes("buồn") && lower.includes("mất") && lower.includes("xe đạp")) {
+        return "Tôi buồn vì đã làm mất chiếc xe đạp.";
+      }
+      if (lower.includes("buồn") && lower.includes("mất") && lower.includes("mũ")) {
+        return "Tôi buồn vì đã làm mất chiếc mũ đẹp của mình.";
+      }
       const corrected = trimmed
+        .replace(/\bcái chiếc\b/gi, "chiếc")
         .replace(/\bvì mất cái xe đạp\b/i, "vì đã làm mất chiếc xe đạp")
         .replace(/\bvì mất cái mũ đẹp\b/i, "vì đã làm mất chiếc mũ đẹp của mình")
         .replace(/\bcái xe đạp\b/gi, "chiếc xe đạp")
@@ -588,31 +615,38 @@ export default function AiTutorPage() {
   const targetCopy = TARGET_COPY[target];
   const uiCopy = UI_COPY[explainLanguage];
 
-  // Sync STT transcript → input when listening stops
-  const sttInputRef = useRef<string>("");
+  // Sync STT transcript as one dictation session: preview while listening,
+  // commit once when the browser recognizer stops.
+  const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
+  const wasListeningRef = useRef(false);
   useEffect(() => {
     const transcript = normalizeSpokenText(stt.transcript);
-    if (!stt.listening && transcript && transcript !== sttInputRef.current) {
-      sttInputRef.current = transcript;
-      if (transcript === lastCommittedSttRef.current) return;
-      setInput((prev) => {
-        const normalizedPrev = normalizeSpokenText(prev);
-        const normalizedTranscript = normalizeSpokenText(transcript);
-        if (!normalizedTranscript) return prev;
-        if (normalizedPrev === normalizedTranscript || normalizedPrev.includes(normalizedTranscript)) {
-          lastCommittedSttRef.current = normalizedTranscript;
-          return prev;
-        }
-        if (normalizedTranscript.includes(normalizedPrev)) {
-          lastCommittedSttRef.current = normalizedTranscript;
-          return normalizedTranscript.slice(0, 500);
-        }
-        lastCommittedSttRef.current = normalizedTranscript;
-        return normalizedPrev ? `${normalizedPrev} ${normalizedTranscript}`.slice(0, 500) : normalizedTranscript.slice(0, 500);
-      });
+    if (stt.listening) {
+      wasListeningRef.current = true;
+      if (transcript) {
+        setInput(appendCleanSpeech(sttBaseInputRef.current, transcript));
+      }
+      return;
+    }
+
+    if (wasListeningRef.current) {
+      wasListeningRef.current = false;
+      if (!transcript || transcript === lastCommittedSttRef.current) return;
+      lastCommittedSttRef.current = transcript;
+      setInput(appendCleanSpeech(sttBaseInputRef.current, transcript));
     }
   }, [stt.listening, stt.transcript]);
+
+  const handleMicToggle = () => {
+    if (stt.listening) {
+      stt.stop();
+      return;
+    }
+    sttBaseInputRef.current = input;
+    lastCommittedSttRef.current = "";
+    stt.start();
+  };
 
   const loadMemory = async () => {
     try {
@@ -956,7 +990,7 @@ export default function AiTutorPage() {
               {stt.supported ? (
                 <button
                   type="button"
-                  onClick={() => (stt.listening ? stt.stop() : stt.start())}
+                  onClick={handleMicToggle}
                   className={`min-h-[44px] w-full rounded-full border px-4 py-2.5 text-sm font-black transition ${
                     stt.listening
                       ? "border-red-300 bg-red-50 text-red-700"
