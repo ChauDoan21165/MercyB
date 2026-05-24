@@ -45,7 +45,10 @@ import ConversationMode, {
   type ConversationMessage,
   type MercyConversationMessage,
 } from "@/components/ai-tutor/ConversationMode";
-import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
+import TutorMemoryCard, {
+  TutorMemoryEmpty,
+  TutorTodayLessonCard,
+} from "@/components/ai-tutor/TutorMemoryCard";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 
 type CorrectionResult = TutorTurn & {
@@ -509,7 +512,12 @@ export default function AiTutorPage() {
       modeTabs={modeTabs}
       activeMode={mode}
       onModeChange={setMode}
-      memorySlot={aiTutorConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
+      memorySlot={aiTutorConfig.memoryEnabled ? (
+        <>
+          <TutorTodayLessonCard memoryLoaded={memoryLoaded} memory={memory} />
+          <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
+        </>
+      ) : undefined}
       reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
