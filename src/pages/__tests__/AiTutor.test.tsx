@@ -338,6 +338,24 @@ describe("AiTutor mock UI", () => {
     expect(screen.queryByText("Hôm qua tôi đi chợ.")).not.toBeInTheDocument();
   });
 
+  it("cleans repeated Vietnamese STT fragments and duplicate classifiers before correcting", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=vi");
+    render(<AiTutorPage />);
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "Tôi buồn vì mất chiếc cái mũ tôi buồn tôi buồn mất",
+    );
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    let correctedText = "";
+    await waitFor(() => {
+      const corrected = screen.getByText("Tôi buồn vì đã làm mất chiếc mũ đẹp của mình.");
+      expect(corrected).toBeInTheDocument();
+      correctedText = corrected.textContent ?? "";
+    });
+    expect(correctedText).not.toMatch(/tôi buồn tôi buồn/i);
+    expect(correctedText).not.toMatch(/chiếc cái/i);
+  });
+
   it("does not return unrelated Japanese placeholder corrections", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=ja");
     render(<AiTutorPage />);
