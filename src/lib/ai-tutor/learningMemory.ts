@@ -169,6 +169,16 @@ function sanitizeMemoryTag(value: string): string {
   return (normalized || "general").slice(0, 60);
 }
 
+function safeMemoryId(value: string): string {
+  const input = String(value ?? "");
+  let hash = 2166136261;
+  for (let index = 0; index < input.length; index += 1) {
+    hash ^= input.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return `mem-${(hash >>> 0).toString(36)}`;
+}
+
 function sortTopicEntries(topicCounts: Record<string, number>): Array<[string, number]> {
   return Object.entries(topicCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
@@ -235,6 +245,7 @@ export function summarizeCorrections(
     const topic = sanitizeMemoryTag(record.topic || "general");
     summary.totalCorrections += 1;
     if (record.practiced) summary.practicedCount += 1;
+    else summary.unpracticedCorrectionIds = [...summary.unpracticedCorrectionIds, safeMemoryId(record.id)].slice(-50);
     summary.topicCounts[topic] = (summary.topicCounts[topic] ?? 0) + 1;
     if (!summary.lastPracticedAt || record.createdAt > summary.lastPracticedAt) {
       summary.lastPracticedAt = record.createdAt;
@@ -283,7 +294,7 @@ export async function putCorrection(record: CorrectionRecord): Promise<void> {
     const topic = sanitizeMemoryTag(record.topic || "general");
     summary.totalCorrections += 1;
     if (record.practiced) summary.practicedCount += 1;
-    else summary.unpracticedCorrectionIds = [...summary.unpracticedCorrectionIds, record.id].slice(-50);
+    else summary.unpracticedCorrectionIds = [...summary.unpracticedCorrectionIds, safeMemoryId(record.id)].slice(-50);
     summary.topicCounts[topic] = (summary.topicCounts[topic] ?? 0) + 1;
     summary.lastPracticedTopic = topic;
     summary.lastPracticedAt = record.createdAt;
@@ -298,11 +309,12 @@ export async function markPracticed(
   targetLanguage: string = DEFAULT_LANGUAGE,
 ): Promise<void> {
   const memoryKey = getTutorMemoryKey(product, targetLanguage);
+  const memoryId = safeMemoryId(id);
   await withStore("readwrite", async (store) => {
     const existing = await reqToPromise(store.get(memoryKey));
     const summary = normalizeSummary(existing as Partial<TutorMemorySummary> | undefined, product, targetLanguage);
-    if (!summary.unpracticedCorrectionIds.includes(id)) return;
-    summary.unpracticedCorrectionIds = summary.unpracticedCorrectionIds.filter((pendingId) => pendingId !== id);
+    if (!summary.unpracticedCorrectionIds.includes(memoryId)) return;
+    summary.unpracticedCorrectionIds = summary.unpracticedCorrectionIds.filter((pendingId) => pendingId !== memoryId);
     summary.practicedCount = Math.min(summary.totalCorrections, summary.practicedCount + 1);
     summary.updatedAt = Date.now();
     store.put(deriveSummary(summary));

@@ -119,4 +119,42 @@ describe("getMemorySummary", () => {
     expect(serialized).not.toContain("550e8400-e29b-41d4-a716-446655440000");
     expect(serialized).not.toContain("My email is");
   });
+
+  it("A7-T5: exposes the required summary-only schema fields", () => {
+    const summary = summarizeCorrections([
+      makeRecord({
+        id: "safe-id",
+        tutorProduct: "vi-kids-english",
+        targetLanguage: "en",
+        topic: "third-person-s",
+        createdAt: 1234,
+      }),
+    ], "vi-kids-english", "en");
+
+    expect(summary).toMatchObject({
+      tutorProduct: "vi-kids-english",
+      targetLanguage: "en",
+      strengths: ["third-person-s"],
+      needsReview: ["third-person-s"],
+      commonMistakePatterns: ["third-person-s"],
+      nextRecommendedFocus: "third-person-s",
+      confidenceTrend: "needs-review",
+      updatedAt: 1234,
+    });
+    expect(summary.memoryKey).toBe("vi-kids-english:en");
+  });
+
+  it("A7-T6: unpracticed IDs are safe hashes, not raw caller-provided IDs", () => {
+    const rawId = "learner@example.com said I has a secret";
+    const summary = summarizeCorrections([
+      makeRecord({ id: rawId, topic: "articles", practiced: false }),
+    ]);
+    const serialized = JSON.stringify(summary);
+
+    expect(summary.unpracticedCorrectionIds).toHaveLength(1);
+    expect(summary.unpracticedCorrectionIds[0]).toMatch(/^mem-[a-z0-9]+$/);
+    expect(serialized).not.toContain(rawId);
+    expect(serialized).not.toContain("learner@example.com");
+    expect(serialized).not.toContain("I has a secret");
+  });
 });
