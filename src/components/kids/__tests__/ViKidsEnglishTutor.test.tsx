@@ -30,7 +30,8 @@ describe("ViKidsEnglishTutor", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = class {} as unknown as new () => SpeechRecognition;
     render(<ViKidsEnglishTutor />);
     await userEvent.click(screen.getByRole("button", { name: /Chọn quả táo/ }));
-    expect(screen.getByText("apple")).toBeInTheDocument();
+    // "apple" appears in both columns — picture picker + selected view
+    expect(screen.getAllByText("apple").length).toBeGreaterThanOrEqual(2);
     expect(screen.getByRole("button", { name: /Bấm để nói với Mercy/ })).toBeInTheDocument();
     expect(screen.getByText("Nói")).toBeInTheDocument();
   });
