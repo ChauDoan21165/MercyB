@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
+import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 import ViKidsEnglishTutor from "../ViKidsEnglishTutor";
 
 beforeEach(() => {
@@ -27,7 +28,8 @@ describe("ViKidsEnglishTutor", () => {
   });
 
   it("enables the mic button after picking a picture", async () => {
-    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = class {} as unknown as new () => SpeechRecognition;
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition =
+      class {} as unknown as new () => SpeechRecognitionLike;
     render(<ViKidsEnglishTutor />);
     await userEvent.click(screen.getByRole("button", { name: /Chọn quả táo/ }));
     // "apple" appears in both columns — picture picker + selected view
