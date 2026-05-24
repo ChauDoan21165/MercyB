@@ -424,6 +424,10 @@ const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
 const MOCK_DELAY_MS = 600;
 const TEACHER_MERCY_AVATAR_SRC = "/teacher-mercy.webp";
 
+function normalizeSpokenText(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
+}
+
 function ensureTerminalPunctuation(value: string, target: TutorTarget): string {
   const trimmed = value.trim();
   if (!trimmed) return trimmed;
@@ -444,10 +448,12 @@ function buildInputAwareCorrection(input: string, target: TutorTarget): string {
   switch (target) {
     case "vi": {
       const corrected = trimmed
+        .replace(/\bvì mất cái xe đạp\b/i, "vì đã làm mất chiếc xe đạp")
         .replace(/\bvì mất cái mũ đẹp\b/i, "vì đã làm mất chiếc mũ đẹp của mình")
+        .replace(/\bcái xe đạp\b/gi, "chiếc xe đạp")
         .replace(/\bcái mũ\b/gi, "chiếc mũ")
         .replace(/\bvì mất\b/gi, "vì đã làm mất");
-      return ensureTerminalPunctuation(corrected, target);
+      return ensureTerminalPunctuation(capitalizeFirst(corrected), target);
     }
     case "fr": {
       const corrected = trimmed
@@ -584,10 +590,27 @@ export default function AiTutorPage() {
 
   // Sync STT transcript → input when listening stops
   const sttInputRef = useRef<string>("");
+  const lastCommittedSttRef = useRef<string>("");
   useEffect(() => {
-    if (!stt.listening && stt.transcript && stt.transcript !== sttInputRef.current) {
-      sttInputRef.current = stt.transcript;
-      setInput((prev) => prev ? `${prev} ${stt.transcript}`.trim().slice(0, 500) : stt.transcript.slice(0, 500));
+    const transcript = normalizeSpokenText(stt.transcript);
+    if (!stt.listening && transcript && transcript !== sttInputRef.current) {
+      sttInputRef.current = transcript;
+      if (transcript === lastCommittedSttRef.current) return;
+      setInput((prev) => {
+        const normalizedPrev = normalizeSpokenText(prev);
+        const normalizedTranscript = normalizeSpokenText(transcript);
+        if (!normalizedTranscript) return prev;
+        if (normalizedPrev === normalizedTranscript || normalizedPrev.includes(normalizedTranscript)) {
+          lastCommittedSttRef.current = normalizedTranscript;
+          return prev;
+        }
+        if (normalizedTranscript.includes(normalizedPrev)) {
+          lastCommittedSttRef.current = normalizedTranscript;
+          return normalizedTranscript.slice(0, 500);
+        }
+        lastCommittedSttRef.current = normalizedTranscript;
+        return normalizedPrev ? `${normalizedPrev} ${normalizedTranscript}`.slice(0, 500) : normalizedTranscript.slice(0, 500);
+      });
     }
   }, [stt.listening, stt.transcript]);
 
