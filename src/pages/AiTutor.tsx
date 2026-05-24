@@ -2,7 +2,7 @@
 // AI Tutor mock UI — static responses, no real provider calls.
 // M3: Safe aggregate reminder card using IndexedDB getMemorySummary.
 
-import { Mic, MicOff } from "lucide-react";
+import { Mic, MicOff, Square, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/providers/AuthProvider";
 import {
@@ -196,7 +196,7 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
       `Mercy sửa đúng ${targetCopy.nameVi}; phần giải thích và mẹo học dùng tiếng Việt.`,
     inputLabel: (targetCopy) => `Câu ${targetCopy.nameVi} của bạn`,
     micInput: "Nói câu của bạn",
-    micListening: "Đang nghe...",
+    micListening: "Đang nghe giọng của bạn...",
     micUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
     micAriaStart: "Nói câu của bạn để nhập bằng giọng nói",
     micAriaStop: "Dừng nghe",
@@ -209,8 +209,8 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     loadingBody: "Mercy sẽ sửa đúng ngôn ngữ bạn chọn.",
     correctedLabel: "Câu đã sửa",
     ttsUnavailable: "Giọng đọc trình duyệt chưa khả dụng trên thiết bị này.",
-    ttsPlay: "🔊 Mercy đọc",
-    ttsStop: "⏹ Dừng",
+    ttsPlay: "Mercy đọc",
+    ttsStop: "Dừng",
     ttsAriaPlay: "Mercy đọc câu đã sửa bằng giọng trình duyệt",
     ttsAriaStop: "Dừng đọc",
     explanationLabel: "Giải thích",
@@ -233,7 +233,7 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
       `Mercy corrects the selected target language: ${targetCopy.nameEn}.`,
     inputLabel: (targetCopy) => `Your ${targetCopy.nameEn} sentence`,
     micInput: "Speak your sentence",
-    micListening: "Listening...",
+    micListening: "Listening to your voice...",
     micUnavailable: "Microphone unavailable in this browser. You can still type your sentence.",
     micAriaStart: "Speak your sentence for voice input",
     micAriaStop: "Stop listening",
@@ -246,8 +246,8 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     loadingBody: "Mercy will correct the language you selected.",
     correctedLabel: "Corrected",
     ttsUnavailable: "Browser voice playback is not supported on this device.",
-    ttsPlay: "🔊 Mercy reads",
-    ttsStop: "⏹ Stop",
+    ttsPlay: "Mercy reads",
+    ttsStop: "Stop",
     ttsAriaPlay: "Read corrected sentence with browser voice",
     ttsAriaStop: "Stop reading",
     explanationLabel: "Explanation",
@@ -979,6 +979,11 @@ export default function AiTutorPage() {
                   }`}
                   aria-label={tts.speaking ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay}
                 >
+                  {tts.speaking ? (
+                    <Square className="h-3.5 w-3.5" aria-hidden />
+                  ) : (
+                    <Volume2 className="h-3.5 w-3.5" aria-hidden />
+                  )}
                   {tts.speaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
                 </button>
               )}

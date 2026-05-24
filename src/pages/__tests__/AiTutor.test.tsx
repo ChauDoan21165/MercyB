@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import AiTutorPage from "../AiTutor";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
 const EMPTY_SUMMARY: MemorySummary = {
   totalCorrections: 0, practicedCount: 0, strongestTopic: "", strongestTopicCount: 0,
@@ -38,6 +39,30 @@ class MockSpeechSynthesisUtterance {
   }
 }
 
+class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike {
+  static last: MockSpeechRecognition | null = null;
+  continuous = false;
+  interimResults = false;
+  lang = "";
+  onstart: (() => void) | null = null;
+  onresult: SpeechRecognitionLike["onresult"] = null;
+  onerror: SpeechRecognitionLike["onerror"] = null;
+  onend: (() => void) | null = null;
+
+  constructor() {
+    super();
+    MockSpeechRecognition.last = this;
+  }
+
+  start() {
+    this.onstart?.();
+  }
+
+  stop() {
+    this.onend?.();
+  }
+}
+
 vi.mock("@/providers/AuthProvider", () => ({
   useAuth: vi.fn(() => ({ user: null, isLoading: false })),
 }));
@@ -48,6 +73,7 @@ vi.mock("@/lib/ai-tutor/learningMemory", () => ({
 
 beforeEach(() => {
   vi.clearAllMocks();
+  MockSpeechRecognition.last = null;
   window.history.pushState({}, "", "/ai-tutor");
   window.localStorage.setItem("mercyblade.lessonUiLang", "vi");
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
@@ -79,6 +105,22 @@ describe("AiTutor mock UI", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = vi.fn();
     render(<AiTutorPage />);
     expect(screen.getByRole("button", { name: /Nói câu của bạn/ })).toBeInTheDocument();
+  });
+
+  it("labels listening state as user voice input, not playback", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    expect(screen.queryByRole("button", { name: /Mercy đọc/ })).not.toBeInTheDocument();
+
+    const micButton = screen.getByRole("button", { name: /Nói câu của bạn/ });
+    await userEvent.click(micButton);
+
+    expect(screen.getByRole("button", { name: /Dừng nghe/ })).toHaveTextContent(
+      "Đang nghe giọng của bạn...",
+    );
+    expect(screen.queryByText("Đang nghe...")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Mercy đọc/ })).not.toBeInTheDocument();
   });
 
   it("keeps Vietnamese UI with French target copy after hydration", async () => {
