@@ -16,17 +16,17 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
   return (
     <section
       data-testid="ai-tutor-memory-card"
-      className="mx-auto mb-5 w-full max-w-[720px] rounded-[16px] border border-indigo-100 bg-white p-4 shadow-sm"
+      className="mx-auto mb-4 w-full max-w-3xl rounded-[14px] border border-indigo-100 bg-indigo-50/45 px-4 py-3 shadow-sm"
       style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
     >
-      <div className="text-xs font-black uppercase text-indigo-500">
-        Học tập gần đây · Recent Learning · {languageLabel}
-      </div>
-      <div className="mt-1.5 flex flex-wrap gap-2 text-xs">
-        <span className="font-bold text-slate-700" style={{ overflowWrap: "break-word", wordBreak: "normal" }}>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <div className="text-xs font-black uppercase text-indigo-500">
+          Học tập gần đây · {languageLabel}
+        </div>
+        <span className="text-xs font-bold text-slate-700" style={{ overflowWrap: "break-word", wordBreak: "normal" }}>
           {memory.totalCorrections} câu đã sửa
         </span>
-        <span className="font-medium text-slate-500">
+        <span className="text-xs font-medium text-slate-500">
           {memory.practicedCount} đã luyện tập
         </span>
       </div>

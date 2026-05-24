@@ -141,9 +141,10 @@ beforeEach(() => {
 });
 
 describe("AiTutor mock UI", () => {
-  it("renders the mock badge", () => {
+  it("renders the clean Teacher Mercy shell without a mock badge", () => {
     render(<AiTutorPage />);
-    expect(screen.getByText("Mock")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-shell")).toBeInTheDocument();
+    expect(screen.queryByText("Mock")).not.toBeInTheDocument();
   });
 
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {

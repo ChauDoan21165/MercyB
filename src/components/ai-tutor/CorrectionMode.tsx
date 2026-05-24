@@ -2,9 +2,8 @@
 // Input, result display, TTS, and practice flow.
 // Extracted from AiTutor.tsx for reuse across modes.
 
-import { Square, Volume2 } from "lucide-react";
-import type { TutorTarget, TutorTargetCopy, UiCopy } from "@/lib/ai-tutor/tutorUiCopy";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
+import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 
 type CorrectionResult = TutorTurn & {
@@ -41,8 +40,7 @@ type Props = {
   onTtsToggle: () => void;
   onPracticeSubmit: () => void;
   onClear: () => void;
-  targetCopy: TutorTargetCopy;
-  uiCopy: UiCopy;
+  tutorCopy: TutorCopy;
 };
 
 export default function CorrectionMode({
@@ -68,12 +66,12 @@ export default function CorrectionMode({
   onTtsToggle,
   onPracticeSubmit,
   onClear,
-  targetCopy,
-  uiCopy,
+  tutorCopy,
 }: Props) {
   const charCount = input.length;
   const isEmpty = !input.trim();
   const hasResult = Boolean(result && !loading);
+  const { ui } = tutorCopy;
 
   return (
     <div
@@ -84,9 +82,21 @@ export default function CorrectionMode({
     >
       <div className="min-w-0">
         <section className="rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="mb-4 rounded-[16px] border border-indigo-100 bg-indigo-50/50 px-4 py-3">
+            <div className="text-xs font-black uppercase text-indigo-600">
+              {ui.grammarModeLabel}
+            </div>
+            <h2 className="mt-1 text-xl font-black text-slate-900">
+              {ui.correctionTitle}
+            </h2>
+            <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+              {ui.emptyBody}
+            </p>
+          </div>
+
           <div className="mb-2 flex items-center justify-between gap-3">
             <label className="text-xs font-black uppercase text-slate-500">
-              {uiCopy.inputLabel(targetCopy)}
+              {ui.inputLabel}
             </label>
             <span className="shrink-0 text-[11px] font-medium text-slate-400">
               {charCount} / 500
@@ -98,8 +108,8 @@ export default function CorrectionMode({
             onChange={(e) => {
               if (e.target.value.length <= 500) setInput(e.target.value);
             }}
-            placeholder={targetCopy.placeholder}
-            rows={4}
+            placeholder={tutorCopy.placeholder}
+            rows={5}
             className="w-full min-w-0 resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
@@ -113,17 +123,17 @@ export default function CorrectionMode({
               kind="mic"
               supported={micSupported}
               active={micListening}
-              unavailableLabel={uiCopy.micUnavailable}
-              inactiveLabel={uiCopy.micInput}
-              activeLabel={uiCopy.micListening}
-              ariaStart={uiCopy.micAriaStart}
-              ariaStop={uiCopy.micAriaStop}
+              unavailableLabel={tutorCopy.micLabels.unavailable}
+              inactiveLabel={tutorCopy.micLabels.input}
+              activeLabel={tutorCopy.micLabels.listening}
+              ariaStart={tutorCopy.micLabels.ariaStart}
+              ariaStop={tutorCopy.micLabels.ariaStop}
               onToggle={onMicToggle}
               className="w-full"
               fallbackTestId="ai-tutor-mic-fallback"
             />
             <p className="w-full text-xs font-medium leading-5 text-slate-500">
-              {uiCopy.micHelper}
+              {tutorCopy.micLabels.helper}
             </p>
             <button
               type="button"
@@ -134,10 +144,10 @@ export default function CorrectionMode({
               {loading ? (
                 <span className="inline-flex items-center justify-center gap-2">
                   <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                  {uiCopy.submitting}
+                  {ui.submitting}
                 </span>
               ) : (
-                uiCopy.submit
+                ui.submit
               )}
             </button>
 
@@ -147,7 +157,7 @@ export default function CorrectionMode({
                 onClick={onClear}
                 className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
               >
-                {uiCopy.reset}
+                {ui.reset}
               </button>
             )}
           </div>
@@ -166,10 +176,10 @@ export default function CorrectionMode({
           <section className="mt-5 rounded-[18px] border border-dashed border-slate-200 bg-slate-50/50 p-6 text-center">
             <div className="text-3xl">✨</div>
             <div className="mt-2 text-sm font-black text-slate-600">
-              {uiCopy.emptyTitle}
+              {ui.emptyTitle}
             </div>
             <div className="mt-1 text-xs font-medium text-slate-400">
-              {uiCopy.emptyBody(targetCopy)}
+              {ui.emptyBody}
             </div>
           </section>
         )}
@@ -179,10 +189,10 @@ export default function CorrectionMode({
           <section className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-6 text-center">
             <div className="mx-auto h-8 w-8 animate-spin rounded-full border-[3px] border-indigo-200 border-t-indigo-500" />
             <div className="mt-3 text-sm font-black text-indigo-700">
-              {uiCopy.loadingTitle}
+              {ui.loadingTitle}
             </div>
             <div className="mt-1 text-xs font-medium text-indigo-400">
-              {uiCopy.loadingBody}
+              {ui.loadingBody}
             </div>
           </section>
         )}
@@ -193,53 +203,47 @@ export default function CorrectionMode({
         <section className="grid min-w-0 gap-4">
           <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
             <div className="mb-2 text-xs font-black uppercase text-emerald-600">
-              {uiCopy.correctedLabel}
+              {ui.correctedLabel}
             </div>
             <div className="text-xl font-black leading-snug text-emerald-900">
               {result.correctedText}
             </div>
             {!ttsSupported && (
               <div className="mt-2 text-[11px] text-slate-400">
-                🔊 {uiCopy.ttsUnavailable}
+                🔊 {ui.ttsUnavailable}
               </div>
             )}
             {ttsSupported && (
-              <button
-                type="button"
-                onClick={onTtsToggle}
-                disabled={ttsPreparing}
-                className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
-                  ttsSpeaking
-                    ? "border-red-300 bg-red-50 text-red-700"
-                    : "border-emerald-300 bg-white text-emerald-700 hover:bg-emerald-50"
-                }`}
-                aria-label={ttsSpeaking ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay}
-              >
-                {ttsPreparing ? (
-                  <span className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-emerald-200 border-t-emerald-600" />
-                ) : ttsSpeaking ? (
-                  <Square className="h-3.5 w-3.5" aria-hidden />
-                ) : (
-                  <Volume2 className="h-3.5 w-3.5" aria-hidden />
-                )}
-                {ttsPreparing ? uiCopy.ttsPreparing : ttsSpeaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
-              </button>
+              <TeacherMercyVoiceControls
+                kind="speaker"
+                supported={ttsSupported}
+                active={ttsSpeaking}
+                preparing={ttsPreparing}
+                unavailableLabel={ui.ttsUnavailable}
+                inactiveLabel={ui.ttsPlay}
+                activeLabel={ui.ttsStop}
+                preparingLabel={ui.ttsPreparing}
+                ariaStart={ui.ttsAriaPlay}
+                ariaStop={ui.ttsAriaStop}
+                onToggle={onTtsToggle}
+                className="mt-3"
+              />
             )}
             {ttsBrowserFallback && (
               <div className="mt-2 text-[11px] font-semibold text-amber-600">
-                {uiCopy.ttsBrowserFallback}
+                {ui.ttsBrowserFallback}
               </div>
             )}
             {ttsVoiceSource && (
               <div className={`mt-2 text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
-                {ttsVoiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
+                {ttsVoiceSource === "mercy" ? ui.ttsMercyVoiceLabel : ui.ttsDeviceVoiceFallbackLabel}
               </div>
             )}
           </div>
 
           <div className="rounded-[16px] border border-slate-200 bg-white p-5">
             <div className="mb-2 text-xs font-black uppercase text-slate-500">
-              {uiCopy.explanationLabel}
+              {ui.explanationLabel}
             </div>
             <p className="text-sm font-semibold leading-6 text-slate-700">
               {result.explanation}
@@ -248,7 +252,7 @@ export default function CorrectionMode({
 
           <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/50 p-5">
             <div className="mb-2 text-xs font-black uppercase text-indigo-500">
-              {uiCopy.grammarTipLabel}
+              {ui.grammarTipLabel}
             </div>
             <p className="text-sm font-semibold leading-6 text-indigo-800">
               {result.grammarTip}
@@ -259,7 +263,7 @@ export default function CorrectionMode({
           {!practiceFeedback && (
             <div className="rounded-[18px] border border-violet-200 bg-violet-50/50 p-5">
               <div className="mb-2 text-xs font-black uppercase text-violet-600">
-                {uiCopy.practiceLabel}
+                {ui.practiceLabel}
               </div>
               <p className="text-sm font-semibold leading-6 text-slate-700">
                 {result.practicePrompt}
@@ -267,7 +271,7 @@ export default function CorrectionMode({
               <textarea
                 value={practiceAnswer}
                 onChange={(e) => setPracticeAnswer(e.target.value)}
-                placeholder={uiCopy.practicePlaceholder}
+                placeholder={ui.practicePlaceholder}
                 rows={3}
                 className="mt-3 w-full min-w-0 resize-none rounded-[12px] border border-violet-200 bg-white p-3 text-[14px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-violet-400 focus:outline-none"
               />
@@ -280,10 +284,10 @@ export default function CorrectionMode({
                 {practiceLoading ? (
                   <span className="inline-flex items-center justify-center gap-2">
                     <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                    {uiCopy.practiceSubmitting}
+                    {ui.practiceSubmitting}
                   </span>
                 ) : (
-                  uiCopy.practiceSubmit
+                  ui.practiceSubmit
                 )}
               </button>
             </div>
@@ -293,17 +297,17 @@ export default function CorrectionMode({
           {practiceFeedback && (
             <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
               <div className="mb-2 text-xs font-black uppercase text-emerald-600">
-                {uiCopy.feedbackLabel}
+                {ui.feedbackLabel}
               </div>
               <p className="text-sm font-bold leading-6 text-emerald-800">
                 {practiceFeedback.encouragement}
               </p>
               <div className="mt-3 rounded-[12px] bg-white/70 p-3">
-                <div className="text-xs font-black uppercase text-slate-500">{uiCopy.tipLabel}</div>
+                <div className="text-xs font-black uppercase text-slate-500">{ui.tipLabel}</div>
                 <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.tip}</p>
               </div>
               <div className="mt-3 rounded-[12px] bg-white/70 p-3">
-                <div className="text-xs font-black uppercase text-slate-500">{uiCopy.nextStepLabel}</div>
+                <div className="text-xs font-black uppercase text-slate-500">{ui.nextStepLabel}</div>
                 <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.nextStep}</p>
               </div>
               <button
@@ -311,7 +315,7 @@ export default function CorrectionMode({
                 onClick={onClear}
                 className="mt-4 min-h-[48px] w-full rounded-full border border-emerald-300 bg-white px-4 py-3 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50"
               >
-                {uiCopy.tryAnother}
+                {ui.tryAnother}
               </button>
             </div>
           )}
@@ -322,7 +326,7 @@ export default function CorrectionMode({
               onClick={onClear}
               className="min-h-[48px] rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
             >
-              {uiCopy.tryAnother}
+              {ui.tryAnother}
             </button>
           )}
         </section>

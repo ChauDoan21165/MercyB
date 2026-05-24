@@ -4,7 +4,7 @@ import {
   type TutorLanguageCode,
 } from "@/lib/tutor/languageRegistry";
 
-export type TutorProductMode = "correction" | "conversation" | "speak" | "grammar" | "logic";
+export type TutorProductMode = "journey" | "correction" | "conversation" | "speak" | "grammar" | "logic";
 
 export type TutorProductConfig = {
   productId: string;
@@ -29,7 +29,7 @@ export const aiTutor: TutorProductConfig = {
   defaultTargetLanguage: "en",
   explainLanguageStrategy: "ui",
   tone: "general",
-  modes: ["correction", "conversation"],
+  modes: ["journey", "grammar", "speak", "logic"],
   memoryEnabled: true,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -45,6 +45,21 @@ export const viKidsEnglish: TutorProductConfig = {
   explainLanguageStrategy: "vi-first",
   tone: "kids-safe",
   modes: ["conversation", "grammar", "speak", "logic"],
+  memoryEnabled: true,
+  cloudVoiceEnabled: true,
+  rawAudioAllowed: false,
+  transcriptStorageAllowed: false,
+};
+
+export const mercyKids: TutorProductConfig = {
+  productId: "mercyKids",
+  title: "Teacher Mercy Kids",
+  subtitle: "Mercy giúp bé luyện câu ngắn, nghe lại, và học từng bước bằng lời nhắc ấm áp.",
+  allowedTargetLanguages: ["en", "vi"],
+  defaultTargetLanguage: "en",
+  explainLanguageStrategy: "vi-first",
+  tone: "kids-safe",
+  modes: ["journey", "grammar", "speak"],
   memoryEnabled: true,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -83,6 +98,7 @@ export const toeicPractice: TutorProductConfig = {
 
 export const TUTOR_PRODUCT_CONFIGS = {
   aiTutor,
+  mercyKids,
   viKidsEnglish,
   ieltsSpeaking,
   toeicPractice,

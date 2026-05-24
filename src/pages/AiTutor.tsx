@@ -14,8 +14,6 @@ import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import {
-  TARGET_COPY,
-  UI_COPY,
   MOCK_RESULTS_BY_TARGET,
   buildInputAwareCorrection,
   getTutorTargetFromSearch,
@@ -23,14 +21,9 @@ import {
   normalizeSpokenText,
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
-import { getTutorCopy } from "@/lib/tutor/tutorCopy";
+import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
-import type {
-  TutorTarget,
-  ExplainLanguage,
-  TutorTargetCopy,
-  UiCopy,
-} from "@/lib/ai-tutor/tutorUiCopy";
+import type { ExplainLanguage } from "@/lib/ai-tutor/tutorUiCopy";
 import {
   buildConversationTurn,
   buildCorrectionTurn,
@@ -66,12 +59,24 @@ type PracticeFeedback = {
   nextStep: string;
 };
 
-type TutorMode = Extract<TutorProductMode, "conversation" | "grammar" | "speak" | "logic">;
+type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
 
-const AI_TUTOR_MODES: TutorMode[] = ["conversation", "grammar", "speak", "logic"];
+const AI_TUTOR_MODES: TutorMode[] = aiTutorConfig.modes.filter(
+  (mode): mode is TutorMode => mode === "journey" || mode === "grammar" || mode === "speak" || mode === "logic",
+);
 
 const MOCK_DELAY_MS = 600;
 const TUTOR_PRODUCT: TutorProduct = "ai-tutor";
+const MEMORY_TOPIC_BY_TARGET: Record<TutorTarget, string> = {
+  en: "english-correction",
+  fr: "french-correction",
+  zh: "chinese-correction",
+  de: "german-correction",
+  ja: "japanese-correction",
+  ko: "korean-correction",
+  es: "spanish-correction",
+  vi: "vietnamese-correction",
+};
 
 function createOpeningMessage(target: TutorTarget, explainLanguage: ExplainLanguage): MercyConversationMessage {
   const tutorCopy = getTutorCopy(target, explainLanguage);
@@ -186,18 +191,18 @@ export default function AiTutorPage() {
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
 
-  const targetCopy: TutorTargetCopy = TARGET_COPY[target];
-  const uiCopy: UiCopy = UI_COPY[explainLanguage];
+  const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
+  const aiTutorTabLabels: Record<TutorMode, string> = {
+    journey: tutorCopy.ui.journeyModeLabel,
+    grammar: tutorCopy.ui.grammarModeLabel,
+    speak: tutorCopy.ui.speakModeLabel,
+    logic: tutorCopy.ui.logicModeLabel,
+  };
   const modeTabs = AI_TUTOR_MODES.map((mode) => ({
     id: mode,
-    label: mode === "conversation"
-      ? "Journey"
-      : mode === "grammar"
-        ? "Grammar"
-        : mode === "speak"
-          ? "Speak"
-          : "Logic",
+    label: aiTutorTabLabels[mode],
   }));
+  const isCorrectionMode = mode === "grammar";
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
@@ -327,7 +332,7 @@ export default function AiTutorPage() {
     setLastSavedId(turn.id);
     putCorrection({
       id: turn.id,
-      topic: next.grammarTip[explainLanguage].slice(0, 60),
+      topic: MEMORY_TOPIC_BY_TARGET[target],
       cefr: "B1", createdAt: Date.now(), practiced: false,
       tutorProduct: TUTOR_PRODUCT,
       targetLanguage: target,
@@ -403,17 +408,16 @@ export default function AiTutorPage() {
       greetingTestId="ai-tutor-greeting"
       floating={isFloatingShell}
       greetingName={greetingName}
-      title={explainLanguage === "en" ? targetCopy.title : uiCopy.title(targetCopy, target)}
-      subtitle={uiCopy.subtitle(targetCopy)}
-      helper={uiCopy.helper(targetCopy)}
-      eyebrow={targetCopy.eyebrow}
-      badge="Mock"
+      title={tutorCopy.ui.title}
+      subtitle={tutorCopy.ui.subtitle}
+      helper={tutorCopy.ui.helper}
+      eyebrow={tutorCopy.ui.eyebrow}
       modeTabs={modeTabs}
       activeMode={mode}
       onModeChange={setMode}
       memorySlot={aiTutorConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
-      footer={`${uiCopy.footer} ${getSafetyLabel(aiTutorConfig)}.`}
+      footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
       {mode === "grammar" ? (
         <CorrectionMode
@@ -443,13 +447,12 @@ export default function AiTutorPage() {
             if (tts.speaking) {
               tts.stop();
             } else {
-              void tts.speak(text, ttsLang, target, { rawUserInput: input });
+              void tts.speak(text, ttsLang, target);
             }
           }}
           onPracticeSubmit={handlePracticeSubmit}
           onClear={handleClear}
-          targetCopy={targetCopy}
-          uiCopy={uiCopy}
+          tutorCopy={tutorCopy}
         />
       ) : (
         <ConversationMode
@@ -465,11 +468,11 @@ export default function AiTutorPage() {
           ttsBrowserFallback={tts.usingBrowserFallback}
           ttsVoiceSource={tts.voiceSource}
           speakingMessageId={speakingMessageId}
+          mode={mode}
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}
           onSpeak={handleConversationSpeak}
-          targetCopy={targetCopy}
-          uiCopy={uiCopy}
+          tutorCopy={tutorCopy}
         />
       )}
     </TeacherMercyLearningShell>
