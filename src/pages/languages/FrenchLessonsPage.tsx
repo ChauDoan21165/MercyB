@@ -117,7 +117,7 @@ export default function FrenchLessonsPage() {
         </p>
 
         {/* AI Tutor CTA */}
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="fr" />
       </header>
 
       <nav

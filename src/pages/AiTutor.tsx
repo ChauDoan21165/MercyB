@@ -27,7 +27,7 @@ type PracticeFeedback = {
   nextStep: string;
 };
 
-type TutorTarget = "en" | "fr" | "zh";
+type TutorTarget = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
 
 type TutorTargetCopy = {
   eyebrow: string;
@@ -57,7 +57,7 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     eyebrow: "AI Tutor tiếng Pháp",
     title: "Teacher Mercy · French Tutor",
     subtitle: "Luyện tiếng Pháp với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "Pratique le français avec Mercy — correction, explication, et révision.",
+    helper: "Write a French sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
     label: "French practice",
     voiceLabel: "Speak French",
@@ -68,12 +68,67 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     eyebrow: "AI Tutor tiếng Trung",
     title: "Teacher Mercy · Chinese Tutor",
     subtitle: "Luyện tiếng Trung với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "练习中文 — Mercy helps correct, explain, and review your sentence.",
+    helper: "Write a Chinese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
     placeholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
     label: "Chinese practice",
     voiceLabel: "Speak Chinese",
     voiceFallback: "Microphone unavailable for Chinese practice",
     inputLabel: "Your Chinese sentence",
+  },
+  de: {
+    eyebrow: "AI Tutor tiếng Đức",
+    title: "Teacher Mercy · German Tutor",
+    subtitle: "Luyện tiếng Đức với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
+    helper: "Write a German sentence — Mercy corrects it, explains it, and gives follow-up practice.",
+    placeholder: 'gõ câu tiếng Đức của bạn ở đây, ví dụ: "Ich gehe gestern zum Markt"',
+    label: "German practice",
+    voiceLabel: "Speak German",
+    voiceFallback: "Microphone unavailable for German practice",
+    inputLabel: "Your German sentence",
+  },
+  ja: {
+    eyebrow: "AI Tutor tiếng Nhật",
+    title: "Teacher Mercy · Japanese Tutor",
+    subtitle: "Luyện tiếng Nhật với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
+    helper: "Write a Japanese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
+    placeholder: 'gõ câu tiếng Nhật của bạn ở đây, ví dụ: "私は昨日店に行く"',
+    label: "Japanese practice",
+    voiceLabel: "Speak Japanese",
+    voiceFallback: "Microphone unavailable for Japanese practice",
+    inputLabel: "Your Japanese sentence",
+  },
+  ko: {
+    eyebrow: "AI Tutor tiếng Hàn",
+    title: "Teacher Mercy · Korean Tutor",
+    subtitle: "Luyện tiếng Hàn với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
+    helper: "Write a Korean sentence — Mercy corrects it, explains it, and gives follow-up practice.",
+    placeholder: 'gõ câu tiếng Hàn của bạn ở đây, ví dụ: "저는 어제 시장에 가요"',
+    label: "Korean practice",
+    voiceLabel: "Speak Korean",
+    voiceFallback: "Microphone unavailable for Korean practice",
+    inputLabel: "Your Korean sentence",
+  },
+  es: {
+    eyebrow: "AI Tutor tiếng Tây Ban Nha",
+    title: "Teacher Mercy · Spanish Tutor",
+    subtitle: "Practice Spanish with Mercy: correction, explanation, memory, and review.",
+    helper: "Write a Spanish sentence — Mercy corrects it, explains it, and gives follow-up practice.",
+    placeholder: 'type your Spanish sentence here, for example: "Yo fui al mercado ayer"',
+    label: "Spanish practice",
+    voiceLabel: "Speak Spanish",
+    voiceFallback: "Microphone unavailable for Spanish practice",
+    inputLabel: "Your Spanish sentence",
+  },
+  vi: {
+    eyebrow: "AI Tutor tiếng Việt",
+    title: "Teacher Mercy · Vietnamese Tutor",
+    subtitle: "Practice Vietnamese with Mercy: correction, explanation, memory, and review.",
+    helper: "Write a Vietnamese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
+    placeholder: 'type your Vietnamese sentence here, for example: "Hôm qua tôi đi chợ"',
+    label: "Vietnamese practice",
+    voiceLabel: "Speak Vietnamese",
+    voiceFallback: "Microphone unavailable for Vietnamese practice",
+    inputLabel: "Your Vietnamese sentence",
   },
 };
 
@@ -126,7 +181,34 @@ function getTutorTargetFromSearch(search: string): TutorTarget {
   const value = new URLSearchParams(search).get("target")?.toLowerCase();
   if (value === "fr" || value === "french") return "fr";
   if (value === "zh" || value === "chinese" || value === "cn") return "zh";
+  if (value === "de" || value === "german") return "de";
+  if (value === "ja" || value === "japanese" || value === "jp") return "ja";
+  if (value === "ko" || value === "korean" || value === "kr") return "ko";
+  if (value === "es" || value === "spanish") return "es";
+  if (value === "vi" || value === "vietnamese") return "vi";
   return "en";
+}
+
+function getTutorSpeechLang(target: TutorTarget): string {
+  switch (target) {
+    case "fr":
+      return "fr-FR";
+    case "zh":
+      return "zh-CN";
+    case "de":
+      return "de-DE";
+    case "ja":
+      return "ja-JP";
+    case "ko":
+      return "ko-KR";
+    case "es":
+      return "es-ES";
+    case "vi":
+      return "vi-VN";
+    case "en":
+    default:
+      return "en-US";
+  }
 }
 
 export default function AiTutorPage() {
@@ -136,7 +218,11 @@ export default function AiTutorPage() {
   const { user } = useAuth();
 
   // ── Browser speech-to-text + text-to-speech ──────────────────────
-  const stt = useBrowserStt("en-US");
+  const [target, setTarget] = useState<TutorTarget>(() =>
+    typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search),
+  );
+  const speechLang = getTutorSpeechLang(target);
+  const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
 
   const nickname: string | undefined =
@@ -159,9 +245,6 @@ export default function AiTutorPage() {
   const [memory, setMemory] = useState<MemorySummary | null>(null);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
-  const [target, setTarget] = useState<TutorTarget>(() =>
-    typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search),
-  );
   // speechSupported is now derived from stt.supported (line ~143)
 
   const targetCopy = TARGET_COPY[target];
@@ -615,7 +698,7 @@ export default function AiTutorPage() {
               {tts.supported && (
                 <button
                   type="button"
-                  onClick={() => (tts.speaking ? tts.stop() : tts.speak(result.corrected, target === "fr" ? "fr-FR" : target === "zh" ? "zh-CN" : "en-US"))}
+                  onClick={() => (tts.speaking ? tts.stop() : tts.speak(result.corrected, speechLang))}
                   className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
                     tts.speaking
                       ? "border-red-300 bg-red-50 text-red-700"

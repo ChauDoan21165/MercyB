@@ -121,7 +121,7 @@ export default function SpanishLessonsPage() {
           </Link>
         </p>
 
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="es" />
       </header>
 
       <nav aria-label="Choose a level" className="mb-4 flex flex-wrap gap-2">

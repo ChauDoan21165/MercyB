@@ -129,7 +129,7 @@ export default function GermanLessonsPage() {
           </Link>
         </p>
 
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="de" />
       </header>
 
       <nav

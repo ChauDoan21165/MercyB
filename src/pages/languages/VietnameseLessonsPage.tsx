@@ -130,7 +130,7 @@ export default function VietnameseLessonsPage() {
           </Link>
         </p>
 
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="vi" />
       </header>
 
       {error ? (

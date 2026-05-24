@@ -126,7 +126,7 @@ export default function ChineseLessonsPage() {
         </p>
 
         {/* AI Tutor CTA */}
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="zh" />
       </header>
 
       <nav
