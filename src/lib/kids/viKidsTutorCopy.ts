@@ -1,17 +1,16 @@
 import { viKidsEnglish, type TutorProductMode } from "@/lib/tutor/productConfigs";
 
-export type ViKidsTutorMode = Extract<TutorProductMode, "conversation" | "grammar" | "speak" | "logic">;
+export type ViKidsTutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak">;
 
 const VI_KIDS_TUTOR_TAB_LABELS: Record<ViKidsTutorMode, string> = {
-  conversation: "Journey",
+  journey: "Journey",
   grammar: "Grammar",
   speak: "Speak",
-  logic: "Logic",
 };
 
 export const VI_KIDS_TUTOR_TABS: Array<{ id: ViKidsTutorMode; label: string }> = viKidsEnglish.modes
   .filter((mode): mode is ViKidsTutorMode =>
-    mode === "conversation" || mode === "grammar" || mode === "speak" || mode === "logic",
+    mode === "journey" || mode === "grammar" || mode === "speak",
   )
   .map((mode) => ({ id: mode, label: VI_KIDS_TUTOR_TAB_LABELS[mode] }));
 

@@ -17,7 +17,7 @@ const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
 const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
 
 export default function ViKidsEnglishTutor() {
-  const [mode, setMode] = useState<ViKidsTutorMode>("conversation");
+  const [mode, setMode] = useState<ViKidsTutorMode>("journey");
   const [answer, setAnswer] = useState("");
   const [memoryLoaded, setMemoryLoaded] = useState(false);
   const [memory, setMemory] = useState<MemorySummary | null>(null);
@@ -75,11 +75,11 @@ export default function ViKidsEnglishTutor() {
             English practice · Giải thích tiếng Việt
           </div>
           <h2 className="mt-1 text-xl font-black text-slate-900">
-            {mode === "conversation" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
+            {mode === "journey" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
           </h2>
         </div>
 
-        {mode === "conversation" && (
+        {mode === "journey" && (
           <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-4">
             <p className="text-sm font-bold leading-6 text-slate-700">
               {VI_KIDS_TUTOR_COPY.conversationQuestion}
@@ -147,14 +147,6 @@ export default function ViKidsEnglishTutor() {
                 onToggle={handleMicToggle}
               />
             </div>
-          </div>
-        )}
-
-        {mode === "logic" && (
-          <div className="rounded-[16px] border border-amber-200 bg-amber-50/60 p-4">
-            <p className="text-sm font-bold leading-6 text-amber-900">
-              {VI_KIDS_TUTOR_COPY.logicTask}
-            </p>
           </div>
         )}
 

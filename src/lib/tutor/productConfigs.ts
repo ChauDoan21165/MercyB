@@ -4,7 +4,18 @@ import {
   type TutorLanguageCode,
 } from "@/lib/tutor/languageRegistry";
 
-export type TutorProductMode = "correction" | "conversation" | "speak" | "grammar" | "logic";
+export type TutorProductMode =
+  | "journey"
+  | "grammar"
+  | "speak"
+  | "logic"
+  | "correction"
+  | "conversation";
+
+export type TutorMemoryScope =
+  | "user-target-language"
+  | "product-target-language"
+  | "product-session";
 
 export type TutorProductConfig = {
   productId: string;
@@ -12,9 +23,10 @@ export type TutorProductConfig = {
   subtitle: string;
   allowedTargetLanguages: TutorLanguageCode[];
   defaultTargetLanguage: TutorLanguageCode;
-  explainLanguageStrategy: "ui" | "vi-first" | "target";
-  tone: "general" | "kids-safe" | "exam" | "business";
+  explainLanguageStrategy: "multilingual" | "vi-first" | "target";
+  tone: "general" | "kids-safe" | "exam" | "business-exam";
   modes: TutorProductMode[];
+  memoryScope: TutorMemoryScope;
   memoryEnabled: boolean;
   cloudVoiceEnabled: boolean;
   rawAudioAllowed: false;
@@ -27,9 +39,10 @@ export const aiTutor: TutorProductConfig = {
   subtitle: "Sửa câu bằng AI Tutor, ghi nhớ lỗi hay gặp, rồi luyện lại với Mercy.",
   allowedTargetLanguages: [...TUTOR_LANGUAGE_CODES],
   defaultTargetLanguage: "en",
-  explainLanguageStrategy: "ui",
+  explainLanguageStrategy: "multilingual",
   tone: "general",
-  modes: ["correction", "conversation"],
+  modes: ["journey", "grammar", "speak", "logic", "correction", "conversation"],
+  memoryScope: "user-target-language",
   memoryEnabled: true,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -44,7 +57,8 @@ export const viKidsEnglish: TutorProductConfig = {
   defaultTargetLanguage: "en",
   explainLanguageStrategy: "vi-first",
   tone: "kids-safe",
-  modes: ["conversation", "grammar", "speak", "logic"],
+  modes: ["journey", "grammar", "speak"],
+  memoryScope: "product-target-language",
   memoryEnabled: true,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -57,9 +71,10 @@ export const ieltsSpeaking: TutorProductConfig = {
   subtitle: "Exam-style speaking practice with clear criteria and concise feedback.",
   allowedTargetLanguages: ["en"],
   defaultTargetLanguage: "en",
-  explainLanguageStrategy: "vi-first",
+  explainLanguageStrategy: "target",
   tone: "exam",
   modes: ["speak", "conversation", "correction"],
+  memoryScope: "product-session",
   memoryEnabled: false,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -72,9 +87,10 @@ export const toeicPractice: TutorProductConfig = {
   subtitle: "Focused TOEIC practice for workplace English and test readiness.",
   allowedTargetLanguages: ["en"],
   defaultTargetLanguage: "en",
-  explainLanguageStrategy: "vi-first",
-  tone: "exam",
+  explainLanguageStrategy: "target",
+  tone: "business-exam",
   modes: ["grammar", "conversation", "correction"],
+  memoryScope: "product-session",
   memoryEnabled: false,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -90,8 +106,8 @@ export const TUTOR_PRODUCT_CONFIGS = {
 
 export type TutorProductId = keyof typeof TUTOR_PRODUCT_CONFIGS;
 
-export function getTutorProductConfig(productId: TutorProductId): TutorProductConfig {
-  return TUTOR_PRODUCT_CONFIGS[productId];
+export function getTutorProductConfig(productId: string): TutorProductConfig {
+  return TUTOR_PRODUCT_CONFIGS[productId as TutorProductId] ?? aiTutor;
 }
 
 export function isTargetLanguageAllowed(

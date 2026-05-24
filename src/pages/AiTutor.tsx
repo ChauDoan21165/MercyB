@@ -66,9 +66,16 @@ type PracticeFeedback = {
   nextStep: string;
 };
 
-type TutorMode = Extract<TutorProductMode, "conversation" | "grammar" | "speak" | "logic">;
+type TutorMode = TutorProductMode;
 
-const AI_TUTOR_MODES: TutorMode[] = ["conversation", "grammar", "speak", "logic"];
+const AI_TUTOR_TAB_LABELS: Record<TutorMode, string> = {
+  journey: "Journey",
+  grammar: "Grammar",
+  speak: "Speak",
+  logic: "Logic",
+  correction: "Correct one sentence",
+  conversation: "Conversation with Mercy",
+};
 
 const MOCK_DELAY_MS = 600;
 const TUTOR_PRODUCT: TutorProduct = "ai-tutor";
@@ -151,7 +158,9 @@ export default function AiTutorPage() {
     (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
   const greetingName = (nickname ?? "").trim() || undefined;
 
-  const [mode, setMode] = useState<TutorMode>("grammar");
+  const [mode, setMode] = useState<TutorMode>(
+    aiTutorConfig.modes.includes("grammar") ? "grammar" : aiTutorConfig.modes[0],
+  );
   const [input, setInput] = useState("");
   const [conversationInput, setConversationInput] = useState("");
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
@@ -188,16 +197,11 @@ export default function AiTutorPage() {
 
   const targetCopy: TutorTargetCopy = TARGET_COPY[target];
   const uiCopy: UiCopy = UI_COPY[explainLanguage];
-  const modeTabs = AI_TUTOR_MODES.map((mode) => ({
+  const modeTabs = aiTutorConfig.modes.map((mode) => ({
     id: mode,
-    label: mode === "conversation"
-      ? "Journey"
-      : mode === "grammar"
-        ? "Grammar"
-        : mode === "speak"
-          ? "Speak"
-          : "Logic",
+    label: AI_TUTOR_TAB_LABELS[mode],
   }));
+  const isCorrectionMode = mode === "grammar" || mode === "correction";
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
@@ -209,7 +213,7 @@ export default function AiTutorPage() {
       wasListeningRef.current = true;
       if (transcript) {
         const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
-        if (mode !== "grammar") setConversationInput(next);
+        if (!isCorrectionMode) setConversationInput(next);
         else setInput(next);
       }
       return;
@@ -219,14 +223,14 @@ export default function AiTutorPage() {
       if (!transcript || transcript === lastCommittedSttRef.current) return;
       lastCommittedSttRef.current = transcript;
       const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
-      if (mode !== "grammar") setConversationInput(next);
+      if (!isCorrectionMode) setConversationInput(next);
       else setInput(next);
     }
-  }, [mode, stt.listening, stt.transcript]);
+  }, [isCorrectionMode, stt.listening, stt.transcript]);
 
   const handleMicToggle = () => {
     if (stt.listening) { stt.stop(); return; }
-    sttBaseInputRef.current = mode !== "grammar" ? conversationInput : input;
+    sttBaseInputRef.current = !isCorrectionMode ? conversationInput : input;
     lastCommittedSttRef.current = "";
     stt.start();
   };
@@ -415,7 +419,7 @@ export default function AiTutorPage() {
       reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={`${uiCopy.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
-      {mode === "grammar" ? (
+      {isCorrectionMode ? (
         <CorrectionMode
           input={input}
           setInput={setInput}

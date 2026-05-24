@@ -58,7 +58,7 @@ describe("ViKidsEnglishTutor", () => {
     expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Grammar" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Logic" })).not.toBeInTheDocument();
     expect(screen.getByText("Kids-safe practice")).toBeInTheDocument();
   });
 
@@ -77,5 +77,6 @@ describe("ViKidsEnglishTutor", () => {
 
     expect(screen.queryByRole("button", { name: "Correction" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Correct one sentence" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Logic" })).not.toBeInTheDocument();
   });
 });
