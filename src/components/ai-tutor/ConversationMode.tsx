@@ -57,6 +57,7 @@ export default function ConversationMode({
 }: Props) {
   const isEmpty = !input.trim();
   const { ui } = tutorCopy;
+  const allowTts = mode !== "logic";
   const modeCopy = {
     journey: {
       eyebrow: ui.conversationEyebrow,
@@ -156,7 +157,7 @@ export default function ConversationMode({
                         {message.nextQuestion}
                       </p>
                     )}
-                    {ttsSupported ? (
+                    {allowTts && ttsSupported ? (
                       <button
                         type="button"
                         onClick={() => onSpeak(message)}
@@ -177,10 +178,10 @@ export default function ConversationMode({
                         )}
                         {isPreparingVoice ? ui.ttsPreparing : isSpeakingVoice ? ui.ttsStop : ui.ttsPlay}
                       </button>
-                    ) : (
+                    ) : allowTts ? (
                       <div className="text-[11px] font-medium text-slate-400">{ui.ttsUnavailable}</div>
-                    )}
-                    {isActiveVoice && ttsVoiceSource && (
+                    ) : null}
+                    {allowTts && isActiveVoice && ttsVoiceSource && (
                       <div className={`text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
                         {ttsVoiceSource === "mercy" ? ui.ttsMercyVoiceLabel : ui.ttsDeviceVoiceFallbackLabel}
                       </div>
