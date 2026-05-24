@@ -1,44 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import ViKidsEnglishTutor from "../ViKidsEnglishTutor";
-
-const { fetchCloudTtsUrl } = vi.hoisted(() => ({
-  fetchCloudTtsUrl: vi.fn(async () => null),
-}));
-
-const { getMemorySummary } = vi.hoisted(() => ({
-  getMemorySummary: vi.fn(async () => ({
-    tutorProduct: "vi-kids-english",
-    targetLanguage: "en",
-    memoryKey: "vi-kids-english:en",
-    strengths: [],
-    needsReview: [],
-    commonMistakePatterns: [],
-    nextRecommendedFocus: "",
-    confidenceTrend: "not-enough-data",
-    updatedAt: null,
-    totalCorrections: 0,
-    practicedCount: 0,
-    strongestTopic: "",
-    strongestTopicCount: 0,
-    topicNeedingReview: "",
-    topicNeedingReviewCount: 0,
-    lastPracticedTopic: "",
-    lastPracticedAt: null,
-    suggestedNextFocus: "",
-    topicCounts: {},
-    unpracticedCorrectionIds: [],
-  })),
-}));
-
-vi.mock("@/lib/mercyVoice", () => ({
-  fetchCloudTtsUrl,
-}));
-
-vi.mock("@/lib/ai-tutor/learningMemory", () => ({
-  getMemorySummary,
-}));
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -47,35 +10,41 @@ beforeEach(() => {
 });
 
 describe("ViKidsEnglishTutor", () => {
-  it("uses the shared Teacher Mercy shell with Việt Kids English copy", async () => {
+  it("renders the two-column picture + speak layout", () => {
     render(<ViKidsEnglishTutor />);
-
-    expect(screen.getByTestId("vi-kids-english-tutor")).toBeInTheDocument();
-    expect(screen.getByTestId("teacher-mercy-avatar")).toHaveAttribute("src", "/teacher-mercy.webp");
-    expect(screen.getByRole("heading", { name: "Teacher Mercy · English for Việt Kids" })).toBeInTheDocument();
-    expect(screen.getByText(/Giải thích tiếng Việt/)).toBeInTheDocument();
-    await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("vi-kids-english", "en"));
-    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Grammar" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
-    expect(screen.getByText("Kids-safe practice")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Mercy Kids" })).toBeInTheDocument();
+    expect(screen.getByText(/Chọn hình rồi nói với Mercy/)).toBeInTheDocument();
+    expect(screen.getByText("1. Chọn hình")).toBeInTheDocument();
+    expect(screen.getByText("2. Bấm để nói")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Chọn quả táo/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Chọn con chó/ })).toBeInTheDocument();
+    expect(screen.getByText(/Kids-safe/)).toBeInTheDocument();
   });
 
-  it("keeps English-only practice with Vietnamese-first explanation", async () => {
+  it("shows the speak guidance before a picture is picked", () => {
     render(<ViKidsEnglishTutor />);
-
-    await userEvent.click(screen.getByRole("button", { name: "Grammar" }));
-
-    expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
-    expect(screen.getByText(/Với she\/he\/it/)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/She go to school every day/)).toBeInTheDocument();
+    expect(screen.getByText(/Chọn một hình bên trái/)).toBeInTheDocument();
   });
 
-  it("does not render disabled product modes", () => {
+  it("enables the mic button after picking a picture", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = class {} as unknown as new () => SpeechRecognition;
     render(<ViKidsEnglishTutor />);
+    await userEvent.click(screen.getByRole("button", { name: /Chọn quả táo/ }));
+    expect(screen.getByText("apple")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Bấm để nói với Mercy/ })).toBeInTheDocument();
+    expect(screen.getByText("Nói")).toBeInTheDocument();
+  });
 
-    expect(screen.queryByRole("button", { name: "Correction" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Correct one sentence" })).not.toBeInTheDocument();
+  it("does not show Journey/Grammar/Speak/Logic mode tabs", () => {
+    render(<ViKidsEnglishTutor />);
+    expect(screen.queryByRole("button", { name: "Journey" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Grammar" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Speak" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Logic" })).not.toBeInTheDocument();
+  });
+
+  it("does not show a textarea for sentence input", () => {
+    render(<ViKidsEnglishTutor />);
+    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
   });
 });
