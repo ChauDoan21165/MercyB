@@ -1,0 +1,249 @@
+# Continuous Logic Flow Map
+
+Date: 2026-05-24
+
+Source of truth:
+
+- [APP_LOGIC_FLOW.md](./APP_LOGIC_FLOW.md)
+- [FLOW_COMPLIANCE_PLAYBOOK.md](./FLOW_COMPLIANCE_PLAYBOOK.md)
+- [FLOW_COMPLIANCE_AUDIT.md](./FLOW_COMPLIANCE_AUDIT.md)
+- [TEACHER_MERCY_LEARNING_OS.md](./TEACHER_MERCY_LEARNING_OS.md)
+- [STRATEGY.md](../../STRATEGY.md)
+- [ROADMAP.md](../../ROADMAP.md)
+
+This document connects MercyB as one product logic flow: product vision -> user routes -> screens -> components -> buttons/CTAs -> engines -> memory/voice -> tests -> safety boundaries.
+
+Core rule: Mercy Kids and AI Tutor are separate products. Shared Teacher Mercy systems may support both, but the user-facing flows must not merge into one confusing workspace.
+
+## Master Map
+
+```text
+Home
+├── Mercy Kids
+│   ├── Route: `/kids/vi-english`
+│   ├── User: very young kids / parent-assisted children
+│   ├── First action: choose picture
+│   ├── Second action: tap speak
+│   ├── Flow:
+│   │   ├── choose picture
+│   │   ├── tap speak
+│   │   ├── kid speaks
+│   │   ├── Mercy responds
+│   │   └── reward / next picture
+│   └── Must never show:
+│       ├── Journey / Grammar / Speak / Logic tabs
+│       ├── adult AI Tutor shell
+│       ├── textarea as main flow
+│       ├── advanced correction panel
+│       ├── memory card as main child flow
+│       └── product/level selector confusion
+│
+├── AI Tutor Adult
+│   ├── Route: `/ai-tutor`
+│   ├── Target routes:
+│   │   ├── `/ai-tutor?target=fr`
+│   │   ├── `/ai-tutor?target=zh`
+│   │   └── other supported target languages
+│   ├── User: older learners / adults
+│   ├── First action: Today’s Lesson or choose mode
+│   ├── Flow:
+│   │   ├── Today’s Lesson
+│   │   ├── short practice
+│   │   ├── correction
+│   │   ├── retry
+│   │   ├── Vietlish logic explanation
+│   │   ├── safe memory summary
+│   │   └── next recommended lesson
+│   ├── Modes:
+│   │   ├── Journey = conversation practice
+│   │   ├── Grammar = correction / sentence repair
+│   │   ├── Speak = speaking practice
+│   │   └── Logic = English/Vietlish reasoning only
+│   └── Must never show:
+│       ├── Kids picture+speak as the adult main flow
+│       ├── raw learner input as spoken corrected text
+│       ├── Logic mode TTS/mic/speaker/fallback labels
+│       └── unsafe memory sync
+│
+├── Floating Mercy Helper
+│   ├── Purpose: guidance/navigation only
+│   ├── May show:
+│   │   ├── Teacher Mercy / Mercy Guide identity
+│   │   ├── close/minimize
+│   │   ├── simple helper text
+│   │   ├── CTA to Mercy Kids
+│   │   └── CTA to AI Tutor
+│   └── Must never become:
+│       ├── product mode selector
+│       ├── Kids workspace
+│       ├── Vietnamese explanation level selector
+│       ├── tree/leaf level system
+│       └── mixed Kids + AI Tutor panel
+│
+├── Voice System
+│   ├── Speaker reads clean learner-facing text only
+│   ├── Allowed speakable fields:
+│   │   ├── correctedText
+│   │   ├── naturalReply
+│   │   └── nextQuestion
+│   ├── Fallback must be labeled honestly
+│   └── Must never:
+│       ├── read raw wrong learner input as corrected
+│       ├── read labels/headings/metadata
+│       ├── expose provider secrets client-side
+│       ├── store raw audio
+│       └── appear in Logic mode
+│
+├── Memory System
+│   ├── Local summary-only memory
+│   ├── Allowed:
+│   │   ├── strongest topic
+│   │   ├── topic needing review
+│   │   ├── practice count
+│   │   ├── last practiced
+│   │   ├── suggested next focus
+│   │   └── mastery/weak pattern summary
+│   └── Must never:
+│       ├── store raw audio
+│       ├── store full transcript
+│       ├── show raw learner text in memory card
+│       ├── Supabase sync without approval
+│       └── Placement writeback
+│
+└── Study OS
+    ├── Today’s Lesson Planner
+    ├── Vietlish Logic Diagnosis Engine
+    ├── Mistake-to-Mastery Graph
+    ├── Progress / practice count
+    └── Future parent/teacher dashboard
+```
+
+## Flow Boundaries
+
+| Product area | User promise | Allowed first action | Forbidden first action |
+| --- | --- | --- | --- |
+| Mercy Kids | Picture + speak for very young children | Choose a picture | Choose an adult mode |
+| AI Tutor Adult | Guided study with modes, memory, correction, logic, and progress | Continue Today’s Lesson or choose a mode | Manage child picture cards |
+| Floating Mercy Helper | Route guidance only | Open Kids or AI Tutor | Configure product, level, or mixed modes |
+| Logic mode | English/Vietlish reasoning | Type a sentence or choose a reasoning prompt | Speak, record, play TTS, or show fallback voice |
+| Voice | Read clean learner-facing text | Read corrected text, natural reply, or next question | Read raw learner input, labels, metadata, or hidden text |
+| Memory | Local aggregate summary | Store topic tags, counts, last practiced, next focus | Store raw audio, transcript, raw learner text, or sync to Supabase |
+
+## File Ownership Map
+
+### Mercy Kids
+
+- `src/components/kids/ViKidsEnglishTutor.tsx`
+- `src/components/kids/__tests__/ViKidsEnglishTutor.test.tsx`
+- `src/pages/kids/ViKidsEnglishTutorPage.tsx`
+- `src/router/AppRouter.tsx` route: `/kids/vi-english`
+
+Ownership rule: this route owns the very young child picture + speak loop. It must not import or render AI Tutor mode tabs, advanced correction panels, or memory cards as the main child flow.
+
+### AI Tutor
+
+- `src/pages/AiTutor.tsx`
+- `src/pages/__tests__/AiTutor.test.tsx`
+- `src/pages/__tests__/AiTutor.pageGuard.test.tsx`
+- `src/components/ai-tutor/ConversationMode.tsx`
+- `src/components/ai-tutor/CorrectionMode.tsx`
+- `src/components/ai-tutor/TutorMemoryCard.tsx`
+- `src/components/teacher-mercy/TeacherMercyLearningShell.tsx`
+- `src/router/AppRouter.tsx` route: `/ai-tutor`
+
+Ownership rule: AI Tutor owns older learner/adult modes, target-language routing, correction, conversation, speak practice, Logic mode, Today’s Lesson, and safe memory summary.
+
+### Floating Helper
+
+- `src/components/MercyGuide.tsx`
+- `src/components/mercy-guide/MercyGuidePanel.tsx`
+- `src/components/mercy-guide/__tests__/MercyGuidePanel.launcher.test.tsx`
+- `src/components/mercy-guide/types.ts`
+- related MercyGuide tests
+
+Ownership rule: the floating helper guides users to the correct product route. It must not become a product selector, child workspace, adult AI Tutor workspace, support-level selector, or tree/leaf level system.
+
+### Tutor Engines
+
+- `src/lib/tutor/todayLessonPlanner.ts`
+- `src/lib/tutor/tests/todayLessonPlanner.test.ts`
+- `src/lib/tutor/vietlishLogicEngine.ts`
+- `src/lib/tutor/tests/vietlishLogicEngine.test.ts`
+- `src/lib/tutor/tutorEngine.ts`
+- `src/lib/tutor/correctionEngine.ts`
+- `src/lib/tutor/correctionRules/en.ts`
+- related tutor tests under `src/lib/tutor/tests/`
+
+Ownership rule: engines produce structured learning decisions and learner-facing outputs. They should not store raw audio, full transcripts, or write to Placement.
+
+### Voice
+
+- `src/lib/ai-tutor/useTtsSpeaker.ts`
+- `src/lib/teacher-mercy/voiceEngine.ts`
+- `src/lib/mercyVoice.ts`
+- `src/lib/tutor/speakableText.ts`
+- `supabase/functions/mercy-tts/*`
+- voice and TTS tests where present
+
+Ownership rule: voice may read clean learner-facing output only. Cloud provider access must stay server-side. Device fallback must be labeled honestly and must not appear in Logic mode.
+
+### Memory
+
+- `src/lib/ai-tutor/learningMemory.ts`
+- memory tests under `src/lib/ai-tutor/` and `src/pages/__tests__/AiTutor.test.tsx`
+- `src/components/ai-tutor/TutorMemoryCard.tsx`
+
+Ownership rule: memory is local and summary-only. It may hold safe topic tags, aggregate counts, last practiced, and suggested next focus. It must not hold raw learner text, full transcripts, raw audio, user IDs, JWTs, or Supabase memory sync.
+
+### Routes/CTA
+
+- `src/router/AppRouter.tsx`
+- `src/pages/Home.tsx`
+- `src/pages/MarketingLandingPage.tsx`
+- `src/components/languages/AITutorCtaBanner.tsx`
+- language pages that render `AITutorCtaBanner`
+
+Ownership rule: CTA labels must match destinations. Kids CTAs route to `/kids/vi-english`; AI Tutor CTAs route to `/ai-tutor` or `/ai-tutor?target=<language-code>`.
+
+### Docs/Guardrails
+
+- `docs/app/APP_LOGIC_FLOW.md`
+- `docs/app/FLOW_COMPLIANCE_PLAYBOOK.md`
+- `docs/app/FLOW_COMPLIANCE_AUDIT.md`
+- `docs/app/CONTINUOUS_LOGIC_FLOW_MAP.md`
+- `docs/app/REPO_LOGIC_INSPECTION_PROTOCOL.md`
+- `docs/app/STUDY_FLOW_PSYCHOLOGY_PLAYBOOK.md` if present
+- `docs/app/TEACHER_MERCY_LEARNING_OS.md`
+- `STRATEGY.md`
+- `ROADMAP.md`
+
+Ownership rule: docs define product boundaries before code expands. If code and docs disagree, open an audit/fix PR rather than widening product scope silently.
+
+## Initial Repo Logic Scan
+
+This is a small first application of the inspection protocol, not a full compliance audit.
+
+| Area | Current evidence | Initial status | Notes |
+| --- | --- | --- | --- |
+| `/kids/vi-english` | `src/router/AppRouter.tsx` routes to `src/pages/kids/ViKidsEnglishTutorPage.tsx`, which renders `src/components/kids/ViKidsEnglishTutor.tsx`. The component comments and UI show a two-column picture + speak flow with no textarea or AI Tutor tabs. | Appears aligned | `ViKidsEnglishTutor.tsx` still uses local STT/TTS for the child speak loop. Keep tests focused on no tabs, no textarea, no AI Tutor CTA in the kid card. |
+| `/ai-tutor` | `src/pages/AiTutor.tsx` derives `AI_TUTOR_MODES` from `aiTutorConfig.modes` and uses `TeacherMercyLearningShell`, `CorrectionMode`, `ConversationMode`, and `TutorMemoryCard`. | Appears aligned | Adult route owns Journey, Grammar, Speak, Logic, Today’s Lesson, and memory. |
+| AI Tutor target routes | `src/pages/AiTutor.tsx` resolves target from search params; `src/components/languages/AITutorCtaBanner.tsx` links to `/ai-tutor?target=${resolveTutorTargetLanguage(target)}`. | Appears aligned | Covers `/ai-tutor?target=fr`, `/ai-tutor?target=zh`, and supported target languages. |
+| Logic mode | `src/components/ai-tutor/ConversationMode.tsx` sets `allowTts = mode !== "logic"` and hides `TeacherMercyVoiceControls` when `isLogicMode` is true. | Appears aligned | Logic mode still uses a textarea for reasoning input, which is allowed for AI Tutor Logic and forbidden only as the Kids main flow. |
+| Floating Mercy helper | `src/components/mercy-guide/MercyGuidePanel.tsx` now renders a neutral Teacher Mercy launcher with `Vào Mercy Kids` -> `/kids/vi-english` and `Mở AI Tutor` -> `/ai-tutor`. | Appears aligned | #1093 is reflected on main. Old product/level selector UI is not present in this panel. |
+| Voice ownership | `src/lib/tutor/tutorEngine.ts` builds `shouldReadAloudText` from corrected text, natural reply, and next question; `src/lib/teacher-mercy/voiceEngine.ts` sanitizes speakable text and refuses raw input when provided as a guard. | Appears aligned, needs focused security review | `src/lib/mercyVoice.ts` invokes `supabase.functions.invoke("mercy-tts")`; provider keys are in `supabase/functions/mercy-tts/*`. A separate voice security audit should verify no client-side provider key path exists. |
+| Memory ownership | `src/lib/ai-tutor/learningMemory.ts` states it stores aggregate summary only and rejects raw audio, raw text, transcripts, PII, JWT content, and user IDs. `TutorMemoryCard.tsx` displays topic/count summaries. | Appears aligned | No Supabase memory sync observed in this targeted scan. |
+| Today’s Lesson Planner | `src/lib/tutor/todayLessonPlanner.ts` maps safe memory summary fields to lesson title, target skill, reason, steps, mode, and next focus. | Appears aligned | It uses summary fields, not raw learner text. |
+| Vietlish Logic Engine | `src/lib/tutor/vietlishLogicEngine.ts` provides beginner-friendly diagnoses for four common patterns plus fallback. | Appears aligned | It is reusable by Logic mode and Today’s Lesson later; current scan did not confirm it is wired into UI. |
+| Duplicate/orphan candidates | `src/components/mercy-guide/tabs/AITutorTab.tsx`, `src/components/mercy-guide/hooks/useAITutor.ts`, and legacy `MercyGuide` tab types still exist while `MercyGuidePanel.tsx` is now a route launcher. | Needs review | Do not delete in this PR. Future Inspector should determine whether these are reachable through other MercyGuide surfaces or stale PR leftovers. |
+| Product config drift | `src/lib/tutor/productConfigs.ts` has `viKidsEnglish.modes` including `conversation`, `grammar`, `speak`, and `logic` while the live Kids route is picture + speak only. | Needs review | This is not a live UI regression in the inspected route, but it is a duplication/regression risk if future UI consumes that config. |
+| Home Kids CTA | `src/pages/Home.tsx` has AI Tutor CTA text/routing; this targeted scan did not find a direct Home `Mercy Kids` CTA outside the floating helper. | Needs review | If product wants visible homepage cards for both products, add a future product/UI PR. Do not mix this with the docs system PR. |
+
+## Current Safety Boundaries
+
+- Provider/env/secrets/access changes: not part of this map.
+- Client-side provider secrets: forbidden; voice provider keys must remain in edge functions.
+- Raw audio storage: forbidden.
+- Full transcript storage: forbidden.
+- Supabase memory sync: forbidden unless separately approved.
+- Placement writeback: forbidden.
+- Product code changes: forbidden in docs-only flow mapping PRs.
