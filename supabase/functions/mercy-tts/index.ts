@@ -1,27 +1,9 @@
 // PATH: supabase/functions/mercy-tts/index.ts
 //
-// ElevenLabs-backed text-to-speech for Teacher Mercy. Browser TTS still
-// works as the fallback path inside src/hooks/useMercyVoice.ts; this
-// function is the cloud upgrade that produces a warm Vietnamese-accented
-// voice when the elevenlabs_tts feature flag is on.
-//
-// Request:
-//   POST { text: string, voice_id?: string, language: 'vi' | 'en' }
-//
-// Response (success):
-//   { audioUrl: string, cached: boolean }
-//
-// Response (capped or blocked):
-//   { error: string, code?: 'flag_off' | 'cap_user' | 'cap_global' }
-//   — caller falls back to browser TTS on any non-2xx.
-//
-// Cost controls:
-//   - SHA-256 cache key on (text + voice_id). Cache hits skip ElevenLabs
-//     entirely. Each unique text is paid for exactly once, ever.
-//   - Daily caps enforced via mercy_tts_usage row count (last 24h):
-//       per-user: 50 paid renders / day
-//       global:   1000 paid renders / day  (≈ $3 / day at Creator)
-//     Cache hits are NOT counted — only the paid generations.
+// Cloud text-to-speech for Teacher Mercy. Google Cloud TTS is preferred when
+// google_tts is enabled and configured; ElevenLabs remains the secondary
+// provider when elevenlabs_tts is enabled and configured. Browser TTS stays as
+// the client fallback path inside src/lib/teacher-mercy/voiceEngine.ts.
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -30,6 +12,10 @@ import {
   trackLatencyMs,
   type LatencyStatus,
 } from "../_shared/latencyTelemetry.ts";
+import {
+  googleLanguageCodeFor,
+  synthesizeGoogleTts,
+} from "./googleProvider.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -37,14 +23,11 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const CACHE_BUCKET = "mercy-tts-cache";
 const ELEVENLABS_BASE = "https://api.elevenlabs.io/v1/text-to-speech";
 const PER_USER_DAILY_CAP = 50;
 const GLOBAL_DAILY_CAP = 1000;
-const MAX_TEXT_LENGTH = 2000; // ElevenLabs hard limit varies by tier; keep us safe
+const MAX_TEXT_LENGTH = 2000;
 
-// Voice settings mirror the client config. Kept in sync intentionally
-// (small block — no module sharing across function boundaries on Deno).
 const VOICE_SETTINGS = {
   stability: 0.5,
   similarity_boost: 0.75,
@@ -53,8 +36,10 @@ const VOICE_SETTINGS = {
 interface MercyTtsRequest {
   text: string;
   voice_id?: string;
-  language: "vi" | "en";
+  language?: string;
 }
+
+type TtsProvider = "google" | "elevenlabs";
 
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -71,13 +56,30 @@ async function sha256Hex(input: string): Promise<string> {
     .join("");
 }
 
-/**
- * Resolution mirrors src/hooks/useFeatureFlag.ts and
- * src/lib/featureFlags.ts — keep all three in sync.
- *   1. enabled_user_ids contains userId → ON
- *   2. is_enabled = true                → ON
- *   3. otherwise                        → OFF
- */
+function bytesToBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+}
+
+function audioDataUrl(bytes: Uint8Array): string {
+  return `data:audio/mpeg;base64,${bytesToBase64(bytes)}`;
+}
+
+function normalizeLanguage(raw: unknown): string {
+  const base = String(raw || "en").trim().toLowerCase().split("-")[0];
+  return ["en", "fr", "zh", "de", "ja", "ko", "es", "vi"].includes(base) ? base : "en";
+}
+
+function googleApiKey(): string {
+  return Deno.env.get("GOOGLE_TTS_API_KEY")
+    ?? Deno.env.get("GOOGLE_CLOUD_TTS_API_KEY")
+    ?? "";
+}
+
 async function isFlagOn(
   client: SupabaseClient,
   flagKey: string,
@@ -107,24 +109,17 @@ async function countUsageSince(
   const { count, error } = await query;
   if (error) {
     console.warn("[mercy-tts] usage count failed", error.message);
-    // Fail closed for caps — assume we're at the limit so the caller
-    // falls back to browser TTS rather than racking up surprise spend.
     return Number.MAX_SAFE_INTEGER;
   }
   return count ?? 0;
 }
 
 serve(async (req) => {
-  if (req.method === "OPTIONS") {
-    return new Response("ok", { headers: corsHeaders });
-  }
-  if (req.method !== "POST") {
-    return jsonResponse({ error: "Method not allowed" }, 405);
-  }
+  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+  if (req.method !== "POST") return jsonResponse({ error: "Method not allowed" }, 405);
 
   const totalStartedAt = performance.now();
   let totalStatus: LatencyStatus = "success";
-  let cacheHit = false;
 
   try {
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
@@ -141,19 +136,8 @@ serve(async (req) => {
       const userClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
         global: { headers: { Authorization: authHeader } },
       });
-
-      const {
-        data: { user },
-      } = await userClient.auth.getUser();
+      const { data: { user } } = await userClient.auth.getUser();
       userId = user?.id ?? null;
-    }
-
-    const flagOn = await isFlagOn(service, "elevenlabs_tts", userId);
-    if (!flagOn) {
-      return jsonResponse(
-        { error: "ElevenLabs TTS disabled", code: "flag_off" },
-        503,
-      );
     }
 
     let body: MercyTtsRequest;
@@ -164,154 +148,152 @@ serve(async (req) => {
     }
 
     const text = String(body?.text ?? "").trim();
-    const language = body?.language === "en" ? "en" : "vi";
-    const voiceId = String(body?.voice_id ?? "").trim();
+    const language = normalizeLanguage(body?.language);
+    const rawVoiceId = String(body?.voice_id ?? "").trim();
+    const voiceId = rawVoiceId && rawVoiceId !== "placeholder" ? rawVoiceId : "";
 
     if (!text) return jsonResponse({ error: "text is required" }, 400);
     if (text.length > MAX_TEXT_LENGTH) {
-      return jsonResponse(
-        { error: `text exceeds ${MAX_TEXT_LENGTH} chars` },
-        400,
-      );
-    }
-    if (!voiceId) return jsonResponse({ error: "voice_id is required" }, 400);
-
-    const cacheKey = await sha256Hex(`${voiceId}|${language}|${text}`);
-    const cachePath = `${cacheKey}.mp3`;
-
-    // Cache hit? Public bucket → public URL is signature-free.
-    const { data: existing } = await service.storage
-      .from(CACHE_BUCKET)
-      .list("", { search: cachePath, limit: 1 });
-    if (existing && existing.some((f) => f.name === cachePath)) {
-      const { data: pub } = service.storage.from(CACHE_BUCKET).getPublicUrl(cachePath);
-      cacheHit = true;
-      const cachedResp = jsonResponse({ audioUrl: pub.publicUrl, cached: true });
-      trackLatency({
-        operation: "mercy-tts.total",
-        startedAt: totalStartedAt,
-        status: totalStatus,
-        metadata: { cache_hit: true },
-      });
-      return cachedResp;
+      return jsonResponse({ error: `text exceeds ${MAX_TEXT_LENGTH} chars` }, 400);
     }
 
-    // Cache miss → enforce daily caps before paying ElevenLabs.
+    const googleFlagOn = await isFlagOn(service, "google_tts", userId);
+    const elevenLabsFlagOn = await isFlagOn(service, "elevenlabs_tts", userId);
+    const googleKey = googleApiKey();
+    const elevenLabsKey = Deno.env.get("ELEVENLABS_API_KEY") ?? "";
+    const fallbackReasons: string[] = [];
+
     const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
     const [userCount, globalCount] = await Promise.all([
       userId ? countUsageSince(service, since, userId) : Promise.resolve(0),
       countUsageSince(service, since),
     ]);
     if (userId && userCount >= PER_USER_DAILY_CAP) {
-      return jsonResponse(
-        { error: "Daily TTS limit reached for this user", code: "cap_user" },
-        429,
-      );
+      return jsonResponse({ error: "Daily TTS limit reached for this user", code: "cap_user" }, 429);
     }
     if (globalCount >= GLOBAL_DAILY_CAP) {
-      return jsonResponse(
-        { error: "Daily TTS limit reached globally", code: "cap_global" },
-        429,
-      );
+      return jsonResponse({ error: "Daily TTS limit reached globally", code: "cap_global" }, 429);
     }
 
-    const apiKey = Deno.env.get("ELEVENLABS_API_KEY");
-    if (!apiKey) {
-      console.warn("[mercy-tts] ELEVENLABS_API_KEY missing — falling back");
-      return jsonResponse(
-        { error: "ElevenLabs not configured", code: "flag_off" },
-        503,
-      );
+    let provider: TtsProvider | null = null;
+    let audioBuf: Uint8Array | null = null;
+    let textHash = "";
+    let usageVoiceId = "";
+
+    if (googleFlagOn && googleKey) {
+      const googleStartedAt = performance.now();
+      try {
+        const googleResp = await synthesizeGoogleTts(fetch, googleKey, text, language);
+        trackLatencyMs("mercy-tts.google-call", performance.now() - googleStartedAt, {
+          status: googleResp.ok ? "success" : "error",
+          metadata: { upstream_status: googleResp.status, language_code: googleLanguageCodeFor(language) },
+        });
+        if (googleResp.ok) {
+          const payload = await googleResp.json().catch(() => null) as { audioContent?: string } | null;
+          if (payload?.audioContent) {
+            audioBuf = Uint8Array.from(atob(payload.audioContent), (char) => char.charCodeAt(0));
+            provider = "google";
+            usageVoiceId = `google:${googleLanguageCodeFor(language)}`;
+            textHash = await sha256Hex(`${usageVoiceId}|${language}|${text}`);
+          } else {
+            fallbackReasons.push("google_empty_audio");
+          }
+        } else {
+          const detail = await googleResp.text().catch(() => "");
+          console.error("[mercy-tts] Google TTS error", googleResp.status, detail.slice(0, 200));
+          fallbackReasons.push(`google_${googleResp.status}`);
+        }
+      } catch (err) {
+        trackLatencyMs("mercy-tts.google-call", performance.now() - googleStartedAt, { status: "error" });
+        console.error("[mercy-tts] Google TTS threw", err);
+        fallbackReasons.push("google_error");
+      }
+    } else {
+      fallbackReasons.push(!googleFlagOn ? "google_tts_flag_off" : "google_tts_key_missing");
     }
 
-    const elStartedAt = performance.now();
-    let elStatus: LatencyStatus = "success";
-    let elResp: Response;
-    try {
-      elResp = await fetch(`${ELEVENLABS_BASE}/${voiceId}`, {
-        method: "POST",
-        headers: {
-          "xi-api-key": apiKey,
-          "Content-Type": "application/json",
-          Accept: "audio/mpeg",
-        },
-        body: JSON.stringify({
-          text,
-          model_id: "eleven_multilingual_v2",
-          voice_settings: VOICE_SETTINGS,
-        }),
-      });
-    } catch (err) {
-      elStatus = "error";
-      trackLatencyMs(
-        "mercy-tts.elevenlabs-call",
-        performance.now() - elStartedAt,
-        { status: elStatus },
-      );
-      throw err;
-    }
-    if (!elResp.ok) elStatus = "error";
-    trackLatencyMs(
-      "mercy-tts.elevenlabs-call",
-      performance.now() - elStartedAt,
-      {
-        status: elStatus,
+    if (!audioBuf && elevenLabsFlagOn && elevenLabsKey && voiceId) {
+      const elStartedAt = performance.now();
+      let elResp: Response;
+      try {
+        elResp = await fetch(`${ELEVENLABS_BASE}/${voiceId}`, {
+          method: "POST",
+          headers: {
+            "xi-api-key": elevenLabsKey,
+            "Content-Type": "application/json",
+            Accept: "audio/mpeg",
+          },
+          body: JSON.stringify({
+            text,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: VOICE_SETTINGS,
+          }),
+        });
+      } catch (err) {
+        trackLatencyMs("mercy-tts.elevenlabs-call", performance.now() - elStartedAt, { status: "error" });
+        console.error("[mercy-tts] ElevenLabs threw", err);
+        fallbackReasons.push("elevenlabs_error");
+        elResp = new Response("", { status: 599 });
+      }
+      trackLatencyMs("mercy-tts.elevenlabs-call", performance.now() - elStartedAt, {
+        status: elResp.ok ? "success" : "error",
         metadata: { upstream_status: elResp.status },
-      },
-    );
+      });
 
-    if (!elResp.ok) {
-      const detail = await elResp.text().catch(() => "");
-      console.error("[mercy-tts] ElevenLabs error", elResp.status, detail.slice(0, 200));
+      if (elResp.ok) {
+        audioBuf = new Uint8Array(await elResp.arrayBuffer());
+        provider = "elevenlabs";
+        usageVoiceId = voiceId;
+        textHash = await sha256Hex(`elevenlabs|${voiceId}|${language}|${text}`);
+      } else {
+        const detail = await elResp.text().catch(() => "");
+        console.error("[mercy-tts] ElevenLabs error", elResp.status, detail.slice(0, 200));
+        fallbackReasons.push(`elevenlabs_${elResp.status}`);
+      }
+    } else if (!audioBuf) {
+      if (!elevenLabsFlagOn) fallbackReasons.push("elevenlabs_flag_off");
+      else if (!elevenLabsKey) fallbackReasons.push("elevenlabs_key_missing");
+      else if (!voiceId) fallbackReasons.push("elevenlabs_voice_missing");
+    }
+
+    if (!audioBuf || !provider) {
       totalStatus = "error";
-      const errResp = jsonResponse(
-        { error: "Upstream TTS failed", upstream_status: elResp.status },
-        502,
-      );
+      const fallbackReason = fallbackReasons.join(",");
       trackLatency({
         operation: "mercy-tts.total",
         startedAt: totalStartedAt,
         status: totalStatus,
-        metadata: { cache_hit: false, upstream_status: elResp.status },
+        metadata: { cache_hit: false, fallback_reason: fallbackReason },
       });
-      return errResp;
+      return jsonResponse({
+        error: "Cloud TTS unavailable",
+        code: "provider_unavailable",
+        provider: null,
+        fallback_reason: fallbackReason,
+      }, 502);
     }
 
-    const audioBuf = new Uint8Array(await elResp.arrayBuffer());
-
-    const { error: uploadErr } = await service.storage
-      .from(CACHE_BUCKET)
-      .upload(cachePath, audioBuf, {
-        contentType: "audio/mpeg",
-        upsert: false,
-      });
-    if (uploadErr && !/already exists/i.test(uploadErr.message)) {
-      console.error("[mercy-tts] cache upload failed", uploadErr.message);
-      // Don't fail the request — we already paid ElevenLabs. Best effort.
-    }
-
-    // Log usage AFTER successful render so a failed upstream call doesn't
-    // count against the user's cap.
     const { error: usageErr } = await service.from("mercy_tts_usage").insert({
       user_id: userId,
-      text_hash: cacheKey,
-      voice_id: voiceId,
+      text_hash: textHash,
+      voice_id: usageVoiceId,
       language,
       text_length: text.length,
     });
-    if (usageErr) {
-      console.warn("[mercy-tts] usage insert failed", usageErr.message);
-    }
+    if (usageErr) console.warn("[mercy-tts] usage insert failed", usageErr.message);
 
-    const { data: pub } = service.storage.from(CACHE_BUCKET).getPublicUrl(cachePath);
-    const okResp = jsonResponse({ audioUrl: pub.publicUrl, cached: false });
     trackLatency({
       operation: "mercy-tts.total",
       startedAt: totalStartedAt,
       status: totalStatus,
-      metadata: { cache_hit: cacheHit },
+      metadata: { cache_hit: false, provider },
     });
-    return okResp;
+    return jsonResponse({
+      audioUrl: audioDataUrl(audioBuf),
+      cached: false,
+      provider,
+      fallback_reason: fallbackReasons.length ? fallbackReasons.join(",") : undefined,
+    });
   } catch (err) {
     console.error("[mercy-tts] unexpected error", err);
     totalStatus = "error";
@@ -319,7 +301,7 @@ serve(async (req) => {
       operation: "mercy-tts.total",
       startedAt: totalStartedAt,
       status: totalStatus,
-      metadata: { cache_hit: cacheHit },
+      metadata: { cache_hit: false },
     });
     return jsonResponse(
       { error: err instanceof Error ? err.message : "Unknown error" },

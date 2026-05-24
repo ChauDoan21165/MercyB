@@ -4,6 +4,7 @@ import {
   getTtsLocale,
   resolveTutorTargetLanguage,
 } from "@/lib/tutor/languageRegistry";
+import { sanitizeSpeakableText } from "@/lib/tutor/speakableText";
 
 export type TeacherMercyVoiceStyle = "teacher-mercy" | "kid-friendly" | "neutral";
 
@@ -90,7 +91,7 @@ export function voiceLocaleForTargetLanguage(targetLanguage: TeacherMercyTargetL
 }
 
 function cloudLanguageForTarget(targetLanguage: TeacherMercyTargetLanguage = "en"): MercyLanguage {
-  return String(targetLanguage).toLowerCase() === "vi" ? "vi" : "en";
+  return resolveTutorTargetLanguage(String(targetLanguage || "en")) as MercyLanguage;
 }
 
 function normalizeText(text: string): string {
@@ -98,7 +99,7 @@ function normalizeText(text: string): string {
 }
 
 function speakableTextFor(text: string, options: SpeakTutorTextOptions): string {
-  const normalized = normalizeText(text);
+  const normalized = sanitizeSpeakableText(text);
   const raw = normalizeText(options.rawUserInput ?? "");
   if (raw && normalized === raw && !options.allowRawUserInput) {
     return "";

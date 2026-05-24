@@ -8,10 +8,14 @@ import {
 describe("correctionEngine", () => {
   it.each([
     ["I buy a hat yesterday.", "I bought a hat yesterday."],
+    ["i buy a hat yesterday", "I bought a hat yesterday."],
     ["She go to school every day.", "She goes to school every day."],
     ["He eat rice yesterday.", "He ate rice yesterday."],
+    ["He have a test yesterday.", "He had a test yesterday."],
     ["I have lunch yesterday.", "I had lunch yesterday."],
     ["I do homework yesterday.", "I did homework yesterday."],
+    ["He go to school every day.", "He goes to school every day."],
+    ["She eat rice every day.", "She eats rice every day."],
     ["It have food every day.", "It has food every day."],
   ])("corrects beginner English fallback: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -39,6 +43,25 @@ describe("correctionEngine", () => {
       corrected: "",
       appliedRuleIds: [],
       message: AI_CORRECTION_REQUIRED_MESSAGE,
+    });
+  });
+
+  it("repairs capitalization and punctuation in a morning-routine run-on", () => {
+    expect(
+      correctWithTutorRules(
+        "what do you usually do in the morning nice that sounds like a clear morning routine what do you do after that",
+        "en",
+      ),
+    ).toMatchObject({
+      status: "corrected",
+      corrected: "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?",
+    });
+  });
+
+  it("adds question punctuation for simple question forms", () => {
+    expect(correctWithTutorRules("what do you usually do in the morning", "en")).toMatchObject({
+      status: "corrected",
+      corrected: "What do you usually do in the morning?",
     });
   });
 });

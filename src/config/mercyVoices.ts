@@ -61,7 +61,7 @@ export const VOICE_SETTINGS = {
   similarity_boost: 0.75,
 } as const;
 
-export type MercyLanguage = "vi" | "en";
+export type MercyLanguage = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
 export type EnglishAccent = "us" | "uk" | "au" | "ca";
 
 export function voiceIdFor(language: MercyLanguage): string {

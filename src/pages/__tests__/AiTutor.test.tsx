@@ -27,7 +27,7 @@ const POPULATED_SUMMARY: MemorySummary = {
 };
 
 const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.hoisted(() => {
-  type CloudTtsArgs = { text: string; language: "en" | "vi"; voiceIdOverride?: string };
+  type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
   type CloudTtsResult = { audioUrl: string; cached: boolean };
   return {
     putCorrection: vi.fn(async () => {}),
@@ -380,6 +380,35 @@ describe("AiTutor mock UI", () => {
     expect(utterance.lang).toBe("zh-CN");
   });
 
+  it("starter question speaker reads only the clean question", async () => {
+    const speak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    window.localStorage.setItem("mercyblade.lessonUiLang", "en");
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+
+    await userEvent.click(screen.getAllByRole("button", { name: /Read corrected sentence|Mercy đọc câu/ })[0]);
+
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe("What do you usually do in the morning?");
+    expect(utterance.text).not.toMatch(/Teacher Mercy|Natural reply|Câu trả lời tự nhiên|Giải thích/);
+  });
+
   it.each([
     ["de", /Gia sư tiếng Đức/, /Viết một câu tiếng Đức/, /gõ câu tiếng Đức/],
     ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
@@ -439,6 +468,40 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => {
       expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
     });
+  });
+
+  it("repairs run-on punctuation and speaker reads only natural corrected text", async () => {
+    const speak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    render(<AiTutorPage />);
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "what do you usually do in the morning nice that sounds like a clear morning routine what do you do after that",
+    );
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    const corrected = "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?";
+    await waitFor(() => expect(screen.getByText(corrected)).toBeInTheDocument());
+
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe(corrected);
+    expect(utterance.text).not.toMatch(/Teacher Mercy|Câu đã sửa|Giải thích|what do you usually do in the morning nice/);
   });
 
   it("corrects third-person and past-tense English examples deterministically", async () => {
@@ -631,7 +694,7 @@ describe("AiTutor mock UI", () => {
 
     await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: expect.stringMatching(/Toute lecture nouvelle/),
-      language: "en",
+      language: "fr",
     }));
     expect(browserSpeak).not.toHaveBeenCalled();
     expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
@@ -697,7 +760,7 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
     expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: expect.stringContaining("Qu'est-ce que tu fais après ça ?"),
-      language: "en",
+      language: "fr",
     });
     expect(await screen.findByText("Device voice fallback")).toBeInTheDocument();
     const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
