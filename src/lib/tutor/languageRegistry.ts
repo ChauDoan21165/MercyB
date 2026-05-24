@@ -9,8 +9,8 @@ export type TutorLanguageConfig = {
   labelVi: string;
   speechLocale: string;
   ttsLocale: string;
-  defaultExampleSentence: string;
-  beginnerPlaceholder: string;
+  defaultExample: string;
+  placeholder: string;
   supportsStt: boolean;
   supportsBrowserTts: boolean;
   supportsCloudTts: boolean;
@@ -27,8 +27,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Anh",
     speechLocale: "en-US",
     ttsLocale: "en-US",
-    defaultExampleSentence: "She go to school every day",
-    beginnerPlaceholder: 'gõ câu của bạn ở đây, ví dụ: "She go to school every day"',
+    defaultExample: "She go to school every day",
+    placeholder: 'gõ câu của bạn ở đây, ví dụ: "She go to school every day"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: true,
@@ -41,8 +41,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Pháp",
     speechLocale: "fr-FR",
     ttsLocale: "fr-FR",
-    defaultExampleSentence: "Je suis aller au marché",
-    beginnerPlaceholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
+    defaultExample: "Je suis aller au marché",
+    placeholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: false,
@@ -55,8 +55,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Trung",
     speechLocale: "zh-CN",
     ttsLocale: "zh-CN",
-    defaultExampleSentence: "我昨天去商店",
-    beginnerPlaceholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
+    defaultExample: "我昨天去商店",
+    placeholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: false,
@@ -69,8 +69,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Đức",
     speechLocale: "de-DE",
     ttsLocale: "de-DE",
-    defaultExampleSentence: "Ich gehe gestern zum Markt",
-    beginnerPlaceholder: 'gõ câu tiếng Đức của bạn ở đây, ví dụ: "Ich gehe gestern zum Markt"',
+    defaultExample: "Ich gehe gestern zum Markt",
+    placeholder: 'gõ câu tiếng Đức của bạn ở đây, ví dụ: "Ich gehe gestern zum Markt"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: false,
@@ -83,8 +83,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Nhật",
     speechLocale: "ja-JP",
     ttsLocale: "ja-JP",
-    defaultExampleSentence: "私は昨日店に行く",
-    beginnerPlaceholder: 'gõ câu tiếng Nhật của bạn ở đây, ví dụ: "私は昨日店に行く"',
+    defaultExample: "私は昨日店に行く",
+    placeholder: 'gõ câu tiếng Nhật của bạn ở đây, ví dụ: "私は昨日店に行く"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: false,
@@ -97,8 +97,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Hàn",
     speechLocale: "ko-KR",
     ttsLocale: "ko-KR",
-    defaultExampleSentence: "저는 어제 시장에 가요",
-    beginnerPlaceholder: 'gõ câu tiếng Hàn của bạn ở đây, ví dụ: "저는 어제 시장에 가요"',
+    defaultExample: "저는 어제 시장에 가요",
+    placeholder: 'gõ câu tiếng Hàn của bạn ở đây, ví dụ: "저는 어제 시장에 가요"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: false,
@@ -111,8 +111,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Tây Ban Nha",
     speechLocale: "es-ES",
     ttsLocale: "es-ES",
-    defaultExampleSentence: "Yo fui al mercado ayer",
-    beginnerPlaceholder: 'type your Spanish sentence here, for example: "Yo fui al mercado ayer"',
+    defaultExample: "Yo fui al mercado ayer",
+    placeholder: 'type your Spanish sentence here, for example: "Yo fui al mercado ayer"',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: false,
@@ -125,8 +125,8 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     labelVi: "tiếng Việt",
     speechLocale: "vi-VN",
     ttsLocale: "vi-VN",
-    defaultExampleSentence: "Tôi buồn vì mất cái mũ đẹp.",
-    beginnerPlaceholder: 'gõ câu tiếng Việt của bạn ở đây, ví dụ: "Tôi buồn vì mất cái mũ đẹp."',
+    defaultExample: "Tôi buồn vì mất cái mũ đẹp.",
+    placeholder: 'gõ câu tiếng Việt của bạn ở đây, ví dụ: "Tôi buồn vì mất cái mũ đẹp."',
     supportsStt: true,
     supportsBrowserTts: true,
     supportsCloudTts: true,

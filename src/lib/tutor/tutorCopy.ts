@@ -1,6 +1,10 @@
 import { TUTOR_LANGUAGE_PACKS } from "./languages";
+import {
+  resolveTutorTargetLanguage,
+  type TutorLanguageCode,
+} from "./languageRegistry";
 
-export type TutorTarget = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
+export type TutorTarget = TutorLanguageCode;
 export type TutorUiLanguage = "vi" | "en";
 
 export type TutorLanguagePack = {
@@ -55,15 +59,7 @@ export type TutorCopy = TutorLanguagePack & {
 };
 
 function normalizeTargetLanguage(value: unknown): TutorTarget {
-  const target = String(value ?? "").trim().toLowerCase();
-  if (target === "fr" || target === "french") return "fr";
-  if (target === "zh" || target === "chinese" || target === "cn") return "zh";
-  if (target === "de" || target === "german") return "de";
-  if (target === "ja" || target === "japanese" || target === "jp") return "ja";
-  if (target === "ko" || target === "korean" || target === "kr") return "ko";
-  if (target === "es" || target === "spanish") return "es";
-  if (target === "vi" || target === "vietnamese") return "vi";
-  return "en";
+  return resolveTutorTargetLanguage(value);
 }
 
 function normalizeUiLanguage(value: unknown): TutorUiLanguage {

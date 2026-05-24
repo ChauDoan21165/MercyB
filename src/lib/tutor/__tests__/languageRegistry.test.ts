@@ -16,6 +16,17 @@ describe("tutor language registry", () => {
     for (const code of TUTOR_LANGUAGE_CODES) {
       expect(resolveTutorTargetLanguage(code)).toBe(code);
       expect(getTutorLanguage(code).code).toBe(code);
+      expect(getTutorLanguage(code).labelEn).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).labelNative).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).labelVi).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).speechLocale).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).ttsLocale).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).defaultExample).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).placeholder).toEqual(expect.any(String));
+      expect(getTutorLanguage(code).supportsStt).toEqual(expect.any(Boolean));
+      expect(getTutorLanguage(code).supportsBrowserTts).toEqual(expect.any(Boolean));
+      expect(getTutorLanguage(code).supportsCloudTts).toEqual(expect.any(Boolean));
+      expect(getTutorLanguage(code).direction).toBe("ltr");
     }
   });
 

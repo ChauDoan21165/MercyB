@@ -37,4 +37,17 @@ describe("AITutorCtaBanner", () => {
       "/ai-tutor?target=fr",
     );
   });
+
+  it("falls back unknown targets to English through the tutor language registry", () => {
+    render(
+      <MemoryRouter>
+        <AITutorCtaBanner uiLang="vi" target={"unknown" as never} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("link", { name: /Luyện với AI Tutor/ })).toHaveAttribute(
+      "href",
+      "/ai-tutor?target=en",
+    );
+  });
 });
