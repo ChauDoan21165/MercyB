@@ -407,6 +407,31 @@ describe("AiTutor mock UI", () => {
     });
   });
 
+  it("corrects common English past-tense beginner errors before showing the result", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
+    });
+  });
+
+  it("corrects third-person and past-tense English examples deterministically", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "He eat rice yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText("He ate rice yesterday.")).toBeInTheDocument();
+    });
+
+    await userEvent.click(screen.getByRole("button", { name: /Làm mới/ }));
+    await userEvent.type(screen.getByRole("textbox"), "She go to school every day.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
+    });
+  });
+
   it("corrects French target in French and explains in Vietnamese", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
@@ -568,6 +593,31 @@ describe("AiTutor mock UI", () => {
     });
     expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
     expect(browserSpeak).not.toHaveBeenCalled();
+  });
+
+  it("sends the corrected English sentence to Mercy voice instead of the raw mistake", async () => {
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.com/grammar.mp3", cached: false });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockAudioElement,
+    });
+
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument());
+
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+
+    await waitFor(() => {
+      expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+        text: "I bought a hat yesterday.",
+        language: "en",
+      });
+    });
+    expect(fetchCloudTtsUrl).not.toHaveBeenCalledWith(expect.objectContaining({
+      text: "I buy a hat yesterday.",
+    }));
   });
 
   it("uses Mercy cloud voice for Conversation replies without reading raw user input", async () => {
