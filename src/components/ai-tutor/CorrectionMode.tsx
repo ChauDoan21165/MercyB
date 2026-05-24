@@ -2,8 +2,9 @@
 // Input, result display, TTS, and practice flow.
 // Extracted from AiTutor.tsx for reuse across modes.
 
-import { Mic, MicOff, Square, Volume2 } from "lucide-react";
+import { Square, Volume2 } from "lucide-react";
 import type { TutorTarget, TutorTargetCopy, UiCopy } from "@/lib/ai-tutor/tutorUiCopy";
+import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 
 type CorrectionResult = {
   corrected: string;
@@ -107,34 +108,19 @@ export default function CorrectionMode({
           />
 
           <div className="mt-3 flex flex-col gap-3">
-            {micSupported ? (
-              <button
-                type="button"
-                onClick={onMicToggle}
-                className={`min-h-[44px] w-full rounded-full border px-4 py-2.5 text-sm font-black transition ${
-                  micListening
-                    ? "border-red-300 bg-red-50 text-red-700"
-                    : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
-                }`}
-                aria-label={micListening ? uiCopy.micAriaStop : uiCopy.micAriaStart}
-              >
-                <span className="inline-flex items-center justify-center gap-2">
-                  <Mic className="h-4 w-4" aria-hidden />
-                  {micListening ? uiCopy.micListening : uiCopy.micInput}
-                </span>
-              </button>
-            ) : (
-              <div
-                role="status"
-                className="min-h-[44px] w-full rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-center text-xs font-bold text-slate-500"
-                data-testid="ai-tutor-mic-fallback"
-              >
-                <span className="inline-flex items-center justify-center gap-2">
-                  <MicOff className="h-4 w-4" aria-hidden />
-                  {uiCopy.micUnavailable}
-                </span>
-              </div>
-            )}
+            <TeacherMercyVoiceControls
+              kind="mic"
+              supported={micSupported}
+              active={micListening}
+              unavailableLabel={uiCopy.micUnavailable}
+              inactiveLabel={uiCopy.micInput}
+              activeLabel={uiCopy.micListening}
+              ariaStart={uiCopy.micAriaStart}
+              ariaStop={uiCopy.micAriaStop}
+              onToggle={onMicToggle}
+              className="w-full"
+              fallbackTestId="ai-tutor-mic-fallback"
+            />
             <p className="w-full text-xs font-medium leading-5 text-slate-500">
               {uiCopy.micHelper}
             </p>
