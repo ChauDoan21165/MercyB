@@ -412,7 +412,7 @@ describe("AiTutor mock UI", () => {
 
   it("enables button when input has text", async () => {
     render(<AiTutorPage />);
-    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
     expect(screen.getByRole("button", { name: /Sửa câu này/ })).toBeEnabled();
   });
 
@@ -718,14 +718,14 @@ describe("AiTutor mock UI", () => {
 
   it("shows practice section after correction", async () => {
     render(<AiTutorPage />);
-    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => expect(screen.getByText(/Luyện tập/)).toBeInTheDocument());
   });
 
   it("submit practice shows mock feedback", async () => {
     render(<AiTutorPage />);
-    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => expect(screen.getByText(/Luyện tập/)).toBeInTheDocument());
     const textareas = screen.getAllByRole("textbox");
@@ -736,7 +736,7 @@ describe("AiTutor mock UI", () => {
 
   it("reset clears correction and practice state", async () => {
     render(<AiTutorPage />);
-    await userEvent.type(screen.getByRole("textbox"), "test");
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => expect(screen.getByText(/Luyện tập/)).toBeInTheDocument());
     await userEvent.click(screen.getByRole("button", { name: /Làm mới/ }));

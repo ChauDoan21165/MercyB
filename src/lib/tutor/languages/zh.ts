@@ -38,6 +38,10 @@ export const zh = {
     "不错。你的意思很清楚。",
     "这个句子很适合初学者练习。",
   ],
+  fallbackMessages: {
+    correctionNeedsAi: "Mercy 需要 AI 纠错引擎来修改这个中文句子。",
+    conversationNeedsAi: "Mercy 需要 AI 纠错引擎来继续这段中文对话。",
+  },
   speakerLabels: {
     tutor: "Teacher Mercy",
     learner: "You",

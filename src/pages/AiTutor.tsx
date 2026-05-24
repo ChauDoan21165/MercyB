@@ -125,7 +125,7 @@ function buildConversationReply(
     explanation: localCorrection.ok ? mock.explanation[explainLanguage] : localCorrection.message,
     naturalReply: localCorrection.ok
       ? tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation
-      : "I can still help you practice. Try a simpler sentence, or use the AI correction engine when it is available.",
+      : tutorCopy.ui.conversationFallback,
     nextQuestion: tutorCopy.nextQuestionTemplates[0] ?? "",
   });
   return { ...turn, role: "mercy" };
