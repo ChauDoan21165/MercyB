@@ -3,6 +3,7 @@ import {
   buildConversationTurn,
   buildCorrectionTurn,
   getSpeakableText,
+  sanitizeSpeakableText,
   validateTutorTurn,
 } from "@/lib/tutor/tutorEngine";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
@@ -90,5 +91,29 @@ describe("tutorEngine", () => {
 
     expect(validateTutorTurn(turn)).toBe(false);
     expect(getSpeakableText(turn)).toBe("");
+  });
+
+  it("sanitizes labels, markdown, control characters, and repeated fragments", () => {
+    expect(
+      sanitizeSpeakableText(
+        "Teacher Mercy:\n### Câu trả lời tự nhiên: What do you usually do in the morning?\u0000 What do you usually do in the morning?",
+      ),
+    ).toBe("What do you usually do in the morning?");
+  });
+
+  it("opening starter question speakable text excludes empty-state labels", () => {
+    const { turn } = buildConversationTurn({
+      id: "starter",
+      targetLanguage: "en",
+      explainLanguage: "en",
+      userText: "",
+      correctedText: "",
+      explanation: "",
+      naturalReply: "",
+      nextQuestion: "What do you usually do in the morning?",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    });
+
+    expect(getSpeakableText(turn)).toBe("What do you usually do in the morning?");
   });
 });

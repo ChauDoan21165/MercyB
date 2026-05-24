@@ -380,6 +380,35 @@ describe("AiTutor mock UI", () => {
     expect(utterance.lang).toBe("zh-CN");
   });
 
+  it("starter question speaker reads only the clean question", async () => {
+    const speak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    window.localStorage.setItem("mercyblade.lessonUiLang", "en");
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+
+    await userEvent.click(screen.getAllByRole("button", { name: /Read corrected sentence|Mercy đọc câu/ })[0]);
+
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe("What do you usually do in the morning?");
+    expect(utterance.text).not.toMatch(/Teacher Mercy|Natural reply|Câu trả lời tự nhiên|Giải thích/);
+  });
+
   it.each([
     ["de", /Gia sư tiếng Đức/, /Viết một câu tiếng Đức/, /gõ câu tiếng Đức/],
     ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],

@@ -160,6 +160,28 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(synth.speak).not.toHaveBeenCalled();
   });
 
+  it("sanitizes text before cloud and browser fallback", async () => {
+    const synth = installSpeechSynthesis();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+
+    const result = await speakTutorText(
+      "Teacher Mercy:\nCâu trả lời tự nhiên: **What do you usually do in the morning?** What do you usually do in the morning?",
+      {
+        targetLanguage: "en",
+        preferCloudVoice: true,
+        fallbackToBrowserTts: true,
+      },
+    );
+
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "What do you usually do in the morning?",
+      language: "en",
+    });
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    expect(utterance.text).toBe("What do you usually do in the morning?");
+    expect(result.text).toBe("What do you usually do in the morning?");
+  });
+
   it("maps target language to the correct browser voice locale", async () => {
     const synth = installSpeechSynthesis();
 
