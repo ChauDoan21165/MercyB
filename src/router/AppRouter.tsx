@@ -401,6 +401,56 @@ function NotFound() {
 }
 
 function RouteFallback() {
+  const location = useLocation();
+  if (location.pathname.startsWith("/ai-tutor")) {
+    return (
+      <main
+        aria-label="Loading AI Tutor"
+        style={{
+          minHeight: "calc(100vh - 72px)",
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "center",
+          padding: "32px 16px",
+          background: "#ffffff",
+        }}
+      >
+        <section
+          style={{
+            width: "100%",
+            maxWidth: 720,
+            textAlign: "center",
+            border: "1px solid rgba(99, 102, 241, 0.16)",
+            borderRadius: 18,
+            padding: 20,
+            background: "rgba(238, 242, 255, 0.42)",
+          }}
+        >
+          <img
+            src="/teacher-mercy.webp"
+            alt="Teacher Mercy"
+            width={72}
+            height={72}
+            style={{
+              width: 72,
+              height: 72,
+              borderRadius: 9999,
+              objectFit: "cover",
+              display: "block",
+              margin: "0 auto 12px",
+              border: "1px solid rgba(99, 102, 241, 0.18)",
+            }}
+          />
+          <div style={{ fontSize: 18, fontWeight: 950, color: "#0f172a" }}>
+            Teacher Mercy AI Tutor
+          </div>
+          <div style={{ marginTop: 4, fontSize: 13, fontWeight: 700, color: "#64748b" }}>
+            Loading tutor tools...
+          </div>
+        </section>
+      </main>
+    );
+  }
   return <div style={{ padding: 24, opacity: 0.72 }}>Loading…</div>;
 }
 

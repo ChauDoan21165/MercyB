@@ -33,6 +33,23 @@
          for the SPA render. fetchpriority="high" signals this is the
          LCP candidate. Lighthouse PR 3. -->
     <link rel="preload" as="image" href="/teacher-mercy.avif" type="image/avif" fetchpriority="high" />
+    <script>
+      (function () {
+        try {
+          document.documentElement.setAttribute(
+            'data-mb-route',
+            window.location.pathname.indexOf('/ai-tutor') === 0 ? 'ai-tutor' : 'default'
+          );
+        } catch (e) {
+          document.documentElement.setAttribute('data-mb-route', 'default');
+        }
+      })();
+    </script>
+    <style>
+      html[data-mb-route="ai-tutor"] #mb-static-hero {
+        display: none !important;
+      }
+    </style>
 
     <!-- Block Chrome auto-translate site-wide. Triggers React reconciliation
          crashes on Vietnamese-locale Chrome Mobile users when <font>/<b>
