@@ -4,12 +4,14 @@
 
 import { Link } from "react-router-dom";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
-
-type AITutorTarget = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
+import {
+  resolveTutorTargetLanguage,
+  type TutorLanguageCode,
+} from "@/lib/tutor/languageRegistry";
 
 type AITutorCtaBannerProps = {
   uiLang: string;
-  target?: AITutorTarget;
+  target?: TutorLanguageCode;
 };
 
 export default function AITutorCtaBanner({ uiLang, target = "en" }: AITutorCtaBannerProps) {
@@ -23,7 +25,7 @@ export default function AITutorCtaBanner({ uiLang, target = "en" }: AITutorCtaBa
     uiLang === "en"
       ? "Real AI correction · memory · review"
       : "Sửa lỗi bằng AI thật · ghi nhớ · ôn tập";
-  const tutorHref = `/ai-tutor?target=${target}`;
+  const tutorHref = `/ai-tutor?target=${resolveTutorTargetLanguage(target)}`;
 
   return (
     <div className="mt-3 rounded-xl border border-indigo-200 bg-indigo-50/60 p-3">
