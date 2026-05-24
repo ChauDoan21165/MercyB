@@ -56,6 +56,7 @@ export default function ConversationMode({
   tutorCopy,
 }: Props) {
   const isEmpty = !input.trim();
+  const isLogicMode = mode === "logic";
   const { ui } = tutorCopy;
   const allowTts = mode !== "logic";
   const modeCopy = {
@@ -220,19 +221,21 @@ export default function ConversationMode({
             if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) onSend();
           }}
         />
-        <div className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
-          <TeacherMercyVoiceControls
-            kind="mic"
-            supported={micSupported}
-            active={micListening}
-            unavailableLabel={tutorCopy.micLabels.unavailable}
-            inactiveLabel={tutorCopy.micLabels.input}
-            activeLabel={tutorCopy.micLabels.listening}
-            ariaStart={tutorCopy.micLabels.ariaStart}
-            ariaStop={tutorCopy.micLabels.ariaStop}
-            onToggle={onMicToggle}
-            fallbackTestId="ai-tutor-conversation-mic-fallback"
-          />
+        <div className={`mt-3 grid gap-2 ${isLogicMode ? "" : "sm:grid-cols-[minmax(0,1fr)_auto]"}`}>
+          {!isLogicMode && (
+            <TeacherMercyVoiceControls
+              kind="mic"
+              supported={micSupported}
+              active={micListening}
+              unavailableLabel={tutorCopy.micLabels.unavailable}
+              inactiveLabel={tutorCopy.micLabels.input}
+              activeLabel={tutorCopy.micLabels.listening}
+              ariaStart={tutorCopy.micLabels.ariaStart}
+              ariaStop={tutorCopy.micLabels.ariaStop}
+              onToggle={onMicToggle}
+              fallbackTestId="ai-tutor-conversation-mic-fallback"
+            />
+          )}
           <button
             type="button"
             onClick={onSend}

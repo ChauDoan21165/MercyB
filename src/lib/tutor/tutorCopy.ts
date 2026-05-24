@@ -201,11 +201,11 @@ export function getTutorCopy(targetLanguage: unknown, uiLanguage: unknown): Tuto
         speakInputLabel: "Sentence to practice aloud",
         speakPlaceholder: `Speak or type a ${pack.nameEn} sentence for Mercy...`,
         speakSend: "Practice speaking",
-        logicTitle: "Logic coach",
-        logicDescription: `Ask why a ${pack.nameEn} correction works. Mercy explains the pattern clearly.`,
-        logicInputLabel: "Ask why",
-        logicPlaceholder: `Ask Mercy why a ${pack.nameEn} sentence works this way...`,
-        logicSend: "Explain why",
+        logicTitle: "English logic coach",
+        logicDescription: "Mercy explains why natural English works, why Vietlish sounds unnatural, and which pattern to remember.",
+        logicInputLabel: "English or Vietlish sentence",
+        logicPlaceholder: "Ask why “I’m interested in English” is natural, why “I go school” is incomplete, or why “I bought a hat yesterday” needs past tense...",
+        logicSend: "Explain the logic",
       }
     : {
         title: target === "en" ? "Teacher Mercy AI Tutor" : `Teacher Mercy · Gia sư ${pack.nameVi}`,
@@ -272,11 +272,11 @@ export function getTutorCopy(targetLanguage: unknown, uiLanguage: unknown): Tuto
         speakInputLabel: "Câu để luyện nói",
         speakPlaceholder: `Nói hoặc gõ một câu ${pack.nameVi} cho Mercy...`,
         speakSend: "Luyện nói",
-        logicTitle: "Giải thích vì sao",
-        logicDescription: `Hỏi vì sao một câu ${pack.nameVi} đúng hơn. Mercy giải thích quy tắc bằng tiếng Việt.`,
-        logicInputLabel: "Câu hỏi vì sao",
-        logicPlaceholder: `Hỏi Mercy vì sao câu ${pack.nameVi} dùng cấu trúc này...`,
-        logicSend: "Giải thích",
+        logicTitle: "Giải thích logic tiếng Anh",
+        logicDescription: "Mercy giúp bạn hiểu vì sao tiếng Anh nói như vậy, để tránh dịch từng chữ từ tiếng Việt.",
+        logicInputLabel: "Câu tiếng Anh/Vietlish bạn muốn hiểu",
+        logicPlaceholder: "Ví dụ: Vì sao nói “I’m interested in English” mà không nói “I’m interesting in English”?",
+        logicSend: "Giải thích logic",
       };
 
   return {
