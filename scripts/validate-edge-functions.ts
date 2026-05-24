@@ -11,8 +11,9 @@
 //
 // Env (loaded from .env.local then .env):
 //   VITE_SUPABASE_URL       — the supabase project URL
-//   VITE_SUPABASE_ANON_KEY  — needed in the apikey header so the
-//                             gateway routes the request to functions
+//   VITE_SUPABASE_ANON_KEY, SUPABASE_ANON_KEY, or
+//   VITE_SUPABASE_PUBLISHABLE_KEY — needed in the apikey header so the
+//                                  gateway routes the request to functions
 //
 // Exits 1 if any function is undeployed. Designed to run in CI so a
 // PR that adds a new function but forgets to deploy it fails the
@@ -27,11 +28,16 @@ for (const p of [".env.local", ".env"]) {
 }
 
 const SUPABASE_URL = (process.env.VITE_SUPABASE_URL ?? "").trim();
-const ANON_KEY = (process.env.VITE_SUPABASE_ANON_KEY ?? "").trim();
+const ANON_KEY = (
+  process.env.VITE_SUPABASE_ANON_KEY ??
+  process.env.SUPABASE_ANON_KEY ??
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY ??
+  ""
+).trim();
 
 if (!SUPABASE_URL || !ANON_KEY) {
   console.error(
-    "[validate-edge-functions] missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY",
+    "[validate-edge-functions] missing VITE_SUPABASE_URL and one of VITE_SUPABASE_ANON_KEY, SUPABASE_ANON_KEY, or VITE_SUPABASE_PUBLISHABLE_KEY",
   );
   process.exit(2);
 }
