@@ -14,6 +14,10 @@ export const de = {
   grammarHints: ["Movement verbs like gehen often use sein in Perfekt.", "Put the past participle at the end.", "Capitalize German nouns."],
   nextQuestionTemplates: ["Was machst du danach?", "Kannst du noch einen Satz sagen?", "Kannst du die Idee im Perfekt sagen?"],
   naturalReplies: ["Gut. Deine Morgenroutine ist klar.", "Gut gemacht. Deine Idee ist klar.", "Das klingt natürlich für einen einfachen Satz."],
+  fallbackMessages: {
+    correctionNeedsAi: "Mercy braucht den KI-Korrekturmodus für diesen deutschen Satz.",
+    conversationNeedsAi: "Mercy braucht den KI-Korrekturmodus, um dieses deutsche Gespräch fortzusetzen.",
+  },
   speakerLabels: { tutor: "Teacher Mercy", learner: "You", correctedVersion: "Corrected version", shortExplanation: "Giải thích ngắn", naturalReply: "Natural reply", thinking: "Mercy is thinking..." },
   micLabels: { input: "Nói câu của bạn", listening: "Đang nghe giọng của bạn...", helper: "Mercy sẽ chuyển giọng nói của bạn thành câu để sửa.", unavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.", ariaStart: "Nói câu của bạn để nhập bằng giọng nói", ariaStop: "Dừng nghe" },
 } satisfies TutorLanguagePack;

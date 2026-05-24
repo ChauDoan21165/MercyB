@@ -22,6 +22,10 @@ export type TutorLanguagePack = {
   grammarHints: string[];
   nextQuestionTemplates: string[];
   naturalReplies: string[];
+  fallbackMessages: {
+    correctionNeedsAi: string;
+    conversationNeedsAi: string;
+  };
   speakerLabels: {
     tutor: string;
     learner: string;
@@ -65,6 +69,7 @@ export type TutorCopy = TutorLanguagePack & {
     conversationCorrectedLabel: string;
     conversationExplanationLabel: string;
     conversationReplyLabel: string;
+    conversationFallback: string;
     emptyConversation: string;
     answerLabel: string;
     answerPlaceholder: string;
@@ -153,6 +158,7 @@ export function getTutorCopy(targetLanguage: unknown, uiLanguage: unknown): Tuto
         conversationCorrectedLabel: "Corrected",
         conversationExplanationLabel: "Explanation",
         conversationReplyLabel: "Mercy reply",
+        conversationFallback: "I can still help you practice. Try a simpler sentence, or use the AI correction engine when it is available.",
         emptyConversation: "Mercy will start with one easy question.",
         answerLabel: "Your answer",
         answerPlaceholder: `Type your ${pack.nameEn} answer here...`,
@@ -223,6 +229,7 @@ export function getTutorCopy(targetLanguage: unknown, uiLanguage: unknown): Tuto
         conversationCorrectedLabel: "Câu đã sửa",
         conversationExplanationLabel: "Giải thích",
         conversationReplyLabel: "Mercy trả lời",
+        conversationFallback: "Mercy vẫn có thể giúp bạn luyện tập. Hãy thử một câu đơn giản hơn, hoặc dùng bộ sửa lỗi AI khi khả dụng.",
         emptyConversation: "Mercy sẽ bắt đầu bằng một câu hỏi dễ.",
         answerLabel: "Câu trả lời của bạn",
         answerPlaceholder: `Gõ câu trả lời ${pack.nameVi} của bạn ở đây...`,

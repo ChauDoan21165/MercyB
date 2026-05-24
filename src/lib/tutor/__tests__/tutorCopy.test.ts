@@ -18,6 +18,7 @@ describe("getTutorCopy", () => {
     expect(copy.ui.inputLabel).toBe("Câu tiếng Pháp của bạn");
     expect(copy.ui.inputLabel).not.toMatch(/English sentence/i);
     expect(copy.starterQuestions[0]).toBe("Qu'est-ce que tu fais le matin ?");
+    expect(copy.fallbackMessages.conversationNeedsAi).toMatch(/conversation en français/);
   });
 
   it("returns Chinese target copy", () => {
@@ -37,5 +38,6 @@ describe("getTutorCopy", () => {
     expect(copy.ui.subtitle).toMatch(/Practice French with Mercy/);
     expect(copy.ui.inputLabel).toBe("Your French sentence");
     expect(copy.placeholder).toMatch(/gõ câu tiếng Pháp/);
+    expect(copy.ui.conversationFallback).toMatch(/I can still help/);
   });
 });

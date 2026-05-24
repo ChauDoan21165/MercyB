@@ -38,6 +38,10 @@ export const fr = {
     "Bien joué. Ton idée est claire.",
     "C'est naturel pour une phrase de débutant.",
   ],
+  fallbackMessages: {
+    correctionNeedsAi: "Mercy a besoin du moteur de correction IA pour cette phrase française.",
+    conversationNeedsAi: "Mercy a besoin du moteur de correction IA pour continuer cette conversation en français.",
+  },
   speakerLabels: {
     tutor: "Teacher Mercy",
     learner: "You",

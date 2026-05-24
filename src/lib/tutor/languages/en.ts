@@ -38,6 +38,10 @@ export const en = {
     "Good. Your idea is clear.",
     "That sounds natural for a beginner sentence.",
   ],
+  fallbackMessages: {
+    correctionNeedsAi: "Mercy needs the AI correction engine for this English sentence.",
+    conversationNeedsAi: "Mercy needs the AI correction engine to continue this English conversation.",
+  },
   speakerLabels: {
     tutor: "Teacher Mercy",
     learner: "You",

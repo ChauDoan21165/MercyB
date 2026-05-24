@@ -14,6 +14,10 @@ export const es = {
   grammarHints: ["Use pretérito for completed past actions like ayer.", "Spanish often drops yo when the verb is clear.", "Keep adjective agreement in mind."],
   nextQuestionTemplates: ["¿Qué haces después de eso?", "¿Puedes decir una frase más?", "¿Puedes usar ayer en otra frase?"],
   naturalReplies: ["Muy bien. Tu rutina de la mañana está clara.", "Bien hecho. Tu idea es clara.", "Suena natural para una frase de práctica."],
+  fallbackMessages: {
+    correctionNeedsAi: "Mercy necesita el motor de corrección con IA para esta frase en español.",
+    conversationNeedsAi: "Mercy necesita el motor de corrección con IA para continuar esta conversación en español.",
+  },
   speakerLabels: { tutor: "Teacher Mercy", learner: "You", correctedVersion: "Corrected version", shortExplanation: "Short explanation", naturalReply: "Natural reply", thinking: "Mercy is thinking..." },
   micLabels: { input: "Speak your sentence", listening: "Listening to your voice...", helper: "Mercy turns your voice into text for correction.", unavailable: "Microphone unavailable in this browser. You can still type your sentence.", ariaStart: "Speak your sentence for voice input", ariaStop: "Stop listening" },
 } satisfies TutorLanguagePack;
