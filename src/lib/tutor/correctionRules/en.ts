@@ -51,7 +51,15 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-third-person-daily-go-eat-have",
     detects: (input) =>
-      /\b(She|He|It)\s+(go|eat|have)\b/i.test(input),
+      /\b(She|He|It)\s+(go|eat|have)\b/i.test(input) &&
+      /\bevery day\b/i.test(input),
+    apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
+  },
+  {
+    id: "en-third-person-school-routine",
+    detects: (input) =>
+      /\b(She|He|It)\s+go\s+to\s+school\b/i.test(input) &&
+      !/\byesterday\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
   },
 ];

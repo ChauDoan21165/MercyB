@@ -10,8 +10,12 @@ describe("correctionEngine", () => {
     ["I buy a hat yesterday.", "I bought a hat yesterday."],
     ["She go to school every day.", "She goes to school every day."],
     ["He eat rice yesterday.", "He ate rice yesterday."],
+    ["She go yesterday.", "She went yesterday."],
+    ["He have a test yesterday.", "He had a test yesterday."],
     ["I have lunch yesterday.", "I had lunch yesterday."],
     ["I do homework yesterday.", "I did homework yesterday."],
+    ["He go to school every day.", "He goes to school every day."],
+    ["She eat rice every day.", "She eats rice every day."],
     ["It have food every day.", "It has food every day."],
   ])("corrects beginner English fallback: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -39,6 +43,19 @@ describe("correctionEngine", () => {
       corrected: "",
       appliedRuleIds: [],
       message: AI_CORRECTION_REQUIRED_MESSAGE,
+    });
+  });
+
+  it("leaves unsupported French and Chinese placeholder rules unchanged", () => {
+    expect(correctWithTutorRules("Je suis aller au marché", "fr")).toMatchObject({
+      status: "unchanged",
+      corrected: "Je suis aller au marché.",
+      appliedRuleIds: [],
+    });
+    expect(correctWithTutorRules("我昨天去商店", "zh")).toMatchObject({
+      status: "unchanged",
+      corrected: "我昨天去商店。",
+      appliedRuleIds: [],
     });
   });
 });
