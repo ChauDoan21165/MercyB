@@ -22,6 +22,10 @@ const { putCorrection, getMemorySummary, markPracticed } = vi.hoisted(() => ({
   markPracticed: vi.fn(async () => {}),
 }));
 
+vi.mock("@/providers/AuthProvider", () => ({
+  useAuth: vi.fn(() => ({ user: null, isLoading: false })),
+}));
+
 vi.mock("@/lib/ai-tutor/learningMemory", () => ({
   putCorrection, getMemorySummary, markPracticed,
 }));
@@ -35,6 +39,11 @@ describe("AiTutor mock UI", () => {
   it("renders the mock badge", () => {
     render(<AiTutorPage />);
     expect(screen.getByText("Mock")).toBeInTheDocument();
+  });
+
+  it("defaults to floating-safe layout until the container is measured wide", () => {
+    render(<AiTutorPage />);
+    expect(screen.getByTestId("ai-tutor-shell")).toHaveAttribute("data-floating-shell", "true");
   });
 
   it("shows empty state before first submit", () => {
@@ -178,5 +187,43 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     expect(screen.queryByTestId("ai-tutor-memory-card")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-memory-empty")).not.toBeInTheDocument();
+  });
+
+  // ── Greeting tests ──────────────────────────────────────────────
+  it("greeting shows nickname when user has one", async () => {
+    const { useAuth } = await import("@/providers/AuthProvider");
+    (useAuth as ReturnType<typeof vi.fn>).mockReturnValue({
+      user: { user_metadata: { nickname: "Mai" } },
+      isLoading: false,
+    });
+    render(<AiTutorPage />);
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-greeting")).toHaveTextContent("Chào Mai");
+    });
+  });
+
+  it("greeting shows fallback when user has no nickname", async () => {
+    const { useAuth } = await import("@/providers/AuthProvider");
+    (useAuth as ReturnType<typeof vi.fn>).mockReturnValue({
+      user: { user_metadata: {} },
+      isLoading: false,
+    });
+    render(<AiTutorPage />);
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-greeting")).toHaveTextContent("Chào bạn");
+    });
+  });
+
+  it("greeting never shows email", async () => {
+    const { useAuth } = await import("@/providers/AuthProvider");
+    (useAuth as ReturnType<typeof vi.fn>).mockReturnValue({
+      user: { email: "test@mercyblade.com", user_metadata: { nickname: "Lan" } },
+      isLoading: false,
+    });
+    render(<AiTutorPage />);
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-greeting")).toHaveTextContent("Chào Lan");
+      expect(screen.getByTestId("ai-tutor-greeting")).not.toHaveTextContent("test@mercyblade.com");
+    });
   });
 });

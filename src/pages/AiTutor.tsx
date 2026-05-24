@@ -2,7 +2,7 @@
 // AI Tutor mock UI — static responses, no real provider calls.
 // M3: Safe aggregate reminder card using IndexedDB getMemorySummary.
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/providers/AuthProvider";
 import {
   putCorrection,
@@ -69,6 +69,14 @@ const MOCK_RESULTS: Array<CorrectionResult & { feedback: PracticeFeedback }> = [
 const MOCK_DELAY_MS = 600;
 
 export default function AiTutorPage() {
+  const shellRef = useRef<HTMLElement | null>(null);
+
+  // ── Display name / greeting ─────────────────────────────────────
+  const { user } = useAuth();
+  const nickname: string | undefined =
+    (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
+  const greetingName = (nickname ?? "").trim() || undefined;
+
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CorrectionResult | null>(null);
@@ -84,6 +92,7 @@ export default function AiTutorPage() {
   const [memoryLoaded, setMemoryLoaded] = useState(false);
   const [memory, setMemory] = useState<MemorySummary | null>(null);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
+  const [isFloatingShell, setIsFloatingShell] = useState(true);
 
   const loadMemory = async () => {
     try {
@@ -95,6 +104,40 @@ export default function AiTutorPage() {
   };
 
   useEffect(() => { loadMemory(); }, []);
+
+  useEffect(() => {
+    const shell = shellRef.current;
+    if (!shell) return undefined;
+
+    const detectLayoutMode = () => {
+      const shellWidth = shell.getBoundingClientRect().width;
+      const explicitFloatingShell = Boolean(
+        shell.parentElement?.closest(
+          [
+            "[data-floating-shell]",
+            "[data-ai-tutor-floating-shell]",
+            "[data-mercy-floating-shell]",
+            ".ai-tutor-floating-shell",
+            ".mercy-floating-shell",
+          ].join(","),
+        ),
+      );
+
+      setIsFloatingShell(explicitFloatingShell || shellWidth < 1040);
+    };
+
+    detectLayoutMode();
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", detectLayoutMode);
+      return () => window.removeEventListener("resize", detectLayoutMode);
+    }
+
+    const observer = new ResizeObserver(detectLayoutMode);
+    observer.observe(shell);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async () => {
     const trimmed = input.trim();
@@ -162,7 +205,12 @@ export default function AiTutorPage() {
   const hasResult = Boolean(result && !loading);
 
   return (
-    <main className="ai-tutor-shell mx-auto min-h-[calc(100vh-72px)] w-full max-w-full px-4 py-6 sm:px-6 lg:px-8">
+    <main
+      ref={shellRef}
+      data-testid="ai-tutor-shell"
+      data-floating-shell={isFloatingShell ? "true" : "false"}
+      className="ai-tutor-shell mx-auto min-h-[calc(100vh-72px)] w-full max-w-full px-4 py-6 sm:px-6 lg:px-8"
+    >
       <style>{`
         .ai-tutor-shell {
           container-type: inline-size;
@@ -183,11 +231,14 @@ export default function AiTutorPage() {
           max-width: 100%;
           min-width: 0;
         }
-        @container (min-width: 920px) {
-          .ai-tutor-result-layout[data-expanded="true"] {
+        @container (min-width: 1040px) {
+          .ai-tutor-shell[data-floating-shell="false"] .ai-tutor-result-layout[data-expanded="true"] {
             grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
             align-items: start;
           }
+        }
+        .ai-tutor-shell[data-floating-shell="true"] .ai-tutor-result-layout[data-expanded="true"] {
+          grid-template-columns: minmax(0, 1fr);
         }
         .ai-tutor-actions {
           display: flex;
@@ -234,6 +285,18 @@ export default function AiTutorPage() {
       `}</style>
       {/* Header */}
       <section className="mx-auto mb-6 w-full max-w-3xl text-center">
+        {/* Greeting — uses nickname, never email */}
+        <div className="mb-3 text-sm font-bold text-slate-600" data-testid="ai-tutor-greeting">
+          {greetingName ? (
+            <>
+              Chào {greetingName} · Hi {greetingName}
+            </>
+          ) : (
+            <>
+              Chào bạn · Hi there
+            </>
+          )}
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <h1 className="ai-tutor-shell-title text-2xl font-black text-slate-950 sm:text-3xl">
             AI Tutor
