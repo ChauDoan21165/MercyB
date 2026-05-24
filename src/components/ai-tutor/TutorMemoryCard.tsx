@@ -3,6 +3,7 @@
 // Extracted from AiTutor.tsx.
 
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import { planTodayLesson } from "@/lib/tutor/todayLessonPlanner";
 
 type Props = {
   memoryLoaded: boolean;
@@ -52,6 +53,50 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
           Gợi ý tiếp theo: {memory.suggestedNextFocus}
         </div>
       )}
+    </section>
+  );
+}
+
+export function TutorTodayLessonCard({ memoryLoaded, memory }: Props) {
+  if (!memoryLoaded) return null;
+  const plan = planTodayLesson(memory);
+  const modeLabel = {
+    journey: "Journey",
+    grammar: "Grammar",
+    speak: "Speak",
+    logic: "Logic",
+  }[plan.suggestedMode];
+
+  return (
+    <section
+      data-testid="ai-tutor-today-lesson"
+      className="mx-auto mb-4 w-full max-w-3xl rounded-[14px] border border-emerald-100 bg-emerald-50/60 px-4 py-3 shadow-sm"
+      style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
+    >
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <div className="text-xs font-black uppercase text-emerald-600">
+            Today's lesson
+          </div>
+          <h2 className="mt-1 text-sm font-black text-slate-900" style={{ overflowWrap: "break-word" }}>
+            {plan.lessonTitle}
+          </h2>
+        </div>
+        <span className="rounded-full bg-white px-3 py-1 text-[11px] font-black uppercase text-emerald-700 shadow-sm">
+          {modeLabel} · {plan.estimatedMinutes} min
+        </span>
+      </div>
+      <p className="mt-2 text-xs font-semibold leading-5 text-slate-600" style={{ overflowWrap: "break-word" }}>
+        {plan.reason}
+      </p>
+      <ol className="mt-2 list-decimal space-y-1 pl-5 text-xs font-medium leading-5 text-slate-700">
+        {plan.steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+      <div className="mt-2 text-xs font-bold text-emerald-700" style={{ overflowWrap: "break-word" }}>
+        Next focus: {plan.nextFocus}
+      </div>
     </section>
   );
 }

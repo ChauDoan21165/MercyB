@@ -915,7 +915,10 @@ describe("AiTutor mock UI", () => {
   it("M3: shows reminder card when memory exists", async () => {
     getMemorySummary.mockResolvedValue({ ...POPULATED_SUMMARY });
     render(<AiTutorPage />);
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-card")).toBeInTheDocument());
+    expect(screen.getByText(/Today's lesson/)).toBeInTheDocument();
+    expect(screen.getByText(/Practice past-tense in present-simple/)).toBeInTheDocument();
     expect(screen.getByText(/6 câu đã sửa/)).toBeInTheDocument();
     expect(screen.getByText(/4 đã luyện tập/)).toBeInTheDocument();
   });
@@ -971,6 +974,8 @@ describe("AiTutor mock UI", () => {
   it("M3: shows empty memory state when no corrections", async () => {
     getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
     render(<AiTutorPage />);
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
+    expect(screen.getByText("Start with one clear daily sentence")).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     expect(screen.getByText(/Chưa có lịch sử sửa câu/)).toBeInTheDocument();
   });
@@ -978,6 +983,7 @@ describe("AiTutor mock UI", () => {
   it("M3: reminder card hidden when memory not yet loaded", () => {
     getMemorySummary.mockReturnValue(new Promise(() => {}));
     render(<AiTutorPage />);
+    expect(screen.queryByTestId("ai-tutor-today-lesson")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-memory-card")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-memory-empty")).not.toBeInTheDocument();
   });
