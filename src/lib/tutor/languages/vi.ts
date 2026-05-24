@@ -8,6 +8,11 @@ export const vi = {
   conversationTitle: "Vietnamese conversation with Mercy",
   inputLabel: "Vietnamese sentence",
   placeholder: 'gõ câu tiếng Việt của bạn ở đây, ví dụ: "Tôi buồn vì mất cái mũ đẹp."',
+  fallbackMessages: {
+    correctionRequired: "Mercy cần bộ sửa lỗi AI cho câu tiếng Việt này.",
+    emptyConversation: "Mercy sẽ bắt đầu bằng một câu hỏi dễ.",
+    voiceUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+  },
   exampleSentences: ["Tôi buồn vì mất cái mũ đẹp.", "Hôm qua tôi đi chợ.", "Tôi muốn luyện tiếng Việt."],
   starterQuestions: ["Buổi sáng bạn thường làm gì?", "Hôm qua bạn đã làm gì?", "Hôm nay bạn muốn luyện gì?"],
   commonBeginnerMistakes: ["Using vague classifiers like cái when chiếc sounds more natural.", "Missing đã when the sentence needs a completed-action feel.", "Repeating spoken fragments after dictation."],

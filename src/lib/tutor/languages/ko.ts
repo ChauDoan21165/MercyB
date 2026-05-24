@@ -8,6 +8,11 @@ export const ko = {
   conversationTitle: "Korean conversation with Mercy",
   inputLabel: "Korean sentence",
   placeholder: 'gõ câu tiếng Hàn của bạn ở đây, ví dụ: "저는 어제 시장에 가요"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this Korean sentence.",
+    emptyConversation: "Mercy가 쉬운 질문으로 시작합니다.",
+    voiceUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+  },
   exampleSentences: ["저는 어제 시장에 가요", "아침에 커피를 마셔요.", "한국어를 연습하고 싶어요."],
   starterQuestions: ["아침에 보통 무엇을 해요?", "어제 무엇을 했어요?", "오늘 무엇을 연습하고 싶어요?"],
   commonBeginnerMistakes: ["Using present form for past actions.", "Forgetting polite past endings.", "Placing time words unnaturally."],

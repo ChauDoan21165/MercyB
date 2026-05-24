@@ -14,8 +14,6 @@ import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import {
-  TARGET_COPY,
-  UI_COPY,
   MOCK_RESULTS_BY_TARGET,
   buildInputAwareCorrection,
   getTutorTargetFromSearch,
@@ -23,14 +21,9 @@ import {
   normalizeSpokenText,
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
-import { getTutorCopy } from "@/lib/tutor/tutorCopy";
+import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
-import type {
-  TutorTarget,
-  ExplainLanguage,
-  TutorTargetCopy,
-  UiCopy,
-} from "@/lib/ai-tutor/tutorUiCopy";
+import type { ExplainLanguage } from "@/lib/ai-tutor/tutorUiCopy";
 import {
   buildConversationTurn,
   buildCorrectionTurn,
@@ -120,7 +113,7 @@ function buildConversationReply(
     explanation: localCorrection.ok ? mock.explanation[explainLanguage] : localCorrection.message,
     naturalReply: localCorrection.ok
       ? tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation
-      : "I can still help you practice. Try a simpler sentence, or use the AI correction engine when it is available.",
+      : tutorCopy.fallbackMessages.correctionRequired,
     nextQuestion: tutorCopy.nextQuestionTemplates[0] ?? "",
   });
   return { ...turn, role: "mercy" };
@@ -186,17 +179,16 @@ export default function AiTutorPage() {
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
 
-  const targetCopy: TutorTargetCopy = TARGET_COPY[target];
-  const uiCopy: UiCopy = UI_COPY[explainLanguage];
+  const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const modeTabs = AI_TUTOR_MODES.map((mode) => ({
     id: mode,
     label: mode === "conversation"
-      ? "Journey"
+      ? tutorCopy.ui.conversationModeTab
       : mode === "grammar"
-        ? "Grammar"
+        ? tutorCopy.ui.correctionModeTab
         : mode === "speak"
-          ? "Speak"
-          : "Logic",
+          ? tutorCopy.ui.speakModeTab
+          : tutorCopy.ui.logicModeTab,
   }));
 
   const sttBaseInputRef = useRef<string>("");
@@ -403,17 +395,17 @@ export default function AiTutorPage() {
       greetingTestId="ai-tutor-greeting"
       floating={isFloatingShell}
       greetingName={greetingName}
-      title={explainLanguage === "en" ? targetCopy.title : uiCopy.title(targetCopy, target)}
-      subtitle={uiCopy.subtitle(targetCopy)}
-      helper={uiCopy.helper(targetCopy)}
-      eyebrow={targetCopy.eyebrow}
+      title={tutorCopy.ui.title}
+      subtitle={tutorCopy.ui.subtitle}
+      helper={tutorCopy.ui.helper}
+      eyebrow={tutorCopy.ui.eyebrow}
       badge="Mock"
       modeTabs={modeTabs}
       activeMode={mode}
       onModeChange={setMode}
       memorySlot={aiTutorConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
-      footer={`${uiCopy.footer} ${getSafetyLabel(aiTutorConfig)}.`}
+      footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
       {mode === "grammar" ? (
         <CorrectionMode
@@ -448,8 +440,7 @@ export default function AiTutorPage() {
           }}
           onPracticeSubmit={handlePracticeSubmit}
           onClear={handleClear}
-          targetCopy={targetCopy}
-          uiCopy={uiCopy}
+          tutorCopy={tutorCopy}
         />
       ) : (
         <ConversationMode
@@ -468,8 +459,7 @@ export default function AiTutorPage() {
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}
           onSpeak={handleConversationSpeak}
-          targetCopy={targetCopy}
-          uiCopy={uiCopy}
+          tutorCopy={tutorCopy}
         />
       )}
     </TeacherMercyLearningShell>

@@ -8,6 +8,11 @@ export const es = {
   conversationTitle: "Spanish conversation with Mercy",
   inputLabel: "Spanish sentence",
   placeholder: 'type your Spanish sentence here, for example: "Yo fui al mercado ayer"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this Spanish sentence.",
+    emptyConversation: "Mercy empezará con una pregunta fácil.",
+    voiceUnavailable: "Microphone unavailable in this browser. You can still type your sentence.",
+  },
   exampleSentences: ["Yo fui al mercado ayer.", "Tomo café por la mañana.", "Quiero practicar español."],
   starterQuestions: ["¿Qué haces normalmente por la mañana?", "¿Qué hiciste ayer?", "¿Qué quieres practicar hoy?"],
   commonBeginnerMistakes: ["Using the wrong past tense for completed actions.", "Overusing subject pronouns.", "Translating English word order too directly."],

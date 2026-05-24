@@ -8,6 +8,11 @@ export const zh = {
   conversationTitle: "中文对话练习",
   inputLabel: "Chinese sentence",
   placeholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this Chinese sentence.",
+    emptyConversation: "Mercy 会先问一个简单的问题。",
+    voiceUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+  },
   exampleSentences: [
     "我昨天去商店",
     "我早上喝咖啡",

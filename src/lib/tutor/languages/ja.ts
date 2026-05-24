@@ -8,6 +8,11 @@ export const ja = {
   conversationTitle: "Japanese conversation with Mercy",
   inputLabel: "Japanese sentence",
   placeholder: 'gõ câu tiếng Nhật của bạn ở đây, ví dụ: "私は昨日店に行く"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this Japanese sentence.",
+    emptyConversation: "Mercy は簡単な質問から始めます。",
+    voiceUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+  },
   exampleSentences: ["私は昨日店に行く", "朝、コーヒーを飲みます。", "日本語を練習したいです。"],
   starterQuestions: ["朝、たいてい何をしますか？", "昨日、何をしましたか？", "今日は何を練習したいですか？"],
   commonBeginnerMistakes: ["Using dictionary form for a past event.", "Missing polite past form.", "Choosing the wrong movement particle."],

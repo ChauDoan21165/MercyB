@@ -8,6 +8,11 @@ export const en = {
   conversationTitle: "Conversation with Mercy",
   inputLabel: "English sentence",
   placeholder: 'gõ câu của bạn ở đây, ví dụ: "She go to school every day"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this one.",
+    emptyConversation: "Mercy will start with one easy question.",
+    voiceUnavailable: "Microphone unavailable in this browser. You can still type your sentence.",
+  },
   exampleSentences: [
     "She go to school every day.",
     "I buy a hat yesterday.",

@@ -8,6 +8,11 @@ export const fr = {
   conversationTitle: "Conversation en français avec Mercy",
   inputLabel: "French sentence",
   placeholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this French sentence.",
+    emptyConversation: "Mercy ouvrira avec une question facile.",
+    voiceUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+  },
   exampleSentences: [
     "Je suis aller au marché.",
     "Toute lecture neuve d'un texte canonique paraît hérétique.",

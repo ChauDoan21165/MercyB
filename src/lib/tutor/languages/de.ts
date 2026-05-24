@@ -8,6 +8,11 @@ export const de = {
   conversationTitle: "Conversation in German with Mercy",
   inputLabel: "German sentence",
   placeholder: 'gõ câu tiếng Đức của bạn ở đây, ví dụ: "Ich gehe gestern zum Markt"',
+  fallbackMessages: {
+    correctionRequired: "Mercy needs the AI correction engine for this German sentence.",
+    emptyConversation: "Mercy beginnt mit einer einfachen Frage.",
+    voiceUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+  },
   exampleSentences: ["Ich gehe gestern zum Markt.", "Ich trinke Kaffee am Morgen.", "Ich lerne Deutsch."],
   starterQuestions: ["Was machst du morgens normalerweise?", "Was hast du gestern gemacht?", "Was möchtest du üben?"],
   commonBeginnerMistakes: ["Using present tense with gestern.", "Putting the past participle too early.", "Using haben instead of sein with movement verbs."],
