@@ -9,6 +9,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 
 import {
   JAPANESE_TOTAL_LESSONS,
@@ -110,6 +111,8 @@ export default function JapaneseLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <nav

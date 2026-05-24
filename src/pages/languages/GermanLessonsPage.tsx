@@ -14,6 +14,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 import { useLessonData } from "@/hooks/useLessonData";
 
 import {
@@ -127,6 +128,8 @@ export default function GermanLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <nav

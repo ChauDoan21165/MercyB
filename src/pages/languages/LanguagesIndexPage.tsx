@@ -6,6 +6,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 import {
   Globe,
   ArrowRight,
@@ -180,6 +181,8 @@ export default function LanguagesIndexPage() {
         <p className="mt-3 text-sm text-slate-700">
           {uiLang === "en" ? SUBTITLE_EN : SUBTITLE_VI}
         </p>
+
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <div className="grid gap-3 sm:grid-cols-2">

@@ -12,6 +12,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 
 import {
   KOREAN_TOTAL_LESSONS,
@@ -123,6 +124,8 @@ export default function KoreanLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <nav

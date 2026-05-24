@@ -13,6 +13,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 
 import {
   CHINESE_TOTAL_LESSONS,
@@ -123,6 +124,9 @@ export default function ChineseLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        {/* AI Tutor CTA */}
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <nav

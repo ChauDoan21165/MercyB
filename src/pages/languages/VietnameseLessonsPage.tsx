@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
+import { useLessonUiLang } from "@/components/LessonUiLangToggle";
 
 import type { VietnameseLesson, VietnameseCefrLevel } from "@/languages/vietnamese/lessons";
 import { normalizeVietnameseLesson } from "@/languages/vietnamese/normalize";
@@ -19,6 +21,7 @@ const HERO_SUBTITLE =
 const VIETNAMESE_LEVELS: VietnameseCefrLevel[] = ["A1", "B1", "B2"];
 
 export default function VietnameseLessonsPage() {
+  const [uiLang] = useLessonUiLang();
   const theme = lessonThemes.vietnamese;
   const [lessons, setLessons] = useState<VietnameseLesson[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -74,7 +77,12 @@ export default function VietnameseLessonsPage() {
     const pronunciationCount = lessons.filter((lesson) =>
       lesson.title_en.startsWith("Pronunciation:"),
     ).length;
-    return { phraseCount, dialogueCount, pronunciationCount };
+    return {
+      lessonCount: lessons.length,
+      phraseCount,
+      dialogueCount,
+      pronunciationCount,
+    };
   }, [lessons]);
 
   const grouped = useMemo(() => {
@@ -84,24 +92,6 @@ export default function VietnameseLessonsPage() {
       lessons: normalized.filter((lesson) => lesson.level === level),
     }));
   }, [normalized]);
-
-  // Loading state
-  if (error) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-12 text-center">
-        <p className="text-sm text-red-600">Failed to load lessons.</p>
-        <p className="mt-1 text-xs text-slate-500">{error}</p>
-      </div>
-    );
-  }
-
-  if (!lessons) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-12 text-center">
-        <p className="text-sm text-slate-500">Loading Vietnamese lessons…</p>
-      </div>
-    );
-  }
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
@@ -126,7 +116,7 @@ export default function VietnameseLessonsPage() {
         </p>
         {stats && (
           <p className="mt-2 text-sm font-bold" style={{ color: theme.accent }}>
-            {lessons.length} lessons · {stats.phraseCount} phrases ·{" "}
+            {stats.lessonCount} lessons · {stats.phraseCount} phrases ·{" "}
             {stats.dialogueCount} dialogues · {stats.pronunciationCount} pronunciation mini-lessons
           </p>
         )}
@@ -139,42 +129,55 @@ export default function VietnameseLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
-      <div className="space-y-6">
-        {grouped.map(
-          (group) =>
-            group.lessons.length > 0 && (
-              <section key={group.level}>
-                <header className="mb-2 flex items-baseline justify-between">
-                  <h2 className="text-base font-semibold text-slate-900">
-                    {cefrPillLabels[group.level] ?? group.level}
-                  </h2>
-                  <span
-                    className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${cefrPillColors[group.level] ?? ""}`}
-                  >
-                    {group.lessons.length} lessons
-                  </span>
-                </header>
-                <div className="space-y-2">
-                  {group.lessons.map((lesson) => (
-                    <LessonRenderer
-                      key={lesson.id}
-                      lesson={lesson}
-                      theme={theme}
-                      // Vietnamese-for-foreigners: title.vi = English
-                      // lesson title, title.en = English subtitle — both
-                      // the learner's language, not a UI duplicate. Keep
-                      // both lines (the single-language collapse would
-                      // otherwise drop the subtitle).
-                      dualTitle
-                    />
-                  ))}
-                </div>
-              </section>
-            ),
-        )}
-      </div>
+      {error ? (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-5 text-center">
+          <p className="text-sm text-red-600">Failed to load lessons.</p>
+          <p className="mt-1 text-xs text-slate-500">{error}</p>
+        </div>
+      ) : !lessons ? (
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          Loading Vietnamese lessons…
+        </p>
+      ) : (
+        <div className="space-y-6">
+          {grouped.map(
+            (group) =>
+              group.lessons.length > 0 && (
+                <section key={group.level}>
+                  <header className="mb-2 flex items-baseline justify-between">
+                    <h2 className="text-base font-semibold text-slate-900">
+                      {cefrPillLabels[group.level] ?? group.level}
+                    </h2>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${cefrPillColors[group.level] ?? ""}`}
+                    >
+                      {group.lessons.length} lessons
+                    </span>
+                  </header>
+                  <div className="space-y-2">
+                    {group.lessons.map((lesson) => (
+                      <LessonRenderer
+                        key={lesson.id}
+                        lesson={lesson}
+                        theme={theme}
+                        // Vietnamese-for-foreigners: title.vi = English
+                        // lesson title, title.en = English subtitle — both
+                        // the learner's language, not a UI duplicate. Keep
+                        // both lines (the single-language collapse would
+                        // otherwise drop the subtitle).
+                        dualTitle
+                      />
+                    ))}
+                  </div>
+                </section>
+              ),
+          )}
+        </div>
+      )}
     </div>
   );
 }
