@@ -476,6 +476,41 @@ function normalizeVietnameseCorrectionInput(value: string): string {
     .trim();
 }
 
+const ENGLISH_PAST_TENSE_VERBS: Record<string, string> = {
+  buy: "bought",
+  eat: "ate",
+  go: "went",
+  have: "had",
+  make: "made",
+  see: "saw",
+  take: "took",
+};
+
+function correctEnglishBeginnerGrammar(value: string): string {
+  let corrected = capitalizeFirst(value)
+    .replace(/\s+/g, " ")
+    .trim();
+  const hasPastMarker = /\b(yesterday|last night|last week|last month|last year|ago)\b/i.test(corrected);
+
+  if (hasPastMarker) {
+    corrected = corrected
+      .replace(/\b(I|You|We|They|He|She|It)\s+(buy|eat|go|have|make|see|take)\b/gi, (_match, subject: string, verb: string) => {
+        const past = ENGLISH_PAST_TENSE_VERBS[verb.toLowerCase()] ?? verb;
+        return `${subject} ${past}`;
+      })
+      .replace(/\b(She|He|It)\s+goes\b/gi, "$1 went")
+      .replace(/\b(She|He|It)\s+eats\b/gi, "$1 ate")
+      .replace(/\b(She|He|It)\s+buys\b/gi, "$1 bought");
+    return corrected;
+  }
+
+  return corrected
+    .replace(/\b(She|He|It)\s+go\b/g, "$1 goes")
+    .replace(/\b(She|He|It)\s+eat\b/g, "$1 eats")
+    .replace(/\b(She|He|It)\s+buy\b/g, "$1 buys")
+    .replace(/\b[Ii]\s+goes\b/g, "I go");
+}
+
 export function buildInputAwareCorrection(input: string, target: TutorTarget): string {
   const trimmed = input.replace(/\s+/g, " ").trim();
   if (!trimmed) return trimmed;
@@ -542,10 +577,7 @@ export function buildInputAwareCorrection(input: string, target: TutorTarget): s
     }
     case "en":
     default: {
-      const corrected = capitalizeFirst(trimmed)
-        .replace(/\b[Ss]he go\b/g, "She goes")
-        .replace(/\b[Hh]e go\b/g, "He goes")
-        .replace(/\b[Ii] goes\b/g, "I go");
+      const corrected = correctEnglishBeginnerGrammar(trimmed);
       return ensureTerminalPunctuation(corrected, target);
     }
   }
