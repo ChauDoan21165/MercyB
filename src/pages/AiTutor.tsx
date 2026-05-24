@@ -21,6 +21,14 @@ type CorrectionResult = {
   practicePrompt: string;
 };
 
+type MockCorrection = {
+  corrected: string;
+  explanation: Record<ExplainLanguage, string>;
+  grammarTip: Record<ExplainLanguage, string>;
+  practicePrompt: Record<ExplainLanguage, string>;
+  feedback: PracticeFeedback;
+};
+
 type PracticeFeedback = {
   encouragement: string;
   tip: string;
@@ -28,6 +36,7 @@ type PracticeFeedback = {
 };
 
 type TutorTarget = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
+type ExplainLanguage = "vi" | "en";
 
 type TutorTargetCopy = {
   eyebrow: string;
@@ -38,7 +47,44 @@ type TutorTargetCopy = {
   label: string;
   voiceLabel: string;
   voiceFallback: string;
-  inputLabel: string;
+  nameEn: string;
+  nameVi: string;
+};
+
+type UiCopy = {
+  title: (targetCopy: TutorTargetCopy, target: TutorTarget) => string;
+  subtitle: (targetCopy: TutorTargetCopy) => string;
+  helper: (targetCopy: TutorTargetCopy) => string;
+  inputLabel: (targetCopy: TutorTargetCopy) => string;
+  micInput: string;
+  micListening: string;
+  micUnavailable: string;
+  micAriaStart: string;
+  micAriaStop: string;
+  submit: string;
+  submitting: string;
+  reset: string;
+  emptyTitle: string;
+  emptyBody: (targetCopy: TutorTargetCopy) => string;
+  loadingTitle: string;
+  loadingBody: string;
+  correctedLabel: string;
+  ttsUnavailable: string;
+  ttsPlay: string;
+  ttsStop: string;
+  ttsAriaPlay: string;
+  ttsAriaStop: string;
+  explanationLabel: string;
+  grammarTipLabel: string;
+  practiceLabel: string;
+  practicePlaceholder: string;
+  practiceSubmit: string;
+  practiceSubmitting: string;
+  feedbackLabel: string;
+  tipLabel: string;
+  nextStepLabel: string;
+  tryAnother: string;
+  footer: string;
 };
 
 const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
@@ -51,7 +97,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "English correction",
     voiceLabel: "Speak sentence",
     voiceFallback: "Microphone unavailable in this browser",
-    inputLabel: "Your sentence",
+    nameEn: "English",
+    nameVi: "tiếng Anh",
   },
   fr: {
     eyebrow: "AI Tutor tiếng Pháp",
@@ -62,7 +109,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "French practice",
     voiceLabel: "Speak French",
     voiceFallback: "Microphone unavailable for French practice",
-    inputLabel: "Your French sentence",
+    nameEn: "French",
+    nameVi: "tiếng Pháp",
   },
   zh: {
     eyebrow: "AI Tutor tiếng Trung",
@@ -73,7 +121,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "Chinese practice",
     voiceLabel: "Speak Chinese",
     voiceFallback: "Microphone unavailable for Chinese practice",
-    inputLabel: "Your Chinese sentence",
+    nameEn: "Chinese",
+    nameVi: "tiếng Trung",
   },
   de: {
     eyebrow: "AI Tutor tiếng Đức",
@@ -84,7 +133,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "German practice",
     voiceLabel: "Speak German",
     voiceFallback: "Microphone unavailable for German practice",
-    inputLabel: "Your German sentence",
+    nameEn: "German",
+    nameVi: "tiếng Đức",
   },
   ja: {
     eyebrow: "AI Tutor tiếng Nhật",
@@ -95,7 +145,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "Japanese practice",
     voiceLabel: "Speak Japanese",
     voiceFallback: "Microphone unavailable for Japanese practice",
-    inputLabel: "Your Japanese sentence",
+    nameEn: "Japanese",
+    nameVi: "tiếng Nhật",
   },
   ko: {
     eyebrow: "AI Tutor tiếng Hàn",
@@ -106,7 +157,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "Korean practice",
     voiceLabel: "Speak Korean",
     voiceFallback: "Microphone unavailable for Korean practice",
-    inputLabel: "Your Korean sentence",
+    nameEn: "Korean",
+    nameVi: "tiếng Hàn",
   },
   es: {
     eyebrow: "AI Tutor tiếng Tây Ban Nha",
@@ -117,7 +169,8 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "Spanish practice",
     voiceLabel: "Speak Spanish",
     voiceFallback: "Microphone unavailable for Spanish practice",
-    inputLabel: "Your Spanish sentence",
+    nameEn: "Spanish",
+    nameVi: "tiếng Tây Ban Nha",
   },
   vi: {
     eyebrow: "AI Tutor tiếng Việt",
@@ -128,51 +181,252 @@ const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
     label: "Vietnamese practice",
     voiceLabel: "Speak Vietnamese",
     voiceFallback: "Microphone unavailable for Vietnamese practice",
-    inputLabel: "Your Vietnamese sentence",
+    nameEn: "Vietnamese",
+    nameVi: "tiếng Việt",
   },
 };
 
-const MOCK_RESULTS: Array<CorrectionResult & { feedback: PracticeFeedback }> = [
-  {
+const UI_COPY: Record<ExplainLanguage, UiCopy> = {
+  vi: {
+    title: (targetCopy, target) =>
+      target === "en" ? "Teacher Mercy AI Tutor" : `Teacher Mercy · Gia sư ${targetCopy.nameVi}`,
+    subtitle: (targetCopy) =>
+      `Luyện ${targetCopy.nameVi} với Mercy. Viết một câu ${targetCopy.nameVi}, Mercy sẽ sửa và giải thích bằng tiếng Việt.`,
+    helper: (targetCopy) =>
+      `Mercy sửa đúng ${targetCopy.nameVi}; phần giải thích và mẹo học dùng tiếng Việt.`,
+    inputLabel: (targetCopy) => `Câu ${targetCopy.nameVi} của bạn`,
+    micInput: "Nói câu của bạn",
+    micListening: "Đang nghe...",
+    micUnavailable: "Không dùng được micro trên trình duyệt này. Bạn vẫn có thể gõ câu.",
+    micAriaStart: "Nói câu của bạn để nhập bằng giọng nói",
+    micAriaStop: "Dừng nghe",
+    submit: "Sửa câu này",
+    submitting: "Đang sửa...",
+    reset: "Làm mới",
+    emptyTitle: "AI sẵn sàng sửa câu của bạn",
+    emptyBody: (targetCopy) => `Gõ một câu ${targetCopy.nameVi} bên trên và nhấn Sửa câu này.`,
+    loadingTitle: "AI đang phân tích câu của bạn...",
+    loadingBody: "Mercy sẽ sửa đúng ngôn ngữ bạn chọn.",
+    correctedLabel: "Câu đã sửa",
+    ttsUnavailable: "Giọng đọc trình duyệt chưa khả dụng trên thiết bị này.",
+    ttsPlay: "🔊 Mercy đọc",
+    ttsStop: "⏹ Dừng",
+    ttsAriaPlay: "Mercy đọc câu đã sửa bằng giọng trình duyệt",
+    ttsAriaStop: "Dừng đọc",
+    explanationLabel: "Giải thích",
+    grammarTipLabel: "Mẹo ngữ pháp",
+    practiceLabel: "Luyện tập",
+    practicePlaceholder: "Viết câu trả lời của bạn ở đây...",
+    practiceSubmit: "Gửi câu trả lời",
+    practiceSubmitting: "Đang kiểm tra...",
+    feedbackLabel: "Nhận xét",
+    tipLabel: "Mẹo",
+    nextStepLabel: "Bước tiếp theo",
+    tryAnother: "Sửa câu khác",
+    footer: "Giao diện thử nghiệm - chưa gọi nhà cung cấp AI thật.",
+  },
+  en: {
+    title: (targetCopy, target) => (target === "en" ? "Teacher Mercy AI Tutor" : targetCopy.title),
+    subtitle: (targetCopy) =>
+      `Practice ${targetCopy.nameEn} with Mercy. Write a ${targetCopy.nameEn} sentence; Mercy corrects it and explains in English.`,
+    helper: (targetCopy) =>
+      `Mercy corrects the selected target language: ${targetCopy.nameEn}.`,
+    inputLabel: (targetCopy) => `Your ${targetCopy.nameEn} sentence`,
+    micInput: "Speak your sentence",
+    micListening: "Listening...",
+    micUnavailable: "Microphone unavailable in this browser. You can still type your sentence.",
+    micAriaStart: "Speak your sentence for voice input",
+    micAriaStop: "Stop listening",
+    submit: "Correct my sentence",
+    submitting: "Correcting...",
+    reset: "Reset",
+    emptyTitle: "AI is ready to correct your sentence",
+    emptyBody: (targetCopy) => `Type a ${targetCopy.nameEn} sentence above and press Correct my sentence.`,
+    loadingTitle: "AI is analyzing your sentence...",
+    loadingBody: "Mercy will correct the language you selected.",
+    correctedLabel: "Corrected",
+    ttsUnavailable: "Browser voice playback is not supported on this device.",
+    ttsPlay: "🔊 Mercy reads",
+    ttsStop: "⏹ Stop",
+    ttsAriaPlay: "Read corrected sentence with browser voice",
+    ttsAriaStop: "Stop reading",
+    explanationLabel: "Explanation",
+    grammarTipLabel: "Grammar Tip",
+    practiceLabel: "Practice",
+    practicePlaceholder: "Write your answer here...",
+    practiceSubmit: "Submit answer",
+    practiceSubmitting: "Checking...",
+    feedbackLabel: "Feedback",
+    tipLabel: "Tip",
+    nextStepLabel: "Next Step",
+    tryAnother: "Try another sentence",
+    footer: "Mock UI - no real AI provider calls are made.",
+  },
+};
+
+const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
+  en: {
     corrected: "She goes to school every day.",
-    explanation:
-      "Third-person singular subjects (she / he / it) need the verb with -s or -es in the present simple.",
-    grammarTip:
-      "Quy tắc: Chủ ngữ ngôi thứ ba số ít → động từ thêm -s/-es.",
-    practicePrompt: "Viết một câu về thói quen hằng ngày của bạn dùng thì hiện tại đơn.",
+    explanation: {
+      vi: "Với chủ ngữ ngôi thứ ba số ít như she/he/it, động từ ở hiện tại đơn cần thêm -s hoặc -es.",
+      en: "Third-person singular subjects such as she/he/it need -s or -es in the present simple.",
+    },
+    grammarTip: {
+      vi: "Quy tắc: Chủ ngữ ngôi thứ ba số ít → động từ thêm -s/-es.",
+      en: "Rule: third-person singular subject -> verb + -s/-es.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu về thói quen hằng ngày của bạn dùng thì hiện tại đơn.",
+      en: "Write one sentence about a daily habit using the present simple.",
+    },
     feedback: {
       encouragement: "Tốt lắm! Bạn đã thực hành thì hiện tại đơn. 🎯",
       tip: "Nhớ thêm -s/-es cho động từ khi chủ ngữ là she / he / it nhé.",
       nextStep: "Thử viết thêm một câu khác về người thân của bạn.",
     },
   },
-  {
-    corrected: "I have been learning English for two years.",
-    explanation:
-      "Use the present perfect continuous (have been + -ing) for actions that started in the past and continue now.",
-    grammarTip:
-      "Dùng have been + V-ing khi hành động bắt đầu trong quá khứ và vẫn đang tiếp diễn.",
-    practicePrompt: "Bạn đã làm gì từ sáng đến giờ? Viết một câu dùng thì hiện tại hoàn thành tiếp diễn.",
+  fr: {
+    corrected:
+      "Toute lecture nouvelle d'un texte canonique paraît d'abord hérétique ; c'est la rançon de l'innovation interprétative.",
+    explanation: {
+      vi: "Câu vẫn giữ ý gốc bằng tiếng Pháp. Mercy sửa 'neuve' thành 'nouvelle' cho tự nhiên hơn và thay dấu gạch ngang bằng dấu chấm phẩy để câu học thuật mạch lạc hơn.",
+      en: "The sentence stays in French. Mercy changed 'neuve' to the more natural 'nouvelle' and used a semicolon for a smoother academic sentence.",
+    },
+    grammarTip: {
+      vi: "Trong tiếng Pháp trang trọng, 'nouvelle lecture' tự nhiên hơn 'lecture neuve' khi nói về cách đọc/diễn giải mới.",
+      en: "In formal French, 'nouvelle lecture' is more natural than 'lecture neuve' for a new interpretation.",
+    },
+    practicePrompt: {
+      vi: "Viết lại một câu tiếng Pháp học thuật khác, giữ ý gốc nhưng làm văn phong tự nhiên hơn.",
+      en: "Rewrite another academic French sentence while keeping the original meaning.",
+    },
     feedback: {
-      encouragement: "Rất đúng! Bạn đã dùng đúng cấu trúc have been + V-ing. ⭐",
-      tip: "Dùng 'since' cho mốc thời gian cụ thể, 'for' cho khoảng thời gian.",
-      nextStep: "Thử đặt câu với 'for' thay vì 'since'.",
+      encouragement: "Tốt lắm! Câu tiếng Pháp của bạn đã rõ và tự nhiên hơn.",
+      tip: "Ưu tiên cụm danh từ quen dùng trong văn học thuật, ví dụ 'nouvelle lecture'.",
+      nextStep: "Thử viết thêm một câu có cấu trúc 'd'abord..., puis...'.",
     },
   },
-  {
-    corrected: "If I were you, I would practice every day.",
-    explanation:
-      "The second conditional uses 'if + past simple' and 'would + base verb' for hypothetical situations.",
-    grammarTip:
-      "Câu điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu.",
-    practicePrompt: "Nếu bạn có nhiều thời gian hơn, bạn sẽ làm gì? Viết một câu điều kiện loại 2.",
+  zh: {
+    corrected: "我昨天去了商店。",
+    explanation: {
+      vi: "Câu tiếng Trung cần thêm '了' sau động từ để đánh dấu hành động đã xảy ra trong quá khứ.",
+      en: "The Chinese sentence needs '了' after the verb to mark a completed past action.",
+    },
+    grammarTip: {
+      vi: "Khi nói về hành động đã hoàn thành, thường dùng cấu trúc: chủ ngữ + động từ + 了 + tân ngữ.",
+      en: "For completed actions, a common pattern is subject + verb + 了 + object.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Trung khác về việc bạn đã làm hôm qua.",
+      en: "Write another Chinese sentence about something you did yesterday.",
+    },
     feedback: {
-      encouragement: "Chính xác! Câu điều kiện của bạn rất tự nhiên. 👏",
-      tip: "Nhớ: mệnh đề If dùng quá khứ đơn, mệnh đề chính dùng would + V.",
-      nextStep: "Thử đảo hai mệnh đề: 'I would... if I...'",
+      encouragement: "Tốt! Bạn đã luyện cách diễn tả hành động đã hoàn thành.",
+      tip: "Đừng quên '了' khi câu nhấn mạnh việc đã xảy ra.",
+      nextStep: "Thử thêm thời gian như '昨天晚上' hoặc '上个星期'.",
     },
   },
-];
+  de: {
+    corrected: "Ich bin gestern zum Markt gegangen.",
+    explanation: {
+      vi: "Câu tiếng Đức cần dùng Perfekt cho hành động đã xảy ra: 'bin ... gegangen'.",
+      en: "The German sentence needs Perfekt for a completed past action: 'bin ... gegangen'.",
+    },
+    grammarTip: {
+      vi: "Với động từ chỉ chuyển động như 'gehen', Perfekt thường dùng trợ động từ 'sein'.",
+      en: "Movement verbs such as 'gehen' often use 'sein' in the Perfekt.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Đức khác về nơi bạn đã đi hôm qua.",
+      en: "Write another German sentence about where you went yesterday.",
+    },
+    feedback: {
+      encouragement: "Tốt! Bạn đã luyện đúng dạng quá khứ Perfekt.",
+      tip: "Nhớ đặt phân từ quá khứ ở cuối câu.",
+      nextStep: "Thử dùng 'fahren' hoặc 'kommen' trong một câu mới.",
+    },
+  },
+  ja: {
+    corrected: "私は昨日店に行きました。",
+    explanation: {
+      vi: "Câu tiếng Nhật cần dùng dạng quá khứ lịch sự '行きました' khi nói về việc đã đi hôm qua.",
+      en: "The Japanese sentence needs the polite past form '行きました' for something you did yesterday.",
+    },
+    grammarTip: {
+      vi: "Mẫu câu: thời gian + nơi chốn + に/へ + động từ quá khứ.",
+      en: "Pattern: time + place + に/へ + past-tense verb.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Nhật khác về nơi bạn đã đến hôm qua.",
+      en: "Write another Japanese sentence about where you went yesterday.",
+    },
+    feedback: {
+      encouragement: "Tốt! Câu của bạn đã dùng đúng dạng quá khứ lịch sự.",
+      tip: "Có thể dùng に hoặc へ với động từ di chuyển.",
+      nextStep: "Thử thêm phương tiện, ví dụ '電車で'.",
+    },
+  },
+  ko: {
+    corrected: "저는 어제 시장에 갔어요.",
+    explanation: {
+      vi: "Câu tiếng Hàn cần dùng dạng quá khứ '갔어요' khi nói về việc đã đi hôm qua.",
+      en: "The Korean sentence needs the past form '갔어요' for something that happened yesterday.",
+    },
+    grammarTip: {
+      vi: "Động từ 가다 ở quá khứ lịch sự thường là 갔어요.",
+      en: "The polite past form of 가다 is commonly 갔어요.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Hàn khác về việc bạn đã làm hôm qua.",
+      en: "Write another Korean sentence about something you did yesterday.",
+    },
+    feedback: {
+      encouragement: "Tốt! Bạn đã luyện đúng thì quá khứ trong tiếng Hàn.",
+      tip: "Từ chỉ thời gian như 어제 thường đứng gần đầu câu.",
+      nextStep: "Thử viết câu với '지난주'.",
+    },
+  },
+  es: {
+    corrected: "Fui al mercado ayer.",
+    explanation: {
+      vi: "Câu tiếng Tây Ban Nha dùng pretérito 'fui' để nói về hành động đã hoàn thành trong quá khứ.",
+      en: "The Spanish sentence uses the preterite 'fui' for a completed past action.",
+    },
+    grammarTip: {
+      vi: "Với hành động đã xảy ra tại một thời điểm rõ ràng như 'ayer', dùng pretérito.",
+      en: "Use the preterite for completed actions at a clear past time such as 'ayer'.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Tây Ban Nha khác về việc bạn đã làm hôm qua.",
+      en: "Write another Spanish sentence about something you did yesterday.",
+    },
+    feedback: {
+      encouragement: "Good! Your Spanish sentence now uses the past tense naturally.",
+      tip: "Use pretérito for completed past actions.",
+      nextStep: "Try another sentence with 'la semana pasada'.",
+    },
+  },
+  vi: {
+    corrected: "Hôm qua tôi đi chợ.",
+    explanation: {
+      vi: "Câu tiếng Việt đã tự nhiên. Mercy giữ cấu trúc gọn và đúng ngữ cảnh.",
+      en: "The Vietnamese sentence is natural. Mercy keeps the concise structure and correct context.",
+    },
+    grammarTip: {
+      vi: "Tiếng Việt thường dùng từ chỉ thời gian như 'hôm qua' thay vì biến đổi động từ.",
+      en: "Vietnamese usually uses time words such as 'hôm qua' instead of changing verb forms.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Việt khác về việc bạn đã làm hôm qua.",
+      en: "Write another Vietnamese sentence about something you did yesterday.",
+    },
+    feedback: {
+      encouragement: "Tốt! Câu tiếng Việt của bạn rõ và tự nhiên.",
+      tip: "Đặt trạng ngữ thời gian ở đầu câu giúp ý rõ hơn.",
+      nextStep: "Thử viết câu với 'sáng nay' hoặc 'tuần trước'.",
+    },
+  },
+};
 
 const MOCK_DELAY_MS = 600;
 const TEACHER_MERCY_AVATAR_SRC = "/teacher-mercy.webp";
@@ -211,6 +465,15 @@ function getTutorSpeechLang(target: TutorTarget): string {
   }
 }
 
+function getExplainLanguage(): ExplainLanguage {
+  if (typeof window === "undefined") return "vi";
+  try {
+    return window.localStorage.getItem("mercyblade.lessonUiLang") === "en" ? "en" : "vi";
+  } catch {
+    return "vi";
+  }
+}
+
 export default function AiTutorPage() {
   const shellRef = useRef<HTMLElement | null>(null);
 
@@ -221,6 +484,7 @@ export default function AiTutorPage() {
   const [target, setTarget] = useState<TutorTarget>(() =>
     typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search),
   );
+  const [explainLanguage, setExplainLanguage] = useState<ExplainLanguage>(() => getExplainLanguage());
   const speechLang = getTutorSpeechLang(target);
   const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
@@ -233,7 +497,6 @@ export default function AiTutorPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CorrectionResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [useCount, setUseCount] = useState(0);
 
   // Practice flow
   const [practiceAnswer, setPracticeAnswer] = useState("");
@@ -248,6 +511,7 @@ export default function AiTutorPage() {
   // speechSupported is now derived from stt.supported (line ~143)
 
   const targetCopy = TARGET_COPY[target];
+  const uiCopy = UI_COPY[explainLanguage];
 
   // Sync STT transcript → input when listening stops
   const sttInputRef = useRef<string>("");
@@ -274,6 +538,16 @@ export default function AiTutorPage() {
     syncTarget();
     window.addEventListener("popstate", syncTarget);
     return () => window.removeEventListener("popstate", syncTarget);
+  }, []);
+
+  useEffect(() => {
+    const syncExplainLanguage = () => setExplainLanguage(getExplainLanguage());
+    window.addEventListener("storage", syncExplainLanguage);
+    window.addEventListener("focus", syncExplainLanguage);
+    return () => {
+      window.removeEventListener("storage", syncExplainLanguage);
+      window.removeEventListener("focus", syncExplainLanguage);
+    };
   }, []);
 
   // speechSupported now comes from stt.supported (useBrowserStt hook)
@@ -327,14 +601,13 @@ export default function AiTutorPage() {
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
-    const next = MOCK_RESULTS[useCount % MOCK_RESULTS.length];
+    const next = MOCK_RESULTS_BY_TARGET[target];
     setResult({
       corrected: next.corrected,
-      explanation: next.explanation,
-      grammarTip: next.grammarTip,
-      practicePrompt: next.practicePrompt,
+      explanation: next.explanation[explainLanguage],
+      grammarTip: next.grammarTip[explainLanguage],
+      practicePrompt: next.practicePrompt[explainLanguage],
     });
-    setUseCount((n) => n + 1);
     setLoading(false);
 
     // M3: Save correction to IndexedDB
@@ -344,7 +617,7 @@ export default function AiTutorPage() {
       id,
       original: trimmed,
       corrected: next.corrected,
-      topic: next.grammarTip.slice(0, 60),
+      topic: next.grammarTip[explainLanguage].slice(0, 60),
       cefr: "B1",
       createdAt: Date.now(),
       practiced: false,
@@ -358,7 +631,7 @@ export default function AiTutorPage() {
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
-    const mock = MOCK_RESULTS[(useCount - 1 + MOCK_RESULTS.length) % MOCK_RESULTS.length];
+    const mock = MOCK_RESULTS_BY_TARGET[target];
     setPracticeFeedback(mock.feedback);
     setPracticeLoading(false);
 
@@ -483,7 +756,7 @@ export default function AiTutorPage() {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <h1 className="ai-tutor-shell-title text-2xl font-black text-slate-950 sm:text-3xl">
-            {targetCopy.title}
+            {uiCopy.title(targetCopy, target)}
           </h1>
           <span className="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-[11px] font-black uppercase text-indigo-700">
             {targetCopy.eyebrow}
@@ -493,10 +766,10 @@ export default function AiTutorPage() {
           </span>
         </div>
         <p className="ai-tutor-copy ai-tutor-shell-copy mt-2 text-sm font-medium text-slate-500">
-          {targetCopy.subtitle}
+          {uiCopy.subtitle(targetCopy)}
         </p>
         <p className="ai-tutor-copy mt-1 text-xs text-slate-400">
-          {targetCopy.helper}
+          {uiCopy.helper(targetCopy)}
         </p>
       </section>
 
@@ -564,7 +837,7 @@ export default function AiTutorPage() {
           <section className="rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
             <div className="mb-2 flex items-center justify-between gap-3">
               <label className="text-xs font-black uppercase text-slate-500">
-                {targetCopy.inputLabel}
+                {uiCopy.inputLabel(targetCopy)}
               </label>
               <span className="shrink-0 text-[11px] font-medium text-slate-400">
                 {charCount} / 500
@@ -596,11 +869,11 @@ export default function AiTutorPage() {
                       ? "border-red-300 bg-red-50 text-red-700"
                       : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
                   }`}
-                  aria-label={stt.listening ? "Tap to stop · Chạm để dừng" : targetCopy.voiceLabel}
+                  aria-label={stt.listening ? uiCopy.micAriaStop : uiCopy.micAriaStart}
                 >
                   <span className="inline-flex items-center justify-center gap-2">
                     <Mic className="h-4 w-4" aria-hidden />
-                    {stt.listening ? "Đang nghe… · Listening…" : targetCopy.voiceLabel}
+                    {stt.listening ? uiCopy.micListening : uiCopy.micInput}
                   </span>
                 </button>
               ) : (
@@ -611,7 +884,7 @@ export default function AiTutorPage() {
                 >
                   <span className="inline-flex items-center justify-center gap-2">
                     <MicOff className="h-4 w-4" aria-hidden />
-                    {targetCopy.voiceFallback}
+                    {uiCopy.micUnavailable}
                   </span>
                 </div>
               )}
@@ -624,10 +897,10 @@ export default function AiTutorPage() {
                 {loading ? (
                   <span className="inline-flex items-center justify-center gap-2">
                     <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                    Đang sửa...
+                    {uiCopy.submitting}
                   </span>
                 ) : (
-                  "Sửa câu này · Correct my sentence"
+                  uiCopy.submit
                 )}
               </button>
 
@@ -637,7 +910,7 @@ export default function AiTutorPage() {
                   onClick={handleClear}
                   className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
                 >
-                  Làm mới
+                  {uiCopy.reset}
                 </button>
               )}
             </div>
@@ -656,10 +929,10 @@ export default function AiTutorPage() {
             <section className="mt-5 rounded-[18px] border border-dashed border-slate-200 bg-slate-50/50 p-6 text-center">
               <div className="text-3xl">✨</div>
               <div className="mt-2 text-sm font-black text-slate-600">
-                AI sẵn sàng sửa câu của bạn
+                {uiCopy.emptyTitle}
               </div>
               <div className="mt-1 text-xs font-medium text-slate-400">
-                Gõ một câu tiếng Anh bên trên và nhấn Sửa câu này.
+                {uiCopy.emptyBody(targetCopy)}
               </div>
             </section>
           )}
@@ -669,10 +942,10 @@ export default function AiTutorPage() {
             <section className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-6 text-center">
               <div className="mx-auto h-8 w-8 animate-spin rounded-full border-[3px] border-indigo-200 border-t-indigo-500" />
               <div className="mt-3 text-sm font-black text-indigo-700">
-                AI đang phân tích câu của bạn...
+                {uiCopy.loadingTitle}
               </div>
               <div className="mt-1 text-xs font-medium text-indigo-400">
-                Analyzing your sentence...
+                {uiCopy.loadingBody}
               </div>
             </section>
           )}
@@ -684,7 +957,7 @@ export default function AiTutorPage() {
             {/* Corrected */}
             <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
               <div className="mb-2 text-xs font-black uppercase text-emerald-600">
-                Câu đã sửa · Corrected
+                {uiCopy.correctedLabel}
               </div>
               <div className="text-xl font-black leading-snug text-emerald-900">
                 {result.corrected}
@@ -692,7 +965,7 @@ export default function AiTutorPage() {
               {/* TTS speaker button */}
               {!tts.supported && (
                 <div className="mt-2 text-[11px] text-slate-400">
-                  🔊 Speech playback is not supported in this browser.
+                  🔊 {uiCopy.ttsUnavailable}
                 </div>
               )}
               {tts.supported && (
@@ -704,9 +977,9 @@ export default function AiTutorPage() {
                       ? "border-red-300 bg-red-50 text-red-700"
                       : "border-emerald-300 bg-white text-emerald-700 hover:bg-emerald-50"
                   }`}
-                  aria-label={tts.speaking ? "Stop · Dừng" : "Mercy đọc câu này · Mercy reads this"}
+                  aria-label={tts.speaking ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay}
                 >
-                  {tts.speaking ? "⏹ Dừng · Stop" : "🔊 Mercy đọc · Listen"}
+                  {tts.speaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
                 </button>
               )}
             </div>
@@ -714,7 +987,7 @@ export default function AiTutorPage() {
             {/* Explanation */}
             <div className="rounded-[16px] border border-slate-200 bg-white p-5">
               <div className="mb-2 text-xs font-black uppercase text-slate-500">
-                Giải thích · Explanation
+                {uiCopy.explanationLabel}
               </div>
               <p className="text-sm font-semibold leading-6 text-slate-700">
                 {result.explanation}
@@ -724,7 +997,7 @@ export default function AiTutorPage() {
             {/* Grammar tip */}
             <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/50 p-5">
               <div className="mb-2 text-xs font-black uppercase text-indigo-500">
-                Mẹo ngữ pháp · Grammar Tip
+                {uiCopy.grammarTipLabel}
               </div>
               <p className="text-sm font-semibold leading-6 text-indigo-800">
                 {result.grammarTip}
@@ -735,7 +1008,7 @@ export default function AiTutorPage() {
             {!practiceFeedback && (
               <div className="rounded-[18px] border border-violet-200 bg-violet-50/50 p-5">
                 <div className="mb-2 text-xs font-black uppercase text-violet-600">
-                  Luyện tập · Practice
+                  {uiCopy.practiceLabel}
                 </div>
                 <p className="text-sm font-semibold leading-6 text-slate-700">
                   {result.practicePrompt}
@@ -744,7 +1017,7 @@ export default function AiTutorPage() {
                 <textarea
                   value={practiceAnswer}
                   onChange={(e) => setPracticeAnswer(e.target.value)}
-                  placeholder="Viết câu trả lời của bạn ở đây..."
+                  placeholder={uiCopy.practicePlaceholder}
                   rows={3}
                   className="mt-3 w-full min-w-0 resize-none rounded-[12px] border border-violet-200 bg-white p-3 text-[14px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-violet-400 focus:outline-none"
                 />
@@ -758,10 +1031,10 @@ export default function AiTutorPage() {
                   {practiceLoading ? (
                     <span className="inline-flex items-center justify-center gap-2">
                       <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                      Đang kiểm tra...
+                      {uiCopy.practiceSubmitting}
                     </span>
                   ) : (
-                    "Gửi câu trả lời · Submit answer"
+                    uiCopy.practiceSubmit
                   )}
                 </button>
               </div>
@@ -771,17 +1044,17 @@ export default function AiTutorPage() {
             {practiceFeedback && (
               <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
                 <div className="mb-2 text-xs font-black uppercase text-emerald-600">
-                  Nhận xét · Feedback
+                  {uiCopy.feedbackLabel}
                 </div>
                 <p className="text-sm font-bold leading-6 text-emerald-800">
                   {practiceFeedback.encouragement}
                 </p>
                 <div className="mt-3 rounded-[12px] bg-white/70 p-3">
-                  <div className="text-xs font-black uppercase text-slate-500">Mẹo · Tip</div>
+                  <div className="text-xs font-black uppercase text-slate-500">{uiCopy.tipLabel}</div>
                   <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.tip}</p>
                 </div>
                 <div className="mt-3 rounded-[12px] bg-white/70 p-3">
-                  <div className="text-xs font-black uppercase text-slate-500">Bước tiếp theo · Next Step</div>
+                  <div className="text-xs font-black uppercase text-slate-500">{uiCopy.nextStepLabel}</div>
                   <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.nextStep}</p>
                 </div>
 
@@ -790,7 +1063,7 @@ export default function AiTutorPage() {
                   onClick={handleClear}
                   className="mt-4 min-h-[48px] w-full rounded-full border border-emerald-300 bg-white px-4 py-3 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50"
                 >
-                  Sửa câu khác · Try another sentence
+                  {uiCopy.tryAnother}
                 </button>
               </div>
             )}
@@ -802,7 +1075,7 @@ export default function AiTutorPage() {
                 onClick={handleClear}
                 className="min-h-[48px] rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
               >
-                Sửa câu khác · Try another sentence
+                {uiCopy.tryAnother}
               </button>
             )}
           </section>
@@ -811,7 +1084,7 @@ export default function AiTutorPage() {
 
       {/* Footer */}
       <footer className="mt-8 text-center text-[11px] font-medium text-slate-300">
-        Mock UI — no real AI provider calls are made.
+        {uiCopy.footer}
       </footer>
     </main>
   );
