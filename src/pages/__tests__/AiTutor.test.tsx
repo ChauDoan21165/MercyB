@@ -368,13 +368,16 @@ describe("AiTutor mock UI", () => {
 
     await userEvent.type(
       screen.getByRole("textbox"),
-      "Vì sao nói I’m interested in English mà không nói I’m interesting in English?",
+      "I am interesting in English.",
     );
     await userEvent.click(screen.getByRole("button", { name: "Giải thích logic" }));
 
     await waitFor(() => {
-      expect(screen.getByText(/“interested” mô tả cảm giác của người nhận tác động/)).toBeInTheDocument();
-      expect(screen.getByText(/Cách nghĩ tiếng Việt/)).toBeInTheDocument();
+      expect(screen.getByText("I am interested in English.")).toBeInTheDocument();
+      expect(screen.getByText(/Cách nghĩ tiếng Việt: Vietnamese often uses one feeling idea/)).toBeInTheDocument();
+      expect(screen.getByText(/Logic tiếng Anh: Interested describes your feeling/)).toBeInTheDocument();
+      expect(screen.getByText(/Mẫu cần nhớ: Use interested for the person who feels it/)).toBeInTheDocument();
+      expect(screen.getByText("Write one sentence with I am interested in + a topic.")).toBeInTheDocument();
     });
     expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence|Stop Mercy voice|Dừng đọc/ })).not.toBeInTheDocument();
     expect(screen.queryByText("Device voice fallback")).not.toBeInTheDocument();

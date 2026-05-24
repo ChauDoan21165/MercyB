@@ -40,6 +40,7 @@ import {
   AI_CORRECTION_REQUIRED_MESSAGE,
   correctWithTutorRules,
 } from "@/lib/tutor/correctionEngine";
+import { diagnoseVietlishLogic } from "@/lib/tutor/vietlishLogicEngine";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, {
   type ConversationMessage,
@@ -167,54 +168,21 @@ function buildConversationReply(
 }
 
 function buildLogicReply(userText: string, explainLanguage: ExplainLanguage): MercyConversationMessage {
-  const normalized = userText.toLowerCase();
-  const isInterested = normalized.includes("interested") || normalized.includes("interesting");
-  const isGoSchool = normalized.includes("go school") || normalized.includes("go to school");
-  const isPastTense = normalized.includes("yesterday") || normalized.includes("bought") || normalized.includes("buy a hat");
-
-  let explanation: string;
-  let naturalReply: string;
-  let nextQuestion: string = LOGIC_STARTER_PROMPTS[1];
-
-  if (isInterested) {
-    explanation = explainLanguage === "vi"
-      ? "Logic tiếng Anh: “interested” mô tả cảm giác của người nhận tác động, còn “interesting” mô tả thứ gây ra cảm giác đó. Vì vậy “I’m interested in English” nghĩa là tôi có hứng thú với tiếng Anh; “I’m interesting in English” lại nghe như tôi là người thú vị ở trong tiếng Anh."
-      : "English logic: “interested” describes the person who feels something, while “interesting” describes the thing that causes the feeling. “I’m interested in English” means I feel interest in English; “I’m interesting in English” makes the speaker sound like the interesting object.";
-    naturalReply = explainLanguage === "vi"
-      ? "Cách nghĩ tiếng Việt: “tôi thấy tiếng Anh thú vị.” Cách nghĩ tiếng Anh: người cảm nhận dùng “interested”, vật gây cảm giác dùng “interesting”. Mẫu cần nhớ: I am interested in + noun; English is interesting."
-      : "Vietnamese thinking says “I find English interesting.” English separates the experiencer from the cause: I am interested in English; English is interesting. Pattern: person + be interested in; thing + be interesting.";
-    nextQuestion = LOGIC_STARTER_PROMPTS[1];
-  } else if (isGoSchool) {
-    explanation = explainLanguage === "vi"
-      ? "Logic tiếng Anh: “go” thường cần giới từ để nối tới nơi đến. “School” là nơi/institution, nên cấu trúc tự nhiên là “go to school”. Tiếng Việt có thể nói “đi học/đi trường” mà không cần một từ như “to”, nhưng tiếng Anh cần cầu nối đó."
-      : "English logic: “go” normally needs a preposition to connect it to a destination. “School” works as a place or institution, so natural English says “go to school.” Vietnamese can omit this bridge, but English usually keeps it.";
-    naturalReply = explainLanguage === "vi"
-      ? "Cách nghĩ tiếng Việt: động từ + nơi đến. Cách nghĩ tiếng Anh: go + to + destination. Mẫu cần nhớ: go to school, go to work, go to the market."
-      : "Vietnamese thinking can be verb + place. English thinking is go + to + destination. Pattern: go to school, go to work, go to the market.";
-    nextQuestion = LOGIC_STARTER_PROMPTS[2];
-  } else if (isPastTense) {
-    explanation = explainLanguage === "vi"
-      ? "Logic tiếng Anh: khi câu nói về quá khứ, thời gian phải hiện trên động từ. “Yesterday” báo hiệu quá khứ, nên “buy” đổi thành “bought”. Tiếng Việt thường dùng từ thời gian như “hôm qua” mà không đổi động từ, nhưng tiếng Anh bắt buộc đổi dạng động từ."
-      : "English logic: when the sentence is about the past, the verb must show past time. “Yesterday” signals the past, so “buy” becomes “bought.” Vietnamese can keep the verb unchanged and rely on the time word; English marks time on the verb.";
-    naturalReply = explainLanguage === "vi"
-      ? "Cách nghĩ tiếng Việt: “hôm qua” đủ để hiểu quá khứ. Cách nghĩ tiếng Anh: trạng từ thời gian chưa đủ, động từ cũng phải đổi. Mẫu cần nhớ: yesterday/last week/ago + past verb."
-      : "Vietnamese thinking uses the time word to carry the past meaning. English thinking requires both the time word and the past verb. Pattern: yesterday/last week/ago + past verb.";
-    nextQuestion = LOGIC_STARTER_PROMPTS[0];
-  } else {
-    explanation = explainLanguage === "vi"
-      ? "Mercy sẽ nhìn câu theo logic tiếng Anh: phần nào là chủ ngữ, động từ chính ở đâu, thời gian nằm ở động từ hay trạng từ, và tiếng Việt đang khiến bạn dịch từng chữ ở điểm nào."
-      : "Mercy will read the sentence through English logic: where the subject is, where the main verb is, whether time belongs on the verb or an adverb, and where word-for-word Vietnamese translation makes the sentence unnatural.";
-    naturalReply = explainLanguage === "vi"
-      ? "Mẫu cần nhớ: đừng dịch từng chữ. Hãy hỏi tiếng Anh cần thành phần nào để câu đủ tự nhiên, rồi so sánh với cách tiếng Việt rút gọn ý."
-      : "Pattern to remember: do not translate word by word. Ask what English requires to sound complete, then compare it with what Vietnamese can leave implicit.";
-  }
+  const diagnosis = diagnoseVietlishLogic(userText);
+  const explanation = explainLanguage === "vi"
+    ? `Cách nghĩ tiếng Việt: ${diagnosis.vietnameseThinking} Logic tiếng Anh: ${diagnosis.englishLogic}`
+    : `Vietnamese thinking: ${diagnosis.vietnameseThinking} English logic: ${diagnosis.englishLogic}`;
+  const naturalReply = explainLanguage === "vi"
+    ? `Mẫu cần nhớ: ${diagnosis.rememberRule}`
+    : `Remember rule: ${diagnosis.rememberRule}`;
+  const nextQuestion = diagnosis.retryPrompt;
 
   const { turn } = buildConversationTurn({
     id: `mercy-logic-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
     targetLanguage: "en",
     explainLanguage,
     userText,
-    correctedText: "",
+    correctedText: diagnosis.correctedExample,
     explanation,
     naturalReply,
     nextQuestion,
