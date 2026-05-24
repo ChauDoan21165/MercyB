@@ -7,6 +7,9 @@ import type {
   TutorTurn,
 } from "./tutorTypes";
 import { validateCorrectionChangedWhenNeeded } from "./correctionEngine";
+import { sanitizeSpeakableText } from "./speakableText";
+
+export { sanitizeSpeakableText } from "./speakableText";
 
 type BaseTurnInput = {
   id?: string;
@@ -68,7 +71,7 @@ function hasOnlyOneNextQuestion(turn: TutorTurn): boolean {
 }
 
 function buildSpeakableText(parts: Array<string | undefined>): string {
-  return parts.map(normalizeText).filter(Boolean).join(" ");
+  return sanitizeSpeakableText(parts.map(normalizeText).filter(Boolean).join(" "));
 }
 
 export function buildCorrectionTurn(input: CorrectionTurnInput): TutorCorrectionResult {
@@ -147,5 +150,5 @@ export function validateTutorTurn(turn: TutorTurn): boolean {
 
 export function getSpeakableText(turn: TutorTurn): string {
   if (!validateTutorTurn(turn)) return "";
-  return normalizeText(turn.shouldReadAloudText);
+  return sanitizeSpeakableText(turn.shouldReadAloudText);
 }
