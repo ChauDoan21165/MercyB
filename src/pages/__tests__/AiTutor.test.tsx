@@ -147,6 +147,26 @@ describe("AiTutor mock UI", () => {
     expect(screen.queryByText("Mock")).not.toBeInTheDocument();
   });
 
+  it("guards the clean four-mode Teacher Mercy AI Tutor foundation", async () => {
+    render(<AiTutorPage />);
+
+    const shell = screen.getByTestId("ai-tutor-shell");
+    expect(shell).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-mercy-avatar")).toHaveAttribute("src", "/teacher-mercy.webp");
+    expect(screen.getByRole("heading", { name: "Teacher Mercy AI Tutor" })).toBeInTheDocument();
+    expect(screen.getByTestId("teacher-mercy-mode-tabs")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Grammar" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
+    expect(screen.getByText(/Không lưu âm thanh thô hoặc toàn bộ transcript/)).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+
+    expect(shell).not.toHaveTextContent(/\bMock\b/i);
+    expect(shell).not.toHaveTextContent(/mock-only|local mock|demo tutor/i);
+    expect(shell).not.toHaveTextContent(/\bAdult\b|adult learner/i);
+  });
+
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
     render(<AiTutorPage />);
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
@@ -262,6 +282,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     expect(screen.getByRole("heading", { name: /Gia sư tiếng Pháp/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+    await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("ai-tutor", "fr"));
     expect(screen.getByText(/Viết một câu tiếng Pháp/)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
     expect(screen.getByText("Câu tiếng Pháp của bạn")).toBeInTheDocument();
@@ -273,6 +294,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     expect(screen.getByRole("heading", { name: /Gia sư tiếng Trung/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+    await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("ai-tutor", "zh"));
     expect(screen.getByText(/Viết một câu tiếng Trung/)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/gõ câu tiếng Trung/)).toBeInTheDocument();
     expect(screen.queryByText(/Write an English sentence/i)).not.toBeInTheDocument();

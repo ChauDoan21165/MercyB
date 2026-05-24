@@ -37,4 +37,18 @@ describe("AITutorCtaBanner", () => {
       "/ai-tutor?target=fr",
     );
   });
+
+  it("does not show the old Adult launcher copy", () => {
+    const { container } = render(
+      <MemoryRouter>
+        <AITutorCtaBanner uiLang="vi" target="en" />
+      </MemoryRouter>,
+    );
+
+    expect(container).not.toHaveTextContent(/\bAdult\b|adult learner|Me — an adult learner/i);
+    expect(screen.getByRole("link", { name: /Luyện với AI Tutor/ })).toHaveAttribute(
+      "href",
+      "/ai-tutor?target=en",
+    );
+  });
 });
