@@ -23,7 +23,7 @@ export interface UseTtsSpeakerResult {
     text: string,
     lang: string,
     target?: TutorLanguageCode,
-    options?: Pick<SpeakTutorTextOptions, "rawUserInput" | "allowRawUserInput" | "voiceStyle">,
+    options?: Pick<SpeakTutorTextOptions, "voiceStyle">,
   ) => Promise<void>;
   stop: () => void;
   error: string | null;
@@ -82,7 +82,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     text: string,
     lang: string,
     target: TutorLanguageCode = "en",
-    options: Pick<SpeakTutorTextOptions, "rawUserInput" | "allowRawUserInput" | "voiceStyle"> = {},
+    options: Pick<SpeakTutorTextOptions, "voiceStyle"> = {},
   ) => {
     const safeText = String(text ?? "").trim();
     if (!safeText) return;
@@ -110,8 +110,6 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
       voiceStyle: options.voiceStyle ?? "teacher-mercy",
       preferCloudVoice: true,
       fallbackToBrowserTts: targetLanguage.supportsBrowserTts,
-      rawUserInput: options.rawUserInput,
-      allowRawUserInput: options.allowRawUserInput,
     });
 
     if (requestRef.current !== requestId) return;

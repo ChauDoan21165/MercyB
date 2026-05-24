@@ -3,6 +3,7 @@ import {
   TUTOR_PRODUCT_CONFIGS,
   aiTutor,
   getSafetyLabel,
+  mercyKids,
   resolveExplainLanguage,
   resolveTargetLanguage,
   viKidsEnglish,
@@ -11,6 +12,7 @@ import {
 describe("tutor product configs", () => {
   it("aiTutor allows French, Chinese, and English targets", () => {
     expect(aiTutor.allowedTargetLanguages).toEqual(expect.arrayContaining(["fr", "zh", "en"]));
+    expect(aiTutor.modes).toEqual(["journey", "grammar", "speak", "logic"]);
   });
 
   it("viKidsEnglish only allows English target", () => {
@@ -32,6 +34,7 @@ describe("tutor product configs", () => {
 
   it("exposes the kids-safe safety label from tone and storage policy", () => {
     expect(getSafetyLabel(viKidsEnglish)).toBe("Kids-safe practice");
+    expect(getSafetyLabel(mercyKids)).toBe("Kids-safe practice");
     expect(getSafetyLabel(aiTutor)).toBe("No raw audio or full transcript storage");
   });
 });
