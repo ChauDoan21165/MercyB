@@ -87,7 +87,7 @@ function createOpeningMessage(target: TutorTarget, explainLanguage: ExplainLangu
     userText: "",
     correctedText: "",
     explanation: "",
-    naturalReply: tutorCopy.ui.emptyConversation,
+    naturalReply: "",
     nextQuestion: tutorCopy.starterQuestions[0] ?? "",
   });
   return { ...turn, role: "mercy" };
@@ -435,7 +435,6 @@ export default function AiTutorPage() {
           ttsSupported={tts.supported}
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
-          ttsBrowserFallback={tts.usingBrowserFallback}
           ttsVoiceSource={tts.voiceSource}
           speechLang={speechLang}
           onSubmit={handleSubmit}
@@ -465,7 +464,6 @@ export default function AiTutorPage() {
           ttsSupported={tts.supported}
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
-          ttsBrowserFallback={tts.usingBrowserFallback}
           ttsVoiceSource={tts.voiceSource}
           speakingMessageId={speakingMessageId}
           mode={mode}

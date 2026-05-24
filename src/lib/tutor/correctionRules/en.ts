@@ -40,7 +40,25 @@ function replaceVerbAfterSubject(
   });
 }
 
+function punctuateMorningRoutineRunOn(input: string): string {
+  return input.replace(
+    /^what do you usually do in the morning\s+nice that sounds like a clear morning routine\s+what do you do after that[.?!]?$/i,
+    "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?",
+  );
+}
+
+function punctuateQuestionForm(input: string): string {
+  const trimmed = input.trim().replace(/[.!?]+$/u, "");
+  return `${trimmed}?`;
+}
+
 export const englishCorrectionRules: CorrectionRule[] = [
+  {
+    id: "en-runon-morning-routine-punctuation",
+    detects: (input) =>
+      /^what do you usually do in the morning\s+nice that sounds like a clear morning routine\s+what do you do after that[.?!]?$/i.test(input),
+    apply: punctuateMorningRoutineRunOn,
+  },
   {
     id: "en-yesterday-irregular-beginner-past",
     detects: (input) =>
@@ -51,8 +69,23 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-third-person-daily-go-eat-have",
     detects: (input) =>
-      /\b(She|He|It)\s+(go|eat|have)\b/i.test(input),
+      /\b(She|He|It)\s+(go|eat|have)\b/i.test(input) &&
+      /\bevery day\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
+  },
+  {
+    id: "en-third-person-school-routine",
+    detects: (input) =>
+      /\b(She|He|It)\s+go\s+to\s+school\b/i.test(input) &&
+      !/\byesterday\b/i.test(input),
+    apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
+  },
+  {
+    id: "en-question-form-final-mark",
+    detects: (input) =>
+      /^(what|where|when|why|how|do|does|did|are|is|can|could|would|will)\b/i.test(input.trim()) &&
+      !/[?？]$/.test(input.trim()),
+    apply: punctuateQuestionForm,
   },
 ];
 

@@ -29,7 +29,6 @@ type Props = {
   ttsSupported: boolean;
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
-  ttsBrowserFallback: boolean;
   ttsVoiceSource?: "mercy" | "device" | null;
   speakingMessageId: string | null;
   onSend: () => void;
@@ -49,7 +48,6 @@ export default function ConversationMode({
   ttsSupported,
   ttsSpeaking,
   ttsPreparing,
-  ttsBrowserFallback,
   ttsVoiceSource,
   speakingMessageId,
   onSend,
@@ -181,9 +179,6 @@ export default function ConversationMode({
                       </button>
                     ) : (
                       <div className="text-[11px] font-medium text-slate-400">{ui.ttsUnavailable}</div>
-                    )}
-                    {isActiveVoice && ttsBrowserFallback && (
-                      <div className="text-[11px] font-semibold text-amber-600">{ui.ttsBrowserFallback}</div>
                     )}
                     {isActiveVoice && ttsVoiceSource && (
                       <div className={`text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>

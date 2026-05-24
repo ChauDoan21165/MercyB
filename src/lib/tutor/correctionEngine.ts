@@ -44,9 +44,7 @@ function capitalizeFirst(value: string): string {
 }
 
 function normalizedForComparison(value: string): string {
-  return normalizeWhitespace(value)
-    .replace(/[.!?。！？]+$/u, "")
-    .toLowerCase();
+  return normalizeWhitespace(value).toLowerCase();
 }
 
 function rulesForLanguage(language: TutorCorrectionLanguage): CorrectionRule[] {
@@ -102,7 +100,7 @@ export function correctWithTutorRules(
   for (const rule of rulesForLanguage(language)) {
     if (!rule.detects(corrected)) continue;
     const next = rule.apply(corrected);
-    if (normalizedForComparison(next) !== normalizedForComparison(corrected)) {
+    if (normalizeWhitespace(next) !== normalizeWhitespace(corrected)) {
       corrected = next;
       appliedRuleIds.push(rule.id);
     }
