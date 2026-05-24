@@ -125,7 +125,7 @@ export default function KoreanLessonsPage() {
           </Link>
         </p>
 
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="ko" />
       </header>
 
       <nav

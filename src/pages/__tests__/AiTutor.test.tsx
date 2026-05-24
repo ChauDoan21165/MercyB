@@ -70,7 +70,8 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     expect(screen.getByRole("heading", { name: /French Tutor/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText(/Pratique le français/)).toBeInTheDocument();
+    expect(screen.getByText(/Write a French sentence/)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
   });
 
   it("keeps Chinese target copy after hydration", async () => {
@@ -78,7 +79,23 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     expect(screen.getByRole("heading", { name: /Chinese Tutor/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText(/练习中文/)).toBeInTheDocument();
+    expect(screen.getByText(/Write a Chinese sentence/)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/gõ câu tiếng Trung/)).toBeInTheDocument();
+  });
+
+  it.each([
+    ["de", /German Tutor/, /Write a German sentence/, /gõ câu tiếng Đức/],
+    ["ja", /Japanese Tutor/, /Write a Japanese sentence/, /gõ câu tiếng Nhật/],
+    ["ko", /Korean Tutor/, /Write a Korean sentence/, /gõ câu tiếng Hàn/],
+    ["es", /Spanish Tutor/, /Write a Spanish sentence/, /type your Spanish sentence/],
+    ["vi", /Vietnamese Tutor/, /Write a Vietnamese sentence/, /type your Vietnamese sentence/],
+  ])("keeps %s target copy after hydration", async (target, heading, helper, placeholder) => {
+    window.history.pushState({}, "", `/ai-tutor?target=${target}`);
+    render(<AiTutorPage />);
+    expect(screen.getByRole("heading", { name: heading })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
+    expect(screen.getByText(helper)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(placeholder)).toBeInTheDocument();
   });
 
   it("defaults to floating-safe layout until the container is measured wide", () => {

@@ -5,7 +5,14 @@
 import { Link } from "react-router-dom";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 
-export default function AITutorCtaBanner({ uiLang }: { uiLang: string }) {
+type AITutorTarget = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
+
+type AITutorCtaBannerProps = {
+  uiLang: string;
+  target?: AITutorTarget;
+};
+
+export default function AITutorCtaBanner({ uiLang, target = "en" }: AITutorCtaBannerProps) {
   if (!FEATURE_FLAGS.AI_TUTOR_UI_ENABLED) return null;
 
   const title =
@@ -16,11 +23,12 @@ export default function AITutorCtaBanner({ uiLang }: { uiLang: string }) {
     uiLang === "en"
       ? "Real AI correction · memory · review"
       : "Sửa lỗi bằng AI thật · ghi nhớ · ôn tập";
+  const tutorHref = `/ai-tutor?target=${target}`;
 
   return (
     <div className="mt-3 rounded-xl border border-indigo-200 bg-indigo-50/60 p-3">
       <Link
-        to="/ai-tutor"
+        to={tutorHref}
         className="block rounded-lg px-2 py-1 transition hover:bg-indigo-100/70 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
       >
         <span className="block text-sm font-black text-indigo-800">

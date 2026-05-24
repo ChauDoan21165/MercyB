@@ -12,25 +12,29 @@ function renderBanner(uiLang: string) {
 }
 
 describe("AITutorCtaBanner", () => {
-  it("shows the visibly new English AI Tutor CTA and routes to /ai-tutor", () => {
+  it("shows the visibly new English AI Tutor CTA and routes to English Tutor", () => {
     renderBanner("en");
 
     expect(screen.getByText("🤖 Practice with AI Tutor")).toBeInTheDocument();
     expect(screen.getByText("Real AI correction · memory · review")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Practice with AI Tutor/ })).toHaveAttribute(
       "href",
-      "/ai-tutor",
+      "/ai-tutor?target=en",
     );
   });
 
-  it("shows the visibly new Vietnamese AI Tutor CTA and routes to /ai-tutor", () => {
-    renderBanner("vi");
+  it("shows the visibly new Vietnamese AI Tutor CTA and routes to the requested target", () => {
+    render(
+      <MemoryRouter>
+        <AITutorCtaBanner uiLang="vi" target="fr" />
+      </MemoryRouter>,
+    );
 
     expect(screen.getByText("🤖 Luyện với AI Tutor / Practice with AI Tutor")).toBeInTheDocument();
     expect(screen.getByText("Sửa lỗi bằng AI thật · ghi nhớ · ôn tập")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Luyện với AI Tutor/ })).toHaveAttribute(
       "href",
-      "/ai-tutor",
+      "/ai-tutor?target=fr",
     );
   });
 });

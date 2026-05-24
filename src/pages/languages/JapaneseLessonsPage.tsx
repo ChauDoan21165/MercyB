@@ -112,7 +112,7 @@ export default function JapaneseLessonsPage() {
           </Link>
         </p>
 
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="ja" />
       </header>
 
       <nav

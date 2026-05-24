@@ -12,18 +12,18 @@ import SpanishLessonsPage from "@/pages/languages/SpanishLessonsPage";
 import VietnameseLessonsPage from "@/pages/languages/VietnameseLessonsPage";
 
 const LANGUAGE_SURFACES = [
-  { name: "/languages", Page: LanguagesIndexPage },
-  { name: "/languages/chinese", Page: ChineseLessonsPage },
-  { name: "/languages/french", Page: FrenchLessonsPage },
-  { name: "/languages/german", Page: GermanLessonsPage },
-  { name: "/languages/japanese", Page: JapaneseLessonsPage },
-  { name: "/languages/korean", Page: KoreanLessonsPage },
-  { name: "/languages/spanish", Page: SpanishLessonsPage },
-  { name: "/languages/vietnamese", Page: VietnameseLessonsPage },
+  { name: "/languages", Page: LanguagesIndexPage, href: "/ai-tutor?target=en" },
+  { name: "/languages/chinese", Page: ChineseLessonsPage, href: "/ai-tutor?target=zh" },
+  { name: "/languages/french", Page: FrenchLessonsPage, href: "/ai-tutor?target=fr" },
+  { name: "/languages/german", Page: GermanLessonsPage, href: "/ai-tutor?target=de" },
+  { name: "/languages/japanese", Page: JapaneseLessonsPage, href: "/ai-tutor?target=ja" },
+  { name: "/languages/korean", Page: KoreanLessonsPage, href: "/ai-tutor?target=ko" },
+  { name: "/languages/spanish", Page: SpanishLessonsPage, href: "/ai-tutor?target=es" },
+  { name: "/languages/vietnamese", Page: VietnameseLessonsPage, href: "/ai-tutor?target=vi" },
 ] as const;
 
 describe("FrenchLessonsPage AI Tutor CTA", () => {
-  it("shows the AI Tutor CTA between the hero copy and level tabs and routes to /ai-tutor", () => {
+  it("shows the AI Tutor CTA between the hero copy and level tabs and routes to French Tutor", () => {
     render(
       <MemoryRouter>
         <UiLanguageProvider>
@@ -36,11 +36,11 @@ describe("FrenchLessonsPage AI Tutor CTA", () => {
     const levelTabs = screen.getByRole("navigation", { name: "Chọn cấp độ" });
 
     expect(screen.getByText("🤖 Luyện với AI Tutor / Practice with AI Tutor")).toBeInTheDocument();
-    expect(cta).toHaveAttribute("href", "/ai-tutor");
+    expect(cta).toHaveAttribute("href", "/ai-tutor?target=fr");
     expect(cta.compareDocumentPosition(levelTabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it.each(LANGUAGE_SURFACES)("$name shows the AI Tutor CTA and routes to /ai-tutor", ({ Page }) => {
+  it.each(LANGUAGE_SURFACES)("$name shows the AI Tutor CTA and preserves target language", ({ Page, href }) => {
     render(
       <MemoryRouter>
         <UiLanguageProvider>
@@ -51,7 +51,7 @@ describe("FrenchLessonsPage AI Tutor CTA", () => {
 
     expect(screen.getByRole("link", { name: /Luyện với AI Tutor/ })).toHaveAttribute(
       "href",
-      "/ai-tutor",
+      href,
     );
   });
 });

@@ -182,7 +182,7 @@ export default function LanguagesIndexPage() {
           {uiLang === "en" ? SUBTITLE_EN : SUBTITLE_VI}
         </p>
 
-        <AITutorCtaBanner uiLang={uiLang} />
+        <AITutorCtaBanner uiLang={uiLang} target="en" />
       </header>
 
       <div className="grid gap-3 sm:grid-cols-2">
