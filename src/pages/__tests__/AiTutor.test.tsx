@@ -3,14 +3,15 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import AiTutorPage from "../AiTutor";
+import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 
-const EMPTY_SUMMARY = {
+const EMPTY_SUMMARY: MemorySummary = {
   totalCorrections: 0, practicedCount: 0, strongestTopic: "", strongestTopicCount: 0,
   topicNeedingReview: "", topicNeedingReviewCount: 0,
   lastPracticedTopic: "", lastPracticedAt: null, suggestedNextFocus: "",
 };
 
-const POPULATED_SUMMARY = {
+const POPULATED_SUMMARY: MemorySummary = {
   totalCorrections: 6, practicedCount: 4, strongestTopic: "present-simple", strongestTopicCount: 3,
   topicNeedingReview: "past-tense", topicNeedingReviewCount: 1,
   lastPracticedTopic: "articles", lastPracticedAt: Date.now(), suggestedNextFocus: "past-tense",
