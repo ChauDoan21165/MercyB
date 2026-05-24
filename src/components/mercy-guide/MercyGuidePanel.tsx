@@ -82,23 +82,23 @@ function MercyKidsLauncher() {
         </div>
 
         <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-amber-600">
-          Teacher Mercy Kids
+          Mercy Kids
         </p>
         <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
           Mercy Kids
         </h2>
         <p className="mt-3 max-w-[460px] text-sm font-semibold leading-6 text-slate-600">
-          Hộp Mercy nhỏ gọn cho bé luyện câu ngắn, nghe lại, và học tiếng Anh từng bước.
+          Lối vào đơn giản cho bé: chọn hình, bấm nói, nghe Mercy trả lời.
         </p>
 
         <a
           href="/kids/vi-english"
           className="mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:bg-slate-800"
         >
-          Vào Mercy Kids
+          Mở Mercy Kids
         </a>
         <p className="mt-3 text-xs font-medium leading-5 text-slate-400">
-          Mercy Kids là lối vào đơn giản, thân thiện cho bé. AI Tutor là không gian học nâng cao riêng.
+          Mercy Kids mở trang luyện riêng cho bé. AI Tutor là không gian học nâng cao riêng.
         </p>
       </section>
     </div>
@@ -886,10 +886,10 @@ function TeacherModePicker({
               {compact
                 ? value === 'kids'
                   ? 'Kids'
-                  : 'Mercy Kids'
+                  : 'Teacher'
                 : value === 'kids'
                   ? 'Kids mode'
-                  : 'Mercy Kids'}
+                  : 'Teacher mode'}
             </div>
             {!compact ? (
               <div className="truncate text-xs opacity-80">{subtitle}</div>
@@ -934,13 +934,13 @@ function TeacherModePicker({
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-slate-900">
-                      {option === 'kids' ? 'Kids mode' : 'Mercy Kids'}
+                      {option === 'kids' ? 'Kids mode' : 'Teacher mode'}
                     </span>
                   </div>
                   <div className="mt-1 text-xs leading-5 text-slate-600">
                     {option === 'kids'
-                      ? 'Use Mercy from the homepage for little kids too.'
-                      : 'Warm, simple floating helper. AI Tutor is the multilingual workspace.'}
+                      ? 'Mercy Kids routes to the simple picture + speak page.'
+                      : 'Warm floating helper for room context. AI Tutor is the multilingual workspace.'}
                   </div>
                 </div>
 
