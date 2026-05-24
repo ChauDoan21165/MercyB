@@ -67,24 +67,10 @@ function readEnvVar(key: string): string | undefined {
  *   - "service_role"  — admin/service role
  *   - custom roles from app_metadata / user_metadata
  *
- * "authenticated" approved per A1 + A4 + A7 learner-access review (2026-05-23).
+ * Do NOT add "authenticated" until A1 + A4 + A7 approve learner access.
  */
 /** Mutable for test injection. Do NOT mutate in production code. */
-let ALLOWED_ROLES: string[] = (() => {
-  const envVal = readEnvVar("TUTOR_ALLOWED_ROLES");
-  if (envVal) {
-    try {
-      const parsed = JSON.parse(envVal);
-      if (Array.isArray(parsed) && parsed.every((r: unknown) => typeof r === "string")) {
-        return parsed as string[];
-      }
-    } catch {
-      // Invalid JSON — fall through to default
-    }
-  }
-  // Default: operator + admin only. Add others via TUTOR_ALLOWED_ROLES secret.
-  return ["operator", "admin"];
-})();
+let ALLOWED_ROLES: string[] = ["operator", "admin"];
 
 /** Exported for test setup only. */
 export function setAllowedRolesForTest(roles: string[]): void {

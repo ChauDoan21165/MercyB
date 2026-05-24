@@ -33,7 +33,6 @@ export default function EmailBlock({
 }) {
   const [mode, setMode] = useState<EmailMode>("code_email");
   const [email, setEmail] = useState("");
-  const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
@@ -131,7 +130,6 @@ export default function EmailBlock({
         options: {
           emailRedirectTo,
           shouldCreateUser: true,
-          data: nickname.trim() ? { nickname: nickname.trim() } : undefined,
         },
       });
 
@@ -675,7 +673,7 @@ export default function EmailBlock({
       </div>
 
       <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>📧 Email của bạn · Your email</label>
+        <label style={UI.label}>Email</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -687,35 +685,6 @@ export default function EmailBlock({
           style={UI.input(disabled)}
           disabled={disabled}
         />
-      </div>
-
-      {/* Nickname / display name — optional, shown at signup.
-          Helps the tutor address the learner by name instead of email. */}
-      <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>
-          😊 Tên bạn muốn gia sư gọi (tuỳ chọn)
-          <span style={{ fontSize: 11, fontWeight: 400, color: "rgba(0,0,0,0.4)", marginLeft: 6 }}>
-            What should your tutor call you? (optional)
-          </span>
-        </label>
-        <input
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value.slice(0, 30))}
-          placeholder="vd: Mai, Minh, Lan..."
-          aria-label="Tên bạn muốn gia sư gọi — What should your tutor call you?"
-          title="Tên này giúp gia sư gọi bạn thân thiện hơn. Không bắt buộc. — This helps your tutor know what to call you. Optional."
-          maxLength={30}
-          autoComplete="name"
-          className={AUTH_FOCUS_RING}
-          style={UI.input(disabled)}
-          disabled={disabled}
-        />
-        <div style={{ marginTop: 4, fontSize: 11, fontWeight: 400, color: "rgba(0,0,0,0.45)" }}>
-          Tên này giúp gia sư gọi bạn thân thiện hơn. Không bắt buộc.
-          <span style={{ display: "block", color: "rgba(0,0,0,0.35)", fontSize: 10 }}>
-            This helps your tutor know what to call you. Optional.
-          </span>
-        </div>
       </div>
 
       {showPasswordField && (

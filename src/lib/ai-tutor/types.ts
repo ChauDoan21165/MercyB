@@ -18,8 +18,7 @@
  *      Tree-shaking removes all imports in production when the flag is off.
  *   3. No V4 mutation. All V4 type references are read-only consumption via
  *      `import type` — no runtime coupling to V4 modules.
- *   4. V5 consumption is limited to sanitized, read-only context bridges.
- *      Raw answers, score mutation, and tutor writeback remain forbidden.
+ *   4. This module must not import from V5. V5 is a separate concern.
  *   5. The feature flag pattern mirrors src/lib/placement/v5/v5FeatureFlag.ts.
  *
  * Rollback notes:
@@ -107,12 +106,6 @@ export type TutorContext = {
   activeFacts: UserFact[] | null;
   /** Progress snapshot. Null when not enough data (< 3 attempts) or fetch failed. */
   progress: ProgressContext | null;
-  /** Sanitized Placement V5 read-only context. No raw answers, scores, or writeback data. */
-  placementV5Context?: string | null;
-  /** The learner's selected app UI language (i18n code, e.g. "vi", "en", "ja").
-   *  Mercy explains in this language while teaching/correcting English.
-   *  Unsupported/missing falls back to "en". */
-  language?: string | null;
 };
 
 // ─── Conversation Modes (A4 — Conversation Architecture §6) ──────────
@@ -855,8 +848,7 @@ export function getTurnLimitForTier(tier: TutorTier): number | null {
  * ☐ No runtime behavior — all exports are types, const flags, or pure functions
  * ☐ No AI calls — zero imports from edge functions or provider modules
  * ☐ No Supabase migrations — no .sql files, no schema references
- * ☐ V5 imports, if any, are type-only or sanitized read-only bridges
- * ☐ No raw answers, score mutation, or tutor writeback to V5
+ * ☐ No V5 imports — V5 is a separate concern
  * ☐ V5_ENABLED unchanged — this module does not touch V5
  * ☐ V4 consumption is import type only — no runtime coupling
  * ☐ AI_TUTOR_ENABLED defaults to false — tree-shakeable by bundler
