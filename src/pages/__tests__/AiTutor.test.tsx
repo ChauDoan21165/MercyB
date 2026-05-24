@@ -232,6 +232,99 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByPlaceholderText(/gõ câu tiếng Trung/)).toBeInTheDocument();
   });
 
+  it("starts Conversation mode in French when target=fr", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+
+    expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
+    expect(screen.getByText("Mercy hỏi · You answer")).toBeInTheDocument();
+    expect(screen.getByText("Qu'est-ce que tu fais le matin ?")).toBeInTheDocument();
+  });
+
+  it("starts Conversation mode in Chinese when target=zh", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=zh");
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+
+    expect(screen.getByText("你早上通常做什么？")).toBeInTheDocument();
+  });
+
+  it("sends a typed Conversation reply and shows correction plus one next question", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
+    await userEvent.click(screen.getByRole("button", { name: /^Send$/ }));
+
+    expect(screen.getByText("Je suis aller au marché")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText("Corrected version")).toBeInTheDocument();
+      expect(screen.getByText("Je suis allé au marché.")).toBeInTheDocument();
+      expect(screen.getByText("Qu'est-ce que tu fais après ça ?")).toBeInTheDocument();
+    });
+    expect(putCorrection).toHaveBeenCalledWith(
+      expect.objectContaining({
+        original: "",
+        corrected: "",
+        topic: "conversation-fr",
+        practiced: true,
+      }),
+    );
+  });
+
+  it("mic fills Conversation input without touching correction mode input", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
+    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    act(() => {
+      MockSpeechRecognition.last?.emitFinalTranscript("I drink coffee");
+      MockSpeechRecognition.last?.stop();
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole("textbox")).toHaveValue("I drink coffee");
+    });
+
+    await userEvent.click(screen.getByRole("button", { name: /Correct one sentence/ }));
+    expect(screen.getByRole("textbox")).toHaveValue("She go to school");
+  });
+
+  it("speaker reads Mercy Conversation reply in the target language", async () => {
+    const speak = vi.fn();
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    window.history.pushState({}, "", "/ai-tutor?target=zh");
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+
+    const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
+    await userEvent.click(speakerButtons[0]);
+
+    expect(speak).toHaveBeenCalledTimes(1);
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toContain("你早上通常做什么？");
+    expect(utterance.lang).toBe("zh-CN");
+  });
+
   it.each([
     ["de", /Gia sư tiếng Đức/, /Viết một câu tiếng Đức/, /gõ câu tiếng Đức/],
     ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
