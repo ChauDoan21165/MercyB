@@ -1,6 +1,6 @@
 // src/pages/AiTutor.tsx
-// AI Tutor page orchestrator — delegates to CorrectionMode, TutorHeader,
-// TutorMemoryCard. Extracted from a monolithic page for future mode support.
+// AI Tutor page orchestrator — delegates the shared Teacher Mercy frame to
+// TeacherMercyLearningShell and keeps product behavior local/mock-only.
 
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/providers/AuthProvider";
@@ -29,10 +29,10 @@ import type {
   TutorTargetCopy,
   UiCopy,
 } from "@/lib/ai-tutor/tutorUiCopy";
-import TutorHeader from "@/components/ai-tutor/TutorHeader";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, { type ConversationMessage } from "@/components/ai-tutor/ConversationMode";
 import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
+import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 
 type CorrectionResult = {
   corrected: string;
@@ -48,6 +48,11 @@ type PracticeFeedback = {
 };
 
 type TutorMode = "correction" | "conversation";
+
+const AI_TUTOR_MODE_TABS: Array<{ id: TutorMode; label: string }> = [
+  { id: "correction", label: "Correct one sentence" },
+  { id: "conversation", label: "Conversation with Mercy" },
+];
 
 const MOCK_DELAY_MS = 600;
 
@@ -348,35 +353,25 @@ export default function AiTutorPage() {
   };
 
   return (
-    <main
+    <TeacherMercyLearningShell
       ref={shellRef}
-      data-testid="ai-tutor-shell"
-      data-floating-shell={isFloatingShell ? "true" : "false"}
-      className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-full px-4 py-6 sm:px-6 lg:px-8"
+      testId="ai-tutor-shell"
+      avatarTestId="ai-tutor-mercy-avatar"
+      greetingTestId="ai-tutor-greeting"
+      floating={isFloatingShell}
+      greetingName={greetingName}
+      title={uiCopy.title(targetCopy, target)}
+      subtitle={uiCopy.subtitle(targetCopy)}
+      helper={uiCopy.helper(targetCopy)}
+      eyebrow={targetCopy.eyebrow}
+      badge="Mock"
+      modeTabs={AI_TUTOR_MODE_TABS}
+      activeMode={mode}
+      onModeChange={setMode}
+      memorySlot={<TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />}
+      reminderSlot={<TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} />}
+      footer={uiCopy.footer}
     >
-      <TutorHeader greetingName={greetingName} target={target} targetCopy={targetCopy} uiCopy={uiCopy} />
-      <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
-      <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} />
-      <div className="mx-auto mb-5 grid w-full max-w-3xl grid-cols-2 gap-2 rounded-[16px] border border-slate-200 bg-white p-1 shadow-sm">
-        <button
-          type="button"
-          onClick={() => setMode("correction")}
-          className={`min-h-[44px] rounded-[12px] px-3 text-sm font-black transition ${
-            mode === "correction" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-50"
-          }`}
-        >
-          Correct one sentence
-        </button>
-        <button
-          type="button"
-          onClick={() => setMode("conversation")}
-          className={`min-h-[44px] rounded-[12px] px-3 text-sm font-black transition ${
-            mode === "conversation" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-50"
-          }`}
-        >
-          Conversation with Mercy
-        </button>
-      </div>
       {mode === "correction" ? (
         <CorrectionMode
           input={input}
@@ -431,9 +426,6 @@ export default function AiTutorPage() {
           uiCopy={uiCopy}
         />
       )}
-      <footer className="mt-8 text-center text-[11px] font-medium text-slate-300">
-        {uiCopy.footer}
-      </footer>
-    </main>
+    </TeacherMercyLearningShell>
   );
 }
