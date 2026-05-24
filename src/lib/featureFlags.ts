@@ -93,7 +93,7 @@ export const FEATURE_FLAGS = {
   SPEECH_PERSISTENCE_ENABLED: readEnvBool("VITE_SPEECH_PERSISTENCE_ENABLED", false),
 
   /** AI Tutor mock UI shell — behind feature flag, mock responses only. */
-  AI_TUTOR_UI_ENABLED: false,
+  AI_TUTOR_UI_ENABLED: true,
 };
 
 /**
