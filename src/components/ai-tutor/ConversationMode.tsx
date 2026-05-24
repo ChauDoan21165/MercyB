@@ -1,0 +1,219 @@
+// src/components/ai-tutor/ConversationMode.tsx
+// Chat-style Teacher Mercy practice mode. Local/mock only; no provider calls.
+
+import { Mic, MicOff, Send, Square, Volume2 } from "lucide-react";
+import type { TutorTargetCopy, UiCopy } from "@/lib/ai-tutor/tutorUiCopy";
+
+export type ConversationMessage = {
+  id: string;
+  role: "mercy" | "user";
+  text: string;
+  correction?: string;
+  explanation?: string;
+  reply?: string;
+  nextQuestion?: string;
+};
+
+type Props = {
+  messages: ConversationMessage[];
+  input: string;
+  setInput: (value: string) => void;
+  loading: boolean;
+  micSupported: boolean;
+  micListening: boolean;
+  ttsSupported: boolean;
+  ttsSpeaking: boolean;
+  speakingMessageId: string | null;
+  onSend: () => void;
+  onMicToggle: () => void;
+  onSpeak: (message: ConversationMessage) => void;
+  targetCopy: TutorTargetCopy;
+  uiCopy: UiCopy;
+};
+
+export default function ConversationMode({
+  messages,
+  input,
+  setInput,
+  loading,
+  micSupported,
+  micListening,
+  ttsSupported,
+  ttsSpeaking,
+  speakingMessageId,
+  onSend,
+  onMicToggle,
+  onSpeak,
+  targetCopy,
+  uiCopy,
+}: Props) {
+  const isEmpty = !input.trim();
+
+  return (
+    <section
+      className="mx-auto flex min-h-[620px] w-full max-w-3xl flex-col rounded-[18px] border border-slate-200 bg-white shadow-sm"
+      data-testid="ai-tutor-conversation"
+    >
+      <div className="border-b border-slate-100 p-5">
+        <div className="text-xs font-black uppercase text-indigo-600">
+          Mercy hỏi · You answer
+        </div>
+        <h2 className="mt-1 text-xl font-black text-slate-900">
+          Conversation with Mercy
+        </h2>
+        <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+          Practice in {targetCopy.nameEn}. Mercy corrects gently, replies naturally, and asks one next question.
+        </p>
+      </div>
+
+      <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4 sm:p-5">
+        {messages.length === 0 && (
+          <div className="rounded-[16px] border border-dashed border-slate-200 bg-white p-5 text-center text-sm font-bold text-slate-500">
+            Mercy will start with one easy question.
+          </div>
+        )}
+
+        {messages.map((message) => {
+          const isMercy = message.role === "mercy";
+          const speakLabel = speakingMessageId === message.id && ttsSpeaking ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay;
+
+          return (
+            <article
+              key={message.id}
+              className={`flex ${isMercy ? "justify-start" : "justify-end"}`}
+            >
+              <div
+                className={`max-w-[88%] rounded-[18px] px-4 py-3 shadow-sm ${
+                  isMercy
+                    ? "rounded-tl-[6px] border border-indigo-100 bg-white text-slate-800"
+                    : "rounded-tr-[6px] bg-slate-900 text-white"
+                }`}
+              >
+                <div className={`mb-1 text-[11px] font-black uppercase ${isMercy ? "text-indigo-500" : "text-slate-300"}`}>
+                  {isMercy ? "Teacher Mercy" : "You"}
+                </div>
+
+                {isMercy ? (
+                  <div className="space-y-3">
+                    {message.correction && (
+                      <div>
+                        <div className="text-[11px] font-black uppercase text-emerald-600">Corrected version</div>
+                        <p className="mt-1 text-sm font-black leading-6 text-emerald-800">{message.correction}</p>
+                      </div>
+                    )}
+                    {message.explanation && (
+                      <div>
+                        <div className="text-[11px] font-black uppercase text-slate-500">Giải thích ngắn</div>
+                        <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{message.explanation}</p>
+                      </div>
+                    )}
+                    {message.reply && (
+                      <div>
+                        <div className="text-[11px] font-black uppercase text-indigo-500">Natural reply</div>
+                        <p className="mt-1 text-sm font-semibold leading-6 text-slate-800">{message.reply}</p>
+                      </div>
+                    )}
+                    <p className="text-sm font-semibold leading-6 text-slate-800">{message.text}</p>
+                    {message.nextQuestion && (
+                      <p className="rounded-[12px] bg-indigo-50 px-3 py-2 text-sm font-black leading-6 text-indigo-800">
+                        {message.nextQuestion}
+                      </p>
+                    )}
+                    {ttsSupported ? (
+                      <button
+                        type="button"
+                        onClick={() => onSpeak(message)}
+                        className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
+                          speakingMessageId === message.id && ttsSpeaking
+                            ? "border-red-300 bg-red-50 text-red-700"
+                            : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                        }`}
+                        aria-label={speakLabel}
+                      >
+                        {speakingMessageId === message.id && ttsSpeaking ? (
+                          <Square className="h-3.5 w-3.5" aria-hidden />
+                        ) : (
+                          <Volume2 className="h-3.5 w-3.5" aria-hidden />
+                        )}
+                        {speakingMessageId === message.id && ttsSpeaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
+                      </button>
+                    ) : (
+                      <div className="text-[11px] font-medium text-slate-400">{uiCopy.ttsUnavailable}</div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="whitespace-pre-wrap text-sm font-semibold leading-6">{message.text}</p>
+                )}
+              </div>
+            </article>
+          );
+        })}
+
+        {loading && (
+          <div className="flex justify-start">
+            <div className="rounded-full border border-indigo-100 bg-white px-4 py-2 text-sm font-bold text-indigo-700 shadow-sm">
+              Mercy is thinking...
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="border-t border-slate-100 p-4">
+        <label className="mb-2 block text-xs font-black uppercase text-slate-500">
+          Your answer
+        </label>
+        <textarea
+          value={input}
+          onChange={(e) => {
+            if (e.target.value.length <= 500) setInput(e.target.value);
+          }}
+          placeholder={`Type your ${targetCopy.nameEn} answer here...`}
+          rows={3}
+          className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) onSend();
+          }}
+        />
+        <div className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
+          {micSupported ? (
+            <button
+              type="button"
+              onClick={onMicToggle}
+              className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-black transition ${
+                micListening
+                  ? "border-red-300 bg-red-50 text-red-700"
+                  : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+              }`}
+              aria-label={micListening ? uiCopy.micAriaStop : uiCopy.micAriaStart}
+            >
+              <span className="inline-flex items-center justify-center gap-2">
+                <Mic className="h-4 w-4" aria-hidden />
+                {micListening ? uiCopy.micListening : uiCopy.micInput}
+              </span>
+            </button>
+          ) : (
+            <div
+              role="status"
+              className="min-h-[44px] rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-center text-xs font-bold text-slate-500"
+              data-testid="ai-tutor-conversation-mic-fallback"
+            >
+              <span className="inline-flex items-center justify-center gap-2">
+                <MicOff className="h-4 w-4" aria-hidden />
+                {uiCopy.micUnavailable}
+              </span>
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={onSend}
+            disabled={isEmpty || loading}
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+          >
+            <Send className="h-4 w-4" aria-hidden />
+            Send
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
