@@ -66,9 +66,18 @@ type PracticeFeedback = {
   nextStep: string;
 };
 
-type TutorMode = Extract<TutorProductMode, "conversation" | "grammar" | "speak" | "logic">;
+type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
 
-const AI_TUTOR_MODES: TutorMode[] = ["conversation", "grammar", "speak", "logic"];
+const AI_TUTOR_TAB_LABELS: Record<TutorMode, string> = {
+  journey: "Journey",
+  grammar: "Grammar",
+  speak: "Speak",
+  logic: "Logic",
+};
+
+const AI_TUTOR_MODES: TutorMode[] = aiTutorConfig.modes.filter((mode): mode is TutorMode =>
+  mode === "journey" || mode === "grammar" || mode === "speak" || mode === "logic",
+);
 
 const MOCK_DELAY_MS = 600;
 const TUTOR_PRODUCT: TutorProduct = "ai-tutor";
@@ -190,13 +199,7 @@ export default function AiTutorPage() {
   const uiCopy: UiCopy = UI_COPY[explainLanguage];
   const modeTabs = AI_TUTOR_MODES.map((mode) => ({
     id: mode,
-    label: mode === "conversation"
-      ? "Journey"
-      : mode === "grammar"
-        ? "Grammar"
-        : mode === "speak"
-          ? "Speak"
-          : "Logic",
+    label: AI_TUTOR_TAB_LABELS[mode],
   }));
 
   const sttBaseInputRef = useRef<string>("");
@@ -443,7 +446,7 @@ export default function AiTutorPage() {
             if (tts.speaking) {
               tts.stop();
             } else {
-              void tts.speak(text, ttsLang, target, { rawUserInput: input });
+              void tts.speak(text, ttsLang, target);
             }
           }}
           onPracticeSubmit={handlePracticeSubmit}

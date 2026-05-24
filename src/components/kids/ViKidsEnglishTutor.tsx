@@ -17,7 +17,7 @@ const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
 const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
 
 export default function ViKidsEnglishTutor() {
-  const [mode, setMode] = useState<ViKidsTutorMode>("conversation");
+  const [mode, setMode] = useState<ViKidsTutorMode>("journey");
   const [answer, setAnswer] = useState("");
   const [memoryLoaded, setMemoryLoaded] = useState(false);
   const [memory, setMemory] = useState<MemorySummary | null>(null);
@@ -72,14 +72,14 @@ export default function ViKidsEnglishTutor() {
       <section className="mx-auto grid w-full max-w-3xl gap-5 rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
         <div>
           <div className="text-xs font-black uppercase text-indigo-600">
-            English practice · Giải thích tiếng Việt
+            {VI_KIDS_TUTOR_COPY.sectionEyebrow}
           </div>
           <h2 className="mt-1 text-xl font-black text-slate-900">
-            {mode === "conversation" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
+            {mode === "journey" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
           </h2>
         </div>
 
-        {mode === "conversation" && (
+        {mode === "journey" && (
           <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-4">
             <p className="text-sm font-bold leading-6 text-slate-700">
               {VI_KIDS_TUTOR_COPY.conversationQuestion}
@@ -110,7 +110,7 @@ export default function ViKidsEnglishTutor() {
             </div>
             {tts.voiceSource && (
               <div className={`mt-2 text-[11px] font-semibold ${tts.voiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
-                {tts.voiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
+                {tts.voiceSource === "mercy" ? VI_KIDS_TUTOR_COPY.mercyVoiceLabel : VI_KIDS_TUTOR_COPY.deviceVoiceFallbackLabel}
               </div>
             )}
           </div>
@@ -130,7 +130,7 @@ export default function ViKidsEnglishTutor() {
                 unavailableLabel={VI_KIDS_TUTOR_COPY.ttsUnavailable}
                 inactiveLabel={VI_KIDS_TUTOR_COPY.ttsPlay}
                 activeLabel={VI_KIDS_TUTOR_COPY.ttsStop}
-                preparingLabel="Preparing Mercy voice…"
+                preparingLabel={VI_KIDS_TUTOR_COPY.ttsPreparing}
                 ariaStart="Mercy đọc câu tiếng Anh"
                 ariaStop="Dừng Mercy đọc"
                 onToggle={speakLine}
@@ -147,14 +147,6 @@ export default function ViKidsEnglishTutor() {
                 onToggle={handleMicToggle}
               />
             </div>
-          </div>
-        )}
-
-        {mode === "logic" && (
-          <div className="rounded-[16px] border border-amber-200 bg-amber-50/60 p-4">
-            <p className="text-sm font-bold leading-6 text-amber-900">
-              {VI_KIDS_TUTOR_COPY.logicTask}
-            </p>
           </div>
         )}
 

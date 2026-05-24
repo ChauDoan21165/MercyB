@@ -4,7 +4,7 @@ import {
   type TutorLanguageCode,
 } from "@/lib/tutor/languageRegistry";
 
-export type TutorProductMode = "correction" | "conversation" | "speak" | "grammar" | "logic";
+export type TutorProductMode = "journey" | "grammar" | "speak" | "logic" | "correction" | "conversation";
 
 export type TutorProductConfig = {
   productId: string;
@@ -29,7 +29,7 @@ export const aiTutor: TutorProductConfig = {
   defaultTargetLanguage: "en",
   explainLanguageStrategy: "ui",
   tone: "general",
-  modes: ["correction", "conversation"],
+  modes: ["journey", "grammar", "speak", "logic", "correction", "conversation"],
   memoryEnabled: true,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -44,7 +44,7 @@ export const viKidsEnglish: TutorProductConfig = {
   defaultTargetLanguage: "en",
   explainLanguageStrategy: "vi-first",
   tone: "kids-safe",
-  modes: ["conversation", "grammar", "speak", "logic"],
+  modes: ["journey", "grammar", "speak"],
   memoryEnabled: true,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -73,8 +73,8 @@ export const toeicPractice: TutorProductConfig = {
   allowedTargetLanguages: ["en"],
   defaultTargetLanguage: "en",
   explainLanguageStrategy: "vi-first",
-  tone: "exam",
-  modes: ["grammar", "conversation", "correction"],
+  tone: "business",
+  modes: ["grammar", "logic", "correction"],
   memoryEnabled: false,
   cloudVoiceEnabled: true,
   rawAudioAllowed: false,
@@ -90,8 +90,12 @@ export const TUTOR_PRODUCT_CONFIGS = {
 
 export type TutorProductId = keyof typeof TUTOR_PRODUCT_CONFIGS;
 
-export function getTutorProductConfig(productId: TutorProductId): TutorProductConfig {
-  return TUTOR_PRODUCT_CONFIGS[productId];
+export function isTutorProductId(productId: unknown): productId is TutorProductId {
+  return typeof productId === "string" && productId in TUTOR_PRODUCT_CONFIGS;
+}
+
+export function getTutorProductConfig(productId: unknown): TutorProductConfig {
+  return isTutorProductId(productId) ? TUTOR_PRODUCT_CONFIGS[productId] : aiTutor;
 }
 
 export function isTargetLanguageAllowed(
