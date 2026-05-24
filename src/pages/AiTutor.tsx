@@ -13,6 +13,15 @@ import {
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import {
+  connectOpenAiRealtimeVoice,
+  fetchOpenAiRealtimeSession,
+  sanitizeRealtimeFallbackText,
+  supportsOpenAiRealtimeVoice,
+  type OpenAiRealtimeStatus,
+  type RealtimeVoiceConnection,
+} from "@/lib/teacher-mercy/openaiRealtimeVoice";
 import {
   MOCK_RESULTS_BY_TARGET,
   buildInputAwareCorrection,
@@ -151,6 +160,7 @@ export default function AiTutorPage() {
   const ttsLang = getTtsLocale(target);
   const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
+  const realtimeVoiceFlag = useFeatureFlag("openai_realtime_voice", false);
 
   const nickname: string | undefined =
     (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
@@ -179,6 +189,7 @@ export default function AiTutorPage() {
   ]);
   const [conversationLoading, setConversationLoading] = useState(false);
   const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
+  const [realtimeStatus, setRealtimeStatus] = useState<OpenAiRealtimeStatus>("idle");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CorrectionResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -190,6 +201,7 @@ export default function AiTutorPage() {
   const [memory, setMemory] = useState<MemorySummary | null>(null);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
+  const realtimeConnectionRef = useRef<RealtimeVoiceConnection | null>(null);
 
   const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const aiTutorTabLabels: Record<TutorMode, string> = {
@@ -203,6 +215,10 @@ export default function AiTutorPage() {
     label: aiTutorTabLabels[mode],
   }));
   const isCorrectionMode = mode === "grammar";
+  const realtimeMode = mode === "journey" || mode === "speak" ? mode : null;
+  const realtimeAllowedInMode = realtimeMode !== null;
+  const realtimeVoiceEnabled = realtimeVoiceFlag.enabled && realtimeAllowedInMode;
+  const realtimeVoiceSupported = realtimeVoiceEnabled && supportsOpenAiRealtimeVoice();
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
@@ -230,6 +246,7 @@ export default function AiTutorPage() {
   }, [mode, stt.listening, stt.transcript]);
 
   const handleMicToggle = () => {
+    if (mode === "logic") return;
     if (stt.listening) { stt.stop(); return; }
     sttBaseInputRef.current = mode !== "grammar" ? conversationInput : input;
     lastCommittedSttRef.current = "";
@@ -283,6 +300,18 @@ export default function AiTutorPage() {
     setSpeakingMessageId(null);
     tts.stop();
   }, [target, explainLanguage]);
+
+  useEffect(() => {
+    if (realtimeAllowedInMode) return;
+    realtimeConnectionRef.current?.stop();
+    realtimeConnectionRef.current = null;
+    setRealtimeStatus("idle");
+  }, [realtimeAllowedInMode]);
+
+  useEffect(() => () => {
+    realtimeConnectionRef.current?.stop();
+    realtimeConnectionRef.current = null;
+  }, []);
 
   useEffect(() => {
     const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target));
@@ -392,6 +421,41 @@ export default function AiTutorPage() {
     void tts.speak(text, ttsLang, target);
   };
 
+  const handleRealtimeToggle = async () => {
+    if (!realtimeVoiceEnabled || !realtimeMode) return;
+    if (realtimeConnectionRef.current) {
+      realtimeConnectionRef.current.stop();
+      realtimeConnectionRef.current = null;
+      setRealtimeStatus("idle");
+      return;
+    }
+
+    setRealtimeStatus("connecting");
+    try {
+      const session = await fetchOpenAiRealtimeSession({
+        mode: realtimeMode,
+        targetLanguage: target,
+        explainLanguage,
+      });
+      if (!session) throw new Error("Realtime session unavailable.");
+      const connection = await connectOpenAiRealtimeVoice(session);
+      realtimeConnectionRef.current = connection;
+      setRealtimeStatus("connected");
+    } catch {
+      realtimeConnectionRef.current?.stop();
+      realtimeConnectionRef.current = null;
+      setRealtimeStatus("fallback");
+      const lastMercy = [...conversationMessages].reverse().find(
+        (message): message is MercyConversationMessage => message.role === "mercy",
+      );
+      const fallbackText = sanitizeRealtimeFallbackText(lastMercy ? getSpeakableText(lastMercy) : "");
+      if (fallbackText) {
+        setSpeakingMessageId(lastMercy?.id ?? null);
+        void tts.speak(fallbackText, ttsLang, target);
+      }
+    }
+  };
+
   const handleClear = () => {
     setInput("");
     setResult(null);
@@ -465,11 +529,15 @@ export default function AiTutorPage() {
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
           ttsVoiceSource={tts.voiceSource}
+          realtimeEnabled={realtimeVoiceEnabled}
+          realtimeSupported={realtimeVoiceSupported}
+          realtimeStatus={realtimeStatus}
           speakingMessageId={speakingMessageId}
           mode={mode}
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}
           onSpeak={handleConversationSpeak}
+          onRealtimeToggle={handleRealtimeToggle}
           tutorCopy={tutorCopy}
         />
       )}

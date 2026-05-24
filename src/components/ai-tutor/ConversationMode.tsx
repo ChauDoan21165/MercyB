@@ -1,7 +1,7 @@
 // src/components/ai-tutor/ConversationMode.tsx
 // Chat-style Teacher Mercy practice mode. Local/mock only; no provider calls.
 
-import { Send, Square, Volume2 } from "lucide-react";
+import { Mic, Send, Square, Volume2 } from "lucide-react";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
@@ -30,10 +30,14 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsVoiceSource?: "mercy" | "device" | null;
+  realtimeEnabled?: boolean;
+  realtimeSupported?: boolean;
+  realtimeStatus?: "idle" | "connecting" | "connected" | "fallback" | "error";
   speakingMessageId: string | null;
   onSend: () => void;
   onMicToggle: () => void;
   onSpeak: (message: MercyConversationMessage) => void;
+  onRealtimeToggle?: () => void;
   tutorCopy: TutorCopy;
 };
 
@@ -49,15 +53,21 @@ export default function ConversationMode({
   ttsSpeaking,
   ttsPreparing,
   ttsVoiceSource,
+  realtimeEnabled = false,
+  realtimeSupported = false,
+  realtimeStatus = "idle",
   speakingMessageId,
   onSend,
   onMicToggle,
   onSpeak,
+  onRealtimeToggle,
   tutorCopy,
 }: Props) {
   const isEmpty = !input.trim();
   const { ui } = tutorCopy;
   const allowTts = mode !== "logic";
+  const allowVoiceInput = mode !== "logic";
+  const showRealtimeVoice = allowVoiceInput && realtimeEnabled;
   const modeCopy = {
     journey: {
       eyebrow: ui.conversationEyebrow,
@@ -100,6 +110,40 @@ export default function ConversationMode({
         <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
           {modeCopy.description}
         </p>
+        {showRealtimeVoice && (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={onRealtimeToggle}
+              disabled={!realtimeSupported || realtimeStatus === "connecting"}
+              className={`inline-flex min-h-[40px] items-center gap-2 rounded-full border px-4 py-2 text-xs font-black transition ${
+                realtimeStatus === "connected"
+                  ? "border-red-300 bg-red-50 text-red-700"
+                  : "border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+              } disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-400`}
+              aria-label={realtimeStatus === "connected" ? "Stop realtime voice" : "Start realtime voice"}
+            >
+              {realtimeStatus === "connecting" ? (
+                <span className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-emerald-200 border-t-emerald-700" />
+              ) : realtimeStatus === "connected" ? (
+                <Square className="h-3.5 w-3.5" aria-hidden />
+              ) : (
+                <Mic className="h-3.5 w-3.5" aria-hidden />
+              )}
+              {realtimeStatus === "connected"
+                ? "Stop realtime voice"
+                : realtimeStatus === "connecting"
+                  ? "Connecting realtime voice..."
+                  : "Start realtime voice"}
+            </button>
+            {realtimeStatus === "connected" && (
+              <span className="text-[11px] font-semibold text-emerald-700">Realtime Mercy voice</span>
+            )}
+            {(realtimeStatus === "fallback" || realtimeStatus === "error" || !realtimeSupported) && (
+              <span className="text-[11px] font-semibold text-amber-700">Device voice fallback</span>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4 sm:p-5">
@@ -221,18 +265,20 @@ export default function ConversationMode({
           }}
         />
         <div className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
-          <TeacherMercyVoiceControls
-            kind="mic"
-            supported={micSupported}
-            active={micListening}
-            unavailableLabel={tutorCopy.micLabels.unavailable}
-            inactiveLabel={tutorCopy.micLabels.input}
-            activeLabel={tutorCopy.micLabels.listening}
-            ariaStart={tutorCopy.micLabels.ariaStart}
-            ariaStop={tutorCopy.micLabels.ariaStop}
-            onToggle={onMicToggle}
-            fallbackTestId="ai-tutor-conversation-mic-fallback"
-          />
+          {allowVoiceInput && (
+            <TeacherMercyVoiceControls
+              kind="mic"
+              supported={micSupported}
+              active={micListening}
+              unavailableLabel={tutorCopy.micLabels.unavailable}
+              inactiveLabel={tutorCopy.micLabels.input}
+              activeLabel={tutorCopy.micLabels.listening}
+              ariaStart={tutorCopy.micLabels.ariaStart}
+              ariaStop={tutorCopy.micLabels.ariaStop}
+              onToggle={onMicToggle}
+              fallbackTestId="ai-tutor-conversation-mic-fallback"
+            />
+          )}
           <button
             type="button"
             onClick={onSend}

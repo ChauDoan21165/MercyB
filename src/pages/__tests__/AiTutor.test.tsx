@@ -26,7 +26,7 @@ const POPULATED_SUMMARY: MemorySummary = {
   topicCounts: { "present-simple": 3, "past-tense": 1 }, unpracticedCorrectionIds: [],
 };
 
-const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.hoisted(() => {
+const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl, useFeatureFlag } = vi.hoisted(() => {
   type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
   type CloudTtsResult = { audioUrl: string; cached: boolean };
   return {
@@ -34,6 +34,7 @@ const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.
     getMemorySummary: vi.fn(async () => ({ ...EMPTY_SUMMARY })),
     markPracticed: vi.fn(async () => {}),
     fetchCloudTtsUrl: vi.fn(async (_args: CloudTtsArgs): Promise<CloudTtsResult | null> => null),
+    useFeatureFlag: vi.fn(() => ({ enabled: false, loading: false })),
   };
 });
 
@@ -128,6 +129,10 @@ vi.mock("@/lib/mercyVoice", () => ({
   fetchCloudTtsUrl,
 }));
 
+vi.mock("@/hooks/useFeatureFlag", () => ({
+  useFeatureFlag,
+}));
+
 beforeEach(() => {
   vi.clearAllMocks();
   MockSpeechRecognition.last = null;
@@ -137,6 +142,7 @@ beforeEach(() => {
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
   fetchCloudTtsUrl.mockResolvedValue(null);
+  useFeatureFlag.mockReturnValue({ enabled: false, loading: false });
   MockAudioElement.last = null;
 });
 
@@ -165,6 +171,33 @@ describe("AiTutor mock UI", () => {
     expect(shell).not.toHaveTextContent(/\bMock\b/i);
     expect(shell).not.toHaveTextContent(/mock-only|local mock|demo tutor/i);
     expect(shell).not.toHaveTextContent(/\bAdult\b|adult learner/i);
+  });
+
+  it("shows realtime voice controls in Journey only when the flag is enabled", async () => {
+    useFeatureFlag.mockReturnValue({ enabled: true, loading: false });
+
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+
+    expect(screen.getByRole("button", { name: "Start realtime voice" })).toBeInTheDocument();
+  });
+
+  it("keeps realtime voice hidden when the flag is disabled", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+
+    expect(screen.queryByRole("button", { name: "Start realtime voice" })).not.toBeInTheDocument();
+  });
+
+  it("keeps Logic voice-free with no mic, TTS, or realtime UI", async () => {
+    useFeatureFlag.mockReturnValue({ enabled: true, loading: false });
+
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Logic" }));
+
+    expect(screen.queryByRole("button", { name: /Mercy đọc/ })).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-conversation-mic-fallback")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Start realtime voice" })).not.toBeInTheDocument();
   });
 
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {

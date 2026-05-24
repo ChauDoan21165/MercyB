@@ -77,5 +77,6 @@ describe("ViKidsEnglishTutor", () => {
 
     expect(screen.queryByRole("button", { name: "Correction" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Correct one sentence" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Start realtime voice" })).not.toBeInTheDocument();
   });
 });
