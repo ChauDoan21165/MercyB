@@ -111,7 +111,8 @@ describe("assembleSystemPrompt", () => {
   it("P1: includes all 8 core rules in base prompt", () => {
     const prompt = assembleSystemPrompt("general_chat", null, null);
     expect(prompt).toContain("CORE RULES (never break these)");
-    expect(prompt).toContain("Respond in Vietnamese");
+    expect(prompt).toContain("Explain everything in");
+    expect(prompt).toContain("Teach and correct in English");
     expect(prompt).toContain("Never evaluate the learner");
     expect(prompt).toContain("Never fabricate grammar rules");
     expect(prompt).toContain("One correction per response");
@@ -198,6 +199,22 @@ describe("assembleContextBlock", () => {
   it("includes weak skills when provided", () => {
     const result = assembleContextBlock(null, null, null, "0", null, "listening, grammar", []);
     expect(result).toContain("Bạn đang cần cải thiện: listening, grammar");
+  });
+
+  it("includes sanitized Placement V5 read-only context when provided", () => {
+    const result = assembleContextBlock(
+      null,
+      null,
+      null,
+      "0",
+      null,
+      null,
+      [],
+      undefined,
+      "Placement V5 context is read-only and sanitized.",
+    );
+
+    expect(result).toContain("Placement V5 context is read-only and sanitized.");
   });
 });
 

@@ -404,6 +404,7 @@ When persistence is added:
 - Memory facts read via `getActiveFactsForUser()` (V4, frozen)
 - Progress context via `buildProgressContext()` (V4, frozen)
 - Cost logs via V5 `provider_decisions` table (future-only; requires A1 explicit approval; not a Phase A/B dependency)
+- Sanitized Placement V5 read-only context via `placementV5Context` is allowed when it excludes raw answers, numeric scores, learner identifiers, and writeback fields.
 
 ---
 
@@ -417,9 +418,9 @@ All V4 consumption is read-only. The tutor reads profiles, facts, progress, and 
 
 V4 types are re-exported via `export type` in `types.ts`. No alternate definitions, no extension via inheritance, no casting without mapping functions.
 
-### 12.3 Must NOT import from V5
+### 12.3 V5 coupling is read-only only
 
-V5 (`src/lib/placement/v5/`) is a separate concern. Zero V5 imports.
+V5 (`src/lib/placement/v5/`) may be consumed only through sanitized read-only context bridges. Type-only imports from V5 row/view types are allowed for compile-time safety. Runtime provider calls, raw answer access, score mutation, persistence/writeback, and tutor writes to V5 remain forbidden.
 
 ### 12.4 Must NOT make AI calls (Phase A)
 
@@ -524,7 +525,8 @@ To be verified by A10, A6, A7, A8, and A1 before Phase A is accepted:
 ☐ Zero Supabase client imports
 ☐ Zero edge function references
 ☐ Zero .sql files in tutor directory tree
-☐ Zero V5 imports
+☐ V5 imports, if any, are type-only or sanitized read-only bridges
+☐ No raw answers, score mutation, or tutor writeback to V5
 ☐ V5_ENABLED unchanged
 ☐ All re-exported V4 types resolve correctly
 ☐ No circular imports

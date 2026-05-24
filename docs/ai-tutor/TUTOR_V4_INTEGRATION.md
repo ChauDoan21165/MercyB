@@ -252,7 +252,7 @@ Per-request cost metrics are logged to `console.log` in all Phase A/B implementa
 | `status` | `success\|timeout\|rate_limited\|error` | Reliability tracking |
 | `error_code` | Provider or internal | Debugging |
 
-**Contract:** Phase A defines the cost-logging contract only. Cost logging writes to `console.log` in all Phase A/B implementations. V5 `v4_provider_decisions` integration is a future concern — it is NOT a Phase A or Phase B dependency. V5_ENABLED remains false and V5 is parked. A1 must explicitly approve before any tutor code writes to V5 tables.
+**Contract:** Phase A defines the cost-logging contract only. Cost logging writes to `console.log` in all Phase A/B implementations. V5 `v4_provider_decisions` integration is a future concern — it is NOT a Phase A or Phase B dependency. V5_ENABLED remains false and V5 writeback remains parked. Sanitized Placement V5 read-only context is allowed only when it excludes raw answers, numeric scores, learner identifiers, and writeback fields. A1 must explicitly approve before any tutor code writes to V5 tables.
 
 ---
 
@@ -284,7 +284,8 @@ Per-request cost metrics are logged to `console.log` in all Phase A/B implementa
 ☐ All re-exports in types.ts use `export type`
 ☐ Zero runtime imports from V4 into src/lib/ai-tutor/types.ts
 ☐ `grep -r "from.*ai-tutor" src/components/ src/lib/ src/hooks/ src/config/` returns empty
-☐ `grep -r "V5_ENABLED\|from.*placement/v5" src/lib/ai-tutor/` returns empty
+☐ `grep -r "from.*placement/v5" src/lib/ai-tutor/ --include='*.ts'` shows only type-only sanitized context bridges
+☐ `grep -r "V5_ENABLED" src/lib/ai-tutor/` returns empty
 ☐ `grep -r "supabaseClient\|createClient" src/lib/ai-tutor/` returns empty (Phase A)
 ☐ `grep -r "openai\|gemini\|claude\|chat\.completions" src/lib/ai-tutor/` returns empty
 ☐ All consumed functions exist with documented signatures
