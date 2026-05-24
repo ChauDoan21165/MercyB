@@ -309,7 +309,7 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     const bubble =
       document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
-      document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
+      document.querySelector<HTMLElement>('[aria-label="Open Mercy Kids"]');
     if (!bubble) {
       console.warn("[Home] Teacher Mercy bubble not found; cannot open panel.");
       return;

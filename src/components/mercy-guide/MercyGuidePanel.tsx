@@ -61,50 +61,6 @@ function TabLoadingFallback() {
   );
 }
 
-function MercyKidsLauncher() {
-  return (
-    <div className="m-0 flex h-full min-h-0 flex-1 overflow-y-auto bg-slate-50 p-4">
-      <section className="mx-auto flex w-full max-w-[680px] flex-col items-center justify-center rounded-3xl border border-amber-100 bg-white p-5 text-center shadow-[0_12px_32px_rgba(251,191,36,0.12)]">
-        <div className="h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-lg">
-          <picture>
-            <source srcSet={MERCY_HOST_IMAGE_AVIF} type="image/avif" />
-            <source srcSet={MERCY_HOST_IMAGE_WEBP} type="image/webp" />
-            <img
-              src={MERCY_HOST_IMAGE_SRC}
-              alt="Teacher Mercy"
-              width={640}
-              height={640}
-              decoding="async"
-              onError={fallbackAvatar}
-              className="h-full w-full object-cover object-[50%_32%] scale-110"
-            />
-          </picture>
-        </div>
-
-        <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-amber-600">
-          Teacher Mercy Kids
-        </p>
-        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-          Mercy Kids
-        </h2>
-        <p className="mt-3 max-w-[460px] text-sm font-semibold leading-6 text-slate-600">
-          Hộp Mercy nhỏ gọn cho bé luyện câu ngắn, nghe lại, và học tiếng Anh từng bước.
-        </p>
-
-        <a
-          href="/kids/vi-english"
-          className="mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:bg-slate-800"
-        >
-          Vào Mercy Kids
-        </a>
-        <p className="mt-3 text-xs font-medium leading-5 text-slate-400">
-          Mercy Kids là lối vào đơn giản, thân thiện cho bé. AI Tutor là không gian học nâng cao riêng.
-        </p>
-      </section>
-    </div>
-  );
-}
-
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -864,7 +820,7 @@ function TeacherModePicker({
     >
       {!compact ? (
         <div className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-          Teacher mode
+          Mercy mode
         </div>
       ) : null}
 
@@ -886,10 +842,10 @@ function TeacherModePicker({
               {compact
                 ? value === 'kids'
                   ? 'Kids'
-                  : 'Mercy Kids'
+                  : 'Teacher'
                 : value === 'kids'
                   ? 'Kids mode'
-                  : 'Mercy Kids'}
+                  : 'Teacher mode'}
             </div>
             {!compact ? (
               <div className="truncate text-xs opacity-80">{subtitle}</div>
@@ -907,7 +863,7 @@ function TeacherModePicker({
         <div
           className={`absolute z-[90] mt-2 max-w-[calc(100vw-24px)] rounded-2xl md:rounded-3xl border border-white/90 bg-white/95 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.14)] backdrop-blur-md ${menuPlacementClass}`}
           role="listbox"
-          aria-label="Teacher mode"
+          aria-label="Mercy mode"
         >
           {(['adult', 'kids'] as TeacherMode[]).map((option) => {
             const isActive = option === value;
@@ -934,13 +890,13 @@ function TeacherModePicker({
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-slate-900">
-                      {option === 'kids' ? 'Kids mode' : 'Mercy Kids'}
+                      {option === 'kids' ? 'Kids mode' : 'Teacher mode'}
                     </span>
                   </div>
                   <div className="mt-1 text-xs leading-5 text-slate-600">
                     {option === 'kids'
-                      ? 'Use Mercy from the homepage for little kids too.'
-                      : 'Warm, simple floating helper. AI Tutor is the multilingual workspace.'}
+                      ? 'Mercy Kids keeps the floating helper simple: choose a picture, listen, and speak.'
+                      : 'Teacher practice for room context. AI Tutor is the full multilingual workspace.'}
                   </div>
                 </div>
 
@@ -1023,7 +979,9 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [manualTeacherMode, setManualTeacherMode] = useState<TeacherMode>(
     readStoredTeacherMode() ?? derivedTeacherMode,
   );
-  const effectiveTeacherMode: TeacherMode = manualTeacherMode;
+  const effectiveTeacherMode: TeacherMode = isKidsMode
+    ? 'kids'
+    : manualTeacherMode;
   const kidsModeActive = effectiveTeacherMode === 'kids';
 
   const visibleTabs = useMemo(
@@ -1148,7 +1106,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         id: 'pronunciation',
         label: kidsModeActive ? 'Say' : 'Speak',
         icon: Mic,
-        enabled: accessFeatures.hasMercySpeak,
+        enabled: kidsModeActive || accessFeatures.hasMercySpeak,
       },
       {
         id: 'logic',
@@ -1205,7 +1163,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             !kidsModeActive
           );
         case 'pronunciation':
-          return accessFeatures.hasMercySpeak;
+          return kidsModeActive || accessFeatures.hasMercySpeak;
         case 'logic':
           return (
             accessFeatures.hasMercyLogic &&
@@ -1384,7 +1342,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
   const handleOpenPronunciation = useCallback(
     (payload?: PronunciationLaunchPayload) => {
-      if (!accessFeatures.hasMercySpeak) {
+      if (!kidsModeActive && !accessFeatures.hasMercySpeak) {
         goToPricing();
         return;
       }
@@ -1402,6 +1360,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       accessFeatures.hasMercySpeak,
       goToPricing,
       handleTabChange,
+      kidsModeActive,
       onPracticePronunciation,
       onTeacherOpenPronunciation,
       pronunciationPayload,
@@ -1483,12 +1442,25 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
         </div>
 
-        <div className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-1.5">
-          <TeacherModePicker
-            value={effectiveTeacherMode}
-            onChange={handleTeacherModeChange}
-            compact
-          />
+        <div className="min-w-0 flex-1">
+          <h2 className="truncate text-sm font-black tracking-tight text-slate-900">
+            {kidsModeActive ? 'Mercy Kids' : headerTitle}
+          </h2>
+          <p className="truncate text-[11px] font-semibold text-slate-500">
+            {kidsModeActive
+              ? 'Picture + speak'
+              : 'Teacher practice'}
+          </p>
+        </div>
+
+        <div className="ml-auto flex min-w-0 items-center justify-end gap-1.5">
+          {!isKidsMode ? (
+            <TeacherModePicker
+              value={effectiveTeacherMode}
+              onChange={handleTeacherModeChange}
+              compact
+            />
+          ) : null}
 
           {!kidsModeActive ? (
             <LearningSupportModePicker
@@ -1628,11 +1600,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'teacher' && !kidsModeActive ? (
-            <MercyKidsLauncher />
-          ) : null}
-
-          {activeTab === 'teacher' && kidsModeActive ? (
+          {activeTab === 'teacher' ? (
             <Suspense fallback={<TabLoadingFallback />}>
               <MercyTeacherTab
                 latestTeacherWritingState={latestTeacherWritingState}
@@ -1721,7 +1689,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak ? (
+          {activeTab === 'pronunciation' &&
+          (kidsModeActive || accessFeatures.hasMercySpeak) ? (
             <Suspense fallback={<TabLoadingFallback />}>
               <MercySpeakTab
                 roomId={roomId}
@@ -1764,7 +1733,9 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             </Suspense>
           ) : null}
 
-          {activeTab === 'pronunciation' && !accessFeatures.hasMercySpeak ? (
+          {activeTab === 'pronunciation' &&
+          !kidsModeActive &&
+          !accessFeatures.hasMercySpeak ? (
             <LockedAccessCard
               title="Speak is part of Premium"
               description="Unlock Speak to practice the same improved sentence aloud and build pronunciation memory over time."

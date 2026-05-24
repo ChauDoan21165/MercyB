@@ -198,6 +198,10 @@ function deriveTeacherMode({
     .join(' ')
     .toLowerCase();
 
+  if (!joined) {
+    return 'kids';
+  }
+
   return KIDS_CONTEXT_PATTERN.test(joined) ? 'kids' : 'adult';
 }
 
@@ -207,10 +211,10 @@ function buildTeacherUiPreset(
 ): TeacherUiPreset {
   if (mode === 'kids') {
     return {
-      bubbleLabel: 'Teacher Mercy',
-      bubbleSubtitle: 'Kids',
-      journeyTitle: roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy',
-      defaultTab: 'pronunciation',
+      bubbleLabel: 'Mercy Kids',
+      bubbleSubtitle: null,
+      journeyTitle: roomSummary.hasRoomContext ? roomSummary.roomName : 'Mercy Kids',
+      defaultTab: 'teacher',
       availableTabs: ['pronunciation', 'teacher'],
       hideGrammarTab: true,
       hideLogicTab: true,
@@ -1199,7 +1203,7 @@ export function MercyGuide({
           }}
           aria-label={
             teacherMode === 'kids'
-              ? 'Open Teacher Mercy for kids'
+              ? 'Open Mercy Kids'
               : 'Open Mercy Guide'
           }
         >
@@ -1214,7 +1218,7 @@ export function MercyGuide({
               <source srcSet={MERCY_HOST_IMAGE_WEBP} type="image/webp" />
               <img
                 src={MERCY_HOST_IMAGE_SRC}
-                alt="Teacher Mercy"
+                alt={teacherUi.bubbleLabel}
                 width={640}
                 height={640}
                 decoding="async"
