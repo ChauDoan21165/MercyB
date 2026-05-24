@@ -90,7 +90,8 @@ export function voiceLocaleForTargetLanguage(targetLanguage: TeacherMercyTargetL
 }
 
 function cloudLanguageForTarget(targetLanguage: TeacherMercyTargetLanguage = "en"): MercyLanguage {
-  return String(targetLanguage).toLowerCase() === "vi" ? "vi" : "en";
+  const normalized = resolveTutorTargetLanguage(String(targetLanguage || "en").toLowerCase());
+  return normalized as MercyLanguage;
 }
 
 function normalizeText(text: string): string {

@@ -35,7 +35,7 @@ export async function fetchCloudTtsUrl(
   const text = String(args?.text ?? "").trim();
   if (!text) return null;
 
-  const language: MercyLanguage = args.language === "en" ? "en" : "vi";
+  const language: MercyLanguage = args.language;
   const voice_id = args.voiceIdOverride || voiceIdFor(language);
 
   if (!args.voiceIdOverride && !isVoiceConfigured(language)) {

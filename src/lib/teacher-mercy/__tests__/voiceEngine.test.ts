@@ -184,7 +184,7 @@ describe("Teacher Mercy voiceEngine", () => {
 
     expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "Bonjour.",
-      language: "en",
+      language: "fr",
     });
     expect(result.cloud).toBe(true);
     expect(result.locale).toBe("fr-FR");
