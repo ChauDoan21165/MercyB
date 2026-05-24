@@ -412,7 +412,6 @@ export default function AiTutorPage() {
       subtitle={tutorCopy.ui.subtitle}
       helper={tutorCopy.ui.helper}
       eyebrow={tutorCopy.ui.eyebrow}
-      badge="Mock"
       modeTabs={modeTabs}
       activeMode={mode}
       onModeChange={setMode}

@@ -61,10 +61,10 @@ function TabLoadingFallback() {
   );
 }
 
-function AdultTeacherLauncher() {
+function MercyKidsLauncher() {
   return (
     <div className="m-0 flex h-full min-h-0 flex-1 overflow-y-auto bg-slate-50 p-4">
-      <section className="mx-auto flex w-full max-w-[680px] flex-col items-center justify-center rounded-3xl border border-rose-100 bg-white p-5 text-center shadow-[0_12px_32px_rgba(244,114,182,0.10)]">
+      <section className="mx-auto flex w-full max-w-[680px] flex-col items-center justify-center rounded-3xl border border-amber-100 bg-white p-5 text-center shadow-[0_12px_32px_rgba(251,191,36,0.12)]">
         <div className="h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-lg">
           <picture>
             <source srcSet={MERCY_HOST_IMAGE_AVIF} type="image/avif" />
@@ -81,14 +81,14 @@ function AdultTeacherLauncher() {
           </picture>
         </div>
 
-        <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-rose-500">
-          Teacher Mercy
+        <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-amber-600">
+          Teacher Mercy Kids
         </p>
         <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-          Mở AI Tutor
+          Mercy Kids
         </h2>
         <p className="mt-3 max-w-[460px] text-sm font-semibold leading-6 text-slate-600">
-          Luyện câu với Mercy. Mercy sẽ sửa câu, đọc câu đã sửa, và nhớ tiến bộ học của bạn.
+          Hộp Mercy nhỏ gọn cho bé luyện câu ngắn, nghe lại, và đi vào AI Tutor khi cần học nâng cao.
         </p>
 
         <a
@@ -98,7 +98,7 @@ function AdultTeacherLauncher() {
           Mở AI Tutor
         </a>
         <p className="mt-3 text-xs font-medium leading-5 text-slate-400">
-          AI Tutor là Teacher Mercy nâng cao; hộp cũ chỉ còn là lối vào.
+          AI Tutor là không gian học nâng cao; Mercy Kids là lối vào đơn giản, thân thiện cho bé.
         </p>
       </section>
     </div>
@@ -850,7 +850,7 @@ function TeacherModePicker({
   const subtitle =
     value === 'kids'
       ? 'Simple listening and repeating'
-      : 'Full teacher flow';
+      : 'Kid-focused launcher';
   const menuPlacementClass = compact ? 'left-0 w-[220px]' : 'right-0 w-full';
 
   return (
@@ -886,10 +886,10 @@ function TeacherModePicker({
               {compact
                 ? value === 'kids'
                   ? 'Kids'
-                  : 'Adult'
+                  : 'Mercy Kids'
                 : value === 'kids'
                   ? 'Kids mode'
-                  : 'Adult mode'}
+                  : 'Mercy Kids'}
             </div>
             {!compact ? (
               <div className="truncate text-xs opacity-80">{subtitle}</div>
@@ -934,13 +934,13 @@ function TeacherModePicker({
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-slate-900">
-                      {option === 'kids' ? 'Kids mode' : 'Adult mode'}
+                      {option === 'kids' ? 'Kids mode' : 'Mercy Kids'}
                     </span>
                   </div>
                   <div className="mt-1 text-xs leading-5 text-slate-600">
                     {option === 'kids'
                       ? 'Use Mercy from the homepage for little kids too.'
-                      : 'Journey, Grammar, Speak, and Logic stay fully available.'}
+                      : 'Warm, simple floating helper. AI Tutor is the multilingual workspace.'}
                   </div>
                 </div>
 
@@ -1629,7 +1629,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           ) : null}
 
           {activeTab === 'teacher' && !kidsModeActive ? (
-            <AdultTeacherLauncher />
+            <MercyKidsLauncher />
           ) : null}
 
           {activeTab === 'teacher' && kidsModeActive ? (
