@@ -9,9 +9,56 @@ export interface UseBrowserSttResult {
   supported: boolean;
   listening: boolean;
   transcript: string;
+  finalTranscript: string;
   start: () => void;
   stop: () => void;
   error: string | null;
+}
+
+const FILLER_PATTERN = /\b(?:ok|okay)\b|chương trình nó chạy xong/gi;
+
+function normalizeTranscript(value: string): string {
+  return value
+    .replace(/\s+/g, " ")
+    .replace(FILLER_PATTERN, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function collapseRepeatedPhrases(value: string): string {
+  let text = normalizeTranscript(value);
+  if (!text) return "";
+
+  const words = text.split(" ");
+  const maxPhrase = Math.min(10, Math.floor(words.length / 2));
+  for (let size = maxPhrase; size >= 1; size--) {
+    const collapsed: string[] = [];
+    for (let i = 0; i < words.length; i++) {
+      const phrase = words.slice(i, i + size).join(" ").toLowerCase();
+      const previous = collapsed.slice(-size).join(" ").toLowerCase();
+      if (phrase && phrase === previous) {
+        i += size - 1;
+        continue;
+      }
+      collapsed.push(words[i]);
+    }
+    words.splice(0, words.length, ...collapsed);
+  }
+
+  text = words.join(" ");
+  const clauses = text
+    .split(/\s*(?:[.!?。！？]+|[,;，；]|\s+-\s+)\s*/)
+    .map(normalizeTranscript)
+    .filter(Boolean);
+  const uniqueClauses = clauses.filter((clause, index) => {
+    const normalized = clause.toLowerCase();
+    return !clauses.slice(0, index).some((previous) => {
+      const prior = previous.toLowerCase();
+      return normalized === prior || normalized.includes(prior) || prior.includes(normalized);
+    });
+  });
+
+  return uniqueClauses.length > 0 ? uniqueClauses.join(" ") : text;
 }
 
 function createRecognizer(lang: string): SpeechRecognitionLike | null {
@@ -35,6 +82,7 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
   const [error, setError] = useState<string | null>(null);
   const recRef = useRef<SpeechRecognitionLike | null>(null);
   const finalRef = useRef("");
+  const interimRef = useRef("");
   const finalSegmentsRef = useRef<string[]>([]);
 
   const start = useCallback(() => {
@@ -46,6 +94,7 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     setError(null);
     setTranscript("");
     finalRef.current = "";
+    interimRef.current = "";
     finalSegmentsRef.current = [];
 
     rec.onstart = () => setListening(true);
@@ -54,7 +103,7 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
       const startIndex = Math.max(0, event.resultIndex ?? 0);
       for (let i = startIndex; i < event.results.length; i++) {
         const r = event.results[i];
-        const text = (r[0]?.transcript ?? "").replace(/\s+/g, " ").trim();
+        const text = normalizeTranscript(r[0]?.transcript ?? "");
         if (!text) continue;
         if (r.isFinal) {
           finalSegmentsRef.current[i] = text;
@@ -65,8 +114,12 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
       const uniqueFinalSegments = finalSegmentsRef.current
         .filter(Boolean)
         .filter((text, index, segments) => index === 0 || text !== segments[index - 1]);
-      finalRef.current = uniqueFinalSegments.join(" ");
-      setTranscript(finalRef.current + (interim ? ` ${interim}` : ""));
+      finalRef.current = collapseRepeatedPhrases(uniqueFinalSegments.join(" "));
+      interimRef.current = collapseRepeatedPhrases(interim);
+      const preview = collapseRepeatedPhrases(
+        [finalRef.current, interimRef.current].filter(Boolean).join(" "),
+      );
+      setTranscript(preview);
     };
     rec.onerror = (event) => {
       const msg = event.error === "not-allowed"
@@ -79,7 +132,10 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     };
     rec.onend = () => {
       setListening(false);
-      if (finalRef.current) setTranscript(finalRef.current);
+      const committed = collapseRepeatedPhrases(finalRef.current || interimRef.current);
+      finalRef.current = committed;
+      interimRef.current = "";
+      if (committed) setTranscript(committed);
     };
 
     rec.start();
@@ -90,7 +146,10 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     recRef.current?.stop();
     recRef.current = null;
     setListening(false);
-    if (finalRef.current) setTranscript(finalRef.current);
+    const committed = collapseRepeatedPhrases(finalRef.current || interimRef.current);
+    finalRef.current = committed;
+    interimRef.current = "";
+    if (committed) setTranscript(committed);
   }, []);
 
   useEffect(() => {
@@ -99,5 +158,5 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     };
   }, []);
 
-  return { supported, listening, transcript, start, stop, error };
+  return { supported, listening, transcript, finalTranscript: finalRef.current, start, stop, error };
 }
