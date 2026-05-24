@@ -38,9 +38,17 @@ function removeRepeatedSentences(value: string): string {
   return kept.join(" ");
 }
 
+function stripControlCharacters(value: string): string {
+  return Array.from(value)
+    .map((character) => {
+      const code = character.charCodeAt(0);
+      return code < 32 || (code >= 127 && code <= 159) ? " " : character;
+    })
+    .join("");
+}
+
 export function sanitizeSpeakableText(text: string): string {
-  const withoutLabels = String(text ?? "")
-    .replace(/[\u0000-\u001F\u007F-\u009F]/g, " ")
+  const withoutLabels = stripControlCharacters(String(text ?? ""))
     .replace(UI_LABEL_PATTERN, " ")
     .split(/\r?\n/)
     .map((line) => line.replace(LINE_LABEL_PATTERN, " "))
