@@ -331,6 +331,18 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByText("你早上通常做什么？")).toBeInTheDocument();
   });
 
+  it("does not show speaker controls in Logic mode", async () => {
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: "Logic" }));
+
+    expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
+    expect(screen.getByText("What do you usually do in the morning?")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence/ })).not.toBeInTheDocument();
+    expect(screen.queryByText("Mercy voice")).not.toBeInTheDocument();
+    expect(screen.queryByText("Device voice fallback")).not.toBeInTheDocument();
+  });
+
   it("sends a typed Conversation reply and shows correction plus one next question", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
