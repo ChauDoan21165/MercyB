@@ -31,8 +31,8 @@ function FloatingHelperLauncher({
   onPanelDragStart?: (event: React.PointerEvent<HTMLDivElement>) => void;
 }) {
   return (
-    <div className="relative flex h-full min-h-0 flex-col overflow-hidden border-l border-white/70 bg-gradient-to-br from-[#FFF8F1] via-[#FFFCFA] to-[#F7F5FF] shadow-2xl">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,159,122,0.14),_rgba(192,132,252,0.07)_42%,_transparent_74%)]" />
+    <div className="relative flex h-full min-h-0 flex-col overflow-hidden border-l border-slate-200/80 bg-slate-50 shadow-2xl">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.12),_rgba(14,165,233,0.07)_45%,_transparent_76%)]" />
 
       <div
         className="relative z-30 flex items-center gap-2 border-b border-white/80 bg-white/78 px-2.5 py-2.5 backdrop-blur-md"
@@ -42,7 +42,7 @@ function FloatingHelperLauncher({
         }}
       >
         <div className="relative shrink-0">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] via-[#FFE6DC] to-[#DCC8FF] blur-sm opacity-80" />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-100 via-white to-indigo-100 blur-sm opacity-90" />
           <picture>
             <source srcSet={MERCY_HOST_IMAGE_AVIF} type="image/avif" />
             <source srcSet={MERCY_HOST_IMAGE_WEBP} type="image/webp" />
@@ -52,7 +52,7 @@ function FloatingHelperLauncher({
               width={640}
               height={640}
               decoding="async"
-              className="relative h-10 w-10 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
+              className="relative h-10 w-10 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(15,23,42,0.12)]"
               onError={(event) => {
                 fallbackAvatar(event);
                 onAvatarError?.(event);
@@ -67,7 +67,7 @@ function FloatingHelperLauncher({
             {title}
           </h2>
           <p className="truncate text-[11px] font-semibold text-slate-500">
-            Choose where you want to practice.
+            Navigation helper
           </p>
         </div>
 
@@ -93,27 +93,28 @@ function FloatingHelperLauncher({
       </div>
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-y-auto p-4">
-        <section className="mx-auto w-full max-w-[520px] rounded-3xl border border-white/85 bg-white/92 p-5 shadow-[0_18px_44px_rgba(148,163,184,0.14)]">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-600">
+        <section className="mx-auto w-full max-w-[480px] rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_16px_36px_rgba(15,23,42,0.10)]">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
             Teacher Mercy
           </p>
-          <h3 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-            Pick a learning space
+          <h3 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+            Open the right learning space
           </h3>
-          <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
-            Mercy Kids and AI Tutor are separate. Open the one you need.
+          <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
+            This helper is only a doorway. Mercy Kids is the child learning room,
+            and AI Tutor is the advanced study workspace.
           </p>
 
           <div className="mt-5 grid gap-3">
             <a
               href="/kids/vi-english"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-black text-white transition hover:bg-emerald-700"
+              className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-900 transition hover:border-emerald-200 hover:bg-emerald-50"
             >
               Vào Mercy Kids
             </a>
             <a
               href="/ai-tutor"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
+              className="inline-flex min-h-[46px] items-center justify-center rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:bg-slate-800"
             >
               Mở AI Tutor
             </a>
@@ -172,7 +173,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   onCloseGuide,
   onPanelDragStart,
   onAvatarError,
-  journeyTitle,
   bubbleLabel,
   panelTitle,
 }) => {
@@ -186,10 +186,9 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   }, [onClose, onCloseGuide]);
 
   const headerTitle =
-    cleanText(journeyTitle) ||
     cleanText(panelTitle) ||
     cleanText(bubbleLabel) ||
-    'Teacher Mercy';
+    'Mercy Guide';
 
   if (!isOpen) {
     return null;
