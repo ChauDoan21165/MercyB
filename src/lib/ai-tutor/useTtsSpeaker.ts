@@ -18,6 +18,8 @@ export interface UseTtsSpeakerResult {
   preparing: boolean;
   /** True after a cloud failure falls back to device voice. */
   usingBrowserFallback: boolean;
+  /** Last selected voice path, shown in the UI for safe diagnosis. */
+  voiceSource: "idle" | "cloud" | "device";
   /** Speak the given text with the best available voice for the language. */
   speak: (text: string, lang: string, target?: TutorTarget) => Promise<void>;
   /** Stop speaking immediately. */
@@ -47,6 +49,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
   const [speaking, setSpeaking] = useState(false);
   const [preparing, setPreparing] = useState(false);
   const [usingBrowserFallback, setUsingBrowserFallback] = useState(false);
+  const [voiceSource, setVoiceSource] = useState<"idle" | "cloud" | "device">("idle");
   const [error, setError] = useState<string | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -107,6 +110,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     } catch { /* ignore */ }
     setPreparing(false);
     setSpeaking(false);
+    setVoiceSource("idle");
   }, []);
 
   const speak = useCallback(async (text: string, lang: string, target: TutorTarget = "en") => {
@@ -121,6 +125,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     requestRef.current = requestId;
     setError(null);
     setUsingBrowserFallback(false);
+    setVoiceSource("idle");
     setPreparing(true);
 
     const cloudLanguage: MercyLanguage = target === "vi" ? "vi" : "en";
@@ -139,6 +144,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
           audio.onplay = () => {
             setPreparing(false);
             setSpeaking(true);
+            setVoiceSource("cloud");
           };
           audio.onended = () => resolve();
           audio.onerror = () => reject(new Error("audio playback failed"));
@@ -157,11 +163,12 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     if (requestRef.current !== requestId) return;
     setPreparing(false);
     setUsingBrowserFallback(true);
+    setVoiceSource("device");
     speakViaBrowser(safeText, lang);
   }, [speakViaBrowser, supported]);
 
   // Cleanup on unmount
   useEffect(() => stop, [stop]);
 
-  return { supported, speaking, preparing, usingBrowserFallback, speak, stop, error };
+  return { supported, speaking, preparing, usingBrowserFallback, voiceSource, speak, stop, error };
 }

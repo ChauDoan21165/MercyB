@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import TeacherMercyLearningShell from "../TeacherMercyLearningShell";
@@ -33,8 +33,10 @@ describe("TeacherMercyLearningShell", () => {
     expect(screen.getByRole("heading", { name: "Teacher Mercy · Shared Tutor" })).toBeInTheDocument();
     expect(screen.getByText("Safe reminder")).toBeInTheDocument();
     expect(screen.getByText("Learning body")).toBeInTheDocument();
+    expect(screen.getByTestId("teacher-mercy-floating-box")).toBeInTheDocument();
+    expect(within(screen.getByTestId("teacher-mercy-pillar-tabs")).getByRole("button", { name: "Journey" })).toBeInTheDocument();
 
-    await userEvent.click(screen.getByRole("button", { name: "Grammar" }));
+    await userEvent.click(within(screen.getByTestId("teacher-mercy-mode-tabs")).getByRole("button", { name: "Grammar" }));
     expect(onModeChange).toHaveBeenCalledWith("grammar");
   });
 });

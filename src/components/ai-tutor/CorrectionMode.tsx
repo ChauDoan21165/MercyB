@@ -35,6 +35,7 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsBrowserFallback: boolean;
+  ttsVoiceSource: "idle" | "cloud" | "device";
   speechLang: string;
   onSubmit: () => void;
   onMicToggle: () => void;
@@ -61,6 +62,7 @@ export default function CorrectionMode({
   ttsSpeaking,
   ttsPreparing,
   ttsBrowserFallback,
+  ttsVoiceSource,
   speechLang: _speechLang,
   onSubmit,
   onMicToggle,
@@ -226,7 +228,12 @@ export default function CorrectionMode({
             )}
             {ttsBrowserFallback && (
               <div className="mt-2 text-[11px] font-semibold text-amber-600">
-                {uiCopy.ttsBrowserFallback}
+                Device voice fallback · {uiCopy.ttsBrowserFallback}
+              </div>
+            )}
+            {ttsVoiceSource === "cloud" && (
+              <div className="mt-2 text-[11px] font-semibold text-emerald-700">
+                Mercy voice
               </div>
             )}
           </div>

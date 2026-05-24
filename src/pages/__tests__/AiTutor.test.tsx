@@ -140,8 +140,13 @@ describe("AiTutor mock UI", () => {
 
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
     render(<AiTutorPage />);
+    expect(screen.getByTestId("teacher-mercy-floating-box")).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Grammar" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
@@ -593,6 +598,36 @@ describe("AiTutor mock UI", () => {
     });
     expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
     expect(browserSpeak).not.toHaveBeenCalled();
+    expect(screen.getByText("Mercy voice")).toBeInTheDocument();
+  });
+
+  it("shows visible device voice fallback when cloud Mercy voice is unavailable", async () => {
+    const browserSpeak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak: browserSpeak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "She go to school");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => expect(screen.getByText("She goes to school.")).toBeInTheDocument());
+
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+
+    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
+    expect(screen.getByText(/Device voice fallback/)).toBeInTheDocument();
+    expect(screen.queryByText("Mercy voice")).not.toBeInTheDocument();
   });
 
   it("sends the corrected English sentence to Mercy voice instead of the raw mistake", async () => {

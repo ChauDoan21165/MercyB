@@ -33,6 +33,7 @@ import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, { type ConversationMessage } from "@/components/ai-tutor/ConversationMode";
 import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
+import { getSpeakableText } from "@/lib/teacher-mercy/voiceEngine";
 
 type CorrectionResult = {
   corrected: string;
@@ -53,6 +54,13 @@ const AI_TUTOR_MODE_TABS: Array<{ id: TutorMode; label: string }> = [
   { id: "correction", label: "Correct one sentence" },
   { id: "conversation", label: "Conversation with Mercy" },
 ];
+
+const AI_TUTOR_PILLAR_TABS = [
+  { id: "journey", label: "Journey", active: true },
+  { id: "grammar", label: "Grammar" },
+  { id: "speak", label: "Speak" },
+  { id: "logic", label: "Logic" },
+] as const;
 
 const MOCK_DELAY_MS = 600;
 
@@ -131,9 +139,7 @@ function buildConversationReply(
 }
 
 function conversationSpeakText(message: ConversationMessage): string {
-  return [message.correction, message.reply, message.nextQuestion, message.text]
-    .filter(Boolean)
-    .join(" ");
+  return getSpeakableText(message);
 }
 
 export default function AiTutorPage() {
@@ -368,6 +374,7 @@ export default function AiTutorPage() {
       modeTabs={AI_TUTOR_MODE_TABS}
       activeMode={mode}
       onModeChange={setMode}
+      pillarTabs={AI_TUTOR_PILLAR_TABS}
       memorySlot={<TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />}
       reminderSlot={<TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} />}
       footer={uiCopy.footer}
@@ -389,6 +396,7 @@ export default function AiTutorPage() {
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
           ttsBrowserFallback={tts.usingBrowserFallback}
+          ttsVoiceSource={tts.voiceSource}
           speechLang={speechLang}
           onSubmit={handleSubmit}
           onMicToggle={handleMicToggle}
@@ -418,6 +426,7 @@ export default function AiTutorPage() {
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
           ttsBrowserFallback={tts.usingBrowserFallback}
+          ttsVoiceSource={tts.voiceSource}
           speakingMessageId={speakingMessageId}
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}

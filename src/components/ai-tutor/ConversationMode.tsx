@@ -26,6 +26,7 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsBrowserFallback: boolean;
+  ttsVoiceSource: "idle" | "cloud" | "device";
   speakingMessageId: string | null;
   onSend: () => void;
   onMicToggle: () => void;
@@ -45,6 +46,7 @@ export default function ConversationMode({
   ttsSpeaking,
   ttsPreparing,
   ttsBrowserFallback,
+  ttsVoiceSource,
   speakingMessageId,
   onSend,
   onMicToggle,
@@ -152,7 +154,12 @@ export default function ConversationMode({
                       <div className="text-[11px] font-medium text-slate-400">{uiCopy.ttsUnavailable}</div>
                     )}
                     {isActiveVoice && ttsBrowserFallback && (
-                      <div className="text-[11px] font-semibold text-amber-600">{uiCopy.ttsBrowserFallback}</div>
+                      <div className="text-[11px] font-semibold text-amber-600">
+                        Device voice fallback · {uiCopy.ttsBrowserFallback}
+                      </div>
+                    )}
+                    {isActiveVoice && ttsVoiceSource === "cloud" && (
+                      <div className="text-[11px] font-semibold text-emerald-700">Mercy voice</div>
                     )}
                   </div>
                 ) : (
