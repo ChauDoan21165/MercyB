@@ -331,16 +331,54 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByText("你早上通常做什么？")).toBeInTheDocument();
   });
 
-  it("does not show speaker controls in Logic mode", async () => {
-    render(<AiTutorPage />);
+  it("keeps Logic mode explanation-only with no mic, speaker, or voice fallback UI", async () => {
+    const speak = vi.fn();
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
 
+    render(<AiTutorPage />);
     await userEvent.click(screen.getByRole("button", { name: "Logic" }));
 
-    expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
-    expect(screen.getByText("What do you usually do in the morning?")).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence/ })).not.toBeInTheDocument();
-    expect(screen.queryByText("Mercy voice")).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Giải thích logic tiếng Anh" })).toBeInTheDocument();
+    expect(
+      screen.getByText("Mercy giúp bạn hiểu vì sao tiếng Anh nói như vậy, để tránh dịch từng chữ từ tiếng Việt."),
+    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText("Vì sao nói “I’m interested in English” mà không nói “I’m interesting in English”?")).toBeInTheDocument();
+    });
+
+    expect(screen.queryByText("What do you usually do in the morning?")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence|Stop Mercy voice|Dừng đọc/ })).not.toBeInTheDocument();
+    expect(screen.queryByText("Mercy voice unavailable. Using device voice.")).not.toBeInTheDocument();
     expect(screen.queryByText("Device voice fallback")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Nói câu của bạn/ })).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-conversation-mic-fallback")).not.toBeInTheDocument();
+
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "Vì sao nói I’m interested in English mà không nói I’m interesting in English?",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Giải thích logic" }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/“interested” mô tả cảm giác của người nhận tác động/)).toBeInTheDocument();
+      expect(screen.getByText(/Cách nghĩ tiếng Việt/)).toBeInTheDocument();
+    });
+    expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence|Stop Mercy voice|Dừng đọc/ })).not.toBeInTheDocument();
+    expect(screen.queryByText("Device voice fallback")).not.toBeInTheDocument();
+    expect(speak).not.toHaveBeenCalled();
   });
 
   it("sends a typed Conversation reply and shows correction plus one next question", async () => {
