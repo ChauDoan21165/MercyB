@@ -11,6 +11,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 
 import {
   FRENCH_CATEGORIES,
@@ -114,6 +115,9 @@ export default function FrenchLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+
+        {/* AI Tutor CTA */}
+        <AITutorCtaBanner uiLang={uiLang} />
       </header>
 
       <nav
