@@ -8,6 +8,7 @@ import {
   putCorrection,
   markPracticed,
   getMemorySummary,
+  type TutorProduct,
 } from "@/lib/ai-tutor/learningMemory";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
@@ -18,25 +19,43 @@ import {
   MOCK_RESULTS_BY_TARGET,
   buildInputAwareCorrection,
   getTutorTargetFromSearch,
-  getTutorSpeechLang,
   getExplainLanguage,
   normalizeSpokenText,
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
+import { getTutorCopy } from "@/lib/tutor/tutorCopy";
+import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
 import type {
   TutorTarget,
   ExplainLanguage,
   TutorTargetCopy,
   UiCopy,
 } from "@/lib/ai-tutor/tutorUiCopy";
+import {
+  buildConversationTurn,
+  buildCorrectionTurn,
+  getSpeakableText,
+} from "@/lib/tutor/tutorEngine";
+import type { TutorTurn } from "@/lib/tutor/tutorTypes";
+import {
+  aiTutor as aiTutorConfig,
+  getSafetyLabel,
+  resolveExplainLanguage,
+  type TutorProductMode,
+} from "@/lib/tutor/productConfigs";
+import {
+  AI_CORRECTION_REQUIRED_MESSAGE,
+  correctWithTutorRules,
+} from "@/lib/tutor/correctionEngine";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
-import ConversationMode, { type ConversationMessage } from "@/components/ai-tutor/ConversationMode";
+import ConversationMode, {
+  type ConversationMessage,
+  type MercyConversationMessage,
+} from "@/components/ai-tutor/ConversationMode";
 import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 
-type CorrectionResult = {
-  corrected: string;
-  explanation: string;
+type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
 };
@@ -47,93 +66,64 @@ type PracticeFeedback = {
   nextStep: string;
 };
 
-type TutorMode = "correction" | "conversation";
+type TutorMode = Extract<TutorProductMode, "conversation" | "grammar" | "speak" | "logic">;
 
-const AI_TUTOR_MODE_TABS: Array<{ id: TutorMode; label: string }> = [
-  { id: "correction", label: "Correct one sentence" },
-  { id: "conversation", label: "Conversation with Mercy" },
-];
+const AI_TUTOR_MODES: TutorMode[] = ["conversation", "grammar", "speak", "logic"];
 
 const MOCK_DELAY_MS = 600;
+const TUTOR_PRODUCT: TutorProduct = "ai-tutor";
 
-const CONVERSATION_STARTERS: Record<TutorTarget, string> = {
-  en: "What do you usually do in the morning?",
-  fr: "Qu'est-ce que tu fais le matin ?",
-  zh: "你早上通常做什么？",
-  de: "Was machst du morgens normalerweise?",
-  ja: "朝、たいてい何をしますか？",
-  ko: "아침에 보통 무엇을 해요?",
-  es: "¿Qué haces normalmente por la mañana?",
-  vi: "Buổi sáng bạn thường làm gì?",
-};
-
-const CONVERSATION_REPLIES: Record<TutorTarget, { reply: string; nextQuestion: string }> = {
-  en: {
-    reply: "Nice. That sounds like a clear morning routine.",
-    nextQuestion: "What do you do after that?",
-  },
-  fr: {
-    reply: "Très bien. Ta routine du matin est claire.",
-    nextQuestion: "Qu'est-ce que tu fais après ça ?",
-  },
-  zh: {
-    reply: "很好。你的早上习惯很清楚。",
-    nextQuestion: "然后你做什么？",
-  },
-  de: {
-    reply: "Gut. Deine Morgenroutine ist klar.",
-    nextQuestion: "Was machst du danach?",
-  },
-  ja: {
-    reply: "いいですね。朝の習慣がよく分かります。",
-    nextQuestion: "その後、何をしますか？",
-  },
-  ko: {
-    reply: "좋아요. 아침 습관이 잘 보여요.",
-    nextQuestion: "그다음에 무엇을 해요?",
-  },
-  es: {
-    reply: "Muy bien. Tu rutina de la mañana está clara.",
-    nextQuestion: "¿Qué haces después de eso?",
-  },
-  vi: {
-    reply: "Tốt lắm. Câu trả lời của bạn rõ và tự nhiên.",
-    nextQuestion: "Sau đó bạn thường làm gì?",
-  },
-};
-
-function createOpeningMessage(target: TutorTarget): ConversationMessage {
-  return {
+function createOpeningMessage(target: TutorTarget, explainLanguage: ExplainLanguage): MercyConversationMessage {
+  const tutorCopy = getTutorCopy(target, explainLanguage);
+  const { turn } = buildConversationTurn({
     id: `mercy-open-${target}`,
-    role: "mercy",
-    text: "Mercy will ask one easy question.",
-    nextQuestion: CONVERSATION_STARTERS[target],
-  };
+    targetLanguage: target,
+    explainLanguage,
+    userText: "",
+    correctedText: "",
+    explanation: "",
+    naturalReply: tutorCopy.ui.emptyConversation,
+    nextQuestion: tutorCopy.starterQuestions[0] ?? "",
+  });
+  return { ...turn, role: "mercy" };
+}
+
+function buildLocalCorrection(
+  input: string,
+  target: TutorTarget,
+): { ok: true; corrected: string } | { ok: false; message: string } {
+  if (target === "en") {
+    const result = correctWithTutorRules(input, "en");
+    if (result.status === "needs_ai") {
+      return { ok: false, message: result.message || AI_CORRECTION_REQUIRED_MESSAGE };
+    }
+    return { ok: true, corrected: result.corrected };
+  }
+
+  return { ok: true, corrected: buildInputAwareCorrection(input, target) };
 }
 
 function buildConversationReply(
   userText: string,
   target: TutorTarget,
   explainLanguage: ExplainLanguage,
-): ConversationMessage {
-  const corrected = buildInputAwareCorrection(userText, target);
+): MercyConversationMessage {
+  const localCorrection = buildLocalCorrection(userText, target);
   const mock = MOCK_RESULTS_BY_TARGET[target];
-  const reply = CONVERSATION_REPLIES[target];
-  return {
+  const tutorCopy = getTutorCopy(target, explainLanguage);
+  const { turn } = buildConversationTurn({
     id: `mercy-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
-    role: "mercy",
-    text: "Good. Mercy will keep it simple.",
-    correction: corrected,
-    explanation: mock.explanation[explainLanguage],
-    reply: reply.reply,
-    nextQuestion: reply.nextQuestion,
-  };
-}
-
-function conversationSpeakText(message: ConversationMessage): string {
-  return [message.correction, message.reply, message.nextQuestion, message.text]
-    .filter(Boolean)
-    .join(" ");
+    targetLanguage: target,
+    explainLanguage,
+    userText,
+    correctedText: localCorrection.ok ? localCorrection.corrected : "",
+    explanation: localCorrection.ok ? mock.explanation[explainLanguage] : localCorrection.message,
+    naturalReply: localCorrection.ok
+      ? tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation
+      : "I can still help you practice. Try a simpler sentence, or use the AI correction engine when it is available.",
+    nextQuestion: tutorCopy.nextQuestionTemplates[0] ?? "",
+  });
+  return { ...turn, role: "mercy" };
 }
 
 export default function AiTutorPage() {
@@ -141,10 +131,19 @@ export default function AiTutorPage() {
   const { user } = useAuth();
 
   const [target, setTarget] = useState<TutorTarget>(() =>
-    typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search),
+    typeof window === "undefined"
+      ? (aiTutorConfig.defaultTargetLanguage as TutorTarget)
+      : getTutorTargetFromSearch(
+        window.location.search,
+        aiTutorConfig.allowedTargetLanguages,
+        aiTutorConfig.defaultTargetLanguage as TutorTarget,
+      ),
   );
-  const [explainLanguage, setExplainLanguage] = useState<ExplainLanguage>(() => getExplainLanguage());
-  const speechLang = getTutorSpeechLang(target);
+  const [explainLanguage, setExplainLanguage] = useState<ExplainLanguage>(() =>
+    resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target),
+  );
+  const speechLang = getSpeechLocale(target);
+  const ttsLang = getTtsLocale(target);
   const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
 
@@ -152,11 +151,26 @@ export default function AiTutorPage() {
     (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
   const greetingName = (nickname ?? "").trim() || undefined;
 
-  const [mode, setMode] = useState<TutorMode>("correction");
+  const [mode, setMode] = useState<TutorMode>("grammar");
   const [input, setInput] = useState("");
   const [conversationInput, setConversationInput] = useState("");
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
-    createOpeningMessage(typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search)),
+    createOpeningMessage(
+      typeof window === "undefined"
+        ? (aiTutorConfig.defaultTargetLanguage as TutorTarget)
+        : getTutorTargetFromSearch(
+          window.location.search,
+          aiTutorConfig.allowedTargetLanguages,
+          aiTutorConfig.defaultTargetLanguage as TutorTarget,
+        ),
+      resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), typeof window === "undefined"
+        ? aiTutorConfig.defaultTargetLanguage
+        : getTutorTargetFromSearch(
+          window.location.search,
+          aiTutorConfig.allowedTargetLanguages,
+          aiTutorConfig.defaultTargetLanguage as TutorTarget,
+        )),
+    ),
   ]);
   const [conversationLoading, setConversationLoading] = useState(false);
   const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
@@ -174,6 +188,16 @@ export default function AiTutorPage() {
 
   const targetCopy: TutorTargetCopy = TARGET_COPY[target];
   const uiCopy: UiCopy = UI_COPY[explainLanguage];
+  const modeTabs = AI_TUTOR_MODES.map((mode) => ({
+    id: mode,
+    label: mode === "conversation"
+      ? "Journey"
+      : mode === "grammar"
+        ? "Grammar"
+        : mode === "speak"
+          ? "Speak"
+          : "Logic",
+  }));
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
@@ -185,7 +209,7 @@ export default function AiTutorPage() {
       wasListeningRef.current = true;
       if (transcript) {
         const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
-        if (mode === "conversation") setConversationInput(next);
+        if (mode !== "grammar") setConversationInput(next);
         else setInput(next);
       }
       return;
@@ -195,24 +219,24 @@ export default function AiTutorPage() {
       if (!transcript || transcript === lastCommittedSttRef.current) return;
       lastCommittedSttRef.current = transcript;
       const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
-      if (mode === "conversation") setConversationInput(next);
+      if (mode !== "grammar") setConversationInput(next);
       else setInput(next);
     }
   }, [mode, stt.listening, stt.transcript]);
 
   const handleMicToggle = () => {
     if (stt.listening) { stt.stop(); return; }
-    sttBaseInputRef.current = mode === "conversation" ? conversationInput : input;
+    sttBaseInputRef.current = mode !== "grammar" ? conversationInput : input;
     lastCommittedSttRef.current = "";
     stt.start();
   };
 
   const loadMemory = async () => {
-    try { setMemory(await getMemorySummary()); } catch { /* degrade */ }
+    try { setMemory(await getMemorySummary(TUTOR_PRODUCT, target)); } catch { /* degrade */ }
     setMemoryLoaded(true);
   };
 
-  useEffect(() => { loadMemory(); }, []);
+  useEffect(() => { loadMemory(); }, [target]);
 
   useEffect(() => {
     const shell = shellRef.current;
@@ -238,21 +262,25 @@ export default function AiTutorPage() {
   }, []);
 
   useEffect(() => {
-    const syncTarget = () => setTarget(getTutorTargetFromSearch(window.location.search));
+    const syncTarget = () => setTarget(getTutorTargetFromSearch(
+      window.location.search,
+      aiTutorConfig.allowedTargetLanguages,
+      aiTutorConfig.defaultTargetLanguage as TutorTarget,
+    ));
     syncTarget();
     window.addEventListener("popstate", syncTarget);
     return () => window.removeEventListener("popstate", syncTarget);
-  }, []);
-
-  useEffect(() => {
-    setConversationMessages([createOpeningMessage(target)]);
-    setConversationInput("");
-    setSpeakingMessageId(null);
-    tts.stop();
   }, [target]);
 
   useEffect(() => {
-    const syncExplain = () => setExplainLanguage(getExplainLanguage());
+    setConversationMessages([createOpeningMessage(target, explainLanguage)]);
+    setConversationInput("");
+    setSpeakingMessageId(null);
+    tts.stop();
+  }, [target, explainLanguage]);
+
+  useEffect(() => {
+    const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target));
     window.addEventListener("storage", syncExplain);
     window.addEventListener("focus", syncExplain);
     return () => {
@@ -273,21 +301,36 @@ export default function AiTutorPage() {
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
     const next = MOCK_RESULTS_BY_TARGET[target];
-    const corrected = buildInputAwareCorrection(trimmed, target);
-    setResult({
-      corrected,
+    const localCorrection = buildLocalCorrection(trimmed, target);
+    if (!localCorrection.ok) {
+      setInput("");
+      setLoading(false);
+      setError(localCorrection.message);
+      return;
+    }
+    const corrected = localCorrection.corrected;
+    const { turn } = buildCorrectionTurn({
+      id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+      targetLanguage: target,
+      explainLanguage,
+      userText: trimmed,
+      correctedText: corrected,
       explanation: next.explanation[explainLanguage],
+    });
+    setResult({
+      ...turn,
       grammarTip: next.grammarTip[explainLanguage],
       practicePrompt: next.practicePrompt[explainLanguage],
     });
     setLoading(false);
 
-    const id = `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
-    setLastSavedId(id);
+    setLastSavedId(turn.id);
     putCorrection({
-      id, original: trimmed, corrected,
+      id: turn.id,
       topic: next.grammarTip[explainLanguage].slice(0, 60),
       cefr: "B1", createdAt: Date.now(), practiced: false,
+      tutorProduct: TUTOR_PRODUCT,
+      targetLanguage: target,
     }).then(() => loadMemory()).catch(() => {});
   };
 
@@ -298,7 +341,7 @@ export default function AiTutorPage() {
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
     setPracticeFeedback(MOCK_RESULTS_BY_TARGET[target].feedback);
     setPracticeLoading(false);
-    if (lastSavedId) markPracticed(lastSavedId).then(() => loadMemory()).catch(() => {});
+    if (lastSavedId) markPracticed(lastSavedId, TUTOR_PRODUCT, target).then(() => loadMemory()).catch(() => {});
   };
 
   const handleConversationSend = async () => {
@@ -323,25 +366,25 @@ export default function AiTutorPage() {
     const id = `conv-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
     putCorrection({
       id,
-      original: "",
-      corrected: "",
       topic: `conversation-${target}`,
       cefr: "B1",
       createdAt: Date.now(),
       practiced: true,
+      tutorProduct: TUTOR_PRODUCT,
+      targetLanguage: target,
     }).then(() => loadMemory()).catch(() => {});
   };
 
-  const handleConversationSpeak = (message: ConversationMessage) => {
+  const handleConversationSpeak = (message: MercyConversationMessage) => {
     if (speakingMessageId === message.id && tts.speaking) {
       tts.stop();
       setSpeakingMessageId(null);
       return;
     }
-    const text = conversationSpeakText(message);
+    const text = getSpeakableText(message);
     if (!text) return;
     setSpeakingMessageId(message.id);
-    void tts.speak(text, speechLang, target);
+    void tts.speak(text, ttsLang, target);
   };
 
   const handleClear = () => {
@@ -360,19 +403,19 @@ export default function AiTutorPage() {
       greetingTestId="ai-tutor-greeting"
       floating={isFloatingShell}
       greetingName={greetingName}
-      title={uiCopy.title(targetCopy, target)}
+      title={explainLanguage === "en" ? targetCopy.title : uiCopy.title(targetCopy, target)}
       subtitle={uiCopy.subtitle(targetCopy)}
       helper={uiCopy.helper(targetCopy)}
       eyebrow={targetCopy.eyebrow}
       badge="Mock"
-      modeTabs={AI_TUTOR_MODE_TABS}
+      modeTabs={modeTabs}
       activeMode={mode}
       onModeChange={setMode}
-      memorySlot={<TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />}
-      reminderSlot={<TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} />}
-      footer={uiCopy.footer}
+      memorySlot={aiTutorConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
+      reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
+      footer={`${uiCopy.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
-      {mode === "correction" ? (
+      {mode === "grammar" ? (
         <CorrectionMode
           input={input}
           setInput={setInput}
@@ -389,16 +432,18 @@ export default function AiTutorPage() {
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
           ttsBrowserFallback={tts.usingBrowserFallback}
+          ttsVoiceSource={tts.voiceSource}
           speechLang={speechLang}
           onSubmit={handleSubmit}
           onMicToggle={handleMicToggle}
           onTtsToggle={() => {
-            const corrected = result?.corrected;
-            if (!corrected) return;
+            if (!result) return;
+            const text = getSpeakableText(result);
+            if (!text) return;
             if (tts.speaking) {
               tts.stop();
             } else {
-              void tts.speak(corrected, speechLang, target);
+              void tts.speak(text, ttsLang, target, { rawUserInput: input });
             }
           }}
           onPracticeSubmit={handlePracticeSubmit}
@@ -418,6 +463,7 @@ export default function AiTutorPage() {
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
           ttsBrowserFallback={tts.usingBrowserFallback}
+          ttsVoiceSource={tts.voiceSource}
           speakingMessageId={speakingMessageId}
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}

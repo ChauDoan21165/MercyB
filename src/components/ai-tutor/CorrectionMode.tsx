@@ -4,11 +4,10 @@
 
 import { Square, Volume2 } from "lucide-react";
 import type { TutorTarget, TutorTargetCopy, UiCopy } from "@/lib/ai-tutor/tutorUiCopy";
+import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 
-type CorrectionResult = {
-  corrected: string;
-  explanation: string;
+type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
 };
@@ -35,6 +34,7 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsBrowserFallback: boolean;
+  ttsVoiceSource?: "mercy" | "device" | null;
   speechLang: string;
   onSubmit: () => void;
   onMicToggle: () => void;
@@ -61,6 +61,7 @@ export default function CorrectionMode({
   ttsSpeaking,
   ttsPreparing,
   ttsBrowserFallback,
+  ttsVoiceSource,
   speechLang: _speechLang,
   onSubmit,
   onMicToggle,
@@ -195,7 +196,7 @@ export default function CorrectionMode({
               {uiCopy.correctedLabel}
             </div>
             <div className="text-xl font-black leading-snug text-emerald-900">
-              {result.corrected}
+              {result.correctedText}
             </div>
             {!ttsSupported && (
               <div className="mt-2 text-[11px] text-slate-400">
@@ -227,6 +228,11 @@ export default function CorrectionMode({
             {ttsBrowserFallback && (
               <div className="mt-2 text-[11px] font-semibold text-amber-600">
                 {uiCopy.ttsBrowserFallback}
+              </div>
+            )}
+            {ttsVoiceSource && (
+              <div className={`mt-2 text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
+                {ttsVoiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
               </div>
             )}
           </div>

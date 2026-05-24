@@ -81,7 +81,7 @@ async function sha256Hex(input: string): Promise<string> {
 async function isFlagOn(
   client: SupabaseClient,
   flagKey: string,
-  userId: string,
+  userId?: string | null,
 ): Promise<boolean> {
   const { data, error } = await client
     .from("feature_flags")
@@ -90,7 +90,7 @@ async function isFlagOn(
     .maybeSingle();
   if (error || !data) return false;
   const cohort = Array.isArray(data.enabled_user_ids) ? data.enabled_user_ids : [];
-  if (cohort.includes(userId)) return true;
+  if (userId && cohort.includes(userId)) return true;
   return !!data.is_enabled;
 }
 
@@ -127,28 +127,28 @@ serve(async (req) => {
   let cacheHit = false;
 
   try {
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader) {
-      return jsonResponse({ error: "Authentication required" }, 401);
-    }
-
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
     const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+    const authHeader = req.headers.get("Authorization");
 
-    const userClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      global: { headers: { Authorization: authHeader } },
+    const service = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false },
     });
 
-    const {
-      data: { user },
-      error: authError,
-    } = await userClient.auth.getUser();
-    if (authError || !user) {
-      return jsonResponse({ error: "Invalid authentication" }, 401);
+    let userId: string | null = null;
+    if (authHeader) {
+      const userClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        global: { headers: { Authorization: authHeader } },
+      });
+
+      const {
+        data: { user },
+      } = await userClient.auth.getUser();
+      userId = user?.id ?? null;
     }
 
-    const flagOn = await isFlagOn(userClient, "elevenlabs_tts", user.id);
+    const flagOn = await isFlagOn(service, "elevenlabs_tts", userId);
     if (!flagOn) {
       return jsonResponse(
         { error: "ElevenLabs TTS disabled", code: "flag_off" },
@@ -176,11 +176,6 @@ serve(async (req) => {
     }
     if (!voiceId) return jsonResponse({ error: "voice_id is required" }, 400);
 
-    // Service-role client for storage writes + usage counts (bypasses RLS).
-    const service = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-
     const cacheKey = await sha256Hex(`${voiceId}|${language}|${text}`);
     const cachePath = `${cacheKey}.mp3`;
 
@@ -204,10 +199,10 @@ serve(async (req) => {
     // Cache miss → enforce daily caps before paying ElevenLabs.
     const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
     const [userCount, globalCount] = await Promise.all([
-      countUsageSince(service, since, user.id),
+      userId ? countUsageSince(service, since, userId) : Promise.resolve(0),
       countUsageSince(service, since),
     ]);
-    if (userCount >= PER_USER_DAILY_CAP) {
+    if (userId && userCount >= PER_USER_DAILY_CAP) {
       return jsonResponse(
         { error: "Daily TTS limit reached for this user", code: "cap_user" },
         429,
@@ -298,7 +293,7 @@ serve(async (req) => {
     // Log usage AFTER successful render so a failed upstream call doesn't
     // count against the user's cap.
     const { error: usageErr } = await service.from("mercy_tts_usage").insert({
-      user_id: user.id,
+      user_id: userId,
       text_hash: cacheKey,
       voice_id: voiceId,
       language,
