@@ -1110,13 +1110,11 @@ export default function AppRouter() {
             element={<LazyPage><MercyUnifiedPage /></LazyPage>}
           />
 
-          {/* AI Tutor mock UI — feature-flagged, mock responses only, no real provider calls. */}
+          {/* AI Tutor shell is public; provider/runtime gates own real execution. */}
           {FEATURE_FLAGS.AI_TUTOR_UI_ENABLED ? (
             <Route path="/ai-tutor"
               element={
-                <RequireAuth>
-                  <LazyPage><AiTutorPage /></LazyPage>
-                </RequireAuth>
+                <LazyPage><AiTutorPage /></LazyPage>
               }
             />
           ) : null}
