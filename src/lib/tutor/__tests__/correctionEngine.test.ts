@@ -13,10 +13,24 @@ describe("correctionEngine", () => {
     ["I have lunch yesterday.", "I had lunch yesterday."],
     ["I do homework yesterday.", "I did homework yesterday."],
     ["It have food every day.", "It has food every day."],
+    ["i buy a hat yesterday", "I bought a hat yesterday."],
   ])("corrects beginner English fallback: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
       corrected: expected,
+    });
+  });
+
+  it("repairs beginner run-on punctuation and capitalization", () => {
+    expect(
+      correctWithTutorRules(
+        "what do you usually do in the morning nice that sounds like a clear morning routine what do you do after that",
+        "en",
+      ),
+    ).toMatchObject({
+      status: "corrected",
+      corrected:
+        "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?",
     });
   });
 

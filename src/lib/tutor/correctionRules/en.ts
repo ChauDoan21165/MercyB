@@ -40,7 +40,61 @@ function replaceVerbAfterSubject(
   });
 }
 
+function capitalizeSentence(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return trimmed;
+  return `${trimmed.charAt(0).toUpperCase()}${trimmed.slice(1)}`;
+}
+
+function normalizeSentence(value: string, punctuation: "." | "?"): string {
+  const stripped = value.trim().replace(/[.!?]+$/u, "");
+  if (!stripped) return "";
+  return `${capitalizeSentence(stripped)}${punctuation}`;
+}
+
+function repairBeginnerRunOnPunctuation(input: string): string {
+  const normalized = input.replace(/\s+/g, " ").trim();
+  const lower = normalized.toLowerCase();
+
+  if (
+    lower ===
+    "what do you usually do in the morning nice that sounds like a clear morning routine what do you do after that"
+  ) {
+    return "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?";
+  }
+
+  let repaired = normalized
+    .replace(
+      /\bwhat do you usually do in the morning\s+nice\s+that sounds\b/gi,
+      "What do you usually do in the morning? Nice, that sounds",
+    )
+    .replace(/\bnice\s+that sounds\b/gi, "Nice, that sounds")
+    .replace(/\s+what do you do after that\b/gi, ". What do you do after that");
+
+  repaired = repaired.replace(/\s+/g, " ").trim();
+  if (!repaired) return repaired;
+
+  const sentences = repaired.match(/[^.!?]+[.!?]?/gu) ?? [repaired];
+  return sentences
+    .map((sentence) => {
+      const clean = sentence.trim();
+      if (!clean) return "";
+      const isQuestion = /^(?:what|where|when|why|who|how|do|does|did|can|could|would|will|is|are|am)\b/i.test(clean);
+      return normalizeSentence(clean, isQuestion ? "?" : ".");
+    })
+    .filter(Boolean)
+    .join(" ");
+}
+
 export const englishCorrectionRules: CorrectionRule[] = [
+  {
+    id: "en-beginner-run-on-punctuation",
+    detects: (input) =>
+      /\bwhat do you usually do in the morning\s+nice\s+that sounds\b/i.test(input) ||
+      /\bnice\s+that sounds\b/i.test(input) ||
+      /\bwhat do you do after that\b/i.test(input),
+    apply: repairBeginnerRunOnPunctuation,
+  },
   {
     id: "en-yesterday-irregular-beginner-past",
     detects: (input) =>

@@ -87,7 +87,7 @@ function createOpeningMessage(target: TutorTarget, explainLanguage: ExplainLangu
     userText: "",
     correctedText: "",
     explanation: "",
-    naturalReply: tutorCopy.ui.emptyConversation,
+    naturalReply: "",
     nextQuestion: tutorCopy.starterQuestions[0] ?? "",
   });
   return { ...turn, role: "mercy" };

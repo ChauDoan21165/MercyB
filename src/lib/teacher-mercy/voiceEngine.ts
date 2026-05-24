@@ -4,6 +4,7 @@ import {
   getTtsLocale,
   resolveTutorTargetLanguage,
 } from "@/lib/tutor/languageRegistry";
+import { sanitizeSpeakableText } from "@/lib/tutor/tutorEngine";
 
 export type TeacherMercyVoiceStyle = "teacher-mercy" | "kid-friendly" | "neutral";
 
@@ -94,7 +95,7 @@ function cloudLanguageForTarget(targetLanguage: TeacherMercyTargetLanguage = "en
 }
 
 function normalizeText(text: string): string {
-  return String(text ?? "").replace(/\s+/g, " ").trim();
+  return sanitizeSpeakableText(text);
 }
 
 function speakableTextFor(text: string, options: SpeakTutorTextOptions): string {

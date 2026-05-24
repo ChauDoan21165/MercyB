@@ -29,9 +29,65 @@ type ConversationTurnInput = BaseTurnInput & {
 };
 
 const MAX_EXPLANATION_LENGTH = 240;
+const LABEL_PREFIX_PATTERN =
+  /^(?:teacher\s+mercy|mercy|corrected(?:\s+version)?|correction|câu\s+đã\s+sửa|explanation|giải\s+thích(?:\s+ngắn)?|short\s+explanation|natural\s+reply|câu\s+trả\s+lời\s+tự\s+nhiên|next\s+question|question|learner|user|you|bạn\s+viết|gợi\s+ý)\s*[:：-]\s*/i;
 
 function normalizeText(value: string | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
+}
+
+function normalizeFragmentForDedupe(value: string): string {
+  return value
+    .replace(/[.!?。！？]+$/u, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function removeRepeatedSentenceFragments(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+
+  const half = Math.floor(trimmed.length / 2);
+  if (trimmed.length % 2 === 0) {
+    const first = trimmed.slice(0, half).trim();
+    const second = trimmed.slice(half).trim();
+    if (first && normalizeFragmentForDedupe(first) === normalizeFragmentForDedupe(second)) {
+      return first;
+    }
+  }
+
+  const fragments = trimmed.match(/[^.!?。！？]+[.!?。！？]*/gu) ?? [trimmed];
+  const kept: string[] = [];
+  for (const fragment of fragments) {
+    const clean = fragment.trim();
+    if (!clean) continue;
+    const normalized = normalizeFragmentForDedupe(clean);
+    const previous = kept.length ? normalizeFragmentForDedupe(kept[kept.length - 1]) : "";
+    if (normalized && normalized === previous) continue;
+    kept.push(clean);
+  }
+
+  return kept.join(" ").trim();
+}
+
+export function sanitizeSpeakableText(text: string | undefined): string {
+  const lines = String(text ?? "")
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, " ")
+    .split(/\r?\n/)
+    .map((line) => {
+      let clean = line
+        .replace(/^\s*(?:#{1,6}|\*|-|•|\d+[.)])\s*/u, "")
+        .replace(/[`*_~>|[\]{}]/g, " ")
+        .trim();
+      while (LABEL_PREFIX_PATTERN.test(clean)) {
+        clean = clean.replace(LABEL_PREFIX_PATTERN, "").trim();
+      }
+      return clean;
+    })
+    .filter(Boolean);
+
+  return removeRepeatedSentenceFragments(lines.join(" ").replace(/\s+/g, " ").trim());
 }
 
 function createTurnId(mode: TutorMode): string {
@@ -68,7 +124,12 @@ function hasOnlyOneNextQuestion(turn: TutorTurn): boolean {
 }
 
 function buildSpeakableText(parts: Array<string | undefined>): string {
-  return parts.map(normalizeText).filter(Boolean).join(" ");
+  return sanitizeSpeakableText(parts.map(sanitizeSpeakableText).filter(Boolean).join(" "));
+}
+
+function expectedSpeakableText(turn: TutorTurn): string {
+  if (turn.mode === "correction") return sanitizeSpeakableText(turn.correctedText);
+  return buildSpeakableText([turn.correctedText, turn.naturalReply, turn.nextQuestion]);
 }
 
 export function buildCorrectionTurn(input: CorrectionTurnInput): TutorCorrectionResult {
@@ -119,14 +180,16 @@ export function validateTutorTurn(turn: TutorTurn): boolean {
   if (turn.explanation.length > MAX_EXPLANATION_LENGTH) return false;
   if (!hasOnlyOneNextQuestion(turn)) return false;
 
-  const speakable = normalizeText(turn.shouldReadAloudText);
+  const speakable = sanitizeSpeakableText(turn.shouldReadAloudText);
+  const expectedSpeakable = expectedSpeakableText(turn);
   if (turn.mode === "correction") {
     if (!normalizeText(turn.correctedText)) return false;
     if (!validateCorrectionChangedWhenNeeded(turn.userText, turn.correctedText).ok) return false;
-    return speakable === normalizeText(turn.correctedText);
+    return Boolean(expectedSpeakable) && (!speakable || speakable === expectedSpeakable);
   }
 
-  if (!speakable) return false;
+  if (!expectedSpeakable) return false;
+  if (speakable && speakable !== expectedSpeakable) return false;
   if (
     normalizeText(turn.correctedText) &&
     !validateCorrectionChangedWhenNeeded(turn.userText, turn.correctedText).ok
@@ -136,7 +199,7 @@ export function validateTutorTurn(turn: TutorTurn): boolean {
   const userText = normalizeText(turn.userText);
   if (
     userText.length >= 8 &&
-    speakable.includes(userText) &&
+    expectedSpeakable.includes(userText) &&
     userText !== normalizeText(turn.correctedText)
   ) {
     return false;
@@ -147,5 +210,5 @@ export function validateTutorTurn(turn: TutorTurn): boolean {
 
 export function getSpeakableText(turn: TutorTurn): string {
   if (!validateTutorTurn(turn)) return "";
-  return normalizeText(turn.shouldReadAloudText);
+  return expectedSpeakableText(turn);
 }

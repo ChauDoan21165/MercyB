@@ -441,6 +441,22 @@ describe("AiTutor mock UI", () => {
     });
   });
 
+  it("adds punctuation and capitalization to beginner run-on English", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "what do you usually do in the morning nice that sounds like a clear morning routine what do you do after that",
+    );
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?",
+        ),
+      ).toBeInTheDocument();
+    });
+  });
+
   it("corrects third-person and past-tense English examples deterministically", async () => {
     render(<AiTutorPage />);
     await userEvent.type(screen.getByRole("textbox"), "He eat rice yesterday.");
@@ -661,6 +677,33 @@ describe("AiTutor mock UI", () => {
     expect(fetchCloudTtsUrl).not.toHaveBeenCalledWith(expect.objectContaining({
       text: "I buy a hat yesterday.",
     }));
+  });
+
+  it("starter Mercy đọc speaks only the clean starter question", async () => {
+    const browserSpeak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak: browserSpeak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
+    await userEvent.click(speakerButtons[0]);
+
+    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
+    const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe("What do you usually do in the morning?");
   });
 
   it("uses registry TTS locale for Conversation replies without reading raw user input", async () => {

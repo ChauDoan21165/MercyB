@@ -121,6 +121,28 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(result.fallback).toBe(true);
   });
 
+  it("sanitizes labels and repeated fragments before cloud or browser speech", async () => {
+    const synth = installSpeechSynthesis();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+
+    const result = await speakTutorText(
+      "Teacher Mercy: Câu trả lời tự nhiên: What do you usually do in the morning? What do you usually do in the morning?",
+      {
+        targetLanguage: "en",
+        preferCloudVoice: true,
+        fallbackToBrowserTts: true,
+      },
+    );
+
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "What do you usually do in the morning?",
+      language: "en",
+    });
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    expect(utterance.text).toBe("What do you usually do in the morning?");
+    expect(result.text).toBe("What do you usually do in the morning?");
+  });
+
   it("stop cancels playback", async () => {
     const synth = installSpeechSynthesis();
     fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/hold.mp3", cached: false });

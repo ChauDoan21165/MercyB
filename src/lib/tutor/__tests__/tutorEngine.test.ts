@@ -3,6 +3,7 @@ import {
   buildConversationTurn,
   buildCorrectionTurn,
   getSpeakableText,
+  sanitizeSpeakableText,
   validateTutorTurn,
 } from "@/lib/tutor/tutorEngine";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
@@ -58,6 +59,33 @@ describe("tutorEngine", () => {
     expect(speakable).toContain("Je suis alle au marche.");
     expect(speakable).toContain("Qu'est-ce que tu fais apres ca ?");
     expect(speakable).not.toContain("Je suis aller au marche");
+  });
+
+  it("sanitizes labels, markdown, control characters, and repeated fragments before speech", () => {
+    expect(
+      sanitizeSpeakableText(
+        "### Teacher Mercy: Câu trả lời tự nhiên: **What do you usually do in the morning?**\u0007 What do you usually do in the morning?",
+      ),
+    ).toBe("What do you usually do in the morning?");
+  });
+
+  it("derives speakable text from learner-facing fields instead of polluted metadata", () => {
+    const { turn } = buildConversationTurn({
+      id: "turn-clean",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "",
+      correctedText: "",
+      explanation: "",
+      naturalReply: "",
+      nextQuestion: "What do you usually do in the morning?",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    });
+    turn.shouldReadAloudText =
+      "Teacher Mercy: Câu trả lời tự nhiên: What do you usually do in the morning? What do you usually do in the morning?";
+
+    expect(validateTutorTurn(turn)).toBe(true);
+    expect(getSpeakableText(turn)).toBe("What do you usually do in the morning?");
   });
 
   it("malformed turns fail safe instead of reading raw user input", () => {

@@ -12,6 +12,7 @@ import {
   getTutorLanguage,
   type TutorLanguageCode,
 } from "@/lib/tutor/languageRegistry";
+import { sanitizeSpeakableText } from "@/lib/tutor/tutorEngine";
 
 export interface UseTtsSpeakerResult {
   supported: boolean;
@@ -84,7 +85,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     target: TutorLanguageCode = "en",
     options: Pick<SpeakTutorTextOptions, "voiceStyle"> = {},
   ) => {
-    const safeText = String(text ?? "").trim();
+    const safeText = sanitizeSpeakableText(text);
     if (!safeText) return;
     if (!supported) {
       setError("Speech playback is not supported in this browser.");
