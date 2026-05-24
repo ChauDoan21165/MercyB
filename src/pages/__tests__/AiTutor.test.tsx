@@ -167,6 +167,37 @@ describe("AiTutor mock UI", () => {
     expect(shell).not.toHaveTextContent(/\bAdult\b|adult learner/i);
   });
 
+  it("puts Today's Lesson above the mode tabs as the first study action", async () => {
+    render(<AiTutorPage />);
+
+    const todayLesson = await screen.findByTestId("ai-tutor-today-lesson");
+    const modeTabs = screen.getByTestId("teacher-mercy-mode-tabs");
+
+    expect(todayLesson).toHaveTextContent("Today's lesson");
+    expect(todayLesson).toHaveTextContent("Start with one clear daily sentence");
+    expect(todayLesson).toHaveTextContent("No local practice summary is available yet");
+    expect(todayLesson).toHaveTextContent("6 min");
+    expect(screen.getByRole("button", { name: "Start today's lesson" })).toBeInTheDocument();
+    expect(todayLesson.compareDocumentPosition(modeTabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("starts the recommended Today Lesson mode from the dashboard", async () => {
+    getMemorySummary.mockResolvedValue({
+      ...POPULATED_SUMMARY,
+      topicNeedingReview: "pronunciation",
+      suggestedNextFocus: "pronunciation",
+      needsReview: ["pronunciation"],
+      confidenceTrend: "improving",
+    });
+    render(<AiTutorPage />);
+
+    await screen.findByTestId("ai-tutor-today-lesson");
+    await userEvent.click(screen.getByRole("button", { name: "Start today's lesson" }));
+
+    expect(screen.getByRole("button", { name: "Speak" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
+  });
+
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
     render(<AiTutorPage />);
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
@@ -917,7 +948,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-card")).toBeInTheDocument());
-    expect(screen.getByText(/Today's lesson/)).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-today-lesson")).toHaveTextContent(/Today's lesson/i);
     expect(screen.getByText(/Practice past-tense in present-simple/)).toBeInTheDocument();
     expect(screen.getByText(/6 câu đã sửa/)).toBeInTheDocument();
     expect(screen.getByText(/4 đã luyện tập/)).toBeInTheDocument();

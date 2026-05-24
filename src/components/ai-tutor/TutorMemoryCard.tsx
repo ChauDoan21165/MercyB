@@ -10,6 +10,10 @@ type Props = {
   memory: MemorySummary | null;
 };
 
+type TodayLessonProps = Props & {
+  onStartLesson?: (mode: ReturnType<typeof planTodayLesson>["suggestedMode"]) => void;
+};
+
 export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
   if (!memoryLoaded || !memory || memory.totalCorrections === 0) return null;
   const languageLabel = (memory.targetLanguage || "en").toUpperCase();
@@ -57,7 +61,7 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
   );
 }
 
-export function TutorTodayLessonCard({ memoryLoaded, memory }: Props) {
+export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson }: TodayLessonProps) {
   if (!memoryLoaded) return null;
   const plan = planTodayLesson(memory);
   const modeLabel = {
@@ -70,32 +74,62 @@ export function TutorTodayLessonCard({ memoryLoaded, memory }: Props) {
   return (
     <section
       data-testid="ai-tutor-today-lesson"
-      className="mx-auto mb-4 w-full max-w-3xl rounded-[14px] border border-emerald-100 bg-emerald-50/60 px-4 py-3 shadow-sm"
+      className="mx-auto mb-4 w-full max-w-3xl rounded-[18px] border border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-sky-50 px-4 py-4 shadow-sm"
       style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <div className="text-xs font-black uppercase text-emerald-600">
-            Today's lesson
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="text-xs font-black uppercase text-emerald-700">
+              Today's lesson
+            </div>
+            <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-black uppercase text-emerald-700 shadow-sm">
+              {plan.estimatedMinutes} min
+            </span>
           </div>
-          <h2 className="mt-1 text-sm font-black text-slate-900" style={{ overflowWrap: "break-word" }}>
+          <h2 className="mt-2 text-lg font-black leading-6 text-slate-950" style={{ overflowWrap: "break-word" }}>
             {plan.lessonTitle}
           </h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-slate-700" style={{ overflowWrap: "break-word" }}>
+            {plan.reason}
+          </p>
         </div>
-        <span className="rounded-full bg-white px-3 py-1 text-[11px] font-black uppercase text-emerald-700 shadow-sm">
-          {modeLabel} · {plan.estimatedMinutes} min
-        </span>
+        <div className="flex shrink-0 flex-col gap-2 sm:items-end">
+          <span className="w-fit rounded-full border border-emerald-200 bg-white px-3 py-1 text-[11px] font-black uppercase text-emerald-800 shadow-sm">
+            {modeLabel}
+          </span>
+          <button
+            type="button"
+            onClick={() => onStartLesson?.(plan.suggestedMode)}
+            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-emerald-700 px-4 py-2 text-sm font-black text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          >
+            Start today's lesson
+          </button>
+        </div>
       </div>
-      <p className="mt-2 text-xs font-semibold leading-5 text-slate-600" style={{ overflowWrap: "break-word" }}>
-        {plan.reason}
-      </p>
-      <ol className="mt-2 list-decimal space-y-1 pl-5 text-xs font-medium leading-5 text-slate-700">
-        {plan.steps.map((step) => (
-          <li key={step}>{step}</li>
-        ))}
-      </ol>
-      <div className="mt-2 text-xs font-bold text-emerald-700" style={{ overflowWrap: "break-word" }}>
-        Next focus: {plan.nextFocus}
+
+      <div className="mt-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(160px,0.45fr)]">
+        <div className="rounded-xl border border-slate-100 bg-white/80 p-3">
+          <div className="text-[11px] font-black uppercase text-slate-500">
+            Practice today
+          </div>
+          <ol className="mt-2 list-decimal space-y-1 pl-5 text-xs font-semibold leading-5 text-slate-700">
+            {plan.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </div>
+        <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-3">
+          <div className="text-[11px] font-black uppercase text-emerald-700">
+            Next focus
+          </div>
+          <div className="mt-2 text-sm font-black text-slate-900" style={{ overflowWrap: "break-word" }}>
+            {plan.nextFocus}
+          </div>
+          <div className="mt-1 text-xs font-semibold text-slate-600">
+            Mercy will use this to recommend your next lesson.
+          </div>
+        </div>
       </div>
     </section>
   );
