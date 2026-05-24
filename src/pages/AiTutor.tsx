@@ -514,7 +514,11 @@ export default function AiTutorPage() {
       onModeChange={setMode}
       memorySlot={aiTutorConfig.memoryEnabled ? (
         <>
-          <TutorTodayLessonCard memoryLoaded={memoryLoaded} memory={memory} />
+          <TutorTodayLessonCard
+            memoryLoaded={memoryLoaded}
+            memory={memory}
+            onStartLesson={(suggestedMode) => setMode(suggestedMode)}
+          />
           <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
         </>
       ) : undefined}
