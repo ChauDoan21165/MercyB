@@ -23,6 +23,21 @@ const { putCorrection, getMemorySummary, markPracticed } = vi.hoisted(() => ({
   markPracticed: vi.fn(async () => {}),
 }));
 
+class MockSpeechSynthesisUtterance {
+  text: string;
+  lang = "";
+  rate = 1;
+  volume = 1;
+  voice: SpeechSynthesisVoice | null = null;
+  onstart: (() => void) | null = null;
+  onend: (() => void) | null = null;
+  onerror: (() => void) | null = null;
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
 vi.mock("@/providers/AuthProvider", () => ({
   useAuth: vi.fn(() => ({ user: null, isLoading: false })),
 }));
@@ -34,6 +49,7 @@ vi.mock("@/lib/ai-tutor/learningMemory", () => ({
 beforeEach(() => {
   vi.clearAllMocks();
   window.history.pushState({}, "", "/ai-tutor");
+  window.localStorage.setItem("mercyblade.lessonUiLang", "vi");
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
@@ -56,39 +72,40 @@ describe("AiTutor mock UI", () => {
 
   it("shows microphone fallback when browser speech recognition is unavailable", () => {
     render(<AiTutorPage />);
-    expect(screen.getByTestId("ai-tutor-mic-fallback")).toHaveTextContent(/Microphone unavailable/);
+    expect(screen.getByTestId("ai-tutor-mic-fallback")).toHaveTextContent(/Không dùng được micro/);
   });
 
   it("shows microphone control when browser speech recognition is supported", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = vi.fn();
     render(<AiTutorPage />);
-    expect(screen.getByRole("button", { name: /Speak sentence/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Nói câu của bạn/ })).toBeInTheDocument();
   });
 
-  it("keeps French target copy after hydration", async () => {
+  it("keeps Vietnamese UI with French target copy after hydration", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
-    expect(screen.getByRole("heading", { name: /French Tutor/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Gia sư tiếng Pháp/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText(/Write a French sentence/)).toBeInTheDocument();
+    expect(screen.getByText(/Viết một câu tiếng Pháp/)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
+    expect(screen.getByText("Câu tiếng Pháp của bạn")).toBeInTheDocument();
   });
 
-  it("keeps Chinese target copy after hydration", async () => {
+  it("keeps Vietnamese UI with Chinese target copy after hydration", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=zh");
     render(<AiTutorPage />);
-    expect(screen.getByRole("heading", { name: /Chinese Tutor/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Gia sư tiếng Trung/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText(/Write a Chinese sentence/)).toBeInTheDocument();
+    expect(screen.getByText(/Viết một câu tiếng Trung/)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/gõ câu tiếng Trung/)).toBeInTheDocument();
   });
 
   it.each([
-    ["de", /German Tutor/, /Write a German sentence/, /gõ câu tiếng Đức/],
-    ["ja", /Japanese Tutor/, /Write a Japanese sentence/, /gõ câu tiếng Nhật/],
-    ["ko", /Korean Tutor/, /Write a Korean sentence/, /gõ câu tiếng Hàn/],
-    ["es", /Spanish Tutor/, /Write a Spanish sentence/, /type your Spanish sentence/],
-    ["vi", /Vietnamese Tutor/, /Write a Vietnamese sentence/, /type your Vietnamese sentence/],
+    ["de", /Gia sư tiếng Đức/, /Viết một câu tiếng Đức/, /gõ câu tiếng Đức/],
+    ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
+    ["ko", /Gia sư tiếng Hàn/, /Viết một câu tiếng Hàn/, /gõ câu tiếng Hàn/],
+    ["es", /Gia sư tiếng Tây Ban Nha/, /Viết một câu tiếng Tây Ban Nha/, /type your Spanish sentence/],
+    ["vi", /Gia sư tiếng Việt/, /Viết một câu tiếng Việt/, /type your Vietnamese sentence/],
   ])("keeps %s target copy after hydration", async (target, heading, helper, placeholder) => {
     window.history.pushState({}, "", `/ai-tutor?target=${target}`);
     render(<AiTutorPage />);
@@ -133,6 +150,65 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => {
       expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
     });
+  });
+
+  it("corrects French target in French and explains in Vietnamese", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "Toute lecture neuve d'un texte canonique paraît hérétique");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText(/Toute lecture nouvelle d'un texte canonique/)).toBeInTheDocument();
+    });
+    expect(screen.queryByText("She goes to school every day.")).not.toBeInTheDocument();
+    expect(screen.getByText("Câu đã sửa")).toBeInTheDocument();
+    expect(screen.getByText("Giải thích")).toBeInTheDocument();
+    expect(screen.getByText(/Câu vẫn giữ ý gốc bằng tiếng Pháp/)).toBeInTheDocument();
+  });
+
+  it("corrects Chinese target in Chinese and explains in Vietnamese", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=zh");
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "我昨天去商店");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => {
+      expect(screen.getByText("我昨天去了商店。")).toBeInTheDocument();
+    });
+    expect(screen.getByText(/Câu tiếng Trung cần thêm/)).toBeInTheDocument();
+  });
+
+  it("shows one Mercy speaker after French correction and speaks French text", async () => {
+    const speak = vi.fn();
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+    expect(screen.queryByRole("button", { name: /Mercy đọc/ })).not.toBeInTheDocument();
+
+    await userEvent.type(screen.getByRole("textbox"), "Toute lecture neuve d'un texte canonique paraît hérétique");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => expect(screen.getByText(/Toute lecture nouvelle/)).toBeInTheDocument());
+
+    const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
+    expect(speakerButtons).toHaveLength(1);
+    await userEvent.click(speakerButtons[0]);
+
+    expect(speak).toHaveBeenCalledTimes(1);
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toMatch(/Toute lecture nouvelle/);
+    expect(utterance.lang).toBe("fr-FR");
   });
 
   it("marks the result layout expanded", async () => {
