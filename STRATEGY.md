@@ -307,7 +307,51 @@ These channels are active surfaces for the English-native pairs, run at the ~5% 
 
 ---
 
-## 12. Risks
+## 12. The Duolingo Competition Strategy
+
+Duolingo is already strong at lessons, streaks, gamification, AI roleplay, and broad course scale. MercyB should not compete by copying Duolingo. MercyB wins by owning a sharper lane:
+
+**"Personal Teacher Mercy — Vietnamese-first AI teacher system."**
+
+### Positioning
+
+| | Duolingo | MercyB |
+|---|---|---|
+| **Audience** | Broad global, any language | Vietnamese learners (home) + selected pairs |
+| **Approach** | Gamified lesson treadmill | Personal AI teacher who knows you |
+| **Depth** | Bite-sized 3-minute units | Real depth, pair-specific content |
+| **Culture** | Generic Western defaults | Vietnamese cultural context (phở, Honda Wave, Tết) |
+| **Kid entry** | Requires reading + complex UI | Picture + speak only — works for age 2+ |
+| **Memory** | Streak counters | Safe summary: what you're strong at, what you're weak at, what to study next |
+| **Differentiation** | Scale + gamification | Teacher Mercy personality + Vietlish diagnosis |
+
+### Duolingo's weaknesses MercyB exploits
+
+1. **Generic for everyone** → MercyB is specific to Vietnamese learners and families.
+2. **Gamification, not learning depth** → MercyB focuses on outcomes, not engagement metrics.
+3. **No real teacher relationship** → Teacher Mercy is a consistent, warm persona across the product.
+4. **No Vietnamese cultural awareness** → MercyB explains errors through Vietnamese thinking patterns (Vietlish).
+5. **Complex kid mode** → Mercy Kids is picture + speak only. No reading required.
+
+### What MercyB does NOT do
+
+- ❌ Copy Duolingo feature-for-feature (lose that game)
+- ❌ Add streaks as the primary retention mechanic
+- ❌ Make Mercy Kids complex
+- ❌ Put advanced AI Tutor modes into Kids
+- ❌ Make Study OS a giant PR — ship one brick at a time
+- ❌ Add unsafe memory sync
+- ❌ Expose provider secrets client-side
+- ❌ Store raw audio or full transcripts
+- ❌ Do Placement writeback
+
+### Winning sentence
+
+> MercyB wins by becoming the Vietnamese-first personal AI teacher: simple enough for a 2-year-old, deep enough to fix adult Vietlish, and smart enough to guide the next lesson.
+
+---
+
+## 13. Risks
 
 ### External
 
@@ -317,7 +361,7 @@ These channels are active surfaces for the English-native pairs, run at the ~5% 
 
 ### Internal
 
-- **Strategy drift via AI advice** → READ THIS FILE FIRST every session, don't pivot on conversation. *(v3.0 exists because an AI session did exactly this — see §15.)*
+- **Strategy drift via AI advice** → READ THIS FILE FIRST every session, don't pivot on conversation. *(v3.0 exists because an AI session did exactly this — see §16.)*
 - **Effort drift away from the Vietnamese side** → ~95% effort stays Vietnamese-native; the matrix being real product does not mean equal investment
 - **Founder burnout** → AI automation and small team, not growth at all costs
 - **Content quality drift** → periodic audit, kill underperforming rooms
@@ -325,7 +369,7 @@ These channels are active surfaces for the English-native pairs, run at the ~5% 
 
 ---
 
-## 13. Decision Framework
+## 14. Decision Framework
 
 When facing any decision — feature request, design choice, business option — ask in order:
 
@@ -346,7 +390,7 @@ For effort-allocation decisions across pairs, additionally ask:
 
 ---
 
-## 14. How Future Sessions Should Use This Document
+## 15. How Future Sessions Should Use This Document
 
 ### When starting a new Claude session (web chat)
 
@@ -380,7 +424,12 @@ NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy 
 
 ---
 
-## 15. Changelog
+## 16. Changelog
+
+### May 24, 2026 — Duolingo competition strategy added
+
+- Added §12: The Duolingo Competition Strategy — positioning table, Duolingo weaknesses to exploit, what NOT to do, winning sentence.
+- Renumbered subsequent sections (Risks → §13, Decision Framework → §14, etc.).
 
 ### May 19, 2026 — v3.1: §6 + §7 freshness pass (no strategic change)
 
