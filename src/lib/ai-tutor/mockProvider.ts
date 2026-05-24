@@ -15,6 +15,10 @@ import type {
   TutorResponse,
   TutorSafetyKind,
 } from "./types";
+import {
+  AI_CORRECTION_REQUIRED_MESSAGE,
+  correctWithTutorRules,
+} from "@/lib/tutor/correctionEngine";
 
 // ─── Canned Responses — 3+ per mode ──────────────────────────────────
 
@@ -131,6 +135,27 @@ export function getCannedResponse(
   seed: number,
   callCount: number,
 ): TutorResponse {
+  if (mode === "sentence_correction") {
+    const correction = correctWithTutorRules(userInput, "en");
+    if (correction.status === "corrected") {
+      return {
+        vi: `🔍 Bạn viết: "${userInput}"\n💡 Gợi ý: "${correction.corrected}"\n📝 Giải thích: Mercy đã dùng luật sửa lỗi tiếng Anh cơ bản trong chế độ mock.\n🔄 Thử lại: "Tell me what you did yesterday."`,
+        correctedSentence: correction.corrected,
+        grammarPoints: correction.appliedRuleIds,
+        nextSteps: [{ labelVi: "Thử câu khác", action: "write", payload: "Tell me what you did yesterday." }],
+        saveTargets: [{ phrase: correction.corrected, type: "sentence" }],
+      };
+    }
+
+    if (correction.status === "needs_ai") {
+      return {
+        vi: correction.message || AI_CORRECTION_REQUIRED_MESSAGE,
+        nextSteps: [{ labelVi: "Thử câu đơn giản hơn", action: "write", payload: "" }],
+        saveTargets: [],
+      };
+    }
+  }
+
   const pool = CANNED_RESPONSES[mode] ?? CANNED_RESPONSES.general_chat;
   const raw = selectDeterministic(pool, userInput, seed, callCount);
 

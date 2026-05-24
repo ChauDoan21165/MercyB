@@ -11,6 +11,7 @@ type Props = {
 
 export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
   if (!memoryLoaded || !memory || memory.totalCorrections === 0) return null;
+  const languageLabel = (memory.targetLanguage || "en").toUpperCase();
 
   return (
     <section
@@ -19,7 +20,7 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
       style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
     >
       <div className="text-xs font-black uppercase text-indigo-500">
-        Học tập gần đây · Recent Learning
+        Học tập gần đây · Recent Learning · {languageLabel}
       </div>
       <div className="mt-1.5 flex flex-wrap gap-2 text-xs">
         <span className="font-bold text-slate-700" style={{ overflowWrap: "break-word", wordBreak: "normal" }}>
@@ -58,6 +59,7 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
 /** Empty memory state shown when no corrections exist yet. */
 export function TutorMemoryEmpty({ memoryLoaded, memory }: Props) {
   if (!memoryLoaded || !memory || memory.totalCorrections !== 0) return null;
+  const languageLabel = (memory.targetLanguage || "en").toUpperCase();
 
   return (
     <section
@@ -65,7 +67,7 @@ export function TutorMemoryEmpty({ memoryLoaded, memory }: Props) {
       className="mx-auto mb-5 w-full max-w-[720px] rounded-[16px] border border-dashed border-slate-200 bg-slate-50/50 p-4 text-center"
     >
       <div className="text-xs font-medium text-slate-400">
-        Chưa có lịch sử sửa câu. Gửi câu đầu tiên để bắt đầu!
+        Chưa có lịch sử sửa câu cho {languageLabel}. Gửi câu đầu tiên để bắt đầu!
       </div>
     </section>
   );

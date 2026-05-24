@@ -3,17 +3,20 @@
 
 import { Send, Square, Volume2 } from "lucide-react";
 import type { TutorTargetCopy, UiCopy } from "@/lib/ai-tutor/tutorUiCopy";
+import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 
-export type ConversationMessage = {
+export type UserConversationMessage = {
   id: string;
-  role: "mercy" | "user";
+  role: "user";
   text: string;
-  correction?: string;
-  explanation?: string;
-  reply?: string;
-  nextQuestion?: string;
 };
+
+export type MercyConversationMessage = TutorTurn & {
+  role: "mercy";
+};
+
+export type ConversationMessage = UserConversationMessage | MercyConversationMessage;
 
 type Props = {
   messages: ConversationMessage[];
@@ -26,10 +29,11 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsBrowserFallback: boolean;
+  ttsVoiceSource?: "mercy" | "device" | null;
   speakingMessageId: string | null;
   onSend: () => void;
   onMicToggle: () => void;
-  onSpeak: (message: ConversationMessage) => void;
+  onSpeak: (message: MercyConversationMessage) => void;
   targetCopy: TutorTargetCopy;
   uiCopy: UiCopy;
 };
@@ -45,6 +49,7 @@ export default function ConversationMode({
   ttsSpeaking,
   ttsPreparing,
   ttsBrowserFallback,
+  ttsVoiceSource,
   speakingMessageId,
   onSend,
   onMicToggle,
@@ -61,20 +66,20 @@ export default function ConversationMode({
     >
       <div className="border-b border-slate-100 p-5">
         <div className="text-xs font-black uppercase text-indigo-600">
-          Mercy hỏi · You answer
+          {uiCopy.conversationEyebrow}
         </div>
         <h2 className="mt-1 text-xl font-black text-slate-900">
-          Conversation with Mercy
+          {uiCopy.conversationTitle}
         </h2>
         <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
-          Practice in {targetCopy.nameEn}. Mercy corrects gently, replies naturally, and asks one next question.
+          {uiCopy.conversationDescription(targetCopy)}
         </p>
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4 sm:p-5">
         {messages.length === 0 && (
           <div className="rounded-[16px] border border-dashed border-slate-200 bg-white p-5 text-center text-sm font-bold text-slate-500">
-            Mercy will start with one easy question.
+            {uiCopy.conversationEmpty}
           </div>
         )}
 
@@ -98,30 +103,29 @@ export default function ConversationMode({
                 }`}
               >
                 <div className={`mb-1 text-[11px] font-black uppercase ${isMercy ? "text-indigo-500" : "text-slate-300"}`}>
-                  {isMercy ? "Teacher Mercy" : "You"}
+                  {isMercy ? uiCopy.conversationMercyLabel : uiCopy.conversationUserLabel}
                 </div>
 
                 {isMercy ? (
                   <div className="space-y-3">
-                    {message.correction && (
+                    {message.correctedText && (
                       <div>
-                        <div className="text-[11px] font-black uppercase text-emerald-600">Corrected version</div>
-                        <p className="mt-1 text-sm font-black leading-6 text-emerald-800">{message.correction}</p>
+                        <div className="text-[11px] font-black uppercase text-emerald-600">{uiCopy.conversationCorrectedLabel}</div>
+                        <p className="mt-1 text-sm font-black leading-6 text-emerald-800">{message.correctedText}</p>
                       </div>
                     )}
                     {message.explanation && (
                       <div>
-                        <div className="text-[11px] font-black uppercase text-slate-500">Giải thích ngắn</div>
+                        <div className="text-[11px] font-black uppercase text-slate-500">{uiCopy.conversationExplanationLabel}</div>
                         <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{message.explanation}</p>
                       </div>
                     )}
-                    {message.reply && (
+                    {message.naturalReply && (
                       <div>
-                        <div className="text-[11px] font-black uppercase text-indigo-500">Natural reply</div>
-                        <p className="mt-1 text-sm font-semibold leading-6 text-slate-800">{message.reply}</p>
+                        <div className="text-[11px] font-black uppercase text-indigo-500">{uiCopy.conversationReplyLabel}</div>
+                        <p className="mt-1 text-sm font-semibold leading-6 text-slate-800">{message.naturalReply}</p>
                       </div>
                     )}
-                    <p className="text-sm font-semibold leading-6 text-slate-800">{message.text}</p>
                     {message.nextQuestion && (
                       <p className="rounded-[12px] bg-indigo-50 px-3 py-2 text-sm font-black leading-6 text-indigo-800">
                         {message.nextQuestion}
@@ -154,6 +158,11 @@ export default function ConversationMode({
                     {isActiveVoice && ttsBrowserFallback && (
                       <div className="text-[11px] font-semibold text-amber-600">{uiCopy.ttsBrowserFallback}</div>
                     )}
+                    {isActiveVoice && ttsVoiceSource && (
+                      <div className={`text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
+                        {ttsVoiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <p className="whitespace-pre-wrap text-sm font-semibold leading-6">{message.text}</p>
@@ -166,7 +175,7 @@ export default function ConversationMode({
         {loading && (
           <div className="flex justify-start">
             <div className="rounded-full border border-indigo-100 bg-white px-4 py-2 text-sm font-bold text-indigo-700 shadow-sm">
-              Mercy is thinking...
+              {uiCopy.conversationThinking}
             </div>
           </div>
         )}
@@ -174,14 +183,14 @@ export default function ConversationMode({
 
       <div className="border-t border-slate-100 p-4">
         <label className="mb-2 block text-xs font-black uppercase text-slate-500">
-          Your answer
+          {uiCopy.conversationInputLabel}
         </label>
         <textarea
           value={input}
           onChange={(e) => {
             if (e.target.value.length <= 500) setInput(e.target.value);
           }}
-          placeholder={`Type your ${targetCopy.nameEn} answer here...`}
+          placeholder={uiCopy.conversationPlaceholder(targetCopy)}
           rows={3}
           className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
           onKeyDown={(e) => {
@@ -208,7 +217,7 @@ export default function ConversationMode({
             className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
           >
             <Send className="h-4 w-4" aria-hidden />
-            Send
+            {uiCopy.conversationSend}
           </button>
         </div>
       </div>

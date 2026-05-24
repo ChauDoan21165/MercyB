@@ -1,4 +1,9 @@
 import { Mic, MicOff, Square, Volume2 } from "lucide-react";
+import {
+  speakTutorText,
+  stopTutorSpeech,
+  type SpeakTutorTextOptions,
+} from "@/lib/teacher-mercy/voiceEngine";
 
 type Props = {
   kind: "mic" | "speaker";
@@ -15,6 +20,8 @@ type Props = {
   className?: string;
   fallbackTestId?: string;
   disabled?: boolean;
+  speakText?: string;
+  voiceOptions?: SpeakTutorTextOptions;
 };
 
 export default function TeacherMercyVoiceControls({
@@ -32,6 +39,8 @@ export default function TeacherMercyVoiceControls({
   className = "",
   fallbackTestId,
   disabled = false,
+  speakText,
+  voiceOptions,
 }: Props) {
   if (!supported) {
     return (
@@ -57,7 +66,19 @@ export default function TeacherMercyVoiceControls({
   return (
     <button
       type="button"
-      onClick={onToggle}
+      onClick={() => {
+        if (kind === "speaker" && speakText) {
+          if (active) {
+            stopTutorSpeech();
+            onToggle();
+            return;
+          }
+          void speakTutorText(speakText, voiceOptions);
+          onToggle();
+          return;
+        }
+        onToggle();
+      }}
       disabled={disabled || preparing}
       className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-black transition ${
         active

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
+import { getMemorySummary, type MemorySummary, type TutorProduct } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import {
@@ -8,12 +10,31 @@ import {
   VI_KIDS_TUTOR_TABS,
   type ViKidsTutorMode,
 } from "@/lib/kids/viKidsTutorCopy";
+import { getSpeechLocale, getTtsLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
+import { getSafetyLabel, viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
+
+const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
+const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
 
 export default function ViKidsEnglishTutor() {
-  const [mode, setMode] = useState<ViKidsTutorMode>("journey");
+  const [mode, setMode] = useState<ViKidsTutorMode>("conversation");
   const [answer, setAnswer] = useState("");
-  const stt = useBrowserStt("en-US");
+  const [memoryLoaded, setMemoryLoaded] = useState(false);
+  const [memory, setMemory] = useState<MemorySummary | null>(null);
+  const stt = useBrowserStt(getSpeechLocale(TARGET_LANGUAGE));
   const tts = useTtsSpeaker();
+
+  useEffect(() => {
+    if (!viKidsEnglishConfig.memoryEnabled) {
+      void getMemorySummary(TUTOR_PRODUCT, TARGET_LANGUAGE);
+      setMemoryLoaded(true);
+      return;
+    }
+    getMemorySummary(TUTOR_PRODUCT, TARGET_LANGUAGE)
+      .then(setMemory)
+      .catch(() => {})
+      .finally(() => setMemoryLoaded(true));
+  }, []);
 
   const handleMicToggle = () => {
     if (stt.listening) {
@@ -28,7 +49,9 @@ export default function ViKidsEnglishTutor() {
       tts.stop();
       return;
     }
-    void tts.speak(VI_KIDS_TUTOR_COPY.speakLine, "en-US", "en");
+    void tts.speak(VI_KIDS_TUTOR_COPY.speakLine, getTtsLocale(TARGET_LANGUAGE), TARGET_LANGUAGE, {
+      voiceStyle: "kid-friendly",
+    });
   };
 
   return (
@@ -37,20 +60,12 @@ export default function ViKidsEnglishTutor() {
       subtitle={VI_KIDS_TUTOR_COPY.subtitle}
       helper={VI_KIDS_TUTOR_COPY.helper}
       eyebrow={VI_KIDS_TUTOR_COPY.eyebrow}
-      badge="Kids"
+      badge={getSafetyLabel(viKidsEnglishConfig)}
       modeTabs={VI_KIDS_TUTOR_TABS}
       activeMode={mode}
       onModeChange={setMode}
-      memorySlot={
-        <section className="mx-auto mb-5 w-full max-w-[720px] rounded-[16px] border border-indigo-100 bg-white p-4 shadow-sm">
-          <div className="text-xs font-black uppercase text-indigo-500">
-            {VI_KIDS_TUTOR_COPY.memoryTitle}
-          </div>
-          <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
-            {VI_KIDS_TUTOR_COPY.memoryBody}
-          </p>
-        </section>
-      }
+      memorySlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
+      reminderSlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={VI_KIDS_TUTOR_COPY.footer}
       testId="vi-kids-english-tutor"
     >
@@ -60,11 +75,11 @@ export default function ViKidsEnglishTutor() {
             English practice · Giải thích tiếng Việt
           </div>
           <h2 className="mt-1 text-xl font-black text-slate-900">
-            {mode === "journey" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
+            {mode === "conversation" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
           </h2>
         </div>
 
-        {mode === "journey" && (
+        {mode === "conversation" && (
           <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-4">
             <p className="text-sm font-bold leading-6 text-slate-700">
               {VI_KIDS_TUTOR_COPY.conversationQuestion}
@@ -93,6 +108,11 @@ export default function ViKidsEnglishTutor() {
                 {VI_KIDS_TUTOR_COPY.explanation}
               </p>
             </div>
+            {tts.voiceSource && (
+              <div className={`mt-2 text-[11px] font-semibold ${tts.voiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
+                {tts.voiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
+              </div>
+            )}
           </div>
         )}
 
@@ -110,7 +130,7 @@ export default function ViKidsEnglishTutor() {
                 unavailableLabel={VI_KIDS_TUTOR_COPY.ttsUnavailable}
                 inactiveLabel={VI_KIDS_TUTOR_COPY.ttsPlay}
                 activeLabel={VI_KIDS_TUTOR_COPY.ttsStop}
-                preparingLabel="Đang chuẩn bị..."
+                preparingLabel="Preparing Mercy voice…"
                 ariaStart="Mercy đọc câu tiếng Anh"
                 ariaStop="Dừng Mercy đọc"
                 onToggle={speakLine}

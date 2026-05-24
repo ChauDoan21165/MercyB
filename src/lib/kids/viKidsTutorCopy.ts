@@ -1,15 +1,23 @@
-export type ViKidsTutorMode = "journey" | "grammar" | "speak" | "logic";
+import { viKidsEnglish, type TutorProductMode } from "@/lib/tutor/productConfigs";
 
-export const VI_KIDS_TUTOR_TABS: Array<{ id: ViKidsTutorMode; label: string }> = [
-  { id: "journey", label: "Journey" },
-  { id: "grammar", label: "Grammar" },
-  { id: "speak", label: "Speak" },
-  { id: "logic", label: "Logic" },
-];
+export type ViKidsTutorMode = Extract<TutorProductMode, "conversation" | "grammar" | "speak" | "logic">;
+
+const VI_KIDS_TUTOR_TAB_LABELS: Record<ViKidsTutorMode, string> = {
+  conversation: "Journey",
+  grammar: "Grammar",
+  speak: "Speak",
+  logic: "Logic",
+};
+
+export const VI_KIDS_TUTOR_TABS: Array<{ id: ViKidsTutorMode; label: string }> = viKidsEnglish.modes
+  .filter((mode): mode is ViKidsTutorMode =>
+    mode === "conversation" || mode === "grammar" || mode === "speak" || mode === "logic",
+  )
+  .map((mode) => ({ id: mode, label: VI_KIDS_TUTOR_TAB_LABELS[mode] }));
 
 export const VI_KIDS_TUTOR_COPY = {
-  title: "Teacher Mercy · English for Việt Kids",
-  subtitle: "Mercy giúp bé luyện tiếng Anh bằng giải thích tiếng Việt ngắn, ấm áp, dễ hiểu.",
+  title: viKidsEnglish.title,
+  subtitle: viKidsEnglish.subtitle,
   helper: "Bé luyện tiếng Anh thôi. Mercy sửa nhẹ nhàng, hỏi một câu nhỏ, và không lưu audio thô.",
   eyebrow: "Việt Kids English",
   memoryTitle: "Nhắc nhẹ hôm nay",

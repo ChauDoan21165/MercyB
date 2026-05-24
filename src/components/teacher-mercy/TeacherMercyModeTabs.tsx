@@ -18,7 +18,7 @@ export default function TeacherMercyModeTabs<TMode extends string>({
 }: Props<TMode>) {
   return (
     <div
-      className="mx-auto mb-5 grid w-full max-w-3xl gap-2 rounded-[16px] border border-slate-200 bg-white p-1 shadow-sm"
+      className="mx-auto mb-5 grid w-full max-w-3xl gap-1 rounded-[18px] border border-slate-200 bg-slate-100 p-1 shadow-inner"
       style={{ gridTemplateColumns: `repeat(${tabs.length}, minmax(0, 1fr))` }}
       aria-label={ariaLabel}
       data-testid="teacher-mercy-mode-tabs"
@@ -31,8 +31,8 @@ export default function TeacherMercyModeTabs<TMode extends string>({
             type="button"
             aria-pressed={selected}
             onClick={() => onChange(tab.id)}
-            className={`min-h-[44px] rounded-[12px] px-3 text-sm font-black transition ${
-              selected ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-50"
+            className={`min-h-[46px] rounded-[14px] px-3 text-sm font-black transition ${
+              selected ? "bg-white text-slate-950 shadow-sm" : "text-slate-500 hover:bg-white/70"
             }`}
           >
             {tab.label}

@@ -7,15 +7,23 @@ import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
 const EMPTY_SUMMARY: MemorySummary = {
+  tutorProduct: "ai-tutor", targetLanguage: "en", memoryKey: "ai-tutor:en",
+  strengths: [], needsReview: [], commonMistakePatterns: [],
+  nextRecommendedFocus: "", confidenceTrend: "not-enough-data", updatedAt: null,
   totalCorrections: 0, practicedCount: 0, strongestTopic: "", strongestTopicCount: 0,
   topicNeedingReview: "", topicNeedingReviewCount: 0,
   lastPracticedTopic: "", lastPracticedAt: null, suggestedNextFocus: "",
+  topicCounts: {}, unpracticedCorrectionIds: [],
 };
 
 const POPULATED_SUMMARY: MemorySummary = {
+  tutorProduct: "ai-tutor", targetLanguage: "en", memoryKey: "ai-tutor:en",
+  strengths: ["present-simple"], needsReview: ["past-tense"], commonMistakePatterns: ["present-simple", "past-tense"],
+  nextRecommendedFocus: "past-tense", confidenceTrend: "improving", updatedAt: Date.now(),
   totalCorrections: 6, practicedCount: 4, strongestTopic: "present-simple", strongestTopicCount: 3,
   topicNeedingReview: "past-tense", topicNeedingReviewCount: 1,
   lastPracticedTopic: "articles", lastPracticedAt: Date.now(), suggestedNextFocus: "past-tense",
+  topicCounts: { "present-simple": 3, "past-tense": 1 }, unpracticedCorrectionIds: [],
 };
 
 const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.hoisted(() => {
@@ -142,6 +150,11 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+    expect(screen.getByTestId("teacher-mercy-mode-tabs")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Grammar" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
@@ -251,6 +264,7 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByText(/Viết một câu tiếng Pháp/)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
     expect(screen.getByText("Câu tiếng Pháp của bạn")).toBeInTheDocument();
+    expect(screen.queryByText(/Write an English sentence/i)).not.toBeInTheDocument();
   });
 
   it("keeps Vietnamese UI with Chinese target copy after hydration", async () => {
@@ -260,16 +274,28 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     expect(screen.getByText(/Viết một câu tiếng Trung/)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/gõ câu tiếng Trung/)).toBeInTheDocument();
+    expect(screen.queryByText(/Write an English sentence/i)).not.toBeInTheDocument();
+  });
+
+  it("keeps English UI explanation separate from French target copy", () => {
+    window.localStorage.setItem("mercyblade.lessonUiLang", "en");
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+
+    expect(screen.getByRole("heading", { name: /Teacher Mercy · (French Tutor|Gia sư tiếng Pháp)/ })).toBeInTheDocument();
+    expect(screen.getByText(/Practice French with Mercy/)).toBeInTheDocument();
+    expect(screen.getByText("Your French sentence")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
   });
 
   it("starts Conversation mode in French when target=fr", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
 
     expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
-    expect(screen.getByText("Mercy hỏi · You answer")).toBeInTheDocument();
+    expect(screen.getByText("Mercy hỏi · Bạn trả lời")).toBeInTheDocument();
     expect(screen.getByText("Qu'est-ce que tu fais le matin ?")).toBeInTheDocument();
   });
 
@@ -277,7 +303,7 @@ describe("AiTutor mock UI", () => {
     window.history.pushState({}, "", "/ai-tutor?target=zh");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
 
     expect(screen.getByText("你早上通常做什么？")).toBeInTheDocument();
   });
@@ -286,20 +312,18 @@ describe("AiTutor mock UI", () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
     await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
-    await userEvent.click(screen.getByRole("button", { name: /^Send$/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Send|Gửi/ }));
 
     expect(screen.getByText("Je suis aller au marché")).toBeInTheDocument();
     await waitFor(() => {
-      expect(screen.getByText("Corrected version")).toBeInTheDocument();
+      expect(screen.getByText("Câu đã sửa")).toBeInTheDocument();
       expect(screen.getByText("Je suis allé au marché.")).toBeInTheDocument();
       expect(screen.getByText("Qu'est-ce que tu fais après ça ?")).toBeInTheDocument();
     });
     expect(putCorrection).toHaveBeenCalledWith(
       expect.objectContaining({
-        original: "",
-        corrected: "",
         topic: "conversation-fr",
         practiced: true,
       }),
@@ -311,7 +335,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
 
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
-    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
     await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript("I drink coffee");
@@ -322,7 +346,7 @@ describe("AiTutor mock UI", () => {
       expect(screen.getByRole("textbox")).toHaveValue("I drink coffee");
     });
 
-    await userEvent.click(screen.getByRole("button", { name: /Correct one sentence/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Grammar" }));
     expect(screen.getByRole("textbox")).toHaveValue("She go to school");
   });
 
@@ -344,7 +368,7 @@ describe("AiTutor mock UI", () => {
 
     window.history.pushState({}, "", "/ai-tutor?target=zh");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
 
     const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
     await userEvent.click(speakerButtons[0]);
@@ -430,6 +454,21 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => {
       expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
     });
+  });
+
+  it("shows safe fallback instead of unchanged wrong correction when local rules cannot correct", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "I run yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("Mercy needs the AI correction engine for this one."),
+      ).toBeInTheDocument();
+    });
+    expect(screen.queryByText("Câu đã sửa")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Mercy đọc/ })).not.toBeInTheDocument();
+    expect(putCorrection).not.toHaveBeenCalled();
   });
 
   it("corrects French target in French and explains in Vietnamese", async () => {
@@ -560,7 +599,7 @@ describe("AiTutor mock UI", () => {
     expect(utterance.lang).toBe("fr-FR");
   });
 
-  it("uses Mercy cloud voice for corrected text before browser fallback", async () => {
+  it("uses cloud Mercy voice first for multilingual corrections and shows Mercy voice", async () => {
     const browserSpeak = vi.fn();
     fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.com/mercy.mp3", cached: false });
     Object.defineProperty(window, "Audio", {
@@ -576,6 +615,10 @@ describe("AiTutor mock UI", () => {
         speak: browserSpeak,
       },
     });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
 
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
@@ -585,14 +628,13 @@ describe("AiTutor mock UI", () => {
 
     await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
 
-    await waitFor(() => {
-      expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
-        text: expect.stringMatching(/Toute lecture nouvelle/),
-        language: "en",
-      });
-    });
-    expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
+    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: expect.stringMatching(/Toute lecture nouvelle/),
+      language: "en",
+    }));
     expect(browserSpeak).not.toHaveBeenCalled();
+    expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
+    expect(await screen.findByText("Mercy voice")).toBeInTheDocument();
   });
 
   it("sends the corrected English sentence to Mercy voice instead of the raw mistake", async () => {
@@ -620,8 +662,9 @@ describe("AiTutor mock UI", () => {
     }));
   });
 
-  it("uses Mercy cloud voice for Conversation replies without reading raw user input", async () => {
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.com/conversation.mp3", cached: false });
+  it("uses registry TTS locale for Conversation replies without reading raw user input", async () => {
+    const browserSpeak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
     Object.defineProperty(window, "Audio", {
       configurable: true,
       value: MockAudioElement,
@@ -632,30 +675,33 @@ describe("AiTutor mock UI", () => {
         cancel: vi.fn(),
         getVoices: vi.fn(() => []),
         resume: vi.fn(),
-        speak: vi.fn(),
+        speak: browserSpeak,
       },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
     });
 
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
     await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
-    await userEvent.click(screen.getByRole("button", { name: /^Send$/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Send|Gửi/ }));
     await waitFor(() => expect(screen.getByText("Je suis allé au marché.")).toBeInTheDocument());
 
     const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
     await userEvent.click(speakerButtons[speakerButtons.length - 1]);
 
-    await waitFor(() => {
-      expect(fetchCloudTtsUrl).toHaveBeenLastCalledWith({
-        text: expect.stringContaining("Je suis allé au marché."),
-        language: "en",
-      });
+    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: expect.stringContaining("Qu'est-ce que tu fais après ça ?"),
+      language: "en",
     });
-    const calls = fetchCloudTtsUrl.mock.calls as Array<[
-      { text: string; language: "en" | "vi"; voiceIdOverride?: string },
-    ]>;
-    const spokenText = calls[calls.length - 1]?.[0]?.text;
+    expect(await screen.findByText("Device voice fallback")).toBeInTheDocument();
+    const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.lang).toBe("fr-FR");
+    const spokenText = utterance.text;
     expect(spokenText).toContain("Qu'est-ce que tu fais après ça ?");
     expect(spokenText).not.toContain("Je suis aller au marché");
   });
@@ -717,10 +763,15 @@ describe("AiTutor mock UI", () => {
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => expect(putCorrection).toHaveBeenCalledTimes(1));
+    expect(putCorrection).toHaveBeenCalledWith(expect.objectContaining({
+      tutorProduct: "ai-tutor",
+      targetLanguage: "en",
+    }));
     const textareas = screen.getAllByRole("textbox");
     await userEvent.type(textareas[1], "my practice");
     await userEvent.click(screen.getByRole("button", { name: /Gửi câu trả lời/ }));
     await waitFor(() => expect(markPracticed).toHaveBeenCalledTimes(1));
+    expect(markPracticed).toHaveBeenCalledWith(expect.any(String), "ai-tutor", "en");
   });
 
   // ── M3: Aggregate memory card ────────────────────────────────────
@@ -731,6 +782,30 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-card")).toBeInTheDocument());
     expect(screen.getByText(/6 câu đã sửa/)).toBeInTheDocument();
     expect(screen.getByText(/4 đã luyện tập/)).toBeInTheDocument();
+  });
+
+  it("A7: loads French memory separately from English memory", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY, targetLanguage: "fr", memoryKey: "ai-tutor:fr" });
+    render(<AiTutorPage />);
+    await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("ai-tutor", "fr"));
+    await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toHaveTextContent("FR"));
+  });
+
+  it("A7: does not display English-only memory on French target", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    getMemorySummary.mockResolvedValue({
+      ...POPULATED_SUMMARY,
+      targetLanguage: "fr",
+      memoryKey: "ai-tutor:fr",
+      strongestTopic: "gender-agreement",
+      topicNeedingReview: "articles-fr",
+      lastPracticedTopic: "gender-agreement",
+      suggestedNextFocus: "articles-fr",
+    });
+    render(<AiTutorPage />);
+    await waitFor(() => expect(screen.getByText(/Mạnh nhất: gender-agreement/)).toBeInTheDocument());
+    expect(screen.queryByText(/Mạnh nhất: present-simple/)).not.toBeInTheDocument();
   });
 
   it("M3: shows strongest topic chip", async () => {

@@ -2,7 +2,16 @@
 // Target-language copy, mock results, and text helpers.
 // Extracted from AiTutor.tsx for reuse across components.
 
-export type TutorTarget = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
+import { correctWithTutorRules } from "@/lib/tutor/correctionEngine";
+import { getTutorCopy } from "@/lib/tutor/tutorCopy";
+
+import {
+  TUTOR_LANGUAGE_CODES,
+  resolveTutorTargetLanguage,
+  type TutorLanguageCode,
+} from "@/lib/tutor/languageRegistry";
+
+export type TutorTarget = TutorLanguageCode;
 export type ExplainLanguage = "vi" | "en";
 
 type PracticeFeedback = {
@@ -68,106 +77,54 @@ export type UiCopy = {
   nextStepLabel: string;
   tryAnother: string;
   footer: string;
+  correctionModeTab: string;
+  conversationModeTab: string;
+  conversationEyebrow: string;
+  conversationTitle: string;
+  conversationDescription: (targetCopy: TutorTargetCopy) => string;
+  conversationEmpty: string;
+  conversationMercyLabel: string;
+  conversationUserLabel: string;
+  conversationCorrectedLabel: string;
+  conversationExplanationLabel: string;
+  conversationReplyLabel: string;
+  conversationThinking: string;
+  conversationInputLabel: string;
+  conversationPlaceholder: (targetCopy: TutorTargetCopy) => string;
+  conversationSend: string;
 };
 
-export const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = {
-  en: {
-    eyebrow: "New AI Tutor",
-    title: "Teacher Mercy AI Tutor",
-    subtitle: "Sửa câu tiếng Anh bằng AI thật, ghi nhớ lỗi hay gặp, rồi luyện lại với Mercy.",
-    helper: "Write a sentence — AI corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu của bạn ở đây, ví dụ: "She go to school every day"',
-    label: "English correction",
-    voiceLabel: "Voice input",
-    voiceFallback: "Microphone unavailable in this browser",
-    nameEn: "English",
-    nameVi: "tiếng Anh",
-  },
-  fr: {
-    eyebrow: "AI Tutor tiếng Pháp",
-    title: "Teacher Mercy · French Tutor",
-    subtitle: "Luyện tiếng Pháp với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "Write a French sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu tiếng Pháp của bạn ở đây, ví dụ: "Je suis aller au marché"',
-    label: "French practice",
-    voiceLabel: "French voice input",
-    voiceFallback: "Microphone unavailable for French practice",
-    nameEn: "French",
-    nameVi: "tiếng Pháp",
-  },
-  zh: {
-    eyebrow: "AI Tutor tiếng Trung",
-    title: "Teacher Mercy · Chinese Tutor",
-    subtitle: "Luyện tiếng Trung với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "Write a Chinese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu tiếng Trung của bạn ở đây, ví dụ: "我昨天去商店"',
-    label: "Chinese practice",
-    voiceLabel: "Chinese voice input",
-    voiceFallback: "Microphone unavailable for Chinese practice",
-    nameEn: "Chinese",
-    nameVi: "tiếng Trung",
-  },
-  de: {
-    eyebrow: "AI Tutor tiếng Đức",
-    title: "Teacher Mercy · German Tutor",
-    subtitle: "Luyện tiếng Đức với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "Write a German sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu tiếng Đức của bạn ở đây, ví dụ: "Ich gehe gestern zum Markt"',
-    label: "German practice",
-    voiceLabel: "German voice input",
-    voiceFallback: "Microphone unavailable for German practice",
-    nameEn: "German",
-    nameVi: "tiếng Đức",
-  },
-  ja: {
-    eyebrow: "AI Tutor tiếng Nhật",
-    title: "Teacher Mercy · Japanese Tutor",
-    subtitle: "Luyện tiếng Nhật với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "Write a Japanese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu tiếng Nhật của bạn ở đây, ví dụ: "私は昨日店に行く"',
-    label: "Japanese practice",
-    voiceLabel: "Japanese voice input",
-    voiceFallback: "Microphone unavailable for Japanese practice",
-    nameEn: "Japanese",
-    nameVi: "tiếng Nhật",
-  },
-  ko: {
-    eyebrow: "AI Tutor tiếng Hàn",
-    title: "Teacher Mercy · Korean Tutor",
-    subtitle: "Luyện tiếng Hàn với Mercy: sửa câu, giải thích lỗi, và ôn lại điểm cần nhớ.",
-    helper: "Write a Korean sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu tiếng Hàn của bạn ở đây, ví dụ: "저는 어제 시장에 가요"',
-    label: "Korean practice",
-    voiceLabel: "Korean voice input",
-    voiceFallback: "Microphone unavailable for Korean practice",
-    nameEn: "Korean",
-    nameVi: "tiếng Hàn",
-  },
-  es: {
-    eyebrow: "AI Tutor tiếng Tây Ban Nha",
-    title: "Teacher Mercy · Spanish Tutor",
-    subtitle: "Practice Spanish with Mercy: correction, explanation, memory, and review.",
-    helper: "Write a Spanish sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'type your Spanish sentence here, for example: "Yo fui al mercado ayer"',
-    label: "Spanish practice",
-    voiceLabel: "Spanish voice input",
-    voiceFallback: "Microphone unavailable for Spanish practice",
-    nameEn: "Spanish",
-    nameVi: "tiếng Tây Ban Nha",
-  },
-  vi: {
-    eyebrow: "AI Tutor tiếng Việt",
-    title: "Teacher Mercy · Vietnamese Tutor",
-    subtitle: "Practice Vietnamese with Mercy: correction, explanation, memory, and review.",
-    helper: "Write a Vietnamese sentence — Mercy corrects it, explains it, and gives follow-up practice.",
-    placeholder: 'gõ câu tiếng Việt của bạn ở đây, ví dụ: "Tôi buồn vì mất cái mũ đẹp."',
-    label: "Vietnamese practice",
-    voiceLabel: "Vietnamese voice input",
-    voiceFallback: "Microphone unavailable for Vietnamese practice",
-    nameEn: "Vietnamese",
-    nameVi: "tiếng Việt",
-  },
+const TARGET_EYEBROWS: Record<TutorTarget, string> = {
+  en: "New AI Tutor",
+  fr: "AI Tutor tiếng Pháp",
+  zh: "AI Tutor tiếng Trung",
+  de: "AI Tutor tiếng Đức",
+  ja: "AI Tutor tiếng Nhật",
+  ko: "AI Tutor tiếng Hàn",
+  es: "AI Tutor tiếng Tây Ban Nha",
+  vi: "AI Tutor tiếng Việt",
 };
+
+export const TARGET_COPY: Record<TutorTarget, TutorTargetCopy> = Object.fromEntries(
+  TUTOR_LANGUAGE_CODES.map((code) => {
+    const copy = getTutorCopy(code, "vi");
+    return [
+      code,
+      {
+        eyebrow: TARGET_EYEBROWS[code],
+        title: code === "en" ? "Teacher Mercy AI Tutor" : `Teacher Mercy · ${copy.nameEn} Tutor`,
+        subtitle: copy.ui.subtitle,
+        helper: copy.ui.helper,
+        placeholder: copy.placeholder,
+        label: copy.correctionTitle,
+        voiceLabel: copy.micLabels.input,
+        voiceFallback: copy.micLabels.unavailable,
+        nameEn: copy.nameEn,
+        nameVi: copy.nameVi,
+      },
+    ];
+  }),
+) as Record<TutorTarget, TutorTargetCopy>;
 
 export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
   vi: {
@@ -193,8 +150,8 @@ export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     loadingBody: "Mercy sẽ sửa đúng ngôn ngữ bạn chọn.",
     correctedLabel: "Câu đã sửa",
     ttsUnavailable: "Giọng đọc trình duyệt chưa khả dụng trên thiết bị này.",
-    ttsPreparing: "Đang chuẩn bị giọng Mercy...",
-    ttsBrowserFallback: "Giọng Mercy chưa khả dụng. Đang dùng giọng thiết bị.",
+    ttsPreparing: "Preparing Mercy voice…",
+    ttsBrowserFallback: "Mercy voice unavailable. Using device voice.",
     ttsPlay: "Mercy đọc",
     ttsStop: "Dừng",
     ttsAriaPlay: "Mercy đọc câu đã sửa bằng giọng AI",
@@ -210,9 +167,26 @@ export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     nextStepLabel: "Bước tiếp theo",
     tryAnother: "Sửa câu khác",
     footer: "Giao diện thử nghiệm - chưa gọi nhà cung cấp AI thật.",
+    correctionModeTab: "Sửa một câu",
+    conversationModeTab: "Trò chuyện với Mercy",
+    conversationEyebrow: "Mercy hỏi · Bạn trả lời",
+    conversationTitle: "Trò chuyện với Mercy",
+    conversationDescription: (targetCopy) =>
+      `Luyện ${targetCopy.nameVi}. Mercy sửa nhẹ nhàng, trả lời tự nhiên, rồi hỏi tiếp một câu.`,
+    conversationEmpty: "Mercy sẽ bắt đầu bằng một câu hỏi dễ.",
+    conversationMercyLabel: "Teacher Mercy",
+    conversationUserLabel: "Bạn",
+    conversationCorrectedLabel: "Câu đã sửa",
+    conversationExplanationLabel: "Giải thích ngắn",
+    conversationReplyLabel: "Câu trả lời tự nhiên",
+    conversationThinking: "Mercy đang suy nghĩ...",
+    conversationInputLabel: "Câu trả lời của bạn",
+    conversationPlaceholder: (targetCopy) => `Gõ câu trả lời ${targetCopy.nameVi} của bạn ở đây...`,
+    conversationSend: "Gửi",
   },
   en: {
-    title: (targetCopy, target) => (target === "en" ? "Teacher Mercy AI Tutor" : targetCopy.title),
+    title: (targetCopy, target) =>
+      target === "en" ? "Teacher Mercy AI Tutor" : `Teacher Mercy · ${targetCopy.nameEn} Tutor`,
     subtitle: (targetCopy) =>
       `Practice ${targetCopy.nameEn} with Mercy. Write a ${targetCopy.nameEn} sentence; Mercy corrects it and explains in English.`,
     helper: (targetCopy) =>
@@ -233,8 +207,8 @@ export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     loadingBody: "Mercy will correct the language you selected.",
     correctedLabel: "Corrected",
     ttsUnavailable: "Browser voice playback is not supported on this device.",
-    ttsPreparing: "Preparing Mercy voice...",
-    ttsBrowserFallback: "Mercy voice is unavailable. Using device voice.",
+    ttsPreparing: "Preparing Mercy voice…",
+    ttsBrowserFallback: "Mercy voice unavailable. Using device voice.",
     ttsPlay: "Mercy reads",
     ttsStop: "Stop",
     ttsAriaPlay: "Read corrected sentence with Mercy AI voice",
@@ -250,6 +224,22 @@ export const UI_COPY: Record<ExplainLanguage, UiCopy> = {
     nextStepLabel: "Next Step",
     tryAnother: "Try another sentence",
     footer: "Mock UI - no real AI provider calls are made.",
+    correctionModeTab: "Correct one sentence",
+    conversationModeTab: "Conversation with Mercy",
+    conversationEyebrow: "Mercy asks · You answer",
+    conversationTitle: "Conversation with Mercy",
+    conversationDescription: (targetCopy) =>
+      `Practice in ${targetCopy.nameEn}. Mercy corrects gently, replies naturally, and asks one next question.`,
+    conversationEmpty: "Mercy will start with one easy question.",
+    conversationMercyLabel: "Teacher Mercy",
+    conversationUserLabel: "You",
+    conversationCorrectedLabel: "Corrected version",
+    conversationExplanationLabel: "Short explanation",
+    conversationReplyLabel: "Natural reply",
+    conversationThinking: "Mercy is thinking...",
+    conversationInputLabel: "Your answer",
+    conversationPlaceholder: (targetCopy) => `Type your ${targetCopy.nameEn} answer here...`,
+    conversationSend: "Send",
   },
 };
 
@@ -476,39 +466,9 @@ function normalizeVietnameseCorrectionInput(value: string): string {
     .trim();
 }
 
-const ENGLISH_PAST_TENSE_VERBS: Record<string, string> = {
-  buy: "bought",
-  eat: "ate",
-  go: "went",
-  have: "had",
-  make: "made",
-  see: "saw",
-  take: "took",
-};
-
 function correctEnglishBeginnerGrammar(value: string): string {
-  let corrected = capitalizeFirst(value)
-    .replace(/\s+/g, " ")
-    .trim();
-  const hasPastMarker = /\b(yesterday|last night|last week|last month|last year|ago)\b/i.test(corrected);
-
-  if (hasPastMarker) {
-    corrected = corrected
-      .replace(/\b(I|You|We|They|He|She|It)\s+(buy|eat|go|have|make|see|take)\b/gi, (_match, subject: string, verb: string) => {
-        const past = ENGLISH_PAST_TENSE_VERBS[verb.toLowerCase()] ?? verb;
-        return `${subject} ${past}`;
-      })
-      .replace(/\b(She|He|It)\s+goes\b/gi, "$1 went")
-      .replace(/\b(She|He|It)\s+eats\b/gi, "$1 ate")
-      .replace(/\b(She|He|It)\s+buys\b/gi, "$1 bought");
-    return corrected;
-  }
-
-  return corrected
-    .replace(/\b(She|He|It)\s+go\b/g, "$1 goes")
-    .replace(/\b(She|He|It)\s+eat\b/g, "$1 eats")
-    .replace(/\b(She|He|It)\s+buy\b/g, "$1 buys")
-    .replace(/\b[Ii]\s+goes\b/g, "I go");
+  const correction = correctWithTutorRules(value, "en");
+  return correction.status === "needs_ai" ? "" : correction.corrected;
 }
 
 export function buildInputAwareCorrection(input: string, target: TutorTarget): string {
@@ -583,38 +543,13 @@ export function buildInputAwareCorrection(input: string, target: TutorTarget): s
   }
 }
 
-export function getTutorTargetFromSearch(search: string): TutorTarget {
-  const value = new URLSearchParams(search).get("target")?.toLowerCase();
-  if (value === "fr" || value === "french") return "fr";
-  if (value === "zh" || value === "chinese" || value === "cn") return "zh";
-  if (value === "de" || value === "german") return "de";
-  if (value === "ja" || value === "japanese" || value === "jp") return "ja";
-  if (value === "ko" || value === "korean" || value === "kr") return "ko";
-  if (value === "es" || value === "spanish") return "es";
-  if (value === "vi" || value === "vietnamese") return "vi";
-  return "en";
-}
-
-export function getTutorSpeechLang(target: TutorTarget): string {
-  switch (target) {
-    case "fr":
-      return "fr-FR";
-    case "zh":
-      return "zh-CN";
-    case "de":
-      return "de-DE";
-    case "ja":
-      return "ja-JP";
-    case "ko":
-      return "ko-KR";
-    case "es":
-      return "es-ES";
-    case "vi":
-      return "vi-VN";
-    case "en":
-    default:
-      return "en-US";
-  }
+export function getTutorTargetFromSearch(
+  search: string,
+  allowedTargetLanguages?: readonly string[],
+  defaultTargetLanguage: TutorTarget = "en",
+): TutorTarget {
+  const target = resolveTutorTargetLanguage(search);
+  return allowedTargetLanguages?.includes(target) ? target : allowedTargetLanguages ? defaultTargetLanguage : target;
 }
 
 export function getExplainLanguage(): ExplainLanguage {
