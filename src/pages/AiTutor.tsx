@@ -1,7 +1,15 @@
 // src/pages/AiTutor.tsx
 // AI Tutor mock UI — static responses, no real provider calls.
+// M3: Safe aggregate reminder card using IndexedDB getMemorySummary.
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/providers/AuthProvider";
+import {
+  putCorrection,
+  markPracticed,
+  getMemorySummary,
+} from "@/lib/ai-tutor/learningMemory";
+import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 
 type CorrectionResult = {
   corrected: string;
@@ -72,6 +80,22 @@ export default function AiTutorPage() {
   const [practiceFeedback, setPracticeFeedback] = useState<PracticeFeedback | null>(null);
   const [practiceLoading, setPracticeLoading] = useState(false);
 
+  // ── M3: Learning memory ──────────────────────────────────────────
+  const [memoryLoaded, setMemoryLoaded] = useState(false);
+  const [memory, setMemory] = useState<MemorySummary | null>(null);
+  const [lastSavedId, setLastSavedId] = useState<string | null>(null);
+
+  const loadMemory = async () => {
+    try {
+      setMemory(await getMemorySummary());
+    } catch {
+      // IndexedDB unavailable — degrade silently
+    }
+    setMemoryLoaded(true);
+  };
+
+  useEffect(() => { loadMemory(); }, []);
+
   const handleSubmit = async () => {
     const trimmed = input.trim();
     if (!trimmed) return;
@@ -93,6 +117,19 @@ export default function AiTutorPage() {
     });
     setUseCount((n) => n + 1);
     setLoading(false);
+
+    // M3: Save correction to IndexedDB
+    const id = `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
+    setLastSavedId(id);
+    putCorrection({
+      id,
+      original: trimmed,
+      corrected: next.corrected,
+      topic: next.grammarTip.slice(0, 60),
+      cefr: "B1",
+      createdAt: Date.now(),
+      practiced: false,
+    }).then(() => loadMemory()).catch(() => {});
   };
 
   const handlePracticeSubmit = async () => {
@@ -105,6 +142,11 @@ export default function AiTutorPage() {
     const mock = MOCK_RESULTS[(useCount - 1 + MOCK_RESULTS.length) % MOCK_RESULTS.length];
     setPracticeFeedback(mock.feedback);
     setPracticeLoading(false);
+
+    // M3: Mark last saved correction as practiced
+    if (lastSavedId) {
+      markPracticed(lastSavedId).then(() => loadMemory()).catch(() => {});
+    }
   };
 
   const handleClear = () => {
@@ -124,6 +166,14 @@ export default function AiTutorPage() {
       <style>{`
         .ai-tutor-shell {
           container-type: inline-size;
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+        }
+        @media (min-width: 640px) {
+          .ai-tutor-shell {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
         }
         .ai-tutor-result-layout {
           display: grid;
@@ -144,24 +194,115 @@ export default function AiTutorPage() {
           flex-direction: column;
           gap: 0.75rem;
         }
+        .ai-tutor-copy {
+          overflow-wrap: break-word;
+          word-break: normal;
+        }
+        .ai-tutor-memory-card {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          overflow: hidden;
+        }
+        .ai-tutor-memory-pill-list {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 0.5rem;
+        }
+        .ai-tutor-memory-pill {
+          min-width: 0;
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: break-word;
+        }
+        @container (min-width: 560px) {
+          .ai-tutor-memory-pill-list {
+            display: flex;
+            flex-wrap: wrap;
+          }
+        }
+        @container (max-width: 360px) {
+          .ai-tutor-shell-title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+          }
+          .ai-tutor-shell-copy {
+            font-size: 0.8125rem;
+            line-height: 1.25rem;
+          }
+        }
       `}</style>
       {/* Header */}
       <section className="mx-auto mb-6 w-full max-w-3xl text-center">
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <h1 className="text-2xl font-black text-slate-950 sm:text-3xl">
+          <h1 className="ai-tutor-shell-title text-2xl font-black text-slate-950 sm:text-3xl">
             AI Tutor
           </h1>
           <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-[11px] font-black uppercase text-amber-700">
             Mock
           </span>
         </div>
-        <p className="mt-2 text-sm font-medium text-slate-500">
+        <p className="ai-tutor-copy ai-tutor-shell-copy mt-2 text-sm font-medium text-slate-500">
           Viết một câu tiếng Anh — AI sẽ sửa lỗi, giải thích, và cho bạn luyện tập thêm.
         </p>
-        <p className="mt-1 text-xs text-slate-400">
+        <p className="ai-tutor-copy mt-1 text-xs text-slate-400">
           Write a sentence — AI corrects it, explains, and gives you follow-up practice.
         </p>
       </section>
+
+      {/* ── M3: Aggregate memory reminder card ──────────────────── */}
+      {memoryLoaded && memory && memory.totalCorrections > 0 && (
+        <section
+          data-testid="ai-tutor-memory-card"
+          className="ai-tutor-memory-card mx-auto mb-5 rounded-[16px] border border-indigo-100 bg-white p-4 shadow-sm"
+        >
+          <div className="text-xs font-black uppercase text-indigo-500">
+            Học tập gần đây · Recent Learning
+          </div>
+          <div className="ai-tutor-memory-pill-list mt-1.5 text-xs">
+            <span className="ai-tutor-copy ai-tutor-memory-pill font-bold text-slate-700">
+              {memory.totalCorrections} câu đã sửa
+            </span>
+            <span className="ai-tutor-copy ai-tutor-memory-pill font-medium text-slate-500">
+              {memory.practicedCount} đã luyện tập
+            </span>
+          </div>
+          <div className="ai-tutor-memory-pill-list mt-2 text-[11px]">
+            {memory.strongestTopic && (
+              <span className="ai-tutor-memory-pill rounded-full bg-emerald-50 px-2.5 py-1 font-bold text-emerald-700">
+                Mạnh nhất: {memory.strongestTopic}
+              </span>
+            )}
+            {memory.topicNeedingReview && (
+              <span className="ai-tutor-memory-pill rounded-full bg-amber-50 px-2.5 py-1 font-bold text-amber-700">
+                Cần ôn: {memory.topicNeedingReview}
+              </span>
+            )}
+            {memory.lastPracticedTopic && (
+              <span className="ai-tutor-memory-pill rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-600">
+                Gần nhất: {memory.lastPracticedTopic}
+              </span>
+            )}
+          </div>
+          {memory.suggestedNextFocus && (
+            <div className="ai-tutor-copy mt-2 text-xs font-medium text-indigo-600">
+              Gợi ý tiếp theo: {memory.suggestedNextFocus}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* ── M3: Empty memory state ────────────────────────────────── */}
+      {memoryLoaded && memory && memory.totalCorrections === 0 && (
+        <section
+          data-testid="ai-tutor-memory-empty"
+          className="mx-auto mb-5 w-full max-w-[720px] rounded-[16px] border border-dashed border-slate-200 bg-slate-50/50 p-4 text-center"
+        >
+          <div className="text-xs font-medium text-slate-400">
+            Chưa có lịch sử sửa câu. Gửi câu đầu tiên để bắt đầu!
+          </div>
+        </section>
+      )}
 
       <div
         data-testid="ai-tutor-layout"
