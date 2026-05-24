@@ -460,21 +460,54 @@ function capitalizeFirst(value: string): string {
   return `${trimmed.charAt(0).toUpperCase()}${trimmed.slice(1)}`;
 }
 
+function collapseRepeatedVietnameseFragments(value: string): string {
+  const words = value.replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+  if (words.length === 0) return "";
+
+  const maxPhrase = Math.min(6, Math.floor(words.length / 2));
+  for (let size = maxPhrase; size >= 1; size--) {
+    const collapsed: string[] = [];
+    for (let index = 0; index < words.length; index++) {
+      const phrase = words.slice(index, index + size).join(" ").toLowerCase();
+      const previous = collapsed.slice(-size).join(" ").toLowerCase();
+      if (phrase && phrase === previous) {
+        index += size - 1;
+        continue;
+      }
+      collapsed.push(words[index]);
+    }
+    words.splice(0, words.length, ...collapsed);
+  }
+
+  return words.join(" ");
+}
+
+function normalizeVietnameseCorrectionInput(value: string): string {
+  return collapseRepeatedVietnameseFragments(value)
+    .replace(/\b(?:ok|okay)\b/gi, "")
+    .replace(/chương trình nó chạy xong/gi, "")
+    .replace(/\bchiếc cái\b/gi, "chiếc")
+    .replace(/\bcái chiếc\b/gi, "chiếc")
+    .replace(/\b(tôi buồn)(?:\s+\1)+\b/gi, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function buildInputAwareCorrection(input: string, target: TutorTarget): string {
   const trimmed = input.replace(/\s+/g, " ").trim();
   if (!trimmed) return trimmed;
 
   switch (target) {
     case "vi": {
-      const lower = trimmed.toLowerCase();
+      const cleanedInput = normalizeVietnameseCorrectionInput(trimmed);
+      const lower = cleanedInput.toLowerCase();
       if (lower.includes("buồn") && lower.includes("mất") && lower.includes("xe đạp")) {
         return "Tôi buồn vì đã làm mất chiếc xe đạp.";
       }
       if (lower.includes("buồn") && lower.includes("mất") && lower.includes("mũ")) {
         return "Tôi buồn vì đã làm mất chiếc mũ đẹp của mình.";
       }
-      const corrected = trimmed
-        .replace(/\bcái chiếc\b/gi, "chiếc")
+      const corrected = cleanedInput
         .replace(/\bvì mất cái xe đạp\b/i, "vì đã làm mất chiếc xe đạp")
         .replace(/\bvì mất cái mũ đẹp\b/i, "vì đã làm mất chiếc mũ đẹp của mình")
         .replace(/\bcái xe đạp\b/gi, "chiếc xe đạp")
