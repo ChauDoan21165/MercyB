@@ -88,17 +88,17 @@ function MercyKidsLauncher() {
           Mercy Kids
         </h2>
         <p className="mt-3 max-w-[460px] text-sm font-semibold leading-6 text-slate-600">
-          Hộp Mercy nhỏ gọn cho bé luyện câu ngắn, nghe lại, và đi vào AI Tutor khi cần học nâng cao.
+          Hộp Mercy nhỏ gọn cho bé luyện câu ngắn, nghe lại, và học tiếng Anh từng bước.
         </p>
 
         <a
-          href="/ai-tutor"
+          href="/kids/vi-english"
           className="mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:bg-slate-800"
         >
-          Mở AI Tutor
+          Vào Mercy Kids
         </a>
         <p className="mt-3 text-xs font-medium leading-5 text-slate-400">
-          AI Tutor là không gian học nâng cao; Mercy Kids là lối vào đơn giản, thân thiện cho bé.
+          Mercy Kids là lối vào đơn giản, thân thiện cho bé. AI Tutor là không gian học nâng cao riêng.
         </p>
       </section>
     </div>
