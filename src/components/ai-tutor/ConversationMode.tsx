@@ -23,6 +23,8 @@ type Props = {
   micListening: boolean;
   ttsSupported: boolean;
   ttsSpeaking: boolean;
+  ttsPreparing: boolean;
+  ttsBrowserFallback: boolean;
   speakingMessageId: string | null;
   onSend: () => void;
   onMicToggle: () => void;
@@ -40,6 +42,8 @@ export default function ConversationMode({
   micListening,
   ttsSupported,
   ttsSpeaking,
+  ttsPreparing,
+  ttsBrowserFallback,
   speakingMessageId,
   onSend,
   onMicToggle,
@@ -75,7 +79,10 @@ export default function ConversationMode({
 
         {messages.map((message) => {
           const isMercy = message.role === "mercy";
-          const speakLabel = speakingMessageId === message.id && ttsSpeaking ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay;
+          const isActiveVoice = speakingMessageId === message.id;
+          const isPreparingVoice = isActiveVoice && ttsPreparing;
+          const isSpeakingVoice = isActiveVoice && ttsSpeaking;
+          const speakLabel = isSpeakingVoice ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay;
 
           return (
             <article
@@ -123,22 +130,28 @@ export default function ConversationMode({
                       <button
                         type="button"
                         onClick={() => onSpeak(message)}
+                        disabled={isPreparingVoice}
                         className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
-                          speakingMessageId === message.id && ttsSpeaking
+                          isSpeakingVoice
                             ? "border-red-300 bg-red-50 text-red-700"
                             : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
                         }`}
                         aria-label={speakLabel}
                       >
-                        {speakingMessageId === message.id && ttsSpeaking ? (
+                        {isPreparingVoice ? (
+                          <span className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-indigo-200 border-t-indigo-600" />
+                        ) : isSpeakingVoice ? (
                           <Square className="h-3.5 w-3.5" aria-hidden />
                         ) : (
                           <Volume2 className="h-3.5 w-3.5" aria-hidden />
                         )}
-                        {speakingMessageId === message.id && ttsSpeaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
+                        {isPreparingVoice ? uiCopy.ttsPreparing : isSpeakingVoice ? uiCopy.ttsStop : uiCopy.ttsPlay}
                       </button>
                     ) : (
                       <div className="text-[11px] font-medium text-slate-400">{uiCopy.ttsUnavailable}</div>
+                    )}
+                    {isActiveVoice && ttsBrowserFallback && (
+                      <div className="text-[11px] font-semibold text-amber-600">{uiCopy.ttsBrowserFallback}</div>
                     )}
                   </div>
                 ) : (

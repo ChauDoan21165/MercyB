@@ -32,6 +32,8 @@ type Props = {
   micListening: boolean;
   ttsSupported: boolean;
   ttsSpeaking: boolean;
+  ttsPreparing: boolean;
+  ttsBrowserFallback: boolean;
   speechLang: string;
   onSubmit: () => void;
   onMicToggle: () => void;
@@ -56,6 +58,8 @@ export default function CorrectionMode({
   micListening,
   ttsSupported,
   ttsSpeaking,
+  ttsPreparing,
+  ttsBrowserFallback,
   speechLang: _speechLang,
   onSubmit,
   onMicToggle,
@@ -216,6 +220,7 @@ export default function CorrectionMode({
               <button
                 type="button"
                 onClick={onTtsToggle}
+                disabled={ttsPreparing}
                 className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
                   ttsSpeaking
                     ? "border-red-300 bg-red-50 text-red-700"
@@ -223,13 +228,20 @@ export default function CorrectionMode({
                 }`}
                 aria-label={ttsSpeaking ? uiCopy.ttsAriaStop : uiCopy.ttsAriaPlay}
               >
-                {ttsSpeaking ? (
+                {ttsPreparing ? (
+                  <span className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-emerald-200 border-t-emerald-600" />
+                ) : ttsSpeaking ? (
                   <Square className="h-3.5 w-3.5" aria-hidden />
                 ) : (
                   <Volume2 className="h-3.5 w-3.5" aria-hidden />
                 )}
-                {ttsSpeaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
+                {ttsPreparing ? uiCopy.ttsPreparing : ttsSpeaking ? uiCopy.ttsStop : uiCopy.ttsPlay}
               </button>
+            )}
+            {ttsBrowserFallback && (
+              <div className="mt-2 text-[11px] font-semibold text-amber-600">
+                {uiCopy.ttsBrowserFallback}
+              </div>
             )}
           </div>
 

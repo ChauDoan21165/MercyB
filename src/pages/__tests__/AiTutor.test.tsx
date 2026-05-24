@@ -18,11 +18,16 @@ const POPULATED_SUMMARY: MemorySummary = {
   lastPracticedTopic: "articles", lastPracticedAt: Date.now(), suggestedNextFocus: "past-tense",
 };
 
-const { putCorrection, getMemorySummary, markPracticed } = vi.hoisted(() => ({
-  putCorrection: vi.fn(async () => {}),
-  getMemorySummary: vi.fn(async () => ({ ...EMPTY_SUMMARY })),
-  markPracticed: vi.fn(async () => {}),
-}));
+const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.hoisted(() => {
+  type CloudTtsArgs = { text: string; language: "en" | "vi"; voiceIdOverride?: string };
+  type CloudTtsResult = { audioUrl: string; cached: boolean };
+  return {
+    putCorrection: vi.fn(async () => {}),
+    getMemorySummary: vi.fn(async () => ({ ...EMPTY_SUMMARY })),
+    markPracticed: vi.fn(async () => {}),
+    fetchCloudTtsUrl: vi.fn(async (_args: CloudTtsArgs): Promise<CloudTtsResult | null> => null),
+  };
+});
 
 class MockSpeechSynthesisUtterance {
   text: string;
@@ -84,12 +89,35 @@ class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike
   }
 }
 
+class MockAudioElement {
+  static last: MockAudioElement | null = null;
+  src: string;
+  onplay: (() => void) | null = null;
+  onended: (() => void) | null = null;
+  onerror: (() => void) | null = null;
+  pause = vi.fn();
+
+  constructor(src: string) {
+    this.src = src;
+    MockAudioElement.last = this;
+  }
+
+  async play() {
+    this.onplay?.();
+    this.onended?.();
+  }
+}
+
 vi.mock("@/providers/AuthProvider", () => ({
   useAuth: vi.fn(() => ({ user: null, isLoading: false })),
 }));
 
 vi.mock("@/lib/ai-tutor/learningMemory", () => ({
   putCorrection, getMemorySummary, markPracticed,
+}));
+
+vi.mock("@/lib/mercyVoice", () => ({
+  fetchCloudTtsUrl,
 }));
 
 beforeEach(() => {
@@ -100,6 +128,8 @@ beforeEach(() => {
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
+  fetchCloudTtsUrl.mockResolvedValue(null);
+  MockAudioElement.last = null;
 });
 
 describe("AiTutor mock UI", () => {
@@ -319,7 +349,7 @@ describe("AiTutor mock UI", () => {
     const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
     await userEvent.click(speakerButtons[0]);
 
-    expect(speak).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
     const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
     expect(utterance.text).toContain("你早上通常做什么？");
     expect(utterance.lang).toBe("zh-CN");
@@ -499,10 +529,85 @@ describe("AiTutor mock UI", () => {
     expect(speakerButtons).toHaveLength(1);
     await userEvent.click(speakerButtons[0]);
 
-    expect(speak).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
     const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
     expect(utterance.text).toMatch(/Toute lecture nouvelle/);
     expect(utterance.lang).toBe("fr-FR");
+  });
+
+  it("uses Mercy cloud voice for corrected text before browser fallback", async () => {
+    const browserSpeak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.com/mercy.mp3", cached: false });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockAudioElement,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak: browserSpeak,
+      },
+    });
+
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "Toute lecture neuve d'un texte canonique paraît hérétique");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+    await waitFor(() => expect(screen.getByText(/Toute lecture nouvelle/)).toBeInTheDocument());
+
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+
+    await waitFor(() => {
+      expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+        text: expect.stringMatching(/Toute lecture nouvelle/),
+        language: "en",
+      });
+    });
+    expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
+    expect(browserSpeak).not.toHaveBeenCalled();
+  });
+
+  it("uses Mercy cloud voice for Conversation replies without reading raw user input", async () => {
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.com/conversation.mp3", cached: false });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockAudioElement,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak: vi.fn(),
+      },
+    });
+
+    window.history.pushState({}, "", "/ai-tutor?target=fr");
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: /Conversation with Mercy/ }));
+    await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
+    await userEvent.click(screen.getByRole("button", { name: /^Send$/ }));
+    await waitFor(() => expect(screen.getByText("Je suis allé au marché.")).toBeInTheDocument());
+
+    const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
+    await userEvent.click(speakerButtons[speakerButtons.length - 1]);
+
+    await waitFor(() => {
+      expect(fetchCloudTtsUrl).toHaveBeenLastCalledWith({
+        text: expect.stringContaining("Je suis allé au marché."),
+        language: "en",
+      });
+    });
+    const calls = fetchCloudTtsUrl.mock.calls as Array<[
+      { text: string; language: "en" | "vi"; voiceIdOverride?: string },
+    ]>;
+    const spokenText = calls[calls.length - 1]?.[0]?.text;
+    expect(spokenText).toContain("Qu'est-ce que tu fais après ça ?");
+    expect(spokenText).not.toContain("Je suis aller au marché");
   });
 
   it("marks the result layout expanded", async () => {
