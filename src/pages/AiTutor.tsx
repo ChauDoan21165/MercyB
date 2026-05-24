@@ -266,7 +266,7 @@ const UI_COPY: Record<ExplainLanguage, UiCopy> = {
 
 const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
   en: {
-    corrected: "She goes to school every day.",
+    corrected: "She goes to school every morning.",
     explanation: {
       vi: "Với chủ ngữ ngôi thứ ba số ít như she/he/it, động từ ở hiện tại đơn cần thêm -s hoặc -es.",
       en: "Third-person singular subjects such as she/he/it need -s or -es in the present simple.",

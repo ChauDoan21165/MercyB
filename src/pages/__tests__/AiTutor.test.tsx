@@ -148,7 +148,7 @@ describe("AiTutor mock UI", () => {
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => {
-      expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
+      expect(screen.getByText("She goes to school every morning.")).toBeInTheDocument();
     });
   });
 
@@ -161,6 +161,7 @@ describe("AiTutor mock UI", () => {
       expect(screen.getByText(/Toute lecture nouvelle d'un texte canonique/)).toBeInTheDocument();
     });
     expect(screen.queryByText("She goes to school every day.")).not.toBeInTheDocument();
+    expect(screen.queryByText("She goes to school every morning.")).not.toBeInTheDocument();
     expect(screen.getByText("Câu đã sửa")).toBeInTheDocument();
     expect(screen.getByText("Giải thích")).toBeInTheDocument();
     expect(screen.getByText(/Câu vẫn giữ ý gốc bằng tiếng Pháp/)).toBeInTheDocument();
