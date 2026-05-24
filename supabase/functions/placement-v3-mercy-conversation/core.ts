@@ -1,10 +1,10 @@
-import { appendMercyTurn, appendUserTurn, createConversationState, hydrateConversationState } from "./conversationState";
-import { gradeConversation } from "./conversationGrader";
-import { generateMercyTurn } from "./turnGenerator";
-import { extractSignalsFromTurn, summarizeSignals } from "./signalExtractor";
-import type { Deps, GradeResponse, StartResponse, TurnResponse } from "./types";
+import { appendMercyTurn, appendUserTurn, createConversationState, hydrateConversationState } from "./conversationState.ts";
+import { gradeConversation } from "./conversationGrader.ts";
+import { generateMercyTurn } from "./turnGenerator.ts";
+import { extractSignalsFromTurn, summarizeSignals } from "./signalExtractor.ts";
+import type { Deps, GradeResponse, StartResponse, TurnResponse } from "./types.ts";
 
-export type { Deps } from "./types";
+export type { Deps } from "./types.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",

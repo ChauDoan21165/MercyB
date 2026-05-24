@@ -1,4 +1,4 @@
-import type { ReadingPlacementPrompt } from "./index";
+import type { ReadingPlacementPrompt } from "./index.ts";
 
 export const READING_PLACEMENT_PROMPTS = [
   {

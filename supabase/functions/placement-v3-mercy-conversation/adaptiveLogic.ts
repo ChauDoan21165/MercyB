@@ -1,4 +1,4 @@
-import { CEFR_ORDER, type AdaptiveContext, type AdaptiveDecisionResult, type CefrLevel, type Subskill } from "./types";
+import { CEFR_ORDER, type AdaptiveContext, type AdaptiveDecisionResult, type CefrLevel, type Subskill } from "./types.ts";
 
 const SUBSKILLS: Subskill[] = ["grammar", "vocab", "fluency", "comprehension"];
 

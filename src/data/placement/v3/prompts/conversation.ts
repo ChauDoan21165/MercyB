@@ -1,4 +1,4 @@
-import type { PlacementPrompt } from "./index";
+import type { PlacementPrompt } from "./index.ts";
 
 export const CONVERSATION_PLACEMENT_PROMPTS = [
   {

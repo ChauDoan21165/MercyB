@@ -3,7 +3,7 @@ import type {
   ConversationState,
   TranscriptTurn,
   TurnSignal,
-} from "./types";
+} from "./types.ts";
 
 const DEFAULT_TARGET_TURN_PAIRS = 8;
 

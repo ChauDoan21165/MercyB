@@ -1,5 +1,5 @@
-import type { CEFRAssessment, CefrLevel, L1InterferenceFlag, Subskill, TranscriptTurn, TurnSignal } from "./types";
-import { cefrToNumeric, numericToCefr, summarizeSignals, transcriptUserSignals } from "./signalExtractor";
+import type { CEFRAssessment, CefrLevel, L1InterferenceFlag, Subskill, TranscriptTurn, TurnSignal } from "./types.ts";
+import { cefrToNumeric, numericToCefr, summarizeSignals, transcriptUserSignals } from "./signalExtractor.ts";
 
 const SUBSKILLS: Subskill[] = ["grammar", "vocab", "fluency", "comprehension"];
 

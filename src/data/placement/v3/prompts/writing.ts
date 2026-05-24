@@ -1,4 +1,4 @@
-import type { PlacementPrompt } from "./index";
+import type { PlacementPrompt } from "./index.ts";
 
 export const WRITING_PLACEMENT_PROMPTS = [
   {
