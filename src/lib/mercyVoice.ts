@@ -29,18 +29,35 @@ export interface CloudTtsUrl {
   cached: boolean;
 }
 
+export interface CloudTtsBlocker {
+  code?: string;
+  error?: string;
+  google?: {
+    flagEnabled: boolean;
+    keyConfigured: boolean;
+  };
+  elevenlabs?: {
+    flagEnabled: boolean;
+    keyConfigured: boolean;
+    voiceConfigured: boolean;
+  };
+}
+
+let lastCloudTtsBlocker: CloudTtsBlocker | null = null;
+
+export function getLastCloudTtsBlocker(): CloudTtsBlocker | null {
+  return lastCloudTtsBlocker ? { ...lastCloudTtsBlocker } : null;
+}
+
 export async function fetchCloudTtsUrl(
   args: FetchCloudTtsArgs,
 ): Promise<CloudTtsUrl | null> {
   const text = String(args?.text ?? "").trim();
   if (!text) return null;
 
-  const language: MercyLanguage = args.language === "en" ? "en" : "vi";
+  lastCloudTtsBlocker = null;
+  const language: MercyLanguage = args.language;
   const voice_id = args.voiceIdOverride || voiceIdFor(language);
-
-  if (!args.voiceIdOverride && !isVoiceConfigured(language)) {
-    return null;
-  }
 
   try {
     const { data, error } = await supabase.functions.invoke<{
@@ -48,9 +65,21 @@ export async function fetchCloudTtsUrl(
       cached?: boolean;
       code?: string;
       error?: string;
+      providerStatus?: CloudTtsBlocker;
     }>("mercy-tts", {
-      body: { text, voice_id, language },
+      body: {
+        text,
+        language,
+        voice_id: (args.voiceIdOverride || isVoiceConfigured(language)) ? voice_id : undefined,
+      },
     });
+    if (data?.providerStatus) {
+      lastCloudTtsBlocker = {
+        code: data.code,
+        error: data.error,
+        ...data.providerStatus,
+      };
+    }
     if (error || !data?.audioUrl) return null;
     return { audioUrl: data.audioUrl, cached: !!data.cached };
   } catch (err) {

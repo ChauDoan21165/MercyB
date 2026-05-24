@@ -53,6 +53,12 @@ class HoldingAudio extends EndingAudio {
   }
 }
 
+class FailingAudio extends EndingAudio {
+  async play() {
+    this.onerror?.();
+  }
+}
+
 function installSpeechSynthesis() {
   const speak = vi.fn((utterance: FakeUtterance) => {
     utterance.onstart?.();
@@ -121,6 +127,41 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(result.fallback).toBe(true);
   });
 
+  it("does not report cloud Mercy voice when cloud audio playback fails", async () => {
+    const synth = installSpeechSynthesis();
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/broken.mp3", cached: false });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: FailingAudio,
+    });
+
+    const result = await speakTutorText("Use fallback after failed audio.", {
+      targetLanguage: "en",
+      preferCloudVoice: true,
+      fallbackToBrowserTts: true,
+    });
+
+    expect(fetchCloudTtsUrl).toHaveBeenCalled();
+    expect(synth.speak).toHaveBeenCalledTimes(1);
+    expect(result.cloud).toBe(false);
+    expect(result.fallback).toBe(true);
+    expect(getVoiceStatus().usingBrowserFallback).toBe(true);
+  });
+
+  it("sanitizes whitespace before using the browser fallback", async () => {
+    const synth = installSpeechSynthesis();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+
+    await speakTutorText("  Use   device\nvoice.  ", {
+      targetLanguage: "en",
+      preferCloudVoice: true,
+      fallbackToBrowserTts: true,
+    });
+
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    expect(utterance.text).toBe("Use device voice.");
+  });
+
   it("stop cancels playback", async () => {
     const synth = installSpeechSynthesis();
     fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/hold.mp3", cached: false });
@@ -184,7 +225,7 @@ describe("Teacher Mercy voiceEngine", () => {
 
     expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "Bonjour.",
-      language: "en",
+      language: "fr",
     });
     expect(result.cloud).toBe(true);
     expect(result.locale).toBe("fr-FR");

@@ -631,7 +631,7 @@ describe("AiTutor mock UI", () => {
 
     await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: expect.stringMatching(/Toute lecture nouvelle/),
-      language: "en",
+      language: "fr",
     }));
     expect(browserSpeak).not.toHaveBeenCalled();
     expect(MockAudioElement.last?.src).toBe("https://example.com/mercy.mp3");
@@ -697,7 +697,7 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
     expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: expect.stringContaining("Qu'est-ce que tu fais après ça ?"),
-      language: "en",
+      language: "fr",
     });
     expect(await screen.findByText("Device voice fallback")).toBeInTheDocument();
     const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
