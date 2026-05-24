@@ -11,6 +11,8 @@ import {
   getMemorySummary,
 } from "@/lib/ai-tutor/learningMemory";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
+import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 
 type CorrectionResult = {
   corrected: string;
@@ -127,16 +129,16 @@ function getTutorTargetFromSearch(search: string): TutorTarget {
   return "en";
 }
 
-function hasSpeechRecognitionSupport() {
-  if (typeof window === "undefined") return false;
-  return Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
-}
-
 export default function AiTutorPage() {
   const shellRef = useRef<HTMLElement | null>(null);
 
   // ── Display name / greeting ─────────────────────────────────────
   const { user } = useAuth();
+
+  // ── Browser speech-to-text + text-to-speech ──────────────────────
+  const stt = useBrowserStt("en-US");
+  const tts = useTtsSpeaker();
+
   const nickname: string | undefined =
     (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
   const greetingName = (nickname ?? "").trim() || undefined;
@@ -160,9 +162,18 @@ export default function AiTutorPage() {
   const [target, setTarget] = useState<TutorTarget>(() =>
     typeof window === "undefined" ? "en" : getTutorTargetFromSearch(window.location.search),
   );
-  const [speechSupported, setSpeechSupported] = useState(hasSpeechRecognitionSupport);
+  // speechSupported is now derived from stt.supported (line ~143)
 
   const targetCopy = TARGET_COPY[target];
+
+  // Sync STT transcript → input when listening stops
+  const sttInputRef = useRef<string>("");
+  useEffect(() => {
+    if (!stt.listening && stt.transcript && stt.transcript !== sttInputRef.current) {
+      sttInputRef.current = stt.transcript;
+      setInput((prev) => prev ? `${prev} ${stt.transcript}`.trim().slice(0, 500) : stt.transcript.slice(0, 500));
+    }
+  }, [stt.listening, stt.transcript]);
 
   const loadMemory = async () => {
     try {
@@ -182,9 +193,10 @@ export default function AiTutorPage() {
     return () => window.removeEventListener("popstate", syncTarget);
   }, []);
 
-  useEffect(() => {
-    setSpeechSupported(hasSpeechRecognitionSupport());
-  }, []);
+  // speechSupported now comes from stt.supported (useBrowserStt hook)
+  // useEffect(() => {
+  //   setSpeechSupported(hasSpeechRecognitionSupport());
+  // }, []);
 
   useEffect(() => {
     const shell = shellRef.current;
@@ -492,15 +504,20 @@ export default function AiTutorPage() {
             />
 
             <div className="ai-tutor-actions mt-3">
-              {speechSupported ? (
+              {stt.supported ? (
                 <button
                   type="button"
-                  className="min-h-[44px] w-full rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-black text-indigo-700 transition hover:bg-indigo-100"
-                  aria-label={targetCopy.voiceLabel}
+                  onClick={() => (stt.listening ? stt.stop() : stt.start())}
+                  className={`min-h-[44px] w-full rounded-full border px-4 py-2.5 text-sm font-black transition ${
+                    stt.listening
+                      ? "border-red-300 bg-red-50 text-red-700"
+                      : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                  }`}
+                  aria-label={stt.listening ? "Tap to stop · Chạm để dừng" : targetCopy.voiceLabel}
                 >
                   <span className="inline-flex items-center justify-center gap-2">
                     <Mic className="h-4 w-4" aria-hidden />
-                    {targetCopy.voiceLabel}
+                    {stt.listening ? "Đang nghe… · Listening…" : targetCopy.voiceLabel}
                   </span>
                 </button>
               ) : (
@@ -589,6 +606,26 @@ export default function AiTutorPage() {
               <div className="text-xl font-black leading-snug text-emerald-900">
                 {result.corrected}
               </div>
+              {/* TTS speaker button */}
+              {!tts.supported && (
+                <div className="mt-2 text-[11px] text-slate-400">
+                  🔊 Speech playback is not supported in this browser.
+                </div>
+              )}
+              {tts.supported && (
+                <button
+                  type="button"
+                  onClick={() => (tts.speaking ? tts.stop() : tts.speak(result.corrected, target === "fr" ? "fr-FR" : target === "zh" ? "zh-CN" : "en-US"))}
+                  className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
+                    tts.speaking
+                      ? "border-red-300 bg-red-50 text-red-700"
+                      : "border-emerald-300 bg-white text-emerald-700 hover:bg-emerald-50"
+                  }`}
+                  aria-label={tts.speaking ? "Stop · Dừng" : "Mercy đọc câu này · Mercy reads this"}
+                >
+                  {tts.speaking ? "⏹ Dừng · Stop" : "🔊 Mercy đọc · Listen"}
+                </button>
+              )}
             </div>
 
             {/* Explanation */}
