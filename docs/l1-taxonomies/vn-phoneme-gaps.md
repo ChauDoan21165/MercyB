@@ -3,9 +3,9 @@
 **Date:** 2026-05-24
 **Author:** C3 (read-only audit agent)
 **Subject:** `src/lib/pronunciation/vn-phoneme-map.ts` (628 lines, curated)
-**Companion artifact:** `src/lib/pronunciation/vn-phoneme-map.extension.proposed.ts` (PROPOSAL, not imported)
+**Companion artifact:** removed after the high-value variants were reconciled into `src/lib/pronunciation/vn-phoneme-map.ts`.
 
-This report identifies systematic Vietnamese-speaker English-pronunciation transfer patterns that the existing map does **not** cover. Every proposed entry is delta-checked against the live map — no duplicates. Each substitute is encoded in the exact shape of the existing `PhonemeSubRule` / `WORD_OVERRIDES` types, so the proposal could be merged with copy-paste plus review. Confidence-marked TODOs flag items I couldn't fully verify against a reference corpus.
+This report identifies systematic Vietnamese-speaker English-pronunciation transfer patterns that the existing map did **not** cover at audit time. High-value variants from this audit were later reconciled into the live map. Confidence-marked TODOs flag items I couldn't fully verify against a reference corpus.
 
 ---
 
