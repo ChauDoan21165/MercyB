@@ -30,8 +30,8 @@
 
 | Capability                              | Vietnamese | Japanese  | Korean    | Chinese   |
 |-----------------------------------------|------------|-----------|-----------|-----------|
-| L1 Profile                              | ❌         | ❌        | ❌        | ❌        |
-| Grammar taxonomy                        | ❌         | ❌        | ❌        | ❌        |
+| L1 Profile                              | ✅ `en.ts` | ❌        | ❌        | ❌        |
+| Grammar taxonomy                        | ✅ inline in `en.ts` (10 families) | ❌        | ❌        | ❌        |
 | Writing taxonomy                        | ❌         | ❌        | ❌        | ❌        |
 | Detector rules                          | ❌         | ❌        | ❌        | ❌        |
 | AI Tutor L1 prompt wire                 | ❌         | ❌        | ❌        | ❌        |
