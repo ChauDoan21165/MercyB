@@ -163,7 +163,8 @@ export type L1WeaknessTag =
   | 'vi_l1_if_will'                   // L1-060 B1
   // Round 6 — Bar #1 DoD flips
   | 'vi_l1_no_aux_negation'           // L1-061 A2
-  | 'vi_l1_co_transfer';              // L1-063 A2 — two sub-patterns
+  | 'vi_l1_co_transfer'               // L1-063 A2 — two sub-patterns
+  | 'vi_l1_topic_comment_fronting';   // L1-064 B1
 
 export type L1FeedbackText = {
   en: string;
@@ -2448,7 +2449,7 @@ export const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
   };
 };
 
-// ── Round 6 — Bar #1 DoD flip ──────────────────────────────────────────────
+// ── Round 6 — Bar #1 DoD flips ─────────────────────────────────────────────
 
 /** Subjects that trigger bare-no negation detection. */
 const NO_AUX_NEG_SUBJECTS = new Set([
@@ -2593,6 +2594,84 @@ function detectHasAdjective(args: RuleArgs): RuleHit | null {
  */
 export const ruleCoTransfer: Rule = (args) => {
   return detectLocativeHas(args) ?? detectHasAdjective(args);
+};
+
+/** Single-token adverbials English itself can front with a comma — these
+ *  are NOT topic-fronting (they're legitimate EN sentence adverbs). */
+const TCF_FRONTED_ADVERBIALS = new Set([
+  'yesterday', 'today', 'tomorrow', 'tonight',
+  'now', 'then', 'soon', 'later',
+  'first', 'second', 'third', 'next', 'finally',
+  'sometimes', 'often', 'usually', 'always', 'never',
+  'fortunately', 'unfortunately', 'actually', 'obviously',
+  'however', 'therefore', 'meanwhile', 'instead',
+]);
+
+/** Subordinators that introduce real subordinate clauses — the comma
+ *  after them is a clause boundary, not topic-fronting. */
+const TCF_SUBORDINATORS = new Set([
+  'if', 'when', 'whenever', 'because', 'although', 'though',
+  'while', 'since', 'unless', 'after', 'before', 'until',
+  'as', 'so',
+]);
+
+function isTopicalizable(np: string): boolean {
+  const lower = np.trim().toLowerCase();
+  if (TCF_FRONTED_ADVERBIALS.has(lower)) return false;
+  const firstWord = lower.split(/\s+/)[0];
+  if (TCF_SUBORDINATORS.has(firstWord)) return false;
+  return true;
+}
+
+/**
+ * 63. vi_l1_topic_comment_fronting — Vietnamese is topic-prominent:
+ * learners front a topic NP with a comma and resume it later with a
+ * pronoun ("My family, they live in Hue" / "This job, I don't like
+ * it"). English prefers plain SVO; rewrites drop the comma and the
+ * resumptive pronoun.
+ *
+ * Two sub-shapes covered:
+ *   (a) Subject doubling — "<NP>, <subj-pronoun> <verb> …" →
+ *       "<NP> <verb-agreed> …"  (vi-gram-110, vi-gram-112)
+ *   (b) Object fronting — "<NP>, <subj> <verb> … <obj-pronoun>" →
+ *       "<subj> <verb> … <NP>"  (vi-gram-111)
+ *
+ * Guards: skip when the fronted span is a legitimate EN sentence
+ * adverbial (yesterday / however / finally) or a subordinate-clause
+ * boundary (if / when / because …).
+ */
+export const ruleTopicCommentFronting: Rule = ({ userText, expectedText, rawExpected }) => {
+  const u = userText.toLowerCase().trim();
+  const e = expectedText.toLowerCase().trim();
+
+  // Comma must sit in the first half of the sentence (topic-fronting is
+  // sentence-initial, not mid-sentence).
+  const commaIdx = u.indexOf(',');
+  if (commaIdx < 2 || commaIdx > u.length / 2) return null;
+
+  // Sub-shape (a): resumptive subject pronoun right after the comma.
+  const subjRe = /^([^,]{2,}),\s+(i|you|he|she|it|we|they)\s+\w+/;
+  const subjMatch = subjRe.exec(u);
+  if (subjMatch && isTopicalizable(subjMatch[1])) {
+    const np = subjMatch[1].trim();
+    if (e.startsWith(np + ' ') && !e.startsWith(np + ',')) {
+      return { tag: 'vi_l1_topic_comment_fronting', replacements: { FIX: rawExpected } };
+    }
+  }
+
+  // Sub-shape (b): fronted topic, resumed later as an object pronoun.
+  const objRe = /^([^,]{2,}),\s+(i|you|he|she|it|we|they)\b/;
+  const objMatch = objRe.exec(u);
+  if (objMatch && isTopicalizable(objMatch[1])) {
+    const np = objMatch[1].trim();
+    const after = u.slice(commaIdx + 1);
+    const hasObjResume = /\b(it|them|him|her)\b/.test(after);
+    if (hasObjResume && !e.startsWith(np + ' ') && !e.startsWith(np + ',')) {
+      return { tag: 'vi_l1_topic_comment_fronting', replacements: { FIX: rawExpected } };
+    }
+  }
+
+  return null;
 };
 
 // ────────────────────────────────────────────────────────────────────────────

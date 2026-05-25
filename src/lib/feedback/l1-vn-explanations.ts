@@ -563,6 +563,14 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "In my house has three bedrooms → 'Trong nhà tôi + có + ba phòng ngủ' (dịch 'có' thẳng thành 'has'; tiếng Anh phải mở đầu bằng 'There are')",
     needs_review: false,
   },
+  vi_l1_topic_comment_fronting: {
+    name_vi: "Đảo chủ đề lên trước câu (topic-comment)",
+    explanation_vi:
+      "Tiếng Việt hay nói 'Gia đình tôi, họ sống ở Huế' hoặc 'Việc này, tôi không thích nó' — đặt chủ đề lên đầu, ngắt phẩy, rồi nhắc lại bằng đại từ. Tiếng Anh viết thẳng theo **chủ ngữ + động từ + tân ngữ**, bỏ phẩy và đại từ nhắc lại: *My family lives in Hue*.",
+    example_wrong_vi_gloss:
+      "My family, they live in Hue → 'Gia đình tôi, họ sống ở Huế' (mình giữ nguyên cấu trúc tiếng Việt; tiếng Anh đổi thành 'My family lives in Hue')",
+    needs_review: false,
+  },
 };
 
 /**
