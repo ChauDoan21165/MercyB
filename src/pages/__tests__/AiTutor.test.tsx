@@ -399,17 +399,43 @@ describe("AiTutor mock UI", () => {
 
     await userEvent.type(
       screen.getByRole("textbox"),
-      "Vì sao nói I’m interested in English mà không nói I’m interesting in English?",
+      "I am interesting in English.",
     );
     await userEvent.click(screen.getByRole("button", { name: "Giải thích logic" }));
 
     await waitFor(() => {
-      expect(screen.getByText(/“interested” mô tả cảm giác của người nhận tác động/)).toBeInTheDocument();
-      expect(screen.getByText(/Cách nghĩ tiếng Việt/)).toBeInTheDocument();
+      expect(screen.getByTestId("ai-tutor-logic-diagnosis")).toBeInTheDocument();
+      expect(screen.getByText("Natural correction")).toBeInTheDocument();
+      expect(screen.getByText("I am interested in English.")).toBeInTheDocument();
+      expect(screen.getByText("Vietnamese-thinking cause")).toBeInTheDocument();
+      expect(screen.getByText("Vietnamese often uses one feeling idea without changing the adjective form.")).toBeInTheDocument();
+      expect(screen.getByText("English logic")).toBeInTheDocument();
+      expect(screen.getByText("Interested describes your feeling; interesting describes the thing.")).toBeInTheDocument();
+      expect(screen.getByText("Remember rule")).toBeInTheDocument();
+      expect(screen.getByText("Use interested for the person who feels it; use interesting for the thing.")).toBeInTheDocument();
+      expect(screen.getByText("Write one sentence with I am interested in + a topic.")).toBeInTheDocument();
     });
     expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence|Stop Mercy voice|Dừng đọc/ })).not.toBeInTheDocument();
     expect(screen.queryByText("Device voice fallback")).not.toBeInTheDocument();
     expect(speak).not.toHaveBeenCalled();
+  });
+
+  it("shows a safe Logic fallback when no Vietlish pattern matches", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Logic" }));
+
+    await userEvent.type(screen.getByRole("textbox"), "This sentence is not in the beginner list.");
+    await userEvent.click(screen.getByRole("button", { name: "Giải thích logic" }));
+
+    await waitFor(() => {
+      expect(screen.getByText(
+        "Mercy can still explain the English logic. Try a common sentence like: I go school.",
+      )).toBeInTheDocument();
+      expect(screen.getByText("Try rewriting the sentence with one clear subject, verb, and time marker.")).toBeInTheDocument();
+      expect(screen.getByText("English usually needs the relationship to be visible in the sentence.")).toBeInTheDocument();
+    });
+    expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence|Stop Mercy voice|Dừng đọc/ })).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-conversation-mic-fallback")).not.toBeInTheDocument();
   });
 
   it("sends a typed Conversation reply and shows correction plus one next question", async () => {

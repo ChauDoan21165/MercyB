@@ -4,6 +4,7 @@
 import { Send, Square, Volume2 } from "lucide-react";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
+import type { VietlishLogicDiagnosisResult } from "@/lib/tutor/vietlishLogicEngine";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 
 export type UserConversationMessage = {
@@ -14,6 +15,7 @@ export type UserConversationMessage = {
 
 export type MercyConversationMessage = TutorTurn & {
   role: "mercy";
+  logicDiagnosis?: VietlishLogicDiagnosisResult;
 };
 
 export type ConversationMessage = UserConversationMessage | MercyConversationMessage;
@@ -135,6 +137,35 @@ export default function ConversationMode({
 
                 {isMercy ? (
                   <div className="space-y-3">
+                    {isLogicMode && message.logicDiagnosis ? (
+                      <div className="space-y-3" data-testid="ai-tutor-logic-diagnosis">
+                        {!message.logicDiagnosis.isKnownPattern && message.logicDiagnosis.fallbackMessage && (
+                          <div className="rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-bold leading-6 text-amber-900">
+                            {message.logicDiagnosis.fallbackMessage}
+                          </div>
+                        )}
+                        <div>
+                          <div className="text-[11px] font-black uppercase text-emerald-600">Natural correction</div>
+                          <p className="mt-1 text-sm font-black leading-6 text-emerald-800">{message.logicDiagnosis.correctedExample}</p>
+                        </div>
+                        <div>
+                          <div className="text-[11px] font-black uppercase text-amber-600">Vietnamese-thinking cause</div>
+                          <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{message.logicDiagnosis.vietnameseThinking}</p>
+                        </div>
+                        <div>
+                          <div className="text-[11px] font-black uppercase text-sky-600">English logic</div>
+                          <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{message.logicDiagnosis.englishLogic}</p>
+                        </div>
+                        <div>
+                          <div className="text-[11px] font-black uppercase text-indigo-500">Remember rule</div>
+                          <p className="mt-1 text-sm font-semibold leading-6 text-slate-800">{message.logicDiagnosis.rememberRule}</p>
+                        </div>
+                        <p className="rounded-[12px] bg-indigo-50 px-3 py-2 text-sm font-black leading-6 text-indigo-800">
+                          {message.logicDiagnosis.retryPrompt}
+                        </p>
+                      </div>
+                    ) : (
+                      <>
                     {message.correctedText && (
                       <div>
                         <div className="text-[11px] font-black uppercase text-emerald-600">{tutorCopy.speakerLabels.correctedVersion}</div>
@@ -157,6 +188,8 @@ export default function ConversationMode({
                       <p className="rounded-[12px] bg-indigo-50 px-3 py-2 text-sm font-black leading-6 text-indigo-800">
                         {message.nextQuestion}
                       </p>
+                    )}
+                      </>
                     )}
                     {allowTts && ttsSupported ? (
                       <button
