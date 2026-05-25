@@ -9,6 +9,12 @@ function makeStaleChunkError(): Error {
   );
 }
 
+async function flushRecoveryNavigation(): Promise<void> {
+  await Promise.resolve();
+  await Promise.resolve();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+}
+
 describe("createRetryLoader", () => {
   // Recovery is now a cache-busting navigation (location.replace with a
   // fresh _cb param), NOT a plain location.reload() — embedded webviews
@@ -139,8 +145,7 @@ describe("createRetryLoader", () => {
       throw makeStaleChunkError();
     });
     void stale();
-    await Promise.resolve();
-    await Promise.resolve();
+    await flushRecoveryNavigation();
 
     // Recovery is re-armed: it cache-bust navigates again instead of
     // crashing into the ErrorBoundary, and re-sets the one-shot.
@@ -179,9 +184,7 @@ describe("createRetryLoader", () => {
       // recognised chunk error. Yield so both the retry and recovery
       // branches run.
       void loader();
-      await Promise.resolve();
-      await Promise.resolve();
-      await Promise.resolve();
+      await flushRecoveryNavigation();
 
       expect(replaceSpy, `variant: ${message}`).toHaveBeenCalledTimes(1);
     }
