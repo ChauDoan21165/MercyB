@@ -105,21 +105,44 @@ export interface DetectorHintContent {
 }
 
 /**
- * Pretty English labels for the high-severity tags. The dispatch
+ * Pretty English labels for the chip-eligible tags. The dispatch
  * specified the chip label as "short English ... family-id converted
  * to readable form (e.g. 'third_person_s' → 'Third-person -s')".
  * Mechanical conversion would produce awkward results like "3rd
- * Person S"; this small table is hand-shaped for the 6 patterns that
- * actually chip. Tags outside this table fall back to a tag-derived
- * label (never user-visible since they're filtered out anyway).
+ * Person S"; this table is hand-shaped for every tag in
+ * HIGH_SEVERITY_DETECTOR_TAGS. Tags outside this table fall back to
+ * a tag-derived label (never user-visible since they're filtered out
+ * by the chip-eligibility gate anyway).
+ *
+ * Style: short noun phrase, lowercase verb forms ("vs"), curly quotes
+ * avoided. Each label fits the chip badge (~32 char budget). The
+ * Vietnamese rationale below the badge does the teaching — the label
+ * is a thumbnail, not a lesson.
  */
-const TAG_TO_NAME_EN: Partial<Record<L1WeaknessTag, string>> = {
+export const TAG_TO_NAME_EN: Readonly<Partial<Record<L1WeaknessTag, string>>> = {
+  // v1 — high-severity (original 6).
   vi_l1_3rd_person_s: "Third-person -s",
   vi_l1_past_ed: "Past tense -ed",
   vi_l1_plural_s: "Plural -s",
   vi_l1_missing_be: "Missing 'to be'",
   vi_l1_question_no_aux: "Question without do/does/did",
   vi_l1_double_negative: "Double negative",
+  // v2 — medium-severity expansion (C5 recon).
+  //   Article family
+  vi_l1_missing_article: "Missing a / an / the",
+  vi_l1_a_vs_an_vowel: "a vs an",
+  vi_l1_geographical_article: "Place-name article",
+  vi_l1_no_article_generic: "Generic noun: no article",
+  vi_l1_superlative_the: "Superlative: the",
+  vi_l1_generic_plural: "Generic plural: no article",
+  //   Preposition family
+  vi_l1_preposition_transfer: "Wrong preposition",
+  vi_l1_time_expressions: "Time preposition (in/on/at)",
+  vi_l1_by_vs_with: "by vs with",
+  //   Pronoun
+  vi_l1_possessive_gender: "his vs her",
+  //   Existential
+  vi_l1_there_are_singular: "'there are' with singular",
 };
 
 function tagFallbackLabel(tag: string): string {
