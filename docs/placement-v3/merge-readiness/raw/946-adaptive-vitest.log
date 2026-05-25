@@ -1,0 +1,12 @@
+
+ RUN  v3.2.4 /private/tmp/a1-pr946
+
+ ✓ tests/integration/placement-v3-adaptive-items.test.ts (12 tests) 3ms
+ ✓ tests/unit/placementAdaptiveItems.test.ts (18 tests) 3ms
+
+ Test Files  2 passed (2)
+      Tests  30 passed (30)
+   Start at  07:01:23
+   Duration  862ms (transform 58ms, setup 140ms, collect 34ms, tests 6ms, environment 905ms, prepare 110ms)
+
+exit=0

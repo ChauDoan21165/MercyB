@@ -1,0 +1,26 @@
+PR #935
+branch=origin/pr/935
+merge_base=a360783cafb35941efad68ad5fe548da30633293
+origin_main=de6d31c2825df2c70bf0669e251007e55129710b
+head=5ff6191ebd5b6c3d06a38005722632fde73fd66a
+--- git merge-tree output ---
+added in both
+  our    100644 fffeb75bd5c1b28e238dd67418ba041dd1368b1d src/types/placement-v3.ts
+  their  100644 15d1b98d51f5dc423acba8d54934aaf84a3f0bd4 src/types/placement-v3.ts
+@@ -92,6 +92,7 @@
+   metadata?: Record<string, unknown>;
+ }
+ 
++<<<<<<< .our
+ export type PlacementSkill =
+   | "overall"
+   | "grammar"
+@@ -128,6 +129,8 @@
+   l1InterferenceFlags?: L1InterferenceFlag[];
+ };
+ 
++=======
++>>>>>>> .their
+ export interface PlacementV3SessionRow {
+   /** Primary key for the placement session. */
+   id: string;

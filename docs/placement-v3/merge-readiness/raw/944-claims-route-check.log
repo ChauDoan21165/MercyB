@@ -1,0 +1,26 @@
+--- PR body claims grep ---
+docs/placement-v3/benchmarking/production-readiness-report.md:5:Status: benchmark infrastructure only; live benchmark blocked.
+docs/placement-v3/benchmarking/production-readiness-report.md:40:- 0/25 live sessions
+docs/placement-v3/benchmarking/production-readiness-report.md:42:- no p95/cost/failover metrics
+docs/placement-v3/benchmarking/production-readiness-report.md:56:Recommended launch concurrency limit: 0 public users until the missing writing grader/orchestrator path mismatch is resolved and at least 25 live benchmark sessions are recorded.
+docs/placement-v3/benchmarking/production-readiness-report.md:60:No production benchmark JSON, screenshots, live p95/cost/failover metrics, optimization wins, or production-readiness claims were generated in this environment.
+docs/placement-v3/benchmarking/methodology.md:3:Status: benchmark infrastructure only; live benchmark blocked.
+docs/placement-v3/benchmarking/methodology.md:36:Real production-readiness claims require live artifacts. Dry-run artifacts are not evidence of latency, cost, provider reliability, or grading consistency.
+docs/placement-v3/benchmarking/methodology.md:40:- 0/25 live sessions
+docs/placement-v3/benchmarking/methodology.md:42:- no p95/cost/failover metrics
+docs/placement-v3/benchmarking/pr-body-draft.md:7:Adds Placement V3 benchmark infrastructure only. Live benchmark execution is blocked in this environment, so this PR does not claim production benchmark results, production-readiness, latency improvements, cost estimates, or provider reliability.
+docs/placement-v3/benchmarking/pr-body-draft.md:39:- 0/25 live sessions
+docs/placement-v3/benchmarking/pr-body-draft.md:41:- no p95/cost/failover metrics
+docs/placement-v3/benchmarking/pr-body-draft.md:49:No live optimization iterations were completed. No before/after production metrics are claimed.
+docs/placement-v3/benchmarking/pr-body-draft.md:57:## Production Readiness Assessment
+docs/placement-v3/benchmarking/pr-body-draft.md:59:Not ready for rollout from this evidence set. This PR provides the measurement harness; it does not provide live benchmark results.
+docs/placement-v3/benchmarking/pr-body-draft.md:70:- No live benchmark JSON, screenshots, or production-readiness evidence were fabricated.
+--- route grep ---
+src/lib/featureFlags.ts:55:  PLACEMENT_TEST_ENABLED: false,
+src/router/AppRouter.tsx:276:const PlacementBenchmarkDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementBenchmarkDashboard"));
+src/router/AppRouter.tsx:768:          {/* Placement test — HIDDEN behind FEATURE_FLAGS.PLACEMENT_TEST_ENABLED
+src/router/AppRouter.tsx:779:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:790:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:801:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:812:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:1613:              <Route path="placement-benchmarks"  element={<LazyPage><PlacementBenchmarkDashboard /></LazyPage>} />

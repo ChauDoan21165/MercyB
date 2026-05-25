@@ -1,0 +1,14 @@
+PR #935 merge simulation
+Preparing worktree (detached HEAD 1f6833a03)
+Updating files:  56% (4120/7284)Updating files:  57% (4152/7284)Updating files:  58% (4225/7284)Updating files:  59% (4298/7284)Updating files:  60% (4371/7284)Updating files:  61% (4444/7284)Updating files:  62% (4517/7284)Updating files:  62% (4574/7284)Updating files:  63% (4589/7284)Updating files:  64% (4662/7284)Updating files:  65% (4735/7284)Updating files:  66% (4808/7284)Updating files:  67% (4881/7284)Updating files:  68% (4954/7284)Updating files:  69% (5026/7284)Updating files:  70% (5099/7284)Updating files:  71% (5172/7284)Updating files:  72% (5245/7284)Updating files:  73% (5318/7284)Updating files:  74% (5391/7284)Updating files:  75% (5463/7284)Updating files:  76% (5536/7284)Updating files:  77% (5609/7284)Updating files:  78% (5682/7284)Updating files:  79% (5755/7284)Updating files:  80% (5828/7284)Updating files:  81% (5901/7284)Updating files:  82% (5973/7284)Updating files:  83% (6046/7284)Updating files:  84% (6119/7284)Updating files:  85% (6192/7284)Updating files:  86% (6265/7284)Updating files:  87% (6338/7284)Updating files:  88% (6410/7284)Updating files:  89% (6483/7284)Updating files:  90% (6556/7284)Updating files:  91% (6629/7284)Updating files:  92% (6702/7284)Updating files:  93% (6775/7284)Updating files:  94% (6847/7284)Updating files:  95% (6920/7284)Updating files:  96% (6993/7284)Updating files:  97% (7066/7284)Updating files:  98% (7139/7284)Updating files:  99% (7212/7284)Updating files: 100% (7284/7284)Updating files: 100% (7284/7284), done.
+HEAD is now at 1f6833a03 feat(placement-v3): add Android mic permission audit (#941)
+Automatic merge went well; stopped before committing as requested
+merge_exit=0
+## HEAD (no branch)
+A  src/types/placement-v3.ts
+M  supabase/functions/delete-account/user-data-manifest.ts
+A  supabase/migrations/20260627000000_placement_v3_sessions.sql
+A  supabase/migrations/20260627000001_placement_v3_responses.sql
+A  supabase/migrations/20260627000002_placement_v3_profiles.sql
+A  supabase/migrations/20260627000003_placement_v3_rls.sql
+A  supabase/migrations/__tests__/placement_v3_schema.test.ts

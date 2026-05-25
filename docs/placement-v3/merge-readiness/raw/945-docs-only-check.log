@@ -1,0 +1,14 @@
+--- changed files #945 ---
+A	docs/placement-v3/shadow-replay/a37-blockers.md
+--- blocker claim grep ---
+10:No shadow sessions, replay diffs, drift reports, provider-routing changes, screenshots, or sanitization results are claimed in this branch.
+80:## What Was Not Completed
+82:- No shadow session capture middleware.
+83:- No replay engine.
+84:- No replay comparison library.
+87:- No replay report edge function.
+91:- No replay cycles executed.
+92:- No drift findings produced.
+93:- No production-readiness claim.
+111:## Honest Status
+113:A37 is blocked before implementation. Any claim of completed replay coverage, provider routing, scoring drift, sanitization audit success, or production readiness from this sandbox would be fabricated.

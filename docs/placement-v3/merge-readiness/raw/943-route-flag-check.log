@@ -1,0 +1,35 @@
+--- route/flag grep ---
+src/lib/featureFlags.ts:21:      key === "VITE_PLACEMENT_TEST_ENABLED"
+src/lib/featureFlags.ts:22:        ? import.meta.env.VITE_PLACEMENT_TEST_ENABLED
+src/lib/featureFlags.ts:23:        : key === "VITE_PLACEMENT_V3_UI_ENABLED"
+src/lib/featureFlags.ts:24:          ? import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED
+src/lib/featureFlags.ts:60:  PLACEMENT_TEST_ENABLED: readEnvBool("VITE_PLACEMENT_TEST_ENABLED", false),
+src/lib/featureFlags.ts:67:  PLACEMENT_V3_UI_ENABLED: readEnvBool("VITE_PLACEMENT_V3_UI_ENABLED", false),
+src/router/AppRouter.tsx:285:const PlacementDriftDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementDriftDashboard"));
+src/router/AppRouter.tsx:445:function PlacementV3Gate({ children }: { children: React.ReactNode }) {
+src/router/AppRouter.tsx:446:  if (!FEATURE_FLAGS.PLACEMENT_TEST_ENABLED || !FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED) {
+src/router/AppRouter.tsx:799:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED (default false; see
+src/router/AppRouter.tsx:813:              FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED ? (
+src/router/AppRouter.tsx:814:                <PlacementV3Gate>
+src/router/AppRouter.tsx:816:                </PlacementV3Gate>
+src/router/AppRouter.tsx:817:              ) : FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:828:              FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED ? (
+src/router/AppRouter.tsx:829:                <PlacementV3Gate>
+src/router/AppRouter.tsx:831:                </PlacementV3Gate>
+src/router/AppRouter.tsx:832:              ) : FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:841:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:850:              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+src/router/AppRouter.tsx:857:          <Route path="/placement/test/:sessionId"
+src/router/AppRouter.tsx:859:              <PlacementV3Gate>
+src/router/AppRouter.tsx:861:              </PlacementV3Gate>
+src/router/AppRouter.tsx:864:          <Route path="/placement/results/:sessionId"
+src/router/AppRouter.tsx:866:              <PlacementV3Gate>
+src/router/AppRouter.tsx:868:              </PlacementV3Gate>
+src/router/AppRouter.tsx:871:          <Route path="/placement/resume"
+src/router/AppRouter.tsx:873:              <PlacementV3Gate>
+src/router/AppRouter.tsx:875:              </PlacementV3Gate>
+src/router/AppRouter.tsx:878:          <Route path="/placement/skip"
+src/router/AppRouter.tsx:880:              <PlacementV3Gate>
+src/router/AppRouter.tsx:882:              </PlacementV3Gate>
+src/router/AppRouter.tsx:1677:              <Route path="placement-drift"      element={<LazyPage><PlacementDriftDashboard /></LazyPage>} />
+--- benchmark route absence in #943 ---

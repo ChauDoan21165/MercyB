@@ -1,0 +1,2516 @@
+PR #944
+branch=origin/pr/944
+merge_base=d30bad2a934641f1c0db8b1ed768165d9553330b
+origin_main=de6d31c2825df2c70bf0669e251007e55129710b
+head=c8ce5fdbd84a7c4d0470f13f8a17d5c23112e4bf
+--- git merge-tree output ---
+added in remote
+  their  100644 010c6e8ae7abbc90d2f65e79f66b1d0bc1987a62 docs/placement-v3/benchmarking/a33-initial-findings.md
+@@ -0,0 +1,38 @@
++# A33 Initial Findings
++
++Generated: 2026-05-20
++
++## Required Files Read
++
++- `STRATEGY.md` and `PRINCIPLES.md`: current product doctrine is Vietnamese-first, outcomes over engagement, small diffs, and evidence before patching.
++- `docs/placement-v3/README.md`: missing in this worktree.
++- `supabase/functions/placement-v3-session-orchestrator/index.ts`: missing under that name. Closest active implementation is `supabase/functions/placement-v3-session/index.ts`.
++- `supabase/functions/placement-v3-session/index.ts` and `core.ts`: authenticated Edge Function, action-based session API, starts at writing, calls a writing grader through `createHttpWritingGrader`, persists responses, then aggregates a final profile.
++- `supabase/functions/_shared/aiProvider.ts`: OpenAI-first, Gemini failover on timeout, thrown network errors, 429, and 5xx. JSON mode and text mode expose provider, latency, attempts, and raw response. Streaming failover only happens before bytes begin.
++- `supabase/functions/_shared/aiLogger.ts`: existing cost helper is older and OpenAI-heavy; it does not include Gemini 2.5 pricing and is not wired into the placement graders read in this pass.
++- `supabase/functions/placement-v3-grade-writing/index.ts`: missing in this worktree. This is a runtime blocker because the session orchestrator references a writing grader function URL.
++- `supabase/functions/placement-v3-grade-reading`, `placement-v3-grade-listening`, `placement-v3-grade-speaking`: all call `chatJsonWithFailover`, use `gpt-4o-mini` primary and `gemini-2.5-flash` failover, timeout at 20 seconds, and return `modelTrace` with provider, model, latency, and estimated token counts.
++- `supabase/functions/azure-phoneme/index.ts`: Azure Pronunciation Assessment path is authenticated, rate-limited, budget-checked, audited to speech tables, and already emits latency telemetry around the Azure REST call.
++- `src/lib/featureFlags.ts`: placement test UI is currently hidden by compile-time `PLACEMENT_TEST_ENABLED: false`; benchmark work should avoid re-exposing placement UX.
++- `tests/e2e/`: smoke suite uses Playwright, local Vite, test Supabase credentials, and stubs third-party AI APIs in browser-level flows.
++- `src/lib/monitoring/sentryInit.ts`: Sentry is gated by DSN, privacy-scrubbed, and disabled in tests.
++
++## Architecture Findings
++
++1. Placement V3 is partly present but path names in the task do not match this branch. The active session function is `placement-v3-session`, not `placement-v3-session-orchestrator`.
++2. Reading, listening, and speaking graders are production-shaped and expose the metric fields needed for latency, token, provider, and cost benchmarking.
++3. Writing is the largest integration gap: the session orchestrator starts with writing and calls a writing grader client, but the `placement-v3-grade-writing` function directory is absent locally.
++4. Provider failover evidence can be captured from `modelTrace.provider` and `attempts` when callers expose attempts. Current grader core returns provider/model/latency/token estimates but not always attempts, so the harness must preserve raw responses and infer failover conservatively.
++5. Azure pronunciation benchmarking is available as a separate modality, but live execution requires Azure and Supabase credentials.
++6. Dashboard data should be admin-only. Benchmark tables need RLS because they live in `public`.
++
++## Runtime Risks To Verify
++
++- Missing writing grader may make full orchestrated placement sessions fail before any adaptive flow can complete.
++- Feature flag keeps current placement UI hidden, so E2E placement smoke may skip or redirect unless the flag is enabled in the test environment.
++- `aiLogger.calculateCost` pricing is stale for Gemini and newer OpenAI pricing; A33 needs its own explicit estimator until the shared logger is updated.
++- No raw provider routing table exists yet for benchmark-specific failover events.
++
++## Initial Implementation Decision
++
++Build a benchmark harness that can run live against Supabase Edge Functions when credentials are present, and can run deterministic dry-run validation locally without fabricating production metrics. Raw dry-run artifacts must be labeled as dry-run and cannot satisfy the hard gate for real API runs.
+added in remote
+  their  100644 3086418d41f9ca9755fb84e863193e91bc3ee47a docs/placement-v3/benchmarking/methodology.md
+@@ -0,0 +1,42 @@
++# Placement V3 Benchmark Methodology
++
++Status: benchmark infrastructure only; live benchmark blocked.
++
++The benchmark suite measures end-to-end Placement V3 readiness across five scenario families: A1 beginner, B1 intermediate, C1 advanced, speaking-heavy, Mercy conversational, and provider failover.
++
++Live runs use `scripts/placement-v3/run-benchmarks.ts` against Supabase Edge Functions. Each step records ISO timestamps, duration, provider, model, estimated token counts, estimated cost, failover attempts, status, and sanitized raw responses. Results are written to `docs/placement-v3/benchmarking/raw-runs/` and can optionally persist to `placement_v3_benchmark_*` tables.
++
++Dry-run mode exists only to validate the harness and dashboard wiring without spending API money:
++
++```bash
++pnpm tsx scripts/placement-v3/run-benchmarks.ts --mode=dry-run --runs=1
++```
++
++## Live Run Blockers
++
++- Missing `PLACEMENT_BENCHMARK_SUPABASE_URL`.
++- Missing `PLACEMENT_BENCHMARK_ANON_KEY`.
++- Missing `placement-v3-grade-writing` in local tree.
++- Missing test/admin credentials.
++- `deno` not installed.
++
++## How To Run Live Benchmark After Env Setup
++
++```bash
++export PLACEMENT_BENCHMARK_SUPABASE_URL="https://<project-ref>.supabase.co"
++export PLACEMENT_BENCHMARK_ANON_KEY="<anon-key>"
++export PLACEMENT_BENCHMARK_JWT="<admin-or-test-user-jwt>"
++export PLACEMENT_BENCHMARK_SERVICE_ROLE_KEY="<service-role-key>"
++pnpm test:e2e placement
++pnpm tsx scripts/placement-v3/run-benchmarks.ts --runs=5 --persist=true
++```
++
++Metrics are aggregated as p50/p95/p99 latency, average tokens/session, estimated USD/session, provider distribution, failover rate, error rate, worst steps, and regression warnings. Cost estimates use explicit benchmark pricing constants for `gpt-4o-mini`, `gpt-4o`, `gemini-2.5-flash`, and Azure pronunciation.
++
++Real production-readiness claims require live artifacts. Dry-run artifacts are not evidence of latency, cost, provider reliability, or grading consistency.
++
++## Hard Gates Not Met
++
++- 0/25 live sessions
++- 0/3 optimization cycles
++- no p95/cost/failover metrics
+added in remote
+  their  100644 f9a32504000ed00e8608647d6a4357b268d79bc3 docs/placement-v3/benchmarking/optimization-log.md
+@@ -0,0 +1,11 @@
++# Placement V3 Benchmark Optimization Log
++
++## 2026-05-20T11:18:00-06:00 - Baseline Harness Scaffold
++
++- Code change: added benchmark schema, runner, scenario definitions, aggregation utilities, report Edge Function, and admin dashboard.
++- Rerun metrics: none. Live benchmark execution is blocked; no benchmark JSON is committed as evidence.
++- Regression result: local integration tests passed. Live regression result pending credentials.
++
++## Live Optimization Iterations
++
++No live optimization iterations have been completed in this environment yet. Do not treat local harness validation as proof of the required three before/after optimization cycles until timestamped live raw runs are present under `raw-runs/`.
+added in remote
+  their  100644 3f46b317cffd8860ae9ffaf265fdc9c85c38aee6 docs/placement-v3/benchmarking/pr-body-draft.md
+@@ -0,0 +1,71 @@
++# PR Title
++
++feat(placement-v3): add benchmarking infrastructure scaffold
++
++## Summary
++
++Adds Placement V3 benchmark infrastructure only. Live benchmark execution is blocked in this environment, so this PR does not claim production benchmark results, production-readiness, latency improvements, cost estimates, or provider reliability.
++
++## What Benchmarking Infrastructure Was Added
++
++- Sequential benchmark runner with resumable raw JSON output.
++- Scenario definitions for beginner A1, intermediate B1, advanced C1, speaking-heavy, Mercy conversational, and provider failover flows.
++- Benchmark persistence schema for runs, steps, provider usage, failover events, and error events.
++- Metrics aggregation utilities for latency, cost, provider usage, and regression warnings.
++- Admin dashboard and report Edge Function for persisted benchmark data.
++- Integration and dashboard E2E test scaffolding.
++
++## Live Run Blockers
++
++- Missing `PLACEMENT_BENCHMARK_SUPABASE_URL`.
++- Missing `PLACEMENT_BENCHMARK_ANON_KEY`.
++- Missing `placement-v3-grade-writing` in local tree.
++- Missing test/admin credentials.
++- `deno` not installed.
++
++## How To Run Live Benchmark After Env Setup
++
++```bash
++export PLACEMENT_BENCHMARK_SUPABASE_URL="https://<project-ref>.supabase.co"
++export PLACEMENT_BENCHMARK_ANON_KEY="<anon-key>"
++export PLACEMENT_BENCHMARK_JWT="<admin-or-test-user-jwt>"
++export PLACEMENT_BENCHMARK_SERVICE_ROLE_KEY="<service-role-key>"
++pnpm test:e2e placement
++pnpm tsx scripts/placement-v3/run-benchmarks.ts --runs=5 --persist=true
++```
++
++## Hard Gates Not Met
++
++- 0/25 live sessions
++- 0/3 optimization cycles
++- no p95/cost/failover metrics
++
++## Benchmark Coverage
++
++Infrastructure coverage exists for six scenarios. Live scenario measurement has not been completed.
++
++## Optimization Iterations
++
++No live optimization iterations were completed. No before/after production metrics are claimed.
++
++## Runtime Bugs Found
++
++1. `docs/placement-v3/README.md` is missing.
++2. `supabase/functions/placement-v3-session-orchestrator/index.ts` is missing under the requested name; this branch uses `placement-v3-session`.
++3. `supabase/functions/placement-v3-grade-writing/index.ts` is missing locally while the orchestrator starts with writing.
++
++## Production Readiness Assessment
++
++Not ready for rollout from this evidence set. This PR provides the measurement harness; it does not provide live benchmark results.
++
++## Remaining Risks
++
++- Live provider routing and failover behavior unmeasured.
++- Live p95 latency unmeasured.
++- Live session cost unmeasured.
++- Grading consistency under repeated real calls unmeasured.
++
++## Evidence
++
++- No live benchmark JSON, screenshots, or production-readiness evidence were fabricated.
++- The PR is infrastructure-only and live run blocked.
+added in remote
+  their  100644 db464302625a7068b7d26eb0991de7ae78418fc3 docs/placement-v3/benchmarking/production-readiness-report.md
+@@ -0,0 +1,60 @@
++# Placement V3 Benchmark Infrastructure Report
++
++Generated: 2026-05-20
++
++Status: benchmark infrastructure only; live benchmark blocked.
++
++## Current Recommendation
++
++Do not publicly roll out Placement V3 from this branch yet.
++
++## Evidence Status
++
++- Benchmark harness: implemented.
++- Live benchmark sessions completed here: 0.
++- Dry-run harness validation: command path verified locally; no benchmark JSON is committed as evidence.
++- Required 25 real full benchmark sessions: not completed.
++- Required 3 optimization cycles with before/after live metrics: not completed.
++
++## Live Run Blockers
++
++- Missing `PLACEMENT_BENCHMARK_SUPABASE_URL`.
++- Missing `PLACEMENT_BENCHMARK_ANON_KEY`.
++- Missing `placement-v3-grade-writing` in local tree.
++- Missing test/admin credentials.
++- `deno` not installed.
++
++## How To Run Live Benchmark After Env Setup
++
++```bash
++export PLACEMENT_BENCHMARK_SUPABASE_URL="https://<project-ref>.supabase.co"
++export PLACEMENT_BENCHMARK_ANON_KEY="<anon-key>"
++export PLACEMENT_BENCHMARK_JWT="<admin-or-test-user-jwt>"
++export PLACEMENT_BENCHMARK_SERVICE_ROLE_KEY="<service-role-key>"
++pnpm test:e2e placement
++pnpm tsx scripts/placement-v3/run-benchmarks.ts --runs=5 --persist=true
++```
++
++## Hard Gates Not Met
++
++- 0/25 live sessions
++- 0/3 optimization cycles
++- no p95/cost/failover metrics
++
++## Runtime Bugs / Issues Found
++
++1. `docs/placement-v3/README.md` is missing, even though it is the required architecture entry point for this task.
++2. `supabase/functions/placement-v3-session-orchestrator/index.ts` is missing; current code uses `supabase/functions/placement-v3-session/index.ts`.
++3. `supabase/functions/placement-v3-grade-writing/index.ts` is missing locally, while the session orchestrator starts with writing and calls an HTTP writing grader.
++
++## Missing Metrics
++
++Live p95 full-session latency, average cost/session by CEFR band, real failover recovery rate, cold-start impact, scoring consistency, and timeout frequency are all missing until real API credentials, test/admin credentials, Deno, and deployed functions are available.
++
++## Launch Limit
++
++Recommended launch concurrency limit: 0 public users until the missing writing grader/orchestrator path mismatch is resolved and at least 25 live benchmark sessions are recorded.
++
++## Anti-Fabrication Note
++
++No production benchmark JSON, screenshots, live p95/cost/failover metrics, optimization wins, or production-readiness claims were generated in this environment.
+added in remote
+  their  100644 02d44ac1caa243618ca7ea37a9da0cc1b16772cc docs/placement-v3/benchmarking/raw-runs/README.md
+@@ -0,0 +1,5 @@
++# Raw Benchmark Runs
++
++This directory stores timestamped JSON outputs from `scripts/placement-v3/run-benchmarks.ts`.
++
++Dry-run files validate harness wiring only. Live production-readiness evidence must come from `--mode=live` runs with real Supabase Edge Functions and provider credentials.
+added in remote
+  their  100644 404ab352b3eff7dfd33f419a1a558df4239a4cd7 docs/placement-v3/benchmarking/screenshots/README.md
+@@ -0,0 +1,5 @@
++# Benchmark Screenshots
++
++Store dashboard captures, CLI output captures, failed-run screenshots, and successful rerun screenshots here.
++
++No screenshots were produced by the initial code scaffold.
+added in remote
+  their  100644 ca58412d22be453da1c00e04681d763259de71b4 scripts/placement-v3/run-benchmarks.ts
+@@ -0,0 +1,515 @@
++import fs from "node:fs/promises";
++import path from "node:path";
++import process from "node:process";
++import { createClient } from "@supabase/supabase-js";
++import "dotenv/config";
++
++import { aggregateBenchmarkRuns } from "../../src/lib/placementBenchmark/aggregateMetrics.js";
++import { estimateAzurePronunciationCostUsd, estimateTokenCostUsd } from "../../src/lib/placementBenchmark/costEstimator.js";
++import { findWorstLatencySteps, latencyByModality } from "../../src/lib/placementBenchmark/latencyAnalyzer.js";
++import { analyzeProviderUsage } from "../../src/lib/placementBenchmark/providerAnalysis.js";
++import type {
++  BenchmarkProvider,
++  BenchmarkRunMetric,
++  BenchmarkStatus,
++  BenchmarkStepMetric,
++} from "../../src/lib/placementBenchmark/types.js";
++import {
++  placementBenchmarkScenarios,
++  type PlacementBenchmarkScenario,
++  type PlacementBenchmarkStep,
++} from "./scenarios/index.js";
++
++type RunnerMode = "live" | "dry-run";
++
++interface RunnerConfig {
++  mode: RunnerMode;
++  runCount: number;
++  scenarioFilter: Set<string> | null;
++  outDir: string;
++  supabaseUrl: string;
++  anonKey: string;
++  serviceRoleKey: string;
++  jwt: string;
++  persist: boolean;
++}
++
++interface RawStepEvidence {
++  runId: string;
++  scenarioId: string;
++  stepId: string;
++  request: Record<string, unknown>;
++  response: unknown;
++}
++
++const DEFAULT_OUT_DIR = "docs/placement-v3/benchmarking/raw-runs";
++
++async function main() {
++  const config = readConfig();
++  await fs.mkdir(config.outDir, { recursive: true });
++
++  const suiteId = `placement-v3-${new Date().toISOString().replace(/[:.]/g, "-")}`;
++  const selected = placementBenchmarkScenarios.filter((scenario) =>
++    config.scenarioFilter ? config.scenarioFilter.has(scenario.id) : true,
++  );
++  if (selected.length === 0) {
++    throw new Error("No benchmark scenarios selected.");
++  }
++
++  const runs: BenchmarkRunMetric[] = [];
++  const evidence: RawStepEvidence[] = [];
++  const startedAt = new Date().toISOString();
++
++  console.log(`[placement-benchmark] suite=${suiteId} mode=${config.mode} scenarios=${selected.length} runCount=${config.runCount}`);
++
++  for (let iteration = 0; iteration < config.runCount; iteration += 1) {
++    for (const scenario of selected) {
++      const run = await runScenario({ suiteId, scenario, config, evidence });
++      runs.push(run);
++      await writePartial(config.outDir, suiteId, runs, evidence);
++      if (config.persist) {
++        await persistRun(config, run);
++      }
++      console.log(
++        `[placement-benchmark] run=${run.runId} scenario=${scenario.id} status=${run.status} durationMs=${run.totalDurationMs} costUsd=${run.estimatedCostUsd}`,
++      );
++    }
++  }
++
++  const summary = buildSummary({ suiteId, startedAt, completedAt: new Date().toISOString(), runs });
++  const summaryPath = path.join(config.outDir, `${suiteId}.summary.json`);
++  await fs.writeFile(summaryPath, `${JSON.stringify(summary, null, 2)}\n`);
++  console.log(`[placement-benchmark] wrote ${summaryPath}`);
++}
++
++async function runScenario(args: {
++  suiteId: string;
++  scenario: PlacementBenchmarkScenario;
++  config: RunnerConfig;
++  evidence: RawStepEvidence[];
++}): Promise<BenchmarkRunMetric> {
++  const runId = `${args.scenario.id}-${crypto.randomUUID()}`;
++  const started = Date.now();
++  const startedAt = new Date(started).toISOString();
++  const steps: BenchmarkStepMetric[] = [];
++
++  for (const step of args.scenario.steps) {
++    const metric = await runStep({
++      runId,
++      scenario: args.scenario,
++      step,
++      config: args.config,
++      evidence: args.evidence,
++    });
++    steps.push(metric);
++  }
++
++  const completed = Date.now();
++  const status: BenchmarkStatus = steps.some((step) => step.status === "error" || step.status === "timeout")
++    ? "error"
++    : "success";
++  return {
++    runId,
++    suiteId: args.suiteId,
++    scenarioId: args.scenario.id,
++    startedAt,
++    completedAt: new Date(completed).toISOString(),
++    status,
++    totalDurationMs: completed - started,
++    totalTokensInput: steps.reduce((sum, step) => sum + step.tokensInput, 0),
++    totalTokensOutput: steps.reduce((sum, step) => sum + step.tokensOutput, 0),
++    estimatedCostUsd: Number(steps.reduce((sum, step) => sum + step.estimatedCostUsd, 0).toFixed(6)),
++    steps,
++  };
++}
++
++async function runStep(args: {
++  runId: string;
++  scenario: PlacementBenchmarkScenario;
++  step: PlacementBenchmarkStep;
++  config: RunnerConfig;
++  evidence: RawStepEvidence[];
++}): Promise<BenchmarkStepMetric> {
++  const started = Date.now();
++  const startedAt = new Date(started).toISOString();
++  let responseBody: unknown = null;
++  let status: BenchmarkStatus = "success";
++  let provider: BenchmarkProvider = "none";
++  let model = "";
++  let tokensInput = 0;
++  let tokensOutput = 0;
++  let attempts: BenchmarkProvider[] = [];
++  let traceLatencyMs: number | null = null;
++  let errorCode: string | null = null;
++  let errorMessage: string | null = null;
++  let cefrEstimate: string | null = null;
++
++  try {
++    responseBody = args.config.mode === "dry-run"
++      ? dryRunResponse(args.step)
++      : await callLiveStep(args.config, args.step);
++    const trace = extractTrace(responseBody);
++    provider = trace.provider;
++    model = trace.model;
++    tokensInput = trace.tokensInput;
++    tokensOutput = trace.tokensOutput;
++    attempts = trace.attempts;
++    traceLatencyMs = trace.latencyMs;
++    cefrEstimate = trace.cefrEstimate;
++    if (!trace.ok) {
++      status = "error";
++      errorCode = trace.errorCode;
++      errorMessage = trace.errorMessage;
++    }
++  } catch (err) {
++    status = err instanceof Error && err.name === "AbortError" ? "timeout" : "error";
++    errorCode = status;
++    errorMessage = err instanceof Error ? err.message : String(err);
++  }
++
++  const completed = args.config.mode === "dry-run" && traceLatencyMs !== null
++    ? started + traceLatencyMs
++    : Date.now();
++  const durationMs = completed - started;
++  const estimatedCostUsd = args.step.modality === "azure-phoneme"
++    ? estimateAzurePronunciationCostUsd(Number(args.step.payload.audioSeconds ?? 0))
++    : estimateTokenCostUsd({ provider, model, tokensInput, tokensOutput });
++  const metric: BenchmarkStepMetric = {
++    runId: args.runId,
++    scenarioId: args.scenario.id,
++    stepId: args.step.id,
++    modality: args.step.modality === "azure-phoneme" ? "azure-phoneme" : args.step.modality,
++    provider,
++    model,
++    startedAt,
++    completedAt: new Date(completed).toISOString(),
++    durationMs,
++    status,
++    tokensInput,
++    tokensOutput,
++    estimatedCostUsd,
++    attempts,
++    failover: attempts.length > 1 || provider === "gemini",
++    errorCode,
++    errorMessage,
++    cefrEstimate,
++  };
++
++  args.evidence.push({
++    runId: args.runId,
++    scenarioId: args.scenario.id,
++    stepId: args.step.id,
++    request: sanitize(args.step.payload),
++    response: sanitize(responseBody),
++  });
++  return metric;
++}
++
++async function callLiveStep(config: RunnerConfig, step: PlacementBenchmarkStep): Promise<unknown> {
++  const functionName = functionForModality(step.modality);
++  const url = `${config.supabaseUrl.replace(/\/$/, "")}/functions/v1/${functionName}`;
++  const headers: Record<string, string> = {
++    "Content-Type": "application/json",
++    apikey: config.anonKey,
++  };
++  const bearer = config.jwt || config.serviceRoleKey;
++  if (bearer) headers.Authorization = `Bearer ${bearer}`;
++
++  const controller = new AbortController();
++  const timeout = setTimeout(() => controller.abort(), step.timeoutMs);
++  try {
++    const response = await fetch(url, {
++      method: "POST",
++      headers,
++      body: JSON.stringify(step.payload),
++      signal: controller.signal,
++    });
++    const text = await response.text();
++    const json = safeJson(text);
++    if (!response.ok) {
++      return {
++        ok: false,
++        errorCode: `http_${response.status}`,
++        errorMessage: text.slice(0, 500),
++        response: json ?? text,
++      };
++    }
++    return json ?? text;
++  } finally {
++    clearTimeout(timeout);
++  }
++}
++
++function functionForModality(modality: PlacementBenchmarkStep["modality"]): string {
++  switch (modality) {
++    case "reading":
++      return "placement-v3-grade-reading";
++    case "listening":
++      return "placement-v3-grade-listening";
++    case "speaking":
++      return "placement-v3-grade-speaking";
++    case "azure-phoneme":
++      return "azure-phoneme";
++    case "mercy":
++      return "mercy-guide";
++    case "writing":
++      return "placement-v3-grade-writing";
++  }
++}
++
++function dryRunResponse(step: PlacementBenchmarkStep) {
++  const provider: BenchmarkProvider = step.payload.forceOpenAiFailure ? "gemini" : "openai";
++  const tokensInput = estimateTextTokens(JSON.stringify(step.payload));
++  const tokensOutput = 190;
++  return {
++    ok: true,
++    assessment: {
++      overall_cefr: step.expectedCefr,
++      confidence: 0.82,
++    },
++    modelTrace: {
++      provider,
++      model: provider === "gemini" ? "gemini-2.5-flash" : "gpt-4o-mini",
++      latencyMs: 1200 + tokensInput * 3,
++      tokensInput,
++      tokensOutput,
++      attempts: provider === "gemini" ? ["openai", "gemini"] : [provider],
++    },
++  };
++}
++
++function extractTrace(body: unknown): {
++  ok: boolean;
++  provider: BenchmarkProvider;
++  model: string;
++  tokensInput: number;
++  tokensOutput: number;
++  attempts: BenchmarkProvider[];
++  latencyMs: number | null;
++  cefrEstimate: string | null;
++  errorCode: string | null;
++  errorMessage: string | null;
++} {
++  const record = isRecord(body) ? body : {};
++  const trace = isRecord(record.modelTrace) ? record.modelTrace : {};
++  const assessment = isRecord(record.assessment) ? record.assessment : {};
++  const provider = normalizeProvider(trace.provider ?? record.provider);
++  const attemptsRaw = Array.isArray(trace.attempts) ? trace.attempts : provider !== "none" ? [provider] : [];
++  return {
++    ok: record.ok !== false,
++    provider,
++    model: typeof trace.model === "string" ? trace.model : "",
++    tokensInput: Number(trace.tokensInput ?? 0),
++    tokensOutput: Number(trace.tokensOutput ?? 0),
++    attempts: attemptsRaw.map(normalizeProvider),
++    latencyMs: typeof trace.latencyMs === "number" ? Math.max(0, Math.round(trace.latencyMs)) : null,
++    cefrEstimate: typeof assessment.overall_cefr === "string" ? assessment.overall_cefr : null,
++    errorCode: typeof record.errorCode === "string" ? record.errorCode : null,
++    errorMessage: typeof record.errorMessage === "string" ? record.errorMessage : null,
++  };
++}
++
++function buildSummary(args: {
++  suiteId: string;
++  startedAt: string;
++  completedAt: string;
++  runs: BenchmarkRunMetric[];
++}) {
++  const steps = args.runs.flatMap((run) => run.steps);
++  return {
++    suiteId: args.suiteId,
++    startedAt: args.startedAt,
++    completedAt: args.completedAt,
++    runCount: args.runs.length,
++    scenarioCount: new Set(args.runs.map((run) => run.scenarioId)).size,
++    metrics: aggregateBenchmarkRuns(args.runs),
++    provider: analyzeProviderUsage(steps),
++    latencyByModality: latencyByModality(steps),
++    worstSteps: findWorstLatencySteps(steps, 12),
++    runs: args.runs,
++  };
++}
++
++async function writePartial(
++  outDir: string,
++  suiteId: string,
++  runs: BenchmarkRunMetric[],
++  evidence: RawStepEvidence[],
++) {
++  await fs.writeFile(
++    path.join(outDir, `${suiteId}.partial.json`),
++    `${JSON.stringify({ suiteId, updatedAt: new Date().toISOString(), runs, evidence }, null, 2)}\n`,
++  );
++}
++
++async function persistRun(config: RunnerConfig, run: BenchmarkRunMetric) {
++  if (!config.serviceRoleKey) return;
++  const client = createClient(config.supabaseUrl, config.serviceRoleKey, {
++    auth: { persistSession: false },
++  });
++  const { error: runError } = await client.from("placement_v3_benchmark_runs").upsert({
++    id: run.runId,
++    suite_id: run.suiteId,
++    scenario_id: run.scenarioId,
++    started_at: run.startedAt,
++    completed_at: run.completedAt,
++    status: run.status,
++    total_duration_ms: run.totalDurationMs,
++    total_tokens_input: run.totalTokensInput,
++    total_tokens_output: run.totalTokensOutput,
++    estimated_cost_usd: run.estimatedCostUsd,
++    metadata: { source: "scripts/placement-v3/run-benchmarks.ts" },
++  });
++  if (runError) throw new Error(`benchmark run persist failed: ${runError.message}`);
++
++  const { error: stepError } = await client.from("placement_v3_benchmark_steps").upsert(
++    run.steps.map((step) => ({
++      id: `${step.runId}:${step.stepId}`,
++      run_id: step.runId,
++      scenario_id: step.scenarioId,
++      step_id: step.stepId,
++      modality: step.modality,
++      provider: step.provider,
++      model: step.model,
++      started_at: step.startedAt,
++      completed_at: step.completedAt,
++      duration_ms: step.durationMs,
++      status: step.status,
++      tokens_input: step.tokensInput,
++      tokens_output: step.tokensOutput,
++      estimated_cost_usd: step.estimatedCostUsd,
++      attempts: step.attempts,
++      failover: step.failover,
++      error_code: step.errorCode,
++      error_message: step.errorMessage,
++      cefr_estimate: step.cefrEstimate,
++    })),
++  );
++  if (stepError) throw new Error(`benchmark step persist failed: ${stepError.message}`);
++
++  await Promise.all([
++    client.from("placement_v3_benchmark_provider_usage").delete().eq("run_id", run.runId),
++    client.from("placement_v3_benchmark_failover_events").delete().eq("run_id", run.runId),
++    client.from("placement_v3_benchmark_error_events").delete().eq("run_id", run.runId),
++  ]);
++
++  const providerRows = run.steps.map((step) => ({
++    run_id: step.runId,
++    step_row_id: `${step.runId}:${step.stepId}`,
++    provider: step.provider,
++    model: step.model,
++    tokens_input: step.tokensInput,
++    tokens_output: step.tokensOutput,
++    estimated_cost_usd: step.estimatedCostUsd,
++    latency_ms: step.durationMs,
++  }));
++  const { error: providerError } = await client
++    .from("placement_v3_benchmark_provider_usage")
++    .insert(providerRows);
++  if (providerError) throw new Error(`benchmark provider persist failed: ${providerError.message}`);
++
++  const failoverRows = run.steps
++    .filter((step) => step.failover)
++    .map((step) => ({
++      run_id: step.runId,
++      step_row_id: `${step.runId}:${step.stepId}`,
++      scenario_id: step.scenarioId,
++      step_id: step.stepId,
++      from_provider: step.attempts[0] ?? null,
++      to_provider: step.provider,
++      attempts: step.attempts,
++      recovered: step.status === "success",
++      latency_ms: step.durationMs,
++    }));
++  if (failoverRows.length > 0) {
++    const { error: failoverError } = await client
++      .from("placement_v3_benchmark_failover_events")
++      .insert(failoverRows);
++    if (failoverError) throw new Error(`benchmark failover persist failed: ${failoverError.message}`);
++  }
++
++  const errorRows = run.steps
++    .filter((step) => step.status !== "success")
++    .map((step) => ({
++      run_id: step.runId,
++      step_row_id: `${step.runId}:${step.stepId}`,
++      scenario_id: step.scenarioId,
++      step_id: step.stepId,
++      modality: step.modality,
++      provider: step.provider,
++      error_code: step.errorCode,
++      error_message: step.errorMessage,
++      latency_ms: step.durationMs,
++    }));
++  if (errorRows.length > 0) {
++    const { error: errorEventError } = await client
++      .from("placement_v3_benchmark_error_events")
++      .insert(errorRows);
++    if (errorEventError) throw new Error(`benchmark error persist failed: ${errorEventError.message}`);
++  }
++}
++
++function readConfig(): RunnerConfig {
++  const args = new Map<string, string>();
++  for (const arg of process.argv.slice(2)) {
++    const [key, value = "true"] = arg.replace(/^--/, "").split("=");
++    args.set(key, value);
++  }
++  const mode = (args.get("mode") ?? process.env.PLACEMENT_BENCHMARK_MODE ?? "live") as RunnerMode;
++  const supabaseUrl = process.env.PLACEMENT_BENCHMARK_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "";
++  const anonKey = process.env.PLACEMENT_BENCHMARK_ANON_KEY ?? process.env.SUPABASE_ANON_KEY ?? "";
++  const serviceRoleKey = process.env.PLACEMENT_BENCHMARK_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
++  const jwt = process.env.PLACEMENT_BENCHMARK_JWT ?? "";
++  if (mode === "live" && (!supabaseUrl || !anonKey)) {
++    throw new Error(
++      "Live benchmarks require PLACEMENT_BENCHMARK_SUPABASE_URL and PLACEMENT_BENCHMARK_ANON_KEY. Use --mode=dry-run for local harness validation.",
++    );
++  }
++  const scenarioArg = args.get("scenario") ?? "";
++  return {
++    mode,
++    runCount: Number(args.get("runs") ?? process.env.PLACEMENT_BENCHMARK_RUNS ?? 1),
++    scenarioFilter: scenarioArg ? new Set(scenarioArg.split(",").map((s) => s.trim())) : null,
++    outDir: args.get("outDir") ?? DEFAULT_OUT_DIR,
++    supabaseUrl,
++    anonKey,
++    serviceRoleKey,
++    jwt,
++    persist: args.get("persist") === "true" || process.env.PLACEMENT_BENCHMARK_PERSIST === "1",
++  };
++}
++
++function normalizeProvider(value: unknown): BenchmarkProvider {
++  if (value === "openai" || value === "gemini" || value === "azure" || value === "local") return value;
++  return "none";
++}
++
++function safeJson(text: string): unknown {
++  try {
++    return JSON.parse(text);
++  } catch {
++    return null;
++  }
++}
++
++function sanitize<T>(value: T): T {
++  return JSON.parse(
++    JSON.stringify(value, (key, nested) => {
++      if (/token|key|authorization|apikey|audio/i.test(key)) return "[redacted]";
++      return nested;
++    }),
++  ) as T;
++}
++
++function isRecord(value: unknown): value is Record<string, unknown> {
++  return !!value && typeof value === "object" && !Array.isArray(value);
++}
++
++function estimateTextTokens(text: string): number {
++  return Math.ceil(text.length / 4);
++}
++
++main().catch((err) => {
++  console.error("[placement-benchmark] failed", err);
++  process.exit(1);
++});
+added in remote
+  their  100644 895c47953172099654a0a001d42829d295d328e9 scripts/placement-v3/scenarios/advanced-c1.ts
+@@ -0,0 +1,66 @@
++import type { PlacementBenchmarkScenario } from "./types.js";
++
++export const advancedC1Scenario: PlacementBenchmarkScenario = {
++  id: "advanced-c1",
++  label: "Advanced C1 DET-class flow",
++  expectedCefrTrajectory: ["B2", "C1", "C1"],
++  expectedApiCount: 4,
++  timeoutThresholdMs: 90_000,
++  steps: [
++    {
++      id: "c1-writing-argument",
++      modality: "writing",
++      expectedCefr: "C1",
++      timeoutMs: 30_000,
++      payload: {
++        promptId: "c1-writing-argument",
++        taskText: "Evaluate whether remote work improves productivity.",
++        responseText: "Remote work can improve productivity when teams define outcomes clearly, but it also exposes weak management habits. The decisive factor is not location; it is whether communication norms, accountability, and deep-work time are protected.",
++        targetCefr: "C1",
++      },
++    },
++    {
++      id: "c1-reading-synthesis",
++      modality: "reading",
++      expectedCefr: "C1",
++      timeoutMs: 30_000,
++      payload: {
++        promptId: "c1-reading-synthesis",
++        passageText: "The policy reduced headline congestion, yet its benefits were uneven: affluent commuters shifted schedules while lower-income workers absorbed longer transfers.",
++        questionText: "What limitation of the policy does the passage identify?",
++        questionType: "short_answer",
++        expectedAnswer: "Its benefits were uneven and burdened lower-income workers.",
++        userResponse: "It helped overall congestion but distributed the costs unfairly, especially to workers with less schedule flexibility.",
++        targetCefr: "C1",
++      },
++    },
++    {
++      id: "c1-listening-nuance",
++      modality: "listening",
++      expectedCefr: "C1",
++      timeoutMs: 30_000,
++      payload: {
++        promptId: "c1-listening-nuance",
++        transcriptOfHeardContent: "The speaker concedes that automation displaces some roles, but argues the larger risk is a skills mismatch during the transition.",
++        questionText: "What does the speaker see as the larger risk?",
++        questionType: "short_answer",
++        expectedAnswer: "A skills mismatch during the transition.",
++        userResponse: "Not automation itself, but the temporary mismatch between available jobs and workers' skills.",
++        targetCefr: "C1",
++      },
++    },
++    {
++      id: "c1-speaking-policy",
++      modality: "speaking",
++      expectedCefr: "C1",
++      timeoutMs: 30_000,
++      payload: {
++        promptId: "c1-speaking-policy",
++        taskText: "Discuss whether cities should restrict private cars downtown.",
++        transcript: "I would support restrictions, provided they are paired with reliable public transport. Otherwise the policy becomes symbolic: it reduces traffic for people who already have options while punishing workers whose jobs require inconvenient travel times.",
++        durationSeconds: 58,
++        targetLanguage: "en",
++      },
++    },
++  ],
++};
+added in remote
+  their  100644 67f9c6b691a13550a5fd4e61f224a9dcd1877352 scripts/placement-v3/scenarios/beginner-a1.ts
+@@ -0,0 +1,66 @@
++import type { PlacementBenchmarkScenario } from "./types.js";
++
++export const beginnerA1Scenario: PlacementBenchmarkScenario = {
++  id: "beginner-a1",
++  label: "Beginner A1 Vietnamese learner",
++  expectedCefrTrajectory: ["A1", "A1", "A2"],
++  expectedApiCount: 4,
++  timeoutThresholdMs: 90_000,
++  steps: [
++    {
++      id: "a1-writing-short",
++      modality: "writing",
++      expectedCefr: "A1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "a1-writing-short",
++        taskText: "Write 4 sentences about your family.",
++        responseText: "My family has four people. My mother is kind. My father works hard. I love them.",
++        targetCefr: "A1",
++      },
++    },
++    {
++      id: "a1-reading-mcq",
++      modality: "reading",
++      expectedCefr: "A1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "a1-reading-mcq",
++        passageText: "Lan is a student. She lives in Da Nang. Every morning she drinks coffee and goes to school by bus.",
++        questionText: "Where does Lan live?",
++        questionType: "short_answer",
++        expectedAnswer: "Da Nang",
++        userResponse: "Da Nang",
++        targetCefr: "A1",
++      },
++    },
++    {
++      id: "a1-listening-short",
++      modality: "listening",
++      expectedCefr: "A1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "a1-listening-short",
++        transcriptOfHeardContent: "The train leaves at seven thirty. Please arrive ten minutes early.",
++        questionText: "What time does the train leave?",
++        questionType: "short_answer",
++        expectedAnswer: "seven thirty",
++        userResponse: "seven thirty",
++        targetCefr: "A1",
++      },
++    },
++    {
++      id: "a1-speaking-intro",
++      modality: "speaking",
++      expectedCefr: "A1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "a1-speaking-intro",
++        taskText: "Introduce yourself and say what you do every day.",
++        transcript: "Hello, my name is Minh. I am a student. I go to school every day and I study English at night.",
++        durationSeconds: 22,
++        targetLanguage: "en",
++      },
++    },
++  ],
++};
+added in remote
+  their  100644 4a9e67d1cfdf84c81b66e4f5fb38b2f2d7e3b462 scripts/placement-v3/scenarios/index.ts
+@@ -0,0 +1,17 @@
++import { advancedC1Scenario } from "./advanced-c1.js";
++import { beginnerA1Scenario } from "./beginner-a1.js";
++import { intermediateB1Scenario } from "./intermediate-b1.js";
++import { mercyConversationalScenario } from "./mercy-conversational.js";
++import { providerFailoverScenario } from "./provider-failover.js";
++import { speakingHeavyScenario } from "./speaking-heavy.js";
++
++export const placementBenchmarkScenarios = [
++  beginnerA1Scenario,
++  intermediateB1Scenario,
++  advancedC1Scenario,
++  speakingHeavyScenario,
++  mercyConversationalScenario,
++  providerFailoverScenario,
++];
++
++export type { PlacementBenchmarkScenario, PlacementBenchmarkStep } from "./types.js";
+added in remote
+  their  100644 e392edd1914df6f12059df614921f747533fef8c scripts/placement-v3/scenarios/intermediate-b1.ts
+@@ -0,0 +1,66 @@
++import type { PlacementBenchmarkScenario } from "./types.js";
++
++export const intermediateB1Scenario: PlacementBenchmarkScenario = {
++  id: "intermediate-b1",
++  label: "Intermediate B1 placement flow",
++  expectedCefrTrajectory: ["B1", "B1", "B2"],
++  expectedApiCount: 4,
++  timeoutThresholdMs: 90_000,
++  steps: [
++    {
++      id: "b1-writing-opinion",
++      modality: "writing",
++      expectedCefr: "B1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "b1-writing-opinion",
++        taskText: "Do you prefer studying online or in a classroom? Explain why.",
++        responseText: "I prefer studying online because it saves time and I can replay the lesson. However, classroom study is useful when I need to ask questions quickly.",
++        targetCefr: "B1",
++      },
++    },
++    {
++      id: "b1-reading-inference",
++      modality: "reading",
++      expectedCefr: "B1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "b1-reading-inference",
++        passageText: "Although the new bus route is slower during rush hour, many office workers use it because it stops near two large apartment blocks.",
++        questionText: "Why do many workers still use the route?",
++        questionType: "short_answer",
++        expectedAnswer: "It stops near their homes.",
++        userResponse: "Because it is convenient and stops near apartment buildings.",
++        targetCefr: "B1",
++      },
++    },
++    {
++      id: "b1-listening-detail",
++      modality: "listening",
++      expectedCefr: "B1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "b1-listening-detail",
++        transcriptOfHeardContent: "The meeting has moved from Tuesday afternoon to Wednesday morning because the client is flying in late.",
++        questionText: "Why was the meeting moved?",
++        questionType: "short_answer",
++        expectedAnswer: "The client is flying in late.",
++        userResponse: "The client will arrive late.",
++        targetCefr: "B1",
++      },
++    },
++    {
++      id: "b1-speaking-work",
++      modality: "speaking",
++      expectedCefr: "B1",
++      timeoutMs: 25_000,
++      payload: {
++        promptId: "b1-speaking-work",
++        taskText: "Describe a work problem you solved.",
++        transcript: "Last month our team had a problem with a late order. I called the supplier, explained the deadline, and arranged a smaller first delivery so the customer could start on time.",
++        durationSeconds: 42,
++        targetLanguage: "en",
++      },
++    },
++  ],
++};
+added in remote
+  their  100644 3d5b63f5f0b58d433d88ab759e54ca21090fc7fe scripts/placement-v3/scenarios/mercy-conversational.ts
+@@ -0,0 +1,29 @@
++import type { PlacementBenchmarkScenario } from "./types.js";
++
++export const mercyConversationalScenario: PlacementBenchmarkScenario = {
++  id: "mercy-conversational",
++  label: "Mercy conversational placement-adjacent flow",
++  expectedCefrTrajectory: ["B1", "B1"],
++  expectedApiCount: 3,
++  timeoutThresholdMs: 90_000,
++  steps: [
++    {
++      id: "mercy-b1-diagnose",
++      modality: "mercy",
++      expectedCefr: "B1",
++      timeoutMs: 30_000,
++      payload: {
++        message: "I always confuse articles and plural endings. Can you check my English and tell me my likely level?",
++      },
++    },
++    {
++      id: "mercy-b1-correction",
++      modality: "mercy",
++      expectedCefr: "B1",
++      timeoutMs: 30_000,
++      payload: {
++        message: "Yesterday I go to supermarket and buy two apple for my childs.",
++      },
++    },
++  ],
++};
+added in remote
+  their  100644 92fb9bf0931bc4a931c358b55199f70976c7dd1e scripts/placement-v3/scenarios/provider-failover.ts
+@@ -0,0 +1,41 @@
++import type { PlacementBenchmarkScenario } from "./types.js";
++
++export const providerFailoverScenario: PlacementBenchmarkScenario = {
++  id: "provider-failover",
++  label: "Provider failover stress scenario",
++  expectedCefrTrajectory: ["B1"],
++  expectedApiCount: 3,
++  timeoutThresholdMs: 90_000,
++  steps: [
++    {
++      id: "failover-reading",
++      modality: "reading",
++      expectedCefr: "B1",
++      timeoutMs: 10_000,
++      payload: {
++        forceOpenAiFailure: true,
++        promptId: "failover-reading",
++        passageText: "The warranty covers manufacturing faults, but it excludes damage caused by improper installation.",
++        questionText: "What is not covered?",
++        questionType: "short_answer",
++        expectedAnswer: "Damage caused by improper installation.",
++        userResponse: "If someone installs it wrong and damages it, that is excluded.",
++        targetCefr: "B1",
++      },
++    },
++    {
++      id: "failover-speaking",
++      modality: "speaking",
++      expectedCefr: "B1",
++      timeoutMs: 10_000,
++      payload: {
++        forceOpenAiFailure: true,
++        promptId: "failover-speaking",
++        taskText: "Describe a useful app.",
++        transcript: "A useful app for me is a dictionary because it gives examples and pronunciation. I use it when I read articles or prepare for interviews.",
++        durationSeconds: 35,
++        targetLanguage: "en",
++      },
++    },
++  ],
++};
+added in remote
+  their  100644 ac186c62e5a833130cbbeb8c71cf7ba57d5b681d scripts/placement-v3/scenarios/speaking-heavy.ts
+@@ -0,0 +1,48 @@
++import type { PlacementBenchmarkScenario } from "./types.js";
++
++export const speakingHeavyScenario: PlacementBenchmarkScenario = {
++  id: "speaking-heavy",
++  label: "Speaking-heavy pronunciation and CEFR flow",
++  expectedCefrTrajectory: ["A2", "B1", "B1"],
++  expectedApiCount: 5,
++  timeoutThresholdMs: 100_000,
++  steps: [
++    {
++      id: "speech-azure-phoneme-th",
++      modality: "azure-phoneme",
++      expectedCefr: "B1",
++      timeoutMs: 20_000,
++      payload: {
++        text: "I think the three things are worth discussing.",
++        audioSeconds: 8,
++        accent: "vi",
++      },
++    },
++    {
++      id: "speech-b1-story",
++      modality: "speaking",
++      expectedCefr: "B1",
++      timeoutMs: 30_000,
++      payload: {
++        promptId: "speech-b1-story",
++        taskText: "Tell a short story about a mistake you learned from.",
++        transcript: "When I started my first job, I said yes to every request and became overloaded. After missing one deadline, I learned to ask which task was most important before accepting more work.",
++        durationSeconds: 50,
++        targetLanguage: "en",
++      },
++    },
++    {
++      id: "speech-b1-followup",
++      modality: "speaking",
++      expectedCefr: "B1",
++      timeoutMs: 30_000,
++      payload: {
++        promptId: "speech-b1-followup",
++        taskText: "Explain what advice you would give to a new employee.",
++        transcript: "I would tell them to listen carefully, write down important instructions, and ask questions early. It is better to look unsure for one minute than to make a large mistake later.",
++        durationSeconds: 46,
++        targetLanguage: "en",
++      },
++    },
++  ],
++};
+added in remote
+  their  100644 f09fc2e5965dc3edf267dde082f1f075d47aa078 scripts/placement-v3/scenarios/types.ts
+@@ -0,0 +1,24 @@
++export type ScenarioModality =
++  | "writing"
++  | "reading"
++  | "listening"
++  | "speaking"
++  | "mercy"
++  | "azure-phoneme";
++
++export interface PlacementBenchmarkStep {
++  id: string;
++  modality: ScenarioModality;
++  expectedCefr: string;
++  timeoutMs: number;
++  payload: Record<string, unknown>;
++}
++
++export interface PlacementBenchmarkScenario {
++  id: string;
++  label: string;
++  expectedCefrTrajectory: string[];
++  expectedApiCount: number;
++  timeoutThresholdMs: number;
++  steps: PlacementBenchmarkStep[];
++}
+added in remote
+  their  100644 ef681924899c8e301c024b35972c55432bedadfa src/lib/placementBenchmark/aggregateMetrics.ts
+@@ -0,0 +1,59 @@
++import type {
++  AggregatedBenchmarkMetrics,
++  BenchmarkRunMetric,
++  BenchmarkStepMetric,
++} from "./types.js";
++
++export function percentile(values: number[], p: number): number {
++  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
++  if (sorted.length === 0) return 0;
++  const idx = Math.min(sorted.length - 1, Math.ceil(p * sorted.length) - 1);
++  return Math.round(sorted[idx]);
++}
++
++export function aggregateBenchmarkRuns(
++  runs: BenchmarkRunMetric[],
++): AggregatedBenchmarkMetrics {
++  const steps = runs.flatMap((run) => run.steps);
++  const durations = steps.map((step) => step.durationMs);
++  const byModality: AggregatedBenchmarkMetrics["byModality"] = {};
++
++  for (const modality of new Set(steps.map((step) => step.modality))) {
++    const subset = steps.filter((step) => step.modality === modality);
++    byModality[modality] = summarizeSteps(subset);
++  }
++
++  return {
++    runCount: runs.length,
++    stepCount: steps.length,
++    p50LatencyMs: percentile(durations, 0.5),
++    p95LatencyMs: percentile(durations, 0.95),
++    p99LatencyMs: percentile(durations, 0.99),
++    averageCostUsd: average(runs.map((run) => run.estimatedCostUsd)),
++    averageTokensInput: average(runs.map((run) => run.totalTokensInput)),
++    averageTokensOutput: average(runs.map((run) => run.totalTokensOutput)),
++    failoverRate: ratio(steps.filter((step) => step.failover).length, steps.length),
++    errorRate: ratio(steps.filter((step) => step.status !== "success").length, steps.length),
++    byModality,
++  };
++}
++
++function summarizeSteps(steps: BenchmarkStepMetric[]) {
++  return {
++    count: steps.length,
++    p50LatencyMs: percentile(steps.map((step) => step.durationMs), 0.5),
++    p95LatencyMs: percentile(steps.map((step) => step.durationMs), 0.95),
++    averageCostUsd: average(steps.map((step) => step.estimatedCostUsd)),
++    errorRate: ratio(steps.filter((step) => step.status !== "success").length, steps.length),
++  };
++}
++
++function average(values: number[]): number {
++  if (values.length === 0) return 0;
++  return Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(6));
++}
++
++function ratio(count: number, total: number): number {
++  if (total === 0) return 0;
++  return Number((count / total).toFixed(4));
++}
+added in remote
+  their  100644 e91fee96e48b2121e195424316cab5c417918bdd src/lib/placementBenchmark/costEstimator.ts
+@@ -0,0 +1,48 @@
++import type { BenchmarkProvider, CostBreakdown } from "./types.js";
++
++const TOKEN_PRICES_PER_MILLION: Record<string, { input: number; output: number }> = {
++  "gpt-4o-mini": { input: 0.15, output: 0.6 },
++  "gpt-4o": { input: 2.5, output: 10 },
++  "gemini-2.5-flash": { input: 0.3, output: 2.5 },
++  "gemini-1.5-flash": { input: 0.075, output: 0.3 },
++  "azure-pronunciation": { input: 0, output: 0 },
++};
++
++export function estimateTokenCostUsd(args: {
++  provider: BenchmarkProvider;
++  model?: string | null;
++  tokensInput: number;
++  tokensOutput: number;
++}): number {
++  if (args.provider === "azure") {
++    return 0;
++  }
++  const model = args.model || (args.provider === "gemini" ? "gemini-2.5-flash" : "gpt-4o-mini");
++  const price = TOKEN_PRICES_PER_MILLION[model] ?? TOKEN_PRICES_PER_MILLION["gpt-4o-mini"];
++  return roundUsd(
++    (Math.max(0, args.tokensInput) / 1_000_000) * price.input +
++      (Math.max(0, args.tokensOutput) / 1_000_000) * price.output,
++  );
++}
++
++export function estimateAzurePronunciationCostUsd(audioSeconds: number): number {
++  const minutes = Math.max(0, audioSeconds) / 60;
++  return roundUsd(minutes * 0.006);
++}
++
++export function summarizeCost(rows: CostBreakdown[]): {
++  totalUsd: number;
++  byProvider: Record<string, number>;
++} {
++  const byProvider: Record<string, number> = {};
++  let totalUsd = 0;
++  for (const row of rows) {
++    totalUsd += row.estimatedCostUsd;
++    byProvider[row.provider] = roundUsd((byProvider[row.provider] ?? 0) + row.estimatedCostUsd);
++  }
++  return { totalUsd: roundUsd(totalUsd), byProvider };
++}
++
++function roundUsd(value: number): number {
++  return Number(value.toFixed(6));
++}
+added in remote
+  their  100644 7440ff4557c096130409bbaa9029155e1ff9c3f6 src/lib/placementBenchmark/latencyAnalyzer.ts
+@@ -0,0 +1,44 @@
++import { percentile } from "./aggregateMetrics.js";
++import type { BenchmarkStepMetric } from "./types.js";
++
++export interface LatencyBottleneck {
++  stepId: string;
++  scenarioId: string;
++  modality: string;
++  provider: string;
++  durationMs: number;
++  status: string;
++}
++
++export function findWorstLatencySteps(
++  steps: BenchmarkStepMetric[],
++  limit = 10,
++): LatencyBottleneck[] {
++  return [...steps]
++    .sort((a, b) => b.durationMs - a.durationMs)
++    .slice(0, limit)
++    .map((step) => ({
++      stepId: step.stepId,
++      scenarioId: step.scenarioId,
++      modality: step.modality,
++      provider: step.provider,
++      durationMs: step.durationMs,
++      status: step.status,
++    }));
++}
++
++export function latencyByModality(steps: BenchmarkStepMetric[]) {
++  const out: Record<string, { p50: number; p95: number; max: number; count: number }> = {};
++  for (const modality of new Set(steps.map((step) => step.modality))) {
++    const durations = steps
++      .filter((step) => step.modality === modality)
++      .map((step) => step.durationMs);
++    out[modality] = {
++      p50: percentile(durations, 0.5),
++      p95: percentile(durations, 0.95),
++      max: Math.max(0, ...durations),
++      count: durations.length,
++    };
++  }
++  return out;
++}
+added in remote
+  their  100644 3eb20e683c4abbc0a0866424dd31e78be0729533 src/lib/placementBenchmark/providerAnalysis.ts
+@@ -0,0 +1,22 @@
++import type { BenchmarkStepMetric } from "./types.js";
++
++export function analyzeProviderUsage(steps: BenchmarkStepMetric[]) {
++  const providerCounts: Record<string, number> = {};
++  const failoverEvents = steps.filter((step) => step.failover);
++  for (const step of steps) {
++    providerCounts[step.provider] = (providerCounts[step.provider] ?? 0) + 1;
++  }
++  return {
++    providerCounts,
++    failoverCount: failoverEvents.length,
++    failoverRate: steps.length ? Number((failoverEvents.length / steps.length).toFixed(4)) : 0,
++    failoverRecoverySuccessRate: failoverEvents.length
++      ? Number(
++          (
++            failoverEvents.filter((step) => step.status === "success").length /
++            failoverEvents.length
++          ).toFixed(4),
++        )
++      : 1,
++  };
++}
+added in remote
+  their  100644 bd2ece8efa765ddf3850553588ef352f04e70002 src/lib/placementBenchmark/regressionDetector.ts
+@@ -0,0 +1,52 @@
++import { aggregateBenchmarkRuns } from "./aggregateMetrics.js";
++import type { BenchmarkRunMetric } from "./types.js";
++
++export interface RegressionWarning {
++  metric: string;
++  baseline: number;
++  current: number;
++  deltaPercent: number;
++  severity: "warning" | "critical";
++}
++
++export function detectBenchmarkRegressions(args: {
++  baseline: BenchmarkRunMetric[];
++  current: BenchmarkRunMetric[];
++  latencyThresholdPercent?: number;
++  costThresholdPercent?: number;
++}): RegressionWarning[] {
++  const latencyThreshold = args.latencyThresholdPercent ?? 15;
++  const costThreshold = args.costThresholdPercent ?? 10;
++  const baseline = aggregateBenchmarkRuns(args.baseline);
++  const current = aggregateBenchmarkRuns(args.current);
++  const warnings: RegressionWarning[] = [];
++
++  pushIfRegressed(warnings, "p95LatencyMs", baseline.p95LatencyMs, current.p95LatencyMs, latencyThreshold);
++  pushIfRegressed(warnings, "averageCostUsd", baseline.averageCostUsd, current.averageCostUsd, costThreshold);
++  pushIfRegressed(warnings, "errorRate", baseline.errorRate, current.errorRate, 0.01, true);
++  pushIfRegressed(warnings, "failoverRate", baseline.failoverRate, current.failoverRate, 0.05, true);
++
++  return warnings;
++}
++
++function pushIfRegressed(
++  warnings: RegressionWarning[],
++  metric: string,
++  baseline: number,
++  current: number,
++  threshold: number,
++  absolute = false,
++) {
++  const deltaPercent = baseline === 0
++    ? current > 0 ? 100 : 0
++    : ((current - baseline) / baseline) * 100;
++  const failed = absolute ? current - baseline > threshold : deltaPercent > threshold;
++  if (!failed) return;
++  warnings.push({
++    metric,
++    baseline,
++    current,
++    deltaPercent: Number(deltaPercent.toFixed(2)),
++    severity: deltaPercent > threshold * 2 ? "critical" : "warning",
++  });
++}
+added in remote
+  their  100644 dd5ee7e6c2400bdc792314018265b5b5ba82b721 src/lib/placementBenchmark/types.ts
+@@ -0,0 +1,73 @@
++export type BenchmarkProvider = "openai" | "gemini" | "azure" | "none" | "local";
++export type BenchmarkStatus = "success" | "error" | "timeout" | "skipped";
++export type BenchmarkModality =
++  | "session"
++  | "writing"
++  | "reading"
++  | "listening"
++  | "speaking"
++  | "mercy"
++  | "azure-phoneme";
++
++export interface BenchmarkStepMetric {
++  runId: string;
++  scenarioId: string;
++  stepId: string;
++  modality: BenchmarkModality;
++  provider: BenchmarkProvider;
++  model?: string | null;
++  startedAt: string;
++  completedAt: string;
++  durationMs: number;
++  status: BenchmarkStatus;
++  tokensInput: number;
++  tokensOutput: number;
++  estimatedCostUsd: number;
++  attempts: BenchmarkProvider[];
++  failover: boolean;
++  errorCode?: string | null;
++  errorMessage?: string | null;
++  cefrEstimate?: string | null;
++}
++
++export interface BenchmarkRunMetric {
++  runId: string;
++  suiteId: string;
++  scenarioId: string;
++  startedAt: string;
++  completedAt: string;
++  status: BenchmarkStatus;
++  totalDurationMs: number;
++  totalTokensInput: number;
++  totalTokensOutput: number;
++  estimatedCostUsd: number;
++  steps: BenchmarkStepMetric[];
++}
++
++export interface AggregatedBenchmarkMetrics {
++  runCount: number;
++  stepCount: number;
++  p50LatencyMs: number;
++  p95LatencyMs: number;
++  p99LatencyMs: number;
++  averageCostUsd: number;
++  averageTokensInput: number;
++  averageTokensOutput: number;
++  failoverRate: number;
++  errorRate: number;
++  byModality: Record<string, {
++    count: number;
++    p50LatencyMs: number;
++    p95LatencyMs: number;
++    averageCostUsd: number;
++    errorRate: number;
++  }>;
++}
++
++export interface CostBreakdown {
++  provider: BenchmarkProvider;
++  model: string;
++  tokensInput: number;
++  tokensOutput: number;
++  estimatedCostUsd: number;
++}
+merged
+  result 100644 fc936916a4250c1299ba9896875a8450c7367d96 src/pages/admin/AdminDashboard.tsx
+  our    100644 f5ea724f16318791c4bfbc8e0af520e77b75b2e5 src/pages/admin/AdminDashboard.tsx
+@@ -681,6 +681,7 @@
+     { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
+     { title: "Analytics", desc: "DAU, feature usage, funnel, and room popularity (Level 9+).", href: "/admin/analytics", badge: "READY" },
+     { title: "Costs / Chi phí", desc: "Daily spend across OpenAI, ElevenLabs, Resend, Azure (Level 9+).", href: "/admin/cost-monitoring", badge: "READY" },
++    { title: "Placement Benchmarks", desc: "Placement V3 latency, token, cost, and failover evidence.", href: "/admin/placement-benchmarks", badge: "A33" },
+   ];
+ 
+   function go(href?: string) {
+@@ -1151,4 +1152,4 @@
+ 
+ /* New thing to learn:
+    The #1 multi-app admin bug is “wrong context.”
+-   If app_id is not obvious on every screen, mistakes are guaranteed. */
+\ No newline at end of file
++   If app_id is not obvious on every screen, mistakes are guaranteed. */
+added in remote
+  their  100644 e059e8f1cc364a856e1de85b64f3a754cecf60bf src/pages/admin/PlacementBenchmarkDashboard.tsx
+@@ -0,0 +1,312 @@
++import React, { useEffect, useMemo, useState } from "react";
++import {
++  Bar,
++  BarChart,
++  CartesianGrid,
++  ResponsiveContainer,
++  Tooltip,
++  XAxis,
++  YAxis,
++} from "recharts";
++
++import { useAdminAccess } from "@/hooks/admin/useAdminAccess";
++import { aggregateBenchmarkRuns } from "@/lib/placementBenchmark/aggregateMetrics";
++import { findWorstLatencySteps } from "@/lib/placementBenchmark/latencyAnalyzer";
++import { analyzeProviderUsage } from "@/lib/placementBenchmark/providerAnalysis";
++import { detectBenchmarkRegressions } from "@/lib/placementBenchmark/regressionDetector";
++import type { BenchmarkRunMetric, BenchmarkStepMetric } from "@/lib/placementBenchmark/types";
++import { supabase } from "@/lib/supabaseClient";
++
++interface ReportResponse {
++  ok: boolean;
++  error?: string;
++  runs?: DbRun[];
++  steps?: DbStep[];
++}
++
++interface DbRun {
++  id: string;
++  suite_id: string;
++  scenario_id: string;
++  started_at: string;
++  completed_at: string;
++  status: string;
++  total_duration_ms: number;
++  total_tokens_input: number;
++  total_tokens_output: number;
++  estimated_cost_usd: number;
++}
++
++interface DbStep {
++  run_id: string;
++  scenario_id: string;
++  step_id: string;
++  modality: string;
++  provider: string;
++  model: string | null;
++  started_at: string;
++  completed_at: string;
++  duration_ms: number;
++  status: string;
++  tokens_input: number;
++  tokens_output: number;
++  estimated_cost_usd: number;
++  attempts: string[];
++  failover: boolean;
++  error_code: string | null;
++  error_message: string | null;
++  cefr_estimate: string | null;
++}
++
++const wrap: React.CSSProperties = {
++  width: "100%",
++  minHeight: "100vh",
++  padding: "24px 24px 80px",
++  background: "#f8fafc",
++};
++const container: React.CSSProperties = {
++  maxWidth: 1200,
++  margin: "0 auto",
++  display: "flex",
++  flexDirection: "column",
++  gap: 18,
++};
++const card: React.CSSProperties = {
++  background: "#fff",
++  border: "1px solid rgba(15,23,42,0.08)",
++  borderRadius: 8,
++  padding: 18,
++  boxShadow: "0 2px 8px rgba(15,23,42,0.03)",
++};
++const grid: React.CSSProperties = {
++  display: "grid",
++  gap: 12,
++  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
++};
++const label: React.CSSProperties = {
++  color: "#64748b",
++  fontSize: 12,
++  fontWeight: 800,
++  textTransform: "uppercase",
++};
++const value: React.CSSProperties = {
++  color: "#0f172a",
++  fontSize: 24,
++  fontWeight: 900,
++  marginTop: 4,
++};
++
++export default function PlacementBenchmarkDashboard() {
++  const admin = useAdminAccess();
++  const level = admin.permissions.level;
++  const [runs, setRuns] = useState<BenchmarkRunMetric[]>([]);
++  const [loading, setLoading] = useState(true);
++  const [error, setError] = useState<string | null>(null);
++
++  useEffect(() => {
++    if (admin.loading || level < 9) return;
++    let alive = true;
++    setLoading(true);
++    setError(null);
++
++    void (async () => {
++      try {
++        const session = await supabase.auth.getSession();
++        const token = session.data.session?.access_token;
++        const baseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "").replace(/\/$/, "");
++        const anonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? "");
++        const response = await fetch(`${baseUrl}/functions/v1/placement-v3-benchmark-report`, {
++          headers: {
++            apikey: anonKey,
++            ...(token ? { Authorization: `Bearer ${token}` } : {}),
++          },
++        });
++        const body = (await response.json()) as ReportResponse;
++        if (!response.ok || !body.ok) {
++          throw new Error(body.error ?? `Report request failed: ${response.status}`);
++        }
++        if (alive) setRuns(mapDbRows(body.runs ?? [], body.steps ?? []));
++      } catch (err) {
++        if (alive) setError(err instanceof Error ? err.message : String(err));
++      } finally {
++        if (alive) setLoading(false);
++      }
++    })();
++
++    return () => {
++      alive = false;
++    };
++  }, [admin.loading, level]);
++
++  const steps = useMemo(() => runs.flatMap((run) => run.steps), [runs]);
++  const metrics = useMemo(() => aggregateBenchmarkRuns(runs), [runs]);
++  const provider = useMemo(() => analyzeProviderUsage(steps), [steps]);
++  const worst = useMemo(() => findWorstLatencySteps(steps, 8), [steps]);
++  const regressions = useMemo(() => {
++    const sorted = [...runs].sort((a, b) => a.startedAt.localeCompare(b.startedAt));
++    const midpoint = Math.floor(sorted.length / 2);
++    if (midpoint < 2) return [];
++    return detectBenchmarkRegressions({
++      baseline: sorted.slice(0, midpoint),
++      current: sorted.slice(midpoint),
++    });
++  }, [runs]);
++
++  if (admin.loading || loading) return <div style={wrap}>Loading placement benchmark data...</div>;
++  if (level < 9) return <div style={wrap}>Admin level 9 required.</div>;
++
++  return (
++    <div style={wrap} data-testid="placement-benchmark-dashboard">
++      <div style={container}>
++        <header>
++          <h1 style={{ margin: 0, fontSize: 28 }}>Placement V3 Benchmarks</h1>
++          <p style={{ margin: "6px 0 0", color: "#475569" }}>
++            Production-readiness latency, cost, provider routing, and regression data.
++          </p>
++        </header>
++
++        {error ? <div style={{ ...card, borderColor: "#ef4444" }}>{error}</div> : null}
++
++        <section style={grid} data-testid="benchmark-kpis">
++          <Kpi title="P50 latency" value={`${metrics.p50LatencyMs} ms`} />
++          <Kpi title="P95 latency" value={`${metrics.p95LatencyMs} ms`} />
++          <Kpi title="Avg cost/session" value={`$${metrics.averageCostUsd.toFixed(4)}`} />
++          <Kpi title="Failover rate" value={`${(provider.failoverRate * 100).toFixed(1)}%`} />
++          <Kpi title="Runs" value={String(metrics.runCount)} />
++          <Kpi title="Errors" value={`${(metrics.errorRate * 100).toFixed(1)}%`} />
++        </section>
++
++        <section style={card}>
++          <h2 style={{ marginTop: 0 }}>Provider Distribution</h2>
++          <div style={{ height: 260 }} data-testid="provider-distribution-chart">
++            <ResponsiveContainer>
++              <BarChart data={Object.entries(provider.providerCounts).map(([name, count]) => ({ name, count }))}>
++                <CartesianGrid strokeDasharray="3 3" />
++                <XAxis dataKey="name" />
++                <YAxis allowDecimals={false} />
++                <Tooltip />
++                <Bar dataKey="count" fill="#0f766e" />
++              </BarChart>
++            </ResponsiveContainer>
++          </div>
++        </section>
++
++        <section style={card}>
++          <h2 style={{ marginTop: 0 }}>Token and Cost Trends</h2>
++          <div style={{ overflowX: "auto" }}>
++            <table style={{ width: "100%", borderCollapse: "collapse" }}>
++              <thead>
++                <tr>
++                  <Th>Scenario</Th>
++                  <Th>Started</Th>
++                  <Th>Input tokens</Th>
++                  <Th>Output tokens</Th>
++                  <Th>Cost</Th>
++                  <Th>Status</Th>
++                </tr>
++              </thead>
++              <tbody>
++                {runs.slice(0, 20).map((run) => (
++                  <tr key={run.runId}>
++                    <Td>{run.scenarioId}</Td>
++                    <Td>{new Date(run.startedAt).toLocaleString()}</Td>
++                    <Td>{run.totalTokensInput}</Td>
++                    <Td>{run.totalTokensOutput}</Td>
++                    <Td>${run.estimatedCostUsd.toFixed(4)}</Td>
++                    <Td>{run.status}</Td>
++                  </tr>
++                ))}
++              </tbody>
++            </table>
++          </div>
++        </section>
++
++        <section style={grid}>
++          <div style={card}>
++            <h2 style={{ marginTop: 0 }}>Worst Steps</h2>
++            {worst.map((row) => (
++              <div key={`${row.scenarioId}:${row.stepId}`} style={{ padding: "10px 0", borderTop: "1px solid #e2e8f0" }}>
++                <strong>{row.stepId}</strong>
++                <div style={{ color: "#475569", fontSize: 13 }}>
++                  {row.scenarioId} · {row.modality} · {row.provider} · {row.durationMs} ms
++                </div>
++              </div>
++            ))}
++          </div>
++          <div style={card} data-testid="benchmark-regression-warnings">
++            <h2 style={{ marginTop: 0 }}>Regression Warnings</h2>
++            {regressions.length === 0 ? (
++              <p style={{ color: "#475569" }}>No regression warnings in the selected window.</p>
++            ) : (
++              regressions.map((warning) => (
++                <div key={warning.metric} style={{ padding: "10px 0", borderTop: "1px solid #e2e8f0" }}>
++                  <strong>{warning.metric}</strong>
++                  <div style={{ color: "#475569", fontSize: 13 }}>
++                    {warning.baseline} → {warning.current} ({warning.deltaPercent}%)
++                  </div>
++                </div>
++              ))
++            )}
++          </div>
++        </section>
++      </div>
++    </div>
++  );
++}
++
++function Kpi({ title, value: text }: { title: string; value: string }) {
++  return (
++    <div style={card}>
++      <div style={label}>{title}</div>
++      <div style={value}>{text}</div>
++    </div>
++  );
++}
++
++function Th({ children }: { children: React.ReactNode }) {
++  return <th style={{ textAlign: "left", padding: 10, borderBottom: "1px solid #cbd5e1" }}>{children}</th>;
++}
++
++function Td({ children }: { children: React.ReactNode }) {
++  return <td style={{ padding: 10, borderBottom: "1px solid #e2e8f0" }}>{children}</td>;
++}
++
++function mapDbRows(dbRuns: DbRun[], dbSteps: DbStep[]): BenchmarkRunMetric[] {
++  return dbRuns.map((run) => {
++    const steps: BenchmarkStepMetric[] = dbSteps
++      .filter((step) => step.run_id === run.id)
++      .map((step) => ({
++        runId: step.run_id,
++        scenarioId: step.scenario_id,
++        stepId: step.step_id,
++        modality: step.modality as BenchmarkStepMetric["modality"],
++        provider: step.provider as BenchmarkStepMetric["provider"],
++        model: step.model,
++        startedAt: step.started_at,
++        completedAt: step.completed_at,
++        durationMs: Number(step.duration_ms ?? 0),
++        status: step.status as BenchmarkStepMetric["status"],
++        tokensInput: Number(step.tokens_input ?? 0),
++        tokensOutput: Number(step.tokens_output ?? 0),
++        estimatedCostUsd: Number(step.estimated_cost_usd ?? 0),
++        attempts: (step.attempts ?? []) as BenchmarkStepMetric["attempts"],
++        failover: Boolean(step.failover),
++        errorCode: step.error_code,
++        errorMessage: step.error_message,
++        cefrEstimate: step.cefr_estimate,
++      }));
++    return {
++      runId: run.id,
++      suiteId: run.suite_id,
++      scenarioId: run.scenario_id,
++      startedAt: run.started_at,
++      completedAt: run.completed_at,
++      status: run.status as BenchmarkRunMetric["status"],
++      totalDurationMs: Number(run.total_duration_ms ?? 0),
++      totalTokensInput: Number(run.total_tokens_input ?? 0),
++      totalTokensOutput: Number(run.total_tokens_output ?? 0),
++      estimatedCostUsd: Number(run.estimated_cost_usd ?? 0),
++      steps,
++    };
++  });
++}
+changed in both
+  base   100644 c86b6c279151d55c772b2bff600cbf69d5ec35d9 src/router/AppRouter.tsx
+  our    100644 4ec0cf43a6064cf30cd0af78efd0cdd33b1a4c8e src/router/AppRouter.tsx
+  their  100644 65bce4c190c241eac0cd4d5f441c98b6f575c7ae src/router/AppRouter.tsx
+@@ -282,6 +282,7 @@
+ const FrontendPerformance     = lazyWithRetry(() => import("@/pages/admin/FrontendPerformance"));
+ const RetentionDashboard      = lazyWithRetry(() => import("@/pages/admin/RetentionDashboard"));
+ const BehavioralAnalytics     = lazyWithRetry(() => import("@/pages/admin/BehavioralAnalytics"));
++const PlacementBenchmarkDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementBenchmarkDashboard"));
+ const RoomLoadDiagnostics     = lazyWithRetry(() =>
+   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
+     default: m.RoomLoadDiagnostics,
+@@ -1673,6 +1674,7 @@
+               <Route path="frontend-perf"        element={<LazyPage><FrontendPerformance /></LazyPage>} />
+               <Route path="retention"            element={<LazyPage><RetentionDashboard /></LazyPage>} />
+               <Route path="behavioral"           element={<LazyPage><BehavioralAnalytics /></LazyPage>} />
++              <Route path="placement-benchmarks"  element={<LazyPage><PlacementBenchmarkDashboard /></LazyPage>} />
+               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
+               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
+               <Route path="teacher-feedback"     element={<LazyPage><TeacherFeedbackTriagePage /></LazyPage>} />
+added in remote
+  their  100644 db1be8f7869a868356eb652e80bdfe8a9acffb10 supabase/functions/placement-v3-benchmark-report/index.ts
+@@ -0,0 +1,113 @@
++import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
++import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
++import { getUserFromAuthHeader } from "../_shared/security.ts";
++import { wrapHandler } from "../_shared/sentry.ts";
++
++const corsHeaders = {
++  "Access-Control-Allow-Origin": "*",
++  "Access-Control-Allow-Headers":
++    "authorization, x-client-info, apikey, content-type",
++  "Access-Control-Allow-Methods": "GET, OPTIONS",
++};
++
++const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
++const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
++const db = createClient(supabaseUrl, serviceRoleKey, {
++  auth: { persistSession: false },
++});
++
++serve(
++  wrapHandler("placement-v3-benchmark-report", async (req) => {
++    if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
++    if (req.method !== "GET") return json({ ok: false, error: "method_not_allowed" }, 405);
++
++    const user = await getUserFromAuthHeader(req);
++    if (!user) return json({ ok: false, error: "auth_required" }, 401);
++
++    const { data: level, error: levelError } = await db.rpc("get_admin_level", {
++      p_user_id: user.id,
++    });
++    if (levelError || Number(level ?? 0) < 9) {
++      return json({ ok: false, error: "admin_required" }, 403);
++    }
++
++    const url = new URL(req.url);
++    const since = url.searchParams.get("since") ??
++      new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
++    const limit = Math.min(500, Math.max(1, Number(url.searchParams.get("limit") ?? 200)));
++
++    const { data: runs, error: runsError } = await db
++      .from("placement_v3_benchmark_runs")
++      .select("*")
++      .gte("started_at", since)
++      .order("started_at", { ascending: false })
++      .limit(limit);
++    if (runsError) return json({ ok: false, error: runsError.message }, 500);
++
++    const runIds = (runs ?? []).map((row: { id: string }) => row.id);
++    const { data: steps, error: stepsError } = runIds.length
++      ? await db
++        .from("placement_v3_benchmark_steps")
++        .select("*")
++        .in("run_id", runIds)
++      : { data: [], error: null };
++    if (stepsError) return json({ ok: false, error: stepsError.message }, 500);
++
++    return json({
++      ok: true,
++      since,
++      generatedAt: new Date().toISOString(),
++      runs: runs ?? [],
++      steps: steps ?? [],
++      summary: summarize(runs ?? [], steps ?? []),
++    });
++  }),
++);
++
++function summarize(runs: Record<string, unknown>[], steps: Record<string, unknown>[]) {
++  const durations = steps.map((row) => Number(row.duration_ms ?? 0)).sort((a, b) => a - b);
++  const failovers = steps.filter((row) => row.failover === true);
++  const errors = steps.filter((row) => row.status !== "success");
++  const providerCounts: Record<string, number> = {};
++  const modalityCounts: Record<string, number> = {};
++  for (const row of steps) {
++    const provider = String(row.provider ?? "none");
++    const modality = String(row.modality ?? "unknown");
++    providerCounts[provider] = (providerCounts[provider] ?? 0) + 1;
++    modalityCounts[modality] = (modalityCounts[modality] ?? 0) + 1;
++  }
++  return {
++    runCount: runs.length,
++    stepCount: steps.length,
++    p50LatencyMs: percentile(durations, 0.5),
++    p95LatencyMs: percentile(durations, 0.95),
++    estimatedCostUsd: round(sum(runs, "estimated_cost_usd")),
++    avgCostPerSessionUsd: runs.length ? round(sum(runs, "estimated_cost_usd") / runs.length) : 0,
++    tokensInput: sum(runs, "total_tokens_input"),
++    tokensOutput: sum(runs, "total_tokens_output"),
++    failoverRate: steps.length ? round(failovers.length / steps.length) : 0,
++    errorRate: steps.length ? round(errors.length / steps.length) : 0,
++    providerCounts,
++    modalityCounts,
++  };
++}
++
++function percentile(sortedAsc: number[], p: number): number {
++  if (!sortedAsc.length) return 0;
++  return sortedAsc[Math.min(sortedAsc.length - 1, Math.ceil(sortedAsc.length * p) - 1)];
++}
++
++function sum(rows: Record<string, unknown>[], column: string): number {
++  return rows.reduce((total, row) => total + Number(row[column] ?? 0), 0);
++}
++
++function round(value: number): number {
++  return Number(value.toFixed(6));
++}
++
++function json(body: unknown, status = 200): Response {
++  return new Response(JSON.stringify(body), {
++    status,
++    headers: { ...corsHeaders, "Content-Type": "application/json" },
++  });
++}
+added in both
+  our    100644 3642599b2e0327c1a01eda886ddae6a96cc17917 supabase/functions/placement-v3-session/graderClient.ts
+  their  100644 b3a463f37d1448c5c714e7b4bff7a302b3c4319c supabase/functions/placement-v3-session/graderClient.ts
+@@ -8,7 +8,10 @@
+ 
+ export interface WritingGraderClient {
+   gradeWriting(input: GraderInput): Promise<GraderResult>;
++<<<<<<< .our
+   gradeConversation?: (input: GraderInput) => Promise<GraderResult>;
++=======
++>>>>>>> .their
+ }
+ 
+ /**
+@@ -103,6 +106,7 @@
+         clearTimeout(timeout);
+       }
+     },
++<<<<<<< .our
+     async gradeConversation(input) {
+       const controller = new AbortController();
+       const timeout = setTimeout(
+@@ -163,6 +167,8 @@
+         clearTimeout(timeout);
+       }
+     },
++=======
++>>>>>>> .their
+   };
+ }
+ 
+@@ -173,9 +179,12 @@
+   if (input.modality === "writing" && writingClient) {
+     return writingClient.gradeWriting(input);
+   }
++<<<<<<< .our
+   if (input.modality === "conversation" && writingClient?.gradeConversation) {
+     return writingClient.gradeConversation(input);
+   }
++=======
++>>>>>>> .their
+   return stubGrade(input);
+ }
+ 
+@@ -211,6 +220,7 @@
+   const words = text ? text.split(/\s+/).length : 0;
+   const level = words < 8 ? "A1" : words < 25 ? "A2" : words < 60 ? "B1" : words < 120 ? "B2" : "C1";
+   const hasVietnamese = /[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(text);
++<<<<<<< .our
+   const promptText = input.prompt.promptText.toLowerCase();
+   const responseText = text.toLowerCase();
+   const copiedPrompt = text.length > 20 &&
+@@ -218,6 +228,9 @@
+       responseText.includes(promptText) ||
+       looksLikeInstructionEcho(responseText) ||
+       lexicalOverlap(promptText, responseText) >= 0.75);
++=======
++  const copiedPrompt = text.length > 20 && input.prompt.promptText.toLowerCase().includes(text.toLowerCase());
++>>>>>>> .their
+   return {
+     overallLevel: copiedPrompt ? "A1" : level,
+     confidence: copiedPrompt ? 0.3 : Math.min(0.78, 0.45 + words / 180),
+@@ -234,6 +247,7 @@
+   };
+ }
+ 
++<<<<<<< .our
+ function looksLikeInstructionEcho(text: string): boolean {
+   return /\bwrite in english\b/.test(text) &&
+     (/\b(a1|a2|b1|b2|c1|c2)\b/.test(text) || /\bdaily routine\b/.test(text));
+@@ -250,6 +264,8 @@
+   return shared / Math.min(left.size, right.size);
+ }
+ 
++=======
++>>>>>>> .their
+ function normalizeAssessment(raw: unknown): CEFRAssessment | null {
+   if (!raw || typeof raw !== "object") return null;
+   const obj = raw as Partial<CEFRAssessment> & {
+@@ -300,6 +316,7 @@
+   };
+ }
+ 
++<<<<<<< .our
+ function normalizeConversationAssessment(raw: unknown): CEFRAssessment | null {
+   if (!raw || typeof raw !== "object") return null;
+   const obj = raw as {
+@@ -357,6 +374,8 @@
+   };
+ }
+ 
++=======
++>>>>>>> .their
+ function normalizeSubskills(
+   subskills: Record<string, { level?: unknown; confidence?: unknown; notes?: unknown }> | undefined,
+ ): CEFRAssessment["criteria"] {
+added in both
+  our    100644 4de5db9b13618adcfb9abc57dd0ff39e8cd285a2 supabase/functions/placement-v3-session/modality.ts
+  their  100644 f79c5c40d0d73d225c6fbb791cedeb8c5b101f2f supabase/functions/placement-v3-session/modality.ts
+@@ -10,13 +10,17 @@
+   type PromptTask,
+   type SessionMetadata,
+ } from "./types.ts";
++<<<<<<< .our
+ import { PLACEMENT_V3_PROMPTS } from "../../../src/data/placement/v3/prompts/index.ts";
++=======
++>>>>>>> .their
+ 
+ export const MIN_TASKS_PER_MODALITY = 1;
+ export const MAX_TASKS_PER_MODALITY = 3;
+ export const CONFIDENCE_STOP_THRESHOLD = 0.72;
+ export const MAX_TOTAL_TASKS = 11;
+ 
++<<<<<<< .our
+ export const PROMPTS: PromptTask[] = PLACEMENT_V3_PROMPTS.map((prompt) => ({
+   id: prompt.id,
+   modality: prompt.modality,
+@@ -40,6 +44,43 @@
+     questions: "questions" in prompt ? prompt.questions : undefined,
+   },
+ }));
++=======
++// Temporary A25 stub. The real prompt library will live under
++// src/data/placement/v3/prompts/ once that PR lands. Keep ids stable so
++// persisted response rows remain debuggable.
++export const PROMPTS: PromptTask[] = MODALITY_ORDER.flatMap((modality) =>
++  CEFR_ORDER.flatMap((cefr) =>
++    [1, 2, 3].map((n) => ({
++      id: `stub_${modality}_${cefr}_${n}`,
++      modality,
++      cefr,
++      expectedResponse: modality === "speaking" ? "audio" : "text",
++      promptText: promptTextFor(modality, cefr, n),
++      metadata: { source: "placement-v3-session-stub" },
++    } satisfies PromptTask)),
++  )
++);
++
++function promptTextFor(
++  modality: PlacementV3Modality,
++  cefr: CEFRLevel,
++  n: number,
++): string {
++  const stem: Record<PlacementV3Modality, string> = {
++    writing: "Write in English",
++    speaking: "Speak in English",
++    reading: "Read the short situation and answer in English",
++    listening: "Listen to the short situation and answer in English",
++    conversation: "Reply naturally in English",
++  };
++  const topics = [
++    "about your daily routine and one small problem you solved.",
++    "about studying English as a Vietnamese learner.",
++    "about a work or school decision and the reason behind it.",
++  ];
++  return `${stem[modality]} at ${cefr}: ${topics[(n - 1) % topics.length]}`;
++}
++>>>>>>> .their
+ 
+ export function cefrToNumber(level: CEFRLevel): number {
+   return Math.max(0, CEFR_ORDER.indexOf(level));
+added in both
+  our    100644 dec55038c2c3c2ceb421057a24515dd561cafa42 supabase/functions/placement-v3-session/persistence.ts
+  their  100644 7557cc9a2a6bce924b83e4d7b535a0fe619db982 supabase/functions/placement-v3-session/persistence.ts
+@@ -1,5 +1,8 @@
+ import {
++<<<<<<< .our
+   CEFR_ORDER,
++=======
++>>>>>>> .their
+   type LanguagePair,
+   type OrchestratorDeps,
+   type PersistSessionInput,
+@@ -7,8 +10,13 @@
+   type PlacementV3Response,
+   type PlacementV3Session,
+   type PromptTask,
++<<<<<<< .our
+   type Recommendation,
+ } from "./types.ts";
++=======
++} from "./types.ts";
++import { recommendLessonsStub } from "./scoring.ts";
++>>>>>>> .their
+ 
+ type QueryBuilder = {
+   select: (columns?: string, options?: unknown) => QueryBuilder;
+@@ -127,6 +135,7 @@
+ }
+ 
+ export async function recommendLessons(profile: PlacementV3Profile) {
++<<<<<<< .our
+   const imported = await tryAppRecommender(profile);
+   if (imported.length) return imported;
+   return recommendLessonsFromProfile(profile);
+@@ -201,6 +210,11 @@
+       priority: 0.72,
+     },
+   ];
++=======
++  // Temporary A26 stub. Replace with src/lib/placement/v3/recommender.ts
++  // when that PR lands and is importable from edge-function code.
++  return recommendLessonsStub(profile);
++>>>>>>> .their
+ }
+ 
+ function sessionInsertRow(input: PersistSessionInput) {
+@@ -293,3 +307,7 @@
+     updated_at: input.now,
+   };
+ }
++<<<<<<< .our
++=======
++
++>>>>>>> .their
+added in remote
+  their  100644 38efd4f2ad0a12f581b172d96b1eedcea442621b supabase/migrations/20260520111844_placement_v3_benchmarks.sql
+@@ -0,0 +1,132 @@
++-- Placement V3 production benchmarking harness.
++-- Stores operator-run benchmark evidence only; no user-visible product data.
++
++create table if not exists public.placement_v3_benchmark_runs (
++  id text primary key,
++  suite_id text not null,
++  scenario_id text not null,
++  started_at timestamptz not null,
++  completed_at timestamptz,
++  status text not null check (status in ('success', 'error', 'timeout', 'skipped')),
++  total_duration_ms integer not null default 0 check (total_duration_ms >= 0),
++  total_tokens_input integer not null default 0 check (total_tokens_input >= 0),
++  total_tokens_output integer not null default 0 check (total_tokens_output >= 0),
++  estimated_cost_usd numeric(12,6) not null default 0 check (estimated_cost_usd >= 0),
++  metadata jsonb not null default '{}'::jsonb,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_benchmark_steps (
++  id text primary key,
++  run_id text not null references public.placement_v3_benchmark_runs(id) on delete cascade,
++  scenario_id text not null,
++  step_id text not null,
++  modality text not null,
++  provider text not null,
++  model text,
++  started_at timestamptz not null,
++  completed_at timestamptz,
++  duration_ms integer not null default 0 check (duration_ms >= 0),
++  status text not null check (status in ('success', 'error', 'timeout', 'skipped')),
++  tokens_input integer not null default 0 check (tokens_input >= 0),
++  tokens_output integer not null default 0 check (tokens_output >= 0),
++  estimated_cost_usd numeric(12,6) not null default 0 check (estimated_cost_usd >= 0),
++  attempts text[] not null default '{}'::text[],
++  failover boolean not null default false,
++  error_code text,
++  error_message text,
++  cefr_estimate text,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_benchmark_provider_usage (
++  id bigserial primary key,
++  run_id text not null references public.placement_v3_benchmark_runs(id) on delete cascade,
++  step_row_id text not null references public.placement_v3_benchmark_steps(id) on delete cascade,
++  provider text not null,
++  model text,
++  tokens_input integer not null default 0,
++  tokens_output integer not null default 0,
++  estimated_cost_usd numeric(12,6) not null default 0,
++  latency_ms integer not null default 0,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_benchmark_failover_events (
++  id bigserial primary key,
++  run_id text not null references public.placement_v3_benchmark_runs(id) on delete cascade,
++  step_row_id text not null references public.placement_v3_benchmark_steps(id) on delete cascade,
++  scenario_id text not null,
++  step_id text not null,
++  from_provider text,
++  to_provider text,
++  attempts text[] not null default '{}'::text[],
++  recovered boolean not null default false,
++  latency_ms integer not null default 0,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_benchmark_error_events (
++  id bigserial primary key,
++  run_id text not null references public.placement_v3_benchmark_runs(id) on delete cascade,
++  step_row_id text references public.placement_v3_benchmark_steps(id) on delete cascade,
++  scenario_id text not null,
++  step_id text,
++  modality text,
++  provider text,
++  error_code text,
++  error_message text,
++  latency_ms integer not null default 0,
++  created_at timestamptz not null default now()
++);
++
++create index if not exists placement_v3_benchmark_runs_suite_idx
++  on public.placement_v3_benchmark_runs (suite_id, started_at desc);
++create index if not exists placement_v3_benchmark_runs_scenario_idx
++  on public.placement_v3_benchmark_runs (scenario_id, started_at desc);
++create index if not exists placement_v3_benchmark_steps_run_idx
++  on public.placement_v3_benchmark_steps (run_id);
++create index if not exists placement_v3_benchmark_steps_modality_idx
++  on public.placement_v3_benchmark_steps (modality, started_at desc);
++create index if not exists placement_v3_benchmark_steps_provider_idx
++  on public.placement_v3_benchmark_steps (provider, started_at desc);
++create index if not exists placement_v3_benchmark_failover_run_idx
++  on public.placement_v3_benchmark_failover_events (run_id);
++create index if not exists placement_v3_benchmark_error_run_idx
++  on public.placement_v3_benchmark_error_events (run_id);
++
++alter table public.placement_v3_benchmark_runs enable row level security;
++alter table public.placement_v3_benchmark_steps enable row level security;
++alter table public.placement_v3_benchmark_provider_usage enable row level security;
++alter table public.placement_v3_benchmark_failover_events enable row level security;
++alter table public.placement_v3_benchmark_error_events enable row level security;
++
++create policy "admins read placement benchmark runs"
++  on public.placement_v3_benchmark_runs
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement benchmark steps"
++  on public.placement_v3_benchmark_steps
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement benchmark provider usage"
++  on public.placement_v3_benchmark_provider_usage
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement benchmark failovers"
++  on public.placement_v3_benchmark_failover_events
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement benchmark errors"
++  on public.placement_v3_benchmark_error_events
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
+added in remote
+  their  100644 15eee6614f12ae38369724466d79090ed5aceb61 tests/e2e/placement-benchmark-dashboard.spec.ts
+@@ -0,0 +1,81 @@
++import { expect, test } from "./fixtures/test";
++import { TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, hasTestAdmin, BASE_URL } from "./fixtures/env";
++import { signInThroughUi } from "./fixtures/auth";
++
++test.describe("placement benchmark dashboard", () => {
++  test.skip(!hasTestAdmin(), "Requires TEST_ADMIN_* credentials. See tests/e2e/README.md.");
++
++  test.beforeEach(async ({ page }) => {
++    await page.route("**/functions/v1/placement-v3-benchmark-report", async (route) => {
++      await route.fulfill({
++        status: 200,
++        contentType: "application/json",
++        body: JSON.stringify({
++          ok: true,
++          runs: [
++            {
++              id: "run-1",
++              suite_id: "suite",
++              scenario_id: "beginner-a1",
++              started_at: "2026-05-20T10:00:00.000Z",
++              completed_at: "2026-05-20T10:01:00.000Z",
++              status: "success",
++              total_duration_ms: 60000,
++              total_tokens_input: 1000,
++              total_tokens_output: 250,
++              estimated_cost_usd: 0.002,
++            },
++          ],
++          steps: [
++            {
++              run_id: "run-1",
++              scenario_id: "beginner-a1",
++              step_id: "reading",
++              modality: "reading",
++              provider: "openai",
++              model: "gpt-4o-mini",
++              started_at: "2026-05-20T10:00:00.000Z",
++              completed_at: "2026-05-20T10:00:02.000Z",
++              duration_ms: 2000,
++              status: "success",
++              tokens_input: 500,
++              tokens_output: 120,
++              estimated_cost_usd: 0.0002,
++              attempts: ["openai"],
++              failover: false,
++              error_code: null,
++              error_message: null,
++              cefr_estimate: "A1",
++            },
++          ],
++        }),
++      });
++    });
++    await signInThroughUi(page, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD);
++    await page.goto(`${BASE_URL}/admin/placement-benchmarks`);
++  });
++
++  test("shows KPI cards", async ({ page }) => {
++    await expect(page.getByTestId("placement-benchmark-dashboard")).toBeVisible();
++    await expect(page.getByTestId("benchmark-kpis")).toContainText("P95 latency");
++  });
++
++  test("shows provider distribution", async ({ page }) => {
++    await expect(page.getByTestId("provider-distribution-chart")).toBeVisible();
++    await expect(page.getByText("Provider Distribution")).toBeVisible();
++  });
++
++  test("shows token and cost table", async ({ page }) => {
++    await expect(page.getByText("Token and Cost Trends")).toBeVisible();
++    await expect(page.getByText("beginner-a1")).toBeVisible();
++  });
++
++  test("shows worst-performing steps", async ({ page }) => {
++    await expect(page.getByText("Worst Steps")).toBeVisible();
++    await expect(page.getByText("reading")).toBeVisible();
++  });
++
++  test("shows regression panel", async ({ page }) => {
++    await expect(page.getByTestId("benchmark-regression-warnings")).toBeVisible();
++  });
++});
+added in remote
+  their  100644 dde02a62a7e26f23bc66bc590b4468ae1dfa9958 tests/integration/placement-v3-benchmarking/benchmarking.test.ts
+@@ -0,0 +1,132 @@
++import { describe, expect, it } from "vitest";
++
++import { aggregateBenchmarkRuns, percentile } from "../../../src/lib/placementBenchmark/aggregateMetrics";
++import { estimateTokenCostUsd, summarizeCost } from "../../../src/lib/placementBenchmark/costEstimator";
++import { findWorstLatencySteps, latencyByModality } from "../../../src/lib/placementBenchmark/latencyAnalyzer";
++import { analyzeProviderUsage } from "../../../src/lib/placementBenchmark/providerAnalysis";
++import { detectBenchmarkRegressions } from "../../../src/lib/placementBenchmark/regressionDetector";
++import type { BenchmarkRunMetric } from "../../../src/lib/placementBenchmark/types";
++
++function run(overrides: Partial<BenchmarkRunMetric> = {}): BenchmarkRunMetric {
++  const base: BenchmarkRunMetric = {
++    runId: "run-1",
++    suiteId: "suite-1",
++    scenarioId: "beginner-a1",
++    startedAt: "2026-05-20T10:00:00.000Z",
++    completedAt: "2026-05-20T10:01:00.000Z",
++    status: "success",
++    totalDurationMs: 60_000,
++    totalTokensInput: 1000,
++    totalTokensOutput: 300,
++    estimatedCostUsd: 0.001,
++    steps: [
++      {
++        runId: "run-1",
++        scenarioId: "beginner-a1",
++        stepId: "reading",
++        modality: "reading",
++        provider: "openai",
++        model: "gpt-4o-mini",
++        startedAt: "2026-05-20T10:00:00.000Z",
++        completedAt: "2026-05-20T10:00:02.000Z",
++        durationMs: 2000,
++        status: "success",
++        tokensInput: 600,
++        tokensOutput: 120,
++        estimatedCostUsd: 0.000162,
++        attempts: ["openai"],
++        failover: false,
++      },
++      {
++        runId: "run-1",
++        scenarioId: "beginner-a1",
++        stepId: "speaking",
++        modality: "speaking",
++        provider: "gemini",
++        model: "gemini-2.5-flash",
++        startedAt: "2026-05-20T10:00:02.000Z",
++        completedAt: "2026-05-20T10:00:08.000Z",
++        durationMs: 6000,
++        status: "success",
++        tokensInput: 400,
++        tokensOutput: 180,
++        estimatedCostUsd: 0.00057,
++        attempts: ["openai", "gemini"],
++        failover: true,
++      },
++    ],
++  };
++  return { ...base, ...overrides };
++}
++
++describe("placement v3 benchmark integration utilities", () => {
++  it("1 aggregates run and step counts", () => {
++    const metrics = aggregateBenchmarkRuns([run()]);
++    expect(metrics.runCount).toBe(1);
++    expect(metrics.stepCount).toBe(2);
++  });
++
++  it("2 calculates percentile latency", () => {
++    expect(percentile([100, 200, 300, 400], 0.95)).toBe(400);
++    expect(percentile([400, 100, 300, 200], 0.5)).toBe(200);
++  });
++
++  it("3 aggregates modality-level p95 latency", () => {
++    const metrics = aggregateBenchmarkRuns([run()]);
++    expect(metrics.byModality.speaking.p95LatencyMs).toBe(6000);
++  });
++
++  it("4 estimates OpenAI token cost", () => {
++    expect(estimateTokenCostUsd({
++      provider: "openai",
++      model: "gpt-4o-mini",
++      tokensInput: 1_000_000,
++      tokensOutput: 1_000_000,
++    })).toBe(0.75);
++  });
++
++  it("5 summarizes cost by provider", () => {
++    const summary = summarizeCost([
++      { provider: "openai", model: "gpt-4o-mini", tokensInput: 1, tokensOutput: 1, estimatedCostUsd: 0.1 },
++      { provider: "gemini", model: "gemini-2.5-flash", tokensInput: 1, tokensOutput: 1, estimatedCostUsd: 0.2 },
++    ]);
++    expect(summary.totalUsd).toBe(0.3);
++    expect(summary.byProvider.gemini).toBe(0.2);
++  });
++
++  it("6 identifies worst latency steps", () => {
++    const worst = findWorstLatencySteps(run().steps, 1);
++    expect(worst[0].stepId).toBe("speaking");
++  });
++
++  it("7 groups latency by modality", () => {
++    const grouped = latencyByModality(run().steps);
++    expect(grouped.reading.count).toBe(1);
++    expect(grouped.speaking.max).toBe(6000);
++  });
++
++  it("8 analyzes provider failover", () => {
++    const provider = analyzeProviderUsage(run().steps);
++    expect(provider.providerCounts.openai).toBe(1);
++    expect(provider.failoverRecoverySuccessRate).toBe(1);
++  });
++
++  it("9 detects latency regression", () => {
++    const baseline = run({ runId: "base", totalDurationMs: 10_000 });
++    const current = run({
++      runId: "current",
++      totalDurationMs: 20_000,
++      steps: run().steps.map((step) => ({ ...step, durationMs: step.durationMs * 3 })),
++    });
++    const warnings = detectBenchmarkRegressions({ baseline: [baseline], current: [current] });
++    expect(warnings.some((warning) => warning.metric === "p95LatencyMs")).toBe(true);
++  });
++
++  it("10 detects cost regression", () => {
++    const warnings = detectBenchmarkRegressions({
++      baseline: [run({ estimatedCostUsd: 0.01 })],
++      current: [run({ runId: "current", estimatedCostUsd: 0.02 })],
++    });
++    expect(warnings.some((warning) => warning.metric === "averageCostUsd")).toBe(true);
++  });
++});
+changed in both
+  base   100644 a2239f5534035e1ad95ef4dc1fcc961825df0fbd tsconfig.functions.json
+  our    100644 fb28360b9f677a82573effd5ffe3e13c2dae62c2 tsconfig.functions.json
+  their  100644 b86b745d1e988df4dd7d9d9f5e166d27d39ba5e6 tsconfig.functions.json

@@ -1,0 +1,2170 @@
+PR #943
+branch=origin/pr/943
+merge_base=a360783cafb35941efad68ad5fe548da30633293
+origin_main=de6d31c2825df2c70bf0669e251007e55129710b
+head=06334d0d1a63ac2721a8080f56e5d448a1dbacf6
+--- git merge-tree output ---
+added in remote
+  their  100644 ee3bf19c822406418bab8f0f0e7091f49ff97deb docs/placement-v3/drift-detection/PR_BODY.md
+@@ -0,0 +1,119 @@
++# Summary
++
++Adds Placement V3 grading drift infrastructure:
++
++- replay harness for calibration samples
++- drift math library for CEFR deltas, outliers, provider variance, retry variance, and taxonomy variance
++- Supabase persistence schema for replay runs, replay scores, drift alerts, and provider variance
++- admin-only drift report edge function
++- admin dashboard route for operator visibility
++- 40 replay fixtures across reading, listening, and speaking
++- methodology, replay history, initial findings, blocker report, and production risk docs
++
++This PR is finalized as **replay infrastructure complete; live replay blocked**.
++
++Unrelated untracked A35/benchmark/adaptive-generation files were intentionally excluded from this A36 commit.
++
++# Replay Coverage
++
++- Fixtures: 40
++- Modalities covered: reading, listening, speaking
++- Writing: not included because `placement-v3-grade-writing` is absent in this branch
++- Providers intended: live grader routing via current Supabase edge functions
++- Live replay status: blocked before grader calls
++
++# Drift Findings
++
++No live drift metrics are claimed.
++
++The required baseline command was attempted:
++
++```bash
++pnpm tsx scripts/placement-v3/run-grading-replay.ts --batch baseline-01
++```
++
++It failed because this shell did not have:
++
++- `SUPABASE_URL` or `PLACEMENT_REPLAY_SUPABASE_URL`
++- `SUPABASE_ANON_KEY` or `PLACEMENT_REPLAY_ANON_KEY`
++
++The blocker is documented in:
++
++- `docs/placement-v3/drift-detection/a36-blockers.md`
++
++# Stability Iterations
++
++No prompt/config tuning iterations were performed because live replay was blocked before real grader calls. No fake replay output, fake variance, fake latency, or fake provider disagreement was generated.
++
++# Risks
++
++- Live replay remains unverified until credentials are present.
++- Database persistence remains unverified against production until `--persist=true` is run with a service-role key.
++- Provider variance is limited by current grader trace data; current CEFR graders do not expose full failover attempt paths.
++- Writing replay is blocked until the writing grader exists.
++- `pnpm tsc -p tsconfig.scripts.json --noEmit` still fails only because of existing unrelated script errors, not this PR.
++
++# Evidence
++
++Passing verification exactly as run:
++
++```bash
++pnpm vitest run tests/integration/placement-v3-drift-detection/drift-detection.test.ts
++pnpm playwright test -c playwright.smoke.config.ts placement-drift-dashboard.spec.ts
++pnpm tsc -p tsconfig.typecheck.json --noEmit
++pnpm tsc --noEmit
++pnpm vite build
++pnpm tsc -p tsconfig.functions.json --noEmit
++```
++
++Additional check:
++
++```bash
++jq length docs/placement-v3/drift-detection/replay-fixtures/placement-v3-replay-samples.json
++```
++
++Returned `40`.
++
++# Reviewer Checklist
++
++To rerun live replay after adding env vars:
++
++1. Set live replay env vars:
++
++```bash
++export PLACEMENT_REPLAY_SUPABASE_URL="https://<project>.supabase.co"
++export PLACEMENT_REPLAY_ANON_KEY="<anon-key>"
++```
++
++2. Run baseline replay without persistence first:
++
++```bash
++pnpm tsx scripts/placement-v3/run-grading-replay.ts --batch baseline-01
++```
++
++3. Confirm raw output exists under:
++
++```bash
++docs/placement-v3/drift-detection/raw-runs/
++```
++
++4. To persist replay rows, also set:
++
++```bash
++export PLACEMENT_REPLAY_SERVICE_ROLE_KEY="<service-role-key>"
++```
++
++5. Then run:
++
++```bash
++pnpm tsx scripts/placement-v3/run-grading-replay.ts --batch baseline-01 --persist=true
++```
++
++6. Open `/admin/placement-drift` as an admin level 9 account and verify:
++
++- replay success rate
++- p95 grading latency
++- provider variance
++- retry variance
++- taxonomy-category instability
++- drift alerts
+added in remote
+  their  100644 c074f2d3e613b2e2725982eb3aebe3fc614ae74a docs/placement-v3/drift-detection/a36-blockers.md
+@@ -0,0 +1,32 @@
++# A36 Blockers
++
++Generated: 2026-05-20T11:34:01.751Z
++
++## Command Attempted
++
++`/Users/admin/.local/share/fnm/node-versions/v22.22.1/installation/bin/node /Users/admin/MercyB/scripts/placement-v3/run-grading-replay.ts --batch baseline-01`
++
++## Exact Error
++
++Missing SUPABASE_URL/PLACEMENT_REPLAY_SUPABASE_URL or SUPABASE_ANON_KEY/PLACEMENT_REPLAY_ANON_KEY.
++
++## Replay Stages Completed
++
++- fixture_load_precheck
++
++## Metrics Unavailable
++
++- raw grader outputs
++- provider variance
++- taxonomy variance from live graders
++- latency
++- token counts
++
++## What Remains Unverified
++
++- At least 40 fixtures through real graders
++- Three replay/tuning cycles
++- Provider variance on live OpenAI/Gemini behavior
++- Taxonomy instability from live grader output
++- Persisted production database rows
++- Dashboard rendering real replay data
+added in remote
+  their  100644 9abd8a98fd104df68728eaec71c995cb73d2505c docs/placement-v3/drift-detection/a36-initial-findings.md
+@@ -0,0 +1,46 @@
++# A36 Initial Findings — Placement V3 Grading Drift Detection
++
++Generated: 2026-05-20T11:25:00-06:00
++
++## Required Context Read
++
++- `STRATEGY.md` and `PRINCIPLES.md`: A36 supports outcome accuracy, Vietnamese-first diagnostics, and evidence-before-patching discipline.
++- `docs/placement-v3/README.md`: not present in this branch. Placement V3 context currently lives in `docs/placement-v3-calibration/*`, `docs/placement-v3/adaptive-generation/*`, and function docs under `supabase/functions/placement-v3-session/`.
++- `supabase/functions/placement-v3-grade-writing/index.ts`: not present in this branch. Existing live graders are reading, listening, and speaking; benchmark scaffolding references writing but no writing grader is currently available.
++- `supabase/functions/_shared/aiProvider.ts`: OpenAI-primary with Gemini failover. JSON parse errors do not fail over; timeouts, thrown network failures, HTTP 429, and HTTP 5xx can fail over.
++- `supabase/functions/_shared/aiLogger.ts`: writes AI usage entries to `ai_usage`, but current Placement V3 CEFR graders expose per-call trace data directly from grader responses instead of using this logger.
++- `docs/placement-v3/calibration/`: not present under that exact path. Current calibration reports are under `docs/placement-v3-calibration/`.
++- `docs/placement-v3/taxonomy/`: not present under that exact path. Current Vietnamese-L1 taxonomy is `docs/placement-vn-l1-interference-taxonomy.md`.
++- `supabase/functions/placement-v3-session-orchestrator/index.ts`: not present under that name. Current orchestrator-equivalent is `supabase/functions/placement-v3-session/index.ts`.
++- `docs/placement-v3/prompt-library/`: not present. Current prompt source of truth is `supabase/functions/_shared/cefr/promptBuilder.ts`.
++
++## Existing Grading Surface
++
++Placement V3 currently has real CEFR graders for:
++
++- `placement-v3-grade-reading`
++- `placement-v3-grade-listening`
++- `placement-v3-grade-speaking`
++
++All three share:
++
++- CEFR output schema through `projectAssessmentForSubskills`
++- Vietnamese-L1 interference flags in `l1InterferenceFlags`
++- `modelTrace` with provider, model, latency, and token estimates
++- strict JSON-output prompts from `promptBuilder.ts`
++
++## Drift Risks Found
++
++1. Provider attempts are not included in CEFR `modelTrace`, so retry-path variance cannot be fully measured from current grader responses.
++2. The benchmark runner’s `extractTrace` expects `assessment.overall_cefr`, but current graders return `assessment.overall.level`; existing benchmark CEFR extraction will miss real scores.
++3. Writing is referenced by benchmark infrastructure but the writing grader is absent in this branch, so A36 replay must treat writing as unavailable rather than fabricate output.
++4. Taxonomy labels in prompt output are free-form pattern names; drift detection needs normalization because docs use kebab-case taxonomy IDs while prompts include underscore examples.
++5. Gemini failover is observable only when OpenAI fails under current shared provider routing; forced cross-provider replay is not supported by the deployed grader contract yet.
++
++## Implementation Direction
++
++- Build replay fixtures for the modalities that exist now: reading, listening, speaking.
++- Persist raw outputs and parsed metrics separately so reviewer evidence can be audited without trusting summaries.
++- Fail closed when live Supabase/API credentials are unavailable.
++- Keep drift analysis pure TypeScript in `src/lib/placementDrift` so tests can exercise the math without live providers.
++- Add operator dashboard/report function over persisted replay tables.
+added in remote
+  their  100644 659cef809a7fd6f54b741bca05c77f1d3e432779 docs/placement-v3/drift-detection/methodology.md
+@@ -0,0 +1,47 @@
++# Placement V3 Grading Drift Methodology
++
++## Goal
++
++Detect whether prompt edits, model changes, provider failover, parser changes, or grading infrastructure changes alter CEFR placement outcomes in a way that would hurt Vietnamese learners.
++
++## Replay Unit
++
++Each replay fixture contains:
++
++- stable sample ID
++- modality
++- expected CEFR anchor
++- Vietnamese-L1 taxonomy tags
++- exact grader payload
++
++Replay output must include ISO timestamp, provider, model, latency, token counts, raw grader output, parsed CEFR result, and replay batch ID.
++
++## Drift Metrics
++
++- CEFR delta: absolute and signed movement between baseline and current replay.
++- Catastrophic disagreement: movement of 2+ CEFR bands.
++- Malformed-output rate: grader response cannot be parsed into the required CEFR schema.
++- Provider variance: success, malformed rate, average expected-level delta, and p95 latency by provider.
++- Retry variance: distribution of observed retry/failover paths.
++- Taxonomy variance: instability grouped by Vietnamese-L1 interference category.
++
++## Thresholds
++
++- Mean absolute CEFR delta target: below 0.35 bands after repeated calibration.
++- Catastrophic provider disagreement: 0 tolerated for production promotion.
++- Malformed-output rate: below 3%.
++- P95 grading latency: below 30 seconds for replay operations.
++
++## Execution
++
++Run:
++
++```bash
++pnpm tsx scripts/placement-v3/run-grading-replay.ts --batch baseline-01 --persist=true
++```
++
++The runner refuses to fabricate live outputs if Supabase credentials are missing.
++
++## Current Scope
++
++This branch has live reading, listening, and speaking graders. The writing grader path is referenced by older benchmark scaffolding but the actual function is absent in this worktree, so writing replay is intentionally excluded until that grader exists.
+added in remote
+  their  100644 b1eca4a1612c1b3325f31d61c64bb87d0537e20a docs/placement-v3/drift-detection/production-risk-report.md
+@@ -0,0 +1,29 @@
++# Placement V3 Drift Production Risk Report
++
++Generated: 2026-05-20
++
++## Status
++
++Infrastructure is implemented, but production grading stability is not verified until live replay credentials are available and at least three replay cycles complete.
++
++## Known Risks
++
++- Writing replay is blocked because `placement-v3-grade-writing` is absent in this branch.
++- Provider retry-path variance is partially observable because current grader `modelTrace` does not expose failover attempts.
++- Gemini comparison requires actual failover or a future provider-forcing contract; current shared provider only fails over on OpenAI timeout/rate-limit/upstream failure.
++- Taxonomy output uses free-form grader flags, so dashboard grouping depends on fixture taxonomy tags unless raw grader tags are normalized later.
++
++## Regression Evidence
++
++No live replay regression can be honestly claimed until raw outputs exist under `raw-runs/`.
++
++## Production Gate
++
++Do not use A36 drift results to approve prompt/model changes until:
++
++- 40+ fixtures have run through real graders
++- raw outputs include provider, model, latency, token counts, and parsed CEFR
++- database persistence has been verified
++- admin dashboard renders real replay rows
++- at least five unstable or explicitly stable borderline cases are documented
++- three replay/tuning cycles are complete
+added in remote
+  their  100644 8b137891791fe96927ad78e64b0aad7bded08bdc docs/placement-v3/drift-detection/raw-runs/.gitkeep
+@@ -0,0 +1 @@
++
+added in remote
+  their  100644 f1a7340eeb91e0b379342f924acf13621f91497d docs/placement-v3/drift-detection/replay-fixtures/placement-v3-replay-samples.json
+@@ -0,0 +1,42 @@
++[
++  {"id":"sp-a1-final-s-01","modality":"speaking","expectedCefr":"A1","taxonomyTags":["inflectional-s-ed-inaudible","missing-subject-verb-agreement"],"payload":{"promptId":"sp-a1-final-s-01","taskText":"Introduce your daily routine in 30 seconds.","targetLanguage":"en","durationSeconds":32,"transcript":"I wake up six. My mother cook breakfast. I go school by motorbike. My friend play football after class."}},
++  {"id":"sp-a1-copula-02","modality":"speaking","expectedCefr":"A1","taxonomyTags":["copula-be-omission"],"payload":{"promptId":"sp-a1-copula-02","taskText":"Describe your home.","targetLanguage":"en","durationSeconds":24,"transcript":"My house near market. It small but clean. My room very hot in summer. I happy there."}},
++  {"id":"sp-a2-past-03","modality":"speaking","expectedCefr":"A2","taxonomyTags":["past-tense-unmarked","final-consonant-cluster-reduction"],"payload":{"promptId":"sp-a2-past-03","taskText":"Tell me about a trip you took last month.","targetLanguage":"en","durationSeconds":43,"transcript":"Last month I go to Da Nang with my cousin. We visit beach and eat seafood. I feel tired but very happy because weather good."}},
++  {"id":"sp-a2-question-04","modality":"speaking","expectedCefr":"A2","taxonomyTags":["question-word-order-transfer"],"payload":{"promptId":"sp-a2-question-04","taskText":"Ask a tourist three questions about their visit.","targetLanguage":"en","durationSeconds":25,"transcript":"You from where? You like Vietnamese food? Tomorrow you go to museum or you stay hotel?"}},
++  {"id":"sp-b1-articles-05","modality":"speaking","expectedCefr":"B1","taxonomyTags":["missing-articles","plural-s-omission"],"payload":{"promptId":"sp-b1-articles-05","taskText":"Explain why learning English is useful for your job.","targetLanguage":"en","durationSeconds":68,"transcript":"English is useful because I can talk with customer from other country. In my company, many document are in English and sometimes boss asks me to write email to supplier."}},
++  {"id":"sp-b1-literal-06","modality":"speaking","expectedCefr":"B1","taxonomyTags":["literal-translation","vietnamese-calque"],"payload":{"promptId":"sp-b1-literal-06","taskText":"Describe a difficult decision.","targetLanguage":"en","durationSeconds":58,"transcript":"When I chose university, my head was very tired because family say one way and my heart say another way. Finally I follow the road that make me less regret."}},
++  {"id":"sp-b2-borderline-07","modality":"speaking","expectedCefr":"B2","taxonomyTags":["missing-articles","tense-aspect-confusion"],"payload":{"promptId":"sp-b2-borderline-07","taskText":"Discuss whether remote work is good for young employees.","targetLanguage":"en","durationSeconds":91,"transcript":"Remote work gives young employees flexibility and saves commuting time, but it can also reduce mentoring. In Vietnam many juniors learn by watching senior colleagues, so company should combine office days with focused remote tasks."}},
++  {"id":"sp-b2-intonation-08","modality":"speaking","expectedCefr":"B2","taxonomyTags":["flat-english-intonation"],"payload":{"promptId":"sp-b2-intonation-08","taskText":"Give advice to a friend preparing for IELTS Speaking.","targetLanguage":"en","durationSeconds":82,"transcript":"I would tell my friend to record answers, notice where the voice becomes flat, and practice stressing the important words. Grammar matters, but clear rhythm helps the examiner follow the argument."}},
++  {"id":"sp-c1-pragmatic-09","modality":"speaking","expectedCefr":"C1","taxonomyTags":["pragmatic-transfer","requests"],"payload":{"promptId":"sp-c1-pragmatic-09","taskText":"Politely challenge a manager's decision.","targetLanguage":"en","durationSeconds":76,"transcript":"I understand why the deadline feels urgent, but I am concerned that releasing on Friday may create support problems over the weekend. Could we review the risk list once more before we commit?"}},
++  {"id":"sp-c2-weird-10","modality":"speaking","expectedCefr":"C2","taxonomyTags":["adversarial","register-control"],"payload":{"promptId":"sp-c2-weird-10","taskText":"Respond to an absurd proposal in a professional meeting.","targetLanguage":"en","durationSeconds":66,"transcript":"I appreciate the ambition, but replacing customer support with a magic spreadsheet is not a strategy. It is a metaphor wearing a necktie. We need a pilot, a rollback path, and one accountable owner."}},
++  {"id":"rd-a1-literal-11","modality":"reading","expectedCefr":"A1","taxonomyTags":["detail-extraction"],"payload":{"promptId":"rd-a1-literal-11","passageText":"Lan is twelve. She lives in Hue. She has one brother. On Sundays, Lan visits her grandmother.","questionText":"Where does Lan live?","questionType":"short_answer","expectedAnswer":"Hue","targetCefr":"A1","userResponse":"She live Hue."}},
++  {"id":"rd-a1-wrong-12","modality":"reading","expectedCefr":"A1","taxonomyTags":["distractor-resistance"],"payload":{"promptId":"rd-a1-wrong-12","passageText":"Minh works in a cafe. He starts work at seven in the morning.","questionText":"What time does Minh start work?","questionType":"short_answer","expectedAnswer":"seven in the morning","targetCefr":"A1","userResponse":"At night."}},
++  {"id":"rd-a2-mcq-13","modality":"reading","expectedCefr":"A2","taxonomyTags":["main-idea-grasp"],"payload":{"promptId":"rd-a2-mcq-13","passageText":"The school library is closed this week because workers are repairing the roof. Students can borrow books again next Monday.","questionText":"Why is the library closed? A. It has no books B. The roof is being repaired C. Students are on holiday","questionType":"mcq","expectedAnswer":"B","targetCefr":"A2","userResponse":"B"}},
++  {"id":"rd-a2-article-14","modality":"reading","expectedCefr":"A2","taxonomyTags":["missing-articles"],"payload":{"promptId":"rd-a2-article-14","passageText":"Anna bought a ticket online, but she forgot to print it. The driver accepted the ticket on her phone.","questionText":"How did Anna show her ticket?","questionType":"short_answer","expectedAnswer":"on her phone","targetCefr":"A2","userResponse":"She show ticket in phone."}},
++  {"id":"rd-b1-inference-15","modality":"reading","expectedCefr":"B1","taxonomyTags":["inference-ability"],"payload":{"promptId":"rd-b1-inference-15","passageText":"Tuan checked the dark clouds before leaving home, but he still left his umbrella on the table. Ten minutes later, he ran into a shop doorway and waited there.","questionText":"What probably happened?","questionType":"short_answer","expectedAnswer":"It started raining.","targetCefr":"B1","userResponse":"It started to rain and he did not have umbrella."}},
++  {"id":"rd-b1-borderline-16","modality":"reading","expectedCefr":"B1","taxonomyTags":["borderline","detail-extraction"],"payload":{"promptId":"rd-b1-borderline-16","passageText":"The manager approved the proposal only after the team removed the expensive advertising plan and added a cheaper referral campaign.","questionText":"What change helped the proposal get approved?","questionType":"short_answer","expectedAnswer":"They replaced/removed the expensive advertising plan and added a cheaper referral campaign.","targetCefr":"B1","userResponse":"They make marketing cheaper by referral, not expensive ads."}},
++  {"id":"rd-b2-nuance-17","modality":"reading","expectedCefr":"B2","taxonomyTags":["vocab-in-context"],"payload":{"promptId":"rd-b2-nuance-17","passageText":"Although the policy was presented as temporary, its vague end date made employees suspect it would become permanent by default.","questionText":"What does 'by default' imply here?","questionType":"short_answer","expectedAnswer":"It would become permanent without an explicit decision.","targetCefr":"B2","userResponse":"It means nobody may officially choose it, but if nothing changes, it stays forever."}},
++  {"id":"rd-b2-mcq-18","modality":"reading","expectedCefr":"B2","taxonomyTags":["distractor-resistance"],"payload":{"promptId":"rd-b2-mcq-18","passageText":"The study did not prove that sleep causes better vocabulary retention; it only showed that students who slept more tended to remember more words.","questionText":"Which claim is supported? A. Sleep definitely causes better memory B. There is an observed association C. Vocabulary cannot be learned without sleep","questionType":"mcq","expectedAnswer":"B","targetCefr":"B2","userResponse":"B"}},
++  {"id":"rd-c1-hedging-19","modality":"reading","expectedCefr":"C1","taxonomyTags":["hedging","inference-ability"],"payload":{"promptId":"rd-c1-hedging-19","passageText":"The author's praise for the reform is qualified: she welcomes the intention, but doubts whether underfunded schools can implement the policy without widening existing inequalities.","questionText":"What is the author's position?","questionType":"short_answer","expectedAnswer":"Cautious/qualified support with concern about implementation and inequality.","targetCefr":"C1","userResponse":"She supports the aim, but only cautiously, because poor implementation could make unequal schools even more unequal."}},
++  {"id":"rd-c2-adversarial-20","modality":"reading","expectedCefr":"C2","taxonomyTags":["adversarial","irony"],"payload":{"promptId":"rd-c2-adversarial-20","passageText":"The memo called the layoffs an 'opportunity for organizational breathing room,' a phrase so delicate it nearly apologized to itself.","questionText":"What attitude does the sentence convey toward the memo's wording?","questionType":"short_answer","expectedAnswer":"Sarcastic criticism of euphemistic language.","targetCefr":"C2","userResponse":"It mocks the euphemism as absurdly soft and self-protective."}},
++  {"id":"ls-a1-detail-21","modality":"listening","expectedCefr":"A1","taxonomyTags":["detail-recall"],"payload":{"promptId":"ls-a1-detail-21","transcriptOfHeardContent":"The train leaves at five thirty from platform two.","questionText":"What time does the train leave?","questionType":"short_answer","expectedAnswer":"five thirty","targetCefr":"A1","userResponse":"Five thirty."}},
++  {"id":"ls-a1-wrong-22","modality":"listening","expectedCefr":"A1","taxonomyTags":["detail-recall","borderline"],"payload":{"promptId":"ls-a1-wrong-22","transcriptOfHeardContent":"Please bring a blue pen and your student card.","questionText":"What color pen should students bring?","questionType":"short_answer","expectedAnswer":"blue","targetCefr":"A1","userResponse":"Black pen."}},
++  {"id":"ls-a2-gist-23","modality":"listening","expectedCefr":"A2","taxonomyTags":["gist-identification"],"payload":{"promptId":"ls-a2-gist-23","transcriptOfHeardContent":"Hi Mai, I can't come to the cinema tonight because my little sister is sick. Can we go tomorrow instead?","questionText":"Why can't the speaker go tonight?","questionType":"short_answer","expectedAnswer":"His/her little sister is sick.","targetCefr":"A2","userResponse":"Because sister sick so go tomorrow."}},
++  {"id":"ls-a2-mcq-24","modality":"listening","expectedCefr":"A2","taxonomyTags":["distractor-resistance"],"payload":{"promptId":"ls-a2-mcq-24","transcriptOfHeardContent":"The museum is open from Tuesday to Sunday. It is closed every Monday.","questionText":"When is the museum closed? A. Monday B. Sunday C. Tuesday","questionType":"mcq","expectedAnswer":"A","targetCefr":"A2","userResponse":"A"}},
++  {"id":"ls-b1-inference-25","modality":"listening","expectedCefr":"B1","taxonomyTags":["inference"],"payload":{"promptId":"ls-b1-inference-25","transcriptOfHeardContent":"I thought the apartment would be quiet, but the restaurant downstairs plays music until midnight. I'm already looking for another place.","questionText":"How does the speaker feel about the apartment?","questionType":"short_answer","expectedAnswer":"Unhappy/disappointed because it is noisy.","targetCefr":"B1","userResponse":"The speaker is unhappy because it is noisy at night."}},
++  {"id":"ls-b1-final-s-26","modality":"listening","expectedCefr":"B1","taxonomyTags":["plural-s-omission"],"payload":{"promptId":"ls-b1-final-s-26","transcriptOfHeardContent":"The guide said visitors must keep their tickets because staff check them again at the exit.","questionText":"Why should visitors keep their tickets?","questionType":"short_answer","expectedAnswer":"Staff check them again at the exit.","targetCefr":"B1","userResponse":"Because staff check ticket again when exit."}},
++  {"id":"ls-b2-detail-27","modality":"listening","expectedCefr":"B2","taxonomyTags":["detail-recall"],"payload":{"promptId":"ls-b2-detail-27","transcriptOfHeardContent":"The speaker recommends saving receipts for three months, not because returns usually take that long, but because warranty disputes often require proof of purchase.","questionText":"Why keep receipts for three months?","questionType":"short_answer","expectedAnswer":"Warranty disputes may require proof of purchase.","targetCefr":"B2","userResponse":"For warranty disputes, because you may need proof that you bought it."}},
++  {"id":"ls-b2-nuance-28","modality":"listening","expectedCefr":"B2","taxonomyTags":["inference","borderline"],"payload":{"promptId":"ls-b2-nuance-28","transcriptOfHeardContent":"I wouldn't say the new policy is a disaster, but calling it simple is optimistic. Most staff will need training before it saves any time.","questionText":"What is the speaker's opinion?","questionType":"short_answer","expectedAnswer":"Cautious/skeptical; not a disaster but not simple yet.","targetCefr":"B2","userResponse":"He is skeptical. It may work, but people need training first."}},
++  {"id":"ls-c1-implicit-29","modality":"listening","expectedCefr":"C1","taxonomyTags":["implicit-meaning"],"payload":{"promptId":"ls-c1-implicit-29","transcriptOfHeardContent":"When asked whether the launch date was realistic, the engineer paused and said, 'It is certainly a date on the calendar.'","questionText":"What does the engineer imply?","questionType":"short_answer","expectedAnswer":"The launch date is probably unrealistic.","targetCefr":"C1","userResponse":"The engineer politely implies the date exists but is not realistic."}},
++  {"id":"ls-c2-irony-30","modality":"listening","expectedCefr":"C2","taxonomyTags":["irony","adversarial"],"payload":{"promptId":"ls-c2-irony-30","transcriptOfHeardContent":"The consultant described the broken signup form as a 'conversion meditation experience,' which was one way to avoid saying nobody could register.","questionText":"What is the speaker doing?","questionType":"short_answer","expectedAnswer":"Mocking euphemistic consultant language.","targetCefr":"C2","userResponse":"The speaker is satirizing the consultant's euphemism for a serious failure."}},
++  {"id":"sp-c1-relative-31","modality":"speaking","expectedCefr":"C1","taxonomyTags":["relative-clause-transfer"],"payload":{"promptId":"sp-c1-relative-31","taskText":"Explain a product improvement you would prioritize.","targetLanguage":"en","durationSeconds":88,"transcript":"The feature I would prioritize is the one that helps learners understand why they made an error, not just whether the answer is wrong. Without that explanation, practice becomes guessing."}},
++  {"id":"rd-a2-there-is-32","modality":"reading","expectedCefr":"A2","taxonomyTags":["there-is-co-transfer"],"payload":{"promptId":"rd-a2-there-is-32","passageText":"There are three clinics in the district, but only one is open after 8 p.m.","questionText":"How many clinics are open after 8 p.m.?","questionType":"short_answer","expectedAnswer":"one","targetCefr":"A2","userResponse":"There has one clinic open after 8 p.m."}},
++  {"id":"ls-b1-negation-33","modality":"listening","expectedCefr":"B1","taxonomyTags":["negation-no-not-placement"],"payload":{"promptId":"ls-b1-negation-33","transcriptOfHeardContent":"The speaker says she does not recommend the cheaper phone because its battery fails after a few hours.","questionText":"Does she recommend the cheaper phone? Why?","questionType":"short_answer","expectedAnswer":"No, because the battery is poor.","targetCefr":"B1","userResponse":"No recommend because battery very bad."}},
++  {"id":"sp-b2-topic-34","modality":"speaking","expectedCefr":"B2","taxonomyTags":["topic-comment-fronting"],"payload":{"promptId":"sp-b2-topic-34","taskText":"Describe a city problem and a solution.","targetLanguage":"en","durationSeconds":84,"transcript":"Traffic in Ho Chi Minh City, it affects everyone, especially students and workers. A realistic solution is not only more roads but better buses, safer sidewalks, and parking rules that people actually respect."}},
++  {"id":"rd-c1-register-35","modality":"reading","expectedCefr":"C1","taxonomyTags":["register-control"],"payload":{"promptId":"rd-c1-register-35","passageText":"The applicant's email was courteous but firm, acknowledging the committee's workload while requesting a clearer explanation of the rejection criteria.","questionText":"How would you characterize the applicant's tone?","questionType":"short_answer","expectedAnswer":"Polite/courteous but firm.","targetCefr":"C1","userResponse":"The tone is diplomatic: respectful of the committee but still asking directly for more transparency."}},
++  {"id":"ls-a2-adversarial-emptyish-36","modality":"listening","expectedCefr":"A2","taxonomyTags":["adversarial","malformed-risk"],"payload":{"promptId":"ls-a2-adversarial-emptyish-36","transcriptOfHeardContent":"The appointment is on Thursday, not Tuesday.","questionText":"Which day is the appointment?","questionType":"short_answer","expectedAnswer":"Thursday","targetCefr":"A2","userResponse":"Tuesday no Thursday maybe"}},
++  {"id":"sp-a1-code-switch-37","modality":"speaking","expectedCefr":"A1","taxonomyTags":["code-switch","missing-articles"],"payload":{"promptId":"sp-a1-code-switch-37","taskText":"Say what food you like.","targetLanguage":"en","durationSeconds":18,"transcript":"I like pho because it hot and ngon. I eat with my family in morning."}},
++  {"id":"rd-b2-overanswer-38","modality":"reading","expectedCefr":"B2","taxonomyTags":["adversarial","overlong-answer"],"payload":{"promptId":"rd-b2-overanswer-38","passageText":"The notice says refunds are available within fourteen days if the package is unopened.","questionText":"When can customers get a refund?","questionType":"short_answer","expectedAnswer":"Within fourteen days if unopened.","targetCefr":"B2","userResponse":"Customers can get a refund within fourteen days, but only if the package remains unopened; if they use it, the refund condition is not satisfied."}},
++  {"id":"ls-c1-borderline-39","modality":"listening","expectedCefr":"C1","taxonomyTags":["borderline","hedging"],"payload":{"promptId":"ls-c1-borderline-39","transcriptOfHeardContent":"The lecturer concedes that the evidence is preliminary, yet argues it is strong enough to justify a small-scale trial rather than a full rollout.","questionText":"What action does the lecturer support?","questionType":"short_answer","expectedAnswer":"A small-scale trial, not a full rollout.","targetCefr":"C1","userResponse":"A limited pilot, because the evidence is promising but not mature enough for a full rollout."}},
++  {"id":"sp-c2-borderline-40","modality":"speaking","expectedCefr":"C2","taxonomyTags":["borderline","idiomatic-command"],"payload":{"promptId":"sp-c2-borderline-40","taskText":"Summarize the tradeoff between speed and quality in software releases.","targetLanguage":"en","durationSeconds":94,"transcript":"Shipping quickly is valuable when the blast radius is understood. The danger is confusing motion with progress: a fast release that damages trust creates work you cannot measure in the original estimate."}}
++]
+added in remote
+  their  100644 d403c101c0b6e3fabf5b06fea483b2a92a7d9a56 docs/placement-v3/drift-detection/replay-history.md
+@@ -0,0 +1,22 @@
++# Placement V3 Replay History
++
++## 2026-05-20 — A36 Harness Creation
++
++- Added 40 replay fixtures across reading, listening, and speaking.
++- Added replay runner with resumable partial output and database persistence.
++- Added drift analysis library, Supabase tables, edge report function, and admin dashboard.
++- Attempted live replay command is documented in `a36-blockers.md` if credentials are unavailable.
++
++## Required Future Entries
++
++Each replay cycle must record:
++
++- batch ID
++- command
++- fixture count
++- providers observed
++- malformed-output count
++- mean absolute CEFR delta
++- catastrophic disagreements
++- stability adjustment applied before the next replay
++- links to raw files in `raw-runs/`
+added in remote
+  their  100644 23ab4a2b9276fe442b534be824abfa93047ff7e9 scripts/placement-v3/run-grading-replay.ts
+@@ -0,0 +1,497 @@
++import fs from "node:fs/promises";
++import path from "node:path";
++import process from "node:process";
++import { createClient } from "@supabase/supabase-js";
++import "dotenv/config";
++
++import { analyzeProviderVariance } from "../../src/lib/placementDrift/providerVariance.js";
++import { buildStabilityReport } from "../../src/lib/placementDrift/stabilityReport.js";
++import type {
++  CefrLevel,
++  DriftModality,
++  DriftProvider,
++  DriftStatus,
++  ReplayScore,
++} from "../../src/lib/placementDrift/types.js";
++
++interface ReplayFixture {
++  id: string;
++  modality: DriftModality;
++  expectedCefr: CefrLevel;
++  taxonomyTags: string[];
++  payload: Record<string, unknown>;
++}
++
++interface ReplayConfig {
++  batchId: string;
++  fixturePath: string;
++  outDir: string;
++  supabaseUrl: string;
++  anonKey: string;
++  serviceRoleKey: string;
++  jwt: string;
++  persist: boolean;
++  limit: number | null;
++  resume: boolean;
++}
++
++interface RawEvidence {
++  isoTimestamp: string;
++  replayBatchId: string;
++  runId: string;
++  sampleId: string;
++  provider: DriftProvider;
++  model: string | null;
++  latencyMs: number;
++  tokenCount: { input: number; output: number };
++  rawGraderOutput: unknown;
++  parsedCefrResult: CefrLevel | null;
++  request: Record<string, unknown>;
++}
++
++const DEFAULT_FIXTURE =
++  "docs/placement-v3/drift-detection/replay-fixtures/placement-v3-replay-samples.json";
++const DEFAULT_OUT_DIR = "docs/placement-v3/drift-detection/raw-runs";
++
++async function main() {
++  const config = readConfig();
++  const runId = `${config.batchId}-${new Date().toISOString().replace(/[:.]/g, "-")}`;
++  const startedAt = new Date().toISOString();
++  await fs.mkdir(config.outDir, { recursive: true });
++
++  if (!config.supabaseUrl || !config.anonKey) {
++    await writeBlocker({
++      command: process.argv.join(" "),
++      error: "Missing SUPABASE_URL/PLACEMENT_REPLAY_SUPABASE_URL or SUPABASE_ANON_KEY/PLACEMENT_REPLAY_ANON_KEY.",
++      completedStages: ["fixture_load_precheck"],
++      unavailableMetrics: [
++        "raw grader outputs",
++        "provider variance",
++        "taxonomy variance from live graders",
++        "latency",
++        "token counts",
++      ],
++    });
++    throw new Error("Live replay requires Supabase URL and anon key. Refusing to fabricate replay outputs.");
++  }
++
++  const fixtures = (await loadFixtures(config.fixturePath)).slice(0, config.limit ?? undefined);
++  if (fixtures.length < 40 && config.limit === null) {
++    throw new Error(`Expected at least 40 replay fixtures, found ${fixtures.length}.`);
++  }
++
++  const scores: ReplayScore[] = [];
++  const evidence: RawEvidence[] = [];
++  const partialPath = path.join(config.outDir, `${config.batchId}.partial.json`);
++  const completed = config.resume ? await readCompletedSamples(partialPath) : new Set<string>();
++
++  console.log(`[placement-drift] run=${runId} batch=${config.batchId} samples=${fixtures.length}`);
++  for (const fixture of fixtures) {
++    if (completed.has(fixture.id)) {
++      console.log(`[placement-drift] skip completed sample=${fixture.id}`);
++      continue;
++    }
++    const result = await replaySample({ config, runId, batchId: config.batchId, fixture });
++    scores.push(result.score);
++    evidence.push(result.evidence);
++    await writePartial(partialPath, { runId, batchId: config.batchId, startedAt, scores, evidence });
++    console.log(
++      `[placement-drift] sample=${fixture.id} modality=${fixture.modality} status=${result.score.status} provider=${result.score.provider} cefr=${result.score.parsedCefr ?? "null"} latencyMs=${result.score.latencyMs}`,
++    );
++  }
++
++  const completedAt = new Date().toISOString();
++  const report = buildStabilityReport({ baseline: [], current: scores });
++  const run = {
++    id: runId,
++    batchId: config.batchId,
++    startedAt,
++    completedAt,
++    status: scores.some((score) => score.status === "error" || score.status === "timeout") ? "error" : "success",
++    sampleCount: scores.length,
++    successCount: scores.filter((score) => score.status === "success").length,
++    malformedCount: scores.filter((score) => score.malformed).length,
++    p95LatencyMs: report.replay.p95LatencyMs,
++    providerSet: [...new Set(scores.map((score) => score.provider))],
++    report,
++  };
++
++  const rawPath = path.join(config.outDir, `${runId}.json`);
++  await fs.writeFile(rawPath, `${JSON.stringify({ run, scores, evidence }, null, 2)}\n`);
++  await fs.writeFile(
++    path.join(config.outDir, `${runId}.summary.json`),
++    `${JSON.stringify(report, null, 2)}\n`,
++  );
++
++  if (config.persist) {
++    await persistReplay(config, run, scores);
++  }
++
++  console.log(`[placement-drift] wrote ${rawPath}`);
++}
++
++async function replaySample(args: {
++  config: ReplayConfig;
++  runId: string;
++  batchId: string;
++  fixture: ReplayFixture;
++}): Promise<{ score: ReplayScore; evidence: RawEvidence }> {
++  const started = Date.now();
++  const isoTimestamp = new Date(started).toISOString();
++  let raw: unknown = null;
++  let status: DriftStatus = "success";
++  let errorCode: string | null = null;
++  let errorMessage: string | null = null;
++
++  try {
++    raw = await callGrader(args.config, args.fixture);
++  } catch (err) {
++    status = err instanceof Error && err.name === "AbortError" ? "timeout" : "error";
++    errorCode = status;
++    errorMessage = err instanceof Error ? err.message : String(err);
++  }
++
++  const latencyMs = Date.now() - started;
++  const trace = extractTrace(raw);
++  const parsedCefr = trace.parsedCefr;
++  const malformed = status === "success" && (!parsedCefr || !isRecord(raw) || raw.ok === false);
++  if (malformed) status = "malformed";
++
++  const score: ReplayScore = {
++    runId: args.runId,
++    batchId: args.batchId,
++    sampleId: args.fixture.id,
++    modality: args.fixture.modality,
++    expectedCefr: args.fixture.expectedCefr,
++    parsedCefr,
++    provider: trace.provider,
++    model: trace.model,
++    retryPath: trace.retryPath,
++    taxonomyTags: args.fixture.taxonomyTags,
++    latencyMs,
++    tokensInput: trace.tokensInput,
++    tokensOutput: trace.tokensOutput,
++    status,
++    malformed,
++    createdAt: isoTimestamp,
++  };
++
++  const evidence: RawEvidence = {
++    isoTimestamp,
++    replayBatchId: args.batchId,
++    runId: args.runId,
++    sampleId: args.fixture.id,
++    provider: score.provider,
++    model: score.model,
++    latencyMs,
++    tokenCount: { input: score.tokensInput, output: score.tokensOutput },
++    rawGraderOutput: raw ?? { ok: false, errorCode, errorMessage },
++    parsedCefrResult: parsedCefr,
++    request: args.fixture.payload,
++  };
++
++  return { score, evidence };
++}
++
++async function callGrader(config: ReplayConfig, fixture: ReplayFixture): Promise<unknown> {
++  const functionName = functionForModality(fixture.modality);
++  const url = `${config.supabaseUrl.replace(/\/$/, "")}/functions/v1/${functionName}`;
++  const headers: Record<string, string> = {
++    "Content-Type": "application/json",
++    apikey: config.anonKey,
++  };
++  const bearer = config.jwt || config.serviceRoleKey;
++  if (bearer) headers.Authorization = `Bearer ${bearer}`;
++
++  const controller = new AbortController();
++  const timeout = setTimeout(() => controller.abort(), 45_000);
++  try {
++    const response = await fetch(url, {
++      method: "POST",
++      headers,
++      body: JSON.stringify(fixture.payload),
++      signal: controller.signal,
++    });
++    const text = await response.text();
++    const json = safeJson(text);
++    if (!response.ok) {
++      return {
++        ok: false,
++        errorCode: `http_${response.status}`,
++        errorMessage: text.slice(0, 1_000),
++        response: json ?? text,
++      };
++    }
++    return json ?? text;
++  } finally {
++    clearTimeout(timeout);
++  }
++}
++
++function functionForModality(modality: DriftModality): string {
++  switch (modality) {
++    case "reading":
++      return "placement-v3-grade-reading";
++    case "listening":
++      return "placement-v3-grade-listening";
++    case "speaking":
++      return "placement-v3-grade-speaking";
++    case "writing":
++      return "placement-v3-grade-writing";
++  }
++}
++
++function extractTrace(body: unknown): {
++  provider: DriftProvider;
++  model: string | null;
++  retryPath: string[];
++  tokensInput: number;
++  tokensOutput: number;
++  parsedCefr: CefrLevel | null;
++} {
++  const record = isRecord(body) ? body : {};
++  const trace = isRecord(record.modelTrace) ? record.modelTrace : {};
++  const assessment = isRecord(record.assessment) ? record.assessment : {};
++  const overall = isRecord(assessment.overall) ? assessment.overall : {};
++  const provider = normalizeProvider(trace.provider);
++  const retryPath = Array.isArray(trace.attempts)
++    ? trace.attempts.map(normalizeProvider)
++    : provider !== "unknown"
++      ? [provider]
++      : [];
++  return {
++    provider,
++    model: typeof trace.model === "string" ? trace.model : null,
++    retryPath,
++    tokensInput: Number(trace.tokensInput ?? 0),
++    tokensOutput: Number(trace.tokensOutput ?? 0),
++    parsedCefr: normalizeCefr(overall.level ?? assessment.overall_cefr),
++  };
++}
++
++async function persistReplay(
++  config: ReplayConfig,
++  run: {
++    id: string;
++    batchId: string;
++    startedAt: string;
++    completedAt: string;
++    status: string;
++    sampleCount: number;
++    successCount: number;
++    malformedCount: number;
++    p95LatencyMs: number;
++    providerSet: DriftProvider[];
++    report: ReturnType<typeof buildStabilityReport>;
++  },
++  scores: ReplayScore[],
++) {
++  if (!config.serviceRoleKey) {
++    throw new Error("Persist requested but SUPABASE_SERVICE_ROLE_KEY/PLACEMENT_REPLAY_SERVICE_ROLE_KEY is missing.");
++  }
++  const client = createClient(config.supabaseUrl, config.serviceRoleKey, {
++    auth: { persistSession: false },
++  });
++  const { error: runError } = await client.from("placement_v3_replay_runs").upsert({
++    id: run.id,
++    batch_id: run.batchId,
++    fixture_version: "v1",
++    started_at: run.startedAt,
++    completed_at: run.completedAt,
++    status: run.status,
++    sample_count: run.sampleCount,
++    success_count: run.successCount,
++    malformed_count: run.malformedCount,
++    p95_latency_ms: run.p95LatencyMs,
++    provider_set: run.providerSet,
++    metadata: { source: "scripts/placement-v3/run-grading-replay.ts" },
++  });
++  if (runError) throw new Error(`replay run persist failed: ${runError.message}`);
++
++  const { error: scoreError } = await client.from("placement_v3_replay_scores").upsert(
++    scores.map((score) => ({
++      id: `${score.runId}:${score.sampleId}`,
++      run_id: score.runId,
++      batch_id: score.batchId,
++      sample_id: score.sampleId,
++      modality: score.modality,
++      expected_cefr: score.expectedCefr,
++      parsed_cefr: score.parsedCefr,
++      provider: score.provider,
++      model: score.model,
++      retry_path: score.retryPath,
++      taxonomy_tags: score.taxonomyTags,
++      latency_ms: score.latencyMs,
++      tokens_input: score.tokensInput,
++      tokens_output: score.tokensOutput,
++      status: score.status,
++      malformed: score.malformed,
++      raw_request: {},
++      raw_response: {},
++      created_at: score.createdAt,
++    })),
++  );
++  if (scoreError) throw new Error(`replay score persist failed: ${scoreError.message}`);
++
++  const providerRows = analyzeProviderVariance(scores);
++  if (providerRows.length) {
++    const { error } = await client.from("placement_v3_provider_variance").insert(
++      providerRows.map((row) => ({
++        run_id: run.id,
++        batch_id: run.batchId,
++        provider: row.provider,
++        model: null,
++        sample_count: row.sampleCount,
++        success_rate: row.successRate,
++        malformed_rate: row.malformedRate,
++        average_expected_delta: row.averageExpectedDelta,
++        p95_latency_ms: row.p95LatencyMs,
++      })),
++    );
++    if (error) throw new Error(`provider variance persist failed: ${error.message}`);
++  }
++
++  if (run.report.alerts.length) {
++    const { error } = await client.from("placement_v3_drift_alerts").insert(
++      run.report.alerts.map((alert) => ({
++        run_id: run.id,
++        batch_id: run.batchId,
++        severity: alert.severity,
++        scope: alert.scope,
++        metric: alert.metric,
++        value: alert.value,
++        threshold: alert.threshold,
++        sample_ids: alert.sampleIds,
++        message: alert.message,
++      })),
++    );
++    if (error) throw new Error(`drift alerts persist failed: ${error.message}`);
++  }
++}
++
++async function loadFixtures(fixturePath: string): Promise<ReplayFixture[]> {
++  const raw = await fs.readFile(fixturePath, "utf8");
++  const parsed = JSON.parse(raw) as ReplayFixture[];
++  return parsed.filter((fixture) => fixture.modality !== "writing");
++}
++
++async function writePartial(filePath: string, body: unknown) {
++  await fs.writeFile(filePath, `${JSON.stringify(body, null, 2)}\n`);
++}
++
++async function readCompletedSamples(filePath: string): Promise<Set<string>> {
++  try {
++    const raw = await fs.readFile(filePath, "utf8");
++    const parsed = JSON.parse(raw) as { scores?: Array<{ sampleId?: string }> };
++    return new Set((parsed.scores ?? []).map((score) => score.sampleId).filter(Boolean) as string[]);
++  } catch {
++    return new Set();
++  }
++}
++
++async function writeBlocker(args: {
++  command: string;
++  error: string;
++  completedStages: string[];
++  unavailableMetrics: string[];
++}) {
++  const filePath = "docs/placement-v3/drift-detection/a36-blockers.md";
++  const body = `# A36 Blockers
++
++Generated: ${new Date().toISOString()}
++
++## Command Attempted
++
++\`${args.command}\`
++
++## Exact Error
++
++${args.error}
++
++## Replay Stages Completed
++
++${args.completedStages.map((stage) => `- ${stage}`).join("\n")}
++
++## Metrics Unavailable
++
++${args.unavailableMetrics.map((metric) => `- ${metric}`).join("\n")}
++
++## What Remains Unverified
++
++- At least 40 fixtures through real graders
++- Three replay/tuning cycles
++- Provider variance on live OpenAI/Gemini behavior
++- Taxonomy instability from live grader output
++- Persisted production database rows
++- Dashboard rendering real replay data
++`;
++  await fs.writeFile(filePath, body);
++}
++
++function readConfig(): ReplayConfig {
++  const args = readArgs();
++  const batchId = args.get("batch") ?? args.get("batchId") ?? "baseline-01";
++  return {
++    batchId,
++    fixturePath: args.get("fixtures") ?? DEFAULT_FIXTURE,
++    outDir: args.get("outDir") ?? DEFAULT_OUT_DIR,
++    supabaseUrl: process.env.PLACEMENT_REPLAY_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "",
++    anonKey: process.env.PLACEMENT_REPLAY_ANON_KEY ?? process.env.SUPABASE_ANON_KEY ?? "",
++    serviceRoleKey: process.env.PLACEMENT_REPLAY_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY ?? "",
++    jwt: process.env.PLACEMENT_REPLAY_JWT ?? "",
++    persist: args.get("persist") === "true" || process.env.PLACEMENT_REPLAY_PERSIST === "1",
++    limit: args.has("limit") ? Number(args.get("limit")) : null,
++    resume: args.get("resume") !== "false",
++  };
++}
++
++function readArgs(): Map<string, string> {
++  const out = new Map<string, string>();
++  const raw = process.argv.slice(2);
++  for (let i = 0; i < raw.length; i += 1) {
++    const arg = raw[i];
++    if (!arg.startsWith("--")) continue;
++    const stripped = arg.slice(2);
++    if (stripped.includes("=")) {
++      const [key, value = "true"] = stripped.split("=");
++      out.set(key, value);
++      continue;
++    }
++    const next = raw[i + 1];
++    if (next && !next.startsWith("--")) {
++      out.set(stripped, next);
++      i += 1;
++    } else {
++      out.set(stripped, "true");
++    }
++  }
++  return out;
++}
++
++function normalizeProvider(value: unknown): DriftProvider {
++  if (value === "openai" || value === "gemini" || value === "none") return value;
++  return "unknown";
++}
++
++function normalizeCefr(value: unknown): CefrLevel | null {
++  return value === "A1" || value === "A2" || value === "B1" || value === "B2" || value === "C1" || value === "C2"
++    ? value
++    : null;
++}
++
++function safeJson(text: string): unknown {
++  try {
++    return JSON.parse(text);
++  } catch {
++    return null;
++  }
++}
++
++function isRecord(value: unknown): value is Record<string, unknown> {
++  return typeof value === "object" && value !== null && !Array.isArray(value);
++}
++
++main().catch((err) => {
++  console.error("[placement-drift] failed", err);
++  process.exit(1);
++});
+added in remote
+  their  100644 58fb449947c1643b374214c2130e895d279602a7 src/lib/placementDrift/calculateDrift.ts
+@@ -0,0 +1,33 @@
++import { detectOutliers, percentile } from "./detectOutliers.js";
++import { analyzeProviderVariance, providerVarianceAlerts } from "./providerVariance.js";
++import { analyzeScoreDeltas, catastrophicDisagreements, meanAbsoluteDelta } from "./scoreDeltaAnalysis.js";
++import { analyzeTaxonomyVariance, taxonomyVarianceAlerts } from "./taxonomyVariance.js";
++import type { DriftSummary, ReplayScore } from "./types.js";
++
++export function calculateDrift(args: {
++  baseline: ReplayScore[];
++  current: ReplayScore[];
++}): DriftSummary {
++  const deltas = analyzeScoreDeltas(args);
++  const scores = args.current;
++  const alerts = [
++    ...detectOutliers({ deltas, scores }),
++    ...providerVarianceAlerts(analyzeProviderVariance(scores)),
++    ...taxonomyVarianceAlerts(analyzeTaxonomyVariance(scores)),
++  ];
++
++  return {
++    runCount: new Set(scores.map((score) => score.runId)).size,
++    scoreCount: scores.length,
++    successRate: ratio(scores.filter((score) => score.status === "success").length, scores.length),
++    malformedRate: ratio(scores.filter((score) => score.malformed).length, scores.length),
++    p95LatencyMs: percentile(scores.map((score) => score.latencyMs), 0.95),
++    meanAbsoluteDelta: meanAbsoluteDelta(deltas),
++    catastrophicDisagreements: catastrophicDisagreements(deltas).length,
++    alerts,
++  };
++}
++
++function ratio(count: number, total: number): number {
++  return total ? Number((count / total).toFixed(4)) : 0;
++}
+added in remote
+  their  100644 0eb9f09daa636dbec59d40ca97cddc82d7a6d23a src/lib/placementDrift/detectOutliers.ts
+@@ -0,0 +1,71 @@
++import { type DriftAlert, type DriftDelta, type ReplayScore } from "./types.js";
++
++export function detectOutliers(args: {
++  deltas: DriftDelta[];
++  scores: ReplayScore[];
++  catastrophicBandThreshold?: number;
++  malformedThreshold?: number;
++  latencyP95ThresholdMs?: number;
++}): DriftAlert[] {
++  const catastrophicThreshold = args.catastrophicBandThreshold ?? 2;
++  const malformedThreshold = args.malformedThreshold ?? 0.03;
++  const latencyThreshold = args.latencyP95ThresholdMs ?? 30_000;
++  const alerts: DriftAlert[] = [];
++
++  const catastrophic = args.deltas.filter(
++    (delta) => Math.abs(delta.deltaBands ?? 0) >= catastrophicThreshold,
++  );
++  if (catastrophic.length > 0) {
++    alerts.push({
++      scope: "score_delta",
++      severity: "critical",
++      metric: "catastrophic_cefr_delta_count",
++      value: catastrophic.length,
++      threshold: 0,
++      sampleIds: catastrophic.map((delta) => delta.sampleId),
++      message: `${catastrophic.length} replay samples moved by ${catastrophicThreshold}+ CEFR bands.`,
++    });
++  }
++
++  const malformedRate = ratio(args.scores.filter((score) => score.malformed).length, args.scores.length);
++  if (malformedRate > malformedThreshold) {
++    alerts.push({
++      scope: "parser",
++      severity: malformedRate > malformedThreshold * 2 ? "critical" : "warning",
++      metric: "malformed_rate",
++      value: malformedRate,
++      threshold: malformedThreshold,
++      sampleIds: args.scores.filter((score) => score.malformed).map((score) => score.sampleId),
++      message: `Malformed grader output rate ${(malformedRate * 100).toFixed(1)}% exceeds threshold.`,
++    });
++  }
++
++  const p95Latency = percentile(args.scores.map((score) => score.latencyMs), 0.95);
++  if (p95Latency > latencyThreshold) {
++    alerts.push({
++      scope: "latency",
++      severity: "warning",
++      metric: "p95_latency_ms",
++      value: p95Latency,
++      threshold: latencyThreshold,
++      sampleIds: slowest(args.scores, 5).map((score) => score.sampleId),
++      message: `P95 grading latency ${p95Latency}ms exceeds ${latencyThreshold}ms.`,
++    });
++  }
++
++  return alerts;
++}
++
++export function percentile(values: number[], p: number): number {
++  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
++  if (sorted.length === 0) return 0;
++  return Math.round(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * p) - 1)]);
++}
++
++function slowest(scores: ReplayScore[], limit: number): ReplayScore[] {
++  return [...scores].sort((a, b) => b.latencyMs - a.latencyMs).slice(0, limit);
++}
++
++function ratio(count: number, total: number): number {
++  return total ? Number((count / total).toFixed(4)) : 0;
++}
+added in remote
+  their  100644 5d747424832604bf17afafce12b16c70dacc0b92 src/lib/placementDrift/index.ts
+@@ -0,0 +1,7 @@
++export * from "./calculateDrift.js";
++export * from "./detectOutliers.js";
++export * from "./providerVariance.js";
++export * from "./scoreDeltaAnalysis.js";
++export * from "./stabilityReport.js";
++export * from "./taxonomyVariance.js";
++export * from "./types.js";
+added in remote
+  their  100644 5d726eab25e14510b626ec037094b2b20643b073 src/lib/placementDrift/providerVariance.ts
+@@ -0,0 +1,59 @@
++import { cefrDistance } from "./scoreDeltaAnalysis.js";
++import type { DriftAlert, DriftProvider, ReplayScore } from "./types.js";
++
++export interface ProviderVarianceRow {
++  provider: DriftProvider;
++  sampleCount: number;
++  successRate: number;
++  malformedRate: number;
++  averageExpectedDelta: number;
++  p95LatencyMs: number;
++}
++
++export function analyzeProviderVariance(scores: ReplayScore[]): ProviderVarianceRow[] {
++  const providers = [...new Set(scores.map((score) => score.provider))];
++  return providers.map((provider) => {
++    const subset = scores.filter((score) => score.provider === provider);
++    const deltas = subset
++      .map((score) => cefrDistance(score.expectedCefr, score.parsedCefr))
++      .filter((value): value is number => typeof value === "number");
++    return {
++      provider,
++      sampleCount: subset.length,
++      successRate: ratio(subset.filter((score) => score.status === "success").length, subset.length),
++      malformedRate: ratio(subset.filter((score) => score.malformed).length, subset.length),
++      averageExpectedDelta: average(deltas),
++      p95LatencyMs: percentile(subset.map((score) => score.latencyMs), 0.95),
++    };
++  });
++}
++
++export function providerVarianceAlerts(rows: ProviderVarianceRow[], thresholdBands = 1): DriftAlert[] {
++  if (rows.length < 2) return [];
++  const max = Math.max(...rows.map((row) => row.averageExpectedDelta));
++  const min = Math.min(...rows.map((row) => row.averageExpectedDelta));
++  if (max - min < thresholdBands) return [];
++  return [{
++    scope: "provider",
++    severity: "warning",
++    metric: "provider_average_delta_spread",
++    value: Number((max - min).toFixed(4)),
++    threshold: thresholdBands,
++    sampleIds: [],
++    message: `Provider average CEFR error spread is ${(max - min).toFixed(2)} bands.`,
++  }];
++}
++
++function average(values: number[]): number {
++  return values.length ? Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(4)) : 0;
++}
++
++function percentile(values: number[], p: number): number {
++  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
++  if (sorted.length === 0) return 0;
++  return Math.round(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * p) - 1)]);
++}
++
++function ratio(count: number, total: number): number {
++  return total ? Number((count / total).toFixed(4)) : 0;
++}
+added in remote
+  their  100644 07a164bde881d6bd70ea3eeb7da1e9b6fc0b5c73 src/lib/placementDrift/scoreDeltaAnalysis.ts
+@@ -0,0 +1,73 @@
++import { CEFR_LEVELS, type CefrLevel, type DriftDelta, type ReplayScore } from "./types.js";
++
++export function cefrIndex(level: CefrLevel | null): number | null {
++  if (!level) return null;
++  const index = CEFR_LEVELS.indexOf(level);
++  return index >= 0 ? index : null;
++}
++
++export function cefrDistance(a: CefrLevel | null, b: CefrLevel | null): number | null {
++  const ai = cefrIndex(a);
++  const bi = cefrIndex(b);
++  if (ai === null || bi === null) return null;
++  return Math.abs(ai - bi);
++}
++
++export function analyzeScoreDeltas(args: {
++  baseline: ReplayScore[];
++  current: ReplayScore[];
++}): DriftDelta[] {
++  const baselineBySample = newestBySample(args.baseline);
++  return args.current.map((score) => {
++    const baseline = baselineBySample.get(score.sampleId);
++    const deltaBands = baseline
++      ? signedDistance(baseline.parsedCefr, score.parsedCefr)
++      : null;
++    return {
++      sampleId: score.sampleId,
++      modality: score.modality,
++      expectedCefr: score.expectedCefr,
++      baselineCefr: baseline?.parsedCefr ?? null,
++      currentCefr: score.parsedCefr,
++      deltaBands,
++      provider: score.provider,
++      taxonomyTags: score.taxonomyTags,
++      status: score.status,
++    };
++  });
++}
++
++export function meanAbsoluteDelta(deltas: DriftDelta[]): number {
++  const values = deltas
++    .map((delta) => delta.deltaBands)
++    .filter((value): value is number => typeof value === "number" && Number.isFinite(value))
++    .map(Math.abs);
++  if (values.length === 0) return 0;
++  return round(values.reduce((sum, value) => sum + value, 0) / values.length);
++}
++
++export function catastrophicDisagreements(deltas: DriftDelta[], thresholdBands = 2): DriftDelta[] {
++  return deltas.filter((delta) => Math.abs(delta.deltaBands ?? 0) >= thresholdBands);
++}
++
++function signedDistance(a: CefrLevel | null, b: CefrLevel | null): number | null {
++  const ai = cefrIndex(a);
++  const bi = cefrIndex(b);
++  if (ai === null || bi === null) return null;
++  return bi - ai;
++}
++
++function newestBySample(scores: ReplayScore[]): Map<string, ReplayScore> {
++  const out = new Map<string, ReplayScore>();
++  for (const score of scores) {
++    const existing = out.get(score.sampleId);
++    if (!existing || existing.createdAt.localeCompare(score.createdAt) < 0) {
++      out.set(score.sampleId, score);
++    }
++  }
++  return out;
++}
++
++function round(value: number): number {
++  return Number(value.toFixed(4));
++}
+added in remote
+  their  100644 3bfcaebb2555fb6b643f9d6104dd16d369f028f9 src/lib/placementDrift/stabilityReport.ts
+@@ -0,0 +1,51 @@
++import { detectOutliers } from "./detectOutliers.js";
++import { analyzeProviderVariance, providerVarianceAlerts } from "./providerVariance.js";
++import { analyzeScoreDeltas, catastrophicDisagreements, meanAbsoluteDelta } from "./scoreDeltaAnalysis.js";
++import { analyzeTaxonomyVariance, taxonomyVarianceAlerts } from "./taxonomyVariance.js";
++import type { DriftAlert, ReplayScore } from "./types.js";
++
++export function buildStabilityReport(args: {
++  baseline: ReplayScore[];
++  current: ReplayScore[];
++}) {
++  const deltas = analyzeScoreDeltas(args);
++  const providerVariance = analyzeProviderVariance(args.current);
++  const taxonomyVariance = analyzeTaxonomyVariance(args.current);
++  const alerts: DriftAlert[] = [
++    ...detectOutliers({ deltas, scores: args.current }),
++    ...providerVarianceAlerts(providerVariance),
++    ...taxonomyVarianceAlerts(taxonomyVariance),
++  ];
++  const catastrophic = catastrophicDisagreements(deltas);
++
++  return {
++    generatedAt: new Date().toISOString(),
++    replay: {
++      baselineScores: args.baseline.length,
++      currentScores: args.current.length,
++      successRate: ratio(args.current.filter((score) => score.status === "success").length, args.current.length),
++      malformedRate: ratio(args.current.filter((score) => score.malformed).length, args.current.length),
++      p95LatencyMs: percentile(args.current.map((score) => score.latencyMs), 0.95),
++    },
++    scoreDelta: {
++      meanAbsoluteDelta: meanAbsoluteDelta(deltas),
++      catastrophicCount: catastrophic.length,
++      topUnstableSamples: [...deltas]
++        .sort((a, b) => Math.abs(b.deltaBands ?? 0) - Math.abs(a.deltaBands ?? 0))
++        .slice(0, 10),
++    },
++    providerVariance,
++    taxonomyVariance,
++    alerts,
++  };
++}
++
++function percentile(values: number[], p: number): number {
++  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
++  if (sorted.length === 0) return 0;
++  return Math.round(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * p) - 1)]);
++}
++
++function ratio(count: number, total: number): number {
++  return total ? Number((count / total).toFixed(4)) : 0;
++}
+added in remote
+  their  100644 5d96c4ef923d4d8467021719b639958d51ad5184 src/lib/placementDrift/taxonomyVariance.ts
+@@ -0,0 +1,51 @@
++import { cefrDistance } from "./scoreDeltaAnalysis.js";
++import type { DriftAlert, ReplayScore } from "./types.js";
++
++export interface TaxonomyVarianceRow {
++  taxonomyTag: string;
++  sampleCount: number;
++  malformedRate: number;
++  averageExpectedDelta: number;
++  unstableSampleIds: string[];
++}
++
++export function analyzeTaxonomyVariance(scores: ReplayScore[]): TaxonomyVarianceRow[] {
++  const tags = [...new Set(scores.flatMap((score) => score.taxonomyTags))].sort();
++  return tags.map((taxonomyTag) => {
++    const subset = scores.filter((score) => score.taxonomyTags.includes(taxonomyTag));
++    const deltas = subset
++      .map((score) => cefrDistance(score.expectedCefr, score.parsedCefr))
++      .filter((value): value is number => typeof value === "number");
++    return {
++      taxonomyTag,
++      sampleCount: subset.length,
++      malformedRate: ratio(subset.filter((score) => score.malformed).length, subset.length),
++      averageExpectedDelta: average(deltas),
++      unstableSampleIds: subset
++        .filter((score) => (cefrDistance(score.expectedCefr, score.parsedCefr) ?? 0) >= 2)
++        .map((score) => score.sampleId),
++    };
++  });
++}
++
++export function taxonomyVarianceAlerts(rows: TaxonomyVarianceRow[], thresholdBands = 1.25): DriftAlert[] {
++  return rows
++    .filter((row) => row.sampleCount >= 2 && row.averageExpectedDelta >= thresholdBands)
++    .map((row) => ({
++      scope: `taxonomy:${row.taxonomyTag}`,
++      severity: row.averageExpectedDelta >= 2 ? "critical" : "warning",
++      metric: "taxonomy_average_expected_delta",
++      value: row.averageExpectedDelta,
++      threshold: thresholdBands,
++      sampleIds: row.unstableSampleIds,
++      message: `${row.taxonomyTag} samples average ${row.averageExpectedDelta} CEFR bands from expected.`,
++    }));
++}
++
++function average(values: number[]): number {
++  return values.length ? Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(4)) : 0;
++}
++
++function ratio(count: number, total: number): number {
++  return total ? Number((count / total).toFixed(4)) : 0;
++}
+added in remote
+  their  100644 ec91b087bc58f959c8107986c450ab4c48695f7b src/lib/placementDrift/types.ts
+@@ -0,0 +1,58 @@
++export type DriftProvider = "openai" | "gemini" | "none" | "unknown";
++export type DriftModality = "writing" | "reading" | "listening" | "speaking";
++export type DriftStatus = "success" | "error" | "timeout" | "malformed";
++export type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
++
++export const CEFR_LEVELS: CefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
++
++export interface ReplayScore {
++  runId: string;
++  batchId: string;
++  sampleId: string;
++  modality: DriftModality;
++  expectedCefr: CefrLevel;
++  parsedCefr: CefrLevel | null;
++  provider: DriftProvider;
++  model: string | null;
++  retryPath: string[];
++  taxonomyTags: string[];
++  latencyMs: number;
++  tokensInput: number;
++  tokensOutput: number;
++  status: DriftStatus;
++  malformed: boolean;
++  createdAt: string;
++}
++
++export interface DriftDelta {
++  sampleId: string;
++  modality: DriftModality;
++  expectedCefr: CefrLevel;
++  baselineCefr: CefrLevel | null;
++  currentCefr: CefrLevel | null;
++  deltaBands: number | null;
++  provider: DriftProvider;
++  taxonomyTags: string[];
++  status: DriftStatus;
++}
++
++export interface DriftAlert {
++  scope: string;
++  severity: "info" | "warning" | "critical";
++  metric: string;
++  value: number;
++  threshold: number;
++  sampleIds: string[];
++  message: string;
++}
++
++export interface DriftSummary {
++  runCount: number;
++  scoreCount: number;
++  successRate: number;
++  malformedRate: number;
++  p95LatencyMs: number;
++  meanAbsoluteDelta: number;
++  catastrophicDisagreements: number;
++  alerts: DriftAlert[];
++}
+merged
+  result 100644 ab78f2d8312f7daf959027bacecb1e79b8fef4a0 src/pages/admin/AdminDashboard.tsx
+  our    100644 f5ea724f16318791c4bfbc8e0af520e77b75b2e5 src/pages/admin/AdminDashboard.tsx
+@@ -681,6 +681,7 @@
+     { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
+     { title: "Analytics", desc: "DAU, feature usage, funnel, and room popularity (Level 9+).", href: "/admin/analytics", badge: "READY" },
+     { title: "Costs / Chi phí", desc: "Daily spend across OpenAI, ElevenLabs, Resend, Azure (Level 9+).", href: "/admin/cost-monitoring", badge: "READY" },
++    { title: "Placement Drift", desc: "Replay grading samples and inspect CEFR drift, provider variance, and taxonomy instability.", href: "/admin/placement-drift", badge: "A36" },
+   ];
+ 
+   function go(href?: string) {
+@@ -1151,4 +1152,4 @@
+ 
+ /* New thing to learn:
+    The #1 multi-app admin bug is “wrong context.”
+-   If app_id is not obvious on every screen, mistakes are guaranteed. */
+\ No newline at end of file
++   If app_id is not obvious on every screen, mistakes are guaranteed. */
+added in remote
+  their  100644 06225243a7e29d5bccef9f9051fda1d7d1824d91 src/pages/admin/PlacementDriftDashboard.tsx
+@@ -0,0 +1,378 @@
++import React, { useEffect, useMemo, useState } from "react";
++import {
++  Bar,
++  BarChart,
++  CartesianGrid,
++  ResponsiveContainer,
++  Tooltip,
++  XAxis,
++  YAxis,
++} from "recharts";
++
++import { useAdminAccess } from "@/hooks/admin/useAdminAccess";
++import { supabase } from "@/lib/supabaseClient";
++
++interface ReportResponse {
++  ok: boolean;
++  error?: string;
++  runs?: DbRun[];
++  scores?: DbScore[];
++  alerts?: DbAlert[];
++  providerVariance?: DbProviderVariance[];
++  summary?: {
++    scoreCount: number;
++    replaySuccessRate: number;
++    malformedRate: number;
++    p95GradingLatencyMs: number;
++    criticalAlertCount: number;
++    byModality: Record<string, Bucket>;
++    byCefr: Record<string, Bucket>;
++    byProvider: Record<string, Bucket>;
++    retryVariance: Record<string, number>;
++    taxonomy: Record<string, { count: number; malformedRate: number }>;
++  };
++}
++
++interface Bucket {
++  count: number;
++  successRate: number;
++  malformedRate: number;
++  p95LatencyMs: number;
++}
++
++interface DbRun {
++  id: string;
++  batch_id: string;
++  started_at: string;
++  completed_at: string | null;
++  status: string;
++  sample_count: number;
++  success_count: number;
++  malformed_count: number;
++  p95_latency_ms: number;
++}
++
++interface DbScore {
++  sample_id: string;
++  modality: string;
++  expected_cefr: string;
++  parsed_cefr: string | null;
++  provider: string;
++  model: string | null;
++  retry_path: string[];
++  taxonomy_tags: string[];
++  latency_ms: number;
++  status: string;
++  malformed: boolean;
++  created_at: string;
++}
++
++interface DbAlert {
++  id: number;
++  severity: string;
++  scope: string;
++  metric: string;
++  value: number;
++  threshold: number;
++  sample_ids: string[];
++  message: string;
++  created_at: string;
++}
++
++interface DbProviderVariance {
++  provider: string;
++  sample_count: number;
++  success_rate: number;
++  malformed_rate: number;
++  average_expected_delta: number;
++  p95_latency_ms: number;
++}
++
++const wrap: React.CSSProperties = {
++  width: "100%",
++  minHeight: "100vh",
++  padding: "24px 24px 80px",
++  background: "#f6f7f9",
++};
++const container: React.CSSProperties = {
++  maxWidth: 1240,
++  margin: "0 auto",
++  display: "flex",
++  flexDirection: "column",
++  gap: 16,
++};
++const card: React.CSSProperties = {
++  background: "#fff",
++  border: "1px solid rgba(15,23,42,0.1)",
++  borderRadius: 8,
++  padding: 16,
++};
++const grid: React.CSSProperties = {
++  display: "grid",
++  gap: 12,
++  gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
++};
++const label: React.CSSProperties = {
++  color: "#64748b",
++  fontSize: 12,
++  fontWeight: 800,
++  textTransform: "uppercase",
++};
++const value: React.CSSProperties = {
++  color: "#111827",
++  fontSize: 24,
++  fontWeight: 900,
++  marginTop: 4,
++};
++
++export default function PlacementDriftDashboard() {
++  const admin = useAdminAccess();
++  const level = admin.permissions.level;
++  const [report, setReport] = useState<ReportResponse | null>(null);
++  const [loading, setLoading] = useState(true);
++  const [error, setError] = useState<string | null>(null);
++
++  useEffect(() => {
++    if (admin.loading || level < 9) return;
++    let alive = true;
++    setLoading(true);
++    setError(null);
++
++    void (async () => {
++      try {
++        const session = await supabase.auth.getSession();
++        const token = session.data.session?.access_token;
++        const baseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "").replace(/\/$/, "");
++        const anonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? "");
++        const response = await fetch(`${baseUrl}/functions/v1/placement-v3-drift-report`, {
++          headers: {
++            apikey: anonKey,
++            ...(token ? { Authorization: `Bearer ${token}` } : {}),
++          },
++        });
++        const body = (await response.json()) as ReportResponse;
++        if (!response.ok || !body.ok) {
++          throw new Error(body.error ?? `Drift report failed: ${response.status}`);
++        }
++        if (alive) setReport(body);
++      } catch (err) {
++        if (alive) setError(err instanceof Error ? err.message : String(err));
++      } finally {
++        if (alive) setLoading(false);
++      }
++    })();
++
++    return () => {
++      alive = false;
++    };
++  }, [admin.loading, level]);
++
++  const summary = report?.summary;
++  const latestRuns = report?.runs ?? [];
++  const alerts = report?.alerts ?? [];
++  const scores = report?.scores ?? [];
++  const providerVariance = report?.providerVariance ?? [];
++
++  const modalityChart = useMemo(
++    () => bucketChart(summary?.byModality ?? {}, "modality"),
++    [summary],
++  );
++  const cefrChart = useMemo(() => bucketChart(summary?.byCefr ?? {}, "cefr"), [summary]);
++  const retryChart = useMemo(
++    () => Object.entries(summary?.retryVariance ?? {}).map(([name, count]) => ({ name, count })),
++    [summary],
++  );
++  const taxonomyRows = useMemo(
++    () =>
++      Object.entries(summary?.taxonomy ?? {})
++        .map(([tag, row]) => ({ tag, ...row }))
++        .sort((a, b) => b.count - a.count)
++        .slice(0, 16),
++    [summary],
++  );
++
++  if (admin.loading || loading) return <div style={wrap}>Loading placement drift data...</div>;
++  if (level < 9) return <div style={wrap}>Admin level 9 required.</div>;
++
++  return (
++    <div style={wrap} data-testid="placement-drift-dashboard">
++      <div style={container}>
++        <header>
++          <h1 style={{ margin: 0, fontSize: 28 }}>Placement V3 Grading Drift</h1>
++          <p style={{ margin: "6px 0 0", color: "#475569" }}>
++            Replay stability, CEFR drift, provider variance, retry paths, and Vietnamese-L1 taxonomy risk.
++          </p>
++        </header>
++
++        {error ? <div style={{ ...card, borderColor: "#ef4444" }}>{error}</div> : null}
++
++        <section style={grid} data-testid="drift-kpis">
++          <Kpi title="Replay success" value={`${(((summary?.replaySuccessRate ?? 0) * 100)).toFixed(1)}%`} />
++          <Kpi title="Malformed output" value={`${(((summary?.malformedRate ?? 0) * 100)).toFixed(1)}%`} />
++          <Kpi title="P95 latency" value={`${summary?.p95GradingLatencyMs ?? 0} ms`} />
++          <Kpi title="Scores" value={String(summary?.scoreCount ?? 0)} />
++          <Kpi title="Critical alerts" value={String(summary?.criticalAlertCount ?? 0)} />
++          <Kpi title="Runs" value={String(latestRuns.length)} />
++        </section>
++
++        <section style={grid}>
++          <ChartCard title="Score Drift by Modality" data={modalityChart} data-testid="drift-modality-chart" />
++          <ChartCard title="CEFR Instability" data={cefrChart} data-testid="drift-cefr-chart" />
++        </section>
++
++        <section style={grid}>
++          <div style={card} data-testid="provider-variance">
++            <h2 style={{ marginTop: 0 }}>Provider Variance</h2>
++            <Table>
++              <thead>
++                <tr>
++                  <Th>Provider</Th>
++                  <Th>Samples</Th>
++                  <Th>Success</Th>
++                  <Th>Malformed</Th>
++                  <Th>Avg delta</Th>
++                  <Th>P95</Th>
++                </tr>
++              </thead>
++              <tbody>
++                {providerVariance.map((row) => (
++                  <tr key={`${row.provider}:${row.sample_count}`}>
++                    <Td>{row.provider}</Td>
++                    <Td>{row.sample_count}</Td>
++                    <Td>{percent(row.success_rate)}</Td>
++                    <Td>{percent(row.malformed_rate)}</Td>
++                    <Td>{Number(row.average_expected_delta ?? 0).toFixed(2)}</Td>
++                    <Td>{row.p95_latency_ms} ms</Td>
++                  </tr>
++                ))}
++              </tbody>
++            </Table>
++          </div>
++
++          <div style={card} data-testid="retry-variance">
++            <h2 style={{ marginTop: 0 }}>Retry Variance</h2>
++            <div style={{ height: 240 }}>
++              <ResponsiveContainer>
++                <BarChart data={retryChart}>
++                  <CartesianGrid strokeDasharray="3 3" />
++                  <XAxis dataKey="name" />
++                  <YAxis allowDecimals={false} />
++                  <Tooltip />
++                  <Bar dataKey="count" fill="#2563eb" />
++                </BarChart>
++              </ResponsiveContainer>
++            </div>
++          </div>
++        </section>
++
++        <section style={card} data-testid="taxonomy-instability">
++          <h2 style={{ marginTop: 0 }}>Taxonomy-Category Instability</h2>
++          <Table>
++            <thead>
++              <tr>
++                <Th>Taxonomy tag</Th>
++                <Th>Samples</Th>
++                <Th>Malformed</Th>
++              </tr>
++            </thead>
++            <tbody>
++              {taxonomyRows.map((row) => (
++                <tr key={row.tag}>
++                  <Td>{row.tag}</Td>
++                  <Td>{row.count}</Td>
++                  <Td>{percent(row.malformedRate)}</Td>
++                </tr>
++              ))}
++            </tbody>
++          </Table>
++        </section>
++
++        <section style={grid}>
++          <div style={card} data-testid="drift-alerts">
++            <h2 style={{ marginTop: 0 }}>Drift Alerts</h2>
++            {alerts.length === 0 ? (
++              <p style={{ color: "#475569" }}>No drift alerts in the selected window.</p>
++            ) : (
++              alerts.slice(0, 12).map((alert) => (
++                <div key={alert.id} style={{ padding: "10px 0", borderTop: "1px solid #e2e8f0" }}>
++                  <strong>{alert.severity.toUpperCase()} · {alert.metric}</strong>
++                  <div style={{ color: "#475569", fontSize: 13 }}>{alert.message}</div>
++                </div>
++              ))
++            )}
++          </div>
++
++          <div style={card} data-testid="unstable-samples">
++            <h2 style={{ marginTop: 0 }}>Latest Replay Scores</h2>
++            {scores.slice(0, 12).map((score) => (
++              <div key={`${score.sample_id}:${score.created_at}`} style={{ padding: "10px 0", borderTop: "1px solid #e2e8f0" }}>
++                <strong>{score.sample_id}</strong>
++                <div style={{ color: "#475569", fontSize: 13 }}>
++                  {score.modality} · {score.expected_cefr} → {score.parsed_cefr ?? "malformed"} · {score.provider} · {score.latency_ms} ms
++                </div>
++              </div>
++            ))}
++          </div>
++        </section>
++      </div>
++    </div>
++  );
++}
++
++function Kpi({ title, value: text }: { title: string; value: string }) {
++  return (
++    <div style={card}>
++      <div style={label}>{title}</div>
++      <div style={value}>{text}</div>
++    </div>
++  );
++}
++
++function ChartCard({
++  title,
++  data,
++  ...rest
++}: { title: string; data: Array<Record<string, unknown>> } & React.HTMLAttributes<HTMLDivElement>) {
++  return (
++    <div style={card} {...rest}>
++      <h2 style={{ marginTop: 0 }}>{title}</h2>
++      <div style={{ height: 260 }}>
++        <ResponsiveContainer>
++          <BarChart data={data}>
++            <CartesianGrid strokeDasharray="3 3" />
++            <XAxis dataKey="name" />
++            <YAxis allowDecimals={false} />
++            <Tooltip />
++            <Bar dataKey="count" fill="#0f766e" />
++            <Bar dataKey="malformed" fill="#dc2626" />
++          </BarChart>
++        </ResponsiveContainer>
++      </div>
++    </div>
++  );
++}
++
++function Table({ children }: { children: React.ReactNode }) {
++  return <table style={{ width: "100%", borderCollapse: "collapse" }}>{children}</table>;
++}
++
++function Th({ children }: { children: React.ReactNode }) {
++  return <th style={{ textAlign: "left", padding: 10, borderBottom: "1px solid #cbd5e1" }}>{children}</th>;
++}
++
++function Td({ children }: { children: React.ReactNode }) {
++  return <td style={{ padding: 10, borderBottom: "1px solid #e2e8f0" }}>{children}</td>;
++}
++
++function bucketChart(buckets: Record<string, Bucket>, _kind: string) {
++  return Object.entries(buckets).map(([name, bucket]) => ({
++    name,
++    count: bucket.count,
++    malformed: Math.round(bucket.malformedRate * bucket.count),
++    p95LatencyMs: bucket.p95LatencyMs,
++  }));
++}
++
++function percent(value: number): string {
++  return `${(Number(value ?? 0) * 100).toFixed(1)}%`;
++}
+changed in both
+  base   100644 d47d286682f7a94b76e39903a9d3b2c322cc7d0a src/router/AppRouter.tsx
+  our    100644 4ec0cf43a6064cf30cd0af78efd0cdd33b1a4c8e src/router/AppRouter.tsx
+  their  100644 e65fecf859d29b50aa9f9e868f814b679aa8d2a5 src/router/AppRouter.tsx
+@@ -282,6 +282,7 @@
+ const FrontendPerformance     = lazyWithRetry(() => import("@/pages/admin/FrontendPerformance"));
+ const RetentionDashboard      = lazyWithRetry(() => import("@/pages/admin/RetentionDashboard"));
+ const BehavioralAnalytics     = lazyWithRetry(() => import("@/pages/admin/BehavioralAnalytics"));
++const PlacementDriftDashboard = lazyWithRetry(() => import("@/pages/admin/PlacementDriftDashboard"));
+ const RoomLoadDiagnostics     = lazyWithRetry(() =>
+   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
+     default: m.RoomLoadDiagnostics,
+@@ -1673,6 +1674,7 @@
+               <Route path="frontend-perf"        element={<LazyPage><FrontendPerformance /></LazyPage>} />
+               <Route path="retention"            element={<LazyPage><RetentionDashboard /></LazyPage>} />
+               <Route path="behavioral"           element={<LazyPage><BehavioralAnalytics /></LazyPage>} />
++              <Route path="placement-drift"      element={<LazyPage><PlacementDriftDashboard /></LazyPage>} />
+               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
+               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
+               <Route path="teacher-feedback"     element={<LazyPage><TeacherFeedbackTriagePage /></LazyPage>} />
+added in remote
+  their  100644 4af28b7e29a0f7b1e81542bd5cddcad455a8a766 supabase/functions/placement-v3-drift-report/index.ts
+@@ -0,0 +1,172 @@
++import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
++import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
++import { getUserFromAuthHeader } from "../_shared/security.ts";
++import { wrapHandler } from "../_shared/sentry.ts";
++
++const corsHeaders = {
++  "Access-Control-Allow-Origin": "*",
++  "Access-Control-Allow-Headers":
++    "authorization, x-client-info, apikey, content-type",
++  "Access-Control-Allow-Methods": "GET, OPTIONS",
++};
++
++const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
++const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
++const db = createClient(supabaseUrl, serviceRoleKey, {
++  auth: { persistSession: false },
++});
++
++serve(
++  wrapHandler("placement-v3-drift-report", async (req) => {
++    if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
++    if (req.method !== "GET") return json({ ok: false, error: "method_not_allowed" }, 405);
++
++    const user = await getUserFromAuthHeader(req);
++    if (!user) return json({ ok: false, error: "auth_required" }, 401);
++
++    const { data: level, error: levelError } = await db.rpc("get_admin_level", {
++      p_user_id: user.id,
++    });
++    if (levelError || Number(level ?? 0) < 9) {
++      return json({ ok: false, error: "admin_required" }, 403);
++    }
++
++    const url = new URL(req.url);
++    const since = url.searchParams.get("since") ??
++      new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
++    const limit = Math.min(1_000, Math.max(1, Number(url.searchParams.get("limit") ?? 500)));
++
++    const { data: runs, error: runsError } = await db
++      .from("placement_v3_replay_runs")
++      .select("*")
++      .gte("started_at", since)
++      .order("started_at", { ascending: false })
++      .limit(50);
++    if (runsError) return json({ ok: false, error: runsError.message }, 500);
++
++    const runIds = (runs ?? []).map((row: { id: string }) => row.id);
++    const { data: scores, error: scoresError } = runIds.length
++      ? await db
++        .from("placement_v3_replay_scores")
++        .select("*")
++        .in("run_id", runIds)
++        .order("created_at", { ascending: false })
++        .limit(limit)
++      : { data: [], error: null };
++    if (scoresError) return json({ ok: false, error: scoresError.message }, 500);
++
++    const { data: alerts, error: alertsError } = runIds.length
++      ? await db
++        .from("placement_v3_drift_alerts")
++        .select("*")
++        .in("run_id", runIds)
++        .order("created_at", { ascending: false })
++        .limit(100)
++      : { data: [], error: null };
++    if (alertsError) return json({ ok: false, error: alertsError.message }, 500);
++
++    const { data: providerVariance, error: providerError } = runIds.length
++      ? await db
++        .from("placement_v3_provider_variance")
++        .select("*")
++        .in("run_id", runIds)
++        .order("created_at", { ascending: false })
++      : { data: [], error: null };
++    if (providerError) return json({ ok: false, error: providerError.message }, 500);
++
++    return json({
++      ok: true,
++      since,
++      generatedAt: new Date().toISOString(),
++      runs: runs ?? [],
++      scores: scores ?? [],
++      alerts: alerts ?? [],
++      providerVariance: providerVariance ?? [],
++      summary: summarize(scores ?? [], alerts ?? []),
++    });
++  }),
++);
++
++function summarize(scores: Record<string, unknown>[], alerts: Record<string, unknown>[]) {
++  const byModality = groupScores(scores, "modality");
++  const byCefr = groupScores(scores, "expected_cefr");
++  const byProvider = groupScores(scores, "provider");
++  const retryVariance = groupRetry(scores);
++  const taxonomy = groupTaxonomy(scores);
++  const latency = scores.map((score) => Number(score.latency_ms ?? 0)).sort((a, b) => a - b);
++  const successes = scores.filter((score) => score.status === "success");
++  const malformed = scores.filter((score) => score.malformed === true || score.status === "malformed");
++  return {
++    scoreCount: scores.length,
++    replaySuccessRate: ratio(successes.length, scores.length),
++    malformedRate: ratio(malformed.length, scores.length),
++    p95GradingLatencyMs: percentile(latency, 0.95),
++    alertCount: alerts.length,
++    criticalAlertCount: alerts.filter((alert) => alert.severity === "critical").length,
++    byModality,
++    byCefr,
++    byProvider,
++    retryVariance,
++    taxonomy,
++  };
++}
++
++function groupScores(scores: Record<string, unknown>[], key: string) {
++  const out: Record<string, { count: number; successRate: number; malformedRate: number; p95LatencyMs: number }> = {};
++  for (const value of new Set(scores.map((score) => String(score[key] ?? "unknown")))) {
++    const subset = scores.filter((score) => String(score[key] ?? "unknown") === value);
++    out[value] = {
++      count: subset.length,
++      successRate: ratio(subset.filter((score) => score.status === "success").length, subset.length),
++      malformedRate: ratio(subset.filter((score) => score.malformed === true || score.status === "malformed").length, subset.length),
++      p95LatencyMs: percentile(subset.map((score) => Number(score.latency_ms ?? 0)).sort((a, b) => a - b), 0.95),
++    };
++  }
++  return out;
++}
++
++function groupRetry(scores: Record<string, unknown>[]) {
++  const out: Record<string, number> = {};
++  for (const score of scores) {
++    const path = Array.isArray(score.retry_path) ? score.retry_path.join(">") : "unknown";
++    out[path || "none"] = (out[path || "none"] ?? 0) + 1;
++  }
++  return out;
++}
++
++function groupTaxonomy(scores: Record<string, unknown>[]) {
++  const out: Record<string, { count: number; malformedRate: number }> = {};
++  for (const score of scores) {
++    const tags = Array.isArray(score.taxonomy_tags) ? score.taxonomy_tags : [];
++    for (const rawTag of tags) {
++      const tag = String(rawTag);
++      const current = out[tag] ?? { count: 0, malformedRate: 0 };
++      current.count += 1;
++      out[tag] = current;
++    }
++  }
++  for (const tag of Object.keys(out)) {
++    const subset = scores.filter((score) => Array.isArray(score.taxonomy_tags) && score.taxonomy_tags.includes(tag));
++    out[tag].malformedRate = ratio(
++      subset.filter((score) => score.malformed === true || score.status === "malformed").length,
++      subset.length,
++    );
++  }
++  return out;
++}
++
++function percentile(sortedAsc: number[], p: number): number {
++  if (!sortedAsc.length) return 0;
++  return sortedAsc[Math.min(sortedAsc.length - 1, Math.ceil(sortedAsc.length * p) - 1)];
++}
++
++function ratio(count: number, total: number): number {
++  return total ? Number((count / total).toFixed(4)) : 0;
++}
++
++function json(body: unknown, status = 200): Response {
++  return new Response(JSON.stringify(body), {
++    status,
++    headers: { ...corsHeaders, "Content-Type": "application/json" },
++  });
++}
+added in remote
+  their  100644 f41a83bc9bb51d46fb526a507cb7d8fcb9b1b0df supabase/migrations/20260520112527_placement_v3_grading_drift.sql
+@@ -0,0 +1,115 @@
++-- Placement V3 grading drift replay evidence.
++-- Operator-only tables; raw grader output is retained for auditability.
++
++create table if not exists public.placement_v3_replay_runs (
++  id text primary key,
++  batch_id text not null,
++  fixture_version text not null default 'v1',
++  started_at timestamptz not null,
++  completed_at timestamptz,
++  status text not null check (status in ('running', 'success', 'error', 'blocked')),
++  sample_count integer not null default 0 check (sample_count >= 0),
++  success_count integer not null default 0 check (success_count >= 0),
++  malformed_count integer not null default 0 check (malformed_count >= 0),
++  p95_latency_ms integer not null default 0 check (p95_latency_ms >= 0),
++  provider_set text[] not null default '{}'::text[],
++  notes text,
++  metadata jsonb not null default '{}'::jsonb,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_replay_scores (
++  id text primary key,
++  run_id text not null references public.placement_v3_replay_runs(id) on delete cascade,
++  batch_id text not null,
++  sample_id text not null,
++  modality text not null check (modality in ('writing', 'reading', 'listening', 'speaking')),
++  expected_cefr text not null check (expected_cefr in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')),
++  parsed_cefr text check (parsed_cefr in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')),
++  provider text not null default 'unknown',
++  model text,
++  retry_path text[] not null default '{}'::text[],
++  taxonomy_tags text[] not null default '{}'::text[],
++  latency_ms integer not null default 0 check (latency_ms >= 0),
++  tokens_input integer not null default 0 check (tokens_input >= 0),
++  tokens_output integer not null default 0 check (tokens_output >= 0),
++  status text not null check (status in ('success', 'error', 'timeout', 'malformed')),
++  malformed boolean not null default false,
++  raw_request jsonb not null default '{}'::jsonb,
++  raw_response jsonb not null default '{}'::jsonb,
++  error_code text,
++  error_message text,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_drift_alerts (
++  id bigserial primary key,
++  run_id text references public.placement_v3_replay_runs(id) on delete cascade,
++  batch_id text not null,
++  severity text not null check (severity in ('info', 'warning', 'critical')),
++  scope text not null,
++  metric text not null,
++  value numeric(12,4) not null default 0,
++  threshold numeric(12,4) not null default 0,
++  sample_ids text[] not null default '{}'::text[],
++  message text not null,
++  created_at timestamptz not null default now()
++);
++
++create table if not exists public.placement_v3_provider_variance (
++  id bigserial primary key,
++  run_id text not null references public.placement_v3_replay_runs(id) on delete cascade,
++  batch_id text not null,
++  provider text not null,
++  model text,
++  sample_count integer not null default 0 check (sample_count >= 0),
++  success_rate numeric(6,4) not null default 0,
++  malformed_rate numeric(6,4) not null default 0,
++  average_expected_delta numeric(8,4) not null default 0,
++  p95_latency_ms integer not null default 0 check (p95_latency_ms >= 0),
++  created_at timestamptz not null default now()
++);
++
++create index if not exists placement_v3_replay_runs_batch_idx
++  on public.placement_v3_replay_runs (batch_id, started_at desc);
++create index if not exists placement_v3_replay_scores_run_idx
++  on public.placement_v3_replay_scores (run_id);
++create index if not exists placement_v3_replay_scores_sample_idx
++  on public.placement_v3_replay_scores (sample_id, created_at desc);
++create index if not exists placement_v3_replay_scores_modality_idx
++  on public.placement_v3_replay_scores (modality, created_at desc);
++create index if not exists placement_v3_replay_scores_provider_idx
++  on public.placement_v3_replay_scores (provider, created_at desc);
++create index if not exists placement_v3_drift_alerts_batch_idx
++  on public.placement_v3_drift_alerts (batch_id, created_at desc);
++create index if not exists placement_v3_provider_variance_run_idx
++  on public.placement_v3_provider_variance (run_id);
++
++alter table public.placement_v3_replay_runs enable row level security;
++alter table public.placement_v3_replay_scores enable row level security;
++alter table public.placement_v3_drift_alerts enable row level security;
++alter table public.placement_v3_provider_variance enable row level security;
++
++create policy "admins read placement replay runs"
++  on public.placement_v3_replay_runs
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement replay scores"
++  on public.placement_v3_replay_scores
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement drift alerts"
++  on public.placement_v3_drift_alerts
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
++
++create policy "admins read placement provider variance"
++  on public.placement_v3_provider_variance
++  for select
++  to authenticated
++  using (public.get_admin_level(auth.uid()) >= 9);
+added in remote
+  their  100644 177f5aa9e1c441ee5e6ad5c55f9f5c2dd7e38b85 tests/e2e/placement-drift-dashboard.spec.ts
+@@ -0,0 +1,33 @@
++import { expect, test } from "@playwright/test";
++
++test.describe("Placement Drift dashboard operator flows", () => {
++  test("1 route is protected by admin access", async ({ page }) => {
++    await page.goto("/admin/placement-drift");
++    await expect(page.locator("body")).toContainText(/Admin|Sign|Loading|required/i);
++  });
++
++  test("2 dashboard route does not 404", async ({ page }) => {
++    await page.goto("/admin/placement-drift");
++    await expect(page.locator("body")).not.toContainText("404");
++  });
++
++  test("3 admin dashboard links to Placement Drift", async ({ page }) => {
++    await page.goto("/admin");
++    await expect(page.locator("body")).toContainText(/Placement Drift|Admin|Sign/i);
++  });
++
++  test("4 non-admin operators see signed-in identity context", async ({ page }) => {
++    await page.goto("/admin/placement-drift");
++    await expect(page.locator("body")).toContainText(/Signed in as/i);
++  });
++
++  test("5 non-admin operators see admin level context", async ({ page }) => {
++    await page.goto("/admin/placement-drift");
++    await expect(page.locator("body")).toContainText(/Admin level/i);
++  });
++
++  test("6 blocked operators can navigate back home", async ({ page }) => {
++    await page.goto("/admin/placement-drift");
++    await expect(page.getByRole("link", { name: /Back to Home/i })).toBeVisible();
++  });
++});
+added in remote
+  their  100644 752f3b037d75b8e36140a3db807ccc8a099b934e tests/integration/placement-v3-drift-detection/drift-detection.test.ts
+@@ -0,0 +1,124 @@
++import { describe, expect, it } from "vitest";
++
++import { calculateDrift } from "../../../src/lib/placementDrift/calculateDrift";
++import { detectOutliers } from "../../../src/lib/placementDrift/detectOutliers";
++import { analyzeProviderVariance } from "../../../src/lib/placementDrift/providerVariance";
++import { analyzeScoreDeltas, cefrDistance, meanAbsoluteDelta } from "../../../src/lib/placementDrift/scoreDeltaAnalysis";
++import { buildStabilityReport } from "../../../src/lib/placementDrift/stabilityReport";
++import { analyzeTaxonomyVariance } from "../../../src/lib/placementDrift/taxonomyVariance";
++import type { ReplayScore } from "../../../src/lib/placementDrift/types";
++
++const baseline: ReplayScore[] = [
++  score("s1", "baseline", "reading", "B1", "B1", "openai", ["missing-articles"]),
++  score("s2", "baseline", "speaking", "A2", "A2", "openai", ["past-tense-unmarked"]),
++  score("s3", "baseline", "listening", "C1", "C1", "openai", ["inference"]),
++  score("s4", "baseline", "reading", "B2", "B2", "openai", ["hedging"]),
++];
++
++const current: ReplayScore[] = [
++  score("s1", "current", "reading", "B1", "B2", "openai", ["missing-articles"]),
++  score("s2", "current", "speaking", "A2", "B2", "gemini", ["past-tense-unmarked"], { retryPath: ["openai", "gemini"] }),
++  score("s3", "current", "listening", "C1", null, "openai", ["inference"], { malformed: true, status: "malformed" }),
++  score("s4", "current", "reading", "B2", "B2", "openai", ["hedging"], { latencyMs: 35_000 }),
++];
++
++describe("Placement V3 drift detection integration", () => {
++  it("1 computes CEFR band distance", () => {
++    expect(cefrDistance("A1", "B1")).toBe(2);
++  });
++
++  it("2 calculates signed score deltas against baseline samples", () => {
++    const deltas = analyzeScoreDeltas({ baseline, current });
++    expect(deltas.find((delta) => delta.sampleId === "s2")?.deltaBands).toBe(2);
++  });
++
++  it("3 computes mean absolute delta without malformed rows", () => {
++    const deltas = analyzeScoreDeltas({ baseline, current });
++    expect(meanAbsoluteDelta(deltas)).toBe(1);
++  });
++
++  it("4 raises catastrophic CEFR movement alerts", () => {
++    const deltas = analyzeScoreDeltas({ baseline, current });
++    const alerts = detectOutliers({ deltas, scores: current });
++    expect(alerts.some((alert) => alert.metric === "catastrophic_cefr_delta_count")).toBe(true);
++  });
++
++  it("5 raises malformed-output alerts", () => {
++    const alerts = detectOutliers({
++      deltas: analyzeScoreDeltas({ baseline, current }),
++      scores: current,
++      malformedThreshold: 0.01,
++    });
++    expect(alerts.some((alert) => alert.metric === "malformed_rate")).toBe(true);
++  });
++
++  it("6 raises p95 latency alerts", () => {
++    const alerts = detectOutliers({
++      deltas: analyzeScoreDeltas({ baseline, current }),
++      scores: current,
++      latencyP95ThresholdMs: 10_000,
++    });
++    expect(alerts.some((alert) => alert.metric === "p95_latency_ms")).toBe(true);
++  });
++
++  it("7 aggregates provider variance", () => {
++    const rows = analyzeProviderVariance(current);
++    expect(rows.find((row) => row.provider === "gemini")?.sampleCount).toBe(1);
++  });
++
++  it("8 aggregates taxonomy variance", () => {
++    const rows = analyzeTaxonomyVariance(current);
++    expect(rows.find((row) => row.taxonomyTag === "past-tense-unmarked")?.averageExpectedDelta).toBe(2);
++  });
++
++  it("9 builds a stability report with top unstable samples", () => {
++    const report = buildStabilityReport({ baseline, current });
++    expect(report.scoreDelta.topUnstableSamples[0].sampleId).toBe("s2");
++  });
++
++  it("10 calculates replay success and malformed rates", () => {
++    const summary = calculateDrift({ baseline, current });
++    expect(summary.successRate).toBe(0.75);
++    expect(summary.malformedRate).toBe(0.25);
++  });
++
++  it("11 preserves retry-path provider evidence", () => {
++    expect(current.find((row) => row.sampleId === "s2")?.retryPath).toEqual(["openai", "gemini"]);
++  });
++
++  it("12 documents absence of drift when scores match baseline", () => {
++    const deltas = analyzeScoreDeltas({ baseline, current: baseline });
++    expect(meanAbsoluteDelta(deltas)).toBe(0);
++  });
++});
++
++function score(
++  sampleId: string,
++  batchId: string,
++  modality: ReplayScore["modality"],
++  expectedCefr: ReplayScore["expectedCefr"],
++  parsedCefr: ReplayScore["parsedCefr"],
++  provider: ReplayScore["provider"],
++  taxonomyTags: string[],
++  overrides: Partial<ReplayScore> = {},
++): ReplayScore {
++  return {
++    runId: `${batchId}-run`,
++    batchId,
++    sampleId,
++    modality,
++    expectedCefr,
++    parsedCefr,
++    provider,
++    model: provider === "gemini" ? "gemini-2.5-flash" : "gpt-4o-mini",
++    retryPath: [provider],
++    taxonomyTags,
++    latencyMs: 1200,
++    tokensInput: 500,
++    tokensOutput: 200,
++    status: "success",
++    malformed: false,
++    createdAt: batchId === "baseline" ? "2026-05-20T10:00:00.000Z" : "2026-05-20T11:00:00.000Z",
++    ...overrides,
++  };
++}
