@@ -1,8 +1,8 @@
 // src/components/native/NativeBootstrap.tsx
 //
 // Cat-4 native shell — N4. One-shot native UX bootstrap: hide the splash
-// screen, set the iOS status-bar style, and lock the Android keyboard
-// resize mode.
+// screen, set the iOS status-bar style, lock the Android keyboard resize
+// mode, and pull Sentry monitoring up from cold-start.
 //
 // WHAT IT FIXES:
 //   - Splash: capacitor.config.ts sets `SplashScreen.launchAutoHide:false`,
@@ -18,6 +18,17 @@
 //   - Keyboard (Android): pin the resize mode so a focused input is pushed
 //     above the IME instead of sitting behind it. (iOS resize is set
 //     declaratively in capacitor.config.ts.)
+//   - Sentry monitoring (native cold-start): web is route-gated — Sentry
+//     init only fires once an error, auth verification, or explicit
+//     capture proves monitoring is needed (see lib/monitoring/sentryActivation
+//     and PR #740). Native cohorts skew anonymous, so the auth trigger
+//     rarely fires; cold-start is the right moment to wire monitoring
+//     because the native chunk-fetch cost concern doesn't exist (the SDK
+//     ships inside the app bundle). The @sentry/capacitor branch in
+//     sentryInit.ts (lines 200–257) is already in place; we just bypass
+//     the activation gate on native so every native session gets the SDK
+//     before the first error rather than catching the second one. Web is
+//     unaffected — this code never runs there (isNativePlatform guard).
 //
 // CONVENTION: same headless, single-owner, platform-gated pattern as
 // AndroidBackButton (N1) / NativeDeepLinkListener (N2) — mounted once at
@@ -36,6 +47,7 @@
 import React from "react";
 
 import { getPlatform, isNativePlatform } from "@/lib/platform";
+import { activateSentry } from "@/lib/monitoring/sentryActivation";
 
 const dev = import.meta.env.DEV;
 
@@ -43,6 +55,16 @@ export default function NativeBootstrap(): React.ReactElement {
   React.useEffect(() => {
     // Hard no-op on web (desktop browser, mobile Safari/Chrome, PWA).
     if (!isNativePlatform()) return;
+
+    // Pull Sentry init NOW — before splash/status-bar/keyboard. activateSentry
+    // is idempotent and dependency-free; if armSentryActivation has already
+    // run in main.tsx (it has — synchronous registration before this
+    // useEffect commits) it fires the activator immediately and the
+    // @sentry/capacitor branch in sentryInit.ts boots. If somehow not yet
+    // armed, activateSentry latches the request so the next arm call runs
+    // it. Either way native sessions get the SDK up before the first error
+    // rather than relying on bootErrorBuffer's replay-after-catch.
+    activateSentry("native-cold-start");
 
     let cancelled = false;
 
