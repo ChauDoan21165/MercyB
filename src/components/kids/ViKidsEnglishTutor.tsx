@@ -1,214 +1,223 @@
-import { Suspense, useEffect, useState } from "react";
-import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
-import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
-import type { TeacherMercyModeTab } from "@/components/teacher-mercy/TeacherMercyModeTabs";
-import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
-import { getMemorySummary, type MemorySummary, type TutorProduct } from "@/lib/ai-tutor/learningMemory";
+import { useMemo, useState } from "react";
+import { Mic, Sparkles } from "lucide-react";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
-import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
-import {
-  VI_KIDS_TUTOR_COPY,
-  VI_KIDS_TUTOR_TABS,
-  type ViKidsTutorMode,
-} from "@/lib/kids/viKidsTutorCopy";
-import { lazyWithRetry } from "@/lib/lazyWithRetry";
-import { getSpeechLocale, getTtsLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
-import { getSafetyLabel, viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
+import { recordLearningEvent } from "@/lib/tutor/learningEvents";
 
-// MercyTeacherTab was orphaned by PR #1093 (floating-helper simplification)
-// and lost its only consumer. Re-mounted here as a kids-safe picture browser
-// so the kidPageN data files + photos become user-reachable again via the
-// restored /kids/vi-english surface.
-const MercyTeacherTab = lazyWithRetry(
-  () => import("@/components/mercy-guide/MercyTeacherTab").then((m) => ({ default: m.MercyTeacherTab })),
-);
+type KidsPicture = {
+  id: string;
+  english: string;
+  vietnamese: string;
+  image: string;
+  sentence: string;
+  response: string;
+};
 
-const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
-const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
-
-// Local extension of ViKidsTutorMode for the restored kids picture surface.
-// Kept local (rather than extending the productConfigs TutorProductMode
-// union) to keep this change contained to /kids/vi-english per the
-// Option B dispatch — the new mode is a kids-specific tab, not a
-// product-wide modes-list change.
-type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher";
-
-const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
-  ...VI_KIDS_TUTOR_TABS,
-  { id: "kidsTeacher", label: "Mercy Teacher" },
+const PICTURES: KidsPicture[] = [
+  {
+    id: "apple",
+    english: "apple",
+    vietnamese: "quả táo",
+    image: "/images/mercy-kids/apple.jpg",
+    sentence: "I see an apple.",
+    response: "Great. Apple. I see an apple.",
+  },
+  {
+    id: "dog",
+    english: "dog",
+    vietnamese: "con chó",
+    image: "/images/mercy-kids/dog.jpg",
+    sentence: "I see a dog.",
+    response: "Good job. Dog. I see a dog.",
+  },
+  {
+    id: "cat",
+    english: "cat",
+    vietnamese: "con mèo",
+    image: "/images/mercy-kids/cat.jpg",
+    sentence: "I see a cat.",
+    response: "Nice speaking. Cat. I see a cat.",
+  },
+  {
+    id: "sun",
+    english: "sun",
+    vietnamese: "mặt trời",
+    image: "/images/mercy-kids/sun.jpg",
+    sentence: "I see the sun.",
+    response: "Bright and clear. Sun. I see the sun.",
+  },
+  {
+    id: "car",
+    english: "car",
+    vietnamese: "xe hơi",
+    image: "/images/mercy-kids/toy-car.jpg",
+    sentence: "I see a car.",
+    response: "Well done. Car. I see a car.",
+  },
+  {
+    id: "book",
+    english: "book",
+    vietnamese: "quyển sách",
+    image: "/images/mercy-kids/book.jpg",
+    sentence: "I see a book.",
+    response: "Good. Book. I see a book.",
+  },
 ];
 
+const DEFAULT_PICTURE = PICTURES[0];
+
 export default function ViKidsEnglishTutor() {
-  const [mode, setMode] = useState<ExtendedKidsMode>("conversation");
-  const [answer, setAnswer] = useState("");
-  const [memoryLoaded, setMemoryLoaded] = useState(false);
-  const [memory, setMemory] = useState<MemorySummary | null>(null);
-  const stt = useBrowserStt(getSpeechLocale(TARGET_LANGUAGE));
-  const tts = useTtsSpeaker();
+  const [selectedId, setSelectedId] = useState(DEFAULT_PICTURE.id);
+  const [hasSpoken, setHasSpoken] = useState(false);
+  const stt = useBrowserStt("en-US");
 
-  useEffect(() => {
-    if (!viKidsEnglishConfig.memoryEnabled) {
-      void getMemorySummary(TUTOR_PRODUCT, TARGET_LANGUAGE);
-      setMemoryLoaded(true);
-      return;
-    }
-    getMemorySummary(TUTOR_PRODUCT, TARGET_LANGUAGE)
-      .then(setMemory)
-      .catch(() => {})
-      .finally(() => setMemoryLoaded(true));
-  }, []);
+  const selected = useMemo(
+    () => PICTURES.find((picture) => picture.id === selectedId) ?? DEFAULT_PICTURE,
+    [selectedId],
+  );
 
-  const handleMicToggle = () => {
-    if (stt.listening) {
-      stt.stop();
-      return;
-    }
-    stt.start();
-  };
-
-  const speakLine = () => {
-    if (tts.speaking) {
-      tts.stop();
-      return;
-    }
-    void tts.speak(VI_KIDS_TUTOR_COPY.speakLine, getTtsLocale(TARGET_LANGUAGE), TARGET_LANGUAGE, {
-      voiceStyle: "kid-friendly",
+  function selectPicture(picture: KidsPicture) {
+    setSelectedId(picture.id);
+    setHasSpoken(false);
+    recordLearningEvent({
+      eventType: "kids_picture_selected",
+      product: "mercy_kids",
+      targetLanguage: "en",
+      safeTopicTag: picture.id,
     });
-  };
+  }
+
+  function handleSpeakTap() {
+    setHasSpoken(true);
+    recordLearningEvent({
+      eventType: "kids_speak_clicked",
+      product: "mercy_kids",
+      targetLanguage: "en",
+      safeTopicTag: selected.id,
+    });
+
+    if (stt.supported) {
+      if (stt.listening) stt.stop();
+      else stt.start();
+    }
+  }
 
   return (
-    <TeacherMercyLearningShell
-      title={VI_KIDS_TUTOR_COPY.title}
-      subtitle={VI_KIDS_TUTOR_COPY.subtitle}
-      helper={VI_KIDS_TUTOR_COPY.helper}
-      eyebrow={VI_KIDS_TUTOR_COPY.eyebrow}
-      badge={getSafetyLabel(viKidsEnglishConfig)}
-      modeTabs={EXTENDED_KIDS_TABS}
-      activeMode={mode}
-      onModeChange={setMode}
-      memorySlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
-      reminderSlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
-      footer={VI_KIDS_TUTOR_COPY.footer}
-      testId="vi-kids-english-tutor"
+    <main
+      className="min-h-screen bg-[#F7FBFF] px-4 py-6 text-slate-950 sm:px-6 lg:px-8"
+      data-testid="vi-kids-english-tutor"
     >
-      <section className="mx-auto grid w-full max-w-3xl gap-5 rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
-        <div>
-          <div className="text-xs font-black uppercase text-indigo-600">
-            English practice · Giải thích tiếng Việt
-          </div>
-          <h2 className="mt-1 text-xl font-black text-slate-900">
-            {mode === "conversation" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
-          </h2>
-        </div>
-
-        {mode === "conversation" && (
-          <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-4">
-            <p className="text-sm font-bold leading-6 text-slate-700">
-              {VI_KIDS_TUTOR_COPY.conversationQuestion}
-            </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-indigo-700">
-              {VI_KIDS_TUTOR_COPY.conversationHint}
-            </p>
-          </div>
-        )}
-
-        {mode === "grammar" && (
-          <div className="grid gap-3">
-            <div className="rounded-[16px] border border-emerald-200 bg-emerald-50 p-4">
-              <div className="text-xs font-black uppercase text-emerald-600">
-                {VI_KIDS_TUTOR_COPY.correctedLabel}
-              </div>
-              <p className="mt-1 text-lg font-black text-emerald-900">
-                {VI_KIDS_TUTOR_COPY.correctedExample}
-              </p>
+      <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)]">
+        <section className="flex min-h-[calc(100vh-3rem)] flex-col rounded-[8px] border border-sky-100 bg-white p-4 shadow-sm sm:p-5">
+          <div className="mb-4 flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-black uppercase text-sky-700">English for kids</p>
+              <h1 className="mt-1 text-3xl font-black tracking-normal text-slate-950 sm:text-4xl">
+                Mercy Kids
+              </h1>
             </div>
-            <div className="rounded-[16px] border border-slate-200 bg-slate-50 p-4">
-              <div className="text-xs font-black uppercase text-slate-500">
-                {VI_KIDS_TUTOR_COPY.explanationLabel}
-              </div>
-              <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
-                {VI_KIDS_TUTOR_COPY.explanation}
-              </p>
+            <div className="rounded-[8px] border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-black text-emerald-700">
+              Picture + speak only
             </div>
-            {tts.voiceSource && (
-              <div className={`mt-2 text-[11px] font-semibold ${tts.voiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
-                {tts.voiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
-              </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-[8px] border border-sky-200 bg-sky-50 px-4 py-3">
+              <div className="text-sm font-black text-sky-900">1. Chọn hình</div>
+              <p className="mt-1 text-sm font-semibold text-sky-800">Pick one picture.</p>
+            </div>
+            <div className="rounded-[8px] border border-violet-200 bg-violet-50 px-4 py-3">
+              <div className="text-sm font-black text-violet-900">2. Bấm để nói</div>
+              <p className="mt-1 text-sm font-semibold text-violet-800">Say the little English sentence.</p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {PICTURES.map((picture) => {
+              const active = picture.id === selected.id;
+              return (
+                <button
+                  key={picture.id}
+                  type="button"
+                  onClick={() => selectPicture(picture)}
+                  className={`group grid min-h-[188px] overflow-hidden rounded-[8px] border bg-white text-left transition ${
+                    active
+                      ? "border-sky-500 shadow-[0_0_0_3px_rgba(14,165,233,0.18)]"
+                      : "border-slate-200 hover:border-sky-300 hover:shadow-sm"
+                  }`}
+                  aria-pressed={active}
+                  aria-label={`${picture.english} ${picture.vietnamese}`}
+                >
+                  <img
+                    src={picture.image}
+                    alt=""
+                    className="h-32 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <span className="grid gap-0.5 px-3 py-2">
+                    <span className="text-base font-black capitalize text-slate-950">
+                      {picture.english}
+                    </span>
+                    <span className="text-sm font-bold text-slate-600">
+                      {picture.vietnamese}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        <aside className="flex min-h-[calc(100vh-3rem)] flex-col rounded-[8px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+          <div className="overflow-hidden rounded-[8px] border border-slate-200 bg-slate-50">
+            <img
+              src={selected.image}
+              alt={`${selected.english} ${selected.vietnamese}`}
+              className="h-64 w-full object-cover"
+            />
+          </div>
+
+          <div className="mt-4">
+            <p className="text-xs font-black uppercase text-slate-500">Say this</p>
+            <p className="mt-1 text-3xl font-black tracking-normal text-slate-950">
+              {selected.sentence}
+            </p>
+            <p className="mt-1 text-base font-bold text-slate-600">
+              {selected.vietnamese}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleSpeakTap}
+            className="mt-5 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[8px] border border-violet-300 bg-violet-600 px-4 py-3 text-base font-black text-white shadow-sm transition hover:bg-violet-700 disabled:opacity-70"
+            aria-label={stt.listening ? "Dừng nói với Mercy" : "Bấm để nói với Mercy"}
+          >
+            <Mic className="h-5 w-5" aria-hidden />
+            {stt.listening ? "Mercy đang nghe" : "Bấm để nói với Mercy"}
+          </button>
+
+          {stt.error && (
+            <p className="mt-3 rounded-[8px] border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-semibold text-amber-800">
+              Mercy chưa nghe được trên trình duyệt này. Con vẫn có thể đọc câu với ba mẹ.
+            </p>
+          )}
+
+          <div className="mt-5 rounded-[8px] border border-emerald-200 bg-emerald-50 p-4">
+            <div className="flex items-center gap-2 text-sm font-black text-emerald-900">
+              <Sparkles className="h-4 w-4" aria-hidden />
+              Mercy responds
+            </div>
+            <p className="mt-2 text-lg font-black text-emerald-950">
+              {hasSpoken ? selected.response : "Pick a picture, then tap speak."}
+            </p>
+            {stt.transcript && (
+              <p className="mt-2 text-sm font-semibold text-emerald-800">
+                Mercy heard: {stt.transcript}
+              </p>
             )}
           </div>
-        )}
-
-        {mode === "speak" && (
-          <div className="rounded-[16px] border border-violet-200 bg-violet-50/60 p-4">
-            <p className="text-lg font-black text-violet-900">
-              {VI_KIDS_TUTOR_COPY.speakLine}
-            </p>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              <TeacherMercyVoiceControls
-                kind="speaker"
-                supported={tts.supported}
-                active={tts.speaking}
-                preparing={tts.preparing}
-                unavailableLabel={VI_KIDS_TUTOR_COPY.ttsUnavailable}
-                inactiveLabel={VI_KIDS_TUTOR_COPY.ttsPlay}
-                activeLabel={VI_KIDS_TUTOR_COPY.ttsStop}
-                preparingLabel="Preparing Mercy voice…"
-                ariaStart="Mercy đọc câu tiếng Anh"
-                ariaStop="Dừng Mercy đọc"
-                onToggle={speakLine}
-              />
-              <TeacherMercyVoiceControls
-                kind="mic"
-                supported={stt.supported}
-                active={stt.listening}
-                unavailableLabel={VI_KIDS_TUTOR_COPY.micUnavailable}
-                inactiveLabel={VI_KIDS_TUTOR_COPY.micInput}
-                activeLabel={VI_KIDS_TUTOR_COPY.micListening}
-                ariaStart={VI_KIDS_TUTOR_COPY.micAriaStart}
-                ariaStop={VI_KIDS_TUTOR_COPY.micAriaStop}
-                onToggle={handleMicToggle}
-              />
-            </div>
-          </div>
-        )}
-
-        {mode === "logic" && (
-          <div className="rounded-[16px] border border-amber-200 bg-amber-50/60 p-4">
-            <p className="text-sm font-bold leading-6 text-amber-900">
-              {VI_KIDS_TUTOR_COPY.logicTask}
-            </p>
-          </div>
-        )}
-
-        {mode === "kidsTeacher" && (
-          <div data-testid="vi-kids-mercy-teacher-mount">
-            <Suspense
-              fallback={
-                <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/40 p-4 text-sm font-semibold text-indigo-700">
-                  Đang tải Mercy Teacher…
-                </div>
-              }
-            >
-              <MercyTeacherTab isKidsMode />
-            </Suspense>
-          </div>
-        )}
-
-        {mode !== "kidsTeacher" && (
-          <>
-            <label className="text-xs font-black uppercase text-slate-500">
-              {VI_KIDS_TUTOR_COPY.correctionPrompt}
-            </label>
-            <textarea
-              value={answer || stt.transcript}
-              onChange={(event) => setAnswer(event.target.value.slice(0, 300))}
-              placeholder={VI_KIDS_TUTOR_COPY.correctionPlaceholder}
-              rows={3}
-              className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
-            />
-          </>
-        )}
-      </section>
-    </TeacherMercyLearningShell>
+        </aside>
+      </div>
+    </main>
   );
 }
